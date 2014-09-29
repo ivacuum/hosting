@@ -1,0 +1,10 @@
+{
+  "name": "app",
+  "dependencies": {
+    "bootstrap": "~3.2",
+    "jquery": "~1.11"
+  },
+  "devDependencies": {
+    "less.js": "~1.7"
+  }
+}

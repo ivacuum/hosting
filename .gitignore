@@ -1,0 +1,8 @@
+/bootstrap/compiled.php
+/public_html/bower_components
+/vendor
+.env.*.php
+.env.php
+.DS_Store
+Thumbs.db
+.tm_properties

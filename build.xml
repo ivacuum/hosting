@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="app" default="build">
+  <property name="bower.dir" location="public_html/bower_components"/>
+  <property name="css.dir" location="public_html/css"/>
+  <property name="js.dir" location="public_html/js"/>
+
+  <target name="build" depends="lint"/>
+  
+  <target name="lint">
+    <apply executable="php" failonerror="true">
+      <arg value="-l" />
+      
+      <fileset dir="${basedir}">
+        <include name="**/*.php" />
+        <modified />
+      </fileset>
+    </apply>
+  </target>
+  
+  <target name="css">
+    <apply executable="lessc" failonerror="true" output="${css.dir}/app.min.css">
+      <fileset dir="${css.dir}">
+        <include name="app.less"/>
+      </fileset>
+      <arg value="--clean-css"/>
+      <arg value="--relative-urls"/>
+      <srcfile/>
+    </apply>
+  </target>
+
+  <target name="js">
+    <apply executable="uglifyjs" parallel="true" failonerror="true" output="${js.dir}/app.min.js">
+      <fileset file="${bower.dir}/jquery/dist/jquery.min.js"/>
+      <fileset file="${bower.dir}/bootstrap/dist/js/bootstrap.min.js"/>
+      <fileset file="${js.dir}/app.js"/>
+    </apply>
+  </target>
+
+  <!--
+  <target name="phpunit" description="Run unit tests with PHPUnit">
+    <exec executable="phpunit" failonerror="true" />
+  </target>
+  -->
+</project>
