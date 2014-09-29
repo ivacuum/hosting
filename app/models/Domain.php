@@ -39,9 +39,35 @@ class Domain extends Eloquent
 		return $data;
 	}
 	
+	public function isExpired()
+	{
+		return $this->ipv4 === '144.76.40.132';
+	}
+	
 	public function scopeWhoisReady($query)
 	{
 		return $query->whereActive(1)
 			->where('queried_at', '<', (string) Carbon::now()->subHours(3));
+	}
+	
+	public function whatServerIpv4()
+	{
+		switch ($this->ipv4)
+		{
+			case '62.109.0.61': return 'srv1.korden.net';
+			case '188.120.229.204': return 'srv2.korden.net';
+			case '62.109.4.161': return 'srv3.korden.net';
+			
+			case '93.81.237.72': return 'srv2.ivacuum.ru';
+			
+			case '77.221.130.18': return 'srv018.infobox.ru';
+			case '77.221.130.22': return 'srv022.infobox.ru';
+			case '77.221.130.25': return 'srv025.infobox.ru';
+			case '77.221.130.41': return 'srv041.infobox.ru';
+			
+			case '77.222.56.62': return 'vh213.sweb.ru';
+		}
+		
+		return $this->ipv4;
 	}
 }
