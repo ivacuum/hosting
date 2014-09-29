@@ -9,7 +9,7 @@
 			<th>#</th>
 			<th>Домен</th>
 			<th>Оплачен до</th>
-			<th>ipv4</th>
+			<th>Сервер</th>
 			<th>NS</th>
 		</tr>
 	</thead>
