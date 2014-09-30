@@ -20,7 +20,7 @@
 			<a href="{{ URL::route('domains.show', $domain->id) }}">{{ $domain->domain }}</a>
 		</td>
       <td class="text-muted">
-        {{ $domain->paid_till }}
+        <span title="{{{ $domain->paid_till }}}">{{{ $domain->paid_till->toDateString() }}}
       </td>
       <td><small><samp>{{ $domain->whatServerIpv4() }}</samp></small></td>
       <td><small>{{ str_limit($domain->ns, 32) }}</small></td>
