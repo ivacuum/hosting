@@ -88,13 +88,16 @@ class WhoisQuery
 
             $dom = $this->subdomain . '.' . $this->tlds;
             fputs($fp, "$dom\r\n");
-
+			stream_set_timeout($fp, 5);
+			
+			$info = stream_get_meta_data($fp);
+			
             // Getting string
             $string = '';
 
             // Checking whois server for .com and .net
             if ($this->tlds == 'com' || $this->tlds == 'net') {
-                while (!feof($fp)) {
+                while (!feof($fp) && !$info['timed_out']) {
                     $line = trim(fgets($fp, 128));
 
                     $string .= $line;
@@ -106,20 +109,35 @@ class WhoisQuery
 						fclose($fp);
 						break;
                     }
+					
+					$info = stream_get_meta_data($fp);
                 }
+				
+				if ($info['timed_out']) {
+					return 'Connection timed out';
+				}
+				
                 // Getting whois information
                 if (false === $fp = fsockopen($whois_server, 43)) {
                     return "Connection error!";
                 }
 
                 fputs($fp, "$dom\r\n");
-
+				stream_set_timeout($fp, 5);
+				
+				$info = stream_get_meta_data($fp);
+				
                 // Getting string
                 $string = '';
 
-                while (!feof($fp)) {
+                while (!feof($fp) && !$info['timed_out']) {
                     $string .= fgets($fp, 128);
+					$info = stream_get_meta_data($fp);
                 }
+				
+				if ($info['timed_out']) {
+					return 'Connection timed out!';
+				}
 
                 // Checking for other tld's
             } else {
