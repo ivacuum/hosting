@@ -2,7 +2,7 @@
 
 return [
 	/* sync, beanstalkd, sqs, iron, redis */
-	'default' => 'sync',
+	'default' => 'redis',
 
 	'connections' => [
 		'sync' => [
