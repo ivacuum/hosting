@@ -1,4 +1,4 @@
 <?php
 
-Artisan::add(new P6Command);
+Artisan::add(new ParseVkCommand);
 Artisan::add(new WhoisUpdateCommand);
