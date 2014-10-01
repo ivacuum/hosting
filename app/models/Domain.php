@@ -29,8 +29,12 @@ class Domain extends Eloquent
 		require_once __DIR__ . '/../WhoisQuery.php';
 	
 		$query = new WhoisQuery($this->domain);
-		
 		$data = array_merge($query->parse(), $query->getDnsRecords());
+		
+		if (empty($data['registered_at'])) {
+			return false;
+		}
+		
 		$data['registered_at'] = Carbon::parse($data['registered_at']);
 		$data['paid_till'] = Carbon::parse($data['paid_till']);
 		$data['queried_at'] = Carbon::now();

@@ -139,6 +139,8 @@ class WhoisQuery
 
     public function parse()
     {
+		$data = [];
+		
 	    foreach (explode("\n", $this->getRaw()) as $line) {
 	    	if (false === strpos($line, ':')) {
 		    	continue;
