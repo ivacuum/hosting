@@ -19,13 +19,12 @@ class WhoisUpdateCommand extends Command
 			$domain->update($data);
 
 			if (!empty($diff)) {
-				$this->info("{$domain->domain} " . json_encode($diff));
-
 				Mail::queue('emails.whois.changed', compact('diff', 'data'), function($mail) use ($domain) {
 					$mail->to('domains@ivacuum.ru')
 						->subject($domain->domain);
 				});
 
+				$this->info("{$domain->domain} " . json_encode($diff));
 				continue;
 			}
 
@@ -52,7 +51,7 @@ class WhoisUpdateCommand extends Command
 			$diff['mx'] = ['from' => $current->mx, 'to' => $new['mx']];
 		}
 		
-		if ($new['ns'] != $current->ns) {
+		if (isset($new['ns']) && $new['ns'] != $current->ns) {
 			$diff['ns'] = ['from' => $current->ns, 'to' => $new['ns']];
 		}
 		

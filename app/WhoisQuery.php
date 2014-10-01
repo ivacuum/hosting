@@ -21,6 +21,14 @@ class WhoisQuery
     {
 	    $ipv4 = $ipv6 = $mx = $ns = [];
 	    $ips = dns_get_record("{$this->domain}.", DNS_A | DNS_AAAA | DNS_MX | DNS_NS);
+		
+		if (empty($ips)) {
+			return [
+				'ipv4' => '',
+				'ipv6' => '',
+				'mx'   => ''
+			];
+		}
 	    
 	    foreach ($ips as $row) {
 	    	switch ($row['type']) {
