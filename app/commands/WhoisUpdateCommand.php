@@ -5,7 +5,7 @@ use Illuminate\Console\Command;
 class WhoisUpdateCommand extends Command
 {
 	protected $name = 'app:whois-update';
-	protected $description = 'Update domains information.';
+	protected $description = 'Update domains information';
 
 	public function fire()
 	{
@@ -14,17 +14,18 @@ class WhoisUpdateCommand extends Command
 				$this->error($domain->domain);
 				continue;
 			}
-			
+
 			$diff = $this->checkForChanges($domain, $data);
 			$domain->update($data);
 
 			if (!empty($diff)) {
-				Mail::send('emails.whois.changed', compact('diff', 'data'), function($mail) use ($domain) {
+				$this->info("{$domain->domain} " . json_encode($diff));
+
+				Mail::queue('emails.whois.changed', compact('diff', 'data'), function($mail) use ($domain) {
 					$mail->to('domains@ivacuum.ru')
 						->subject($domain->domain);
 				});
-				
-				$this->info("{$domain->domain} " . json_encode($diff));
+
 				continue;
 			}
 

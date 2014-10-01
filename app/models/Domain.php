@@ -32,7 +32,7 @@ class Domain extends Eloquent
 		$data = array_merge($query->parse(), $query->getDnsRecords());
 		
 		if (empty($data['registered_at'])) {
-			return false;
+			return [];
 		}
 		
 		$data['registered_at'] = Carbon::parse($data['registered_at']);
