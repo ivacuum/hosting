@@ -9,6 +9,8 @@ class CreateDomainsTable extends Migration
 	{
 		Schema::create('domains', function(Blueprint $table) {
 			$table->increments('id');
+			$table->integer('client_id')->unsigned();
+			$table->foreign('client_id')->references('id')->on('clients');
 			$table->string('domain')->unique();
 			$table->boolean('active')->unsigned()->default(0);
 			$table->boolean('domain_control')->unsigned()->default(0);
@@ -19,6 +21,7 @@ class CreateDomainsTable extends Migration
 			$table->string('mx');
 			$table->string('ns');
 			$table->timestamp('queried_at')->index();
+			$table->timestamp('mailed_at');
 			$table->timestamps();
 		});
 	}

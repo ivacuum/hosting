@@ -1,7 +1,14 @@
 @extends('base')
 
 @section('content')
-<p>Активных доменов: {{ sizeof($domains) }}</p>
+<h2>Активных доменов: {{ sizeof($domains) }} <a class="btn btn-primary" href="{{ route('domains.create') }}">Добавить еще один</a></h2>
+<p></p>
+
+<p>
+	<span class="label label-info"> &nbsp; </span> &nbsp;— домен не в нашей панели &nbsp;
+	<span class="label label-danger"> &nbsp; </span> &nbsp;— просрочена оплата &nbsp;
+	<span class="label label-warning"> &nbsp; </span> &nbsp;— подходит срок оплаты домена
+</p>
 
 <table class="table table-condensed table-striped">
 	<thead>
@@ -14,10 +21,10 @@
 		</tr>
 	</thead>
 	@foreach($domains as $key => $domain)
-    <tr class="{{ $domain->isExpired() ? 'danger' : '' }} {{ !$domain->domain_control ? 'info' : '' }}">
+    <tr class="js-dblclick-edit {{ $domain->isExpired() ? 'danger' : '' }} {{ !$domain->domain_control ? 'info' : '' }}" data-dblclick-url="{{ route('domains.edit', $domain->domain) }}">
 		<td>{{ $key + 1 }}</td>
   		<td>
-			<a href="{{ URL::route('domains.show', $domain->id) }}">{{ $domain->domain }}</a>
+			<a href="{{ route('domains.show', $domain->domain) }}">{{ $domain->domain }}</a>
 		</td>
       <td class="text-muted">
         <span title="{{{ $domain->paid_till }}}">{{{ $domain->paid_till->toDateString() }}}
@@ -27,4 +34,15 @@
     </tr>
 	@endforeach
 </table>
+@stop
+
+@section('js')
+@parent
+<script>
+$(function() {
+  $('.js-dblclick-edit').bind('dblclick', function() {
+    document.location = $(this).data('dblclick-url');
+  });
+});
+</script>
 @stop

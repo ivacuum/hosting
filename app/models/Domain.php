@@ -2,18 +2,29 @@
 
 class Domain extends Eloquent
 {
-	protected $fillable = ['domain', 'active', 'domain_control', 'registered_at', 'paid_till', 'ipv4', 'ipv6', 'mx', 'ns', 'queried_at'];
+	protected $fillable = ['client_id', 'domain', 'active', 'domain_control', 'registered_at', 'paid_till', 'ipv4', 'ipv6', 'mx', 'ns', 'queried_at'];
 	protected $hidden = [];
 	
-	public static $rules = [
-		'domain'         => 'required|unique:domains',
-		'active'         => 'boolean',
-		'domain_control' => 'boolean',
-	];
+	public static function rules($id = '')
+	{
+		// Отключение проверки на уникальность при обновлении записи
+		$uid = $id ? ",{$id}" : '';
+		
+		return [
+			'domain'         => 'required|unique:domains,domain' . $uid,
+			'active'         => 'boolean',
+			'domain_control' => 'boolean',
+		];
+	}
+	
+	public function client()
+	{
+		return $this->belongsTo('Client');
+	}
 	
 	public function getDates()
 	{
-		return ['updated_at', 'queried_at', 'registered_at', 'paid_till'];
+		return ['queried_at', 'registered_at', 'paid_till'];
 	}
 	
 	public function getWhoisData()
@@ -54,6 +65,29 @@ class Domain extends Eloquent
 			->where('queried_at', '<', (string) Carbon::now()->subHours(3));
 	}
 	
+	public function updateWhois()
+	{
+		if (empty($data = $this->getWhoisParsedData())) {
+			return false;
+		}
+
+		$diff = $this->checkForChanges($data);
+		$this->update($data);
+
+		if (!empty($diff)) {
+			$domain = $this;
+			
+			Mail::queue('emails.whois.changed', compact('diff', 'data'), function($mail) use ($domain) {
+				$mail->to('domains@ivacuum.ru')
+					->subject($domain->domain);
+			});
+			
+			return $diff;
+		}
+		
+		return true;
+	}
+	
 	public function whatServerIpv4()
 	{
 		switch ($this->ipv4)
@@ -73,5 +107,45 @@ class Domain extends Eloquent
 		}
 		
 		return $this->ipv4;
+	}
+
+	/**
+	* Проверка изменения данных домена (ip, mx, ns, etc.)
+	*/
+	protected function checkForChanges(array $new)
+	{
+		$diff = [];
+		
+		if ($new['ipv4'] != $this->ipv4) {
+			$diff['ipv4'] = ['from' => $this->ipv4, 'to' => $new['ipv4']];
+		}
+		
+		if ($new['ipv6'] != $this->ipv6) {
+			$diff['ipv6'] = ['from' => $this->ipv6, 'to' => $new['ipv6']];
+		}
+		
+		if ($new['mx'] != $this->mx) {
+			$diff['mx'] = ['from' => $this->mx, 'to' => $new['mx']];
+		}
+		
+		if (isset($new['ns']) && $new['ns'] != $this->ns) {
+			$diff['ns'] = ['from' => $this->ns, 'to' => $new['ns']];
+		}
+		
+		if ($new['registered_at']->diffInDays($this->registered_at) > 300) {
+			$diff['registered_at'] = [
+				'from' => (string) $this->registered_at,
+				'to'   => (string) $new['registered_at']
+			];
+		}
+		
+		if ($new['paid_till']->diffInHours($this->paid_till) > 24) {
+			$diff['paid_till'] = [
+				'from' => (string) $this->paid_till,
+				'to'   => (string) $new['paid_till'],
+			];
+		}
+
+		return $diff;
 	}
 }

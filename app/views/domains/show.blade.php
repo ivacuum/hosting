@@ -1,16 +1,47 @@
 @extends('base')
 
 @section('content')
-<p><a href="{{ URL::route('domains.index') }}">&larr; Вернуться к списку доменов</a></p>
+<p><a href="{{ route('domains.index') }}">&larr; Вернуться к списку доменов</a></p>
 
-<h1>{{ $domain->domain }}</h1>
-<p><strong>ipv4</strong>: {{ $domain->ipv4 }}</p>
+<h2>{{ $domain->domain }}</h2>
+<div style="margin: 1em 0;">
+  <samp style="white-space: pre;"><strong>client</strong>: {{ $domain->client->name }} [<a href="{{ route('acp.clients.show', $domain->client->id) }}">о клиенте</a>]
+<strong>ipv4</strong>:   {{ $domain->ipv4 }}
 @if ($domain->ipv6)
-  <p><strong>ipv6</strong>: {{ $domain->ipv6 }}</p>
+<strong>ipv6</strong>:   {{ $domain->ipv6 }}
 @endif
-<p><strong>mx</strong>: {{ $domain->mx }}</p>
-<p><strong>ns</strong>: {{ $domain->ns }}</p>
+<strong>mx</strong>:     {{ $domain->mx }}
+<strong>ns</strong>:     {{ $domain->ns }}</samp>
+</div>
 
-<h2>Whois</h2>
-<pre>{{ $domain->getWhoisData() }}</pre>
+<p><a class="btn btn-primary" href="{{ route('domains.edit', $domain->domain) }}">Редактировать информацию о домене</a></p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Whois</h3>
+  </div>
+  <div class="panel-body">
+    <samp class="js-deferred-load" data-deferred-url="{{ route('domains.whois', $domain->domain) }}">Идет загрузка...</samp>
+  </div>
+</div>
+
+{{ Form::open(['route' => ['domains.destroy', $domain->domain], 'method' => 'delete']) }}
+
+  <div class="form-group">
+    {{ Form::submit('Удалить домен', ['class' => 'btn btn-danger']) }}
+  </div>
+
+{{ Form::close() }}
+
+@stop
+
+@section('js')
+@parent
+<script>
+$(function() {
+  $('.js-deferred-load').each(function() {
+    $(this).load($(this).data('deferred-url'));
+  });
+});
+</script>
 @stop
