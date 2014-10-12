@@ -3,7 +3,7 @@
 return [
 	'debug'           => false,
 	'url'             => 'http://localhost',
-	'timezone'        => 'UTC',
+	'timezone'        => 'Europe/Moscow',
 	'locale'          => 'en',
 	'fallback_locale' => 'en',
 	'key'             => 'bpxG6nVSBbkqaCrMaXUxAq3Guc5CWV2b',
