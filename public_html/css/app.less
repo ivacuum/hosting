@@ -1,6 +1,6 @@
 @import (less) "../bower_components/bootstrap/dist/css/bootstrap.css";
 @import (less) "../bower_components/bootstrap/dist/css/bootstrap-theme.css";
-// @import "fonts.less";
+@import "fonts.less";
 
 html,
 body {
@@ -64,6 +64,8 @@ h3 img,
 h4 img {
   vertical-align: text-top;
 }
+
+.text-counter { font-size: 24px; }
 
 /**
 * #005784 blue
@@ -197,6 +199,7 @@ h4 img {
 .form-horizontal {
   .control-label { padding-right: 0; }
   .form-group { margin-bottom: 10px; }
+  .form-group.flush { margin-bottom: 0; }
 }
 
 .form-signin,

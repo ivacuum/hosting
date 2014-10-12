@@ -66,8 +66,6 @@ class Domains extends BaseController
 
 		$domain->update(Input::all());
 
-		Session::flash('message', 'Domain updated');
-		
 		return Redirect::route('domains.index');
 	}
 	

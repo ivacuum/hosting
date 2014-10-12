@@ -34,14 +34,3 @@
 {{ Form::close() }}
 
 @stop
-
-@section('js')
-@parent
-<script>
-$(function() {
-  $('.js-deferred-load').each(function() {
-    $(this).load($(this).data('deferred-url'));
-  });
-});
-</script>
-@stop
