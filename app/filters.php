@@ -1,19 +1,20 @@
 <?php
 
-App::before(function($request) {
-});
+// App::before(function($request) {
+// });
 
 
-App::after(function($request, $response) {
-});
+// App::after(function($request, $response) {
+// });
 
 Route::filter('auth', function() {
 	if (Auth::guest()) {
 		if (Request::ajax()) {
 			return Response::make('Unauthorized', 401);
-		} else {
-			return Redirect::guest('login');
 		}
+		
+		return Redirect::guest('login')
+			->with('message', 'Для просмотра этой страницы необходимо войти на сайт');
 	}
 });
 
