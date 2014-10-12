@@ -1,17 +1,16 @@
 <?php
 
-use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputArgument;
-
-class ParseVkCommand extends Command
+class ParserVk extends BaseController
 {
-	protected $name = 'app:parse-vk';
-	protected $description = 'Parse vk.com page';
-
-	public function fire()
+	protected $page;
+	
+	public function index($page = 'palnom6', $date = false)
 	{
+		$this->page = $page;
+		$date = false === $date ? '-1 day' : $date;
+		$date = Carbon::parse($date);
+		
 		$count = 100;
-		$date = $this->argument('date');
 		$offset = 0;
 		$parsed = false;
 		$posts = [];
@@ -35,11 +34,14 @@ class ParseVkCommand extends Command
 				if ($post->date > $date_end || !$post->text || @$post->is_pinned) {
 					continue;
 				}
-			
+				
 				$posts[] = [
-					'likes'   => $post->likes->count,
-					'reposts' => $post->reposts->count,
-					'text'    => $post->text,
+					'likes'       => $post->likes->count,
+					'reposts'     => $post->reposts->count,
+					'url'         => "https://vk.com/wall{$post->to_id}_{$post->id}",
+					'text'        => $post->text,
+					'attachment'  => @$post->attachment,
+					'attachments' => @$post->attachments,
 				];
 			}
 			
@@ -48,26 +50,14 @@ class ParseVkCommand extends Command
 		
 		rsort($posts);
 		
-		if (sizeof($posts) < 10) {
-			$this->error('В этот день не публиковали ничего достойного');
-			return;
-		}
-		
-		$this->info('Лучшее за ' . Carbon::parse($date)->toDateString());
-		
-		for ($i = 0; $i < 10; $i++) {
-			$this->info(sprintf('#%d. 👍  %d, 📢  %d', $i + 1, $posts[$i]['likes'], $posts[$i]['reposts']));
-			$this->comment(wordwrap(str_replace('<br>', "\n", $posts[$i]['text']), 80));
-			print "\n";
-		}
-	}
-	
-	protected function getArguments()
-	{
-		return [
-			['page', InputArgument::REQUIRED, 'Адрес страницы'],
-			['date', InputArgument::REQUIRED, 'Дата постов'],
-		];
+		$posts = array_slice($posts, 0, 10);
+
+		return View::make('parser.vk.index')
+			->with(compact('posts'))
+			->with('previous', Carbon::parse($date)->subDay())
+			->with('next', Carbon::parse($date)->addDay())
+			->with('page', $page)
+			->with('date', $date);
 	}
 
 	protected function getPostsCount()
@@ -80,7 +70,7 @@ class ParseVkCommand extends Command
 	protected function getUrl($count = 100, $offset = 0)
 	{
 		return "https://api.vk.com/method/wall.get".
-			"?domain=".$this->argument('page').
+			"?domain={$this->page}".
 			"&count={$count}".
 			"&offset={$offset}";
 	}
