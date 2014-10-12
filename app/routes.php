@@ -7,16 +7,6 @@ Route::bind('domains', function($value) {
 
 Route::get('/', 'HomeController@index');
 
-Route::get('domains/whois-update', function() {
-	$stream = fopen('php://output', 'w');
-	
-	Artisan::call('app:parse-vk', [
-		'page' => 'palnom6',
-		'date' => '2014-10-07'
-	], new Symfony\Component\Console\Output\StreamOutput($stream));
-	
-	return (string) $stream;
-});
 Route::resource('domains', 'Domains');
 Route::get('domains/{domains}/whois', ['as' => 'domains.whois', 'uses' => 'Domains@whois']);
 
@@ -27,23 +17,16 @@ Route::post('login', 'LoginController@postLogin');
 Route::get('logout', ['as' => 'logout', 'uses' => 'LoginController@getLogout']);
 
 Route::get('pages/{url}', function($url) {
-	print '<pre>';
-	print_r(explode('/', $url));
-	print '</pre>';
-	return;
+	dd(explode('/', $url));
 })->where('url', '.*');
 
-// Route::get('parser/vk', 'ParserVk@index');
-// Route::get('parser/vk/{page?}', 'ParserVk@index');
 Route::get('parser/vk/{page?}/{date?}', ['as' => 'parser.vk', 'uses' => 'ParserVk@index'])
 	->where('date', '\d{4}-\d{2}-\d{2}');
 
-/**
-* Admin control panel
-*/
+// Admin control panel
 Route::when('acp/*', 'auth');
 
-Route::group(['namespace' => 'Acp'], function() {
-	Route::get('acp', 'Home@index');
-	Route::resource('acp/clients', 'Clients');
+Route::group(['namespace' => 'Acp', 'prefix' => 'acp'], function() {
+	Route::get('/', 'Home@index');
+	Route::resource('clients', 'Clients');
 });

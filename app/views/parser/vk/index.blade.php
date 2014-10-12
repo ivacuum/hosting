@@ -15,6 +15,12 @@
   <li class="{{ Request::segment(3) == 'leprum' ? 'active' : '' }}">
     <a href="{{ route('parser.vk', 'leprum') }}">Лепра</a>
   </li>
+  <li class="{{ Request::segment(3) == 'pikabu' ? 'active' : '' }}">
+    <a href="{{ route('parser.vk', 'pikabu') }}">Пикабу</a>
+  </li>
+  <li class="{{ Request::segment(3) == 'factura' ? 'active' : '' }}">
+    <a href="{{ route('parser.vk', 'factura') }}">Фактура</a>
+  </li>
 </ul>
 
 <ul class="pager">
@@ -82,5 +88,4 @@
     </a>
   </li>
 </ul>
-
 @stop
