@@ -1,11 +1,10 @@
 <?php
 
-Route::get('/', function() {
-	return View::make('hello');
 });
 
 Route::get('domains', ['as' => 'domains.index', 'uses' => 'Domains@index']);
 Route::get('domains/{id}', ['as' => 'domains.show', 'uses' => 'Domains@show']);
+Route::get('/', 'HomeController@index');
 
 Route::get('ssh', 'SshController@index');
 
