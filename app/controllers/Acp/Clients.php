@@ -1,7 +1,9 @@
 <?php namespace Acp;
 
 use Client;
+use Input;
 use Redirect;
+use Validator;
 use View;
 
 class Clients extends \BaseController
@@ -38,6 +40,14 @@ class Clients extends \BaseController
 	
 	public function store()
 	{
+		$validator = Validator::make(Input::all(), Client::rules());
+		
+		if ($validator->fails()) {
+			return Redirect::route('acp.clients.create')
+				->withErrors($validator)
+				->withInput(Input::all());
+		}
+		
 		$client = Client::create(Input::all());
 		
 		return Redirect::route('acp.clients.show', $client->id);
@@ -45,8 +55,16 @@ class Clients extends \BaseController
 	
 	public function update(Client $client)
 	{
-		$client->update(Input::all());
+		$validator = Validator::make(Input::all(), Client::rules($client->id));
 		
+		if ($validator->fails()) {
+			return Redirect::route('acp.clients.edit', $client->id)
+				->withErrors($validator)
+				->withInput(Input::all());
+		}
+
+		$client->update(Input::all());
+
 		return Redirect::route('acp.clients.index');
 	}
 }

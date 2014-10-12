@@ -28,8 +28,9 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li><a href="{{ route('acp.clients.index') }}">Клиенты</a></li>
+          @section('global_menu')
           <li><a href="{{ route('domains.index') }}">Домены</a></li>
+          @show
         </ul>
         @if (Auth::check())
           <ul class="nav navbar-nav navbar-right">
@@ -70,8 +71,9 @@
 @if (Session::has('message'))
   <div class="alert alert-info">{{ Session::get('message') }}</div>
 @endif
-
+@yield('content_header')
 @yield('content')
+@yield('content_footer')
 
     <div class="wrap-push"></div>
   </div>
