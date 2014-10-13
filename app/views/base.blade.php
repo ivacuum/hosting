@@ -29,6 +29,7 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           @section('global_menu')
+          <li><a href="{{ route('acp.clients.index') }}">Клиенты</a></li>
           <li><a href="{{ route('domains.index') }}">Домены</a></li>
           @show
         </ul>
