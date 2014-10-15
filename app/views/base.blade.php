@@ -30,7 +30,7 @@
         <ul class="nav navbar-nav">
           @section('global_menu')
           <li><a href="{{ route('acp.clients.index') }}">Клиенты</a></li>
-          <li><a href="{{ route('domains.index') }}">Домены</a></li>
+          <li><a href="{{ route('acp.domains.index') }}">Домены</a></li>
           @show
         </ul>
         @if (Auth::check())

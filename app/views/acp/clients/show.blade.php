@@ -13,5 +13,5 @@
 	</div>
 </div>
 
-@include('domains.list', ['domains' => $client->domains])
+@include('acp.domains.list', ['domains' => $client->domains])
 @stop

@@ -1,5 +1,5 @@
 @extends('base')
 
 @section('content')
-@include('domains.list')
+@include('acp.domains.list')
 @stop

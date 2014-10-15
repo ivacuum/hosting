@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<p><a href="{{ route('domains.index') }}">&larr; Вернуться к списку доменов</a></p>
+<p><a href="{{ route('acp.domains.index') }}">&larr; Вернуться к списку доменов</a></p>
 
 <h2>{{ $domain->domain }}</h2>
 <div style="margin: 1em 0;">
@@ -14,18 +14,18 @@
 <strong>ns</strong>:     {{ $domain->ns }}</samp>
 </div>
 
-<p><a class="btn btn-primary" href="{{ route('domains.edit', $domain->domain) }}">Редактировать информацию о домене</a></p>
+<p><a class="btn btn-primary" href="{{ route('acp.domains.edit', $domain->domain) }}">Редактировать информацию о домене</a></p>
 
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Whois</h3>
   </div>
   <div class="panel-body">
-    <samp class="js-deferred-load" data-deferred-url="{{ route('domains.whois', $domain->domain) }}">Идет загрузка...</samp>
+    <samp class="js-deferred-load" data-deferred-url="{{ route('acp.domains.whois', $domain->domain) }}">Идет загрузка...</samp>
   </div>
 </div>
 
-{{ Form::open(['route' => ['domains.destroy', $domain->domain], 'method' => 'delete']) }}
+{{ Form::open(['route' => ['acp.domains.destroy', $domain->domain], 'method' => 'delete']) }}
 
   <div class="form-group">
     {{ Form::submit('Удалить домен', ['class' => 'btn btn-danger']) }}

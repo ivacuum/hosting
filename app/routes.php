@@ -7,9 +7,6 @@ Route::bind('domains', function($value) {
 
 Route::get('/', 'HomeController@index');
 
-Route::resource('domains', 'Domains');
-Route::get('domains/{domains}/whois', ['as' => 'domains.whois', 'uses' => 'Domains@whois']);
-
 // Route::get('ssh', 'SshController@index');
 
 Route::get('login', ['as' => 'login', 'uses' => 'LoginController@getLogin']);
@@ -28,5 +25,9 @@ Route::when('acp/*', 'auth');
 
 Route::group(['namespace' => 'Acp', 'prefix' => 'acp'], function() {
 	Route::get('/', 'Home@index');
+	
 	Route::resource('clients', 'Clients');
+	
+	Route::resource('domains', 'Domains');
+	Route::get('domains/{domains}/whois', ['as' => 'acp.domains.whois', 'uses' => 'Domains@whois']);
 });

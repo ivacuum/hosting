@@ -1,39 +1,42 @@
-<?php
+<?php namespace Acp;
 
-class Domains extends BaseController
+use App;
+use Domain;
+use Input;
+use Redirect;
+use Request;
+use Validator;
+use View;
+
+class Domains extends \BaseController
 {
-	public function __construct()
-	{
-		$this->beforeFilter('auth');
-	}
-	
 	public function index()
 	{
-		return View::make('domains.index')
+		return View::make('acp.domains.index')
 			->withDomains(Domain::whereActive(1)->orderBy('paid_till')->get());
 	}
 	
 	public function create()
 	{
-		return View::make('domains.create');
+		return View::make('acp.domains.create');
 	}
 	
 	public function destroy(Domain $domain)
 	{
 		$domain->delete();
 		
-		return Redirect::route('domains.index');
+		return Redirect::route('acp.domains.index');
 	}
 	
 	public function edit(Domain $domain)
 	{
-		return View::make('domains.edit')
+		return View::make('acp.domains.edit')
 			->with(compact('domain'));
 	}
 	
 	public function show(Domain $domain)
 	{
-		return View::make('domains.show')
+		return View::make('acp.domains.show')
 			->with(compact('domain'));
 	}
 	
@@ -42,7 +45,7 @@ class Domains extends BaseController
 		$validator = Validator::make(Input::all(), Domain::rules());
 		
 		if ($validator->fails()) {
-			return Redirect::route('domains.create')
+			return Redirect::route('acp.domains.create')
 				->withErrors($validator)
 				->withInput(Input::all());
 		}
@@ -51,7 +54,7 @@ class Domains extends BaseController
 		
 		Session::flash('message', 'Domain created');
 		
-		return Redirect::route('domains.show', $domain->domain);
+		return Redirect::route('acp.domains.show', $domain->domain);
 	}
 	
 	public function update(Domain $domain)
@@ -59,14 +62,14 @@ class Domains extends BaseController
 		$validator = Validator::make(Input::all(), Domain::rules($domain->id));
 		
 		if ($validator->fails()) {
-			return Redirect::route('domains.edit', $domain->domain)
+			return Redirect::route('acp.domains.edit', $domain->domain)
 				->withErrors($validator)
 				->withInput(Input::all());
 		}
 
 		$domain->update(Input::all());
 
-		return Redirect::route('domains.index');
+		return Redirect::route('acp.domains.index');
 	}
 	
 	public function whois(Domain $domain)

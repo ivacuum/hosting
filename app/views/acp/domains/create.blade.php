@@ -3,16 +3,16 @@
 @section('content')
 <div class="boxed-group">
   <h3>
-    <a href="{{ route('domains.index') }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    <a href="{{ route('acp.domains.index') }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
     Добавление домена
   </h3>
   <div class="boxed-group-inner">
     {{ Form::open([
-      'route' => 'domains.store',
+      'route' => 'acp.domains.store',
       'class' => 'form-horizontal'
     ]) }}
 
-    @include('domains.form')
+    @include('acp.domains.form')
 
     <div class="form-group">
       <div class="col-md-10 col-md-offset-2">

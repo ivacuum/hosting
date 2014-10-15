@@ -1,6 +1,6 @@
 @if (sizeof($domains))
 <div class="boxed-group flush">
-	<a href="{{ route('domains.create') }}" class="boxed-group-action btn btn-success">
+	<a href="{{ route('acp.domains.create') }}" class="boxed-group-action btn btn-success">
 		+
 	</a>
 	<h3>Домены</h3>
@@ -16,10 +16,10 @@
 				</tr>
 			</thead>
 			@foreach ($domains as $key => $domain)
-		    <tr class="js-dblclick-edit {{ $domain->isExpired() ? 'danger' : '' }} {{ !$domain->domain_control ? 'info' : '' }}" data-dblclick-url="{{ route('domains.edit', $domain->domain) }}">
+		    <tr class="js-dblclick-edit {{ $domain->isExpired() ? 'danger' : '' }} {{ !$domain->domain_control ? 'info' : '' }}" data-dblclick-url="{{ route('acp.domains.edit', $domain->domain) }}">
 				<td>{{ $key + 1 }}</td>
 		  		<td>
-					<a href="{{ route('domains.show', $domain->domain) }}">{{ $domain->domain }}</a>
+					<a href="{{ route('acp.domains.show', $domain->domain) }}">{{ $domain->domain }}</a>
 				</td>
 		      <td class="text-muted">
 		        <span title="{{{ $domain->paid_till }}}">{{{ $domain->paid_till->toDateString() }}}
