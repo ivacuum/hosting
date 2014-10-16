@@ -19,10 +19,14 @@
 		    <tr class="js-dblclick-edit {{ $domain->isExpired() ? 'danger' : '' }} {{ !$domain->domain_control ? 'info' : '' }}" data-dblclick-url="{{ route('acp.domains.edit', $domain->domain) }}">
 				<td>{{ $key + 1 }}</td>
 		  		<td>
-					<a href="{{ route('acp.domains.show', $domain->domain) }}">{{ $domain->domain }}</a>
+					<a href="{{ route('acp.domains.show', $domain->domain) }}">
+						{{ $domain->domain }}
+					</a>
 				</td>
 		      <td class="text-muted">
-		        <span title="{{{ $domain->paid_till }}}">{{{ $domain->paid_till->toDateString() }}}
+		        <span title="{{{ $domain->paid_till }}}">
+					{{{ $domain->paid_till->toDateString() }}}
+				</span>
 		      </td>
 		      <td><small><samp>{{ $domain->whatServerIpv4() }}</samp></small></td>
 		      <td><small>{{ str_limit($domain->ns, 32) }}</small></td>

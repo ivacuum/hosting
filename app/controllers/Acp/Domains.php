@@ -11,23 +11,30 @@ use View;
 
 class Domains extends BaseController
 {
+	const DEFAULT_ORDER_BY = 'paid_till';
+	
 	public function index()
 	{
 		$filter = Input::get('filter');
+		$sort   = Input::get('sort');
+
+		if (!in_array($sort, ['domain', 'registered_at', 'paid_till'])) {
+			$sort = self::DEFAULT_ORDER_BY;
+		}
 		
 		switch ($filter) {
 			case 'external':
 			
 				$domains = Domain::whereActive(1)
 					->whereDomainControl(0)
-					->orderBy('paid_till')
+					->orderBy($sort)
 					->get();
 				
 			break;
 			case 'inactive':
 			
 				$domains = Domain::whereActive(0)
-					->orderBy('paid_till')
+					->orderBy($sort)
 					->get();
 				
 			break;
@@ -35,7 +42,7 @@ class Domains extends BaseController
 			
 				$domains = Domain::whereActive(1)
 					->whereNs('')
-					->orderBy('paid_till')
+					->orderBy($sort)
 					->get();
 			
 			break;
@@ -43,19 +50,19 @@ class Domains extends BaseController
 			
 				$domains = Domain::whereActive(1)
 					->whereIpv4('')
-					->orderBy('paid_till')
+					->orderBy($sort)
 					->get();
 				
 			break;
 			default:
 			
 				$domains = Domain::whereActive(1)
-					->orderBy('paid_till')
+					->orderBy($sort)
 					->get();
 		}
 		
 		return View::make('acp.domains.index')
-			->with(compact('domains', 'filter'));
+			->with(compact('domains', 'filter', 'sort'));
 	}
 	
 	public function create()
