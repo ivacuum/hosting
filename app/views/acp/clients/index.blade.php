@@ -3,7 +3,7 @@
 @section('content')
 <div class="boxed-group flush">
   <a href="{{ route('acp.clients.create') }}" class="boxed-group-action btn btn-success">
-    +
+    <span class="glyphicon glyphicon-plus"></span>
   </a>
   <h3>Клиенты</h3>
   <div class="boxed-group-inner">

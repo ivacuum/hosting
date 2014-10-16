@@ -84,19 +84,7 @@
     <ul class="list-inline">
       <li class="text-muted">&copy; {{ date('Y') }} vacuum</li>
       <li class="text-muted">&middot;</li>
-      <li><a href="mailto:{{ Config::get('email.support') }}">Feedback</a></li>
-      {{--
-      {if sizeof($languages) > 1}
-        <li class="text-muted">&middot;</li>
-        <li class="dropdown dropup"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{$T_STATIC}/i/flags/16/{$S_LANGUAGE}.png" alt="">&nbsp;<b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            {foreach $languages as $row}
-              <li><a href="{$row.URL}"><img src="{$T_STATIC}/i/flags/16/{$row.IMG}.png" alt=""> &nbsp;{$row.NAME}</a></li>
-            {/foreach}
-          </ul>
-        </li>
-      {/if}
-      --}}
+      <li><a href="mailto:{{ Config::get('email.support') }}">Обратная связь</a></li>
     </ul>
   </div>
 </footer>

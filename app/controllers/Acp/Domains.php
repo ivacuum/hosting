@@ -1,6 +1,7 @@
 <?php namespace Acp;
 
 use App;
+use BaseController;
 use Domain;
 use Input;
 use Redirect;
@@ -8,12 +9,53 @@ use Request;
 use Validator;
 use View;
 
-class Domains extends \BaseController
+class Domains extends BaseController
 {
 	public function index()
 	{
+		$filter = Input::get('filter');
+		
+		switch ($filter) {
+			case 'external':
+			
+				$domains = Domain::whereActive(1)
+					->whereDomainControl(0)
+					->orderBy('paid_till')
+					->get();
+				
+			break;
+			case 'inactive':
+			
+				$domains = Domain::whereActive(0)
+					->orderBy('paid_till')
+					->get();
+				
+			break;
+			case 'no-ns':
+			
+				$domains = Domain::whereActive(1)
+					->whereNs('')
+					->orderBy('paid_till')
+					->get();
+			
+			break;
+			case 'no-server':
+			
+				$domains = Domain::whereActive(1)
+					->whereIpv4('')
+					->orderBy('paid_till')
+					->get();
+				
+			break;
+			default:
+			
+				$domains = Domain::whereActive(1)
+					->orderBy('paid_till')
+					->get();
+		}
+		
 		return View::make('acp.domains.index')
-			->withDomains(Domain::whereActive(1)->orderBy('paid_till')->get());
+			->with(compact('domains', 'filter'));
 	}
 	
 	public function create()

@@ -1,12 +1,13 @@
 <?php namespace Acp;
 
+use BaseController;
 use Client;
 use Input;
 use Redirect;
 use Validator;
 use View;
 
-class Clients extends \BaseController
+class Clients extends BaseController
 {
 	public function index()
 	{

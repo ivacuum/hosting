@@ -1,7 +1,7 @@
 @if (sizeof($domains))
 <div class="boxed-group flush">
 	<a href="{{ route('acp.domains.create') }}" class="boxed-group-action btn btn-success">
-		+
+		<span class="glyphicon glyphicon-plus"></span>
 	</a>
 	<h3>Домены</h3>
 	<div class="boxed-group-inner">
@@ -37,4 +37,6 @@
 	<span class="label label-danger"> &nbsp; </span> &nbsp;— просрочена оплата &nbsp;
 	<span class="label label-warning"> &nbsp; </span> &nbsp;— подходит срок оплаты
 </p>
+@else
+<div class="alert alert-warning">По заданному критерию не найдено ни одного домена.</div>
 @endif
