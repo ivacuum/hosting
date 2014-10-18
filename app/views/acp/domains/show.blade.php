@@ -14,6 +14,9 @@
 	<a class="btn btn-default" href="{{ route('acp.domains.edit', $domain->domain) }}">
 		<span class="glyphicon glyphicon-pencil"></span>
 	</a>
+  @if ($domain->cms_url)
+    @include('acp.domains.cms_login')
+  @endif
 </h2>
 <div style="margin: 1em 0;">
   <samp style="white-space: pre;"><strong>client</strong>: <a href="{{ route('acp.clients.show', $domain->client->id) }}">{{ $domain->client->name }}</a>

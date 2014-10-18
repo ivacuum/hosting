@@ -94,8 +94,7 @@ class Domain extends Eloquent
 	
 	public function whatServerIpv4()
 	{
-		switch ($this->ipv4)
-		{
+		switch ($this->ipv4) {
 			case '62.109.0.61': return 'srv1.korden.net';
 			case '188.120.229.204': return 'srv2.korden.net';
 			case '62.109.4.161': return 'srv3.korden.net';
@@ -111,6 +110,11 @@ class Domain extends Eloquent
 		}
 		
 		return $this->ipv4;
+	}
+	
+	public function firstNsServer()
+	{
+		return explode(' ', $this->ns)[0];
 	}
 
 	/**
