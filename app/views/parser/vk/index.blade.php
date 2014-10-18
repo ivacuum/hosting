@@ -63,7 +63,7 @@
     </div>
     <div class="panel-footer">
       <samp>
-        <span class="glyphicon glyphicon-share"></span>
+        <span class="glyphicon glyphicon-bullhorn"></span>
         <span class="text-muted">{{ $post['reposts'] }}</span>
         <span class="glyphicon glyphicon-heart"></span>
         <span class="text-muted">{{ $post['likes'] }}</span>
