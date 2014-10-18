@@ -2,7 +2,11 @@
 
 class Domain extends Eloquent
 {
-	protected $fillable = ['client_id', 'domain', 'active', 'domain_control', 'registered_at', 'paid_till', 'ipv4', 'ipv6', 'mx', 'ns', 'queried_at'];
+	protected $fillable = ['client_id', 'domain', 'active', 'domain_control',
+		'registered_at', 'paid_till', 'ipv4', 'ipv6', 'mx', 'ns', 'queried_at',
+		'text', 'cms_type', 'cms_version', 'cms_url', 'cms_user', 'cms_pass',
+		'ftp_host', 'ftp_user', 'ftp_pass', 'ssh_host', 'ssh_user', 'ssh_pass',
+		'db_pma', 'db_host', 'db_user', 'db_pass'];
 	protected $hidden = [];
 	
 	public static function rules($id = '')
@@ -24,7 +28,7 @@ class Domain extends Eloquent
 	
 	public function getDates()
 	{
-		return ['queried_at', 'registered_at', 'paid_till'];
+		return ['mailed_at', 'queried_at', 'registered_at', 'paid_till'];
 	}
 	
 	public function getWhoisData()
