@@ -101,8 +101,6 @@ class Domains extends BaseController
 		
 		$domain = Domain::create(Input::all());
 		
-		Session::flash('message', 'Domain created');
-		
 		return Redirect::route('acp.domains.show', $domain->domain);
 	}
 	
@@ -115,8 +113,19 @@ class Domains extends BaseController
 				->withErrors($validator)
 				->withInput(Input::all());
 		}
-
-		$domain->update(Input::all());
+		
+		$input = Input::all();
+		
+		/* Сохранение ранее указанных паролей */
+		$passwords = Input::only('cms_pass', 'ftp_pass', 'ssh_pass', 'db_pass');
+		
+		foreach ($passwords as $key => $value) {
+			if (!$value) {
+				unset($input[$key]);
+			}
+		}
+		
+		$domain->update($input);
 
 		return Redirect::route('acp.domains.index');
 	}
