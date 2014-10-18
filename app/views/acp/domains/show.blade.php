@@ -4,7 +4,9 @@
 <div class="pull-right">
 	{{ Form::open(['route' => ['acp.domains.destroy', $domain->domain], 'method' => 'delete']) }}
 	  <div class="form-group">
-	    {{ Form::submit('Удалить домен', ['class' => 'btn btn-default']) }}
+      <button class="btn btn-default js-confirm" data-confirm="Запись будет удалена. Продолжить?" type="submit">
+        <span class="glyphicon glyphicon-trash"></span>
+      </button>
 	  </div>
 	{{ Form::close() }}
 </div>

@@ -8,4 +8,8 @@ $(document).ready(function() {
   $('.js-deferred-load').each(function() {
     $(this).load($(this).data('deferred-url'));
   });
+  
+  $('.js-confirm').on('click', function() {
+    return confirm($(this).data('confirm'));
+  });
 });
