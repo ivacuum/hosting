@@ -20,6 +20,9 @@
         <tr class="js-dblclick-edit {{ $domain->isExpired() ? 'danger' : '' }} {{ !$domain->domain_control ? 'info' : '' }}" data-dblclick-url="{{ route('acp.domains.edit', $domain->domain) }}">
           <td>{{ $key + 1 }}</td>
           <td>
+			<a href="http://{{ $domain->domain }}/" target="_blank" style="margin-right: 0.3em;">
+				<span class="glyphicon glyphicon-globe"></span>
+			</a>
             <a href="{{ route('acp.domains.show', $domain->domain) }}">
               {{ $domain->domain }}
             </a>
@@ -33,7 +36,7 @@
           <td><small><samp>{{ $domain->firstNsServer() }}</samp></small></td>
           <td>
             @if ($domain->cms_url)
-              @include('acp.domains.cms_login')
+              @include('acp.domains.cms_login', ['cms_button_class' => 'btn btn-default btn-xs'])
             @endif
           </td>
         </tr>

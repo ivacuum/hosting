@@ -17,7 +17,7 @@
 		<span class="glyphicon glyphicon-pencil"></span>
 	</a>
   @if ($domain->cms_url)
-    @include('acp.domains.cms_login')
+    @include('acp.domains.cms_login', ['cms_button_class' => 'btn btn-default'])
   @endif
 </h2>
 <div style="margin: 1em 0;">
