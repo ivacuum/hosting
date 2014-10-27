@@ -9,6 +9,15 @@ class Domain extends Eloquent
 		'db_pma', 'db_host', 'db_user', 'db_pass'];
 	protected $hidden = [];
 	
+	// public static function boot()
+	// {
+	// 	parent::boot();
+	//
+	// 	static::saving(function() {
+	// 		Event::fire('domain.saving');
+	// 	});
+	// }
+	
 	public static function rules($id = '')
 	{
 		// Отключение проверки на уникальность при обновлении записи

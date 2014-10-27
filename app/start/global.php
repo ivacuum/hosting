@@ -17,5 +17,6 @@ App::down(function() {
 	return Response::make('Be right back!', 503);
 });
 
+require app_path() . '/events.php';
 require app_path() . '/filters.php';
 require app_path() . '/helpers.php';
