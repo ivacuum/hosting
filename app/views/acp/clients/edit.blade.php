@@ -3,7 +3,7 @@
 @section('content')
 <div class="boxed-group">
   <h3>
-    <a href="{{ route('acp.clients.index') }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    <a href="{{ Input::get('goto') ?: route('acp.clients.index') }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
     Редактирование данных клиента <small>{{ $client->name }}</small>
   </h3>
   <div class="boxed-group-inner">

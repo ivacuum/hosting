@@ -13,7 +13,7 @@
 <h2>
 	<a href="{{ route('acp.clients.index') }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
 	{{ $client->name }}
-	<a class="btn btn-default" href="{{ route('acp.clients.edit', $client->id) }}">
+	<a class="btn btn-default" href="{{ route('acp.clients.edit', [$client->id, 'goto' => Request::fullUrl()]) }}">
 		<span class="glyphicon glyphicon-pencil"></span>
 	</a>
 </h2>

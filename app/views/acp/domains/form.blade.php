@@ -209,3 +209,5 @@
     {{ Form::password('db_pass', ['class' => 'form-control']) }}
   </div>
 </div>
+
+<input type="hidden" name="goto" value="{{ Input::get('goto') }}">

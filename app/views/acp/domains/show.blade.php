@@ -16,6 +16,9 @@
 	<a class="btn btn-default" href="{{ route('acp.domains.edit', $domain->domain) }}">
 		<span class="glyphicon glyphicon-pencil"></span>
 	</a>
+  <a class="btn btn-default" href="{{ route('acp.domains.edit', [$domain->domain, 'goto' => Request::path()]) }}">
+    <span class="glyphicon glyphicon-pencil"></span>
+  </a>
   @if ($domain->cms_url)
     @include('acp.domains.cms_login', ['cms_button_class' => 'btn btn-default'])
   @endif

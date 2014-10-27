@@ -61,8 +61,7 @@ class Domains extends BaseController
 					->get();
 		}
 		
-		return View::make('acp.domains.index')
-			->with(compact('domains', 'filter', 'sort'));
+		return View::make('acp.domains.index', compact('domains', 'filter', 'sort'));
 	}
 	
 	public function create()
@@ -79,14 +78,13 @@ class Domains extends BaseController
 	
 	public function edit(Domain $domain)
 	{
-		return View::make('acp.domains.edit')
-			->with(compact('domain'));
+		return View::make('acp.domains.edit', compact('domain'));
+	}
 	}
 	
 	public function show(Domain $domain)
 	{
-		return View::make('acp.domains.show')
-			->with(compact('domain'));
+		return View::make('acp.domains.show', compact('domain'));
 	}
 	
 	public function store()
@@ -126,8 +124,10 @@ class Domains extends BaseController
 		}
 		
 		$domain->update($input);
+		
+		$goto = Input::get('goto', '');
 
-		return Redirect::route('acp.domains.index');
+		return $goto ? Redirect::to($goto) : Redirect::route('acp.domains.index');
 	}
 	
 	public function whois(Domain $domain)

@@ -17,7 +17,8 @@
         </tr>
       </thead>
       @foreach ($domains as $key => $domain)
-        <tr class="js-dblclick-edit {{ $domain->isExpired() ? 'danger' : '' }} {{ !$domain->domain_control ? 'info' : '' }}" data-dblclick-url="{{ route('acp.domains.edit', $domain->domain) }}">
+        <tr class="js-dblclick-edit {{ $domain->isExpired() ? 'danger' : '' }} {{ !$domain->domain_control ? 'info' : '' }}"
+			data-dblclick-url="{{ route('acp.domains.edit', [$domain->domain, 'goto' => Request::fullUrl()]) }}">
           <td>{{ $key + 1 }}</td>
           <td>
 			<a href="http://{{ $domain->domain }}/" target="_blank" style="margin-right: 0.3em;">
