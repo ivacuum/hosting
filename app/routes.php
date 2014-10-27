@@ -29,5 +29,6 @@ Route::group(['namespace' => 'Acp', 'prefix' => 'acp'], function() {
 	Route::resource('clients', 'Clients');
 	
 	Route::resource('domains', 'Domains');
+	Route::post('domains/{domains}/set-yandex-ns', ['as' => 'acp.domains.set-yandex-ns', 'uses' => 'Domains@setYandexNs']);
 	Route::get('domains/{domains}/whois', ['as' => 'acp.domains.whois', 'uses' => 'Domains@whois']);
 });

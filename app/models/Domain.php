@@ -2,6 +2,11 @@
 
 class Domain extends Eloquent
 {
+	const REGRU_API_URL = 'https://api.reg.ru/api/regru2';
+	const EXPIRED_IP = '144.76.40.132';
+	const NS0 = 'dns1.yandex.net';
+	const NS1 = 'dns2.yandex.net';
+	
 	protected $fillable = ['client_id', 'domain', 'active', 'domain_control',
 		'registered_at', 'paid_till', 'ipv4', 'ipv6', 'mx', 'ns', 'queried_at',
 		'text', 'cms_type', 'cms_version', 'cms_url', 'cms_user', 'cms_pass',
@@ -69,13 +74,26 @@ class Domain extends Eloquent
 	
 	public function isExpired()
 	{
-		return $this->ipv4 === '144.76.40.132';
+		return $this->ipv4 === self::EXPIRED_IP;
 	}
 	
 	public function scopeWhoisReady($query)
 	{
 		return $query->whereActive(1)
 			->where('queried_at', '<', (string) Carbon::now()->subHours(3));
+	}
+	
+	public function setYandexNs()
+	{
+		return json_decode(
+			file_get_contents(self::REGRU_API_URL.'/domain/update_nss'.
+				'?username='.getenv('REGRU_USER').
+				'&password='.getenv('REGRU_PASS').
+				"&dname={$this->domain}".
+				'&ns0='.self::NS0.
+				'&ns1='.self::NS1
+			)
+		);
 	}
 	
 	public function updateWhois()

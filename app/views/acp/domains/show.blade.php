@@ -35,6 +35,14 @@
 <strong>ns</strong>:     {{ $domain->ns }}</samp>
 </div>
 
+{{ Form::open(['route' => ['acp.domains.set-yandex-ns', $domain->domain]]) }}
+<p>
+	<button type="submit" class="btn btn-default">
+		Установить днс Яндекса
+	</button>
+</p>
+{{ Form::close() }}
+
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Whois</h3>

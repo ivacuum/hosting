@@ -4,8 +4,10 @@ use App;
 use BaseController;
 use Domain;
 use Input;
+use Log;
 use Redirect;
 use Request;
+use Session;
 use Validator;
 use View;
 
@@ -80,6 +82,25 @@ class Domains extends BaseController
 	{
 		return View::make('acp.domains.edit', compact('domain'));
 	}
+	
+	public function setYandexNs(Domain $domain)
+	{
+		$query = $domain->setYandexNs();
+		$status = $query->answer->domains[0]->result;
+		
+		if ('success' != $status) {
+			Log::error('Unable to set yandex ns servers via reg.ru api', [
+				'context' => $query
+			]);
+			
+			$message = 'Не удалось установить днс Яндекса';
+		} else {
+			$message = 'Днс Яндекса установлены';
+		}
+		
+		Session::flash('message', $message);
+		
+		return Redirect::route('acp.domains.show', $domain->domain);
 	}
 	
 	public function show(Domain $domain)
