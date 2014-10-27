@@ -35,13 +35,15 @@
 <strong>ns</strong>:     {{ $domain->ns }}</samp>
 </div>
 
-{{ Form::open(['route' => ['acp.domains.set-yandex-ns', $domain->domain]]) }}
-<p>
-	<button type="submit" class="btn btn-default">
-		Установить днс Яндекса
-	</button>
-</p>
-{{ Form::close() }}
+@if ($domain->domain_control and $domain->ns != 'dns1.yandex.net dns2.yandex.net')
+  {{ Form::open(['route' => ['acp.domains.set-yandex-ns', $domain->domain]]) }}
+  <p>
+    <button type="submit" class="btn btn-default">
+      Установить днс Яндекса
+    </button>
+  </p>
+  {{ Form::close() }}
+@endif
 
 <div class="panel panel-default">
   <div class="panel-heading">
