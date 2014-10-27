@@ -186,6 +186,22 @@ class WhoisQuery
 					}
 					
 				break;
+				case 'es':
+				
+					switch ($var) {
+						case 'creation date':
+						
+							$data['registered_at'] = str_replace('/', '.', $value);
+							
+						break;
+						case 'expiration date':
+						
+							$data['paid_till'] = str_replace('/', '.', $value);
+							
+						break;
+					}
+					
+				break;
 			}
 		}
 		
