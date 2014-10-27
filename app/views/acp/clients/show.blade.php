@@ -23,16 +23,6 @@
 @endif
 
 @if (sizeof($client->domains))
-	<div class="row">
-		<div class="col-md-3">
-			<p>
-				Доменов у клиента
-				<br>
-				<samp class="text-counter">{{ sizeof($client->domains) }}</samp>
-			</p>
-		</div>
-	</div>
-
 	@include('acp.domains.list', ['domains' => $client->domains])
 @else
 	<div class="alert alert-warning">У клиента еще нет доменов.</div>

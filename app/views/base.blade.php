@@ -2,16 +2,13 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <title>{{--if not empty($page.page_title)}{$page.page_title}{else}{foreach $breadcrumbs|@array_reverse|default:[] as $row}{$row.TEXT}{(not $row@last) ? ' &middot; ' : ''}{/foreach}{if not $S_USER_REGISTERED} &middot; {$cfg.sitename}{/if}{/if--}}@section('title')Title @show</title>
+  <title>{{ $meta_title or 'Title' }} &middot; {{ Config::get('cfg.sitename') }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-{{--
-  {if $page.page_noindex}
-    <meta name="robots" content="noindex, nofollow">
-  {/if}
---}}
-  <meta name="keywords" content="{{-- $page.page_keywords|default:'' --}}">
-  <meta name="description" content="{{-- $page.page_description|default:'' --}}">
-  <link rel="stylesheet" href="/css/app.min.css">
+  <meta name="keywords" content="{{ $meta_keywords or '' }}">
+  <meta name="description" content="{{ $meta_description or '' }}">
+  @section('head')
+    <link rel="stylesheet" href="/css/app.min.css">
+  @show
 </head>
 <body>
 <div class="wrap-content">

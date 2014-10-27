@@ -1,21 +1,23 @@
-@extends('base')
+@extends('base', [
+  'meta_title' => $domain->domain,
+])
 
 @section('content')
 <div class="pull-right">
-	{{ Form::open(['route' => ['acp.domains.destroy', $domain->domain], 'method' => 'delete']) }}
-	  <div class="form-group">
+  {{ Form::open(['route' => ['acp.domains.destroy', $domain->domain], 'method' => 'delete']) }}
+    <div class="form-group">
       <button class="btn btn-default js-confirm" data-confirm="Запись будет удалена. Продолжить?" type="submit">
         <span class="glyphicon glyphicon-trash"></span>
       </button>
-	  </div>
-	{{ Form::close() }}
+    </div>
+  {{ Form::close() }}
 </div>
 <h2>
-	<a href="{{ route('acp.domains.index') }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
-	{{ $domain->domain }}
-	<a class="btn btn-default" href="{{ route('acp.domains.edit', $domain->domain) }}">
-		<span class="glyphicon glyphicon-pencil"></span>
-	</a>
+  <a href="{{ route('acp.domains.index') }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+  {{ $domain->domain }}
+  <a class="btn btn-default" href="http://{{ $domain->domain }}/" target="_blank">
+    <span class="glyphicon glyphicon-globe"></span>
+  </a>
   <a class="btn btn-default" href="{{ route('acp.domains.edit', [$domain->domain, 'goto' => Request::path()]) }}">
     <span class="glyphicon glyphicon-pencil"></span>
   </a>
@@ -41,5 +43,4 @@
     <samp class="js-deferred-load" data-deferred-url="{{ route('acp.domains.whois', $domain->domain) }}">Идет загрузка...</samp>
   </div>
 </div>
-
 @stop
