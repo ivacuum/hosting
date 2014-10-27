@@ -2,7 +2,8 @@
   "name": "app",
   "dependencies": {
     "bootstrap": "~3.2",
-    "jquery": "~1.11"
+    "jquery": "~1.11",
+    "nprogress": "~0.1"
   },
   "devDependencies": {
     "less.js": "~1.7"
