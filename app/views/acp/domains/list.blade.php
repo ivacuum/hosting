@@ -3,7 +3,7 @@
   <a href="{{ route('acp.domains.create') }}" class="boxed-group-action btn btn-success">
     <span class="glyphicon glyphicon-plus"></span>
   </a>
-  <h3>Домены</h3>
+  <h3>Домены [{{ sizeof($domains) }}]</h3>
   <div class="boxed-group-inner">
     <table class="table-stats">
       <thead>
