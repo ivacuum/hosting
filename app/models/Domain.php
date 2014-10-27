@@ -45,6 +45,25 @@ class Domain extends Eloquent
 		return ['mailed_at', 'queried_at', 'registered_at', 'paid_till'];
 	}
 	
+	public function getNs()
+	{
+		$query = json_decode(
+			file_get_contents(self::REGRU_API_URL.'/domain/get_nss'.
+				'?username='.getenv('REGRU_USER').
+				'&password='.getenv('REGRU_PASS').
+				"&domain_name={$this->domain}"
+			)
+		);
+		
+		$ns = [];
+		
+		foreach ($query->answer->domains[0]->nss as $row) {
+			$ns[] = $row->ns;
+		}
+		
+		return $ns;
+	}
+
 	public function getWhoisData()
 	{
 		require_once __DIR__ . '/../WhoisQuery.php';
@@ -85,7 +104,7 @@ class Domain extends Eloquent
 	
 	public function setYandexNs()
 	{
-		return json_decode(
+		$query = json_decode(
 			file_get_contents(self::REGRU_API_URL.'/domain/update_nss'.
 				'?username='.getenv('REGRU_USER').
 				'&password='.getenv('REGRU_PASS').
@@ -94,6 +113,16 @@ class Domain extends Eloquent
 				'&ns1='.self::NS1
 			)
 		);
+		
+		$status = $query->answer->domains[0]->result;
+		
+		if ('success' != $status) {
+			Log::error('Unable to set yandex ns servers via reg.ru api', [
+				'context' => $query
+			]);
+		}
+		
+		return $status;
 	}
 	
 	public function updateWhois()

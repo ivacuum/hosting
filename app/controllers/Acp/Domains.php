@@ -85,18 +85,11 @@ class Domains extends BaseController
 	
 	public function setYandexNs(Domain $domain)
 	{
-		$query = $domain->setYandexNs();
-		$status = $query->answer->domains[0]->result;
+		$status = $domain->setYandexNs();
 		
-		if ('success' != $status) {
-			Log::error('Unable to set yandex ns servers via reg.ru api', [
-				'context' => $query
-			]);
-			
-			$message = 'Не удалось установить днс Яндекса';
-		} else {
-			$message = 'Днс Яндекса установлены';
-		}
+		$message = 'success' == $status
+			? 'Днс Яндекса установлены'
+			: 'Не удалось установить днс Яндекса';
 		
 		Session::flash('message', $message);
 		
