@@ -193,7 +193,12 @@ class Domain extends Eloquent
 		}
 		
 		if (isset($new['ns']) && $new['ns'] != $this->ns) {
-			$diff['ns'] = ['from' => $this->ns, 'to' => $new['ns']];
+			// Workaround dns1.yandex.ru to dns1.yandex.net and vice versa
+			if (false === strpos($new['ns'], 'dns1.yandex.') ||
+				false === strpos($this->ns, 'dns1.yandex.')
+			) {
+				$diff['ns'] = ['from' => $this->ns, 'to' => $new['ns']];
+			}
 		}
 		
 		if ($new['registered_at']->diffInDays($this->registered_at) > 300) {
