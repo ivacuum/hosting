@@ -82,6 +82,7 @@
       <li class="text-muted">&copy; {{ date('Y') }} vacuum</li>
       <li class="text-muted">&middot;</li>
       <li><a href="mailto:{{ Config::get('email.support') }}">Обратная связь</a></li>
+	  <li><a href="{{ route('parser.vk') }}">Парсер ВК</a></li>
     </ul>
   </div>
 </footer>
