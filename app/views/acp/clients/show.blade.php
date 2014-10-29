@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="pull-right">
-	{{ Form::open(['route' => ['acp.clients.destroy', $client->id], 'method' => 'delete']) }}
+	{{ Form::open(['action' => ["$self@destroy", $client->id], 'method' => 'delete']) }}
 	  <div class="form-group">
       <button class="btn btn-default js-confirm" data-confirm="Запись будет удалена. Продолжить?" type="submit">
         <span class="glyphicon glyphicon-trash"></span>
@@ -11,9 +11,9 @@
 	{{ Form::close() }}
 </div>
 <h2>
-	<a href="{{ route('acp.clients.index') }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+	<a href="{{ action("$self@index") }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
 	{{ $client->name }}
-	<a class="btn btn-default" href="{{ route('acp.clients.edit', [$client->id, 'goto' => Request::fullUrl()]) }}">
+	<a class="btn btn-default" href="{{ action("$self@edit", [$client->id, 'goto' => Request::fullUrl()]) }}">
 		<span class="glyphicon glyphicon-pencil"></span>
 	</a>
 </h2>

@@ -14,6 +14,7 @@ class BaseController extends Controller
 		
 		$this->beforeFilter(function() {
 			View::share([
+				'goto' => Input::get('goto'),
 				'self' => get_class($this),
 				'tpl'  => $this->prefix,
 			]);

@@ -3,16 +3,16 @@
 @section('content')
 <div class="boxed-group">
   <h3>
-    <a href="{{ route('acp.clients.index') }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    <a href="{{ action("$self@index") }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
     Новый клиент
   </h3>
   <div class="boxed-group-inner">
     {{ Form::open([
-      'route' => 'acp.clients.store',
+      'action' => "$self@store",
       'class' => 'form-horizontal'
     ]) }}
 
-    @include('acp.clients.form')
+    @include("$tpl.form")
 
     <div class="form-group">
       <div class="col-md-10 col-md-offset-2">

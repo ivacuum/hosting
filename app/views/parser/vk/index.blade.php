@@ -1,37 +1,35 @@
-@extends('base')
-
-@section('title')
-Топ 10 vk.com/{{ $page }} за {{ $date->formatLocalized('%d %B') }}
-@stop
+@extends('base', [
+  'meta_title' => "Топ 10 vk.com/{$page} за ".$date->formatLocalized('%d %B'),
+])
 
 @section('content')
 <ul class="nav nav-tabs">
   <li class="{{ Request::segment(3) == 'palnom6' || !Request::segment(3) ? 'active' : '' }}">
-    <a href="{{ route('parser.vk', 'palnom6') }}">Палата #6</a>
+    <a href="{{ action("$self@index", 'palnom6') }}">Палата #6</a>
   </li>
   <li class="{{ Request::segment(3) == 'overhear' ? 'active' : '' }}">
-    <a href="{{ route('parser.vk', 'overhear') }}">Подслушано</a>
+    <a href="{{ action("$self@index", 'overhear') }}">Подслушано</a>
   </li>
   <li class="{{ Request::segment(3) == 'leprum' ? 'active' : '' }}">
-    <a href="{{ route('parser.vk', 'leprum') }}">Лепра</a>
+    <a href="{{ action("$self@index", 'leprum') }}">Лепра</a>
   </li>
   <li class="{{ Request::segment(3) == 'pikabu' ? 'active' : '' }}">
-    <a href="{{ route('parser.vk', 'pikabu') }}">Пикабу</a>
+    <a href="{{ action("$self@index", 'pikabu') }}">Пикабу</a>
   </li>
   <li class="{{ Request::segment(3) == 'factura' ? 'active' : '' }}">
-    <a href="{{ route('parser.vk', 'factura') }}">Фактура</a>
+    <a href="{{ action("$self@index", 'factura') }}">Фактура</a>
   </li>
 </ul>
 
 <ul class="pager">
   <li class="previous">
-    <a href="{{ route('parser.vk', ['page' => $page, 'date' => $previous->toDateString()]) }}">
+    <a href="{{ action("$self@index", ['page' => $page, 'date' => $previous->toDateString()]) }}">
       <span class="glyphicon glyphicon-arrow-left"></span>
       &nbsp;{{ $previous->formatLocalized('%d %B') }}
     </a>
   </li>
   <li class="next">
-    <a href="{{ route('parser.vk', ['page' => $page, 'date' => $next->toDateString()]) }}">
+    <a href="{{ action("$self@index", ['page' => $page, 'date' => $next->toDateString()]) }}">
       {{ $next->formatLocalized('%d %B') }}
       <span class="glyphicon glyphicon-arrow-right"></span>
     </a>
@@ -76,13 +74,13 @@
 
 <ul class="pager">
   <li class="previous">
-    <a href="{{ route('parser.vk', ['page' => $page, 'date' => $previous->toDateString()]) }}">
+    <a href="{{ action("$self@index", ['page' => $page, 'date' => $previous->toDateString()]) }}">
       <span class="glyphicon glyphicon-arrow-left"></span>
       &nbsp;{{ $previous->formatLocalized('%d %B') }}
     </a>
   </li>
   <li class="next">
-    <a href="{{ route('parser.vk', ['page' => $page, 'date' => $next->toDateString()]) }}">
+    <a href="{{ action("$self@index", ['page' => $page, 'date' => $next->toDateString()]) }}">
       {{ $next->formatLocalized('%d %B') }}
       <span class="glyphicon glyphicon-arrow-right"></span>
     </a>

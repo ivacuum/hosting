@@ -36,9 +36,7 @@ Route::get('parser/vk/{page?}/{date?}', [
 ])->where('date', '\d{4}-\d{2}-\d{2}');
 
 // Admin control panel
-Route::when('acp/*', 'auth');
-
-Route::group(['namespace' => 'Acp', 'prefix' => 'acp'], function() {
+Route::group(['namespace' => 'Acp', 'prefix' => 'acp', 'before' => 'auth'], function() {
 	Route::get('/', [
 		'as'   => 'acp.home',
 		'uses' => 'Home@index',

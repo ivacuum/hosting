@@ -3,7 +3,7 @@
 @section('content')
 <div class="boxed-group">
   <h3>
-    <a href="{{ Input::get('goto') ?: action("$self@index") }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    <a href="{{ $goto ? url($goto) ?: action("$self@index") }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
     Редактирование данных пользователя <small>{{ $user->email }}</small>
   </h3>
   <div class="boxed-group-inner">

@@ -11,32 +11,30 @@ class Clients extends BaseController
 {
 	public function index()
 	{
-		return View::make('acp.clients.index')
+		return View::make($this->view)
 			->withClients(Client::get());
 	}
 	
 	public function create()
 	{
-		return View::make('acp.clients.create');
+		return View::make($this->view);
 	}
 	
 	public function destroy(Client $client)
 	{
 		$client->delete();
 		
-		return Redirect::route('acp.clients.index');
+		return Redirect::route("{$this->prefix}.index");
 	}
 	
 	public function edit(Client $client)
 	{
-		return View::make('acp.clients.edit')
-			->with(compact('client'));
+		return View::make($this->view, compact('client'));
 	}
 	
 	public function show(Client $client)
 	{
-		return View::make('acp.clients.show')
-			->with(compact('client'));
+		return View::make($this->view, compact('client'));
 	}
 	
 	public function store()
@@ -44,14 +42,14 @@ class Clients extends BaseController
 		$validator = Validator::make(Input::all(), Client::rules());
 		
 		if ($validator->fails()) {
-			return Redirect::route('acp.clients.create')
+			return Redirect::route("{$this->prefix}.create")
 				->withErrors($validator)
 				->withInput(Input::all());
 		}
 		
 		$client = Client::create(Input::all());
 		
-		return Redirect::route('acp.clients.show', $client->id);
+		return Redirect::route("{$this->prefix}.show", $client->id);
 	}
 	
 	public function update(Client $client)
@@ -59,13 +57,13 @@ class Clients extends BaseController
 		$validator = Validator::make(Input::all(), Client::rules($client->id));
 		
 		if ($validator->fails()) {
-			return Redirect::route('acp.clients.edit', $client->id)
+			return Redirect::route("{$this->prefix}.edit", $client->id)
 				->withErrors($validator)
 				->withInput(Input::all());
 		}
 
 		$client->update(Input::all());
 
-		return Redirect::route('acp.clients.index');
+		return Redirect::route("{$this->prefix}.index");
 	}
 }

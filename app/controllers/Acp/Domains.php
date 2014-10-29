@@ -63,24 +63,24 @@ class Domains extends BaseController
 					->get();
 		}
 		
-		return View::make('acp.domains.index', compact('domains', 'filter', 'sort'));
+		return View::make($this->view, compact('domains', 'filter', 'sort'));
 	}
 	
 	public function create()
 	{
-		return View::make('acp.domains.create');
+		return View::make($this->view);
 	}
 	
 	public function destroy(Domain $domain)
 	{
 		$domain->delete();
 		
-		return Redirect::route('acp.domains.index');
+		return Redirect::route("{$this->prefix}.index");
 	}
 	
 	public function edit(Domain $domain)
 	{
-		return View::make('acp.domains.edit', compact('domain'));
+		return View::make($this->view, compact('domain'));
 	}
 	
 	public function setYandexNs(Domain $domain)
@@ -93,12 +93,12 @@ class Domains extends BaseController
 		
 		Session::flash('message', $message);
 		
-		return Redirect::route('acp.domains.show', $domain->domain);
+		return Redirect::route("{$this->prefix}.show", $domain->domain);
 	}
 	
 	public function show(Domain $domain)
 	{
-		return View::make('acp.domains.show', compact('domain'));
+		return View::make($this->view, compact('domain'));
 	}
 	
 	public function store()
@@ -106,14 +106,14 @@ class Domains extends BaseController
 		$validator = Validator::make(Input::all(), Domain::rules());
 		
 		if ($validator->fails()) {
-			return Redirect::route('acp.domains.create')
+			return Redirect::route("{$this->prefix}.create")
 				->withErrors($validator)
 				->withInput(Input::all());
 		}
 		
 		$domain = Domain::create(Input::all());
 		
-		return Redirect::route('acp.domains.show', $domain->domain);
+		return Redirect::route("{$this->prefix}.show", $domain->domain);
 	}
 	
 	public function update(Domain $domain)
@@ -121,7 +121,7 @@ class Domains extends BaseController
 		$validator = Validator::make(Input::all(), Domain::rules($domain->id));
 		
 		if ($validator->fails()) {
-			return Redirect::route('acp.domains.edit', $domain->domain)
+			return Redirect::route("{$this->prefix}.edit", $domain->domain)
 				->withErrors($validator)
 				->withInput(Input::all());
 		}
@@ -141,7 +141,7 @@ class Domains extends BaseController
 		
 		$goto = Input::get('goto', '');
 
-		return $goto ? Redirect::to($goto) : Redirect::route('acp.domains.index');
+		return $goto ? Redirect::to($goto) : Redirect::route("{$this->prefix}.index");
 	}
 	
 	public function whois(Domain $domain)

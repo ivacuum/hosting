@@ -52,8 +52,7 @@ class ParserVk extends BaseController
 		
 		$posts = array_slice($posts, 0, 10);
 
-		return View::make('parser.vk.index')
-			->with(compact('posts'))
+		return View::make('parser.vk.index', compact('posts'))
 			->with('previous', Carbon::parse($date)->subDay())
 			->with('next', Carbon::parse($date)->addDay())
 			->with('page', $page)

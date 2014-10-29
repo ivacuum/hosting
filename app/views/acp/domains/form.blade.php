@@ -210,4 +210,4 @@
   </div>
 </div>
 
-<input type="hidden" name="goto" value="{{ Input::get('goto') }}">
+<input type="hidden" name="goto" value="{{ $goto }}">
