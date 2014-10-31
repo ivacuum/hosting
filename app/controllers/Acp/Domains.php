@@ -63,7 +63,9 @@ class Domains extends BaseController
 					->get();
 		}
 		
-		return View::make($this->view, compact('domains', 'filter', 'sort'));
+		$back_url = Request::fullUrl();
+		
+		return View::make($this->view, compact('back_url', 'domains', 'filter', 'sort'));
 	}
 	
 	public function create()

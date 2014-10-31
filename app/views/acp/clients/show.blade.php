@@ -23,7 +23,10 @@
 @endif
 
 @if (sizeof($client->domains))
-	@include('acp.domains.list', ['domains' => $client->domains])
+	@include('acp.domains.list', [
+		'back_url' => Request::fullUrl(),
+		'domains'  => $client->domains
+	])
 @else
 	<div class="alert alert-warning">У клиента еще нет доменов.</div>
 @endif

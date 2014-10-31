@@ -16,21 +16,21 @@
           <th>CMS</th>
         </tr>
       </thead>
-      @foreach ($domains as $key => $domain)
+      @foreach ($domains as $i => $domain)
         <tr class="js-dblclick-edit {{ $domain->isExpired() ? 'danger' : '' }} {{ !$domain->domain_control ? 'info' : '' }}"
-			data-dblclick-url="{{ route('acp.domains.edit', [$domain->domain, 'goto' => Request::fullUrl()]) }}">
-          <td>{{ $key + 1 }}</td>
+			data-dblclick-url="/acp/domains/{{ $domain->domain }}/edit?goto={{ $back_url }}">
+          <td>{{ $i + 1 }}</td>
           <td>
 			<a href="http://{{ $domain->domain }}/" target="_blank" style="margin-right: 0.3em;">
 				<span class="glyphicon glyphicon-globe"></span>
 			</a>
-            <a href="{{ route('acp.domains.show', $domain->domain) }}">
+            <a href="/acp/domains/{{ $domain->domain }}">
               {{ $domain->domain }}
             </a>
           </td>
           <td class="text-muted">
-            <span title="{{{ $domain->paid_till }}}">
-              {{{ $domain->paid_till->toDateString() }}}
+            <span title="{{ $domain->paid_till }}">
+              {{ $domain->paid_till->toDateString() }}
             </span>
           </td>
           <td><small><samp>{{ $domain->whatServerIpv4() }}</samp></small></td>
