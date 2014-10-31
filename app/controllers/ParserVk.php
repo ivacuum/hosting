@@ -1,8 +1,18 @@
 <?php
 
+use GuzzleHttp\Client;
+
 class ParserVk extends BaseController
 {
+	protected $client;
 	protected $page;
+	
+	public function __construct()
+	{
+		parent::__construct();
+		
+		$this->client = new Client(['base_url' => 'https://api.vk.com/method/']);
+	}
 	
 	public function index($page = 'palnom6', $date = false)
 	{
@@ -20,9 +30,9 @@ class ParserVk extends BaseController
 		$date_end = Carbon::parse($date)->endofDay()->timestamp;
 		
 		while (false === $parsed) {
-			$json = json_decode(file_get_contents($this->getUrl($count, $offset)));
+			$json = $this->getPosts($count, $offset);
 		
-			/* В первом элементе количество записей */
+			// В первом элементе количество записей
 			for ($i = 1, $len = sizeof($json->response) - 1; $i < $len; $i++) {
 				$post = $json->response[$i];
 				
@@ -58,19 +68,22 @@ class ParserVk extends BaseController
 			->with('page', $page)
 			->with('date', $date);
 	}
+	
+	protected function getPosts($count = 100, $offset = 0)
+	{
+		$cache_entry = "vk_{$this->page}_{$count}_{$offset}";
+		$domain = $this->page;
+		$params = compact('domain', 'count', 'offset');
+		
+		return Cache::remember($cache_entry, 5, function() use ($params) {
+			$response = $this->client->get('wall.get', ['query' => $params]);
+		
+			return $response->json(['object' => true]);
+		});
+	}
 
 	protected function getPostsCount()
 	{
-		$json = json_decode(file_get_contents($this->getUrl(1)));
-		
-		return $json->response[0];
-	}
-	
-	protected function getUrl($count = 100, $offset = 0)
-	{
-		return "https://api.vk.com/method/wall.get".
-			"?domain={$this->page}".
-			"&count={$count}".
-			"&offset={$offset}";
+		return $this->getPosts(1)->response[0];
 	}
 }

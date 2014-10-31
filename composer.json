@@ -5,6 +5,7 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"fzaninotto/faker": "1.4",
+		"guzzlehttp/guzzle": "~5.0",
 		"barryvdh/laravel-debugbar": "~1.7"
 	},
 	"autoload": {
