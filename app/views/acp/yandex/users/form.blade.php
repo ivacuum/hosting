@@ -34,3 +34,5 @@
     @endforeach
   </div>
 </div>
+
+<input type="hidden" name="goto" value="{{ $goto }}">

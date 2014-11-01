@@ -24,3 +24,5 @@
     {{ Form::textarea('text', null, ['class' => 'form-control']) }}
   </div>
 </div>
+
+<input type="hidden" name="goto" value="{{ $goto }}">

@@ -38,3 +38,5 @@
     <label>{{ Form::checkbox('mail_credentials')}} Выслать данные на почту</label>
   </div>
 </div>
+
+<input type="hidden" name="goto" value="{{ $goto }}">
