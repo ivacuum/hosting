@@ -115,6 +115,8 @@ class Users extends BaseController
 				->update(['yandex_user_id' => $user->id]);
 		}
 		
-		return Redirect::action("{$this->class}@index");
+		$goto = Input::get('goto', '');
+
+		return $goto ? Redirect::to($goto) : Redirect::action("{$this->class}@index");
 	}
 }

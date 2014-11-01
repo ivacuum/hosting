@@ -96,7 +96,9 @@ class Users extends BaseController
 			$this->mailCredentials($user, $password);
 		}
 		
-		return Redirect::action("{$this->class}@index");
+		$goto = Input::get('goto', '');
+
+		return $goto ? Redirect::to($goto) : Redirect::action("{$this->class}@index");
 	}
 	
 	protected function mailCredentials(User $user, $password)

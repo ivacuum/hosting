@@ -64,6 +64,8 @@ class Clients extends BaseController
 
 		$client->update(Input::all());
 
-		return Redirect::action("{$this->class}@index");
+		$goto = Input::get('goto', '');
+
+		return $goto ? Redirect::to($goto) : Redirect::action("{$this->class}@index");
 	}
 }
