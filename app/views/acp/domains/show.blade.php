@@ -26,7 +26,10 @@
   @endif
 </h2>
 <div style="margin: 1em 0;">
-  <samp style="white-space: pre;"><strong>client</strong>: <a href="{{ route('acp.clients.show', $domain->client->id) }}">{{ $domain->client->name }}</a>
+  <samp style="white-space: pre;"><strong>client</strong>: <a href="{{ action('Acp\Clients@show', $domain->client->id) }}">{{ $domain->client->name }}</a>
+@if ($domain->yandex_user_id)
+<strong>yandex</strong>: {{ $domain->yandexUser->account }}
+@endif
 <strong>ipv4</strong>:   {{ $domain->ipv4 }}
 @if ($domain->ipv6)
 <strong>ipv6</strong>:   {{ $domain->ipv6 }}

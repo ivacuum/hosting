@@ -1,17 +1,20 @@
 <?php
 
+use GuzzleHttp\Client;
+
 class Domain extends Eloquent
 {
-	const REGRU_API_URL = 'https://api.reg.ru/api/regru2';
+	const REGRU_API_URL = 'https://api.reg.ru/api/regru2/';
 	const EXPIRED_IP = '144.76.40.132';
 	const NS0 = 'dns1.yandex.net';
 	const NS1 = 'dns2.yandex.net';
+	const PDD_API_URL = 'https://pddimp.yandex.ru/nsapi/';
 	
 	protected $fillable = ['client_id', 'domain', 'active', 'domain_control',
 		'registered_at', 'paid_till', 'ipv4', 'ipv6', 'mx', 'ns', 'queried_at',
 		'text', 'cms_type', 'cms_version', 'cms_url', 'cms_user', 'cms_pass',
 		'ftp_host', 'ftp_user', 'ftp_pass', 'ssh_host', 'ssh_user', 'ssh_pass',
-		'db_pma', 'db_host', 'db_user', 'db_pass'];
+		'db_pma', 'db_host', 'db_user', 'db_pass', 'yandex_user_id'];
 	protected $hidden = [];
 	
 	// public static function boot()
@@ -40,28 +43,52 @@ class Domain extends Eloquent
 		return $this->belongsTo('Client');
 	}
 	
+	public function yandexUser()
+	{
+		return $this->belongsTo('YandexUser');
+	}
+	
 	public function getDates()
 	{
 		return ['mailed_at', 'queried_at', 'registered_at', 'paid_till'];
 	}
 	
-	public function getNs()
+	public function getNsServers()
 	{
-		$query = json_decode(
-			file_get_contents(self::REGRU_API_URL.'/domain/get_nss'.
-				'?username='.getenv('REGRU_USER').
-				'&password='.getenv('REGRU_PASS').
-				"&domain_name={$this->domain}"
-			)
-		);
+		$client = $this->getRegRuApiClient();
+		
+		$domain_name = $this->domain;
+		$params = compact('domain_name');
+
+		$response = $client->get('domain/get_nss', ['query' => $params]);
+		
+		$json = $response->json(['object' => true]);
 		
 		$ns = [];
 		
-		foreach ($query->answer->domains[0]->nss as $row) {
+		foreach ($json->answer->domains[0]->nss as $row) {
 			$ns[] = $row->ns;
 		}
 		
 		return $ns;
+	}
+	
+	public function getNsRecords()
+	{
+		if (!$this->yandex_user_id) {
+			throw new \Exception('Домен не связан с учеткой в Яндексе');
+		}
+		
+		$client = new Client(['base_url' => self::PDD_API_URL]);
+		
+		$response = $client->get('get_domain_records.xml', [
+			'query' => [
+				'token'  => $this->yandexUser->token,
+				'domain' => $this->domain,
+			],
+		]);
+		
+		return $response->xml();
 	}
 
 	public function getWhoisData()
@@ -104,17 +131,19 @@ class Domain extends Eloquent
 	
 	public function setYandexNs()
 	{
-		$query = json_decode(
-			file_get_contents(self::REGRU_API_URL.'/domain/update_nss'.
-				'?username='.getenv('REGRU_USER').
-				'&password='.getenv('REGRU_PASS').
-				"&dname={$this->domain}".
-				'&ns0='.self::NS0.
-				'&ns1='.self::NS1
-			)
-		);
+		$client = $this->getRegRuApiClient();
 		
-		$status = $query->answer->domains[0]->result;
+		$response = $client->get('domain/update_nss', [
+			'query' => [
+				'dname' => $this->domain,
+				'ns0'   => self::NS0,
+				'ns1'   => self::NS1,
+			],
+		]);
+
+		$json = $response->json(['object' => true]);
+		
+		$status = $json->answer->domains[0]->result;
 		
 		if ('success' != $status) {
 			Log::error('Unable to set yandex ns servers via reg.ru api', [
@@ -216,5 +245,18 @@ class Domain extends Eloquent
 		}
 
 		return $diff;
+	}
+	
+	protected function getRegRuApiClient()
+	{
+		return new Client([
+			'base_url' => self::REGRU_API_URL,
+			'defaults' => [
+				'query' => [
+					'username' => getenv('REGRU_USER'),
+					'password' => getenv('REGRU_PASS'),
+				],
+			],
+		]);
 	}
 }

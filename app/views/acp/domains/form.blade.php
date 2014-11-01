@@ -210,4 +210,20 @@
   </div>
 </div>
 
+<hr>
+<div class="row">
+  <div class="col-md-10 col-md-offset-2">
+    <h3 style="margin-bottom: 0.5em;">Яндекс API</h3>
+  </div>
+</div>
+
+<div class="form-group">
+  {{ Form::label('yandex_user_id', 'Учетка:', ['class' => 'col-md-2 control-label']) }}
+  <div class="col-md-10">
+    {{ Form::select('yandex_user_id', [0 => ''] + YandexUser::find(1)->lists('account', 'id'), null, [
+      'class' => 'form-control'
+    ]) }}
+  </div>
+</div>
+
 <input type="hidden" name="goto" value="{{ $goto }}">

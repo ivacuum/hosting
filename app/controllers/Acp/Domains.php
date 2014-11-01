@@ -85,6 +85,22 @@ class Domains extends BaseController
 		return View::make($this->view, compact('domain'));
 	}
 	
+	public function nsRecords(Domain $domain)
+	{
+		$records = $domain->getNsRecords();
+		
+		foreach ($records->domains->domain->response->record as $record) {
+			var_dump($record);
+		}
+		
+		return;
+	}
+	
+	public function nsServers(Domain $domain)
+	{
+		dd($domain->getNsServers());
+	}
+	
 	public function setYandexNs(Domain $domain)
 	{
 		$status = $domain->setYandexNs();
