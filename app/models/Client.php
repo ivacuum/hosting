@@ -20,4 +20,15 @@ class Client extends Eloquent
 	{
 		return $this->hasMany('Domain');
 	}
+
+	// public static function boot()
+	// {
+	// 	parent::boot();
+	//
+	// 	static::deleted(function($client) {
+	// 		// 1 — Private Person
+	// 		Domain::whereClientId($client->id)
+	// 			->update(['client_id' => 1]);
+	// 	});
+	// }
 }
