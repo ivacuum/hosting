@@ -2,12 +2,14 @@
 
 class BaseController extends Controller
 {
+	protected $class;
 	protected $method;
 	protected $prefix;
 	protected $view;
 	
 	public function __construct()
 	{
+		$this->class  = get_class($this);
 		$this->method = $this->getCurrentMethod();
 		$this->prefix = strtolower(str_replace('\\', '.', get_class($this)));
 		$this->view   = "{$this->prefix}.{$this->method}";
