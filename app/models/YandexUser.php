@@ -20,4 +20,14 @@ class YandexUser extends Eloquent
 	{
 		return $this->hasMany('Domain');
 	}
+	
+	public static function boot()
+	{
+		parent::boot();
+		
+		static::deleted(function($user) {
+			Domain::whereYandexUserId($user->id)
+				->update(['yandex_user_id' => 0]);
+		});
+	}
 }
