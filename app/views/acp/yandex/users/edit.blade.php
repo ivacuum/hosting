@@ -4,7 +4,7 @@
 <div class="boxed-group">
   <h3>
     <a href="{{ $goto ? url($goto) : action("$self@index") }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
-    Редактирование данных аккаунт <small>{{ $user->account }}</small>
+    Редактирование данных аккаунта <small>{{ $user->account }}</small>
   </h3>
   <div class="boxed-group-inner">
     {{ Form::model($user, [

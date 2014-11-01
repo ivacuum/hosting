@@ -123,6 +123,13 @@ class Domain extends Eloquent
 		return $this->ipv4 === self::EXPIRED_IP;
 	}
 	
+	public function scopeYandexReady($query, $user_id = 0)
+	{
+		return $query->whereActive(1)
+			->whereIn('yandex_user_id', [0, $user_id])
+			->orderBy('domain');
+	}
+	
 	public function scopeWhoisReady($query)
 	{
 		return $query->whereActive(1)

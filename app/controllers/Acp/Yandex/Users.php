@@ -1,6 +1,7 @@
 <?php namespace Acp\Yandex;
 
 use BaseController;
+use Domain;
 use Input;
 use Redirect;
 use Session;
@@ -18,7 +19,9 @@ class Users extends BaseController
 	
 	public function create()
 	{
-		return View::make($this->view);
+		$domains = Domain::yandexReady()->get();
+		
+		return View::make($this->view, compact('domains'));
 	}
 	
 	public function destroy(YandexUser $user)
@@ -30,7 +33,9 @@ class Users extends BaseController
 	
 	public function edit(YandexUser $user)
 	{
-		return View::make($this->view, compact('user'));
+		$domains = Domain::yandexReady($user->id)->get();
+		
+		return View::make($this->view, compact('domains', 'user'));
 	}
 	
 	public function show(YandexUser $user)
@@ -50,12 +55,27 @@ class Users extends BaseController
 		
 		$user = YandexUser::create(Input::all());
 		
+		// Newly specified user domains
+		foreach (Input::get('domains', []) as $id => $one) {
+			$user_domains[] = $id;
+		}
+
+		if ($user_domains) {
+			Domain::whereIn('id', $user_domains)
+				->update(['yandex_user_id' => $user->id]);
+		}
+		
 		return Redirect::action("{$this->class}@show", $user->id);
 	}
 	
 	public function update(YandexUser $user)
 	{
-		$validator = Validator::make(Input::all(), YandexUser::rules($user->id));
+		$token = Input::get('token');
+		
+		$validator = Validator::make(
+			Input::all(),
+			YandexUser::rules($user->id, $token)
+		);
 		
 		if ($validator->fails()) {
 			return Redirect::action("{$this->class}@edit", $user->id)
@@ -63,7 +83,37 @@ class Users extends BaseController
 				->withInput(Input::all());
 		}
 		
-		$user->update(Input::all());
+		$user->account = Input::get('account');
+		
+		if ($token) {
+			$user->token = $token;
+		}
+
+		$user->save();
+		
+		$anon_domains = $user_domains = [];
+		
+		// Domains w/out yandex user specified
+		foreach ($user->domains as $domain) {
+			if (!Input::get("domains.{$domain->id}")) {
+				$anon_domains[] = $domain->id;
+			}
+		}
+		
+		if ($anon_domains) {
+			Domain::whereIn('id', $anon_domains)
+				->update(['yandex_user_id' => 0]);
+		}
+		
+		// Newly specified user domains
+		foreach (Input::get('domains', []) as $id => $one) {
+			$user_domains[] = $id;
+		}
+
+		if ($user_domains) {
+			Domain::whereIn('id', $user_domains)
+				->update(['yandex_user_id' => $user->id]);
+		}
 		
 		return Redirect::action("{$this->class}@index");
 	}
