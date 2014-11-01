@@ -46,18 +46,18 @@
 
 <hr>
 <div class="row">
-	<div class="col-md-10 col-md-offset-2">
-		<h3 style="margin-bottom: 0.5em;">Реквизиты доступа к системе управления сайтом</h3>
-	</div>
+  <div class="col-md-10 col-md-offset-2">
+    <h3 style="margin-bottom: 0.5em;">Реквизиты доступа к системе управления сайтом</h3>
+  </div>
 </div>
 
 <div class="form-group">
   {{ Form::label('cms_url', 'Адрес:', ['class' => 'col-md-2 control-label']) }}
   <div class="col-md-10">
     {{ Form::text('cms_url', null, [
-		'class' => 'form-control',
-		'placeholder' => 'http://example.com/acp/'
-	]) }}
+    'class' => 'form-control',
+    'placeholder' => 'http://example.com/acp/'
+  ]) }}
   </div>
 </div>
 
@@ -65,9 +65,9 @@
   {{ Form::label('cms_user', 'Учетка:', ['class' => 'col-md-2 control-label']) }}
   <div class="col-md-10">
     {{ Form::text('cms_user', null, [
-		'class' => 'form-control',
-		'placeholder' => 'admin'
-	]) }}
+    'class' => 'form-control',
+    'placeholder' => 'admin'
+  ]) }}
   </div>
 </div>
 
@@ -82,9 +82,9 @@
   {{ Form::label('cms_type', 'Название CMS:', ['class' => 'col-md-2 control-label']) }}
   <div class="col-md-10">
     {{ Form::text('cms_type', null, [
-		'class' => 'form-control',
-		'placeholder' => 'korden.cms'
-	]) }}
+    'class' => 'form-control',
+    'placeholder' => 'korden.cms'
+  ]) }}
   </div>
 </div>
 
@@ -92,26 +92,26 @@
   {{ Form::label('cms_version', 'Версия:', ['class' => 'col-md-2 control-label']) }}
   <div class="col-md-10">
     {{ Form::text('cms_version', null, [
-		'class' => 'form-control',
-		'placeholder' => '3.5'
-	]) }}
+    'class' => 'form-control',
+    'placeholder' => '3.5'
+  ]) }}
   </div>
 </div>
 
 <hr>
 <div class="row">
-	<div class="col-md-10 col-md-offset-2">
-		<h3 style="margin-bottom: 0.5em;">FTP</h3>
-	</div>
+  <div class="col-md-10 col-md-offset-2">
+    <h3 style="margin-bottom: 0.5em;">FTP</h3>
+  </div>
 </div>
 
 <div class="form-group">
   {{ Form::label('ftp_host', 'Хост:', ['class' => 'col-md-2 control-label']) }}
   <div class="col-md-10">
     {{ Form::text('ftp_host', null, [
-		'class' => 'form-control',
-		'placeholder' => 'ftp://example.com/'
-	]) }}
+    'class' => 'form-control',
+    'placeholder' => 'ftp://example.com/'
+  ]) }}
   </div>
 </div>
 
@@ -119,9 +119,9 @@
   {{ Form::label('ftp_user', 'Учетка:', ['class' => 'col-md-2 control-label']) }}
   <div class="col-md-10">
     {{ Form::text('ftp_user', null, [
-		'class' => 'form-control',
-		'placeholder' => 'user'
-	]) }}
+    'class' => 'form-control',
+    'placeholder' => 'user'
+  ]) }}
   </div>
 </div>
 
@@ -134,18 +134,18 @@
 
 <hr>
 <div class="row">
-	<div class="col-md-10 col-md-offset-2">
-		<h3 style="margin-bottom: 0.5em;">SSH</h3>
-	</div>
+  <div class="col-md-10 col-md-offset-2">
+    <h3 style="margin-bottom: 0.5em;">SSH</h3>
+  </div>
 </div>
 
 <div class="form-group">
   {{ Form::label('ssh_host', 'Хост:', ['class' => 'col-md-2 control-label']) }}
   <div class="col-md-10">
     {{ Form::text('ssh_host', null, [
-		'class' => 'form-control',
-		'placeholder' => 'ssh://example.com/'
-	]) }}
+    'class' => 'form-control',
+    'placeholder' => 'ssh://example.com/'
+  ]) }}
   </div>
 </div>
 
@@ -153,9 +153,9 @@
   {{ Form::label('ssh_user', 'Учетка:', ['class' => 'col-md-2 control-label']) }}
   <div class="col-md-10">
     {{ Form::text('ssh_user', null, [
-		'class' => 'form-control',
-		'placeholder' => 'user'
-	]) }}
+    'class' => 'form-control',
+    'placeholder' => 'user'
+  ]) }}
   </div>
 </div>
 
@@ -168,18 +168,18 @@
 
 <hr>
 <div class="row">
-	<div class="col-md-10 col-md-offset-2">
-		<h3 style="margin-bottom: 0.5em;">БД</h3>
-	</div>
+  <div class="col-md-10 col-md-offset-2">
+    <h3 style="margin-bottom: 0.5em;">БД</h3>
+  </div>
 </div>
 
 <div class="form-group">
   {{ Form::label('db_pma', 'phpMyAdmin:', ['class' => 'col-md-2 control-label']) }}
   <div class="col-md-10">
     {{ Form::text('db_pma', null, [
-		'class' => 'form-control',
-		'placeholder' => 'http://pma.example.com/'
-	]) }}
+    'class' => 'form-control',
+    'placeholder' => 'http://pma.example.com/'
+  ]) }}
   </div>
 </div>
 
@@ -187,9 +187,9 @@
   {{ Form::label('db_host', 'Хост:', ['class' => 'col-md-2 control-label']) }}
   <div class="col-md-10">
     {{ Form::text('db_host', null, [
-		'class' => 'form-control',
-		'placeholder' => 'localhost'
-	]) }}
+    'class' => 'form-control',
+    'placeholder' => 'localhost'
+  ]) }}
   </div>
 </div>
 
@@ -197,9 +197,9 @@
   {{ Form::label('db_user', 'Учетка:', ['class' => 'col-md-2 control-label']) }}
   <div class="col-md-10">
     {{ Form::text('db_user', null, [
-		'class' => 'form-control',
-		'placeholder' => 'user'
-	]) }}
+    'class' => 'form-control',
+    'placeholder' => 'user'
+  ]) }}
   </div>
 </div>
 

@@ -22,8 +22,8 @@
           <td>{{ $user->id }}</td>
           <td>
             <a href="{{ action("$self@show", $user->id) }}">
-				{{ $user->email }}
-			</a>
+              {{ $user->email }}
+            </a>
           </td>
           <td>{{ $user->active ? 'Да' : 'Нет' }}</td>
         </tr>

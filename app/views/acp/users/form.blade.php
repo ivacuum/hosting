@@ -5,7 +5,7 @@
 @endif
 
 <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-  {{ Form::label('email', 'Элетронная почта:', ['class' => 'col-md-2 control-label']) }}
+  {{ Form::label('email', 'Электронная почта:', ['class' => 'col-md-2 control-label']) }}
   <div class="col-md-10">
     {{ Form::email('email', null, ['class' => 'form-control']) }}
   </div>
