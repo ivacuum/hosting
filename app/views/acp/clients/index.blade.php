@@ -7,7 +7,10 @@
   <a href="{{ action("$self@create") }}" class="boxed-group-action btn btn-success">
     <span class="glyphicon glyphicon-plus"></span>
   </a>
-  <h3>Клиенты</h3>
+  <h3>
+	  Клиенты
+	  <span class="label label-default">{{ sizeof($clients) }}</span>
+  </h3>
   <div class="boxed-group-inner">
     <table class="table-stats">
       <thead>
@@ -18,9 +21,9 @@
           <th>Комментарии</th>
         </tr>
       </thead>
-      @foreach ($clients as $client)
+      @foreach ($clients as $i => $client)
         <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $client->id) }}">
-          <td>{{ $client->id }}</td>
+          <td>{{ $i + 1 }}</td>
           <td>
             <a href="{{ action("$self@show", $client->id) }}">{{ $client->name }}</a>
           </td>

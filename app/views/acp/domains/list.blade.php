@@ -3,7 +3,10 @@
   <a href="{{ action('Acp\Domains@create') }}" class="boxed-group-action btn btn-success">
     <span class="glyphicon glyphicon-plus"></span>
   </a>
-  <h3>Домены [{{ sizeof($domains) }}]</h3>
+  <h3>
+	  Домены
+	  <span class="label label-default">{{ sizeof($domains) }}</span>
+  </h3>
   <div class="boxed-group-inner">
     <table class="table-stats">
       <thead>
