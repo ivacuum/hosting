@@ -18,7 +18,8 @@ class YandexUser extends Eloquent
 	
 	public function domains()
 	{
-		return $this->hasMany('Domain');
+		return $this->hasMany('Domain')
+			->orderBy('domain');
 	}
 	
 	public static function boot()

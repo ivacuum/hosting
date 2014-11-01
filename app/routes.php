@@ -2,7 +2,7 @@
 
 // Bindings
 Route::bind('domain', function($value) {
-	return Domain::whereDomain($value)->first();
+	return Domain::whereDomain($value)->firstOrFail();
 });
 
 // Models

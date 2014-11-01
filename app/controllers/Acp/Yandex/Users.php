@@ -13,8 +13,9 @@ class Users extends BaseController
 {
 	public function index()
 	{
-		return View::make($this->view)
-			->withUsers(YandexUser::get());
+		$users = YandexUser::orderBy('account')->get();
+		
+		return View::make($this->view, compact('users'));
 	}
 	
 	public function create()
@@ -60,7 +61,7 @@ class Users extends BaseController
 			$user_domains[] = $id;
 		}
 
-		if ($user_domains) {
+		if (!empty($user_domains)) {
 			Domain::whereIn('id', $user_domains)
 				->update(['yandex_user_id' => $user->id]);
 		}
@@ -91,8 +92,6 @@ class Users extends BaseController
 
 		$user->save();
 		
-		$anon_domains = $user_domains = [];
-		
 		// Domains w/out yandex user specified
 		foreach ($user->domains as $domain) {
 			if (!Input::get("domains.{$domain->id}")) {
@@ -100,7 +99,7 @@ class Users extends BaseController
 			}
 		}
 		
-		if ($anon_domains) {
+		if (!empty($anon_domains)) {
 			Domain::whereIn('id', $anon_domains)
 				->update(['yandex_user_id' => 0]);
 		}
@@ -110,7 +109,7 @@ class Users extends BaseController
 			$user_domains[] = $id;
 		}
 
-		if ($user_domains) {
+		if (!empty($user_domains)) {
 			Domain::whereIn('id', $user_domains)
 				->update(['yandex_user_id' => $user->id]);
 		}
