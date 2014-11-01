@@ -17,6 +17,10 @@ App::down(function() {
 	return Response::make('Be right back!', 503);
 });
 
+App::missing(function(Exception $e) {
+	return Response::make('404 Not Found', 404);
+});
+
 require app_path() . '/events.php';
 require app_path() . '/filters.php';
 require app_path() . '/helpers.php';
