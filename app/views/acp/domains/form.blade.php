@@ -17,7 +17,7 @@
 <div class="form-group">
   {{ Form::label('client_id', 'Клиент:', ['class' => 'col-md-2 control-label']) }}
   <div class="col-md-10">
-    {{ Form::select('client_id', Client::find(1)->lists('name', 'id'), null, [
+    {{ Form::select('client_id', Client::all()->lists('name', 'id'), null, [
       'class' => 'form-control'
     ]) }}
   </div>
@@ -220,7 +220,7 @@
 <div class="form-group">
   {{ Form::label('yandex_user_id', 'Учетка:', ['class' => 'col-md-2 control-label']) }}
   <div class="col-md-10">
-    {{ Form::select('yandex_user_id', [0 => ''] + YandexUser::find(1)->lists('account', 'id'), null, [
+    {{ Form::select('yandex_user_id', [0 => ''] + YandexUser::all()->lists('account', 'id'), null, [
       'class' => 'form-control'
     ]) }}
   </div>
