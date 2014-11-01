@@ -1,5 +1,7 @@
 <?php
 
+use GuzzleHttp\Client;
+
 class SshController extends BaseController
 {
 	protected $fw = ['drupal', 'fw.dev', 'fw.production', 'fw', 'joomla', 'korden.cms', 'modx', 'netcat', 'simpla', 'wordpress'];
@@ -75,10 +77,29 @@ class SshController extends BaseController
 	
 	public function papertrail()
 	{
-		// curl -v -H "X-Papertrail-Token: Abo63MMiysrsSk2vrihm" https://papertrailapp.com/api/v1/systems.json
+		$events = $this->getEvents()->events;
+		
+		return View::make('papertrail', compact('events'));
 	}
 	
 	public function hostsite()
 	{
+	}
+	
+	protected function getEvents($max_id = false)
+	{
+		$client = new Client([
+			'base_url' => 'https://papertrailapp.com/api/v1/',
+			'defaults' => [
+				'headers' => ['X-Papertrail-Token' => 'Abo63MMiysrsSk2vrihm'],
+			],
+		]);
+		
+		$system_id = Input::get('system_id');
+		$params = compact('max_id', 'system_id');
+		
+		$response = $client->get('events/search.json', ['query' => $params]);
+		
+		return $response->json(['object' => true]);
 	}
 }
