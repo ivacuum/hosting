@@ -26,7 +26,7 @@ class Users extends BaseController
 	{
 		$user->delete();
 		
-		return Redirect::route("{$this->prefix}.index");
+		return Redirect::action("{$this->class}@index");
 	}
 	
 	public function edit(User $user)
@@ -48,7 +48,7 @@ class Users extends BaseController
 		$validator = Validator::make(Input::all(), User::rules());
 		
 		if ($validator->fails()) {
-			return Redirect::route("{$this->prefix}.create")
+			return Redirect::action("{$this->class}@create")
 				->withErrors($validator)
 				->withInput(Input::all());
 		}
@@ -63,7 +63,7 @@ class Users extends BaseController
 			$this->mailCredentials($user, $password);
 		}
 		
-		return Redirect::route("{$this->prefix}.show", $user->id);
+		return Redirect::action("{$this->class}@show", $user->id);
 	}
 	
 	public function update(User $user)
@@ -78,7 +78,7 @@ class Users extends BaseController
 		);
 		
 		if ($validator->fails()) {
-			return Redirect::route("{$this->prefix}.edit", $user->id)
+			return Redirect::action("{$this->class}@edit", $user->id)
 				->withErrors($validator)
 				->withInput(Input::all());
 		}
@@ -96,12 +96,12 @@ class Users extends BaseController
 			$this->mailCredentials($user, $password);
 		}
 		
-		return Redirect::route("{$this->prefix}.index");
+		return Redirect::action("{$this->class}@index");
 	}
 	
 	protected function mailCredentials(User $user, $password)
 	{
-		$route = route('acp.home');
+		$route = action('Acp\Home@index');
 		$vars  = compact('user', 'password', 'route');
 		
 		Mail::send('emails.users.credentials', $vars, function($mail) use ($user, $route) {

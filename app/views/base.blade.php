@@ -26,8 +26,8 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           @section('global_menu')
-          <li><a href="{{ route('acp.clients.index') }}">Клиенты</a></li>
-          <li><a href="{{ route('acp.domains.index') }}">Домены</a></li>
+          <li><a href="{{ action('Acp\Clients@index') }}">Клиенты</a></li>
+          <li><a href="{{ action('Acp\Domains@index') }}">Домены</a></li>
           @show
         </ul>
         @if (Auth::check())
@@ -38,13 +38,13 @@
                 <li><a href="/">Личный кабинет</a></li>
                 <li class="divider"></li>
                 --}}
-                <li><a href="{{ route('logout') }}">Выход</a></li>
+                <li><a href="{{ action('LoginController@getLogout') }}">Выход</a></li>
               </ul>
             </li>
           </ul>
         @else
           <form class="navbar-form navbar-right">
-            <a class="btn btn-default" href="{{ route('login') }}">Вход</a>
+            <a class="btn btn-default" href="{{ action('LoginController@getLogin') }}">Вход</a>
           </form>
         @endif
       </div>
@@ -82,7 +82,7 @@
       <li class="text-muted">&copy; {{ date('Y') }} vacuum</li>
       <li class="text-muted">&middot;</li>
       <li><a href="mailto:{{ Config::get('email.support') }}">Обратная связь</a></li>
-	  <li><a href="{{ route('parser.vk') }}">Парсер ВК</a></li>
+      <li><a href="{{ action('ParserVk@index') }}">Парсер ВК</a></li>
     </ul>
   </div>
 </footer>

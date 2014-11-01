@@ -24,7 +24,7 @@ class Clients extends BaseController
 	{
 		$client->delete();
 		
-		return Redirect::route("{$this->prefix}.index");
+		return Redirect::action("{$this->class}@index");
 	}
 	
 	public function edit(Client $client)
@@ -42,14 +42,14 @@ class Clients extends BaseController
 		$validator = Validator::make(Input::all(), Client::rules());
 		
 		if ($validator->fails()) {
-			return Redirect::route("{$this->prefix}.create")
+			return Redirect::action("{$this->class}@create")
 				->withErrors($validator)
 				->withInput(Input::all());
 		}
 		
 		$client = Client::create(Input::all());
 		
-		return Redirect::route("{$this->prefix}.show", $client->id);
+		return Redirect::action("{$this->class}@show", $client->id);
 	}
 	
 	public function update(Client $client)
@@ -57,13 +57,13 @@ class Clients extends BaseController
 		$validator = Validator::make(Input::all(), Client::rules($client->id));
 		
 		if ($validator->fails()) {
-			return Redirect::route("{$this->prefix}.edit", $client->id)
+			return Redirect::action("{$this->class}@edit", $client->id)
 				->withErrors($validator)
 				->withInput(Input::all());
 		}
 
 		$client->update(Input::all());
 
-		return Redirect::route("{$this->prefix}.index");
+		return Redirect::action("{$this->class}@index");
 	}
 }

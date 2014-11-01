@@ -34,7 +34,7 @@ class LoginController extends BaseController
 			return Redirect::intended('/');
 		}
 	
-		return Redirect::route('login')
+		return Redirect::action('LoginController@getLogin')
 			->with('message', 'Email/password combination is incorrect')
 			->withInput();
 	}

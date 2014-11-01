@@ -77,7 +77,7 @@ class Domains extends BaseController
 	{
 		$domain->delete();
 		
-		return Redirect::route("{$this->prefix}.index");
+		return Redirect::action("{$this->class}@index");
 	}
 	
 	public function edit(Domain $domain)
@@ -95,7 +95,7 @@ class Domains extends BaseController
 		
 		Session::flash('message', $message);
 		
-		return Redirect::route("{$this->prefix}.show", $domain->domain);
+		return Redirect::action("{$this->class}@show", $domain->domain);
 	}
 	
 	public function show(Domain $domain)
@@ -108,14 +108,14 @@ class Domains extends BaseController
 		$validator = Validator::make(Input::all(), Domain::rules());
 		
 		if ($validator->fails()) {
-			return Redirect::route("{$this->prefix}.create")
+			return Redirect::action("{$this->class}@create")
 				->withErrors($validator)
 				->withInput(Input::all());
 		}
 		
 		$domain = Domain::create(Input::all());
 		
-		return Redirect::route("{$this->prefix}.show", $domain->domain);
+		return Redirect::action("{$this->class}@show", $domain->domain);
 	}
 	
 	public function update(Domain $domain)
@@ -123,7 +123,7 @@ class Domains extends BaseController
 		$validator = Validator::make(Input::all(), Domain::rules($domain->id));
 		
 		if ($validator->fails()) {
-			return Redirect::route("{$this->prefix}.edit", $domain->domain)
+			return Redirect::action("{$this->class}@edit", $domain->domain)
 				->withErrors($validator)
 				->withInput(Input::all());
 		}
@@ -143,7 +143,7 @@ class Domains extends BaseController
 		
 		$goto = Input::get('goto', '');
 
-		return $goto ? Redirect::to($goto) : Redirect::route("{$this->prefix}.index");
+		return $goto ? Redirect::to($goto) : Redirect::action("{$this->class}@index");
 	}
 	
 	public function whois(Domain $domain)
