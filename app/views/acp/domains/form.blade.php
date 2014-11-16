@@ -47,34 +47,20 @@
 <hr>
 <div class="row">
   <div class="col-md-10 col-md-offset-2">
-    <h3 style="margin-bottom: 0.5em;">Реквизиты доступа к системе управления сайтом</h3>
+    <h3 style="margin-bottom: 0.5em;">Реквизиты доступа к сайту</h3>
   </div>
 </div>
 
 <div class="form-group">
-  {{ Form::label('cms_url', 'Адрес:', ['class' => 'col-md-2 control-label']) }}
+  {{ Form::label('cms_user', 'CMS', ['class' => 'col-md-2 control-label']) }}
   <div class="col-md-10">
-    {{ Form::text('cms_url', null, [
-    'class' => 'form-control',
-    'placeholder' => 'http://example.com/acp/'
-  ]) }}
-  </div>
-</div>
-
-<div class="form-group">
-  {{ Form::label('cms_user', 'Учетка:', ['class' => 'col-md-2 control-label']) }}
-  <div class="col-md-10">
-    {{ Form::text('cms_user', null, [
-    'class' => 'form-control',
-    'placeholder' => 'admin'
-  ]) }}
-  </div>
-</div>
-
-<div class="form-group">
-  {{ Form::label('cms_pass', 'Пароль:', ['class' => 'col-md-2 control-label']) }}
-  <div class="col-md-10">
-    {{ Form::password('cms_pass', ['class' => 'form-control']) }}
+    <div class="input-group">
+      {{ Form::text('cms_user', null, ['class' => 'form-control', 'placeholder' => 'admin']) }}
+      <span class="input-group-addon">:</span>
+      {{ Form::password('cms_pass', ['class' => 'form-control']) }}
+      <span class="input-group-addon">@</span>
+      {{ Form::text('cms_url', null, ['class' => 'form-control', 'placeholder' => 'http://example.com/acp/']) }}
+    </div>
   </div>
 </div>
 
@@ -89,7 +75,7 @@
 </div>
 
 <div class="form-group">
-  {{ Form::label('cms_version', 'Версия:', ['class' => 'col-md-2 control-label']) }}
+  {{ Form::label('cms_version', 'Версия CMS:', ['class' => 'col-md-2 control-label']) }}
   <div class="col-md-10">
     {{ Form::text('cms_version', null, [
     'class' => 'form-control',
@@ -98,78 +84,42 @@
   </div>
 </div>
 
-<hr>
-<div class="row">
-  <div class="col-md-10 col-md-offset-2">
-    <h3 style="margin-bottom: 0.5em;">FTP</h3>
+<div class="form-group">
+  {{ Form::label('ftp_user', 'FTP', ['class' => 'col-md-2 control-label']) }}
+  <div class="col-md-10">
+    <div class="input-group">
+      {{ Form::text('ftp_user', null, ['class' => 'form-control', 'placeholder' => 'user']) }}
+      <span class="input-group-addon">:</span>
+      {{ Form::password('ftp_pass', ['class' => 'form-control']) }}
+      <span class="input-group-addon">@</span>
+      {{ Form::text('ftp_host', null, ['class' => 'form-control', 'placeholder' => 'ftp://example.com/']) }}
+    </div>
   </div>
 </div>
 
 <div class="form-group">
-  {{ Form::label('ftp_host', 'Хост:', ['class' => 'col-md-2 control-label']) }}
+  {{ Form::label('ssh_user', 'SSH', ['class' => 'col-md-2 control-label']) }}
   <div class="col-md-10">
-    {{ Form::text('ftp_host', null, [
-    'class' => 'form-control',
-    'placeholder' => 'ftp://example.com/'
-  ]) }}
+    <div class="input-group">
+      {{ Form::text('ssh_user', null, ['class' => 'form-control', 'placeholder' => 'user']) }}
+      <span class="input-group-addon">:</span>
+      {{ Form::password('ssh_pass', ['class' => 'form-control']) }}
+      <span class="input-group-addon">@</span>
+      {{ Form::text('ssh_host', null, ['class' => 'form-control', 'placeholder' => 'ssh://example.com/']) }}
+    </div>
   </div>
 </div>
 
 <div class="form-group">
-  {{ Form::label('ftp_user', 'Учетка:', ['class' => 'col-md-2 control-label']) }}
+  {{ Form::label('db_user', 'БД', ['class' => 'col-md-2 control-label']) }}
   <div class="col-md-10">
-    {{ Form::text('ftp_user', null, [
-    'class' => 'form-control',
-    'placeholder' => 'user'
-  ]) }}
-  </div>
-</div>
-
-<div class="form-group">
-  {{ Form::label('ftp_pass', 'Пароль:', ['class' => 'col-md-2 control-label']) }}
-  <div class="col-md-10">
-    {{ Form::password('ftp_pass', ['class' => 'form-control']) }}
-  </div>
-</div>
-
-<hr>
-<div class="row">
-  <div class="col-md-10 col-md-offset-2">
-    <h3 style="margin-bottom: 0.5em;">SSH</h3>
-  </div>
-</div>
-
-<div class="form-group">
-  {{ Form::label('ssh_host', 'Хост:', ['class' => 'col-md-2 control-label']) }}
-  <div class="col-md-10">
-    {{ Form::text('ssh_host', null, [
-    'class' => 'form-control',
-    'placeholder' => 'ssh://example.com/'
-  ]) }}
-  </div>
-</div>
-
-<div class="form-group">
-  {{ Form::label('ssh_user', 'Учетка:', ['class' => 'col-md-2 control-label']) }}
-  <div class="col-md-10">
-    {{ Form::text('ssh_user', null, [
-    'class' => 'form-control',
-    'placeholder' => 'user'
-  ]) }}
-  </div>
-</div>
-
-<div class="form-group">
-  {{ Form::label('ssh_pass', 'Пароль:', ['class' => 'col-md-2 control-label']) }}
-  <div class="col-md-10">
-    {{ Form::password('ssh_pass', ['class' => 'form-control']) }}
-  </div>
-</div>
-
-<hr>
-<div class="row">
-  <div class="col-md-10 col-md-offset-2">
-    <h3 style="margin-bottom: 0.5em;">БД</h3>
+    <div class="input-group">
+      {{ Form::text('db_user', null, ['class' => 'form-control', 'placeholder' => 'user']) }}
+      <span class="input-group-addon">:</span>
+      {{ Form::password('db_pass', ['class' => 'form-control']) }}
+      <span class="input-group-addon">@</span>
+      {{ Form::text('db_host', null, ['class' => 'form-control', 'placeholder' => 'localhost']) }}
+    </div>
   </div>
 </div>
 
@@ -180,33 +130,6 @@
     'class' => 'form-control',
     'placeholder' => 'http://pma.example.com/'
   ]) }}
-  </div>
-</div>
-
-<div class="form-group">
-  {{ Form::label('db_host', 'Хост:', ['class' => 'col-md-2 control-label']) }}
-  <div class="col-md-10">
-    {{ Form::text('db_host', null, [
-    'class' => 'form-control',
-    'placeholder' => 'localhost'
-  ]) }}
-  </div>
-</div>
-
-<div class="form-group">
-  {{ Form::label('db_user', 'Учетка:', ['class' => 'col-md-2 control-label']) }}
-  <div class="col-md-10">
-    {{ Form::text('db_user', null, [
-    'class' => 'form-control',
-    'placeholder' => 'user'
-  ]) }}
-  </div>
-</div>
-
-<div class="form-group">
-  {{ Form::label('db_pass', 'Пароль:', ['class' => 'col-md-2 control-label']) }}
-  <div class="col-md-10">
-    {{ Form::password('db_pass', ['class' => 'form-control']) }}
   </div>
 </div>
 
