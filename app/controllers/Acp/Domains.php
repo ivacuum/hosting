@@ -68,9 +68,23 @@ class Domains extends BaseController
 		return View::make($this->view, compact('back_url', 'domains', 'filter', 'sort'));
 	}
 	
+	public function addNsRecord(Domain $domain)
+	{
+		extract(Input::only('type', 'content', 'subdomain'));
+		
+		return $domain->addNsRecord($type, $content, $subdomain);
+	}
+
 	public function create()
 	{
 		return View::make($this->view);
+	}
+	
+	public function deleteNsRecord(Domain $domain)
+	{
+		$id = Input::get('record_id');
+		
+		return $domain->deleteNsRecord($id);
 	}
 	
 	public function destroy(Domain $domain)
@@ -85,15 +99,18 @@ class Domains extends BaseController
 		return View::make($this->view, compact('domain'));
 	}
 	
+	public function editNsRecord(Domain $domain)
+	{
+		extract(Input::only('record_id', 'type', 'content', 'subdomain'));
+		
+		return $domain->editNsRecord($record_id, $type, $content, $subdomain);
+	}
+	
 	public function nsRecords(Domain $domain)
 	{
-		$records = $domain->getNsRecords();
+		$records = $domain->getNsRecords()->domains->domain->response->record;
 		
-		foreach ($records->domains->domain->response->record as $record) {
-			var_dump($record);
-		}
-		
-		return;
+		return View::make($this->view, compact('domain', 'records'));
 	}
 	
 	public function nsServers(Domain $domain)

@@ -56,4 +56,8 @@
     <samp class="js-deferred-load" data-deferred-url="{{ action("$self@whois", $domain->domain) }}">Идет загрузка...</samp>
   </div>
 </div>
+
+@if ($domain->yandex_user_id)
+  <div class="js-deferred-load ns-records-container" data-deferred-url="{{ action("$self@nsRecords", $domain->domain) }}"></div>
+@endif
 @stop

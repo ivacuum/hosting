@@ -12,7 +12,7 @@ class BaseController extends Controller
 		$this->class  = get_class($this);
 		$this->method = $this->getCurrentMethod();
 		$this->prefix = strtolower(str_replace('\\', '.', get_class($this)));
-		$this->view   = "{$this->prefix}.{$this->method}";
+		$this->view   = $this->prefix.".".snake_case($this->method);
 		
 		$this->beforeFilter(function() {
 			View::share([

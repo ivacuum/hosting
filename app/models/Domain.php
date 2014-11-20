@@ -48,6 +48,87 @@ class Domain extends Eloquent
 		return $this->belongsTo('YandexUser');
 	}
 	
+	/**
+	* Добавление днс-записей через API Яндекса
+	*/
+	public function addNsRecord($type, $content, $subdomain = '')
+	{
+		if (!$this->yandex_user_id) {
+			throw new \Exception('Домен не связан с учеткой в Яндексе');
+		}
+		
+		$allowed_types = ['a', 'aaaa', 'cname', 'mx', 'ns', 'srv', 'txt'];
+		
+		if (!in_array($type, $allowed_types)) {
+			throw new \Exception('Неподдерживаемый тип записи');
+		}
+		
+		$client = new Client(['base_url' => self::PDD_API_URL]);
+		
+		$response = $client->get("add_{$type}_record.xml", [
+			'query' => [
+				'token'     => $this->yandexUser->token,
+				'domain'    => $this->domain,
+				'subdomain' => $subdomain,
+				'content'   => $content,
+			],
+		]);
+		
+		return $response->xml()->domains->error;
+	}
+	
+	/**
+	* Удаление днс-записей через API Яндекса
+	*/
+	public function deleteNsRecord($id)
+	{
+		if (!$this->yandex_user_id) {
+			throw new \Exception('Домен не связан с учеткой в Яндексе');
+		}
+		
+		$client = new Client(['base_url' => self::PDD_API_URL]);
+		
+		$response = $client->get('delete_record.xml', [
+			'query' => [
+				'token'     => $this->yandexUser->token,
+				'domain'    => $this->domain,
+				'record_id' => $id,
+			],
+		]);
+		
+		return $response->xml()->domains->error;
+	}
+	
+	/**
+	* Редактирование днс-записей через API Яндекса
+	*/
+	public function editNsRecord($id, $type, $content, $subdomain = '')
+	{
+		if (!$this->yandex_user_id) {
+			throw new \Exception('Домен не связан с учеткой в Яндексе');
+		}
+		
+		$allowed_types = ['a', 'aaaa', 'cname', 'mx', 'ns', 'srv', 'txt'];
+		
+		if (!in_array($type, $allowed_types)) {
+			throw new \Exception('Неподдерживаемый тип записи');
+		}
+
+		$client = new Client(['base_url' => self::PDD_API_URL]);
+		
+		$response = $client->get("edit_{$type}_record.xml", [
+			'query' => [
+				'token'     => $this->yandexUser->token,
+				'domain'    => $this->domain,
+				'subdomain' => $subdomain,
+				'record_id' => $id,
+				'content'   => $content,
+			],
+		]);
+		
+		return $response->xml()->domains->error;
+	}
+	
 	public function getDates()
 	{
 		return ['mailed_at', 'queried_at', 'registered_at', 'paid_till'];
