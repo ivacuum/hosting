@@ -15,10 +15,11 @@ return [
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
-			// 'options'   => [
+			'options'   => [
+				PDO::ATTR_TIMEOUT => 3,
 			// 	PDO::MYSQL_ATTR_SSL_CERT => '/usr/local/etc/mysql/ssl/client-cert.pem',
 			// 	PDO::MYSQL_ATTR_SSL_KEY  => '/usr/local/etc/mysql/ssl/client-key.pem',
-			// ],
+			],
 		],
 	],
 
