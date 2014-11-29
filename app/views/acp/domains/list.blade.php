@@ -4,8 +4,8 @@
     <span class="glyphicon glyphicon-plus"></span>
   </a>
   <h3>
-	  Домены
-	  <span class="label label-default">{{ sizeof($domains) }}</span>
+    Домены
+    <span class="label label-default">{{ sizeof($domains) }}</span>
   </h3>
   <div class="boxed-group-inner">
     <table class="table-stats">
@@ -27,7 +27,7 @@
             <a href="http://{{ $domain->domain }}/" target="_blank" style="margin-right: 0.3em;">
               <span class="glyphicon glyphicon-globe"></span>
             </a>
-            <a href="/acp/domains/{{ $domain->domain }}">
+            <a href="/acp/domains/{{ $domain->domain }}" class="link">
               {{ $domain->domain }}
             </a>
           </td>

@@ -66,7 +66,7 @@
         <span class="glyphicon glyphicon-heart"></span>
         <span class="text-muted">{{ $post['likes'] }}</span>
         <span class="glyphicon glyphicon-link"></span>
-        <a href="{{ $post['url'] }}">permalink</a>
+        <a href="{{ $post['url'] }}" class="link">permalink</a>
       </samp>
     </div>
   </div>

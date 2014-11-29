@@ -26,7 +26,7 @@
   @endif
 </h2>
 <div style="margin: 1em 0;">
-  <samp style="white-space: pre;"><strong>client</strong>: <a href="{{ action('Acp\Clients@show', $domain->client->id) }}">{{ $domain->client->name }}</a>
+  <samp style="white-space: pre;"><strong>client</strong>: <a href="{{ action('Acp\Clients@show', $domain->client->id) }}" class="link">{{ $domain->client->name }}</a>
 @if ($domain->yandex_user_id)
 <strong>yandex</strong>: {{ $domain->yandexUser->account }}
 @endif

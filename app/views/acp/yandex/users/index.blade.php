@@ -24,7 +24,7 @@
         <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $user->id) }}">
           <td>{{ $i + 1 }}</td>
           <td>
-            <a href="{{ action("$self@show", $user->id) }}">
+            <a href="{{ action("$self@show", $user->id) }}" class="link">
               {{ $user->account }}
             </a>
           </td>

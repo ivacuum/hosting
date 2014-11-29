@@ -1,0 +1,10 @@
+# Dependencies
+bower (npm)
+composer
+redis
+
+# Install
+composer install
+bower install
+artisan migrate
+touch .env.php

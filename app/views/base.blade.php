@@ -81,8 +81,8 @@
     <ul class="list-inline">
       <li class="text-muted">&copy; {{ date('Y') }} vacuum</li>
       <li class="text-muted">&middot;</li>
-      <li><a href="mailto:{{ Config::get('email.support') }}">Обратная связь</a></li>
-      <li><a href="{{ action('ParserVk@index') }}">Парсер ВК</a></li>
+      <li><a href="mailto:{{ Config::get('email.support') }}" class="link">Обратная связь</a></li>
+      <li><a href="{{ action('ParserVk@index') }}" class="link">Парсер ВК</a></li>
     </ul>
   </div>
 </footer>
