@@ -187,6 +187,8 @@ class Domains extends BaseController
 		
 		$domain->updateWhois();
 		
-		return nl2br(trim($domain->getWhoisData()));
+		$whois = nl2br(trim($domain->getWhoisData()));
+		
+		return View::make($this->view, compact('whois'));
 	}
 }

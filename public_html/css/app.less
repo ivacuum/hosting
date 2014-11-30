@@ -12,18 +12,25 @@ body { color: #404040; }
 .link,
 .pseudo {
   border-bottom: 1px solid;
-  border-color: rgba(48, 165, 204, 0.3);
-  color: #30a5cc;
+  border-color: rgba(66, 139, 202, 0.3);
+  color: #428bca;
   cursor: pointer;
   outline: 0;
   text-decoration: none;
 }
 
 .link:hover,
-.pseudo:hover {
-  border-color: rgba(210, 50, 50, 0.3) !important;
+.pseudo:hover,
+.link.active,
+.pseudo.active {
+  border-color: rgba(210, 50, 50, 0.5) !important;
   color: #d23232 !important;
   text-decoration: none;
+}
+
+.link.active,
+.pseudo.active {
+  border: none;
 }
 
 .link:visited,
@@ -33,7 +40,7 @@ body { color: #404040; }
 }
 
 .pseudo {
-  border-bottom-style: dotted !important;
+  border-bottom-style: dotted;
 }
 
 code,
@@ -285,6 +292,22 @@ ul.inline > li:first-child {
   margin: 0 0 0.3em 0;
 
   form { margin: 0; }
+}
+
+.panel-body {
+  .boxed-group {
+    margin-bottom: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  
+  &.flush { padding: 0; }
+}
+
+.panel-no-top-border {
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .progress {

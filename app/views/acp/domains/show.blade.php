@@ -38,26 +38,33 @@
 <strong>ns</strong>:     {{ $domain->ns }}</samp>
 </div>
 
-@if ($domain->domain_control and $domain->ns != 'dns1.yandex.net dns2.yandex.net')
-  {{ Form::open(['action' => ["$self@setYandexNs", $domain->domain]]) }}
-  <p>
-    <button type="submit" class="btn btn-default">
-      Установить днс Яндекса
-    </button>
-  </p>
-  {{ Form::close() }}
-@endif
+<ul class="list-inline" style="margin-top: 2em;">
+  <li>
+    <h3>
+      <a class="active pseudo js-ajax" data-ajax-url="{{ action("$self@whois", $domain->domain) }}">
+        Whois
+      </a>
+    </h3>
+  </li>
+  @if ($domain->yandex_user_id)
+    <li>
+      <h3>
+        <a class="pseudo js-ajax">
+          Почта
+        </a>
+      </h3>
+    </li>
+    <li>
+      <h3>
+        <a class="pseudo js-ajax" data-ajax-url="{{ action("$self@nsRecords", $domain->domain) }}">
+          DNS
+        </a>
+      </h3>
+    </li>
+  @endif
+</ul>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Whois</h3>
-  </div>
-  <div class="panel-body">
-    <samp class="js-deferred-load" data-deferred-url="{{ action("$self@whois", $domain->domain) }}">Идет загрузка...</samp>
-  </div>
+<div id="ajax_container" class="js-deferred-load" data-deferred-url="{{ action("$self@whois", $domain->domain) }}">
+  Идет загрузка...
 </div>
-
-@if ($domain->yandex_user_id)
-  <div class="js-deferred-load ns-records-container" data-deferred-url="{{ action("$self@nsRecords", $domain->domain) }}"></div>
-@endif
 @stop

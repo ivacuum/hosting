@@ -1,9 +1,15 @@
+@if ($domain->domain_control and $domain->ns != 'dns1.yandex.net dns2.yandex.net')
+  {{ Form::open(['action' => ["$self@setYandexNs", $domain->domain]]) }}
+  <p>
+    <button type="submit" class="btn btn-default">
+      Установить DNS Яндекса
+    </button>
+  </p>
+  {{ Form::close() }}
+@endif
+
 @if (sizeof($records))
 <div class="boxed-group flush">
-  <h3>
-    ДНС-записи
-    <span class="label label-default">{{ sizeof($records) }}</span>
-  </h3>
   <div class="boxed-group-inner">
     <table class="table-stats">
       <thead>
@@ -29,7 +35,7 @@
           </select>
         </td>
         <td><input type="text" name="content"></td>
-        <td><a href="#" class="pseudo js-ns-record-add">добавить днс-запись</a></td>
+        <td><a class="pseudo js-ns-record-add">добавить днс-запись</a></td>
       </tr>
       @foreach ($records as $record)
         <tr class="ns-record-container">
@@ -60,12 +66,14 @@
           </td>
           <td>
             <div class="presentation">
-              <a href="#" class="pseudo js-ns-record-edit">настроить</a>
-              <a href="#" class="pseudo js-ns-record-delete" data-id="{{{ $record['id'] }}}">удалить</a>
+              <a class="pseudo js-ns-record-edit">настроить</a>
+              &nbsp;
+              <a class="pseudo js-ns-record-delete" data-id="{{{ $record['id'] }}}">удалить</a>
             </div>
             <div class="edit hidden">
-              <a href="#" class="pseudo js-ns-record-save">сохранить</a>
-              <a href="#" class="pseudo js-ns-record-cancel">отменить</a>
+              <a class="pseudo js-ns-record-save">сохранить</a>
+              &nbsp;
+              <a class="pseudo js-ns-record-cancel">отменить</a>
             </div>
           </td>
         </tr>
@@ -89,7 +97,7 @@ $(document).ready(function() {
     
     $.post('{{ action("$self@addNsRecord", [$domain->domain]) }}', $('input, select', form).serialize(), function(data) {
       if ('ok' === data) {
-        $('.ns-records-container').each(function() {
+        $('#ajax_container').each(function() {
           $(this).load($(this).data('deferred-url'));
         });
       } else {
@@ -115,7 +123,7 @@ $(document).ready(function() {
     if (confirm('Запись будет удалена. Продолжить?')) {
       $.post('{{ action("$self@deleteNsRecord", [$domain->domain]) }}', { record_id: id, _method: 'DELETE' }, function(data) {
         if ('ok' === data) {
-          $('.ns-records-container').each(function() {
+          $('#ajax_container').each(function() {
             $(this).load($(this).data('deferred-url'));
           });
         } else {
@@ -132,7 +140,7 @@ $(document).ready(function() {
     
     $.post('{{ action("$self@editNsRecord", [$domain->domain]) }}', $('input', form).serialize(), function(data) {
       if ('ok' === data) {
-        $('.ns-records-container').each(function() {
+        $('#ajax_container').each(function() {
           $(this).load($(this).data('deferred-url'));
         });
       } else {

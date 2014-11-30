@@ -3,35 +3,42 @@
 ])
 
 @section('content')
-<ul class="nav nav-pills" style="margin: 0 0 0.5em;">
-  <li class="{{ !$filter ? 'active' : '' }}">
-    <a href="{{ action("$self@index") }}">
-      Активные
-    </a>
+<ul class="list-inline" style="margin: 0 0 0.5em;">
+  <li><h4>Фильтр:</h4></li>
+  <li>
+    <h4>
+      <a href="{{ action("$self@index") }}" class="link {{ !$filter ? 'active' : '' }}">
+        Активные
+      </a>
+    </h4>
   </li>
-  <li class="{{ $filter == 'external' ? 'active' : '' }}">
-    <a href="{{ action("$self@index", ['filter' => 'external']) }}">
-      <span class="glyphicon glyphicon-filter"></span>
-      Внешние
-    </a>
+  <li>
+    <h4>
+      <a href="{{ action("$self@index", ['filter' => 'external']) }}" class="link {{ $filter == 'external' ? 'active' : '' }}">
+        Внешние
+      </a>
+    </h4>
   </li>
-  <li class="{{ $filter == 'no-server' ? 'active' : '' }}">
-    <a href="{{ action("$self@index", ['filter' => 'no-server']) }}">
-      <span class="glyphicon glyphicon-filter"></span>
-      Без сервера
-    </a>
+  <li>
+    <h4>
+      <a href="{{ action("$self@index", ['filter' => 'no-server']) }}" class="link {{ $filter == 'no-server' ? 'active' : '' }}">
+        Без сервера
+      </a>
+    </h4>
   </li>
-  <li class="{{ $filter == 'no-ns' ? 'active' : '' }}">
-    <a href="{{ action("$self@index", ['filter' => 'no-ns']) }}">
-      <span class="glyphicon glyphicon-filter"></span>
-      Без NS
-    </a>
+  <li>
+    <h4>
+      <a href="{{ action("$self@index", ['filter' => 'no-ns']) }}" class="link {{ $filter == 'no-ns' ? 'active' : '' }}">
+        Без NS
+      </a>
+    </h4>
   </li>
-  <li class="{{ $filter == 'inactive' ? 'active' : '' }}">
-    <a href="{{ action("$self@index", ['filter' => 'inactive']) }}">
-      <span class="glyphicon glyphicon-filter"></span>
-      Неактивные
-    </a>
+  <li>
+    <h4>
+      <a href="{{ action("$self@index", ['filter' => 'inactive']) }}" class="link {{ $filter == 'inactive' ? 'active' : '' }}">
+        Неактивные
+      </a>
+    </h4>
   </li>
 </ul>
 
