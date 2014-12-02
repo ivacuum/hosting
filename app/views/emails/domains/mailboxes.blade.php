@@ -1,9 +1,8 @@
 <body>
-<pre>https://mail.{{ $domain->domain }}/
-@foreach ($mailboxes as $mail)
+https://mail.{{ $domain->domain }}/<br>
 
-{{ $mail['user'] }}
-{{ $mail['pass'] }}
+@foreach ($mailboxes as $mail)
+{{ $mail['user'] }}<br>
+{{ $mail['pass'] }}<br><br>
 @endforeach
-</pre>
 </body>
