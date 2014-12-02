@@ -22,7 +22,7 @@
       </thead>
       <tr class="ns-record-container">
         <td class="text-right">
-          <input type="text" name="subdomain" value="@" class="text-right">
+          <input type="text" name="subdomain" value="@" class="text-right" style="width: 100%;">
         </td>
         <td class="text-center">
           <select name="type">
@@ -34,7 +34,7 @@
             <option value="mx">MX</option>
           </select>
         </td>
-        <td><input type="text" name="content"></td>
+        <td><input type="text" name="content" style="width: 100%;"></td>
         <td><a class="pseudo js-ns-record-add">добавить днс-запись</a></td>
       </tr>
       @foreach ($records as $record)
@@ -44,7 +44,7 @@
               {{ $record['subdomain'] }}
             </div>
             <div class="edit hidden">
-              <input type="text" name="subdomain" value="{{{ $record['subdomain'] }}}" class="text-right">
+              <input type="text" name="subdomain" value="{{{ $record['subdomain'] }}}" class="text-right" style="width: 100%;">
             </div>
           </td>
           <td class="text-center">
@@ -59,7 +59,7 @@
               {{ str_limit($record, 35) }}
             </div>
             <div class="edit hidden">
-              <input type="text" name="content" value="{{{ $record }}}">
+              <input type="text" name="content" value="{{{ $record }}}" style="width: 100%;">
               <input type="hidden" name="record_id" value="{{{ $record['id'] }}}">
               <input type="hidden" name="_method" value="PUT">
             </div>

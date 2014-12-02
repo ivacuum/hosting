@@ -5,6 +5,7 @@ use BaseController;
 use Domain;
 use Input;
 use Log;
+use Mail;
 use Redirect;
 use Request;
 use Session;
@@ -68,6 +69,45 @@ class Domains extends BaseController
 		return View::make($this->view, compact('back_url', 'domains', 'filter', 'sort'));
 	}
 	
+	public function addMailbox(Domain $domain)
+	{
+		extract(Input::only('logins', 'forward', 'send_to'));
+		
+		$logins = explode(',', $logins);
+		$mailboxes = [];
+		
+		foreach ($logins as $login) {
+			if ($domain->doesMailboxExist($login)) {
+				throw new \Exception("Ящик {$login} уже существует");
+			}
+		}
+		
+		foreach ($logins as $login) {
+			$password = str_random(16);
+			
+			$domain->addMailbox($login, $password);
+			
+			if ($forward) {
+				$domain->setForwardMail($login, $forward);
+			}
+			
+			$mailboxes[] = [
+				'user' => $login,
+				'pass' => $password,
+			];
+		}
+		
+		$vars = compact('domain', 'forward', 'mailboxes');
+		
+		Mail::send('emails.domains.mailboxes', $vars, function($mail) use ($domain, $send_to) {
+			$mail->to($send_to)->subject("Доступ к почте {$domain->domain}");
+		});
+		
+		Session::flash('message', "Данные высланы на почту {$send_to}");
+		
+		return Redirect::action("{$this->class}@show", [$domain->domain, 'tab' => 'mail']);
+	}
+	
 	public function addNsRecord(Domain $domain)
 	{
 		extract(Input::only('type', 'content', 'subdomain'));
@@ -106,6 +146,11 @@ class Domains extends BaseController
 		return $domain->editNsRecord($record_id, $type, $content, $subdomain);
 	}
 	
+	public function mailboxes(Domain $domain)
+	{
+		return View::make($this->view, compact('domain'));
+	}
+	
 	public function nsRecords(Domain $domain)
 	{
 		$records = $domain->getNsRecords()->domains->domain->response->record;
@@ -133,7 +178,14 @@ class Domains extends BaseController
 	
 	public function show(Domain $domain)
 	{
-		return View::make($this->view, compact('domain'));
+		switch (Input::get('tab')) {
+			case 'dns':   $tab = 'nsRecords'; break;
+			case 'mail':  $tab = 'mailboxes'; break;
+			case 'whois': $tab = 'whois'; break;
+			default:      $tab = 'whois';
+		}
+		
+		return View::make($this->view, compact('domain', 'tab'));
 	}
 	
 	public function store()

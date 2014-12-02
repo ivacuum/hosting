@@ -48,6 +48,30 @@ class Domain extends Eloquent
 		return $this->belongsTo('YandexUser');
 	}
 	
+	public function addMailbox($login, $password)
+	{
+		if (!$this->yandex_user_id) {
+			throw new \Exception('Домен не связан с учеткой в Яндексе');
+		}
+		
+		$client = new Client(['base_url' => self::PDD_API_URL]);
+		
+		$response = $client->get('/api/reg_user.xml', [
+			'query' => [
+				'token'  => $this->yandexUser->token,
+				'domain' => $this->domain,
+				'login'  => $login,
+				'passwd' => $password,
+			],
+		]);
+		
+		if ($response->xml()->status->success) {
+			return 'ok';
+		} else {
+			return $response->xml()->status->error;
+		}
+	}
+	
 	/**
 	* Добавление днс-записей через API Яндекса
 	*/
@@ -199,6 +223,24 @@ class Domain extends Eloquent
 		return $data;
 	}
 	
+	public function doesMailboxExist($login)
+	{
+		if (!$this->yandex_user_id) {
+			throw new \Exception('Домен не связан с учеткой в Яндексе');
+		}
+		
+		$client = new Client(['base_url' => self::PDD_API_URL]);
+		
+		$response = $client->get('/check_user.xml', [
+			'query' => [
+				'token'  => $this->yandexUser->token,
+				'login'  => "{$login}@{$this->domain}",
+			],
+		]);
+		
+		return (string) $response->xml()->result === 'exists';
+	}
+
 	public function isExpired()
 	{
 		return $this->ipv4 === self::EXPIRED_IP;
@@ -215,6 +257,26 @@ class Domain extends Eloquent
 	{
 		return $query->whereActive(1)
 			->where('queried_at', '<', (string) Carbon::now()->subHours(3));
+	}
+	
+	public function setForwardMail($login, $address, $copy = 'no')
+	{
+		if (!$this->yandex_user_id) {
+			throw new \Exception('Домен не связан с учеткой в Яндексе');
+		}
+		
+		$client = new Client(['base_url' => self::PDD_API_URL]);
+		
+		$response = $client->get('/set_forward.xml', [
+			'query' => [
+				'token'   => $this->yandexUser->token,
+				'login'   => $login,
+				'address' => $address,
+				'copy'    => $copy,
+			],
+		]);
+		
+		return $response->xml();
 	}
 	
 	public function setYandexNs()

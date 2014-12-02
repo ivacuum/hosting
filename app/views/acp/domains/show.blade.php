@@ -41,7 +41,7 @@
 <ul class="list-inline" style="margin-top: 2em;">
   <li>
     <h3>
-      <a class="active pseudo js-ajax" data-ajax-url="{{ action("$self@whois", $domain->domain) }}">
+      <a class="pseudo js-ajax {{ $tab == 'whois' ? 'active' : '' }}" data-ajax-url="{{ action("$self@whois", $domain->domain) }}">
         Whois
       </a>
     </h3>
@@ -49,14 +49,14 @@
   @if ($domain->yandex_user_id)
     <li>
       <h3>
-        <a class="pseudo js-ajax">
+        <a class="pseudo js-ajax {{ $tab == 'mailboxes' ? 'active' : '' }}" data-ajax-url="{{ action("$self@mailboxes", $domain->domain) }}">
           Почта
         </a>
       </h3>
     </li>
     <li>
       <h3>
-        <a class="pseudo js-ajax" data-ajax-url="{{ action("$self@nsRecords", $domain->domain) }}">
+        <a class="pseudo js-ajax {{ $tab == 'nsRecords' ? 'active' : '' }}" data-ajax-url="{{ action("$self@nsRecords", $domain->domain) }}">
           DNS
         </a>
       </h3>
@@ -64,7 +64,7 @@
   @endif
 </ul>
 
-<div id="ajax_container" class="js-deferred-load" data-deferred-url="{{ action("$self@whois", $domain->domain) }}">
+<div id="ajax_container" class="js-deferred-load" data-deferred-url="{{ action("$self@$tab", $domain->domain) }}">
   Идет загрузка...
 </div>
 @stop

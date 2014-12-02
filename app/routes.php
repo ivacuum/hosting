@@ -43,6 +43,8 @@ Route::group(['namespace' => 'Acp', 'prefix' => 'acp', 'before' => 'auth'], func
 	Route::patch('domains/{domain}', 'Domains@update');
 	Route::delete('domains/{domain}', 'Domains@destroy');
 	Route::get('domains/{domain}/edit', 'Domains@edit');
+	Route::get('domains/{domain}/mail', 'Domains@mailboxes');
+	Route::post('domains/{domain}/mail', 'Domains@addMailbox');
 	Route::get('domains/{domain}/ns-records', 'Domains@nsRecords');
 	Route::post('domains/{domain}/ns-records', 'Domains@addNsRecord');
 	Route::put('domains/{domain}/ns-records', 'Domains@editNsRecord');
