@@ -22,13 +22,6 @@
     </div>
 
     <div class="form-group">
-      {{ Form::label('forward', 'Переадресация:', ['class' => 'col-md-2 control-label']) }}
-      <div class="col-md-6">
-        {{ Form::email('forward', null, ['class' => 'form-control']) }}
-      </div>
-    </div>
-    
-    <div class="form-group">
       {{ Form::label('send_to', 'Выслать инфу на:', ['class' => 'col-md-2 control-label']) }}
       <div class="col-md-6">
         {{ Form::email('send_to', Auth::user()->email, ['class' => 'form-control']) }}

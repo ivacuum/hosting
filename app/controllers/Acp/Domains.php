@@ -71,33 +71,23 @@ class Domains extends BaseController
 	
 	public function addMailbox(Domain $domain)
 	{
-		extract(Input::only('logins', 'forward', 'send_to'));
+		extract(Input::only('logins', 'send_to'));
 		
 		$logins = explode(',', $logins);
 		$mailboxes = [];
 		
 		foreach ($logins as $login) {
-			if ($domain->doesMailboxExist($login)) {
-				throw new \Exception("Ящик {$login} уже существует");
-			}
-		}
-		
-		foreach ($logins as $login) {
 			$password = str_random(16);
 			
-			$domain->addMailbox($login, $password);
-			
-			if ($forward) {
-				$domain->setForwardMail($login, $forward);
+			if ('ok' === $domain->addMailbox($login, $password)) {
+				$mailboxes[] = [
+					'user' => $login,
+					'pass' => $password,
+				];
 			}
-			
-			$mailboxes[] = [
-				'user' => $login,
-				'pass' => $password,
-			];
 		}
 		
-		$vars = compact('domain', 'forward', 'mailboxes');
+		$vars = compact('domain', 'mailboxes');
 		
 		Mail::send('emails.domains.mailboxes', $vars, function($mail) use ($domain, $send_to) {
 			$mail->to($send_to)->subject("Доступ к почте {$domain->domain}");
