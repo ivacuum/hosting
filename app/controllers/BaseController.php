@@ -14,6 +14,8 @@ class BaseController extends Controller
 		$this->prefix = strtolower(str_replace('\\', '.', get_class($this)));
 		$this->view   = $this->prefix.".".snake_case($this->method);
 		
+		View::addExtension('html', 'blade');
+		
 		$this->beforeFilter(function() {
 			View::share([
 				'goto' => Input::get('goto'),
