@@ -8,7 +8,6 @@ class Domain extends Eloquent
 	const EXPIRED_IP = '144.76.40.132';
 	const NS0 = 'dns1.yandex.net';
 	const NS1 = 'dns2.yandex.net';
-	const PDD_API_URL = 'https://pddimp.yandex.ru/nsapi/';
 	
 	protected $fillable = ['client_id', 'domain', 'active', 'domain_control',
 		'registered_at', 'paid_till', 'ipv4', 'ipv6', 'mx', 'ns', 'queried_at',
@@ -54,22 +53,16 @@ class Domain extends Eloquent
 			throw new \Exception('Домен не связан с учеткой в Яндексе');
 		}
 		
-		$client = new Client(['base_url' => self::PDD_API_URL]);
+		$client = $this->getYandexPddApiClient();
+		$domain = $this->domain;
 		
-		$response = $client->get('/api/reg_user.xml', [
-			'query' => [
-				'token'  => $this->yandexUser->token,
-				'domain' => $this->domain,
-				'login'  => $login,
-				'passwd' => $password,
-			],
+		$response = $client->post('admin/email/add', [
+			'query' => compact('domain', 'login', 'password'),
 		]);
 		
-		if ($response->xml()->status->success) {
-			return 'ok';
-		} else {
-			return $response->xml()->status->error;
-		}
+		$json = $response->json(['object' => true]);
+		
+		return 'ok' !== $json->success ? $json->error : 'ok';
 	}
 	
 	/**
@@ -81,76 +74,79 @@ class Domain extends Eloquent
 			throw new \Exception('Домен не связан с учеткой в Яндексе');
 		}
 		
-		$allowed_types = ['a', 'aaaa', 'cname', 'mx', 'ns', 'srv', 'txt'];
+		$allowed_types = ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'SRV', 'TXT'];
+		$content = '@' === $content ? $this->domain : $content;
 		
 		if (!in_array($type, $allowed_types)) {
 			throw new \Exception('Неподдерживаемый тип записи');
 		}
 		
-		$client = new Client(['base_url' => self::PDD_API_URL]);
-		
-		$response = $client->get("add_{$type}_record.xml", [
+		$client = $this->getYandexPddApiClient();
+
+		$response = $client->post('admin/dns/add', [
 			'query' => [
-				'token'     => $this->yandexUser->token,
 				'domain'    => $this->domain,
+				'type'      => $type,
 				'subdomain' => $subdomain,
-				'content'   => $content,
+				'content'   => idn_to_ascii($content),
 			],
 		]);
 		
-		return $response->xml()->domains->error;
+		$json = $response->json(['object' => true]);
+		
+		return 'ok' !== $json->success ? $json->error : 'ok';
 	}
 	
 	/**
 	* Удаление днс-записей через API Яндекса
 	*/
-	public function deleteNsRecord($id)
+	public function deleteNsRecord($record_id)
 	{
 		if (!$this->yandex_user_id) {
 			throw new \Exception('Домен не связан с учеткой в Яндексе');
 		}
 		
-		$client = new Client(['base_url' => self::PDD_API_URL]);
+		$client = $this->getYandexPddApiClient();
+		$domain = $this->domain;
 		
-		$response = $client->get('delete_record.xml', [
-			'query' => [
-				'token'     => $this->yandexUser->token,
-				'domain'    => $this->domain,
-				'record_id' => $id,
-			],
+		$response = $client->post('admin/dns/del', [
+			'query' => compact('domain', 'record_id'),
 		]);
 		
-		return $response->xml()->domains->error;
+		$json = $response->json(['object' => true]);
+		
+		return 'ok' !== $json->success ? $json->error : 'ok';
 	}
 	
 	/**
 	* Редактирование днс-записей через API Яндекса
 	*/
-	public function editNsRecord($id, $type, $content, $subdomain = '')
+	public function editNsRecord($record_id, $type, $content, $subdomain = '')
 	{
 		if (!$this->yandex_user_id) {
 			throw new \Exception('Домен не связан с учеткой в Яндексе');
 		}
 		
-		$allowed_types = ['a', 'aaaa', 'cname', 'mx', 'ns', 'srv', 'txt'];
+		$allowed_types = ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'SRV', 'TXT'];
 		
 		if (!in_array($type, $allowed_types)) {
 			throw new \Exception('Неподдерживаемый тип записи');
 		}
 
-		$client = new Client(['base_url' => self::PDD_API_URL]);
+		$client = $this->getYandexPddApiClient();
 		
-		$response = $client->get("edit_{$type}_record.xml", [
+		$response = $client->post('admin/dns/edit', [
 			'query' => [
-				'token'     => $this->yandexUser->token,
 				'domain'    => $this->domain,
 				'subdomain' => $subdomain,
 				'record_id' => $id,
-				'content'   => $content,
+				'content'   => idn_to_ascii($content),
 			],
 		]);
 		
-		return $response->xml()->domains->error;
+		$json = $response->json(['object' => true]);
+
+		return 'ok' !== $json->success ? $json->error : 'ok';
 	}
 	
 	public function getDates()
@@ -158,6 +154,31 @@ class Domain extends Eloquent
 		return ['mailed_at', 'queried_at', 'registered_at', 'paid_till'];
 	}
 	
+	public function getMailboxes()
+	{
+		if (!$this->yandex_user_id) {
+			throw new \Exception('Домен не связан с учеткой в Яндексе');
+		}
+		
+		$client = $this->getYandexPddApiClient();
+		
+		$response = $client->get("admin/email/list?domain={$this->domain}");
+		$json = $response->json(['object' => true]);
+		
+		if ('ok' !== $json->success) {
+			throw new \Exception("Api error: {$json->error}");
+		}
+		
+		usort($json->accounts, function($a, $b) {
+			return strnatcmp($a->login, $b->login);
+		});
+		
+		return $json;
+	}
+
+	/**
+	* Какие домены прописаны в панели reg.ru
+	*/
 	public function getNsServers()
 	{
 		$client = $this->getRegRuApiClient();
@@ -184,16 +205,39 @@ class Domain extends Eloquent
 			throw new \Exception('Домен не связан с учеткой в Яндексе');
 		}
 		
-		$client = new Client(['base_url' => self::PDD_API_URL]);
+		$client = $this->getYandexPddApiClient();
+
+		$response = $client->get("admin/dns/list?domain={$this->domain}");
+		$json = $response->json(['object' => true]);
 		
-		$response = $client->get('get_domain_records.xml', [
-			'query' => [
-				'token'  => $this->yandexUser->token,
-				'domain' => $this->domain,
-			],
-		]);
+		if ('ok' !== $json->success) {
+			throw new \Exception("Api error: {$json->error}");
+		}
 		
-		return $response->xml();
+		$sort = [];
+		foreach ($json->records as $key => $record) {
+			$sort['type'][$key] = $record->type;
+			$sort['subdomain'][$key] = $record->subdomain;
+		}
+		
+		if (!empty($sort)) {
+			array_multisort($sort['type'], SORT_STRING, $sort['subdomain'], SORT_STRING, $json->records);
+		}
+		
+		return $json->records;
+	}
+
+	public function getPddStatus()
+	{
+		if (!$this->yandex_user_id) {
+			throw new \Exception('Домен не связан с учеткой в Яндексе');
+		}
+		
+		$client = $this->getYandexPddApiClient();
+
+		$response = $client->get("admin/domain/registration_status?domain={$this->domain}");
+		
+		return $response->json(['object' => true]);
 	}
 
 	public function getWhoisData()
@@ -241,6 +285,55 @@ class Domain extends Eloquent
 			->where('queried_at', '<', (string) Carbon::now()->subHours(3));
 	}
 	
+	public function setServerNsRecords($server)
+	{
+		if (!$this->yandex_user_id) {
+			throw new \Exception('Домен не связан с учеткой в Яндексе');
+		}
+		
+		$client = $this->getYandexPddApiClient();
+		
+		switch ($server) {
+			case 'srv1.korden.net': $ipv4 = '62.109.0.61';     $ipv6 = '2a01:230:2::1fb'; break;
+			case 'srv2.korden.net': $ipv4 = '188.120.229.204'; $ipv6 = '2a01:230:2::1fc'; break;
+			case 'srv3.korden.net': $ipv4 = '62.109.4.161';    $ipv6 = '2a01:230:2::1fd'; break;
+			case 'bsd.korden.net':  $ipv4 = '31.200.207.80';   $ipv6 = ''; break;
+			case 'srv1.ivacuum.ru': $ipv4 = '82.146.36.248';   $ipv6 = '2a01:230:2:6::16c'; break;
+			case 'srv2.ivacuum.ru': $ipv4 = '93.81.237.72';    $ipv6 = ''; break;
+			default: $ipv4 = $ipv6 = '';
+		}
+		
+		if ($ipv4) {
+			$this->addNsRecord('A', $ipv4, '@');
+		}
+		if ($ipv6) {
+			$this->addNsRecord('AAAA', $ipv6, '@');
+		}
+		
+		$this->addNsRecord('CNAME', '@', '*');
+		
+		return true;
+	}
+	
+	public function setYandexPdd()
+	{
+		if (!$this->yandex_user_id) {
+			throw new \Exception('Домен не связан с учеткой в Яндексе');
+		}
+		
+		$client = $this->getYandexPddApiClient();
+		
+		$response = $client->post('admin/domain/register', [
+			'query' => [
+				'domain' => $this->domain,
+			],
+		]);
+		
+		$json = $response->json(['object' => true]);
+		
+		return 'ok' !== $json->success ? $json->error : 'ok';
+	}
+	
 	public function setYandexNs()
 	{
 		$client = $this->getRegRuApiClient();
@@ -259,7 +352,7 @@ class Domain extends Eloquent
 		
 		if ('success' != $status) {
 			Log::error('Unable to set yandex ns servers via reg.ru api', [
-				'context' => $query
+				'context' => $response
 			]);
 		}
 		
@@ -370,5 +463,21 @@ class Domain extends Eloquent
 				],
 			],
 		]);
+	}
+	
+	protected function getYandexPddApiClient()
+	{
+		static $client;
+		
+		if (empty($client)) {
+			$client = new Client([
+				'base_url' => 'https://pddimp.yandex.ru/api2/',
+				'defaults' => [
+					'headers' => ['PddToken' => $this->yandexUser->token],
+				],
+			]);
+		}
+		
+		return $client;
 	}
 }

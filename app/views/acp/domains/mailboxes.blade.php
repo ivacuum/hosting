@@ -37,3 +37,39 @@
 
   </div>
 </div>
+
+@if ($mailboxes->total > 0)
+  <h3>Найдено ящиков: {{ $mailboxes->total }}</h3>
+  <ul>
+    @foreach ($mailboxes->accounts as $account)
+      <li>
+        @if ($account->enabled == 'no')
+          <samp class="text-danger"><s>{{ $account->login }}</s></samp>
+        @elseif ($account->ready == 'yes')
+          <samp class="text-success">{{ $account->login }}</samp>
+        @else
+          <samp class="text-warning">{{ $account->login }}</samp>
+        @endif
+        @if ($account->fio)
+          &mdash;
+          <span class="text-muted">{{ $account->fio }}</span>
+        @endif
+        @if (sizeof($account->aliases))
+          <br>Алиасы:
+          <samp>
+            <ul>
+              @foreach ($account->aliases as $alias)
+                <li>{{ $alias }}</li>
+              @endforeach
+            </ul>
+          </samp>
+        @endif
+      </li>
+    @endforeach
+  </ul>
+  <p>
+    <span class="label label-success"> &nbsp; </span> &nbsp;— активен &nbsp;
+    <span class="label label-warning"> &nbsp; </span> &nbsp;— неактивен &nbsp;
+    <span class="label label-danger"> &nbsp; </span> &nbsp;— отключен
+  </p>
+@endif

@@ -54,14 +54,14 @@
         </a>
       </h3>
     </li>
-    <li>
-      <h3>
-        <a class="pseudo js-ajax {{ $tab == 'nsRecords' ? 'active' : '' }}" data-ajax-url="{{ action("$self@nsRecords", $domain->domain) }}">
-          DNS
-        </a>
-      </h3>
-    </li>
   @endif
+  <li>
+    <h3>
+      <a class="pseudo js-ajax {{ $tab == 'nsRecords' ? 'active' : '' }}" data-ajax-url="{{ action("$self@nsRecords", $domain->domain) }}">
+        DNS
+      </a>
+    </h3>
+  </li>
 </ul>
 
 <div id="ajax_container" class="js-deferred-load" data-deferred-url="{{ action("$self@$tab", $domain->domain) }}">

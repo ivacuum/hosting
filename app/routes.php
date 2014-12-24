@@ -50,6 +50,8 @@ Route::group(['namespace' => 'Acp', 'prefix' => 'acp', 'before' => 'auth'], func
 	Route::put('domains/{domain}/ns-records', 'Domains@editNsRecord');
 	Route::delete('domains/{domain}/ns-records', 'Domains@deleteNsRecord');
 	Route::get('domains/{domain}/ns-servers', 'Domains@nsServers');
+	Route::post('domains/{domain}/server-ns', 'Domains@setServerNsRecords');
+	Route::get('domains/{domain}/yandex-pdd-status', 'Domains@yandexPddStatus');
 	Route::post('domains/{domain}/yandex-ns', 'Domains@setYandexNs');
 	Route::get('domains/{domain}/whois', 'Domains@whois');
 	

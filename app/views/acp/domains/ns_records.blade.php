@@ -26,12 +26,12 @@
         </td>
         <td class="text-center">
           <select name="type">
-            <option value="a" selected>A</option>
-            <option value="cname">CNAME</option>
-            <option value="aaaa">AAAA</option>
-            <option value="txt">TXT</option>
-            <option value="ns">NS</option>
-            <option value="mx">MX</option>
+            <option value="A" selected>A</option>
+            <option value="CNAME">CNAME</option>
+            <option value="AAAA">AAAA</option>
+            <option value="TXT">TXT</option>
+            <option value="NS">NS</option>
+            <option value="MX">MX</option>
           </select>
         </td>
         <td><input type="text" name="content" style="width: 100%;"></td>
@@ -41,26 +41,26 @@
         <tr class="ns-record-container">
           <td class="text-right">
             <div class="presentation">
-              {{ $record['subdomain'] }}
+              {{ $record->subdomain }}
             </div>
             <div class="edit hidden">
-              <input type="text" name="subdomain" value="{{{ $record['subdomain'] }}}" class="text-right" style="width: 100%;">
+              <input type="text" name="subdomain" value="{{{ $record->subdomain }}}" class="text-right" style="width: 100%;">
             </div>
           </td>
           <td class="text-center">
-            {{ $record['type'] }}
-            <input type="hidden" name="type" value="{{{ strtolower($record['type']) }}}">
+            {{ $record->type }}
+            <input type="hidden" name="type" value="{{{ $record->type }}}">
           </td>
           <td>
             <div class="presentation">
-              @if ($record['priority'] > 0)
-                <span class="text-muted">[{{ $record['priority'] }}]</span>
+              @if ($record->priority > 0)
+                <span class="text-muted">[{{ $record->priority }}]</span>
               @endif
-              {{ str_limit($record, 35) }}
+              {{ str_limit($record->content, 35) }}
             </div>
             <div class="edit hidden">
-              <input type="text" name="content" value="{{{ $record }}}" style="width: 100%;">
-              <input type="hidden" name="record_id" value="{{{ $record['id'] }}}">
+              <input type="text" name="content" value="{{{ $record->content }}}" style="width: 100%;">
+              <input type="hidden" name="record_id" value="{{{ $record->record_id }}}">
               <input type="hidden" name="_method" value="PUT">
             </div>
           </td>
@@ -68,7 +68,7 @@
             <div class="presentation">
               <a class="pseudo js-ns-record-edit">настроить</a>
               &nbsp;
-              <a class="pseudo js-ns-record-delete" data-id="{{{ $record['id'] }}}">удалить</a>
+              <a class="pseudo js-ns-record-delete" data-id="{{{ $record->record_id }}}">удалить</a>
             </div>
             <div class="edit hidden">
               <a class="pseudo js-ns-record-save">сохранить</a>
@@ -81,8 +81,23 @@
     </table>
   </div>
 </div>
-
-@else
+{{ Form::open(['action' => ["$self@setServerNsRecords", $domain->domain]]) }}
+<p>
+  <select name="server">
+    <option value="">-----</option>
+    <option>srv1.korden.net</option>
+    <option>srv2.korden.net</option>
+    <option>srv3.korden.net</option>
+    <option>bsd.korden.net</option>
+    <option>srv1.ivacuum.ru</option>.
+    <option>srv2.ivacuum.ru</option>
+  </select>
+  <button type="submit" class="btn btn-default">
+    Прописать днс-записи сервера
+  </button>
+</p>
+{{ Form::close() }}
+@elseif ($domain->yandex_user_id)
   <div class="alert alert-warning">
     ДНС-записи не найдены.
   </div>

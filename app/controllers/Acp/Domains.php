@@ -138,12 +138,14 @@ class Domains extends BaseController
 	
 	public function mailboxes(Domain $domain)
 	{
-		return View::make($this->view, compact('domain'));
+		$mailboxes = $domain->getMailboxes();
+		
+		return View::make($this->view, compact('domain', 'mailboxes'));
 	}
 	
 	public function nsRecords(Domain $domain)
 	{
-		$records = $domain->getNsRecords()->domains->domain->response->record;
+		$records = $domain->yandex_user_id ? $domain->getNsRecords() : [];
 		
 		return View::make($this->view, compact('domain', 'records'));
 	}
@@ -151,6 +153,15 @@ class Domains extends BaseController
 	public function nsServers(Domain $domain)
 	{
 		dd($domain->getNsServers());
+	}
+	
+	public function setServerNsRecords(Domain $domain)
+	{
+		$server = Input::get('server');
+		
+		$domain->setServerNsRecords($server);
+		
+		return Redirect::action("{$this->class}@show", [$domain->domain, 'tab' => 'dns']);
 	}
 	
 	public function setYandexNs(Domain $domain)
@@ -163,7 +174,7 @@ class Domains extends BaseController
 		
 		Session::flash('message', $message);
 		
-		return Redirect::action("{$this->class}@show", $domain->domain);
+		return Redirect::action("{$this->class}@show", [$domain->domain, 'tab' => 'dns']);
 	}
 	
 	public function show(Domain $domain)
@@ -232,5 +243,10 @@ class Domains extends BaseController
 		$whois = nl2br(trim($domain->getWhoisData()));
 		
 		return View::make($this->view, compact('whois'));
+	}
+	
+	public function yandexPddStatus(Domain $domain)
+	{
+		dd($domain->getPddStatus());
 	}
 }
