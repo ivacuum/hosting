@@ -121,7 +121,7 @@ class Domain extends Eloquent
 	/**
 	* Редактирование днс-записей через API Яндекса
 	*/
-	public function editNsRecord($record_id, $type, $content, $subdomain = '')
+	public function editNsRecord($id, $type, $content, $subdomain = '')
 	{
 		if (!$this->yandex_user_id) {
 			throw new \Exception('Домен не связан с учеткой в Яндексе');
