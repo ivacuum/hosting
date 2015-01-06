@@ -48,7 +48,7 @@
       <h3 class="panel-title">#{{ $i + 1 }}</h3>
     </div>
     <div class="panel-body">
-      <div>{{ wordwrap($post['text'], 80) }}</div>
+      <div class="lead">{{ wordwrap($post['text'], 80) }}</div>
       @if ($post['attachments'])
         @foreach ($post['attachments'] as $attach)
           @if ($attach->type == 'photo')

@@ -32,5 +32,10 @@ $(document).ready(function() {
     
     $(container).data('deferred-url', url);
     $(container).load(url);
-  })
+  });
+
+  // Карусель изображений, перелистывание по клику
+  $('.carousel-inner-clicker img').bind('click', function() {
+    $(this).parents('.carousel').carousel('next');
+  });
 });

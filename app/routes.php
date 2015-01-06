@@ -21,6 +21,7 @@ Route::get('pages/{url}', function($url) {
 })->where('url', '.*');
 
 Route::get('parser/vk/{page?}/{date?}', 'ParserVk@index')->where('date', '\d{4}-\d{2}-\d{2}');
+Route::get('life/{life_page}', 'HomeController@life');
 
 // Admin control panel
 Route::group(['namespace' => 'Acp', 'prefix' => 'acp', 'before' => 'auth'], function() {
