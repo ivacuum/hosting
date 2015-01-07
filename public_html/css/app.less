@@ -249,8 +249,11 @@ h4 img {
   }
 }
 
-.embed-video-gap,
-.img-gap { margin-bottom: 1.5em; }
+.embed-video-container,
+.img-container {
+  margin-bottom: 1.5em;
+  max-width: 1000px;
+}
 
 .form-group .text-editor {
   border: 1px solid #ccc;
@@ -543,6 +546,11 @@ ul.inline > li:first-child {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.gig-poster,
+.img-container img {
+  border-radius: 6px;
 }
 
 @media (max-width: 767px) {
