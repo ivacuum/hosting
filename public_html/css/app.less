@@ -21,6 +21,8 @@ body { color: #404040; }
 
 .link:hover,
 .pseudo:hover,
+.link:focus,
+.pseudo:focus,
 .link.active,
 .pseudo.active {
   border-color: rgba(210, 50, 50, 0.5) !important;
@@ -538,4 +540,54 @@ ul.inline > li:first-child {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 767px) {
+  .gig-poster { max-width: 474px; }
+
+  .gigs-years {
+    width: 100%;
+    
+    &.affix {
+      position: static;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .gig-poster { width: 295px; }
+
+  .gigs-years {
+    width: 165px;
+    
+    &.affix {
+      position: static;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .gig-poster { width: 239px; }
+
+  .gigs-years {
+    width: 132px;
+    
+    &.affix {
+      top: 20px;
+      position: fixed;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .gig-poster { width: 295px; }
+  
+  .gigs-years {
+    width: 165px;
+    
+    &.affix {
+      top: 20px;
+      position: fixed;
+    }
+  }
 }
