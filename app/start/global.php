@@ -21,6 +21,8 @@ App::missing(function(Exception $e) {
 	return Response::make('404 Not Found', 404);
 });
 
+View::addExtension('html', 'blade');
+
 require app_path() . '/events.php';
 require app_path() . '/filters.php';
 require app_path() . '/helpers.php';
