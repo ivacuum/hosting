@@ -399,7 +399,7 @@ class Domain extends Eloquent
 			case '77.222.56.62': return 'vh213.sweb.ru';
 		}
 		
-		return $this->ipv4;
+		return str_replace(' ', '<br>', $this->ipv4);
 	}
 	
 	public function firstNsServer()
