@@ -30,6 +30,11 @@ class BaseController extends Controller
 		return substr($method, strpos($method, '@') + 1);
 	}
 	
+	protected function getPageId()
+	{
+		return Route::getCurrentRoute()->getAction()['page_id'];
+	}
+	
 	protected function setupLayout()
 	{
 		if (!is_null($this->layout)) {
