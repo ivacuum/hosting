@@ -27,8 +27,8 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           @section('global_menu')
-          <li><a href="{{ action('Acp\Clients@index') }}">Клиенты</a></li>
-          <li><a href="{{ action('Acp\Domains@index') }}">Домены</a></li>
+          <li><a href="/acp/clients">Клиенты</a></li>
+          <li><a href="/acp/domains">Домены</a></li>
           @show
         </ul>
         @if (Auth::check())
