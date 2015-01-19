@@ -8,6 +8,10 @@ return [
 	'fallback_locale' => 'en',
 	'key'             => 'bpxG6nVSBbkqaCrMaXUxAq3Guc5CWV2b',
 	'cipher'          => MCRYPT_RIJNDAEL_128,
+	
+	'defaults' => [
+		'handler' => 'HomeController@staticPage',
+	],
 
 	'providers' => [
 		'Illuminate\Foundation\Providers\ArtisanServiceProvider',
