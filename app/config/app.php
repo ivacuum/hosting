@@ -36,6 +36,7 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+		'Baum\BaumServiceProvider',
 		// 'Barryvdh\Debugbar\ServiceProvider',
 	],
 
