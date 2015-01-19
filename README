@@ -3,10 +3,14 @@ bower (npm)
 composer
 redis
 
-# Install
+# Update
+service hosting-queue stop
+su developer
 php artisan down
 composer install
 php artisan migrate
 php artisan up
 bower install
 touch .env.php
+exit
+service hosting-queue start
