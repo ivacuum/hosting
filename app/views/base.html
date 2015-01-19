@@ -39,34 +39,19 @@
                 <li><a href="/">Личный кабинет</a></li>
                 <li class="divider"></li>
                 --}}
-                <li><a href="{{ action('LoginController@getLogout') }}">Выход</a></li>
+                <li><a href="/logout">Выход</a></li>
               </ul>
             </li>
           </ul>
         @else
           <form class="navbar-form navbar-right">
-            <a class="btn btn-default" href="{{ action('LoginController@getLogin') }}">Вход</a>
+            <a class="btn btn-default" href="/login">Вход</a>
           </form>
         @endif
       </div>
     </div>
   </div>
   <div class="container">
-    {{--
-    {block "breadcrumbs"}
-      <ul class="breadcrumb">
-        <li><a href="{$U_INDEX}">{'INDEX_PAGE'|i18n}</a></li>
-        {foreach $breadcrumbs|default:[] as $row}
-          {if not $row@last}
-            <li><span class="divider">&rarr;</span><a href="{$row.URL}">{$row.TEXT}</a></li>
-          {else}
-            <li class="active"><span class="divider">&rarr;</span>{$row.TEXT}</li>
-          {/if}
-        {/foreach}
-      </ul>
-    {/block}
-    --}}
-
 @if (Session::has('message'))
   <div class="alert alert-info">{{ Session::get('message') }}</div>
 @endif
@@ -83,7 +68,7 @@
       <li class="text-muted">&copy; {{ date('Y') }} vacuum</li>
       <li class="text-muted">&middot;</li>
       <li><a href="mailto:{{ Config::get('email.support') }}" class="link">Обратная связь</a></li>
-      <li><a href="{{ action('ParserVk@index') }}" class="link">Парсер ВК</a></li>
+      <li><a href="/parser/vk" class="link">Парсер ВК</a></li>
     </ul>
   </div>
 </footer>

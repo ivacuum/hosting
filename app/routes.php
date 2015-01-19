@@ -16,12 +16,8 @@ Route::get('login', 'LoginController@getLogin');
 Route::post('login', 'LoginController@postLogin');
 Route::get('logout', 'LoginController@getLogout');
 
-Route::get('pages/{url}', function($url) {
-	dd(explode('/', $url));
-})->where('url', '.*');
-
-Route::get('parser/vk/{page?}/{date?}', 'ParserVk@index')->where('date', '\d{4}-\d{2}-\d{2}');
 Route::get('life/{life_page}', 'HomeController@life');
+Route::get('parser/vk/{page_alias?}/{date?}', 'ParserVk@index')->where('date', '\d{4}-\d{2}-\d{2}');
 
 // Admin control panel
 Route::group(['namespace' => 'Acp', 'prefix' => 'acp', 'before' => 'auth'], function() {
