@@ -4,7 +4,9 @@ composer
 redis
 
 # Install
+php artisan down
 composer install
+php artisan migrate
+php artisan up
 bower install
-artisan migrate
 touch .env.php
