@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <title>{{ $meta_title or 'Title' }} &middot; {{ Config::get('cfg.sitename') }}</title>
+  <title>{{ $meta_title or Config::get('cfg.sitename') }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="keywords" content="{{ $meta_keywords or '' }}">
   <meta name="description" content="{{ $meta_description or '' }}">
