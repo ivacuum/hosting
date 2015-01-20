@@ -52,6 +52,9 @@
     </div>
   </div>
   <div class="container">
+@section('breadcrumbs')
+@include('block.breadcrumbs')
+@show
 @if (Session::has('message'))
   <div class="alert alert-info">{{ Session::get('message') }}</div>
 @endif

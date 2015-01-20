@@ -1,5 +1,20 @@
 <?php
 
+function breadcrumbs()
+{
+	$args = func_get_args();
+	$breadcrumbs = [];
+	
+	for ($i = 0, $len = sizeof($args); $i < $len; $i += 2) {
+		$title = $args[$i];
+		$url   = $args[$i + 1];
+		
+		$breadcrumbs[] = (object) compact('title', 'url');
+	}
+	
+	View::share(compact('breadcrumbs'));
+}
+
 /**
 * Создание ЧПУ ссылки с использованием символов выбранного языка сайта
 *
