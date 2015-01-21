@@ -2,12 +2,12 @@
 
 return [
 	/* file, database, apc, memcached, redis, array */
-	'driver' => 'file',
+	'driver' => 'memcached',
 	'path' => storage_path() . '/cache',
 	'connection' => null,
 	'table' => 'cache',
 	'memcached' => [
-		['host' => '127.0.0.1', 'port' => 11211, 'weight' => 100],
+		['host' => '/var/run/memcached/memcached.lock', 'port' => 0, 'weight' => 1],
 	],
 	'prefix' => 'hosting',
 ];
