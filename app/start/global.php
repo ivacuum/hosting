@@ -21,6 +21,8 @@ App::missing(function(Exception $e) {
 	return Response::make('404 Not Found', 404);
 });
 
+setlocale(LC_ALL, 'ru_RU.UTF-8');
+
 View::addExtension('html', 'blade');
 
 require app_path() . '/events.php';
