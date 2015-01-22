@@ -28,4 +28,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface
 	{
 		$this->attributes['password'] = Hash::make($value);
 	}
+	
+	public function isAdmin()
+	{
+		return in_array($this->id, Config::get('app.admins'));
+	}
 }

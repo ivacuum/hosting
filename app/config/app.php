@@ -12,6 +12,9 @@ return [
 	'defaults' => [
 		'handler' => 'HomeController@staticPage',
 	],
+	
+	/* ID админов из таблицы users */
+	'admins' => [1, 2, 3],
 
 	'providers' => [
 		'Illuminate\Foundation\Providers\ArtisanServiceProvider',
