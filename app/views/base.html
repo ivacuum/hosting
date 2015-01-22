@@ -27,8 +27,11 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           @section('global_menu')
-          <li><a href="/acp/clients">Клиенты</a></li>
-          <li><a href="/acp/domains">Домены</a></li>
+          @if (Auth::check() and Auth::user()->isAdmin())
+            <li><a href="/acp/clients">Клиенты</a></li>
+            <li><a href="/acp/domains">Домены</a></li>
+            <li><a href="/acp/pages">Страницы</a></li>
+          @endif
           @show
         </ul>
         @if (Auth::check())
