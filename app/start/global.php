@@ -7,7 +7,7 @@ ClassLoader::addDirectories([
 	app_path() . '/database/seeds',
 ]);
 
-Log::useFiles(storage_path() . '/logs/laravel.log');
+Log::useErrorLog();
 
 App::error(function(Exception $exception, $code) {
 	Log::error($exception);
