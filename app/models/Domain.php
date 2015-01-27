@@ -255,7 +255,7 @@ class Domain extends Eloquent
 		$query = new WhoisQuery($this->domain);
 		$data = array_merge($query->parse(), $query->getDnsRecords());
 		
-		if (empty($data['registered_at'])) {
+		if (!empty($data['failed']) || empty($data['registered_at'])) {
 			return [];
 		}
 		

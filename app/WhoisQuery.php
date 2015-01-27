@@ -20,7 +20,12 @@ class WhoisQuery
 	public function getDnsRecords()
 	{
 		$ipv4 = $ipv6 = $mx = $ns = [];
-		$ips = dns_get_record("{$this->domain}.", DNS_A | DNS_AAAA | DNS_MX | DNS_NS);
+		
+		try {
+			$ips = dns_get_record("{$this->domain}.", DNS_A | DNS_AAAA | DNS_MX | DNS_NS);
+		} catch (\ErrorException $e) {
+			return ['failed' => true];
+		}
 		
 		if (empty($ips)) {
 			return [
