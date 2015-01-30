@@ -14,7 +14,7 @@ return [
 	],
 	
 	/* ID админов из таблицы users */
-	'admins' => [1, 2, 3],
+	'admins' => [1, 2, 3, 4],
 
 	'providers' => [
 		'Illuminate\Foundation\Providers\ArtisanServiceProvider',
