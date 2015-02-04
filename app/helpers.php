@@ -1,87 +1,23 @@
 <?php
 
-function breadcrumbs()
+/**
+* Преобразует
+* IMG_1063.jpg;1000x750;59.8690305556 30.3306222222
+* в массив src, width, height, latitude, longitude
+*/
+function parse_carousel_image_string($string)
 {
-	$args = func_get_args();
-	$breadcrumbs = [];
+	$w = $h = $lat = $lon = '';
 	
-	for ($i = 0, $len = sizeof($args); $i < $len; $i += 2) {
-		$title = $args[$i];
-		$url   = $args[$i + 1];
-		
-		$breadcrumbs[] = (object) compact('title', 'url');
+	@list($src, $size, $coord) = explode(';', $string);
+	
+	if (!empty($size)) {
+		list($w, $h) = explode('x', $size);
 	}
 	
-	View::share(compact('breadcrumbs'));
-}
-
-/**
-* Создание ЧПУ ссылки с использованием символов выбранного языка сайта
-*
-* @param string $url Входная ссылка
-*
-* @return string $result ЧПУ ссылка
-*/
-function slug_url($url, $lang = 'ru')
-{
-	switch ($lang) {
-		case 'ru': $pattern = '/[^а-яёa-z\d\.]/u'; break;
-		default:   $pattern = '/[^a-z\d\.]/u';
+	if (!empty($coord)) {
+		list($lat, $lon) = explode(' ', $coord);
 	}
-
-	/* Отсекаем неподходящие символы */
-	$result = trim(preg_replace($pattern, '-', mb_strtolower(htmlspecialchars_decode($url))), '-');
-
-	/**
-	* Укорачиваем однообразные последовательности символов
-	* _. заменяем на _
-	* Убираем точку в конце
-	*/
-	return preg_replace(['/-{2,}/', '/\.{2,}/', '/-\./', '/(.*)\./'], ['-', '', '-', '$1'], $result);
-}
-
-/**
-* Транслитерация текста (преимущественно для создания папок)
-* 
-* @param string $string Русский текст в нижнем регистре
-* 
-* @return string Текст на транслите
-*/
-function transliterate($string)
-{
-	return strtr($string, [
-		'а' => 'a',
-		'б' => 'b',
-		'в' => 'v',
-		'г' => 'g',
-		'д' => 'd',
-		'е' => 'e',
-		'ё' => 'e',
-		'ж' => 'zh',
-		'з' => 'z',
-		'и' => 'i',
-		'й' => 'y',
-		'к' => 'k',
-		'л' => 'l',
-		'м' => 'm',
-		'н' => 'n',
-		'о' => 'o',
-		'п' => 'p',
-		'р' => 'r',
-		'с' => 's',
-		'т' => 't',
-		'у' => 'u',
-		'ф' => 'f',
-		'х' => 'h',
-		'ц' => 'c',
-		'ч' => 'ch',
-		'ш' => 'sh',
-		'щ' => 'sch',
-		'ъ' => '',
-		'ы' => 'y',
-		'ь' => '',
-		'э' => 'e',
-		'ю' => 'yu',
-		'я' => 'ya',
-	]);
+	
+	return compact('src', 'w', 'h', 'lat', 'lon');
 }

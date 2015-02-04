@@ -1,0 +1,136 @@
+@if (sizeof($errors))
+  <div class="alert alert-danger">
+    <ul>
+      @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+@endif
+
+<div class="form-group {{ $errors->has('domain') ? 'has-error' : '' }}">
+  <label class="col-md-2 control-label">Домен:</label>
+  <div class="col-md-10">
+    <input type="text" class="form-control" name="domain" placeholder="example.com" value="{{ old('domain') ?: @$domain->domain }}">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-2 control-label">Клиент:</label>
+  <div class="col-md-10">
+    <select class="form-control" name="client_id">
+      @foreach (App\Client::all() as $client)
+        <option value="{{ $client->id }}" {{ $client->id == (old('client_id') ?: @$domain->client_id) ? 'selected' : '' }}>
+          {{ $client->name }}
+        </option>
+      @endforeach
+    </select>
+  </div>
+</div>
+
+<div class="form-group flush">
+  <div class="col-md-10 col-md-offset-2 checkbox">
+    <input type="hidden" name="active" value="0">
+    <label>
+      <input type="checkbox" name="active" value="1" {{ 1 == (old('active') ?: @$domain->active) ? 'checked' : '' }}>
+      Мониторинг домена
+    </label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-md-10 col-md-offset-2 checkbox">
+    <input type="hidden" name="domain_control" value="0">
+    <label>
+      <input type="checkbox" name="domain_control" value="1" {{ 1 == (old('domain_control') ?: @$domain->domain_control) ? 'checked' : '' }}>
+      Домен в нашей панели reg.ru
+    </label>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-2 control-label">Заметки:</label>
+  <div class="col-md-10">
+    <textarea class="form-control" name="text" rows="10">{{ old('text') ?: @$domain->text }}</textarea>
+  </div>
+</div>
+
+<hr>
+<div class="row">
+  <div class="col-md-10 col-md-offset-2">
+    <h3 style="margin-bottom: 0.5em;">Реквизиты доступа к сайту</h3>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-2 control-label">CMS:</label>
+  <div class="col-md-10">
+    <div class="input-group">
+      <input type="text" class="form-control" name="cms_user" placeholder="admin" value="{{ old('cms_user') ?: @$domain->cms_user }}">
+      <span class="input-group-addon">:</span>
+      <input type="password" class="form-control" name="cms_pass">
+      <span class="input-group-addon">@</span>
+      <input type="text" class="form-control" name="cms_url" placeholder="http://example.com/acp/" value="{{ old('cms_url') ?: @$domain->cms_url }}">
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-2 control-label">Название CMS:</label>
+  <div class="col-md-10">
+    <input type="text" class="form-control" name="cms_type" placeholder="korden.cms" value="{{ old('cms_type') ?: @$domain->cms_type }}">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-2 control-label">Версия CMS:</label>
+  <div class="col-md-10">
+    <input type="text" class="form-control" name="cms_version" placeholder="3.5" value="{{ old('cms_version') ?: @$domain->cms_version }}">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-2 control-label">FTP:</label>
+  <div class="col-md-10">
+    <div class="input-group">
+      <input type="text" class="form-control" name="ftp_user" placeholder="user" value="{{ old('ftp_user') ?: @$domain->ftp_user }}">
+      <span class="input-group-addon">:</span>
+      <input type="password" class="form-control" name="ftp_pass">
+      <span class="input-group-addon">@</span>
+      <input type="text" class="form-control" name="ftp_host" placeholder="ftp://example.com/" value="{{ old('ftp_host') ?: @$domain->ftp_host }}">
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-2 control-label">SSH:</label>
+  <div class="col-md-10">
+    <div class="input-group">
+      <input type="text" class="form-control" name="ssh_user" placeholder="user" value="{{ old('ssh_user') ?: @$domain->ssh_user }}">
+      <span class="input-group-addon">:</span>
+      <input type="password" class="form-control" name="ssh_pass">
+      <span class="input-group-addon">@</span>
+      <input type="text" class="form-control" name="ssh_host" placeholder="ssh://example.com/" value="{{ old('ssh_host') ?: @$domain->ssh_host }}">
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-2 control-label">БД:</label>
+  <div class="col-md-10">
+    <div class="input-group">
+      <input type="text" class="form-control" name="db_user" placeholder="user" value="{{ old('db_user') ?: @$domain->db_user }}">
+      <span class="input-group-addon">:</span>
+      <input type="password" class="form-control" name="db_pass">
+      <span class="input-group-addon">@</span>
+      <input type="text" class="form-control" name="db_host" placeholder="localhost" value="{{ old('db_host') ?: @$domain->db_host }}">
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-2 control-label">phpMyAdmin:</label>
+  <div class="col-md-10">
+    <input type="text" class="form-control" name="db_pma" placeholder="http://pma.example.com/" value="{{ old('db_pma') ?: @$domain->db_pma }}">
+  </div>
+</div>

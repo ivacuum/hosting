@@ -1,0 +1,43 @@
+@extends('base')
+
+@section('content')
+@if (sizeof($errors))
+  <div class="alert alert-danger">
+    <ul>
+      @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+@endif
+
+<div class="boxed-group form-signin">
+  <h3>Вход на сайт</h3>
+  <div class="boxed-group-inner">
+    <form action="/login" method="post">
+      <input type="text" class="input-type-check" name="mail" value="{{ old('mail') }}">
+
+      <div class="form-group">
+        <label>Электронная почта:</label>
+        <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+      </div>
+
+      <div class="form-group">
+        <label>Пароль:</label>
+        <a href="/auth/password/remind" class="link">забыли пароль?</a>
+        <input type="password" class="form-control" name="password">
+      </div>
+    
+      <div class="checkbox">
+        <label><input type="checkbox" name="foreign"> Чужой компьютер?</label>
+      </div>
+    
+      <button type="submit" class="btn btn-primary btn-lg">
+        Войти
+      </button>
+      
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+    </form>
+  </div>
+</div>
+@stop

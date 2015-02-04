@@ -1,0 +1,7 @@
+@if (!empty($goto))
+  <input type="hidden" name="goto" value="{{ $goto }}">
+@endif
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
+@if (!empty($method))
+  <input type="hidden" name="_method" value="{{ strtoupper($method) }}">
+@endif

@@ -1,0 +1,92 @@
+@extends('base', [
+  'meta_title' => "Топ 10 vk.com/{$vkpage} за ".$date->formatLocalized('%d %B'),
+])
+
+@section('content')
+<ul class="nav nav-tabs">
+  <li class="{{ $vkpage == 'palnom6' ? 'active' : '' }}">
+    <a href="/parser/vk/palnom6">Палата #6</a>
+  </li>
+  <li class="{{ $vkpage == 'overhear' ? 'active' : '' }}">
+    <a href="/parser/vk/overhear">Подслушано</a>
+  </li>
+  <li class="{{ $vkpage == 'leprum' ? 'active' : '' }}">
+    <a href="/parser/vk/leprum">Лепра</a>
+  </li>
+  <li class="{{ $vkpage == 'pikabu' ? 'active' : '' }}">
+    <a href="/parser/vk/pikabu">Пикабу</a>
+  </li>
+  <li class="{{ $vkpage == 'factura' ? 'active' : '' }}">
+    <a href="/parser/vk/factura">Фактура</a>
+  </li>
+  <li class="{{ $vkpage == 'decaying_europe' ? 'active' : '' }}">
+    <a href="/parser/vk/decaying_europe">Запад</a>
+  </li>
+</ul>
+
+<ul class="pager">
+  <li class="previous">
+    <a href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}">
+      <span class="glyphicon glyphicon-arrow-left"></span>
+      &nbsp;{{ $previous->formatLocalized('%d %B') }}
+    </a>
+  </li>
+  <li class="next">
+    <a href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}">
+      {{ $next->formatLocalized('%d %B') }}
+      <span class="glyphicon glyphicon-arrow-right"></span>
+    </a>
+  </li>
+</ul>
+
+@if (!sizeof($posts))
+  <div class="alert alert-warning">
+    Нет записей за {{ $date->formatLocalized('%d %B %Y') }}.
+  </div>
+@endif
+
+@foreach ($posts as $i => $post)
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">#{{ $i + 1 }}</h3>
+    </div>
+    <div class="panel-body">
+      <div class="lead">{!! $post['text'] !!}</div>
+      @if ($post['attachments'])
+        @foreach ($post['attachments'] as $attach)
+          @if ($attach->type == 'photo')
+            <img src="{{ $attach->photo->src_big }}" alt="" width="{{ $attach->photo->width }}" height="{{ $attach->photo->height }}">
+          @elseif ($attach->type == 'doc' and $attach->doc->ext == 'gif')
+            <img src="{{ $attach->doc->url }}" alt="">
+          @endif
+        @endforeach
+      @endif
+    </div>
+    <div class="panel-footer">
+      <samp>
+        <span class="glyphicon glyphicon-bullhorn"></span>
+        <span class="text-muted">{{ $post['reposts'] }}</span>
+        <span class="glyphicon glyphicon-heart"></span>
+        <span class="text-muted">{{ $post['likes'] }}</span>
+        <span class="glyphicon glyphicon-link"></span>
+        <a href="{{ $post['url'] }}" class="link">permalink</a>
+      </samp>
+    </div>
+  </div>
+@endforeach
+
+<ul class="pager">
+  <li class="previous">
+    <a href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}">
+      <span class="glyphicon glyphicon-arrow-left"></span>
+      &nbsp;{{ $previous->formatLocalized('%d %B') }}
+    </a>
+  </li>
+  <li class="next">
+    <a href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}">
+      {{ $next->formatLocalized('%d %B') }}
+      <span class="glyphicon glyphicon-arrow-right"></span>
+    </a>
+  </li>
+</ul>
+@stop

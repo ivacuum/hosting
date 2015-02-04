@@ -1,4 +1,6 @@
-<?php
+<?php namespace App;
+
+use File;
 
 class WhoisQuery
 {
@@ -14,7 +16,10 @@ class WhoisQuery
 		
 		list($this->subdomain, $this->tlds) = explode('.', $this->domain, 2);
 		
-		$this->servers = json_decode(file_get_contents(__DIR__ . '/whois.servers.json'), true);
+		$this->servers = json_decode(
+			File::get(base_path().'/database/whois_servers.json'),
+			true
+		);
 	}
 
 	public function getDnsRecords()
@@ -215,15 +220,14 @@ class WhoisQuery
 
 	public function isValid()
 	{
-		if (
-			isset($this->servers[$this->tlds][0])
-			&& strlen($this->servers[$this->tlds][0]) > 6
-		) {
+		if (isset($this->servers[$this->tlds][0]) &&
+			strlen($this->servers[$this->tlds][0]) > 6)
+		{
 			$tmp_domain = strtolower($this->subdomain);
-			if (
-				preg_match("/^[a-z0-9\-]{3,}$/", $tmp_domain)
-				&& !preg_match("/^-|-$/", $tmp_domain) //&& !preg_match("/--/", $tmp_domain)
-			) {
+			
+			if (preg_match("/^[a-z0-9\-]{3,}$/", $tmp_domain) &&
+				!preg_match("/^-|-$/", $tmp_domain))
+			{
 				return true;
 			}
 		}

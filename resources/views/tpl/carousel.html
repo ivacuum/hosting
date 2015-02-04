@@ -1,0 +1,19 @@
+{!! ''; $uid = str_random(6); !!}
+<div class="img-container">
+  <div id="carousel-{!! $uid !!}" class="carousel" data-interval="0">
+    <ol class="carousel-indicators big">
+      @for ($i = 0, $len = sizeof($images); $i < $len; $i++)
+        <li data-target="#carousel-{!! $uid !!}" data-slide-to="{!! $i !!}" class="{!! $i == 0 ? 'active' : '' !!}"></li>
+      @endfor
+    </ol>
+
+    <div class="carousel-inner carousel-inner-clicker">
+      @for ($i = 0, $len = sizeof($images); $i < $len; $i++)
+        {!! ''; $image = parse_carousel_image_string($images[$i]) !!}
+        <div class="item {!! $i == 0 ? 'active' : '' !!}">
+          <img src="//life.ivacuum.ru/{{ $dir or $page }}/{!! $image['src'] !!}" alt="" width="{!! $image['w'] or '' !!}" height="{!! $image['h'] or '' !!}" data-map-lat="{!! $image['lat'] or '' !!}" data-map-lon="{!! $image['lon'] or '' !!}">
+        </div>
+      @endfor
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+@extends('acp.base')
+
+@section('content')
+<div class="pull-right">
+  @include('acp.tpl.delete', ['id' => $user->id])
+</div>
+<h2>
+  @include('acp.tpl.back', ['id' => $user->id])
+  {{ $user->account }}
+  @include('acp.tpl.edit', ['id' => $user->id])
+</h2>
+
+@if (sizeof($user->domains))
+  @include('acp.domains.list', [
+    'back_url' => Request::fullUrl(),
+    'domains'  => $user->domains
+  ])
+@else
+  <div class="alert alert-warning">На этот аккаунт еще не добавлены домены.</div>
+@endif
+@stop

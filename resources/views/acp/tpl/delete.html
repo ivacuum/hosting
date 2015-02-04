@@ -1,0 +1,10 @@
+<form action="{{ action("$self@destroy", $id) }}" method="post">
+  <div class="form-group">
+    <button class="btn btn-default js-confirm" data-confirm="Запись будет удалена. Продолжить?" type="submit">
+      <span class="glyphicon glyphicon-trash"></span>
+    </button>
+  </div>
+  
+  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+  <input type="hidden" name="_method" value="DELETE">
+</form>

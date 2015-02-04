@@ -1,0 +1,12 @@
+@extends('acp.base')
+
+@section('content')
+<div class="pull-right">
+  @include('acp.tpl.delete', ['id' => $user->id])
+</div>
+<h2>
+  @include('acp.tpl.back')
+  {{ $user->email }}
+  @include('acp.tpl.edit', ['id' => $user->id])
+</h2>
+@stop

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="app" default="build">
-  <property name="bower.dir" location="public_html/bower_components" />
-  <property name="css.dir" location="public_html/css" />
-  <property name="js.dir" location="public_html/js" />
+  <property name="bower.dir" location="public/bower_components" />
+  <property name="css.dir" location="public/css" />
+  <property name="js.dir" location="public/js" />
 
   <target name="build" depends="lint" />
   
@@ -17,7 +17,7 @@
   
   <target name="bower" description="Installing frontend dependencies">
     <echo>Installing frontend dependencies</echo>
-    <exec executable="bower" dir="public_html" failonerror="true">
+    <exec executable="bower" dir="public" failonerror="true">
       <arg value="install" />
     </exec>
   </target>

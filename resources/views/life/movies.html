@@ -1,0 +1,223 @@
+@extends('life.base')
+
+@section('content')
+<h2>Фильмы и сериалы, которые посмотрел или посмотрел бы несколько раз</h2>
+<section class="movies-container">
+  <div class="page-header">
+    <h2>2014</h2>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => 'Edge of Tomorrow', 'id' => 505851],
+      ['title' => 'Fargo', 'id' => 767379],
+      ['title' => 'Gone Girl', 'id' => 692861],
+      ['title' => 'Interstellar', 'id' => 258687],
+      ['title' => 'True Detective', 'id' => 681831],
+    ]
+  ])
+</section>
+
+<section class="movies-container">
+  <div class="page-header">
+    <h2>2013</h2>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => 'Dallas Buyers Club', 'id' => 260162],
+      ['title' => 'Her', 'id' => 577488],
+      ['title' => 'House of Cards', 'id' => 581937],
+      ['title' => 'Wolf of Wall Street', 'id' => 462682],
+    ]
+  ])
+</section>
+
+<section class="movies-container">
+  <div class="page-header">
+    <h2>2011</h2>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => 'Homeland', 'id' => 574688],
+      ['title' => 'Intouchables', 'id' => 535341],
+      ['title' => 'Suits', 'id' => 557806],
+      ['title' => 'The Guard', 'id' => 484474],
+    ]
+  ])
+</section>
+
+<section class="movies-container">
+  <div class="page-header">
+    <h2>2010</h2>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => 'Inception', 'id' => 447301],
+      ['title' => 'Sherlock', 'id' => 502838],
+    ]
+  ])
+</section>
+
+<section class="movies-container">
+  <div class="page-header">
+    <h2>2009</h2>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => '3 Idiots', 'id' => 423210],
+    ]
+  ])
+</section>
+
+<section class="movies-container">
+  <div class="page-header">
+    <h2>2008</h2>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => "Bienvenue chez les Ch'tis", 'id' => 391735],
+      ['title' => 'Breaking Bad', 'id' => 404900],
+      ['title' => 'Yes Man', 'id' => 391772],
+      ['title' => 'WALL·E', 'id' => 279102],
+    ]
+  ])
+</section>
+
+<section class="movies-container">
+  <div class="page-header">
+    <h2>2007</h2>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => 'In Bruges', 'id' => 276295],
+      ['title' => 'No Country for Old Men', 'id' => 195434],
+      ['title' => 'The Big Bang Theory', 'id' => 306084],
+    ]
+  ])
+</section>
+
+<section class="movies-container">
+  <div class="page-header">
+    <h2>2006</h2>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => 'The Departed', 'id' => 81314],
+      ['title' => 'The Prestige', 'id' => 195334],
+    ]
+  ])
+</section>
+
+<section class="movies-container">
+  <div class="page-header">
+    <h2>2005</h2>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => 'Lucky Number Slevin', 'id' => 86326],
+    ]
+  ])
+</section>
+
+<section class="movies-container">
+  <div class="page-header">
+    <h2>2004</h2>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => 'Eternal Sunshine of the Spotless Mind', 'id' => 5492],
+      ['title' => 'Terminal', 'id' => 6877],
+    ]
+  ])
+</section>
+
+<section class="movies-container">
+  <div class="page-header">
+    <h2>2002</h2>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => 'Catch Me If You Can', 'id' => 324],
+    ]
+  ])
+</section>
+
+<section class="movies-container">
+  <div class="page-header">
+    <h2>2000</h2>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => 'Cast Away', 'id' => 627],
+      ['title' => 'Snatch', 'id' => 526],
+    ]
+  ])
+</section>
+
+<section class="movies-container">
+  <div class="page-header">
+    <h2>1999</h2>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => 'Fight Club', 'id' => 361],
+      ['title' => 'The Green Mile', 'id' => 435],
+    ]
+  ])
+</section>
+
+<section class="movies-container">
+  <div class="page-header">
+    <h2>1998</h2>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => 'Lock, Stock and Two Smoking Barrels', 'id' => 522],
+      ['title' => 'The Truman Show', 'id' => 4541],
+    ]
+  ])
+</section>
+
+<section class="movies-container">
+  <div class="page-header">
+    <h2>1997</h2>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => 'The Game', 'id' => 12198],
+    ]
+  ])
+</section>
+
+<section class="movies-container">
+  <div class="page-header">
+    <h2>1996</h2>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => 'Kingpin', 'id' => 4343],
+    ]
+  ])
+</section>
+
+<section class="movies-container">
+  <div class="page-header">
+    <h2>1993</h2>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => 'Groundhog Day', 'id' => 527],
+    ]
+  ])
+</section>
+
+<section class="movies-container">
+  <div class="page-header">
+    <h2>1991</h2>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => 'Terminator 2: Judgement Day', 'id' => 444],
+    ]
+  ])
+</section>
+@stop

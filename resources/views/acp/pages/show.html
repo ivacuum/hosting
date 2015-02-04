@@ -1,0 +1,17 @@
+@extends('acp.base')
+
+@section('content')
+<div class="pull-right">
+  @include('acp.tpl.delete', ['id' => $page->id])
+</div>
+<h2>
+  @include('acp.tpl.back', ['id' => $page->id])
+  {{ $page->title }}
+  @include('acp.tpl.edit', ['id' => $page->id])
+</h2>
+
+@if ($page->text)
+  <blockquote>{!! nl2br($page->text) !!}</blockquote>
+@endif
+
+@stop

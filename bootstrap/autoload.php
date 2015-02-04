@@ -2,15 +2,10 @@
 
 define('LARAVEL_START', microtime(true));
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
-if (file_exists($compiled = __DIR__ . '/compiled.php')) {
-	require $compiled;
-}
+$compiledPath = __DIR__.'/../storage/framework/compiled.php';
 
-Patchwork\Utf8\Bootup::initMbstring();
-Illuminate\Support\ClassLoader::register();
-
-if (is_dir($workbench = __DIR__ . '/../workbench')) {
-	Illuminate\Workbench\Starter::start($workbench);
+if (file_exists($compiledPath)) {
+	require $compiledPath;
 }
