@@ -3,7 +3,7 @@
 	"description": "",
 	"license": "MIT",
 	"require": {
-		"laravel/framework": "5.0.*@dev",
+		"laravel/framework": "5.0.*",
 		"guzzlehttp/guzzle": "~5.0",
 		"baum/baum": "~1.0"
 	},
