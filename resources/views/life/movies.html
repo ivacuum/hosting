@@ -1,13 +1,14 @@
 @extends('life.base')
 
 @section('content')
-<h2>Фильмы и сериалы, которые посмотрел или посмотрел бы несколько раз</h2>
+<h2>Фильмы и сериалы, достойные многократного просмотра</h2>
 <section class="movies-container">
   <div class="page-header">
     <h2>2014</h2>
   </div>
   @include('tpl.kp_movies', [
     'movies' => [
+      ['title' => 'Birdman', 'id' => 722827],
       ['title' => 'Edge of Tomorrow', 'id' => 505851],
       ['title' => 'Fargo', 'id' => 767379],
       ['title' => 'Gone Girl', 'id' => 692861],
@@ -39,6 +40,7 @@
     'movies' => [
       ['title' => 'Homeland', 'id' => 574688],
       ['title' => 'Intouchables', 'id' => 535341],
+      ['title' => 'Shameless', 'id' => 571335],
       ['title' => 'Suits', 'id' => 557806],
       ['title' => 'The Guard', 'id' => 484474],
     ]
