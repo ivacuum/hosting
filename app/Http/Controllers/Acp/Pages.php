@@ -99,6 +99,8 @@ class Pages extends Controller
 	
 	protected function getHierarchy($pages)
 	{
+		$ary = [];
+		
 		foreach ($pages as $page) {
 			$ary[] = [
 				'key'       => $page['id'],

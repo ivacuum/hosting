@@ -10,8 +10,6 @@
   @include('acp.tpl.edit', ['id' => $page->id])
 </h2>
 
-@if ($page->text)
-  <blockquote>{!! nl2br($page->text) !!}</blockquote>
-@endif
+{!! $page->html !!}
 
 @stop
