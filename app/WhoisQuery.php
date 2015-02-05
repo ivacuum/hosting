@@ -27,9 +27,8 @@ class WhoisQuery
 		$ipv4 = $ipv6 = $mx = $ns = [];
 		
 		try {
-			$ips = dns_get_record($this->domain, DNS_A | DNS_AAAA | DNS_MX | DNS_NS);
+			$ips = dns_get_record("{$this->domain}.", DNS_A | DNS_AAAA | DNS_MX | DNS_NS);
 		} catch (\ErrorException $e) {
-			info($e->getMessage());
 			return ['failed' => true];
 		}
 		
