@@ -347,17 +347,22 @@ class Domain extends Model
 		if (empty($data = $this->getWhoisParsedData())) {
 			return false;
 		}
-
+		
 		$diff = $this->checkForChanges($data);
 		$this->update($data);
 
 		if (!empty($diff)) {
 			$domain = $this;
 			
-			Mail::queue('emails.whois.changed', compact('diff', 'data'), function($mail) use ($domain) {
-				$mail->to('domains@ivacuum.ru')
-					->subject($domain->domain);
-			});
+			register_shutdown_function(
+				['Mail', 'send'],
+				'emails.whois.changed',
+				compact('diff', 'data'),
+				function($mail) use ($domain) {
+					$mail->to('domains@ivacuum.ru')
+						->subject($domain->domain);
+				}
+			);
 			
 			return $diff;
 		}
