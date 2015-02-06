@@ -27,6 +27,9 @@ class WhoisQuery
 		$ipv4 = $ipv6 = $mx = $ns = [];
 		
 		try {
+			// Без точки, в случае отсутствия записей у домена, запрос
+			// будет произведен к текущему домену сервера, что вернет
+			// совершенно нерелевантные данные
 			$ips = dns_get_record("{$this->domain}.", DNS_A | DNS_AAAA | DNS_MX | DNS_NS);
 		} catch (\ErrorException $e) {
 			return ['failed' => true];
