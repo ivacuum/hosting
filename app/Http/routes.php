@@ -7,6 +7,7 @@ Route::get('logout', 'Auth@logout');
 Route::get('register', 'Auth@register');
 Route::post('register', 'Auth@registerPost');
 
+Route::get('cv', 'Home@cv');
 Route::get('life/{page}', 'Home@life');
 
 Route::get('parser/vk/{page?}/{date?}', 'ParserVk@index')

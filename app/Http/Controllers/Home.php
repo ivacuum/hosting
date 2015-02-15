@@ -8,6 +8,11 @@ class Home extends Controller
 	{
 		return view('index');
 	}
+	
+	public function cv()
+	{
+		return view('cv');
+	}
 
 	public function life($page)
 	{
