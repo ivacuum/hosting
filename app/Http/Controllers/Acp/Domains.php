@@ -153,6 +153,11 @@ class Domains extends Controller
 		dd($domain->getNsServers());
 	}
 	
+	public function orphans()
+	{
+		return view($this->view);
+	}
+	
 	public function setServerNsRecords(Domain $domain, HttpRequest $request)
 	{
 		$server = $request->get('server');
