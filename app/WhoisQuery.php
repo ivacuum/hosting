@@ -30,7 +30,7 @@ class WhoisQuery
 			// Без точки, в случае отсутствия записей у домена, запрос
 			// будет произведен к текущему домену сервера, что вернет
 			// совершенно нерелевантные данные
-			$ips = dns_get_record("{$this->domain}.");
+			$ips = dns_get_record("{$this->domain}.", DNS_ALL);
 		} catch (\ErrorException $e) {
 			return ['failed' => true];
 		}
