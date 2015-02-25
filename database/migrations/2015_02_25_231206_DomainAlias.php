@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DomainCredentials extends Migration
+class DomainAlias extends Migration
 {
 	public function up()
 	{
