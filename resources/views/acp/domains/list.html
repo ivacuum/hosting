@@ -22,14 +22,22 @@
       @foreach ($domains as $i => $domain)
         <tr class="js-dblclick-edit {{ $domain->isExpired() ? 'danger' : '' }} {{ !$domain->domain_control ? 'info' : '' }}"
       data-dblclick-url="/acp/domains/{{ $domain->domain }}/edit?goto={{ $back_url }}">
-          <td>{{ $i + 1 }}</td>
+          <td>
+            <a name="d{{ $domain->id }}">
+            {{ $i + 1 }}
+          </td>
           <td>
             <a href="http://{{ $domain->domain }}/" target="_blank" style="margin-right: 0.3em;">
               <span class="glyphicon glyphicon-globe"></span>
             </a>
-            <a href="/acp/domains/{{ $domain->domain }}" class="link">
-              {{ $domain->domain }}
-            </a>
+            <a href="/acp/domains/{{ $domain->domain }}" class="link">{{ $domain->domain }}</a>
+            @if ($domain->alias_id)
+              <span class="text-muted">
+                алиас
+                <a href="/acp/domains/{{ $domain->alias->domain }}" class="link">{{ $domain->alias->domain }}</a>
+                <a href="#d{{ $domain->alias_id }}" class="pseudo">#</a>
+              </span>
+            @endif
           </td>
           <td class="text-muted">
             <span title="{{ $domain->paid_till }}">
@@ -39,7 +47,7 @@
           <td><small><samp>{!! $domain->whatServerIpv4() !!}</samp></small></td>
           <td><small><samp>{{ $domain->firstNsServer() }}</samp></small></td>
           <td>
-            @if ($domain->cms_url)
+            @if ($domain->cms_url or ($domain->alias_id and $domain->alias->cms_url))
               @include('acp.domains.cms_login', ['cms_button_class' => 'btn btn-default btn-xs'])
             @endif
           </td>

@@ -16,6 +16,20 @@
 </div>
 
 <div class="form-group">
+  <label class="col-md-2 control-label">Алиас:</label>
+  <div class="col-md-10">
+    <select class="form-control" name="alias_id">
+      <option value="0">нет</option>
+      @foreach (App\Domain::orderBy('domain')->get() as $alias)
+        <option value="{{ $alias->id }}" {{ $alias->id == (old('alias_id') ?: @$domain->alias_id) ? 'selected' : '' }}>
+          {{ $alias->domain }}
+        </option>
+      @endforeach
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
   <label class="col-md-2 control-label">Клиент:</label>
   <div class="col-md-10">
     <select class="form-control" name="client_id">
