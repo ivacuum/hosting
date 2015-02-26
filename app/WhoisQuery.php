@@ -14,25 +14,28 @@ class WhoisQuery
 	{
 		$this->domain = idn_to_ascii($domain);
 		
-		list($this->subdomain, $this->tlds) = explode('.', $this->domain, 2);
-		
 		$this->servers = json_decode(
 			File::get(base_path().'/database/whois_servers.json'),
 			true
 		);
+		
+		$this->fillSubdomainAndTld($this->domain);
 	}
 
 	public function getDnsRecords()
 	{
 		$ipv4 = $ipv6 = $mx = $ns = [];
 		
-		try {
-			// Без точки, в случае отсутствия записей у домена, запрос
-			// будет произведен к текущему домену сервера, что вернет
-			// совершенно нерелевантные данные
+		// Без точки, в случае отсутствия записей у домена, запрос
+		// будет произведен к текущему домену сервера, что вернет
+		// совершенно нерелевантные данные
+		if ($this->domain != "{$this->subdomain}.{$this->tlds}") {
+			$ips = array_merge(
+				dns_get_record("{$this->subdomain}.{$this->tlds}.", DNS_NS),
+				dns_get_record("{$this->domain}.")
+			);
+		} else {
 			$ips = dns_get_record("{$this->domain}.", DNS_ALL);
-		} catch (\ErrorException $e) {
-			return ['failed' => true];
 		}
 		
 		if (empty($ips)) {
@@ -52,6 +55,7 @@ class WhoisQuery
 			}
 		}
 		
+		$ns = array_unique($ns);
 		asort($ipv4);
 		asort($ipv6);
 		asort($mx);
@@ -236,5 +240,14 @@ class WhoisQuery
 		}
 
 		return false;
+	}
+	
+	protected function fillSubdomainAndTld($domain)
+	{
+		list($this->subdomain, $this->tlds) = explode('.', $domain, 2);
+		
+		if (!isset($this->servers[$this->tlds][0]) && strpos($this->tlds, '.')) {
+			$this->fillSubdomainAndTld($this->tlds);
+		}
 	}
 }
