@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Cache;
 use File;
 
 class WhoisQuery
@@ -79,63 +80,25 @@ class WhoisQuery
 			return "Domainname isn't valid!";
 		}
 		
+		$cache_entry  = "{$this->subdomain}.{$this->tlds}";
 		$whois_server = $this->servers[$this->tlds][0];
 
 		if (!$whois_server) {
 			return "No whois server for this tld in list!";
 		}
 		
-		// If tlds have been found
-		// if whois server serve replay over HTTP protocol instead of WHOIS protocol
-		if (preg_match("/^https?:\/\//i", $whois_server)) {
-			$ch = curl_init();
-			$url = $whois_server . $this->subdomain . '.' . $this->tlds;
-			curl_setopt($ch, CURLOPT_URL, $url);
-			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
-			curl_setopt($ch, CURLOPT_TIMEOUT, 60);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-			
-			$data = curl_exec($ch);
-			
-			if (curl_error($ch)) {
-				return "Connection error!";
+		return $this->data = Cache::remember($cache_entry, 15, function() use ($whois_server) {
+			if (preg_match("/^https?:\/\//i", $whois_server)) {
+				$string = $this->curlRequest($whois_server);
 			} else {
-				$string = strip_tags($data);
-			}
-			curl_close($ch);
-		} else {
-			// Getting whois information
-			if (false === $fp = fsockopen($whois_server, 43)) {
-				return "Connection error!";
+				$string = $this->socketRequest($whois_server);
 			}
 
-			$dom = $this->subdomain . '.' . $this->tlds;
-			fputs($fp, "$dom\r\n");
-			stream_set_timeout($fp, 5);
-			
-			$info = stream_get_meta_data($fp);
-			$string = '';
+			$encoding = mb_detect_encoding($string, "UTF-8, ISO-8859-1, ISO-8859-15", true);
+			$utf8 = mb_convert_encoding($string, "UTF-8", $encoding);
 
-			while (!feof($fp) && !$info['timed_out']) {
-				$line = fgets($fp, 128);
-				$string .= $line;
-
-				$info = stream_get_meta_data($fp);
-			}
-			
-			if ($info['timed_out']) {
-				return 'Connection timed out';
-			}
-			
-			fclose($fp);
-		}
-
-		$encoding = mb_detect_encoding($string, "UTF-8, ISO-8859-1, ISO-8859-15", true);
-		$utf8 = mb_convert_encoding($string, "UTF-8", $encoding);
-
-		return $this->data = htmlspecialchars($utf8, ENT_COMPAT, "UTF-8", true);
+			return htmlspecialchars($utf8, ENT_COMPAT, "UTF-8", true);
+		});
 	}
 
 	public function parse()
@@ -242,6 +205,30 @@ class WhoisQuery
 		return false;
 	}
 	
+	protected function curlRequest($whois_server)
+	{
+		$url = "{$whois_server}{$this->subdomain}.{$this->tlds}";
+		
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+		
+		$data = curl_exec($ch);
+		
+		if (curl_error($ch)) {
+			return "Connection error!";
+		}
+		
+		$string = strip_tags($data);
+		curl_close($ch);
+		
+		return $string;
+	}
+	
 	protected function fillSubdomainAndTld($domain)
 	{
 		list($this->subdomain, $this->tlds) = explode('.', $domain, 2);
@@ -249,5 +236,34 @@ class WhoisQuery
 		if (!isset($this->servers[$this->tlds][0]) && strpos($this->tlds, '.')) {
 			$this->fillSubdomainAndTld($this->tlds);
 		}
+	}
+	
+	protected function socketRequest($whois_server)
+	{
+		if (false === $fp = fsockopen($whois_server, 43)) {
+			return "Connection error!";
+		}
+
+		$dom = "{$this->subdomain}.{$this->tlds}";
+		fputs($fp, "$dom\r\n");
+		stream_set_timeout($fp, 5);
+		
+		$info = stream_get_meta_data($fp);
+		$string = '';
+
+		while (!feof($fp) && !$info['timed_out']) {
+			$line = fgets($fp, 128);
+			$string .= $line;
+
+			$info = stream_get_meta_data($fp);
+		}
+		
+		if ($info['timed_out']) {
+			return 'Connection timed out';
+		}
+		
+		fclose($fp);
+		
+		return $string;
 	}
 }
