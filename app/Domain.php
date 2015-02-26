@@ -24,6 +24,17 @@ class Domain extends Model
 		'db_pma', 'db_host', 'db_user', 'db_pass', 'yandex_user_id'];
 	protected $hidden = [];
 	
+	public static function boot()
+	{
+		parent::boot();
+		
+		// Домен перестает быть алиасом для других
+		static::deleted(function($domain) {
+			Domain::whereAliasId($domain->id)
+				->update(['alias_id' => 0]);
+		});
+	}
+
 	public function alias()
 	{
 		return $this->belongsTo('App\Domain');
