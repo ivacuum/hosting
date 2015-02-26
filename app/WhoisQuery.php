@@ -31,12 +31,20 @@ class WhoisQuery
 		// будет произведен к текущему домену сервера, что вернет
 		// совершенно нерелевантные данные
 		if ($this->domain != "{$this->subdomain}.{$this->tlds}") {
-			$ips = array_merge(
-				dns_get_record("{$this->subdomain}.{$this->tlds}.", DNS_NS),
-				dns_get_record("{$this->domain}.")
-			);
+			try {
+				$ips = array_merge(
+					dns_get_record("{$this->subdomain}.{$this->tlds}.", DNS_NS),
+					dns_get_record("{$this->domain}.")
+				);
+			} catch (\ErrorException $e) {
+				return ['failed' => true];
+			}
 		} else {
-			$ips = dns_get_record("{$this->domain}.", DNS_ALL);
+			try {
+				$ips = dns_get_record("{$this->domain}.", DNS_ALL);
+			} catch (\ErrorException $e) {
+				return ['failed' => true];
+			}
 		}
 		
 		if (empty($ips)) {
