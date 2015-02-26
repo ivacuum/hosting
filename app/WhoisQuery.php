@@ -80,7 +80,7 @@ class WhoisQuery
 			return "Domainname isn't valid!";
 		}
 		
-		$cache_entry  = "{$this->subdomain}.{$this->tlds}";
+		$cache_entry  = "whois_{$this->subdomain}.{$this->tlds}";
 		$whois_server = $this->servers[$this->tlds][0];
 
 		if (!$whois_server) {
