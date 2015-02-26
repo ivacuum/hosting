@@ -55,6 +55,13 @@ class Domains extends Controller
 					->get();
 				
 			break;
+			case 'orphan':
+			
+				$domains = Domain::whereOrphan(1)
+					->orderBy($sort)
+					->get();
+				
+			break;
 			default:
 			
 				$domains = Domain::whereActive(1)
@@ -151,11 +158,6 @@ class Domains extends Controller
 	public function nsServers(Domain $domain)
 	{
 		dd($domain->getNsServers());
-	}
-	
-	public function orphans()
-	{
-		return view($this->view);
 	}
 	
 	public function setServerNsRecords(Domain $domain, HttpRequest $request)

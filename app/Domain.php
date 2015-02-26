@@ -16,8 +16,8 @@ class Domain extends Model
 	const NS0 = 'dns1.yandex.net';
 	const NS1 = 'dns2.yandex.net';
 	
-	protected $fillable = ['client_id', 'alias_id',
-		'domain', 'active', 'domain_control', 'registered_at', 'paid_till',
+	protected $fillable = ['client_id', 'alias_id', 'domain', 'active',
+		'domain_control', 'orphan', 'registered_at', 'paid_till',
 		'ipv4', 'ipv6', 'mx', 'ns', 'queried_at', 'text',
 		'cms_type', 'cms_version', 'cms_url', 'cms_user', 'cms_pass',
 		'ftp_host', 'ftp_user', 'ftp_pass', 'ssh_host', 'ssh_user', 'ssh_pass',

@@ -52,12 +52,22 @@
   </div>
 </div>
 
-<div class="form-group">
+<div class="form-group flush">
   <div class="col-md-10 col-md-offset-2 checkbox">
     <input type="hidden" name="domain_control" value="0">
     <label>
       <input type="checkbox" name="domain_control" value="1" {{ 1 == (old('domain_control') ?: @$domain->domain_control) ? 'checked' : '' }}>
       Домен в нашей панели reg.ru
+    </label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-md-10 col-md-offset-2 checkbox">
+    <input type="hidden" name="orphan" value="0">
+    <label>
+      <input type="checkbox" name="orphan" value="1" {{ 1 == (old('orphan') ?: @$domain->orphan) ? 'checked' : '' }}>
+      Сирота (домен на продажу)
     </label>
   </div>
 </div>

@@ -42,7 +42,7 @@
   </li>
   <li>
     <h4>
-      <a href="/acp/domains/orphans" class="link">
+      <a href="{{ action("$self@index", ['filter' => 'orphan']) }}" class="link {{ $filter == 'orphan' ? 'active' : '' }}">
         Сироты
       </a>
     </h4>
