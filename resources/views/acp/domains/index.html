@@ -8,14 +8,14 @@
   <li>
     <h4>
       <a href="{{ action("$self@index") }}" class="link {{ !$filter ? 'active' : '' }}">
-        В нашей панели reg.ru
+        На мониторинге
       </a>
     </h4>
   </li>
   <li>
     <h4>
       <a href="{{ action("$self@index", ['filter' => 'external']) }}" class="link {{ $filter == 'external' ? 'active' : '' }}">
-        Внешние
+        Не в нашей панели reg.ru
       </a>
     </h4>
   </li>
