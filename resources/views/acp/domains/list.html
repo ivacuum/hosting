@@ -27,9 +27,7 @@
             {{ $i + 1 }}
           </td>
           <td>
-            <a href="http://{{ $domain->domain }}/" target="_blank" style="margin-right: 0.3em;">
-              <span class="glyphicon glyphicon-globe"></span>
-            </a>
+            <a href="http://{{ $domain->domain }}/" target="_blank" style="margin-right: 0.3em;"><span class="glyphicon glyphicon-globe"></span></a>
             <a href="/acp/domains/{{ $domain->domain }}" class="link">{{ $domain->domain }}</a>
             @if ($domain->alias_id)
               <span class="text-muted">
