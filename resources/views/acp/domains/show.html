@@ -54,6 +54,13 @@
       </a>
     </h3>
   </li>
+  <li>
+    <h3>
+      <a class="pseudo js-ajax {{ $tab == 'robots' ? 'active' : '' }}" data-ajax-url="/acp/domains/{{ $domain->domain }}/robots">
+        robots.txt
+      </a>
+    </h3>
+  </li>
 </ul>
 
 <div id="ajax_container" class="js-deferred-load" data-deferred-url="{{ action("$self@$tab", $domain->domain) }}">

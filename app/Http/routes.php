@@ -41,6 +41,7 @@ Route::group(['namespace' => 'Acp', 'prefix' => 'acp', 'middleware' => ['auth', 
 	Route::put('domains/{Domain}/ns-records', 'Domains@editNsRecord');
 	Route::delete('domains/{Domain}/ns-records', 'Domains@deleteNsRecord');
 	Route::get('domains/{Domain}/ns-servers', 'Domains@nsServers');
+	Route::get('domains/{Domain}/robots', 'Domains@robots');
 	Route::post('domains/{Domain}/server-ns', 'Domains@setServerNsRecords');
 	Route::get('domains/{Domain}/yandex-pdd-status', 'Domains@yandexPddStatus');
 	Route::post('domains/{Domain}/yandex-ns', 'Domains@setYandexNs');

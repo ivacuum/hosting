@@ -160,6 +160,13 @@ class Domains extends Controller
 		dd($domain->getNsServers());
 	}
 	
+	public function robots(Domain $domain)
+	{
+		$robots = $domain->getRobotsTxt();
+
+		return view($this->view, compact('robots'));
+	}
+	
 	public function setServerNsRecords(Domain $domain, HttpRequest $request)
 	{
 		$server = $request->get('server');

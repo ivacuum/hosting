@@ -242,6 +242,20 @@ class Domain extends Model
 		
 		return $response->json(['object' => true]);
 	}
+	
+	public function getRobotsTxt()
+	{
+		$client = new Client();
+		$domain = idn_to_ascii($this->domain);
+		
+		try {
+			$response = $client->get("http://{$domain}/robots.txt");
+		} catch (\Exception $e) {
+			return $e->getMessage();
+		}
+		
+		return $response->getBody();
+	}
 
 	public function getWhoisData()
 	{
