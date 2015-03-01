@@ -336,13 +336,13 @@ class Domain extends Model
 		}
 		
 		if ($ipv4) {
-			$this->addNsRecord('A', $ipv4, '@');
+			$this->addNsRecord('A', ['content' => $ipv4, 'subdomain' => '@']);
 		}
 		if ($ipv6) {
-			$this->addNsRecord('AAAA', $ipv6, '@');
+			$this->addNsRecord('AAAA', ['content' => $ipv6, 'subdomain' => '@']);
 		}
 		
-		$this->addNsRecord('CNAME', '@', '*');
+		$this->addNsRecord('CNAME', ['content' => '@', 'subdomain' => '*']);
 		
 		return true;
 	}
