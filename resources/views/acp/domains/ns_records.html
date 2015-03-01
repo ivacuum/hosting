@@ -44,9 +44,15 @@
             <option value="TXT">TXT</option>
             <option value="NS">NS</option>
             <option value="MX">MX</option>
+            <option value="SRV">SRV</option>
           </select>
         </td>
-        <td><input type="text" name="content" style="width: 100%;"></td>
+        <td>
+          <input type="text" name="content" style="width: 100%;">
+          <br><input type="text" name="priority" style="width: 100%;" placeholder="priority [MX, SRV]">
+          <br><input type="text" name="port" style="width: 100%;" placeholder="port [SRV]">
+          <br><input type="text" name="weight" style="width: 100%;" placeholder="weight [SRV]">
+        </td>
         <td>
           <a class="pseudo js-ns-record-add">добавить днс-запись</a>
         	<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -68,13 +74,36 @@
           </td>
           <td>
             <div class="presentation">
-              @if ($record->priority > 0)
-                <span class="text-muted">[{{ $record->priority }}]</span>
-              @endif
               {{ str_limit($record->content, 35) }}
+              @if ($record->priority > 0)
+                <br><span class="text-muted">priority</span>: {{ $record->priority }}
+              @endif
+              @if ($record->type == 'SRV')
+                <br><span class="text-muted">port</span>: {{ $record->port }}
+                <br><span class="text-muted">weight</span>: {{ $record->weight }}
+              @endif
+              @if ($record->type == 'SOA')
+                <br><span class="text-muted">retry</span>: {{ $record->retry }}
+                <br><span class="text-muted">refresh</span>: {{ $record->refresh }}
+                <br><span class="text-muted">expire</span>: {{ $record->expire }}
+                <br><span class="text-muted">ttl</span>: {{ $record->ttl }}
+              @endif
             </div>
             <div class="edit hidden">
-              <input type="text" name="content" value="{{ $record->content }}" style="width: 100%;">
+              <input type="text" name="content" value="{{ $record->content }}" style="width: 100%;" {{ $record->type == 'SOA' ? 'readonly' : '' }}>
+              @if ($record->priority > 0)
+                <br><input type="text" name="priority" value="{{ $record->priority }}" style="width: 100%;" placeholder="priority">
+              @endif
+              @if ($record->type == 'SRV')
+                <br><input type="text" name="port" value="{{ $record->port }}" style="width: 100%;" placeholder="port">
+                <br><input type="text" name="weight" value="{{ $record->weight }}" style="width: 100%;" placeholder="weight">
+              @endif
+              @if ($record->type == 'SOA')
+                <br><input type="text" name="retry" value="{{ $record->retry }}" style="width: 100%;" placeholder="retry">
+                <br><input type="text" name="refresh" value="{{ $record->refresh }}" style="width: 100%;" placeholder="refresh">
+                <br><input type="text" name="expire" value="{{ $record->expire }}" style="width: 100%;" placeholder="expire">
+                <br><input type="text" name="ttl" value="{{ $record->ttl }}" style="width: 100%;" placeholder="ttl">
+              @endif
               <input type="hidden" name="record_id" value="{{ $record->record_id }}">
               <input type="hidden" name="_method" value="PUT">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">

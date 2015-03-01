@@ -105,9 +105,9 @@ class Domains extends Controller
 	
 	public function addNsRecord(Domain $domain, HttpRequest $request)
 	{
-		extract($request->only('type', 'content', 'subdomain'));
+		$input = $request->only('content', 'subdomain', 'priority', 'port', 'weight');
 		
-		return $domain->addNsRecord($type, $content, $subdomain);
+		return $domain->addNsRecord($request->get('type'), $input);
 	}
 
 	public function create()
@@ -136,9 +136,10 @@ class Domains extends Controller
 	
 	public function editNsRecord(Domain $domain, HttpRequest $request)
 	{
-		extract($request->only('record_id', 'type', 'content', 'subdomain'));
+		extract($request->only('record_id', 'type'));
+		$input = $request->only('content', 'subdomain', 'priority', 'port', 'weight', 'retry', 'refresh', 'expire', 'ttl');
 		
-		return $domain->editNsRecord($record_id, $type, $content, $subdomain);
+		return $domain->editNsRecord($record_id, $type, $input);
 	}
 	
 	public function mailboxes(Domain $domain)

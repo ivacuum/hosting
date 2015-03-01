@@ -71,12 +71,15 @@ class Domain extends Model
 	/**
 	* Добавление днс-записей через API Яндекса
 	*/
-	public function addNsRecord($type, $content, $subdomain = '')
+	public function addNsRecord($type, array $input)
 	{
 		if (!$this->yandex_user_id) {
 			throw new \Exception('Домен не связан с учеткой в Яндексе');
 		}
 		
+		// content, subdomain, priority, port, weight
+		extract($input);
+
 		$allowed_types = ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'SRV', 'TXT'];
 		$content = '@' === $content ? $this->domain : $content;
 		
@@ -92,6 +95,10 @@ class Domain extends Model
 				'type'      => $type,
 				'subdomain' => $subdomain,
 				'content'   => idn_to_ascii($content),
+				'priority'  => $priority,
+				'port'      => $port,
+				'weight'    => $weight,
+				'target'    => idn_to_ascii($content),
 			],
 		]);
 		
@@ -124,13 +131,13 @@ class Domain extends Model
 	/**
 	* Редактирование днс-записей через API Яндекса
 	*/
-	public function editNsRecord($id, $type, $content, $subdomain = '')
+	public function editNsRecord($id, $type, array $input)
 	{
 		if (!$this->yandex_user_id) {
 			throw new \Exception('Домен не связан с учеткой в Яндексе');
 		}
 		
-		$allowed_types = ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'SRV', 'TXT'];
+		$allowed_types = ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'SOA', 'SRV', 'TXT'];
 		
 		if (!in_array($type, $allowed_types)) {
 			throw new \Exception('Неподдерживаемый тип записи');
@@ -138,12 +145,23 @@ class Domain extends Model
 
 		$client = $this->getYandexPddApiClient();
 		
+		// content, subdomain, priority, port, weight, retry, refresh, expire, ttl
+		extract($input);
+		
 		$response = $client->post('admin/dns/edit', [
 			'query' => [
 				'domain'    => $this->domain,
 				'subdomain' => $subdomain,
 				'record_id' => $id,
 				'content'   => idn_to_ascii($content),
+				'priority'  => $priority,
+				'port'      => $port,
+				'weight'    => $weight,
+				'retry'     => $retry,
+				'refresh'   => $refresh,
+				'expire'    => $expire,
+				'target'    => idn_to_ascii($content),
+				'ttl'       => $ttl,
 			],
 		]);
 		
