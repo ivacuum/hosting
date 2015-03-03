@@ -41,7 +41,7 @@ class WhoisQuery
 			}
 		} else {
 			try {
-				$ips = dns_get_record("{$this->domain}.", DNS_ALL);
+				$ips = dns_get_record("{$this->domain}.", DNS_A | DNS_AAAA | DNS_MX | DNS_NS);
 			} catch (\ErrorException $e) {
 				return ['failed' => true];
 			}

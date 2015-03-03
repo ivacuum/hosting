@@ -46,14 +46,14 @@
         </a>
       </h3>
     </li>
+    <li>
+      <h3>
+        <a class="pseudo js-ajax {{ $tab == 'nsRecords' ? 'active' : '' }}" data-ajax-url="{{ action("$self@nsRecords", $domain->domain) }}">
+          DNS
+        </a>
+      </h3>
+    </li>
   @endif
-  <li>
-    <h3>
-      <a class="pseudo js-ajax {{ $tab == 'nsRecords' ? 'active' : '' }}" data-ajax-url="{{ action("$self@nsRecords", $domain->domain) }}">
-        DNS
-      </a>
-    </h3>
-  </li>
   <li>
     <h3>
       <a class="pseudo js-ajax {{ $tab == 'robots' ? 'active' : '' }}" data-ajax-url="/acp/domains/{{ $domain->domain }}/robots">

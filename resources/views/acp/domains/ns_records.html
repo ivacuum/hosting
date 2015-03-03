@@ -1,3 +1,4 @@
+{{--
 @if ($domain->domain_control and ($domain->ns != 'dns1.yandex.net dns2.yandex.net' and $domain->ns != 'dns1.yandex.ru dns2.yandex.ru'))
   <form action="{{ action("$self@setYandexNs", $domain->domain) }}" method="post">
     <p>
@@ -19,6 +20,7 @@
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
   </form>
 @endif
+--}}
 
 @if (sizeof($records))
 <div class="boxed-group flush">
