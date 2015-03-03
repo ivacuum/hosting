@@ -14,7 +14,7 @@
 <div class="boxed-group form-signin">
   <h3>Регистрация на сайте</h3>
   <div class="boxed-group-inner">
-    <form action="/register" method="post">
+    <form action="/auth/register" method="post">
       <input type="text" class="input-type-check" name="mail" value="{{ old('mail') }}">
       
       <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
@@ -27,7 +27,7 @@
         <input type="password" class="form-control" name="password">
       </div>
     
-      <button type="submit" class="btn btn-primary btn-lg">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">
         Зарегистрироваться
       </button>
       

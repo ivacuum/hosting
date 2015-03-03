@@ -1,11 +1,15 @@
 <?php
 
 Route::get('/', 'Home@index');
-Route::get('login', 'Auth@login');
-Route::post('login', 'Auth@loginPost');
-Route::get('logout', 'Auth@logout');
-Route::get('register', 'Auth@register');
-Route::post('register', 'Auth@registerPost');
+Route::get('auth/login', 'Auth@login');
+Route::post('auth/login', 'Auth@loginPost');
+Route::get('auth/logout', 'Auth@logout');
+Route::get('auth/register', 'Auth@register');
+Route::post('auth/register', 'Auth@registerPost');
+Route::get('auth/password/remind', 'Auth@passwordRemind');
+Route::post('auth/password/remind', 'Auth@passwordRemindPost');
+Route::get('auth/password/reset/{token}', 'Auth@passwordReset');
+Route::post('auth/password/reset', 'Auth@passwordResetPost');
 
 Route::get('cv', 'Home@cv');
 Route::get('life/{page}', 'Home@life');
@@ -79,8 +83,3 @@ Route::group(['namespace' => 'Acp', 'prefix' => 'acp', 'middleware' => ['auth', 
 		Route::get('users/{YandexUser}/edit', 'Users@edit');
 	});
 });
-
-// Route::controllers([
-// 	'auth' => 'Auth\AuthController',
-// 	'password' => 'Auth\PasswordController',
-// ]);

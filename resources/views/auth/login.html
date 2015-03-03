@@ -14,12 +14,12 @@
 <div class="boxed-group form-signin">
   <h3>Вход на сайт</h3>
   <div class="boxed-group-inner">
-    <form action="/login" method="post">
+    <form action="/auth/login" method="post">
       <input type="text" class="input-type-check" name="mail" value="{{ old('mail') }}">
 
       <div class="form-group">
         <label>Электронная почта:</label>
-        <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+        <input autofocus type="email" class="form-control" name="email" value="{{ old('email') }}">
       </div>
 
       <div class="form-group">
@@ -32,9 +32,15 @@
         <label><input type="checkbox" name="foreign"> Чужой компьютер?</label>
       </div>
     
-      <button type="submit" class="btn btn-primary btn-lg">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">
         Войти
       </button>
+      
+      <p class="lead text-center" style="margin: 1em 0;">или</p>
+      
+      <a href="/auth/register" class="btn btn-default btn-lg btn-block">
+        Зарегистрироваться
+      </a>
       
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
     </form>

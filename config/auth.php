@@ -7,7 +7,7 @@ return [
 	'model' => 'App\User',
 	'table' => 'users',
 	'password' => [
-		'email' => 'emails.password',
+		'email' => 'emails.auth.password.remind',
 		'table' => 'password_reminders',
 		'expire' => 60, // min
 	],
