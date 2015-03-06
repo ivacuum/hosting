@@ -22,7 +22,7 @@ class Authenticate
 			return response('Unauthorized.', 401);
 		}
 			
-		return redirect()->guest('login')
+		return redirect()->guest('auth/login')
 			->with('message', 'Для просмотра этой страницы необходимо войти на сайт');
 	}
 }
