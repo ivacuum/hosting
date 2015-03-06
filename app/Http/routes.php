@@ -6,6 +6,8 @@ Route::post('auth/login', 'Auth@loginPost');
 Route::get('auth/logout', 'Auth@logout');
 Route::get('auth/register', 'Auth@register');
 Route::post('auth/register', 'Auth@registerPost');
+Route::get('auth/register/confirm/{token}', 'Auth@registerConfirm');
+Route::get('auth/register/ok', 'Auth@registerOk');
 Route::get('auth/password/remind', 'Auth@passwordRemind');
 Route::post('auth/password/remind', 'Auth@passwordRemindPost');
 Route::get('auth/password/reset/{token}', 'Auth@passwordReset');
@@ -66,11 +68,11 @@ Route::group(['namespace' => 'Acp', 'prefix' => 'acp', 'middleware' => ['auth', 
 	Route::get('users', 'Users@index');
 	Route::post('users', 'Users@store');
 	Route::get('users/create', 'Users@create');
-	Route::get('users/{user}', 'Users@show');
-	Route::put('users/{user}', 'Users@update');
-	Route::patch('users/{user}', 'Users@update');
-	Route::delete('users/{user}', 'Users@destroy');
-	Route::get('users/{user}/edit', 'Users@edit');
+	Route::get('users/{User}', 'Users@show');
+	Route::put('users/{User}', 'Users@update');
+	Route::patch('users/{User}', 'Users@update');
+	Route::delete('users/{User}', 'Users@destroy');
+	Route::get('users/{User}/edit', 'Users@edit');
 	
 	Route::group(['namespace' => 'Yandex', 'prefix' => 'yandex'], function() {
 		Route::get('users', 'Users@index');
