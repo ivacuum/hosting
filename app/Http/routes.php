@@ -14,7 +14,8 @@ Route::get('auth/password/reset/{token}', 'Auth@passwordReset');
 Route::post('auth/password/reset', 'Auth@passwordResetPost');
 
 Route::get('cv', 'Home@cv');
-Route::get('life/{page}', 'Home@life');
+Route::get('life', 'Life@index');
+Route::get('life/{page}', 'Life@page');
 
 Route::get('parser/vk/{page?}/{date?}', 'ParserVk@index')
 	->where('date', '\d{4}-\d{2}-\d{2}');
