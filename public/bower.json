@@ -4,7 +4,8 @@
     "bootstrap": "~3.3",
     "jquery": "~1.11",
     "fancytree": "~2.7",
-    "nprogress": "~0.1"
+    "nprogress": "~0.1",
+    "fotorama": "~4.6"
   },
   "devDependencies": {
     "less.js": "~1.7"
