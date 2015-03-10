@@ -46,32 +46,32 @@
 @endif
 
 @foreach ($posts as $i => $post)
+  <a name="post-{{ $post['id'] }}"></a>
   <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">#{{ $i + 1 }}</h3>
-    </div>
     <div class="panel-body">
       <div class="lead">{!! $post['text'] !!}</div>
       @if ($post['attachments'])
+        <div class="fotorama" data-nav="thumbs" data-clicktransition="dissolve">
         @foreach ($post['attachments'] as $attach)
           @if ($attach->type == 'photo')
-            <div class="vk-post-img-container">
-              <img src="{{ $attach->photo->src_big }}" width="{{ $attach->photo->width }}" height="{{ $attach->photo->height }}">
-            </div>
+            <img src="{{ $attach->photo->src_big }}" width="{{ $attach->photo->width }}" height="{{ $attach->photo->height }}">
           @elseif ($attach->type == 'doc' and $attach->doc->ext == 'gif')
             <img src="{{ $attach->doc->url }}">
           @endif
         @endforeach
+        </div>
       @endif
     </div>
     <div class="panel-footer">
       <samp>
+        #{{ $i + 1 }}
         <span class="glyphicon glyphicon-bullhorn"></span>
         <span class="text-muted">{{ $post['reposts'] }}</span>
         <span class="glyphicon glyphicon-heart"></span>
         <span class="text-muted">{{ $post['likes'] }}</span>
         <span class="glyphicon glyphicon-link"></span>
-        <a href="{{ $post['url'] }}" class="link">permalink</a>
+        <a href="{{ $post['url'] }}" class="link">постоянная ссылка</a>,
+        <a href="{{ Request::url() }}#post-{{ $post['id'] }}" class="link">#</a>
       </samp>
     </div>
   </div>
