@@ -55,9 +55,11 @@
       @if ($post['attachments'])
         @foreach ($post['attachments'] as $attach)
           @if ($attach->type == 'photo')
-            <img src="{{ $attach->photo->src_big }}" alt="" width="{{ $attach->photo->width }}" height="{{ $attach->photo->height }}">
+            <div class="vk-post-img-container">
+              <img src="{{ $attach->photo->src_big }}" width="{{ $attach->photo->width }}" height="{{ $attach->photo->height }}">
+            </div>
           @elseif ($attach->type == 'doc' and $attach->doc->ext == 'gif')
-            <img src="{{ $attach->doc->url }}" alt="">
+            <img src="{{ $attach->doc->url }}">
           @endif
         @endforeach
       @endif
