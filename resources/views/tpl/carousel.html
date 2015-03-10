@@ -11,7 +11,7 @@
       @for ($i = 0, $len = sizeof($images); $i < $len; $i++)
         {!! ''; $image = parse_carousel_image_string($images[$i]) !!}
         <div class="item {!! $i == 0 ? 'active' : '' !!}">
-          <img src="//life.ivacuum.ru/{{ $dir or $page }}/{!! $image['src'] !!}" alt="" width="{!! $image['w'] or '' !!}" height="{!! $image['h'] or '' !!}" data-map-lat="{!! $image['lat'] or '' !!}" data-map-lon="{!! $image['lon'] or '' !!}">
+          <img src="//life.ivacuum.ru/{{ $dir or $page }}/{!! $image['src'] !!}" width="{!! $image['w'] or '' !!}" height="{!! $image['h'] or '' !!}" data-map-lat="{!! $image['lat'] or '' !!}" data-map-lon="{!! $image['lon'] or '' !!}">
         </div>
       @endfor
     </div>
