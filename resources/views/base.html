@@ -72,12 +72,14 @@
 </div>
 <footer>
   <div class="container">
-    <ul class="list-inline">
-      <li class="text-muted">&copy; {{ date('Y') }} vacuum</li>
-      <li class="text-muted">&middot;</li>
-      <li><a href="mailto:{{ config('email.support') }}" class="link">Обратная связь</a></li>
-      <li><a href="/parser/vk" class="link">Парсер ВК</a></li>
-    </ul>
+    @section('footer')
+      <ul class="list-inline" style="display: inline-block;">
+        <li class="text-muted">&copy; {{ date('Y') }} vacuum</li>
+        <li class="text-muted">&middot;</li>
+        <li><a href="mailto:{{ config('email.support') }}" class="link">Обратная связь</a></li>
+        <li><a href="/parser/vk" class="link">Парсер ВК</a></li>
+      </ul>
+    @show
   </div>
 </footer>
 @section('js')
