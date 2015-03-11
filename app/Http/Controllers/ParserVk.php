@@ -43,8 +43,18 @@ class ParserVk extends Controller
 					break 2;
 				}
 			
-				if ($post->date > $date_end || !$post->text || @$post->is_pinned) {
+				if ($post->date > $date_end || @$post->is_pinned) {
 					continue;
+				}
+				
+				$photos = 0;
+				
+				if (isset($post->attachments)) {
+					foreach ($post->attachments as $attach) {
+						if ($attach->type == 'photo') {
+							$photos++;
+						}
+					}
 				}
 				
 				$posts[] = [
@@ -52,6 +62,7 @@ class ParserVk extends Controller
 					'likes'       => $post->likes->count,
 					'url'         => "https://vk.com/wall{$post->to_id}_{$post->id}",
 					'text'        => $post->text,
+					'photos'      => $photos,
 					'attachment'  => @$post->attachment,
 					'attachments' => @$post->attachments,
 				];

@@ -49,44 +49,73 @@
 @foreach ($posts as $i => $post)
   <div class="panel panel-default shortcuts-item">
     <div class="panel-body">
-      <div class="lead">{!! $post['text'] !!}</div>
+      @if ($post['text'])
+        <div class="lead">{!! $post['text'] !!}</div>
+      @endif
       @if ($post['attachments'])
-        <div class="fotorama" data-nav="thumbs" data-clicktransition="dissolve" data-loop="true">
+        @if ($post['photos'] > 1)
+          <div class="fotorama" data-nav="thumbs" data-clicktransition="dissolve" data-loop="true" data-allowfullscreen="true">
+        @elseif ($post['photos'] == 1)
+          @if (sizeof($post['attachments']) > 1)
+            <div class="img-container">
+          @else
+            <div class="vk-post-img-container">
+          @endif
+        @endif
         @foreach ($post['attachments'] as $attach)
           @if ($attach->type == 'photo')
-            <img src="{{ $attach->photo->src_big }}" width="{{ $attach->photo->width }}" height="{{ $attach->photo->height }}">
-          @elseif ($attach->type == 'doc' and $attach->doc->ext == 'gif')
-            <img src="{{ $attach->doc->url }}">
-          @elseif ($attach->type == 'audio')
-            </div>
+            <img src="{{ @$attach->photo->src_xxbig ?: @$attach->photo->src_xbig ?: $attach->photo->src_big }}" width="{{ $attach->photo->width }}" height="{{ $attach->photo->height }}">
+          @endif
+        @endforeach
+        @if ($post['photos'] > 0)
+          </div>
+        @endif
+        
+        @foreach ($post['attachments'] as $attach)
+          @if ($attach->type == 'doc' and $attach->doc->ext == 'gif')
             <p>
-              <a href="{{ $attach->audio->url }}" class="link">
-                <span class="glyphicon glyphicon-music"></span>
-                {{ $attach->audio->artist }} — {{ $attach->audio->title }}
+              <div>
+                <span class="glyphicon glyphicon-paperclip"></span>
+                {{ $attach->doc->title }}
+              </div>
+              <a href="{{ $attach->doc->url }}" class="js-gif-click">
+                <img src="{{ $attach->doc->thumb }}">
               </a>
             </p>
-            <div>
+          @elseif ($attach->type == 'audio' and $attach->audio->url)
+            <p>
+              <a href="{{ $attach->audio->url }}" class="link"><span class="glyphicon glyphicon-music"></span> {{ $attach->audio->artist }} — {{ $attach->audio->title }}</a>
+              <span class="text-muted">
+                {{ sprintf('%02d', $attach->audio->duration / 60) }}:{{ sprintf('%02d', $attach->audio->duration % 60) }}
+              </span>
+            </p>
           @elseif ($attach->type == 'video')
-            </div>
             <p>
-              <a href="https://vk.com/video{{ $attach->video->owner_id }}_{{ $attach->video->vid }}" class="link">
-                <span class="glyphicon glyphicon-film"></span>
-                {{ $attach->video->title }}
-              </a>
+              <a href="https://vk.com/video{{ $attach->video->owner_id }}_{{ $attach->video->vid }}" class="link"><span class="glyphicon glyphicon-film"></span> {{ $attach->video->title }}</a>
+              <span class="text-muted">
+                {{ sprintf('%02d', $attach->video->duration / 60) }}:{{ sprintf('%02d', $attach->video->duration % 60) }}
+              </span>
             </p>
-            <div>
           @elseif ($attach->type == 'page')
-            </div>
             <p>
               <a href="{{ $attach->page->view_url }}" class="link">
                 <span class="glyphicon glyphicon-file"></span>
                 {{ $attach->page->title }}
               </a>
             </p>
-            <div>
+          @elseif ($attach->type == 'link')
+            <p>
+              <a href="{{ $attach->link->url }}" class="link">
+                <span class="glyphicon glyphicon-link"></span>
+                {{ $attach->link->title }}
+              </a>
+              <br>
+              <span class="text-muted">
+                {{ $attach->link->url }}
+              </span>
+            </p>
           @endif
         @endforeach
-        </div>
       @endif
     </div>
     <div class="panel-footer">

@@ -34,6 +34,21 @@ $(document).ready(function() {
     $(container).load(url);
   });
 
+  // Проигрывание гифок по клику
+  $('.js-gif-click').on('click', function(e) {
+    e.preventDefault();
+    
+    var $img = $('img', this);
+    var src = $img.attr('src');
+    var gif = $(this).attr('href');
+    
+    if (src != gif) {
+      $img.data('static', src).attr('src', gif);
+    } else {
+      $img.attr('src', $img.data('static'));
+    }
+  });
+
   // Карусель изображений, перелистывание по клику
   $('.carousel-inner-clicker img').bind('click', function() {
     $(this).parents('.carousel').carousel('next');
