@@ -50,7 +50,6 @@ class ParserVk extends Controller
 				$posts[] = [
 					'reposts'     => $post->reposts->count,
 					'likes'       => $post->likes->count,
-					'id'          => $post->id,
 					'url'         => "https://vk.com/wall{$post->to_id}_{$post->id}",
 					'text'        => $post->text,
 					'attachment'  => @$post->attachment,

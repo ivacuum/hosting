@@ -72,6 +72,7 @@
       <fileset file="${bower.dir}/bootstrap/dist/js/bootstrap.min.js" />
       <fileset file="${bower.dir}/nprogress/nprogress.js" />
       <fileset file="${bower.dir}/fotorama/fotorama.js" />
+      <fileset file="${bower.dir}/jquery.scrollTo/jquery.scrollTo.min.js" />
       <fileset file="${js.dir}/app.js" />
     </apply>
   </target>

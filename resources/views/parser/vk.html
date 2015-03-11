@@ -26,14 +26,14 @@
 
 <ul class="pager">
   <li class="previous">
-    <a href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}">
+    <a href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}" id="previous_page">
       <span class="glyphicon glyphicon-arrow-left"></span>
-      &nbsp;{{ $previous->formatLocalized('%d %B') }}
+      {{ $next->formatLocalized('%e %B') }}
     </a>
   </li>
   <li class="next">
-    <a href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}">
-      {{ $next->formatLocalized('%d %B') }}
+    <a href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}" id="next_page">
+      &nbsp;{{ $previous->formatLocalized('%e %B') }}
       <span class="glyphicon glyphicon-arrow-right"></span>
     </a>
   </li>
@@ -45,18 +45,45 @@
   </div>
 @endif
 
+<div class="js-shortcuts-items">
 @foreach ($posts as $i => $post)
-  <a name="post-{{ $post['id'] }}"></a>
-  <div class="panel panel-default">
+  <div class="panel panel-default shortcuts-item">
     <div class="panel-body">
       <div class="lead">{!! $post['text'] !!}</div>
       @if ($post['attachments'])
-        <div class="fotorama" data-nav="thumbs" data-clicktransition="dissolve">
+        <div class="fotorama" data-nav="thumbs" data-clicktransition="dissolve" data-loop="true">
         @foreach ($post['attachments'] as $attach)
           @if ($attach->type == 'photo')
             <img src="{{ $attach->photo->src_big }}" width="{{ $attach->photo->width }}" height="{{ $attach->photo->height }}">
           @elseif ($attach->type == 'doc' and $attach->doc->ext == 'gif')
             <img src="{{ $attach->doc->url }}">
+          @elseif ($attach->type == 'audio')
+            </div>
+            <p>
+              <a href="{{ $attach->audio->url }}" class="link">
+                <span class="glyphicon glyphicon-music"></span>
+                {{ $attach->audio->artist }} — {{ $attach->audio->title }}
+              </a>
+            </p>
+            <div>
+          @elseif ($attach->type == 'video')
+            </div>
+            <p>
+              <a href="https://vk.com/video{{ $attach->video->owner_id }}_{{ $attach->video->vid }}" class="link">
+                <span class="glyphicon glyphicon-film"></span>
+                {{ $attach->video->title }}
+              </a>
+            </p>
+            <div>
+          @elseif ($attach->type == 'page')
+            </div>
+            <p>
+              <a href="{{ $attach->page->view_url }}" class="link">
+                <span class="glyphicon glyphicon-file"></span>
+                {{ $attach->page->title }}
+              </a>
+            </p>
+            <div>
           @endif
         @endforeach
         </div>
@@ -70,23 +97,23 @@
         <span class="glyphicon glyphicon-heart"></span>
         <span class="text-muted">{{ $post['likes'] }}</span>
         <span class="glyphicon glyphicon-link"></span>
-        <a href="{{ $post['url'] }}" class="link">постоянная ссылка</a>,
-        <a href="{{ Request::url() }}#post-{{ $post['id'] }}" class="link">#</a>
+        <a href="{{ $post['url'] }}" class="link">постоянная ссылка</a>
       </samp>
     </div>
   </div>
 @endforeach
+</div>
 
 <ul class="pager">
   <li class="previous">
-    <a href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}">
+    <a href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}">
       <span class="glyphicon glyphicon-arrow-left"></span>
-      &nbsp;{{ $previous->formatLocalized('%d %B') }}
+      {{ $next->formatLocalized('%e %B') }}
     </a>
   </li>
   <li class="next">
-    <a href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}">
-      {{ $next->formatLocalized('%d %B') }}
+    <a href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}">
+      &nbsp;{{ $previous->formatLocalized('%e %B') }}
       <span class="glyphicon glyphicon-arrow-right"></span>
     </a>
   </li>
