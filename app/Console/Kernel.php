@@ -23,8 +23,6 @@ class Kernel extends ConsoleKernel
 	*/
 	protected function schedule(Schedule $schedule)
 	{
-		$schedule->command('app:whois-update')
-			->cron('0 */4 * * *') // каждые 4 часа
-			->sendOutputTo(base_path().'/logs/cron');
+		$schedule->command('app:whois-update')->cron('0 */4 * * *'); // каждые 4 часа
 	}
 }
