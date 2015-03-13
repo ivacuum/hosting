@@ -13,7 +13,7 @@ class WhoisUpdate extends Command
 			$result = $domain->updateWhois();
 			
 			if (false === $result) {
-				$this->error($domain->domain);
+				$this->error("{$domain->domain} failed");
 				continue;
 			} elseif (true === $result) {
 				$this->info($domain->domain);
