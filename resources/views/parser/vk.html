@@ -54,7 +54,7 @@
       @endif
       @if ($post['attachments'])
         @if ($post['photos'] > 1)
-          <div class="fotorama" data-nav="thumbs" data-clicktransition="dissolve" data-loop="true" data-allowfullscreen="true">
+          <div class="fotorama">
         @elseif ($post['photos'] == 1)
           @if (sizeof($post['attachments']) > 1)
             <div class="img-container">
