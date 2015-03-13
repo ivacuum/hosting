@@ -1,7 +1,6 @@
 <?php namespace App\Console\Commands;
 
 use App\Domain;
-use Illuminate\Console\Command;
 
 class WhoisUpdate extends Command
 {
