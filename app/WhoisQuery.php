@@ -31,27 +31,25 @@ class WhoisQuery
 		// будет произведен к текущему домену сервера, что вернет
 		// совершенно нерелевантные данные
 		if ($this->domain != "{$this->subdomain}.{$this->tlds}") {
-			try {
-				$ips = array_merge(
-					dns_get_record("{$this->subdomain}.{$this->tlds}.", DNS_NS),
-					dns_get_record("{$this->domain}.")
-				);
-			} catch (\ErrorException $e) {
-				return ['failed' => true];
-			}
+			// Запрос для домена третьего и более уровня
+			$ips = array_merge(
+				(array) @dns_get_record("{$this->subdomain}.{$this->tlds}.", DNS_NS),
+				(array) @dns_get_record("{$this->domain}.")
+			);
 		} else {
-			try {
-				$ips = dns_get_record("{$this->domain}.");
-			} catch (\ErrorException $e) {
-				return ['failed' => true];
-			}
+			// Первый запрос хорошо работает в продакшне, второй — на локале
+			// Приходится оставлять оба, иначе велик риск получения пустых ответов
+			$ips = array_merge(
+				(array) @dns_get_record("{$this->domain}."),
+				(array) @dns_get_record("{$this->domain}.", DNS_A | DNS_AAAA | DNS_MX | DNS_NS)
+			);
 		}
 		
 		if (empty($ips)) {
 			return [
 				'ipv4' => '',
 				'ipv6' => '',
-				'mx'   => ''
+				'mx'   => '',
 			];
 		}
 		
@@ -64,7 +62,11 @@ class WhoisQuery
 			}
 		}
 		
+		$ipv4 = array_unique($ipv4);
+		$ipv6 = array_unique($ipv6);
+		$mx = array_unique($mx);
 		$ns = array_unique($ns);
+		
 		asort($ipv4);
 		asort($ipv6);
 		asort($mx);
