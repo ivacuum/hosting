@@ -19,10 +19,10 @@
         </tr>
       </thead>
       @foreach ($users as $i => $user)
-        <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $user->id) }}">
+        <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $user) }}">
           <td>{{ $i + 1 }}</td>
           <td>
-            <a href="{{ action("$self@show", $user->id) }}" class="link">
+            <a href="{{ action("$self@show", $user) }}" class="link">
               {{ $user->account }}
             </a>
           </td>

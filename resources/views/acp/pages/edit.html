@@ -7,7 +7,7 @@
     Редактирование страницы <small>{{ $page->title }}</small>
   </h3>
   <div class="boxed-group-inner">
-    <form action="{{ action("$self@update", $page->id) }}" class="form-horizontal" method="post">
+    <form action="{{ action("$self@update", $page) }}" class="form-horizontal" method="post">
       
       @include("$tpl.form")
       @include('acp.tpl.hidden_fields', ['method' => 'put'])

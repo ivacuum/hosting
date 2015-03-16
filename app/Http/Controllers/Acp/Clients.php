@@ -39,7 +39,7 @@ class Clients extends Controller
 	{
 		$client = Client::create($request->all());
 		
-		return redirect()->action("{$this->class}@show", $client->id);
+		return redirect()->action("{$this->class}@show", $client);
 	}
 	
 	public function update(Client $client, ClientEdit $request)

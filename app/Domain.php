@@ -35,6 +35,11 @@ class Domain extends Model
 		});
 	}
 
+	public function getRouteKey()
+	{
+		return $this->domain;
+	}
+	
 	public function alias()
 	{
 		return $this->belongsTo('App\Domain');

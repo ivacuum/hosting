@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="pull-right">
-  @include('acp.tpl.delete', ['id' => $client->id])
+  @include('acp.tpl.delete', ['id' => $client])
 </div>
 <h2>
   @include('acp.tpl.back')
   {{ $client->name }}
-  @include('acp.tpl.edit', ['id' => $client->id])
+  @include('acp.tpl.edit', ['id' => $client])
 </h2>
 
 @if ($client->text)

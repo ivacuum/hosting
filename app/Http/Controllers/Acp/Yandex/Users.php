@@ -56,7 +56,7 @@ class Users extends Controller
 				->update(['yandex_user_id' => $user->id]);
 		}
 		
-		return redirect()->action("{$this->class}@show", $user->id);
+		return redirect()->action("{$this->class}@show", $user);
 	}
 	
 	public function update(YandexUser $user, YandexUserEdit $request)

@@ -1,7 +1,7 @@
 <div class="boxed-group">
   <h3>Новая электропочта</h3>
   <div class="boxed-group-inner">
-    <form action="{{ action("$self@addMailbox", $domain->domain) }}" class="form-horizontal" method="post">
+    <form action="{{ action("$self@addMailbox", $domain) }}" class="form-horizontal" method="post">
 
       @if (sizeof($errors))
         <div class="alert alert-danger">

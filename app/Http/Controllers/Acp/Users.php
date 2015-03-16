@@ -53,7 +53,7 @@ class Users extends Controller
 			$this->mailCredentials($user, $password);
 		}
 		
-		return redirect()->action("{$this->class}@show", $user->id);
+		return redirect()->action("{$this->class}@show", $user);
 	}
 	
 	public function update(User $user, UserEdit $request)

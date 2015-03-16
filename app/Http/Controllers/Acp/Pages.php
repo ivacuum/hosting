@@ -80,7 +80,7 @@ class Pages extends Controller
 	{
 		$page = Page::create($request->all());
 		
-		return redirect()->action("{$this->class}@show", $page->id);
+		return redirect()->action("{$this->class}@show", $page);
 	}
 	
 	public function tree()

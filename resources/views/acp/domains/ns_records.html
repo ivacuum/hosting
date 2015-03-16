@@ -1,6 +1,6 @@
 {{--
 @if ($domain->domain_control and ($domain->ns != 'dns1.yandex.net dns2.yandex.net' and $domain->ns != 'dns1.yandex.ru dns2.yandex.ru'))
-  <form action="{{ action("$self@setYandexNs", $domain->domain) }}" method="post">
+  <form action="{{ action("$self@setYandexNs", $domain) }}" method="post">
     <p>
       <button type="submit" class="btn btn-default">
         Установить DNS Яндекса
@@ -11,7 +11,7 @@
 @endif
 
 @if (!$domain->yandex_user_id)
-  <form action="{{ action("$self@setYandexPdd", $domain->domain) }}" method="post">
+  <form action="{{ action("$self@setYandexPdd", $domain) }}" method="post">
     <p>
       <button type="submit" class="btn btn-default">
         Подключить Яндекс.Почту для домена
@@ -129,7 +129,7 @@
   </div>
 </div>
 
-<form action="{{ action("$self@setServerNsRecords", $domain->domain) }}" method="post">
+<form action="{{ action("$self@setServerNsRecords", $domain) }}" method="post">
   <p>
     <select name="server">
       <option value="">-----</option>
@@ -159,7 +159,7 @@ $(document).ready(function() {
     
     var form = $(this).closest('.ns-record-container');
     
-    $.post('{{ action("$self@addNsRecord", [$domain->domain]) }}', $('input, select', form).serialize(), function(data) {
+    $.post('{{ action("$self@addNsRecord", $domain) }}', $('input, select', form).serialize(), function(data) {
       if ('ok' === data) {
         $('#ajax_container').each(function() {
           $(this).load($(this).data('deferred-url'));
@@ -186,7 +186,7 @@ $(document).ready(function() {
     var token = $(this).data('token');
     
     if (confirm('Запись будет удалена. Продолжить?')) {
-      $.post('{{ action("$self@deleteNsRecord", [$domain->domain]) }}', { record_id: id, _method: 'DELETE', _token: token }, function(data) {
+      $.post('{{ action("$self@deleteNsRecord", $domain) }}', { record_id: id, _method: 'DELETE', _token: token }, function(data) {
         if ('ok' === data) {
           $('#ajax_container').each(function() {
             $(this).load($(this).data('deferred-url'));
@@ -203,7 +203,7 @@ $(document).ready(function() {
     
     var form = $(this).closest('.ns-record-container');
     
-    $.post('{{ action("$self@editNsRecord", [$domain->domain]) }}', $('input', form).serialize(), function(data) {
+    $.post('{{ action("$self@editNsRecord", $domain) }}', $('input', form).serialize(), function(data) {
       if ('ok' === data) {
         $('#ajax_container').each(function() {
           $(this).load($(this).data('deferred-url'));

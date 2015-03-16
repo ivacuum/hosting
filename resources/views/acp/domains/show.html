@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="pull-right">
-  @include('acp.tpl.delete', ['id' => $domain->domain])
+  @include('acp.tpl.delete', ['id' => $domain])
 </div>
 <h2>
   @include('acp.tpl.back')
@@ -12,13 +12,13 @@
   <a class="btn btn-default" href="http://{{ $domain->domain }}/" target="_blank">
     <span class="glyphicon glyphicon-globe"></span>
   </a>
-  @include('acp.tpl.edit', ['id' => $domain->domain, 'goto' => Request::path()])
+  @include('acp.tpl.edit', ['id' => $domain, 'goto' => Request::path()])
   @if ($domain->cms_url)
     @include("$tpl.cms_login", ['cms_button_class' => 'btn btn-default'])
   @endif
 </h2>
 <div style="margin: 1em 0;">
-  <samp style="white-space: pre;"><strong>client</strong>: <a href="{{ action('Acp\Clients@show', $domain->client->id) }}" class="link">{{ $domain->client->name }}</a>
+  <samp style="white-space: pre;"><strong>client</strong>: <a href="{{ action('Acp\Clients@show', $domain->client) }}" class="link">{{ $domain->client->name }}</a>
 @if ($domain->yandex_user_id)
 <strong>yandex</strong>: {{ $domain->yandexUser->account }}
 @endif
@@ -33,7 +33,7 @@
 <ul class="list-inline" style="margin-top: 2em;">
   <li>
     <h3>
-      <a class="pseudo js-ajax {{ $tab == 'whois' ? 'active' : '' }}" data-ajax-url="{{ action("$self@whois", $domain->domain) }}">
+      <a class="pseudo js-ajax {{ $tab == 'whois' ? 'active' : '' }}" data-ajax-url="{{ action("$self@whois", $domain) }}">
         Whois
       </a>
     </h3>
@@ -41,14 +41,14 @@
   @if ($domain->yandex_user_id)
     <li>
       <h3>
-        <a class="pseudo js-ajax {{ $tab == 'mailboxes' ? 'active' : '' }}" data-ajax-url="{{ action("$self@mailboxes", $domain->domain) }}">
+        <a class="pseudo js-ajax {{ $tab == 'mailboxes' ? 'active' : '' }}" data-ajax-url="{{ action("$self@mailboxes", $domain) }}">
           Почта
         </a>
       </h3>
     </li>
     <li>
       <h3>
-        <a class="pseudo js-ajax {{ $tab == 'nsRecords' ? 'active' : '' }}" data-ajax-url="{{ action("$self@nsRecords", $domain->domain) }}">
+        <a class="pseudo js-ajax {{ $tab == 'nsRecords' ? 'active' : '' }}" data-ajax-url="{{ action("$self@nsRecords", $domain) }}">
           DNS
         </a>
       </h3>
@@ -63,7 +63,7 @@
   </li>
 </ul>
 
-<div id="ajax_container" class="js-deferred-load" data-deferred-url="{{ action("$self@$tab", $domain->domain) }}">
+<div id="ajax_container" class="js-deferred-load" data-deferred-url="{{ action("$self@$tab", $domain) }}">
   Идет загрузка...
 </div>
 @stop

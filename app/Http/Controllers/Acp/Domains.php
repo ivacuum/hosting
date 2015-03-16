@@ -100,7 +100,7 @@ class Domains extends Controller
 		
 		Session::flash('message', "Данные высланы на почту {$send_to}");
 		
-		return redirect()->action("{$this->class}@show", [$domain->domain, 'tab' => 'mail']);
+		return redirect()->action("{$this->class}@show", [$domain, 'tab' => 'mail']);
 	}
 	
 	public function addNsRecord(Domain $domain, HttpRequest $request)
@@ -174,7 +174,7 @@ class Domains extends Controller
 		
 		$domain->setServerNsRecords($server);
 		
-		return redirect()->action("{$this->class}@show", [$domain->domain, 'tab' => 'dns']);
+		return redirect()->action("{$this->class}@show", [$domain, 'tab' => 'dns']);
 	}
 	
 	public function setYandexNs(Domain $domain)
@@ -187,7 +187,7 @@ class Domains extends Controller
 		
 		Session::flash('message', $message);
 		
-		return redirect()->action("{$this->class}@show", [$domain->domain, 'tab' => 'dns']);
+		return redirect()->action("{$this->class}@show", [$domain, 'tab' => 'dns']);
 	}
 	
 	public function show(Domain $domain, HttpRequest $request)
@@ -206,7 +206,7 @@ class Domains extends Controller
 	{
 		$domain = Domain::create($request->all());
 		
-		return redirect()->action("{$this->class}@show", $domain->domain);
+		return redirect()->action("{$this->class}@show", $domain);
 	}
 	
 	public function update(Domain $domain, DomainEdit $request)
