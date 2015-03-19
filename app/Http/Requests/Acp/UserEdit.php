@@ -6,7 +6,7 @@ class UserEdit extends UserCreate
 	{
 		$rules = parent::rules();
 		
-		$rules['email'] .= ",{$this->route('user')->id}";
+		$rules['email'] .= ",{$this->route('User')->id}";
 		$rules['password'] = 'min:6';
 		
 		return $rules;

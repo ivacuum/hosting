@@ -47,6 +47,7 @@ class Users extends Controller
 		$user->email    = $request->get('email');
 		$user->password = $password;
 		$user->active   = $request->get('active', 0);
+		$user->is_admin = $request->get('is_admin', 0);
 		$user->save();
 		
 		if ($request->get('mail_credentials')) {
@@ -62,8 +63,9 @@ class Users extends Controller
 		
 		$password = $random_password ? str_random(16) : $password;
 		
-		$user->email  = $request->get('email');
-		$user->active = $request->get('active', 0);
+		$user->email    = $request->get('email');
+		$user->active   = $request->get('active', 0);
+		$user->is_admin = $request->get('is_admin', 0);
 		
 		if ($password) {
 			$user->password = $password;

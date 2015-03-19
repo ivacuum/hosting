@@ -11,8 +11,6 @@ return [
 	'key'             => env('APP_KEY', 'SomeRandomString'),
 	'cipher'          => MCRYPT_RIJNDAEL_128,
 
-	'admins' => [1, 2, 3, 4, 5],
-
 	// single, daily, syslog, errorlog
 	'log' => 'errorlog',
 

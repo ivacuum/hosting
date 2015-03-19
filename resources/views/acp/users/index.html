@@ -16,6 +16,7 @@
           <th>#</th>
           <th>Электронная почта</th>
           <th>Активен</th>
+          <th>Админ</th>
         </tr>
       </thead>
       @foreach ($users as $i => $user)
@@ -26,7 +27,19 @@
               {{ $user->email }}
             </a>
           </td>
-          <td>{{ $user->active ? 'Да' : 'Нет' }}</td>
+          <td>
+            @if ($user->active)
+              Да
+            @else
+              <span class="text-muted">Нет</span>
+            @endif
+          <td>
+            @if ($user->is_admin)
+              Да
+            @else
+              <span class="text-muted">Нет</span>
+            @endif
+          </td>
         </tr>
       @endforeach
     </table>

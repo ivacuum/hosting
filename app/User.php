@@ -22,6 +22,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function isAdmin()
 	{
-		return in_array($this->id, config('app.admins'));
+		return (bool) $this->is_admin;
 	}
 }
