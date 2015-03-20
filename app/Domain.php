@@ -12,7 +12,6 @@ class Domain extends Model
 	use SoftDeletes;
 	
 	const REGRU_API_URL = 'https://api.reg.ru/api/regru2/';
-	const EXPIRED_IP = '144.76.40.132';
 	const NS0 = 'dns1.yandex.net';
 	const NS1 = 'dns2.yandex.net';
 	
@@ -306,7 +305,12 @@ class Domain extends Model
 	
 	public function isExpired()
 	{
-		return $this->ipv4 === self::EXPIRED_IP;
+		return $this->paid_till->isPast();
+	}
+	
+	public function isExpiringSoon()
+	{
+		return $this->paid_till->isFuture() && $this->paid_till->diffInDays() < 30;
 	}
 	
 	public function scopeYandexReady($query, $user_id = 0)

@@ -20,7 +20,7 @@
         </tr>
       </thead>
       @foreach ($domains as $i => $domain)
-        <tr class="js-dblclick-edit {{ $domain->isExpired() ? 'danger' : '' }} {{ !$domain->domain_control ? 'info' : '' }}"
+        <tr class="js-dblclick-edit"
       data-dblclick-url="/acp/domains/{{ $domain->domain }}/edit?goto={{ $back_url }}">
           <td>
             <a name="d{{ $domain->id }}">
@@ -35,6 +35,18 @@
                 <a href="/acp/domains/{{ $domain->alias->domain }}" class="link">{{ $domain->alias->domain }}</a>
                 <a href="#d{{ $domain->alias_id }}" class="pseudo">#</a>
               </span>
+            @endif
+            @if ($domain->text)
+              <span class="label label-default" title="есть заметки">...</span>
+            @endif
+            @if (!$domain->domain_control)
+              <span class="label label-info" title="не в нашей панели">?</span>
+            @endif
+            @if ($domain->domain_control and $domain->isExpired())
+              <span class="label label-danger" title="просрочена оплата">$</span>
+            @endif
+            @if ($domain->domain_control and $domain->isExpiringSoon())
+              <span class="label label-warning" title="подходит срок оплаты">$</span>
             @endif
           </td>
           <td class="text-muted">
@@ -56,9 +68,10 @@
 </div>
 
 <p>
-  <span class="label label-info"> &nbsp; </span> &nbsp;— не в нашей панели &nbsp;
-  <span class="label label-danger"> &nbsp; </span> &nbsp;— просрочена оплата &nbsp;
-  <span class="label label-warning"> &nbsp; </span> &nbsp;— подходит срок оплаты
+  <span class="label label-default">...</span> &nbsp;— есть заметки &nbsp;
+  <span class="label label-info">?</span> &nbsp;— не в нашей панели &nbsp;
+  <span class="label label-danger">$</span> &nbsp;— просрочена оплата &nbsp;
+  <span class="label label-warning">$</span> &nbsp;— подходит срок оплаты
 </p>
 @else
   <div class="alert alert-warning">

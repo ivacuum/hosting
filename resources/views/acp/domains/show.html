@@ -17,6 +17,23 @@
     @include("$tpl.cms_login", ['cms_button_class' => 'btn btn-default'])
   @endif
 </h2>
+
+@if ($domain->text)
+  <blockquote>{!! nl2br($domain->text) !!}</blockquote>
+@endif
+
+@if ($domain->isExpired())
+  <div class="alert alert-danger">
+    Подошел срок оплаты домена — {{ $domain->paid_till->addMonth()->formatLocalized('%d %B') }} ({{ $domain->paid_till->addMonth()->diffForHumans() }}) он совсем пропадет
+  </div>
+@endif
+
+@if ($domain->isExpiringSoon())
+  <div class="alert alert-warning">
+    {{ $domain->paid_till->formatLocalized('%d %B') }} ({{ $domain->paid_till->diffForHumans() }}) подходит срок оплаты домена
+  </div>
+@endif
+
 <div style="margin: 1em 0;">
   <samp style="white-space: pre;"><strong>client</strong>: <a href="{{ action('Acp\Clients@show', $domain->client) }}" class="link">{{ $domain->client->name }}</a>
 @if ($domain->yandex_user_id)
