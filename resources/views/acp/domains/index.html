@@ -14,6 +14,13 @@
   </li>
   <li>
     <h4>
+      <a href="{{ action("$self@index", ['filter' => 'orphan']) }}" class="link {{ $filter == 'orphan' ? 'active' : '' }}">
+        На продажу
+      </a>
+    </h4>
+  </li>
+  <li>
+    <h4>
       <a href="{{ action("$self@index", ['filter' => 'external']) }}" class="link {{ $filter == 'external' ? 'active' : '' }}">
         Не в нашей панели reg.ru
       </a>
@@ -42,8 +49,8 @@
   </li>
   <li>
     <h4>
-      <a href="{{ action("$self@index", ['filter' => 'orphan']) }}" class="link {{ $filter == 'orphan' ? 'active' : '' }}">
-        Сироты
+      <a href="{{ action("$self@index", ['filter' => 'trashed']) }}" class="link {{ $filter == 'trashed' ? 'active' : '' }}">
+        Удаленные
       </a>
     </h4>
   </li>
