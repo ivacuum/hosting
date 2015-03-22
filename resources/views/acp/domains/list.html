@@ -46,20 +46,20 @@
               </span>
             @endif
             @if ($domain->text)
-              <span class="label label-default" title="есть заметки">...</span>
+              <span class="label label-default tip" title="есть заметки">...</span>
             @endif
             @if (!$domain->domain_control)
-              <span class="label label-info" title="не в нашей панели">?</span>
+              <span class="label label-info tip" title="не в нашей панели">?</span>
             @endif
             @if ($domain->domain_control and $domain->isExpired())
-              <span class="label label-danger" title="просрочена оплата">$</span>
+              <span class="label label-danger tip" title="просрочена оплата">$</span>
             @endif
             @if ($domain->domain_control and $domain->isExpiringSoon())
-              <span class="label label-warning" title="подходит срок оплаты">$</span>
+              <span class="label label-warning tip" title="подходит срок оплаты">$</span>
             @endif
           </td>
           <td class="text-muted">
-            <span title="{{ $domain->paid_till }}">
+            <span class="tip" title="{{ $domain->paid_till }}">
               {{ $domain->paid_till->toDateString() }}
             </span>
           </td>
