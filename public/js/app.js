@@ -48,6 +48,9 @@ $(document).ready(function() {
       $img.attr('src', $img.data('static'));
     }
   });
+  
+  // Прилипшие заголовки таблиц
+  $('.js-float-thead').floatThead();
 
   // Горячие клавиши
   var shortcuts_enabled = true;
