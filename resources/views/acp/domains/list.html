@@ -63,8 +63,8 @@
               {{ $domain->paid_till->toDateString() }}
             </span>
           </td>
-          <td><small><samp>{!! $domain->whatServerIpv4() !!}</samp></small></td>
-          <td><small><samp>{{ $domain->firstNsServer() }}</samp></small></td>
+          <td>{!! $domain->whatServerIpv4() !!}</td>
+          <td>{{ $domain->firstNsServer() }}</td>
           <td>
             @if ($domain->cms_url or ($domain->alias_id and $domain->alias->cms_url))
               @include('acp.domains.cms_login', ['cms_button_class' => 'btn btn-default btn-xs'])
