@@ -1,5 +1,5 @@
 @foreach ($movies as $movie)
-  <a title="{{ $movie['title'] or '' }}" href="http://www.kinopoisk.ru/film/{{ $movie['id'] }}/">
-    <img src="http://www.kinopoisk.ru/images/film_big/{{ $movie['id'] }}.jpg" height="400">
+  <a class="tip" data-html="true" title="{{ $movie['title'] or '' }}" href="http://www.kinopoisk.ru/film/{{ $movie['id'] }}/">
+    <img src="http://www.kinopoisk.ru/images/film_big/{{ $movie['id'] }}.jpg" height="250">
   </a>
 @endforeach
