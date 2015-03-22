@@ -49,11 +49,6 @@ $(document).ready(function() {
     }
   });
 
-  // Карусель изображений, перелистывание по клику
-  $('.carousel-inner-clicker img').bind('click', function() {
-    $(this).parents('.carousel').carousel('next');
-  });
-
   // Горячие клавиши
   var shortcuts_enabled = true;
   
