@@ -1,242 +1,90 @@
-@extends('base')
+@extends('life.base', [
+  'meta_title' => 'Посещенные концерты',
+])
 
 @section('content')
-
 <h2>Посещенные концерты</h2>
-<br>
-<div class="row">
-  <div class="col-md-2">
-    <div data-spy="affix" class="gigs-years" data-offset-top="100">
-      <ul class="list-group">
-        <li class="list-group-item">
-          <span class="badge">6</span>
-          <a class="pseudo" href="#2014">2014</a>
-        </li>
-        <li class="list-group-item">
-          <span class="badge">2</span>
-          <a class="pseudo" href="#2013">2013</a>
-        </li>
-        <li class="list-group-item">
-          <span class="badge">1</span>
-          <a class="pseudo" href="#2012">2012</a>
-        </li>
-        <li class="list-group-item">
-          <span class="badge">1</span>
-          <a class="pseudo" href="#2011">2011</a>
-        </li>
-        <li class="list-group-item">
-          <span class="badge">1</span>
-          <a class="pseudo" href="#2010">2010</a>
-        </li>
-        <li class="list-group-item">
-          <span class="badge">1</span>
-          <a class="pseudo" href="#2009">2009</a>
-        </li>
-        <li class="list-group-item">
-          <span class="badge">1</span>
-          <a class="pseudo" href="#2008">2008</a>
-        </li>
-        <li class="list-group-item">
-          <span class="badge">1</span>
-          <a class="pseudo" href="#2007">2007</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="col-md-10">
-    <a name="2014"></a>
-    <div class="page-header">
-      <h2>2014</h2>
-    </div>
-    <div class="row">
-      <div class="col-md-4 text-center">
-        <p><img class="gig-poster" src="//life.ivacuum.ru/gigs/tfn.2014.12.21.jpg"></p>
-        <h3>Tides from Nebula</h3>
-        <p>
-          <mark>21 декабря 2014</mark><br>
-          <a class="link" href="/life/msk">Москва</a>
-        </p>
-      </div>
-      <div class="col-md-4 text-center">
-        <p><img class="gig-poster" src="//life.ivacuum.ru/gigs/giaa.2014.11.23.jpg"></p>
-        <h3>God is an Astronaut</h3>
-        <p>
-          <mark>23 ноября 2014</mark><br>
-          <a class="link" href="/life/msk">Москва</a>
-        </p>
-      </div>
-      <div class="col-md-4 text-center">
-        <p><img class="gig-poster" src="//life.ivacuum.ru/gigs/linkinpark.2014.06.02.jpg"></p>
-        <h3 class="gig-band">
-          <a href="/life/linkinpark.2014" class="link">Linkin Park</a>
-        </h3>
-        <p>
-          <mark>2 июня 2014</mark><br>
-          <a class="link" href="/life/msk">Москва</a>
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4 text-center">
-        <p><img class="gig-poster" src="//life.ivacuum.ru/gigs/vai.2014.05.26.jpg"></p>
-        <h3>Steve Vai</h3>
-        <p>
-          <mark>26 мая 2014</mark><br>
-          Калуга
-        </p>
-      </div>
-      <div class="col-md-4 text-center">
-        <p><img class="gig-poster" src="//life.ivacuum.ru/gigs/dreamtheater.2014.02.28.jpg"></p>
-        <h3 class="gig-band">
-          <a href="/life/dreamtheater.2014.msk" class="link">Dream Theater</a>
-        </h3>
-        <p>
-          <mark>28 февраля 2014</mark><br>
-          <a class="link" href="/life/msk">Москва</a>
-        </p>
-      </div>
-      <div class="col-md-4 text-center">
-        <p><img class="gig-poster" src="//life.ivacuum.ru/gigs/dreamtheater.2014.02.26.jpg"></p>
-        <h3 class="gig-band">
-          <a href="/life/dreamtheater.2014.spb" class="link">Dream Theater</a>
-        </h3>
-        <p>
-          <mark>26 февраля 2014</mark><br>
-          <a class="link" href="/life/spb">Санкт-Петербург</a>
-        </p>
-      </div>
-    </div>
-    
-    <a name="2013"></a>
-    <div class="page-header">
-      <h2>2013</h2>
-    </div>
+<p>Началось все с установки по концерту в год, но в 2014 что-то пошло не так...</p>
 
-    <div class="row">
-        <div class="col-md-4 text-center">
-          <p><img class="gig-poster" src="//life.ivacuum.ru/gigs/oomph.2013.10.19.jpg"></p>
-          <h3 class="gig-band">
-            <a href="/life/oomph.2013" class="link">Oomph!</a>
-          </h3>
-          <p>
-            <mark>19 октября 2013</mark><br>
-            <a class="link" href="/life/msk">Москва</a>
-          </p>
-        </div>
-        <div class="col-md-4 text-center">
-          <p><img class="gig-poster" src="//life.ivacuum.ru/gigs/rammstein.2013.06.08.jpg"></p>
-          <h3 class="gig-band">
-            <a href="/life/rammstein.2013" class="link">Rammstein</a>
-          </h3>
-          <p>
-            <mark>8 июня 2013</mark><br>
-            Самара
-          </p>
-        </div>
-      </div>
-    
-    <a name="2012"></a>
-    <div class="page-header">
-      <h2>2012</h2>
-    </div>
-    <div class="row">
-      <div class="col-md-4 text-center">
-        <p><img class="gig-poster" src="//life.ivacuum.ru/gigs/oomph.2012.05.24.jpg"></p>
-        <h3 class="gig-band">
-          <a href="/life/oomph.2012" class="link">Oomph!</a>
-        </h3>
-        <p>
-          <mark>24 мая 2012</mark><br>
-          <a class="link" href="/life/msk">Москва</a>
-        </p>
-      </div>
-    </div>
-    
-    <a name="2011"></a>
-    <div class="page-header">
-      <h2>2011</h2>
-    </div>
-    <div class="row">
-      <div class="col-md-4 text-center">
-        <p><img class="gig-poster" src="//life.ivacuum.ru/gigs/dreamtheater.2011.07.12.jpg"></p>
-        <h3 class="gig-band">
-          <a href="/life/dreamtheater.2011" class="link">Dream Theater</a>
-        </h3>
-        <p>
-          <mark>12 июля 2011</mark><br>
-          <a class="link" href="/life/msk">Москва</a>
-        </p>
-      </div>
-    </div>
-
-    <a name="2010"></a>
-    <div class="page-header">
-      <h2>2010</h2>
-    </div>
-    <div class="row">
-      <div class="col-md-4 text-center">
-        <p><img class="gig-poster" src="//life.ivacuum.ru/gigs/rammstein.2010.02.26.jpg"></p>
-        <h3 class="gig-band">
-          <a href="/life/rammstein.2010" class="link">Rammstein</a>
-        </h3>
-        <p>
-          <mark>26 февраля 2010</mark><br>
-          <a class="link" href="/life/spb">Санкт-Петербург</a>
-        </p>
-      </div>
-    </div>
-
-    <a name="2009"></a>
-    <div class="page-header">
-      <h2>2009</h2>
-    </div>
-    <div class="row">
-      <div class="col-md-4 text-center">
-        <p><img class="gig-poster" src="//life.ivacuum.ru/gigs/dreamtheater.2009.06.10.jpg"></p>
-        <h3 class="gig-band">
-          <a href="/life/dreamtheater.2009" class="link">Dream Theater</a>
-        </h3>
-        <p>
-          <mark>10 июня 2009</mark><br>
-          <a class="link" href="/life/msk">Москва</a>
-        </p>
-      </div>
-    </div>
-
-    <a name="2008"></a>
-    <div class="page-header">
-      <h2>2008</h2>
-    </div>
-    <div class="row">
-      <div class="col-md-4 text-center">
-        <p><img class="gig-poster" src="//life.ivacuum.ru/gigs/metallica.2008.07.18.jpg"></p>
-        <h3 class="gig-band">
-          <a href="/life/metallica.2008" class="link">Metallica</a>
-        </h3>
-        <p>
-          <mark>18 июля 2008</mark><br>
-          <a class="link" href="/life/spb">Санкт-Петербург</a>
-        </p>
-      </div>
-    </div>
-
-    <a name="2007"></a>
-    <div class="page-header">
-      <h2>2007</h2>
-    </div>
-    <div class="row">
-      <div class="col-md-4 text-center">
-        <p><img class="gig-poster" src="//life.ivacuum.ru/gigs/oomph.2007.04.21.jpg"></p>
-        <h3 class="gig-band">
-          <a href="/life/oomph.2007" class="link">Oomph!</a>
-        </h3>
-        <p>
-          <mark>21 апреля 2007</mark><br>
-          <a class="link" href="/life/msk">Москва</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-
+<table class="table-stats">
+  <thead>
+    <tr>
+      <th>Дата</th>
+      <th>Группа</th>
+      <th>Город</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>21 декабря 2014</td>
+      <td><a class="link" href="/life/tfn.2014">Tides from Nebula</a></td>
+      <td><a class="link" href="/life/msk">Москва</a></td>
+    </tr>
+    <tr>
+      <td>23 ноября 2014</td>
+      <td><a class="link" href="/life/giaa.2014">God is an Astronaut</a></td>
+      <td><a class="link" href="/life/msk">Москва</a></td>
+    </tr>
+    <tr>
+      <td>2 июня 2014</td>
+      <td><a class="link" href="/life/linkinpark.2014">Linkin Park</a></td>
+      <td><a class="link" href="/life/msk">Москва</a></td>
+    </tr>
+    <tr>
+      <td>26 мая 2014</td>
+      <td><a class="link" href="/life/vai.2014">Steve Vai</a></td>
+      <td><a class="link" href="/life/kaluga">Калуга</a></td>
+    </tr>
+    <tr>
+      <td>28 февраля 2014</td>
+      <td><a class="link" href="/life/dreamtheater.2014.msk">Dream Theater</a></td>
+      <td><a class="link" href="/life/msk">Москва</a></td>
+    </tr>
+    <tr>
+      <td>26 февраля 2014</td>
+      <td><a class="link" href="/life/dreamtheater.2014.spb">Dream Theater</a></td>
+      <td><a class="link" href="/life/spb">Санкт-Петербург</a></td>
+    </tr>
+    <tr>
+      <td>19 октября 2013</td>
+      <td><a class="link" href="/life/oomph.2013">Oomph!</a></td>
+      <td><a class="link" href="/life/msk">Москва</a></td>
+    </tr>
+    <tr>
+      <td>8 июня 2013</td>
+      <td><a class="link" href="/life/rammstein.2013">Rammstein</a></td>
+      <td>Самара</td>
+    </tr>
+    <tr>
+      <td>24 мая 2012</td>
+      <td><a class="link" href="/life/oomph.2012">Oomph!</a></td>
+      <td><a class="link" href="/life/msk">Москва</a></td>
+    </tr>
+    <tr>
+      <td>12 июля 2011</td>
+      <td><a class="link" href="/life/dreamtheater.2011">Dream Theater</a></td>
+      <td><a class="link" href="/life/msk">Москва</a></td>
+    </tr>
+    <tr>
+      <td>26 февраля 2010</td>
+      <td><a class="link" href="/life/rammstein.2010">Rammstein</a></td>
+      <td><a class="link" href="/life/spb">Санкт-Петербург</a></td>
+    </tr>
+    <tr>
+      <td>10 июня 2009</td>
+      <td><a class="link" href="/life/dreamtheater.2009">Dream Theater</a></td>
+      <td><a class="link" href="/life/msk">Москва</a></td>
+    </tr>
+    <tr>
+      <td>18 июля 2008</td>
+      <td><a class="link" href="/life/metallica.2008">Metallica</a></td>
+      <td><a class="link" href="/life/spb">Санкт-Петербург</a></td>
+    </tr>
+    <tr>
+      <td>21 апреля 2007</td>
+      <td><a class="link" href="/life/oomph.2007">Oomph!</a></td>
+      <td><a class="link" href="/life/msk">Москва</a></td>
+    </tr>
+  </tbody>
+</table>
 @stop
