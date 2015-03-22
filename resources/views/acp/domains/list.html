@@ -8,7 +8,15 @@
     <span class="label label-default">{{ sizeof($domains) }}</span>
   </h3>
   <div class="boxed-group-inner">
-    <table class="table-stats">
+    <table class="table-stats js-float-thead">
+      <colgroup>
+        <col width="40"></col>
+        <col width="*"></col>
+        <col width="125"></col>
+        <col width="200"></col>
+        <col width="200"></col>
+        <col width="60"></col>
+      </colgroup>
       <thead>
         <tr>
           <th>#</th>
@@ -19,11 +27,12 @@
           <th>CMS</th>
         </tr>
       </thead>
+      <tbody>
       @foreach ($domains as $i => $domain)
         <tr class="js-dblclick-edit"
       data-dblclick-url="/acp/domains/{{ $domain->domain }}/edit?goto={{ $back_url }}">
           <td>
-            <a name="d{{ $domain->id }}">
+            <a name="d{{ $domain->id }}"></a>
             {{ $i + 1 }}
           </td>
           <td>
@@ -63,6 +72,7 @@
           </td>
         </tr>
       @endforeach
+      </tbody>
     </table>
   </div>
 </div>

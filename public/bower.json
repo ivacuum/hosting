@@ -6,7 +6,8 @@
     "fancytree": "~2.7",
     "nprogress": "~0.1",
     "fotorama": "~4.6",
-    "jquery.scrollTo": "~1.4"
+    "jquery.scrollTo": "~1.4",
+    "floatThead": "~1.2"
   },
   "devDependencies": {
     "less.js": "~1.7"
