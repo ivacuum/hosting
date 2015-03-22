@@ -62,6 +62,13 @@ class Domains extends Controller
 					->get();
 				
 			break;
+			case 'trashed':
+			
+				$domains = Domain::onlyTrashed()
+					->orderBy($sort)
+					->get();
+				
+			break;
 			default:
 			
 				$domains = Domain::whereActive(1)
