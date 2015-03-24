@@ -1,4 +1,10 @@
-@extends('life.base')
+@extends('life.base', [
+  'breadcrumbs' => [
+    ['title' => 'Заметки', 'url' => 'life'],
+    ['title' => 'Санкт-Петербург', 'url' => 'life/spb'],
+    ['title' => '8–12 мая 2014']
+  ]
+])
 
 @section('content')
 <h2>Санкт-Петербург <small>8–12 мая 2014</small></h2>

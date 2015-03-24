@@ -1,4 +1,14 @@
-@extends('life.base')
+@extends('life.base', [
+  'meta_title' => 'Калуга &middot; 1 января 2015',
+  'meta_description' => 'Заметка о новогодней ночи.',
+  'meta_image' => 'https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1380.jpg',
+
+  'breadcrumbs' => [
+    ['title' => 'Заметки', 'url' => 'life'],
+    ['title' => 'Калуга', 'url' => 'life/kaluga'],
+    ['title' => '1 января 2015']
+  ]
+])
 
 @section('content')
 <h2>Калуга <small>1 января 2015</small></h2>

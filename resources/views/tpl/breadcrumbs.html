@@ -1,12 +1,12 @@
 @if (!empty($breadcrumbs))
-<ol class="breadcrumb">
-	<li><a href="/">Главная</a></li>
+<div class="breadcrumbs">
+	<a href="/">Главная</a> &rarr;
   @foreach ($breadcrumbs as $i => $row)
     @if ($i != sizeof($breadcrumbs) - 1)
-      <li><a href="/{{ $row['url'] }}">{{ $row['title'] }}</a></li>
+      <a href="/{{ $row['url'] }}">{{ $row['title'] }}</a> &rarr;
     @else
-      <li class="active">{{ $row['title'] }}</li>
+      {{ $row['title'] }}
     @endif
   @endforeach
-</ol>
+</div>
 @endif
