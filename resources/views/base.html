@@ -8,7 +8,7 @@
   <meta name="description" content="{{ $meta_description or '' }}">
   <link rel="icon" sizes="256x256" href="/apple-touch-icon.png">
   @section('head')
-    <link rel="stylesheet" href="/css/app.min.css?2">
+    <link rel="stylesheet" href="/css/app.min.css?3">
   @show
 </head>
 <body>
@@ -55,11 +55,9 @@
     </div>
   </div>
   <div class="container">
-{{--
 @section('breadcrumbs')
-@include('block.breadcrumbs')
+@include('tpl.breadcrumbs')
 @show
---}}
 @if (Session::has('message'))
   <div class="alert alert-info">{{ Session::get('message') }}</div>
 @endif

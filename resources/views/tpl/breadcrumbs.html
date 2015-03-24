@@ -1,0 +1,12 @@
+@if (!empty($breadcrumbs))
+<ol class="breadcrumb">
+	<li><a href="/">Главная</a></li>
+  @foreach ($breadcrumbs as $i => $row)
+    @if ($i != sizeof($breadcrumbs) - 1)
+      <li><a href="/{{ $row['url'] }}">{{ $row['title'] }}</a></li>
+    @else
+      <li class="active">{{ $row['title'] }}</li>
+    @endif
+  @endforeach
+</ol>
+@endif

@@ -1,5 +1,10 @@
 @extends('life.base', [
-  'meta_title' => 'Калуга'
+  'meta_title' => 'Калуга',
+  
+  'breadcrumbs' => [
+    ['title' => 'Заметки', 'url' => 'life'],
+    ['title' => 'Калуга'],
+  ]
 ])
 
 @section('content')
