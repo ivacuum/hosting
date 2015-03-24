@@ -48,7 +48,14 @@ $(document).ready(function() {
       $img.attr('src', $img.data('static'));
     }
   });
-  
+
+  // Выбрать все
+  $('.js-select-all').bind('click', function() {
+    var is_checked = $(this).prop('checked');
+    var $selector = $($(this).data('selector'));
+    $selector.prop('checked', is_checked);
+  });
+
   // Прилипшие заголовки таблиц
   $('.js-float-thead').floatThead();
 
