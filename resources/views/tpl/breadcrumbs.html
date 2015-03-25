@@ -1,6 +1,6 @@
 @if (!empty($breadcrumbs))
 <div class="breadcrumbs">
-	<a href="/">Главная</a> &rarr;
+	<a href="/"><span class="glyphicon glyphicon-home"></span></a> &rarr;
   @foreach ($breadcrumbs as $i => $row)
     @if ($i != sizeof($breadcrumbs) - 1)
       <a href="/{{ $row['url'] }}">{{ $row['title'] }}</a> &rarr;
