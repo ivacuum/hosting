@@ -41,7 +41,7 @@ class WhoisQuery
 			// Приходится оставлять оба, иначе велик риск получения пустых ответов
 			$ips = array_merge(
 				(array) @dns_get_record("{$this->domain}."),
-				(array) @dns_get_record("{$this->domain}.", DNS_A | DNS_AAAA | DNS_MX | DNS_NS)
+				(array) @dns_get_record("{$this->domain}.", DNS_ALL)
 			);
 		}
 		
