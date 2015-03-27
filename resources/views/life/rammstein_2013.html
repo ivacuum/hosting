@@ -2,6 +2,12 @@
   'meta_title' => 'Rammstein в Самаре &middot; 8 июня 2013',
   'meta_description' => 'Заметки о концерте.',
   'meta_image' => 'https://life.ivacuum.ru/gigs/rammstein.2013.06.08.jpg',
+
+  'breadcrumbs' => [
+    ['title' => 'Заметки', 'url' => 'life'],
+    ['title' => 'Концерты', 'url' => 'life/gigs'],
+    ['title' => 'Rammstein']
+  ]
 ])
 
 @section('content')
@@ -41,4 +47,6 @@
 <div class="fotorama" data-width="1280" data-ratio="16/10">
   <a href="https://www.youtube.com/watch?v=5TUBMUuoBUo"></a>
 </div>
+
+@include('life.timeline.rammstein')
 @stop

@@ -2,6 +2,12 @@
   'meta_title' => 'Dream Theater в Москве &middot; 12 июля 2011',
   'meta_description' => 'Заметки о концерте.',
   'meta_image' => 'https://life.ivacuum.ru/gigs/dreamtheater.2011.07.12.jpg',
+
+  'breadcrumbs' => [
+    ['title' => 'Заметки', 'url' => 'life'],
+    ['title' => 'Концерты', 'url' => 'life/gigs'],
+    ['title' => 'Dream Theater']
+  ]
 ])
 
 @section('content')
@@ -33,4 +39,6 @@
     </div>
   </div>
 </div>
+
+@include('life.timeline.dreamtheater')
 @stop

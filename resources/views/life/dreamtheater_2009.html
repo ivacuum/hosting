@@ -2,6 +2,12 @@
   'meta_title' => 'Dream Theater в Москве &middot; 10 июня 2009',
   'meta_description' => 'Заметки о концерте.',
   'meta_image' => 'https://life.ivacuum.ru/gigs/dreamtheater.2009.06.10.jpg',
+
+  'breadcrumbs' => [
+    ['title' => 'Заметки', 'url' => 'life'],
+    ['title' => 'Концерты', 'url' => 'life/gigs'],
+    ['title' => 'Dream Theater']
+  ]
 ])
 
 @section('content')
@@ -42,4 +48,6 @@
 <div class="fotorama" data-width="1280" data-ratio="16/10">
   <a href="https://www.youtube.com/watch?v=eDqIfvtmalM"></a>
 </div>
+
+@include('life.timeline.dreamtheater')
 @stop

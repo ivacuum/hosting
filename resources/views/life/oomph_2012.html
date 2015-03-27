@@ -2,6 +2,12 @@
   'meta_title' => 'Oomph! в Москве &middot; 24 мая 2012',
   'meta_description' => 'Заметки о концерте.',
   'meta_image' => 'https://life.ivacuum.ru/gigs/oomph.2012.05.24.jpg',
+
+  'breadcrumbs' => [
+    ['title' => 'Заметки', 'url' => 'life'],
+    ['title' => 'Концерты', 'url' => 'life/gigs'],
+    ['title' => 'Oomph!']
+  ]
 ])
 
 @section('content')
@@ -60,4 +66,6 @@
 <div class="fotorama" data-width="1280" data-ratio="16/10">
   <a href="https://www.youtube.com/watch?v=6WVcvgTBrUk"></a>
 </div>
+
+@include('life.timeline.oomph')
 @stop
