@@ -1,14 +1,14 @@
 @extends('life.base', [
-  'meta_title' => 'Посещенные концерты',
+  'meta_title' => 'Посещенные и ожидаемые концерты',
 
   'breadcrumbs' => [
     ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Посещенные концерты'],
+    ['title' => 'Концерты'],
   ]
 ])
 
 @section('content')
-<h2>Посещенные концерты</h2>
+<h2>Посещенные и ожидаемые концерты</h2>
 <p>Началось все с установки по концерту в год, но в 2014 что-то пошло не так...</p>
 
 <table class="table-stats">
@@ -20,6 +20,21 @@
     </tr>
   </thead>
   <tbody>
+    <tr class="text-muted">
+      <td>29 августа 2015</td>
+      <td>Linkin Park</td>
+      <td>Москва</td>
+    </tr>
+    <tr class="text-muted">
+      <td>25 августа 2015</td>
+      <td>Metallica</td>
+      <td>Санкт-Петербург</td>
+    </tr>
+    <tr class="text-muted">
+      <td>3 июля 2015</td>
+      <td>Dream Theater</td>
+      <td>Москва</td>
+    </tr>
     <tr>
       <td>21 декабря 2014</td>
       <td><a class="link" href="/life/tfn.2014">Tides from Nebula</a></td>

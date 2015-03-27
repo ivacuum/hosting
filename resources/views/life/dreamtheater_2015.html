@@ -1,0 +1,27 @@
+@extends('life.base', [
+  'meta_title' => 'Dream Theater в Москве &middot; 3 июля 2015',
+  'meta_description' => 'Заметки о концерте.',
+  'meta_image' => 'https://life.ivacuum.ru/gigs/dreamtheater.2015.07.03.jpg',
+
+  'breadcrumbs' => [
+    ['title' => 'Заметки', 'url' => 'life'],
+    ['title' => 'Концерты', 'url' => 'life/gigs'],
+    ['title' => 'Dream Theater']
+  ]
+])
+
+@section('content')
+<h2>Dream Theater в Москве <small>3 июля 2015</small></h2>
+<div class="row">
+  <div class="col-md-7">
+    <p>Ждем-с.</p>
+  </div>
+  <div class="col-md-5">
+    <div class="img-container">
+      <img src="//life.ivacuum.ru/gigs/dreamtheater.2015.07.03.jpg">
+    </div>
+  </div>
+</div>
+
+@include('life.timeline.dreamtheater')
+@stop
