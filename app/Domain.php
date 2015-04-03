@@ -291,7 +291,8 @@ class Domain extends Model
 		$query = new WhoisQuery($this->domain);
 		$data = array_merge($query->parse(), $query->getDnsRecords());
 		
-		if (!empty($data['failed']) || empty($data['registered_at'])) {
+		// whois failed
+		if (empty($data['registered_at'])) {
 			return [];
 		}
 		
@@ -460,15 +461,15 @@ class Domain extends Model
 	{
 		$diff = [];
 		
-		if ($new['ipv4'] != $this->ipv4) {
+		if (isset($new['ipv4']) && $new['ipv4'] != $this->ipv4) {
 			$diff['ipv4'] = ['from' => $this->ipv4, 'to' => $new['ipv4']];
 		}
 		
-		if ($new['ipv6'] != $this->ipv6) {
+		if (isset($new['ipv6']) && $new['ipv6'] != $this->ipv6) {
 			$diff['ipv6'] = ['from' => $this->ipv6, 'to' => $new['ipv6']];
 		}
 		
-		if ($new['mx'] != $this->mx) {
+		if (isset($new['mx']) && $new['mx'] != $this->mx) {
 			$diff['mx'] = ['from' => $this->mx, 'to' => $new['mx']];
 		}
 		

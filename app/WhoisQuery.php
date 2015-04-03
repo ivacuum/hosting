@@ -46,11 +46,7 @@ class WhoisQuery
 		}
 		
 		if (empty($ips)) {
-			return [
-				'ipv4' => '',
-				'ipv6' => '',
-				'mx'   => '',
-			];
+			return [];
 		}
 		
 		foreach ($ips as $row) {
