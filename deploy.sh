@@ -1,4 +1,6 @@
 #!/bin/sh
+# Предварительно в папке проекта должен быть
+# размещен файл .env для выполнения миграций
 
 DATE=$(date +"%Y%m%d-%H%M%S")
 ROOT_DIR=$(pwd)
@@ -49,6 +51,11 @@ php artisan route:cache
 
 cd public
 bower install --production
+
+if [ $? -ne 0 ]; then
+  echo "Bower install run was not successful"
+  exit 1
+fi
 
 ln -hfs $RELEASE_DIR $LIVE_DIR
 
