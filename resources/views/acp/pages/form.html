@@ -9,18 +9,18 @@
 @endif
 
 <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
-  <label class="col-md-2 control-label">Название страницы:</label>
+  <label class="col-md-2 control-label required">Название страницы:</label>
   <div class="col-md-10">
-    <input type="text" class="form-control" name="title" value="{{ old('title') ?: @$page->title }}">
+    <input required type="text" class="form-control" name="title" value="{{ old('title') ?: @$page->title }}">
   </div>
 </div>
 
 <div class="form-group {{ $errors->has('url') ? 'has-error' : '' }}">
-  <label class="col-md-2 control-label">URL:</label>
+  <label class="col-md-2 control-label required">URL:</label>
   <div class="col-md-10">
     <div class="input-group">
       <div class="input-group-addon">{{ url('/') }}/</div>
-      <input type="text" class="form-control" name="url" value="{{ old('url') ?: @$page->url }}">
+      <input required type="text" class="form-control" name="url" value="{{ old('url') ?: @$page->url }}">
     </div>
   </div>
 </div>

@@ -9,9 +9,9 @@
 @endif
 
 <div class="form-group {{ $errors->has('domain') ? 'has-error' : '' }}">
-  <label class="col-md-2 control-label">Домен:</label>
+  <label class="col-md-2 control-label required">Домен:</label>
   <div class="col-md-10">
-    <input type="text" class="form-control" name="domain" placeholder="example.com" value="{{ old('domain') ?: @$domain->domain }}">
+    <input required type="text" class="form-control" name="domain" placeholder="example.com" value="{{ old('domain') ?: @$domain->domain }}">
   </div>
 </div>
 

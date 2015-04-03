@@ -9,9 +9,9 @@
 @endif
 
 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-  <label class="col-md-2 control-label">Имя:</label>
+  <label class="col-md-2 control-label required">Имя:</label>
   <div class="col-md-10">
-    <input type="text" class="form-control" name="name" value="{{ old('name') ?: @$client->name }}">
+    <input required type="text" class="form-control" name="name" value="{{ old('name') ?: @$client->name }}">
   </div>
 </div>
 

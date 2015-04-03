@@ -9,16 +9,16 @@
 @endif
 
 <div class="form-group {{ $errors->has('account') ? 'has-error' : '' }}">
-  <label class="col-md-2 control-label">Логин в Яндексе:</label>
+  <label class="col-md-2 control-label required">Логин в Яндексе:</label>
   <div class="col-md-10">
-    <input type="text" class="form-control" name="account" value="{{ old('account') ?: @$user->account }}">
+    <input required type="text" class="form-control" name="account" value="{{ old('account') ?: @$user->account }}">
   </div>
 </div>
 
 <div class="form-group {{ $errors->has('token') ? 'has-error' : '' }}">
-  <label class="col-md-2 control-label">Токен:</label>
+  <label class="col-md-2 control-label {{ !@$user->token ? 'required' : '' }}">Токен:</label>
   <div class="col-md-10">
-    <input type="password" class="form-control" name="token">
+    <input {{ !@$user->token ? 'required' : '' }} type="password" class="form-control" name="token">
   </div>
 </div>
 
