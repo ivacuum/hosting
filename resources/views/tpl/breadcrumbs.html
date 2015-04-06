@@ -1,5 +1,5 @@
 @if (!empty($breadcrumbs))
-<div class="breadcrumbs">
+<nav class="breadcrumbs">
 	<a href="/"><span class="glyphicon glyphicon-home"></span></a> &nbsp;&rarr;&nbsp;
   @foreach ($breadcrumbs as $i => $row)
     @if ($i != sizeof($breadcrumbs) - 1)
@@ -8,5 +8,5 @@
       {{ $row['title'] }}
     @endif
   @endforeach
-</div>
+</nav>
 @endif
