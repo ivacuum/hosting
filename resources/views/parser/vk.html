@@ -27,14 +27,14 @@
 <ul class="pager">
   <li class="previous">
     <a href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}" id="previous_page">
-      <span class="glyphicon glyphicon-arrow-left"></span>
+      <span class="glyphicon glyphicon-chevron-left"></span>
       {{ $next->formatLocalized('%e %B') }}
     </a>
   </li>
   <li class="next">
     <a href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}" id="next_page">
       &nbsp;{{ $previous->formatLocalized('%e %B') }}
-      <span class="glyphicon glyphicon-arrow-right"></span>
+      <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
   </li>
 </ul>
@@ -50,9 +50,10 @@
   <div class="panel panel-default shortcuts-item">
     <div class="panel-body">
       @if ($post['text'])
-        <div class="lead">{!! $post['text'] !!}</div>
+        <div class="vk-post-content lead">{!! $post['text'] !!}</div>
       @endif
       @if ($post['attachments'])
+        <div class="vk-post-attachments">
         @if ($post['photos'] > 1)
           <div class="fotorama">
         @elseif ($post['photos'] == 1)
@@ -116,18 +117,18 @@
             </p>
           @endif
         @endforeach
+        </div>
       @endif
-    </div>
-    <div class="panel-footer">
-      <samp>
-        #{{ $i + 1 }}
-        <span class="glyphicon glyphicon-bullhorn"></span>
-        <span class="text-muted">{{ $post['reposts'] }}</span>
-        <span class="glyphicon glyphicon-heart"></span>
-        <span class="text-muted">{{ $post['likes'] }}</span>
-        <span class="glyphicon glyphicon-link"></span>
-        <a href="{{ $post['url'] }}" class="link">постоянная ссылка</a>
-      </samp>
+      <div class="vk-post-meta text-muted t-right">
+        <samp><small>
+          #{{ $i + 1 }}
+          <span class="glyphicon glyphicon-bullhorn"></span>
+          <span class="text-muted">{{ $post['reposts'] }}</span>
+          <span class="glyphicon glyphicon-heart"></span>
+          <span class="text-muted">{{ $post['likes'] }}</span>
+          <a href="{{ $post['url'] }}" class="link"><span class="glyphicon glyphicon-link"></span></a>
+        </small></samp>
+      </div>
     </div>
   </div>
 @endforeach
@@ -136,14 +137,14 @@
 <ul class="pager">
   <li class="previous">
     <a href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}">
-      <span class="glyphicon glyphicon-arrow-left"></span>
+      <span class="glyphicon glyphicon-chevron-left"></span>
       {{ $next->formatLocalized('%e %B') }}
     </a>
   </li>
   <li class="next">
     <a href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}">
       &nbsp;{{ $previous->formatLocalized('%e %B') }}
-      <span class="glyphicon glyphicon-arrow-right"></span>
+      <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
   </li>
 </ul>
