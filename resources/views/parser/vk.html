@@ -55,7 +55,7 @@
       @if ($post['attachments'])
         <div class="vk-post-attachments">
         @if ($post['photos'] > 1)
-          <div class="fotorama">
+          <div class="fotorama fotorama-left">
         @elseif ($post['photos'] == 1)
           @if (sizeof($post['attachments']) > 1)
             <div class="img-container">
