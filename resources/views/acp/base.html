@@ -1,1 +1,13 @@
 @extends('base')
+
+@section('global_menu')
+  <li>
+    <a class="{{ Request::is('acp/clients*') ? 'navbar-selected' : '' }}" href="/acp/clients">Клиенты</a>
+  </li>
+  <li>
+    <a class="{{ Request::is('acp/domains*') ? 'navbar-selected' : '' }}" href="/acp/domains">Домены</a>
+  </li>
+  <li>
+    <a class="{{ Request::is('acp/pages*') ? 'navbar-selected' : '' }}" href="/acp/pages">Страницы</a>
+  </li>
+@stop

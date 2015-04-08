@@ -7,7 +7,7 @@
   <meta name="description" content="{{ $meta_description or '' }}">
   <link rel="icon" sizes="256x256" href="/apple-touch-icon.png">
   @section('head')
-    <link rel="stylesheet" href="/css/app.min.css?5">
+    <link rel="stylesheet" href="/css/app.min.css?6">
   @show
 </head>
 <body>
@@ -21,16 +21,16 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">{{ config('cfg.sitename') }}</a>
+        <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-home"></span></a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           @section('global_menu')
           @if (Auth::check() and Auth::user()->isAdmin())
-            <li><a href="/acp/clients">Клиенты</a></li>
-            <li><a href="/acp/domains">Домены</a></li>
-            <li><a href="/acp/pages">Страницы</a></li>
+            <li><a href="/acp">Админка</a></li>
           @endif
+          <li><a class="{{ Request::is('life*') ? 'navbar-selected' : '' }}" href="/life">Заметки</a></li>
+          <li><a class="{{ Request::is('parser/vk*') ? 'navbar-selected' : '' }}" href="/parser/vk">Парсер ВК</a></li>
           @show
         </ul>
         @if (Auth::check())
@@ -74,8 +74,6 @@
         <li class="text-muted">&copy; {{ date('Y') }} vacuum</li>
         <li class="text-muted">&middot;</li>
         <li><a href="mailto:{{ config('email.support') }}" class="link">Обратная связь</a></li>
-        <li><a href="/life" class="link">Заметки</a></li>
-        <li><a href="/parser/vk" class="link">Парсер ВК</a></li>
       </ul>
     @show
   </div>
