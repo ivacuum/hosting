@@ -76,7 +76,17 @@ Route::group(['namespace' => 'Acp', 'prefix' => 'acp', 'middleware' => ['auth', 
 		Route::patch('{Server}', 'Servers@update');
 		Route::delete('{Server}', 'Servers@destroy');
 		Route::get('{Server}/edit', 'Servers@edit');
+		
+		Route::group(['namespace' => 'Servers', 'prefix' => '{Server}/ftp'], function() {
+			Route::get('/', 'Ftp@index');
+			Route::post('file', 'Ftp@filePost');
+			Route::post('dir', 'Ftp@dirPost');
+			Route::get('source', 'Ftp@source');
+			Route::post('source', 'Ftp@sourcePost');
+			Route::post('upload', 'Ftp@uploadPost');
+		});
 	});
+	
 	Route::get('users', 'Users@index');
 	Route::post('users', 'Users@store');
 	Route::get('users/create', 'Users@create');
