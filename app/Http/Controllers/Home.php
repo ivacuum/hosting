@@ -9,6 +9,11 @@ class Home extends Controller
 		return view('index');
 	}
 	
+	public function about()
+	{
+		return view('about');
+	}
+	
 	public function cv()
 	{
 		return view('cv');
