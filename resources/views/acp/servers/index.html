@@ -16,7 +16,7 @@
           <th>#</th>
           <th>Сервер</th>
           <th>Хост</th>
-          <th>Учетка фтп</th>
+          <th></th>
         </tr>
       </thead>
       @foreach ($servers as $i => $server)
@@ -28,7 +28,13 @@
             </a>
           </td>
           <td>{{ $server->host }}</td>
-          <td>{{ $server->ftp_user }}</td>
+          <td>
+            @if ($server->ftp_user and $server->ftp_pass)
+              <a class="btn btn-default btn-xs" href="{{ action("$self\Ftp@index", [$server]) }}">
+                FTP
+              </button>
+            @endif
+          </td>
         </tr>
       @endforeach
     </table>
