@@ -1,0 +1,37 @@
+@extends('acp.base', [
+  'meta_title' => 'Серверы'
+])
+
+@section('content')
+<div class="boxed-group flush">
+  @include('acp.tpl.create')
+  <h3>
+    Серверы
+    <span class="label label-default">{{ sizeof($servers) }}</span>
+  </h3>
+  <div class="boxed-group-inner">
+    <table class="table-stats">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Сервер</th>
+          <th>Хост</th>
+          <th>Учетка фтп</th>
+        </tr>
+      </thead>
+      @foreach ($servers as $i => $server)
+        <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $server) }}">
+          <td>{{ $i + 1 }}</td>
+          <td>
+            <a href="{{ action("$self@show", $server) }}" class="link">
+              {{ $server->title }}
+            </a>
+          </td>
+          <td>{{ $server->host }}</td>
+          <td>{{ $server->ftp_user }}</td>
+        </tr>
+      @endforeach
+    </table>
+  </div>
+</div>
+@stop

@@ -18,6 +18,7 @@ class RouteServiceProvider extends ServiceProvider
 		
 		$router->model('Client', 'App\Client');
 		$router->model('Page', 'App\Page');
+		$router->model('Server', 'App\Server');
 		$router->model('User', 'App\User');
 		$router->model('YandexUser', 'App\YandexUser');
 	}

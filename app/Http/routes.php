@@ -67,6 +67,16 @@ Route::group(['namespace' => 'Acp', 'prefix' => 'acp', 'middleware' => ['auth', 
 	Route::delete('pages/{Page}', 'Pages@destroy');
 	Route::get('pages/{Page}/edit', 'Pages@edit');
 	
+	Route::group(['prefix' => 'servers'], function() {
+		Route::get('/', 'Servers@index');
+		Route::post('/', 'Servers@store');
+		Route::get('create', 'Servers@create');
+		Route::get('{Server}', 'Servers@show');
+		Route::put('{Server}', 'Servers@update');
+		Route::patch('{Server}', 'Servers@update');
+		Route::delete('{Server}', 'Servers@destroy');
+		Route::get('{Server}/edit', 'Servers@edit');
+	});
 	Route::get('users', 'Users@index');
 	Route::post('users', 'Users@store');
 	Route::get('users/create', 'Users@create');
