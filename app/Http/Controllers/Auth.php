@@ -59,7 +59,7 @@ class Auth extends Controller
 		return view($this->view);
 	}
 	
-	public function passwordRemindPost(Request $request)
+	public function passwordRemindPost(Request $request, PasswordBroker $passwords)
 	{
 		$this->validate($request, [
 			'mail'  => 'empty',
