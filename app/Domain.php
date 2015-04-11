@@ -473,7 +473,7 @@ class Domain extends Model
 			$diff['mx'] = ['from' => $this->mx, 'to' => $new['mx']];
 		}
 		
-		if (isset($new['ns']) && $new['ns'] != $this->ns) {
+		if (isset($new['ns']) && $new['ns'] && $new['ns'] != $this->ns) {
 			// Workaround dns1.yandex.ru to dns1.yandex.net and vice versa
 			if (false === strpos($new['ns'], 'dns1.yandex.') ||
 				false === strpos($this->ns, 'dns1.yandex.')
