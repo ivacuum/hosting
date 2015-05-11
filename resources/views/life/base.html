@@ -1,7 +1,6 @@
 @extends('base')
 
 @section('head')
-@parent
 <meta content="article" property="og:type">
 <meta content="{{ $meta_title or '' }}" property="og:title">
 <meta content="{{ Request::url() }}" property="og:url">
@@ -26,6 +25,5 @@
 @stop
 
 @section('js')
-@parent
 <script src="//yastatic.net/share/share.js"></script>
 @stop
