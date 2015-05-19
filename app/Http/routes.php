@@ -15,6 +15,8 @@ Route::post('auth/password/reset', 'Auth@passwordResetPost');
 
 Route::get('about', 'Home@about');
 Route::get('cv', 'Home@cv');
+Route::get('docs', 'Docs@index');
+Route::get('docs/{page}', 'Docs@page');
 Route::get('life', 'Life@index');
 Route::get('life/{page}', 'Life@page');
 
