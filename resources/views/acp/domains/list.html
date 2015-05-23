@@ -4,8 +4,11 @@
     <span class="glyphicon glyphicon-plus"></span>
   </a>
   <h3>
-    Домены
-    <span class="label label-default">{{ sizeof($domains) }}</span>
+    <form class="form-inline">
+      Домены
+      <span class="label label-default">{{ $domains->total() }}</span>
+      <input type="search" name="q" class="form-control" placeholder="Поиск..." value="{{ old('q') }}">
+    </form>
   </h3>
   <div class="boxed-group-inner">
     <table class="table-stats js-float-thead">
@@ -29,11 +32,10 @@
       </thead>
       <tbody>
       @foreach ($domains as $i => $domain)
-        <tr class="js-dblclick-edit"
-      data-dblclick-url="/acp/domains/{{ $domain->domain }}/edit?goto={{ $back_url }}">
+        <tr class="js-dblclick-edit" data-dblclick-url="/acp/domains/{{ $domain->domain }}/edit?goto={{ $back_url }}">
           <td>
             <a name="d{{ $domain->id }}"></a>
-            {{ $i + 1 }}
+            {{ Request::get('page', 0) * 50 + 1 + $i }}
           </td>
           <td>
             <a href="http://{{ $domain->domain }}/" target="_blank" style="margin-right: 0.3em;"><span class="glyphicon glyphicon-globe"></span></a>
@@ -76,6 +78,12 @@
     </table>
   </div>
 </div>
+
+<div class="pull-right">
+  @include('tpl.paginator', ['paginator' => $domains])
+</div>
+
+<div class="clearfix"></div>
 
 <p>
   <span class="label label-default">...</span> &nbsp;— есть заметки &nbsp;

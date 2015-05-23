@@ -16,9 +16,12 @@ class Domains extends Controller
 	
 	public function index(HttpRequest $request)
 	{
+		$request->flash();
+		
 		$filter = $request->get('filter');
 		$sort   = $request->get('sort');
-
+		$q      = $request->get('q');
+		
 		if (!in_array($sort, ['domain', 'registered_at', 'paid_till'])) {
 			$sort = self::DEFAULT_ORDER_BY;
 		}
@@ -27,54 +30,48 @@ class Domains extends Controller
 			case 'external':
 			
 				$domains = Domain::whereActive(1)
-					->whereDomainControl(0)
-					->orderBy($sort)
-					->get();
+					->whereDomainControl(0);
 				
 			break;
 			case 'inactive':
 			
-				$domains = Domain::whereActive(0)
-					->orderBy($sort)
-					->get();
+				$domains = Domain::whereActive(0);
 				
 			break;
 			case 'no-ns':
 			
 				$domains = Domain::whereActive(1)
-					->whereNs('')
-					->orderBy($sort)
-					->get();
+					->whereNs('');
 			
 			break;
 			case 'no-server':
 			
 				$domains = Domain::whereActive(1)
-					->whereIpv4('')
-					->orderBy($sort)
-					->get();
+					->whereIpv4('');
 				
 			break;
 			case 'orphan':
 			
-				$domains = Domain::whereOrphan(1)
-					->orderBy($sort)
-					->get();
+				$domains = Domain::whereOrphan(1);
 				
 			break;
 			case 'trashed':
 			
-				$domains = Domain::onlyTrashed()
-					->orderBy($sort)
-					->get();
+				$domains = Domain::onlyTrashed();
 				
 			break;
 			default:
 			
-				$domains = Domain::whereActive(1)
-					->orderBy($sort)
-					->get();
+				$domains = Domain::whereActive(1);
 		}
+		
+		if ($q) {
+			$domains = $domains->where('domain', 'LIKE', "%{$q}%");
+		}
+		
+		$domains = $domains->orderBy($sort)
+			->paginate(50)
+			->appends(compact('sort', 'filter'));
 		
 		$back_url = Request::fullUrl();
 		
