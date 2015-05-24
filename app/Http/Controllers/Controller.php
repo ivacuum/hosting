@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use Breadcrumbs;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -24,6 +25,13 @@ abstract class Controller extends BaseController
 		$this->view   = $this->prefix.".".snake_case($this->method);
 		
 		$this->appendViewSharedVars();
+	}
+	
+	public function callAction($method, $parameters)
+	{
+		Breadcrumbs::parseRoutes();
+		
+		return call_user_func_array(array($this, $method), $parameters);
 	}
 	
 	protected function appendViewSharedVars()

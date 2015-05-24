@@ -1,53 +1,59 @@
 <?php
 
 // Admin control panel
-Route::group(['namespace' => 'Acp', 'prefix' => 'acp', 'middleware' => ['auth', 'admin']], function() {
+Route::group(['namespace' => 'Acp', 'prefix' => 'acp', 'breadcrumbs' => [['Админка', 'acp']], 'middleware' => ['auth', 'admin']], function() {
 	Route::get('/', 'Home@index');
 	
-	Route::get('clients', 'Clients@index');
-	Route::post('clients', 'Clients@store');
-	Route::get('clients/create', 'Clients@create');
-	Route::get('clients/{Client}', 'Clients@show');
-	Route::put('clients/{Client}', 'Clients@update');
-	Route::patch('clients/{Client}', 'Clients@update');
-	Route::delete('clients/{Client}', 'Clients@destroy');
-	Route::get('clients/{Client}/edit', 'Clients@edit');
+	Route::group(['prefix' => 'clients', 'breadcrumbs' => [['Клиенты', 'acp/clients']]], function() {
+		Route::get('/', 'Clients@index');
+		Route::post('/', 'Clients@store');
+		Route::get('create', 'Clients@create');
+		Route::get('{Client}', 'Clients@show');
+		Route::put('{Client}', 'Clients@update');
+		Route::patch('{Client}', 'Clients@update');
+		Route::delete('{Client}', 'Clients@destroy');
+		Route::get('{Client}/edit', 'Clients@edit');
+	});
 	
-	Route::get('domains', 'Domains@index');
-	Route::post('domains', 'Domains@store');
-	Route::post('domains/batch', 'Domains@batch');
-	Route::get('domains/create', 'Domains@create');
-	Route::get('domains/{Domain}', 'Domains@show');
-	Route::put('domains/{Domain}', 'Domains@update');
-	Route::patch('domains/{Domain}', 'Domains@update');
-	Route::delete('domains/{Domain}', 'Domains@destroy');
-	Route::get('domains/{Domain}/edit', 'Domains@edit');
-	Route::get('domains/{Domain}/mail', 'Domains@mailboxes');
-	Route::post('domains/{Domain}/mail', 'Domains@addMailbox');
-	Route::get('domains/{Domain}/ns-records', 'Domains@nsRecords');
-	Route::post('domains/{Domain}/ns-records', 'Domains@addNsRecord');
-	Route::put('domains/{Domain}/ns-records', 'Domains@editNsRecord');
-	Route::delete('domains/{Domain}/ns-records', 'Domains@deleteNsRecord');
-	Route::get('domains/{Domain}/ns-servers', 'Domains@nsServers');
-	Route::get('domains/{Domain}/robots', 'Domains@robots');
-	Route::post('domains/{Domain}/server-ns', 'Domains@setServerNsRecords');
-	Route::get('domains/{Domain}/yandex-pdd-status', 'Domains@yandexPddStatus');
-	Route::post('domains/{Domain}/yandex-ns', 'Domains@setYandexNs');
-	Route::get('domains/{Domain}/whois', 'Domains@whois');
+	Route::group(['prefix' => 'domains', 'breadcrumbs' => [['Домены', 'acp/domains']]], function() {
+		Route::get('/', 'Domains@index');
+		Route::post('/', 'Domains@store');
+		Route::post('batch', 'Domains@batch');
+		Route::get('create', 'Domains@create');
+		Route::get('{Domain}', 'Domains@show');
+		Route::put('{Domain}', 'Domains@update');
+		Route::patch('{Domain}', 'Domains@update');
+		Route::delete('{Domain}', 'Domains@destroy');
+		Route::get('{Domain}/edit', 'Domains@edit');
+		Route::get('{Domain}/mail', 'Domains@mailboxes');
+		Route::post('{Domain}/mail', 'Domains@addMailbox');
+		Route::get('{Domain}/ns-records', 'Domains@nsRecords');
+		Route::post('{Domain}/ns-records', 'Domains@addNsRecord');
+		Route::put('{Domain}/ns-records', 'Domains@editNsRecord');
+		Route::delete('{Domain}/ns-records', 'Domains@deleteNsRecord');
+		Route::get('{Domain}/ns-servers', 'Domains@nsServers');
+		Route::get('{Domain}/robots', 'Domains@robots');
+		Route::post('{Domain}/server-ns', 'Domains@setServerNsRecords');
+		Route::get('{Domain}/yandex-pdd-status', 'Domains@yandexPddStatus');
+		Route::post('{Domain}/yandex-ns', 'Domains@setYandexNs');
+		Route::get('{Domain}/whois', 'Domains@whois');
+	});
 	
-	Route::get('pages', 'Pages@index');
-	Route::post('pages', 'Pages@store');
-	Route::post('pages/batch', 'Pages@batch');
-	Route::get('pages/create', 'Pages@create');
-	Route::post('pages/move', 'Pages@move');
-	Route::get('pages/tree', 'Pages@tree');
-	Route::get('pages/{Page}', 'Pages@show');
-	Route::put('pages/{Page}', 'Pages@update');
-	Route::patch('pages/{Page}', 'Pages@update');
-	Route::delete('pages/{Page}', 'Pages@destroy');
-	Route::get('pages/{Page}/edit', 'Pages@edit');
+	Route::group(['prefix' => 'pages', 'breadcrumbs' => [['Страницы', 'acp/pages']]], function() {
+		Route::get('/', 'Pages@index');
+		Route::post('/', 'Pages@store');
+		Route::post('batch', 'Pages@batch');
+		Route::get('create', 'Pages@create');
+		Route::post('move', 'Pages@move');
+		Route::get('tree', 'Pages@tree');
+		Route::get('{Page}', 'Pages@show');
+		Route::put('{Page}', 'Pages@update');
+		Route::patch('{Page}', 'Pages@update');
+		Route::delete('{Page}', 'Pages@destroy');
+		Route::get('{Page}/edit', 'Pages@edit');
+	});
 	
-	Route::group(['prefix' => 'servers'], function() {
+	Route::group(['prefix' => 'servers', 'breadcrumbs' => [['Серверы', 'acp/servers']]], function() {
 		Route::get('/', 'Servers@index');
 		Route::post('/', 'Servers@store');
 		Route::get('create', 'Servers@create');
@@ -67,23 +73,25 @@ Route::group(['namespace' => 'Acp', 'prefix' => 'acp', 'middleware' => ['auth', 
 		});
 	});
 	
-	Route::get('users', 'Users@index');
-	Route::post('users', 'Users@store');
-	Route::get('users/create', 'Users@create');
-	Route::get('users/{User}', 'Users@show');
-	Route::put('users/{User}', 'Users@update');
-	Route::patch('users/{User}', 'Users@update');
-	Route::delete('users/{User}', 'Users@destroy');
-	Route::get('users/{User}/edit', 'Users@edit');
+	Route::group(['prefix' => 'users', 'breadcrumbs' => [['Пользователи', 'acp/users']]], function() {
+		Route::get('/', 'Users@index');
+		Route::post('/', 'Users@store');
+		Route::get('create', 'Users@create');
+		Route::get('{User}', 'Users@show');
+		Route::put('{User}', 'Users@update');
+		Route::patch('{User}', 'Users@update');
+		Route::delete('{User}', 'Users@destroy');
+		Route::get('{User}/edit', 'Users@edit');
+	});
 	
-	Route::group(['namespace' => 'Yandex', 'prefix' => 'yandex'], function() {
-		Route::get('users', 'Users@index');
-		Route::post('users', 'Users@store');
-		Route::get('users/create', 'Users@create');
-		Route::get('users/{YandexUser}', 'Users@show');
-		Route::put('users/{YandexUser}', 'Users@update');
-		Route::patch('users/{YandexUser}', 'Users@update');
-		Route::delete('users/{YandexUser}', 'Users@destroy');
-		Route::get('users/{YandexUser}/edit', 'Users@edit');
+	Route::group(['namespace' => 'Yandex', 'prefix' => 'yandex/users', 'breadcrumbs' => [['Пользователи Яндекс API', 'acp/yandex/users']]], function() {
+		Route::get('/', 'Users@index');
+		Route::post('/', 'Users@store');
+		Route::get('create', 'Users@create');
+		Route::get('{YandexUser}', 'Users@show');
+		Route::put('{YandexUser}', 'Users@update');
+		Route::patch('{YandexUser}', 'Users@update');
+		Route::delete('{YandexUser}', 'Users@destroy');
+		Route::get('{YandexUser}/edit', 'Users@edit');
 	});
 });

@@ -52,7 +52,7 @@
   </div>
   <div class="container">
 @section('breadcrumbs')
-@include('tpl.breadcrumbs')
+@include('tpl.breadcrumbs', ['breadcrumbs' => Breadcrumbs::get()])
 @show
 
 @if (Session::has('message'))
