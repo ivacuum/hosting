@@ -15,6 +15,7 @@ Route::group(['namespace' => 'Acp', 'prefix' => 'acp', 'middleware' => ['auth', 
 	
 	Route::get('domains', 'Domains@index');
 	Route::post('domains', 'Domains@store');
+	Route::post('domains/batch', 'Domains@batch');
 	Route::get('domains/create', 'Domains@create');
 	Route::get('domains/{Domain}', 'Domains@show');
 	Route::put('domains/{Domain}', 'Domains@update');

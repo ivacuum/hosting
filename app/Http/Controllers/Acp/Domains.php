@@ -4,17 +4,16 @@ use App\Domain;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Acp\DomainCreate;
 use App\Http\Requests\Acp\DomainEdit;
-use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Http\Request;
 use Log;
 use Mail;
-use Request;
 use Session;
 
 class Domains extends Controller
 {
 	const DEFAULT_ORDER_BY = 'paid_till';
 	
-	public function index(HttpRequest $request)
+	public function index(Request $request)
 	{
 		$request->flash();
 		
@@ -73,12 +72,12 @@ class Domains extends Controller
 			->paginate(50)
 			->appends(compact('sort', 'filter', 'q'));
 		
-		$back_url = Request::fullUrl();
+		$back_url = $request->fullUrl();
 		
 		return view($this->view, compact('back_url', 'domains', 'filter', 'sort'));
 	}
 	
-	public function addMailbox(Domain $domain, HttpRequest $request)
+	public function addMailbox(Domain $domain, Request $request)
 	{
 		extract($request->only('logins', 'send_to'));
 		
@@ -107,11 +106,36 @@ class Domains extends Controller
 		return redirect()->action("{$this->class}@show", [$domain, 'tab' => 'mail']);
 	}
 	
-	public function addNsRecord(Domain $domain, HttpRequest $request)
+	public function addNsRecord(Domain $domain, Request $request)
 	{
 		$input = $request->only('content', 'subdomain', 'priority', 'port', 'weight');
 		
 		return $domain->addNsRecord($request->get('type'), $input);
+	}
+
+	public function batch(Request $request)
+	{
+		extract($request->only('action', 'ids'));
+		
+		switch ($action) {
+			case 'activate':
+			
+				Domain::whereIn('id', $ids)->update(['active' => 1]);
+			
+			break;
+			case 'deactivate':
+			
+				Domain::whereIn('id', $ids)->update(['active' => 0]);
+
+			break;
+			case 'delete':
+			
+				Domain::destroy($ids);
+
+			break;
+		}
+		
+		return response()->json(['redirect' => action("{$this->class}@index")]);
 	}
 
 	public function create()
@@ -119,7 +143,7 @@ class Domains extends Controller
 		return view($this->view);
 	}
 	
-	public function deleteNsRecord(Domain $domain, HttpRequest $request)
+	public function deleteNsRecord(Domain $domain, Request $request)
 	{
 		$id = $request->get('record_id');
 		
@@ -138,7 +162,7 @@ class Domains extends Controller
 		return view($this->view, compact('domain'));
 	}
 	
-	public function editNsRecord(Domain $domain, HttpRequest $request)
+	public function editNsRecord(Domain $domain, Request $request)
 	{
 		extract($request->only('record_id', 'type'));
 		$input = $request->only('content', 'subdomain', 'priority', 'port', 'weight', 'retry', 'refresh', 'expire', 'ttl');
@@ -172,7 +196,7 @@ class Domains extends Controller
 		return view($this->view, compact('robots'));
 	}
 	
-	public function setServerNsRecords(Domain $domain, HttpRequest $request)
+	public function setServerNsRecords(Domain $domain, Request $request)
 	{
 		$server = $request->get('server');
 		
@@ -194,7 +218,7 @@ class Domains extends Controller
 		return redirect()->action("{$this->class}@show", [$domain, 'tab' => 'dns']);
 	}
 	
-	public function show(Domain $domain, HttpRequest $request)
+	public function show(Domain $domain, Request $request)
 	{
 		switch ($request->get('tab')) {
 			case 'dns':   $tab = 'nsRecords'; break;
@@ -233,9 +257,9 @@ class Domains extends Controller
 		return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
 	}
 	
-	public function whois(Domain $domain)
+	public function whois(Domain $domain, Request $request)
 	{
-		if (!Request::ajax()) {
+		if (!$request->ajax()) {
 			abort(404);
 		}
 		

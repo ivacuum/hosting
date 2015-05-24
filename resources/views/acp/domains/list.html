@@ -14,6 +14,7 @@
   <div class="boxed-group-inner">
     <table class="table-stats js-float-thead">
       <colgroup>
+        <col width="30"></col>
         <col width="*"></col>
         <col width="125"></col>
         <col width="200"></col>
@@ -22,6 +23,7 @@
       </colgroup>
       <thead>
         <tr>
+          <th><input type="checkbox" class="js-select-all" data-selector=".domains-checkbox"></th>
           <th>Домен</th>
           <th>Оплачен до</th>
           <th>Сервер</th>
@@ -33,6 +35,7 @@
       @foreach ($domains as $i => $domain)
         <tr class="js-dblclick-edit" data-dblclick-url="/acp/domains/{{ $domain->domain }}/edit?goto={{ $back_url }}">
           <td>
+            <input class="domains-checkbox" type="checkbox" name="ids[]" value="{{ $domain->id }}">
           </td>
           <td>
             <a name="d{{ $domain->id }}"></a>
@@ -75,6 +78,20 @@
       </tbody>
     </table>
   </div>
+</div>
+
+<div class="pull-left" style="margin: 0 0 1em;">
+  <form class="form-inline js-batch-form" data-url="/acp/domains/batch" data-selector=".domains-checkbox">
+    <div class="form-group">
+      <select class="form-control" name="action" id="batch_action">
+        <option value="">Выберите действие...</option>
+        <option value="activate">Включить мониторинг</option>
+        <option value="deactivate">Выключить мониторинг</option>
+        <option value="delete">Удалить</option>
+      </select>
+    </div>
+    <button class="btn btn-default" id="batch_submit">Выполнить</button>
+  </form>
 </div>
 
 <div class="pull-right">

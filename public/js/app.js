@@ -6,6 +6,10 @@ $(document).ajaxStop(function() {
   NProgress.done();
 });
 
+$.ajaxSetup({
+  headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+});
+
 $(document).ready(function() {
   $('.tip').tooltip();
 
@@ -58,6 +62,27 @@ $(document).ready(function() {
 
   // Прилипшие заголовки таблиц
   $('.js-float-thead').floatThead();
+
+  // Выбрать все
+  $('.js-select-all').bind('click', function() {
+    var is_checked = $(this).prop('checked');
+    var $selector = $($(this).data('selector'));
+    $selector.prop('checked', is_checked);
+  });
+
+  // Операции над несколькими записями
+  $('.js-batch-form').bind('submit', function(e) {
+    e.preventDefault();
+    
+    var $form = $(this);
+    var ids = $($form.data('selector') + ':checked').serialize();
+    
+    $.post($form.data('url'), $form.serialize() + '&' + ids, function(data) {
+      if (data.redirect) {
+        document.location = data.redirect;
+      }
+    });
+  });
 
   // Горячие клавиши
   var shortcuts_enabled = true;
