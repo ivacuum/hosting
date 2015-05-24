@@ -5,8 +5,8 @@
   </a>
   <h3>
     <form class="form-inline">
-      Домены
-      <span class="label label-default">{{ $domains->total() }}</span>
+      {{ $domains->total() }} {{ trans_choice('plural.domains', $domains->total()) }}
+      &nbsp;
       <input type="search" name="q" class="form-control" placeholder="Поиск..." value="{{ old('q') }}">
     </form>
   </h3>

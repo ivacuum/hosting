@@ -5,7 +5,7 @@ return [
 	'debug'           => env('APP_DEBUG'),
 	'url'             => 'http://localhost',
 	'timezone'        => 'Europe/Moscow',
-	'locale'          => 'en',
+	'locale'          => 'ru',
 	'setlocale'       => 'ru_RU.UTF-8',
 	'fallback_locale' => 'en',
 	'key'             => env('APP_KEY', 'SomeRandomString'),
