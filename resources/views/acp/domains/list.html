@@ -8,6 +8,7 @@
       {{ $domains->total() }} {{ trans_choice('plural.domains', $domains->total()) }}
       &nbsp;
       <input type="search" name="q" class="form-control" placeholder="Поиск..." value="{{ old('q') }}">
+      <input type="hidden" name="filter" value="{{ $filter or '' }}">
     </form>
   </h3>
   <div class="boxed-group-inner">
