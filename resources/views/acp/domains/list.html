@@ -13,7 +13,6 @@
   <div class="boxed-group-inner">
     <table class="table-stats js-float-thead">
       <colgroup>
-        <col width="40"></col>
         <col width="*"></col>
         <col width="125"></col>
         <col width="200"></col>
@@ -22,7 +21,6 @@
       </colgroup>
       <thead>
         <tr>
-          <th>#</th>
           <th>Домен</th>
           <th>Оплачен до</th>
           <th>Сервер</th>
@@ -34,10 +32,9 @@
       @foreach ($domains as $i => $domain)
         <tr class="js-dblclick-edit" data-dblclick-url="/acp/domains/{{ $domain->domain }}/edit?goto={{ $back_url }}">
           <td>
-            <a name="d{{ $domain->id }}"></a>
-            {{ Request::get('page', 0) * 50 + 1 + $i }}
           </td>
           <td>
+            <a name="d{{ $domain->id }}"></a>
             <a href="http://{{ $domain->domain }}/" target="_blank" style="margin-right: 0.3em;"><span class="glyphicon glyphicon-globe"></span></a>
             <a href="/acp/domains/{{ $domain->domain }}" class="link">{{ $domain->domain }}</a>
             @if ($domain->alias_id)
