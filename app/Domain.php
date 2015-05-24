@@ -1,7 +1,7 @@
 <?php namespace App;
 
 use Carbon\Carbon;
-use GuzzleHttp\Client;
+use GuzzleHttp\Client as HttpClient;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Mail;
@@ -267,7 +267,7 @@ class Domain extends Model
 	
 	public function getRobotsTxt()
 	{
-		$client = new Client();
+		$client = new HttpClient();
 		$domain = idn_to_ascii($this->domain);
 		
 		try {
@@ -503,7 +503,7 @@ class Domain extends Model
 	
 	protected function getRegRuApiClient()
 	{
-		return new Client([
+		return new HttpClient([
 			'base_url' => self::REGRU_API_URL,
 			'defaults' => [
 				'query' => [
@@ -519,7 +519,7 @@ class Domain extends Model
 		static $client;
 		
 		if (empty($client)) {
-			$client = new Client([
+			$client = new HttpClient([
 				'base_url' => 'https://pddimp.yandex.ru/api2/',
 				'defaults' => [
 					'headers' => ['PddToken' => $this->yandexUser->token],

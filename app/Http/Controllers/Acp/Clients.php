@@ -4,6 +4,7 @@ use App\Client;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Acp\ClientCreate;
 use App\Http\Requests\Acp\ClientEdit;
+use Illuminate\Http\Request;
 
 class Clients extends Controller
 {
@@ -30,8 +31,21 @@ class Clients extends Controller
 		return view($this->view, compact('client'));
 	}
 	
-	public function show(Client $client)
+	public function show(Client $client, Request $request)
 	{
+		$request->flash();
+		
+		$q = $request->get('q');
+
+		$domains = $client->domains()->orderBy('paid_till');
+		
+		if ($q) {
+			$domains = $domains->where('domain', 'LIKE', "%{$q}%");
+		}
+
+		$client->domains = $domains->paginate(50)
+			->appends(compact('q'));
+		
 		return view($this->view, compact('client'));
 	}
 	
