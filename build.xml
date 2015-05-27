@@ -75,6 +75,7 @@
       <fileset file="${bower.dir}/fotorama/fotorama.js" />
       <fileset file="${bower.dir}/jquery.scrollTo/jquery.scrollTo.min.js" />
       <fileset file="${bower.dir}/floatThead/dist/jquery.floatThead.min.js" />
+	  <fileset file="${bower.dir}/jquery-pjax/jquery.pjax.js" />
       <fileset file="${js.dir}/app.js" />
     </apply>
   </target>

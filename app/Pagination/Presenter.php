@@ -26,7 +26,7 @@ class Presenter implements PresenterContract
 		
 		$url = $this->paginator->url($this->paginator->currentPage() - 1);
 		
-		return $this->getPageLinkWrapper($url, $text, 'prev');
+		return $this->getPageLinkWrapper($url, $text, 'previous_page');
 	}
 	
 	protected function getNextButton($text = '&rarr;')
@@ -37,7 +37,7 @@ class Presenter implements PresenterContract
 		
 		$url = $this->paginator->url($this->paginator->currentPage() + 1);
 		
-		return $this->getPageLinkWrapper($url, $text, 'next');
+		return $this->getPageLinkWrapper($url, $text, 'next_page');
 	}
 	
 	public function hasPages()
@@ -59,11 +59,11 @@ class Presenter implements PresenterContract
 		);
 	}
 	
-	protected function getAvailablePageWrapper($url, $page, $rel = null)
+	protected function getAvailablePageWrapper($url, $page, $id = '')
 	{
-		$rel = is_null($rel) ? '' : sprintf(' rel="%s"', $rel);
+		$id = $id ? sprintf(' id="%s"', $id) : '';
 		
-		return sprintf('<li><a href="%s"%s>%s</a></li>', htmlentities($url), $rel, $page);
+		return sprintf('<li><a class="js-pjax" href="%s"%s>%s</a></li>', htmlentities($url), $id, $page);
 	}
 	
 	protected function getDisabledTextWrapper($text)

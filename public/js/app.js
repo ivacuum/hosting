@@ -10,10 +10,12 @@ $.ajaxSetup({
   headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
 });
 
+$(document).pjax('.js-pjax', '#pjax_container');
+
 $(document).ready(function() {
   $('.tip').tooltip();
 
-  $('.js-dblclick-edit').bind('dblclick', function() {
+  $(document).on('dblclick', '.js-dblclick-edit', function() {
     document.location = $(this).data('dblclick-url');
   });
   
@@ -21,11 +23,11 @@ $(document).ready(function() {
     $(this).load($(this).data('deferred-url'));
   });
   
-  $('.js-confirm').on('click', function() {
+  $(document).on('click', '.js-confirm', function() {
     return confirm($(this).data('confirm'));
   });
   
-  $('.js-ajax').on('click', function(e) {
+  $(document).on('click', '.js-ajax', function(e) {
     e.preventDefault();
     
     $('.js-ajax').removeClass('active');
@@ -39,7 +41,7 @@ $(document).ready(function() {
   });
 
   // Проигрывание гифок по клику
-  $('.js-gif-click').on('click', function(e) {
+  $(document).on('click', '.js-gif-click', function(e) {
     e.preventDefault();
     
     var $img = $('img', this);
@@ -54,7 +56,7 @@ $(document).ready(function() {
   });
 
   // Выбрать все
-  $('.js-select-all').bind('click', function() {
+  $(document).on('click', '.js-select-all', function() {
     var is_checked = $(this).prop('checked');
     var $selector = $($(this).data('selector'));
     $selector.prop('checked', is_checked);
@@ -64,7 +66,7 @@ $(document).ready(function() {
   $('.js-float-thead').floatThead();
 
   // Выбрать все
-  $('.js-select-all').bind('click', function() {
+  $(document).on('click', '.js-select-all', function() {
     var is_checked = $(this).prop('checked');
     var $selector = $($(this).data('selector'));
     $selector.prop('checked', is_checked);

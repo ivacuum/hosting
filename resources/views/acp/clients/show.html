@@ -1,4 +1,4 @@
-@extends('acp.base')
+@extends(Request::pjax() ? 'pjax' : 'acp.base')
 
 @section('content')
 <div class="pull-right">
