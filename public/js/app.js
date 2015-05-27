@@ -12,6 +12,8 @@ $.ajaxSetup({
 
 $(document).pjax('.js-pjax', '#pjax_container');
 
+$.pjax.defaults.timeout = 1200;
+
 $(document).ready(function() {
   $('.tip').tooltip();
 
