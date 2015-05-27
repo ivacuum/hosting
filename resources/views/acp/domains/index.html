@@ -1,6 +1,5 @@
-@extends('acp.base', [
-  'meta_title' => 'Домены',
 @extends(Request::pjax() ? 'pjax' : 'acp.base', [
+  'meta_title' => $filter ? trans("meta_title.acp.domains.{$filter}") : trans('meta_title.acp.domains.default'),
 ])
 
 @section('content')
