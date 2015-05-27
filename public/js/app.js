@@ -167,18 +167,28 @@ $(document).ready(function() {
   // });
     
   $(document).bind("shortcuts.to_next_page", function() {
-    var url = $("#next_page").attr("href");
+    var $link = $('#next_page')
+    var url = $link.attr("href")
     
     if (typeof url !== "undefined") {
-      document.location.href = url
+      if ($link.hasClass('js-pjax')) {
+        $.pjax({ url: url, container: '#pjax_container' })
+      } else {
+        document.location.href = url
+      }
     }
   });
   
   $(document).bind("shortcuts.to_prev_page", function() {
-    var url = $("#previous_page").attr("href");
+    var $link = $('#previous_page');
+    var url = $link.attr("href")
     
     if (typeof url !== "undefined") {
-      document.location.href = url
+      if ($link.hasClass('js-pjax')) {
+        $.pjax({ url: url, container: '#pjax_container' })
+      } else {
+        document.location.href = url
+      }
     }
   });
     

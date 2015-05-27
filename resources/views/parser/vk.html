@@ -1,38 +1,38 @@
-@extends('base', [
+@extends(Request::pjax() ? 'pjax' : 'base', [
   'meta_title' => "Топ 10 vk.com/{$vkpage} за ".$date->formatLocalized('%d %B'),
 ])
 
 @section('content')
 <ul class="nav nav-tabs">
   <li class="{{ $vkpage == 'palnom6' ? 'active' : '' }}">
-    <a href="/parser/vk/palnom6">Палата #6</a>
+    <a class="js-pjax" href="/parser/vk/palnom6">Палата #6</a>
   </li>
   <li class="{{ $vkpage == 'overhear' ? 'active' : '' }}">
-    <a href="/parser/vk/overhear">Подслушано</a>
+    <a class="js-pjax" href="/parser/vk/overhear">Подслушано</a>
   </li>
   <li class="{{ $vkpage == 'leprum' ? 'active' : '' }}">
-    <a href="/parser/vk/leprum">Лепра</a>
+    <a class="js-pjax" href="/parser/vk/leprum">Лепра</a>
   </li>
   <li class="{{ $vkpage == 'pikabu' ? 'active' : '' }}">
-    <a href="/parser/vk/pikabu">Пикабу</a>
+    <a class="js-pjax" href="/parser/vk/pikabu">Пикабу</a>
   </li>
   <li class="{{ $vkpage == 'factura' ? 'active' : '' }}">
-    <a href="/parser/vk/factura">Фактура</a>
+    <a class="js-pjax" href="/parser/vk/factura">Фактура</a>
   </li>
   <li class="{{ $vkpage == 'decaying_europe' ? 'active' : '' }}">
-    <a href="/parser/vk/decaying_europe">Запад</a>
+    <a class="js-pjax" href="/parser/vk/decaying_europe">Запад</a>
   </li>
 </ul>
 
 <ul class="pager">
   <li class="previous">
-    <a href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}" id="previous_page">
+    <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}" id="previous_page">
       <span class="glyphicon glyphicon-chevron-left"></span>
       {{ $next->formatLocalized('%e %B') }}
     </a>
   </li>
   <li class="next">
-    <a href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}" id="next_page">
+    <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}" id="next_page">
       &nbsp;{{ $previous->formatLocalized('%e %B') }}
       <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
@@ -136,13 +136,13 @@
 
 <ul class="pager">
   <li class="previous">
-    <a href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}">
+    <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}">
       <span class="glyphicon glyphicon-chevron-left"></span>
       {{ $next->formatLocalized('%e %B') }}
     </a>
   </li>
   <li class="next">
-    <a href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}">
+    <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}">
       &nbsp;{{ $previous->formatLocalized('%e %B') }}
       <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
