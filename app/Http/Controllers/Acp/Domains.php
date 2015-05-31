@@ -69,7 +69,7 @@ class Domains extends Controller
 		}
 		
 		$domains = $domains->orderBy($sort)
-			->paginate(50)
+			->paginate()
 			->appends(compact('sort', 'filter', 'q'));
 		
 		$back_url = $request->fullUrl();

@@ -10,6 +10,8 @@ class Client extends Model
 	protected $fillable = ['name', 'email', 'text'];
 	protected $hidden = [];
 	
+	protected $perPage = 50;
+	
 	public function domains()
 	{
 		return $this->hasMany('App\Domain');

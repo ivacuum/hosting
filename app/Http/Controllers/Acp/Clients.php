@@ -43,7 +43,7 @@ class Clients extends Controller
 			$domains = $domains->where('domain', 'LIKE', "%{$q}%");
 		}
 
-		$client->domains = $domains->paginate(50)
+		$client->domains = $domains->paginate()
 			->appends(compact('q'));
 		
 		return view($this->view, compact('client'));
