@@ -10,9 +10,20 @@ $.ajaxSetup({
   headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
 });
 
+$.pjax.defaults.timeout = 1200;
+
 $(document).pjax('.js-pjax', '#pjax_container');
 
-$.pjax.defaults.timeout = 1200;
+$(document).on('pjax:send', function(e) {
+  $('#pjax_container').css('opacity', '.5');
+});
+
+$(document).on('pjax:complete', function() {
+  $('#pjax_container').css('opacity', 1);
+  $('.fotorama').fotorama();
+  
+  initOnLoadAndPjax();
+});
 
 $(document).ready(function() {
   $('.tip').tooltip();
@@ -63,9 +74,6 @@ $(document).ready(function() {
     var $selector = $($(this).data('selector'));
     $selector.prop('checked', is_checked);
   });
-
-  // Прилипшие заголовки таблиц
-  $('.js-float-thead').floatThead();
 
   // Выбрать все
   $(document).on('click', '.js-select-all', function() {
@@ -273,4 +281,11 @@ $(document).ready(function() {
       })
     }
   });
+  
+  initOnLoadAndPjax();
 });
+
+function initOnLoadAndPjax() {
+  // Прилипшие заголовки таблиц
+  $('.js-float-thead').floatThead();
+}
