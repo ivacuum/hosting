@@ -53,7 +53,7 @@
   </div>
   <div class="container">
 @section('breadcrumbs')
-@include('tpl.breadcrumbs', ['breadcrumbs' => Breadcrumbs::get()])
+@include('tpl.breadcrumbs', ['breadcrumbs' => isset($breadcrumbs) ? $breadcrumbs : Breadcrumbs::get()])
 @show
 
 @if (Session::has('message'))
