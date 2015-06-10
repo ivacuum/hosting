@@ -47,6 +47,7 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+php artisan config:cache
 php artisan route:cache
 
 cd public
