@@ -6,6 +6,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Input;
+use NumberFormatter;
 use Route;
 
 abstract class Controller extends BaseController
@@ -36,10 +37,14 @@ abstract class Controller extends BaseController
 	
 	protected function appendViewSharedVars()
 	{
+		$decimal = new NumberFormatter('ru_RU', NumberFormatter::DECIMAL);
+		$decimal->setAttribute(NumberFormatter::FRACTION_DIGITS, 0);
+		
 		view()->share([
-			'goto' => Input::get('goto'),
-			'self' => $this->class,
-			'tpl'  => $this->prefix,
+			'decimal' => $decimal,
+			'goto'    => Input::get('goto'),
+			'self'    => $this->class,
+			'tpl'     => $this->prefix,
 		]);
 	}
 
