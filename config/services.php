@@ -18,7 +18,8 @@ return [
 	],
 
 	'stripe' => [
-		'model'  => 'User',
+		'model'  => \App\User::class,
+		'key'    => '',
 		'secret' => '',
 	],
 

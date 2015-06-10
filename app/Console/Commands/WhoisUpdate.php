@@ -4,7 +4,7 @@ use App\Domain;
 
 class WhoisUpdate extends Command
 {
-	protected $name = 'app:whois-update';
+	protected $signature = 'app:whois-update';
 	protected $description = 'Update domains information';
 
 	public function handle()
