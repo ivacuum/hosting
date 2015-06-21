@@ -4,7 +4,7 @@ return [
 
 	// database, eloquent
 	'driver' => 'eloquent',
-	'model' => \App\User::class,
+	'model' => App\User::class,
 	'table' => 'users',
 	'password' => [
 		'email' => 'emails.auth.password.remind',
