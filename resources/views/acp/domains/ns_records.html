@@ -6,7 +6,7 @@
         Установить DNS Яндекса
       </button>
     </p>
-		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		{!! csrf_field() !!}
   </form>
 @endif
 
@@ -17,7 +17,7 @@
         Подключить Яндекс.Почту для домена
       </button>
     </p>
-		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		{!! csrf_field() !!}
   </form>
 @endif
 --}}
@@ -57,7 +57,7 @@
         </td>
         <td>
           <a class="pseudo js-ns-record-add">добавить днс-запись</a>
-        	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+        	{!! csrf_field() !!}
         </td>
       </tr>
       @foreach ($records as $record)
@@ -108,14 +108,14 @@
               @endif
               <input type="hidden" name="record_id" value="{{ $record->record_id }}">
               <input type="hidden" name="_method" value="PUT">
-              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              {!! csrf_field() !!}
             </div>
           </td>
           <td>
             <div class="presentation">
               <a class="pseudo js-ns-record-edit">настроить</a>
               &nbsp;
-              <a class="pseudo js-ns-record-delete" data-id="{{ $record->record_id }}" data-token="{{ csrf_token() }}">удалить</a>
+              <a class="pseudo js-ns-record-delete" data-id="{{ $record->record_id }}">удалить</a>
             </div>
             <div class="edit hidden">
               <a class="pseudo js-ns-record-save">сохранить</a>
@@ -145,7 +145,7 @@
       Прописать днс-записи сервера
     </button>
   </p>
-	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+	{!! csrf_field() !!}
 </form>
 @elseif ($domain->yandex_user_id)
   <div class="alert alert-warning">
@@ -184,10 +184,9 @@ $(document).ready(function() {
     e.preventDefault();
     
     var id = $(this).data('id');
-    var token = $(this).data('token');
     
     if (confirm('Запись будет удалена. Продолжить?')) {
-      $.post('{{ action("$self@deleteNsRecord", $domain) }}', { record_id: id, _method: 'DELETE', _token: token }, function(data) {
+      $.post('{{ action("$self@deleteNsRecord", $domain) }}', { record_id: id, _method: 'DELETE' }, function(data) {
         if ('ok' === data) {
           $('#ajax_container').each(function() {
             $(this).load($(this).data('deferred-url'));
