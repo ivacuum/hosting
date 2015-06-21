@@ -15,8 +15,6 @@ class Domains extends Controller
 	
 	public function index(Request $request)
 	{
-		$request->flash();
-		
 		$filter = $request->get('filter');
 		$sort   = $request->get('sort');
 		$q      = $request->get('q');
@@ -74,7 +72,7 @@ class Domains extends Controller
 		
 		$back_url = $request->fullUrl();
 		
-		return view($this->view, compact('back_url', 'domains', 'filter', 'sort'));
+		return view($this->view, compact('back_url', 'domains', 'filter', 'sort', 'q'));
 	}
 	
 	public function addMailbox(Domain $domain, Request $request)

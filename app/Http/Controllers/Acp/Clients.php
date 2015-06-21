@@ -33,8 +33,6 @@ class Clients extends Controller
 	
 	public function show(Client $client, Request $request)
 	{
-		$request->flash();
-		
 		$q = $request->get('q');
 
 		$domains = $client->domains()->orderBy('paid_till');
@@ -46,7 +44,7 @@ class Clients extends Controller
 		$client->domains = $domains->paginate()
 			->appends(compact('q'));
 		
-		return view($this->view, compact('client'));
+		return view($this->view, compact('client', 'q'));
 	}
 	
 	public function store(ClientCreate $request)
