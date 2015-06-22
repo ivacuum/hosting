@@ -2,15 +2,15 @@
 
 @section('global_menu')
   <li>
-    <a class="{{ Request::is('acp/clients*') ? 'navbar-selected' : '' }}" href="/acp/clients">Клиенты</a>
+    <a class="{{ $self == 'Acp\Clients' ? 'navbar-selected' : '' }}" href="/acp/clients">Клиенты</a>
   </li>
   <li>
-    <a class="{{ Request::is('acp/domains*') ? 'navbar-selected' : '' }}" href="/acp/domains">Домены</a>
+    <a class="{{ $self == 'Acp\Domains' ? 'navbar-selected' : '' }}" href="/acp/domains">Домены</a>
   </li>
   <li>
-    <a class="{{ Request::is('acp/servers*') ? 'navbar-selected' : '' }}" href="/acp/servers">Серверы</a>
+    <a class="{{ $self == 'Acp\Servers' ? 'navbar-selected' : '' }}" href="/acp/servers">Серверы</a>
   </li>
   <li>
-    <a class="{{ Request::is('acp/pages*') ? 'navbar-selected' : '' }}" href="/acp/pages">Страницы</a>
+    <a class="{{ $self == 'Acp\Pages' ? 'navbar-selected' : '' }}" href="/acp/pages">Страницы</a>
   </li>
 @stop

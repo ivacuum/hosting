@@ -31,8 +31,8 @@
           @if (Auth::check() and Auth::user()->isAdmin())
             <li><a href="/acp">Админка</a></li>
           @endif
-          <li><a class="{{ Request::is('life*') ? 'navbar-selected' : '' }}" href="/life">Заметки</a></li>
-          <li><a class="{{ Request::is('parser/vk*') ? 'navbar-selected' : '' }}" href="/parser/vk">Парсер ВК</a></li>
+          <li><a class="{{ $self == 'Life' ? 'navbar-selected' : '' }}" href="/life">Заметки</a></li>
+          <li><a class="{{ $self == 'ParserVk' ? 'navbar-selected' : '' }}" href="/parser/vk">Парсер ВК</a></li>
           @show
         </ul>
         @if (Auth::check())
