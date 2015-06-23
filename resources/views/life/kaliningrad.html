@@ -1,7 +1,10 @@
-<?php header('Location: /life/kaliningrad.2015'); exit; ?>
-
 @extends('life.base', [
-  'meta_title' => 'Калининград'
+  'meta_title' => 'Калининград',
+
+  'breadcrumbs' => [
+    ['title' => 'Заметки', 'url' => 'life'],
+    ['title' => 'Калининград'],
+  ]
 ])
 
 @section('content')
@@ -14,4 +17,6 @@
     </ul>
   </div>
 </div>
+
+@include('tpl.tickets_calendar', ['origin' => 'mow', 'destination' => 'kgd'])
 @stop
