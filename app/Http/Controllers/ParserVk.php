@@ -13,7 +13,7 @@ class ParserVk extends Controller
 	{
 		parent::__construct();
 		
-		$this->client = new Client(['base_url' => 'https://api.vk.com/method/']);
+		$this->client = new Client(['base_uri' => 'https://api.vk.com/method/']);
 	}
 	
 	public function index($vkpage = 'palnom6', $date = false)
@@ -89,7 +89,7 @@ class ParserVk extends Controller
 		return Cache::remember($cache_entry, 15, function() use ($params) {
 			$response = $this->client->get('wall.get', ['query' => $params]);
 		
-			return $response->json(['object' => true]);
+			return json_decode($response->getBody());
 		});
 	}
 
