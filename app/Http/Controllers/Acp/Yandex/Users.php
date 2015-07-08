@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Acp\YandexUserCreate;
 use App\Http\Requests\Acp\YandexUserEdit;
 use App\YandexUser;
+use Illuminate\Http\Request;
 use Session;
 
 class Users extends Controller
@@ -37,8 +38,19 @@ class Users extends Controller
 		return view($this->view, compact('domains', 'user'));
 	}
 	
-	public function show(YandexUser $user)
+	public function show(YandexUser $user, Request $request)
 	{
+		$q = $request->get('q');
+
+		$domains = $user->domains()->orderBy('paid_till');
+		
+		if ($q) {
+			$domains = $domains->where('domain', 'LIKE', "%{$q}%");
+		}
+
+		$user->domains = $domains->paginate()
+			->appends(compact('q'));
+
 		return view($this->view, compact('user'));
 	}
 	
