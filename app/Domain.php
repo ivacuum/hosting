@@ -69,7 +69,7 @@ class Domain extends Model
 			'query' => compact('domain', 'login', 'password'),
 		]);
 		
-		$json = $response->json(['object' => true]);
+		$json = json_decode($response->getBody());
 		
 		return 'ok' !== $json->success ? $json->error : 'ok';
 	}
@@ -108,7 +108,7 @@ class Domain extends Model
 			],
 		]);
 		
-		$json = $response->json(['object' => true]);
+		$json = json_decode($response->getBody());
 		
 		return 'ok' !== $json->success ? $json->error : 'ok';
 	}
@@ -129,7 +129,7 @@ class Domain extends Model
 			'query' => compact('domain', 'record_id'),
 		]);
 		
-		$json = $response->json(['object' => true]);
+		$json = json_decode($response->getBody());
 		
 		return 'ok' !== $json->success ? $json->error : 'ok';
 	}
@@ -171,7 +171,7 @@ class Domain extends Model
 			],
 		]);
 		
-		$json = $response->json(['object' => true]);
+		$json = json_decode($response->getBody());
 
 		return 'ok' !== $json->success ? $json->error : 'ok';
 	}
@@ -190,7 +190,7 @@ class Domain extends Model
 		$client = $this->getYandexPddApiClient();
 		
 		$response = $client->get("admin/email/list?domain={$this->domain}");
-		$json = $response->json(['object' => true]);
+		$json = json_decode($response->getBody());
 		
 		if ('ok' !== $json->success) {
 			throw new \Exception("Api error: {$json->error}");
@@ -215,7 +215,7 @@ class Domain extends Model
 
 		$response = $client->get('domain/get_nss', ['query' => $params]);
 		
-		$json = $response->json(['object' => true]);
+		$json = json_decode($response->getBody());
 		
 		$ns = [];
 		
@@ -235,7 +235,7 @@ class Domain extends Model
 		$client = $this->getYandexPddApiClient();
 
 		$response = $client->get("admin/dns/list?domain={$this->domain}");
-		$json = $response->json(['object' => true]);
+		$json = json_decode($response->getBody());
 		
 		if ('ok' !== $json->success) {
 			throw new \Exception("Api error: {$json->error}");
@@ -264,7 +264,7 @@ class Domain extends Model
 
 		$response = $client->get("admin/domain/registration_status?domain={$this->domain}");
 		
-		return $response->json(['object' => true]);
+		return json_decode($response->getBody());
 	}
 	
 	public function getRobotsTxt()
@@ -374,7 +374,7 @@ class Domain extends Model
 			],
 		]);
 		
-		$json = $response->json(['object' => true]);
+		$json = json_decode($response->getBody());
 		
 		return 'ok' !== $json->success ? $json->error : 'ok';
 	}
@@ -391,7 +391,7 @@ class Domain extends Model
 			],
 		]);
 
-		$json = $response->json(['object' => true]);
+		$json = json_decode($response->getBody());
 		
 		$status = $json->answer->domains[0]->result;
 		
@@ -506,12 +506,10 @@ class Domain extends Model
 	protected function getRegRuApiClient()
 	{
 		return new HttpClient([
-			'base_url' => self::REGRU_API_URL,
-			'defaults' => [
-				'query' => [
-					'username' => env('REGRU_USER'),
-					'password' => env('REGRU_PASS'),
-				],
+			'base_uri' => self::REGRU_API_URL,
+			'query' => [
+				'username' => env('REGRU_USER'),
+				'password' => env('REGRU_PASS'),
 			],
 		]);
 	}
@@ -522,10 +520,8 @@ class Domain extends Model
 		
 		if (empty($client)) {
 			$client = new HttpClient([
-				'base_url' => 'https://pddimp.yandex.ru/api2/',
-				'defaults' => [
-					'headers' => ['PddToken' => $this->yandexUser->token],
-				],
+				'base_uri' => 'https://pddimp.yandex.ru/api2/',
+				'headers' => ['PddToken' => $this->yandexUser->token],
 			]);
 		}
 		
