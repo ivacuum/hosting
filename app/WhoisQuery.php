@@ -16,7 +16,7 @@ class WhoisQuery
 		$this->domain = idn_to_ascii($domain);
 		
 		$this->servers = json_decode(
-			File::get(base_path().'/database/whois_servers.json'),
+			File::get(base_path('database/whois_servers.json')),
 			true
 		);
 		

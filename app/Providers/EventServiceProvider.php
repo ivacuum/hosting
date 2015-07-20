@@ -6,8 +6,8 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 class EventServiceProvider extends ServiceProvider
 {
 	protected $listen = [
-		'event.name' => [
-			'EventListener',
+		\App\Events\DomainWhoisUpdated::class => [
+			\App\Listeners\EmailWhoisChanges::class,
 		],
 	];
 

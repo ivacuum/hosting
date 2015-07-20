@@ -15,12 +15,9 @@ class WhoisUpdate extends Command
 			if (false === $result) {
 				$this->error("{$domain->domain} failed");
 				continue;
-			} elseif (true === $result) {
-				$this->info($domain->domain);
-				continue;
 			}
 			
-			$this->info("{$domain->domain} " . json_encode($result));
+			$this->info($domain->domain);
 		}
 	}
 }

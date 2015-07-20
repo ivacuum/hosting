@@ -1,10 +1,10 @@
 <?php namespace App;
 
+use App\Events\DomainWhoisUpdated;
 use Carbon\Carbon;
 use GuzzleHttp\Client as HttpClient;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Mail;
 use Log;
 
 class Domain extends Model
@@ -410,25 +410,10 @@ class Domain extends Model
 			return false;
 		}
 		
-		$diff = $this->checkForChanges($data);
+		event(new DomainWhoisUpdated($this, $data));
+
 		$this->update($data);
 
-		if (!empty($diff)) {
-			$domain = $this;
-			
-			register_shutdown_function(
-				['Mail', 'send'],
-				'emails.whois.changed',
-				compact('diff', 'data'),
-				function($mail) use ($domain) {
-					$mail->to('domains@ivacuum.ru')
-						->subject($domain->domain);
-				}
-			);
-			
-			return $diff;
-		}
-		
 		return true;
 	}
 	
@@ -458,51 +443,6 @@ class Domain extends Model
 		return explode(' ', $this->ns)[0];
 	}
 
-	/**
-	* Проверка изменения данных домена (ip, mx, ns, etc.)
-	*/
-	protected function checkForChanges(array $new)
-	{
-		$diff = [];
-		
-		if (isset($new['ipv4']) && $new['ipv4'] != $this->ipv4) {
-			$diff['ipv4'] = ['from' => $this->ipv4, 'to' => $new['ipv4']];
-		}
-		
-		if (isset($new['ipv6']) && $new['ipv6'] != $this->ipv6) {
-			$diff['ipv6'] = ['from' => $this->ipv6, 'to' => $new['ipv6']];
-		}
-		
-		if (isset($new['mx']) && $new['mx'] != $this->mx) {
-			$diff['mx'] = ['from' => $this->mx, 'to' => $new['mx']];
-		}
-		
-		if (isset($new['ns']) && $new['ns'] && $new['ns'] != $this->ns) {
-			// Workaround dns1.yandex.ru to dns1.yandex.net and vice versa
-			if (false === strpos($new['ns'], 'dns1.yandex.') ||
-				false === strpos($this->ns, 'dns1.yandex.')
-			) {
-				$diff['ns'] = ['from' => $this->ns, 'to' => $new['ns']];
-			}
-		}
-		
-		if ($new['registered_at']->diffInDays($this->registered_at) > 300) {
-			$diff['registered_at'] = [
-				'from' => (string) $this->registered_at,
-				'to'   => (string) $new['registered_at']
-			];
-		}
-		
-		if ($new['paid_till']->diffInHours($this->paid_till) > 24) {
-			$diff['paid_till'] = [
-				'from' => (string) $this->paid_till,
-				'to'   => (string) $new['paid_till'],
-			];
-		}
-
-		return $diff;
-	}
-	
 	protected function getRegRuApiClient()
 	{
 		return new HttpClient([
