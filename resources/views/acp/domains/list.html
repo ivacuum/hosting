@@ -85,9 +85,14 @@
     <div class="form-group">
       <select class="form-control" name="action" id="batch_action">
         <option value="">Выберите действие...</option>
-        <option value="activate">Включить мониторинг</option>
-        <option value="deactivate">Выключить мониторинг</option>
-        <option value="delete">Удалить</option>
+        @if ($filter == 'trashed')
+          <option value="restore">Восстановить</option>
+          <option value="force_delete">Удалить окончательно</option>
+        @else
+          <option value="activate">Включить мониторинг</option>
+          <option value="deactivate">Выключить мониторинг</option>
+          <option value="delete">Удалить</option>
+        @endif
       </select>
     </div>
     <button class="btn btn-default" id="batch_submit">Выполнить</button>

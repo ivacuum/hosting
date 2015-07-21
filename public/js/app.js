@@ -83,7 +83,7 @@ $(document).ready(function() {
   });
 
   // Операции над несколькими записями
-  $('.js-batch-form').bind('submit', function(e) {
+  $(document).on('submit', '.js-batch-form', function(e) {
     e.preventDefault();
     
     var $form = $(this);

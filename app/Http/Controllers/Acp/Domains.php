@@ -115,6 +115,8 @@ class Domains extends Controller
 	{
 		extract($request->only('action', 'ids'));
 		
+		$params = [];
+		
 		switch ($action) {
 			case 'activate':
 			
@@ -131,9 +133,23 @@ class Domains extends Controller
 				Domain::destroy($ids);
 
 			break;
+			case 'force_delete':
+				
+				$params['filter'] = 'trashed';
+
+				Domain::whereIn('id', $ids)->onlyTrashed()->forceDelete();
+				
+			break;
+			case 'restore':
+			
+				$params['filter'] = 'trashed';
+			
+				Domain::whereIn('id', $ids)->onlyTrashed()->restore();
+				
+			break;
 		}
 		
-		return response()->json(['redirect' => action("{$this->class}@index")]);
+		return response()->json(['redirect' => action("{$this->class}@index", $params)]);
 	}
 
 	public function create()
