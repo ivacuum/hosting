@@ -29,7 +29,7 @@ class EmailWhoisChanges
 	{
 		$diff = [];
 		
-		if (isset($new['ipv4']) && $new['ipv4'] != $domain->ipv4) {
+		if (!$domain->isExpired() && isset($new['ipv4']) && $new['ipv4'] != $domain->ipv4) {
 			$diff['ipv4'] = ['from' => $domain->ipv4, 'to' => $new['ipv4']];
 		}
 		
