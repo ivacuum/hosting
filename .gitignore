@@ -1,7 +1,9 @@
-/logs
 /public/bower_components
+/public/css/*.min.css
+/public/js/*.min.js
 /vendor
 .env
 .DS_Store
 Thumbs.db
 .tm_properties
+composer.phar

@@ -9,7 +9,19 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta http-equiv="x-pjax-version" content="1">
   <link rel="icon" sizes="256x256" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/app.min.css?8">
+  @if (App::environment('local'))
+    <link rel="stylesheet/less" href="/css/app.less">
+    <script>
+    less = {
+      env: 'development',
+      poll: 3000,
+      relativeUrls: true,
+    };
+    </script>
+    <script src="/bower_components/less.js/dist/less-1.7.5.min.js"></script>
+  @else
+    <link rel="stylesheet" href="/css/app.min.css?8">
+  @endif
   @yield('head')
 </head>
 <body>
