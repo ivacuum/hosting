@@ -93,7 +93,19 @@
     @show
   </div>
 </footer>
-<script src="/js/app.min.js?6"></script>
+@if (App::environment('local'))
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/bower_components/nprogress/nprogress.js"></script>
+  <script src="/js/fotorama.js"></script>
+  <script src="/bower_components/fotorama/fotorama.js"></script>
+  <script src="/bower_components/jquery.scrollTo/jquery.scrollTo.min.js"></script>
+  <script src="/bower_components/floatThead/dist/jquery.floatThead.min.js"></script>
+  <script src="/bower_components/jquery-pjax/jquery.pjax.js"></script>
+  <script src="/js/app.js"></script>
+@else
+  <script src="/js/app.min.js?6"></script>
+@endif
 @yield('js')
 </body>
 </html>
