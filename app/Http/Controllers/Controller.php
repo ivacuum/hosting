@@ -32,7 +32,7 @@ abstract class Controller extends BaseController
 	{
 		Breadcrumbs::parseRoutes();
 		
-		return call_user_func_array(array($this, $method), $parameters);
+		return call_user_func_array([$this, $method], $parameters);
 	}
 	
 	protected function appendViewSharedVars()

@@ -40,17 +40,18 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           @section('global_menu')
-          @if (Auth::check() and Auth::user()->isAdmin())
-            <li><a href="/acp">Админка</a></li>
-          @endif
-          <li><a class="{{ $self == 'Life' ? 'navbar-selected' : '' }}" href="/life">Заметки</a></li>
-          <li><a class="{{ $self == 'ParserVk' ? 'navbar-selected' : '' }}" href="/parser/vk">Парсер ВК</a></li>
+            <li><a class="{{ $self == 'Life' ? 'navbar-selected' : '' }}" href="/life">Заметки</a></li>
+            <li><a class="{{ $self == 'ParserVk' ? 'navbar-selected' : '' }}" href="/parser/vk">Парсер ВК</a></li>
           @show
         </ul>
         @if (Auth::check())
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->email }} <b class="caret"></b></a>
               <ul class="dropdown-menu">
+                @if (Auth::check() and Auth::user()->isAdmin())
+                  <li><a href="/acp">Админка</a></li>
+                  <li class="divider"></li>
+                @endif
                 <li><a href="/auth/logout">Выход</a></li>
               </ul>
             </li>
