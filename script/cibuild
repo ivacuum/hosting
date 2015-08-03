@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Выход в случае ошибки
+set -e
+
+cd "$(dirname "$0")/.."
+
+echo "==> Installing front-end dependencies..."
+cd public
+bower install
+cd ../
+
+echo "==> Ant php linting, css & js compiling..."
+ant

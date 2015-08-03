@@ -4,7 +4,7 @@
   <property name="css.dir" location="public/css" />
   <property name="js.dir" location="public/js" />
 
-  <target name="build" depends="lint" />
+  <target name="build" depends="lint,css,js" />
   
   <target name="artisan-migrate" description="Migrating the database">
     <echo>Migrating the database</echo>

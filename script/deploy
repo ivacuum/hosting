@@ -1,22 +1,32 @@
 #!/bin/sh
+
+# Выход в случае ошибки
+set -e
+
+cd "$(dirname "$0")/.."
+
 # Предварительно в папке проекта должен быть
 # размещен файл .env для выполнения миграций
 
-DATE=$(date +"%Y%m%d-%H%M%S")
-ROOT_DIR=$(pwd)
+RELEASE_DIR=$(pwd)
+ROOT_DIR=$(dirname "$RELEASE_DIR")/..
 LIVE_DIR=$ROOT_DIR/live
 STORAGE_DIR=$ROOT_DIR/storage
-RELEASE_DIR=$ROOT_DIR/releases/$DATE
 
-# Копия проекта
-git clone --depth=1 -b master git@bitbucket.org:ivacuum/hosting.git $RELEASE_DIR
-
-if [ $? -ne 0 ]; then
-  echo "Cloning was not successful"
+if [ ! -f $ROOT_DIR/.env ]; then
+  echo "Can't find .env configuration file"
   exit 1
 fi
 
-rm -rf $RELEASE_DIR/.git
+# Копия проекта
+# git clone --depth=1 -b master git@bitbucket.org:ivacuum/hosting.git $RELEASE_DIR
+
+# if [ $? -ne 0 ]; then
+#   echo "Cloning was not successful"
+#   exit 1
+# fi
+
+# rm -rf $RELEASE_DIR/.git
 
 # Файл настроек
 ln -s $ROOT_DIR/.env $RELEASE_DIR/.env
@@ -52,11 +62,6 @@ php artisan route:cache
 
 cd public
 bower install --production
-
-if [ $? -ne 0 ]; then
-  echo "Bower install run was not successful"
-  exit 1
-fi
 
 ln -hfs $RELEASE_DIR $LIVE_DIR
 

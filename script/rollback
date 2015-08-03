@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# Перед запуском нужно скопировать в папку, содержащую папку releases
 ROOT_DIR=$(pwd)
 DATE=$(ls -t $ROOT_DIR/releases | head -n +2 | tail -n +2)
 LIVE_DIR=$ROOT_DIR/live

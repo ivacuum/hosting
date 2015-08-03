@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# exits in case of any error
+set -e
+
+cd "$(dirname "$0")/.."
+
+script/update
+
+php artisan serve

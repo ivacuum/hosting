@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# exits in case of any error
+set -e
+
+cd "$(dirname "$0")/.."
+
+script/bootstrap
+
+echo "==> Migrating database..."
+php artisan migrate
