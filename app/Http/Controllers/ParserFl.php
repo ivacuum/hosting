@@ -7,7 +7,6 @@ class ParserFl extends Controller
 {
 	public function index($login, $passwd)
 	{
-		$action      = 'login';
 		$autologin   = 1;
 		$u_token_key = '';
 		$user_agent  = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3';
@@ -22,9 +21,9 @@ class ParserFl extends Controller
 		}
 
 		// auth
-		$client->post('/', [
+		$client->post('/login/', [
 			'headers' => ['User-Agent' => $user_agent],
-			'form_params' => compact('action', 'autologin', 'login', 'passwd', 'u_token_key'),
+			'form_params' => compact('autologin', 'login', 'passwd', 'u_token_key'),
 		]);
 		
 		// go to profile to get rating
