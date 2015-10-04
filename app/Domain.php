@@ -308,7 +308,7 @@ class Domain extends Model
 	
 	public function isExpired()
 	{
-		return $this->paid_till->isPast();
+		return $this->paid_till->isPast() || false !== strpos($this->ns, 'expired.reg.ru');
 	}
 	
 	public function isExpiringSoon()
@@ -408,6 +408,10 @@ class Domain extends Model
 	{
 		if (empty($data = $this->getWhoisParsedData())) {
 			return false;
+		}
+		
+		if ($this->isExpired()) {
+			unset($data['paid_till']);
 		}
 		
 		event(new DomainWhoisUpdated($this, $data));

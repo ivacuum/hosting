@@ -57,7 +57,7 @@ class EmailWhoisChanges
 			];
 		}
 		
-		if ($new['paid_till']->diffInHours($domain->paid_till) > 24) {
+		if (isset($new['paid_till']) && $new['paid_till']->diffInHours($domain->paid_till) > 24) {
 			$diff['paid_till'] = [
 				'from' => (string) $domain->paid_till,
 				'to'   => (string) $new['paid_till'],
