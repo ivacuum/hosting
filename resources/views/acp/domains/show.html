@@ -13,7 +13,7 @@
     <span class="glyphicon glyphicon-globe"></span>
   </a>
   @include('acp.tpl.edit', ['id' => $domain, 'goto' => Request::path()])
-  @if ($domain->cms_url)
+  @if (!$domain->isExpired() && ($domain->cms_url || ($domain->alias_id and $domain->alias->cms_url)))
     @include("$tpl.cms_login", ['cms_button_class' => 'btn btn-default'])
   @endif
 </h2>

@@ -69,7 +69,7 @@
           <td>{!! $domain->whatServerIpv4() !!}</td>
           <td>{{ $domain->firstNsServer() }}</td>
           <td>
-            @if ($domain->cms_url or ($domain->alias_id and $domain->alias->cms_url))
+            @if (!$domain->isExpired() && ($domain->cms_url || ($domain->alias_id and $domain->alias->cms_url)))
               @include('acp.domains.cms_login', ['cms_button_class' => 'btn btn-default btn-xs'])
             @endif
           </td>
