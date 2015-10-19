@@ -8,7 +8,8 @@
     "fotorama": "~4.6",
     "jquery.scrollTo": "~1.4",
     "floatThead": "~1.2",
-    "jquery-pjax": "latest"
+    "jquery-pjax": "latest",
+    "fontawesome": "~4.4"
   },
   "devDependencies": {
     "less.js": "~1.7"

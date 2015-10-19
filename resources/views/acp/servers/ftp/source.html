@@ -2,12 +2,12 @@
 
 @section('content')
 <h2>
-  <a href="/acp/servers/{{ $server->id }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+  <a href="/acp/servers/{{ $server->id }}"><i class="fa fa-chevron-left"></i></a>
   ftp://{{ $server->host }}
 </h2>
 
 <h2>
-  <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $dir_up }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+  <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $dir_up }}"><i class="fa fa-chevron-left"></i></a>
   {{ basename($file) }} <small>{{ $dir_up }}</small>
 </h2>
 

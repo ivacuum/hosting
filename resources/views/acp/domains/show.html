@@ -10,7 +10,7 @@
   @include('acp.tpl.back')
   {{ $domain->domain }}
   <a class="btn btn-default" href="http://{{ $domain->domain }}/" target="_blank">
-    <span class="glyphicon glyphicon-globe"></span>
+    <i class="fa fa-external-link"></i>
   </a>
   @include('acp.tpl.edit', ['id' => $domain, 'goto' => Request::path()])
   @if (!$domain->isExpired() && ($domain->cms_url || ($domain->alias_id and $domain->alias->cms_url)))

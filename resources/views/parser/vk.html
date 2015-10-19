@@ -27,14 +27,14 @@
 <ul class="pager">
   <li class="previous">
     <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}" id="previous_page">
-      <span class="glyphicon glyphicon-chevron-left"></span>
+      <i class="fa fa-chevron-left"></i>
       {{ $next->formatLocalized('%e %B') }}
     </a>
   </li>
   <li class="next">
     <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}" id="next_page">
       &nbsp;{{ $previous->formatLocalized('%e %B') }}
-      <span class="glyphicon glyphicon-chevron-right"></span>
+      <i class="fa fa-chevron-right"></i>
     </a>
   </li>
 </ul>
@@ -76,7 +76,7 @@
           @if ($attach->type == 'doc' and $attach->doc->ext == 'gif')
             <p>
               <div>
-                <span class="glyphicon glyphicon-paperclip"></span>
+                <i class="fa fa-paperclip"></i>
                 {{ $attach->doc->title }}
               </div>
               <a href="{{ $attach->doc->url }}" class="js-gif-click">
@@ -85,14 +85,14 @@
             </p>
           @elseif ($attach->type == 'audio' and $attach->audio->url)
             <p>
-              <a href="{{ $attach->audio->url }}" class="link"><span class="glyphicon glyphicon-music"></span> {{ $attach->audio->artist }} — {{ $attach->audio->title }}</a>
+              <a href="{{ $attach->audio->url }}" class="link"><i class="fa fa-music"></i> {{ $attach->audio->artist }} — {{ $attach->audio->title }}</a>
               <span class="text-muted">
                 {{ sprintf('%02d', $attach->audio->duration / 60) }}:{{ sprintf('%02d', $attach->audio->duration % 60) }}
               </span>
             </p>
           @elseif ($attach->type == 'video')
             <p>
-              <a href="https://vk.com/video{{ $attach->video->owner_id }}_{{ $attach->video->vid }}" class="link"><span class="glyphicon glyphicon-film"></span> {{ $attach->video->title }}</a>
+              <a href="https://vk.com/video{{ $attach->video->owner_id }}_{{ $attach->video->vid }}" class="link"><i class="fa fa-film"></i> {{ $attach->video->title }}</a>
               <span class="text-muted">
                 {{ sprintf('%02d', $attach->video->duration / 60) }}:{{ sprintf('%02d', $attach->video->duration % 60) }}
               </span>
@@ -100,14 +100,14 @@
           @elseif ($attach->type == 'page')
             <p>
               <a href="{{ $attach->page->view_url }}" class="link">
-                <span class="glyphicon glyphicon-file"></span>
+                <i class="fa fa-text-o"></i>
                 {{ $attach->page->title }}
               </a>
             </p>
           @elseif ($attach->type == 'link')
             <p>
               <a href="{{ $attach->link->url }}" class="link">
-                <span class="glyphicon glyphicon-link"></span>
+                <i class="fa fa-link"></i>
                 {{ $attach->link->title }}
               </a>
               <br>
@@ -122,11 +122,11 @@
       <div class="vk-post-meta text-muted t-right">
         <samp><small>
           #{{ $i + 1 }}
-          <span class="glyphicon glyphicon-bullhorn"></span>
+          <i class="fa fa-bullhorn"></i>
           <span class="text-muted">{{ $post['reposts'] }}</span>
-          <span class="glyphicon glyphicon-heart"></span>
+          <i class="fa fa-heart"></i>
           <span class="text-muted">{{ $post['likes'] }}</span>
-          <a href="{{ $post['url'] }}" class="link"><span class="glyphicon glyphicon-link"></span></a>
+          <a href="{{ $post['url'] }}" class="link"><i class="fa fa-link"></i></a>
         </small></samp>
       </div>
     </div>
@@ -137,14 +137,14 @@
 <ul class="pager">
   <li class="previous">
     <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}">
-      <span class="glyphicon glyphicon-chevron-left"></span>
+      <i class="fa fa-chevron-left"></i>
       {{ $next->formatLocalized('%e %B') }}
     </a>
   </li>
   <li class="next">
     <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}">
       &nbsp;{{ $previous->formatLocalized('%e %B') }}
-      <span class="glyphicon glyphicon-chevron-right"></span>
+      <i class="fa fa-chevron-right"></i>
     </a>
   </li>
 </ul>

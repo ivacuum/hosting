@@ -139,9 +139,9 @@ $(function() {
         $tds = $(node.tr).find('>td');
       
       if (node.data.activated == 1) {
-        $tds.eq(2).html('<span class="glyphicon glyphicon-eye-open text-success" title="Отображается"></span>')
+        $tds.eq(2).html('<i class="fa fa-eye text-success" title="Отображается"></i>')
       } else {
-        $tds.eq(2).html('<span class="glyphicon glyphicon-eye-close text-muted" title="Выключена"></span>')
+        $tds.eq(2).html('<i class="fa fa-eye-slash text-muted" title="Выключена"></i>')
       }
       
       $tds.eq(3).html('<a class="link" href="' + node.data.url + '">' + node.data.url + '</a>');
@@ -151,7 +151,7 @@ $(function() {
         $tds.eq(3).append('<br><span class="text-muted">&rarr; ' + node.data.redirect + '</span>');
       }
       
-      $tds.eq(5).html('<a class="link" href="' + node.data.edit_url + '"><span class="glyphicon glyphicon-pencil"></span></a>');
+      $tds.eq(5).html('<a class="link" href="' + node.data.edit_url + '"><i class="fa fa-pencil-square-o"></i></a>');
     }
   });
 });

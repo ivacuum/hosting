@@ -1,7 +1,7 @@
 @if (sizeof($domains))
 <div class="boxed-group flush">
   <a href="{{ action('Acp\Domains@create') }}" class="boxed-group-action btn btn-success">
-    <span class="glyphicon glyphicon-plus"></span>
+    <i class="fa fa-plus"></i>
   </a>
   <h3>
     <form class="form-inline">
@@ -39,7 +39,7 @@
           </td>
           <td>
             <a name="d{{ $domain->id }}"></a>
-            <a href="http://{{ $domain->domain }}/" target="_blank" style="margin-right: 0.3em;"><span class="glyphicon glyphicon-globe"></span></a>
+            <a href="http://{{ $domain->domain }}/" target="_blank" style="margin-right: 0.3em;"><i class="fa fa-external-link"></i></a>
             <a href="/acp/domains/{{ $domain->domain }}" class="link">{{ $domain->domain }}</a>
             @if ($domain->alias_id)
               <span class="text-muted">
