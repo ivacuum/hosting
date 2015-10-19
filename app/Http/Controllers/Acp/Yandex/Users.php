@@ -40,6 +40,7 @@ class Users extends Controller
 	
 	public function show(YandexUser $user, Request $request)
 	{
+		$filter = '';
 		$q = $request->get('q');
 
 		$domains = $user->domains()->orderBy('paid_till');
@@ -51,7 +52,7 @@ class Users extends Controller
 		$user->domains = $domains->paginate()
 			->appends(compact('q'));
 
-		return view($this->view, compact('user'));
+		return view($this->view, compact('filter', 'q', 'user'));
 	}
 	
 	public function store(YandexUserCreate $request)
