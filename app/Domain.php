@@ -15,27 +15,44 @@ class Domain extends Model
 	const NS0 = 'dns1.yandex.net';
 	const NS1 = 'dns2.yandex.net';
 	
-	protected $fillable = ['client_id', 'alias_id', 'domain', 'active',
-		'domain_control', 'orphan', 'registered_at', 'paid_till',
-		'ipv4', 'ipv6', 'mx', 'ns', 'queried_at', 'text',
-		'cms_type', 'cms_version', 'cms_url', 'cms_user', 'cms_pass',
-		'ftp_host', 'ftp_user', 'ftp_pass', 'ssh_host', 'ssh_user', 'ssh_pass',
-		'db_pma', 'db_host', 'db_user', 'db_pass', 'yandex_user_id'];
+	protected $fillable = [
+		'client_id',
+		'alias_id',
+		'yandex_user_id',
+		'domain',
+		'active',
+		'domain_control',
+		'orphan',
+		'registered_at',
+		'paid_till',
+		'ipv4',
+		'ipv6',
+		'mx',
+		'ns',
+		'queried_at',
+		'text',
+		'cms_type',
+		'cms_version',
+		'cms_url',
+		'cms_user',
+		'cms_pass',
+		'ftp_host',
+		'ftp_user',
+		'ftp_pass',
+		'ssh_host',
+		'ssh_user',
+		'ssh_pass',
+		'db_pma',
+		'db_host',
+		'db_user',
+		'db_pass',
+	];
+	
 	protected $hidden = [];
 	
 	protected $perPage = 50;
 	
-	public static function boot()
-	{
-		parent::boot();
-		
-		// Домен перестает быть алиасом для других
-		static::deleted(function($domain) {
-			Domain::whereAliasId($domain->id)
-				->update(['alias_id' => 0]);
-		});
-	}
-
+	// Internal
 	public function getRouteKey()
 	{
 		return $this->domain;
@@ -46,6 +63,7 @@ class Domain extends Model
 		return 'domain';
 	}
 
+	// Relations
 	public function alias()
 	{
 		return $this->belongsTo('App\Domain');
@@ -61,6 +79,18 @@ class Domain extends Model
 		return $this->belongsTo('App\YandexUser');
 	}
 	
+	// Events
+	public static function boot()
+	{
+		parent::boot();
+		
+		// Домен перестает быть алиасом для других
+		static::deleted(function($domain) {
+			Domain::where('alias_id', $domain->id)
+				->update(['alias_id' => 0]);
+		});
+	}
+
 	public function addMailbox($login, $password)
 	{
 		if (!$this->yandex_user_id) {

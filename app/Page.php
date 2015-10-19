@@ -15,6 +15,6 @@ class Page extends Node
 	
 	public function scopeActive($query)
 	{
-		return $query->whereActive(1);
+		return $query->where('active', 1);
 	}
 }
