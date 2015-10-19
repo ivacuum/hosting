@@ -10,7 +10,9 @@ $.ajaxSetup({
   headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
 });
 
-$.pjax.defaults.timeout = 1200;
+if ($.support.pjax) {
+  $.pjax.defaults.timeout = 5000;
+}
 
 $(document).pjax('.js-pjax', '#pjax_container');
 
@@ -50,7 +52,7 @@ $(document).ready(function() {
     $(container).data('deferred-url', url);
     $(container).load(url);
   });
-
+  
   // Проигрывание гифок по клику
   $(document).on('click', '.js-gif-click', function(e) {
     e.preventDefault();

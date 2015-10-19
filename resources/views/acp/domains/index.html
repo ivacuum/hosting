@@ -1,4 +1,4 @@
-@extends(Request::pjax() ? 'pjax' : 'acp.base', [
+@extends('acp.base', [
   'meta_title' => $filter ? trans("meta_title.acp.domains.{$filter}") : trans('meta_title.acp.domains.default'),
 ])
 
@@ -57,4 +57,4 @@
 </ul>
 
 @include("$tpl.list")
-@stop
+@endsection

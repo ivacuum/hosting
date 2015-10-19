@@ -1,4 +1,4 @@
-@extends(Request::pjax() ? 'pjax' : 'base', [
+@extends('base', [
   'meta_title' => "Топ 10 vk.com/{$vkpage} за ".$date->formatLocalized('%d %B'),
 ])
 

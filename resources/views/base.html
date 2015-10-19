@@ -1,8 +1,11 @@
+@if (!Request::pjax())
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="utf-8">
+@endif
   <title>{{ $meta_title or config('cfg.sitename') }}</title>
+@if (!Request::pjax())
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="keywords" content="{{ $meta_keywords or '' }}">
@@ -74,11 +77,13 @@
   <div class="alert alert-info">{{ Session::get('message') }}</div>
 @endif
 
-@yield('content_header')
 <div id="pjax_container">
+@endif
+@yield('content_header')
 @yield('content')
-</div>
 @yield('content_footer')
+@if (!Request::pjax())
+</div>
 
     <div class="wrap-push"></div>
   </div>
@@ -110,3 +115,4 @@
 @yield('js')
 </body>
 </html>
+@endif
