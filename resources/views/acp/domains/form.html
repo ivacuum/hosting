@@ -1,15 +1,15 @@
 @include('tpl.form_errors')
 
 <div class="form-group {{ $errors->has('domain') ? 'has-error' : '' }}">
-  <label class="col-md-2 control-label required">Домен:</label>
-  <div class="col-md-10">
+  <label class="col-md-3 control-label required">Домен:</label>
+  <div class="col-md-4">
     <input required type="text" class="form-control" name="domain" placeholder="example.com" value="{{ old('domain', @$domain->domain) }}">
   </div>
 </div>
 
 <div class="form-group">
-  <label class="col-md-2 control-label">Алиас:</label>
-  <div class="col-md-10">
+  <label class="col-md-3 control-label">Алиас:</label>
+  <div class="col-md-4">
     <select class="form-control" name="alias_id">
       <option value="0">нет</option>
       @foreach (App\Domain::orderBy('domain')->get() as $alias)
@@ -22,8 +22,8 @@
 </div>
 
 <div class="form-group">
-  <label class="col-md-2 control-label">Клиент:</label>
-  <div class="col-md-10">
+  <label class="col-md-3 control-label">Клиент:</label>
+  <div class="col-md-4">
     <select class="form-control" name="client_id">
       @foreach (App\Client::all() as $client)
         <option value="{{ $client->id }}" {{ $client->id == old('client_id', @$domain->client_id) ? 'selected' : '' }}>
@@ -34,8 +34,22 @@
   </div>
 </div>
 
+<div class="form-group">
+  <label class="col-md-3 control-label">Пользователь API Яндекса:</label>
+  <div class="col-md-4">
+    <select class="form-control" name="yandex_user_id">
+      <option value="0">нет</option>
+      @foreach (App\YandexUser::all() as $user)
+        <option value="{{ $user->id }}" {{ $user->id == old('yandex_user_id', @$domain->yandex_user_id) ? 'selected' : '' }}>
+          {{ $user->account }}
+        </option>
+      @endforeach
+    </select>
+  </div>
+</div>
+
 <div class="form-group flush">
-  <div class="col-md-10 col-md-offset-2 checkbox">
+  <div class="col-md-9 col-md-offset-3 checkbox">
     <input type="hidden" name="active" value="0">
     <label>
       <input type="checkbox" name="active" value="1" {{ 1 == old('active', @$domain->active) ? 'checked' : '' }}>
@@ -45,7 +59,7 @@
 </div>
 
 <div class="form-group flush">
-  <div class="col-md-10 col-md-offset-2 checkbox">
+  <div class="col-md-9 col-md-offset-3 checkbox">
     <input type="hidden" name="domain_control" value="0">
     <label>
       <input type="checkbox" name="domain_control" value="1" {{ 1 == old('domain_control', @$domain->domain_control) ? 'checked' : '' }}>
@@ -55,7 +69,7 @@
 </div>
 
 <div class="form-group">
-  <div class="col-md-10 col-md-offset-2 checkbox">
+  <div class="col-md-9 col-md-offset-3 checkbox">
     <input type="hidden" name="orphan" value="0">
     <label>
       <input type="checkbox" name="orphan" value="1" {{ 1 == old('orphan', @$domain->orphan) ? 'checked' : '' }}>
@@ -65,22 +79,22 @@
 </div>
 
 <div class="form-group">
-  <label class="col-md-2 control-label">Заметки:</label>
-  <div class="col-md-10">
+  <label class="col-md-3 control-label">Заметки:</label>
+  <div class="col-md-6">
     <textarea class="form-control" name="text" rows="10">{{ old('text', @$domain->text) }}</textarea>
   </div>
 </div>
 
 <hr>
 <div class="row">
-  <div class="col-md-10 col-md-offset-2">
+  <div class="col-md-9 col-md-offset-3">
     <h3 style="margin-bottom: 0.5em;">Реквизиты доступа к сайту</h3>
   </div>
 </div>
 
 <div class="form-group">
-  <label class="col-md-2 control-label">CMS:</label>
-  <div class="col-md-10">
+  <label class="col-md-3 control-label">CMS:</label>
+  <div class="col-md-9">
     <div class="input-group">
       <input type="text" class="form-control" name="cms_user" placeholder="admin" value="{{ old('cms_user', @$domain->cms_user) }}">
       <span class="input-group-addon">:</span>
@@ -92,22 +106,22 @@
 </div>
 
 <div class="form-group">
-  <label class="col-md-2 control-label">Название CMS:</label>
-  <div class="col-md-10">
+  <label class="col-md-3 control-label">Название CMS:</label>
+  <div class="col-md-9">
     <input type="text" class="form-control" name="cms_type" placeholder="korden.cms" value="{{ old('cms_type', @$domain->cms_type) }}">
   </div>
 </div>
 
 <div class="form-group">
-  <label class="col-md-2 control-label">Версия CMS:</label>
-  <div class="col-md-10">
+  <label class="col-md-3 control-label">Версия CMS:</label>
+  <div class="col-md-9">
     <input type="text" class="form-control" name="cms_version" placeholder="3.5" value="{{ old('cms_version', @$domain->cms_version) }}">
   </div>
 </div>
 
 <div class="form-group">
-  <label class="col-md-2 control-label">FTP:</label>
-  <div class="col-md-10">
+  <label class="col-md-3 control-label">FTP:</label>
+  <div class="col-md-9">
     <div class="input-group">
       <input type="text" class="form-control" name="ftp_user" placeholder="user" value="{{ old('ftp_user', @$domain->ftp_user) }}">
       <span class="input-group-addon">:</span>
@@ -119,8 +133,8 @@
 </div>
 
 <div class="form-group">
-  <label class="col-md-2 control-label">SSH:</label>
-  <div class="col-md-10">
+  <label class="col-md-3 control-label">SSH:</label>
+  <div class="col-md-9">
     <div class="input-group">
       <input type="text" class="form-control" name="ssh_user" placeholder="user" value="{{ old('ssh_user', @$domain->ssh_user) }}">
       <span class="input-group-addon">:</span>
@@ -132,8 +146,8 @@
 </div>
 
 <div class="form-group">
-  <label class="col-md-2 control-label">БД:</label>
-  <div class="col-md-10">
+  <label class="col-md-3 control-label">БД:</label>
+  <div class="col-md-9">
     <div class="input-group">
       <input type="text" class="form-control" name="db_user" placeholder="user" value="{{ old('db_user', @$domain->db_user) }}">
       <span class="input-group-addon">:</span>
@@ -145,8 +159,8 @@
 </div>
 
 <div class="form-group">
-  <label class="col-md-2 control-label">phpMyAdmin:</label>
-  <div class="col-md-10">
+  <label class="col-md-3 control-label">phpMyAdmin:</label>
+  <div class="col-md-9">
     <input type="text" class="form-control" name="db_pma" placeholder="http://pma.example.com/" value="{{ old('db_pma', @$domain->db_pma) }}">
   </div>
 </div>
