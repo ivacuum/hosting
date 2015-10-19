@@ -26,8 +26,6 @@ $(document).on('pjax:complete', function() {
 });
 
 $(document).ready(function() {
-  $('.tip').tooltip();
-
   $(document).on('dblclick', '.js-dblclick-edit', function() {
     document.location = $(this).data('dblclick-url');
   });
@@ -288,4 +286,7 @@ $(document).ready(function() {
 function initOnLoadAndPjax() {
   // Прилипшие заголовки таблиц
   $('.js-float-thead').floatThead();
+
+  // Подсказки
+  $('.tip').tooltip();
 }
