@@ -1,6 +1,5 @@
 <?php namespace App\Providers;
 
-use App\Domain;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -12,11 +11,8 @@ class RouteServiceProvider extends ServiceProvider
 	{
 		parent::boot($router);
 		
-		$router->bind('Domain', function($value) {
-			return Domain::whereDomain($value)->firstOrFail();
-		});
-		
 		$router->model('Client', 'App\Client');
+		$router->model('Domain', 'App\Domain');
 		$router->model('Page', 'App\Page');
 		$router->model('Server', 'App\Server');
 		$router->model('User', 'App\User');
