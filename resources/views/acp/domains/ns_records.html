@@ -6,7 +6,7 @@
         Установить DNS Яндекса
       </button>
     </p>
-		{!! csrf_field() !!}
+		{{ csrf_field() }}
   </form>
 @endif
 
@@ -17,7 +17,7 @@
         Подключить Яндекс.Почту для домена
       </button>
     </p>
-		{!! csrf_field() !!}
+		{{ csrf_field() }}
   </form>
 @endif
 --}}
@@ -57,7 +57,7 @@
         </td>
         <td>
           <a class="pseudo js-ns-record-add">добавить днс-запись</a>
-        	{!! csrf_field() !!}
+        	{{ csrf_field() }}
         </td>
       </tr>
       @foreach ($records as $record)
@@ -107,8 +107,8 @@
                 <br><input type="text" name="ttl" value="{{ $record->ttl }}" style="width: 100%;" placeholder="ttl">
               @endif
               <input type="hidden" name="record_id" value="{{ $record->record_id }}">
-              <input type="hidden" name="_method" value="PUT">
-              {!! csrf_field() !!}
+              {{ csrf_field() }}
+              {{ method_field('PUT') }}
             </div>
           </td>
           <td>
@@ -145,7 +145,7 @@
       Прописать днс-записи сервера
     </button>
   </p>
-	{!! csrf_field() !!}
+	{{ csrf_field() }}
 </form>
 @elseif ($domain->yandex_user_id)
   <div class="alert alert-warning">

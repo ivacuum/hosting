@@ -5,6 +5,6 @@
     </button>
   </div>
   
-  {!! csrf_field() !!}
-  <input type="hidden" name="_method" value="DELETE">
+  {{ csrf_field() }}
+  {{ method_field('DELETE') }}
 </form>

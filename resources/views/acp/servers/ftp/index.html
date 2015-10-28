@@ -55,7 +55,7 @@
   </div>
   
   <input type="hidden" name="path" value="{{ $dir }}">
-  {!! csrf_field() !!}
+  {{ csrf_field() }}
 </form>
 
 <form action="/acp/servers/{{ $server->id }}/ftp/dir" method="post">
@@ -72,7 +72,7 @@
   </div>
   
   <input type="hidden" name="path" value="{{ $dir }}">
-  {!! csrf_field() !!}
+  {{ csrf_field() }}
 </form>
 
 <form action="/acp/servers/{{ $server->id }}/ftp/upload" enctype="multipart/form-data" method="post">
@@ -89,6 +89,6 @@
   </div>
   
   <input type="hidden" name="path" value="{{ $dir }}">
-  {!! csrf_field() !!}
+  {{ csrf_field() }}
 </form>
 @stop
