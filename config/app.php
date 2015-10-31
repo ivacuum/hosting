@@ -54,6 +54,7 @@ return [
 		App\Providers\ValidatorServiceProvider::class,
 
 //		Barryvdh\Debugbar\ServiceProvider::class,
+//		Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 	],
 
 	'aliases' => [
