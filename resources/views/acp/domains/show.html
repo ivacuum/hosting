@@ -1,86 +1,59 @@
-@extends('acp.base', [
+@extends('acp.domains.base', [
   'meta_title' => $domain->domain,
 ])
 
 @section('content')
-<div class="pull-right">
-  @include('acp.tpl.delete', ['id' => $domain])
-</div>
-<h2>
-  @include('acp.tpl.back')
-  {{ $domain->domain }}
-  <a class="btn btn-default" href="http://{{ $domain->domain }}/" target="_blank">
-    <i class="fa fa-external-link"></i>
-  </a>
-  @include('acp.tpl.edit', ['id' => $domain, 'goto' => Request::path()])
-  @if (!$domain->isExpired() && ($domain->cms_url || ($domain->alias_id and $domain->alias->cms_url)))
-    @include("$tpl.cms_login", ['cms_button_class' => 'btn btn-default'])
+<div id="ajax_container" {{--class="js-deferred-load" data-deferred-url="{{ action("$self@$tab", $domain) }}"--}}>
+  @if ($domain->text)
+    <blockquote>{!! nl2br($domain->text) !!}</blockquote>
   @endif
-</h2>
 
-@if ($domain->text)
-  <blockquote>{!! nl2br($domain->text) !!}</blockquote>
-@endif
-
-@if ($domain->isExpired())
-  <div class="alert alert-danger">
-    Подошел срок оплаты домена — {{ $domain->paid_till->addMonth()->formatLocalized('%d %B') }} ({{ $domain->paid_till->addMonth()->diffForHumans() }}) он совсем пропадет
-  </div>
-@endif
-
-@if ($domain->isExpiringSoon())
-  <div class="alert alert-warning">
-    {{ $domain->paid_till->formatLocalized('%d %B') }} ({{ $domain->paid_till->diffForHumans() }}) подходит срок оплаты домена
-  </div>
-@endif
-
-<div style="margin: 1em 0;">
-  <samp style="white-space: pre;"><strong>client</strong>: <a href="{{ action('Acp\Clients@show', $domain->client) }}" class="link">{{ $domain->client->name }}</a>
-@if ($domain->yandex_user_id)
-<strong>yandex</strong>: {{ $domain->yandexUser->account }}
-@endif
-<strong>ipv4</strong>:   {{ $domain->ipv4 }}
-@if ($domain->ipv6)
-<strong>ipv6</strong>:   {{ $domain->ipv6 }}
-@endif
-<strong>mx</strong>:     {{ $domain->mx }}
-<strong>ns</strong>:     {{ $domain->ns }}</samp>
-</div>
-
-<ul class="list-inline" style="margin-top: 2em;">
-  <li>
-    <h3>
-      <a class="pseudo js-ajax {{ $tab == 'whois' ? 'active' : '' }}" data-ajax-url="{{ action("$self@whois", $domain) }}">
-        Whois
-      </a>
-    </h3>
-  </li>
-  @if ($domain->yandex_user_id)
-    <li>
-      <h3>
-        <a class="pseudo js-ajax {{ $tab == 'mailboxes' ? 'active' : '' }}" data-ajax-url="{{ action("$self@mailboxes", $domain) }}">
-          Почта
-        </a>
-      </h3>
-    </li>
-    <li>
-      <h3>
-        <a class="pseudo js-ajax {{ $tab == 'nsRecords' ? 'active' : '' }}" data-ajax-url="{{ action("$self@nsRecords", $domain) }}">
-          DNS
-        </a>
-      </h3>
-    </li>
+  @if ($domain->isExpired())
+    <div class="alert alert-danger">
+      Подошел срок оплаты домена — {{ $domain->paid_till->addMonth()->formatLocalized('%d %B') }} ({{ $domain->paid_till->addMonth()->diffForHumans() }}) он совсем пропадет
+    </div>
   @endif
-  <li>
-    <h3>
-      <a class="pseudo js-ajax {{ $tab == 'robots' ? 'active' : '' }}" data-ajax-url="/acp/domains/{{ $domain->domain }}/robots">
-        robots.txt
-      </a>
-    </h3>
-  </li>
-</ul>
 
-<div id="ajax_container" class="js-deferred-load" data-deferred-url="{{ action("$self@$tab", $domain) }}">
-  Идет загрузка...
+  @if ($domain->isExpiringSoon())
+    <div class="alert alert-warning">
+      {{ $domain->paid_till->formatLocalized('%d %B') }} ({{ $domain->paid_till->diffForHumans() }}) подходит срок оплаты домена
+    </div>
+  @endif
+  
+  <p>
+    <strong>Клиент</strong>:
+    <a class="link" href="{{ action('Acp\Clients@show', $domain->client) }}">
+      {{ $domain->client->name }}
+    </a>
+  </p>
+  
+  <p>
+    <strong>Яндекс</strong>:
+    <a class="link" href="{{ action('Acp\Yandex\Users@show', $domain->yandexUser->id) }}">
+      {{ $domain->yandexUser->account }}
+    </a>
+  </p>
+  
+  <p>
+    <strong>IPv4</strong>:
+    {{ $domain->ipv4 }}
+  </p>
+  
+  @if ($domain->ipv6)
+    <p>
+      <strong>IPv6</strong>:
+      {{ $domain->ipv6 }}
+    </p>
+  @endif
+  
+  <p>
+    <strong>MX</strong>:
+    {{ $domain->mx }}
+  </p>
+  
+  <p>
+    <strong>NS</strong>:
+    {{ $domain->ns }}
+  </p>
 </div>
-@stop
+@endsection

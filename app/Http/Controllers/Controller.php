@@ -45,6 +45,7 @@ abstract class Controller extends BaseController
 			'goto'    => Input::get('goto'),
 			'self'    => $this->class,
 			'tpl'     => $this->prefix,
+			'view'    => $this->view,
 		]);
 	}
 

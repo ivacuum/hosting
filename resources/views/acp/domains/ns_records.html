@@ -1,3 +1,6 @@
+@extends('acp.domains.base')
+
+@section('content')
 {{--
 @if ($domain->domain_control and ($domain->ns != 'dns1.yandex.net dns2.yandex.net' and $domain->ns != 'dns1.yandex.ru dns2.yandex.ru'))
   <form action="{{ action("$self@setYandexNs", $domain) }}" method="post">
@@ -224,3 +227,4 @@ $(document).ready(function() {
   })
 });
 </script>
+@endsection

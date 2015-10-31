@@ -1,3 +1,6 @@
+@extends('acp.domains.base')
+
+@section('content')
 <div class="boxed-group">
   <h3>Новая электропочта</h3>
   <div class="boxed-group-inner">
@@ -6,7 +9,7 @@
       @include('tpl.form_errors')
 
       <div class="form-group {{ $errors->has('domain') ? 'has-error' : '' }}">
-        <label class="col-md-2 control-label">Ящик:</label>
+        <label class="col-md-3 control-label">Ящик:</label>
         <div class="col-md-6">
           <div class="input-group">
             <input type="text" class="form-control" name="logins">
@@ -17,20 +20,20 @@
       </div>
 
       <div class="form-group">
-        <label class="col-md-2 control-label">Выслать инфу на:</label>
+        <label class="col-md-3 control-label">Выслать инфу на:</label>
         <div class="col-md-6">
           <input type="email" class="form-control" name="send_to" value="{{ Auth::user()->email }}">
         </div>
       </div>
 
       <div class="form-group">
-        <div class="col-md-10 col-md-offset-2">
+        <div class="col-md-9 col-md-offset-3">
           <button type="submit" class="btn btn-primary">
             Создать ящик
           </button>
         </div>
       </div>
-      
+
       {{ csrf_field() }}
     </form>
   </div>
@@ -71,3 +74,4 @@
     <span class="label label-danger"> &nbsp; </span> &nbsp;— отключен
   </p>
 @endif
+@endsection

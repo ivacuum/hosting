@@ -207,7 +207,7 @@ class Domains extends Controller
 	{
 		$robots = $domain->getRobotsTxt();
 
-		return view($this->view, compact('robots'));
+		return view($this->view, compact('domain', 'robots'));
 	}
 	
 	public function setServerNsRecords(Domain $domain, Request $request)
@@ -234,14 +234,7 @@ class Domains extends Controller
 	
 	public function show(Domain $domain, Request $request)
 	{
-		switch ($request->get('tab')) {
-			case 'dns':   $tab = 'nsRecords'; break;
-			case 'mail':  $tab = 'mailboxes'; break;
-			case 'whois': $tab = 'whois'; break;
-			default:      $tab = 'whois';
-		}
-		
-		return view($this->view, compact('domain', 'tab'));
+		return view($this->view, compact('domain'));
 	}
 	
 	public function store(DomainCreate $request)
@@ -273,15 +266,11 @@ class Domains extends Controller
 	
 	public function whois(Domain $domain, Request $request)
 	{
-		if (!$request->ajax()) {
-			abort(404);
-		}
-		
 		$domain->updateWhois();
 		
 		$whois = nl2br(trim($domain->getWhoisData()));
 		
-		return view($this->view, compact('whois'));
+		return view($this->view, compact('domain', 'whois'));
 	}
 	
 	public function yandexPddStatus(Domain $domain)
