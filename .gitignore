@@ -2,8 +2,11 @@
 /public/css/*.min.css
 /public/js/*.min.js
 /vendor
-.env
 .DS_Store
-Thumbs.db
+.env
+.idea
+.phpstorm.meta.php
 .tm_properties
+_ide_helper.php
+Thumbs.db
 composer.phar
