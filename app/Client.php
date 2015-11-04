@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Client extends Model
 {
 	use SoftDeletes;
-	
+
 	protected $fillable = ['name', 'email', 'text'];
 	protected $hidden = [];
-	
+
 	protected $perPage = 50;
-	
+
 	public function domains()
 	{
-		return $this->hasMany('App\Domain');
+		return $this->hasMany(Domain::class);
 	}
 }
