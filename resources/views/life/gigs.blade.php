@@ -20,6 +20,16 @@
     </tr>
   </thead>
   <tbody>
+    <tr class="text-muted">
+      <td>2016</td>
+      <td>Rammstein</td>
+      <td>???</td>
+    </tr>
+    <tr class="text-muted">
+      <td>2016</td>
+      <td>Dream Theater</td>
+      <td>???</td>
+    </tr>
     <tr>
       <td>4 ноября 2015</td>
       <td><a class="link" href="/life/oomph.2015">Oomph!</a></td>
