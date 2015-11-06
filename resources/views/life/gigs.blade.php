@@ -20,10 +20,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="text-muted">
+    <tr>
       <td>4 ноября 2015</td>
-      <td>Oomph!</td>
-      <td>Москва</td>
+      <td><a class="link" href="/life/oomph.2015">Oomph!</a></td>
+      <td><a class="link" href="/life/msk">Москва</a></td>
     </tr>
     <tr>
       <td>29 августа 2015</td>
