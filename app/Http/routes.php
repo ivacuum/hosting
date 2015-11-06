@@ -22,4 +22,4 @@ Route::get('life/{page}', 'Life@page');
 
 Route::get('parser/fl/{login}/{passwd}', 'ParserFl@index');
 Route::get('parser/vk/{page?}/{date?}', 'ParserVk@index')
-	->where('date', '\d{4}-\d{2}-\d{2}');
+    ->where('date', '\d{4}-\d{2}-\d{2}');

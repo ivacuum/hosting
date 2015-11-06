@@ -1,19 +1,21 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Client extends Model
 {
-	use SoftDeletes;
+    use SoftDeletes;
 
-	protected $fillable = ['name', 'email', 'text'];
-	protected $hidden = [];
+    protected $fillable = ['name', 'email', 'text'];
+    protected $hidden = [];
 
-	protected $perPage = 50;
+    protected $perPage = 50;
 
-	public function domains()
-	{
-		return $this->hasMany(Domain::class);
-	}
+    public function domains()
+    {
+        return $this->hasMany(Domain::class);
+    }
 }

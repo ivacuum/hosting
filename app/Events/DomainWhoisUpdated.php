@@ -1,19 +1,20 @@
-<?php namespace App\Events;
+<?php
 
-use App\Events\Event;
+namespace App\Events;
+
 use App\Domain;
 use Illuminate\Queue\SerializesModels;
 
 class DomainWhoisUpdated extends Event
 {
-	use SerializesModels;
+    use SerializesModels;
 
-	public $data;
-	public $domain;
+    public $data;
+    public $domain;
 
-	public function __construct(Domain $domain, $data)
-	{
-		$this->data   = $data;
-		$this->domain = $domain;
-	}
+    public function __construct(Domain $domain, $data)
+    {
+        $this->data   = $data;
+        $this->domain = $domain;
+    }
 }

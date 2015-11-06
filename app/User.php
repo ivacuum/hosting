@@ -1,4 +1,6 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -9,19 +11,19 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
-	use Authenticatable, CanResetPassword, SoftDeletes;
+    use Authenticatable, CanResetPassword, SoftDeletes;
 
-	protected $table = 'users';
-	protected $fillable = ['email', 'password', 'active'];
-	protected $hidden = ['password', 'remember_token'];
+    protected $table = 'users';
+    protected $fillable = ['email', 'password', 'active'];
+    protected $hidden = ['password', 'remember_token'];
 
-	public function setPasswordAttribute($value)
-	{
-		$this->attributes['password'] = bcrypt($value);
-	}
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
 
-	public function isAdmin()
-	{
-		return (bool) $this->is_admin;
-	}
+    public function isAdmin()
+    {
+        return (bool) $this->is_admin;
+    }
 }
