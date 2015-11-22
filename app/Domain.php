@@ -353,6 +353,13 @@ class Domain extends Model
         return $this->paid_till->isFuture() && $this->paid_till->diffInDays() < 30;
     }
 
+    public function isIdn($domain = '')
+    {
+        $domain = $domain ?: $this->domain;
+
+        return 0 === strpos($domain, 'xn--');
+    }
+
     public function scopeYandexReady($query, $user_id = 0)
     {
         return $query->whereActive(1)

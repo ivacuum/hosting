@@ -110,7 +110,7 @@
   <script src="/bower_components/jquery-pjax/jquery.pjax.js"></script>
   <script src="/js/app.js"></script>
 @else
-  <script src="/js/app.min.js?7"></script>
+  <script src="/js/app.min.js?8"></script>
 @endif
 @yield('js')
 </body>

@@ -37,7 +37,7 @@
           <th></th>
         </tr>
       </thead>
-      <tr class="ns-record-container">
+      <tr class="ns-record-container" data-action="{{ action("$self@addNsRecord", $domain) }}">
         <td class="text-right">
           <input type="text" name="subdomain" value="@" class="text-right" style="width: 100%;">
         </td>
@@ -60,7 +60,6 @@
         </td>
         <td>
           <a class="pseudo js-ns-record-add">добавить днс-запись</a>
-        	{{ csrf_field() }}
         </td>
       </tr>
       @foreach ($records as $record)
@@ -80,6 +79,9 @@
           <td>
             <div class="presentation">
               {{ str_limit($record->content, 35) }}
+              @if ($record->type == 'CNAME' && $domain->isIdn($record->content))
+                <br><span class="text-muted">{{ idn_to_utf8($record->content) }}</span>
+              @endif
               @if ($record->priority > 0)
                 <br><span class="text-muted">priority</span>: {{ $record->priority }}
               @endif
@@ -110,7 +112,6 @@
                 <br><input type="text" name="ttl" value="{{ $record->ttl }}" style="width: 100%;" placeholder="ttl">
               @endif
               <input type="hidden" name="record_id" value="{{ $record->record_id }}">
-              {{ csrf_field() }}
               {{ method_field('PUT') }}
             </div>
           </td>
@@ -118,12 +119,14 @@
             <div class="presentation">
               <a class="pseudo js-ns-record-edit">настроить</a>
               &nbsp;
-              <a class="pseudo js-ns-record-delete" data-id="{{ $record->record_id }}">удалить</a>
+              <a class="pseudo js-ns-record-delete" data-id="{{ $record->record_id }}" data-action="{{ action("$self@deleteNsRecord", $domain) }}">
+                <i class="fa fa-times"></i>
+              </a>
             </div>
             <div class="edit hidden">
-              <a class="pseudo js-ns-record-save">сохранить</a>
+              <a class="pseudo js-ns-record-save" data-action="{{ action("$self@editNsRecord", $domain) }}">сохранить</a>
               &nbsp;
-              <a class="pseudo js-ns-record-cancel">отменить</a>
+              <a class="pseudo js-ns-record-cancel"><i class="fa fa-undo"></i></a>
             </div>
           </td>
         </tr>
@@ -155,76 +158,4 @@
     ДНС-записи не найдены.
   </div>
 @endif
-
-<script>
-$(document).ready(function() {
-  $('.js-ns-record-add').bind('click', function(e) {
-    e.preventDefault();
-    
-    var form = $(this).closest('.ns-record-container');
-    
-    $.post('{{ action("$self@addNsRecord", $domain) }}', $('input, select', form).serialize(), function(data) {
-      if ('ok' === data) {
-        $('#ajax_container').each(function() {
-          $(this).load($(this).data('deferred-url'));
-        });
-      } else {
-        alert(data);
-      }
-    });
-  });
-
-  $('.js-ns-record-edit').bind('click', function(e) {
-    e.preventDefault();
-    
-    var form = $(this).closest('.ns-record-container');
-    
-    $('.edit', form).removeClass('hidden');
-    $('.presentation', form).addClass('hidden');
-  });
-  
-  $('.js-ns-record-delete').bind('click', function(e) {
-    e.preventDefault();
-    
-    var id = $(this).data('id');
-    
-    if (confirm('Запись будет удалена. Продолжить?')) {
-      $.post('{{ action("$self@deleteNsRecord", $domain) }}', { record_id: id, _method: 'DELETE' }, function(data) {
-        if ('ok' === data) {
-          $('#ajax_container').each(function() {
-            $(this).load($(this).data('deferred-url'));
-          });
-        } else {
-          alert(data);
-        }
-      });
-    }
-  });
-  
-  $('.js-ns-record-save').bind('click', function(e) {
-    e.preventDefault();
-    
-    var form = $(this).closest('.ns-record-container');
-    
-    $.post('{{ action("$self@editNsRecord", $domain) }}', $('input', form).serialize(), function(data) {
-      if ('ok' === data) {
-        $('#ajax_container').each(function() {
-          $(this).load($(this).data('deferred-url'));
-        });
-      } else {
-        alert(data);
-      }
-    });
-  });
-  
-  $('.js-ns-record-cancel').bind('click', function(e) {
-    e.preventDefault();
-    
-    var form = $(this).closest('.ns-record-container');
-    
-    $('.edit', form).addClass('hidden');
-    $('.presentation', form).removeClass('hidden');
-  })
-});
-</script>
 @endsection
