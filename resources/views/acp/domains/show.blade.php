@@ -19,6 +19,15 @@
     </div>
   @endif
 
+  @if ($total_aliases = sizeof($domain->aliases))
+    <p>
+      <strong>Алиасы</strong>:
+      @foreach ($domain->aliases as $alias)
+        <a class="link" href="{{ action("$self@show", $alias) }}">{{ $alias->domain }}</a>
+      @endforeach
+    </p>
+  @endif
+
   <p>
     <strong>Клиент</strong>:
     <a class="link" href="{{ action('Acp\Clients@show', $domain->client) }}">

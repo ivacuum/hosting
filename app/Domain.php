@@ -71,6 +71,11 @@ class Domain extends Model
         return $this->belongsTo(Domain::class);
     }
 
+    public function aliases()
+    {
+        return $this->hasMany(self::class, 'alias_id');
+    }
+
     public function client()
     {
         return $this->belongsTo(Client::class);
