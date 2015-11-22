@@ -38,14 +38,12 @@
             <input class="domains-checkbox" type="checkbox" name="ids[]" value="{{ $domain->id }}">
           </td>
           <td>
-            <a name="d{{ $domain->id }}"></a>
             <a href="http://{{ $domain->domain }}/" target="_blank" style="margin-right: 0.3em;"><i class="fa fa-external-link"></i></a>
             <a href="/acp/domains/{{ $domain->domain }}" class="link">{{ $domain->domain }}</a>
             @if ($domain->alias_id)
               <span class="text-muted">
                 алиас
                 <a href="/acp/domains/{{ $domain->alias->domain }}" class="link">{{ $domain->alias->domain }}</a>
-                <a href="#d{{ $domain->alias_id }}" class="pseudo">#</a>
               </span>
             @endif
             @if ($domain->text)
