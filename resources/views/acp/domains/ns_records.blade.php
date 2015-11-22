@@ -135,9 +135,9 @@
   </div>
 </div>
 
-<form action="{{ action("$self@setServerNsRecords", $domain) }}" method="post">
+<form class="form-inline" action="{{ action("$self@setServerNsRecords", $domain) }}" method="post">
   <p>
-    <select name="server">
+    <select class="form-control" name="server">
       <option value="">-----</option>
       <option>srv1.korden.net</option>
       <option>srv2.korden.net</option>
