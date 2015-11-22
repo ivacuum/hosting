@@ -20,6 +20,14 @@
   @endif
 
   <table class="table-stats">
+    @if ($domain->alias)
+      <tr>
+        <td><strong>Алиас</strong></td>
+        <td>
+          <a class="link" href="{{ action("$self@show", $domain->alias) }}">{{ $domain->alias->domain }}</a>
+        </td>
+      </tr>
+    @endif
     @if (sizeof($domain->aliases))
       <tr>
         <td><strong>Алиасы</strong></td>
