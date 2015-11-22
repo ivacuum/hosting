@@ -350,7 +350,7 @@ class Domain extends Model
 
     public function isExpired()
     {
-        return $this->paid_till->isPast() || false !== strpos($this->ns, 'expired.reg.ru');
+        return $this->paid_till->year > 1970 && ($this->paid_till->isPast() || false !== strpos($this->ns, 'expired.reg.ru'));
     }
 
     public function isExpiringSoon()
