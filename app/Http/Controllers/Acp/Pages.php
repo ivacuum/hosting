@@ -12,95 +12,95 @@ class Pages extends Controller
 	{
 		return view($this->view);
 	}
-	
+
 	public function batch(Request $request)
 	{
 		extract($request->only('action', 'pages'));
-		
+
 		switch ($action) {
 			case 'activate':
-			
+
 				Page::whereIn('id', $pages)->update(['active' => 1]);
-			
+
 			break;
 			case 'deactivate':
-			
+
 				Page::whereIn('id', $pages)->update(['active' => 0]);
 
 			break;
 			case 'delete':
-			
+
 				Page::destroy($pages);
 
 			break;
 		}
-		
+
 		return 'ok';
 	}
-	
+
 	public function create()
 	{
 		return view($this->view);
 	}
-	
+
 	public function destroy(Page $page)
 	{
 		$page->delete();
-		
+
 		return redirect()->action("{$this->class}@index");
 	}
-	
+
 	public function edit(Page $page)
 	{
 		return view($this->view, compact('page'));
 	}
-	
+
 	public function move(Request $request)
 	{
 		extract($request->only('what', 'how', 'where'));
-		
+
 		switch ($how) {
 			case 'before': $method = 'moveToLeftOf'; break;
 			case 'after':  $method = 'moveToRightOf'; break;
 			case 'over':   $method = 'makeChildOf'; break;
 			default: die('something very strange');
 		}
-		
+
 		Page::find($what)->$method($where);
-		
+
 		return 'ok';
 	}
-	
+
 	public function show(Page $page)
 	{
 		return view($this->view, compact('page'));
 	}
-	
+
 	public function store(PageCreate $request)
 	{
 		$page = Page::create($request->all());
-		
+
 		return redirect()->action("{$this->class}@show", $page);
 	}
-	
+
 	public function tree()
 	{
 		return response()->json($this->getHierarchy(Page::get()->toHierarchy()->toArray()));
 	}
-	
+
 	public function update(Page $page, PageEdit $request)
 	{
 		$page->update($request->all());
 
-		$goto = $request->get('goto', '');
+		$goto = $request->input('goto', '');
 
 		return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
 	}
-	
+
 	protected function getHierarchy($pages)
 	{
 		$ary = [];
-		
+
 		foreach ($pages as $page) {
 			$ary[] = [
 				'key'       => $page['id'],
@@ -116,7 +116,7 @@ class Pages extends Controller
 				'children'  => sizeof($page['children']) ? $this->getHierarchy($page['children']) : [],
 			];
 		}
-		
+
 		return $ary;
 	}
 }

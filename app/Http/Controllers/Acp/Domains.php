@@ -15,9 +15,9 @@ class Domains extends Controller
 
 	public function index(Request $request)
 	{
-		$filter = $request->get('filter');
-		$sort   = $request->get('sort');
-		$q      = $request->get('q');
+		$filter = $request->input('filter');
+		$sort   = $request->input('sort');
+		$q      = $request->input('q');
 
 		if (!in_array($sort, ['domain', 'registered_at', 'paid_till'])) {
 			$sort = self::DEFAULT_ORDER_BY;
@@ -108,7 +108,7 @@ class Domains extends Controller
 	{
 		$input = $request->only('content', 'subdomain', 'priority', 'port', 'weight');
 
-		return $domain->addNsRecord($request->get('type'), $input);
+		return $domain->addNsRecord($request->input('type'), $input);
 	}
 
 	public function batch(Request $request)
@@ -159,7 +159,7 @@ class Domains extends Controller
 
 	public function deleteNsRecord(Domain $domain, Request $request)
 	{
-		$id = $request->get('record_id');
+		$id = $request->input('record_id');
 
 		return $domain->deleteNsRecord($id);
 	}
@@ -212,7 +212,7 @@ class Domains extends Controller
 
 	public function setServerNsRecords(Domain $domain, Request $request)
 	{
-		$server = $request->get('server');
+		$server = $request->input('server');
 
 		$domain->setServerNsRecords($server);
 
@@ -259,7 +259,7 @@ class Domains extends Controller
 
 		$domain->update($input);
 
-		$goto = $request->get('goto', '');
+		$goto = $request->input('goto', '');
 
 		return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
 	}
