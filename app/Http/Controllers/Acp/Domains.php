@@ -15,6 +15,10 @@ class Domains extends Controller
 
 	public function index(Request $request)
 	{
+        if ($request->user()->id !== 1) {
+            abort(404);
+        }
+
 		$filter = $request->input('filter');
 		$sort   = $request->input('sort');
 		$q      = $request->input('q');
@@ -234,6 +238,10 @@ class Domains extends Controller
 
 	public function show(Domain $domain, Request $request)
 	{
+        if ($request->user()->id !== 1) {
+            abort(404);
+        }
+
 		return view($this->view, compact('domain'));
 	}
 
