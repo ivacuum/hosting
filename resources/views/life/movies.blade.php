@@ -17,7 +17,6 @@
     'movies' => [
       ['title' => 'Головоломка<br>Inside Out', 'id' => 645118],
       ['title' => 'Kingsman: Секретная служба<br>Kingsman: The Secret Service', 'id' => 749540],
-      ['title' => 'Кремниевая долина<br>Silicon Valley', 'id' => 723959],
     ]
   ])
 </section>
@@ -33,6 +32,7 @@
       ['title' => 'Фарго<br>Fargo', 'id' => 767379],
       ['title' => 'Исчезнувшая<br>Gone Girl', 'id' => 692861],
       ['title' => 'Интерстеллар<br>Interstellar', 'id' => 258687],
+      ['title' => 'Кремниевая долина<br>Silicon Valley', 'id' => 723959],
       ['title' => 'Настоящий детектив<br>True Detective', 'id' => 681831],
     ]
   ])
