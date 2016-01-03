@@ -50,12 +50,15 @@
         </ul>
         @if (Auth::check())
           <ul class="nav navbar-nav navbar-right">
+            @if (Auth::user()->isAdmin())
+              <li>
+                <a href="/acp/domains">
+                  <i class="fa fa-dashboard"></i>
+                </a>
+              </li>
+            @endif
             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->email }} <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                @if (Auth::check() and Auth::user()->isAdmin())
-                  <li><a href="/acp">Админка</a></li>
-                  <li class="divider"></li>
-                @endif
                 <li><a href="/auth/logout">Выход</a></li>
               </ul>
             </li>
