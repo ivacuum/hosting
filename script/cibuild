@@ -10,8 +10,9 @@ cd public
 bower install
 cd ../
 
+bower install
 npm install
-# gulp
+# gulp --production
 
 echo "==> Ant php linting, css & js compiling..."
 ant

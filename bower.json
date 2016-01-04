@@ -1,0 +1,14 @@
+{
+  "name": "hosting.ivacuum.ru",
+  "dependencies": {
+    "bootstrap": "~3.3",
+    "jquery": "~1.11",
+    "fancytree": "~2.7",
+    "nprogress": "~0.1",
+    "fotorama": "~4.6",
+    "jquery.scrollTo": "~1.4",
+    "floatThead": "~1.2",
+    "jquery-pjax": "latest",
+    "fontawesome": "~4.4"
+  }
+}
