@@ -11,7 +11,7 @@ return [
 		'connection' => null,   // Leave null for default connection (Redis/PDO)
 	],
 
-	'include_vendors' => true,
+	'include_vendors' => false,
 
 	'capture_ajax' => true,
 
