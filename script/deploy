@@ -60,9 +60,6 @@ fi
 php artisan config:cache
 php artisan route:cache
 
-# cd public
-# bower install --production
-
 ln -hfs $RELEASE_DIR $LIVE_DIR
 
 # На память остается всего 3 релиза
