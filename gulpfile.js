@@ -1,4 +1,4 @@
-// process.env.DISABLE_NOTIFIER = true;
+process.env.DISABLE_NOTIFIER = true;
 
 var elixir = require('laravel-elixir');
 
@@ -10,7 +10,7 @@ elixir(function(mix) {
   mix.less('app.less')
       .less('acp.less')
 
-      .browserify('app.js')
+      .scripts('app.js')
 
       .copy('resources/assets/bower/fontawesome/fonts', 'public/build/fonts')
       .copy('resources/assets/bower/fotorama/*.png', 'public/build/css')
