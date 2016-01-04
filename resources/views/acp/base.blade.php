@@ -16,9 +16,9 @@
 @endsection
 
 @section('head')
-  <link rel="stylesheet" href="{{ elixir('css/acp.css') }}">
+  <link rel="stylesheet" href="{{ App::environment('production') ? elixir('css/acp.css') : '/build/css/acp.css' }}">
 @endsection
 
 @section('js')
-  <script src="{{ elixir('js/acp.js') }}"></script>
+  <script src="{{ App::environment('production') ? elixir('js/acp.js') : '/build/js/acp.js' }}"></script>
 @endsection

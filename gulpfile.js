@@ -30,13 +30,15 @@ elixir(function(mix) {
       .scripts([
           'bower/jquery-ui/jquery-ui.min.js',
           'bower/fancytree/dist/jquery.fancytree-all.min.js'
-      ], 'public/build/js/acp.js', './resources/assets')
+      ], 'public/build/js/acp.js', './resources/assets');
 
-      .version([
+      if (elixir.config.production) {
+        mix.version([
           'css/acp.css',
           'css/app.css',
           'js/acp.js',
           'js/app.js',
           'js/vendor.js'
-      ]);
+        ]);
+      }
 });
