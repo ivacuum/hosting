@@ -50,49 +50,46 @@
   </div>
   <button class="btn btn-default" id="batch_submit">Выполнить</button>
 </form>
-
-<link href="/bower_components/fancytree/dist/skin-lion/ui.fancytree.min.css" rel="stylesheet">
-@stop
+@endsection
 
 @section('js')
-<script src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
-<script src="/bower_components/fancytree/dist/jquery.fancytree-all.min.js"></script>
+@parent
 <script>
 $(function() {
   var selectedPages;
-  
+
   $('#batch_submit').bind('click', function(e) {
     e.preventDefault();
-    
+
     $.post('/acp/pages/batch', { action: $('#batch_action').val(), pages: selectedPages }, function(data) {
       document.location = '/acp/pages';
     });
   });
-  
+
   $('#tree').fancytree({
     icons: false,
     checkbox: true,
     source: { url: '/acp/pages/tree' },
-    
+
     extensions: ['dnd', 'table'],
-    
+
     // click: function(e, data) {
     //   console.log(e, data, data.targetType);
     // },
-    
+
     dblclick: function(e, data) {
       document.location = data.node.data.edit_url;
       return true;
     },
-    
+
     select: function(e, data) {
       selectedPages = $.map(data.tree.getSelectedNodes(), function(node) {
         return node.key;
       });
-      
+
       return true;
     },
-    
+
     dnd: {
       preventVoidMoves: true,
       preventRecursiveMoves: true,
@@ -106,7 +103,7 @@ $(function() {
       },
       dragDrop: function(node, data) {
         data.otherNode.moveTo(node, data.hitMode);
-        
+
         $.post('/acp/pages/move', {
           what: data.otherNode.key,
           how: data.hitMode,
@@ -127,30 +124,30 @@ $(function() {
         });
       }
     },
-    
+
     table: {
       indentation: 20,
       nodeColumnIdx: 1,
       checkboxColumnIdx: 0,
     },
-    
+
     renderColumns: function(e, data) {
       var node = data.node,
         $tds = $(node.tr).find('>td');
-      
+
       if (node.data.activated == 1) {
         $tds.eq(2).html('<i class="fa fa-eye text-success" title="Отображается"></i>')
       } else {
         $tds.eq(2).html('<i class="fa fa-eye-slash text-muted" title="Выключена"></i>')
       }
-      
+
       $tds.eq(3).html('<a class="link" href="' + node.data.url + '">' + node.data.url + '</a>');
       $tds.eq(4).text(node.data.handler);
-      
+
       if (node.data.redirect) {
         $tds.eq(3).append('<br><span class="text-muted">&rarr; ' + node.data.redirect + '</span>');
       }
-      
+
       $tds.eq(5).html('<a class="link" href="' + node.data.edit_url + '"><i class="fa fa-pencil-square-o"></i></a>');
     }
   });

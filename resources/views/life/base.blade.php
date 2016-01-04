@@ -16,6 +16,7 @@
 </div>
 @stop
 
+{{--
 @section('footer')
 @parent
 <span style="white-space: nowrap;">
@@ -27,3 +28,4 @@
 @section('js')
 <script src="//yastatic.net/share/share.js"></script>
 @stop
+--}}

@@ -13,4 +13,12 @@
   <li>
     <a class="{{ $self == 'Acp\Pages' ? 'navbar-selected' : '' }}" href="/acp/pages">Страницы</a>
   </li>
-@stop
+@endsection
+
+@section('head')
+  <link rel="stylesheet" href="{{ elixir('css/acp.css') }}">
+@endsection
+
+@section('js')
+  <script src="{{ elixir('js/acp.js') }}"></script>
+@endsection

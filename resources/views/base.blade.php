@@ -13,19 +13,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta http-equiv="x-pjax-version" content="1">
   <link rel="icon" sizes="256x256" href="/apple-touch-icon.png">
-  @if (App::environment('local'))
-    <link rel="stylesheet/less" href="/css/app.less">
-    <script>
-    less = {
-      env: 'development',
-      poll: 3000,
-      relativeUrls: true,
-    };
-    </script>
-    <script src="/bower_components/less.js/dist/less-1.7.5.min.js"></script>
-  @else
-    <link rel="stylesheet" href="/css/app.min.css?9">
-  @endif
+  <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
   @yield('head')
 </head>
 <body>
@@ -102,19 +90,8 @@
     @show
   </div>
 </footer>
-@if (App::environment('local'))
-  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="/bower_components/nprogress/nprogress.js"></script>
-  <script src="/js/fotorama.js"></script>
-  <script src="/bower_components/fotorama/fotorama.js"></script>
-  <script src="/bower_components/jquery.scrollTo/jquery.scrollTo.min.js"></script>
-  <script src="/bower_components/floatThead/dist/jquery.floatThead.min.js"></script>
-  <script src="/bower_components/jquery-pjax/jquery.pjax.js"></script>
-  <script src="/js/app.js"></script>
-@else
-  <script src="/js/app.min.js?8"></script>
-@endif
+<script src="{{ elixir('js/vendor.js') }}"></script>
+<script src="{{ elixir('js/app.js') }}"></script>
 @yield('js')
 </body>
 </html>
