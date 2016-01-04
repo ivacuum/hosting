@@ -1,6 +1,6 @@
-/public/bower_components
-/public/css/*.min.css
-/public/js/*.min.js
+/node_modules
+/public/build
+/resources/assets/bower
 /vendor
 .DS_Store
 .env
