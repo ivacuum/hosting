@@ -12,6 +12,7 @@ RELEASE_DIR=$(pwd)
 ROOT_DIR=$(dirname "$RELEASE_DIR")/..
 LIVE_DIR=$ROOT_DIR/live
 STORAGE_DIR=$ROOT_DIR/storage
+VIEWS_DIR=$STORAGE_DIR/framework/views
 
 if [ ! -f $ROOT_DIR/.env ]; then
   echo "Can't find .env configuration file"
@@ -65,3 +66,7 @@ ln -hfs $RELEASE_DIR $LIVE_DIR
 # На память остается всего 3 релиза
 cd $ROOT_DIR/releases
 rm -rf $(ls -t | tail -n +4)
+
+# Чистка storage/framework/views
+touch $VIEWS_DIR/.gitignore
+find $VIEWS_DIR -mtime +7d -delete
