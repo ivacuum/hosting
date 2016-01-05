@@ -1,10 +1,10 @@
-@import (less) "../bower/bootstrap/dist/css/bootstrap.css";
-@import (less) "../bower/bootstrap/dist/css/bootstrap-theme.css";
-@import (less) "../bower/nprogress/nprogress.css";
-@import (less) "../bower/fotorama/fotorama.css";
-@import (less) "../bower/fontawesome/css/font-awesome.min.css";
-@import "fonts.less";
-@import "rur.less";
+@import (inline) "../bower/bootstrap/dist/css/bootstrap.css";
+@import (inline) "../bower/bootstrap/dist/css/bootstrap-theme.css";
+@import (inline) "../bower/nprogress/nprogress.css";
+@import (inline) "../bower/fotorama/fotorama.css";
+@import (inline) "../bower/fontawesome/css/font-awesome.min.css";
+@import "fonts";
+@import "rur";
 
 html,
 body {
@@ -20,28 +20,21 @@ body { color: #404040; }
   cursor: pointer;
   outline: 0;
   text-decoration: none;
-}
 
-.link:hover,
-.pseudo:hover,
-.link:focus,
-.pseudo:focus,
-.link.active,
-.pseudo.active {
-  border-color: rgba(210, 50, 50, 0.5) !important;
-  color: #d23232 !important;
-  text-decoration: none;
-}
+  &:hover,
+  &:focus,
+  &.active {
+    border-color: rgba(210, 50, 50, 0.5) !important;
+    color: #d23232 !important;
+    text-decoration: none;
+  }
 
-.link.active,
-.pseudo.active {
-  border: none;
-}
+  &.active { border: none; }
 
-.link:visited,
-.pseudo:visited {
-  border-color: rgba(102, 14, 122, 0.3);
-  color: #660e7a;
+  &:visited {
+    border-color: rgba(102, 14, 122, 0.3);
+    color: #660e7a;
+  }
 }
 
 .pseudo {
