@@ -5,10 +5,10 @@ set -e
 
 cd "$(dirname "$0")/.."
 
+echo "==> Ant php linting..."
+ant
+
 echo "==> Installing front-end dependencies..."
 bower install
 npm install
 gulp --production
-
-echo "==> Ant php linting..."
-ant
