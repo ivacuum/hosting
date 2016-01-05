@@ -1,59 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="app" default="build">
-  <property name="bower.dir" location="resources/assets/bower" />
-  <property name="css.dir" location="public/css" />
-  <property name="js.dir" location="public/js" />
-
   <target name="build" depends="lint" />
-
-  <target name="artisan-migrate" description="Migrating the database">
-    <echo>Migrating the database</echo>
-    <exec executable="php" failonerror="true">
-      <arg value="artisan" />
-      <arg value="migrate" />
-      <arg value="--force" />
-    </exec>
-  </target>
-
-  <target name="bower" description="Installing frontend dependencies">
-    <echo>Installing frontend dependencies</echo>
-    <exec executable="bower" dir="public" failonerror="true">
-      <arg value="install" />
-    </exec>
-  </target>
-
-  <target name="composer" depends="composer-install,composer-update" description="Install or update dependencies" />
-
-  <target name="composer.check">
-    <condition property="composer.exist">
-      <available file="vendor" type="dir" />
-    </condition>
-  </target>
-
-  <target name="composer-install" depends="composer.check" if="composer.exist" description="Installing backend dependencies">
-    <echo>Installing dependencies</echo>
-    <exec executable="composer" failonerror="true">
-      <arg value="install" />
-    </exec>
-  </target>
-
-  <target name="composer-update" depends="composer.check" unless="composer.exist" description="Updating backend dependencies">
-    <echo>Updating dependencies</echo>
-    <exec executable="composer" failonerror="true">
-      <arg value="update" />
-    </exec>
-  </target>
-
-  <target name="css" description="Compiling and minifying less files">
-    <apply executable="lessc" failonerror="true" output="${css.dir}/app.min.css">
-      <fileset dir="${css.dir}">
-        <include name="app.less" />
-      </fileset>
-      <arg value="--clean-css" />
-      <arg value="--relative-urls" />
-      <srcfile />
-    </apply>
-  </target>
 
   <target name="lint" description="Perform syntax check of php files">
     <apply executable="php" failonerror="true">
@@ -65,24 +12,4 @@
       </fileset>
     </apply>
   </target>
-
-  <target name="js" description="Minifying js files">
-    <apply executable="uglifyjs" parallel="true" error="/dev/null" failonerror="true" output="${js.dir}/app.min.js">
-      <fileset file="${bower.dir}/jquery/dist/jquery.min.js" />
-      <fileset file="${bower.dir}/bootstrap/dist/js/bootstrap.min.js" />
-      <fileset file="${bower.dir}/nprogress/nprogress.js" />
-      <fileset file="${js.dir}/fotorama.js" />
-      <fileset file="${bower.dir}/fotorama/fotorama.js" />
-      <fileset file="${bower.dir}/jquery.scrollTo/jquery.scrollTo.min.js" />
-      <fileset file="${bower.dir}/floatThead/dist/jquery.floatThead.min.js" />
-      <fileset file="${bower.dir}/jquery-pjax/jquery.pjax.js" />
-      <fileset file="${js.dir}/app.js" />
-    </apply>
-  </target>
-
-  <!--
-  <target name="phpunit" description="Run unit tests with PHPUnit">
-    <exec executable="phpunit" failonerror="true" />
-  </target>
-  -->
 </project>
