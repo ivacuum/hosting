@@ -1,5 +1,9 @@
 @extends('life.base')
 
 @section('content')
-<h2>Якутск <small>2011</small></h2>
-@stop
+<h2>
+  <span class="emoji">&#x1f1f7;&#x1f1fa;</span>
+  Якутск
+  <small>2011</small>
+</h2>
+@endsection
