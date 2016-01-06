@@ -11,7 +11,11 @@
 ])
 
 @section('content')
-<h2>Калининград <small>21–23 февраля 2015</small></h2>
+<h2>
+  <span class="emoji">&#x1f1f7;&#x1f1fa;</span>
+  Калининград
+  <small>21–23 февраля 2015</small>
+</h2>
 <div class="shortcuts-item">
   <p>Город, в котором снег — редкий гость.</p>
   <div class="img-container">

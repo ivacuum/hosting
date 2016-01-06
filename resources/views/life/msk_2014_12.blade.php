@@ -11,7 +11,11 @@
 ])
 
 @section('content')
-<h2>Москва <small>21 декабря 2014</small></h2>
+<h2>
+  <span class="emoji">&#x1f1f7;&#x1f1fa;</span>
+  Москва
+  <small>21 декабря 2014</small>
+</h2>
 <p>Польская группа Tides from Nebula приехала в Москву с заключительным концертом тура. Ребята играют в стиле пост-рок. Очень понравились некоторые их песни, решил послушать вживую. Заодно выдалась прогулка по столице.</p>
 <div class="fotorama" data-width="1000" data-ratio="16/10">
   <a href="//www.youtube.com/embed/Q9-BL_BEPHE">Tides From Nebula — Siberia</a>

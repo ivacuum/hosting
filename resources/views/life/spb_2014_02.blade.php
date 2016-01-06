@@ -7,5 +7,9 @@
 ])
 
 @section('content')
-<h2>Санкт-Петербург <small>26–28 февраля 2014</small></h2>
+<h2>
+  <span class="emoji">&#x1f1f7;&#x1f1fa;</span>
+  Санкт-Петербург
+  <small>26–28 февраля 2014</small>
+</h2>
 @stop

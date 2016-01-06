@@ -11,7 +11,11 @@
 ])
 
 @section('content')
-<h2>Москва <small>14 сентября 2013</small></h2>
+<h2>
+  <span class="emoji">&#x1f1f7;&#x1f1fa;</span>
+  Москва
+  <small>14 сентября 2013</small>
+</h2>
 <p>Информативное объяснение стройки.</p>
 <div class="img-container">
   <img src="//life.ivacuum.ru/msk.2013.09/IMG_0197.jpg" width="1000" height="750">

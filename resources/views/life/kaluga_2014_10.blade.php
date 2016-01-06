@@ -11,7 +11,11 @@
 ])
 
 @section('content')
-<h2>Калуга <small>6 октября 2014</small></h2>
+<h2>
+  <span class="emoji">&#x1f1f7;&#x1f1fa;</span>
+  Калуга
+  <small>6 октября 2014</small>
+</h2>
 <p>Пара ночных снимков.</p>
 <div class="fotorama">
   <img src="//life.ivacuum.ru/kaluga.2014.10/IMG_1250.jpg">

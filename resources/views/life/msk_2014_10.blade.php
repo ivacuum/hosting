@@ -11,7 +11,11 @@
 ])
 
 @section('content')
-<h2>Москва <small>25–26 октября 2014</small></h2>
+<h2>
+  <span class="emoji">&#x1f1f7;&#x1f1fa;</span>
+  Москва
+  <small>25–26 октября 2014</small>
+</h2>
 <p>Вечерняя Москва.</p>
 <div class="fotorama">
   <img src="//life.ivacuum.ru/msk.2014.10/IMG_1289.jpg">

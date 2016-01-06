@@ -8,7 +8,10 @@
 ])
 
 @section('content')
-<h2>Прага</h2>
+<h2>
+  <span class="emoji">&#x1f1e8;&#x1f1ff;</span>
+  Прага
+</h2>
 <div class="row">
   <div class="col-xs-6 col-sm-3 col-md-2">
     <h3>2015</h3>

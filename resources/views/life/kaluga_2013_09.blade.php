@@ -2,7 +2,7 @@
   'meta_title' => 'Калуга &middot; сентябрь 2013',
   'meta_description' => 'Заметки о прогулках.',
   'meta_image' => 'https://life.ivacuum.ru/kaluga.2013.09/IMG_0242.jpg',
-  
+
   'breadcrumbs' => [
     ['title' => 'Заметки', 'url' => 'life'],
     ['title' => 'Калуга', 'url' => 'life/kaluga'],
@@ -11,7 +11,11 @@
 ])
 
 @section('content')
-<h2>Калуга <small>сентябрь 2013</small></h2>
+<h2>
+  <span class="emoji">&#x1f1f7;&#x1f1fa;</span>
+  Калуга
+  <small>сентябрь 2013</small>
+</h2>
 <p>Общественный траспорт сближает калужан.</p>
 <div class="img-container">
   <img src="//life.ivacuum.ru/kaluga.2013.09/IMG_0212.jpg">
