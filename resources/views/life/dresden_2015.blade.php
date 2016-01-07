@@ -18,20 +18,20 @@
   <p>После пересечения границы с Германией первый же встретившийся знак — ограничение скорости 130 км/ч. И ветряные мельницы вдали.</p>
 
   <p>Цвет велосипедиста в Германии — красный, пешехода — серый.</p>
-  <div class="fotorama">
+  <div class="fotorama" data-width="1000">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2075.jpg">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2073.jpg">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2149.jpg">
   </div>
 
   <p>На малополосных дорогах не всегда можно встретить светофор или пешеходный переход — автомобилисты и так пропускают. Спокойствие на дорогах приятно поражает — за весь день прогулки лишь к вечеру услышал, чтобы водитель кому-то посигналил, причем в том случае сигнал предотвратил аварию.</p>
-  <div class="fotorama">
+  <div class="fotorama" data-width="1000">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2115.jpg">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2076.jpg">
   </div>
 
   <p>Зебр вообще нет в привычном русскому понимании. Тут отмечают границы перехода, порой эти границы разные для велосипедистов и пешеходов.</p>
-  <div class="fotorama">
+  <div class="fotorama" data-width="1000">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2123.jpg">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2132.jpg">
   </div>
@@ -62,14 +62,14 @@
   </div>
 
   <p>На носу Рождество.</p>
-  <div class="fotorama">
+  <div class="fotorama" data-width="1000">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2142.jpg">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2086.jpg">
   </div>
 
   <p>Устремив на стройке взгляд ввысь, заметил, что рабочие умудрились затащить елку на один из башенных кранов. Праздник даже на высоте.</p>
   <p>Исторический центр.</p>
-  <div class="fotorama">
+  <div class="fotorama" data-width="1000">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2088.jpg">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2092.jpg">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2093.jpg">
@@ -78,7 +78,7 @@
   </div>
 
   <p>Проходя по мостам через реку Эльбу.</p>
-  <div class="fotorama">
+  <div class="fotorama" data-width="1000">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2100.jpg">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2126.jpg">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2127.jpg">
@@ -91,7 +91,7 @@
   </div>
 
   <p>Застекленные балконы — редкость.</p>
-  <div class="fotorama">
+  <div class="fotorama" data-width="1000">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2079.jpg">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2081.jpg">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2150.jpg">
@@ -100,7 +100,7 @@
   </div>
 
   <p>В городе очень много велосипедистов и велопарковок. Можно встретить дома, где у каждого подъезда будет по небольшой парковке.</p>
-  <div class="fotorama">
+  <div class="fotorama" data-width="1000">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2083.jpg">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2084.jpg">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2118.jpg">
@@ -108,7 +108,7 @@
   </div>
 
   <p>Два железнодорожных вокзала снаружи.</p>
-  <div class="fotorama">
+  <div class="fotorama" data-width="1000">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2071.jpg">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2117.jpg">
   </div>
@@ -129,7 +129,7 @@
   </div>
 
   <p>Бесчетное количество мест для прогулок.</p>
-  <div class="fotorama">
+  <div class="fotorama" data-width="1000">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2109.jpg">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2110.jpg">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2112.jpg">
@@ -141,8 +141,8 @@
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2144.jpg">
   </div>
 
-  <p>В целом Дрезден произвел на меня впечатление города будущего. В плане, что нам к такой красоте стремиться и стремиться, причем немцы за это время еще дальше от нас оторвутся.</p>
-  <div class="fotorama">
+  <p>В целом Дрезден произвел впечатление города будущего. В плане, что нам к такой красоте стремиться и стремиться, причем немцы за это время еще дальше от нас оторвутся.</p>
+  <div class="fotorama" data-width="1000">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2087.jpg">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2082.jpg">
     <img src="//life.ivacuum.ru/dresden.2015/IMG_2085.jpg">
