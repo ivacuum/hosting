@@ -1,6 +1,7 @@
 @extends('life.base', [
   'meta_title' => 'Дрезден &middot; 22 декабря 2015',
-  'meta_description' => 'Заметки о поездке.',
+  'meta_description' => 'Заметки о поездке. Город будущего.',
+  'meta_image' => 'https://life.ivacuum.ru/dresden.2015/IMG_2084.jpg',
 
   'breadcrumbs' => [
     ['title' => 'Заметки', 'url' => 'life'],
