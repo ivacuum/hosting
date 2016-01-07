@@ -16,6 +16,4 @@ echo "==> Installing php dependencies..."
 composer install
 
 echo "==> Installing front-end dependencies..."
-cd public
 bower install
-cd ../
