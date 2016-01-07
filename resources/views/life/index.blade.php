@@ -9,6 +9,7 @@
 <section>
   <div class="h2">Поездки</div>
   <ul class="list-unstyled">
+    <li><a class="link" href="/life/dresden">Дрезден</a></li>
     <li><a class="link" href="/life/kaliningrad">Калининград</a></li>
     <li><a class="link" href="/life/kazan">Казань</a></li>
     <li><a class="link" href="/life/kaluga">Калуга</a></li>
