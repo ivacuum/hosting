@@ -3,17 +3,20 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Handler extends ExceptionHandler
 {
     protected $dontReport = [
-        \Symfony\Component\HttpKernel\Exception\HttpException::class,
+        HttpException::class,
+        ModelNotFoundException::class,
     ];
 
     public function report(Exception $e)
     {
-        return parent::report($e);
+        parent::report($e);
     }
 
     public function render($request, Exception $e)
