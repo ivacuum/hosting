@@ -1,7 +1,7 @@
 <?php
 
 // Admin control panel
-Route::group(['namespace' => 'Acp', 'prefix' => 'acp', 'breadcrumbs' => [['Админка', 'acp']], 'middleware' => ['auth', 'admin']], function() {
+Route::group(['namespace' => 'Acp', 'prefix' => 'acp', 'breadcrumbs' => [['Админка', 'acp']], 'middleware' => ['web', 'auth', 'admin']], function() {
     Route::get('/', 'Home@index');
 
     Route::group(['prefix' => 'clients', 'breadcrumbs' => [['Клиенты', 'acp/clients']]], function() {

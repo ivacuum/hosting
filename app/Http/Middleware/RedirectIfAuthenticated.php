@@ -3,22 +3,14 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
 {
-    protected $auth;
-
-    public function __construct(Guard $auth)
+    public function handle($request, Closure $next, $guard = null)
     {
-        $this->auth = $auth;
-    }
-
-    public function handle($request, Closure $next)
-    {
-        if ($this->auth->check()) {
-            return new RedirectResponse(url('/'));
+        if (Auth::guard($guard)->check()) {
+            return redirect('/');
         }
 
         return $next($request);

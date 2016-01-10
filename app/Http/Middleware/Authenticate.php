@@ -3,20 +3,13 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Support\Facades\Auth;
 
 class Authenticate
 {
-    protected $auth;
-
-    public function __construct(Guard $auth)
+    public function handle($request, Closure $next, $guard = null)
     {
-        $this->auth = $auth;
-    }
-
-    public function handle($request, Closure $next)
-    {
-        if (!$this->auth->guest()) {
+        if (!Auth::guard($guard)->guest()) {
             return $next($request);
         }
 
