@@ -27,6 +27,17 @@ $(document).on('pjax:complete', function() {
   initOnLoadAndPjax();
 });
 
+// Форма поиска авиабилетов по клику
+$(document).on('click', '.js-aviasales', function() {
+  $(this).contents().unwrap();
+
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.src = 'https://www.travelpayouts.com/widgets/044c854e39d539701be0fa773757da42.js?v=443';
+  s.async = true;
+  document.getElementById('aviasales_container').appendChild(s);
+});
+
 $(document).ready(function() {
   $(document).on('dblclick', '.js-dblclick-edit', function() {
     document.location = $(this).data('dblclick-url');
