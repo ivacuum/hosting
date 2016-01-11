@@ -25,10 +25,15 @@ class Handler extends ExceptionHandler
 
     public function render($request, Exception $e)
     {
-        if (!config('app.debug', false)) {
-            return response()->view("errors.500", ['exception' => $e], 500);
+        return parent::render($request, $e);
+    }
+
+    protected function convertExceptionToResponse(Exception $e)
+    {
+        if (config('app.debug', false)) {
+            return parent::convertExceptionToResponse($e);
         }
 
-        return parent::render($request, $e);
+        return response()->view('errors.500', ['exception' => $e], 500);
     }
 }
