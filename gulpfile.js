@@ -7,8 +7,20 @@ elixir.config.sourcemaps = false;
 elixir.config.versioning.buildFolder = '';
 
 elixir(function(mix) {
-  mix.less('app.less')
-      .less('acp.less')
+  mix.sass('app.scss')
+
+      .styles([
+          'bower/bootstrap/dist/css/bootstrap.css',
+          'bower/bootstrap/dist/css/bootstrap-theme.css',
+          'bower/nprogress/nprogress.css',
+          'bower/fotorama/fotorama.css',
+          'bower/fontawesome/css/font-awesome.min.css',
+          '../../public/build/css/app.css'
+      ], 'public/build/css/app.css', './resources/assets')
+
+      .styles([
+        'bower/fancytree/dist/skin-lion/ui.fancytree.min.css'
+      ], 'public/build/css/acp.css', './resources/assets')
 
       .scripts('app.js')
 

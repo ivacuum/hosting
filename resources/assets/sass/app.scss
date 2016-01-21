@@ -1,10 +1,6 @@
-@import (inline) "../bower/bootstrap/dist/css/bootstrap.css";
-@import (inline) "../bower/bootstrap/dist/css/bootstrap-theme.css";
-@import (inline) "../bower/nprogress/nprogress.css";
-@import (inline) "../bower/fotorama/fotorama.css";
-@import (inline) "../bower/fontawesome/css/font-awesome.min.css";
 @import "fonts";
 @import "rur";
+@import "life";
 
 html,
 body {
@@ -440,51 +436,6 @@ ul.inline > li:first-child {
 .vk-post-attachments { margin-top: 0.5em; }
 .vk-post-content { margin-bottom: 0; }
 .vk-post-meta { margin: 0.5em 0 -0.5em; }
-
-/**
-* Shortcuts
-*/
-.b-center { margin-left: auto !important; margin-right: auto !important; }
-.b-left { margin-right: auto; }
-.b-right { margin-left: auto; }
-.f-left { float: left; }
-.f-right { float: right; }
-.t-center { text-align: center; }
-.t-left { text-align: left; }
-.t-right { text-align: right; }
-.t-justify { text-align: justify; }
-
-#gallery .ui-selected,
-.ui-selected {
-  background: #f39814;
-}
-
-#gallery .ui-selecting,
-.ui-selecting {
-  background: #feca40;
-}
-
-.ui-selectable-helper {
-  position: absolute;
-  z-index: 100;
-  border: 1px dotted black;
-}
-
-.ui-shadow-extralight {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-}
-.ui-shadow-light {
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15);
-  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15);
-}
-.ui-shadow-med {
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
-}
 
 .gig-poster,
 .img-container img,
