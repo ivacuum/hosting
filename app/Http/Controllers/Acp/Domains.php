@@ -153,7 +153,7 @@ class Domains extends Controller
 			break;
 		}
 
-		return response()->json(['redirect' => action("{$this->class}@index", $params)]);
+		return ['redirect' => action("{$this->class}@index", $params)];
 	}
 
 	public function create()

@@ -85,7 +85,7 @@ class Pages extends Controller
 
 	public function tree()
 	{
-		return response()->json($this->getHierarchy(Page::get()->toHierarchy()->toArray()));
+		return $this->getHierarchy(Page::get()->toHierarchy()->toArray());
 	}
 
 	public function update(Page $page, PageEdit $request)

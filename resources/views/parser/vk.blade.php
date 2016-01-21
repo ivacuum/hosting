@@ -71,7 +71,7 @@
         @if ($post['photos'] > 0)
           </div>
         @endif
-        
+
         @foreach ($post['attachments'] as $attach)
           @if ($attach->type == 'doc' and $attach->doc->ext == 'gif')
             <p>
@@ -119,7 +119,7 @@
         @endforeach
         </div>
       @endif
-      <div class="vk-post-meta text-muted t-right">
+      <div class="vk-post-meta text-muted text-right">
         <samp><small>
           #{{ $i + 1 }}
           <i class="fa fa-bullhorn"></i>
