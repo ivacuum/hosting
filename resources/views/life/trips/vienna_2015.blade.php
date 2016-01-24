@@ -1,21 +1,6 @@
-@extends('life.base', [
-  'meta_title' => 'Вена &middot; 24 декабря 2015',
-  'meta_description' => 'Заметки о поездке. Солнечный городок с немыслимым количеством огромных площадей.',
-  'meta_image' => 'https://life.ivacuum.ru/vienna.2015/IMG_2203.jpg',
-
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Вена', 'url' => 'life/vienna'],
-    ['title' => '24 декабря 2015']
-  ]
-])
+@extends('life.trips.base')
 
 @section('content')
-  <h2>
-    <span class="emoji">&#x1f1e6;&#x1f1f9;</span>
-    Вена
-    <small>24 декабря 2015</small>
-  </h2>
   <p>Вена — город громадных улиц и площадей.</p>
   <div class="fotorama" data-width="1000">
     <img src="//life.ivacuum.ru/vienna.2015/IMG_2201.jpg" alt="">

@@ -1,21 +1,6 @@
-@extends('life.base', [
-  'meta_title' => 'Москва &middot; 25–26 октября 2014',
-  'meta_description' => 'Заметки о поездке.',
-  'meta_image' => 'https://life.ivacuum.ru/msk.2014.10/IMG_1289.jpg',
-
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Москва', 'url' => 'life/msk'],
-    ['title' => '25–26 октября 2014']
-  ]
-])
+@extends('life.trips.base')
 
 @section('content')
-<h2>
-  <span class="emoji">&#x1f1f7;&#x1f1fa;</span>
-  Москва
-  <small>25–26 октября 2014</small>
-</h2>
 <p>Вечерняя Москва.</p>
 <div class="fotorama">
   <img src="//life.ivacuum.ru/msk.2014.10/IMG_1289.jpg">
@@ -36,4 +21,4 @@
 <div class="fotorama">
   <img src="//life.ivacuum.ru/msk.2014.10/IMG_1307.jpg">
 </div>
-@stop
+@endsection

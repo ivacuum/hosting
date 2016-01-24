@@ -1,21 +1,6 @@
-@extends('life.base', [
-  'meta_title' => 'Москва &middot; 21 декабря 2014',
-  'meta_description' => 'Заметки о поездке.',
-  'meta_image' => 'https://life.ivacuum.ru/msk.2014.12/IMG_1357.jpg',
-
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Москва', 'url' => 'life/msk'],
-    ['title' => '21 декабря 2014']
-  ]
-])
+@extends('life.trips.base')
 
 @section('content')
-<h2>
-  <span class="emoji">&#x1f1f7;&#x1f1fa;</span>
-  Москва
-  <small>21 декабря 2014</small>
-</h2>
 <p>Польская группа Tides from Nebula приехала в Москву с заключительным концертом тура. Ребята играют в стиле пост-рок. Очень понравились некоторые их песни, решил послушать вживую. Заодно выдалась прогулка по столице.</p>
 <div class="fotorama" data-width="1000" data-ratio="16/10">
   <a href="//www.youtube.com/embed/Q9-BL_BEPHE">Tides From Nebula — Siberia</a>
@@ -48,4 +33,4 @@
 </div>
 
 <p>На обратном пути из Москвы взгляд упал на стоп-кран в тамбуре вагона. Задумался приносил ли он когда пользу. Таковых случаев найти не удалось, зато попалась информация об аварии, когда стоп-кран <a class="link" href="https://ru.wikipedia.org/wiki/Крушение_на_станции_Каменская">усугубил ситуацию</a>. А затем и история о <a class="link" href="https://ru.wikipedia.org/wiki/Железнодорожная_катастрофа_под_Уфой">крупнейшей аварии</a> на железных дорогах России и СССР.</p>
-@stop
+@endsection

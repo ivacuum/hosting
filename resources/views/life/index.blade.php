@@ -10,130 +10,22 @@
   <div class="row">
     <div class="col-sm-6">
       <h2>Поездки</h2>
-      <div class="travel-entry">
-        <span class="travel-year">2016</span>
-        Минск
-        <span class="travel-month">январь</span>
-      </div>
 
-      <div class="travel-entry">
-        <span class="travel-year">2015</span>
-        <a class="link" href="/life/vienna.2015">Вена</a>
-        <span class="travel-month">декабрь</span>
-      </div>
-      <div class="travel-entry">
-        <a class="link" href="/life/dresden.2015">Дрезден</a>
-        <span class="travel-month">декабрь</span>
-      </div>
-      <div class="travel-entry">
-        Прага
-        <span class="travel-month">декабрь</span>
-      </div>
-      <div class="travel-entry">
-        Санкт-Петербург
-        <span class="travel-month">октябрь</span>
-      </div>
-      <div class="travel-entry">
-        <a class="link" href="/life/spb.2015.08">Санкт-Петербург</a>
-        <span class="travel-month">август</span>
-      </div>
-      <div class="travel-entry">
-        <a class="link" href="/life/msk.2015.07">Москва</a>
-        <span class="travel-month">июль</span>
-      </div>
-      <div class="travel-entry">
-        <a class="link" href="/life/kazan.2015">Казань</a>
-        <span class="travel-month">июнь</span>
-      </div>
-      <div class="travel-entry">
-        Прага
-        <span class="travel-month">март</span>
-      </div>
-      <div class="travel-entry">
-        <a class="link" href="/life/kaliningrad.2015">Калининград</a>
-        <span class="travel-month">февраль</span>
-      </div>
-      <div class="travel-entry">
-        <a class="link" href="/life/kaluga.2015.01.01">Калуга</a>
-        <span class="travel-month">январь</span>
-      </div>
-
-      <div class="travel-entry">
-        <span class="travel-year">2014</span>
-        <a class="link" href="/life/kaluga.2014.10">Калуга</a>
-        <span class="travel-month">октябрь</span>
-      </div>
-      <div class="travel-entry">
-        <a class="link" href="/life/spb.2014.09">Санкт-Петербург</a>
-        <span class="travel-month">сентябрь</span>
-      </div>
-      <div class="travel-entry">
-        Якутск
-        <span class="travel-month">июнь</span>
-      </div>
-      <div class="travel-entry">
-        <a class="link" href="/life/tula">Тула</a>
-        <span class="travel-month">май</span>
-      </div>
-      <div class="travel-entry">
-        <a class="link" href="/life/spb">Санкт-Петербург</a>
-        <span class="travel-month">май</span>
-      </div>
-      <div class="travel-entry">
-        <a class="link" href="/life/spb">Санкт-Петербург</a>
-        <span class="travel-month">февраль</span>
-      </div>
-
-      <div class="travel-entry">
-        <span class="travel-year">2013</span>
-        <a class="link" href="/life/kaluga.2013.12">Калуга</a>
-        <span class="travel-month">декабрь</span>
-      </div>
-
-      <div class="travel-entry">
-        <a class="link" href="/life/kaluga.2013.09">Калуга</a>
-        <span class="travel-month">сентябрь</span>
-      </div>
-
-      <div class="travel-entry">
-        <a class="link" href="/life/kaluga.2013.01">Калуга</a>
-        <span class="travel-month">январь</span>
-      </div>
-
-      <div class="travel-entry">
-        <span class="travel-year">2012</span>
-        Якутск
-        <span class="travel-month">сентябрь</span>
-      </div>
-
-      <div class="travel-entry">
-        Якутск
-        <span class="travel-month">июнь</span>
-      </div>
-
-      <div class="travel-entry">
-        <span class="travel-year">2011</span>
-        Якутск
-        <span class="travel-month">июль</span>
-      </div>
-
-      <div class="travel-entry">
-        <span class="travel-year">2010</span>
-        Санкт-Петербург
-        <span class="travel-month">июль</span>
-      </div>
-
-      <div class="travel-entry">
-        <span class="travel-year">2008</span>
-        Санкт-Петербург
-        <span class="travel-month">июль</span>
-      </div>
-
-      <div class="travel-entry">
-        <span class="travel-year">2007</span>
-        Шарм-эль-Шейх
-        <span class="travel-month">июль</span>
-      </div>
+      <?php $year = false; ?>
+      @foreach ($trips as $trip)
+        <div class="travel-entry">
+          @if ($year !== $trip->year)
+            <span class="travel-year">{{ $trip->year }}</span>
+          @endif
+          @if ($trip->published)
+            <a class="link" href="/life/{{ $trip->slug }}">{{ $trip->title }}</a>
+          @else
+            {{ $trip->title }}
+          @endif
+          <span class="travel-month">{{ $trip->period }}</span>
+        </div>
+        <?php $year = $trip->year; ?>
+      @endforeach
     </div>
     <div class="col-sm-6">
       <h2>Избранное</h2>

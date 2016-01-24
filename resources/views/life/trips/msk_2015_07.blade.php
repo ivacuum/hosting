@@ -1,21 +1,6 @@
-@extends('life.base', [
-  'meta_title' => 'Москва &middot; 3 июля 2015',
-  'meta_description' => 'Заметки о поездке. Новогиреево, пешеходные зоны, Тройка, музыкальный фестиваль.',
-  'meta_image' => 'https://life.ivacuum.ru/msk.2015.07/IMG_1675.jpg',
-
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Москва', 'url' => 'life/msk'],
-    ['title' => '3 июля 2015']
-  ]
-])
+@extends('life.trips.base')
 
 @section('content')
-<h2>
-  <span class="emoji">&#x1f1f7;&#x1f1fa;</span>
-  Москва
-  <small>3 июля 2015</small>
-</h2>
 <p>В поисках магазина с наушниками занесло на восток столицы в район Новогиреево. Несколько раз встречал людей с самокатами — удобно, можно и в метро с ними проехать.</p>
 <div class="fotorama">
   <img src="//life.ivacuum.ru/msk.2015.07/IMG_1661.jpg">
@@ -40,4 +25,4 @@
 
 <p>Время в столице летит неумолимо — посещение нескольких точек в разных частях города растягивается на целый день. В лучшем случае.</p>
 <p>Вечер закончился <a class="link" href="/life/dreamtheater.2015">концертом</a> группы Dream Theater.</p>
-@stop
+@endsection

@@ -1,18 +1,25 @@
+.city-entry,
 .favorites-entry,
 .travel-entry {
   margin-bottom: 0.5em;
 }
 
+.city-entry { margin-left: 1.5em; }
 .travel-entry { margin-left: 3.5em; }
 
+.city-trips,
 .travel-month {
   color: #777;
   margin-left: 3px;
   font-size: 12px;
 }
 
+.city-initial,
 .travel-year {
   position: absolute;
-  margin: 0 0 0 -3.5em;
   font-weight: bold;
+  text-transform: uppercase;
 }
+
+.city-initial { margin: 0 0 0 -1.5em; }
+.travel-year { margin: 0 0 0 -3.5em; }

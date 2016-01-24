@@ -1,21 +1,6 @@
-@extends('life.base', [
-  'meta_title' => 'Дрезден &middot; 22 декабря 2015',
-  'meta_description' => 'Заметки о поездке. Город будущего.',
-  'meta_image' => 'https://life.ivacuum.ru/dresden.2015/IMG_2084.jpg',
-
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Дрезден', 'url' => 'life/dresden'],
-    ['title' => '22 декабря 2015']
-  ]
-])
+@extends('life.trips.base')
 
 @section('content')
-  <h2>
-    <span class="emoji">&#x1f1e9;&#x1f1ea;</span>
-    Дрезден
-    <small>22 декабря 2015</small>
-  </h2>
   <p>После пересечения границы с Германией первый же встретившийся знак — ограничение скорости 130 км/ч. И ветряные мельницы вдали.</p>
 
   <p>Цвет велосипедиста в Германии — красный, пешехода — серый.</p>

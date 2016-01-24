@@ -1,21 +1,6 @@
-@extends('life.base', [
-  'meta_title' => 'Калининград &middot; 21–23 февраля 2015',
-  'meta_description' => 'Заметки о поездке.',
-  'meta_image' => 'https://life.ivacuum.ru/kaliningrad.2015.02/IMG_0076.jpg',
-
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Калининград', 'url' => 'life/kaliningrad'],
-    ['title' => '21–23 февраля 2015']
-  ]
-])
+@extends('life.trips.base')
 
 @section('content')
-<h2>
-  <span class="emoji">&#x1f1f7;&#x1f1fa;</span>
-  Калининград
-  <small>21–23 февраля 2015</small>
-</h2>
 <div class="shortcuts-item">
   <p>Город, в котором снег — редкий гость.</p>
   <div class="img-container">
@@ -130,4 +115,4 @@
     <img src="//life.ivacuum.ru/kaliningrad.2015.02/IMG_1511.jpg" width="1000" height="750">
   </div>
 </div>
-@stop
+@endsection

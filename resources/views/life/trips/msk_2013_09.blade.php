@@ -1,21 +1,6 @@
-@extends('life.base', [
-  'meta_title' => 'Москва &middot; 14 сентября 2013',
-  'meta_description' => 'Заметки о поездке. Предпоказ фильма Metallica: Through the Never.',
-  'meta_image' => 'https://life.ivacuum.ru/msk.2013.09/IMG_0199.jpg',
-
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Москва', 'url' => 'life/msk'],
-    ['title' => '14 сентября 2013']
-  ]
-])
+@extends('life.trips.base')
 
 @section('content')
-<h2>
-  <span class="emoji">&#x1f1f7;&#x1f1fa;</span>
-  Москва
-  <small>14 сентября 2013</small>
-</h2>
 <p>Информативное объяснение стройки.</p>
 <div class="img-container">
   <img src="//life.ivacuum.ru/msk.2013.09/IMG_0197.jpg" width="1000" height="750">
@@ -31,7 +16,7 @@
   <img src="//life.ivacuum.ru/msk.2013.09/IMG_0199.jpg" width="1000" height="750">
 </div>
 
-<p>Внутри ГКД.</p>
+<p>Внутри <abbr title="Государственного Кремлевского дворца">ГКД</abbr>.</p>
 <div class="img-container">
   <img src="//life.ivacuum.ru/msk.2013.09/IMG_0201.jpg" width="1000" height="750">
 </div>
@@ -52,4 +37,4 @@
 <div class="fotorama" data-width="1280" data-ratio="16/10">
   <a href="https://www.youtube.com/watch?v=tbFZO1V5hrE"></a>
 </div>
-@stop
+@endsection

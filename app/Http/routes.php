@@ -18,6 +18,9 @@ Route::group(['middleware' => 'web'], function() {
     Route::get('docs', 'Docs@index');
     Route::get('docs/{page}', 'Docs@page');
     Route::get('life', 'Life@index');
+    Route::get('life/cities', 'Life@cities');
+    Route::get('life/countries', 'Life@countries');
+    Route::get('life/countries/{country}', 'Life@country');
     Route::get('life/{page}', 'Life@page');
 
     Route::get('parser/vk/{page?}/{date?}', 'ParserVk@index')

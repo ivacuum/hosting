@@ -1,21 +1,6 @@
-@extends('life.base', [
-  'meta_title' => 'Казань &middot; 5–8 июня 2015',
-  'meta_description' => 'Заметки о поездке. Комфортный перелет, уйма мест для прогулок, широкие дороги и пустые улицы.',
-  'meta_image' => 'https://life.ivacuum.ru/kazan.2015.06/IMG_0280.jpg',
-
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Казань', 'url' => 'life/kazan'],
-    ['title' => '5–8 июня 2015']
-  ]
-])
+@extends('life.trips.base')
 
 @section('content')
-<h2>
-  <span class="emoji">&#x1f1f7;&#x1f1fa;</span>
-  Казань
-  <small>5–8 июня 2015</small>
-</h2>
 <div class="shortcuts-item">
   <p>Перелет в Казань не только оказался самым коротким из всех моих перелетов, но еще и самым комфортным. До этого мой топ возглавлял Боинг 777, но теперь и Сухой Суперджет занял достойное место рядом. На первое место все же его не поставишь из-за разных дистанций — приятный час на Сухом и мимолетные 6 часов на Боинге помещают самолеты в разные весовые категории.</p>
   <div class="img-container">
@@ -139,4 +124,4 @@
     <img src="//life.ivacuum.ru/kazan.2015.06/IMG_0280.jpg" width="1000" height="750">
   </div>
 </div>
-@stop
+@endsection
