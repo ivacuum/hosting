@@ -8,5 +8,5 @@
   {{ $country->title }}
 </h2>
 
-@include('tpl.trips_by_years', ['trips' => $country->trips])
+@include('tpl.trips_by_years')
 @endsection

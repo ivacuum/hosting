@@ -47,13 +47,16 @@ class Life extends Controller
 
     public function country($slug)
     {
-        $country = Country::with('trips')->where('slug', $slug)->firstOrFail();
+        $country = Country::with('cities')->where('slug', $slug)->firstOrFail();
+        $trips = Trip::whereIn('city_id', $country->cities->pluck('id'))
+            ->orderBy('date_start', 'desc')
+            ->get();
 
         Breadcrumbs::push('Заметки', 'life');
         Breadcrumbs::push('Страны', 'life/countries');
         Breadcrumbs::push($country->title, "life/countries/{$country->slug}");
 
-        return view($this->view, compact('country'));
+        return view($this->view, compact('country', 'trips'));
     }
 
     public function page($page)
