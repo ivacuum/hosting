@@ -4,7 +4,7 @@
 
 @section('content')
 <ul class="nav nav-tabs">
-  <li class="{{ $vkpage == 'palnom6' ? 'active' : '' }}">
+  <li class="{{ $vkpage == 'pn6' ? 'active' : '' }}">
     <a class="js-pjax" href="/parser/vk/pn6">Палата #6</a>
   </li>
   <li class="{{ $vkpage == 'overhear' ? 'active' : '' }}">
