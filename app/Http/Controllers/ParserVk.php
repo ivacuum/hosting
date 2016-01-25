@@ -18,7 +18,7 @@ class ParserVk extends Controller
         $this->client = new Client(['base_uri' => 'https://api.vk.com/method/']);
     }
 
-    public function index($vkpage = 'palnom6', $date = false)
+    public function index($vkpage = 'pn6', $date = false)
     {
         $this->vkpage = $vkpage;
         $date = false === $date ? '-1 day' : $date;
