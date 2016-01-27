@@ -23,3 +23,23 @@
 
 .city-initial { margin: 0 0 0 -1.5em; }
 .travel-year { margin: 0 0 0 -3.5em; }
+
+.travel-timeline {
+  display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 15px;
+  vertical-align: top;
+  width: 19%;
+}
+
+.travel-timeline-container {
+  font-size: 14px;
+  margin-top: 2em;
+  text-align: center;
+}
+
+.travel-timeline-date {
+  color: #777;
+  font-size: 12px;
+}

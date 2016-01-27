@@ -53,6 +53,30 @@ class Trip extends Model
         return $this->belongsTo(Country::class);
     }
 
+    public function scopeNext($query)
+    {
+        return $query->where('date_start', '>=', $this->date_start)
+            ->where('published', 1)
+            ->where('id', '<>', $this->id)
+            ->orderBy('date_start', 'asc')
+            ->take(2);
+    }
+
+    public function scopePrevious($query, $next_trips = 2)
+    {
+        // Всего 4 места под ссылки помимо текущей поездки
+        // prev prev current next next
+        // При просмотре последней поездки будет
+        // prev prev prev prev current
+        $take = 4 - $next_trips;
+
+        return $query->where('date_start', '<=', $this->date_start)
+            ->where('published', 1)
+            ->where('id', '<>', $this->id)
+            ->orderBy('date_start', 'desc')
+            ->take($take);
+    }
+
     public function getPeriodAttribute()
     {
         if ($this->date_start->month === $this->date_end->month) {
