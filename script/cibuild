@@ -10,5 +10,5 @@ ant
 
 echo "==> Installing front-end dependencies..."
 bower install
-npm install
+ied install
 gulp --production
