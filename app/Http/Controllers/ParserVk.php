@@ -18,7 +18,7 @@ class ParserVk extends Controller
         $this->client = new Client(['base_uri' => 'https://api.vk.com/method/']);
     }
 
-    public function index($vkpage = 'pn6', $date = false)
+    public function index($vkpage = 'vandroukiru', $date = false)
     {
         $this->vkpage = $vkpage;
         $date = false === $date ? '-1 day' : $date;
@@ -29,7 +29,6 @@ class ParserVk extends Controller
         $parsed = false;
         $posts = [];
 
-        $total = $this->getPostsCount();
         $date_start = Carbon::parse($date)->startOfDay()->timestamp;
         $date_end = Carbon::parse($date)->endofDay()->timestamp;
 

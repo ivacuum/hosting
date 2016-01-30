@@ -4,8 +4,11 @@
 
 @section('content')
 <ul class="nav nav-tabs">
+  <li class="{{ $vkpage == 'vandroukiru' ? 'active' : '' }}">
+    <a class="js-pjax" href="/parser/vk/vandroukiru"><i class="fa fa-plane"></i></a>
+  </li>
   <li class="{{ $vkpage == 'pn6' ? 'active' : '' }}">
-    <a class="js-pjax" href="/parser/vk/pn6">Палата #6</a>
+    <a class="js-pjax" href="/parser/vk/pn6">#6</a>
   </li>
   <li class="{{ $vkpage == 'overhear' ? 'active' : '' }}">
     <a class="js-pjax" href="/parser/vk/overhear">Подслушано</a>
