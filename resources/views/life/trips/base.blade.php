@@ -27,15 +27,17 @@
         </div>
       @endforeach
     @endif
-    <div class="travel-timeline">
+    <div class="travel-timeline travel-timeline-current">
       <div class="travel-timeline-date">{{ $trip->period }} {{ $trip->year }}</div>
       <strong>{{ $trip->title }}</strong>
-      <div>
+      <div class="travel-timeline-arrows">
         @if (sizeof($previous_trips))
-          &larr;
+          <span class="horizontal">&larr;</span>
+          <span class="vertical">&uarr;</span>
         @endif
         @if (sizeof($next_trips))
-          &rarr;
+          <span class="horizontal">&rarr;</span>
+          <span class="vertical">&darr;</span>
         @endif
       </div>
     </div>
