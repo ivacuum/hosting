@@ -368,7 +368,7 @@ function initOnLoadAndPjax() {
 
   var blazy = new Blazy({
     selector: '.js-lazy',
-    offset: 200,
+    offset: 300,
     successClass: 'img-loaded',
     breakpoints: [{
       width: 1200,
