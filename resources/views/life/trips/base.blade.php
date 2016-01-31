@@ -33,11 +33,11 @@
       <div class="travel-timeline-arrows">
         @if (sizeof($previous_trips))
           <span class="horizontal">&larr;</span>
-          <span class="vertical">&uarr;</span>
+          <span class="vertical">&darr;</span>
         @endif
         @if (sizeof($next_trips))
           <span class="horizontal">&rarr;</span>
-          <span class="vertical">&darr;</span>
+          <span class="vertical">&uarr;</span>
         @endif
       </div>
     </div>
