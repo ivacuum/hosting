@@ -31,6 +31,7 @@ elixir(function(mix) {
       .scripts([
           'bower/jquery/dist/jquery.min.js',
           'bower/bootstrap/dist/js/bootstrap.min.js',
+          'bower/bLazy/blazy.min.js',
           'bower/nprogress/nprogress.js',
           'js/fotorama.js',
           'bower/fotorama/fotorama.js',

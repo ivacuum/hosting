@@ -365,4 +365,14 @@ function initOnLoadAndPjax() {
 
   // Подсказки
   $('.tip').tooltip();
+
+  var blazy = new Blazy({
+    selector: '.js-lazy',
+    offset: 200,
+    successClass: 'img-loaded',
+    breakpoints: [{
+      width: 1200,
+      src: 'data-src-2x'
+    }]
+  });
 }
