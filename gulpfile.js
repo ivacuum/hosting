@@ -22,7 +22,7 @@ elixir(function(mix) {
         'bower/fancytree/dist/skin-lion/ui.fancytree.min.css'
       ], 'public/build/css/acp.css', './resources/assets')
 
-      .scripts('app.js')
+      .browserify('app.js')
 
       .copy('resources/assets/bower/fontawesome/fonts', 'public/build/fonts')
       .copy('resources/assets/bower/fotorama/*.png', 'public/build/css')

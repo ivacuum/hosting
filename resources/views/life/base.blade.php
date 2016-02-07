@@ -10,11 +10,11 @@
 
 @section('content_header')
 <div class="lead js-shortcuts-items">
-@stop
+@endsection
 
 @section('content_footer')
 </div>
-@stop
+@endsection
 
 {{--
 @section('footer')
