@@ -22,12 +22,7 @@
   <tbody>
     <tr class="text-muted">
       <td>2016</td>
-      <td>Rammstein</td>
-      <td>???</td>
-    </tr>
-    <tr class="text-muted">
-      <td>2016</td>
-      <td>Dream Theater</td>
+      <td>David Gilmour</td>
       <td>???</td>
     </tr>
     <tr>
