@@ -82,9 +82,9 @@
 <footer>
   <div class="container">
     @section('footer')
-      <ul class="list-inline" style="display: inline-block;">
-        <li class="text-muted">&copy; {{ date('Y') }} vacuum</li>
-        <li class="text-muted">&middot;</li>
+      <ul class="list-inline">
+        <li>&copy; {{ date('Y') }} vacuum</li>
+        <li>&middot;</li>
         <li><a href="mailto:{{ config('email.support') }}" class="link">Обратная связь</a></li>
       </ul>
     @show
