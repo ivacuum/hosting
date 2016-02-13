@@ -57,7 +57,6 @@ samp {
 
 footer {
   border-top: 1px solid #eee;
-  margin-top: 7px;
   padding-top: 14px;
   padding-bottom: 14px;
   color: #777;
@@ -124,12 +123,12 @@ section { padding-top: 30px; }
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -56px;
+  margin: 0 auto -49px;
 }
 .wrap-content-fixed-header {
   > .container { padding-top: 60px; }
 }
-.wrap-push { height: 60px; }
+.wrap-push { height: 49px; }
 
 a img,
 button img,
