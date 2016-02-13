@@ -4,9 +4,6 @@
 
 @section('content')
 <ul class="nav nav-tabs">
-  <li class="{{ $vkpage == 'vandroukiru' ? 'active' : '' }}">
-    <a class="js-pjax" href="/parser/vk/vandroukiru"><i class="fa fa-plane"></i></a>
-  </li>
   <li class="{{ $vkpage == 'pn6' ? 'active' : '' }}">
     <a class="js-pjax" href="/parser/vk/pn6">#6</a>
   </li>
@@ -24,6 +21,9 @@
   </li>
   <li class="{{ $vkpage == 'decaying_europe' ? 'active' : '' }}">
     <a class="js-pjax" href="/parser/vk/decaying_europe">Запад</a>
+  </li>
+  <li class="{{ $vkpage == 'vandroukiru' ? 'active' : '' }}">
+    <a class="js-pjax" href="/parser/vk/vandroukiru"><i class="fa fa-plane"></i></a>
   </li>
 </ul>
 
