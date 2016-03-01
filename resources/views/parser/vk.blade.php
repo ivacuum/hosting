@@ -51,7 +51,7 @@
 <div class="js-shortcuts-items">
 @foreach ($posts as $i => $post)
   <div class="panel panel-default shortcuts-item">
-    <div class="panel-body">
+    <div class="panel-body vk-post-container">
       @if ($post['text'])
         <div class="vk-post-content lead">{!! $post['text'] !!}</div>
       @endif
