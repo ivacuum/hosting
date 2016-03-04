@@ -12,7 +12,7 @@
 
   <p>И не только.</p>
   <div class="img-container">
-    <img class="js-lazy" data-src="//life.ivacuum.ru/vienna.2015/IMG_2193.jpg" data-src-2x="//life.ivacuum.ru/vienna.2015/IMG_2193@2x.jpg" width="1000" height="750" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img class="js-lazy" data-src="//life.ivacuum.ru/vienna.2015/IMG_2193.jpg" data-src-2x="//life.ivacuum.ru/vienna.2015/IMG_2193@2x.jpg" width="1000" height="750" src="https://life.ivacuum.ru/0.gif">
   </div>
 
   <p>Часто встречаются парки.</p>
@@ -39,12 +39,12 @@
 
   <p>Дунайский канал.</p>
   <div class="img-container">
-    <img class="js-lazy" data-src="//life.ivacuum.ru/vienna.2015/IMG_2210.jpg" data-src-2x="//life.ivacuum.ru/vienna.2015/IMG_2210@2x.jpg" width="1000" height="750" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img class="js-lazy" data-src="//life.ivacuum.ru/vienna.2015/IMG_2210.jpg" data-src-2x="//life.ivacuum.ru/vienna.2015/IMG_2210@2x.jpg" width="1000" height="750" src="https://life.ivacuum.ru/0.gif">
   </div>
 
   <p>Автобусная остановка. Карманы на них не делают — автобус на узкой дороге останавливает все попутное направление, зато потом сразу мчится вперед, а не ждет, пока ему уступят дорогу при выезде. Да и садиться пассажиру удобнее без кармана — транспорт четко к бордюру подъезжает.</p>
   <div class="img-container">
-    <img class="js-lazy" data-src="//life.ivacuum.ru/vienna.2015/IMG_2205.jpg" data-src-2x="//life.ivacuum.ru/vienna.2015/IMG_2205@2x.jpg" width="1000" height="750" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img class="js-lazy" data-src="//life.ivacuum.ru/vienna.2015/IMG_2205.jpg" data-src-2x="//life.ivacuum.ru/vienna.2015/IMG_2205@2x.jpg" width="1000" height="750" src="https://life.ivacuum.ru/0.gif">
   </div>
 
   <p>Карманы делают для парковок.</p>
@@ -55,22 +55,22 @@
 
   <p>Бросающаяся в глаза форма урны.</p>
   <div class="img-container">
-    <img class="js-lazy" data-src="//life.ivacuum.ru/vienna.2015/IMG_2211.jpg" data-src-2x="//life.ivacuum.ru/vienna.2015/IMG_2211@2x.jpg" width="1000" height="750" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img class="js-lazy" data-src="//life.ivacuum.ru/vienna.2015/IMG_2211.jpg" data-src-2x="//life.ivacuum.ru/vienna.2015/IMG_2211@2x.jpg" width="1000" height="750" src="https://life.ivacuum.ru/0.gif">
   </div>
 
   <p>Пепельница на автовокзале.</p>
   <div class="img-container">
-    <img class="js-lazy" data-src="//life.ivacuum.ru/vienna.2015/IMG_2238.jpg" data-src-2x="//life.ivacuum.ru/vienna.2015/IMG_2238@2x.jpg" width="1000" height="750" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img class="js-lazy" data-src="//life.ivacuum.ru/vienna.2015/IMG_2238.jpg" data-src-2x="//life.ivacuum.ru/vienna.2015/IMG_2238@2x.jpg" width="1000" height="750" src="https://life.ivacuum.ru/0.gif">
   </div>
 
   <p>Снаружи видны все перемещения между этажами дома.</p>
   <div class="img-container">
-    <img class="js-lazy" data-src="//life.ivacuum.ru/vienna.2015/IMG_2222.jpg" data-src-2x="//life.ivacuum.ru/vienna.2015/IMG_2222@2x.jpg" width="1000" height="750" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img class="js-lazy" data-src="//life.ivacuum.ru/vienna.2015/IMG_2222.jpg" data-src-2x="//life.ivacuum.ru/vienna.2015/IMG_2222@2x.jpg" width="1000" height="750" src="https://life.ivacuum.ru/0.gif">
   </div>
 
   <p>Вена стремится стать солнечным городком.</p>
   <div class="img-container">
-    <img class="js-lazy" data-src="//life.ivacuum.ru/vienna.2015/IMG_2224.jpg" data-src-2x="//life.ivacuum.ru/vienna.2015/IMG_2224@2x.jpg" width="1000" height="750" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img class="js-lazy" data-src="//life.ivacuum.ru/vienna.2015/IMG_2224.jpg" data-src-2x="//life.ivacuum.ru/vienna.2015/IMG_2224@2x.jpg" width="1000" height="750" src="https://life.ivacuum.ru/0.gif">
   </div>
 
   <p>Улочки. Да-да, вспоминая громадные площади и проспекты.</p>
@@ -95,7 +95,7 @@
 
   <p>Деловой центр.</p>
   <div class="img-container">
-    <img class="js-lazy" data-src="//life.ivacuum.ru/vienna.2015/IMG_2226.jpg" data-src-2x="//life.ivacuum.ru/vienna.2015/IMG_2226@2x.jpg" width="1000" height="750" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img class="js-lazy" data-src="//life.ivacuum.ru/vienna.2015/IMG_2226.jpg" data-src-2x="//life.ivacuum.ru/vienna.2015/IMG_2226@2x.jpg" width="1000" height="750" src="https://life.ivacuum.ru/0.gif">
   </div>
 
   <p>Стемнело.</p>

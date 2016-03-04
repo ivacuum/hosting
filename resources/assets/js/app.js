@@ -6,15 +6,6 @@ import './yandex-dns';
 
 class Application {
   constructor() {
-    this.blazy_options = {
-      selector: '.js-lazy',
-      offset: 300,
-      successClass: 'img-loaded',
-      breakpoints: [{
-        width: 1200,
-        src: 'data-src-2x'
-      }]
-    };
     this.pjax = new Pjax();
 
     this.ajaxProgress();
@@ -22,7 +13,10 @@ class Application {
     this.onPjaxComplete();
     this.onPjaxSend();
 
-    $(document).ready(() => this.initOnReadyAndPjax());
+    $(document).ready(() => {
+      this.lazyLoadImages();
+      this.initOnReadyAndPjax();
+    });
   }
 
   ajaxProgress() {
@@ -37,7 +31,44 @@ class Application {
   }
 
   lazyLoadImages() {
-    return new Blazy(this.blazy_options);
+    const offset = 300;
+    const breakpoint = 1200;
+
+    let $w = $(window),
+        $body = $(document.body),
+        images,
+        timer;
+
+    const width = $w.width();
+
+    function initLazyLoad() {
+      images = $('.js-lazy');
+
+      $w.off('.js-lazy').on('scroll.js-lazy resize.js-lazy', () => timer || (timer = setTimeout(performLazyLoad, 250)));
+
+      performLazyLoad();
+    }
+
+    function performLazyLoad() {
+      const scrolled = $w.scrollTop() + $w.height() + offset;
+      const src = width > breakpoint ? 'src-2x' : 'src';
+
+      images = images.filter(function() {
+        let e = $(this);
+        return scrolled > e.offset().top ? (e.attr("src", e.data(src)).removeClass('js-lazy'), false) : true;
+      });
+
+      if (!images.length) {
+        $w.off('.js-lazy');
+      }
+
+      clearTimeout(timer);
+      timer = 0;
+    }
+
+    $body.off('reset.js-lazy').on('reset.js-lazy', initLazyLoad);
+
+    initLazyLoad();
   }
 
   initOnReadyAndPjax() {
@@ -46,14 +77,14 @@ class Application {
 
     // Подсказки
     $('.tip').tooltip();
-
-    this.lazyLoadImages();
   }
 
   onPjaxComplete() {
     $(document).on('pjax:complete', () => {
       this.pjax.onComplete();
       $('.fotorama').fotorama();
+
+      $(document.body).trigger('reset.js-lazy');
 
       this.initOnReadyAndPjax();
     });

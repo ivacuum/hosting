@@ -24,27 +24,27 @@
 
   <p>Пешеход может запросить зеленый для перехода дороги, но не всегда это самый эффективный способ. Фазы достаточно долгие, движение в городе не такое быстрое. Если попалось место с малым количеством машин, то проще перейти после потока на красный, чем ждать минуту, поглядывая на пустую дорогу.</p>
   <div class="img-container">
-    <img class="js-lazy" data-src="//life.ivacuum.ru/dresden.2015/IMG_2133.jpg" data-src-2x="//life.ivacuum.ru/dresden.2015/IMG_2133@2x.jpg" width="1000" height="750" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img class="js-lazy" data-src="//life.ivacuum.ru/dresden.2015/IMG_2133.jpg" data-src-2x="//life.ivacuum.ru/dresden.2015/IMG_2133@2x.jpg" width="1000" height="750" src="https://life.ivacuum.ru/0.gif">
   </div>
 
   <p>Светофор для перехода трамвайных путей. Два огня означают, что вот-вот пронесется трамвай. При одном он еще достаточно далеко, а при выключенных огнях можно переходить вовсе без опаски. Отдельно стоит заметить ограждения, не позволяющие пройти насквозь прямо. Так и представляю залипшего в мобилу человека, который утыкается в ограду.</p>
   <div class="img-container">
-    <img class="js-lazy" data-src="//life.ivacuum.ru/dresden.2015/IMG_2146.jpg" data-src-2x="//life.ivacuum.ru/dresden.2015/IMG_2146@2x.jpg" width="1000" height="750" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img class="js-lazy" data-src="//life.ivacuum.ru/dresden.2015/IMG_2146.jpg" data-src-2x="//life.ivacuum.ru/dresden.2015/IMG_2146@2x.jpg" width="1000" height="750" src="https://life.ivacuum.ru/0.gif">
   </div>
 
   <p>На улице +12&deg;C, какие-то дома красят, а этот сносят.</p>
   <div class="img-container">
-    <img class="js-lazy" data-src="//life.ivacuum.ru/dresden.2015/IMG_2113.jpg" data-src-2x="//life.ivacuum.ru/dresden.2015/IMG_2113@2x.jpg" width="1000" height="750" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img class="js-lazy" data-src="//life.ivacuum.ru/dresden.2015/IMG_2113.jpg" data-src-2x="//life.ivacuum.ru/dresden.2015/IMG_2113@2x.jpg" width="1000" height="750" src="https://life.ivacuum.ru/0.gif">
   </div>
 
   <p>Терминал оплаты автомобильной парковки.</p>
   <div class="img-container">
-    <img class="js-lazy" data-src="//life.ivacuum.ru/dresden.2015/IMG_2080.jpg" data-src-2x="//life.ivacuum.ru/dresden.2015/IMG_2080@2x.jpg" width="1000" height="750" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img class="js-lazy" data-src="//life.ivacuum.ru/dresden.2015/IMG_2080.jpg" data-src-2x="//life.ivacuum.ru/dresden.2015/IMG_2080@2x.jpg" width="1000" height="750" src="https://life.ivacuum.ru/0.gif">
   </div>
 
   <p>Зарядка для электроавтомобилей неподалеку от главного вокзала.</p>
   <div class="img-container">
-    <img class="js-lazy" data-src="//life.ivacuum.ru/dresden.2015/IMG_2155.jpg" data-src-2x="//life.ivacuum.ru/dresden.2015/IMG_2155@2x.jpg" width="1000" height="750" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img class="js-lazy" data-src="//life.ivacuum.ru/dresden.2015/IMG_2155.jpg" data-src-2x="//life.ivacuum.ru/dresden.2015/IMG_2155@2x.jpg" width="1000" height="750" src="https://life.ivacuum.ru/0.gif">
   </div>
 
   <p>На носу Рождество.</p>
@@ -73,7 +73,7 @@
 
   <p>За день не попалось ни одного бесплатного вай-фая, даже в Макдоналдсе. Одни платные хотспоты Дойче телекома за 5 евро в сутки. При оплате банковской картой бывают ограничения по минимальной сумме платежа, мелкая наличка не будет лишней. Вообще монеты крайне ценны в Европе — именно они являются основным способом оплаты общественного транспорта.</p>
   <div class="img-container">
-    <img class="js-lazy" data-src="//life.ivacuum.ru/dresden.2015/IMG_2148.jpg" data-src-2x="//life.ivacuum.ru/dresden.2015/IMG_2148@2x.jpg" width="1000" height="750" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img class="js-lazy" data-src="//life.ivacuum.ru/dresden.2015/IMG_2148.jpg" data-src-2x="//life.ivacuum.ru/dresden.2015/IMG_2148@2x.jpg" width="1000" height="750" src="https://life.ivacuum.ru/0.gif">
   </div>
 
   <p>Застекленные балконы — редкость.</p>
@@ -101,17 +101,17 @@
 
   <p>Крутой низкопольный трамвай.</p>
   <div class="img-container">
-    <img class="js-lazy" data-src="//life.ivacuum.ru/dresden.2015/IMG_2111.jpg" data-src-2x="//life.ivacuum.ru/dresden.2015/IMG_2111@2x.jpg" width="1000" height="750" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img class="js-lazy" data-src="//life.ivacuum.ru/dresden.2015/IMG_2111.jpg" data-src-2x="//life.ivacuum.ru/dresden.2015/IMG_2111@2x.jpg" width="1000" height="750" src="https://life.ivacuum.ru/0.gif">
   </div>
 
   <p>Жилища студентов. Ночью субъективно крайне слабое освещение на улицах, причем свет используется теплый желтый.</p>
   <div class="img-container">
-    <img class="js-lazy" data-src="//life.ivacuum.ru/dresden.2015/IMG_2153.jpg" data-src-2x="//life.ivacuum.ru/dresden.2015/IMG_2153@2x.jpg" width="1000" height="750" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img class="js-lazy" data-src="//life.ivacuum.ru/dresden.2015/IMG_2153.jpg" data-src-2x="//life.ivacuum.ru/dresden.2015/IMG_2153@2x.jpg" width="1000" height="750" src="https://life.ivacuum.ru/0.gif">
   </div>
 
   <p>Подъезды, однако, светлые. Более того — в части домов в этом районе с улицы видно лестничную клетку. И видно, что на свет включается автоматически по ходу движения этаж за этажом.</p>
   <div class="img-container">
-    <img class="js-lazy" data-src="//life.ivacuum.ru/dresden.2015/IMG_2154.jpg" data-src-2x="//life.ivacuum.ru/dresden.2015/IMG_2154@2x.jpg" width="1000" height="750" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img class="js-lazy" data-src="//life.ivacuum.ru/dresden.2015/IMG_2154.jpg" data-src-2x="//life.ivacuum.ru/dresden.2015/IMG_2154@2x.jpg" width="1000" height="750" src="https://life.ivacuum.ru/0.gif">
   </div>
 
   <p>Бесчетное количество мест для прогулок.</p>
