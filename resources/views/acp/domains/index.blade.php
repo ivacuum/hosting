@@ -7,49 +7,49 @@
   <li><h4>Домены:</h4></li>
   <li>
     <h4>
-      <a href="{{ action("$self@index") }}" class="link js-pjax {{ !$filter ? 'active' : '' }}">
+      <a href="{{ Request::fullUrlWithQuery(['filter' => '']) }}" class="link js-pjax {{ !$filter ? 'active' : '' }}">
         На мониторинге
       </a>
     </h4>
   </li>
   <li>
     <h4>
-      <a href="{{ action("$self@index", ['filter' => 'orphan']) }}" class="link js-pjax {{ $filter == 'orphan' ? 'active' : '' }}">
+      <a href="{{ Request::fullUrlWithQuery(['filter' => 'orphan']) }}" class="link js-pjax {{ $filter == 'orphan' ? 'active' : '' }}">
         На продажу
       </a>
     </h4>
   </li>
   <li>
     <h4>
-      <a href="{{ action("$self@index", ['filter' => 'external']) }}" class="link js-pjax {{ $filter == 'external' ? 'active' : '' }}">
+      <a href="{{ Request::fullUrlWithQuery(['filter' => 'external']) }}" class="link js-pjax {{ $filter == 'external' ? 'active' : '' }}">
         Не в нашей панели reg.ru
       </a>
     </h4>
   </li>
   <li>
     <h4>
-      <a href="{{ action("$self@index", ['filter' => 'no-server']) }}" class="link js-pjax {{ $filter == 'no-server' ? 'active' : '' }}">
+      <a href="{{ Request::fullUrlWithQuery(['filter' => 'no-server']) }}" class="link js-pjax {{ $filter == 'no-server' ? 'active' : '' }}">
         Без сервера
       </a>
     </h4>
   </li>
   <li>
     <h4>
-      <a href="{{ action("$self@index", ['filter' => 'no-ns']) }}" class="link js-pjax {{ $filter == 'no-ns' ? 'active' : '' }}">
+      <a href="{{ Request::fullUrlWithQuery(['filter' => 'no-ns']) }}" class="link js-pjax {{ $filter == 'no-ns' ? 'active' : '' }}">
         Без NS
       </a>
     </h4>
   </li>
   <li>
     <h4>
-      <a href="{{ action("$self@index", ['filter' => 'inactive']) }}" class="link js-pjax {{ $filter == 'inactive' ? 'active' : '' }}">
+      <a href="{{ Request::fullUrlWithQuery(['filter' => 'inactive']) }}" class="link js-pjax {{ $filter == 'inactive' ? 'active' : '' }}">
         Неактивные
       </a>
     </h4>
   </li>
   <li>
     <h4>
-      <a href="{{ action("$self@index", ['filter' => 'trashed']) }}" class="link js-pjax {{ $filter == 'trashed' ? 'active' : '' }}">
+      <a href="{{ Request::fullUrlWithQuery(['filter' => 'trashed']) }}" class="link js-pjax {{ $filter == 'trashed' ? 'active' : '' }}">
         Удаленные
       </a>
     </h4>

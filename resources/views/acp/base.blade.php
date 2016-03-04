@@ -15,10 +15,10 @@
   </li>
 @endsection
 
-@section('head')
+@push('head')
   <link rel="stylesheet" href="{{ App::environment('production') ? elixir('css/acp.css') : '/build/css/acp.css' }}">
-@endsection
+@endpush
 
-@section('js')
+@push('js')
   <script src="{{ App::environment('production') ? elixir('js/acp.js') : '/build/js/acp.js' }}"></script>
-@endsection
+@endpush

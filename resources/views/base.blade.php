@@ -15,7 +15,7 @@
   <link rel="icon" sizes="256x256" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="{{ App::environment('production') ? elixir('css/vendor.css') : '/build/css/vendor.css' }}">
   <link rel="stylesheet" href="{{ App::environment('production') ? elixir('css/app.css') : '/build/css/app.css' }}">
-  @yield('head')
+  @stack('head')
 </head>
 <body>
 <div class="wrap-content">
@@ -93,7 +93,7 @@
 </footer>
 <script src="{{ App::environment('production') ? elixir('js/vendor.js') : '/build/js/vendor.js' }}"></script>
 <script src="{{ App::environment('production') ? elixir('js/app.js') : '/build/js/app.js' }}"></script>
-@yield('js')
+@stack('js')
 </body>
 </html>
 @endif
