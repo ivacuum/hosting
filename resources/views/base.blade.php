@@ -13,6 +13,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta http-equiv="x-pjax-version" content="1">
   <link rel="icon" sizes="256x256" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="{{ App::environment('production') ? elixir('css/vendor.css') : '/build/css/vendor.css' }}">
   <link rel="stylesheet" href="{{ App::environment('production') ? elixir('css/app.css') : '/build/css/app.css' }}">
   @yield('head')
 </head>

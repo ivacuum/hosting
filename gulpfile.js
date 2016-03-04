@@ -14,9 +14,8 @@ elixir(function(mix) {
           'bower/bootstrap/dist/css/bootstrap-theme.css',
           'bower/nprogress/nprogress.css',
           'bower/fotorama/fotorama.css',
-          'bower/fontawesome/css/font-awesome.min.css',
-          '../../public/build/css/app.css'
-      ], 'public/build/css/app.css', './resources/assets')
+          'bower/fontawesome/css/font-awesome.min.css'
+      ], 'public/build/css/vendor.css', './resources/assets')
 
       .styles([
         'bower/fancytree/dist/skin-lion/ui.fancytree.min.css'
@@ -31,13 +30,12 @@ elixir(function(mix) {
       .scripts([
           'bower/jquery/dist/jquery.min.js',
           'bower/bootstrap/dist/js/bootstrap.min.js',
-          'bower/bLazy/blazy.min.js',
           'bower/nprogress/nprogress.js',
           'js/fotorama.js',
           'bower/fotorama/fotorama.js',
           'bower/jquery.scrollTo/jquery.scrollTo.min.js',
           'bower/floatThead/dist/jquery.floatThead.min.js',
-          'bower/jquery-pjax/jquery.pjax.js',
+          'bower/jquery-pjax/jquery.pjax.js'
       ], 'public/build/js/vendor.js', './resources/assets')
 
       .scripts([
@@ -49,6 +47,7 @@ elixir(function(mix) {
         mix.version([
           'css/acp.css',
           'css/app.css',
+          'css/vendor.css',
           'js/acp.js',
           'js/app.js',
           'js/vendor.js'
