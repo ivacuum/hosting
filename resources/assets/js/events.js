@@ -43,13 +43,13 @@ $(document).on('click', '.js-aviasales', Events.aviasales);
 $(document).on('submit', '.js-batch-form', Events.batchForm);
 
 // Подтверждение действия
-$(document).on('click', '.js-confirm', () => confirm($(this).data('confirm')));
+$(document).on('click', '.js-confirm', (e) => confirm($(e.currentTarget).data('confirm')));
 
 // Проигрывание гифок по клику
 $(document).on('click', '.js-gif-click', Events.gifClick);
 
 // Редактирование по двойному клику
-$(document).on('dblclick', '.js-dblclick-edit', () => document.location = $(this).data('dblclick-url'));
+$(document).on('dblclick', '.js-dblclick-edit', () => document.location = $(e.currentTarget).data('dblclick-url'));
 
 // Выбрать все
 $(document).on('click', '.js-select-all', function() {
