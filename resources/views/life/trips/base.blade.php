@@ -5,14 +5,39 @@
 ])
 
 @section('content_header')
-@parent
-<h2>
-  <span class="emoji">{{ $trip->city->country->emoji }}</span>
-  {{ $trip->title }}
-</h2>
+  @parent
+  <h2>
+    <span class="emoji">{{ $trip->city->country->emoji }}</span>
+    {{ $trip->title }}
+  </h2>
+  {{--
+  @if ($trip->meta_image)
+    <div class="cover">
+      <div class="cover-image" style="background-image: url({{ $trip->meta_image }});"></div>
+      <div class="cover-title">
+        <span class="emoji">{{ $trip->city->country->emoji }}</span>
+        {{ $trip->title }}
+        <div class="cover-description">{{ $trip->getMetaDescription() }}</div>
+        <div class="cover-meta">
+          {{ $trip->getLocalizedDate() }}
+          &nbsp;
+          <span class="emoji">{{ $trip->city->country->emoji }}</span>
+          {{ $trip->city->country->title }}
+        </div>
+      </div>
+    </div>
+  @else
+    <h2>
+      <span class="emoji">{{ $trip->city->country->emoji }}</span>
+      {{ $trip->title }}
+    </h2>
+  @endif
+  --}}
+  <div class="trip-text">
 @endsection
 
 @section('content_footer')
+  </div>
   <div class="travel-timeline-container">
     @if (sizeof($previous_trips))
       @foreach ($previous_trips as $previous)
