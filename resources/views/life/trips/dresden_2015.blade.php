@@ -142,4 +142,6 @@
     <a href="//life.ivacuum.ru/dresden.2015/IMG_2143.jpg" data-thumb="//life.ivacuum.ru/dresden.2015/t/IMG_2143.jpg"></a>
     <a href="//life.ivacuum.ru/dresden.2015/IMG_2145.jpg" data-thumb="//life.ivacuum.ru/dresden.2015/t/IMG_2145.jpg"></a>
   </div>
+
+  <p>Бонус: подробнее <a class="link" href="http://ilyabirman.ru/meanwhile/all/deutsche-autobahnen/">об автобанах</a> в рассказе Ильи Бирмана.</p>
 @endsection
