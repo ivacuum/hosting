@@ -89,7 +89,6 @@
       <a href="https://life.ivacuum.ru/tula.2014/IMG_0644.jpg" data-thumb="https://life.ivacuum.ru/tula.2014/t/IMG_0644.jpg"></a>
       <a href="https://life.ivacuum.ru/tula.2014/IMG_0659.jpg" data-thumb="https://life.ivacuum.ru/tula.2014/t/IMG_0659.jpg"></a>
       <a href="https://life.ivacuum.ru/tula.2014/IMG_0662.jpg" data-thumb="https://life.ivacuum.ru/tula.2014/t/IMG_0662.jpg"></a>
-      <a href="https://life.ivacuum.ru/tula.2014/IMG_0665.jpg" data-thumb="https://life.ivacuum.ru/tula.2014/t/IMG_0665.jpg"></a>
       <a href="https://life.ivacuum.ru/tula.2014/IMG_0683.jpg" data-thumb="https://life.ivacuum.ru/tula.2014/t/IMG_0683.jpg"></a>
     </div>
   </div>
