@@ -21,9 +21,14 @@
   </thead>
   <tbody>
     <tr class="text-muted">
-      <td>2016</td>
+      <td>18 июля 2016</td>
       <td>David Gilmour</td>
-      <td>???</td>
+      <td>Висбаден</td>
+    </tr>
+    <tr class="text-muted">
+      <td>19 июня 2016</td>
+      <td>Rammstein</td>
+      <td>Москва</td>
     </tr>
     <tr>
       <td>4 ноября 2015</td>
