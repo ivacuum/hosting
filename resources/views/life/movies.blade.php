@@ -11,6 +11,17 @@
 <h2>Фильмы и сериалы, достойные многократного просмотра</h2>
 <section class="movies-container">
   <div class="page-header">
+    <div class="h2">2016 год</div>
+  </div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => 'Ночной администратор<br>The Night Manager', 'id' => 462649],
+    ]
+  ])
+</section>
+
+<section class="movies-container">
+  <div class="page-header">
     <div class="h2">2015 год</div>
   </div>
   @include('tpl.kp_movies', [
