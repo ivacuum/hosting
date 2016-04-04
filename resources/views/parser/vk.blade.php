@@ -16,9 +16,6 @@
   <li class="{{ $vkpage == 'pikabu' ? 'active' : '' }}">
     <a class="js-pjax" href="/parser/vk/pikabu">Пикабу</a>
   </li>
-  <li class="{{ $vkpage == 'factura' ? 'active' : '' }}">
-    <a class="js-pjax" href="/parser/vk/factura">Фактура</a>
-  </li>
   <li class="{{ $vkpage == 'decaying_europe' ? 'active' : '' }}">
     <a class="js-pjax" href="/parser/vk/decaying_europe">Запад</a>
   </li>
