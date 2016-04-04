@@ -28,11 +28,11 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/"><i class="fa fa-home"></i></a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           @section('global_menu')
+            <li><a class="{{ $self == 'Home' ? 'navbar-selected' : '' }}" href="/">Главная</a></li>
             <li><a class="{{ $self == 'Life' ? 'navbar-selected' : '' }}" href="/life">Заметки</a></li>
             <li><a class="{{ $self == 'ParserVk' ? 'navbar-selected' : '' }}" href="/parser/vk">Парсер ВК</a></li>
           @show
@@ -42,7 +42,7 @@
             @if (Auth::user()->isAdmin())
               <li>
                 <a href="/acp/domains">
-                  <i class="fa fa-dashboard"></i>
+                  @include('tpl.svg.dashboard')
                 </a>
               </li>
             @endif
