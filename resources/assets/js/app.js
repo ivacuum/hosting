@@ -51,11 +51,11 @@ class Application {
 
     function performLazyLoad() {
       const scrolled = $w.scrollTop() + $w.height() + offset;
-      const src = width > breakpoint ? 'src-2x' : 'src';
 
       images = images.filter(function() {
         let e = $(this);
-        return scrolled > e.offset().top ? (e.attr("src", e.data(src)).removeClass('js-lazy'), false) : true;
+        const src = width > breakpoint ? (e.data('src-2x') || e.data('src')) : e.data('src');
+        return scrolled > e.offset().top ? (e.attr("src", src).removeClass('js-lazy'), false) : true;
       });
 
       if (!images.length) {
