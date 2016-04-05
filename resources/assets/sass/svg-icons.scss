@@ -2,6 +2,12 @@
   display: inline-block;
   vertical-align: middle;
   fill: currentColor;
+  stroke: currentColor;
   width: 18px;
   height: 18px;
 }
+
+.svg-icon-delete { stroke-width: 1%; }
+.svg-icon-home { stroke-width: 2%; }
+.svg-icon-external-link { stroke-width: 2%; }
+.svg-icon-plus { stroke-width: 2%; }
