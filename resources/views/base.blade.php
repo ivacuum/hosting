@@ -53,9 +53,11 @@
             </li>
           </ul>
         @else
+          {{--
           <form class="navbar-form navbar-right">
             <a class="btn btn-default" href="/auth/login">Вход</a>
           </form>
+          --}}
         @endif
       </div>
     </div>
