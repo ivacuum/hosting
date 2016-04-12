@@ -15,6 +15,7 @@
   </div>
   @include('tpl.kp_movies', [
     'movies' => [
+      ['title' => 'Хардкор<br>Hardcore Henry', 'id' => 778218],
       ['title' => 'Ночной администратор<br>The Night Manager', 'id' => 462649],
     ]
   ])
