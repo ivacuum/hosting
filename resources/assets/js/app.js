@@ -31,7 +31,7 @@ class Application {
   }
 
   lazyLoadImages() {
-    const offset = 300;
+    const offset = 400;
     const breakpoint = 1200;
 
     let $w = $(window),
@@ -44,7 +44,7 @@ class Application {
     function initLazyLoad() {
       images = $('.js-lazy');
 
-      $w.off('.js-lazy').on('scroll.js-lazy resize.js-lazy', () => timer || (timer = setTimeout(performLazyLoad, 250)));
+      $w.off('.js-lazy').on('scroll.js-lazy resize.js-lazy', () => timer || (timer = setTimeout(performLazyLoad, 150)));
 
       performLazyLoad();
     }
