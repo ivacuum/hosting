@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Page;
+use App\Trip;
 
 class Home extends Controller
 {
     public function index()
     {
-        return view('index');
+        $trips = Trip::where('published', 1)
+            ->where('meta_image', '<>', '')
+            ->orderBy('date_start', 'desc')
+            ->take(3)
+            ->get();
+
+        return view('index', compact('trips'));
     }
 
     public function about()
