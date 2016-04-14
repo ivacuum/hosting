@@ -3,7 +3,7 @@
 ])
 
 @section('content')
-  <h2>Страны</h2>
+  <h2>Посещенные страны</h2>
 
   @if (!empty($countries))
     <ol>

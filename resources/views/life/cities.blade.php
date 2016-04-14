@@ -3,7 +3,7 @@
 ])
 
 @section('content')
-  <h2>Города</h2>
+  <h2>Посещенные города</h2>
   <div class="row">
     <div class="col-sm-3">
       <?php $initial = $current_initial = false; ?>

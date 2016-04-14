@@ -10,6 +10,11 @@
   <div class="row">
     <div class="col-sm-6">
       <h2>Поездки</h2>
+      <ul class="list-inline trips-show-by">
+        <li><mark>по годам</mark></li>
+        <li><a class="link" href="/life/countries">по странам</a></li>
+        <li><a class="link" href="/life/cities">по городам</a></li>
+      </ul>
 
       <?php $year = false; ?>
       @foreach ($trips as $trip)
