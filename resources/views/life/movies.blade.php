@@ -46,6 +46,7 @@
       ['title' => 'Интерстеллар<br>Interstellar', 'id' => 258687],
       ['title' => 'Кремниевая долина<br>Silicon Valley', 'id' => 723959],
       ['title' => 'Настоящий детектив<br>True Detective', 'id' => 681831],
+      ['title' => 'Волк с Уолл-стрит<br>Wolf of Wall Street', 'id' => 462682],
     ]
   ])
 </section>
@@ -60,7 +61,6 @@
       ['title' => 'Она<br>Her', 'id' => 577488],
       ['title' => 'Карточный домик<br>House of Cards', 'id' => 581937],
       ['title' => 'Одержимость<br>Whiplash', 'id' => 725190],
-      ['title' => 'Волк с Уолл-стрит<br>Wolf of Wall Street', 'id' => 462682],
     ]
   ])
 </section>
