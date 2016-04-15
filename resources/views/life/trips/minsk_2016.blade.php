@@ -14,28 +14,28 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_2253.jpg'])
 
 <p>Улицы.</p>
-<div class="fotorama" data-width="1000">
-  <a href="https://life.ivacuum.ru/minsk.2016/IMG_2254.jpg" data-thumb="https://life.ivacuum.ru/minsk.2016/t/IMG_2254.jpg"></a>
-  <a href="https://life.ivacuum.ru/minsk.2016/IMG_2257.jpg" data-thumb="https://life.ivacuum.ru/minsk.2016/t/IMG_2257.jpg"></a>
-  <a href="https://life.ivacuum.ru/minsk.2016/IMG_2258.jpg" data-thumb="https://life.ivacuum.ru/minsk.2016/t/IMG_2258.jpg"></a>
-  <a href="https://life.ivacuum.ru/minsk.2016/IMG_2262.jpg" data-thumb="https://life.ivacuum.ru/minsk.2016/t/IMG_2262.jpg"></a>
-</div>
+@include('tpl.fotorama', ['pics' => [
+  'IMG_2254.jpg',
+  'IMG_2257.jpg',
+  'IMG_2258.jpg',
+  'IMG_2262.jpg',
+]])
 
 <p>Ширина вполне подходящая для проезда трактора, но вот лавки требуют ручной чистки.</p>
 @include('tpl.pic-2x', ['pic' => 'IMG_2259.jpg'])
 
 <p>Делать в Минске суровой зимой оказалось ровным счетом нечего. Ничего не привлекало глаз на улицах.</p>
-<div class="fotorama" data-width="1000">
-  <a href="https://life.ivacuum.ru/minsk.2016/IMG_2250.jpg" data-thumb="https://life.ivacuum.ru/minsk.2016/t/IMG_2250.jpg"></a>
-  <a href="https://life.ivacuum.ru/minsk.2016/IMG_2251.jpg" data-thumb="https://life.ivacuum.ru/minsk.2016/t/IMG_2251.jpg"></a>
-  <a href="https://life.ivacuum.ru/minsk.2016/IMG_2252.jpg" data-thumb="https://life.ivacuum.ru/minsk.2016/t/IMG_2252.jpg"></a>
-</div>
+@include('tpl.fotorama', ['pics' => [
+  'IMG_2250.jpg',
+  'IMG_2251.jpg',
+  'IMG_2252.jpg',
+]])
 
 <p>Хорошо, что в это время проходил крупнейший в СНГ киберспортивный турнир <a class="link" href="http://starladder.com/">Старладдер</a>. Всего за 4 года ребята достигли впечатляющего уровня развития: многотысячная Минск-арена, трансляция чемпионата в реальном времени, комментирование на 3 языках, сотни тысяч зрителей в интернете. Для сравнения — в этом зале в 2015 году выступала группа Линкин Парк.</p>
-<div class="fotorama" data-width="1000">
-  <a href="https://life.ivacuum.ru/minsk.2016/IMG_2273.jpg" data-thumb="https://life.ivacuum.ru/minsk.2016/t/IMG_2273.jpg"></a>
-  <a href="https://life.ivacuum.ru/minsk.2016/IMG_2272.jpg" data-thumb="https://life.ivacuum.ru/minsk.2016/t/IMG_2272.jpg"></a>
-</div>
+@include('tpl.fotorama', ['pics' => [
+  'IMG_2273.jpg',
+  'IMG_2272.jpg',
+]])
 
 <p>Усё.</p>
 @endsection

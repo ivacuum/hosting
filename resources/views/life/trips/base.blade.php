@@ -33,7 +33,7 @@
     </h2>
   @endif
   --}}
-  <div class="trip-text">
+  <div class="trip-text js-trip-shortcuts">
 @endsection
 
 @section('content_footer')

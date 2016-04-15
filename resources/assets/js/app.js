@@ -1,6 +1,7 @@
 import Pjax from './pjax';
 
 import './events';
+import './life';
 import './shortcuts';
 import './yandex-dns';
 
