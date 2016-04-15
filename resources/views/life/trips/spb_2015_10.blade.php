@@ -8,19 +8,13 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_1811.jpg'])
 
 <p>Раз в день в крупных сетях кинотеатров показывают кино в оригинале с субтитрами. Сеансы не самые удобные для гостей города — между 6 и 8 часами вечера. При покупке билета сервис удостоверяется в вашей уверенности смотреть фильм на иностранном языке.</p>
-<div class="img-container shortcuts-item">
-  <img class="js-lazy" data-src="https://life.ivacuum.ru/spb.2015.10/english.png" data-src-2x="https://life.ivacuum.ru/spb.2015.10/english.png" width="846" height="550" src="https://life.ivacuum.ru/0.gif">
-</div>
+@include('tpl.pic-arbitrary', ['pic' => 'english.png', 'w' => 846, 'h' => 550])
 
 <p>За оплату Мастеркардом дают скидку. Не узнал бы, если бы не нажал ради интереса на список вариантов оплаты.</p>
-<div class="img-container shortcuts-item">
-  <img class="js-lazy" data-src="https://life.ivacuum.ru/spb.2015.10/discount.png" data-src-2x="https://life.ivacuum.ru/spb.2015.10/discount.png" width="541" height="259" src="https://life.ivacuum.ru/0.gif">
-</div>
+@include('tpl.pic-arbitrary', ['pic' => 'discount.png', 'w' => 541, 'h' => 259])
 
 <p>По итогу присылают код билета. Его достаточно поднести к терминалу Яндекса у входа в кинозал, к контролеру обращаться не нужно.</p>
-<div class="img-container shortcuts-item">
-  <img class="js-lazy" data-src="https://life.ivacuum.ru/spb.2015.10/qr.png" data-src-2x="https://life.ivacuum.ru/spb.2015.10/qr.png" width="607" height="220" src="https://life.ivacuum.ru/0.gif">
-</div>
+@include('tpl.pic-arbitrary', ['pic' => 'qr.png', 'w' => 607, 'h' => 220])
 
 <p>В городе приятно.</p>
 @include('tpl.fotorama', ['pics' => [
@@ -44,9 +38,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_1822.jpg'])
 
 <p>Типичная картина списка доступных беспроводных сетей дома. Не всегда даже на экран ноутбука влезает.</p>
-<div class="img-container shortcuts-item">
-  <img class="js-lazy" data-src="https://life.ivacuum.ru/spb.2015.10/wi-fi.png" data-src-2x="https://life.ivacuum.ru/spb.2015.10/wi-fi.png" width="296" height="586" src="https://life.ivacuum.ru/0.gif">
-</div>
+@include('tpl.pic-arbitrary', ['pic' => 'wi-fi.png', 'w' => 296, 'h' => 586])
 
 <p>Рядом с домом сетей может быть в несколько раз больше. Почему? Близкое к окну расположение роутера, максимальная (100%) мощность сигнала в его настройках. В идеале поместить роутер в недра квартиры, снизить мощность до минимальной, при которой сохраняется стабильное подключение устройств. Так будет меньше помех и вам и соседям. Выставить стандарт связи вроде 802.11n — он выбирается по минимальному поддерживаемому среди устройств дома. Подробнее <a class="link" href="https://habrahabr.ru/post/149447/">о нюансах работы вай-фая</a>.</p>
 @endsection

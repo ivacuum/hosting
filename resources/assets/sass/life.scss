@@ -100,18 +100,6 @@
   height: 750px;
 }
 
-.pic-container {
-  max-width: 1000px;
-  margin-left: -15px;
-  margin-right: -15px;
-  margin-bottom: 1.5em;
-
-  @media (min-width: 768px) {
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
 .pic {
   width: 100%;
   height: 0;
@@ -127,6 +115,23 @@
 
     @media (min-width: 768px) { border-radius: 6px; }
   }
+}
+
+.pic-container {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 1.5em;
+
+  @media (min-width: 768px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.pic-centered-container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .travel-timeline-container {
