@@ -2,22 +2,16 @@
 
 @section('content')
 <p>Белоруссия — страна, в которой перед покупкой карты доступа к городскому вай-фаю просят паспорт. И переписывают его данные в журнал.</p>
-<div class="img-container">
-  <img class="js-lazy pic-1000x750" data-src="https://life.ivacuum.ru/minsk.2016/IMG_2271.jpg" data-src-2x="https://life.ivacuum.ru/minsk.2016/IMG_2271@2x.jpg" src="https://life.ivacuum.ru/0.gif">
-</div>
+@include('tpl.pic-2x', ['pic' => 'IMG_2271.jpg'])
 
 <p>Здесь можно ненадолго почувствовать себя миллионером. Всего за 4 000 <span class="rur">руб.</span>.</p>
 <p>Обменный курс 1 к 250 быстро учит встречаемые цены делить на 1 000 и умножать на 4. Какой большой купюрой не решишь расплатиться, так все равно получишь еще больше бумажек сдачи. Минимальная купюра 100 рублей, монет нет — будут после деноминации.</p>
 <p>Больше всего в стране доставляет язык. Даже не столько буквальное написание слов вроде раён вместо район, сколько забавные слова. Например, в самолете: «пришпиливайте ремни», «не отшпиливайте, пожалуйста, ремни».</p>
 <p>Афиша театра. Царевна и кот определенно удались.</p>
-<div class="img-container">
-  <img class="js-lazy pic-1000x750" data-src="https://life.ivacuum.ru/minsk.2016/IMG_2261.jpg" data-src-2x="https://life.ivacuum.ru/minsk.2016/IMG_2261@2x.jpg" src="https://life.ivacuum.ru/0.gif">
-</div>
+@include('tpl.pic-2x', ['pic' => 'IMG_2261.jpg'])
 
 <p>Внезапно.</p>
-<div class="img-container">
-  <img class="js-lazy pic-1000x750" data-src="https://life.ivacuum.ru/minsk.2016/IMG_2253.jpg" data-src-2x="https://life.ivacuum.ru/minsk.2016/IMG_2253@2x.jpg" src="https://life.ivacuum.ru/0.gif">
-</div>
+@include('tpl.pic-2x', ['pic' => 'IMG_2253.jpg'])
 
 <p>Улицы.</p>
 <div class="fotorama" data-width="1000">
@@ -28,11 +22,9 @@
 </div>
 
 <p>Ширина вполне подходящая для проезда трактора, но вот лавки требуют ручной чистки.</p>
-<div class="img-container">
-  <img class="js-lazy pic-1000x750" data-src="https://life.ivacuum.ru/minsk.2016/IMG_2259.jpg" data-src-2x="https://life.ivacuum.ru/minsk.2016/IMG_2259@2x.jpg" src="https://life.ivacuum.ru/0.gif">
-</div>
+@include('tpl.pic-2x', ['pic' => 'IMG_2259.jpg'])
 
-<p>Делать в Минске оказалось ровным счетом нечего. Ничего не привлекало глаз на улицах.</p>
+<p>Делать в Минске суровой зимой оказалось ровным счетом нечего. Ничего не привлекало глаз на улицах.</p>
 <div class="fotorama" data-width="1000">
   <a href="https://life.ivacuum.ru/minsk.2016/IMG_2250.jpg" data-thumb="https://life.ivacuum.ru/minsk.2016/t/IMG_2250.jpg"></a>
   <a href="https://life.ivacuum.ru/minsk.2016/IMG_2251.jpg" data-thumb="https://life.ivacuum.ru/minsk.2016/t/IMG_2251.jpg"></a>
