@@ -2,23 +2,17 @@
 
 @section('content')
 <p>Вечерняя Москва.</p>
-<div class="fotorama">
-  <img src="//life.ivacuum.ru/msk.2014.10/IMG_1289.jpg">
-  <img src="//life.ivacuum.ru/msk.2014.10/IMG_1297.jpg">
-</div>
+@include('tpl.fotorama', ['pics' => [
+  'IMG_1289.jpg',
+  'IMG_1297.jpg',
+]])
 
 <p>Одной из целей поездки была проба гитары <a href="http://www.sterlingbymusicman.com/jp-guitars/jp100d-series" class="link">Sterling by Music Man JP100D</a>. В России вообще всего один <a href="http://grandm.ru/" class="link">официальный дилер компании Music Man</a>, у него и можно пощупать инструменты. Правда, с ростом курса валют он поднял цены на гитары в два раза, так что они резко стали дорогим удовольствием.</p>
-<div class="img-container">
-  <img src="//life.ivacuum.ru/msk.2014.10/IMG_1308.jpg">
-</div>
+@include('tpl.pic-arbitrary', ['pic' => 'IMG_1308.jpg', 'w' => 640, 'h' => 640])
 
 <p>Сколько раз я уже опаздывал на последний поезд домой? Как минимум при возвращении с фестиваля Рок над Волгой из Самары. Тогда я благополучно скоротал за сном длинные ночные часы в круглосуточном ресторане восточной кухни в Москве. Что ж, опоздал я и в этот день. Хорошо, что нашелся ночлег в Жуковском. Еще днем ранее не думал, что такую картину застану утром.</p>
-<div class="fotorama">
-  <img src="//life.ivacuum.ru/msk.2014.10/IMG_1305.jpg">
-</div>
+@include('tpl.pic-2x', ['pic' => 'IMG_1305.jpg'])
 
 <p>Или такую.</p>
-<div class="fotorama">
-  <img src="//life.ivacuum.ru/msk.2014.10/IMG_1307.jpg">
-</div>
+@include('tpl.pic-2x', ['pic' => 'IMG_1307.jpg'])
 @endsection

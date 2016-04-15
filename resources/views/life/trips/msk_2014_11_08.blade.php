@@ -7,30 +7,24 @@
 <div class="fotorama" data-width="1000" data-ratio="16/10">
   <a href="https://www.youtube.com/watch?v=tdJS_Icm6fw"></a>
 </div>
+
 <p>В столице пасмурно.</p>
-<div class="fotorama">
-  <img src="//life.ivacuum.ru/msk.2014.11.08/IMG_1324.jpg">
-  <img src="//life.ivacuum.ru/msk.2014.11.08/IMG_1325.jpg">
-</div>
+@include('tpl.fotorama', ['pics' => [
+  'IMG_1324.jpg',
+  'IMG_1325.jpg',
+]])
+
 <p>В разных городах встречаются магазины с Якутскими алмазами, в самом Якутске, кстати, действует постоянная выставка <a href="http://expo-gx.ru/" class="link">Сокровищница Якутии</a>.</p>
-<div class="img-container">
-  <img src="//life.ivacuum.ru/msk.2014.11.08/IMG_1327.jpg">
-</div>
+@include('tpl.pic-2x', ['pic' => 'IMG_1327.jpg'])
 
 <p>Вроде бы в снимке ничего особенного, но забавно позже встречать в жизни или прессе фотографии с того же ракурса и сравнивать их со своими. Так уже было с одним майским снимком улицы в Питере, практически копия которого попалась мне на выставке в Петергофе.</p>
-<div class="img-container">
-  <img src="//life.ivacuum.ru/msk.2014.11.08/IMG_1331.jpg">
-</div>
+@include('tpl.pic-2x', ['pic' => 'IMG_1331.jpg'])
 
 <p>Или вот другой схожий случай.</p>
-<div class="img-container">
-  <img src="//life.ivacuum.ru/msk.2014.11.08/IMG_0429.jpg">
-</div>
+@include('tpl.pic-2x', ['pic' => 'IMG_0429.jpg'])
 
 <p>Улица в столице.</p>
-<div class="img-container">
-  <img src="//life.ivacuum.ru/msk.2014.11.08/IMG_1332.jpg">
-</div>
+@include('tpl.pic-2x', ['pic' => 'IMG_1332.jpg'])
 
 <p>Попытка купить билет на поезд домой через интернет не увенчалась успехом. Опытным путем было установлено, что онлайн-продажа закрывается за час до отправления, дальше только в кассы. Похоже, что в это окошко проводники получают списки пассажиров с электронной регистрацией.</p>
 @endsection
