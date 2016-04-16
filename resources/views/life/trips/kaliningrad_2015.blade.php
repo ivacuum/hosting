@@ -5,23 +5,23 @@
 @include('tpl.pic', ['pic' => 'IMG_0076.jpg'])
 
 <p>В Калининграде полно мест для прогулок, набережных так и вовсе несколько.</p>
-<div class="fotorama">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1446.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1454.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1448.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1455.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1496.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1498.jpg" width="1000" height="750">
-</div>
+@include('tpl.fotorama', ['pics' => [
+  'IMG_1446.jpg',
+  'IMG_1454.jpg',
+  'IMG_1448.jpg',
+  'IMG_1455.jpg',
+  'IMG_1496.jpg',
+  'IMG_1498.jpg',
+]])
 
 <p>Улицы.</p>
-<div class="fotorama">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1502.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1501.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1503.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1504.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1506.jpg" width="1000" height="750">
-</div>
+@include('tpl.fotorama', ['pics' => [
+  'IMG_1502.jpg',
+  'IMG_1501.jpg',
+  'IMG_1503.jpg',
+  'IMG_1504.jpg',
+  'IMG_1506.jpg',
+]])
 
 <p>В поездке впервые опробовал сервис аренды жилья <a href="https://www.airbnb.com/c/spankov1?s=8" class="link">Airbnb</a>. Снимать квартиру с помощью него оказалось сплошным удовольствием — оплата заранее по карте, въезд и выезд занял считанные минуты, связываться с владельцем можно даже через Viber, WhatsApp и прочие подобные сервисы. Рекомендую.</p>
 
@@ -29,19 +29,19 @@
 @include('tpl.pic', ['pic' => 'IMG_1469.jpg'])
 
 <p>Дюны.</p>
-<div class="fotorama">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1477.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1474.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1479.jpg" width="1000" height="750">
-</div>
+@include('tpl.fotorama', ['pics' => [
+  'IMG_1477.jpg',
+  'IMG_1474.jpg',
+  'IMG_1479.jpg',
+]])
 
 <p>Балтийское море.</p>
-<div class="fotorama">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1489.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1488.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1482.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1484.jpg" width="1000" height="750">
-</div>
+@include('tpl.fotorama', ['pics' => [
+  'IMG_1489.jpg',
+  'IMG_1488.jpg',
+  'IMG_1482.jpg',
+  'IMG_1484.jpg',
+]])
 
 <p>У кондукторов и водителей в общественном транспорте ленты билетов с разным номиналом: 10 рублей, 5 и т.п. Отматывают вам столько, сколько вы заплатили за проезд. Одна поездка рублей на 200, и можно мерить талию.</p>
 
@@ -52,31 +52,31 @@
 @include('tpl.pic', ['pic' => 'IMG_1505.jpg'])
 
 <p>Что за очаги листьев на деревьях зимой?</p>
-<div class="fotorama">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1500.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1468.jpg" width="1000" height="750">
-</div>
+@include('tpl.fotorama', ['pics' => [
+  'IMG_1500.jpg',
+  'IMG_1468.jpg',
+]])
 
 <p>В той же Калуге Луна предстает совершенно иначе — она больше и ярко белая, а в Калининграде маленькая, с мягким желтым ореолом. На снимке же это просто банан, <a href="/life/spb.2014.09#banana" class="link">как в Питере</a>.</p>
-<div class="fotorama">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1456.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1457.jpg" width="1000" height="750">
-</div>
+@include('tpl.fotorama', ['pics' => [
+  'IMG_1456.jpg',
+  'IMG_1457.jpg',
+]])
 
 <p>Дороги.</p>
-<div class="fotorama">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1447.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1491.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1507.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1510.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2012015G_1514.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1515.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1516.jpg" width="1000" height="750">
-</div>
+@include('tpl.fotorama', ['pics' => [
+  'IMG_1447.jpg',
+  'IMG_1491.jpg',
+  'IMG_1507.jpg',
+  'IMG_1510.jpg',
+  'IMG_1514.jpg',
+  'IMG_1515.jpg',
+  'IMG_1516.jpg',
+]])
 
 <p>К отсутствию снега так привыкаешь, что потом тяжеловато возвращаться в заснеженную Москву. Или это в Калининграде так чисто?.. Ан, нет, показалось.</p>
-<div class="fotorama">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1518.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/kaliningrad.2015/IMG_1511.jpg" width="1000" height="750">
-</div>
+@include('tpl.fotorama', ['pics' => [
+  'IMG_1518.jpg',
+  'IMG_1511.jpg',
+]])
 @endsection
