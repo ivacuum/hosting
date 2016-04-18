@@ -20,21 +20,23 @@
     <a class="js-pjax" href="/parser/vk/decaying_europe">Запад</a>
   </li>
   <li class="{{ $vkpage == 'vandroukiru' ? 'active' : '' }}">
-    <a class="js-pjax" href="/parser/vk/vandroukiru"><i class="fa fa-plane"></i></a>
+    <a class="js-pjax" href="/parser/vk/vandroukiru">
+      @include('tpl.svg.plane')
+    </a>
   </li>
 </ul>
 
 <ul class="pager">
   <li class="previous">
     <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}" id="previous_page">
-      <i class="fa fa-chevron-left"></i>
+      @include('tpl.svg.chevron-left')
       {{ $next->formatLocalized('%e %B') }}
     </a>
   </li>
   <li class="next">
     <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}" id="next_page">
       &nbsp;{{ $previous->formatLocalized('%e %B') }}
-      <i class="fa fa-chevron-right"></i>
+      @include('tpl.svg.chevron-right')
     </a>
   </li>
 </ul>
@@ -76,7 +78,7 @@
           @if ($attach->type == 'doc' and $attach->doc->ext == 'gif')
             <p>
               <div>
-                <i class="fa fa-paperclip"></i>
+                @include('tpl.svg.paperclip')
                 {{ $attach->doc->title }}
               </div>
               <a href="{{ $attach->doc->url }}" class="js-gif-click">
@@ -85,14 +87,20 @@
             </p>
           @elseif ($attach->type == 'audio' and $attach->audio->url)
             <p>
-              <a href="{{ $attach->audio->url }}" class="link"><i class="fa fa-music"></i> {{ $attach->audio->artist }} — {{ $attach->audio->title }}</a>
+              <a href="{{ $attach->audio->url }}" class="link">
+                @include('tpl.svg.music')
+                {{ $attach->audio->artist }} — {{ $attach->audio->title }}
+              </a>
               <span class="text-muted">
                 {{ sprintf('%02d', $attach->audio->duration / 60) }}:{{ sprintf('%02d', $attach->audio->duration % 60) }}
               </span>
             </p>
           @elseif ($attach->type == 'video')
             <p>
-              <a href="https://vk.com/video{{ $attach->video->owner_id }}_{{ $attach->video->vid }}" class="link"><i class="fa fa-film"></i> {{ $attach->video->title }}</a>
+              <a href="https://vk.com/video{{ $attach->video->owner_id }}_{{ $attach->video->vid }}" class="link">
+                @include('tpl.svg.film')
+                {{ $attach->video->title }}
+              </a>
               <span class="text-muted">
                 {{ sprintf('%02d', $attach->video->duration / 60) }}:{{ sprintf('%02d', $attach->video->duration % 60) }}
               </span>
@@ -100,14 +108,14 @@
           @elseif ($attach->type == 'page')
             <p>
               <a href="{{ $attach->page->view_url }}" class="link">
-                <i class="fa fa-text-o"></i>
+                @include('tpl.svg.file-text-o')
                 {{ $attach->page->title }}
               </a>
             </p>
           @elseif ($attach->type == 'link')
             <p>
               <a href="{{ $attach->link->url }}" class="link">
-                <i class="fa fa-link"></i>
+                @include('tpl.svg.link')
                 {{ $attach->link->title }}
               </a>
               <br>
@@ -122,11 +130,13 @@
       <div class="vk-post-meta text-muted text-right">
         <samp><small>
           #{{ $i + 1 }}
-          <i class="fa fa-bullhorn"></i>
+          @include('tpl.svg.bullhorn')
           <span class="text-muted">{{ $post['reposts'] }}</span>
-          <i class="fa fa-heart"></i>
+          @include('tpl.svg.heart')
           <span class="text-muted">{{ $post['likes'] }}</span>
-          <a href="{{ $post['url'] }}" class="link"><i class="fa fa-link"></i></a>
+          <a href="{{ $post['url'] }}" class="link">
+            @include('tpl.svg.link')
+          </a>
         </small></samp>
       </div>
     </div>
@@ -137,14 +147,14 @@
 <ul class="pager">
   <li class="previous">
     <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}">
-      <i class="fa fa-chevron-left"></i>
+      @include('tpl.svg.chevron-left')
       {{ $next->formatLocalized('%e %B') }}
     </a>
   </li>
   <li class="next">
     <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}">
       &nbsp;{{ $previous->formatLocalized('%e %B') }}
-      <i class="fa fa-chevron-right"></i>
+      @include('tpl.svg.chevron-right')
     </a>
   </li>
 </ul>

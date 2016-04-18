@@ -2,14 +2,18 @@
 
 @section('content')
 <h2>
-  <a href="/acp/servers/{{ $server->id }}"><i class="fa fa-chevron-left"></i></a>
+  <a href="/acp/servers/{{ $server->id }}">
+    @include('tpl.svg.chevron-left')
+  </a>
   ftp://{{ $server->host }}
 </h2>
 
 <div class="boxed-group flush">
   <h3>
     @if ($dir_up != ':')
-      <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $dir_up }}"><i class="fa fa-chevron-left"></i></a>
+      <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $dir_up }}">
+        @include('tpl.svg.chevron-left')
+      </a>
     @endif
     {{ $dir }}
   </h3>
@@ -18,7 +22,8 @@
       @foreach ($dirs as $row)
         <tr>
           <td>
-            <i class="fa fa-folder-o"></i>&nbsp;
+            @include('tpl.svg.folder-o')
+            &nbsp;
             <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $row['path'] }}" class="link">{{ $row['basename'] }}</a>
           </td>
           <td></td>
@@ -28,7 +33,8 @@
       @foreach ($files as $row)
       <tr>
         <td>
-          <i class="fa fa-file-text-o"></i>&nbsp;
+          @include('tpl.svg.file-text-o')
+          &nbsp;
           <a href="/acp/servers/{{ $server->id }}/ftp/source?file={{ $row['path'] }}" class="link">{{ $row['basename'] }}</a>
         </td>
         <td><span class="text-muted">{{ $row['size'] }} b</span></td>
@@ -53,7 +59,7 @@
       </span>
     </div>
   </div>
-  
+
   <input type="hidden" name="path" value="{{ $dir }}">
   {{ csrf_field() }}
 </form>
@@ -70,7 +76,7 @@
       </span>
     </div>
   </div>
-  
+
   <input type="hidden" name="path" value="{{ $dir }}">
   {{ csrf_field() }}
 </form>
@@ -87,7 +93,7 @@
       </span>
     </div>
   </div>
-  
+
   <input type="hidden" name="path" value="{{ $dir }}">
   {{ csrf_field() }}
 </form>

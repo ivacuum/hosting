@@ -9,12 +9,12 @@
   <div class="boxed-group-inner">
     <table id="tree" class="table-stats">
       <colgroup>
-        <col width="20"></col>
-        <col width="*"></col>
-        <col width="30"></col>
-        <col width="200"></col>
-        <col width="250"></col>
-        <col width="50"></col>
+        <col width="20">
+        <col width="*">
+        <col width="30">
+        <col width="200">
+        <col width="250">
+        <col width="50">
       </colgroup>
       <thead>
         <tr>
@@ -50,10 +50,19 @@
   </div>
   <button class="btn btn-default" id="batch_submit">Выполнить</button>
 </form>
+
+<span id="page_active_icon" class="hidden">
+  <span class="text-success" title="Отображается">
+    @include('tpl.svg.eye')
+  </span>
+</span>
+
+<span id="page_edit_icon" class="hidden">
+  @include('tpl.svg.pencil')
+</span>
 @endsection
 
-@section('js')
-@parent
+@push('js')
 <script>
 $(function() {
   var selectedPages;
@@ -65,6 +74,9 @@ $(function() {
       document.location = '/acp/pages';
     });
   });
+
+  var page_active_icon = $('#page_active_icon').html();
+  var page_edit_icon = $('#page_edit_icon').html();
 
   $('#tree').fancytree({
     icons: false,
@@ -136,9 +148,9 @@ $(function() {
         $tds = $(node.tr).find('>td');
 
       if (node.data.activated == 1) {
-        $tds.eq(2).html('<i class="fa fa-eye text-success" title="Отображается"></i>')
+        $tds.eq(2).html(page_active_icon)
       } else {
-        $tds.eq(2).html('<i class="fa fa-eye-slash text-muted" title="Выключена"></i>')
+        $tds.eq(2).html('')
       }
 
       $tds.eq(3).html('<a class="link" href="' + node.data.url + '">' + node.data.url + '</a>');
@@ -148,9 +160,9 @@ $(function() {
         $tds.eq(3).append('<br><span class="text-muted">&rarr; ' + node.data.redirect + '</span>');
       }
 
-      $tds.eq(5).html('<a class="link" href="' + node.data.edit_url + '"><i class="fa fa-pencil-square-o"></i></a>');
+      $tds.eq(5).html('<a class="link" href="' + node.data.edit_url + '">' + page_edit_icon + '</a>');
     }
   });
 });
 </script>
-@stop
+@endpush

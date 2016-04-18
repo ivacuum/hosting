@@ -120,13 +120,15 @@
               <a class="pseudo js-ns-record-edit">настроить</a>
               &nbsp;
               <a class="pseudo js-ns-record-delete" data-id="{{ $record->record_id }}" data-action="{{ action("$self@deleteNsRecord", $domain) }}">
-                <i class="fa fa-times"></i>
+                @include('tpl.svg.times')
               </a>
             </div>
             <div class="edit hidden">
               <a class="pseudo js-ns-record-save" data-action="{{ action("$self@editNsRecord", $domain) }}">сохранить</a>
               &nbsp;
-              <a class="pseudo js-ns-record-cancel"><i class="fa fa-undo"></i></a>
+              <a class="pseudo js-ns-record-cancel">
+                @include('tpl.svg.rotate-left')
+              </a>
             </div>
           </td>
         </tr>

@@ -1,5 +1,4 @@
-@section('js')
-  @parent
+@push('js')
   <script>
     $(document).ready(function() {
       $('img').each(function() {
@@ -22,4 +21,4 @@
       });
     });
   </script>
-@endsection
+@endpush

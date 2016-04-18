@@ -1,7 +1,7 @@
 @if (sizeof($domains))
 <div class="boxed-group flush">
   <a href="{{ action('Acp\Domains@create') }}" class="boxed-group-action btn btn-success">
-    <i class="fa fa-plus"></i>
+    @include('tpl.svg.plus')
   </a>
   <h3>
     <form class="form-inline">
@@ -14,12 +14,12 @@
   <div class="boxed-group-inner">
     <table class="table-stats js-float-thead">
       <colgroup>
-        <col width="30"></col>
-        <col width="*"></col>
-        <col width="125"></col>
-        <col width="200"></col>
-        <col width="200"></col>
-        <col width="60"></col>
+        <col width="30">
+        <col width="*">
+        <col width="125">
+        <col width="200">
+        <col width="200">
+        <col width="60">
       </colgroup>
       <thead>
         <tr>
@@ -38,7 +38,9 @@
             <input class="domains-checkbox" type="checkbox" name="ids[]" value="{{ $domain->id }}">
           </td>
           <td>
-            <a href="http://{{ $domain->domain }}/" target="_blank" style="margin-right: 0.3em;"><i class="fa fa-external-link"></i></a>
+            <a href="http://{{ $domain->domain }}/" target="_blank" style="margin-right: 0.3em;">
+              @include('tpl.svg.external-link')
+            </a>
             <a href="/acp/domains/{{ $domain->domain }}" class="link">{{ $domain->domain }}</a>
             @if ($domain->alias_id)
               <span class="text-muted">

@@ -1,1 +1,3 @@
-<a href="{{ !empty($goto) ? url($goto) : action("$self@index") }}"><i class="fa fa-chevron-left"></i></a>
+<a href="{{ !empty($goto) ? url($goto) : action("$self@index") }}">
+  @include('tpl.svg.chevron-left')
+</a>

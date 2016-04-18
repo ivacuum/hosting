@@ -1,12 +1,12 @@
 @extends('base')
 
-@section('head')
+@push('head')
 <meta content="article" property="og:type">
 <meta content="{{ $meta_title or '' }}" property="og:title">
 <meta content="{{ Request::url() }}" property="og:url">
 <meta content="{{ $meta_image or '' }}" property="og:image">
 <meta content="{{ $meta_description or '' }}" property="og:description">
-@stop
+@endpush
 
 @section('content_header')
 <div class="lead js-shortcuts-items">
@@ -25,7 +25,7 @@
 </span>
 @stop
 
-@section('js')
+@push('js')
 <script src="//yastatic.net/share/share.js"></script>
-@stop
+@endpush
 --}}
