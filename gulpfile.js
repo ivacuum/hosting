@@ -14,7 +14,6 @@ elixir(function(mix) {
           'bower/bootstrap/dist/css/bootstrap-theme.css',
           'bower/nprogress/nprogress.css',
           'bower/fotorama/fotorama.css',
-          'bower/fontawesome/css/font-awesome.min.css'
       ], 'public/build/css/vendor.css', './resources/assets')
 
       .styles([
@@ -23,7 +22,6 @@ elixir(function(mix) {
 
       .browserify('app.js')
 
-      .copy('resources/assets/bower/fontawesome/fonts', 'public/build/fonts')
       .copy('resources/assets/bower/fotorama/*.png', 'public/build/css')
       .copy('resources/assets/bower/fancytree/dist/skin-lion/*.gif', 'public/build/css')
 
