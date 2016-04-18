@@ -3,11 +3,11 @@
   "dependencies": {
     "bootstrap": "~3.3",
     "jquery": "~1.11",
-    "fancytree": "~2.7",
+    "fancytree": "~2.13",
     "nprogress": "~0.2",
     "fotorama": "~4.6",
     "jquery.scrollTo": "~2.1",
-    "floatThead": "~1.3",
+    "floatThead": "~1.4",
     "jquery-pjax": "latest"
   }
 }
