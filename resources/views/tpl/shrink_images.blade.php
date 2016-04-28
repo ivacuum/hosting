@@ -15,6 +15,8 @@
         }
       });
 
+      $('.pic-container').css('width', 200);
+
       $('.fotorama').fotorama({
         width: 200,
         height: 150
