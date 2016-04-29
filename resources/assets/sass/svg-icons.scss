@@ -6,6 +6,17 @@
   height: 1em;
   margin-top: 2px;
 
+  .list-group-svg & {
+    margin-right: 2px;
+
+    @media (min-width: 768px) {
+      display: block;
+      margin: 0 auto;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
   .navbar-nav & {
     font-size: 18px;
     margin-top: 0;

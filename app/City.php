@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class City extends Model
 {
-    protected $fillable = ['title', 'slug', 'emoji'];
+    protected $fillable = ['country_id', 'title', 'slug', 'iata'];
 
     public function country()
     {

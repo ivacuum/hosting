@@ -2,6 +2,15 @@
 
 namespace App\Providers;
 
+use App\City;
+use App\Client;
+use App\Country;
+use App\Domain;
+use App\Page;
+use App\Server;
+use App\Trip;
+use App\User;
+use App\YandexUser;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -13,12 +22,15 @@ class RouteServiceProvider extends ServiceProvider
     {
         parent::boot($router);
 
-        $router->model('Client', 'App\Client');
-        $router->model('Domain', 'App\Domain');
-        $router->model('Page', 'App\Page');
-        $router->model('Server', 'App\Server');
-        $router->model('User', 'App\User');
-        $router->model('YandexUser', 'App\YandexUser');
+        $router->model('City', City::class);
+        $router->model('Client', Client::class);
+        $router->model('Country', Country::class);
+        $router->model('Domain', Domain::class);
+        $router->model('Page', Page::class);
+        $router->model('Server', Server::class);
+        $router->model('Trip', Trip::class);
+        $router->model('User', User::class);
+        $router->model('YandexUser', YandexUser::class);
     }
 
     public function map(Router $router)

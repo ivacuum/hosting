@@ -3,6 +3,16 @@
 // Admin control panel
 Route::get('/', 'Acp\Home@index');
 
+Route::group(['prefix' => 'cities', 'breadcrumbs' => [['Города', 'acp/cities']]], function() {
+    Route::get('/', 'Acp\Cities@index');
+    Route::post('/', 'Acp\Cities@store');
+    Route::get('create', 'Acp\Cities@create');
+    Route::get('{City}', 'Acp\Cities@show');
+    Route::put('{City}', 'Acp\Cities@update');
+    Route::delete('{City}', 'Acp\Cities@destroy');
+    Route::get('{City}/edit', 'Acp\Cities@edit');
+});
+
 Route::group(['prefix' => 'clients', 'breadcrumbs' => [['Клиенты', 'acp/clients']]], function() {
     Route::get('/', 'Acp\Clients@index');
     Route::post('/', 'Acp\Clients@store');
@@ -11,6 +21,16 @@ Route::group(['prefix' => 'clients', 'breadcrumbs' => [['Клиенты', 'acp/c
     Route::put('{Client}', 'Acp\Clients@update');
     Route::delete('{Client}', 'Acp\Clients@destroy');
     Route::get('{Client}/edit', 'Acp\Clients@edit');
+});
+
+Route::group(['prefix' => 'countries', 'breadcrumbs' => [['Страны', 'acp/countries']]], function() {
+    Route::get('/', 'Acp\Countries@index');
+    Route::post('/', 'Acp\Countries@store');
+    Route::get('create', 'Acp\Countries@create');
+    Route::get('{Country}', 'Acp\Countries@show');
+    Route::put('{Country}', 'Acp\Countries@update');
+    Route::delete('{Country}', 'Acp\Countries@destroy');
+    Route::get('{Country}/edit', 'Acp\Countries@edit');
 });
 
 Route::group(['prefix' => 'domains', 'breadcrumbs' => [['Домены', 'acp/domains']]], function() {
