@@ -36,7 +36,7 @@ class Cities extends Controller
 
 	public function edit(City $city)
 	{
-        Breadcrumbs::push($city->title, "acp/cities/{$city->slug}");
+        Breadcrumbs::push($city->title, "acp/cities/{$city->id}");
         Breadcrumbs::push('Редактирование');
 
 		return view($this->view, compact('city'));

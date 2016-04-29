@@ -34,7 +34,7 @@ class Countries extends Controller
 
     public function edit(Country $country)
     {
-        Breadcrumbs::push($country->title, "acp/countries/{$country->slug}");
+        Breadcrumbs::push($country->title, "acp/countries/{$country->id}");
         Breadcrumbs::push('Редактирование');
 
         return view($this->view, compact('country'));
