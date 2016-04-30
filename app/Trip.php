@@ -40,7 +40,7 @@ class Trip extends Model
         12 => 'декабрь',
     ];
 
-    protected $fillable = ['title', 'slug', 'date_start', 'date_end'];
+    protected $fillable = ['city_id', 'title', 'slug', 'tpl', 'date_start', 'date_end', 'published'];
     protected $dates = ['date_start', 'date_end'];
 
     public function city()

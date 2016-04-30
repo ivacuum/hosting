@@ -1,9 +1,9 @@
-@extends('acp.cities.base')
+@extends('acp.trips.base')
 
 @section('content')
 <div class="boxed-group">
   <div class="boxed-group-inner">
-    <form action="{{ action("$self@update", $city) }}" class="form-horizontal" method="post">
+    <form action="{{ action("$self@update", $trip) }}" class="form-horizontal" method="post">
 
       @include("$tpl.form")
       @include('acp.tpl.hidden_fields', ['method' => 'put'])

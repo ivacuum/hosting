@@ -13,8 +13,8 @@ class CreateTripsTable extends Migration
 			$table->string('title');
 			$table->string('slug');
 			$table->string('tpl');
-			$table->date('date_start');
-			$table->date('date_end');
+			$table->timestamp('date_start');
+			$table->timestamp('date_end');
 			$table->boolean('published')->unsigned()->default(0);
 			$table->string('meta_title');
 			$table->string('meta_description');

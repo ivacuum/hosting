@@ -88,6 +88,16 @@ Route::group(['prefix' => 'servers', 'breadcrumbs' => [['Серверы', 'acp/s
     });
 });
 
+Route::group(['prefix' => 'trips', 'breadcrumbs' => [['Поездки', 'acp/trips']]], function() {
+    Route::get('/', 'Acp\Trips@index');
+    Route::post('/', 'Acp\Trips@store');
+    Route::get('create', 'Acp\Trips@create');
+    Route::get('{Trip}', 'Acp\Trips@show');
+    Route::put('{Trip}', 'Acp\Trips@update');
+    Route::delete('{Trip}', 'Acp\Trips@destroy');
+    Route::get('{Trip}/edit', 'Acp\Trips@edit');
+});
+
 Route::group(['prefix' => 'users', 'breadcrumbs' => [['Пользователи', 'acp/users']]], function() {
     Route::get('/', 'Acp\Users@index');
     Route::post('/', 'Acp\Users@store');
