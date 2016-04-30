@@ -1,6 +1,4 @@
-@extends('acp.base', [
-  'meta_title' => 'Аккаунты в Яндексе'
-])
+@extends('acp.base')
 
 @section('content')
 <div class="boxed-group flush">

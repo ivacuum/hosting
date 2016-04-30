@@ -1,6 +1,4 @@
-@extends('acp.base', [
-  'meta_title' => 'Страны'
-])
+@extends('acp.base')
 
 @section('content')
 <div class="boxed-group flush">

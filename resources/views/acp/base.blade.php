@@ -1,4 +1,6 @@
-@extends('base')
+@extends('base', [
+  'meta_title' => !empty($meta_title) ? $meta_title : trans("meta_title.{$view}"),
+])
 
 @section('global_menu')
   <li><a class="{{ $self == 'Acp\Cities' ? 'navbar-selected' : '' }}" href="/acp/cities">Города</a></li>
