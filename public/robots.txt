@@ -1,4 +1,5 @@
 User-agent: *
-Allow: /life
-Disallow: /
+Allow: /
+Disallow: /auth
+Disallow: /parser
 Host: https://hosting.ivacuum.ru
