@@ -71,13 +71,6 @@
 </div>
 
 <div class="form-group">
-  <label class="col-md-3 control-label">Meta title:</label>
-  <div class="col-md-6">
-    <input type="text" class="form-control" name="meta_title" value="{{ old('meta_title', @$trip->meta_title) }}">
-  </div>
-</div>
-
-<div class="form-group">
   <label class="col-md-3 control-label">Meta description:</label>
   <div class="col-md-6">
     <input type="text" class="form-control" name="meta_description" value="{{ old('meta_description', @$trip->meta_description) }}">
