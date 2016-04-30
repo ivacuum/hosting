@@ -1,5 +1,7 @@
 <?php
 
+/* @var $factory Illuminate\Database\Eloquent\Factory */
+
 $factory->define(App\User::class, function ($faker) {
     return [
         'name'           => $faker->name,
