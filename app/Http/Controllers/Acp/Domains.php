@@ -11,7 +11,7 @@ use Session;
 
 class Domains extends Controller
 {
-	const DEFAULT_ORDER_BY = 'paid_till';
+	const DEFAULT_ORDER_BY = 'domain';
 
 	public function index(Request $request)
 	{
