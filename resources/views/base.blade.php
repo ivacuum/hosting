@@ -41,7 +41,7 @@
           <ul class="nav navbar-nav navbar-right">
             @if (Auth::user()->isAdmin())
               <li>
-                <a href="/acp/domains">
+                <a href="/acp/trips">
                   @include('tpl.svg.dashboard')
                 </a>
               </li>
