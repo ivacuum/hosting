@@ -26,6 +26,11 @@
       <td>Висбаден</td>
     </tr>
     <tr class="text-muted">
+      <td>9 июля 2016</td>
+      <td>Rammstein</td>
+      <td>Берлин</td>
+    </tr>
+    <tr class="text-muted">
       <td>19 июня 2016</td>
       <td>Rammstein</td>
       <td>Москва</td>
