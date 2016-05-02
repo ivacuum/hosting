@@ -24,7 +24,7 @@
 				"AWS": "*"
 			},
 			"Action": "s3:GetObject",
-			"Resource": "arn:aws:s3:::vacuum.life/*"
+			"Resource": "arn:aws:s3:::«bucket»/*"
 		}
 	]
 }
