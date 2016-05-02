@@ -12,3 +12,6 @@ echo "==> Installing front-end dependencies..."
 bower install
 ied install
 gulp --production
+
+# composer install --no-dev
+# vendor/bin/phpunit
