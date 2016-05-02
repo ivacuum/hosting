@@ -30,4 +30,4 @@
 }
 </pre>
 </div>
-@stop
+@endsection

@@ -11,6 +11,7 @@
   <ul class="list-unstyled">
     <li><a class="link" href="/docs/amazon-s3">Amazon S3</a></li>
     <li><a class="link" href="/docs/freebsd">FreeBSD</a></li>
+    <li><a class="link" href="/docs/nginx">Nginx</a></li>
   </ul>
 </section>
-@stop
+@endsection
