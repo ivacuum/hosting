@@ -86,6 +86,7 @@
   </div>
   @include('tpl.kp_movies', [
     'movies' => [
+      ['title' => 'Экспорт Рэймонда<br>Exporting Raymond', 'id' => 581145],
       ['title' => 'Начало<br>Inception', 'id' => 447301],
       ['title' => 'Шерлок<br>Sherlock', 'id' => 502838],
     ]
