@@ -50,6 +50,9 @@
         <a class="link" href="/life/podcasts">Подкасты</a>
       </div>
       <div class="favorites-entry">
+        <a class="link" href="/life/laundry">Условные обозначения стирки</a>
+      </div>
+      <div class="favorites-entry">
         <a class="link" href="/life/movies">Фильмы и сериалы</a>
       </div>
     </div>
