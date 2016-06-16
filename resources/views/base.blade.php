@@ -19,7 +19,7 @@
 </head>
 <body>
 <div class="wrap-content">
-  <div class="navbar navbar-default">
+  <div class="navbar navbar-default {{ App::environment('local') ? 'navbar-inverse' : '' }}">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
