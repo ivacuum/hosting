@@ -11,10 +11,38 @@
     <tbody>
       <tr>
         <td>
+          {{--
+          @if ($page == 'rammstein.2016.ber')
+            <mark>9 июля 2016</mark>
+          @else
+            <a class="link" href="/life/rammstein.2016.07">9 июля 2016</a>
+          @endif
+          --}}
+          <span class="text-muted">9 июля 2016</span>
+        </td>
+        <td>Берлин</td>
+        <td>Waldbühne</td>
+      </tr>
+      <tr>
+        <td>
+          {{--
+          @if ($page == 'rammstein.2016.msk')
+            <mark>19 июня 2016</mark>
+          @else
+            <a class="link" href="/life/rammstein.2016.06">19 июня 2016</a>
+          @endif
+          --}}
+          <span class="text-muted">19 июня 2016</span>
+        </td>
+        <td>Москва</td>
+        <td>Открытие Арена</td>
+      </tr>
+      <tr>
+        <td>
           @if ($page == 'rammstein.2013')
             <mark>8 июня 2013</mark>
           @else
-            <a href="/life/rammstein.2013" class="link">8 июня 2013</a>
+            <a class="link" href="/life/rammstein.2013">8 июня 2013</a>
           @endif
         </td>
         <td>Самара</td>
@@ -25,7 +53,7 @@
           @if ($page == 'rammstein.2010')
             <mark>26 февраля 2010</mark>
           @else
-            <a href="/life/rammstein.2010" class="link">26 февраля 2010</a>
+            <a class="link" href="/life/rammstein.2010">26 февраля 2010</a>
           @endif
         </td>
         <td>Санкт-Петербург</td>
