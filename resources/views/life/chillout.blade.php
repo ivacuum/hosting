@@ -17,4 +17,4 @@
     <span class="text-muted">более 30 часовых сетов</span>
   </li>
 </ul>
-@stop
+@endsection

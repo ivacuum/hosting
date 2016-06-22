@@ -53,4 +53,4 @@
   <a href="https://www.youtube.com/watch?v=w0ZYxUeKsu8"></a>
 </div>
 @include('life.timeline.dreamtheater')
-@stop
+@endsection

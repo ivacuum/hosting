@@ -12,4 +12,4 @@
     <li><a class="link" href="/acp/yandex/users">Пользователи Яндекс API</a></li>
   </ul>
 </div>
-@stop
+@endsection

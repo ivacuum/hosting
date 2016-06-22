@@ -8,7 +8,7 @@
   </h3>
   <div class="boxed-group-inner">
     <form action="{{ action("$self@update", $user) }}" class="form-horizontal" method="post">
-      
+
       @include("$tpl.form")
       @include('acp.tpl.hidden_fields', ['method' => 'put'])
 
@@ -22,4 +22,4 @@
     </form>
   </div>
 </div>
-@stop
+@endsection

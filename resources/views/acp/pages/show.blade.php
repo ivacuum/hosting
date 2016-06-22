@@ -12,4 +12,4 @@
 
 {!! $page->html !!}
 
-@stop
+@endsection

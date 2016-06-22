@@ -15,4 +15,4 @@
   <li><kbd>⌃⌘ R</kbd> — <span class="text-muted">Current Document</span></li>
   <li><kbd>⌃⌘ T</kbd> — <span class="text-muted">Select bundle item...</span></li>
 </ul>
-@stop
+@endsection

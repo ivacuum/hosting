@@ -127,4 +127,4 @@
     </tr>
   </tbody>
 </table>
-@stop
+@endsection

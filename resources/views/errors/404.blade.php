@@ -2,4 +2,4 @@
 
 @section('content')
 404 Not Found
-@stop
+@endsection

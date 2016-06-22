@@ -2,4 +2,4 @@
 
 @section('content')
 403 Forbidden
-@stop
+@endsection

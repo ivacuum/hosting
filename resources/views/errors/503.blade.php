@@ -2,4 +2,4 @@
 
 @section('content')
 Сайт скоро восстановит работу.
-@stop
+@endsection

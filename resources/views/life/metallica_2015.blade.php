@@ -55,4 +55,4 @@
 <p>Кирк Хэмметт <a class="link" href="https://www.youtube.com/watch?v=eUr9c8b7d64&t=1525">поразил своим вторым соло</a> — никогда его не видел таким эмоциональным и заведенным! Самое яркое впечатление вечера!</p>
 
 @include('life.timeline.metallica')
-@stop
+@endsection

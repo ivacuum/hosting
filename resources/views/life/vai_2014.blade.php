@@ -60,4 +60,4 @@
   <img src="//life.ivacuum.ru/gigs/vai.2014/Steve_093.jpg">
   <img src="//life.ivacuum.ru/gigs/vai.2014/Steve_008.jpg">
 </div>
-@stop
+@endsection

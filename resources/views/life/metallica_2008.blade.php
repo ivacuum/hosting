@@ -53,4 +53,4 @@
 </div>
 
 @include('life.timeline.metallica')
-@stop
+@endsection

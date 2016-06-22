@@ -261,4 +261,4 @@
     ]
   ])
 </section>
-@stop
+@endsection

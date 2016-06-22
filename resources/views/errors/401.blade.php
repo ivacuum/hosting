@@ -2,4 +2,4 @@
 
 @section('content')
 401 Unauthorized
-@stop
+@endsection

@@ -29,4 +29,4 @@
   <input type="hidden" name="file" value="{{ $file }}">
   {{ csrf_field() }}
 </form>
-@stop
+@endsection

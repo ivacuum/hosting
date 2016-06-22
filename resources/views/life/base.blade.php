@@ -23,7 +23,7 @@
   Поделиться:
   <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="big" data-yashareQuickServices="vkontakte,facebook,twitter,gplus" data-yashareTheme="counter" style="display: inline-block"></div>
 </span>
-@stop
+@endsection
 
 @push('js')
 <script src="//yastatic.net/share/share.js"></script>

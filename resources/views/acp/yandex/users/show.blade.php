@@ -18,4 +18,4 @@
 @else
   <div class="alert alert-warning">На этот аккаунт еще не добавлены домены.</div>
 @endif
-@stop
+@endsection

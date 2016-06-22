@@ -15,4 +15,4 @@
 @if ($server->text)
   <div>{!! nl2br($server->text) !!}</div>
 @endif
-@stop
+@endsection

@@ -58,4 +58,4 @@
 </div>
 
 @include('life.timeline.linkinpark')
-@stop
+@endsection

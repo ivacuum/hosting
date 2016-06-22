@@ -21,4 +21,4 @@
     <li><a class="link" href="http://brand.podfm.ru/102/">FedEx</a> #102</li>
   </ul>
 </section>
-@stop
+@endsection

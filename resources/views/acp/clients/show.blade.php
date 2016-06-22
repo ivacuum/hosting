@@ -22,4 +22,4 @@
 @else
   <div class="alert alert-warning">У клиента еще нет доменов.</div>
 @endif
-@stop
+@endsection

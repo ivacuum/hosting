@@ -49,4 +49,4 @@
 </div>
 
 @include('life.timeline.rammstein')
-@stop
+@endsection

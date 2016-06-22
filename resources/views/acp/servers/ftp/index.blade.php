@@ -97,4 +97,4 @@
   <input type="hidden" name="path" value="{{ $dir }}">
   {{ csrf_field() }}
 </form>
-@stop
+@endsection

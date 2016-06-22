@@ -69,4 +69,4 @@
 </div>
 
 @include('life.timeline.oomph')
-@stop
+@endsection

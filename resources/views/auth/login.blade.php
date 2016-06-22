@@ -19,23 +19,23 @@
         <a href="/auth/password/remind" class="link">забыли пароль?</a>
         <input required type="password" class="form-control" name="password">
       </div>
-    
+
       <div class="checkbox">
         <label><input type="checkbox" name="foreign"> Чужой компьютер?</label>
       </div>
-    
+
       <button type="submit" class="btn btn-primary btn-lg btn-block">
         Войти
       </button>
-      
+
       <p class="lead text-center" style="margin: 1em 0;">или</p>
-      
+
       <a href="/auth/register" class="btn btn-default btn-lg btn-block">
         Зарегистрироваться
       </a>
-      
+
       {{ csrf_field() }}
     </form>
   </div>
 </div>
-@stop
+@endsection

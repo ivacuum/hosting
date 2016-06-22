@@ -2,7 +2,7 @@
 
 @section('content_header')
 <div class="lead">
-@stop
+@endsection
 
 @section('content_footer')
   <p>
@@ -11,7 +11,7 @@
 
   <div id="yandex_map" style="display: none; width: 1000px; height: 600px"></div>
 </div>
-@stop
+@endsection
 
 @push('js')
 <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU"></script>

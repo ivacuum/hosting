@@ -19,4 +19,4 @@
     <span class="text-muted">[2014]</span>
   </li>
 </ul>
-@stop
+@endsection

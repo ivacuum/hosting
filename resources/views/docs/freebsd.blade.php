@@ -72,4 +72,4 @@
 <span class="terminal-command">npm install -g less less-plugin-clean-css uglify-js</span>
 </pre>
 </div>
-@stop
+@endsection

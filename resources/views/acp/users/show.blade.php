@@ -9,4 +9,4 @@
   {{ $user->email }}
   @include('acp.tpl.edit', ['id' => $user])
 </h2>
-@stop
+@endsection
