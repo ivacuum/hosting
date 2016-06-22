@@ -25,14 +25,11 @@
       </tr>
       <tr>
         <td>
-          {{--
           @if ($page == 'rammstein.2016.msk')
             <mark>19 июня 2016</mark>
           @else
             <a class="link" href="/life/rammstein.2016.06">19 июня 2016</a>
           @endif
-          --}}
-          <span class="text-muted">19 июня 2016</span>
         </td>
         <td>Москва</td>
         <td>Открытие Арена</td>

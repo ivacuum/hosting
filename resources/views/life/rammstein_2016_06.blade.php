@@ -32,8 +32,9 @@
       <li>Du hast</li>
       <li>Stripped</li>
       <li>Sonne</li>
-      <li>Ohne dich</li>
+      <li>Amerika</li>
       <li>Engel</li>
+      <li>Moskau</li>
     </ol>
   </div>
   <div class="col-md-5">
