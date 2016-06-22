@@ -6,6 +6,7 @@
   <a href="//www.youtube.com/embed/Q9-BL_BEPHE">Tides From Nebula — Siberia</a>
 </div>
 
+<a name="triumph"></a>
 <p>Добрался до Москвы к вечеру. До начала концерта оставалось около часа.</p>
 @include('tpl.pic', ['pic' => 'IMG_1357.jpg'])
 
