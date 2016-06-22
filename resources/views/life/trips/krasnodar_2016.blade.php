@@ -134,4 +134,6 @@
 
 <p>Нормальная такая стенка ребятам в <a class="link" href="https://ru.wikipedia.org/wiki/Минус_пять">минус пять</a> поиграть.</p>
 @include('tpl.pic-2x', ['pic' => 'IMG_0204.jpg'])
+
+<p>На сервисе <a href="https://www.airbnb.com/c/spankov1?s=8" class="link">Airbnb</a> по купону <code>NORVEGE2015</code> можно получить скидку в 10 евро при бронировании жилья в Краснодаре.</p>
 @endsection
