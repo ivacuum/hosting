@@ -30,7 +30,7 @@
       <td>Rammstein</td>
       <td>Берлин</td>
     </tr>
-    <tr class="text-muted">
+    <tr>
       <td>19 июня 2016</td>
       <td><a class="link" href="/life/rammstein.2016.06">Rammstein</a></td>
       <td><a class="link" href="/life/msk">Москва</a></td>
