@@ -217,6 +217,22 @@
   'IMG_0130.jpg',
 ]])
 
+<p>Напоследок несколько видео. Наслаждение смотреть 60 кадров в секунду.</p>
+<p>Как выглядит улица в центре.</p>
+<div class="fotorama" data-width="1000" data-ratio="16/10">
+  <a href="https://www.youtube.com/embed/bh5oaJbD_z8">Barcelona street, May 2016</a>
+</div>
+
+<p>Аттракцион #1 в Порте Авентура неподалеку от Барселоны.</p>
+<div class="fotorama" data-width="1000" data-ratio="16/10">
+  <a href="https://www.youtube.com/embed/DqKHyp8IWyc">Barcelona street, May 2016</a>
+</div>
+
+<p>Аттракцион #2.</p>
+<div class="fotorama" data-width="1000" data-ratio="16/10">
+  <a href="https://www.youtube.com/embed/UAXCpzBtnYM">Barcelona street, May 2016</a>
+</div>
+
 <p>Видишь сову? Нет? А она есть.</p>
 @include('tpl.pic-2x', ['pic' => 'IMG_0330.jpg'])
 @endsection
