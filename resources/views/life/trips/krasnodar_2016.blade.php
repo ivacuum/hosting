@@ -41,6 +41,7 @@
   'IMG_0175.jpg',
 ]])
 
+<a name="sun_pole"></a>
 <p>На столбе с указателями солнечная панель.</p>
 @include('tpl.pic-2x', ['pic' => 'IMG_0152.jpg'])
 
