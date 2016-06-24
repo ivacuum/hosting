@@ -225,12 +225,12 @@
 
 <p>Аттракцион #1 в Порте Авентура неподалеку от Барселоны.</p>
 <div class="fotorama" data-width="1000" data-ratio="16/10">
-  <a href="https://www.youtube.com/embed/DqKHyp8IWyc">Barcelona street, May 2016</a>
+  <a href="https://www.youtube.com/embed/DqKHyp8IWyc">Port Aventura boats, June 2016</a>
 </div>
 
 <p>Аттракцион #2.</p>
 <div class="fotorama" data-width="1000" data-ratio="16/10">
-  <a href="https://www.youtube.com/embed/UAXCpzBtnYM">Barcelona street, May 2016</a>
+  <a href="https://www.youtube.com/embed/UAXCpzBtnYM">Port Aventura splash, June 2016</a>
 </div>
 
 <p>Видишь сову? Нет? А она есть.</p>
