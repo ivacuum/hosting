@@ -47,6 +47,7 @@
 </div>
 
 <div class="shortcuts-item">
+  <a name="palace"></a>
   <p>Дворец земледельцев и соседние дома.</p>
   <div class="fotorama">
     <img src="//life.ivacuum.ru/kazan.2015.06/SAM_0678.jpg" width="1000" height="667">
