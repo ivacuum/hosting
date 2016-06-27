@@ -27,10 +27,11 @@
       <li>Us and Them</li>
       <li>In Any Tongue</li>
       <li>High Hopes</li>
-      <li>Astronomy Domine</li>
+      <li>One of These Days</li>
       <li>Shine On You Crazy Diamond (Parts I-V)</li>
-      <li>Fat Old Sun</li>
+      <li>Dancing Right in Front of Me</li>
       <li>Coming Back to Life</li>
+      <li>On an Island</li>
       <li>The Girl in the Yellow Dress</li>
       <li>Today</li>
       <li>Sorrow</li>
