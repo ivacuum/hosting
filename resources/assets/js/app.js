@@ -31,6 +31,28 @@ class Application {
     });
   }
 
+  fotoramaInit(pjax = false) {
+    if (pjax) {
+      $('.fotorama').fotorama();
+    }
+
+    this.fotorama2x();
+
+    $('.js-fotorama-2x').fotorama();
+  }
+
+  fotorama2x() {
+    const breakpoint = 1200;
+
+    let width = $(window).width();
+
+    if (width >= breakpoint) {
+      $('.js-fotorama-2x a').each(function() {
+        $(this).attr('href', $(this).data('src-2x'));
+      });
+    }
+  }
+
   lazyLoadImages() {
     const offset = 400;
     const breakpoint = 1200;
@@ -72,22 +94,23 @@ class Application {
     initLazyLoad();
   }
 
-  initOnReadyAndPjax() {
+  initOnReadyAndPjax(pjax = false) {
     // Прилипшие заголовки таблиц
     $('.js-float-thead').floatThead();
 
     // Подсказки
     $('.tip').tooltip();
+
+    this.fotoramaInit(pjax);
   }
 
   onPjaxComplete() {
     $(document).on('pjax:complete', () => {
       this.pjax.onComplete();
-      $('.fotorama').fotorama();
 
       $(document.body).trigger('reset.js-lazy');
 
-      this.initOnReadyAndPjax();
+      this.initOnReadyAndPjax(true);
     });
   }
 
