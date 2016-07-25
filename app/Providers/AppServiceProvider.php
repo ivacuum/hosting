@@ -29,5 +29,9 @@ class AppServiceProvider extends ServiceProvider
 
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
         }
+
+        if (function_exists('fastcgi_finish_request')) {
+            register_shutdown_function('fastcgi_finish_request');
+        }
     }
 }
