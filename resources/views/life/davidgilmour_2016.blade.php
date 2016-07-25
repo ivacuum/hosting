@@ -19,17 +19,17 @@
       <li>5 A.M.</li>
       <li>Rattle That Lock</li>
       <li>Faces of Stone</li>
-      <li>Wish You Were Here</li>
       <li>What Do You Want From Me</li>
-      <li>A Boat Lies Waiting</li>
       <li>The Blue</li>
+      <li>The Great Gig in the Sky</li>
+      <li>A Boat Lies Waiting</li>
+      <li>Wish You Were Here</li>
       <li>Money</li>
-      <li>Us and Them</li>
       <li>In Any Tongue</li>
       <li>High Hopes</li>
       <li>One of These Days</li>
       <li>Shine On You Crazy Diamond (Parts I-V)</li>
-      <li>Dancing Right in Front of Me</li>
+      <li>Fat Old Sun</li>
       <li>Coming Back to Life</li>
       <li>On an Island</li>
       <li>The Girl in the Yellow Dress</li>
