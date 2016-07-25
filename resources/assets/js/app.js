@@ -48,7 +48,7 @@ class Application {
 
     if (width >= breakpoint) {
       $('.js-fotorama-2x a').each(function() {
-        $(this).attr('href', $(this).data('src-2x'));
+        $(this).attr('href', $(this).data('src2x'));
       });
     }
   }
@@ -77,7 +77,7 @@ class Application {
 
       images = images.filter(function() {
         let e = $(this);
-        const src = width > breakpoint ? (e.data('src-2x') || e.data('src')) : e.data('src');
+        const src = width > breakpoint ? (e.data('src2x') || e.data('src')) : e.data('src');
         return scrolled > e.offset().top ? (e.attr("src", src).removeClass('js-lazy'), false) : true;
       });
 

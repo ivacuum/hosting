@@ -6,12 +6,18 @@ elixir.config.publicPath = 'public/build';
 elixir.config.sourcemaps = false;
 elixir.config.versioning.buildFolder = '';
 
+/*
+elixir.config.js.browserify.transformers.push({
+  name: 'vueify',
+
+  options: {}
+});
+*/
+
 elixir(function(mix) {
   mix.sass('app.scss')
 
       .styles([
-          'bower/bootstrap/dist/css/bootstrap.css',
-          'bower/bootstrap/dist/css/bootstrap-theme.css',
           'bower/nprogress/nprogress.css',
           'bower/fotorama/fotorama.css',
       ], 'public/build/css/vendor.css', './resources/assets')
@@ -27,9 +33,9 @@ elixir(function(mix) {
 
       .scripts([
           'bower/jquery/dist/jquery.min.js',
-          'bower/bootstrap/dist/js/bootstrap.min.js',
+          'bower/bootstrap-sass/assets/javascripts/bootstrap.min.js',
           'bower/nprogress/nprogress.js',
-          'js/fotorama.js',
+          'js/fotorama-settings.js',
           'bower/fotorama/fotorama.js',
           'bower/jquery.scrollTo/jquery.scrollTo.min.js',
           'bower/floatThead/dist/jquery.floatThead.min.js',

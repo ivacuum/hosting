@@ -1,7 +1,7 @@
 fotoramaDefaults = {
   allowfullscreen: true,
   clicktransition: 'dissolve',
-  loop: true,
+  loop: false,
   nav: 'thumbs',
   trackpad: true
 }
