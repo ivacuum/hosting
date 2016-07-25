@@ -1,0 +1,1 @@
+@extends('acp.dev.base')

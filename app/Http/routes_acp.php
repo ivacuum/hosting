@@ -33,6 +33,16 @@ Route::group(['prefix' => 'countries', 'breadcrumbs' => [['Страны', 'acp/c
     Route::get('{Country}/edit', 'Acp\Countries@edit');
 });
 
+Route::group(['prefix' => 'dev', 'breadcrumbs' => [['Разработка', 'acp/dev']]], function () {
+    Route::get('/', 'Acp\Dev@index');
+    Route::get('debugbar', 'Acp\Dev@debugbar');
+    Route::get('svg', 'Acp\Dev@svg');
+    Route::get('templates', 'Acp\Dev@templates');
+    Route::get('templates/{template}', 'Acp\Dev@template');
+    Route::get('thumbnails', 'Acp\Dev@thumbnails');
+    Route::post('thumbnails', 'Acp\Dev@thumbnailsPost');
+});
+
 Route::group(['prefix' => 'domains', 'breadcrumbs' => [['Домены', 'acp/domains']]], function() {
     Route::get('/', 'Acp\Domains@index');
     Route::post('/', 'Acp\Domains@store');
