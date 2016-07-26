@@ -10,3 +10,6 @@ https://tech.yandex.ru/pdd/doc/reference/dkim-status-docpage/
 @ TXT v=DMARC1; p=none; fo=1; ruf=mailto:admin@kupislona.ru
 
 postmaster.mail.ru
+
+Проверка отправки писем
+http://www.mail-tester.com
