@@ -31,7 +31,7 @@
 </div>
 
 <div class="form-group {{ $errors->has('tpl') ? 'has-error' : '' }}">
-  <label class="col-md-3 control-label required">Шаблон:</label>
+  <label class="col-md-3 control-label">Шаблон:</label>
   <div class="col-md-6">
     <div class="form-select">
       <select class="form-control" name="tpl">
