@@ -13,12 +13,12 @@
 
 <div class="travel-entry">
   <span class="travel-year">2016</span>
-  David Gilmour
+  <a class="link" href="/life/davidgilmour.2016">David Gilmour</a>
   <span class="travel-month">18 июля</span>
 </div>
 
 <div class="travel-entry">
-  Rammstein
+  <a class="link" href="/life/rammstein.2016.07">Rammstein</a>
   <span class="travel-month">9 июля</span>
 </div>
 

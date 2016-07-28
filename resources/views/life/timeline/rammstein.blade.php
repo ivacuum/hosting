@@ -11,14 +11,11 @@
     <tbody>
       <tr>
         <td>
-          {{--
-          @if ($page == 'rammstein.2016.ber')
+          @if ($page == 'rammstein.2016.07')
             <mark>9 июля 2016</mark>
           @else
             <a class="link" href="/life/rammstein.2016.07">9 июля 2016</a>
           @endif
-          --}}
-          <span class="text-muted">9 июля 2016</span>
         </td>
         <td>Берлин</td>
         <td>Waldbühne</td>
