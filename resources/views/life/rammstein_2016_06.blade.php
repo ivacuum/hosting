@@ -25,7 +25,10 @@
       <li>Hallelujah</li>
       <li>Zerstören</li>
       <li>Keine Lust</li>
-      <li>Feuer frei!</li>
+      <li>
+        <a class="link" href="https://www.youtube.com/watch?v=QtUuBaX3LRY&t=260">Feuer frei!</a>
+        @include('tpl.svg.heart')
+      </li>
       <li>Seemann</li>
       <li>Ich tu dir weh</li>
       <li>Du riechst so gut</li>
