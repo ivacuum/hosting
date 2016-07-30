@@ -13,10 +13,12 @@
   @if (!empty($countries))
     <ol>
       @foreach ($countries as $country)
-        <li>
-          <a class="link" href="/life/countries/{{ $country->slug }}">
-            {{ $country->title }}
-          </a>
+        <li class="countries-list-country">
+          <a class="link" href="/life/countries/{{ $country->slug }}">{{ $country->title }}</a>:
+          @php ($total_cities = sizeof($country->cities) - 1)
+          @foreach ($country->cities as $i => $city)
+            <a class="link" href="/life/{{ $city->slug }}">{{ $city->title }}</a>{{ $i !== $total_cities ? ',' : '' }}
+          @endforeach
         </li>
       @endforeach
     </ol>

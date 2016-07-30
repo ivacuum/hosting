@@ -37,7 +37,7 @@ class Life extends Controller
 
     public function countries()
     {
-        $countries = Country::orderBy('title', 'asc')->get();
+        $countries = Country::with('cities')->orderBy('title', 'asc')->get();
 
         Breadcrumbs::push('Заметки', 'life');
         Breadcrumbs::push('Страны');
