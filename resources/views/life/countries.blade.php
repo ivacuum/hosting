@@ -14,7 +14,7 @@
     <ol>
       @foreach ($countries as $country)
         <li class="countries-list-country">
-          <a class="link" href="/life/countries/{{ $country->slug }}">{{ $country->title }}</a>:
+          <a class="link" href="/life/countries/{{ $country->slug }}"><strong>{{ $country->title }}</strong></a>:
           @php ($total_cities = sizeof($country->cities) - 1)
           @foreach ($country->cities as $i => $city)
             <a class="link" href="/life/{{ $city->slug }}">{{ $city->title }}</a>{{ $i !== $total_cities ? ',' : '' }}
