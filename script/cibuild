@@ -10,7 +10,7 @@ ant
 
 echo "==> Installing front-end dependencies..."
 bower install
-ied install
+npm install
 gulp --production
 
 # composer install --no-dev
