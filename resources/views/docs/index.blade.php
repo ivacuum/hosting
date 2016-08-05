@@ -14,4 +14,22 @@
     <li><a class="link" href="/docs/nginx">Nginx</a></li>
   </ul>
 </section>
+
+<section>
+  <div class="h2">Веб-технологии</div>
+  <ul class="list-unstyled">
+    <li>
+      <a class="link" href="https://developers.whatwg.org/">
+        HTML Standart
+        @include('tpl.svg.external-link')
+      </a>
+    </li>
+    <li>
+      <a class="link" href="http://www.phptherightway.com/">
+        PHP: The Right Way
+        @include('tpl.svg.external-link')
+      </a>
+    </li>
+  </ul>
+</section>
 @endsection

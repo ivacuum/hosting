@@ -15,7 +15,7 @@
 <div class="shortcuts-item">
 <pre class="terminal">
 <span class="terminal-comment"># Обновление ОС</span>
-<span class="terminal-command">freebsd-update fetch install</span>
+<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=freebsd-update">freebsd-update</a> fetch install</span>
 <span class="terminal-command">freebsd-update upgrade -r {{ $freebsd_version }}-RELEASE</span>
 <span class="terminal-command">freebsd-update install</span>
 <span class="terminal-command">shutdown -r now</span>
@@ -26,22 +26,22 @@
 <div class="shortcuts-item">
 <pre>
 <span class="terminal-comment"># Чистка портов</span>
-<span class="terminal-command">pkg clean</span>
+<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=pkg">pkg</a> clean</span>
 </pre>
 </div>
 
 <div class="shortcuts-item">
 <pre>
 <span class="terminal-comment"># Исходники ядра</span>
-<span class="terminal-command">fetch http://mirror.yandex.ru/freebsd/releases/amd64/{{ $freebsd_version }}-RELEASE/src.txz</span>
-<span class="terminal-command">tar -C / -xzf src.txz</span>
+<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=fetch">fetch</a> http://mirror.yandex.ru/freebsd/releases/amd64/{{ $freebsd_version }}-RELEASE/src.txz</span>
+<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=tar">tar</a> -C / -xzf src.txz</span>
 </pre>
 </div>
 
 <div class="shortcuts-item">
 <pre>
 <span class="terminal-comment"># Генерация зашифрованного пароля</span>
-<span class="terminal-command">openssl passwd -1</span>
+<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=openssl">openssl</a> passwd -1</span>
 </pre>
 </div>
 
@@ -57,7 +57,7 @@
 <div class="shortcuts-item">
 <pre>
 <span class="terminal-comment"># Первоначальная подготовка портов</span>
-<span class="terminal-command">portsnap fetch extract</span>
+<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=portsnap">portsnap</a> fetch extract</span>
 </pre>
 </div>
 
@@ -71,7 +71,33 @@
 <div class="shortcuts-item">
 <pre>
 <span class="terminal-comment"># Установка модулей npm для jenkins</span>
-<span class="terminal-command">npm install -g less less-plugin-clean-css uglify-js</span>
+<span class="terminal-command">npm install --global gulp-cli</span>
 </pre>
 </div>
+
+<div class="shortcuts-item">
+<pre>
+<span class="terminal-comment"># Утилиты</span>
+
+<span class="terminal-comment"># Активные файлы</span>
+<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=fstat">fstat</a></span>
+
+<span class="terminal-comment"># Статистика по дискам</span>
+<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=gstat">gstat</a></span>
+
+<span class="terminal-comment"># Состояние ввода-вывода</span>
+<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=iostat">iostat</a></span>
+
+<span class="terminal-comment"># Состояние сети</span>
+<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=netstat">netstat</a></span>
+
+<span class="terminal-comment"># Системная статистика</span>
+<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=systat">systat</a> [-ifstat | -iostat | -netstat | -tcp | -vmstat] [<em>refresh interval in seconds</em>]</span>
+
+<span class="terminal-comment"># Состояние виртуальной памяти</span>
+<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=vmstat">vmstat</a> [-iz] [<em>wait</em>]</span>
+</pre>
+</div>
+
+<p>Больше полезностей на <a class="link" href="http://www.cyberciti.biz/faq/category/freebsd/">cyberciti.biz</a>.</p>
 @endsection
