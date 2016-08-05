@@ -55,6 +55,9 @@
       <div class="favorites-entry">
         <a class="link" href="/life/movies">Фильмы и сериалы</a>
       </div>
+      <div class="favorites-entry">
+        <a class="link" href="/life/using-in-travels">Чем пользуюсь в путешествиях</a>
+      </div>
     </div>
   </div>
 </section>
