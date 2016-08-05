@@ -7,6 +7,8 @@
   ]
 ])
 
+@php ($freebsd_version = '10.3')
+
 @section('content')
 <h2>Сниппеты для выполнения различных задач на ОС FreeBSD</h2>
 
@@ -14,7 +16,7 @@
 <pre class="terminal">
 <span class="terminal-comment"># Обновление ОС</span>
 <span class="terminal-command">freebsd-update fetch install</span>
-<span class="terminal-command">freebsd-update upgrade -r 10.2-RELEASE</span>
+<span class="terminal-command">freebsd-update upgrade -r {{ $freebsd_version }}-RELEASE</span>
 <span class="terminal-command">freebsd-update install</span>
 <span class="terminal-command">shutdown -r now</span>
 <span class="terminal-command">freebsd-update install</span>
@@ -31,7 +33,7 @@
 <div class="shortcuts-item">
 <pre>
 <span class="terminal-comment"># Исходники ядра</span>
-<span class="terminal-command">fetch http://mirror.yandex.ru/freebsd/releases/amd64/10.2-RELEASE/src.txz</span>
+<span class="terminal-command">fetch http://mirror.yandex.ru/freebsd/releases/amd64/{{ $freebsd_version }}-RELEASE/src.txz</span>
 <span class="terminal-command">tar -C / -xzf src.txz</span>
 </pre>
 </div>
