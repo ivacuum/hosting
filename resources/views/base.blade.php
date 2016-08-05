@@ -35,6 +35,9 @@
             <li><a class="{{ $self == 'Home' ? 'navbar-selected' : '' }}" href="/">Главная</a></li>
             <li><a class="{{ $self == 'Life' ? 'navbar-selected' : '' }}" href="/life">Заметки</a></li>
             <li><a class="{{ $self == 'ParserVk' ? 'navbar-selected' : '' }}" href="/parser/vk">Парсер ВК</a></li>
+            @if (App::environment('local'))
+              <li><a class="{{ $self == 'Docs' ? 'navbar-selected' : '' }}" href="/docs">Доки</a></li>
+            @endif
           @show
         </ul>
         @if (Auth::check())
