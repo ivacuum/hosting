@@ -141,5 +141,5 @@
 <p>В Германии туго с открытым вай-фаем, часто его вовсе не найти. Но есть одна уловка — междугородние автобусы предлагают бесплатный доступ в сеть. Можно подключиться просто находясь неподалеку. А на <a class="link" href="https://www.busradar.com/">busradar.com</a> можно найти оптимальный рейс.</p>
 @include('tpl.pic-2x', ['pic' => 'IMG_0766.jpg'])
 
-@include('tpl.svg.airbnb_coupon', ['coupon' => 'BERLIN2015'])
+@include('tpl.svg.airbnb_coupon', ['city' => 'Берлине', 'coupon' => 'BERLIN2015'])
 @endsection

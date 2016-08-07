@@ -136,5 +136,5 @@
 <p>Нормальная такая стенка ребятам в <a class="link" href="https://ru.wikipedia.org/wiki/Минус_пять">минус пять</a> поиграть.</p>
 @include('tpl.pic-2x', ['pic' => 'IMG_0204.jpg'])
 
-@include('tpl.svg.airbnb_coupon', ['coupon' => 'NORVEGE2015'])
+@include('tpl.svg.airbnb_coupon', ['city' => 'Краснодаре', 'coupon' => 'NORVEGE2015'])
 @endsection
