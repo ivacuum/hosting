@@ -1,4 +1,4 @@
-@extends('life.base', [
+@extends('life.gigs.base', [
   'meta_title' => 'David Gilmour в Висбадене &middot; 18 июля 2016',
   'meta_description' => 'Легенда воочию. Голос и гитара группы Pink Floyd с трехчасовым шоу в немецком городе Висбаден.',
   'meta_image' => 'https://life.ivacuum.ru/gigs/davidgilmour.2016/1.jpg',
