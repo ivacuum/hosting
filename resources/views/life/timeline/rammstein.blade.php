@@ -18,7 +18,7 @@
           @endif
         </td>
         <td>Берлин</td>
-        <td>Waldbühne</td>
+        <td>Вальдбюне</td>
       </tr>
       <tr>
         <td>
