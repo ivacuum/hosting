@@ -12,7 +12,7 @@ class Home extends Controller
         $trips = Trip::where('published', 1)
             ->where('meta_image', '<>', '')
             ->orderBy('date_start', 'desc')
-            ->take(3)
+            ->take(9)
             ->get();
 
         return view('index', compact('trips'));
