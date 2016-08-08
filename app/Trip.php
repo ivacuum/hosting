@@ -104,7 +104,7 @@ class Trip extends Model
 
     public function getLocalizedDate()
     {
-        if ($this->date_start->eq($this->date_end)) {
+        if (0 === $this->date_end->diffInDays($this->date_start)) {
             return "{$this->date_start->day} {$this->date_start->formatLocalized('%B %Y')}";
         }
 
