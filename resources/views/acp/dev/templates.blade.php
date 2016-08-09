@@ -1,7 +1,7 @@
 @extends('acp.dev.base')
 
 @section('content')
-<h3>Доступные шаблоны</h3>
+<h2 class="m-t-0">Доступные шаблоны</h2>
 <ul>
   @foreach ($templates as $template)
     <li>

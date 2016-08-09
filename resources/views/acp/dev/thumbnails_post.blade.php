@@ -2,7 +2,7 @@
 
 @section('content')
 @foreach ($thumbnails as $thumbnail)
-  <h4>{{ basename($thumbnail['dest']) }}</h4>
+  <h3>{{ basename($thumbnail['dest']) }}</h3>
   @if (false !== $thumbnail['lat'] && false !== $thumbnail['lon'])
     <p>
       @include('tpl.svg.location-arrow')

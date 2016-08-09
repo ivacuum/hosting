@@ -1,7 +1,7 @@
-@import "../bower/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "variables";
+@import "bootstrap";
+@import "base";
 @import "navbar";
-@import "fonts";
 @import "form-select";
 @import "rur";
 @import "life";
@@ -9,156 +9,8 @@
 @import "svg-icons";
 @import "utilities/spacing";
 
-// В IE10 так не пропадает контент после закрытия модального окна
-html { overflow-y: scroll; }
-html,
-body {
-  height: 100%;
-}
-body {
-  color: #404040;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
-}
-
-// Чтобы страница не проматывалась в начало,
-// когда показываются модальные окна bootstrap
-body.modal-open { overflow: visible; }
-
-a[href^="http"]:empty::before { content: attr(href); }
-a:hover,
-a:focus { text-decoration: none; }
-
-.link,
-.pseudo {
-  border-bottom: 1px solid;
-  border-color: rgba(66, 139, 202, 0.3);
-  color: #428bca;
-  cursor: pointer;
-  outline: 0;
-  text-decoration: none;
-
-  &:hover,
-  &:focus,
-  &.active {
-    border-color: rgba(210, 50, 50, 0.5) !important;
-    color: #d23232 !important;
-    text-decoration: none;
-
-    .svg-icon { fill: #d23232 !important; }
-  }
-
-  &.active { border: none; }
-
-  &:visited {
-    border-color: rgba(102, 14, 122, 0.3);
-    color: #660e7a;
-
-    .svg-icon { fill: #660e7a; }
-  }
-}
-
-.pseudo { border-bottom-style: dotted; }
-
-code,
-kbd,
-pre,
-samp {
-  font-family: Monaco, Consolas, "Courier New", monospace;
-}
-
-footer {
-  border-top: 1px solid #eee;
-  padding-top: 14px;
-  padding-bottom: 14px;
-  color: #777;
-
-  ul { margin-bottom: 0; }
-}
-
-kbd {
-  padding: 0 8px;
-  color: #333;
-  text-shadow: 0 1px 0 rgba(255,255,255,1.0);
-  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-  background: #eee linear-gradient(#fafafa, #e0e0e0);
-  border-left: 1px solid #bbb;
-  border-right: 1px solid #bbb;
-  border-bottom: 1px solid #bbb;
-  border-top: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-legend {
-  font-family: Tremble, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  margin: 0;
-}
-
-h1,
-h2 { margin-bottom: 0.5em; }
-
-h1, .h1 { font-size: 32px; }
-h2, .h2 { font-size: 26px; }
-h2 small, .h2 small { font-size: 16px; }
-h3, .h3 { font-size: 21px; }
-h4, .h4 { font-size: 16px; }
-h5, .h5 { font-size: 14px; }
-h6, .h6 {
-  font-size: 12px;
-  color: #999;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-h2 .fa,
-.h2 .fa { font-size: 18px; }
-h3 .fa,
-.h3 .fa { font-size: 16px; }
-
-img { vertical-align: text-top; }
-small { font-size: 12px; }
-section { padding-top: 30px; }
-
-.wrap-content {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -49px;
-}
-.wrap-content-fixed-header {
-  > .container { padding-top: 60px; }
-}
-.wrap-push { height: 49px; }
-
-a img,
-button img,
-.unstyled li img {
-  margin-right: 2px;
-}
-
-h1 img,
-h2 img,
-h3 img,
-h4 img {
-  vertical-align: text-top;
-}
-
 .text-counter { font-size: 24px; }
 
-/**
-* #005784 blue
-* #d46400 orange
-*/
 .alert {
   ul,
   ol {
@@ -176,8 +28,6 @@ h4 img {
   > h3,
   .heading {
     background-color: #e0e0e0;
-    background-image: -moz-linear-gradient(#fafafa, #e0e0e0);
-    background-image: -webkit-linear-gradient(#fafafa, #e0e0e0);
     background-image: linear-gradient(#fafafa, #e0e0e0);
     background-repeat: repeat-x;
     margin: 0;
@@ -307,11 +157,6 @@ h4 img {
   max-width: 420px;
 }
 .form-signin .checkbox { margin-bottom: 10px; }
-
-.glyphicon {
-  font-family: sans-serif !important;
-  display: none;
-}
 
 .help-block.text-muted { color: #737373; }
 
