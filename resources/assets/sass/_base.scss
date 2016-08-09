@@ -36,8 +36,6 @@ small { font-size: 12px; }
 section { padding-top: 30px; }
 
 a[href^="http"]:empty::before { content: attr(href); }
-a:hover,
-a:focus { text-decoration: none; }
 
 .link,
 .pseudo {
@@ -46,14 +44,12 @@ a:focus { text-decoration: none; }
   color: $link-color;
   cursor: pointer;
   outline: 0;
-  text-decoration: none;
 
   &:hover,
   &:focus,
   &.active {
     border-color: rgba(210, 50, 50, 0.5) !important;
     color: $link-hover-color !important;
-    text-decoration: none;
 
     .svg-icon { fill: $link-hover-color !important; }
   }
