@@ -65,5 +65,5 @@
 <p>Теплое течение?</p>
 @include('tpl.pic-2x', ['pic' => 'IMG_0085.jpg'])
 
-@include('tpl.svg.airbnb_coupon', ['city' => 'Санкт-Петербурге', 'coupon' => 'POLOGNE2015'])
+@include('tpl.airbnb_coupon', ['city' => 'Санкт-Петербурге', 'coupon' => 'POLOGNE2015'])
 @endsection

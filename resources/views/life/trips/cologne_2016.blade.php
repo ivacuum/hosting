@@ -128,5 +128,5 @@
 <p>Пора продолжать путь. Пока, Кельн.</p>
 @include('tpl.pic-2x', ['pic' => 'IMG_1122.jpg'])
 
-@include('tpl.svg.airbnb_coupon', ['city' => 'Кельне', 'coupon' => 'ECOSSE2015'])
+@include('tpl.airbnb_coupon', ['city' => 'Кельне', 'coupon' => 'ECOSSE2015'])
 @endsection

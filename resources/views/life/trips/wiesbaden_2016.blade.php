@@ -103,5 +103,5 @@
 <p>Для концерта <a class="link" href="/life/davidgilmour.2016">Дэвида Гилмора</a> отдали центральную площадь города и перекрыли часть улицы. В заметке о концерте описаны дальнейшие приключения и путь во Франкфурт.</p>
 @include('tpl.pic-2x', ['pic' => 'IMG_1240.jpg'])
 
-@include('tpl.svg.airbnb_coupon', ['city' => 'Висбадене', 'coupon' => 'SARDAIGNE2015'])
+@include('tpl.airbnb_coupon', ['city' => 'Висбадене', 'coupon' => 'SARDAIGNE2015'])
 @endsection

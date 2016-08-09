@@ -194,5 +194,5 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_0898.jpg'])
 
 <p>Сложно поверить, пока не увидишь собственными глазами, что такая концентрация красот может приходиться на пятичасовую прогулку.</p>
-@include('tpl.svg.airbnb_coupon', ['city' => 'Гамбурге', 'coupon' => 'ALSACE2015'])
+@include('tpl.airbnb_coupon', ['city' => 'Гамбурге', 'coupon' => 'ALSACE2015'])
 @endsection
