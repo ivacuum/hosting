@@ -1,0 +1,8 @@
+ol.inline > li:first-child,
+ul.inline > li:first-child {
+  padding-left: 0;
+}
+
+.list-group-section { background-color: #f5f5f5; }
+.list-group-svg .list-group-item { text-align: center; }
+.list-indent li { margin-bottom: 0.5em; }

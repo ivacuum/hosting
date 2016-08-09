@@ -1,0 +1,4 @@
+.terminal { tab-size: 4; }
+.terminal span { white-space: pre-wrap; }
+.terminal-command::before { content: '$ '; }
+.terminal-comment { color: #898989; }

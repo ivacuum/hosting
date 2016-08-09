@@ -9,6 +9,32 @@ body {
 // когда показываются модальные окна bootstrap
 body.modal-open { overflow: visible; }
 
+footer {
+  border-top: 1px solid #eee;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  color: #777;
+
+  ul { margin-bottom: 0; }
+}
+
+kbd {
+  padding: 0 8px;
+  color: #333;
+  text-shadow: 0 1px 0 rgba(255,255,255,1.0);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  background: #eee linear-gradient(#fafafa, #e0e0e0);
+  border-left: 1px solid #bbb;
+  border-right: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+  border-top: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+img { vertical-align: text-top; }
+small { font-size: 12px; }
+section { padding-top: 30px; }
+
 a[href^="http"]:empty::before { content: attr(href); }
 a:hover,
 a:focus { text-decoration: none; }
@@ -36,39 +62,27 @@ a:focus { text-decoration: none; }
 
   &:visited {
     border-color: rgba(102, 14, 122, 0.3);
-    color: #660e7a;
+    color: $link-visited-color;
 
-    .svg-icon { fill: #660e7a; }
+    .svg-icon { fill: $link-visited-color; }
   }
 }
 
 .pseudo { border-bottom-style: dotted; }
 
-footer {
-  border-top: 1px solid #eee;
-  padding-top: 14px;
-  padding-bottom: 14px;
-  color: #777;
-
-  ul { margin-bottom: 0; }
+.alert {
+  ul,
+  ol {
+    margin-bottom: 0;
+  }
 }
 
-kbd {
-  padding: 0 8px;
-  color: #333;
-  text-shadow: 0 1px 0 rgba(255,255,255,1.0);
-  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-  background: #eee linear-gradient(#fafafa, #e0e0e0);
-  border-left: 1px solid #bbb;
-  border-right: 1px solid #bbb;
-  border-bottom: 1px solid #bbb;
-  border-top: 1px solid #ddd;
-  border-radius: 4px;
+.emoji {
+  font-weight: normal;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "NotoColorEmoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
 }
 
-img { vertical-align: text-top; }
-small { font-size: 12px; }
-section { padding-top: 30px; }
+.lead { font-size: 18px; }
 
 .wrap-content {
   min-height: 100%;
