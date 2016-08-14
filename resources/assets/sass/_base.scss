@@ -40,7 +40,7 @@ a[href^="http"]:empty::before { content: attr(href); }
 .link,
 .pseudo {
   border-bottom: 1px solid;
-  border-color: rgba(66, 139, 202, 0.3);
+  border-color: $link-border-color;
   color: $link-color;
   cursor: pointer;
   outline: 0;
@@ -48,7 +48,7 @@ a[href^="http"]:empty::before { content: attr(href); }
   &:hover,
   &:focus,
   &.active {
-    border-color: rgba(210, 50, 50, 0.5) !important;
+    border-color: $link-hover-border-color !important;
     color: $link-hover-color !important;
 
     .svg-icon { fill: $link-hover-color !important; }
@@ -57,7 +57,7 @@ a[href^="http"]:empty::before { content: attr(href); }
   &.active { border: none; }
 
   &:visited {
-    border-color: rgba(102, 14, 122, 0.3);
+    border-color: $link-visited-border-color;
     color: $link-visited-color;
 
     .svg-icon { fill: $link-visited-color; }
