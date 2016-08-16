@@ -1,4 +1,4 @@
-@extends('life.base', [
+@extends('life.gigs.base', [
   'meta_title' => 'Metallica в Санкт-Петербурге &middot; 25 августа 2015',
   'meta_description' => 'Заметки о концерте.',
   'meta_image' => 'https://life.ivacuum.ru/gigs/metallica.2015.08.25.jpg',
@@ -53,6 +53,11 @@
 <p>Вообще у <a class="link" href="http://www.youtube.com/channel/UCGp2uNPZCeUTH1BynWSnSUQ/search?query=metallica+2015">этого товарища</a> отличные атмосферные видео вышли. У <a class="link" href="http://www.youtube.com/watch?v=EmCVvp3KbjQ">Sad But True</a>, например, крутое начало — прямо как в 2008 году.</p>
 
 <p>Кирк Хэмметт <a class="link" href="https://www.youtube.com/watch?v=eUr9c8b7d64&t=1525">поразил своим вторым соло</a> — никогда его не видел таким эмоциональным и заведенным! Самое яркое впечатление вечера!</p>
+
+<p>Видеозапись концерта.</p>
+<div class="fotorama" data-width="1000" data-ratio="16/10">
+  <a href="https://www.youtube.com/watch?v=-VQMs8zQRj8"></a>
+</div>
 
 @include('life.timeline.metallica')
 @endsection
