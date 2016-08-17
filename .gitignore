@@ -1,12 +1,12 @@
+/.idea
 /node_modules
 /public/build
 /resources/assets/bower
 /vendor
+/_ide_helper.php
+/.phpstorm.meta.php
 .DS_Store
 .env
-.idea
-.phpstorm.meta.php
 .tm_properties
-_ide_helper.php
 Thumbs.db
 composer.phar
