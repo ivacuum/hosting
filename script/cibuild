@@ -3,6 +3,8 @@
 # Выход в случае ошибки
 set -e
 
+setenv NODE_ENV production
+
 cd "$(dirname "$0")/.."
 
 echo "==> Ant php linting..."
