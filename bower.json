@@ -3,7 +3,7 @@
   "dependencies": {
     "bootstrap-sass": "^3.3.0",
     "jquery": "^2.2.0",
-    "fancytree": "^2.13",
+    "fancytree": "^2.18",
     "nprogress": "^0.2",
     "fotorama": "^4.6",
     "jquery.scrollTo": "^2.1",
