@@ -120,14 +120,14 @@
               <a class="pseudo js-ns-record-edit">настроить</a>
               &nbsp;
               <a class="pseudo js-ns-record-delete" data-id="{{ $record->record_id }}" data-action="{{ action("$self@deleteNsRecord", $domain) }}">
-                @include('tpl.svg.times')
+                @php (require base_path('resources/svg/times.html'))
               </a>
             </div>
             <div class="edit hidden">
               <a class="pseudo js-ns-record-save" data-action="{{ action("$self@editNsRecord", $domain) }}">сохранить</a>
               &nbsp;
               <a class="pseudo js-ns-record-cancel">
-                @include('tpl.svg.rotate-left')
+                @php (require base_path('resources/svg/rotate-left.html'))
               </a>
             </div>
           </td>

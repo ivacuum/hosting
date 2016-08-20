@@ -3,14 +3,14 @@
 @section('content')
 <h2>
   <a href="/acp/servers/{{ $server->id }}">
-    @include('tpl.svg.chevron-left')
+    @php (require base_path('resources/svg/chevron-left.html'))
   </a>
   ftp://{{ $server->host }}
 </h2>
 
 <h2>
   <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $dir_up }}">
-    @include('tpl.svg.chevron-left')
+    @php (require base_path('resources/svg/chevron-left.html'))
   </a>
   {{ basename($file) }} <small>{{ $dir_up }}</small>
 </h2>

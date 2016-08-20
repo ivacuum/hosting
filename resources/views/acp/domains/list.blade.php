@@ -1,7 +1,7 @@
 @if (sizeof($domains))
 <div class="boxed-group flush">
   <a href="{{ action('Acp\Domains@create') }}" class="boxed-group-action btn btn-success">
-    @include('tpl.svg.plus')
+    @php (require base_path('resources/svg/plus.html'))
   </a>
   <h3>
     <form class="form-inline">
@@ -39,7 +39,7 @@
           </td>
           <td>
             <a href="http://{{ $domain->domain }}/" target="_blank" style="margin-right: 0.3em;">
-              @include('tpl.svg.external-link')
+              @php (require base_path('resources/svg/external-link.html'))
             </a>
             <a href="/acp/domains/{{ $domain->domain }}" class="link">{{ $domain->domain }}</a>
             @if ($domain->alias_id)

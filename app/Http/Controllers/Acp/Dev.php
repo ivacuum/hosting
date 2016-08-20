@@ -73,9 +73,9 @@ class Dev extends Controller
     {
         $icons = [];
 
-        foreach (glob(base_path('resources/views/tpl/svg/*.blade.php')) as $icon) {
+        foreach (glob(base_path('resources/svg/*.html')) as $icon) {
             $info = pathinfo($icon);
-            $filename = str_replace('.blade.php', '', $info['basename']);
+            $filename = str_replace('.html', '', $info['basename']);
 
             if ($filename == 'base') {
                 continue;

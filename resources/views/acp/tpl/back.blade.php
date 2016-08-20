@@ -1,3 +1,3 @@
 <a href="{{ !empty($goto) ? url($goto) : action("$self@index") }}">
-  @include('tpl.svg.chevron-left')
+  @php (require base_path('resources/svg/chevron-left.html'))
 </a>

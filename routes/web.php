@@ -1,7 +1,5 @@
 <?php
 
-$locale = Request::segment(1);
-
 Route::get('/', 'Home@index');
 Route::get('auth/login', 'Auth@login');
 Route::post('auth/login', 'Auth@loginPost');
@@ -16,7 +14,6 @@ Route::get('auth/password/reset/{token}', 'Auth@passwordReset');
 Route::post('auth/password/reset', 'Auth@passwordResetPost');
 
 Route::get('about', 'Home@about');
-Route::get('en/about', 'Home@about');
 Route::get('docs', 'Docs@index');
 Route::get('docs/{page}', 'Docs@page');
 Route::get('life', 'Life@index');

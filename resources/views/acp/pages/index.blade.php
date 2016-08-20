@@ -51,12 +51,12 @@
 
 <span id="page_active_icon" class="hidden">
   <span class="text-success" title="Отображается">
-    @include('tpl.svg.eye')
+    @php (require base_path('resources/svg/eye.html'))
   </span>
 </span>
 
 <span id="page_edit_icon" class="hidden">
-  @include('tpl.svg.pencil')
+  @php (require base_path('resources/svg/pencil.html'))
 </span>
 @endsection
 

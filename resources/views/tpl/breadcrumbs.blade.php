@@ -1,7 +1,7 @@
 @if (!empty($breadcrumbs))
 <nav class="breadcrumbs">
   <a href="/">
-    @include('tpl.svg.home')
+    @php (require base_path('resources/svg/home.html'))
   </a>
   &nbsp;&rarr;&nbsp;
   @foreach ($breadcrumbs as $i => $row)

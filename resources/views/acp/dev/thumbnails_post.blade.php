@@ -5,7 +5,7 @@
   <h3>{{ basename($thumbnail['dest']) }}</h3>
   @if (false !== $thumbnail['lat'] && false !== $thumbnail['lon'])
     <p>
-      @include('tpl.svg.location-arrow')
+      @php (require base_path('resources/svg/location-arrow.html'))
       {{ $thumbnail['lat'] }} {{ $thumbnail['lon'] }}
     </p>
   @endif

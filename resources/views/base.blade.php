@@ -45,7 +45,7 @@
             @if (Auth::user()->isAdmin())
               <li>
                 <a href="{{ App::environment('local') ? '/acp/dev/templates' : '/acp/trips' }}">
-                  @include('tpl.svg.dashboard')
+                  @php (require base_path('resources/svg/dashboard.html'))
                 </a>
               </li>
             @endif

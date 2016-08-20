@@ -21,13 +21,13 @@
     <li>
       <a class="link" href="https://developers.whatwg.org/">
         HTML Standart
-        @include('tpl.svg.external-link')
+        @php (require base_path('resources/svg/external-link.html'))
       </a>
     </li>
     <li>
       <a class="link" href="http://www.phptherightway.com/">
         PHP: The Right Way
-        @include('tpl.svg.external-link')
+        @php (require base_path('resources/svg/external-link.html'))
       </a>
     </li>
   </ul>

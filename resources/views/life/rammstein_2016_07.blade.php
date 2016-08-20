@@ -41,7 +41,7 @@
       <li>Feuer frei!</li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=P5PIs7Gf6CU&t=35">Seemann</a>
-        @include('tpl.svg.heart')
+        @php (require base_path('resources/svg/heart.html'))
       </li>
       <li>Ich tu dir weh</li>
       <li>Du riechst so gut</li>
@@ -53,7 +53,7 @@
       <li>Sonne</li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=M4e_QtzBPmY&t=177">Amerika</a>
-        @include('tpl.svg.heart')
+        @php (require base_path('resources/svg/heart.html'))
       </li>
       <li>Engel</li>
     </ol>

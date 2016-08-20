@@ -35,7 +35,7 @@
           </td>
           <td>
             @if (!$trip->published)
-              @include('tpl.svg.pencil')
+              @php (require base_path('resources/svg/pencil.html'))
             @endif
           </td>
           <td>{{ $trip->getLocalizedDate() }}</td>
