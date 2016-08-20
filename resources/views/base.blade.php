@@ -81,7 +81,6 @@
 @yield('content_footer')
 @if (!Request::pjax())
 </div>
-
     <div class="wrap-push"></div>
   </div>
 </div>
