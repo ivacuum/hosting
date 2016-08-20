@@ -1,5 +1,5 @@
 @extends('life.base', [
-  'meta_title' => 'Города',
+  'meta_title' => trans('menu.cities'),
 ])
 
 @section('content')

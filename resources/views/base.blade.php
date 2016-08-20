@@ -1,6 +1,6 @@
 @if (!Request::pjax())
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="{{ $locale }}">
 <head>
   <meta charset="utf-8">
 @endif
