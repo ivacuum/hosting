@@ -3,16 +3,16 @@
 ])
 
 @section('content')
-<div class="h2 m-t-0">Заметки из жизни</div>
-<p>Оглавление публикуемой мною информации.</p>
+<div class="h2 m-t-0">{{ trans('life.intro_title') }}</div>
+<p>{{ trans('life.intro_text') }}</p>
 
 <div class="row">
   <div class="col-sm-6">
-    <h3>Поездки</h3>
+    <h3>{{ trans('life.trips') }}</h3>
     <ul class="list-inline trips-show-by">
-      <li><mark>по годам</mark></li>
-      <li><a class="link" href="/life/countries">по странам</a></li>
-      <li><a class="link" href="/life/cities">по городам</a></li>
+      <li><mark>{{ trans('life.by_year') }}</mark></li>
+      <li><a class="link" href="{{ action('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
+      <li><a class="link" href="{{ action('Life@cities') }}">{{ trans('life.by_city') }}</a></li>
     </ul>
 
     <?php $year = false; ?>
@@ -32,31 +32,37 @@
     @endforeach
   </div>
   <div class="col-sm-6">
-    <h3>Избранное</h3>
+    <h3>{{ trans('life.favorites') }}</h3>
+    @if ($locale === 'ru')
+      <div class="favorites-entry">
+        <a class="link" href="{{ action('Life@page', 'chillout') }}">Chillout</a>
+      </div>
+      <div class="favorites-entry">
+        <a class="link" href="{{ action('Life@page', 'books') }}">Книги</a>
+      </div>
+    @endif
     <div class="favorites-entry">
-      <a class="link" href="/life/chillout">Chillout</a>
+      <a class="link" href="{{ action('Life@page', 'gigs') }}">
+        {{ trans('life.gigs') }}
+      </a>
     </div>
-    <div class="favorites-entry">
-      <a class="link" href="/life/books">Книги</a>
-    </div>
-    <div class="favorites-entry">
-      <a class="link" href="/life/gigs">Концерты</a>
-    </div>
-    <div class="favorites-entry">
-      <a class="link" href="/life/favorite-posts">Любимые посты</a>
-    </div>
-    <div class="favorites-entry">
-      <a class="link" href="/life/podcasts">Подкасты</a>
-    </div>
-    <div class="favorites-entry">
-      <a class="link" href="/life/laundry">Условные обозначения стирки</a>
-    </div>
-    <div class="favorites-entry">
-      <a class="link" href="/life/movies">Фильмы и сериалы</a>
-    </div>
-    <div class="favorites-entry">
-      <a class="link" href="/life/using-in-travels">Чем пользуюсь в путешествиях</a>
-    </div>
+    @if ($locale === 'ru')
+      <div class="favorites-entry">
+        <a class="link" href="{{ action('Life@page', 'favorite-posts') }}">Любимые посты</a>
+      </div>
+      <div class="favorites-entry">
+        <a class="link" href="{{ action('Life@page', 'podcasts') }}">Подкасты</a>
+      </div>
+      <div class="favorites-entry">
+        <a class="link" href="{{ action('Life@page', 'laundry') }}">Условные обозначения стирки</a>
+      </div>
+      <div class="favorites-entry">
+        <a class="link" href="{{ action('Life@page', 'movies') }}">Фильмы и сериалы</a>
+      </div>
+      <div class="favorites-entry">
+        <a class="link" href="{{ action('Life@page', 'using-in-travels') }}">Чем пользуюсь в путешествиях</a>
+      </div>
+    @endif
   </div>
 </div>
 @endsection
