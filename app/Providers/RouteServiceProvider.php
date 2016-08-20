@@ -11,6 +11,7 @@ use App\Server;
 use App\Trip;
 use App\User;
 use App\YandexUser;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -33,7 +34,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('YandexUser', YandexUser::class);
     }
 
-    public function map(Router $router)
+    public function map(Router $router, Request $request)
     {
         $router->group([
             'namespace'   => $this->namespace,
@@ -41,18 +42,18 @@ class RouteServiceProvider extends ServiceProvider
             'breadcrumbs' => [['Админка', 'acp']],
             'middleware'  => ['web', 'auth', 'admin'],
         ], function ($router) {
-            require app_path('Http/routes_acp.php');
+            require base_path('routes/acp.php');
         });
 
         $router->group(['namespace' => $this->namespace], function ($router) {
-            require app_path('Http/routes_simple.php');
+            require base_path('routes/simple.php');
         });
 
         $router->group([
             'namespace'  => $this->namespace,
             'middleware' => 'web'
         ], function ($router) {
-            require app_path('Http/routes.php');
+            require base_path('routes/web.php');
         });
     }
 }
