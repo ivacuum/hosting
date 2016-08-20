@@ -3,10 +3,11 @@
 return [
     'cities'    => 'Cities',
     'countries' => 'Countries',
+    'docs'      => 'Docs',
+    'gigs'      => 'Gigs',
     'home'      => 'Home',
     'life'      => 'Life',
     'parser_vk' => 'VK Parser',
-    'docs'      => 'Docs',
 
     'language'  => 'English',
     'logout'    => 'Logout',

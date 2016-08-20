@@ -43,7 +43,7 @@
     @endif
     <div class="favorites-entry">
       <a class="link" href="{{ action('Life@page', 'gigs') }}">
-        {{ trans('life.gigs') }}
+        {{ trans('menu.gigs') }}
       </a>
     </div>
     @if ($locale === 'ru')

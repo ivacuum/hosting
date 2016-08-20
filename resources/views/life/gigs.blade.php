@@ -1,15 +1,15 @@
 @extends('life.base', [
-  'meta_title' => 'Посещенные и ожидаемые концерты',
+  'meta_title' => trans('life.gigs_intro_title'),
 
   'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Концерты'],
+    ['title' => trans('menu.life'), 'url' => 'life'],
+    ['title' => trans('menu.gigs')],
   ]
 ])
 
 @section('content')
-<h2>Посещенные и ожидаемые концерты</h2>
-<p>Началось все с установки по концерту в год, но в 2014 что-то пошло не так...</p>
+<h2>{{ trans('life.gigs_intro_title') }}</h2>
+<p>{{ trans('life.gigs_intro_text') }}</p>
 
 <div class="travel-entry">
   <span class="travel-year">2016</span>
