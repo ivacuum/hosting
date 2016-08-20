@@ -41,11 +41,13 @@
                 {{ trans('menu.life') }}
               </a>
             </li>
-            <li>
-              <a class="{{ $self == 'ParserVk' ? 'navbar-selected' : '' }}" href="{{ action('ParserVk@index') }}">
-                {{ trans('menu.parser_vk') }}
-              </a>
-            </li>
+            @if ($locale === 'ru')
+              <li>
+                <a class="{{ $self == 'ParserVk' ? 'navbar-selected' : '' }}" href="{{ action('ParserVk@index') }}">
+                  {{ trans('menu.parser_vk') }}
+                </a>
+              </li>
+            @endif
             @if (App::environment('local'))
               <li>
                 <a class="{{ $self == 'Docs' ? 'navbar-selected' : '' }}" href="{{ action('Docs@index') }}">
@@ -62,8 +64,8 @@
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="/en">English</a></li>
-              <li><a href="/">Русский</a></li>
+              <li><a href="{{ url("en/{$request_uri}") }}">English</a></li>
+              <li><a href="{{ url($request_uri) }}">Русский</a></li>
             </ul>
           </li>
           @if (Auth::check())

@@ -8,13 +8,19 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use Input;
 use NumberFormatter;
 use Route;
 
 abstract class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected $request;
+
+    /**
+     * @var \App\User
+     */
+    protected $user;
 
     protected $class;
     protected $method;
@@ -23,6 +29,9 @@ abstract class Controller extends BaseController
 
     public function __construct()
     {
+        $this->request = request();
+        $this->user = $this->request->user();
+
         $this->class  = str_replace('App\Http\Controllers\\', '', get_class($this));
         $this->method = $this->getCurrentMethod();
         $this->prefix = $this->getViewPrefix();
@@ -40,16 +49,25 @@ abstract class Controller extends BaseController
 
     protected function appendViewSharedVars()
     {
+        $locale = $this->request->segment(1);
+
+        if (in_array($locale, array_keys(config('cfg.locales')))) {
+            $request_uri = str_replace(["{$locale}/", $locale], '', $this->request->path());
+        } else {
+            $request_uri = $this->request->path();
+        }
+
         $decimal = new NumberFormatter('ru_RU', NumberFormatter::DECIMAL);
         $decimal->setAttribute(NumberFormatter::FRACTION_DIGITS, 0);
 
         view()->share([
-            'decimal' => $decimal,
-            'goto'    => Input::get('goto'),
-            'locale'  => App::getLocale(),
-            'self'    => $this->class,
-            'tpl'     => $this->prefix,
-            'view'    => $this->view,
+            'decimal'     => $decimal,
+            'goto'        => $this->request->input('goto'),
+            'locale'      => App::getLocale(),
+            'request_uri' => $request_uri,
+            'self'        => $this->class,
+            'tpl'         => $this->prefix,
+            'view'        => $this->view,
         ]);
     }
 
