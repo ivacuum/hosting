@@ -9,7 +9,7 @@ class CreateCountriesTable extends Migration
 	{
 		Schema::create('countries', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('title');
+			$table->string('title_ru');
 			$table->string('slug');
 			$table->string('emoji', 20)->charset('utf8mb4')->collation('utf8mb4_unicode_ci')->collate('utf8mb4_unicode_ci');
 			$table->timestamps();

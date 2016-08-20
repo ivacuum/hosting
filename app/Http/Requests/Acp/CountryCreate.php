@@ -14,8 +14,9 @@ class CountryCreate extends Request
     public function rules()
     {
         return [
-            'title' => 'required',
-            'slug'  => 'required|unique:countries,slug',
+            'title_ru' => 'required',
+            'title_en' => 'required',
+            'slug'     => 'required|unique:countries,slug',
         ];
     }
 }

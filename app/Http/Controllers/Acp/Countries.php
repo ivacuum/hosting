@@ -10,7 +10,7 @@ class Countries extends Controller
 {
     public function index()
     {
-        $countries = Country::orderBy('title')->get();
+        $countries = Country::orderBy('title_ru')->get();
 
         return view($this->view, compact('countries'));
     }

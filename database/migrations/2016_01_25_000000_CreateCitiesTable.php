@@ -10,7 +10,7 @@ class CreateCitiesTable extends Migration
 		Schema::create('cities', function(Blueprint $table) {
 			$table->increments('id');
 			$table->unsignedInteger('country_id')->default(0);
-			$table->string('title');
+			$table->string('title_ru');
 			$table->string('slug');
 			$table->char('iata', 3);
 			$table->timestamps();

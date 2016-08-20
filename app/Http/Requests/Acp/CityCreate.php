@@ -15,7 +15,8 @@ class CityCreate extends Request
     {
         return [
             'country_id' => 'required|integer|min:1',
-            'title'      => 'required',
+            'title_ru'   => 'required',
+            'title_en'   => 'required',
             'slug'       => 'required|unique:cities,slug',
         ];
     }

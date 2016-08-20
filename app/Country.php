@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -19,17 +20,22 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Country extends Model
 {
-    protected $fillable = ['title', 'slug', 'emoji'];
+    protected $fillable = ['title_ru', 'title_en', 'slug', 'emoji'];
 
     public function cities()
     {
         return $this->hasMany(City::class)
-            ->orderBy('title');
+            ->orderBy('title_ru');
     }
 
     public function trips()
     {
         return $this->hasMany(Trip::class)
             ->orderBy('date_start', 'desc');
+    }
+
+    public function getTitleAttribute()
+    {
+        return $this->{'title_' . App::getLocale()};
     }
 }

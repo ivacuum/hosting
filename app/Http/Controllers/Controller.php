@@ -60,10 +60,13 @@ abstract class Controller extends BaseController
         $decimal = new NumberFormatter('ru_RU', NumberFormatter::DECIMAL);
         $decimal->setAttribute(NumberFormatter::FRACTION_DIGITS, 0);
 
+        $locale = App::getLocale();
+
         view()->share([
             'decimal'     => $decimal,
             'goto'        => $this->request->input('goto'),
-            'locale'      => App::getLocale(),
+            'locale'      => $locale,
+            'locale_uri'  => $locale === config('cfg.default_locale') ? '' : "{$locale}/",
             'request_uri' => $request_uri,
             'self'        => $this->class,
             'tpl'         => $this->prefix,

@@ -15,7 +15,8 @@ class TripCreate extends Request
     {
         return [
             'city_id'    => 'required|integer|min:1',
-            'title'      => 'required',
+            'title_ru'   => 'required',
+            'title_en'   => 'required',
             'slug'       => 'required|unique:countries,slug',
             'tpl'        => 'required',
             'date_start' => 'required|date',

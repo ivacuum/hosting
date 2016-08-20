@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'cities'    => 'Cities',
+    'countries' => 'Countries',
     'home'      => 'Home',
     'life'      => 'Life',
     'parser_vk' => 'VK Parser',

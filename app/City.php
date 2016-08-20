@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -19,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class City extends Model
 {
-    protected $fillable = ['country_id', 'title', 'slug', 'iata'];
+    protected $fillable = ['country_id', 'title_ru', 'title_en', 'slug', 'iata'];
 
     public function country()
     {
@@ -37,6 +38,11 @@ class City extends Model
         return $this->hasOne(Trip::class)
             ->selectRaw('city_id, count(*) as count')
             ->groupBy('city_id');
+    }
+
+    public function getTitleAttribute()
+    {
+        return $this->{'title_' . App::getLocale()};
     }
 
     public function getInitial()

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -27,14 +28,17 @@ class Trip extends Model
 {
     protected $fillable = [
         'city_id',
-        'title',
+        'title_ru',
+        'title_en',
         'slug',
         'tpl',
         'date_start',
         'date_end',
         'published',
-        'meta_title',
-        'meta_description',
+        'meta_title_ru',
+        'meta_title_en',
+        'meta_description_ru',
+        'meta_description_en',
         'meta_image',
     ];
     protected $dates = ['date_start', 'date_end'];
@@ -73,6 +77,16 @@ class Trip extends Model
             ->take($take);
     }
 
+    public function getMetaDescriptionAttribute()
+    {
+        return $this->{'meta_description_' . App::getLocale()};
+    }
+
+    public function getMetaTitleAttribute()
+    {
+        return $this->{'meta_title_' . App::getLocale()};
+    }
+
     public function getPeriodAttribute()
     {
         if ($this->date_start->month === $this->date_end->month) {
@@ -80,6 +94,11 @@ class Trip extends Model
         }
 
         return $this->getMonthName($this->date_start->month) . '–' . $this->getMonthName($this->date_end->month);
+    }
+
+    public function getTitleAttribute()
+    {
+        return $this->{'title_' . App::getLocale()};
     }
 
     public function getYearAttribute()
@@ -102,7 +121,7 @@ class Trip extends Model
 
     public function getMetaDescription()
     {
-        return $this->meta_description ?: "Заметки о поездке.";
+        return $this->meta_description;
     }
 
     public function getMetaTitle()

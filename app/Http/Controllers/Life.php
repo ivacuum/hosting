@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\City;
 use App\Country;
 use App\Trip;
@@ -18,17 +19,18 @@ class Life extends Controller
 
     public function cities()
     {
-        $cities = City::with('tripsCount')->orderBy('title')->get();
+        $locale = App::getLocale();
+        $cities = City::with('tripsCount')->orderBy("title_{$locale}")->get();
 
-        Breadcrumbs::push('Заметки', 'life');
-        Breadcrumbs::push('Города');
+        Breadcrumbs::push(trans('menu.life'), 'life');
+        Breadcrumbs::push(trans('menu.cities'));
 
         return view($this->view, compact('cities'));
     }
 
     public function city(City $city)
     {
-        Breadcrumbs::push('Страны', 'life/countries');
+        Breadcrumbs::push(trans('menu.countries'), 'life/countries');
         Breadcrumbs::push($city->country->title, "life/countries/{$city->country->slug}");
         Breadcrumbs::push($city->title);
 
@@ -37,10 +39,11 @@ class Life extends Controller
 
     public function countries()
     {
-        $countries = Country::with('cities')->orderBy('title', 'asc')->get();
+        $locale = App::getLocale();
+        $countries = Country::with('cities')->orderBy("title_{$locale}", 'asc')->get();
 
-        Breadcrumbs::push('Заметки', 'life');
-        Breadcrumbs::push('Страны');
+        Breadcrumbs::push(trans('menu.life'), 'life');
+        Breadcrumbs::push(trans('menu.countries'));
 
         return view($this->view, compact('countries'));
     }
@@ -52,8 +55,8 @@ class Life extends Controller
             ->orderBy('date_start', 'desc')
             ->get();
 
-        Breadcrumbs::push('Заметки', 'life');
-        Breadcrumbs::push('Страны', 'life/countries');
+        Breadcrumbs::push(trans('menu.life'), 'life');
+        Breadcrumbs::push(trans('menu.countries'), 'life/countries');
         Breadcrumbs::push($country->title, "life/countries/{$country->slug}");
 
         return view($this->view, compact('country', 'trips'));
@@ -61,7 +64,7 @@ class Life extends Controller
 
     public function page($page)
     {
-        Breadcrumbs::push('Заметки', 'life');
+        Breadcrumbs::push(trans('menu.life'), 'life');
 
         $tpl = 'life.' . str_replace('.', '_', $page);
 
@@ -88,7 +91,7 @@ class Life extends Controller
             abort(404);
         }
 
-        Breadcrumbs::push('Страны', "life/countries");
+        Breadcrumbs::push(trans('menu.countries'), "life/countries");
         Breadcrumbs::push($trip->city->country->title, "life/countries/{$trip->city->country->slug}");
         Breadcrumbs::push($trip->city->title, "life/{$trip->city->slug}");
         Breadcrumbs::push($trip->getLocalizedDate(), "life/{$trip->slug}");

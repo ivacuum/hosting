@@ -11,7 +11,7 @@ class Cities extends Controller
 	public function index()
 	{
         $cities = City::with('country')
-            ->orderBy('title')
+            ->orderBy('title_ru')
             ->get();
 
 		return view($this->view, compact('cities'));

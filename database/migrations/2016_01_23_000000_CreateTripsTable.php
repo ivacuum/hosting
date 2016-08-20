@@ -10,14 +10,14 @@ class CreateTripsTable extends Migration
 		Schema::create('trips', function(Blueprint $table) {
 			$table->increments('id');
 			$table->unsignedInteger('city_id')->default(0);
-			$table->string('title');
+			$table->string('title_ru');
 			$table->string('slug');
 			$table->string('tpl');
 			$table->timestamp('date_start');
 			$table->timestamp('date_end');
 			$table->boolean('published')->unsigned()->default(0);
-			$table->string('meta_title');
-			$table->string('meta_description');
+			$table->string('meta_title_ru');
+			$table->string('meta_description_ru');
 			$table->string('meta_image');
 			$table->timestamps();
 		});

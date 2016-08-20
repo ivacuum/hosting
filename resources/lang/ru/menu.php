@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'cities'    => 'Города',
+    'countries' => 'Страны',
     'home'      => 'Главная',
     'life'      => 'Заметки',
     'parser_vk' => 'Парсер ВК',
