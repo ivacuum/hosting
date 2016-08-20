@@ -42,7 +42,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $router->group([
             'namespace'   => $this->namespace,
-            'prefix'      => 'acp',
+            'prefix'      => "{$prefix}/acp",
             'breadcrumbs' => [['Админка', 'acp']],
             'middleware'  => ['web', 'auth', 'admin'],
         ], function ($router) {
