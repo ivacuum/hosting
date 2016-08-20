@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'main'      => 'Main',
+    'home'      => 'Home',
     'life'      => 'Life',
     'parser_vk' => 'VK Parser',
     'docs'      => 'Docs',

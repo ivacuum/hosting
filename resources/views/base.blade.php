@@ -33,7 +33,7 @@
           @section('global_menu')
             <li>
               <a class="{{ $self == 'Home' ? 'navbar-selected' : '' }}" href="{{ action('Home@index') }}">
-                {{ trans('menu.main') }}
+                {{ trans('menu.home') }}
               </a>
             </li>
             <li>
