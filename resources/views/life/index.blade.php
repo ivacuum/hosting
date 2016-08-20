@@ -1,5 +1,5 @@
 @extends('life.base', [
-  'meta_title' => 'Заметки из жизни',
+  'meta_title' => trans('life.intro_title'),
 ])
 
 @section('content')
