@@ -59,7 +59,7 @@ if [ $? -ne 0 ]; then
 fi
 
 php artisan config:cache
-php artisan route:cache
+# php artisan route:cache
 
 ln -hfs $RELEASE_DIR $LIVE_DIR
 
