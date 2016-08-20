@@ -1,7 +1,12 @@
 @extends('base')
 
 @section('content')
-<p class="lead">Текст для главной еще не придумали. Можно <a class="link" href="{{ action('Life@index') }}">заметки</a> почитать, например.</p>
+@if ($locale === 'ru')
+  <p class="lead">Текст для главной еще не придумали. Можно <a class="link" href="{{ action('Life@index') }}">заметки</a> почитать, например.</p>
+  <h3>Последние поездки</h3>
+@elseif ($locale === 'en')
+  <h3 class="m-t-0">Last trips</h3>
+@endif
 
 @foreach ($trips->chunk(3) as $chunk)
   <div class="page-section">
@@ -13,13 +18,15 @@
             <div class="page-block-cover-title">{{ $trip->title }}</div>
             <div class="page-block-cover-description">{{ $trip->meta_description }}</div>
           </div>
-          <a class="page-block-cover-link" href="/life/{{ $trip->slug }}"></a>
+          <a class="page-block-cover-link" href="{{ action('Life@page', $trip->slug) }}"><span></span></a>
         </div>
       </div>
     @endforeach
   </div>
 @endforeach
 
-<p class="lead">А еще лучше слетать <a class="link pseudo js-aviasales">повидать новый город</a>.</p>
-<div id="aviasales_container"></div>
+@if ($locale === 'ru')
+  <p class="lead">А еще лучше слетать <a class="link pseudo js-aviasales">повидать новый город</a>.</p>
+  <div id="aviasales_container"></div>
+@endif
 @endsection

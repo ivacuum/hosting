@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use Breadcrumbs;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -45,6 +46,7 @@ abstract class Controller extends BaseController
         view()->share([
             'decimal' => $decimal,
             'goto'    => Input::get('goto'),
+            'locale'  => App::getLocale(),
             'self'    => $this->class,
             'tpl'     => $this->prefix,
             'view'    => $this->view,
