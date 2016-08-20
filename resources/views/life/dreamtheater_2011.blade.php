@@ -1,4 +1,4 @@
-@extends('life.base', [
+@extends('life.gigs.base', [
   'meta_title' => 'Dream Theater в Москве &middot; 12 июля 2011',
   'meta_description' => 'Заметки о концерте.',
   'meta_image' => 'https://life.ivacuum.ru/gigs/dreamtheater.2011.07.12.jpg',
@@ -14,7 +14,7 @@
 <h2>Dream Theater в Москве <small>12 июля 2011</small></h2>
 <div class="row">
   <div class="col-md-7">
-    <p>Что играли:</p>
+    <p lang="ru">Что играли:</p>
     <ol>
       <li>Under a Glass Moon</li>
       <li>These Walls</li>

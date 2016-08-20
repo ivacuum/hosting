@@ -1,4 +1,4 @@
-@extends('life.base', [
+@extends('life.gigs.base', [
   'meta_title' => 'Dream Theater в Санкт-Петербурге &middot; 26 февраля 2014',
   'meta_description' => 'Заметки о концерте.',
   'meta_image' => 'https://life.ivacuum.ru/gigs/dreamtheater.2014.02.26.jpg',
@@ -14,8 +14,8 @@
 <h2>Dream Theater в Санкт-Петербурге <small>26 февраля 2014</small></h2>
 <div class="row">
   <div class="col-md-7">
-    <p>Впервые в жизни попал на Meet&amp;Greet — встречу и общение с группой до концерта.</p>
-    <p>Что играли:</p>
+    <p lang="ru">Впервые в жизни попал на Meet&amp;Greet — встречу и общение с группой до концерта.</p>
+    <p lang="ru">Что играли:</p>
     <ol>
       <li>The Enemy Inside</li>
       <li>The Shattered Fortress</li>
@@ -44,7 +44,7 @@
   </div>
 </div>
 
-<p>Видеозапись выступления:</p>
+<p lang="ru">Видеозапись выступления:</p>
 <div class="fotorama" data-width="1280" data-ratio="16/10">
   <a href="https://www.youtube.com/watch?v=MiW2GYfSwqw"></a>
 </div>

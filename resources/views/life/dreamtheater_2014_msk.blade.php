@@ -1,4 +1,4 @@
-@extends('life.base', [
+@extends('life.gigs.base', [
   'meta_title' => 'Dream Theater в Москве &middot; 28 февраля 2014',
   'meta_description' => 'Заметки о концерте.',
   'meta_image' => 'https://life.ivacuum.ru/gigs/dreamtheater.2014.02.28.jpg',
@@ -14,8 +14,8 @@
 <h2>Dream Theater в Москве <small>28 февраля 2014</small></h2>
 <div class="row">
   <div class="col-md-7">
-    <p>Впервые побывал на двух концертах группы подряд.</p>
-    <p>Что играли:</p>
+    <p lang="ru">Впервые побывал на двух концертах группы подряд.</p>
+    <p lang="ru">Что играли:</p>
     <ol>
       <li>The Enemy Inside</li>
       <li>The Shattered Fortress</li>

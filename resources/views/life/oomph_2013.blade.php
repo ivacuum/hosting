@@ -1,4 +1,4 @@
-@extends('life.base', [
+@extends('life.gigs.base', [
   'meta_title' => 'Oomph! в Москве &middot; 19 октября 2013',
   'meta_description' => 'Заметки о концерте.',
   'meta_image' => 'https://life.ivacuum.ru/gigs/oomph.2013.10.19.jpg',
@@ -14,7 +14,7 @@
 <h2>Oomph! в Москве <small>19 октября 2013</small></h2>
 <div class="row">
   <div class="col-md-7">
-    <p>Что играли:</p>
+    <p lang="ru">Что играли:</p>
     <ol>
       <li>Unzerstörbar</li>
       <li>Labyrinth</li>
@@ -45,7 +45,7 @@
   </div>
 </div>
 
-<p>Видеозапись выступления:</p>
+<p lang="ru">Видеозапись выступления:</p>
 <div class="fotorama" data-width="1280" data-ratio="16/10">
   <a href="https://www.youtube.com/watch?v=RsLFgW-wsP0"></a>
 </div>

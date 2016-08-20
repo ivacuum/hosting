@@ -1,4 +1,4 @@
-@extends('life.base', [
+@extends('life.gigs.base', [
   'meta_title' => 'Linkin Park в Москве &middot; 2 июня 2014',
   'meta_description' => 'Заметки о концерте.',
   'meta_image' => 'https://life.ivacuum.ru/gigs/linkinpark.2014.06.02.jpg',
@@ -14,8 +14,8 @@
 <h2>Linkin Park в Москве <small>2 июня 2014</small></h2>
 <div class="row">
   <div class="col-md-7">
-    <p>Смело можно сказать, что два вокалиста в группе — это ад! Не дадут спуска практически ни на минуту. Прокричишь куплет, припев будешь уже прыгать и орать, далее все заново. И так 100 минут. Стоило оно того? Однозначно да!</p>
-    <p>Что играли:</p>
+    <p lang="ru">Смело можно сказать, что два вокалиста в группе — это ад! Не дадут спуска практически ни на минуту. Прокричишь куплет, припев будешь уже прыгать и орать, далее все заново. И так 100 минут. Стоило оно того? Однозначно да!</p>
+    <p lang="ru">Что играли:</p>
     <ol>
       <li>Guilty All the Same</li>
       <li>Given Up</li>
@@ -52,7 +52,7 @@
   </div>
 </div>
 
-<p>Видеозаписи с концерта: полное шоу, флэшмоб (трек #19) и medley (трек #11).</p>
+<p lang="ru">Видеозаписи с концерта: полное шоу, флэшмоб (трек #19) и medley (трек #11).</p>
 <div class="fotorama" data-width="1280" data-ratio="16/10">
   <a href="https://www.youtube.com/watch?v=rLB0aIGS0zE"></a>
   <a href="https://www.youtube.com/watch?v=NdIBg8zHRFI"></a>

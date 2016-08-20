@@ -1,4 +1,4 @@
-@extends('life.base', [
+@extends('life.gigs.base', [
   'meta_title' => 'Metallica в Санкт-Петербурге &middot; 18 июля 2008',
   'meta_description' => 'Заметки о концерте.',
   'meta_image' => 'https://life.ivacuum.ru/gigs/metallica.2008.07.18.jpg',
@@ -14,7 +14,7 @@
 <h2>Metallica в Санкт-Петербурге <small>18 июля 2008</small></h2>
 <div class="row">
   <div class="col-md-7">
-    <p>Что играли:</p>
+    <p lang="ru">Что играли:</p>
     <ol>
       <li>Creeping Death</li>
       <li>For Whom the Bell Tolls</li>
@@ -43,7 +43,7 @@
   </div>
 </div>
 
-<p>Видеозаписи концерта:</p>
+<p lang="ru">Видеозаписи концерта:</p>
 <div class="fotorama" data-width="720" data-ratio="16/10">
   <a href="https://www.youtube.com/watch?v=s3l5cyVLrTs"></a>
   <a href="https://vk.com/video_ext.php?oid=169906990&id=162953982&hash=598cee4929696e81&hd=1" data-video="true">

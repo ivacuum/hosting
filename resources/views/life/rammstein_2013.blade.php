@@ -1,4 +1,4 @@
-@extends('life.base', [
+@extends('life.gigs.base', [
   'meta_title' => 'Rammstein в Самаре &middot; 8 июня 2013',
   'meta_description' => 'Заметки о концерте.',
   'meta_image' => 'https://life.ivacuum.ru/gigs/rammstein.2013.06.08.jpg',
@@ -14,7 +14,7 @@
 <h2>Rammstein в Самаре <small>8 июня 2013</small></h2>
 <div class="row">
   <div class="col-md-7">
-    <p>Что играли:</p>
+    <p lang="ru">Что играли:</p>
     <ol>
       <li>Ich tu dir weh</li>
       <li>Wollt ihr das Bett in Flammen sehen?</li>
@@ -43,7 +43,7 @@
   </div>
 </div>
 
-<p>Видеозапись концерта.</p>
+<p lang="ru">Видеозапись концерта.</p>
 <div class="fotorama" data-width="1280" data-ratio="16/10">
   <a href="https://www.youtube.com/watch?v=enTp6hq2Dqw"></a>
 </div>

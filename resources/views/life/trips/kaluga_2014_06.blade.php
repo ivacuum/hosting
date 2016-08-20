@@ -1,7 +1,7 @@
 @extends('life.trips.base')
 
 @section('content')
-<p>Купаемся.</p>
+<p lang="ru">Купаемся.</p>
 @include('tpl.fotorama', ['pics' => [
   'IMG_0749.jpg',
   'IMG_0750.jpg',
