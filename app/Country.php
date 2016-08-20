@@ -25,7 +25,7 @@ class Country extends Model
     public function cities()
     {
         return $this->hasMany(City::class)
-            ->orderBy('title_ru');
+            ->orderBy("title_" . App::getLocale());
     }
 
     public function trips()
