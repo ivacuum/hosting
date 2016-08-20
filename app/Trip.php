@@ -25,21 +25,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Trip extends Model
 {
-    protected $months_names = [
-        1 => 'январь',
-        2 => 'февраль',
-        3 => 'март',
-        4 => 'апрель',
-        5 => 'май',
-        6 => 'июнь',
-        7 => 'июль',
-        8 => 'август',
-        9 => 'сентябрь',
-        10 => 'октябрь',
-        11 => 'ноябрь',
-        12 => 'декабрь',
-    ];
-
     protected $fillable = [
         'city_id',
         'title',
@@ -127,6 +112,7 @@ class Trip extends Model
 
     protected function getMonthName($month)
     {
-        return $this->months_names[$month];
+        // Собственный перевод, так как нужен именительный падеж в русском языке
+        return trans("months.{$month}");
     }
 }
