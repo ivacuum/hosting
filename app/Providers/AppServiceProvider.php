@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,14 +12,16 @@ class AppServiceProvider extends ServiceProvider
 
     public function register()
     {
-        setlocale(LC_ALL, config('app.setlocale'));
-
-        Carbon::setLocale('ru');
-
         // $this->app->bind(
         //     'Illuminate\Contracts\Auth\Registrar',
         //     'App\Services\Registrar'
         // );
+
+        /*
+        \Event::listen('*', function($event) {
+            print \Event::firing() . '<br>';
+        });
+        */
 
         if ($this->app->environment('local')) {
             if (\Input::cookie('debugbar', false)) {

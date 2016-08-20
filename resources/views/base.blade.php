@@ -23,7 +23,6 @@
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -32,36 +31,66 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           @section('global_menu')
-            <li><a class="{{ $self == 'Home' ? 'navbar-selected' : '' }}" href="/">Главная</a></li>
-            <li><a class="{{ $self == 'Life' ? 'navbar-selected' : '' }}" href="/life">Заметки</a></li>
-            <li><a class="{{ $self == 'ParserVk' ? 'navbar-selected' : '' }}" href="/parser/vk">Парсер ВК</a></li>
+            <li>
+              <a class="{{ $self == 'Home' ? 'navbar-selected' : '' }}" href="{{ action('Home@index') }}">
+                {{ trans('menu.main') }}
+              </a>
+            </li>
+            <li>
+              <a class="{{ $self == 'Life' ? 'navbar-selected' : '' }}" href="{{ action('Life@index') }}">
+                {{ trans('menu.life') }}
+              </a>
+            </li>
+            <li>
+              <a class="{{ $self == 'ParserVk' ? 'navbar-selected' : '' }}" href="{{ action('ParserVk@index') }}">
+                {{ trans('menu.parser_vk') }}
+              </a>
+            </li>
             @if (App::environment('local'))
-              <li><a class="{{ $self == 'Docs' ? 'navbar-selected' : '' }}" href="/docs">Доки</a></li>
-            @endif
-          @show
-        </ul>
-        @if (Auth::check())
-          <ul class="nav navbar-nav navbar-right">
-            @if (Auth::user()->isAdmin())
               <li>
-                <a href="{{ App::environment('local') ? '/acp/dev/templates' : '/acp/trips' }}">
-                  @php (require base_path('resources/svg/dashboard.html'))
+                <a class="{{ $self == 'Docs' ? 'navbar-selected' : '' }}" href="{{ action('Docs@index') }}">
+                  {{ trans('menu.docs') }}
                 </a>
               </li>
             @endif
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->email }} <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="/auth/logout">Выход</a></li>
-              </ul>
-            </li>
-          </ul>
-        @else
-          {{--
-          <form class="navbar-form navbar-right">
-            <a class="btn btn-default" href="/auth/login">Вход</a>
-          </form>
-          --}}
-        @endif
+          @show
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              {{ trans('menu.language') }}
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/en">English</a></li>
+              <li><a href="/">Русский</a></li>
+            </ul>
+          </li>
+          @if (Auth::check())
+              @if (Auth::user()->isAdmin())
+                <li>
+                  <a href="{{ App::environment('local') ? '/acp/dev/templates' : '/acp/trips' }}">
+                    @php (require base_path('resources/svg/dashboard.html'))
+                  </a>
+                </li>
+              @endif
+              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->email }} <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="{{ action('Auth@logout') }}">
+                      {{ trans('menu.logout') }}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+          @else
+            {{--
+            <form class="navbar-form navbar-right">
+              <a class="btn btn-default" href="/auth/login">Вход</a>
+            </form>
+            --}}
+          @endif
+        </ul>
       </div>
     </div>
   </div>
@@ -90,7 +119,21 @@
       <ul class="list-inline">
         <li>&copy; {{ date('Y') }} vacuum</li>
         <li>&middot;</li>
-        <li><a href="mailto:{{ config('email.support') }}" class="link">Обратная связь</a></li>
+        <li>
+          <a class="link" href="mailto:{{ config('email.support') }}">
+            {{ trans('menu.feedback') }}
+          </a>
+        </li>
+        <li>
+          <a class="link" href="https://vk.com/ivacuum">
+            {{ trans('menu.vk') }}
+          </a>
+        </li>
+        <li>
+          <a class="link" href="https://www.instagram.com/ivacuum">
+            {{ trans('menu.instagram') }}
+          </a>
+        </li>
       </ul>
     @show
   </div>

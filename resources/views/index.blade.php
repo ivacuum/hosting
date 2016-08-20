@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<p class="lead">Текст для главной еще не придумали. Можно <a class="link" href="/life">заметки</a> почитать, например.</p>
+<p class="lead">Текст для главной еще не придумали. Можно <a class="link" href="{{ action('Life@index') }}">заметки</a> почитать, например.</p>
 
 @foreach ($trips->chunk(3) as $chunk)
   <div class="page-section">
