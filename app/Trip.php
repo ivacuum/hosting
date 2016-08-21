@@ -109,14 +109,14 @@ class Trip extends Model
     public function getLocalizedDate()
     {
         if (0 === $this->date_end->diffInDays($this->date_start)) {
-            return "{$this->date_start->day} {$this->date_start->formatLocalized('%B %Y')}";
+            return trim($this->date_start->formatLocalized(trans('life.date.same_day')));
         }
 
         if ($this->date_start->month !== $this->date_end->month) {
-            return "{$this->date_start->day} {$this->date_start->formatLocalized('%B')} – {$this->date_end->day} {$this->date_end->formatLocalized('%B %Y')}";
+            return sprintf(trans('life.date.months'), $this->date_start->day, $this->date_start->formatLocalized('%B'), $this->date_end->day, $this->date_end->formatLocalized('%B'), $this->date_end->formatLocalized('%Y'));
         }
 
-        return "{$this->date_start->day}–{$this->date_end->day} {$this->date_start->formatLocalized('%B %Y')}";
+        return sprintf(trans('life.date.same_month'), $this->date_start->day, $this->date_end->day, $this->date_start->formatLocalized('%B'), $this->date_start->formatLocalized('%Y'));
     }
 
     public function getMetaDescription()
