@@ -54,14 +54,14 @@
 </div>
 
 <div class="form-group {{ $errors->has('venue_ru') ? 'has-error' : '' }}">
-  <label class="col-md-3 control-label required">Площадка:</label>
+  <label class="col-md-3 control-label">Площадка:</label>
   <div class="col-md-6">
     <input required type="text" class="form-control" name="venue_ru" value="{{ old('venue_ru', @$gig->venue_ru) }}">
   </div>
 </div>
 
 <div class="form-group {{ $errors->has('venue_en') ? 'has-error' : '' }}">
-  <label class="col-md-3 control-label required">Площадка EN:</label>
+  <label class="col-md-3 control-label">Площадка EN:</label>
   <div class="col-md-6">
     <input required type="text" class="form-control" name="venue_en" value="{{ old('venue_en', @$gig->venue_en) }}">
   </div>
