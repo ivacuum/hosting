@@ -1,9 +1,6 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Country;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Acp\CountryCreate;
-use App\Http\Requests\Acp\CountryEdit;
 use App\Http\Requests\Acp\TripCreate;
 use App\Http\Requests\Acp\TripEdit;
 use App\Trip;

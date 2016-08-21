@@ -3,7 +3,7 @@
 // Admin control panel
 Route::get('/', 'Acp\Home@index');
 
-Route::group(['prefix' => 'cities', 'breadcrumbs' => [['Города', 'acp/cities']]], function() {
+Route::group(['prefix' => 'cities', 'breadcrumbs' => [['Города', 'acp/cities']]], function () {
     Route::get('/', 'Acp\Cities@index');
     Route::post('/', 'Acp\Cities@store');
     Route::get('create', 'Acp\Cities@create');
@@ -13,7 +13,7 @@ Route::group(['prefix' => 'cities', 'breadcrumbs' => [['Города', 'acp/citi
     Route::get('{City}/edit', 'Acp\Cities@edit');
 });
 
-Route::group(['prefix' => 'clients', 'breadcrumbs' => [['Клиенты', 'acp/clients']]], function() {
+Route::group(['prefix' => 'clients', 'breadcrumbs' => [['Клиенты', 'acp/clients']]], function () {
     Route::get('/', 'Acp\Clients@index');
     Route::post('/', 'Acp\Clients@store');
     Route::get('create', 'Acp\Clients@create');
@@ -23,7 +23,7 @@ Route::group(['prefix' => 'clients', 'breadcrumbs' => [['Клиенты', 'acp/c
     Route::get('{Client}/edit', 'Acp\Clients@edit');
 });
 
-Route::group(['prefix' => 'countries', 'breadcrumbs' => [['Страны', 'acp/countries']]], function() {
+Route::group(['prefix' => 'countries', 'breadcrumbs' => [['Страны', 'acp/countries']]], function () {
     Route::get('/', 'Acp\Countries@index');
     Route::post('/', 'Acp\Countries@store');
     Route::get('create', 'Acp\Countries@create');
@@ -43,7 +43,7 @@ Route::group(['prefix' => 'dev', 'breadcrumbs' => [['Разработка', 'acp
     Route::post('thumbnails', 'Acp\Dev@thumbnailsPost');
 });
 
-Route::group(['prefix' => 'domains', 'breadcrumbs' => [['Домены', 'acp/domains']]], function() {
+Route::group(['prefix' => 'domains', 'breadcrumbs' => [['Домены', 'acp/domains']]], function () {
     Route::get('/', 'Acp\Domains@index');
     Route::post('/', 'Acp\Domains@store');
     Route::post('batch', 'Acp\Domains@batch');
@@ -79,7 +79,7 @@ Route::group(['prefix' => 'pages', 'breadcrumbs' => [['Страницы', 'acp/p
     Route::get('{Page}/edit', 'Acp\Pages@edit');
 });
 
-Route::group(['prefix' => 'servers', 'breadcrumbs' => [['Серверы', 'acp/servers']]], function() {
+Route::group(['prefix' => 'servers', 'breadcrumbs' => [['Серверы', 'acp/servers']]], function () {
     Route::get('/', 'Acp\Servers@index');
     Route::post('/', 'Acp\Servers@store');
     Route::get('create', 'Acp\Servers@create');
@@ -88,7 +88,7 @@ Route::group(['prefix' => 'servers', 'breadcrumbs' => [['Серверы', 'acp/s
     Route::delete('{Server}', 'Acp\Servers@destroy');
     Route::get('{Server}/edit', 'Acp\Servers@edit');
 
-    Route::group(['prefix' => '{Server}/ftp'], function() {
+    Route::group(['prefix' => '{Server}/ftp'], function () {
         Route::get('/', 'Acp\Servers\Ftp@index');
         Route::post('file', 'Acp\Servers\Ftp@filePost');
         Route::post('dir', 'Acp\Servers\Ftp@dirPost');
@@ -98,7 +98,7 @@ Route::group(['prefix' => 'servers', 'breadcrumbs' => [['Серверы', 'acp/s
     });
 });
 
-Route::group(['prefix' => 'trips', 'breadcrumbs' => [['Поездки', 'acp/trips']]], function() {
+Route::group(['prefix' => 'trips', 'breadcrumbs' => [['Поездки', 'acp/trips']]], function () {
     Route::get('/', 'Acp\Trips@index');
     Route::post('/', 'Acp\Trips@store');
     Route::get('create', 'Acp\Trips@create');
@@ -108,7 +108,7 @@ Route::group(['prefix' => 'trips', 'breadcrumbs' => [['Поездки', 'acp/tri
     Route::get('{Trip}/edit', 'Acp\Trips@edit');
 });
 
-Route::group(['prefix' => 'users', 'breadcrumbs' => [['Пользователи', 'acp/users']]], function() {
+Route::group(['prefix' => 'users', 'breadcrumbs' => [['Пользователи', 'acp/users']]], function () {
     Route::get('/', 'Acp\Users@index');
     Route::post('/', 'Acp\Users@store');
     Route::get('create', 'Acp\Users@create');
@@ -118,7 +118,7 @@ Route::group(['prefix' => 'users', 'breadcrumbs' => [['Пользователи'
     Route::get('{User}/edit', 'Acp\Users@edit');
 });
 
-Route::group(['prefix' => 'yandex/users', 'breadcrumbs' => [['Пользователи Яндекс API', 'acp/yandex/users']]], function() {
+Route::group(['prefix' => 'yandex/users', 'breadcrumbs' => [['Пользователи Яндекс API', 'acp/yandex/users']]], function () {
     Route::get('/', 'Acp\Yandex\Users@index');
     Route::post('/', 'Acp\Yandex\Users@store');
     Route::get('create', 'Acp\Yandex\Users@create');

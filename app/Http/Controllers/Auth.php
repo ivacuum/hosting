@@ -68,7 +68,7 @@ class Auth extends Controller
             'email' => 'required|email',
         ]);
 
-        $response = $passwords->sendResetLink($request->only('email'), function($mail) {
+        $response = $passwords->sendResetLink($request->only('email'), function ($mail) {
             $mail->subject('Восстановление пароля');
         });
 
@@ -103,7 +103,7 @@ class Auth extends Controller
         $credentials = $request->only('email', 'password', 'token');
         $credentials['password_confirmation'] = $credentials['password'];
 
-        $response = $passwords->reset($credentials, function($user, $password) {
+        $response = $passwords->reset($credentials, function ($user, $password) {
             $user->password = $password;
             $user->save();
             $this->auth->login($user);
@@ -141,7 +141,7 @@ class Auth extends Controller
             'active'   => 1,
         ]);
 
-        // Mail::send('emails.users.activation', compact('user'), function($mail) use ($user) {
+        // Mail::send('emails.users.activation', compact('user'), function ($mail) use ($user) {
         // 	$mail->to($user->email)->subject("Активация учетной записи");
         // });
 

@@ -87,7 +87,7 @@ class Users extends Controller
 		$route = action('Acp\Home@index');
 		$vars  = compact('user', 'password', 'route');
 
-		Mail::send('emails.users.credentials', $vars, function($mail) use ($user, $route) {
+		Mail::send('emails.users.credentials', $vars, function ($mail) use ($user, $route) {
 			$mail->to($user->email)->subject("Доступ к {$route}");
 		});
 

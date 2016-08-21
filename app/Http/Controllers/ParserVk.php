@@ -87,7 +87,7 @@ class ParserVk extends Controller
         $domain = $this->vkpage;
         $params = compact('domain', 'count', 'offset');
 
-        return Cache::remember($cache_entry, 15 + intval($offset / 100), function() use ($params) {
+        return Cache::remember($cache_entry, 15 + intval($offset / 100), function () use ($params) {
             $response = $this->client->get('wall.get', ['query' => $params]);
 
             return json_decode($response->getBody());

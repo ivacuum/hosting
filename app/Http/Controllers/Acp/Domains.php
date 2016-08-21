@@ -99,7 +99,7 @@ class Domains extends Controller
 
 		$vars = compact('domain', 'mailboxes');
 
-		Mail::send('emails.domains.mailboxes', $vars, function($mail) use ($domain, $send_to) {
+		Mail::send('emails.domains.mailboxes', $vars, function ($mail) use ($domain, $send_to) {
 			$mail->to($send_to)->subject("Доступ к почте {$domain->domain}");
 		});
 

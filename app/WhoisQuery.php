@@ -95,7 +95,7 @@ class WhoisQuery
             return "No whois server for this tld in list!";
         }
 
-        return $this->data = Cache::remember($cache_entry, 15, function() use ($whois_server) {
+        return $this->data = Cache::remember($cache_entry, 15, function () use ($whois_server) {
             if (preg_match("/^https?:\/\//i", $whois_server)) {
                 $string = $this->curlRequest($whois_server);
             } else {

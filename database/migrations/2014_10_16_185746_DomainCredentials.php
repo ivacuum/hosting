@@ -7,7 +7,7 @@ class DomainCredentials extends Migration
 {
 	public function up()
 	{
-		Schema::table('domains', function(Blueprint $table) {
+		Schema::table('domains', function (Blueprint $table) {
 			$table->mediumText('text');
 			$table->string('cms_type');
 			$table->string('cms_version');
@@ -29,7 +29,7 @@ class DomainCredentials extends Migration
 
 	public function down()
 	{
-		Schema::table('domains', function(Blueprint $table) {
+		Schema::table('domains', function (Blueprint $table) {
 			$table->dropColumn([
 				'text',
 				'cms_type',
