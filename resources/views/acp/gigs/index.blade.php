@@ -7,7 +7,7 @@
   @include('acp.tpl.create')
 </h3>
 @if (sizeof($gigs))
-  <table class="table-stats">
+  <table class="table-stats m-b-1">
     <colgroup>
       <col width="35">
       <col width="*">
