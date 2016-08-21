@@ -48,7 +48,7 @@
             {{ $previous->year }}
           @endif
         </div>
-        <a class="link" href="/life/{{ $previous->slug }}">{{ $previous->title }}</a>
+        <a class="link" href="{{ action('Life@page', $previous->slug) }}">{{ $previous->title }}</a>
       </div>
     @endforeach
   @endif
@@ -75,7 +75,7 @@
             {{ $next->year }}
           @endif
         </div>
-        <a class="link" href="/life/{{ $next->slug }}">{{ $next->title }}</a>
+        <a class="link" href="{{ action('Life@page', $next->slug) }}">{{ $next->title }}</a>
       </div>
     @endforeach
   @endif
