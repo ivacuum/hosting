@@ -66,7 +66,17 @@ Route::group(['prefix' => 'domains', 'breadcrumbs' => [['Домены', 'acp/dom
     Route::get('{Domain}/whois', 'Acp\Domains@whois');
 });
 
-Route::group(['prefix' => 'pages', 'breadcrumbs' => [['Страницы', 'acp/pages']]], function() {
+Route::group(['prefix' => 'gigs', 'breadcrumbs' => [['Концерты', 'acp/gigs']]], function () {
+    Route::get('/', 'Acp\Gigs@index');
+    Route::post('/', 'Acp\Gigs@store');
+    Route::get('create', 'Acp\Gigs@create');
+    Route::get('{Gig}', 'Acp\Gigs@show');
+    Route::put('{Gig}', 'Acp\Gigs@update');
+    Route::delete('{Gig}', 'Acp\Gigs@destroy');
+    Route::get('{Gig}/edit', 'Acp\Gigs@edit');
+});
+
+Route::group(['prefix' => 'pages', 'breadcrumbs' => [['Страницы', 'acp/pages']]], function () {
     Route::get('/', 'Acp\Pages@index');
     Route::post('/', 'Acp\Pages@store');
     Route::post('batch', 'Acp\Pages@batch');

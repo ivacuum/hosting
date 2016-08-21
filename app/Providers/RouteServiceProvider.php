@@ -7,6 +7,7 @@ use App\City;
 use App\Client;
 use App\Country;
 use App\Domain;
+use App\Gig;
 use App\Page;
 use App\Server;
 use App\Trip;
@@ -29,6 +30,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('Client', Client::class);
         $router->model('Country', Country::class);
         $router->model('Domain', Domain::class);
+        $router->model('Gig', Gig::class);
         $router->model('Page', Page::class);
         $router->model('Server', Server::class);
         $router->model('Trip', Trip::class);

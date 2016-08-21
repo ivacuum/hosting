@@ -19,6 +19,11 @@ return [
     'acp.countries.edit'   => 'Редактирование страны',
     'acp.countries.show'   => 'Страна',
 
+    'acp.gigs.index'  => 'Концерты',
+    'acp.gigs.create' => 'Новый концерт',
+    'acp.gigs.edit'   => 'Редактирование концерта',
+    'acp.gigs.show'   => 'Концерт',
+
     'acp.trips.index'  => 'Поездки',
     'acp.trips.create' => 'Новая поездка',
     'acp.trips.edit'   => 'Редактирование поездки',

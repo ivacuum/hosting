@@ -17,7 +17,8 @@ return [
     'favorites' => 'Избранное',
     'trips'     => 'Поездки',
 
+    'date.gig_short'  => '%d %B', // 21 апреля
+    'date.months'     => '%d %s – %d %s %d', // 27 мая – 3 июня, 2016
     'date.same_day'   => '%e %B %Y', // 1 июня 2016
     'date.same_month' => '%d–%d %s %d', // 1–3 июня 2016
-    'date.months'     => '%d %s – %d %s %d', // 27 мая – 3 июня, 2016
 ];

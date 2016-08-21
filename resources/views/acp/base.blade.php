@@ -6,6 +6,7 @@
 <li><a class="{{ $self == 'Acp\Cities' ? 'navbar-selected' : '' }}" href="/acp/cities">Города</a></li>
 <li><a class="{{ $self == 'Acp\Countries' ? 'navbar-selected' : '' }}" href="/acp/countries">Страны</a></li>
 <li><a class="{{ $self == 'Acp\Trips' ? 'navbar-selected' : '' }}" href="/acp/trips">Поездки</a></li>
+<li><a class="{{ $self == 'Acp\Gigs' ? 'navbar-selected' : '' }}" href="/acp/gigs">Концерты</a></li>
 <li class="dropdown">
   <a class="dropdown-toggle {{ in_array($self, ['Acp\Clients', 'Acp\Domains', 'Acp\Servers', 'Acp\Pages']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">Хостинг <span class="caret"></span></a>
   <ul class="dropdown-menu">
