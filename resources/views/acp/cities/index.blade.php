@@ -24,7 +24,7 @@
     </thead>
     @foreach ($models as $model)
       <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
-        <td><span class="emoji">{{ $model->country->emoji }}</span></td>
+        <td>{{ $model->country->emoji }}</td>
         <td>
           <a class="link" href="{{ action("$self@show", $model) }}">
             {{ $model->title }}

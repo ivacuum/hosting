@@ -16,6 +16,7 @@
   <div class="col-sm-9">
     <h2 class="m-t-0">
       @include('acp.tpl.back')
+      {{ $model->country->emoji }}
       {{ $model->title }}
     </h2>
 @endsection
