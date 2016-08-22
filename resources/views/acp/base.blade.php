@@ -1,5 +1,5 @@
 @extends('base', [
-  'meta_title' => !empty($meta_title) ? $meta_title : trans("meta_title.{$view}"),
+  'meta_title' => !empty($meta_title) ? $meta_title : trans($view),
 ])
 
 @section('global_menu')
