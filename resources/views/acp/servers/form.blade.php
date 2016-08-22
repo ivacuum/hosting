@@ -21,10 +21,9 @@
   </div>
 </div>
 
-<hr>
 <div class="row">
   <div class="col-md-10 col-md-offset-2">
-    <h3 style="margin-bottom: 0.5em;">Реквизиты доступа</h3>
+    <h3>Реквизиты доступа</h3>
   </div>
 </div>
 

@@ -1,10 +1,8 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Client;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Acp\ClientCreate;
 use App\Http\Requests\Acp\ClientEdit;
-use Illuminate\Http\Request;
 
 class Clients extends Controller
 {
@@ -31,10 +29,10 @@ class Clients extends Controller
 		return view($this->view, compact('client'));
 	}
 
-	public function show(Client $client, Request $request)
+	public function show(Client $client)
 	{
 		$filter = '';
-		$q = $request->input('q');
+		$q = $this->request->input('q');
 
 		$domains = $client->domains()->orderBy('paid_till');
 

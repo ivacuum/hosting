@@ -1,12 +1,10 @@
 <?php namespace App\Http\Controllers\Acp\Yandex;
 
 use App\Domain;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Acp\Controller;
 use App\Http\Requests\Acp\YandexUserCreate;
 use App\Http\Requests\Acp\YandexUserEdit;
 use App\YandexUser;
-use Illuminate\Http\Request;
-use Session;
 
 class Users extends Controller
 {
@@ -38,10 +36,10 @@ class Users extends Controller
 		return view($this->view, compact('domains', 'user'));
 	}
 
-	public function show(YandexUser $user, Request $request)
+	public function show(YandexUser $user)
 	{
 		$filter = '';
-		$q = $request->input('q');
+		$q = $this->request->input('q');
 
 		$domains = $user->domains()->orderBy('paid_till');
 

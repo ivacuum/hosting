@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Acp\UserCreate;
 use App\Http\Requests\Acp\UserEdit;
 use App\User;

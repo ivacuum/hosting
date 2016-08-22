@@ -1,11 +1,8 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Domain;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Acp\DomainCreate;
 use App\Http\Requests\Acp\DomainEdit;
-use Illuminate\Http\Request;
-use Log;
 use Mail;
 use Session;
 
@@ -13,15 +10,15 @@ class Domains extends Controller
 {
 	const DEFAULT_ORDER_BY = 'domain';
 
-	public function index(Request $request)
+	public function index()
 	{
-        if ($request->user()->id !== 1) {
+        if ($this->user->id !== 1) {
             abort(404);
         }
 
-		$filter = $request->input('filter');
-		$sort   = $request->input('sort');
-		$q      = $request->input('q');
+		$filter = $this->request->input('filter');
+		$sort   = $this->request->input('sort');
+		$q      = $this->request->input('q');
 
 		if (!in_array($sort, ['domain', 'registered_at', 'paid_till'])) {
 			$sort = self::DEFAULT_ORDER_BY;
@@ -74,14 +71,14 @@ class Domains extends Controller
 			->paginate()
 			->appends(compact('sort', 'filter', 'q'));
 
-		$back_url = $request->fullUrl();
+		$back_url = $this->request->fullUrl();
 
 		return view($this->view, compact('back_url', 'domains', 'filter', 'sort', 'q'));
 	}
 
-	public function addMailbox(Domain $domain, Request $request)
+	public function addMailbox(Domain $domain)
 	{
-		extract($request->only('logins', 'send_to'));
+		extract($this->request->only('logins', 'send_to'));
 
 		$logins = explode(',', $logins);
 		$mailboxes = [];
@@ -108,16 +105,16 @@ class Domains extends Controller
 		return redirect()->action("{$this->class}@mailboxes", $domain);
 	}
 
-	public function addNsRecord(Domain $domain, Request $request)
+	public function addNsRecord(Domain $domain)
 	{
-		$input = $request->only('content', 'subdomain', 'priority', 'port', 'weight');
+		$input = $this->request->only('content', 'subdomain', 'priority', 'port', 'weight');
 
-		return $domain->addNsRecord($request->input('type'), $input);
+		return $domain->addNsRecord($this->request->input('type'), $input);
 	}
 
-	public function batch(Request $request)
+	public function batch()
 	{
-		extract($request->only('action', 'ids'));
+		extract($this->request->only('action', 'ids'));
 
 		$params = [];
 
@@ -161,9 +158,9 @@ class Domains extends Controller
 		return view($this->view);
 	}
 
-	public function deleteNsRecord(Domain $domain, Request $request)
+	public function deleteNsRecord(Domain $domain)
 	{
-		$id = $request->input('record_id');
+		$id = $this->request->input('record_id');
 
 		return $domain->deleteNsRecord($id);
 	}
@@ -180,10 +177,10 @@ class Domains extends Controller
 		return view($this->view, compact('domain'));
 	}
 
-	public function editNsRecord(Domain $domain, Request $request)
+	public function editNsRecord(Domain $domain)
 	{
-		extract($request->only('record_id', 'type'));
-		$input = $request->only('content', 'subdomain', 'priority', 'port', 'weight', 'retry', 'refresh', 'expire', 'ttl');
+		extract($this->request->only('record_id', 'type'));
+		$input = $this->request->only('content', 'subdomain', 'priority', 'port', 'weight', 'retry', 'refresh', 'expire', 'ttl');
 
 		return $domain->editNsRecord($record_id, $type, $input);
 	}
@@ -214,9 +211,9 @@ class Domains extends Controller
 		return view($this->view, compact('domain', 'robots'));
 	}
 
-	public function setServerNsRecords(Domain $domain, Request $request)
+	public function setServerNsRecords(Domain $domain)
 	{
-		$server = $request->input('server');
+		$server = $this->request->input('server');
 
 		$domain->setServerNsRecords($server);
 
@@ -236,9 +233,9 @@ class Domains extends Controller
 		return redirect()->action("{$this->class}@show", $domain);
 	}
 
-	public function show(Domain $domain, Request $request)
+	public function show(Domain $domain)
 	{
-        if ($request->user()->id !== 1) {
+        if ($this->user->id !== 1) {
             abort(404);
         }
 
@@ -272,7 +269,7 @@ class Domains extends Controller
 		return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
 	}
 
-	public function whois(Domain $domain, Request $request)
+	public function whois(Domain $domain)
 	{
 		$domain->updateWhois();
 

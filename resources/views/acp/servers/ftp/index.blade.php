@@ -8,42 +8,38 @@
   ftp://{{ $server->host }}
 </h2>
 
-<div class="boxed-group flush">
-  <h3>
-    @if ($dir_up != ':')
-      <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $dir_up }}">
-        @php (require base_path('resources/svg/chevron-left.html'))
-      </a>
-    @endif
-    {{ $dir }}
-  </h3>
-  <div class="boxed-group-inner">
-    <table class="table-stats">
-      @foreach ($dirs as $row)
-        <tr>
-          <td>
-            @php (require base_path('resources/svg/folder-o.html'))
-            &nbsp;
-            <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $row['path'] }}" class="link">{{ $row['basename'] }}</a>
-          </td>
-          <td></td>
-          <td></td>
-        </tr>
-      @endforeach
-      @foreach ($files as $row)
-      <tr>
-        <td>
-          @php (require base_path('resources/svg/file-text-o.html'))
-          &nbsp;
-          <a href="/acp/servers/{{ $server->id }}/ftp/source?file={{ $row['path'] }}" class="link">{{ $row['basename'] }}</a>
-        </td>
-        <td><span class="text-muted">{{ $row['size'] }} b</span></td>
-        <td></td>
-      </tr>
-      @endforeach
-    </table>
-  </div>
-</div>
+<h3>
+  @if ($dir_up != ':')
+    <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $dir_up }}">
+      @php (require base_path('resources/svg/chevron-left.html'))
+    </a>
+  @endif
+  {{ $dir }}
+</h3>
+<table class="table-stats m-b-1">
+  @foreach ($dirs as $row)
+    <tr>
+      <td>
+        @php (require base_path('resources/svg/folder-o.html'))
+        &nbsp;
+        <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $row['path'] }}" class="link">{{ $row['basename'] }}</a>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+  @endforeach
+  @foreach ($files as $row)
+  <tr>
+    <td>
+      @php (require base_path('resources/svg/file-text-o.html'))
+      &nbsp;
+      <a href="/acp/servers/{{ $server->id }}/ftp/source?file={{ $row['path'] }}" class="link">{{ $row['basename'] }}</a>
+    </td>
+    <td><span class="text-muted">{{ $row['size'] }} b</span></td>
+    <td></td>
+  </tr>
+  @endforeach
+</table>
 
 
 

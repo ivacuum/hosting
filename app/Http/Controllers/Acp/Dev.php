@@ -1,24 +1,11 @@
-<?php
+<?php namespace App\Http\Controllers\Acp;
 
-namespace App\Http\Controllers\Acp;
-
-use App\Http\Controllers\Controller;
 use App\Trip;
 use Breadcrumbs;
 use Illuminate\Cookie\CookieJar;
-use Illuminate\Http\Request;
 
 class Dev extends Controller
 {
-    protected $request;
-
-    public function __construct(Request $request)
-    {
-        parent::__construct();
-
-        $this->request = $request;
-    }
-
     public function index()
     {
         return view($this->view);

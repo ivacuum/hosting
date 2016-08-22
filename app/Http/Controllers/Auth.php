@@ -1,11 +1,8 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
-use Illuminate\Http\Request;
 
 class Auth extends Controller
 {
@@ -26,21 +23,21 @@ class Auth extends Controller
         return view($this->view);
     }
 
-    public function loginPost(Request $request)
+    public function loginPost()
     {
-        $this->validate($request, [
+        $this->validate($this->request, [
             'mail'     => 'empty',
             'email'    => 'required',
             'password' => 'required',
         ]);
 
         $credentials = [
-            'email'    => $request->input('email'),
-            'password' => $request->input('password'),
+            'email'    => $this->request->input('email'),
+            'password' => $this->request->input('password'),
             'active'   => 1,
         ];
 
-        if ($this->auth->attempt($credentials, !$request->has('foreign'))) {
+        if ($this->auth->attempt($credentials, !$this->request->has('foreign'))) {
             return redirect()->intended('/');
         }
 
@@ -61,14 +58,14 @@ class Auth extends Controller
         return view($this->view);
     }
 
-    public function passwordRemindPost(Request $request, PasswordBroker $passwords)
+    public function passwordRemindPost(PasswordBroker $passwords)
     {
-        $this->validate($request, [
+        $this->validate($this->request, [
             'mail'  => 'empty',
             'email' => 'required|email',
         ]);
 
-        $response = $passwords->sendResetLink($request->only('email'), function ($mail) {
+        $response = $passwords->sendResetLink($this->request->only('email'), function ($mail) {
             $mail->subject('Восстановление пароля');
         });
 
@@ -91,16 +88,16 @@ class Auth extends Controller
         return view($this->view, compact('token'));
     }
 
-    public function passwordResetPost(Request $request, PasswordBroker $passwords)
+    public function passwordResetPost(PasswordBroker $passwords)
     {
-        $this->validate($request, [
+        $this->validate($this->request, [
             'mail'     => 'empty',
             'token'    => 'required',
             'email'    => 'required|email',
             'password' => 'required',
         ]);
 
-        $credentials = $request->only('email', 'password', 'token');
+        $credentials = $this->request->only('email', 'password', 'token');
         $credentials['password_confirmation'] = $credentials['password'];
 
         $response = $passwords->reset($credentials, function ($user, $password) {
@@ -115,7 +112,7 @@ class Auth extends Controller
 
             default:
                 return redirect()->back()
-                            ->withInput($request->only('email'))
+                            ->withInput($this->request->only('email'))
                             ->withErrors(['email' => trans($response)]);
         }
     }
@@ -125,15 +122,15 @@ class Auth extends Controller
         return view($this->view);
     }
 
-    public function registerPost(Request $request)
+    public function registerPost()
     {
-        $this->validate($request, [
+        $this->validate($this->request, [
             'mail'     => 'empty',
             'email'    => 'required|email|max:255|unique:users,email',
             'password' => 'required|min:6',
         ]);
 
-        $data = $request->all();
+        $data = $this->request->all();
 
         $user = User::create([
             'email'    => $data['email'],

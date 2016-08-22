@@ -1,21 +1,20 @@
 <?php namespace App\Http\Controllers\Acp\Servers;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Acp\Controller;
 use App\Server;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Adapter\Ftp as FtpAdapter;
-use Illuminate\Http\Request;
 
 class Ftp extends Controller
 {
 	protected $fs;
 
-	public function index(Request $request, Server $server)
+	public function index(Server $server)
 	{
 		$this->initFs($server);
 
-		$dir  = $request->input('dir', '/');
-		$file = $request->input('file');
+		$dir  = $this->request->input('dir', '/');
+		$file = $this->request->input('file');
 
 		$dirs = $files = [];
 		$dir_up = ':';
@@ -38,45 +37,45 @@ class Ftp extends Controller
 		return view($this->view, compact('dir', 'dir_up', 'dirs', 'file', 'files', 'server'));
 	}
 
-	public function dirPost(Request $request, Server $server)
+	public function dirPost(Server $server)
 	{
 		$this->initFs($server);
 
-		$this->validate($request, [
+		$this->validate($this->request, [
 			'mail' => 'empty',
 			'dir'  => 'required',
 			'path' => 'required',
 		]);
 
-		extract($request->only('dir', 'path'));
+		extract($this->request->only('dir', 'path'));
 
 		$this->fs->createDir("{$path}/{$dir}");
 
 		return redirect("/acp/servers/{$server->id}/ftp?dir={$path}");
 	}
 
-	public function filePost(Request $request, Server $server)
+	public function filePost(Server $server)
 	{
 		$this->initFs($server);
 
-		$this->validate($request, [
+		$this->validate($this->request, [
 			'mail' => 'empty',
 			'file' => 'required',
 			'path' => 'required',
 		]);
 
-		extract($request->only('file', 'path'));
+		extract($this->request->only('file', 'path'));
 
 		$this->fs->write("{$path}/{$file}", '');
 
 		return redirect("/acp/servers/{$server->id}/ftp?dir={$path}");
 	}
 
-	public function source(Request $request, Server $server)
+	public function source(Server $server)
 	{
 		$this->initFs($server);
 
-		$file = $request->input('file');
+		$file = $this->request->input('file');
 
 		$source = $this->fs->read($file);
 
@@ -86,16 +85,16 @@ class Ftp extends Controller
 		return view($this->view, compact('dir_up', 'file', 'server', 'source'));
 	}
 
-	public function sourcePost(Request $request, Server $server)
+	public function sourcePost(Server $server)
 	{
 		$this->initFs($server);
 
-		$this->validate($request, [
+		$this->validate($this->request, [
 			'mail' => 'empty',
 			'file' => 'required',
 		]);
 
-		extract($request->only('file', 'source'));
+		extract($this->request->only('file', 'source'));
 
 		$source = str_replace(["\r\n", "\r"], "\n", $source);
 
@@ -104,18 +103,18 @@ class Ftp extends Controller
 		return redirect("/acp/servers/{$server->id}/ftp?dir=" . dirname($file));
 	}
 
-	public function uploadPost(Request $request, Server $server)
+	public function uploadPost(Server $server)
 	{
 		$this->initFs($server);
 
-		$this->validate($request, [
+		$this->validate($this->request, [
 			'mail' => 'empty',
 			'file' => 'required',
 			'path' => 'required',
 		]);
 
-		$path = $request->input('path');
-		$file = $request->file('file');
+		$path = $this->request->input('path');
+		$file = $this->request->file('file');
 		$stream = fopen($file->getRealPath(), 'r+');
 		$this->fs->writeStream($path . '/' . $file->getClientOriginalName(), $stream);
 		fclose($stream);

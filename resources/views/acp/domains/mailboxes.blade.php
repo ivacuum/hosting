@@ -1,43 +1,39 @@
 @extends('acp.domains.base')
 
 @section('content')
-<div class="boxed-group">
-  <h3>Новая электропочта</h3>
-  <div class="boxed-group-inner">
-    <form action="{{ action("$self@addMailbox", $domain) }}" class="form-horizontal" method="post">
+<h3>Новая электропочта</h3>
+<form action="{{ action("$self@addMailbox", $domain) }}" class="form-horizontal" method="post">
 
-      @include('tpl.form_errors')
+  @include('tpl.form_errors')
 
-      <div class="form-group {{ $errors->has('domain') ? 'has-error' : '' }}">
-        <label class="col-md-3 control-label">Ящик:</label>
-        <div class="col-md-6">
-          <div class="input-group">
-            <input type="text" class="form-control" name="logins">
-            <span class="input-group-addon">{{ '@'.$domain->domain }}</span>
-          </div>
-          <span class="help-block">Можно указать несколько ящиков через запятую. Пароли будут назначены автоматически</span>
-        </div>
+  <div class="form-group {{ $errors->has('domain') ? 'has-error' : '' }}">
+    <label class="col-md-3 control-label">Ящик:</label>
+    <div class="col-md-6">
+      <div class="input-group">
+        <input type="text" class="form-control" name="logins">
+        <span class="input-group-addon">{{ '@'.$domain->domain }}</span>
       </div>
-
-      <div class="form-group">
-        <label class="col-md-3 control-label">Выслать инфу на:</label>
-        <div class="col-md-6">
-          <input type="email" class="form-control" name="send_to" value="{{ Auth::user()->email }}">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="col-md-9 col-md-offset-3">
-          <button type="submit" class="btn btn-primary">
-            Создать ящик
-          </button>
-        </div>
-      </div>
-
-      {{ csrf_field() }}
-    </form>
+      <span class="help-block">Можно указать несколько ящиков через запятую. Пароли будут назначены автоматически</span>
+    </div>
   </div>
-</div>
+
+  <div class="form-group">
+    <label class="col-md-3 control-label">Выслать инфу на:</label>
+    <div class="col-md-6">
+      <input type="email" class="form-control" name="send_to" value="{{ Auth::user()->email }}">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-9 col-md-offset-3">
+      <button type="submit" class="btn btn-primary">
+        Создать ящик
+      </button>
+    </div>
+  </div>
+
+  {{ csrf_field() }}
+</form>
 
 @if ($mailboxes->total > 0)
   <h3>Найдено ящиков: {{ $mailboxes->total }}</h3>

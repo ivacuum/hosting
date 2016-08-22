@@ -134,7 +134,7 @@
           <span class="text-muted">{{ $post['reposts'] }}</span>
           @php (require base_path('resources/svg/heart.html'))
           <span class="text-muted">{{ $post['likes'] }}</span>
-          <a href="{{ $post['url'] }}" class="link">
+          <a href="{{ $post['url'] }}">
             @php (require base_path('resources/svg/link.html'))
           </a>
         </small></samp>

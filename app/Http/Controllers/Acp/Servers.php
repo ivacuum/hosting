@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Server;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Acp\ServerCreate;
 use App\Http\Requests\Acp\ServerEdit;
 

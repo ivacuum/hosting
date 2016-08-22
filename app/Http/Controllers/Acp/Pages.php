@@ -1,10 +1,8 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Acp\PageCreate;
 use App\Http\Requests\Acp\PageEdit;
 use App\Page;
-use Illuminate\Http\Request;
 
 class Pages extends Controller
 {
@@ -13,9 +11,9 @@ class Pages extends Controller
 		return view($this->view);
 	}
 
-	public function batch(Request $request)
+	public function batch()
 	{
-		extract($request->only('action', 'pages'));
+		extract($this->request->only('action', 'pages'));
 
 		switch ($action) {
 			case 'activate':
@@ -55,9 +53,9 @@ class Pages extends Controller
 		return view($this->view, compact('page'));
 	}
 
-	public function move(Request $request)
+	public function move()
 	{
-		extract($request->only('what', 'how', 'where'));
+		extract($this->request->only('what', 'how', 'where'));
 
 		switch ($how) {
 			case 'before': $method = 'moveToLeftOf'; break;

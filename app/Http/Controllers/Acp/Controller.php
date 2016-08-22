@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Controllers\Acp;
+<?php namespace App\Http\Controllers\Acp;
 
 use Breadcrumbs;
 use App\Http\Controllers\Controller as BaseController;

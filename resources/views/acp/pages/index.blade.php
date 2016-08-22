@@ -1,41 +1,39 @@
 @extends('acp.base')
 
 @section('content')
-<div class="boxed-group flush">
+<h3>
+  Страницы
   @include('acp.tpl.create')
-  <h3>Страницы</h3>
-  <div class="boxed-group-inner">
-    <table id="tree" class="table-stats">
-      <colgroup>
-        <col width="20">
-        <col width="*">
-        <col width="30">
-        <col width="200">
-        <col width="250">
-        <col width="50">
-      </colgroup>
-      <thead>
-        <tr>
-          <th></th>
-          <th>Страница</th>
-          <th></th>
-          <th>Адрес</th>
-          <th>Обработчик</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+</h3>
+<table id="tree" class="table-stats m-b-1" style="width: 700px;">
+  <colgroup>
+    <col width="20">
+    <col width="*">
+    <col width="30">
+    <col width="200">
+    <col width="250">
+    <col width="50">
+  </colgroup>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Страница</th>
+      <th></th>
+      <th>Адрес</th>
+      <th>Обработчик</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 <form class="form-inline">
   <div class="form-group">

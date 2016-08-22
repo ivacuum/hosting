@@ -5,7 +5,7 @@
     &nbsp;
     <input type="search" name="q" class="form-control" placeholder="Поиск..." value="{{ $q or '' }}">
     <input type="hidden" name="filter" value="{{ $filter or '' }}">
-    <a href="{{ action('Acp\Domains@create') }}" class="boxed-group-action btn btn-success">
+    <a href="{{ action('Acp\Domains@create') }}" class="btn btn-success">
       @php (require base_path('resources/svg/plus.html'))
     </a>
   </form>
