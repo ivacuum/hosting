@@ -1,6 +1,6 @@
 @if (!empty($breadcrumbs))
 <nav class="breadcrumbs">
-  <a href="/">
+  <a href="{{ $locale_uri }}/">
     @php (require base_path('resources/svg/home.html'))
   </a>
   &nbsp;&rarr;&nbsp;
