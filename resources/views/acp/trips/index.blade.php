@@ -2,11 +2,11 @@
 
 @section('content')
 <h3>
-  Поездки
-  <small>{{ sizeof($trips) }}</small>
+  {{ trans("$tpl.index") }}
+  <small>{{ sizeof($models) }}</small>
   @include('acp.tpl.create')
 </h3>
-@if (sizeof($trips))
+@if (sizeof($models))
   <table class="table-stats m-b-1">
     <colgroup>
       <col width="35">
@@ -24,23 +24,23 @@
         <th>URL</th>
       </tr>
     </thead>
-    @foreach ($trips as $i => $trip)
-      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $trip) }}">
+    @foreach ($models as $i => $model)
+      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
         <td>{{ $i + 1 }}</td>
         <td>
-          <a class="link" href="{{ action("$self@show", $trip) }}">
-            {{ $trip->title }}
+          <a class="link" href="{{ action("$self@show", $model) }}">
+            {{ $model->title }}
           </a>
         </td>
         <td>
-          @if (!$trip->published)
+          @if (!$model->published)
             @php (require base_path('resources/svg/pencil.html'))
           @endif
         </td>
-        <td>{{ $trip->getLocalizedDate() }}</td>
+        <td>{{ $model->getLocalizedDate() }}</td>
         <td>
-          <a class="link" href="/life/{{ $trip->slug }}">
-            {{ $trip->slug }}
+          <a class="link" href="{{ $locale_uri }}/life/{{ $model->slug }}">
+            {{ $model->slug }}
           </a>
         </td>
       </tr>

@@ -2,11 +2,11 @@
 
 @section('content')
 <h3>
-  Страны
-  <small>{{ sizeof($countries) }}</small>
+  {{ trans("$tpl.index") }}
+  <small>{{ sizeof($models) }}</small>
   @include('acp.tpl.create')
 </h3>
-@if (sizeof($countries))
+@if (sizeof($models))
   <table class="table-stats m-b-1">
     <colgroup>
       <col width="35">
@@ -15,23 +15,22 @@
     </colgroup>
     <thead>
       <tr>
-        <th>#</th>
-        <th>Город</th>
+        <th></th>
+        <th>Страна</th>
         <th>URL</th>
       </tr>
     </thead>
-    @foreach ($countries as $i => $country)
-      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $country) }}">
-        <td>{{ $i + 1 }}</td>
+    @foreach ($models as $model)
+      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
+        <td><span class="emoji">{{ $model->emoji }}</span></td>
         <td>
-          <span class="emoji">{{ $country->emoji }}</span>
-          <a class="link" href="{{ action("$self@show", $country) }}">
-            {{ $country->title }}
+          <a class="link" href="{{ action("$self@show", $model) }}">
+            {{ $model->title }}
           </a>
         </td>
         <td>
-          <a class="link" href="/life/countries/{{ $country->slug }}">
-            {{ $country->slug }}
+          <a class="link" href="{{ $locale_uri }}/life/countries/{{ $model->slug }}">
+            {{ $model->slug }}
           </a>
         </td>
       </tr>

@@ -2,11 +2,11 @@
 
 @section('content')
 <h3>
-  Концерты
-  <small>{{ sizeof($gigs) }}</small>
+  {{ trans("$tpl.index") }}
+  <small>{{ sizeof($models) }}</small>
   @include('acp.tpl.create')
 </h3>
-@if (sizeof($gigs))
+@if (sizeof($models))
   <table class="table-stats m-b-1">
     <colgroup>
       <col width="35">
@@ -24,23 +24,23 @@
         <th>URL</th>
       </tr>
     </thead>
-    @foreach ($gigs as $i => $gig)
-      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $gig) }}">
+    @foreach ($models as $i => $model)
+      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
         <td>{{ $i + 1 }}</td>
         <td>
-          <a class="link" href="{{ action("$self@show", $gig) }}">
-            {{ $gig->title }}
+          <a class="link" href="{{ action("$self@show", $model) }}">
+            {{ $model->title }}
           </a>
         </td>
         <td>
-          @if ($gig->status === App\Gig::STATUS_HIDDEN)
+          @if ($model->status === App\Gig::STATUS_HIDDEN)
             @php (require base_path('resources/svg/pencil.html'))
           @endif
         </td>
-        <td>{{ $gig->fullDate() }}</td>
+        <td>{{ $model->fullDate() }}</td>
         <td>
-          <a class="link" href="{{ action('Life@page', $gig->slug) }}">
-            {{ $gig->slug }}
+          <a class="link" href="{{ $locale_uri }}/life/{{ $model->slug }}">
+            {{ $model->slug }}
           </a>
         </td>
       </tr>

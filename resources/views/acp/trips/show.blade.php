@@ -1,9 +1,9 @@
-@extends('acp.trips.base')
+@extends("$tpl.base")
 
 @section('content')
-@if ($trip->meta_image)
+@if ($model->meta_image)
   <div>
-    <img class="img-responsive img-rounded" src="{{ $trip->meta_image }}">
+    <img class="img-responsive img-rounded" src="{{ $model->meta_image }}">
   </div>
 @endif
 @endsection

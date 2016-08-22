@@ -3,12 +3,31 @@
 ])
 
 @section('global_menu')
-<li><a class="{{ $self == 'Acp\Cities' ? 'navbar-selected' : '' }}" href="/acp/cities">Города</a></li>
-<li><a class="{{ $self == 'Acp\Countries' ? 'navbar-selected' : '' }}" href="/acp/countries">Страны</a></li>
-<li><a class="{{ $self == 'Acp\Trips' ? 'navbar-selected' : '' }}" href="/acp/trips">Поездки</a></li>
-<li><a class="{{ $self == 'Acp\Gigs' ? 'navbar-selected' : '' }}" href="/acp/gigs">Концерты</a></li>
+<li>
+  <a class="{{ $self == 'Acp\Cities' ? 'navbar-selected' : '' }}" href="{{ $locale_uri }}/acp/cities">
+    {{ trans('menu.cities') }}
+  </a>
+</li>
+<li>
+  <a class="{{ $self == 'Acp\Countries' ? 'navbar-selected' : '' }}" href="{{ $locale_uri }}/acp/countries">
+    {{ trans('menu.countries') }}
+  </a>
+</li>
+<li>
+  <a class="{{ $self == 'Acp\Trips' ? 'navbar-selected' : '' }}" href="{{ $locale_uri }}/acp/trips">
+    {{ trans('menu.trips') }}
+  </a>
+</li>
+<li>
+  <a class="{{ $self == 'Acp\Gigs' ? 'navbar-selected' : '' }}" href="{{ $locale_uri }}/acp/gigs">
+    {{ trans('menu.gigs') }}
+  </a>
+</li>
 <li class="dropdown">
-  <a class="dropdown-toggle {{ in_array($self, ['Acp\Clients', 'Acp\Domains', 'Acp\Servers', 'Acp\Pages']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">Хостинг <span class="caret"></span></a>
+  <a class="dropdown-toggle {{ in_array($self, ['Acp\Clients', 'Acp\Domains', 'Acp\Servers', 'Acp\Pages']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
+    {{ trans('menu.hosting') }}
+    <span class="caret"></span>
+  </a>
   <ul class="dropdown-menu">
     <li><a href="/acp/clients">Клиенты</a></li>
     <li><a href="/acp/domains">Домены</a></li>
@@ -16,7 +35,11 @@
     <li><a href="/acp/pages">Страницы</a></li>
   </ul>
 </li>
-<li><a class="{{ 0 === strpos(Request::path(), 'acp/dev') ? 'navbar-selected' : '' }}" href="/acp/dev/templates">Разработка</a></li>
+<li>
+  <a class="{{ starts_with($self, 'Acp\Dev') ? 'navbar-selected' : '' }}" href="{{ $locale_uri }}/acp/dev/templates">
+    {{ trans('menu.dev') }}
+  </a>
+</li>
 @endsection
 
 @push('head')

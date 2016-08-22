@@ -1,30 +1,40 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Country;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Acp\CountryCreate;
-use App\Http\Requests\Acp\CountryEdit;
+use App;
+use App\Country as Model;
+use App\Http\Requests\Acp\CountryCreate as ModelCreate;
+use App\Http\Requests\Acp\CountryEdit as ModelEdit;
 use Breadcrumbs;
 
 class Countries extends Controller
 {
+    const URL_PREFIX = 'acp/countries';
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        Breadcrumbs::push(trans("{$this->prefix}.index"), self::URL_PREFIX);
+    }
+
     public function index()
     {
-        $countries = Country::orderBy('title_ru')->get();
+        $locale = App::getLocale();
+        $models = Model::orderBy("title_{$locale}")->get();
 
-        return view($this->view, compact('countries'));
+        return view($this->view, compact('models'));
     }
 
     public function create()
     {
-        Breadcrumbs::push('Добавление');
+        Breadcrumbs::push(trans($this->view));
 
         return view($this->view);
     }
 
-    public function destroy(Country $country)
+    public function destroy(Model $model)
     {
-        $country->delete();
+        $model->delete();
 
         return [
             'status'   => 'OK',
@@ -32,38 +42,38 @@ class Countries extends Controller
         ];
     }
 
-    public function edit(Country $country)
+    public function edit(Model $model)
     {
-        Breadcrumbs::push($country->title, "acp/countries/{$country->id}");
-        Breadcrumbs::push('Редактирование');
+        Breadcrumbs::push($model->title, self::URL_PREFIX . "/{$model->id}");
+        Breadcrumbs::push(trans($this->view));
 
-        return view($this->view, compact('country'));
+        return view($this->view, compact('model'));
     }
 
-    public function show(Country $country)
+    public function show(Model $model)
     {
-        Breadcrumbs::push($country->title);
+        Breadcrumbs::push($model->title);
 
-        return view($this->view, compact('country'));
+        return view($this->view, compact('model'));
     }
 
-    public function store(CountryCreate $request)
+    public function store(ModelCreate $request)
     {
-        Country::create($request->all());
+        Model::create($request->all());
 
         return redirect()->action("{$this->class}@index");
     }
 
-    public function update(Country $country, CountryEdit $request)
+    public function update(Model $model, ModelEdit $request)
     {
-        $country->update($request->all());
+        $model->update($request->all());
 
         $goto = $request->input('goto', '');
 
         if ($request->exists('_save')) {
             return $goto
-                ? redirect()->action("{$this->class}@edit", [$country, 'goto' => $goto])
-                : redirect()->action("{$this->class}@edit", $country);
+                ? redirect()->action("{$this->class}@edit", [$model, 'goto' => $goto])
+                : redirect()->action("{$this->class}@edit", $model);
         }
 
         return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");

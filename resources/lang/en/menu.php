@@ -1,13 +1,17 @@
 <?php
 
 return [
+    'acp'       => 'Admin Control Panel',
     'cities'    => 'Cities',
     'countries' => 'Countries',
+    'dev'       => 'Dev',
     'docs'      => 'Docs',
     'gigs'      => 'Gigs',
     'home'      => 'Home',
+    'hosting'   => 'Hosting',
     'life'      => 'Life',
     'parser_vk' => 'VK Parser',
+    'trips'     => 'Trips',
 
     'language'  => 'English',
     'logout'    => 'Logout',

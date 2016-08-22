@@ -1,7 +1,7 @@
 @extends('acp.base')
 
 @section('content_header')
-<div class="row">
+<div class="row m-t-2">
   <div class="col-md-3">
     <div class="list-group">
       <a class="list-group-item js-pjax {{ $view == 'acp.domains.show' ? 'active' : '' }}" href="{{ action("$self@show", $domain) }}">
@@ -27,7 +27,7 @@
     <div class="pull-right">
       @include('acp.tpl.delete', ['id' => $domain])
     </div>
-    <h2>
+    <h2 class="m-t-0">
       @include('acp.tpl.back')
       {{ $domain->domain }}
       <a class="btn btn-default" href="http://{{ $domain->domain }}/" target="_blank">

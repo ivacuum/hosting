@@ -45,7 +45,6 @@ class RouteServiceProvider extends ServiceProvider
         $router->group([
             'namespace'   => $this->namespace,
             'prefix'      => "{$prefix}/acp",
-            'breadcrumbs' => [['Админка', 'acp']],
             'middleware'  => ['web', 'auth', 'admin'],
         ], function ($router) {
             require base_path('routes/acp.php');

@@ -1,32 +1,40 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\City;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Acp\CityCreate;
-use App\Http\Requests\Acp\CityEdit;
+use App\City as Model;
+use App\Http\Requests\Acp\CityCreate as ModelCreate;
+use App\Http\Requests\Acp\CityEdit as ModelEdit;
 use Breadcrumbs;
 
 class Cities extends Controller
 {
-	public function index()
+    const URL_PREFIX = 'acp/cities';
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        Breadcrumbs::push(trans("{$this->prefix}.index"), self::URL_PREFIX);
+    }
+
+    public function index()
 	{
-        $cities = City::with('country')
+        $models = Model::with('country')
             ->orderBy('title_ru')
             ->get();
 
-		return view($this->view, compact('cities'));
+		return view($this->view, compact('models'));
 	}
 
 	public function create()
 	{
-        Breadcrumbs::push('Добавление');
+        Breadcrumbs::push(trans($this->view));
 
 		return view($this->view);
 	}
 
-	public function destroy(City $city)
+	public function destroy(Model $model)
 	{
-		$city->delete();
+		$model->delete();
 
         return [
             'status'   => 'OK',
@@ -34,38 +42,38 @@ class Cities extends Controller
         ];
 	}
 
-	public function edit(City $city)
+	public function edit(Model $model)
 	{
-        Breadcrumbs::push($city->title, "acp/cities/{$city->id}");
-        Breadcrumbs::push('Редактирование');
+        Breadcrumbs::push($model->title, self::URL_PREFIX . "/{$model->id}");
+        Breadcrumbs::push(trans($this->view));
 
-		return view($this->view, compact('city'));
+		return view($this->view, compact('model'));
 	}
 
-	public function show(City $city)
+	public function show(Model $model)
 	{
-        Breadcrumbs::push($city->title);
+        Breadcrumbs::push($model->title);
 
-		return view($this->view, compact('city'));
+		return view($this->view, compact('model'));
 	}
 
-	public function store(CityCreate $request)
+	public function store(ModelCreate $request)
 	{
-		City::create($request->all());
+		Model::create($request->all());
 
 		return redirect()->action("{$this->class}@index");
 	}
 
-	public function update(City $city, CityEdit $request)
+	public function update(Model $model, ModelEdit $request)
 	{
-		$city->update($request->all());
+		$model->update($request->all());
 
         $goto = $request->input('goto', '');
 
         if ($request->exists('_save')) {
             return $goto
-                ? redirect()->action("{$this->class}@edit", [$city, 'goto' => $goto])
-                : redirect()->action("{$this->class}@edit", $city);
+                ? redirect()->action("{$this->class}@edit", [$model, 'goto' => $goto])
+                : redirect()->action("{$this->class}@edit", $model);
         }
 
         return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");

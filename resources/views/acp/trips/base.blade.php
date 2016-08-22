@@ -4,20 +4,20 @@
 <div class="row m-t-2">
   <div class="col-sm-3">
     <div class="list-group list-group-svg">
-      <a class="list-group-item {{ $view == 'acp.trips.show' ? 'active' : '' }}" href="{{ action("$self@show", $trip) }}">
-        Поездка
+      <a class="list-group-item {{ $view == "$tpl.show" ? 'active' : '' }}" href="{{ action("$self@show", $model) }}">
+        {{ trans("$tpl.show") }}
       </a>
-      <a class="list-group-item {{ $view == 'acp.trips.edit' ? 'active' : '' }}" href="{{ action("$self@edit", [$trip, 'goto' => Request::fullUrl()]) }}">
-        Редактировать
+      <a class="list-group-item {{ $view == "$tpl.edit" ? 'active' : '' }}" href="{{ action("$self@edit", [$model, 'goto' => Request::fullUrl()]) }}">
+        {{ trans("$tpl.edit") }}
       </a>
-      @include('acp.tpl.delete', ['id' => $trip])
+      @include('acp.tpl.delete', ['id' => $model])
     </div>
   </div>
   <div class="col-sm-9">
     <h2 class="m-t-0">
       @include('acp.tpl.back')
-      {{ $trip->title }}
-      <small>{{ $trip->getLocalizedDate() }}</small>
+      {{ $model->title }}
+      <small>{{ $model->getLocalizedDate() }}</small>
     </h2>
 @endsection
 

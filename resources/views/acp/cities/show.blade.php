@@ -1,4 +1,1 @@
-@extends('acp.cities.base')
-
-@section('content')
-@endsection
+@extends("$tpl.base")

@@ -1,32 +1,40 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Acp\TripCreate;
-use App\Http\Requests\Acp\TripEdit;
-use App\Trip;
+use App\Http\Requests\Acp\TripCreate as ModelCreate;
+use App\Http\Requests\Acp\TripEdit as ModelEdit;
+use App\Trip as Model;
 use Breadcrumbs;
 
 class Trips extends Controller
 {
+    const URL_PREFIX = 'acp/trips';
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        Breadcrumbs::push(trans("{$this->prefix}.index"), self::URL_PREFIX);
+    }
+
     public function index()
     {
-        $trips = Trip::orderBy('date_start', 'desc')->get();
+        $models = Model::orderBy('date_start', 'desc')->get();
 
-        return view($this->view, compact('trips'));
+        return view($this->view, compact('models'));
     }
 
     public function create()
     {
-        Breadcrumbs::push('Добавление');
+        Breadcrumbs::push(trans($this->view));
 
         $this->appendTemplates();
 
         return view($this->view);
     }
 
-    public function destroy(Trip $trip)
+    public function destroy(Model $model)
     {
-        $trip->delete();
+        $model->delete();
 
         return [
             'status'   => 'OK',
@@ -34,40 +42,40 @@ class Trips extends Controller
         ];
     }
 
-    public function edit(Trip $trip)
+    public function edit(Model $model)
     {
-        Breadcrumbs::push($trip->title, "acp/trips/{$trip->id}");
-        Breadcrumbs::push('Редактирование');
+        Breadcrumbs::push($model->title, self::URL_PREFIX . "/{$model->id}");
+        Breadcrumbs::push(trans($this->view));
 
         $this->appendTemplates();
 
-        return view($this->view, compact('trip'));
+        return view($this->view, compact('model'));
     }
 
-    public function show(Trip $trip)
+    public function show(Model $model)
     {
-        Breadcrumbs::push($trip->title);
+        Breadcrumbs::push($model->title);
 
-        return view($this->view, compact('trip'));
+        return view($this->view, compact('model'));
     }
 
-    public function store(TripCreate $request)
+    public function store(ModelCreate $request)
     {
-        Trip::create($request->all());
+        Model::create($request->all());
 
         return redirect()->action("{$this->class}@index");
     }
 
-    public function update(Trip $trip, TripEdit $request)
+    public function update(Model $model, ModelEdit $request)
     {
-        $trip->update($request->all());
+        $model->update($request->all());
 
         $goto = $request->input('goto', '');
 
         if ($request->exists('_save')) {
             return $goto
-                ? redirect()->action("{$this->class}@edit", [$trip, 'goto' => $goto])
-                : redirect()->action("{$this->class}@edit", $trip);
+                ? redirect()->action("{$this->class}@edit", [$model, 'goto' => $goto])
+                : redirect()->action("{$this->class}@edit", $model);
         }
 
         return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
