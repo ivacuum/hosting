@@ -66,7 +66,7 @@ abstract class Controller extends BaseController
             'decimal'     => $decimal,
             'goto'        => $this->request->input('goto'),
             'locale'      => $locale,
-            'locale_uri'  => $locale === config('cfg.default_locale') ? '' : "{$locale}/",
+            'locale_uri'  => $locale === config('cfg.default_locale') ? '' : "/{$locale}",
             'request_uri' => $request_uri,
             'self'        => $this->class,
             'tpl'         => $this->prefix,
