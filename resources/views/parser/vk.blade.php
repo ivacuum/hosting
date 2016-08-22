@@ -26,20 +26,28 @@
   </li>
 </ul>
 
-<ul class="pager">
-  <li class="previous">
-    <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}" id="previous_page">
-      @php (require base_path('resources/svg/chevron-left.html'))
-      {{ $next->formatLocalized('%e %B') }}
-    </a>
-  </li>
-  <li class="next">
-    <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}" id="next_page">
-      &nbsp;{{ $previous->formatLocalized('%e %B') }}
-      @php (require base_path('resources/svg/chevron-right.html'))
-    </a>
-  </li>
-</ul>
+<form action="{{ action('ParserVk@indexPost') }}" method="post">
+  <ul class="pager">
+    <li class="previous">
+      <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}" id="previous_page">
+        @php (require base_path('resources/svg/chevron-left.html'))
+        {{ $next->formatLocalized('%e %B') }}
+      </a>
+    </li>
+    <li class="hidden-xs">
+      Топ 10
+      <input class="form-control d-inline-block" type="text" name="slug" value="{{ $vkpage }}" style="width: 8em;">
+      за {{ $date->formatLocalized('%d %B') }}
+    </li>
+    <li class="next">
+      <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}" id="next_page">
+        &nbsp;{{ $previous->formatLocalized('%e %B') }}
+        @php (require base_path('resources/svg/chevron-right.html'))
+      </a>
+    </li>
+  </ul>
+  {{ csrf_field() }}
+</form>
 
 @if (!sizeof($posts))
   <div class="alert alert-warning">

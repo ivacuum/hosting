@@ -79,6 +79,11 @@ class ParserVk extends Controller
             ->withNext(Carbon::parse($date)->addDay());
     }
 
+    public function indexPost()
+    {
+        return redirect()->action("{$this->class}@index", $this->request->input('slug'));
+    }
+
     protected function getPosts($count = 100, $offset = 0)
     {
         $cache_entry = "vk_{$this->vkpage}_{$count}_{$offset}";
