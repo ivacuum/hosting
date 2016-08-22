@@ -1,5 +1,5 @@
 @extends('base', [
-  'meta_title' => "Топ 10 vk.com/{$vkpage} за ".$date->formatLocalized('%d %B'),
+  'meta_title' => "Топ 10 vk.com/{$vkpage} за " . $date->formatLocalized('%e %B'),
 ])
 
 @section('content')
@@ -37,7 +37,7 @@
     <li class="hidden-xs">
       Топ 10
       <input class="form-control d-inline-block" type="text" name="slug" value="{{ $vkpage }}" style="width: 8em;">
-      за {{ $date->formatLocalized('%d %B') }}
+      за {{ $date->formatLocalized('%e %B') }}
     </li>
     <li class="next">
       <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}" id="next_page">
@@ -51,7 +51,7 @@
 
 @if (!sizeof($posts))
   <div class="alert alert-warning">
-    Нет записей за {{ $date->formatLocalized('%d %B %Y') }}.
+    Нет записей за {{ $date->formatLocalized('%e %B %Y') }}.
   </div>
 @endif
 

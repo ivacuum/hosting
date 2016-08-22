@@ -17,7 +17,7 @@ return [
     'favorites' => 'Favorites',
     'trips'     => 'Trips',
 
-    'date.gig_short'  => '%B %d', // April 21
+    'date.gig_short'  => '%B %e', // April 21
     'date.months'     => '%2$s %d – %4$s %3$d, %5$d', // May 27 – June 3, 2016
     'date.same_day'   => '%B %e, %Y', // June 1, 2016
     'date.same_month' => '%3$s %d–%d, %4$d', // June 1–3, 2016
