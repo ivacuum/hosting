@@ -9,8 +9,8 @@ return [
 	'locale'          => 'ru',
 	'setlocale'       => 'ru_RU.UTF-8',
 	'fallback_locale' => 'en',
-	'key'             => env('APP_KEY', 'SomeRandomString'),
-	'cipher'          => MCRYPT_RIJNDAEL_128,
+	'key'             => env('APP_KEY', ''),
+	'cipher'          => 'AES-256-CBC',
 
 	// single, daily, syslog, errorlog
 	'log' => 'errorlog',
