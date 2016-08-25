@@ -2,110 +2,136 @@
 
 use App\Domain;
 use App\Http\Controllers\Acp\Controller;
-use App\Http\Requests\Acp\YandexUserCreate;
-use App\Http\Requests\Acp\YandexUserEdit;
-use App\YandexUser;
+use App\Http\Requests\Acp\YandexUserCreate as ModelCreate;
+use App\Http\Requests\Acp\YandexUserEdit as ModelEdit;
+use App\YandexUser as Model;
+use Breadcrumbs;
 
 class Users extends Controller
 {
-	public function index()
-	{
-		$users = YandexUser::orderBy('account')->get();
+    const URL_PREFIX = 'acp/yandex/users';
 
-		return view($this->view, compact('users'));
-	}
+    public function __construct()
+    {
+        parent::__construct();
 
-	public function create()
-	{
-		$domains = Domain::yandexReady()->get();
+        Breadcrumbs::push(trans("{$this->prefix}.index"), self::URL_PREFIX);
+    }
 
-		return view($this->view, compact('domains'));
-	}
+    public function index()
+    {
+        $models = Model::orderBy('account')->get();
 
-	public function destroy(YandexUser $user)
-	{
-		$user->delete();
+        return view($this->view, compact('models'));
+    }
 
-		return redirect()->action("{$this->class}@index");
-	}
+    public function create()
+    {
+        Breadcrumbs::push(trans($this->view));
 
-	public function edit(YandexUser $user)
-	{
-		$domains = Domain::yandexReady($user->id)->get();
+        $domains = Domain::yandexReady()->get();
 
-		return view($this->view, compact('domains', 'user'));
-	}
+        return view($this->view, compact('domains'));
+    }
 
-	public function show(YandexUser $user)
-	{
-		$filter = '';
-		$q = $this->request->input('q');
+    public function destroy(Model $model)
+    {
+        $model->delete();
 
-		$domains = $user->domains()->orderBy('paid_till');
+        return [
+            'status'   => 'OK',
+            'redirect' => action("{$this->class}@index"),
+        ];
+    }
 
-		if ($q) {
-			$domains = $domains->where('domain', 'LIKE', "%{$q}%");
-		}
+    public function edit(Model $model)
+    {
+        Breadcrumbs::push($model->account, self::URL_PREFIX . "/{$model->id}");
+        Breadcrumbs::push(trans($this->view));
 
-		$user->domains = $domains->paginate()
-			->appends(compact('q'));
+        $domains = Domain::yandexReady($model->id)->get();
 
-		return view($this->view, compact('filter', 'q', 'user'));
-	}
+        return view($this->view, compact('domains', 'model'));
+    }
 
-	public function store(YandexUserCreate $request)
-	{
-		$user = YandexUser::create($request->all());
+    public function show(Model $model)
+    {
+        Breadcrumbs::push($model->account);
 
-		// Newly specified user domains
-		foreach ($request->input('domains', []) as $id => $one) {
-			$user_domains[] = $id;
-		}
+        $filter = '';
+        $q = $this->request->input('q');
 
-		if (!empty($user_domains)) {
-			Domain::whereIn('id', $user_domains)
-				->update(['yandex_user_id' => $user->id]);
-		}
+        $domains = $model->domains()->orderBy('paid_till');
 
-		return redirect()->action("{$this->class}@show", $user);
-	}
+        if ($q) {
+            $domains = $domains->where('domain', 'LIKE', "%{$q}%");
+        }
 
-	public function update(YandexUser $user, YandexUserEdit $request)
-	{
-		$token = $request->input('token');
+        $model->domains = $domains->paginate()
+            ->appends(compact('q'));
 
-		$user->account = $request->input('account');
+        return view($this->view, compact('filter', 'model', 'q'));
+    }
 
-		if ($token) {
-			$user->token = $token;
-		}
+    public function store(ModelCreate $request)
+    {
+        $model = Model::create($request->all());
 
-		$user->save();
+        // Newly specified user domains
+        foreach ($request->input('domains', []) as $id => $one) {
+            $user_domains[] = $id;
+        }
 
-		// Domains w/out yandex user specified
-		foreach ($user->domains as $domain) {
-			if (!$request->input("domains.{$domain->id}")) {
-				$anon_domains[] = $domain->id;
-			}
-		}
+        if (!empty($user_domains)) {
+            Domain::whereIn('id', $user_domains)
+                ->update(['yandex_user_id' => $model->id]);
+        }
 
-		if (!empty($anon_domains)) {
-			Domain::whereIn('id', $anon_domains)
-				->update(['yandex_user_id' => 0]);
-		}
+        return redirect()->action("{$this->class}@index");
+    }
 
-		// Newly specified user domains
-		foreach ($request->input('domains', []) as $id => $one) {
-			$user_domains[] = $id;
-		}
+    public function update(Model $model, ModelEdit $request)
+    {
+        $token = $request->input('token');
 
-		if (!empty($user_domains)) {
-			Domain::whereIn('id', $user_domains)
-				->update(['yandex_user_id' => $user->id]);
-		}
+        $model->account = $request->input('account');
 
-		$goto = $request->input('goto', '');
+        if ($token) {
+            $model->token = $token;
+        }
 
-		return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
-	}
+        $model->save();
+
+        // Domains w/out yandex user specified
+        foreach ($model->domains as $domain) {
+            if (!$request->input("domains.{$domain->id}")) {
+                $anon_domains[] = $domain->id;
+            }
+        }
+
+        if (!empty($anon_domains)) {
+            Domain::whereIn('id', $anon_domains)
+                ->update(['yandex_user_id' => 0]);
+        }
+
+        // Newly specified user domains
+        foreach ($request->input('domains', []) as $id => $one) {
+            $user_domains[] = $id;
+        }
+
+        if (!empty($user_domains)) {
+            Domain::whereIn('id', $user_domains)
+                ->update(['yandex_user_id' => $model->id]);
+        }
+
+        $goto = $request->input('goto', '');
+
+        if ($request->exists('_save')) {
+            return $goto
+                ? redirect()->action("{$this->class}@edit", [$model, 'goto' => $goto])
+                : redirect()->action("{$this->class}@edit", $model);
+        }
+
+        return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
+    }
 }

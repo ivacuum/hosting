@@ -1,8 +1,8 @@
-@extends('acp.domains.base')
+@extends("$tpl.base")
 
 @section('content')
 <h3>Новая электропочта</h3>
-<form action="{{ action("$self@addMailbox", $domain) }}" class="form-horizontal" method="post">
+<form action="{{ action("$self@addMailbox", $model) }}" class="form-horizontal" method="post">
 
   @include('tpl.form_errors')
 
@@ -11,7 +11,7 @@
     <div class="col-md-6">
       <div class="input-group">
         <input type="text" class="form-control" name="logins">
-        <span class="input-group-addon">{{ '@'.$domain->domain }}</span>
+        <span class="input-group-addon">{{ '@'.$model->domain }}</span>
       </div>
       <span class="help-block">Можно указать несколько ящиков через запятую. Пароли будут назначены автоматически</span>
     </div>

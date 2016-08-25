@@ -1,9 +1,9 @@
-@extends('acp.domains.base')
+@extends("$tpl.base")
 
 @section('content')
 {{--
-@if ($domain->domain_control and ($domain->ns != 'dns1.yandex.net dns2.yandex.net' and $domain->ns != 'dns1.yandex.ru dns2.yandex.ru'))
-  <form action="{{ action("$self@setYandexNs", $domain) }}" method="post">
+@if ($model->domain_control and ($model->ns != 'dns1.yandex.net dns2.yandex.net' and $model->ns != 'dns1.yandex.ru dns2.yandex.ru'))
+  <form action="{{ action("$self@setYandexNs", $model) }}" method="post">
     <p>
       <button type="submit" class="btn btn-default">
         Установить DNS Яндекса
@@ -13,8 +13,8 @@
   </form>
 @endif
 
-@if (!$domain->yandex_user_id)
-  <form action="{{ action("$self@setYandexPdd", $domain) }}" method="post">
+@if (!$model->yandex_user_id)
+  <form action="{{ action("$self@setYandexPdd", $model) }}" method="post">
     <p>
       <button type="submit" class="btn btn-default">
         Подключить Яндекс.Почту для домена
@@ -35,7 +35,7 @@
         <th></th>
       </tr>
     </thead>
-    <tr class="ns-record-container" data-action="{{ action("$self@addNsRecord", $domain) }}">
+    <tr class="ns-record-container" data-action="{{ action("$self@addNsRecord", $model) }}">
       <td class="text-right">
         <input type="text" name="subdomain" value="@" class="text-right" style="width: 100%;">
       </td>
@@ -77,7 +77,7 @@
         <td>
           <div class="presentation">
             {{ str_limit($record->content, 35) }}
-            @if ($record->type == 'CNAME' && $domain->isIdn($record->content))
+            @if ($record->type == 'CNAME' && $model->isIdn($record->content))
               <br><span class="text-muted">{{ idn_to_utf8($record->content) }}</span>
             @endif
             @if ($record->priority > 0)
@@ -117,12 +117,12 @@
           <div class="presentation">
             <a class="pseudo js-ns-record-edit">настроить</a>
             &nbsp;
-            <a class="pseudo js-ns-record-delete" data-id="{{ $record->record_id }}" data-action="{{ action("$self@deleteNsRecord", $domain) }}">
+            <a class="pseudo js-ns-record-delete" data-id="{{ $record->record_id }}" data-action="{{ action("$self@deleteNsRecord", $model) }}">
               @php (require base_path('resources/svg/times.html'))
             </a>
           </div>
           <div class="edit hidden">
-            <a class="pseudo js-ns-record-save" data-action="{{ action("$self@editNsRecord", $domain) }}">сохранить</a>
+            <a class="pseudo js-ns-record-save" data-action="{{ action("$self@editNsRecord", $model) }}">сохранить</a>
             &nbsp;
             <a class="pseudo js-ns-record-cancel">
               @php (require base_path('resources/svg/rotate-left.html'))
@@ -133,7 +133,7 @@
     @endforeach
   </table>
 
-  <form class="form-inline" action="{{ action("$self@setServerNsRecords", $domain) }}" method="post">
+  <form class="form-inline" action="{{ action("$self@setServerNsRecords", $model) }}" method="post">
     <p>
       <select class="form-control" name="server">
         <option value="">-----</option>
@@ -151,7 +151,7 @@
     </p>
     {{ csrf_field() }}
   </form>
-@elseif ($domain->yandex_user_id)
+@elseif ($model->yandex_user_id)
   <div class="alert alert-warning">
     ДНС-записи не найдены.
   </div>

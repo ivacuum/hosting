@@ -1,63 +1,90 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Server;
-use App\Http\Requests\Acp\ServerCreate;
-use App\Http\Requests\Acp\ServerEdit;
+use App\Server as Model;
+use App\Http\Requests\Acp\ServerCreate as ModelCreate;
+use App\Http\Requests\Acp\ServerEdit as ModelEdit;
+use Breadcrumbs;
 
 class Servers extends Controller
 {
-	public function index()
-	{
-		return view($this->view)
-			->withServers(Server::get());
-	}
+    const URL_PREFIX = 'acp/servers';
 
-	public function create()
-	{
-		return view($this->view);
-	}
+    public function __construct()
+    {
+        parent::__construct();
 
-	public function destroy(Server $server)
-	{
-		$server->delete();
+        Breadcrumbs::push(trans("{$this->prefix}.index"), self::URL_PREFIX);
+    }
 
-		return redirect()->action("{$this->class}@index");
-	}
+    public function index()
+    {
+        $models = Model::get();
 
-	public function edit(Server $server)
-	{
-		return view($this->view, compact('server'));
-	}
+        return view($this->view, compact('models'));
+    }
 
-	public function show(Server $server)
-	{
-		return view($this->view, compact('server'));
-	}
+    public function create()
+    {
+        Breadcrumbs::push(trans($this->view));
 
-	public function store(ServerCreate $request)
-	{
-		$server = Server::create($request->all());
+        return view($this->view);
+    }
 
-		return redirect()->action("{$this->class}@show", $server->id);
-	}
+    public function destroy(Model $model)
+    {
+        $model->delete();
 
-	public function update(Server $server, ServerEdit $request)
-	{
-		$input = $request->all();
+        return [
+            'status'   => 'OK',
+            'redirect' => action("{$this->class}@index"),
+        ];
+    }
 
-		/* Сохранение ранее указанного пароля */
-		$passwords = $request->only('ftp_pass');
+    public function edit(Model $model)
+    {
+        Breadcrumbs::push($model->title, self::URL_PREFIX . "/{$model->id}");
+        Breadcrumbs::push(trans($this->view));
 
-		foreach ($passwords as $key => $value) {
-			if (!$value) {
-				unset($input[$key]);
-			}
-		}
+        return view($this->view, compact('model'));
+    }
 
-		$server->update($input);
+    public function show(Model $model)
+    {
+        Breadcrumbs::push($model->title);
 
-		$goto = $request->input('goto', '');
+        return view($this->view, compact('model'));
+    }
 
-		return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
-	}
+    public function store(ModelCreate $request)
+    {
+        Model::create($request->all());
+
+        return redirect()->action("{$this->class}@index");
+    }
+
+    public function update(Model $model, ModelEdit $request)
+    {
+        $input = $this->request->all();
+
+        /* Сохранение ранее указанного пароля */
+        $passwords = $this->request->only('ftp_pass');
+
+        foreach ($passwords as $key => $value) {
+            if (!$value) {
+                unset($input[$key]);
+            }
+        }
+
+        $model->update($input);
+
+        $goto = $request->input('goto', '');
+
+        if ($request->exists('_save')) {
+            return $goto
+                ? redirect()->action("{$this->class}@edit", [$model, 'goto' => $goto])
+                : redirect()->action("{$this->class}@edit", $model);
+        }
+
+        return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
+    }
 }

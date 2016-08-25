@@ -2,39 +2,42 @@
 
 @section('content_header')
 <div class="row m-t-2">
-  <div class="col-md-3">
-    <div class="list-group">
-      <a class="list-group-item js-pjax {{ $view == 'acp.domains.show' ? 'active' : '' }}" href="{{ action("$self@show", $domain) }}">
-        Общая информация
+  <div class="col-sm-3">
+    <div class="list-group list-group-svg">
+      <a class="list-group-item {{ $view == "$tpl.show" ? 'active' : '' }}" href="{{ action("$self@show", $model) }}">
+        {{ trans("$tpl.show") }}
       </a>
-      <a class="list-group-item js-pjax {{ $view == 'acp.domains.whois' ? 'active' : '' }}" href="{{ action("$self@whois", $domain) }}">
+      <a class="list-group-item {{ $view == "$tpl.edit" ? 'active' : '' }}" href="{{ action("$self@edit", [$model, 'goto' => Request::fullUrl()]) }}">
+        {{ trans("$tpl.edit") }}
+      </a>
+      <a class="list-group-item {{ $view == "$tpl.whois" ? 'active' : '' }}" href="{{ action("$self@whois", $model) }}">
         Whois
       </a>
-      @if ($domain->yandex_user_id)
-        <a class="list-group-item js-pjax {{ $view == 'acp.domains.mailboxes' ? 'active' : '' }}" href="{{ action("$self@mailboxes", $domain) }}">
+      @if ($model->yandex_user_id)
+        <a class="list-group-item {{ $view == "$tpl.mailboxes" ? 'active' : '' }}" href="{{ action("$self@mailboxes", $model) }}">
           Яндекс-Почта
         </a>
-        <a class="list-group-item js-pjax {{ $view == 'acp.domains.ns_records' ? 'active' : '' }}" href="{{ action("$self@nsRecords", $domain) }}">
+        <a class="list-group-item {{ $view == "$tpl.ns_records" ? 'active' : '' }}" href="{{ action("$self@nsRecords", $model) }}">
           Яндекс-DNS
         </a>
       @endif
-      <a class="list-group-item js-pjax {{ $view == 'acp.domains.robots' ? 'active' : '' }}" href="{{ action("$self@robots", $domain) }}">
+      <a class="list-group-item {{ $view == "$tpl.robots" ? 'active' : '' }}" href="{{ action("$self@robots", $model) }}">
         robots.txt
       </a>
     </div>
   </div>
   <div class="col-md-9">
     <div class="pull-right">
-      @include('acp.tpl.delete', ['id' => $domain])
+      @include('acp.tpl.delete', ['id' => $model])
     </div>
     <h2 class="m-t-0">
       @include('acp.tpl.back')
-      {{ $domain->domain }}
-      <a class="btn btn-default" href="http://{{ $domain->domain }}/" target="_blank">
+      {{ $model->domain }}
+      <a class="btn btn-default" href="http://{{ $model->domain }}/" target="_blank">
         @php (require base_path('resources/svg/external-link.html'))
       </a>
-      @include('acp.tpl.edit', ['id' => $domain, 'goto' => Request::path()])
-      @if (!$domain->isExpired() && ($domain->cms_url || ($domain->alias_id and $domain->alias->cms_url)))
+      @include('acp.tpl.edit', ['id' => $model, 'goto' => Request::path()])
+      @if (!$model->isExpired() && ($model->cms_url || ($model->alias_id and $model->alias->cms_url)))
         @include("$tpl.cms_login", ['cms_button_class' => 'btn btn-default'])
       @endif
     </h2>

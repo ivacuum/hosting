@@ -1,64 +1,91 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Client;
-use App\Http\Requests\Acp\ClientCreate;
-use App\Http\Requests\Acp\ClientEdit;
+use App\Client as Model;
+use App\Http\Requests\Acp\ClientCreate as ModelCreate;
+use App\Http\Requests\Acp\ClientEdit as ModelEdit;
+use Breadcrumbs;
 
 class Clients extends Controller
 {
-	public function index()
-	{
-		return view($this->view)
-			->withClients(Client::get());
-	}
+    const URL_PREFIX = 'acp/clients';
 
-	public function create()
-	{
-		return view($this->view);
-	}
+    public function __construct()
+    {
+        parent::__construct();
 
-	public function destroy(Client $client)
-	{
-		$client->delete();
+        Breadcrumbs::push(trans("{$this->prefix}.index"), self::URL_PREFIX);
+    }
 
-		return redirect()->action("{$this->class}@index");
-	}
+    public function index()
+    {
+        $models = Model::get();
 
-	public function edit(Client $client)
-	{
-		return view($this->view, compact('client'));
-	}
+        return view($this->view, compact('models'));
+    }
 
-	public function show(Client $client)
-	{
-		$filter = '';
-		$q = $this->request->input('q');
+    public function create()
+    {
+        Breadcrumbs::push(trans($this->view));
 
-		$domains = $client->domains()->orderBy('paid_till');
+        return view($this->view);
+    }
 
-		if ($q) {
-			$domains = $domains->where('domain', 'LIKE', "%{$q}%");
-		}
+    public function destroy(Model $model)
+    {
+        $model->delete();
 
-		$client->domains = $domains->paginate()
-			->appends(compact('q'));
+        return [
+            'status'   => 'OK',
+            'redirect' => action("{$this->class}@index"),
+        ];
+    }
 
-		return view($this->view, compact('client', 'filter', 'q'));
-	}
+    public function edit(Model $model)
+    {
+        Breadcrumbs::push($model->name, self::URL_PREFIX . "/{$model->id}");
+        Breadcrumbs::push(trans($this->view));
 
-	public function store(ClientCreate $request)
-	{
-		$client = Client::create($request->all());
+        return view($this->view, compact('model'));
+    }
 
-		return redirect()->action("{$this->class}@show", $client);
-	}
+    public function show(Model $model)
+    {
+        Breadcrumbs::push($model->name);
 
-	public function update(Client $client, ClientEdit $request)
-	{
-		$client->update($request->all());
+        $filter = '';
+        $q = $this->request->input('q');
 
-		$goto = $request->input('goto', '');
+        $domains = $model->domains()->orderBy('paid_till');
 
-		return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
-	}
+        if ($q) {
+            $domains = $domains->where('domain', 'LIKE', "%{$q}%");
+        }
+
+        $model->domains = $domains->paginate()
+            ->appends(compact('q'));
+
+        return view($this->view, compact('filter', 'model', 'q'));
+    }
+
+    public function store(ModelCreate $request)
+    {
+        Model::create($request->all());
+
+        return redirect()->action("{$this->class}@index");
+    }
+
+    public function update(Model $model, ModelEdit $request)
+    {
+        $model->update($request->all());
+
+        $goto = $request->input('goto', '');
+
+        if ($request->exists('_save')) {
+            return $goto
+                ? redirect()->action("{$this->class}@edit", [$model, 'goto' => $goto])
+                : redirect()->action("{$this->class}@edit", $model);
+        }
+
+        return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
+    }
 }

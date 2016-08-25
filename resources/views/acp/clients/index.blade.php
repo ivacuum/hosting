@@ -2,11 +2,11 @@
 
 @section('content')
 <h3>
-  Клиенты
-  <small>{{ sizeof($clients) }}</small>
+  {{ trans("$tpl.index") }}
+  <small>{{ sizeof($models) }}</small>
   @include('acp.tpl.create')
 </h3>
-@if (sizeof($clients))
+@if (sizeof($models))
   <table class="table-stats m-b-1">
     <thead>
       <tr>
@@ -16,16 +16,16 @@
         <th>Комментарии</th>
       </tr>
     </thead>
-    @foreach ($clients as $i => $client)
-      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $client) }}">
+    @foreach ($models as $i => $model)
+      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
         <td>{{ $i + 1 }}</td>
         <td>
-          <a href="{{ action("$self@show", $client) }}" class="link">
-            {{ $client->name }}
+          <a href="{{ action("$self@show", $model) }}" class="link">
+            {{ $model->name }}
           </a>
         </td>
-        <td>{{ $client->email }}</td>
-        <td>{!! nl2br(str_limit($client->text, 100)) !!}</td>
+        <td>{{ $model->email }}</td>
+        <td>{!! nl2br(str_limit($model->text, 100)) !!}</td>
       </tr>
     @endforeach
   </table>

@@ -1,23 +1,20 @@
-@if (sizeof($domains))
+@if (sizeof($models))
 <h3>
   <form class="form-inline">
-    {{ $domains->total() }} {{ trans_choice('plural.domains', $domains->total()) }}
-    &nbsp;
+    {{ $models->total() }} {{ trans_choice('plural.domains', $models->total()) }}
+    @include('acp.tpl.create')
     <input type="search" name="q" class="form-control" placeholder="Поиск..." value="{{ $q or '' }}">
     <input type="hidden" name="filter" value="{{ $filter or '' }}">
-    <a href="{{ action('Acp\Domains@create') }}" class="btn btn-success">
-      @php (require base_path('resources/svg/plus.html'))
-    </a>
   </form>
 </h3>
-@if (sizeof($domains))
+@if (sizeof($models))
   <table class="table-stats js-float-thead m-b-1">
     <colgroup>
       <col width="30">
       <col width="*">
-      <col width="125">
-      <col width="200">
-      <col width="200">
+      <col width="110">
+      <col width="150">
+      <col width="150">
       <col width="60">
     </colgroup>
     <thead>
@@ -31,44 +28,44 @@
       </tr>
     </thead>
     <tbody>
-    @foreach ($domains as $i => $domain)
-      <tr class="js-dblclick-edit" data-dblclick-url="/acp/domains/{{ $domain->domain }}/edit?goto={{ $back_url }}">
+    @foreach ($models as $i => $model)
+      <tr class="js-dblclick-edit" data-dblclick-url="/acp/domains/{{ $model->domain }}/edit?goto={{ $back_url }}">
         <td>
-          <input class="domains-checkbox" type="checkbox" name="ids[]" value="{{ $domain->id }}">
+          <input class="domains-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}">
         </td>
         <td>
-          <a href="http://{{ $domain->domain }}/" target="_blank" style="margin-right: 0.3em;">
+          <a href="http://{{ $model->domain }}/" target="_blank" style="margin-right: 0.3em;">
             @php (require base_path('resources/svg/external-link.html'))
           </a>
-          <a href="/acp/domains/{{ $domain->domain }}" class="link">{{ $domain->domain }}</a>
-          @if ($domain->alias_id)
+          <a href="/acp/domains/{{ $model->domain }}" class="link">{{ $model->domain }}</a>
+          @if ($model->alias_id)
             <span class="text-muted">
               алиас
-              <a href="/acp/domains/{{ $domain->alias->domain }}" class="link">{{ $domain->alias->domain }}</a>
+              <a href="/acp/domains/{{ $model->alias->domain }}" class="link">{{ $model->alias->domain }}</a>
             </span>
           @endif
-          @if ($domain->text)
+          @if ($model->text)
             <span class="label label-default tip" title="есть заметки">...</span>
           @endif
-          @if (!$domain->domain_control)
+          @if (!$model->domain_control)
             <span class="label label-info tip" title="не в нашей панели">?</span>
           @endif
-          @if ($domain->domain_control and $domain->isExpired())
+          @if ($model->domain_control and $model->isExpired())
             <span class="label label-danger tip" title="просрочена оплата">$</span>
           @endif
-          @if ($domain->domain_control and $domain->isExpiringSoon())
+          @if ($model->domain_control and $model->isExpiringSoon())
             <span class="label label-warning tip" title="подходит срок оплаты">$</span>
           @endif
         </td>
         <td class="text-muted">
-          <span class="tip" title="{{ $domain->paid_till }}">
-            {{ $domain->paid_till->toDateString() }}
+          <span class="tip" title="{{ $model->paid_till }}">
+            {{ $model->paid_till->toDateString() }}
           </span>
         </td>
-        <td>{!! $domain->whatServerIpv4() !!}</td>
-        <td>{{ $domain->firstNsServer() }}</td>
+        <td>{!! $model->whatServerIpv4() !!}</td>
+        <td>{{ $model->firstNsServer() }}</td>
         <td>
-          @if (!$domain->isExpired() && ($domain->cms_url || ($domain->alias_id and $domain->alias->cms_url)))
+          @if (!$model->isExpired() && ($model->cms_url || ($model->alias_id and $model->alias->cms_url)))
             @include('acp.domains.cms_login', ['cms_button_class' => 'btn btn-default btn-xs'])
           @endif
         </td>
@@ -78,7 +75,7 @@
   </table>
 @endif
 
-<div class="pull-left" style="margin: 0 0 1em;">
+<div class="pull-left m-b-1">
   <form class="form-inline js-batch-form" data-url="/acp/domains/batch" data-selector=".domains-checkbox">
     <div class="form-group">
       <select class="form-control" name="action" id="batch_action">
@@ -98,7 +95,7 @@
 </div>
 
 <div class="pull-right">
-  @include('tpl.paginator', ['paginator' => $domains])
+  @include('tpl.paginator', ['paginator' => $models])
 </div>
 
 <div class="clearfix"></div>

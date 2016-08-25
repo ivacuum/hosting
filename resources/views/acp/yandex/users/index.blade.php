@@ -2,11 +2,11 @@
 
 @section('content')
 <h3>
-  Аккаунты в Яндексе
-  <small>{{ sizeof($users) }}</small>
+  {{ trans("$tpl.index") }}
+  <small>{{ sizeof($models) }}</small>
   @include('acp.tpl.create')
 </h3>
-@if (sizeof($users))
+@if (sizeof($models))
   <table class="table-stats m-b-1">
     <thead>
       <tr>
@@ -15,15 +15,15 @@
         <th>Доменов</th>
       </tr>
     </thead>
-    @foreach ($users as $i => $user)
-      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $user) }}">
+    @foreach ($models as $i => $model)
+      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
         <td>{{ $i + 1 }}</td>
         <td>
-          <a href="{{ action("$self@show", $user) }}" class="link">
-            {{ $user->account }}
+          <a href="{{ action("$self@show", $model) }}" class="link">
+            {{ $model->account }}
           </a>
         </td>
-        <td>{{ sizeof($user->domains) }}</td>
+        <td>{{ sizeof($model->domains) }}</td>
       </tr>
     @endforeach
   </table>

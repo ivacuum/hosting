@@ -1,14 +1,22 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Domain;
-use App\Http\Requests\Acp\DomainCreate;
-use App\Http\Requests\Acp\DomainEdit;
+use App\Domain as Model;
+use App\Http\Requests\Acp\DomainCreate as ModelCreate;
+use App\Http\Requests\Acp\DomainEdit as ModelEdit;
+use Breadcrumbs;
 use Mail;
-use Session;
 
 class Domains extends Controller
 {
 	const DEFAULT_ORDER_BY = 'domain';
+    const URL_PREFIX = 'acp/domains';
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        Breadcrumbs::push(trans("{$this->prefix}.index"), self::URL_PREFIX);
+    }
 
 	public function index()
 	{
@@ -27,58 +35,59 @@ class Domains extends Controller
 		switch ($filter) {
 			case 'external':
 
-				$domains = Domain::whereActive(1)
+				$models = Model::whereActive(1)
 					->whereDomainControl(0);
 
 			break;
 			case 'inactive':
 
-				$domains = Domain::whereActive(0);
+				$models = Model::whereActive(0);
 
 			break;
 			case 'no-ns':
 
-				$domains = Domain::whereActive(1)
+				$models = Model::whereActive(1)
 					->whereNs('');
 
 			break;
 			case 'no-server':
 
-				$domains = Domain::whereActive(1)
+				$models = Model::whereActive(1)
 					->whereIpv4('');
 
 			break;
 			case 'orphan':
 
-				$domains = Domain::whereOrphan(1);
+				$models = Model::whereOrphan(1);
 
 			break;
 			case 'trashed':
 
-				$domains = Domain::onlyTrashed();
+				$models = Model::onlyTrashed();
 
 			break;
 			default:
 
-				$domains = Domain::whereActive(1);
+				$models = Model::whereActive(1);
 		}
 
 		if ($q) {
-			$domains = $domains->where('domain', 'LIKE', "%{$q}%");
+			$models = $models->where('domain', 'LIKE', "%{$q}%");
 		}
 
-		$domains = $domains->orderBy($sort)
+		$models = $models->orderBy($sort)
 			->paginate()
 			->appends(compact('sort', 'filter', 'q'));
 
 		$back_url = $this->request->fullUrl();
 
-		return view($this->view, compact('back_url', 'domains', 'filter', 'sort', 'q'));
+		return view($this->view, compact('back_url', 'filter', 'models', 'sort', 'q'));
 	}
 
-	public function addMailbox(Domain $domain)
+	public function addMailbox(Model $model)
 	{
-		extract($this->request->only('logins', 'send_to'));
+        $logins = $this->request->input('logins');
+        $send_to = $this->request->input('send_to');
 
 		$logins = explode(',', $logins);
 		$mailboxes = [];
@@ -86,7 +95,7 @@ class Domains extends Controller
 		foreach ($logins as $login) {
 			$password = str_random(16);
 
-			if ('ok' === $domain->addMailbox($login, $password)) {
+			if ('ok' === $model->addMailbox($login, $password)) {
 				$mailboxes[] = [
 					'user' => $login,
 					'pass' => $password,
@@ -96,56 +105,58 @@ class Domains extends Controller
 
 		$vars = compact('domain', 'mailboxes');
 
-		Mail::send('emails.domains.mailboxes', $vars, function ($mail) use ($domain, $send_to) {
-			$mail->to($send_to)->subject("Доступ к почте {$domain->domain}");
+		Mail::send('emails.domains.mailboxes', $vars, function ($mail) use ($model, $send_to) {
+			$mail->to($send_to)->subject("Доступ к почте {$model->domain}");
 		});
 
-		Session::flash('message', "Данные высланы на почту {$send_to}");
+		$this->request->session()->flash('message', "Данные высланы на почту {$send_to}");
 
-		return redirect()->action("{$this->class}@mailboxes", $domain);
+		return redirect()->action("{$this->class}@mailboxes", $model);
 	}
 
-	public function addNsRecord(Domain $domain)
+	public function addNsRecord(Model $model)
 	{
-		$input = $this->request->only('content', 'subdomain', 'priority', 'port', 'weight');
-
-		return $domain->addNsRecord($this->request->input('type'), $input);
+		return $model->addNsRecord(
+            $this->request->input('type'),
+            $this->request->only('content', 'subdomain', 'priority', 'port', 'weight')
+        );
 	}
 
 	public function batch()
 	{
-		extract($this->request->only('action', 'ids'));
+        $action = $this->request->input('action');
+        $ids = $this->request->input('ids');
 
 		$params = [];
 
 		switch ($action) {
 			case 'activate':
 
-				Domain::whereIn('id', $ids)->update(['active' => 1]);
+				Model::whereIn('id', $ids)->update(['active' => 1]);
 
 			break;
 			case 'deactivate':
 
-				Domain::whereIn('id', $ids)->update(['active' => 0]);
+				Model::whereIn('id', $ids)->update(['active' => 0]);
 
 			break;
 			case 'delete':
 
-				Domain::destroy($ids);
+				Model::destroy($ids);
 
 			break;
 			case 'force_delete':
 
 				$params['filter'] = 'trashed';
 
-				Domain::whereIn('id', $ids)->onlyTrashed()->forceDelete();
+				Model::whereIn('id', $ids)->onlyTrashed()->forceDelete();
 
 			break;
 			case 'restore':
 
 				$params['filter'] = 'trashed';
 
-				Domain::whereIn('id', $ids)->onlyTrashed()->restore();
+				Model::whereIn('id', $ids)->onlyTrashed()->restore();
 
 			break;
 		}
@@ -155,101 +166,112 @@ class Domains extends Controller
 
 	public function create()
 	{
+        Breadcrumbs::push(trans($this->view));
+
 		return view($this->view);
 	}
 
-	public function deleteNsRecord(Domain $domain)
+	public function deleteNsRecord(Model $model)
 	{
 		$id = $this->request->input('record_id');
 
-		return $domain->deleteNsRecord($id);
+		return $model->deleteNsRecord($id);
 	}
 
-	public function destroy(Domain $domain)
+	public function destroy(Model $model)
 	{
-		$domain->delete();
+		$model->delete();
 
-		return redirect()->action("{$this->class}@index");
+        return [
+            'status'   => 'OK',
+            'redirect' => action("{$this->class}@index"),
+        ];
 	}
 
-	public function edit(Domain $domain)
+	public function edit(Model $model)
 	{
-		return view($this->view, compact('domain'));
+        Breadcrumbs::push($model->domain, self::URL_PREFIX . "/{$model->getRouteKey()}");
+        Breadcrumbs::push(trans($this->view));
+
+		return view($this->view, compact('model'));
 	}
 
-	public function editNsRecord(Domain $domain)
+	public function editNsRecord(Model $model)
 	{
-		extract($this->request->only('record_id', 'type'));
-		$input = $this->request->only('content', 'subdomain', 'priority', 'port', 'weight', 'retry', 'refresh', 'expire', 'ttl');
-
-		return $domain->editNsRecord($record_id, $type, $input);
+		return $model->editNsRecord(
+            $this->request->input('record_id'),
+            $this->request->input('type'),
+            $this->request->only('content', 'subdomain', 'priority', 'port', 'weight', 'retry', 'refresh', 'expire', 'ttl')
+        );
 	}
 
-	public function mailboxes(Domain $domain)
+	public function mailboxes(Model $model)
 	{
-		$mailboxes = $domain->getMailboxes();
+		$mailboxes = $model->getMailboxes();
 
-		return view($this->view, compact('domain', 'mailboxes'));
+		return view($this->view, compact('mailboxes', 'model'));
 	}
 
-	public function nsRecords(Domain $domain)
+	public function nsRecords(Model $model)
 	{
-		$records = $domain->yandex_user_id ? $domain->getNsRecords() : [];
+		$records = $model->yandex_user_id ? $model->getNsRecords() : [];
 
-		return view($this->view, compact('domain', 'records'));
+		return view($this->view, compact('model', 'records'));
 	}
 
-	public function nsServers(Domain $domain)
+	public function nsServers(Model $model)
 	{
-		dd($domain->getNsServers());
+		dd($model->getNsServers());
 	}
 
-	public function robots(Domain $domain)
+	public function robots(Model $model)
 	{
-		$robots = $domain->getRobotsTxt();
+		$robots = $model->getRobotsTxt();
 
-		return view($this->view, compact('domain', 'robots'));
+		return view($this->view, compact('model', 'robots'));
 	}
 
-	public function setServerNsRecords(Domain $domain)
+	public function setServerNsRecords(Model $model)
 	{
 		$server = $this->request->input('server');
 
-		$domain->setServerNsRecords($server);
+		$model->setServerNsRecords($server);
 
-		return redirect()->action("{$this->class}@nsRecords", $domain);
+		return redirect()->action("{$this->class}@nsRecords", $model);
 	}
 
-	public function setYandexNs(Domain $domain)
+	public function setYandexNs(Model $model)
 	{
-		$status = $domain->setYandexNs();
+		$status = $model->setYandexNs();
 
 		$message = 'success' == $status
 			? 'Днс Яндекса установлены'
 			: 'Не удалось установить днс Яндекса';
 
-		Session::flash('message', $message);
+		$this->request->session()->flash('message', $message);
 
-		return redirect()->action("{$this->class}@show", $domain);
+		return redirect()->action("{$this->class}@show", $model);
 	}
 
-	public function show(Domain $domain)
+	public function show(Model $model)
 	{
         if ($this->user->id !== 1) {
             abort(404);
         }
 
-		return view($this->view, compact('domain'));
+        Breadcrumbs::push($model->domain);
+
+		return view($this->view, compact('model'));
 	}
 
-	public function store(DomainCreate $request)
+	public function store(ModelCreate $request)
 	{
-		$domain = Domain::create($request->all());
+		$model = Model::create($request->all());
 
-		return redirect()->action("{$this->class}@show", $domain);
+		return redirect()->action("{$this->class}@show", $model);
 	}
 
-	public function update(Domain $domain, DomainEdit $request)
+	public function update(Model $model, ModelEdit $request)
 	{
 		$input = $request->all();
 
@@ -262,24 +284,30 @@ class Domains extends Controller
 			}
 		}
 
-		$domain->update($input);
+		$model->update($input);
 
 		$goto = $request->input('goto', '');
 
-		return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
+        if ($request->exists('_save')) {
+            return $goto
+                ? redirect()->action("{$this->class}@edit", [$model, 'goto' => $goto])
+                : redirect()->action("{$this->class}@edit", $model);
+        }
+
+        return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
 	}
 
-	public function whois(Domain $domain)
+	public function whois(Model $model)
 	{
-		$domain->updateWhois();
+		$model->updateWhois();
 
-		$whois = nl2br(trim($domain->getWhoisData()));
+		$whois = nl2br(trim($model->getWhoisData()));
 
-		return view($this->view, compact('domain', 'whois'));
+		return view($this->view, compact('model', 'whois'));
 	}
 
-	public function yandexPddStatus(Domain $domain)
+	public function yandexPddStatus(Model $model)
 	{
-		dd($domain->getPddStatus());
+		dd($model->getPddStatus());
 	}
 }

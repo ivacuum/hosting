@@ -1,25 +1,25 @@
 @include('tpl.form_errors')
 
 <div class="form-group {{ $errors->has('account') ? 'has-error' : '' }}">
-  <label class="col-md-2 control-label required">Логин в Яндексе:</label>
-  <div class="col-md-10">
-    <input required type="text" class="form-control" name="account" value="{{ old('account', @$user->account) }}">
+  <label class="col-md-3 control-label required">Логин в Яндексе:</label>
+  <div class="col-md-9">
+    <input required type="text" class="form-control" name="account" value="{{ old('account', @$model->account) }}">
   </div>
 </div>
 
 <div class="form-group {{ $errors->has('token') ? 'has-error' : '' }}">
-  <label class="col-md-2 control-label {{ !@$user->token ? 'required' : '' }}">Токен:</label>
-  <div class="col-md-10">
-    <input {{ !@$user->token ? 'required' : '' }} type="password" class="form-control" name="token">
+  <label class="col-md-3 control-label {{ !@$model->token ? 'required' : '' }}">Токен:</label>
+  <div class="col-md-9">
+    <input {{ !@$model->token ? 'required' : '' }} type="password" class="form-control" name="token">
   </div>
 </div>
 
 <div class="form-group">
-  <label class="col-md-2 control-label">Домены:</label>
-  <div class="col-md-10 checkbox">
+  <label class="col-md-3 control-label">Домены:</label>
+  <div class="col-md-9 checkbox">
     @foreach ($domains as $domain)
       <label>
-        <input type="checkbox" name="domains[{{ $domain->id }}]" value="1" {{ @$user->id == $domain->yandex_user_id ? 'checked' : '' }}>
+        <input type="checkbox" name="domains[{{ $domain->id }}]" value="1" {{ @$model->id && @$model->id == $domain->yandex_user_id ? 'checked' : '' }}>
         {{ $domain->domain }}
       </label>
       <br>

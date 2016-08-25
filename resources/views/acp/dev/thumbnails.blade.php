@@ -1,7 +1,7 @@
 @extends('acp.dev.base')
 
 @section('content')
-<h3 class="m-t-0">Создание миниатюр</h3>
+<h2 class="m-t-0">Создание миниатюр</h2>
 <form action="{{ action("$self@thumbnailsPost") }}" class="form-horizontal" method="post" enctype="multipart/form-data">
 
   @include('tpl.form_errors')

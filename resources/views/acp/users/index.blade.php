@@ -2,11 +2,11 @@
 
 @section('content')
 <h3>
-  Пользователи
-  <small>{{ sizeof($users) }}</small>
+  {{ trans("$tpl.index") }}
+  <small>{{ sizeof($models) }}</small>
   @include('acp.tpl.create')
 </h3>
-@if (sizeof($users))
+@if (sizeof($models))
   <table class="table-stats m-b-1">
     <thead>
       <tr>
@@ -16,20 +16,20 @@
         <th>Админ</th>
       </tr>
     </thead>
-    @foreach ($users as $user)
-      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $user) }}">
-        <td>{{ $user->id }}</td>
+    @foreach ($models as $model)
+      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
+        <td>{{ $model->id }}</td>
         <td>
-          <a href="{{ action("$self@show", $user) }}" class="link">
-            {{ $user->email }}
+          <a href="{{ action("$self@show", $model) }}" class="link">
+            {{ $model->email }}
           </a>
         </td>
         <td>
-          @if ($user->active)
+          @if ($model->active)
             Да
           @endif
         <td>
-          @if ($user->is_admin)
+          @if ($model->is_admin)
             Да
           @endif
         </td>

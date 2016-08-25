@@ -2,11 +2,11 @@
 
 @section('content')
 <h3>
-  Серверы
-  <small>{{ sizeof($servers) }}</small>
+  {{ trans("$tpl.index") }}
+  <small>{{ sizeof($models) }}</small>
   @include('acp.tpl.create')
 </h3>
-@if (sizeof($servers))
+@if (sizeof($models))
   <table class="table-stats m-b-1">
     <thead>
       <tr>
@@ -16,18 +16,18 @@
         <th></th>
       </tr>
     </thead>
-    @foreach ($servers as $i => $server)
-      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $server) }}">
+    @foreach ($models as $i => $model)
+      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
         <td>{{ $i + 1 }}</td>
         <td>
-          <a href="{{ action("$self@show", $server) }}" class="link">
-            {{ $server->title }}
+          <a href="{{ action("$self@show", $model) }}" class="link">
+            {{ $model->title }}
           </a>
         </td>
-        <td>{{ $server->host }}</td>
+        <td>{{ $model->host }}</td>
         <td>
-          @if ($server->ftp_user and $server->ftp_pass)
-            <a class="btn btn-default btn-xs" href="{{ action("$self\Ftp@index", [$server]) }}">
+          @if ($model->ftp_user and $model->ftp_pass)
+            <a class="btn btn-default btn-xs" href="{{ action("$self\Ftp@index", [$model]) }}">
               FTP
             </button>
           @endif

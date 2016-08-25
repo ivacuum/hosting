@@ -1,95 +1,121 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Http\Requests\Acp\UserCreate;
-use App\Http\Requests\Acp\UserEdit;
-use App\User;
+use App\Http\Requests\Acp\UserCreate as ModelCreate;
+use App\Http\Requests\Acp\UserEdit as ModelEdit;
+use App\User as Model;
+use Breadcrumbs;
 use Mail;
 use Session;
 
 class Users extends Controller
 {
-	public function index()
-	{
-		return view($this->view)
-			->withUsers(User::get());
-	}
+    const URL_PREFIX = 'acp/users';
 
-	public function create()
-	{
-		return view($this->view);
-	}
+    public function __construct()
+    {
+        parent::__construct();
 
-	public function destroy(User $user)
-	{
-		$user->delete();
+        Breadcrumbs::push(trans("{$this->prefix}.index"), self::URL_PREFIX);
+    }
 
-		return redirect()->action("{$this->class}@index");
-	}
+    public function index()
+    {
+        $models = Model::get();
 
-	public function edit(User $user)
-	{
-		return view($this->view, compact('user'));
-	}
+        return view($this->view, compact('models'));
+    }
 
-	public function show(User $user)
-	{
-		return view($this->view, compact('user'));
-	}
+    public function create()
+    {
+        Breadcrumbs::push(trans($this->view));
 
-	public function store(UserCreate $request)
-	{
-		extract($request->only('password', 'random_password'));
+        return view($this->view);
+    }
 
-		$password = $random_password ? str_random(16) : $password;
+    public function destroy(Model $model)
+    {
+        $model->delete();
 
-		$user = new User;
-		$user->email    = $request->input('email');
-		$user->password = $password;
-		$user->active   = $request->input('active', 0);
-		$user->is_admin = $request->input('is_admin', 0);
-		$user->save();
+        return [
+            'status'   => 'OK',
+            'redirect' => action("{$this->class}@index"),
+        ];
+    }
 
-		if ($request->input('mail_credentials')) {
-			$this->mailCredentials($user, $password);
-		}
+    public function edit(Model $model)
+    {
+        Breadcrumbs::push($model->email, self::URL_PREFIX . "/{$model->id}");
+        Breadcrumbs::push(trans($this->view));
 
-		return redirect()->action("{$this->class}@show", $user);
-	}
+        return view($this->view, compact('model'));
+    }
 
-	public function update(User $user, UserEdit $request)
-	{
-		extract($request->only('password', 'random_password', 'mail_credentials'));
+    public function show(Model $model)
+    {
+        Breadcrumbs::push($model->email);
 
-		$password = $random_password ? str_random(16) : $password;
+        return view($this->view, compact('model'));
+    }
 
-		$user->email    = $request->input('email');
-		$user->active   = $request->input('active', 0);
-		$user->is_admin = $request->input('is_admin', 0);
+    public function store(ModelCreate $request)
+    {
+        $random_password = $request->input('random_password');
+        $password = $random_password ? str_random(16) : $request->input('password');
 
-		if ($password) {
-			$user->password = $password;
-		}
+        $model = new Model;
+        $model->email    = $request->input('email');
+        $model->password = $password;
+        $model->active   = $request->input('active', 0);
+        $model->is_admin = $request->input('is_admin', 0);
+        $model->save();
 
-		$user->save();
+        if ($request->input('mail_credentials')) {
+            $this->mailCredentials($model, $password);
+        }
 
-		if ($password && $mail_credentials) {
-			$this->mailCredentials($user, $password);
-		}
+        return redirect()->action("{$this->class}@index");
+    }
 
-		$goto = $request->input('goto', '');
+    public function update(Model $model, ModelEdit $request)
+    {
+        $random_password = $request->input('random_password');
+        $password = $random_password ? str_random(16) : $request->input('password');
+        $mail_credentials = $request->input('mail_credentials');
 
-		return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
-	}
+        $model->email    = $request->input('email');
+        $model->active   = $request->input('active', 0);
+        $model->is_admin = $request->input('is_admin', 0);
 
-	protected function mailCredentials(User $user, $password)
+        if ($password) {
+            $model->password = $password;
+        }
+
+        $model->save();
+
+        if ($password && $mail_credentials) {
+            $this->mailCredentials($model, $password);
+        }
+
+        $goto = $request->input('goto', '');
+
+        if ($request->exists('_save')) {
+            return $goto
+                ? redirect()->action("{$this->class}@edit", [$model, 'goto' => $goto])
+                : redirect()->action("{$this->class}@edit", $model);
+        }
+
+        return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
+    }
+
+	protected function mailCredentials(Model $model, $password)
 	{
 		$route = action('Acp\Home@index');
 		$vars  = compact('user', 'password', 'route');
 
-		Mail::send('emails.users.credentials', $vars, function ($mail) use ($user, $route) {
-			$mail->to($user->email)->subject("Доступ к {$route}");
+		Mail::send('emails.users.credentials', $vars, function ($mail) use ($model, $route) {
+			$mail->to($model->email)->subject("Доступ к {$route}");
 		});
 
-		Session::flash('message', "Данные высланы на почту {$user->email}");
+		Session::flash('message', "Данные высланы на почту {$model->email}");
 	}
 }
