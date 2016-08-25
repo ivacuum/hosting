@@ -29,10 +29,12 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-    <li><a href="/acp/clients">Клиенты</a></li>
-    <li><a href="/acp/domains">Домены</a></li>
-    <li><a href="/acp/servers">Серверы</a></li>
-    <li><a href="/acp/pages">Страницы</a></li>
+    <li><a href="{{ $locale_uri }}/acp/clients">Клиенты</a></li>
+    <li><a href="{{ $locale_uri }}/acp/domains">Домены</a></li>
+    <li><a href="{{ $locale_uri }}/acp/servers">Серверы</a></li>
+    <li><a href="{{ $locale_uri }}/acp/pages">Страницы</a></li>
+    <li><a href="{{ $locale_uri }}/acp/users">Пользователи</a></li>
+    <li><a href="{{ $locale_uri }}/acp/yandex/users">Пользователи Яндекс API</a></li>
   </ul>
 </li>
 <li>
