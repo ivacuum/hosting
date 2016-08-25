@@ -2,9 +2,11 @@
 
 @section('content')
 <p lang="ru">Неужели пустыня?</p>
+<p lang="en">Desert? Really?</p>
 @include('tpl.pic-2x', ['pic' => 'IMG_0067.jpg'])
 
 <p lang="ru">Фух, не.</p>
+<p lang="en">Oof, no.</p>
 @include('tpl.pic-2x', ['pic' => 'IMG_0091.jpg'])
 
 {{--
@@ -16,6 +18,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_0096.jpg'])
 
 <p lang="ru">Железнодорожная станция.</p>
+<p lang="en">Railway station.</p>
 @include('tpl.pic-2x', ['pic' => 'IMG_0178.jpg'])
 
 <p lang="ru">Хорошо уложенные пути. На них в электричке нет типичного «ту-дух ту-дух», она двигается бесшумно и комфортно. На этом участке до следующей остановки поезд развивает скорость до 130 км/ч. Испанцы восхваляют свои железные дороги, особенно высокоскоростные. До Мадрида из Барселоны можно добраться менее чем за 3 часа — неплохо для шестисоткилометрового расстояния. Еще можно доехать до Парижа.</p>
@@ -51,6 +54,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_0216.jpg'])
 
 <p lang="ru">Прекрасные здания.</p>
+<p lang="en">Beautiful buildings.</p>
 @include('tpl.fotorama', ['pics' => [
   'IMG_0334.jpg',
   'IMG_0326.jpg',
@@ -68,6 +72,7 @@
 ]])
 
 <p lang="ru">Еще высотные виды.</p>
+<p lang="en">More panoramic views.</p>
 @include('tpl.fotorama', ['pics' => [
   'IMG_0116.jpg',
   'IMG_0135.jpg',
@@ -109,6 +114,7 @@
 ]])
 
 <p lang="ru">Остановки.</p>
+<p lang="en">Bus stops.</p>
 @include('tpl.fotorama', ['pics' => [
   'IMG_0163.jpg',
   'IMG_0102.jpg',
@@ -119,6 +125,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_0166.jpg'])
 
 <p lang="ru">Почта.</p>
+<p lang="en">Postbox.</p>
 @include('tpl.pic-2x', ['pic' => 'IMG_0218.jpg'])
 
 <p lang="ru">Набережная. Видно какой сильный ветер в Барселоне.</p>
@@ -134,6 +141,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_0283.jpg'])
 
 <p lang="ru">Пляж.</p>
+<p lang="en">Beach.</p>
 @include('tpl.pic-2x', ['pic' => 'IMG_0234.jpg'])
 
 <p lang="ru">Малоизвестный у нас <a class="link" href="http://tema.livejournal.com/1755711.html">знак парикмахерской</a>.</p>
@@ -165,6 +173,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_0156.jpg'])
 
 <p lang="ru">Дороги.</p>
+<p lang="en">Roads.</p>
 @include('tpl.fotorama', ['pics' => [
   'IMG_0239.jpg',
   'IMG_0244.jpg',
@@ -200,15 +209,18 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_0340.jpg'])
 
 <p lang="ru">Рынок.</p>
+<p lang="en">Market.</p>
 @include('tpl.pic-2x', ['pic' => 'IMG_0346.jpg'])
 
 <p lang="ru">Ярмарка.</p>
+<p lang="en">Fair.</p>
 @include('tpl.pic-2x', ['pic' => 'IMG_0177.jpg'])
 
 <p lang="ru">На углу дома табличка с названием улицы. Нумерация непосредственно над подъездами, так как у каждого свой номер. Почти как в <a class="link" href="/life/kaliningrad.2015#house_number">Калининграде</a>.</p>
 @include('tpl.pic-2x', ['pic' => 'IMG_0294.jpg'])
 
 <p lang="ru">Приятно погулять.</p>
+<p lang="en">It's pleasure to walk.</p>
 @include('tpl.fotorama', ['pics' => [
   'IMG_0174.jpg',
   'IMG_0328.jpg',
@@ -225,15 +237,18 @@
 </div>
 
 <p lang="ru">Аттракцион #1 в Порте Авентура неподалеку от Барселоны.</p>
+<p lang="en">Attraction #1 in Port Aventura not so far away from Barcelona.</p>
 <div class="fotorama" data-width="1000" data-ratio="16/10">
   <a href="https://www.youtube.com/embed/DqKHyp8IWyc">Port Aventura boats, June 2016</a>
 </div>
 
 <p lang="ru">Аттракцион #2.</p>
+<p lang="en">Attraction #2.</p>
 <div class="fotorama" data-width="1000" data-ratio="16/10">
   <a href="https://www.youtube.com/embed/UAXCpzBtnYM">Port Aventura splash, June 2016</a>
 </div>
 
 <p lang="ru">Видишь сову? Нет? А она есть.</p>
+<p lang="en">Do you see an owl? No? Yet it's there.</p>
 @include('tpl.pic-2x', ['pic' => 'IMG_0330.jpg'])
 @endsection
