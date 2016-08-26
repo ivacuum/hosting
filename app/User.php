@@ -1,19 +1,25 @@
-<?php
+<?php namespace App;
 
-namespace App;
-
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\Access\Authorizable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
+/**
+ * Пользователь
+ *
+ * @property integer $id
+ * @property string  $email
+ * @property string  $password
+ * @property boolean $active
+ * @property string  $remember_token
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property \Carbon\Carbon $deleted_at
+ * @property boolean $is_admin
+ */
+class User extends Authenticatable
 {
-    use Authenticatable, Authorizable, CanResetPassword, SoftDeletes;
+    use Notifiable, SoftDeletes;
 
     protected $table = 'users';
     protected $fillable = ['email', 'password', 'active'];

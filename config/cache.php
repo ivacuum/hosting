@@ -2,45 +2,56 @@
 
 return [
 
-	'default' => env('CACHE_DRIVER', 'file'),
+    // apc, array, database, file, memcached, redis
+    'default' => env('CACHE_DRIVER', 'file'),
 
-	'stores' => [
+    'stores' => [
 
-		'apc' => [
-			'driver' => 'apc'
-		],
+        'apc' => [
+            'driver' => 'apc'
+        ],
 
-		'array' => [
-			'driver' => 'array'
-		],
+        'array' => [
+            'driver' => 'array'
+        ],
 
-		'database' => [
-			'driver' => 'database',
-			'table'  => 'cache',
-			'connection' => null,
-		],
+        'database' => [
+            'driver' => 'database',
+            'table'  => 'cache',
+            'connection' => null,
+        ],
 
-		'file' => [
-			'driver' => 'file',
-			'path'   => storage_path('framework/cache'),
-		],
+        'file' => [
+            'driver' => 'file',
+            'path'   => storage_path('framework/cache'),
+        ],
 
-		'memcached' => [
-			'driver'  => 'memcached',
-			'servers' => [
-				[
-					'host' => '/var/run/memcached/memcached.lock', 'port' => 0, 'weight' => 100
-				],
-			],
-		],
+        'memcached' => [
+            'driver'  => 'memcached',
+            'persistent_id' => env('MEMCACHED_PERSISTENT_ID'),
+            'sasl' => [
+                env('MEMCACHED_USERNAME'),
+                env('MEMCACHED_PASSWORD'),
+            ],
+            'options' => [
+                // Memcached::OPT_CONNECT_TIMEOUT => 2000,
+            ],
+            'servers' => [
+                [
+                    'host' => env('MEMCACHED_HOST', '/var/run/memcached/memcached.lock'),
+                    'port' => env('MEMCACHED_PORT', 11211),
+                    'weight' => 100,
+                ],
+            ],
+        ],
 
-		'redis' => [
-			'driver' => 'redis',
-			'connection' => 'default',
-		],
+        'redis' => [
+            'driver' => 'redis',
+            'connection' => 'default',
+        ],
 
-	],
+    ],
 
-	'prefix' => 'hosting',
+    'prefix' => 'hosting',
 
 ];

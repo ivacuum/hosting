@@ -1,3 +1,3 @@
 @if ($paginator->hasPages())
-  {!! (new App\Pagination\Presenter($paginator))->render() !!}
+  {{ $paginator->links() }}
 @endif

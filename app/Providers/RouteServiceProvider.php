@@ -12,35 +12,35 @@ use App\Trip;
 use App\User;
 use App\YandexUser;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
     protected $namespace = 'App\Http\Controllers';
 
-    public function boot(Router $router)
+    public function boot()
     {
-        parent::boot($router);
+        parent::boot();
 
-        $router->model('City', City::class);
-        $router->model('Client', Client::class);
-        $router->model('Country', Country::class);
-        $router->model('Domain', Domain::class);
-        $router->model('Gig', Gig::class);
-        $router->model('Page', Page::class);
-        $router->model('Server', Server::class);
-        $router->model('Trip', Trip::class);
-        $router->model('User', User::class);
-        $router->model('YandexUser', YandexUser::class);
+        Route::model('City', City::class);
+        Route::model('Client', Client::class);
+        Route::model('Country', Country::class);
+        Route::model('Domain', Domain::class);
+        Route::model('Gig', Gig::class);
+        Route::model('Page', Page::class);
+        Route::model('Server', Server::class);
+        Route::model('Trip', Trip::class);
+        Route::model('User', User::class);
+        Route::model('YandexUser', YandexUser::class);
     }
 
-    public function map(Router $router, Request $request)
+    public function map()
     {
-        $prefix = $this->getLocalePrefix($request);
+        $prefix = $this->getLocalePrefix();
 
-        $router->group([
+        Route::group([
             'namespace'   => $this->namespace,
             'prefix'      => "{$prefix}/acp",
             'middleware'  => ['web', 'auth', 'admin'],
@@ -48,11 +48,11 @@ class RouteServiceProvider extends ServiceProvider
             require base_path('routes/acp.php');
         });
 
-        $router->group(['namespace' => $this->namespace], function ($router) {
+        Route::group(['namespace' => $this->namespace], function ($router) {
             require base_path('routes/simple.php');
         });
 
-        $router->group([
+        Route::group([
             'namespace'  => $this->namespace,
             'middleware' => 'web',
             'prefix'     => $prefix,
@@ -61,10 +61,10 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
 
-    protected function getLocalePrefix(Request $request)
+    protected function getLocalePrefix()
     {
         $default_locale = config('app.locale');
-        $locale = $request->segment(1);
+        $locale = Request::segment(1);
 
         if (in_array($locale, array_keys(config('cfg.locales')))) {
         } else {
