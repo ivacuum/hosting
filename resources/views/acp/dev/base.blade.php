@@ -13,7 +13,7 @@
       <a class="list-group-item {{ 0 === strpos($view, 'acp.dev.svg') ? 'active' : '' }}" href="{{ action('Acp\Dev@svg') }}">
         SVG
       </a>
-      @if (App::environment('local') && !Input::cookie('debugbar', false))
+      @if (App::environment('local') && !Request::cookie('debugbar', false))
         <a class="list-group-item" href="{{ action('Acp\Dev@debugbar') }}">
           Отладка на час
         </a>

@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
         */
 
         if ($this->app->environment('local')) {
-            if (\Input::cookie('debugbar', false)) {
+            if (\Request::cookie('debugbar', false)) {
                 $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
             }
 

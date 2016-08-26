@@ -20,7 +20,7 @@ class Domains extends Controller
 
 	public function index()
 	{
-        if ($this->user->id !== 1) {
+        if ($this->request->user()->id !== 1) {
             abort(404);
         }
 
@@ -255,7 +255,7 @@ class Domains extends Controller
 
 	public function show(Model $model)
 	{
-        if ($this->user->id !== 1) {
+        if ($this->request->user()->id !== 1) {
             abort(404);
         }
 

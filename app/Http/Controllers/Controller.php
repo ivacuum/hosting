@@ -9,16 +9,11 @@ use Illuminate\Routing\Controller as BaseController;
 use NumberFormatter;
 use Route;
 
-abstract class Controller extends BaseController
+class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     protected $request;
-
-    /**
-     * @var \App\User
-     */
-    protected $user;
 
     protected $class;
     protected $method;
@@ -27,8 +22,7 @@ abstract class Controller extends BaseController
 
     public function __construct()
     {
-        $this->request = request();
-        $this->user = $this->request->user();
+        $this->request = $request = request();
 
         $this->class  = str_replace('App\Http\Controllers\\', '', get_class($this));
         $this->method = $this->getCurrentMethod();
