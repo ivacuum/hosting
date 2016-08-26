@@ -1,6 +1,4 @@
-<?php
-
-namespace App;
+<?php namespace App;
 
 use App;
 use Illuminate\Database\Eloquent\Model;
@@ -14,21 +12,22 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $slug
  * @property string  $tpl
  * @property \Carbon\Carbon $date
- * @property string  $venue
  * @property string  $venue_ru
  * @property string  $venue_en
  * @property integer $status
- * @property string  $meta_title
  * @property string  $meta_title_ru
  * @property string  $meta_title_en
- * @property string  $meta_description
  * @property string  $meta_description_ru
  * @property string  $meta_description_en
  * @property string  $meta_image
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
- * @property \App\City $city
+ * @property-read \App\City $city
+ *
+ * @property-read string  $venue
+ * @property-read string  $meta_title
+ * @property-read string  $meta_description
  */
 class Gig extends Model
 {

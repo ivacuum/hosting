@@ -1,6 +1,4 @@
-<?php
-
-namespace App;
+<?php namespace App;
 
 use App\Events\DomainWhoisUpdated;
 use Carbon\Carbon;

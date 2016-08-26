@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http;
+<?php namespace App\Http;
 
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\Authenticate;

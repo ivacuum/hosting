@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Listeners;
+<?php namespace App\Listeners;
 
 use App\Domain;
 use App\Events\DomainWhoisUpdated;

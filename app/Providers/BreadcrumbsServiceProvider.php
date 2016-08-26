@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Providers;
+<?php namespace App\Providers;
 
 use App\Breadcrumbs\Breadcrumbs;
 use Illuminate\Support\ServiceProvider;
