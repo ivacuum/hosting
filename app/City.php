@@ -8,13 +8,17 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property integer $id
  * @property integer $country_id
- * @property string  $title
+ * @property string  $title_ru
+ * @property string  $title_en
  * @property string  $slug
+ * @property string  $iata
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
- * @property \App\Country $country
- * @property \App\Trip    $trips
+ * @property-read \App\Country $country
+ * @property-read \App\Trip    $trips
+ *
+ * @property-read string  $title
  */
 class City extends Model
 {

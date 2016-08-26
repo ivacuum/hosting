@@ -90,7 +90,7 @@ class Domain extends Model
         parent::boot();
 
         // Домен перестает быть алиасом для других
-        static::deleted(function($domain) {
+        static::deleted(function ($domain) {
             Domain::where('alias_id', $domain->id)
                 ->update(['alias_id' => 0]);
         });

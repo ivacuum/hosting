@@ -7,14 +7,17 @@ use Illuminate\Database\Eloquent\Model;
  * Страна
  *
  * @property integer $id
- * @property string  $title
+ * @property string  $title_ru
+ * @property string  $title_en
  * @property string  $slug
  * @property string  $emoji
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
- * @property \App\City $cities
- * @property \App\Trip $trips
+ * @property-read \App\City $cities
+ * @property-read \App\Trip $trips
+ *
+ * @property-read string  $title
  */
 class Country extends Model
 {

@@ -20,7 +20,7 @@ class YandexUser extends Model
     {
         parent::boot();
 
-        static::deleted(function($user) {
+        static::deleted(function ($user) {
             Domain::where('yandex_user_id', $user->id)
                 ->update(['yandex_user_id' => 0]);
         });

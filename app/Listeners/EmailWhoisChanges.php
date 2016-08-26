@@ -73,7 +73,7 @@ class EmailWhoisChanges
             [$this->mailer, 'send'],
             'emails.whois.changed',
             compact('diff', 'data'),
-            function($mail) use ($domain) {
+            function ($mail) use ($domain) {
                 $mail->to('domains@ivacuum.ru')
                     ->subject($domain->domain);
             }

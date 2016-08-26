@@ -7,20 +7,28 @@ use Illuminate\Database\Eloquent\Model;
  * Поездка
  *
  * @property integer $id
- * @property string  $title
+ * @property integer $city_id
+ * @property string  $title_ru
+ * @property string  $title_en
  * @property string  $slug
  * @property string  $tpl
  * @property \Carbon\Carbon $date_start
  * @property \Carbon\Carbon $date_end
  * @property boolean $published
- * @property string  $meta_title
- * @property string  $meta_description
+ * @property string  $meta_title_ru
+ * @property string  $meta_title_en
+ * @property string  $meta_description_ru
+ * @property string  $meta_description_en
  * @property string  $meta_image
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
  * @property \App\City    $city
  * @property \App\Country $country
+ *
+ * @property-read string  $title
+ * @property-read string  $meta_title
+ * @property-read string  $meta_description
  */
 class Trip extends Model
 {
