@@ -8,7 +8,7 @@ class DomainAlias extends Migration
     public function up()
     {
         Schema::table('domains', function (Blueprint $table) {
-            $table->integer('alias_id')->unsigned();
+            $table->integer('alias_id')->unsigned()->default(0);
         });
     }
 

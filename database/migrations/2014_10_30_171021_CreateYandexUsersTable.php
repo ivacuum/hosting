@@ -15,7 +15,7 @@ class CreateYandexUsersTable extends Migration
         });
 
         Schema::table('domains', function (Blueprint $table) {
-            $table->integer('yandex_user_id')->unsigned()->index();
+            $table->integer('yandex_user_id')->unsigned()->default(0)->index();
         });
     }
 

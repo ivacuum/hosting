@@ -15,5 +15,7 @@ bower install
 npm install
 gulp --production
 
-# composer install --no-dev
-# vendor/bin/phpunit
+# composer global require "hirak/prestissimo:^0.3"
+# composer global update
+composer install --no-interaction
+# script/test

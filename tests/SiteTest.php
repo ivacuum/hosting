@@ -1,7 +1,11 @@
 <?php
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+
 class SiteTest extends TestCase
 {
+    use DatabaseMigrations;
+
     public function testPages()
     {
         $this->visit('/');
