@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Requests\Acp;
+<?php namespace App\Http\Requests\Acp;
 
 class PageEdit extends PageCreate
 {

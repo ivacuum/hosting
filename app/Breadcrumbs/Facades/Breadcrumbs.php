@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Breadcrumbs\Facades;
+<?php namespace App\Breadcrumbs\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

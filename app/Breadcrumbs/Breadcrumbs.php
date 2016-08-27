@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Breadcrumbs;
+<?php namespace App\Breadcrumbs;
 
 use Illuminate\Routing\Router;
 
