@@ -6,6 +6,9 @@ class SiteTest extends TestCase
 {
     use DatabaseMigrations;
 
+    /**
+     * @group pages
+     */
     public function testPages()
     {
         $this->visit('/');
@@ -17,6 +20,9 @@ class SiteTest extends TestCase
         $this->visit('/life/gigs');
     }
 
+    /**
+     * @group pages
+     */
     public function testAcpPages()
     {
         $this->visit('/acp/cities');
