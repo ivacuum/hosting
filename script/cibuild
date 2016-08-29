@@ -17,5 +17,5 @@ gulp --production
 
 # composer global require "hirak/prestissimo:^0.3"
 # composer global update
-composer install --no-interaction
-vendor/bin/phpunit --exclude-group pages
+# composer install --no-interaction
+# vendor/bin/phpunit --exclude-group pages
