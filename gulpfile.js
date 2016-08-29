@@ -26,7 +26,7 @@ elixir(function(mix) {
       'bower/fancytree/dist/skin-lion/ui.fancytree.min.css'
     ], 'public/build/css/acp.css', './resources/assets')
 
-    .browserify('app.js')
+    .webpack('app.js')
 
     .copy('resources/assets/bower/fotorama/*.png', 'public/build/css')
     .copy('resources/assets/bower/fancytree/dist/skin-lion/*.gif', 'public/build/css')
