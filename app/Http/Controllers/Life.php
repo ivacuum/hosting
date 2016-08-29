@@ -29,6 +29,12 @@ class Life extends Controller
 
     public function city(City $city)
     {
+        if (1 === sizeof($city->trips)) {
+            $slug = $city->trips()->first()->slug;
+
+            return redirect()->action("{$this->class}@page", $slug);
+        }
+
         Breadcrumbs::push(trans('menu.countries'), 'life/countries');
         Breadcrumbs::push($city->country->title, "life/countries/{$city->country->slug}");
         Breadcrumbs::push($city->title);
