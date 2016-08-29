@@ -1,7 +1,6 @@
 @extends('life.gigs.base')
 
 @section('content')
-<h2>Rammstein в Санкт-Петербурге <small>26 февраля 2010</small></h2>
 <div class="row">
   <div class="col-md-7">
     <p lang="ru">Что играли:</p>
