@@ -1,6 +1,12 @@
 <?php
 
 return [
+    'artists.add'    => 'Добавить артиста',
+    'artists.index'  => 'Артисты',
+    'artists.create' => 'Новый артист',
+    'artists.edit'   => 'Редактирование артиста',
+    'artists.show'   => 'Артист',
+
     'cities.add'    => 'Добавить город',
     'cities.index'  => 'Города',
     'cities.create' => 'Новый город',

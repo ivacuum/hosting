@@ -3,6 +3,7 @@
 use App;
 use App\City;
 use App\Country;
+use App\Gig;
 use App\Trip;
 use Breadcrumbs;
 
@@ -60,6 +61,32 @@ class Life extends Controller
         return view($this->view, compact('country', 'trips'));
     }
 
+    public function gig(Gig $gig)
+    {
+        $tpl = "life.gigs.{$gig->tpl}";
+
+        if (!view()->exists($tpl)) {
+            abort(404);
+        }
+
+        Breadcrumbs::push(trans('menu.gigs'), 'life/gigs');
+        Breadcrumbs::push($gig->title);
+
+        $timeline = $gig->timeline()->get();
+
+        return view($tpl, compact('gig', 'timeline'));
+    }
+
+    public function gigs()
+    {
+        $gigs = Gig::with('artist')->orderBy('date', 'desc')->get();
+
+        Breadcrumbs::push(trans('menu.life'), 'life');
+        Breadcrumbs::push(trans('menu.gigs'));
+
+        return view($this->view, compact('gigs'));
+    }
+
     public function page($page)
     {
         Breadcrumbs::push(trans('menu.life'), 'life');
@@ -76,6 +103,10 @@ class Life extends Controller
 
         if ($city = $this->getCity($page)) {
             return $this->city($city);
+        }
+
+        if ($gig = $this->getGig($page)) {
+            return $this->gig($gig);
         }
 
         abort(404);
@@ -105,6 +136,11 @@ class Life extends Controller
     protected function getCity($slug)
     {
         return City::where('slug', $slug)->first();
+    }
+
+    protected function getGig($slug)
+    {
+        return Gig::where('slug', $slug)->first();
     }
 
     protected function getTrip($slug)

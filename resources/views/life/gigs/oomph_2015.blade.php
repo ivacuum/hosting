@@ -1,17 +1,8 @@
-@extends('life.gigs.base', [
-  'meta_title' => 'Oomph! в Москве &middot; 4 ноября 2015',
-  'meta_description' => 'Заметки о концерте.',
-  'meta_image' => 'https://life.ivacuum.ru/gigs/oomph.2015.11.04.jpg',
+@extends('life.gigs.base')
 
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Концерты', 'url' => 'life/gigs'],
-    ['title' => 'Oomph!']
-  ]
-])
+{{-- Ray Just Arena --}}
 
 @section('content')
-<h2>Oomph! в Москве <small>4 ноября 2015</small></h2>
 <div class="row">
   <div class="col-md-7">
     <p lang="ru">Если в <a class="link" href="/life/oomph.2012">2012 году</a> немцы начали тур с Москвы, то в этот раз они в столице его закончили, то есть могли свободно задержаться на афтепати. Впрочем, мы получили бонус и во время шоу — плюс две песни относительно других концертов тура, причем исполненные одним вокалистом. В самом конце забавно было наблюдать по мониторным наушникам его намерения — если он их надевал, то собирался начать следующую песню.</p>
@@ -54,6 +45,4 @@
 <div class="fotorama" data-width="1280" data-ratio="16/10">
   <a href="http://www.youtube.com/watch?v=FfETlcHkmCU"></a>
 </div>
-
-@include('life.timeline.oomph')
 @endsection

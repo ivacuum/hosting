@@ -20,6 +20,7 @@ Route::get('life', 'Life@index');
 Route::get('life/cities', 'Life@cities');
 Route::get('life/countries', 'Life@countries');
 Route::get('life/countries/{country}', 'Life@country');
+Route::get('life/gigs', 'Life@gigs');
 Route::get('life/{page}', 'Life@page');
 
 Route::get('parser/vk/{page?}/{date?}', 'ParserVk@index')

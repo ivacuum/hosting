@@ -1,17 +1,8 @@
-@extends('life.gigs.base', [
-  'meta_title' => 'Oomph! в Москве &middot; 24 мая 2012',
-  'meta_description' => 'Заметки о концерте.',
-  'meta_image' => 'https://life.ivacuum.ru/gigs/oomph.2012.05.24.jpg',
+@extends('life.gigs.base')
 
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Концерты', 'url' => 'life/gigs'],
-    ['title' => 'Oomph!']
-  ]
-])
+{{-- Arena Moscow --}}
 
 @section('content')
-<h2>Oomph! в Москве <small>24 мая 2012</small></h2>
 <div class="row">
   <div class="col-md-7">
     <p lang="ru">Неожиданно тур в поддержку нового альбома начался в Москве. Сет был неизвестен, к чему готовиться — непонятно. Сюрприз был преподнесен уже на пятой песне — ее дали исполнить залу без музыкального сопровождения. Задача оказалась непростой, так как альбом только-только вышел, и к такому предложению мы не были готовы. Еще Augen auf дважды исполнили.</p>
@@ -67,6 +58,4 @@
 <div class="fotorama" data-width="1280" data-ratio="16/10">
   <a href="https://www.youtube.com/watch?v=6WVcvgTBrUk"></a>
 </div>
-
-@include('life.timeline.oomph')
 @endsection

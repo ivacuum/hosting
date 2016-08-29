@@ -1,17 +1,8 @@
-@extends('life.gigs.base', [
-  'meta_title' => 'Linkin Park в Москве &middot; 29 августа 2015',
-  'meta_description' => 'Заметки о концерте.',
-  'meta_image' => 'https://life.ivacuum.ru/gigs/linkinpark.2015.08.29.jpg',
+@extends('life.gigs.base')
 
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Концерты', 'url' => 'life/gigs'],
-    ['title' => 'Linkin Park']
-  ]
-])
+{{-- СК Олимпийский --}}
 
 @section('content')
-<h2>Linkin Park в Москве <small>29 августа 2015</small></h2>
 <div class="row">
   <div class="col-md-7">
     <p lang="ru">Спустя два дня после Металлики в Олимпийском выступил Линкин Парк. Набор песен мало отличался от <a class="link" href="/life/linkinpark.2014">прошлого года</a>. В этот раз было два флэшмоба: листы с надписью you are always welcome в начале песни #20 и слоеный флаг РФ после песни #23.</p>
@@ -56,6 +47,4 @@
 <div class="fotorama" data-width="1280" data-ratio="16/10">
   <a href="https://www.youtube.com/watch?v=x8i-KQowLZA"></a>
 </div>
-
-@include('life.timeline.linkinpark')
 @endsection

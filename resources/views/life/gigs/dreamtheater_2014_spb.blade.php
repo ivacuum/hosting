@@ -1,17 +1,8 @@
-@extends('life.gigs.base', [
-  'meta_title' => 'Dream Theater в Санкт-Петербурге &middot; 26 февраля 2014',
-  'meta_description' => 'Заметки о концерте.',
-  'meta_image' => 'https://life.ivacuum.ru/gigs/dreamtheater.2014.02.26.jpg',
+@extends('life.gigs.base')
 
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Концерты', 'url' => 'life/gigs'],
-    ['title' => 'Dream Theater']
-  ]
-])
+{{-- СК Юбилейный --}}
 
 @section('content')
-<h2>Dream Theater в Санкт-Петербурге <small>26 февраля 2014</small></h2>
 <div class="row">
   <div class="col-md-7">
     <p lang="ru">Впервые в жизни попал на Meet&amp;Greet — встречу и общение с группой до концерта.</p>
@@ -48,6 +39,4 @@
 <div class="fotorama" data-width="1280" data-ratio="16/10">
   <a href="https://www.youtube.com/watch?v=MiW2GYfSwqw"></a>
 </div>
-
-@include('life.timeline.dreamtheater')
 @endsection

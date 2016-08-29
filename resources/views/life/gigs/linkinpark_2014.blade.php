@@ -1,17 +1,8 @@
-@extends('life.gigs.base', [
-  'meta_title' => 'Linkin Park в Москве &middot; 2 июня 2014',
-  'meta_description' => 'Заметки о концерте.',
-  'meta_image' => 'https://life.ivacuum.ru/gigs/linkinpark.2014.06.02.jpg',
+@extends('life.gigs.base')
 
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Концерты', 'url' => 'life/gigs'],
-    ['title' => 'Linkin Park']
-  ]
-])
+{{-- СК Олимпийский --}}
 
 @section('content')
-<h2>Linkin Park в Москве <small>2 июня 2014</small></h2>
 <div class="row">
   <div class="col-md-7">
     <p lang="ru">Смело можно сказать, что два вокалиста в группе — это ад! Не дадут спуска практически ни на минуту. Прокричишь куплет, припев будешь уже прыгать и орать, далее все заново. И так 100 минут. Стоило оно того? Однозначно да!</p>
@@ -60,6 +51,4 @@
     <img src="https://pp.vk.me/c540406/u15466377/video/l_d7946cfb.jpg">
   </a>
 </div>
-
-@include('life.timeline.linkinpark')
 @endsection

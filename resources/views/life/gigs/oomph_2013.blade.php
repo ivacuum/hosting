@@ -1,17 +1,8 @@
-@extends('life.gigs.base', [
-  'meta_title' => 'Oomph! в Москве &middot; 19 октября 2013',
-  'meta_description' => 'Заметки о концерте.',
-  'meta_image' => 'https://life.ivacuum.ru/gigs/oomph.2013.10.19.jpg',
+@extends('life.gigs.base')
 
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Концерты', 'url' => 'life/gigs'],
-    ['title' => 'Oomph!']
-  ]
-])
+{{-- Arena Moscow --}}
 
 @section('content')
-<h2>Oomph! в Москве <small>19 октября 2013</small></h2>
 <div class="row">
   <div class="col-md-7">
     <p lang="ru">Что играли:</p>
@@ -49,6 +40,4 @@
 <div class="fotorama" data-width="1280" data-ratio="16/10">
   <a href="https://www.youtube.com/watch?v=RsLFgW-wsP0"></a>
 </div>
-
-@include('life.timeline.oomph')
 @endsection

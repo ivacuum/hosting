@@ -2,6 +2,7 @@
 
 return [
     'acp'       => 'Admin Control Panel',
+    'artists'   => 'Artists',
     'cities'    => 'Cities',
     'countries' => 'Countries',
     'dev'       => 'Dev',

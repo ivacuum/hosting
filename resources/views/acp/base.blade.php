@@ -23,6 +23,11 @@
     {{ trans('menu.gigs') }}
   </a>
 </li>
+<li>
+  <a class="{{ $self == 'Acp\Artists' ? 'navbar-selected' : '' }}" href="{{ $locale_uri }}/acp/artists">
+    {{ trans('menu.artists') }}
+  </a>
+</li>
 <li class="dropdown">
   <a class="dropdown-toggle {{ in_array($self, ['Acp\Clients', 'Acp\Domains', 'Acp\Servers', 'Acp\Pages']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
     {{ trans('menu.hosting') }}

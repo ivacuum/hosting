@@ -1,17 +1,8 @@
-@extends('life.gigs.base', [
-  'meta_title' => 'Tides from Nebula в Москве &middot; 21 декабря 2014',
-  'meta_description' => 'Заметки о концерте.',
-  'meta_image' => 'https://life.ivacuum.ru/gigs/tfn.2014.12.21.jpg',
+@extends('life.gigs.base')
 
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Концерты', 'url' => 'life/gigs'],
-    ['title' => 'Tides from Nebula']
-  ]
-])
+{{-- Клуб Б2 --}}
 
 @section('content')
-<h2>Tides from Nebula в Москве <small>21 декабря 2014</small></h2>
 <div class="row">
   <div class="col-md-7">
     <p lang="ru">На концерте всего было около полутора сотен человек — никогда прежде не был на столь малочисленных шоу.</p>

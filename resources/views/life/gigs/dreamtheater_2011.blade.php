@@ -1,17 +1,8 @@
-@extends('life.gigs.base', [
-  'meta_title' => 'Dream Theater в Москве &middot; 12 июля 2011',
-  'meta_description' => 'Заметки о концерте.',
-  'meta_image' => 'https://life.ivacuum.ru/gigs/dreamtheater.2011.07.12.jpg',
+@extends('life.gigs.base')
 
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Концерты', 'url' => 'life/gigs'],
-    ['title' => 'Dream Theater']
-  ]
-])
+{{-- Крокус Сити Холл --}}
 
 @section('content')
-<h2>Dream Theater в Москве <small>12 июля 2011</small></h2>
 <div class="row">
   <div class="col-md-7">
     <p lang="ru">Что играли:</p>
@@ -39,6 +30,4 @@
     </div>
   </div>
 </div>
-
-@include('life.timeline.dreamtheater')
 @endsection

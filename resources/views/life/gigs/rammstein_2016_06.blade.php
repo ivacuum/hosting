@@ -1,17 +1,6 @@
-@extends('life.gigs.base', [
-  'meta_title' => 'Rammstein в Москве &middot; 19 июня 2016',
-  'meta_description' => 'Заметки о концерте.',
-  'meta_image' => 'https://life.ivacuum.ru/gigs/rammstein.2016.06.19.jpg',
-
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Концерты', 'url' => 'life/gigs'],
-    ['title' => 'Rammstein']
-  ]
-])
+@extends('life.gigs.base')
 
 @section('content')
-<h2>Rammstein в Москве <small>19 июня 2016</small></h2>
 <div class="row">
   <div class="col-md-7">
     <p lang="ru">Возвращение фестиваля Максидром после долгого перерыва.</p>
@@ -52,6 +41,4 @@
 
 <p lang="ru">Звуки взрывов были крайне мощными и громкими. Уже и позабылось как было на прошлых концертах.</p>
 <p lang="ru">Новый свет фантастический. Нужен ракурс видео по центру, чтобы всю задуманную красоту оценить.</p>
-
-@include('life.timeline.rammstein')
 @endsection

@@ -1,17 +1,8 @@
-@extends('life.gigs.base', [
-  'meta_title' => 'Metallica в Санкт-Петербурге &middot; 25 августа 2015',
-  'meta_description' => 'Заметки о концерте.',
-  'meta_image' => 'https://life.ivacuum.ru/gigs/metallica.2015.08.25.jpg',
+@extends('life.gigs.base')
 
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Концерты', 'url' => 'life/gigs'],
-    ['title' => 'Metallica']
-  ]
-])
+{{-- СКК --}}
 
 @section('content')
-<h2>Metallica в Санкт-Петербурге <small>25 августа 2015</small></h2>
 <div class="row">
   <div class="col-md-7">
     <p lang="ru">Вспоминал как была заполнена площадка <a class="link" href="/life/metallica.2008">семь лет назад</a> во время их шоу, боялся повторения тех адовых условий и духоты. По большому счету они повторились, но самому теперь перенести их было гораздо проще — семь лет подготовки на других концертах дали о себе знать.</p>
@@ -58,6 +49,4 @@
 <div class="fotorama" data-width="1000" data-ratio="16/10">
   <a href="https://www.youtube.com/watch?v=-VQMs8zQRj8"></a>
 </div>
-
-@include('life.timeline.metallica')
 @endsection

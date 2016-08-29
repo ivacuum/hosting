@@ -2,6 +2,16 @@
 
 Route::get('/', 'Acp\Home@index');
 
+Route::group(['prefix' => 'artists'], function () {
+    Route::get('/', 'Acp\Artists@index');
+    Route::post('/', 'Acp\Artists@store');
+    Route::get('create', 'Acp\Artists@create');
+    Route::get('{Artist}', 'Acp\Artists@show');
+    Route::put('{Artist}', 'Acp\Artists@update');
+    Route::delete('{Artist}', 'Acp\Artists@destroy');
+    Route::get('{Artist}/edit', 'Acp\Artists@edit');
+});
+
 Route::group(['prefix' => 'cities'], function () {
     Route::get('/', 'Acp\Cities@index');
     Route::post('/', 'Acp\Cities@store');

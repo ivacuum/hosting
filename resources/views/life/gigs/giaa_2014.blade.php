@@ -1,17 +1,8 @@
-@extends('life.gigs.base', [
-  'meta_title' => 'God is an Astronaut в Москве &middot; 23 ноября 2014',
-  'meta_description' => 'Заметки о концерте.',
-  'meta_image' => 'https://life.ivacuum.ru/gigs/giaa.2014.11.23.jpg',
+@extends('life.gigs.base')
 
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Концерты', 'url' => 'life/gigs'],
-    ['title' => 'God is an Astronaut']
-  ]
-])
+{{-- ГлавClub --}}
 
 @section('content')
-<h2>God is an Astronaut в Москве <small>23 ноября 2014</small></h2>
 <div class="row">
   <div class="col-md-7">
     <p lang="ru">Заключительный концерт тура ирландцев. Гитаристы играли на одних и тех же гитарах все шоу, из-за этого чуть ли не каждую песню их перенастраивали — это резало глаз после популярных международных коллективов, где у каждой группы целая команда техников и множество предварительно настроенных инструментов.</p>

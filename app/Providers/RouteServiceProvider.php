@@ -1,6 +1,7 @@
 <?php namespace App\Providers;
 
 use App;
+use App\Artist;
 use App\City;
 use App\Client;
 use App\Country;
@@ -24,6 +25,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         parent::boot();
 
+        Route::model('Artist', Artist::class);
         Route::model('City', City::class);
         Route::model('Client', Client::class);
         Route::model('Country', Country::class);

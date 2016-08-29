@@ -1,17 +1,8 @@
-@extends('life.gigs.base', [
-  'meta_title' => 'Dream Theater в Москве &middot; 28 февраля 2014',
-  'meta_description' => 'Заметки о концерте.',
-  'meta_image' => 'https://life.ivacuum.ru/gigs/dreamtheater.2014.02.28.jpg',
+@extends('life.gigs.base')
 
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Концерты', 'url' => 'life/gigs'],
-    ['title' => 'Dream Theater']
-  ]
-])
+{{-- Stadium Live --}}
 
 @section('content')
-<h2>Dream Theater в Москве <small>28 февраля 2014</small></h2>
 <div class="row">
   <div class="col-md-7">
     <p lang="ru">Впервые побывал на двух концертах группы подряд.</p>
@@ -43,6 +34,4 @@
     </div>
   </div>
 </div>
-
-@include('life.timeline.dreamtheater')
 @endsection

@@ -1,14 +1,4 @@
-@extends('life.gigs.base', [
-  'meta_title' => 'Rammstein в Санкт-Петербурге &middot; 26 февраля 2010',
-  'meta_description' => 'Заметки о концерте.',
-  'meta_image' => 'https://life.ivacuum.ru/gigs/rammstein.2010.02.26.jpg',
-
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Концерты', 'url' => 'life/gigs'],
-    ['title' => 'Rammstein']
-  ]
-])
+@extends('life.gigs.base')
 
 @section('content')
 <h2>Rammstein в Санкт-Петербурге <small>26 февраля 2010</small></h2>
@@ -47,6 +37,4 @@
 <div class="fotorama" data-width="1280" data-ratio="16/10">
   <a href="https://www.youtube.com/watch?v=KbUoLxHqM8M"></a>
 </div>
-
-@include('life.timeline.rammstein')
 @endsection

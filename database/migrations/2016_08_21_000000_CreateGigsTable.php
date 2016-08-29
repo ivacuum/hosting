@@ -10,12 +10,12 @@ class CreateGigsTable extends Migration
         Schema::create('gigs', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('city_id')->default(0);
-            $table->string('title');
+            $table->unsignedInteger('artist_id')->default(0);
+            $table->string('title_ru');
+            $table->string('title_en');
             $table->string('slug');
             $table->string('tpl');
             $table->timestamp('date')->nullable();
-            $table->string('venue_ru');
-            $table->string('venue_en');
             $table->tinyInteger('status')->unsigned()->default(0);
             $table->string('meta_title_ru');
             $table->string('meta_title_en');

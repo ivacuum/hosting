@@ -1,17 +1,8 @@
-@extends('life.gigs.base', [
-  'meta_title' => 'Dream Theater в Москве &middot; 3 июля 2015',
-  'meta_description' => 'Заметки о концерте.',
-  'meta_image' => 'https://life.ivacuum.ru/gigs/dreamtheater.2015.07.03.jpg',
+@extends('life.gigs.base')
 
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Концерты', 'url' => 'life/gigs'],
-    ['title' => 'Dream Theater']
-  ]
-])
+{{-- Ray Just Arena --}}
 
 @section('content')
-<h2>Dream Theater в Москве <small>3 июля 2015</small></h2>
 <div class="row">
   <div class="col-md-7">
     <p lang="ru">Фестиваль музыки в стиле прогрессив метал с хэдлайнерами в лице Дрим Театра. Ограничение по времени фестивальных выступлений коснулось и их — сет был всего на полтора часа, когда <a class="link" href="/life/dreamtheater.2014.spb">годом ранее</a> они играли три.</p>
@@ -52,5 +43,4 @@
 <div class="fotorama" data-width="1280" data-ratio="16/10">
   <a href="https://www.youtube.com/watch?v=w0ZYxUeKsu8"></a>
 </div>
-@include('life.timeline.dreamtheater')
 @endsection

@@ -1,17 +1,8 @@
-@extends('life.gigs.base', [
-  'meta_title' => 'Dream Theater в Москве &middot; 10 июня 2009',
-  'meta_description' => 'Заметки о концерте.',
-  'meta_image' => 'https://life.ivacuum.ru/gigs/dreamtheater.2009.06.10.jpg',
+@extends('life.gigs.base')
 
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Концерты', 'url' => 'life/gigs'],
-    ['title' => 'Dream Theater']
-  ]
-])
+{{-- Дворец спорта Лужники --}}
 
 @section('content')
-<h2>Dream Theater в Москве <small>10 июня 2009</small></h2>
 <div class="row">
   <div class="col-md-7">
     <p lang="ru">Первое выступление группы в России. Билет на шоу купил еще в феврале-марте. Затем выяснилось, что концерт выпал на один день со сложным экзаменом. Последний было решено пропустить и затем пересдать, концерт-то не перенесешь.</p>
@@ -48,6 +39,4 @@
 <div class="fotorama" data-width="1280" data-ratio="16/10">
   <a href="https://www.youtube.com/watch?v=eDqIfvtmalM"></a>
 </div>
-
-@include('life.timeline.dreamtheater')
 @endsection

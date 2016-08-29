@@ -1,17 +1,8 @@
-@extends('life.gigs.base', [
-  'meta_title' => 'Steve Vai в Калуге &middot; 26 мая 2014',
-  'meta_description' => 'Заметки о концерте.',
-  'meta_image' => 'https://life.ivacuum.ru/gigs/vai.2014.05.26.jpg',
+@extends('life.gigs.base')
 
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Концерты', 'url' => 'life/gigs'],
-    ['title' => 'Steve Vai']
-  ]
-])
+{{-- Калужская областная филармония --}}
 
 @section('content')
-<h2>Steve Vai в Калуге <small>26 мая 2014</small></h2>
 <div class="row">
   <div class="col-md-7">
     <p lang="ru">Как попала Калуга в график его гастролей — решительно непонятно:</p>

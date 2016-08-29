@@ -12,11 +12,13 @@ class GigCreate extends Request
     public function rules()
     {
         return [
-            'city_id' => 'required|integer|min:1',
-            'title'   => 'required',
-            'slug'    => 'required|unique:gigs,slug',
-            'tpl'     => 'required',
-            'date'    => 'required|date',
+            'city_id'   => 'required|integer|min:1',
+            'artist_id' => 'required|integer|min:1',
+            'title_ru'  => 'required',
+            'title_en'  => 'required',
+            'slug'      => 'required|unique:gigs,slug',
+            'tpl'       => 'required',
+            'date'      => 'required|date',
         ];
     }
 }

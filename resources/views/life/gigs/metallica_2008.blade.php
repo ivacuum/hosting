@@ -1,17 +1,8 @@
-@extends('life.gigs.base', [
-  'meta_title' => 'Metallica в Санкт-Петербурге &middot; 18 июля 2008',
-  'meta_description' => 'Заметки о концерте.',
-  'meta_image' => 'https://life.ivacuum.ru/gigs/metallica.2008.07.18.jpg',
+@extends('life.gigs.base')
 
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Концерты', 'url' => 'life/gigs'],
-    ['title' => 'Metallica']
-  ]
-])
+{{-- СКК --}}
 
 @section('content')
-<h2>Metallica в Санкт-Петербурге <small>18 июля 2008</small></h2>
 <div class="row">
   <div class="col-md-7">
     <p lang="ru">Что играли:</p>
@@ -51,6 +42,4 @@
   </a>
   <a href="https://www.youtube.com/watch?v=J1pyT7G5dhY"></a>
 </div>
-
-@include('life.timeline.metallica')
 @endsection

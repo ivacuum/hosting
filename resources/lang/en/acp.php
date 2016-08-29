@@ -1,6 +1,12 @@
 <?php
 
 return [
+    'artists.add'    => 'Add artist',
+    'artists.index'  => 'Artists',
+    'artists.create' => 'New artist',
+    'artists.edit'   => 'Edit',
+    'artists.show'   => 'Artist',
+
     'cities.add'    => 'Add city',
     'cities.index'  => 'Cities',
     'cities.create' => 'New city',

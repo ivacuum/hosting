@@ -27,7 +27,7 @@
     <div class="form-select">
       <select class="form-control" name="city_id">
         <option value="0">—</option>
-        @foreach (App\City::orderBy("title_{$locale}")->get(['id', 'title_ru', 'title_en']) as $row)
+        @foreach (App\City::orderBy("title_{$locale}")->get() as $row)
           <option value="{{ $row->id }}" {{ $row->id == old('city_id', @$model->city_id) ? 'selected' : '' }}>
             {{ $row->title }}
           </option>
