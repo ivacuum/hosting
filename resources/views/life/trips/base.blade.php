@@ -6,6 +6,7 @@
 
 @section('content_header')
 @parent
+@include('tpl.city-timeline')
 <h2>
   <span class="emoji">{{ $trip->city->country->emoji }}</span>
   {{ $trip->title }}

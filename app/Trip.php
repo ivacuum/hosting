@@ -59,6 +59,12 @@ class Trip extends Model
         return $this->belongsTo(Country::class);
     }
 
+    public function scopeCityTimeline($query)
+    {
+        return $query->where('city_id', $this->city_id)
+            ->orderBy('date_start', 'asc');
+    }
+
     public function scopeNext($query)
     {
         return $query->where('date_start', '>=', $this->date_start)
