@@ -22,7 +22,7 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        $this->request = $request = request();
+        $this->request = request();
 
         $this->class  = str_replace('App\Http\Controllers\\', '', get_class($this));
         $this->method = $this->getCurrentMethod();

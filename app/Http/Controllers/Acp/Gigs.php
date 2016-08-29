@@ -3,19 +3,9 @@
 use App\Gig as Model;
 use App\Http\Requests\Acp\GigCreate as ModelCreate;
 use App\Http\Requests\Acp\GigEdit as ModelEdit;
-use Breadcrumbs;
 
 class Gigs extends Controller
 {
-    const URL_PREFIX = 'acp/gigs';
-
-    public function __construct()
-    {
-        parent::__construct();
-
-        Breadcrumbs::push(trans("{$this->prefix}.index"), self::URL_PREFIX);
-    }
-
     public function index()
     {
         $models = Model::orderBy('date', 'desc')->get();
@@ -25,8 +15,7 @@ class Gigs extends Controller
 
     public function create()
     {
-        Breadcrumbs::push(trans($this->view));
-
+        $this->breadcrumbs();
         $this->appendTemplates();
 
         return view($this->view);
@@ -44,9 +33,7 @@ class Gigs extends Controller
 
     public function edit(Model $model)
     {
-        Breadcrumbs::push($model->title, self::URL_PREFIX . "/{$model->id}");
-        Breadcrumbs::push(trans($this->view));
-
+        $this->breadcrumbs($model);
         $this->appendTemplates();
 
         return view($this->view, compact('model'));
@@ -54,7 +41,7 @@ class Gigs extends Controller
 
     public function show(Model $model)
     {
-        Breadcrumbs::push($model->title);
+        $this->breadcrumbs($model);
 
         return view($this->view, compact('model'));
     }

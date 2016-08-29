@@ -25,6 +25,8 @@ return [
     'countries.edit'   => 'Редактирование страны',
     'countries.show'   => 'Страна',
 
+    'dev.index' => 'Разработка',
+
     'domains.add'    => 'Добавить домен',
     'domains.index'  => 'Домены',
     'domains.create' => 'Новый домен',

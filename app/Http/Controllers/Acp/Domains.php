@@ -3,290 +3,282 @@
 use App\Domain as Model;
 use App\Http\Requests\Acp\DomainCreate as ModelCreate;
 use App\Http\Requests\Acp\DomainEdit as ModelEdit;
-use Breadcrumbs;
 use Mail;
 
 class Domains extends Controller
 {
-	const DEFAULT_ORDER_BY = 'domain';
-    const URL_PREFIX = 'acp/domains';
+    const DEFAULT_ORDER_BY = 'domain';
 
-    public function __construct()
+    protected $title_attr = 'domain';
+
+    public function index()
     {
-        parent::__construct();
-
-        Breadcrumbs::push(trans("{$this->prefix}.index"), self::URL_PREFIX);
-    }
-
-	public function index()
-	{
         if ($this->request->user()->id !== 1) {
             abort(404);
         }
 
-		$filter = $this->request->input('filter');
-		$sort   = $this->request->input('sort');
-		$q      = $this->request->input('q');
+        $filter = $this->request->input('filter');
+        $sort   = $this->request->input('sort');
+        $q      = $this->request->input('q');
 
-		if (!in_array($sort, ['domain', 'registered_at', 'paid_till'])) {
-			$sort = self::DEFAULT_ORDER_BY;
-		}
+        if (!in_array($sort, ['domain', 'registered_at', 'paid_till'])) {
+            $sort = self::DEFAULT_ORDER_BY;
+        }
 
-		switch ($filter) {
-			case 'external':
+        switch ($filter) {
+            case 'external':
 
-				$models = Model::whereActive(1)
-					->whereDomainControl(0);
+                $models = Model::whereActive(1)
+                    ->whereDomainControl(0);
 
-			break;
-			case 'inactive':
+            break;
+            case 'inactive':
 
-				$models = Model::whereActive(0);
+                $models = Model::whereActive(0);
 
-			break;
-			case 'no-ns':
+            break;
+            case 'no-ns':
 
-				$models = Model::whereActive(1)
-					->whereNs('');
+                $models = Model::whereActive(1)
+                    ->whereNs('');
 
-			break;
-			case 'no-server':
+            break;
+            case 'no-server':
 
-				$models = Model::whereActive(1)
-					->whereIpv4('');
+                $models = Model::whereActive(1)
+                    ->whereIpv4('');
 
-			break;
-			case 'orphan':
+            break;
+            case 'orphan':
 
-				$models = Model::whereOrphan(1);
+                $models = Model::whereOrphan(1);
 
-			break;
-			case 'trashed':
+            break;
+            case 'trashed':
 
-				$models = Model::onlyTrashed();
+                $models = Model::onlyTrashed();
 
-			break;
-			default:
+            break;
+            default:
 
-				$models = Model::whereActive(1);
-		}
+                $models = Model::whereActive(1);
+        }
 
-		if ($q) {
-			$models = $models->where('domain', 'LIKE', "%{$q}%");
-		}
+        if ($q) {
+            $models = $models->where('domain', 'LIKE', "%{$q}%");
+        }
 
-		$models = $models->orderBy($sort)
-			->paginate()
-			->appends(compact('sort', 'filter', 'q'));
+        $models = $models->orderBy($sort)
+            ->paginate()
+            ->appends(compact('sort', 'filter', 'q'));
 
-		$back_url = $this->request->fullUrl();
+        $back_url = $this->request->fullUrl();
 
-		return view($this->view, compact('back_url', 'filter', 'models', 'sort', 'q'));
-	}
+        return view($this->view, compact('back_url', 'filter', 'models', 'sort', 'q'));
+    }
 
-	public function addMailbox(Model $model)
-	{
+    public function addMailbox(Model $model)
+    {
         $logins = $this->request->input('logins');
         $send_to = $this->request->input('send_to');
 
-		$logins = explode(',', $logins);
-		$mailboxes = [];
+        $logins = explode(',', $logins);
+        $mailboxes = [];
 
-		foreach ($logins as $login) {
-			$password = str_random(16);
+        foreach ($logins as $login) {
+            $password = str_random(16);
 
-			if ('ok' === $model->addMailbox($login, $password)) {
-				$mailboxes[] = [
-					'user' => $login,
-					'pass' => $password,
-				];
-			}
-		}
+            if ('ok' === $model->addMailbox($login, $password)) {
+                $mailboxes[] = [
+                    'user' => $login,
+                    'pass' => $password,
+                ];
+            }
+        }
 
-		$vars = compact('domain', 'mailboxes');
+        $vars = compact('domain', 'mailboxes');
 
-		Mail::send('emails.domains.mailboxes', $vars, function ($mail) use ($model, $send_to) {
-			$mail->to($send_to)->subject("Доступ к почте {$model->domain}");
-		});
+        Mail::send('emails.domains.mailboxes', $vars, function ($mail) use ($model, $send_to) {
+            $mail->to($send_to)->subject("Доступ к почте {$model->domain}");
+        });
 
-		$this->request->session()->flash('message', "Данные высланы на почту {$send_to}");
+        $this->request->session()->flash('message', "Данные высланы на почту {$send_to}");
 
-		return redirect()->action("{$this->class}@mailboxes", $model);
-	}
+        return redirect()->action("{$this->class}@mailboxes", $model);
+    }
 
-	public function addNsRecord(Model $model)
-	{
-		return $model->addNsRecord(
+    public function addNsRecord(Model $model)
+    {
+        return $model->addNsRecord(
             $this->request->input('type'),
             $this->request->only('content', 'subdomain', 'priority', 'port', 'weight')
         );
-	}
+    }
 
-	public function batch()
-	{
+    public function batch()
+    {
         $action = $this->request->input('action');
         $ids = $this->request->input('ids');
 
-		$params = [];
+        $params = [];
 
-		switch ($action) {
-			case 'activate':
+        switch ($action) {
+            case 'activate':
 
-				Model::whereIn('id', $ids)->update(['active' => 1]);
+                Model::whereIn('id', $ids)->update(['active' => 1]);
 
-			break;
-			case 'deactivate':
+            break;
+            case 'deactivate':
 
-				Model::whereIn('id', $ids)->update(['active' => 0]);
+                Model::whereIn('id', $ids)->update(['active' => 0]);
 
-			break;
-			case 'delete':
+            break;
+            case 'delete':
 
-				Model::destroy($ids);
+                Model::destroy($ids);
 
-			break;
-			case 'force_delete':
+            break;
+            case 'force_delete':
 
-				$params['filter'] = 'trashed';
+                $params['filter'] = 'trashed';
 
-				Model::whereIn('id', $ids)->onlyTrashed()->forceDelete();
+                Model::whereIn('id', $ids)->onlyTrashed()->forceDelete();
 
-			break;
-			case 'restore':
+            break;
+            case 'restore':
 
-				$params['filter'] = 'trashed';
+                $params['filter'] = 'trashed';
 
-				Model::whereIn('id', $ids)->onlyTrashed()->restore();
+                Model::whereIn('id', $ids)->onlyTrashed()->restore();
 
-			break;
-		}
+            break;
+        }
 
-		return ['redirect' => action("{$this->class}@index", $params)];
-	}
+        return ['redirect' => action("{$this->class}@index", $params)];
+    }
 
-	public function create()
-	{
-        Breadcrumbs::push(trans($this->view));
+    public function create()
+    {
+        $this->breadcrumbs();
 
-		return view($this->view);
-	}
+        return view($this->view);
+    }
 
-	public function deleteNsRecord(Model $model)
-	{
-		$id = $this->request->input('record_id');
+    public function deleteNsRecord(Model $model)
+    {
+        $id = $this->request->input('record_id');
 
-		return $model->deleteNsRecord($id);
-	}
+        return $model->deleteNsRecord($id);
+    }
 
-	public function destroy(Model $model)
-	{
-		$model->delete();
+    public function destroy(Model $model)
+    {
+        $model->delete();
 
         return [
             'status'   => 'OK',
             'redirect' => action("{$this->class}@index"),
         ];
-	}
+    }
 
-	public function edit(Model $model)
-	{
-        Breadcrumbs::push($model->domain, self::URL_PREFIX . "/{$model->getRouteKey()}");
-        Breadcrumbs::push(trans($this->view));
+    public function edit(Model $model)
+    {
+        $this->breadcrumbs($model);
 
-		return view($this->view, compact('model'));
-	}
+        return view($this->view, compact('model'));
+    }
 
-	public function editNsRecord(Model $model)
-	{
-		return $model->editNsRecord(
+    public function editNsRecord(Model $model)
+    {
+        return $model->editNsRecord(
             $this->request->input('record_id'),
             $this->request->input('type'),
             $this->request->only('content', 'subdomain', 'priority', 'port', 'weight', 'retry', 'refresh', 'expire', 'ttl')
         );
-	}
+    }
 
-	public function mailboxes(Model $model)
-	{
-		$mailboxes = $model->getMailboxes();
+    public function mailboxes(Model $model)
+    {
+        $mailboxes = $model->getMailboxes();
 
-		return view($this->view, compact('mailboxes', 'model'));
-	}
+        return view($this->view, compact('mailboxes', 'model'));
+    }
 
-	public function nsRecords(Model $model)
-	{
-		$records = $model->yandex_user_id ? $model->getNsRecords() : [];
+    public function nsRecords(Model $model)
+    {
+        $records = $model->yandex_user_id ? $model->getNsRecords() : [];
 
-		return view($this->view, compact('model', 'records'));
-	}
+        return view($this->view, compact('model', 'records'));
+    }
 
-	public function nsServers(Model $model)
-	{
-		dd($model->getNsServers());
-	}
+    public function nsServers(Model $model)
+    {
+        dd($model->getNsServers());
+    }
 
-	public function robots(Model $model)
-	{
-		$robots = $model->getRobotsTxt();
+    public function robots(Model $model)
+    {
+        $robots = $model->getRobotsTxt();
 
-		return view($this->view, compact('model', 'robots'));
-	}
+        return view($this->view, compact('model', 'robots'));
+    }
 
-	public function setServerNsRecords(Model $model)
-	{
-		$server = $this->request->input('server');
+    public function setServerNsRecords(Model $model)
+    {
+        $server = $this->request->input('server');
 
-		$model->setServerNsRecords($server);
+        $model->setServerNsRecords($server);
 
-		return redirect()->action("{$this->class}@nsRecords", $model);
-	}
+        return redirect()->action("{$this->class}@nsRecords", $model);
+    }
 
-	public function setYandexNs(Model $model)
-	{
-		$status = $model->setYandexNs();
+    public function setYandexNs(Model $model)
+    {
+        $status = $model->setYandexNs();
 
-		$message = 'success' == $status
-			? 'Днс Яндекса установлены'
-			: 'Не удалось установить днс Яндекса';
+        $message = 'success' == $status
+            ? 'Днс Яндекса установлены'
+            : 'Не удалось установить днс Яндекса';
 
-		$this->request->session()->flash('message', $message);
+        $this->request->session()->flash('message', $message);
 
-		return redirect()->action("{$this->class}@show", $model);
-	}
+        return redirect()->action("{$this->class}@show", $model);
+    }
 
-	public function show(Model $model)
-	{
+    public function show(Model $model)
+    {
         if ($this->request->user()->id !== 1) {
             abort(404);
         }
 
-        Breadcrumbs::push($model->domain);
+        $this->breadcrumbs($model);
 
-		return view($this->view, compact('model'));
-	}
+        return view($this->view, compact('model'));
+    }
 
-	public function store(ModelCreate $request)
-	{
-		$model = Model::create($request->all());
+    public function store(ModelCreate $request)
+    {
+        $model = Model::create($request->all());
 
-		return redirect()->action("{$this->class}@show", $model);
-	}
+        return redirect()->action("{$this->class}@show", $model);
+    }
 
-	public function update(Model $model, ModelEdit $request)
-	{
-		$input = $request->all();
+    public function update(Model $model, ModelEdit $request)
+    {
+        $input = $request->all();
 
-		/* Сохранение ранее указанных паролей */
-		$passwords = $request->only('cms_pass', 'ftp_pass', 'ssh_pass', 'db_pass');
+        /* Сохранение ранее указанных паролей */
+        $passwords = $request->only('cms_pass', 'ftp_pass', 'ssh_pass', 'db_pass');
 
-		foreach ($passwords as $key => $value) {
-			if (!$value) {
-				unset($input[$key]);
-			}
-		}
+        foreach ($passwords as $key => $value) {
+            if (!$value) {
+                unset($input[$key]);
+            }
+        }
 
-		$model->update($input);
+        $model->update($input);
 
-		$goto = $request->input('goto', '');
+        $goto = $request->input('goto', '');
 
         if ($request->exists('_save')) {
             return $goto
@@ -295,19 +287,19 @@ class Domains extends Controller
         }
 
         return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
-	}
+    }
 
-	public function whois(Model $model)
-	{
-		$model->updateWhois();
+    public function whois(Model $model)
+    {
+        $model->updateWhois();
 
-		$whois = nl2br(trim($model->getWhoisData()));
+        $whois = nl2br(trim($model->getWhoisData()));
 
-		return view($this->view, compact('model', 'whois'));
-	}
+        return view($this->view, compact('model', 'whois'));
+    }
 
-	public function yandexPddStatus(Model $model)
-	{
-		dd($model->getPddStatus());
-	}
+    public function yandexPddStatus(Model $model)
+    {
+        dd($model->getPddStatus());
+    }
 }

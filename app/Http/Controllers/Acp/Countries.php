@@ -4,19 +4,9 @@ use App;
 use App\Country as Model;
 use App\Http\Requests\Acp\CountryCreate as ModelCreate;
 use App\Http\Requests\Acp\CountryEdit as ModelEdit;
-use Breadcrumbs;
 
 class Countries extends Controller
 {
-    const URL_PREFIX = 'acp/countries';
-
-    public function __construct()
-    {
-        parent::__construct();
-
-        Breadcrumbs::push(trans("{$this->prefix}.index"), self::URL_PREFIX);
-    }
-
     public function index()
     {
         $locale = App::getLocale();
@@ -27,7 +17,7 @@ class Countries extends Controller
 
     public function create()
     {
-        Breadcrumbs::push(trans($this->view));
+        $this->breadcrumbs();
 
         return view($this->view);
     }
@@ -44,15 +34,14 @@ class Countries extends Controller
 
     public function edit(Model $model)
     {
-        Breadcrumbs::push($model->title, self::URL_PREFIX . "/{$model->id}");
-        Breadcrumbs::push(trans($this->view));
+        $this->breadcrumbs($model);
 
         return view($this->view, compact('model'));
     }
 
     public function show(Model $model)
     {
-        Breadcrumbs::push($model->title);
+        $this->breadcrumbs($model);
 
         return view($this->view, compact('model'));
     }

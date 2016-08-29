@@ -1,120 +1,138 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Http\Requests\Acp\PageCreate;
-use App\Http\Requests\Acp\PageEdit;
-use App\Page;
+use App\Http\Requests\Acp\PageCreate as ModelCreate;
+use App\Http\Requests\Acp\PageEdit as ModelEdit;
+use App\Page as Model;
 
 class Pages extends Controller
 {
-	public function index()
-	{
-		return view($this->view);
-	}
+    public function index()
+    {
+        return view($this->view);
+    }
 
-	public function batch()
-	{
-		extract($this->request->only('action', 'pages'));
+    public function batch()
+    {
+        $action = $this->request->input('action');
+        $pages  = $this->request->input('pages');
 
-		switch ($action) {
-			case 'activate':
+        switch ($action) {
+            case 'activate':
 
-				Page::whereIn('id', $pages)->update(['active' => 1]);
+                Model::whereIn('id', $pages)->update(['active' => 1]);
 
-			break;
-			case 'deactivate':
+            break;
+            case 'deactivate':
 
-				Page::whereIn('id', $pages)->update(['active' => 0]);
+                Model::whereIn('id', $pages)->update(['active' => 0]);
 
-			break;
-			case 'delete':
+            break;
+            case 'delete':
 
-				Page::destroy($pages);
+                Model::destroy($pages);
 
-			break;
-		}
+            break;
+        }
 
-		return 'ok';
-	}
+        return 'ok';
+    }
 
-	public function create()
-	{
-		return view($this->view);
-	}
+    public function create()
+    {
+        $this->breadcrumbs();
 
-	public function destroy(Page $page)
-	{
-		$page->delete();
+        return view($this->view);
+    }
 
-		return redirect()->action("{$this->class}@index");
-	}
+    public function destroy(Model $model)
+    {
+        $model->delete();
 
-	public function edit(Page $page)
-	{
-		return view($this->view, compact('page'));
-	}
+        return [
+            'status'   => 'OK',
+            'redirect' => action("{$this->class}@index"),
+        ];
+    }
 
-	public function move()
-	{
-		extract($this->request->only('what', 'how', 'where'));
+    public function edit(Model $model)
+    {
+        $this->breadcrumbs($model);
 
-		switch ($how) {
-			case 'before': $method = 'moveToLeftOf'; break;
-			case 'after':  $method = 'moveToRightOf'; break;
-			case 'over':   $method = 'makeChildOf'; break;
-			default: die('something very strange');
-		}
+        return view($this->view, compact('model'));
+    }
 
-		Page::find($what)->$method($where);
+    public function move()
+    {
+        $what  = $this->request->input('what');
+        $how   = $this->request->input('how');
+        $where = $this->request->input('where');
 
-		return 'ok';
-	}
+        switch ($how) {
+            case 'before': $method = 'moveToLeftOf'; break;
+            case 'after':  $method = 'moveToRightOf'; break;
+            case 'over':   $method = 'makeChildOf'; break;
+            default: die('something very strange');
+        }
 
-	public function show(Page $page)
-	{
-		return view($this->view, compact('page'));
-	}
+        Model::find($what)->$method($where);
 
-	public function store(PageCreate $request)
-	{
-		$page = Page::create($request->all());
+        return 'ok';
+    }
 
-		return redirect()->action("{$this->class}@show", $page);
-	}
+    public function show(Model $model)
+    {
+        $this->breadcrumbs($model);
 
-	public function tree()
-	{
-		return $this->getHierarchy(Page::get()->toHierarchy()->toArray());
-	}
+        return view($this->view, compact('model'));
+    }
 
-	public function update(Page $page, PageEdit $request)
-	{
-		$page->update($request->all());
+    public function store(ModelCreate $request)
+    {
+        $model = Model::create($request->all());
 
-		$goto = $request->input('goto', '');
+        return redirect()->action("{$this->class}@show", $model);
+    }
 
-		return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
-	}
+    public function tree()
+    {
+        return $this->getHierarchy(Model::get()->toHierarchy()->toArray());
+    }
 
-	protected function getHierarchy($pages)
-	{
-		$ary = [];
+    public function update(Model $model, ModelEdit $request)
+    {
+        $model->update($request->all());
 
-		foreach ($pages as $page) {
-			$ary[] = [
-				'key'       => $page['id'],
-				'expanded'  => true,
-				'activated' => $page['active'],
-				'title'     => $page['title'],
-				'url'       => "/{$page['url']}",
-				'handler'   => $page['handler'] && $page['method'] ? "{$page['handler']}@{$page['method']}" : '',
-				'redirect'  => $page['redirect'],
-				'noindex'   => $page['noindex'],
-				'edit_url'  => "/acp/pages/{$page['id']}/edit",
-				'show_url'  => "/acp/pages/{$page['id']}",
-				'children'  => sizeof($page['children']) ? $this->getHierarchy($page['children']) : [],
-			];
-		}
+        $goto = $request->input('goto', '');
 
-		return $ary;
-	}
+        if ($request->exists('_save')) {
+            return $goto
+                ? redirect()->action("{$this->class}@edit", [$model, 'goto' => $goto])
+                : redirect()->action("{$this->class}@edit", $model);
+        }
+
+        return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
+    }
+
+    protected function getHierarchy($pages)
+    {
+        $ary = [];
+
+        foreach ($pages as $page) {
+            $ary[] = [
+                'key'       => $page['id'],
+                'expanded'  => true,
+                'activated' => $page['active'],
+                'title'     => $page['title'],
+                'url'       => "/{$page['url']}",
+                'handler'   => $page['handler'] && $page['method'] ? "{$page['handler']}@{$page['method']}" : '',
+                'redirect'  => $page['redirect'],
+                'noindex'   => $page['noindex'],
+                'edit_url'  => "/acp/pages/{$page['id']}/edit",
+                'show_url'  => "/acp/pages/{$page['id']}",
+                'children'  => sizeof($page['children']) ? $this->getHierarchy($page['children']) : [],
+            ];
+        }
+
+        return $ary;
+    }
 }

@@ -5,18 +5,10 @@ use App\Http\Controllers\Acp\Controller;
 use App\Http\Requests\Acp\YandexUserCreate as ModelCreate;
 use App\Http\Requests\Acp\YandexUserEdit as ModelEdit;
 use App\YandexUser as Model;
-use Breadcrumbs;
 
 class Users extends Controller
 {
-    const URL_PREFIX = 'acp/yandex/users';
-
-    public function __construct()
-    {
-        parent::__construct();
-
-        Breadcrumbs::push(trans("{$this->prefix}.index"), self::URL_PREFIX);
-    }
+    protected $title_attr = 'account';
 
     public function index()
     {
@@ -27,7 +19,7 @@ class Users extends Controller
 
     public function create()
     {
-        Breadcrumbs::push(trans($this->view));
+        $this->breadcrumbs();
 
         $domains = Domain::yandexReady()->get();
 
@@ -46,8 +38,7 @@ class Users extends Controller
 
     public function edit(Model $model)
     {
-        Breadcrumbs::push($model->account, self::URL_PREFIX . "/{$model->id}");
-        Breadcrumbs::push(trans($this->view));
+        $this->breadcrumbs($model);
 
         $domains = Domain::yandexReady($model->id)->get();
 
@@ -56,7 +47,7 @@ class Users extends Controller
 
     public function show(Model $model)
     {
-        Breadcrumbs::push($model->account);
+        $this->breadcrumbs($model);
 
         $filter = '';
         $q = $this->request->input('q');

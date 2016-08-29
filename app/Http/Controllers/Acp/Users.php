@@ -3,20 +3,11 @@
 use App\Http\Requests\Acp\UserCreate as ModelCreate;
 use App\Http\Requests\Acp\UserEdit as ModelEdit;
 use App\User as Model;
-use Breadcrumbs;
 use Mail;
-use Session;
 
 class Users extends Controller
 {
-    const URL_PREFIX = 'acp/users';
-
-    public function __construct()
-    {
-        parent::__construct();
-
-        Breadcrumbs::push(trans("{$this->prefix}.index"), self::URL_PREFIX);
-    }
+    protected $title_attr = 'email';
 
     public function index()
     {
@@ -27,7 +18,7 @@ class Users extends Controller
 
     public function create()
     {
-        Breadcrumbs::push(trans($this->view));
+        $this->breadcrumbs();
 
         return view($this->view);
     }
@@ -44,15 +35,14 @@ class Users extends Controller
 
     public function edit(Model $model)
     {
-        Breadcrumbs::push($model->email, self::URL_PREFIX . "/{$model->id}");
-        Breadcrumbs::push(trans($this->view));
+        $this->breadcrumbs($model);
 
         return view($this->view, compact('model'));
     }
 
     public function show(Model $model)
     {
-        Breadcrumbs::push($model->email);
+        $this->breadcrumbs($model);
 
         return view($this->view, compact('model'));
     }
@@ -107,15 +97,15 @@ class Users extends Controller
         return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
     }
 
-	protected function mailCredentials(Model $model, $password)
-	{
-		$route = action('Acp\Home@index');
-		$vars  = compact('user', 'password', 'route');
+    protected function mailCredentials(Model $model, $password)
+    {
+        $route = action('Acp\Home@index');
+        $vars  = compact('user', 'password', 'route');
 
-		Mail::send('emails.users.credentials', $vars, function ($mail) use ($model, $route) {
-			$mail->to($model->email)->subject("Доступ к {$route}");
-		});
+        Mail::send('emails.users.credentials', $vars, function ($mail) use ($model, $route) {
+            $mail->to($model->email)->subject("Доступ к {$route}");
+        });
 
-		Session::flash('message', "Данные высланы на почту {$model->email}");
-	}
+        $this->request->session()->flash('message', "Данные высланы на почту {$model->email}");
+    }
 }

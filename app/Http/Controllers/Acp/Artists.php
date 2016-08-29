@@ -3,18 +3,10 @@
 use App\Artist as Model;
 use App\Http\Requests\Acp\ArtistCreate as ModelCreate;
 use App\Http\Requests\Acp\ArtistEdit as ModelEdit;
-use Breadcrumbs;
 
 class Artists extends Controller
 {
-    const URL_PREFIX = 'acp/artists';
-
-    public function __construct()
-    {
-        parent::__construct();
-
-        Breadcrumbs::push(trans("{$this->prefix}.index"), self::URL_PREFIX);
-    }
+    protected $breadcrumbs_prefix = 'acp/artists';
 
     public function index()
     {
@@ -25,7 +17,7 @@ class Artists extends Controller
 
     public function create()
     {
-        Breadcrumbs::push(trans($this->view));
+        $this->breadcrumbs();
 
         return view($this->view);
     }
@@ -42,15 +34,14 @@ class Artists extends Controller
 
     public function edit(Model $model)
     {
-        Breadcrumbs::push($model->title, self::URL_PREFIX . "/{$model->id}");
-        Breadcrumbs::push(trans($this->view));
+        $this->breadcrumbs($model);
 
         return view($this->view, compact('model'));
     }
 
     public function show(Model $model)
     {
-        Breadcrumbs::push($model->title);
+        $this->breadcrumbs($model);
 
         return view($this->view, compact('model'));
     }

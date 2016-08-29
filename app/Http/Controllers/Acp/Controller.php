@@ -1,14 +1,69 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use Breadcrumbs;
 use App\Http\Controllers\Controller as BaseController;
+use Breadcrumbs;
+use Illuminate\Database\Eloquent\Model;
 
 abstract class Controller extends BaseController
 {
+    /**
+     * Префикс ссылок для цепочки навигации
+     *
+     * @var string
+     */
+    protected $breadcrumbs_prefix;
+
+    /**
+     * Параметр-заголовок для цепочки навигации
+     *
+     * @var string
+     */
+    protected $title_attr = 'title';
+
     public function __construct()
     {
         parent::__construct();
 
-        Breadcrumbs::push(trans('menu.acp'), 'acp');
+        $this->breadcrumbs_prefix = str_replace('.', '/', $this->prefix);
+
+        /* Наполнение цепочки навигации существующими переводами */
+        array_reduce(explode('.', $this->prefix), function ($url, $part) {
+            $url[] = $part;
+
+            $prefix = implode('.', $url);
+            $index = "{$prefix}.index";
+
+            if ($index !== $trans = trans($index)) {
+                Breadcrumbs::push($trans, implode('/', $url));
+            }
+
+            return $url;
+        });
+    }
+
+    protected function breadcrumbs(Model $model = null)
+    {
+        switch ($this->method) {
+            case 'create':
+
+                Breadcrumbs::push(trans($this->view));
+
+            break;
+            case 'edit':
+
+                Breadcrumbs::push(
+                    $model->{$this->title_attr},
+                    "{$this->breadcrumbs_prefix}/{$model->getRouteKey()}"
+                );
+
+                Breadcrumbs::push(trans($this->view));
+
+            break;
+            case 'show':
+
+                Breadcrumbs::push($model->{$this->title_attr});
+
+            break;
+        }
     }
 }

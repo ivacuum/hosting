@@ -25,6 +25,8 @@ return [
     'countries.edit'   => 'Edit',
     'countries.show'   => 'Country',
 
+    'dev.index' => 'Dev',
+
     'domains.add'    => 'Add domain',
     'domains.index'  => 'Domains',
     'domains.create' => 'New domain',
