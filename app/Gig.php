@@ -71,12 +71,6 @@ class Gig extends Model
             ->take($take);
     }
 
-    public function scopeTimeline($query)
-    {
-        return $query->where('artist_id', $this->artist_id)
-            ->orderBy('date', 'asc');
-    }
-
     public function getMetaDescriptionAttribute()
     {
         return $this->{'meta_description_' . App::getLocale()};
@@ -95,6 +89,14 @@ class Gig extends Model
     public function getMetaTitle()
     {
         return $this->meta_title ?: "{$this->title} &middot; {$this->fullDate()}";
+    }
+
+    public function artistTimeline()
+    {
+        return $this->where('artist_id', $this->artist_id)
+            ->orderBy('date', 'asc')
+            ->get()
+            ->groupBy('date.year');
     }
 
     public function fullDate()

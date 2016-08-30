@@ -78,7 +78,7 @@ class Life extends Controller
         Breadcrumbs::push(trans('menu.gigs'), 'life/gigs');
         Breadcrumbs::push($gig->title);
 
-        $timeline = $gig->timeline()->get();
+        $timeline = $gig->artistTimeline();
 
         return view($tpl, compact('gig', 'timeline'));
     }
@@ -131,7 +131,7 @@ class Life extends Controller
         Breadcrumbs::push($trip->city->title, "life/{$trip->city->slug}");
         Breadcrumbs::push($trip->getLocalizedDate(), "life/{$trip->slug}");
 
-        $timeline = $trip->cityTimeline()->get();
+        $timeline = $trip->cityTimeline();
 
         $next_trips = $trip->next()->get();
         $previous_trips = $trip->previous($next_trips->count())->get()->reverse();

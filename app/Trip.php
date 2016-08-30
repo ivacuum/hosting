@@ -59,12 +59,6 @@ class Trip extends Model
         return $this->belongsTo(Country::class);
     }
 
-    public function scopeCityTimeline($query)
-    {
-        return $query->where('city_id', $this->city_id)
-            ->orderBy('date_start', 'asc');
-    }
-
     public function scopeNext($query)
     {
         return $query->where('date_start', '>=', $this->date_start)
@@ -116,6 +110,14 @@ class Trip extends Model
     public function getYearAttribute()
     {
         return $this->date_start->year;
+    }
+
+    public function cityTimeline()
+    {
+        return $this->where('city_id', $this->city_id)
+            ->orderBy('date_start', 'asc')
+            ->get()
+            ->groupBy('year');
     }
 
     public function getLocalizedDate()

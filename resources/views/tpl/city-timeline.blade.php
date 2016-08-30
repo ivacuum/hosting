@@ -1,12 +1,9 @@
 @if (sizeof($timeline) > 1)
   <div class="city-timeline clearfix">
-    @php ($year = false)
-    @foreach ($timeline as $row)
-      @if ($year !== $row->year)
-        {!! !$loop->first ? '</ul>' : '' !!}
-        <ul class="city-timeline-column">
-          <li class="city-timeline-year">{{ $row->year }}</li>
-          @endif
+    @foreach ($timeline as $year => $rows)
+      <ul class="city-timeline-column">
+        <li class="city-timeline-year">{{ $year }}</li>
+        @foreach ($rows as $row)
           <li class="city-timeline-trip">
             @if ($row->id === $trip->id)
               <mark>{{ $row->period }}</mark>
@@ -16,10 +13,8 @@
               {{ $row->period }}
             @endif
           </li>
-          @if ($loop->last)
-        </ul>
-      @endif
-      @php ($year = $row->year)
+        @endforeach
+      </ul>
     @endforeach
   </div>
 @endif
