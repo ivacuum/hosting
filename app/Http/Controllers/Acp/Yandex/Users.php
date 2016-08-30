@@ -109,14 +109,6 @@ class Users extends Controller
                 ->update(['yandex_user_id' => $model->id]);
         }
 
-        $goto = $request->input('goto', '');
-
-        if ($request->exists('_save')) {
-            return $goto
-                ? redirect()->action("{$this->class}@edit", [$model, 'goto' => $goto])
-                : redirect()->action("{$this->class}@edit", $model);
-        }
-
-        return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
+        return $this->redirectAfterUpdate($model);
     }
 }

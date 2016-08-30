@@ -51,14 +51,6 @@ class Countries extends Controller
     {
         $model->update($request->all());
 
-        $goto = $request->input('goto', '');
-
-        if ($request->exists('_save')) {
-            return $goto
-                ? redirect()->action("{$this->class}@edit", [$model, 'goto' => $goto])
-                : redirect()->action("{$this->class}@edit", $model);
-        }
-
-        return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
+        return $this->redirectAfterUpdate($model);
     }
 }

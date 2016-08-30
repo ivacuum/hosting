@@ -71,4 +71,17 @@ abstract class Controller extends BaseController
     {
         Breadcrumbs::push($model->{$this->title_attr});
     }
+
+    protected function redirectAfterUpdate(Model $model, $method = 'index')
+    {
+        $goto = $this->request->input('goto', '');
+
+        if ($this->request->exists('_save')) {
+            return $goto
+                ? redirect()->action("{$this->class}@edit", [$model, 'goto' => $goto])
+                : redirect()->action("{$this->class}@edit", $model);
+        }
+
+        return $goto ? redirect($goto) : redirect()->action("{$this->class}@{$method}");
+    }
 }

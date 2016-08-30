@@ -6,8 +6,6 @@ use App\Http\Requests\Acp\ArtistEdit as ModelEdit;
 
 class Artists extends Controller
 {
-    protected $breadcrumbs_prefix = 'acp/artists';
-
     public function index()
     {
         $models = Model::orderBy('title', 'asc')->get();
@@ -51,14 +49,6 @@ class Artists extends Controller
     {
         $model->update($request->all());
 
-        $goto = $request->input('goto', '');
-
-        if ($request->exists('_save')) {
-            return $goto
-                ? redirect()->action("{$this->class}@edit", [$model, 'goto' => $goto])
-                : redirect()->action("{$this->class}@edit", $model);
-        }
-
-        return $goto ? redirect($goto) : redirect()->action("{$this->class}@index");
+        return $this->redirectAfterUpdate($model);
     }
 }
