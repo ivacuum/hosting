@@ -11,8 +11,11 @@ echo "==> Ant php linting..."
 ant
 
 echo "==> Installing front-end dependencies..."
+echo "==> bower..."
 bower install
+echo "==> npm..."
 npm install
+echo "==> gulp..."
 gulp --production
 
 # composer global require "hirak/prestissimo:^0.3"
