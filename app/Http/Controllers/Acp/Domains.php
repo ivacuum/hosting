@@ -159,8 +159,6 @@ class Domains extends Controller
 
     public function create()
     {
-        $this->breadcrumbs();
-
         return view($this->view);
     }
 
@@ -183,8 +181,6 @@ class Domains extends Controller
 
     public function edit(Model $model)
     {
-        $this->breadcrumbs($model);
-
         return view($this->view, compact('model'));
     }
 
@@ -250,8 +246,6 @@ class Domains extends Controller
         if ($this->request->user()->id !== 1) {
             abort(404);
         }
-
-        $this->breadcrumbs($model);
 
         return view($this->view, compact('model'));
     }

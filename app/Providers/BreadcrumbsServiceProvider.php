@@ -8,7 +8,7 @@ class BreadcrumbsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app['breadcrumbs'] = $this->app->share(function ($app) {
-            return new Breadcrumbs($app['router']);
+            return new Breadcrumbs();
         });
 
         $this->app->alias('breadcrumbs', 'App\Breadcrumbs\Breadcrumbs');

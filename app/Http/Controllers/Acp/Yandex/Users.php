@@ -19,8 +19,6 @@ class Users extends Controller
 
     public function create()
     {
-        $this->breadcrumbs();
-
         $domains = Domain::yandexReady()->get();
 
         return view($this->view, compact('domains'));
@@ -38,8 +36,6 @@ class Users extends Controller
 
     public function edit(Model $model)
     {
-        $this->breadcrumbs($model);
-
         $domains = Domain::yandexReady($model->id)->get();
 
         return view($this->view, compact('domains', 'model'));
@@ -47,8 +43,6 @@ class Users extends Controller
 
     public function show(Model $model)
     {
-        $this->breadcrumbs($model);
-
         $filter = '';
         $q = $this->request->input('q');
 

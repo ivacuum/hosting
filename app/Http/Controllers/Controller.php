@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers;
 
 use App;
-use Breadcrumbs;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -34,9 +33,11 @@ class Controller extends BaseController
 
     public function callAction($method, $parameters)
     {
-        Breadcrumbs::parseRoutes();
+        if (method_exists($this, 'alwaysCallBefore')) {
+            call_user_func_array([$this, 'alwaysCallBefore'], $parameters);
+        }
 
-        return call_user_func_array([$this, $method], $parameters);
+        return parent::callAction($method, $parameters);
     }
 
     protected function appendViewSharedVars()

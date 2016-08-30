@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller as BaseController;
 use Breadcrumbs;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 abstract class Controller extends BaseController
 {
@@ -41,29 +42,33 @@ abstract class Controller extends BaseController
         });
     }
 
-    protected function breadcrumbs(Model $model = null)
+    protected function alwaysCallBefore(...$parameters)
     {
-        switch ($this->method) {
-            case 'create':
+        /* Сборка цепочки навигации */
+        $method = 'breadcrumbs' . Str::ucfirst($this->method);
 
-                Breadcrumbs::push(trans($this->view));
-
-            break;
-            case 'edit':
-
-                Breadcrumbs::push(
-                    $model->{$this->title_attr},
-                    "{$this->breadcrumbs_prefix}/{$model->getRouteKey()}"
-                );
-
-                Breadcrumbs::push(trans($this->view));
-
-            break;
-            case 'show':
-
-                Breadcrumbs::push($model->{$this->title_attr});
-
-            break;
+        if (method_exists($this, $method)) {
+            call_user_func_array([$this, $method], $parameters);
         }
+    }
+
+    protected function breadcrumbsCreate()
+    {
+        Breadcrumbs::push(trans($this->view));
+    }
+
+    protected function breadcrumbsEdit(Model $model)
+    {
+        Breadcrumbs::push(
+            $model->{$this->title_attr},
+            "{$this->breadcrumbs_prefix}/{$model->getRouteKey()}"
+        );
+
+        Breadcrumbs::push(trans($this->view));
+    }
+
+    protected function breadcrumbsShow(Model $model)
+    {
+        Breadcrumbs::push($model->{$this->title_attr});
     }
 }

@@ -15,7 +15,6 @@ class Trips extends Controller
 
     public function create()
     {
-        $this->breadcrumbs();
         $this->appendTemplates();
 
         return view($this->view);
@@ -33,7 +32,6 @@ class Trips extends Controller
 
     public function edit(Model $model)
     {
-        $this->breadcrumbs($model);
         $this->appendTemplates();
 
         return view($this->view, compact('model'));
@@ -41,8 +39,6 @@ class Trips extends Controller
 
     public function show(Model $model)
     {
-        $this->breadcrumbs($model);
-
         return view($this->view, compact('model'));
     }
 

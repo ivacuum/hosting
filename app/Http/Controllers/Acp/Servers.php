@@ -15,8 +15,6 @@ class Servers extends Controller
 
     public function create()
     {
-        $this->breadcrumbs();
-
         return view($this->view);
     }
 
@@ -32,15 +30,11 @@ class Servers extends Controller
 
     public function edit(Model $model)
     {
-        $this->breadcrumbs($model);
-
         return view($this->view, compact('model'));
     }
 
     public function show(Model $model)
     {
-        $this->breadcrumbs($model);
-
         return view($this->view, compact('model'));
     }
 
