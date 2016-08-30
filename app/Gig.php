@@ -47,30 +47,6 @@ class Gig extends Model
         return $this->belongsTo(City::class);
     }
 
-    public function scopeNext($query)
-    {
-        return $query->where('date', '>=', $this->date)
-            ->where('status', self::STATUS_PUBLISHED)
-            ->where('id', '<>', $this->id)
-            ->orderBy('date', 'asc')
-            ->take(2);
-    }
-
-    public function scopePrevious($query, $next_gigs = 2)
-    {
-        // Всего 4 места под ссылки помимо текущего концерта
-        // prev prev current next next
-        // При просмотре последнего концерта будет
-        // prev prev prev prev current
-        $take = 4 - $next_gigs;
-
-        return $query->where('date', '<=', $this->date)
-            ->where('status', self::STATUS_PUBLISHED)
-            ->where('id', '<>', $this->id)
-            ->orderBy('date', 'desc')
-            ->take($take);
-    }
-
     public function getMetaDescriptionAttribute()
     {
         return $this->{'meta_description_' . App::getLocale()};
