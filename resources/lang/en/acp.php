@@ -27,11 +27,15 @@ return [
 
     'dev.index' => 'Dev',
 
-    'domains.add'    => 'Add domain',
-    'domains.index'  => 'Domains',
-    'domains.create' => 'New domain',
-    'domains.edit'   => 'Edit',
-    'domains.show'   => 'Domain',
+    'domains.add'        => 'Add domain',
+    'domains.index'      => 'Domains',
+    'domains.create'     => 'New domain',
+    'domains.edit'       => 'Edit',
+    'domains.show'       => 'Domain',
+    'domains.mailboxes'  => 'Yandex Mail',
+    'domains.ns_records' => 'Yandex DNS',
+    'domains.robots'     => 'robots.txt',
+    'domains.whois'      => 'Whois',
 
     'gigs.add'    => 'Add gig',
     'gigs.index'  => 'Gigs',

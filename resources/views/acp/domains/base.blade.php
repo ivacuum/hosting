@@ -11,18 +11,18 @@
         {{ trans("$tpl.edit") }}
       </a>
       <a class="list-group-item {{ $view == "$tpl.whois" ? 'active' : '' }}" href="{{ action("$self@whois", $model) }}">
-        Whois
+        {{ trans("$tpl.whois") }}
       </a>
       @if ($model->yandex_user_id)
         <a class="list-group-item {{ $view == "$tpl.mailboxes" ? 'active' : '' }}" href="{{ action("$self@mailboxes", $model) }}">
-          Яндекс-Почта
+          {{ trans("$tpl.mailboxes") }}
         </a>
         <a class="list-group-item {{ $view == "$tpl.ns_records" ? 'active' : '' }}" href="{{ action("$self@nsRecords", $model) }}">
-          Яндекс-DNS
+          {{ trans("$tpl.ns_records") }}
         </a>
       @endif
       <a class="list-group-item {{ $view == "$tpl.robots" ? 'active' : '' }}" href="{{ action("$self@robots", $model) }}">
-        robots.txt
+        {{ trans("$tpl.robots") }}
       </a>
     </div>
   </div>

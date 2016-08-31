@@ -285,4 +285,24 @@ class Domains extends Controller
     {
         dd($model->getPddStatus());
     }
+
+    protected function breadcrumbsMailboxes(Model $model)
+    {
+        $this->breadcrumbsEdit($model);
+    }
+
+    protected function breadcrumbsNsRecords(Model $model)
+    {
+        $this->breadcrumbsEdit($model);
+    }
+
+    protected function breadcrumbsRobots(Model $model)
+    {
+        $this->breadcrumbsEdit($model);
+    }
+
+    protected function breadcrumbsWhois(Model $model)
+    {
+        $this->breadcrumbsEdit($model);
+    }
 }

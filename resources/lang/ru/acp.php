@@ -27,11 +27,15 @@ return [
 
     'dev.index' => 'Разработка',
 
-    'domains.add'    => 'Добавить домен',
-    'domains.index'  => 'Домены',
-    'domains.create' => 'Новый домен',
-    'domains.edit'   => 'Редактирование домена',
-    'domains.show'   => 'Домен',
+    'domains.add'        => 'Добавить домен',
+    'domains.index'      => 'Домены',
+    'domains.create'     => 'Новый домен',
+    'domains.edit'       => 'Редактирование домена',
+    'domains.show'       => 'Домен',
+    'domains.mailboxes'  => 'Яндекс-почта',
+    'domains.ns_records' => 'Яндекс-DNS',
+    'domains.robots'     => 'robots.txt',
+    'domains.whois'      => 'Whois',
 
     'gigs.add'    => 'Добавить концерт',
     'gigs.index'  => 'Концерты',
