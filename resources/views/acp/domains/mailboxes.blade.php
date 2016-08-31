@@ -65,9 +65,9 @@
     @endforeach
   </ul>
   <p>
-    <span class="label label-success"> &nbsp; </span> &nbsp;— активен &nbsp;
-    <span class="label label-warning"> &nbsp; </span> &nbsp;— неактивен &nbsp;
-    <span class="label label-danger"> &nbsp; </span> &nbsp;— отключен
+    <span class="label label-success"> &nbsp; </span> &nbsp; активен &nbsp;
+    <span class="label label-warning"> &nbsp; </span> &nbsp; неактивен &nbsp;
+    <span class="label label-danger"> &nbsp; </span> &nbsp; отключен
   </p>
 @endif
 @endsection

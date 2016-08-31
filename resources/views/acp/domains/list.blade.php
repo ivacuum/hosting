@@ -101,10 +101,10 @@
 <div class="clearfix"></div>
 
 <p>
-  <span class="label label-default">...</span> &nbsp;— есть заметки &nbsp;
-  <span class="label label-info">?</span> &nbsp;— не в нашей панели &nbsp;
-  <span class="label label-danger">$</span> &nbsp;— просрочена оплата &nbsp;
-  <span class="label label-warning">$</span> &nbsp;— подходит срок оплаты
+  <span class="label label-default">...</span> &nbsp;есть заметки &nbsp;
+  <span class="label label-info">?</span> &nbsp;не в нашей панели &nbsp;
+  <span class="label label-danger">$</span> &nbsp;просрочена оплата &nbsp;
+  <span class="label label-warning">$</span> &nbsp;подходит срок оплаты
 </p>
 @else
   <div class="alert alert-warning">
