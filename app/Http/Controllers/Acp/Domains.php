@@ -3,6 +3,7 @@
 use App\Domain as Model;
 use App\Http\Requests\Acp\DomainCreate as ModelCreate;
 use App\Http\Requests\Acp\DomainEdit as ModelEdit;
+use App\Mail\DomainMailboxes;
 use Mail;
 
 class Domains extends Controller
@@ -96,11 +97,7 @@ class Domains extends Controller
             }
         }
 
-        $vars = compact('domain', 'mailboxes');
-
-        Mail::send('emails.domains.mailboxes', $vars, function ($mail) use ($model, $send_to) {
-            $mail->to($send_to)->subject("Доступ к почте {$model->domain}");
-        });
+        Mail::to($send_to)->send(new DomainMailboxes($model, $mailboxes));
 
         $this->request->session()->flash('message', "Данные высланы на почту {$send_to}");
 
