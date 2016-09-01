@@ -29,8 +29,10 @@ class Life extends Controller
 
     public function city(City $city)
     {
-        if (1 === sizeof($city->trips)) {
-            $slug = $city->trips()->first()->slug;
+        $published_trips = $city->trips->where('published', 1);
+
+        if (1 === sizeof($published_trips)) {
+            $slug = $published_trips->first()->slug;
 
             return redirect()->action("{$this->class}@page", $slug);
         }
