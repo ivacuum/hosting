@@ -36,6 +36,16 @@
 </section>
 
 <section>
+  <h3 class="m-t-0">Навигация в городах</h3>
+  <ul class="list-unstyled">
+    <li>
+      <a class="link" href="http://wikitravel.org">wikitravel.org</a>
+      — как добраться до выбранного города, на что обратить внимание и многое другое
+    </li>
+  </ul>
+</section>
+
+<section>
   <h3 class="m-t-0">Выгодные предложения</h3>
   <ul class="list-unstyled">
     <li>
