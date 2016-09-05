@@ -49,6 +49,9 @@
 </li>
 @endsection
 
+@section('counters')
+@endsection
+
 @push('head')
 <link rel="stylesheet" href="{{ App::environment('production') ? elixir('css/acp.css') : '/build/css/acp.css' }}">
 @endpush

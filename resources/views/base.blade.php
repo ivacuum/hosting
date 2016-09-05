@@ -147,6 +147,9 @@ window.AppOptions = <?php echo json_encode([
 <script src="{{ App::environment('production') ? elixir('js/vendor.js') : '/build/js/vendor.js' }}"></script>
 <script src="{{ App::environment('production') ? elixir('js/app.js') : '/build/js/app.js' }}"></script>
 @stack('js')
+@section('counters')
+@include('tpl.counters')
+@show
 </body>
 </html>
 @endif
