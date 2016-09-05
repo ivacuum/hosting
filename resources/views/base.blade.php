@@ -10,7 +10,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="keywords" content="{{ $meta_keywords or '' }}">
   <meta name="description" content="{{ $meta_description or '' }}">
-  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta http-equiv="x-pjax-version" content="1">
   <link rel="icon" sizes="256x256" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="{{ App::environment('production') ? elixir('css/vendor.css') : '/build/css/vendor.css' }}">
@@ -140,6 +139,11 @@
     @show
   </div>
 </footer>
+<script>
+window.AppOptions = <?php echo json_encode([
+  'csrfToken' => csrf_token(),
+]); ?>
+</script>
 <script src="{{ App::environment('production') ? elixir('js/vendor.js') : '/build/js/vendor.js' }}"></script>
 <script src="{{ App::environment('production') ? elixir('js/app.js') : '/build/js/app.js' }}"></script>
 @stack('js')
