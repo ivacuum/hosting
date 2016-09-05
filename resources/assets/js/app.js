@@ -25,6 +25,10 @@ class Application {
     $(document).ajaxStop(() => NProgress.done());
   }
 
+  autosizeTextareas() {
+    autosize($('.js-autosize-textarea'));
+  }
+
   csrfToken() {
     $.ajaxSetup({
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
@@ -101,6 +105,7 @@ class Application {
     // Подсказки
     $('.tip').tooltip();
 
+    this.autosizeTextareas();
     this.fotoramaInit(pjax);
   }
 

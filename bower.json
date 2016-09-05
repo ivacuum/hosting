@@ -1,6 +1,7 @@
 {
   "name": "hosting.ivacuum.ru",
   "dependencies": {
+    "autosize": "^3.0.17",
     "bootstrap-sass": "^3.3.0",
     "fancytree": "^2.18",
     "floatThead": "^1.4",

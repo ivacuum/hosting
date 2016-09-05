@@ -32,6 +32,7 @@ elixir(function(mix) {
     .copy('resources/assets/bower/fancytree/dist/skin-lion/*.gif', 'public/build/css')
 
     .scripts([
+      'bower/autosize/dist/autosize.min.js',
       'bower/jquery/dist/jquery.min.js',
       'bower/bootstrap-sass/assets/javascripts/bootstrap/transition.js',
       'bower/bootstrap-sass/assets/javascripts/bootstrap/alert.js',
