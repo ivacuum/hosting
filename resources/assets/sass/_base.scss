@@ -1,5 +1,8 @@
-// В IE10 так не пропадает контент после закрытия модального окна
-html { overflow-y: scroll; }
+html {
+  font-size: $font-size-root;
+  // В IE10 так не пропадает контент после закрытия модального окна
+  overflow-y: scroll;
+}
 html,
 body {
   height: 100%;
