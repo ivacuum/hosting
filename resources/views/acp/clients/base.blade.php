@@ -1,7 +1,7 @@
 @extends('acp.base')
 
 @section('content_header')
-<div class="row m-t-2">
+<div class="row">
   <div class="col-sm-3">
     <div class="list-group list-group-svg">
       <a class="list-group-item {{ $view == "$tpl.show" ? 'active' : '' }}" href="{{ action("$self@show", $model) }}">

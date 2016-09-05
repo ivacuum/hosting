@@ -1,7 +1,7 @@
 @extends('acp.base')
 
 @section('content_header')
-<div class="m-t-1 row">
+<div class="row">
   <div class="col-sm-3">
     <ul class="list-group list-group-svg">
       <a class="list-group-item {{ 0 === strpos($view, 'acp.dev.templates') ? 'active' : '' }}" href="{{ action('Acp\Dev@templates') }}">
