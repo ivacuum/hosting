@@ -3,7 +3,7 @@
 ])
 
 @section('content')
-<ul class="nav nav-tabs">
+<ul class="nav nav-link-tabs">
   <li class="{{ $vkpage == 'pn6' ? 'active' : '' }}">
     <a class="js-pjax" href="/parser/vk/pn6">#6</a>
   </li>
