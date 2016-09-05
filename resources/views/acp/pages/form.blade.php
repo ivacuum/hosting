@@ -31,7 +31,7 @@
 <div class="form-group">
   <label class="col-md-2 control-label">HTML:</label>
   <div class="col-md-10">
-    <textarea class="form-control" rows="10" name="html">{{ old('html', @$model->html) }}</textarea>
+    <textarea class="form-control textarea-autosized js-autosize-textarea" rows="2" name="html">{{ old('html', @$model->html) }}</textarea>
   </div>
 </div>
 

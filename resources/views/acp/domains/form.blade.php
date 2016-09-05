@@ -81,7 +81,7 @@
 <div class="form-group">
   <label class="col-md-3 control-label">Заметки:</label>
   <div class="col-md-6">
-    <textarea class="form-control" name="text" rows="10">{{ old('text', @$model->text) }}</textarea>
+    <textarea class="form-control textarea-autosized js-autosize-textarea" name="text" rows="2">{{ old('text', @$model->text) }}</textarea>
   </div>
 </div>
 

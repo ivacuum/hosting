@@ -19,7 +19,7 @@
   <input type="text" class="input-type-check" name="mail" value="{{ old('mail') }}">
 
   <div class="form-group">
-    <textarea class="form-control" name="source" style="font-family: monospace; height: 40em;">{{ $source }}</textarea>
+    <textarea class="form-control textarea-autosized js-autosize-textarea" name="source" rows="2" style="font-family: monospace;">{{ $source }}</textarea>
   </div>
 
   <button type="submit" class="btn btn-primary">
