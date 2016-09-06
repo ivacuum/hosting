@@ -31,7 +31,7 @@ class Application {
 
   csrfToken() {
     $.ajaxSetup({
-      headers: { 'X-CSRF-TOKEN': AppOptions.csrfToken }
+      headers: { 'X-CSRF-TOKEN': window['AppOptions'].csrfToken }
     });
   }
 
