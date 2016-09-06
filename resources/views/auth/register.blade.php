@@ -6,7 +6,7 @@
 <div class="form-signin">
   <h3>Регистрация на сайте</h3>
   <form action="/auth/register" method="post">
-    <input type="text" class="input-type-check" name="mail" value="{{ old('mail') }}">
+    <input hidden type="text" name="mail" value="{{ old('mail') }}">
 
     <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
       <label class="control-label">Электронная почта:</label>

@@ -6,7 +6,7 @@
 <div class="form-signin">
   <h3>Восстановление пароля</h3>
   <form action="/auth/password/remind" method="post">
-    <input type="text" class="input-type-check" name="mail" value="{{ old('mail') }}">
+    <input hidden type="text" name="mail" value="{{ old('mail') }}">
 
     <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
       <label class="control-label">Электронная почта:</label>

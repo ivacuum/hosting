@@ -44,7 +44,7 @@
 
 
 <form action="/acp/servers/{{ $server->id }}/ftp/file" method="post">
-  <input type="text" class="input-type-check" name="mail" value="{{ old('mail') }}">
+  <input hidden type="text" name="mail" value="{{ old('mail') }}">
   <div class="form-group {{ $errors->has('file') ? 'has-error' : '' }}">
     <div class="input-group" style="width: 30em;">
       <input type="text" class="form-control" name="file" value="{{ old('file') }}">
@@ -61,7 +61,7 @@
 </form>
 
 <form action="/acp/servers/{{ $server->id }}/ftp/dir" method="post">
-  <input type="text" class="input-type-check" name="mail" value="{{ old('mail') }}">
+  <input hidden type="text" name="mail" value="{{ old('mail') }}">
   <div class="form-group {{ $errors->has('dir') ? 'has-error' : '' }}">
     <div class="input-group" style="width: 30em;">
       <input type="text" class="form-control" name="dir" value="{{ old('dir') }}">
@@ -78,7 +78,7 @@
 </form>
 
 <form action="/acp/servers/{{ $server->id }}/ftp/upload" enctype="multipart/form-data" method="post">
-  <input type="text" class="input-type-check" name="mail" value="{{ old('mail') }}">
+  <input hidden type="text" name="mail" value="{{ old('mail') }}">
   <div class="form-group {{ $errors->has('file') ? 'has-error' : '' }}">
     <div class="input-group" style="width: 30em;">
       <input type="file" class="form-control" name="file">

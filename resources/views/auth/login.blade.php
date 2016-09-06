@@ -6,7 +6,7 @@
 <div class="form-signin">
   <h3>Вход на сайт</h3>
   <form action="/auth/login" method="post">
-    <input type="text" class="input-type-check" name="mail" value="{{ old('mail') }}">
+    <input hidden type="text" name="mail" value="{{ old('mail') }}">
 
     <div class="form-group">
       <label>Электронная почта:</label>

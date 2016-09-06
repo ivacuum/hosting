@@ -7,7 +7,7 @@
   <h3>Завершение восстановления пароля</h3>
   <p>Осталось лишь указать почту вашей учетной записи и новый пароль.</p>
   <form action="/auth/password/reset" method="post">
-    <input type="text" class="input-type-check" name="mail" value="{{ old('mail') }}">
+    <input hidden type="text" name="mail" value="{{ old('mail') }}">
 
     <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
       <label class="control-label">Электронная почта:</label>
