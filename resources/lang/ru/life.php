@@ -11,6 +11,8 @@ return [
     'by_country' => 'по странам',
     'by_year'    => 'по годам',
 
+    'on_map' => 'на карте',
+
     'visited_cities'    => 'Посещенные города',
     'visited_countries' => 'Посещенные страны',
 

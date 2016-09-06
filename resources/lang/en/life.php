@@ -11,6 +11,8 @@ return [
     'by_country' => 'by country',
     'by_year'    => 'by year',
 
+    'on_map' => 'on the map',
+
     'visited_cities'    => 'Visited cities',
     'visited_countries' => 'Visited countries',
 
