@@ -25,6 +25,7 @@
     'movies' => [
       ['title' => 'Головоломка<br>Inside Out', 'id' => 645118],
       ['title' => 'Kingsman: Секретная служба<br>Kingsman: The Secret Service', 'id' => 749540],
+      ['title' => 'Нарко<br>Narcos', 'id' => 821565],
     ]
   ])
 </div>
@@ -122,6 +123,7 @@
       ['title' => 'Жизнь других<br>Das Leben der Anderen', 'id' => 126196],
       ['title' => 'Отступники<br>The Departed', 'id' => 81314],
       ['title' => 'Престиж<br>The Prestige', 'id' => 195334],
+      ['title' => 'На колесах<br>Wo ist Fred?', 'id' => 243129],
     ]
   ])
 </div>
