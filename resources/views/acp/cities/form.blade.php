@@ -43,3 +43,17 @@
     <input type="text" class="form-control" name="iata" maxlength="3" value="{{ old('iata', @$model->iata) }}">
   </div>
 </div>
+
+<div class="form-group">
+  <label class="col-md-3 control-label">Широта:</label>
+  <div class="col-md-6">
+    <input type="text" class="form-control" name="lat" maxlength="10" value="{{ old('lat', @$model->lat) }}">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-3 control-label">Долгота:</label>
+  <div class="col-md-6">
+    <input type="text" class="form-control" name="lon" maxlength="10" value="{{ old('lon', @$model->lon) }}">
+  </div>
+</div>

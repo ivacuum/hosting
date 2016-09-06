@@ -24,6 +24,22 @@ class Events {
     });
   }
 
+  static cityMapClick(e) {
+    e.preventDefault();
+
+    let $el = $(this);
+    let $container = $('#' + $el.data('container'));
+    const loaded = $el.data('loaded');
+
+    if (!loaded) {
+      $el.data('loaded', true);
+
+      App.map.create($el.data('container'), $el.data('lat'), $el.data('lon'));
+    }
+
+    $container.slideToggle();
+  }
+
   static entityAction(e) {
     e.preventDefault();
 
@@ -78,6 +94,7 @@ class Events {
 
 $(document).on('click', '.js-aviasales', Events.aviasales);
 $(document).on('submit', '.js-batch-form', Events.batchForm);
+$(document).on('click', '.js-city-map-click', Events.cityMapClick);
 
 // Подтверждение действия
 $(document).on('click', '.js-confirm', (e) => confirm($(e.currentTarget).data('confirm')));

@@ -1,3 +1,4 @@
+import Map from './map';
 import Pjax from './pjax';
 
 import './events';
@@ -7,6 +8,8 @@ import './yandex-dns';
 
 class Application {
   constructor() {
+    this.locale = window['AppOptions'].locale,
+    this.map = new Map(this.locale);
     this.pjax = new Pjax();
 
     this.ajaxProgress();

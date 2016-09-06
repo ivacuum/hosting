@@ -142,6 +142,7 @@
 <script>
 window.AppOptions = <?php echo json_encode([
   'csrfToken' => csrf_token(),
+  'locale' => $locale,
 ]); ?>
 </script>
 <script src="{{ App::environment('production') ? elixir('js/vendor.js') : '/build/js/vendor.js' }}"></script>

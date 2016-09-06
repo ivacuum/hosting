@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $title_en
  * @property string  $slug
  * @property string  $iata
+ * @property string  $lat
+ * @property string  $lon
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
@@ -22,7 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class City extends Model
 {
-    protected $fillable = ['country_id', 'title_ru', 'title_en', 'slug', 'iata'];
+    protected $guarded = ['created_at', 'updated_at'];
 
     public function country()
     {
@@ -55,5 +57,10 @@ class City extends Model
     public function getTripsCount()
     {
         return $this->tripsCount ? $this->tripsCount->count : 0;
+    }
+
+    public function isOnMap()
+    {
+        return $this->lat && $this->lon;
     }
 }

@@ -10,7 +10,9 @@
 <h2>
   <span class="emoji">{{ $trip->city->country->emoji }}</span>
   {{ $trip->title }}
+  @include('tpl.city-map-button', ['city' => $trip->city])
 </h2>
+<div hidden id="trip_city_map" class="trip-city-map"></div>
 {{--
 @if ($trip->meta_image)
   <div class="cover">
