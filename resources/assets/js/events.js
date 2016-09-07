@@ -90,6 +90,27 @@ class Events {
       $img.attr('src', $img.data('static'));
     }
   }
+
+  static passwordEye(e) {
+    e.preventDefault();
+
+    let state = $(this).data('state') || 'password';
+    var $input = $(this).siblings('.form-control');
+
+    if (state === 'password') {
+      $input.attr('type', 'text');
+      $(this).data('state', 'text');
+
+      $('.js-password-eye-hide', $(this)).show();
+      $('.js-password-eye-show', $(this)).hide();
+    } else if (state === 'text') {
+      $input.attr('type', 'password');
+      $(this).data('state', 'password');
+
+      $('.js-password-eye-hide', $(this)).hide();
+      $('.js-password-eye-show', $(this)).show();
+    }
+  }
 }
 
 $(document).on('click', '.js-aviasales', Events.aviasales);
@@ -104,6 +125,9 @@ $(document).on('click', '.js-gif-click', Events.gifClick);
 
 // Редактирование по двойному клику
 $(document).on('dblclick', '.js-dblclick-edit', (e) => document.location = $(e.currentTarget).data('dblclick-url'));
+
+// Возможность посмотреть пароль
+$(document).on('click', '.js-password-eye', Events.passwordEye);
 
 // Выбрать все
 $(document).on('click', '.js-select-all', function() {

@@ -13,10 +13,18 @@
       <input autofocus required type="email" class="form-control" name="email" value="{{ old('email') }}" autocomplete="email">
     </div>
 
-    <div class="form-group">
+    <div class="form-group has-feedback">
       <label>Пароль:</label>
       <a href="/auth/password/remind" class="link">забыли пароль?</a>
       <input required type="password" class="form-control" name="password">
+      <span class="form-control-feedback form-control-feedback-password js-password-eye">
+        <span class="js-password-eye-show" title="Показать пароль">
+          @php (require base_path('resources/svg/eye.html'))
+        </span>
+        <span hidden class="js-password-eye-hide" title="Скрыть пароль">
+          @php (require base_path('resources/svg/eye-slash.html'))
+        </span>
+      </span>
     </div>
 
     <div class="checkbox">
