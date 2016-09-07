@@ -7,6 +7,9 @@
 .form-control-feedback-password {
   pointer-events: auto;
   cursor: pointer;
+  color: #aaa;
+
+  &:hover { color: #888; }
 }
 
 .form-group .text-editor {
