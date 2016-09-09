@@ -8,12 +8,6 @@
 </h3>
 @if (sizeof($models))
   <table class="table-stats m-b-1">
-    <colgroup>
-      <col width="35">
-      <col width="*">
-      <col width="200">
-      <col width="90">
-    </colgroup>
     <thead>
       <tr>
         <th></th>

@@ -9,14 +9,6 @@
 </h3>
 @if (sizeof($models))
   <table class="table-stats js-float-thead m-b-1">
-    <colgroup>
-      <col width="30">
-      <col width="*">
-      <col width="110">
-      <col width="150">
-      <col width="150">
-      <col width="60">
-    </colgroup>
     <thead>
       <tr>
         <th><input type="checkbox" class="js-select-all" data-selector=".domains-checkbox"></th>

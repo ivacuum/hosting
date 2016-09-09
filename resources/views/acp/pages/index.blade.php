@@ -5,15 +5,7 @@
   Страницы
   @include('acp.tpl.create')
 </h3>
-<table id="tree" class="table-stats m-b-1" style="width: 700px;">
-  <colgroup>
-    <col width="20">
-    <col width="*">
-    <col width="30">
-    <col width="200">
-    <col width="250">
-    <col width="50">
-  </colgroup>
+<table id="tree" class="table-stats m-b-1">
   <thead>
     <tr>
       <th></th>
