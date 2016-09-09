@@ -24,7 +24,10 @@
       <li>Mein Herz brennt</li>
       <li>Links 2-3-4</li>
       <li>Ich will</li>
-      <li>Du hast</li>
+      <li>
+        <a class="link" href="https://www.youtube.com/watch?v=lV6x2Ctk6CI">Du hast</a>
+        @svg (heart)
+      </li>
       <li>Stripped</li>
       <li>Sonne</li>
       <li>Amerika</li>
