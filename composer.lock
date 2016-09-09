@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "75d90dfa5c212f26128e1294a01439d3",
-    "content-hash": "66dc78e24ed097ba5b0f954745bb4d7b",
+    "hash": "0d172c16f9b76da7ec5e83eba70aae67",
+    "content-hash": "5a0bd976f54a201df35be9e5084d38fa",
     "packages": [
         {
             "name": "baum/baum",
@@ -534,16 +534,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.3.6",
+            "version": "v5.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "c63a7fb7066fea2bce91ace5c830c01d503abe6c"
+                "reference": "99c74afc0b99e1af1984cb55dc242ab28a0e496b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/c63a7fb7066fea2bce91ace5c830c01d503abe6c",
-                "reference": "c63a7fb7066fea2bce91ace5c830c01d503abe6c",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/99c74afc0b99e1af1984cb55dc242ab28a0e496b",
+                "reference": "99c74afc0b99e1af1984cb55dc242ab28a0e496b",
                 "shasum": ""
             },
             "require": {
@@ -657,7 +657,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-09-01 14:06:47"
+            "time": "2016-09-09 16:33:59"
         },
         {
             "name": "league/flysystem",
@@ -2582,16 +2582,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.5.4",
+            "version": "v2.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "abbdfd1cff43a7b99d027af3be709bc8fc7d4769"
+                "reference": "9f8c05cd5225a320d56d4bfdb4772f10d045a0c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/abbdfd1cff43a7b99d027af3be709bc8fc7d4769",
-                "reference": "abbdfd1cff43a7b99d027af3be709bc8fc7d4769",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/9f8c05cd5225a320d56d4bfdb4772f10d045a0c9",
+                "reference": "9f8c05cd5225a320d56d4bfdb4772f10d045a0c9",
                 "shasum": ""
             },
             "require": {
@@ -2600,7 +2600,7 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "4.*",
-                "symfony/console": "2.*"
+                "symfony/console": "2.*||^3.0"
             },
             "suggest": {
                 "symfony/console": "For helpful console commands such as SQL execution and import of files."
@@ -2649,7 +2649,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2016-01-05 22:11:12"
+            "time": "2016-09-09 19:13:33"
         },
         {
             "name": "doctrine/instantiator",
@@ -2980,16 +2980,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.5.1",
+            "version": "1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "a8773992b362b58498eed24bf85005f363c34771"
+                "reference": "da8529775f14f4fdae33f916eb0cf65f6afbddbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/a8773992b362b58498eed24bf85005f363c34771",
-                "reference": "a8773992b362b58498eed24bf85005f363c34771",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/da8529775f14f4fdae33f916eb0cf65f6afbddbc",
+                "reference": "da8529775f14f4fdae33f916eb0cf65f6afbddbc",
                 "shasum": ""
             },
             "require": {
@@ -3018,7 +3018,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2015-11-20 12:04:31"
+            "time": "2016-09-06 16:07:05"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -3552,16 +3552,16 @@
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "3.2.6",
+            "version": "3.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "46b249b43fd2ed8e127aa0fdb3cbcf56e9bc0e49"
+                "reference": "546898a2c0c356ef2891b39dd7d07f5d82c8ed0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/46b249b43fd2ed8e127aa0fdb3cbcf56e9bc0e49",
-                "reference": "46b249b43fd2ed8e127aa0fdb3cbcf56e9bc0e49",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/546898a2c0c356ef2891b39dd7d07f5d82c8ed0a",
+                "reference": "546898a2c0c356ef2891b39dd7d07f5d82c8ed0a",
                 "shasum": ""
             },
             "require": {
@@ -3607,7 +3607,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2016-08-26 05:51:59"
+            "time": "2016-09-06 16:07:45"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -4393,7 +4393,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6.4"
+        "php": "^7.0"
     },
     "platform-dev": []
 }
