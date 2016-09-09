@@ -19,10 +19,10 @@
       <input required type="password" class="form-control" name="password">
       <span class="form-control-feedback form-control-feedback-password js-password-eye">
         <span class="js-password-eye-show" title="Показать пароль">
-          @php (require base_path('resources/svg/eye.html'))
+          @svg (eye)
         </span>
         <span hidden class="js-password-eye-hide" title="Скрыть пароль">
-          @php (require base_path('resources/svg/eye-slash.html'))
+          @svg (eye-slash)
         </span>
       </span>
     </div>

@@ -118,14 +118,14 @@
             <a class="pseudo js-ns-record-edit">настроить</a>
             &nbsp;
             <a class="pseudo js-ns-record-delete" data-id="{{ $record->record_id }}" data-action="{{ action("$self@deleteNsRecord", $model) }}">
-              @php (require base_path('resources/svg/times.html'))
+              @svg (times)
             </a>
           </div>
           <div class="edit hidden">
             <a class="pseudo js-ns-record-save" data-action="{{ action("$self@editNsRecord", $model) }}">сохранить</a>
             &nbsp;
             <a class="pseudo js-ns-record-cancel">
-              @php (require base_path('resources/svg/rotate-left.html'))
+              @svg (rotate-left)
             </a>
           </div>
         </td>

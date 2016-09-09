@@ -1,7 +1,7 @@
 @if (!empty($breadcrumbs))
 <nav class="breadcrumbs">
   <a href="{{ $locale_uri }}/">
-    @php (require base_path('resources/svg/home.html'))
+    @svg (home)
   </a>
   &nbsp;&rarr;&nbsp;
   @foreach ($breadcrumbs as $row)

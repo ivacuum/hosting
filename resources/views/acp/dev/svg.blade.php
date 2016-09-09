@@ -5,8 +5,8 @@
 <div class="svg-icon-32">
   @foreach ($icons as $icon)
     <span title="{{ $icon }}"}}>
-    @php (require base_path("resources/svg/{$icon}.html"))
-  </span>
+      @svg ($icon)
+    </span>
   @endforeach
 </div>
 @endsection

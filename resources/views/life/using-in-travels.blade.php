@@ -16,20 +16,20 @@
   <div class="favorites-entry">
     2GIS
     <a href="https://play.google.com/store/apps/details?id=ru.dublgis.dgismobile">
-      @php (require base_path('resources/svg/android.html'))
+      @svg (android)
     </a>
     <a href="https://itunes.apple.com/ru/app/2gis/id481627348?mt=8">
-      @php (require base_path('resources/svg/apple.html'))
+      @svg (apple)
     </a>
     — карты России, знают как работает общественный транспорт, после скачивания карт работают без интернета
   </div>
   <div class="favorites-entry">
     maps.me
     <a href="https://play.google.com/store/apps/details?id=com.mapswithme.maps.pro">
-      @php (require base_path('resources/svg/android.html'))
+      @svg (android)
     </a>
     <a href="https://itunes.apple.com/ru/app/id510623322?mt=8">
-      @php (require base_path('resources/svg/apple.html'))
+      @svg (apple)
     </a>
     — карты всего мира, после скачивания карт работают без интернета
   </div>

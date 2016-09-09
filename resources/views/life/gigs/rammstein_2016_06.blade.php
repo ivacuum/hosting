@@ -16,7 +16,7 @@
       <li>Keine Lust</li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=QtUuBaX3LRY&t=260">Feuer frei!</a>
-        @php (require base_path('resources/svg/heart.html'))
+        @svg (heart)
       </li>
       <li>Seemann</li>
       <li>Ich tu dir weh</li>

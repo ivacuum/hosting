@@ -27,7 +27,7 @@
         </td>
         <td>
           <a href="http://{{ $model->domain }}/" target="_blank" style="margin-right: 0.3em;">
-            @php (require base_path('resources/svg/external-link.html'))
+            @svg (external-link)
           </a>
           <a href="/acp/domains/{{ $model->domain }}" class="link">{{ $model->domain }}</a>
           @if ($model->alias_id)

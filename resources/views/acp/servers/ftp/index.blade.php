@@ -3,7 +3,7 @@
 @section('content')
 <h2>
   <a href="/acp/servers/{{ $server->id }}">
-    @php (require base_path('resources/svg/chevron-left.html'))
+    @svg (chevron-left)
   </a>
   ftp://{{ $server->host }}
 </h2>
@@ -11,7 +11,7 @@
 <h3>
   @if ($dir_up != ':')
     <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $dir_up }}">
-      @php (require base_path('resources/svg/chevron-left.html'))
+      @svg (chevron-left)
     </a>
   @endif
   {{ $dir }}
@@ -20,7 +20,7 @@
   @foreach ($dirs as $row)
     <tr>
       <td>
-        @php (require base_path('resources/svg/folder-o.html'))
+        @svg (folder-o)
         &nbsp;
         <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $row['path'] }}" class="link">{{ $row['basename'] }}</a>
       </td>
@@ -31,7 +31,7 @@
   @foreach ($files as $row)
   <tr>
     <td>
-      @php (require base_path('resources/svg/file-text-o.html'))
+      @svg (file-text-o)
       &nbsp;
       <a href="/acp/servers/{{ $server->id }}/ftp/source?file={{ $row['path'] }}" class="link">{{ $row['basename'] }}</a>
     </td>

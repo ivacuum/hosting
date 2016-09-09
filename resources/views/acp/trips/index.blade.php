@@ -27,7 +27,7 @@
         </td>
         <td>
           @if (!$model->published)
-            @php (require base_path('resources/svg/pencil.html'))
+            @svg (pencil)
           @endif
         </td>
         <td>{{ $model->getLocalizedDate() }}</td>

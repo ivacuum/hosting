@@ -34,7 +34,7 @@
       @include('acp.tpl.back')
       {{ $model->domain }}
       <a class="btn btn-default" href="http://{{ $model->domain }}/" target="_blank">
-        @php (require base_path('resources/svg/external-link.html'))
+        @svg (external-link)
       </a>
       @include('acp.tpl.edit', ['id' => $model, 'goto' => Request::path()])
       @if (!$model->isExpired() && ($model->cms_url || ($model->alias_id and $model->alias->cms_url)))

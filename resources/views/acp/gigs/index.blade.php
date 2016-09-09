@@ -27,7 +27,7 @@
         </td>
         <td>
           @if ($model->status === App\Gig::STATUS_HIDDEN)
-            @php (require base_path('resources/svg/pencil.html'))
+            @svg (pencil)
           @endif
         </td>
         <td>{{ $model->fullDate() }}</td>

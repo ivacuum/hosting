@@ -1,12 +1,12 @@
 @extends('base')
 
 @section('content')
-@if ($locale === 'ru')
+@ru
   <p class="lead">Текст для главной еще не придумали. Можно <a class="link" href="{{ action('Life@index') }}">заметки</a> почитать, например.</p>
   <h3>Последние поездки</h3>
-@elseif ($locale === 'en')
+@en
   <h3 class="m-t-0">Last trips</h3>
-@endif
+@endlang
 
 @foreach ($trips->chunk(3) as $chunk)
   <div class="page-section">
@@ -25,8 +25,8 @@
   </div>
 @endforeach
 
-@if ($locale === 'ru')
+@ru
   <p class="lead">А еще лучше слетать <a class="link pseudo js-aviasales">повидать новый город</a>.</p>
   <div id="aviasales_container"></div>
-@endif
+@endlang
 @endsection

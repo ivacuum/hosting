@@ -63,15 +63,15 @@
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="{{ url("en/{$request_uri}") }}">English</a></li>
-              <li><a href="{{ url($request_uri) }}">Русский</a></li>
+              <li><a href="{{ url("en/{$request_uri}") }}" lang="en">English</a></li>
+              <li><a href="{{ url($request_uri) }}" lang="ru">Русский</a></li>
             </ul>
           </li>
           @if (Auth::check())
               @if (Auth::user()->isAdmin())
                 <li>
                   <a href="{{ App::environment('local') ? "{$locale_uri}/acp/dev/templates" : "{$locale_uri}/acp/trips" }}">
-                    @php (require base_path('resources/svg/dashboard.html'))
+                    @svg (dashboard)
                   </a>
                 </li>
               @endif

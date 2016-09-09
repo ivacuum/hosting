@@ -42,12 +42,12 @@
 
 <span id="page_active_icon" class="hidden">
   <span class="text-success" title="Отображается">
-    @php (require base_path('resources/svg/eye.html'))
+    @svg (eye)
   </span>
 </span>
 
 <span id="page_edit_icon" class="hidden">
-  @php (require base_path('resources/svg/pencil.html'))
+  @svg (pencil)
 </span>
 @endsection
 
