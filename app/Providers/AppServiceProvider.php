@@ -30,6 +30,10 @@ class AppServiceProvider extends ServiceProvider
             return '<?php elseif ($locale === \'en\'): ?>';
         });
 
+        Blade::directive('de', function ($expression) {
+            return '<?php elseif ($locale === \'de\'): ?>';
+        });
+
         Blade::directive('endlang', function ($expression) {
             return '<?php endif; ?>';
         });
