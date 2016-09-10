@@ -1,7 +1,11 @@
 @extends('life.trips.base')
 
 @section('content')
-<p lang="ru">Купаемся.</p>
+@ru
+  <p>Купаемся.</p>
+@en
+  <p>Swimming.</p>
+@endlang
 @include('tpl.fotorama', ['pics' => [
   'IMG_0749.jpg',
   'IMG_0750.jpg',

@@ -1,8 +1,11 @@
 @extends('life.trips.base')
 
 @section('content')
-<p lang="ru">Город замело снегом.</p>
-<p lang="en">City is covered with snow.</p>
+@ru
+  <p>Город замело снегом.</p>
+@en
+  <p>City is covered with snow.</p>
+@endlang
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2656.jpg',
   'IMG_2658.jpg',

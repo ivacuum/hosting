@@ -1,9 +1,13 @@
 @extends('life.trips.base')
 
 @section('content')
-<p lang="ru">Киров в Калужской области — небольшой город, после которого даже родная <a class="link" href="/life/kaluga">Калуга</a> кажется мегаполисом.</p>
+@ru
+  <p>Киров в Калужской области — небольшой город, после которого даже родная <a class="link" href="/life/kaluga">Калуга</a> кажется мегаполисом.</p>
+@endlang
 
-<p lang="ru">Места для прогулок. Весь город можно назвать таковым.</p>
+@ru
+  <p>Места для прогулок. Весь город можно назвать таковым.</p>
+@endlang
 @include('tpl.fotorama', ['pics' => [
   'IMG_0422.jpg',
   'IMG_0414.jpg',
@@ -13,22 +17,32 @@
 ]])
 
 <a name="trees"></a>
-<p lang="ru">Хороша аллея выросла.</p>
+@ru
+  <p>Хороша аллея выросла.</p>
+@endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_0405.jpg'])
 
-<p lang="ru">Одуванчики.</p>
+@ru
+  <p>Одуванчики.</p>
+@endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_0395.jpg'])
 
-<p lang="ru">Пожарная лестница.</p>
+@ru
+  <p>Пожарная лестница.</p>
+@endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_0404.jpg'])
 
-<p lang="ru">Озеро и речка, места для купания.</p>
+@ru
+  <p>Озеро и речка, места для купания.</p>
+@endlang
 @include('tpl.fotorama', ['pics' => [
   'IMG_0407.jpg',
   'IMG_0418.jpg',
   'IMG_0426.jpg',
 ]])
 
-<p lang="ru">Зачем ящички?</p>
+@ru
+  <p>Зачем ящички?</p>
+@endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_0427.jpg'])
 @endsection

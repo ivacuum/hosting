@@ -1,7 +1,11 @@
 @extends('life.trips.base')
 
 @section('content')
-<p lang="ru">Полезная овощная поездка. Понял, что повторения больше не хочу.</p>
+@ru
+  <p>Полезная овощная поездка. Понял, что повторения больше не хочу.</p>
+@en
+  <p>Useful lazy trip. No more lazy trips.</p>
+@endlang
 @include('tpl.fotorama', ['pics' => [
   'IMG_0621.jpg',
   'IMG_0658.jpg',

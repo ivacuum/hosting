@@ -36,7 +36,7 @@
   </h2>
 @endif
 --}}
-<div class="trip-text js-trip-shortcuts trip-lang-{{ $locale }}">
+<div class="trip-text js-trip-shortcuts">
 @endsection
 
 @section('content_footer')
