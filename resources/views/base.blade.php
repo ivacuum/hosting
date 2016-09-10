@@ -40,13 +40,13 @@
                 {{ trans('menu.life') }}
               </a>
             </li>
-            @if ($locale === 'ru')
+            @ru
               <li>
                 <a class="{{ $self == 'ParserVk' ? 'navbar-selected' : '' }}" href="{{ action('ParserVk@index') }}">
                   {{ trans('menu.parser_vk') }}
                 </a>
               </li>
-            @endif
+            @endlang
             @if (App::environment('local'))
               <li>
                 <a class="{{ $self == 'Docs' ? 'navbar-selected' : '' }}" href="{{ action('Docs@index') }}">

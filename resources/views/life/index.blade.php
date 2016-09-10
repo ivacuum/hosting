@@ -33,20 +33,20 @@
   </div>
   <div class="col-sm-6">
     <h3>{{ trans('life.favorites') }}</h3>
-    @if ($locale === 'ru')
+    @ru
       <div class="favorites-entry">
         <a class="link" href="{{ action('Life@page', 'chillout') }}">Chillout</a>
       </div>
       <div class="favorites-entry">
         <a class="link" href="{{ action('Life@page', 'books') }}">Книги</a>
       </div>
-    @endif
+    @endlang
     <div class="favorites-entry">
       <a class="link" href="{{ action('Life@page', 'gigs') }}">
         {{ trans('menu.gigs') }}
       </a>
     </div>
-    @if ($locale === 'ru')
+    @ru
       <div class="favorites-entry">
         <a class="link" href="{{ action('Life@page', 'favorite-posts') }}">Любимые посты</a>
       </div>
@@ -62,7 +62,7 @@
       <div class="favorites-entry">
         <a class="link" href="{{ action('Life@page', 'using-in-travels') }}">Чем пользуюсь в путешествиях</a>
       </div>
-    @endif
+    @endlang
   </div>
 </div>
 @endsection
