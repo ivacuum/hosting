@@ -3,7 +3,7 @@
 @section('content')
 <p lang="ru">Польская группа Tides from Nebula приехала в Москву с заключительным концертом тура. Ребята играют в стиле пост-рок. Очень понравились некоторые их песни, решил послушать вживую. Заодно выдалась прогулка по столице.</p>
 <div class="fotorama" data-width="1000" data-ratio="16/10">
-  <a href="//www.youtube.com/embed/Q9-BL_BEPHE">Tides From Nebula — Siberia</a>
+  <a href="https://www.youtube.com/embed/Q9-BL_BEPHE">Tides From Nebula — Siberia</a>
 </div>
 
 <a name="triumph"></a>

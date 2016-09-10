@@ -5,27 +5,27 @@
 
 <p lang="ru">Как менялось содержимое стола в процессе сборки.</p>
 <div class="fotorama">
-  <img src="//life.ivacuum.ru/kaluga.2015.01.01/IMG_1378.jpg">
-  <img src="//life.ivacuum.ru/kaluga.2015.01.01/IMG_1380.jpg">
-  <img src="//life.ivacuum.ru/kaluga.2015.01.01/IMG_1382.jpg">
-  <img src="//life.ivacuum.ru/kaluga.2015.01.01/IMG_1386.jpg">
-  <img src="//life.ivacuum.ru/kaluga.2015.01.01/IMG_1389.jpg">
-  <img src="//life.ivacuum.ru/kaluga.2015.01.01/IMG_1391.jpg">
-  <img src="//life.ivacuum.ru/kaluga.2015.01.01/IMG_1397.jpg">
+  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1378.jpg">
+  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1380.jpg">
+  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1382.jpg">
+  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1386.jpg">
+  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1389.jpg">
+  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1391.jpg">
+  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1397.jpg">
 </div>
 
 <p lang="ru">Модель обрастала деталями.</p>
 <div class="fotorama">
-  <img src="//life.ivacuum.ru/kaluga.2015.01.01/IMG_1381.jpg">
-  <img src="//life.ivacuum.ru/kaluga.2015.01.01/IMG_1388.jpg">
-  <img src="//life.ivacuum.ru/kaluga.2015.01.01/IMG_1392.jpg">
-  <img src="//life.ivacuum.ru/kaluga.2015.01.01/IMG_1393.jpg">
-  <img src="//life.ivacuum.ru/kaluga.2015.01.01/IMG_1396.jpg">
-  <img src="//life.ivacuum.ru/kaluga.2015.01.01/IMG_1398.jpg">
-  <img src="//life.ivacuum.ru/kaluga.2015.01.01/IMG_1400.jpg">
-  <img src="//life.ivacuum.ru/kaluga.2015.01.01/IMG_1401.jpg">
-  <img src="//life.ivacuum.ru/kaluga.2015.01.01/IMG_1402.jpg">
-  <img src="//life.ivacuum.ru/kaluga.2015.01.01/IMG_1403.jpg">
-  <img src="//life.ivacuum.ru/kaluga.2015.01.01/IMG_1405.jpg">
+  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1381.jpg">
+  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1388.jpg">
+  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1392.jpg">
+  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1393.jpg">
+  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1396.jpg">
+  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1398.jpg">
+  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1400.jpg">
+  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1401.jpg">
+  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1402.jpg">
+  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1403.jpg">
+  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1405.jpg">
 </div>
 @endsection

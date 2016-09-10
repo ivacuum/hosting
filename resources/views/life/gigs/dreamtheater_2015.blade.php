@@ -27,16 +27,16 @@
   </div>
   <div class="col-md-5">
     <div class="img-container">
-      <img src="//life.ivacuum.ru/gigs/dreamtheater.2015.07.03.jpg">
+      <img src="https://life.ivacuum.ru/gigs/dreamtheater.2015.07.03.jpg">
     </div>
   </div>
 </div>
 
 <p lang="ru">Несколько фото с концерта.</p>
 <div class="fotorama">
-  <img src="//life.ivacuum.ru/gigs/dreamtheater.2015/IMG_1682.jpg">
-  <img src="//life.ivacuum.ru/gigs/dreamtheater.2015/IMG_1688.jpg">
-  <img src="//life.ivacuum.ru/gigs/dreamtheater.2015/IMG_1689.jpg">
+  <img src="https://life.ivacuum.ru/gigs/dreamtheater.2015/IMG_1682.jpg">
+  <img src="https://life.ivacuum.ru/gigs/dreamtheater.2015/IMG_1688.jpg">
+  <img src="https://life.ivacuum.ru/gigs/dreamtheater.2015/IMG_1689.jpg">
 </div>
 
 <p lang="ru">Видеозапись выступления:</p>

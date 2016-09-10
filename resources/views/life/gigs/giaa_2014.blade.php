@@ -30,14 +30,14 @@
   </div>
   <div class="col-md-5">
     <div class="img-container">
-      <img src="//life.ivacuum.ru/gigs/giaa.2014.11.23.jpg">
+      <img src="https://life.ivacuum.ru/gigs/giaa.2014.11.23.jpg">
     </div>
   </div>
 </div>
 
 <p lang="ru">Несколько фото с концерта.</p>
 <div class="fotorama">
-  <img src="//life.ivacuum.ru/gigs/giaa.2014/IMG_1348.jpg" width="1000" height="750">
-  <img src="//life.ivacuum.ru/gigs/giaa.2014/IMG_1349.jpg" width="1000" height="750">
+  <img src="https://life.ivacuum.ru/gigs/giaa.2014/IMG_1348.jpg" width="1000" height="750">
+  <img src="https://life.ivacuum.ru/gigs/giaa.2014/IMG_1349.jpg" width="1000" height="750">
 </div>
 @endsection

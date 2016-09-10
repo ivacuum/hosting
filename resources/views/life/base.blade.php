@@ -26,6 +26,6 @@
 @endsection
 
 @push('js')
-<script src="//yastatic.net/share/share.js"></script>
+<script src="https://yastatic.net/share/share.js"></script>
 @endpush
 --}}

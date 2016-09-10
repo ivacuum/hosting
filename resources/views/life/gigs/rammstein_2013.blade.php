@@ -27,7 +27,7 @@
   </div>
   <div class="col-md-5">
     <div class="img-container">
-      <img src="//life.ivacuum.ru/gigs/rammstein.2013.06.08.jpg">
+      <img src="https://life.ivacuum.ru/gigs/rammstein.2013.06.08.jpg">
     </div>
   </div>
 </div>

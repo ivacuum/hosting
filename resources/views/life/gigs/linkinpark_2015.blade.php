@@ -38,7 +38,6 @@
   </div>
   <div class="col-md-5">
     <div class="img-container">
-      <img src="//life.ivacuum.ru/gigs/linkinpark.2015.08.29.jpg">
     </div>
   </div>
 </div>

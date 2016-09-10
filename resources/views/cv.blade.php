@@ -5,10 +5,10 @@
   <title>Сергей Панков &middot; Резюме</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <link rel="stylesheet" media="screen" href="//fonts.googleapis.com/css?family=Open+Sans:400,600">
-  <link rel="stylesheet" href="//yandex.st/bootstrap/2.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//yandex.st/bootstrap/2.3.1/css/bootstrap-responsive.min.css">
-  
+  <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600">
+  <link rel="stylesheet" href="https://yandex.st/bootstrap/2.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://yandex.st/bootstrap/2.3.1/css/bootstrap-responsive.min.css">
+
   <meta content="summary" property="twitter:card">
   <meta content="@knifevacuum" property="twitter:site">
   <meta content="252045193" property="twitter:site:id">
@@ -25,13 +25,13 @@
   <meta content="ivacuum" property="profile:username">
 <style>
 body {
-  background-color: #A1A1A1;  
-  color: #4B4B4B;    
+  background-color: #A1A1A1;
+  color: #4B4B4B;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: 400;
-  padding-bottom: 40px; 
-  padding-top: 20px; 
+  padding-bottom: 40px;
+  padding-top: 20px;
 }
 
 h1, h2 , h3, h4, h5, p, li {
@@ -50,30 +50,30 @@ a:hover {
 }
 
 /* container */
-.container-fluid  { 
-  max-width: 860px; 
+.container-fluid  {
+  max-width: 860px;
   margin: 0 auto;
 }
 .wrapper {
   background-color: #FFFFFF;
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
      -moz-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
-          box-shadow: 0 1px 6px rgba(0, 0, 0, 0.30), 0 0 40px rgba(0, 0, 0, 0.10) inset;  
-  padding: 50px 40px 19px 40px;  
+          box-shadow: 0 1px 6px rgba(0, 0, 0, 0.30), 0 0 40px rgba(0, 0, 0, 0.10) inset;
+  padding: 50px 40px 19px 40px;
 }
-.my-info, 
-.my-message, 
-.my-skill, 
-.my-specifics, 
-.my-venture, 
+.my-info,
+.my-message,
+.my-skill,
+.my-specifics,
+.my-venture,
 .my-venture > span {
   font-size: 13px;
   font-weight: 400;
 }
-.contact, 
-.heading, 
+.contact,
+.heading,
 .resume {
-  margin: 0 0 1em 0;  
+  margin: 0 0 1em 0;
 }
 
 /* the header portion */
@@ -95,9 +95,9 @@ a:hover {
   line-height: 34px;
   text-transform: uppercase;
 }
-.my-profession, 
+.my-profession,
 .my-services {
-  font-size: 16px; 
+  font-size: 16px;
   line-height: 34px;
 }
 .my-profession {
@@ -107,7 +107,7 @@ a:hover {
   margin-top: 34px;
 }
 .my-services > a {
-  float: right; 
+  float: right;
 }
 
 /* resume */
@@ -150,10 +150,10 @@ a:hover {
   margin: 1px 0 0 0;
   padding: 0;
 }
-.my-caption + .my-activity, 
+.my-caption + .my-activity,
 .my-caption + .my-venture,
-.my-caption + .my-specifics, 
-.my-caption + .my-skill, 
+.my-caption + .my-specifics,
+.my-caption + .my-skill,
 .my-caption + .my-info {
     margin-top: 5px;
 }
@@ -172,7 +172,7 @@ a:hover {
     max-width: none;
 }
 .my-info {
-  height: 20px; 
+  height: 20px;
   display: block;
 }
 .my-info > span {
@@ -183,34 +183,34 @@ a:hover {
 @media (min-width: 768px) and (max-width: 979px) {
 
   .wrapper {
-    padding: 50px 30px 19px 30px;  
+    padding: 50px 30px 19px 30px;
   }
 
 }
 
 @media (min-width: 768px) and (max-width: 768px) {
-  
+
   body {
     padding: 0;
   }
   .wrapper {
-    padding: 50px 30px 19px 30px;  
+    padding: 50px 30px 19px 30px;
   }
 
 }
 
 @media (min-width: 569px) and (max-width: 767px) {
-  
+
   body {
     padding: 0;
   }
   .wrapper {
-    padding: 40px 30px 0px 30px;  
+    padding: 40px 30px 0px 30px;
   }
-  .contact, 
-  .heading, 
+  .contact,
+  .heading,
   .resume {
-    margin: 0 0 25px 0;  
+    margin: 0 0 25px 0;
   }
 
 }
@@ -221,19 +221,19 @@ a:hover {
     padding: 0;
   }
   .wrapper {
-    padding: 25px 20px 0px 20px;  
+    padding: 25px 20px 0px 20px;
   }
-  .contact, 
-  .heading, 
+  .contact,
+  .heading,
   .resume {
-    margin: 0 0 25px 0;  
+    margin: 0 0 25px 0;
   }
   .my-picture {
     width: 70px;
     margin: 0px 10px 0px 0px;
   }
   .my-name {
-    font-size: 16px; 
+    font-size: 16px;
     line-height: 20px;
   }
   .my-profession {
@@ -245,9 +245,9 @@ a:hover {
     line-height: 24px;
     margin-top: 10px;
   }
-  .my-message, 
+  .my-message,
   .my-servicetext {
-    line-height: 16px; 
+    line-height: 16px;
   }
 
 }
@@ -258,7 +258,7 @@ a:hover {
   <div class="row-fluid heading">
     <div class="span8">
       <!-- <img class="my-picture" src="http://www.gravatar.com/avatar/693c6f7aa6029f0055a455ae89a989f7?s=150"> -->
-      <img class="my-picture" src="//life.ivacuum.ru/me.jpg" width="160" height="160">
+      <img class="my-picture" src="https://life.ivacuum.ru/me.jpg" width="160" height="160">
       <h1 class="my-name">Сергей Панков</h1>
       <h2 class="my-profession">Веб-программист (PHP)</h2>
       <p class="my-message">Заинтересован в создании полезных людям веб-сервисов. Веб-технологиями увлекаюсь с 2003 года. С кодом моих проектов можно ознакомиться на <a href="https://github.com/ivacuum">Гитхабе</a>. Возможна удаленная работа.</p>
@@ -305,7 +305,7 @@ a:hover {
         Веб-сайт
         <span><a href="http://ivacuum.ru/">ivacuum.ru</a></span>
       </h4>
-      
+
       <h3 class="my-caption">Личная информация</h3>
       <h4 class="my-info">
         Возраст
@@ -327,7 +327,7 @@ a:hover {
         Дети
         <span>Нет</span>
       </h4>
-      
+
       <h3 class="my-caption">В сети</h3>
       <h4 class="my-info">
         Гитхаб

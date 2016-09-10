@@ -41,14 +41,14 @@
   </div>
   <div class="col-md-5">
     <div class="img-container">
-      <img src="//life.ivacuum.ru/gigs/vai.2014.05.26.jpg">
+      <img src="https://life.ivacuum.ru/gigs/vai.2014.05.26.jpg">
     </div>
   </div>
 </div>
 
 <p lang="ru">Попали под прицел фотокамер.</p>
 <div class="fotorama">
-  <img src="//life.ivacuum.ru/gigs/vai.2014/Steve_093.jpg">
-  <img src="//life.ivacuum.ru/gigs/vai.2014/Steve_008.jpg">
+  <img src="https://life.ivacuum.ru/gigs/vai.2014/Steve_093.jpg">
+  <img src="https://life.ivacuum.ru/gigs/vai.2014/Steve_008.jpg">
 </div>
 @endsection

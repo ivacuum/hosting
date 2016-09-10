@@ -30,7 +30,7 @@
   </div>
   <div class="col-md-5">
     <div class="img-container">
-      <img src="//life.ivacuum.ru/gigs/dreamtheater.2014.02.26.jpg">
+      <img src="https://life.ivacuum.ru/gigs/dreamtheater.2014.02.26.jpg">
     </div>
   </div>
 </div>
