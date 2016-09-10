@@ -5,7 +5,7 @@
 @section('content')
 <div class="row">
   <div class="col-md-7">
-    <p lang="ru">Что играли:</p>
+    @include('tpl.setlist-title')
     <ol>
       <li>Under a Glass Moon</li>
       <li>These Walls</li>

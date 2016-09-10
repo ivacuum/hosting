@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
   <div class="col-md-7">
-    <p lang="ru">Что играли:</p>
+    @include('tpl.setlist-title')
     <ol>
       <li>Rammlied</li>
       <li>B********</li>
@@ -32,8 +32,10 @@
   </div>
 </div>
 
-<p lang="ru">Видеозапись концерта:</p>
-<div class="fotorama" data-width="1280" data-ratio="16/10">
+@ru
+  <p>Видеозапись концерта:</p>
+@endlang
+<div class="fotorama" data-width="1000" data-ratio="1000/595">
   <a href="https://www.youtube.com/watch?v=KbUoLxHqM8M"></a>
 </div>
 @endsection

@@ -5,8 +5,10 @@
 @section('content')
 <div class="row">
   <div class="col-md-7">
-    <p lang="ru">На концерте всего было около полутора сотен человек — никогда прежде не был на столь малочисленных шоу.</p>
-    <p lang="ru">Что играли:</p>
+    @ru
+      <p>На концерте всего было около полутора сотен человек — никогда прежде не был на столь малочисленных шоу.</p>
+    @endlang
+    @include('tpl.setlist-title')
     <ol>
       <li>Sleepmonster</li>
       <li>Hollow Lights</li>

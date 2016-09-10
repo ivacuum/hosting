@@ -5,10 +5,12 @@
 @section('content')
 <div class="row">
   <div class="col-md-7">
-    <p lang="ru">Фестиваль музыки в стиле прогрессив метал с хэдлайнерами в лице Дрим Театра. Ограничение по времени фестивальных выступлений коснулось и их — сет был всего на полтора часа, когда <a class="link" href="/life/dreamtheater.2014.spb">годом ранее</a> они играли три.</p>
-    <p lang="ru">Укрепилось впечатление, что музыкантам Москва нравится больше Питера по их активности на соответствующих шоу и вниманию к публике.</p>
-    <p lang="ru">Интересно составлен сет — по одной песне с каждого выпущенного альбома с 1989 по 2013 годы. Молодцы, что вернули в программу As I Am и Panic Attack — их нехватало с <a class="link" href="/life/dreamtheater.2009">2009 года</a>.</p>
-    <p lang="ru">Что играли:</p>
+    @ru
+      <p>Фестиваль музыки в стиле прогрессив метал с хэдлайнерами в лице Дрим Театра. Ограничение по времени фестивальных выступлений коснулось и их — сет был всего на полтора часа, когда <a class="link" href="/life/dreamtheater.2014.spb">годом ранее</a> они играли три.</p>
+      <p>Укрепилось впечатление, что музыкантам Москва нравится больше Питера по их активности на соответствующих шоу и вниманию к публике.</p>
+      <p>Интересно составлен сет — по одной песне с каждого выпущенного альбома с 1989 по 2013 годы. Молодцы, что вернули в программу As I Am и Panic Attack — их нехватало с <a class="link" href="/life/dreamtheater.2009">2009 года</a>.</p>
+    @endlang
+    @include('tpl.setlist-title')
     <ol>
       <li>Afterlife</li>
       <li>Metropolis Pt. 1: The Miracle and the Sleeper</li>
@@ -32,15 +34,19 @@
   </div>
 </div>
 
-<p lang="ru">Несколько фото с концерта.</p>
+@ru
+  <p>Несколько фото с концерта.</p>
+@endlang
 <div class="fotorama">
   <img src="https://life.ivacuum.ru/gigs/dreamtheater.2015/IMG_1682.jpg">
   <img src="https://life.ivacuum.ru/gigs/dreamtheater.2015/IMG_1688.jpg">
   <img src="https://life.ivacuum.ru/gigs/dreamtheater.2015/IMG_1689.jpg">
 </div>
 
-<p lang="ru">Видеозапись выступления:</p>
-<div class="fotorama" data-width="1280" data-ratio="16/10">
+@ru
+  <p>Видеозапись выступления:</p>
+@endlang
+<div class="fotorama" data-width="1000" data-ratio="1000/595">
   <a href="https://www.youtube.com/watch?v=w0ZYxUeKsu8"></a>
 </div>
 @endsection

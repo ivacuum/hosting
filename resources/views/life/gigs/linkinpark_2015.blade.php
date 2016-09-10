@@ -5,8 +5,10 @@
 @section('content')
 <div class="row">
   <div class="col-md-7">
-    <p lang="ru">Спустя два дня после Металлики в Олимпийском выступил Линкин Парк. Набор песен мало отличался от <a class="link" href="/life/linkinpark.2014">прошлого года</a>. В этот раз было два флэшмоба: листы с надписью you are always welcome в начале песни #20 и слоеный флаг РФ после песни #23.</p>
-    <p lang="ru">Что играли:</p>
+    @ru
+      <p>Спустя два дня после Металлики в Олимпийском выступил Линкин Парк. Набор песен мало отличался от <a class="link" href="/life/linkinpark.2014">прошлого года</a>. В этот раз было два флэшмоба: листы с надписью you are always welcome в начале песни #20 и слоеный флаг РФ после песни #23.</p>
+    @endlang
+    @include('tpl.setlist-title')
     <ol>
       <li>Papercut</li>
       <li>Given Up</li>
@@ -38,12 +40,17 @@
   </div>
   <div class="col-md-5">
     <div class="img-container">
+      <img src="https://life.ivacuum.ru/gigs/linkinpark.2015.08.29.jpg">
     </div>
   </div>
 </div>
 
-<p lang="ru">Как шоу смотрелось и слышалось из фан-зоны.</p>
-<div class="fotorama" data-width="1280" data-ratio="16/10">
+@ru
+  <p>Как шоу смотрелось и слышалось из фан-зоны.</p>
+@en
+  <p>Fan-zone experience.</p>
+@endlang
+<div class="fotorama" data-width="1000" data-ratio="1000/595">
   <a href="https://www.youtube.com/watch?v=x8i-KQowLZA"></a>
 </div>
 @endsection

@@ -5,7 +5,7 @@
 @section('content')
 <div class="row">
   <div class="col-md-7">
-    <p lang="ru">Что играли:</p>
+    @include('tpl.setlist-title')
     <ol>
       <li>Creeping Death</li>
       <li>For Whom the Bell Tolls</li>
@@ -34,8 +34,10 @@
   </div>
 </div>
 
-<p lang="ru">Видеозаписи концерта:</p>
-<div class="fotorama" data-width="720" data-ratio="16/10">
+@ru
+  <p>Видеозаписи концерта:</p>
+@endlang
+<div class="fotorama" data-width="720" data-ratio="720/437">
   <a href="https://www.youtube.com/watch?v=s3l5cyVLrTs"></a>
   <a href="https://vk.com/video_ext.php?oid=169906990&id=162953982&hash=598cee4929696e81&hd=1" data-video="true">
     <img src="https://pp.vk.me/c527523/u169906990/video/l_65e47bb1.jpg">

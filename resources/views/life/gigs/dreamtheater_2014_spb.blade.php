@@ -5,8 +5,10 @@
 @section('content')
 <div class="row">
   <div class="col-md-7">
-    <p lang="ru">Впервые в жизни попал на Meet&amp;Greet — встречу и общение с группой до концерта.</p>
-    <p lang="ru">Что играли:</p>
+    @ru
+      <p>Впервые в жизни попал на Meet&amp;Greet — встречу и общение с группой до концерта.</p>
+    @endlang
+    @include('tpl.setlist-title')
     <ol>
       <li>The Enemy Inside</li>
       <li>The Shattered Fortress</li>
@@ -35,8 +37,10 @@
   </div>
 </div>
 
-<p lang="ru">Видеозапись выступления:</p>
-<div class="fotorama" data-width="1280" data-ratio="16/10">
+@ru
+  <p>Видеозапись выступления:</p>
+@endlang
+<div class="fotorama" data-width="1000" data-ratio="1000/595">
   <a href="https://www.youtube.com/watch?v=MiW2GYfSwqw"></a>
 </div>
 @endsection

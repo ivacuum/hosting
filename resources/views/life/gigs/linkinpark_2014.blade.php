@@ -5,8 +5,10 @@
 @section('content')
 <div class="row">
   <div class="col-md-7">
-    <p lang="ru">Смело можно сказать, что два вокалиста в группе — это ад! Не дадут спуска практически ни на минуту. Прокричишь куплет, припев будешь уже прыгать и орать, далее все заново. И так 100 минут. Стоило оно того? Однозначно да!</p>
-    <p lang="ru">Что играли:</p>
+    @ru
+      <p>Смело можно сказать, что два вокалиста в группе — это ад! Не дадут спуска практически ни на минуту. Прокричишь куплет, припев будешь уже прыгать и орать, далее все заново. И так 100 минут. Стоило оно того? Однозначно да!</p>
+    @endlang
+    @include('tpl.setlist-title')
     <ol>
       <li>Guilty All the Same</li>
       <li>Given Up</li>
@@ -43,8 +45,10 @@
   </div>
 </div>
 
-<p lang="ru">Видеозаписи с концерта: полное шоу, флэшмоб (трек #19) и medley (трек #11).</p>
-<div class="fotorama" data-width="1280" data-ratio="16/10">
+@ru
+  <p>Видеозаписи с концерта: полное шоу, флэшмоб (трек #19) и medley (трек #11).</p>
+@endlang
+<div class="fotorama" data-width="1000" data-ratio="1000/595">
   <a href="https://www.youtube.com/watch?v=rLB0aIGS0zE"></a>
   <a href="https://www.youtube.com/watch?v=NdIBg8zHRFI"></a>
   <a href="https://vk.com/video_ext.php?oid=169906990&id=168576241&hash=1112fdc7c48b81fc&hd=3" data-video="true">

@@ -11,7 +11,7 @@
   {{ $gig->title }}
   <small><time datetime="{{ $gig->date->toDateString() }}">{{ $gig->fullDate() }}</time></small>
 </h2>
-<div class="trip-text js-trip-shortcuts trip-lang-{{ $locale }}">
+<div class="trip-text js-trip-shortcuts">
 @endsection
 
 @section('content_footer')
