@@ -4,7 +4,7 @@
 @ru
   <p>День.</p>
 @en
-  <p>Day.</p>
+  <p>Afternoon.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_0115.jpg'])
 
