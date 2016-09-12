@@ -1,6 +1,7 @@
 @extends('acp.dev.base')
 
 @section('content')
+<h2 class="m-t-0">Созданные миниатюры</h2>
 @foreach ($thumbnails as $thumbnail)
   <h3>{{ basename($thumbnail['dest']) }}</h3>
   @if (false !== $thumbnail['lat'] && false !== $thumbnail['lon'])

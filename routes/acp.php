@@ -46,10 +46,10 @@ Route::group(['prefix' => 'dev'], function () {
     Route::get('/', 'Acp\Dev@index');
     Route::get('debugbar', 'Acp\Dev@debugbar');
     Route::get('svg', 'Acp\Dev@svg');
-    Route::get('templates', 'Acp\Dev@templates');
-    Route::get('templates/{template}', 'Acp\Dev@template');
-    Route::get('thumbnails', 'Acp\Dev@thumbnails');
-    Route::post('thumbnails', 'Acp\Dev@thumbnailsPost');
+    Route::get('templates', 'Acp\Dev\Templates@index');
+    Route::get('templates/{template}', 'Acp\Dev\Templates@template');
+    Route::get('thumbnails', 'Acp\Dev\Thumbnails@index');
+    Route::post('thumbnails', 'Acp\Dev\Thumbnails@thumbnailsPost');
 });
 
 Route::group(['prefix' => 'domains'], function () {

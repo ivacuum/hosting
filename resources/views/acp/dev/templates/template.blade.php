@@ -2,7 +2,7 @@
 
 @section('content_header')
 <div class="lead js-shortcuts-items">
-  <div class="trip-text js-trip-shortcuts">
+  <div class="trip-text js-trip-shortcuts trip-small-images">
 @endsection
 
 @section('content_footer')

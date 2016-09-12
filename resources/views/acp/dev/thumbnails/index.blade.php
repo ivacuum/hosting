@@ -6,8 +6,6 @@
 
   @include('tpl.form_errors')
 
-  <input type="hidden" name="format" value="life">
-
   <div class="form-group {{ $errors->has('count') ? 'has-error' : '' }}">
     <label class="col-md-3 control-label required">Файлы:</label>
     <div class="col-md-6">
