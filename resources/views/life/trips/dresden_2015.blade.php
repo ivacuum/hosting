@@ -7,6 +7,10 @@
 
 @ru
   <p>Цвет велосипедиста в Германии — красный, пешехода — серый.</p>
+@en
+  <p>German cyclist color is red, and pedestrian is gray.</p>
+@de
+  <p>Die Farbe des Radfahrers in Deutschland ist rot und des Fußgängers ist grau.</p>
 @endlang
 @include('tpl.fotorama', ['pics' => [
   'IMG_2075.jpg',

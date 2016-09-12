@@ -52,6 +52,6 @@
 Диалог с водителем:
 — Do you speak english?
 — Nein. Sprechen sie Spanish?
-— Nein. lentach
+— Nein. ¯\_(ツ)_/¯
 --}}
 @endsection
