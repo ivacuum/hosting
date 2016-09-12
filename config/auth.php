@@ -31,7 +31,6 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'email' => 'emails.auth.password.remind',
             'table' => 'password_reminders',
             'expire' => 60, // min
         ],
