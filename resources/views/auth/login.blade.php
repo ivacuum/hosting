@@ -28,7 +28,7 @@
     </div>
 
     <div class="checkbox">
-      <label><input type="checkbox" name="foreign"> Чужой компьютер?</label>
+      <label><input type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}> Чужой компьютер?</label>
     </div>
 
     <button type="submit" class="btn btn-primary btn-lg btn-block">
