@@ -38,17 +38,22 @@ class Auth extends Controller
         ];
 
         if ($this->auth->attempt($credentials, !$this->request->has('foreign'))) {
+            $this->request->session()->regenerate();
+
             return redirect()->intended('/');
         }
 
-        return redirect('/auth/login')
-            ->withMessage('Электронная почта или пароль неверны')
-            ->withInput();
+        return back()
+            ->with('message', 'Электронная почта или пароль неверны')
+            ->withInput($this->request->only('email', 'foreign'));
     }
 
     public function logout()
     {
         $this->auth->logout();
+
+        $this->request->session()->flush();
+        $this->request->session()->regenerate();
 
         return redirect('/');
     }
@@ -65,18 +70,13 @@ class Auth extends Controller
             'email' => 'required|email',
         ]);
 
-        $response = $passwords->sendResetLink($this->request->only('email'), function ($mail) {
-            $mail->subject('Восстановление пароля');
-        });
+        $response = $passwords->sendResetLink($this->request->only('email'));
 
-        switch ($response)
-        {
-            case PasswordBroker::RESET_LINK_SENT:
-                return redirect()->back()->with('message', trans($response));
-
-            case PasswordBroker::INVALID_USER:
-                return redirect()->back()->withErrors(['email' => trans($response)]);
+        if (PasswordBroker::RESET_LINK_SENT === $response) {
+            return back()->with('message', trans($response));
         }
+
+        return back()->withErrors(['email' => trans($response)]);
     }
 
     public function passwordReset($token = '')
@@ -94,7 +94,7 @@ class Auth extends Controller
             'mail'     => 'empty',
             'token'    => 'required',
             'email'    => 'required|email',
-            'password' => 'required',
+            'password' => 'required|min:6',
         ]);
 
         $credentials = $this->request->only('email', 'password', 'token');
@@ -102,19 +102,18 @@ class Auth extends Controller
 
         $response = $passwords->reset($credentials, function ($user, $password) {
             $user->password = $password;
+            $user->remember_token = str_random(60);
             $user->save();
             $this->auth->login($user);
         });
 
-        switch ($response) {
-            case PasswordBroker::PASSWORD_RESET:
-                return redirect('/');
-
-            default:
-                return redirect()->back()
-                            ->withInput($this->request->only('email'))
-                            ->withErrors(['email' => trans($response)]);
+        if (PasswordBroker::PASSWORD_RESET === $response) {
+            return redirect('/')->with('message', trans($response));
         }
+
+        return back()
+            ->withInput($this->request->only('email'))
+            ->withErrors(['email' => trans($response)]);
     }
 
     public function register()
