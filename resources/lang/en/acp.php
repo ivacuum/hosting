@@ -47,6 +47,12 @@ return [
     'gigs.edit'   => 'Edit',
     'gigs.show'   => 'Gig',
 
+    'pages.add'    => 'Add page',
+    'pages.index'  => 'Pages',
+    'pages.create' => 'New page',
+    'pages.edit'   => 'Edit',
+    'pages.show'   => 'Page',
+
     'servers.add'    => 'Add server',
     'servers.index'  => 'Servers',
     'servers.create' => 'New server',

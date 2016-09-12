@@ -47,6 +47,12 @@ return [
     'gigs.edit'   => 'Редактирование концерта',
     'gigs.show'   => 'Концерт',
 
+    'pages.add'    => 'Добавить страницу',
+    'pages.index'  => 'Страницы',
+    'pages.create' => 'Новая страница',
+    'pages.edit'   => 'Редактирование страницы',
+    'pages.show'   => 'Страница',
+
     'servers.add'    => 'Добавить сервер',
     'servers.index'  => 'Серверы',
     'servers.create' => 'Новый сервер',
