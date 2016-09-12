@@ -67,7 +67,7 @@
               <li><a href="{{ url($request_uri) }}" lang="ru">Русский</a></li>
             </ul>
           </li>
-          @if (Auth::check() && !starts_with($self, 'Acp\Dev'))
+          @if (Auth::check() && !starts_with($self, 'Acp\\'))
             @if (Auth::user()->isAdmin())
               <li>
                 <a href="{{ App::environment('local') ? "{$locale_uri}/acp/dev/templates" : "{$locale_uri}/acp/trips" }}">
