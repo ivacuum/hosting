@@ -2,7 +2,7 @@
 
 @section('content')
 <h3>
-  Страницы
+  {{ trans("$tpl.index") }}
   @include('acp.tpl.create')
 </h3>
 <table id="tree" class="table-stats m-b-1">

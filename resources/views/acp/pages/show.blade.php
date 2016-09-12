@@ -1,5 +1,5 @@
 @extends("$tpl.base")
 
 @section('content')
-{!! $page->html !!}
+{!! $model->html !!}
 @endsection
