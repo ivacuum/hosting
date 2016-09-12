@@ -42,7 +42,7 @@
 @section('content_footer')
 </div>
 <div class="travel-timeline-container">
-  @if (sizeof($previous_trips))
+  @if (isset($previous_trips) && sizeof($previous_trips))
     @foreach ($previous_trips as $previous)
       <div class="travel-timeline">
         <div class="travel-timeline-date">
@@ -59,17 +59,17 @@
     <div class="travel-timeline-date">{{ $trip->period }} {{ $trip->year }}</div>
     <strong>{{ $trip->title }}</strong>
     <div class="travel-timeline-arrows">
-      @if (sizeof($previous_trips))
+      @if (isset($previous_trips) && sizeof($previous_trips))
         <span class="horizontal">&larr;</span>
         <span class="vertical">&darr;</span>
       @endif
-      @if (sizeof($next_trips))
+      @if (isset($previous_trips) && sizeof($next_trips))
         <span class="horizontal">&rarr;</span>
         <span class="vertical">&uarr;</span>
       @endif
     </div>
   </div>
-  @if (sizeof($next_trips))
+  @if (isset($next_trips) && sizeof($next_trips))
     @foreach ($next_trips as $next)
       <div class="travel-timeline">
         <div class="travel-timeline-date">
