@@ -3,25 +3,48 @@
 use App\Http\Controllers\Acp\Controller;
 use App\Trip;
 use Breadcrumbs;
+use Symfony\Component\Finder\Finder;
 
 class Templates extends Controller
 {
     public function index()
     {
-        $templates = [];
+        $templates = collect();
+        $total = (object) ['pics' => 0];
+        $langs = config('cfg.locales');
 
-        foreach (glob(base_path('resources/views/life/trips/*.blade.php')) as $template) {
-            $info = pathinfo($template);
-            $filename = str_replace('.blade.php', '', $info['basename']);
-
-            if ($filename == 'base') {
-                continue;
-            }
-
-            $templates[] = $filename;
+        foreach ($langs as $lang => $ary) {
+            $total->{$lang} = 0;
         }
 
-        return view($this->view, compact('templates'));
+        $finder = Finder::create()
+            ->files()
+            ->in(base_path('resources/views/life/trips'))
+            ->name('*.blade.php')
+            ->notName('base.blade.php');
+
+        foreach ($finder as $template) {
+            $contents = $template->getContents();
+
+            $pics = preg_match_all('/\.jpg/', $contents);
+            $total->pics += $pics;
+
+            $i18n = collect($langs)->keys()->flip()->map(function ($value, $key) use ($contents, $total) {
+                return substr_count($contents, "@{$key}\n");
+            })->all();
+
+            foreach ($langs as $lang => $ary) {
+                $total->{$lang} += $i18n[$lang];
+            }
+
+            $templates->push((object) [
+                'name' => $template->getBasename('.blade.php'),
+                'i18n' => (object) $i18n,
+                'pics' => $pics,
+            ]);
+        }
+
+        return view($this->view, compact('templates', 'total'));
     }
 
     public function template($template)
