@@ -50,7 +50,7 @@
 @ru
   <p>На улице +12&deg;C, какие-то дома красят, а этот сносят.</p>
 @en
-  <p>It's 53&deg;F, some houses are being painted, but this one is being demolished.</p>
+  <p>It's +12&deg;C (53&deg;F), some houses are being painted, but this one is being demolished.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_2113.jpg'])
 
