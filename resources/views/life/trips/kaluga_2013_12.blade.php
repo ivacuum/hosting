@@ -6,8 +6,8 @@
 @en
   <p>The weather doesn't look like it's January 1 in a few days.</p>
 @endlang
-<div class="fotorama">
-  <img src="https://life.ivacuum.ru/kaluga.2013.12/IMG_0339.jpg">
-  <img src="https://life.ivacuum.ru/kaluga.2013.12/IMG_0340.jpg">
-</div>
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_0339.jpg',
+  'IMG_0340.jpg',
+]])
 @endsection
