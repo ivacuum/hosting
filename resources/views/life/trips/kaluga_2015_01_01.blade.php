@@ -6,32 +6,36 @@
 @endlang
 
 @ru
-  <p>Как менялось содержимое стола в процессе сборки.</p>
+  <p>Изменение содержимого стола в процессе сборки.</p>
+@en
+  <p>Table's content changes while assembling.</p>
 @endlang
-<div class="fotorama">
-  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1378.jpg">
-  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1380.jpg">
-  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1382.jpg">
-  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1386.jpg">
-  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1389.jpg">
-  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1391.jpg">
-  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1397.jpg">
-</div>
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1378.jpg',
+  'IMG_1380.jpg',
+  'IMG_1382.jpg',
+  'IMG_1386.jpg',
+  'IMG_1389.jpg',
+  'IMG_1391.jpg',
+  'IMG_1397.jpg',
+]])
 
 @ru
   <p>Модель обрастала деталями.</p>
+@en
+  <p>Model is growing with parts.</p>
 @endlang
-<div class="fotorama">
-  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1381.jpg">
-  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1388.jpg">
-  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1392.jpg">
-  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1393.jpg">
-  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1396.jpg">
-  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1398.jpg">
-  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1400.jpg">
-  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1401.jpg">
-  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1402.jpg">
-  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1403.jpg">
-  <img src="https://life.ivacuum.ru/kaluga.2015.01.01/IMG_1405.jpg">
-</div>
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1381.jpg',
+  'IMG_1388.jpg',
+  'IMG_1392.jpg',
+  'IMG_1393.jpg',
+  'IMG_1396.jpg',
+  'IMG_1398.jpg',
+  'IMG_1400.jpg',
+  'IMG_1401.jpg',
+  'IMG_1402.jpg',
+  'IMG_1403.jpg',
+  'IMG_1405.jpg',
+]])
 @endsection
