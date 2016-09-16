@@ -121,6 +121,11 @@
               </a>
             </p>
           @elseif ($attach->type == 'link')
+            @if (isset($attach->link->image_big))
+              <div class="img-container">
+                <img src="{{ @$attach->link->image_big }}">
+              </div>
+            @endif
             <p>
               <a href="{{ $attach->link->url }}" class="link">
                 @svg (link)
