@@ -2,7 +2,7 @@
 
 @section('content')
 @ru
-  <p>Первый же встретившийся дорожный знак в Германии — ограничение скорости 130 км/ч. И ветряные мельницы вдали.</p>
+  <p>Первый встретившийся дорожный знак в Германии — ограничение скорости 130 км/ч. И ветряные мельницы вдали.</p>
 @en
   <p>The first road sign I saw in Germany is 130 kph (80 mph) speed limit. And windmills in the distance.</p>
 @endlang
