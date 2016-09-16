@@ -28,23 +28,27 @@
 
 <form action="{{ action('ParserVk@indexPost') }}" method="post">
   <ul class="pager">
-    <li class="previous">
-      <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}" id="previous_page">
-        @svg (chevron-left)
-        {{ $next->formatLocalized('%e %B') }}
-      </a>
-    </li>
+    @if (!empty($next))
+      <li class="previous">
+        <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}?own={{ $own }}" id="previous_page">
+          @svg (chevron-left)
+          {{ $next->formatLocalized('%e %B') }}
+        </a>
+      </li>
+    @endif
     <li class="hidden-xs">
       Топ 10
       <input class="form-control d-inline-block" type="text" name="slug" value="{{ $vkpage }}" style="width: 8em;">
       за {{ $date->formatLocalized('%e %B') }}
     </li>
-    <li class="next">
-      <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}" id="next_page">
-        &nbsp;{{ $previous->formatLocalized('%e %B') }}
-        @svg (chevron-right)
-      </a>
-    </li>
+    @if (!empty($previous))
+      <li class="next">
+        <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}?own={{ $own }}" id="next_page">
+          &nbsp;{{ $previous->formatLocalized('%e %B') }}
+          @svg (chevron-right)
+        </a>
+      </li>
+    @endif
   </ul>
   {{ csrf_field() }}
 </form>
@@ -158,17 +162,21 @@
 </div>
 
 <ul class="pager">
-  <li class="previous">
-    <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}">
-      @svg (chevron-left)
-      {{ $next->formatLocalized('%e %B') }}
-    </a>
-  </li>
-  <li class="next">
-    <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}">
-      &nbsp;{{ $previous->formatLocalized('%e %B') }}
-      @svg (chevron-right)
-    </a>
-  </li>
+  @if (!empty($next))
+    <li class="previous">
+      <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}">
+        @svg (chevron-left)
+        {{ $next->formatLocalized('%e %B') }}
+      </a>
+    </li>
+  @endif
+  @if (!empty($previous))
+    <li class="next">
+      <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}">
+        &nbsp;{{ $previous->formatLocalized('%e %B') }}
+        @svg (chevron-right)
+      </a>
+    </li>
+  @endif
 </ul>
 @endsection
