@@ -6,8 +6,8 @@
 @en
   <p>A couple of night shots.</p>
 @endlang
-<div class="fotorama">
-  <img src="https://life.ivacuum.ru/kaluga.2014.10/IMG_1250.jpg">
-  <img src="https://life.ivacuum.ru/kaluga.2014.10/IMG_1247.jpg">
-</div>
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1250.jpg',
+  'IMG_1247.jpg',
+]])
 @endsection
