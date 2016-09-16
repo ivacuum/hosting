@@ -6,39 +6,39 @@
 @en
   <p>Good explanation of what's being constructed. "Subway is growing! The first train from Petrovsky park station is departing in late 2015."</p>
 @endlang
-@include('tpl.pic', ['pic' => 'IMG_0197.jpg'])
+@include('tpl.pic-2x', ['pic' => 'IMG_0197.jpg'])
 
 @ru
   <p>Хитрец избегает оплаты за парковку.</p>
 @en
   <p>Sneaky driver avoids parking payment.</p>
 @endlang
-@include('tpl.pic', ['pic' => 'IMG_0198.jpg'])
+@include('tpl.pic-2x', ['pic' => 'IMG_0198.jpg'])
 
 @ru
   <p>На пути в Государственный Кремлевский дворец — он справа от башни.</p>
 @en
   <p>On the way to the State Kremlin Palace, it's to the right of the tower.</p>
 @endlang
-@include('tpl.pic', ['pic' => 'IMG_0199.jpg'])
+@include('tpl.pic-2x', ['pic' => 'IMG_0199.jpg'])
 
 @ru
   <p>Внутри <abbr title="Государственного Кремлевского дворца">ГКД</abbr>.</p>
 @en
   <p>Inside the <abbr title="State Kremlin Palace">SKP</abbr>.</p>
 @endlang
-@include('tpl.pic', ['pic' => 'IMG_0201.jpg'])
+@include('tpl.pic-2x', ['pic' => 'IMG_0201.jpg'])
 
 @ru
   <p>Кульминация вечера — предпоказ фильма Metallica: Through the Never. Приехали только ударник и басист. В лучших традициях знаменитостей <strike>опоздали</strike> задержались на пару часов. Красная ковровая дорожка, все как полагается. Ведущим был Иван Охлобыстин, слышно его было прекрасно во всем зале даже без микрофона. Зрители первых рядов получили возможность задать участникам группы вопросы, большинство из которых, впрочем, было ни о чем. Фильм показывали на английском языке с субтитрами, давно хотелось увидеть фильм в кино в таком формате. Во время самого показа по залу ходила охрана и препятствовала съемке. Звук в зале был потрясающий — очень близкий к <a class="link" href="/life/metallica.2008">концертному</a>. Довелось позднее сравнить со звуком в кинотеатре в Калуге. В последнем уши хотелось скорей заткнуть чем-нибудь или выбежать из зала — хорошо, что я на минуту всего в зал заглянул. Кстати, на предпоказе была 2D версия, а в широкий прокат фильм вышел в 3D.</p>
 @en
   <p>The culmination of the evening was presentation of the movie Metallica: Through the Never. Just band's drummer and bassist were there. They were late for the start for few hours like most of the celebrities do. Red carpet — all as it should be. The movie was streamed in english with russian subtitles, I always wanted to watch a movie in this format in the cinema. Sound in Kremlin palace was outstanding, very close to the <a class="link" href="/en/life/metallica.2008">concert</a> one. By the way, the movie was presented in 2D that day, but later in the cinemas it was available only in 3D.</p>
 @endlang
-<div class="fotorama">
-  <img src="https://life.ivacuum.ru/msk.2013.09/IMG_0203.jpg">
-  <img src="https://life.ivacuum.ru/msk.2013.09/IMG_0204.jpg">
-  <img src="https://life.ivacuum.ru/msk.2013.09/IMG_0205.jpg">
-</div>
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_0203.jpg',
+  'IMG_0204.jpg',
+  'IMG_0205.jpg',
+]])
 
 @ru
   <p>В определенный момент у переводчика возникли трудности с объяснением сложных оборотов речи Охлобыстина, это можно увидеть в видео ниже.</p>
