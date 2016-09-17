@@ -40,6 +40,9 @@
       Топ 10
       <input class="form-control d-inline-block" type="text" name="slug" value="{{ $vkpage }}" style="width: 8em;">
       за {{ $date->formatLocalized('%e %B') }}
+      @if ($date->year !== Carbon\Carbon::now()->year)
+        {{ $date->year }}
+      @endif
     </li>
     @if (!empty($previous))
       <li class="next">
