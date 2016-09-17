@@ -1,5 +1,5 @@
 @extends('life.base', [
-  'meta_title' => $gig->getMetaTitle(),
+  'meta_title' => $gig->metaTitle(),
   'meta_description' => $gig->meta_description,
   'meta_image' => $gig->meta_image,
 ])

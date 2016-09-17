@@ -47,6 +47,7 @@ class Gig extends Model
         return $this->belongsTo(City::class);
     }
 
+    // Attributes
     public function getMetaDescriptionAttribute()
     {
         return $this->{'meta_description_' . App::getLocale()};
@@ -62,11 +63,7 @@ class Gig extends Model
         return $this->{'title_' . App::getLocale()};
     }
 
-    public function getMetaTitle()
-    {
-        return $this->meta_title ?: "{$this->title} &middot; {$this->fullDate()}";
-    }
-
+    // Methods
     public function artistTimeline()
     {
         return $this->where('artist_id', $this->artist_id)
@@ -78,6 +75,11 @@ class Gig extends Model
     public function fullDate()
     {
         return $this->date->formatLocalized(trans('life.date.same_day'));
+    }
+
+    public function metaTitle()
+    {
+        return $this->meta_title ?: "{$this->title} &middot; {$this->fullDate()}";
     }
 
     public function shortDate()
