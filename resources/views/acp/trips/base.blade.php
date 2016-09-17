@@ -17,7 +17,7 @@
     <h2 class="m-t-0">
       @include('acp.tpl.back')
       {{ $model->title }}
-      <small>{{ $model->getLocalizedDate() }}</small>
+      <small>{{ $model->localizedDate() }}</small>
     </h2>
 @endsection
 

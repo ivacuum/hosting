@@ -99,10 +99,10 @@ class Trip extends Model
     public function getPeriodAttribute()
     {
         if ($this->date_start->month === $this->date_end->month) {
-            return $this->getMonthName($this->date_start->month);
+            return $this->monthName($this->date_start->month);
         }
 
-        return $this->getMonthName($this->date_start->month) . '–' . $this->getMonthName($this->date_end->month);
+        return $this->monthName($this->date_start->month) . '–' . $this->monthName($this->date_end->month);
     }
 
     public function getTitleAttribute()
@@ -124,7 +124,7 @@ class Trip extends Model
             ->groupBy('year');
     }
 
-    public function getLocalizedDate()
+    public function localizedDate()
     {
         if (0 === $this->date_end->diffInDays($this->date_start)) {
             return trim($this->date_start->formatLocalized(trans('life.date.same_day')));
@@ -137,14 +137,14 @@ class Trip extends Model
         return sprintf(trans('life.date.same_month'), $this->date_start->day, $this->date_end->day, $this->date_start->formatLocalized('%B'), $this->date_start->formatLocalized('%Y'));
     }
 
-    public function getMetaDescription()
+    public function metaDescription()
     {
         return $this->meta_description;
     }
 
-    public function getMetaTitle()
+    public function metaTitle()
     {
-        return $this->meta_title ?: "{$this->title} &middot; {$this->getLocalizedDate()}";
+        return $this->meta_title ?: "{$this->title} &middot; {$this->localizedDate()}";
     }
 
     /**
@@ -159,7 +159,7 @@ class Trip extends Model
             ->notName('base.blade.php');
     }
 
-    protected function getMonthName($month)
+    protected function monthName($month)
     {
         // Собственный перевод, так как нужен именительный падеж в русском языке
         return trans("months.{$month}");

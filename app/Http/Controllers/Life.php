@@ -131,7 +131,7 @@ class Life extends Controller
         Breadcrumbs::push(trans('menu.countries'), "life/countries");
         Breadcrumbs::push($trip->city->country->title, "life/countries/{$trip->city->country->slug}");
         Breadcrumbs::push($trip->city->title, "life/{$trip->city->slug}");
-        Breadcrumbs::push($trip->getLocalizedDate(), "life/{$trip->slug}");
+        Breadcrumbs::push($trip->localizedDate(), "life/{$trip->slug}");
 
         $timeline = $trip->cityTimeline();
 

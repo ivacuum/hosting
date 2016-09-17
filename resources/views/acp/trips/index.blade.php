@@ -30,7 +30,7 @@
             @svg (pencil)
           @endif
         </td>
-        <td>{{ $model->getLocalizedDate() }}</td>
+        <td>{{ $model->localizedDate() }}</td>
         <td>
           <a class="link" href="{{ $locale_uri }}/life/{{ $model->slug }}">
             {{ $model->slug }}

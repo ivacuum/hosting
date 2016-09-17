@@ -1,6 +1,6 @@
 @extends('life.base', [
-  'meta_title' => $trip->getMetaTitle(),
-  'meta_description' => $trip->getMetaDescription(),
+  'meta_title' => $trip->metaTitle(),
+  'meta_description' => $trip->metaDescription(),
   'meta_image' => $trip->meta_image,
 ])
 
@@ -22,7 +22,7 @@
       {{ $trip->title }}
       <div class="cover-description">{{ $trip->getMetaDescription() }}</div>
       <div class="cover-meta">
-        {{ $trip->getLocalizedDate() }}
+        {{ $trip->localizedDate() }}
         &nbsp;
         <span class="emoji">{{ $trip->city->country->emoji }}</span>
         {{ $trip->city->country->title }}
