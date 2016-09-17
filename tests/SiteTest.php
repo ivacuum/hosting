@@ -6,51 +6,57 @@ class SiteTest extends TestCase
 {
     use DatabaseMigrations;
 
-    /**
-     * @group pages
-     */
     public function testPages()
     {
-        $this->visit('/');
-        $this->visit('/about');
-        $this->visit('/docs');
-        $this->visit('/life');
-        $this->visit('/life/cities');
-        $this->visit('/life/countries');
-        $this->visit('/life/gigs');
+        $this->get('/')->assertResponseOk();
+        $this->get('/about')->assertResponseOk();
+        $this->get('/docs')->assertResponseOk();
+        $this->get('/life')->assertResponseOk();
+        $this->get('/life/cities')->assertResponseOk();
+        $this->get('/life/countries')->assertResponseOk();
+        $this->get('/life/gigs')->assertResponseOk();
     }
 
-    /**
-     * @group pages
-     */
+    public function testTripsTemplates()
+    {
+        $this->be(App\User::find(1));
+
+        foreach (App\Trip::templatesIterator() as $template) {
+            $this->get("/acp/dev/templates/{$template->getBasename('.blade.php')}")
+                ->assertResponseOk();
+        }
+    }
+
     public function testAcpPages()
     {
-        $this->visit('/acp/cities');
-        $this->visit('/acp/cities/create');
+        $this->be(App\User::find(1));
 
-        $this->visit('/acp/clients');
-        $this->visit('/acp/clients/create');
+        $this->get('/acp/cities')->assertResponseOk();
+        $this->get('/acp/cities/create')->assertResponseOk();
 
-        $this->visit('/acp/countries');
-        $this->visit('/acp/countries/create');
+        $this->get('/acp/clients')->assertResponseOk();
+        $this->get('/acp/clients/create')->assertResponseOk();
 
-        $this->visit('/acp/domains');
-        $this->visit('/acp/domains/create');
+        $this->get('/acp/countries')->assertResponseOk();
+        $this->get('/acp/countries/create')->assertResponseOk();
 
-        $this->visit('/acp/gigs');
-        $this->visit('/acp/gigs/create');
+        $this->get('/acp/domains')->assertResponseOk();
+        $this->get('/acp/domains/create')->assertResponseOk();
 
-        $this->visit('/acp/servers');
-        $this->visit('/acp/servers/create');
+        $this->get('/acp/gigs')->assertResponseOk();
+        $this->get('/acp/gigs/create')->assertResponseOk();
 
-        $this->visit('/acp/trips');
-        $this->visit('/acp/trips/create');
+        $this->get('/acp/servers')->assertResponseOk();
+        $this->get('/acp/servers/create')->assertResponseOk();
 
-        $this->visit('/acp/users');
-        $this->visit('/acp/users/create');
+        $this->get('/acp/trips')->assertResponseOk();
+        $this->get('/acp/trips/create')->assertResponseOk();
 
-        $this->visit('/acp/yandex/users');
-        $this->visit('/acp/yandex/users/create');
+        $this->get('/acp/users')->assertResponseOk();
+        $this->get('/acp/users/create')->assertResponseOk();
+
+        $this->get('/acp/yandex/users')->assertResponseOk();
+        $this->get('/acp/yandex/users/create')->assertResponseOk();
 
     }
 }
