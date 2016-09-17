@@ -29,7 +29,7 @@ class ParserVk extends Controller
         $posts = collect();
 
         $date_start = Carbon::parse($date)->startOfDay()->timestamp;
-        $date_end = Carbon::parse($date)->endofDay()->timestamp;
+        $date_end = Carbon::parse($date)->endOfDay()->timestamp;
         $previous = Carbon::parse($date)->subDay();
         $next = Carbon::now()->startOfDay()->gt($date) ? Carbon::parse($date)->addDay() : null;
 
@@ -48,13 +48,17 @@ class ParserVk extends Controller
             for ($i = 1, $len = sizeof($json) - 1; $i < $len; $i++) {
                 $post = $json[$i];
 
-                if (@!$post->is_pinned && $post->date < $date_start) {
+                if (@$post->is_pinned) {
+                    continue;
+                }
+
+                if ($post->date < $date_start) {
                     $previous = Carbon::createFromTimestamp($post->date);
                     $parsed = true;
                     break 2;
                 }
 
-                if ($post->date > $date_end || @$post->is_pinned) {
+                if ($post->date > $date_end) {
                     continue;
                 }
 
