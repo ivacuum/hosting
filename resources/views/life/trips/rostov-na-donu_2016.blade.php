@@ -119,7 +119,7 @@
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_0252.jpg'])
 
-@rn
+@ru
   <p>Дороги.</p>
 @en
   <p>Roads.</p>
