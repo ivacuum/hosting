@@ -6,6 +6,8 @@ use GuzzleHttp\Client;
 class ParserVk extends Controller
 {
     protected $client;
+    protected $token;
+    protected $version = '5.53';
     protected $vkpage;
 
     public function __construct()
@@ -18,13 +20,13 @@ class ParserVk extends Controller
     public function index($vkpage = 'pn6', $date = false)
     {
         $this->vkpage = $vkpage;
+        $this->token = $token = $this->request->input('token');
         $own = $this->request->input('own');
         $date = false === $date ? '-1 day' : $date;
         $date = Carbon::parse($date);
 
         $count = 100;
-        $offset = 0;
-        $total = 0;
+        $offset = $total = 0;
         $parsed = false;
         $posts = collect();
 
@@ -40,14 +42,19 @@ class ParserVk extends Controller
                 dd($json->error);
             }
 
-            $json = $json->response;
+            $total = $total ?: $json->response->count;
 
-            $total = $total ?: $json[0];
+            $json = $json->response->items;
 
-            // В первом элементе количество записей
-            for ($i = 1, $len = sizeof($json) - 1; $i < $len; $i++) {
-                $post = $json[$i];
+            $portion = sizeof($json);
 
+            if ($own) {
+                $json = collect($json)->reject(function ($post) {
+                    return !empty($post->copy_history);
+                });
+            }
+
+            foreach ($json as $post) {
                 if (@$post->is_pinned) {
                     continue;
                 }
@@ -75,28 +82,23 @@ class ParserVk extends Controller
                 $posts->push([
                     'likes'       => $post->likes->count,
                     'reposts'     => $post->reposts->count,
-                    'url'         => "https://vk.com/wall{$post->to_id}_{$post->id}",
+                    'url'         => "https://vk.com/wall{$post->owner_id}_{$post->id}",
                     'text'        => $post->text,
                     'type'        => $post->post_type,
                     'photos'      => $photos,
                     'attachment'  => @$post->attachment,
                     'attachments' => @$post->attachments,
+                    'copy_history' => @$post->copy_history,
                 ]);
             }
 
-            if ($offset + $i === $total) {
+            if ($offset + $portion === $total) {
                 $previous = null;
                 $parsed = true;
                 break;
             }
 
             $offset += $count;
-        }
-
-        if ($own) {
-            $posts = $posts->reject(function ($post) {
-                return $post['type'] === 'copy';
-            });
         }
 
         $posts = $posts->sortByDesc('likes')->take(10);
@@ -107,6 +109,7 @@ class ParserVk extends Controller
             'own',
             'posts',
             'previous',
+            'token',
             'vkpage'
         ));
     }
@@ -119,8 +122,11 @@ class ParserVk extends Controller
     protected function getPosts($count = 100, $offset = 0)
     {
         $cache_entry = "vk_{$this->vkpage}_{$count}_{$offset}";
+        $access_token = $this->token;
         $filter = 'owner';
-        $params = compact('count', 'filter', 'offset');
+        $v = $this->version;
+
+        $params = compact('access_token', 'count', 'filter', 'offset', 'v');
 
         if (is_numeric($this->vkpage)) {
             $params['owner_id'] = $this->vkpage;
@@ -129,6 +135,10 @@ class ParserVk extends Controller
         }
 
         return \Cache::remember($cache_entry, 15 + intval($offset / 100), function () use ($params) {
+            if ($params['access_token'] && $params['offset']) {
+                sleep(1);
+            }
+
             $response = $this->client->get('wall.get', ['query' => $params]);
 
             return json_decode($response->getBody());

@@ -30,7 +30,7 @@
   <ul class="pager">
     @if (!empty($next))
       <li class="previous">
-        <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}?own={{ $own }}" id="previous_page">
+        <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}?own={{ $own }}&token={{ $token }}" id="previous_page">
           @svg (chevron-left)
           {{ $next->formatLocalized('%e %B') }}
         </a>
@@ -46,7 +46,7 @@
     </li>
     @if (!empty($previous))
       <li class="next">
-        <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}?own={{ $own }}" id="next_page">
+        <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}?own={{ $own }}&token={{ $token }}" id="next_page">
           &nbsp;{{ $previous->formatLocalized('%e %B') }}
           @svg (chevron-right)
         </a>
@@ -67,7 +67,11 @@
   <div class="panel panel-default shortcuts-item">
     <div class="panel-body vk-post-container">
       @if ($post['text'])
-        <div class="vk-post-content lead">{!! $post['text'] !!}</div>
+        <div class="vk-post-content lead">{!! nl2br(e($post['text'])) !!}</div>
+      @endif
+      @if (!empty($post['copy_history']))
+        <div class="lead {{ $post['text'] ? 'm-t-1' : '' }} m-b-0"><strong>Репост</strong></div>
+        <div class="vk-post-content lead">{!! nl2br(e($post['copy_history'][0]->text)) !!}</div>
       @endif
       @if ($post['attachments'])
         <div class="vk-post-attachments">
@@ -81,8 +85,8 @@
           @endif
         @endif
         @foreach ($post['attachments'] as $attach)
-          @if ($attach->type == 'photo')
-            <img src="{{ @$attach->photo->src_xxbig ?: @$attach->photo->src_xbig ?: $attach->photo->src_big }}" width="{{ $attach->photo->width }}" height="{{ $attach->photo->height }}">
+          @if ($attach->type == 'photo' && isset($attach->photo->photo_604))
+            <img src="{{ @$attach->photo->photo_1280 ?: @$attach->photo->photo_807 ?: $attach->photo->photo_604 }}">
           @endif
         @endforeach
         @if ($post['photos'] > 0)
@@ -96,13 +100,13 @@
                 @svg (paperclip)
                 {{ $attach->doc->title }}
               </div>
-              <a href="{{ $attach->doc->url }}" class="js-gif-click">
-                <img src="{{ $attach->doc->thumb }}">
-              </a>
+              <video width="{{ $attach->doc->preview->video->width }}" height="{{ $attach->doc->preview->video->height }}" controls>
+                <source src="{{ $attach->doc->preview->video->src }}" type="video/mp4">
+              </video>
             </p>
           @elseif ($attach->type == 'audio' and $attach->audio->url)
             <p>
-              <a href="{{ $attach->audio->url }}" class="link">
+              <a class="link" href="{{ $attach->audio->url }}">
                 @svg (music)
                 {{ $attach->audio->artist }} — {{ $attach->audio->title }}
               </a>
@@ -112,7 +116,7 @@
             </p>
           @elseif ($attach->type == 'video')
             <p>
-              <a href="https://vk.com/video{{ $attach->video->owner_id }}_{{ $attach->video->vid }}" class="link">
+              <a class="link" href="https://vk.com/video{{ $attach->video->owner_id }}_{{ $attach->video->id }}">
                 @svg (film)
                 {{ $attach->video->title }}
               </a>
@@ -122,19 +126,19 @@
             </p>
           @elseif ($attach->type == 'page')
             <p>
-              <a href="{{ $attach->page->view_url }}" class="link">
+              <a class="link" href="{{ $attach->page->view_url }}">
                 @svg (file-text-o)
                 {{ $attach->page->title }}
               </a>
             </p>
           @elseif ($attach->type == 'link')
-            @if (isset($attach->link->image_big))
+            @if (isset($attach->link->photo->photo_604))
               <div class="img-container">
-                <img src="{{ @$attach->link->image_big }}">
+                <img src="{{ @$attach->link->photo->photo_604 }}">
               </div>
             @endif
             <p>
-              <a href="{{ $attach->link->url }}" class="link">
+              <a class="link" href="{{ $attach->link->url }}">
                 @svg (link)
                 {{ $attach->link->title }}
               </a>
