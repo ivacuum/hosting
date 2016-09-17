@@ -3,7 +3,6 @@
 use App\Http\Controllers\Acp\Controller;
 use App\Trip;
 use Breadcrumbs;
-use Symfony\Component\Finder\Finder;
 
 class Templates extends Controller
 {
@@ -17,13 +16,7 @@ class Templates extends Controller
             $total->{$lang} = 0;
         }
 
-        $finder = Finder::create()
-            ->files()
-            ->in(base_path('resources/views/life/trips'))
-            ->name('*.blade.php')
-            ->notName('base.blade.php');
-
-        foreach ($finder as $template) {
+        foreach (Trip::templatesIterator() as $template) {
             $contents = $template->getContents();
 
             $pics = preg_match_all('/\.jpg/', $contents);

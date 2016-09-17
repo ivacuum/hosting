@@ -2,6 +2,7 @@
 
 use App;
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\Finder\Finder;
 
 /**
  * Поездка
@@ -59,6 +60,7 @@ class Trip extends Model
         return $this->belongsTo(Country::class);
     }
 
+    // Scopes
     public function scopeNext($query)
     {
         return $query->where('date_start', '>=', $this->date_start)
@@ -83,6 +85,7 @@ class Trip extends Model
             ->take($take);
     }
 
+    // Attributes
     public function getMetaDescriptionAttribute()
     {
         return $this->{'meta_description_' . App::getLocale()};
@@ -112,6 +115,7 @@ class Trip extends Model
         return $this->date_start->year;
     }
 
+    // Methods
     public function cityTimeline()
     {
         return $this->where('city_id', $this->city_id)
@@ -141,6 +145,18 @@ class Trip extends Model
     public function getMetaTitle()
     {
         return $this->meta_title ?: "{$this->title} &middot; {$this->getLocalizedDate()}";
+    }
+
+    /**
+     * @return \Symfony\Component\Finder\Finder|\Symfony\Component\Finder\SplFileInfo[]
+     */
+    public static function templatesIterator()
+    {
+        return Finder::create()
+            ->files()
+            ->in(base_path('resources/views/life/trips'))
+            ->name('*.blade.php')
+            ->notName('base.blade.php');
     }
 
     protected function getMonthName($month)
