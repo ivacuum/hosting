@@ -257,13 +257,13 @@ a:hover {
 <div class="container-fluid wrapper">
   <div class="row-fluid heading">
     <div class="span8">
-      <!-- <img class="my-picture" src="http://www.gravatar.com/avatar/693c6f7aa6029f0055a455ae89a989f7?s=150"> -->
+      {{-- <img class="my-picture" src="http://www.gravatar.com/avatar/693c6f7aa6029f0055a455ae89a989f7?s=150"> --}}
       <img class="my-picture" src="https://life.ivacuum.ru/me.jpg" width="160" height="160">
       <h1 class="my-name">Сергей Панков</h1>
       <h2 class="my-profession">Веб-программист (PHP)</h2>
       <p class="my-message">Заинтересован в создании полезных людям веб-сервисов. Веб-технологиями увлекаюсь с 2003 года. С кодом моих проектов можно ознакомиться на <a href="https://github.com/ivacuum">Гитхабе</a>. Возможна удаленная работа.</p>
       <div class="clearfix"></div>
-      <!-- <p><img src="http://img.klavogonki.ru/userbar/ub6-232590.gif"></p> -->
+      {{-- <p><img src="http://img.klavogonki.ru/userbar/ub6-232590.gif"></p> --}}
       <div class="row-fluid resume">
         <div class="span6">
           <h3 class="my-caption">Образование</h3>
@@ -285,7 +285,17 @@ a:hover {
         </div>
         <div class="span6">
           <h3 class="my-caption">Опыт работы</h3>
-          <p>10.09.2007 &mdash; по настоящее время</p>
+          <p>01.12.2014 — по настоящее время</p>
+          <p>ООО Гала Маркетинг</p>
+          <p>Технический директор</p>
+
+          <p>&nbsp;</p>
+          <p>18.11.2013 — 11.03.2014</p>
+          <p><a href="http://www.smart-media.ru/">ООО МедиаКонтент</a></p>
+          <p>Ведущий разработчик</p>
+
+          <p>&nbsp;</p>
+          <p>10.09.2007 &mdash; 31.05.2013</p>
           <p><a href="http://www.korden.ru/">ООО Корден</a></p>
           <p>Веб-программист</p>
         </div>
@@ -341,6 +351,10 @@ a:hover {
         ВКонтакте
         <span><a href="https://vk.com/ivacuum">ivacuum</a></span>
       </h4>
+      <h4 class="my-info">
+        Телеграм
+        <span><a href="https://telegram.me/vacuum">vacuum</a></span>
+      </h4>
     </div>
   </div>
   <div class="my-caption">Профессиональные навыки</div>
@@ -371,6 +385,18 @@ a:hover {
   </ul>
   <div class="my-caption">Выполненные проекты</div>
   <ul>
+    <li>
+      2015 год
+      <ul>
+        <li><a href="https://kupislona.ru/">kupislona.ru</a> — доска объявлений Калуги и Калужской области</li>
+      </ul>
+    </li>
+    <li>
+      2014 год
+      <ul>
+        <li><a href="https://hosting.ivacuum.ru/">hosting.ivacuum.ru</a> — заметки о путешествиях и концертах</li>
+      </ul>
+    </li>
     <li>
       2013 год
       <ul>
