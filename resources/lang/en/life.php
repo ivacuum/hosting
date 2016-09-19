@@ -4,6 +4,12 @@ return [
     'intro_title' => 'Life notes',
     'intro_text'  => 'All the content I post in one place.',
 
+    'feedback.heading'     => 'Feedback',
+    'feedback.help'        => 'Leave your contact information if you want to get a reply',
+    'feedback.leave'       => 'Leave a feedback',
+    'feedback.placeholder' => 'Message text...',
+    'feedback.submit'      => 'Submit',
+
     'gigs_intro_title' => 'Attended and incoming concerts',
     'gigs_intro_text'  => 'It\'s all started with a simple plan of visiting one show per year, but something went wrong in 2014...',
 

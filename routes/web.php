@@ -13,6 +13,8 @@ Route::post('auth/password/remind', 'Auth@passwordRemindPost');
 Route::get('auth/password/reset/{token}', 'Auth@passwordReset');
 Route::post('auth/password/reset', 'Auth@passwordResetPost');
 
+Route::post('ajax/feedback', 'Ajax@feedback');
+
 Route::get('about', 'Home@about');
 Route::get('docs', 'Docs@index');
 Route::get('docs/{page}', 'Docs@page');

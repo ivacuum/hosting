@@ -3,12 +3,13 @@ import Pjax from './pjax';
 
 import './events';
 import './life';
+import './modal-feedback'
 import './shortcuts';
 import './yandex-dns';
 
 class Application {
   constructor() {
-    this.locale = window['AppOptions'].locale,
+    this.locale = window['AppOptions'].locale
     this.map = new Map(this.locale);
     this.pjax = new Pjax();
 
