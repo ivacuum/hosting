@@ -7,7 +7,7 @@ return [
     'feedback.heading'     => 'Feedback',
     'feedback.help'        => 'Leave your contact information if you want to get a reply',
     'feedback.leave'       => 'Leave a feedback',
-    'feedback.placeholder' => 'Message text...',
+    'feedback.placeholder' => 'Write a message...',
     'feedback.submit'      => 'Submit',
 
     'gigs_intro_title' => 'Attended and incoming concerts',
