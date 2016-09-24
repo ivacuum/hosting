@@ -97,7 +97,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_0081.jpg'])
 
 @ru
-  <p>Теплое течение?</p>
+  <p><a class="pseudo" data-toggle="feedback" data-target=".js-modal-feedback" data-question="Почему тепло?">Теплое течение?</a></p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_0085.jpg'])
 

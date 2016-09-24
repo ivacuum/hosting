@@ -42,7 +42,7 @@
 ]])
 
 @ru
-  <p>Зачем ящички?</p>
+  <p><a class="pseudo" data-toggle="feedback" data-target=".js-modal-feedback" data-question="Зачем ящички?">Зачем ящички?</a></p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_0427.jpg'])
 @endsection

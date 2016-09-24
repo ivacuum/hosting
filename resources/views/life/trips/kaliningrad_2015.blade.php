@@ -79,7 +79,7 @@
 @include('tpl.pic', ['pic' => 'IMG_1505.jpg'])
 
 @ru
-  <p>Что за очаги листьев на деревьях зимой?</p>
+  <p><a class="pseudo" data-toggle="feedback" data-target=".js-modal-feedback" data-question="Что за очаги листьев на деревьях зимой?">Что за очаги листьев</a> на деревьях зимой?</p>
 @endlang
 @include('tpl.fotorama', ['pics' => [
   'IMG_1500.jpg',
