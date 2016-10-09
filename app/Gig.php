@@ -67,7 +67,7 @@ class Gig extends Model
     public function artistTimeline()
     {
         return $this->where('artist_id', $this->artist_id)
-            ->orderBy('date', 'asc')
+            ->orderBy('date')
             ->get()
             ->groupBy('date.year');
     }

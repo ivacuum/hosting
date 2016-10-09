@@ -8,7 +8,7 @@ class Artists extends Controller
 {
     public function index()
     {
-        $models = Model::orderBy('title', 'asc')->get();
+        $models = Model::orderBy('title')->get();
 
         return view($this->view, compact('models'));
     }

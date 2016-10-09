@@ -66,7 +66,7 @@ class Trip extends Model
         return $query->where('date_start', '>=', $this->date_start)
             ->where('published', 1)
             ->where('id', '<>', $this->id)
-            ->orderBy('date_start', 'asc')
+            ->orderBy('date_start')
             ->take(2);
     }
 
@@ -119,7 +119,7 @@ class Trip extends Model
     public function cityTimeline()
     {
         return $this->where('city_id', $this->city_id)
-            ->orderBy('date_start', 'asc')
+            ->orderBy('date_start')
             ->get()
             ->groupBy('year');
     }

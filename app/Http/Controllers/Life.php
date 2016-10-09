@@ -47,7 +47,7 @@ class Life extends Controller
     public function countries()
     {
         $locale = App::getLocale();
-        $countries = Country::with('cities')->orderBy("title_{$locale}", 'asc')->get();
+        $countries = Country::with('cities')->orderBy("title_{$locale}")->get();
 
         Breadcrumbs::push(trans('menu.life'), 'life');
         Breadcrumbs::push(trans('menu.countries'));
