@@ -11,7 +11,8 @@
   <meta name="keywords" content="{{ $meta_keywords or '' }}">
   <meta name="description" content="{{ $meta_description or '' }}">
   <meta http-equiv="x-pjax-version" content="1">
-  <link rel="icon" sizes="256x256" href="/apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" href="https://life.ivacuum.ru/apple-touch-icon-precomposed.png">
+  <link rel="icon" href="https://life.ivacuum.ru/apple-touch-icon.png">
   <link rel="stylesheet" href="{{ App::environment('production') ? elixir('css/vendor.css') : '/build/css/vendor.css' }}">
   <link rel="stylesheet" href="{{ App::environment('production') ? elixir('css/app.css') : '/build/css/app.css' }}">
   @stack('head')
