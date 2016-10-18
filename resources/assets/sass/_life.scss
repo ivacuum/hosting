@@ -161,8 +161,12 @@
 }
 
 .trip-city-map {
-  height: 400px;
+  height: 300px;
   margin-bottom: 1rem;
+
+  @media (min-width: $screen-sm-min) {
+    height: 400px;
+  }
 }
 
 .trip-small-images {
