@@ -81,7 +81,13 @@ a[href^="http"]:empty::before { content: attr(href); }
   font-family: "Apple Color Emoji", "Segoe UI Emoji", "NotoColorEmoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
 }
 
-.lead { font-size: 18px; }
+.lead {
+  font-size: floor(($font-size-base * 1.15));
+
+  @media (min-width: $screen-md-min) {
+    font-size: 18px;
+  }
+}
 
 .wrap-content {
   min-height: 100%;
