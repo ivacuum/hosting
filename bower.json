@@ -7,8 +7,8 @@
     "floatThead": "^1.4",
     "fotorama": "^4.6",
     "jquery": "^2.2.0",
-    "jquery-ui": "^1.12",
     "jquery-pjax": "latest",
+    "jquery-ui": "^1.12",
     "jquery.scrollTo": "^2.1",
     "nprogress": "^0.2"
   }
