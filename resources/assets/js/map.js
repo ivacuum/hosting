@@ -13,7 +13,9 @@ export default class {
       this.map = new this.ym.Map(el, {
         center: [lat, lon],
         zoom: zoom,
-        controls: ['zoomControl', 'fullscreenControl']
+        controls: ['zoomControl', 'fullscreenControl'],
+      }, {
+        suppressMapOpenBlock: true,
       });
     });
   }
