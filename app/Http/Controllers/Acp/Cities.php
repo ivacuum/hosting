@@ -51,7 +51,7 @@ class Cities extends Controller
 
     public function update(Model $model, ModelEdit $request)
     {
-        $model->update($request->all());
+        $model->update($request->except('goto'));
 
         return $this->redirectAfterUpdate($model);
     }
