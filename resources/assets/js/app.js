@@ -104,7 +104,7 @@ class Application {
 
   initOnReadyAndPjax(pjax = false) {
     // Прилипшие заголовки таблиц
-    $('.js-float-thead').floatThead()
+    $('.js-float-thead').floatThead({ zIndex: 999 })
 
     // Подсказки
     $('.tip').tooltip()
