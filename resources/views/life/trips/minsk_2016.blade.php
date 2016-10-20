@@ -56,6 +56,6 @@
 ]])
 
 @ru
-  <p>Усё.</p>
+  <p>Ўсё.</p>
 @endlang
 @endsection
