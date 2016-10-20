@@ -36,6 +36,11 @@ class User extends Authenticatable
         return (bool) $this->is_admin;
     }
 
+    public function isRoot()
+    {
+        return $this->id === 1;
+    }
+
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPassword($token));
