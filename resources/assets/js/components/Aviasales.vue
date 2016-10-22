@@ -8,19 +8,19 @@
 <script>
 export default {
   mounted() {
-    // console.log('Aviasales ready.');
+    // console.log('Aviasales ready.')
   },
 
   methods: {
     aviasales(e) {
-      $(e.target).contents().unwrap();
+      $(e.target).contents().unwrap()
 
-      var s = document.createElement('script');
-      s.type = 'text/javascript';
-      s.src = 'https://www.travelpayouts.com/widgets/044c854e39d539701be0fa773757da42.js?v=443';
-      s.async = true;
-      document.getElementById('aviasales_container').appendChild(s);
+      var s = document.createElement('script')
+      s.type = 'text/javascript'
+      s.src = 'https://www.travelpayouts.com/widgets/044c854e39d539701be0fa773757da42.js?v=443'
+      s.async = true
+      document.getElementById('aviasales_container').appendChild(s)
     }
   }
-};
+}
 </script>
