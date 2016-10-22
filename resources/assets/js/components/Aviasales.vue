@@ -7,8 +7,8 @@
 
 <script>
 export default {
-  ready() {
-    console.log('Aviasales ready.');
+  mounted() {
+    // console.log('Aviasales ready.');
   },
 
   methods: {

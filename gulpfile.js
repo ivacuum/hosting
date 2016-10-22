@@ -1,20 +1,14 @@
 process.env.DISABLE_NOTIFIER = true;
 
-var elixir = require('laravel-elixir');
+const elixir = require('laravel-elixir');
+
+require('laravel-elixir-vue-2');
 
 elixir.config.publicPath = 'public/build';
 elixir.config.sourcemaps = false;
 elixir.config.versioning.buildFolder = '';
 
-/*
-elixir.config.js.browserify.transformers.push({
-  name: 'vueify',
-
-  options: {}
-});
-*/
-
-elixir(function(mix) {
+elixir((mix) => {
   mix.sass('app.scss')
 
     .styles([

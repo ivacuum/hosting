@@ -2052,7 +2052,7 @@ laravel-elixir-webpack-official@^1.0.4:
     webpack "2.1.0-beta.15 - 2.1.0-beta.22"
     webpack-stream "github:jeroennoten/webpack-stream#patch-1"
 
-laravel-elixir@^6.0.0-9:
+laravel-elixir@^6.0.0-11:
   version "6.0.0-11"
   resolved "https://registry.yarnpkg.com/laravel-elixir/-/laravel-elixir-6.0.0-11.tgz#107c6be07d2e8f10612bf656d7ded51355a8f59b"
   dependencies:
