@@ -63,14 +63,8 @@
 @en
   <p>Park in the living area.</p>
 @endlang
-@include('tpl.pic-2x', ['pic' => 'IMG_0809.jpg'])
-
-@ru
-  <p>Он же на видео.</p>
-@en
-  <p>The same park on video.</p>
-@endlang
 <youtube title="Hamburg street, July 2016" v="pUyNgQVl_H0"></youtube>
+@include('tpl.pic-2x', ['pic' => 'IMG_0809.jpg'])
 
 @ru
   <p>Дороги.</p>

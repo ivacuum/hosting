@@ -157,19 +157,13 @@
 @ru
   <p>В котором обитают утки и лебеди.</p>
 @endlang
+<youtube title="Düsseldorf park, July 2016" v="9zR1JGJTLJ4"></youtube>
 @include('tpl.pic-2x', ['pic' => 'IMG_1034.jpg'])
 
 @ru
   <p>Кажется, он меня узнал и идет пожать <strike>лапу</strike> руку.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_1036.jpg'])
-
-@ru
-  <p>Видео из парка.</p>
-@en
-  <p>Video inside the park.</p>
-@endlang
-<youtube title="Düsseldorf park, July 2016" v="9zR1JGJTLJ4"></youtube>
 
 @ru
   <p>Все на месте: прозрачный подъезд, велопарковка, почтовые ящики по фамилиям.</p>

@@ -92,12 +92,8 @@
 @ru
   <p>Такси кремового цвета, в основном одни Мерседесы.</p>
 @endlang
-@include('tpl.pic-2x', ['pic' => 'IMG_0685.jpg'])
-
-@ru
-  <p>Окрестности этого места на видео.</p>
-@endlang
 <youtube title="Berlin street, July 2016" v="ZlkiCXxaqQQ"></youtube>
+@include('tpl.pic-2x', ['pic' => 'IMG_0685.jpg'])
 
 @ru
   <p>Реклама велосипедных маршрутов, охватывающих всю страну. Велосипед очень популярен.</p>
