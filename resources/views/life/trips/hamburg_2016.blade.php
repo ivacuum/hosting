@@ -60,15 +60,17 @@
 
 @ru
   <p>Парк в жилом секторе.</p>
+@en
+  <p>Park in the living area.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_0809.jpg'])
 
 @ru
   <p>Он же на видео.</p>
+@en
+  <p>The same park on video.</p>
 @endlang
-<div class="fotorama" data-width="1000" data-ratio="1000/595">
-  <a href="https://www.youtube.com/embed/pUyNgQVl_H0">Hamburg street, July 2016</a>
-</div>
+<youtube title="Hamburg street, July 2016" v="pUyNgQVl_H0"></youtube>
 
 @ru
   <p>Дороги.</p>
@@ -90,10 +92,10 @@
 
 @ru
   <p>Один из перекрестков на видео.</p>
+@en
+  <p>One of the intersections on video.</p>
 @endlang
-<div class="fotorama" data-width="1000" data-ratio="1000/595">
-  <a href="https://www.youtube.com/embed/v6E6t12z0dU">Hamburg street, July 2016</a>
-</div>
+<youtube title="Hamburg street, July 2016" v="v6E6t12z0dU"></youtube>
 
 @ru
   <p>Поезда.</p>

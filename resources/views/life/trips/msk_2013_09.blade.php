@@ -45,7 +45,7 @@
   <youtube title="Презентация" v="FP28g9HijzQ"></youtube>
 @en
   <p>It was difficult for the translator to explain host's question to the band's members at some point. It can be seen in the video below.</p>
-<youtube title="Presentation" v="FP28g9HijzQ"></youtube>
+  <youtube title="Presentation" v="FP28g9HijzQ"></youtube>
 @endlang
 
 @ru

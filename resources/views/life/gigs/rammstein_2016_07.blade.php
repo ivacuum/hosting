@@ -83,8 +83,8 @@
 
 @ru
   <p>Видеозапись концерта.</p>
+@en
+  <p>Video of the show.</p>
 @endlang
-<div class="fotorama" data-width="1000" data-ratio="1000/595">
-  <a href="https://www.youtube.com/watch?v=rTsskqnjaIw"></a>
-</div>
+<youtube title="Rammstein, Waldbühne 2016" v="rTsskqnjaIw"></youtube>
 @endsection

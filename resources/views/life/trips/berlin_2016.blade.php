@@ -97,9 +97,7 @@
 @ru
   <p>Окрестности этого места на видео.</p>
 @endlang
-<div class="fotorama" data-width="1000" data-ratio="1000/595">
-  <a href="https://www.youtube.com/embed/ZlkiCXxaqQQ">Berlin street, July 2016</a>
-</div>
+<youtube title="Berlin street, July 2016" v="ZlkiCXxaqQQ"></youtube>
 
 @ru
   <p>Реклама велосипедных маршрутов, охватывающих всю страну. Велосипед очень популярен.</p>
@@ -185,9 +183,7 @@
 @ru
   <p>Одноэтажные автобусы наклоняются к тротуару на остановках. На видео заметно как автобус выпрямляется перед отправлением.</p>
 @endlang
-<div class="fotorama" data-width="1000" data-ratio="1000/595">
-  <a href="https://www.youtube.com/embed/gsyMCKccZHg">Berlin tilting bus, July 2016</a>
-</div>
+<youtube title="Berlin tilting bus, July 2016" v="gsyMCKccZHg"></youtube>
 
 @ru
   <p>Единственное грязное покрытие, после которого понадобилось протирать обувь. За все время пребывания в стране! Фото после прохождения контроля на концерт <a class="link" href="/life/rammstein.2016.07">Раммштайна</a>. Пускали только по именным билетам, сверяли с удостоверяющими личность документами. Такая практика оказалась распространена в Германии. На мой взгляд, это неплохой отпор перекупщикам. В России действуют иначе — билеты в продажу поступают порциями вплоть до даты концерта.</p>
@@ -216,9 +212,7 @@
 @ru
   <p>Ранее упомянутая городская электричка здесь зовется с-бан. Запечатленная линия находится на высоте 2-3 этажа.</p>
 @endlang
-<div class="fotorama" data-width="1000" data-ratio="1000/595">
-  <a href="https://www.youtube.com/embed/Q8hb6jDJY-s">Berlin S-Bahn, July 2016</a>
-</div>
+<youtube title="Berlin S-Bahn, July 2016" v="Q8hb6jDJY-s"></youtube>
 
 @ru
   <p>В Германии туго с открытым вай-фаем, часто его вовсе не найти. Но есть одна уловка — междугородние автобусы предлагают бесплатный доступ в сеть. Можно подключиться просто находясь неподалеку. А на <a class="link" href="https://www.busradar.com/">busradar.com</a> можно найти оптимальный рейс.</p>

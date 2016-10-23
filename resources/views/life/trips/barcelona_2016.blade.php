@@ -342,27 +342,21 @@
   <p>Напоследок несколько видео. Наслаждение смотреть 60 кадров в секунду.</p>
   <p>Как выглядит улица в центре.</p>
 @endlang
-<div class="fotorama" data-width="1000" data-ratio="1000/595">
-  <a href="https://www.youtube.com/embed/bh5oaJbD_z8">Barcelona street, May 2016</a>
-</div>
+<youtube title="Barcelona street, May 2016" v="bh5oaJbD_z8"></youtube>
 
 @ru
   <p>Аттракцион #1 в Порте Авентура неподалеку от Барселоны.</p>
 @en
   <p>Attraction #1 in Port Aventura not so far away from Barcelona.</p>
 @endlang
-<div class="fotorama" data-width="1000" data-ratio="1000/595">
-  <a href="https://www.youtube.com/embed/DqKHyp8IWyc">Port Aventura boats, June 2016</a>
-</div>
+<youtube title="Port Aventura boats, June 2016" v="DqKHyp8IWyc"></youtube>
 
 @ru
   <p>Аттракцион #2.</p>
 @en
   <p>Attraction #2.</p>
 @endlang
-<div class="fotorama" data-width="1000" data-ratio="1000/595">
-  <a href="https://www.youtube.com/embed/UAXCpzBtnYM">Port Aventura splash, June 2016</a>
-</div>
+<youtube title="Port Aventura splash, June 2016" v="UAXCpzBtnYM"></youtube>
 
 @ru
   <p>Видишь сову? Нет? А она есть.</p>

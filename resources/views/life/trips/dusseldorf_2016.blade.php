@@ -166,10 +166,10 @@
 
 @ru
   <p>Видео из парка.</p>
+@en
+  <p>Video inside the park.</p>
 @endlang
-<div class="fotorama" data-width="1000" data-ratio="1000/595">
-  <a href="https://www.youtube.com/embed/9zR1JGJTLJ4">Düsseldorf park, July 2016</a>
-</div>
+<youtube title="Düsseldorf park, July 2016" v="9zR1JGJTLJ4"></youtube>
 
 @ru
   <p>Все на месте: прозрачный подъезд, велопарковка, почтовые ящики по фамилиям.</p>
