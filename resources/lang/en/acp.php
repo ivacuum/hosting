@@ -7,11 +7,13 @@ return [
     'artists.edit'   => 'Edit',
     'artists.show'   => 'Artist',
 
-    'cities.add'    => 'Add city',
-    'cities.index'  => 'Cities',
-    'cities.create' => 'New city',
-    'cities.edit'   => 'Edit',
-    'cities.show'   => 'City',
+    'cities.add'        => 'Add city',
+    'cities.index'      => 'Cities',
+    'cities.create'     => 'New city',
+    'cities.edit'       => 'Edit',
+    'cities.show'       => 'City',
+    'cities.www'        => 'View on site',
+    'cities.update_geo' => 'Update geodata',
 
     'clients.add'    => 'Add clients',
     'clients.index'  => 'Clients',

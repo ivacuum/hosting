@@ -7,11 +7,13 @@ return [
     'artists.edit'   => 'Редактирование артиста',
     'artists.show'   => 'Артист',
 
-    'cities.add'    => 'Добавить город',
-    'cities.index'  => 'Города',
-    'cities.create' => 'Новый город',
-    'cities.edit'   => 'Редактирование города',
-    'cities.show'   => 'Город',
+    'cities.add'        => 'Добавить город',
+    'cities.index'      => 'Города',
+    'cities.create'     => 'Новый город',
+    'cities.edit'       => 'Редактирование города',
+    'cities.show'       => 'Город',
+    'cities.www'        => 'Посмотреть на сайте',
+    'cities.update_geo' => 'Обновить геоданные',
 
     'clients.add'    => 'Добавить клиента',
     'clients.index'  => 'Клиенты',

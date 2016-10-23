@@ -20,6 +20,7 @@ Route::group(['prefix' => 'cities'], function () {
     Route::put('{City}', 'Acp\Cities@update');
     Route::delete('{City}', 'Acp\Cities@destroy');
     Route::get('{City}/edit', 'Acp\Cities@edit');
+    Route::get('{City}/geo', 'Acp\Cities@updateGeo');
 });
 
 Route::group(['prefix' => 'clients'], function () {

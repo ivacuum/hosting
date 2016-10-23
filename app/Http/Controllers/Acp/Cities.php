@@ -4,6 +4,7 @@ use App;
 use App\City as Model;
 use App\Http\Requests\Acp\CityCreate as ModelCreate;
 use App\Http\Requests\Acp\CityEdit as ModelEdit;
+use App\Services\GoogleGeocoder;
 
 class Cities extends Controller
 {
@@ -54,5 +55,19 @@ class Cities extends Controller
         $model->update($request->except('goto'));
 
         return $this->redirectAfterUpdate($model);
+    }
+
+    public function updateGeo(Model $model, GoogleGeocoder $geocoder)
+    {
+        $geo = $geocoder->geocode("{$model->title}, {$model->country->title}")[0];
+
+        $model->update([
+            'lat' => $geo['lat'],
+            'lon' => $geo['lon'],
+        ]);
+
+        $this->request->session()->flash('message', "Геоданные обновлены: [{$model->lat} {$model->lon}]");
+
+        return back();
     }
 }
