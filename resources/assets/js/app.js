@@ -140,7 +140,8 @@ class Application {
 window.App = new Application
 
 Vue.component('aviasales', require('./components/Aviasales.vue'))
+Vue.component('youtube', require('./components/Youtube.vue'))
 
-const vuejs = new Vue({
+new Vue({
   el: '#pjax_container'
 })
