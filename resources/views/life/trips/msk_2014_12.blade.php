@@ -4,9 +4,7 @@
 @ru
   <p>Польская группа Tides from Nebula приехала в Москву с заключительным концертом тура. Ребята играют в стиле пост-рок. Очень понравились некоторые их песни, решил послушать вживую. Заодно выдалась прогулка по столице.</p>
 @endlang
-<div class="fotorama" data-width="1000" data-ratio="1000/595">
-  <a href="https://www.youtube.com/embed/Q9-BL_BEPHE">Tides From Nebula — Siberia</a>
-</div>
+<youtube title="Tides From Nebula — Siberia" v="Q9-BL_BEPHE"></youtube>
 
 <a name="triumph"></a>
 @ru
