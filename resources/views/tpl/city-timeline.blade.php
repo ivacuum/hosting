@@ -1,4 +1,4 @@
-@if (isset($timeline) && sizeof($timeline) > 1)
+@if (isset($timeline) && sizeof($timeline->flatten()) > 1)
   <div class="city-timeline clearfix">
     @foreach ($timeline as $year => $rows)
       <ul class="city-timeline-column">
