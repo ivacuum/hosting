@@ -144,6 +144,8 @@
 window.AppOptions = <?php echo json_encode([
   'csrfToken' => csrf_token(),
   'locale' => $locale,
+  'loggedIn' => Auth::check(),
+  'yandexMetrikaId' => 5266444,
 ]); ?>
 </script>
 <script src="{{ App::environment('production') ? elixir('js/vendor.js') : '/build/js/vendor.js' }}"></script>
