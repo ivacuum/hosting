@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="!uploading">
-      <input required id="userfiles" type="file" name="files[]" multiple min="1" max="100">
+      <input required id="userfiles" type="file" name="files[]" multiple min="1" max="1000">
     </div>
     <div v-if="uploading">
       Идет загрузка...
