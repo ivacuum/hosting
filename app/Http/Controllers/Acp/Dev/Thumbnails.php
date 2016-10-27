@@ -77,6 +77,10 @@ class Thumbnails extends Controller
             }
         }
 
+        if ($this->request->ajax()) {
+            return compact('thumbnails');
+        }
+
         return view($this->view, compact('thumbnails'));
     }
 
