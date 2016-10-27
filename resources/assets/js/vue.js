@@ -8,6 +8,7 @@ Vue.http.interceptors.push((request, next) => {
 })
 
 Vue.component('aviasales', require('./components/Aviasales.vue'))
+Vue.component('images-uploader', require('./components/ImagesUploader.vue'))
 Vue.component('youtube', require('./components/Youtube.vue'))
 
 new Vue({
