@@ -5,16 +5,8 @@ import './events'
 import './life'
 import './modal-feedback'
 import './shortcuts'
+import './vue'
 import './yandex-dns'
-
-window.Vue = require('vue')
-require('vue-resource')
-
-Vue.http.interceptors.push((request, next) => {
-  request.headers.set('X-CSRF-TOKEN', window['AppOptions'].csrfToken)
-
-  next()
-})
 
 class Application {
   constructor() {
@@ -138,10 +130,3 @@ class Application {
 }
 
 window.App = new Application
-
-Vue.component('aviasales', require('./components/Aviasales.vue'))
-Vue.component('youtube', require('./components/Youtube.vue'))
-
-new Vue({
-  el: '#pjax_container'
-})
