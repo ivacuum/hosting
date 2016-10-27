@@ -1,5 +1,6 @@
 import Map from './map'
 import Pjax from './pjax'
+import YandexMetrika from './yandex-metrika'
 
 import './events'
 import './life'
@@ -10,8 +11,11 @@ import './yandex-dns'
 
 class Application {
   constructor() {
-    this.locale = window['AppOptions'].locale
+    const options = window['AppOptions']
+
+    this.locale = options.locale
     this.map = new Map(this.locale)
+    this.metrika = new YandexMetrika(options.yandexMetrikaId)
     this.pjax = new Pjax()
 
     this.ajaxProgress()
@@ -116,6 +120,7 @@ class Application {
 
   onPjaxComplete() {
     $(document).on('pjax:complete', () => {
+      this.metrika.pjaxHit()
       this.pjax.onComplete()
 
       $(document.body).trigger('reset.js-lazy')
