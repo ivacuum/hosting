@@ -141,7 +141,7 @@
   </div>
 </footer>
 <script>
-window.AppOptions = <?php echo json_encode([
+<?php echo 'window.AppOptions = ' . json_encode([
   'csrfToken' => csrf_token(),
   'locale' => $locale,
   'loggedIn' => Auth::check(),
