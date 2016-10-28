@@ -17,9 +17,11 @@ class Application {
     this.map = new Map(this.locale)
     this.metrika = new YandexMetrika(options.yandexMetrikaId)
     this.pjax = new Pjax()
+    this.vm = null
 
     this.ajaxProgress()
     this.csrfToken()
+    this.initVue()
     this.onPjaxComplete()
     this.onPjaxSend()
 
@@ -64,6 +66,12 @@ class Application {
         $(this).attr('href', $(this).data('src2x'))
       })
     }
+  }
+
+  initVue() {
+    this.vm = new Vue({
+      el: '#pjax_container'
+    })
   }
 
   lazyLoadImages() {
@@ -122,6 +130,7 @@ class Application {
     $(document).on('pjax:complete', () => {
       this.metrika.pjaxHit()
       this.pjax.onComplete()
+      this.initVue()
 
       $(document.body).trigger('reset.js-lazy')
 
