@@ -249,6 +249,7 @@
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_1838.jpg'])
 
+<a name="lifebuoy"></a>
 @ru
   <p>Вдоль набережных расставлены спасательные круги.</p>
 @endlang
@@ -265,7 +266,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_1846.jpg'])
 
 @ru
-  <p>Трамвай довозит до стоянки парома. Последний доставит в Стокгольм.</p>
+  <p>Трамвай довозит до стоянки парома. Последний доставит в <a class="link" href="/life/stockholm.2016">Стокгольм</a>.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_1847.jpg'])
 @endsection
