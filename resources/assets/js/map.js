@@ -17,6 +17,8 @@ export default class {
       }, {
         suppressMapOpenBlock: true,
       })
+
+      this.map.behaviors.disable('scrollZoom')
     })
   }
 
