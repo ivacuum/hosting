@@ -103,12 +103,33 @@
 @endlang
 
 @ru
-  <p>Справочник по расшифровке окончаний названий улиц:</p>
-  <ul>
-    <li><em>-katu</em> — улица;</li>
-    <li><em>-tie</em> — дорога;</li>
-    <li><em>-kuja</em> — переулок.</li>
-  </ul>
+  <p>Справочник по расшифровке окончаний названий улиц.</p>
+  <table class="table-stats m-b-1">
+    <thead>
+      <tr>
+        <th>Финский</th>
+        <th>Шведский</th>
+        <th>Русский</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><em>-katu</em></td>
+        <td><em>-gata</em></td>
+        <td>улица</td>
+      </tr>
+      <tr>
+        <td><em>-tie</em></td>
+        <td><em>-väg</em></td>
+        <td>дорога</td>
+      </tr>
+      <tr>
+        <td><em>-kuja</em></td>
+        <td><em>-gränd</em></td>
+        <td>переулок</td>
+      </tr>
+    </tbody>
+  </table>
 @endlang
 
 @ru
