@@ -15,6 +15,7 @@
         <th></th>
         <th>Дата</th>
         <th>URL</th>
+        <th></th>
       </tr>
     </thead>
     @foreach ($models as $i => $model)
@@ -35,6 +36,11 @@
           <a class="link" href="{{ $locale_uri }}/life/{{ $model->slug }}">
             {{ $model->slug }}
           </a>
+        </td>
+        <td>
+          @if ($model->meta_image)
+            @svg (paperclip)
+          @endif
         </td>
       </tr>
     @endforeach
