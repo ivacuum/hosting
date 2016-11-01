@@ -14,6 +14,7 @@
         <th>Город</th>
         <th>URL</th>
         <th>Код IATA</th>
+        <th></th>
       </tr>
     </thead>
     @foreach ($models as $model)
@@ -30,6 +31,11 @@
           </a>
         </td>
         <td>{{ $model->iata }}</td>
+        <td>
+          @if ($model->lat && $model->lon)
+            @svg (map-marker)
+          @endif
+        </td>
       </tr>
     @endforeach
   </table>
