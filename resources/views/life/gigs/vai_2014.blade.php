@@ -55,10 +55,17 @@
 @ru
   <p>Попали под прицел фотокамер.</p>
 @en
-  <p>Were caught by cameras.</p>
+  <p>Were caught by the cameras.</p>
 @endlang
 <div class="fotorama">
   <img src="https://life.ivacuum.ru/gigs/vai.2014/Steve_093.jpg">
   <img src="https://life.ivacuum.ru/gigs/vai.2014/Steve_008.jpg">
 </div>
+
+@ru
+  <p>Видео одной из песен.</p>
+@en
+  <p>Short footage from the show.</p>
+@endlang
+<youtube title="Steve Vai, Kaluga 2014" v="OkpMqrPtY7M"></youtube>
 @endsection
