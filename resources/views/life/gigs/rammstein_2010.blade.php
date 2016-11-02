@@ -35,7 +35,5 @@
 @ru
   <p>Видеозапись концерта:</p>
 @endlang
-<div class="fotorama" data-width="1000" data-ratio="1000/595">
-  <a href="https://www.youtube.com/watch?v=KbUoLxHqM8M"></a>
-</div>
+<youtube title="Rammstein, St. Petersburg, 2010" v="KbUoLxHqM8M"></youtube>
 @endsection
