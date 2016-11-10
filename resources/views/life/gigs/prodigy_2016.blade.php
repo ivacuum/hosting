@@ -20,10 +20,12 @@
       <li>Run With the Wolves</li>
       <li>Invaders Must Die</li>
       <li>Poison</li>
+      <li>Diesel Power</li>
+      <li>Everybody in the Place</li>
       <li>Smack My Bitch Up</li>
-      <li>Gun Reprise</li>
       <li>Their Law</li>
       <li>No Good (Start the Dance)</li>
+      <li>Wall of Death</li>
       <li>Take Me to the Hospital</li>
     </ol>
   </div>
