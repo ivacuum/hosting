@@ -20,8 +20,8 @@
       <li>Run With the Wolves</li>
       <li>Invaders Must Die</li>
       <li>Poison</li>
-      <li>Diesel Power</li>
       <li>Everybody in the Place</li>
+      <li>Diesel Power</li>
       <li>Smack My Bitch Up</li>
       <li>Their Law</li>
       <li>No Good (Start the Dance)</li>
@@ -35,4 +35,11 @@
     </div>
   </div>
 </div>
+
+@ru
+  <p>Видеозапись концерта.</p>
+@en
+  <p>Video of the show.</p>
+@endlang
+<youtube title="The Prodigy, Moscow 2016" v="HND1SuZMseY"></youtube>
 @endsection
