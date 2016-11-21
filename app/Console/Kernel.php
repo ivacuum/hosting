@@ -6,7 +6,9 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 class Kernel extends ConsoleKernel
 {
     protected $commands = [
-        \App\Console\Commands\WhoisUpdate::class,
+        Commands\VkLikesAdd::class,
+        Commands\VkLikesDelete::class,
+        Commands\WhoisUpdate::class,
     ];
 
     /**
@@ -23,6 +25,9 @@ class Kernel extends ConsoleKernel
     */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('app:whois-update')->cron('0 */4 * * *'); // каждые 4 часа
+        $schedule->command('app:vk-likes-add pn6')->cron('5,15,25,35,45,55 * * * *');
+        $schedule->command('app:vk-likes-delete pn6')->cron('0,10,20,30,40,50 * * * *');
+
+        // $schedule->command('app:whois-update')->cron('0 */4 * * *'); // каждые 4 часа
     }
 }
