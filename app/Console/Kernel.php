@@ -12,17 +12,20 @@ class Kernel extends ConsoleKernel
     ];
 
     /**
-    * * * * * * cd /srv/www/vhosts/vhost && php artisan schedule:run >> logs/cron
-    *
-    * field         allowed values
-    * -----         --------------
-    *
-    * minute        0-59
-    * hour          0-23
-    * day of month  1-31
-    * month         1-12
-    * day of week   0-7 (0 or 7 is Sun)
-    */
+     * * * * * * cd /srv/www/vhosts/vhost && php artisan schedule:run >> logs/cron
+     *
+     * field         allowed values
+     * -----         --------------
+     *
+     * minute        0-59
+     * hour          0-23
+     * day of month  1-31
+     * month         1-12
+     * day of week   0-7 (0 or 7 is Sun)
+     *
+     * @param \Illuminate\Console\Scheduling\Schedule $schedule
+     * @return void
+     */
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('app:vk-likes-add pn6')->cron('5,15,25,35,45,55 * * * *');
