@@ -19,7 +19,7 @@ class VkLikesDelete extends Command
     public function handle()
     {
         $page = $this->argument('page');
-        $access_token = env('VK_ACCESS_TOKEN', '');
+        $access_token = config('services.vk.access_token');
 
         $this->vk->accessToken($access_token);
 
