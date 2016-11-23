@@ -23,17 +23,21 @@ class VkLikesAdd extends Command
 
         $this->vk->accessToken($access_token);
 
-        $response = $this->vk->wallGet($page, ['count' => 50])->response;
+        $code = <<<"CODE"
+var response = API.wall.get({"v": "5.60", "count": 10, "domain": "{$page}"});
 
-        $bar = $this->output->createProgressBar(sizeof($response->items));
+response.items.shift();
 
-        foreach ($response->items as $post) {
-            $this->vk->likePost($post->owner_id, $post->id);
-            $bar->advance();
-            sleep(1);
-        }
+while (response.items.length) {
+  var item = response.items.shift();
+  API.likes.add({"v": "5.60", "type": "post", "owner_id": item.owner_id, "item_id": item.id});
+}
 
-        $bar->finish();
-        $this->output->writeln('');
+return 1;
+CODE;
+
+        $response = $this->vk->execute($code);
+
+        $this->info(json_encode($response));
     }
 }

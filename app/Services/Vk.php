@@ -29,6 +29,15 @@ class Vk
         return $this;
     }
 
+    public function execute($code)
+    {
+        $params = array_merge($this->params(), ['code' => $code]);
+
+        $response = $this->client->get('execute', ['query' => $params]);
+
+        return json_decode($response->getBody());
+    }
+
     public function likePost($owner_id, $id)
     {
         $params = array_merge($this->params(), [
