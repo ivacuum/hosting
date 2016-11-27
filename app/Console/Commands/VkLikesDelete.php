@@ -21,9 +21,28 @@ class VkLikesDelete extends Command
         $page = $this->argument('page');
         $access_token = config('services.vk.access_token');
 
+        $response = $this->vk->wallGet($page, ['count' => 6])->response;
+
+        $bar = $this->output->createProgressBar(sizeof($response->items));
+
         $this->vk->accessToken($access_token);
 
-        $code = <<<"CODE"
+        foreach ($response->items as $post) {
+            if (@$post->is_pinned) {
+                continue;
+            }
+
+            $this->vk->unlikePost($post->owner_id, $post->id);
+            $bar->advance();
+            sleep(10);
+        }
+
+        $bar->finish();
+        $this->output->writeln('');
+    }
+}
+
+/*
 var response = API.wall.get({"v": "5.60", "count": 10, "domain": "{$page}"});
 
 response.items.shift();
@@ -34,10 +53,4 @@ while (response.items.length) {
 }
 
 return 1;
-CODE;
-
-        $response = $this->vk->execute($code);
-
-        $this->info(json_encode($response));
-    }
-}
+*/
