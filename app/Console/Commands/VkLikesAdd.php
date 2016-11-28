@@ -21,7 +21,7 @@ class VkLikesAdd extends Command
         $page = $this->argument('page');
         $access_token = config('services.vk.access_token');
 
-        $response = $this->vk->wallGet($page, ['count' => 5])->response;
+        $response = $this->vk->wallGet($page, ['count' => 7])->response;
 
         $bar = $this->output->createProgressBar(sizeof($response->items));
 

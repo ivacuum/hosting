@@ -21,7 +21,7 @@ class VkLikesDelete extends Command
         $page = $this->argument('page');
         $access_token = config('services.vk.access_token');
 
-        $response = $this->vk->wallGet($page, ['count' => 6])->response;
+        $response = $this->vk->wallGet($page, ['count' => 8])->response;
 
         $bar = $this->output->createProgressBar(sizeof($response->items));
 
