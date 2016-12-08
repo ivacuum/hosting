@@ -1,19 +1,12 @@
 <?php namespace App\Http\Controllers;
 
-use App\Page;
-use App\Trip;
-
 class Home extends Controller
 {
     public function index()
     {
-        $trips = Trip::where('published', 1)
-            ->where('meta_image', '<>', '')
-            ->orderBy('date_start', 'desc')
-            ->take(9)
-            ->get();
+        \Breadcrumbs::push('Ресурсы');
 
-        return view('index', compact('trips'));
+        return view('index');
     }
 
     public function about()
@@ -24,13 +17,5 @@ class Home extends Controller
     public function cv()
     {
         return view('cv');
-    }
-
-    public function staticPage()
-    {
-        $breadcrumbs = Page::find($this->getPageId())->ancestorsAndSelf()->get();
-        $page = $breadcrumbs[sizeof($breadcrumbs) - 1];
-
-        return view('static', compact('breadcrumbs', 'page'));
     }
 }
