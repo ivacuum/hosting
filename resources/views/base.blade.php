@@ -18,7 +18,6 @@
   @stack('head')
 </head>
 <body>
-<div class="wrap-content">
   <div class="navbar navbar-default {{ App::environment('local') ? 'navbar-inverse' : '' }}">
     <div class="container">
       <div class="navbar-header">
@@ -27,15 +26,11 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+        <a class="navbar-brand" href="{{ action('Home@index') }}">{{ config('cfg.sitename') }}</a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           @section('global_menu')
-            <li>
-              <a class="{{ $self == 'Home' ? 'navbar-selected' : '' }}" href="{{ action('Home@index') }}">
-                {{ trans('menu.home') }}
-              </a>
-            </li>
             <li>
               <a class="{{ $self == 'Life' ? 'navbar-selected' : '' }}" href="{{ action('Life@index') }}">
                 {{ trans('menu.life') }}
@@ -96,7 +91,7 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container container-full">
 @section('breadcrumbs')
 @include('tpl.breadcrumbs', ['breadcrumbs' => isset($breadcrumbs) ? $breadcrumbs : Breadcrumbs::get()])
 @show
@@ -112,8 +107,6 @@
 @yield('content_footer')
 @if (!Request::pjax())
 </div>
-    <div class="wrap-push"></div>
-  </div>
 </div>
 <footer>
   <div class="container">

@@ -3,9 +3,11 @@ html {
   // В IE10 так не пропадает контент после закрытия модального окна
   overflow-y: scroll;
 }
-html,
+html { height: 100%; }
 body {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 // Чтобы страница не проматывалась в начало,
@@ -75,6 +77,8 @@ a[href^="http"]:empty::before { content: attr(href); }
     margin-bottom: 0;
   }
 }
+
+.container-full { flex: 1; }
 
 .emoji {
   font-weight: normal;
