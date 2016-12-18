@@ -1,17 +1,17 @@
 <?php
 
 Route::get('/', 'Home@index');
-Route::get('auth/login', 'Auth@login');
-Route::post('auth/login', 'Auth@loginPost');
-Route::get('auth/logout', 'Auth@logout');
-Route::get('auth/register', 'Auth@register');
-Route::post('auth/register', 'Auth@registerPost');
-Route::get('auth/register/confirm/{token}', 'Auth@registerConfirm');
-Route::get('auth/register/ok', 'Auth@registerOk');
-Route::get('auth/password/remind', 'Auth@passwordRemind');
-Route::post('auth/password/remind', 'Auth@passwordRemindPost');
-Route::get('auth/password/reset/{token}', 'Auth@passwordReset');
-Route::post('auth/password/reset', 'Auth@passwordResetPost');
+Route::get('auth/login', 'Auth@login')->middleware('guest');
+Route::post('auth/login', 'Auth@loginPost')->middleware('guest');
+Route::get('auth/logout', 'Auth@logout')->middleware('auth');
+Route::get('auth/register', 'Auth@register')->middleware('guest');
+Route::post('auth/register', 'Auth@registerPost')->middleware('guest');
+Route::get('auth/register/confirm/{token}', 'Auth@registerConfirm')->middleware('guest');
+Route::get('auth/register/ok', 'Auth@registerOk')->middleware('guest');
+Route::get('auth/password/remind', 'Auth@passwordRemind')->middleware('guest');
+Route::post('auth/password/remind', 'Auth@passwordRemindPost')->middleware('guest');
+Route::get('auth/password/reset/{token}', 'Auth@passwordReset')->middleware('guest');
+Route::post('auth/password/reset', 'Auth@passwordResetPost')->middleware('guest');
 
 Route::post('ajax/feedback', 'Ajax@feedback');
 

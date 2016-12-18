@@ -1,23 +1,10 @@
 <?php namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
 
 class Auth extends Controller
 {
-    protected $auth;
-
-    public function __construct(Guard $auth)
-    {
-        parent::__construct();
-
-        $this->auth = $auth;
-
-        $this->middleware('auth', ['only' => 'logout']);
-        $this->middleware('guest', ['except' => 'logout']);
-    }
-
     public function login()
     {
         return view($this->view);
@@ -37,7 +24,7 @@ class Auth extends Controller
             'active'   => 1,
         ];
 
-        if ($this->auth->attempt($credentials, !$this->request->has('foreign'))) {
+        if (\Auth::attempt($credentials, !$this->request->has('foreign'))) {
             $this->request->session()->regenerate();
 
             return redirect()->intended('/');
@@ -50,7 +37,7 @@ class Auth extends Controller
 
     public function logout()
     {
-        $this->auth->logout();
+        \Auth::logout();
 
         $this->request->session()->flush();
         $this->request->session()->regenerate();
@@ -104,7 +91,7 @@ class Auth extends Controller
             $user->password = $password;
             $user->remember_token = str_random(60);
             $user->save();
-            $this->auth->login($user);
+            \Auth::login($user);
         });
 
         if (PasswordBroker::PASSWORD_RESET === $response) {
@@ -141,7 +128,7 @@ class Auth extends Controller
         // 	$mail->to($user->email)->subject("Активация учетной записи");
         // });
 
-        $this->auth->login($user);
+        \Auth::login($user);
 
         return redirect('/');
     }
