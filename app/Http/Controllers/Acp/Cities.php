@@ -66,8 +66,6 @@ class Cities extends Controller
             'lon' => $geo['lon'],
         ]);
 
-        $this->request->session()->flash('message', "Геоданные обновлены: [{$model->lat} {$model->lon}]");
-
-        return back();
+        return back()->with('message', "Геоданные обновлены: [{$model->lat} {$model->lon}]");
     }
 }

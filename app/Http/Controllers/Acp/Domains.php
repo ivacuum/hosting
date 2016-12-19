@@ -99,9 +99,8 @@ class Domains extends Controller
 
         Mail::to($send_to)->send(new DomainMailboxes($model, $mailboxes));
 
-        $this->request->session()->flash('message', "Данные высланы на почту {$send_to}");
-
-        return redirect()->action("{$this->class}@mailboxes", $model);
+        return redirect()->action("{$this->class}@mailboxes", $model)
+            ->with('message', "Данные высланы на почту {$send_to}");
     }
 
     public function addNsRecord(Model $model)
@@ -233,9 +232,8 @@ class Domains extends Controller
             ? 'Днс Яндекса установлены'
             : 'Не удалось установить днс Яндекса';
 
-        $this->request->session()->flash('message', $message);
-
-        return redirect()->action("{$this->class}@show", $model);
+        return redirect()->action("{$this->class}@show", $model)
+            ->with('message', $message);
     }
 
     public function show(Model $model)

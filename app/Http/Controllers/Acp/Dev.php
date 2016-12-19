@@ -13,9 +13,9 @@ class Dev extends Controller
     public function debugbar(CookieJar $cookie)
     {
         $cookie->queue('debugbar', true, 60);
-        $this->request->session()->flash('message', 'Debugbar включен на час');
 
-        return redirect()->action("{$this->class}@index");
+        return redirect()->action("{$this->class}@index")
+            ->with('message', 'Debugbar включен на час');
     }
 
     public function svg()

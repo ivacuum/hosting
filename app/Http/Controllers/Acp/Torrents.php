@@ -58,9 +58,7 @@ class Torrents extends Controller
     public function updateRto(Model $model, Rto $rto)
     {
         if (!is_array($data = $rto->torrentData($model->rto_id))) {
-            $this->request->session()->flash('message', 'Не удалось обновить информацию о раздаче');
-
-            return back();
+            return back()->with('message', 'Не удалось обновить информацию о раздаче');
         }
 
         $model->update([
@@ -74,8 +72,7 @@ class Torrents extends Controller
             'registered_at' => Carbon::createFromTimestamp($data['reg_time']),
         ]);
 
-        $this->request->session()->flash('message', 'Раздача обновлена');
-
-        return redirect()->action("{$this->class}@show", $model);
+        return redirect()->action("{$this->class}@show", $model)
+            ->with('message', 'Раздача обновлена');
     }
 }
