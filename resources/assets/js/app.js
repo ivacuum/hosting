@@ -124,7 +124,6 @@ class Application {
 
     this.autosizeTextareas()
     this.fotoramaInit(pjax)
-    this.rutrackerPost()
   }
 
   onPjaxComplete() {
@@ -141,19 +140,6 @@ class Application {
 
   onPjaxSend() {
     $(document).on('pjax:send', () => this.pjax.onSend())
-  }
-
-  rutrackerPost() {
-    $('.post-hr', '.rutracker-post').html('<hr class="tLeft">')
-
-    $('.postImg', '.rutracker-post').each(function() {
-      let src = $(this).attr('title')
-      let cls = $(this).attr('class')
-
-      let $img = $(`<img src="${src}" class="${cls}" alt="pic">`)
-
-      $(this).empty().append($img)
-    })
   }
 }
 

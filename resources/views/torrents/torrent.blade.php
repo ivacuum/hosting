@@ -17,7 +17,5 @@
   </div>
   <div class="panel-footer"><a class="btn btn-success" href="{{ $torrent->magnet() }}">Скачать</a></div>
 </div>
-<div class="rutracker-post">
-  {!! $torrent->text !!}
-</div>
+<rutracker-post>{!! $torrent->text !!}</rutracker-post>
 @endsection
