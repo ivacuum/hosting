@@ -77,6 +77,34 @@
     </li>
   </ul>
 </li>
+<li class="dropdown">
+  <a class="dropdown-toggle {{ in_array($self, ['Acp\Torrents', 'Acp\Files', 'Acp\News', 'Acp\Images']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
+    {{ trans('menu.resources') }}
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li>
+      <a href="{{ $locale_uri }}/acp/files">
+        {{ trans('acp.files.index') }}
+      </a>
+    </li>
+    <li>
+      <a href="{{ $locale_uri }}/acp/news">
+        {{ trans('acp.news.index') }}
+      </a>
+    </li>
+    <li>
+      <a href="{{ $locale_uri }}/acp/images">
+        {{ trans('acp.images.index') }}
+      </a>
+    </li>
+    <li>
+      <a href="{{ $locale_uri }}/acp/torrents">
+        {{ trans('acp.torrents.index') }}
+      </a>
+    </li>
+  </ul>
+</li>
 <li>
   <a class="{{ starts_with($self, 'Acp\Dev') ? 'navbar-selected' : '' }}" href="{{ $locale_uri }}/acp/dev/templates">
     {{ trans('acp.dev.index') }}
