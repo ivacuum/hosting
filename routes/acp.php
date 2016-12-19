@@ -76,6 +76,16 @@ Route::group(['prefix' => 'domains'], function () {
     Route::get('{Domain}/whois', 'Acp\Domains@whois');
 });
 
+Route::group(['prefix' => 'files'], function () {
+    Route::get('/', 'Acp\Files@index');
+    Route::post('/', 'Acp\Files@store');
+    Route::get('create', 'Acp\Files@create');
+    Route::get('{File}', 'Acp\Files@show');
+    Route::put('{File}', 'Acp\Files@update');
+    Route::delete('{File}', 'Acp\Files@destroy');
+    Route::get('{File}/edit', 'Acp\Files@edit');
+});
+
 Route::group(['prefix' => 'gigs'], function () {
     Route::get('/', 'Acp\Gigs@index');
     Route::post('/', 'Acp\Gigs@store');

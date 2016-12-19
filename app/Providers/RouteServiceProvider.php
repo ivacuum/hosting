@@ -6,6 +6,7 @@ use App\City;
 use App\Client;
 use App\Country;
 use App\Domain;
+use App\File;
 use App\Gig;
 use App\Page;
 use App\Server;
@@ -31,6 +32,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('Client', Client::class);
         Route::model('Country', Country::class);
         Route::model('Domain', Domain::class);
+        Route::model('File', File::class);
         Route::model('Gig', Gig::class);
         Route::model('Page', Page::class);
         Route::model('Server', Server::class);

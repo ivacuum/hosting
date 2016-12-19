@@ -43,6 +43,12 @@ return [
     'domains.robots'     => 'robots.txt',
     'domains.whois'      => 'Whois',
 
+    'files.add' => 'Add file',
+    'files.edit' => 'Edit',
+    'files.show' => 'File',
+    'files.index' => 'Files',
+    'files.create' => 'New File',
+
     'gigs.add'    => 'Add gig',
     'gigs.index'  => 'Gigs',
     'gigs.create' => 'New gig',

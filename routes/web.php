@@ -18,6 +18,9 @@ Route::post('ajax/feedback', 'Ajax@feedback');
 Route::get('about', 'Home@about');
 Route::get('docs', 'Docs@index');
 Route::get('docs/{page}', 'Docs@page');
+
+Route::get('files/{File}/dl', 'Files@download');
+
 Route::get('life', 'Life@index');
 Route::get('life/cities', 'Life@cities');
 Route::get('life/countries', 'Life@countries');

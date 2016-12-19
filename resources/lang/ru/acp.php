@@ -43,6 +43,12 @@ return [
     'domains.robots'     => 'robots.txt',
     'domains.whois'      => 'Whois',
 
+    'files.add' => 'Добавить файл',
+    'files.edit' => 'Редактирование файла',
+    'files.show' => 'Файл',
+    'files.index' => 'Файлы',
+    'files.create' => 'Новый файл',
+
     'gigs.add'    => 'Добавить концерт',
     'gigs.index'  => 'Концерты',
     'gigs.create' => 'Новый концерт',
