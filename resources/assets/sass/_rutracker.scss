@@ -1,5 +1,6 @@
 .rutracker-post {
   word-wrap: break-word;
+  margin-bottom: 1rem;
 
   pre {
     border: none;
@@ -10,6 +11,37 @@
 
   ul, ol { margin: 8px auto 8px 8px; }
   li { margin: 0px 4px 1px 24px; }
+
+  .c-body,
+  .q,
+  .sp-wrap,
+  .sp-head,
+  .sp-body {
+    border: solid #C3CBD1;
+    border-width: 1px 1px 1px 2px;
+    clear: both;
+  }
+
+  .c-wrap,
+  .q-wrap,
+  .sp-wrap {
+    width: 98%;
+    clear: both;
+  }
+
+  .c-head,
+  .q-head,
+  .sp-head {
+    text-align: left !important;
+    min-width: 150px;
+    min-height: 14px;
+  }
+
+  .c-body,
+  .q,
+  .sp-body {
+    padding: 2px 6px;
+  }
 
   .post-align,
   .post-br,
@@ -59,7 +91,6 @@
   .sp-head {
     border-width: 0;
     padding: 1px 14px 3px;
-    margin-left: 6px;
     cursor: pointer;
     font-weight: bold;
 
@@ -74,6 +105,9 @@
       color: #2A2A2A;
     }
   }
+
+  .folded span:before { content: '+ '; font-family: monospace; }
+  .unfolded span:before { content: '- '; font-family: monospace; }
 
   .sp-wrap {
     padding: 0;
@@ -93,34 +127,25 @@
 
   .post-hr hr { margin: 0; }
 
-  .c-body,
-  .q,
-  .sp-wrap,
-  .sp-head,
-  .sp-body {
-    border: solid #C3CBD1;
-    border-width: 1px 1px 1px 2px;
-    clear: both;
-  }
+  .postLink {
+    border-bottom: 1px solid;
+    border-color: $link-border-color;
+    color: $link-color;
+    cursor: pointer;
+    outline: 0;
 
-  .c-wrap,
-  .q-wrap,
-  .sp-wrap {
-    width: 98%;
-    clear: both;
-  }
+    &:hover,
+    &:focus,
+    &.active {
+      border-color: $link-hover-border-color !important;
+      color: $link-hover-color !important;
+    }
 
-  .c-head,
-  .q-head,
-  .sp-head {
-    text-align: left !important;
-    min-width: 150px;
-    min-height: 14px;
-  }
+    &.active { border: none; }
 
-  .c-body,
-  .q,
-  .sp-body {
-    padding: 2px 6px;
+    &:visited {
+      border-color: $link-visited-border-color;
+      color: $link-visited-color;
+    }
   }
 }
