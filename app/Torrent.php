@@ -52,7 +52,7 @@ class Torrent extends Model
 
     public function magnet()
     {
-        return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer);
+        return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode($this->title);
     }
 
     public function shortDate()
