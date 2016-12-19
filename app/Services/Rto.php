@@ -88,7 +88,7 @@ class Rto
 
         $crawler = new Crawler($body);
 
-        return $crawler->filter('.post_body')->html();
+        return trim($crawler->filter('.post_body')->html());
     }
 
     public function parseMagnetLink($body)
