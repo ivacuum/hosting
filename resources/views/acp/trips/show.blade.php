@@ -6,4 +6,7 @@
     <img class="img-responsive img-rounded" src="{{ $model->meta_image }}">
   </div>
 @endif
+@if (Auth::user()->isRoot())
+  <pre class="d-inline-block">{{ $model->toJson(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) }}</pre>
+@endif
 @endsection
