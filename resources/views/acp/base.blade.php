@@ -2,6 +2,9 @@
   'meta_title' => !empty($meta_title) ? $meta_title : trans($view),
 ])
 
+@section('brand')
+@endsection
+
 @section('global_menu')
 <li>
   <a class="{{ $self == 'Acp\Cities' ? 'navbar-selected' : '' }}" href="{{ $locale_uri }}/acp/cities">
