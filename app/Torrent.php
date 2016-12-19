@@ -47,14 +47,7 @@ class Torrent extends Model
 
     public function localizedSize()
     {
-        $units = ['б', 'КБ', 'МБ', 'ГБ', 'ТБ'];
-
-        $bytes = max($this->size, 0);
-        $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
-        $pow = min($pow, sizeof($units) - 1);
-        $bytes /= pow(1024, $pow);
-
-        return round($bytes, 1) . '&nbsp;' . $units[$pow];
+        return (new Utilities\Size())->localized($this->size);
     }
 
     public function magnet()
