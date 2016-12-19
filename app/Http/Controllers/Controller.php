@@ -45,7 +45,7 @@ class Controller extends BaseController
         $locale = $this->request->segment(1);
 
         if (in_array($locale, array_keys(config('cfg.locales')))) {
-            $request_uri = str_replace(["{$locale}/", $locale], '', $this->request->path());
+            $request_uri = implode('/', array_slice($this->request->segments(), 1));
         } else {
             $request_uri = $this->request->path();
         }
