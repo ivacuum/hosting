@@ -61,6 +61,14 @@ return [
     'servers.edit'   => 'Edit',
     'servers.show'   => 'Server',
 
+    'torrents.add' => 'Add torrent',
+    'torrents.www' => 'View on site',
+    'torrents.edit' => 'Edit',
+    'torrents.show' => 'Torrent',
+    'torrents.index' => 'Torrents',
+    'torrents.create' => 'New torrent',
+    'torrents.update_rto' => 'Update from rutracker',
+
     'trips.add'    => 'Add trip',
     'trips.index'  => 'Trips',
     'trips.create' => 'New trip',
