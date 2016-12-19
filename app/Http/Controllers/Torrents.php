@@ -10,7 +10,7 @@ class Torrents extends Controller
     {
         \Breadcrumbs::push('Торренты');
 
-        $torrents = Torrent::orderBy('id', 'desc')->paginate();
+        $torrents = Torrent::orderBy('registered_at', 'desc')->paginate();
 
         return view($this->view, compact('torrents'));
     }
