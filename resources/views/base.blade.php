@@ -51,6 +51,11 @@
                   {{ trans('menu.docs') }}
                 </a>
               </li>
+              <li>
+                <a class="{{ $self == 'Torrents' ? 'navbar-selected' : '' }}" href="{{ action('Torrents@index') }}">
+                  {{ trans('menu.torrents') }}
+                </a>
+              </li>
             @endif
           @show
         </ul>

@@ -1,0 +1,126 @@
+.rutracker-post {
+  word-wrap: break-word;
+
+  pre {
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul, ol { margin: 8px auto 8px 8px; }
+  li { margin: 0px 4px 1px 24px; }
+
+  .post-align,
+  .post-br,
+  .post-hr,
+  .postImgAligned {
+    display: block;
+  }
+
+  .postImg { margin: 2px 2px 0 0; }
+  .postImgAligned { margin: 4px 4px 2px; }
+
+  .img-left {
+    float: left;
+    clear: left;
+  }
+
+  .img-right {
+    float: right;
+    clear: right;
+  }
+
+  .post-b { font-weight: bold; }
+  .post-i { font-style: italic; }
+  .post-pre {
+    white-space: pre-wrap;
+    font-family: monospace
+  }
+  .post-s { text-decoration: line-through; }
+  .post-u { text-decoration: underline; }
+
+  .sp-body {
+    border-width: 1px 0 0 0;
+    display: none;
+    font-weight: normal;
+    background: #F5F5F5;
+  }
+
+  .sp-fold {
+    width: 98%;
+    margin: 0 auto;
+    text-align: right;
+    font-size: 10px;
+    color: #444444;
+    clear: both;
+  }
+
+  .sp-head {
+    border-width: 0;
+    padding: 1px 14px 3px;
+    margin-left: 6px;
+    cursor: pointer;
+    font-weight: bold;
+
+    span {
+      display: inline-block;
+      margin: 0;
+      font-family: Verdana, sans-serif;
+      font-style: normal;
+      font-size: 11px !important;
+      line-height: 15px;
+      text-decoration: none;
+      color: #2A2A2A;
+    }
+  }
+
+  .sp-wrap {
+    padding: 0;
+    background: #E9E9E6;
+
+    .folded {
+      display: block;
+      padding-left: 14px;
+      // background
+    }
+  }
+
+  .sp-wrap,
+  .post-hr {
+    margin: 8px auto;
+  }
+
+  .post-hr hr { margin: 0; }
+
+  .c-body,
+  .q,
+  .sp-wrap,
+  .sp-head,
+  .sp-body {
+    border: solid #C3CBD1;
+    border-width: 1px 1px 1px 2px;
+    clear: both;
+  }
+
+  .c-wrap,
+  .q-wrap,
+  .sp-wrap {
+    width: 98%;
+    clear: both;
+  }
+
+  .c-head,
+  .q-head,
+  .sp-head {
+    text-align: left !important;
+    min-width: 150px;
+    min-height: 14px;
+  }
+
+  .c-body,
+  .q,
+  .sp-body {
+    padding: 2px 6px;
+  }
+}

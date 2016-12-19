@@ -118,6 +118,17 @@ Route::group(['prefix' => 'servers'], function () {
     });
 });
 
+Route::group(['prefix' => 'torrents'], function () {
+    Route::get('/', 'Acp\Torrents@index');
+    Route::post('/', 'Acp\Torrents@store');
+    Route::get('create', 'Acp\Torrents@create');
+    Route::get('{Torrent}', 'Acp\Torrents@show');
+    Route::put('{Torrent}', 'Acp\Torrents@update');
+    Route::delete('{Torrent}', 'Acp\Torrents@destroy');
+    Route::get('{Torrent}/edit', 'Acp\Torrents@edit');
+    Route::get('{Torrent}/updateRto', 'Acp\Torrents@updateRto');
+});
+
 Route::group(['prefix' => 'trips'], function () {
     Route::get('/', 'Acp\Trips@index');
     Route::post('/', 'Acp\Trips@store');

@@ -61,6 +61,14 @@ return [
     'servers.edit'   => 'Редактирование сервера',
     'servers.show'   => 'Сервер',
 
+    'torrents.add' => 'Добавить торрент',
+    'torrents.www' => 'Посмотреть на сайте',
+    'torrents.edit' => 'Редактирование торрента',
+    'torrents.show' => 'Торрент',
+    'torrents.index' => 'Торренты',
+    'torrents.create' => 'Новый торрент',
+    'torrents.update_rto' => 'Обновить с рутрекера',
+
     'trips.add'    => 'Добавить поездку',
     'trips.index'  => 'Поездки',
     'trips.create' => 'Новая поездка',

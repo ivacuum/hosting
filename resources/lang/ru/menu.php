@@ -12,6 +12,7 @@ return [
     'hosting'   => 'Хостинг',
     'life'      => 'Заметки',
     'parser_vk' => 'Парсер ВК',
+    'torrents'  => 'Торренты',
     'trips'     => 'Поездки',
 
     'language'  => 'Русский',

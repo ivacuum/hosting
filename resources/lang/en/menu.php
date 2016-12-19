@@ -13,6 +13,7 @@ return [
     'life'      => 'Life',
     'parser_vk' => 'VK Parser',
     'trips'     => 'Trips',
+    'torrents'  => 'Torrents',
 
     'language'  => 'English',
     'logout'    => 'Logout',

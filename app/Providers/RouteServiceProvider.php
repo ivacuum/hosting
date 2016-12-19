@@ -9,6 +9,7 @@ use App\Domain;
 use App\Gig;
 use App\Page;
 use App\Server;
+use App\Torrent;
 use App\Trip;
 use App\User;
 use App\YandexUser;
@@ -33,6 +34,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('Gig', Gig::class);
         Route::model('Page', Page::class);
         Route::model('Server', Server::class);
+        Route::model('Torrent', Torrent::class);
         Route::model('Trip', Trip::class);
         Route::model('User', User::class);
         Route::model('YandexUser', YandexUser::class);
