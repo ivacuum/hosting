@@ -1,6 +1,6 @@
 <?php namespace App\Http\Requests\Acp;
 
-class TorrentEdit extends CountryCreate
+class TorrentEdit extends TorrentCreate
 {
     public function rules()
     {
