@@ -1,7 +1,6 @@
 <?php namespace App;
 
 use App\Notifications\ResetPassword;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -15,15 +14,13 @@ use Illuminate\Notifications\Notifiable;
  * @property string  $remember_token
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property \Carbon\Carbon $deleted_at
  * @property boolean $is_admin
  */
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes;
+    use Notifiable;
 
-    protected $table = 'users';
-    protected $fillable = ['email', 'password', 'active'];
+    protected $guarded = ['created_at', 'updated_at'];
     protected $hidden = ['password', 'remember_token'];
 
     public function setPasswordAttribute($value)

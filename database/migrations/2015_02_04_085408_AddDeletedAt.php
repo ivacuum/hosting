@@ -15,10 +15,6 @@ class AddDeletedAt extends Migration
             $table->softDeletes();
         });
 
-        Schema::table('users', function (Blueprint $table) {
-            $table->softDeletes();
-        });
-
         Schema::table('yandex_users', function (Blueprint $table) {
             $table->softDeletes();
         });
@@ -31,10 +27,6 @@ class AddDeletedAt extends Migration
         });
 
         Schema::table('domains', function (Blueprint $table) {
-            $table->dropSoftDeletes();
-        });
-
-        Schema::table('users', function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
 
