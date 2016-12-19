@@ -13,7 +13,7 @@
     <span class="torrent-stats-separator">&middot;</span>
     Активна: <strong>{{ $torrent->registered_at->diffForHumans(null, true) }}</strong>
     <span class="torrent-stats-separator">&middot;</span>
-    <span class="text-success">{{ $torrent->seeders }} сидов</span>
+    <span class="text-success">{{ $torrent->seeders }} {{ trans_choice('plural.seeders', $torrent->seeders) }}</span>
   </div>
   <div class="panel-footer"><a class="btn btn-success" href="{{ $torrent->magnet() }}">Скачать</a></div>
 </div>
