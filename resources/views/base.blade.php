@@ -60,6 +60,14 @@
           @show
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <li>
+            @ru
+              <a href="{{ url("en/{$request_uri}") }}" lang="en">In english</a>
+            @en
+              <a href="{{ url($request_uri) }}" lang="ru">По-русски</a>
+            @endlang
+          </li>
+          {{--
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               {{ trans('menu.language') }}
@@ -70,6 +78,7 @@
               <li><a href="{{ url($request_uri) }}" lang="ru">Русский</a></li>
             </ul>
           </li>
+          --}}
           @if (Auth::check() && !starts_with($self, 'Acp\\'))
             @if (Auth::user()->isAdmin())
               <li>
