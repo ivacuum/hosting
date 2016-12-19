@@ -6,33 +6,41 @@
 @endsection
 
 @section('global_menu')
-<li>
-  <a class="{{ $self == 'Acp\Cities' ? 'navbar-selected' : '' }}" href="{{ $locale_uri }}/acp/cities">
-    {{ trans('acp.cities.index') }}
+<li class="dropdown">
+  <a class="dropdown-toggle {{ in_array($self, ['Acp\Cities', 'Acp\Countries', 'Acp\Trips', 'Acp\Gigs', 'Acp\Artists']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
+    {{ trans('menu.life') }}
+    <span class="caret"></span>
   </a>
-</li>
-<li>
-  <a class="{{ $self == 'Acp\Countries' ? 'navbar-selected' : '' }}" href="{{ $locale_uri }}/acp/countries">
-    {{ trans('acp.countries.index') }}
-  </a>
-</li>
-<li>
-  <a class="{{ $self == 'Acp\Trips' ? 'navbar-selected' : '' }}" href="{{ $locale_uri }}/acp/trips">
-    {{ trans('acp.trips.index') }}
-  </a>
-</li>
-<li>
-  <a class="{{ $self == 'Acp\Gigs' ? 'navbar-selected' : '' }}" href="{{ $locale_uri }}/acp/gigs">
-    {{ trans('acp.gigs.index') }}
-  </a>
-</li>
-<li>
-  <a class="{{ $self == 'Acp\Artists' ? 'navbar-selected' : '' }}" href="{{ $locale_uri }}/acp/artists">
-    {{ trans('acp.artists.index') }}
-  </a>
+  <ul class="dropdown-menu">
+    <li>
+      <a href="{{ $locale_uri }}/acp/cities">
+        {{ trans('acp.cities.index') }}
+      </a>
+    </li>
+    <li>
+      <a href="{{ $locale_uri }}/acp/countries">
+        {{ trans('acp.countries.index') }}
+      </a>
+    </li>
+    <li>
+      <a href="{{ $locale_uri }}/acp/trips">
+        {{ trans('acp.trips.index') }}
+      </a>
+    </li>
+    <li>
+      <a href="{{ $locale_uri }}/acp/gigs">
+        {{ trans('acp.gigs.index') }}
+      </a>
+    </li>
+    <li>
+      <a href="{{ $locale_uri }}/acp/artists">
+        {{ trans('acp.artists.index') }}
+      </a>
+    </li>
+  </ul>
 </li>
 <li class="dropdown">
-  <a class="dropdown-toggle {{ in_array($self, ['Acp\Clients', 'Acp\Domains', 'Acp\Servers', 'Acp\Pages']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
+  <a class="dropdown-toggle {{ in_array($self, ['Acp\Clients', 'Acp\Domains', 'Acp\Servers', 'Acp\Pages', 'Acp\Users', 'Acp\Yandex\Users']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
     {{ trans('menu.hosting') }}
     <span class="caret"></span>
   </a>
