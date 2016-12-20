@@ -35,9 +35,4 @@ class File extends Model
     {
         return "filename*=utf-8''" . rawurlencode(htmlspecialchars_decode($this->basename()));
     }
-
-    public function localizedSize()
-    {
-        return (new Utilities\Size())->localized($this->size);
-    }
 }

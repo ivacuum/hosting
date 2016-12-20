@@ -26,9 +26,7 @@
               {{ $torrent->title }}
             </a>
           </td>
-          <td>
-            {{ $torrent->localizedSize() }}
-          </td>
+          <td>{{ SizeHelper::localized($torrent->size) }}</td>
           <td class="text-success">{{ $torrent->seeders }}</td>
         </tr>
       @endforeach

@@ -1,6 +1,6 @@
 <?php namespace App\Utilities;
 
-class Size
+class SizeHelper
 {
     public function localized($bytes)
     {
@@ -12,11 +12,13 @@ class Size
             trans('size.tb'),
         ];
 
+        $decimals = [0, 0, 1, 1, 1];
+
         $bytes = max($bytes, 0);
         $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
         $pow = min($pow, sizeof($units) - 1);
         $bytes /= pow(1024, $pow);
 
-        return round($bytes, 1) . '&nbsp;' . $units[$pow];
+        return round($bytes, $decimals[$pow]) . '&nbsp;' . $units[$pow];
     }
 }

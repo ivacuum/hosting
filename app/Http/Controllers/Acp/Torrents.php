@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App;
 use App\Services\Rto;
 use App\Torrent as Model;
 use App\Http\Requests\Acp\TorrentCreate as ModelCreate;
@@ -62,13 +61,13 @@ class Torrents extends Controller
         }
 
         $model->update([
-            'title' => $data['title'],
             'text' => $data['body'],
             'size' => $data['size'],
+            'title' => $data['title'],
+            'clicks' => 0,
             'seeders' => $data['seeders'],
             'info_hash' => $data['info_hash'],
             'announcer' => $data['announcer'],
-            'clicks' => 0,
             'registered_at' => Carbon::createFromTimestamp($data['reg_time']),
         ]);
 

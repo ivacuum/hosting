@@ -84,6 +84,7 @@ return [
         'Validator'    => Illuminate\Support\Facades\Validator::class,
         'View'         => Illuminate\Support\Facades\View::class,
 
+        'SizeHelper' => App\Facades\SizeHelper::class,
         'Breadcrumbs' => App\Breadcrumbs\Facades\Breadcrumbs::class,
 
     ],

@@ -9,7 +9,7 @@
     </a>
   </div>
   <div class="panel-body">
-    Размер: <strong>{{ $torrent->localizedSize() }}</strong>
+    Размер: <strong>{{ SizeHelper::localized($torrent->size()) }}</strong>
     <span class="torrent-stats-separator">&middot;</span>
     Активна: <strong>{{ $torrent->registered_at->diffForHumans(null, true) }}</strong>
     <span class="torrent-stats-separator">&middot;</span>

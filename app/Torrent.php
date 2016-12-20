@@ -45,11 +45,6 @@ class Torrent extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function localizedSize()
-    {
-        return (new Utilities\Size())->localized($this->size);
-    }
-
     public function magnet()
     {
         return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode($this->title);
