@@ -6,7 +6,7 @@
   @include("$tpl.form")
 
   <div class="form-group">
-    <div class="col-md-9 col-md-offset-3">
+    <div class="col-md-6">
       <button type="submit" class="btn btn-primary">
         {{ trans("$tpl.add") }}
       </button>
