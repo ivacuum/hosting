@@ -31,6 +31,9 @@ class Kernel extends ConsoleKernel
     {
         $cron_output = config('cfg.cron_output');
 
+        $schedule->command('app:rto-update')->cron('0 4 * * *')
+            ->appendOutputTo($cron_output);
+
         $schedule->command('app:vk-likes-add pn6')->cron('5,25,45 * * * *')
             ->appendOutputTo($cron_output);
 
