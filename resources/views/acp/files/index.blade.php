@@ -24,7 +24,7 @@
             {{ $model->title }}
           </a>
         </td>
-        <td>{{ $model->localizedSize() }}</td>
+        <td>{{ ViewHelper::size($model->size) }}</td>
         <td>{{ $model->downloads }}</td>
       </tr>
     @endforeach

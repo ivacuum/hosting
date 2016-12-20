@@ -2,10 +2,10 @@
 
 use Illuminate\Support\Facades\Facade;
 
-class SizeHelper extends Facade
+class ViewHelper extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \App\Utilities\SizeHelper::class;
+        return \App\Utilities\ViewHelper::class;
     }
 }

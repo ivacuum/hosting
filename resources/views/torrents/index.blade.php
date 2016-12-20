@@ -2,7 +2,7 @@
 
 @section('content')
 @if (sizeof($torrents))
-  <table class="table-stats">
+  <table class="table-stats m-b-1">
     <thead>
       <tr>
         <td>Дата</td>
@@ -26,7 +26,7 @@
               {{ $torrent->title }}
             </a>
           </td>
-          <td>{{ SizeHelper::localized($torrent->size) }}</td>
+          <td>{{ ViewHelper::size($torrent->size) }}</td>
           <td class="text-success">{{ $torrent->seeders }}</td>
         </tr>
       @endforeach
