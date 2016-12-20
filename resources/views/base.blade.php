@@ -51,6 +51,8 @@
                   {{ trans('menu.docs') }}
                 </a>
               </li>
+            @endif
+            @if (Auth::check() && Auth::user()->isRoot())
               <li>
                 <a class="{{ $self == 'Torrents' ? 'navbar-selected' : '' }}" href="{{ action('Torrents@index') }}">
                   {{ trans('menu.torrents') }}
