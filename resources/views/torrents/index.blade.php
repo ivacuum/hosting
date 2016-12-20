@@ -32,6 +32,10 @@
       @endforeach
     </tbody>
   </table>
+
+  <div class="m-y-1 text-center">
+    @include('tpl.paginator', ['paginator' => $torrents])
+  </div>
 @else
   <p>Подходящих раздач не найдено.</p>
 @endif

@@ -26,5 +26,9 @@
       </tr>
     @endforeach
   </table>
+
+  <div class="pull-right clearfix">
+    @include('tpl.paginator', ['paginator' => $models])
+  </div>
 @endif
 @endsection

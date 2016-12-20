@@ -39,6 +39,7 @@ class Torrent extends Model
 
     protected $guarded = ['created_at', 'updated_at'];
     protected $dates = ['registered_at'];
+    protected $perPage = 50;
 
     public function user()
     {
