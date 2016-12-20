@@ -102,18 +102,8 @@ class Rto
         return $link->attr('href');
     }
 
-    public function parseTopicData($topic_id)
+    public function parseTopicBody($topic_id)
     {
-        $json = $this->topicDataById($topic_id);
-
-        if (is_null($json)) {
-            return 'Раздача не найдена, попробуйте другую ссылку';
-        }
-
-        if ($json->tor_status === Torrent::STATUS_DUPLICATE) {
-            return 'Раздача закрыта как повторная, попробуйте другую ссылку';
-        }
-
         $response = $this->client->get(self::SITE_ENDPOINT . "viewtopic.php?t={$topic_id}");
 
         $body = (string) $response->getBody();
@@ -126,29 +116,54 @@ class Rto
         $link = $this->parseAnnouncerLink($magnet);
 
         return [
-            'size' => $json->size,
             'body' => $this->parseBodyHtml($body),
+            'magnet' => $magnet,
+            'announcer' => $link->announcer,
+        ];
+    }
+
+    public function parseTopicData($topic_id)
+    {
+        $json = $this->topicDataById($topic_id);
+
+        if (is_null($json)) {
+            return 'Раздача не найдена, попробуйте другую ссылку';
+        }
+
+        if ($json->tor_status === Torrent::STATUS_DUPLICATE) {
+            return 'Раздача закрыта как повторная, попробуйте другую ссылку';
+        }
+
+        if (!is_array($topic_body_data = $this->parseTopicBody($topic_id))) {
+            return $topic_body_data;
+        }
+
+        return array_merge([
+            'size' => $json->size,
             'title' => $json->topic_title,
             'rto_id' => $topic_id,
-            'magnet' => $magnet,
             'seeders' => $json->seeders,
             'reg_time' => $json->reg_time,
             'info_hash' => $json->info_hash,
-            'announcer' => $link->announcer,
             'tor_status' => $json->tor_status,
-        ];
+        ], $topic_body_data);
     }
 
     public function topicDataById($id)
     {
+        return $this->topicDataByIds($id)->{$id};
+    }
+
+    public function topicDataByIds($ids)
+    {
         $params = [
             'by' => 'topic_id',
-            'val' => $id,
+            'val' => $ids,
         ];
 
         $response = $this->client->get('get_tor_topic_data', ['query' => $params]);
 
-        return json_decode($response->getBody())->result->{$id};
+        return json_decode($response->getBody())->result;
     }
 
     public function topicIdByHash($hash)

@@ -34,16 +34,16 @@ class Torrents extends Controller
         }
 
         $torrent = Torrent::create([
-            'user_id' => $this->request->user()->id,
-            'category_id' => 0,
-            'rto_id' => $data['rto_id'],
-            'title' => $data['title'],
             'text' => $data['body'],
             'size' => $data['size'],
+            'title' => $data['title'],
+            'rto_id' => $data['rto_id'],
+            'clicks' => 0,
             'seeders' => $data['seeders'],
+            'user_id' => $this->request->user()->id,
             'info_hash' => $data['info_hash'],
             'announcer' => $data['announcer'],
-            'clicks' => 0,
+            'category_id' => 0,
             'registered_at' => Carbon::createFromTimestamp($data['reg_time']),
         ]);
 
