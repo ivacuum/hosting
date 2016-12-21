@@ -1,0 +1,11 @@
+.btn-default {
+  &.selected {
+    color: $btn-default-color;
+    background-color: darken($btn-default-bg, 12%);
+    border-color: darken($btn-default-border, 12%);
+    background-position: 0 -10px;
+    z-index: 2;
+
+    &:hover { background-position: 0 -15px; }
+  }
+}

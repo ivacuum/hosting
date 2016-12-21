@@ -29,7 +29,7 @@ class Images extends Controller
         $models = $models->paginate()
             ->appends(compact('touch', 'type', 'user_id', 'year'));
 
-        return view($this->view, compact('models', 'type'));
+        return view($this->view, compact('models', 'touch', 'type', 'year'));
     }
 
     public function destroy(Model $model)
