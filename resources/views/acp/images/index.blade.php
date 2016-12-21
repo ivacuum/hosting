@@ -65,7 +65,7 @@
       <form class="form-inline js-batch-form" data-url="{{ action("$self@batch") }}" data-selector=".models-checkbox">
         <div class="form-group">
           <select class="form-control" name="action" id="batch_action">
-            <option value="">Выберите действие...</option>
+            {{--<option value="">Выберите действие...</option>--}}
             <option value="delete">Удалить</option>
           </select>
         </div>
