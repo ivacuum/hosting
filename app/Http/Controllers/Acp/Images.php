@@ -47,7 +47,7 @@ class Images extends Controller
 
         return [
             'status' => 'OK',
-            'redirect' => action("{$this->class}@index"),
+            'redirect' => back(),
         ];
     }
 
