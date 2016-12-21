@@ -60,6 +60,11 @@ class Image extends Model
         return $this->attributes['image_date'];
     }
 
+    public function getTimeAttribute()
+    {
+        return $this->attributes['image_time'];
+    }
+
     public function getSlugAttribute()
     {
         return $this->attributes['image_url'];
