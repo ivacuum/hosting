@@ -92,13 +92,21 @@ class Image extends Model
 
     public function originalUrl()
     {
+        return "http://img.ivacuum.ru/g/{$this->date}/{$this->slug}";
+    }
+
+    public function originalSecretUrl()
+    {
         return "http://ivacuum.org/g/{$this->splitted_date}/{$this->slug}";
-        return "//img.ivacuum.ru/g/{$this->date}/{$this->slug}";
     }
 
     public function thumbnailUrl()
     {
+        return "http://img.ivacuum.ru/g/{$this->date}/t/{$this->slug}";
+    }
+
+    public function thumbnailSecretUrl()
+    {
         return "http://ivacuum.org/g/{$this->splitted_date}/t/{$this->slug}";
-        return "//img.ivacuum.ru/g/{$this->date}/t/{$this->slug}";
     }
 }

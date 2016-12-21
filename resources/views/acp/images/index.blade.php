@@ -53,7 +53,7 @@
         <tr>
           <td><input class="models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
           <td><a class="link" href="{{ action("$self@show", $model) }}">{{ $model->id }}</a></td>
-          <td class="text-center"><img src="{{ $model->thumbnailUrl() }}"></td>
+          <td class="text-center"><img src="{{ $model->thumbnailSecretUrl() }}"></td>
           <td class="text-muted">{{ ViewHelper::size($model->size) }}</td>
           <td>{{ ViewHelper::number($model->views) }}</td>
           <td>{{ !is_null($model->updated_at) && $model->updated_at->diffInMonths() > 6 ? $model->updated_at->diffForHumans(null, true) : '' }}</td>
@@ -76,7 +76,7 @@
     <div class="text-center">
       @foreach ($models as $model)
         <a class="gallery-photo-container" href="{{ action("$self@show", $model) }}">
-          <img class="gallery-photo" src="{{ $model->thumbnailUrl() }}">
+          <img class="gallery-photo" src="{{ $model->thumbnailSecretUrl() }}">
           <span class="image-label">@svg (eye) {{ $model->views }} &middot; {{ ViewHelper::size($model->size) }}</span>
         </a>
       @endforeach
