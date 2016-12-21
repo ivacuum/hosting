@@ -47,7 +47,7 @@ class Images extends Controller
 
         return [
             'status' => 'OK',
-            'redirect' => back(),
+            'redirect' => $this->request->header('referer'),
         ];
     }
 
