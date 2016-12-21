@@ -24,6 +24,8 @@ class Timestamps extends Command
         */
 
         Image::orderBy(Image::ID)->chunk(1000, function ($images) {
+            $total = 0;
+
             foreach ($images as $image) {
                 if (is_null($image->created_at)) {
                     $image->created_at = Carbon::createFromTimestamp($image->time);
@@ -39,6 +41,10 @@ class Timestamps extends Command
 
                 $image->save();
             }
+
+            $total += 1000;
+
+            $this->info("Обработано изображений: {$total}");
         });
 
         /*
