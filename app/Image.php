@@ -25,7 +25,7 @@ class Image extends Model
     protected $connection = 'remote_mysql';
     protected $table = 'site_images';
     protected $guarded = ['created_at', 'updated_at'];
-    protected $perPage = 10;
+    protected $perPage = 50;
     protected $primaryKey = 'image_id';
 
     const ID = 'image_id';
