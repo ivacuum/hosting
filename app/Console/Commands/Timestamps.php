@@ -23,8 +23,7 @@ class Timestamps extends Command
         });
         */
 
-        /*
-        Image::orderBy('id')->chunk(1000, function ($images) {
+        Image::orderBy(Image::ID)->chunk(1000, function ($images) {
             foreach ($images as $image) {
                 if (is_null($image->created_at)) {
                     $image->created_at = Carbon::createFromTimestamp($image->time);
@@ -41,7 +40,6 @@ class Timestamps extends Command
                 $image->save();
             }
         });
-        */
 
         /*
         News::orderBy('id')->chunk(1000, function ($news_collection) {

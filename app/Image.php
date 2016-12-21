@@ -32,6 +32,7 @@ class Image extends Model
     const SLUG = 'image_url';
     const DATE = 'image_date';
     const SIZE = 'image_size';
+    const TOUCH = 'image_touch';
     const VIEWS = 'image_views';
 
     public function user()
@@ -67,6 +68,11 @@ class Image extends Model
     public function getSizeAttribute()
     {
         return $this->attributes['image_size'];
+    }
+
+    public function getTouchAttribute()
+    {
+        return $this->attributes['image_touch'];
     }
 
     public function getViewsAttribute()
