@@ -98,6 +98,7 @@ Route::group(['prefix' => 'gigs'], function () {
 
 Route::group(['prefix' => 'images'], function () {
     Route::get('/', 'Acp\Images@index');
+    Route::post('batch', 'Acp\Images@batch');
     Route::get('{Image}', 'Acp\Images@show');
     Route::delete('{Image}', 'Acp\Images@destroy');
 });

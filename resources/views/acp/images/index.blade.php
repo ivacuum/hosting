@@ -38,26 +38,40 @@
 </div>
 @if (sizeof($models))
   @if (!$type)
-  <table class="table-stats m-b-1">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Название</th>
-        <th>Размер</th>
-        <th>@svg (eye)</th>
-        <th>Без просмотров</th>
-      </tr>
-    </thead>
-    @foreach ($models as $model)
-      <tr>
-        <td><a class="link" href="{{ action("$self@show", $model) }}">{{ $model->id }}</a></td>
-        <td class="text-center"><img src="{{ $model->thumbnailUrl() }}"></td>
-        <td class="text-muted">{{ ViewHelper::size($model->size) }}</td>
-        <td>{{ ViewHelper::number($model->views) }}</td>
-        <td>{{ !is_null($model->updated_at) && $model->updated_at->diffInMonths() > 6 ? $model->updated_at->diffForHumans(null, true) : '' }}</td>
-      </tr>
-    @endforeach
-  </table>
+    <table class="table-stats">
+      <thead>
+        <tr>
+          <th><input type="checkbox" class="js-select-all" data-selector=".models-checkbox"></th>
+          <th>ID</th>
+          <th>Название</th>
+          <th>Размер</th>
+          <th>@svg (eye)</th>
+          <th>Без просмотров</th>
+        </tr>
+      </thead>
+      @foreach ($models as $model)
+        <tr>
+          <td><input class="models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
+          <td><a class="link" href="{{ action("$self@show", $model) }}">{{ $model->id }}</a></td>
+          <td class="text-center"><img src="{{ $model->thumbnailUrl() }}"></td>
+          <td class="text-muted">{{ ViewHelper::size($model->size) }}</td>
+          <td>{{ ViewHelper::number($model->views) }}</td>
+          <td>{{ !is_null($model->updated_at) && $model->updated_at->diffInMonths() > 6 ? $model->updated_at->diffForHumans(null, true) : '' }}</td>
+        </tr>
+      @endforeach
+    </table>
+
+    <div class="pull-left m-y-1">
+      <form class="form-inline js-batch-form" data-url="{{ action("$self@batch") }}" data-selector=".models-checkbox">
+        <div class="form-group">
+          <select class="form-control" name="action" id="batch_action">
+            <option value="">Выберите действие...</option>
+            <option value="delete">Удалить</option>
+          </select>
+        </div>
+        <button class="btn btn-default" id="batch_submit">Выполнить</button>
+      </form>
+    </div>
   @elseif ($type === 'grid')
     <div class="text-center">
       @foreach ($models as $model)

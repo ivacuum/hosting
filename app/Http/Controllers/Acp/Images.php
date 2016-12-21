@@ -32,6 +32,25 @@ class Images extends Controller
         return view($this->view, compact('models', 'touch', 'type', 'year'));
     }
 
+    public function batch()
+    {
+        $action = $this->request->input('action');
+        $ids = $this->request->input('ids');
+
+        switch ($action) {
+            case 'delete':
+
+                Model::destroy($ids);
+
+            break;
+        }
+
+        return [
+            'status' => 'OK',
+            'redirect' => action("{$this->class}@index"),
+        ];
+    }
+
     public function destroy(Model $model)
     {
         $model->delete();
