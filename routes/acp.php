@@ -96,6 +96,12 @@ Route::group(['prefix' => 'gigs'], function () {
     Route::get('{Gig}/edit', 'Acp\Gigs@edit');
 });
 
+Route::group(['prefix' => 'images'], function () {
+    Route::get('/', 'Acp\Images@index');
+    Route::get('{Image}', 'Acp\Images@show');
+    Route::delete('{Image}', 'Acp\Images@destroy');
+});
+
 Route::group(['prefix' => 'pages'], function () {
     Route::get('/', 'Acp\Pages@index');
     Route::post('/', 'Acp\Pages@store');

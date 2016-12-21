@@ -55,6 +55,9 @@ return [
     'gigs.edit'   => 'Редактирование концерта',
     'gigs.show'   => 'Концерт',
 
+    'images.show' => 'Изображение',
+    'images.index' => 'Изображения',
+
     'pages.add'    => 'Добавить страницу',
     'pages.index'  => 'Страницы',
     'pages.create' => 'Новая страница',
