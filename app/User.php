@@ -9,12 +9,15 @@ use Illuminate\Notifications\Notifiable;
  *
  * @property integer $id
  * @property string  $email
+ * @property string  $login
  * @property string  $password
+ * @property string  $salt
+ * @property integer $status
  * @property boolean $active
+ * @property string  $activation_token
  * @property string  $remember_token
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property boolean $is_admin
  */
 class User extends Authenticatable
 {
@@ -30,7 +33,7 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return (bool) $this->is_admin;
+        return $this->isRoot();
     }
 
     public function isRoot()
