@@ -26,10 +26,12 @@ class Images extends Controller
             $models = $models->where('user_id', $user_id);
         }
 
+        $size = $models->sum(Model::SIZE);
+
         $models = $models->paginate()
             ->appends(compact('touch', 'type', 'user_id', 'year'));
 
-        return view($this->view, compact('models', 'touch', 'type', 'year'));
+        return view($this->view, compact('models', 'size', 'touch', 'type', 'year'));
     }
 
     public function batch()

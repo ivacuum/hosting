@@ -136,4 +136,11 @@ $(document).on('click', '.js-select-all', function() {
   $selector.prop('checked', is_checked)
 })
 
+$(document).on('click', '.js-tick-onclick', function() {
+  let $selector = $($(this).data('tick'))
+  $selector.prop('checked', function(i, val) {
+    return !val
+  })
+})
+
 $(document).on('click', '.js-entity-action', Events.entityAction)

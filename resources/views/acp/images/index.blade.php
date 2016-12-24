@@ -4,6 +4,7 @@
 <h3>
   {{ trans("$tpl.index") }}
   <small>{{ ViewHelper::number($models->total()) }}</small>
+  <small>{{ ViewHelper::size($size) }}</small>
 </h3>
 <div class="btn-toolbar m-b-1">
   <div class="btn-group">
@@ -51,8 +52,8 @@
         </tr>
       </thead>
       @foreach ($models as $model)
-        <tr>
-          <td><input class="models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
+        <tr class="js-tick-onclick" data-tick="#checkbox_{{ $model->id }}">
+          <td><input class="models-checkbox" type="checkbox" id="checkbox_{{ $model->id }}" name="ids[]" value="{{ $model->id }}"></td>
           <td><a class="link" href="{{ action("$self@show", $model) }}">{{ $model->id }}</a></td>
           <td class="text-center"><img src="{{ $model->thumbnailSecretUrl() }}"></td>
           <td class="text-muted">{{ ViewHelper::size($model->size) }}</td>
@@ -75,6 +76,7 @@
     <div class="pull-left m-y-1">
       <form class="form-inline js-batch-form" data-url="{{ action("$self@batch") }}" data-selector=".models-checkbox">
         <div class="form-group">
+          <input type="checkbox" class="js-select-all" data-selector=".models-checkbox">
           <select class="form-control" name="action" id="batch_action">
             {{--<option value="">Выберите действие...</option>--}}
             <option value="delete">Удалить</option>
