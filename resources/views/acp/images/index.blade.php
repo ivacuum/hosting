@@ -57,7 +57,13 @@
           <td><a class="link" href="{{ action("$self@show", $model) }}">{{ $model->id }}</a></td>
           <td class="text-center"><img src="{{ $model->thumbnailSecretUrl() }}"></td>
           <td class="text-muted">{{ ViewHelper::size($model->size) }}</td>
-          <td>{{ ViewHelper::number($model->views) }}</td>
+          <td>
+            @if ($model->views > 1000)
+              <span class="label label-success">{{ ViewHelper::number($model->views) }}</span>
+            @else
+              {{ ViewHelper::number($model->views) }}
+            @endif
+          </td>
           <td>{{ !is_null($model->updated_at) && $model->updated_at->diffInMonths() > 6 ? $model->updated_at->diffForHumans(null, true) : '' }}</td>
           <td>
             <div class="btn-group">
