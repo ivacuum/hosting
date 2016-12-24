@@ -14,7 +14,7 @@ class Images extends Controller
         $touch = $this->request->input('touch');
         $user_id = $this->request->input('user_id');
 
-        $models = Model::orderBy(Model::VIEWS, 'asc')->orderBy(Model::ID, 'desc');
+        $models = Model::orderBy(Model::ID, 'asc');
 
         if ($year) {
             $models = $models->whereYear(Model::CREATED_AT, $year);
