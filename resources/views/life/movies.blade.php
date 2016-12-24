@@ -15,6 +15,7 @@
     'movies' => [
       ['title' => 'Хардкор<br>Hardcore Henry', 'id' => 778218],
       ['title' => 'Ночной администратор<br>The Night Manager', 'id' => 462649],
+      ['title' => 'Мир Дикого Запада<br>Westworld', 'id' => 195523],
     ]
   ])
 </div>
