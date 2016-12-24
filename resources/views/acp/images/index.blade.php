@@ -47,6 +47,7 @@
           <th>Размер</th>
           <th>@svg (eye)</th>
           <th>Без просмотров</th>
+          <th></th>
         </tr>
       </thead>
       @foreach ($models as $model)
@@ -57,6 +58,16 @@
           <td class="text-muted">{{ ViewHelper::size($model->size) }}</td>
           <td>{{ ViewHelper::number($model->views) }}</td>
           <td>{{ !is_null($model->updated_at) && $model->updated_at->diffInMonths() > 6 ? $model->updated_at->diffForHumans(null, true) : '' }}</td>
+          <td>
+            <div class="btn-group">
+              <a class="btn btn-default" href="{{ action("$self@view", $model) }}">
+                @svg (eye)
+              </a>
+              <a class="btn btn-default js-entity-action" data-confirm="Запись будет удалена. Продолжить?" data-method="delete" href="{{ action("$self@destroy", $model) }}">
+                @svg (trash-o)
+              </a>
+            </div>
+          </td>
         </tr>
       @endforeach
     </table>

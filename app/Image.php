@@ -85,6 +85,16 @@ class Image extends Model
         return $this->attributes['image_views'];
     }
 
+    public function setTouchAttribute($value)
+    {
+        $this->attributes['image_touch'] = $value;
+    }
+
+    public function setViewsAttribute($value)
+    {
+        $this->attributes['image_views'] = $value;
+    }
+
     public function getSplittedDateAttribute()
     {
         return implode('/', str_split($this->date, 2));

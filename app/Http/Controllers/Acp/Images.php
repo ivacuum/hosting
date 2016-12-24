@@ -57,12 +57,21 @@ class Images extends Controller
 
         return [
             'status' => 'OK',
-            'redirect' => action("{$this->class}@index"),
+            'redirect' => $this->request->header('referer'), // action("{$this->class}@index"),
         ];
     }
 
     public function show(Model $model)
     {
         return view($this->view, compact('model'));
+    }
+
+    public function view(Model $model)
+    {
+        $model->touch = time();
+        $model->views++;
+        $model->save();
+
+        return back();
     }
 }
