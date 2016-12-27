@@ -51,6 +51,9 @@ class RtoUpdate extends Command
 
                     // Раздача обновлена
                     $this->info("Раздача {$id} обновлена");
+
+                    // Ограничение количества запросов в секунду
+                    sleep(1);
                 }
 
                 $torrent->save();
