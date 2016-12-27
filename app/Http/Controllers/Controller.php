@@ -1,12 +1,9 @@
 <?php namespace App\Http\Controllers;
 
-use App;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use NumberFormatter;
-use Route;
 
 class Controller extends BaseController
 {
@@ -27,8 +24,6 @@ class Controller extends BaseController
         $this->method = $this->getCurrentMethod();
         $this->prefix = $this->getViewPrefix();
         $this->view   = $this->prefix.".".snake_case($this->method);
-
-        $this->appendViewSharedVars();
     }
 
     public function callAction($method, $parameters)
@@ -36,6 +31,8 @@ class Controller extends BaseController
         if (method_exists($this, 'alwaysCallBefore')) {
             call_user_func_array([$this, 'alwaysCallBefore'], $parameters);
         }
+
+        $this->appendViewSharedVars();
 
         return parent::callAction($method, $parameters);
     }
@@ -50,7 +47,7 @@ class Controller extends BaseController
             $request_uri = $this->request->path();
         }
 
-        $locale = App::getLocale();
+        $locale = \App::getLocale();
 
         view()->share([
             'goto'        => $this->request->input('goto'),
@@ -65,7 +62,7 @@ class Controller extends BaseController
 
     protected function getCurrentMethod()
     {
-        $method = Route::currentRouteAction();
+        $method = \Route::currentRouteAction();
 
         return substr($method, strpos($method, '@') + 1);
     }
