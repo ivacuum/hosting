@@ -5,7 +5,8 @@
 .navbar-default .navbar-brand {
   font-weight: bold;
   color: #005784;
-  font-family: "Trebuchet MS", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  // font-family: "Trebuchet MS", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 18px;
   text-shadow: #ddd 2px 2px 2px;
 
   &:hover { color: #d46400; }
