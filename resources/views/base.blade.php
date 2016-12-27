@@ -38,20 +38,6 @@
                 {{ trans('menu.life') }}
               </a>
             </li>
-            @ru
-              <li>
-                <a class="{{ $self == 'ParserVk' ? 'navbar-selected' : '' }}" href="{{ action('ParserVk@index') }}">
-                  {{ trans('menu.parser_vk') }}
-                </a>
-              </li>
-            @endlang
-            @if (App::environment('local'))
-              <li>
-                <a class="{{ $self == 'Docs' ? 'navbar-selected' : '' }}" href="{{ action('Docs@index') }}">
-                  {{ trans('menu.docs') }}
-                </a>
-              </li>
-            @endif
             @if (Auth::check() && Auth::user()->isRoot())
               <li>
                 <a class="{{ $self == 'Torrents' ? 'navbar-selected' : '' }}" href="{{ action('Torrents@index') }}">
