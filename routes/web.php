@@ -16,6 +16,10 @@ Route::post('auth/password/reset', 'Auth@passwordResetPost')->middleware('guest'
 Route::post('ajax/feedback', 'Ajax@feedback');
 
 Route::get('about', 'Home@about');
+
+Route::get('dc', 'Dcpp@index');
+Route::get('dc/{page}', 'Dcpp@page');
+
 Route::get('docs', 'Docs@index');
 Route::get('docs/{page}', 'Docs@page');
 

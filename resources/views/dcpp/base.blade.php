@@ -1,0 +1,69 @@
+@extends('base')
+
+@section('global_menu')
+<li>
+  <a class="{{ $page === 'index' ? 'navbar-selected' : '' }}" href="{{ action('Dcpp@index') }}">
+    {{ trans('dcpp.index') }}
+  </a>
+</li>
+@ru
+  <li>
+    <a class="{{ $page === 'faq' ? 'navbar-selected' : '' }}" href="{{ action('Dcpp@page', 'faq') }}">
+      {{ trans('dcpp.faq') }}
+    </a>
+  </li>
+@endlang
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ trans('dcpp.clients') }} <span class="caret"></span></a>
+  <ul class="dropdown-menu">
+    <li>
+      <a href="{{ action('Dcpp@page', 'airdc') }}">
+        {{ trans('dcpp.airdc') }}
+      </a>
+      <a href="{{ action('Dcpp@page', 'apexdc') }}">
+        {{ trans('dcpp.apexdc') }}
+      </a>
+      <a href="{{ action('Dcpp@page', 'dcpp') }}">
+        {{ trans('dcpp.dcpp') }}
+      </a>
+      <a href="{{ action('Dcpp@page', 'flylinkdc') }}">
+        {{ trans('dcpp.flylinkdc') }}
+      </a>
+      <a href="{{ action('Dcpp@page', 'greylinkdc') }}">
+        {{ trans('dcpp.greylinkdc') }}
+      </a>
+      <a href="{{ action('Dcpp@page', 'jucydc') }}">
+        {{ trans('dcpp.jucydc') }}
+      </a>
+      @ru
+        <a href="{{ action('Dcpp@page', 'kalugadc') }}">
+          {{ trans('dcpp.kalugadc') }}
+        </a>
+      @endlang
+      <a href="{{ action('Dcpp@page', 'pelinkdc') }}">
+        {{ trans('dcpp.pelinkdc') }}
+      </a>
+      <a href="{{ action('Dcpp@page', 'shakespeer') }}">
+        {{ trans('dcpp.shakespeer') }}
+      </a>
+      <a href="{{ action('Dcpp@page', 'strongdc') }}">
+        {{ trans('dcpp.strongdc') }}
+      </a>
+    </li>
+  </ul>
+</li>
+@endsection
+
+@section('header_user')
+@endsection
+
+@section('footer')
+<ul class="list-inline">
+  <li>&copy; {{ date('Y') }} ArtFly</li>
+  <li>&middot;</li>
+  <li>
+    <a class="link" href="mailto:{{ config('email.dc') }}">
+      {{ trans('menu.feedback') }}
+    </a>
+  </li>
+</ul>
+@endsection
