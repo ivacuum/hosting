@@ -36,6 +36,12 @@ Route::get('parser/vk/{page?}/{date?}', 'ParserVk@index')
     ->where('date', '\d{4}-\d{2}-\d{2}');
 Route::post('parser/vk', 'ParserVk@indexPost');
 
+Route::get('retracker', 'Retracker@index');
+Route::get('retracker/dev', 'Retracker@dev');
+Route::get('retracker/usage', 'Retracker@usage');
+
+Route::get('torrent', 'Torrents@promo');
+
 Route::get('torrents', 'Torrents@index');
 Route::post('torrents', 'Torrents@addPost')->middleware('auth');
 Route::get('torrents/add', 'Torrents@add')->middleware('auth');

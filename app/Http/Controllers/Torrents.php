@@ -58,6 +58,11 @@ class Torrents extends Controller
         return view($this->view);
     }
 
+    public function promo()
+    {
+        return view($this->view);
+    }
+
     public function torrent(Torrent $torrent)
     {
         \Breadcrumbs::push(trans('torrents.index'), 'torrents');
