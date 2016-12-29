@@ -62,6 +62,7 @@
     </ul>
     <p>Дата запуска: 8 февраля 2009 г.</p>
   </div>
+  {{--
   <div class="col-md-4 service-container">
     <h3 class="service-title"><a class="link" href="http://up.ivacuum.ru/">Загрузка изображений</a></h3>
     <p>Сервис загрузки изображений в галерею для последующего использования на трекере.</p>
@@ -73,6 +74,7 @@
     </ul>
     <p>Дата запуска: 8 февраля 2009 г.</p>
   </div>
+  --}}
   <div class="col-md-4 service-container">
     <div class="clearfix">
       <img class="service-image" src="http://ivacuum.org/i/services/dcpp.png">
