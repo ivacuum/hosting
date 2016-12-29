@@ -7,7 +7,7 @@
   </li>
   @if (Auth::check())
     <li class="{{ $view == 'torrents.add' ? 'active' : '' }}">
-      <a href="{{ action('Torrents@add') }}">Добавить раздачу</a>
+      <a href="{{ action('Torrents@add') }}">{{ trans('torrents.add') }}</a>
     </li>
   @endif
   <li class="{{ $view == 'torrents.faq' ? 'active' : '' }}">

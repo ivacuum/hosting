@@ -8,7 +8,7 @@ class Torrents extends Controller
 {
     public function index()
     {
-        \Breadcrumbs::push('Торренты');
+        \Breadcrumbs::push(trans($this->view));
 
         $torrents = Torrent::orderBy('registered_at', 'desc')->paginate();
 
@@ -17,8 +17,8 @@ class Torrents extends Controller
 
     public function add()
     {
-        \Breadcrumbs::push('Торренты', 'torrents');
-        \Breadcrumbs::push('Добавление');
+        \Breadcrumbs::push(trans('torrents.index'), 'torrents');
+        \Breadcrumbs::push(trans($this->view));
 
         return view($this->view);
     }
@@ -52,7 +52,7 @@ class Torrents extends Controller
 
     public function faq()
     {
-        \Breadcrumbs::push('Торренты', 'torrents');
+        \Breadcrumbs::push(trans('torrents.index'), 'torrents');
         \Breadcrumbs::push('Помощь');
 
         return view($this->view);
@@ -60,7 +60,7 @@ class Torrents extends Controller
 
     public function torrent(Torrent $torrent)
     {
-        \Breadcrumbs::push('Торренты', 'torrents');
+        \Breadcrumbs::push(trans('torrents.index'), 'torrents');
         \Breadcrumbs::push($torrent->title);
 
         return view($this->view, compact('torrent'));
