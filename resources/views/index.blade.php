@@ -3,7 +3,10 @@
 @section('content')
 <div class="row">
   <div class="col-md-4 service-container">
-    <h3 class="service-title"><a class="link" href="http://t.ivacuum.ru/">Торрент-трекер</a></h3>
+    <div class="clearfix">
+      <img class="service-image" src="http://ivacuum.org/i/services/torrent.png">
+      <h2 class="service-title"><a class="link" href="http://t.ivacuum.ru/">Торрент-трекер</a></h2>
+    </div>
     <p>Наглядный сервис для обмена файлами внутри локальной сети Билайн с возможностью комментирования раздач.</p>
     <p>Особенности:</p>
     <ul>
@@ -15,7 +18,10 @@
     <p>Дата запуска: 5 июля 2010 г.</p>
   </div>
   <div class="col-md-4 service-container">
-    <h3 class="service-title"><a class="link" href="{{ action('Life@index') }}">Заметки из жизни</a></h3>
+    <div class="clearfix">
+      <img class="service-image" src="http://ivacuum.org/i/services/hosting.png">
+      <h2 class="service-title"><a class="link" href="{{ action('Life@index') }}">Заметки из жизни</a></h2>
+    </div>
     <p>Мои заметки о жизни:</p>
     <ul>
       <li>поездки по городам России и мира;</li>
@@ -25,7 +31,10 @@
     <p>Дата запуска: 29 сентября 2014 г.</p>
   </div>
   <div class="col-md-4 service-container">
-    <h3 class="service-title"><a class="link" href="https://kupislona.ru/">KupiSlona.ru</a></h3>
+    <div class="clearfix">
+      <img class="service-image" src="http://ivacuum.org/i/services/kupislona.png">
+      <h2 class="service-title"><a class="link" href="https://kupislona.ru/">KupiSlona.ru</a></h2>
+    </div>
     <p>Доска объявлений Калужской области.</p>
     <p>Особенности:</p>
     <ul>
@@ -40,8 +49,11 @@
 
 <div class="row">
   <div class="col-md-4 service-container">
-    <h3 class="service-title"><a class="link" href="http://ivacuum.ru/галерея/">Галерея</a></h3>
-    <p>Хранилище изображений, которые вы когда-либо загружали.</p>
+    <div class="clearfix">
+      <img class="service-image" src="http://ivacuum.org/i/services/gallery.png">
+      <h2 class="service-title"><a class="link" href="http://ivacuum.ru/галерея/">Галерея</a></h2>
+    </div>
+    <p>Хранилище изображений для последующей публикации в интернете.</p>
     <p>Особенности:</p>
     <ul>
       <li>учет показов изображений;</li>
@@ -62,7 +74,10 @@
     <p>Дата запуска: 8 февраля 2009 г.</p>
   </div>
   <div class="col-md-4 service-container">
-    <h3 class="service-title"><a class="link" href="http://dc.ivacuum.ru/">ArtFly.DC++</a></h3>
+    <div class="clearfix">
+      <img class="service-image" src="http://ivacuum.org/i/services/dcpp.png">
+      <h2 class="service-title"><a class="link" href="http://dc.ivacuum.ru/">ArtFly.DC++</a></h2>
+    </div>
     <p>Большая коллекция русских DC++ клиентов.</p>
     <p>Особенности:</p>
     <ul>

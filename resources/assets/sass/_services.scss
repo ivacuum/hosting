@@ -1,2 +1,11 @@
 .service-container { margin-bottom: 1.5rem; }
-.service-title { margin-top: 0; }
+.service-image {
+  float: left;
+  margin-right: 7px;
+  width: 48px;
+  height: 48px;
+}
+.service-title {
+  margin-top: 0;
+  line-height: 48px;
+}
