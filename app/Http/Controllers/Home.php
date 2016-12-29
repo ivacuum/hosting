@@ -4,8 +4,6 @@ class Home extends Controller
 {
     public function index()
     {
-        \Breadcrumbs::push('Ресурсы');
-
         return view('index');
     }
 
