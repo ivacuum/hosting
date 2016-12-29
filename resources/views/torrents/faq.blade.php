@@ -42,8 +42,18 @@
 <ul>
   <li>qBittorrent</li>
   <li>Deluge</li>
-  <li>Transmission</li>
-  <li>uTorrent</li>
+  <li>
+    <a class="link" href="{{ action('Files@download', 151) }}">Transmission</a>
+    <span title="macOS">
+      @svg (apple)
+    </span>
+  </li>
+  <li>
+    <a class="link" href="{{ action('Files@download', 150) }}">uTorrent</a>
+    <span title="Windows">
+      @svg (windows)
+    </span>
+  </li>
 </ul>
 
 <div class="faq-question">
