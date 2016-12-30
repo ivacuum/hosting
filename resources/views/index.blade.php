@@ -4,8 +4,8 @@
 <div class="row">
   <div class="col-md-4 service-container">
     <div class="clearfix">
-      <img class="service-image" src="http://ivacuum.org/i/services/torrent.png">
       <h2 class="service-title"><a class="link" href="http://t.ivacuum.ru/">Торрент-трекер</a></h2>
+      <img class="service-image" src="https://ivacuum.org/i/services/torrent.png">
     </div>
     <p>Наглядный сервис для обмена файлами внутри локальной сети Билайн с возможностью комментирования раздач.</p>
     <p>Особенности:</p>
@@ -19,8 +19,8 @@
   </div>
   <div class="col-md-4 service-container">
     <div class="clearfix">
-      <img class="service-image" src="http://ivacuum.org/i/services/hosting.png">
       <h2 class="service-title"><a class="link" href="{{ action('Life@index') }}">Заметки из жизни</a></h2>
+      <img class="service-image" src="https://ivacuum.org/i/services/hosting.png">
     </div>
     <p>Мои заметки о жизни:</p>
     <ul>
@@ -32,7 +32,7 @@
   </div>
   <div class="col-md-4 service-container">
     <div class="clearfix">
-      <img class="service-image" src="http://ivacuum.org/i/services/kupislona.png">
+      <img class="service-image" src="https://ivacuum.org/i/services/kupislona.png">
       <h2 class="service-title"><a class="link" href="https://kupislona.ru/">KupiSlona.ru</a></h2>
     </div>
     <p>Доска объявлений Калужской области.</p>
@@ -50,8 +50,8 @@
 <div class="row">
   <div class="col-md-4 service-container">
     <div class="clearfix">
-      <img class="service-image" src="http://ivacuum.org/i/services/gallery.png">
       <h2 class="service-title"><a class="link" href="http://ivacuum.ru/галерея/">Галерея</a></h2>
+      <img class="service-image" src="https://ivacuum.org/i/services/gallery.png">
     </div>
     <p>Хранилище изображений для последующей публикации в интернете.</p>
     <p>Особенности:</p>
@@ -77,8 +77,8 @@
   --}}
   <div class="col-md-4 service-container">
     <div class="clearfix">
-      <img class="service-image" src="http://ivacuum.org/i/services/dcpp.png">
       <h2 class="service-title"><a class="link" href="http://dc.ivacuum.ru/">ArtFly.DC++</a></h2>
+      <img class="service-image" src="https://ivacuum.org/i/services/dcpp.png">
     </div>
     <p>Большая коллекция русских DC++ клиентов.</p>
     <p>Особенности:</p>

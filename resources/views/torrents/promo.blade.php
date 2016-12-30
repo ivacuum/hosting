@@ -8,7 +8,7 @@
   <div class="col-md-3">
     <div class="text-center">
       <a href="{{ action('Torrents@promo') }}">
-        <img src="http://ivacuum.org/i/t/images/logo_arrows.png" width="128" height="128">
+        <img src="https://ivacuum.org/i/t/images/logo_arrows.png" width="128" height="128">
       </a>
     </div>
 

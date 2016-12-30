@@ -1,6 +1,6 @@
 <html>
 <head>
-<link href="http://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet">
 <style>
 body {
   margin: 0;

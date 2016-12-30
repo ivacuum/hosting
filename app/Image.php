@@ -118,7 +118,7 @@ class Image extends Model
 
     public function originalSecretUrl()
     {
-        return "http://ivacuum.org/g/{$this->splitted_date}/{$this->slug}";
+        return "https://ivacuum.org/g/{$this->splitted_date}/{$this->slug}";
     }
 
     public function thumbnailUrl()
@@ -128,6 +128,6 @@ class Image extends Model
 
     public function thumbnailSecretUrl()
     {
-        return "http://ivacuum.org/g/{$this->splitted_date}/t/{$this->slug}";
+        return "https://ivacuum.org/g/{$this->splitted_date}/t/{$this->slug}";
     }
 }

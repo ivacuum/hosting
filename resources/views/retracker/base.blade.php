@@ -23,7 +23,7 @@
   <div class="col-md-3">
     <div class="text-center">
       <a href="{{ action('Retracker@index') }}">
-        <img src="http://ivacuum.org/i/rt/logo.png" width="128" height="128">
+        <img src="https://ivacuum.org/i/rt/logo.png" width="128" height="128">
       </a>
     </div>
     <h3>Ссылки</h3>
