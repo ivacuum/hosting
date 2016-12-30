@@ -6,8 +6,8 @@
     <thead>
       <tr>
         <td>Дата</td>
-        <td></td>
         <td>Раздача</td>
+        <td></td>
         <td>Размер</td>
         <td>Сиды</td>
       </tr>
@@ -17,13 +17,13 @@
         <tr>
           <td>{{ $torrent->shortDate() }}</td>
           <td>
-            <a class="link" href="{{ $torrent->magnet() }}">
-              @svg (magnet)
+            <a class="link" href="{{ action("{$self}@torrent", $torrent) }}">
+              {{ $torrent->title }}
             </a>
           </td>
           <td>
-            <a class="link" href="{{ action("{$self}@torrent", $torrent) }}">
-              {{ $torrent->title }}
+            <a href="{{ $torrent->magnet() }}" title="{{ trans('torrents.download') }}">
+              @svg (magnet)
             </a>
           </td>
           <td>{{ ViewHelper::size($torrent->size) }}</td>
