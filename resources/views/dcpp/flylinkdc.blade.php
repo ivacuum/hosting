@@ -47,9 +47,9 @@
 
   <h3>Установка и настройка</h3>
   <p>После установки клиента вам необходимо будет указать ваш ник:</p>
-  <p><img src="http://img.ivacuum.ru/g/110320/1_hdZWo1DiV3.png" width="670" height="229"></p>
+  <p><img src="https://img.ivacuum.ru/g/110320/1_hdZWo1DiV3.png" width="670" height="229"></p>
   <p>А также открыть доступ к тем файлам, которыми вы готовы поделиться с другими пользователями:</p>
-  <p><img src="http://img.ivacuum.ru/g/110320/1_aVZjr1LGHI.png" width="633" height="443"></p>
+  <p><img src="https://img.ivacuum.ru/g/110320/1_aVZjr1LGHI.png" width="633" height="443"></p>
   <p>После этих настроек перезапустите программу и пользуйтесь <strong>FlyLinkDC++</strong> с удовольствием!</p>
 @en
   <p><strong>FlyLinkDC++</strong> is a free and open-source DC++ client software. It is based on <a class="link" href="{{ action('Dcpp@page', 'strongdc') }}">StrongDC++</a>.</p>

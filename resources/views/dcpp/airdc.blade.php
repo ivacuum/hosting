@@ -6,17 +6,17 @@
   ],
   'software_screenshots' => [
     [
-      'full' => 'http://img.ivacuum.ru/g/120207/1_nE5CZz1ute.png',
-      'thumb' => 'http://img.ivacuum.ru/g/120207/s/1_nE5CZz1ute.png',
+      'full' => 'https://img.ivacuum.ru/g/120207/1_nE5CZz1ute.png',
+      'thumb' => 'https://img.ivacuum.ru/g/120207/s/1_nE5CZz1ute.png',
     ], [
-      'full' => 'http://img.ivacuum.ru/g/120207/1_73UsJceBSs.png',
-      'thumb' => 'http://img.ivacuum.ru/g/120207/s/1_73UsJceBSs.png',
+      'full' => 'https://img.ivacuum.ru/g/120207/1_73UsJceBSs.png',
+      'thumb' => 'https://img.ivacuum.ru/g/120207/s/1_73UsJceBSs.png',
     ], [
-      'full' => 'http://img.ivacuum.ru/g/120207/1_oQUc7FeN89.png',
-      'thumb' => 'http://img.ivacuum.ru/g/120207/s/1_oQUc7FeN89.png',
+      'full' => 'https://img.ivacuum.ru/g/120207/1_oQUc7FeN89.png',
+      'thumb' => 'https://img.ivacuum.ru/g/120207/s/1_oQUc7FeN89.png',
     ], [
-      'full' => 'http://img.ivacuum.ru/g/120207/1_rGS8EGZEp0.jpg',
-      'thumb' => 'http://img.ivacuum.ru/g/120207/s/1_rGS8EGZEp0.jpg',
+      'full' => 'https://img.ivacuum.ru/g/120207/1_rGS8EGZEp0.jpg',
+      'thumb' => 'https://img.ivacuum.ru/g/120207/s/1_rGS8EGZEp0.jpg',
     ],
   ],
   'developer_site' => 'http://airdcpp.net/',

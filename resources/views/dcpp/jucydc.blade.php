@@ -5,8 +5,8 @@
   ],
   'software_screenshots' => [
     [
-      'full' => 'http://img.ivacuum.ru/g/091002/1_ZaESRgyfi0.jpg',
-      'thumb' => 'http://img.ivacuum.ru/g/091002/s/1_ZaESRgyfi0.jpg',
+      'full' => 'https://img.ivacuum.ru/g/091002/1_ZaESRgyfi0.jpg',
+      'thumb' => 'https://img.ivacuum.ru/g/091002/s/1_ZaESRgyfi0.jpg',
     ],
   ],
   'developer_site' => 'http://www.jucy.eu/',

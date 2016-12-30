@@ -6,8 +6,8 @@
   ],
   'software_screenshots' => [
     [
-      'full' => 'http://img.ivacuum.ru/g/091002/1_9Xb39T30l4.gif',
-      'thumb' => 'http://img.ivacuum.ru/g/091002/s/1_9Xb39T30l4.gif',
+      'full' => 'https://img.ivacuum.ru/g/091002/1_9Xb39T30l4.gif',
+      'thumb' => 'https://img.ivacuum.ru/g/091002/s/1_9Xb39T30l4.gif',
     ],
   ],
   'developer_site' => 'http://dcplusplus.sourceforge.net/',

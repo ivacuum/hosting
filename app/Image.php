@@ -113,7 +113,7 @@ class Image extends Model
 
     public function originalUrl()
     {
-        return "http://img.ivacuum.ru/g/{$this->date}/{$this->slug}";
+        return "https://img.ivacuum.ru/g/{$this->date}/{$this->slug}";
     }
 
     public function originalSecretUrl()
@@ -123,7 +123,7 @@ class Image extends Model
 
     public function thumbnailUrl()
     {
-        return "http://img.ivacuum.ru/g/{$this->date}/t/{$this->slug}";
+        return "https://img.ivacuum.ru/g/{$this->date}/t/{$this->slug}";
     }
 
     public function thumbnailSecretUrl()

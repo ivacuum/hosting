@@ -12,9 +12,9 @@
   <section>
     <h2 class="m-t-0">Установка и настройка</h2>
     <p>После установки клиентка вам необходимо будет указать ваш ник:</p>
-    <p><img class="screenshot" src="http://img.ivacuum.ru/g/091002/1_1aVMvTi73f.jpg" width="664" height="503"></p>
+    <p><img class="screenshot" src="https://img.ivacuum.ru/g/091002/1_1aVMvTi73f.jpg" width="664" height="503"></p>
     <p>А также указать папки, доступ к которым будет открыт для других пользователей:</p>
-    <p><img class="screenshot" src="http://img.ivacuum.ru/g/091002/1_aid11fD5AJ.jpg" width="657" height="500"></p>
+    <p><img class="screenshot" src="https://img.ivacuum.ru/g/091002/1_aid11fD5AJ.jpg" width="657" height="500"></p>
     <p>После этих настроек перезапустите программу и пользуйтесь <strong>Kaluga DC++</strong> с удовольствием!</p>
   </section>
 @en

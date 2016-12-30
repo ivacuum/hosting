@@ -7,8 +7,8 @@
   ],
   'software_screenshots' => [
     [
-      'full' => 'http://img.ivacuum.ru/g/091001/1_BJDziOKhf1.png',
-      'thumb' => 'http://img.ivacuum.ru/g/091001/s/1_BJDziOKhf1.png',
+      'full' => 'https://img.ivacuum.ru/g/091001/1_BJDziOKhf1.png',
+      'thumb' => 'https://img.ivacuum.ru/g/091001/s/1_BJDziOKhf1.png',
     ],
   ],
   'developer_site' => 'http://strongdc.sourceforge.net/?lang=eng',

@@ -9,19 +9,19 @@
 <ul>
   <li>
     <p>выбрать в клиенте раздачу:</p>
-    <p><img src="http://img.ivacuum.ru/g/100710/1_58sS4cweRE.png" width="438" height="70"></p>
+    <p><img src="https://img.ivacuum.ru/g/100710/1_58sS4cweRE.png" width="438" height="70"></p>
   </li>
   <li>
     <p>открыть вкладку «Трекеры» (Trackers):</p>
-    <p><img src="http://img.ivacuum.ru/g/100710/1_I1jXoj2RI3.png" width="619" height="116"></p>
+    <p><img src="https://img.ivacuum.ru/g/100710/1_I1jXoj2RI3.png" width="619" height="116"></p>
   </li>
   <li>
     <p>нажать <img src="http://ivacuum.org/i/_/mouse_select_right.png" width="16" height="16"> в пространстве окошка со списком трекеров и выбрать «Добавить трекер»:</p>
-    <p><img src="http://img.ivacuum.ru/g/100710/1_g5STffKBb4.png" width="236" height="146"></p>
+    <p><img src="https://img.ivacuum.ru/g/100710/1_g5STffKBb4.png" width="236" height="146"></p>
   </li>
   <li>
     <p>добавить строку «http://retracker.local/announce», как показано на рисунке:</p>
-    <p><img src="http://img.ivacuum.ru/g/100710/1_ZnPu3tIvZm.png" width="469" height="646"></p>
+    <p><img src="https://img.ivacuum.ru/g/100710/1_ZnPu3tIvZm.png" width="469" height="646"></p>
   </li>
   <li>нажать «OK».</li>
 </ul>
