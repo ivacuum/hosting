@@ -14,19 +14,21 @@ class Images extends Controller
         $touch = $this->request->input('touch');
         $user_id = $this->request->input('user_id');
 
-        $models = Model::orderBy(Model::ID, 'asc');
+        $models = Model::orderBy('id')
+            ->where('updated_at', '<', Carbon::now()->subYear()->toDateTimeString())
+            ->where('views', '<', 1000);
 
         if ($year) {
-            $models = $models->whereYear(Model::CREATED_AT, $year);
+            $models = $models->whereYear('created_at', $year);
         }
         if ($touch) {
-            $models = $models->whereYear(Model::UPDATED_AT, Carbon::now()->subYear($touch)->year);
+            $models = $models->whereYear('updated_at', Carbon::now()->subYear($touch)->year);
         }
         if ($user_id) {
             $models = $models->where('user_id', $user_id);
         }
 
-        $size = $models->sum(Model::SIZE);
+        $size = $models->sum('size');
 
         $models = $models->paginate()
             ->appends(compact('touch', 'type', 'user_id', 'year'));

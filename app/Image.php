@@ -9,10 +9,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $user_id
  * @property string  $slug
  * @property string  $date
- * @property integer $time
  * @property integer $size
  * @property integer $views
- * @property integer $touch
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
@@ -22,18 +20,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Image extends Model
 {
-    protected $connection = 'remote_mysql';
-    protected $table = 'site_images';
     protected $guarded = ['created_at', 'updated_at'];
     protected $perPage = 50;
-    protected $primaryKey = 'image_id';
-
-    const ID = 'image_id';
-    const SLUG = 'image_url';
-    const DATE = 'image_date';
-    const SIZE = 'image_size';
-    const TOUCH = 'image_touch';
-    const VIEWS = 'image_views';
 
     public function user()
     {
@@ -48,51 +36,6 @@ class Image extends Model
         static::deleting(function (Image $image) {
             $image->deleteFiles();
         });
-    }
-
-    public function getIdAttribute()
-    {
-        return $this->attributes['image_id'];
-    }
-
-    public function getDateAttribute()
-    {
-        return $this->attributes['image_date'];
-    }
-
-    public function getTimeAttribute()
-    {
-        return $this->attributes['image_time'];
-    }
-
-    public function getSlugAttribute()
-    {
-        return $this->attributes['image_url'];
-    }
-
-    public function getSizeAttribute()
-    {
-        return $this->attributes['image_size'];
-    }
-
-    public function getTouchAttribute()
-    {
-        return $this->attributes['image_touch'];
-    }
-
-    public function getViewsAttribute()
-    {
-        return $this->attributes['image_views'];
-    }
-
-    public function setTouchAttribute($value)
-    {
-        $this->attributes['image_touch'] = $value;
-    }
-
-    public function setViewsAttribute($value)
-    {
-        $this->attributes['image_views'] = $value;
     }
 
     public function getSplittedDateAttribute()

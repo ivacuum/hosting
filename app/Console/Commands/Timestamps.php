@@ -25,7 +25,7 @@ class Timestamps extends Command
 
         $total = 0;
 
-        Image::orderBy(Image::ID)->chunk(1000, function ($images) use ($total) {
+        Image::orderBy('id')->chunk(1000, function ($images) use ($total) {
             foreach ($images as $image) {
                 if (is_null($image->created_at)) {
                     $image->created_at = Carbon::createFromTimestamp($image->time);

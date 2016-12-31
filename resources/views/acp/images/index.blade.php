@@ -55,10 +55,14 @@
         <tr class="js-tick-onclick" data-tick="#checkbox_{{ $model->id }}">
           <td><input class="models-checkbox" type="checkbox" id="checkbox_{{ $model->id }}" name="ids[]" value="{{ $model->id }}"></td>
           <td><a class="link" href="{{ action("$self@show", $model) }}">{{ $model->id }}</a></td>
-          <td class="text-center"><img src="{{ $model->thumbnailSecretUrl() }}"></td>
+          <td class="text-center">
+            <a href="{{ action("$self@show", $model) }}">
+              <img src="{{ $model->thumbnailSecretUrl() }}">
+            </a>
+          </td>
           <td class="text-muted">{{ ViewHelper::size($model->size) }}</td>
           <td>
-            @if ($model->views > 1000)
+            @if ($model->views > 1500)
               <span class="label label-success">{{ ViewHelper::number($model->views) }}</span>
             @else
               {{ ViewHelper::number($model->views) }}

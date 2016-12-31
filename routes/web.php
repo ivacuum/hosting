@@ -25,6 +25,12 @@ Route::get('docs/{page}', 'Docs@page');
 
 Route::get('files/{File}/dl', 'Files@download');
 
+Route::get('gallery', 'Gallery@index')->middleware('auth');
+Route::get('gallery/preview/{Image}', 'Gallery@preview');
+Route::get('gallery/view/{Image}', 'Gallery@view');
+Route::get('gallery/upload', 'Gallery@upload')->middleware('auth');
+Route::post('gallery/upload', 'Gallery@uploadPost')->middleware('auth');
+
 Route::get('life', 'Life@index');
 Route::get('life/cities', 'Life@cities');
 Route::get('life/countries', 'Life@countries');
