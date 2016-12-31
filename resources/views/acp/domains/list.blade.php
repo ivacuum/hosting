@@ -8,7 +8,7 @@
   </form>
 </h3>
 @if (sizeof($models))
-  <table class="table-stats js-float-thead m-b-1">
+  <table class="table-stats m-b-1">
     <thead>
       <tr>
         <th><input type="checkbox" class="js-select-all" data-selector=".domains-checkbox"></th>
