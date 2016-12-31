@@ -1,4 +1,5 @@
 @extends('dcpp.software', [
+  'meta_title' => trans('meta_title.dcpp.flylinkdc'),
   'software_title' => trans('dcpp.flylinkdc'),
   'software' => [
     ['version' => 'r500', 'id' => 140, 'size' => 17611794, 'dl_suffix' => ' 32+64bit'],

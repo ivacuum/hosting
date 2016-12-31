@@ -1,4 +1,6 @@
-@extends('dcpp.base')
+@extends('dcpp.base', [
+  'meta_title' => trans('meta_title.dcpp.faq'),
+])
 
 @section('content')
 <h1>Решение проблем с DC++</h1>

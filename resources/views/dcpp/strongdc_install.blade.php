@@ -1,4 +1,6 @@
-@extends('dcpp.base')
+@extends('dcpp.base', [
+  'meta_title' => trans('meta_title.dcpp.strongdc_install'),
+])
 
 @section('content')
 <h1>Инструкция по установке и настройке StrongDC++</h1>

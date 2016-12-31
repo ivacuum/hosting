@@ -1,4 +1,5 @@
 @extends('dcpp.software', [
+  'meta_title' => trans('meta_title.dcpp.kalugadc'),
   'software_title' => trans('dcpp.kalugadc'),
   'software' => [
     ['version' => '', 'id' => 12, 'size' => 1861500, 'dl_suffix' => ''],

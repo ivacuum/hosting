@@ -1,4 +1,6 @@
-@extends('dcpp.base')
+@extends('dcpp.base', [
+  'meta_title' => trans('meta_title.dcpp.rus_setup'),
+])
 
 @section('content')
 <h1>Инструкция по русификации</h1>

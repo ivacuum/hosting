@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 @endif
-  <title>{{ $meta_title or config('cfg.sitename') }}</title>
+  <title>{{ $meta_title ?? (trans("meta_title.{$view}") !== "meta_title.{$view}" ? trans("meta_title.{$view}") : (trans($view) !== $view ? trans($view) : config('cfg.sitename'))) }}</title>
 @if (!Request::pjax())
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
