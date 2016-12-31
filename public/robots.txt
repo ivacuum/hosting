@@ -1,7 +1,11 @@
 User-agent: *
 Allow: /
 Disallow: /auth
+Disallow: /en/auth
 Disallow: /files
+Disallow: /en/files
 Disallow: /parser
+Disallow: /en/parser
 Disallow: /torrents
+Disallow: /en/torrents
 Host: https://ivacuum.ru
