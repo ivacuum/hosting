@@ -38,6 +38,12 @@ Route::get('life/countries/{country}', 'Life@country');
 Route::get('life/gigs', 'Life@gigs');
 Route::get('life/{page}', 'Life@page');
 
+Route::get('news', 'News@index');
+Route::get('news/{year}', 'News@year');
+Route::get('news/{year}/{month}', 'News@month');
+Route::get('news/{year}/{month}/{day}', 'News@day');
+Route::get('news/{year}/{month}/{day}/{id}', 'News@show');
+
 Route::get('parser/vk/{page?}/{date?}', 'ParserVk@index')
     ->where('date', '\d{4}-\d{2}-\d{2}');
 Route::post('parser/vk', 'ParserVk@indexPost');
