@@ -21,6 +21,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'gallery' => [
+            'driver'     => 'local',
+            'root'       => env('GALLERY_ROOT', public_path('uploads/gallery')),
+            'visibility' => 'public',
+        ],
+
         'ftp' => [
             'driver'   => 'ftp',
             'host'     => env('FTP_HOST'),

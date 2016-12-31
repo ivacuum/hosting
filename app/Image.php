@@ -46,12 +46,12 @@ class Image extends Model
     public function deleteFiles()
     {
         $files = [
-            "g/{$this->splitted_date}/s/{$this->slug}",
-            "g/{$this->splitted_date}/t/{$this->slug}",
-            "g/{$this->splitted_date}/{$this->slug}",
+            "{$this->splitted_date}/s/{$this->slug}",
+            "{$this->splitted_date}/t/{$this->slug}",
+            "{$this->splitted_date}/{$this->slug}",
         ];
 
-        return \Storage::disk('ftp')->delete($files);
+        return \Storage::disk('gallery')->delete($files);
     }
 
     public function originalUrl()
