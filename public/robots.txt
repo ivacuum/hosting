@@ -4,4 +4,4 @@ Disallow: /auth
 Disallow: /files
 Disallow: /parser
 Disallow: /torrents
-Host: https://hosting.ivacuum.ru
+Host: https://ivacuum.ru
