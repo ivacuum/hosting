@@ -18,6 +18,25 @@ class Dev extends Controller
             ->with('message', 'Debugbar включен на час');
     }
 
+    public function logs()
+    {
+        $log = public_path('uploads/access_log.json');
+        $handle = fopen($log, 'r');
+        $lines = collect();
+
+        if ($handle) {
+            while (false !== $line = fgets($handle)) {
+                if (!is_null($json = json_decode($line))) {
+                    $lines->push($json);
+                }
+            }
+
+            fclose($handle);
+        }
+
+        return view($this->view, compact('lines'));
+    }
+
     public function svg()
     {
         $icons = [];

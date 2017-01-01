@@ -27,10 +27,11 @@ return [
     'countries.edit'   => 'Edit',
     'countries.show'   => 'Country',
 
-    'dev.debugbar'         => 'Deburbar for an hour',
-    'dev.index'            => 'Dev',
-    'dev.svg'              => 'SVG',
-    'dev.templates.index'  => 'Trips templates',
+    'dev.svg' => 'SVG',
+    'dev.logs' => 'Logs',
+    'dev.index' => 'Dev',
+    'dev.debugbar' => 'Deburbar for an hour',
+    'dev.templates.index' => 'Trips templates',
     'dev.thumbnails.index' => 'Thumbnails',
 
     'domains.add'        => 'Add domain',

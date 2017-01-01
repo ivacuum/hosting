@@ -46,6 +46,7 @@ Route::group(['prefix' => 'countries'], function () {
 Route::group(['prefix' => 'dev'], function () {
     Route::get('/', 'Acp\Dev@index');
     Route::get('debugbar', 'Acp\Dev@debugbar');
+    Route::get('logs', 'Acp\Dev@logs');
     Route::get('svg', 'Acp\Dev@svg');
     Route::get('templates', 'Acp\Dev\Templates@index');
     Route::get('templates/{template}', 'Acp\Dev\Templates@template');

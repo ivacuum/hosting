@@ -27,10 +27,11 @@ return [
     'countries.edit'   => 'Редактирование страны',
     'countries.show'   => 'Страна',
 
-    'dev.debugbar'         => 'Отладка на час',
-    'dev.index'            => 'Разработка',
-    'dev.svg'              => 'SVG',
-    'dev.templates.index'  => 'Шаблоны поездок',
+    'dev.svg' => 'SVG',
+    'dev.logs' => 'Логи',
+    'dev.index' => 'Разработка',
+    'dev.debugbar' => 'Отладка на час',
+    'dev.templates.index' => 'Шаблоны поездок',
     'dev.thumbnails.index' => 'Миниатюры',
 
     'domains.add'        => 'Добавить домен',

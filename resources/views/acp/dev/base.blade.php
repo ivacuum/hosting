@@ -10,6 +10,9 @@
       <a class="list-group-item {{ 0 === strpos($view, 'acp.dev.thumbnails') ? 'active' : '' }}" href="{{ action('Acp\Dev\Thumbnails@index') }}">
         {{ trans('acp.dev.thumbnails.index') }}
       </a>
+      <a class="list-group-item {{ starts_with($view, 'acp.dev.logs') ? 'active' : '' }}" href="{{ action('Acp\Dev@logs') }}">
+        {{ trans('acp.dev.logs') }}
+      </a>
       <a class="list-group-item {{ 0 === strpos($view, 'acp.dev.svg') ? 'active' : '' }}" href="{{ action('Acp\Dev@svg') }}">
         {{ trans('acp.dev.svg') }}
       </a>
