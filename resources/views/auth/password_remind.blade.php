@@ -9,11 +9,10 @@
     <input hidden type="text" name="mail" value="{{ old('mail') }}">
 
     <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-      <label class="control-label">Электронная почта:</label>
-      <input autofocus required type="email" class="form-control" name="email" value="{{ old('email') }}" autocomplete="email">
+      <input autofocus required type="email" class="form-control" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="Электронная почта">
     </div>
 
-    <button type="submit" class="btn btn-primary btn-lg btn-block">
+    <button type="submit" class="btn btn-primary btn-lg">
       Начать восстановление
     </button>
 
