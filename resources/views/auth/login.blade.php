@@ -29,7 +29,7 @@
       {{--<div class="pull-right"><a class="link" href="/auth/register">Регистрация</a></div>--}}
     </div>
 
-    <button type="submit" class="btn btn-primary btn-lg btn-block">
+    <button type="submit" class="btn btn-primary btn-lg btn-login">
       Войти
     </button>
 
