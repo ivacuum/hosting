@@ -42,4 +42,6 @@ return [
     'dcpp.greylinkdc' => 'Скачать GreyLinkDC++ 0.49 rus, русский, русифицированный, русификатор',
     'dcpp.shakespeer' => 'Скачать ShakesPeer 0.9.2 для Mac OS X',
     'dcpp.strongdc_install' => 'Инструкция по установке и настройке StrongDC++',
+
+    'torrents.promo' => 'Торрент-трекер в локальной сети Билайн-Калуга',
 ];
