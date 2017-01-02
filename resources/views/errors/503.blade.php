@@ -1,5 +1,5 @@
-@extends('errors.base')
+@extends('errors.base', ['meta_title' => trans('errors.503')])
 
 @section('content')
-Сайт скоро восстановит работу.
+503<br>{{ trans('errors.503.text') }}
 @endsection
