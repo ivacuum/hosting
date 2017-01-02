@@ -20,7 +20,7 @@ class Dev extends Controller
 
     public function logs()
     {
-        $log = public_path('uploads/access_log.json');
+        $log = \App::environment('local') ? public_path('uploads/access_log') : base_path('../../logs/access_log');
         $handle = fopen($log, 'r');
         $lines = collect();
 
