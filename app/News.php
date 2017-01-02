@@ -28,6 +28,13 @@ class News extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function incrementViews()
+    {
+        $this->timestamps = false;
+        $this->increment('views');
+        $this->timestamps = true;
+    }
+
     public static function interval($year, $month = null, $day = null)
     {
         $start = Carbon::createFromDate($year, $month, $day);

@@ -9,6 +9,9 @@
         <p class="text-muted">
           @svg (calendar-o)
           {{ $model->created_at->formatLocalized('%e %B %Y') }}
+          &nbsp;
+          @svg (eye)
+          {{ ViewHelper::number($model->views) }}
         </p>
         <div class="m-b-3">{!! $model->html !!}</div>
       @endforeach

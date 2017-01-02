@@ -61,6 +61,8 @@ class News extends Controller
             abort(404);
         }
 
+        $news->incrementViews();
+
         \Breadcrumbs::push(trans('news.index'), "news");
         \Breadcrumbs::push($year, "news/{$year}");
         \Breadcrumbs::push($month, "news/{$year}/{$month}");
