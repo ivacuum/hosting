@@ -1,5 +1,5 @@
-@extends('errors.base')
+@extends('errors.base', ['meta_title' => trans('errors.500')])
 
 @section('content')
-Внутренняя ошибка сервиса.<br>Информация о неполадке отправлена администратору.
+500<br>{{ trans('errors.500.text') }}
 @endsection
