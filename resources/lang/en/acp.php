@@ -56,6 +56,12 @@ return [
     'gigs.index' => 'Gigs',
     'gigs.create' => 'New gig',
 
+    'news.add' => 'Post news',
+    'news.edit' => 'Edit',
+    'news.show' => 'News',
+    'news.index' => 'News',
+    'news.create' => 'Create news',
+
     'pages.add' => 'Add page',
     'pages.edit' => 'Edit',
     'pages.show' => 'Page',

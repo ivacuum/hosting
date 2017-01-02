@@ -8,6 +8,7 @@ use App\Domain;
 use App\File;
 use App\Gig;
 use App\Image;
+use App\News;
 use App\Page;
 use App\Server;
 use App\Torrent;
@@ -33,6 +34,7 @@ class RouteServiceProvider extends ServiceProvider
         \Route::model('File', File::class);
         \Route::model('Gig', Gig::class);
         \Route::model('Image', Image::class);
+        \Route::model('News', News::class);
         \Route::model('Page', Page::class);
         \Route::model('Server', Server::class);
         \Route::model('Torrent', Torrent::class);
