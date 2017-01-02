@@ -3,6 +3,8 @@
 @section('content')
 @include('tpl.form_errors')
 
+<div class="alert alert-warning">Вход на сайт временно недоступен, так как еще не перенесены старые учетные записи сайта ivacuum.ru</div>
+
 <div class="form-signin text-center">
   <h3>Вход на сайт</h3>
   <form action="{{ action('Auth@login') }}" method="post">
