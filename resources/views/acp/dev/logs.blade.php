@@ -21,9 +21,6 @@
         <span title="{{ $line->time }}">{{ $loop->iteration }}</span>
       </td>
       <td>
-        @if ($line->https !== 'on')
-          <code>HTTP</code>
-        @endif
         @if ($line->request_method !== 'GET')
           <code>{{ $line->request_method }}</code>
         @endif
