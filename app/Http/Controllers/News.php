@@ -67,7 +67,9 @@ class News extends Controller
         \Breadcrumbs::push($day, "news/{$year}/{$month}/{$day}");
         \Breadcrumbs::push($news->title);
 
-        return view($this->view, compact('news'));
+        $meta_title = $news->title;
+
+        return view($this->view, compact('meta_title', 'news'));
     }
 
     public function year($year)
