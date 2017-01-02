@@ -4,6 +4,8 @@ Disallow: /auth
 Disallow: /en/auth
 Disallow: /files
 Disallow: /en/files
+Disallow: /gallery
+Disallow: /en/gallery
 Disallow: /parser
 Disallow: /en/parser
 Disallow: /torrents
