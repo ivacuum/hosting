@@ -5,7 +5,7 @@
   <div class="col-md-2 col-md-offset-2 text-center">
     <p>
       <a href="{{ action("$self@view", $image) }}">
-        <img class="screenshot" src="{{ $image->thumbnailSecretUrl() }}">
+        <img class="screenshot" src="{{ $image->thumbnailUrl() }}">
       </a>
     </p>
   </div>

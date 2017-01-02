@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="text-center">
-  <img class="screenshot" src="{{ $image->originalSecretUrl() }}">
+  <img class="screenshot" src="{{ $image->originalUrl() }}">
 </div>
 
 <div class="row m-t-2">
