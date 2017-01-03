@@ -2,7 +2,7 @@
 
 return [
 
-    'name'            => 'Hosting',
+    'name'            => 'ivacuum.ru',
     'env'             => env('APP_ENV', 'production'),
     'debug'           => env('APP_DEBUG', false),
     'url'             => env('APP_URL', 'http://localhost'),
