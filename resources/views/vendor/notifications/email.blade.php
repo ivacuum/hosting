@@ -68,7 +68,7 @@ $style = [
         <!-- Logo -->
         <tr>
           <td style="{{ $style['email-masthead'] }}">
-            <a style="{{ $fontFamily }} {{ $style['email-masthead_name'] }}" href="{{ url('/') }}" target="_blank">
+            <a style="{{ $fontFamily }} {{ $style['email-masthead_name'] }}" href="{{ action('Home@index') }}" target="_blank">
               {{ config('app.name') }}
             </a>
           </td>
@@ -81,6 +81,7 @@ $style = [
             <table style="{{ $style['email-body_inner'] }}" align="center" width="570" cellpadding="0" cellspacing="0">
               <tr>
                 <td style="{{ $fontFamily }} {{ $style['email-body_cell'] }}">
+                  <?php /*
                   <h1 style="{{ $style['header-1'] }}">
                     @if ($level == 'error')
                       Упс!
@@ -88,6 +89,7 @@ $style = [
                       Здравствуйте!
                     @endif
                   </h1>
+                  */ ?>
 
                   @foreach ($introLines as $line)
                     <p style="{{ $style['paragraph'] }}">
