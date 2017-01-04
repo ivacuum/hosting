@@ -72,7 +72,6 @@ class Images extends Controller
 
     public function view(Model $model)
     {
-        $model->touch = time();
         $model->views++;
         $model->save();
 

@@ -32,11 +32,7 @@ class Timestamps extends Command
                 }
 
                 if (is_null($image->updated_at)) {
-                    if ($image->touch) {
-                        $image->updated_at = Carbon::createFromTimestamp($image->touch);
-                    } else {
-                        $image->updated_at = $image->created_at;
-                    }
+                    $image->updated_at = $image->created_at;
                 }
 
                 $image->save();
