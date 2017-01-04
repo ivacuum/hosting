@@ -40,6 +40,16 @@
     <a class="btn btn-default {{ $touch == 7 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => 7, 'page' => 1]) }}">7</a>
   </div>
 </div>
+@if ($user_id)
+  <div class="m-y-1">
+    <a class="btn btn-default" href="{{ Request::fullUrlWithQuery(['user_id' => null]) }}">
+      user_id: {{ $user_id }}
+      <span class="text-danger">
+        @svg (times)
+      </span>
+    </a>
+  </div>
+@endif
 @if (sizeof($models))
   @if (!$type)
     <table class="table-stats">

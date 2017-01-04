@@ -33,7 +33,7 @@ class Images extends Controller
         $models = $models->paginate()
             ->appends(compact('touch', 'type', 'user_id', 'year'));
 
-        return view($this->view, compact('models', 'size', 'touch', 'type', 'year'));
+        return view($this->view, compact('models', 'size', 'touch', 'type', 'user_id', 'year'));
     }
 
     public function batch()
