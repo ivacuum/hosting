@@ -7,7 +7,7 @@
   ]
 ])
 
-@php ($freebsd_version = '10.3')
+@php ($freebsd_version = '11.0')
 
 @section('content')
 <h2>Сниппеты для выполнения различных задач на ОС FreeBSD</h2>
@@ -19,6 +19,8 @@
 <span class="terminal-command">freebsd-update upgrade -r {{ $freebsd_version }}-RELEASE</span>
 <span class="terminal-command">freebsd-update install</span>
 <span class="terminal-command">shutdown -r now</span>
+<span class="terminal-command">freebsd-update install</span>
+<span class="terminal-comment"># &lt;rebuild thirt-party software&gt; (portmaster -Raf)</span>
 <span class="terminal-command">freebsd-update install</span>
 </pre>
 </div>
