@@ -3,7 +3,7 @@
 @section('content')
 <h3>
   {{ trans("$tpl.index") }}
-  <small>{{ sizeof($models) }}</small>
+  <small>{{ $models->total() }}</small>
   @include('acp.tpl.create')
 </h3>
 @if (sizeof($models))
@@ -13,7 +13,6 @@
         <th>#</th>
         <th>Электронная почта</th>
         <th>Активен</th>
-        <th>Админ</th>
       </tr>
     </thead>
     @foreach ($models as $model)
@@ -25,16 +24,16 @@
           </a>
         </td>
         <td>
-          @if ($model->active)
-            Да
-          @endif
-        <td>
-          @if ($model->is_admin)
+          @if ($model->status === App\User::STATUS_ACTIVE)
             Да
           @endif
         </td>
       </tr>
     @endforeach
   </table>
+
+  <div class="m-t-1 pull-right clearfix">
+    @include('tpl.paginator', ['paginator' => $models])
+  </div>
 @endif
 @endsection

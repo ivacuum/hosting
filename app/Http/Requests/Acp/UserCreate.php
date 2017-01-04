@@ -14,7 +14,7 @@ class UserCreate extends Request
         return [
             'email'    => 'required|email|unique:users,email',
             'password' => 'required_without:random_password|min:6',
-            'active'   => 'boolean',
+            'status'   => 'boolean',
         ];
     }
 }

@@ -4,24 +4,23 @@
 @include('tpl.form_errors')
 
 <div class="form-signin">
-  <h3>Завершение восстановления пароля</h3>
-  <p>Осталось лишь указать почту вашей учетной записи и новый пароль.</p>
-  <form action="/auth/password/reset" method="post">
+  <h3 class="m-b-2 text-center">{{ trans('auth.password_reset_title') }}</h3>
+  <form action="{{ action('Auth@passwordResetPost') }}" method="post">
     <input hidden type="text" name="mail" value="{{ old('mail') }}">
 
     <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-      <label class="control-label">Электронная почта:</label>
-      <input autofocus required type="email" class="form-control" name="email" value="{{ old('email') }}" autocomplete="email">
+      <input autofocus required type="email" class="form-control" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{ trans('auth.email') }}">
     </div>
 
     <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-      <label class="control-label">Новый пароль:</label>
-      <input required type="password" class="form-control" name="password">
+      <input required type="password" class="form-control" name="password" placeholder="{{ trans('auth.new_password') }}">
     </div>
 
-    <button type="submit" class="btn btn-primary btn-lg btn-block">
-      Сменить пароль
-    </button>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary btn-lg">
+        {{ trans('auth.change_password') }}
+      </button>
+    </div>
 
     <input type="hidden" name="token" value="{{ $token }}">
     {{ csrf_field() }}

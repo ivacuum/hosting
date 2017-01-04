@@ -11,7 +11,7 @@ class Users extends Controller
 
     public function index()
     {
-        $models = Model::get();
+        $models = Model::paginate();
 
         return view($this->view, compact('models'));
     }
@@ -49,8 +49,7 @@ class Users extends Controller
         $model = new Model;
         $model->email    = $request->input('email');
         $model->password = $password;
-        $model->active   = $request->input('active', 0);
-        $model->is_admin = $request->input('is_admin', 0);
+        $model->status   = $request->input('status', 0);
         $model->save();
 
         if ($request->input('mail_credentials')) {
@@ -67,8 +66,7 @@ class Users extends Controller
         $mail_credentials = $request->input('mail_credentials');
 
         $model->email    = $request->input('email');
-        $model->active   = $request->input('active', 0);
-        $model->is_admin = $request->input('is_admin', 0);
+        $model->status   = $request->input('status', 0);
 
         if ($password) {
             $model->password = $password;

@@ -21,18 +21,24 @@ class Auth extends Controller
         $credentials = [
             'email'    => $this->request->input('email'),
             'password' => $this->request->input('password'),
-            'active'   => 1,
+            'status'   => User::STATUS_ACTIVE,
         ];
 
-        if (\Auth::attempt($credentials, !$this->request->has('foreign'))) {
-            $this->request->session()->regenerate();
+        if (!is_null($result = $this->attemptLogin($credentials))) {
+            return $result;
+        }
 
-            return redirect()->intended('/');
+        unset($credentials['email']);
+
+        $credentials['login'] = $this->request->input('email');
+
+        if (!is_null($result = $this->attemptLogin($credentials))) {
+            return $result;
         }
 
         return back()
-            ->with('message', 'Электронная почта или пароль неверны')
-            ->withInput($this->request->only('email', 'foreign'));
+            ->with('message', 'Электронная почта, логин или пароль неверны')
+            ->withInput($this->request->only('email'));
     }
 
     public function logout()
@@ -42,7 +48,7 @@ class Auth extends Controller
         $this->request->session()->flush();
         $this->request->session()->regenerate();
 
-        return redirect('/');
+        return redirect()->action('Home@index');
     }
 
     public function passwordRemind()
@@ -88,14 +94,16 @@ class Auth extends Controller
         $credentials['password_confirmation'] = $credentials['password'];
 
         $response = $passwords->reset($credentials, function ($user, $password) {
+            $user->salt = '';
             $user->password = $password;
             $user->remember_token = str_random(60);
             $user->save();
-            \Auth::login($user);
+
+            \Auth::login($user, true);
         });
 
         if (PasswordBroker::PASSWORD_RESET === $response) {
-            return redirect('/')->with('message', trans($response));
+            return redirect()->action('Home@index')->with('message', trans($response));
         }
 
         return back()
@@ -112,7 +120,7 @@ class Auth extends Controller
     {
         $this->validate($this->request, [
             'mail'     => 'empty',
-            'email'    => 'required|email|max:255|unique:users,email',
+            'email'    => 'required|email|max:125|unique:users,email',
             'password' => 'required|min:6',
         ]);
 
@@ -121,15 +129,49 @@ class Auth extends Controller
         $user = User::create([
             'email'    => $data['email'],
             'password' => $data['password'],
-            'active'   => 1,
+            'status'   => User::STATUS_ACTIVE,
         ]);
 
         // Mail::send('emails.users.activation', compact('user'), function ($mail) use ($user) {
         // 	$mail->to($user->email)->subject("Активация учетной записи");
         // });
 
-        \Auth::login($user);
+        \Auth::login($user, true);
 
-        return redirect('/');
+        return redirect()->action('Home@index');
+    }
+
+    /**
+     * Попытка входа по предоставленным данным
+     *
+     * @param array   $credentials
+     *
+     * @return \Illuminate\Http\RedirectResponse|null
+     */
+    protected function attemptLogin(array $credentials)
+    {
+        $remember = true;
+
+        if (\Auth::attempt($credentials, $remember)) {
+            $this->request->session()->regenerate();
+
+            return redirect()->intended(action('Home@index'));
+        }
+
+        if (is_null($user = \Auth::getLastAttempted())) {
+            return null;
+        }
+
+        if ($user->isPasswordOld() && $user->isOldPasswordCorrect($credentials['password'])) {
+            $user->salt = '';
+            $user->password = $credentials['password'];
+            $user->save();
+
+            \Auth::login($user, $remember);
+
+            return redirect()->intended(action('Home@index'));
+        }
+
+        return null;
     }
 }

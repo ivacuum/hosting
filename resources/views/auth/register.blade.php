@@ -3,23 +3,21 @@
 @section('content')
 @include('tpl.form_errors')
 
-<div class="form-signin">
-  <h3>Регистрация на сайте</h3>
-  <form action="/auth/register" method="post">
+<div class="form-signin text-center">
+  <h3 class="m-b-2">{{ trans('auth.register_title') }}</h3>
+  <form action="{{ action('Auth@registerPost') }}" method="post">
     <input hidden type="text" name="mail" value="{{ old('mail') }}">
 
     <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-      <label class="control-label">Электронная почта:</label>
-      <input required type="email" class="form-control" name="email" value="{{ old('email') }}" autocomplete="email">
+      <input autofocus required type="email" class="form-control" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{ trans('auth.email') }}">
     </div>
 
     <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-      <label class="control-label">Пароль:</label>
-      <input required type="password" class="form-control" name="password">
+      <input required type="password" class="form-control" name="password" placeholder="{{ trans('auth.password') }}">
     </div>
 
-    <button type="submit" class="btn btn-primary btn-lg btn-block">
-      Зарегистрироваться
+    <button type="submit" class="btn btn-primary btn-lg">
+      {{ trans('auth.signup') }}
     </button>
 
     {{ csrf_field() }}

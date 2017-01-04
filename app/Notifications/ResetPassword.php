@@ -20,8 +20,8 @@ class ResetPassword extends Notification
     public function toMail()
     {
         return (new MailMessage)
-            ->subject('Восстановление пароля')
-            ->line('Нажмите на кнопку для перехода к процедуре восстановления пароля')
-            ->action('Восстановить пароль', url('/auth/password/reset/'.$this->token));
+            ->subject(trans('auth.password_remind_title'))
+            ->line(trans('auth.change_password_email'))
+            ->action(trans('auth.change_password'), action('Auth@passwordReset', $this->token));
     }
 }

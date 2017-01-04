@@ -18,18 +18,8 @@
   <div class="col-md-9 col-md-offset-3 checkbox">
     <input type="hidden" name="active" value="0">
     <label>
-      <input type="checkbox" name="active" value="1" {{ 1 == old('active', @$model->active) ? 'checked' : '' }}>
+      <input type="checkbox" name="status" value="1" {{ 1 == old('status', @$model->status) ? 'checked' : '' }}>
       Активен
-    </label>
-  </div>
-</div>
-
-<div class="form-group flush">
-  <div class="col-md-9 col-md-offset-3 checkbox">
-    <input type="hidden" name="is_admin" value="0">
-    <label>
-      <input type="checkbox" name="is_admin" value="1" {{ 1 == old('is_admin', @$model->is_admin) ? 'checked' : '' }}>
-      Администратор
     </label>
   </div>
 </div>

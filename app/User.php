@@ -13,18 +13,23 @@ use Illuminate\Notifications\Notifiable;
  * @property string  $password
  * @property string  $salt
  * @property integer $status
- * @property boolean $active
+ * @property string  $ip
  * @property string  $activation_token
  * @property string  $remember_token
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property \Carbon\Carbon $last_login_at
  */
 class User extends Authenticatable
 {
     use Notifiable;
 
+    const STATUS_INACTIVE = 0;
+    const STATUS_ACTIVE = 1;
+
     protected $guarded = ['created_at', 'updated_at'];
     protected $hidden = ['password', 'remember_token'];
+    protected $perPage = 50;
 
     public function setPasswordAttribute($value)
     {
@@ -44,5 +49,23 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPassword($token));
+    }
+
+    public function isPasswordOld()
+    {
+        return strlen($this->password) === 32;
+    }
+
+    public function isOldPasswordCorrect($password)
+    {
+        if ($this->salt && md5($password.$this->salt) === $this->password) {
+            return true;
+        }
+
+        if (!$this->salt && md5($password) === $this->password) {
+            return true;
+        }
+
+        return false;
     }
 }

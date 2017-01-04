@@ -68,27 +68,32 @@
           </li>
           --}}
           @section('header_user')
-            @if (Auth::check() && !starts_with($self, 'Acp\\'))
-              @if (Auth::user()->isAdmin())
-                <li>
-                  <a href="{{ App::environment('local') ? "{$locale_uri}/acp/dev/templates" : "{$locale_uri}/acp/trips" }}">
-                    @svg (dashboard)
-                  </a>
-                </li>
-              @endif
-              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->login ?: Auth::user()->email }} <b class="caret"></b></a>
-                <ul class="dropdown-menu">
+            @if (Auth::check())
+              @if (!starts_with($self, 'Acp\\'))
+                @if (Auth::user()->isAdmin())
                   <li>
-                    <a href="{{ action('Auth@logout') }}">
-                      {{ trans('menu.logout') }}
+                    <a href="{{ App::environment('local') ? "{$locale_uri}/acp/dev/templates" : "{$locale_uri}/acp/trips" }}">
+                      @svg (dashboard)
                     </a>
                   </li>
-                </ul>
-              </li>
+                @endif
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->login ?: Auth::user()->email }} <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="{{ action('Auth@logout') }}">
+                        {{ trans('menu.logout') }}
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              @endif
             @else
+              <li>
+                <a href="{{ action('Auth@login') }}">{{ trans('auth.signin') }}</a>
+              </li>
               {{--
               <form class="navbar-form navbar-right">
-                <a class="btn btn-default" href="/auth/login">Вход</a>
+                <a class="btn btn-default" href="{{ action('Auth@login') }}">{{ trans('auth.signin') }}</a>
               </form>
               --}}
             @endif
