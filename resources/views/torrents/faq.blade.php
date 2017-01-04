@@ -62,12 +62,20 @@
   </a>
   Как добавить раздачу?
 </div>
-<p>Для добавления предусмотрена <a class="link" href="{{ action('Torrents@add') }}">отдельная страница</a>. В качестве ввода принимается три типа значений:</p>
+<p>Для добавления предусмотрена <a class="link" href="{{ action('Torrents@add') }}">отдельная страница</a>, доступная только зарегистрированным пользователям. В качестве ввода принимается три типа значений:</p>
 <ol>
   <li>Ссылка на раздачу на рутрекере вида <code>http://rutracker.org/forum/<wbr>viewtopic.php?t=4031882</code>. Адрес maintracker.org также поддерживается</li>
   <li>Инфо-хэш раздачи вида <code>9B5D85FFC234737E7D7C<wbr>246FECB6BB1EC5E8F0B9</code></li>
   <li>Номер темы на рутрекере вида <code>4031882</code></li>
 </ol>
+
+<div class="faq-question">
+  <a class="faq-anchor" name="how-can-i-make-unique-release" href="#how-can-i-make-unique-release">
+    @svg (link)
+  </a>
+  Как добавить раздачу, которой нет на рутрекере?
+</div>
+<p>Сперва добавить ее на рутрекер, а потом указать ссылку на нее.</p>
 
 <div class="faq-question">
   <a class="faq-anchor" name="how-can-i-edit-release" href="#how-can-i-edit-release">
@@ -84,6 +92,14 @@
   Кто такой сид?
 </div>
 <p>Источник, с которого можно скачать раздачу целиком. Чем больше сидов, тем быстрее происходит обмен данными и, соответственно, скачивание раздачи.</p>
+
+<div class="faq-question">
+  <a class="faq-anchor" name="why-release-disappeared" href="#why-release-disappeared">
+    @svg (link)
+  </a>
+  Почему моя раздача пропала?
+</div>
+<p>Раздачи автоматически удаляются, если они были удалены или закрыты на сайте-первоисточнике rutracker.org.</p>
 @endsection
 
 @section('content_footer')
