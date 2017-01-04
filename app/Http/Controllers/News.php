@@ -8,6 +8,16 @@ class News extends Controller
     {
         \Breadcrumbs::push(trans('news.index'), "news");
 
+        $validator = \Validator::make(compact('year', 'month', 'day'), [
+            'day' => 'date_format:d|nullable',
+            'year' => 'date_format:Y|nullable',
+            'month' => 'date_format:m|nullable',
+        ]);
+
+        if ($validator->fails()) {
+            abort(404);
+        }
+
         $news = Model::orderBy('id', 'desc');
 
         switch (\App::getLocale()) {
