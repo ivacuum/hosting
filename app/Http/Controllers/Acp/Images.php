@@ -14,9 +14,9 @@ class Images extends Controller
         $touch = $this->request->input('touch');
         $user_id = $this->request->input('user_id');
 
-        $models = Model::orderBy('id')
-            ->where('updated_at', '<', Carbon::now()->subYear()->toDateTimeString())
-            ->where('views', '<', 1000);
+        $models = Model::orderBy('id');
+            // ->where('updated_at', '<', Carbon::now()->subYear()->toDateTimeString())
+            // ->where('views', '<', 1000);
 
         if ($year) {
             $models = $models->whereYear('created_at', $year);
