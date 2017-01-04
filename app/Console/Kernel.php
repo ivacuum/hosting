@@ -7,7 +7,6 @@ class Kernel extends ConsoleKernel
 {
     protected $commands = [
         Commands\RtoUpdate::class,
-        Commands\Timestamps::class,
         Commands\VkLikesAdd::class,
         Commands\VkLikesDelete::class,
         Commands\WhoisUpdate::class,
