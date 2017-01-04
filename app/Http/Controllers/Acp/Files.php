@@ -9,7 +9,7 @@ class Files extends Controller
 {
     public function index()
     {
-        $models = Model::orderBy('id', 'desc')->get();
+        $models = Model::orderBy('id', 'desc')->paginate();
 
         return view($this->view, compact('models'));
     }

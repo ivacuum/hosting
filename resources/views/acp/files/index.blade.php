@@ -3,7 +3,7 @@
 @section('content')
 <h3>
   {{ trans("$tpl.index") }}
-  <small>{{ sizeof($models) }}</small>
+  <small>{{ $models->total() }}</small>
   @include('acp.tpl.create')
 </h3>
 @if (sizeof($models))
@@ -29,5 +29,9 @@
       </tr>
     @endforeach
   </table>
+
+  <div class="m-t-1 pull-right clearfix">
+    @include('tpl.paginator', ['paginator' => $models])
+  </div>
 @endif
 @endsection
