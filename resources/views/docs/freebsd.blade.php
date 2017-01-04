@@ -20,7 +20,9 @@
 <span class="terminal-command">freebsd-update install</span>
 <span class="terminal-command">shutdown -r now</span>
 <span class="terminal-command">freebsd-update install</span>
-<span class="terminal-comment"># &lt;rebuild thirt-party software&gt; (portmaster -Raf)</span>
+  
+<span class="terminal-comment"># После больших обновлений вроде 10.0 => 11.0 добавляется две команды</span>
+<span class="terminal-command">portmaster -Raf</span>
 <span class="terminal-command">freebsd-update install</span>
 </pre>
 </div>
