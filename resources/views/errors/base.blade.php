@@ -58,7 +58,7 @@ a:focus {
     <div class="title">
       @yield('content')
       <br><br>
-      <a href="/">
+      <a href="{{ action('Home@index') }}">
         @svg (home)
       </a>
     </div>
