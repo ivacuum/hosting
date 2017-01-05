@@ -11,9 +11,13 @@ class Torrents extends Controller
     {
         \Breadcrumbs::push(trans($this->view));
 
-        $torrents = Torrent::orderBy('registered_at', 'desc')->paginate();
+        $q = $this->request->input('q');
 
-        return view($this->view, compact('torrents'));
+        $torrents = Torrent::orderBy('registered_at', 'desc');
+        $torrents = $this->applySearchQuery($q, $torrents);
+        $torrents = $torrents->paginate();
+
+        return view($this->view, compact('torrents', 'q'));
     }
 
     public function add()
@@ -89,11 +93,14 @@ class Torrents extends Controller
 
         $ids = \TorrentCategoryHelper::selfAndDescendantsIds($category_id, $category);
 
-        $torrents = Torrent::whereIn('category_id', $ids)
-            ->orderBy('registered_at', 'desc')
-            ->paginate();
+        $q = $this->request->input('q');
 
-        return view('torrents.index', compact('category_id', 'torrents'));
+        $torrents = Torrent::whereIn('category_id', $ids)
+            ->orderBy('registered_at', 'desc');
+        $torrents = $this->applySearchQuery($q, $torrents);
+        $torrents = $torrents->paginate();
+
+        return view('torrents.index', compact('category_id', 'q', 'torrents'));
     }
 
     public function faq()
@@ -115,5 +122,14 @@ class Torrents extends Controller
         \Breadcrumbs::push($torrent->title);
 
         return view($this->view, compact('torrent'));
+    }
+
+    protected function applySearchQuery($q, $torrents)
+    {
+        if (mb_strlen($q) > 2) {
+            return $torrents->where('title', 'LIKE', "%{$q}%");
+        }
+
+        return $torrents;
     }
 }

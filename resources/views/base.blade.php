@@ -52,6 +52,7 @@
             @endif
           @show
         </ul>
+        @yield('header_form')
         <ul class="nav navbar-nav navbar-right">
           <li>
             @ru

@@ -16,3 +16,12 @@
   border-bottom: 2px solid #51A7F9;
   padding-bottom: 13px;
 }
+
+.navbar .navbar-form .navbar-search-input {
+  @media (min-width: $screen-sm-min) {
+    width: 100px;
+    transition: width 0.3s;
+
+    &:focus { width: 150px; }
+  }
+}
