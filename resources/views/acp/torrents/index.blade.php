@@ -24,7 +24,9 @@
           </a>
         </td>
         <td>
-          <a class="link" href="{{ action("$self@show", $model) }}">{{ $model->title }}</a>
+          <a class="link" href="{{ action("$self@show", $model) }}">
+            <torrent-title title="{{ $model->title }}"></torrent-title>
+          </a>
           <a href="https://rutracker.org/forum/viewtopic.php?t={{ $model->rto_id }}">
             @svg (external-link)
           </a>
