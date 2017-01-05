@@ -7,6 +7,8 @@ use Illuminate\Support\HtmlString;
 
 class Torrents extends Controller
 {
+    protected $list_columns = ['id', 'user_id', 'category_id', 'title', 'size', 'seeders', 'info_hash', 'announcer', 'registered_at'];
+
     public function index()
     {
         \Breadcrumbs::push(trans($this->view));
@@ -15,7 +17,7 @@ class Torrents extends Controller
 
         $torrents = Torrent::orderBy('registered_at', 'desc');
         $torrents = $this->applySearchQuery($q, $torrents);
-        $torrents = $torrents->paginate();
+        $torrents = $torrents->paginate(null, $this->list_columns);
 
         return view($this->view, compact('torrents', 'q'));
     }
@@ -98,7 +100,7 @@ class Torrents extends Controller
         $torrents = Torrent::whereIn('category_id', $ids)
             ->orderBy('registered_at', 'desc');
         $torrents = $this->applySearchQuery($q, $torrents);
-        $torrents = $torrents->paginate();
+        $torrents = $torrents->paginate(null, $this->list_columns);
 
         return view('torrents.index', compact('category_id', 'q', 'torrents'));
     }
