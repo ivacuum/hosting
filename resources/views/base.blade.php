@@ -38,6 +38,11 @@
                 {{ trans('menu.life') }}
               </a>
             </li>
+            <li>
+              <a class="{{ $self == 'News' ? 'navbar-selected' : '' }}" href="{{ action('News@index') }}">
+                {{ trans('news.index') }}
+              </a>
+            </li>
             @if (Auth::check() && Auth::user()->isRoot())
               <li>
                 <a class="{{ $self == 'Torrents' ? 'navbar-selected' : '' }}" href="{{ action('Torrents@index') }}">
