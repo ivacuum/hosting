@@ -70,7 +70,7 @@
   </div>
   {{--
   <div class="col-md-4 service-container">
-    <h3 class="service-title"><a class="link" href="http://up.ivacuum.ru/">Загрузка изображений</a></h3>
+    <h3 class="service-title"><a class="link" href="{{ action('Gallery@upload') }}">Загрузка изображений</a></h3>
     <p>Сервис загрузки изображений в галерею для последующего использования на трекере.</p>
     <p>Особенности:</p>
     <ul>
