@@ -16,7 +16,7 @@ class Rto
         $this->client = new Client(['base_uri' => self::API_ENDPOINT]);
     }
 
-    public function torrentData($input)
+    public function findTopicId($input)
     {
         $topic_id = 0;
 
@@ -50,7 +50,12 @@ class Rto
             return;
         }
 
-        return $this->parseTopicData($topic_id);
+        return $topic_id;
+    }
+
+    public function torrentData($input)
+    {
+        return $this->parseTopicData($this->findTopicId($input));
     }
 
     public function parseAnnouncerLink($link)

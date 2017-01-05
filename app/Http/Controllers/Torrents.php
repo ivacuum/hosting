@@ -3,6 +3,7 @@
 use App\Services\Rto;
 use App\Torrent;
 use Carbon\Carbon;
+use Illuminate\Support\HtmlString;
 
 class Torrents extends Controller
 {
@@ -32,6 +33,16 @@ class Torrents extends Controller
             'category_id' => 'required|integer|in:'.implode(',', \TorrentCategoryHelper::canPostIds()),
             'input' => 'required',
         ]);
+
+        if (($topic_id = $rto->findTopicId($input)) > 0) {
+            $torrent = Torrent::where('rto_id', $topic_id)->first();
+
+            if (!is_null($torrent)) {
+                return back()
+                    ->withInput()
+                    ->with('message', new HtmlString('Данная раздача уже <a class="link" href="' . action("$this->class@torrent", $torrent) . '">присутствует на сайте</a>. Попробуйте добавить другую.'));
+            }
+        }
 
         if (!is_array($data = $rto->torrentData($input))) {
             return back()
