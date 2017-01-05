@@ -165,7 +165,7 @@ class TorrentCategoryHelper
         $category = $this->tree[$id];
 
         if ($category['parent'] === 0) {
-            return $category['title'];
+            return $category;
         }
 
         $parent = $this->categories[$category['parent']];
