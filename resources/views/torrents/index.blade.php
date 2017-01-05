@@ -15,7 +15,7 @@
 @if (sizeof($torrents))
   @foreach ($torrents as $torrent)
     @if (is_null($last_date) || !$torrent->registered_at->isSameDay($last_date))
-      <h4 class="m-t-2">{{ $torrent->shortDate() }}</h4>
+      <h4 class="m-t-2">{{ $torrent->fullDate() }}</h4>
       @php ($last_date = $torrent->registered_at)
     @endif
     <div class="m-b-1 m-l-1">

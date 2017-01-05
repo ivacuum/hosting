@@ -5,7 +5,9 @@ return [
     'new' => 'New',
     'help' => 'Help',
     'index' => 'Torrents',
+    'today' => 'Today',
     'search' => 'Search...',
     'download' => 'Download',
+    'yesterday' => 'Yesterday',
     'categories' => 'Categories',
 ];

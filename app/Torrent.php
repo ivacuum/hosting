@@ -51,6 +51,19 @@ class Torrent extends Model
         return "http://maintracker.org/forum/viewtopic.php?t={$this->rto_id}";
     }
 
+    public function fullDate()
+    {
+        $format = $this->registered_at->year == date('Y') ? '%e %B' : '%e %B %Y';
+
+        if ($this->registered_at->isToday()) {
+            return trans('torrents.today').", ".$this->registered_at->formatLocalized($format);
+        } elseif ($this->registered_at->isYesterday()) {
+            return trans('torrents.yesterday').", ".$this->registered_at->formatLocalized($format);
+        }
+
+        return $this->registered_at->formatLocalized($format);
+    }
+
     public function magnet()
     {
         return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode($this->title);
