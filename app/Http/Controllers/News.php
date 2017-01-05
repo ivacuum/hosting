@@ -18,7 +18,7 @@ class News extends Controller
             abort(404);
         }
 
-        $news = Model::orderBy('id', 'desc');
+        $news = Model::with('user')->orderBy('id', 'desc');
 
         switch (\App::getLocale()) {
             case 'en': $news = $news->where('site_id', 12); break;

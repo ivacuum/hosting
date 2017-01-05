@@ -31,6 +31,11 @@ class User extends Authenticatable
     protected $hidden = ['password', 'remember_token'];
     protected $perPage = 50;
 
+    public function news()
+    {
+        return $this->hasMany(News::class);
+    }
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
