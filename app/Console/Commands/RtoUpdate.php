@@ -45,7 +45,7 @@ class RtoUpdate extends Command
                         throw new \Exception("Проблема обновления раздачи {$id} [parseTopicBody]");
                     }
 
-                    $torrent->text = $topic_data['body'];
+                    $torrent->html = $topic_data['body'];
                     $torrent->clicks = 0;
                     $torrent->announcer = $topic_data['announcer'];
 

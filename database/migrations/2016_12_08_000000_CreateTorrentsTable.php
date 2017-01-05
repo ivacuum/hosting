@@ -13,7 +13,7 @@ class CreateTorrentsTable extends Migration
             $table->unsignedInteger('category_id')->default(0);
             $table->unsignedInteger('rto_id')->default(0);
             $table->string('title');
-            $table->mediumText('text');
+            $table->mediumText('html');
             $table->unsignedBigInteger('size')->default(0);
             $table->unsignedInteger('seeders')->default(0);
             $table->char('info_hash', 40);

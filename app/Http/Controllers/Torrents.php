@@ -34,7 +34,7 @@ class Torrents extends Controller
         }
 
         $torrent = Torrent::create([
-            'text' => $data['body'],
+            'html' => $data['body'],
             'size' => $data['size'],
             'title' => $data['title'],
             'rto_id' => $data['rto_id'],

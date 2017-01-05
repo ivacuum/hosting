@@ -19,7 +19,7 @@
     </a>
   </div>
 </div>
-<rutracker-post>{!! $torrent->text !!}</rutracker-post>
+<rutracker-post>{!! $torrent->html !!}</rutracker-post>
 <div class="m-y-1 text-center">
   <a class="btn btn-success" href="{{ $torrent->magnet() }}">
     {{ trans('torrents.download') }} &middot; {{ ViewHelper::size($torrent->size) }}

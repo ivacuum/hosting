@@ -14,7 +14,7 @@ class TorrentCreate extends Request
         return [
             'rto_id'    => 'required|unique:torrents,rto_id',
             'title'     => 'required',
-            'text'      => 'required',
+            'html'      => 'required',
             'info_hash' => 'required',
         ];
     }

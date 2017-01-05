@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $category_id
  * @property integer $rto_id
  * @property string  $title
- * @property string  $text
+ * @property string  $html
  * @property integer $size
  * @property integer $seeders
  * @property string  $info_hash

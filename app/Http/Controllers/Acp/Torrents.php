@@ -61,7 +61,7 @@ class Torrents extends Controller
         }
 
         $model->update([
-            'text' => $data['body'],
+            'html' => $data['body'],
             'size' => $data['size'],
             'title' => $data['title'],
             'clicks' => 0,
