@@ -1,6 +1,16 @@
 @extends('torrents.base')
 
 @section('content')
+@if (!empty($category_id))
+  <div class="m-y-1">
+    <a class="btn btn-default" href="{{ action("$self@index") }}">
+      Рубрика: {{ TorrentCategoryHelper::find($category_id)['title'] }}
+      <span class="text-danger">
+        @svg (times)
+      </span>
+    </a>
+  </div>
+@endif
 @php ($last_date = null)
 @if (sizeof($torrents))
   @foreach ($torrents as $torrent)
@@ -14,11 +24,21 @@
           <torrent-title title="{{ $torrent->title }}"></torrent-title>
         </a>
       </div>
-      <div class="torrent-breadcrumbs">
-        @svg (folder-o)
-        {{ TorrentCategoryHelper::breadcrumbs($torrent->category_id) }}
-      </div>
-      <div>
+      @if (empty($category_id) || $category_id != $torrent->category_id)
+        <div class="torrent-breadcrumbs">
+          @svg (folder-o)
+          @foreach (TorrentCategoryHelper::breadcrumbs($torrent->category_id) as $id => $breadcrumb)
+            {{ $breadcrumb['title'] }}
+            @if (!$loop->last)
+              &raquo;
+            @endif
+          @endforeach
+          <a href="{{ action("$self@category", $torrent->category_id) }}" title="Фильтровать по рубрике">
+            @svg (filter)
+          </a>
+        </div>
+      @endif
+      <div class="torrent-list-meta">
         <a href="{{ $torrent->magnet() }}" title="{{ trans('torrents.download') }}">
           @svg (magnet)
         </a>

@@ -57,4 +57,19 @@ class Torrent extends Model
             ? $this->registered_at->formatLocalized('%e&nbsp;%b')
             : $this->registered_at->formatLocalized('%e&nbsp;%b&nbsp;%Y');
     }
+
+    public static function statsByCategories()
+    {
+        $result = self::selectRaw('category_id, COUNT(*) as total')
+            ->groupBy('category_id')
+            ->get();
+
+        $stats = [];
+
+        foreach ($result as $row) {
+            $stats[$row->category_id] = $row->total;
+        }
+
+        return $stats;
+    }
 }

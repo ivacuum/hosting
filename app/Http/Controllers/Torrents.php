@@ -56,6 +56,35 @@ class Torrents extends Controller
         return redirect()->action("{$this->class}@torrent", $torrent->id);
     }
 
+    public function categories()
+    {
+        \Breadcrumbs::push(trans('torrents.index'), 'torrents');
+        \Breadcrumbs::push('Рубрики');
+
+        $tree = \TorrentCategoryHelper::tree();
+        $stats = Torrent::statsByCategories();
+
+        return view($this->view, compact('tree', 'stats'));
+    }
+
+    public function category($category_id)
+    {
+        if (is_null($category = \TorrentCategoryHelper::find($category_id))) {
+            abort(404);
+        }
+
+        \Breadcrumbs::push(trans('torrents.index'), 'torrents');
+        \Breadcrumbs::push($category['title']);
+
+        $ids = \TorrentCategoryHelper::selfAndDescendantsIds($category_id, $category);
+
+        $torrents = Torrent::whereIn('category_id', $ids)
+            ->orderBy('registered_at', 'desc')
+            ->paginate();
+
+        return view('torrents.index', compact('category_id', 'torrents'));
+    }
+
     public function faq()
     {
         \Breadcrumbs::push(trans('torrents.index'), 'torrents');

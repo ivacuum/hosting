@@ -57,5 +57,7 @@ Route::get('torrent', 'Torrents@promo');
 Route::get('torrents', 'Torrents@index');
 Route::post('torrents', 'Torrents@addPost')->middleware('auth');
 Route::get('torrents/add', 'Torrents@add')->middleware('auth');
+Route::get('torrents/categories', 'Torrents@categories');
+Route::get('torrents/categories/{id}', 'Torrents@category');
 Route::get('torrents/faq', 'Torrents@faq');
 Route::get('torrents/{Torrent}', 'Torrents@torrent');

@@ -5,6 +5,9 @@
   <li class="{{ $view == 'torrents.index' ? 'active' : '' }}">
     <a href="{{ action('Torrents@index') }}">Новое</a>
   </li>
+  <li class="{{ $view == 'torrents.categories' ? 'active' : '' }}">
+    <a href="{{ action('Torrents@categories') }}">Рубрики</a>
+  </li>
   @if (Auth::check())
     <li class="{{ $view == 'torrents.add' ? 'active' : '' }}">
       <a href="{{ action('Torrents@add') }}">{{ trans('torrents.add') }}</a>
