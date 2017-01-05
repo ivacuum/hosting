@@ -46,6 +46,11 @@ class Torrent extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function externalLink()
+    {
+        return "http://maintracker.org/forum/viewtopic.php?t={$this->rto_id}";
+    }
+
     public function magnet()
     {
         return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode($this->title);

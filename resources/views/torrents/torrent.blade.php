@@ -4,7 +4,7 @@
 <div class="panel panel-default text-center center-block torrent-stats-container">
   <div class="panel-heading">
     Статистика раздачи
-    <a href="https://rutracker.org/forum/viewtopic.php?t={{ $torrent->rto_id }}">
+    <a href="{{ $torrent->externalLink() }}">
       @svg (external-link)
     </a>
   </div>

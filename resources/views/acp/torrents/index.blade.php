@@ -3,7 +3,7 @@
 @section('content')
 <h3>
   {{ trans("$tpl.index") }}
-  <small>{{ sizeof($models) }}</small>
+  <small>{{ $models->total() }}</small>
   @include('acp.tpl.create')
 </h3>
 @if (sizeof($models))
@@ -32,7 +32,7 @@
           <a class="link" href="{{ action("$self@show", $model) }}">
             <torrent-title title="{{ $model->title }}"></torrent-title>
           </a>
-          <a href="https://rutracker.org/forum/viewtopic.php?t={{ $model->rto_id }}">
+          <a href="{{ $model->externalLink() }}">
             @svg (external-link)
           </a>
         </td>
