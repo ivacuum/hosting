@@ -36,7 +36,7 @@ export default {
       $('.postLink', '.rutracker-post').each((index, item) => {
         let href = $(item).attr('href')
         if (!this.absolute_link_regexp.test(href)) {
-          $(item).attr('href', `https://maintracker.org/forum/${href}`)
+          $(item).attr('href', `http://maintracker.org/forum/${href}`)
         }
       })
     },
