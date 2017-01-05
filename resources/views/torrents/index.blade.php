@@ -11,7 +11,7 @@
     <div class="m-b-1 m-l-1">
       <div>
         <a class="link" href="{{ action("{$self}@torrent", $torrent) }}">
-          {{ $torrent->title }}
+          <torrent-title title="{{ $torrent->title }}"></torrent-title>
         </a>
       </div>
       <div class="torrent-breadcrumbs">
