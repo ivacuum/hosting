@@ -26,6 +26,12 @@ class Torrents extends Controller
     public function addPost(Rto $rto)
     {
         $input = $this->request->input('input');
+        $category_id = $this->request->input('category_id');
+
+        $this->validate($this->request, [
+            'category_id' => 'required|integer|in:'.implode(',', \TorrentCategoryHelper::canPostIds()),
+            'input' => 'required',
+        ]);
 
         if (!is_array($data = $rto->torrentData($input))) {
             return back()
@@ -43,7 +49,7 @@ class Torrents extends Controller
             'user_id' => $this->request->user()->id,
             'info_hash' => $data['info_hash'],
             'announcer' => $data['announcer'],
-            'category_id' => 0,
+            'category_id' => $category_id,
             'registered_at' => Carbon::createFromTimestamp($data['reg_time']),
         ]);
 

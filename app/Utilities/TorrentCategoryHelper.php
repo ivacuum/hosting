@@ -165,6 +165,18 @@ class TorrentCategoryHelper
         return empty($this->tree[$id]['children']);
     }
 
+    public function canPostIds()
+    {
+        return array_keys(array_filter($this->categories, function ($id) {
+            return $this->canPost($id);
+        }, ARRAY_FILTER_USE_KEY));
+    }
+
+    public function exists($id)
+    {
+        return isset($this->categories[$id]);
+    }
+
     public function find($id)
     {
         return isset($this->categories[$id]) ? $this->categories[$id] : null;
@@ -177,7 +189,7 @@ class TorrentCategoryHelper
         }
 
         return collect(array_filter($this->tree, function ($value) use ($parent_id) {
-            return $value['parent'] === 0;
+            return $value['parent'] === $parent_id;
         }));
     }
 
