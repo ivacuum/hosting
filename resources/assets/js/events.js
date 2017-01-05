@@ -126,6 +126,12 @@ $(document).on('click', '.js-gif-click', Events.gifClick)
 // Редактирование по двойному клику
 $(document).on('dblclick', '.js-dblclick-edit', (e) => document.location = $(e.currentTarget).data('dblclick-url'))
 
+// Учет кликов по магнет-ссылкам
+$(document).on('click', '.js-magnet', function() {
+  $.post($(this).data('action'))
+  console.log('click performed')
+})
+
 // Возможность посмотреть пароль
 $(document).on('click', '.js-password-eye', Events.passwordEye)
 

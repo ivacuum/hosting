@@ -14,14 +14,14 @@
     <span class="text-success">{{ $torrent->seeders }} {{ trans_choice('plural.seeders', $torrent->seeders) }}</span>
   </div>
   <div class="panel-footer">
-    <a class="btn btn-success" href="{{ $torrent->magnet() }}">
+    <a class="btn btn-success js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ action('Torrents@magnet', $torrent) }}">
       {{ trans('torrents.download') }} &middot; {{ ViewHelper::size($torrent->size) }}
     </a>
   </div>
 </div>
 <rutracker-post>{!! $torrent->html !!}</rutracker-post>
 <div class="m-y-1 text-center">
-  <a class="btn btn-success" href="{{ $torrent->magnet() }}">
+  <a class="btn btn-success js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ action('Torrents@magnet', $torrent) }}">
     {{ trans('torrents.download') }} &middot; {{ ViewHelper::size($torrent->size) }}
   </a>
 </div>

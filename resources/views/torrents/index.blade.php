@@ -39,7 +39,7 @@
         </div>
       @endif
       <div class="torrent-list-meta">
-        <a href="{{ $torrent->magnet() }}" title="{{ trans('torrents.download') }}">
+        <a class="js-magnet" href="{{ $torrent->magnet() }}" title="{{ trans('torrents.download') }}" data-action="{{ action('Torrents@magnet', $torrent) }}">
           @svg (magnet)
         </a>
         &nbsp;{{ ViewHelper::size($torrent->size) }}

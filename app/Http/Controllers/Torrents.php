@@ -111,6 +111,14 @@ class Torrents extends Controller
         return view($this->view);
     }
 
+    public function magnet(Torrent $torrent)
+    {
+        $torrent->timestamps = false;
+        $torrent->increment('clicks');
+
+        return 'OK';
+    }
+
     public function promo()
     {
         return view($this->view);
