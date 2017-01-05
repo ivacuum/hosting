@@ -10,9 +10,11 @@
   <li class="{{ $vkpage == 'overhear' ? 'active' : '' }}">
     <a class="js-pjax" href="/parser/vk/overhear">Подслушано</a>
   </li>
+  {{--
   <li class="{{ $vkpage == 'leprum' ? 'active' : '' }}">
     <a class="js-pjax" href="/parser/vk/leprum">Лепра</a>
   </li>
+  --}}
   <li class="{{ $vkpage == 'pikabu' ? 'active' : '' }}">
     <a class="js-pjax" href="/parser/vk/pikabu">Пикабу</a>
   </li>
