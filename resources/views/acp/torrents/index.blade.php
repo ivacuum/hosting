@@ -12,6 +12,7 @@
       <tr>
         <th>ID</th>
         <th>Автор</th>
+        <th>@svg (magnet)</th>
         <th>Название</th>
       </tr>
     </thead>
@@ -23,6 +24,10 @@
             {{ $model->user->login ?? $model->user->email }}
           </a>
         </td>
+        <td>
+          @if ($model->clicks > 0)
+            {{ ViewHelper::number($model->clicks) }}</td>
+          @endif
         <td>
           <a class="link" href="{{ action("$self@show", $model) }}">
             <torrent-title title="{{ $model->title }}"></torrent-title>
