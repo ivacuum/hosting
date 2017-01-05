@@ -65,7 +65,7 @@ class Torrents extends Controller
             'info_hash' => $data['info_hash'],
             'announcer' => $data['announcer'],
             'category_id' => $category_id,
-            'registered_at' => Carbon::createFromTimestamp($data['reg_time']),
+            'registered_at' => Carbon::now(),
         ]);
 
         return redirect()->action("{$this->class}@torrent", $torrent->id);
