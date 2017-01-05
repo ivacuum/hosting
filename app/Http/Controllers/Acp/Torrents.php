@@ -10,7 +10,7 @@ class Torrents extends Controller
 {
     public function index()
     {
-        $models = Model::orderBy('id', 'desc')->paginate();
+        $models = Model::with('user')->orderBy('id', 'desc')->paginate();
 
         return view($this->view, compact('models'));
     }
