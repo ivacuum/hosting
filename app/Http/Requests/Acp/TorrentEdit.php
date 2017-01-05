@@ -6,7 +6,7 @@ class TorrentEdit extends TorrentCreate
     {
         $rules = parent::rules();
 
-        $rules['rto_id'] .= ",{$this->route('Torrent')->rto_id}";
+        $rules['rto_id'] .= ",{$this->route('Torrent')->rto_id},rto_id";
 
         return $rules;
     }

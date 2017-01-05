@@ -86,7 +86,7 @@ return [
 
         'ViewHelper' => App\Facades\ViewHelper::class,
         'Breadcrumbs' => App\Breadcrumbs\Facades\Breadcrumbs::class,
-
+        'TorrentCategoryHelper' => App\Facades\TorrentCategoryHelper::class,
     ],
 
 ];
