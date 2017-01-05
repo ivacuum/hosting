@@ -1,39 +1,35 @@
 @extends('torrents.base')
 
 @section('content')
+@php ($last_date = null)
 @if (sizeof($torrents))
-  <table class="table-stats m-b-1">
-    <thead>
-      <tr>
-        <td>Дата</td>
-        <td>Раздача</td>
-        <td></td>
-        <td>Размер</td>
-        <td>Сиды</td>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach ($torrents as $torrent)
-        <tr>
-          <td>{{ $torrent->shortDate() }}</td>
-          <td>
-            <a class="link" href="{{ action("{$self}@torrent", $torrent) }}">
-              {{ $torrent->title }}
-            </a>
-          </td>
-          <td>
-            <a href="{{ $torrent->magnet() }}" title="{{ trans('torrents.download') }}">
-              @svg (magnet)
-            </a>
-          </td>
-          <td>{{ ViewHelper::size($torrent->size) }}</td>
-          <td class="text-success">{{ $torrent->seeders }}</td>
-        </tr>
-      @endforeach
-    </tbody>
-  </table>
+  @foreach ($torrents as $torrent)
+    @if (is_null($last_date) || !$torrent->registered_at->isSameDay($last_date))
+      <h4 class="m-t-2">{{ $torrent->shortDate() }}</h4>
+      @php ($last_date = $torrent->registered_at)
+    @endif
+    <div class="m-b-1 m-l-1">
+      <div>
+        <a class="link" href="{{ action("{$self}@torrent", $torrent) }}">
+          {{ $torrent->title }}
+        </a>
+      </div>
+      <div class="torrent-breadcrumbs">
+        @svg (folder-o)
+        {{ TorrentCategoryHelper::breadcrumbs($torrent->category_id) }}
+      </div>
+      <div>
+        <a href="{{ $torrent->magnet() }}" title="{{ trans('torrents.download') }}">
+          @svg (magnet)
+        </a>
+        &nbsp;{{ ViewHelper::size($torrent->size) }}
+        <span class="text-muted">&nbsp;&middot;&nbsp;</span>
+        <span class="text-success">{{ $torrent->seeders }} {{ trans_choice('plural.seeders', $torrent->seeders) }}</span>
+      </div>
+    </div>
+  @endforeach
 
-  <div class="m-y-1 text-center">
+  <div class="m-t-1 text-center">
     @include('tpl.paginator', ['paginator' => $torrents])
   </div>
 @else

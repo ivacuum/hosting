@@ -156,6 +156,23 @@ class TorrentCategoryHelper
 
     protected $tree;
 
+    public function breadcrumbs($id)
+    {
+        if (empty($this->tree)) {
+            $this->initTree();
+        }
+
+        $category = $this->tree[$id];
+
+        if ($category['parent'] === 0) {
+            return $category['title'];
+        }
+
+        $parent = $this->categories[$category['parent']];
+
+        return "{$parent['title']} &raquo; {$category['title']}";
+    }
+
     public function canPost($id)
     {
         if (empty($this->tree)) {

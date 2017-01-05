@@ -150,5 +150,10 @@
   }
 }
 
+.torrent-breadcrumbs {
+  font-size: 12px;
+  margin: 3px 0;
+  color: $gray-light;
+}
 .torrent-stats-container { max-width: 500px; }
 .torrent-stats-separator { padding: 0 10px; }
