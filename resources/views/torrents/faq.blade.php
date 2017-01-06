@@ -100,6 +100,14 @@
   Почему моя раздача пропала?
 </div>
 <p>Раздачи автоматически удаляются, если они были удалены или закрыты на сайте-первоисточнике rutracker.org.</p>
+
+<div class="faq-question">
+  <a class="faq-anchor" name="how-do-i-comment" href="#how-do-i-comment">
+    @svg (link)
+  </a>
+  Как комментировать раздачи?
+</div>
+<p>Возможность обсуждения и комментирования раздач ожидается во второй половине января.</p>
 @endsection
 
 @section('content_footer')
