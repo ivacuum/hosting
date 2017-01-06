@@ -18,7 +18,7 @@
           @svg (eye)
           {{ ViewHelper::number($model->views) }}
         </p>
-        <div class="m-b-3">{!! $model->html !!}</div>
+        <div class="m-b-3 hidden-xs">{!! $model->html !!}</div>
       @endforeach
     </div>
   </div>
