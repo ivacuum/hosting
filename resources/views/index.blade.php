@@ -4,18 +4,19 @@
 <div class="row">
   <div class="col-md-4 service-container">
     <div class="clearfix">
-      <img class="service-image" src="https://ivacuum.org/i/services/torrent.png">
-      <h2 class="service-title"><a class="link" href="http://t.ivacuum.ru/">{{ trans('torrents.index') }}</a></h2>
+      <img class="service-image" src="https://ivacuum.org/i/services/magnet.png">
+      <h2 class="service-title"><a class="link" href="{{ action('Torrents@index') }}">{{ trans('torrents.index') }}</a></h2>
     </div>
-    <p>Наглядный сервис для обмена файлами внутри локальной сети Билайн с возможностью комментирования раздач.</p>
-    <p>Особенности:</p>
-    <ul>
-      <li>обсуждение раздач;</li>
-      <li>обмен на высокой скорости;</li>
-      <li>отсутствие ограничений по рейтингу;</li>
-      <li>и многое другое...</li>
-    </ul>
-    <p>Дата запуска: 5 июля 2010 г.</p>
+    @ru
+      <p>Сервис для скачивания файлов у многочисленных пользователей сети интернет.</p>
+      <p>Особенности:</p>
+      <ul>
+        <li>зеркало раздач рутрекера;</li>
+        <li>скачивание без регистрации и рейтинга;</li>
+        <li>легкое добавление раздач.</li>
+      </ul>
+      <p>Дата запуска: 5 января 2017 г.</p>
+    @endlang
   </div>
   <div class="col-md-4 service-container">
     <div class="clearfix">
@@ -95,6 +96,16 @@
         <li>представлены клиенты для трёх самых популярных платформ.</li>
       </ul>
       <p>Дата запуска: 17 марта 2008 г.</p>
+    @endlang
+  </div>
+  <div class="col-md-4 service-container">
+    <div class="clearfix">
+      <img class="service-image" src="https://ivacuum.org/i/services/torrent.png">
+      <h2 class="service-title"><a class="link" href="http://t.ivacuum.ru">{{ trans('torrents.index') }}</a></h2>
+    </div>
+    @ru
+      <p>Сервис для обмена файлами внутри локальной сети Билайн, проработавший шесть с лишним лет. Теперь исторический форум, доступный из интернета.</p>
+      <p>Дата запуска: 5 июля 2010 г.</p>
     @endlang
   </div>
 </div>
