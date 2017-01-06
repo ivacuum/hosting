@@ -21,11 +21,9 @@
   <li class="{{ $view == 'torrents.categories' ? 'active' : '' }}">
     <a href="{{ action('Torrents@categories') }}">{{ trans('torrents.categories') }}</a>
   </li>
-  @if (Auth::check())
-    <li class="{{ $view == 'torrents.add' ? 'active' : '' }}">
-      <a href="{{ action('Torrents@add') }}">{{ trans('torrents.add') }}</a>
-    </li>
-  @endif
+  <li class="{{ $view == 'torrents.add' ? 'active' : '' }}">
+    <a href="{{ action('Torrents@add') }}">{{ trans('torrents.add') }}</a>
+  </li>
   <li class="{{ $view == 'torrents.faq' ? 'active' : '' }}">
     <a href="{{ action('Torrents@faq') }}">{{ trans('torrents.help') }}</a>
   </li>
