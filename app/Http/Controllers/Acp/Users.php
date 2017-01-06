@@ -11,7 +11,7 @@ class Users extends Controller
 
     public function index()
     {
-        $models = Model::paginate();
+        $models = Model::orderBy('id', 'desc')->paginate();
 
         return view($this->view, compact('models'));
     }
