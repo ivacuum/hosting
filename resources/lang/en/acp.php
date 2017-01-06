@@ -93,6 +93,8 @@ return [
     'users.show' => 'User',
     'users.index' => 'Users',
     'users.create' => 'New user',
+    'users.images' => 'Images',
+    'users.torrents' => 'Torrents',
 
     'yandex.users.add' => 'Add account',
     'yandex.users.edit' => 'Edit',

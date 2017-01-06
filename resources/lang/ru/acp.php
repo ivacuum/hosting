@@ -96,6 +96,8 @@ return [
     'users.show' => 'Пользователь',
     'users.index' => 'Пользователи',
     'users.create' => 'Новый пользователь',
+    'users.images' => 'Изображения',
+    'users.torrents' => 'Торренты',
 
     'yandex.users.add' => 'Добавить аккаунт',
     'yandex.users.edit' => 'Редактирование аккаунта',
