@@ -81,7 +81,7 @@
                     </a>
                   </li>
                 @endif
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->login ?: Auth::user()->email }} <b class="caret"></b></a>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->displayName() }} <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li>
                       <a href="{{ action('Auth@logout') }}">

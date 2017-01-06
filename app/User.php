@@ -59,6 +59,11 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
+    public function displayName()
+    {
+        return $this->login ?: $this->email;
+    }
+
     public function isAdmin()
     {
         return $this->isRoot();

@@ -21,7 +21,7 @@
         <td>{{ $model->id }}</td>
         <td>
           <a class="link" href="{{ action('Acp\Users@show', $model->user_id) }}">
-            {{ $model->user->login ?? $model->user->email }}
+            {{ $model->user->displayName() }}
           </a>
         </td>
         <td>
