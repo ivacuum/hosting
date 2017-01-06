@@ -55,7 +55,11 @@ class Rto
 
     public function torrentData($input)
     {
-        return $this->parseTopicData($this->findTopicId($input));
+        if (is_null($topic_id = $this->findTopicId($input))) {
+            return;
+        }
+
+        return $this->parseTopicData($topic_id);
     }
 
     public function parseAnnouncerLink($link)
