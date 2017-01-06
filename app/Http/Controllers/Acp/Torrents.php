@@ -10,9 +10,18 @@ class Torrents extends Controller
 {
     public function index()
     {
-        $models = Model::with('user')->orderBy('id', 'desc')->paginate();
+        $user_id = $this->request->input('user_id');
 
-        return view($this->view, compact('models'));
+        $models = Model::with('user')->orderBy('id', 'desc');
+
+        if ($user_id) {
+            $models = $models->where('user_id', $user_id);
+        }
+
+        $models = $models->paginate()
+            ->appends(compact('user_id'));
+
+        return view($this->view, compact('models', 'user_id'));
     }
 
     public function create()
