@@ -48,7 +48,7 @@
         @svg (times)
       </span>
     </a>
-    <a class="btn btn-default" href="{{ Request::fullUrlWithQuery(['user_id' => null]) }}">
+    <a class="btn btn-default" href="{{ Request::fullUrlWithQuery(['user_id' => null, 'page' => null]) }}">
       user_id: {{ $user_id }}
       <span class="text-danger">
         @svg (times)
