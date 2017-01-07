@@ -18,9 +18,11 @@
   <li class="{{ $view == 'torrents.index' ? 'active' : '' }}">
     <a href="{{ action('Torrents@index') }}">{{ trans('torrents.new') }}</a>
   </li>
+  {{--
   <li class="{{ $view == 'torrents.categories' ? 'active' : '' }}">
     <a href="{{ action('Torrents@categories') }}">{{ trans('torrents.categories') }}</a>
   </li>
+  --}}
   <li class="{{ $view == 'torrents.add' ? 'active' : '' }}">
     <a href="{{ action('Torrents@add') }}">{{ trans('torrents.add') }}</a>
   </li>

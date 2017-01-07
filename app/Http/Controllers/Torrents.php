@@ -11,15 +11,31 @@ class Torrents extends Controller
 
     public function index()
     {
+        $q = $this->request->input('q');
+        $category = null;
+        $category_id = $this->request->input('category_id');
+
+        if ($category_id && is_null($category = \TorrentCategoryHelper::find($category_id))) {
+            abort(404);
+        }
+
         \Breadcrumbs::push(trans($this->view));
 
-        $q = $this->request->input('q');
-
         $torrents = Torrent::orderBy('registered_at', 'desc');
+
+        if (!is_null($category)) {
+            $ids = \TorrentCategoryHelper::selfAndDescendantsIds($category_id, $category);
+
+            $torrents = $torrents->whereIn('category_id', $ids);
+        }
+
         $torrents = $this->applySearchQuery($q, $torrents);
         $torrents = $torrents->paginate(null, $this->list_columns);
 
-        return view($this->view, compact('torrents', 'q'));
+        $tree = \TorrentCategoryHelper::tree();
+        $stats = Torrent::statsByCategories();
+
+        return view($this->view, compact('category_id', 'q', 'torrents', 'tree', 'stats'));
     }
 
     public function add()
@@ -102,7 +118,10 @@ class Torrents extends Controller
         $torrents = $this->applySearchQuery($q, $torrents);
         $torrents = $torrents->paginate(null, $this->list_columns);
 
-        return view('torrents.index', compact('category_id', 'q', 'torrents'));
+        $tree = \TorrentCategoryHelper::tree();
+        $stats = Torrent::statsByCategories();
+
+        return view('torrents.index', compact('category_id', 'q', 'torrents', 'tree', 'stats'));
     }
 
     public function faq()
