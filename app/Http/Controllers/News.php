@@ -56,6 +56,16 @@ class News extends Controller
 
     public function show($year, $month, $day, $slug)
     {
+        $validator = \Validator::make(compact('year', 'month', 'day'), [
+            'day' => 'date_format:d|nullable',
+            'year' => 'date_format:Y|nullable',
+            'month' => 'date_format:m|nullable',
+        ]);
+
+        if ($validator->fails()) {
+            abort(404);
+        }
+
         // Обратная совместимость
         if (ends_with($slug, '.html')) {
             $slug = mb_substr($slug, 0, -5);
