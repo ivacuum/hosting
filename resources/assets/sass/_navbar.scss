@@ -12,6 +12,13 @@
   &:hover { color: #d46400; }
 }
 
+.navbar-default.navbar-inverse .navbar-brand {
+  color: #9d9d9d;
+  text-shadow: none;
+
+  &:hover { color: #fff; }
+}
+
 .navbar-nav .navbar-selected {
   border-bottom: 2px solid #51A7F9;
   padding-bottom: 13px;
