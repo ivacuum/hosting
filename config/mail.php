@@ -8,7 +8,7 @@ return [
     'port'       => env('MAIL_PORT', 25),
     'from'       => [
         'address' => env('MAIL_USERNAME', null),
-        'name'    => 'ivacuum.ru',
+        'name'    => 'vacuum.kaluga',
     ],
     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
     'username'   => env('MAIL_USERNAME'),
