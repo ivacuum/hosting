@@ -175,6 +175,11 @@ class Domains extends Controller
         ];
     }
 
+    public function dkimSecretKey(Model $model)
+    {
+        return nl2br($model->dkimSecretKey()->dkim->secretkey);
+    }
+
     public function edit(Model $model)
     {
         return view($this->view, compact('model'));

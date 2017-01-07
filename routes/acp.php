@@ -62,6 +62,7 @@ Route::group(['prefix' => 'domains'], function () {
     Route::get('{Domain}', 'Acp\Domains@show');
     Route::put('{Domain}', 'Acp\Domains@update');
     Route::delete('{Domain}', 'Acp\Domains@destroy');
+    Route::get('{Domain}/dkim-secret-key', 'Acp\Domains@dkimSecretKey');
     Route::get('{Domain}/edit', 'Acp\Domains@edit');
     Route::get('{Domain}/mail', 'Acp\Domains@mailboxes');
     Route::post('{Domain}/mail', 'Acp\Domains@addMailbox');
