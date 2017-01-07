@@ -2,12 +2,19 @@
 
 @section('content')
 @if (sizeof($images))
-  <div>
+  <div class="gallery-flex">
     @foreach ($images as $image)
-      <a class="gallery-photo-container" href="{{ action("$self@preview", $image) }}">
-        <img class="gallery-photo" src="{{ $image->thumbnailUrl() }}">
-        <span class="image-label">@svg (eye) {{ $image->views }} &middot; {{ ViewHelper::size($image->size) }}</span>
-      </a>
+      <div class="gallery-image m-b-2">
+        <div class="m-b-1">
+          <a class="screenshot-link" href="{{ action("$self@view", $image) }}">
+            <img class="screenshot" src="{{ $image->thumbnailUrl() }}">
+          </a>
+        </div>
+        <span class="text-muted">
+          @svg (eye)
+          {{ ViewHelper::number($image->views) }}
+        </span>
+      </div>
     @endforeach
   </div>
 @else

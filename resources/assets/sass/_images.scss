@@ -1,10 +1,27 @@
-.gallery-columns {
-  line-height: 0;
-  column-count: 1;
-  column-gap: 0;
+.gallery-flex {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
 
-  @media (min-width: $screen-sm-min) { column-count: 2; }
-  @media (min-width: $screen-md-min) { column-count: 3; }
+.gallery-image {
+  min-height: 1px;
+  position: relative;
+  width: 100%;
+  flex-grow: 1;
+  max-width: 100%;
+  vertical-align: bottom;
+  align-self: flex-end;
+
+  @media (min-width: $screen-sm-min) {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+
+  @media (min-width: $screen-md-min) {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
 }
 
 .gallery-photo-container {
@@ -36,6 +53,8 @@
   background-clip: padding-box;
   max-width: 100%;
 }
+
+.screenshot-link .screenshot:hover { border-color: $link-hover-border-color; }
 
 .fotorama,
 .img-container {

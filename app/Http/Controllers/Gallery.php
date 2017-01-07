@@ -10,7 +10,7 @@ class Gallery extends Controller
 
         $images = Image::where('user_id', $this->request->user()->id)
             ->orderBy('id', 'desc')
-            ->paginate();
+            ->paginate(25);
 
         return view($this->view, compact('images'));
     }
