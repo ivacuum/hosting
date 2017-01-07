@@ -1,6 +1,5 @@
 <?php namespace App\Providers;
 
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,23 +21,23 @@ class AppServiceProvider extends ServiceProvider
         });
         */
 
-        Blade::directive('ru', function ($expression) {
+        \Blade::directive('ru', function ($expression) {
             return '<?php if ($locale === \'ru\'): ?>';
         });
 
-        Blade::directive('en', function ($expression) {
+        \Blade::directive('en', function ($expression) {
             return '<?php elseif ($locale === \'en\'): ?>';
         });
 
-        Blade::directive('de', function ($expression) {
+        \Blade::directive('de', function ($expression) {
             return '<?php elseif ($locale === \'de\'): ?>';
         });
 
-        Blade::directive('endlang', function ($expression) {
+        \Blade::directive('endlang', function ($expression) {
             return '<?php endif; ?>';
         });
 
-        Blade::directive('svg', function ($expression) {
+        \Blade::directive('svg', function ($expression) {
             return "<?php require base_path(\"resources/svg/$expression.html\"); ?>";
         });
 
