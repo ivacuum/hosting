@@ -30,7 +30,7 @@ class Torrents extends Controller
         }
 
         $torrents = $this->applySearchQuery($q, $torrents);
-        $torrents = $torrents->paginate(1, $this->list_columns)
+        $torrents = $torrents->paginate(null, $this->list_columns)
             ->appends(compact('category_id', 'q'));
 
         $tree = \TorrentCategoryHelper::tree();
