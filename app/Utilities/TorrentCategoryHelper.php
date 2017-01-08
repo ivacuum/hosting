@@ -19,12 +19,12 @@ class TorrentCategoryHelper
                 'parent' => 1,
             ],
             4 => [
-                'icon' => 'film',
+                'icon' => 'tv',
                 'title' => 'Зарубежные сериалы',
                 'parent' => 1,
             ],
             5 => [
-                'icon' => 'film',
+                'icon' => 'tv',
                 'title' => 'Русские сериалы',
                 'parent' => 1,
             ],
@@ -39,7 +39,7 @@ class TorrentCategoryHelper
                 'parent' => 1,
             ],
             8 => [
-                'icon' => 'film',
+                'icon' => 'tv',
                 'title' => 'Мультсериалы',
                 'parent' => 1,
             ],
