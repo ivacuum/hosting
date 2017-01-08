@@ -39,7 +39,7 @@ class RtoUpdate extends Command
                 if ($json->info_hash !== $torrent->info_hash) {
                     $torrent->size = $json->size;
                     $torrent->info_hash = $json->info_hash;
-                    $torrent->registered_at = Carbon::createFromTimestamp($json->reg_time);
+                    $torrent->registered_at = Carbon::now();
 
                     if (!is_array($topic_data = $rto->parseTopicBody($id))) {
                         throw new \Exception("Проблема обновления раздачи {$id} [parseTopicBody]");
