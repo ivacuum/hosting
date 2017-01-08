@@ -69,13 +69,6 @@ class Torrent extends Model
         return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode($this->title);
     }
 
-    public function shortDate()
-    {
-        return $this->registered_at->year == date('Y')
-            ? $this->registered_at->formatLocalized('%e&nbsp;%b')
-            : $this->registered_at->formatLocalized('%e&nbsp;%b&nbsp;%Y');
-    }
-
     public static function statsByCategories()
     {
         $result = self::selectRaw('category_id, COUNT(*) as total')
