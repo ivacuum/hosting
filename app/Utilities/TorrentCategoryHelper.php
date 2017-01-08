@@ -9,34 +9,42 @@ class TorrentCategoryHelper
             'parent' => 0,
         ],
             2 => [
+                'icon' => 'film',
                 'title' => 'Зарубежное кино',
                 'parent' => 1,
             ],
             3 => [
+                'icon' => 'film',
                 'title' => 'Отечественное кино',
                 'parent' => 1,
             ],
             4 => [
+                'icon' => 'film',
                 'title' => 'Зарубежные сериалы',
                 'parent' => 1,
             ],
             5 => [
+                'icon' => 'film',
                 'title' => 'Русские сериалы',
                 'parent' => 1,
             ],
             6 => [
+                'icon' => 'film',
                 'title' => '3D',
                 'parent' => 1,
             ],
             7 => [
+                'icon' => 'film',
                 'title' => 'Мультфильмы',
                 'parent' => 1,
             ],
             8 => [
+                'icon' => 'film',
                 'title' => 'Мультсериалы',
                 'parent' => 1,
             ],
             9 => [
+                'icon' => 'film',
                 'title' => 'Аниме',
                 'parent' => 1,
             ],
@@ -47,14 +55,17 @@ class TorrentCategoryHelper
             'parent' => 0,
         ],
             11 => [
+                'icon' => 'microphone',
                 'title' => 'Документальные фильмы и телепередачи',
                 'parent' => 10,
             ],
             12 => [
+                'icon' => 'smile-o',
                 'title' => 'Развлекательные телепередачи и шоу, приколы и юмор',
                 'parent' => 10,
             ],
             13 => [
+                'icon' => 'soccer-ball-o',
                 'title' => 'Спортивные фильмы и передачи',
                 'parent' => 10,
             ],
@@ -65,38 +76,47 @@ class TorrentCategoryHelper
             'parent' => 0,
         ],
             26 => [
+                'icon' => 'gamepad',
                 'title' => 'Action',
                 'parent' => 25,
             ],
             27 => [
+                'icon' => 'gamepad',
                 'title' => 'RPG',
                 'parent' => 25,
             ],
             28 => [
+                'icon' => 'gamepad',
                 'title' => 'Аркады',
                 'parent' => 25,
             ],
             29 => [
+                'icon' => 'gamepad',
                 'title' => 'Приключения и квесты',
                 'parent' => 25,
             ],
             30 => [
+                'icon' => 'gamepad',
                 'title' => 'Симуляторы',
                 'parent' => 25,
             ],
             31 => [
+                'icon' => 'gamepad',
                 'title' => 'Стратегии',
                 'parent' => 25,
             ],
             32 => [
+                'icon' => 'gamepad',
                 'title' => 'Онлайн игры',
                 'parent' => 25,
             ],
             33 => [
+                'icon' => 'gamepad',
                 'title' => 'Старые игры',
                 'parent' => 25,
             ],
             34 => [
+                'icon' => 'gamepad',
                 'title' => 'Другие игры',
                 'parent' => 25,
             ],
@@ -107,48 +127,59 @@ class TorrentCategoryHelper
             'parent' => 0,
         ],
             15 => [
+                'icon' => 'music',
                 'title' => 'Зарубежный рок',
                 'parent' => 14,
             ],
             16 => [
+                'icon' => 'music',
                 'title' => 'Отечественный рок',
                 'parent' => 14,
             ],
             17 => [
+                'icon' => 'music',
                 'title' => 'Джаз и блюз',
                 'parent' => 14,
             ],
             18 => [
+                'icon' => 'music',
                 'title' => 'Поп музыка, Eurodance, Disco',
                 'parent' => 14,
             ],
             19 => [
+                'icon' => 'music',
                 'title' => "Рэп, Хип-Хоп, R'n'B",
                 'parent' => 14,
             ],
             20 => [
+                'icon' => 'music',
                 'title' => 'Электронная музыка',
                 'parent' => 14,
             ],
             21 => [
+                'icon' => 'music',
                 'title' => 'Классическая музыка',
                 'parent' => 14,
             ],
             22 => [
+                'icon' => 'music',
                 'title' => 'Шансон, Авторская и Военная песня',
                 'parent' => 14,
             ],
             23 => [
+                'icon' => 'music',
                 'title' => 'Саундтреки и Караоке',
                 'parent' => 14,
             ],
             24 => [
+                'icon' => 'music',
                 'title' => 'Музыка других жанров',
                 'parent' => 14,
             ],
 
         //
         35 => [
+            'icon' => 'file-text-o',
             'title' => 'Прочее',
             'parent' => 0,
         ]

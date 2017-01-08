@@ -35,26 +35,33 @@
           <h4 class="m-t-2">{{ $torrent->fullDate() }}</h4>
           @php ($last_date = $torrent->registered_at)
         @endif
-        <div class="m-b-1 m-l-1">
-          <div>
-            <a class="link" href="{{ action("{$self}@torrent", $torrent) }}">
-              <torrent-title title="{{ $torrent->title }}"></torrent-title>
-            </a>
+        @php ($category = TorrentCategoryHelper::find($torrent->category_id))
+        <div class="media m-b-1">
+          <div class="media-left torrent-icon">
+            @php ($icon = $category['icon'] ?? 'file-text-o')
+            @svg ($icon)
           </div>
-          <div class="torrent-list-meta">
-            <a class="js-magnet" href="{{ $torrent->magnet() }}" title="{{ trans('torrents.download') }}" data-action="{{ action('Torrents@magnet', $torrent) }}">
-              @svg (magnet)
-            </a>
-            &nbsp;{{ ViewHelper::size($torrent->size) }}
-            <span class="text-muted">&nbsp;&middot;&nbsp;</span>
-            <span class="text-success">{{ $torrent->seeders }} {{ trans_choice('plural.seeders', $torrent->seeders) }}</span>
-            @if (empty($category_id) || $category_id != $torrent->category_id)
-              <span class="text-muted">
+          <div class="media-body">
+            <div>
+              <a class="link" href="{{ action("{$self}@torrent", $torrent) }}">
+                <torrent-title title="{{ $torrent->title }}"></torrent-title>
+              </a>
+            </div>
+            <div class="torrent-list-meta">
+              <a class="js-magnet" href="{{ $torrent->magnet() }}" title="{{ trans('torrents.download') }}" data-action="{{ action('Torrents@magnet', $torrent) }}">
+                @svg (magnet)
+              </a>
+              &nbsp;{{ ViewHelper::size($torrent->size) }}
+              <span class="text-muted">&nbsp;&middot;&nbsp;</span>
+              <span class="text-success">{{ $torrent->seeders }} {{ trans_choice('plural.seeders', $torrent->seeders) }}</span>
+              @if (empty($category_id) || $category_id != $torrent->category_id)
+                <span class="text-muted">
                 &nbsp;&middot;&nbsp;
-                @svg (folder-o)
-                {{ TorrentCategoryHelper::find($torrent->category_id)['title'] }}
+                  @svg (folder-o)
+                  {{ $category['title'] }}
               </span>
-            @endif
+              @endif
+            </div>
           </div>
         </div>
       @endforeach

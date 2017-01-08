@@ -156,6 +156,13 @@
   margin: 3px 0;
   color: $gray-light;
 }
+.torrent-icon {
+  .svg-icon-file-text-o { color: #777; }
+  .svg-icon-film { color: #428bca; }
+  .svg-icon-gamepad { color: #a94442; }
+  .svg-icon-smile-o { color: #3c763d; }
+  .svg-icon-soccer-ball-o { color: #666; }
+}
 .torrent-list-meta { margin-top: 3px; }
 .torrent-stats-container { max-width: 500px; }
 .torrent-stats-separator { padding: 0 10px; }
