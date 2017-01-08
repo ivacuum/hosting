@@ -157,6 +157,10 @@
   color: $gray-light;
 }
 .torrent-icon {
+  .svg-icon {
+    width: 1.5em;
+    height: 1.5em;
+  }
   .svg-icon-file-text-o { color: #777; }
   .svg-icon-film { color: #428bca; }
   .svg-icon-gamepad { color: #a94442; }

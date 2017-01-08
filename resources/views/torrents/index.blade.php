@@ -37,7 +37,7 @@
         @endif
         @php ($category = TorrentCategoryHelper::find($torrent->category_id))
         <div class="media m-b-1">
-          <div class="media-left torrent-icon">
+          <div class="media-left torrent-icon" title="{{ $category['title'] }}">
             @php ($icon = $category['icon'] ?? 'file-text-o')
             @svg ($icon)
           </div>
