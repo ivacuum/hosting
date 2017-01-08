@@ -74,6 +74,11 @@ class User extends Authenticatable
         return $this->id === 1;
     }
 
+    public function publicName()
+    {
+        return $this->login ?: "user #{$this->id}";
+    }
+
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPassword($token));

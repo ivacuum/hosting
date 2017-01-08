@@ -17,6 +17,11 @@
           &nbsp;
           @svg (eye)
           {{ ViewHelper::number($model->views) }}
+          @if ($model->comments_count)
+            &nbsp;
+            @svg (comment-o)
+            {{ ViewHelper::number($model->comments_count) }}
+          @endif
         </p>
         <div class="m-b-3 hidden-xs">{!! $model->html !!}</div>
       @endforeach

@@ -1,11 +1,18 @@
 <?php namespace App\Providers;
 
+use App\News;
+use App\Torrent;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        Relation::morphMap([
+            'news' => News::class,
+            'torrent' => Torrent::class,
+        ]);
     }
 
     public function register()

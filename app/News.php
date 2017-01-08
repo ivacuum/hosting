@@ -23,6 +23,11 @@ class News extends Model
 {
     protected $guarded = ['created_at', 'updated_at', 'goto'];
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'rel');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

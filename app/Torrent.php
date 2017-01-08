@@ -41,6 +41,11 @@ class Torrent extends Model
     protected $dates = ['registered_at'];
     protected $perPage = 50;
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'rel');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

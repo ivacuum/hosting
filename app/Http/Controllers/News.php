@@ -18,7 +18,7 @@ class News extends Controller
             abort(404);
         }
 
-        $news = Model::with('user')->orderBy('id', 'desc');
+        $news = Model::with('user')->withCount('comments')->orderBy('id', 'desc');
 
         switch (\App::getLocale()) {
             case 'en': $news = $news->where('site_id', 12); break;
@@ -81,6 +81,8 @@ class News extends Controller
             abort(404);
         }
 
+        $comments = $news->comments()->with('user')->orderBy('id', 'desc')->paginate();
+
         $news->incrementViews();
 
         \Breadcrumbs::push(trans('news.index'), "news");
@@ -91,7 +93,7 @@ class News extends Controller
 
         $meta_title = $news->title;
 
-        return view($this->view, compact('meta_title', 'news'));
+        return view($this->view, compact('comments', 'meta_title', 'news'));
     }
 
     public function year($year)
