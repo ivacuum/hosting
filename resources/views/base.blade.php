@@ -16,6 +16,13 @@
   <link rel="stylesheet" href="{{ App::environment('production') ? elixir('css/vendor.css') : '/build/css/vendor.css' }}">
   <link rel="stylesheet" href="{{ App::environment('production') ? elixir('css/app.css') : '/build/css/app.css' }}">
   @stack('head')
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-7802683087624570",
+      enable_page_level_ads: true
+    });
+  </script>
 </head>
 <body>
   <div class="navbar navbar-default {{ App::environment('local') ? 'navbar-inverse' : '' }}">
