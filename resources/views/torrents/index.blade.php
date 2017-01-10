@@ -13,15 +13,14 @@
       </h3>
       @if (!empty($category['children']))
         @foreach ($category['children'] as $id => $child)
+          @continue (empty($stats[$id]))
           <div>
             @if (!empty($category_id) && $id == $category_id)
               <mark>{{ $child['title'] }}</mark>
             @else
               <a class="link" href="{{ action("$self@index", ['category_id' => $id]) }}">{{ $child['title'] }}</a>
             @endif
-            @if (!empty($stats[$id]))
-              <span class="text-muted">{{ $stats[$id] }}</span>
-            @endif
+            <span class="text-muted">{{ $stats[$id] }}</span>
           </div>
         @endforeach
       @endif
