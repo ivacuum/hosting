@@ -14,7 +14,7 @@
   @svg (eye)
   {{ ViewHelper::number($news->views) }}
 </p>
-{!! $news->html !!}
+<div>{!! $news->html !!}</div>
 
 @if (Auth::check() && sizeof($comments))
   <h3 class="m-t-3">
