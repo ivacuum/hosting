@@ -66,19 +66,6 @@
       <p>Дата запуска: 8 февраля 2009 г.</p>
     @endlang
   </div>
-  {{--
-  <div class="col-md-4 service-container">
-    <h3 class="service-title"><a class="link" href="{{ action('Gallery@upload') }}">Загрузка изображений</a></h3>
-    <p>Сервис загрузки изображений в галерею для последующего использования на трекере.</p>
-    <p>Особенности:</p>
-    <ul>
-      <li>загрузка до 10 изображений одновременно;</li>
-      <li>получение ссылок для публикации на трекере;</li>
-      <li>масштабирование и создание превью.</li>
-    </ul>
-    <p>Дата запуска: 8 февраля 2009 г.</p>
-  </div>
-  --}}
   <div class="col-md-4 service-container">
     <div class="clearfix">
       <img class="service-image" src="https://ivacuum.org/i/services/dcpp.png">
@@ -108,7 +95,6 @@
 
 {{--
 @ru
-  <p class="lead">Текст для главной еще не придумали. Можно <a class="link" href="{{ action('Life@index') }}">заметки</a> почитать, например.</p>
   <h3>Последние поездки</h3>
 @en
   <h3 class="m-t-0">Last trips</h3>
@@ -133,10 +119,5 @@
     @endforeach
   </div>
 @endforeach
-
-@ru
-  <p class="lead">А еще лучше слетать <a class="link pseudo js-aviasales">повидать новый город</a>.</p>
-  <div id="aviasales_container"></div>
-@endlang
 --}}
 @endsection
