@@ -10,4 +10,5 @@ Disallow: /parser
 Disallow: /en/parser
 Disallow: /torrents
 Disallow: /en/torrents
+Sitemap: https://ivacuum.ru/sitemap.xml
 Host: https://ivacuum.ru
