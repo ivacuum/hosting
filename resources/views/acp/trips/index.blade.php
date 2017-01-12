@@ -28,6 +28,8 @@
         </td>
         <td>
           @if ($model->status === App\Trip::STATUS_HIDDEN)
+            @svg (eye)
+          @elseif ($model->status === App\Trip::STATUS_INACTIVE)
             @svg (pencil)
           @endif
         </td>

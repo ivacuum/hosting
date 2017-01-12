@@ -56,24 +56,38 @@
 <div class="form-group {{ $errors->has('date_start') ? 'has-error' : '' }}">
   <label class="col-md-3 control-label required">Дата начала:</label>
   <div class="col-md-6">
-    <input required type="text" class="form-control" name="date_start" value="{{ old('date_start', @$model->date_start) }}">
+    <input required type="text" class="form-control" name="date_start" value="{{ old('date_start', $model->date_start ?? date('Y-m-d')) }}">
   </div>
 </div>
 
 <div class="form-group {{ $errors->has('date_end') ? 'has-error' : '' }}">
   <label class="col-md-3 control-label required">Дата окончания:</label>
   <div class="col-md-6">
-    <input required type="text" class="form-control" name="date_end" value="{{ old('date_end', @$model->date_end) }}">
+    <input required type="text" class="form-control" name="date_end" value="{{ old('date_end', $model->date_end ?? date('Y-m-d')) }}">
   </div>
 </div>
 
 <div class="form-group">
-  <div class="col-md-6 col-md-offset-3 checkbox">
-    <input type="hidden" name="status" value="0">
-    <label>
-      <input type="checkbox" name="status" value="{{ App\Trip::STATUS_PUBLISHED }}" {{ App\Trip::STATUS_PUBLISHED == old('status', @$model->status) ? 'checked' : '' }}>
-      Опубликовать
-    </label>
+  <label class="col-md-3 control-label">Статус:</label>
+  <div class="col-md-6">
+    <div class="radio">
+      <label>
+        <input type="radio" name="status" value="{{ App\Trip::STATUS_HIDDEN }}" {{ App\Trip::STATUS_HIDDEN == old('status', @$model->status) ? 'checked' : '' }}>
+        <span class="text-muted">Скрыта</span>
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="status" value="{{ App\Trip::STATUS_INACTIVE }}" {{ App\Trip::STATUS_INACTIVE == old('status', @$model->status) ? 'checked' : '' }}>
+        Неактивна
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="status" value="{{ App\Trip::STATUS_PUBLISHED }}" {{ App\Trip::STATUS_PUBLISHED == old('status', @$model->status) ? 'checked' : '' }}>
+        <span class="text-success">Опубликована</span>
+      </label>
+    </div>
   </div>
 </div>
 
