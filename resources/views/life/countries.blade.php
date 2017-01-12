@@ -15,12 +15,20 @@
     @foreach ($countries as $country)
       @continue ($country->trips_count === 0)
       <li class="countries-list-country">
-        <a class="link" href="{{ action('Life@country', $country->slug) }}">
-          <strong>{{ $country->title }}</strong>
-        </a>:
+        @if ($country->trips_published_count)
+          <a class="link" href="{{ action('Life@country', $country->slug) }}">
+            <strong>{{ $country->title }}</strong>
+          </a>:
+        @else
+          <strong>{{ $country->title }}</strong>:
+        @endif
         @foreach ($country->cities as $i => $city)
           @continue ($city->trips_count === 0)
-          <a class="link" href="{{ action('Life@page', $city->slug) }}">{{ $city->title }}</a>{{ !$loop->last ? ',' : '' }}
+          @if ($city->trips_published_count)
+            <a class="link" href="{{ action('Life@page', $city->slug) }}">{{ $city->title }}</a>{{ !$loop->last ? ',' : '' }}
+          @else
+            {{ $city->title }}{{ !$loop->last ? ',' : '' }}
+          @endif
         @endforeach
       </li>
     @endforeach

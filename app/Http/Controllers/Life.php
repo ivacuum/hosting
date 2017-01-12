@@ -53,21 +53,30 @@ class Life extends Controller
 
         $trips_by_cities = [];
 
-        Trip::where('status', Trip::STATUS_PUBLISHED)
-            ->get(['id', 'city_id'])
+        Trip::visible()
+            ->get(['id', 'city_id', 'status'])
             ->each(function ($trip) use (&$trips_by_cities) {
-                @$trips_by_cities[$trip->city_id] += 1;
+                if ($trip->status === Trip::STATUS_PUBLISHED) {
+                    @$trips_by_cities[$trip->city_id]['published'] += 1;
+                }
+
+                @$trips_by_cities[$trip->city_id]['total'] += 1;
             });
 
-        $countries->each(function ($country) use (&$trips_by_cities) {
+        $countries = $countries->each(function ($country) use (&$trips_by_cities) {
             $trips_count = 0;
+            $trips_published_count = 0;
 
-            $country->cities->each(function ($city) use (&$trips_by_cities, &$trips_count) {
-                $city->trips_count = $trips_by_cities[$city->id] ?? 0;
+            $country->cities->each(function ($city) use (&$trips_by_cities, &$trips_count, &$trips_published_count) {
+                $city->trips_count = $trips_by_cities[$city->id]['total'] ?? 0;
+                $city->trips_published_count = $trips_by_cities[$city->id]['published'] ?? 0;
+
                 $trips_count += $city->trips_count;
+                $trips_published_count += $city->trips_published_count;
             });
 
             $country->trips_count = $trips_count;
+            $country->trips_published_count = $trips_published_count;
         });
 
         Breadcrumbs::push(trans('menu.life'), 'life');
