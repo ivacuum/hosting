@@ -15,7 +15,7 @@ class CreateTripsTable extends Migration
             $table->string('tpl');
             $table->timestamp('date_start')->nullable();
             $table->timestamp('date_end')->nullable();
-            $table->boolean('published')->unsigned()->default(0);
+            $table->unsignedTinyInteger('status')->default(0);
             $table->string('meta_title_ru');
             $table->string('meta_description_ru');
             $table->string('meta_image');

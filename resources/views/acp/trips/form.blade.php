@@ -69,9 +69,9 @@
 
 <div class="form-group">
   <div class="col-md-6 col-md-offset-3 checkbox">
-    <input type="hidden" name="published" value="0">
+    <input type="hidden" name="status" value="0">
     <label>
-      <input type="checkbox" name="published" value="1" {{ 1 == old('published', @$model->published) ? 'checked' : '' }}>
+      <input type="checkbox" name="status" value="{{ App\Trip::STATUS_PUBLISHED }}" {{ App\Trip::STATUS_PUBLISHED == old('status', @$model->status) ? 'checked' : '' }}>
       Опубликовать
     </label>
   </div>

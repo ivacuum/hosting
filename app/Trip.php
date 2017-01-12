@@ -15,7 +15,7 @@ use Symfony\Component\Finder\Finder;
  * @property string  $tpl
  * @property \Carbon\Carbon $date_start
  * @property \Carbon\Carbon $date_end
- * @property boolean $published
+ * @property integer $status
  * @property string  $meta_title_ru
  * @property string  $meta_title_en
  * @property string  $meta_description_ru
@@ -33,21 +33,11 @@ use Symfony\Component\Finder\Finder;
  */
 class Trip extends Model
 {
-    protected $fillable = [
-        'city_id',
-        'title_ru',
-        'title_en',
-        'slug',
-        'tpl',
-        'date_start',
-        'date_end',
-        'published',
-        'meta_title_ru',
-        'meta_title_en',
-        'meta_description_ru',
-        'meta_description_en',
-        'meta_image',
-    ];
+    const STATUS_INACTIVE = 0;
+    const STATUS_PUBLISHED = 1;
+    const STATUS_HIDDEN = 2;
+
+    protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $dates = ['date_start', 'date_end'];
 
     public function city()
@@ -64,7 +54,7 @@ class Trip extends Model
     public function scopeNext($query)
     {
         return $query->where('date_start', '>=', $this->date_start)
-            ->where('published', 1)
+            ->where('status', self::STATUS_PUBLISHED)
             ->where('id', '<>', $this->id)
             ->orderBy('date_start')
             ->take(2);
@@ -79,7 +69,7 @@ class Trip extends Model
         $take = 4 - $next_trips;
 
         return $query->where('date_start', '<=', $this->date_start)
-            ->where('published', 1)
+            ->where('status', self::STATUS_PUBLISHED)
             ->where('id', '<>', $this->id)
             ->orderBy('date_start', 'desc')
             ->take($take);

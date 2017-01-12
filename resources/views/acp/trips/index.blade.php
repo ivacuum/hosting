@@ -27,7 +27,7 @@
           </a>
         </td>
         <td>
-          @if (!$model->published)
+          @if ($model->status === App\Trip::STATUS_HIDDEN)
             @svg (pencil)
           @endif
         </td>

@@ -29,7 +29,7 @@ class Life extends Controller
 
     public function city(City $city)
     {
-        $published_trips = $city->trips->where('published', 1);
+        $published_trips = $city->trips->where('status', Trip::STATUS_PUBLISHED);
 
         if (1 === sizeof($published_trips)) {
             $slug = $published_trips->first()->slug;
@@ -154,7 +154,7 @@ class Life extends Controller
     protected function getTrip($slug)
     {
         return Trip::where('slug', $slug)
-            ->where('published', 1)
+            ->where('status', Trip::STATUS_PUBLISHED)
             ->first();
     }
 }
