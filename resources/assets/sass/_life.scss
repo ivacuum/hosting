@@ -104,6 +104,14 @@
   height: 750px;
 }
 
+.life-text {
+  font-size: floor(($font-size-base * 1.15));
+  font-weight: 300;
+  line-height: 1.4;
+
+  @media (min-width: $screen-md-min) { font-size: 18px; }
+}
+
 .pic {
   width: 100%;
   height: 0;
@@ -153,6 +161,8 @@
 
 .travel-timeline {
   margin-bottom: 1em;
+
+  @media (min-width: $screen-sm-min) { margin-bottom: 0; }
 }
 
 .travel-timeline-date {

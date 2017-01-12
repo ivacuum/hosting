@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content_header')
-<div class="lead">
+<div class="life-text">
 @endsection
 
 @section('content_footer')

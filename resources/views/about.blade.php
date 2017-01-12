@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<div class="lead">
+<div class="life-text">
   <h2>О проекте</h2>
   <p>Этот сайт — результат пробы фреймворка <a href="http://laravel.com/" class="link">Laravel</a>. Первое время в основе была версия 4.2, сейчас — {{ implode('.', array_slice(explode('.', App::version()), 0, 2)) }}.</p>
 

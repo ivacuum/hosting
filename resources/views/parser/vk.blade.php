@@ -69,11 +69,11 @@
   <div class="panel panel-default shortcuts-item">
     <div class="panel-body vk-post-container">
       @if ($post['text'])
-        <div class="vk-post-content lead">{!! nl2br(e($post['text'])) !!}</div>
+        <div class="vk-post-content life-text">{!! nl2br(e($post['text'])) !!}</div>
       @endif
       @if (!empty($post['copy_history']))
-        <div class="lead {{ $post['text'] ? 'm-t-1' : '' }} m-b-0"><strong>Репост</strong></div>
-        <div class="vk-post-content lead">{!! nl2br(e($post['copy_history'][0]->text)) !!}</div>
+        <div class="life-text {{ $post['text'] ? 'm-t-1' : '' }} m-b-0"><strong>Репост</strong></div>
+        <div class="vk-post-content life-text">{!! nl2br(e($post['copy_history'][0]->text)) !!}</div>
       @endif
       @if ($post['attachments'])
         <div class="vk-post-attachments">

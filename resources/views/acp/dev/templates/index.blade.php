@@ -2,7 +2,7 @@
 
 @section('content')
 <h2 class="m-t-0">Доступные шаблоны</h2>
-<table class="table-stats m-b-1">
+<table class="table-stats">
   <thead>
     <tr>
       <th>Шаблон</th>
