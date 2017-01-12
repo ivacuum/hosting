@@ -8,9 +8,18 @@ class News extends Controller
 {
     public function index()
     {
-        $models = Model::orderBy('id', 'desc')->paginate(20);
+        $user_id = $this->request->input('user_id');
 
-        return view($this->view, compact('models'));
+        $models = Model::orderBy('id', 'desc');
+
+        if ($user_id) {
+            $models = $models->where('user_id', $user_id);
+        }
+
+        $models = $models->paginate(20)
+            ->appends(compact('user_id'));
+
+        return view($this->view, compact('models', 'user_id'));
     }
 
     public function create()
