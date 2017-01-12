@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class City extends Model
 {
-    protected $guarded = ['created_at', 'updated_at'];
+    protected $guarded = ['created_at', 'updated_at', 'goto'];
 
     public function country()
     {
@@ -37,13 +37,6 @@ class City extends Model
             ->orderBy('date_start', 'desc');
     }
 
-    public function tripsCount()
-    {
-        return $this->hasOne(Trip::class)
-            ->selectRaw('city_id, count(*) as count')
-            ->groupBy('city_id');
-    }
-
     public function getTitleAttribute()
     {
         return $this->{'title_' . App::getLocale()};
@@ -52,11 +45,6 @@ class City extends Model
     public function getInitial()
     {
         return mb_substr($this->title, 0, 1);
-    }
-
-    public function getTripsCount()
-    {
-        return $this->tripsCount ? $this->tripsCount->count : 0;
     }
 
     public function isOnMap()

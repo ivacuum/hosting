@@ -19,7 +19,9 @@ class Life extends Controller
     public function cities()
     {
         $locale = App::getLocale();
-        $cities = City::with('tripsCount')->orderBy("title_{$locale}")->get();
+        $cities = City::withCount(['trips' => function ($query) {
+            $query->where('status', Trip::STATUS_PUBLISHED);
+        }])->orderBy("title_{$locale}")->get();
 
         Breadcrumbs::push(trans('menu.life'), 'life');
         Breadcrumbs::push(trans('menu.cities'));
