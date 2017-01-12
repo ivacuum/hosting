@@ -29,12 +29,6 @@ class Country extends Model
             ->orderBy("title_" . App::getLocale());
     }
 
-    public function trips()
-    {
-        return $this->hasMany(Trip::class)
-            ->orderBy('date_start', 'desc');
-    }
-
     public function getTitleAttribute()
     {
         return $this->{'title_' . App::getLocale()};
