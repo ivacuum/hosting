@@ -75,7 +75,7 @@ class Application {
   }
 
   lazyLoadImages() {
-    const offset = 400
+    const offset = 1000
     const breakpoint = 1200
 
     let $w = $(window),
