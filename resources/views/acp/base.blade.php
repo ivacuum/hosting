@@ -84,6 +84,11 @@
   </a>
   <ul class="dropdown-menu">
     <li>
+      <a href="{{ $locale_uri }}/acp/comments">
+        {{ trans('acp.comments.index') }}
+      </a>
+    </li>
+    <li>
       <a href="{{ $locale_uri }}/acp/files">
         {{ trans('acp.files.index') }}
       </a>

@@ -31,6 +31,15 @@ class User extends Authenticatable
     protected $hidden = ['password', 'remember_token'];
     protected $perPage = 50;
 
+    public function commentsCount()
+    {
+        return Comment::selectRaw('COUNT(*) as total')
+            ->where('user_id', $this->id)
+            ->get()
+            ->first()
+            ->total;
+    }
+
     public function imagesCount()
     {
         return Image::selectRaw('COUNT(*) as total')

@@ -21,6 +21,10 @@ return [
     'clients.index' => 'Clients',
     'clients.create' => 'New client',
 
+    'comments.edit' => 'Edit',
+    'comments.show' => 'Comment',
+    'comments.index' => 'Comments',
+
     'countries.add' => 'Add country',
     'countries.edit' => 'Edit',
     'countries.show' => 'Country',
@@ -94,6 +98,7 @@ return [
     'users.index' => 'Users',
     'users.create' => 'New user',
     'users.images' => 'Images',
+    'users.comments' => 'Comments',
     'users.torrents' => 'Torrents',
 
     'yandex.users.add' => 'Add account',

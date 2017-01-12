@@ -10,6 +10,12 @@
       <a class="list-group-item {{ $view == "$tpl.edit" ? 'active' : '' }}" href="{{ action("$self@edit", [$model, 'goto' => Request::fullUrl()]) }}">
         {{ trans("$tpl.edit") }}
       </a>
+      @if (($comments_count = $model->commentsCount()) > 0)
+        <a class="list-group-item" href="{{ action('Acp\Comments@index', ['user_id' => $model->id]) }}">
+          {{ trans("$tpl.comments") }}
+          <span class="text-muted">{{ $comments_count }}</span>
+        </a>
+      @endif
       @if (($images_count = $model->imagesCount()) > 0)
         <a class="list-group-item" href="{{ action('Acp\Images@index', ['user_id' => $model->id]) }}">
           {{ trans("$tpl.images") }}

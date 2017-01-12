@@ -3,6 +3,7 @@
 use App\Artist;
 use App\City;
 use App\Client;
+use App\Comment;
 use App\Country;
 use App\Domain;
 use App\File;
@@ -29,6 +30,7 @@ class RouteServiceProvider extends ServiceProvider
         \Route::model('Artist', Artist::class);
         \Route::model('City', City::class);
         \Route::model('Client', Client::class);
+        \Route::model('Comment', Comment::class);
         \Route::model('Country', Country::class);
         \Route::model('Domain', Domain::class);
         \Route::model('File', File::class);

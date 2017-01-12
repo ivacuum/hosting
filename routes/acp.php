@@ -33,6 +33,14 @@ Route::group(['prefix' => 'clients'], function () {
     Route::get('{Client}/edit', 'Acp\Clients@edit');
 });
 
+Route::group(['prefix' => 'comments'], function () {
+    Route::get('/', 'Acp\Comments@index');
+    Route::get('{Comment}', 'Acp\Comments@show');
+    Route::put('{Comment}', 'Acp\Comments@update');
+    Route::delete('{Comment}', 'Acp\Comments@destroy');
+    Route::get('{Comment}/edit', 'Acp\Comments@edit');
+});
+
 Route::group(['prefix' => 'countries'], function () {
     Route::get('/', 'Acp\Countries@index');
     Route::post('/', 'Acp\Countries@store');

@@ -21,6 +21,10 @@ return [
     'clients.index' => 'Клиенты',
     'clients.create' => 'Новый клиент',
 
+    'comments.edit' => 'Редактирование комментария',
+    'comments.show' => 'Комментарий',
+    'comments.index' => 'Комментарии',
+
     'countries.add' => 'Добавить страну',
     'countries.edit' => 'Редактирование страны',
     'countries.show' => 'Страна',
@@ -97,6 +101,7 @@ return [
     'users.index' => 'Пользователи',
     'users.create' => 'Новый пользователь',
     'users.images' => 'Изображения',
+    'users.comments' => 'Комментарии',
     'users.torrents' => 'Торренты',
 
     'yandex.users.add' => 'Добавить аккаунт',
