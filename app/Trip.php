@@ -75,6 +75,11 @@ class Trip extends Model
             ->take($take);
     }
 
+    public function scopeVisible($query)
+    {
+        return $query->where('status', '!=', self::STATUS_HIDDEN);
+    }
+
     // Attributes
     public function getMetaDescriptionAttribute()
     {

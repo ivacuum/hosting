@@ -11,7 +11,7 @@ class Life extends Controller
 {
     public function index()
     {
-        $trips = Trip::orderBy('date_start', 'desc')->get();
+        $trips = Trip::visible()->orderBy('date_start', 'desc')->get();
 
         return view($this->view, compact('trips'));
     }
