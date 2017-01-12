@@ -38,7 +38,7 @@
 @ru
   <p>Видеозапись концерта.</p>
 @endlang
-<div class="fotorama" data-width="1000" data-ratio="1000/595">
+<div class="js-lazy" data-lazy-type="fotorama" data-width="1000" data-ratio="1000/595">
   <a href="https://www.youtube.com/watch?v=enTp6hq2Dqw"></a>
 </div>
 @endsection

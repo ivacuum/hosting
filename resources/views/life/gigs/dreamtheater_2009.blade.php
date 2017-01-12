@@ -42,7 +42,7 @@
 @ru
   <p>Видеозапись выступления:</p>
 @endlang
-<div class="fotorama" data-width="1000" data-ratio="1000/782">
+<div class="js-lazy" data-lazy-type="fotorama" data-width="1000" data-ratio="1000/782">
   <a href="https://www.youtube.com/watch?v=eDqIfvtmalM"></a>
 </div>
 @endsection

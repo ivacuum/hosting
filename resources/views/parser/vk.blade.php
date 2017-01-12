@@ -78,7 +78,7 @@
       @if ($post['attachments'])
         <div class="vk-post-attachments">
         @if ($post['photos'] > 1)
-          <div class="fotorama fotorama-left">
+          <div class="js-lazy fotorama-left" data-lazy-type="fotorama">
         @elseif ($post['photos'] == 1)
           @if (sizeof($post['attachments']) > 1)
             <div class="img-container">

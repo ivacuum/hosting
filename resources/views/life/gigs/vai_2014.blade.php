@@ -57,7 +57,7 @@
 @en
   <p>Were caught by the cameras.</p>
 @endlang
-<div class="fotorama">
+<div class="js-lazy" data-lazy-type="fotorama">
   <img src="https://life.ivacuum.ru/gigs/vai.2014/Steve_093.jpg">
   <img src="https://life.ivacuum.ru/gigs/vai.2014/Steve_008.jpg">
 </div>

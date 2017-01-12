@@ -37,7 +37,7 @@
 @ru
   <p>Несколько фото с концерта.</p>
 @endlang
-<div class="fotorama">
+<div class="js-lazy" data-lazy-type="fotorama">
   <img src="https://life.ivacuum.ru/gigs/dreamtheater.2015/IMG_1682.jpg">
   <img src="https://life.ivacuum.ru/gigs/dreamtheater.2015/IMG_1688.jpg">
   <img src="https://life.ivacuum.ru/gigs/dreamtheater.2015/IMG_1689.jpg">
@@ -46,7 +46,7 @@
 @ru
   <p>Видеозапись выступления:</p>
 @endlang
-<div class="fotorama" data-width="1000" data-ratio="1000/595">
+<div class="js-lazy" data-lazy-type="fotorama" data-width="1000" data-ratio="1000/595">
   <a href="https://www.youtube.com/watch?v=w0ZYxUeKsu8"></a>
 </div>
 @endsection

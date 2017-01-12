@@ -32,6 +32,23 @@ class ViewHelper
         return $this->decimal->format($number);
     }
 
+    public function pic($folder, $file)
+    {
+        return "https://life.ivacuum.ru/{$folder}/{$file}";
+    }
+
+    public function pic2x($folder, $file)
+    {
+        $pathinfo = pathinfo($file);
+
+        return "https://life.ivacuum.ru/{$folder}/{$pathinfo['filename']}@2x.{$pathinfo['extension']}";
+    }
+
+    public function picThumb($folder, $file)
+    {
+        return "https://life.ivacuum.ru/{$folder}/t/{$file}";
+    }
+
     public function size($bytes)
     {
         $units = [

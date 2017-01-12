@@ -43,7 +43,7 @@
 @en
   <p>What it was like to be in the fan-zone:</p>
 @endlang
-<div class="fotorama" data-width="720" data-ratio="720/437">
+<div class="js-lazy" data-lazy-type="fotorama" data-width="720" data-ratio="720/437">
   <a href="https://www.youtube.com/watch?v=WkVGeBGM5yc"></a>
 </div>
 
@@ -58,7 +58,7 @@
 @ru
   <p>Видеозапись концерта.</p>
 @endlang
-<div class="fotorama" data-width="1000" data-ratio="1000/595">
+<div class="js-lazy" data-lazy-type="fotorama" data-width="1000" data-ratio="1000/595">
   <a href="https://www.youtube.com/watch?v=-VQMs8zQRj8"></a>
 </div>
 @endsection

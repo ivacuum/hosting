@@ -9,6 +9,8 @@ import './shortcuts'
 import './vue'
 import './yandex-dns'
 
+let throttle = require('lodash.throttle')
+
 class Application {
   constructor() {
     const options = window['AppOptions']
@@ -21,13 +23,12 @@ class Application {
 
     this.ajaxProgress()
     this.csrfToken()
-    this.initVue()
     this.onPjaxComplete()
     this.onPjaxSend()
 
     $(document).ready(() => {
-      this.lazyLoadImages()
       this.initOnReadyAndPjax()
+      this.lazyLoadImages()
     })
   }
 
@@ -46,28 +47,6 @@ class Application {
     })
   }
 
-  fotoramaInit(pjax = false) {
-    if (pjax) {
-      $('.fotorama').fotorama()
-    }
-
-    this.fotorama2x()
-
-    $('.js-fotorama-2x').fotorama()
-  }
-
-  fotorama2x() {
-    const breakpoint = 1200
-
-    let width = $(window).width()
-
-    if (width >= breakpoint) {
-      $('.js-fotorama-2x a').each(function() {
-        $(this).attr('href', $(this).data('src2x'))
-      })
-    }
-  }
-
   initVue() {
     this.vm = new Vue({
       el: '#pjax_container'
@@ -78,17 +57,17 @@ class Application {
     const offset = 1000
     const breakpoint = 1200
 
-    let $w = $(window),
-        $body = $(document.body),
-        images,
-        timer
+    let $w = $(window)
+    let $body = $(document.body)
+    let $images
 
     const width = $w.width()
 
     function initLazyLoad() {
-      images = $('.js-lazy')
+      $images = $('.js-lazy')
 
-      $w.off('.js-lazy').on('scroll.js-lazy resize.js-lazy', () => timer || (timer = setTimeout(performLazyLoad, 150)))
+      $w.off('.js-lazy')
+        .on('scroll.js-lazy resize.js-lazy', throttle(performLazyLoad, 500))
 
       performLazyLoad()
     }
@@ -96,18 +75,35 @@ class Application {
     function performLazyLoad() {
       const scrolled = $w.scrollTop() + $w.height() + offset
 
-      images = images.filter(function() {
+      $images = $images.filter(function() {
         let e = $(this)
-        const src = width > breakpoint ? (e.data('src2x') || e.data('src')) : e.data('src')
-        return scrolled > e.offset().top ? (e.attr("src", src).removeClass('js-lazy'), false) : true
+        let type = $(this).data('lazy-type') || 'image'
+
+        if (scrolled > e.offset().top) {
+          e.removeClass('js-lazy')
+
+          if (type === 'image') {
+            const src = width > breakpoint ? (e.data('src2x') || e.data('src')) : e.data('src')
+            e.attr('src', src)
+          } else if (type === 'fotorama') {
+            e.fotorama()
+          } else if (type === 'fotorama-2x') {
+            $('a', e).each(function() {
+              $(this).attr('href', $(this).data('src2x'))
+            })
+
+            e.fotorama()
+          }
+
+          return false
+        }
+
+        return true
       })
 
-      if (!images.length) {
+      if (!$images.length) {
         $w.off('.js-lazy')
       }
-
-      clearTimeout(timer)
-      timer = 0
     }
 
     $body.off('reset.js-lazy').on('reset.js-lazy', initLazyLoad)
@@ -116,6 +112,8 @@ class Application {
   }
 
   initOnReadyAndPjax(pjax = false) {
+    this.initVue()
+
     // Прилипшие заголовки таблиц
     $('.js-float-thead').floatThead({ zIndex: 999 })
 
@@ -123,18 +121,18 @@ class Application {
     $('.tip').tooltip()
 
     this.autosizeTextareas()
-    this.fotoramaInit(pjax)
   }
 
   onPjaxComplete() {
     $(document).on('pjax:complete', () => {
       this.metrika.pjaxHit()
       this.pjax.onComplete()
-      this.initVue()
-
-      $(document.body).trigger('reset.js-lazy')
 
       this.initOnReadyAndPjax(true)
+
+      // Нужно вызывать после this.initVue(), иначе
+      // перестает работать метод offset() на картинках
+      $(document.body).trigger('reset.js-lazy')
     })
   }
 

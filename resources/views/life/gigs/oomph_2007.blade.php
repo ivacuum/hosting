@@ -47,7 +47,7 @@
 @ru
   <p>Видеозапись выступления:</p>
 @endlang
-<div class="fotorama" data-width="720" data-ratio="4/3">
+<div class="js-lazy" data-lazy-type="fotorama" data-width="720" data-ratio="4/3">
   <a href="https://vk.com/video_ext.php?oid=169906990&id=166021194&hash=59db4e7dbf3f1ae4&hd=2" data-video="true">
     <img src="https://pp.vk.me/c13332/u145765/video/l_c222ad84.jpg">
   </a>

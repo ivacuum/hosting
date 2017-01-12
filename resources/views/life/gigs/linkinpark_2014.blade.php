@@ -48,7 +48,7 @@
 @ru
   <p>Видеозаписи с концерта: полное шоу, флэшмоб (трек #19) и medley (трек #11).</p>
 @endlang
-<div class="fotorama" data-width="1000" data-ratio="1000/595">
+<div class="js-lazy" data-lazy-type="fotorama" data-width="1000" data-ratio="1000/595">
   <a href="https://www.youtube.com/watch?v=rLB0aIGS0zE"></a>
   <a href="https://www.youtube.com/watch?v=NdIBg8zHRFI"></a>
   <a href="https://vk.com/video_ext.php?oid=169906990&id=168576241&hash=1112fdc7c48b81fc&hd=3" data-video="true">

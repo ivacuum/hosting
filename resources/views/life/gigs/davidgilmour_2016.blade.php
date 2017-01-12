@@ -68,7 +68,7 @@
 @ru
   <p>Несколько фотографий из интернета.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama', ['h' => 627, 'pics' => [
   '1.jpg',
   '2.jpg',
   '3.jpg',
@@ -85,7 +85,7 @@
 @ru
   <p>Первый концерт тура исполнялся в Польше совместно с оркестром и вышел в профессиональной съемке. Его запись показывали по телевизору, она представлена ниже. Кстати, тот концерт закончился около часа ночи, а место тоже посреди города. Сет немного отличается от Висбадена, но записи лучше все равно не найти.</p>
 @endlang
-<div class="fotorama" data-width="1000" data-ratio="1000/595">
+<div class="js-lazy" data-lazy-type="fotorama" data-width="1000" data-ratio="1000/595">
   <a href="https://vk.com/video_ext.php?oid=-63247104&id=456239059&hash=91a9d66af1c534cc&hd=3" data-video="true">
     <img src="https://pp.vk.me/c631626/v631626104/322aa/lnPtc9IRXxc.jpg">
   </a>

@@ -40,7 +40,7 @@
 @ru
   <p>Несколько фото с концерта.</p>
 @endlang
-<div class="fotorama">
+<div class="js-lazy" data-lazy-type="fotorama">
   <img src="https://life.ivacuum.ru/gigs/giaa.2014/IMG_1348.jpg" width="1000" height="750">
   <img src="https://life.ivacuum.ru/gigs/giaa.2014/IMG_1349.jpg" width="1000" height="750">
 </div>
