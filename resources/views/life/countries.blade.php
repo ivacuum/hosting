@@ -13,11 +13,14 @@
 @if (!empty($countries))
   <ol>
     @foreach ($countries as $country)
-      @php ($last_index = sizeof($country->cities) - 1)
+      @continue ($country->trips_count === 0)
       <li class="countries-list-country">
-        <a class="link" href="{{ action('Life@country', $country->slug) }}"><strong>{{ $country->title }}</strong></a>:
+        <a class="link" href="{{ action('Life@country', $country->slug) }}">
+          <strong>{{ $country->title }}</strong>
+        </a>:
         @foreach ($country->cities as $i => $city)
-          <a class="link" href="{{ action('Life@page', $city->slug) }}">{{ $city->title }}</a>{{ $i !== $last_index ? ',' : '' }}
+          @continue ($city->trips_count === 0)
+          <a class="link" href="{{ action('Life@page', $city->slug) }}">{{ $city->title }}</a>{{ !$loop->last ? ',' : '' }}
         @endforeach
       </li>
     @endforeach
