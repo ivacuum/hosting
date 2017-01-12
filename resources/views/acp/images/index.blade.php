@@ -63,7 +63,7 @@
         <tr>
           <th><input type="checkbox" class="js-select-all" data-selector=".models-checkbox"></th>
           <th>ID</th>
-          <th>Название</th>
+          <th>Изображение</th>
           <th>Размер</th>
           <th>@svg (eye)</th>
           <th>Без просмотров</th>
