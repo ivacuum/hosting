@@ -1,11 +1,9 @@
 <?php namespace App\Http\Controllers;
 
-use App;
 use App\City;
 use App\Country;
 use App\Gig;
 use App\Trip;
-use Breadcrumbs;
 
 class Life extends Controller
 {
@@ -18,7 +16,7 @@ class Life extends Controller
 
     public function cities()
     {
-        $locale = App::getLocale();
+        $locale = \App::getLocale();
         $cities = City::orderBy("title_{$locale}")->get();
 
         $trips_by_cities = [];
@@ -41,8 +39,8 @@ class Life extends Controller
         });
 
 
-        Breadcrumbs::push(trans('menu.life'), 'life');
-        Breadcrumbs::push(trans('menu.cities'));
+        \Breadcrumbs::push(trans('menu.life'), 'life');
+        \Breadcrumbs::push(trans('menu.cities'));
 
         return view($this->view, compact('cities'));
     }
@@ -57,16 +55,16 @@ class Life extends Controller
             return redirect()->action("{$this->class}@page", $slug);
         }
 
-        Breadcrumbs::push(trans('menu.countries'), 'life/countries');
-        Breadcrumbs::push($city->country->title, "life/countries/{$city->country->slug}");
-        Breadcrumbs::push($city->title);
+        \Breadcrumbs::push(trans('menu.countries'), 'life/countries');
+        \Breadcrumbs::push($city->country->title, "life/countries/{$city->country->slug}");
+        \Breadcrumbs::push($city->title);
 
         return view('life.city', compact('city'));
     }
 
     public function countries()
     {
-        $locale = App::getLocale();
+        $locale = \App::getLocale();
         $countries = Country::with('cities')->orderBy("title_{$locale}")->get();
 
         $trips_by_cities = [];
@@ -97,8 +95,8 @@ class Life extends Controller
             $country->trips_published_count = $trips_published_count;
         });
 
-        Breadcrumbs::push(trans('menu.life'), 'life');
-        Breadcrumbs::push(trans('menu.countries'));
+        \Breadcrumbs::push(trans('menu.life'), 'life');
+        \Breadcrumbs::push(trans('menu.countries'));
 
         return view($this->view, compact('countries'));
     }
@@ -110,9 +108,9 @@ class Life extends Controller
             ->orderBy('date_start', 'desc')
             ->get();
 
-        Breadcrumbs::push(trans('menu.life'), 'life');
-        Breadcrumbs::push(trans('menu.countries'), 'life/countries');
-        Breadcrumbs::push($country->title, "life/countries/{$country->slug}");
+        \Breadcrumbs::push(trans('menu.life'), 'life');
+        \Breadcrumbs::push(trans('menu.countries'), 'life/countries');
+        \Breadcrumbs::push($country->title, "life/countries/{$country->slug}");
 
         return view($this->view, compact('country', 'trips'));
     }
@@ -125,8 +123,8 @@ class Life extends Controller
             abort(404);
         }
 
-        Breadcrumbs::push(trans('menu.gigs'), 'life/gigs');
-        Breadcrumbs::push($gig->title);
+        \Breadcrumbs::push(trans('menu.gigs'), 'life/gigs');
+        \Breadcrumbs::push($gig->title);
 
         $timeline = $gig->artistTimeline();
 
@@ -137,15 +135,15 @@ class Life extends Controller
     {
         $gigs = Gig::with('artist')->orderBy('date', 'desc')->get();
 
-        Breadcrumbs::push(trans('menu.life'), 'life');
-        Breadcrumbs::push(trans('menu.gigs'));
+        \Breadcrumbs::push(trans('menu.life'), 'life');
+        \Breadcrumbs::push(trans('menu.gigs'));
 
         return view($this->view, compact('gigs'));
     }
 
     public function page($page)
     {
-        Breadcrumbs::push(trans('menu.life'), 'life');
+        \Breadcrumbs::push(trans('menu.life'), 'life');
 
         $tpl = 'life.' . str_replace('.', '_', $page);
 
@@ -176,10 +174,10 @@ class Life extends Controller
             abort(404);
         }
 
-        Breadcrumbs::push(trans('menu.countries'), "life/countries");
-        Breadcrumbs::push($trip->city->country->title, "life/countries/{$trip->city->country->slug}");
-        Breadcrumbs::push($trip->city->title, "life/{$trip->city->slug}");
-        Breadcrumbs::push($trip->localizedDate(), "life/{$trip->slug}");
+        \Breadcrumbs::push(trans('menu.countries'), "life/countries");
+        \Breadcrumbs::push($trip->city->country->title, "life/countries/{$trip->city->country->slug}");
+        \Breadcrumbs::push($trip->city->title, "life/{$trip->city->slug}");
+        \Breadcrumbs::push($trip->localizedDate(), "life/{$trip->slug}");
 
         $timeline = $trip->cityTimeline();
 
