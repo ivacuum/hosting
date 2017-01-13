@@ -9,23 +9,25 @@
   <li><a class="link" href="{{ action('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
   <li><mark>{{ trans('life.by_city') }}</mark></li>
 </ul>
-<div class="row">
-  <div class="col-sm-3">
-    @php ($initial = $current_initial = false)
-    @foreach ($cities as $city)
-      @continue ($city->trips_count === 0)
-      @php ($current_initial = $city->getInitial())
-      <div class="city-entry">
-        @if ($initial !== $current_initial)
-          <span class="city-initial">{{ $current_initial }}</span>
-        @endif
+
+<div class="cities-columns">
+  @php ($initial = $current_initial = false)
+  @foreach ($cities as $city)
+    @php ($current_initial = $city->getInitial())
+    <div class="city-entry">
+      @if ($initial !== $current_initial)
+        <span class="city-initial">{{ $current_initial }}</span>
+      @endif
+      @if ($city->trips_published_count)
         <a class="link" href="{{ action('Life@page', $city->slug) }}">{{ $city->title }}</a>
-        @if ($city->trips_count > 1)
-          <span class="city-trips">{{ $city->trips_count }}</span>
-        @endif
-      </div>
-      @php ($initial = $current_initial)
-    @endforeach
-  </div>
+      @else
+        {{ $city->title }}
+      @endif
+      @if ($city->trips_count > 1)
+        <span class="city-trips">{{ $city->trips_count }}</span>
+      @endif
+    </div>
+    @php ($initial = $current_initial)
+  @endforeach
 </div>
 @endsection

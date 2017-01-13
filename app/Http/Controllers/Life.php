@@ -19,9 +19,27 @@ class Life extends Controller
     public function cities()
     {
         $locale = App::getLocale();
-        $cities = City::withCount(['trips' => function ($query) {
-            $query->where('status', Trip::STATUS_PUBLISHED);
-        }])->orderBy("title_{$locale}")->get();
+        $cities = City::orderBy("title_{$locale}")->get();
+
+        $trips_by_cities = [];
+
+        Trip::visible()
+            ->get(['id', 'city_id', 'status'])
+            ->each(function ($trip) use (&$trips_by_cities) {
+                if ($trip->status === Trip::STATUS_PUBLISHED) {
+                    @$trips_by_cities[$trip->city_id]['published'] += 1;
+                }
+
+                @$trips_by_cities[$trip->city_id]['total'] += 1;
+            });
+
+        $cities = $cities->each(function ($city) use (&$trips_by_cities) {
+            $city->trips_count = $trips_by_cities[$city->id]['total'] ?? 0;
+            $city->trips_published_count = $trips_by_cities[$city->id]['published'] ?? 0;
+        })->filter(function ($city) {
+            return $city->trips_count;
+        });
+
 
         Breadcrumbs::push(trans('menu.life'), 'life');
         Breadcrumbs::push(trans('menu.cities'));

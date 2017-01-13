@@ -2,13 +2,20 @@
 @import "life/countries";
 @import "life/movies";
 
-.city-entry,
 .favorites-entry,
 .travel-entry {
   margin-bottom: 0.5em;
 }
 
-.city-entry { margin-left: 1.5em; }
+.cities-columns { column-width: 11em; }
+
+.city-entry {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  margin-left: 1.5em;
+  padding-bottom: 0.5em;
+  position: relative;
+}
 .travel-entry { margin-left: 3.5em; }
 
 .city-trips,
