@@ -5,7 +5,7 @@
     <div class="pic" style="padding-bottom: calc({{ round($h / $w, 2) * 100 }}% + 68px);">
       <div class="js-lazy" data-lazy-type="fotorama">
         @foreach ($pics as $pic)
-          <a href="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"
+          <a hidden href="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"
              data-thumb="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"></a>
         @endforeach
       </div>

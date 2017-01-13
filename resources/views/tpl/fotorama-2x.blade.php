@@ -6,7 +6,7 @@
       <div class="shortcuts-item">
         <div class="js-lazy" data-lazy-type="fotorama-2x" data-width="1000">
           @foreach ($pics as $pic)
-            <a href="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"
+            <a hidden href="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"
                data-thumb="{{ ViewHelper::picThumb($slug ?? $trip->slug, $pic) }}"
                data-src2x="{{ ViewHelper::pic2x($slug ?? $trip->slug, $pic) }}"></a>
           @endforeach
