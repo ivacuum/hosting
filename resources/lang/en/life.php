@@ -1,9 +1,6 @@
 <?php
 
 return [
-    'intro_text' => 'All the content I post in one place.',
-    'intro_title' => 'Life notes',
-
     'feedback.help' => 'Leave your contact information if you want to get a reply',
     'feedback.leave' => 'Leave a feedback',
     'feedback.submit' => 'Submit',

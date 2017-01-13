@@ -3,12 +3,9 @@
 ])
 
 @section('content')
-<div class="h2 m-t-0">{{ trans('life.intro_title') }}</div>
-<p>{{ trans('life.intro_text') }}</p>
-
 <div class="row">
   <div class="col-sm-6">
-    <h3>{{ trans('life.trips') }}</h3>
+    <h2 class="m-t-0">{{ trans('life.trips') }}</h2>
     <ul class="list-inline trips-show-by">
       <li><mark>{{ trans('life.by_year') }}</mark></li>
       <li><a class="link" href="{{ action('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
@@ -32,7 +29,7 @@
     @endforeach
   </div>
   <div class="col-sm-6">
-    <h3>{{ trans('life.favorites') }}</h3>
+    <h2 class="m-t-0">{{ trans('life.favorites') }}</h2>
     @ru
       <div class="favorites-entry">
         <a class="link" href="{{ action('Life@page', 'chillout') }}">Chillout</a>
