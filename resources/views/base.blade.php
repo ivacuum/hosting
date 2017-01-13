@@ -146,7 +146,7 @@
             {{ trans('menu.vk') }}
           </a>
         </li>
-        <li>
+        <li class="hidden-xs">
           <a class="link" href="https://www.instagram.com/ivacuum">
             {{ trans('menu.instagram') }}
           </a>
