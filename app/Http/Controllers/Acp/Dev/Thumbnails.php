@@ -17,11 +17,7 @@ class Thumbnails extends Controller
             throw new \Exception('Необходимо предоставить хотя бы один файл');
         }
 
-        $sizes = [
-            ['width' => 100,  'height' => 75,   'retina' => false],
-            ['width' => 1000, 'height' => 750,  'retina' => false],
-            ['width' => 2000, 'height' => 1500, 'retina' => true],
-        ];
+        $sizes = [['width' => 2000, 'height' => 1500]];
 
         $thumbnails = [];
 
@@ -34,22 +30,17 @@ class Thumbnails extends Controller
             foreach ($sizes as $size) {
                 $source = $file->getRealPath();
                 $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-                $filename .= $size['retina'] ? '@2x' : '';
                 $extension = $file->getClientOriginalExtension();
 
                 $dir = "uploads/temp";
-
-                if ($size['width'] === 100 && $size['height'] === 75) {
-                    $dir .= "/t";
-                }
 
                 @mkdir($dir);
 
                 $dest = "{$dir}/{$filename}.{$extension}";
 
-                $exif = @exif_read_data($source, 'GPS');
+                // $exif = @exif_read_data($source, 'GPS');
 
-                $coordinates = $this->processGps($exif);
+                $coordinates = false; // $this->processGps($exif);
                 $lat = $lon = false;
 
                 if (false !== $coordinates) {

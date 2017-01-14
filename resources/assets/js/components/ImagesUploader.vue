@@ -3,11 +3,11 @@
     <div v-if="!uploading">
       <input required id="userfiles" type="file" name="files[]" multiple min="1" max="1000">
     </div>
-    <div v-if="uploading">
+    <div v-else>
       Идет загрузка...
     </div>
 
-    <div class="m-y-1" v-if="thumbnails.length > 0">
+    <div v-if="thumbnails.length" class="m-y-1">
       <div v-for="thumbnail in thumbnails">
         {{ basename(thumbnail.dest) }} ... ok
         <p v-if="hasCoords(thumbnail)">
@@ -35,7 +35,7 @@ export default {
       return false
     }
 
-    $('#userfiles').bind('change', (e) => {
+    $(document).on('change', '#userfiles', (e) => {
       this.uploadFiles(e.currentTarget.files)
     })
   },
