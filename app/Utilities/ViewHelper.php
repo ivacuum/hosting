@@ -34,19 +34,17 @@ class ViewHelper
 
     public function pic($folder, $file)
     {
-        return "https://life.ivacuum.ru/{$folder}/{$file}";
+        return "https://life.ivacuum.ru/-/1000x750/{$folder}/{$file}";
     }
 
     public function pic2x($folder, $file)
     {
-        $pathinfo = pathinfo($file);
-
-        return "https://life.ivacuum.ru/{$folder}/{$pathinfo['filename']}@2x.{$pathinfo['extension']}";
+        return "https://life.ivacuum.ru/{$folder}/{$file}";
     }
 
     public function picThumb($folder, $file)
     {
-        return "https://life.ivacuum.ru/{$folder}/t/{$file}";
+        return "https://life.ivacuum.ru/-/100x75/{$folder}/{$file}";
     }
 
     public function size($bytes)
