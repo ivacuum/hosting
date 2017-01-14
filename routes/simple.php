@@ -6,5 +6,7 @@ Route::get('404', 'Errors@notFound');
 Route::get('500', 'Errors@internalError');
 Route::get('503', 'Errors@serviceUnavailable');
 
+Route::get('resize/{width}x{height}', 'Resize@image');
+
 Route::get('cv', 'Home@cv');
 Route::get('parser/fl/{login}/{passwd}', 'ParserFl@index');
