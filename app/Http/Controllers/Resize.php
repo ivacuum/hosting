@@ -32,15 +32,15 @@ class Resize extends Controller
         abort_unless($code === 200, $code);
 
         $filename = str_random(6);
-        $destination = public_path("uploads/temp/{$filename}.{$extension}");
+        $destination = storage_path("app/resize-{$filename}.{$extension}");
 
         register_shutdown_function(function () use ($destination) {
             unlink($destination);
         });
 
         passthru(sprintf(
-            '%s gm convert -size %dx%d "%s" %s -resize %dx%d\> +profile "*" "%s"',
-            escapeshellcmd('/usr/bin/env'),
+            '%s convert -size %dx%d "%s" %s -resize %dx%d\> +profile "*" "%s"',
+            escapeshellcmd(config('cfg.gm_bin')),
             $width,
             $height,
             $source,
