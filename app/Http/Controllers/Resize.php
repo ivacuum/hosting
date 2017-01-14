@@ -32,7 +32,7 @@ class Resize extends Controller
         abort_unless($code === 200, $code);
 
         $filename = str_random(6);
-        $destination = "uploads/temp/{$filename}.{$extension}";
+        $destination = public_path("uploads/temp/{$filename}.{$extension}");
 
         register_shutdown_function(function () use ($destination) {
             unlink($destination);
