@@ -93,6 +93,8 @@ class Life extends Controller
 
             $country->trips_count = $trips_count;
             $country->trips_published_count = $trips_published_count;
+        })->filter(function ($country) {
+            return $country->trips_count;
         });
 
         \Breadcrumbs::push(trans('menu.life'), 'life');

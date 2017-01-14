@@ -3,7 +3,10 @@
 ])
 
 @section('content')
-<h2>{{ trans('life.visited_countries') }}</h2>
+<h2>
+  {{ trans('life.visited_countries') }}
+  <small>{{ sizeof($countries) }}</small>
+</h2>
 <ul class="list-inline trips-show-by">
   <li><a class="link" href="{{ action('Life@index') }}">{{ trans('life.by_year') }}</a></li>
   <li><mark>{{ trans('life.by_country') }}</mark></li>
