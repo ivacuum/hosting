@@ -19,9 +19,7 @@
       @continue ($country->trips_count === 0)
       <li class="countries-list-country">
         @if ($country->trips_published_count)
-          <a class="link" href="{{ action('Life@country', $country->slug) }}">
-            <strong>{{ $country->title }}</strong>
-          </a>:
+          <a class="link" href="{{ action('Life@country', $country->slug) }}"><strong>{{ $country->title }}</strong></a>:
         @else
           <strong>{{ $country->title }}</strong>:
         @endif
