@@ -69,6 +69,9 @@ class Torrents extends Controller
             return back()->with('message', 'Не удалось обновить информацию о раздаче');
         }
 
+        $reg_time = Carbon::createFromTimestamp($data['reg_time']);
+        $registered_at = $reg_time->gt($model->registered_at) ? Carbon::now() : $model->registered_at;
+
         $model->update([
             'html' => $data['body'],
             'size' => $data['size'],
@@ -77,7 +80,7 @@ class Torrents extends Controller
             'seeders' => $data['seeders'],
             'info_hash' => $data['info_hash'],
             'announcer' => $data['announcer'],
-            'registered_at' => Carbon::createFromTimestamp($data['reg_time']),
+            'registered_at' => $registered_at,
         ]);
 
         return redirect()->action("{$this->class}@show", $model)
