@@ -85,7 +85,7 @@ return [
         'View'         => Illuminate\Support\Facades\View::class,
 
         'ViewHelper' => App\Facades\ViewHelper::class,
-        'Breadcrumbs' => App\Breadcrumbs\Facades\Breadcrumbs::class,
+        'Breadcrumbs' => App\Facades\Breadcrumbs::class,
         'TorrentCategoryHelper' => App\Facades\TorrentCategoryHelper::class,
     ],
 

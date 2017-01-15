@@ -23,8 +23,8 @@ class AppServiceProvider extends ServiceProvider
         // );
 
         /*
-        \Event::listen('*', function ($event) {
-            print \Event::firing() . '<br>';
+        \Event::listen('*', function ($name, array $event) {
+            print $name . '<br>';
         });
         */
 

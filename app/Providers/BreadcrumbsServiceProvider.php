@@ -7,10 +7,8 @@ class BreadcrumbsServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app['breadcrumbs'] = $this->app->share(function ($app) {
+        $this->app->singleton(Breadcrumbs::class, function () {
             return new Breadcrumbs();
         });
-
-        $this->app->alias('breadcrumbs', 'App\Breadcrumbs\Breadcrumbs');
     }
 }

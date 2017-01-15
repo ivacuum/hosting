@@ -1,4 +1,4 @@
-<?php namespace App\Breadcrumbs\Facades;
+<?php namespace App\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -6,6 +6,6 @@ class Breadcrumbs extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'breadcrumbs';
+        return \App\Breadcrumbs\Breadcrumbs::class;
     }
 }
