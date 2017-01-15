@@ -6,7 +6,7 @@
 @en
   <p>Swimming.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0749.jpg',
   'IMG_0750.jpg',
   'IMG_0751.jpg',

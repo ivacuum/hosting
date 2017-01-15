@@ -59,7 +59,7 @@
 @en
   <p>Pedestrian zones are getting better.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0623.jpg',
   'IMG_0626.jpg',
 ]])
@@ -67,7 +67,7 @@
 @ru
   <p>Еще в <a class="link" href="/life/msk.2014.12#triumph">декабре 2014</a> Триумфальная площадь вовсю реконструировалась. Теперь она стала пешеходной. От желающих покачаться на качелях нет отбоя.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0627.jpg',
   'IMG_0628.jpg',
 ]])

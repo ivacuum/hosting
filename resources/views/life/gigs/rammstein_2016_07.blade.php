@@ -66,7 +66,7 @@
 @en
   <p>That's what sold-out means.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0741.jpg',
   'IMG_0742.jpg',
 ]])

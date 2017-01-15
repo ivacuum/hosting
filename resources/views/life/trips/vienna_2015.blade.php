@@ -6,7 +6,7 @@
 @en
   <p>Vienna is a city of giant streets and squares.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2201.jpg',
   'IMG_2200.jpg',
   'IMG_2202.jpg',
@@ -26,7 +26,7 @@
 @en
   <p>There are a lot of parks.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2192.jpg',
   'IMG_2196.jpg',
   'IMG_2218.jpg',
@@ -38,7 +38,7 @@
 @en
   <p>It's a pleasure to get lost among beautiful buildings.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2208.jpg',
   'IMG_2206.jpg',
   'IMG_2203.jpg',
@@ -50,7 +50,7 @@
 @en
   <p>Hundreds shops street.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2204.jpg',
   'IMG_2207.jpg',
 ]])
@@ -74,7 +74,7 @@
 @en
   <p>Pockets are for parking instead.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2212.jpg',
   'IMG_2216.jpg',
 ]])
@@ -112,7 +112,7 @@
 @en
   <p>Tiny streets. Yeah, in comparison to giant squares and avenues.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2215.jpg',
   'IMG_2219.jpg',
   'IMG_2220.jpg',
@@ -123,7 +123,7 @@
 @en
   <p>Roads.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2190.jpg',
   'IMG_2191.jpg',
   'IMG_2228.jpg',
@@ -134,7 +134,7 @@
 @en
   <p>Generous road marking.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2221.jpg',
   'IMG_2214.jpg',
 ]])
@@ -151,7 +151,7 @@
 @en
   <p>It's getting dark.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2230.jpg',
   'IMG_2231.jpg',
   'IMG_2232.jpg',

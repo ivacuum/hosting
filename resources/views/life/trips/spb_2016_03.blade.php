@@ -60,7 +60,7 @@
 @ru
   <p>Дороги.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0062.jpg',
   'IMG_0066.jpg',
   'IMG_0068.jpg',

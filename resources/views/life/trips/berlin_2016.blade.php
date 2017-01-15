@@ -29,7 +29,7 @@
 @ru
   <p>До чего ж хорошо получаются стеклянные здания у немцев.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0672.jpg',
   'IMG_0753.jpg',
   'IMG_0754.jpg',
@@ -114,7 +114,7 @@
 @ru
   <p>Дома достаточно разнообраны. Много красивых.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0704.jpg',
   'IMG_0706.jpg',
 ]])
@@ -139,7 +139,7 @@
 @en
   <p>There are good places for a walk.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0720.jpg',
   'IMG_0748.jpg',
   'IMG_0755.jpg',
@@ -150,7 +150,7 @@
 @en
   <p>There are places to seat.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0722.jpg',
   'IMG_0724.jpg',
 ]])
@@ -160,7 +160,7 @@
 @en
   <p>Roads.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0750.jpg',
   'IMG_0751.jpg',
   'IMG_0721.jpg',
@@ -185,7 +185,7 @@
 @ru
   <p>Единственное грязное покрытие, после которого понадобилось протирать обувь. За все время пребывания в стране! Фото после прохождения контроля на концерт <a class="link" href="/life/rammstein.2016.07">Раммштайна</a>. Пускали только по именным билетам, сверяли с удостоверяющими личность документами. Такая практика оказалась распространена в Германии. На мой взгляд, это неплохой отпор перекупщикам. В России действуют иначе — билеты в продажу поступают порциями вплоть до даты концерта.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0736.jpg',
   'IMG_0738.jpg',
   'IMG_0739.jpg',

@@ -14,7 +14,7 @@
 @de
   <p>Die Farbe des Radfahrers in Deutschland ist rot und des Fußgängers ist grau.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2075.jpg',
   'IMG_2073.jpg',
   'IMG_2149.jpg',
@@ -23,7 +23,7 @@
 @ru
   <p>На малополосных дорогах не всегда можно встретить светофор или пешеходный переход — автомобилисты и так пропускают. Спокойствие на дорогах приятно поражает — за весь день прогулки лишь к вечеру услышал, чтобы водитель кому-то посигналил, причем в том случае сигнал предотвратил аварию.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2115.jpg',
   'IMG_2076.jpg',
 ]])
@@ -31,7 +31,7 @@
 @ru
   <p>Зебр вообще нет в привычном русскому понимании. Тут отмечают границы перехода, порой эти границы разные для велосипедистов и пешеходов.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2123.jpg',
   'IMG_2132.jpg',
 ]])
@@ -75,7 +75,7 @@
 @de
   <p>Bald ist Weihnachten.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2142.jpg',
   'IMG_2086.jpg',
 ]])
@@ -84,7 +84,7 @@
   <p>Устремив на стройке взгляд ввысь, заметил, что рабочие умудрились затащить елку на один из башенных кранов. Праздник даже на высоте.</p>
   <p>Исторический центр.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2088.jpg',
   'IMG_2092.jpg',
   'IMG_2093.jpg',
@@ -95,7 +95,7 @@
 @ru
   <p>Проходя по мостам через реку Эльбу.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2100.jpg',
   'IMG_2126.jpg',
   'IMG_2127.jpg',
@@ -110,7 +110,7 @@
 @ru
   <p>Застекленные балконы — редкость.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2079.jpg',
   'IMG_2081.jpg',
   'IMG_2150.jpg',
@@ -121,7 +121,7 @@
 @ru
   <p>В городе очень много велосипедистов и велопарковок. Можно встретить дома, где у каждого подъезда будет по небольшой парковке.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2083.jpg',
   'IMG_2084.jpg',
   'IMG_2118.jpg',
@@ -131,7 +131,7 @@
 @ru
   <p>Два железнодорожных вокзала снаружи.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2071.jpg',
   'IMG_2117.jpg',
 ]])
@@ -154,7 +154,7 @@
 @ru
   <p>Бесчетное количество мест для прогулок.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2109.jpg',
   'IMG_2110.jpg',
   'IMG_2112.jpg',
@@ -169,7 +169,7 @@
 @ru
   <p>В целом Дрезден произвел впечатление города будущего. В плане, что нам к такой красоте стремиться и стремиться, причем немцы за это время еще дальше от нас оторвутся.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2087.jpg',
   'IMG_2082.jpg',
   'IMG_2085.jpg',

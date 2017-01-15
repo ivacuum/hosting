@@ -121,7 +121,7 @@
 @ru
   <p>Трамвайные пути в зелени.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1027.jpg',
   'IMG_1028.jpg',
   'IMG_1097.jpg',
@@ -200,7 +200,7 @@
 @ru
   <p>Немалых размеров судно с ювелирной точностью прошло под автоматическим мостом. Около 10 минут заняла операция. Знак перед мостом просил автомобилистов ждать с заглушенным мотором — так и было.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1075.jpg',
   'IMG_1077.jpg',
   'IMG_1078.jpg',

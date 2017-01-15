@@ -5,7 +5,7 @@
   <p>Отличный контраст весной из столичных -4&deg;C прилететь в кубанские +22&deg;C. Набрался полный самолет желающих.</p>
   <p>Центральная улица Красная заметно выделяется для пешехода на фоне остальных улиц Краснодара.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0128.jpg',
   'IMG_0129.jpg',
   'IMG_0130.jpg',
@@ -36,7 +36,7 @@
 @ru
   <p>Е — Екатеринодар. Часто встречается в городской символике.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0149.jpg',
   'IMG_0138.jpg',
 ]])
@@ -50,7 +50,7 @@
 @ru
   <p>Многие остановки выполнены в одном стиле. Но все же не все.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0137.jpg',
   'IMG_0175.jpg',
 ]])
@@ -65,7 +65,7 @@
   <p>Лето в Краснодаре солнечное и длинное. Неплохо иметь собственный дом — можно несколько урожаев за год собрать.</p>
   <p>Стоит свернуть с центральной улицы города, как пейзажи сразу меняются.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0132.jpg',
   'IMG_0157.jpg',
   'IMG_0158.jpg',
@@ -77,7 +77,7 @@
 @ru
   <p>Повсюду попадаются лед-дисплеи, преимущественно с рекламой, иногда со временем и погодой.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0161.jpg',
   'IMG_0163.jpg',
   'IMG_0174.jpg',
@@ -86,7 +86,7 @@
 @ru
   <p>Балконы встречаются самые разные.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0162.jpg',
   'IMG_0164.jpg',
   'IMG_0191.jpg',
@@ -121,7 +121,7 @@
 @ru
   <p>Трамвай не проскочил перекресток по инерции и застрял на нем из-за автомобилиста. Пришлось ему опустить пантограф (токоприемник) и ждать буксировки. Ему помог следующий состав, оттащив назад.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0181.jpg',
   'IMG_0182.jpg',
   'IMG_0183.jpg',
@@ -145,7 +145,7 @@
 @ru
   <p>Намек на велодорожку. Краснодар отлично подходит для езды на велосипеде — он такой же плоский, как и <a class="link" href="/life/spb">Питер</a>.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0186.jpg',
   'IMG_0187.jpg',
   'IMG_0190.jpg',
@@ -157,7 +157,7 @@
 @en
   <p>Roads.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0193.jpg',
   'IMG_0194.jpg',
   'IMG_0201.jpg',
@@ -182,7 +182,7 @@
 @en
   <p>Parks and squares.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0188.jpg',
   'IMG_0185.jpg',
   'IMG_0202.jpg',

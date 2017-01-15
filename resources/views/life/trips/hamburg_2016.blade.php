@@ -48,7 +48,7 @@
 @en
   <p>Houses and buildings.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0805.jpg',
   'IMG_0806.jpg',
   'IMG_0770.jpg',
@@ -71,7 +71,7 @@
 @en
   <p>Roads.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0768.jpg',
   'IMG_0795.jpg',
   'IMG_0800.jpg',
@@ -96,7 +96,7 @@
 @en
   <p>Trains.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0892.jpg',
   'IMG_0894.jpg',
 ]])

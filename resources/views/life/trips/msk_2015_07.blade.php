@@ -4,7 +4,7 @@
 @ru
   <p>В поисках магазина с наушниками занесло на восток столицы в район Новогиреево. Несколько раз встречал людей с самокатами — удобно, можно и в метро с ними проехать.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1661.jpg',
   'IMG_1663.jpg',
 ]])
@@ -14,7 +14,7 @@
 @en
   <p>In the center of Moscow one could find great pedestrian zones much more often.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1665.jpg',
   'IMG_1667.jpg',
   'IMG_1668.jpg',

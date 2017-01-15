@@ -35,7 +35,7 @@
 @ru
   <p>Хорошо уложенные пути. На них в электричке нет типичного «ту-дух ту-дух», она двигается бесшумно и комфортно. На этом участке до следующей остановки поезд развивает скорость до 130 км/ч. Испанцы восхваляют свои железные дороги, особенно высокоскоростные. До Мадрида из Барселоны можно добраться менее чем за 3 часа — неплохо для шестисоткилометрового расстояния. Еще можно доехать до Парижа.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0077.jpg',
   'IMG_0078.jpg',
 ]])
@@ -44,7 +44,7 @@
   <p>Голосовые сообщения очень короткие: «следующая остановка такая-то». Все. Нет этих «уважаемые пассажиры, держитесь, пожалуйста, за поручни». Табло, как в поезде, так и на станции, загорается только при приближении поезда. Двери в составах полуавтоматические — открываются и внутри и снаружи по кнопке.</p>
   <p>Сами электрички хороши. С туалетом и кондиционером, местами для велосипедов и инвалидов.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0258.jpg',
   'IMG_0079.jpg',
   'IMG_0081.jpg',
@@ -85,7 +85,7 @@
 @en
   <p>Beautiful buildings.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0334.jpg',
   'IMG_0326.jpg',
   'IMG_0203.jpg',
@@ -97,7 +97,7 @@
 @ru
   <p>Подъем по длинной лестнице вознаграждается панорамным видом.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0297.jpg',
   'IMG_0299.jpg',
   'IMG_0300.jpg',
@@ -108,7 +108,7 @@
 @en
   <p>More panoramic views.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0116.jpg',
   'IMG_0135.jpg',
 ]])
@@ -132,7 +132,7 @@
 @ru
   <p>Окна и балконы. Створки часто закрыты или прикрыты. Причем ткань на балконах одного цвета в пределах дома. Кондиционеры нельзя вешать на фасад здания, их можно разглядеть только внутри балконов.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0154.jpg',
   'IMG_0155.jpg',
   'IMG_0158.jpg',
@@ -144,7 +144,7 @@
   <p>При заселении в гостиницу в Испании берут налог в зависимости от количества звезд у нее. В среднем это от 0,5 евро с человека в день за <code>3*</code> до 2,5 евро за <code>5*</code>. Цифры могут меняться в зависимости от региона и длительности проживания.</p>
   <p>Прозрачные подъезды.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0136.jpg',
   'IMG_0223.jpg',
 ]])
@@ -157,7 +157,7 @@
 @ru
   <p>Для подъема наверх наряду со ступеньками и пандусами делают эскалаторы.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0142.jpg',
   'IMG_0114.jpg',
 ]])
@@ -167,7 +167,7 @@
 @en
   <p>Bus stops.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0163.jpg',
   'IMG_0102.jpg',
   'IMG_0213.jpg',
@@ -193,7 +193,7 @@
 @ru
   <p>По фонтанам тоже заметно. Можно подгадать, чтобы за счет ветра обдало прохладной водой.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0251.jpg',
   'IMG_0204.jpg',
 ]])
@@ -243,7 +243,7 @@
 @ru
   <p>Цвет линий на асфальте имеет значение. Зеленый — жилые районы, выгодная парковка для резидентов.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0104.jpg',
   'IMG_0222.jpg',
   'IMG_0224.jpg',
@@ -259,7 +259,7 @@
 @en
   <p>Roads.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0239.jpg',
   'IMG_0244.jpg',
   'IMG_0245.jpg',
@@ -329,7 +329,7 @@
 @en
   <p>It's pleasure to walk.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0174.jpg',
   'IMG_0328.jpg',
   'IMG_0332.jpg',

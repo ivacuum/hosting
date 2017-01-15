@@ -31,7 +31,7 @@
 @ru
   <p>Гигантских размеров красивая набережная. На обход может уйти не один час.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0562.jpg',
   'IMG_0563.jpg',
   'IMG_0565.jpg',
@@ -74,7 +74,7 @@
 @ru
   <p>Смотровая площадка.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0581.jpg',
   'IMG_0580.jpg',
 ]])

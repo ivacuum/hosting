@@ -6,7 +6,7 @@
 @ru
   <p>Прогулка началась с таких пейзажей. Уже думал, что можно будет разбивать заметку на две части: темная сторона и светлая. Но нет, дальше дела шли лучше по мере приближения к центру.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0212.jpg',
   'IMG_0210.jpg',
   'IMG_0214.jpg',
@@ -23,7 +23,7 @@
 @ru
   <p>Есть где прятаться в тени во время летних прогулок.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0228.jpg',
   'IMG_0224.jpg',
 ]])
@@ -87,7 +87,7 @@
 @en
   <p>Bridge is being constructed.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0242.jpg',
   'IMG_0245.jpg',
   'IMG_0246.jpg',
@@ -103,7 +103,7 @@
 @en
   <p>Embankment is good.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0243.jpg',
   'IMG_0247.jpg',
   'IMG_0248.jpg',
@@ -124,7 +124,7 @@
 @en
   <p>Roads.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0253.jpg',
   'IMG_0209.jpg',
 ]])
@@ -134,7 +134,7 @@
 @en
   <p>Places for a walk.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0255.jpg',
   'IMG_0258.jpg',
   'IMG_0226.jpg',

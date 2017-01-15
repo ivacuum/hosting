@@ -29,7 +29,7 @@
 @ru
   <p>В городе приятно.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1816.jpg',
   'IMG_1817.jpg',
 ]])
@@ -37,7 +37,7 @@
 @ru
   <p>Несколько высотных видов.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1823.jpg',
   'IMG_1813.jpg',
 ]])

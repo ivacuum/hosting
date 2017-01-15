@@ -6,7 +6,7 @@
 @en
   <p>Evening Moscow.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1289.jpg',
   'IMG_1297.jpg',
 ]])

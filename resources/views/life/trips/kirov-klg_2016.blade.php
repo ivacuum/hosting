@@ -8,7 +8,7 @@
 @ru
   <p>Места для прогулок. Весь город можно назвать таковым.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0422.jpg',
   'IMG_0414.jpg',
   'IMG_0419.jpg',
@@ -35,7 +35,7 @@
 @ru
   <p>Озеро и речка, места для купания.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_0407.jpg',
   'IMG_0418.jpg',
   'IMG_0426.jpg',

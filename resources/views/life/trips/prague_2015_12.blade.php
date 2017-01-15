@@ -10,7 +10,7 @@
 @ru
   <p>Трамваи в Праге встречаются самых разных моделей, даже с дверьми с обеих сторон. В современных можно поймать вай-фай. Двери общественного транспорта работают в полуавтоматическом режиме для экономии электроэнергии. То есть открываются пассажиром вручную нажатием кнопки, а закрываются автоматически.</>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1898.jpg',
   'IMG_2028.jpg',
   'IMG_2032.jpg',
@@ -25,7 +25,7 @@
 @ru
   <p>По городу часто встречаются часы, достаточно осмотреться по сторонам.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1905.jpg',
   'IMG_1971.jpg',
   'IMG_1983.jpg',
@@ -42,7 +42,7 @@
 @en
   <p>Panoramic views.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1929.jpg',
   'IMG_1934.jpg',
   'IMG_1997.jpg',
@@ -77,7 +77,7 @@
 @ru
   <p>На дворе конец декабря. Зима — популярное время для реставраций.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1919.jpg',
   'IMG_1922.jpg',
   'IMG_1926.jpg',
@@ -89,7 +89,7 @@
 @en
   <p>Old city.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1962.jpg',
   'IMG_1968.jpg',
   'IMG_1969.jpg',
@@ -102,7 +102,7 @@
 @ru
   <p>Вход в метро и само метро. Зеленая ветка неглубоко залегает, конечная станция и вовсе наверху.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2159.jpg',
   'IMG_2160.jpg',
   'IMG_2161.jpg',
@@ -113,7 +113,7 @@
 @ru
   <p>На светофорах велосипедисты стоят перед машинами.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2165.jpg',
   'IMG_2013.jpg',
 ]])
@@ -121,7 +121,7 @@
 @ru
   <p>Велодорожки в городе.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1944.jpg',
   'IMG_1999.jpg',
   'IMG_2002.jpg',
@@ -140,7 +140,7 @@
 @ru
   <p>На карте приглянулся район у станции метро Дейвицка. Там расположен кампус чешского технического университета.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2171.jpg',
   'IMG_2168.jpg',
   'IMG_2169.jpg',
@@ -160,7 +160,7 @@
 @ru
   <p>Приятные места для прогулок.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1908.jpg',
   'IMG_1909.jpg',
   'IMG_1980.jpg',
@@ -175,7 +175,7 @@
 @ru
   <p>Очевидно, на крышу есть выход.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1904.jpg',
   'IMG_2030.jpg',
 ]])
@@ -195,7 +195,7 @@
 @ru
   <p>Удачная находка в первый же день исследований — международный автовокзал Флоренц. Непосредственная близость к жилью сподвигнула вскоре отправиться в <span class="emoji">&#x1f1e9;&#x1f1ea;</span> <a class="link" href="/life/dresden.2015">Дрезден</a> и <span class="emoji">&#x1f1e6;&#x1f1f9;</span> <a class="link" href="/life/vienna.2015">Вену</a>.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2008.jpg',
   'IMG_2009.jpg',
 ]])
@@ -209,7 +209,7 @@
 @en
   <p>Roads, streets.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2186.jpg',
   'IMG_2187.jpg',
   'IMG_2051.jpg',
@@ -234,7 +234,7 @@
 @ru
   <p>Часто присутствуют надписи на асфальте. Pozor — внимание.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2022.jpg',
   'IMG_1939.jpg',
   'IMG_2052.jpg',
@@ -253,7 +253,7 @@
 @ru
   <p>Кладбище без оград.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2244.jpg',
   'IMG_2245.jpg',
   'IMG_2246.jpg',
@@ -264,7 +264,7 @@
 @en
   <p>Vltava river.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2179.jpg',
   'IMG_2180.jpg',
   'IMG_2183.jpg',
@@ -277,7 +277,7 @@
 @en
   <p>Troya district.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2184.jpg',
   'IMG_2185.jpg',
 ]])
@@ -305,7 +305,7 @@
 @en
   <p>Parks.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_2173.jpg',
   'IMG_2175.jpg',
   'IMG_2177.jpg',
@@ -315,7 +315,7 @@
 @ru
   <p>Жилые районы.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1941.jpg',
   'IMG_1951.jpg',
   'IMG_2016.jpg',
@@ -332,7 +332,7 @@
 @en
   <p>Beautiful buildings.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1950.jpg',
   'IMG_1959.jpg',
   'IMG_2039.jpg',

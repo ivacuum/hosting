@@ -11,7 +11,7 @@
 @en
   <p>The rain asked to wait for a few hours at home.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1571.jpg',
   'IMG_1573.jpg',
 ]])
@@ -19,7 +19,7 @@
 @ru
   <p>В центре Казани много пешеходных улиц и мест для прогулок.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1614.jpg',
   'IMG_1615.jpg',
   'IMG_1616.jpg',
@@ -34,7 +34,7 @@
 @en
   <p>Around the Kremlin.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1577.jpg',
   'IMG_1581.jpg',
   'IMG_1582.jpg',
@@ -50,7 +50,7 @@
 @ru
   <p>Дворец земледельцев и соседние дома.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'SAM_0678.jpg',
   'SAM_0687.jpg',
 ]])
@@ -63,7 +63,7 @@
 @ru
   <p>Дороги широкие: часто полосы по три-четыре в каждую сторону, нередки трамвайные пути посередине.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1611.jpg',
   'IMG_1599.jpg',
   'IMG_1600.jpg',
@@ -95,7 +95,7 @@
 @ru
   <p>Еще одно классное место для прогулок и катания — ЦПКиО им. Горького. В нем часто встречаются белки.</p>
 @endlang
-@include('tpl.fotorama', ['pics' => [
+@include('tpl.fotorama-2x', ['pics' => [
   'IMG_1642.jpg',
   'IMG_1641.jpg',
 ]])
