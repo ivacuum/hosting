@@ -14,9 +14,10 @@ echo "==> Installing front-end dependencies..."
 echo "==> bower..."
 bower install
 
-echo "==> npm..."
+echo "==> yarn..."
 export NODE_ENV=dev
-npm install
+# npm install
+yarn
 export NODE_ENV=production
 
 echo "==> gulp..."
