@@ -6,7 +6,7 @@
       <div class="js-lazy" data-lazy-type="fotorama">
         @foreach ($pics as $pic)
           <a hidden href="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"
-             data-thumb="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"></a>
+             data-thumb="{{ ViewHelper::picThumb($slug ?? $trip->slug, $pic) }}"></a>
         @endforeach
       </div>
     </div>
