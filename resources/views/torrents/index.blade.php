@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-3 hidden-xs">
     @foreach ($tree as $id => $category)
       <h3>
         @if (!empty($category_id) && $id == $category_id)
