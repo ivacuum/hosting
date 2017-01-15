@@ -51,8 +51,10 @@
                 @svg (magnet)
               </a>
               &nbsp;{{ ViewHelper::size($torrent->size) }}
+              {{--
               <span class="text-muted">&nbsp;&middot;&nbsp;</span>
               <span class="text-success">{{ $torrent->seeders }} {{ trans_choice('plural.seeders', $torrent->seeders) }}</span>
+              --}}
               @if (empty($category_id) || $category_id != $torrent->category_id)
                 <span class="text-muted">
                 &nbsp;&middot;&nbsp;
