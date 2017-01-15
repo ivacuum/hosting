@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /auth
 Disallow: /en/auth
+Disallow: /cv
 Disallow: /files
 Disallow: /en/files
 Disallow: /gallery
