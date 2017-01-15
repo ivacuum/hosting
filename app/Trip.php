@@ -137,6 +137,17 @@ class Trip extends Model
         return $this->meta_description;
     }
 
+    public function metaImage()
+    {
+        if (!$this->meta_image) {
+            return '';
+        }
+
+        return starts_with($this->meta_image, 'http')
+            ? $this->meta_image
+            : \ViewHelper::pic($this->slug, $this->meta_image);
+    }
+
     public function metaTitle()
     {
         return $this->meta_title ?: "{$this->title} &middot; {$this->localizedDate()}";
