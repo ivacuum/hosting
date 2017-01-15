@@ -18,6 +18,8 @@ class Dev extends Controller
             ->with('message', 'Debugbar включен на час');
     }
 
+    // Для считывания последних строк лога
+    // https://gist.github.com/lorenzos/1711e81a9162320fde20
     public function logs()
     {
         $log = \App::environment('local') ? public_path('uploads/access_log') : base_path('../../logs/access_log');
