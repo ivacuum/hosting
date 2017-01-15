@@ -9,6 +9,16 @@ class Thumbnails extends Controller
         return view($this->view);
     }
 
+    public function clean()
+    {
+        foreach (glob(public_path('uploads/temp/*')) as $filename) {
+            unlink($filename);
+        }
+
+        return redirect()->action("{$this->class}@index")
+            ->with('message', 'Папка очищена');
+    }
+
     public function thumbnailsPost()
     {
         $files = $this->request->file('files', []);

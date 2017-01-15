@@ -60,6 +60,7 @@ Route::group(['prefix' => 'dev'], function () {
     Route::get('templates/{template}', 'Acp\Dev\Templates@template');
     Route::get('thumbnails', 'Acp\Dev\Thumbnails@index');
     Route::post('thumbnails', 'Acp\Dev\Thumbnails@thumbnailsPost');
+    Route::get('thumbnails/clean', 'Acp\Dev\Thumbnails@clean');
 });
 
 Route::group(['prefix' => 'domains'], function () {
