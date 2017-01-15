@@ -19,6 +19,8 @@
 </template>
 
 <script>
+let axios = require('axios')
+
 export default {
   data() {
     return {
@@ -54,7 +56,7 @@ export default {
 
       form.append('files[]', file)
 
-      this.$http.post('/acp/dev/thumbnails', form).then((response) => {
+      axios.post('/acp/dev/thumbnails', form).then((response) => {
         const thumbnails = response.data.thumbnails
 
         for (let i = 0, length = thumbnails.length; i < length; i++) {

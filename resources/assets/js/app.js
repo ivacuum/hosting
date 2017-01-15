@@ -9,7 +9,11 @@ import './shortcuts'
 import './vue'
 import './yandex-dns'
 
+let axios = require('axios')
 let throttle = require('lodash.throttle')
+
+axios.defaults.headers.common['X-CSRF-TOKEN'] = window['AppOptions'].csrfToken
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 class Application {
   constructor() {
