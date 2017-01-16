@@ -2,6 +2,20 @@
 
 {{-- Ancienne Belgique --}}
 
+{{--
+Highlights
+- 19:30—21:10 Hello
+- 28:20—30:37 Touring, happy audience
+- 37:30—39:30 Play it again, second guitarist, didn't get paid of course, black metal band, immortal t-shirts, old sg guitar. На словах про гитару up here показывает, что держал ее на высоте груди и брынчал задорные песни. В блэк метал бэнде задорные песни! Best single without god ... nobody knows
+- Дальше легкую часть трека Face of Melinda очень даже неплохо слышно
+- 48:50—50:30 So many songs, so much shit too
+- Дальше тоже легкий трек In My Time of Need, слышно хорошо. Слов ваще не знал ни одной песни, но тут на слух сходу разбирал, запоминал и потихоньку подпевал. И не зря запоминал
+- 54:20—55:00 Вокалист говорит you sing it и уходит, после первой спетой нами строчки разводит руками: «это че за хрень сейчас была?» Типа все, на что вы способны?
+- 1:14:05—1:16:36 Сложная песня с первого альбома, которую нынешним составом никогда не играли. Пытаются угодить публике. It's pretty heavy song, I think I even wrote it like specifically wanted it to be heavy to shut up a few motherfuckers have been complaining
+- 1:27:05—1:28:56 Подошли к последней песне, буууууу. Выкрик на 1:27:34 и подражание. У нас нет песни с таким названием
+- 1:41:50—1:44:50 Медиатор, представление участников, on shitloads of different types of keyboards, с 1:43:13 перечисляет элементы ударных, а ударник по ним бьет
+--}}
+
 {{-- Для собственных фотографий в тексте истории --}}
 @php ($slug = "gigs/{$gig->slug}")
 
