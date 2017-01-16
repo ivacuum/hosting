@@ -7,12 +7,22 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_2391.jpg'])
 
 @ru
-  <p>Приятная картина снаружи вокзала.</p>
+  <p>Железнодорожный вокзал.</p>
+@endlang
+@include('tpl.pic-2x', ['pic' => 'IMG_2393.jpg'])
+
+@ru
+  <p>Кольцо запарковано.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_2395.jpg'])
 
 @ru
-  <p>И по мере отдаления она становится еще лучше.</p>
+  <p>Kiss & Ride — место для посадки и высадки пассажиров. В других странах можно встретить термин Park and ride или P+R.</p>
+@endlang
+@include('tpl.pic-2x', ['pic' => 'IMG_2396.jpg'])
+
+@ru
+  <p>По мере отдаления от вокзала привлекательность города только растет.</p>
 @endlang
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2400.jpg',
@@ -22,7 +32,7 @@
 ]])
 
 @ru
-  <p>В парке.</p>
+  <p>Парк.</p>
 @endlang
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2404.jpg',
