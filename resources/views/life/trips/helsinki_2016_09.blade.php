@@ -251,6 +251,7 @@
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_1472.jpg'])
 
+<a name="corner-house"></a>
 @ru
   <p>Еще хороший кадр.</p>
 @endlang
