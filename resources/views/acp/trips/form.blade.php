@@ -109,9 +109,9 @@
   <label class="col-md-3 control-label">Meta image:</label>
   <div class="col-md-6">
     <input type="text" class="form-control" name="meta_image" value="{{ old('meta_image', @$model->meta_image) }}">
-    @if ($meta_image = old('meta_image', @$model->meta_image))
+    @if (@$model->meta_image)
       <div class="m-t-1">
-        <img class="img-responsive img-rounded" src="{{ $meta_image }}">
+        <img class="img-responsive img-rounded" src="{{ $model->metaImage() }}">
       </div>
     @endif
   </div>

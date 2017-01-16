@@ -105,7 +105,7 @@
     @foreach ($chunk as $trip)
       <div class="page-block page-block-1x3">
         <div class="page-block-cover">
-          <div class="page-block-cover-image" style="background-image: linear-gradient(rgba(26, 26, 26, 0.1) 0%, rgba(26, 26, 26, 0.3) 50%), url({{ $trip->meta_image }});"></div>
+          <div class="page-block-cover-image" style="background-image: linear-gradient(rgba(26, 26, 26, 0.1) 0%, rgba(26, 26, 26, 0.3) 50%), url({{ $trip->metaImage() }});"></div>
           <div class="page-block-cover-info">
             <div class="page-block-cover-title">
               {{ $trip->title }}
