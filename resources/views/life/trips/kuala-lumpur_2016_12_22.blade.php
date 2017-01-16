@@ -71,7 +71,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_3129.jpg'])
 
 @ru
-  <p>Самолетики. Один из таких везет обратно в Эмираты.</p>
+  <p>Самолетики. Один из таких везет в сторону дома.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_3133.jpg'])
 @endsection
