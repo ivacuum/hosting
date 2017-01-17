@@ -92,9 +92,11 @@ class Application {
           } else if (type === 'fotorama') {
             e.fotorama()
           } else if (type === 'fotorama-2x') {
-            $('a', e).each(function() {
-              $(this).attr('href', $(this).data('src2x'))
-            })
+            if (width > breakpoint) {
+              $('a', e).each(function() {
+                $(this).attr('href', $(this).data('src2x'))
+              })
+            }
 
             e.fotorama()
           }
