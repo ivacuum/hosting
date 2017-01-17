@@ -1,3 +1,5 @@
+import './polyfills'
+
 import Map from './map'
 import Pjax from './pjax'
 import YandexMetrika from './yandex-metrika'
