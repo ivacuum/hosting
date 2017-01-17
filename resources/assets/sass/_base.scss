@@ -79,7 +79,7 @@ a[href^="http"]:empty::before { content: attr(href); }
   }
 }
 
-.container-full { flex: 1; }
+.container-full { flex: 1 0 auto; }
 
 .emoji {
   font-weight: normal;
