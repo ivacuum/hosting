@@ -228,6 +228,7 @@
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_1581.jpg'])
 
+<a name="units"></a>
 @ru
   <p>Можно попрактиковаться в переводе единиц измерения.</p>
 @endlang
