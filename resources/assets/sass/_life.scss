@@ -184,18 +184,6 @@
   @media (min-width: $screen-sm-min) { height: 400px; }
 }
 
-.trip-small-images {
-  .fotorama,
-  .pic-centered-container {
-    max-width: 333px;
-  }
-
-  .fotorama {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
 .trip-text {
   max-width: 1000px;
   //margin: 0 auto;
