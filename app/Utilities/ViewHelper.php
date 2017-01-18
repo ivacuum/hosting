@@ -42,6 +42,11 @@ class ViewHelper
         return "https://life.ivacuum.ru/{$folder}/{$file}";
     }
 
+    public function picArbitrary($width, $height, $folder, $file)
+    {
+        return "https://life.ivacuum.ru/-/{$width}x{$height}/{$folder}/{$file}";
+    }
+
     public function picThumb($folder, $file)
     {
         return "https://life.ivacuum.ru/-/100x75/{$folder}/{$file}";

@@ -93,11 +93,10 @@
   </div>
 </div>
 
-{{--
 @ru
-  <h3>Последние поездки</h3>
+  <h3>Истории о путешествиях</h3>
 @en
-  <h3 class="m-t-0">Last trips</h3>
+  <h3>Stories about my trips</h3>
 @endlang
 
 @foreach ($trips->chunk(3) as $chunk)
@@ -105,7 +104,7 @@
     @foreach ($chunk as $trip)
       <div class="page-block page-block-1x3">
         <div class="page-block-cover">
-          <div class="page-block-cover-image" style="background-image: linear-gradient(rgba(26, 26, 26, 0.1) 0%, rgba(26, 26, 26, 0.3) 50%), url({{ $trip->metaImage() }});"></div>
+          <div class="page-block-cover-image" style="background-image: linear-gradient(rgba(26, 26, 26, 0.1) 0%, rgba(26, 26, 26, 0.3) 50%), url({{ $trip->metaImage(400, 300) }});"></div>
           <div class="page-block-cover-info">
             <div class="page-block-cover-title">
               {{ $trip->title }}
@@ -119,5 +118,4 @@
     @endforeach
   </div>
 @endforeach
---}}
 @endsection

@@ -1,10 +1,17 @@
 <?php namespace App\Http\Controllers;
 
+use App\Trip;
+
 class Home extends Controller
 {
     public function index()
     {
-        return view('index');
+        $trips = Trip::where('meta_image', '<>', '')
+            ->take(3)
+            ->inRandomOrder()
+            ->get();
+
+        return view('index', compact('trips'));
     }
 
     public function about()
