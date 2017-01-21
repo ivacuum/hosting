@@ -96,7 +96,7 @@
 @ru
   <h3>Истории о путешествиях</h3>
 @en
-  <h3>Stories about my trips</h3>
+  <h3>Travel stories</h3>
 @endlang
 
 @foreach ($trips->chunk(3) as $chunk)
