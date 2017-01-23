@@ -38,9 +38,9 @@
     outline: 0;
     appearance: none;
 
-    :focus:-moz-focusring {
+    &:focus:-moz-focusring {
       color: transparent;
-      text-shadow: 0 0 0 #000;
+      text-shadow: 0 0 0 $input-color;
     }
 
     /* Hide the arrow in IE10 and up */
