@@ -38,10 +38,7 @@ class Application {
     })
   }
 
-  ajaxProgress() {
-    $(document).ajaxStart(() => NProgress.start())
-    $(document).ajaxStop(() => NProgress.done())
-  }
+  ajaxProgress() {}
 
   autosizeTextareas() {
     autosize($('.js-autosize-textarea'))
