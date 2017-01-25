@@ -11,13 +11,12 @@ class Ajax extends Controller
             'text' => 'required',
         ]);
 
+        $text = $this->request->input('text');
+        $referer = $this->request->server('HTTP_REFERER');
         $question = $this->request->input('question');
-        $referer  = $this->request->server('HTTP_REFERER');
-        $text     = $this->request->input('text');
 
         register_shutdown_function(function () use ($question, $referer, $text) {
-            \Mail::to(config('email.support'))
-                ->send(new Feedback($referer, $question, $text));
+            \Mail::send(new Feedback($referer, $question, $text));
         });
 
         return [

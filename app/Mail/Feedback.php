@@ -4,20 +4,21 @@ use Illuminate\Mail\Mailable;
 
 class Feedback extends Mailable
 {
-    public $question;
-    public $referer;
     public $text;
+    public $referer;
+    public $question;
 
     public function __construct($referer, $question, $text)
     {
-        $this->referer  = $referer;
+        $this->text = $text;
+        $this->referer = $referer;
         $this->question = $question;
-        $this->text     = $text;
     }
 
     public function build()
     {
-        return $this->subject("Отзыв {$this->referer}")
+        return $this->to(config('email.support'))
+            ->subject("Отзыв {$this->referer}")
             ->text('emails.feedback');
     }
 }
