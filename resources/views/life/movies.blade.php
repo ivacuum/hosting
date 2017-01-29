@@ -10,6 +10,15 @@
 @section('content')
 <h2>Фильмы и сериалы, достойные многократного просмотра</h2>
 <div class="movies-container">
+  <div class="h2">2017 год</div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => 'Подлый Пит<br>Sneaky Pete', 'id' => 848297],
+    ]
+  ])
+</div>
+
+<div class="movies-container">
   <div class="h2">2016 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
