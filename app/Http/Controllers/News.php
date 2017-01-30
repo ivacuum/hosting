@@ -14,9 +14,7 @@ class News extends Controller
             'month' => 'date_format:m|nullable',
         ]);
 
-        if ($validator->fails()) {
-            abort(404);
-        }
+        abort_unless($validator->passes(), 404);
 
         $news = Model::with('user')->withCount('comments')->orderBy('id', 'desc');
 
@@ -62,9 +60,7 @@ class News extends Controller
             'month' => 'date_format:m|nullable',
         ]);
 
-        if ($validator->fails()) {
-            abort(404);
-        }
+        abort_unless($validator->passes(), 404);
 
         // Обратная совместимость
         if (ends_with($slug, '.html')) {
@@ -77,9 +73,7 @@ class News extends Controller
             ->whereBetween('created_at', Model::interval($year, $month, $day))
             ->first();
 
-        if (is_null($news)) {
-            abort(404);
-        }
+        abort_if(is_null($news), 404);
 
         $comments = $news->comments()->with('user')->orderBy('id', 'desc')->paginate();
 

@@ -11,9 +11,7 @@ class Docs extends Controller
     {
         $view = "docs.{$page}";
 
-        if (!view()->exists($view)) {
-            abort(404);
-        }
+        abort_unless(view()->exists($view), 404);
 
         return view($view, compact('page'));
     }

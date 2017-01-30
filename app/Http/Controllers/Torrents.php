@@ -15,9 +15,7 @@ class Torrents extends Controller
         $category = null;
         $category_id = $this->request->input('category_id');
 
-        if ($category_id && is_null($category = \TorrentCategoryHelper::find($category_id))) {
-            abort(404);
-        }
+        abort_if($category_id && is_null($category = \TorrentCategoryHelper::find($category_id)), 404);
 
         \Breadcrumbs::push(trans($this->view));
 
@@ -103,9 +101,7 @@ class Torrents extends Controller
 
     public function category($category_id)
     {
-        if (is_null($category = \TorrentCategoryHelper::find($category_id))) {
-            abort(404);
-        }
+        abort_if(is_null($category = \TorrentCategoryHelper::find($category_id)), 404);
 
         \Breadcrumbs::push(trans('torrents.index'), 'torrents');
         \Breadcrumbs::push($category['title']);

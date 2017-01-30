@@ -15,9 +15,7 @@ class Dcpp extends Controller
     {
         $view = "dcpp.{$page}";
 
-        if (!view()->exists($view)) {
-            abort(404);
-        }
+        abort_unless(view()->exists($view), 404);
 
         \Breadcrumbs::push(trans('dcpp.index'), 'dc');
         \Breadcrumbs::push(trans("dcpp.{$page}"));

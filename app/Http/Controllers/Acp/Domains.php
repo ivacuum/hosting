@@ -14,9 +14,7 @@ class Domains extends Controller
 
     public function index()
     {
-        if ($this->request->user()->id !== 1) {
-            abort(404);
-        }
+        abort_unless($this->request->user()->id === 1, 404);
 
         $filter = $this->request->input('filter');
         $sort   = $this->request->input('sort');
@@ -243,9 +241,7 @@ class Domains extends Controller
 
     public function show(Model $model)
     {
-        if ($this->request->user()->id !== 1) {
-            abort(404);
-        }
+        abort_unless($this->request->user()->id === 1, 404);
 
         return view($this->view, compact('model'));
     }

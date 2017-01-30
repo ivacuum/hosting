@@ -1,7 +1,6 @@
 /.idea
 /node_modules
 /public/build
-/resources/assets/bower
 /vendor
 /_ide_helper.php
 /.phpstorm.meta.php

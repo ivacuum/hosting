@@ -74,9 +74,7 @@ class Auth extends Controller
 
     public function passwordReset($token = '')
     {
-        if (!$token) {
-            abort(404);
-        }
+        abort_unless($token, 404);
 
         return view($this->view, compact('token'));
     }

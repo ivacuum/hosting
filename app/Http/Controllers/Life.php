@@ -121,9 +121,7 @@ class Life extends Controller
     {
         $tpl = "life.gigs.{$gig->tpl}";
 
-        if (!view()->exists($tpl)) {
-            abort(404);
-        }
+        abort_unless(view()->exists($tpl), 404);
 
         \Breadcrumbs::push(trans('menu.gigs'), 'life/gigs');
         \Breadcrumbs::push($gig->title);
@@ -172,9 +170,7 @@ class Life extends Controller
     {
         $tpl = "life.trips.{$trip->tpl}";
 
-        if (!view()->exists($tpl)) {
-            abort(404);
-        }
+        abort_unless(view()->exists($tpl), 404);
 
         \Breadcrumbs::push(trans('menu.countries'), "life/countries");
         \Breadcrumbs::push($trip->city->country->title, "life/countries/{$trip->city->country->slug}");
