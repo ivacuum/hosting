@@ -94,9 +94,9 @@
 </div>
 
 @ru
-  <h3>Истории о путешествиях</h3>
+  <h3 class="m-t-0">Истории о путешествиях</h3>
 @en
-  <h3>Travel stories</h3>
+  <h3 class="m-t-0">Travel stories</h3>
 @endlang
 
 @foreach ($trips->chunk(3) as $chunk)
