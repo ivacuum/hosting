@@ -1,5 +1,15 @@
 @extends('base')
 
+@push('head')
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-7802683087624570",
+    enable_page_level_ads: true
+  });
+</script>
+@endpush
+
 @section('global_menu')
 <li>
   <a class="{{ $page === 'index' ? 'navbar-selected' : '' }}" href="{{ action('Dcpp@index') }}">
