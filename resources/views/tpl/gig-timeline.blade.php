@@ -7,7 +7,7 @@
           <li class="city-timeline-trip">
             @if ($row->id === $gig->id)
               <mark>{{ $row->shortDate() }}</mark>
-            @elseif ($gig->status === App\Gig::STATUS_PUBLISHED)
+            @elseif ($row->status === App\Gig::STATUS_PUBLISHED)
               <a class="link" href="{{ action('Life@page', $row->slug) }}">{{ $row->shortDate() }}</a>
             @else
               {{ $row->shortDate() }}
