@@ -49,25 +49,18 @@ class RouteServiceProvider extends ServiceProvider
     {
         $prefix = $this->getLocalePrefix();
 
-        \Route::group([
-            'namespace'   => $this->namespace,
-            'prefix'      => "{$prefix}/acp",
-            'middleware'  => ['web', 'auth', 'admin'],
-        ], function ($router) {
-            require base_path('routes/acp.php');
-        });
+        \Route::namespace($this->namespace)
+            ->group(base_path('routes/simple.php'));
 
-        \Route::group(['namespace' => $this->namespace], function ($router) {
-            require base_path('routes/simple.php');
-        });
+        \Route::middleware(['web', 'auth', 'admin'])
+            ->namespace($this->namespace)
+            ->prefix("{$prefix}/acp")
+            ->group(base_path('routes/acp.php'));
 
-        \Route::group([
-            'namespace'  => $this->namespace,
-            'middleware' => 'web',
-            'prefix'     => $prefix,
-        ], function ($router) {
-            require base_path('routes/web.php');
-        });
+        \Route::middleware('web')
+            ->namespace($this->namespace)
+            ->prefix($prefix)
+            ->group(base_path('routes/web.php'));
     }
 
     protected function getLocalePrefix()

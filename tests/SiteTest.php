@@ -1,4 +1,4 @@
-<?php
+<?php namespace Tests;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -19,9 +19,9 @@ class SiteTest extends TestCase
 
     public function testTripsTemplates()
     {
-        $this->be(App\User::find(1));
+        $this->be(\App\User::find(1));
 
-        foreach (App\Trip::templatesIterator() as $template) {
+        foreach (\App\Trip::templatesIterator() as $template) {
             $this->get("/acp/dev/templates/{$template->getBasename('.blade.php')}")
                 ->assertResponseOk();
         }
@@ -29,7 +29,7 @@ class SiteTest extends TestCase
 
     public function testAcpPages()
     {
-        $this->be(App\User::find(1));
+        $this->be(\App\User::find(1));
 
         $this->get('/acp/cities')->assertResponseOk();
         $this->get('/acp/cities/create')->assertResponseOk();
@@ -57,6 +57,5 @@ class SiteTest extends TestCase
 
         $this->get('/acp/yandex/users')->assertResponseOk();
         $this->get('/acp/yandex/users/create')->assertResponseOk();
-
     }
 }

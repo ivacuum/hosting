@@ -1,4 +1,4 @@
-import './polyfills'
+import './bootstrap'
 
 import Map from './map'
 import Pjax from './pjax'
@@ -11,11 +11,7 @@ import './shortcuts'
 import './vue'
 import './yandex-dns'
 
-let axios = require('axios')
 let throttle = require('lodash.throttle')
-
-axios.defaults.headers.common['X-CSRF-TOKEN'] = window['AppOptions'].csrfToken
-axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 class Application {
   constructor() {
@@ -25,7 +21,6 @@ class Application {
     this.map = new Map(this.locale)
     this.metrika = new YandexMetrika(options.yandexMetrikaId)
     this.pjax = new Pjax()
-    this.vm = null
 
     this.ajaxProgress()
     this.csrfToken()
@@ -51,7 +46,7 @@ class Application {
   }
 
   initVue() {
-    this.vm = new Vue({
+    new Vue({
       el: '#pjax_container'
     })
   }
@@ -117,15 +112,12 @@ class Application {
   }
 
   initOnReadyAndPjax(pjax = false) {
+    $('.tip').tooltip()
     this.initVue()
+    this.autosizeTextareas()
 
     // Прилипшие заголовки таблиц
     $('.js-float-thead').floatThead({ zIndex: 999 })
-
-    // Подсказки
-    $('.tip').tooltip()
-
-    this.autosizeTextareas()
   }
 
   onPjaxComplete() {

@@ -7,14 +7,14 @@
   <title>{{ $meta_title ?? (trans("meta_title.{$view}") !== "meta_title.{$view}" ? trans("meta_title.{$view}") : (trans($view) !== $view ? trans($view) : config('cfg.sitename'))) }}</title>
 @if (!Request::pjax())
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="x-pjax-version" content="2">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="keywords" content="{{ $meta_keywords or '' }}">
   <meta name="description" content="{{ $meta_description or '' }}">
-  <meta http-equiv="x-pjax-version" content="1">
   <link rel="apple-touch-icon-precomposed" href="https://life.ivacuum.ru/apple-touch-icon-precomposed.png">
   <link rel="icon" href="https://life.ivacuum.ru/apple-touch-icon.png">
-  <link rel="stylesheet" href="{{ App::environment('production') ? elixir('css/vendor.css') : '/build/css/vendor.css' }}">
-  <link rel="stylesheet" href="{{ App::environment('production') ? elixir('css/app.css') : '/build/css/app.css' }}">
+  <link rel="stylesheet" href="{{ mix('/build/fotorama.css') }}">
+  <link rel="stylesheet" href="{{ mix('/build/app.css') }}">
   @stack('head')
 </head>
 <body>
@@ -156,8 +156,16 @@
   'yandexMetrikaId' => 5266444,
 ]); ?>
 </script>
-<script src="{{ App::environment('production') ? elixir('js/vendor.js') : '/build/js/vendor.js' }}"></script>
-<script src="{{ App::environment('production') ? elixir('js/app.js') : '/build/js/app.js' }}"></script>
+<script src="{{ mix('/build/manifest.js') }}"></script>
+<script src="{{ mix('/build/polyfills.js') }}"></script>
+<script src="{{ mix('/build/jquery.js') }}"></script>
+<script src="{{ mix('/build/autosize.js') }}"></script>
+<script src="{{ mix('/build/floatthead.js') }}"></script>
+<script src="{{ mix('/build/bootstrap.js') }}"></script>
+<script src="{{ mix('/build/throttle.js') }}"></script>
+<script src="{{ mix('/build/vue.js') }}"></script>
+<script src="{{ mix('/build/axios.js') }}"></script>
+<script src="{{ mix('/build/app.js') }}"></script>
 @stack('js')
 @section('counters')
 @include('tpl.counters')

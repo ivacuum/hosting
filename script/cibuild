@@ -11,17 +11,13 @@ echo "==> Ant php linting..."
 ant
 
 echo "==> Installing front-end dependencies..."
-echo "==> bower..."
-bower install
-
 echo "==> yarn..."
 export NODE_ENV=dev
-# npm install
 yarn
 export NODE_ENV=production
 
-echo "==> gulp..."
-gulp --production
+echo "==> npm run production..."
+npm run production
 
 # composer global require "hirak/prestissimo:^0.3"
 # composer global update

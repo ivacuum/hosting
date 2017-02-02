@@ -119,11 +119,3 @@
 
 @section('counters')
 @endsection
-
-@push('head')
-<link rel="stylesheet" href="{{ App::environment('production') ? elixir('css/acp.css') : '/build/css/acp.css' }}">
-@endpush
-
-@push('js')
-<script src="{{ App::environment('production') ? elixir('js/acp.js') : '/build/js/acp.js' }}"></script>
-@endpush

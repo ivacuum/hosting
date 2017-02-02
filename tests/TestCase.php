@@ -1,9 +1,7 @@
-<?php
+<?php namespace Tests;
 
-class TestCase extends Illuminate\Foundation\Testing\TestCase
+class TestCase extends \Illuminate\Foundation\Testing\TestCase
 {
-    protected $baseUrl = 'http://localhost';
-
     public function createApplication()
     {
         $app = require __DIR__.'/../bootstrap/app.php';

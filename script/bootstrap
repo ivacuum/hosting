@@ -16,4 +16,4 @@ echo "==> Installing php dependencies..."
 composer install
 
 echo "==> Installing front-end dependencies..."
-bower install
+yarn

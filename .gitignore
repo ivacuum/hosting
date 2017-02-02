@@ -1,6 +1,8 @@
 /.idea
 /node_modules
 /public/build
+/public/images
+/public/mix-manifest.json
 /vendor
 /_ide_helper.php
 /.phpstorm.meta.php
