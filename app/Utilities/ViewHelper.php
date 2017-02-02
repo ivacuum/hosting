@@ -27,6 +27,23 @@ class ViewHelper
         return $date->formatLocalized('%e %b %Y');
     }
 
+    public function metaTitle($meta_title, $view)
+    {
+        if ($meta_title) {
+            return $meta_title;
+        }
+
+        if (trans("meta_title.{$view}") !== "meta_title.{$view}") {
+            return trans("meta_title.{$view}");
+        }
+
+        if (trans($view) !== $view) {
+            return trans($view);
+        }
+
+        return config('cfg.sitename');
+    }
+
     public function number($number)
     {
         return $this->decimal->format($number);

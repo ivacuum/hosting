@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 @endif
-  <title>{{ $meta_title ?? (trans("meta_title.{$view}") !== "meta_title.{$view}" ? trans("meta_title.{$view}") : (trans($view) !== $view ? trans($view) : config('cfg.sitename'))) }}</title>
+  <title>{{ ViewHelper::metaTitle($meta_title ?? '', $view) }}</title>
 @if (!Request::pjax())
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="x-pjax-version" content="2">
@@ -108,7 +108,7 @@
   </div>
   <div class="container container-full">
 @section('breadcrumbs')
-@include('tpl.breadcrumbs', ['breadcrumbs' => isset($breadcrumbs) ? $breadcrumbs : Breadcrumbs::get()])
+@include('tpl.breadcrumbs', ['breadcrumbs' => $breadcrumbs ?? Breadcrumbs::get()])
 @show
 
 @if (Session::has('message'))
