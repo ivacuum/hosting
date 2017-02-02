@@ -1,0 +1,15 @@
+.counter-label {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  border-radius: 4px;
+  background-color: #d9534f;
+  color: #fff;
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 5px 3px;
+  line-height: 1;
+  text-align: center;
+
+  &:empty { display: none; }
+}
