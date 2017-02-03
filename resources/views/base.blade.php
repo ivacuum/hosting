@@ -73,6 +73,12 @@
           --}}
           @section('header_user')
             @if (Auth::check())
+              <li>
+                <a href="{{ action('Notifications@index') }}">
+                  @svg (bell)
+                  <span class="counter-label">{{ !is_null(Auth::user()->unreadNotifications()->first()) ? '!' : '' }}</span>
+                </a>
+              </li>
               @if (!starts_with($self, 'Acp\\'))
                 @if (Auth::user()->isAdmin())
                   <li>

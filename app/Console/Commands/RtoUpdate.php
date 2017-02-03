@@ -1,5 +1,6 @@
 <?php namespace App\Console\Commands;
 
+use App\Notifications\TorrentUpdated;
 use App\Services\Rto;
 use App\Torrent;
 use Carbon\Carbon;
@@ -51,6 +52,8 @@ class RtoUpdate extends Command
 
                     // Раздача обновлена
                     $this->info("Раздача {$id} обновлена");
+
+                    $torrent->user->notify(new TorrentUpdated($torrent));
 
                     // Ограничение количества запросов в секунду
                     sleep(1);
