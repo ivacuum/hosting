@@ -2,7 +2,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <form action="{{ action('Ajax@feedback') }}" method="post">
-        <input hidden type="text" name="mail" value="{{ old('mail') }}">
+        {{ ViewHelper::inputHiddenMail() }}
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">
             @svg (times)

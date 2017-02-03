@@ -1,6 +1,7 @@
 <?php namespace App\Utilities;
 
 use Carbon\Carbon;
+use Illuminate\Support\HtmlString;
 
 class ViewHelper
 {
@@ -25,6 +26,11 @@ class ViewHelper
         }
 
         return $date->formatLocalized('%e %b %Y');
+    }
+
+    public function inputHiddenMail()
+    {
+        return new HtmlString('<input hidden type="text" name="mail" value="'.old("mail").'">');
     }
 
     public function metaTitle($meta_title, $view)

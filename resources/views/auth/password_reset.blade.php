@@ -6,7 +6,7 @@
 <div class="form-signin">
   <h3 class="m-b-2 text-center">{{ trans('auth.password_reset_title') }}</h3>
   <form action="{{ action('Auth@passwordResetPost') }}" method="post">
-    <input hidden type="text" name="mail" value="{{ old('mail') }}">
+    {{ ViewHelper::inputHiddenMail() }}
 
     <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
       <input autofocus required type="email" class="form-control" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{ trans('auth.email') }}">
