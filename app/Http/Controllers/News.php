@@ -54,11 +54,10 @@ class News extends Controller
 
     public function show($year, $month, $day, $slug)
     {
-        $validator = \Validator::make(compact('year', 'month', 'day'), [
-            'day' => 'date_format:d|nullable',
-            'year' => 'date_format:Y|nullable',
-            'month' => 'date_format:m|nullable',
-        ]);
+        $validator = \Validator::make(
+            ['date' => "{$year}-{$month}-{$day}"],
+            ['date' => 'date_format:Y-m-d']
+        );
 
         abort_unless($validator->passes(), 404);
 
