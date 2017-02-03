@@ -74,7 +74,7 @@
           @section('header_user')
             @if (Auth::check())
               <li>
-                <a href="{{ action('Notifications@index') }}">
+                <a class="{{ $self == 'Notifications' ? 'navbar-selected' : '' }}" href="{{ action('Notifications@index') }}">
                   @svg (bell)
                   <span class="counter-label">{{ !is_null(Auth::user()->unreadNotifications()->first()) ? '!' : '' }}</span>
                 </a>
