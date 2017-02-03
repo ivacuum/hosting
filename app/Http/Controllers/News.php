@@ -8,14 +8,6 @@ class News extends Controller
     {
         \Breadcrumbs::push(trans('news.index'), "news");
 
-        $validator = \Validator::make(compact('year', 'month', 'day'), [
-            'day' => 'date_format:d|nullable',
-            'year' => 'date_format:Y|nullable',
-            'month' => 'date_format:m|nullable',
-        ]);
-
-        abort_unless($validator->passes(), 404);
-
         $news = Model::with('user')->withCount('comments')->orderBy('id', 'desc');
 
         switch (\App::getLocale()) {
@@ -44,11 +36,25 @@ class News extends Controller
 
     public function day($year, $month, $day)
     {
+        $validator = \Validator::make(
+            ['date' => "{$year}-{$month}-{$day}"],
+            ['date' => 'date_format:Y-m-d']
+        );
+
+        abort_unless($validator->passes(), 404);
+
         return $this->index($year, $month, $day);
     }
 
     public function month($year, $month)
     {
+        $validator = \Validator::make(
+            ['date' => "{$year}-{$month}"],
+            ['date' => 'date_format:Y-m']
+        );
+
+        abort_unless($validator->passes(), 404);
+
         return $this->index($year, $month);
     }
 
@@ -91,6 +97,13 @@ class News extends Controller
 
     public function year($year)
     {
+        $validator = \Validator::make(
+            compact('year'),
+            ['year' => 'date_format:Y']
+        );
+
+        abort_unless($validator->passes(), 404);
+
         return $this->index($year);
     }
 }
