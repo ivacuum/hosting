@@ -23,8 +23,11 @@
   </h3>
   @foreach ($comments as $comment)
     <div class="media">
-      <div class="media-left svg-icon-16">
-        @svg (comment-o)
+      <div class="media-left">
+        @include ('tpl.svg-avatar', [
+          'bg' => ViewHelper::avatarBg($comment->user_id),
+          'text' => !is_null($comment->user) ? $comment->user->avatarName() : null]
+        )
       </div>
       <div class="media-body">
         <div class="h4 media-heading">

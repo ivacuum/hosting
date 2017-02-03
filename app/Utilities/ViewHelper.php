@@ -13,6 +13,11 @@ class ViewHelper
         $this->decimal->setAttribute(\NumberFormatter::FRACTION_DIGITS, 0);
     }
 
+    public function avatarBg($id)
+    {
+        return config('cfg.avatar_bg')[$id % 15];
+    }
+
     public function dateShort(Carbon $date)
     {
         static $year;

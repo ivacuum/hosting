@@ -68,6 +68,11 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
+    public function avatarName()
+    {
+        return mb_strtoupper(mb_substr($this->login ?: $this->email, 0, 2));
+    }
+
     public function displayName()
     {
         return $this->login ?: $this->email;
