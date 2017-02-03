@@ -22,6 +22,8 @@ class TorrentUpdated extends Notification
         return [
             'id' => $this->torrent->id,
             'title' => $this->torrent->title,
+            'info_hash' => $this->torrent->info_hash,
+            'announcer' => $this->torrent->announcer,
         ];
     }
 }
