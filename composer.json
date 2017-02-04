@@ -8,7 +8,8 @@
     "guzzlehttp/guzzle": "~6.0",
     "baum/baum": "~1.1",
     "symfony/css-selector": "~3.2",
-    "symfony/dom-crawler": "~3.2"
+    "symfony/dom-crawler": "~3.2",
+    "irazasyed/telegram-bot-sdk": "^2.0"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
