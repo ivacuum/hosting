@@ -3,15 +3,19 @@
 @section('content')
 <h3>{{ $news->title }}</h3>
 <p class="text-muted">
-  @svg (calendar-o)
+  <span class="svg-muted">
+    @svg (calendar-o)
+  </span>
   {{ $news->created_at->formatLocalized('%e %B %Y') }}
   @if ($news->user->login)
-    &nbsp;
-    @svg (pencil)
+    <span class="p-l-1 svg-muted">
+      @svg (pencil)
+    </span>
     {{ $news->user->login }}
   @endif
-  &nbsp;
-  @svg (eye)
+  <span class="p-l-1 svg-muted">
+    @svg (eye)
+  </span>
   {{ ViewHelper::number($news->views) }}
 </p>
 <div>{!! $news->html !!}</div>

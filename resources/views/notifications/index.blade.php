@@ -7,7 +7,7 @@
     @foreach ($notifications as $notification)
       @php ($class_basename = snake_case(class_basename($notification->type)))
       <li class="p-y-1 border-bottom">
-        <div class="d-table-cell p-r-1 text-muted">
+        <div class="d-table-cell p-r-1 svg-muted-blue">
           @if ($class_basename === 'torrent_updated')
             @svg (magnet)
           @else
