@@ -9,8 +9,8 @@ class Breadcrumbs
         return $this->breadcrumbs;
     }
 
-    public function push($title, $url = false, $image = false)
+    public function push($title, $url = null)
     {
-        $this->breadcrumbs[] = compact('title', 'url', 'image');
+        $this->breadcrumbs[] = compact('title', 'url');
     }
 }
