@@ -30,7 +30,7 @@ class Comment extends Model
 
     public function fullDate()
     {
-        $format = $this->created_at->year == date('Y') ? '%e %B, %H:%I' : '%e %B %Y, %H:%I';
+        $format = $this->created_at->year == date('Y') ? '%e %B, %H:%M' : '%e %B %Y, %H:%M';
 
         if ($this->created_at->isToday()) {
             return trans('torrents.today').", ".$this->created_at->formatLocalized($format);
