@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Comment extends Model
 {
-    protected $guarded = ['created_at', 'updated_at', 'goto'];
+    protected $guarded = ['rel_id', 'rel_type', 'created_at', 'updated_at', 'goto'];
     protected $perPage = 20;
 
     public function rel()

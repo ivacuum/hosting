@@ -25,4 +25,16 @@
     {{ trans('torrents.download') }} &middot; {{ ViewHelper::size($torrent->size) }}
   </a>
 </div>
+
+@include('tpl.comments-list')
+
+@if (Auth::check())
+  @include('tpl.comment-add', ['params' => ['torrent', $torrent->id]])
+@endif
+
+@if ($comments->total())
+  <div class="m-t-1 text-center">
+    @include('tpl.paginator', ['paginator' => $comments])
+  </div>
+@endif
 @endsection

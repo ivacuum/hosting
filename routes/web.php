@@ -13,6 +13,7 @@ Route::post('auth/password/remind', 'Auth@passwordRemindPost')->middleware('gues
 Route::get('auth/password/reset/{token}', 'Auth@passwordReset')->middleware('guest');
 Route::post('auth/password/reset', 'Auth@passwordResetPost')->middleware('guest');
 
+Route::post('ajax/comment/{type}/{id}', 'Ajax@comment')->middleware('auth');
 Route::post('ajax/feedback', 'Ajax@feedback');
 
 Route::get('about', 'Home@about');

@@ -147,7 +147,9 @@ class Torrents extends Controller
         \Breadcrumbs::push(trans('torrents.index'), 'torrents');
         \Breadcrumbs::push($torrent->title);
 
-        return view($this->view, compact('torrent'));
+        $comments = $torrent->comments()->with('user')->orderBy('id', 'desc')->paginate();
+
+        return view($this->view, compact('comments', 'torrent'));
     }
 
     protected function applySearchQuery($q, $torrents)
