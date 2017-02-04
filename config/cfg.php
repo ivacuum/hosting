@@ -27,5 +27,8 @@ return [
         'en' => ['posix' => 'en_US.UTF-8'],
     ],
     'sitename' => 'vacuum.kaluga',
+    'telegram' => [
+        'admin_id' => env('TELEGRAM_ADMIN_ID'),
+    ],
 
 ];

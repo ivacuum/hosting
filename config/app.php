@@ -48,6 +48,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\ValidatorServiceProvider::class,
+
+        Telegram\Bot\Laravel\TelegramServiceProvider::class,
     ],
 
     'aliases' => [
