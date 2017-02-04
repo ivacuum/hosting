@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Services\Rto;
+use App\Services\Telegram;
 use App\Torrent;
 use Carbon\Carbon;
 use Illuminate\Support\HtmlString;
@@ -129,10 +130,13 @@ class Torrents extends Controller
         return view($this->view);
     }
 
-    public function magnet(Torrent $torrent)
+    public function magnet(Torrent $torrent, Telegram $telegram)
     {
         $torrent->timestamps = false;
         $torrent->increment('clicks');
+        $torrent->timestamps = true;
+
+        $telegram->notifyAdmin("Клик по магнет-ссылке: {$torrent->clicks}\n{$torrent->title}");
 
         return 'OK';
     }
