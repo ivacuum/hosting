@@ -5,7 +5,7 @@
   <div class="col-md-4 service-container">
     <div class="clearfix">
       <img class="service-image" src="https://ivacuum.org/i/services/magnet.png">
-      <h2 class="service-title"><a class="link" href="{{ action('Torrents@index') }}">{{ trans('torrents.index') }}</a> <span class="label label-warning text-lowercase">{{ trans('index.new') }}</span></h2>
+      <h2 class="service-title"><a class="link" href="{{ action('Torrents@index') }}">{{ trans('torrents.index') }}</a></h2>
     </div>
     @ru
       <p>Сервис для скачивания файлов у многочисленных пользователей сети интернет.</p>
