@@ -8,7 +8,7 @@
 
 @php ($year = false)
 @foreach ($gigs as $gig)
-  <div class="travel-entry">
+  <div class="travel-entry mb-2">
     @if ($year !== $gig->date->year)
       <span class="travel-year">{{ $gig->date->year }}</span>
     @endif
