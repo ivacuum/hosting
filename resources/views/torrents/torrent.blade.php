@@ -20,7 +20,7 @@
   </div>
 </div>
 <rutracker-post>{!! $torrent->html !!}</rutracker-post>
-<div class="m-y-1 text-center">
+<div class="my-3 text-center">
   <a class="btn btn-success js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ action('Torrents@magnet', $torrent) }}">
     {{ trans('torrents.download') }} &middot; {{ ViewHelper::size($torrent->size) }}
   </a>
@@ -33,7 +33,7 @@
 @endif
 
 @if ($comments->total())
-  <div class="m-t-1 text-center">
+  <div class="mt-3 text-center">
     @include('tpl.paginator', ['paginator' => $comments])
   </div>
 @endif

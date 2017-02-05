@@ -5,7 +5,7 @@
 @section('content')
 <div class="row">
   <div class="col-sm-6">
-    <h2 class="m-t-0">{{ trans('life.trips') }}</h2>
+    <h2 class="mt-0">{{ trans('life.trips') }}</h2>
     <ul class="list-inline trips-show-by">
       <li><mark>{{ trans('life.by_year') }}</mark></li>
       <li><a class="link" href="{{ action('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
@@ -14,7 +14,7 @@
 
     @php ($year = false)
     @foreach ($trips as $trip)
-      <div class="travel-entry {{ $year !== false && $year !== $trip->year ? 'm-t-2' : '' }}">
+      <div class="travel-entry mb-2 {{ $year !== false && $year !== $trip->year ? 'mt-4' : '' }}">
         @if ($year !== $trip->year)
           <span class="travel-year">{{ $trip->year }}</span>
         @endif
@@ -29,37 +29,22 @@
     @endforeach
   </div>
   <div class="col-sm-6">
-    <h2 class="m-t-0">{{ trans('life.favorites') }}</h2>
-    @ru
-      <div class="favorites-entry">
-        <a class="link" href="{{ action('Life@page', 'chillout') }}">Chillout</a>
-      </div>
-      <div class="favorites-entry">
-        <a class="link" href="{{ action('Life@page', 'books') }}">Книги</a>
-      </div>
-    @endlang
-    <div class="favorites-entry">
-      <a class="link" href="{{ action('Life@page', 'gigs') }}">
-        {{ trans('menu.gigs') }}
-      </a>
-    </div>
-    @ru
-      <div class="favorites-entry">
-        <a class="link" href="{{ action('Life@page', 'favorite-posts') }}">Любимые посты</a>
-      </div>
-      <div class="favorites-entry">
-        <a class="link" href="{{ action('Life@page', 'podcasts') }}">Подкасты</a>
-      </div>
-      <div class="favorites-entry">
-        <a class="link" href="{{ action('Life@page', 'laundry') }}">Условные обозначения стирки</a>
-      </div>
-      <div class="favorites-entry">
-        <a class="link" href="{{ action('Life@page', 'movies') }}">Фильмы и сериалы</a>
-      </div>
-      <div class="favorites-entry">
-        <a class="link" href="{{ action('Life@page', 'using-in-travels') }}">Чем пользуюсь в путешествиях</a>
-      </div>
-    @endlang
+    <h2 class="mt-0">{{ trans('life.favorites') }}</h2>
+    <ul class="list-unstyled">
+      @ru
+        <li class="mb-2"><a class="link" href="{{ action('Life@page', 'chillout') }}">Chillout</a></li>
+        <li class="mb-2"><a class="link" href="{{ action('Life@page', 'books') }}">Книги</a></li>
+      @endlang
+      <li class="mb-2"><a class="link" href="{{ action('Life@page', 'gigs') }}">{{ trans('menu.gigs') }}</a></li>
+      @ru
+        <li class="mb-2"><a class="link" href="{{ action('Life@page', 'favorite-posts') }}">Любимые посты</a></li>
+        <li class="mb-2"><a class="link" href="{{ action('Life@page', 'podcasts') }}">Подкасты</a></li>
+        <li class="mb-2"><a class="link" href="{{ action('Life@page', 'laundry') }}">Условные обозначения стирки</a></li>
+        <li class="mb-2"><a class="link" href="{{ action('Life@page', 'movies') }}">Фильмы и сериалы</a></li>
+        <li class="mb-2"><a class="link" href="{{ action('Life@page', 'using-in-travels') }}">Чем пользуюсь впутешествиях</a>
+        </li>
+      @endlang
+    </ul>
   </div>
 </div>
 @endsection

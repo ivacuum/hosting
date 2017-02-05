@@ -7,7 +7,7 @@
       Идет загрузка...
     </div>
 
-    <div v-if="thumbnails.length" class="m-y-1">
+    <div v-if="thumbnails.length" class="my-3">
       <div v-for="thumbnail in thumbnails">
         {{ basename(thumbnail.dest) }} ... ok
         <p v-if="hasCoords(thumbnail)">

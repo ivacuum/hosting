@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="col-sm-9">
-    <h2 class="m-t-0">
+    <h2 class="mt-0">
       @include('acp.tpl.back')
       {{ $model->slug }}
     </h2>

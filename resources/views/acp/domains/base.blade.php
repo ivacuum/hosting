@@ -30,7 +30,7 @@
     <div class="pull-right">
       @include('acp.tpl.delete', ['id' => $model])
     </div>
-    <h2 class="m-t-0">
+    <h2 class="mt-0">
       @include('acp.tpl.back')
       {{ $model->domain }}
       <a class="btn btn-default" href="http://{{ $model->domain }}/" target="_blank">

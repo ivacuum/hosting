@@ -10,7 +10,7 @@
           <h4 class="modal-title">{{ trans('life.feedback.heading') }}</h4>
         </div>
         <div class="modal-body">
-          <div hidden class="h4 m-t-0 js-modal-question-text"></div>
+          <div hidden class="h4 mt-0 js-modal-question-text"></div>
           <input hidden class="js-modal-question-input" type="text" name="question" value="">
           <textarea required class="form-control textarea-autosized js-autosize-textarea" name="text" rows="5" placeholder="{{ trans('life.feedback.placeholder') }}"></textarea>
           <p class="help-block">{{ trans('life.feedback.help') }}</p>

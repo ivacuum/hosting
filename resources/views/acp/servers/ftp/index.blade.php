@@ -16,7 +16,7 @@
   @endif
   {{ $dir }}
 </h3>
-<table class="table-stats m-b-1">
+<table class="table-stats">
   @foreach ($dirs as $row)
     <tr>
       <td>

@@ -1,13 +1,13 @@
 @extends('base')
 
 @section('content')
-<h2 class="m-t-0">{{ trans('notifications.index') }}</h2>
+<h2 class="mt-0">{{ trans('notifications.index') }}</h2>
 @if (sizeof($notifications))
   <ul class="list-unstyled">
     @foreach ($notifications as $notification)
       @php ($class_basename = snake_case(class_basename($notification->type)))
-      <li class="p-y-1 border-bottom">
-        <div class="d-table-cell p-r-1 svg-muted-blue">
+      <li class="py-3 border-bottom">
+        <div class="d-table-cell pr-3 svg-muted-blue">
           @if ($class_basename === 'torrent_updated')
             @svg (magnet)
           @else
@@ -15,6 +15,11 @@
           @endif
         </div>
         <div class="d-table-cell">
+          @if ($notification->unread())
+            <span class="svg-unread mr-1 tooltipped tooltipped-s" aria-label="{{ trans('notifications.unread') }}">
+              @svg (circle)
+            </span>
+          @endif
           @if ($class_basename === 'plain_text')
             {{ $notification->data['text'] }}
           @elseif ($class_basename === 'torrent_updated')
@@ -26,10 +31,6 @@
                   title="{{ $notification->created_at->toAtomString() }}">
               {{ $notification->created_at->diffForHumans() }}
             </time>
-            @if (is_null($notification->read_at))
-              &middot;
-              <span class="text-warning">{{ trans('notifications.unread') }}</span>
-            @endif
           </div>
         </div>
       </li>

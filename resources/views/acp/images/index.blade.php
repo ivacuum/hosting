@@ -9,7 +9,7 @@
     {{ ViewHelper::size($size) }}
   </small>
 </h3>
-<div class="btn-toolbar m-b-1">
+<div class="btn-toolbar mb-3">
   <div class="btn-group">
     <a class="btn btn-default {{ !$type ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['type' => null]) }}">
       @svg (th-list)
@@ -41,7 +41,7 @@
   </div>
 </div>
 @if ($user_id)
-  <div class="m-y-1">
+  <div class="my-3">
     <a class="btn btn-default" href="{{ action("$self@index") }}">
       Сбросить все фильтры
       <span class="text-danger">
@@ -102,7 +102,7 @@
       @endforeach
     </table>
 
-    <div class="pull-left m-y-1">
+    <div class="pull-left my-3">
       <form class="form-inline js-batch-form" data-url="{{ action("$self@batch") }}" data-selector=".models-checkbox">
         <div class="form-group">
           <input type="checkbox" class="js-select-all" data-selector=".models-checkbox">
@@ -125,7 +125,7 @@
     </div>
   @endif
 
-  <div class="m-y-1 pull-right clearfix">
+  <div class="my-3 pull-right clearfix">
     @include('tpl.paginator', ['paginator' => $models])
   </div>
 @endif

@@ -5,7 +5,7 @@
   {{ trans("$tpl.index") }}
   @include('acp.tpl.create')
 </h3>
-<table id="tree" class="table-stats m-b-1">
+<table id="tree" class="table-stats">
   <thead>
     <tr>
       <th></th>
@@ -28,7 +28,7 @@
   </tbody>
 </table>
 
-<form class="form-inline">
+<form class="form-inline mt-3">
   <div class="form-group">
     <select class="form-control" name="action" id="batch_action">
       <option value="">Выберите действие...</option>

@@ -72,7 +72,7 @@
         <div class="vk-post-content life-text">{!! nl2br(e($post['text'])) !!}</div>
       @endif
       @if (!empty($post['copy_history']))
-        <div class="life-text {{ $post['text'] ? 'm-t-1' : '' }} m-b-0"><strong>Репост</strong></div>
+        <div class="life-text {{ $post['text'] ? 'mt-3' : '' }} mb-0"><strong>Репост</strong></div>
         <div class="vk-post-content life-text">{!! nl2br(e($post['copy_history'][0]->text)) !!}</div>
       @endif
       @if ($post['attachments'])

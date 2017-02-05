@@ -110,7 +110,7 @@
   <div class="col-md-6">
     <input type="text" class="form-control" name="meta_image" value="{{ old('meta_image', @$model->meta_image) }}">
     @if (@$model->meta_image)
-      <div class="m-t-1">
+      <div class="mt-3">
         <img class="img-responsive img-rounded" src="{{ $model->metaImage() }}">
       </div>
     @endif

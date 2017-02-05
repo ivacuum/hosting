@@ -3,17 +3,17 @@
 @section('content')
 <h3>{{ $news->title }}</h3>
 <p class="text-muted">
-  <span class="svg-muted">
+  <span class="svg-muted mr-1">
     @svg (calendar-o)
   </span>
   {{ $news->created_at->formatLocalized('%e %B %Y') }}
   @if ($news->user->login)
-    <span class="p-l-1 svg-muted">
+    <span class="ml-3 mr-1 svg-muted">
       @svg (pencil)
     </span>
     {{ $news->user->login }}
   @endif
-  <span class="p-l-1 svg-muted">
+  <span class="ml-3 mr-1 svg-muted">
     @svg (eye)
   </span>
   {{ ViewHelper::number($news->views) }}
@@ -27,7 +27,7 @@
 @endif
 
 @if ($comments->total())
-  <div class="m-t-1 text-center">
+  <div class="mt-1 text-center">
     @include('tpl.paginator', ['paginator' => $comments])
   </div>
 @endif

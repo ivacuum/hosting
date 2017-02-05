@@ -26,7 +26,7 @@
 --}}
 
 @if (sizeof($records))
-  <table class="table-stats m-b-1">
+  <table class="table-stats">
     <thead>
       <tr>
         <th>Хост</th>
@@ -133,7 +133,7 @@
     @endforeach
   </table>
 
-  <form class="form-inline" action="{{ action("$self@setServerNsRecords", $model) }}" method="post">
+  <form class="form-inline mt-3" action="{{ action("$self@setServerNsRecords", $model) }}" method="post">
     <p>
       <select class="form-control" name="server">
         <option value="">-----</option>

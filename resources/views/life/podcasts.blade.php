@@ -12,7 +12,7 @@
 <p>Ссылки на любимые передачи и их отдельные выпуски.</p>
 
 <section>
-  <h3 class="m-t-0">Брендятина</h3>
+  <h3 class="mt-0">Брендятина</h3>
   <p>Истории брендов. Послушать можно в <a href="https://itunes.apple.com/ru/podcast/brendatina-istorii-brendov/id510731338?mt=2" class="link">iTunes</a> или <a href="http://brand.podfm.ru/" class="link">podfm.ru</a>.</p>
   <p>Любимые выпуски:</p>
   <ul>

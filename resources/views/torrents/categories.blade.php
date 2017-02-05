@@ -7,11 +7,8 @@
   $newlines_at = [0, 3];
   ?>
   @foreach ($tree as $id => $category)
-    @if ($i > 0 && in_array($i, $newlines_at))
-      </div>
-    @endif
     @if (in_array($i, $newlines_at))
-      <div class="col-sm-6 m-b-1">
+      <div class="col-sm-6 mb-3">
     @endif
     <h3><a class="link" href="{{ action("$self@category", $id) }}">{{ $category['title'] }}</a></h3>
     @if (!empty($category['children']))
@@ -24,10 +21,10 @@
         </div>
       @endforeach
     @endif
-    @if ($loop->last)
+    @php ($i++)
+    @if ($loop->last || in_array($i, $newlines_at))
       </div>
     @endif
-    @php ($i++)
   @endforeach
 </div>
 @endsection

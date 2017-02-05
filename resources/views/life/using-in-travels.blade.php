@@ -12,7 +12,7 @@
 <p>Золотая тройка вещей: паспорт, деньги и телефон.</p>
 
 <section>
-  <h3 class="m-t-0">Мобильные приложения</h3>
+  <h3 class="mt-0">Мобильные приложения</h3>
   <div class="favorites-entry">
     2GIS
     <a href="https://play.google.com/store/apps/details?id=ru.dublgis.dgismobile">
@@ -36,7 +36,7 @@
 </section>
 
 <section>
-  <h3 class="m-t-0">Навигация в городах</h3>
+  <h3 class="mt-0">Навигация в городах</h3>
   <ul class="list-unstyled">
     <li>
       <a class="link" href="http://wikitravel.org">wikitravel.org</a>
@@ -46,7 +46,7 @@
 </section>
 
 <section>
-  <h3 class="m-t-0">Выгодные предложения</h3>
+  <h3 class="mt-0">Выгодные предложения</h3>
   <ul class="list-unstyled">
     <li>
       <a class="link" href="http://vandrouki.ru/">vandrouki.ru</a>
@@ -60,7 +60,7 @@
 </section>
 
 <section>
-  <h3 class="m-t-0">Авиабилеты</h3>
+  <h3 class="mt-0">Авиабилеты</h3>
   <ul class="list-unstyled">
     <li><a class="link" href="https://www.aviasales.ru/?marker=79853">aviasales.ru</a></li>
     <li><a class="link" href="https://www.skyscanner.ru/">skyscanner.ru</a></li>
@@ -68,7 +68,7 @@
 </section>
 
 <section>
-  <h3 class="m-t-0">Жилье</h3>
+  <h3 class="mt-0">Жилье</h3>
   <ul class="list-unstyled">
     <li>
       <a class="link" href="https://www.airbnb.ru/c/spankov1?s=8">airbnb.ru</a>
@@ -82,7 +82,7 @@
 </section>
 
 <section>
-  <h3 class="m-t-0">Автобусы</h3>
+  <h3 class="mt-0">Автобусы</h3>
   <ul class="list-unstyled">
     <li>
       <a class="link" href="https://www.busradar.com/">busradar.com</a>
@@ -92,7 +92,7 @@
 </section>
 
 <section>
-  <h3 class="m-t-0">Железнодорожное сообщение</h3>
+  <h3 class="mt-0">Железнодорожное сообщение</h3>
   <ul class="list-unstyled">
     <li>
       <a class="link" href="https://pass.rzd.ru/">pass.rzd.ru</a>
@@ -109,6 +109,10 @@
     <li>
       <a class="link" href="https://www.thalys.com/">thalys.com</a>
       — Европа
+    </li>
+    <li>
+      <a class="link" href="http://www.seat61.com/">seat61.com</a>
+      — советы по перемещениям на поездах
     </li>
   </ul>
 </section>

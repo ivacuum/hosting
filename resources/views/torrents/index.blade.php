@@ -31,11 +31,11 @@
     @if (sizeof($torrents))
       @foreach ($torrents as $torrent)
         @if (is_null($last_date) || !$torrent->registered_at->isSameDay($last_date))
-          <h4 class="m-t-2">{{ $torrent->fullDate() }}</h4>
+          <h4 class="mt-4">{{ $torrent->fullDate() }}</h4>
           @php ($last_date = $torrent->registered_at)
         @endif
         @php ($category = TorrentCategoryHelper::find($torrent->category_id))
-        <div class="media m-b-1">
+        <div class="media mb-3">
           <div class="media-left torrent-icon" title="{{ $category['title'] }}">
             @php ($icon = $category['icon'] ?? 'file-text-o')
             @svg ($icon)
@@ -49,29 +49,29 @@
             <div class="torrent-list-meta">
               <a class="js-magnet" href="{{ $torrent->magnet() }}" title="{{ trans('torrents.download') }}" data-action="{{ action('Torrents@magnet', $torrent) }}">
                 @svg (magnet)
+                @if ($torrent->clicks > 0)
+                  {{ $torrent->clicks }}
+                @endif
               </a>
-              &nbsp;{{ ViewHelper::size($torrent->size) }}
-              {{--
-              <span class="text-muted">&nbsp;&middot;&nbsp;</span>
-              <span class="text-success">{{ $torrent->seeders }} {{ trans_choice('plural.seeders', $torrent->seeders) }}</span>
-              --}}
+              <span class="mx-1 text-muted">&middot;</span>
+              {{ ViewHelper::size($torrent->size) }}
               @if (empty($category_id) || $category_id != $torrent->category_id)
+                <span class="mx-1 text-muted">&middot;</span>
                 <span class="text-muted">
-                &nbsp;&middot;&nbsp;
                   @svg (folder-o)
                   {{ $category['title'] }}
-              </span>
+                </span>
               @endif
             </div>
           </div>
         </div>
       @endforeach
 
-      <div class="m-t-1 text-center">
+      <div class="mt-3 text-center">
         @include('tpl.paginator', ['paginator' => $torrents])
       </div>
     @else
-      <p class="m-t-2">Подходящих раздач не найдено.</p>
+      <p class="mt-4">Подходящих раздач не найдено.</p>
     @endif
   </div>
 </div>

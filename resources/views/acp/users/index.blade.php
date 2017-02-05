@@ -7,7 +7,7 @@
   @include('acp.tpl.create')
 </h3>
 @if (sizeof($models))
-  <table class="table-stats m-b-1">
+  <table class="table-stats">
     <thead>
       <tr>
         <th>#</th>
@@ -32,7 +32,7 @@
     @endforeach
   </table>
 
-  <div class="m-t-1 pull-right clearfix">
+  <div class="mt-3 pull-right clearfix">
     @include('tpl.paginator', ['paginator' => $models])
   </div>
 @endif

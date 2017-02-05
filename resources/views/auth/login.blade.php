@@ -4,7 +4,7 @@
 @include('tpl.form_errors')
 
 <div class="form-signin text-center">
-  <h3 class="m-b-2">{{ trans('auth.signin_title') }}</h3>
+  <h3 class="mb-4">{{ trans('auth.signin_title') }}</h3>
   <form action="{{ action('Auth@loginPost') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
@@ -24,7 +24,7 @@
       </span>
     </div>
 
-    <div class="m-y-1 clearfix">
+    <div class="my-3 clearfix">
       <div class="pull-left">
         <a class="link" href="{{ action('Auth@passwordRemind') }}">{{ trans('auth.forgot_password') }}</a>
       </div>

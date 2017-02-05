@@ -104,7 +104,7 @@
 
 @ru
   <p>Справочник по расшифровке окончаний названий улиц.</p>
-  <table class="table-stats m-b-1">
+  <table class="table-stats mb-3">
     <thead>
       <tr>
         <th>Финский</th>

@@ -1,4 +1,4 @@
-<div class="row m-t-1">
+<div class="row mt-3">
   <div class="col-sm-8">
     <form action="{{ action('Ajax@comment', $params) }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}

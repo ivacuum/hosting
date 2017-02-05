@@ -1,7 +1,7 @@
 @extends('dcpp.base')
 
 @section('content')
-<h1 class="m-t-0">{{ trans('dcpp.download') }} {{ $software_title }} {{ $software[0]['version'] }}</h1>
+<h1 class="mt-0">{{ trans('dcpp.download') }} {{ $software_title }} {{ $software[0]['version'] }}</h1>
 @section('download_latest')
   <p>
     <a class="btn btn-success" href="{{ action('Files@download', $software[0]['id']) }}">
@@ -17,13 +17,13 @@
 @show
 
 <section>
-  <h2 class="m-t-0">{{ trans('dcpp.about_software') }}</h2>
+  <h2 class="mt-0">{{ trans('dcpp.about_software') }}</h2>
   @yield('about_software')
 </section>
 
 @if (!empty($software_screenshots))
   <section>
-    <h2 class="m-t-0">{{ trans('dcpp.screenshots') }}</h2>
+    <h2 class="mt-0">{{ trans('dcpp.screenshots') }}</h2>
     <p>
       @foreach ($software_screenshots as $screenshot)
         <a href="{{ $screenshot['full'] }}">
@@ -36,7 +36,7 @@
 
 @if (sizeof($software) > 1 || !empty($developer_site))
   <section>
-    <h2 class="m-t-0">{{ trans('dcpp.links') }}</h2>
+    <h2 class="mt-0">{{ trans('dcpp.links') }}</h2>
     <div class="row">
       @if (sizeof($software) > 1)
         <div class="col-md-4">

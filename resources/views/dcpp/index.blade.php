@@ -1,7 +1,7 @@
 @extends('dcpp.base')
 
 @section('content')
-<h1 class="m-t-0">{{ trans('dcpp.index') }}</h1>
+<h1 class="mt-0">{{ trans('dcpp.index') }}</h1>
 
 <p>
   <a class="link" href="{{ action('Dcpp@page', 'airdc') }}">{{ trans('dcpp.airdc') }}</a>

@@ -8,7 +8,7 @@
   </form>
 </h3>
 @if (sizeof($models))
-  <table class="table-stats m-b-1">
+  <table class="table-stats">
     <thead>
       <tr>
         <th><input type="checkbox" class="js-select-all" data-selector=".domains-checkbox"></th>
@@ -67,7 +67,7 @@
   </table>
 @endif
 
-<div class="pull-left m-b-1">
+<div class="pull-left my-3">
   <form class="form-inline js-batch-form" data-url="/acp/domains/batch" data-selector=".domains-checkbox">
     <div class="form-group">
       <select class="form-control" name="action" id="batch_action">
@@ -92,12 +92,12 @@
 
 <div class="clearfix"></div>
 
-<p>
+<div>
   <span class="label label-default">...</span> &nbsp;есть заметки &nbsp;
   <span class="label label-info">?</span> &nbsp;не в нашей панели &nbsp;
   <span class="label label-danger">$</span> &nbsp;просрочена оплата &nbsp;
   <span class="label label-warning">$</span> &nbsp;подходит срок оплаты
-</p>
+</div>
 @else
   <div class="alert alert-warning">
     По заданному критерию не найдено ни одного домена.

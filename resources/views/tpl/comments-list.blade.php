@@ -1,5 +1,5 @@
 @if ($comments->total() || Auth::check())
-  <div class="h3 m-t-3">
+  <div class="h3 mt-5">
     {{ trans('comments.discussion') }}
     <small>{{ $comments->total() }}</small>
   </div>
@@ -7,7 +7,7 @@
 @foreach ($comments as $comment)
   <div class="media">
     <div class="media-left">
-      @include ('tpl.svg-avatar', [
+      @include('tpl.svg-avatar', [
         'bg' => ViewHelper::avatarBg($comment->user_id),
         'text' => !is_null($comment->user) ? $comment->user->avatarName() : null]
       )
@@ -20,7 +20,7 @@
           <em>deleted user</em>
         @endif
         <span class="comment-meta">
-            &nbsp;&middot;&nbsp;
+          <span class="mx-1">&middot;</span>
           {{ $comment->fullDate() }}
           </span>
       </div>
