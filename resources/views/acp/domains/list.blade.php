@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-    @foreach ($models as $i => $model)
+    @foreach ($models as $model)
       <tr class="js-dblclick-edit" data-dblclick-url="/acp/domains/{{ $model->domain }}/edit?goto={{ $back_url }}">
         <td>
           <input class="domains-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}">
@@ -70,17 +70,19 @@
 <div class="pull-left my-3">
   <form class="form-inline js-batch-form" data-url="/acp/domains/batch" data-selector=".domains-checkbox">
     <div class="form-group">
-      <select class="form-control" name="action" id="batch_action">
-        <option value="">Выберите действие...</option>
-        @if ($filter == 'trashed')
-          <option value="restore">Восстановить</option>
-          <option value="force_delete">Удалить окончательно</option>
-        @else
-          <option value="activate">Включить мониторинг</option>
-          <option value="deactivate">Выключить мониторинг</option>
-          <option value="delete">Удалить</option>
-        @endif
-      </select>
+      <div class="form-select d-inline-block mr-1">
+        <select class="form-control" name="action" id="batch_action">
+          <option value="">Выберите действие...</option>
+          @if ($filter == 'trashed')
+            <option value="restore">Восстановить</option>
+            <option value="force_delete">Удалить окончательно</option>
+          @else
+            <option value="activate">Включить мониторинг</option>
+            <option value="deactivate">Выключить мониторинг</option>
+            <option value="delete">Удалить</option>
+          @endif
+        </select>
+      </div>
     </div>
     <button class="btn btn-default" id="batch_submit">Выполнить</button>
   </form>

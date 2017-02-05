@@ -13,13 +13,15 @@
         <th></th>
         <th>Город</th>
         <th>URL</th>
-        <th>Код IATA</th>
+        <th>IATA</th>
         <th></th>
       </tr>
     </thead>
     @foreach ($models as $model)
       <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
-        <td>{{ $model->country->emoji }}</td>
+        <td class="tooltipped tooltipped-s" aria-label="{{ $model->country->title }}">
+          {{ $model->country->emoji }}
+        </td>
         <td>
           <a class="link" href="{{ action("$self@show", $model) }}">
             {{ $model->title }}
@@ -33,7 +35,9 @@
         <td>{{ $model->iata }}</td>
         <td>
           @if ($model->lat && $model->lon)
-            @svg (map-marker)
+            <span class="tooltipped tooltipped-s" aria-label="Геолокация задана">
+              @svg (map-marker)
+            </span>
           @endif
         </td>
       </tr>

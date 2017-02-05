@@ -13,7 +13,7 @@
         <th>ID</th>
         <th>Название</th>
         <th>Размер</th>
-        <th>Скачиваний</th>
+        <th class="text-right">&darr;</th>
       </tr>
     </thead>
     @foreach ($models as $model)
@@ -25,7 +25,7 @@
           </a>
         </td>
         <td>{{ ViewHelper::size($model->size) }}</td>
-        <td>{{ $model->downloads }}</td>
+        <td class="text-right">{{ ViewHelper::number($model->downloads) }}</td>
       </tr>
     @endforeach
   </table>

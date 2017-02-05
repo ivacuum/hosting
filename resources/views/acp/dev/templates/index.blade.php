@@ -1,14 +1,13 @@
 @extends('acp.dev.base')
 
 @section('content')
-<h2 class="mt-0">Доступные шаблоны</h2>
 <table class="table-stats">
   <thead>
     <tr>
       <th>Шаблон</th>
-      <th>Фото</th>
+      <th class="text-right">Фото</th>
       @foreach (config('cfg.locales') as $key => $value)
-        <th>
+        <th class="text-right">
           @if ($key === 'ru')
             &#x1f1f7;&#x1f1fa;
           @elseif ($key === 'en')
@@ -23,9 +22,9 @@
   <tfoot>
     <tr>
       <td><strong>Итого:</strong></td>
-      <td>{{ $total->pics }}</td>
+      <td class="text-right">{{ ViewHelper::number($total->pics) }}</td>
       @foreach (config('cfg.locales') as $key => $value)
-        <td>{{ $total->{$key} }}</td>
+        <td class="text-right">{{ ViewHelper::number($total->{$key}) }}</td>
       @endforeach
     </tr>
   </tfoot>
@@ -37,9 +36,9 @@
             {{ $template->name }}
           </a>
         </td>
-        <td>{{ $template->pics ?: '—' }}</td>
+        <td class="text-right">{{ $template->pics ?: '—' }}</td>
         @foreach (config('cfg.locales') as $key => $value)
-          <td>{{ $template->i18n->{$key} ?: '—' }}</td>
+          <td class="text-right">{{ $template->i18n->{$key} ?: '—' }}</td>
         @endforeach
       </tr>
     @endforeach

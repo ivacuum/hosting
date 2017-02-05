@@ -12,18 +12,18 @@
       <tr>
         <th>#</th>
         <th>Аккаунт</th>
-        <th>Доменов</th>
+        <th class="text-right">Доменов</th>
       </tr>
     </thead>
-    @foreach ($models as $i => $model)
+    @foreach ($models as $model)
       <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
-        <td>{{ $i + 1 }}</td>
+        <td>{{ $loop->iteration }}</td>
         <td>
           <a href="{{ action("$self@show", $model) }}" class="link">
             {{ $model->account }}
           </a>
         </td>
-        <td>{{ sizeof($model->domains) }}</td>
+        <td class="text-right">{{ sizeof($model->domains) }}</td>
       </tr>
     @endforeach
   </table>

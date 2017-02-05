@@ -42,8 +42,8 @@
         <div class="col-md-4">
           <h4>{{ trans('dcpp.earlier_versions') }}</h4>
           <ul>
-            @foreach ($software as $i => $soft)
-              @continue ($i === 0)
+            @foreach ($software as $soft)
+              @continue ($loop->index === 0)
               <li><a class="link" href="{{ action('Files@download', $soft['id']) }}">{{ trans('dcpp.download') }} {{ $software_title }} {{ $soft['version'] }}{{ $soft['dl_suffix'] }}</a></li>
             @endforeach
           </ul>

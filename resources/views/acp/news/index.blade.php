@@ -12,15 +12,11 @@
       <tr>
         <th>ID</th>
         <th>Название</th>
-        <th>
-          <div class="pull-right clearfix">
-            @svg (eye)
-          </div>
-        </th>
+        <th class="text-right">@svg (eye)</th>
         <th>Дата</th>
       </tr>
     </thead>
-    @foreach ($models as $i => $model)
+    @foreach ($models as $model)
       <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
         <td>{{ $model->id }}</td>
         <td>

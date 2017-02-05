@@ -18,9 +18,9 @@
         <th></th>
       </tr>
     </thead>
-    @foreach ($models as $i => $model)
+    @foreach ($models as $model)
       <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
-        <td>{{ $i + 1 }}</td>
+        <td>{{ $loop->iteration }}</td>
         <td>
           <a class="link" href="{{ action("$self@show", $model) }}">
             {{ $model->title }}
@@ -28,9 +28,13 @@
         </td>
         <td>
           @if ($model->status === App\Trip::STATUS_HIDDEN)
-            @svg (eye)
+            <span class="tooltipped tooltipped-s" aria-label="Заметка скрыта">
+              @svg (eye)
+            </span>
           @elseif ($model->status === App\Trip::STATUS_INACTIVE)
-            @svg (pencil)
+            <span class="tooltipped tooltipped-s" aria-label="Заметка неактивна">
+              @svg (pencil)
+            </span>
           @endif
         </td>
         <td>{{ $model->localizedDate() }}</td>
@@ -41,7 +45,9 @@
         </td>
         <td>
           @if ($model->meta_image)
-            @svg (paperclip)
+            <span class="tooltipped tooltipped-s" aria-label="Задано фото">
+              @svg (paperclip)
+            </span>
           @endif
         </td>
       </tr>

@@ -65,7 +65,7 @@
 @endif
 
 <div class="js-shortcuts-items">
-@foreach ($posts as $i => $post)
+@foreach ($posts as $post)
   <div class="panel panel-default shortcuts-item">
     <div class="panel-body vk-post-container">
       @if ($post['text'])
@@ -157,7 +157,7 @@
       @endif
       <div class="vk-post-meta text-muted text-right">
         <samp><small>
-          #{{ $i + 1 }}
+          #{{ $loop->iteration }}
           @svg (bullhorn)
           <span class="text-muted">{{ $post['reposts'] }}</span>
           @svg (heart)

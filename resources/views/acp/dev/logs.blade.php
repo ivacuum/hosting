@@ -15,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-  @foreach ($lines->reverse() as $i => $line)
+  @foreach ($lines->reverse() as $line)
     <tr>
       <td>
         <span title="{{ $line->time }}">{{ $loop->iteration }}</span>

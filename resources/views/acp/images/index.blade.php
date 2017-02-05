@@ -5,7 +5,7 @@
   {{ trans("$tpl.index") }}
   <small>
     {{ ViewHelper::number($models->total()) }}
-    &middot;
+    <span class="mx-1">&middot;</span>
     {{ ViewHelper::size($size) }}
   </small>
 </h3>
@@ -65,7 +65,7 @@
           <th>ID</th>
           <th>Изображение</th>
           <th>Размер</th>
-          <th>@svg (eye)</th>
+          <th class="text-right">@svg (eye)</th>
           <th>Без просмотров</th>
           <th></th>
         </tr>
@@ -73,14 +73,14 @@
       @foreach ($models as $model)
         <tr class="js-tick-onclick" data-tick="#checkbox_{{ $model->id }}">
           <td><input class="models-checkbox" type="checkbox" id="checkbox_{{ $model->id }}" name="ids[]" value="{{ $model->id }}"></td>
-          <td><a class="link" href="{{ action("$self@show", $model) }}">{{ $model->id }}</a></td>
+          <td>{{ $model->id }}</td>
           <td class="text-center">
             <a href="{{ action("$self@show", $model) }}">
               <img src="{{ $model->thumbnailSecretUrl() }}">
             </a>
           </td>
           <td class="text-muted">{{ ViewHelper::size($model->size) }}</td>
-          <td>
+          <td class="text-right">
             @if ($model->views > 1500)
               <span class="label label-success">{{ ViewHelper::number($model->views) }}</span>
             @else
@@ -102,14 +102,16 @@
       @endforeach
     </table>
 
-    <div class="pull-left my-3">
+    <div class="pull-left mt-3">
       <form class="form-inline js-batch-form" data-url="{{ action("$self@batch") }}" data-selector=".models-checkbox">
         <div class="form-group">
           <input type="checkbox" class="js-select-all" data-selector=".models-checkbox">
-          <select class="form-control" name="action" id="batch_action">
-            {{--<option value="">Выберите действие...</option>--}}
-            <option value="delete">Удалить</option>
-          </select>
+          <div class="form-select d-inline-block mx-1">
+            <select class="form-control" name="action" id="batch_action">
+              {{--<option value="">Выберите действие...</option>--}}
+              <option value="delete">Удалить</option>
+            </select>
+          </div>
         </div>
         <button class="btn btn-default" id="batch_submit">Выполнить</button>
       </form>
@@ -125,7 +127,7 @@
     </div>
   @endif
 
-  <div class="my-3 pull-right clearfix">
+  <div class="mt-3 pull-right clearfix">
     @include('tpl.paginator', ['paginator' => $models])
   </div>
 @endif

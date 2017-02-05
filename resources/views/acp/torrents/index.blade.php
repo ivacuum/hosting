@@ -4,7 +4,6 @@
 <h3 class="mt-0">
   {{ trans("$tpl.index") }}
   <small>{{ $models->total() }}</small>
-  @include('acp.tpl.create')
 </h3>
 @if (sizeof($models))
   <table class="table-stats">
@@ -12,7 +11,7 @@
       <tr>
         <th>ID</th>
         <th>Автор</th>
-        <th>@svg (magnet)</th>
+        <th class="text-right">@svg (magnet)</th>
         <th>Название</th>
       </tr>
     </thead>
@@ -24,7 +23,7 @@
             {{ $model->user->displayName() }}
           </a>
         </td>
-        <td>
+        <td class="text-right">
           @if ($model->clicks > 0)
             {{ ViewHelper::number($model->clicks) }}</td>
           @endif

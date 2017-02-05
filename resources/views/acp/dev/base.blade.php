@@ -3,7 +3,7 @@
 @section('content_header')
 <div class="row">
   <div class="col-sm-3">
-    <ul class="list-group list-group-svg">
+    <ul class="list-group text-center">
       <a class="list-group-item {{ 0 === strpos($view, 'acp.dev.templates') ? 'active' : '' }}" href="{{ action('Acp\Dev\Templates@index') }}">
         {{ trans('acp.dev.templates.index') }}
       </a>

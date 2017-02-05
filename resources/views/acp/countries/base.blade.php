@@ -3,7 +3,7 @@
 @section('content_header')
 <div class="row">
   <div class="col-sm-3">
-    <div class="list-group list-group-svg">
+    <div class="list-group text-center">
       <a class="list-group-item {{ $view == "$tpl.show" ? 'active' : '' }}" href="{{ action("$self@show", $model) }}">
         {{ trans("$tpl.show") }}
       </a>

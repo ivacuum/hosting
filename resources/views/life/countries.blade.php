@@ -23,7 +23,7 @@
         @else
           <strong>{{ $country->title }}</strong>:
         @endif
-        @foreach ($country->cities as $i => $city)
+        @foreach ($country->cities as $city)
           @continue ($city->trips_count === 0)
           @if ($city->trips_published_count)
             <a class="link" href="{{ action('Life@page', $city->slug) }}">{{ $city->title }}</a>{{ !$loop->last ? ',' : '' }}

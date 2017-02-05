@@ -24,11 +24,6 @@ class Torrents extends Controller
         return view($this->view, compact('models', 'user_id'));
     }
 
-    public function create()
-    {
-        return view($this->view);
-    }
-
     public function destroy(Model $model)
     {
         $model->delete();
@@ -47,13 +42,6 @@ class Torrents extends Controller
     public function show(Model $model)
     {
         return view($this->view, compact('model'));
-    }
-
-    public function store(ModelCreate $request)
-    {
-        Model::create($request->all());
-
-        return redirect()->action("{$this->class}@index");
     }
 
     public function update(Model $model, ModelEdit $request)
