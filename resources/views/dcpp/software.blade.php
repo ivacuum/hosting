@@ -61,14 +61,14 @@
   </section>
 @endif
 
-<div class="mt-3 text-center">
-  @if (App::environment('production'))
+@if (App::environment('production'))
+  <div class="mt-3 google-b-horizontal">
     <ins class="adsbygoogle d-block"
          data-ad-client="ca-pub-7802683087624570"
          data-ad-slot="1858304644"
          data-ad-format="auto"></ins>
-  @elseif (App::environment('local'))
-    <div class="my-3 banner-local google-b-horizontal"></div>
-  @endif
-</div>
+  </div>
+@elseif (App::environment('local'))
+  <div class="mt-3 banner-local google-b-horizontal"></div>
+@endif
 @endsection
