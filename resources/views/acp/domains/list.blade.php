@@ -37,20 +37,20 @@
             </span>
           @endif
           @if ($model->text)
-            <span class="label label-default tip" title="есть заметки">...</span>
+            <span class="label label-default tooltipped tooltipped-s" aria-label="есть заметки">...</span>
           @endif
           @if (!$model->domain_control)
-            <span class="label label-info tip" title="не в нашей панели">?</span>
+            <span class="label label-info tooltipped tooltipped-s" aria-label="не в нашей панели">?</span>
           @endif
           @if ($model->domain_control and $model->isExpired())
-            <span class="label label-danger tip" title="просрочена оплата">$</span>
+            <span class="label label-danger tooltipped tooltipped-s" aria-label="просрочена оплата">$</span>
           @endif
           @if ($model->domain_control and $model->isExpiringSoon())
-            <span class="label label-warning tip" title="подходит срок оплаты">$</span>
+            <span class="label label-warning tooltipped tooltipped-s" aria-label="подходит срок оплаты">$</span>
           @endif
         </td>
         <td class="text-muted">
-          <span class="tip" title="{{ $model->paid_till }}">
+          <span class="tooltipped tooltipped-s" aria-label="{{ $model->paid_till }}">
             {{ $model->paid_till->toDateString() }}
           </span>
         </td>

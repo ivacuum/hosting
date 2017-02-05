@@ -112,7 +112,6 @@ class Application {
   }
 
   initOnReadyAndPjax(pjax = false) {
-    $('.tip').tooltip()
     this.initVue()
     this.autosizeTextareas()
 

@@ -41,3 +41,10 @@ $spacers: (
 
 $border-color: #eee;
 $border-width: 1px;
+
+// Tooltips
+$tooltip-max-width: 250px;
+$tooltip-background-color: rgba(0, 0, 0, 0.8);
+$tooltip-text-color: #fff;
+$tooltip-delay: 0.4s;
+$tooltip-duration: 0.1s;

@@ -74,7 +74,7 @@
         @section('header_user')
           @if (Auth::check())
             <li>
-              <a class="{{ $self == 'Notifications' ? 'navbar-selected' : '' }}" href="{{ action('Notifications@index') }}">
+              <a class="tooltipped tooltipped-s {{ $self == 'Notifications' ? 'navbar-selected' : '' }}" href="{{ action('Notifications@index') }}" aria-label="{{ trans('notifications.index') }}">
                 @svg (bell)
                 <span class="counter-label">{{ !is_null(Auth::user()->unreadNotifications()->first()) ? '!' : '' }}</span>
               </a>
