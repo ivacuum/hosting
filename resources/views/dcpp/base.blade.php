@@ -66,10 +66,23 @@
 @section('header_user')
 @endsection
 
+@section('content_footer')
+@if (App::environment('production'))
+  <div class="mt-3 google-b-horizontal">
+    <ins class="adsbygoogle d-block"
+         data-ad-client="ca-pub-7802683087624570"
+         data-ad-slot="1858304644"
+         data-ad-format="auto"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+@elseif (App::environment('local'))
+  <div class="mt-3 banner-local google-b-horizontal"></div>
+@endif
+@endsection
+
 @section('footer')
 <ul class="list-inline">
   <li>&copy; {{ date('Y') }} ArtFly</li>
-  <li>&middot;</li>
   <li>
     <a class="link" href="mailto:{{ config('email.dc') }}">
       {{ trans('menu.feedback') }}
