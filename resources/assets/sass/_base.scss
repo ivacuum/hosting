@@ -17,11 +17,14 @@ body {
 body.modal-open { overflow: visible; }
 
 footer {
-  border-top: 1px solid #eee;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  background: #fafafa;
+  border-top: 1px solid $border-color;
+  padding-top: 0.7rem;
+  padding-bottom: 0.8rem;
   margin-top: 1.5rem;
   color: #777;
+  font-size: 13px;
+  line-height: 18px;
 
   ul { margin-bottom: 0; }
 }

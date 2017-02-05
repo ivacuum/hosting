@@ -113,14 +113,13 @@
   </div>
 </div>
 <div class="container-full">
-<div class="container">
-@section('breadcrumbs')
-@include('tpl.breadcrumbs', ['breadcrumbs' => $breadcrumbs ?? Breadcrumbs::get()])
-@show
-
-@if (Session::has('message'))
-  <div class="alert alert-info">{{ Session::get('message') }}</div>
-@endif
+  @section('breadcrumbs')
+    @include('tpl.breadcrumbs', ['breadcrumbs' => $breadcrumbs ?? Breadcrumbs::get()])
+  @show
+  <div class="container">
+    @if (Session::has('message'))
+      <div class="alert alert-info">{{ Session::get('message') }}</div>
+    @endif
 
 <div id="pjax_container">
 @endif
@@ -129,14 +128,14 @@
 @yield('content_footer')
 @if (!Request::pjax())
 </div>
-</div>
+
+  </div>
 </div>
 <footer>
   <div class="container">
     @section('footer')
       <ul class="list-inline">
         <li>&copy; {{ date('Y') }} vacuum</li>
-        <li>&middot;</li>
         <li>
           <a class="link" href="mailto:{{ config('email.support') }}">
             {{ trans('menu.feedback') }}
@@ -145,11 +144,6 @@
         <li>
           <a class="link" href="https://vk.com/ivacuum">
             {{ trans('menu.vk') }}
-          </a>
-        </li>
-        <li class="hidden-xs">
-          <a class="link" href="https://www.instagram.com/ivacuum">
-            {{ trans('menu.instagram') }}
           </a>
         </li>
       </ul>
