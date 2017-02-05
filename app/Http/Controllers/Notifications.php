@@ -1,7 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-
 class Notifications extends Controller
 {
     public function index()
@@ -9,7 +7,7 @@ class Notifications extends Controller
         $user = $this->request->user();
         $notifications = $user->notifications;
 
-        $user->unreadNotifications()->update(['read_at' => Carbon::now()]);
+        $user->markNotificationsAsRead();
 
         return view($this->view, compact('notifications'));
     }

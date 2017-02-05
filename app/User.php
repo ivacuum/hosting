@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use App\Notifications\ResetPassword;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -86,6 +87,24 @@ class User extends Authenticatable
     public function isRoot()
     {
         return $this->id === 1;
+    }
+
+    public function markNotificationsAsRead()
+    {
+        $have_unread = false;
+
+        foreach ($this->notifications as $notification) {
+            if ($notification->unread()) {
+                $have_unread = true;
+                break;
+            }
+        }
+
+        if ($have_unread) {
+            $this->unreadNotifications()->update(['read_at' => Carbon::now()]);
+        }
+
+        return $have_unread;
     }
 
     public function publicName()
