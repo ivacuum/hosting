@@ -14,7 +14,6 @@
 .city-trips,
 .travel-month {
   color: #777;
-  margin-left: 3px;
   font-size: 12px;
 }
 
@@ -37,6 +36,7 @@
   }
 }
 
+/*
 .cover {
   position: relative;
   margin-bottom: 1.5em;
@@ -98,6 +98,7 @@
     font-size: 36px;
   }
 }
+*/
 
 .img-container .pic-1000x750 {
   width: 1000px;
@@ -151,16 +152,14 @@
   flex-flow: column-reverse wrap;
   justify-content: space-between;
   font-size: 14px;
-  margin-top: 2em;
+  margin-top: 2rem;
   text-align: center;
 
-  @media (min-width: 768px) {
-    flex-flow: row wrap;
-  }
+  @media (min-width: 768px) { flex-flow: row wrap; }
 }
 
 .travel-timeline {
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
 
   @media (min-width: $screen-sm-min) { margin-bottom: 0; }
 }
@@ -177,9 +176,5 @@
   @media (min-width: $screen-sm-min) { height: 400px; }
 }
 
-.trip-text {
-  max-width: 1000px;
-  //margin: 0 auto;
-}
-
+.trip-text { max-width: 1000px; }
 .trips-show-by { font-size: 13px; }

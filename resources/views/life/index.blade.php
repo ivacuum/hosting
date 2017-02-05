@@ -23,7 +23,7 @@
         @else
           {{ $trip->title }}
         @endif
-        <span class="travel-month">{{ $trip->period }}</span>
+        <span class="ml-1 travel-month">{{ $trip->period }}</span>
       </div>
       @php ($year = $trip->year)
     @endforeach
