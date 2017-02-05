@@ -17,7 +17,7 @@
   <ol>
     @foreach ($countries as $country)
       @continue ($country->trips_count === 0)
-      <li class="countries-list-country">
+      <li class="mb-2">
         @if ($country->trips_published_count)
           <a class="link" href="{{ action('Life@country', $country->slug) }}"><strong>{{ $country->title }}</strong></a>:
         @else
