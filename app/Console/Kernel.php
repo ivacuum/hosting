@@ -32,7 +32,7 @@ class Kernel extends ConsoleKernel
     {
         $cron_output = config('cfg.cron_output');
 
-        $schedule->command('app:notifications-purge')->cron('0 2 * * *')
+        $schedule->command('app:notifications-purge')->cron('0 2,14 * * *')
             ->appendOutputTo($cron_output);
 
         $schedule->command('app:rto-update')->cron('0 */6 * * *')
