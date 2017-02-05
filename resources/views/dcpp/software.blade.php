@@ -67,6 +67,7 @@
          data-ad-client="ca-pub-7802683087624570"
          data-ad-slot="1858304644"
          data-ad-format="auto"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 @elseif (App::environment('local'))
   <div class="mt-3 banner-local google-b-horizontal"></div>
