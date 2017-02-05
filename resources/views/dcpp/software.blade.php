@@ -62,9 +62,13 @@
 @endif
 
 <div class="mt-3 text-center">
-  <ins class="adsbygoogle"
-       style="display: inline-block; width: 728px; height: 90px;"
-       data-ad-client="ca-pub-7802683087624570"
-       data-ad-slot="8323640641"></ins>
+  @if (App::environment('production'))
+    <ins class="adsbygoogle d-block"
+         data-ad-client="ca-pub-7802683087624570"
+         data-ad-slot="1858304644"
+         data-ad-format="auto"></ins>
+  @elseif (App::environment('local'))
+    <div class="my-3 banner-local google-b-horizontal"></div>
+  @endif
 </div>
 @endsection
