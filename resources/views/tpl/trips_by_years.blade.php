@@ -1,6 +1,6 @@
 @php ($year = false)
 @foreach ($trips as $trip)
-  <div class="travel-entry">
+  <div class="travel-entry mb-2">
     @if ($year !== $trip->year)
       <span class="travel-year">{{ $trip->year }}</span>
     @endif

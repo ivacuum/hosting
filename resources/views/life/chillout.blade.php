@@ -8,7 +8,7 @@
 ])
 
 @section('content')
-<div class="h2">Chillout</div>
+<h2 class="mt-0">Chillout</h2>
 <p>Спокойная музыка для фона.</p>
 
 <ul>

@@ -6,7 +6,7 @@
 <div hidden id="trip_city_map" class="trip-city-map"></div>
 <div class="row">
   <div class="col-sm-6">
-    <h2>
+    <h2 class="mt-0">
       <span class="emoji">{{ $city->country->emoji }}</span>
       {{ $city->title }}
       @include('tpl.city-map-button')
