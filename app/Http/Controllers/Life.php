@@ -9,6 +9,8 @@ class Life extends Controller
 {
     public function index()
     {
+        \Breadcrumbs::push(trans('menu.life'));
+
         $trips = Trip::visible()->orderBy('date_start', 'desc')->get();
 
         return view($this->view, compact('trips'));

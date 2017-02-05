@@ -3,7 +3,7 @@
 ])
 
 @section('content')
-<h2>
+<h2 class="mt-0">
   {{ trans('life.visited_countries') }}
   <small>{{ sizeof($countries) }}</small>
 </h2>
