@@ -17,7 +17,7 @@
     @else
       {{ $gig->artist->title }}
     @endif
-    <span class="travel-month">{{ $gig->shortDate() }}</span>
+    <span class="ml-1 travel-month">{{ $gig->shortDate() }}</span>
   </div>
   @php ($year = $gig->date->year)
 @endforeach
