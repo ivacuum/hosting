@@ -27,12 +27,9 @@
 </div>
 
 @include('tpl.comments-list')
+@include('tpl.comment-add', ['params' => ['torrent', $torrent->id]])
 
-@if (Auth::check())
-  @include('tpl.comment-add', ['params' => ['torrent', $torrent->id]])
-@endif
-
-@if ($comments->total())
+@if ($comments->hasPages())
   <div class="mt-3 text-center">
     @include('tpl.paginator', ['paginator' => $comments])
   </div>

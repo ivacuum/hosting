@@ -21,12 +21,9 @@
 <div>{!! $news->html !!}</div>
 
 @include('tpl.comments-list')
+@include('tpl.comment-add', ['params' => ['news', $news->id]])
 
-@if (Auth::check())
-  @include('tpl.comment-add', ['params' => ['news', $news->id]])
-@endif
-
-@if ($comments->total())
+@if ($comments->hasPages())
   <div class="mt-1 text-center">
     @include('tpl.paginator', ['paginator' => $comments])
   </div>

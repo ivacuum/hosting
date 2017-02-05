@@ -1,9 +1,7 @@
-@if ($comments->total() || Auth::check())
-  <div class="h3 mt-5">
-    {{ trans('comments.discussion') }}
-    <small>{{ $comments->total() }}</small>
-  </div>
-@endif
+<div class="h3 mt-5">
+  {{ trans('comments.discussion') }}
+  <small>{{ $comments->total() }}</small>
+</div>
 @foreach ($comments as $comment)
   <div class="media">
     <div class="media-left">
