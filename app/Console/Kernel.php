@@ -35,7 +35,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('app:notifications-purge')->cron('0 2 * * *')
             ->appendOutputTo($cron_output);
 
-        $schedule->command('app:rto-update')->cron('0 4 * * *')
+        $schedule->command('app:rto-update')->cron('0 */6 * * *')
             ->appendOutputTo($cron_output);
 
         /*
