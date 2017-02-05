@@ -1,7 +1,7 @@
 @extends('acp.base')
 
 @section('content')
-<h3>
+<h3 class="mt-0">
   {{ trans("$tpl.index") }}
   <small>{{ $models->total() }}</small>
   @include('acp.tpl.create')
@@ -12,7 +12,11 @@
       <tr>
         <th>ID</th>
         <th>Название</th>
-        <th>@svg (eye)</th>
+        <th>
+          <div class="pull-right clearfix">
+            @svg (eye)
+          </div>
+        </th>
         <th>Дата</th>
       </tr>
     </thead>
@@ -24,7 +28,7 @@
             {{ $model->title }}
           </a>
         </td>
-        <td>{{ ViewHelper::number($model->views) }}</td>
+        <td class="text-right">{{ ViewHelper::number($model->views) }}</td>
         <td>{{ ViewHelper::dateShort($model->created_at) }}</td>
       </tr>
     @endforeach

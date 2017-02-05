@@ -10,7 +10,7 @@
 @php ($freebsd_version = '11.0')
 
 @section('content')
-<h2>Сниппеты для выполнения различных задач на ОС FreeBSD</h2>
+<h2 class="mt-0">Сниппеты для выполнения различных задач на ОС FreeBSD</h2>
 
 <div class="shortcuts-item">
 <pre class="terminal">
@@ -103,5 +103,5 @@
 </pre>
 </div>
 
-<p>Больше полезностей на <a class="link" href="http://www.cyberciti.biz/faq/category/freebsd/">cyberciti.biz</a>.</p>
+<div>Больше полезностей на <a class="link" href="http://www.cyberciti.biz/faq/category/freebsd/">cyberciti.biz</a>.</div>
 @endsection

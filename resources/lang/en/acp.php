@@ -60,7 +60,11 @@ return [
     'gigs.index' => 'Gigs',
     'gigs.create' => 'New gig',
 
+    'images.show' => 'Image',
+    'images.index' => 'Images',
+
     'news.add' => 'Post news',
+    'news.www' => 'View on site',
     'news.edit' => 'Edit',
     'news.show' => 'News',
     'news.index' => 'News',

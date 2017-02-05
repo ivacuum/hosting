@@ -1,7 +1,7 @@
 @extends('acp.base')
 
 @section('content')
-<h3>
+<h3 class="mt-0">
   {{ trans("$tpl.index") }}
   <small>{{ $models->total() }}</small>
   @include('acp.tpl.create')

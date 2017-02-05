@@ -37,9 +37,9 @@
             {{ $template->name }}
           </a>
         </td>
-        <td>{{ $template->pics }}</td>
+        <td>{{ $template->pics ?: '—' }}</td>
         @foreach (config('cfg.locales') as $key => $value)
-          <td>{{ $template->i18n->{$key} }}</td>
+          <td>{{ $template->i18n->{$key} ?: '—' }}</td>
         @endforeach
       </tr>
     @endforeach
