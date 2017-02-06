@@ -6,7 +6,7 @@
   <ul class="list-unstyled">
     @foreach ($notifications as $notification)
       @php ($class_basename = snake_case(class_basename($notification->type)))
-      <li class="py-3 border-bottom">
+      <li class="py-3 {{ !$loop->last ? 'border-bottom' : '' }}">
         <div class="d-table-cell pr-3 svg-muted-blue">
           @if ($class_basename === 'torrent_updated')
             @svg (magnet)

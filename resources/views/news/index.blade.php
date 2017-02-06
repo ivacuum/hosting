@@ -33,7 +33,7 @@
     </div>
   </div>
 
-  <div class="mt-1 pull-right clearfix">
+  <div class="text-center">
     @include('tpl.paginator', ['paginator' => $news])
   </div>
 @else

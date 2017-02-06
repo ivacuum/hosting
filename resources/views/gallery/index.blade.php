@@ -21,7 +21,7 @@
   <p>Вы не загрузили ни одного изображения.</p>
 @endif
 
-<div class="mt-3 pull-right clearfix">
+<div class="mt-3 text-center">
   @include('tpl.paginator', ['paginator' => $images])
 </div>
 @endsection
