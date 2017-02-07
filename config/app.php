@@ -41,6 +41,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
         App\Providers\AppServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
@@ -89,6 +91,8 @@ return [
         'ViewHelper' => App\Facades\ViewHelper::class,
         'Breadcrumbs' => App\Facades\Breadcrumbs::class,
         'TorrentCategoryHelper' => App\Facades\TorrentCategoryHelper::class,
+
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

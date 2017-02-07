@@ -13,6 +13,14 @@ Route::post('auth/password/remind', 'Auth@passwordRemindPost')->middleware('gues
 Route::get('auth/password/reset/{token}', 'Auth@passwordReset')->middleware('guest');
 Route::post('auth/password/reset', 'Auth@passwordResetPost')->middleware('guest');
 
+// OAuth
+Route::get('auth/facebook', 'Auth\Facebook@index');
+Route::get('auth/facebook/callback', 'Auth\Facebook@callback');
+Route::get('auth/google', 'Auth\Google@index');
+Route::get('auth/google/callback', 'Auth\Google@callback');
+Route::get('auth/vk', 'Auth\Vk@index');
+Route::get('auth/vk/callback', 'Auth\Vk@callback');
+
 Route::post('ajax/comment/{type}/{id}', 'Ajax@comment')->middleware('auth');
 Route::post('ajax/feedback', 'Ajax@feedback');
 
