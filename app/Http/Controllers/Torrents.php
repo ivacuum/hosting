@@ -130,13 +130,11 @@ class Torrents extends Controller
         return view($this->view);
     }
 
-    public function magnet(Torrent $torrent, Telegram $telegram)
+    public function magnet(Torrent $torrent)
     {
         $torrent->timestamps = false;
         $torrent->increment('clicks');
         $torrent->timestamps = true;
-
-        $telegram->notifyAdmin("Клик по магнет-ссылке: {$torrent->clicks}\n{$torrent->title}");
 
         return 'OK';
     }
