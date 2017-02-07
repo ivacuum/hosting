@@ -76,7 +76,7 @@ abstract class Base extends Controller
     {
         return $this->user->create([
             'email'  => $user->email,
-            'active' => 1,
+            'status' => User::STATUS_ACTIVE,
         ]);
     }
 
