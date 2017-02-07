@@ -9,7 +9,11 @@ class Auth extends Controller
     {
         $goto = $this->request->input('goto');
 
-        return view($this->view, compact('goto'));
+        if ($goto) {
+            $this->request->session()->put('url.intended', $goto);
+        }
+
+        return view($this->view);
     }
 
     public function loginPost()
@@ -150,13 +154,12 @@ class Auth extends Controller
      */
     protected function attemptLogin(array $credentials)
     {
-        $goto = $this->request->input('goto');
         $remember = true;
 
         if (\Auth::attempt($credentials, $remember)) {
             $this->request->session()->regenerate();
 
-            return redirect()->intended($goto ?: action('Home@index'));
+            return redirect()->intended(action('Home@index'));
         }
 
         if (is_null($user = \Auth::getLastAttempted())) {
@@ -170,7 +173,7 @@ class Auth extends Controller
 
             \Auth::login($user, $remember);
 
-            return redirect()->intended($goto ?: action('Home@index'));
+            return redirect()->intended(action('Home@index'));
         }
 
         return null;

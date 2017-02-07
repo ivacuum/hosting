@@ -1,0 +1,23 @@
+.bg-facebook {
+  background-color: $fb-color;
+
+  &:hover { background-color: $fb-active-color; }
+}
+
+.bg-google {
+  background-color: $gplus-color;
+
+  &:hover { background-color: $gplus-active-color; }
+}
+
+.bg-twitter {
+  background-color: $twitter-color;
+
+  &:hover { background-color: $twitter-active-color; }
+}
+
+.bg-vk {
+  background-color: $vk-color;
+
+  &:hover { background-color: $vk-active-color; }
+}

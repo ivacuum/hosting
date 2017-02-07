@@ -11,3 +11,14 @@
 }
 
 .btn-login { width: 150px; }
+
+.btn-social {
+  color: #fff;
+  padding: 0;
+  font-size: 28px;
+  width: 56px;
+  transition: background 200ms linear;
+
+  &:focus,
+  &:hover { color: #fff; }
+}

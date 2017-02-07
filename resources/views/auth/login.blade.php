@@ -37,9 +37,26 @@
       {{ trans('auth.signin') }}
     </button>
 
-    @if (!empty($goto))
-      <input type="hidden" name="goto" value="{{ $goto }}">
-    @endif
+    <h3 class="text-center mt-5">{{ trans('auth.social_signin') }}</h3>
+
+    <div class="text-center mt-3">
+      <a class="btn btn-social bg-vk tooltipped tooltipped-s"
+         href="{{ action('Auth\Vk@index') }}"
+         aria-label="{{ trans('auth.signin_vk') }}">
+        @svg (vk)
+      </a>
+      <a class="btn btn-social bg-facebook tooltipped tooltipped-s"
+         href="{{ action('Auth\Facebook@index') }}"
+         aria-label="{{ trans('auth.signin_facebook') }}">
+        @svg (facebook)
+      </a>
+      <a class="btn btn-social bg-google tooltipped tooltipped-s"
+         href="{{ action('Auth\Google@index') }}"
+         aria-label="{{ trans('auth.signin_google') }}">
+        @svg (google)
+      </a>
+    </div>
+
     {{ csrf_field() }}
   </form>
 </div>

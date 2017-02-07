@@ -56,3 +56,13 @@ $tooltip-background-color: rgba(0, 0, 0, 0.8);
 $tooltip-text-color: #fff;
 $tooltip-delay: 0.4s;
 $tooltip-duration: 0.1s;
+
+// Social
+$fb-color:             #304591;
+$fb-active-color:      lighten($fb-color, 10%);
+$gplus-color:          #d94435;
+$gplus-active-color:   lighten($gplus-color, 10%);
+$twitter-color:        #31adf4;
+$twitter-active-color: lighten($twitter-color, 10%);
+$vk-color:             #527397;
+$vk-active-color:      #678eb4;
