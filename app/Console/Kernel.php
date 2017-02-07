@@ -48,4 +48,9 @@ class Kernel extends ConsoleKernel
 
         // $schedule->command('app:whois-update')->cron('0 */4 * * *'); // каждые 4 часа
     }
+
+    protected function commands()
+    {
+        require base_path('routes/console.php');
+    }
 }
