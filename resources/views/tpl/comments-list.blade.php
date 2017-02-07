@@ -7,8 +7,8 @@
     <div class="media-left">
       @include('tpl.svg-avatar', [
         'bg' => ViewHelper::avatarBg($comment->user_id),
-        'text' => !is_null($comment->user) ? $comment->user->avatarName() : null]
-      )
+        'text' => !is_null($comment->user) ? $comment->user->avatarName() : null,
+      ])
     </div>
     <div class="media-body">
       <div class="h4 media-heading">
