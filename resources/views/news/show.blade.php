@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<h3>{{ $news->title }}</h3>
+<h3 class="mt-0">{{ $news->title }}</h3>
 <p class="text-muted">
   <span class="svg-muted mr-1">
     @svg (calendar-o)

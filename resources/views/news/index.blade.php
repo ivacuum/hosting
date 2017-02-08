@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-md-8">
       @foreach ($news as $model)
-        <h3><a class="link" href="{{ action("$self@show", $model->urlParams()) }}">{{ $model->title }}</a></h3>
+        <h3 class="mt-0"><a class="link" href="{{ action("$self@show", $model) }}">{{ $model->title }}</a></h3>
         <p class="text-muted">
           <span class="mr-1 svg-muted">
             @svg (calendar-o)

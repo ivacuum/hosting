@@ -55,14 +55,4 @@ class News extends Model
 
         return [$start->startOfYear(), $end->endOfYear()];
     }
-
-    public function urlParams()
-    {
-        return [
-            $this->created_at->year,
-            sprintf('%02d', $this->created_at->month),
-            sprintf('%02d', $this->created_at->day),
-            $this->slug
-        ];
-    }
 }

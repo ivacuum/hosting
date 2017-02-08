@@ -6,9 +6,9 @@ class News extends Controller
 {
     public function index($year = null, $month = null, $day = null)
     {
-        \Breadcrumbs::push(trans('news.index'), "news");
+        \Breadcrumbs::push(trans('news.index'), 'news');
 
-        $news = Model::with('user')->withCount('comments')->orderBy('id', 'desc');
+        $news = Model::with('user')->withCount('comments')->orderBy('created_at', 'desc');
 
         switch (\App::getLocale()) {
             case 'en': $news = $news->where('site_id', 12); break;
@@ -17,21 +17,16 @@ class News extends Controller
 
         if ($year || $month || $day) {
             $news = $news->whereBetween('created_at', Model::interval($year, $month, $day));
-
-            \Breadcrumbs::push($year, "news/{$year}");
-
-            if ($month) {
-                \Breadcrumbs::push($month, "news/{$year}/{$month}");
-            }
-
-            if ($day) {
-                \Breadcrumbs::push($day);
-            }
         }
 
         $news = $news->paginate();
 
         return view('news.index', compact('news'));
+    }
+
+    public function bc()
+    {
+        return redirect()->action("{$this->class}@index", [], 301);
     }
 
     public function day($year, $month, $day)
@@ -58,36 +53,19 @@ class News extends Controller
         return $this->index($year, $month);
     }
 
-    public function show($year, $month, $day, $slug)
+    public function show($id)
     {
-        $validator = \Validator::make(
-            ['date' => "{$year}-{$month}-{$day}"],
-            ['date' => 'date_format:Y-m-d']
-        );
+        $news = Model::find($id);
 
-        abort_unless($validator->passes(), 404);
-
-        // Обратная совместимость
-        if (ends_with($slug, '.html')) {
-            $slug = mb_substr($slug, 0, -5);
-
-            return redirect(action("{$this->class}@show", [$year, $month, $day, $slug]), 301);
+        if (is_null($news)) {
+            return redirect()->action("{$this->class}@index");
         }
-
-        $news = Model::where('slug', $slug)
-            ->whereBetween('created_at', Model::interval($year, $month, $day))
-            ->first();
-
-        abort_if(is_null($news), 404);
 
         $comments = $news->comments()->with('user')->orderBy('id', 'desc')->paginate();
 
         $news->incrementViews();
 
-        \Breadcrumbs::push(trans('news.index'), "news");
-        \Breadcrumbs::push($year, "news/{$year}");
-        \Breadcrumbs::push($month, "news/{$year}/{$month}");
-        \Breadcrumbs::push($day, "news/{$year}/{$month}/{$day}");
+        \Breadcrumbs::push(trans('news.index'), 'news');
         \Breadcrumbs::push($news->title);
 
         $meta_title = $news->title;

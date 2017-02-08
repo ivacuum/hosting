@@ -48,15 +48,14 @@ Route::get('life/gigs', 'Life@gigs');
 Route::get('life/{page}', 'Life@page');
 
 Route::get('news', 'News@index');
-Route::get('news/{year}', 'News@year');
-Route::get('news/{year}/{month}', 'News@month');
-Route::get('news/{year}/{month}/{day}', 'News@day');
-Route::get('news/{year}/{month}/{day}/{id}', 'News@show');
+Route::get('news/{id}', 'News@show');
+Route::get('news/{year}/{month}', 'News@bc');
+Route::get('news/{year}/{month}/{day}', 'News@bc');
+Route::get('news/{year}/{month}/{day}/{slug}', 'News@bc');
 
 Route::get('notifications', 'Notifications@index')->middleware('auth');
 
-Route::get('parser/vk/{page?}/{date?}', 'ParserVk@index')
-    ->where('date', '\d{4}-\d{2}-\d{2}');
+Route::get('parser/vk/{page?}/{date?}', 'ParserVk@index')->where('date', '\d{4}-\d{2}-\d{2}');
 Route::post('parser/vk', 'ParserVk@indexPost');
 
 Route::get('retracker', 'Retracker@index');

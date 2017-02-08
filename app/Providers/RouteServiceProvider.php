@@ -25,6 +25,8 @@ class RouteServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        \Route::pattern('id', '\d+');
+
         parent::boot();
 
         \Route::model('Artist', Artist::class);

@@ -10,7 +10,7 @@
       <a class="list-group-item {{ $view == "$tpl.edit" ? 'active' : '' }}" href="{{ action("$self@edit", [$model, 'goto' => Request::fullUrl()]) }}">
         {{ trans("$tpl.edit") }}
       </a>
-      <a class="list-group-item" href="{{ action('News@show', $model->urlParams()) }}">
+      <a class="list-group-item" href="{{ action('News@show', $model) }}">
         {{ trans("$tpl.www") }}
       </a>
       @include('acp.tpl.delete', ['id' => $model])
