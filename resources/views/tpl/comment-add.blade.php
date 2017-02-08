@@ -20,5 +20,9 @@
     </div>
   </div>
 @else
-  <div class="mt-3">Для написания комментариев необходимо <a class="link" href="{{ action('Auth@login', ['goto' => "{$locale_uri}/{$request_uri}"]) }}">войти на сайт</a>.</div>
+  @ru
+    <div class="mt-3">Для написания комментариев необходимо <a class="link" href="{{ action('Auth@login', ['goto' => "{$locale_uri}/{$request_uri}"]) }}">войти на сайт</a>.</div>
+  @en
+    <div class="mt-3">In order to post comments you need to <a class="link" href="{{ action('Auth@login', ['goto' => "{$locale_uri}/{$request_uri}"]) }}">sign in</a>.</div>
+  @endlang
 @endif
