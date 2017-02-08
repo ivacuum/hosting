@@ -128,7 +128,13 @@ $(document).on('dblclick', '.js-dblclick-edit', (e) => document.location = $(e.c
 
 // Учет кликов по магнет-ссылкам
 $(document).on('click', '.js-magnet', function() {
-  $.post($(this).data('action'))
+  const clicked = $(this).data('clicked')
+
+  if (clicked === undefined) {
+    $.post($(this).data('action'))
+
+    $(this).data('clicked', 1)
+  }
 })
 
 // Возможность посмотреть пароль
