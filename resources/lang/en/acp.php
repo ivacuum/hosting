@@ -68,7 +68,7 @@ return [
     'news.edit' => 'Edit',
     'news.show' => 'News',
     'news.index' => 'News',
-    'news.create' => 'Create news',
+    'news.create' => 'Write a news',
 
     'pages.add' => 'Add page',
     'pages.edit' => 'Edit',
