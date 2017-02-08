@@ -12,7 +12,6 @@ class CreateNewsTable extends Migration
             $table->unsignedInteger('site_id')->default(0);
             $table->unsignedInteger('user_id')->default(0);
             $table->string('title');
-            $table->string('slug');
             $table->text('html');
             $table->unsignedInteger('views')->default(0);
             $table->timestamps();

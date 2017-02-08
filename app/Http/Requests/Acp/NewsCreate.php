@@ -12,10 +12,9 @@ class NewsCreate extends Request
     public function rules()
     {
         return [
+            'html' => 'required',
+            'title' => 'required',
             'site_id' => 'required|integer|min:1',
-            'title'   => 'required',
-            'slug'    => 'required',
-            'html'    => 'required',
         ];
     }
 }

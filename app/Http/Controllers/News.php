@@ -8,7 +8,10 @@ class News extends Controller
     {
         \Breadcrumbs::push(trans('news.index'), 'news');
 
-        $news = Model::with('user')->withCount('comments')->orderBy('created_at', 'desc');
+        $news = Model::with('user')
+            ->withCount('comments')
+            ->published()
+            ->orderBy('created_at', 'desc');
 
         switch (\App::getLocale()) {
             case 'en': $news = $news->where('site_id', 12); break;
@@ -60,6 +63,8 @@ class News extends Controller
         if (is_null($news)) {
             return redirect()->action("{$this->class}@index");
         }
+
+        abort_unless($news->status === Model::STATUS_PUBLISHED, 404);
 
         $comments = $news->comments()->with('user')->orderBy('id', 'desc')->paginate();
 

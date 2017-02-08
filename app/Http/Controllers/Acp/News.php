@@ -10,7 +10,7 @@ class News extends Controller
     {
         $user_id = $this->request->input('user_id');
 
-        $models = Model::orderBy('id', 'desc');
+        $models = Model::withCount('comments')->orderBy('id', 'desc');
 
         if ($user_id) {
             $models = $models->where('user_id', $user_id);
@@ -49,7 +49,10 @@ class News extends Controller
 
     public function store(ModelCreate $request)
     {
-        Model::create($request->all());
+        $data = $request->all();
+        $data['user_id'] = $this->request->user()->id;
+
+        Model::create($data);
 
         return redirect()->action("{$this->class}@index");
     }

@@ -21,6 +21,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class News extends Model
 {
+    const STATUS_HIDDEN = 0;
+    const STATUS_PUBLISHED = 1;
+
     protected $guarded = ['created_at', 'updated_at', 'goto'];
 
     public function comments()
@@ -31,6 +34,11 @@ class News extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('status', self::STATUS_PUBLISHED);
     }
 
     public function incrementViews()
