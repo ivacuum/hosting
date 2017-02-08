@@ -3,7 +3,7 @@
   margin-bottom: 10px;
 
   > li {
-    float: left;
+    display: inline-block;
 
     > a {
       margin-right: 18px;
@@ -27,5 +27,11 @@
         cursor: default;
       }
     }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 }
