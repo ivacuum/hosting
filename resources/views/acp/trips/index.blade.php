@@ -29,7 +29,7 @@
         <td>
           @if ($model->status === App\Trip::STATUS_HIDDEN)
             <span class="tooltipped tooltipped-s" aria-label="Заметка скрыта">
-              @svg (eye)
+              @svg (eye-slash)
             </span>
           @elseif ($model->status === App\Trip::STATUS_INACTIVE)
             <span class="tooltipped tooltipped-s" aria-label="Заметка неактивна">
