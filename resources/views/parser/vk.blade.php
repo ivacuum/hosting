@@ -5,24 +5,24 @@
 @section('content')
 <ul class="nav nav-link-tabs">
   <li class="{{ $vkpage == 'pn6' ? 'active' : '' }}">
-    <a class="js-pjax" href="/parser/vk/pn6">#6</a>
+    <a class="js-pjax" href="{{ action('ParserVk@index', ['page' => 'pn6']) }}">#6</a>
   </li>
   <li class="{{ $vkpage == 'overhear' ? 'active' : '' }}">
-    <a class="js-pjax" href="/parser/vk/overhear">Подслушано</a>
+    <a class="js-pjax" href="{{ action('ParserVk@index', ['page' => 'overhear']) }}">Подслушано</a>
   </li>
   {{--
   <li class="{{ $vkpage == 'leprum' ? 'active' : '' }}">
-    <a class="js-pjax" href="/parser/vk/leprum">Лепра</a>
+    <a class="js-pjax" href="{{ action('ParserVk@index', ['page' => 'leprum']) }}">Лепра</a>
   </li>
   --}}
   <li class="{{ $vkpage == 'pikabu' ? 'active' : '' }}">
-    <a class="js-pjax" href="/parser/vk/pikabu">Пикабу</a>
+    <a class="js-pjax" href="{{ action('ParserVk@index', ['page' => 'pikabu']) }}">Пикабу</a>
   </li>
   <li class="{{ $vkpage == 'decaying_europe' ? 'active' : '' }}">
-    <a class="js-pjax" href="/parser/vk/decaying_europe">Запад</a>
+    <a class="js-pjax" href="{{ action('ParserVk@index', ['page' => 'decaying_europe']) }}">Запад</a>
   </li>
   <li class="{{ $vkpage == 'vandroukiru' ? 'active' : '' }}">
-    <a class="js-pjax" href="/parser/vk/vandroukiru">
+    <a class="js-pjax" href="{{ action('ParserVk@index', ['page' => 'vandroukiru']) }}">
       @svg (plane)
     </a>
   </li>
@@ -32,7 +32,7 @@
   <ul class="pager">
     @if (!empty($next))
       <li class="previous">
-        <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}?own={{ $own }}&token={{ $token }}" id="previous_page">
+        <a class="js-pjax" href="{{ action('ParserVk@index', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}" id="previous_page">
           @svg (chevron-left)
           {{ $next->formatLocalized('%e %B') }}
         </a>
@@ -48,7 +48,7 @@
     </li>
     @if (!empty($previous))
       <li class="next">
-        <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}?own={{ $own }}&token={{ $token }}" id="next_page">
+        <a class="js-pjax" href="{{ action('ParserVk@index', ['page' => $vkpage, 'date' => $previous->toDateString(), 'own' => $own, 'token' => $token]) }}" id="next_page">
           &nbsp;{{ $previous->formatLocalized('%e %B') }}
           @svg (chevron-right)
         </a>
@@ -78,13 +78,9 @@
       @if ($post['attachments'])
         <div class="vk-post-attachments">
         @if ($post['photos'] > 1)
-          <div class="js-lazy fotorama-left" data-lazy-type="fotorama">
+          <div class="pic-container js-lazy" data-lazy-type="fotorama">
         @elseif ($post['photos'] == 1)
-          @if (sizeof($post['attachments']) > 1)
-            <div class="img-container">
-          @else
-            <div class="vk-post-img-container">
-          @endif
+          <div class="img-container {{ sizeof($post['attachments']) <= 1 ? 'mb-0' : '' }}">
         @endif
         @foreach ($post['attachments'] as $attach)
           @if ($attach->type == 'photo' && isset($attach->photo->photo_604))
@@ -175,7 +171,7 @@
 <ul class="pager">
   @if (!empty($next))
     <li class="previous">
-      <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $next->toDateString() }}">
+      <a class="js-pjax" href="{{ action('ParserVk@index', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}">
         @svg (chevron-left)
         {{ $next->formatLocalized('%e %B') }}
       </a>
@@ -183,7 +179,7 @@
   @endif
   @if (!empty($previous))
     <li class="next">
-      <a class="js-pjax" href="/parser/vk/{{ $vkpage }}/{{ $previous->toDateString() }}">
+      <a class="js-pjax" href="{{ action('ParserVk@index', ['page' => $vkpage, 'date' => $previous->toDateString(), 'own' => $own, 'token' => $token]) }}">
         &nbsp;{{ $previous->formatLocalized('%e %B') }}
         @svg (chevron-right)
       </a>
