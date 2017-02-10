@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
+ * @property \Illuminate\Support\Collection $comments
  * @property \App\User $user
  */
 class News extends Model

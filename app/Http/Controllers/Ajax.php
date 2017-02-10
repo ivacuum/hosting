@@ -2,7 +2,12 @@
 
 use App\Mail\Feedback;
 use App\News;
+use App\Notifications\NewsCommented;
+use App\Notifications\TorrentCommented;
+use App\Notifications\TripCommented;
 use App\Torrent;
+use App\Trip;
+use App\User;
 
 class Ajax extends Controller
 {
@@ -10,30 +15,27 @@ class Ajax extends Controller
     {
         $mail = $this->request->input('mail');
         $text = e($this->request->input('text'));
+        $user_id = $this->request->user()->id;
 
         $validator = \Validator::make(compact('id', 'mail', 'text', 'type'), [
             'id' => 'integer|min:1',
             'mail' => 'empty',
-            'text' => 'required',
-            'type' => 'in:news,torrent'
+            'text' => 'required|max:1000',
+            'type' => 'in:news,torrent,trip'
         ]);
 
         $this->validateWith($validator);
 
-        if ($type === 'news') {
-            $model = News::find($id);
-        } elseif ($type === 'torrent') {
-            $model = Torrent::find($id);
-        } else {
-            throw new \Exception('Не выбран объект для комментирования');
-        }
+        $model = $this->notifiableModel($type, $id);
 
-        $model->comments()->create([
+        $comment = $model->comments()->create([
             'html' => $text,
-            'user_id' => $this->request->user()->id,
+            'user_id' => $user_id,
         ]);
 
-        return redirect()->back()->with('message', 'Комментарий опубликован');
+        $this->notifyUsers($type, $model, $comment);
+
+        return redirect()->back()->with('message', trans('comments.posted'));
     }
 
     public function feedback()
@@ -55,5 +57,37 @@ class Ajax extends Controller
             'message' => trans('ajax.feedback.ok'),
             'status'  => 'OK',
         ];
+    }
+
+    protected function notifiableModel($type, $id)
+    {
+        if ($type === 'news') {
+            return News::published()->findOrFail($id);
+        }
+
+        if ($type === 'trip') {
+            return Trip::published()->findOrFail($id);
+        }
+
+        if ($type === 'torrent') {
+            return Torrent::findOrFail($id);
+        }
+
+        throw new \Exception('Не выбран объект для комментирования');
+    }
+
+    protected function notifyUsers($type, $model, $comment)
+    {
+        if ($type === 'news') {
+            return $model->user->notify(new NewsCommented($model, $comment));
+        }
+
+        if ($type === 'trip') {
+            return User::find(Trip::AUTHOR_ID)->notify(new TripCommented($model, $comment));
+        }
+
+        if ($type === 'torrent') {
+            return $model->user->notify(new TorrentCommented($model, $comment));
+        }
     }
 }

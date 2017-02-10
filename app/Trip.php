@@ -25,6 +25,7 @@ use Symfony\Component\Finder\Finder;
  * @property \Carbon\Carbon $updated_at
  *
  * @property \App\City    $city
+ * @property \Illuminate\Support\Collection $comments
  * @property \App\Country $country
  *
  * @property-read string  $title
@@ -37,12 +38,19 @@ class Trip extends Model
     const STATUS_PUBLISHED = 1;
     const STATUS_HIDDEN = 2;
 
+    const AUTHOR_ID = 1;
+
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $dates = ['date_start', 'date_end'];
 
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'rel');
     }
 
     public function country()
@@ -73,6 +81,11 @@ class Trip extends Model
             ->where('id', '<>', $this->id)
             ->orderBy('date_start', 'desc')
             ->take($take);
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('status', self::STATUS_PUBLISHED);
     }
 
     public function scopeVisible($query)

@@ -10,6 +10,8 @@
         <div class="d-table-cell pr-3 svg-muted-blue">
           @if ($class_basename === 'torrent_updated')
             @svg (magnet)
+          @elseif (ends_with($class_basename, '_commented'))
+            @svg (comment-o)
           @else
             @svg (bullhorn)
           @endif

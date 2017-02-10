@@ -2,6 +2,7 @@
 
 use App\News;
 use App\Torrent;
+use App\Trip;
 use App\User;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
@@ -12,6 +13,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Relation::morphMap([
             'News' => News::class,
+            'Trip' => Trip::class,
             'User' => User::class,
             'Torrent' => Torrent::class,
         ]);
