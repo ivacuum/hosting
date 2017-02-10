@@ -30,9 +30,14 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function scopeByType($query, $type)
+    {
+        return $query->where('rel_type', $type);
+    }
+
     public function fullDate()
     {
-        $format = $this->created_at->year == date('Y') ? '%e %B, %H:%M' : '%e %B %Y, %H:%M';
+        $format = $this->created_at->year == date('Y') ? '%e&nbsp;%B, %H:%M' : '%e&nbsp;%B&nbsp;%Y, %H:%M';
 
         if ($this->created_at->isToday()) {
             return trans('torrents.today').", ".$this->created_at->formatLocalized($format);

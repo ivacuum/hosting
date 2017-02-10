@@ -15,19 +15,22 @@
 
 @section('content_header')
 <ul class="nav nav-link-tabs">
-  <li class="{{ $view == 'torrents.index' ? 'active' : '' }}">
+  <li class="{{ $view === 'torrents.index' ? 'active' : '' }}">
     <a href="{{ action('Torrents@index') }}">{{ trans('torrents.new') }}</a>
   </li>
   {{--
-  <li class="{{ $view == 'torrents.categories' ? 'active' : '' }}">
+  <li class="{{ $view === 'torrents.categories' ? 'active' : '' }}">
     <a href="{{ action('Torrents@categories') }}">{{ trans('torrents.categories') }}</a>
   </li>
   --}}
-  <li class="{{ $view == 'torrents.add' ? 'active' : '' }}">
+  <li class="{{ $view === 'torrents.add' ? 'active' : '' }}">
     <a href="{{ action('Torrents@add') }}">{{ trans('torrents.add') }}</a>
   </li>
-  <li class="{{ $view == 'torrents.faq' ? 'active' : '' }}">
+  <li class="{{ $view === 'torrents.faq' ? 'active' : '' }}">
     <a href="{{ action('Torrents@faq') }}">{{ trans('torrents.help') }}</a>
+  </li>
+  <li class="{{ $view === 'torrents.comments' ? 'active' : '' }}">
+    <a href="{{ action('Torrents@comments') }}">{{ trans('torrents.comments') }}</a>
   </li>
 </ul>
 @endsection

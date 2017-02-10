@@ -69,6 +69,7 @@ Route::post('torrents', 'Torrents@addPost')->middleware('auth');
 Route::get('torrents/add', 'Torrents@add')->middleware('auth');
 Route::get('torrents/categories', 'Torrents@categories');
 Route::get('torrents/categories/{id}', 'Torrents@category');
+Route::get('torrents/comments', 'Torrents@comments');
 Route::get('torrents/faq', 'Torrents@faq');
 Route::get('torrents/{Torrent}', 'Torrents@torrent');
 Route::post('torrents/{Torrent}/magnet', 'Torrents@magnet');

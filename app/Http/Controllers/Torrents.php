@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Services\Rto;
 use App\Services\Telegram;
 use App\Torrent;
@@ -120,6 +121,20 @@ class Torrents extends Controller
         $stats = Torrent::statsByCategories();
 
         return view('torrents.index', compact('category_id', 'q', 'torrents', 'tree', 'stats'));
+    }
+
+    public function comments()
+    {
+        \Breadcrumbs::push(trans('torrents.index'), 'torrents');
+        \Breadcrumbs::push('Последние комментарии');
+
+        $comments = Comment::with('rel', 'user')
+            ->byType('Torrent')
+            ->orderBy('id', 'desc')
+            ->take(50)
+            ->get();
+
+        return view($this->view, compact('comments'));
     }
 
     public function faq()
