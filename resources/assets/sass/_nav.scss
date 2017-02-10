@@ -7,7 +7,7 @@
 
     > a {
       margin-right: 18px;
-      padding: 8px 0;
+      padding: 0 0 8px;
       line-height: $line-height-base;
       border-bottom: 2px solid transparent;
 
@@ -27,6 +27,8 @@
         cursor: default;
       }
     }
+
+    &:last-child a { margin-right: 0; }
   }
 
   @media (max-width: $screen-xs-max) {
