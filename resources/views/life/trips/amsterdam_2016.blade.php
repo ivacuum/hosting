@@ -293,7 +293,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_2546.jpg'])
 
 @ru
-  <p><a class="pseudo" data-toggle="feedback" data-target=".js-modal-feedback" data-question="Сколько тут окон?">Сколько тут окон?</a></p>
+  <p>Сколько тут окон?</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_2547.jpg'])
 

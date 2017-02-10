@@ -6,7 +6,6 @@ import YandexMetrika from './yandex-metrika'
 
 import './events'
 import './life'
-import './modal-feedback'
 import './shortcuts'
 import './vue'
 import './yandex-dns'

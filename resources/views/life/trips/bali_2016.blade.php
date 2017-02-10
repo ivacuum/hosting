@@ -224,7 +224,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_2978.jpg'])
 
 @ru
-  <p><a class="pseudo" data-toggle="feedback" data-target=".js-modal-feedback" data-question="Придумайте подпись к фотографии">Придумайте подпись к фотографии.</a></p>
+  <p>Придумайте подпись к фотографии.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_2989.jpg'])
 

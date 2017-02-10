@@ -38,6 +38,7 @@ class Ajax extends Controller
         return redirect()->back()->with('message', trans('comments.posted'));
     }
 
+    /*
     public function feedback()
     {
         $this->validate($this->request, [
@@ -58,6 +59,7 @@ class Ajax extends Controller
             'status'  => 'OK',
         ];
     }
+    */
 
     protected function notifiableModel($type, $id)
     {

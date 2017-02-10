@@ -177,9 +177,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_2338.jpg'])
 
 @ru
-  <p>Верготедок. <a class="pseudo" data-toggle="feedback" data-target=".js-modal-feedback" data-question="Говорит вам что-нибудь Верготедок?">Говорит вам что-нибудь?</a></p>
+  <p>Верготедок. Говорит вам что-нибудь?</p>
 @en
-  <p>Vergotedok. <a class="pseudo" data-toggle="feedback" data-target=".js-modal-feedback" data-question="Does Vergotedok say something to you?">Does it say something to you?</a></p>
+  <p>Vergotedok. Does it say anything to you?</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_2339.jpg'])
 

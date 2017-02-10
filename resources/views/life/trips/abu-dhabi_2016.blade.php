@@ -23,9 +23,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_3134.jpg'])
 
 @ru
-  <p>Э-э-э. <a class="pseudo" data-toggle="feedback" data-target=".js-modal-feedback" data-question="На что я подписался?">На что я подписался?</a></p>
+  <p>Э-э-э. На что я подписался?</p>
 @en
-  <p>Um, <a class="pseudo" data-toggle="feedback" data-target=".js-modal-feedback" data-question="What have I accepted?">what have I accepted?</a></p>
+  <p>Um, what have I accepted?</p>
 @endlang
 @include('tpl.pic-arbitrary', ['pic' => 'accept.png', 'w' => 1000, 'h' => 279])
 @endsection

@@ -135,7 +135,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_1044.jpg'])
 
 @ru
-  <p>Рыбак в засаде, а вы <a class="pseudo" data-toggle="feedback" data-target=".js-modal-feedback" data-question="Что вы увидели на фото?">что увидели</a>?</p>
+  <p>Рыбак в засаде, а вы что увидели?</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_1071.jpg'])
 

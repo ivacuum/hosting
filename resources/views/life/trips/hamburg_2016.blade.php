@@ -276,7 +276,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_0842.jpg'])
 
 @ru
-  <p><a class="pseudo" data-toggle="feedback" data-target=".js-modal-feedback" data-question="Можно ли смело отправляться в другие портовые города?">Можно ли</a> смело и без особых раздумий отправляться в другие портовые города?</p>
+  <p>Можно ли смело и без особых раздумий отправляться в другие портовые города?</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_0844.jpg'])
 

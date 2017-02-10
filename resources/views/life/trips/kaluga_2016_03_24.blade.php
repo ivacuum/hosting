@@ -2,7 +2,7 @@
 
 @section('content')
 @ru
-  <p>Два похожих состава. <a class="pseudo" data-toggle="feedback" data-target=".js-modal-feedback" data-question="Где экспресс и где электричка?">Где экспресс и где электричка?</a></p>
+  <p>Два похожих состава. Где экспресс и где электричка?</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_0123.jpg'])
 

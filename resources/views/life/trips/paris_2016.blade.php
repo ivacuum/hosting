@@ -194,7 +194,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_1572.jpg'])
 
 @ru
-  <p>Так много <a class="pseudo" data-toggle="feedback" data-target=".js-modal-feedback" data-question="Вытяжки на крыше?">вытяжек</a> на крыше?</p>
+  <p>Так много вытяжек на крыше?</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_1573.jpg'])
 

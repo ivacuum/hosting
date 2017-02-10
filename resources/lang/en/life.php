@@ -1,11 +1,13 @@
 <?php
 
 return [
+    /*
     'feedback.help' => 'Leave your contact information if you want to get a reply',
     'feedback.leave' => 'Leave a feedback',
     'feedback.submit' => 'Submit',
     'feedback.heading' => 'Feedback',
     'feedback.placeholder' => 'Write a message...',
+    */
 
     'gigs_intro_text' => "It's all started with a simple plan of visiting one show per year, but something went wrong in 2014...",
     'gigs_intro_title' => 'Attended and incoming concerts',

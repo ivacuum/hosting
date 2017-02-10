@@ -42,8 +42,6 @@
 @section('content_footer')
 </div>
 
-<button class="btn btn-default" data-toggle="feedback" data-target=".js-modal-feedback">{{ trans('life.feedback.leave') }}</button>
-
 <div class="travel-timeline-container">
   @if (isset($previous_trips) && sizeof($previous_trips))
     @foreach ($previous_trips as $previous)
@@ -88,8 +86,13 @@
 </div>
 
 @parent
-@endsection
 
-@push('js')
-@include('tpl.modal-feedback')
-@endpush
+@include('tpl.comments-list')
+@include('tpl.comment-add', ['params' => ['trip', $trip->id]])
+
+@if ($comments->hasPages())
+  <div class="mt-3 text-center">
+    @include('tpl.paginator', ['paginator' => $comments])
+  </div>
+@endif
+@endsection

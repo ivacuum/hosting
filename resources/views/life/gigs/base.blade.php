@@ -17,11 +17,5 @@
 @section('content_footer')
 </div>
 
-<button class="btn btn-default" data-toggle="feedback" data-target=".js-modal-feedback">{{ trans('life.feedback.leave') }}</button>
-
 @parent
 @endsection
-
-@push('js')
-@include('tpl.modal-feedback')
-@endpush

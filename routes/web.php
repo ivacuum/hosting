@@ -22,7 +22,7 @@ Route::get('auth/vk', 'Auth\Vk@index');
 Route::get('auth/vk/callback', 'Auth\Vk@callback');
 
 Route::post('ajax/comment/{type}/{id}', 'Ajax@comment')->middleware('auth');
-Route::post('ajax/feedback', 'Ajax@feedback');
+// Route::post('ajax/feedback', 'Ajax@feedback');
 
 Route::get('about', 'Home@about');
 

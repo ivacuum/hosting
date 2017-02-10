@@ -184,7 +184,9 @@ class Life extends Controller
         $next_trips = $trip->next()->get();
         $previous_trips = $trip->previous($next_trips->count())->get()->reverse();
 
-        return view($tpl, compact('next_trips', 'previous_trips', 'timeline', 'trip'));
+        $comments = $trip->comments()->with('user')->orderBy('id', 'desc')->paginate();
+
+        return view($tpl, compact('comments', 'next_trips', 'previous_trips', 'timeline', 'trip'));
     }
 
     protected function getCity($slug)
