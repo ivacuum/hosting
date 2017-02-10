@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $html
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
+ * @property \App\User $user
  */
 class Comment extends Model
 {

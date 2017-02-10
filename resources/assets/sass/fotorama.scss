@@ -1,1 +1,9 @@
 @import "../../../node_modules/fotorama/fotorama.css";
+
+.fotorama__wrap { margin: 0 auto; }
+
+.fotorama__wrap--css3 .fotorama__stage .fotorama__img {
+  @media (min-width: 768px) {
+    border-radius: 6px !important;
+  }
+}

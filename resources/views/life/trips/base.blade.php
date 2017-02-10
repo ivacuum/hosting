@@ -1,7 +1,7 @@
 @extends('life.base', [
   'meta_title' => $trip->metaTitle(),
-  'meta_description' => $trip->metaDescription(),
   'meta_image' => $trip->metaImage(),
+  'meta_description' => $trip->metaDescription(),
 ])
 
 @section('content_header')

@@ -6,7 +6,7 @@
 <div class="row">
   <div class="col-sm-6">
     <h2 class="mt-0">{{ trans('life.trips') }}</h2>
-    <ul class="list-inline trips-show-by">
+    <ul class="list-inline f13">
       <li><mark>{{ trans('life.by_year') }}</mark></li>
       <li><a class="link" href="{{ action('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
       <li><a class="link" href="{{ action('Life@cities') }}">{{ trans('life.by_city') }}</a></li>
