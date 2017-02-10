@@ -20,12 +20,7 @@
               @svg (circle)
             </span>
           @endif
-          @if ($class_basename === 'plain_text')
-            {{ $notification->data['text'] }}
-          @elseif ($class_basename === 'torrent_updated')
-            {{ trans("notifications.{$class_basename}") }}
-            <a class="link" href="{{ action('Torrents@torrent', $notification->data['id']) }}">{{ str_limit($notification->data['title'], 100) }}</a>
-          @endif
+          @include("notifications.$class_basename")
           <div class="f13 text-muted">
             <time datetime="{{ $notification->created_at->toDateString() }}"
                   title="{{ $notification->created_at->toAtomString() }}">

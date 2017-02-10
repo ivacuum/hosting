@@ -38,6 +38,11 @@ class ViewHelper
         return new HtmlString('<input hidden type="text" name="mail" value="'.old("mail").'">');
     }
 
+    public function magnet($info_hash, $announcer, $title)
+    {
+        return "magnet:?xt=urn:btih:{$info_hash}&tr=" . urlencode($announcer) . "&dn=" . rawurlencode($title);
+    }
+
     public function metaTitle($meta_title, $view)
     {
         if ($meta_title) {
