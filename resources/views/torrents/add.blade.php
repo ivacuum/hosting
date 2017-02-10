@@ -1,7 +1,7 @@
 @extends('torrents.base')
 
 @section('content')
-<form action="{{ action("$self@addPost") }}" class="form-horizontal" method="post">
+<form action="{{ action("$self@addPost") }}" class="form-horizontal mt-4" method="post">
 
   @include("$tpl.form")
 
