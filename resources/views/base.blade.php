@@ -76,7 +76,7 @@
             <li>
               <a class="tooltipped tooltipped-s {{ $self == 'Notifications' ? 'navbar-selected' : '' }}" href="{{ action('Notifications@index') }}" aria-label="{{ trans('notifications.index') }}">
                 @svg (bell)
-                <span class="counter-label">{{ !is_null(Auth::user()->unreadNotifications()->first()) ? '!' : '' }}</span>
+                <span class="counter-label-round">{{ !is_null(Auth::user()->unreadNotifications()->first()) ? '!' : '' }}</span>
               </a>
             </li>
             @if (!starts_with($self, 'Acp\\'))
