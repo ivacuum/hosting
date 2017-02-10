@@ -11,6 +11,8 @@ class Google extends Base
 
     public function index()
     {
+        $this->saveUrlIntended();
+
         return $this->driver()->redirect();
     }
 

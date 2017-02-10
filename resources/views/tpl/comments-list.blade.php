@@ -2,6 +2,7 @@
   {{ trans('comments.discussion') }}
   <small>{{ $comments->total() }}</small>
 </div>
+<a name="comments"></a>
 @foreach ($comments as $comment)
   <a name="comment-{{ $comment->id }}"></a>
   <div class="media">

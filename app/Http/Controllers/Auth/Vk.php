@@ -19,6 +19,8 @@ class Vk extends Base
             $vk = $vk->revoke();
         }
 
+        $this->saveUrlIntended();
+
         return $vk->redirect();
     }
 

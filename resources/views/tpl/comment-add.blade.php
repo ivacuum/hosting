@@ -21,8 +21,28 @@
   </div>
 @else
   @ru
-    <div class="mt-3">Для написания комментариев необходимо <a class="link" href="{{ action('Auth@login', ['goto' => "{$locale_uri}/{$request_uri}"]) }}">войти на сайт</a>.</div>
+    <div class="mt-3">
+      <p>Для написания комментариев необходимо <a class="link" href="{{ action('Auth@login', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">войти на сайт</a>.</p>
+      <p>Можно войти в один клик через следующие соцсети:</p>
+      <a class="btn btn-social bg-vk tooltipped tooltipped-s"
+         href="{{ action('Auth\Vk@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}"
+         aria-label="{{ trans('auth.signin_vk') }}">
+        @svg (vk)
+      </a>
+      <a class="btn btn-social bg-facebook tooltipped tooltipped-s"
+         href="{{ action('Auth\Facebook@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}"
+         aria-label="{{ trans('auth.signin_facebook') }}">
+        @svg (facebook)
+      </a>
+      <a class="btn btn-social bg-google tooltipped tooltipped-s"
+         href="{{ action('Auth\Google@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}"
+         aria-label="{{ trans('auth.signin_google') }}">
+        @svg (google)
+      </a>
+    </div>
   @en
-    <div class="mt-3">In order to post comments you need to <a class="link" href="{{ action('Auth@login', ['goto' => "{$locale_uri}/{$request_uri}"]) }}">sign in</a>.</div>
+    <div class="mt-3">
+      In order to post comments you need to <a class="link" href="{{ action('Auth@login', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">sign in</a>.
+    </div>
   @endlang
 @endif

@@ -97,4 +97,20 @@ abstract class Base extends Controller
             'email'    => (string) $user->email,
         ]);
     }
+
+    /**
+     * Сохранение адреса для перенаправления после входа
+     *
+     * @return bool
+     */
+    protected function saveUrlIntended()
+    {
+        $goto = $this->request->input('goto');
+
+        if ($goto) {
+            $this->request->session()->put('url.intended', $goto);
+        }
+
+        return true;
+    }
 }

@@ -20,6 +20,8 @@ class Facebook extends Base
             $driver = $driver->reRequest();
         }
 
+        $this->saveUrlIntended();
+
         return $driver->redirect();
     }
 
