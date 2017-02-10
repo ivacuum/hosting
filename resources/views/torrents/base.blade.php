@@ -14,7 +14,7 @@
 @endsection
 
 @section('content_header')
-<ul class="nav nav-link-tabs">
+<ul class="nav nav-link-tabs mb-4">
   <li class="{{ $view === 'torrents.index' ? 'active' : '' }}">
     <a href="{{ action('Torrents@index') }}">{{ trans('torrents.new') }}</a>
   </li>

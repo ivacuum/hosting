@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-md-3 hidden-xs">
     @foreach ($tree as $id => $category)
-      <h3>
+      <h3 class="{{ $loop->first ? 'mt-0' : '' }}">
         @if (!empty($category_id) && $id == $category_id)
           <mark>{{ $category['title'] }}</mark>
         @else
@@ -31,7 +31,7 @@
     @if (sizeof($torrents))
       @foreach ($torrents as $torrent)
         @if (is_null($last_date) || !$torrent->registered_at->isSameDay($last_date))
-          <h4 class="mt-4">{{ $torrent->fullDate() }}</h4>
+          <h4 class="{{ $loop->first ? 'mt-0' : 'mt-4' }}">{{ $torrent->fullDate() }}</h4>
           @php ($last_date = $torrent->registered_at)
         @endif
         @php ($category = TorrentCategoryHelper::find($torrent->category_id))
