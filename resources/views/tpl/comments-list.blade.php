@@ -3,6 +3,7 @@
   <small>{{ $comments->total() }}</small>
 </div>
 @foreach ($comments as $comment)
+  <a name="comment-{{ $comment->id }}"></a>
   <div class="media">
     <div class="media-left">
       @include('tpl.svg-avatar', [
