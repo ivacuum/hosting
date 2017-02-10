@@ -22,8 +22,8 @@ return [
     'trips' => 'Trips',
     'favorites' => 'Favorites',
 
-    'date.months' => '%2$s %d – %4$s %3$d, %5$d', // May 27 – June 3, 2016
-    'date.same_day' => '%B %e, %Y', // June 1, 2016
-    'date.gig_short' => '%B %e', // April 21
-    'date.same_month' => '%3$s %d–%d, %4$d', // June 1–3, 2016
+    'date.months' => '%2$s&nbsp;%d – %4$s&nbsp;%3$d,&nbsp;%5$d', // May 27 – June 3, 2016
+    'date.same_day' => '%B&nbsp;%e,&nbsp;%Y', // June 1, 2016
+    'date.gig_short' => '%B&nbsp;%e', // April 21
+    'date.same_month' => '%3$s&nbsp;%d–%d,&nbsp;%4$d', // June 1–3, 2016
 ];
