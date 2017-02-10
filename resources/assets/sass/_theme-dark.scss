@@ -1,0 +1,76 @@
+$dark-bg-color: #2f343a;
+$dark-text-color: #ccc;
+$dark-link-color: #00aeff;
+$dark-link-visited-color: #82c5ff;
+$dark-link-hover-color: #91e4ff;
+
+.theme-dark {
+  background-color: $dark-bg-color;
+  color: $dark-text-color;
+
+  footer {
+    background-color: lighten($dark-bg-color, 10%);
+    border-color: darken($dark-bg-color, 6.5%);
+  }
+
+  pre,
+  .form-control {
+    background-color: lighten($dark-bg-color, 15%);
+    border-color: darken($dark-bg-color, 6.5%);
+    color: $dark-text-color;
+  }
+
+  .form-select { border-color: darken($dark-bg-color, 6.5%); }
+
+  .breadcrumbs {
+    background-color: lighten($dark-bg-color, 10%);
+
+    a {
+      color: $dark-link-color;
+
+      &:hover,
+      &:focus {
+        color: $dark-link-hover-color !important;
+
+        .svg-icon { fill: $dark-link-hover-color !important; }
+      }
+    }
+  }
+
+  .border-bottom { border-color: darken($dark-bg-color, 6.5%); }
+
+  .link,
+  .pseudo {
+    border: none;
+    color: $dark-link-color;
+
+    &:hover,
+    &:focus,
+    &.active {
+      color: $dark-link-hover-color !important;
+
+      .svg-icon { fill: $dark-link-hover-color !important; }
+    }
+
+    &:visited {
+      color: $dark-link-visited-color;
+
+      .svg-icon { fill: $dark-link-visited-color; }
+    }
+  }
+
+  .table-stats {
+    border-color: darken($dark-bg-color, 6.5%);
+
+    td,
+    th { border-color: darken($dark-bg-color, 6.5%); }
+
+    tbody tr:nth-child(2n) { background-color: lighten($dark-bg-color, 5%); }
+    thead,
+    tfoot {
+      background-color: lighten($dark-bg-color, 5%);
+      background-image: linear-gradient(lighten($dark-bg-color, 15%), lighten($dark-bg-color, 5%));
+      background-repeat: repeat-x;
+    }
+  }
+}
