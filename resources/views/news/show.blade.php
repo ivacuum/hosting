@@ -24,7 +24,7 @@
 @include('tpl.comment-add', ['params' => ['news', $news->id]])
 
 @if ($comments->hasPages())
-  <div class="mt-1 text-center">
+  <div class="mt-3 text-center">
     @include('tpl.paginator', ['paginator' => $comments])
   </div>
 @endif
