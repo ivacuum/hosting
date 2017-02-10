@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<div class="faq-question">
+<div class="faq-question mt-0">
   <a class="faq-anchor" name="what-is-it" href="#what-is-it">
     @svg (link)
   </a>
