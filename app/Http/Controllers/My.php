@@ -55,6 +55,7 @@ class My extends Controller
                 Rule::unique('users', 'login')->ignore($user->id),
             ],
             'email' => [
+                'required',
                 'email',
                 'max:125',
                 Rule::unique('users')->ignore($user->id),
