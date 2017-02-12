@@ -1,6 +1,6 @@
 <?php namespace App;
 
-use App\Notifications\ResetPassword;
+use App\Mail\ResetPassword;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -114,7 +114,7 @@ class User extends Authenticatable
 
     public function sendPasswordResetNotification($token)
     {
-        $this->notify(new ResetPassword($token));
+        \Mail::to($this)->send(new ResetPassword($token));
     }
 
     public function isPasswordOld()
