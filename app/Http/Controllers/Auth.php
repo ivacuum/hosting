@@ -69,10 +69,11 @@ class Auth extends Controller
             'email' => 'required|email',
         ]);
 
+        $email = $this->request->input('email');
         $response = $passwords->sendResetLink($this->request->only('email'));
 
         if (PasswordBroker::RESET_LINK_SENT === $response) {
-            return back()->with('message', trans($response));
+            return back()->with('message', trans($response, ['email' => $email]));
         }
 
         return back()->withErrors(['email' => trans($response)]);
