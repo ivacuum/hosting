@@ -22,7 +22,17 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+    <div class="col-md-6">
+      <label>{{ trans('auth.email') }}</label>
+      <input required type="text" class="form-control" name="email" value="{{ old('email', Auth::user()->email) }}">
+      @if ($errors->has('email'))
+        <span class="help-block">{{ $errors->first('email') }}</span>
+      @endif
+    </div>
+  </div>
+
+  <div class="form-group mt-4">
     <div class="col-md-6">
       <button type="submit" class="btn btn-primary">
         {{ trans("$tpl.save") }}

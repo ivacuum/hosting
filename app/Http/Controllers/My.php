@@ -54,9 +54,15 @@ class My extends Controller
                 'alpha_dash',
                 Rule::unique('users', 'login')->ignore($user->id),
             ],
+            'email' => [
+                'email',
+                'max:125',
+                Rule::unique('users')->ignore($user->id),
+            ],
         ]);
 
         $user->login = $this->request->input('username');
+        $user->email = $this->request->input('email');
         $user->save();
 
         return redirect()->back()->with('message', trans('my.saved'));
