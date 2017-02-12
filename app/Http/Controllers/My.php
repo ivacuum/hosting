@@ -51,7 +51,7 @@ class My extends Controller
             'username' => [
                 'min:2',
                 'max:32',
-                'alpha_num',
+                'alpha_dash',
                 Rule::unique('users', 'login')->ignore($user->id),
             ],
         ]);
