@@ -27,7 +27,7 @@
         <span class="icon-bar"></span>
       </button>
       @section('brand')
-        <a class="navbar-brand" href="{{ action('Home@index') }}">{{ config('cfg.sitename') }}</a>
+        <a class="navbar-brand" href="{{ action('Home@index') }}">vacuum<br>kaluga</a>
       @show
     </div>
     <div class="navbar-collapse collapse">
