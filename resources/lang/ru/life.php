@@ -21,8 +21,11 @@ return [
     'visited_cities' => 'Посещенные города',
     'visited_countries' => 'Посещенные страны',
 
-    'favorites' => 'Избранное',
     'trips' => 'Поездки',
+    'favorites' => 'Избранное',
+    'languages' => 'Языки',
+
+    'japanese' => 'Японский',
 
     'date.months' => '%d&nbsp;%s – %d&nbsp;%s&nbsp;%d', // 27 мая – 3 июня, 2016
     'date.same_day' => '%e&nbsp;%B&nbsp;%Y', // 1 июня 2016

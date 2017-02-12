@@ -23,6 +23,9 @@ return [
 
     'trips' => 'Trips',
     'favorites' => 'Favorites',
+    'languages' => 'Languages',
+
+    'japanese' => 'Japanese',
 
     'date.months' => '%2$s&nbsp;%d – %4$s&nbsp;%3$d,&nbsp;%5$d', // May 27 – June 3, 2016
     'date.same_day' => '%B&nbsp;%e,&nbsp;%Y', // June 1, 2016
