@@ -8,6 +8,7 @@ return [
     'password' => 'Password',
     'signin_vk' => 'Sign in with VK',
     'new_account' => 'New account',
+    'signed_in_as' => 'Signed in as',
     'new_password' => 'New password',
     'signin_title' => 'Sign in',
     'signin_google' => 'Sign in with Google',

@@ -3,6 +3,11 @@
 .navbar {
   border-radius: 0;
   margin-bottom: 0;
+
+  .avatar-dropdown {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
 }
 
 .navbar-default .navbar-brand {

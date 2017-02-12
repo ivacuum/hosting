@@ -52,13 +52,6 @@
       </ul>
       @yield('header_form')
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          @ru
-            <a href="{{ url("en/{$request_uri}") }}" lang="en">In english</a>
-          @en
-            <a href="{{ url($request_uri) }}" lang="ru">По-русски</a>
-          @endlang
-        </li>
         {{--
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -79,24 +72,33 @@
                 <span class="counter-label-round">{{ !is_null(Auth::user()->unreadNotifications()->first()) ? '!' : '' }}</span>
               </a>
             </li>
-            @if (!starts_with($self, 'Acp\\'))
-              @if (Auth::user()->isAdmin())
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle avatar-dropdown" data-toggle="dropdown">
+                @include('tpl.svg-avatar', [
+                  'bg' => ViewHelper::avatarBg(Auth::user()->id),
+                  'text' => Auth::user()->avatarName(),
+                ])
+                @svg (angle-down)
+              </a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">
+                  {{ trans('auth.signed_in_as') }}
+                  <span class="font-bold">{{ Auth::user()->displayName() }}</span>
+                </li>
+                <li class="divider"></li>
                 <li>
-                  <a href="{{ App::environment('local') ? "{$locale_uri}/acp/dev/templates" : "{$locale_uri}/acp/trips" }}">
-                    @svg (dashboard)
+                  <a href="{{ action('My@profile') }}">
+                    {{ trans('my.index') }}
                   </a>
                 </li>
-              @endif
-              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->displayName() }} <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href="{{ action('Auth@logout') }}">
-                      {{ trans('menu.logout') }}
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            @endif
+                <li class="divider"></li>
+                <li>
+                  <a href="{{ action('Auth@logout') }}">
+                    {{ trans('menu.logout') }}
+                  </a>
+                </li>
+              </ul>
+            </li>
           @else
             <li>
               <a href="{{ action('Auth@login') }}">{{ trans('auth.signin') }}</a>
@@ -146,6 +148,22 @@
             {{ trans('menu.vk') }}
           </a>
         </li>
+        @section('i18n')
+          <li>
+            @ru
+              <a class="link" href="{{ url("en/{$request_uri}") }}" lang="en">In english</a>
+            @en
+              <a class="link" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
+            @endlang
+          </li>
+        @show
+        @if (Auth::check() && Auth::user()->isAdmin())
+          <li>
+            <a class="link" href="{{ App::environment('local') ? "{$locale_uri}/acp/dev/templates" : "{$locale_uri}/acp/trips" }}">
+              @svg (dashboard)
+            </a>
+          </li>
+        @endif
       </ul>
     @show
   </div>

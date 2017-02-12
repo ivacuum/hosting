@@ -8,6 +8,7 @@ return [
     'password' => 'Пароль',
     'signin_vk' => 'Вход через ВК',
     'new_account' => 'Регистрация',
+    'signed_in_as' => 'Вы вошли как',
     'new_password' => 'Новый пароль',
     'signin_title' => 'Вход на сайт',
     'signin_google' => 'Вход через Гугл',

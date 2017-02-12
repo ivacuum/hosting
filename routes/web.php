@@ -47,6 +47,12 @@ Route::get('life/countries/{country}', 'Life@country');
 Route::get('life/gigs', 'Life@gigs');
 Route::get('life/{page}', 'Life@page');
 
+Route::get('my', 'My@index')->middleware('auth');
+Route::get('my/password', 'My@password')->middleware('auth');
+Route::put('my/password', 'My@passwordPut')->middleware('auth');
+Route::get('my/profile', 'My@profile')->middleware('auth');
+Route::put('my/profile', 'My@profilePut')->middleware('auth');
+
 Route::get('news', 'News@index');
 Route::get('news/{id}', 'News@show');
 Route::get('news/{year}/{month}', 'News@bc');
