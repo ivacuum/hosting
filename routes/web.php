@@ -9,9 +9,9 @@ Route::post('auth/register', 'Auth@registerPost')->middleware('guest');
 Route::get('auth/register/confirm/{token}', 'Auth@registerConfirm')->middleware('guest');
 Route::get('auth/register/ok', 'Auth@registerOk')->middleware('guest');
 Route::get('auth/password/remind', 'Auth@passwordRemind')->middleware('guest');
-Route::post('auth/password/remind', 'Auth@passwordRemindPost')->middleware('guest');
-Route::get('auth/password/reset/{token}', 'Auth@passwordReset')->middleware('guest');
-Route::post('auth/password/reset', 'Auth@passwordResetPost')->middleware('guest');
+Route::post('auth/password/remind', 'Auth@passwordRemindPost');
+Route::get('auth/password/reset/{token}', 'Auth@passwordReset');
+Route::post('auth/password/reset', 'Auth@passwordResetPost');
 
 // OAuth
 Route::get('auth/facebook', 'Auth\Facebook@index');
