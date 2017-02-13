@@ -26,9 +26,15 @@
   </li>
   <li class="mb-3">
     We often use <b>a/an</b> after the verbs <b>to be</b> and <b>to have</b>.
+    <div class="text-muted">
+      <div>He <b>is</b> a photographer. He <b>has got</b> a camera.</div>
+    </div>
   </li>
   <li class="mb-3">
     We do not use <b>a/an</b> with <b>uncountable</b> or <b>plural</b> nouns. We can use <b>some</b> instead.
+    <div class="text-muted">
+      <div>Would you like <b>some</b> tea? Yes, please! And I'd like <b>some</b> biscuits.</div>
+    </div>
   </li>
   <li class="mb-3">
     <b>The</b> is used before <b>singular</b> and <b>plural</b> nouns, both <b>countable</b> and <b>uncountable</b> when we are talking about something <b>specific</b> or when the noun is mentioned <b>for a second time</b>.
