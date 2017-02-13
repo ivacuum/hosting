@@ -98,7 +98,8 @@ class Auth extends Controller
         $credentials = $this->request->only('email', 'password', 'token');
         $credentials['password_confirmation'] = $credentials['password'];
 
-        $response = $passwords->reset($credentials, function ($user, $password) {
+        $response = $passwords->reset($credentials, function (User $user, $password) {
+            $user->status = User::STATUS_ACTIVE;
             $user->salt = '';
             $user->password = $password;
             $user->remember_token = str_random(60);

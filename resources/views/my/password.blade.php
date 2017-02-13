@@ -45,4 +45,24 @@
   {{ method_field('put') }}
   {{ csrf_field() }}
 </form>
+
+@if ($has_password)
+  <h3 class="mt-5">{{ trans('auth.forgot_password') }}</h3>
+  <form action="{{ action('Auth@passwordRemindPost') }}" class="form-horizontal" method="post">
+    {{ ViewHelper::inputHiddenMail() }}
+
+    @ru
+      <p>Ссылка будет отправлена на вашу электронную почту <span class="font-bold">{{ Auth::user()->email }}</span></p>
+    @en
+      <p>The link will be sent to your e-mail <span class="font-bold">{{ Auth::user()->email }}</span></p>
+    @endlang
+
+    <button type="submit" class="btn btn-default">
+      {{ trans('auth.password_remind') }}
+    </button>
+
+    <input type="hidden" name="email" value="{{ Auth::user()->email }}">
+    {{ csrf_field() }}
+  </form>
+@endif
 @endsection
