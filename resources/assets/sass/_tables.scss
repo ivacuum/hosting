@@ -3,8 +3,16 @@
   border: 1px solid #ddd;
   width: auto;
 
+  .border-right,
+  .border-bottom,
+  .border-left,
+  .border-top {
+    border-color: #ddd;
+    border-width: 1px;
+  }
+
   td {
-    border: none;
+    border-width: 0;
     border-bottom: 1px solid #ddd;
     padding: 0.4em 0.5em;
   }
@@ -18,8 +26,10 @@
   }
 
   tbody tr:nth-child(2n) { background-color: #f6f6f6; }
+
   thead,
-  tfoot {
+  tfoot,
+  .thead {
     background-color: #ededed;
     background-image: linear-gradient(#fbfbfb, #ededed);
     background-repeat: repeat-x;
