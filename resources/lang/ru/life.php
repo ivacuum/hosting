@@ -25,6 +25,8 @@ return [
     'favorites' => 'Избранное',
     'languages' => 'Языки',
 
+    'german' => 'Немецкий',
+    'english' => 'Английский',
     'japanese' => 'Японский',
 
     'date.months' => '%d&nbsp;%s – %d&nbsp;%s&nbsp;%d', // 27 мая – 3 июня, 2016

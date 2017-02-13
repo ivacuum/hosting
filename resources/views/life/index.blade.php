@@ -49,6 +49,14 @@
     <h2 class="mt-5">{{ trans('life.languages') }}</h2>
     <ul class="list-unstyled">
       <li class="mb-2">
+        <a class="link" href="{{ action('Life@page', 'english') }}">{{ trans('life.english') }}</a>
+      </li>
+      @ru
+        <li class="mb-2">
+          <a class="link" href="{{ action('Life@page', 'german') }}">{{ trans('life.german') }}</a>
+        </li>
+      @endlang
+      <li class="mb-2">
         <a class="link" href="{{ action('Life@page', 'japanese') }}">{{ trans('life.japanese') }}</a>
       </li>
     </ul>
