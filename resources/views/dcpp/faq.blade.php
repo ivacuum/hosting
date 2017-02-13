@@ -2,8 +2,13 @@
   'meta_title' => trans('meta_title.dcpp.faq'),
 ])
 
+@ru
+  @section('i18n')
+  @endsection
+@endlang
+
 @section('content')
-<h1>Решение проблем с DC++</h1>
+<h1 class="mt-0">Решение проблем с DC++</h1>
 
 <div class="faq-question">
   <a class="faq-anchor" name="1" href="#1">

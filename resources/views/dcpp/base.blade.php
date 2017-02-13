@@ -88,5 +88,14 @@
       {{ trans('menu.feedback') }}
     </a>
   </li>
+  @section('i18n')
+    <li>
+      @ru
+        <a class="link" href="{{ url("en/{$request_uri}") }}" lang="en">In english</a>
+      @en
+        <a class="link" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
+      @endlang
+    </li>
+  @show
 </ul>
 @endsection
