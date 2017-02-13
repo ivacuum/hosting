@@ -736,7 +736,7 @@ $glyphs = [[
 @ru
   <h3>57. Приветствия и другие выражения</h3>
 @en
-  <h3>57. Greetings</h3>
+  <h3>57. Greetings and other expressions</h3>
 @endlang
 <?php
 $glyphs = [[
@@ -764,6 +764,26 @@ $glyphs = [[
   'en' => 'hello',
   'phonetic' => 'yaa',
   'jp' => 'やあ',
+], [
+  'ru' => 'до свидания',
+  'en' => 'goodbye',
+  'phonetic' => 'sayōnara',
+  'jp' => 'さようなら',
+], [
+  'ru' => 'пока',
+  'en' => 'bye',
+  'phonetic' => 'mata ne',
+  'jp' => 'またね',
+], [
+  'ru' => 'счастливо',
+  'en' => 'good luck',
+  'phonetic' => 'ogenki de',
+  'jp' => 'お元気で',
+], [
+  'ru' => 'удачи',
+  'en' => 'good luck',
+  'phonetic' => 'seikō',
+  'jp' => '成功',
 ]];
 ?>
 @include('tpl.japanese-glyphs')
