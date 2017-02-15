@@ -83,11 +83,21 @@ a[href^="http"]:empty::before { content: attr(href); }
 
 .pseudo { border-bottom-style: dotted; }
 
-.visited:visited {
-  border-color: $link-visited-border-color;
-  color: $link-visited-color;
+.visited {
+  &:hover,
+  &:focus {
+    border-color: $link-hover-border-color !important;
+    color: $link-hover-color !important;
 
-  .svg-icon { fill: $link-visited-color; }
+    .svg-icon { fill: $link-hover-color !important; }
+  }
+
+  &:visited {
+    border-color: $link-visited-border-color;
+    color: $link-visited-color;
+
+    .svg-icon { fill: $link-visited-color; }
+  }
 }
 
 .alert {

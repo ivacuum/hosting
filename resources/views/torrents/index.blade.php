@@ -8,7 +8,7 @@
         @if (!empty($category_id) && $id == $category_id)
           <mark>{{ $category['title'] }}</mark>
         @else
-          <a class="link" href="{{ action("$self@index", ['category_id' => $id]) }}">{{ $category['title'] }}</a>
+          <a class="visited" href="{{ action("$self@index", ['category_id' => $id]) }}">{{ $category['title'] }}</a>
         @endif
       </h3>
       @if (!empty($category['children']))
@@ -18,7 +18,7 @@
             @if (!empty($category_id) && $id == $category_id)
               <mark>{{ $child['title'] }}</mark>
             @else
-              <a class="link" href="{{ action("$self@index", ['category_id' => $id]) }}">{{ $child['title'] }}</a>
+              <a class="visited" href="{{ action("$self@index", ['category_id' => $id]) }}">{{ $child['title'] }}</a>
             @endif
             <span class="text-muted">{{ $stats[$id] }}</span>
           </div>
