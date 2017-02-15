@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'index' => 'Админка',
+
     'artists.add' => 'Добавить артиста',
     'artists.edit' => 'Редактирование артиста',
     'artists.show' => 'Артист',

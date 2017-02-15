@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'index' => 'ACP',
+
     'artists.add' => 'Add artist',
     'artists.edit' => 'Edit',
     'artists.show' => 'Artist',
