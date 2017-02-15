@@ -87,12 +87,14 @@
 
 @parent
 
-@include('tpl.comments-list')
-@include('tpl.comment-add', ['params' => ['trip', $trip->id]])
+@if (isset($comments))
+  @include('tpl.comments-list')
+  @include('tpl.comment-add', ['params' => ['trip', $trip->id]])
 
-@if ($comments->hasPages())
-  <div class="mt-3 text-center">
-    @include('tpl.paginator', ['paginator' => $comments])
-  </div>
+  @if ($comments->hasPages())
+    <div class="mt-3 text-center">
+      @include('tpl.paginator', ['paginator' => $comments])
+    </div>
+  @endif
 @endif
 @endsection
