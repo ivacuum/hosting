@@ -1,0 +1,51 @@
+// <table>
+.flex-table {
+  @media (min-width: $screen-sm-min) { display: table; }
+}
+
+.flex-table-bordered {
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+// <tr>
+.flex-row {
+  padding: 1rem 0;
+
+  .flex-table-bordered & + & { border-top: 1px solid #ddd; }
+  .flex-row-striped &:nth-child(2n) { background-color: #f6f6f6; }
+
+  @media (min-width: $screen-sm-min) {
+    display: table-row;
+    padding: 0;
+  }
+}
+
+// <tbody>
+.flex-row-group {
+  @media (min-width: $screen-sm-min) {
+    display: table-row-group;
+  }
+}
+
+.flex-row-header {
+  background: #ededed linear-gradient(#fbfbfb, #ededed) repeat-x;
+  font-weight: bold;
+  padding: 0;
+}
+
+// <td> & <th>
+.flex-cell {
+  padding: .4rem .5rem;
+
+  @media (max-width: $screen-sm-max) {
+    text-align: center;
+
+    &:empty { display: none; }
+  }
+
+  @media (min-width: $screen-sm-min) {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}

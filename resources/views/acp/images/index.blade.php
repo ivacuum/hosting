@@ -58,49 +58,49 @@
 @endif
 @if (sizeof($models))
   @if (!$type)
-    <table class="table-stats">
-      <thead>
-        <tr>
-          <th><input type="checkbox" class="js-select-all" data-selector=".models-checkbox"></th>
-          <th>ID</th>
-          <th>Изображение</th>
-          <th>Размер</th>
-          <th class="text-right">@svg (eye)</th>
-          <th>Без просмотров</th>
-          <th></th>
-        </tr>
-      </thead>
-      @foreach ($models as $model)
-        <tr class="js-tick-onclick" data-tick="#checkbox_{{ $model->id }}">
-          <td><input class="models-checkbox" type="checkbox" id="checkbox_{{ $model->id }}" name="ids[]" value="{{ $model->id }}"></td>
-          <td>{{ $model->id }}</td>
-          <td class="text-center">
-            <a href="{{ action("$self@show", $model) }}">
-              <img src="{{ $model->thumbnailSecretUrl() }}">
-            </a>
-          </td>
-          <td class="text-muted">{{ ViewHelper::size($model->size) }}</td>
-          <td class="text-right">
-            @if ($model->views > 1500)
-              <span class="label label-success">{{ ViewHelper::number($model->views) }}</span>
-            @else
-              {{ ViewHelper::number($model->views) }}
-            @endif
-          </td>
-          <td>{{ !is_null($model->updated_at) && $model->updated_at->diffInMonths() > 6 ? $model->updated_at->diffForHumans(null, true) : '' }}</td>
-          <td>
-            <div class="btn-group">
-              <a class="btn btn-default" href="{{ action("$self@view", $model) }}">
-                @svg (eye)
-              </a>
-              <a class="btn btn-default js-entity-action" data-confirm="Запись будет удалена. Продолжить?" data-method="delete" href="{{ action("$self@destroy", $model) }}">
-                @svg (trash-o)
+    <div class="flex-table flex-table-bordered">
+      <div class="flex-row flex-row-header">
+        <div class="flex-cell"><input type="checkbox" class="js-select-all" data-selector=".models-checkbox"></div>
+        <div class="flex-cell text-right">ID</div>
+        <div class="flex-cell">Изображение</div>
+        <div class="flex-cell">Размер</div>
+        <div class="flex-cell text-right">@svg (eye)</div>
+        <div class="flex-cell">@svg (eye-slash)</div>
+        <div class="flex-cell"></div>
+      </div>
+      <div class="flex-row-group flex-row-striped">
+        @foreach ($models as $model)
+          <div class="flex-row js-tick-onclick" data-tick="#checkbox_{{ $model->id }}">
+            <div class="flex-cell"><input class="models-checkbox" type="checkbox" id="checkbox_{{ $model->id }}" name="ids[]" value="{{ $model->id }}"></div>
+            <div class="flex-cell text-right">{{ $model->id }}</div>
+            <div class="flex-cell">
+              <a class="screenshot-link" href="{{ action("$self@show", $model) }}">
+                <img class="screenshot" src="{{ $model->thumbnailSecretUrl() }}">
               </a>
             </div>
-          </td>
-        </tr>
-      @endforeach
-    </table>
+            <div class="flex-cell text-muted">{{ ViewHelper::size($model->size) }}</div>
+            <div class="flex-cell text-right">
+              @if ($model->views > 1500)
+                <span class="label label-success">{{ ViewHelper::number($model->views) }}</span>
+              @else
+                {{ ViewHelper::number($model->views) }}
+              @endif
+            </div>
+            <div class="flex-cell">{{ !is_null($model->updated_at) && $model->updated_at->diffInMonths() > 6 ? $model->updated_at->diffForHumans(null, true) : '' }}</div>
+            <div class="flex-cell">
+              <div class="btn-group">
+                <a class="btn btn-default" href="{{ action("$self@view", $model) }}">
+                  @svg (eye)
+                </a>
+                <a class="btn btn-default js-entity-action" data-confirm="Запись будет удалена. Продолжить?" data-method="delete" href="{{ action("$self@destroy", $model) }}">
+                  @svg (trash-o)
+                </a>
+              </div>
+            </div>
+          </div>
+        @endforeach
+      </div>
+    </div>
 
     <div class="pull-left mt-3">
       <form class="form-inline js-batch-form" data-url="{{ action("$self@batch") }}" data-selector=".models-checkbox">
