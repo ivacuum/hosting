@@ -35,43 +35,38 @@
           @php ($last_date = $torrent->registered_at)
         @endif
         @php ($category = TorrentCategoryHelper::find($torrent->category_id))
-        <div class="media mb-3">
-          <div class="media-left torrent-icon" title="{{ $category['title'] }}">
+        <div class="torrents-list-container">
+          <div class="torrents-list-cell torrents-list-icon torrent-icon" title="{{ $category['title'] }}">
             @php ($icon = $category['icon'] ?? 'file-text-o')
             @svg ($icon)
           </div>
-          <div class="media-body">
-            <div>
-              <a class="link" href="{{ action("{$self}@torrent", $torrent) }}">
-                <torrent-title title="{{ $torrent->title }}"></torrent-title>
-              </a>
-            </div>
-            <div class="torrent-list-meta">
-              <a class="js-magnet" href="{{ $torrent->magnet() }}" title="{{ trans('torrents.download') }}" data-action="{{ action('Torrents@magnet', $torrent) }}">
-                @svg (magnet)
-                @if ($torrent->clicks > 0)
-                  {{ $torrent->clicks }}
-                @endif
-              </a>
-              <span class="mx-1 text-muted">&middot;</span>
-              {{ ViewHelper::size($torrent->size) }}
-              @if (empty($category_id) || $category_id != $torrent->category_id)
-                <span class="mx-1 text-muted">&middot;</span>
-                <span class="text-muted">
-                  @svg (folder-o)
-                  {{ $category['title'] }}
-                </span>
-              @endif
-            </div>
+          <div class="torrents-list-cell torrents-list-title">
+            <a class="visited" href="{{ action("{$self}@torrent", $torrent) }}">
+              <torrent-title title="{{ $torrent->title }}"></torrent-title>
+            </a>
           </div>
+          <div class="torrents-list-cell torrents-list-magnet">
+            <a class="link-cell js-magnet"
+               href="{{ $torrent->magnet() }}"
+               title="{{ trans('torrents.download') }}"
+               data-action="{{ action('Torrents@magnet', $torrent) }}">
+              @svg (magnet)
+              @if ($torrent->clicks > 0)
+                {{ $torrent->clicks }}
+              @endif
+            </a>
+          </div>
+          <div class="torrents-list-cell torrents-list-size">{{ ViewHelper::size($torrent->size) }}</div>
         </div>
       @endforeach
 
-      <div class="mt-3 text-center">
-        @include('tpl.paginator', ['paginator' => $torrents])
-      </div>
+      @if ($torrents->hasPages())
+        <div class="mt-3 text-center">
+          @include('tpl.paginator', ['paginator' => $torrents])
+        </div>
+      @endif
     @else
-      <p class="mt-4">Подходящих раздач не найдено.</p>
+      <p class="alert alert-warning">Подходящих раздач не найдено.</p>
     @endif
   </div>
 </div>

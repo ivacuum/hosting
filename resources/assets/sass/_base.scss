@@ -1,16 +1,15 @@
 html {
   font-size: $font-size-root;
+  height: 100%;
+
   // В IE10 так не пропадает контент после закрытия модального окна
   overflow-y: scroll;
-  height: 100%;
 }
 
 body {
   display: flex;
   flex-direction: column;
-  // min-height: 100vh;
   min-height: 100%;
-  // height: 100%;
 }
 
 // Чтобы страница не проматывалась в начало,
@@ -76,7 +75,20 @@ a[href^="http"]:empty::before { content: attr(href); }
   }
 }
 
+.link-cell {
+  display: block;
+  margin: -100%;
+  padding: 100%;
+}
+
 .pseudo { border-bottom-style: dotted; }
+
+.visited:visited {
+  border-color: $link-visited-border-color;
+  color: $link-visited-color;
+
+  .svg-icon { fill: $link-visited-color; }
+}
 
 .alert {
   ul,
@@ -95,18 +107,5 @@ a[href^="http"]:empty::before { content: attr(href); }
 .lead {
   font-size: floor(($font-size-base * 1.15));
 
-  @media (min-width: $screen-md-min) {
-    font-size: 18px;
-  }
+  @media (min-width: $screen-md-min) { font-size: 18px; }
 }
-
-.wrap-content {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -49px;
-}
-.wrap-content-fixed-header {
-  > .container { padding-top: 60px; }
-}
-.wrap-push { height: 49px; }
