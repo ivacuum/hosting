@@ -77,8 +77,8 @@ a[href^="http"]:empty::before { content: attr(href); }
 
 .link-cell {
   display: block;
-  margin: -100%;
-  padding: 100%;
+  margin: -10rem;
+  padding: 10rem;
 }
 
 .pseudo { border-bottom-style: dotted; }
