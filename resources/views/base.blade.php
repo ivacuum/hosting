@@ -114,7 +114,7 @@
     </div>
   </div>
 </div>
-<div class="container-full">
+<div class="container-flex">
   @section('breadcrumbs')
     @include('tpl.breadcrumbs', ['breadcrumbs' => $breadcrumbs ?? Breadcrumbs::get()])
   @show
