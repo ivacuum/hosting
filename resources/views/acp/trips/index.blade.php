@@ -7,51 +7,51 @@
   @include('acp.tpl.create')
 </h3>
 @if (sizeof($models))
-  <table class="table-stats">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Название</th>
-        <th></th>
-        <th>Дата</th>
-        <th>URL</th>
-        <th></th>
-      </tr>
-    </thead>
-    @foreach ($models as $model)
-      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
-        <td>{{ $loop->iteration }}</td>
-        <td>
-          <a class="link" href="{{ action("$self@show", $model) }}">
-            {{ $model->title }}
-          </a>
-        </td>
-        <td>
-          @if ($model->status === App\Trip::STATUS_HIDDEN)
-            <span class="tooltipped tooltipped-s" aria-label="Заметка скрыта">
-              @svg (eye-slash)
-            </span>
-          @elseif ($model->status === App\Trip::STATUS_INACTIVE)
-            <span class="tooltipped tooltipped-s" aria-label="Заметка неактивна">
-              @svg (pencil)
-            </span>
-          @endif
-        </td>
-        <td>{{ $model->localizedDate() }}</td>
-        <td>
-          <a class="link" href="{{ $locale_uri }}/life/{{ $model->slug }}">
-            {{ $model->slug }}
-          </a>
-        </td>
-        <td>
-          @if ($model->meta_image)
-            <span class="tooltipped tooltipped-s" aria-label="Задано фото">
-              @svg (paperclip)
-            </span>
-          @endif
-        </td>
-      </tr>
-    @endforeach
-  </table>
+  <div class="flex-table flex-table-bordered">
+    <div class="flex-row flex-row-header">
+      <div class="flex-cell">#</div>
+      <div class="flex-cell">Название</div>
+      <div class="flex-cell"></div>
+      <div class="flex-cell">Дата</div>
+      <div class="flex-cell">URL</div>
+      <div class="flex-cell"></div>
+    </div>
+    <div class="flex-row-group flex-row-striped">
+      @foreach ($models as $model)
+        <div class="flex-row js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
+          <div class="flex-cell">{{ $loop->iteration }}</div>
+          <div class="flex-cell">
+            <a class="link" href="{{ action("$self@show", $model) }}">
+              {{ $model->title }}
+            </a>
+          </div>
+          <div class="flex-cell">
+            @if ($model->status === App\Trip::STATUS_HIDDEN)
+              <span class="tooltipped tooltipped-s" aria-label="Заметка скрыта">
+                @svg (eye-slash)
+              </span>
+            @elseif ($model->status === App\Trip::STATUS_INACTIVE)
+              <span class="tooltipped tooltipped-s" aria-label="Заметка неактивна">
+                @svg (pencil)
+              </span>
+            @endif
+          </div>
+          <div class="flex-cell">{{ $model->localizedDate() }}</div>
+          <div class="flex-cell">
+            <a class="link" href="{{ $locale_uri }}/life/{{ $model->slug }}">
+              {{ $model->slug }}
+            </a>
+          </div>
+          <div class="flex-cell">
+            @if ($model->meta_image)
+              <span class="tooltipped tooltipped-s" aria-label="Задано фото">
+                @svg (paperclip)
+              </span>
+            @endif
+          </div>
+        </div>
+      @endforeach
+    </div>
+  </div>
 @endif
 @endsection
