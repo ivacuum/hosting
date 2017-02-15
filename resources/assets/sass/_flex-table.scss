@@ -34,11 +34,13 @@
   background: #ededed linear-gradient(#fbfbfb, #ededed) repeat-x;
   font-weight: bold;
   padding: 0;
+
+  .flex-table-bordered & { border-bottom: 1px solid #ddd; }
 }
 
 // <td> & <th>
 .flex-cell {
-  padding: .4rem .5rem;
+  padding: .35rem .5rem;
 
   @media (max-width: $screen-sm-max) {
     text-align: center;
