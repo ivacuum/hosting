@@ -21,6 +21,7 @@ return [
     'change_password' => 'Сменить пароль',
     'forgot_password' => 'Забыли пароль?',
     'password_remind' => 'Начать восстановление',
+    'signin_to_view_page' => 'Для просмотра этой страницы необходимо быть зарегистрированным пользователем',
     'password_reset_title' => 'Установка нового пароля',
     'change_password_email' => 'Нажмите на кнопку для установки нового пароля к учетной записи ivacuum.ru',
     'password_remind_title' => 'Восстановление пароля',

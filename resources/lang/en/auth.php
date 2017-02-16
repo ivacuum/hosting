@@ -21,6 +21,7 @@ return [
     'change_password' => 'Change password',
     'forgot_password' => 'Forgot your password?',
     'password_remind' => 'Begin restoration',
+    'signin_to_view_page' => 'You need to sign in to view requested page',
     'password_reset_title' => 'Setting up a new password',
     'change_password_email' => 'Follow the link to set up a new password for your ivacuum.ru account',
     'password_remind_title' => 'Restore password',
