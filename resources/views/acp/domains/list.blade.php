@@ -26,7 +26,7 @@
           <input class="domains-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}">
         </td>
         <td>
-          <a href="http://{{ $model->domain }}/" target="_blank" style="margin-right: 0.3em;">
+          <a class="mr-1" href="http://{{ $model->domain }}/" target="_blank">
             @svg (external-link)
           </a>
           <a href="/acp/domains/{{ $model->domain }}" class="link">{{ $model->domain }}</a>

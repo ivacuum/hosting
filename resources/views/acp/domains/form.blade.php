@@ -88,7 +88,7 @@
 <hr>
 <div class="row">
   <div class="col-md-9 col-md-offset-3">
-    <h3 style="margin-bottom: 0.5em;">Реквизиты доступа к сайту</h3>
+    <h3 class="mb-2">Реквизиты доступа к сайту</h3>
   </div>
 </div>
 

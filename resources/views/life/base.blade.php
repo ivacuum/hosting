@@ -19,9 +19,9 @@
 {{--
 @section('footer')
 @parent
-<span style="white-space: nowrap;">
+<span class="text-nowrap">
   Поделиться:
-  <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="big" data-yashareQuickServices="vkontakte,facebook,twitter,gplus" data-yashareTheme="counter" style="display: inline-block"></div>
+  <div class="yashare-auto-init d-inline-block" data-yashareL10n="ru" data-yashareType="big" data-yashareQuickServices="vkontakte,facebook,twitter,gplus" data-yashareTheme="counter"></div>
 </span>
 @endsection
 

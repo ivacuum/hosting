@@ -7,41 +7,41 @@
   @include('acp.tpl.create')
 </h3>
 @if (sizeof($models))
-  <table class="table-stats">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Город</th>
-        <th>URL</th>
-        <th>IATA</th>
-        <th></th>
-      </tr>
-    </thead>
-    @foreach ($models as $model)
-      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
-        <td class="tooltipped tooltipped-s" aria-label="{{ $model->country->title }}">
-          {{ $model->country->emoji }}
-        </td>
-        <td>
-          <a class="link" href="{{ action("$self@show", $model) }}">
-            {{ $model->title }}
-          </a>
-        </td>
-        <td>
-          <a class="link" href="{{ $locale_uri }}/life/{{ $model->slug }}">
-            {{ $model->slug }}
-          </a>
-        </td>
-        <td>{{ $model->iata }}</td>
-        <td>
-          @if ($model->lat && $model->lon)
-            <span class="tooltipped tooltipped-s" aria-label="Геолокация задана">
+  <div class="flex-table flex-table-bordered">
+    <div class="flex-row flex-row-header">
+      <div class="flex-cell"></div>
+      <div class="flex-cell">Город</div>
+      <div class="flex-cell">URL</div>
+      <div class="flex-cell">IATA</div>
+      <div class="flex-cell"></div>
+    </div>
+    <div class="flex-row-group flex-row-striped">
+      @foreach ($models as $model)
+        <div class="flex-row js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
+          <div class="flex-cell tooltipped tooltipped-n" aria-label="{{ $model->country->title }}">
+            {{ $model->country->emoji }}
+          </div>
+          <div class="flex-cell">
+            <a class="link" href="{{ action("$self@show", $model) }}">
+              {{ $model->title }}
+            </a>
+          </div>
+          <div class="flex-cell">
+            <a class="link" href="{{ $locale_uri }}/life/{{ $model->slug }}">
+              {{ $model->slug }}
+            </a>
+          </div>
+          <div class="flex-cell">{{ $model->iata }}</div>
+          <div class="flex-cell">
+            @if ($model->lat && $model->lon)
+              <span class="tooltipped tooltipped-s" aria-label="Геолокация задана">
               @svg (map-marker)
             </span>
-          @endif
-        </td>
-      </tr>
-    @endforeach
-  </table>
+            @endif
+          </div>
+        </div>
+      @endforeach
+    </div>
+  </div>
 @endif
 @endsection

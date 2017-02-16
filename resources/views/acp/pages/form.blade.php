@@ -62,7 +62,7 @@
 <hr>
 <div class="row">
   <div class="col-md-10 col-md-offset-2">
-    <h3 style="margin-bottom: 0.5em;">Информация для продвижения</h3>
+    <h3 class="mb-2">Информация для продвижения</h3>
   </div>
 </div>
 

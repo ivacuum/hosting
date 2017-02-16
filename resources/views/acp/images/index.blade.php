@@ -63,7 +63,7 @@
         <div class="flex-cell"><input type="checkbox" class="js-select-all" data-selector=".models-checkbox"></div>
         <div class="flex-cell text-right">ID</div>
         <div class="flex-cell">Изображение</div>
-        <div class="flex-cell">Размер</div>
+        <div class="flex-cell text-right">Размер</div>
         <div class="flex-cell text-right">@svg (eye)</div>
         <div class="flex-cell">@svg (eye-slash)</div>
         <div class="flex-cell"></div>
@@ -78,7 +78,7 @@
                 <img class="screenshot" src="{{ $model->thumbnailSecretUrl() }}">
               </a>
             </div>
-            <div class="flex-cell text-muted">{{ ViewHelper::size($model->size) }}</div>
+            <div class="flex-cell text-right text-muted">{{ ViewHelper::size($model->size) }}</div>
             <div class="flex-cell text-right">
               @if ($model->views > 1500)
                 <span class="label label-success">{{ ViewHelper::number($model->views) }}</span>
@@ -116,6 +116,7 @@
         <button class="btn btn-default" id="batch_submit">Выполнить</button>
       </form>
     </div>
+    <div class="clearfix"></div>
   @elseif ($type === 'grid')
     <div class="text-center">
       @foreach ($models as $model)
@@ -127,7 +128,7 @@
     </div>
   @endif
 
-  <div class="mt-3 pull-right clearfix">
+  <div class="text-center mt-3">
     @include('tpl.paginator', ['paginator' => $models])
   </div>
 @endif

@@ -6,40 +6,41 @@
   <small>{{ $models->total() }}</small>
 </h3>
 @if (sizeof($models))
-  <table class="table-stats">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Автор</th>
-        <th class="text-right">@svg (magnet)</th>
-        <th>Название</th>
-      </tr>
-    </thead>
-    @foreach ($models as $model)
-      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
-        <td>{{ $model->id }}</td>
-        <td>
-          <a class="link" href="{{ action('Acp\Users@show', $model->user_id) }}">
-            {{ $model->user->displayName() }}
-          </a>
-        </td>
-        <td class="text-right">
-          @if ($model->clicks > 0)
-            {{ ViewHelper::number($model->clicks) }}</td>
-          @endif
-        <td>
-          <a class="link" href="{{ action("$self@show", $model) }}">
-            <torrent-title title="{{ $model->title }}"></torrent-title>
-          </a>
-          <a href="{{ $model->externalLink() }}">
-            @svg (external-link)
-          </a>
-        </td>
-      </tr>
-    @endforeach
-  </table>
+  <div class="flex-table flex-table-bordered">
+    <div class="flex-row flex-row-header">
+      <div class="flex-cell text-right">ID</div>
+      <div class="flex-cell">Автор</div>
+      <div class="flex-cell text-right">@svg (magnet)</div>
+      <div class="flex-cell">Название</div>
+    </div>
+    <div class="flex-row-group flex-row-striped">
+      @foreach ($models as $model)
+        <div class="flex-row js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
+          <div class="flex-cell text-right">{{ $model->id }}</div>
+          <div class="flex-cell">
+            <a class="link" href="{{ action('Acp\Users@show', $model->user_id) }}">
+              {{ $model->user->displayName() }}
+            </a>
+          </div>
+          <div class="flex-cell text-right">
+            @if ($model->clicks > 0)
+              {{ ViewHelper::number($model->clicks) }}
+            @endif
+          </div>
+          <div class="flex-cell">
+            <a class="link" href="{{ action("$self@show", $model) }}">
+              <torrent-title title="{{ $model->title }}"></torrent-title>
+            </a>
+            <a href="{{ $model->externalLink() }}">
+              @svg (external-link)
+            </a>
+          </div>
+        </div>
+      @endforeach
+    </div>
+  </div>
 
-  <div class="pull-right clearfix">
+  <div class="text-center mt-3">
     @include('tpl.paginator', ['paginator' => $models])
   </div>
 @endif
