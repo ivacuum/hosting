@@ -10,7 +10,7 @@
 
 // <tr>
 .flex-row {
-  padding: 1rem 0;
+  padding: .5rem 0;
 
   .flex-table-bordered & + & { border-top: 1px solid #ddd; }
   .flex-row-striped &:nth-child(2n) { background-color: #f6f6f6; }
