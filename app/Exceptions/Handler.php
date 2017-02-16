@@ -1,5 +1,6 @@
 <?php namespace App\Exceptions;
 
+use App\Utilities\ExceptionHelper;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
@@ -22,6 +23,14 @@ class Handler extends ExceptionHandler
 
     public function report(Exception $e)
     {
+        if ($e instanceof ValidationException && false === config('app.debug', false)) {
+            ExceptionHelper::logValidation($e);
+        }
+
+        if ($this->shouldReport($e) && false === config('app.debug', false)) {
+            $this->reportTelegram($e);
+        }
+
         parent::report($e);
     }
 
@@ -39,13 +48,22 @@ class Handler extends ExceptionHandler
         return response()->view('errors.500', ['exception' => $e], 500);
     }
 
+    protected function reportTelegram(Exception $e)
+    {
+        ExceptionHelper::log($e);
+
+        if ($previous = $e->getPrevious()) {
+            $this->reportTelegram($previous);
+        }
+    }
+
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         if ($request->expectsJson()) {
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 
-        return redirect()->guest('auth/login')
-            ->with('message', 'Для просмотра этой страницы необходимо войти на сайт');
+        return redirect()->guest(action('Auth@login'))
+            ->with('message', trans('auth.signin_to_view_page'));
     }
 }
