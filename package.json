@@ -14,7 +14,7 @@
     "fotorama": "^4.6",
     "jquery": "^2.2.0",
     "jquery.scrollto": "^2.1",
-    "laravel-mix": "^0.7.0",
+    "laravel-mix": "^0.8.0",
     "lodash.throttle": "^4.1.1",
     "promise-polyfill": "^6.0.2",
     "vue": "^2.1.0"
