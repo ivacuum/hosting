@@ -1,5 +1,5 @@
 @if (isset($timeline) && sizeof($timeline->flatten()) > 1)
-  <div class="city-timeline clearfix">
+  <div class="city-timeline mb-3">
     @foreach ($timeline as $year => $rows)
       <ul class="city-timeline-column">
         <li class="city-timeline-year">{{ $year }}</li>

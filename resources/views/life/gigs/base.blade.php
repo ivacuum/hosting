@@ -7,7 +7,7 @@
 @section('content_header')
 @parent
 @include('tpl.gig-timeline')
-<h2>
+<h2 class="mt-0">
   {{ $gig->title }}
   <small><time datetime="{{ $gig->date->toDateString() }}">{{ $gig->fullDate() }}</time></small>
 </h2>
