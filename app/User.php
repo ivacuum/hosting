@@ -20,6 +20,8 @@ use Illuminate\Notifications\Notifiable;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $last_login_at
+ *
+ * @property \Illuminate\Support\Collection $notifications
  */
 class User extends Authenticatable
 {

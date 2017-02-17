@@ -1,18 +1,23 @@
 @extends('torrents.base')
 
 @section('content')
-<form action="{{ action("$self@addPost") }}" class="form-horizontal" method="post">
+<div class="row">
+  <div class="col-md-6">
+    <form class="mb-3" action="{{ action("$self@addPost") }}" method="post">
 
-  @include("$tpl.form")
+      @include("$tpl.form")
 
-  <div class="form-group">
-    <div class="col-md-6">
       <button type="submit" class="btn btn-primary">
         {{ trans("$tpl.add") }}
       </button>
-    </div>
-  </div>
 
-  {{ csrf_field() }}
-</form>
+      {{ csrf_field() }}
+    </form>
+  </div>
+  <div class="col-md-6">
+    @ru
+      <div>Нашли что-то интересное на рутрекере? Поделитесь своей находкой со всеми! Достаточно выбрать подходящую рубрику и вставить ссылку на раздачу. Далее сайт все сделает автоматически — вам даже не нужно скачивать, хэшировать или поддерживать раздачу. Так просто еще никогда не было!</div>
+    @endlang
+  </div>
+</div>
 @endsection
