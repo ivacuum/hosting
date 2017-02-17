@@ -114,7 +114,9 @@ class User extends Authenticatable
 
     public function sendPasswordResetNotification($token)
     {
-        \Mail::to($this)->send(new ResetPassword($token));
+        register_shutdown_function(function () use ($token) {
+            \Mail::to($this)->send(new ResetPassword($token));
+        });
     }
 
     public function isPasswordOld()
