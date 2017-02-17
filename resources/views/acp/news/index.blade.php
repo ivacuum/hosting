@@ -27,7 +27,7 @@
           </div>
           <div class="flex-cell">
             @if ($model->status === App\News::STATUS_HIDDEN)
-              <span class="tooltipped tooltipped-s" aria-label="Новость скрыта">
+              <span class="tooltipped tooltipped-n" aria-label="Новость скрыта">
               @svg (eye-slash)
             </span>
             @endif

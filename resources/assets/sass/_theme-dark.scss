@@ -59,6 +59,13 @@ $dark-link-hover-color: #91e4ff;
     }
   }
 
+  .flex-row-header { background: lighten($dark-bg-color, 5%) linear-gradient(lighten($dark-bg-color, 15%), lighten($dark-bg-color, 5%)) repeat-x; }
+  .flex-row-striped .flex-row:nth-child(2n) { background-color: lighten($dark-bg-color, 5%); }
+
+  .flex-table-bordered,
+  .flex-table-bordered .flex-row + .flex-row,
+  .flex-table-bordered .flex-row-header { border-color: darken($dark-bg-color, 6.5%); }
+
   .table-stats {
     border-color: darken($dark-bg-color, 6.5%);
 
@@ -68,9 +75,7 @@ $dark-link-hover-color: #91e4ff;
     tbody tr:nth-child(2n) { background-color: lighten($dark-bg-color, 5%); }
     thead,
     tfoot {
-      background-color: lighten($dark-bg-color, 5%);
-      background-image: linear-gradient(lighten($dark-bg-color, 15%), lighten($dark-bg-color, 5%));
-      background-repeat: repeat-x;
+      background: lighten($dark-bg-color, 5%) linear-gradient(lighten($dark-bg-color, 15%), lighten($dark-bg-color, 5%)) repeat-x;
     }
   }
 }

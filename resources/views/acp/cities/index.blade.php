@@ -34,7 +34,7 @@
           <div class="flex-cell">{{ $model->iata }}</div>
           <div class="flex-cell">
             @if ($model->lat && $model->lon)
-              <span class="tooltipped tooltipped-s" aria-label="Геолокация задана">
+              <span class="tooltipped tooltipped-n" aria-label="Геолокация задана">
               @svg (map-marker)
             </span>
             @endif

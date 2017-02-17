@@ -121,7 +121,7 @@
   <p>Читаются сотнями. Например, 1998 год: девятнадцать сотен, восемь и девяносто — neunzehnhundertachtundneunzig.</p>
   <p>В речи:</p>
   <p>
-    <span class="tooltipped tooltipped-s" aria-label="Когда есть вы рожденный?">— Wann sind Sie geboren?</span>
+    <span class="tooltipped tooltipped-n" aria-label="Когда есть вы рожденный?">— Wann sind Sie geboren?</span>
   </p>
   <p>Два варианта ответа:</p>
   <div>— Ich bin 1980 geboren.</div>

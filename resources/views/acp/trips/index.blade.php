@@ -27,11 +27,11 @@
           </div>
           <div class="flex-cell">
             @if ($model->status === App\Trip::STATUS_HIDDEN)
-              <span class="tooltipped tooltipped-s" aria-label="Заметка скрыта">
+              <span class="tooltipped tooltipped-n" aria-label="Заметка скрыта">
                 @svg (eye-slash)
               </span>
             @elseif ($model->status === App\Trip::STATUS_INACTIVE)
-              <span class="tooltipped tooltipped-s" aria-label="Заметка неактивна">
+              <span class="tooltipped tooltipped-n" aria-label="Заметка неактивна">
                 @svg (pencil)
               </span>
             @endif
@@ -44,7 +44,7 @@
           </div>
           <div class="flex-cell">
             @if ($model->meta_image)
-              <span class="tooltipped tooltipped-s" aria-label="Задано фото">
+              <span class="tooltipped tooltipped-n" aria-label="Задано фото">
                 @svg (paperclip)
               </span>
             @endif

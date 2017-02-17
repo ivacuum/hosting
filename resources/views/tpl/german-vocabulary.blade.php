@@ -9,7 +9,7 @@
         @endlang
       </td>
       <td>
-        <span class="{{ !empty($entry['phonetic']) ? 'tooltipped tooltipped-s' : '' }}" aria-label="{{ $entry['phonetic'] ?? '' }}">
+        <span class="{{ !empty($entry['phonetic']) ? 'tooltipped tooltipped-n' : '' }}" aria-label="{{ $entry['phonetic'] ?? '' }}">
           {{ $entry['de'] }}
         </span>
       </td>

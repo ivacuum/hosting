@@ -18,7 +18,7 @@
         </div>
         <div class="d-table-cell">
           @if ($notification->unread())
-            <span class="svg-unread mr-1 tooltipped tooltipped-s" aria-label="{{ trans('notifications.unread') }}">
+            <span class="svg-unread mr-1 tooltipped tooltipped-n" aria-label="{{ trans('notifications.unread') }}">
               @svg (circle)
             </span>
           @endif

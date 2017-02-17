@@ -24,17 +24,17 @@
     <div class="mt-3">
       <p>Для написания комментариев необходимо <a class="link" href="{{ action('Auth@login', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">войти на сайт</a>.</p>
       <p>Можно войти в один клик через следующие соцсети:</p>
-      <a class="btn btn-social bg-vk tooltipped tooltipped-s"
+      <a class="btn btn-social bg-vk tooltipped tooltipped-n"
          href="{{ action('Auth\Vk@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}"
          aria-label="{{ trans('auth.signin_vk') }}">
         @svg (vk)
       </a>
-      <a class="btn btn-social bg-facebook tooltipped tooltipped-s"
+      <a class="btn btn-social bg-facebook tooltipped tooltipped-n"
          href="{{ action('Auth\Facebook@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}"
          aria-label="{{ trans('auth.signin_facebook') }}">
         @svg (facebook)
       </a>
-      <a class="btn btn-social bg-google tooltipped tooltipped-s"
+      <a class="btn btn-social bg-google tooltipped tooltipped-n"
          href="{{ action('Auth\Google@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}"
          aria-label="{{ trans('auth.signin_google') }}">
         @svg (google)
