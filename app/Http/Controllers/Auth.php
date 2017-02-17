@@ -122,13 +122,22 @@ class Auth extends Controller
         return view($this->view);
     }
 
-    public function registerPost()
+    public function registerPost(PasswordBroker $passwords)
     {
         $this->validate($this->request, [
             'mail'     => 'empty',
-            'email'    => 'required|email|max:125|unique:users,email',
+            'email'    => 'required|email|max:125',
             'password' => 'required|min:6',
         ]);
+
+        $email = $this->request->input('email');
+        $user = User::where('email', $email)->first();
+
+        if (!is_null($user)) {
+            $passwords->sendResetLink(compact('email'));
+
+            return back()->with('message', trans('auth.email_taken', ['email' => $email]));
+        }
 
         $data = $this->request->all();
 

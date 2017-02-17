@@ -8,6 +8,7 @@ return [
     'password' => 'Password',
     'signin_vk' => 'Sign in with VK',
     'new_account' => 'New account',
+    'email_taken' => 'There is an account with e-mail :email already, password reset link has been sent to this address',
     'signed_in_as' => 'Signed in as',
     'new_password' => 'New password',
     'signin_title' => 'Sign in',
