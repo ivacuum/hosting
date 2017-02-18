@@ -54,7 +54,7 @@ class Trips extends Controller
 
         \Notification::send($users, new TripPublished($model));
 
-        return back()->with('message', 'Уведомления разосланы пользователям');
+        return back()->with('message', 'Уведомления разосланы пользователям: '.sizeof($users));
     }
 
     public function store(ModelCreate $request)

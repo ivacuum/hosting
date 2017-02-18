@@ -54,7 +54,7 @@ class News extends Controller
 
         \Notification::send($users, new NewsPublished($model));
 
-        return back()->with('message', 'Уведомления разосланы пользователям');
+        return back()->with('message', 'Уведомления разосланы пользователям: '.sizeof($users));
     }
 
     public function show(Model $model)
