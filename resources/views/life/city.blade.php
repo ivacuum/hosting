@@ -6,11 +6,11 @@
 <div hidden id="trip_city_map" class="trip-city-map"></div>
 <div class="row">
   <div class="col-sm-6">
-    <h2 class="mt-0">
+    <h1 class="h2 mt-0">
       <span class="emoji">{{ $city->country->emoji }}</span>
       {{ $city->title }}
       @include('tpl.city-map-button')
-    </h2>
+    </h1>
     @include('tpl.trips_by_years', ['trips' => $city->trips])
   </div>
   <div class="col-sm-6">

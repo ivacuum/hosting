@@ -3,7 +3,7 @@
 ])
 
 @section('content')
-<h2 class="mt-0">{{ trans('life.gigs_intro_title') }}</h2>
+<h1 class="h2 mt-0">{{ trans('life.gigs_intro_title') }}</h1>
 <p>{{ trans('life.gigs_intro_text') }}</p>
 
 @php ($year = false)

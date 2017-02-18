@@ -22,7 +22,7 @@
   </div>
   <div class="col-md-9">
     @ru
-      <h2 class="mt-0">Торрент-трекер в локальной сети Билайн-Калуга</h2>
+      <h1 class="h2 mt-0">Торрент-трекер в локальной сети Билайн-Калуга</h1>
       <p><strong>torrent.ivacuum.ru</strong> &mdash; наглядный сервис для обмена файлами, открывшийся 5 июля 2010 года в локальной сети Билайн города Калуга. Трекер довольно быстро набрал основную массу пользователей и стал местом общения нескольких тысяч калужан. 1 января 2017 года он потерял пристанище в локальной сети и переместился в интернет. Вместе с тем была закрыта регистрация новых пользователей в пользу перехода на <a class="link" href="{{ action('Torrents@index') }}">новый торрент-трекер</a>, открывшийся 5 января 2017 года.</p>
       <p>
         <a class="btn btn-primary" href="{{ action('Torrents@index') }}">
@@ -83,7 +83,7 @@
         </div>
       </div>
     @en
-      <h2 class="mt-0">Torrent-tracker in Beeline network in Kaluga</h2>
+      <h1 class="h2 mt-0">Torrent-tracker in Beeline network in Kaluga</h1>
       <p><a class="btn btn-primary btn-lg" href="http://t.ivacuum.ru/">Go to the tracker &rarr;</a></p>
     @endlang
   </div>

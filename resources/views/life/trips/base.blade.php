@@ -7,11 +7,11 @@
 @section('content_header')
 @parent
 @include('tpl.city-timeline')
-<h2 class="mt-0">
+<h1 class="h2 mt-0">
   <span class="emoji">{{ $trip->city->country->emoji }}</span>
   {{ $trip->title }}
   @include('tpl.city-map-button', ['city' => $trip->city])
-</h2>
+</h1>
 <div hidden id="trip_city_map" class="trip-city-map"></div>
 {{--
 @if ($trip->meta_image)

@@ -8,7 +8,7 @@
 ])
 
 @section('content')
-<h2 class="mt-0">Понравившиеся книги</h2>
+<h1 class="h2 mt-0">Понравившиеся книги</h1>
 
 <div class="travel-entry mb-2">
   <span class="travel-year">2014</span>

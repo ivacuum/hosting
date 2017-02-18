@@ -8,7 +8,7 @@
 ])
 
 @section('content')
-<h2 class="mt-0">Фильмы и сериалы, достойные многократного просмотра</h2>
+<h1 class="h2 mt-0">Фильмы и сериалы, достойные многократного просмотра</h1>
 <div class="movies-container">
   <div class="h2">2017 год</div>
   @include('tpl.kp_movies', [
