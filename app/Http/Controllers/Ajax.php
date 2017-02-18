@@ -96,7 +96,7 @@ class Ajax extends Controller
 
         if ($type === 'torrent') {
             event(new \App\Events\Stats\TorrentCommented());
-            
+
             return $model->user->notify(new TorrentCommented($model, $comment));
         }
     }

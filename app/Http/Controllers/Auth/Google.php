@@ -34,6 +34,7 @@ class Google extends Base
             \Auth::loginUsingId($identity->user_id);
 
             event(new ExternalIdentityLogin($identity));
+            event(new \App\Events\Stats\UserSignedInWithExternalIdentity());
 
             return redirect()->intended('/');
         }

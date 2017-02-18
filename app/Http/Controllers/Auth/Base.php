@@ -74,6 +74,8 @@ abstract class Base extends Controller
      */
     protected function registerUser($user)
     {
+        event(new \App\Events\Stats\UserRegisteredWithExternalIdentity());
+
         return $this->user->create([
             'email'  => $user->email,
             'status' => User::STATUS_ACTIVE,
@@ -90,6 +92,7 @@ abstract class Base extends Controller
     protected function saveExternalIdentity($user)
     {
         event(new ExternalIdentitySaved($user));
+        event(new \App\Events\Stats\ExternalIdentityAdded());
 
         return ExternalIdentity::create([
             'provider' => $this->provider,
