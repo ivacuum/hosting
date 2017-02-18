@@ -33,7 +33,7 @@ class Ajax extends Controller
             'user_id' => $user_id,
         ]);
 
-        $this->notifyUsers($type, $model, $comment);
+        $this->notifyUsersAboutComment($type, $model, $comment);
 
         return redirect()->back()->with('message', trans('comments.posted'));
     }
@@ -78,17 +78,25 @@ class Ajax extends Controller
         throw new \Exception('Не выбран объект для комментирования');
     }
 
-    protected function notifyUsers($type, $model, $comment)
+    protected function notifyUsersAboutComment($type, $model, $comment)
     {
+        event(new \App\Events\Stats\CommentAdded());
+
         if ($type === 'news') {
+            event(new \App\Events\Stats\NewsCommented());
+
             return $model->user->notify(new NewsCommented($model, $comment));
         }
 
         if ($type === 'trip') {
+            event(new \App\Events\Stats\TripCommented());
+
             return User::find(Trip::AUTHOR_ID)->notify(new TripCommented($model, $comment));
         }
 
         if ($type === 'torrent') {
+            event(new \App\Events\Stats\TorrentCommented());
+            
             return $model->user->notify(new TorrentCommented($model, $comment));
         }
     }
