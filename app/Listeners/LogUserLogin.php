@@ -7,6 +7,8 @@ class LogUserLogin
 {
     public function handle(Login $event)
     {
+        event(new \App\Events\Stats\UserSignedIn());
+
         /* @var $user \App\User */
         $user = $event->user;
 

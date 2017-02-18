@@ -16,7 +16,6 @@ return [
     'parser_vk' => 'Парсер ВК',
     'resources' => 'Ресурсы',
 
-    'logout' => 'Выход',
     'language' => 'Русский',
 
     'vk' => 'ВК',

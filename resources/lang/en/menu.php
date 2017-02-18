@@ -16,7 +16,6 @@ return [
     'parser_vk' => 'VK Parser',
     'resources' => 'Resources',
 
-    'logout' => 'Logout',
     'language' => 'English',
 
     'vk' => 'VK',

@@ -101,7 +101,7 @@
                 <li class="divider"></li>
                 <li>
                   <a href="{{ action('Auth@logout') }}">
-                    {{ trans('menu.logout') }}
+                    {{ trans('auth.logout') }}
                   </a>
                 </li>
               </ul>

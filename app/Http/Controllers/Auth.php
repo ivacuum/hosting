@@ -31,6 +31,8 @@ class Auth extends Controller
         ];
 
         if (!is_null($result = $this->attemptLogin($credentials))) {
+            event(new \App\Events\Stats\UserSignedInWithEmail());
+
             return $result;
         }
 
@@ -39,6 +41,8 @@ class Auth extends Controller
         $credentials['login'] = $this->request->input('email');
 
         if (!is_null($result = $this->attemptLogin($credentials))) {
+            event(new \App\Events\Stats\UserSignedInWithUsername());
+
             return $result;
         }
 
