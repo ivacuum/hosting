@@ -41,7 +41,7 @@
         <li class="mb-2"><a class="link" href="{{ action('Life@page', 'podcasts') }}">Подкасты</a></li>
         <li class="mb-2"><a class="link" href="{{ action('Life@page', 'laundry') }}">Условные обозначения стирки</a></li>
         <li class="mb-2"><a class="link" href="{{ action('Life@page', 'movies') }}">Фильмы и сериалы</a></li>
-        <li class="mb-2"><a class="link" href="{{ action('Life@page', 'using-in-travels') }}">Чем пользуюсь впутешествиях</a>
+        <li class="mb-2"><a class="link" href="{{ action('Life@page', 'using-in-travels') }}">Чем пользуюсь в путешествиях</a>
         </li>
       @endlang
     </ul>
