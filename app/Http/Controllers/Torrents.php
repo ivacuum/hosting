@@ -160,6 +160,10 @@ class Torrents extends Controller
 
         event(new \App\Events\Stats\TorrentMagnetClicked());
 
+        if (is_null($this->request->user())) {
+            event(new \App\Events\Stats\TorrentMagnetGuestClicked());
+        }
+
         return 'OK';
     }
 
