@@ -15,6 +15,7 @@
       <div class="flex-cell">Дата</div>
       <div class="flex-cell">URL</div>
       <div class="flex-cell text-right">@svg (eye)</div>
+      <div class="flex-cell text-right">@svg (comment-o)</div>
       <div class="flex-cell"></div>
     </div>
     <div class="flex-row-group flex-row-striped">
@@ -46,6 +47,11 @@
           <div class="flex-cell text-right">
             @if ($model->views > 0)
               {{ ViewHelper::number($model->views) }}
+            @endif
+          </div>
+          <div class="flex-cell text-right">
+            @if ($model->comments_count > 0)
+              {{ ViewHelper::number($model->comments_count) }}
             @endif
           </div>
           <div class="flex-cell">

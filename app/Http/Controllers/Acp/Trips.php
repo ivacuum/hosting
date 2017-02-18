@@ -8,7 +8,7 @@ class Trips extends Controller
 {
     public function index()
     {
-        $models = Model::orderBy('date_start', 'desc')->get();
+        $models = Model::withCount('comments')->orderBy('date_start', 'desc')->get();
 
         return view($this->view, compact('models'));
     }
