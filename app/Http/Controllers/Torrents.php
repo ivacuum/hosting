@@ -1,10 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Comment;
-use App\Events\Stats\TorrentMagnetClicked;
-use App\Events\Stats\TorrentViewed;
 use App\Services\Rto;
-use App\Services\Telegram;
 use App\Torrent;
 use Carbon\Carbon;
 use Illuminate\Support\HtmlString;
@@ -27,6 +24,8 @@ class Torrents extends Controller
 
         if (!is_null($category)) {
             $ids = \TorrentCategoryHelper::selfAndDescendantsIds($category_id, $category);
+
+            event(new \App\Events\Stats\TorrentFilteredByCategory());
 
             $torrents = $torrents->whereIn('category_id', $ids);
         }
@@ -63,6 +62,8 @@ class Torrents extends Controller
             $torrent = Torrent::where('rto_id', $topic_id)->first();
 
             if (!is_null($torrent)) {
+                event(new \App\Events\Stats\TorrentDuplicateFound());
+
                 return back()
                     ->withInput()
                     ->with('message', new HtmlString('Данная раздача уже <a class="link" href="' . action("$this->class@torrent", $torrent) . '">присутствует на сайте</a>. Попробуйте добавить другую.'));
@@ -88,6 +89,8 @@ class Torrents extends Controller
             'category_id' => $category_id,
             'registered_at' => Carbon::now(),
         ]);
+
+        event(new \App\Events\Stats\TorrentAdded());
 
         return redirect()->action("{$this->class}@torrent", $torrent->id);
     }
@@ -144,6 +147,8 @@ class Torrents extends Controller
         \Breadcrumbs::push(trans('torrents.index'), 'torrents');
         \Breadcrumbs::push('Помощь');
 
+        event(new \App\Events\Stats\TorrentFaqViewed());
+
         return view($this->view);
     }
 
@@ -153,13 +158,15 @@ class Torrents extends Controller
         $torrent->increment('clicks');
         $torrent->timestamps = true;
 
-        event(new TorrentMagnetClicked());
+        event(new \App\Events\Stats\TorrentMagnetClicked());
 
         return 'OK';
     }
 
     public function promo()
     {
+        event(new \App\Events\Stats\TorrentPromoViewed());
+
         return view($this->view);
     }
 
@@ -168,7 +175,7 @@ class Torrents extends Controller
         \Breadcrumbs::push(trans('torrents.index'), 'torrents');
         \Breadcrumbs::push($torrent->title);
 
-        event(new TorrentViewed($torrent->id));
+        event(new \App\Events\Stats\TorrentViewed($torrent->id));
 
         $comments = $torrent->comments()->with('user')->orderBy('id', 'desc')->paginate();
 
@@ -178,6 +185,8 @@ class Torrents extends Controller
     protected function applySearchQuery($q, $torrents)
     {
         if (mb_strlen($q) > 2) {
+            event(new \App\Events\Stats\TorrentSearched());
+
             return $torrents->where('title', 'LIKE', "%{$q}%");
         }
 

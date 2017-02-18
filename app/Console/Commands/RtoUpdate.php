@@ -31,6 +31,7 @@ class RtoUpdate extends Command
                 if ($json->tor_status == Torrent::STATUS_DUPLICATE) {
                     $this->info("Раздача {$id} закрыта как повторная и удалена");
                     $torrent->delete();
+                    event(new \App\Events\Stats\TorrentDeleted());
                     continue;
                 }
 
@@ -53,6 +54,7 @@ class RtoUpdate extends Command
                     // Раздача обновлена
                     $this->info("Раздача {$id} обновлена");
 
+                    event(new \App\Events\Stats\TorrentUpdated());
                     $torrent->user->notify(new TorrentUpdated($torrent));
 
                     // Ограничение количества запросов в секунду
