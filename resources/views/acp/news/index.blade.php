@@ -32,7 +32,11 @@
             </span>
             @endif
           </div>
-          <div class="flex-cell text-right">{{ ViewHelper::number($model->views) }}</div>
+          <div class="flex-cell text-right">
+            @if ($model->views > 0)
+              {{ ViewHelper::number($model->views) }}
+            @endif
+          </div>
           <div class="flex-cell text-right">
             @if ($model->comments_count > 0)
               {{ ViewHelper::number($model->comments_count) }}
