@@ -76,16 +76,11 @@ class Torrent extends Model
 
     public static function statsByCategories()
     {
-        $result = self::selectRaw('category_id, COUNT(*) as total')
-            ->groupBy('category_id')
-            ->get();
-
-        $stats = [];
-
-        foreach ($result as $row) {
-            $stats[$row->category_id] = $row->total;
-        }
-
-        return $stats;
+        return \Cache::remember('torrents.stats-by-categories', 15, function () {
+            return self::selectRaw('category_id, COUNT(*) as total')
+                ->groupBy('category_id')
+                ->get()
+                ->pluck('total', 'category_id');
+        });
     }
 }
