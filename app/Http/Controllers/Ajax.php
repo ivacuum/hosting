@@ -35,7 +35,7 @@ class Ajax extends Controller
 
         $this->notifyUsersAboutComment($type, $model, $comment);
 
-        return redirect()->back()->with('message', trans('comments.posted'));
+        return back()->with('message', trans('comments.posted'));
     }
 
     /*

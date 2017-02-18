@@ -66,6 +66,11 @@ class User extends Authenticatable
             ->total;
     }
 
+    public function scopeForNotifying($query)
+    {
+        return $query->where('last_login_at', '>', Carbon::now()->subDays(7));
+    }
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);

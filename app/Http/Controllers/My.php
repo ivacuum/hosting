@@ -34,7 +34,7 @@ class My extends Controller
         $user->password = $this->request->input('new_password');
         $user->save();
 
-        return redirect()->back()->with('message', trans('my.saved'));
+        return back()->with('message', trans('my.saved'));
     }
 
     public function profile()
@@ -66,6 +66,6 @@ class My extends Controller
         $user->email = $this->request->input('email');
         $user->save();
 
-        return redirect()->back()->with('message', trans('my.saved'));
+        return back()->with('message', trans('my.saved'));
     }
 }

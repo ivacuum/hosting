@@ -3,6 +3,8 @@
 use App\Http\Requests\Acp\NewsCreate as ModelCreate;
 use App\Http\Requests\Acp\NewsEdit as ModelEdit;
 use App\News as Model;
+use App\Notifications\NewsPublished;
+use App\User;
 
 class News extends Controller
 {
@@ -40,6 +42,19 @@ class News extends Controller
     public function edit(Model $model)
     {
         return view($this->view, compact('model'));
+    }
+
+    public function notify(Model $model)
+    {
+        if ($model->status !== Model::STATUS_PUBLISHED) {
+            return back()->with('message', 'Для рассылки уведомлений новость должна быть опубликована');
+        }
+
+        $users = User::forNotifying()->get();
+
+        \Notification::send($users, new NewsPublished($model));
+
+        return back()->with('message', 'Уведомления разосланы пользователям');
     }
 
     public function show(Model $model)

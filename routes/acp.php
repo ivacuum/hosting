@@ -123,6 +123,7 @@ Route::group(['prefix' => 'news'], function () {
     Route::put('{News}', 'Acp\News@update');
     Route::delete('{News}', 'Acp\News@destroy');
     Route::get('{News}/edit', 'Acp\News@edit');
+    Route::post('{News}/notify', 'Acp\News@notify');
 });
 
 Route::group(['prefix' => 'pages'], function () {

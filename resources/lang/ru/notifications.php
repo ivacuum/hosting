@@ -7,7 +7,9 @@ return [
 
     'plain_text' => '',
     'news_commented' => 'оставил комментарий к новости',
+    'news_published' => 'Опубликована новость',
     'trip_commented' => 'оставил комментарий к поездке',
+    'trip_published' => 'Опубликована заметка о поездке',
     'torrent_updated' => 'Обновлена раздача',
     'torrent_commented' => 'оставил комментарий к раздаче',
 ];

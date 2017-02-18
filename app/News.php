@@ -10,9 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $site_id
  * @property integer $user_id
  * @property string  $title
- * @property string  $slug
- * @property string  $text
- * @property integer $comments
+ * @property string  $html
+ * @property integer $status
  * @property integer $views
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
