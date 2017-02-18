@@ -2,6 +2,10 @@
 
 use App\City;
 use App\Country;
+use App\Events\Stats\CityViewed;
+use App\Events\Stats\CountryViewed;
+use App\Events\Stats\GigViewed;
+use App\Events\Stats\TripViewed;
 use App\Gig;
 use App\Trip;
 
@@ -61,6 +65,8 @@ class Life extends Controller
         \Breadcrumbs::push($city->country->title, "life/countries/{$city->country->slug}");
         \Breadcrumbs::push($city->title);
 
+        event(new CityViewed($city->id));
+
         return view('life.city', compact('city'));
     }
 
@@ -116,6 +122,8 @@ class Life extends Controller
         \Breadcrumbs::push(trans('menu.countries'), 'life/countries');
         \Breadcrumbs::push($country->title, "life/countries/{$country->slug}");
 
+        event(new CountryViewed($country->id));
+
         return view($this->view, compact('country', 'trips'));
     }
 
@@ -127,6 +135,8 @@ class Life extends Controller
 
         \Breadcrumbs::push(trans('menu.gigs'), 'life/gigs');
         \Breadcrumbs::push($gig->title);
+
+        event(new GigViewed($gig->id));
 
         $timeline = $gig->artistTimeline();
 
@@ -178,6 +188,8 @@ class Life extends Controller
         \Breadcrumbs::push($trip->city->country->title, "life/countries/{$trip->city->country->slug}");
         \Breadcrumbs::push($trip->city->title, "life/{$trip->city->slug}");
         \Breadcrumbs::push($trip->localizedDate(), "life/{$trip->slug}");
+
+        event(new TripViewed($trip->id));
 
         $timeline = $trip->cityTimeline();
 

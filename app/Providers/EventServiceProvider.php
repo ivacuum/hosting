@@ -16,5 +16,19 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
+
+        $address = config('cfg.metrics_address');
+
+        if ($address) {
+            \Event::listen('App\Events\Stats\*', function ($name, array $data) use ($address) {
+                $basename = class_basename($name);
+
+                \MetricsHelper::push(['event' => $basename, 'data' => $data[0]]);
+            });
+
+            register_shutdown_function(function () {
+                \MetricsHelper::export();
+            });
+        }
     }
 }

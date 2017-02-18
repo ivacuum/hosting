@@ -90,6 +90,7 @@ return [
 
         'ViewHelper' => App\Facades\ViewHelper::class,
         'Breadcrumbs' => App\Facades\Breadcrumbs::class,
+        'MetricsHelper' => App\Facades\MetricsHelper::class,
         'TorrentCategoryHelper' => App\Facades\TorrentCategoryHelper::class,
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,

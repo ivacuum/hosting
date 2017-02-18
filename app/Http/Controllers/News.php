@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Events\Stats\NewsViewed;
 use App\News as Model;
 
 class News extends Controller
@@ -68,7 +69,7 @@ class News extends Controller
 
         $comments = $news->comments()->with('user')->orderBy('id', 'desc')->paginate();
 
-        $news->incrementViews();
+        event(new NewsViewed($news->id));
 
         \Breadcrumbs::push(trans('news.index'), 'news');
         \Breadcrumbs::push($news->title);

@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Events\Stats\TorrentMagnetClicked;
+use App\Events\Stats\TorrentViewed;
 use App\Services\Rto;
 use App\Services\Telegram;
 use App\Torrent;
@@ -151,6 +153,8 @@ class Torrents extends Controller
         $torrent->increment('clicks');
         $torrent->timestamps = true;
 
+        event(new TorrentMagnetClicked());
+
         return 'OK';
     }
 
@@ -163,6 +167,8 @@ class Torrents extends Controller
     {
         \Breadcrumbs::push(trans('torrents.index'), 'torrents');
         \Breadcrumbs::push($torrent->title);
+
+        event(new TorrentViewed($torrent->id));
 
         $comments = $torrent->comments()->with('user')->orderBy('id', 'desc')->paginate();
 
