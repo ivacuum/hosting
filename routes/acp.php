@@ -175,6 +175,7 @@ Route::group(['prefix' => 'trips'], function () {
     Route::put('{Trip}', 'Acp\Trips@update');
     Route::delete('{Trip}', 'Acp\Trips@destroy');
     Route::get('{Trip}/edit', 'Acp\Trips@edit');
+    Route::post('{Trip}/notify', 'Acp\Trips@notify');
 });
 
 Route::group(['prefix' => 'users'], function () {

@@ -2,7 +2,9 @@
 
 use App\Http\Requests\Acp\TripCreate as ModelCreate;
 use App\Http\Requests\Acp\TripEdit as ModelEdit;
+use App\Notifications\TripPublished;
 use App\Trip as Model;
+use App\User;
 
 class Trips extends Controller
 {
@@ -40,6 +42,19 @@ class Trips extends Controller
     public function show(Model $model)
     {
         return view($this->view, compact('model'));
+    }
+
+    public function notify(Model $model)
+    {
+        if ($model->status !== Model::STATUS_PUBLISHED) {
+            return back()->with('message', 'Для рассылки уведомлений поездка должна быть опубликована');
+        }
+
+        $users = User::forNotifying()->get();
+
+        \Notification::send($users, new TripPublished($model));
+
+        return back()->with('message', 'Уведомления разосланы пользователям');
     }
 
     public function store(ModelCreate $request)

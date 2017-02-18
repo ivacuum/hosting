@@ -18,6 +18,8 @@
   height: 1em;
   margin-top: 2px;
 
+  .svg-mt-0 & { margin-top: 0; }
+
   /*
   .list-group-svg & {
     margin-right: 2px;

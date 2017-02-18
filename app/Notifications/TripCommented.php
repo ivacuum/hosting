@@ -1,7 +1,6 @@
 <?php namespace App\Notifications;
 
 use App\Comment;
-use App\Torrent;
 use App\Trip;
 use Illuminate\Notifications\Notification;
 

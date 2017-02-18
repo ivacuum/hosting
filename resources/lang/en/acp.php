@@ -98,6 +98,7 @@ return [
     'trips.show' => 'Trip',
     'trips.index' => 'Trips',
     'trips.create' => 'New trip',
+    'trips.notify' => 'Notify about publication',
 
     'users.add' => 'Add user',
     'users.edit' => 'Edit',

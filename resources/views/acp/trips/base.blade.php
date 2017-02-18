@@ -12,6 +12,10 @@
       </a>
       @include('acp.tpl.delete', ['id' => $model])
     </div>
+    <form class="text-center mb-3" action="{{ action("$self@notify", $model) }}" method="post">
+      <button class="btn btn-default" type="submit">{{ trans("$tpl.notify") }}</button>
+      {{ csrf_field() }}
+    </form>
   </div>
   <div class="col-sm-9">
     <h2 class="mt-0">
