@@ -14,6 +14,7 @@
       <div class="flex-cell text-right">@svg (comment-o)</div>
       <div class="flex-cell text-right">@svg (magnet)</div>
       <div class="flex-cell">Название</div>
+      <div class="flex-cell"></div>
     </div>
     <div class="flex-row-group flex-row-striped">
       @foreach ($models as $model)
@@ -41,8 +42,10 @@
           </div>
           <div class="flex-cell">
             <a class="link" href="{{ action("$self@show", $model) }}">
-              <torrent-title title="{{ $model->title }}"></torrent-title>
+              <torrent-title title="{{ $model->title }}" hide_brackets="1"></torrent-title>
             </a>
+          </div>
+          <div class="flex-cell">
             <a href="{{ $model->externalLink() }}">
               @svg (external-link)
             </a>

@@ -1,10 +1,10 @@
 <template>
-  <span class="torrent-title" v-html="html"></span>
+  <span class="torrent-title" :class="{ 'hide-brackets': hide_brackets }" v-html="html"></span>
 </template>
 
 <script>
 export default {
-  props: ['title'],
+  props: ['title', 'hide_brackets'],
 
   data() {
     return {

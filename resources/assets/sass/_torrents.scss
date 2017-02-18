@@ -150,6 +150,9 @@
   }
 }
 
+.hide-brackets .torrent-brackets { display: none; }
+.torrent-title.hide-brackets { font-weight: normal; }
+
 .torrent-brackets { font-weight: normal; }
 .torrent-breadcrumbs {
   font-size: 12px;
