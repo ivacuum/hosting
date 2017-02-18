@@ -12,7 +12,7 @@ class Torrents extends Controller
     {
         $user_id = $this->request->input('user_id');
 
-        $models = Model::with('user')->orderBy('id', 'desc');
+        $models = Model::with('user')->withCount('comments')->orderBy('id', 'desc');
 
         if ($user_id) {
             $models = $models->where('user_id', $user_id);

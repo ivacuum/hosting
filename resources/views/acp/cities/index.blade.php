@@ -13,6 +13,7 @@
       <div class="flex-cell">Город</div>
       <div class="flex-cell">URL</div>
       <div class="flex-cell">IATA</div>
+      <div class="flex-cell text-right">@svg (eye)</div>
       <div class="flex-cell"></div>
     </div>
     <div class="flex-row-group flex-row-striped">
@@ -32,6 +33,11 @@
             </a>
           </div>
           <div class="flex-cell">{{ $model->iata }}</div>
+          <div class="flex-cell text-right">
+            @if ($model->views > 0)
+              {{ ViewHelper::number($model->views) }}
+            @endif
+          </div>
           <div class="flex-cell">
             @if ($model->lat && $model->lon)
               <span class="tooltipped tooltipped-n" aria-label="Геолокация задана">

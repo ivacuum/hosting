@@ -14,6 +14,7 @@
       <div class="flex-cell"></div>
       <div class="flex-cell">Дата</div>
       <div class="flex-cell">URL</div>
+      <div class="flex-cell text-right">@svg (eye)</div>
       <div class="flex-cell"></div>
     </div>
     <div class="flex-row-group flex-row-striped">
@@ -35,6 +36,11 @@
             <a class="link" href="{{ $locale_uri }}/life/{{ $model->slug }}">
               {{ $model->slug }}
             </a>
+          </div>
+          <div class="flex-cell text-right">
+            @if ($model->views > 0)
+              {{ ViewHelper::number($model->views) }}
+            @endif
           </div>
           <div class="flex-cell">
             @if ($model->meta_image)

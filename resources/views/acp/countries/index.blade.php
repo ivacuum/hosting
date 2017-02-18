@@ -12,6 +12,7 @@
       <div class="flex-cell"></div>
       <div class="flex-cell">Страна</div>
       <div class="flex-cell">URL</div>
+      <div class="flex-cell text-right">@svg (eye)</div>
     </div>
     <div class="flex-row-group flex-row-striped">
       @foreach ($models as $model)
@@ -26,6 +27,11 @@
             <a class="link" href="{{ $locale_uri }}/life/countries/{{ $model->slug }}">
               {{ $model->slug }}
             </a>
+          </div>
+          <div class="flex-cell text-right">
+            @if ($model->views > 0)
+              {{ ViewHelper::number($model->views) }}
+            @endif
           </div>
         </div>
       @endforeach
