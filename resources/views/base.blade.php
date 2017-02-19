@@ -145,16 +145,6 @@
     @section('footer')
       <ul class="list-inline">
         <li>&copy; {{ date('Y') }} vacuum</li>
-        <li>
-          <a class="link" href="mailto:{{ config('email.support') }}">
-            {{ trans('menu.feedback') }}
-          </a>
-        </li>
-        <li>
-          <a class="link" href="https://vk.com/ivacuum">
-            {{ trans('menu.vk') }}
-          </a>
-        </li>
         @section('i18n')
           <li>
             @ru
