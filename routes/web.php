@@ -52,6 +52,8 @@ Route::get('my/password', 'My@password')->middleware('auth');
 Route::put('my/password', 'My@passwordPut')->middleware('auth');
 Route::get('my/profile', 'My@profile')->middleware('auth');
 Route::put('my/profile', 'My@profilePut')->middleware('auth');
+Route::get('my/settings', 'My@settings')->middleware('auth');
+Route::put('my/settings', 'My@settingsPut')->middleware('auth');
 
 Route::get('news', 'News@index');
 Route::get('news/{id}', 'News@show');
