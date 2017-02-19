@@ -10,6 +10,9 @@
       <a class="list-group-item {{ $view == "$tpl.password" ? 'active' : '' }}" href="{{ action("$self@password") }}">
         {{ trans("$tpl.password") }}
       </a>
+      <a class="list-group-item {{ $view == "$tpl.settings" ? 'active' : '' }}" href="{{ action("$self@settings") }}">
+        {{ trans("$tpl.settings") }}
+      </a>
     </div>
   </div>
   <div class="col-sm-9">

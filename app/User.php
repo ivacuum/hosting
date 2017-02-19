@@ -14,6 +14,8 @@ use Illuminate\Notifications\Notifiable;
  * @property string  $password
  * @property string  $salt
  * @property integer $status
+ * @property integer $theme
+ * @property integer $torrent_short_title
  * @property string  $ip
  * @property string  $activation_token
  * @property string  $remember_token
@@ -29,6 +31,9 @@ class User extends Authenticatable
 
     const STATUS_INACTIVE = 0;
     const STATUS_ACTIVE = 1;
+
+    const THEME_LIGHT = 0;
+    const THEME_DARK = 1;
 
     protected $guarded = ['created_at', 'updated_at'];
     protected $hidden = ['password', 'remember_token'];

@@ -42,7 +42,7 @@
           </div>
           <div class="torrents-list-cell torrents-list-title">
             <a class="visited" href="{{ action("{$self}@torrent", $torrent) }}">
-              <torrent-title title="{{ $torrent->title }}"></torrent-title>
+              <torrent-title title="{{ $torrent->title }}" hide_brackets="{{ Auth::check() && Auth::user()->torrent_short_title ? 1 : '' }}"></torrent-title>
             </a>
           </div>
           <div class="torrents-list-cell torrents-list-magnet">

@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Validation\Rule;
 
@@ -64,6 +65,31 @@ class My extends Controller
 
         $user->login = $this->request->input('username');
         $user->email = $this->request->input('email');
+        $user->save();
+
+        return back()->with('message', trans('my.saved'));
+    }
+
+    public function settings()
+    {
+        return view($this->view);
+    }
+
+    public function settingsPut()
+    {
+        $this->validate($this->request, [
+            'mail' => 'empty',
+            'theme' => [
+                'required',
+                Rule::in([User::THEME_LIGHT, User::THEME_DARK])
+            ],
+            'torrent_short_title' => 'in:0,1',
+        ]);
+
+        $user = $this->request->user();
+
+        $user->theme = $this->request->input('theme', User::THEME_LIGHT);
+        $user->torrent_short_title = $this->request->input('torrent_short_title', 0);
         $user->save();
 
         return back()->with('message', trans('my.saved'));
