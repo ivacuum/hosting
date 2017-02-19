@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-  <div class="col-md-3 hidden-xs">
+  <div class="col-md-3 hidden-xs torrent-categories">
     @foreach ($tree as $id => $category)
       <h3 class="{{ $loop->first ? 'mt-0' : '' }}">
         @if (!empty($category_id) && $id == $category_id)

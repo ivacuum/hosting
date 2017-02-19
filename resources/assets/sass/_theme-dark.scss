@@ -4,23 +4,31 @@ $dark-link-color: #00aeff;
 $dark-link-visited-color: #82c5ff;
 $dark-link-hover-color: #91e4ff;
 
+$dark-border-color: darken($dark-bg-color, 6.5%);
+$dark-bg-lighter-color: lighten($dark-bg-color, 10%);
+
 .theme-dark {
   background-color: $dark-bg-color;
   color: $dark-text-color;
 
+  code {
+    background-color: lighten($dark-bg-color, 15%);
+    color: $dark-text-color;
+  }
+
   footer {
     background-color: lighten($dark-bg-color, 10%);
-    border-color: darken($dark-bg-color, 6.5%);
+    border-color: $dark-border-color;
   }
 
   pre,
   .form-control {
     background-color: lighten($dark-bg-color, 15%);
-    border-color: darken($dark-bg-color, 6.5%);
+    border-color: $dark-border-color;
     color: $dark-text-color;
   }
 
-  .form-select { border-color: darken($dark-bg-color, 6.5%); }
+  .form-select { border-color: $dark-border-color; }
 
   .breadcrumbs {
     background-color: lighten($dark-bg-color, 10%);
@@ -37,8 +45,12 @@ $dark-link-hover-color: #91e4ff;
     }
   }
 
-  .border-bottom { border-color: darken($dark-bg-color, 6.5%); }
+  .btn-default { border-color: $dark-border-color; }
 
+  .border-bottom { border-color: $dark-border-color; }
+
+  .torrent-categories a,
+  .torrents-list-container a,
   .link,
   .pseudo {
     border: none;
@@ -59,18 +71,56 @@ $dark-link-hover-color: #91e4ff;
     }
   }
 
+  .list-group-item {
+    background-color: $dark-bg-lighter-color;
+    border-color: $dark-border-color;
+    color: $dark-text-color;
+
+    &.active {
+      color: #fff;
+    }
+
+    &:hover {
+      background-color: lighten($dark-bg-lighter-color, 5%);
+      border-color: $dark-border-color;
+      color: #fff;
+    }
+  }
+
+  .nav-link-tabs > li.active > a { color: $dark-text-color; }
+
+  .pagination > li > a {
+    background-color: $dark-bg-lighter-color;
+    border-color: $dark-border-color;
+
+    &:hover { background-color: lighten($dark-bg-lighter-color, 5%); }
+  }
+
+  .pagination > .disabled > span {
+    background-color: $dark-bg-lighter-color;
+    border-color: $dark-border-color;
+  }
+
+  .text-muted { color: #999; }
+
+  .torrents-list-container {
+    @media (min-width: $screen-sm-min) {
+      &:hover { background-color: $dark-bg-lighter-color; }
+    }
+  }
+
   .flex-row-header { background: lighten($dark-bg-color, 5%) linear-gradient(lighten($dark-bg-color, 15%), lighten($dark-bg-color, 5%)) repeat-x; }
   .flex-row-striped .flex-row:nth-child(2n) { background-color: lighten($dark-bg-color, 5%); }
 
   .flex-table-bordered,
   .flex-table-bordered .flex-row + .flex-row,
-  .flex-table-bordered .flex-row-header { border-color: darken($dark-bg-color, 6.5%); }
+  .flex-table-bordered .flex-row-header { border-color: $dark-border-color; }
 
   .table-stats {
-    border-color: darken($dark-bg-color, 6.5%);
+    border-color: $dark-border-color;
 
     td,
-    th { border-color: darken($dark-bg-color, 6.5%); }
+    th { border-color: $dark-border-color; }
 
     tbody tr:nth-child(2n) { background-color: lighten($dark-bg-color, 5%); }
     thead,
