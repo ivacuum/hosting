@@ -35,6 +35,8 @@ class My extends Controller
         $user->password = $this->request->input('new_password');
         $user->save();
 
+        event(new \App\Events\Stats\MyPasswordChanged());
+
         return back()->with('message', trans('my.saved'));
     }
 
@@ -67,6 +69,8 @@ class My extends Controller
         $user->email = $this->request->input('email');
         $user->save();
 
+        event(new \App\Events\Stats\MyProfileChanged());
+
         return back()->with('message', trans('my.saved'));
     }
 
@@ -91,6 +95,8 @@ class My extends Controller
         $user->theme = $this->request->input('theme', User::THEME_LIGHT);
         $user->torrent_short_title = $this->request->input('torrent_short_title', 0);
         $user->save();
+
+        event(new \App\Events\Stats\MySettingsChanged());
 
         return back()->with('message', trans('my.saved'));
     }
