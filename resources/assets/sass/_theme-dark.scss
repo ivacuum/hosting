@@ -21,6 +21,8 @@ $dark-bg-lighter-color: lighten($dark-bg-color, 10%);
     border-color: $dark-border-color;
   }
 
+  hr { border-color: $dark-border-color; }
+
   pre,
   .form-control {
     background-color: lighten($dark-bg-color, 15%);
@@ -92,16 +94,46 @@ $dark-bg-lighter-color: lighten($dark-bg-color, 10%);
   .pagination > li > a {
     background-color: $dark-bg-lighter-color;
     border-color: $dark-border-color;
+    color: $dark-text-color;
 
-    &:hover { background-color: lighten($dark-bg-lighter-color, 5%); }
+    &:hover {
+      background-color: lighten($dark-bg-lighter-color, 5%);
+      color: #fff;
+    }
   }
 
+  .pagination > .active > span { border-color: $dark-border-color; }
   .pagination > .disabled > span {
     background-color: $dark-bg-lighter-color;
     border-color: $dark-border-color;
   }
 
+  .panel-default {
+    background-color: lighten($dark-bg-lighter-color, 5%);
+    border-color: $dark-border-color;
+
+    > .panel-heading,
+    > .panel-footer {
+      background: $dark-bg-lighter-color;
+      border-color: $dark-border-color;
+      color: $dark-text-color;
+    }
+  }
+
+  .rutracker-post .sp-wrap {
+    background-color: $dark-bg-lighter-color;
+    border-color: $dark-border-color;
+  }
+
+  .rutracker-post .sp-body {
+    background-color: lighten($dark-bg-lighter-color, 5%);
+    border-color: $dark-border-color;
+  }
+
+  .rutracker-post .sp-head span { color: $dark-text-color; }
+
   .text-muted { color: #999; }
+  .text-success { color: #5cb85c; }
 
   .torrents-list-container {
     @media (min-width: $screen-sm-min) {
