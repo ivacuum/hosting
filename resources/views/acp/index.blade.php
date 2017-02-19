@@ -1,13 +1,19 @@
 @extends('acp.base')
 
 @section('content')
-<h3>Хостинг</h3>
-<ul>
-  <li><a class="link" href="/acp/clients">Клиенты</a></li>
-  <li><a class="link" href="/acp/domains">Домены</a></li>
-  <li><a class="link" href="/acp/servers">Серверы</a></li>
-  <li><a class="link" href="/acp/pages">Страницы</a></li>
-  <li><a class="link" href="/acp/users">Пользователи</a></li>
-  <li><a class="link" href="/acp/yandex/users">Пользователи Яндекс API</a></li>
-</ul>
+<h2 class="mt-0">Метрики</h2>
+<div class="flex-table flex-table-bordered">
+  <div class="flex-row flex-row-header">
+    <div class="flex-cell">Событие</div>
+    <div class="flex-cell text-right">Кол-во</div>
+  </div>
+  <div class="flex-row-group flex-row-striped">
+    @foreach ($events as $event)
+      <div class="flex-row">
+        <div class="flex-cell">{{ $event }}</div>
+        <div class="flex-cell text-right">{{ isset($metrics[$event]) ? ViewHelper::number($metrics[$event]) : '' }}</div>
+      </div>
+    @endforeach
+  </div>
+</div>
 @endsection
