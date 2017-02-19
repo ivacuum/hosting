@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="form-signin">
-  <h3 class="mb-4 text-center">{{ trans('auth.password_remind_title') }}</h3>
+  <h3 class="mt-0 mb-4 text-center">{{ trans('auth.password_remind_title') }}</h3>
   <form action="{{ action('Auth@passwordRemindPost') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 

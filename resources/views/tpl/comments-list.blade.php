@@ -22,7 +22,7 @@
         <span class="comment-meta">
           <span class="mx-1">&middot;</span>
           {{ $comment->fullDate() }}
-          </span>
+        </span>
       </div>
       <div>{!! nl2br($comment->html) !!}</div>
     </div>

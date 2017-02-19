@@ -4,7 +4,7 @@
 @include('tpl.form_errors')
 
 <div class="form-signin text-center">
-  <h3 class="mb-4">{{ trans('auth.signin_title') }}</h3>
+  <h3 class="mt-0 mb-4">{{ trans('auth.signin_title') }}</h3>
   <form action="{{ action('Auth@loginPost') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
