@@ -213,12 +213,16 @@
   @media (min-width: $screen-sm-min) {
     width: 80%;
     margin-bottom: 0;
+    padding-right: 1rem;
   }
 }
 
 .torrents-list-magnet {
   width: 70px;
+  justify-content: center;
   order: 2;
+
+  @media (min-width: $screen-sm-min) { justify-content: flex-start; }
 }
 
 .torrents-list-size {
