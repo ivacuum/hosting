@@ -58,6 +58,8 @@ class Life extends Controller
         if (1 === sizeof($published_trips)) {
             $slug = $published_trips->first()->slug;
 
+            event(new \App\Events\Stats\CityRedirectedToSingleTrip());
+
             return redirect()->action("{$this->class}@page", $slug);
         }
 
