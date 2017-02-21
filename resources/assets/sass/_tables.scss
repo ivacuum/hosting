@@ -14,15 +14,15 @@
   td {
     border-width: 0;
     border-bottom: 1px solid #ddd;
-    padding: 0.4em 0.5em;
+    padding: 0.4rem 0.5rem;
   }
 
   th {
     border-bottom: 1px solid #ddd;
     font-weight: bold;
-    padding: 0.5em;
+    padding: 0.5rem;
 
-    &.block { padding-left: 2em; }
+    &.block { padding-left: 2rem; }
   }
 
   tbody tr:nth-child(2n) { background-color: #f6f6f6; }
