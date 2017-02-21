@@ -20,9 +20,9 @@
         </span>
         </a>
       </p>
-      <p>
+      <div class="pic-container">
         <iframe class="youtube-video" :style="{ height: height() + 'px' }" :src="`https://www.youtube.com/embed/${v}?autoplay=1`" frameborder="0" allowfullscreen></iframe>
-      </p>
+      </div>
     </div>
   </div>
 </template>
