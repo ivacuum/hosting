@@ -1,8 +1,6 @@
 @extends('base')
 
 @section('content')
-@include('tpl.form_errors')
-
 <div class="form-signin text-center">
   <h3 class="mt-0 mb-4">{{ trans('auth.signin_title') }}</h3>
   <form action="{{ action('Auth@loginPost') }}" method="post">
@@ -10,6 +8,9 @@
 
     <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
       <input autofocus required type="text" class="form-control" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{ trans('auth.email_or_login') }}">
+      @if ($errors->has('email'))
+        <span class="help-block">{{ $errors->first('email') }}</span>
+      @endif
     </div>
 
     <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
@@ -22,6 +23,9 @@
           @svg (eye-slash)
         </span>
       </span>
+      @if ($errors->has('password'))
+        <span class="help-block">{{ $errors->first('password') }}</span>
+      @endif
     </div>
 
     <div class="my-3 clearfix">
