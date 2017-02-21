@@ -5,6 +5,7 @@ import Pjax from './pjax'
 import YandexMetrika from './yandex-metrika'
 
 import './events'
+import './highlight'
 import './life'
 import './shortcuts'
 import './vue'
