@@ -170,7 +170,6 @@
 <script src="{{ mix('/build/polyfills.js') }}"></script>
 <script src="{{ mix('/build/jquery.js') }}"></script>
 <script src="{{ mix('/build/autosize.js') }}"></script>
-<script src="{{ mix('/build/floatthead.js') }}"></script>
 <script src="{{ mix('/build/bootstrap.js') }}"></script>
 <script src="{{ mix('/build/throttle.js') }}"></script>
 <script src="{{ mix('/build/vue.js') }}"></script>

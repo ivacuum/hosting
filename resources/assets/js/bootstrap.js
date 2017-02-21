@@ -3,7 +3,6 @@ import './polyfills'
 window.$ = window.jQuery = require('jquery')
 window.autosize = require('autosize')
 
-require('floatthead')
 require('jquery.scrollto')
 require('bootstrap-sass')
 

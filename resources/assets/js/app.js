@@ -113,9 +113,6 @@ class Application {
   initOnReadyAndPjax(pjax = false) {
     this.initVue()
     this.autosizeTextareas()
-
-    // Прилипшие заголовки таблиц
-    $('.js-float-thead').floatThead({ zIndex: 999 })
   }
 
   onPjaxComplete() {
