@@ -166,14 +166,15 @@
   'yandexMetrikaId' => 5266444,
 ]); ?>
 </script>
+{{-- После добавления и удаления скриптов нужно дописывать версию, иначе webpack грузит прежние файлы --}}
 <script src="{{ mix('/build/manifest.js') }}?2"></script>
-<script src="{{ mix('/build/polyfills.js') }}"></script>
-<script src="{{ mix('/build/jquery.js') }}"></script>
-<script src="{{ mix('/build/autosize.js') }}"></script>
-<script src="{{ mix('/build/bootstrap.js') }}"></script>
-<script src="{{ mix('/build/throttle.js') }}"></script>
-<script src="{{ mix('/build/vue.js') }}"></script>
-<script src="{{ mix('/build/axios.js') }}"></script>
+<script src="{{ mix('/build/polyfills.js') }}?2"></script>
+<script src="{{ mix('/build/jquery.js') }}?2"></script>
+<script src="{{ mix('/build/autosize.js') }}?2"></script>
+<script src="{{ mix('/build/bootstrap.js') }}?2"></script>
+<script src="{{ mix('/build/throttle.js') }}?2"></script>
+<script src="{{ mix('/build/vue.js') }}?2"></script>
+<script src="{{ mix('/build/axios.js') }}?2"></script>
 <script src="{{ mix('/build/app.js') }}"></script>
 @stack('js')
 @section('counters')
