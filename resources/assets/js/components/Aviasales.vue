@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="lead">А еще лучше слетать <a class="link pseudo" @click.prevent="aviasales">повидать новый город</a>.</p>
+    <p>А еще лучше слетать <a class="link pseudo" @click.prevent="aviasales">повидать новый город</a>.</p>
     <div id="aviasales_container"></div>
   </div>
 </template>
