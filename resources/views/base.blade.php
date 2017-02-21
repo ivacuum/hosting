@@ -166,7 +166,7 @@
   'yandexMetrikaId' => 5266444,
 ]); ?>
 </script>
-<script src="{{ mix('/build/manifest.js') }}"></script>
+<script src="{{ mix('/build/manifest.js') }}?2"></script>
 <script src="{{ mix('/build/polyfills.js') }}"></script>
 <script src="{{ mix('/build/jquery.js') }}"></script>
 <script src="{{ mix('/build/autosize.js') }}"></script>
