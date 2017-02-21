@@ -38,6 +38,7 @@ class Torrent extends Model
     const STATUS_11 = 11; // премодерация
 
     protected $guarded = ['created_at', 'updated_at', 'goto'];
+    protected $hidden = ['html'];
     protected $dates = ['registered_at'];
     protected $perPage = 50;
 
