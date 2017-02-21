@@ -62,7 +62,7 @@
       <div class="flex-row flex-row-header">
         <div class="flex-cell"><input type="checkbox" class="js-select-all" data-selector=".models-checkbox"></div>
         <div class="flex-cell text-right">ID</div>
-        <div class="flex-cell">Изображение</div>
+        <div class="flex-cell text-center">Изображение</div>
         <div class="flex-cell text-right">Размер</div>
         <div class="flex-cell text-right">@svg (eye)</div>
         <div class="flex-cell">@svg (eye-slash)</div>
@@ -73,7 +73,7 @@
           <div class="flex-row js-tick-onclick" data-tick="#checkbox_{{ $model->id }}">
             <div class="flex-cell"><input class="models-checkbox" type="checkbox" id="checkbox_{{ $model->id }}" name="ids[]" value="{{ $model->id }}"></div>
             <div class="flex-cell text-right">{{ $model->id }}</div>
-            <div class="flex-cell">
+            <div class="flex-cell text-center">
               <a class="screenshot-link" href="{{ action("$self@show", $model) }}">
                 <img class="screenshot" src="{{ $model->thumbnailSecretUrl() }}">
               </a>
