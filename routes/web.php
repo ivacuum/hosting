@@ -7,7 +7,6 @@ Route::get('auth/logout', 'Auth@logout')->middleware('auth');
 Route::get('auth/register', 'Auth@register')->middleware('guest');
 Route::post('auth/register', 'Auth@registerPost')->middleware('guest');
 Route::get('auth/register/confirm/{token}', 'Auth@registerConfirm')->middleware('guest');
-Route::get('auth/register/ok', 'Auth@registerOk')->middleware('guest');
 Route::get('auth/password/remind', 'Auth@passwordRemind')->middleware('guest');
 Route::post('auth/password/remind', 'Auth@passwordRemindPost');
 Route::get('auth/password/reset/{token}', 'Auth@passwordReset');
