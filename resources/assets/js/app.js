@@ -26,7 +26,7 @@ class Application {
     this.onPjaxComplete()
     this.onPjaxSend()
 
-    $(document).ready(() => {
+    $(() => {
       this.initOnReadyAndPjax()
       this.lazyLoadImages()
     })
