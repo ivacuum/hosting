@@ -33,6 +33,16 @@ a[href^="http"]:empty::before { content: attr(href); }
   padding: 10rem;
 }
 
+.link-lang {
+  &:before {
+    display: inline-block;
+    width: 1.3rem;
+  }
+
+  &:lang(en):before { content: '\1f1ec\1f1e7'; }
+  &:lang(ru):before { content: '\1f1f7\1f1fa'; }
+}
+
 .pseudo { border-bottom-style: dotted; }
 
 .visited {

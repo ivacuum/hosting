@@ -148,9 +148,9 @@
         @section('i18n')
           <li>
             @ru
-              <a class="link" href="{{ url("en/{$request_uri}") }}" lang="en">&#x1f1ec;&#x1f1e7;&nbsp;In&nbsp;english</a>
+              <a class="link link-lang" href="{{ url("en/{$request_uri}") }}" lang="en">In&nbsp;english</a>
             @en
-              <a class="link" href="{{ url($request_uri) }}" lang="ru">&#x1f1f7;&#x1f1fa;&nbsp;По-русски</a>
+              <a class="link link-lang" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
             @endlang
           </li>
         @show
