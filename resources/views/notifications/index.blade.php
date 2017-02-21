@@ -25,7 +25,7 @@
             </span>
           @endif
           @include("notifications.$class_basename")
-          <div class="f13 text-muted">
+          <div class="f14 text-muted">
             <time datetime="{{ $notification->created_at->toDateString() }}"
                   title="{{ $notification->created_at->toAtomString() }}">
               {{ $notification->created_at->diffForHumans() }}

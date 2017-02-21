@@ -7,7 +7,7 @@
 <div class="row">
   <div class="col-sm-6">
     <h1 class="h2 mt-0">
-      <span class="emoji">{{ $city->country->emoji }}</span>
+      {{ $city->country->emoji }}
       {{ $city->title }}
       @include('tpl.city-map-button')
     </h1>

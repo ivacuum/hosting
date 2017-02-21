@@ -8,7 +8,7 @@
 @parent
 @include('tpl.city-timeline')
 <h1 class="h2 mt-0">
-  <span class="emoji">{{ $trip->city->country->emoji }}</span>
+  {{ $trip->city->country->emoji }}
   {{ $trip->title }}
   @include('tpl.city-map-button', ['city' => $trip->city])
 </h1>
@@ -18,20 +18,20 @@
   <div class="cover">
     <div class="cover-image" style="background-image: url({{ $trip->meta_image }});"></div>
     <div class="cover-title">
-      <span class="emoji">{{ $trip->city->country->emoji }}</span>
+      {{ $trip->city->country->emoji }}
       {{ $trip->title }}
       <div class="cover-description">{{ $trip->getMetaDescription() }}</div>
       <div class="cover-meta">
         {{ $trip->localizedDate() }}
         &nbsp;
-        <span class="emoji">{{ $trip->city->country->emoji }}</span>
+        {{ $trip->city->country->emoji }}
         {{ $trip->city->country->title }}
       </div>
     </div>
   </div>
 @else
   <h2>
-    <span class="emoji">{{ $trip->city->country->emoji }}</span>
+    {{ $trip->city->country->emoji }}
     {{ $trip->title }}
   </h2>
 @endif

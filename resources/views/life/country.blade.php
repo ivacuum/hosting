@@ -4,7 +4,7 @@
 
 @section('content')
 <h1 class="h2 mt-0">
-  <span class="emoji">{{ $country->emoji }}</span>
+  {{ $country->emoji }}
   {{ $country->title }}
 </h1>
 

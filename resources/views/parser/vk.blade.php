@@ -168,7 +168,7 @@
 @endforeach
 </div>
 
-<ul class="pager">
+<ul class="pager mb-0">
   @if (!empty($next))
     <li class="previous">
       <a class="js-pjax" href="{{ action('ParserVk@index', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}">

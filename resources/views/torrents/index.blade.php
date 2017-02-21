@@ -20,7 +20,7 @@
             @else
               <a class="visited" href="{{ action("$self@index", ['category_id' => $id]) }}">{{ $child['title'] }}</a>
             @endif
-            <span class="text-muted">{{ $stats[$id] }}</span>
+            <span class="text-muted f13">{{ $stats[$id] }}</span>
           </div>
         @endforeach
       @endif

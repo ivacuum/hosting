@@ -143,7 +143,7 @@
 <footer>
   <div class="container">
     @section('footer')
-      <ul class="list-inline">
+      <ul class="list-inline mb-0">
         <li>&copy; {{ date('Y') }} vacuum</li>
         @section('i18n')
           <li>

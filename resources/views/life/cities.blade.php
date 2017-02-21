@@ -7,7 +7,7 @@
   {{ trans('life.visited_cities') }}
   <small>{{ sizeof($cities) }}</small>
 </h1>
-<ul class="list-inline f13">
+<ul class="list-inline f14">
   <li><a class="link" href="{{ action('Life@index') }}">{{ trans('life.by_year') }}</a></li>
   <li><a class="link" href="{{ action('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
   <li><mark>{{ trans('life.by_city') }}</mark></li>
