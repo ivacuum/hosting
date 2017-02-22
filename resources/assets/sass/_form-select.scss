@@ -31,7 +31,7 @@
     height: $input-height-base;
     // height: 32px;
     margin: 0;
-    padding: $padding-base-vertical $padding-base-horizontal;
+    padding: $padding-base-vertical ($padding-base-horizontal * 2) $padding-base-vertical $padding-base-horizontal;
     // padding: .5rem 2.25rem .5rem 1rem;
     // padding: 5px 22.5px 5px 12px;
     line-height: 1.5;
