@@ -20,6 +20,8 @@ class Gallery extends Controller
         \Breadcrumbs::push(trans('gallery.index'), 'gallery');
         \Breadcrumbs::push(trans('gallery.preview'));
 
+        event(new \App\Events\Stats\GalleryImagePreviewed($image->id));
+
         return view($this->view, compact('image'));
     }
 
@@ -27,6 +29,8 @@ class Gallery extends Controller
     {
         \Breadcrumbs::push(trans('gallery.index'), 'gallery');
         \Breadcrumbs::push(trans('gallery.view'));
+
+        event(new \App\Events\Stats\GalleryImageViewed($image->id));
 
         return view($this->view, compact('image'));
     }
@@ -59,6 +63,8 @@ class Gallery extends Controller
         $image->siteThumbnail($file);
         $image->upload($file);
         $image->save();
+
+        event(new \App\Events\Stats\GalleryImageUploaded());
 
         return [
             'status' => 'OK',
