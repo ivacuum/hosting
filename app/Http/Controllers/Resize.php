@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Services\ImageConverter;
 use GuzzleHttp\Client;
 
 class Resize extends Controller
@@ -17,7 +18,7 @@ class Resize extends Controller
         $info = pathinfo($image);
         $extension = $info['extension'];
 
-        $this->checkWhitelist($info['dirname']);
+        abort_unless($this->isWhitelisted($info['dirname']), 403);
 
         // От 50 до 2000px
         $width = (int) min(2000, max(50, $width));
@@ -31,31 +32,17 @@ class Resize extends Controller
 
         abort_unless($code === 200, $code);
 
-        $filename = str_random(6);
-        $destination = storage_path("app/resize-{$filename}.{$extension}");
-
-        register_shutdown_function(function () use ($destination) {
-            unlink($destination);
-        });
-
-        passthru(sprintf(
-            '%s convert -size %dx%d "%s" %s -resize %dx%d\> +profile "*" "%s"',
-            escapeshellcmd(config('cfg.gm_bin')),
-            $width,
-            $height,
-            $source,
-            $extension === 'jpg' ? '-quality 75' : '',
-            $width,
-            $height,
-            $destination
-        ));
+        $new_image = (new ImageConverter())
+            ->resize($width, $height)
+            ->quality(75)
+            ->convert($source);
 
         header('Content-Type: ' . $this->mimeByExtension($extension));
-        readfile($destination);
+        readfile($new_image->getRealPath());
         exit;
     }
 
-    protected function checkWhitelist($uri)
+    protected function isWhitelisted($uri)
     {
         foreach ($this->whitelist as $site) {
             if (starts_with($uri, $site)) {
@@ -63,7 +50,7 @@ class Resize extends Controller
             }
         }
 
-        abort(403);
+        return false;
     }
 
     protected function mimeByExtension($ext)
