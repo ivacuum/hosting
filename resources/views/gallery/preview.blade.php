@@ -1,17 +1,19 @@
-@extends('base')
+@extends('gallery.base')
 
 @section('content')
 <div class="row">
   <div class="col-md-2 col-md-offset-2 text-center">
-    <p>
+    <div class="mb-3">
       <a href="{{ action("$self@view", $image) }}">
         <img class="screenshot" src="{{ $image->thumbnailUrl() }}">
       </a>
-    </p>
+    </div>
   </div>
   <div class="col-md-6">
-    <p>Ссылка:<br><input class="form-control" type="text" value="https://img.ivacuum.ru/g/{{ $image->date }}/{{ $image->slug }}"></p>
-    <p>Полная картинка:<br><input class="form-control" type="text" value="[img]https://img.ivacuum.ru/g/{{ $image->date }}/{{ $image->slug }}[/img]"></p>
+    <div>Ссылка:</div>
+    <input class="form-control" type="text" value="{{ $image->originalUrl() }}">
+    <div class="mt-2">Полная картинка:</div>
+    <input class="form-control" type="text" value="[img]{{ $image->originalUrl() }}[/img]">
     {{-- TODO: thumb --}}
   </div>
 </div>

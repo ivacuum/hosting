@@ -41,6 +41,29 @@ class Gallery extends Controller
 
     public function uploadPost()
     {
-        dd('Actual upload');
+        if (!$this->request->ajax()) {
+            return ['status' => 'error'];
+        }
+
+        $this->validate($this->request, [
+            'file' => 'required|mimetypes:image/gif,image/jpeg,image/png|max:6144',
+        ]);
+
+        $file = $this->request->file('file');
+
+        if (is_null($file) || !$file->isValid()) {
+            throw new \Exception('Необходимо предоставить хотя бы один файл');
+        }
+
+        $image = Image::createFromFile($file, $this->request->user()->id);
+        $image->siteThumbnail($file);
+        $image->upload($file);
+        $image->save();
+
+        return [
+            'status' => 'OK',
+            'original' => $image->originalUrl(),
+            'thumbnail' => $image->thumbnailUrl(),
+        ];
     }
 }

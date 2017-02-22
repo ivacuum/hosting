@@ -1,7 +1,5 @@
-@extends('base')
+@extends('gallery.base')
 
 @section('content')
-<div class="alert alert-danger">
-  Загрузка изображений временно недоступна.
-</div>
+<gallery-uploader action="{{ action('Gallery@uploadPost') }}" max="10"></gallery-uploader>
 @endsection

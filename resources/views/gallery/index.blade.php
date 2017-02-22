@@ -1,4 +1,4 @@
-@extends('base')
+@extends('gallery.base')
 
 @section('content')
 @if (sizeof($images))
@@ -18,7 +18,11 @@
     @endforeach
   </div>
 @else
-  <p>Вы не загрузили ни одного изображения.</p>
+  @ru
+    <p>Ваша галерея в данный момент пуста. <a class="link" href="{{ action('Gallery@upload') }}">Загрузите</a> свое первое изображение.</p>
+  @en
+    <p>Your gallery is empty. <a class="link" href="{{ action('Gallery@upload') }}">Upload</a> your first image right now.</p>
+  @endlang
 @endif
 
 <div class="mt-3 text-center">
