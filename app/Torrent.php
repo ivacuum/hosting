@@ -35,7 +35,7 @@ class Torrent extends Model
     const STATUS_8 = 8; // сомнительно
     const STATUS_9 = 9; // проверяется
     const STATUS_10 = 10; // временная
-    const STATUS_11 = 11; // премодерация
+    const STATUS_PREMODERATION = 11; // премодерация
 
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $hidden = ['html'];

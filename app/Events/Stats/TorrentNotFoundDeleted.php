@@ -2,6 +2,6 @@
 
 use App\Events\Event;
 
-class TorrentDeleted extends Event
+class TorrentNotFoundDeleted extends Event
 {
 }

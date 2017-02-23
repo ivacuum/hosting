@@ -24,6 +24,7 @@ class RtoUpdate extends Command
                 if (is_null($json)) {
                     $this->info("Раздача {$id} не найдена и удалена");
                     $torrent->delete();
+                    event(new \App\Events\Stats\TorrentNotFoundDeleted());
                     continue;
                 }
 
@@ -31,7 +32,12 @@ class RtoUpdate extends Command
                 if ($json->tor_status == Torrent::STATUS_DUPLICATE) {
                     $this->info("Раздача {$id} закрыта как повторная и удалена");
                     $torrent->delete();
-                    event(new \App\Events\Stats\TorrentDeleted());
+                    event(new \App\Events\Stats\TorrentDuplicateDeleted());
+                    continue;
+                }
+
+                // Ждем завершения модерации
+                if ($json->tor_status == Torrent::STATUS_PREMODERATION) {
                     continue;
                 }
 
