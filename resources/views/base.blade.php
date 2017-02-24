@@ -164,14 +164,14 @@
 ]); ?>
 </script>
 {{-- После добавления и удаления скриптов нужно дописывать версию, иначе webpack грузит прежние файлы --}}
-<script src="{{ mix('/build/manifest.js') }}?3"></script>
-<script src="{{ mix('/build/polyfills.js') }}?3"></script>
-<script src="{{ mix('/build/jquery.js') }}?3"></script>
-<script src="{{ mix('/build/autosize.js') }}?3"></script>
-<script src="{{ mix('/build/bootstrap.js') }}?3"></script>
-<script src="{{ mix('/build/throttle.js') }}?3"></script>
-<script src="{{ mix('/build/vue.js') }}?3"></script>
-<script src="{{ mix('/build/axios.js') }}?3"></script>
+<script src="{{ mix('/build/manifest.js') }}?4"></script>
+<script src="{{ mix('/build/polyfills.js') }}?4"></script>
+<script src="{{ mix('/build/jquery.js') }}?4"></script>
+<script src="{{ mix('/build/autosize.js') }}?4"></script>
+<script src="{{ mix('/build/bootstrap.js') }}?4"></script>
+<script src="{{ mix('/build/throttle.js') }}?4"></script>
+<script src="{{ mix('/build/vue.js') }}?4"></script>
+<script src="{{ mix('/build/axios.js') }}?4"></script>
 <script src="{{ mix('/build/app.js') }}"></script>
 @stack('js')
 @section('counters')
