@@ -3,7 +3,7 @@
 return [
     'add' => 'Add a release',
     'new' => 'New',
-    'help' => 'Help',
+    'faq' => 'Help',
     'index' => 'Torrents',
     'today' => 'Today',
     'search' => 'Search...',

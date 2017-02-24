@@ -27,7 +27,7 @@
     <a href="{{ action('Torrents@add') }}">{{ trans('torrents.add') }}</a>
   </li>
   <li class="{{ $view === 'torrents.faq' ? 'active' : '' }}">
-    <a href="{{ action('Torrents@faq') }}">{{ trans('torrents.help') }}</a>
+    <a href="{{ action('Torrents@faq') }}">{{ trans('torrents.faq') }}</a>
   </li>
   <li class="{{ $view === 'torrents.comments' ? 'active' : '' }}">
     <a href="{{ action('Torrents@comments') }}">{{ trans('torrents.comments') }}</a>
