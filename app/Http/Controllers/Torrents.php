@@ -183,7 +183,9 @@ class Torrents extends Controller
 
         $comments = $torrent->comments()->with('user')->orderBy('id')->get();
 
-        return view($this->view, compact('comments', 'torrent'));
+        $meta_title = $torrent->title;
+
+        return view($this->view, compact('comments', 'meta_title', 'torrent'));
     }
 
     protected function applySearchQuery($q, $torrents)
