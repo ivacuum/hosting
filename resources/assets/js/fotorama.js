@@ -5,5 +5,3 @@ window.fotoramaDefaults = {
   nav: 'thumbs',
   trackpad: true
 }
-
-import '../../../node_modules/fotorama/fotorama'

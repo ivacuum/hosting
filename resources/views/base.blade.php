@@ -13,8 +13,8 @@
   <meta name="description" content="{{ $meta_description or '' }}">
   <link rel="apple-touch-icon-precomposed" href="https://life.ivacuum.ru/apple-touch-icon-precomposed.png">
   <link rel="icon" href="https://life.ivacuum.ru/apple-touch-icon.png">
-  <link rel="stylesheet" href="{{ mix('/build/fotorama.css') }}">
-  <link rel="stylesheet" href="{{ mix('/build/app.css') }}">
+  <link rel="stylesheet" href="/assets/fotorama.css">
+  <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">
   @stack('head')
 </head>
 <body class="{{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'theme-dark' : '' }}">
@@ -163,16 +163,16 @@
   'yandexMetrikaId' => 5266444,
 ]); ?>
 </script>
-{{-- После добавления и удаления скриптов нужно дописывать версию, иначе webpack грузит прежние файлы --}}
-<script src="{{ mix('/build/manifest.js') }}?4"></script>
-<script src="{{ mix('/build/polyfills.js') }}?4"></script>
-<script src="{{ mix('/build/jquery.js') }}?4"></script>
-<script src="{{ mix('/build/autosize.js') }}?4"></script>
-<script src="{{ mix('/build/bootstrap.js') }}?4"></script>
-<script src="{{ mix('/build/throttle.js') }}?4"></script>
-<script src="{{ mix('/build/vue.js') }}?4"></script>
-<script src="{{ mix('/build/axios.js') }}?4"></script>
-<script src="{{ mix('/build/app.js') }}"></script>
+<script src="/assets/polyfills.js"></script>
+<script src="/assets/jquery.js"></script>
+<script src="{{ mix('/assets/jquery.pjax.js') }}"></script>
+<script src="/assets/jquery.scrollto.js"></script>
+<script src="/assets/autosize.js"></script>
+<script src="/assets/bootstrap.js"></script>
+<script src="/assets/vue.js"></script>
+<script src="{{ mix('/assets/axios.js') }}"></script>
+<script src="{{ mix('/assets/fotorama.js') }}"></script>
+<script src="{{ mix('/assets/app.js') }}"></script>
 @stack('js')
 @section('counters')
 @include('tpl.counters')

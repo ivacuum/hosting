@@ -8,10 +8,9 @@ import './events'
 import './highlight'
 import './life'
 import './shortcuts'
-import './vue'
 import './yandex-dns'
 
-let throttle = require('lodash.throttle')
+let throttle = require('lodash/throttle')
 
 class Application {
   constructor() {

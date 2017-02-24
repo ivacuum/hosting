@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /ajax
+Disallow: /assets
 Disallow: /build
 Disallow: /cv
 Disallow: /auth
