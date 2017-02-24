@@ -4,27 +4,45 @@
 </div>
 <a name="comments"></a>
 @foreach ($comments as $comment)
-  <a name="comment-{{ $comment->id }}"></a>
-  <div class="media">
-    <div class="media-left">
-      @include('tpl.svg-avatar', [
-        'bg' => ViewHelper::avatarBg($comment->user_id),
-        'text' => !is_null($comment->user) ? $comment->user->avatarName() : null,
-      ])
-    </div>
-    <div class="media-body">
-      <div class="h4 media-heading">
-        @if (!is_null($comment->user))
-          {{ $comment->user->publicName() }}
-        @else
-          <em>deleted user</em>
-        @endif
-        <span class="comment-meta">
-          <span class="mx-1">&middot;</span>
-          {{ $comment->fullDate() }}
-        </span>
+  <div class="comment-container">
+    <a name="comment-{{ $comment->id }}"></a>
+    <div class="comment-content">
+      <aside class="comment-author-container">
+        <div class="comment-author">
+          @if (!is_null($comment->user))
+            <div class="comment-author-avatar">
+              @if ($comment->user->avatar)
+                <img class="comment-author-avatar-image" src="{{ $comment->user->avatarUrl() }}">
+              @else
+                @include('tpl.svg-avatar', [
+                  'bg' => ViewHelper::avatarBg($comment->user_id),
+                  'text' => $comment->user->avatarName(),
+                ])
+              @endif
+            </div>
+          @endif
+          <div class="comment-author-details">
+            <span class="comment-author-name">
+              @if (!is_null($comment->user))
+                {{ $comment->user->publicName() }}
+              @else
+                <em>deleted user</em>
+              @endif
+            </span>
+          </div>
+        </div>
+      </aside>
+      <div class="comment-body-container">
+        {{--
+        <aside class="comment-controls">
+          <button class="btn btn-default btn-sm">
+            @svg (angle-down)
+          </button>
+        </aside>
+        --}}
+        <div class="comment-meta">{{ $comment->fullDate() }}</div>
+        <div class="comment-body">{!! nl2br($comment->html) !!}</div>
       </div>
-      <div>{!! nl2br($comment->html) !!}</div>
     </div>
   </div>
 @endforeach
