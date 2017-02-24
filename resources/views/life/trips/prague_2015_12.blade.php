@@ -193,7 +193,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_2059.jpg'])
 
 @ru
-  <p>Удачная находка в первый же день исследований — международный автовокзал Флоренц. Непосредственная близость к жилью сподвигнула вскоре отправиться в <span class="emoji">&#x1f1e9;&#x1f1ea;</span> <a class="link" href="/life/dresden.2015">Дрезден</a> и <span class="emoji">&#x1f1e6;&#x1f1f9;</span> <a class="link" href="/life/vienna.2015">Вену</a>.</p>
+  <p>Удачная находка в первый же день исследований — международный автовокзал Флоренц. Непосредственная близость к жилью сподвигнула вскоре отправиться в <a class="link" href="/life/dresden.2015">Дрезден</a> и <a class="link" href="/life/vienna.2015">Вену</a>.</p>
 @endlang
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2008.jpg',
