@@ -1,22 +1,40 @@
 @if (Auth::check())
-  <div class="row mt-3">
-    <div class="col-sm-8">
-      <form action="{{ action('Ajax@comment', $params) }}" method="post">
-        {{ ViewHelper::inputHiddenMail() }}
-        <div class="form-group {{ $errors->has('text') ? 'has-error' : '' }}">
-          <textarea required class="form-control textarea-autosized js-autosize-textarea" name="text" placeholder="{{ trans('comments.placeholder') }}" rows="1" maxlength="1000">{{ old('text') }}</textarea>
-          @if ($errors->has('text'))
-            <span class="help-block">{{ $errors->first('text') }}</span>
-          @endif
+  <div class="comment-container no-border">
+    <div class="comment-content">
+      <aside class="comment-author-container">
+        <div class="comment-author">
+          <div class="comment-author-avatar">
+            @if (Auth::user()->avatar)
+              <img class="comment-author-avatar-image" src="{{ Auth::user()->avatarUrl() }}">
+            @else
+              @include('tpl.svg-avatar', [
+                'bg' => ViewHelper::avatarBg(Auth::user()->id),
+                'text' => Auth::user()->avatarName(),
+              ])
+            @endif
+          </div>
+          <div class="comment-author-details">
+            <span class="comment-author-name">{{ Auth::user()->publicName() }}</span>
+          </div>
         </div>
-        <div class="pull-right">
-          <button class="btn btn-primary">
-            {{ trans('comments.send') }}
-          </button>
+      </aside>
+      <div class="comment-body-container">
+        <div class="comment-body">
+          <form action="{{ action('Ajax@comment', $params) }}" method="post">
+            {{ ViewHelper::inputHiddenMail() }}
+            <div class="form-group {{ $errors->has('text') ? 'has-error' : '' }}">
+              <textarea required class="form-control textarea-autosized js-autosize-textarea" name="text" placeholder="{{ trans('comments.placeholder') }}" rows="1" maxlength="1000">{{ old('text') }}</textarea>
+              @if ($errors->has('text'))
+                <span class="help-block">{{ $errors->first('text') }}</span>
+              @endif
+            </div>
+            <button class="btn btn-primary">
+              {{ trans('comments.send') }}
+            </button>
+            {{ csrf_field() }}
+          </form>
         </div>
-        {{ csrf_field() }}
-        <div class="clearfix"></div>
-      </form>
+      </div>
     </div>
   </div>
 @else
