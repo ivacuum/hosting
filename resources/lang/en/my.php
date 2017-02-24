@@ -13,5 +13,5 @@ return [
     'theme_light' => 'Light (default)',
     'old_password' => 'Old password',
     'new_password' => 'New password',
-    'torrent_short_title' => 'Shorten release title',
+    'torrent_short_title' => 'Shorten release titles',
 ];
