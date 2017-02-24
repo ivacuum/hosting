@@ -61,6 +61,11 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="{{ action('Torrents@index') }}">
+    {{ trans('torrents.index') }}
+  </a>
+</li>
 @endsection
 
 @section('header_user')
@@ -81,7 +86,7 @@
 @endsection
 
 @section('footer')
-<ul class="list-inline">
+<ul class="list-inline mb-0">
   <li>&copy; {{ date('Y') }} ArtFly</li>
   <li>
     <a class="link" href="mailto:{{ config('email.dc') }}">
@@ -91,9 +96,9 @@
   @section('i18n')
     <li>
       @ru
-        <a class="link" href="{{ url("en/{$request_uri}") }}" lang="en">In english</a>
+        <a class="link link-lang" href="{{ url("en/{$request_uri}") }}" lang="en">In english</a>
       @en
-        <a class="link" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
+        <a class="link link-lang" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
       @endlang
     </li>
   @show
