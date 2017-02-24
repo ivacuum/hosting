@@ -28,10 +28,4 @@
 
 @include('tpl.comments-list')
 @include('tpl.comment-add', ['params' => ['news', $news->id]])
-
-@if ($comments->hasPages())
-  <div class="mt-3 text-center">
-    @include('tpl.paginator', ['paginator' => $comments])
-  </div>
-@endif
 @endsection

@@ -67,7 +67,7 @@ class News extends Controller
 
         abort_unless($news->status === Model::STATUS_PUBLISHED, 404);
 
-        $comments = $news->comments()->with('user')->orderBy('id', 'desc')->paginate();
+        $comments = $news->comments()->with('user')->orderBy('id')->get();
 
         event(new NewsViewed($news->id));
 

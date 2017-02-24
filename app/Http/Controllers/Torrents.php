@@ -181,7 +181,7 @@ class Torrents extends Controller
 
         event(new \App\Events\Stats\TorrentViewed($torrent->id));
 
-        $comments = $torrent->comments()->with('user')->orderBy('id', 'desc')->paginate();
+        $comments = $torrent->comments()->with('user')->orderBy('id')->get();
 
         return view($this->view, compact('comments', 'torrent'));
     }

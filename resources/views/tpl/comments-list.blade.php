@@ -1,6 +1,6 @@
 <div class="h3 mt-5">
   {{ trans('comments.discussion') }}
-  <small>{{ $comments->total() }}</small>
+  <small>{{ sizeof($comments) }}</small>
 </div>
 <a name="comments"></a>
 @foreach ($comments as $comment)
