@@ -42,7 +42,7 @@
     </div>
   @en
     <div class="mt-3">
-      In order to post comments you need to <a class="link" href="{{ action('Auth@login', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">sign in</a>.
+      Please <a class="link" href="{{ action('Auth@login', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">sign in</a> to comment.
     </div>
   @endlang
 @endif
