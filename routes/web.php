@@ -47,6 +47,7 @@ Route::get('life/gigs', 'Life@gigs');
 Route::get('life/{page}', 'Life@page');
 
 Route::get('my', 'My@index')->middleware('auth');
+Route::put('my/avatar', 'My@avatarPut')->middleware('auth');
 Route::get('my/password', 'My@password')->middleware('auth');
 Route::put('my/password', 'My@passwordPut')->middleware('auth');
 Route::get('my/profile', 'My@profile')->middleware('auth');

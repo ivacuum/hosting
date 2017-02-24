@@ -74,10 +74,7 @@
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle avatar-dropdown" data-toggle="dropdown">
-                @include('tpl.svg-avatar', [
-                  'bg' => ViewHelper::avatarBg(Auth::user()->id),
-                  'text' => Auth::user()->avatarName(),
-                ])
+                @include('tpl.avatar', ['user' => Auth::user()])
                 @svg (angle-down)
               </a>
               <ul class="dropdown-menu">

@@ -8,9 +8,12 @@ use Illuminate\Http\UploadedFile;
 class ImageConverter
 {
     protected $auth_orient;
+    protected $crop;
     protected $filter;
     protected $filters = ['point', 'box', 'triangle', 'hermite', 'hanning', 'hamming', 'blackman', 'gaussian', 'quadratic', 'cubic', 'catrom', 'mitchell', 'lanczos', 'bessel', 'sinc'];
     protected $first_frame;
+    protected $gravity;
+    protected $gravities = ['northwest', 'north', 'northeast', 'west', 'center', 'east', 'southwest', 'south', 'southeast'];
     protected $quality;
     protected $resize;
     protected $size;
@@ -40,24 +43,37 @@ class ImageConverter
     {
         $destination = $this->tempFile();
 
-        passthru(implode(' ', [
+        $command = implode(' ', [
             config('cfg.gm_bin'),
             'convert',
             $this->size,
             escapeshellarg($this->source($source)),
             $this->auth_orient,
             $this->quality,
-            $this->filter,
+            $this->filter, // Фильтр должен быть перед resize
             $this->resize,
+            $this->gravity,
+            $this->crop,
             '+profile "*"',
             escapeshellarg($destination),
-        ]));
+        ]);
+
+        passthru($command);
 
         if (!file_exists($destination)) {
             throw new \Exception('Преобразование файла не удалось');
         }
 
         return new UploadedFile($destination, basename($source));
+    }
+
+    public function crop($width, $height)
+    {
+        $this->crop = "-crop {$width}x{$height}+0+0";
+        $this->gravity('center');
+        $this->resize($width, $height, '^');
+
+        return $this;
     }
 
     /**
@@ -90,17 +106,31 @@ class ImageConverter
         return $this;
     }
 
+    public function gravity($gravity)
+    {
+        $gravity = strtolower($gravity);
+
+        if (!in_array($gravity, $this->gravities)) {
+            throw new \Exception("Фильтр [{$gravity}] не найден");
+        }
+
+        $this->gravity = "-gravity {$gravity}";
+
+        return $this;
+    }
+
     /**
      * Размеры миниатюры
      *
      * @param  integer $width
      * @param  integer $height
+     * @param  string  $mark
      * @return $this
      */
-    public function resize($width, $height)
+    public function resize($width, $height, $mark = '>')
     {
         $this->size = "-size {$width}x{$height}";
-        $this->resize = "-resize {$width}x{$height}\\>";
+        $this->resize = "-resize '{$width}x{$height}{$mark}'";
 
         return $this;
     }

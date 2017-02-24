@@ -21,6 +21,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'avatars' => [
+            'driver'     => 'local',
+            'root'       => env('AVATARS_ROOT', public_path('uploads/avatars')),
+            'visibility' => 'public',
+        ],
+
         'gallery' => [
             'driver'     => 'local',
             'root'       => env('GALLERY_ROOT', public_path('uploads/gallery')),

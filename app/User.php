@@ -3,6 +3,7 @@
 use App\Mail\ResetPassword;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
 
 /**
@@ -16,6 +17,7 @@ use Illuminate\Notifications\Notifiable;
  * @property integer $status
  * @property integer $theme
  * @property integer $torrent_short_title
+ * @property string  $avatar
  * @property string  $ip
  * @property string  $activation_token
  * @property string  $remember_token
@@ -86,6 +88,11 @@ class User extends Authenticatable
         return mb_strtoupper(mb_substr($this->login ?: $this->email, 0, 2));
     }
 
+    public function avatarUrl()
+    {
+        return $this->avatar ? (new Avatar())->originalUrl($this->avatar) : '';
+    }
+
     public function displayName()
     {
         return $this->login ?: $this->email;
@@ -129,6 +136,22 @@ class User extends Authenticatable
         register_shutdown_function(function () use ($token) {
             \Mail::to($this)->send(new ResetPassword($token));
         });
+    }
+
+    public function uploadAvatar(UploadedFile $file)
+    {
+        $avatar = new Avatar();
+
+        if ($this->avatar) {
+            $avatar->delete($this->avatar);
+        }
+
+        $filename = $avatar->upload($file, $this->id);
+
+        $this->avatar = $filename;
+        $this->save();
+
+        return $avatar->originalUrl($filename);
     }
 
     public function isPasswordOld()
