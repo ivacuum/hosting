@@ -32,4 +32,10 @@ return [
         'admin_id' => env('TELEGRAM_ADMIN_ID'),
     ],
 
+    // Купоны
+    'digitalocean_link' => 'https://m.do.co/c/0864de50ab6c',
+    'firstvds_link' => 'https://firstvds.ru/?from=149161',
+    'firstvds_promocode' => '648149161',
+    'timeweb_link' => 'http://timeweb.com/ru/?i=19980',
+
 ];
