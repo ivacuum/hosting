@@ -12,6 +12,7 @@
   {{ $trip->title }}
   @include('tpl.city-map-button', ['city' => $trip->city])
 </h1>
+<time datetime="{{ $trip->date_start->toDateString() }}"></time>
 <div hidden id="trip_city_map" class="trip-city-map"></div>
 {{--
 @if ($trip->meta_image)
