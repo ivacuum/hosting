@@ -7,7 +7,9 @@
     <span class="svg-muted mr-1">
       @svg (calendar-o)
     </span>
-    {{ $news->created_at->formatLocalized('%e %B %Y') }}
+    <time datetime="{{ $news->created_at->toDateString() }}">
+      {{ $news->created_at->formatLocalized('%e %B %Y') }}
+    </time>
   </span>
   @if ($news->user->login)
     <span class="text-nowrap mr-3">
