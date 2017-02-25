@@ -8,7 +8,7 @@ use Illuminate\Support\HtmlString;
 
 class Torrents extends Controller
 {
-    protected $list_columns = ['id', 'user_id', 'category_id', 'title', 'size', 'seeders', 'info_hash', 'announcer', 'clicks', 'registered_at'];
+    protected $list_columns = ['id', 'category_id', 'title', 'size', 'info_hash', 'announcer', 'clicks', 'registered_at'];
 
     public function index()
     {
