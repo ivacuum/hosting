@@ -43,9 +43,7 @@
     </div>
   </div>
 
-  <div class="text-center">
-    @include('tpl.paginator', ['paginator' => $news])
-  </div>
+  @include('tpl.paginator', ['class' => 'mt-3 text-center', 'paginator' => $news])
 @else
   <p>По данным критериям новости не найдены.</p>
 @endif

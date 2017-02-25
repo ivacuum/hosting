@@ -67,7 +67,7 @@
   </table>
 @endif
 
-<div class="pull-left my-3">
+<div class="my-3">
   <form class="form-inline js-batch-form" data-url="/acp/domains/batch" data-selector=".domains-checkbox">
     <div class="form-group">
       <div class="form-select d-inline-block mr-1">
@@ -88,11 +88,7 @@
   </form>
 </div>
 
-<div class="pull-right">
-  @include('tpl.paginator', ['paginator' => $models])
-</div>
-
-<div class="clearfix"></div>
+@include('tpl.paginator', ['class' => 'mt-3 text-center', 'paginator' => $models])
 
 <div>
   <span class="label label-default">...</span> &nbsp;есть заметки &nbsp;

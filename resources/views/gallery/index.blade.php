@@ -17,6 +17,8 @@
       </div>
     @endforeach
   </div>
+
+  @include('tpl.paginator', ['class' => 'mt-3 text-center', 'paginator' => $images])
 @else
   @ru
     <p>Ваша галерея в данный момент пуста. <a class="link" href="{{ action('Gallery@upload') }}">Загрузите</a> свое первое изображение.</p>
@@ -24,8 +26,4 @@
     <p>Your gallery is empty. <a class="link" href="{{ action('Gallery@upload') }}">Upload</a> your first image right now.</p>
   @endlang
 @endif
-
-<div class="mt-3 text-center">
-  @include('tpl.paginator', ['paginator' => $images])
-</div>
 @endsection

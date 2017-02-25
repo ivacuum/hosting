@@ -32,8 +32,6 @@
     </div>
   </div>
 
-  <div class="text-center mt-3">
-    @include('tpl.paginator', ['paginator' => $models])
-  </div>
+  @include('tpl.paginator', ['class' => 'mt-3 text-center', 'paginator' => $models])
 @endif
 @endsection

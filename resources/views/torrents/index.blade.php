@@ -60,11 +60,7 @@
         </div>
       @endforeach
 
-      @if ($torrents->hasPages())
-        <div class="mt-3 text-center">
-          @include('tpl.paginator', ['paginator' => $torrents])
-        </div>
-      @endif
+      @include('tpl.paginator', ['class' => 'mt-3 text-center', 'paginator' => $torrents])
     @else
       <p class="alert alert-warning">Подходящих раздач не найдено.</p>
     @endif
