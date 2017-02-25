@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Acp\Dev;
 
 use App\Http\Controllers\Acp\Controller;
+use App\Services\ImageConverter;
 
 class Thumbnails extends Controller
 {
@@ -21,68 +22,20 @@ class Thumbnails extends Controller
 
     public function thumbnailsPost()
     {
-        $files = $this->request->file('files', []);
+        $file = $this->request->file('file');
 
-        if (empty($files)) {
+        if (is_null($file) || !$file->isValid()) {
             throw new \Exception('Необходимо предоставить хотя бы один файл');
         }
 
-        $sizes = [['width' => 2000, 'height' => 1500]];
+        $image = (new ImageConverter())
+            ->resize(2000, 1500)
+            ->quality(75)
+            ->convert($file->getRealPath());
 
-        $thumbnails = [];
+        rename($image->getRealPath(), public_path('uploads/temp/'.$file->getClientOriginalName()));
 
-        /* @var $file \Symfony\Component\HttpFoundation\File\UploadedFile */
-        foreach ($files as $file) {
-            if (is_null($file) || !$file->isValid()) {
-                continue;
-            }
-
-            foreach ($sizes as $size) {
-                $source = $file->getRealPath();
-                $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-                $extension = $file->getClientOriginalExtension();
-
-                $dir = "uploads/temp";
-
-                @mkdir($dir);
-
-                $dest = "{$dir}/{$filename}.{$extension}";
-
-                // $exif = @exif_read_data($source, 'GPS');
-
-                $coordinates = false; // $this->processGps($exif);
-                $lat = $lon = false;
-
-                if (false !== $coordinates) {
-                    $lat = $coordinates['lat'];
-                    $lon = $coordinates['lon'];
-                }
-
-                passthru(sprintf(
-                    '%s gm convert -size %dx%d "%s" %s -resize %dx%d\> +profile "*" "%s"',
-                    escapeshellcmd('/usr/bin/env'),
-                    $size['width'],
-                    $size['height'],
-                    $source,
-                    $extension === 'jpg' ? '-quality 75' : '',
-                    $size['width'],
-                    $size['height'],
-                    $dest
-                ));
-
-                $thumbnails[] = [
-                    'dest' => $dest,
-                    'lat'  => $lat,
-                    'lon'  => $lon,
-                ];
-            }
-        }
-
-        if ($this->request->ajax()) {
-            return compact('thumbnails');
-        }
-
-        return view($this->view, compact('thumbnails'));
+        return ['filename' => $file->getClientOriginalName()];
     }
 
     /**

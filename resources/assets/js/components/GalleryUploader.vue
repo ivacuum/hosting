@@ -61,7 +61,7 @@ export default {
       files: [],
       total: 0,
       uploaded: 0,
-      uploading: false,
+      uploading: false
     }
   },
 

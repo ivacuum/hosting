@@ -1,18 +1,23 @@
 <template>
   <div>
     <div v-if="!uploading">
-      <input required id="userfiles" type="file" name="files[]" multiple min="1" max="1000">
+      <label class="custom-file">
+        <input class="custom-file-input"
+               type="file"
+               name="files[]"
+               multiple
+               :max="max"
+               @change="uploadFiles($event.currentTarget.files)">
+        <span class="custom-file-control custom-file-multiple-control"></span>
+      </label>
     </div>
     <div v-else>
-      Идет загрузка...
+      Идет загрузка... {{ uploaded }} из {{ total }}
     </div>
 
     <div v-if="thumbnails.length" class="my-3">
       <div v-for="thumbnail in thumbnails">
-        {{ basename(thumbnail.dest) }} ... ok
-        <p v-if="hasCoords(thumbnail)">
-          {{ thumbnail.lat }} {{ thumbnail.lon }}
-        </p>
+        {{ thumbnail.filename }} ... ok
       </div>
     </div>
   </div>
@@ -34,33 +39,16 @@ export default {
       alert('Проблемка. Файлы загрузить не выйдет')
       return false
     }
-
-    $(document).on('change', '#userfiles', (e) => {
-      this.uploadFiles(e.currentTarget.files)
-    })
   },
 
   methods: {
-    basename(path) {
-      return path.split(/[\\/]/).pop()
-    },
-
-    hasCoords(thumbnail) {
-      return thumbnail.lat && thumbnail.lon
-    },
-
     uploadFile(file) {
       let form = new FormData()
 
-      form.append('files[]', file)
+      form.append('file', file)
 
       axios.post('/acp/dev/thumbnails', form).then((response) => {
-        const thumbnails = response.data.thumbnails
-
-        for (let i = 0, length = thumbnails.length; i < length; i++) {
-          this.thumbnails.push(thumbnails[i])
-        }
-
+        this.thumbnails.push(response.data)
         this.uploaded++
 
         if (this.uploaded === this.total) {
@@ -74,9 +62,7 @@ export default {
       this.total += files.length
 
       for (let i = 0, length = files.length; i < length; i++) {
-        const file = files[i]
-
-        this.uploadFile(file)
+        this.uploadFile(files[i])
       }
     }
   }
