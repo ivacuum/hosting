@@ -11,6 +11,8 @@ return [
     'get_promocode' => 'Получить промокод',
     'promocode_sent' => 'Мы отправили промокод на вашу электронную почту',
 
+    'airbnb.title' => 'Купоны Airbnb на :month :year',
+
     'do.title' => 'Купоны DigitalOcean на :month :year',
 
     'firstvds.subject' => 'Промокод на 25% скидку FirstVDS',
