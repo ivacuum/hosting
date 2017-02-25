@@ -42,3 +42,7 @@
 }
 
 .textarea-autosized { resize: none; }
+.textarea-borderless-focus:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
