@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>{{ $meta_title or '' }}</title>
+<title>{{ $meta_title ?? '' }}</title>
 <style>
 body {
   margin: 0;
