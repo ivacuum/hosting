@@ -2,6 +2,7 @@
 
 use App\Services\ImageConverter;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 
 class Resize extends Controller
 {
@@ -27,7 +28,12 @@ class Resize extends Controller
         $file = tmpfile();
         $source = stream_get_meta_data($file)['uri'];
 
-        $response = $client->get($image, ['sink' => $file]);
+        try {
+            $response = $client->get($image, ['sink' => $file]);
+        } catch (ClientException $e) {
+            abort($e->getCode());
+        }
+
         $code = $response->getStatusCode();
 
         abort_unless($code === 200, $code);
