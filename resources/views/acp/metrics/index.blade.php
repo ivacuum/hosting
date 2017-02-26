@@ -13,7 +13,7 @@
     @foreach ($events as $event)
       <div class="flex-row">
         <div class="flex-cell">
-          <a class="link" href="{{ action("$self@show", $event) }}">{{ $event }}</a>
+          <a class="link text-break-word" href="{{ action("$self@show", $event) }}">{{ $event }}</a>
         </div>
         @foreach ($dates as $date => $true)
           <div class="flex-cell text-right">{{ isset($metrics[$event][$date]) ? ViewHelper::number($metrics[$event][$date]) : '' }}</div>
