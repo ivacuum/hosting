@@ -18,6 +18,8 @@ class Internal extends Controller
             $status_text = " [{$status}]";
         }
 
+        event(new \App\Events\Stats\Build());
+
         $telegram->notifyAdmin("{$emoji}{$project} build {$number}{$status_text}");
 
         return 'ok';

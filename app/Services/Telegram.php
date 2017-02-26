@@ -21,6 +21,8 @@ class Telegram
         $chat_id = config('cfg.telegram.admin_id');
         $disable_web_page_preview = true;
 
+        event(new \App\Events\Stats\TelegramSent());
+
         register_shutdown_function(
             [$this->telegram, 'sendMessage'],
             compact('chat_id', 'text', 'disable_web_page_preview')
