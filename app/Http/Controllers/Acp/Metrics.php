@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Metric as Model;
+use Carbon\Carbon;
 
 class Metrics extends Controller
 {
@@ -28,8 +29,8 @@ class Metrics extends Controller
         \Breadcrumbs::push($event);
 
         $metrics = Model::where('event', $event)->get();
-        $first_day = $metrics->first()->date;
-        $last_day = $metrics->last()->date;
+        $first_day = Carbon::parse($metrics->first()->date);
+        $last_day = Carbon::parse($metrics->last()->date);
         $metrics = $metrics->pluck('count', 'date');
 
         return view($this->view, compact('event', 'first_day', 'last_day', 'metrics'));

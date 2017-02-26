@@ -8,7 +8,7 @@
     <div class="flex-cell text-right">Кол-во</div>
   </div>
   <div class="flex-row-group flex-row-striped">
-    @for ($date = Carbon\Carbon::parse($last_day); $date->toDateString() != $first_day; $date->subDay())
+    @for ($date = $last_day; $first_day->lte($date); $date->subDay())
       @php ($day = $date->toDateString())
       <div class="flex-row">
         <div class="flex-cell">{{ $day }}</div>
