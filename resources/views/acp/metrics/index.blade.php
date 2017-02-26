@@ -1,4 +1,4 @@
-@extends('base')
+@extends('acp.base')
 
 @section('content')
 <h2 class="mt-0">Метрики</h2>
