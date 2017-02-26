@@ -94,6 +94,11 @@
       </a>
     </li>
     <li>
+      <a href="{{ $locale_uri }}/acp/metrics">
+        {{ trans('acp.metrics.index') }}
+      </a>
+    </li>
+    <li>
       <a href="{{ $locale_uri }}/acp/news">
         {{ trans('acp.news.index') }}
       </a>

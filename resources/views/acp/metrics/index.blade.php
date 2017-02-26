@@ -1,7 +1,7 @@
 @extends('acp.base')
 
 @section('content')
-<h2 class="mt-0">Метрики</h2>
+<h2 class="mt-0">{{ trans("$tpl.index") }}</h2>
 <div class="flex-table flex-table-bordered">
   <div class="flex-row flex-row-header">
     <div class="flex-cell">Событие</div>

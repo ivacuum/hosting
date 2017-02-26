@@ -7,6 +7,9 @@ class Metrics extends Controller
 {
     public function index()
     {
+        \Breadcrumbs::push(trans('acp.index'), 'acp');
+        \Breadcrumbs::push(trans('acp.metrics.index'));
+
         $events = Model::possibleMetrics();
         $metrics = $dates = [];
 
@@ -20,6 +23,10 @@ class Metrics extends Controller
 
     public function show($event)
     {
+        \Breadcrumbs::push(trans('acp.index'), 'acp');
+        \Breadcrumbs::push(trans('acp.metrics.index'), 'acp/metrics');
+        \Breadcrumbs::push($event);
+
         $metrics = Model::where('event', $event)->get();
         $first_day = $metrics->first()->date;
         $last_day = $metrics->last()->date;

@@ -65,6 +65,8 @@ return [
     'images.show' => 'Image',
     'images.index' => 'Images',
 
+    'metrics.index' => 'Metrics',
+
     'news.add' => 'Post news',
     'news.www' => 'View on site',
     'news.edit' => 'Edit',
