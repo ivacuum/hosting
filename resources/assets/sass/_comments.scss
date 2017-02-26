@@ -60,14 +60,18 @@
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  // max-width: 5rem;
+  width: calc(100% - 5rem);
 
-  @media (min-width: $screen-sm-min) { max-width: 8.75rem; }
+  @media (min-width: $screen-sm-min) {
+    max-width: 8.75rem;
+    width: auto;
+  }
 }
 
 .comment-author-container {
   flex: 0 0 auto;
   order: 1;
+  width: 100%;
 
   @media (min-width: $screen-sm-min) {
     padding-right: 1.25rem;
