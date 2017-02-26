@@ -43,6 +43,8 @@ class Resize extends Controller
             ->quality(75)
             ->convert($source);
 
+        event(new \App\Events\Stats\ImageResizedOnDemand());
+
         header('Content-Type: ' . $this->mimeByExtension($extension));
         readfile($new_image->getRealPath());
         exit;
