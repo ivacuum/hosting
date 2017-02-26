@@ -15,8 +15,17 @@ class Metric extends Model
     protected $guarded = ['*'];
     protected $perPage = 100;
 
-    public function scopeToday($query)
+    public function scopeWeek($query)
     {
-        return $query->where('date', Carbon::now()->toDateString());
+        return $query->where('date', '>', Carbon::now()->subWeek()->toDateString());
+    }
+
+    public static function possibleMetrics()
+    {
+        foreach (glob(app_path('Events/Stats/*.php')) as $file) {
+            $events[] = pathinfo($file, PATHINFO_FILENAME);
+        }
+
+        return $events ?? [];
     }
 }

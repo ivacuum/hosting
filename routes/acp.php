@@ -115,6 +115,11 @@ Route::group(['prefix' => 'images'], function () {
     Route::get('{Image}/view', 'Acp\Images@view');
 });
 
+Route::group(['prefix' => 'metrics'], function () {
+    Route::get('/', 'Acp\Metrics@index');
+    Route::get('{event}', 'Acp\Metrics@show');
+});
+
 Route::group(['prefix' => 'news'], function () {
     Route::get('/', 'Acp\News@index');
     Route::post('/', 'Acp\News@store');
