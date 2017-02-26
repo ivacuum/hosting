@@ -12,6 +12,7 @@
       <div class="flex-cell text-right">ID</div>
       <div class="flex-cell">Электронная почта</div>
       <div class="flex-cell">Активен</div>
+      <div class="flex-cell">Дата реги</div>
     </div>
     <div class="flex-row-group flex-row-striped">
       @foreach ($models as $model)
@@ -27,6 +28,7 @@
               Да
             @endif
           </div>
+          <div class="flex-cell">{{ ViewHelper::dateShort($model->created_at) }}</div>
         </div>
       @endforeach
     </div>
