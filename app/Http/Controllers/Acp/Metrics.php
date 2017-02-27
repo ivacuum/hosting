@@ -29,8 +29,8 @@ class Metrics extends Controller
         \Breadcrumbs::push($event);
 
         $metrics = Model::where('event', $event)->get();
-        $first_day = Carbon::parse($metrics->first()->date);
-        $last_day = Carbon::parse($metrics->last()->date);
+        $first_day = sizeof($metrics) ? Carbon::parse($metrics->first()->date) : Carbon::now();
+        $last_day = sizeof($metrics) ? Carbon::parse($metrics->last()->date) : Carbon::now();
         $metrics = $metrics->pluck('count', 'date');
 
         return view($this->view, compact('event', 'first_day', 'last_day', 'metrics'));
