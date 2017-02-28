@@ -17,7 +17,6 @@ class GigCreate extends Request
             'title_ru'  => 'required',
             'title_en'  => 'required',
             'slug'      => 'required|unique:gigs,slug',
-            'tpl'       => 'required',
             'date'      => 'required|date',
         ];
     }

@@ -42,7 +42,7 @@
   <div class="col-md-6">
     <div class="form-select">
       <select class="form-control" name="tpl">
-        <option value="0">—</option>
+        <option value="">—</option>
         @foreach ($templates as $template)
           <option value="{{ $template }}" {{ $template == old('tpl', @$model->tpl) ? 'selected' : '' }}>
             {{ $template }}

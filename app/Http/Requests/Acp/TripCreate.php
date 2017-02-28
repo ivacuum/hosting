@@ -16,7 +16,6 @@ class TripCreate extends Request
             'title_ru'   => 'required',
             'title_en'   => 'required',
             'slug'       => 'required|unique:countries,slug',
-            'tpl'        => 'required',
             'date_start' => 'required|date',
             'date_end'   => 'required|date',
         ];
