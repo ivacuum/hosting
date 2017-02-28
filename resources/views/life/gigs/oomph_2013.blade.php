@@ -3,6 +3,9 @@
 {{-- Arena Moscow --}}
 
 @section('content')
+@ru
+  <p>Немцам определенно в России понравилось. Выступления стали проходить даже в менее населенных городах нашей родины.</p>
+@endlang
 <div class="row">
   <div class="col-md-7">
     @include('tpl.setlist-title')
@@ -39,7 +42,5 @@
 @ru
   <p>Видеозапись выступления:</p>
 @endlang
-<div class="js-lazy" data-lazy-type="fotorama" data-width="1000" data-ratio="1000/595">
-  <a href="https://www.youtube.com/watch?v=RsLFgW-wsP0"></a>
-</div>
+<youtube title="Oomph 2013, Moscow, Russia" v="RsLFgW-wsP0"></youtube>
 @endsection
