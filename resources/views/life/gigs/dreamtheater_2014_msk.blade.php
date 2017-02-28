@@ -3,13 +3,13 @@
 {{-- Stadium Live --}}
 
 @section('content')
+@ru
+  <p>Впервые побывал на двух концертах группы подряд. С абсолютно одинаковой программой.</p>
+@en
+  <p>First time in my life I have attended two shows of the same band in a row.</p>
+@endlang
 <div class="row">
   <div class="col-md-7">
-    @ru
-      <p>Впервые побывал на двух концертах группы подряд.</p>
-    @en
-      <p>First time in my life I have attended two shows of the same band in a row.</p>
-    @endlang
     @include('tpl.setlist-title')
     <ol>
       <li>The Enemy Inside</li>

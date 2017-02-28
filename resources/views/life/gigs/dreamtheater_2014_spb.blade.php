@@ -3,11 +3,11 @@
 {{-- СК Юбилейный --}}
 
 @section('content')
+@ru
+  <p>Впервые в жизни попал на Meet&amp;Greet — встречу и общение с группой до концерта.</p>
+@endlang
 <div class="row">
   <div class="col-md-7">
-    @ru
-      <p>Впервые в жизни попал на Meet&amp;Greet — встречу и общение с группой до концерта.</p>
-    @endlang
     @include('tpl.setlist-title')
     <ol>
       <li>The Enemy Inside</li>
@@ -38,9 +38,7 @@
 </div>
 
 @ru
-  <p>Видеозапись выступления:</p>
+  <p class="mb-1">Видеозапись выступления.</p>
 @endlang
-<div class="js-lazy" data-lazy-type="fotorama" data-width="1000" data-ratio="1000/595">
-  <a href="https://www.youtube.com/watch?v=MiW2GYfSwqw"></a>
-</div>
+<youtube title="Dream Theater 2014, St. Petersburg, Russia" v="MiW2GYfSwqw"></youtube>
 @endsection

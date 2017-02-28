@@ -86,5 +86,5 @@
 @en
   <p>Video of the show.</p>
 @endlang
-<youtube title="Rammstein, Waldbühne 2016" v="rTsskqnjaIw"></youtube>
+<youtube title="Rammstein 2016, Waldbühne, Berlin, Germany" v="rTsskqnjaIw"></youtube>
 @endsection

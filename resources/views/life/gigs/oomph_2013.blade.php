@@ -40,7 +40,7 @@
 </div>
 
 @ru
-  <p>Видеозапись выступления:</p>
+  <p class="mb-1">Видеозапись выступления.</p>
 @endlang
 <youtube title="Oomph 2013, Moscow, Russia" v="RsLFgW-wsP0"></youtube>
 @endsection

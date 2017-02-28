@@ -3,12 +3,12 @@
 {{-- СКК --}}
 
 @section('content')
+@ru
+  <p>Вспоминал как была заполнена площадка <a class="link" href="/life/metallica.2008">семь лет назад</a> во время их шоу, боялся повторения тех адовых условий и духоты. По большому счету они повторились, но самому теперь перенести их было гораздо проще — семь лет подготовки на других концертах дали о себе знать.</p>
+  <p>Отличная затея начать шоу с заводной песни Fuel. Побольше бы групп делало ставку на активное начало. В целом сет очень понравился, особенно King Nothing и Turn the Page. Вяло зашли зашли The Frayed Ends of Sanity и Nothing Else Matters.</p>
+@endlang
 <div class="row">
   <div class="col-md-7">
-    @ru
-      <p>Вспоминал как была заполнена площадка <a class="link" href="/life/metallica.2008">семь лет назад</a> во время их шоу, боялся повторения тех адовых условий и духоты. По большому счету они повторились, но самому теперь перенести их было гораздо проще — семь лет подготовки на других концертах дали о себе знать.</p>
-      <p>Отличная затея начать шоу с заводной песни Fuel. Побольше бы групп делало ставку на активное начало. В целом сет очень понравился, особенно King Nothing и Turn the Page. Вяло зашли зашли The Frayed Ends of Sanity и Nothing Else Matters.</p>
-    @endlang
     @include('tpl.setlist-title')
     <ol>
       <li>Fuel</li>
@@ -39,13 +39,11 @@
 </div>
 
 @ru
-  <p>Каково оно было в фан-зоне:</p>
+  <p class="mb-1">Каково оно было в фан-зоне:</p>
 @en
-  <p>What it was like to be in the fan-zone:</p>
+  <p class="mb-1">What it was like to be in the fan-zone:</p>
 @endlang
-<div class="js-lazy" data-lazy-type="fotorama" data-width="720" data-ratio="720/437">
-  <a href="https://www.youtube.com/watch?v=WkVGeBGM5yc"></a>
-</div>
+<youtube title="King Nothing + Disposable Heroes" v="WkVGeBGM5yc"></youtube>
 
 @ru
   <p>Вообще у <a class="link" href="https://www.youtube.com/channel/UCGp2uNPZCeUTH1BynWSnSUQ/search?query=metallica+2015">этого товарища</a> отличные атмосферные видео вышли. У <a class="link" href="https://www.youtube.com/watch?v=EmCVvp3KbjQ">Sad But True</a>, например, крутое начало — прямо как в 2008 году.</p>
@@ -56,9 +54,7 @@
 @endlang
 
 @ru
-  <p>Видеозапись концерта.</p>
+  <p class="mb-1">Видеозапись концерта.</p>
 @endlang
-<div class="js-lazy" data-lazy-type="fotorama" data-width="1000" data-ratio="1000/595">
-  <a href="https://www.youtube.com/watch?v=-VQMs8zQRj8"></a>
-</div>
+<youtube title="Metallica 2015, St. Petersburg, Russia" v="-VQMs8zQRj8"></youtube>
 @endsection

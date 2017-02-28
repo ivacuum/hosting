@@ -39,7 +39,7 @@
 </div>
 
 @ru
-  <p>Видеозапись концерта.</p>
+  <p class="mb-1">Видеозапись концерта.</p>
 @endlang
 <youtube title="Rammstein 2013, Samara, Russia" v="pG9fkA_FYGQ"></youtube>
 @endsection

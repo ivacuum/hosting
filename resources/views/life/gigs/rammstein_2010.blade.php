@@ -36,7 +36,7 @@
 </div>
 
 @ru
-  <p>Видеозапись концерта:</p>
+  <p class="mb-1">Видеозапись концерта.</p>
 @endlang
-<youtube title="Rammstein, St. Petersburg, 2010" v="KbUoLxHqM8M"></youtube>
+<youtube title="Rammstein 2010, St. Petersburg, Russia" v="KbUoLxHqM8M"></youtube>
 @endsection
