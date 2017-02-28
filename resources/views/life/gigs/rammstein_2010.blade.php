@@ -1,6 +1,9 @@
 @extends('life.gigs.base')
 
 @section('content')
+@ru
+  <p>Шоу Раммштайна можно смело рекомендовать увидеть всем хотя бы раз в жизни. И услышать какой отличный звук устраивают их звукачи на любой площадке.</p>
+@endlang
 <div class="row">
   <div class="col-md-7">
     @include('tpl.setlist-title')
