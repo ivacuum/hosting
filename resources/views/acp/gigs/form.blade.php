@@ -72,7 +72,7 @@
 <div class="form-group {{ $errors->has('date') ? 'has-error' : '' }}">
   <label class="col-md-3 control-label required">Дата:</label>
   <div class="col-md-6">
-    <input required type="text" class="form-control" name="date" value="{{ old('date', @$model->date) }}">
+    <input required type="text" class="form-control" name="date" value="{{ old('date', $model->date ?? date('Y-m-d')) }}">
   </div>
 </div>
 
