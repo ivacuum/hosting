@@ -55,6 +55,8 @@ class Life extends Controller
     {
         $published_trips = $city->trips->where('status', Trip::STATUS_PUBLISHED);
 
+        event(new CityViewed($city->id));
+
         if (1 === sizeof($published_trips)) {
             $slug = $published_trips->first()->slug;
 
@@ -66,8 +68,6 @@ class Life extends Controller
         \Breadcrumbs::push(trans('menu.countries'), 'life/countries');
         \Breadcrumbs::push($city->country->title, "life/countries/{$city->country->slug}");
         \Breadcrumbs::push($city->title);
-
-        event(new CityViewed($city->id));
 
         return view('life.city', compact('city'));
     }
