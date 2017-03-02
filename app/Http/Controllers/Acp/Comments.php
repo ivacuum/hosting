@@ -35,7 +35,7 @@ class Comments extends Controller
 
     public function edit(Model $model)
     {
-        return view($this->view, compact('model'));
+        return view('acp.edit', compact('model'));
     }
 
     public function show(Model $model)

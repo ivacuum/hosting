@@ -153,7 +153,7 @@ class Domains extends Controller
 
     public function create()
     {
-        return view($this->view);
+        return view('acp.create');
     }
 
     public function deleteNsRecord(Model $model)
@@ -180,7 +180,7 @@ class Domains extends Controller
 
     public function edit(Model $model)
     {
-        return view($this->view, compact('model'));
+        return view('acp.edit', compact('model'));
     }
 
     public function editNsRecord(Model $model)

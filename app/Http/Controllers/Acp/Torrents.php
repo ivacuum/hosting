@@ -36,12 +36,12 @@ class Torrents extends Controller
 
     public function edit(Model $model)
     {
-        return view($this->view, compact('model'));
+        return view('acp.edit', compact('model'));
     }
 
     public function show(Model $model)
     {
-        return view($this->view, compact('model'));
+        return view('acp.show', compact('model'));
     }
 
     public function update(Model $model, ModelEdit $request)

@@ -17,7 +17,7 @@ class Countries extends Controller
 
     public function create()
     {
-        return view($this->view);
+        return view('acp.create');
     }
 
     public function destroy(Model $model)
@@ -32,12 +32,12 @@ class Countries extends Controller
 
     public function edit(Model $model)
     {
-        return view($this->view, compact('model'));
+        return view('acp.edit', compact('model'));
     }
 
     public function show(Model $model)
     {
-        return view($this->view, compact('model'));
+        return view('acp.show', compact('model'));
     }
 
     public function store(ModelCreate $request)

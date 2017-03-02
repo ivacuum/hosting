@@ -1,5 +1,6 @@
-@extends("$tpl.base")
+@extends('acp.show')
 
 @section('content')
 {!! $model->html !!}
+@parent
 @endsection

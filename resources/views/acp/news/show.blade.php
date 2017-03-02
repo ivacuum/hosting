@@ -1,10 +1,6 @@
-@extends("$tpl.base")
+@extends('acp.show')
 
 @section('content')
-<div>
-  {!! $model->html !!}
-</div>
-@if (Auth::user()->isRoot())
-  <pre class="json-model">{{ $model->toJson(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) }}</pre>
-@endif
+<div>{!! $model->html !!}</div>
+@parent
 @endsection

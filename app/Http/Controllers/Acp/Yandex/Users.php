@@ -21,7 +21,7 @@ class Users extends Controller
     {
         $domains = Domain::yandexReady()->get();
 
-        return view($this->view, compact('domains'));
+        return view('acp.create', compact('domains'));
     }
 
     public function destroy(Model $model)
@@ -38,7 +38,7 @@ class Users extends Controller
     {
         $domains = Domain::yandexReady($model->id)->get();
 
-        return view($this->view, compact('domains', 'model'));
+        return view('acp.edit', compact('domains', 'model'));
     }
 
     public function show(Model $model)

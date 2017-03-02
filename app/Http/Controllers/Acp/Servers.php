@@ -15,7 +15,7 @@ class Servers extends Controller
 
     public function create()
     {
-        return view($this->view);
+        return view('acp.create');
     }
 
     public function destroy(Model $model)
@@ -30,7 +30,7 @@ class Servers extends Controller
 
     public function edit(Model $model)
     {
-        return view($this->view, compact('model'));
+        return view('acp.edit', compact('model'));
     }
 
     public function show(Model $model)

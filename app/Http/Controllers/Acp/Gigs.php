@@ -17,7 +17,7 @@ class Gigs extends Controller
     {
         $this->appendTemplates();
 
-        return view($this->view);
+        return view('acp.create');
     }
 
     public function destroy(Model $model)
@@ -34,7 +34,7 @@ class Gigs extends Controller
     {
         $this->appendTemplates();
 
-        return view($this->view, compact('model'));
+        return view('acp.edit', compact('model'));
     }
 
     public function show(Model $model)
