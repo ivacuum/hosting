@@ -8,7 +8,10 @@
 .font-bold   { font-weight: bold; }
 .font-italic { font-style: italic; }
 
-.text-break-word { word-wrap: break-word; }
+.text-break-word {
+  word-wrap: break-word;
+  word-break: break-word;
+}
 .text-nowrap { white-space: nowrap; }
 
 .text-lowercase  { text-transform: lowercase; }
