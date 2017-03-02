@@ -21,8 +21,8 @@ class Controller extends BaseController
         $this->request = request();
 
         $this->class  = str_replace('App\Http\Controllers\\', '', get_class($this));
-        $this->method = $this->getCurrentMethod();
-        $this->prefix = $this->getViewPrefix();
+        $this->method = array_last(explode('@', \Route::currentRouteAction()));
+        $this->prefix = strtolower(str_replace('\\', '.', $this->class));
         $this->view   = $this->prefix.".".snake_case($this->method);
     }
 
@@ -50,29 +50,13 @@ class Controller extends BaseController
         $locale = \App::getLocale();
 
         view()->share([
-            'goto'        => $this->request->input('goto'),
-            'locale'      => $locale,
-            'locale_uri'  => $locale === config('cfg.default_locale') ? '' : "/{$locale}",
+            'tpl' => $this->prefix,
+            'goto' => $this->request->input('goto'),
+            'self' => $this->class,
+            'view' => $this->view,
+            'locale' => $locale,
+            'locale_uri' => $locale === config('cfg.default_locale') ? '' : "/{$locale}",
             'request_uri' => $request_uri,
-            'self'        => $this->class,
-            'tpl'         => $this->prefix,
-            'view'        => $this->view,
         ]);
-    }
-
-    protected function getCurrentMethod()
-    {
-        $method = \Route::currentRouteAction();
-
-        return substr($method, strpos($method, '@') + 1);
-    }
-
-    protected function getViewPrefix()
-    {
-        return strtolower(str_replace(
-            ['App\Http\Controllers\\', '\\'],
-            ['', '.'],
-            $this->class
-        ));
     }
 }
