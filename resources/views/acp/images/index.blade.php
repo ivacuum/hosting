@@ -19,25 +19,25 @@
     </a>
   </div>
   <div class="btn-group">
-    <a class="btn btn-default {{ !$year ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => null, 'page' => 1]) }}">Все</a>
-    <a class="btn btn-default {{ $year == 2016 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => 2016, 'page' => 1]) }}">16</a>
-    <a class="btn btn-default {{ $year == 2015 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => 2015, 'page' => 1]) }}">15</a>
-    <a class="btn btn-default {{ $year == 2014 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => 2014, 'page' => 1]) }}">14</a>
-    <a class="btn btn-default {{ $year == 2013 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => 2013, 'page' => 1]) }}">13</a>
-    <a class="btn btn-default {{ $year == 2012 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => 2012, 'page' => 1]) }}">12</a>
-    <a class="btn btn-default {{ $year == 2011 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => 2011, 'page' => 1]) }}">11</a>
-    <a class="btn btn-default {{ $year == 2010 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => 2010, 'page' => 1]) }}">10</a>
-    <a class="btn btn-default {{ $year == 2009 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => 2009, 'page' => 1]) }}">09</a>
+    <a class="btn btn-default {{ !$year ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => null, 'page' => null]) }}">Все</a>
+    <a class="btn btn-default {{ $year == 2016 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => 2016, 'page' => null]) }}">16</a>
+    <a class="btn btn-default {{ $year == 2015 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => 2015, 'page' => null]) }}">15</a>
+    <a class="btn btn-default {{ $year == 2014 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => 2014, 'page' => null]) }}">14</a>
+    <a class="btn btn-default {{ $year == 2013 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => 2013, 'page' => null]) }}">13</a>
+    <a class="btn btn-default {{ $year == 2012 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => 2012, 'page' => null]) }}">12</a>
+    <a class="btn btn-default {{ $year == 2011 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => 2011, 'page' => null]) }}">11</a>
+    <a class="btn btn-default {{ $year == 2010 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => 2010, 'page' => null]) }}">10</a>
+    <a class="btn btn-default {{ $year == 2009 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => 2009, 'page' => null]) }}">09</a>
   </div>
   <div class="btn-group">
-    <a class="btn btn-default {{ !$touch ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => null, 'page' => 1]) }}">Все</a>
-    <a class="btn btn-default {{ $touch == 1 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => 1, 'page' => 1]) }}">1</a>
-    <a class="btn btn-default {{ $touch == 2 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => 2, 'page' => 1]) }}">2</a>
-    <a class="btn btn-default {{ $touch == 3 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => 3, 'page' => 1]) }}">3</a>
-    <a class="btn btn-default {{ $touch == 4 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => 4, 'page' => 1]) }}">4</a>
-    <a class="btn btn-default {{ $touch == 5 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => 5, 'page' => 1]) }}">5</a>
-    <a class="btn btn-default {{ $touch == 6 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => 6, 'page' => 1]) }}">6</a>
-    <a class="btn btn-default {{ $touch == 7 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => 7, 'page' => 1]) }}">7</a>
+    <a class="btn btn-default {{ !$touch ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => null, 'page' => null]) }}">Все</a>
+    <a class="btn btn-default {{ $touch == 1 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => 1, 'page' => null]) }}">1</a>
+    <a class="btn btn-default {{ $touch == 2 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => 2, 'page' => null]) }}">2</a>
+    <a class="btn btn-default {{ $touch == 3 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => 3, 'page' => null]) }}">3</a>
+    <a class="btn btn-default {{ $touch == 4 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => 4, 'page' => null]) }}">4</a>
+    <a class="btn btn-default {{ $touch == 5 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => 5, 'page' => null]) }}">5</a>
+    <a class="btn btn-default {{ $touch == 6 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => 6, 'page' => null]) }}">6</a>
+    <a class="btn btn-default {{ $touch == 7 ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => 7, 'page' => null]) }}">7</a>
   </div>
 </div>
 @if ($user_id)
