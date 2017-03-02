@@ -63,6 +63,8 @@ return [
     'gigs.create' => 'New gig',
 
     'images.show' => 'Image',
+    'images.view' => 'Increment views',
+    'images.user' => 'User pics',
     'images.index' => 'Images',
 
     'metrics.index' => 'Metrics',

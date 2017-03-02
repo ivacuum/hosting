@@ -63,6 +63,8 @@ return [
     'gigs.create' => 'Новый концерт',
 
     'images.show' => 'Изображение',
+    'images.view' => 'Засчитать просмотр',
+    'images.user' => 'Картинки пользователя',
     'images.index' => 'Изображения',
 
     'metrics.index' => 'Метрики',
