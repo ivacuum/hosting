@@ -35,7 +35,7 @@ class Artists extends Controller
 
     public function show(Model $model)
     {
-        return view($this->view, compact('model'));
+        return view('acp.show', compact('model'));
     }
 
     public function store(ModelCreate $request)
