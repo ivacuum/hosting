@@ -4,7 +4,6 @@ use App\Events\ExternalIdentityFirstLogin;
 use App\Events\ExternalIdentityLogin;
 use App\Events\ExternalIdentityLoginError;
 use App\Socialite\VkProvider;
-use App\User;
 use Illuminate\Support\HtmlString;
 
 class Vk extends Base
@@ -61,9 +60,7 @@ class Vk extends Base
             $identity->update(['user_id' => $user->id]);
         }
 
-        if ($user->status === User::STATUS_INACTIVE) {
-            $user->update(['status' => User::STATUS_ACTIVE]);
-        }
+        $user->activate();
 
         \Auth::login($user, true);
 

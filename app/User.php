@@ -71,6 +71,18 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
+    public function activate()
+    {
+        if ($this->status === self::STATUS_INACTIVE) {
+            $this->status = self::STATUS_ACTIVE;
+            $this->save();
+
+            return true;
+        }
+
+        return false;
+    }
+
     public function avatarName()
     {
         return mb_strtoupper(mb_substr($this->login ?: $this->email, 0, 2));
