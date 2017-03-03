@@ -45,6 +45,10 @@ class RouteServiceProvider extends ServiceProvider
         \Route::model('Trip', Trip::class);
         \Route::model('User', User::class);
         \Route::model('YandexUser', YandexUser::class);
+
+        \Route::bind('NewsWithCounts', function ($id) {
+            return News::withCount('comments')->findOrFail($id);
+        });
     }
 
     public function map()

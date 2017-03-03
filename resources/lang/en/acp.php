@@ -76,6 +76,7 @@ return [
     'news.index' => 'News',
     'news.create' => 'Write a news',
     'news.notify' => 'Notify about publication',
+    'news.comments' => 'Comments',
 
     'pages.add' => 'Add page',
     'pages.edit' => 'Edit',

@@ -9,16 +9,22 @@ class Comments extends Controller
 
     public function index()
     {
+        $rel = $this->request->input('rel');
+        $rel_id = $this->request->input('rel_id');
         $user_id = $this->request->input('user_id');
 
         $models = Model::with('user')->orderBy('id', 'desc');
 
+        if ($rel && $rel_id) {
+            $models = $models->where('rel_id', $rel_id)
+                ->where('rel_type', $rel);
+        }
         if ($user_id) {
             $models = $models->where('user_id', $user_id);
         }
 
         $models = $models->paginate(20)
-            ->appends(compact('user_id'));
+            ->appends(compact('rel', 'rel_id', 'user_id'));
 
         return view($this->view, compact('models', 'user_id'));
     }

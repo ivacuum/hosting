@@ -124,7 +124,7 @@ Route::group(['prefix' => 'news'], function () {
     Route::get('/', 'Acp\News@index');
     Route::post('/', 'Acp\News@store');
     Route::get('create', 'Acp\News@create');
-    Route::get('{News}', 'Acp\News@show');
+    Route::get('{NewsWithCounts}', 'Acp\News@show');
     Route::put('{News}', 'Acp\News@update');
     Route::delete('{News}', 'Acp\News@destroy');
     Route::get('{News}/edit', 'Acp\News@edit');

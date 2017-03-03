@@ -10,8 +10,15 @@
       <a class="list-group-item {{ $view == "$tpl.edit" ? 'active' : '' }}" href="{{ action("$self@edit", [$model, 'goto' => Request::fullUrl()]) }}">
         {{ trans("$tpl.edit") }}
       </a>
+      @if ($model->comments_count > 0)
+        <a class="list-group-item" href="{{ action('Acp\Comments@index', ['rel_id' => $model->id, 'rel' => 'News']) }}">
+          {{ trans("$tpl.comments") }}
+          <span class="text-muted small">{{ $model->comments_count }}</span>
+        </a>
+      @endif
       <a class="list-group-item" href="{{ action('News@show', $model) }}">
         {{ trans("$tpl.www") }}
+        @svg (external-link)
       </a>
       @include('acp.tpl.delete', ['id' => $model])
     </div>
