@@ -165,7 +165,7 @@ Route::group(['prefix' => 'servers'], function () {
 
 Route::group(['prefix' => 'torrents'], function () {
     Route::get('/', 'Acp\Torrents@index');
-    Route::get('{Torrent}', 'Acp\Torrents@show');
+    Route::get('{TorrentWithCounts}', 'Acp\Torrents@show');
     Route::put('{Torrent}', 'Acp\Torrents@update');
     Route::delete('{Torrent}', 'Acp\Torrents@destroy');
     Route::get('{Torrent}/edit', 'Acp\Torrents@edit');

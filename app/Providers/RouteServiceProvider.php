@@ -50,6 +50,10 @@ class RouteServiceProvider extends ServiceProvider
             return News::withCount('comments')->findOrFail($id);
         });
 
+        \Route::bind('TorrentWithCounts', function ($id) {
+            return Torrent::withCount('comments')->findOrFail($id);
+        });
+
         \Route::bind('UserWithCounts', function ($id) {
             return User::withCount('comments', 'images', 'torrents')->findOrFail($id);
         });

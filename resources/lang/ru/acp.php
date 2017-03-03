@@ -94,8 +94,10 @@ return [
     'torrents.www' => 'Посмотреть на сайте',
     'torrents.edit' => 'Редактирование торрента',
     'torrents.show' => 'Торрент',
+    'torrents.user' => 'Автор',
     'torrents.index' => 'Торренты',
     'torrents.create' => 'Новый торрент',
+    'torrents.comments' => 'Комментарии',
     'torrents.update_rto' => 'Обновить с рутрекера',
 
     'trips.add' => 'Добавить поездку',

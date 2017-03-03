@@ -94,8 +94,10 @@ return [
     'torrents.www' => 'View on site',
     'torrents.edit' => 'Edit',
     'torrents.show' => 'Torrent',
+    'torrents.user' => 'Author',
     'torrents.index' => 'Torrents',
     'torrents.create' => 'New torrent',
+    'torrents.comments' => 'Comments',
     'torrents.update_rto' => 'Update from rutracker',
 
     'trips.add' => 'Add trip',
