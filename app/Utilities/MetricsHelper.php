@@ -16,7 +16,17 @@ class MetricsHelper
 
     public function export()
     {
-        if (empty($this->metrics) || is_null($this->fp)) {
+        if (empty($this->metrics)) {
+            return false;
+        }
+
+        if (\App::environment('local')) {
+            foreach ($this->metrics as $metric) {
+                \Log::debug(json_encode($metric));
+            }
+        }
+
+        if (is_null($this->fp)) {
             return false;
         }
 
