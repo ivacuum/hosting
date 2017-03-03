@@ -476,7 +476,7 @@ class Domain extends Model
         }
 
         if ($this->isExpired()) {
-            unset($data['paid_till']);
+            // unset($data['paid_till']);
         }
 
         event(new DomainWhoisUpdated($this, $data));
