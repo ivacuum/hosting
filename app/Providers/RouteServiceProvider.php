@@ -49,6 +49,10 @@ class RouteServiceProvider extends ServiceProvider
         \Route::bind('NewsWithCounts', function ($id) {
             return News::withCount('comments')->findOrFail($id);
         });
+
+        \Route::bind('UserWithCounts', function ($id) {
+            return User::withCount('comments', 'images', 'torrents')->findOrFail($id);
+        });
     }
 
     public function map()

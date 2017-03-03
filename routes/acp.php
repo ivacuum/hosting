@@ -187,7 +187,7 @@ Route::group(['prefix' => 'users'], function () {
     Route::get('/', 'Acp\Users@index');
     Route::post('/', 'Acp\Users@store');
     Route::get('create', 'Acp\Users@create');
-    Route::get('{User}', 'Acp\Users@show');
+    Route::get('{UserWithCounts}', 'Acp\Users@show');
     Route::put('{User}', 'Acp\Users@update');
     Route::delete('{User}', 'Acp\Users@destroy');
     Route::get('{User}/edit', 'Acp\Users@edit');

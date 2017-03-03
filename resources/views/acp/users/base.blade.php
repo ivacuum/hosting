@@ -10,22 +10,22 @@
       <a class="list-group-item {{ $view == "$tpl.edit" ? 'active' : '' }}" href="{{ action("$self@edit", [$model, 'goto' => Request::fullUrl()]) }}">
         {{ trans("$tpl.edit") }}
       </a>
-      @if (($comments_count = $model->commentsCount()) > 0)
+      @if ($model->comments_count)
         <a class="list-group-item" href="{{ action('Acp\Comments@index', ['user_id' => $model->id]) }}">
           {{ trans("$tpl.comments") }}
-          <span class="text-muted small">{{ $comments_count }}</span>
+          <span class="text-muted small">{{ $model->comments_count }}</span>
         </a>
       @endif
-      @if (($images_count = $model->imagesCount()) > 0)
+      @if ($model->images_count)
         <a class="list-group-item" href="{{ action('Acp\Images@index', ['user_id' => $model->id]) }}">
           {{ trans("$tpl.images") }}
-          <span class="text-muted small">{{ $images_count }}</span>
+          <span class="text-muted small">{{ $model->images_count }}</span>
         </a>
       @endif
-      @if (($torrents_count = $model->torrentsCount()) > 0)
+      @if ($model->torrents_count)
         <a class="list-group-item" href="{{ action('Acp\Torrents@index', ['user_id' => $model->id]) }}">
           {{ trans("$tpl.torrents") }}
-          <span class="text-muted small">{{ $torrents_count }}</span>
+          <span class="text-muted small">{{ $model->torrents_count }}</span>
         </a>
       @endif
       @include('acp.tpl.delete', ['id' => $model])

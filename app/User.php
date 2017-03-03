@@ -41,14 +41,14 @@ class User extends Authenticatable
     protected $hidden = ['password', 'remember_token'];
     protected $perPage = 50;
 
-    public function commentsCount()
+    public function comments()
     {
-        return Comment::selectRaw('COUNT(*) as total')->where('user_id', $this->id)->get()->first()->total;
+        return $this->hasMany(Comment::class);
     }
 
-    public function imagesCount()
+    public function images()
     {
-        return Image::selectRaw('COUNT(*) as total')->where('user_id', $this->id)->get()->first()->total;
+        return $this->hasMany(Image::class);
     }
 
     public function news()
@@ -56,9 +56,9 @@ class User extends Authenticatable
         return $this->hasMany(News::class);
     }
 
-    public function torrentsCount()
+    public function torrents()
     {
-        return Torrent::selectRaw('COUNT(*) as total')->where('user_id', $this->id)->get()->first()->total;
+        return $this->hasMany(Torrent::class);
     }
 
     public function scopeForNotifying($query)
