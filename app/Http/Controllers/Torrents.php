@@ -112,7 +112,7 @@ class Torrents extends Controller
     public function faq()
     {
         \Breadcrumbs::push(trans('torrents.index'), 'torrents');
-        \Breadcrumbs::push('Помощь');
+        \Breadcrumbs::push(trans('torrents.faq'));
 
         event(new \App\Events\Stats\TorrentFaqViewed());
 
@@ -132,6 +132,22 @@ class Torrents extends Controller
         }
 
         return 'OK';
+    }
+
+    public function my()
+    {
+        \Breadcrumbs::push(trans('torrents.index'), 'torrents');
+        \Breadcrumbs::push(trans('torrents.my'));
+
+        $user = $this->request->user();
+
+        $torrents = Torrent::select(array_merge($this->list_columns, ['views']))
+            ->where('user_id', $user->id)
+            ->withCount('comments')
+            ->orderBy('registered_at', 'desc')
+            ->simplePaginate(null, ['id']);
+
+        return view($this->view, compact('torrents'));
     }
 
     public function promo()

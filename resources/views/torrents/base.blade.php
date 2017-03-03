@@ -32,5 +32,10 @@
   <li class="{{ $view === 'torrents.comments' ? 'active' : '' }}">
     <a href="{{ action('Torrents@comments') }}">{{ trans('torrents.comments') }}</a>
   </li>
+  @if (Auth::check())
+    <li class="{{ $view === 'torrents.my' ? 'active' : '' }}">
+      <a href="{{ action('Torrents@my') }}">{{ trans('torrents.my') }}</a>
+    </li>
+  @endif
 </ul>
 @endsection

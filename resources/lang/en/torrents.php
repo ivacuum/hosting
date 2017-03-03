@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'my' => 'My releases',
     'add' => 'Add a release',
     'new' => 'New',
     'faq' => 'Help',
