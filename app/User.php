@@ -108,7 +108,11 @@ class User extends Authenticatable
         }
 
         if ($have_unread) {
-            $this->unreadNotifications()->update(['read_at' => Carbon::now()]);
+            $affected_rows = $this->unreadNotifications()->update(['read_at' => Carbon::now()]);
+
+            for ($i = 0; $i < $affected_rows; $i++) {
+                event(new \App\Events\Stats\NotificationRead());
+            }
         }
 
         return $have_unread;
