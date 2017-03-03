@@ -21,23 +21,21 @@
           {{ trans("$tpl.ns_records") }}
         </a>
       @endif
+      <a class="list-group-item" href="http://{{ $model->domain }}/">
+        {{ $model->domain }}
+        @svg (external-link)
+      </a>
       <a class="list-group-item {{ $view == "$tpl.robots" ? 'active' : '' }}" href="{{ action("$self@robots", $model) }}">
         {{ trans("$tpl.robots") }}
       </a>
+      @include('acp.tpl.delete', ['id' => $model])
     </div>
   </div>
   <div class="col-md-9">
-    <div class="pull-right">
-      @include('acp.tpl.delete', ['id' => $model])
-    </div>
     <h2 class="mt-0">
       @include('acp.tpl.back')
       {{ $model->domain }}
-      <a class="btn btn-default" href="http://{{ $model->domain }}/" target="_blank">
-        @svg (external-link)
-      </a>
-      @include('acp.tpl.edit', ['id' => $model, 'goto' => Request::path()])
-      @if (!$model->isExpired() && ($model->cms_url || ($model->alias_id and $model->alias->cms_url)))
+      @if (!$model->isExpired() && ($model->cms_url || ($model->alias_id && $model->alias->cms_url)))
         @include("$tpl.cms_login", ['cms_button_class' => 'btn btn-default'])
       @endif
     </h2>

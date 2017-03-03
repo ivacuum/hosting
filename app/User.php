@@ -43,20 +43,12 @@ class User extends Authenticatable
 
     public function commentsCount()
     {
-        return Comment::selectRaw('COUNT(*) as total')
-            ->where('user_id', $this->id)
-            ->get()
-            ->first()
-            ->total;
+        return Comment::selectRaw('COUNT(*) as total')->where('user_id', $this->id)->get()->first()->total;
     }
 
     public function imagesCount()
     {
-        return Image::selectRaw('COUNT(*) as total')
-            ->where('user_id', $this->id)
-            ->get()
-            ->first()
-            ->total;
+        return Image::selectRaw('COUNT(*) as total')->where('user_id', $this->id)->get()->first()->total;
     }
 
     public function news()
@@ -66,11 +58,7 @@ class User extends Authenticatable
 
     public function torrentsCount()
     {
-        return Torrent::selectRaw('COUNT(*) as total')
-            ->where('user_id', $this->id)
-            ->get()
-            ->first()
-            ->total;
+        return Torrent::selectRaw('COUNT(*) as total')->where('user_id', $this->id)->get()->first()->total;
     }
 
     public function scopeForNotifying($query)

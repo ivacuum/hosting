@@ -13,19 +13,19 @@
       @if (($comments_count = $model->commentsCount()) > 0)
         <a class="list-group-item" href="{{ action('Acp\Comments@index', ['user_id' => $model->id]) }}">
           {{ trans("$tpl.comments") }}
-          <span class="text-muted">{{ $comments_count }}</span>
+          <span class="text-muted small">{{ $comments_count }}</span>
         </a>
       @endif
       @if (($images_count = $model->imagesCount()) > 0)
         <a class="list-group-item" href="{{ action('Acp\Images@index', ['user_id' => $model->id]) }}">
           {{ trans("$tpl.images") }}
-          <span class="text-muted">{{ $images_count }}</span>
+          <span class="text-muted small">{{ $images_count }}</span>
         </a>
       @endif
       @if (($torrents_count = $model->torrentsCount()) > 0)
         <a class="list-group-item" href="{{ action('Acp\Torrents@index', ['user_id' => $model->id]) }}">
           {{ trans("$tpl.torrents") }}
-          <span class="text-muted">{{ $torrents_count }}</span>
+          <span class="text-muted small">{{ $torrents_count }}</span>
         </a>
       @endif
       @include('acp.tpl.delete', ['id' => $model])

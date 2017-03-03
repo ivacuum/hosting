@@ -4,7 +4,6 @@
 <form action="{{ action("$self@update", $model) }}" class="form-horizontal" method="post">
 
   @include("$tpl.form")
-  @include('acp.tpl.hidden_fields', ['method' => 'put'])
 
   <div class="form-group">
     <div class="col-md-9 col-md-offset-3">
@@ -16,5 +15,7 @@
       </button>
     </div>
   </div>
+
+  @include('acp.tpl.hidden_fields', ['method' => 'put'])
 </form>
 @endsection
