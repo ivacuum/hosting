@@ -32,7 +32,6 @@
 @import "svg-icons";
 @import "tables";
 @import "terminal";
-@import "tooltips";
 @import "torrents";
 @import "vk";
 @import "youtube";
@@ -42,5 +41,9 @@
 @import "utilities/display";
 @import "utilities/text";
 @import "utilities/spacing";
+
+.is-desktop {
+  @import "tooltips";
+}
 
 @import "theme-dark";
