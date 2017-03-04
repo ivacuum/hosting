@@ -45,9 +45,9 @@ class Cities extends Controller
 
     public function store(ModelCreate $request)
     {
-        Model::create($request->all());
+        $model = Model::create($request->all());
 
-        return redirect()->action("{$this->class}@index");
+        return redirect()->action("{$this->class}@show", $model);
     }
 
     public function update(Model $model, ModelEdit $request)
