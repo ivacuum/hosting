@@ -1,6 +1,5 @@
 <?php namespace App\Services;
 
-use App;
 use Telegram\Bot\Api;
 
 class Telegram
@@ -14,7 +13,7 @@ class Telegram
 
     public function notifyAdmin($text)
     {
-        if (App::environment('local')) {
+        if (\App::environment('local')) {
             $text = "\xF0\x9F\x9A\xA7 local\n{$text}";
         }
 
@@ -31,7 +30,7 @@ class Telegram
 
     public function notifyAdminProduction($text)
     {
-        if (!App::environment('production')) {
+        if (!\App::environment('production')) {
             return false;
         }
 

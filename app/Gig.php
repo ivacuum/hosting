@@ -1,6 +1,5 @@
 <?php namespace App;
 
-use App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -50,17 +49,17 @@ class Gig extends Model
     // Attributes
     public function getMetaDescriptionAttribute()
     {
-        return $this->{'meta_description_' . App::getLocale()};
+        return $this->{'meta_description_' . \App::getLocale()};
     }
 
     public function getMetaTitleAttribute()
     {
-        return $this->{'meta_title_' . App::getLocale()};
+        return $this->{'meta_title_' . \App::getLocale()};
     }
 
     public function getTitleAttribute()
     {
-        return $this->{'title_' . App::getLocale()};
+        return $this->{'title_' . \App::getLocale()};
     }
 
     // Methods

@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App;
 use App\Country as Model;
 use App\Http\Requests\Acp\CountryCreate as ModelCreate;
 use App\Http\Requests\Acp\CountryEdit as ModelEdit;
@@ -9,8 +8,7 @@ class Countries extends Controller
 {
     public function index()
     {
-        $locale = App::getLocale();
-        $models = Model::orderBy("title_{$locale}")->get();
+        $models = Model::orderBy(Model::titleField())->get();
 
         return view($this->view, compact('models'));
     }

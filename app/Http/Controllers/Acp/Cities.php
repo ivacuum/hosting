@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App;
 use App\City as Model;
 use App\Http\Requests\Acp\CityCreate as ModelCreate;
 use App\Http\Requests\Acp\CityEdit as ModelEdit;

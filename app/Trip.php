@@ -1,6 +1,5 @@
 <?php namespace App;
 
-use App;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\Finder\Finder;
 
@@ -96,12 +95,12 @@ class Trip extends Model
     // Attributes
     public function getMetaDescriptionAttribute()
     {
-        return $this->{'meta_description_' . App::getLocale()};
+        return $this->{'meta_description_' . \App::getLocale()};
     }
 
     public function getMetaTitleAttribute()
     {
-        return $this->{'meta_title_' . App::getLocale()};
+        return $this->{'meta_title_' . \App::getLocale()};
     }
 
     public function getPeriodAttribute()
@@ -115,7 +114,7 @@ class Trip extends Model
 
     public function getTitleAttribute()
     {
-        return $this->{'title_' . App::getLocale()};
+        return $this->{'title_' . \App::getLocale()};
     }
 
     public function getYearAttribute()

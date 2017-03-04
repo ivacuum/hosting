@@ -22,8 +22,7 @@ class Life extends Controller
 
     public function cities()
     {
-        $locale = \App::getLocale();
-        $cities = City::orderBy("title_{$locale}")->get();
+        $cities = City::orderBy(City::titleField())->get();
 
         $trips_by_cities = [];
 
@@ -74,8 +73,7 @@ class Life extends Controller
 
     public function countries()
     {
-        $locale = \App::getLocale();
-        $countries = Country::with('cities')->orderBy("title_{$locale}")->get();
+        $countries = Country::with('cities')->orderBy(Country::titleField())->get();
 
         $trips_by_cities = [];
 

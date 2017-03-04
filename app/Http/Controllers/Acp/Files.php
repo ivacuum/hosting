@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App;
 use App\File as Model;
 use App\Http\Requests\Acp\FileCreate as ModelCreate;
 use App\Http\Requests\Acp\FileEdit as ModelEdit;

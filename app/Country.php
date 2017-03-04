@@ -1,6 +1,5 @@
 <?php namespace App;
 
-use App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -26,11 +25,16 @@ class Country extends Model
     public function cities()
     {
         return $this->hasMany(City::class)
-            ->orderBy("title_" . App::getLocale());
+            ->orderBy(self::titleField());
     }
 
     public function getTitleAttribute()
     {
-        return $this->{'title_' . App::getLocale()};
+        return $this->{self::titleField()};
+    }
+
+    public static function titleField()
+    {
+        return 'title_'.\App::getLocale();
     }
 }
