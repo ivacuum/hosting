@@ -10,6 +10,12 @@
       <a class="list-group-item {{ $view == "$tpl.edit" ? 'active' : '' }}" href="{{ action("$self@edit", [$model, 'goto' => Request::fullUrl()]) }}">
         {{ trans("$tpl.edit") }}
       </a>
+      @if ($model->cities_count)
+        <a class="list-group-item" href="{{ action('Acp\Cities@index', ['country_id' => $model->id]) }}">
+          {{ trans("$tpl.cities") }}
+          <span class="text-muted small">{{ $model->cities_count }}</span>
+        </a>
+      @endif
       <a class="list-group-item" href="{{ action('Life@page', $model->slug) }}">
         {{ trans("$tpl.www") }}
         @svg (external-link)

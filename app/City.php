@@ -1,6 +1,5 @@
 <?php namespace App;
 
-use App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -39,7 +38,7 @@ class City extends Model
 
     public function getTitleAttribute()
     {
-        return $this->{'title_' . App::getLocale()};
+        return $this->{self::titleField()};
     }
 
     public function getInitial()
@@ -50,5 +49,10 @@ class City extends Model
     public function isOnMap()
     {
         return $this->lat && $this->lon;
+    }
+
+    public static function titleField()
+    {
+        return 'title_'.\App::getLocale();
     }
 }

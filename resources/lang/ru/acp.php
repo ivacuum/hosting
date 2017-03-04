@@ -33,6 +33,7 @@ return [
     'countries.show' => 'Страна',
     'countries.index' => 'Страны',
     'countries.create' => 'Новая страна',
+    'countries.cities' => 'Города',
 
     'dev.svg' => 'SVG',
     'dev.logs' => 'Логи',

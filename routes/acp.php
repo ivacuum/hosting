@@ -45,7 +45,7 @@ Route::group(['prefix' => 'countries'], function () {
     Route::get('/', 'Acp\Countries@index');
     Route::post('/', 'Acp\Countries@store');
     Route::get('create', 'Acp\Countries@create');
-    Route::get('{Country}', 'Acp\Countries@show');
+    Route::get('{CountryWithCounts}', 'Acp\Countries@show');
     Route::put('{Country}', 'Acp\Countries@update');
     Route::delete('{Country}', 'Acp\Countries@destroy');
     Route::get('{Country}/edit', 'Acp\Countries@edit');

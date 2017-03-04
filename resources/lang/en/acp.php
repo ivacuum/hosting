@@ -33,6 +33,7 @@ return [
     'countries.show' => 'Country',
     'countries.index' => 'Countries',
     'countries.create' => 'New country',
+    'countries.cities' => 'Cities',
 
     'dev.svg' => 'SVG',
     'dev.logs' => 'Logs',
