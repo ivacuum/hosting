@@ -14,7 +14,7 @@ class Domains extends Controller
 
     public function index()
     {
-        abort_unless($this->request->user()->isRoot() === 1, 404);
+        abort_unless($this->request->user()->isRoot(), 404);
 
         $filter = $this->request->input('filter');
         $sort   = $this->request->input('sort');
