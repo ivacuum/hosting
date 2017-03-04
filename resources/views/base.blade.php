@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">
   @stack('head')
 </head>
-<body class="{{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'theme-dark' : '' }}">
+<body class="{{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ ViewHelper::isMobile(Request::server('HTTP_USER_AGENT')) ? 'is-mobile' : 'is-desktop' }}">
 <div class="navbar navbar-default {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'navbar-inverse' : '' }}">
   <div class="container">
     <div class="navbar-header">

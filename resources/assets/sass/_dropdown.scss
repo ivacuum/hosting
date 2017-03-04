@@ -1,0 +1,3 @@
+.is-desktop .nav .dropdown:hover > .dropdown-menu {
+  @media (min-width: $screen-md-min) { display: block; }
+}
