@@ -78,7 +78,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a class="dropdown-toggle {{ in_array($self, ['Acp\Torrents', 'Acp\Files', 'Acp\News', 'Acp\Images']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
+  <a class="dropdown-toggle {{ in_array($self, ['Acp\Comments', 'Acp\Metrics', 'Acp\Torrents', 'Acp\Files', 'Acp\News', 'Acp\Images']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
     {{ trans('menu.resources') }}
     <span class="caret"></span>
   </a>
