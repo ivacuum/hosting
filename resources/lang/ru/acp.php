@@ -28,6 +28,7 @@ return [
     'comments.index' => 'Комментарии',
 
     'countries.add' => 'Добавить страну',
+    'countries.www' => 'Посмотреть на сайте',
     'countries.edit' => 'Редактирование страны',
     'countries.show' => 'Страна',
     'countries.index' => 'Страны',
@@ -57,6 +58,7 @@ return [
     'files.create' => 'Новый файл',
 
     'gigs.add' => 'Добавить концерт',
+    'gigs.www' => 'Посмотреть на сайте',
     'gigs.edit' => 'Редактирование концерта',
     'gigs.show' => 'Концерт',
     'gigs.index' => 'Концерты',
@@ -101,6 +103,7 @@ return [
     'torrents.update_rto' => 'Обновить с рутрекера',
 
     'trips.add' => 'Добавить поездку',
+    'trips.www' => 'Посмотреть на сайте',
     'trips.edit' => 'Редактирование поездки',
     'trips.show' => 'Поездка',
     'trips.index' => 'Поездки',

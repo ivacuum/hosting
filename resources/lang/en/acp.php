@@ -28,6 +28,7 @@ return [
     'comments.index' => 'Comments',
 
     'countries.add' => 'Add country',
+    'countries.www' => 'View on site',
     'countries.edit' => 'Edit',
     'countries.show' => 'Country',
     'countries.index' => 'Countries',
@@ -57,6 +58,7 @@ return [
     'files.create' => 'New File',
 
     'gigs.add' => 'Add gig',
+    'gigs.www' => 'View on site',
     'gigs.edit' => 'Edit',
     'gigs.show' => 'Gig',
     'gigs.index' => 'Gigs',
@@ -101,6 +103,7 @@ return [
     'torrents.update_rto' => 'Update from rutracker',
 
     'trips.add' => 'Add trip',
+    'trips.www' => 'View on site',
     'trips.edit' => 'Edit',
     'trips.show' => 'Trip',
     'trips.index' => 'Trips',

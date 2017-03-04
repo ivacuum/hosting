@@ -10,6 +10,10 @@
       <a class="list-group-item {{ $view == "$tpl.edit" ? 'active' : '' }}" href="{{ action("$self@edit", [$model, 'goto' => Request::fullUrl()]) }}">
         {{ trans("$tpl.edit") }}
       </a>
+      <a class="list-group-item" href="{{ action('Life@page', $model->slug) }}">
+        {{ trans("$tpl.www") }}
+        @svg (external-link)
+      </a>
       @include('acp.tpl.delete', ['id' => $model])
     </div>
   </div>

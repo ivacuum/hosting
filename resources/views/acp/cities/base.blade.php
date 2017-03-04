@@ -15,6 +15,7 @@
       </a>
       <a class="list-group-item" href="{{ action('Life@page', $model->slug) }}">
         {{ trans("$tpl.www") }}
+        @svg (external-link)
       </a>
       @include('acp.tpl.delete', ['id' => $model])
     </div>
