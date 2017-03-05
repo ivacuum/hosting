@@ -7,7 +7,7 @@
       @foreach ($news as $model)
         <article itemscope itemtype="http://schema.org/BlogPosting">
           <header>
-            <h3 class="mt-0" itemprop="headline"><a class="link" href="{{ action("$self@show", $model) }}">{{ $model->title }}</a></h3>
+            <h3 class="mt-0" itemprop="headline"><a class="link" href="{{ action("$self@show", $model) }}" itemprop="url">{{ $model->title }}</a></h3>
             <div class="text-muted f14 mb-3">
               <span class="text-nowrap mr-3">
                 <span class="mr-1 svg-muted">
