@@ -158,13 +158,6 @@ $dark-bg-lighter-color: lighten($dark-bg-color, 10%);
     }
   }
 
-  .flex-row-header { background: lighten($dark-bg-color, 5%) linear-gradient(lighten($dark-bg-color, 15%), lighten($dark-bg-color, 5%)) repeat-x; }
-  .flex-row-striped .flex-row:nth-child(2n) { background-color: lighten($dark-bg-color, 5%); }
-
-  .flex-table-bordered,
-  .flex-table-bordered .flex-row + .flex-row,
-  .flex-table-bordered .flex-row-header { border-color: $dark-border-color; }
-
   .table-stats {
     border-color: $dark-border-color;
 
