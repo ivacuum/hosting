@@ -3,6 +3,7 @@
     <div v-if="!uploading">
       <label class="custom-file">
         <input class="custom-file-input"
+               accept="image/jpeg,image/png"
                type="file"
                name="files[]"
                multiple

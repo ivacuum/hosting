@@ -11,6 +11,7 @@
   <div v-if="!uploading">
     <label class="custom-file">
       <input class="custom-file-input"
+             accept="image/jpeg,image/png"
              type="file"
              name="file"
              @change="upload($event.currentTarget.files[0])">
