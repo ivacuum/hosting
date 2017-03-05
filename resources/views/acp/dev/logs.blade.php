@@ -1,18 +1,18 @@
 @extends('acp.dev.base')
 
 @section('content')
-<h2 class="mt-0">Логи</h2>
-<table class="table-stats">
+<h3 class="mt-0">Логи</h3>
+<table class="table-stats table-adaptive">
   <thead>
-    <tr>
-      <th>#</th>
-      <th>Запрос</th>
-      <th>Статус</th>
-      <th></th>
-      <th></th>
-      <th>Клиент</th>
-      <th>Источник</th>
-    </tr>
+  <tr>
+    <th>#</th>
+    <th>Запрос</th>
+    <th>Статус</th>
+    <th></th>
+    <th></th>
+    <th>Клиент</th>
+    <th>Источник</th>
+  </tr>
   </thead>
   <tbody>
   @foreach ($lines->reverse() as $line)

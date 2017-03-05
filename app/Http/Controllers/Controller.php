@@ -20,10 +20,14 @@ class Controller extends BaseController
     {
         $this->request = request();
 
-        $this->class  = str_replace('App\Http\Controllers\\', '', get_class($this));
+        $this->class = str_replace('App\Http\Controllers\\', '', get_class($this));
         $this->method = array_last(explode('@', \Route::currentRouteAction()));
-        $this->prefix = strtolower(str_replace('\\', '.', $this->class));
-        $this->view   = $this->prefix.".".snake_case($this->method);
+
+        $this->prefix = implode('.', array_map(function ($ary) {
+            return str_replace('_', '-', snake_case($ary));
+        }, explode('\\', $this->class)));
+
+        $this->view = $this->prefix.".".snake_case($this->method);
     }
 
     public function callAction($method, $parameters)
