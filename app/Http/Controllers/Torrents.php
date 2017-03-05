@@ -8,7 +8,7 @@ use Illuminate\Support\HtmlString;
 
 class Torrents extends Controller
 {
-    protected $list_columns = ['id', 'category_id', 'title', 'size', 'info_hash', 'announcer', 'clicks', 'registered_at'];
+    protected $list_columns = ['id', 'category_id', 'rto_id', 'title', 'size', 'info_hash', 'announcer', 'clicks', 'views', 'registered_at'];
 
     public function index()
     {
@@ -141,7 +141,7 @@ class Torrents extends Controller
 
         $user = $this->request->user();
 
-        $torrents = Torrent::select(array_merge($this->list_columns, ['views']))
+        $torrents = Torrent::select($this->list_columns)
             ->where('user_id', $user->id)
             ->withCount('comments')
             ->orderBy('registered_at', 'desc')

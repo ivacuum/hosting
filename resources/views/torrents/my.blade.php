@@ -14,6 +14,7 @@
              aria-label="{{ trans('model.torrent.clicks') }}">@svg (magnet)</th>
         <th>{{ trans('model.torrent.size') }}</th>
         <th>{{ trans('model.torrent.updated_at') }}</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -29,6 +30,11 @@
           <td class="text-right">{{ $torrent->clicks ? ViewHelper::number($torrent->clicks) : '' }}</td>
           <td class="text-muted">{{ ViewHelper::size($torrent->size) }}</td>
           <td>{{ ViewHelper::dateShort($torrent->registered_at) }}</td>
+          <td>
+            <a class="visited" href="{{ $torrent->externalLink() }}">
+              @svg (external-link)
+            </a>
+          </td>
         </tr>
       @endforeach
     </tbody>
