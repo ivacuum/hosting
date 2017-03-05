@@ -40,7 +40,7 @@
     </tbody>
   </table>
 
-  @include('tpl.paginator', ['class' => 'mt-3 text-center', 'paginator' => $torrents])
+  @include('tpl.paginator', ['paginator' => $torrents])
 @else
   @ru
     <p>Вы еще не добавили ни одной раздачи.</p>

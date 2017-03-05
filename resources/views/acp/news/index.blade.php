@@ -50,6 +50,6 @@
     </tbody>
   </table>
 
-  @include('tpl.paginator', ['class' => 'mt-3 text-center', 'paginator' => $models])
+  @include('tpl.paginator', ['paginator' => $models])
 @endif
 @endsection
