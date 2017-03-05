@@ -2,30 +2,32 @@
 
 @section('content')
 <div class="row">
-  <div class="col-md-3 hidden-xs torrent-categories">
-    @foreach ($tree as $id => $category)
-      <h3 class="{{ $loop->first ? 'mt-0' : '' }}">
-        @if (!empty($category_id) && $id == $category_id)
-          <mark>{{ $category['title'] }}</mark>
-        @else
-          <a class="visited" href="{{ action("$self@index", ['category_id' => $id]) }}">{{ $category['title'] }}</a>
+  <aside class="col-md-3 hidden-xs torrent-categories">
+    <nav>
+      @foreach ($tree as $id => $category)
+        <h3 class="{{ $loop->first ? 'mt-0' : '' }}">
+          @if (!empty($category_id) && $id == $category_id)
+            <mark>{{ $category['title'] }}</mark>
+          @else
+            <a class="visited" href="{{ action("$self@index", ['category_id' => $id]) }}">{{ $category['title'] }}</a>
+          @endif
+        </h3>
+        @if (!empty($category['children']))
+          @foreach ($category['children'] as $id => $child)
+            @continue (empty($stats[$id]))
+            <div>
+              @if (!empty($category_id) && $id == $category_id)
+                <mark>{{ $child['title'] }}</mark>
+              @else
+                <a class="visited" href="{{ action("$self@index", ['category_id' => $id]) }}">{{ $child['title'] }}</a>
+              @endif
+              <span class="text-muted f13">{{ $stats[$id] }}</span>
+            </div>
+          @endforeach
         @endif
-      </h3>
-      @if (!empty($category['children']))
-        @foreach ($category['children'] as $id => $child)
-          @continue (empty($stats[$id]))
-          <div>
-            @if (!empty($category_id) && $id == $category_id)
-              <mark>{{ $child['title'] }}</mark>
-            @else
-              <a class="visited" href="{{ action("$self@index", ['category_id' => $id]) }}">{{ $child['title'] }}</a>
-            @endif
-            <span class="text-muted f13">{{ $stats[$id] }}</span>
-          </div>
-        @endforeach
-      @endif
-    @endforeach
-  </div>
+      @endforeach
+    </nav>
+  </aside>
   <div class="col-md-9">
     @php ($last_date = null)
     @if (sizeof($torrents))

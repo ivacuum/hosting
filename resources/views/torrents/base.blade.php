@@ -14,28 +14,30 @@
 @endsection
 
 @section('content_header')
-<ul class="nav nav-link-tabs mb-4">
-  <li class="{{ $view === 'torrents.index' ? 'active' : '' }}">
-    <a href="{{ action('Torrents@index') }}">{{ trans('torrents.new') }}</a>
-  </li>
-  {{--
-  <li class="{{ $view === 'torrents.categories' ? 'active' : '' }}">
-    <a href="{{ action('Torrents@categories') }}">{{ trans('torrents.categories') }}</a>
-  </li>
-  --}}
-  <li class="{{ $view === 'torrents.add' ? 'active' : '' }}">
-    <a href="{{ action('Torrents@add') }}">{{ trans('torrents.add') }}</a>
-  </li>
-  <li class="{{ $view === 'torrents.faq' ? 'active' : '' }}">
-    <a href="{{ action('Torrents@faq') }}">{{ trans('torrents.faq') }}</a>
-  </li>
-  <li class="{{ $view === 'torrents.comments' ? 'active' : '' }}">
-    <a href="{{ action('Torrents@comments') }}">{{ trans('torrents.comments') }}</a>
-  </li>
-  @if (Auth::check())
-    <li class="{{ $view === 'torrents.my' ? 'active' : '' }}">
-      <a href="{{ action('Torrents@my') }}">{{ trans('torrents.my') }}</a>
+<nav>
+  <ul class="nav nav-link-tabs mb-4">
+    <li class="{{ $view === 'torrents.index' ? 'active' : '' }}">
+      <a href="{{ action('Torrents@index') }}">{{ trans('torrents.new') }}</a>
     </li>
-  @endif
-</ul>
+    {{--
+    <li class="{{ $view === 'torrents.categories' ? 'active' : '' }}">
+      <a href="{{ action('Torrents@categories') }}">{{ trans('torrents.categories') }}</a>
+    </li>
+    --}}
+    <li class="{{ $view === 'torrents.add' ? 'active' : '' }}">
+      <a href="{{ action('Torrents@add') }}">{{ trans('torrents.add') }}</a>
+    </li>
+    <li class="{{ $view === 'torrents.faq' ? 'active' : '' }}">
+      <a href="{{ action('Torrents@faq') }}">{{ trans('torrents.faq') }}</a>
+    </li>
+    <li class="{{ $view === 'torrents.comments' ? 'active' : '' }}">
+      <a href="{{ action('Torrents@comments') }}">{{ trans('torrents.comments') }}</a>
+    </li>
+    @if (Auth::check())
+      <li class="{{ $view === 'torrents.my' ? 'active' : '' }}">
+        <a href="{{ action('Torrents@my') }}">{{ trans('torrents.my') }}</a>
+      </li>
+    @endif
+  </ul>
+</nav>
 @endsection

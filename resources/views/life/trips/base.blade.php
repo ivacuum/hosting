@@ -43,7 +43,7 @@
 @section('content_footer')
 </div>
 
-<div class="travel-timeline-container">
+<nav class="travel-timeline-container">
   @if (isset($previous_trips) && sizeof($previous_trips))
     @foreach ($previous_trips as $previous)
       <div class="travel-timeline">
@@ -84,7 +84,7 @@
       </div>
     @endforeach
   @endif
-</div>
+</nav>
 
 @parent
 

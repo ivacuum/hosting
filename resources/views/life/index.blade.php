@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="row">
-  <div class="col-sm-6">
+  <section class="col-sm-6 pt-0">
     <h2 class="mt-0">{{ trans('life.trips') }}</h2>
     <ul class="list-inline f14">
       <li><mark>{{ trans('life.by_year') }}</mark></li>
@@ -27,8 +27,8 @@
       </div>
       @php ($year = $trip->year)
     @endforeach
-  </div>
-  <div class="col-sm-6">
+  </section>
+  <section class="col-sm-6 pt-0">
     <h2 class="mt-0">{{ trans('life.favorites') }}</h2>
     <ul class="list-unstyled">
       @ru
@@ -60,6 +60,6 @@
         <a class="link" href="{{ action('Life@page', 'japanese') }}">{{ trans('life.japanese') }}</a>
       </li>
     </ul>
-  </div>
+  </section>
 </div>
 @endsection
