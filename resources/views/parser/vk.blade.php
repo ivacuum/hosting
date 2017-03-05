@@ -66,7 +66,7 @@
 
 <div class="js-shortcuts-items">
 @foreach ($posts as $post)
-  <div class="panel panel-default shortcuts-item">
+  <div class="panel panel-default panel-mobile-wide shortcuts-item">
     <div class="panel-body vk-post-container">
       @if ($post['text'])
         <div class="vk-post-content life-text">{!! nl2br(e($post['text'])) !!}</div>
