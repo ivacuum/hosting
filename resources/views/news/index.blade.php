@@ -42,7 +42,7 @@
             </div>
           </header>
           <div class="mb-5">
-            <div class="hidden-xs">{!! $model->html !!}</div>
+            <div class="hidden-xs" itemprop="articleBody">{!! $model->html !!}</div>
           </div>
         </article>
       @endforeach
