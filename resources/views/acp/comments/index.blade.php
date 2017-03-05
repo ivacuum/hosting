@@ -6,41 +6,43 @@
   <small>{{ $models->total() }}</small>
 </h3>
 @if (sizeof($models))
-  <div class="flex-table flex-table-bordered">
-    <div class="flex-row flex-row-header">
-      <div class="flex-cell text-right">ID</div>
-      <div class="flex-cell">Автор</div>
-      <div class="flex-cell">Текст</div>
-      <div class="flex-cell">Дата</div>
-    </div>
-    <div class="flex-row-group flex-row-striped">
+  <table class="table-stats table-adaptive">
+    <thead>
+      <tr>
+        <th class="text-right">ID</th>
+        <th>Автор</th>
+        <th>Текст</th>
+        <th>Дата</th>
+      </tr>
+    </thead>
+    <tbody>
       @foreach ($models as $model)
-        <div class="flex-row js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
-          <div class="flex-cell text-right">
+        <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
+          <td class="text-right">
             <a class="link" href="{{ action("$self@show", $model) }}">
               {{ $model->id }}
             </a>
-          </div>
-          <div class="flex-cell">
+          </td>
+          <td>
             @if (!is_null($model->user))
               <a class="link" href="{{ action('Acp\Users@show', $model->user_id) }}">
                 {{ $model->user->displayName() }}
               </a>
             @endif
-          </div>
-          <div class="flex-cell">
+          </td>
+          <td>
             <div>{{ $model->html }}</div>
             <div class="text-muted">
               <small>
                 {{ $model->rel_type }} #{{ $model->rel_id }}
               </small>
             </div>
-          </div>
-          <div class="flex-cell text-nowrap">{{ ViewHelper::dateShort($model->created_at) }}</div>
-        </div>
+          </td>
+          <td class="text-nowrap">{{ ViewHelper::dateShort($model->created_at) }}</td>
+        </tr>
       @endforeach
-    </div>
-  </div>
+    </tbody>
+  </table>
 
   @include('tpl.paginator', ['class' => 'mt-3 text-center', 'paginator' => $models])
 @endif

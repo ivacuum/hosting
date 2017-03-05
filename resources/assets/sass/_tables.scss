@@ -1,7 +1,27 @@
+.table-adaptive {
+  @media (max-width: $screen-xs-max) {
+    &,
+    thead,
+    tbody,
+    tfoot,
+    tr,
+    td,
+    th { display: block; }
+
+    tr { padding: .5rem 0; }
+
+    td,
+    th {
+      text-align: center;
+
+      &:empty { display: none; }
+    }
+  }
+}
+
 .table-stats {
   border-collapse: collapse;
   border: 1px solid #ddd;
-  width: auto;
 
   .border-right,
   .border-bottom,
@@ -11,18 +31,12 @@
     border-width: 1px;
   }
 
-  td {
-    border-width: 0;
-    border-bottom: 1px solid #ddd;
-    padding: 0.4rem 0.5rem;
-  }
+  tr + tr { border-top: 1px solid #ddd; }
 
+  td,
   th {
-    border-bottom: 1px solid #ddd;
-    font-weight: bold;
-    padding: 0.5rem;
-
-    &.block { padding-left: 2rem; }
+    padding: .35rem .5rem;
+    vertical-align: middle;
   }
 
   tbody tr:nth-child(2n) { background-color: #f6f6f6; }
@@ -30,8 +44,13 @@
   thead,
   tfoot,
   .thead {
-    background-color: #ededed;
-    background-image: linear-gradient(#fbfbfb, #ededed);
-    background-repeat: repeat-x;
+    background: #ededed linear-gradient(#fbfbfb, #ededed) repeat-x;
   }
+
+  thead {
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+  }
+
+  tfoot { border-top: 1px solid #ddd; }
 }

@@ -51,6 +51,23 @@ $dark-bg-lighter-color: lighten($dark-bg-color, 10%);
 
   .border-bottom { border-color: $dark-border-color; }
 
+  .comment-container { border-color: $dark-border-color; }
+
+  .dropdown-menu {
+    background: $dark-bg-lighter-color;
+
+    .divider { background-color: $dark-border-color; }
+
+    > li > a {
+      color: $dark-text-color;
+
+      &:hover {
+        color: $dark-text-color;
+        background: $dark-bg-color;
+      }
+    }
+  }
+
   .torrent-categories a,
   .torrents-list-container a,
   .link,
@@ -151,12 +168,17 @@ $dark-bg-lighter-color: lighten($dark-bg-color, 10%);
   .table-stats {
     border-color: $dark-border-color;
 
+    tr + tr,
     td,
-    th { border-color: $dark-border-color; }
+    th,
+    thead,
+    tfoot { border-color: $dark-border-color; }
 
     tbody tr:nth-child(2n) { background-color: lighten($dark-bg-color, 5%); }
+
     thead,
-    tfoot {
+    tfoot,
+    .thead {
       background: lighten($dark-bg-color, 5%) linear-gradient(lighten($dark-bg-color, 15%), lighten($dark-bg-color, 5%)) repeat-x;
     }
   }

@@ -7,46 +7,48 @@
   @include('acp.tpl.create')
 </h3>
 @if (sizeof($models))
-  <div class="flex-table flex-table-bordered">
-    <div class="flex-row flex-row-header">
-      <div class="flex-cell text-right">ID</div>
-      <div class="flex-cell">Название</div>
-      <div class="flex-cell"></div>
-      <div class="flex-cell text-right">@svg (eye)</div>
-      <div class="flex-cell text-right">@svg (comment-o)</div>
-      <div class="flex-cell">Дата</div>
-    </div>
-    <div class="flex-row-group flex-row-striped">
+  <table class="table-stats table-adaptive">
+    <thead>
+      <tr>
+        <th class="text-right">ID</th>
+        <th>Название</th>
+        <th></th>
+        <th class="text-right">@svg (eye)</th>
+        <th class="text-right">@svg (comment-o)</th>
+        <th>Дата</th>
+      </tr>
+    </thead>
+    <tbody>
       @foreach ($models as $model)
-        <div class="flex-row js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
-          <div class="flex-cell text-right">{{ $model->id }}</div>
-          <div class="flex-cell">
+        <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
+          <td class="text-right">{{ $model->id }}</td>
+          <td>
             <a class="link" href="{{ action("$self@show", $model) }}">
               {{ $model->title }}
             </a>
-          </div>
-          <div class="flex-cell">
+          </td>
+          <td>
             @if ($model->status === App\News::STATUS_HIDDEN)
               <span class="tooltipped tooltipped-n" aria-label="Новость скрыта">
-              @svg (eye-slash)
-            </span>
+                @svg (eye-slash)
+              </span>
             @endif
-          </div>
-          <div class="flex-cell text-right">
+          </td>
+          <td class="text-right">
             @if ($model->views > 0)
               {{ ViewHelper::number($model->views) }}
             @endif
-          </div>
-          <div class="flex-cell text-right">
+          </td>
+          <td class="text-right">
             @if ($model->comments_count > 0)
               {{ ViewHelper::number($model->comments_count) }}
             @endif
-          </div>
-          <div class="flex-cell">{{ ViewHelper::dateShort($model->created_at) }}</div>
-        </div>
+          </td>
+          <td>{{ ViewHelper::dateShort($model->created_at) }}</td>
+        </tr>
       @endforeach
-    </div>
-  </div>
+    </tbody>
+  </table>
 
   @include('tpl.paginator', ['class' => 'mt-3 text-center', 'paginator' => $models])
 @endif

@@ -58,36 +58,42 @@
 @endif
 @if (sizeof($models))
   @if (!$type)
-    <div class="flex-table flex-table-bordered">
-      <div class="flex-row flex-row-header">
-        <div class="flex-cell"><input type="checkbox" class="js-select-all" data-selector=".models-checkbox"></div>
-        <div class="flex-cell text-right">ID</div>
-        <div class="flex-cell text-center">Изображение</div>
-        <div class="flex-cell text-right">Размер</div>
-        <div class="flex-cell text-right">@svg (eye)</div>
-        <div class="flex-cell">@svg (eye-slash)</div>
-        <div class="flex-cell"></div>
-      </div>
-      <div class="flex-row-group flex-row-striped">
+    <table class="table-stats table-adaptive">
+      <thead>
+        <tr>
+          <th><input type="checkbox" class="js-select-all" data-selector=".models-checkbox"></th>
+          <th class="text-right">ID</th>
+          <th class="text-center">Изображение</th>
+          <th class="text-right">Размер</th>
+          <th class="text-right">@svg (eye)</th>
+          <th>@svg (eye-slash)</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
         @foreach ($models as $model)
-          <div class="flex-row js-tick-onclick" data-tick="#checkbox_{{ $model->id }}">
-            <div class="flex-cell"><input class="models-checkbox" type="checkbox" id="checkbox_{{ $model->id }}" name="ids[]" value="{{ $model->id }}"></div>
-            <div class="flex-cell text-right">{{ $model->id }}</div>
-            <div class="flex-cell text-center">
+          <tr class="js-tick-onclick" data-tick="#checkbox_{{ $model->id }}">
+            <td><input class="models-checkbox" type="checkbox" id="checkbox_{{ $model->id }}" name="ids[]" value="{{ $model->id }}"></td>
+            <td class="text-right">{{ $model->id }}</td>
+            <td class="text-center">
               <a class="screenshot-link" href="{{ action("$self@show", $model) }}">
                 <img class="screenshot" src="{{ $model->thumbnailSecretUrl() }}">
               </a>
-            </div>
-            <div class="flex-cell text-right text-muted">{{ ViewHelper::size($model->size) }}</div>
-            <div class="flex-cell text-right">
+            </td>
+            <td class="text-right text-muted">{{ ViewHelper::size($model->size) }}</td>
+            <td class="text-right">
               @if ($model->views > 1500)
                 <span class="label label-success">{{ ViewHelper::number($model->views) }}</span>
               @else
                 {{ ViewHelper::number($model->views) }}
               @endif
-            </div>
-            <div class="flex-cell">{{ !is_null($model->updated_at) && $model->updated_at->diffInMonths() > 6 ? $model->updated_at->diffForHumans(null, true) : '' }}</div>
-            <div class="flex-cell">
+            </td>
+            <td>
+              @if (!is_null($model->updated_at) && $model->updated_at->diffInMonths() > 6)
+                {{ $model->updated_at->diffForHumans(null, true) }}
+              @endif
+            </td>
+            <td>
               <div class="btn-group">
                 <a class="btn btn-default" href="{{ action("$self@view", $model) }}">
                   @svg (eye)
@@ -96,19 +102,19 @@
                   @svg (trash-o)
                 </a>
               </div>
-            </div>
-          </div>
+            </td>
+          </tr>
         @endforeach
-      </div>
-    </div>
+      </tbody>
+    </table>
 
-    <div class="pull-left mt-3">
+    <div class="mt-3">
       <form class="form-inline js-batch-form" data-url="{{ action("$self@batch") }}" data-selector=".models-checkbox">
         <div class="form-group">
           <input type="checkbox" class="js-select-all" data-selector=".models-checkbox">
           <div class="form-select d-inline-block mx-1">
             <select class="form-control" name="action" id="batch_action">
-              {{--<option value="">Выберите действие...</option>--}}
+              <option value="">Выберите действие...</option>
               <option value="delete">Удалить</option>
             </select>
           </div>
@@ -116,7 +122,6 @@
         <button class="btn btn-default" id="batch_submit">Выполнить</button>
       </form>
     </div>
-    <div class="clearfix"></div>
   @elseif ($type === 'grid')
     <div class="text-center">
       @foreach ($models as $model)

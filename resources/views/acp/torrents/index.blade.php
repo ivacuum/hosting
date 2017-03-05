@@ -6,54 +6,56 @@
   <small>{{ $models->total() }}</small>
 </h3>
 @if (sizeof($models))
-  <div class="flex-table flex-table-bordered">
-    <div class="flex-row flex-row-header">
-      <div class="flex-cell text-right">ID</div>
-      <div class="flex-cell">Автор</div>
-      <div class="flex-cell text-right">@svg (eye)</div>
-      <div class="flex-cell text-right">@svg (comment-o)</div>
-      <div class="flex-cell text-right">@svg (magnet)</div>
-      <div class="flex-cell">Название</div>
-      <div class="flex-cell"></div>
-    </div>
-    <div class="flex-row-group flex-row-striped">
+  <table class="table-stats table-adaptive">
+    <thead>
+      <tr>
+        <th class="text-right">ID</th>
+        <th>Автор</th>
+        <th class="text-right">@svg (eye)</th>
+        <th class="text-right">@svg (comment-o)</th>
+        <th class="text-right">@svg (magnet)</th>
+        <th>Название</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
       @foreach ($models as $model)
-        <div class="flex-row js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
-          <div class="flex-cell text-right">{{ $model->id }}</div>
-          <div class="flex-cell">
+        <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
+          <td class="text-right">{{ $model->id }}</td>
+          <td>
             <a class="link" href="{{ action('Acp\Users@show', $model->user_id) }}">
               {{ $model->user->displayName() }}
             </a>
-          </div>
-          <div class="flex-cell text-right">
+          </td>
+          <td class="text-right">
             @if ($model->views > 0)
               {{ ViewHelper::number($model->views) }}
             @endif
-          </div>
-          <div class="flex-cell text-right">
+          </td>
+          <td class="text-right">
             @if ($model->comments_count > 0)
               {{ ViewHelper::number($model->comments_count) }}
             @endif
-          </div>
-          <div class="flex-cell text-right">
+          </td>
+          <td class="text-right">
             @if ($model->clicks > 0)
               {{ ViewHelper::number($model->clicks) }}
             @endif
-          </div>
-          <div class="flex-cell">
+          </td>
+          <td>
             <a class="link" href="{{ action("$self@show", $model) }}">
               <torrent-title title="{{ $model->title }}" hide_brackets="1"></torrent-title>
             </a>
-          </div>
-          <div class="flex-cell">
+          </td>
+          <td>
             <a href="{{ $model->externalLink() }}">
               @svg (external-link)
             </a>
-          </div>
-        </div>
+          </td>
+        </tr>
       @endforeach
-    </div>
-  </div>
+    </tbody>
+  </table>
 
   @include('tpl.paginator', ['class' => 'mt-3 text-center', 'paginator' => $models])
 @endif

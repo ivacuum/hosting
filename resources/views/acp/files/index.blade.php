@@ -7,28 +7,30 @@
   @include('acp.tpl.create')
 </h3>
 @if (sizeof($models))
-  <div class="flex-table flex-table-bordered">
-    <div class="flex-row flex-row-header">
-      <div class="flex-cell text-right">ID</div>
-      <div class="flex-cell">Название</div>
-      <div class="flex-cell text-right">Размер</div>
-      <div class="flex-cell text-right">&darr;</div>
-    </div>
-    <div class="flex-row-group flex-row-striped">
+  <table class="table-stats table-adaptive">
+    <thead>
+      <tr>
+        <th class="text-right">ID</th>
+        <th>Название</th>
+        <th class="text-right">Размер</th>
+        <th class="text-right">&darr;</th>
+      </tr>
+    </thead>
+    <tbody>
       @foreach ($models as $model)
-        <div class="flex-row js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
-          <div class="flex-cell text-right">{{ $model->id }}</div>
-          <div class="flex-cell">
+        <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
+          <td class="text-right">{{ $model->id }}</td>
+          <td>
             <a class="link" href="{{ action("$self@show", $model) }}">
               {{ $model->title }}
             </a>
-          </div>
-          <div class="flex-cell text-right text-muted">{{ ViewHelper::size($model->size) }}</div>
-          <div class="flex-cell text-right">{{ ViewHelper::number($model->downloads) }}</div>
-        </div>
+          </td>
+          <td class="text-right text-muted">{{ ViewHelper::size($model->size) }}</td>
+          <td class="text-right">{{ ViewHelper::number($model->downloads) }}</td>
+        </tr>
       @endforeach
-    </div>
-  </div>
+    </tbody>
+  </table>
 
   @include('tpl.paginator', ['class' => 'mt-3 text-center', 'paginator' => $models])
 @endif

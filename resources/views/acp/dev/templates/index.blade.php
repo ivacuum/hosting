@@ -1,7 +1,7 @@
 @extends('acp.dev.base')
 
 @section('content')
-<table class="table-stats">
+<table class="table-stats table-adaptive">
   <thead>
     <tr>
       <th>Шаблон</th>

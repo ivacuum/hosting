@@ -9,30 +9,32 @@
     @en
       <p>Have you ever wondered if you could try one of the best web hosting for free for a few months? Yes, you can, thanks to the promo codes below.</p>
     @endlang
-    <div class="flex-table flex-table-bordered mb-3">
-      <div class="flex-row flex-row-header">
-        <div class="flex-cell">@ru Промокод @en Promo Code @endlang</div>
-        <div class="flex-cell">@ru Выгода @en Benefits @endlang</div>
-      </div>
-      <div class="flex-row-group flex-row-striped">
-        <div class="flex-row">
-          <div class="flex-cell"><span class="label label-info">DO10</span> / <span class="label label-info">DROPLET10</span></div>
-          <div class="flex-cell">@ru $10 для новых пользователей @en $10 credit for new users @endlang</div>
-        </div>
-        <div class="flex-row">
-          <div class="flex-cell"><span class="label label-info">BITNAMI</span></div>
-          <div class="flex-cell">@ru $10 на счет при регистрации @en $10 off for a new account @endlang</div>
-        </div>
-        <div class="flex-row">
-          <div class="flex-cell"><span class="label label-info">ACTIVATE10</span></div>
-          <div class="flex-cell">@ru $10 на счет для нынешних клиентов @en $10 credit for existing customers @endlang</div>
-        </div>
-        <div class="flex-row">
-          <div class="flex-cell"><span class="label label-info">LOWENDBOX</span> / <span class="label label-info">DOPRODUCT</span></div>
-          <div class="flex-cell">@ru $15 на счет @en $15 DigitalOcean credits @endlang</div>
-        </div>
-      </div>
-    </div>
+    <table class="table-stats table-adaptive mb-3">
+      <thead>
+        <tr>
+          <th>@ru Промокод @en Promo Code @endlang</th>
+          <th>@ru Выгода @en Benefits @endlang</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="label label-info">DO10</span> / <span class="label label-info">DROPLET10</span></td>
+          <td>@ru $10 для новых пользователей @en $10 credit for new users @endlang</td>
+        </tr>
+        <tr>
+          <td><span class="label label-info">BITNAMI</span></td>
+          <td>@ru $10 на счет при регистрации @en $10 off for a new account @endlang</td>
+        </tr>
+        <tr>
+          <td><span class="label label-info">ACTIVATE10</span></td>
+          <td>@ru $10 на счет для нынешних клиентов @en $10 credit for existing customers @endlang</td>
+        </tr>
+        <tr>
+          <td><span class="label label-info">LOWENDBOX</span> / <span class="label label-info">DOPRODUCT</span></td>
+          <td>@ru $15 на счет @en $15 DigitalOcean credits @endlang</td>
+        </tr>
+      </tbody>
+    </table>
     @ru
       <p>Пожалуйста, учтите, что DigitalOcean разрешает использовать лишь <span class="font-bold">один промокод для каждой учетной записи</span>, поэтому, если вы уже использовали какой-либо промокод ранее, то новый может не сработать.</p>
 

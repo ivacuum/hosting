@@ -7,47 +7,49 @@
   @include('acp.tpl.create')
 </h3>
 @if (sizeof($models))
-  <div class="flex-table flex-table-bordered">
-    <div class="flex-row flex-row-header">
-      <div class="flex-cell"></div>
-      <div class="flex-cell">Город</div>
-      <div class="flex-cell">URL</div>
-      <div class="flex-cell">IATA</div>
-      <div class="flex-cell text-right">@svg (eye)</div>
-      <div class="flex-cell"></div>
-    </div>
-    <div class="flex-row-group flex-row-striped">
+  <table class="table-stats table-adaptive">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Город</th>
+        <th>URL</th>
+        <th>IATA</th>
+        <th class="text-right">@svg (eye)</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
       @foreach ($models as $model)
-        <div class="flex-row js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
-          <div class="flex-cell tooltipped tooltipped-n" aria-label="{{ $model->country->title }}">
+        <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
+          <td class="tooltipped tooltipped-n" aria-label="{{ $model->country->title }}">
             {{ $model->country->emoji }}
-          </div>
-          <div class="flex-cell">
+          </td>
+          <td>
             <a class="link" href="{{ action("$self@show", $model) }}">
               {{ $model->title }}
             </a>
-          </div>
-          <div class="flex-cell">
+          </td>
+          <td>
             <a class="link" href="{{ $locale_uri }}/life/{{ $model->slug }}">
               {{ $model->slug }}
             </a>
-          </div>
-          <div class="flex-cell">{{ $model->iata }}</div>
-          <div class="flex-cell text-right">
+          </td>
+          <td>{{ $model->iata }}</td>
+          <td class="text-right">
             @if ($model->views > 0)
               {{ ViewHelper::number($model->views) }}
             @endif
-          </div>
-          <div class="flex-cell">
+          </td>
+          <td>
             @if ($model->lat && $model->lon)
               <span class="tooltipped tooltipped-n" aria-label="Геолокация задана">
-              @svg (map-marker)
-            </span>
+                @svg (map-marker)
+              </span>
             @endif
-          </div>
-        </div>
+          </td>
+        </tr>
       @endforeach
-    </div>
-  </div>
+    </tbody>
+  </table>
 @endif
 @endsection

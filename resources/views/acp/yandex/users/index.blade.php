@@ -7,7 +7,7 @@
   @include('acp.tpl.create')
 </h3>
 @if (sizeof($models))
-  <table class="table-stats">
+  <table class="table-stats table-adaptive">
     <thead>
       <tr>
         <th>#</th>

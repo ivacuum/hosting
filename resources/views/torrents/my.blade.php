@@ -2,35 +2,37 @@
 
 @section('content')
 @if (sizeof($torrents))
-  <div class="flex-table flex-table-bordered">
-    <div class="flex-row flex-row-header">
-      <div class="flex-cell">{{ trans('model.torrent.title') }}</div>
-      <div class="flex-cell text-muted text-right tooltipped tooltipped-n"
-           aria-label="{{ trans('model.torrent.views') }}">@svg (eye)</div>
-      <div class="flex-cell text-right tooltipped tooltipped-n"
-           aria-label="{{ trans('model.torrent.comments') }}">@svg (comment-o)</div>
-      <div class="flex-cell text-success text-right tooltipped tooltipped-n"
-           aria-label="{{ trans('model.torrent.clicks') }}">@svg (magnet)</div>
-      <div class="flex-cell">{{ trans('model.torrent.size') }}</div>
-      <div class="flex-cell">{{ trans('model.torrent.updated_at') }}</div>
-    </div>
-    <div class="flex-row-group flex-row-striped">
+  <table class="table-stats table-adaptive">
+    <thead>
+      <tr>
+        <th>{{ trans('model.torrent.title') }}</th>
+        <th class="text-muted text-right tooltipped tooltipped-n"
+             aria-label="{{ trans('model.torrent.views') }}">@svg (eye)</th>
+        <th class="text-right tooltipped tooltipped-n"
+             aria-label="{{ trans('model.torrent.comments') }}">@svg (comment-o)</th>
+        <th class="text-right tooltipped tooltipped-n"
+             aria-label="{{ trans('model.torrent.clicks') }}">@svg (magnet)</th>
+        <th>{{ trans('model.torrent.size') }}</th>
+        <th>{{ trans('model.torrent.updated_at') }}</th>
+      </tr>
+    </thead>
+    <tbody>
       @foreach ($torrents as $torrent)
-        <div class="flex-row">
-          <div class="flex-cell">
+        <tr>
+          <td>
             <a class="visited" href="{{ action('Torrents@torrent', $torrent) }}">
               <torrent-title title="{{ $torrent->title }}" hide_brackets="1"></torrent-title>
             </a>
-          </div>
-          <div class="flex-cell text-muted text-right">{{ $torrent->views ? ViewHelper::number($torrent->views) : '' }}</div>
-          <div class="flex-cell text-right">{{ $torrent->comments_count ? ViewHelper::number($torrent->comments_count) : '' }}</div>
-          <div class="flex-cell text-success text-right">{{ $torrent->clicks ? ViewHelper::number($torrent->clicks) : '' }}</div>
-          <div class="flex-cell text-muted">{{ ViewHelper::size($torrent->size) }}</div>
-          <div class="flex-cell">{{ ViewHelper::dateShort($torrent->registered_at) }}</div>
-        </div>
+          </td>
+          <td class="text-muted text-right">{{ $torrent->views ? ViewHelper::number($torrent->views) : '' }}</td>
+          <td class="text-right">{{ $torrent->comments_count ? ViewHelper::number($torrent->comments_count) : '' }}</td>
+          <td class="text-right">{{ $torrent->clicks ? ViewHelper::number($torrent->clicks) : '' }}</td>
+          <td class="text-muted">{{ ViewHelper::size($torrent->size) }}</td>
+          <td>{{ ViewHelper::dateShort($torrent->registered_at) }}</td>
+        </tr>
       @endforeach
-    </div>
-  </div>
+    </tbody>
+  </table>
 
   @include('tpl.paginator', ['class' => 'mt-3 text-center', 'paginator' => $torrents])
 @else

@@ -8,7 +8,7 @@
   </form>
 </h3>
 @if (sizeof($models))
-  <table class="table-stats">
+  <table class="table-stats table-adaptive">
     <thead>
       <tr>
         <th><input type="checkbox" class="js-select-all" data-selector=".domains-checkbox"></th>
@@ -91,10 +91,22 @@
 @include('tpl.paginator', ['class' => 'mt-3 text-center', 'paginator' => $models])
 
 <div>
-  <span class="label label-default">...</span> &nbsp;есть заметки &nbsp;
-  <span class="label label-info">?</span> &nbsp;не в нашей панели &nbsp;
-  <span class="label label-danger">$</span> &nbsp;просрочена оплата &nbsp;
-  <span class="label label-warning">$</span> &nbsp;подходит срок оплаты
+  <span class="text-nowrap mr-2">
+    <span class="label label-default mr-1">...</span>
+    есть заметки
+  </span>
+  <span class="text-nowrap mr-2">
+    <span class="label label-info mr-1">?</span>
+    не в нашей панели
+  </span>
+  <span class="text-nowrap mr-2">
+    <span class="label label-danger mr-1">$</span>
+    просрочена оплата
+  </span>
+  <span class="text-nowrap mr-2">
+    <span class="label label-warning mr-1">$</span>
+    подходит срок оплаты
+  </span>
 </div>
 @else
   <div class="alert alert-warning">
