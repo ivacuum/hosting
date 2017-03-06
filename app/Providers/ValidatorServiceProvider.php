@@ -8,6 +8,8 @@ class ValidatorServiceProvider extends ServiceProvider
     {
         $this->app->booted(function ($app) {
             $app['validator']->extend('empty', function ($attr, $value, $params) {
+                event(new \App\Events\Stats\SpammerTrapped());
+
                 return empty($value);
             }, 'Читер');
         });
