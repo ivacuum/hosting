@@ -17,7 +17,7 @@
         {{ trans("$tpl.www") }}
         @svg (external-link)
       </a>
-      @include('acp.tpl.delete', ['id' => $model])
+      @include('acp.tpl.delete')
     </div>
   </div>
   <div class="col-sm-9">

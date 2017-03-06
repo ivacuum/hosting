@@ -129,4 +129,5 @@ return [
     'save' => 'Save',
     'apply' => 'Apply',
     'delete' => 'Delete',
+    'delete_confirm' => 'Entry would be deleted. Continue?',
 ];

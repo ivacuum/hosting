@@ -28,7 +28,7 @@
           <span class="text-muted small">{{ $model->torrents_count }}</span>
         </a>
       @endif
-      @include('acp.tpl.delete', ['id' => $model])
+      @include('acp.tpl.delete')
     </div>
   </div>
   <div class="col-sm-9">

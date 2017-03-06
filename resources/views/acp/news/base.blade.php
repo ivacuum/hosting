@@ -20,7 +20,7 @@
         {{ trans("$tpl.www") }}
         @svg (external-link)
       </a>
-      @include('acp.tpl.delete', ['id' => $model])
+      @include('acp.tpl.delete')
     </div>
     <form class="text-center mb-3" action="{{ action("$self@notify", $model) }}" method="post">
       <button class="btn btn-default" type="submit">{{ trans("$tpl.notify") }}</button>

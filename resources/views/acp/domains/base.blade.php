@@ -28,7 +28,7 @@
       <a class="list-group-item {{ $view == "$tpl.robots" ? 'active' : '' }}" href="{{ action("$self@robots", $model) }}">
         {{ trans("$tpl.robots") }}
       </a>
-      @include('acp.tpl.delete', ['id' => $model])
+      @include('acp.tpl.delete')
     </div>
   </div>
   <div class="col-md-9">

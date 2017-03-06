@@ -13,7 +13,7 @@
       <a class="list-group-item" href="{{ action("$self@index", ['user_id' => $model->user_id]) }}">
         {{ trans("$tpl.user") }}
       </a>
-      @include('acp.tpl.delete', ['id' => $model])
+      @include('acp.tpl.delete')
     </div>
   </div>
   <div class="col-sm-9">
