@@ -1,6 +1,6 @@
 @extends('acp.list')
 
-@section('content')
+@section('content-list')
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
