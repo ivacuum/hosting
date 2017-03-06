@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'id' => 'ID',
+    'author' => 'Автор',
+
     'torrent.size' => 'Размер',
     'torrent.title' => 'Название',
     'torrent.views' => 'Просмотры',

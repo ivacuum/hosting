@@ -4,12 +4,12 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="text-right">ID</th>
-    <th>Автор</th>
+    <th class="text-right">{{ trans('model.id') }}</th>
+    <th>{{ trans('model.author') }}</th>
     <th class="text-right">@svg (eye)</th>
     <th class="text-right">@svg (comment-o)</th>
     <th class="text-right">@svg (magnet)</th>
-    <th>Название</th>
+    <th>{{ trans('model.torrent.title') }}</th>
     <th></th>
   </tr>
   </thead>
