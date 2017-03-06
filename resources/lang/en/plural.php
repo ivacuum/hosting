@@ -1,6 +1,5 @@
 <?php
 
 return [
-	'domains' => 'domain|domains',
-    'seeders' => 'seeder|seeders',
+	'domains' => ':x domain|:x domains',
 ];

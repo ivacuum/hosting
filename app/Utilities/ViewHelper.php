@@ -90,6 +90,11 @@ class ViewHelper
         return "https://life.ivacuum.ru/-/100x75/{$folder}/{$file}";
     }
 
+    public function plural($key, $count)
+    {
+        return trans_choice("plural.{$key}", $count, ['x' => $this->number($count)]);
+    }
+
     public function size($bytes)
     {
         $units = [

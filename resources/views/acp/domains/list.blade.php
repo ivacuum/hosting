@@ -1,7 +1,7 @@
 @if (sizeof($models))
 <h3>
   <form class="form-inline">
-    {{ $models->total() }} {{ trans_choice('plural.domains', $models->total()) }}
+    {{ ViewHelper::plural('domains', $models->total()) }}
     @include('acp.tpl.create')
     <input type="text" name="q" class="form-control" placeholder="Поиск..." value="{{ $q ?? '' }}">
     <input type="hidden" name="filter" value="{{ $filter ?? '' }}">
