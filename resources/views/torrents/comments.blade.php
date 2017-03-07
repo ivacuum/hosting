@@ -40,7 +40,7 @@
             @if (!is_null($comment->rel))
               <a class="link" href="{{ action('Torrents@torrent', $comment->rel_id) }}#comment-{{ $comment->id }}">{{ str_limit($comment->rel->title, 80) }}</a>
             @else
-              Раздача удалена
+              <em>Раздача удалена</em>
             @endif
           </div>
           {!! nl2br($comment->html) !!}
