@@ -205,7 +205,7 @@
         @ru
           <a class="link" href="/life/spb.2016.03">Санкт-Петербург</a>
         @en
-          <a class="link" href="/en/life.spb.2016.03">Saint Petersburg</a>
+          <a class="link" href="/en/life/spb.2016.03">Saint Petersburg</a>
         @endlang
       </td>
     </tr>
