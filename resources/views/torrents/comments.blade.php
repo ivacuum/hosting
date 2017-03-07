@@ -37,7 +37,11 @@
         </div>
         <div class="comment-body">
           <div class="mb-3">
-            <a class="link" href="{{ action('Torrents@torrent', $comment->rel_id) }}#comment-{{ $comment->id }}">{{ str_limit($comment->rel->title, 80) }}</a>
+            @if (!is_null($comment->rel))
+              <a class="link" href="{{ action('Torrents@torrent', $comment->rel_id) }}#comment-{{ $comment->id }}">{{ str_limit($comment->rel->title, 80) }}</a>
+            @else
+              Раздача удалена
+            @endif
           </div>
           {!! nl2br($comment->html) !!}
         </div>
