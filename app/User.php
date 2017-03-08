@@ -39,6 +39,7 @@ class User extends Authenticatable
 
     protected $guarded = ['created_at', 'updated_at'];
     protected $hidden = ['password', 'remember_token'];
+    protected $dates = ['last_login_at'];
     protected $perPage = 50;
 
     public function comments()
@@ -59,6 +60,11 @@ class User extends Authenticatable
     public function torrents()
     {
         return $this->hasMany(Torrent::class);
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', self::STATUS_ACTIVE);
     }
 
     public function scopeForAnnouncement($query)
@@ -85,7 +91,7 @@ class User extends Authenticatable
 
     public function avatarName()
     {
-        return mb_strtoupper(mb_substr($this->login ?: $this->email, 0, 2));
+        return mb_strtoupper(mb_substr($this->login ?: $this->email, 0, 1));
     }
 
     public function avatarUrl()

@@ -87,3 +87,6 @@ Route::get('torrents/faq', 'Torrents@faq');
 Route::get('torrents/my', 'Torrents@my')->middleware('auth');
 Route::get('torrents/{Torrent}', 'Torrents@torrent');
 Route::post('torrents/{Torrent}/magnet', 'Torrents@magnet');
+
+Route::get('users', 'Users@index');
+Route::get('users/{UserWithCounts}', 'Users@show');
