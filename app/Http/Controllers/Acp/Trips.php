@@ -50,7 +50,7 @@ class Trips extends Controller
             return back()->with('message', 'Для рассылки уведомлений поездка должна быть опубликована');
         }
 
-        $users = User::forNotifying()->get();
+        $users = User::forAnnouncement()->get();
 
         \Notification::send($users, new TripPublished($model));
 

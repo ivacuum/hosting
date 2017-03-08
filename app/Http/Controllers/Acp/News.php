@@ -50,7 +50,7 @@ class News extends Controller
             return back()->with('message', 'Для рассылки уведомлений новость должна быть опубликована');
         }
 
-        $users = User::forNotifying()->get();
+        $users = User::forAnnouncement()->get();
 
         \Notification::send($users, new NewsPublished($model));
 

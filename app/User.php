@@ -61,7 +61,7 @@ class User extends Authenticatable
         return $this->hasMany(Torrent::class);
     }
 
-    public function scopeForNotifying($query)
+    public function scopeForAnnouncement($query)
     {
         return $query->where('last_login_at', '>', Carbon::now()->subDays(7));
     }
