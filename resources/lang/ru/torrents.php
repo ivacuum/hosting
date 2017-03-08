@@ -8,6 +8,7 @@ return [
     'index' => 'Торренты',
     'today' => 'Сегодня',
     'search' => 'Поиск...',
+    'source' => 'Первоисточник',
     'comments' => 'Комментарии',
     'download' => 'Скачать',
     'yesterday' => 'Вчера',

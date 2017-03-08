@@ -23,6 +23,34 @@
   </a>
 </div>
 
+<div class="text-muted">
+  <span class="text-nowrap mr-3">
+    <span class="mr-1 svg-muted">
+      @svg (calendar-o)
+    </span>
+    {{ ViewHelper::dateShort($torrent->registered_at) }}
+  </span>
+  <span class="text-nowrap mr-3">
+    <span class="mr-1 svg-muted">
+      @svg (eye)
+    </span>
+    {{ ViewHelper::number($torrent->views) }}
+  </span>
+  <span class="text-nowrap mr-3">
+    <span class="mr-1 svg-muted">
+      @svg (magnet)
+    </span>
+    {{ ViewHelper::number($torrent->clicks) }}
+  </span>
+  <span class="text-nowrap">
+    <a class="tooltipped tooltipped-n" href="{{ $torrent->externalLink() }}" aria-label="{{ trans('torrents.source') }}">
+      <span class="svg-muted">
+        @svg (external-link)
+      </span>
+    </a>
+  </span>
+</div>
+
 @include('tpl.comments-list')
 @include('tpl.comment-add', ['params' => ['torrent', $torrent->id]])
 @endsection
