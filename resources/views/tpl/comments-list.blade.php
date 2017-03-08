@@ -11,6 +11,9 @@
         <div class="comment-author">
           @if (!is_null($comment->user))
             <div class="comment-author-avatar">
+              @if (!is_null($comment->user))
+                <a href="{{ action('Users@show', $comment->user_id) }}">
+              @endif
               @if ($comment->user->avatar)
                 <img class="comment-author-avatar-image" src="{{ $comment->user->avatarUrl() }}">
               @else
@@ -19,12 +22,15 @@
                   'text' => $comment->user->avatarName(),
                 ])
               @endif
+              @if (!is_null($comment->user))
+                </a>
+              @endif
             </div>
           @endif
           <div class="comment-author-details">
             <span class="comment-author-name">
               @if (!is_null($comment->user))
-                {{ $comment->user->publicName() }}
+                <a class="link" href="{{ action('Users@show', $comment->user_id) }}">{{ $comment->user->publicName() }}</a>
               @else
                 <em>deleted user</em>
               @endif
