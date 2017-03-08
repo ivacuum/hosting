@@ -24,19 +24,19 @@
 </div>
 
 <div class="text-muted">
-  <span class="text-nowrap mr-3">
+  <span class="text-nowrap mr-3 tooltipped tooltipped-n" aria-label="{{ trans('model.torrent.updated_at') }}">
     <span class="mr-1 svg-muted">
       @svg (calendar-o)
     </span>
     {{ ViewHelper::dateShort($torrent->registered_at) }}
   </span>
-  <span class="text-nowrap mr-3">
+  <span class="text-nowrap mr-3 tooltipped tooltipped-n" aria-label="{{ trans('model.torrent.views') }}">
     <span class="mr-1 svg-muted">
       @svg (eye)
     </span>
     {{ ViewHelper::number($torrent->views) }}
   </span>
-  <span class="text-nowrap mr-3">
+  <span class="text-nowrap mr-3 tooltipped tooltipped-n" aria-label="{{ trans('model.torrent.clicks') }}">
     <span class="mr-1 svg-muted">
       @svg (magnet)
     </span>
