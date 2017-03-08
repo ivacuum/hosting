@@ -7,7 +7,6 @@ use App\Notifications\TorrentCommented;
 use App\Notifications\TripCommented;
 use App\Torrent;
 use App\Trip;
-use App\User;
 
 class Ajax extends Controller
 {
@@ -35,7 +34,7 @@ class Ajax extends Controller
 
         $this->notifyUsersAboutComment($type, $model, $comment);
 
-        return back()->with('message', trans('comments.posted'));
+        return $this->redirectToComment($type, $model, $comment);
     }
 
     protected function notifiableModel($type, $id)
@@ -84,5 +83,22 @@ class Ajax extends Controller
         }
 
         return false;
+    }
+
+    protected function redirectToComment($type, $model, Comment $comment)
+    {
+        if ($type === 'news') {
+            return redirect()->action('News@show', [$model->id, "#comment-{$comment->id}"]);
+        }
+
+        if ($type === 'trip') {
+            return redirect()->action('Life@page', [$model->slug, "#comment-{$comment->id}"]);
+        }
+
+        if ($type === 'torrent') {
+            return redirect()->action('Torrents@torrent', [$model->id, "#comment-{$comment->id}"]);
+        }
+
+        return back()->with('message', trans('comments.posted'));
     }
 }
