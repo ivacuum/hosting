@@ -38,8 +38,6 @@ class Trip extends Model
     const STATUS_PUBLISHED = 1;
     const STATUS_HIDDEN = 2;
 
-    const AUTHOR_ID = 1;
-
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $dates = ['date_start', 'date_end'];
 

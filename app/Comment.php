@@ -47,4 +47,25 @@ class Comment extends Model
 
         return $this->created_at->formatLocalized($format);
     }
+
+    public function usersForNotification($model)
+    {
+        return self::with('user')
+            ->distinct()
+            ->where('rel_id', $model->id)
+            ->where('rel_type', class_basename($model))
+            ->get(['user_id'])
+            // Автор новости, заметки, раздачи
+            ->push([
+                'user' => $model->user,
+                'user_id' => $model->user_id,
+            ])
+            // Но без повторений
+            ->unique('user_id')
+            ->pluck('user')
+            // Фильтр удаленных пользователей
+            ->filter(function ($value) {
+                return !is_null($value);
+            });
+    }
 }

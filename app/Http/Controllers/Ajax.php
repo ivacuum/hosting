@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Mail\Feedback;
+use App\Comment;
 use App\News;
 use App\Notifications\NewsCommented;
 use App\Notifications\TorrentCommented;
@@ -55,26 +55,34 @@ class Ajax extends Controller
         throw new \Exception('Не выбран объект для комментирования');
     }
 
-    protected function notifyUsersAboutComment($type, $model, $comment)
+    protected function notifyUsersAboutComment($type, $model, Comment $comment)
     {
         event(new \App\Events\Stats\CommentAdded());
 
         if ($type === 'news') {
             event(new \App\Events\Stats\NewsCommented());
 
-            return $model->user->notify(new NewsCommented($model, $comment));
+            \Notification::send($comment->usersForNotification($model), new NewsCommented($model, $comment));
+
+            return true;
         }
 
         if ($type === 'trip') {
             event(new \App\Events\Stats\TripCommented());
 
-            return User::find(Trip::AUTHOR_ID)->notify(new TripCommented($model, $comment));
+            \Notification::send($comment->usersForNotification($model), new TripCommented($model, $comment));
+
+            return true;
         }
 
         if ($type === 'torrent') {
             event(new \App\Events\Stats\TorrentCommented());
 
-            return $model->user->notify(new TorrentCommented($model, $comment));
+            \Notification::send($comment->usersForNotification($model), new TorrentCommented($model, $comment));
+
+            return true;
         }
+
+        return false;
     }
 }
