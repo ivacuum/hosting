@@ -16,7 +16,9 @@
       <tr>
         <td class="text-right">{{ $user->id }}</td>
         <td class="text-center">
-          @include('tpl.avatar')
+          <a href="{{ action("$self@show", $user) }}">
+            @include('tpl.avatar')
+          </a>
         </td>
         <td><a class="link" href="{{ action("$self@show", $user) }}">{{ $user->publicName() }}</a></td>
         <td>{{ ViewHelper::dateShort($user->created_at) }}</td>
