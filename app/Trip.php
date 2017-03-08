@@ -8,6 +8,7 @@ use Symfony\Component\Finder\Finder;
  *
  * @property integer $id
  * @property integer $city_id
+ * @property integer $user_id
  * @property string  $title_ru
  * @property string  $title_en
  * @property string  $slug
@@ -55,6 +56,11 @@ class Trip extends Model
     public function country()
     {
         return $this->belongsTo(Country::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     // Scopes
@@ -115,6 +121,11 @@ class Trip extends Model
     public function getTitleAttribute()
     {
         return $this->{'title_' . \App::getLocale()};
+    }
+
+    public function getUserIdAttribute()
+    {
+        return 1;
     }
 
     public function getYearAttribute()
