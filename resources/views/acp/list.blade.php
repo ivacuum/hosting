@@ -4,9 +4,9 @@
 <h3 class="mt-0">
   {{ trans("$tpl.index") }}
   @if ($models instanceof Illuminate\Support\Collection)
-    <small>{{ sizeof($models) }}</small>
+    <small>{{ ViewHelper::number(sizeof($models)) }}</small>
   @else
-    <small>{{ $models->total() }}</small>
+    <small>{{ ViewHelper::number($models->total()) }}</small>
   @endif
   @if (method_exists("App\\Http\\Controllers\\{$self}", 'create'))
     @include('acp.tpl.create')
