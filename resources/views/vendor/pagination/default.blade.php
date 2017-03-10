@@ -1,6 +1,6 @@
 <ul class="pagination">
   @if (!$paginator->onFirstPage())
-    <li><a class="js-pjax" href="{{ $paginator->previousPageUrl() }}" id="previous_page" rel="prev">@svg (chevron-left)</a></li>
+    <li><a class="js-pjax tooltipped tooltipped-ne" href="{{ $paginator->previousPageUrl() }}" id="previous_page" rel="prev" aria-label="{{ trans('pagination.previous') }}">@svg (chevron-left)</a></li>
   @endif
 
   @foreach ($elements as $element)
@@ -20,6 +20,6 @@
   @endforeach
 
   @if ($paginator->hasMorePages())
-    <li><a class="js-pjax" href="{{ $paginator->nextPageUrl() }}" id="next_page" rel="next">@svg (chevron-right)</a></li>
+    <li><a class="js-pjax tooltipped tooltipped-nw" href="{{ $paginator->nextPageUrl() }}" id="next_page" rel="next" aria-label="{{ trans('pagination.next') }}">@svg (chevron-right)</a></li>
   @endif
 </ul>
