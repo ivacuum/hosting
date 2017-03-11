@@ -17,8 +17,6 @@ class Trips extends Controller
 
     public function create()
     {
-        $this->appendTemplates();
-
         return view('acp.create');
     }
 
@@ -34,8 +32,6 @@ class Trips extends Controller
 
     public function edit(Model $model)
     {
-        $this->appendTemplates();
-
         return view('acp.edit', compact('model'));
     }
 
@@ -69,23 +65,5 @@ class Trips extends Controller
         $model->update($request->all());
 
         return $this->redirectAfterUpdate($model);
-    }
-
-    protected function appendTemplates()
-    {
-        $templates = [];
-
-        foreach (glob(base_path('resources/views/life/trips/*.blade.php')) as $template) {
-            $info = pathinfo($template);
-            $filename = str_replace('.blade.php', '', $info['basename']);
-
-            if ($filename == 'base') {
-                continue;
-            }
-
-            $templates[] = $filename;
-        }
-
-        view()->share(compact('templates'));
     }
 }

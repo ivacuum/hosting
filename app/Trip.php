@@ -180,6 +180,11 @@ class Trip extends Model
         return $this->meta_title ?: "{$this->title} &middot; {$this->localizedDate()}";
     }
 
+    public function template()
+    {
+        return 'life.trips.'.str_replace('.', '_', $this->slug);
+    }
+
     /**
      * @return \Symfony\Component\Finder\Finder|\Symfony\Component\Finder\SplFileInfo[]
      */

@@ -85,4 +85,9 @@ class Gig extends Model
     {
         return $this->date->formatLocalized(trans('life.date.gig_short'));
     }
+
+    public function template()
+    {
+        return 'life.gigs.'.str_replace('.', '_', $this->slug);
+    }
 }

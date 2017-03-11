@@ -129,7 +129,7 @@ class Life extends Controller
 
     public function gig(Gig $gig)
     {
-        $tpl = "life.gigs.{$gig->tpl}";
+        $tpl = $gig->template();
 
         abort_unless(view()->exists($tpl), 404);
 
@@ -180,7 +180,7 @@ class Life extends Controller
 
     public function trip(Trip $trip)
     {
-        $tpl = "life.trips.{$trip->tpl}";
+        $tpl = $trip->template();
 
         abort_unless(view()->exists($tpl), 404);
 

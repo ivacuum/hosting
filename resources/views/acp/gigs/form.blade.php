@@ -53,22 +53,6 @@
   </div>
 </div>
 
-<div class="form-group {{ $errors->has('tpl') ? 'has-error' : '' }}">
-  <label class="col-md-3 control-label">Шаблон:</label>
-  <div class="col-md-6">
-    <div class="form-select">
-      <select class="form-control" name="tpl">
-        <option value="">—</option>
-        @foreach ($templates as $template)
-          <option value="{{ $template }}" {{ $template == old('tpl', @$model->tpl) ? 'selected' : '' }}>
-            {{ $template }}
-          </option>
-        @endforeach
-      </select>
-    </div>
-  </div>
-</div>
-
 <div class="form-group {{ $errors->has('date') ? 'has-error' : '' }}">
   <label class="col-md-3 control-label required">Дата:</label>
   <div class="col-md-6">
