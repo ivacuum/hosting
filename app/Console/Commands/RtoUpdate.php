@@ -22,7 +22,7 @@ class RtoUpdate extends Command
 
                 // Раздача не найдена
                 if (is_null($json)) {
-                    $this->info("Раздача {$id} не найдена и удалена");
+                    $this->info("Раздача {$id} не найдена и удалена: {$torrent->title}");
                     $torrent->delete();
                     event(new \App\Events\Stats\TorrentNotFoundDeleted());
                     continue;
