@@ -113,10 +113,8 @@ class Life extends Controller
 
     public function country($slug)
     {
-        $country = Country::with('cities')->where('slug', $slug)->firstOrFail();
-        $trips = Trip::whereIn('city_id', $country->cities->pluck('id'))
-            ->orderBy('date_start', 'desc')
-            ->get();
+        $country = Country::where('slug', $slug)->firstOrFail();
+        $trips = $country->trips;
 
         \Breadcrumbs::push(trans('menu.life'), 'life');
         \Breadcrumbs::push(trans('menu.countries'), 'life/countries');

@@ -28,6 +28,12 @@ class Country extends Model
             ->orderBy(self::titleField());
     }
 
+    public function trips()
+    {
+        return $this->hasManyThrough(Trip::class, City::class)
+            ->orderBy('date_start', 'desc');
+    }
+
     public function getTitleAttribute()
     {
         return $this->{self::titleField()};
