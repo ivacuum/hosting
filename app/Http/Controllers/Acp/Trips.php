@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Acp;
 
+use App\City;
 use App\Http\Requests\Acp\TripCreate as ModelCreate;
 use App\Http\Requests\Acp\TripEdit as ModelEdit;
 use App\Notifications\TripPublished;
@@ -55,7 +56,13 @@ class Trips extends Controller
 
     public function store(ModelCreate $request)
     {
-        Model::create($request->all());
+        $city = City::findOrFail($request->input('city_id'));
+
+        $data = $request->all();
+        $data['title_ru'] = $city->title_ru;
+        $data['title_en'] = $city->title_en;
+
+        Model::create($data);
 
         return redirect()->action("{$this->class}@index");
     }
