@@ -21,17 +21,6 @@ class AppServiceProvider extends ServiceProvider
 
     public function register()
     {
-        // $this->app->bind(
-        //     'Illuminate\Contracts\Auth\Registrar',
-        //     'App\Services\Registrar'
-        // );
-
-        /*
-        \Event::listen('*', function ($name, array $event) {
-            print $name . '<br>';
-        });
-        */
-
         \Blade::directive('ru', function ($expression) {
             return '<?php if ($locale === \'ru\'): ?>';
         });
