@@ -11,8 +11,10 @@ export default class {
     $(this.container).css('opacity', 1)
   }
 
-  onSend() {
-    $(this.container).css('opacity', 0.5)
+  onSend(e) {
+    if (!$(e.relatedTarget).hasClass('js-pjax-no-dim')) {
+      $(this.container).css('opacity', 0.5)
+    }
   }
 
   setup() {

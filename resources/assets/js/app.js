@@ -129,7 +129,7 @@ class Application {
   }
 
   onPjaxSend() {
-    $(document).on('pjax:send', () => this.pjax.onSend())
+    $(document).on('pjax:send', (e) => this.pjax.onSend(e))
   }
 }
 
