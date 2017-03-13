@@ -1,4 +1,5 @@
 <div class="pic-container shortcuts-item">
+  <a name="{{ $pic }}"></a>
   <div class="pic-centered-container">
     <div class="pic">
       <img class="js-lazy"
