@@ -93,6 +93,12 @@ return [
     'servers.index' => 'Серверы',
     'servers.create' => 'Новый сервер',
 
+    'tags.add' => 'Добавить тэг',
+    'tags.edit' => 'Редактирование тэга',
+    'tags.show' => 'Тэг',
+    'tags.index' => 'Тэги',
+    'tags.create' => 'Новый тэг',
+
     'torrents.add' => 'Добавить торрент',
     'torrents.www' => 'Посмотреть на сайте',
     'torrents.edit' => 'Редактирование торрента',

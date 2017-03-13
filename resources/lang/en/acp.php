@@ -93,6 +93,12 @@ return [
     'servers.index' => 'Servers',
     'servers.create' => 'New server',
 
+    'tags.add' => 'Add tag',
+    'tags.edit' => 'Edit',
+    'tags.show' => 'Tag',
+    'tags.index' => 'Tags',
+    'tags.create' => 'New tag',
+
     'torrents.add' => 'Add torrent',
     'torrents.www' => 'View on site',
     'torrents.edit' => 'Edit',

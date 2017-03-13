@@ -12,6 +12,7 @@ use App\Image;
 use App\News;
 use App\Page;
 use App\Server;
+use App\Tag;
 use App\Torrent;
 use App\Trip;
 use App\User;
@@ -41,6 +42,7 @@ class RouteServiceProvider extends ServiceProvider
         \Route::model('News', News::class);
         \Route::model('Page', Page::class);
         \Route::model('Server', Server::class);
+        \Route::model('Tag', Tag::class);
         \Route::model('Torrent', Torrent::class);
         \Route::model('Trip', Trip::class);
         \Route::model('User', User::class);

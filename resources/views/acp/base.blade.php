@@ -7,7 +7,7 @@
 
 @section('global_menu')
 <li class="dropdown">
-  <a class="dropdown-toggle {{ in_array($self, ['Acp\Cities', 'Acp\Countries', 'Acp\Trips', 'Acp\Gigs', 'Acp\Artists']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
+  <a class="dropdown-toggle {{ in_array($self, ['Acp\Cities', 'Acp\Countries', 'Acp\Trips', 'Acp\Gigs', 'Acp\Artists', 'Acp\Tags', 'Acp\Photos']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
     {{ trans('menu.life') }}
     <span class="caret"></span>
   </a>
@@ -35,6 +35,11 @@
     <li>
       <a href="{{ $locale_uri }}/acp/artists">
         {{ trans('acp.artists.index') }}
+      </a>
+    </li>
+    <li>
+      <a href="{{ $locale_uri }}/acp/tags">
+        {{ trans('acp.tags.index') }}
       </a>
     </li>
   </ul>
