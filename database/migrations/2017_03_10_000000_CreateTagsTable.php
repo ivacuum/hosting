@@ -18,7 +18,7 @@ class CreateTagsTable extends Migration
         Schema::create('taggable', function (Blueprint $table) {
             $table->unsignedInteger('tag_id');
             $table->unsignedInteger('rel_id');
-            $table->string('rel_type');
+            $table->string('rel_type', 40);
 
             $table->primary(['tag_id', 'rel_id', 'rel_type']);
         });
