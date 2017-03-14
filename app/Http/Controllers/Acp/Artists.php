@@ -1,8 +1,7 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Artist as Model;
-use App\Http\Requests\Acp\ArtistCreate as ModelCreate;
-use App\Http\Requests\Acp\ArtistEdit as ModelEdit;
+use Illuminate\Validation\Rule;
 
 class Artists extends Controller
 {
@@ -38,17 +37,38 @@ class Artists extends Controller
         return view('acp.show', compact('model'));
     }
 
-    public function store(ModelCreate $request)
+    public function store()
     {
-        Model::create($request->all());
+        $this->validate($this->request, $this->rules());
+
+        Model::create($this->request->all());
 
         return redirect()->action("{$this->class}@index");
     }
 
-    public function update(Model $model, ModelEdit $request)
+    public function update(Model $model)
     {
-        $model->update($request->all());
+        $this->validate($this->request, $this->rules($model));
+
+        $model->update($this->request->all());
 
         return $this->redirectAfterUpdate($model);
+    }
+
+    protected function rules(Model $model = null)
+    {
+        $rules = [
+            'slug' => [
+                'bail',
+                'required',
+                Rule::unique('artists', 'slug')->ignore($model->id ?? null),
+                Rule::unique('cities', 'slug')->ignore($model->id ?? null),
+                Rule::unique('gigs', 'slug')->ignore($model->id ?? null),
+                Rule::unique('trips', 'slug')->ignore($model->id ?? null),
+            ],
+            'title' => 'required',
+        ];
+
+        return $rules;
     }
 }
