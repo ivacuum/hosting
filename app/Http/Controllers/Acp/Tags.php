@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Tag as Model;
+use Illuminate\Validation\Rule;
 
 class Tags extends Controller
 {
@@ -59,14 +60,15 @@ class Tags extends Controller
     protected function rules(Model $model = null)
     {
         $rules = [
-            'title_ru' => 'required|unique:tags,title_ru',
-            'title_en' => 'required|unique:tags,title_en',
+            'title_ru' => [
+                'required',
+                Rule::unique('tags', 'title_ru')->ignore($model->id ?? null),
+            ],
+            'title_en' => [
+                'required',
+                Rule::unique('tags', 'title_en')->ignore($model->id ?? null),
+            ],
         ];
-
-        if (!is_null($model)) {
-            $rules['title_ru'] .= ",{$model->id}";
-            $rules['title_en'] .= ",{$model->id}";
-        }
 
         return $rules;
     }
