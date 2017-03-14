@@ -1,9 +1,8 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\City as Model;
-use App\Http\Requests\Acp\CityCreate as ModelCreate;
-use App\Http\Requests\Acp\CityEdit as ModelEdit;
 use App\Services\GoogleGeocoder;
+use Illuminate\Validation\Rule;
 
 class Cities extends Controller
 {
@@ -47,16 +46,20 @@ class Cities extends Controller
         return view('acp.show', compact('model'));
     }
 
-    public function store(ModelCreate $request)
+    public function store()
     {
-        $model = Model::create($request->all());
+        $this->validate($this->request, $this->rules());
+
+        $model = Model::create($this->request->all());
 
         return redirect()->action("{$this->class}@show", $model);
     }
 
-    public function update(Model $model, ModelEdit $request)
+    public function update(Model $model)
     {
-        $model->update($request->except('goto'));
+        $this->validate($this->request, $this->rules($model));
+
+        $model->update($this->request->all());
 
         return $this->redirectAfterUpdate($model);
     }
@@ -71,5 +74,22 @@ class Cities extends Controller
         ]);
 
         return back()->with('message', "Геоданные обновлены: [{$model->lat} {$model->lon}]");
+    }
+
+    protected function rules(Model $model = null)
+    {
+        return [
+            'slug' => [
+                'bail',
+                'required',
+                Rule::unique('artists', 'slug')->ignore($model->id ?? null),
+                Rule::unique('cities', 'slug')->ignore($model->id ?? null),
+                Rule::unique('gigs', 'slug')->ignore($model->id ?? null),
+                Rule::unique('trips', 'slug')->ignore($model->id ?? null),
+            ],
+            'title_ru' => 'required',
+            'title_en' => 'required',
+            'country_id' => 'required|integer|min:1',
+        ];
     }
 }

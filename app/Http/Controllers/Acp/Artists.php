@@ -57,7 +57,7 @@ class Artists extends Controller
 
     protected function rules(Model $model = null)
     {
-        $rules = [
+        return [
             'slug' => [
                 'bail',
                 'required',
@@ -68,7 +68,5 @@ class Artists extends Controller
             ],
             'title' => 'required',
         ];
-
-        return $rules;
     }
 }
