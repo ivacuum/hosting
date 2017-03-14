@@ -14,7 +14,6 @@ class CreateGigsTable extends Migration
             $table->string('title_ru');
             $table->string('title_en');
             $table->string('slug');
-            $table->string('tpl');
             $table->timestamp('date')->nullable();
             $table->tinyInteger('status')->unsigned()->default(0);
             $table->string('meta_title_ru');

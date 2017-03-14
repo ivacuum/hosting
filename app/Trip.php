@@ -12,7 +12,6 @@ use Symfony\Component\Finder\Finder;
  * @property string  $title_ru
  * @property string  $title_en
  * @property string  $slug
- * @property string  $tpl
  * @property \Carbon\Carbon $date_start
  * @property \Carbon\Carbon $date_end
  * @property integer $status

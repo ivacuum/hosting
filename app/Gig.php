@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $title_ru
  * @property string  $title_en
  * @property string  $slug
- * @property string  $tpl
  * @property \Carbon\Carbon $date
  * @property integer $status
  * @property string  $meta_title_ru

@@ -12,7 +12,6 @@ class CreateTripsTable extends Migration
             $table->unsignedInteger('city_id')->default(0);
             $table->string('title_ru');
             $table->string('slug');
-            $table->string('tpl');
             $table->timestamp('date_start')->nullable();
             $table->timestamp('date_end')->nullable();
             $table->unsignedTinyInteger('status')->default(0);
