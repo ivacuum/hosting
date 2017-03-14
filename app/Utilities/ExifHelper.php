@@ -60,8 +60,8 @@ class ExifHelper
         $locale = localeconv();
 
         /* Обработка разделителей с учетом текущей локали */
-        $lat = str_replace($locale['decimal_point'], '.', $lat);
-        $lon = str_replace($locale['decimal_point'], '.', $lon);
+        $lat = str_replace($locale['decimal_point'], '.', round($lat, 6));
+        $lon = str_replace($locale['decimal_point'], '.', round($lon, 6));
 
         return compact('lat', 'lon');
     }
