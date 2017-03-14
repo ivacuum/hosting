@@ -41,7 +41,7 @@ class City extends Model
         return $this->{self::titleField()};
     }
 
-    public function getInitial()
+    public function initial()
     {
         return mb_substr($this->title, 0, 1);
     }

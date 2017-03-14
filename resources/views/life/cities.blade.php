@@ -16,7 +16,7 @@
 <div class="cities-columns">
   @php ($initial = $current_initial = false)
   @foreach ($cities as $city)
-    @php ($current_initial = $city->getInitial())
+    @php ($current_initial = $city->initial())
     <div class="city-entry pb-2">
       @if ($initial !== $current_initial)
         <span class="city-initial">{{ $current_initial }}</span>
