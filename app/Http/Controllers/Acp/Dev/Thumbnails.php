@@ -33,8 +33,11 @@ class Thumbnails extends Controller
             ->quality(75)
             ->convert($file->getRealPath());
 
-        rename($image->getRealPath(), public_path('uploads/temp/'.$file->getClientOriginalName()));
+        $pathinfo = pathinfo($file->getClientOriginalName());
+        $filename = $pathinfo['filename'].'.'.strtolower($pathinfo['extension']);
 
-        return ['filename' => $file->getClientOriginalName()];
+        rename($image->getRealPath(), public_path("uploads/temp/{$filename}"));
+
+        return ['filename' => $filename];
     }
 }

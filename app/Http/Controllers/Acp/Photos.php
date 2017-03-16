@@ -47,10 +47,13 @@ class Photos extends CommonController
             $coords = ['lat' => null, 'lon' => null];
         }
 
+        $pathinfo = pathinfo($file->getClientOriginalName());
+        $filename = $pathinfo['filename'].'.'.strtolower($pathinfo['extension']);
+
         $photo = $model->photos()->create([
             'lat' => $coords['lat'] ?? '',
             'lon' => $coords['lon'] ?? '',
-            'slug' => "{$model->slug}/{$file->getClientOriginalName()}",
+            'slug' => "{$model->slug}/{$filename}",
             'views' => 0,
             'user_id' => $this->request->user()->id,
         ]);
