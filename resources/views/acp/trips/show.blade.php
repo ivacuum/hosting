@@ -9,7 +9,7 @@
   <a class="link" href="{{ action('Acp\Photos@create', [$model->getForeignKey() => $model->id]) }}">Добавить фотографии</a>
 </div>
 @if ($model->meta_image)
-  <div>
+  <div class="mt-3">
     <img class="img-responsive img-rounded" src="{{ $model->metaImage() }}">
   </div>
 @endif
