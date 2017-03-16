@@ -10,6 +10,10 @@
     <input class="js-append-formdata" type="hidden" name="trip_id" value="{{ Request::input('trip_id') }}">
   @endif
 @else
+  <div class="mb-3">
+    <img class="img-responsive img-rounded" src="{{ $model->originalUrl() }}">
+  </div>
+
   <div class="form-group {{ $errors->has('tags') ? 'has-error' : '' }}">
     <label class="col-md-3 control-label">Тэги:</label>
     <div class="col-md-9 checkbox">
