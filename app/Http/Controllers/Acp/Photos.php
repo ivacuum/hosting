@@ -41,9 +41,11 @@ class Photos extends CommonController
             throw new \Exception('Необходимо предоставить хотя бы один файл');
         }
 
-        $exif = exif_read_data($file->getRealPath());
-
-        $coords = ExifHelper::latLon($exif);
+        try {
+            $coords = ExifHelper::latLon(exif_read_data($file->getRealPath()));
+        } catch (\ErrorException $e) {
+            $coords = ['lat' => null, 'lon' => null];
+        }
 
         $photo = $model->photos()->create([
             'lat' => $coords['lat'] ?? '',
