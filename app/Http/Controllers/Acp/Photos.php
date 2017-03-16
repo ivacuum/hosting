@@ -46,8 +46,8 @@ class Photos extends CommonController
         $coords = ExifHelper::latLon($exif);
 
         $photo = $model->photos()->create([
-            'lat' => $coords['lat'],
-            'lon' => $coords['lon'],
+            'lat' => $coords['lat'] ?? '',
+            'lon' => $coords['lon'] ?? '',
             'slug' => "{$model->slug}/{$file->getClientOriginalName()}",
             'views' => 0,
             'user_id' => $this->request->user()->id,
