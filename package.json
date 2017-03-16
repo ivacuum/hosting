@@ -1,14 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "dev": "node node_modules/webpack/bin/webpack.js --progress --hide-modules --config=$npm_package_config_webpack",
-    "watch": "node run dev -- --watch",
-    "watch-poll": "node run dev -- --watch --watch-poll",
-    "hot": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=npm_package_config_webpack",
-    "production": "node run dev -- -p"
-  },
-  "config": {
-    "webpack": "node_modules/laravel-mix/setup/webpack.config.js"
+    "dev": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
     "autosize": "^3.0.0",
