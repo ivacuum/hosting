@@ -50,9 +50,9 @@ class Trip extends Model
         return $this->morphMany(Comment::class, 'rel');
     }
 
-    public function country()
+    public function photos()
     {
-        return $this->belongsTo(Country::class);
+        return $this->morphMany(Photo::class, 'rel');
     }
 
     public function user()
