@@ -3,7 +3,7 @@
 use App\Artist as Model;
 use Illuminate\Validation\Rule;
 
-class Artists extends Controller
+class Artists extends CommonController
 {
     public function index()
     {
@@ -12,50 +12,11 @@ class Artists extends Controller
         return view($this->view, compact('models'));
     }
 
-    public function create()
-    {
-        return view('acp.create');
-    }
-
-    public function destroy(Model $model)
-    {
-        $model->delete();
-
-        return [
-            'status'   => 'OK',
-            'redirect' => action("{$this->class}@index"),
-        ];
-    }
-
-    public function edit(Model $model)
-    {
-        return view('acp.edit', compact('model'));
-    }
-
-    public function show(Model $model)
-    {
-        return view('acp.show', compact('model'));
-    }
-
-    public function store()
-    {
-        $this->validate($this->request, $this->rules());
-
-        Model::create($this->request->all());
-
-        return redirect()->action("{$this->class}@index");
-    }
-
-    public function update(Model $model)
-    {
-        $this->validate($this->request, $this->rules($model));
-
-        $model->update($this->request->all());
-
-        return $this->redirectAfterUpdate($model);
-    }
-
-    protected function rules(Model $model = null)
+    /**
+     * @param  Model|null $model
+     * @return array
+     */
+    protected function rules($model = null)
     {
         return [
             'slug' => [

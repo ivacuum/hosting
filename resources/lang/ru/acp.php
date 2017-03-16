@@ -10,7 +10,6 @@ return [
     'artists.create' => 'Новый артист',
 
     'cities.add' => 'Добавить город',
-    'cities.www' => 'Посмотреть на сайте',
     'cities.edit' => 'Редактирование города',
     'cities.show' => 'Город',
     'cities.index' => 'Города',
@@ -28,12 +27,10 @@ return [
     'comments.index' => 'Комментарии',
 
     'countries.add' => 'Добавить страну',
-    'countries.www' => 'Посмотреть на сайте',
     'countries.edit' => 'Редактирование страны',
     'countries.show' => 'Страна',
     'countries.index' => 'Страны',
     'countries.create' => 'Новая страна',
-    'countries.cities' => 'Города',
 
     'dev.svg' => 'SVG',
     'dev.logs' => 'Логи',
@@ -59,7 +56,6 @@ return [
     'files.create' => 'Новый файл',
 
     'gigs.add' => 'Добавить концерт',
-    'gigs.www' => 'Посмотреть на сайте',
     'gigs.edit' => 'Редактирование концерта',
     'gigs.show' => 'Концерт',
     'gigs.index' => 'Концерты',
@@ -67,25 +63,29 @@ return [
 
     'images.show' => 'Изображение',
     'images.view' => 'Засчитать просмотр',
-    'images.user' => 'Картинки пользователя',
+    'images.user' => 'Картинки автора',
     'images.index' => 'Изображения',
 
     'metrics.index' => 'Метрики',
 
     'news.add' => 'Добавить новость',
-    'news.www' => 'Посмотреть на сайте',
     'news.edit' => 'Редактирование новости',
     'news.show' => 'Новость',
     'news.index' => 'Новости',
     'news.create' => 'Написать новость',
     'news.notify' => 'Уведомить о публикации',
-    'news.comments' => 'Комментарии',
 
     'pages.add' => 'Добавить страницу',
     'pages.edit' => 'Редактирование страницы',
     'pages.show' => 'Страница',
     'pages.index' => 'Страницы',
     'pages.create' => 'Новая страница',
+
+    'photos.add' => 'Добавить фото',
+    'photos.edit' => 'Редактирование фото',
+    'photos.show' => 'Фотография',
+    'photos.index' => 'Фотографии',
+    'photos.create' => 'Новое фото',
 
     'servers.add' => 'Добавить сервер',
     'servers.edit' => 'Редактирование сервера',
@@ -100,17 +100,14 @@ return [
     'tags.create' => 'Новый тэг',
 
     'torrents.add' => 'Добавить торрент',
-    'torrents.www' => 'Посмотреть на сайте',
     'torrents.edit' => 'Редактирование торрента',
     'torrents.show' => 'Торрент',
     'torrents.user' => 'Автор',
     'torrents.index' => 'Торренты',
     'torrents.create' => 'Новый торрент',
-    'torrents.comments' => 'Комментарии',
     'torrents.update_rto' => 'Обновить с рутрекера',
 
     'trips.add' => 'Добавить поездку',
-    'trips.www' => 'Посмотреть на сайте',
     'trips.edit' => 'Редактирование поездки',
     'trips.show' => 'Поездка',
     'trips.index' => 'Поездки',
@@ -122,16 +119,14 @@ return [
     'users.show' => 'Пользователь',
     'users.index' => 'Пользователи',
     'users.create' => 'Новый пользователь',
-    'users.images' => 'Изображения',
-    'users.comments' => 'Комментарии',
-    'users.torrents' => 'Торренты',
 
-    'yandex.users.add' => 'Добавить аккаунт',
-    'yandex.users.edit' => 'Редактирование аккаунта',
-    'yandex.users.show' => 'Аккаунт',
-    'yandex.users.index' => 'Аккаунты в Яндексе',
-    'yandex.users.create' => 'Новый аккаунт',
+    'yandex-users.add' => 'Добавить аккаунт',
+    'yandex-users.edit' => 'Редактирование аккаунта',
+    'yandex-users.show' => 'Аккаунт',
+    'yandex-users.index' => 'Аккаунты в Яндексе',
+    'yandex-users.create' => 'Новый аккаунт',
 
+    'www' => 'Посмотреть на сайте',
     'save' => 'Сохранить',
     'apply' => 'Применить',
     'delete' => 'Удалить',

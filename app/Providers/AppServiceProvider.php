@@ -1,6 +1,7 @@
 <?php namespace App\Providers;
 
 use App\News;
+use App\Photo;
 use App\Torrent;
 use App\Trip;
 use App\User;
@@ -15,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
             'News' => News::class,
             'Trip' => Trip::class,
             'User' => User::class,
+            'Photo' => Photo::class,
             'Torrent' => Torrent::class,
         ]);
     }

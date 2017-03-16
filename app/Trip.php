@@ -131,6 +131,11 @@ class Trip extends Model
     }
 
     // Methods
+    public function breadcrumb()
+    {
+        return "{$this->title} {$this->localizedDate()}";
+    }
+
     public function cityTimeline()
     {
         return $this->where('city_id', $this->city_id)
@@ -182,6 +187,11 @@ class Trip extends Model
     public function template()
     {
         return 'life.trips.'.str_replace('.', '_', $this->slug);
+    }
+
+    public function www()
+    {
+        return action('Life@page', $this->slug);
     }
 
     /**

@@ -14,13 +14,6 @@ abstract class Controller extends BaseController
      */
     protected $breadcrumbs_prefix;
 
-    /**
-     * Параметр-заголовок для цепочки навигации
-     *
-     * @var string
-     */
-    protected $title_attr = 'title';
-
     public function __construct()
     {
         parent::__construct();
@@ -44,8 +37,13 @@ abstract class Controller extends BaseController
 
     protected function alwaysCallBefore(...$parameters)
     {
-        /* Сборка цепочки навигации */
-        $method = 'breadcrumbs' . Str::ucfirst($this->method);
+        $this->populateBreadcrumbs(...$parameters);
+        $this->beforeCallAction(...$parameters);
+    }
+
+    protected function beforeCallAction(...$parameters)
+    {
+        $method = "{$this->method}Before";
 
         if (method_exists($this, $method)) {
             call_user_func_array([$this, $method], $parameters);
@@ -57,10 +55,10 @@ abstract class Controller extends BaseController
         Breadcrumbs::push(trans($this->view));
     }
 
-    protected function breadcrumbsEdit(Model $model)
+    protected function breadcrumbsCurrentSubpage(Model $model)
     {
         Breadcrumbs::push(
-            $model->{$this->title_attr},
+            $model->breadcrumb(),
             "{$this->breadcrumbs_prefix}/{$model->getRouteKey()}"
         );
 
@@ -69,7 +67,30 @@ abstract class Controller extends BaseController
 
     protected function breadcrumbsShow(Model $model)
     {
-        Breadcrumbs::push($model->{$this->title_attr});
+        Breadcrumbs::push($model->breadcrumb());
+    }
+
+    protected function populateBreadcrumbs(...$parameters)
+    {
+        /* Сборка цепочки навигации */
+        $method = 'breadcrumbs' . Str::ucfirst($this->method);
+
+        if (method_exists($this, $method)) {
+            call_user_func_array([$this, $method], $parameters);
+        }
+    }
+
+    protected function redirectAfterDestroy()
+    {
+        return [
+            'status' => 'OK',
+            'redirect' => action("{$this->class}@index"),
+        ];
+    }
+
+    protected function redirectAfterStore($model)
+    {
+        return redirect()->action("{$this->class}@index");
     }
 
     protected function redirectAfterUpdate(Model $model, $method = 'index')

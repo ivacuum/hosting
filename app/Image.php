@@ -45,6 +45,11 @@ class Image extends Model
         return implode('/', str_split($this->date, 2));
     }
 
+    public function breadcrumb()
+    {
+        return "#{$this->id}";
+    }
+
     public function deleteFiles()
     {
         $files = [

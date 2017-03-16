@@ -1,84 +1,18 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Http\Requests\Acp\UserCreate as ModelCreate;
-use App\Http\Requests\Acp\UserEdit as ModelEdit;
 use App\User as Model;
+use Illuminate\Validation\Rule;
 use Mail;
 
-class Users extends Controller
+class Users extends CommonController
 {
-    protected $title_attr = 'email';
+    protected $show_with_count = ['comments', 'images', 'torrents'];
 
     public function index()
     {
         $models = Model::orderBy('id', 'desc')->paginate();
 
         return view($this->view, compact('models'));
-    }
-
-    public function create()
-    {
-        return view('acp.create');
-    }
-
-    public function destroy(Model $model)
-    {
-        $model->delete();
-
-        return [
-            'status'   => 'OK',
-            'redirect' => action("{$this->class}@index"),
-        ];
-    }
-
-    public function edit(Model $model)
-    {
-        return view('acp.edit', compact('model'));
-    }
-
-    public function show(Model $model)
-    {
-        return view($this->view, compact('model'));
-    }
-
-    public function store(ModelCreate $request)
-    {
-        $random_password = $request->input('random_password');
-        $password = $random_password ? str_random(16) : $request->input('password');
-
-        $model = new Model;
-        $model->email    = $request->input('email');
-        $model->password = $password;
-        $model->status   = $request->input('status', 0);
-        $model->save();
-
-        if ($request->input('mail_credentials')) {
-            $this->mailCredentials($model, $password);
-        }
-
-        return redirect()->action("{$this->class}@index");
-    }
-
-    public function update(Model $model, ModelEdit $request)
-    {
-        $random_password = $request->input('random_password');
-        $password = $random_password ? str_random(16) : $request->input('password');
-        $mail_credentials = $request->input('mail_credentials');
-
-        $model->email    = $request->input('email');
-        $model->status   = $request->input('status', 0);
-
-        if ($password) {
-            $model->password = $password;
-        }
-
-        $model->save();
-
-        if ($password && $mail_credentials) {
-            $this->mailCredentials($model, $password);
-        }
-
-        return $this->redirectAfterUpdate($model);
     }
 
     protected function mailCredentials(Model $model, $password)
@@ -91,5 +25,63 @@ class Users extends Controller
         });
 
         $this->request->session()->flash('message', "Данные высланы на почту {$model->email}");
+    }
+
+    /**
+     * @param  Model|null $model
+     * @return array
+     */
+    protected function rules($model = null)
+    {
+        return [
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users', 'email')->ignore($model->id ?? null),
+            ],
+            'status' => 'boolean',
+            'password' => is_null($model) ? 'required_without:random_password|min:6' : 'min:6',
+        ];
+    }
+
+    protected function storeModel()
+    {
+        $random_password = $this->request->input('random_password');
+        $password = $random_password ? str_random(16) : $this->request->input('password');
+
+        $model = new Model;
+        $model->email = $this->request->input('email');
+        $model->status = $this->request->input('status', 0);
+        $model->password = $password;
+        $model->save();
+
+        if ($this->request->input('mail_credentials')) {
+            $this->mailCredentials($model, $password);
+        }
+
+        return $model;
+    }
+
+    /**
+     * @param Model $model
+     */
+    protected function updateModel($model)
+    {
+        $random_password = $this->request->input('random_password');
+        $password = $random_password ? str_random(16) : $this->request->input('password');
+        $mail_credentials = $this->request->input('mail_credentials');
+
+        $model->email = $this->request->input('email');
+        $model->status = $this->request->input('status', Model::STATUS_INACTIVE);
+
+        if ($password) {
+            $model->password = $password;
+        }
+
+        $model->save();
+
+        if ($password && $mail_credentials) {
+            $this->mailCredentials($model, $password);
+        }
     }
 }

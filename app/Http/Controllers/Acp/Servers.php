@@ -1,51 +1,25 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Server as Model;
-use App\Http\Requests\Acp\ServerCreate as ModelCreate;
-use App\Http\Requests\Acp\ServerEdit as ModelEdit;
 
-class Servers extends Controller
+class Servers extends CommonController
 {
     public function index()
     {
-        $models = Model::get();
+        $models = Model::paginate();
 
         return view($this->view, compact('models'));
     }
 
-    public function create()
+    protected function rules($model = null)
     {
-        return view('acp.create');
-    }
-
-    public function destroy(Model $model)
-    {
-        $model->delete();
-
         return [
-            'status'   => 'OK',
-            'redirect' => action("{$this->class}@index"),
+            'host' => 'required',
+            'title' => 'required',
         ];
     }
 
-    public function edit(Model $model)
-    {
-        return view('acp.edit', compact('model'));
-    }
-
-    public function show(Model $model)
-    {
-        return view($this->view, compact('model'));
-    }
-
-    public function store(ModelCreate $request)
-    {
-        Model::create($request->all());
-
-        return redirect()->action("{$this->class}@index");
-    }
-
-    public function update(Model $model, ModelEdit $request)
+    protected function updateModel($model)
     {
         $input = $this->request->all();
 
@@ -59,7 +33,5 @@ class Servers extends Controller
         }
 
         $model->update($input);
-
-        return $this->redirectAfterUpdate($model);
     }
 }

@@ -1,12 +1,9 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class YandexUser extends Model
 {
-    use SoftDeletes;
-
     protected $fillable = ['account', 'token'];
     protected $hidden = ['token'];
 
@@ -24,5 +21,10 @@ class YandexUser extends Model
             Domain::where('yandex_user_id', $user->id)
                 ->update(['yandex_user_id' => 0]);
         });
+    }
+
+    public function breadcrumb()
+    {
+        return $this->account;
     }
 }

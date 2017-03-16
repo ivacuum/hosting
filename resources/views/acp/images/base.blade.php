@@ -1,29 +1,10 @@
-@extends('acp.base')
+@extends('acp.layout')
 
-@section('content_header')
-<div class="row">
-  <div class="col-sm-3">
-    <div class="list-group text-center">
-      <a class="list-group-item {{ $view == "$tpl.show" ? 'active' : '' }}" href="{{ action("$self@show", $model) }}">
-        {{ trans("$tpl.show") }}
-      </a>
-      <a class="list-group-item" href="{{ action("$self@view", $model) }}">
-        {{ trans("$tpl.view") }}
-      </a>
-      <a class="list-group-item" href="{{ action("$self@index", ['user_id' => $model->user_id]) }}">
-        {{ trans("$tpl.user") }}
-      </a>
-      @include('acp.tpl.delete')
-    </div>
-  </div>
-  <div class="col-sm-9">
-    <h2 class="mt-0">
-      @include('acp.tpl.back')
-      {{ $model->slug }}
-    </h2>
-@endsection
-
-@section('content_footer')
-  </div>
-</div>
+@section('model_menu')
+<a class="list-group-item" href="{{ action("$self@view", $model) }}">
+  {{ trans("$tpl.view") }}
+</a>
+<a class="list-group-item" href="{{ action("$self@index", ['user_id' => $model->user_id]) }}">
+  {{ trans("$tpl.user") }}
+</a>
 @endsection

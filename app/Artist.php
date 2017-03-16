@@ -14,4 +14,9 @@ use Illuminate\Database\Eloquent\Model;
 class Artist extends Model
 {
     protected $guarded = ['created_at', 'updated_at', 'goto'];
+
+    public function breadcrumb()
+    {
+        return $this->title;
+    }
 }

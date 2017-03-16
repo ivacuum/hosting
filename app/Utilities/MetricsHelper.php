@@ -2,7 +2,7 @@
 
 class MetricsHelper
 {
-    protected $fp = null;
+    protected $fp;
     protected $metrics;
 
     public function __construct()

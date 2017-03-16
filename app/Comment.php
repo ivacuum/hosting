@@ -35,6 +35,11 @@ class Comment extends Model
         return $query->where('rel_type', $type);
     }
 
+    public function breadcrumb()
+    {
+        return "#{$this->id}";
+    }
+
     public function fullDate()
     {
         $format = $this->created_at->year == date('Y') ? '%e&nbsp;%B, %H:%M' : '%e&nbsp;%B&nbsp;%Y, %H:%M';

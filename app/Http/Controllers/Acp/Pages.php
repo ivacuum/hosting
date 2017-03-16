@@ -1,10 +1,9 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Http\Requests\Acp\PageCreate as ModelCreate;
-use App\Http\Requests\Acp\PageEdit as ModelEdit;
 use App\Page as Model;
+use Illuminate\Validation\Rule;
 
-class Pages extends Controller
+class Pages extends CommonController
 {
     public function index()
     {
@@ -37,36 +36,16 @@ class Pages extends Controller
         return 'ok';
     }
 
-    public function create()
-    {
-        return view('acp.create');
-    }
-
-    public function destroy(Model $model)
-    {
-        $model->delete();
-
-        return [
-            'status'   => 'OK',
-            'redirect' => action("{$this->class}@index"),
-        ];
-    }
-
-    public function edit(Model $model)
-    {
-        return view('acp.edit', compact('model'));
-    }
-
     public function move()
     {
-        $what  = $this->request->input('what');
-        $how   = $this->request->input('how');
+        $how = $this->request->input('how');
+        $what = $this->request->input('what');
         $where = $this->request->input('where');
 
         switch ($how) {
+            case 'over': $method = 'makeChildOf'; break;
+            case 'after': $method = 'moveToRightOf'; break;
             case 'before': $method = 'moveToLeftOf'; break;
-            case 'after':  $method = 'moveToRightOf'; break;
-            case 'over':   $method = 'makeChildOf'; break;
             default: die('something very strange');
         }
 
@@ -75,28 +54,9 @@ class Pages extends Controller
         return 'ok';
     }
 
-    public function show(Model $model)
-    {
-        return view($this->view, compact('model'));
-    }
-
-    public function store(ModelCreate $request)
-    {
-        $model = Model::create($request->all());
-
-        return redirect()->action("{$this->class}@show", $model);
-    }
-
     public function tree()
     {
         return $this->getHierarchy(Model::get()->toHierarchy()->toArray());
-    }
-
-    public function update(Model $model, ModelEdit $request)
-    {
-        $model->update($request->all());
-
-        return $this->redirectAfterUpdate($model);
     }
 
     protected function getHierarchy($pages)
@@ -120,5 +80,21 @@ class Pages extends Controller
         }
 
         return $ary;
+    }
+
+    /**
+     * @param  Model|null $model
+     * @return array
+     */
+    protected function rules($model = null)
+    {
+        return [
+            'url' => [
+                'required',
+                Rule::unique('pages', 'url')->ignore($model->id ?? null),
+            ],
+            'title' => 'required',
+            'active' => 'boolean',
+        ];
     }
 }

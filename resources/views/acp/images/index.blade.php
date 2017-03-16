@@ -3,11 +3,7 @@
 @section('content')
 <h3 class="mt-0">
   {{ trans("$tpl.index") }}
-  <small>
-    {{ ViewHelper::number($models->total()) }}
-    <span class="mx-1">&middot;</span>
-    {{ ViewHelper::size($size) }}
-  </small>
+  <small>{{ ViewHelper::number($models->total()) }}</small>
 </h3>
 <div class="btn-toolbar mb-3">
   <div class="btn-group">

@@ -1,6 +1,6 @@
 @extends('acp.show')
 
 @section('content')
-<p><img class="screenshot" src="{{ $model->originalSecretUrl() }}"></p>
+<div><img class="screenshot" src="{{ $model->originalSecretUrl() }}"></div>
 @parent
 @endsection

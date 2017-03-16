@@ -1,13 +1,13 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Http\Requests\Acp\NewsCreate as ModelCreate;
-use App\Http\Requests\Acp\NewsEdit as ModelEdit;
 use App\News as Model;
 use App\Notifications\NewsPublished;
 use App\User;
 
-class News extends Controller
+class News extends CommonController
 {
+    protected $show_with_count = ['comments'];
+
     public function index()
     {
         $user_id = $this->request->input('user_id');
@@ -24,28 +24,10 @@ class News extends Controller
         return view($this->view, compact('models', 'user_id'));
     }
 
-    public function create()
+    public function notify($id)
     {
-        return view('acp.create');
-    }
+        $model = $this->getModel($id);
 
-    public function destroy(Model $model)
-    {
-        $model->delete();
-
-        return [
-            'status'   => 'OK',
-            'redirect' => action("{$this->class}@index"),
-        ];
-    }
-
-    public function edit(Model $model)
-    {
-        return view('acp.edit', compact('model'));
-    }
-
-    public function notify(Model $model)
-    {
         if ($model->status !== Model::STATUS_PUBLISHED) {
             return back()->with('message', 'Для рассылки уведомлений новость должна быть опубликована');
         }
@@ -57,25 +39,22 @@ class News extends Controller
         return back()->with('message', 'Уведомления разосланы пользователям: '.sizeof($users));
     }
 
-    public function show(Model $model)
+    protected function rules($model = null)
     {
-        return view($this->view, compact('model'));
+        return [
+            'html' => 'required',
+            'title' => 'required',
+            'site_id' => 'required|integer|min:1',
+        ];
     }
 
-    public function store(ModelCreate $request)
+    protected function storeModel()
     {
-        $data = $request->all();
+        $data = $this->request->all();
         $data['user_id'] = $this->request->user()->id;
 
-        Model::create($data);
+        $model = Model::create($data);
 
-        return redirect()->action("{$this->class}@index");
-    }
-
-    public function update(Model $model, ModelEdit $request)
-    {
-        $model->update($request->all());
-
-        return $this->redirectAfterUpdate($model);
+        return $model;
     }
 }

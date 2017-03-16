@@ -1,8 +1,14 @@
-@extends("$tpl.base", [
+@extends('acp.show', [
   'meta_title' => $model->domain,
 ])
 
 @section('content')
+@if (!$model->isExpired() && ($model->cms_url || ($model->alias_id && $model->alias->cms_url)))
+  <div class="mb-3">
+    @include("$tpl.cms_login", ['cms_button_class' => 'btn btn-default'])
+  </div>
+@endif
+
 @if ($model->text)
   <blockquote>{!! nl2br($model->text) !!}</blockquote>
 @endif
@@ -50,7 +56,7 @@
     <tr>
       <td><strong>Яндекс</strong></td>
       <td>
-        <a class="link" href="{{ action('Acp\Yandex\Users@show', $model->yandexUser->id) }}">
+        <a class="link" href="{{ action('Acp\YandexUsers@show', $model->yandexUser->id) }}">
           {{ $model->yandexUser->account }}
         </a>
       </td>
@@ -77,4 +83,5 @@
     <td>{{ $model->ns }}</td>
   </tr>
 </table>
+@parent
 @endsection

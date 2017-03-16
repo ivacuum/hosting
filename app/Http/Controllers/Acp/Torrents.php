@@ -2,12 +2,13 @@
 
 use App\Services\Rto;
 use App\Torrent as Model;
-use App\Http\Requests\Acp\TorrentCreate as ModelCreate;
-use App\Http\Requests\Acp\TorrentEdit as ModelEdit;
 use Carbon\Carbon;
+use Illuminate\Validation\Rule;
 
-class Torrents extends Controller
+class Torrents extends CommonController
 {
+    protected $show_with_count = ['comments'];
+
     public function index()
     {
         $user_id = $this->request->input('user_id');
@@ -24,35 +25,10 @@ class Torrents extends Controller
         return view($this->view, compact('models', 'user_id'));
     }
 
-    public function destroy(Model $model)
+    public function updateRto($id, Rto $rto)
     {
-        $model->delete();
+        $model = $this->getModel($id);
 
-        return [
-            'status'   => 'OK',
-            'redirect' => action("{$this->class}@index"),
-        ];
-    }
-
-    public function edit(Model $model)
-    {
-        return view('acp.edit', compact('model'));
-    }
-
-    public function show(Model $model)
-    {
-        return view('acp.show', compact('model'));
-    }
-
-    public function update(Model $model, ModelEdit $request)
-    {
-        $model->update($request->all());
-
-        return $this->redirectAfterUpdate($model);
-    }
-
-    public function updateRto(Model $model, Rto $rto)
-    {
         if (!is_array($data = $rto->torrentData($model->rto_id))) {
             return back()->with('message', 'Не удалось обновить информацию о раздаче');
         }
@@ -73,5 +49,22 @@ class Torrents extends Controller
 
         return redirect()->action("{$this->class}@show", $model)
             ->with('message', 'Раздача обновлена');
+    }
+
+    /**
+     * @param  Model|null $model
+     * @return array
+     */
+    protected function rules($model = null)
+    {
+        return [
+            'html' => 'required',
+            'title' => 'required',
+            'rto_id' => [
+                'required',
+                Rule::unique('torrents', 'rto_id')->ignore($model->id ?? null),
+            ],
+            'info_hash' => 'required',
+        ];
     }
 }

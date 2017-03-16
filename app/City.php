@@ -41,6 +41,11 @@ class City extends Model
         return $this->{self::titleField()};
     }
 
+    public function breadcrumb()
+    {
+        return "{$this->country->emoji} {$this->title}";
+    }
+
     public function initial()
     {
         return mb_substr($this->title, 0, 1);
@@ -49,6 +54,11 @@ class City extends Model
     public function isOnMap()
     {
         return $this->lat && $this->lon;
+    }
+
+    public function www()
+    {
+        return action('Life@page', $this->slug);
     }
 
     public static function titleField()

@@ -3,10 +3,8 @@
 use App\Image as Model;
 use Carbon\Carbon;
 
-class Images extends Controller
+class Images extends CommonController
 {
-    protected $title_attr = 'id';
-
     public function index()
     {
         $type = $this->request->input('type');
@@ -28,12 +26,10 @@ class Images extends Controller
             $models = $models->where('user_id', $user_id);
         }
 
-        $size = $models->sum('size');
-
         $models = $models->paginate()
             ->appends(compact('touch', 'type', 'user_id', 'year'));
 
-        return view($this->view, compact('models', 'size', 'touch', 'type', 'user_id', 'year'));
+        return view($this->view, compact('models', 'touch', 'type', 'user_id', 'year'));
     }
 
     public function batch()
@@ -55,26 +51,21 @@ class Images extends Controller
         ];
     }
 
-    public function destroy(Model $model)
+    public function view($id)
     {
-        $model->delete();
+        $model = $this->getModel($id);
 
-        return [
-            'status' => 'OK',
-            'redirect' => $this->request->header('referer'), // action("{$this->class}@index"),
-        ];
-    }
-
-    public function show(Model $model)
-    {
-        return view($this->view, compact('model'));
-    }
-
-    public function view(Model $model)
-    {
         $model->views++;
         $model->save();
 
         return back();
+    }
+
+    protected function redirectAfterDestroy()
+    {
+        return [
+            'status' => 'OK',
+            'redirect' => $this->request->header('referer'),
+        ];
     }
 }

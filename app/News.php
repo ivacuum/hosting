@@ -41,6 +41,16 @@ class News extends Model
         return $query->where('status', self::STATUS_PUBLISHED);
     }
 
+    public function breadcrumb()
+    {
+        return $this->title;
+    }
+
+    public function www()
+    {
+        return action('News@show', $this->id);
+    }
+
     public static function interval($year, $month = null, $day = null)
     {
         $start = Carbon::createFromDate($year, $month, $day);

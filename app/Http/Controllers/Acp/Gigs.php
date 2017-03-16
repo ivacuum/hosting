@@ -1,10 +1,9 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Gig as Model;
-use App\Http\Requests\Acp\GigCreate as ModelCreate;
-use App\Http\Requests\Acp\GigEdit as ModelEdit;
+use Illuminate\Validation\Rule;
 
-class Gigs extends Controller
+class Gigs extends CommonController
 {
     public function index()
     {
@@ -13,42 +12,26 @@ class Gigs extends Controller
         return view($this->view, compact('models'));
     }
 
-    public function create()
+    /**
+     * @param  Model|null $model
+     * @return array
+     */
+    protected function rules($model = null)
     {
-        return view('acp.create');
-    }
-
-    public function destroy(Model $model)
-    {
-        $model->delete();
-
         return [
-            'status'   => 'OK',
-            'redirect' => action("{$this->class}@index"),
+            'slug' => [
+                'bail',
+                'required',
+                Rule::unique('artists', 'slug')->ignore($model->id ?? null),
+                Rule::unique('cities', 'slug')->ignore($model->id ?? null),
+                Rule::unique('gigs', 'slug')->ignore($model->id ?? null),
+                Rule::unique('trips', 'slug')->ignore($model->id ?? null),
+            ],
+            'date' => 'required|date',
+            'city_id' => 'required|integer|min:1',
+            'title_ru' => 'required',
+            'title_en' => 'required',
+            'artist_id' => 'required|integer|min:1',
         ];
-    }
-
-    public function edit(Model $model)
-    {
-        return view('acp.edit', compact('model'));
-    }
-
-    public function show(Model $model)
-    {
-        return view($this->view, compact('model'));
-    }
-
-    public function store(ModelCreate $request)
-    {
-        Model::create($request->all());
-
-        return redirect()->action("{$this->class}@index");
-    }
-
-    public function update(Model $model, ModelEdit $request)
-    {
-        $model->update($request->all());
-
-        return $this->redirectAfterUpdate($model);
     }
 }

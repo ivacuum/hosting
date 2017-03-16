@@ -32,7 +32,7 @@ class Gig extends Model
     const STATUS_HIDDEN = 0;
     const STATUS_PUBLISHED = 1;
 
-    protected $guarded = ['created_at', 'updated_at'];
+    protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $dates = ['date'];
 
     public function artist()
@@ -70,6 +70,11 @@ class Gig extends Model
             ->groupBy('date.year');
     }
 
+    public function breadcrumb()
+    {
+        return "{$this->title} {$this->fullDate()}";
+    }
+
     public function fullDate()
     {
         return $this->date->formatLocalized(trans('life.date.same_day'));
@@ -88,5 +93,10 @@ class Gig extends Model
     public function template()
     {
         return 'life.gigs.'.str_replace('.', '_', $this->slug);
+    }
+
+    public function www()
+    {
+        return action('Life@page', $this->slug);
     }
 }

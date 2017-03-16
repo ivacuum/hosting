@@ -34,13 +34,18 @@ class Tag extends Model
         return $this->{self::titleField()};
     }
 
-    public static function titleField()
+    public function breadcrumb()
     {
-        return 'title_'.\App::getLocale();
+        return $this->title;
     }
 
     public function initial()
     {
         return mb_substr($this->title, 0, 1);
+    }
+
+    public static function titleField()
+    {
+        return 'title_'.\App::getLocale();
     }
 }

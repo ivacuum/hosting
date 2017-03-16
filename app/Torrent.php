@@ -52,6 +52,11 @@ class Torrent extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function breadcrumb()
+    {
+        return $this->title;
+    }
+
     public function externalLink()
     {
         return "https://rutracker.org/forum/viewtopic.php?t={$this->rto_id}";
@@ -73,6 +78,11 @@ class Torrent extends Model
     public function magnet()
     {
         return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode($this->title);
+    }
+
+    public function www()
+    {
+        return action('Torrents@torrent', $this->id);
     }
 
     public static function statsByCategories()

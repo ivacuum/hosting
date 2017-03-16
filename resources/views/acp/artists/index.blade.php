@@ -5,8 +5,8 @@
   <thead>
   <tr>
     <th class="text-right">#</th>
-    <th>Название</th>
-    <th>URL</th>
+    <th>{{ trans('model.artist.title') }}</th>
+    <th>{{ trans('model.artist.slug') }}</th>
   </tr>
   </thead>
   <tbody>

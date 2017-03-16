@@ -11,6 +11,7 @@ use App\Gig;
 use App\Image;
 use App\News;
 use App\Page;
+use App\Photo;
 use App\Server;
 use App\Tag;
 use App\Torrent;
@@ -41,24 +42,13 @@ class RouteServiceProvider extends ServiceProvider
         \Route::model('Image', Image::class);
         \Route::model('News', News::class);
         \Route::model('Page', Page::class);
+        \Route::model('Photo', Photo::class);
         \Route::model('Server', Server::class);
         \Route::model('Tag', Tag::class);
         \Route::model('Torrent', Torrent::class);
         \Route::model('Trip', Trip::class);
         \Route::model('User', User::class);
         \Route::model('YandexUser', YandexUser::class);
-
-        \Route::bind('CountryWithCounts', function ($id) {
-            return Country::withCount('cities')->findOrFail($id);
-        });
-
-        \Route::bind('NewsWithCounts', function ($id) {
-            return News::withCount('comments')->findOrFail($id);
-        });
-
-        \Route::bind('TorrentWithCounts', function ($id) {
-            return Torrent::withCount('comments')->findOrFail($id);
-        });
 
         \Route::bind('UserWithCounts', function ($id) {
             return User::withCount('comments', 'images', 'torrents')->findOrFail($id);

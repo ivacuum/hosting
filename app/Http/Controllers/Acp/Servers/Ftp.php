@@ -9,8 +9,10 @@ class Ftp extends Controller
 {
     protected $fs;
 
-    public function index(Server $server)
+    public function index($id)
     {
+        $server = $this->getModel($id);
+
         $this->initFs($server);
 
         $dir  = $this->request->input('dir', '/');
@@ -37,8 +39,10 @@ class Ftp extends Controller
         return view($this->view, compact('dir', 'dir_up', 'dirs', 'file', 'files', 'server'));
     }
 
-    public function dirPost(Server $server)
+    public function dirPost($id)
     {
+        $server = $this->getModel($id);
+
         $this->initFs($server);
 
         $this->validate($this->request, [
@@ -54,8 +58,10 @@ class Ftp extends Controller
         return redirect("/acp/servers/{$server->id}/ftp?dir={$path}");
     }
 
-    public function filePost(Server $server)
+    public function filePost($id)
     {
+        $server = $this->getModel($id);
+
         $this->initFs($server);
 
         $this->validate($this->request, [
@@ -71,8 +77,10 @@ class Ftp extends Controller
         return redirect("/acp/servers/{$server->id}/ftp?dir={$path}");
     }
 
-    public function source(Server $server)
+    public function source($id)
     {
+        $server = $this->getModel($id);
+
         $this->initFs($server);
 
         $file = $this->request->input('file');
@@ -85,8 +93,10 @@ class Ftp extends Controller
         return view($this->view, compact('dir_up', 'file', 'server', 'source'));
     }
 
-    public function sourcePost(Server $server)
+    public function sourcePost($id)
     {
+        $server = $this->getModel($id);
+
         $this->initFs($server);
 
         $this->validate($this->request, [
@@ -103,8 +113,10 @@ class Ftp extends Controller
         return redirect("/acp/servers/{$server->id}/ftp?dir=" . dirname($file));
     }
 
-    public function uploadPost(Server $server)
+    public function uploadPost($id)
     {
+        $server = $this->getModel($id);
+
         $this->initFs($server);
 
         $this->validate($this->request, [
@@ -120,6 +132,11 @@ class Ftp extends Controller
         fclose($stream);
 
         return redirect("/acp/servers/{$server->id}/ftp?dir={$path}");
+    }
+
+    protected function getModel($id)
+    {
+        return Server::findOrFail($id);
     }
 
     protected function initFs(Server $server)

@@ -8,9 +8,9 @@
   @else
     <small>{{ ViewHelper::number($models->total()) }}</small>
   @endif
-  @if (method_exists("App\\Http\\Controllers\\{$self}", 'create'))
+  @can('create', $model)
     @include('acp.tpl.create')
-  @endif
+  @endcan
 </h3>
 @if (sizeof($models))
   @yield('content-list')

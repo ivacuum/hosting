@@ -66,6 +66,12 @@ Route::get('notifications', 'Notifications@index')->middleware('auth');
 Route::get('parser/vk/{page?}/{date?}', 'ParserVk@index')->where('date', '\d{4}-\d{2}-\d{2}');
 Route::post('parser/vk', 'ParserVk@indexPost');
 
+Route::get('photos', 'Photos@index');
+Route::get('photos/map', 'Photos@map');
+Route::get('photos/tags', 'Photos@tags');
+Route::get('photos/tags/{Tag}', 'Photos@tag');
+Route::get('photos/{Photo}', 'Photos@show');
+
 Route::get('promocodes-coupons', 'Coupons@index');
 Route::get('promocodes-coupons/airbnb', 'Coupons@airbnb');
 Route::get('promocodes-coupons/digitalocean', 'Coupons@digitalocean');

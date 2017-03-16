@@ -1,6 +1,6 @@
 @include('tpl.form_errors')
 
-@if (isset($model))
+@if ($model->exists)
   <div class="form-group {{ $errors->has('title_ru') ? 'has-error' : '' }}">
     <label class="col-md-3 control-label required">Название:</label>
     <div class="col-md-6">

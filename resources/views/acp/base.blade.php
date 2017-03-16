@@ -42,10 +42,15 @@
         {{ trans('acp.tags.index') }}
       </a>
     </li>
+    <li>
+      <a href="{{ $locale_uri }}/acp/photos">
+        {{ trans('acp.photos.index') }}
+      </a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a class="dropdown-toggle {{ in_array($self, ['Acp\Clients', 'Acp\Domains', 'Acp\Servers', 'Acp\Pages', 'Acp\Users', 'Acp\Yandex\Users']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
+  <a class="dropdown-toggle {{ in_array($self, ['Acp\Clients', 'Acp\Domains', 'Acp\Servers', 'Acp\Pages', 'Acp\Users', 'Acp\YandexUsers']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
     {{ trans('menu.hosting') }}
     <span class="caret"></span>
   </a>
@@ -76,8 +81,8 @@
       </a>
     </li>
     <li>
-      <a href="{{ $locale_uri }}/acp/yandex/users">
-        {{ trans('acp.yandex.users.index') }}
+      <a href="{{ $locale_uri }}/acp/yandex-users">
+        {{ trans('acp.yandex-users.index') }}
       </a>
     </li>
   </ul>

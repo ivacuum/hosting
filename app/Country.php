@@ -39,6 +39,16 @@ class Country extends Model
         return $this->{self::titleField()};
     }
 
+    public function breadcrumb()
+    {
+        return "{$this->emoji} {$this->title}";
+    }
+
+    public function www()
+    {
+        return action('Life@country', $this->slug);
+    }
+
     public static function titleField()
     {
         return 'title_'.\App::getLocale();

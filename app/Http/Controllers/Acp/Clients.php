@@ -1,68 +1,31 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Client as Model;
-use App\Http\Requests\Acp\ClientCreate as ModelCreate;
-use App\Http\Requests\Acp\ClientEdit as ModelEdit;
+use Illuminate\Validation\Rule;
 
-class Clients extends Controller
+class Clients extends CommonController
 {
-    protected $title_attr = 'name';
+    protected $show_with_count = ['domains'];
 
     public function index()
     {
-        $models = Model::get();
+        $models = Model::paginate();
 
         return view($this->view, compact('models'));
     }
 
-    public function create()
+    /**
+     * @param  Model|null $model
+     * @return array
+     */
+    protected function rules($model = null)
     {
-        return view('acp.create');
-    }
-
-    public function destroy(Model $model)
-    {
-        $model->delete();
-
         return [
-            'status'   => 'OK',
-            'redirect' => action("{$this->class}@index"),
+            'name' => [
+                'required',
+                Rule::unique('clients', 'name')->ignore($model->id ?? null),
+            ],
+            'email' => 'email',
         ];
-    }
-
-    public function edit(Model $model)
-    {
-        return view('acp.edit', compact('model'));
-    }
-
-    public function show(Model $model)
-    {
-        $filter = '';
-        $q = $this->request->input('q');
-
-        $domains = $model->domains()->orderBy('paid_till');
-
-        if ($q) {
-            $domains = $domains->where('domain', 'LIKE', "%{$q}%");
-        }
-
-        $model->domains = $domains->paginate()
-            ->appends(compact('q'));
-
-        return view($this->view, compact('filter', 'model', 'q'));
-    }
-
-    public function store(ModelCreate $request)
-    {
-        Model::create($request->all());
-
-        return redirect()->action("{$this->class}@index");
-    }
-
-    public function update(Model $model, ModelEdit $request)
-    {
-        $model->update($request->all());
-
-        return $this->redirectAfterUpdate($model);
     }
 }

@@ -1,48 +1,26 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\City;
-use App\Http\Requests\Acp\TripCreate as ModelCreate;
-use App\Http\Requests\Acp\TripEdit as ModelEdit;
 use App\Notifications\TripPublished;
 use App\Trip as Model;
 use App\User;
+use Illuminate\Validation\Rule;
 
-class Trips extends Controller
+class Trips extends CommonController
 {
+    protected $show_with_count = ['comments', 'photos'];
+
     public function index()
     {
-        $models = Model::withCount('comments')->orderBy('date_start', 'desc')->get();
+        $models = Model::withCount('comments')->orderBy('date_start', 'desc')->paginate(100);
 
         return view($this->view, compact('models'));
     }
 
-    public function create()
+    public function notify($id)
     {
-        return view('acp.create');
-    }
+        $model = $this->getModel($id);
 
-    public function destroy(Model $model)
-    {
-        $model->delete();
-
-        return [
-            'status'   => 'OK',
-            'redirect' => action("{$this->class}@index"),
-        ];
-    }
-
-    public function edit(Model $model)
-    {
-        return view('acp.edit', compact('model'));
-    }
-
-    public function show(Model $model)
-    {
-        return view($this->view, compact('model'));
-    }
-
-    public function notify(Model $model)
-    {
         if ($model->status !== Model::STATUS_PUBLISHED) {
             return back()->with('message', 'Для рассылки уведомлений поездка должна быть опубликована');
         }
@@ -54,23 +32,39 @@ class Trips extends Controller
         return back()->with('message', 'Уведомления разосланы пользователям: '.sizeof($users));
     }
 
-    public function store(ModelCreate $request)
+    /**
+     * @param  Model|null $model
+     * @return array
+     */
+    protected function rules($model = null)
     {
-        $city = City::findOrFail($request->input('city_id'));
+        return [
+            'slug' => [
+                'bail',
+                'required',
+                Rule::unique('artists', 'slug')->ignore($model->id ?? null),
+                Rule::unique('cities', 'slug')->ignore($model->id ?? null),
+                Rule::unique('gigs', 'slug')->ignore($model->id ?? null),
+                Rule::unique('trips', 'slug')->ignore($model->id ?? null),
+            ],
+            'city_id' => 'required|integer|min:1',
+            'title_ru' => is_null($model) ? '' : 'required',
+            'title_en' => is_null($model) ? '' : 'required',
+            'date_end' => 'required|date',
+            'date_start' => 'required|date',
+        ];
+    }
 
-        $data = $request->all();
+    protected function storeModel()
+    {
+        $city = City::findOrFail($this->request->input('city_id'));
+
+        $data = $this->request->all();
         $data['title_ru'] = $city->title_ru;
         $data['title_en'] = $city->title_en;
 
-        Model::create($data);
+        $model = Model::create($data);
 
-        return redirect()->action("{$this->class}@index");
-    }
-
-    public function update(Model $model, ModelEdit $request)
-    {
-        $model->update($request->all());
-
-        return $this->redirectAfterUpdate($model);
+        return $model;
     }
 }

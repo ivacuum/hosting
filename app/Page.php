@@ -30,4 +30,9 @@ class Page extends Node
     {
         return $query->where('active', 1);
     }
+
+    public function breadcrumb()
+    {
+        return "{$this->title} {$this->url}";
+    }
 }

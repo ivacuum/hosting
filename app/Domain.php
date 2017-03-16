@@ -4,13 +4,9 @@ use App\Events\DomainWhoisUpdated;
 use Carbon\Carbon;
 use GuzzleHttp\Client as HttpClient;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Log;
 
 class Domain extends Model
 {
-    use SoftDeletes;
-
     const REGRU_API_URL = 'https://api.reg.ru/api/regru2/';
     const NS0 = 'dns1.yandex.net';
     const NS1 = 'dns2.yandex.net';
@@ -48,16 +44,11 @@ class Domain extends Model
         'db_pass',
     ];
 
-    protected $hidden = [];
+    protected $hidden = ['cms_pass', 'ftp_pass', 'ssh_pass', 'db_pass'];
 
     protected $perPage = 50;
 
     // Internal
-    public function getRouteKey()
-    {
-        return $this->domain;
-    }
-
     public function getRouteKeyName()
     {
         return 'domain';
@@ -151,6 +142,11 @@ class Domain extends Model
         $json = json_decode($response->getBody());
 
         return 'ok' !== $json->success ? $json->error : 'ok';
+    }
+
+    public function breadcrumb()
+    {
+        return $this->domain;
     }
 
     /**
@@ -461,7 +457,7 @@ class Domain extends Model
         $status = $json->answer->domains[0]->result;
 
         if ('success' != $status) {
-            Log::error('Unable to set yandex ns servers via reg.ru api', [
+            \Log::error('Unable to set yandex ns servers via reg.ru api', [
                 'context' => $response
             ]);
         }

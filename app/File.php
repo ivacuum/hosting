@@ -26,6 +26,11 @@ class File extends Model
         return "{$this->slug}.{$this->extension}";
     }
 
+    public function breadcrumb()
+    {
+        return $this->title;
+    }
+
     public function downloadPath()
     {
         return "https://ivacuum.org/d/{$this->project}/{$this->folder}/{$this->basename()}";

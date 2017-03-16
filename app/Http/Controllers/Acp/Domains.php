@@ -1,24 +1,21 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Domain as Model;
-use App\Http\Requests\Acp\DomainCreate as ModelCreate;
-use App\Http\Requests\Acp\DomainEdit as ModelEdit;
 use App\Mail\DomainMailboxes;
+use Illuminate\Validation\Rule;
 use Mail;
 
-class Domains extends Controller
+class Domains extends CommonController
 {
     const DEFAULT_ORDER_BY = 'domain';
 
-    protected $title_attr = 'domain';
-
     public function index()
     {
-        abort_unless($this->request->user()->isRoot(), 404);
-
+        $q = $this->request->input('q');
+        $sort = $this->request->input('sort');
         $filter = $this->request->input('filter');
-        $sort   = $this->request->input('sort');
-        $q      = $this->request->input('q');
+        $client_id = $this->request->input('client_id');
+        $yandex_user_id = $this->request->input('yandex_user_id');
 
         if (!in_array($sort, ['domain', 'registered_at', 'paid_till'])) {
             $sort = self::DEFAULT_ORDER_BY;
@@ -66,18 +63,26 @@ class Domains extends Controller
         if ($q) {
             $models = $models->where('domain', 'LIKE', "%{$q}%");
         }
+        if ($client_id) {
+            $models = $models->where('client_id', $client_id);
+        }
+        if ($yandex_user_id) {
+            $models = $models->where('yandex_user_id', $yandex_user_id);
+        }
 
         $models = $models->orderBy($sort)
             ->paginate()
-            ->appends(compact('sort', 'filter', 'q'));
+            ->appends(compact('sort', 'filter', 'q', 'yandex_user_id'));
 
         $back_url = $this->request->fullUrl();
 
         return view($this->view, compact('back_url', 'filter', 'models', 'sort', 'q'));
     }
 
-    public function addMailbox(Model $model)
+    public function addMailbox($domain)
     {
+        $model = $this->getModel($domain);
+
         $logins = $this->request->input('logins');
         $send_to = $this->request->input('send_to');
 
@@ -101,8 +106,10 @@ class Domains extends Controller
             ->with('message', "Данные высланы на почту {$send_to}");
     }
 
-    public function addNsRecord(Model $model)
+    public function addNsRecord($domain)
     {
+        $model = $this->getModel($domain);
+
         return $model->addNsRecord(
             $this->request->input('type'),
             $this->request->only('content', 'subdomain', 'priority', 'port', 'weight')
@@ -151,40 +158,26 @@ class Domains extends Controller
         return ['redirect' => action("{$this->class}@index", $params)];
     }
 
-    public function create()
+    public function deleteNsRecord($domain)
     {
-        return view('acp.create');
-    }
+        $model = $this->getModel($domain);
 
-    public function deleteNsRecord(Model $model)
-    {
         $id = $this->request->input('record_id');
 
         return $model->deleteNsRecord($id);
     }
 
-    public function destroy(Model $model)
+    public function dkimSecretKey($domain)
     {
-        $model->delete();
+        $model = $this->getModel($domain);
 
-        return [
-            'status'   => 'OK',
-            'redirect' => action("{$this->class}@index"),
-        ];
-    }
-
-    public function dkimSecretKey(Model $model)
-    {
         return nl2br($model->dkimSecretKey()->dkim->secretkey);
     }
 
-    public function edit(Model $model)
+    public function editNsRecord($domain)
     {
-        return view('acp.edit', compact('model'));
-    }
+        $model = $this->getModel($domain);
 
-    public function editNsRecord(Model $model)
-    {
         return $model->editNsRecord(
             $this->request->input('record_id'),
             $this->request->input('type'),
@@ -192,34 +185,50 @@ class Domains extends Controller
         );
     }
 
-    public function mailboxes(Model $model)
+    public function mailboxes($domain)
     {
+        $model = $this->getModel($domain);
+
+        $this->breadcrumbsCurrentSubpage($model);
+
         $mailboxes = $model->getMailboxes();
 
         return view($this->view, compact('mailboxes', 'model'));
     }
 
-    public function nsRecords(Model $model)
+    public function nsRecords($domain)
     {
+        $model = $this->getModel($domain);
+
+        $this->breadcrumbsCurrentSubpage($model);
+
         $records = $model->yandex_user_id ? $model->getNsRecords() : [];
 
         return view($this->view, compact('model', 'records'));
     }
 
-    public function nsServers(Model $model)
+    public function nsServers($domain)
     {
+        $model = $this->getModel($domain);
+
         dd($model->getNsServers());
     }
 
-    public function robots(Model $model)
+    public function robots($domain)
     {
+        $model = $this->getModel($domain);
+
+        $this->breadcrumbsCurrentSubpage($model);
+
         $robots = $model->getRobotsTxt();
 
         return view($this->view, compact('model', 'robots'));
     }
 
-    public function setServerNsRecords(Model $model)
+    public function setServerNsRecords($domain)
     {
+        $model = $this->getModel($domain);
+
         $server = $this->request->input('server');
 
         $model->setServerNsRecords($server);
@@ -227,8 +236,10 @@ class Domains extends Controller
         return redirect()->action("{$this->class}@nsRecords", $model);
     }
 
-    public function setYandexNs(Model $model)
+    public function setYandexNs($domain)
     {
+        $model = $this->getModel($domain);
+
         $status = $model->setYandexNs();
 
         $message = 'success' == $status
@@ -239,26 +250,60 @@ class Domains extends Controller
             ->with('message', $message);
     }
 
-    public function show(Model $model)
+    public function whois($domain)
     {
-        abort_unless($this->request->user()->id === 1, 404);
+        $model = $this->getModel($domain);
 
-        return view($this->view, compact('model'));
+        $this->breadcrumbsCurrentSubpage($model);
+
+        $model->updateWhois();
+
+        $whois = nl2br(trim($model->getWhoisData()));
+
+        return view($this->view, compact('model', 'whois'));
     }
 
-    public function store(ModelCreate $request)
+    public function yandexPddStatus($domain)
     {
-        $model = Model::create($request->all());
+        $model = $this->getModel($domain);
 
-        return redirect()->action("{$this->class}@show", $model);
+        dd($model->getPddStatus());
     }
 
-    public function update(Model $model, ModelEdit $request)
+    /**
+     * Служебный метод для автодополнения кода
+     *
+     * @param  string  $domain
+     * @return Model
+     */
+    protected function getModel($domain)
     {
-        $input = $request->all();
+        return parent::getModel($domain);
+    }
+
+    /**
+     * @param  Model|null $model
+     * @return array
+     */
+    protected function rules($model = null)
+    {
+        return [
+            'domain' => [
+                'required',
+                'min:3',
+                Rule::unique('domains', 'domain')->ignore($model->id ?? null),
+            ],
+            'active' => 'boolean',
+            'domain_control' => 'boolean',
+        ];
+    }
+
+    protected function updateModel($model)
+    {
+        $input = $this->request->all();
 
         /* Сохранение ранее указанных паролей */
-        $passwords = $request->only('cms_pass', 'ftp_pass', 'ssh_pass', 'db_pass');
+        $passwords = $this->request->only('cms_pass', 'ftp_pass', 'ssh_pass', 'db_pass');
 
         foreach ($passwords as $key => $value) {
             if (!$value) {
@@ -267,41 +312,5 @@ class Domains extends Controller
         }
 
         $model->update($input);
-
-        return $this->redirectAfterUpdate($model);
-    }
-
-    public function whois(Model $model)
-    {
-        $model->updateWhois();
-
-        $whois = nl2br(trim($model->getWhoisData()));
-
-        return view($this->view, compact('model', 'whois'));
-    }
-
-    public function yandexPddStatus(Model $model)
-    {
-        dd($model->getPddStatus());
-    }
-
-    protected function breadcrumbsMailboxes(Model $model)
-    {
-        $this->breadcrumbsEdit($model);
-    }
-
-    protected function breadcrumbsNsRecords(Model $model)
-    {
-        $this->breadcrumbsEdit($model);
-    }
-
-    protected function breadcrumbsRobots(Model $model)
-    {
-        $this->breadcrumbsEdit($model);
-    }
-
-    protected function breadcrumbsWhois(Model $model)
-    {
-        $this->breadcrumbsEdit($model);
     }
 }

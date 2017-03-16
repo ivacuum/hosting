@@ -99,6 +99,11 @@ class User extends Authenticatable
         return $this->avatar ? (new Avatar())->originalUrl($this->avatar) : '';
     }
 
+    public function breadcrumb()
+    {
+        return $this->email;
+    }
+
     public function displayName()
     {
         return $this->login ?: $this->email;
@@ -162,6 +167,11 @@ class User extends Authenticatable
         $this->save();
 
         return $avatar->originalUrl($filename);
+    }
+
+    public function www()
+    {
+        return action('Users@show', $this->id);
     }
 
     public function isPasswordOld()

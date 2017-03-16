@@ -4,7 +4,7 @@ use App\City as Model;
 use App\Services\GoogleGeocoder;
 use Illuminate\Validation\Rule;
 
-class Cities extends Controller
+class Cities extends CommonController
 {
     public function index()
     {
@@ -21,51 +21,10 @@ class Cities extends Controller
         return view($this->view, compact('models'));
     }
 
-    public function create()
+    public function updateGeo($id, GoogleGeocoder $geocoder)
     {
-        return view('acp.create');
-    }
+        $model = $this->getModel($id);
 
-    public function destroy(Model $model)
-    {
-        $model->delete();
-
-        return [
-            'status'   => 'OK',
-            'redirect' => action("{$this->class}@index"),
-        ];
-    }
-
-    public function edit(Model $model)
-    {
-        return view('acp.edit', compact('model'));
-    }
-
-    public function show(Model $model)
-    {
-        return view('acp.show', compact('model'));
-    }
-
-    public function store()
-    {
-        $this->validate($this->request, $this->rules());
-
-        $model = Model::create($this->request->all());
-
-        return redirect()->action("{$this->class}@show", $model);
-    }
-
-    public function update(Model $model)
-    {
-        $this->validate($this->request, $this->rules($model));
-
-        $model->update($this->request->all());
-
-        return $this->redirectAfterUpdate($model);
-    }
-
-    public function updateGeo(Model $model, GoogleGeocoder $geocoder)
-    {
         $geo = $geocoder->geocode("{$model->title}, {$model->country->title}")[0];
 
         $model->update([
@@ -76,7 +35,11 @@ class Cities extends Controller
         return back()->with('message', "Геоданные обновлены: [{$model->lat} {$model->lon}]");
     }
 
-    protected function rules(Model $model = null)
+    /**
+     * @param  Model|null $model
+     * @return array
+     */
+    protected function rules($model = null)
     {
         return [
             'slug' => [

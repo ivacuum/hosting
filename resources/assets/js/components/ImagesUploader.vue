@@ -7,7 +7,6 @@
                type="file"
                name="files[]"
                multiple
-               :max="max"
                @change="uploadFiles($event.currentTarget.files)">
         <span class="custom-file-control custom-file-multiple-control"></span>
       </label>
@@ -26,6 +25,8 @@
 
 <script>
 export default {
+  props: ['action', 'append'],
+
   data() {
     return {
       thumbnails: [],
@@ -46,9 +47,13 @@ export default {
     uploadFile(file) {
       let form = new FormData()
 
+      $(this.append).each((index, item) => {
+        form.append(item.name, item.value)
+      })
+
       form.append('file', file)
 
-      axios.post('/acp/dev/thumbnails', form).then((response) => {
+      axios.post(this.action, form).then((response) => {
         this.thumbnails.push(response.data)
         this.uploaded++
 

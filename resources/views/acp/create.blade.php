@@ -1,5 +1,7 @@
 @extends('acp.base')
 
+<?php Form::model($model); ?>
+
 @section('content')
 <h3 class="mt-0">
   @include('acp.tpl.back')

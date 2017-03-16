@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Acp\Controller;
 use App\Trip;
-use Breadcrumbs;
 
 class Templates extends Controller
 {
@@ -52,6 +51,6 @@ class Templates extends Controller
 
     protected function breadcrumbsTemplate($template)
     {
-        Breadcrumbs::push($template);
+        \Breadcrumbs::push($template);
     }
 }

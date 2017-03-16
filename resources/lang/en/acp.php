@@ -10,7 +10,6 @@ return [
     'artists.create' => 'New artist',
 
     'cities.add' => 'Add city',
-    'cities.www' => 'View on site',
     'cities.edit' => 'Edit',
     'cities.show' => 'City',
     'cities.index' => 'Cities',
@@ -28,12 +27,10 @@ return [
     'comments.index' => 'Comments',
 
     'countries.add' => 'Add country',
-    'countries.www' => 'View on site',
     'countries.edit' => 'Edit',
     'countries.show' => 'Country',
     'countries.index' => 'Countries',
     'countries.create' => 'New country',
-    'countries.cities' => 'Cities',
 
     'dev.svg' => 'SVG',
     'dev.logs' => 'Logs',
@@ -59,7 +56,6 @@ return [
     'files.create' => 'New File',
 
     'gigs.add' => 'Add gig',
-    'gigs.www' => 'View on site',
     'gigs.edit' => 'Edit',
     'gigs.show' => 'Gig',
     'gigs.index' => 'Gigs',
@@ -67,25 +63,29 @@ return [
 
     'images.show' => 'Image',
     'images.view' => 'Increment views',
-    'images.user' => 'User pics',
+    'images.user' => 'Author\'s pics',
     'images.index' => 'Images',
 
     'metrics.index' => 'Metrics',
 
     'news.add' => 'Post news',
-    'news.www' => 'View on site',
     'news.edit' => 'Edit',
     'news.show' => 'News',
     'news.index' => 'News',
     'news.create' => 'Write a news',
     'news.notify' => 'Notify about publication',
-    'news.comments' => 'Comments',
 
     'pages.add' => 'Add page',
     'pages.edit' => 'Edit',
     'pages.show' => 'Page',
     'pages.index' => 'Pages',
     'pages.create' => 'New page',
+
+    'photos.add' => 'Post a photo',
+    'photos.edit' => 'Edit a photo',
+    'photos.show' => 'A photo',
+    'photos.index' => 'Photos',
+    'photos.create' => 'Add a photo',
 
     'servers.add' => 'Add server',
     'servers.edit' => 'Edit',
@@ -100,17 +100,14 @@ return [
     'tags.create' => 'New tag',
 
     'torrents.add' => 'Add torrent',
-    'torrents.www' => 'View on site',
     'torrents.edit' => 'Edit',
     'torrents.show' => 'Torrent',
     'torrents.user' => 'Author',
     'torrents.index' => 'Torrents',
     'torrents.create' => 'New torrent',
-    'torrents.comments' => 'Comments',
     'torrents.update_rto' => 'Update from rutracker',
 
     'trips.add' => 'Add trip',
-    'trips.www' => 'View on site',
     'trips.edit' => 'Edit',
     'trips.show' => 'Trip',
     'trips.index' => 'Trips',
@@ -122,16 +119,14 @@ return [
     'users.show' => 'User',
     'users.index' => 'Users',
     'users.create' => 'New user',
-    'users.images' => 'Images',
-    'users.comments' => 'Comments',
-    'users.torrents' => 'Torrents',
 
-    'yandex.users.add' => 'Add account',
-    'yandex.users.edit' => 'Edit',
-    'yandex.users.show' => 'Account',
-    'yandex.users.index' => 'Yandex accounts',
-    'yandex.users.create' => 'New account',
+    'yandex-users.add' => 'Add account',
+    'yandex-users.edit' => 'Edit',
+    'yandex-users.show' => 'Account',
+    'yandex-users.index' => 'Yandex accounts',
+    'yandex-users.create' => 'New account',
 
+    'www' => 'View on site',
     'save' => 'Save',
     'apply' => 'Apply',
     'delete' => 'Delete',
