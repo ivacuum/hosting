@@ -17,15 +17,13 @@ class Photos extends Controller
     public function map()
     {
         \Breadcrumbs::push(trans('photos.index'), 'photos');
+        \Breadcrumbs::push(trans('photos.map'));
 
         return view($this->view);
     }
 
     public function show(Photo $photo)
     {
-        \Breadcrumbs::push(trans('photos.index'), 'photos');
-        \Breadcrumbs::push(trans('photos.show'));
-
         $tag_id = $this->request->input('tag_id');
 
         $next = Photo::where('id', '>', $photo->id);
@@ -47,12 +45,25 @@ class Photos extends Controller
 
         event(new \App\Events\Stats\PhotoViewed($photo->id));
 
+        \Breadcrumbs::push(trans('photos.index'), 'photos');
+
+        if ($tag_id) {
+            $tag = Tag::findOrFail($tag_id);
+
+            \Breadcrumbs::push(trans('photos.tags'), 'photos/tags');
+            \Breadcrumbs::push($tag->breadcrumb(), "photos/tags/{$tag_id}");
+        }
+
+        \Breadcrumbs::push(trans('photos.show'));
+
         return view($this->view, compact('next', 'photo', 'prev', 'tag_id'));
     }
 
     public function tag(Tag $tag)
     {
         \Breadcrumbs::push(trans('photos.index'), 'photos');
+        \Breadcrumbs::push(trans('photos.tags'), 'photos/tags');
+        \Breadcrumbs::push($tag->breadcrumb());
 
         event(new \App\Events\Stats\TagViewed($tag->id));
 
@@ -62,6 +73,7 @@ class Photos extends Controller
     public function tags()
     {
         \Breadcrumbs::push(trans('photos.index'), 'photos');
+        \Breadcrumbs::push(trans('photos.tags'));
 
         // Тэги с фотками
         $tags_ids = \DB::table('taggable')

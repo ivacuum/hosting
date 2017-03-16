@@ -36,7 +36,7 @@ class Tag extends Model
 
     public function breadcrumb()
     {
-        return $this->title;
+        return "#{$this->title}";
     }
 
     public function initial()
