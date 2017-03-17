@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content_header')
-<ul class="nav nav-link-tabs mb-4">
+<ul class="nav nav-link-tabs mb-3">
   <li class="{{ $view === 'photos.index' ? 'active' : '' }}">
     <a href="{{ action('Photos@index') }}">{{ trans('photos.new') }}</a>
   </li>
