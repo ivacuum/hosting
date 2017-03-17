@@ -19,7 +19,31 @@ class Photos extends Controller
         \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.map'));
 
-        return view($this->view);
+        $photos = Photo::with('rel')->where('lat', '<>', '')->where('lon', '<>', '')->oldest('id')->get();
+
+        $collection = [
+            'type' => 'FeatureCollection',
+            'features' => [],
+        ];
+
+        foreach ($photos as $i => $photo) {
+            $basename = basename($photo->slug);
+
+            $collection['features'][] = [
+                'type' => 'Feature',
+                'id' => $i,
+                'geometry' => [
+                    'type' => 'Point',
+                    'coordinates' => [$photo->lat, $photo->lon],
+                ],
+                'properties' => [
+                    'balloonContent' => sprintf('<p><a href="%s#%s">%s, %s %s<br><img class="image-200" src="%s"></a></p>', $photo->rel->www(), $basename, $photo->rel->title, $photo->rel->period, $photo->rel->year, $photo->thumbnailUrl()),
+                    'clusterCaption' => $basename,
+                ],
+            ];
+        }
+
+        return view($this->view, compact('collection'));
     }
 
     public function show(Photo $photo)
