@@ -49,6 +49,9 @@ return [
     'domains.mailboxes' => 'Яндекс-почта',
     'domains.ns_records' => 'Яндекс-DNS',
 
+    'external-identities.show' => 'Социальная учетка',
+    'external-identities.index' => 'Социальные учетки',
+
     'files.add' => 'Добавить файл',
     'files.edit' => 'Редактирование файла',
     'files.show' => 'Файл',

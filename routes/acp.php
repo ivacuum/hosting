@@ -87,6 +87,12 @@ Route::group(['prefix' => 'domains'], function () {
     Route::get('{domain}/whois', 'Acp\Domains@whois');
 });
 
+Route::group(['prefix' => 'external-identities'], function () {
+    Route::get('/', 'Acp\ExternalIdentities@index');
+    Route::get('{id}', 'Acp\ExternalIdentities@show');
+    Route::delete('{id}', 'Acp\ExternalIdentities@destroy');
+});
+
 Route::group(['prefix' => 'files'], function () {
     Route::get('/', 'Acp\Files@index');
     Route::post('/', 'Acp\Files@store');

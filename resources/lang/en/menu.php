@@ -7,6 +7,7 @@ return [
     'gigs' => 'Gigs',
     'home' => 'Home',
     'life' => 'Life',
+    'site' => 'Site',
     'trips' => 'Trips',
     'cities' => 'Cities',
     'artists' => 'Artists',

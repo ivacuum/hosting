@@ -6,6 +6,7 @@ use App\Client;
 use App\Comment;
 use App\Country;
 use App\Domain;
+use App\ExternalIdentity;
 use App\File;
 use App\Gig;
 use App\Image;
@@ -45,6 +46,7 @@ class AuthServiceProvider extends ServiceProvider
         Country::class => Base::class,
         Torrent::class => WithoutCreate::class,
         YandexUser::class => Base::class,
+        ExternalIdentity::class => WithoutCreateAndEdit::class,
     ];
 
     public function boot()

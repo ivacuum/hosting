@@ -4,6 +4,12 @@
   &:hover { background-color: $fb-active-color; }
 }
 
+.bg-github {
+  background-color: $github-color;
+
+  &:hover { background-color: $github-active-color; }
+}
+
 .bg-google {
   background-color: $gplus-color;
 
@@ -20,4 +26,10 @@
   background-color: $vk-color;
 
   &:hover { background-color: $vk-active-color; }
+}
+
+.bg-yandex {
+  background-color: $yandex-color;
+
+  &:hover { background-color: $yandex-active-color; }
 }

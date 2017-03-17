@@ -23,7 +23,12 @@ class ExternalIdentity extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function www()
+    public function breadcrumb()
+    {
+        return $this->email;
+    }
+
+    public function externalLink()
     {
         switch ($this->provider) {
             case 'facebook': return "https://www.facebook.com/{$this->uid}";

@@ -49,6 +49,9 @@ return [
     'domains.mailboxes' => 'Yandex Mail',
     'domains.ns_records' => 'Yandex DNS',
 
+    'external-identities.show' => 'Social account',
+    'external-identities.index' => 'Social accounts',
+
     'files.add' => 'Add file',
     'files.edit' => 'Edit',
     'files.show' => 'File',
