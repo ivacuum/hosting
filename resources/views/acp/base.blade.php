@@ -111,7 +111,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a class="dropdown-toggle {{ in_array($self, ['Acp\Metrics', 'Acp\Users', 'Acp\ExternalIdentities', 'Acp\Pages']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
+  <a class="dropdown-toggle {{ in_array($self, ['Acp\Metrics', 'Acp\Users', 'Acp\ExternalIdentities', 'Acp\Pages', 'Acp\Notifications']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
     {{ trans('menu.site') }}
     <span class="caret"></span>
   </a>
@@ -129,6 +129,11 @@
     <li>
       <a href="{{ $locale_uri }}/acp/external-identities">
         {{ trans('acp.external-identities.index') }}
+      </a>
+    </li>
+    <li>
+      <a href="{{ $locale_uri }}/acp/notifications">
+        {{ trans('acp.notifications.index') }}
       </a>
     </li>
     <li>
