@@ -1,7 +1,7 @@
 @extends('photos.base')
 
 @section('content')
-<div id="photos_map" class="trip-city-map" data-container="photos_map" data-lat="52" data-lon="30" style="height: 70vh;"></div>
+<div id="photos_map" class="trip-city-map" data-container="photos_map" data-lat="52" data-lon="30" style="height: calc(100vh - 240px);"></div>
 @endsection
 
 @push('js')
