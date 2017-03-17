@@ -137,6 +137,12 @@ Route::group(['prefix' => 'news'], function () {
     Route::post('{id}/notify', 'Acp\News@notify');
 });
 
+Route::group(['prefix' => 'notifications'], function () {
+    Route::get('/', 'Acp\Notifications@index');
+    Route::get('{uuid}', 'Acp\Notifications@show');
+    Route::delete('{uuid}', 'Acp\Notifications@destroy');
+});
+
 Route::group(['prefix' => 'pages'], function () {
     Route::get('/', 'Acp\Pages@index');
     Route::post('/', 'Acp\Pages@store');

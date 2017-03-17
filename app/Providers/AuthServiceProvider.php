@@ -11,6 +11,7 @@ use App\File;
 use App\Gig;
 use App\Image;
 use App\News;
+use App\Notification;
 use App\Page;
 use App\Photo;
 use App\Policies\Base;
@@ -46,6 +47,7 @@ class AuthServiceProvider extends ServiceProvider
         Country::class => Base::class,
         Torrent::class => WithoutCreate::class,
         YandexUser::class => Base::class,
+        Notification::class => WithoutCreateAndEdit::class,
         ExternalIdentity::class => WithoutCreateAndEdit::class,
     ];
 

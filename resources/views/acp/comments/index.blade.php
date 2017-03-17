@@ -27,11 +27,7 @@
       </td>
       <td>
         <div>{{ $model->html }}</div>
-        <div class="text-muted">
-          <small>
-            {{ $model->rel_type }} #{{ $model->rel_id }}
-          </small>
-        </div>
+        <div class="text-muted small">{{ $model->rel_type }} #{{ $model->rel_id }}</div>
       </td>
       <td class="text-nowrap">{{ ViewHelper::dateShort($model->created_at) }}</td>
     </tr>

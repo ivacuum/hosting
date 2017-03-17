@@ -78,6 +78,9 @@ return [
     'news.create' => 'Написать новость',
     'news.notify' => 'Уведомить о публикации',
 
+    'notifications.show' => 'Уведомление',
+    'notifications.index' => 'Уведомления',
+
     'pages.add' => 'Добавить страницу',
     'pages.edit' => 'Редактирование страницы',
     'pages.show' => 'Страница',
