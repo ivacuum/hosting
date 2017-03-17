@@ -9,6 +9,7 @@ Disallow: /files
 Disallow: /gallery
 Disallow: /internal
 Disallow: /parser
+Disallow: /photos
 Disallow: /torrents
 Disallow: /users
 Disallow: /en/auth
@@ -17,6 +18,7 @@ Disallow: /en/gallery
 Disallow: /en/internal
 Disallow: /en/news
 Disallow: /en/parser
+Disallow: /en/photos
 Disallow: /en/torrents
 Disallow: /en/users
 Sitemap: https://ivacuum.ru/sitemap.xml
