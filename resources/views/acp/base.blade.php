@@ -50,7 +50,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a class="dropdown-toggle {{ in_array($self, ['Acp\Clients', 'Acp\Domains', 'Acp\Servers', 'Acp\Pages', 'Acp\Users', 'Acp\YandexUsers']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
+  <a class="dropdown-toggle {{ in_array($self, ['Acp\Clients', 'Acp\Domains', 'Acp\Servers', 'Acp\YandexUsers']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
     {{ trans('menu.hosting') }}
     <span class="caret"></span>
   </a>
@@ -71,16 +71,6 @@
       </a>
     </li>
     <li>
-      <a href="{{ $locale_uri }}/acp/pages">
-        {{ trans('acp.pages.index') }}
-      </a>
-    </li>
-    <li>
-      <a href="{{ $locale_uri }}/acp/users">
-        {{ trans('acp.users.index') }}
-      </a>
-    </li>
-    <li>
       <a href="{{ $locale_uri }}/acp/yandex-users">
         {{ trans('acp.yandex-users.index') }}
       </a>
@@ -88,7 +78,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a class="dropdown-toggle {{ in_array($self, ['Acp\Comments', 'Acp\Metrics', 'Acp\Torrents', 'Acp\Files', 'Acp\News', 'Acp\Images']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
+  <a class="dropdown-toggle {{ in_array($self, ['Acp\Comments', 'Acp\Torrents', 'Acp\Files', 'Acp\News', 'Acp\Images']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
     {{ trans('menu.resources') }}
     <span class="caret"></span>
   </a>
@@ -104,11 +94,6 @@
       </a>
     </li>
     <li>
-      <a href="{{ $locale_uri }}/acp/metrics">
-        {{ trans('acp.metrics.index') }}
-      </a>
-    </li>
-    <li>
       <a href="{{ $locale_uri }}/acp/news">
         {{ trans('acp.news.index') }}
       </a>
@@ -121,6 +106,34 @@
     <li>
       <a href="{{ $locale_uri }}/acp/torrents">
         {{ trans('acp.torrents.index') }}
+      </a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a class="dropdown-toggle {{ in_array($self, ['Acp\Metrics', 'Acp\Users', 'Acp\ExternalIdentities', 'Acp\Pages']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">
+    {{ trans('menu.site') }}
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li>
+      <a href="{{ $locale_uri }}/acp/metrics">
+        {{ trans('acp.metrics.index') }}
+      </a>
+    </li>
+    <li>
+      <a href="{{ $locale_uri }}/acp/users">
+        {{ trans('acp.users.index') }}
+      </a>
+    </li>
+    <li>
+      <a href="{{ $locale_uri }}/acp/external-identities">
+        {{ trans('acp.external-identities.index') }}
+      </a>
+    </li>
+    <li>
+      <a href="{{ $locale_uri }}/acp/pages">
+        {{ trans('acp.pages.index') }}
       </a>
     </li>
   </ul>
