@@ -29,6 +29,20 @@ class Tag extends Model
         return $this->morphedByMany(Photo::class, 'rel', 'taggable');
     }
 
+    // Events
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function (Tag $tag) {
+            \DB::transaction(function () use ($tag) {
+                foreach ($tag->photos as $photo) {
+                    $photo->tags()->detach($tag->id);
+                }
+            });
+        });
+    }
+
     public function getTitleAttribute()
     {
         return $this->{self::titleField()};
