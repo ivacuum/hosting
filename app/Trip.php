@@ -206,6 +206,54 @@ class Trip extends Model
             ->notName('base.blade.php');
     }
 
+    public static function idsByCity($id = null)
+    {
+        $ids = \Cache::rememberForever('published-trips-by-city', function () {
+            $trips = self::published()->get(['id', 'city_id']);
+
+            $result = [];
+
+            foreach ($trips as $trip) {
+                $result[$trip->city_id][] = $trip->id;
+            }
+
+            return $result;
+        });
+
+        if ($id && !empty($ids[$id])) {
+            return $ids[$id];
+        }
+
+        return $ids;
+    }
+
+    public static function idsByCountry($id = null)
+    {
+        $ids = \Cache::rememberForever('published-trips-by-country', function () {
+            $trips = self::published()
+                ->with([
+                    'city' => function ($query) {
+                        $query->select(['id', 'country_id']);
+                    }
+                ])
+                ->get(['id', 'city_id']);
+
+            $result = [];
+
+            foreach ($trips as $trip) {
+                $result[$trip->city->country_id][] = $trip->id;
+            }
+
+            return $result;
+        });
+
+        if ($id && !empty($ids[$id])) {
+            return $ids[$id];
+        }
+
+        return $ids;
+    }
+
     protected function monthName($month)
     {
         // Собственный перевод, так как нужен именительный падеж в русском языке

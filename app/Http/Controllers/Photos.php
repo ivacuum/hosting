@@ -1,7 +1,10 @@
 <?php namespace App\Http\Controllers;
 
+use App\City;
+use App\Country;
 use App\Photo;
 use App\Tag;
+use App\Trip;
 
 class Photos extends Controller
 {
@@ -12,6 +15,94 @@ class Photos extends Controller
         $photos = Photo::latest('id')->paginate(20);
 
         return view($this->view, compact('photos'));
+    }
+
+    public function cities()
+    {
+        \Breadcrumbs::push(trans('photos.index'), 'photos');
+        \Breadcrumbs::push(trans('photos.cities'));
+
+        $cities = City::orderBy(City::titleField())->get();
+
+        $trips_by_cities = [];
+
+        Trip::published()
+            ->get(['id', 'city_id', 'status'])
+            ->each(function ($trip) use (&$trips_by_cities) {
+                @$trips_by_cities[$trip->city_id] += 1;
+            });
+
+        $cities = $cities->filter(function ($city) use (&$trips_by_cities) {
+            return $trips_by_cities[$city->id] ?? 0;
+        });
+
+        return view($this->view, compact('cities'));
+    }
+
+    public function city($slug)
+    {
+        $city = City::where('slug', $slug)->firstOrFail();
+
+        $ids = Trip::idsByCity($city->id);
+
+        abort_if(empty($ids), 404);
+
+        $photos = Photo::forTrips($ids)->latest('id')->get();
+
+        \Breadcrumbs::push(trans('photos.index'), 'photos');
+        \Breadcrumbs::push(trans('photos.cities'), 'photos/cities');
+        \Breadcrumbs::push($city->title);
+
+        return view($this->view, compact('city', 'photos'));
+    }
+
+    public function countries()
+    {
+        \Breadcrumbs::push(trans('photos.index'), 'photos');
+        \Breadcrumbs::push(trans('photos.countries'));
+
+        $countries = Country::with('cities')->orderBy(Country::titleField())->get();
+
+        $trips_by_cities = [];
+
+        Trip::published()
+            ->get(['id', 'city_id', 'status'])
+            ->each(function ($trip) use (&$trips_by_cities) {
+                @$trips_by_cities[$trip->city_id] += 1;
+            });
+
+        $countries = $countries->each(function ($country) use (&$trips_by_cities) {
+            $trips_count = 0;
+
+            $country->cities->each(function ($city) use (&$trips_by_cities, &$trips_count) {
+                $city->trips_count = $trips_by_cities[$city->id] ?? 0;
+
+                $trips_count += $city->trips_count;
+            });
+
+            $country->trips_count = $trips_count;
+        })->filter(function ($country) {
+            return $country->trips_count;
+        });
+
+        return view($this->view, compact('countries'));
+    }
+
+    public function country($slug)
+    {
+        $country = Country::where('slug', $slug)->firstOrFail();
+
+        $ids = Trip::idsByCountry($country->id);
+
+        abort_if(empty($ids), 404);
+
+        $photos = Photo::forTrips($ids)->latest('id')->get();
+
+        \Breadcrumbs::push(trans('photos.index'), 'photos');
+        \Breadcrumbs::push(trans('photos.countries'), 'photos/countries');
+        \Breadcrumbs::push($country->title);
+
+        return view($this->view, compact('country', 'photos'));
     }
 
     public function map()
@@ -53,9 +144,13 @@ class Photos extends Controller
         return view($this->view, compact('collection'));
     }
 
-    public function show(Photo $photo)
+    public function show($id)
     {
+        $photo = Photo::with('rel', 'rel.city', 'rel.city.country', 'tags')->findOrFail($id);
+
         $tag_id = $this->request->input('tag_id');
+        $city_id = $this->request->input('city_id');
+        $country_id = $this->request->input('country_id');
 
         $next = Photo::where('id', '>', $photo->id);
         $prev = Photo::where('id', '<', $photo->id)->orderBy('id', 'desc');
@@ -69,6 +164,20 @@ class Photos extends Controller
             $prev = $prev->whereHas('tags', function ($query) use ($tag_id) {
                 $query->where('tag_id', $tag_id);
             });
+        } elseif ($city_id) {
+            abort_unless($city_id == $photo->rel->city->id, 404);
+
+            $ids = Trip::idsByCity($city_id);
+
+            $next = $next->forTrips($ids);
+            $prev = $prev->forTrips($ids);
+        } elseif ($country_id) {
+            abort_unless($country_id == $photo->rel->city->country->id, 404);
+
+            $ids = Trip::idsByCountry($country_id);
+
+            $next = $next->forTrips($ids);
+            $prev = $prev->forTrips($ids);
         }
 
         $next = $next->first();
@@ -83,11 +192,17 @@ class Photos extends Controller
 
             \Breadcrumbs::push(trans('photos.tags'), 'photos/tags');
             \Breadcrumbs::push($tag->breadcrumb(), "photos/tags/{$tag_id}");
+        } elseif ($city_id) {
+            \Breadcrumbs::push(trans('photos.cities'), 'photos/cities');
+            \Breadcrumbs::push($photo->rel->city->breadcrumb(), "photos/cities/{$photo->rel->city->slug}");
+        } elseif ($country_id) {
+            \Breadcrumbs::push(trans('photos.countries'), 'photos/countries');
+            \Breadcrumbs::push($photo->rel->city->country->breadcrumb(), "photos/countries/{$photo->rel->city->country->slug}");
         }
 
         \Breadcrumbs::push(trans('photos.show'));
 
-        return view($this->view, compact('next', 'photo', 'prev', 'tag_id'));
+        return view($this->view, compact('city_id', 'country_id', 'next', 'photo', 'prev', 'tag_id'));
     }
 
     public function tag(Tag $tag)

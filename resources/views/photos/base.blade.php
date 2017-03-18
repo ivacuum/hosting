@@ -11,5 +11,11 @@
   <li class="{{ $view === 'photos.map' ? 'active' : '' }}">
     <a href="{{ action('Photos@map') }}">{{ trans('photos.map') }}</a>
   </li>
+  <li class="{{ $view === 'photos.cities' ? 'active' : '' }}">
+    <a href="{{ action('Photos@cities') }}">{{ trans('photos.cities') }}</a>
+  </li>
+  <li class="{{ $view === 'photos.countries' ? 'active' : '' }}">
+    <a href="{{ action('Photos@countries') }}">{{ trans('photos.countries') }}</a>
+  </li>
 </ul>
 @endsection

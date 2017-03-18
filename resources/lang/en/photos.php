@@ -7,5 +7,8 @@ return [
     'show' => 'Viewing a photo',
     'tags' => 'Tags',
     'index' => 'Photos',
-    'place' => 'Place',
+    'story' => 'Story',
+    'cities' => 'Cities',
+    'geotags' => 'Geotags',
+    'countries' => 'Countries',
 ];

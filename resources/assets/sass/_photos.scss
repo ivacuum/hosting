@@ -1,0 +1,32 @@
+.photo-map-container {
+  height: calc(100vh - 240px);
+
+  @include mobile-wide;
+}
+
+.photo-show-container {
+  position: relative;
+
+  @include mobile-wide;
+}
+
+.photo-show-img {
+  border: 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
+  max-width: 100%;
+
+  @media (min-width: $screen-sm-min) {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+  }
+}
+
+.photo-show-nav {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+}
+
+.photo-show-next { left: 50%; }
+.photo-show-prev { left: 0; }

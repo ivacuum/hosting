@@ -67,10 +67,14 @@ Route::get('parser/vk/{page?}/{date?}', 'ParserVk@index')->where('date', '\d{4}-
 Route::post('parser/vk', 'ParserVk@indexPost');
 
 Route::get('photos', 'Photos@index');
+Route::get('photos/cities', 'Photos@cities');
+Route::get('photos/cities/{slug}', 'Photos@city');
+Route::get('photos/countries', 'Photos@countries');
+Route::get('photos/countries/{slug}', 'Photos@country');
 Route::get('photos/map', 'Photos@map');
 Route::get('photos/tags', 'Photos@tags');
 Route::get('photos/tags/{Tag}', 'Photos@tag');
-Route::get('photos/{Photo}', 'Photos@show');
+Route::get('photos/{id}', 'Photos@show');
 
 Route::get('promocodes-coupons', 'Coupons@index');
 Route::get('promocodes-coupons/airbnb', 'Coupons@airbnb');

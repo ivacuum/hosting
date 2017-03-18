@@ -16,8 +16,13 @@ class SiteTest extends TestCase
         $this->get('/life/japanese')->assertStatus(200);
         $this->get('/news')->assertStatus(200);
         $this->get('/photos')->assertStatus(200);
+        $this->get('/photos/cities')->assertStatus(200);
+        $this->get('/photos/cities/barcelona')->assertStatus(200);
+        $this->get('/photos/countries')->assertStatus(200);
+        $this->get('/photos/countries/russia')->assertStatus(200);
         $this->get('/photos/map')->assertStatus(200);
         $this->get('/photos/tags')->assertStatus(200);
+        $this->get('/photos/tags/1')->assertStatus(200);
         $this->get('/promocodes-coupons')->assertStatus(200);
         $this->get('/promocodes-coupons/airbnb')->assertStatus(200);
         $this->get('/promocodes-coupons/digitalocean')->assertStatus(200);

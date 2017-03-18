@@ -1,17 +1,15 @@
 @extends('photos.base')
 
 @section('content')
-<div id="photos_map" class="trip-city-map screenshot" data-container="photos_map" data-lat="52" data-lon="30" style="height: calc(100vh - 240px);"></div>
+<div id="photos_map" class="photo-map-container"></div>
 @endsection
 
 @push('js')
 <script>
 $(function () {
-  $el = $('#photos_map')
-
   let points = <?php echo json_encode($collection); ?>
 
-  App.map.create($el.data('container'), $el.data('lat'), $el.data('lon'), 4, true)
+  App.map.create('photos_map', {{ Request::input('lat', 52) }}, {{ Request::input('lon', 30) }}, {{ Request::input('zoom', 4) }}, true)
     .then(() => {
       let manager = new App.map.ym.ObjectManager({
         clusterize: {{ Request::input('clusterize', true) }},

@@ -39,18 +39,32 @@ class Photo extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function scopeForTrip($query, $trip_id = null)
+    public function scopeForTrip($query, $id = null)
     {
-        if (is_null($trip_id)) {
+        if (is_null($id)) {
             return $query;
         }
 
-        return $query->where('rel_id', $trip_id)->where('rel_type', 'Trip');
+        return $query->where('rel_id', $id)->where('rel_type', 'Trip');
+    }
+
+    public function scopeForTrips($query, $ids = [])
+    {
+        if (empty($ids)) {
+            return $query;
+        }
+
+        return $query->whereIn('rel_id', $ids)->where('rel_type', 'Trip');
     }
 
     public function breadcrumb()
     {
         return $this->slug;
+    }
+
+    public function isOnMap()
+    {
+        return $this->lat && $this->lon;
     }
 
     public function originalUrl()

@@ -44,6 +44,11 @@ class Country extends Model
         return "{$this->emoji} {$this->title}";
     }
 
+    public function initial()
+    {
+        return mb_substr($this->title, 0, 1);
+    }
+
     public function www()
     {
         return action('Life@country', $this->slug);
