@@ -11,7 +11,7 @@
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", [$model, 'goto' => Request::fullUrl()]) }}">
       <td class="text-right">{{ $loop->iteration }}</td>
       <td>
         <a class="link" href="{{ action("$self@show", $model) }}">

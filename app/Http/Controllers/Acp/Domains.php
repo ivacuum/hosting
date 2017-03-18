@@ -74,9 +74,7 @@ class Domains extends CommonController
             ->paginate()
             ->appends(compact('sort', 'filter', 'q', 'yandex_user_id'));
 
-        $back_url = $this->request->fullUrl();
-
-        return view($this->view, compact('back_url', 'filter', 'models', 'sort', 'q'));
+        return view($this->view, compact('filter', 'models', 'sort', 'q'));
     }
 
     public function addMailbox($domain)

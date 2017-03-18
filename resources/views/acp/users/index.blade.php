@@ -12,7 +12,7 @@
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", [$model, 'goto' => Request::fullUrl()]) }}">
       <td class="text-right">{{ $model->id }}</td>
       <td>
         <a href="{{ action("$self@show", $model) }}" class="link">
