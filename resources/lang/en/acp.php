@@ -133,5 +133,6 @@ return [
     'save' => 'Save',
     'apply' => 'Apply',
     'delete' => 'Delete',
+    'reset_filters' => 'Reset all filters',
     'delete_confirm' => 'Entry would be deleted. Continue?',
 ];

@@ -13,6 +13,24 @@
   @endcan
 </h3>
 @yield('toolbar')
+@if (!empty($filters = Request::except('filter', 'page', '_pjax')))
+  <div class="my-3">
+    <a class="btn btn-default" href="{{ action("$self@index") }}">
+      {{ trans('acp.reset_filters') }}
+      <span class="text-danger">
+        @svg (times)
+      </span>
+    </a>
+    @foreach ($filters as $key => $value)
+      <a class="btn btn-default" href="{{ Request::fullUrlWithQuery(array_merge($filters, ['page' => null, $key => null])) }}">
+        {{ $key }}: {{ $value }}
+        <span class="text-danger">
+          @svg (times)
+        </span>
+      </a>
+    @endforeach
+  </div>
+@endif
 @if (sizeof($models))
   @yield('content-list')
 @else
