@@ -61,6 +61,26 @@ class Trip extends Model
     }
 
     // Scopes
+    public function scopeForCity($query, $id = null)
+    {
+        if (is_null($id)) {
+            return $query;
+        }
+
+        return $query->where('city_id', $id);
+    }
+
+    public function scopeForCountry($query, $id = null)
+    {
+        if (is_null($id)) {
+            return $query;
+        }
+
+        return $query->whereHas('city.country', function ($query) use ($id) {
+            $query->where('country_id', $id);
+        });
+    }
+
     public function scopeNext($query)
     {
         return $query->where('date_start', '>=', $this->date_start)

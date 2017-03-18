@@ -6,6 +6,8 @@ use Illuminate\Validation\Rule;
 
 class Cities extends CommonController
 {
+    protected $show_with_count = ['trips'];
+
     public function index()
     {
         $country_id = $this->request->input('country_id');

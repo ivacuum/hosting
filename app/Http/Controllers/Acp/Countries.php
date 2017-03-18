@@ -5,7 +5,7 @@ use Illuminate\Validation\Rule;
 
 class Countries extends CommonController
 {
-    protected $show_with_count = ['cities'];
+    protected $show_with_count = ['cities', 'trips'];
 
     public function index()
     {

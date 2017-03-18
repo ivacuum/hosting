@@ -12,7 +12,12 @@ class Trips extends CommonController
 
     public function index()
     {
-        $models = Model::withCount('comments', 'photos')->orderBy('date_start', 'desc')->paginate(100);
+        $models = Model::withCount('comments', 'photos')
+            ->forCity($this->request->input('city_id'))
+            ->forCountry($this->request->input('country_id'))
+            ->orderBy('date_start', 'desc')
+            ->paginate(100)
+            ->appends($this->request->all());
 
         return view($this->view, compact('models'));
     }
