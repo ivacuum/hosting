@@ -11,7 +11,7 @@ $(function () {
 
   let points = <?php echo json_encode($collection); ?>
 
-  App.map.create($el.data('container'), $el.data('lat'), $el.data('lon'), 4)
+  App.map.create($el.data('container'), $el.data('lat'), $el.data('lon'), 4, true)
     .then(() => {
       let manager = new App.map.ym.ObjectManager({
         clusterize: true,

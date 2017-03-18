@@ -8,7 +8,7 @@ export default class {
     this.ym = null
   }
 
-  create(el, lat, lon, zoom = 10) {
+  create(el, lat, lon, zoom = 10, scroll_zoom = false) {
     return this.load().then(() => {
       this.map = new this.ym.Map(el, {
         center: [lat, lon],
@@ -18,7 +18,9 @@ export default class {
         suppressMapOpenBlock: true,
       })
 
-      this.map.behaviors.disable('scrollZoom')
+      if (scroll_zoom === false) {
+        this.map.behaviors.disable('scrollZoom')
+      }
     })
   }
 
