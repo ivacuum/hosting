@@ -17,7 +17,6 @@ class CreateServersTable extends Migration
             $table->string('ftp_user');
             $table->string('ftp_pass');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
