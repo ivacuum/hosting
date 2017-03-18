@@ -9,7 +9,7 @@ class Photos extends Controller
     {
         \Breadcrumbs::push(trans('photos.index'));
 
-        $photos = Photo::latest('id')->take(50)->paginate();
+        $photos = Photo::latest('id')->paginate(20);
 
         return view($this->view, compact('photos'));
     }
