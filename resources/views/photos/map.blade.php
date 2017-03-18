@@ -14,8 +14,8 @@ $(function () {
   App.map.create($el.data('container'), $el.data('lat'), $el.data('lon'), 4, true)
     .then(() => {
       let manager = new App.map.ym.ObjectManager({
-        clusterize: true,
-        gridSize: 64
+        clusterize: {{ Request::input('clusterize', true) }},
+        gridSize: {{ Request::input('cluster-size', 64) }}
       })
 
       manager.objects.options.set('preset', 'islands#nightCircleDotIcon')
