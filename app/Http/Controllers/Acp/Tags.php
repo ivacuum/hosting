@@ -5,6 +5,8 @@ use Illuminate\Validation\Rule;
 
 class Tags extends CommonController
 {
+    protected $show_with_count = ['photos'];
+
     public function index()
     {
         $models = Model::orderBy(Model::titleField())->get();

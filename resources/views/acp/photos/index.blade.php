@@ -1,5 +1,20 @@
 @extends('acp.list')
 
+@section('toolbar')
+<ul class="nav nav-link-tabs">
+  <li class="{{ !$filter ? 'active' : '' }}">
+    <a class="js-pjax" href="{{ Request::fullUrlWithQuery(['filter' => null, 'page' => null]) }}">
+      Все
+    </a>
+  </li>
+  <li class="{{ $filter === 'no-tags' ? 'active' : '' }}">
+    <a class="js-pjax" href="{{ Request::fullUrlWithQuery(['filter' => 'no-tags', 'page' => null]) }}">
+      Без тэгов
+    </a>
+  </li>
+</ul>
+@endsection
+
 @section('content-list')
 <table class="table-stats table-adaptive">
   <thead>

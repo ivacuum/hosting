@@ -8,13 +8,17 @@ class Photos extends CommonController
 {
     public function index()
     {
+        $filter = $this->request->input('filter');
+
         $models = Model::with('tags')
             ->forTrip($this->request->input('trip_id'))
+            ->applyFilter($filter)
+            ->forTag($this->request->input('tag_id'))
             ->orderBy('id', 'desc')
             ->paginate()
             ->appends($this->request->all());
 
-        return view($this->view, compact('models'));
+        return view($this->view, compact('filter', 'models'));
     }
 
     /**

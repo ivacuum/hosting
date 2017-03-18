@@ -12,6 +12,7 @@
     @include('acp.tpl.create')
   @endcan
 </h3>
+@yield('toolbar')
 @if (sizeof($models))
   @yield('content-list')
 @else

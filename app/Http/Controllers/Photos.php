@@ -12,7 +12,7 @@ class Photos extends Controller
     {
         \Breadcrumbs::push(trans('photos.index'));
 
-        $photos = Photo::latest('id')->paginate(20);
+        $photos = Photo::orderBy('id', 'desc')->paginate(20);
 
         return view($this->view, compact('photos'));
     }

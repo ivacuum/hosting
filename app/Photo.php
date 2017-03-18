@@ -39,6 +39,30 @@ class Photo extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function scopeApplyFilter($query, $filter = null)
+    {
+        if (is_null($filter)) {
+            return $query;
+        }
+
+        if ($filter === 'no-tags') {
+            return $query->doesntHave('tags');
+        }
+
+        return $query;
+    }
+
+    public function scopeForTag($query, $id = null)
+    {
+        if (is_null($id)) {
+            return $query;
+        }
+
+        return $query->whereHas('tags', function ($query) use ($id) {
+            $query->where('tag_id', $id);
+        });
+    }
+
     public function scopeForTrip($query, $id = null)
     {
         if (is_null($id)) {
