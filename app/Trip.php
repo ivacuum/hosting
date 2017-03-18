@@ -164,6 +164,13 @@ class Trip extends Model
             ->groupBy('year');
     }
 
+    public function createStoryFile()
+    {
+        $tpl = str_replace('.', '/', $this->template());
+
+        return touch(base_path("resources/views/{$tpl}.blade.php"));
+    }
+
     public function localizedDate()
     {
         if (0 === $this->date_end->diffInDays($this->date_start)) {

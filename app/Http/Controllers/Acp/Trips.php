@@ -70,6 +70,11 @@ class Trips extends CommonController
 
         $model = Model::create($data);
 
+        // TODO
+        if (\App::environment('local')) {
+            $model->createStoryFile();
+        }
+
         return $model;
     }
 }
