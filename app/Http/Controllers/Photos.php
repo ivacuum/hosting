@@ -112,34 +112,7 @@ class Photos extends Controller
         \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.map'));
 
-        $photos = Photo::with('rel')
-            ->forTrip($trip_id)
-            ->where('lat', '<>', '')
-            ->where('lon', '<>', '')
-            ->oldest('id')
-            ->get();
-
-        $collection = [
-            'type' => 'FeatureCollection',
-            'features' => [],
-        ];
-
-        foreach ($photos as $i => $photo) {
-            $basename = basename($photo->slug);
-
-            $collection['features'][] = [
-                'type' => 'Feature',
-                'id' => $i,
-                'geometry' => [
-                    'type' => 'Point',
-                    'coordinates' => [$photo->lat, $photo->lon],
-                ],
-                'properties' => [
-                    'balloonContent' => sprintf('<p><a href="%s#%s">%s, %s %s<br><img class="image-200" src="%s"></a></p>', $photo->rel->www(), $basename, $photo->rel->title, $photo->rel->period, $photo->rel->year, $photo->thumbnailUrl()),
-                    'clusterCaption' => $basename,
-                ],
-            ];
-        }
+        $collection = $this->pointsForMap($trip_id);
 
         return view($this->view, compact('collection'));
     }
@@ -155,8 +128,8 @@ class Photos extends Controller
         $next = Photo::where('id', '>', $photo->id);
         $prev = Photo::where('id', '<', $photo->id)->orderBy('id', 'desc');
 
-        // Просмотр в пределах одного тэга
         if ($tag_id) {
+            // Просмотр в пределах одного тэга
             $next = $next->whereHas('tags', function ($query) use ($tag_id) {
                 $query->where('tag_id', $tag_id);
             });
@@ -165,6 +138,7 @@ class Photos extends Controller
                 $query->where('tag_id', $tag_id);
             });
         } elseif ($city_id) {
+            // В пределах города
             abort_unless($city_id == $photo->rel->city->id, 404);
 
             $ids = Trip::idsByCity($city_id);
@@ -172,6 +146,7 @@ class Photos extends Controller
             $next = $next->forTrips($ids);
             $prev = $prev->forTrips($ids);
         } elseif ($country_id) {
+            // В пределах страны
             abort_unless($country_id == $photo->rel->city->country->id, 404);
 
             $ids = Trip::idsByCountry($country_id);
@@ -232,5 +207,45 @@ class Photos extends Controller
         $tags = Tag::whereIn('id', $tags_ids)->orderBy(Tag::titleField())->get();
 
         return view($this->view, compact('tags'));
+    }
+
+    protected function pointsForMap($trip_id)
+    {
+        // Кэширование отключено при фильтре по поездке
+        $cache_entry = $trip_id ? "photos-points-trip" : 'photos-points';
+        $minutes = $trip_id ? 0 : 30;
+
+        return \Cache::remember($cache_entry, $minutes, function () use ($trip_id) {
+            $photos = Photo::with('rel')
+                ->forTrip($trip_id)
+                ->where('lat', '<>', '')
+                ->where('lon', '<>', '')
+                ->orderBy('id', 'asc')
+                ->get();
+
+            $collection = [
+                'type' => 'FeatureCollection',
+                'features' => [],
+            ];
+
+            foreach ($photos as $i => $photo) {
+                $basename = basename($photo->slug);
+
+                $collection['features'][] = [
+                    'type' => 'Feature',
+                    'id' => $i,
+                    'geometry' => [
+                        'type' => 'Point',
+                        'coordinates' => [$photo->lat, $photo->lon],
+                    ],
+                    'properties' => [
+                        'balloonContent' => sprintf('<p><a href="%s#%s">%s, %s %s<br><img class="image-200" src="%s"></a></p>', $photo->rel->www(), $basename, $photo->rel->title, $photo->rel->period, $photo->rel->year, $photo->thumbnailUrl()),
+                        'clusterCaption' => $basename,
+                    ],
+                ];
+            }
+
+            return $collection;
+        });
     }
 }
