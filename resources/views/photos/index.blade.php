@@ -10,4 +10,6 @@
     </div>
   @endforeach
 </div>
+
+@include('tpl.paginator', ['paginator' => $photos])
 @endsection
