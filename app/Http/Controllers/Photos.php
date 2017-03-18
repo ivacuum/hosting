@@ -16,10 +16,17 @@ class Photos extends Controller
 
     public function map()
     {
+        $trip_id = $this->request->input('trip_id');
+
         \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.map'));
 
-        $photos = Photo::with('rel')->where('lat', '<>', '')->where('lon', '<>', '')->oldest('id')->get();
+        $photos = Photo::with('rel')
+            ->forTrip($trip_id)
+            ->where('lat', '<>', '')
+            ->where('lon', '<>', '')
+            ->oldest('id')
+            ->get();
 
         $collection = [
             'type' => 'FeatureCollection',
