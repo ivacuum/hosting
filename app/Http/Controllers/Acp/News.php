@@ -3,8 +3,9 @@
 use App\News as Model;
 use App\Notifications\NewsPublished;
 use App\User;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class News extends CommonController
+class News extends Controller
 {
     protected $show_with_count = ['comments'];
 

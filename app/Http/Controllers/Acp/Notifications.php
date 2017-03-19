@@ -1,8 +1,9 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Notification as Model;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Notifications extends CommonController
+class Notifications extends Controller
 {
     public function index()
     {

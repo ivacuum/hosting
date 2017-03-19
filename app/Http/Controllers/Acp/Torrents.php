@@ -4,8 +4,9 @@ use App\Services\Rto;
 use App\Torrent as Model;
 use Carbon\Carbon;
 use Illuminate\Validation\Rule;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Torrents extends CommonController
+class Torrents extends Controller
 {
     protected $show_with_count = ['comments'];
 

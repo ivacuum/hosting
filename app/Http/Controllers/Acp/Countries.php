@@ -2,8 +2,9 @@
 
 use App\Country as Model;
 use Illuminate\Validation\Rule;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Countries extends CommonController
+class Countries extends Controller
 {
     protected $show_with_count = ['cities', 'trips'];
 

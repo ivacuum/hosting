@@ -3,9 +3,10 @@
 use App\Domain as Model;
 use App\Mail\DomainMailboxes;
 use Illuminate\Validation\Rule;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 use Mail;
 
-class Domains extends CommonController
+class Domains extends Controller
 {
     const DEFAULT_ORDER_BY = 'domain';
 

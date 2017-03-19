@@ -1,8 +1,9 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\ExternalIdentity as Model;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class ExternalIdentities extends CommonController
+class ExternalIdentities extends Controller
 {
     public function index()
     {

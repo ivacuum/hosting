@@ -2,8 +2,9 @@
 
 use App\Page as Model;
 use Illuminate\Validation\Rule;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Pages extends CommonController
+class Pages extends Controller
 {
     public function index()
     {

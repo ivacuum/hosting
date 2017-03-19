@@ -2,9 +2,10 @@
 
 use App\User as Model;
 use Illuminate\Validation\Rule;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 use Mail;
 
-class Users extends CommonController
+class Users extends Controller
 {
     protected $show_with_count = ['comments', 'images', 'torrents'];
 

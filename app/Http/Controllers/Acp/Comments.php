@@ -1,8 +1,9 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Comment as Model;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Comments extends CommonController
+class Comments extends Controller
 {
     public function index()
     {

@@ -2,8 +2,9 @@
 
 use App\Tag as Model;
 use Illuminate\Validation\Rule;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Tags extends CommonController
+class Tags extends Controller
 {
     protected $show_with_count = ['photos'];
 

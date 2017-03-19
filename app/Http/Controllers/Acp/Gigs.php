@@ -2,8 +2,9 @@
 
 use App\Gig as Model;
 use Illuminate\Validation\Rule;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Gigs extends CommonController
+class Gigs extends Controller
 {
     public function index()
     {

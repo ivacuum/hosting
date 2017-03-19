@@ -3,8 +3,9 @@
 use App\City as Model;
 use App\Services\GoogleGeocoder;
 use Illuminate\Validation\Rule;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Cities extends CommonController
+class Cities extends Controller
 {
     protected $show_with_count = ['trips'];
 

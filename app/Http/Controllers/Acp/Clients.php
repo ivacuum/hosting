@@ -2,8 +2,9 @@
 
 use App\Client as Model;
 use Illuminate\Validation\Rule;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Clients extends CommonController
+class Clients extends Controller
 {
     protected $show_with_count = ['domains'];
 

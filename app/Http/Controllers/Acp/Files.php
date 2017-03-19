@@ -2,8 +2,9 @@
 
 use App\File as Model;
 use Illuminate\Validation\Rule;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Files extends CommonController
+class Files extends Controller
 {
     public function index()
     {

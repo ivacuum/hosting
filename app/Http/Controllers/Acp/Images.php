@@ -2,8 +2,9 @@
 
 use App\Image as Model;
 use Carbon\Carbon;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Images extends CommonController
+class Images extends Controller
 {
     public function index()
     {

@@ -5,8 +5,9 @@ use App\Notifications\TripPublished;
 use App\Trip as Model;
 use App\User;
 use Illuminate\Validation\Rule;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Trips extends CommonController
+class Trips extends Controller
 {
     protected $show_with_count = ['comments', 'photos'];
 

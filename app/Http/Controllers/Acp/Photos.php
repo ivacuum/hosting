@@ -3,8 +3,9 @@
 use App\Photo as Model;
 use App\Trip;
 use App\Utilities\ExifHelper;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Photos extends CommonController
+class Photos extends Controller
 {
     public function index()
     {

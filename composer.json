@@ -10,7 +10,8 @@
     "symfony/css-selector": "~3.2",
     "symfony/dom-crawler": "~3.2",
     "irazasyed/telegram-bot-sdk": "^2.0",
-    "laravel/socialite": "^3.0"
+    "laravel/socialite": "^3.0",
+    "ivacuum/generic": "dev-master"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",

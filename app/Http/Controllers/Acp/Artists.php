@@ -2,8 +2,9 @@
 
 use App\Artist as Model;
 use Illuminate\Validation\Rule;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Artists extends CommonController
+class Artists extends Controller
 {
     public function index()
     {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2bb619aaf20feb8a42dfde94e3e4c9c9",
+    "content-hash": "8bb2686f4d496bbb12b325f2da0997b8",
     "packages": [
         {
             "name": "baum/baum",
@@ -409,6 +409,41 @@
                 "telegram sdk"
             ],
             "time": "2017-01-05T09:01:54+00:00"
+        },
+        {
+            "name": "ivacuum/generic",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ivacuum/generic.git",
+                "reference": "4865ce6d555fd83288c6e962b0292c28a618ad4a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/4865ce6d555fd83288c6e962b0292c28a618ad4a",
+                "reference": "4865ce6d555fd83288c6e962b0292c28a618ad4a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ivacuum\\Generic\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Pankov",
+                    "email": "vacuum@ivacuum.ru"
+                }
+            ],
+            "time": "2017-03-19T21:02:22+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3024,16 +3059,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.16",
+            "version": "5.7.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "dafc78e2a7d12139b0e97078d1082326bd09363d"
+                "reference": "68752b665d3875f9a38a357e3ecb35c79f8673bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/dafc78e2a7d12139b0e97078d1082326bd09363d",
-                "reference": "dafc78e2a7d12139b0e97078d1082326bd09363d",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/68752b665d3875f9a38a357e3ecb35c79f8673bf",
+                "reference": "68752b665d3875f9a38a357e3ecb35c79f8673bf",
                 "shasum": ""
             },
             "require": {
@@ -3102,7 +3137,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-03-15T13:02:34+00:00"
+            "time": "2017-03-19T16:52:12+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -3840,7 +3875,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "ivacuum/generic": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

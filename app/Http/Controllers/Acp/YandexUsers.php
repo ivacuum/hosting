@@ -3,8 +3,9 @@
 use App\Domain;
 use App\YandexUser as Model;
 use Illuminate\Validation\Rule;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class YandexUsers extends CommonController
+class YandexUsers extends Controller
 {
     protected $show_with_count = ['domains'];
 

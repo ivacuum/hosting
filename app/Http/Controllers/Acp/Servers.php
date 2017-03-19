@@ -1,8 +1,9 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Server as Model;
+use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Servers extends CommonController
+class Servers extends Controller
 {
     public function index()
     {
