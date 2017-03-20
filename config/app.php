@@ -46,7 +46,6 @@ return [
         App\Providers\AppServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        App\Providers\BreadcrumbsServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\ValidatorServiceProvider::class,
@@ -90,7 +89,7 @@ return [
 
         'Form' => App\Facades\Form::class,
         'ViewHelper' => App\Facades\ViewHelper::class,
-        'Breadcrumbs' => App\Facades\Breadcrumbs::class,
+        'Breadcrumbs' => Ivacuum\Generic\Facades\Breadcrumbs::class,
         'MetricsHelper' => App\Facades\MetricsHelper::class,
         'TorrentCategoryHelper' => App\Facades\TorrentCategoryHelper::class,
 
