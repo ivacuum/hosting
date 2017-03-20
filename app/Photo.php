@@ -100,4 +100,9 @@ class Photo extends Model
     {
         return "https://life.ivacuum.ru/-/400x300/{$this->slug}";
     }
+
+    public function www()
+    {
+        return action('Photos@show', $this->id);
+    }
 }
