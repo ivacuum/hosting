@@ -25,6 +25,7 @@
     <th>Тэги</th>
     <th>@svg (map-marker)</th>
     <th class="text-right">@svg (eye)</th>
+    <th></th>
   </tr>
   </thead>
   <tbody>
@@ -52,6 +53,13 @@
         @if ($model->views > 0)
           {{ ViewHelper::number($model->views) }}
         @endif
+      </td>
+      <td>
+        <div class="visible-xs-block">
+          <a class="btn btn-default" href="{{ action("$self@edit", [$model, 'goto' => Request::fullUrl()]) }}">
+            @svg (pencil)
+          </a>
+        </div>
       </td>
     </tr>
   @endforeach
