@@ -2,8 +2,8 @@
 
 use App\Photo as Model;
 use App\Trip;
-use App\Utilities\ExifHelper;
 use Ivacuum\Generic\Controllers\Acp\Controller;
+use Ivacuum\Generic\Utilities\ExifHelper;
 
 class Photos extends Controller
 {
