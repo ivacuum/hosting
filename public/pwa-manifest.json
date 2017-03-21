@@ -1,0 +1,16 @@
+{
+  "lang": "ru-RU",
+  "name": "vacuum.kaluga",
+  "short_name": "ivacuum.ru",
+  "icons": [
+    {
+      "src": "https://life.ivacuum.ru/apple-touch-icon.png",
+      "sizes": "300x300",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/?homescreenapp=1",
+  "background_color": "#ffffff",
+  "theme_color": "#e7e7e7",
+  "display": "standalone"
+}
