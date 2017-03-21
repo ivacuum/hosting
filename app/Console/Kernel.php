@@ -6,11 +6,12 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 class Kernel extends ConsoleKernel
 {
     protected $commands = [
-        Commands\NotificationsPurge::class,
         Commands\RtoUpdate::class,
         Commands\VkLikesAdd::class,
         Commands\VkLikesDelete::class,
         Commands\WhoisUpdate::class,
+
+        \Ivacuum\Generic\Commands\NotificationsPurge::class,
     ];
 
     /**

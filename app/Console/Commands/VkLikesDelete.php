@@ -1,6 +1,7 @@
 <?php namespace App\Console\Commands;
 
 use App\Services\Vk;
+use Ivacuum\Generic\Commands\Command;
 
 class VkLikesDelete extends Command
 {

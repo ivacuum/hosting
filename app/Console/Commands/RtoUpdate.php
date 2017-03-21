@@ -5,6 +5,7 @@ use App\Services\Rto;
 use App\Torrent;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
+use Ivacuum\Generic\Commands\Command;
 
 class RtoUpdate extends Command
 {

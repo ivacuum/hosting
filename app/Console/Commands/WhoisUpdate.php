@@ -1,6 +1,7 @@
 <?php namespace App\Console\Commands;
 
 use App\Domain;
+use Ivacuum\Generic\Commands\Command;
 
 class WhoisUpdate extends Command
 {
