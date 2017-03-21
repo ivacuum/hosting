@@ -12,6 +12,7 @@ class Kernel extends ConsoleKernel
         Commands\WhoisUpdate::class,
 
         \Ivacuum\Generic\Commands\NotificationsPurge::class,
+        \Ivacuum\Generic\Commands\PasswordRemindersPurge::class,
     ];
 
     /**
@@ -34,6 +35,10 @@ class Kernel extends ConsoleKernel
         $cron_output = config('cfg.cron_output');
 
         $schedule->command('app:notifications-purge')->cron('0 2,14 * * *')
+            ->appendOutputTo($cron_output);
+
+        // Ежедневное удаление старых заявок на восстановление пароля
+        $schedule->command('app:purge-password-reminders')->cron('0 5 * * *')
             ->appendOutputTo($cron_output);
 
         $schedule->command('app:rto-update')->cron('0 */6 * * *')
