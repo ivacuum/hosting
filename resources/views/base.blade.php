@@ -16,7 +16,7 @@
   <link rel="canonical" href="{{ Request::url() }}">
   @if (Auth::check() && Auth::user()->isRoot())
     <link rel="manifest" href="/pwa-manifest.json">
-    <script async src="/assets/service-worker.js"></script>
+    <script async src="/assets/service-worker-installer.js"></script>
   @endif
   <link rel="stylesheet" href="/assets/fotorama.css">
   <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">

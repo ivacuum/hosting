@@ -21,6 +21,7 @@ mix.js('resources/assets/js/app.js', 'public/assets')
   .sass('resources/assets/sass/app.scss', 'public/assets')
 
   .copy('resources/assets/js/pwa/service-worker.js', 'public/assets')
+  .copy('resources/assets/js/pwa/service-worker-installer.js', 'public/assets')
 
   .copy('node_modules/promise-polyfill/promise.min.js', 'public/assets/polyfills.js')
 
