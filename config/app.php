@@ -87,7 +87,7 @@ return [
         'Validator'    => Illuminate\Support\Facades\Validator::class,
         'View'         => Illuminate\Support\Facades\View::class,
 
-        'Form' => App\Facades\Form::class,
+        'Form' => Ivacuum\Generic\Facades\Form::class,
         'ViewHelper' => App\Facades\ViewHelper::class,
         'Breadcrumbs' => Ivacuum\Generic\Facades\Breadcrumbs::class,
         'MetricsHelper' => App\Facades\MetricsHelper::class,
