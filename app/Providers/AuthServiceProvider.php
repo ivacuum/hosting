@@ -14,9 +14,6 @@ use App\News;
 use App\Notification;
 use App\Page;
 use App\Photo;
-use App\Policies\Base;
-use App\Policies\WithoutCreate;
-use App\Policies\WithoutCreateAndEdit;
 use App\Server;
 use App\Socialite\VkProvider;
 use App\Tag;
@@ -25,6 +22,9 @@ use App\Trip;
 use App\User;
 use App\YandexUser;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Ivacuum\Generic\Policies\Base;
+use Ivacuum\Generic\Policies\WithoutCreate;
+use Ivacuum\Generic\Policies\WithoutCreateAndEdit;
 
 class AuthServiceProvider extends ServiceProvider
 {
