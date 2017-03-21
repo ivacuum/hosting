@@ -90,7 +90,7 @@ return [
         'Form' => Ivacuum\Generic\Facades\Form::class,
         'ViewHelper' => App\Facades\ViewHelper::class,
         'Breadcrumbs' => Ivacuum\Generic\Facades\Breadcrumbs::class,
-        'MetricsHelper' => App\Facades\MetricsHelper::class,
+        'MetricsHelper' => Ivacuum\Generic\Facades\MetricsHelper::class,
         'TorrentCategoryHelper' => App\Facades\TorrentCategoryHelper::class,
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
