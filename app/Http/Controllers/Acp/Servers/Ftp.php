@@ -1,11 +1,11 @@
 <?php namespace App\Http\Controllers\Acp\Servers;
 
-use App\Http\Controllers\Acp\Controller;
 use App\Server;
+use Ivacuum\Generic\Controllers\Acp\BaseController;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Adapter\Ftp as FtpAdapter;
 
-class Ftp extends Controller
+class Ftp extends BaseController
 {
     protected $fs;
 

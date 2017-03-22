@@ -20,9 +20,12 @@ use App\User;
 use App\YandexUser;
 use Carbon\Carbon;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Ivacuum\Generic\Providers\LocaleTrait;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    use LocaleTrait;
+
     protected $namespace = 'App\Http\Controllers';
 
     public function boot()
@@ -57,7 +60,7 @@ class RouteServiceProvider extends ServiceProvider
 
     public function map()
     {
-        $prefix = $this->getLocalePrefix();
+        $prefix = $this->locale();
 
         \Route::namespace($this->namespace)
             ->group(base_path('routes/simple.php'));
@@ -71,27 +74,5 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespace)
             ->prefix($prefix)
             ->group(base_path('routes/web.php'));
-    }
-
-    protected function getLocalePrefix()
-    {
-        $default_locale = config('app.locale');
-        $locale = \Request::segment(1);
-
-        if (in_array($locale, array_keys(config('cfg.locales')))) {
-        } else {
-            $locale = $default_locale;
-        }
-
-        setlocale(LC_ALL, config("cfg.locales.{$locale}.posix"));
-        Carbon::setLocale($locale);
-
-        if ($locale === $default_locale) {
-            $locale = '';
-        } else {
-            \App::setLocale($locale);
-        }
-
-        return $locale;
     }
 }

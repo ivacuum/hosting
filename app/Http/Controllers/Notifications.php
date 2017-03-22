@@ -1,14 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-class Notifications extends Controller
+use Ivacuum\Generic\Controllers\Notifications as BaseNotifications;
+
+class Notifications extends BaseNotifications
 {
-    public function index()
-    {
-        $user = $this->request->user();
-        $notifications = $user->notifications;
-
-        $user->markNotificationsAsRead();
-
-        return view($this->view, compact('notifications'));
-    }
 }

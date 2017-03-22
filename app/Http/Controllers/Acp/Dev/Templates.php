@@ -1,9 +1,9 @@
 <?php namespace App\Http\Controllers\Acp\Dev;
 
-use App\Http\Controllers\Acp\Controller;
 use App\Trip;
+use Ivacuum\Generic\Controllers\Acp\BaseController;
 
-class Templates extends Controller
+class Templates extends BaseController
 {
     public function index()
     {

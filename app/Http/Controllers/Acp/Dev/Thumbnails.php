@@ -1,9 +1,9 @@
 <?php namespace App\Http\Controllers\Acp\Dev;
 
-use App\Http\Controllers\Acp\Controller;
 use App\Services\ImageConverter;
+use Ivacuum\Generic\Controllers\Acp\BaseController;
 
-class Thumbnails extends Controller
+class Thumbnails extends BaseController
 {
     public function index()
     {

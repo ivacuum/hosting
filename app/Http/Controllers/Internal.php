@@ -1,32 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use App\Services\Telegram;
+use Ivacuum\Generic\Controllers\Internal as BaseInternal;
 
-class Internal extends Controller
+class Internal extends BaseInternal
 {
-    public function ciBuildNotifier(Telegram $telegram)
-    {
-        $emoji = '';
-        $number = $this->request->input('build.number');
-        $status = strtolower($this->request->input('build.status'));
-        $project = $this->request->input('name');
-        $status_text = '';
-
-        if ($status === 'success') {
-            $emoji = "\xE2\x9C\x85 ";
-        } else {
-            $status_text = " [{$status}]";
-        }
-
-        event(new \App\Events\Stats\Build());
-
-        $telegram->notifyAdmin("{$emoji}{$project} build {$number}{$status_text}");
-
-        return 'ok';
-    }
-
-    public function telegramWebhook(Telegram $telegram)
-    {
-        \Log::info(json_encode($this->request->all()));
-    }
 }

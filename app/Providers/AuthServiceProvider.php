@@ -25,9 +25,12 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 use Ivacuum\Generic\Policies\Base;
 use Ivacuum\Generic\Policies\WithoutCreate;
 use Ivacuum\Generic\Policies\WithoutCreateAndEdit;
+use Ivacuum\Generic\Providers\VkTrait;
 
 class AuthServiceProvider extends ServiceProvider
 {
+    use VkTrait;
+
     protected $policies = [
         Gig::class => Base::class,
         Tag::class => Base::class,
@@ -55,15 +58,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         parent::registerPolicies();
 
-        $this->app->singleton(VkProvider::class, function ($app) {
-            $config = $app['config']['services.vk'];
-
-            return new VkProvider(
-                $app['request'],
-                $config['client_id'],
-                $config['client_secret'],
-                $config['redirect']
-            );
-        });
+        $this->vk();
     }
 }
