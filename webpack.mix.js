@@ -26,7 +26,7 @@ mix.js('resources/assets/js/app.js', 'public/assets')
   .copy('node_modules/promise-polyfill/promise.min.js', 'public/assets/polyfills.js')
 
   .copy('node_modules/jquery/dist/jquery.min.js', 'public/assets/jquery.js')
-  .combine(['resources/assets/js/jquery-pjax.js'], 'public/assets/jquery.pjax.js')
+  .combine(['node_modules/jquery.pjax/jquery.pjax.js'], 'public/assets/jquery.pjax.js')
   .copy('node_modules/jquery.scrollto/jquery.scrollTo.min.js', 'public/assets/jquery.scrollto.js')
 
   .copy('node_modules/autosize/dist/autosize.min.js', 'public/assets/autosize.js')
