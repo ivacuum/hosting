@@ -80,7 +80,7 @@
          data-ad-format="auto"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
-@elseif (App::environment('local'))
+@elseif (App::isLocal())
   <div class="mt-3 banner-local google-b-horizontal"></div>
 @endif
 @endsection

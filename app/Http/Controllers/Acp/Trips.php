@@ -72,7 +72,7 @@ class Trips extends Controller
         $model = Model::create($data);
 
         // TODO
-        if (\App::environment('local')) {
+        if (\App::isLocal()) {
             $model->createStoryFile();
         }
 

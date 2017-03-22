@@ -16,7 +16,7 @@
       <a class="list-group-item {{ 0 === strpos($view, 'acp.dev.svg') ? 'active' : '' }}" href="{{ action('Acp\Dev@svg') }}">
         {{ trans('acp.dev.svg') }}
       </a>
-      @if (App::environment('local') && !Request::cookie('debugbar', false))
+      @if (App::isLocal() && !Request::cookie('debugbar', false))
         <a class="list-group-item" href="{{ action('Acp\Dev@debugbar') }}">
           {{ trans('acp.dev.debugbar') }}
         </a>
