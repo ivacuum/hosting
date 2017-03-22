@@ -50,6 +50,15 @@
   thead {
     border-bottom: 1px solid #ddd;
     font-weight: bold;
+
+    tr {
+      @media (min-width: $screen-sm-min) {
+        position: sticky;
+        top: -1px;
+        z-index: 1;
+        background: #ededed linear-gradient(#fbfbfb, #ededed) repeat-x;
+      }
+    }
   }
 
   tfoot { border-top: 1px solid #ddd; }
