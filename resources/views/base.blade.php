@@ -14,7 +14,7 @@
   <link rel="apple-touch-icon-precomposed" href="https://life.ivacuum.ru/apple-touch-icon-precomposed.png">
   <link rel="icon" href="https://life.ivacuum.ru/apple-touch-icon.png">
   <link rel="canonical" href="{{ Request::url() }}">
-  <link rel="manifest" href="/pwa-manifest.json">
+  <link rel="manifest" href="/pwa-manifest.json?1">
   <script async src="/assets/service-worker-installer.js"></script>
   <link rel="stylesheet" href="/assets/fotorama.css">
   <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">

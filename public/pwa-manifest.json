@@ -4,8 +4,13 @@
   "short_name": "ivacuum.ru",
   "icons": [
     {
+      "src": "https://life.ivacuum.ru/apple-touch-icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
       "src": "https://life.ivacuum.ru/apple-touch-icon.png",
-      "sizes": "300x300",
+      "sizes": "256x256",
       "type": "image/png"
     }
   ],
