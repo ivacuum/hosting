@@ -59,7 +59,7 @@ class Controller extends BaseController
             'self' => $this->class,
             'view' => $this->view,
             'locale' => $locale,
-            'locale_uri' => $locale === config('cfg.default_locale') ? '' : "/{$locale}",
+            'locale_uri' => $locale === config('app.locale') ? '' : "/{$locale}",
             'request_uri' => $request_uri,
         ]);
     }
