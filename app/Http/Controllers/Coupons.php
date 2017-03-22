@@ -53,7 +53,7 @@ class Coupons extends Controller
         ]);
 
         register_shutdown_function(function () {
-            \Mail::to($this->request->input('email'))->send(new FirstvdsPromocode());
+            \Mail::to($this->request->input('email'))->send(new FirstvdsPromocode);
         });
 
         return back()->with('message', trans('coupons.promocode_sent'));

@@ -56,10 +56,10 @@ class Ajax extends Controller
 
     protected function notifyUsersAboutComment($type, $model, Comment $comment)
     {
-        event(new \App\Events\Stats\CommentAdded());
+        event(new \App\Events\Stats\CommentAdded);
 
         if ($type === 'news') {
-            event(new \App\Events\Stats\NewsCommented());
+            event(new \App\Events\Stats\NewsCommented);
 
             \Notification::send($comment->usersForNotification($model), new NewsCommented($model, $comment));
 
@@ -67,7 +67,7 @@ class Ajax extends Controller
         }
 
         if ($type === 'trip') {
-            event(new \App\Events\Stats\TripCommented());
+            event(new \App\Events\Stats\TripCommented);
 
             \Notification::send($comment->usersForNotification($model), new TripCommented($model, $comment));
 
@@ -75,7 +75,7 @@ class Ajax extends Controller
         }
 
         if ($type === 'torrent') {
-            event(new \App\Events\Stats\TorrentCommented());
+            event(new \App\Events\Stats\TorrentCommented);
 
             \Notification::send($comment->usersForNotification($model), new TorrentCommented($model, $comment));
 

@@ -31,7 +31,7 @@ class Auth extends Controller
         ];
 
         if (!is_null($result = $this->attemptLogin($credentials))) {
-            event(new \App\Events\Stats\UserSignedInWithEmail());
+            event(new \App\Events\Stats\UserSignedInWithEmail);
 
             return $result;
         }
@@ -41,7 +41,7 @@ class Auth extends Controller
         $credentials['login'] = $this->request->input('email');
 
         if (!is_null($result = $this->attemptLogin($credentials))) {
-            event(new \App\Events\Stats\UserSignedInWithUsername());
+            event(new \App\Events\Stats\UserSignedInWithUsername);
 
             return $result;
         }
@@ -58,7 +58,7 @@ class Auth extends Controller
         $this->request->session()->flush();
         $this->request->session()->regenerate();
 
-        event(new \App\Events\Stats\UserLoggedOut());
+        event(new \App\Events\Stats\UserLoggedOut);
 
         return redirect()->action('Home@index');
     }
@@ -79,7 +79,7 @@ class Auth extends Controller
         $response = $passwords->sendResetLink($this->request->only('email'));
 
         if (PasswordBroker::RESET_LINK_SENT === $response) {
-            event(new \App\Events\Stats\UserPasswordReminded());
+            event(new \App\Events\Stats\UserPasswordReminded);
 
             return back()->with('message', trans($response, ['email' => $email]));
         }
@@ -117,7 +117,7 @@ class Auth extends Controller
         });
 
         if (PasswordBroker::PASSWORD_RESET === $response) {
-            event(new \App\Events\Stats\UserPasswordResetted());
+            event(new \App\Events\Stats\UserPasswordResetted);
 
             return redirect()->action('Home@index')->with('message', trans($response));
         }
@@ -146,7 +146,7 @@ class Auth extends Controller
         if (!is_null($user)) {
             $passwords->sendResetLink(compact('email'));
 
-            event(new \App\Events\Stats\UserPasswordRemindedDuringRegistration());
+            event(new \App\Events\Stats\UserPasswordRemindedDuringRegistration);
 
             return back()->with('message', trans('auth.email_taken', ['email' => $email]));
         }
@@ -159,7 +159,7 @@ class Auth extends Controller
             'status'   => User::STATUS_ACTIVE,
         ]);
 
-        event(new \App\Events\Stats\UserRegisteredWithEmail());
+        event(new \App\Events\Stats\UserRegisteredWithEmail);
 
         // Mail::send('emails.users.activation', compact('user'), function ($mail) use ($user) {
         // 	$mail->to($user->email)->subject("Активация учетной записи");

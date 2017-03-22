@@ -25,7 +25,7 @@ class Torrents extends Controller
         if (!is_null($category)) {
             $ids = \TorrentCategoryHelper::selfAndDescendantsIds($category_id, $category);
 
-            event(new \App\Events\Stats\TorrentFilteredByCategory());
+            event(new \App\Events\Stats\TorrentFilteredByCategory);
 
             $torrents = $torrents->whereIn('category_id', $ids);
         }
@@ -62,7 +62,7 @@ class Torrents extends Controller
             $torrent = Torrent::where('rto_id', $topic_id)->first();
 
             if (!is_null($torrent)) {
-                event(new \App\Events\Stats\TorrentDuplicateFound());
+                event(new \App\Events\Stats\TorrentDuplicateFound);
 
                 return back()
                     ->withInput()
@@ -90,7 +90,7 @@ class Torrents extends Controller
             'registered_at' => Carbon::now(),
         ]);
 
-        event(new \App\Events\Stats\TorrentAdded());
+        event(new \App\Events\Stats\TorrentAdded);
 
         return redirect()->action("{$this->class}@torrent", $torrent->id);
     }
@@ -114,7 +114,7 @@ class Torrents extends Controller
         \Breadcrumbs::push(trans('torrents.index'), 'torrents');
         \Breadcrumbs::push(trans('torrents.faq'));
 
-        event(new \App\Events\Stats\TorrentFaqViewed());
+        event(new \App\Events\Stats\TorrentFaqViewed);
 
         return view($this->view);
     }
@@ -125,10 +125,10 @@ class Torrents extends Controller
         $torrent->increment('clicks');
         $torrent->timestamps = true;
 
-        event(new \App\Events\Stats\TorrentMagnetClicked());
+        event(new \App\Events\Stats\TorrentMagnetClicked);
 
         if (is_null($this->request->user())) {
-            event(new \App\Events\Stats\TorrentMagnetGuestClicked());
+            event(new \App\Events\Stats\TorrentMagnetGuestClicked);
         }
 
         return 'OK';
@@ -152,7 +152,7 @@ class Torrents extends Controller
 
     public function promo()
     {
-        event(new \App\Events\Stats\TorrentPromoViewed());
+        event(new \App\Events\Stats\TorrentPromoViewed);
 
         return view($this->view);
     }
@@ -174,7 +174,7 @@ class Torrents extends Controller
     protected function applySearchQuery($q, $torrents)
     {
         if (mb_strlen($q) > 2) {
-            event(new \App\Events\Stats\TorrentSearched());
+            event(new \App\Events\Stats\TorrentSearched);
 
             return $torrents->where('title', 'LIKE', "%{$q}%");
         }

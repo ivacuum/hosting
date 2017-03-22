@@ -28,7 +28,7 @@ class Thumbnails extends Controller
             throw new \Exception('Необходимо предоставить хотя бы один файл');
         }
 
-        $image = (new ImageConverter())
+        $image = (new ImageConverter)
             ->resize(2000, 1500)
             ->quality(75)
             ->convert($file->getRealPath());

@@ -96,7 +96,7 @@ class User extends Authenticatable
 
     public function avatarUrl()
     {
-        return $this->avatar ? (new Avatar())->originalUrl($this->avatar) : '';
+        return $this->avatar ? (new Avatar)->originalUrl($this->avatar) : '';
     }
 
     public function breadcrumb()
@@ -134,7 +134,7 @@ class User extends Authenticatable
             $affected_rows = $this->unreadNotifications()->update(['read_at' => Carbon::now()]);
 
             for ($i = 0; $i < $affected_rows; $i++) {
-                event(new \App\Events\Stats\NotificationRead());
+                event(new \App\Events\Stats\NotificationRead);
             }
         }
 
@@ -155,7 +155,7 @@ class User extends Authenticatable
 
     public function uploadAvatar(UploadedFile $file)
     {
-        $avatar = new Avatar();
+        $avatar = new Avatar;
 
         if ($this->avatar) {
             $avatar->delete($this->avatar);

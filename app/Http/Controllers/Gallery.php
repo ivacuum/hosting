@@ -64,7 +64,7 @@ class Gallery extends Controller
         $image->upload($file);
         $image->save();
 
-        event(new \App\Events\Stats\GalleryImageUploaded());
+        event(new \App\Events\Stats\GalleryImageUploaded);
 
         return [
             'status' => 'OK',

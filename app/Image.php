@@ -136,7 +136,7 @@ class Image extends Model
 
     protected function convert($source, $width, $height)
     {
-        return (new ImageConverter())
+        return (new ImageConverter)
             ->autoOrient()
             ->resize($width, $height)
             ->filter('triangle')
@@ -146,7 +146,7 @@ class Image extends Model
 
     protected function convertSmallSource($source)
     {
-        return (new ImageConverter())
+        return (new ImageConverter)
             ->autoOrient()
             ->quality(75)
             ->convert($source);
@@ -154,7 +154,7 @@ class Image extends Model
 
     protected function gifFirstFrame($source, $width, $height)
     {
-        return (new ImageConverter())
+        return (new ImageConverter)
             ->firstFrame()
             ->resize($width, $height)
             ->convert($source);

@@ -323,7 +323,7 @@ class Domain extends Model
 
     public function getRobotsTxt()
     {
-        $client = new HttpClient();
+        $client = new HttpClient;
         $domain = idn_to_ascii($this->domain);
 
         try {

@@ -38,12 +38,12 @@ class Resize extends Controller
 
         abort_unless($code === 200, $code);
 
-        $new_image = (new ImageConverter())
+        $new_image = (new ImageConverter)
             ->resize($width, $height)
             ->quality(75)
             ->convert($source);
 
-        event(new \App\Events\Stats\ImageResizedOnDemand());
+        event(new \App\Events\Stats\ImageResizedOnDemand);
 
         header('Content-Type: ' . $this->mimeByExtension($extension));
         readfile($new_image->getRealPath());

@@ -141,7 +141,7 @@ class ParserVk extends Controller
 
             $response = $this->client->get('wall.get', ['query' => $params]);
 
-            event(new \App\Events\Stats\ParserVkWallGet());
+            event(new \App\Events\Stats\ParserVkWallGet);
 
             return json_decode($response->getBody());
         });

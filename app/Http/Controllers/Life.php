@@ -2,10 +2,6 @@
 
 use App\City;
 use App\Country;
-use App\Events\Stats\CityViewed;
-use App\Events\Stats\CountryViewed;
-use App\Events\Stats\GigViewed;
-use App\Events\Stats\TripViewed;
 use App\Gig;
 use App\Trip;
 
@@ -54,12 +50,12 @@ class Life extends Controller
     {
         $published_trips = $city->trips->where('status', Trip::STATUS_PUBLISHED);
 
-        event(new CityViewed($city->id));
+        event(new \App\Events\Stats\CityViewed($city->id));
 
         if (1 === sizeof($published_trips)) {
             $slug = $published_trips->first()->slug;
 
-            event(new \App\Events\Stats\CityRedirectedToSingleTrip());
+            event(new \App\Events\Stats\CityRedirectedToSingleTrip);
 
             return redirect()->action("{$this->class}@page", $slug);
         }
@@ -120,7 +116,7 @@ class Life extends Controller
         \Breadcrumbs::push(trans('menu.countries'), 'life/countries');
         \Breadcrumbs::push($country->title, "life/countries/{$country->slug}");
 
-        event(new CountryViewed($country->id));
+        event(new \App\Events\Stats\CountryViewed($country->id));
 
         return view($this->view, compact('country', 'trips'));
     }
@@ -134,7 +130,7 @@ class Life extends Controller
         \Breadcrumbs::push(trans('menu.gigs'), 'life/gigs');
         \Breadcrumbs::push($gig->title);
 
-        event(new GigViewed($gig->id));
+        event(new \App\Events\Stats\GigViewed($gig->id));
 
         $timeline = $gig->artistTimeline();
 
@@ -187,7 +183,7 @@ class Life extends Controller
         \Breadcrumbs::push($trip->city->title, "life/{$trip->city->slug}");
         \Breadcrumbs::push($trip->localizedDate(), "life/{$trip->slug}");
 
-        event(new TripViewed($trip->id));
+        event(new \App\Events\Stats\TripViewed($trip->id));
 
         $timeline = $trip->cityTimeline();
 

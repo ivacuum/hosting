@@ -30,7 +30,7 @@ class My extends Controller
 
         $avatar = $user->uploadAvatar($file);
 
-        event(new \App\Events\Stats\UserAvatarUploaded());
+        event(new \App\Events\Stats\UserAvatarUploaded);
 
         return [
             'status' => 'OK',
@@ -62,7 +62,7 @@ class My extends Controller
         $user->password = $this->request->input('new_password');
         $user->save();
 
-        event(new \App\Events\Stats\MyPasswordChanged());
+        event(new \App\Events\Stats\MyPasswordChanged);
 
         return back()->with('message', trans('my.saved'));
     }
@@ -96,7 +96,7 @@ class My extends Controller
         $user->email = $this->request->input('email');
         $user->save();
 
-        event(new \App\Events\Stats\MyProfileChanged());
+        event(new \App\Events\Stats\MyProfileChanged);
 
         return back()->with('message', trans('my.saved'));
     }
@@ -123,7 +123,7 @@ class My extends Controller
         $user->torrent_short_title = $this->request->input('torrent_short_title', 0);
         $user->save();
 
-        event(new \App\Events\Stats\MySettingsChanged());
+        event(new \App\Events\Stats\MySettingsChanged);
 
         return back()->with('message', trans('my.saved'));
     }
