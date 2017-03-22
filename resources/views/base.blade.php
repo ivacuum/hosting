@@ -179,7 +179,7 @@
 <script src="/assets/jquery.scrollto.js"></script>
 <script src="/assets/autosize.js"></script>
 <script src="/assets/bootstrap.js"></script>
-<script src="/assets/vue.js"></script>
+<script src="/assets/vue.js?2.2.4"></script>
 <script src="{{ mix('/assets/axios.js') }}"></script>
 <script src="{{ mix('/assets/fotorama.js') }}"></script>
 <script src="{{ mix('/assets/app.js') }}"></script>
