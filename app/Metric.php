@@ -26,6 +26,12 @@ class Metric extends Model
             $events[] = pathinfo($file, PATHINFO_FILENAME);
         }
 
+        foreach (glob(base_path('vendor/ivacuum/generic/src/Events/Stats/*.php')) as $file) {
+            $events[] = pathinfo($file, PATHINFO_FILENAME);
+        }
+
+        asort($events);
+
         return $events ?? [];
     }
 }
