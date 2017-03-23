@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers;
 
-use App\Services\ImageConverter;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use Ivacuum\Generic\Services\ImageConverter;
 
 class Resize extends Controller
 {

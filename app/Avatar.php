@@ -1,7 +1,7 @@
 <?php namespace App;
 
-use App\Services\ImageConverter;
 use Illuminate\Http\UploadedFile;
+use Ivacuum\Generic\Services\ImageConverter;
 
 class Avatar
 {

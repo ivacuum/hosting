@@ -1,9 +1,9 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\City as Model;
-use App\Services\GoogleGeocoder;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Controllers\Acp\Controller;
+use Ivacuum\Generic\Services\GoogleGeocoder;
 
 class Cities extends Controller
 {

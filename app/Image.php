@@ -1,8 +1,8 @@
 <?php namespace App;
 
-use App\Services\ImageConverter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
+use Ivacuum\Generic\Services\ImageConverter;
 
 /**
  * Изображение в галерее

@@ -15,7 +15,6 @@ use App\Notification;
 use App\Page;
 use App\Photo;
 use App\Server;
-use App\Socialite\VkProvider;
 use App\Tag;
 use App\Torrent;
 use App\Trip;

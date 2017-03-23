@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers\Acp\Dev;
 
-use App\Services\ImageConverter;
 use Ivacuum\Generic\Controllers\Acp\BaseController;
+use Ivacuum\Generic\Services\ImageConverter;
 
 class Thumbnails extends BaseController
 {
