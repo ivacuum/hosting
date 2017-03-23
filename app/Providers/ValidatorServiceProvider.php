@@ -1,17 +1,14 @@
 <?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Ivacuum\Generic\Providers\SpammerTrapTrait;
 
 class ValidatorServiceProvider extends ServiceProvider
 {
+    use SpammerTrapTrait;
+
     public function register()
     {
-        $this->app->booted(function ($app) {
-            $app['validator']->extend('empty', function ($attr, $value, $params) {
-                event(new \App\Events\Stats\SpammerTrapped());
-
-                return empty($value);
-            }, 'Читер');
-        });
+        $this->trap();
     }
 }
