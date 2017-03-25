@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,10 +24,10 @@ class ClientTableSeeder extends Seeder
 
 		$faker = Faker\Factory::create('ru_RU');
 
-		Client::create(['name' => 'Private Person']);
+		App\Client::create(['name' => 'Private Person']);
 
 		for ($i = 0; $i < 3; $i++) {
-			Client::create([
+			App\Client::create([
 				'name'  => $faker->name('male'),
 				'email' => $faker->safeEmail,
 			]);
@@ -47,7 +46,7 @@ class DomainTableSeeder extends Seeder
 		$domains = ['ivacuum.ru', 'ivacuum.org', 'korden.net', 'ecoprof.su', 'sanpropusknik.com', 'ружейный.рф', 'korden.info'];
 
 		foreach ($domains as $domain) {
-			Domain::create([
+			App\Domain::create([
 				'client_id'      => $faker->numberBetween(1, 4),
 				'domain'         => $domain,
 				'active'         => 1,
@@ -63,7 +62,7 @@ class UserTableSeeder extends Seeder
 	{
 		DB::table('users')->truncate();
 
-		User::create([
+		App\User::create([
 			'email'    => 'root@example.com',
 			'password' => 'secret',
 		]);

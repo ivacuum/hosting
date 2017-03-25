@@ -18,7 +18,6 @@ use App\Torrent;
 use App\Trip;
 use App\User;
 use App\YandexUser;
-use Carbon\Carbon;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Ivacuum\Generic\Providers\LocaleTrait;
 

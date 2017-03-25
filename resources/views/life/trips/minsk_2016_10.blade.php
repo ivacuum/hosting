@@ -53,12 +53,12 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_2209.jpg'])
 
 @ru
-  <p>Ромовая <strike>баба</strike> бабища.</p>
+  <p>Ромовая <del>баба</del> бабища.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_2193.jpg'])
 
 @ru
-  <p><strike>Бокал</strike> Бокальчик для винишка.</p>
+  <p><del>Бокал</del> Бокальчик для винишка.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_2230.jpg'])
 

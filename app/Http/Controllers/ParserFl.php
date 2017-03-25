@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-use App\Page;
 use GuzzleHttp\Client;
 
 class ParserFl extends Controller

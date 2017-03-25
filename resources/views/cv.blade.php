@@ -205,7 +205,7 @@ a:hover {
     padding: 0;
   }
   .wrapper {
-    padding: 40px 30px 0px 30px;
+    padding: 40px 30px 0 30px;
   }
   .contact,
   .heading,
@@ -221,7 +221,7 @@ a:hover {
     padding: 0;
   }
   .wrapper {
-    padding: 25px 20px 0px 20px;
+    padding: 25px 20px 0 20px;
   }
   .contact,
   .heading,
@@ -230,7 +230,7 @@ a:hover {
   }
   .my-picture {
     width: 70px;
-    margin: 0px 10px 0px 0px;
+    margin: 0 10px 0 0;
   }
   .my-name {
     font-size: 16px;

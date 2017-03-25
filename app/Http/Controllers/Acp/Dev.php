@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use Breadcrumbs;
 use Illuminate\Cookie\CookieJar;
 
 class Dev extends Controller
@@ -41,6 +40,8 @@ class Dev extends Controller
 
     public function svg()
     {
+        \Breadcrumbs::push(trans($this->view));
+
         $icons = [];
 
         foreach (glob(base_path('resources/svg/*.html')) as $icon) {
@@ -55,10 +56,5 @@ class Dev extends Controller
         }
 
         return view($this->view, compact('icons'));
-    }
-
-    protected function breadcrumbsSvg()
-    {
-        Breadcrumbs::push(trans($this->view));
     }
 }

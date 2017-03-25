@@ -396,8 +396,6 @@ class Domain extends Model
             throw new \Exception('Домен не связан с учеткой в Яндексе');
         }
 
-        $client = $this->getYandexPddApiClient();
-
         switch ($server) {
             case 'srv1.korden.net': $ipv4 = '62.109.0.61';     $ipv6 = '2a01:230:2::1fb'; break;
             case 'srv2.korden.net': $ipv4 = '188.120.229.204'; $ipv6 = '2a01:230:2::1fc'; break;

@@ -161,7 +161,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_1034.jpg'])
 
 @ru
-  <p>Кажется, он меня узнал и идет пожать <strike>лапу</strike> руку.</p>
+  <p>Кажется, он меня узнал и идет пожать <del>лапу</del> руку.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_1036.jpg'])
 

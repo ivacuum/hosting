@@ -41,16 +41,13 @@ class Templates extends BaseController
 
     public function template($template)
     {
+        \Breadcrumbs::push($template);
+
         $slug = str_replace('_', '.', $template);
 
         $trip = Trip::inRandomOrder()->first();
         $trip->slug = $slug;
 
         return view($this->view, compact('template', 'trip'));
-    }
-
-    protected function breadcrumbsTemplate($template)
-    {
-        \Breadcrumbs::push($template);
     }
 }
