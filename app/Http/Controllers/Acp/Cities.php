@@ -38,6 +38,11 @@ class Cities extends Controller
         return back()->with('message', "Геоданные обновлены: [{$model->lat} {$model->lon}]");
     }
 
+    protected function redirectAfterStore($model)
+    {
+        return redirect()->action("{$this->class}@show", $model);
+    }
+
     /**
      * @param  Model|null $model
      * @return array
