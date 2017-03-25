@@ -1,7 +1,8 @@
 .photo-map-container {
-  height: calc(100vh - 240px);
+  height: calc(100vh - 195px);
+  margin-bottom: -1.5rem;
 
-  @include mobile-wide;
+  @include always-wide;
 }
 
 .photo-show-container {
