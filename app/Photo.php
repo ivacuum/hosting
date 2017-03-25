@@ -83,7 +83,7 @@ class Photo extends Model
 
     public function breadcrumb()
     {
-        return $this->slug;
+        return str_replace('/', ' / ', $this->slug);
     }
 
     public function isOnMap()
