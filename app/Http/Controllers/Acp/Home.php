@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers\Acp;
 
-class Home extends Controller
+use Ivacuum\Generic\Controllers\Acp\BaseController;
+
+class Home extends BaseController
 {
     public function index()
     {

@@ -1,8 +1,9 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use Illuminate\Cookie\CookieJar;
+use Ivacuum\Generic\Controllers\Acp\BaseController;
 
-class Dev extends Controller
+class Dev extends BaseController
 {
     public function index()
     {

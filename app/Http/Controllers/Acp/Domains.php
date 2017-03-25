@@ -188,7 +188,7 @@ class Domains extends Controller
     {
         $model = $this->getModel($domain);
 
-        $this->breadcrumbsCurrentSubpage($model);
+        $this->breadcrumbsModelSubpage($model);
 
         $mailboxes = $model->getMailboxes();
 
@@ -199,7 +199,7 @@ class Domains extends Controller
     {
         $model = $this->getModel($domain);
 
-        $this->breadcrumbsCurrentSubpage($model);
+        $this->breadcrumbsModelSubpage($model);
 
         $records = $model->yandex_user_id ? $model->getNsRecords() : [];
 
@@ -217,7 +217,7 @@ class Domains extends Controller
     {
         $model = $this->getModel($domain);
 
-        $this->breadcrumbsCurrentSubpage($model);
+        $this->breadcrumbsModelSubpage($model);
 
         $robots = $model->getRobotsTxt();
 
@@ -253,7 +253,7 @@ class Domains extends Controller
     {
         $model = $this->getModel($domain);
 
-        $this->breadcrumbsCurrentSubpage($model);
+        $this->breadcrumbsModelSubpage($model);
 
         $model->updateWhois();
 
