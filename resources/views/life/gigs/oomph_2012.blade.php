@@ -34,7 +34,7 @@
       <li>Auf Kurs
         <small class="text-muted">(Acoustic)</small>
       </li>
-      <li>Bis Der Spiegel Zerbricht</li>
+      <li>Bis der Spiegel zerbricht</li>
       <li>Revolution</li>
       <li>Mein Schatz</li>
       <li>Niemand</li>

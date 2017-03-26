@@ -21,7 +21,7 @@
       <li>Als wärs das letzte Mal</li>
       <li>Wunschkind</li>
       <li>Jede Reise hat ein Ende</li>
-      <li>Bis Der Spiegel Zerbricht</li>
+      <li>Bis der Spiegel zerbricht</li>
       <li>Jetzt oder nie</li>
       <li>Niemand</li>
       <li>Mitten ins Herz</li>
@@ -33,7 +33,7 @@
       <li>Kleinstadtboy</li>
       <li>Gott ist ein Popstar</li>
       <li>Dankeschön</li>
-      <li>The Power of Love / Das Letzte Streichholz / Fieber</li>
+      <li>The Power of Love / Das letzte Streichholz / Fieber</li>
     </ol>
   </div>
   <div class="col-md-5">

@@ -14,7 +14,7 @@
       <li>Labyrinth</li>
       <li>Mein Schatz</li>
       <li>Das weisse Licht</li>
-      <li>Bis Der Spiegel Zerbricht</li>
+      <li>Bis der Spiegel zerbricht</li>
       <li>Träumst Du</li>
       <li>Kleinstadtboy</li>
       <li>Mein Herz</li>
