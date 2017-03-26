@@ -21,11 +21,6 @@
   <li class="{{ $vkpage == 'decaying_europe' ? 'active' : '' }}">
     <a class="js-pjax" href="{{ action('ParserVk@index', ['page' => 'decaying_europe']) }}">Запад</a>
   </li>
-  <li class="{{ $vkpage == 'vandroukiru' ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ action('ParserVk@index', ['page' => 'vandroukiru']) }}">
-      @svg (plane)
-    </a>
-  </li>
 </ul>
 
 <form action="{{ action('ParserVk@indexPost') }}" method="post">
