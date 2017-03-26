@@ -105,6 +105,14 @@ class Photos extends Controller
         return view($this->view, compact('country', 'photos'));
     }
 
+    public function faq()
+    {
+        \Breadcrumbs::push(trans('photos.index'), 'photos');
+        \Breadcrumbs::push(trans('photos.faq'));
+
+        return view($this->view);
+    }
+
     public function map()
     {
         $trip_id = $this->request->input('trip_id');

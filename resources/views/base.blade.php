@@ -51,13 +51,11 @@
               {{ trans('menu.torrents') }}
             </a>
           </li>
-          @if (Auth::check() && Auth::user()->isRoot())
           <li>
             <a class="{{ $self == 'Photos' ? 'navbar-selected' : '' }}" href="{{ action('Photos@index') }}">
               {{ trans('photos.index') }}
             </a>
           </li>
-          @endif
         @show
       </ul>
       @yield('header_form')

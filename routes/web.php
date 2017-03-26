@@ -71,6 +71,7 @@ Route::get('photos/cities', 'Photos@cities');
 Route::get('photos/cities/{slug}', 'Photos@city');
 Route::get('photos/countries', 'Photos@countries');
 Route::get('photos/countries/{slug}', 'Photos@country');
+Route::get('photos/faq', 'Photos@faq');
 Route::get('photos/map', 'Photos@map');
 Route::get('photos/tags', 'Photos@tags');
 Route::get('photos/tags/{Tag}', 'Photos@tag');

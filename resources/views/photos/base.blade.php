@@ -17,5 +17,8 @@
   <li class="{{ $view === 'photos.countries' ? 'active' : '' }}">
     <a href="{{ action('Photos@countries') }}">{{ trans('photos.countries') }}</a>
   </li>
+  <li class="{{ $view === 'photos.faq' ? 'active' : '' }}">
+    <a href="{{ action('Photos@faq') }}">{{ trans('photos.faq') }}</a>
+  </li>
 </ul>
 @endsection

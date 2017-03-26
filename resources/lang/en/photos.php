@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'faq' => 'Help',
     'new' => 'New',
     'map' => 'Map',
     'date' => 'Date',
