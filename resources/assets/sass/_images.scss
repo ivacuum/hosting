@@ -1,7 +1,8 @@
 .gallery-flex {
   display: flex;
   flex-wrap: wrap;
-  text-align: center;
+
+  @media (max-width: $screen-xs-max) { text-align: center; }
 }
 
 .gallery-image {
