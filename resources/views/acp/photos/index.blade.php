@@ -12,6 +12,11 @@
       Без тэгов
     </a>
   </li>
+  <li class="{{ $filter === 'no-geo' ? 'active' : '' }}">
+    <a class="js-pjax" href="{{ Request::fullUrlWithQuery(['filter' => 'no-geo', 'page' => null]) }}">
+      Без гео
+    </a>
+  </li>
 </ul>
 @endsection
 

@@ -226,8 +226,7 @@ class Photos extends Controller
         return \Cache::remember($cache_entry, $minutes, function () use ($trip_id) {
             $photos = Photo::with('rel')
                 ->forTrip($trip_id)
-                ->where('lat', '<>', '')
-                ->where('lon', '<>', '')
+                ->onMap()
                 ->orderBy('id', 'asc')
                 ->get();
 

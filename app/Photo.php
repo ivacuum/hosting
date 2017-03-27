@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -39,20 +40,22 @@ class Photo extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function scopeApplyFilter($query, $filter = null)
+    public function scopeApplyFilter(Builder $query, $filter = null)
     {
         if (is_null($filter)) {
             return $query;
         }
 
-        if ($filter === 'no-tags') {
+        if ($filter === 'no-geo') {
+            return $query->notOnMap();
+        } elseif ($filter === 'no-tags') {
             return $query->doesntHave('tags');
         }
 
         return $query;
     }
 
-    public function scopeForTag($query, $id = null)
+    public function scopeForTag(Builder $query, $id = null)
     {
         if (is_null($id)) {
             return $query;
@@ -63,7 +66,7 @@ class Photo extends Model
         });
     }
 
-    public function scopeForTrip($query, $id = null)
+    public function scopeForTrip(Builder $query, $id = null)
     {
         if (is_null($id)) {
             return $query;
@@ -72,13 +75,25 @@ class Photo extends Model
         return $query->where('rel_id', $id)->where('rel_type', 'Trip');
     }
 
-    public function scopeForTrips($query, $ids = [])
+    public function scopeForTrips(Builder $query, $ids = [])
     {
         if (empty($ids)) {
             return $query;
         }
 
         return $query->whereIn('rel_id', $ids)->where('rel_type', 'Trip');
+    }
+
+    public function scopeNotOnMap(Builder $query)
+    {
+        return $query->where('lat', '')
+            ->where('lon', '');
+    }
+
+    public function scopeOnMap(Builder $query)
+    {
+        return $query->where('lat', '<>', '')
+            ->where('lon', '<>', '');
     }
 
     public function breadcrumb()
