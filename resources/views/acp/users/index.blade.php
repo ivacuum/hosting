@@ -8,6 +8,7 @@
     <th>Электронная почта</th>
     <th>Активен</th>
     <th>Дата реги</th>
+    <th>Вход</th>
   </tr>
   </thead>
   <tbody>
@@ -25,6 +26,7 @@
         @endif
       </td>
       <td>{{ ViewHelper::dateShort($model->created_at) }}</td>
+      <td>{{ ViewHelper::dateShort($model->last_login_at) }}</td>
     </tr>
   @endforeach
   </tbody>
