@@ -170,6 +170,7 @@ $dark-bg-lighter-color: lighten($dark-bg-color, 10%);
     tbody tr:nth-child(2n) { background-color: lighten($dark-bg-color, 5%); }
 
     thead,
+    thead tr,
     tfoot,
     .thead {
       background: lighten($dark-bg-color, 5%) linear-gradient(lighten($dark-bg-color, 15%), lighten($dark-bg-color, 5%)) repeat-x;
