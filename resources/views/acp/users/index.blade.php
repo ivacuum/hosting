@@ -1,5 +1,25 @@
 @extends('acp.list')
 
+@section('toolbar')
+<ul class="nav nav-link-tabs">
+  <li class="{{ !$filter ? 'active' : '' }}">
+    <a class="js-pjax" href="{{ Request::fullUrlWithQuery(['filter' => null, 'page' => null]) }}">
+      Все
+    </a>
+  </li>
+  <li class="{{ $filter === 'weekly-login' ? 'active' : '' }}">
+    <a class="js-pjax" href="{{ Request::fullUrlWithQuery(['filter' => 'weekly-login', 'page' => null]) }}">
+      Заходили на неделе
+    </a>
+  </li>
+  <li class="{{ $filter === 'monthly-login' ? 'active' : '' }}">
+    <a class="js-pjax" href="{{ Request::fullUrlWithQuery(['filter' => 'monthly-login', 'page' => null]) }}">
+      Заходили в месяце
+    </a>
+  </li>
+</ul>
+@endsection
+
 @section('content-list')
 <table class="table-stats table-adaptive">
   <thead>

@@ -2,6 +2,7 @@
 
 use App\Mail\ResetPassword;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
@@ -26,6 +27,8 @@ use Illuminate\Notifications\Notifiable;
  * @property \Carbon\Carbon $last_login_at
  *
  * @property \Illuminate\Support\Collection $notifications
+ *
+ * @method \Illuminate\Database\Eloquent\Builder unreadNotifications()
  */
 class User extends Authenticatable
 {
@@ -42,6 +45,7 @@ class User extends Authenticatable
     protected $dates = ['last_login_at'];
     protected $perPage = 50;
 
+    // Relations
     public function comments()
     {
         return $this->hasMany(Comment::class);
@@ -62,21 +66,41 @@ class User extends Authenticatable
         return $this->hasMany(Torrent::class);
     }
 
-    public function scopeActive($query)
-    {
-        return $query->where('status', self::STATUS_ACTIVE);
-    }
+    // Events
 
-    public function scopeForAnnouncement($query)
-    {
-        return $query->where('last_login_at', '>', Carbon::now()->subDays(7));
-    }
-
+    // Attributes
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
     }
 
+    // Scopes
+    public function scopeActive(Builder $query)
+    {
+        return $query->where('status', self::STATUS_ACTIVE);
+    }
+
+    public function scopeApplyFilter(Builder $query, $filter = null)
+    {
+        if (is_null($filter)) {
+            return $query;
+        }
+
+        if ($filter === 'weekly-login') {
+            return $query->where('last_login_at', '>', Carbon::now()->subWeek()->toDateTimeString());
+        } elseif ($filter === 'monthly-login') {
+            return $query->where('last_login_at', '>', Carbon::now()->subMonth()->toDateTimeString());
+        }
+
+        return $query;
+    }
+
+    public function scopeForAnnouncement(Builder $query)
+    {
+        return $query->where('last_login_at', '>', Carbon::now()->subDays(7));
+    }
+
+    // Methods
     public function activate()
     {
         if ($this->status === self::STATUS_INACTIVE) {
@@ -112,6 +136,24 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->isRoot();
+    }
+
+    public function isOldPasswordCorrect($password)
+    {
+        if ($this->salt && md5($password.$this->salt) === $this->password) {
+            return true;
+        }
+
+        if (!$this->salt && md5($password) === $this->password) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function isPasswordOld()
+    {
+        return strlen($this->password) === 32;
     }
 
     public function isRoot()
@@ -172,23 +214,5 @@ class User extends Authenticatable
     public function www()
     {
         return action('Users@show', $this->id);
-    }
-
-    public function isPasswordOld()
-    {
-        return strlen($this->password) === 32;
-    }
-
-    public function isOldPasswordCorrect($password)
-    {
-        if ($this->salt && md5($password.$this->salt) === $this->password) {
-            return true;
-        }
-
-        if (!$this->salt && md5($password) === $this->password) {
-            return true;
-        }
-
-        return false;
     }
 }

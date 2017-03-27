@@ -11,9 +11,13 @@ class Users extends Controller
 
     public function index()
     {
-        $models = Model::orderBy('id', 'desc')->paginate();
+        $filter = $this->request->input('filter');
 
-        return view($this->view, compact('models'));
+        $models = Model::applyFilter($filter)
+            ->orderBy('id', 'desc')
+            ->paginate();
+
+        return view($this->view, compact('filter', 'models'));
     }
 
     protected function mailCredentials(Model $model, $password)
