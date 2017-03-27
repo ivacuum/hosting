@@ -11,6 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="keywords" content="{{ $meta_keywords ?? '' }}">
   <meta name="description" content="{{ $meta_description ?? '' }}">
+  <meta name="theme-color" content="#e7e7e7">
   <link rel="apple-touch-icon-precomposed" href="https://life.ivacuum.ru/apple-touch-icon-precomposed.png">
   <link rel="icon" href="https://life.ivacuum.ru/apple-touch-icon.png">
   <link rel="canonical" href="{{ Request::url() }}">
