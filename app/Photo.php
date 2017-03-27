@@ -61,7 +61,7 @@ class Photo extends Model
             return $query;
         }
 
-        return $query->whereHas('tags', function ($query) use ($id) {
+        return $query->whereHas('tags', function (Builder $query) use ($id) {
             $query->where('tag_id', $id);
         });
     }
