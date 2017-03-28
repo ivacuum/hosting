@@ -3,6 +3,7 @@
 {{-- Yotaspace --}}
 
 @section('content')
+{{--
 @ru
   <p>Новый тур группы Oomph! Это будет уже шестое выступление по счету в Москве. Сетлист будет известен вместе с первым концертом в Санкт-Петербурге 24 марта.</p>
   <p>В своем Фэйсбуке участники группы <a class="link" href="https://www.facebook.com/oomphband/videos/10154365026933803/">пообещали</a> исполнить одну песню, которая никогда не звучала на просторах СНГ. Также будет несколько песен в новой обработке. Без хитов публика тоже не останется.</p>
@@ -13,6 +14,7 @@
     <a class="btn btn-default" href="https://www.treehouse-ticketing.com/cat/index/sCategory/95">Meet&Greet</a>
   </p>
 @endlang
+--}}
 <div class="row">
   <div class="col-md-7">
     @include('tpl.setlist-title')
@@ -57,4 +59,9 @@
     </div>
   </div>
 </div>
+
+@ru
+  <p class="mb-1">Видеозапись выступления.</p>
+@endlang
+<youtube title="Oomph 2017, Moscow, Russia" v="Apm0ySyi7mA"></youtube>
 @endsection
