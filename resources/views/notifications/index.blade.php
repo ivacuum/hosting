@@ -10,6 +10,8 @@
         <div class="d-table-cell pr-3 svg-muted-blue f20 svg-mt-0">
           @if ($class_basename === 'torrent_updated')
             @svg (magnet)
+          @elseif ($class_basename === 'torrent_not_found_deleted')
+            @svg (trash-o)
           @elseif ($class_basename === 'trip_published')
             @svg (plane)
           @elseif (ends_with($class_basename, '_commented'))

@@ -1,5 +1,6 @@
 <?php namespace App\Console\Commands;
 
+use App\Notifications\TorrentNotFoundDeleted;
 use App\Notifications\TorrentUpdated;
 use App\Services\Rto;
 use App\Torrent;
@@ -26,6 +27,7 @@ class RtoUpdate extends Command
                     $this->info("Раздача {$id} не найдена и удалена: {$torrent->title}");
                     $torrent->delete();
                     event(new \App\Events\Stats\TorrentNotFoundDeleted);
+                    $torrent->user->notify(new TorrentNotFoundDeleted($torrent));
                     continue;
                 }
 
@@ -34,6 +36,7 @@ class RtoUpdate extends Command
                     $this->info("Раздача {$id} закрыта как повторная и удалена");
                     $torrent->delete();
                     event(new \App\Events\Stats\TorrentDuplicateDeleted);
+                    $torrent->user->notify(new TorrentNotFoundDeleted($torrent));
                     continue;
                 }
 
