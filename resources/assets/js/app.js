@@ -70,13 +70,15 @@ class Application {
     }
 
     function performLazyLoad() {
-      const scrolled = $w.scrollTop() + $w.height() + offset
+      const scrolled_down = $w.scrollTop() + $w.height() + offset
+      const scrolled_up = $w.scrollTop() - offset
 
       $images = $images.filter(function() {
         let e = $(this)
         let type = $(this).data('lazy-type') || 'image'
+        const image_offset = e.offset().top
 
-        if (scrolled > e.offset().top) {
+        if (image_offset < scrolled_down && image_offset > scrolled_up) {
           e.removeClass('js-lazy')
 
           if (type === 'image') {
