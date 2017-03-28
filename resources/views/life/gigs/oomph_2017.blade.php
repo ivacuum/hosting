@@ -47,6 +47,7 @@
         Das letzte Streichholz
         <small class="text-muted">(Acoustic)</small>
       </li>
+      <li>Давай, давай работай</li>
       <li>Labyrinth</li>
       <li>Augen auf!</li>
       <li>Alles aus Liebe</li>
