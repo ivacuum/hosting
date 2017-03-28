@@ -1,6 +1,7 @@
 @extends('base')
 
 @section('content')
+<h1 class="h2 mt-0 mb-4">{{ trans('news.index') }}</h1>
 @if (sizeof($news))
   <div class="row">
     <div class="col-md-8">
