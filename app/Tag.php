@@ -21,6 +21,7 @@ class Tag extends Model
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $perPage = 50;
 
+    // Relations
     public function news()
     {
         return $this->morphedByMany(News::class, 'rel', 'taggable');
@@ -45,11 +46,13 @@ class Tag extends Model
         });
     }
 
+    // Attributes
     public function getTitleAttribute()
     {
         return $this->{self::titleField()};
     }
 
+    // Methods
     public function breadcrumb()
     {
         return "#{$this->title}";
@@ -60,6 +63,7 @@ class Tag extends Model
         return mb_substr($this->title, 0, 1);
     }
 
+    // Static methods
     public static function titleField()
     {
         return 'title_'.\App::getLocale();

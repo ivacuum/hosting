@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\Finder\Finder;
 
@@ -40,6 +41,7 @@ class Trip extends Model
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $dates = ['date_start', 'date_end'];
 
+    // Relations
     public function city()
     {
         return $this->belongsTo(City::class);
@@ -61,7 +63,7 @@ class Trip extends Model
     }
 
     // Scopes
-    public function scopeForCity($query, $id = null)
+    public function scopeForCity(Builder $query, $id = null)
     {
         if (is_null($id)) {
             return $query;
@@ -70,18 +72,18 @@ class Trip extends Model
         return $query->where('city_id', $id);
     }
 
-    public function scopeForCountry($query, $id = null)
+    public function scopeForCountry(Builder $query, $id = null)
     {
         if (is_null($id)) {
             return $query;
         }
 
-        return $query->whereHas('city.country', function ($query) use ($id) {
+        return $query->whereHas('city.country', function (Builder $query) use ($id) {
             $query->where('country_id', $id);
         });
     }
 
-    public function scopeNext($query)
+    public function scopeNext(Builder $query)
     {
         return $query->where('date_start', '>=', $this->date_start)
             ->where('status', self::STATUS_PUBLISHED)
@@ -90,7 +92,7 @@ class Trip extends Model
             ->take(2);
     }
 
-    public function scopePrevious($query, $next_trips = 2)
+    public function scopePrevious(Builder $query, $next_trips = 2)
     {
         // Всего 4 места под ссылки помимо текущей поездки
         // prev prev current next next
@@ -105,12 +107,12 @@ class Trip extends Model
             ->take($take);
     }
 
-    public function scopePublished($query)
+    public function scopePublished(Builder $query)
     {
         return $query->where('status', self::STATUS_PUBLISHED);
     }
 
-    public function scopeVisible($query)
+    public function scopeVisible(Builder $query)
     {
         return $query->where('status', '!=', self::STATUS_HIDDEN);
     }

@@ -42,6 +42,7 @@ class Torrent extends Model
     protected $dates = ['registered_at'];
     protected $perPage = 50;
 
+    // Relations
     public function comments()
     {
         return $this->morphMany(Comment::class, 'rel');
@@ -52,6 +53,7 @@ class Torrent extends Model
         return $this->belongsTo(User::class);
     }
 
+    // Methods
     public function breadcrumb()
     {
         return $this->title;
@@ -85,6 +87,7 @@ class Torrent extends Model
         return action('Torrents@torrent', $this->id);
     }
 
+    // Static methods
     public static function statsByCategories()
     {
         return \Cache::remember('torrents.stats-by-categories', 15, function () {

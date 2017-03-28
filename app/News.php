@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -26,6 +27,7 @@ class News extends Model
 
     protected $guarded = ['created_at', 'updated_at', 'goto'];
 
+    // Relations
     public function comments()
     {
         return $this->morphMany(Comment::class, 'rel');
@@ -36,11 +38,13 @@ class News extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function scopePublished($query)
+    // Scopes
+    public function scopePublished(Builder $query)
     {
         return $query->where('status', self::STATUS_PUBLISHED);
     }
 
+    // Methods
     public function breadcrumb()
     {
         return $this->title;
@@ -51,6 +55,7 @@ class News extends Model
         return action('News@show', $this->id);
     }
 
+    // Static methods
     public static function interval($year, $month = null, $day = null)
     {
         $start = Carbon::createFromDate($year, $month, $day);

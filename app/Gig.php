@@ -35,6 +35,7 @@ class Gig extends Model
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $dates = ['date'];
 
+    // Relations
     public function artist()
     {
         return $this->belongsTo(Artist::class);

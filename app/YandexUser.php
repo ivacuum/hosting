@@ -2,27 +2,38 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Учетка на Яндексе
+ *
+ * @property integer $id
+ * @property string  $account
+ * @property string  $token
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ */
 class YandexUser extends Model
 {
-    protected $fillable = ['account', 'token'];
+    protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $hidden = ['token'];
 
+    // Relations
     public function domains()
     {
         return $this->hasMany(Domain::class)
             ->orderBy('domain');
     }
 
+    // Events
     public static function boot()
     {
         parent::boot();
 
-        static::deleted(function ($user) {
-            Domain::where('yandex_user_id', $user->id)
-                ->update(['yandex_user_id' => 0]);
+        static::deleted(function (YandexUser $user) {
+            $user->domains()->update(['yandex_user_id' => 0]);
         });
     }
 
+    // Methods
     public function breadcrumb()
     {
         return $this->account;

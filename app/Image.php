@@ -25,6 +25,7 @@ class Image extends Model
     protected $guarded = ['created_at', 'updated_at'];
     protected $perPage = 50;
 
+    // Relations
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -40,11 +41,13 @@ class Image extends Model
         });
     }
 
+    // Attributes
     public function getSplittedDateAttribute()
     {
         return implode('/', str_split($this->date, 2));
     }
 
+    // Methods
     public function breadcrumb()
     {
         return "#{$this->id}";

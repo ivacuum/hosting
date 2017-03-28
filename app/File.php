@@ -21,6 +21,7 @@ class File extends Model
     protected $guarded = ['created_at', 'updated_at'];
     protected $perPage = 50;
 
+    // Methods
     public function basename()
     {
         return "{$this->slug}.{$this->extension}";

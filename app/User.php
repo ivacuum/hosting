@@ -66,8 +66,6 @@ class User extends Authenticatable
         return $this->hasMany(Torrent::class);
     }
 
-    // Events
-
     // Attributes
     public function setPasswordAttribute($value)
     {

@@ -25,6 +25,7 @@ class City extends Model
 {
     protected $guarded = ['created_at', 'updated_at', 'goto'];
 
+    // Relations
     public function country()
     {
         return $this->belongsTo(Country::class);
@@ -36,11 +37,13 @@ class City extends Model
             ->orderBy('date_start', 'desc');
     }
 
+    // Attributes
     public function getTitleAttribute()
     {
         return $this->{self::titleField()};
     }
 
+    // Methods
     public function breadcrumb()
     {
         return "{$this->country->emoji} {$this->title}";
@@ -61,6 +64,7 @@ class City extends Model
         return action('Life@page', $this->slug);
     }
 
+    // Static methods
     public static function titleField()
     {
         return 'title_'.\App::getLocale();

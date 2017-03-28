@@ -22,6 +22,7 @@ class Country extends Model
 {
     protected $fillable = ['title_ru', 'title_en', 'slug', 'emoji'];
 
+    // Relations
     public function cities()
     {
         return $this->hasMany(City::class)
@@ -34,11 +35,13 @@ class Country extends Model
             ->orderBy('date_start', 'desc');
     }
 
+    // Attributes
     public function getTitleAttribute()
     {
         return $this->{self::titleField()};
     }
 
+    // Methods
     public function breadcrumb()
     {
         return "{$this->emoji} {$this->title}";
@@ -54,6 +57,7 @@ class Country extends Model
         return action('Life@country', $this->slug);
     }
 
+    // Static methods
     public static function titleField()
     {
         return 'title_'.\App::getLocale();

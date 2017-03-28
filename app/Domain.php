@@ -3,49 +3,54 @@
 use App\Events\DomainWhoisUpdated;
 use Carbon\Carbon;
 use GuzzleHttp\Client as HttpClient;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Домен
+ *
+ * @property integer $id
+ * @property integer $alias_id
+ * @property integer $client_id
+ * @property integer $yandex_user_id
+ * @property string  $domain
+ * @property integer $active
+ * @property integer $domain_control
+ * @property integer $orphan
+ * @property string  $ipv4
+ * @property string  $ipv6
+ * @property string  $mx
+ * @property string  $ns
+ * @property string  $text
+ * @property string  $cms_type
+ * @property string  $cms_version
+ * @property string  $cms_url
+ * @property string  $cms_user
+ * @property string  $cms_pass
+ * @property string  $ftp_host
+ * @property string  $ftp_user
+ * @property string  $ftp_pass
+ * @property string  $ssh_host
+ * @property string  $ssh_user
+ * @property string  $ssh_pass
+ * @property string  $db_pma
+ * @property string  $db_host
+ * @property string  $db_user
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property \Carbon\Carbon $registered_at
+ * @property \Carbon\Carbon $paid_till
+ * @property \Carbon\Carbon $queried_at
+ */
 class Domain extends Model
 {
     const REGRU_API_URL = 'https://api.reg.ru/api/regru2/';
     const NS0 = 'dns1.yandex.net';
     const NS1 = 'dns2.yandex.net';
 
-    protected $fillable = [
-        'client_id',
-        'alias_id',
-        'yandex_user_id',
-        'domain',
-        'active',
-        'domain_control',
-        'orphan',
-        'registered_at',
-        'paid_till',
-        'ipv4',
-        'ipv6',
-        'mx',
-        'ns',
-        'queried_at',
-        'text',
-        'cms_type',
-        'cms_version',
-        'cms_url',
-        'cms_user',
-        'cms_pass',
-        'ftp_host',
-        'ftp_user',
-        'ftp_pass',
-        'ssh_host',
-        'ssh_user',
-        'ssh_pass',
-        'db_pma',
-        'db_host',
-        'db_user',
-        'db_pass',
-    ];
-
+    protected $guarded = ['created_at', 'updated_at'];
     protected $hidden = ['cms_pass', 'ftp_pass', 'ssh_pass', 'db_pass'];
-
+    protected $dates = ['mailed_at', 'queried_at', 'registered_at', 'paid_till'];
     protected $perPage = 50;
 
     // Internal
@@ -81,12 +86,27 @@ class Domain extends Model
         parent::boot();
 
         // Домен перестает быть алиасом для других
-        static::deleted(function ($domain) {
-            Domain::where('alias_id', $domain->id)
+        static::deleted(function (Domain $domain) {
+            $domain->where('alias_id', $domain->id)
                 ->update(['alias_id' => 0]);
         });
     }
 
+    // Scopes
+    public function scopeYandexReady(Builder $query, $user_id = 0)
+    {
+        return $query->where('active', 1)
+            ->whereIn('yandex_user_id', [0, $user_id])
+            ->orderBy('domain');
+    }
+
+    public function scopeWhoisReady(Builder $query)
+    {
+        return $query->where('active', 1)
+            ->where('queried_at', '<', (string) Carbon::now()->subHours(3));
+    }
+
+    // Methods
     public function addMailbox($login, $password)
     {
         if (!$this->yandex_user_id) {
@@ -106,36 +126,40 @@ class Domain extends Model
     }
 
     /**
-    * Добавление днс-записей через API Яндекса
-    */
+     * Добавление днс-записей через API Яндекса
+     *
+     * @param  string $type
+     * @param  array  $input
+     * @return string
+     * @throws \Exception
+     */
     public function addNsRecord($type, array $input)
     {
         if (!$this->yandex_user_id) {
             throw new \Exception('Домен не связан с учеткой в Яндексе');
         }
 
-        // content, subdomain, priority, port, weight
-        extract($input);
-
         $allowed_types = ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'SRV', 'TXT'];
-        $content = '@' === $content ? $this->domain : $content;
 
         if (!in_array($type, $allowed_types)) {
             throw new \Exception('Неподдерживаемый тип записи');
         }
 
+        // content, subdomain, priority, port, weight
+        $content = '@' === $input['content'] ? $this->domain : $input['content'];
+
         $client = $this->getYandexPddApiClient();
 
         $response = $client->post('admin/dns/add', [
             'query' => [
-                'domain'    => $this->domain,
-                'type'      => $type,
-                'subdomain' => $subdomain,
-                'content'   => idn_to_ascii($content),
-                'priority'  => $priority ?? '',
-                'port'      => $port ?? '',
-                'weight'    => $weight ?? '',
-                'target'    => idn_to_ascii($content),
+                'type' => $type,
+                'port' => $input['port'] ?? '',
+                'domain' => $this->domain,
+                'weight' => $input['weight'] ?? '',
+                'target' => idn_to_ascii($content),
+                'content' => idn_to_ascii($content),
+                'priority' => $input['priority'] ?? '',
+                'subdomain' => $input['subdomain'],
             ],
         ]);
 
@@ -150,8 +174,12 @@ class Domain extends Model
     }
 
     /**
-    * Удаление днс-записей через API Яндекса
-    */
+     * Удаление днс-записей через API Яндекса
+     *
+     * @param  integer $record_id
+     * @return string
+     * @throws \Exception
+     */
     public function deleteNsRecord($record_id)
     {
         if (!$this->yandex_user_id) {
@@ -189,8 +217,14 @@ class Domain extends Model
     }
 
     /**
-    * Редактирование днс-записей через API Яндекса
-    */
+     * Редактирование днс-записей через API Яндекса
+     *
+     * @param  integer $id
+     * @param  string  $type
+     * @param  array   $input
+     * @return string
+     * @throws \Exception
+     */
     public function editNsRecord($id, $type, array $input)
     {
         if (!$this->yandex_user_id) {
@@ -205,34 +239,26 @@ class Domain extends Model
 
         $client = $this->getYandexPddApiClient();
 
-        // content, subdomain, priority, port, weight, retry, refresh, expire, ttl
-        extract($input);
-
         $response = $client->post('admin/dns/edit', [
             'query' => [
-                'domain'    => $this->domain,
-                'subdomain' => $subdomain,
+                'ttl' => $input['ttl'] ?? '',
+                'port' => $input['port'] ?? '',
+                'retry' => $input['retry'] ?? '',
+                'expire' => $input['expire'] ?? '',
+                'domain' => $this->domain,
+                'target' => idn_to_ascii($input['content']),
+                'weight' => $input['weight'] ?? '',
+                'content' => idn_to_ascii($input['content']),
+                'refresh' => $input['refresh'] ?? '',
+                'priority' => $input['priority'] ?? '',
+                'subdomain' => $input['subdomain'],
                 'record_id' => $id,
-                'content'   => idn_to_ascii($content),
-                'priority'  => $priority ?? '',
-                'port'      => $port ?? '',
-                'weight'    => $weight ?? '',
-                'retry'     => $retry ?? '',
-                'refresh'   => $refresh ?? '',
-                'expire'    => $expire ?? '',
-                'target'    => idn_to_ascii($content),
-                'ttl'       => $ttl ?? '',
             ],
         ]);
 
         $json = json_decode($response->getBody());
 
         return 'ok' !== $json->success ? $json->error : 'ok';
-    }
-
-    public function getDates()
-    {
-        return ['mailed_at', 'queried_at', 'registered_at', 'paid_till'];
     }
 
     public function getMailboxes()
@@ -375,19 +401,6 @@ class Domain extends Model
         $domain = $domain ?: $this->domain;
 
         return 0 === strpos($domain, 'xn--');
-    }
-
-    public function scopeYandexReady($query, $user_id = 0)
-    {
-        return $query->whereActive(1)
-            ->whereIn('yandex_user_id', [0, $user_id])
-            ->orderBy('domain');
-    }
-
-    public function scopeWhoisReady($query)
-    {
-        return $query->whereActive(1)
-            ->where('queried_at', '<', (string) Carbon::now()->subHours(3));
     }
 
     public function setServerNsRecords($server)

@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -20,6 +21,7 @@ class Comment extends Model
     protected $guarded = ['rel_id', 'rel_type', 'created_at', 'updated_at', 'goto'];
     protected $perPage = 20;
 
+    // Relations
     public function rel()
     {
         return $this->morphTo();
@@ -30,11 +32,13 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function scopeByType($query, $type)
+    // Scopes
+    public function scopeByType(Builder $query, $type)
     {
         return $query->where('rel_type', $type);
     }
 
+    // Methods
     public function breadcrumb()
     {
         return "#{$this->id}";

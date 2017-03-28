@@ -24,6 +24,7 @@ class Photo extends Model
     protected $guarded = ['rel_id', 'rel_type', 'created_at', 'updated_at', 'goto'];
     protected $perPage = 50;
 
+    // Relations
     public function rel()
     {
         return $this->morphTo();
@@ -40,6 +41,7 @@ class Photo extends Model
         return $this->belongsTo(User::class);
     }
 
+    // Scopes
     public function scopeApplyFilter(Builder $query, $filter = null)
     {
         if (is_null($filter)) {
@@ -96,6 +98,7 @@ class Photo extends Model
             ->where('lon', '<>', '');
     }
 
+    // Methods
     public function breadcrumb()
     {
         return str_replace('/', ' / ', $this->slug);
