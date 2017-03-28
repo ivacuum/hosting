@@ -127,6 +127,7 @@
   'IMG_2196.jpg',
   'IMG_2203.jpg',
   'IMG_2221.jpg',
+  'IMG_2177.jpg',
   'IMG_2242.jpg',
   'IMG_2192.jpg',
 ]])
