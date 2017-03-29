@@ -36,7 +36,7 @@ mix.js('resources/assets/js/app.js', 'public/assets')
   .copy('node_modules/vue/dist/vue.min.js', 'public/assets/vue.js')
 
   .copy(['node_modules/axios/dist/axios.min.js'], 'public/assets/axios.js')
-  .copy(['resources/assets/js/empty.map'], 'public/assets/axios.js.map')
+  .copy(['resources/assets/js/empty.map'], 'public/assets/axios.min.map')
 
   .copy('node_modules/fotorama/fotorama.css', 'public/assets/fotorama.css')
   .copy('node_modules/fotorama/fotorama.png', 'public/assets/fotorama.png')
