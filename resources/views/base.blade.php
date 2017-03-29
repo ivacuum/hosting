@@ -180,7 +180,8 @@
 <script src="/assets/bootstrap.js"></script>
 <script src="/assets/vue.js?2.2.4"></script>
 <script src="/assets/axios.js"></script>
-<script src="{{ mix('/assets/fotorama.js') }}"></script>
+<script src="/assets/fotorama-settings.js"></script>
+<script src="/assets/fotorama.js"></script>
 <script src="{{ mix('/assets/app.js') }}"></script>
 @stack('js')
 @section('counters')

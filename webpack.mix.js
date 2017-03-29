@@ -35,17 +35,14 @@ mix.js('resources/assets/js/app.js', 'public/assets')
 
   .copy('node_modules/vue/dist/vue.min.js', 'public/assets/vue.js')
 
-  .copy(['node_modules/axios/dist/axios.min.js'], 'public/assets/axios.js')
-  .copy(['resources/assets/js/empty.map'], 'public/assets/axios.min.map')
+  .copy('node_modules/axios/dist/axios.min.js', 'public/assets/axios.js')
+  .copy('resources/assets/js/empty.map', 'public/assets/axios.min.map')
 
+  .copy('resources/assets/js/fotorama.js', 'public/assets/fotorama-settings.js')
   .copy('node_modules/fotorama/fotorama.css', 'public/assets/fotorama.css')
+  .copy('node_modules/fotorama/fotorama.js', 'public/assets/fotorama.js')
   .copy('node_modules/fotorama/fotorama.png', 'public/assets/fotorama.png')
   .copy('node_modules/fotorama/fotorama@2x.png', 'public/assets/fotorama@2x.png')
-
-  .combine([
-    'resources/assets/js/fotorama.js',
-    'node_modules/fotorama/fotorama.js'
-  ], 'public/assets/fotorama.js')
 
   // .copy('node_modules/fotorama', 'public/build/fotorama-4.6.4/fotorama')
 
