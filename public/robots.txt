@@ -1,10 +1,11 @@
 User-agent: *
 Allow: /
 Disallow: /ajax
+Disallow: /api
 Disallow: /assets
+Disallow: /auth
 Disallow: /build
 Disallow: /cv
-Disallow: /auth
 Disallow: /files
 Disallow: /gallery
 Disallow: /internal
