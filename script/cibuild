@@ -23,3 +23,6 @@ npm run production
 # composer global update
 # composer install --no-interaction
 # vendor/bin/phpunit --exclude-group pages
+
+# Архив для быстрого деплоя
+tar --exclude deploy.tar --exclude .git --exclude node_modules --exclude resources/assets --exclude tests --exclude vendor -cf deploy.tar .
