@@ -178,7 +178,7 @@
 <script src="/assets/jquery.scrollto.js"></script>
 <script src="/assets/autosize.js"></script>
 <script src="/assets/bootstrap.js"></script>
-<script src="/assets/vue.js?2.2.4"></script>
+<script src="/assets/vue.js?2.2.6"></script>
 <script src="/assets/axios.js"></script>
 <script src="/assets/fotorama-settings.js"></script>
 <script src="/assets/fotorama.js"></script>
