@@ -14,7 +14,7 @@
   </thead>
   <tbody>
     @foreach ($models as $model)
-      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", [$model, 'goto' => Request::fullUrl()]) }}">
+      <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
         <td class="tooltipped tooltipped-n" aria-label="{{ $model->country->title }}">
           {{ $model->country->emoji }}
         </td>

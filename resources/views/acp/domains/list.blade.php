@@ -21,7 +21,7 @@
     </thead>
     <tbody>
     @foreach ($models as $model)
-      <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", [$model, 'goto' => Request::fullUrl()]) }}">
+      <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
         <td>
           <input class="domains-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}">
         </td>

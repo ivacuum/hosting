@@ -3,23 +3,23 @@
 @section('toolbar')
 <div class="btn-toolbar mb-3">
   <div class="btn-group">
-    <a class="btn btn-default {{ !$type ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['type' => null]) }}">
+    <a class="btn btn-default js-pjax {{ !$type ? 'selected' : '' }}" href="{{ UrlHelper::filter(['type' => null]) }}">
       @svg (th-list)
     </a>
-    <a class="btn btn-default {{ $type == 'grid' ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['type' => 'grid']) }}">
+    <a class="btn btn-default js-pjax {{ $type == 'grid' ? 'selected' : '' }}" href="{{ UrlHelper::filter(['type' => 'grid']) }}">
       @svg (th)
     </a>
   </div>
   <div class="btn-group">
-    <a class="btn btn-default {{ !$year ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => null, 'page' => null]) }}">Все</a>
+    <a class="btn btn-default js-pjax {{ !$year ? 'selected' : '' }}" href="{{ UrlHelper::filter(['year' => null]) }}">Все</a>
     @foreach (range(date('Y'), 2009) as $value)
-      <a class="btn btn-default {{ $year == $value ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['year' => $value, 'page' => null]) }}">{{ substr($value, 2) }}</a>
+      <a class="btn btn-default js-pjax {{ $year == $value ? 'selected' : '' }}" href="{{ UrlHelper::filter(['year' => $value]) }}">{{ substr($value, 2) }}</a>
     @endforeach
   </div>
   <div class="btn-group">
-    <a class="btn btn-default {{ !$touch ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => null, 'page' => null]) }}">Все</a>
+    <a class="btn btn-default js-pjax {{ !$touch ? 'selected' : '' }}" href="{{ UrlHelper::filter(['touch' => null]) }}">Все</a>
     @foreach (range(1, date('Y') - 2009) as $value)
-      <a class="btn btn-default {{ $touch == $value ? 'selected' : '' }}" href="{{ Request::fullUrlWithQuery(['touch' => $value, 'page' => null]) }}">{{ $value }}</a>
+      <a class="btn btn-default js-pjax {{ $touch == $value ? 'selected' : '' }}" href="{{ UrlHelper::filter(['touch' => $value]) }}">{{ $value }}</a>
     @endforeach
   </div>
 </div>

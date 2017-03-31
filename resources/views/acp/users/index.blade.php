@@ -3,17 +3,17 @@
 @section('toolbar')
 <ul class="nav nav-link-tabs">
   <li class="{{ !$filter ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ Request::fullUrlWithQuery(['filter' => null, 'page' => null]) }}">
+    <a class="js-pjax" href="{{ UrlHelper::filter(['filter' => null]) }}">
       Все
     </a>
   </li>
   <li class="{{ $filter === 'weekly-login' ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ Request::fullUrlWithQuery(['filter' => 'weekly-login', 'page' => null]) }}">
+    <a class="js-pjax" href="{{ UrlHelper::filter(['filter' => 'weekly-login']) }}">
       Заходили на неделе
     </a>
   </li>
   <li class="{{ $filter === 'monthly-login' ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ Request::fullUrlWithQuery(['filter' => 'monthly-login', 'page' => null]) }}">
+    <a class="js-pjax" href="{{ UrlHelper::filter(['filter' => 'monthly-login']) }}">
       Заходили в месяце
     </a>
   </li>
@@ -33,7 +33,7 @@
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", [$model, 'goto' => Request::fullUrl()]) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
       <td class="text-right">{{ $model->id }}</td>
       <td>
         <a href="{{ action("$self@show", $model) }}" class="link">

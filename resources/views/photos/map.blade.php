@@ -3,7 +3,7 @@
 @section('content')
 <div id="photos_map"
      class="photo-map-container"
-     data-action="{{ Request::fullUrlWithQuery([]) }}"
+     data-action="{{ Request::fullUrl() }}"
      data-lat="{{ Request::input('lat', 52) }}"
      data-lon="{{ Request::input('lon', 30) }}"
      data-zoom="{{ Request::input('zoom', 4) }}"

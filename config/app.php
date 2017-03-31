@@ -88,6 +88,7 @@ return [
         'View'         => Illuminate\Support\Facades\View::class,
 
         'Form' => Ivacuum\Generic\Facades\Form::class,
+        'UrlHelper' => Ivacuum\Generic\Facades\UrlHelper::class,
         'ViewHelper' => App\Facades\ViewHelper::class,
         'Breadcrumbs' => Ivacuum\Generic\Facades\Breadcrumbs::class,
         'MetricsHelper' => Ivacuum\Generic\Facades\MetricsHelper::class,

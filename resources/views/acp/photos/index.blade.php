@@ -3,17 +3,17 @@
 @section('toolbar')
 <ul class="nav nav-link-tabs">
   <li class="{{ !$filter ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ Request::fullUrlWithQuery(['filter' => null, 'page' => null]) }}">
+    <a class="js-pjax" href="{{ UrlHelper::filter(['filter' => null]) }}">
       Все
     </a>
   </li>
   <li class="{{ $filter === 'no-tags' ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ Request::fullUrlWithQuery(['filter' => 'no-tags', 'page' => null]) }}">
+    <a class="js-pjax" href="{{ UrlHelper::filter(['filter' => 'no-tags']) }}">
       Без тэгов
     </a>
   </li>
   <li class="{{ $filter === 'no-geo' ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ Request::fullUrlWithQuery(['filter' => 'no-geo', 'page' => null]) }}">
+    <a class="js-pjax" href="{{ UrlHelper::filter(['filter' => 'no-geo']) }}">
       Без гео
     </a>
   </li>
@@ -35,7 +35,7 @@
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ action("$self@edit", [$model, 'goto' => Request::fullUrl()]) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
       <td class="text-right">{{ $model->id }}</td>
       <td class="text-center">
         <a class="screenshot-link" href="{{ action("$self@show", $model) }}">
@@ -61,7 +61,7 @@
       </td>
       <td>
         <div class="visible-xs-block">
-          <a class="btn btn-default" href="{{ action("$self@edit", [$model, 'goto' => Request::fullUrl()]) }}">
+          <a class="btn btn-default" href="{{ UrlHelper::edit($self, $model) }}">
             @svg (pencil)
           </a>
         </div>

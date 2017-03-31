@@ -11,7 +11,9 @@ class SiteTest extends TestCase
         $this->get('/docs')->assertStatus(200);
         $this->get('/life')->assertStatus(200);
         $this->get('/life/cities')->assertStatus(200);
+        $this->get('/life/kaluga')->assertStatus(200);
         $this->get('/life/countries')->assertStatus(200);
+        $this->get('/life/countries/russia')->assertStatus(200);
         $this->get('/life/gigs')->assertStatus(200);
         $this->get('/life/japanese')->assertStatus(200);
         $this->get('/news')->assertStatus(200);
