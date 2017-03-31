@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8bb2686f4d496bbb12b325f2da0997b8",
+    "content-hash": "9c76295642cb24711bb72bf9409a1a8a",
     "packages": [
         {
             "name": "baum/baum",
@@ -412,7 +412,7 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "dev-master",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
@@ -3876,9 +3876,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "ivacuum/generic": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

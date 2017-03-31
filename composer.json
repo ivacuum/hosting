@@ -11,7 +11,7 @@
     "symfony/dom-crawler": "~3.2",
     "irazasyed/telegram-bot-sdk": "^2.0",
     "laravel/socialite": "^3.0",
-    "ivacuum/generic": "dev-master"
+    "ivacuum/generic": "~0.1"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
