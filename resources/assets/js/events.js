@@ -34,7 +34,7 @@ class Events {
     if (!loaded) {
       $el.data('loaded', true)
 
-      App.map.create($el.data('container'), $el.data('lat'), $el.data('lon'))
+      App.map.create($el.data('container'), $el.data('lat'), $el.data('lon'), undefined, true)
         .then(() => {
           let manager = new App.map.ym.ObjectManager({
             clusterize: 1,
