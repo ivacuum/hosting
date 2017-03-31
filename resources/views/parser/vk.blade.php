@@ -148,6 +148,7 @@
       @endif
       <div class="vk-post-meta text-muted text-right">
         <samp><small>
+          <a class="mr-3" href="https://t.me/share/url?url={{ $post['url'] }}">T</a>
           #{{ $loop->iteration }}
           @svg (bullhorn)
           <span class="text-muted">{{ $post['reposts'] }}</span>
