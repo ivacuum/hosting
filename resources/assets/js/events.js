@@ -110,6 +110,8 @@ class Events {
     const container = 'photos_map'
     let $el = $(`#${container}`)
 
+    if (!$el.length) return
+
     App.map.create(container, $el.data('lat'), $el.data('lon'), $el.data('zoom'), true)
       .then(() => {
         let manager = new App.map.ym.ObjectManager({
