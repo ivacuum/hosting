@@ -214,7 +214,7 @@ class Photos extends Controller
             ->get()
             ->pluck('tag_id');
 
-        $tags = Tag::whereIn('id', $tags_ids)->orderBy(Tag::titleField())->get();
+        $tags = Tag::withCount('photos')->whereIn('id', $tags_ids)->orderBy(Tag::titleField())->get();
 
         return view($this->view, compact('tags'));
     }
