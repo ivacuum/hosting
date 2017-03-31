@@ -24,7 +24,9 @@
       </td>
       <td class="text-right">
         @if ($model->photos_count > 0)
-          {{ ViewHelper::number($model->photos_count) }}
+          <a class="link" href="{{ action('Acp\Photos@index', [$model->getForeignKey() => $model]) }}">
+            {{ ViewHelper::number($model->photos_count) }}
+          </a>
         @endif
       </td>
     </tr>
