@@ -53,7 +53,9 @@ class Photos extends Controller
         \Breadcrumbs::push(trans('photos.cities'), 'photos/cities');
         \Breadcrumbs::push($city->title);
 
-        return view($this->view, compact('city', 'photos'));
+        $meta_title = $city->title;
+
+        return view($this->view, compact('city', 'meta_title', 'photos'));
     }
 
     public function countries()
@@ -102,7 +104,9 @@ class Photos extends Controller
         \Breadcrumbs::push(trans('photos.countries'), 'photos/countries');
         \Breadcrumbs::push($country->title);
 
-        return view($this->view, compact('country', 'photos'));
+        $meta_title = $country->title;
+
+        return view($this->view, compact('country', 'meta_title', 'photos'));
     }
 
     public function faq()
@@ -187,7 +191,9 @@ class Photos extends Controller
 
         \Breadcrumbs::push(trans('photos.show'));
 
-        return view($this->view, compact('city_id', 'country_id', 'next', 'photo', 'prev', 'tag_id'));
+        $meta_title = "{$photo->rel->title}, {$photo->rel->period} {$photo->rel->year}";
+
+        return view($this->view, compact('city_id', 'country_id', 'meta_title', 'next', 'photo', 'prev', 'tag_id'));
     }
 
     public function tag(Tag $tag)
@@ -198,7 +204,9 @@ class Photos extends Controller
 
         event(new \App\Events\Stats\TagViewed($tag->id));
 
-        return view($this->view, compact('tag'));
+        $meta_title = "#{$tag->title}";
+
+        return view($this->view, compact('meta_title', 'tag'));
     }
 
     public function tags()
