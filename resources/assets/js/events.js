@@ -35,6 +35,21 @@ class Events {
       $el.data('loaded', true)
 
       App.map.create($el.data('container'), $el.data('lat'), $el.data('lon'))
+        .then(() => {
+          let manager = new App.map.ym.ObjectManager({
+            clusterize: 1,
+            gridSize: 64
+          })
+
+          manager.objects.options.set('preset', 'islands#nightCircleDotIcon')
+          manager.clusters.options.set('preset', 'islands#nightClusterIcons')
+
+          App.map.map.geoObjects.add(manager)
+
+          axios.get($el.data('action')).then((response) => {
+            manager.add(response.data)
+          })
+        })
     }
 
     $container.slideToggle()
@@ -89,6 +104,28 @@ class Events {
     } else {
       $img.attr('src', $img.data('static'))
     }
+  }
+
+  static photosMap() {
+    const container = 'photos_map'
+    let $el = $(`#${container}`)
+
+    App.map.create(container, $el.data('lat'), $el.data('lon'), $el.data('zoom'), true)
+      .then(() => {
+        let manager = new App.map.ym.ObjectManager({
+          clusterize: $el.data('clusterize'),
+          gridSize: $el.data('cluster_size')
+        })
+
+        manager.objects.options.set('preset', 'islands#nightCircleDotIcon')
+        manager.clusters.options.set('preset', 'islands#nightClusterIcons')
+
+        App.map.map.geoObjects.add(manager)
+
+        axios.get($el.data('action')).then((response) => {
+          manager.add(response.data)
+        })
+      })
   }
 
   static passwordEye(e) {
@@ -155,3 +192,7 @@ $(document).on('click', '.js-tick-onclick', function() {
 })
 
 $(document).on('click', '.js-entity-action', Events.entityAction)
+
+$(function() {
+  Events.photosMap()
+})

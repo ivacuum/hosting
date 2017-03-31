@@ -115,14 +115,16 @@ class Photos extends Controller
 
     public function map()
     {
-        $trip_id = $this->request->input('trip_id');
+        if ($this->request->ajax()) {
+            $trip_id = $this->request->input('trip_id');
+
+            return $this->pointsForMap($trip_id);
+        }
 
         \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.map'));
 
-        $collection = $this->pointsForMap($trip_id);
-
-        return view($this->view, compact('collection'));
+        return view($this->view);
     }
 
     public function show($id)
