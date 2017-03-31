@@ -12,7 +12,8 @@
     <th class="text-right">@svg (eye)</th>
     <th class="text-right">@svg (comment-o)</th>
     <th></th>
-    <th class="text-right">Ф</th>
+    <th class="text-right"></th>
+    <th class="text-right"></th>
   </tr>
   </thead>
   <tbody>
@@ -64,6 +65,11 @@
             {{ ViewHelper::number($model->photos_count) }}
           </a>
         @endif
+      </td>
+      <td class="text-right">
+        <a href="{{ action('Acp\Dev\Templates@template', str_replace('.', '_', $model->slug)) }}">
+          @svg (file-text-o)
+        </a>
       </td>
     </tr>
   @endforeach
