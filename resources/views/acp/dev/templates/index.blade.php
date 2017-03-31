@@ -5,7 +5,7 @@
   <thead>
     <tr>
       <th>Шаблон</th>
-      <th class="text-right">Фото</th>
+      <th class="text-right">@svg (picture-o)</th>
       @foreach (config('cfg.locales') as $key => $value)
         <th class="text-right">
           @if ($key === 'ru')

@@ -6,6 +6,7 @@
   <tr>
     <th>Тэг</th>
     <th class="text-right">@svg (eye)</th>
+    <th class="text-right">@svg (picture-o)</th>
   </tr>
   </thead>
   <tbody>
@@ -19,6 +20,11 @@
       <td class="text-right">
         @if ($model->views > 0)
           {{ ViewHelper::number($model->views) }}
+        @endif
+      </td>
+      <td class="text-right">
+        @if ($model->photos_count > 0)
+          {{ ViewHelper::number($model->photos_count) }}
         @endif
       </td>
     </tr>
