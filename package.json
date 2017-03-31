@@ -15,7 +15,7 @@
     "jquery": "^2.2.0",
     "jquery.pjax": "defunkt/jquery-pjax",
     "jquery.scrollto": "^2.1",
-    "laravel-mix": "^0.8.0",
+    "laravel-mix": "^0.10.0",
     "lodash": "^4.17.4",
     "promise-polyfill": "^6.0.2",
     "vue": "^2.2.4"
