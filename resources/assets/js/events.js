@@ -46,9 +46,13 @@ class Events {
 
           App.map.map.geoObjects.add(manager)
 
-          axios.get($el.data('action')).then((response) => {
-            manager.add(response.data)
-          })
+          const action = $el.data('action')
+
+          if (action) {
+            axios.get(action).then((response) => {
+              manager.add(response.data)
+            })
+          }
         })
     }
 
