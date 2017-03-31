@@ -1,7 +1,7 @@
 @extends('photos.base')
 
 @section('content')
-<h3 class="mt-0">#{{ $tag->title }}</h3>
+<h3 class="mt-0">#{{ $tag->title }} <small>{{ sizeof($tag->photos) }}</small></h3>
 <div class="gallery-flex">
   @foreach ($tag->photos as $photo)
     <div class="gallery-image mb-4">

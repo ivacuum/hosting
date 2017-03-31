@@ -1,7 +1,7 @@
 @extends('photos.base')
 
 @section('content')
-<h3 class="mt-0">{{ $country->title }}</h3>
+<h3 class="mt-0">{{ $country->title }} <small>{{ sizeof($photos) }}</small></h3>
 <div class="gallery-flex">
   @foreach ($photos as $photo)
     <div class="gallery-image mb-4">
