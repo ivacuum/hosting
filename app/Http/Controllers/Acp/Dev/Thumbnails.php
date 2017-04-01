@@ -29,7 +29,7 @@ class Thumbnails extends BaseController
         }
 
         $image = (new ImageConverter)
-            ->resize(2000, 1500)
+            ->resize(2000, 2000)
             ->quality(75)
             ->convert($file->getRealPath());
 
