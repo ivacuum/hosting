@@ -50,11 +50,13 @@
 .image-100 {
   width: 100px;
   height: 75px;
+  object-fit: cover;
 }
 
 .image-200 {
   width: 200px;
   height: 150px;
+  object-fit: cover;
 }
 
 .screenshot {
