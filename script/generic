@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# exits in case of any error
+set -e
+
+cd "$(dirname "$0")/../.."
+
+echo "==> Deleting installed ivacuum/generic package..."
+rm -rf hosting/vendor/ivacuum/generic
+
+echo "==> Symlinking local ivacuum/generic package..."
+ln -s $(pwd)/generic hosting/vendor/ivacuum/generic
