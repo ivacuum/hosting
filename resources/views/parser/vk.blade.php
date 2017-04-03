@@ -87,7 +87,7 @@
         @endif
 
         @foreach ($post['attachments'] as $attach)
-          @if ($attach->type == 'doc' and $attach->doc->ext == 'gif')
+          @if ($attach->type == 'doc' && $attach->doc->ext == 'gif' && isset($attach->doc->preview->video))
             <p>
               <div>
                 @svg (paperclip)
