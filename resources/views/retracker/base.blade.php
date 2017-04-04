@@ -2,17 +2,17 @@
 
 @section('global_menu')
 <li>
-  <a class="{{ $view === 'retracker.index' ? 'navbar-selected' : '' }}" href="{{ action('Retracker@index') }}">
+  <a class="{{ $view === 'retracker.index' ? 'navbar-selected' : '' }}" href="{{ path('Retracker@index') }}">
     {{ trans('retracker.index') }}
   </a>
 </li>
 <li>
-  <a class="{{ $view === 'retracker.usage' ? 'navbar-selected' : '' }}" href="{{ action('Retracker@usage') }}">
+  <a class="{{ $view === 'retracker.usage' ? 'navbar-selected' : '' }}" href="{{ path('Retracker@usage') }}">
     {{ trans('retracker.usage') }}
   </a>
 </li>
 <li>
-  <a class="{{ $view === 'retracker.dev' ? 'navbar-selected' : '' }}" href="{{ action('Retracker@dev') }}">
+  <a class="{{ $view === 'retracker.dev' ? 'navbar-selected' : '' }}" href="{{ path('Retracker@dev') }}">
     {{ trans('retracker.dev') }}
   </a>
 </li>
@@ -22,13 +22,13 @@
 <div class="row">
   <div class="col-md-3">
     <div class="text-center">
-      <a href="{{ action('Retracker@index') }}">
+      <a href="{{ path('Retracker@index') }}">
         <img src="https://ivacuum.org/i/rt/logo.png" width="128" height="128">
       </a>
     </div>
     <h3>Ссылки</h3>
     <ul>
-      <li><a class="link" href="{{ action('Files@download', 122) }}">Исходные коды ретрекера</a></li>
+      <li><a class="link" href="{{ path('Files@download', 122) }}">Исходные коды ретрекера</a></li>
     </ul>
   </div>
   <div class="col-md-9">

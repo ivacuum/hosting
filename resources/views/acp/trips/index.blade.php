@@ -21,7 +21,7 @@
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
       <td>{{ $loop->iteration }}</td>
       <td>
-        <a class="link" href="{{ action("$self@show", $model) }}">
+        <a class="link" href="{{ path("$self@show", $model) }}">
           {{ $model->title }}
         </a>
       </td>
@@ -38,7 +38,7 @@
       </td>
       <td>{{ $model->localizedDate() }}</td>
       <td>
-        <a class="link" href="{{ $locale_uri }}/life/{{ $model->slug }}">
+        <a class="link" href="{{ $model->www() }}">
           {{ $model->slug }}
         </a>
       </td>
@@ -61,13 +61,13 @@
       </td>
       <td class="text-right">
         @if ($model->photos_count > 0)
-          <a class="link" href="{{ action('Acp\Photos@index', [$model->getForeignKey() => $model]) }}">
+          <a class="link" href="{{ path('Acp\Photos@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->photos_count) }}
           </a>
         @endif
       </td>
       <td class="text-right">
-        <a href="{{ action('Acp\Dev\Templates@template', str_replace('.', '_', $model->slug)) }}">
+        <a href="{{ path('Acp\Dev\Templates@template', str_replace('.', '_', $model->slug)) }}">
           @svg (file-text-o)
         </a>
       </td>

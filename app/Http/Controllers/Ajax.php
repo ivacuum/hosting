@@ -88,15 +88,15 @@ class Ajax extends Controller
     protected function redirectToComment($type, $model, Comment $comment)
     {
         if ($type === 'news') {
-            return redirect()->action('News@show', [$model->id, "#comment-{$comment->id}"]);
+            return redirect(path('News@show', [$model->id, "#comment-{$comment->id}"]));
         }
 
         if ($type === 'trip') {
-            return redirect()->action('Life@page', [$model->slug, "#comment-{$comment->id}"]);
+            return redirect(path('Life@page', [$model->slug, "#comment-{$comment->id}"]));
         }
 
         if ($type === 'torrent') {
-            return redirect()->action('Torrents@torrent', [$model->id, "#comment-{$comment->id}"]);
+            return redirect(path('Torrents@torrent', [$model->id, "#comment-{$comment->id}"]));
         }
 
         return back()->with('message', trans('comments.posted'));

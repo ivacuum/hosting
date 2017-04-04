@@ -48,7 +48,7 @@ class Torrents extends Controller
             'registered_at' => $registered_at,
         ]);
 
-        return redirect()->action("{$this->class}@show", $model)
+        return redirect(path("{$this->class}@show", $model))
             ->with('message', 'Раздача обновлена');
     }
 

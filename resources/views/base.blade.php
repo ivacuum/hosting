@@ -14,7 +14,7 @@
   <meta name="theme-color" content="#e7e7e7">
   <link rel="apple-touch-icon-precomposed" href="https://life.ivacuum.ru/apple-touch-icon-precomposed.png">
   <link rel="icon" href="https://life.ivacuum.ru/apple-touch-icon.png">
-  <link rel="canonical" href="{{ Request::url() }}">
+  <link rel="canonical" href="{{ canonical() }}">
   <link rel="manifest" href="/pwa-manifest.json?1">
   <script async src="/assets/service-worker-installer.js"></script>
   <link rel="alternate" hreflang="en" href="{{ url("en/{$request_uri}") }}">
@@ -33,29 +33,29 @@
         <span class="icon-bar"></span>
       </button>
       @section('brand')
-        <a class="navbar-brand" href="{{ action('Home@index') }}">vacuum<br>kaluga</a>
+        <a class="navbar-brand" href="{{ path('Home@index') }}">vacuum<br>kaluga</a>
       @show
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         @section('global_menu')
           <li>
-            <a class="{{ $self == 'Life' ? 'navbar-selected' : '' }}" href="{{ action('Life@index') }}">
+            <a class="{{ $self == 'Life' ? 'navbar-selected' : '' }}" href="{{ path('Life@index') }}">
               {{ trans('menu.life') }}
             </a>
           </li>
           <li>
-            <a class="{{ $self == 'News' ? 'navbar-selected' : '' }}" href="{{ action('News@index') }}">
+            <a class="{{ $self == 'News' ? 'navbar-selected' : '' }}" href="{{ path('News@index') }}">
               {{ trans('news.index') }}
             </a>
           </li>
           <li>
-            <a class="{{ $self == 'Torrents' ? 'navbar-selected' : '' }}" href="{{ action('Torrents@index') }}">
+            <a class="{{ $self == 'Torrents' ? 'navbar-selected' : '' }}" href="{{ path('Torrents@index') }}">
               {{ trans('menu.torrents') }}
             </a>
           </li>
           <li>
-            <a class="{{ $self == 'Photos' ? 'navbar-selected' : '' }}" href="{{ action('Photos@index') }}">
+            <a class="{{ $self == 'Photos' ? 'navbar-selected' : '' }}" href="{{ path('Photos@index') }}">
               {{ trans('photos.index') }}
             </a>
           </li>
@@ -78,7 +78,7 @@
         @section('header_user')
           @if (Auth::check())
             <li>
-              <a class="tooltipped tooltipped-s {{ $self == 'Notifications' ? 'navbar-selected' : '' }}" href="{{ action('Notifications@index') }}" aria-label="{{ trans('notifications.index') }}">
+              <a class="tooltipped tooltipped-s {{ $self == 'Notifications' ? 'navbar-selected' : '' }}" href="{{ path('Notifications@index') }}" aria-label="{{ trans('notifications.index') }}">
                 @svg (bell)
                 <span class="counter-label-round">{{ !is_null(Auth::user()->unreadNotifications()->first()) ? '!' : '' }}</span>
               </a>
@@ -102,13 +102,13 @@
                   </li>
                 @endif
                 <li>
-                  <a href="{{ action('My@profile') }}">
+                  <a href="{{ path('My@profile') }}">
                     {{ trans('my.index') }}
                   </a>
                 </li>
                 <li class="divider"></li>
                 <li>
-                  <a href="{{ action('Auth@logout') }}">
+                  <a href="{{ path('Auth@logout') }}">
                     {{ trans('auth.logout') }}
                   </a>
                 </li>
@@ -116,11 +116,11 @@
             </li>
           @else
             <li>
-              <a href="{{ action('Auth@login') }}">{{ trans('auth.signin') }}</a>
+              <a href="{{ path('Auth@login') }}">{{ trans('auth.signin') }}</a>
             </li>
             {{--
             <form class="navbar-form navbar-right">
-              <a class="btn btn-default" href="{{ action('Auth@login') }}">{{ trans('auth.signin') }}</a>
+              <a class="btn btn-default" href="{{ path('Auth@login') }}">{{ trans('auth.signin') }}</a>
             </form>
             --}}
           @endif

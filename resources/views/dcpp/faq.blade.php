@@ -136,7 +136,7 @@
 Есть ли возможность скачивать один и тот же файл с разных источников?
 @endslot
 
-<div>Да, но не все клиенты DC++ поддерживают это. Например, <a class="link" href="{{ action('Dcpp@page', 'strongdc') }}">StrongDC++</a> и его производные поддерживают мультипоточное скачивание.</div>
+<div>Да, но не все клиенты DC++ поддерживают это. Например, <a class="link" href="{{ path('Dcpp@page', 'strongdc') }}">StrongDC++</a> и его производные поддерживают мультипоточное скачивание.</div>
 @endcomponent
 
 @component('accordion')
@@ -260,7 +260,7 @@
 Как русифицировать клиент?
 @endslot
 
-<div>Этому вопросу посвящена <a class="link" href="{{ action('Dcpp@page', 'rus_setup') }}">отдельная страница</a>.</div>
+<div>Этому вопросу посвящена <a class="link" href="{{ path('Dcpp@page', 'rus_setup') }}">отдельная страница</a>.</div>
 @endcomponent
 
 @component('accordion')

@@ -9,7 +9,7 @@
       @if ($initial !== $current_initial)
         <span class="city-initial">{{ $current_initial }}</span>
       @endif
-      <a class="link" href="{{ action('Photos@country', $country->slug) }}">{{ $country->title }}</a>
+      <a class="link" href="{{ path('Photos@country', $country->slug) }}">{{ $country->title }}</a>
     </div>
     @php ($initial = $current_initial)
   @endforeach

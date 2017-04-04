@@ -5,7 +5,7 @@
 
 <div class="row">
   <div class="col-md-6">
-    <form action="{{ action("$self@passwordPut") }}" method="post">
+    <form action="{{ path("$self@passwordPut") }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}
 
       @if ($has_password)
@@ -44,7 +44,7 @@
 
 @if ($has_password)
   <h3 class="mt-5">{{ trans('auth.forgot_password') }}</h3>
-  <form action="{{ action('Auth@passwordRemindPost') }}" method="post">
+  <form action="{{ path('Auth@passwordRemindPost') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
     @ru

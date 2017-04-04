@@ -45,7 +45,7 @@
           <td><input class="models-checkbox" type="checkbox" id="checkbox_{{ $model->id }}" name="ids[]" value="{{ $model->id }}"></td>
           <td class="text-right">{{ $model->id }}</td>
           <td class="text-center">
-            <a class="screenshot-link" href="{{ action("$self@show", $model) }}">
+            <a class="screenshot-link" href="{{ path("$self@show", $model) }}">
               <img class="screenshot" src="{{ $model->thumbnailSecretUrl() }}">
             </a>
           </td>
@@ -64,10 +64,10 @@
           </td>
           <td>
             <div class="btn-group">
-              <a class="btn btn-default" href="{{ action("$self@view", $model) }}">
+              <a class="btn btn-default" href="{{ path("$self@view", $model) }}">
                 @svg (eye)
               </a>
-              <a class="btn btn-default js-entity-action" data-confirm="Запись будет удалена. Продолжить?" data-method="delete" href="{{ action("$self@destroy", $model) }}">
+              <a class="btn btn-default js-entity-action" data-confirm="Запись будет удалена. Продолжить?" data-method="delete" href="{{ path("$self@destroy", $model) }}">
                 @svg (trash-o)
               </a>
             </div>
@@ -78,7 +78,7 @@
   </table>
 
   <div class="mt-3">
-    <form class="form-inline js-batch-form" data-url="{{ action("$self@batch") }}" data-selector=".models-checkbox">
+    <form class="form-inline js-batch-form" data-url="{{ path("$self@batch") }}" data-selector=".models-checkbox">
       <div class="form-group">
         <input type="checkbox" class="js-select-all" data-selector=".models-checkbox">
         <div class="form-select d-inline-block mx-1">
@@ -94,7 +94,7 @@
 @elseif ($type === 'grid')
   <div class="text-center">
     @foreach ($models as $model)
-      <a class="gallery-photo-container" href="{{ action("$self@show", $model) }}">
+      <a class="gallery-photo-container" href="{{ path("$self@show", $model) }}">
         <img class="gallery-photo" src="{{ $model->thumbnailSecretUrl() }}">
         <span class="image-label">@svg (eye) {{ $model->views }} &middot; {{ ViewHelper::size($model->size) }}</span>
       </a>

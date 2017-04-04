@@ -3,7 +3,7 @@
 @section('content')
 {{--
 @if ($model->domain_control and ($model->ns != 'dns1.yandex.net dns2.yandex.net' and $model->ns != 'dns1.yandex.ru dns2.yandex.ru'))
-  <form action="{{ action("$self@setYandexNs", $model) }}" method="post">
+  <form action="{{ path("$self@setYandexNs", $model) }}" method="post">
     <p>
       <button type="submit" class="btn btn-default">
         Установить DNS Яндекса
@@ -14,7 +14,7 @@
 @endif
 
 @if (!$model->yandex_user_id)
-  <form action="{{ action("$self@setYandexPdd", $model) }}" method="post">
+  <form action="{{ path("$self@setYandexPdd", $model) }}" method="post">
     <p>
       <button type="submit" class="btn btn-default">
         Подключить Яндекс.Почту для домена
@@ -35,7 +35,7 @@
         <th></th>
       </tr>
     </thead>
-    <tr class="ns-record-container" data-action="{{ action("$self@addNsRecord", $model) }}">
+    <tr class="ns-record-container" data-action="{{ path("$self@addNsRecord", $model) }}">
       <td class="text-right">
         <input type="text" name="subdomain" value="@" class="text-right w-100">
       </td>
@@ -117,12 +117,12 @@
           <div class="presentation">
             <a class="pseudo js-ns-record-edit">настроить</a>
             &nbsp;
-            <a class="pseudo js-ns-record-delete" data-id="{{ $record->record_id }}" data-action="{{ action("$self@deleteNsRecord", $model) }}">
+            <a class="pseudo js-ns-record-delete" data-id="{{ $record->record_id }}" data-action="{{ path("$self@deleteNsRecord", $model) }}">
               @svg (times)
             </a>
           </div>
           <div class="edit hidden">
-            <a class="pseudo js-ns-record-save" data-action="{{ action("$self@editNsRecord", $model) }}">сохранить</a>
+            <a class="pseudo js-ns-record-save" data-action="{{ path("$self@editNsRecord", $model) }}">сохранить</a>
             &nbsp;
             <a class="pseudo js-ns-record-cancel">
               @svg (rotate-left)
@@ -133,7 +133,7 @@
     @endforeach
   </table>
 
-  <form class="form-inline mt-3" action="{{ action("$self@setServerNsRecords", $model) }}" method="post">
+  <form class="form-inline mt-3" action="{{ path("$self@setServerNsRecords", $model) }}" method="post">
     <p>
       <select class="form-control" name="server">
         <option value="">-----</option>

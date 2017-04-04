@@ -14,7 +14,7 @@
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
       <td class="text-right">{{ $loop->iteration }}</td>
       <td>
-        <a href="{{ action("$self@show", $model) }}" class="link">
+        <a href="{{ path("$self@show", $model) }}" class="link">
           {{ $model->account }}
         </a>
       </td>

@@ -32,7 +32,7 @@
   <li><b>functions.plib</b> (6 046 байт) — вспомогательные функции;</li>
   <li><b>run</b> (1 598 байт) — файл запуска приложения.</li>
 </ul>
-<p><a class="btn btn-primary" href="{{ action('Files@download', 122) }}">Скачать исходные коды ретрекера</a></p>
+<p><a class="btn btn-primary" href="{{ path('Files@download', 122) }}">Скачать исходные коды ретрекера</a></p>
 
 <h3 class="mt-4">Варианты запросов к ретрекеру</h3>
 <ul>

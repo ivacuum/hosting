@@ -5,6 +5,6 @@
 <images-uploader action="/acp/dev/thumbnails"></images-uploader>
 
 <p class="mt-5">
-  <a class="btn btn-default" href="{{ action("$self@clean") }}">Почистить папку с загруженными файлами</a>
+  <a class="btn btn-default" href="{{ path("$self@clean") }}">Почистить папку с загруженными файлами</a>
 </p>
 @endsection

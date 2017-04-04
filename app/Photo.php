@@ -121,6 +121,6 @@ class Photo extends Model
 
     public function www()
     {
-        return action('Photos@show', $this->id);
+        return path('Photos@show', $this->id);
     }
 }

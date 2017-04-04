@@ -16,7 +16,7 @@ class Thumbnails extends BaseController
             unlink($filename);
         }
 
-        return redirect()->action("{$this->class}@index")
+        return redirect(path("{$this->class}@index"))
             ->with('message', 'Папка очищена');
     }
 

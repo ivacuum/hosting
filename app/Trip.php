@@ -220,7 +220,7 @@ class Trip extends Model
 
     public function www()
     {
-        return action('Life@page', $this->slug);
+        return path('Life@page', $this->slug);
     }
 
     /**

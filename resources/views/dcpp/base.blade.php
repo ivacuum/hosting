@@ -12,13 +12,13 @@
 
 @section('global_menu')
 <li>
-  <a class="{{ $page === 'index' ? 'navbar-selected' : '' }}" href="{{ action('Dcpp@index') }}">
+  <a class="{{ $page === 'index' ? 'navbar-selected' : '' }}" href="{{ path('Dcpp@index') }}">
     {{ trans('dcpp.index') }}
   </a>
 </li>
 @ru
   <li>
-    <a class="{{ $page === 'faq' ? 'navbar-selected' : '' }}" href="{{ action('Dcpp@page', 'faq') }}">
+    <a class="{{ $page === 'faq' ? 'navbar-selected' : '' }}" href="{{ path('Dcpp@page', 'faq') }}">
       {{ trans('dcpp.faq') }}
     </a>
   </li>
@@ -26,43 +26,43 @@
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ trans('dcpp.clients') }} <span class="caret"></span></a>
   <ul class="dropdown-menu">
     <li>
-      <a href="{{ action('Dcpp@page', 'airdc') }}">
+      <a href="{{ path('Dcpp@page', 'airdc') }}">
         {{ trans('dcpp.airdc') }}
       </a>
-      <a href="{{ action('Dcpp@page', 'apexdc') }}">
+      <a href="{{ path('Dcpp@page', 'apexdc') }}">
         {{ trans('dcpp.apexdc') }}
       </a>
-      <a href="{{ action('Dcpp@page', 'dcpp') }}">
+      <a href="{{ path('Dcpp@page', 'dcpp') }}">
         {{ trans('dcpp.dcpp') }}
       </a>
-      <a href="{{ action('Dcpp@page', 'flylinkdc') }}">
+      <a href="{{ path('Dcpp@page', 'flylinkdc') }}">
         {{ trans('dcpp.flylinkdc') }}
       </a>
-      <a href="{{ action('Dcpp@page', 'greylinkdc') }}">
+      <a href="{{ path('Dcpp@page', 'greylinkdc') }}">
         {{ trans('dcpp.greylinkdc') }}
       </a>
-      <a href="{{ action('Dcpp@page', 'jucydc') }}">
+      <a href="{{ path('Dcpp@page', 'jucydc') }}">
         {{ trans('dcpp.jucydc') }}
       </a>
       @ru
-        <a href="{{ action('Dcpp@page', 'kalugadc') }}">
+        <a href="{{ path('Dcpp@page', 'kalugadc') }}">
           {{ trans('dcpp.kalugadc') }}
         </a>
       @endlang
-      <a href="{{ action('Dcpp@page', 'pelinkdc') }}">
+      <a href="{{ path('Dcpp@page', 'pelinkdc') }}">
         {{ trans('dcpp.pelinkdc') }}
       </a>
-      <a href="{{ action('Dcpp@page', 'shakespeer') }}">
+      <a href="{{ path('Dcpp@page', 'shakespeer') }}">
         {{ trans('dcpp.shakespeer') }}
       </a>
-      <a href="{{ action('Dcpp@page', 'strongdc') }}">
+      <a href="{{ path('Dcpp@page', 'strongdc') }}">
         {{ trans('dcpp.strongdc') }}
       </a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="{{ action('Torrents@index') }}">
+  <a href="{{ path('Torrents@index') }}">
     {{ trans('torrents.index') }}
   </a>
 </li>

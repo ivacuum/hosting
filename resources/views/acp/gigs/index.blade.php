@@ -18,7 +18,7 @@
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
       <td>{{ $loop->iteration }}</td>
       <td>
-        <a class="link" href="{{ action("$self@show", $model) }}">
+        <a class="link" href="{{ path("$self@show", $model) }}">
           {{ $model->title }}
         </a>
       </td>
@@ -29,7 +29,7 @@
       </td>
       <td>{{ $model->fullDate() }}</td>
       <td>
-        <a class="link" href="{{ $locale_uri }}/life/{{ $model->slug }}">
+        <a class="link" href="{{ $model->www() }}">
           {{ $model->slug }}
         </a>
       </td>

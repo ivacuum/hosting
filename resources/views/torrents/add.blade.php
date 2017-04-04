@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
   <div class="col-md-6">
-    <form class="mb-3" action="{{ action("$self@addPost") }}" method="post">
+    <form class="mb-3" action="{{ path("$self@addPost") }}" method="post">
 
       @include("$tpl.form")
 

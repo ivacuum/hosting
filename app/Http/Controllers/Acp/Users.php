@@ -23,7 +23,7 @@ class Users extends Controller
 
     protected function mailCredentials(Model $model, $password)
     {
-        $route = action('Acp\Home@index');
+        $route = path('Acp\Home@index', [], true);
         $vars  = compact('user', 'password', 'route');
 
         Mail::send('emails.users.credentials', $vars, function ($mail) use ($model, $route) {

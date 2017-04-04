@@ -9,7 +9,7 @@
       @if ($initial !== $current_initial)
         <span class="city-initial">{{ $current_initial }}</span>
       @endif
-      <a class="link" href="{{ action('Photos@tag', $tag) }}">#{{ $tag->title }}</a>
+      <a class="link" href="{{ path('Photos@tag', $tag) }}">#{{ $tag->title }}</a>
       <span class="city-trips">{{ $tag->photos_count }}</span>
     </div>
     @php ($initial = $current_initial)

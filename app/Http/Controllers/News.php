@@ -29,7 +29,7 @@ class News extends Controller
 
     public function bc()
     {
-        return redirect()->action("{$this->class}@index", [], 301);
+        return redirect(path("{$this->class}@index"), 301);
     }
 
     public function day($year, $month, $day)
@@ -61,7 +61,7 @@ class News extends Controller
         $news = Model::find($id);
 
         if (is_null($news)) {
-            return redirect()->action("{$this->class}@index");
+            return redirect(path("{$this->class}@index"), 301);
         }
 
         abort_unless($news->status === Model::STATUS_PUBLISHED, 404);

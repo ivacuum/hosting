@@ -19,12 +19,9 @@ use App\Trip;
 use App\User;
 use App\YandexUser;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Ivacuum\Generic\Providers\LocaleTrait;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    use LocaleTrait;
-
     protected $namespace = 'App\Http\Controllers';
 
     public function boot()
@@ -59,19 +56,16 @@ class RouteServiceProvider extends ServiceProvider
 
     public function map()
     {
-        $prefix = $this->locale();
-
         \Route::namespace($this->namespace)
             ->group(base_path('routes/simple.php'));
 
         \Route::middleware(['web', 'auth', 'admin'])
             ->namespace($this->namespace)
-            ->prefix("{$prefix}/acp")
+            ->prefix('acp')
             ->group(base_path('routes/acp.php'));
 
         \Route::middleware('web')
             ->namespace($this->namespace)
-            ->prefix($prefix)
             ->group(base_path('routes/web.php'));
     }
 }

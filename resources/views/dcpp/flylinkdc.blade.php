@@ -9,7 +9,7 @@
 
 @section('about_software')
 @ru
-  <p><strong>FlyLinkDC++</strong> — свободный и открытый клиент сети DC++. Основан на <a class="link" href="{{ action('Dcpp@page', 'strongdc') }}">StrongDC++</a>.</p>
+  <p><strong>FlyLinkDC++</strong> — свободный и открытый клиент сети DC++. Основан на <a class="link" href="{{ path('Dcpp@page', 'strongdc') }}">StrongDC++</a>.</p>
   <h3>Основные возможности</h3>
   <div class="row">
     <div class="col-md-3">
@@ -53,6 +53,6 @@
   <p><img src="https://img.ivacuum.ru/g/110320/1_aVZjr1LGHI.png" width="633" height="443"></p>
   <p>После этих настроек перезапустите программу и пользуйтесь <strong>FlyLinkDC++</strong> с удовольствием!</p>
 @en
-  <p><strong>FlyLinkDC++</strong> is a free and open-source DC++ client software. It is based on <a class="link" href="{{ action('Dcpp@page', 'strongdc') }}">StrongDC++</a>.</p>
+  <p><strong>FlyLinkDC++</strong> is a free and open-source DC++ client software. It is based on <a class="link" href="{{ path('Dcpp@page', 'strongdc') }}">StrongDC++</a>.</p>
 @endlang
 @endsection

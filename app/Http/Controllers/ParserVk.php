@@ -116,7 +116,7 @@ class ParserVk extends Controller
 
     public function indexPost()
     {
-        return redirect()->action("{$this->class}@index", $this->request->input('slug'));
+        return redirect(path("{$this->class}@index", $this->request->input('slug')));
     }
 
     protected function getPosts($count = 100, $offset = 0)

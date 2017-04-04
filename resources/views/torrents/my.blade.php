@@ -21,7 +21,7 @@
       @foreach ($torrents as $torrent)
         <tr>
           <td>
-            <a class="visited" href="{{ action('Torrents@torrent', $torrent) }}">
+            <a class="visited" href="{{ $torrent->www() }}">
               <torrent-title title="{{ $torrent->title }}" hide_brackets="1"></torrent-title>
             </a>
           </td>
@@ -47,6 +47,6 @@
   @en
     <p>You haven't released anything yet.</p>
   @endlang
-  <p><a class="btn btn-default" href="{{ action('Torrents@add') }}">{{ trans('torrents.add') }}</a></p>
+  <p><a class="btn btn-default" href="{{ path('Torrents@add') }}">{{ trans('torrents.add') }}</a></p>
 @endif
 @endsection

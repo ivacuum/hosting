@@ -4,7 +4,7 @@
 <h1 class="mt-0">{{ trans('dcpp.download') }} {{ $software_title }} {{ $software[0]['version'] }}</h1>
 @section('download_latest')
   <p>
-    <a class="btn btn-success" href="{{ action('Files@download', $software[0]['id']) }}">
+    <a class="btn btn-success" href="{{ path('Files@download', $software[0]['id']) }}">
       @php ($icon = $software[0]['icon'] ?? 'windows')
       @svg ($icon)
       {{ trans('dcpp.download') }}{{ $software[0]['dl_suffix'] }}
@@ -44,7 +44,7 @@
           <ul>
             @foreach ($software as $soft)
               @continue ($loop->index === 0)
-              <li><a class="link" href="{{ action('Files@download', $soft['id']) }}">{{ trans('dcpp.download') }} {{ $software_title }} {{ $soft['version'] }}{{ $soft['dl_suffix'] }}</a></li>
+              <li><a class="link" href="{{ path('Files@download', $soft['id']) }}">{{ trans('dcpp.download') }} {{ $software_title }} {{ $soft['version'] }}{{ $soft['dl_suffix'] }}</a></li>
             @endforeach
           </ul>
         </div>

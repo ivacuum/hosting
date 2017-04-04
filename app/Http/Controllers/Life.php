@@ -53,11 +53,12 @@ class Life extends Controller
         event(new \App\Events\Stats\CityViewed($city->id));
 
         if (1 === sizeof($published_trips)) {
-            $slug = $published_trips->first()->slug;
+            /* @var \App\Trip $trip */
+            $trip = $published_trips->first();
 
             event(new \App\Events\Stats\CityRedirectedToSingleTrip);
 
-            return redirect()->action("{$this->class}@page", $slug);
+            return redirect($trip->www());
         }
 
         \Breadcrumbs::push(trans('menu.countries'), 'life/countries');

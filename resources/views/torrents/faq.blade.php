@@ -36,13 +36,13 @@
   <li>qBittorrent</li>
   <li>Deluge</li>
   <li>
-    <a class="link" href="{{ action('Files@download', 151) }}">Transmission</a>
+    <a class="link" href="{{ path('Files@download', 151) }}">Transmission</a>
     <span title="macOS">
       @svg (apple)
     </span>
   </li>
   <li>
-    <a class="link" href="{{ action('Files@download', 150) }}">uTorrent</a>
+    <a class="link" href="{{ path('Files@download', 150) }}">uTorrent</a>
     <span title="Windows">
       @svg (windows)
     </span>
@@ -63,7 +63,7 @@
 Как добавить раздачу?
 @endslot
 
-<p>Для добавления предусмотрена <a class="link" href="{{ action('Torrents@add') }}">отдельная страница</a>, доступная только зарегистрированным пользователям. В качестве ввода принимается три типа значений:</p>
+<p>Для добавления предусмотрена <a class="link" href="{{ path('Torrents@add') }}">отдельная страница</a>, доступная только зарегистрированным пользователям. В качестве ввода принимается три типа значений:</p>
 <ol>
   <li>Ссылка на раздачу на рутрекере вида <code>http://rutracker.org/forum/<wbr>viewtopic.php?t=4031882</code>. Адрес maintracker.org также поддерживается</li>
   <li>Инфо-хэш раздачи вида <code>9B5D85FFC234737E7D7C<wbr>246FECB6BB1EC5E8F0B9</code></li>

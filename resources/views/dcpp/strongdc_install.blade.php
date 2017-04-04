@@ -13,16 +13,16 @@
   <h2>Установка</h2>
   <ol>
     <li>
-      <p>Скачайте программу-клиент <a class="link" href="{{ action('Dcpp@page', 'strongdc') }}">StrongDC++</a>.</p>
+      <p>Скачайте программу-клиент <a class="link" href="{{ path('Dcpp@page', 'strongdc') }}">StrongDC++</a>.</p>
       <p>
-        <a class="btn btn-success" href="{{ action('Files@download', 132) }}">
+        <a class="btn btn-success" href="{{ path('Files@download', 132) }}">
           @svg (windows)
           {{ trans('dcpp.download') }} 32bit
           &middot;
           {{ ViewHelper::size(8046097) }}
         </a>
         &nbsp;
-        <a class="btn btn-success" href="{{ action('Files@download', 134) }}">
+        <a class="btn btn-success" href="{{ path('Files@download', 134) }}">
           @svg (windows)
           {{ trans('dcpp.download') }} 64bit
           &middot;
@@ -82,6 +82,6 @@
       <p><img src="https://img.ivacuum.ru/g/091002/1_AOnVj3WH11.png" width="663" height="497"></p>
     </li>
   </ol>
-  <p><a class="btn btn-default" href="{{ action('Dcpp@page', 'strongdc') }}">Вернуться на страницу клиента StrongDC++</a></p>
+  <p><a class="btn btn-default" href="{{ path('Dcpp@page', 'strongdc') }}">Вернуться на страницу клиента StrongDC++</a></p>
 @endlang
 @endsection

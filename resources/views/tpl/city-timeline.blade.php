@@ -8,7 +8,7 @@
             @if ($row->id === $trip->id)
               <mark>{{ $row->period }}</mark>
             @elseif ($row->status === App\Trip::STATUS_PUBLISHED)
-              <a class="link" href="{{ action('Life@page', $row->slug) }}">{{ $row->period }}</a>
+              <a class="link" href="{{ $row->www() }}">{{ $row->period }}</a>
             @else
               {{ $row->period }}
             @endif

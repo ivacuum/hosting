@@ -2,7 +2,7 @@
   <div class="form-group">
     <label class="col-md-3 control-label">{{ trans('acp.photos.index') }}:</label>
     <div class="col-md-6">
-      <images-uploader action="{{ action("$self@store") }}" append=".js-append-formdata"></images-uploader>
+      <images-uploader action="{{ path("$self@store") }}" append=".js-append-formdata"></images-uploader>
     </div>
   </div>
 

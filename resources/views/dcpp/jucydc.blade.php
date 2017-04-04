@@ -15,14 +15,14 @@
 
 @section('download_latest')
 <h4>{{ trans('dcpp.for') }} @svg (windows) Windows</h4>
-<a class="btn btn-success" href="{{ action('Files@download', 49) }}">
+<a class="btn btn-success" href="{{ path('Files@download', 49) }}">
   @svg (windows)
   {{ trans('dcpp.download') }} 32bit
   &middot;
   {{ ViewHelper::size(36586416) }}
 </a>
 &nbsp;
-<a class="btn btn-success" href="{{ action('Files@download', 50) }}">
+<a class="btn btn-success" href="{{ path('Files@download', 50) }}">
   @svg (windows)
   {{ trans('dcpp.download') }} 64bit
   &middot;
@@ -30,14 +30,14 @@
 </a>
 
 <h4>{{ trans('dcpp.for') }} @svg (linux) Linux</h4>
-<a class="btn btn-success" href="{{ action('Files@download', 74) }}">
+<a class="btn btn-success" href="{{ path('Files@download', 74) }}">
   @svg (linux)
   {{ trans('dcpp.download') }} 32bit
   &middot;
   {{ ViewHelper::size(36756573) }}
 </a>
 &nbsp;
-<a class="btn btn-success" href="{{ action('Files@download', 148) }}">
+<a class="btn btn-success" href="{{ path('Files@download', 148) }}">
   @svg (linux)
   {{ trans('dcpp.download') }} 64bit
   &middot;
@@ -45,14 +45,14 @@
 </a>
 
 <h4>{{ trans('dcpp.for') }} @svg (apple) macOS</h4>
-<a class="btn btn-success" href="{{ action('Files@download', 51) }}">
+<a class="btn btn-success" href="{{ path('Files@download', 51) }}">
   @svg (apple)
   {{ trans('dcpp.download') }} 32bit
   &middot;
   {{ ViewHelper::size(36626671) }}
 </a>
 &nbsp;
-<a class="btn btn-success" href="{{ action('Files@download', 147) }}">
+<a class="btn btn-success" href="{{ path('Files@download', 147) }}">
   @svg (apple)
   {{ trans('dcpp.download') }} 64bit
   &middot;

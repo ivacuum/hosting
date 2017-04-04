@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="my-3 text-center">
-  <a class="btn btn-success js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ action('Torrents@magnet', $torrent) }}">
+  <a class="btn btn-success js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ path('Torrents@magnet', $torrent) }}">
     <span class="mr-1">
       @svg (magnet)
     </span>
@@ -13,7 +13,7 @@
 </div>
 <rutracker-post>{!! $torrent->html !!}</rutracker-post>
 <div class="my-3 text-center">
-  <a class="btn btn-success js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ action('Torrents@magnet', $torrent) }}">
+  <a class="btn btn-success js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ path('Torrents@magnet', $torrent) }}">
     <span class="mr-1">
       @svg (magnet)
     </span>

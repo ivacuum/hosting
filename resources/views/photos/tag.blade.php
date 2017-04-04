@@ -5,7 +5,7 @@
 <div class="gallery-flex">
   @foreach ($tag->photos as $photo)
     <div class="gallery-image mb-4">
-      <a class="screenshot-link" href="{{ action("$self@show", [$photo, $tag->getForeignKey() => $tag]) }}">
+      <a class="screenshot-link" href="{{ path("$self@show", [$photo, $tag->getForeignKey() => $tag]) }}">
         <img class="image-200 screenshot" src="{{ $photo->thumbnailUrl() }}">
       </a>
     </div>

@@ -13,7 +13,7 @@
       <span class="travel-year">{{ $gig->date->year }}</span>
     @endif
     @if ($gig->status === App\Gig::STATUS_PUBLISHED)
-      <a class="link" href="{{ action('Life@page', $gig->slug) }}">{{ $gig->artist->title }}</a>
+      <a class="link" href="{{ $gig->www() }}">{{ $gig->artist->title }}</a>
     @else
       {{ $gig->artist->title }}
     @endif

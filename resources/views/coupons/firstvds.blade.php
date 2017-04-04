@@ -12,7 +12,7 @@
   @en
     <p>Type your e-mail and we will send you a promo code for 25% discount to your first order on any FirstVDS plan.</p>
   @endlang
-  <form action="{{ action('Coupons@firstvdsPost') }}" method="post">
+  <form action="{{ path('Coupons@firstvdsPost') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
     <input class="form-control d-inline-block align-middle" type="email" name="email" placeholder="{{ trans('coupons.your_email') }}" style="width: 16rem;">

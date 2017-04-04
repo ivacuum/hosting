@@ -8,7 +8,7 @@
             @if ($row->id === $gig->id)
               <mark>{{ $row->shortDate() }}</mark>
             @elseif ($row->status === App\Gig::STATUS_PUBLISHED)
-              <a class="link" href="{{ action('Life@page', $row->slug) }}">{{ $row->shortDate() }}</a>
+              <a class="link" href="{{ $row->www() }}">{{ $row->shortDate() }}</a>
             @else
               {{ $row->shortDate() }}
             @endif

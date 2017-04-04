@@ -4,27 +4,27 @@
 <h1 class="mt-0">{{ trans('dcpp.index') }}</h1>
 
 <p>
-  <a class="link" href="{{ action('Dcpp@page', 'airdc') }}">{{ trans('dcpp.airdc') }}</a>
+  <a class="link" href="{{ path('Dcpp@page', 'airdc') }}">{{ trans('dcpp.airdc') }}</a>
   <span class="text-muted">&nbsp;&middot;&nbsp;</span>
-  <a class="link" href="{{ action('Dcpp@page', 'apexdc') }}">{{ trans('dcpp.apexdc') }}</a>
+  <a class="link" href="{{ path('Dcpp@page', 'apexdc') }}">{{ trans('dcpp.apexdc') }}</a>
   <span class="text-muted">&nbsp;&middot;&nbsp;</span>
-  <a class="link" href="{{ action('Dcpp@page', 'dcpp') }}">{{ trans('dcpp.dcpp') }}</a>
+  <a class="link" href="{{ path('Dcpp@page', 'dcpp') }}">{{ trans('dcpp.dcpp') }}</a>
   <span class="text-muted">&nbsp;&middot;&nbsp;</span>
-  <a class="link" href="{{ action('Dcpp@page', 'flylinkdc') }}">{{ trans('dcpp.flylinkdc') }}</a>
+  <a class="link" href="{{ path('Dcpp@page', 'flylinkdc') }}">{{ trans('dcpp.flylinkdc') }}</a>
   <span class="text-muted">&nbsp;&middot;&nbsp;</span>
-  <a class="link" href="{{ action('Dcpp@page', 'greylinkdc') }}">{{ trans('dcpp.greylinkdc') }}</a>
+  <a class="link" href="{{ path('Dcpp@page', 'greylinkdc') }}">{{ trans('dcpp.greylinkdc') }}</a>
   <span class="text-muted">&nbsp;&middot;&nbsp;</span>
-  <a class="link" href="{{ action('Dcpp@page', 'jucydc') }}">{{ trans('dcpp.jucydc') }}</a>
+  <a class="link" href="{{ path('Dcpp@page', 'jucydc') }}">{{ trans('dcpp.jucydc') }}</a>
   @ru
     <span class="text-muted">&nbsp;&middot;&nbsp;</span>
-    <a class="link" href="{{ action('Dcpp@page', 'kalugadc') }}">{{ trans('dcpp.kalugadc') }}</a>
+    <a class="link" href="{{ path('Dcpp@page', 'kalugadc') }}">{{ trans('dcpp.kalugadc') }}</a>
   @endlang
   <span class="text-muted">&nbsp;&middot;&nbsp;</span>
-  <a class="link" href="{{ action('Dcpp@page', 'pelinkdc') }}">{{ trans('dcpp.pelinkdc') }}</a>
+  <a class="link" href="{{ path('Dcpp@page', 'pelinkdc') }}">{{ trans('dcpp.pelinkdc') }}</a>
   <span class="text-muted">&nbsp;&middot;&nbsp;</span>
-  <a class="link" href="{{ action('Dcpp@page', 'shakespeer') }}">{{ trans('dcpp.shakespeer') }}</a>
+  <a class="link" href="{{ path('Dcpp@page', 'shakespeer') }}">{{ trans('dcpp.shakespeer') }}</a>
   <span class="text-muted">&nbsp;&middot;&nbsp;</span>
-  <a class="link" href="{{ action('Dcpp@page', 'strongdc') }}">{{ trans('dcpp.strongdc') }}</a>
+  <a class="link" href="{{ path('Dcpp@page', 'strongdc') }}">{{ trans('dcpp.strongdc') }}</a>
 </p>
 
 <div class="row">

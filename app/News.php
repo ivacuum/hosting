@@ -52,7 +52,7 @@ class News extends Model
 
     public function www()
     {
-        return action('News@show', $this->id);
+        return path('News@show', $this->id);
     }
 
     // Static methods

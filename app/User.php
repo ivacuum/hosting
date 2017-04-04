@@ -211,6 +211,6 @@ class User extends Authenticatable
 
     public function www()
     {
-        return action('Users@show', $this->id);
+        return path('Users@show', $this->id);
     }
 }

@@ -54,7 +54,7 @@ class Country extends Model
 
     public function www()
     {
-        return action('Life@country', $this->slug);
+        return path('Life@country', $this->slug);
     }
 
     // Static methods

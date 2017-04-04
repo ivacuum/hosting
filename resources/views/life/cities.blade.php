@@ -8,8 +8,8 @@
   <small>{{ sizeof($cities) }}</small>
 </h1>
 <ul class="list-inline f14">
-  <li><a class="link" href="{{ action('Life@index') }}">{{ trans('life.by_year') }}</a></li>
-  <li><a class="link" href="{{ action('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
+  <li><a class="link" href="{{ path('Life@index') }}">{{ trans('life.by_year') }}</a></li>
+  <li><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
   <li><mark>{{ trans('life.by_city') }}</mark></li>
 </ul>
 
@@ -22,7 +22,7 @@
         <span class="city-initial">{{ $current_initial }}</span>
       @endif
       @if ($city->trips_published_count)
-        <a class="link" href="{{ action('Life@page', $city->slug) }}">{{ $city->title }}</a>
+        <a class="link" href="{{ $city->www() }}">{{ $city->title }}</a>
       @else
         {{ $city->title }}
       @endif

@@ -14,7 +14,7 @@ class Dev extends BaseController
     {
         $cookie->queue('debugbar', true, 60);
 
-        return redirect()->action("{$this->class}@index")
+        return redirect(path("{$this->class}@index"))
             ->with('message', 'Debugbar включен на час');
     }
 

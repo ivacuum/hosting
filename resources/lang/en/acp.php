@@ -78,6 +78,9 @@ return [
     'news.create' => 'Write a news',
     'news.notify' => 'Notify about publication',
 
+    'notifications.show' => 'Notification',
+    'notifications.index' => 'Notifications',
+
     'pages.add' => 'Add page',
     'pages.edit' => 'Edit',
     'pages.show' => 'Page',

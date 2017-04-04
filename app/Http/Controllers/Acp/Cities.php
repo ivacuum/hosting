@@ -40,7 +40,7 @@ class Cities extends Controller
 
     protected function redirectAfterStore($model)
     {
-        return redirect()->action("{$this->class}@show", $model);
+        return redirect(path("{$this->class}@show", $model));
     }
 
     /**

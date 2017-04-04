@@ -66,7 +66,7 @@ class Torrents extends Controller
 
                 return back()
                     ->withInput()
-                    ->with('message', new HtmlString('Данная раздача уже <a class="link" href="' . action("$this->class@torrent", $torrent) . '">присутствует на сайте</a>. Попробуйте добавить другую.'));
+                    ->with('message', new HtmlString('Данная раздача уже <a class="link" href="' . $torrent->www() . '">присутствует на сайте</a>. Попробуйте добавить другую.'));
             }
         }
 
@@ -92,7 +92,7 @@ class Torrents extends Controller
 
         event(new \App\Events\Stats\TorrentAdded);
 
-        return redirect()->action("{$this->class}@torrent", $torrent->id);
+        return redirect($torrent->www());
     }
 
     public function comments()

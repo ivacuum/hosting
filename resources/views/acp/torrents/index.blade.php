@@ -18,7 +18,7 @@
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
       <td class="text-right">{{ $model->id }}</td>
       <td>
-        <a class="link" href="{{ action('Acp\Users@show', $model->user_id) }}">
+        <a class="link" href="{{ path('Acp\Users@show', $model->user_id) }}">
           {{ $model->user->displayName() }}
         </a>
       </td>
@@ -38,7 +38,7 @@
         @endif
       </td>
       <td>
-        <a class="link" href="{{ action("$self@show", $model) }}">
+        <a class="link" href="{{ path("$self@show", $model) }}">
           <torrent-title title="{{ $model->title }}" hide_brackets="1"></torrent-title>
         </a>
       </td>

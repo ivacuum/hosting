@@ -60,7 +60,7 @@ class Auth extends Controller
 
         event(new \App\Events\Stats\UserLoggedOut);
 
-        return redirect()->action('Home@index');
+        return redirect(path('Home@index'));
     }
 
     public function passwordRemind()
@@ -119,7 +119,7 @@ class Auth extends Controller
         if (PasswordBroker::PASSWORD_RESET === $response) {
             event(new \App\Events\Stats\UserPasswordResetted);
 
-            return redirect()->action('Home@index')->with('message', trans($response));
+            return redirect(path('Home@index'))->with('message', trans($response));
         }
 
         return back()
@@ -167,7 +167,7 @@ class Auth extends Controller
 
         \Auth::login($user, true);
 
-        return redirect()->action('Home@index');
+        return redirect(path('Home@index'));
     }
 
     /**
@@ -184,7 +184,7 @@ class Auth extends Controller
         if (\Auth::attempt($credentials, $remember)) {
             $this->request->session()->regenerate();
 
-            return redirect()->intended(action('Home@index'));
+            return redirect()->intended(path('Home@index'));
         }
 
         if (is_null($user = \Auth::getLastAttempted())) {
@@ -198,7 +198,7 @@ class Auth extends Controller
 
             \Auth::login($user, $remember);
 
-            return redirect()->intended(action('Home@index'));
+            return redirect()->intended(path('Home@index'));
         }
 
         return null;

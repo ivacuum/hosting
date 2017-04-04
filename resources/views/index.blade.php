@@ -5,7 +5,7 @@
   <div class="col-md-4 service-container">
     <div class="clearfix">
       <img class="service-image" src="https://ivacuum.org/i/services/magnet.png">
-      <h2 class="service-title"><a class="link" href="{{ action('Torrents@index') }}">{{ trans('torrents.index') }}</a></h2>
+      <h2 class="service-title"><a class="link" href="{{ path('Torrents@index') }}">{{ trans('torrents.index') }}</a></h2>
     </div>
     @ru
       <p>Сервис для скачивания файлов у многочисленных пользователей сети интернет.</p>
@@ -20,7 +20,7 @@
   <div class="col-md-4 service-container">
     <div class="clearfix">
       <img class="service-image" src="https://ivacuum.org/i/services/hosting.png">
-      <h2 class="service-title"><a class="link" href="{{ action('Life@index') }}">{{ trans('menu.life') }}</a></h2>
+      <h2 class="service-title"><a class="link" href="{{ path('Life@index') }}">{{ trans('menu.life') }}</a></h2>
     </div>
     @ru
       <p>Мои заметки о жизни.</p>
@@ -54,7 +54,7 @@
   <div class="col-md-4 service-container">
     <div class="clearfix">
       <img class="service-image" src="https://ivacuum.org/i/services/gallery.png">
-      <h2 class="service-title"><a class="link" href="{{ action('Gallery@index') }}">{{ trans('gallery.index') }}</a></h2>
+      <h2 class="service-title"><a class="link" href="{{ path('Gallery@index') }}">{{ trans('gallery.index') }}</a></h2>
     </div>
     @ru
       <p>Хранилище изображений для последующей публикации в интернете.</p>
@@ -69,7 +69,7 @@
   <div class="col-md-4 service-container">
     <div class="clearfix">
       <img class="service-image" src="https://ivacuum.org/i/services/dcpp.png">
-      <h2 class="service-title"><a class="link" href="{{ action('Dcpp@index') }}">ArtFly.DC++</a></h2>
+      <h2 class="service-title"><a class="link" href="{{ path('Dcpp@index') }}">ArtFly.DC++</a></h2>
     </div>
     @ru
       <p>Большая коллекция русских DC++ клиентов.</p>
@@ -112,7 +112,7 @@
             </div>
             <div class="page-block-cover-description">{{ $trip->meta_description }}</div>
           </div>
-          <a class="page-block-cover-link" href="{{ action('Life@page', $trip->slug) }}"><span></span></a>
+          <a class="page-block-cover-link" href="{{ $trip->www() }}"><span></span></a>
         </div>
       </div>
     @endforeach

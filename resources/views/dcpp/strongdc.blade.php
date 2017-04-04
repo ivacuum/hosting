@@ -16,14 +16,14 @@
 ])
 
 @section('download_latest')
-<a class="btn btn-success" href="{{ action('Files@download', 132) }}">
+<a class="btn btn-success" href="{{ path('Files@download', 132) }}">
   @svg (windows)
   {{ trans('dcpp.download') }} 32bit
   &middot;
   {{ ViewHelper::size(8046097) }}
 </a>
 &nbsp;
-<a class="btn btn-success" href="{{ action('Files@download', 134) }}">
+<a class="btn btn-success" href="{{ path('Files@download', 134) }}">
   @svg (windows)
   {{ trans('dcpp.download') }} 64bit
   &middot;
@@ -31,7 +31,7 @@
 </a>
 @ru
   &nbsp;
-  <a class="btn btn-default" href="{{ action('Dcpp@page', 'strongdc_install') }}">Инструкция по установке</a>
+  <a class="btn btn-default" href="{{ path('Dcpp@page', 'strongdc_install') }}">Инструкция по установке</a>
 @endlang
 @endsection
 
@@ -65,6 +65,6 @@
     </div>
   </div>
 @en
-  <p><strong>StrongDC++</strong> is a client for sharing files in Direct Connect network by using NMDC and ADC protocols. It is modification of program <a class="link" href="{{ action('Dcpp@page', 'dcpp') }}">DC++</a> and it brings many news and features from other modification.</p>
+  <p><strong>StrongDC++</strong> is a client for sharing files in Direct Connect network by using NMDC and ADC protocols. It is modification of program <a class="link" href="{{ path('Dcpp@page', 'dcpp') }}">DC++</a> and it brings many news and features from other modification.</p>
 @endlang
 @endsection

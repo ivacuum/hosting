@@ -3,7 +3,7 @@
 @section('content')
 <div class="form-signin text-center">
   <h3 class="mt-0 mb-4">{{ trans('auth.signin_title') }}</h3>
-  <form action="{{ action('Auth@loginPost') }}" method="post">
+  <form action="{{ path('Auth@loginPost') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
     <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
@@ -30,10 +30,10 @@
 
     <div class="my-3 clearfix">
       <div class="pull-left">
-        <a class="link" href="{{ action('Auth@passwordRemind') }}">{{ trans('auth.forgot_password') }}</a>
+        <a class="link" href="{{ path('Auth@passwordRemind') }}">{{ trans('auth.forgot_password') }}</a>
       </div>
       <div class="pull-right">
-        <a class="link" href="{{ action('Auth@register') }}">{{ trans('auth.new_account') }}</a>
+        <a class="link" href="{{ path('Auth@register') }}">{{ trans('auth.new_account') }}</a>
       </div>
     </div>
 
@@ -45,17 +45,17 @@
 
     <div class="text-center mt-3">
       <a class="btn btn-social bg-vk tooltipped tooltipped-n"
-         href="{{ action('Auth\Vk@index') }}"
+         href="{{ path('Auth\Vk@index') }}"
          aria-label="{{ trans('auth.signin_vk') }}">
         @svg (vk)
       </a>
       <a class="btn btn-social bg-facebook tooltipped tooltipped-n"
-         href="{{ action('Auth\Facebook@index') }}"
+         href="{{ path('Auth\Facebook@index') }}"
          aria-label="{{ trans('auth.signin_facebook') }}">
         @svg (facebook)
       </a>
       <a class="btn btn-social bg-google tooltipped tooltipped-n"
-         href="{{ action('Auth\Google@index') }}"
+         href="{{ path('Auth\Google@index') }}"
          aria-label="{{ trans('auth.signin_google') }}">
         @svg (google)
       </a>

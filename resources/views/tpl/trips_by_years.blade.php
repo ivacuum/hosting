@@ -5,7 +5,7 @@
       <span class="travel-year">{{ $trip->year }}</span>
     @endif
     @if ($trip->status === App\Trip::STATUS_PUBLISHED)
-      <a class="link" href="{{ action('Life@page', $trip->slug) }}">{{ $trip->title }}</a>
+      <a class="link" href="{{ $trip->www() }}">{{ $trip->title }}</a>
     @else
       {{ $trip->title }}
     @endif

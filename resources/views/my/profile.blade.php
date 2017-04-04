@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-md-6 mb-3">
     <h3 class="mt-0 mb-3">{{ trans('my.profile') }}</h3>
-    <form action="{{ action("$self@profilePut") }}" method="post">
+    <form action="{{ path("$self@profilePut") }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}
 
       <div class="form-group {{ $errors->has('username') ? 'has-error' : '' }}">
@@ -39,7 +39,7 @@
   </div>
   <div class="col-md-6">
     <h3 class="mt-0">Аватар</h3>
-    <avatar-uploader action="{{ action('My@avatarPut') }}" current_avatar="{{ Auth::user()->avatarUrl() }}"></avatar-uploader>
+    <avatar-uploader action="{{ path('My@avatarPut') }}" current_avatar="{{ Auth::user()->avatarUrl() }}"></avatar-uploader>
   </div>
 </div>
 @endsection

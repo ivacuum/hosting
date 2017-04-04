@@ -9,7 +9,7 @@
           @if (!empty($category_id) && $id == $category_id)
             <mark>{{ $category['title'] }}</mark>
           @else
-            <a class="visited" href="{{ action("$self@index", ['category_id' => $id]) }}">{{ $category['title'] }}</a>
+            <a class="visited" href="{{ path("$self@index", ['category_id' => $id]) }}">{{ $category['title'] }}</a>
           @endif
         </h3>
         @if (!empty($category['children']))
@@ -19,7 +19,7 @@
               @if (!empty($category_id) && $id == $category_id)
                 <mark>{{ $child['title'] }}</mark>
               @else
-                <a class="visited" href="{{ action("$self@index", ['category_id' => $id]) }}">{{ $child['title'] }}</a>
+                <a class="visited" href="{{ path("$self@index", ['category_id' => $id]) }}">{{ $child['title'] }}</a>
               @endif
               <span class="text-muted f13">{{ $stats[$id] }}</span>
             </div>
@@ -43,7 +43,7 @@
             @svg ($icon)
           </div>
           <div class="torrents-list-cell torrents-list-title">
-            <a class="visited" href="{{ action("{$self}@torrent", $torrent) }}">
+            <a class="visited" href="{{ $torrent->www() }}">
               <torrent-title title="{{ $torrent->title }}" hide_brackets="{{ Auth::check() && Auth::user()->torrent_short_title ? 1 : '' }}"></torrent-title>
             </a>
           </div>
@@ -51,7 +51,7 @@
             <a class="link-cell js-magnet"
                href="{{ $torrent->magnet() }}"
                title="{{ trans('torrents.download') }}"
-               data-action="{{ action('Torrents@magnet', $torrent) }}">
+               data-action="{{ path('Torrents@magnet', $torrent) }}">
               @svg (magnet)
               @if ($torrent->clicks > 0)
                 {{ $torrent->clicks }}

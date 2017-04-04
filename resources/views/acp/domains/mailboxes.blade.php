@@ -2,7 +2,7 @@
 
 @section('content')
 <h3>Новая электропочта</h3>
-<form action="{{ action("$self@addMailbox", $model) }}" class="form-horizontal" method="post">
+<form action="{{ path("$self@addMailbox", $model) }}" class="form-horizontal" method="post">
 
   @include('tpl.form_errors')
 

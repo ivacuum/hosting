@@ -4,13 +4,13 @@
 <div class="row mt-3">
   <div class="col-sm-3">
     <div class="list-group text-center">
-      <a class="list-group-item {{ $view == "$tpl.profile" ? 'active' : '' }}" href="{{ action("$self@profile") }}">
+      <a class="list-group-item {{ $view == "$tpl.profile" ? 'active' : '' }}" href="{{ path("$self@profile") }}">
         {{ trans("$tpl.profile") }}
       </a>
-      <a class="list-group-item {{ $view == "$tpl.password" ? 'active' : '' }}" href="{{ action("$self@password") }}">
+      <a class="list-group-item {{ $view == "$tpl.password" ? 'active' : '' }}" href="{{ path("$self@password") }}">
         {{ trans("$tpl.password") }}
       </a>
-      <a class="list-group-item {{ $view == "$tpl.settings" ? 'active' : '' }}" href="{{ action("$self@settings") }}">
+      <a class="list-group-item {{ $view == "$tpl.settings" ? 'active' : '' }}" href="{{ path("$self@settings") }}">
         {{ trans("$tpl.settings") }}
       </a>
     </div>

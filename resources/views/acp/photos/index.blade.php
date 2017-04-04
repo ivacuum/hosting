@@ -38,7 +38,7 @@
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
       <td class="text-right">{{ $model->id }}</td>
       <td class="text-center">
-        <a class="screenshot-link" href="{{ action("$self@show", $model) }}">
+        <a class="screenshot-link" href="{{ path("$self@show", $model) }}">
           <img class="image-100 screenshot" src="{{ $model->thumbnailUrl() }}">
         </a>
       </td>
@@ -46,7 +46,7 @@
       <td>
         @foreach ($model->tags as $tag)
           <div>
-            <a class="link" href="{{ action('Acp\Tags@show', $tag) }}">#{{ $tag->title }}</a>
+            <a class="link" href="{{ path('Acp\Tags@show', $tag) }}">#{{ $tag->title }}</a>
           </div>
         @endforeach
       </td>

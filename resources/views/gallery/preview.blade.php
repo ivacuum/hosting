@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-md-2 col-md-offset-2 text-center">
     <div class="mb-3">
-      <a href="{{ action("$self@view", $image) }}">
+      <a href="{{ path("$self@view", $image) }}">
         <img class="screenshot" src="{{ $image->thumbnailUrl() }}">
       </a>
     </div>

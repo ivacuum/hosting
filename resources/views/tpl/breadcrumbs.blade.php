@@ -2,7 +2,7 @@
   <div class="breadcrumbs py-2 mb-3 border-bottom">
     <div class="container">
       <nav>
-        <a href="{{ $locale_uri }}/">
+        <a href="{{ $locale_uri ?: '/' }}">
           @svg (home)
         </a>
         @svg (angle-right)
