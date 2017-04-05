@@ -68,7 +68,7 @@ export default {
       this.total += files.length
 
       for (let i = 0, length = files.length; i < length; i++) {
-        this.uploadFile(files[i])
+        setTimeout(() => this.uploadFile(files[i]), 1000 * i)
       }
     }
   }
