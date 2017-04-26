@@ -1,7 +1,5 @@
-window.axios.defaults.headers.common = {
-  'X-CSRF-TOKEN': window['AppOptions'].csrfToken,
-  'X-Requested-With': 'XMLHttpRequest'
-}
+window.axios.defaults.headers.common['X-CSRF-TOKEN'] = window['AppOptions'].csrfToken
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 Vue.component('avatar-uploader', require('./components/AvatarUploader.vue'))
 Vue.component('aviasales', require('./components/Aviasales.vue'))
