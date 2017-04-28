@@ -412,16 +412,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "0.2.1",
+            "version": "0.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "8ea83d1650011a91ec6c089e03dfb80a43c86e06"
+                "reference": "5c380c5ee4053ce303978a82d49e8cc0c97ae46f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/8ea83d1650011a91ec6c089e03dfb80a43c86e06",
-                "reference": "8ea83d1650011a91ec6c089e03dfb80a43c86e06",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/5c380c5ee4053ce303978a82d49e8cc0c97ae46f",
+                "reference": "5c380c5ee4053ce303978a82d49e8cc0c97ae46f",
                 "shasum": ""
             },
             "require": {
@@ -447,20 +447,20 @@
                     "email": "vacuum@ivacuum.ru"
                 }
             ],
-            "time": "2017-04-26T14:03:15+00:00"
+            "time": "2017-04-28T19:20:33+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v5.4.20",
+            "version": "v5.4.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "851aad458bcc904178ded02954d55d36c2c35f8b"
+                "reference": "2ed668f96d1a6ca42f50d5c87ee9ceecfc0a6eee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/851aad458bcc904178ded02954d55d36c2c35f8b",
-                "reference": "851aad458bcc904178ded02954d55d36c2c35f8b",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/2ed668f96d1a6ca42f50d5c87ee9ceecfc0a6eee",
+                "reference": "2ed668f96d1a6ca42f50d5c87ee9ceecfc0a6eee",
                 "shasum": ""
             },
             "require": {
@@ -576,7 +576,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-04-27T13:04:35+00:00"
+            "time": "2017-04-28T15:40:01+00:00"
         },
         {
             "name": "laravel/socialite",
@@ -634,16 +634,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.39",
+            "version": "1.0.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "2474325ee924134bb05848663b12531f6f2e9fbe"
+                "reference": "3828f0b24e2c1918bb362d57a53205d6dc8fde61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/2474325ee924134bb05848663b12531f6f2e9fbe",
-                "reference": "2474325ee924134bb05848663b12531f6f2e9fbe",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/3828f0b24e2c1918bb362d57a53205d6dc8fde61",
+                "reference": "3828f0b24e2c1918bb362d57a53205d6dc8fde61",
                 "shasum": ""
             },
             "require": {
@@ -713,7 +713,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2017-04-25T15:24:43+00:00"
+            "time": "2017-04-28T10:15:08+00:00"
         },
         {
             "name": "league/oauth1-client",
