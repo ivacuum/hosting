@@ -7,4 +7,4 @@ cd "$(dirname "$0")/.."
 
 script/update
 
-php artisan serve --host=hosting.local --port=8001
+php artisan serve --host=localhost --port=8001
