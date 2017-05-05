@@ -13,6 +13,7 @@
   <div class="h2">2017 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
+      ['title' => "13 причин почему\n13 Reasons Why", 'id' => 582358],
       ['title' => "Подлый Пит\nSneaky Pete", 'id' => 848297],
     ]
   ])
