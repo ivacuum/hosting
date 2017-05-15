@@ -75,7 +75,7 @@
 }
 
 /* IE9 hack to hide the arrow */
-@media screen and (min-width: unquote("0\0")) {
+@media screen and (min-width: 0\0) {
   .form-select {
     select {
       z-index: 1;
