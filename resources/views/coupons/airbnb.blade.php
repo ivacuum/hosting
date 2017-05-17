@@ -91,9 +91,9 @@
       <td>CROATIE2015</td>
       <td>
         @ru
-          Будапешт
+          <a class="link" href="/life/budapest.2017.01">Будапешт</a>
         @en
-          Budapest
+          <a class="link" href="/en/life/budapest.2017.01">Budapest</a>
         @endlang
       </td>
     </tr>
