@@ -1,23 +1,6 @@
 let mix = require('laravel-mix')
 
-// combine минифицируются, copy копируются как есть
-
-// Зачем combine у некоторых пакетов:
-// - axios минифицируется, чтобы убрать ссылку на sourcemap
-// - jquery.pjax для уменьшения размера
-// - fotorama для применения собственных настроек
-
 mix.js('resources/assets/js/app.js', 'public/assets')
-  /*
-  .extract(['vue'], 'public/build/vue.js')
-  .extract(['autosize'], 'public/build/autosize.js')
-  .extract(['axios'], 'public/build/axios.js')
-  .extract(['bootstrap-sass'], 'public/build/bootstrap.js')
-  .extract(['jquery', 'jquery.scrollto'], 'public/build/jquery.js')
-  .extract(['lodash/throttle'], 'public/build/throttle.js')
-  .extract(['promise-polyfill'], 'public/build/polyfills.js')
-  */
-
   .sass('resources/assets/sass/app.scss', 'public/assets')
 
   .copy('resources/assets/js/pwa/service-worker.js', 'public/assets')
@@ -26,7 +9,7 @@ mix.js('resources/assets/js/app.js', 'public/assets')
   .copy('node_modules/promise-polyfill/promise.min.js', 'public/assets/polyfills.js')
 
   .copy('node_modules/jquery/dist/jquery.min.js', 'public/assets/jquery.js')
-  .copy('node_modules/jquery.pjax/jquery.pjax.js', 'public/assets/jquery.pjax.js')
+  .copy('resources/assets/js/vendor/jquery.pjax.js', 'public/assets/jquery.pjax.js')
   .copy('node_modules/jquery.scrollto/jquery.scrollTo.min.js', 'public/assets/jquery.scrollto.js')
 
   .copy('node_modules/autosize/dist/autosize.min.js', 'public/assets/autosize.js')
@@ -44,9 +27,6 @@ mix.js('resources/assets/js/app.js', 'public/assets')
   .copy('node_modules/fotorama/fotorama.png', 'public/assets/fotorama.png')
   .copy('node_modules/fotorama/fotorama@2x.png', 'public/assets/fotorama@2x.png')
 
-  // .copy('node_modules/fotorama', 'public/build/fotorama-4.6.4/fotorama')
-
-  .autoload({})
   .sourceMaps(false)
   .version()
   .disableNotifications()

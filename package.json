@@ -13,7 +13,6 @@
     "cross-env": "3.2.4",
     "fotorama": "4.6.4",
     "jquery": "2.2.4",
-    "jquery.pjax": "defunkt/jquery-pjax",
     "jquery.scrollto": "2.1.2",
     "laravel-mix": "0.12.0",
     "lodash": "4.17.4",

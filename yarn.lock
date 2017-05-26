@@ -3115,10 +3115,6 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
-jquery.pjax@defunkt/jquery-pjax:
-  version "2.0.1"
-  resolved "https://codeload.github.com/defunkt/jquery-pjax/tar.gz/153262eda33e31119eabb97cd5f14365580a3b35"
-
 jquery.scrollto@2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/jquery.scrollto/-/jquery.scrollto-2.1.2.tgz#e7580d9c7ac46ef5bb25319483f6f45713fd7c6c"
