@@ -9,7 +9,7 @@ $(document).on('blur', 'input,textarea,select', function() {
   shortcuts_enabled = true
 })
 
-if ($('.js-shortcuts-items').size()) {
+if ($('.js-shortcuts-items').length) {
   var shortcuts_items = $('.js-shortcuts-items .shortcuts-item')
 
   $(window).scroll(function() {
@@ -103,7 +103,7 @@ $(document).bind("shortcuts.to_prev_page", function() {
 $(document).bind("shortcuts.to_first_post", function() {
   var shortcuts_items = $(".js-shortcuts-items")
 
-  if (shortcuts_items.size()) {
+  if (shortcuts_items.length) {
     if ($(".shortcuts-item", shortcuts_items).first().hasClass("focus")) {
       $(document).trigger("shortcuts.to_prev_page")
     } else {
@@ -120,7 +120,7 @@ $(document).bind("shortcuts.to_first_post", function() {
 $(document).bind("shortcuts.to_last_post", function() {
   var shortcuts_items = $(".js-shortcuts-items")
 
-  if (shortcuts_items.size()) {
+  if (shortcuts_items.length) {
     if ($(".shortcuts-item", shortcuts_items).last().hasClass("focus")) {
       $(document).trigger("shortcuts.to_next_page")
     } else {
@@ -137,14 +137,14 @@ $(document).bind("shortcuts.to_last_post", function() {
 $(document).bind("shortcuts.to_next_post", function() {
   var shortcuts_items = $(".js-shortcuts-items")
 
-  if (shortcuts_items.size()) {
-    if ($(".shortcuts-item.focus", shortcuts_items).size() == 0) {
+  if (shortcuts_items.length) {
+    if ($(".shortcuts-item.focus", shortcuts_items).length == 0) {
       $(".shortcuts-item", shortcuts_items).first().addClass("focus")
     } else {
       var shortcuts_item = $(".shortcuts-item.focus", shortcuts_items)
       var next_shortcuts_item = shortcuts_item.next()
 
-      if (next_shortcuts_item.size() == 0) {
+      if (next_shortcuts_item.length == 0) {
         $(document).trigger("shortcuts.to_next_page")
       } else {
         shortcuts_item.removeClass("focus")
@@ -161,14 +161,14 @@ $(document).bind("shortcuts.to_next_post", function() {
 $(document).bind("shortcuts.to_prev_post", function() {
   var shortcuts_items = $(".js-shortcuts-items")
 
-  if (shortcuts_items.size()) {
-    if ($(".shortcuts-item.focus", shortcuts_items).size() == 0) {
+  if (shortcuts_items.length) {
+    if ($(".shortcuts-item.focus", shortcuts_items).length == 0) {
       $(".shortcuts-item", shortcuts_items).last().addClass("focus")
     } else {
       var shortcuts_item = $(".shortcuts-item.focus", shortcuts_items)
       var prev_shortcuts_item = shortcuts_item.prev()
 
-      if (prev_shortcuts_item.size() == 0) {
+      if (prev_shortcuts_item.length == 0) {
         $(document).trigger("shortcuts.to_prev_page")
       } else {
         shortcuts_item.removeClass("focus")
