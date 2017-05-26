@@ -176,7 +176,7 @@
 </script>
 <script src="/assets/polyfills.js"></script>
 <script src="/assets/jquery.js"></script>
-<script src="{{ mix('/assets/jquery.pjax.js') }}"></script>
+<script src="/assets/jquery.pjax.js"></script>
 <script src="/assets/jquery.scrollto.js"></script>
 <script src="/assets/autosize.js?3.0.21"></script>
 <script src="/assets/bootstrap.js"></script>
