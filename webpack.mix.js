@@ -47,5 +47,10 @@ mix.js('resources/assets/js/app.js', 'public/assets')
   // .copy('node_modules/fotorama', 'public/build/fotorama-4.6.4/fotorama')
 
   .autoload({})
+  .sourceMaps(false)
   .version()
   .disableNotifications()
+
+  .options({
+    processCssUrls: false
+  })
