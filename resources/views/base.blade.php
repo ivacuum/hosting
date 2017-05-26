@@ -178,9 +178,9 @@
 <script src="/assets/jquery.js"></script>
 <script src="{{ mix('/assets/jquery.pjax.js') }}"></script>
 <script src="/assets/jquery.scrollto.js"></script>
-<script src="/assets/autosize.js"></script>
+<script src="/assets/autosize.js?3.0.21"></script>
 <script src="/assets/bootstrap.js"></script>
-<script src="/assets/vue.js?2.2.6"></script>
+<script src="/assets/vue.js?2.3.3"></script>
 <script src="/assets/axios.js"></script>
 <script src="/assets/fotorama-settings.js"></script>
 <script src="/assets/fotorama.js"></script>

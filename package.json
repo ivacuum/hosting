@@ -7,17 +7,17 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
-    "autosize": "3.0.20",
-    "axios": "0.15.3",
+    "autosize": "3.0.21",
+    "axios": "0.16.1",
     "bootstrap-sass": "3.3.7",
     "cross-env": "3.2.4",
     "fotorama": "4.6.4",
     "jquery": "2.2.4",
     "jquery.pjax": "defunkt/jquery-pjax",
     "jquery.scrollto": "2.1.2",
-    "laravel-mix": "0.11.3",
+    "laravel-mix": "0.12.0",
     "lodash": "4.17.4",
     "promise-polyfill": "6.0.2",
-    "vue": "2.2.6"
+    "vue": "2.3.3"
   }
 }
