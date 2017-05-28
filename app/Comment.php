@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $user_id
  * @property integer $rel_id
  * @property string  $rel_type
+ * @property integer $status
  * @property string  $html
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -18,6 +19,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Comment extends Model
 {
+    const STATUS_INACTIVE = 0;
+    const STATUS_ACTIVE = 1;
+
     protected $guarded = ['rel_id', 'rel_type', 'created_at', 'updated_at', 'goto'];
     protected $perPage = 20;
 
