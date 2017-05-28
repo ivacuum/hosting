@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $slug
  * @property string  $lat
  * @property string  $lon
+ * @property integer $status
  * @property integer $views
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -21,6 +22,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Photo extends Model
 {
+    const STATUS_INACTIVE = 0;
+    const STATUS_ACTIVE = 1;
+
     protected $guarded = ['rel_id', 'rel_type', 'created_at', 'updated_at', 'goto'];
     protected $perPage = 50;
 
