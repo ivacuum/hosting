@@ -6,3 +6,21 @@
 }
 
 .pagination { margin: 0; }
+
+.pagination-mobile {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  text-align: center;
+
+  > li {
+    width: 49%;
+
+    > a,
+    > span { width: 100%; }
+  }
+}
+
+.pagination-mobile-only {
+  @media (min-width: $screen-sm-min) { display: none; }
+}

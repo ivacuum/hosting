@@ -1,4 +1,18 @@
-<ul class="pagination">
+<ul class="pagination pagination-mobile pagination-mobile-only">
+  @if ($paginator->onFirstPage())
+    <li class="disabled"><span>@svg (chevron-left)</span></li>
+  @else
+    <li><a class="js-pjax tooltipped tooltipped-n" href="{{ $paginator->previousPageUrl() }}" id="previous_page" rel="prev" aria-label="{{ trans('pagination.previous') }}">@svg (chevron-left)</a></li>
+  @endif
+
+  @if ($paginator->hasMorePages())
+    <li><a class="js-pjax tooltipped tooltipped-n" href="{{ $paginator->nextPageUrl() }}" id="next_page" rel="next" aria-label="{{ trans('pagination.next') }}">@svg (chevron-right)</a></li>
+  @else
+    <li class="disabled"><span>@svg (chevron-right)</span></li>
+  @endif
+</ul>
+
+<ul class="pagination hidden-xs">
   @if (!$paginator->onFirstPage())
     <li><a class="js-pjax tooltipped tooltipped-ne" href="{{ $paginator->previousPageUrl() }}" id="previous_page" rel="prev" aria-label="{{ trans('pagination.previous') }}">@svg (chevron-left)</a></li>
   @endif
