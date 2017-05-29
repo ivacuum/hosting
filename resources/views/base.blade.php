@@ -24,7 +24,34 @@
   @stack('head')
 </head>
 <body class="{{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ ViewHelper::isMobile(Request::server('HTTP_USER_AGENT')) ? 'is-mobile' : 'is-desktop' }}">
-<div class="navbar navbar-default {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'navbar-inverse' : '' }}">
+<header class="bottom-tabbar-container">
+  <nav class="bottom-tabbar">
+    <a class="bottom-tab {{ $self === 'Home' ? 'active' : '' }}" href="{{ path('Home@index') }}">
+      @svg (home)
+      <div>{{ trans('menu.home') }}</div>
+    </a>
+    <a class="bottom-tab {{ $self === 'Life' ? 'active' : '' }}" href="{{ path('Life@index') }}">
+      @svg (file-text-o)
+      <div>{{ trans('menu.life') }}</div>
+    </a>
+    <a class="bottom-tab {{ $self === 'Photos' ? 'active' : '' }}" href="{{ path('Photos@index') }}">
+      @svg (picture-o)
+      <div>{{ trans('photos.index') }}</div>
+    </a>
+    @if (Auth::check())
+      <a class="bottom-tab {{ $self === 'My' ? 'active' : '' }}" href="{{ path('My@profile') }}">
+        @svg (user-circle-o)
+        <div>{{ trans('my.profile') }}</div>
+      </a>
+    @else
+      <a class="bottom-tab {{ $view === 'auth.login' ? 'active' : '' }}" href="{{ path('Auth@login') }}">
+        @svg (sign-in)
+        <div>{{ trans('auth.signin') }}</div>
+      </a>
+    @endif
+  </nav>
+</header>
+<div class="navbar navbar-default hidden-xs {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'navbar-inverse' : '' }}">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
