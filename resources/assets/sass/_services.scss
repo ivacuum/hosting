@@ -1,10 +1,24 @@
-.service-container { margin-bottom: 1rem; }
+.services-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.service-container {
+  margin-bottom: 1rem;
+  flex: 0 0 100%;
+
+  @media (min-width: $screen-sm-min) { flex: 0 0 48%; }
+  @media (min-width: $screen-md-min) { flex: 0 0 32%; }
+}
+
 .service-image {
   float: left;
   margin-right: 7px;
   width: 48px;
   height: 48px;
 }
+
 .service-title {
   margin-top: 0;
   line-height: 48px;

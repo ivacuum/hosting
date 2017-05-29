@@ -1,8 +1,8 @@
 @extends('base')
 
 @section('content')
-<div class="row">
-  <div class="col-md-4 service-container">
+<div class="services-container">
+  <div class="service-container">
     <div class="clearfix">
       <img class="service-image" src="https://ivacuum.org/i/services/magnet.png">
       <h2 class="service-title"><a class="link" href="{{ path('Torrents@index') }}">{{ trans('torrents.index') }}</a></h2>
@@ -17,7 +17,7 @@
       <p>Дата запуска: 5 января 2017 г.</p>
     @endlang
   </div>
-  <div class="col-md-4 service-container">
+  <div class="service-container">
     <div class="clearfix">
       <img class="service-image" src="https://ivacuum.org/i/services/hosting.png">
       <h2 class="service-title"><a class="link" href="{{ path('Life@index') }}">{{ trans('menu.life') }}</a></h2>
@@ -32,7 +32,7 @@
       <p>Дата запуска: 29 сентября 2014 г.</p>
     @endlang
   </div>
-  <div class="col-md-4 service-container">
+  <div class="service-container">
     <div class="clearfix">
       <img class="service-image" src="https://ivacuum.org/i/services/kupislona.png">
       <h2 class="service-title"><a class="link" href="https://kupislona.ru/">KupiSlona.ru</a></h2>
@@ -48,10 +48,7 @@
       <p>Дата запуска: 7 декабря 2015 г.</p>
     @endlang
   </div>
-</div>
-
-<div class="row">
-  <div class="col-md-4 service-container">
+  <div class="service-container">
     <div class="clearfix">
       <img class="service-image" src="https://ivacuum.org/i/services/gallery.png">
       <h2 class="service-title"><a class="link" href="{{ path('Gallery@index') }}">{{ trans('gallery.index') }}</a></h2>
@@ -66,7 +63,7 @@
       <p>Дата запуска: 8 февраля 2009 г.</p>
     @endlang
   </div>
-  <div class="col-md-4 service-container">
+  <div class="service-container">
     <div class="clearfix">
       <img class="service-image" src="https://ivacuum.org/i/services/dcpp.png">
       <h2 class="service-title"><a class="link" href="{{ path('Dcpp@index') }}">ArtFly.DC++</a></h2>
@@ -81,7 +78,7 @@
       <p>Дата запуска: 17 марта 2008 г.</p>
     @endlang
   </div>
-  <div class="col-md-4 service-container">
+  <div class="service-container">
     <div class="clearfix">
       <img class="service-image" src="https://ivacuum.org/i/services/torrent.png">
       <h2 class="service-title"><a class="link" href="http://t.ivacuum.ru">{{ trans('torrents.index') }}</a></h2>
