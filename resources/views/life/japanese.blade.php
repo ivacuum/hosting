@@ -229,6 +229,116 @@
         <td></td>
         <td></td>
       </tr>
+      <tr>
+        <td>
+          <div class="f28">ガ</div>
+          @ru га @en ga @endlang
+        </td>
+        <td>
+          <div class="f28">ギ</div>
+          @ru ги @en gi @endlang
+        </td>
+        <td>
+          <div class="f28">グ</div>
+          @ru гу @en gu @endlang
+        </td>
+        <td>
+          <div class="f28">ゲ</div>
+          @ru ге @en ge @endlang
+        </td>
+        <td>
+          <div class="f28">ゴ</div>
+          @ru го @en go @endlang
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="f28">ザ</div>
+          @ru дза @en za @endlang
+        </td>
+        <td>
+          <div class="f28">ジ</div>
+          @ru дзи @en ji @endlang
+        </td>
+        <td>
+          <div class="f28">ズ</div>
+          @ru дзу @en zu @endlang
+        </td>
+        <td>
+          <div class="f28">ゼ</div>
+          @ru дзэ @en ze @endlang
+        </td>
+        <td>
+          <div class="f28">ゾ</div>
+          @ru дзо @en zo @endlang
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="f28">ダ</div>
+          @ru да @en da @endlang
+        </td>
+        <td>
+          <div class="f28">ヂ</div>
+          @ru дзи @en ji @endlang
+        </td>
+        <td>
+          <div class="f28">ヅ</div>
+          @ru дзу @en zu @endlang
+        </td>
+        <td>
+          <div class="f28">デ</div>
+          @ru дэ @en de @endlang
+        </td>
+        <td>
+          <div class="f28">ド</div>
+          @ru до @en do @endlang
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="f28">バ</div>
+          @ru ба @en ba @endlang
+        </td>
+        <td>
+          <div class="f28">ビ</div>
+          @ru би @en bi @endlang
+        </td>
+        <td>
+          <div class="f28">ブ</div>
+          @ru бу @en bu @endlang
+        </td>
+        <td>
+          <div class="f28">ベ</div>
+          @ru бэ @en be @endlang
+        </td>
+        <td>
+          <div class="f28">ボ</div>
+          @ru бо @en bo @endlang
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="f28">パ</div>
+          @ru па @en pa @endlang
+        </td>
+        <td>
+          <div class="f28">ピ</div>
+          @ru пи @en pi @endlang
+        </td>
+        <td>
+          <div class="f28">プ</div>
+          @ru пу @en pu @endlang
+        </td>
+        <td>
+          <div class="f28">ペ</div>
+          @ru пэ @en pe @endlang
+        </td>
+        <td>
+          <div class="f28">ポ</div>
+          @ru по @en po @endlang
+        </td>
+      </tr>
     </table>
   </div>
   <div class="col-lg-6 mb-4">
@@ -304,7 +414,6 @@
           @ru со @en so @endlang
         </td>
       </tr>
-
       <tr>
         <td>
           <div class="f28">た</div>
@@ -327,7 +436,6 @@
           @ru то @en to @endlang
         </td>
       </tr>
-
       <tr>
         <td>
           <div class="f28">な</div>
@@ -350,7 +458,6 @@
           @ru но @en no @endlang
         </td>
       </tr>
-
       <tr>
         <td>
           <div class="f28">は</div>
@@ -373,7 +480,6 @@
           @ru хо @en ho @endlang
         </td>
       </tr>
-
       <tr>
         <td>
           <div class="f28">ま</div>
@@ -396,7 +502,6 @@
           @ru мо @en mo @endlang
         </td>
       </tr>
-
       <tr>
         <td>
           <div class="f28">や</div>
@@ -413,7 +518,6 @@
           @ru ё @en yo @endlang
         </td>
       </tr>
-
       <tr>
         <td>
           <div class="f28">ら</div>
@@ -436,7 +540,6 @@
           @ru ро @en ro @endlang
         </td>
       </tr>
-
       <tr>
         <td>
           <div class="f28">わ</div>
@@ -450,7 +553,6 @@
           @ru [у]о @en wo @endlang
         </td>
       </tr>
-
       <tr>
         <td>
           <div class="f28">ん</div>
@@ -460,6 +562,116 @@
         <td></td>
         <td></td>
         <td></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="f28">が</div>
+          @ru га @en ga @endlang
+        </td>
+        <td>
+          <div class="f28">ぎ</div>
+          @ru ги @en gi @endlang
+        </td>
+        <td>
+          <div class="f28">ぐ</div>
+          @ru гу @en gu @endlang
+        </td>
+        <td>
+          <div class="f28">げ</div>
+          @ru ге @en ge @endlang
+        </td>
+        <td>
+          <div class="f28">ご</div>
+          @ru го @en go @endlang
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="f28">ざ</div>
+          @ru дза @en za @endlang
+        </td>
+        <td>
+          <div class="f28">じ</div>
+          @ru дзи @en ji @endlang
+        </td>
+        <td>
+          <div class="f28">ず</div>
+          @ru дзу @en zu @endlang
+        </td>
+        <td>
+          <div class="f28">ぜ</div>
+          @ru дзэ @en ze @endlang
+        </td>
+        <td>
+          <div class="f28">ぞ</div>
+          @ru дзо @en zo @endlang
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="f28">だ</div>
+          @ru да @en da @endlang
+        </td>
+        <td>
+          <div class="f28">ぢ</div>
+          @ru дзи @en ji @endlang
+        </td>
+        <td>
+          <div class="f28">づ</div>
+          @ru дзу @en zu @endlang
+        </td>
+        <td>
+          <div class="f28">で</div>
+          @ru дэ @en de @endlang
+        </td>
+        <td>
+          <div class="f28">ど</div>
+          @ru до @en do @endlang
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="f28">ば</div>
+          @ru ба @en ba @endlang
+        </td>
+        <td>
+          <div class="f28">び</div>
+          @ru би @en bi @endlang
+        </td>
+        <td>
+          <div class="f28">ぶ</div>
+          @ru бу @en bu @endlang
+        </td>
+        <td>
+          <div class="f28">べ</div>
+          @ru бэ @en be @endlang
+        </td>
+        <td>
+          <div class="f28">ぼ</div>
+          @ru бо @en bo @endlang
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="f28">ぱ</div>
+          @ru па @en pa @endlang
+        </td>
+        <td>
+          <div class="f28">ぴ</div>
+          @ru пи @en pi @endlang
+        </td>
+        <td>
+          <div class="f28">ぷ</div>
+          @ru пу @en pu @endlang
+        </td>
+        <td>
+          <div class="f28">ぺ</div>
+          @ru пэ @en pe @endlang
+        </td>
+        <td>
+          <div class="f28">ぽ</div>
+          @ru по @en po @endlang
+        </td>
       </tr>
     </table>
   </div>
