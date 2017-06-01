@@ -14,13 +14,13 @@
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
       <td class="text-right">
-        <a class="link" href="{{ path("$self@show", $model) }}">
+        <a href="{{ path("$self@show", $model) }}">
           {{ $model->id }}
         </a>
       </td>
       <td>
         @if (!is_null($model->user))
-          <a class="link" href="{{ path('Acp\Users@show', $model->user_id) }}">
+          <a href="{{ path('Acp\Users@show', $model->user_id) }}">
             {{ $model->user->displayName() }}
           </a>
         @endif

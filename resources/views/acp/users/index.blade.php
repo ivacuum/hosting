@@ -36,7 +36,7 @@
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
       <td class="text-right">{{ $model->id }}</td>
       <td>
-        <a href="{{ path("$self@show", $model) }}" class="link">
+        <a href="{{ path("$self@show", $model) }}">
           {{ $model->email }}
         </a>
       </td>

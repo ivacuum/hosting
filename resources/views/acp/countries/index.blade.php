@@ -15,12 +15,12 @@
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
       <td>{{ $model->emoji }}</td>
       <td>
-        <a class="link" href="{{ path("$self@show", $model) }}">
+        <a href="{{ path("$self@show", $model) }}">
           {{ $model->title }}
         </a>
       </td>
       <td>
-        <a class="link" href="{{ $model->www() }}">
+        <a href="{{ $model->www() }}">
           {{ $model->slug }}
         </a>
       </td>

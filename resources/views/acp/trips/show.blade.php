@@ -6,7 +6,7 @@
   {{ csrf_field() }}
 </form>
 <div class="mt-3">
-  <a class="link" href="{{ path('Acp\Photos@create', [$model->getForeignKey() => $model->id]) }}">Добавить фотографии</a>
+  <a href="{{ path('Acp\Photos@create', [$model->getForeignKey() => $model->id]) }}">Добавить фотографии</a>
 </div>
 @if ($model->meta_image)
   <div class="mt-3">

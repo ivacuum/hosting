@@ -29,11 +29,11 @@
           <a class="mr-1" href="http://{{ $model->domain }}/" target="_blank">
             @svg (external-link)
           </a>
-          <a href="/acp/domains/{{ $model->domain }}" class="link">{{ $model->domain }}</a>
+          <a href="/acp/domains/{{ $model->domain }}">{{ $model->domain }}</a>
           @if ($model->alias_id)
             <span class="text-muted">
               алиас
-              <a href="/acp/domains/{{ $model->alias->domain }}" class="link">{{ $model->alias->domain }}</a>
+              <a href="/acp/domains/{{ $model->alias->domain }}">{{ $model->alias->domain }}</a>
             </span>
           @endif
           @if ($model->text)

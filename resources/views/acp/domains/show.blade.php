@@ -30,7 +30,7 @@
     <tr>
       <td><strong>Алиас</strong></td>
       <td>
-        <a class="link" href="{{ path("$self@show", $model->alias) }}">{{ $model->alias->domain }}</a>
+        <a href="{{ path("$self@show", $model->alias) }}">{{ $model->alias->domain }}</a>
       </td>
     </tr>
   @endif
@@ -39,7 +39,7 @@
       <td><strong>Алиасы</strong></td>
       <td>
         @foreach ($model->aliases as $alias)
-          <a class="link" href="{{ path("$self@show", $alias) }}">{{ $alias->domain }}</a>
+          <a href="{{ path("$self@show", $alias) }}">{{ $alias->domain }}</a>
         @endforeach
       </td>
     </tr>
@@ -47,7 +47,7 @@
   <tr>
     <td><strong>Клиент</strong></td>
     <td>
-      <a class="link" href="{{ path('Acp\Clients@show', $model->client) }}">
+      <a href="{{ path('Acp\Clients@show', $model->client) }}">
         {{ $model->client->name }}
       </a>
     </td>
@@ -56,7 +56,7 @@
     <tr>
       <td><strong>Яндекс</strong></td>
       <td>
-        <a class="link" href="{{ path('Acp\YandexUsers@show', $model->yandexUser->id) }}">
+        <a href="{{ path('Acp\YandexUsers@show', $model->yandexUser->id) }}">
           {{ $model->yandexUser->account }}
         </a>
       </td>

@@ -13,7 +13,7 @@
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
       <td>
-        <a class="link" href="{{ path("$self@show", $model) }}">
+        <a href="{{ path("$self@show", $model) }}">
           {{ $model->title }}
         </a>
       </td>
@@ -24,7 +24,7 @@
       </td>
       <td class="text-right">
         @if ($model->photos_count > 0)
-          <a class="link" href="{{ path('Acp\Photos@index', [$model->getForeignKey() => $model]) }}">
+          <a href="{{ path('Acp\Photos@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->photos_count) }}
           </a>
         @endif

@@ -142,14 +142,14 @@ $(function() {
         $tds.eq(2).html('')
       }
 
-      $tds.eq(3).html('<a class="link" href="' + node.data.url + '">' + node.data.url + '</a>');
+      $tds.eq(3).html('<a href="' + node.data.url + '">' + node.data.url + '</a>');
       $tds.eq(4).text(node.data.handler);
 
       if (node.data.redirect) {
         $tds.eq(3).append('<br><span class="text-muted">&rarr; ' + node.data.redirect + '</span>');
       }
 
-      $tds.eq(5).html('<a class="link" href="' + node.data.edit_url + '">' + page_edit_icon + '</a>');
+      $tds.eq(5).html('<a href="' + node.data.edit_url + '">' + page_edit_icon + '</a>');
     }
   });
 });

@@ -22,7 +22,7 @@
       <td>
         @svg (folder-o)
         &nbsp;
-        <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $row['path'] }}" class="link">{{ $row['basename'] }}</a>
+        <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $row['path'] }}">{{ $row['basename'] }}</a>
       </td>
       <td></td>
       <td></td>
@@ -33,7 +33,7 @@
     <td>
       @svg (file-text-o)
       &nbsp;
-      <a href="/acp/servers/{{ $server->id }}/ftp/source?file={{ $row['path'] }}" class="link">{{ $row['basename'] }}</a>
+      <a href="/acp/servers/{{ $server->id }}/ftp/source?file={{ $row['path'] }}">{{ $row['basename'] }}</a>
     </td>
     <td><span class="text-muted">{{ $row['size'] }} b</span></td>
     <td></td>
