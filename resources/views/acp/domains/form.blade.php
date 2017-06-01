@@ -50,9 +50,9 @@
 
 <div class="form-group flush">
   <div class="col-md-9 col-md-offset-3 checkbox">
-    <input type="hidden" name="active" value="0">
+    <input type="hidden" name="status" value="0">
     <label>
-      <input type="checkbox" name="active" value="1" {{ 1 == old('active', @$model->active) ? 'checked' : '' }}>
+      <input type="checkbox" name="status" value="1" {{ 1 == old('status', @$model->status) ? 'checked' : '' }}>
       Мониторинг домена
     </label>
   </div>

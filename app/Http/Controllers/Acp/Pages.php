@@ -19,12 +19,12 @@ class Pages extends Controller
         switch ($action) {
             case 'activate':
 
-                Model::whereIn('id', $pages)->update(['active' => 1]);
+                Model::whereIn('id', $pages)->update(['status' => 1]);
 
             break;
             case 'deactivate':
 
-                Model::whereIn('id', $pages)->update(['active' => 0]);
+                Model::whereIn('id', $pages)->update(['status' => 0]);
 
             break;
             case 'delete':
@@ -68,7 +68,7 @@ class Pages extends Controller
             $ary[] = [
                 'key'       => $page['id'],
                 'expanded'  => true,
-                'activated' => $page['active'],
+                'activated' => $page['status'],
                 'title'     => $page['title'],
                 'url'       => "/{$page['url']}",
                 'handler'   => $page['handler'] && $page['method'] ? "{$page['handler']}@{$page['method']}" : '',
@@ -95,7 +95,7 @@ class Pages extends Controller
                 Rule::unique('pages', 'url')->ignore($model->id ?? null),
             ],
             'title' => 'required',
-            'active' => 'boolean',
+            'status' => 'boolean',
         ];
     }
 }

@@ -37,9 +37,9 @@
 
 <div class="form-group">
   <div class="col-md-10 col-md-offset-2 checkbox">
-    <input type="hidden" name="active" value="0">
+    <input type="hidden" name="status" value="0">
     <label>
-      <input type="checkbox" name="active" value="1" {{ 1 == old('active', @$model->active) ? 'checked' : '' }}>
+      <input type="checkbox" name="status" value="1" {{ 1 == old('status', @$model->status) ? 'checked' : '' }}>
       Отображается на сайте?
     </label>
   </div>

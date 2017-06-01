@@ -13,7 +13,7 @@ class CreatePagesTable extends Migration
             $table->integer('left_id')->unsigned();
             $table->integer('right_id')->unsigned();
             $table->integer('depth')->unsigned();
-            $table->boolean('active')->unsigned()->default(0);
+            $table->boolean('status')->unsigned()->default(0);
             $table->string('title');
             $table->string('url');
             $table->string('redirect');

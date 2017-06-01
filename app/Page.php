@@ -11,11 +11,6 @@ class Page extends Node
     protected $leftColumn = 'left_id';
     protected $rightColumn = 'right_id';
 
-    public function scopeActive(Builder $query)
-    {
-        return $query->where('active', 1);
-    }
-
     public function breadcrumb()
     {
         return "{$this->title} {$this->url}";

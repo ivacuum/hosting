@@ -11,7 +11,7 @@ class CreateDomainsTable extends Migration
             $table->increments('id');
             $table->integer('client_id')->unsigned();
             $table->string('domain')->unique();
-            $table->boolean('active')->unsigned()->default(0);
+            $table->boolean('status')->unsigned()->default(0);
             $table->boolean('domain_control')->unsigned()->default(0);
             $table->timestamp('registered_at')->nullable();
             $table->timestamp('paid_till')->nullable();

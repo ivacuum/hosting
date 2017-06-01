@@ -25,24 +25,24 @@ class Domains extends Controller
         switch ($filter) {
             case 'external':
 
-                $models = Model::whereActive(1)
+                $models = Model::where('status', 1)
                     ->whereDomainControl(0);
 
             break;
             case 'inactive':
 
-                $models = Model::whereActive(0);
+                $models = Model::where('status', 0);
 
             break;
             case 'no-ns':
 
-                $models = Model::whereActive(1)
+                $models = Model::where('status', 1)
                     ->whereNs('');
 
             break;
             case 'no-server':
 
-                $models = Model::whereActive(1)
+                $models = Model::where('status', 1)
                     ->whereIpv4('');
 
             break;
@@ -58,7 +58,7 @@ class Domains extends Controller
             break;
             default:
 
-                $models = Model::whereActive(1);
+                $models = Model::where('status', 1);
         }
 
         if ($q) {
@@ -125,12 +125,12 @@ class Domains extends Controller
         switch ($action) {
             case 'activate':
 
-                Model::whereIn('id', $ids)->update(['active' => 1]);
+                Model::whereIn('id', $ids)->update(['status' => 1]);
 
             break;
             case 'deactivate':
 
-                Model::whereIn('id', $ids)->update(['active' => 0]);
+                Model::whereIn('id', $ids)->update(['status' => 0]);
 
             break;
             case 'delete':
@@ -292,7 +292,7 @@ class Domains extends Controller
                 'min:3',
                 Rule::unique('domains', 'domain')->ignore($model->id ?? null),
             ],
-            'active' => 'boolean',
+            'status' => 'boolean',
             'domain_control' => 'boolean',
         ];
     }

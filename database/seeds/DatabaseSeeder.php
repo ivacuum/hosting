@@ -49,7 +49,7 @@ class DomainTableSeeder extends Seeder
 			App\Domain::create([
 				'client_id'      => $faker->numberBetween(1, 4),
 				'domain'         => $domain,
-				'active'         => 1,
+				'status'         => 1,
 				'domain_control' => $faker->boolean(85),
 			]);
 		}

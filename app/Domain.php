@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $client_id
  * @property integer $yandex_user_id
  * @property string  $domain
- * @property integer $active
+ * @property integer $status
  * @property integer $domain_control
  * @property integer $orphan
  * @property string  $ipv4
@@ -48,7 +48,7 @@ class Domain extends Model
     const NS0 = 'dns1.yandex.net';
     const NS1 = 'dns2.yandex.net';
 
-    protected $guarded = ['created_at', 'updated_at'];
+    protected $guarded = ['created_at', 'updated_at', 'raw'];
     protected $hidden = ['cms_pass', 'ftp_pass', 'ssh_pass', 'db_pass'];
     protected $dates = ['mailed_at', 'queried_at', 'registered_at', 'paid_till'];
     protected $perPage = 50;
@@ -95,14 +95,14 @@ class Domain extends Model
     // Scopes
     public function scopeYandexReady(Builder $query, $user_id = 0)
     {
-        return $query->where('active', 1)
+        return $query->where('status', 1)
             ->whereIn('yandex_user_id', [0, $user_id])
             ->orderBy('domain');
     }
 
     public function scopeWhoisReady(Builder $query)
     {
-        return $query->where('active', 1)
+        return $query->where('status', 1)
             ->where('queried_at', '<', (string) Carbon::now()->subHours(3));
     }
 
