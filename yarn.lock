@@ -3235,9 +3235,9 @@ kind-of@^3.0.2:
   dependencies:
     is-buffer "^1.1.5"
 
-laravel-mix@0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/laravel-mix/-/laravel-mix-0.12.0.tgz#a6046861caee5fd4ba83d1836e068796ac43b89b"
+laravel-mix@0.12.1:
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/laravel-mix/-/laravel-mix-0.12.1.tgz#2b4a5b123ce4bc9167eea49461b7567ae2921503"
   dependencies:
     autoprefixer "^6.7.3"
     babel-core "^6.20.0"
@@ -3270,7 +3270,7 @@ laravel-mix@0.12.0:
     resolve-url-loader "^2.0.0"
     sass-loader "^6.0.0"
     style-loader "^0.13.1"
-    uglify-js "^3.0.1"
+    uglify-js "^2.8.27"
     vue-loader "^11.1.3"
     vue-template-compiler "^2.0.0"
     webpack "~2.3.0"
@@ -5456,14 +5456,14 @@ ua-parser-js@0.7.12:
   version "0.7.12"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.12.tgz#04c81a99bdd5dc52263ea29d24c6bf8d4818a4bb"
 
-uglify-js@3.0.x, uglify-js@^3.0.1:
+uglify-js@3.0.x:
   version "3.0.14"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.0.14.tgz#2697af126fd215aac556facb1edfb17875204760"
   dependencies:
     commander "~2.9.0"
     source-map "~0.5.1"
 
-uglify-js@^2.8.5:
+uglify-js@^2.8.27, uglify-js@^2.8.5:
   version "2.8.27"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.27.tgz#47787f912b0f242e5b984343be8e35e95f694c9c"
   dependencies:
