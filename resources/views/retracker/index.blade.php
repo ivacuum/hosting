@@ -13,7 +13,7 @@
 
 <h3 class="mt-4">Как настроить?</h3>
 <p>Использование ретрекера по адресу <b>retracker.local</b> требует дополнительной настройки.</p>
-<p><a class="btn btn-primary" href="{{ path('Files@download', 123) }}">Скачать файл настроек для Windows</a> <a class="btn btn-primary" href="{{ path('Files@download', 124) }}">Скачать файл настроек для Linux</a></p>
+<p><a class="btn btn-primary" href="{{ path('Files@download', 123) }}">Файл настроек для Windows</a> <a class="btn btn-primary" href="{{ path('Files@download', 124) }}">Файл настроек для Linux</a></p>
 <p>Пользователям ОС Windows достаточно сохранить и запустить файл настроек от имени администратора.</p>
 <p>Пользователям ОС семейства Linux необходимо либо запустить файл настроек от имени администратора, либо набрать в терминале следующие команды:</p>
 <pre>wget https://ivacuum.org/d/rt/retracker.local.sh
@@ -23,5 +23,5 @@ sudo ./retracker.local.sh</pre>
 
 <h3 class="mt-4">Как понять, что ретрекер заработал?</h3>
 <p>Статус трекера «retracker.local» в вашем торрент-клиент на вкладке «Трекеры» (Trackers) должен измениться на «работает» (working) как на картинке ниже:</p>
-<p><img src="https://img.ivacuum.ru/g/100710/1_899GTp1JNl.png" width="594" height="25"></p>
+<p><img class="img-responsive" src="https://img.ivacuum.ru/g/100710/1_899GTp1JNl.png"></p>
 @endsection

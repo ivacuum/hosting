@@ -28,7 +28,26 @@
     </div>
     <h3>Ссылки</h3>
     <ul>
-      <li><a class="link" href="{{ path('Files@download', 122) }}">Исходные коды ретрекера</a></li>
+      <li class="hidden-sm hidden-md hidden-lg">
+        <a class="link" href="{{ path('Retracker@index') }}">
+          {{ trans('retracker.index') }}
+        </a>
+      </li>
+      <li class="hidden-sm hidden-md hidden-lg">
+        <a class="link" href="{{ path('Retracker@usage') }}">
+          {{ trans('retracker.usage') }}
+        </a>
+      </li>
+      <li class="hidden-sm hidden-md hidden-lg">
+        <a class="link" href="{{ path('Retracker@dev') }}">
+          {{ trans('retracker.dev') }}
+        </a>
+      </li>
+      <li>
+        <a class="link" href="{{ path('Files@download', 122) }}">
+          Исходные коды ретрекера
+        </a>
+      </li>
     </ul>
   </div>
   <div class="col-md-9">

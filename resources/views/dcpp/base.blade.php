@@ -62,9 +62,11 @@
   </ul>
 </li>
 <li>
-  <a href="{{ path('Torrents@index') }}">
-    {{ trans('torrents.index') }}
-  </a>
+  <form class="navbar-form">
+    <a class="btn btn-success" href="{{ path('Torrents@index') }}">
+      {{ trans('torrents.index') }}
+    </a>
+  </form>
 </li>
 @endsection
 

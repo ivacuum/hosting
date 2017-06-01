@@ -12,13 +12,16 @@
       </a>
     </div>
 
-    @ru
-      <h3>Состояние трекера</h3>
-      <p class="text-success">работает</p>
-    @en
-      <h3>Tracker status</h3>
-      <p class="text-success">ok</p>
-    @endlang
+    <div class="visible-xs mb-3"></div>
+    <div class="hidden-xs">
+      @ru
+        <h3>Состояние трекера</h3>
+        <p class="text-success">работает</p>
+      @en
+        <h3>Tracker status</h3>
+        <p class="text-success">ok</p>
+      @endlang
+    </div>
   </div>
   <div class="col-md-9">
     @ru

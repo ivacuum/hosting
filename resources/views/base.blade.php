@@ -24,6 +24,11 @@
   @stack('head')
 </head>
 <body class="{{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ ViewHelper::isMobile(Request::server('HTTP_USER_AGENT')) ? 'is-mobile' : 'is-desktop' }}">
+
+@section('header-navbar')
+  @include('tpl.header-navbar')
+@show
+
 @section('bottom-tabbar')
 <header class="bottom-tabbar-container">
   <nav class="bottom-tabbar">
@@ -53,111 +58,7 @@
   </nav>
 </header>
 @show
-<div class="navbar navbar-default {{ !starts_with($self, 'Acp\\') ? 'hidden-xs' : '' }} {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'navbar-inverse' : '' }}">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      @section('brand')
-        <a class="navbar-brand" href="{{ path('Home@index') }}">vacuum<br>kaluga</a>
-      @show
-    </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        @section('global_menu')
-          <li>
-            <a class="{{ $self == 'Life' ? 'navbar-selected' : '' }}" href="{{ path('Life@index') }}">
-              {{ trans('menu.life') }}
-            </a>
-          </li>
-          <li>
-            <a class="{{ $self == 'News' ? 'navbar-selected' : '' }}" href="{{ path('News@index') }}">
-              {{ trans('news.index') }}
-            </a>
-          </li>
-          <li>
-            <a class="{{ $self == 'Torrents' ? 'navbar-selected' : '' }}" href="{{ path('Torrents@index') }}">
-              {{ trans('menu.torrents') }}
-            </a>
-          </li>
-          <li>
-            <a class="{{ $self == 'Photos' ? 'navbar-selected' : '' }}" href="{{ path('Photos@index') }}">
-              {{ trans('photos.index') }}
-            </a>
-          </li>
-        @show
-      </ul>
-      @yield('header_form')
-      <ul class="nav navbar-nav navbar-right">
-        {{--
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            {{ trans('menu.language') }}
-            <b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="{{ url("en/{$request_uri}") }}" lang="en">English</a></li>
-            <li><a href="{{ url($request_uri) }}" lang="ru">Русский</a></li>
-          </ul>
-        </li>
-        --}}
-        @section('header_user')
-          @if (Auth::check())
-            <li>
-              <a class="tooltipped tooltipped-s {{ $self == 'Notifications' ? 'navbar-selected' : '' }}" href="{{ path('Notifications@index') }}" aria-label="{{ trans('notifications.index') }}">
-                @svg (bell)
-                <span class="counter-label-round">{{ !is_null(Auth::user()->unreadNotifications()->first()) ? '!' : '' }}</span>
-              </a>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle avatar-dropdown" data-toggle="dropdown">
-                @include('tpl.avatar', ['user' => Auth::user()])
-                @svg (angle-down)
-              </a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-header">
-                  {{ trans('auth.signed_in_as') }}
-                  <span class="font-bold">{{ Auth::user()->displayName() }}</span>
-                </li>
-                <li class="divider"></li>
-                @if (Auth::user()->isAdmin())
-                  <li>
-                    <a href="{{ App::isLocal() ? "{$locale_uri}/acp/dev/templates" : "{$locale_uri}/acp/trips" }}">
-                      {{ trans('acp.index') }}
-                    </a>
-                  </li>
-                @endif
-                <li>
-                  <a href="{{ path('My@profile') }}">
-                    {{ trans('my.index') }}
-                  </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <a href="{{ path('Auth@logout') }}">
-                    {{ trans('auth.logout') }}
-                  </a>
-                </li>
-              </ul>
-            </li>
-          @else
-            <li>
-              <a href="{{ path('Auth@login') }}">{{ trans('auth.signin') }}</a>
-            </li>
-            {{--
-            <form class="navbar-form navbar-right">
-              <a class="btn btn-default" href="{{ path('Auth@login') }}">{{ trans('auth.signin') }}</a>
-            </form>
-            --}}
-          @endif
-        @show
-      </ul>
-    </div>
-  </div>
-</div>
+
 <div class="container-flex">
   @section('breadcrumbs')
     @include('tpl.breadcrumbs', ['breadcrumbs' => $breadcrumbs ?? Breadcrumbs::get()])
@@ -177,6 +78,7 @@
 
   </div>
 </div>
+
 <footer>
   <div class="container">
     @section('footer')
