@@ -14,7 +14,7 @@
 
 .bottom-tabbar {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row;
   justify-content: space-between;
   font-size: 11px;
   text-align: center;
@@ -23,13 +23,17 @@
 
 .bottom-tab {
   display: block;
-  width: 25%;
+  width: 100%;
+  min-height: 1px;
   color: $gray-light;
   background-color: transparent;
   padding: 5px 0 0;
   text-shadow: 0 1px 0 rgba(255, 255, 255, .25);
   line-height: 22px;
   text-decoration: none;
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
 
   &:hover,
   &:focus,
