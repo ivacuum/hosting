@@ -1,14 +1,7 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\ExternalIdentity as Model;
-use Ivacuum\Generic\Controllers\Acp\Controller;
+use Ivacuum\Generic\Controllers\Acp\ExternalIdentities as BaseExternalIdentities;
 
-class ExternalIdentities extends Controller
+class ExternalIdentities extends BaseExternalIdentities
 {
-    public function index()
-    {
-        $models = Model::orderBy('id', 'desc')->paginate();
-
-        return view($this->view, compact('models'));
-    }
 }
