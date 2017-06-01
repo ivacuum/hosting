@@ -5,6 +5,9 @@
 @section('brand')
 @endsection
 
+@section('bottom-tabbar')
+@endsection
+
 @section('global_menu')
 <li class="dropdown">
   <a class="dropdown-toggle {{ in_array($self, ['Acp\Cities', 'Acp\Countries', 'Acp\Trips', 'Acp\Gigs', 'Acp\Artists', 'Acp\Tags', 'Acp\Photos']) ? 'navbar-selected' : '' }}" href="#" data-toggle="dropdown">

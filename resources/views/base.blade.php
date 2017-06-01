@@ -24,6 +24,7 @@
   @stack('head')
 </head>
 <body class="{{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ ViewHelper::isMobile(Request::server('HTTP_USER_AGENT')) ? 'is-mobile' : 'is-desktop' }}">
+@section('bottom-tabbar')
 <header class="bottom-tabbar-container">
   <nav class="bottom-tabbar">
     <a class="bottom-tab {{ $self === 'Home' ? 'active' : '' }}" href="{{ path('Home@index') }}">
@@ -51,7 +52,8 @@
     @endif
   </nav>
 </header>
-<div class="navbar navbar-default hidden-xs {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'navbar-inverse' : '' }}">
+@show
+<div class="navbar navbar-default {{ !starts_with($self, 'Acp\\') ? 'hidden-xs' : '' }} {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'navbar-inverse' : '' }}">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
