@@ -102,6 +102,7 @@ class Torrents extends Controller
 
         $comments = Comment::with('rel', 'user')
             ->byType('Torrent')
+            ->published()
             ->orderBy('id', 'desc')
             ->take(50)
             ->get();

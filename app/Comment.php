@@ -42,6 +42,11 @@ class Comment extends Model
         return $query->where('rel_type', $type);
     }
 
+    public function scopePublished(Builder $query)
+    {
+        return $query->where('status', Comment::STATUS_PUBLISHED);
+    }
+
     // Methods
     public function breadcrumb()
     {
