@@ -63,9 +63,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_8817.jpg'])
 
 @ru
-  <p>Прибытие в Прагу на закате, который в мае только в девятом часу вечера. После <a class="link" href="/life/japan">Японии</a> настоящая сказка, что так поздно.</p>
+  <p>Прибытие в Прагу на закате, который в мае только в девятом часу вечера. После <a class="link" href="/life/countries/japan">Японии</a> настоящая сказка, что так поздно.</p>
 @en
-  <p>Arrival to Prague at sunset (around 9 PM in May). It's like miracle it is so late after <a class="link" href="/en/life/japan">Japan</a>.</p>
+  <p>Arrival to Prague at sunset (around 9 PM in May). It's like miracle it is so late after <a class="link" href="/en/life/countries/japan">Japan</a>.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_8821.jpg'])
 @endsection
