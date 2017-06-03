@@ -23,7 +23,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_7789.jpg'])
 
 @ru
-  <p>По пути много тоннелей.</p>
+  <p>По пути много тоннелей. При движении по ним в поездах закладывает уши, причем не только в шинкансенах.</p>
 @endlang
 <youtube title="Matsumoto Bus in Tunnel, April 2017" v="87rCmd8QWuk"></youtube>
 @include('tpl.pic-2x', ['pic' => 'IMG_7793.jpg'])
