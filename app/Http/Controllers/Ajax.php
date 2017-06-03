@@ -29,6 +29,7 @@ class Ajax extends Controller
 
         $comment = $model->comments()->create([
             'html' => $text,
+            'status' => Comment::STATUS_PUBLISHED,
             'user_id' => $user_id,
         ]);
 
