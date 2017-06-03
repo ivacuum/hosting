@@ -1182,6 +1182,11 @@ $glyphs = [[
 @endlang
 <?php
 $glyphs = [[
+  'ru' => 'извините (обращение)',
+  'en' => 'excuse me',
+  'phonetic' => 'sumi masen',
+  'jp' => 'すみません',
+],[
   'ru' => 'доброе утро',
   'en' => 'good morning',
   'phonetic' => 'ohayō gozaimasu',
