@@ -58,7 +58,6 @@ class RtoUpdate extends Command
                     }
 
                     $torrent->html = $topic_data['body'];
-                    $torrent->clicks = 0;
                     $torrent->announcer = $topic_data['announcer'];
 
                     // Раздача обновлена
