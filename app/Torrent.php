@@ -48,6 +48,11 @@ class Torrent extends Model
         return $this->morphMany(Comment::class, 'rel');
     }
 
+    public function commentsPublished()
+    {
+        return $this->morphMany(Comment::class, 'rel')->where('status', Comment::STATUS_PUBLISHED);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

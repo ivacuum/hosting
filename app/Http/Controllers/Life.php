@@ -191,7 +191,7 @@ class Life extends Controller
         $next_trips = $trip->next()->get();
         $previous_trips = $trip->previous($next_trips->count())->get()->reverse();
 
-        $comments = $trip->comments()->with('user')->orderBy('id')->get();
+        $comments = $trip->commentsPublished()->with('user')->orderBy('id')->get();
 
         return view($tpl, compact('comments', 'next_trips', 'previous_trips', 'timeline', 'trip'));
     }

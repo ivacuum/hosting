@@ -7,6 +7,7 @@
     <th class="text-right">ID</th>
     <th>Автор</th>
     <th>Текст</th>
+    <th></th>
     <th>Дата</th>
   </tr>
   </thead>
@@ -28,6 +29,13 @@
       <td>
         <div>{{ $model->html }}</div>
         <div class="text-muted small">{{ $model->rel_type }} #{{ $model->rel_id }}</div>
+      </td>
+      <td>
+        @if ($model->status === App\Comment::STATUS_HIDDEN)
+          <span class="tooltipped tooltipped-n" aria-label="Комментарий скрыт">
+            @svg (eye-slash)
+          </span>
+        @endif
       </td>
       <td class="text-nowrap">{{ ViewHelper::dateShort($model->created_at) }}</td>
     </tr>

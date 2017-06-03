@@ -51,6 +51,11 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
+    public function commentsPublished()
+    {
+        return $this->morphMany(Comment::class, 'rel')->where('status', Comment::STATUS_PUBLISHED);
+    }
+
     public function images()
     {
         return $this->hasMany(Image::class);

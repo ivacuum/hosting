@@ -9,7 +9,7 @@ class News extends Controller
         \Breadcrumbs::push(trans('news.index'), 'news');
 
         $news = Model::with('user')
-            ->withCount('comments')
+            ->withCount('commentsPublished as comments')
             ->published()
             ->orderBy('created_at', 'desc');
 
@@ -66,7 +66,7 @@ class News extends Controller
 
         abort_unless($news->status === Model::STATUS_PUBLISHED, 404);
 
-        $comments = $news->comments()->with('user')->orderBy('id')->get();
+        $comments = $news->commentsPublished()->with('user')->orderBy('id')->get();
 
         event(new \App\Events\Stats\NewsViewed($news->id));
 

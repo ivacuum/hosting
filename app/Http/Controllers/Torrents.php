@@ -143,7 +143,7 @@ class Torrents extends Controller
 
         $torrents = Torrent::select($this->list_columns)
             ->where('user_id', $user->id)
-            ->withCount('comments')
+            ->withCount('commentsPublished as comments')
             ->orderBy('registered_at', 'desc')
             ->simplePaginate(null, ['id']);
 
@@ -164,7 +164,7 @@ class Torrents extends Controller
 
         event(new \App\Events\Stats\TorrentViewed($torrent->id));
 
-        $comments = $torrent->comments()->with('user')->orderBy('id')->get();
+        $comments = $torrent->commentsPublished()->with('user')->orderBy('id')->get();
 
         $meta_title = $torrent->title;
 
