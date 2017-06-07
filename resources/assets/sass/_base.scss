@@ -10,8 +10,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-
-  @media (max-width: $screen-xs-max) { padding-bottom: 50px; }
 }
 
 // Чтобы страница не проматывалась в начало,

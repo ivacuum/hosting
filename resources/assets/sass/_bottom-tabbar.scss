@@ -1,3 +1,7 @@
+.body-with-bottom-tabbar {
+  @media (max-width: $screen-xs-max) { padding-bottom: 50px; }
+}
+
 .bottom-tabbar-container {
   position: fixed;
   right: 0;
