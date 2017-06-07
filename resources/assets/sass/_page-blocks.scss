@@ -1,6 +1,7 @@
 .page-section {
+  @include mobile-wide;
+
   display: flex;
-  width: 100%;
   flex: 1 0 auto;
 
   flex-flow: column;
@@ -11,10 +12,6 @@
 .page-block {
   display: flex;
   position: relative;
-
-  @media (min-width: 992px) {
-    & + & { margin-left: 15px; }
-  }
 }
 
 .page-block-1x3 {
@@ -23,32 +20,23 @@
 
 .page-block-cover {
   position: relative;
-  margin-bottom: 1.5rem;
   height: 220px;
   width: 100%;
 
   &:hover { opacity: .95; }
 
   @media (min-width: 768px) { height: 400px; }
-
-  @media (min-width: 992px) {
-    height: 230px;
-    margin-bottom: 0;
-  }
-
+  @media (min-width: 992px) { height: 230px; }
   @media (min-width: 1200px) { height: 280px; }
 }
 
 .page-block-cover-image {
-  border-radius: 6px;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #292929;
-  background-repeat: no-repeat;
-  background-position: center top;
+  background: #292929 no-repeat center top;
   background-size: cover;
 }
 
