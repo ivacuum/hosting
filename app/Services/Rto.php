@@ -7,7 +7,7 @@ use Symfony\Component\DomCrawler\Crawler;
 class Rto
 {
     const API_ENDPOINT = 'http://api.rutracker.org/v1/';
-    const SITE_ENDPOINT = 'http://maintracker.org/forum/';
+    const SITE_ENDPOINT = 'http://rutracker.cr/forum/';
 
     protected $client;
 
@@ -23,7 +23,7 @@ class Rto
         if (is_numeric($input)) {
             $topic_id = (int) $input;
         } elseif (starts_with($input, 'http')) {
-            if (str_contains($input, ['://rutracker.org', '://maintracker.org'])) {
+            if (str_contains($input, ['://rutracker.org', '://rutracker.cr', '://rutracker.net', '://maintracker.org'])) {
                 $url = parse_url($input);
 
                 if (!isset($url['query'])) {
