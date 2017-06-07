@@ -65,7 +65,7 @@
 
 <p>Для добавления предусмотрена <a class="link" href="{{ path('Torrents@add') }}">отдельная страница</a>, доступная только зарегистрированным пользователям. В качестве ввода принимается три типа значений:</p>
 <ol>
-  <li>Ссылка на раздачу на рутрекере вида <code>http://rutracker.org/forum/<wbr>viewtopic.php?t=4031882</code>. Адрес maintracker.org также поддерживается</li>
+  <li>Ссылка на раздачу на рутрекере вида <code>http://rutracker.org/forum/<wbr>viewtopic.php?t=4031882</code>. Также поддерживаются адреса rutracker.cr, rutracker.net и maintracker.org</li>
   <li>Инфо-хэш раздачи вида <code>9B5D85FFC234737E7D7C<wbr>246FECB6BB1EC5E8F0B9</code></li>
   <li>Номер темы на рутрекере вида <code>4031882</code></li>
 </ol>
