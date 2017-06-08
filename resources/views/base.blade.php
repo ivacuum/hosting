@@ -64,6 +64,15 @@
     @include('tpl.breadcrumbs', ['breadcrumbs' => $breadcrumbs ?? Breadcrumbs::get()])
   @show
   <div class="container">
+    @if ($first_time_visit && $locale !== $locale_preffered)
+      <div class="alert alert-warning">
+        @ru
+          Hey, looks like <a class="link" href="{{ url("en/{$request_uri}") }}">english version</a> of this page would be more useful for you
+        @en
+          Похоже, что вам может пригодиться версия этой страницы <a class="link" href="{{ url($request_uri) }}">на русском языке</a>
+        @endlang
+      </div>
+    @endif
     @if (Session::has('message'))
       <div class="alert alert-info">{{ Session::get('message') }}</div>
     @endif
