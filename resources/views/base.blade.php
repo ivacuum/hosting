@@ -120,8 +120,8 @@
 <script src="/assets/jquery.scrollto.js"></script>
 <script src="/assets/autosize.js?3.0.21"></script>
 <script src="/assets/bootstrap.js"></script>
-<script src="/assets/vue.js?2.3.3"></script>
-<script src="/assets/axios.js?0.16.1"></script>
+<script src="/assets/vue.js?2.3.4"></script>
+<script src="/assets/axios.js?0.16.2"></script>
 <script src="/assets/fotorama-settings.js"></script>
 <script src="/assets/fotorama.js"></script>
 <script src="{{ mix('/assets/app.js') }}"></script>

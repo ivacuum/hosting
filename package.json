@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "autosize": "3.0.21",
-    "axios": "0.16.1",
+    "axios": "0.16.2",
     "bootstrap-sass": "3.3.7",
     "cross-env": "3.2.4",
     "fotorama": "4.6.4",
@@ -17,6 +17,6 @@
     "laravel-mix": "0.12.1",
     "lodash": "4.17.4",
     "promise-polyfill": "6.0.2",
-    "vue": "2.3.3"
+    "vue": "2.3.4"
   }
 }
