@@ -10,7 +10,7 @@
       </td>
       <td>
         <span class="{{ !empty($entry['phonetic']) ? 'tooltipped tooltipped-n' : '' }}" aria-label="{{ $entry['phonetic'] ?? '' }}">
-          {{ $entry['de'] }}
+          {!! $entry['de'] !!}
         </span>
       </td>
     </tr>
