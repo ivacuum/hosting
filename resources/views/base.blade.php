@@ -66,6 +66,7 @@
   <div class="container">
     @if ($first_time_visit && $locale !== $locale_preffered)
       <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
         @ru
           Hey, looks like <a class="link" href="{{ url("en/{$request_uri}") }}">english version</a> of this page would be more useful for you
         @en
