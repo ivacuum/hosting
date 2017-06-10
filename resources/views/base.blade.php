@@ -68,7 +68,7 @@
       <div class="alert alert-warning">
         <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
         @ru
-          Hey, looks like <a class="link" href="{{ url("en/{$request_uri}") }}">english version</a> of this page would be more useful for you
+          Hey, looks like you might find useful <a class="link" href="{{ url("en/{$request_uri}") }}">english version</a> of this page
         @en
           Похоже, что вам может пригодиться версия этой страницы <a class="link" href="{{ url($request_uri) }}">на русском языке</a>
         @endlang
