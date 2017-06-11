@@ -425,7 +425,7 @@
         </td>
         <td>
           <div class="f28">つ</div>
-          @ru цу @en tu @endlang
+          @ru цу @en tsu @endlang
         </td>
         <td>
           <div class="f28">て</div>
