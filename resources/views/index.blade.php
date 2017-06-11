@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="services-container">
-  <div class="service-container">
-    <div class="clearfix">
-      <img class="service-image" src="https://ivacuum.org/i/services/magnet.png">
-      <h2 class="service-title"><a class="link" href="{{ path('Torrents@index') }}">{{ trans('torrents.index') }}</a></h2>
-    </div>
-    @ru
+  @ru
+    <div class="service-container">
+      <div class="clearfix">
+        <img class="service-image" src="https://ivacuum.org/i/services/magnet.png">
+        <h2 class="service-title"><a class="link" href="{{ path('Torrents@index') }}">{{ trans('torrents.index') }}</a></h2>
+      </div>
       <p>Сервис для скачивания файлов у многочисленных пользователей сети интернет.</p>
       <ul>
         <li>зеркало раздач рутрекера;</li>
@@ -15,8 +15,8 @@
         <li>легкое добавление раздач.</li>
       </ul>
       <p>Дата запуска: 5 января 2017 г.</p>
-    @endlang
-  </div>
+    </div>
+  @endlang
   <div class="service-container">
     <div class="clearfix">
       <img class="service-image" src="https://ivacuum.org/i/services/hosting.png">
@@ -32,12 +32,12 @@
       <p>Дата запуска: 29 сентября 2014 г.</p>
     @endlang
   </div>
-  <div class="service-container">
-    <div class="clearfix">
-      <img class="service-image" src="https://ivacuum.org/i/services/kupislona.png">
-      <h2 class="service-title"><a class="link" href="https://kupislona.ru/">KupiSlona.ru</a></h2>
-    </div>
-    @ru
+  @ru
+    <div class="service-container">
+      <div class="clearfix">
+        <img class="service-image" src="https://ivacuum.org/i/services/kupislona.png">
+        <h2 class="service-title"><a class="link" href="https://kupislona.ru/">KupiSlona.ru</a></h2>
+      </div>
       <p>Доска объявлений Калужской области.</p>
       <ul>
         <li>десятки тысяч актуальных объявлений;</li>
@@ -46,8 +46,8 @@
         <li>сайт адаптирован как для больших экранов, так и для мобильных устройств.</li>
       </ul>
       <p>Дата запуска: 7 декабря 2015 г.</p>
-    @endlang
-  </div>
+    </div>
+  @endlang
   <div class="service-container">
     <div class="clearfix">
       <img class="service-image" src="https://ivacuum.org/i/services/gallery.png">
@@ -78,16 +78,16 @@
       <p>Дата запуска: 17 марта 2008 г.</p>
     @endlang
   </div>
-  <div class="service-container">
-    <div class="clearfix">
-      <img class="service-image" src="https://ivacuum.org/i/services/torrent.png">
-      <h2 class="service-title"><a class="link" href="http://t.ivacuum.ru">{{ trans('torrents.index') }}</a></h2>
-    </div>
-    @ru
+  @ru
+    <div class="service-container">
+      <div class="clearfix">
+        <img class="service-image" src="https://ivacuum.org/i/services/torrent.png">
+        <h2 class="service-title"><a class="link" href="http://t.ivacuum.ru">{{ trans('torrents.index') }}</a></h2>
+      </div>
       <p>Сервис для обмена файлами внутри локальной сети Билайн, проработавший шесть с лишним лет. Теперь исторический форум, доступный из интернета.</p>
       <p>Дата запуска: 5 июля 2010 г.</p>
-    @endlang
-  </div>
+    </div>
+  @endlang
 </div>
 
 @ru
