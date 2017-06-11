@@ -16,11 +16,13 @@
               {{ trans('news.index') }}
             </a>
           </li>
-          <li>
-            <a class="{{ $self == 'Torrents' ? 'navbar-selected' : '' }}" href="{{ path('Torrents@index') }}">
-              {{ trans('menu.torrents') }}
-            </a>
-          </li>
+          @ru
+            <li>
+              <a class="{{ $self == 'Torrents' ? 'navbar-selected' : '' }}" href="{{ path('Torrents@index') }}">
+                {{ trans('menu.torrents') }}
+              </a>
+            </li>
+          @endlang
           <li>
             <a class="{{ $self == 'Photos' ? 'navbar-selected' : '' }}" href="{{ path('Photos@index') }}">
               {{ trans('photos.index') }}
