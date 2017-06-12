@@ -16,7 +16,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $seeders
  * @property string  $info_hash
  * @property string  $announcer
+ * @property integer $status
  * @property integer $clicks
+ * @property integer $views
  * @property \Carbon\Carbon $registered_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
