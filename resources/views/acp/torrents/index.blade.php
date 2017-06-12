@@ -9,6 +9,7 @@
     <th class="text-right">@svg (eye)</th>
     <th class="text-right">@svg (comment-o)</th>
     <th class="text-right">@svg (magnet)</th>
+    <th></th>
     <th>{{ trans('model.torrent.title') }}</th>
     <th></th>
   </tr>
@@ -35,6 +36,17 @@
       <td class="text-right">
         @if ($model->clicks > 0)
           {{ ViewHelper::number($model->clicks) }}
+        @endif
+      </td>
+      <td>
+        @if ($model->status === App\Torrent::STATUS_HIDDEN)
+          <span class="tooltipped tooltipped-n" aria-label="Раздача скрыта">
+            @svg (eye-slash)
+          </span>
+        @elseif ($model->status === App\Torrent::STATUS_DELETED)
+          <span class="tooltipped tooltipped-n" aria-label="Раздача удалена">
+            @svg (trash-o)
+          </span>
         @endif
       </td>
       <td>

@@ -20,7 +20,7 @@ class Torrents extends Controller
 
         \Breadcrumbs::push(trans($this->view));
 
-        $torrents = Torrent::orderBy('registered_at', 'desc');
+        $torrents = Torrent::published()->orderBy('registered_at', 'desc');
 
         if (!is_null($category)) {
             $ids = \TorrentCategoryHelper::selfAndDescendantsIds($category_id, $category);
@@ -82,6 +82,7 @@ class Torrents extends Controller
             'title' => $data['title'],
             'rto_id' => $data['rto_id'],
             'clicks' => 0,
+            'status' => Torrent::STATUS_PUBLISHED,
             'seeders' => $data['seeders'],
             'user_id' => $this->request->user()->id,
             'info_hash' => $data['info_hash'],
@@ -144,6 +145,7 @@ class Torrents extends Controller
 
         $torrents = Torrent::select($this->list_columns)
             ->where('user_id', $user->id)
+            ->where('status', Torrent::STATUS_PUBLISHED)
             ->withCount('commentsPublished as comments')
             ->orderBy('registered_at', 'desc')
             ->simplePaginate(null, ['id']);

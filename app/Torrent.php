@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -24,6 +25,10 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Torrent extends Model
 {
+    const STATUS_HIDDEN = 0;
+    const STATUS_PUBLISHED = 1;
+    const STATUS_DELETED = 2;
+
     const RTO_STATUS_0 = 1; // не проверено
     const RTO_STATUS_1 = 1; // закрыто
     const RTO_STATUS_2 = 2; // проверено
@@ -56,6 +61,12 @@ class Torrent extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    // Scopes
+    public function scopePublished(Builder $query)
+    {
+        return $query->where('status', self::STATUS_PUBLISHED);
     }
 
     // Methods
@@ -97,6 +108,7 @@ class Torrent extends Model
     {
         return \Cache::remember('torrents.stats-by-categories', 15, function () {
             return self::selectRaw('category_id, COUNT(*) as total')
+                ->where('status', self::STATUS_PUBLISHED)
                 ->groupBy('category_id')
                 ->get()
                 ->pluck('total', 'category_id');

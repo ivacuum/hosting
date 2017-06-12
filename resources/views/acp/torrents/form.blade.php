@@ -51,6 +51,30 @@
   </div>
 </div>
 
+<div class="form-group">
+  <label class="col-md-3 control-label">Статус:</label>
+  <div class="col-md-6">
+    <div class="radio">
+      <label>
+        <input type="radio" name="status" value="{{ App\Torrent::STATUS_HIDDEN }}" {{ App\Torrent::STATUS_HIDDEN == old('status', @$model->status) ? 'checked' : '' }}>
+        <span class="text-muted">Скрыт</span>
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="status" value="{{ App\Torrent::STATUS_PUBLISHED }}" {{ App\Torrent::STATUS_PUBLISHED == old('status', @$model->status) ? 'checked' : '' }}>
+        <span class="text-success">Опубликован</span>
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="status" value="{{ App\Torrent::STATUS_DELETED }}" {{ App\Torrent::STATUS_DELETED == old('status', @$model->status) ? 'checked' : '' }}>
+        <span class="text-danger">Удален</span>
+      </label>
+    </div>
+  </div>
+</div>
+
 <div class="form-group {{ $errors->has('html') ? 'has-error' : '' }}">
   <label class="col-md-3 control-label required">HTML:</label>
   <div class="col-md-9">
