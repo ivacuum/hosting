@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Ivacuum\Generic\Traits\SoftDeleteTrait;
 
 /**
  * Торрент
@@ -27,6 +28,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Torrent extends Model
 {
+    use SoftDeleteTrait;
+
     const STATUS_HIDDEN = 0;
     const STATUS_PUBLISHED = 1;
     const STATUS_DELETED = 2;

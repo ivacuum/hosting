@@ -24,8 +24,7 @@ class RtoUpdate extends Command
 
                 // Раздача не найдена
                 if (is_null($json)) {
-                    $torrent->status = Torrent::STATUS_DELETED;
-                    $torrent->save();
+                    $torrent->softDelete();
 
                     $this->info("Раздача {$id} не найдена и удалена: {$torrent->title}");
 
@@ -38,8 +37,7 @@ class RtoUpdate extends Command
 
                 // Раздача закрыта как повтор
                 if ($json->tor_status == Torrent::RTO_STATUS_DUPLICATE) {
-                    $torrent->status = Torrent::STATUS_DELETED;
-                    $torrent->save();
+                    $torrent->softDelete();
 
                     $this->info("Раздача {$id} закрыта как повторная и удалена");
 
