@@ -24,18 +24,18 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Torrent extends Model
 {
-    const STATUS_0 = 1; // не проверено
-    const STATUS_1 = 1; // закрыто
-    const STATUS_2 = 2; // проверено
-    const STATUS_3 = 3; // недооформлено
-    const STATUS_4 = 4; // не оформлено
-    const STATUS_DUPLICATE = 5; // повтор
-    const STATUS_6 = 6; // закрыто правообладателем
-    const STATUS_7 = 7; // поглощено
-    const STATUS_8 = 8; // сомнительно
-    const STATUS_9 = 9; // проверяется
-    const STATUS_10 = 10; // временная
-    const STATUS_PREMODERATION = 11; // премодерация
+    const RTO_STATUS_0 = 1; // не проверено
+    const RTO_STATUS_1 = 1; // закрыто
+    const RTO_STATUS_2 = 2; // проверено
+    const RTO_STATUS_3 = 3; // недооформлено
+    const RTO_STATUS_4 = 4; // не оформлено
+    const RTO_STATUS_DUPLICATE = 5; // повтор
+    const RTO_STATUS_6 = 6; // закрыто правообладателем
+    const RTO_STATUS_7 = 7; // поглощено
+    const RTO_STATUS_8 = 8; // сомнительно
+    const RTO_STATUS_9 = 9; // проверяется
+    const RTO_STATUS_10 = 10; // временная
+    const RTO_STATUS_PREMODERATION = 11; // премодерация
 
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $hidden = ['html'];

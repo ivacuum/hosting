@@ -139,7 +139,7 @@ class Rto
             return 'Раздача не найдена, попробуйте другую ссылку';
         }
 
-        if ($json->tor_status === Torrent::STATUS_DUPLICATE) {
+        if ($json->tor_status === Torrent::RTO_STATUS_DUPLICATE) {
             return 'Раздача закрыта как повторная, попробуйте другую ссылку';
         }
 

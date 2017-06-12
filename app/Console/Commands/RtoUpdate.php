@@ -32,7 +32,7 @@ class RtoUpdate extends Command
                 }
 
                 // Раздача закрыта как повтор
-                if ($json->tor_status == Torrent::STATUS_DUPLICATE) {
+                if ($json->tor_status == Torrent::RTO_STATUS_DUPLICATE) {
                     $this->info("Раздача {$id} закрыта как повторная и удалена");
                     $torrent->delete();
                     event(new \App\Events\Stats\TorrentDuplicateDeleted);
@@ -41,7 +41,7 @@ class RtoUpdate extends Command
                 }
 
                 // Ждем завершения модерации
-                if ($json->tor_status == Torrent::STATUS_PREMODERATION) {
+                if ($json->tor_status == Torrent::RTO_STATUS_PREMODERATION) {
                     continue;
                 }
 
