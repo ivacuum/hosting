@@ -7,7 +7,7 @@ use Symfony\Component\DomCrawler\Crawler;
 class Rto
 {
     const API_ENDPOINT = 'http://api.rutracker.org/v1/';
-    const SITE_ENDPOINT = 'http://maintracker.org/forum/';
+    const SITE_ENDPOINT = 'https://dostup.website/https://rutracker.org/forum/';
 
     protected $client;
 
