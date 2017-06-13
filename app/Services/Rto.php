@@ -72,25 +72,6 @@ class Rto
         ];
     }
 
-    public function parseBbcode($body)
-    {
-        $body = str_replace(
-            ["\n", "\t", '<span class="post-br"><br /></span>', '<br />'],
-            ['', '', "\n", "\n"],
-            $body
-        );
-
-        $body = preg_replace('/<fieldset class="attach">(.*?)<\/fieldset>/s', '', $body);
-        $body = preg_replace('/<span class="post-i">(.*?)<\/span>/s', '[i]$1[/i]', $body);
-        $body = preg_replace('/<span class="post-b">(.*?)<\/span>/s', '[b]$1[/b]', $body);
-        $body = preg_replace('/<div class="sp-wrap">\s*<div class="sp-head folded"><span>(.*?)<\/span><\/div>\s*<div class="sp-body">(.*?)<\/div>\s*<\/div>/s', "\n[spoiler=\"$1\"]\n$2\n[/spoiler]", $body);
-        $body = preg_replace('/<var class="postImg postImgAligned img-right" title="(.*?)">(.*?)<\/var>/s', '[img=right]$1[/img]', $body);
-        $body = preg_replace('/<var class="postImg" title="(.*?)">(.*?)<\/var>/s', '[img]$1[/img]', $body);
-        $body = preg_replace('/<a href="(.*?)" class="postLink">\[img\](.*?)\[\/img\]<\/a>/', '[url=$1][img]$2[/img][/url]', $body);
-
-        return $body;
-    }
-
     public function parseBodyHtml($body)
     {
         $body = preg_replace('/<fieldset class="attach">(.*?)<\/fieldset>/s', '', $body);
