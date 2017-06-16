@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('salt', 5);
             $table->unsignedTinyInteger('status')->default(0);
-            $table->string('ip');
+            $table->ipAddress('ip');
             $table->string('activation_token');
             $table->rememberToken();
             $table->timestamps();
