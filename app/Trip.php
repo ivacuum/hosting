@@ -223,6 +223,11 @@ class Trip extends Model
         return 'life.trips.'.str_replace('.', '_', $this->slug);
     }
 
+    public function timelinePeriod()
+    {
+        return $this->monthName($this->date_start->month);
+    }
+
     public function www()
     {
         return path('Life@page', $this->slug);

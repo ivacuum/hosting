@@ -6,11 +6,11 @@
         @foreach ($rows as $row)
           <li class="city-timeline-trip">
             @if ($row->id === $trip->id)
-              <mark>{{ $row->period }}</mark>
+              <mark>{{ $row->timelinePeriod() }}</mark>
             @elseif ($row->status === App\Trip::STATUS_PUBLISHED)
-              <a class="link" href="{{ $row->www() }}">{{ $row->period }}</a>
+              <a class="link" href="{{ $row->www() }}">{{ $row->timelinePeriod() }}</a>
             @else
-              {{ $row->period }}
+              {{ $row->timelinePeriod() }}
             @endif
           </li>
         @endforeach
