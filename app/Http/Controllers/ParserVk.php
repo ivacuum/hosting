@@ -20,10 +20,11 @@ class ParserVk extends Controller
     public function index($vkpage = 'pn6', $date = false)
     {
         $this->vkpage = $vkpage;
-        $this->token = $token = $this->request->input('token');
+        $this->token = $token = $this->request->input('token', config('services.vk.access_token'));
         $own = $this->request->input('own');
         $date = false === $date ? '-1 day' : $date;
         $date = Carbon::parse($date);
+        $token = $token === config('services.vk.access_token') ? null : $token;
 
         $count = 100;
         $offset = $total = 0;
@@ -39,7 +40,7 @@ class ParserVk extends Controller
             $json = $this->getPosts($count, $offset);
 
             if (isset($json->error)) {
-                dd($json->error);
+                throw new \Exception($json->error->error_msg);
             }
 
             $total = $total ?: $json->response->count;
