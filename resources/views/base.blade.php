@@ -64,7 +64,7 @@
     @include('tpl.breadcrumbs', ['breadcrumbs' => $breadcrumbs ?? Breadcrumbs::get()])
   @show
   <div class="container">
-    @if ($first_time_visit && $locale !== $locale_preffered)
+    @if ($first_time_visit && !Auth::check() && $locale !== $locale_preffered)
       <div class="alert alert-warning">
         <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
         @ru
