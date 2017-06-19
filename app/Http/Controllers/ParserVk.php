@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\CacheKey;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 
@@ -122,7 +123,7 @@ class ParserVk extends Controller
 
     protected function getPosts($count = 100, $offset = 0)
     {
-        $cache_entry = "vk_{$this->vkpage}_{$count}_{$offset}";
+        $cache_entry = CacheKey::key(CacheKey::VK_WALL_GET, "{$this->vkpage}_{$count}_{$offset}");
         $access_token = $this->token;
         $filter = 'owner';
         $v = $this->version;

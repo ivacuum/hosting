@@ -247,7 +247,7 @@ class Trip extends Model
 
     public static function idsByCity($id = null)
     {
-        $ids = \Cache::rememberForever('published-trips-by-city', function () {
+        $ids = \Cache::rememberForever(CacheKey::TRIPS_PUBLISHED_BY_CITY, function () {
             $trips = self::published()->get(['id', 'city_id']);
 
             $result = [];
@@ -268,7 +268,7 @@ class Trip extends Model
 
     public static function idsByCountry($id = null)
     {
-        $ids = \Cache::rememberForever('published-trips-by-country', function () {
+        $ids = \Cache::rememberForever(CacheKey::TRIPS_PUBLISHED_BY_COUNTRY, function () {
             $trips = self::published()
                 ->with([
                     'city' => function ($query) {

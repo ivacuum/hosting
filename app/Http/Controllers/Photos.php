@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\CacheKey;
 use App\City;
 use App\Country;
 use App\Photo;
@@ -230,7 +231,7 @@ class Photos extends Controller
     protected function pointsForMap($trip_id)
     {
         // Кэширование отключено при фильтре по поездке
-        $cache_entry = $trip_id ? "photos-points-trip" : 'photos-points';
+        $cache_entry = $trip_id ? CacheKey::PHOTOS_POINTS_FOR_TRIP : CacheKey::PHOTOS_POINTS;
         $minutes = $trip_id ? 0 : 30;
 
         return \Cache::remember($cache_entry, $minutes, function () use ($trip_id) {
