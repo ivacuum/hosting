@@ -1,22 +1,9 @@
 @include('tpl.form_errors')
 
-<div class="form-group">
-  <label class="col-md-3 control-label">Статус:</label>
-  <div class="col-md-6">
-    <div class="radio">
-      <label>
-        <input type="radio" name="status" value="{{ App\Comment::STATUS_HIDDEN }}" {{ App\Comment::STATUS_HIDDEN == old('status', @$model->status) ? 'checked' : '' }}>
-        <span class="text-muted">Скрыт</span>
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="status" value="{{ App\Comment::STATUS_PUBLISHED }}" {{ App\Comment::STATUS_PUBLISHED == old('status', @$model->status) ? 'checked' : '' }}>
-        <span class="text-success">Опубликован</span>
-      </label>
-    </div>
-  </div>
-</div>
+{!! Form::radio('status')->required()->values([
+  App\Comment::STATUS_HIDDEN => 'Скрыт',
+  App\Comment::STATUS_PUBLISHED => 'Опубликован',
+])->html() !!}
 
 <div class="form-group {{ $errors->has('html') ? 'has-error' : '' }}">
   <label class="col-md-3 control-label required">HTML:</label>

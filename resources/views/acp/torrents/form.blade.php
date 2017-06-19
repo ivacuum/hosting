@@ -23,57 +23,19 @@
   </div>
 </div>
 
-<div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
-  <label class="col-md-3 control-label required">Название:</label>
-  <div class="col-md-6">
-    <input required type="text" class="form-control" name="title" value="{{ old('title', @$model->title) }}">
-  </div>
-</div>
+{!! Form::text('title')->required()->html() !!}
 
-<div class="form-group {{ $errors->has('rto_id') ? 'has-error' : '' }}">
-  <label class="col-md-3 control-label required">rutracker.org topic_id:</label>
-  <div class="col-md-6">
-    <input required type="text" class="form-control" name="rto_id" value="{{ old('rto_id', @$model->rto_id) }}">
-  </div>
-</div>
+{!! Form::text('rto_id')->required()->html() !!}
 
-<div class="form-group {{ $errors->has('info_hash') ? 'has-error' : '' }}">
-  <label class="col-md-3 control-label required">Инфо-хэш:</label>
-  <div class="col-md-6">
-    <input required type="text" class="form-control" name="info_hash" value="{{ old('info_hash', @$model->info_hash) }}">
-  </div>
-</div>
+{!! Form::text('info_hash')->required()->html() !!}
 
-<div class="form-group {{ $errors->has('announcer') ? 'has-error' : '' }}">
-  <label class="col-md-3 control-label">Анонсер:</label>
-  <div class="col-md-6">
-    <input required type="text" class="form-control" name="announcer" value="{{ old('announcer', @$model->announcer) }}">
-  </div>
-</div>
+{!! Form::text('announcer')->html() !!}
 
-<div class="form-group">
-  <label class="col-md-3 control-label">Статус:</label>
-  <div class="col-md-6">
-    <div class="radio">
-      <label>
-        <input type="radio" name="status" value="{{ App\Torrent::STATUS_HIDDEN }}" {{ App\Torrent::STATUS_HIDDEN == old('status', @$model->status) ? 'checked' : '' }}>
-        <span class="text-muted">Скрыт</span>
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="status" value="{{ App\Torrent::STATUS_PUBLISHED }}" {{ App\Torrent::STATUS_PUBLISHED == old('status', @$model->status) ? 'checked' : '' }}>
-        <span class="text-success">Опубликован</span>
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="status" value="{{ App\Torrent::STATUS_DELETED }}" {{ App\Torrent::STATUS_DELETED == old('status', @$model->status) ? 'checked' : '' }}>
-        <span class="text-danger">Удален</span>
-      </label>
-    </div>
-  </div>
-</div>
+{!! Form::radio('status')->required()->values([
+  App\Torrent::STATUS_HIDDEN => 'Скрыт',
+  App\Torrent::STATUS_PUBLISHED => 'Опубликован',
+  App\Torrent::STATUS_DELETED => 'Удален',
+])->html() !!}
 
 <div class="form-group {{ $errors->has('html') ? 'has-error' : '' }}">
   <label class="col-md-3 control-label required">HTML:</label>

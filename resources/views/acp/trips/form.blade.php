@@ -53,29 +53,11 @@
   </div>
 </div>
 
-<div class="form-group">
-  <label class="col-md-3 control-label">Статус:</label>
-  <div class="col-md-6">
-    <div class="radio">
-      <label>
-        <input type="radio" name="status" value="{{ App\Trip::STATUS_HIDDEN }}" {{ App\Trip::STATUS_HIDDEN == old('status', @$model->status) ? 'checked' : '' }}>
-        <span class="text-muted">Скрыта</span>
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="status" value="{{ App\Trip::STATUS_INACTIVE }}" {{ App\Trip::STATUS_INACTIVE == old('status', @$model->status) ? 'checked' : '' }}>
-        Неактивна
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="status" value="{{ App\Trip::STATUS_PUBLISHED }}" {{ App\Trip::STATUS_PUBLISHED == old('status', @$model->status) ? 'checked' : '' }}>
-        <span class="text-success">Опубликована</span>
-      </label>
-    </div>
-  </div>
-</div>
+{!! Form::radio('status')->required()->values([
+  App\Trip::STATUS_HIDDEN => 'Скрыта',
+  App\Trip::STATUS_INACTIVE => 'Неактивна',
+  App\Trip::STATUS_PUBLISHED => 'Опубликована',
+])->html() !!}
 
 <div class="form-group">
   <label class="col-md-3 control-label">Meta description:</label>

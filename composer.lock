@@ -412,16 +412,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "0.2.7",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "4d63f24b4eb5100bd3e2d8622e4c7cd91a1699e5"
+                "reference": "3acd2b55d172899f646624ec9c2d2eea8121ffa3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/4d63f24b4eb5100bd3e2d8622e4c7cd91a1699e5",
-                "reference": "4d63f24b4eb5100bd3e2d8622e4c7cd91a1699e5",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/3acd2b55d172899f646624ec9c2d2eea8121ffa3",
+                "reference": "3acd2b55d172899f646624ec9c2d2eea8121ffa3",
                 "shasum": ""
             },
             "require": {
@@ -447,7 +447,7 @@
                     "email": "vacuum@ivacuum.ru"
                 }
             ],
-            "time": "2017-06-16T17:48:38+00:00"
+            "time": "2017-06-19T16:08:55+00:00"
         },
         {
             "name": "laravel/framework",
@@ -780,16 +780,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.22.1",
+            "version": "1.23.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "1e044bc4b34e91743943479f1be7a1d5eb93add0"
+                "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1e044bc4b34e91743943479f1be7a1d5eb93add0",
-                "reference": "1e044bc4b34e91743943479f1be7a1d5eb93add0",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
+                "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
                 "shasum": ""
             },
             "require": {
@@ -810,7 +810,7 @@
                 "phpunit/phpunit-mock-objects": "2.3.0",
                 "ruflin/elastica": ">=0.90 <3.0",
                 "sentry/sentry": "^0.13",
-                "swiftmailer/swiftmailer": "~5.3"
+                "swiftmailer/swiftmailer": "^5.3|^6.0"
             },
             "suggest": {
                 "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
@@ -854,7 +854,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2017-03-13T07:08:03+00:00"
+            "time": "2017-06-19T01:22:40+00:00"
         },
         {
             "name": "mtdowling/cron-expression",
