@@ -215,7 +215,17 @@ class Trip extends Model
 
     public function metaTitle()
     {
-        return $this->meta_title ?: "{$this->title} &middot; {$this->localizedDate()}";
+        if ($this->meta_title) {
+            return $this->meta_title;
+        }
+
+        $suffix = '';
+
+        if (isset($this->photos_count) && $this->photos_count > 0) {
+            $suffix = " &middot; ".\ViewHelper::plural('photos', $this->photos_count);
+        }
+
+        return "{$this->title} &middot; {$this->localizedDate()}{$suffix}";
     }
 
     public function template()
