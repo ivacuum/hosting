@@ -208,7 +208,8 @@ class Life extends Controller
 
     protected function getTrip($slug)
     {
-        return Trip::where('slug', $slug)
+        return Trip::withCount('photos')
+            ->where('slug', $slug)
             ->where('status', Trip::STATUS_PUBLISHED)
             ->first();
     }
