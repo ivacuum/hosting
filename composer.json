@@ -4,14 +4,15 @@
   "license": "MIT",
   "require": {
     "php": "^7.0",
-    "laravel/framework": "5.4.*",
-    "guzzlehttp/guzzle": "~6.0",
     "baum/baum": "~1.1",
-    "symfony/css-selector": "~3.2",
-    "symfony/dom-crawler": "~3.2",
+    "guzzlehttp/guzzle": "~6.0",
     "irazasyed/telegram-bot-sdk": "^2.0",
+    "ivacuum/generic": "~0.1",
+    "laravel/framework": "5.4.*",
     "laravel/socialite": "^3.0",
-    "ivacuum/generic": "~0.1"
+    "predis/predis": "^1.1",
+    "symfony/css-selector": "~3.2",
+    "symfony/dom-crawler": "~3.2"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
