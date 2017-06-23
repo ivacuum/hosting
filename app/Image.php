@@ -19,6 +19,8 @@ use Ivacuum\Generic\Services\ImageConverter;
  * @property \App\User $user
  *
  * @property-read string  $splitted_date
+ *
+ * @mixin \Eloquent
  */
 class Image extends Model
 {

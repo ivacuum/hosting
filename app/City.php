@@ -20,6 +20,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Trip    $trips
  *
  * @property-read string  $title
+ *
+ * @mixin \Eloquent
  */
 class City extends Model
 {

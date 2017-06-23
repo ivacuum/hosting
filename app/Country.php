@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Trip $trips
  *
  * @property-read string  $title
+ *
+ * @mixin \Eloquent
  */
 class Country extends Model
 {

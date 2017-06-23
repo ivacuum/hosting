@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $slug
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
+ * @mixin \Eloquent
  */
 class Artist extends Model
 {

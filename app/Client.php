@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $text
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
+ * @mixin \Eloquent
  */
 class Client extends Model
 {

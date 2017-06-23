@@ -25,6 +25,8 @@ use Ivacuum\Generic\Traits\SoftDeleteTrait;
  * @property \Carbon\Carbon $updated_at
  *
  * @property-read \App\User $user
+ *
+ * @mixin \Eloquent
  */
 class Torrent extends Model
 {

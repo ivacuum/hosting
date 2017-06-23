@@ -41,6 +41,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $registered_at
  * @property \Carbon\Carbon $paid_till
  * @property \Carbon\Carbon $queried_at
+ *
+ * @mixin \Eloquent
  */
 class Domain extends Model
 {

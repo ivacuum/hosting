@@ -29,6 +29,8 @@ use Illuminate\Notifications\Notifiable;
  * @property \Illuminate\Support\Collection $notifications
  *
  * @method \Illuminate\Database\Eloquent\Builder unreadNotifications()
+ *
+ * @mixin \Eloquent
  */
 class User extends Authenticatable
 {

@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $updated_at
  *
  * @property \App\User $user
+ *
+ * @mixin \Eloquent
  */
 class Comment extends Model
 {

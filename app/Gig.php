@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read string  $title
  * @property-read string  $meta_title
  * @property-read string  $meta_description
+ *
+ * @mixin \Eloquent
  */
 class Gig extends Model
 {

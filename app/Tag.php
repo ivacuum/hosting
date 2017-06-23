@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Collection $photos
  *
  * @property-read string  $title
+ *
+ * @mixin \Eloquent
  */
 class Tag extends Model
 {

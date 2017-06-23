@@ -14,6 +14,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $ftp_pass
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
+ * @mixin \Eloquent
  */
 class Server extends Model
 {

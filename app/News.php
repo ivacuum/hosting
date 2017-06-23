@@ -19,6 +19,8 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property \Illuminate\Support\Collection $comments
  * @property \App\User $user
+ *
+ * @mixin \Eloquent
  */
 class News extends Model
 {

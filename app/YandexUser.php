@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $token
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
+ * @mixin \Eloquent
  */
 class YandexUser extends Model
 {
