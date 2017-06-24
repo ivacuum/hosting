@@ -15,8 +15,7 @@ class Users extends Controller
 
         $models = Model::applyFilter($filter)
             ->orderBy('id', 'desc')
-            ->paginate()
-            ->appends(\UrlHelper::except());
+            ->paginate();
 
         return view($this->view, compact('filter', 'models'));
     }

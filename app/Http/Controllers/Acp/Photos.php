@@ -16,8 +16,7 @@ class Photos extends Controller
             ->applyFilter($filter)
             ->forTag($this->request->input('tag_id'))
             ->orderBy('id', 'desc')
-            ->paginate()
-            ->appends(\UrlHelper::except());
+            ->paginate();
 
         return view($this->view, compact('filter', 'models'));
     }

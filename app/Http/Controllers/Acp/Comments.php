@@ -27,8 +27,7 @@ class Comments extends Controller
             $models = $models->where('rel_id', $torrent_id)->where('rel_type', 'Torrent');
         }
 
-        $models = $models->paginate(20)
-            ->appends(\UrlHelper::except());
+        $models = $models->paginate(20);
 
         return view($this->view, compact('models', 'user_id'));
     }
