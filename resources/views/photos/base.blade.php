@@ -5,6 +5,9 @@
   <li class="{{ $view === 'photos.index' ? 'active' : '' }}">
     <a href="{{ path('Photos@index') }}">{{ trans('photos.new') }}</a>
   </li>
+  <li class="{{ $view === 'photos.trips' ? 'active' : '' }}">
+    <a href="{{ path('Photos@trips') }}">{{ trans('photos.trips') }}</a>
+  </li>
   <li class="{{ $view === 'photos.tags' ? 'active' : '' }}">
     <a href="{{ path('Photos@tags') }}">{{ trans('photos.tags') }}</a>
   </li>

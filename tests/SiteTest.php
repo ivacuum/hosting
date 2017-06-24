@@ -25,6 +25,8 @@ class SiteTest extends TestCase
         $this->get('/photos/map')->assertStatus(200);
         $this->get('/photos/tags')->assertStatus(200);
         $this->get('/photos/tags/1')->assertStatus(200);
+        $this->get('/photos/trips')->assertStatus(200);
+        $this->get('/photos/trips/1')->assertStatus(200);
         $this->get('/promocodes-coupons')->assertStatus(200);
         $this->get('/promocodes-coupons/airbnb')->assertStatus(200);
         $this->get('/promocodes-coupons/digitalocean')->assertStatus(200);

@@ -40,7 +40,7 @@
       @svg (file-text-o)
       <div>{{ trans('menu.life') }}</div>
     </a>
-    <a class="bottom-tab {{ $self === 'Photos' ? 'active' : '' }}" href="{{ path('Photos@index') }}">
+    <a class="bottom-tab {{ $self === 'Photos' ? 'active' : '' }}" href="{{ path('Photos@trips') }}">
       @svg (picture-o)
       <div>{{ trans('photos.index') }}</div>
     </a>

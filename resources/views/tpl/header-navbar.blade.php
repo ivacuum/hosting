@@ -24,7 +24,7 @@
             </li>
           @endlang
           <li>
-            <a class="{{ $self == 'Photos' ? 'navbar-selected' : '' }}" href="{{ path('Photos@index') }}">
+            <a class="{{ $self == 'Photos' ? 'navbar-selected' : '' }}" href="{{ path('Photos@trips') }}">
               {{ trans('photos.index') }}
             </a>
           </li>

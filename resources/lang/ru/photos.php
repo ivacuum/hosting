@@ -9,6 +9,7 @@ return [
     'tags' => 'Тэги',
     'index' => 'Фото',
     'story' => 'История',
+    'trips' => 'Поездки',
     'cities' => 'Города',
     'geotags' => 'Геотэги',
     'countries' => 'Страны',
