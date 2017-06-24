@@ -9,6 +9,7 @@
           <div class="page-block-cover-image" style="background-image: linear-gradient(rgba(26, 26, 26, 0.1) 0%, rgba(26, 26, 26, 0.3) 50%), url({{ $trip->metaImage(400, 300) }});"></div>
           <div class="page-block-cover-info">
             <div class="page-block-cover-title">
+              {{ $trip->city->country->emoji }}
               {{ $trip->title }}
               <span class="page-block-cover-date">{{ $trip->period }} {{ $trip->year }}</span>
             </div>

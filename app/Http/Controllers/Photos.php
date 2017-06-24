@@ -256,7 +256,8 @@ class Photos extends Controller
         \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.trips'), 'photos/trips');
 
-        $trips = Trip::published()
+        $trips = Trip::with('city.country')
+            ->published()
             ->where('meta_image', '<>', '')
             ->orderBy('date_start', 'desc')
             ->get();
