@@ -28,7 +28,7 @@ class Comments extends Controller
         }
 
         $models = $models->paginate(20)
-            ->appends(compact('news_id', 'torrent_id', 'trip_id', 'user_id'));
+            ->appends(\UrlHelper::except());
 
         return view($this->view, compact('models', 'user_id'));
     }

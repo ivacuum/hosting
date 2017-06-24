@@ -20,7 +20,7 @@ class News extends Controller
         }
 
         $models = $models->paginate(20)
-            ->appends(compact('user_id'));
+            ->appends(\UrlHelper::except());
 
         return view($this->view, compact('models', 'user_id'));
     }

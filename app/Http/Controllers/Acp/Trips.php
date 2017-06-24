@@ -18,7 +18,7 @@ class Trips extends Controller
             ->forCountry($this->request->input('country_id'))
             ->orderBy('date_start', 'desc')
             ->paginate(100)
-            ->appends($this->request->all());
+            ->appends(\UrlHelper::except());
 
         return view($this->view, compact('models'));
     }

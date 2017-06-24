@@ -28,7 +28,7 @@ class Images extends Controller
         }
 
         $models = $models->paginate()
-            ->appends(compact('touch', 'type', 'user_id', 'year'));
+            ->appends(\UrlHelper::except());
 
         return view($this->view, compact('models', 'touch', 'type', 'user_id', 'year'));
     }

@@ -73,7 +73,7 @@ class Domains extends Controller
 
         $models = $models->orderBy($sort)
             ->paginate()
-            ->appends(compact('sort', 'filter', 'q', 'yandex_user_id'));
+            ->appends(\UrlHelper::except());
 
         return view($this->view, compact('filter', 'models', 'sort', 'q'));
     }

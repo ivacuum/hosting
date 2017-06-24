@@ -21,7 +21,7 @@ class Torrents extends Controller
         }
 
         $models = $models->paginate()
-            ->appends(compact('user_id'));
+            ->appends(\UrlHelper::except());
 
         return view($this->view, compact('models', 'user_id'));
     }
