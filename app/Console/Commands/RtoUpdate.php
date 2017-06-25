@@ -15,7 +15,7 @@ class RtoUpdate extends Command
 
     public function handle(Rto $rto)
     {
-        Torrent::orderBy('id', 'desc')->chunk(100, function (Collection $torrents) use ($rto) {
+        Torrent::published()->orderBy('id', 'desc')->chunk(100, function (Collection $torrents) use ($rto) {
             $ids = implode(',', $torrents->pluck('rto_id')->toArray());
 
             foreach ($rto->topicDataByIds($ids) as $id => $json) {
