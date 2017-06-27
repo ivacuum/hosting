@@ -60,15 +60,10 @@
   </div>
 </div>
 
-<div class="form-group">
-  <div class="col-md-6 col-md-offset-3 checkbox">
-    <input type="hidden" name="status" value="0">
-    <label>
-      <input type="checkbox" name="status" value="{{ App\Gig::STATUS_PUBLISHED }}" {{ App\Gig::STATUS_PUBLISHED == old('status', @$model->status) ? 'checked' : '' }}>
-      Опубликован
-    </label>
-  </div>
-</div>
+{!! Form::checkbox('status')
+  ->default(App\Gig::STATUS_HIDDEN)
+  ->values([App\Gig::STATUS_PUBLISHED => 'Опубликован'])
+  ->html() !!}
 
 <div class="form-group">
   <label class="col-md-3 control-label">Meta description:</label>
