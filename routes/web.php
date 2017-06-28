@@ -26,10 +26,10 @@ Route::post('ajax/comment/{type}/{id}', 'Ajax@comment')->middleware('auth');
 Route::get('about', 'Home@about');
 
 Route::get('dc', 'Dcpp@index');
-Route::get('dc/{page}', 'Dcpp@page');
+Route::get('dc/{slug}', 'Dcpp@page');
 
 Route::get('docs', 'Docs@index');
-Route::get('docs/{page}', 'Docs@page');
+Route::get('docs/{slug}', 'Docs@page');
 
 Route::get('files/{File}/dl', 'Files@download');
 
@@ -42,9 +42,9 @@ Route::post('gallery/upload', 'Gallery@uploadPost')->middleware('auth');
 Route::get('life', 'Life@index');
 Route::get('life/cities', 'Life@cities');
 Route::get('life/countries', 'Life@countries');
-Route::get('life/countries/{country}', 'Life@country');
+Route::get('life/countries/{slug}', 'Life@country');
 Route::get('life/gigs', 'Life@gigs');
-Route::get('life/{page}', 'Life@page');
+Route::get('life/{slug}', 'Life@page');
 
 Route::get('my', 'My@index')->middleware('auth');
 Route::put('my/avatar', 'My@avatarPut')->middleware('auth');
