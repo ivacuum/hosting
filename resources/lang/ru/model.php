@@ -9,6 +9,8 @@ return [
 
     'comment.status' => 'Состояние',
 
+    'gig.status' => 'Состояние',
+
     'news.title' => 'Заголовок',
     'news.status' => 'Состояние',
 
