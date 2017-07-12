@@ -24,26 +24,26 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="text-right">
+    <th class="text-right text-nowrap">
       <a href="{{ UrlHelper::sort('id') }}">
         {{ trans('model.id') }}
         @include('acp.tpl.sort-arrow', ['key' => 'id'])
       </a>
     </th>
     <th>{{ trans('model.author') }}</th>
-    <th class="text-right">
+    <th class="text-right text-nowrap">
       <a href="{{ UrlHelper::sort('views') }}">
         @svg (eye)
         @include('acp.tpl.sort-arrow', ['key' => 'views'])
       </a>
     </th>
-    <th class="text-right">
+    <th class="text-right text-nowrap">
       <a href="{{ UrlHelper::sort('comments_count') }}">
         @svg (comment-o)
         @include('acp.tpl.sort-arrow', ['key' => 'comments_count'])
       </a>
     </th>
-    <th class="text-right">
+    <th class="text-right text-nowrap">
       <a href="{{ UrlHelper::sort('clicks') }}">
         @svg (magnet)
         @include('acp.tpl.sort-arrow', ['key' => 'clicks'])
