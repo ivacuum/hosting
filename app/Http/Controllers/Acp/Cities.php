@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\City as Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Controllers\Acp\Controller;
 use Ivacuum\Generic\Services\GoogleGeocoder;
@@ -15,13 +16,11 @@ class Cities extends Controller
 
         $models = Model::with('country')
             ->withCount('trips')
-            ->orderBy(Model::titleField());
-
-        if ($country_id) {
-            $models = $models->where('country_id', $country_id);
-        }
-
-        $models = $models->get();
+            ->orderBy(Model::titleField())
+            ->when($country_id, function (Builder $query) use ($country_id) {
+                return $query->where('country_id', $country_id);
+            })
+            ->get();
 
         return view($this->view, compact('models'));
     }

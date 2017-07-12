@@ -2,6 +2,7 @@
 
 use App\Image as Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Images extends Controller
@@ -13,21 +14,19 @@ class Images extends Controller
         $touch = $this->request->input('touch');
         $user_id = $this->request->input('user_id');
 
-        $models = Model::orderBy('id');
+        $models = Model::orderBy('id')
             // ->where('updated_at', '<', Carbon::now()->subYear()->toDateTimeString())
             // ->where('views', '<', 1000);
-
-        if ($year) {
-            $models = $models->whereYear('created_at', $year);
-        }
-        if ($touch) {
-            $models = $models->whereYear('updated_at', Carbon::now()->subYear($touch)->year);
-        }
-        if ($user_id) {
-            $models = $models->where('user_id', $user_id);
-        }
-
-        $models = $models->paginate();
+            ->when($year, function (Builder $query) use ($year) {
+                return $query->whereYear('created_at', $year);
+            })
+            ->when($touch, function (Builder $query) use ($touch) {
+                return $query->whereYear('updated_at', Carbon::now()->subYear($touch)->year);
+            })
+            ->when($user_id, function (Builder $query) use ($user_id) {
+                return $query->where('user_id', $user_id);
+            })
+            ->paginate();
 
         return view($this->view, compact('models', 'touch', 'type', 'user_id', 'year'));
     }
@@ -37,18 +36,11 @@ class Images extends Controller
         $action = $this->request->input('action');
         $ids = $this->request->input('ids');
 
-        switch ($action) {
-            case 'delete':
-
-                Model::destroy($ids);
-
-            break;
+        if ($action === 'delete') {
+            Model::destroy($ids);
         }
 
-        return [
-            'status' => 'OK',
-            'redirect' => $this->request->header('referer'),
-        ];
+        return $this->redirectAfterDestroy();
     }
 
     public function view($id)

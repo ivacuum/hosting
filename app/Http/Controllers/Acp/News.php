@@ -3,6 +3,7 @@
 use App\News as Model;
 use App\Notifications\NewsPublished;
 use App\User;
+use Illuminate\Database\Eloquent\Builder;
 use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class News extends Controller
@@ -13,13 +14,12 @@ class News extends Controller
     {
         $user_id = $this->request->input('user_id');
 
-        $models = Model::withCount('comments')->orderBy('id', 'desc');
-
-        if ($user_id) {
-            $models = $models->where('user_id', $user_id);
-        }
-
-        $models = $models->paginate(20);
+        $models = Model::withCount('comments')
+            ->orderBy('id', 'desc')
+            ->when($user_id, function (Builder $query) use ($user_id) {
+                return $query->where('user_id', $user_id);
+            })
+            ->paginate(20);
 
         return view($this->view, compact('models', 'user_id'));
     }
