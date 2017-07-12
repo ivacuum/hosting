@@ -16,7 +16,9 @@
     @foreach ($models as $model)
       <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
         <td class="tooltipped tooltipped-n" aria-label="{{ $model->country->title }}">
-          {{ $model->country->emoji }}
+          <a href="{{ path('Acp\Countries@show', $model->country) }}">
+            {{ $model->country->emoji }}
+          </a>
         </td>
         <td>
           <a href="{{ path("$self@show", $model) }}">
