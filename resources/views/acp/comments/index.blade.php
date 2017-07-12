@@ -1,5 +1,20 @@
 @extends('acp.list')
 
+@section('toolbar')
+<ul class="nav nav-link-tabs">
+  <li class="{{ is_null($status) ? 'active' : '' }}">
+    <a class="js-pjax" href="{{ UrlHelper::filter(['status' => null]) }}">
+      Все
+    </a>
+  </li>
+  <li class="{{ $status === (string) App\Comment::STATUS_HIDDEN ? 'active' : '' }}">
+    <a class="js-pjax" href="{{ UrlHelper::filter(['status' => App\Comment::STATUS_HIDDEN]) }}">
+      Скрытые
+    </a>
+  </li>
+</ul>
+@endsection
+
 @section('content-list')
 <table class="table-stats table-adaptive">
   <thead>

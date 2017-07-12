@@ -8,6 +8,7 @@ class Comments extends Controller
 {
     public function index()
     {
+        $status = $this->request->input('status');
         $news_id = $this->request->input('news_id');
         $trip_id = $this->request->input('trip_id');
         $user_id = $this->request->input('user_id');
@@ -15,6 +16,9 @@ class Comments extends Controller
 
         $models = Model::with('user')
             ->orderBy('id', 'desc')
+            ->when(!is_null($status), function (Builder $query) use ($status) {
+                return $query->where('status', $status);
+            })
             ->when($news_id, function (Builder $query) use ($news_id) {
                 return $query->where('rel_id', $news_id)->where('rel_type', 'News');
             })
@@ -29,7 +33,7 @@ class Comments extends Controller
             })
             ->paginate(20);
 
-        return view($this->view, compact('models', 'user_id'));
+        return view($this->view, compact('models', 'status', 'user_id'));
     }
 
     protected function rules($model = null)
