@@ -11,6 +11,7 @@ return [
 
     'gig.status' => 'Status',
 
+    'news.id' => 'ID',
     'news.title' => 'Title',
     'news.status' => 'Status',
 

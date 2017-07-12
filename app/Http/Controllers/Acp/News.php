@@ -8,14 +8,17 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class News extends Controller
 {
+    protected $sortable_keys = ['id', 'title', 'views', 'comments_count'];
     protected $show_with_count = ['comments'];
 
     public function index()
     {
         $user_id = $this->request->input('user_id');
 
+        list($sort_key, $sort_dir) = $this->getSortParams();
+
         $models = Model::withCount('comments')
-            ->orderBy('id', 'desc')
+            ->orderBy($sort_key, $sort_dir)
             ->when($user_id, function (Builder $query) use ($user_id) {
                 return $query->where('user_id', $user_id);
             })
