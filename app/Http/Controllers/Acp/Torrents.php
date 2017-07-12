@@ -13,17 +13,21 @@ class Torrents extends Controller
 
     public function index()
     {
+        $status = $this->request->input('status');
         $user_id = $this->request->input('user_id');
 
         $models = Model::with('user')
             ->withCount('comments')
             ->orderBy('id', 'desc')
+            ->when(!is_null($status), function (Builder $query) use ($status) {
+                return $query->where('status', $status);
+            })
             ->when($user_id, function (Builder $query) use ($user_id) {
                 return $query->where('user_id', $user_id);
             })
             ->paginate();
 
-        return view($this->view, compact('models', 'user_id'));
+        return view($this->view, compact('models', 'status', 'user_id'));
     }
 
     public function updateRto($id, Rto $rto)
