@@ -13,7 +13,9 @@ class Cities extends Controller
     {
         $country_id = $this->request->input('country_id');
 
-        $models = Model::with('country')->orderBy(Model::titleField());
+        $models = Model::with('country')
+            ->withCount('trips')
+            ->orderBy(Model::titleField());
 
         if ($country_id) {
             $models = $models->where('country_id', $country_id);

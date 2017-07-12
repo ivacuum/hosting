@@ -8,6 +8,7 @@
     <th>Город</th>
     <th>URL</th>
     <th>IATA</th>
+    <th class="text-right">Поездки</th>
     <th class="text-right">@svg (eye)</th>
     <th></th>
   </tr>
@@ -31,6 +32,13 @@
           </a>
         </td>
         <td>{{ $model->iata }}</td>
+        <td class="text-right">
+          @if ($model->trips_count > 0)
+            <a href="{{ path('Acp\Trips@index', [$model->getForeignKey() => $model]) }}">
+              {{ ViewHelper::number($model->trips_count) }}
+            </a>
+          @endif
+        </td>
         <td class="text-right">
           @if ($model->views > 0)
             {{ ViewHelper::number($model->views) }}
