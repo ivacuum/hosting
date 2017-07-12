@@ -10,7 +10,7 @@ class Countries extends Controller
 
     public function index()
     {
-        $models = Model::orderBy(Model::titleField())->get();
+        $models = Model::withCount('cities')->orderBy(Model::titleField())->get();
 
         return view($this->view, compact('models'));
     }

@@ -7,6 +7,7 @@
     <th></th>
     <th>Страна</th>
     <th>URL</th>
+    <th class="text-right">Города</th>
     <th class="text-right">@svg (eye)</th>
   </tr>
   </thead>
@@ -23,6 +24,13 @@
         <a href="{{ $model->www() }}">
           {{ $model->slug }}
         </a>
+      </td>
+      <td class="text-right">
+        @if ($model->cities_count > 0)
+          <a href="{{ path('Acp\Cities@index', [$model->getForeignKey() => $model]) }}">
+            {{ ViewHelper::number($model->cities_count) }}
+          </a>
+        @endif
       </td>
       <td class="text-right">
         @if ($model->views > 0)
