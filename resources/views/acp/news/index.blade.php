@@ -6,7 +6,7 @@
   <tr>
     <th class="text-right">
       <a href="{{ UrlHelper::sort('id') }}">
-        {{ trans("model.$model_tpl.id") }}
+        {{ trans('model.id') }}
         @include('acp.tpl.sort-arrow', ['key' => 'id'])
       </a>
     </th>

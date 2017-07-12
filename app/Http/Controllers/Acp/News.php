@@ -8,7 +8,7 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class News extends Controller
 {
-    protected $sortable_keys = ['id', 'title', 'views', 'comments_count'];
+    protected $sortable_keys = ['id', 'views', 'comments_count'];
     protected $show_with_count = ['comments'];
 
     public function index()

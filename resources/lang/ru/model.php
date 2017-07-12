@@ -11,7 +11,6 @@ return [
 
     'gig.status' => 'Состояние',
 
-    'news.id' => 'ID',
     'news.title' => 'Заголовок',
     'news.status' => 'Состояние',
 

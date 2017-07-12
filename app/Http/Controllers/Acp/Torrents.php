@@ -9,6 +9,7 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Torrents extends Controller
 {
+    protected $sortable_keys = ['id', 'views', 'comments_count', 'clicks'];
     protected $show_with_count = ['comments'];
 
     public function index()
@@ -16,9 +17,11 @@ class Torrents extends Controller
         $status = $this->request->input('status');
         $user_id = $this->request->input('user_id');
 
+        list($sort_key, $sort_dir) = $this->getSortParams();
+
         $models = Model::with('user')
             ->withCount('comments')
-            ->orderBy('id', 'desc')
+            ->orderBy($sort_key, $sort_dir)
             ->when(!is_null($status), function (Builder $query) use ($status) {
                 return $query->where('status', $status);
             })
