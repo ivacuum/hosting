@@ -4,9 +4,15 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th>Тэг</th>
-    <th class="text-right">@svg (eye)</th>
-    <th class="text-right">@svg (picture-o)</th>
+    <th>
+      @include('acp.tpl.sortable-header', ['key' => 'title', 'order' => 'asc'])
+    </th>
+    <th class="text-right">
+      @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
+    </th>
+    <th class="text-right">
+      @include('acp.tpl.sortable-header', ['key' => 'photos_count', 'svg' => 'picture-o'])
+    </th>
   </tr>
   </thead>
   <tbody>

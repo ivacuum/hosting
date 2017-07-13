@@ -6,11 +6,20 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Tags extends Controller
 {
+    protected $sort_dir = 'asc';
+    protected $sort_key = 'title';
+    protected $sortable_keys = ['title', 'views', 'photos_count'];
     protected $show_with_count = ['photos'];
 
     public function index()
     {
-        $models = Model::withCount('photos')->orderBy(Model::titleField())->get();
+        list($sort_key, $sort_dir) = $this->getSortParams();
+
+        $sort_key = $sort_key === 'title' ? Model::titleField() : $sort_key;
+
+        $models = Model::withCount('photos')
+            ->orderBy($sort_key, $sort_dir)
+            ->get();
 
         return view($this->view, compact('models'));
     }

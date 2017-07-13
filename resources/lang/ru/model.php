@@ -17,6 +17,7 @@ return [
     'news.title' => 'Заголовок',
     'news.status' => 'Состояние',
 
+    'tag.title' => 'Тэг',
     'tag.title_ru' => 'Название',
     'tag.title_en' => 'Название EN',
 
