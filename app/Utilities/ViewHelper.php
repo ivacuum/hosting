@@ -65,6 +65,23 @@ class ViewHelper
         return config('cfg.sitename');
     }
 
+    public function modelFieldTrans($model, $field)
+    {
+        $trans_key = "model.$model.$field";
+
+        if (($text = trans($trans_key)) !== $trans_key) {
+            return $text;
+        }
+
+        $trans_key_general = "model.$field";
+
+        if (($text = trans($trans_key_general)) !== $trans_key_general) {
+            return $text;
+        }
+
+        return $trans_key;
+    }
+
     public function number($number)
     {
         return $this->decimal->format($number);

@@ -6,9 +6,14 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Files extends Controller
 {
+    protected $sortable_keys = ['id', 'size', 'downloads'];
+
     public function index()
     {
-        $models = Model::orderBy('id', 'desc')->paginate();
+        list($sort_key, $sort_dir) = $this->getSortParams();
+
+        $models = Model::orderBy($sort_key, $sort_dir)
+            ->paginate();
 
         return view($this->view, compact('models'));
     }

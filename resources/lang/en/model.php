@@ -9,6 +9,9 @@ return [
 
     'comment.status' => 'Status',
 
+    'file.size' => 'Size',
+    'file.downloads' => 'Downloads',
+
     'gig.status' => 'Status',
 
     'news.title' => 'Title',

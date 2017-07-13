@@ -4,25 +4,16 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="text-right">
-      <a href="{{ UrlHelper::sort('id') }}">
-        {{ trans('model.id') }}
-        @include('acp.tpl.sort-arrow', ['key' => 'id'])
-      </a>
+    <th class="text-right text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
     <th>{{ trans("model.$model_tpl.title") }}</th>
     <th></th>
-    <th class="text-right">
-      <a href="{{ UrlHelper::sort('views') }}">
-        @svg (eye)
-        @include('acp.tpl.sort-arrow', ['key' => 'views'])
-      </a>
+    <th class="text-right text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
     </th>
-    <th class="text-right">
-      <a href="{{ UrlHelper::sort('comments_count') }}">
-        @svg (comment-o)
-        @include('acp.tpl.sort-arrow', ['key' => 'comments_count'])
-      </a>
+    <th class="text-right text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
     </th>
     <th>Дата</th>
   </tr>

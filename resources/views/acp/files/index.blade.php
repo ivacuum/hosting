@@ -4,10 +4,16 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="text-right">ID</th>
+    <th class="text-right">
+      @include('acp.tpl.sortable-header', ['key' => 'id'])
+    </th>
     <th>Название</th>
-    <th class="text-right">Размер</th>
-    <th class="text-right">&darr;</th>
+    <th class="text-right">
+      @include('acp.tpl.sortable-header', ['key' => 'size'])
+    </th>
+    <th class="text-right">
+      @include('acp.tpl.sortable-header', ['key' => 'downloads'])
+    </th>
   </tr>
   </thead>
   <tbody>
