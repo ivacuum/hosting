@@ -7,15 +7,19 @@ use Ivacuum\Generic\Utilities\ExifHelper;
 
 class Photos extends Controller
 {
+    protected $sortable_keys = ['id', 'views'];
+
     public function index()
     {
         $filter = $this->request->input('filter');
+
+        list($sort_key, $sort_dir) = $this->getSortParams();
 
         $models = Model::with('tags')
             ->forTrip($this->request->input('trip_id'))
             ->applyFilter($filter)
             ->forTag($this->request->input('tag_id'))
-            ->orderBy('id', 'desc')
+            ->orderBy($sort_key, $sort_dir)
             ->paginate();
 
         return view($this->view, compact('filter', 'models'));

@@ -24,12 +24,16 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="text-right">ID</th>
+    <th class="text-right text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'id'])
+    </th>
     <th>Фото</th>
     <th>URL</th>
     <th>Тэги</th>
     <th>@svg (map-marker)</th>
-    <th class="text-right">@svg (eye)</th>
+    <th class="text-right text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
+    </th>
     <th></th>
   </tr>
   </thead>
