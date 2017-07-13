@@ -32,6 +32,7 @@ return [
     'torrent.updated_at' => 'Updated on',
 
     'trip.status' => 'Status',
+    'trip.date_start' => 'Start date',
 
     'user.last_login_at' => 'Last login',
 

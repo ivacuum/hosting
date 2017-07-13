@@ -32,6 +32,7 @@ return [
     'torrent.updated_at' => 'Обновлена',
 
     'trip.status' => 'Состояние',
+    'trip.date_start' => 'Дата начала',
 
     'user.last_login_at' => 'Последний вход',
 

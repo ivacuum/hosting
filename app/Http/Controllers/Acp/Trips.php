@@ -9,14 +9,18 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Trips extends Controller
 {
+    protected $sort_key = 'date_start';
+    protected $sortable_keys = ['date_start', 'views', 'comments_count', 'photos_count'];
     protected $show_with_count = ['comments', 'photos'];
 
     public function index()
     {
+        list($sort_key, $sort_dir) = $this->getSortParams();
+
         $models = Model::withCount('comments', 'photos')
             ->forCity($this->request->input('city_id'))
             ->forCountry($this->request->input('country_id'))
-            ->orderBy('date_start', 'desc')
+            ->orderBy($sort_key, $sort_dir)
             ->paginate(100);
 
         return view($this->view, compact('models'));

@@ -7,12 +7,20 @@
     <th>#</th>
     <th>Название</th>
     <th></th>
-    <th>Дата</th>
+    <th>
+      @include('acp.tpl.sortable-header', ['key' => 'date_start'])
+    </th>
     <th>URL</th>
-    <th class="text-right">@svg (eye)</th>
-    <th class="text-right">@svg (comment-o)</th>
+    <th class="text-right text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
+    </th>
+    <th class="text-right text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
+    </th>
     <th></th>
-    <th class="text-right">@svg (picture-o)</th>
+    <th class="text-right text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'photos_count', 'svg' => 'picture-o'])
+    </th>
     <th class="text-right"></th>
   </tr>
   </thead>
