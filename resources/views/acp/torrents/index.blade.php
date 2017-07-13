@@ -58,7 +58,9 @@
       </td>
       <td class="text-right">
         @if ($model->comments_count > 0)
-          {{ ViewHelper::number($model->comments_count) }}
+          <a href="{{ path('Acp\Comments@index', [$model->getForeignKey() => $model]) }}">
+            {{ ViewHelper::number($model->comments_count) }}
+          </a>
         @endif
       </td>
       <td class="text-right">
