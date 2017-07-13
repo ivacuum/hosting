@@ -33,6 +33,8 @@ return [
 
     'trip.status' => 'Состояние',
 
+    'user.last_login_at' => 'Последний вход',
+
     'yandex-user.token' => 'Токен',
     'yandex-user.account' => 'Логин в Яндексе',
 ];

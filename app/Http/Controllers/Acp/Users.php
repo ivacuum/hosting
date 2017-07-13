@@ -7,14 +7,18 @@ use Mail;
 
 class Users extends Controller
 {
+    protected $sortable_keys = ['id', 'last_login_at', 'comments_count', 'images_count', 'torrents_count'];
     protected $show_with_count = ['comments', 'images', 'torrents'];
 
     public function index()
     {
         $filter = $this->request->input('filter');
 
-        $models = Model::applyFilter($filter)
-            ->orderBy('id', 'desc')
+        list($sort_key, $sort_dir) = $this->getSortParams();
+
+        $models = Model::withCount('comments', 'images', 'torrents')
+            ->applyFilter($filter)
+            ->orderBy($sort_key, $sort_dir)
             ->paginate();
 
         return view($this->view, compact('filter', 'models'));

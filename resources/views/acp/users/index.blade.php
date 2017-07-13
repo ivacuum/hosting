@@ -24,11 +24,24 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="text-right">ID</th>
+    <th class="text-right">
+      @include('acp.tpl.sortable-header', ['key' => 'id'])
+    </th>
     <th>Электронная почта</th>
     <th>Активен</th>
+    <th class="text-right text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
+    </th>
+    <th class="text-right text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'images_count', 'svg' => 'picture-o'])
+    </th>
+    <th class="text-right text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'torrents_count', 'svg' => 'magnet'])
+    </th>
     <th>Дата реги</th>
-    <th>Вход</th>
+    <th>
+      @include('acp.tpl.sortable-header', ['key' => 'last_login_at'])
+    </th>
   </tr>
   </thead>
   <tbody>
@@ -43,6 +56,27 @@
       <td>
         @if ($model->status === App\User::STATUS_ACTIVE)
           Да
+        @endif
+      </td>
+      <td class="text-right">
+        @if ($model->comments_count > 0)
+          <a href="{{ path('Acp\Comments@index', [$model->getForeignKey() => $model]) }}">
+            {{ ViewHelper::number($model->comments_count) }}
+          </a>
+        @endif
+      </td>
+      <td class="text-right">
+        @if ($model->images_count > 0)
+          <a href="{{ path('Acp\Images@index', [$model->getForeignKey() => $model]) }}">
+            {{ ViewHelper::number($model->images_count) }}
+          </a>
+        @endif
+      </td>
+      <td class="text-right">
+        @if ($model->torrents_count > 0)
+          <a href="{{ path('Acp\Torrents@index', [$model->getForeignKey() => $model]) }}">
+            {{ ViewHelper::number($model->torrents_count) }}
+          </a>
         @endif
       </td>
       <td>{{ ViewHelper::dateShort($model->created_at) }}</td>

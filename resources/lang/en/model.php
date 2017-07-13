@@ -33,6 +33,8 @@ return [
 
     'trip.status' => 'Status',
 
+    'user.last_login_at' => 'Last login',
+
     'yandex-user.token' => 'Token',
     'yandex-user.account' => 'Username on Yandex',
 ];
