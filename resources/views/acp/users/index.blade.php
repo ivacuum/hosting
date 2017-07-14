@@ -1,4 +1,6 @@
-@extends('acp.list')
+@extends('acp.list', [
+  'search_form' => true,
+])
 
 @section('toolbar')
 <ul class="nav nav-link-tabs">

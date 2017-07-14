@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\User as Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Controllers\Acp\Controller;
 use Mail;
@@ -12,12 +13,20 @@ class Users extends Controller
 
     public function index()
     {
+        $q = $this->request->input('q');
         $filter = $this->request->input('filter');
 
         list($sort_key, $sort_dir) = $this->getSortParams();
 
-        $models = Model::withCount('comments', 'images', 'torrents')
+        $models = Model::withCount(['comments', 'images', 'torrents'])
             ->applyFilter($filter)
+            ->when($q, function (Builder $query) use ($q) {
+                if (is_numeric($q)) {
+                    return $query->where('id', $q);
+                }
+
+                return $query->where('email', 'LIKE', "%{$q}%");
+            })
             ->orderBy($sort_key, $sort_dir)
             ->paginate();
 
