@@ -3,6 +3,7 @@
 return [
     'id' => 'ID',
     'author' => 'Author',
+    'q_placeholder' => 'Search...',
 
     'artist.slug' => 'URL',
     'artist.title' => 'Title',

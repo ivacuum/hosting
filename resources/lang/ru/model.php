@@ -3,6 +3,7 @@
 return [
     'id' => 'ID',
     'author' => 'Автор',
+    'q_placeholder' => 'Поиск...',
 
     'artist.slug' => 'URL',
     'artist.title' => 'Название',
