@@ -7,6 +7,7 @@ import YandexMetrika from './yandex-metrika'
 import './events'
 import './highlight'
 import './life'
+import './nav-reveal'
 import './shortcuts'
 import './yandex-dns'
 
