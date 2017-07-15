@@ -28,12 +28,35 @@
       }
     }
 
-    &:last-child a { margin-right: 0; }
+    &:last-child a {
+      margin-right: 18px; // ширина градиента
+
+      @media (min-width: $screen-sm-min) { margin-right: 0; }
+    }
   }
 
   @media (max-width: $screen-xs-max) {
     white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
+  }
+}
+
+.nav-link-tabs-fader {
+  @media (max-width: $screen-xs-max) {
+    position: relative;
+
+    &:after {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 18px;
+      height: 100%;
+      top: 0;
+      right: 0;
+      background: linear-gradient(to right, rgba(255,255,255,0), #fff);
+      z-index: 10;
+      pointer-events: none;
+    }
   }
 }
