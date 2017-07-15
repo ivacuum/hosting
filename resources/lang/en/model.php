@@ -10,11 +10,16 @@ return [
 
     'comment.status' => 'Status',
 
+    'country.title' => 'Country',
+    'country.trips_count' => 'Trips',
+    'country.cities_count' => 'Cities',
+
     'file.size' => 'Size',
     'file.downloads' => 'Downloads',
 
     'gig.status' => 'Status',
 
+    'news.html' => 'HTML',
     'news.title' => 'Title',
     'news.status' => 'Status',
 

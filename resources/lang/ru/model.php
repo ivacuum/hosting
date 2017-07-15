@@ -10,11 +10,16 @@ return [
 
     'comment.status' => 'Состояние',
 
+    'country.title' => 'Страна',
+    'country.trips_count' => 'Поездки',
+    'country.cities_count' => 'Города',
+
     'file.size' => 'Размер',
     'file.downloads' => 'Скачивания',
 
     'gig.status' => 'Состояние',
 
+    'news.html' => 'HTML',
     'news.title' => 'Заголовок',
     'news.status' => 'Состояние',
 
