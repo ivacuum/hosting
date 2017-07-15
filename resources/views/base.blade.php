@@ -30,7 +30,7 @@
 @show
 
 @section('bottom-tabbar')
-<header class="bottom-tabbar-container">
+<header class="bottom-tabbar-container revealed js-nav-reveal">
   <nav class="bottom-tabbar">
     <a class="bottom-tab {{ $self === 'Home' ? 'active' : '' }}" href="{{ path('Home@index') }}">
       @svg (home)
