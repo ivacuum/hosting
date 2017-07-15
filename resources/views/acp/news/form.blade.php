@@ -20,8 +20,4 @@
   App\News::STATUS_PUBLISHED => 'Опубликована',
 ])->html() !!}
 
-<div class="form-group mt-4 {{ $errors->has('html') ? 'has-error' : '' }}">
-  <div class="col-xs-12">
-    <textarea required class="form-control textarea-autosized textarea-borderless-focus js-autosize-textarea" name="html">{{ old('html', @$model->html) }}</textarea>
-  </div>
-</div>
+{!! Form::textarea('html')->wide()->required()->html() !!}
