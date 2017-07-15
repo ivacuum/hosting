@@ -5,10 +5,19 @@
   <thead>
   <tr>
     <th></th>
-    <th>Страна</th>
+    <th class="text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'title', 'order' => 'asc'])
+    </th>
     <th>URL</th>
-    <th class="text-right">Города</th>
-    <th class="text-right">@svg (eye)</th>
+    <th class="text-right text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'cities_count'])
+    </th>
+    <th class="text-right text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'trips_count'])
+    </th>
+    <th class="text-right text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
+    </th>
   </tr>
   </thead>
   <tbody>
@@ -29,6 +38,13 @@
         @if ($model->cities_count > 0)
           <a href="{{ path('Acp\Cities@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->cities_count) }}
+          </a>
+        @endif
+      </td>
+      <td class="text-right">
+        @if ($model->trips_count > 0)
+          <a href="{{ path('Acp\Trips@index', [$model->getForeignKey() => $model]) }}">
+            {{ ViewHelper::number($model->trips_count) }}
           </a>
         @endif
       </td>

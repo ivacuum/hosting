@@ -6,11 +6,20 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Countries extends Controller
 {
+    protected $sort_dir = 'asc';
+    protected $sort_key = 'title';
+    protected $sortable_keys = ['title', 'cities_count', 'trips_count', 'views'];
     protected $show_with_count = ['cities', 'trips'];
 
     public function index()
     {
-        $models = Model::withCount('cities')->orderBy(Model::titleField())->get();
+        list($sort_key, $sort_dir) = $this->getSortParams();
+
+        $sort_key = $sort_key === 'title' ? Model::titleField() : $sort_key;
+
+        $models = Model::withCount(['cities', 'trips'])
+            ->orderBy($sort_key, $sort_dir)
+            ->get();
 
         return view($this->view, compact('models'));
     }
