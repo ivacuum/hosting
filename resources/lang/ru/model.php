@@ -8,6 +8,9 @@ return [
     'artist.slug' => 'URL',
     'artist.title' => 'Название',
 
+    'city.title' => 'Город',
+    'city.trips_count' => 'Поездки',
+
     'comment.status' => 'Состояние',
 
     'country.title' => 'Страна',

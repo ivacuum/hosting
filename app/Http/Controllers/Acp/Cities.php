@@ -8,15 +8,22 @@ use Ivacuum\Generic\Services\GoogleGeocoder;
 
 class Cities extends Controller
 {
+    protected $sort_dir = 'asc';
+    protected $sort_key = 'title';
+    protected $sortable_keys = ['title', 'trips_count', 'views'];
     protected $show_with_count = ['trips'];
 
     public function index()
     {
         $country_id = $this->request->input('country_id');
 
+        list($sort_key, $sort_dir) = $this->getSortParams();
+
+        $sort_key = $sort_key === 'title' ? Model::titleField() : $sort_key;
+
         $models = Model::with('country')
             ->withCount('trips')
-            ->orderBy(Model::titleField())
+            ->orderBy($sort_key, $sort_dir)
             ->when($country_id, function (Builder $query) use ($country_id) {
                 return $query->where('country_id', $country_id);
             })

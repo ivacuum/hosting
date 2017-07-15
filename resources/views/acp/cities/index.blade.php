@@ -5,11 +5,17 @@
   <thead>
   <tr>
     <th></th>
-    <th>Город</th>
+    <th class="text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'title', 'order' => 'asc'])
+    </th>
     <th>URL</th>
     <th>IATA</th>
-    <th class="text-right">Поездки</th>
-    <th class="text-right">@svg (eye)</th>
+    <th class="text-right text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'trips_count'])
+    </th>
+    <th class="text-right text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
+    </th>
     <th></th>
   </tr>
   </thead>
