@@ -120,6 +120,8 @@ class Application {
 
   onPjaxComplete() {
     $(document).on('pjax:complete', () => {
+      $('.js-flash-notification .alert').alert('close')
+
       this.metrika.pjaxHit()
       this.pjax.onComplete()
 
