@@ -12,7 +12,7 @@ class Torrents extends Controller
 
     public function index()
     {
-        $q = $this->request->input('q');
+        $q = trim($this->request->input('q'));
         $category = null;
         $category_id = $this->request->input('category_id');
 
