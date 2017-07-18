@@ -20,6 +20,8 @@ Route::get('auth/google/callback', 'Auth\Google@callback');
 Route::get('auth/vk', 'Auth\Vk@index');
 Route::get('auth/vk/callback', 'Auth\Vk@callback');
 
+Route::get('ajax/chat', 'Ajax@chat')->middleware('auth');
+Route::post('ajax/chat', 'Ajax@chatPost')->middleware('auth');
 Route::post('ajax/comment/{type}/{id}', 'Ajax@comment')->middleware('auth');
 // Route::post('ajax/feedback', 'Ajax@feedback');
 

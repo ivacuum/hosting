@@ -1,4 +1,6 @@
-@extends('torrents.base')
+@extends('torrents.base', [
+  'websockets' => ViewHelper::chatTesters(),
+])
 
 @section('content')
 <div class="row">
@@ -29,6 +31,9 @@
     </nav>
   </aside>
   <div class="col-md-9">
+    @if (ViewHelper::chatTesters())
+      <chat></chat>
+    @endif
     @php ($last_date = null)
     @if (sizeof($torrents))
       @foreach ($torrents as $torrent)

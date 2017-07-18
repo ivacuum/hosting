@@ -18,6 +18,11 @@ class ViewHelper
         return config('cfg.avatar_bg')[$id % 15];
     }
 
+    public function chatTesters()
+    {
+        return \Auth::check() && (\Auth::user()->isRoot() || \Auth::user()->id === 257);
+    }
+
     public function dateShort(Carbon $date)
     {
         static $year;

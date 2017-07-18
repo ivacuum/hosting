@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\ChatMessage;
 use App\Comment;
 use App\News;
 use App\Notifications\NewsCommented;
@@ -10,6 +11,57 @@ use App\Trip;
 
 class Ajax extends Controller
 {
+    public function chat()
+    {
+        $messages = ChatMessage::with('user')
+            ->where('status', ChatMessage::STATUS_PUBLISHED)
+            ->latest('id')
+            ->take(20)
+            ->get()
+            ->reverse()
+            ->map(function ($item) {
+                /* @var \App\ChatMessage $item */
+                return [
+                    'date' => $item->created_at->toDateString(),
+                    'time' => $item->created_at->toTimeString(),
+                    'text' => $item->text,
+                    'author' => $item->user->displayName(),
+                ];
+            })
+            ->values();
+
+        return compact('messages');
+    }
+
+    public function chatPost()
+    {
+        $this->validate($this->request, [
+            'mail' => 'empty',
+            'text' => 'required|max:1000',
+        ]);
+
+        $text = trim($this->request->input('text'));
+
+        $chat_message = ChatMessage::create([
+            'ip' => $this->request->ip(),
+            'text' => $text,
+            'html' => $text,
+            'status' => ChatMessage::STATUS_PUBLISHED,
+            'user_id' => \Auth::user()->id,
+        ]);
+
+        $message = [
+            'date' => $chat_message->created_at->toDateString(),
+            'time' => $chat_message->created_at->toTimeString(),
+            'text' => $text,
+            'author' => \Auth::user()->displayName(),
+        ];
+
+        broadcast(new \App\Events\ChatMessage($message));
+
+        return compact('message');
+    }
+
     public function comment($type, $id)
     {
         $mail = $this->request->input('mail');

@@ -1,0 +1,18 @@
+.chat-container {
+  overflow: auto;
+  max-height: 10rem;
+  padding: 0.5rem;
+  background: #efefef;
+  border: 1px solid #ddd;
+}
+
+.chat-date {
+  font-family: $font-family-monospace;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.chat-message {
+  word-break: break-all;
+  word-wrap: break-word;
+}
