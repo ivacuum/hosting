@@ -24,6 +24,7 @@ $dark-bg-lighter-color: lighten($dark-bg-color, 10%);
   hr { border-color: $dark-border-color; }
 
   pre,
+  .chat-container,
   .form-control {
     background-color: lighten($dark-bg-color, 15%);
     border-color: $dark-border-color;
