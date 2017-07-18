@@ -52,6 +52,21 @@ $dark-bg-lighter-color: lighten($dark-bg-color, 10%);
 
   .border-bottom { border-color: $dark-border-color; }
 
+  .bottom-tab {
+    color: $dark-text-color;
+
+    &:hover,
+    &:focus,
+    &.active {
+      color: $dark-link-color;
+    }
+  }
+
+  .bottom-tabbar-container {
+    background: $dark-bg-lighter-color;
+    border-color: $dark-border-color;
+  }
+
   .comment-container { border-color: $dark-border-color; }
 
   .dropdown-menu {
