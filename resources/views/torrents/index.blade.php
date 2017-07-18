@@ -1,5 +1,5 @@
 @extends('torrents.base', [
-  'websockets' => ViewHelper::chatTesters(),
+  'websockets' => Auth::check(),
 ])
 
 @section('content')
@@ -31,7 +31,7 @@
     </nav>
   </aside>
   <div class="col-md-9">
-    @if (ViewHelper::chatTesters())
+    @if (Auth::check())
       <chat></chat>
     @endif
     @php ($last_date = null)
