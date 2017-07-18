@@ -117,6 +117,7 @@
   'locale' => $locale,
   'loggedIn' => Auth::check(),
   'csrfToken' => csrf_token(),
+  'socketIoHost' => config('cfg.socketio_host'),
   'yandexMetrikaId' => 5266444,
 ]); ?>
 </script>
@@ -128,6 +129,9 @@
 <script src="/assets/bootstrap.js"></script>
 <script src="/assets/vue.js?2.4.1"></script>
 <script src="/assets/axios.js?0.16.2"></script>
+@if (!empty($websockets))
+  <script src="{{ config('cfg.socketio_js') }}"></script>
+@endif
 <script src="/assets/fotorama-settings.js"></script>
 <script src="/assets/fotorama.js"></script>
 <script src="{{ mix('/assets/app.js') }}"></script>

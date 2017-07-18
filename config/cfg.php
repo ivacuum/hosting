@@ -27,6 +27,8 @@ return [
     ],
     'metrics_address' => env('METRICS_ADDRESS'),
     'sitename' => 'vacuum.kaluga',
+    'socketio_host' => env('SOCKETIO_HOST'),
+    'socketio_js' => env('SOCKETIO_JS'),
     'telegram' => [
         'admin_id' => env('TELEGRAM_ADMIN_ID'),
     ],

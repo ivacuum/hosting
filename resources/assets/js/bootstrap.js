@@ -8,3 +8,13 @@ Vue.component('images-uploader', require('./components/ImagesUploader.vue'))
 Vue.component('rutracker-post', require('./components/RutrackerPost.vue'))
 Vue.component('torrent-title', require('./components/TorrentTitle.vue'))
 Vue.component('youtube', require('./components/Youtube.vue'))
+
+import Echo from 'laravel-echo'
+
+if (typeof io !== 'undefined') {
+  window.Echo = new Echo({
+    broadcaster: 'socket.io',
+    host: window['AppOptions'].socketIoHost,
+    csrfToken: window['AppOptions'].csrfToken
+  })
+}
