@@ -1,5 +1,5 @@
 @extends('torrents.base', [
-  'websockets' => Auth::check(),
+  'websockets' => Auth::check() && empty(request()->query()),
 ])
 
 @section('content')
@@ -31,7 +31,7 @@
     </nav>
   </aside>
   <div class="col-md-9">
-    @if (Auth::check())
+    @if (Auth::check() && empty(request()->query()))
       <chat></chat>
     @endif
     @php ($last_date = null)
