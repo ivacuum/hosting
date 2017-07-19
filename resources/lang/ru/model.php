@@ -20,6 +20,7 @@ return [
     'file.size' => 'Размер',
     'file.downloads' => 'Скачивания',
 
+    'gig.date' => 'Дата',
     'gig.status' => 'Состояние',
 
     'news.html' => 'HTML',

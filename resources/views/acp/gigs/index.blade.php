@@ -7,9 +7,13 @@
     <th>#</th>
     <th>Название</th>
     <th></th>
-    <th>Дата</th>
+    <th class="text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'date'])
+    </th>
     <th>URL</th>
-    <th class="text-right">@svg (eye)</th>
+    <th class="text-right text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
+    </th>
     <th></th>
   </tr>
   </thead>

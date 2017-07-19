@@ -6,9 +6,14 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Gigs extends Controller
 {
+    protected $sort_key = 'date';
+    protected $sortable_keys = ['date', 'views'];
+
     public function index()
     {
-        $models = Model::orderBy('date', 'desc')->get();
+        list($sort_key, $sort_dir) = $this->getSortParams();
+
+        $models = Model::orderBy($sort_key, $sort_dir)->get();
 
         return view($this->view, compact('models'));
     }

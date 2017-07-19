@@ -20,6 +20,7 @@ return [
     'file.size' => 'Size',
     'file.downloads' => 'Downloads',
 
+    'gig.date' => 'Date',
     'gig.status' => 'Status',
 
     'news.html' => 'HTML',
