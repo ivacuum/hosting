@@ -5,5 +5,5 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
 });
 
 Broadcast::channel('chat.typing', function ($user) {
-    return ['auth' => $user->displayName()];
+    return ['auth' => $user->publicName()];
 });
