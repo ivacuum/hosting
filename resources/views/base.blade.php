@@ -132,8 +132,8 @@
 @if (!empty($websockets))
   <script src="{{ config('cfg.socketio_js') }}"></script>
 @endif
-<script src="/assets/fotorama-settings.js"></script>
-<script src="/assets/fotorama.js"></script>
+<script src="/assets/fotorama-settings.js?4.6.4"></script>
+<script src="/assets/fotorama.js?4.6.4"></script>
 <script src="{{ mix('/assets/app.js') }}"></script>
 @stack('js')
 @section('counters')
