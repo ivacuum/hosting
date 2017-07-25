@@ -31,7 +31,6 @@ class SiteTest extends TestCase
         $this->get('/promocodes-coupons/airbnb')->assertStatus(200);
         $this->get('/promocodes-coupons/digitalocean')->assertStatus(200);
         $this->get('/promocodes-coupons/firstvds')->assertStatus(200);
-        $this->get('/promocodes-coupons/timeweb')->assertStatus(200);
         $this->get('/retracker')->assertStatus(200);
         $this->get('/retracker/dev')->assertStatus(200);
         $this->get('/retracker/usage')->assertStatus(200);
