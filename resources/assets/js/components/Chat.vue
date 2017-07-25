@@ -105,6 +105,10 @@ export default {
     },
 
     subscribe() {
+      if (typeof Echo === 'undefined') {
+        return false
+      }
+
       Echo.channel('chat')
         .listen('ChatMessage', (e) => {
           const is_scrolled_down = this.isScrolledDown(this.getChatContainer())
