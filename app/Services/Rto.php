@@ -13,7 +13,10 @@ class Rto
 
     public function __construct()
     {
-        $this->client = new Client(['base_uri' => self::API_ENDPOINT]);
+        $this->client = new Client([
+            'timeout' => 5,
+            'base_uri' => self::API_ENDPOINT,
+        ]);
     }
 
     public function findTopicId($input)
