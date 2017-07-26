@@ -45,21 +45,25 @@ export default {
 
   methods: {
     uploadFile(file) {
-      let form = new FormData()
+      return new Promise((resolve) => {
+        let form = new FormData()
 
-      $(this.append).each((index, item) => {
-        form.append(item.name, item.value)
-      })
+        $(this.append).each((index, item) => {
+          form.append(item.name, item.value)
+        })
 
-      form.append('file', file)
+        form.append('file', file)
 
-      axios.post(this.action, form).then((response) => {
-        this.thumbnails.push(response.data)
-        this.uploaded++
+        axios.post(this.action, form).then((response) => {
+          this.thumbnails.push(response.data)
+          this.uploaded++
 
-        if (this.uploaded === this.total) {
-          this.uploading = false
-        }
+          if (this.uploaded === this.total) {
+            this.uploading = false
+          }
+
+          resolve()
+        })
       })
     },
 
@@ -67,8 +71,10 @@ export default {
       this.uploading = true
       this.total += files.length
 
+      let chain = Promise.resolve()
+
       for (let i = 0, length = files.length; i < length; i++) {
-        setTimeout(() => this.uploadFile(files[i]), 1000 * i)
+        chain = chain.then(() => this.uploadFile(files[i]))
       }
     }
   }
