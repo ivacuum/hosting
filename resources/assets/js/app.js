@@ -45,6 +45,14 @@ class Application {
     })
   }
 
+  /*
+  errorHandler() {
+    window.addEventListener('error', function (e) {
+      console.log(e)
+    })
+  }
+  */
+
   initVue() {
     new Vue({
       el: '#pjax_container'
