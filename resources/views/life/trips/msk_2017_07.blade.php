@@ -15,6 +15,8 @@
 
 @ru
   <p>Министерство иностранных дел.</p>
+@en
+  <p>Ministry of Foreign Affairs.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_3041.jpg'])
 
@@ -28,6 +30,8 @@
 
 @ru
   <p>Троллейбус.</p>
+@en
+  <p>Trolleybus.</p>
 @endlang
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3047.jpg',
@@ -50,22 +54,30 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_3052.jpg'])
 
 @ru
-  <p>Александровский парк.</p>
+  <p>Александровский сад.</p>
+@en
+  <p>Alexander Garden.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_3054.jpg'])
 
 @ru
   <p>Красная площадь.</p>
+@en
+  <p>Red Square.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_3057.jpg'])
 
 @ru
   <p>Ветошный переулок.</p>
+@en
+  <p>Side street.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_3059.jpg'])
 
 @ru
   <p>В обратную сторону.</p>
+@en
+  <p>In the opposite direction.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_3062.jpg'])
 
@@ -76,6 +88,8 @@
 
 @ru
   <p>Дело к закату.</p>
+@en
+  <p>Sunset time.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_3065.jpg'])
 
