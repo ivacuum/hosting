@@ -1,5 +1,6 @@
 <?php namespace App\Listeners;
 
+use App\CacheKey;
 use Illuminate\Cache\Repository;
 
 class ForgetTripsCache
@@ -13,7 +14,7 @@ class ForgetTripsCache
 
     public function handle()
     {
-        $this->cache->forget('published-trips-by-country');
-        $this->cache->forget('published-trips-by-city');
+        $this->cache->forget(CacheKey::TRIPS_PUBLISHED_BY_COUNTRY);
+        $this->cache->forget(CacheKey::TRIPS_PUBLISHED_BY_CITY);
     }
 }
