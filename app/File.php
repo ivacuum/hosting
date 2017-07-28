@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class File extends Model
 {
-    protected $guarded = ['created_at', 'updated_at'];
+    protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $perPage = 50;
 
     // Methods

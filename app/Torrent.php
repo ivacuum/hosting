@@ -62,7 +62,7 @@ class Torrent extends Model
 
     public function commentsPublished()
     {
-        return $this->morphMany(Comment::class, 'rel')->where('status', Comment::STATUS_PUBLISHED);
+        return $this->comments()->where('status', Comment::STATUS_PUBLISHED);
     }
 
     public function user()

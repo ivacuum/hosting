@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Country extends Model
 {
-    protected $fillable = ['title_ru', 'title_en', 'slug', 'emoji'];
+    protected $guarded = ['created_at', 'updated_at', 'goto'];
 
     // Relations
     public function cities()

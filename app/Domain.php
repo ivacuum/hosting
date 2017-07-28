@@ -50,7 +50,7 @@ class Domain extends Model
     const NS0 = 'dns1.yandex.net';
     const NS1 = 'dns2.yandex.net';
 
-    protected $guarded = ['created_at', 'updated_at', 'raw'];
+    protected $guarded = ['created_at', 'updated_at', 'raw', 'goto'];
     protected $hidden = ['cms_pass', 'ftp_pass', 'ssh_pass', 'db_pass'];
     protected $dates = ['mailed_at', 'queried_at', 'registered_at', 'paid_till'];
     protected $perPage = 50;

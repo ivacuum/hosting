@@ -62,7 +62,7 @@ class Trip extends Model
 
     public function commentsPublished()
     {
-        return $this->morphMany(Comment::class, 'rel')->where('status', Comment::STATUS_PUBLISHED);
+        return $this->comments()->where('status', Comment::STATUS_PUBLISHED);
     }
 
     public function photos()
@@ -87,12 +87,10 @@ class Trip extends Model
 
     public function scopeForCountry(Builder $query, $id = null)
     {
-        if (is_null($id)) {
-            return $query;
-        }
-
-        return $query->whereHas('city.country', function (Builder $query) use ($id) {
-            $query->where('country_id', $id);
+        return $query->unless(is_null($id), function (Builder $query) use ($id) {
+            return $query->whereHas('city.country', function (Builder $query) use ($id) {
+                $query->where('country_id', $id);
+            });
         });
     }
 
