@@ -28,6 +28,9 @@ use Illuminate\Notifications\Notifiable;
  *
  * @property \Illuminate\Support\Collection $notifications
  *
+ * @method \Illuminate\Database\Eloquent\Builder active()
+ * @method \Illuminate\Database\Eloquent\Builder applyFilter($filter)
+ * @method \Illuminate\Database\Eloquent\Builder forAnnouncement()
  * @method \Illuminate\Database\Eloquent\Builder unreadNotifications()
  *
  * @mixin \Eloquent
@@ -51,11 +54,6 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(Comment::class);
-    }
-
-    public function commentsPublished()
-    {
-        return $this->morphMany(Comment::class, 'rel')->where('status', Comment::STATUS_PUBLISHED);
     }
 
     public function images()
@@ -87,17 +85,11 @@ class User extends Authenticatable
 
     public function scopeApplyFilter(Builder $query, $filter = null)
     {
-        if (is_null($filter)) {
-            return $query;
-        }
-
-        if ($filter === 'weekly-login') {
+        return $query->when($filter === 'weekly-login', function (Builder $query) {
             return $query->where('last_login_at', '>', Carbon::now()->subWeek()->toDateTimeString());
-        } elseif ($filter === 'monthly-login') {
+        })->when($filter === 'monthly-login', function (Builder $query) {
             return $query->where('last_login_at', '>', Carbon::now()->subMonth()->toDateTimeString());
-        }
-
-        return $query;
+        });
     }
 
     public function scopeForAnnouncement(Builder $query)

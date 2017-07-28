@@ -4,7 +4,6 @@ use App\User as Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Controllers\Acp\Controller;
-use Mail;
 
 class Users extends Controller
 {
@@ -38,7 +37,7 @@ class Users extends Controller
         $route = path('Acp\Home@index', [], true);
         $vars  = compact('user', 'password', 'route');
 
-        Mail::send('emails.users.credentials', $vars, function ($mail) use ($model, $route) {
+        \Mail::send('emails.users.credentials', $vars, function ($mail) use ($model, $route) {
             $mail->to($model->email)->subject("Доступ к {$route}");
         });
 
