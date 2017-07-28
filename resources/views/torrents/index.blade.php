@@ -32,17 +32,17 @@
   </aside>
   <div class="col-md-9">
     @if (Auth::check() && empty(request()->query()))
-      <chat></chat>
+      <chat v-cloak></chat>
     @endif
     @php ($last_date = null)
     @if (sizeof($torrents))
       @foreach ($torrents as $torrent)
         @if (is_null($last_date) || !$torrent->registered_at->isSameDay($last_date))
-          <h4 class="{{ $loop->first ? 'mt-0' : 'mt-4' }}">{{ $torrent->fullDate() }}</h4>
+          <h4 class="{{ $loop->first ? 'mt-0' : 'mt-4' }}" v-cloak>{{ $torrent->fullDate() }}</h4>
           @php ($last_date = $torrent->registered_at)
         @endif
         @php ($category = TorrentCategoryHelper::find($torrent->category_id))
-        <div class="torrents-list-container">
+        <div class="torrents-list-container" v-cloak>
           <div class="torrents-list-cell torrents-list-icon torrent-icon" title="{{ $category['title'] }}">
             @php ($icon = $category['icon'] ?? 'file-text-o')
             @svg ($icon)
