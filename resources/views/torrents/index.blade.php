@@ -67,7 +67,7 @@
         </div>
       @endforeach
 
-      @include('tpl.paginator', ['paginator' => $torrents])
+      @include('tpl.paginator', ['paginator' => $torrents, 'cloak' => true])
     @else
       <p class="alert alert-warning">Подходящих раздач не найдено.</p>
     @endif
