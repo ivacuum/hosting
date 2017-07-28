@@ -50,52 +50,34 @@ class Photo extends Model
     // Scopes
     public function scopeApplyFilter(Builder $query, $filter = null)
     {
-        if (is_null($filter)) {
-            return $query;
-        }
-
-        if ($filter === 'no-geo') {
-            return $query->notOnMap();
-        } elseif ($filter === 'no-tags') {
+        return $query->when($filter === 'no-geo', function (Builder $query) {
+            return $query->where('lat', '')->where('lon', '');
+        })->when($filter === 'no-tags', function (Builder $query) {
             return $query->doesntHave('tags');
-        }
-
-        return $query;
+        });
     }
 
     public function scopeForTag(Builder $query, $id = null)
     {
-        if (is_null($id)) {
-            return $query;
-        }
-
-        return $query->whereHas('tags', function (Builder $query) use ($id) {
-            $query->where('tag_id', $id);
+        return $query->unless(is_null($id), function (Builder $query) use ($id) {
+            return $query->whereHas('tags', function (Builder $query) use ($id) {
+                $query->where('tag_id', $id);
+            });
         });
     }
 
     public function scopeForTrip(Builder $query, $id = null)
     {
-        if (is_null($id)) {
-            return $query;
-        }
-
-        return $query->where('rel_id', $id)->where('rel_type', 'Trip');
+        return $query->unless(is_null($id), function (Builder $query) use ($id) {
+            return $query->where('rel_id', $id)->where('rel_type', 'Trip');
+        });
     }
 
     public function scopeForTrips(Builder $query, $ids = [])
     {
-        if (empty($ids)) {
-            return $query;
-        }
-
-        return $query->whereIn('rel_id', $ids)->where('rel_type', 'Trip');
-    }
-
-    public function scopeNotOnMap(Builder $query)
-    {
-        return $query->where('lat', '')
-            ->where('lon', '');
+        return $query->unless(empty($ids), function (Builder $query) use ($ids) {
+            return $query->whereIn('rel_id', $ids)->where('rel_type', 'Trip');
+        });
     }
 
     public function scopeOnMap(Builder $query)

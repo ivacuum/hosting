@@ -27,6 +27,7 @@ use Symfony\Component\Finder\Finder;
  * @property \App\City    $city
  * @property \Illuminate\Support\Collection $comments
  * @property \App\Country $country
+ * @property \Illuminate\Database\Eloquent\Collection $photos
  *
  * @property-read string  $title
  * @property-read string  $meta_title
@@ -44,6 +45,9 @@ class Trip extends Model
 
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $dates = ['date_start', 'date_end'];
+    protected $casts = [
+        'status' => 'int',
+    ];
 
     // Relations
     public function city()
