@@ -34,6 +34,11 @@ class Tag extends Model
         return $this->morphedByMany(Photo::class, 'rel', 'taggable');
     }
 
+    public function photos_published()
+    {
+        return $this->photos()->where('status', Photo::STATUS_PUBLISHED);
+    }
+
     // Events
     protected static function boot()
     {

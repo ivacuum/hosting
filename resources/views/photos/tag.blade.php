@@ -1,9 +1,9 @@
 @extends('photos.base')
 
 @section('content')
-<h3 class="mt-0">#{{ $tag->title }} <small>{{ sizeof($tag->photos) }}</small></h3>
+<h3 class="mt-0">#{{ $tag->title }} <small>{{ sizeof($photos) }}</small></h3>
 <div class="gallery-flex">
-  @foreach ($tag->photos as $photo)
+  @foreach ($photos as $photo)
     <div class="gallery-image mb-4">
       <a class="screenshot-link" href="{{ path("$self@show", [$photo, $tag->getForeignKey() => $tag]) }}">
         <img class="image-200 screenshot" src="{{ $photo->thumbnailUrl() }}">

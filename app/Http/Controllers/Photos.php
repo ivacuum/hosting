@@ -219,6 +219,11 @@ class Photos extends Controller
 
     public function tag(Tag $tag)
     {
+        $photos = Photo::forTag($tag->id)
+            ->published()
+            ->orderBy('id', 'desc')
+            ->get();
+
         \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.tags'), 'photos/tags');
         \Breadcrumbs::push($tag->breadcrumb());
@@ -227,7 +232,7 @@ class Photos extends Controller
 
         $meta_title = "#{$tag->title}";
 
-        return view($this->view, compact('meta_title', 'tag'));
+        return view($this->view, compact('meta_title', 'photos', 'tag'));
     }
 
     public function tags()
@@ -243,7 +248,10 @@ class Photos extends Controller
             ->get()
             ->pluck('tag_id');
 
-        $tags = Tag::withCount('photos')->whereIn('id', $tags_ids)->orderBy(Tag::titleField())->get();
+        $tags = Tag::withCount('photos_published')
+            ->whereIn('id', $tags_ids)
+            ->orderBy(Tag::titleField())
+            ->get();
 
         return view($this->view, compact('tags'));
     }
