@@ -63,6 +63,7 @@ class Photos extends Controller
             'lon' => $coords['lon'] ?? '',
             'slug' => "{$model->slug}/{$filename}",
             'views' => 0,
+            'status' => Model::STATUS_HIDDEN,
             'user_id' => $this->request->user()->id,
         ]);
 

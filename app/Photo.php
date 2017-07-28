@@ -20,12 +20,19 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property \App\User $user
  *
+ * @method static \Illuminate\Database\Eloquent\Builder applyFilter($filter)
+ * @method static \Illuminate\Database\Eloquent\Builder forTag($id)
+ * @method static \Illuminate\Database\Eloquent\Builder forTrip($id)
+ * @method static \Illuminate\Database\Eloquent\Builder forTrips($ids)
+ * @method static \Illuminate\Database\Eloquent\Builder onMap()
+ * @method static \Illuminate\Database\Eloquent\Builder published()
+ *
  * @mixin \Eloquent
  */
 class Photo extends Model
 {
-    const STATUS_INACTIVE = 0;
-    const STATUS_ACTIVE = 1;
+    const STATUS_HIDDEN = 0;
+    const STATUS_PUBLISHED = 1;
 
     protected $guarded = ['rel_id', 'rel_type', 'created_at', 'updated_at', 'goto'];
     protected $perPage = 50;
@@ -84,6 +91,11 @@ class Photo extends Model
     {
         return $query->where('lat', '<>', '')
             ->where('lon', '<>', '');
+    }
+
+    public function scopePublished(Builder $query)
+    {
+        return $query->where('status', self::STATUS_PUBLISHED);
     }
 
     // Methods

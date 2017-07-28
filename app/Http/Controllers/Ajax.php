@@ -15,7 +15,7 @@ class Ajax extends Controller
     {
         $messages = ChatMessage::with('user')
             ->where('status', ChatMessage::STATUS_PUBLISHED)
-            ->latest('id')
+            ->orderBy('id', 'desc')
             ->take(20)
             ->get()
             ->reverse()

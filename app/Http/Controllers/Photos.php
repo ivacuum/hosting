@@ -13,7 +13,9 @@ class Photos extends Controller
     {
         \Breadcrumbs::push(trans('photos.index'));
 
-        $photos = Photo::orderBy('id', 'desc')->paginate(20);
+        $photos = Photo::published()
+            ->orderBy('id', 'desc')
+            ->paginate(20);
 
         return view($this->view, compact('photos'));
     }
@@ -48,7 +50,10 @@ class Photos extends Controller
 
         abort_if(empty($ids), 404);
 
-        $photos = Photo::forTrips($ids)->latest('id')->get();
+        $photos = Photo::forTrips($ids)
+            ->published()
+            ->orderBy('id', 'desc')
+            ->get();
 
         \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.cities'), 'photos/cities');
@@ -99,7 +104,10 @@ class Photos extends Controller
 
         abort_if(empty($ids), 404);
 
-        $photos = Photo::forTrips($ids)->latest('id')->get();
+        $photos = Photo::forTrips($ids)
+            ->published()
+            ->orderBy('id', 'desc')
+            ->get();
 
         \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.countries'), 'photos/countries');
@@ -136,13 +144,15 @@ class Photos extends Controller
     {
         $photo = Photo::with('rel', 'rel.city', 'rel.city.country', 'tags')->findOrFail($id);
 
+        abort_unless($photo->status === Photo::STATUS_PUBLISHED, 404);
+
         $tag_id = $this->request->input('tag_id');
         $city_id = $this->request->input('city_id');
         $trip_id = $this->request->input('trip_id');
         $country_id = $this->request->input('country_id');
 
-        $next = Photo::where('id', '>', $photo->id);
-        $prev = Photo::where('id', '<', $photo->id)->orderBy('id', 'desc');
+        $next = Photo::where('id', '>', $photo->id)->published();
+        $prev = Photo::where('id', '<', $photo->id)->published()->orderBy('id', 'desc');
 
         if ($tag_id) {
             // Просмотр в пределах одного тэга
@@ -242,7 +252,10 @@ class Photos extends Controller
     {
         abort_unless($trip->status === Trip::STATUS_PUBLISHED, 404);
 
-        $photos = Photo::forTrip($trip->id)->latest('id')->get();
+        $photos = Photo::forTrip($trip->id)
+            ->published()
+            ->orderBy('id', 'desc')
+            ->get();
 
         \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.trips'), 'photos/trips');
@@ -274,6 +287,7 @@ class Photos extends Controller
         return \Cache::remember($cache_entry, $minutes, function () use ($trip_id) {
             $photos = Photo::with('rel')
                 ->forTrip($trip_id)
+                ->published()
                 ->onMap()
                 ->orderBy('id', 'asc')
                 ->get();

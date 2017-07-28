@@ -4,6 +4,7 @@ use App\Events\DomainWhoisUpdated;
 use App\Listeners\EmailWhoisChanges;
 use App\Listeners\ForgetTripsCache;
 use App\Listeners\LogUserLogin;
+use App\Listeners\ToggleTripPhotosStatus;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Ivacuum\Generic\Providers\MetricsTrait;
@@ -14,7 +15,10 @@ class EventServiceProvider extends ServiceProvider
 
     protected $listen = [
         'eloquent.saved: App\City' => [ForgetTripsCache::class],
-        'eloquent.saved: App\Trip' => [ForgetTripsCache::class],
+        'eloquent.saved: App\Trip' => [
+            ToggleTripPhotosStatus::class,
+            ForgetTripsCache::class
+        ],
 
         DomainWhoisUpdated::class => [EmailWhoisChanges::class],
         Login::class => [LogUserLogin::class],
