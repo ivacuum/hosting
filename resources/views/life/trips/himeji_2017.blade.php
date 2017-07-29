@@ -144,6 +144,8 @@
 
 @ru
   <p>Лавочка.</p>
+@en
+  <p>Bench.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_4478.jpg'])
 

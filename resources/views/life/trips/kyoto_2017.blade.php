@@ -508,11 +508,15 @@
 
 @ru
   <p>Лавочка.</p>
+@en
+  <p>Bench.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_6575.jpg'])
 
 @ru
   <p>Еще лавочка.</p>
+@en
+  <p>Another bench.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_6660.jpg'])
 

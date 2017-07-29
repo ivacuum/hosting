@@ -25,6 +25,8 @@
 
 @ru
   <p>Лавочка.</p>
+@en
+  <p>Bench.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_1850.jpg'])
 
@@ -111,6 +113,8 @@
 
 @ru
   <p>Лавочка.</p>
+@en
+  <p>Bench.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_1884.jpg'])
 
