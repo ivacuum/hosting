@@ -65,13 +65,10 @@ class Torrents extends Controller
     protected function rules($model = null)
     {
         return [
-            'html' => 'required',
-            'title' => 'required',
             'rto_id' => [
                 'required',
                 Rule::unique('torrents', 'rto_id')->ignore($model->id ?? null),
             ],
-            'info_hash' => 'required',
         ];
     }
 }
