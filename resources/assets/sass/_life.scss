@@ -112,6 +112,8 @@
 
   p + .pic-container { margin-top: -.5rem; }
 
+  .windows.is-desktop & { font-weight: 400; }
+
   @media (min-width: $screen-md-min) { font-size: 18px; }
 }
 

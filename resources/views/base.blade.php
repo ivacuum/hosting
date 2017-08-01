@@ -23,8 +23,7 @@
   <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">
   @stack('head')
 </head>
-<body class="body-with-bottom-tabbar {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ ViewHelper::isMobile(Request::server('HTTP_USER_AGENT')) ? 'is-mobile' : 'is-desktop' }}">
-
+<body class="body-with-bottom-tabbar {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ new \Ivacuum\Generic\Utilities\EnvironmentForCss(Request::server('HTTP_USER_AGENT')) }}">
 @section('header-navbar')
   @include('tpl.header-navbar')
 @show
