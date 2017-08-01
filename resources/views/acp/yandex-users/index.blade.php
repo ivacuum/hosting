@@ -12,7 +12,7 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-      <td class="text-right">{{ $loop->iteration }}</td>
+      <td class="text-right">{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
       <td>
         <a href="{{ path("$self@show", $model) }}">
           {{ $model->account }}
