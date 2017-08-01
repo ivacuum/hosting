@@ -1,5 +1,30 @@
 @extends('acp.list')
 
+@section('toolbar')
+<ul class="nav nav-link-tabs">
+  <li class="{{ is_null($status) ? 'active' : '' }}">
+    <a class="js-pjax" href="{{ UrlHelper::filter(['status' => null]) }}">
+      Все
+    </a>
+  </li>
+  <li class="{{ $status === (string) App\Trip::STATUS_PUBLISHED ? 'active' : '' }}">
+    <a class="js-pjax" href="{{ UrlHelper::filter(['status' => App\Trip::STATUS_PUBLISHED]) }}">
+      Опубликованные
+    </a>
+  </li>
+  <li class="{{ $status === (string) App\Trip::STATUS_INACTIVE ? 'active' : '' }}">
+    <a class="js-pjax" href="{{ UrlHelper::filter(['status' => App\Trip::STATUS_INACTIVE]) }}">
+      Пишутся
+    </a>
+  </li>
+  <li class="{{ $status === (string) App\Trip::STATUS_HIDDEN ? 'active' : '' }}">
+    <a class="js-pjax" href="{{ UrlHelper::filter(['status' => App\Trip::STATUS_HIDDEN]) }}">
+      Скрытые
+    </a>
+  </li>
+</ul>
+@endsection
+
 @section('content-list')
 <table class="table-stats table-adaptive">
   <thead>
@@ -39,7 +64,7 @@
             @svg (eye-slash)
           </span>
         @elseif ($model->status === App\Trip::STATUS_INACTIVE)
-          <span class="tooltipped tooltipped-n" aria-label="Заметка неактивна">
+          <span class="tooltipped tooltipped-n" aria-label="Заметка пишется">
             @svg (pencil)
           </span>
         @endif

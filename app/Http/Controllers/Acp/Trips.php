@@ -4,6 +4,7 @@ use App\City;
 use App\Notifications\TripPublished;
 use App\Trip as Model;
 use App\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Controllers\Acp\Controller;
 
@@ -15,15 +16,20 @@ class Trips extends Controller
 
     public function index()
     {
+        $status = $this->request->input('status');
+
         list($sort_key, $sort_dir) = $this->getSortParams();
 
         $models = Model::withCount('comments', 'photos')
             ->forCity($this->request->input('city_id'))
             ->forCountry($this->request->input('country_id'))
+            ->unless(is_null($status), function (Builder $query) use ($status) {
+                return $query->where('status', $status);
+            })
             ->orderBy($sort_key, $sort_dir)
             ->paginate(100);
 
-        return view($this->view, compact('models'));
+        return view($this->view, compact('models', 'status'));
     }
 
     public function notify($id)
