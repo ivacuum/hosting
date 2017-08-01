@@ -21,21 +21,7 @@
   </div>
 </div>
 
-<div class="form-group {{ $errors->has('country_id') ? 'has-error' : '' }}">
-  <label class="col-md-3 control-label required">Страна:</label>
-  <div class="col-md-6">
-    <div class="form-select">
-      <select class="form-control" name="country_id">
-        <option value="0">—</option>
-        @foreach (App\Country::orderBy("title_{$locale}")->get(['id', 'title_ru', 'title_en']) as $country)
-          <option value="{{ $country->id }}" {{ $country->id == old('country_id', @$model->country_id) ? 'selected' : '' }}>
-            {{ $country->title }}
-          </option>
-        @endforeach
-      </select>
-    </div>
-  </div>
-</div>
+{!! Form::select('country_id')->required()->values(App\Country::forInputSelect())->html() !!}
 
 <div class="form-group">
   <label class="col-md-3 control-label">Код IATA:</label>

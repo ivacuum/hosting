@@ -16,21 +16,7 @@
   </div>
 @endif
 
-<div class="form-group {{ $errors->has('city_id') ? 'has-error' : '' }}">
-  <label class="col-md-3 control-label required">Город:</label>
-  <div class="col-md-6">
-    <div class="form-select">
-      <select class="form-control" name="city_id">
-        <option value="0">—</option>
-        @foreach (App\City::orderBy("title_{$locale}")->get() as $row)
-          <option value="{{ $row->id }}" {{ $row->id == old('city_id', @$model->city_id) ? 'selected' : '' }}>
-            {{ $row->title }}
-          </option>
-        @endforeach
-      </select>
-    </div>
-  </div>
-</div>
+{!! Form::select('city_id')->required()->values(App\City::forInputSelect())->html() !!}
 
 <div class="form-group {{ $errors->has('slug') ? 'has-error' : '' }}">
   <label class="col-md-3 control-label required">URL:</label>

@@ -49,6 +49,13 @@ class Country extends Model
         return "{$this->emoji} {$this->title}";
     }
 
+    public static function forInputSelect()
+    {
+        $title_field = self::titleField();
+
+        return self::orderBy($title_field)->get(['id', $title_field])->pluck($title_field, 'id');
+    }
+
     public function initial()
     {
         return mb_substr($this->title, 0, 1);

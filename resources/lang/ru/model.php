@@ -3,6 +3,9 @@
 return [
     'id' => 'ID',
     'author' => 'Автор',
+    'city_id' => 'Город',
+    'artist_id' => 'Артист',
+    'country_id' => 'Страна',
     'q_placeholder' => 'Поиск...',
 
     'artist.slug' => 'URL',
