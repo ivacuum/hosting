@@ -5,7 +5,6 @@ use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\TrimStrings;
 use App\Http\Middleware\VerifyCsrfToken;
-use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Auth\Middleware\Authorize;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -14,6 +13,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Ivacuum\Generic\Middleware\Auth;
 use Ivacuum\Generic\Middleware\NoCacheHeaders;
 
 class Kernel extends HttpKernel
@@ -42,7 +42,7 @@ class Kernel extends HttpKernel
 
     protected $routeMiddleware = [
         'can' => Authorize::class,
-        'auth' => Authenticate::class,
+        'auth' => Auth::class,
         'admin' => Admin::class,
         'guest' => RedirectIfAuthenticated::class,
         'bindings' => SubstituteBindings::class,
