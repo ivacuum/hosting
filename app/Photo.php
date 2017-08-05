@@ -109,6 +109,13 @@ class Photo extends Model
         return $this->lat && $this->lon;
     }
 
+    public function newSlugPrefix($new_prefix)
+    {
+        list($prefix, $filename) = explode('/', $this->slug);
+
+        $this->slug = "{$new_prefix}/{$filename}";
+    }
+
     public function originalUrl()
     {
         return "https://life.ivacuum.ru/{$this->slug}";

@@ -5,6 +5,7 @@ use App\Listeners\EmailWhoisChanges;
 use App\Listeners\ForgetTripsCache;
 use App\Listeners\LogUserLogin;
 use App\Listeners\ToggleTripPhotosStatus;
+use App\Listeners\TripPhotosSlugPrefixUpdate;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Ivacuum\Generic\Providers\MetricsTrait;
@@ -19,6 +20,7 @@ class EventServiceProvider extends ServiceProvider
             ToggleTripPhotosStatus::class,
             ForgetTripsCache::class
         ],
+        'eloquent.updated: App\Trip' => [TripPhotosSlugPrefixUpdate::class],
 
         DomainWhoisUpdated::class => [EmailWhoisChanges::class],
         Login::class => [LogUserLogin::class],
