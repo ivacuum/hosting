@@ -3266,9 +3266,9 @@ kind-of@^4.0.0:
   dependencies:
     is-buffer "^1.1.5"
 
-laravel-echo@1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/laravel-echo/-/laravel-echo-1.3.1.tgz#580d76c5463b71ccad90f9284c9c40d2728af665"
+laravel-echo@1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/laravel-echo/-/laravel-echo-1.3.2.tgz#986a5abded5e9ba179bb92c915adb687b035e961"
 
 laravel-mix@0.12.1:
   version "0.12.1"
