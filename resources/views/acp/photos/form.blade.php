@@ -1,14 +1,12 @@
 @if (!$model->exists)
+  {!! Form::select('trip_id')->required()->classes(['js-append-formdata'])->values(App\Trip::forInputSelect())->html() !!}
+
   <div class="form-group">
     <label class="col-md-3 control-label">{{ trans('acp.photos.index') }}:</label>
     <div class="col-md-6">
       <images-uploader action="{{ path("$self@store") }}" append=".js-append-formdata"></images-uploader>
     </div>
   </div>
-
-  @if (Request::has('trip_id'))
-    <input class="js-append-formdata" type="hidden" name="trip_id" value="{{ Request::input('trip_id') }}">
-  @endif
 @else
   <div class="img-container">
     <img src="{{ $model->originalUrl() }}">

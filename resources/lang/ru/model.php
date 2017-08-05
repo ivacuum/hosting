@@ -4,6 +4,7 @@ return [
     'id' => 'ID',
     'author' => 'Автор',
     'city_id' => 'Город',
+    'trip_id' => 'Поездка',
     'artist_id' => 'Артист',
     'country_id' => 'Страна',
     'q_placeholder' => 'Поиск...',

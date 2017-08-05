@@ -184,6 +184,11 @@ class Trip extends Model
         return touch(base_path("resources/views/{$tpl}.blade.php"));
     }
 
+    public static function forInputSelect()
+    {
+        return self::orderBy('date_start', 'desc')->get(['id', 'slug'])->pluck('slug', 'id');
+    }
+
     public function localizedDate()
     {
         if ($this->date_end->isSameDay($this->date_start)) {

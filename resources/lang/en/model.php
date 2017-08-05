@@ -4,6 +4,7 @@ return [
     'id' => 'ID',
     'author' => 'Author',
     'city_id' => 'City',
+    'trip_id' => 'Trip',
     'artist_id' => 'Artist',
     'country_id' => 'Country',
     'q_placeholder' => 'Search...',
