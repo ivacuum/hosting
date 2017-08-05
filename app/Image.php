@@ -38,7 +38,7 @@ class Image extends Model
     {
         parent::boot();
 
-        static::deleting(function (Image $image) {
+        static::deleted(function (Image $image) {
             $image->deleteFiles();
         });
     }
