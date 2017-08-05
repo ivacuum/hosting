@@ -13,8 +13,8 @@
 
 <ul>
   <li>
-    <a class="link" href="http://promodj.com/soundlabel/groups/379178/Chillout_Breeze_v_iTunes">Chillout Breeze by M.SOUND</a>
-    <span class="text-muted">более 30 часовых сетов</span>
+    <a class="link" href="https://vk.com/audios-23004022">Chillout Breeze by M.SOUND</a>
+    <span class="text-muted">более 50 часовых сетов</span>
   </li>
 </ul>
 @endsection
