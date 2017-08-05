@@ -33,11 +33,16 @@ class Images extends Controller
 
     public function batch()
     {
-        $action = $this->request->input('action');
         $ids = $this->request->input('ids');
+        $action = $this->request->input('action');
 
-        if ($action === 'delete') {
-            Model::destroy($ids);
+        $photos = Model::find($ids);
+
+        foreach ($photos as $photo) {
+            /* @var Model $photo */
+            if ($action === 'delete') {
+                $photo->delete();
+            }
         }
 
         return $this->redirectAfterDestroy();
