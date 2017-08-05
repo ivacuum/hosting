@@ -83,7 +83,7 @@ class Domain extends Model
     }
 
     // Events
-    public static function boot()
+    protected static function boot()
     {
         parent::boot();
 

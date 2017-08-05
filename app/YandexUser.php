@@ -26,7 +26,7 @@ class YandexUser extends Model
     }
 
     // Events
-    public static function boot()
+    protected static function boot()
     {
         parent::boot();
 
