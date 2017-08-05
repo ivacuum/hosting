@@ -3,4 +3,5 @@
 .d-inline-block { display: inline-block; }
 .d-table { display: table; }
 .d-table-cell { display: table-cell; }
+.is-desktop .desktop-hidden { display: none; }
 [v-cloak] { display: none; }

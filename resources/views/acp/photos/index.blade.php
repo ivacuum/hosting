@@ -64,7 +64,7 @@
         @endif
       </td>
       <td>
-        <div class="visible-xs-block">
+        <div class="desktop-hidden">
           <a class="btn btn-default" href="{{ UrlHelper::edit($self, $model) }}">
             @svg (pencil)
           </a>
