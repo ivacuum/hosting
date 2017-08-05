@@ -24,7 +24,7 @@ class Ajax extends Controller
                 return [
                     'date' => $item->created_at->toDateString(),
                     'time' => $item->created_at->toTimeString(),
-                    'text' => $item->text,
+                    'html' => $item->html,
                     'author' => $item->user->publicName(),
                 ];
             })
@@ -45,7 +45,6 @@ class Ajax extends Controller
         $chat_message = ChatMessage::create([
             'ip' => $this->request->ip(),
             'text' => $text,
-            'html' => $text,
             'status' => ChatMessage::STATUS_PUBLISHED,
             'user_id' => \Auth::user()->id,
         ]);
@@ -53,7 +52,7 @@ class Ajax extends Controller
         $message = [
             'date' => $chat_message->created_at->toDateString(),
             'time' => $chat_message->created_at->toTimeString(),
-            'text' => $text,
+            'html' => $chat_message->html,
             'author' => \Auth::user()->publicName(),
         ];
 

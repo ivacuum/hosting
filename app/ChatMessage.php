@@ -23,12 +23,25 @@ class ChatMessage extends Model
     const STATUS_HIDDEN = 0;
     const STATUS_PUBLISHED = 1;
 
-    protected $guarded = ['created_at', 'updated_at', 'goto'];
+    protected $guarded = ['html', 'created_at', 'updated_at', 'goto'];
 
     // Relations
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    // Attributes
+    public function setTextAttribute($value)
+    {
+        $this->attributes['text'] = $this->attributes['html'] = htmlspecialchars($value);
+
+        // Можно включить после добавления в Parsedown безопасного режима
+        /*
+        $this->attributes['html'] = \Parsedown::instance()
+            ->setMarkupEscaped(true)
+            ->text($value);
+        */
     }
 
     // Methods

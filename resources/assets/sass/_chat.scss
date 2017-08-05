@@ -1,6 +1,6 @@
 .chat-container {
   overflow: auto;
-  height: 10rem;
+  height: 12rem;
   padding: 0.5rem;
   background: #efefef;
   border: 1px solid #ddd;
@@ -15,4 +15,9 @@
 .chat-message {
   word-break: break-all;
   word-wrap: break-word;
+
+  p {
+    display: inline-block;
+    margin: 0;
+  }
 }
