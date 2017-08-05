@@ -90,6 +90,12 @@ class Ajax extends Controller
         return $this->redirectToComment($type, $model, $comment);
     }
 
+    /**
+     * @param  string  $type
+     * @param  integer $id
+     * @return \App\News|\App\Trip|\App\Torrent
+     * @throws \Exception
+     */
     protected function notifiableModel($type, $id)
     {
         if ($type === 'news') {
@@ -101,7 +107,7 @@ class Ajax extends Controller
         }
 
         if ($type === 'torrent') {
-            return Torrent::findOrFail($id);
+            return Torrent::published()->findOrFail($id);
         }
 
         throw new \Exception('Не выбран объект для комментирования');
