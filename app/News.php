@@ -20,6 +20,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Collection $comments
  * @property \App\User $user
  *
+ * @method static \Illuminate\Database\Eloquent\Builder published()
+ *
  * @mixin \Eloquent
  */
 class News extends Model
