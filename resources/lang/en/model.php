@@ -14,6 +14,9 @@ return [
     'city.title' => 'City',
     'city.trips_count' => 'Trips',
 
+    'chat-message.text' => 'Text',
+    'chat-message.status' => 'Status',
+
     'comment.status' => 'Status',
 
     'country.title' => 'Country',

@@ -1,6 +1,7 @@
 <?php namespace App\Providers;
 
 use App\Artist;
+use App\ChatMessage;
 use App\City;
 use App\Client;
 use App\Comment;
@@ -49,6 +50,7 @@ class AuthServiceProvider extends ServiceProvider
         Country::class => Base::class,
         Torrent::class => WithoutCreate::class,
         YandexUser::class => Base::class,
+        ChatMessage::class => WithoutCreate::class,
         Notification::class => WithoutCreateAndEdit::class,
         ExternalIdentity::class => WithoutCreateAndEdit::class,
     ];

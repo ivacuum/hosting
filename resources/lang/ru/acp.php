@@ -22,6 +22,10 @@ return [
     'clients.index' => 'Клиенты',
     'clients.create' => 'Новый клиент',
 
+    'chat-messages.edit' => 'Редактирование сообщения',
+    'chat-messages.show' => 'Сообщение',
+    'chat-messages.index' => 'Чат',
+
     'comments.edit' => 'Редактирование комментария',
     'comments.show' => 'Комментарий',
     'comments.index' => 'Комментарии',

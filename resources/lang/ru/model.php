@@ -11,6 +11,9 @@ return [
     'artist.slug' => 'URL',
     'artist.title' => 'Название',
 
+    'chat-message.text' => 'Текст',
+    'chat-message.status' => 'Состояние',
+
     'city.title' => 'Город',
     'city.trips_count' => 'Поездки',
 

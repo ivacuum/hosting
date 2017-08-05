@@ -22,6 +22,10 @@ return [
     'clients.index' => 'Clients',
     'clients.create' => 'New client',
 
+    'chat-messages.edit' => 'Edit',
+    'chat-messages.show' => 'Chat message',
+    'chat-messages.index' => 'Chat messages',
+
     'comments.edit' => 'Edit',
     'comments.show' => 'Comment',
     'comments.index' => 'Comments',

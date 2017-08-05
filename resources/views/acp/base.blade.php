@@ -95,6 +95,11 @@
           </a>
           <ul class="dropdown-menu">
             <li>
+              <a href="{{ $locale_uri }}/acp/chat-messages">
+                {{ trans('acp.chat-messages.index') }}
+              </a>
+            </li>
+            <li>
               <a href="{{ $locale_uri }}/acp/comments">
                 {{ trans('acp.comments.index') }}
               </a>

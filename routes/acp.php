@@ -12,6 +12,14 @@ Route::group(['prefix' => 'artists'], function () {
     Route::get('{id}/edit', 'Acp\Artists@edit');
 });
 
+Route::group(['prefix' => 'chat-messages'], function () {
+    Route::get('/', 'Acp\ChatMessages@index');
+    Route::get('{id}', 'Acp\ChatMessages@show');
+    Route::put('{id}', 'Acp\ChatMessages@update');
+    Route::delete('{id}', 'Acp\ChatMessages@destroy');
+    Route::get('{id}/edit', 'Acp\ChatMessages@edit');
+});
+
 Route::group(['prefix' => 'cities'], function () {
     Route::get('/', 'Acp\Cities@index');
     Route::post('/', 'Acp\Cities@store');
