@@ -5,6 +5,7 @@ return [
     'file' => 'File',
     'slug' => 'URL',
     'author' => 'Author',
+    'status' => 'Status',
     'city_id' => 'City',
     'trip_id' => 'Trip',
     'artist_id' => 'Artist',
@@ -28,7 +29,6 @@ return [
     'file.size' => 'Size',
     'file.title' => 'Title',
     'file.folder' => 'Folder',
-    'file.project' => 'Project',
     'file.extension' => 'Extension',
     'file.downloads' => 'Downloads',
 

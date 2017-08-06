@@ -3,6 +3,7 @@
 return [
     'file' => 'Файл',
     'author' => 'Автор',
+    'status' => 'Состояние',
     'city_id' => 'Город',
     'trip_id' => 'Поездка',
     'artist_id' => 'Артист',
@@ -26,7 +27,6 @@ return [
     'file.size' => 'Размер',
     'file.title' => 'Название',
     'file.folder' => 'Папка',
-    'file.project' => 'Проект',
     'file.extension' => 'Расширение',
     'file.downloads' => 'Скачивания',
 

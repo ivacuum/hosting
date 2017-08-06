@@ -29,7 +29,28 @@ class Files extends Controller
                 'required',
                 Rule::unique('files', 'slug')->ignore($model->id ?? null),
             ],
+            'file' => [
+                empty($model->exists) ? 'required' : '',
+                'file',
+            ],
             'title' => 'required',
         ];
+    }
+
+    protected function storeModel()
+    {
+        $file = $this->request->file('file');
+        $folder = $this->request->input('folder');
+
+        /* @var Model $model */
+        $model = $this->newModel()->fill($this->request->all());
+        $model->size = $file->getSize();
+        $model->extension = $file->getClientOriginalExtension();
+        $model->downloads = 0;
+        $model->save();
+
+        \Storage::disk('files')->putFileAs($folder, $file, $model->basename());
+
+        return $model;
     }
 }

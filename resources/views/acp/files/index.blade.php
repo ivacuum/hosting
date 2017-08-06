@@ -8,6 +8,7 @@
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
     <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'title') }}</th>
+    <th></th>
     <th class="text-right">
       @include('acp.tpl.sortable-header', ['key' => 'size'])
     </th>
@@ -24,6 +25,13 @@
         <a href="{{ path("$self@show", $model) }}">
           {{ $model->title }}
         </a>
+      </td>
+      <td>
+        @if ($model->status === App\File::STATUS_HIDDEN)
+          <span class="tooltipped tooltipped-n" aria-label="Файл скрыт">
+            @svg (eye-slash)
+          </span>
+        @endif
       </td>
       <td class="text-right text-muted">{{ ViewHelper::size($model->size) }}</td>
       <td class="text-right">{{ ViewHelper::number($model->downloads) }}</td>

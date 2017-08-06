@@ -1,27 +1,39 @@
 <?php namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Файлы для скачивания
  *
  * @property integer $id
- * @property string  $project
  * @property string  $folder
  * @property string  $title
  * @property string  $slug
  * @property integer $size
  * @property string  $extension
+ * @property integer $status
  * @property integer $downloads
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder published()
  *
  * @mixin \Eloquent
  */
 class File extends Model
 {
-    protected $guarded = ['created_at', 'updated_at', 'goto'];
+    const STATUS_HIDDEN = 0;
+    const STATUS_PUBLISHED = 1;
+
+    protected $guarded = ['created_at', 'updated_at', 'goto', 'file'];
     protected $perPage = 50;
+
+    // Scopes
+    public function scopePublished(Builder $query)
+    {
+        return $query->where('status', self::STATUS_PUBLISHED);
+    }
 
     // Methods
     public function basename()
@@ -36,12 +48,7 @@ class File extends Model
 
     public function downloadPath()
     {
-        return "https://ivacuum.org/d/{$this->folderPath()}/{$this->basename()}";
-    }
-
-    public function folderPath()
-    {
-        return implode('/', [$this->project, $this->folder]);
+        return "https://ivacuum.org/d/" . ($this->folder ? "{$this->folder}/" : '') . "{$this->basename()}";
     }
 
     public function headerBasename()

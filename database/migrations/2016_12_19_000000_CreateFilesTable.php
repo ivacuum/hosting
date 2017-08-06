@@ -9,12 +9,12 @@ class CreateFilesTable extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('project');
             $table->string('folder');
             $table->string('title');
             $table->string('slug');
             $table->unsignedBigInteger('size')->default(0);
             $table->string('extension', 25);
+            $table->unsignedTinyInteger('status')->default(0);
             $table->unsignedInteger('downloads')->default(0);
             $table->timestamps();
         });

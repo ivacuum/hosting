@@ -33,6 +33,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'files' => [
+            'driver'     => 'local',
+            'root'       => env('FILES_ROOT', public_path('uploads/files')),
+            'visibility' => 'public',
+        ],
+
         'ftp' => [
             'driver'   => 'ftp',
             'host'     => env('FTP_HOST'),
