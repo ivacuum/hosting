@@ -7,27 +7,18 @@
 ])
 
 @section('download_latest')
-<a class="btn btn-success" href="{{ path('Files@download', 145) }}">
+<a class="btn btn-success mr-2" href="{{ path('Files@download', 145) }}">
   @svg (windows)
-  {{ trans('dcpp.download') }} 32bit
-  &middot;
-  {{ ViewHelper::size(3006464) }}
+  {{ trans('dcpp.download') }} 32-Bit &middot; {{ ViewHelper::size(3006464) }}
 </a>
-&nbsp;
-<a class="btn btn-success" href="{{ path('Files@download', 146) }}">
+<a class="btn btn-success mr-2" href="{{ path('Files@download', 146) }}">
   @svg (windows)
-  {{ trans('dcpp.download') }} 64bit
-  &middot;
-  {{ ViewHelper::size(4219940) }}
+  {{ trans('dcpp.download') }} 64-Bit &middot; {{ ViewHelper::size(4219940) }}
 </a>
 @ru
-  &nbsp;
-  <a class="btn btn-primary" href="{{ path('Files@download', 28) }}">
-    Файл русификации
-    &middot;
-    {{ ViewHelper::size(108876) }}
+  <a class="btn btn-primary mr-2" href="{{ path('Files@download', 28) }}">
+    Файл русификации &middot; {{ ViewHelper::size(108876) }}
   </a>
-&nbsp;
   <a class="btn btn-default" href="{{ path('Dcpp@page', 'rus_setup') }}">Инструкция по русификации</a>
 @endlang
 @endsection

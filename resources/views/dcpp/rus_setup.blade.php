@@ -11,16 +11,11 @@
 @ru
   <h1 class="mt-0">Инструкция по русификации</h1>
   <p>
-    <a class="btn btn-primary" href="{{ path('Files@download', 22) }}">
-      Файл русификации ApexDC++
-      &middot;
-      {{ ViewHelper::size(90145) }}
+    <a class="btn btn-primary mr-2" href="{{ path('Files@download', 157) }}">
+      Файл русификации ApexDC++ &middot; {{ ViewHelper::size(21464) }}
     </a>
-    &nbsp;
     <a class="btn btn-primary" href="{{ path('Files@download', 28) }}">
-      Файл русификации GreyLinkDC++
-      &middot;
-      {{ ViewHelper::size(108876) }}
+      Файл русификации GreyLinkDC++ &middot; {{ ViewHelper::size(108876) }}
     </a>
   </p>
 

@@ -2,6 +2,7 @@
   'meta_title' => trans('meta_title.dcpp.apexdc'),
   'software_title' => trans('dcpp.apexdc'),
   'software' => [
+    ['version' => '1.6.4', 'id' => 154, 'size' => 23018257, 'dl_suffix' => ''],
     ['version' => '1.4.3', 'id' => 141, 'size' => 12395187, 'dl_suffix' => ''],
     ['version' => '1.4.2', 'id' => 137, 'dl_suffix' => ''],
   ],
@@ -10,20 +11,18 @@
 
 @section('download_latest')
 <p>
-  <a class="btn btn-success" href="{{ path('Files@download', 141) }}">
+  <a class="btn btn-success mr-2" href="{{ path('Files@download', 154) }}">
     @svg (windows)
-    {{ trans('dcpp.download') }}
-    &middot;
-    {{ ViewHelper::size(12395187) }}
+    {{ trans('dcpp.download') }} 32-Bit &middot; {{ ViewHelper::size(23018257) }}
+  </a>
+  <a class="btn btn-success mr-2" href="{{ path('Files@download', 155) }}">
+    @svg (windows)
+    {{ trans('dcpp.download') }} 64-Bit &middot; {{ ViewHelper::size(24717370) }}
   </a>
   @ru
-    &nbsp;
-    <a class="btn btn-primary" href="{{ path('Files@download', 22) }}">
-      Файл русификации
-      &middot;
-      {{ ViewHelper::size(90145) }}
+    <a class="btn btn-primary mr-2" href="{{ path('Files@download', 157) }}">
+      Файл русификации &middot; {{ ViewHelper::size(21464) }}
     </a>
-    &nbsp;
     <a class="btn btn-default" href="{{ path('Dcpp@page', 'rus_setup') }}">Инструкция по русификации</a>
   @endlang
 </p>

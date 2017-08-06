@@ -15,18 +15,13 @@
     <li>
       <p>Скачайте программу-клиент <a class="link" href="{{ path('Dcpp@page', 'strongdc') }}">StrongDC++</a>.</p>
       <p>
-        <a class="btn btn-success" href="{{ path('Files@download', 132) }}">
+        <a class="btn btn-success mr-2" href="{{ path('Files@download', 132) }}">
           @svg (windows)
-          {{ trans('dcpp.download') }} 32bit
-          &middot;
-          {{ ViewHelper::size(8046097) }}
+          {{ trans('dcpp.download') }} 32-Bit &middot; {{ ViewHelper::size(8046097) }}
         </a>
-        &nbsp;
         <a class="btn btn-success" href="{{ path('Files@download', 134) }}">
           @svg (windows)
-          {{ trans('dcpp.download') }} 64bit
-          &middot;
-          {{ ViewHelper::size(16138442) }}
+          {{ trans('dcpp.download') }} 64-Bit &middot; {{ ViewHelper::size(16138442) }}
         </a>
       </p>
     </li>
