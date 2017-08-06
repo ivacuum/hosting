@@ -6,7 +6,7 @@ class Files extends Controller
 {
     public function index()
     {
-        \Breadcrumbs::push(trans('files.index'));
+        \Breadcrumbs::push(trans('menu.files'));
 
         $models = File::published()->orderBy('id', 'desc')->paginate();
 

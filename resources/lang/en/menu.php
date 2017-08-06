@@ -8,6 +8,7 @@ return [
     'home' => 'Home',
     'life' => 'Life',
     'site' => 'Site',
+    'files' => 'Files',
     'trips' => 'Trips',
     'cities' => 'Cities',
     'artists' => 'Artists',
