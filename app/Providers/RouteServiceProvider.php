@@ -23,10 +23,6 @@ class RouteServiceProvider extends ServiceProvider
         \Route::model('Tag', Tag::class);
         \Route::model('Torrent', Torrent::class);
         \Route::model('Trip', Trip::class);
-
-        \Route::bind('UserWithCounts', function ($id) {
-            return User::withCount('comments', 'images', 'torrents')->findOrFail($id);
-        });
     }
 
     public function map()

@@ -104,4 +104,4 @@ Route::get('torrents/{Torrent}', 'Torrents@torrent');
 Route::post('torrents/{Torrent}/magnet', 'Torrents@magnet');
 
 Route::get('users', 'Users@index');
-Route::get('users/{UserWithCounts}', 'Users@show');
+Route::get('users/{id}', 'Users@show');

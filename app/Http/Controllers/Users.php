@@ -13,8 +13,12 @@ class Users extends Controller
         return view($this->view, compact('users'));
     }
 
-    public function show(User $user)
+    public function show($id)
     {
+        /* @var User $user */
+        $user = User::withCount(['comments', 'images', 'torrents'])
+            ->findOrFail($id);
+
         abort_unless($user->status === User::STATUS_ACTIVE, 404);
 
         \Breadcrumbs::push(trans('users.index'), 'users');
