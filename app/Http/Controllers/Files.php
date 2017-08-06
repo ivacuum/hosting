@@ -4,8 +4,21 @@ use App\File;
 
 class Files extends Controller
 {
-    public function download(File $file)
+    public function index()
     {
+        \Breadcrumbs::push(trans('files.index'));
+
+        $models = File::published()->orderBy('id', 'desc')->paginate();
+
+        return view($this->view, compact('models'));
+    }
+
+    public function download($id)
+    {
+        $file = File::findOrFail($id);
+
+        abort_unless($file->status === File::STATUS_PUBLISHED, 404);
+
         $file->timestamps = false;
         $file->increment('downloads');
 

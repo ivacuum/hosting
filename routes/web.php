@@ -33,7 +33,8 @@ Route::get('dc/{slug}', 'Dcpp@page');
 Route::get('docs', 'Docs@index');
 Route::get('docs/{slug}', 'Docs@page');
 
-Route::get('files/{File}/dl', 'Files@download');
+Route::get('files', 'Files@index');
+Route::get('files/{id}/dl', 'Files@download');
 
 Route::get('gallery', 'Gallery@index')->middleware('auth');
 Route::get('gallery/preview/{Image}', 'Gallery@preview');

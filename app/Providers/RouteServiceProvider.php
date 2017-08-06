@@ -18,7 +18,6 @@ class RouteServiceProvider extends ServiceProvider
 
         parent::boot();
 
-        \Route::model('File', File::class);
         \Route::model('Image', Image::class);
         \Route::model('Tag', Tag::class);
         \Route::model('Torrent', Torrent::class);
