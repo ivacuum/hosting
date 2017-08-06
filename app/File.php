@@ -36,7 +36,12 @@ class File extends Model
 
     public function downloadPath()
     {
-        return "https://ivacuum.org/d/{$this->project}/{$this->folder}/{$this->basename()}";
+        return "https://ivacuum.org/d/{$this->folder()}/{$this->basename()}";
+    }
+
+    public function folder()
+    {
+        return implode('/', [$this->project, $this->folder]);
     }
 
     public function headerBasename()
