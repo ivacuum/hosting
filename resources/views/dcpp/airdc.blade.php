@@ -2,6 +2,7 @@
   'meta_title' => trans('meta_title.dcpp.airdc'),
   'software_title' => trans('dcpp.airdc'),
   'software' => [
+    ['version' => '3.41', 'id' => 156, 'size' => 48108816, 'dl_suffix' => ''],
     ['version' => '2.09', 'id' => 142, 'size' => 6915716, 'dl_suffix' => ''],
     ['version' => '2.07', 'id' => 131, 'dl_suffix' => ''],
   ],
