@@ -20,7 +20,7 @@
       </aside>
       <div class="comment-body-container">
         <div class="comment-body">
-          <form action="{{ path('Ajax@comment', $params) }}" method="post">
+          <form action="{{ path('AjaxComment@store', $params) }}" method="post">
             {{ ViewHelper::inputHiddenMail() }}
             <div class="form-group {{ $errors->has('text') ? 'has-error' : '' }}">
               <textarea required class="form-control textarea-autosized js-autosize-textarea" name="text" placeholder="{{ trans('comments.placeholder') }}" rows="1" maxlength="1000">{{ old('text') }}</textarea>
