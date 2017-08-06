@@ -25,11 +25,11 @@ class Files extends Controller
     protected function rules($model = null)
     {
         return [
-            'name' => 'required',
             'slug' => [
                 'required',
                 Rule::unique('files', 'slug')->ignore($model->id ?? null),
             ],
+            'title' => 'required',
         ];
     }
 }
