@@ -104,6 +104,11 @@ class Photo extends Model
         return str_replace('/', ' / ', $this->slug);
     }
 
+    public function deleteFiles()
+    {
+        return \Storage::disk('photos')->delete($this->slug);
+    }
+
     public function isOnMap()
     {
         return $this->lat && $this->lon;

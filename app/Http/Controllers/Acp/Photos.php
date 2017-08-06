@@ -3,6 +3,7 @@
 use App\Photo as Model;
 use App\Trip;
 use Ivacuum\Generic\Controllers\Acp\Controller;
+use Ivacuum\Generic\Services\ImageConverter;
 use Ivacuum\Generic\Utilities\ExifHelper;
 
 class Photos extends Controller
@@ -55,8 +56,15 @@ class Photos extends Controller
             $coords = ['lat' => null, 'lon' => null];
         }
 
+        $image = (new ImageConverter)
+            ->resize(2000, 2000)
+            ->quality(75)
+            ->convert($file->getRealPath());
+
         $pathinfo = pathinfo($file->getClientOriginalName());
         $filename = $pathinfo['filename'].'.'.strtolower($pathinfo['extension']);
+
+        \Storage::disk('photos')->putFileAs($model->slug, $image, $filename);
 
         $photo = $model->photos()->create([
             'lat' => $coords['lat'] ?? '',

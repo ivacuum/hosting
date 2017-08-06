@@ -45,6 +45,15 @@ return [
             'timeout'  => 10,
         ],
 
+        'photos' => [
+            'driver'   => 'sftp',
+            'host'     => env('PHOTOS_HOST'),
+            'port'     => env('PHOTOS_PORT'),
+            'root'     => env('PHOTOS_ROOT'),
+            'username' => env('PHOTOS_USERNAME'),
+            'password' => env('PHOTOS_PASSWORD'),
+        ],
+
         's3' => [
             'driver' => 's3',
             'key'    => env('S3_KEY'),
