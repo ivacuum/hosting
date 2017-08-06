@@ -7,7 +7,7 @@
     <th class="text-right">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
-    <th>Название</th>
+    <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'title') }}</th>
     <th class="text-right">
       @include('acp.tpl.sortable-header', ['key' => 'size'])
     </th>

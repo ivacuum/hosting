@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'id' => 'ID',
+    'file' => 'Файл',
     'author' => 'Автор',
     'city_id' => 'Город',
     'trip_id' => 'Поездка',
@@ -9,7 +9,6 @@ return [
     'country_id' => 'Страна',
     'q_placeholder' => 'Поиск...',
 
-    'artist.slug' => 'URL',
     'artist.title' => 'Название',
 
     'chat-message.text' => 'Текст',
@@ -25,6 +24,10 @@ return [
     'country.cities_count' => 'Города',
 
     'file.size' => 'Размер',
+    'file.title' => 'Название',
+    'file.folder' => 'Папка',
+    'file.project' => 'Проект',
+    'file.extension' => 'Расширение',
     'file.downloads' => 'Скачивания',
 
     'gig.date' => 'Дата',

@@ -2,6 +2,8 @@
 
 return [
     'id' => 'ID',
+    'file' => 'File',
+    'slug' => 'URL',
     'author' => 'Author',
     'city_id' => 'City',
     'trip_id' => 'Trip',
@@ -9,7 +11,6 @@ return [
     'country_id' => 'Country',
     'q_placeholder' => 'Search...',
 
-    'artist.slug' => 'URL',
     'artist.title' => 'Title',
 
     'city.title' => 'City',
@@ -25,6 +26,10 @@ return [
     'country.cities_count' => 'Cities',
 
     'file.size' => 'Size',
+    'file.title' => 'Title',
+    'file.folder' => 'Folder',
+    'file.project' => 'Project',
+    'file.extension' => 'Extension',
     'file.downloads' => 'Downloads',
 
     'gig.date' => 'Date',

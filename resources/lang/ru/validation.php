@@ -78,6 +78,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'slug' => [
+            'unique' => 'Этот адрес уже занят',
+        ],
     ],
 
     'attributes' => [],
