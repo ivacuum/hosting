@@ -12,21 +12,7 @@
       <li><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></li>
     </ul>
 
-    @php ($year = false)
-    @foreach ($trips as $trip)
-      <div class="travel-entry mb-2 {{ $year !== false && $year !== $trip->year ? 'mt-4' : '' }}">
-        @if ($year !== $trip->year)
-          <span class="travel-year">{{ $trip->year }}</span>
-        @endif
-        @if ($trip->status === App\Trip::STATUS_PUBLISHED)
-          <a class="link" href="{{ $trip->www() }}">{{ $trip->title }}</a>
-        @else
-          {{ $trip->title }}
-        @endif
-        <span class="ml-1 travel-month">{{ $trip->period }}</span>
-      </div>
-      @php ($year = $trip->year)
-    @endforeach
+    @include('tpl.trips_by_years')
   </section>
   <section class="col-sm-6 pt-0">
     <h2 class="mt-0">{{ trans('life.favorites') }}</h2>

@@ -11,7 +11,7 @@ class Life extends Controller
     {
         \Breadcrumbs::push(trans('menu.life'));
 
-        $trips = Trip::visible()->orderBy('date_start', 'desc')->get();
+        $trips = Trip::withCount('photos')->visible()->orderBy('date_start', 'desc')->get();
 
         return view($this->view, compact('trips'));
     }
