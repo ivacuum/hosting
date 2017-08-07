@@ -12,8 +12,8 @@
     <span class="travel-month ml-1">{{ $trip->period }}</span>
     @if ($trip->photos_count)
       <span class="travel-month ml-2">
-        <span class="mr-1">{{ $trip->photos_count }}</span>
         @svg (picture-o)
+        {{ $trip->photos_count }}
       </span>
     @endif
   </div>
