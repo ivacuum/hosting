@@ -9,9 +9,12 @@ class Life extends Controller
 {
     public function index()
     {
-        \Breadcrumbs::push(trans('menu.life'));
+        $trips = Trip::withCount('photos')
+            ->visible()
+            ->orderBy('date_start', 'desc')
+            ->get();
 
-        $trips = Trip::withCount('photos')->visible()->orderBy('date_start', 'desc')->get();
+        \Breadcrumbs::push(trans('menu.life'));
 
         return view($this->view, compact('trips'));
     }
@@ -38,7 +41,6 @@ class Life extends Controller
         })->filter(function ($city) {
             return $city->trips_count;
         });
-
 
         \Breadcrumbs::push(trans('menu.life'), 'life');
         \Breadcrumbs::push(trans('menu.cities'));
@@ -204,16 +206,28 @@ class Life extends Controller
         return view($tpl, compact('comments', 'next_trips', 'previous_trips', 'timeline', 'trip'));
     }
 
+    /**
+     * @param  string $slug
+     * @return \App\City
+     */
     protected function getCity($slug)
     {
         return City::where('slug', $slug)->first();
     }
 
+    /**
+     * @param  string $slug
+     * @return \App\Gig
+     */
     protected function getGig($slug)
     {
         return Gig::where('slug', $slug)->first();
     }
 
+    /**
+     * @param  string $slug
+     * @return \App\Trip
+     */
     protected function getTrip($slug)
     {
         return Trip::withCount('photos')
