@@ -36,12 +36,12 @@ class Images extends Controller
         $ids = $this->request->input('ids');
         $action = $this->request->input('action');
 
-        $photos = Model::find($ids);
+        $models = Model::find($ids);
 
-        foreach ($photos as $photo) {
-            /* @var Model $photo */
+        foreach ($models as $model) {
+            /* @var Model $model */
             if ($action === 'delete') {
-                $photo->delete();
+                $model->delete();
             }
         }
 
