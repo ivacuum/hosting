@@ -4,8 +4,6 @@ class Dcpp extends Controller
 {
     public function index()
     {
-        \Breadcrumbs::push(trans('dcpp.index'));
-
         $page = 'index';
 
         return view($this->view, compact('page'));
@@ -17,9 +15,13 @@ class Dcpp extends Controller
 
         abort_unless(view()->exists($view), 404);
 
-        \Breadcrumbs::push(trans('dcpp.index'), 'dc');
         \Breadcrumbs::push(trans("dcpp.{$page}"));
 
         return view($view, compact('page'));
+    }
+
+    protected function appendBreadcrumbs()
+    {
+        $this->middleware('breadcrumbs:dcpp.index,dc');
     }
 }

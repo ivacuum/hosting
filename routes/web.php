@@ -77,9 +77,9 @@ Route::get('photos/countries/{slug}', 'Photos@country');
 Route::get('photos/faq', 'Photos@faq');
 Route::get('photos/map', 'Photos@map');
 Route::get('photos/tags', 'Photos@tags');
-Route::get('photos/tags/{Tag}', 'Photos@tag');
+Route::get('photos/tags/{id}', 'Photos@tag');
 Route::get('photos/trips', 'Photos@trips');
-Route::get('photos/trips/{Trip}', 'Photos@trip');
+Route::get('photos/trips/{id}', 'Photos@trip');
 Route::get('photos/{id}', 'Photos@show');
 
 Route::get('promocodes-coupons', 'Coupons@index');

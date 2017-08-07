@@ -14,8 +14,6 @@ class Life extends Controller
             ->orderBy('date_start', 'desc')
             ->get();
 
-        \Breadcrumbs::push(trans('menu.life'));
-
         return view($this->view, compact('trips'));
     }
 
@@ -42,7 +40,6 @@ class Life extends Controller
             return $city->trips_count;
         });
 
-        \Breadcrumbs::push(trans('menu.life'), 'life');
         \Breadcrumbs::push(trans('menu.cities'));
 
         return view($this->view, compact('cities'));
@@ -109,7 +106,6 @@ class Life extends Controller
             return $country->trips_count;
         });
 
-        \Breadcrumbs::push(trans('menu.life'), 'life');
         \Breadcrumbs::push(trans('menu.countries'));
 
         return view($this->view, compact('countries'));
@@ -123,7 +119,6 @@ class Life extends Controller
             ->visible()
             ->get();
 
-        \Breadcrumbs::push(trans('menu.life'), 'life');
         \Breadcrumbs::push(trans('menu.countries'), 'life/countries');
         \Breadcrumbs::push($country->title, "life/countries/{$country->slug}");
 
@@ -152,7 +147,6 @@ class Life extends Controller
     {
         $gigs = Gig::with('artist')->orderBy('date', 'desc')->get();
 
-        \Breadcrumbs::push(trans('menu.life'), 'life');
         \Breadcrumbs::push(trans('menu.gigs'));
 
         return view($this->view, compact('gigs'));
@@ -160,8 +154,6 @@ class Life extends Controller
 
     public function page($page)
     {
-        \Breadcrumbs::push(trans('menu.life'), 'life');
-
         $tpl = 'life.' . str_replace('.', '_', $page);
 
         if (view()->exists($tpl)) {
@@ -204,6 +196,11 @@ class Life extends Controller
         $comments = $trip->commentsPublished()->with('user')->orderBy('id')->get();
 
         return view($tpl, compact('comments', 'next_trips', 'previous_trips', 'timeline', 'trip'));
+    }
+
+    protected function appendBreadcrumbs()
+    {
+        $this->middleware('breadcrumbs:menu.life,life');
     }
 
     /**

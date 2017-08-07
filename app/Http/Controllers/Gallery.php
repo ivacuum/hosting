@@ -6,8 +6,6 @@ class Gallery extends Controller
 {
     public function index()
     {
-        \Breadcrumbs::push(trans('gallery.index'));
-
         $images = Image::where('user_id', $this->request->user()->id)
             ->orderBy('id', 'desc')
             ->paginate(25);
@@ -17,9 +15,6 @@ class Gallery extends Controller
 
     public function preview(Image $image)
     {
-        \Breadcrumbs::push(trans('gallery.index'), 'gallery');
-        \Breadcrumbs::push(trans('gallery.preview'));
-
         event(new \App\Events\Stats\GalleryImagePreviewed($image->id));
 
         return view($this->view, compact('image'));
@@ -27,9 +22,6 @@ class Gallery extends Controller
 
     public function view(Image $image)
     {
-        \Breadcrumbs::push(trans('gallery.index'), 'gallery');
-        \Breadcrumbs::push(trans('gallery.view'));
-
         event(new \App\Events\Stats\GalleryImageViewed($image->id));
 
         return view($this->view, compact('image'));
@@ -37,9 +29,6 @@ class Gallery extends Controller
 
     public function upload()
     {
-        \Breadcrumbs::push(trans('gallery.index'), 'gallery');
-        \Breadcrumbs::push(trans('gallery.upload'));
-
         return view($this->view);
     }
 
@@ -71,5 +60,13 @@ class Gallery extends Controller
             'original' => $image->originalUrl(),
             'thumbnail' => $image->thumbnailUrl(),
         ];
+    }
+
+    protected function appendBreadcrumbs()
+    {
+        $this->middleware('breadcrumbs:gallery.index,gallery');
+        $this->middleware('breadcrumbs:gallery.preview')->only('preview');
+        $this->middleware('breadcrumbs:gallery.view')->only('view');
+        $this->middleware('breadcrumbs:gallery.upload')->only('upload');
     }
 }

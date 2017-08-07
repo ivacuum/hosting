@@ -6,8 +6,6 @@ class Users extends Controller
 {
     public function index()
     {
-        \Breadcrumbs::push(trans('users.index'));
-
         $users = User::active()->orderBy('id')->simplePaginate();
 
         return view($this->view, compact('users'));
@@ -21,9 +19,13 @@ class Users extends Controller
 
         abort_unless($user->status === User::STATUS_ACTIVE, 404);
 
-        \Breadcrumbs::push(trans('users.index'), 'users');
         \Breadcrumbs::push($user->publicName());
 
         return view($this->view, compact('user'));
+    }
+
+    protected function appendBreadcrumbs()
+    {
+        $this->middleware('breadcrumbs:users.index,users');
     }
 }

@@ -11,8 +11,6 @@ class Photos extends Controller
 {
     public function index()
     {
-        \Breadcrumbs::push(trans('photos.index'));
-
         $photos = Photo::published()
             ->orderBy('id', 'desc')
             ->paginate(20);
@@ -22,7 +20,6 @@ class Photos extends Controller
 
     public function cities()
     {
-        \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.cities'));
 
         $cities = City::orderBy(City::titleField())->get();
@@ -55,7 +52,6 @@ class Photos extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.cities'), 'photos/cities');
         \Breadcrumbs::push($city->title);
 
@@ -66,7 +62,6 @@ class Photos extends Controller
 
     public function countries()
     {
-        \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.countries'));
 
         $countries = Country::with('cities')->orderBy(Country::titleField())->get();
@@ -109,7 +104,6 @@ class Photos extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.countries'), 'photos/countries');
         \Breadcrumbs::push($country->title);
 
@@ -120,7 +114,6 @@ class Photos extends Controller
 
     public function faq()
     {
-        \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.faq'));
 
         return view($this->view);
@@ -134,7 +127,6 @@ class Photos extends Controller
             return $this->pointsForMap($trip_id);
         }
 
-        \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.map'));
 
         return view($this->view);
@@ -192,8 +184,6 @@ class Photos extends Controller
 
         event(new \App\Events\Stats\PhotoViewed($photo->id));
 
-        \Breadcrumbs::push(trans('photos.index'), 'photos');
-
         if ($tag_id) {
             $tag = Tag::findOrFail($tag_id);
 
@@ -217,14 +207,16 @@ class Photos extends Controller
         return view($this->view, compact('city_id', 'country_id', 'meta_title', 'next', 'photo', 'prev', 'tag_id', 'trip_id'));
     }
 
-    public function tag(Tag $tag)
+    public function tag($id)
     {
+        /* @var Tag $tag */
+        $tag = Tag::findOrFail($id);
+
         $photos = Photo::forTag($tag->id)
             ->published()
             ->orderBy('id', 'desc')
             ->get();
 
-        \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.tags'), 'photos/tags');
         \Breadcrumbs::push($tag->breadcrumb());
 
@@ -237,7 +229,6 @@ class Photos extends Controller
 
     public function tags()
     {
-        \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.tags'));
 
         // Тэги с фотками
@@ -256,8 +247,11 @@ class Photos extends Controller
         return view($this->view, compact('tags'));
     }
 
-    public function trip(Trip $trip)
+    public function trip($id)
     {
+        /* @var Trip $trip */
+        $trip = Trip::findOrFail($id);
+
         abort_unless($trip->status === Trip::STATUS_PUBLISHED, 404);
 
         $photos = Photo::forTrip($trip->id)
@@ -265,7 +259,6 @@ class Photos extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.trips'), 'photos/trips');
         \Breadcrumbs::push($trip->title);
 
@@ -274,7 +267,6 @@ class Photos extends Controller
 
     public function trips()
     {
-        \Breadcrumbs::push(trans('photos.index'), 'photos');
         \Breadcrumbs::push(trans('photos.trips'), 'photos/trips');
 
         $trips = Trip::with('city.country')
@@ -284,6 +276,11 @@ class Photos extends Controller
             ->get();
 
         return view($this->view, compact('trips'));
+    }
+
+    protected function appendBreadcrumbs()
+    {
+        $this->middleware('breadcrumbs:photos.index,photos');
     }
 
     protected function pointsForMap($trip_id)

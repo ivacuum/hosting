@@ -6,42 +6,37 @@ class Coupons extends Controller
 {
     public function index()
     {
-        \Breadcrumbs::push(trans('coupons.index'));
-
         return view($this->view);
     }
 
     public function airbnb()
     {
-        \Breadcrumbs::push(trans('coupons.index'), 'promocodes-coupons');
-        \Breadcrumbs::push(trans('coupons.airbnb'));
-
         $month = intval(date('m'));
         $year = date('Y');
 
-        $meta_title = trans('coupons.airbnb.title', ['month' => trans("months.$month"), 'year' => $year]);
+        $meta_title = trans('coupons.airbnb.title', [
+            'month' => trans("months.$month"),
+            'year' => $year
+        ]);
 
         return view($this->view, compact('meta_title'));
     }
 
     public function digitalocean()
     {
-        \Breadcrumbs::push(trans('coupons.index'), 'promocodes-coupons');
-        \Breadcrumbs::push(trans('coupons.digitalocean'));
-
         $month = intval(date('m'));
         $year = date('Y');
 
-        $meta_title = trans('coupons.do.title', ['month' => trans("months.$month"), 'year' => $year]);
+        $meta_title = trans('coupons.do.title', [
+            'month' => trans("months.$month"),
+            'year' => $year
+        ]);
 
         return view($this->view, compact('meta_title'));
     }
 
     public function firstvds()
     {
-        \Breadcrumbs::push(trans('coupons.index'), 'promocodes-coupons');
-        \Breadcrumbs::push(trans('coupons.firstvds'));
-
         return view($this->view);
     }
 
@@ -61,9 +56,16 @@ class Coupons extends Controller
 
     public function timeweb()
     {
-        \Breadcrumbs::push(trans('coupons.index'), 'promocodes-coupons');
         \Breadcrumbs::push(trans('coupons.timeweb'));
 
         return view($this->view);
+    }
+
+    protected function appendBreadcrumbs()
+    {
+        $this->middleware('breadcrumbs:coupons.index,promocodes-coupons');
+        $this->middleware('breadcrumbs:coupons.airbnb')->only('airbnb');
+        $this->middleware('breadcrumbs:coupons.digitalocean')->only('digitalocean');
+        $this->middleware('breadcrumbs:coupons.firstvds')->only('firstvds');
     }
 }

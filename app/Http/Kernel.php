@@ -14,6 +14,7 @@ use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Ivacuum\Generic\Middleware\Auth;
+use Ivacuum\Generic\Middleware\Breadcrumbs;
 use Ivacuum\Generic\Middleware\NoCacheHeaders;
 
 class Kernel extends HttpKernel
@@ -47,5 +48,6 @@ class Kernel extends HttpKernel
         'guest' => RedirectIfAuthenticated::class,
         'bindings' => SubstituteBindings::class,
         'throttle' => ThrottleRequests::class,
+        'breadcrumbs' => Breadcrumbs::class,
     ];
 }
