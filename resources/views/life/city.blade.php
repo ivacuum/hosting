@@ -11,7 +11,7 @@
       {{ $city->title }}
       @include('tpl.city-map-button')
     </h1>
-    @include('tpl.trips_by_years', ['trips' => $city->trips])
+    @include('tpl.trips_by_years')
   </div>
   <div class="col-sm-6">
     @if ($city->iata)

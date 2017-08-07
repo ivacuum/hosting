@@ -48,7 +48,12 @@ class Life extends Controller
 
     public function city(City $city)
     {
-        $published_trips = $city->trips->where('status', Trip::STATUS_PUBLISHED);
+        $trips = $city->trips()
+            ->withCount('photos')
+            ->visible()
+            ->get();
+
+        $published_trips = $trips->where('status', Trip::STATUS_PUBLISHED);
 
         event(new \App\Events\Stats\CityViewed($city->id));
 
@@ -65,7 +70,7 @@ class Life extends Controller
         \Breadcrumbs::push($city->country->title, "life/countries/{$city->country->slug}");
         \Breadcrumbs::push($city->title);
 
-        return view('life.city', compact('city'));
+        return view('life.city', compact('city', 'trips'));
     }
 
     public function countries()
