@@ -66,6 +66,8 @@ php artisan route:cache
 
 ln -hfs $RELEASE_DIR $LIVE_DIR
 
+php artisan queue:restart
+
 # На память остается всего 3 релиза
 cd $ROOT_DIR/releases
 rm -rf $(ls -t | tail -n +4)
