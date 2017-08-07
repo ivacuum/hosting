@@ -116,7 +116,10 @@ class Life extends Controller
     public function country($slug)
     {
         $country = Country::where('slug', $slug)->firstOrFail();
-        $trips = $country->trips;
+        $trips = $country->trips()
+            ->withCount('photos')
+            ->visible()
+            ->get();
 
         \Breadcrumbs::push(trans('menu.life'), 'life');
         \Breadcrumbs::push(trans('menu.countries'), 'life/countries');
