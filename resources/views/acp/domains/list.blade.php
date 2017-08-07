@@ -71,7 +71,7 @@
   <form class="form-inline js-batch-form" data-url="/acp/domains/batch" data-selector=".domains-checkbox">
     <div class="form-group">
       <div class="form-select d-inline-block mr-1">
-        <select class="form-control" name="action" id="batch_action">
+        <select class="form-control" name="action">
           <option value="">Выберите действие...</option>
           @if ($filter == 'trashed')
             <option value="restore">Восстановить</option>
@@ -84,7 +84,7 @@
         </select>
       </div>
     </div>
-    <button class="btn btn-default" id="batch_submit">Выполнить</button>
+    <button class="btn btn-default">Выполнить</button>
   </form>
 </div>
 
