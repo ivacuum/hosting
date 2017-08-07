@@ -110,7 +110,7 @@ export default {
       }
 
       Echo.channel('chat')
-        .listen('ChatMessage', (e) => {
+        .listen('ChatMessagePosted', (e) => {
           const is_scrolled_down = this.isScrolledDown(this.getChatContainer())
 
           this.messages.push(e.message)

@@ -15,6 +15,7 @@ class AjaxChat extends Controller
             ->map(function ($item) {
                 /* @var \App\ChatMessage $item */
                 return [
+                    'id' => $item->id,
                     'date' => $item->created_at->toDateString(),
                     'time' => $item->created_at->toTimeString(),
                     'html' => $item->html,
@@ -44,13 +45,14 @@ class AjaxChat extends Controller
         ]);
 
         $message = [
+            'id' => $chat_message->id,
             'date' => $chat_message->created_at->toDateString(),
             'time' => $chat_message->created_at->toTimeString(),
             'html' => $chat_message->html,
             'author' => $user->publicName(),
         ];
 
-        broadcast(new \App\Events\ChatMessage($message));
+        broadcast(new \App\Events\ChatMessagePosted($message));
 
         return compact('message');
     }

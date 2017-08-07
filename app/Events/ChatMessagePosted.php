@@ -3,7 +3,7 @@
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 
-class ChatMessage extends Event implements ShouldBroadcastNow
+class ChatMessagePosted extends Event implements ShouldBroadcastNow
 {
     public $message;
 
