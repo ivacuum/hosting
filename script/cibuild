@@ -13,7 +13,7 @@ ant
 echo "==> Installing front-end dependencies..."
 echo "==> yarn..."
 export NODE_ENV=dev
-yarn --pure-lockfile
+yarn
 export NODE_ENV=production
 
 echo "==> npm run production..."
