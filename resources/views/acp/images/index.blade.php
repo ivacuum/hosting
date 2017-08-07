@@ -78,18 +78,9 @@
   </table>
 
   <div class="mt-3">
-    <form class="form-inline js-batch-form" data-url="{{ path("$self@batch") }}" data-selector=".models-checkbox">
-      <div class="form-group">
-        <input type="checkbox" class="js-select-all" data-selector=".models-checkbox">
-        <div class="form-select d-inline-block mx-1">
-          <select class="form-control" name="action" id="batch_action">
-            <option value="">Выберите действие...</option>
-            <option value="delete">Удалить</option>
-          </select>
-        </div>
-      </div>
-      <button class="btn btn-default" id="batch_submit">Выполнить</button>
-    </form>
+    @include('acp.tpl.batch', ['actions' => [
+      'delete' => 'Удалить',
+    ]])
   </div>
 @elseif ($type === 'grid')
   <div class="text-center">

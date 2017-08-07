@@ -19,9 +19,7 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
 
         \Route::model('Image', Image::class);
-        \Route::model('Tag', Tag::class);
         \Route::model('Torrent', Torrent::class);
-        \Route::model('Trip', Trip::class);
     }
 
     public function map()
