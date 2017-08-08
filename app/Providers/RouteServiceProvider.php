@@ -1,11 +1,7 @@
 <?php namespace App\Providers;
 
-use App\File;
 use App\Image;
-use App\Tag;
 use App\Torrent;
-use App\Trip;
-use App\User;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider

@@ -7,14 +7,9 @@ use App\Trip;
 use App\User;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
-use Ivacuum\Generic\Providers\BladeTrait;
-use Ivacuum\Generic\Providers\DebugbarTrait;
-use Ivacuum\Generic\Providers\FastcgiTrait;
 
 class AppServiceProvider extends ServiceProvider
 {
-    use BladeTrait, DebugbarTrait, FastcgiTrait;
-
     public function boot()
     {
         Relation::morphMap([
@@ -24,13 +19,5 @@ class AppServiceProvider extends ServiceProvider
             'Photo' => Photo::class,
             'Torrent' => Torrent::class,
         ]);
-    }
-
-    public function register()
-    {
-        $this->bladeLang();
-        $this->bladeSvg();
-        $this->debugbar();
-        $this->fastcgiFinishRequest();
     }
 }

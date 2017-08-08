@@ -9,12 +9,9 @@ use App\Listeners\ToggleTripPhotosStatus;
 use App\Listeners\TripPhotosSlugPrefixUpdate;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Ivacuum\Generic\Providers\MetricsTrait;
 
 class EventServiceProvider extends ServiceProvider
 {
-    use MetricsTrait;
-
     protected $listen = [
         'eloquent.saved: App\City' => [ForgetTripsCache::class],
         'eloquent.deleted: App\Photo' => [DeletePhotoFiles::class],
@@ -27,11 +24,4 @@ class EventServiceProvider extends ServiceProvider
         DomainWhoisUpdated::class => [EmailWhoisChanges::class],
         Login::class => [LogUserLogin::class],
     ];
-
-    public function boot()
-    {
-        parent::boot();
-
-        $this->metrics();
-    }
 }

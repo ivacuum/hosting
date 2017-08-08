@@ -45,13 +45,18 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
 
         App\Providers\AppServiceProvider::class,
-        App\Providers\BroadcastServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\SftpServiceProvider::class,
-        App\Providers\ValidatorServiceProvider::class,
 
+        Ivacuum\Generic\Providers\BladeServiceProvider::class,
+        Ivacuum\Generic\Providers\BroadcastServiceProvider::class,
+        Ivacuum\Generic\Providers\DebugbarServiceProvider::class,
+        Ivacuum\Generic\Providers\FastcgiServiceProvider::class,
+        Ivacuum\Generic\Providers\MetricsServiceProvider::class,
+        Ivacuum\Generic\Providers\SftpServiceProvider::class,
+        Ivacuum\Generic\Providers\ValidatorServiceProvider::class,
+        Ivacuum\Generic\Providers\VkServiceProvider::class,
         Telegram\Bot\Laravel\TelegramServiceProvider::class,
     ],
 
