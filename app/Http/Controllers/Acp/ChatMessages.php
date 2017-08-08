@@ -24,6 +24,29 @@ class ChatMessages extends Controller
         return view($this->view, compact('models', 'status', 'user_id'));
     }
 
+    public function batch()
+    {
+        $ids = $this->request->input('ids');
+        $action = $this->request->input('action');
+
+        $models = Model::find($ids);
+
+        foreach ($models as $model) {
+            /* @var Model $model */
+            if ($action === 'delete') {
+                $model->delete();
+            } elseif ($action === 'hide') {
+                $model->status = Model::STATUS_HIDDEN;
+                $model->save();
+            } elseif ($action === 'publish') {
+                $model->status = Model::STATUS_PUBLISHED;
+                $model->save();
+            }
+        }
+
+        return $this->redirectAfterDestroy();
+    }
+
     protected function rules($model = null)
     {
         return [
