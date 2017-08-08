@@ -8,7 +8,7 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 class Users extends Controller
 {
     protected $sortable_keys = ['id', 'last_login_at', 'comments_count', 'images_count', 'torrents_count'];
-    protected $show_with_count = ['comments', 'images', 'torrents'];
+    protected $show_with_count = ['chat_messages', 'comments', 'images', 'torrents'];
 
     public function index()
     {

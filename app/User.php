@@ -51,6 +51,11 @@ class User extends Authenticatable
     protected $perPage = 50;
 
     // Relations
+    public function chat_messages()
+    {
+        return $this->hasMany(ChatMessage::class);
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
