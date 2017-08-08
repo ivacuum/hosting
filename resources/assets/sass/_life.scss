@@ -107,12 +107,11 @@
 
 .life-text {
   font-size: 16px;
-  font-weight: 300;
   line-height: 1.5;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 
   p + .pic-container { margin-top: -.5rem; }
-
-  .windows.is-desktop & { font-weight: 400; }
 
   @media (min-width: $screen-md-min) { font-size: 18px; }
 }
