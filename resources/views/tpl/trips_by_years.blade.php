@@ -9,9 +9,9 @@
     @else
       {{ $trip->title }}
     @endif
-    <span class="travel-month ml-1">{{ $trip->period }}</span>
+    <span class="travel-month ml-1 mr-2">{{ $trip->period }}</span>
     @if ($trip->photos_count)
-      <span class="travel-month ml-2">
+      <span class="travel-month text-nowrap">
         @svg (picture-o)
         {{ $trip->photos_count }}
       </span>

@@ -14,7 +14,7 @@
 
     @include('tpl.trips_by_years')
   </section>
-  <section class="col-sm-6 pt-0">
+  <section class="col-sm-6 pt-sm-0">
     <h2 class="mt-0">{{ trans('life.favorites') }}</h2>
     <ul class="list-unstyled">
       @ru
