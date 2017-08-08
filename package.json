@@ -9,6 +9,7 @@
   "devDependencies": {
     "autosize": "4.0.0",
     "axios": "0.16.2",
+    "bootstrap": "4.0.0-alpha.6",
     "bootstrap-sass": "3.3.7",
     "fotorama": "4.6.4",
     "jquery": "3.2.1",
