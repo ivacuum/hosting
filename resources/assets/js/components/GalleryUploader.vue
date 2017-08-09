@@ -101,18 +101,24 @@ export default {
     },
 
     uploadFile(file) {
-      let form = new FormData()
+      return new Promise((resolve, reject) => {
+        let form = new FormData()
 
-      form.append('file', file)
+        form.append('file', file)
 
-      axios.post(this.action, form).then((response) => {
-        this.files.push(response.data)
-        this.incrementUploaded()
-      }).catch((error) => {
-        if (error.response && error.response.status === 422) {
-          this.errors = error.response.data
+        axios.post(this.action, form).then((response) => {
+          this.files.push(response.data)
           this.incrementUploaded()
-        }
+
+          resolve()
+        }).catch((error) => {
+          if (error.response && error.response.status === 422) {
+            this.errors = error.response.data
+            this.incrementUploaded()
+          }
+
+          reject(error)
+        })
       })
     },
 
@@ -121,8 +127,10 @@ export default {
       this.errors = []
       this.total += files.length
 
+      let chain = Promise.resolve()
+
       for (let i = 0, length = files.length; i < length; i++) {
-        this.uploadFile(files[i])
+        chain = chain.then(() => this.uploadFile(files[i]))
       }
     }
   }
