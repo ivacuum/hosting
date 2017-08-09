@@ -80,7 +80,7 @@ class Gig extends Model
 
     public function fullDate()
     {
-        return $this->date->formatLocalized(trans('life.date.same_day'));
+        return $this->date->formatLocalized(trans('life.date.day_month_year'));
     }
 
     public function metaTitle()
@@ -90,7 +90,7 @@ class Gig extends Model
 
     public function shortDate()
     {
-        return $this->date->formatLocalized(trans('life.date.gig_short'));
+        return $this->date->formatLocalized(trans('life.date.day_month'));
     }
 
     public function template()

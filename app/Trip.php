@@ -195,12 +195,12 @@ class Trip extends Model
     public function localizedDate()
     {
         if ($this->date_end->isSameDay($this->date_start)) {
-            return trim($this->date_start->formatLocalized(trans('life.date.same_day')));
+            return trim($this->date_start->formatLocalized(trans('life.date.day_month_year')));
         }
 
         if ($this->date_start->month !== $this->date_end->month) {
             return sprintf(
-                trans('life.date.months'),
+                trans('life.date.day_month_day_month_year'),
                 $this->date_start->day,
                 $this->date_start->formatLocalized('%B'),
                 $this->date_end->day,
@@ -210,11 +210,35 @@ class Trip extends Model
         }
 
         return sprintf(
-            trans('life.date.same_month'),
+            trans('life.date.day_day_month_year'),
             $this->date_start->day,
             $this->date_end->day,
             $this->date_start->formatLocalized('%B'),
             $this->date_start->formatLocalized('%Y')
+        );
+    }
+
+    public function localizedDateWithoutYear()
+    {
+        if ($this->date_end->isSameDay($this->date_start)) {
+            return trim($this->date_start->formatLocalized(trans('life.date.day_month')));
+        }
+
+        if ($this->date_start->month !== $this->date_end->month) {
+            return sprintf(
+                trans('life.date.day_month_day_month'),
+                $this->date_start->day,
+                $this->date_start->formatLocalized('%B'),
+                $this->date_end->day,
+                $this->date_end->formatLocalized('%B')
+            );
+        }
+
+        return sprintf(
+            trans('life.date.day_day_month'),
+            $this->date_start->day,
+            $this->date_end->day,
+            $this->date_start->formatLocalized('%B')
         );
     }
 
