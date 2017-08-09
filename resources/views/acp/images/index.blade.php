@@ -31,11 +31,19 @@
     <thead>
       <tr>
         <th><input type="checkbox" class="js-select-all" data-selector=".models-checkbox"></th>
-        <th class="text-right">ID</th>
+        <th class="text-right text-nowrap">
+          @include('acp.tpl.sortable-header', ['key' => 'id'])
+        </th>
         <th class="text-center">Изображение</th>
-        <th class="text-right">Размер</th>
-        <th class="text-right">@svg (eye)</th>
-        <th>@svg (eye-slash)</th>
+        <th class="text-right text-nowrap">
+          @include('acp.tpl.sortable-header', ['key' => 'size'])
+        </th>
+        <th class="text-right text-nowrap">
+          @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
+        </th>
+        <th>
+          @include('acp.tpl.sortable-header', ['key' => 'updated_at', 'svg' => 'eye-slash'])
+        </th>
         <th></th>
       </tr>
     </thead>

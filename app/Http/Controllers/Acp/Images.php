@@ -7,6 +7,8 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Images extends Controller
 {
+    protected $sortable_keys = ['id', 'size', 'views', 'updated_at'];
+
     public function index()
     {
         $type = $this->request->input('type');
@@ -14,7 +16,9 @@ class Images extends Controller
         $touch = $this->request->input('touch');
         $user_id = $this->request->input('user_id');
 
-        $models = Model::orderBy('id')
+        list($sort_key, $sort_dir) = $this->getSortParams();
+
+        $models = Model::orderBy($sort_key, $sort_dir)
             // ->where('updated_at', '<', Carbon::now()->subYear()->toDateTimeString())
             // ->where('views', '<', 1000);
             ->when($year, function (Builder $query) use ($year) {

@@ -2,6 +2,7 @@
 
 return [
     'file' => 'Файл',
+    'size' => 'Размер',
     'author' => 'Автор',
     'status' => 'Состояние',
     'city_id' => 'Город',
@@ -24,7 +25,6 @@ return [
     'country.trips_count' => 'Поездки',
     'country.cities_count' => 'Города',
 
-    'file.size' => 'Размер',
     'file.title' => 'Название',
     'file.folder' => 'Папка',
     'file.extension' => 'Расширение',
@@ -41,7 +41,6 @@ return [
     'tag.title_ru' => 'Название',
     'tag.title_en' => 'Название EN',
 
-    'torrent.size' => 'Размер',
     'torrent.title' => 'Название',
     'torrent.views' => 'Просмотры',
     'torrent.clicks' => 'Клики по магнету',

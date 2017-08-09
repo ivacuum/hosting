@@ -3,6 +3,7 @@
 return [
     'id' => 'ID',
     'file' => 'File',
+    'size' => 'Size',
     'slug' => 'URL',
     'author' => 'Author',
     'status' => 'Status',
@@ -26,7 +27,6 @@ return [
     'country.trips_count' => 'Trips',
     'country.cities_count' => 'Cities',
 
-    'file.size' => 'Size',
     'file.title' => 'Title',
     'file.folder' => 'Folder',
     'file.extension' => 'Extension',
@@ -43,7 +43,6 @@ return [
     'tag.title_ru' => 'Title RU',
     'tag.title_en' => 'Title',
 
-    'torrent.size' => 'Size',
     'torrent.title' => 'Title',
     'torrent.views' => 'Views',
     'torrent.clicks' => 'Magnet clicked',
