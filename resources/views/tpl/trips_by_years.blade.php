@@ -10,7 +10,7 @@
       {{ $trip->title }}
     @endif
     <span class="travel-month ml-1 mr-2">{{ $trip->period }}</span>
-    @if ($trip->photos_count)
+    @if ($trip->status === App\Trip::STATUS_PUBLISHED && $trip->photos_count)
       <span class="travel-month text-nowrap">
         @svg (picture-o)
         {{ $trip->photos_count }}
