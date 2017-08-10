@@ -13,10 +13,12 @@
     </h1>
     @include('tpl.trips_by_years')
   </div>
+  {{--
   <div class="col-sm-6">
     @if ($city->iata)
       @include('tpl.tickets_calendar', ['origin' => 'MOW', 'destination' => $city->iata])
     @endif
   </div>
+  --}}
 </div>
 @endsection
