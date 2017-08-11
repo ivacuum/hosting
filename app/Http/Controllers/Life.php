@@ -4,14 +4,31 @@ use App\City;
 use App\Country;
 use App\Gig;
 use App\Trip;
+use Illuminate\Database\Eloquent\Builder;
 
 class Life extends Controller
 {
     public function index()
     {
+        $to = $this->request->input('to');
+        $from = $this->request->input('from');
+
+        $validator = \Validator::make(compact('from', 'to'), [
+            'to' => 'nullable|date',
+            'from' => 'nullable|date'
+        ]);
+
+        abort_unless($validator->passes(), 404);
+
         $trips = Trip::withCount('photos')
             ->visible()
-            ->orderBy('date_start', 'desc')
+            ->when($from, function (Builder $query) use ($from) {
+                return $query->where('date_start', '>=', $from);
+            })
+            ->when($to, function (Builder $query) use ($to) {
+                return $query->where('date_start', '<=', $to);
+            })
+            ->orderBy('date_start', $from || $to ? 'asc' : 'desc')
             ->get();
 
         return view($this->view, compact('trips'));
