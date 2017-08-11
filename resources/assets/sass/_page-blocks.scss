@@ -12,7 +12,6 @@
 .page-block {
   display: flex;
   position: relative;
-  @include font-smoothing();
 }
 
 .page-block-1x3 {
