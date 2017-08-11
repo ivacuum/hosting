@@ -30,7 +30,7 @@
       </span>
     </div>
   </header>
-  <div itemprop="articleBody">{!! $news->html !!}</div>
+  <div class="life-text" itemprop="articleBody">{!! $news->html !!}</div>
 </article>
 
 @include('tpl.comments-list')
