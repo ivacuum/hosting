@@ -54,6 +54,7 @@ return [
         Ivacuum\Generic\Providers\DebugbarServiceProvider::class,
         Ivacuum\Generic\Providers\FastcgiServiceProvider::class,
         Ivacuum\Generic\Providers\MetricsServiceProvider::class,
+        Ivacuum\Generic\Providers\QueueServiceProvider::class,
         Ivacuum\Generic\Providers\SftpServiceProvider::class,
         Ivacuum\Generic\Providers\ValidatorServiceProvider::class,
         Ivacuum\Generic\Providers\VkServiceProvider::class,
