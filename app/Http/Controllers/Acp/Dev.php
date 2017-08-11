@@ -45,15 +45,8 @@ class Dev extends BaseController
 
         $icons = [];
 
-        foreach (glob(base_path('resources/svg/*.html')) as $icon) {
-            $info = pathinfo($icon);
-            $filename = str_replace('.html', '', $info['basename']);
-
-            if ($filename == 'base') {
-                continue;
-            }
-
-            $icons[] = $filename;
+        foreach (glob(base_path('resources/svg/*.svg')) as $icon) {
+            $icons[] = basename($icon, '.svg');
         }
 
         return view($this->view, compact('icons'));
