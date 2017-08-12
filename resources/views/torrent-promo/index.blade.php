@@ -7,7 +7,7 @@
 <div class="row">
   <div class="col-md-3">
     <div class="text-center">
-      <a href="{{ path('Torrents@promo') }}">
+      <a href="{{ path('TorrentPromo@index') }}">
         <img src="https://ivacuum.org/i/t/images/logo_arrows.png" width="128" height="128">
       </a>
     </div>

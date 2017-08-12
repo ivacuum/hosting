@@ -103,7 +103,7 @@ class AjaxComment extends Controller
         }
 
         if ($type === 'torrent') {
-            return redirect(path('Torrents@torrent', [$model->id, "#comment-{$comment->id}"]));
+            return redirect(path('Torrents@show', [$model->id, "#comment-{$comment->id}"]));
         }
 
         return back()->with('message', trans('comments.posted'));

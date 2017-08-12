@@ -109,7 +109,7 @@ class Torrent extends Model
 
     public function www()
     {
-        return path('Torrents@torrent', $this->id);
+        return path('Torrents@show', $this->id);
     }
 
     // Static methods

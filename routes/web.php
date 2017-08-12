@@ -93,7 +93,7 @@ Route::get('retracker', 'Retracker@index');
 Route::get('retracker/dev', 'Retracker@dev');
 Route::get('retracker/usage', 'Retracker@usage');
 
-Route::get('torrent', 'Torrents@promo');
+Route::get('torrent', 'TorrentPromo@index');
 
 Route::get('torrents', 'Torrents@index');
 Route::post('torrents', 'Torrents@store')->middleware('auth');
@@ -101,7 +101,7 @@ Route::get('torrents/add', 'Torrents@create')->middleware('auth');
 Route::get('torrents/comments', 'Torrents@comments');
 Route::get('torrents/faq', 'Torrents@faq');
 Route::get('torrents/my', 'Torrents@my')->middleware('auth');
-Route::get('torrents/{torrent}', 'Torrents@torrent');
+Route::get('torrents/{torrent}', 'Torrents@show');
 Route::post('torrents/{torrent}/magnet', 'Torrents@magnet');
 
 Route::get('users', 'Users@index');

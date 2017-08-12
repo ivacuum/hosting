@@ -18,8 +18,6 @@ class Torrents extends Controller
 
         abort_if($category_id && is_null($category = \TorrentCategoryHelper::find($category_id)), 404);
 
-        \Breadcrumbs::push(trans($this->view));
-
         $torrents = Torrent::published()->orderBy('registered_at', 'desc');
 
         if (!is_null($category)) {
@@ -41,17 +39,11 @@ class Torrents extends Controller
 
     public function create()
     {
-        \Breadcrumbs::push(trans('torrents.index'), 'torrents');
-        \Breadcrumbs::push(trans($this->view));
-
         return view($this->view);
     }
 
     public function comments()
     {
-        \Breadcrumbs::push(trans('torrents.index'), 'torrents');
-        \Breadcrumbs::push('Последние комментарии');
-
         $comments = Comment::with('rel', 'user')
             ->byType('Torrent')
             ->published()
@@ -64,9 +56,6 @@ class Torrents extends Controller
 
     public function faq()
     {
-        \Breadcrumbs::push(trans('torrents.index'), 'torrents');
-        \Breadcrumbs::push(trans('torrents.faq'));
-
         event(new \App\Events\Stats\TorrentFaqViewed);
 
         return view($this->view);
@@ -89,9 +78,6 @@ class Torrents extends Controller
 
     public function my()
     {
-        \Breadcrumbs::push(trans('torrents.index'), 'torrents');
-        \Breadcrumbs::push(trans('torrents.my'));
-
         $user = $this->request->user();
 
         $torrents = Torrent::select($this->list_columns)
@@ -104,11 +90,17 @@ class Torrents extends Controller
         return view($this->view, compact('torrents'));
     }
 
-    public function promo()
+    public function show(Torrent $torrent)
     {
-        event(new \App\Events\Stats\TorrentPromoViewed);
+        \Breadcrumbs::push($torrent->title);
 
-        return view($this->view);
+        event(new \App\Events\Stats\TorrentViewed($torrent->id));
+
+        $comments = $torrent->commentsPublished()->with('user')->orderBy('id')->get();
+
+        $meta_title = $torrent->title;
+
+        return view($this->view, compact('comments', 'meta_title', 'torrent'));
     }
 
     public function store(Rto $rto)
@@ -159,18 +151,13 @@ class Torrents extends Controller
         return redirect($torrent->www());
     }
 
-    public function torrent(Torrent $torrent)
+    protected function appendBreadcrumbs()
     {
-        \Breadcrumbs::push(trans('torrents.index'), 'torrents');
-        \Breadcrumbs::push($torrent->title);
-
-        event(new \App\Events\Stats\TorrentViewed($torrent->id));
-
-        $comments = $torrent->commentsPublished()->with('user')->orderBy('id')->get();
-
-        $meta_title = $torrent->title;
-
-        return view($this->view, compact('comments', 'meta_title', 'torrent'));
+        $this->middleware('breadcrumbs:torrents.index,torrents');
+        $this->middleware('breadcrumbs:torrents.create')->only('create');
+        $this->middleware('breadcrumbs:torrents.comments')->only('comments');
+        $this->middleware('breadcrumbs:torrents.faq')->only('faq');
+        $this->middleware('breadcrumbs:torrents.my')->only('my');
     }
 
     protected function applySearchQuery($q, $torrents)
