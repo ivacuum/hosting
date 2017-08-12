@@ -6,9 +6,13 @@ class SiteTest extends TestCase
     {
         $this->get('/')->assertStatus(200);
         $this->get('/about')->assertStatus(200);
+        $this->get('/auth/login')->assertStatus(200);
+        $this->get('/auth/register')->assertStatus(200);
+        $this->get('/auth/password/remind')->assertStatus(200);
         $this->get('/dc')->assertStatus(200);
         $this->get('/dc/faq')->assertStatus(200);
         $this->get('/docs')->assertStatus(200);
+        $this->get('/files')->assertStatus(200);
         $this->get('/life')->assertStatus(200);
         $this->get('/life/cities')->assertStatus(200);
         $this->get('/life/kaluga')->assertStatus(200);
@@ -17,6 +21,7 @@ class SiteTest extends TestCase
         $this->get('/life/gigs')->assertStatus(200);
         $this->get('/life/japanese')->assertStatus(200);
         $this->get('/news')->assertStatus(200);
+        $this->get('/news/1')->assertStatus(200);
         $this->get('/photos')->assertStatus(200);
         $this->get('/photos/cities')->assertStatus(200);
         $this->get('/photos/cities/barcelona')->assertStatus(200);
@@ -39,6 +44,22 @@ class SiteTest extends TestCase
         $this->get('/torrents/comments')->assertStatus(200);
         $this->get('/torrents/faq')->assertStatus(200);
         $this->get('/users')->assertStatus(200);
+        $this->get('/users/1')->assertStatus(200);
+    }
+
+    public function testUserPages()
+    {
+        $this->be(\App\User::find(1));
+
+        $this->get('/gallery')->assertStatus(200);
+        $this->get('/gallery/upload')->assertStatus(200);
+        $this->get('/my')->assertStatus(200);
+        $this->get('/my/password')->assertStatus(200);
+        $this->get('/my/profile')->assertStatus(200);
+        $this->get('/my/settings')->assertStatus(200);
+        $this->get('/notifications')->assertStatus(200);
+        $this->get('/torrents/add')->assertStatus(200);
+        $this->get('/torrents/my')->assertStatus(200);
     }
 
     public function testTripsTemplates()
