@@ -2,11 +2,11 @@
 
 return [
     'my' => 'My releases',
-    'add' => 'Add a release',
     'new' => 'New',
     'faq' => 'Help',
     'index' => 'Torrents',
     'today' => 'Today',
+    'create' => 'Add a release',
     'search' => 'Search...',
     'source' => 'Source',
     'comments' => 'Comments',

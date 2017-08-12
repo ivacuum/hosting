@@ -39,60 +39,12 @@ class Torrents extends Controller
         return view($this->view, compact('category_id', 'q', 'torrents', 'tree', 'stats'));
     }
 
-    public function add()
+    public function create()
     {
         \Breadcrumbs::push(trans('torrents.index'), 'torrents');
         \Breadcrumbs::push(trans($this->view));
 
         return view($this->view);
-    }
-
-    public function addPost(Rto $rto)
-    {
-        $input = $this->request->input('input');
-        $category_id = $this->request->input('category_id');
-
-        $this->validate($this->request, [
-            'category_id' => 'required|integer|in:'.implode(',', \TorrentCategoryHelper::canPostIds()),
-            'input' => 'required',
-        ]);
-
-        if (($topic_id = $rto->findTopicId($input)) > 0) {
-            $torrent = Torrent::where('rto_id', $topic_id)->first();
-
-            if (!is_null($torrent)) {
-                event(new \App\Events\Stats\TorrentDuplicateFound);
-
-                return back()
-                    ->withInput()
-                    ->with('message', new HtmlString('Данная раздача уже <a class="link" href="' . $torrent->www() . '">присутствует на сайте</a>. Попробуйте добавить другую.'));
-            }
-        }
-
-        if (!is_array($data = $rto->torrentData($input))) {
-            return back()
-                ->withInput()
-                ->withErrors(['input' => $data ?: 'Ввод не распознан, попробуйте другую ссылку или хэш']);
-        }
-
-        $torrent = Torrent::create([
-            'html' => $data['body'],
-            'size' => $data['size'],
-            'title' => $data['title'],
-            'rto_id' => $data['rto_id'],
-            'clicks' => 0,
-            'status' => Torrent::STATUS_PUBLISHED,
-            'seeders' => $data['seeders'],
-            'user_id' => $this->request->user()->id,
-            'info_hash' => $data['info_hash'],
-            'announcer' => $data['announcer'],
-            'category_id' => $category_id,
-            'registered_at' => Carbon::now(),
-        ]);
-
-        event(new \App\Events\Stats\TorrentAdded);
-
-        return redirect($torrent->www());
     }
 
     public function comments()
@@ -157,6 +109,54 @@ class Torrents extends Controller
         event(new \App\Events\Stats\TorrentPromoViewed);
 
         return view($this->view);
+    }
+
+    public function store(Rto $rto)
+    {
+        $input = $this->request->input('input');
+        $category_id = $this->request->input('category_id');
+
+        $this->validate($this->request, [
+            'category_id' => 'required|integer|in:'.implode(',', \TorrentCategoryHelper::canPostIds()),
+            'input' => 'required',
+        ]);
+
+        if (($topic_id = $rto->findTopicId($input)) > 0) {
+            $torrent = Torrent::where('rto_id', $topic_id)->first();
+
+            if (!is_null($torrent)) {
+                event(new \App\Events\Stats\TorrentDuplicateFound);
+
+                return back()
+                    ->withInput()
+                    ->with('message', new HtmlString('Данная раздача уже <a class="link" href="' . $torrent->www() . '">присутствует на сайте</a>. Попробуйте добавить другую.'));
+            }
+        }
+
+        if (!is_array($data = $rto->torrentData($input))) {
+            return back()
+                ->withInput()
+                ->withErrors(['input' => $data ?: 'Ввод не распознан, попробуйте другую ссылку или хэш']);
+        }
+
+        $torrent = Torrent::create([
+            'html' => $data['body'],
+            'size' => $data['size'],
+            'title' => $data['title'],
+            'rto_id' => $data['rto_id'],
+            'clicks' => 0,
+            'status' => Torrent::STATUS_PUBLISHED,
+            'seeders' => $data['seeders'],
+            'user_id' => $this->request->user()->id,
+            'info_hash' => $data['info_hash'],
+            'announcer' => $data['announcer'],
+            'category_id' => $category_id,
+            'registered_at' => Carbon::now(),
+        ]);
+
+        event(new \App\Events\Stats\TorrentAdded);
+
+        return redirect($torrent->www());
     }
 
     public function torrent(Torrent $torrent)

@@ -24,8 +24,8 @@
       <a href="{{ path('Torrents@categories') }}">{{ trans('torrents.categories') }}</a>
     </li>
     --}}
-    <li class="{{ $view === 'torrents.add' ? 'active' : '' }}">
-      <a href="{{ path('Torrents@add') }}">{{ trans('torrents.add') }}</a>
+    <li class="{{ $view === 'torrents.create' ? 'active' : '' }}">
+      <a href="{{ path('Torrents@create') }}">{{ trans('torrents.create') }}</a>
     </li>
     <li class="{{ $view === 'torrents.faq' ? 'active' : '' }}">
       <a href="{{ path('Torrents@faq') }}">{{ trans('torrents.faq') }}</a>

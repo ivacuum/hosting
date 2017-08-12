@@ -3,12 +3,12 @@
 @section('content')
 <div class="row">
   <div class="col-md-6">
-    <form class="mb-3" action="{{ path("$self@addPost") }}" method="post">
+    <form class="mb-3" action="{{ path("$self@store") }}" method="post">
 
       @include("$tpl.form")
 
       <button type="submit" class="btn btn-primary">
-        {{ trans("$tpl.add") }}
+        {{ trans("$tpl.create") }}
       </button>
 
       {{ csrf_field() }}

@@ -47,6 +47,6 @@
   @en
     <p>You haven't released anything yet.</p>
   @endlang
-  <p><a class="btn btn-default" href="{{ path('Torrents@add') }}">{{ trans('torrents.add') }}</a></p>
+  <p><a class="btn btn-default" href="{{ path('Torrents@create') }}">{{ trans('torrents.create') }}</a></p>
 @endif
 @endsection
