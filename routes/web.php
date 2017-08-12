@@ -37,8 +37,8 @@ Route::get('files', 'Files@index');
 Route::get('files/{id}/dl', 'Files@download');
 
 Route::get('gallery', 'Gallery@index')->middleware('auth');
-Route::get('gallery/preview/{Image}', 'Gallery@preview');
-Route::get('gallery/view/{Image}', 'Gallery@view');
+Route::get('gallery/preview/{image}', 'Gallery@preview');
+Route::get('gallery/view/{image}', 'Gallery@view');
 Route::get('gallery/upload', 'Gallery@upload')->middleware('auth');
 Route::post('gallery/upload', 'Gallery@uploadPost')->middleware('auth');
 
@@ -101,8 +101,8 @@ Route::get('torrents/add', 'Torrents@add')->middleware('auth');
 Route::get('torrents/comments', 'Torrents@comments');
 Route::get('torrents/faq', 'Torrents@faq');
 Route::get('torrents/my', 'Torrents@my')->middleware('auth');
-Route::get('torrents/{Torrent}', 'Torrents@torrent');
-Route::post('torrents/{Torrent}/magnet', 'Torrents@magnet');
+Route::get('torrents/{torrent}', 'Torrents@torrent');
+Route::post('torrents/{torrent}/magnet', 'Torrents@magnet');
 
 Route::get('users', 'Users@index');
 Route::get('users/{id}', 'Users@show');

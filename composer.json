@@ -3,7 +3,7 @@
   "description": "",
   "license": "MIT",
   "require": {
-    "php": "^7.0",
+    "php": "^7.1",
     "baum/baum": "~1.1",
     "guzzlehttp/guzzle": "~6.0",
     "irazasyed/telegram-bot-sdk": "^2.0",
@@ -24,7 +24,8 @@
   },
   "autoload": {
     "classmap": [
-      "database"
+      "database/seeds",
+      "database/factories"
     ],
     "psr-4": {
       "App\\": "app/"
