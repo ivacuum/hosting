@@ -39,7 +39,7 @@
   </div>
   <div class="col-md-6">
     <h3 class="mt-0">Аватар</h3>
-    <avatar-uploader action="{{ path('My@avatarPut') }}" current_avatar="{{ Auth::user()->avatarUrl() }}"></avatar-uploader>
+    <avatar-uploader action="{{ path('MyAvatar@update') }}" current_avatar="{{ Auth::user()->avatarUrl() }}"></avatar-uploader>
   </div>
 </div>
 @endsection
