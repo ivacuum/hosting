@@ -51,12 +51,12 @@ Route::get('life/{slug}', 'Life@page');
 
 Route::get('my', 'My@index')->middleware('auth');
 Route::put('my/avatar', 'MyAvatar@update')->middleware('auth');
-Route::get('my/password', 'My@password')->middleware('auth');
-Route::put('my/password', 'My@passwordPut')->middleware('auth');
-Route::get('my/profile', 'My@profile')->middleware('auth');
-Route::put('my/profile', 'My@profilePut')->middleware('auth');
-Route::get('my/settings', 'My@settings')->middleware('auth');
-Route::put('my/settings', 'My@settingsPut')->middleware('auth');
+Route::get('my/password', 'MyPassword@edit')->middleware('auth');
+Route::put('my/password', 'MyPassword@update')->middleware('auth');
+Route::get('my/profile', 'MyProfile@edit')->middleware('auth');
+Route::put('my/profile', 'MyProfile@update')->middleware('auth');
+Route::get('my/settings', 'MySettings@edit')->middleware('auth');
+Route::put('my/settings', 'MySettings@update')->middleware('auth');
 
 Route::get('news', 'News@index');
 Route::get('news/{id}', 'News@show');

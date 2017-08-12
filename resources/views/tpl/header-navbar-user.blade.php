@@ -23,7 +23,7 @@
       </li>
     @endif
     <li>
-      <a href="{{ path('My@profile') }}">
+      <a href="{{ path('MyProfile@edit') }}">
         {{ trans('my.index') }}
       </a>
     </li>

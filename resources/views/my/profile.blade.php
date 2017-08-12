@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-md-6 mb-3">
     <h3 class="mt-0 mb-3">{{ trans('my.profile') }}</h3>
-    <form action="{{ path("$self@profilePut") }}" method="post">
+    <form action="{{ path("$self@update") }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}
 
       <div class="form-group {{ $errors->has('username') ? 'has-error' : '' }}">
@@ -30,7 +30,7 @@
       </div>
 
       <button type="submit" class="btn btn-primary">
-        {{ trans("$tpl.save") }}
+        {{ trans('my.save') }}
       </button>
 
       {{ method_field('put') }}

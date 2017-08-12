@@ -9,14 +9,14 @@
           {{ trans('acp.index') }}
         </a>
       @endif
-      <a class="list-group-item {{ $view == "$tpl.profile" ? 'active' : '' }}" href="{{ path("$self@profile") }}">
-        {{ trans("$tpl.profile") }}
+      <a class="list-group-item {{ $self === 'MyProfile' ? 'active' : '' }}" href="{{ path('MyProfile@edit') }}">
+        {{ trans('my.profile') }}
       </a>
-      <a class="list-group-item {{ $view == "$tpl.password" ? 'active' : '' }}" href="{{ path("$self@password") }}">
-        {{ trans("$tpl.password") }}
+      <a class="list-group-item {{ $self === 'MyPassword' ? 'active' : '' }}" href="{{ path('MyPassword@edit') }}">
+        {{ trans('my.password') }}
       </a>
-      <a class="list-group-item {{ $view == "$tpl.settings" ? 'active' : '' }}" href="{{ path("$self@settings") }}">
-        {{ trans("$tpl.settings") }}
+      <a class="list-group-item {{ $self === 'MySettings' ? 'active' : '' }}" href="{{ path('MySettings@edit') }}">
+        {{ trans('my.settings') }}
       </a>
       <a class="list-group-item visible-xs" href="{{ path('Notifications@index') }}">
         {{ trans('notifications.index') }}

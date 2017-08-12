@@ -5,7 +5,7 @@
 
 <div class="row">
   <div class="col-md-6">
-    <form action="{{ path("$self@settingsPut") }}" method="post">
+    <form action="{{ path("$self@update") }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}
 
       <div class="form-group {{ $errors->has('theme') ? 'has-error' : '' }}">
@@ -46,7 +46,7 @@
       </div>
 
       <button type="submit" class="btn btn-primary">
-        {{ trans("$tpl.save") }}
+        {{ trans('my.save') }}
       </button>
 
       {{ method_field('put') }}

@@ -5,7 +5,7 @@
 
 <div class="row">
   <div class="col-md-6">
-    <form action="{{ path("$self@passwordPut") }}" method="post">
+    <form action="{{ path("$self@update") }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}
 
       @if ($has_password)
@@ -33,7 +33,7 @@
       </div>
 
       <button type="submit" class="btn btn-primary">
-        {{ trans("$tpl.save") }}
+        {{ trans('my.save') }}
       </button>
 
       {{ method_field('put') }}
