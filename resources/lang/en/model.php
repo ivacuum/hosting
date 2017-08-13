@@ -31,6 +31,7 @@ return [
     'file.folder' => 'Folder',
     'file.extension' => 'Extension',
     'file.downloads' => 'Downloads',
+    'file.created_at' => 'Added on',
 
     'gig.date' => 'Date',
     'gig.status' => 'Status',

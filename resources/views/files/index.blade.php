@@ -5,11 +5,11 @@
   <table class="table-stats table-adaptive">
     <thead>
     <tr>
-      <th class="text-right">ID</th>
-      <th>{{ trans('model.file.title') }}</th>
-      <th class="text-right">{{ trans('model.file.size') }}</th>
-      <th class="text-right">{{ trans('model.file.downloads') }}</th>
-      <th>Добавлен</th>
+      <th class="text-right">{{ ViewHelper::modelFieldTrans('file', 'id') }}</th>
+      <th>{{ ViewHelper::modelFieldTrans('file', 'title') }}</th>
+      <th class="text-right">{{ ViewHelper::modelFieldTrans('file', 'size') }}</th>
+      <th class="text-right">{{ ViewHelper::modelFieldTrans('file', 'downloads') }}</th>
+      <th>{{ ViewHelper::modelFieldTrans('file', 'created_at') }}</th>
     </tr>
     </thead>
     <tbody>

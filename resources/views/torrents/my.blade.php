@@ -5,15 +5,15 @@
   <table class="table-stats table-adaptive">
     <thead>
       <tr>
-        <th>{{ trans('model.torrent.title') }}</th>
+        <th>{{ ViewHelper::modelFieldTrans('torrent', 'title') }}</th>
         <th class="text-muted text-right tooltipped tooltipped-n"
-             aria-label="{{ trans('model.torrent.views') }}">@svg (eye)</th>
+             aria-label="{{ ViewHelper::modelFieldTrans('torrent', 'views') }}">@svg (eye)</th>
         <th class="text-right tooltipped tooltipped-n"
-             aria-label="{{ trans('model.torrent.comments') }}">@svg (comment-o)</th>
+             aria-label="{{ ViewHelper::modelFieldTrans('torrent', 'comments') }}">@svg (comment-o)</th>
         <th class="text-right tooltipped tooltipped-n"
-             aria-label="{{ trans('model.torrent.clicks') }}">@svg (magnet)</th>
-        <th>{{ trans('model.torrent.size') }}</th>
-        <th>{{ trans('model.torrent.updated_at') }}</th>
+             aria-label="{{ ViewHelper::modelFieldTrans('torrent', 'clicks') }}">@svg (magnet)</th>
+        <th>{{ ViewHelper::modelFieldTrans('torrent', 'size') }}</th>
+        <th>{{ ViewHelper::modelFieldTrans('torrent', 'updated_at') }}</th>
         <th></th>
       </tr>
     </thead>

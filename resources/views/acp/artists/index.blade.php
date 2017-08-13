@@ -5,8 +5,8 @@
   <thead>
   <tr>
     <th class="text-right">#</th>
-    <th>{{ trans('model.artist.title') }}</th>
-    <th>{{ trans('model.artist.slug') }}</th>
+    <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'title') }}</th>
+    <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'slug') }}</th>
   </tr>
   </thead>
   <tbody>

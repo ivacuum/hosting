@@ -29,6 +29,7 @@ return [
     'file.folder' => 'Папка',
     'file.extension' => 'Расширение',
     'file.downloads' => 'Скачивания',
+    'file.created_at' => 'Добавлен',
 
     'gig.date' => 'Дата',
     'gig.status' => 'Состояние',
