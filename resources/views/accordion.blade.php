@@ -6,6 +6,6 @@
     </h4>
   </div>
   <div id="{{ $id }}" class="panel-collapse collapse">
-    <div class="panel-body">{{ $slot }}</div>
+    <div class="panel-body font-smooth">{{ $slot }}</div>
   </div>
 </div>
