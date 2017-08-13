@@ -17,3 +17,5 @@
 .text-lowercase  { text-transform: lowercase; }
 .text-uppercase  { text-transform: uppercase; }
 .text-capitalize { text-transform: capitalize; }
+
+.font-smooth { @include font-smoothing(); }

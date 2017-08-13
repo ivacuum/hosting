@@ -5,7 +5,7 @@
 @section('content')
 <div class="row">
   <section class="col-sm-6 pt-0">
-    <h2 class="mt-0">{{ trans('life.trips') }}</h2>
+    <h1 class="h2 mt-0">{{ trans('life.trips') }}</h1>
     <ul class="list-inline f14">
       <li><mark>{{ trans('life.by_year') }}</mark></li>
       <li><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></li>

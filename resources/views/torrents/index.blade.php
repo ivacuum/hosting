@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="row">
-  <aside class="col-md-3 hidden-xs torrent-categories">
+  <aside class="col-md-3 torrent-categories d-none d-md-block font-smooth">
     <nav>
       @foreach ($tree as $id => $category)
         <h3 class="{{ $loop->first ? 'mt-0' : '' }}">
@@ -42,7 +42,7 @@
           @php ($last_date = $torrent->registered_at)
         @endif
         @php ($category = TorrentCategoryHelper::find($torrent->category_id))
-        <div class="torrents-list-container">
+        <div class="torrents-list-container font-smooth">
           <div class="torrents-list-cell torrents-list-icon torrent-icon" title="{{ $category['title'] }}">
             @php ($icon = $category['icon'] ?? 'file-text-o')
             @svg ($icon)
