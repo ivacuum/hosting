@@ -11,7 +11,7 @@
             <div class="page-block-cover-title">
               {{ $trip->city->country->emoji }}
               {{ $trip->title }}
-              <span class="page-block-cover-date">{{ $trip->period }} {{ $trip->year }}</span>
+              <span class="page-block-cover-date">{{ $trip->localizedDate() }}</span>
             </div>
             <div class="page-block-cover-description">{{ $trip->meta_description }}</div>
           </div>
