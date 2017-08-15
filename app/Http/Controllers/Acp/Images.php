@@ -49,7 +49,7 @@ class Images extends Controller
             }
         }
 
-        return $this->redirectAfterDestroy();
+        return $this->redirectAfterDestroy($model);
     }
 
     public function view($id)
@@ -62,7 +62,7 @@ class Images extends Controller
         return back();
     }
 
-    protected function redirectAfterDestroy()
+    protected function redirectAfterDestroy($model)
     {
         return [
             'status' => 'OK',

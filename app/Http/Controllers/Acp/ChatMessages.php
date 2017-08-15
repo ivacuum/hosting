@@ -44,7 +44,7 @@ class ChatMessages extends Controller
             }
         }
 
-        return $this->redirectAfterDestroy();
+        return $this->redirectAfterDestroy($model);
     }
 
     protected function rules($model = null)
