@@ -10,6 +10,7 @@
   <p class="mb-5">Конспект информации, освоенной во время изучения языка.</p>
 @endlang
 
+<a name="irregular-verbs"></a>
 <h2>@ru Неправильные глаголы @en Irregular Verbs @endlang</h2>
 <table class="table-stats mb-5">
   <thead>
@@ -43,6 +44,7 @@
   </tbody>
 </table>
 
+<a name="articles"></a>
 <h2>@ru Артикли @en Articles @endlang</h2>
 <blockquote>
   <div>— Johnny, do you know where <b>the</b> Pyramids are?</div>
