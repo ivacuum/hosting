@@ -10,7 +10,40 @@
   <p class="mb-5">Конспект информации, освоенной во время изучения языка.</p>
 @endlang
 
-<h2>17. @ru Артикли @en Articles @endlang</h2>
+<h2>@ru Неправильные глаголы @en Irregular Verbs @endlang</h2>
+<table class="table-stats mb-5">
+  <thead>
+  <tr>
+    <th>Infinitive</th>
+    <th>Past Simple</th>
+    <th>Past Participle</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>be</td>
+    <td>was, were</td>
+    <td>been</td>
+  </tr>
+  <tr>
+    <td>burn</td>
+    <td>burnt, burned</td>
+    <td>burnt, burned</td>
+  </tr>
+  <tr>
+    <td>cut</td>
+    <td>cut</td>
+    <td>cut</td>
+  </tr>
+  <tr>
+    <td>hurt</td>
+    <td>hurt</td>
+    <td>hurt</td>
+  </tr>
+  </tbody>
+</table>
+
+<h2>@ru Артикли @en Articles @endlang</h2>
 <blockquote>
   <div>— Johnny, do you know where <b>the</b> Pyramids are?</div>
   <div>— No, miss, they must be lost. There was <b>a</b> teacher here yesterday asking <b>the</b> same question.</div>
