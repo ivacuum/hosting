@@ -9,7 +9,7 @@ class Docs extends Controller
 
     public function page($page)
     {
-        $view = "docs.{$page}";
+        $view = "{$this->prefix}.{$page}";
 
         abort_unless(view()->exists($view), 404);
 
