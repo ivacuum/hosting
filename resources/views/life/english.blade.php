@@ -23,13 +23,13 @@
   <tbody>
   <tr>
     <td>be</td>
-    <td>was, were</td>
+    <td>was</td>
     <td>been</td>
   </tr>
   <tr>
     <td>burn</td>
-    <td>burnt, burned</td>
-    <td>burnt, burned</td>
+    <td>burnt</td>
+    <td>burnt</td>
   </tr>
   <tr>
     <td>cut</td>
@@ -40,6 +40,26 @@
     <td>hurt</td>
     <td>hurt</td>
     <td>hurt</td>
+  </tr>
+  <tr>
+    <td>wake</td>
+    <td>woke</td>
+    <td>woken</td>
+  </tr>
+  <tr>
+    <td>wear</td>
+    <td>wore</td>
+    <td>worn</td>
+  </tr>
+  <tr>
+    <td>win</td>
+    <td>won</td>
+    <td>won</td>
+  </tr>
+  <tr>
+    <td>write</td>
+    <td>wrote</td>
+    <td>written</td>
   </tr>
   </tbody>
 </table>
