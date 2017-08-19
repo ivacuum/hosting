@@ -20,21 +20,13 @@ class Photos extends Controller
 
     public function cities()
     {
-        \Breadcrumbs::push(trans('photos.cities'));
+        $trips = Trip::tripsByCities();
 
-        $cities = City::orderBy(City::titleField())->get();
-
-        $trips_by_cities = [];
-
-        Trip::published()
-            ->get(['id', 'city_id', 'status'])
-            ->each(function ($trip) use (&$trips_by_cities) {
-                @$trips_by_cities[$trip->city_id] += 1;
+        $cities = City::orderBy(City::titleField())
+            ->get()
+            ->filter(function ($city) use (&$trips) {
+                return $trips[$city->id]['published'] ?? 0;
             });
-
-        $cities = $cities->filter(function ($city) use (&$trips_by_cities) {
-            return $trips_by_cities[$city->id] ?? 0;
-        });
 
         return view($this->view, compact('cities'));
     }
@@ -52,7 +44,6 @@ class Photos extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        \Breadcrumbs::push(trans('photos.cities'), 'photos/cities');
         \Breadcrumbs::push($city->title);
 
         $meta_title = $city->title;
@@ -62,31 +53,22 @@ class Photos extends Controller
 
     public function countries()
     {
-        \Breadcrumbs::push(trans('photos.countries'));
+        $trips = Trip::tripsByCities();
 
-        $countries = Country::with('cities')->orderBy(Country::titleField())->get();
+        $countries = Country::with('cities')
+            ->orderBy(Country::titleField())
+            ->get()
+            ->each(function ($country) use (&$trips) {
+                $trips_count = 0;
 
-        $trips_by_cities = [];
+                $country->cities->each(function ($city) use (&$trips, &$trips_count) {
+                    $city->trips_count = $trips[$city->id]['published'] ?? 0;
 
-        Trip::published()
-            ->get(['id', 'city_id', 'status'])
-            ->each(function ($trip) use (&$trips_by_cities) {
-                @$trips_by_cities[$trip->city_id] += 1;
-            });
+                    $trips_count += $city->trips_count;
+                });
 
-        $countries = $countries->each(function ($country) use (&$trips_by_cities) {
-            $trips_count = 0;
-
-            $country->cities->each(function ($city) use (&$trips_by_cities, &$trips_count) {
-                $city->trips_count = $trips_by_cities[$city->id] ?? 0;
-
-                $trips_count += $city->trips_count;
-            });
-
-            $country->trips_count = $trips_count;
-        })->filter(function ($country) {
-            return $country->trips_count;
-        });
+                $country->trips_count = $trips_count;
+            })->filter->trips_count;
 
         return view($this->view, compact('countries'));
     }
@@ -104,7 +86,6 @@ class Photos extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        \Breadcrumbs::push(trans('photos.countries'), 'photos/countries');
         \Breadcrumbs::push($country->title);
 
         $meta_title = $country->title;
@@ -114,8 +95,6 @@ class Photos extends Controller
 
     public function faq()
     {
-        \Breadcrumbs::push(trans('photos.faq'));
-
         return view($this->view);
     }
 
@@ -126,8 +105,6 @@ class Photos extends Controller
 
             return $this->pointsForMap($trip_id);
         }
-
-        \Breadcrumbs::push(trans('photos.map'));
 
         return view($this->view);
     }
@@ -281,6 +258,10 @@ class Photos extends Controller
     protected function appendBreadcrumbs()
     {
         $this->middleware('breadcrumbs:photos.index,photos');
+        $this->middleware('breadcrumbs:photos.cities,photos/cities')->only('cities', 'city');
+        $this->middleware('breadcrumbs:photos.countries,photos/countries')->only('countries', 'country');
+        $this->middleware('breadcrumbs:photos.faq,photos/faq')->only('faq');
+        $this->middleware('breadcrumbs:photos.map,photos/map')->only('map');
     }
 
     protected function pointsForMap($trip_id)

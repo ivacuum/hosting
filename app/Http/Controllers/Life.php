@@ -36,28 +36,14 @@ class Life extends Controller
 
     public function cities()
     {
-        $cities = City::orderBy(City::titleField())->get();
+        $trips = Trip::tripsByCities();
 
-        $trips_by_cities = [];
-
-        Trip::visible()
-            ->get(['id', 'city_id', 'status'])
-            ->each(function ($trip) use (&$trips_by_cities) {
-                if ($trip->status === Trip::STATUS_PUBLISHED) {
-                    @$trips_by_cities[$trip->city_id]['published'] += 1;
-                }
-
-                @$trips_by_cities[$trip->city_id]['total'] += 1;
-            });
-
-        $cities = $cities->each(function ($city) use (&$trips_by_cities) {
-            $city->trips_count = $trips_by_cities[$city->id]['total'] ?? 0;
-            $city->trips_published_count = $trips_by_cities[$city->id]['published'] ?? 0;
-        })->filter(function ($city) {
-            return $city->trips_count;
-        });
-
-        \Breadcrumbs::push(trans('menu.cities'));
+        $cities = City::orderBy(City::titleField())
+            ->get()
+            ->each(function ($city) use (&$trips) {
+                $city->trips_count = $trips[$city->id]['total'] ?? 0;
+                $city->trips_published_count = $trips[$city->id]['published'] ?? 0;
+            })->filter->trips_count;
 
         return view($this->view, compact('cities'));
     }
@@ -77,12 +63,10 @@ class Life extends Controller
             /* @var \App\Trip $trip */
             $trip = $published_trips->first();
 
-            event(new \App\Events\Stats\CityRedirectedToSingleTrip);
-
             return redirect($trip->www());
         }
 
-        \Breadcrumbs::push(trans('menu.countries'), 'life/countries');
+        \Breadcrumbs::push(trans('menu.countries'), "life/countries");
         \Breadcrumbs::push($city->country->title, "life/countries/{$city->country->slug}");
         \Breadcrumbs::push($city->title);
 
@@ -91,39 +75,26 @@ class Life extends Controller
 
     public function countries()
     {
-        $countries = Country::with('cities')->orderBy(Country::titleField())->get();
+        $trips = Trip::tripsByCities();
 
-        $trips_by_cities = [];
+        $countries = Country::with('cities')
+            ->orderBy(Country::titleField())
+            ->get()
+            ->each(function ($country) use (&$trips) {
+                $trips_count = 0;
+                $trips_published_count = 0;
 
-        Trip::visible()
-            ->get(['id', 'city_id', 'status'])
-            ->each(function ($trip) use (&$trips_by_cities) {
-                if ($trip->status === Trip::STATUS_PUBLISHED) {
-                    @$trips_by_cities[$trip->city_id]['published'] += 1;
-                }
+                $country->cities->each(function ($city) use (&$trips, &$trips_count, &$trips_published_count) {
+                    $city->trips_count = $trips[$city->id]['total'] ?? 0;
+                    $city->trips_published_count = $trips[$city->id]['published'] ?? 0;
 
-                @$trips_by_cities[$trip->city_id]['total'] += 1;
-            });
+                    $trips_count += $city->trips_count;
+                    $trips_published_count += $city->trips_published_count;
+                });
 
-        $countries = $countries->each(function ($country) use (&$trips_by_cities) {
-            $trips_count = 0;
-            $trips_published_count = 0;
-
-            $country->cities->each(function ($city) use (&$trips_by_cities, &$trips_count, &$trips_published_count) {
-                $city->trips_count = $trips_by_cities[$city->id]['total'] ?? 0;
-                $city->trips_published_count = $trips_by_cities[$city->id]['published'] ?? 0;
-
-                $trips_count += $city->trips_count;
-                $trips_published_count += $city->trips_published_count;
-            });
-
-            $country->trips_count = $trips_count;
-            $country->trips_published_count = $trips_published_count;
-        })->filter(function ($country) {
-            return $country->trips_count;
-        });
-
-        \Breadcrumbs::push(trans('menu.countries'));
+                $country->trips_count = $trips_count;
+                $country->trips_published_count = $trips_published_count;
+            })->filter->trips_count;
 
         return view($this->view, compact('countries'));
     }
@@ -136,7 +107,6 @@ class Life extends Controller
             ->visible()
             ->get();
 
-        \Breadcrumbs::push(trans('menu.countries'), 'life/countries');
         \Breadcrumbs::push($country->title, "life/countries/{$country->slug}");
 
         event(new \App\Events\Stats\CountryViewed($country->id));
@@ -163,8 +133,6 @@ class Life extends Controller
     public function gigs()
     {
         $gigs = Gig::with('artist')->orderBy('date', 'desc')->get();
-
-        \Breadcrumbs::push(trans('menu.gigs'));
 
         return view($this->view, compact('gigs'));
     }
@@ -218,31 +186,22 @@ class Life extends Controller
     protected function appendBreadcrumbs()
     {
         $this->middleware('breadcrumbs:menu.life,life');
+        $this->middleware('breadcrumbs:menu.cities,life/cities')->only('cities');
+        $this->middleware('breadcrumbs:menu.countries,life/countries')->only('countries', 'country');
+        $this->middleware('breadcrumbs:menu.gigs,life/gigs')->only('gigs');
     }
 
-    /**
-     * @param  string $slug
-     * @return \App\City
-     */
-    protected function getCity($slug)
+    protected function getCity(string $slug) : ?City
     {
         return City::where('slug', $slug)->first();
     }
 
-    /**
-     * @param  string $slug
-     * @return \App\Gig
-     */
-    protected function getGig($slug)
+    protected function getGig(string $slug) : ?Gig
     {
         return Gig::where('slug', $slug)->first();
     }
 
-    /**
-     * @param  string $slug
-     * @return \App\Trip
-     */
-    protected function getTrip($slug)
+    protected function getTrip(string $slug) : ?Trip
     {
         return Trip::withCount('photos')
             ->where('slug', $slug)

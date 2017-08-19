@@ -306,6 +306,23 @@ class Trip extends Model
             ->notName('base.blade.php');
     }
 
+    public static function tripsByCities()
+    {
+        $trips_by_cities = [];
+
+        self::visible()
+            ->get(['id', 'city_id', 'status'])
+            ->each(function ($trip) use (&$trips_by_cities) {
+                if ($trip->status === self::STATUS_PUBLISHED) {
+                    @$trips_by_cities[$trip->city_id]['published'] += 1;
+                }
+
+                @$trips_by_cities[$trip->city_id]['total'] += 1;
+            });
+
+        return $trips_by_cities;
+    }
+
     public static function idsByCity($id = null)
     {
         $ids = \Cache::rememberForever(CacheKey::TRIPS_PUBLISHED_BY_CITY, function () {
