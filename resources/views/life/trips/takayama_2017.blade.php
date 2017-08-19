@@ -173,6 +173,8 @@
 
 @ru
   <p>Почтовый ящик.</p>
+@en
+  <p>Postbox.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_7602.jpg'])
 
@@ -267,6 +269,8 @@
 
 @ru
   <p>Почтовый ящик, велосипедист, гидрант, уже знакомый светофор, дорожные маршруты на столбе.</p>
+@en
+  <p>Postbox, cyclist, hydrant, already familiar traffic light, road routes on the pillar.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_7368.jpg'])
 
@@ -331,6 +335,8 @@
 
 @ru
   <p>Почтовый ящик.</p>
+@en
+  <p>Postbox.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_7683.jpg'])
 

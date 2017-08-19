@@ -619,6 +619,8 @@
 
 @ru
   <p>Почтовый ящик.</p>
+@en
+  <p>Postbox.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_6652.jpg'])
 

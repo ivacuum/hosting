@@ -21,6 +21,8 @@
 
 @ru
   <p>Чешская почта.</p>
+@en
+  <p>Post office.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_9364.jpg'])
 

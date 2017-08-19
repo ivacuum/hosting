@@ -179,7 +179,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_0166.jpg'])
 
 @ru
-  <p>Почта.</p>
+  <p>Почтовый ящик.</p>
 @en
   <p>Postbox.</p>
 @endlang

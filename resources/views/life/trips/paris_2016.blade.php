@@ -358,6 +358,8 @@
 
 @ru
   <p>Почта, телеграф, телефон.</p>
+@en
+  <p>Post, telegraph, telephone.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_1676.jpg'])
 
