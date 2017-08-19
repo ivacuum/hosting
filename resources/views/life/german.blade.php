@@ -76,6 +76,48 @@
     <div class="city-entry ml-0 pb-2">ch <span class="text-muted">[ч]</span> checken</div>
   </div>
 
+  <h3>Спряжение глаголов</h3>
+  <table class="table-stats">
+    <thead>
+    <tr>
+      <td rowspan="2"></td>
+      <td class="text-center" colspan="2">a</td>
+      <td class="text-center" colspan="2">b</td>
+    </tr>
+    <tr>
+      <td>heißen</td>
+      <td>tanzen</td>
+      <td>arbeiten</td>
+      <td>baden</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>ich (я)</td>
+      <td>heiße</td>
+      <td>tanze</td>
+      <td>arbeite</td>
+      <td>bade</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <ol class="mt-3" type="a">
+    <li>Глаголы, основа которых оканчивается на -s, -z, -ß, во 2-м лице ед. ч. (du) не получают дополнительного -s- в окончании, так что формы второго и третьего лица совпадают.</li>
+    <li>Глаголы, основа которых оканчивается на -t, -d во 2-м и 3-м лице ед.ч. (du; er/sie/es), а также во 2-м лице мн. числа (ihr) для удобства произнесения получают дополнительную -e- перед окончанием.</li>
+  </ol>
+
+  <h3>Вопросительные слова</h3>
+  <ul>
+    <li>wer — кто?</li>
+    <li>was — что?</li>
+    <li>wie — как, каков?</li>
+    <li>wann — когда?</li>
+    <li>wo — где?</li>
+    <li>wohin — куда?</li>
+    <li>woher — откуда?</li>
+  </ul>
+
   <h3>Числа</h3>
   <?php
   $entries = [
