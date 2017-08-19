@@ -6,19 +6,19 @@
     <li class="{{ $view === 'photos.index' ? 'active' : '' }}">
       <a href="{{ path('Photos@index') }}">{{ trans('photos.new') }}</a>
     </li>
-    <li class="{{ $view === 'photos.trips' ? 'active' : '' }}">
+    <li class="{{ in_array($view, ['photos.trip', 'photos.trips']) ? 'active' : '' }}">
       <a href="{{ path('Photos@trips') }}">{{ trans('photos.trips') }}</a>
     </li>
-    <li class="{{ $view === 'photos.tags' ? 'active' : '' }}">
+    <li class="{{ in_array($view, ['photos.tag', 'photos.tags']) ? 'active' : '' }}">
       <a href="{{ path('Photos@tags') }}">{{ trans('photos.tags') }}</a>
     </li>
     <li class="{{ $view === 'photos.map' ? 'active' : '' }}">
       <a href="{{ path('Photos@map') }}">{{ trans('photos.map') }}</a>
     </li>
-    <li class="{{ $view === 'photos.cities' ? 'active' : '' }}">
+    <li class="{{ in_array($view, ['photos.cities', 'photos.city']) ? 'active' : '' }}">
       <a href="{{ path('Photos@cities') }}">{{ trans('photos.cities') }}</a>
     </li>
-    <li class="{{ $view === 'photos.countries' ? 'active' : '' }}">
+    <li class="{{ in_array($view, ['photos.countries', 'photos.country']) ? 'active' : '' }}">
       <a href="{{ path('Photos@countries') }}">{{ trans('photos.countries') }}</a>
     </li>
     <li class="{{ $view === 'photos.faq' ? 'active' : '' }}">
