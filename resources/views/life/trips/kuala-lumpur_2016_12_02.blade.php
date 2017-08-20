@@ -91,6 +91,8 @@
 
 @ru
   <p>Пополнение коллекции флагов.</p>
+@en
+  <p>Expanding the flags collection.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_2658.jpg'])
 
