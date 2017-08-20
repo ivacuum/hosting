@@ -7,7 +7,7 @@
     @if ($trip->status === App\Trip::STATUS_PUBLISHED)
       <a class="link mr-1" href="{{ $trip->www() }}">{{ $trip->title }}</a>
     @else
-      {{ $trip->title }}
+      <span class="mr-1">{{ $trip->title }}</span>
     @endif
     <span class="travel-month mr-2 text-nowrap">{{ $trip->localizedDateWithoutYear() }}</span>
     @if ($trip->status === App\Trip::STATUS_PUBLISHED && $trip->photos_count)
