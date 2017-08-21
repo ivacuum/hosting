@@ -46,7 +46,10 @@
           <img class="image-100 screenshot" src="{{ $model->thumbnailUrl() }}">
         </a>
       </td>
-      <td>{{ $model->slug }}</td>
+      <td>
+        <div>{{ $model->filename() }}</div>
+        <div class="small text-muted">{{ $model->folder() }}</div>
+      </td>
       <td>
         @foreach ($model->tags as $tag)
           <div>

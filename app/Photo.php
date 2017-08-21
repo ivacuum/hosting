@@ -109,6 +109,16 @@ class Photo extends Model
         return \Storage::disk('photos')->delete($this->slug);
     }
 
+    public function filename()
+    {
+        return explode('/', $this->slug)[1];
+    }
+
+    public function folder()
+    {
+        return explode('/', $this->slug)[0];
+    }
+
     public function isOnMap()
     {
         return $this->lat && $this->lon;
