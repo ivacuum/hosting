@@ -23,7 +23,7 @@ Route::get('dev/debugbar', 'Acp\Dev@debugbar');
 Route::get('dev/logs', 'Acp\Dev@logs');
 Route::get('dev/svg', 'Acp\Dev@svg');
 Route::get('dev/templates', 'Acp\Dev\Templates@index');
-Route::get('dev/templates/{template}', 'Acp\Dev\Templates@template');
+Route::get('dev/templates/{template}', 'Acp\Dev\Templates@show');
 Route::get('dev/thumbnails', 'Acp\Dev\Thumbnails@index');
 Route::post('dev/thumbnails', 'Acp\Dev\Thumbnails@thumbnailsPost');
 Route::get('dev/thumbnails/clean', 'Acp\Dev\Thumbnails@clean');

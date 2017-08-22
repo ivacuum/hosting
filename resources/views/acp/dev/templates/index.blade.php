@@ -32,7 +32,7 @@
     @foreach ($templates as $template)
       <tr>
         <td>
-          <a href="{{ path("$self@template", $template->name)}}">
+          <a href="{{ path("$self@show", $template->name)}}">
             {{ $template->name }}
           </a>
         </td>

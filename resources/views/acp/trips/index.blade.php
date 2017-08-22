@@ -100,7 +100,7 @@
         @endif
       </td>
       <td class="text-right">
-        <a href="{{ path('Acp\Dev\Templates@template', str_replace('.', '_', $model->slug)) }}">
+        <a href="{{ path('Acp\Dev\Templates@show', str_replace('.', '_', $model->slug)) }}">
           @svg (file-text-o)
         </a>
       </td>

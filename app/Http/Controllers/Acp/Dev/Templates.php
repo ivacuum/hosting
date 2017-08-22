@@ -39,7 +39,7 @@ class Templates extends BaseController
         return view($this->view, compact('templates', 'total'));
     }
 
-    public function template($template)
+    public function show($template)
     {
         \Breadcrumbs::push($template);
 
@@ -47,6 +47,42 @@ class Templates extends BaseController
 
         $trip = Trip::inRandomOrder()->first();
         $trip->slug = $slug;
+
+        if ($this->request->input('images')) {
+            $tpl = str_replace('.', '/', $trip->template());
+            $path = base_path("resources/views/{$tpl}.blade.php");
+
+            $content = \File::get($path);
+
+            $lines = explode("\n", $content);
+            $images = $result = [];
+
+            foreach ($lines as $line) {
+                if (preg_match('#^([A-Za-z_\d]+\.[a-z]{3})$#', $line, $match)) {
+                    $images[] = $match[1];
+                } else {
+                    $sizeof = sizeof($images);
+
+                    if ($sizeof > 1) {
+                        $result[] = "@include('tpl.fotorama-2x', ['pics' => [";
+
+                        foreach ($images as $image) {
+                            $result[] = "  '{$image}',";
+                        }
+
+                        $result[] = "]])";
+                    } elseif ($sizeof === 1) {
+                        $result[] = "@include('tpl.pic-2x', ['pic' => '{$images[0]}'])";
+                    }
+
+                    $images = [];
+
+                    $result[] = $line;
+                }
+            }
+
+            \File::put($path, implode("\n", $result));
+        }
 
         return view($this->view, compact('template', 'trip'));
     }
