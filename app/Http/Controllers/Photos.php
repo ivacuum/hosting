@@ -199,7 +199,7 @@ class Photos extends Controller
 
         event(new \App\Events\Stats\TagViewed($tag->id));
 
-        $meta_title = "#{$tag->title}";
+        $meta_title = "#{$tag->title} &middot; ".\ViewHelper::plural('photos', sizeof($tag->photos));
 
         return view($this->view, compact('meta_title', 'photos', 'tag'));
     }
