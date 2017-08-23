@@ -47,7 +47,7 @@
          aria-label="{{ trans('auth.signin_vk') }}">
         @svg (vk)
       </a>
-      <a class="btn btn-social bg-facebook tooltipped tooltipped-n"
+      <a class="btn btn-social bg-fb tooltipped tooltipped-n"
          href="{{ path('Auth\Facebook@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}"
          aria-label="{{ trans('auth.signin_facebook') }}">
         @svg (facebook)
