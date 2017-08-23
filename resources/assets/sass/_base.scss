@@ -21,7 +21,7 @@ blockquote {
   margin: .5rem 0 1rem;
 }
 
-footer {
+.footer {
   background-color: #fafafa;
   border-top: 1px solid $border-color;
   padding-top: 0.7rem;
@@ -30,6 +30,7 @@ footer {
   color: #777;
   font-size: 13px;
   line-height: 18px;
+  min-height: 43px;
 }
 
 kbd {

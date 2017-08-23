@@ -93,7 +93,7 @@
   </div>
 </div>
 
-<footer>
+<footer class="footer">
   <div class="container">
     @section('footer')
       <ul class="list-inline mb-0">
