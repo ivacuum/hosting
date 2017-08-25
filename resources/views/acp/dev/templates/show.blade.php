@@ -6,6 +6,7 @@
 @endsection
 
 @section('content_footer')
+    <p><a class="btn btn-primary" href="?images=1">Запилить картинки</a></p>
   </div>
 </div>
 @endsection
