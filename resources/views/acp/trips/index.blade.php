@@ -87,9 +87,11 @@
       </td>
       <td>
         @if ($model->meta_image)
-          <span class="tooltipped tooltipped-n" aria-label="Задано фото">
-            @svg (paperclip)
-          </span>
+          <a href="{{ $model->metaImage() }}">
+            <span class="tooltipped tooltipped-n" aria-label="Обложка">
+              @svg (paperclip)
+            </span>
+          </a>
         @endif
       </td>
       <td class="text-right">
