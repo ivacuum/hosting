@@ -53,6 +53,13 @@ class News extends Model
         return $query->where('status', self::STATUS_PUBLISHED);
     }
 
+    // Attributes
+    public function setMarkdownAttribute($value)
+    {
+        $this->attributes['markdown'] = $value;
+        $this->attributes['html'] = \Parsedown::instance()->text($value);
+    }
+
     // Methods
     public function breadcrumb()
     {

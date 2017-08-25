@@ -45,9 +45,9 @@ class News extends Controller
     protected function rules($model = null)
     {
         return [
-            'html' => 'required',
             'title' => 'required',
             'site_id' => 'required|integer|min:1',
+            'markdown' => 'required',
         ];
     }
 

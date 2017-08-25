@@ -7,6 +7,7 @@ return [
     'status' => 'Состояние',
     'city_id' => 'Город',
     'trip_id' => 'Поездка',
+    'site_id' => 'Сайт',
     'artist_id' => 'Артист',
     'country_id' => 'Страна',
     'q_placeholder' => 'Поиск...',
