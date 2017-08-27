@@ -1,0 +1,36 @@
+@extends('user-travel.base', [
+  'meta_title' => trans('menu.cities'),
+])
+
+@section('content')
+<h1 class="h2 mt-0">
+  {{ trans('life.visited_cities') }}
+  <small>{{ sizeof($cities) }}</small>
+</h1>
+<ul class="list-inline f14">
+  <li><a class="link" href="{{ path('UserTravelTrips@index', $traveler->login) }}">{{ trans('life.by_year') }}</a></li>
+  <li><a class="link" href="{{ path('UserTravelCountries@index', $traveler->login) }}">{{ trans('life.by_country') }}</a></li>
+  <li><mark>{{ trans('life.by_city') }}</mark></li>
+</ul>
+
+<div class="cities-columns">
+  @php ($initial = $current_initial = false)
+  @foreach ($cities as $city)
+    @php ($current_initial = $city->initial())
+    <div class="city-entry pb-2">
+      @if ($initial !== $current_initial)
+        <span class="city-initial">{{ $current_initial }}</span>
+      @endif
+      @if ($city->trips_published_count)
+        <a class="link" href="{{ path('UserTravelCities@show', [$traveler->login, $city->slug]) }}">{{ $city->title }}</a>
+      @else
+        {{ $city->title }}
+      @endif
+      @if ($city->trips_count > 1)
+        <span class="city-trips">{{ $city->trips_count }}</span>
+      @endif
+    </div>
+    @php ($initial = $current_initial)
+  @endforeach
+</div>
+@endsection

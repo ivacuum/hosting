@@ -106,3 +106,14 @@ Route::post('torrents/{torrent}/magnet', 'Torrents@magnet');
 
 Route::get('users', 'Users@index');
 Route::get('users/{id}', 'Users@show');
+
+Route::get('@{login}', function ($login) {
+    return redirect("@{$login}/travel");
+});
+
+Route::get('@{login}/travel', 'UserTravelTrips@index');
+Route::get('@{login}/travel/cities', 'UserTravelCities@index');
+Route::get('@{login}/travel/cities/{slug}', 'UserTravelCities@show');
+Route::get('@{login}/travel/countries', 'UserTravelCountries@index');
+Route::get('@{login}/travel/countries/{slug}', 'UserTravelCountries@show');
+Route::get('@{login}/travel/{slug}', 'UserTravelTrips@show');
