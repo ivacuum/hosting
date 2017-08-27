@@ -84,13 +84,13 @@ class Life extends Controller
                 $trips_count = 0;
                 $trips_published_count = 0;
 
-                $country->cities->each(function ($city) use (&$trips, &$trips_count, &$trips_published_count) {
+                $country->filtered_cities = $country->cities->each(function ($city) use (&$trips, &$trips_count, &$trips_published_count) {
                     $city->trips_count = $trips[$city->id]['total'] ?? 0;
                     $city->trips_published_count = $trips[$city->id]['published'] ?? 0;
 
                     $trips_count += $city->trips_count;
                     $trips_published_count += $city->trips_published_count;
-                });
+                })->filter->trips_count;
 
                 $country->trips_count = $trips_count;
                 $country->trips_published_count = $trips_published_count;
