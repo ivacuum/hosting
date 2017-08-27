@@ -99,7 +99,8 @@ class Trip extends Model
 
     public function scopeNext(Builder $query)
     {
-        return $query->where('date_start', '>=', $this->date_start)
+        return $query->where('user_id', $this->user_id)
+            ->where('date_start', '>=', $this->date_start)
             ->where('status', self::STATUS_PUBLISHED)
             ->where('id', '<>', $this->id)
             ->orderBy('date_start')
@@ -114,7 +115,8 @@ class Trip extends Model
         // prev prev prev prev current
         $take = 4 - $next_trips;
 
-        return $query->where('date_start', '<=', $this->date_start)
+        return $query->where('user_id', $this->user_id)
+            ->where('date_start', '<=', $this->date_start)
             ->where('status', self::STATUS_PUBLISHED)
             ->where('id', '<>', $this->id)
             ->orderBy('date_start', 'desc')
@@ -156,11 +158,6 @@ class Trip extends Model
         return $this->{'title_' . \App::getLocale()};
     }
 
-    public function getUserIdAttribute()
-    {
-        return 1;
-    }
-
     public function getYearAttribute()
     {
         return $this->date_start->year;
@@ -174,7 +171,8 @@ class Trip extends Model
 
     public function cityTimeline()
     {
-        return $this->where('city_id', $this->city_id)
+        return $this->where('user_id', $this->user_id)
+            ->where('city_id', $this->city_id)
             ->orderBy('date_start')
             ->get()
             ->groupBy('year');
@@ -291,7 +289,9 @@ class Trip extends Model
 
     public function www()
     {
-        return path('Life@page', $this->slug);
+        return $this->user_id === 1
+            ? path('Life@page', $this->slug)
+            : path('UserTravelTrips@show', [$this->user->login, $this->slug]);
     }
 
     /**
@@ -306,11 +306,14 @@ class Trip extends Model
             ->notName('base.blade.php');
     }
 
-    public static function tripsByCities()
+    public static function tripsByCities(?int $user_id = null)
     {
         $trips_by_cities = [];
 
-        self::visible()
+        self::when($user_id > 0, function (Builder $query) use ($user_id) {
+                return $query->where('user_id', $user_id);
+            })
+            ->visible()
             ->get(['id', 'city_id', 'status'])
             ->each(function ($trip) use (&$trips_by_cities) {
                 if ($trip->status === self::STATUS_PUBLISHED) {

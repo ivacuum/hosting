@@ -21,6 +21,7 @@ class Life extends Controller
         abort_unless($validator->passes(), 404);
 
         $trips = Trip::withCount('photos')
+            ->where('user_id', 1)
             ->visible()
             ->when($from, function (Builder $query) use ($from) {
                 return $query->where('date_start', '>=', $from);
@@ -36,7 +37,7 @@ class Life extends Controller
 
     public function cities()
     {
-        $trips = Trip::tripsByCities();
+        $trips = Trip::tripsByCities(1);
 
         $cities = City::orderBy(City::titleField())
             ->get()
@@ -51,6 +52,7 @@ class Life extends Controller
     public function city(City $city)
     {
         $trips = $city->trips()
+            ->where('user_id', 1)
             ->withCount('photos')
             ->visible()
             ->get();
@@ -75,7 +77,7 @@ class Life extends Controller
 
     public function countries()
     {
-        $trips = Trip::tripsByCities();
+        $trips = Trip::tripsByCities(1);
 
         $countries = Country::with('cities')
             ->orderBy(Country::titleField())
@@ -103,6 +105,7 @@ class Life extends Controller
     {
         $country = Country::where('slug', $slug)->firstOrFail();
         $trips = $country->trips()
+            ->where('user_id', 1)
             ->withCount('photos')
             ->visible()
             ->get();
@@ -203,7 +206,8 @@ class Life extends Controller
 
     protected function getTrip(string $slug) : ?Trip
     {
-        return Trip::withCount('photos')
+        return Trip::where('user_id', 1)
+            ->withCount('photos')
             ->where('slug', $slug)
             ->where('status', Trip::STATUS_PUBLISHED)
             ->first();
