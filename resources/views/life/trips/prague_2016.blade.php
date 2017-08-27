@@ -21,7 +21,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_1270.jpg'])
 
 @ru
-  <p>Отличий от <a class="link" href="/life/prague.2015.12">зимы</a> достаточно мало. В основном это зеленые деревья.</p>
+  <p>Отличий от <a class="link" href="prague.2015.12">зимы</a> достаточно мало. В основном это зеленые деревья.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_1264.jpg'])
 

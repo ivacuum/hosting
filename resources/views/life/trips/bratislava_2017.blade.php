@@ -130,7 +130,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_3577.jpg'])
 
 @ru
-  <p>Фрэши стоят не как на <a class="link" href="/life/bali.2016">Бали</a>, но тоже сойдет.</p>
+  <p>Фрэши стоят не как на <a class="link" href="bali.2016">Бали</a>, но тоже сойдет.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_3578.jpg'])
 

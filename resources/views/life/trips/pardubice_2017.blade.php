@@ -2,7 +2,7 @@
 
 @section('content')
 @ru
-  <p>Удачная возможность 9 мая долететь до Чехии чартерным рейсом всего за 2 500 ₽. За эти деньги даже кормят. Полет проходил на Ту-204. Дешевле (за 2 000 ₽) удавалось добраться до Европы только через <a class="link" href="/life/spb.2016.09">Питер</a> автобусом в <a class="link" href="/life/helsinki.2016.09">Хельсинки</a>.</p>
+  <p>Удачная возможность 9 мая долететь до Чехии чартерным рейсом всего за 2 500 ₽. За эти деньги даже кормят. Полет проходил на Ту-204. Дешевле (за 2 000 ₽) удавалось добраться до Европы только через <a class="link" href="spb.2016.09">Питер</a> автобусом в <a class="link" href="helsinki.2016.09">Хельсинки</a>.</p>
  <p>Перед вылетом снова была бессонная ночь, так как нужно было подготовить транспорт на всю поездку. Еще никогда разом не брал 10 билетов на автобус. Кайф, что <a class="link" href="https://www.studentagency.eu/en/">Student Agency</a> дает один уникальный номер, по которому можно сесть во все забронированные автобусы. Нет нужды в бумажных билетах.</p>
 @endlang
 
@@ -63,9 +63,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_8817.jpg'])
 
 @ru
-  <p>Прибытие в Прагу на закате, который в мае только в девятом часу вечера. После <a class="link" href="/life/countries/japan">Японии</a> настоящая сказка, что так поздно.</p>
+  <p>Прибытие в Прагу на закате, который в мае только в девятом часу вечера. После <a class="link" href="countries/japan">Японии</a> настоящая сказка, что так поздно.</p>
 @en
-  <p>Arrival to Prague at sunset (around 9 PM in May). It's like miracle it is so late after <a class="link" href="/en/life/countries/japan">Japan</a>.</p>
+  <p>Arrival to Prague at sunset (around 9 PM in May). It's like miracle it is so late after <a class="link" href="countries/japan">Japan</a>.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_8821.jpg'])
 @endsection

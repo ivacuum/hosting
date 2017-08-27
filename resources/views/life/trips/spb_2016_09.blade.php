@@ -50,9 +50,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_1377.jpg'])
 
 @ru
-  <p>Вот уж не думал, что знание <a class="link" href="/life/cologne.2016#washer">немецкого интерфейса стиральной машины</a> пригодится в Питере.</p>
+  <p>Вот уж не думал, что знание <a class="link" href="cologne.2016#washer">немецкого интерфейса стиральной машины</a> пригодится в Питере.</p>
 @en
-  <p>Never thought that I would use knowledge of <a class="link" href="/en/life/cologne.2016#washer">german washer user interface</a> in Saint Petersburg.</p>
+  <p>Never thought that I would use knowledge of <a class="link" href="cologne.2016#washer">german washer user interface</a> in Saint Petersburg.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_1378.jpg'])
 

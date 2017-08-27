@@ -28,12 +28,12 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_0045.jpg'])
 
 @ru
-  <p>Два года назад в Юбилейном проходил концерт <a class="link" href="/life/dreamtheater.2014.spb">Дрим Театра</a>.</p>
+  <p>Два года назад в Юбилейном проходил концерт <a class="link" href="dreamtheater.2014.spb">Дрим Театра</a>.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_0047.jpg'])
 
 @ru
-  <p>А на малой арене Петровского стадиона в том же 2014 году играл Линкин Парк. На день позже выступление было <a class="link" href="/life/linkinpark.2014">в Москве</a>.</p>
+  <p>А на малой арене Петровского стадиона в том же 2014 году играл Линкин Парк. На день позже выступление было <a class="link" href="linkinpark.2014">в Москве</a>.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_0064.jpg'])
 

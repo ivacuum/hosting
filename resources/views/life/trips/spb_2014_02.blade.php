@@ -21,9 +21,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_0398.jpg'])
 
 @ru
-  <p>СК Юбилейный — место предстоящего <a class="link" href="/life/dreamtheater.2014.spb">концерта Дрим Театра</a>.</p>
+  <p>СК Юбилейный — место предстоящего <a class="link" href="dreamtheater.2014.spb">концерта Дрим Театра</a>.</p>
 @en
-  <p>The place of <a class="link" href="/en/life/dreamtheater.2014.spb">Dream Theater</a> gig.</p>
+  <p>The place of <a class="link" href="dreamtheater.2014.spb">Dream Theater</a> gig.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_0391.jpg'])
 

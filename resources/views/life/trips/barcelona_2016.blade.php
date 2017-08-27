@@ -216,7 +216,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_0323.jpg'])
 
 @ru
-  <p>Столб с солнечной панелью, как в <a class="link" href="/life/krasnodar.2016#sun_pole">Краснодаре</a>.</p>
+  <p>Столб с солнечной панелью, как в <a class="link" href="krasnodar.2016#sun_pole">Краснодаре</a>.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_0288.jpg'])
 
@@ -320,7 +320,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_0177.jpg'])
 
 @ru
-  <p>На углу дома табличка с названием улицы. Нумерация непосредственно над подъездами, так как у каждого свой номер. Почти как в <a class="link" href="/life/kaliningrad.2015#house_number">Калининграде</a>.</p>
+  <p>На углу дома табличка с названием улицы. Нумерация непосредственно над подъездами, так как у каждого свой номер. Почти как в <a class="link" href="kaliningrad.2015#house_number">Калининграде</a>.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_0294.jpg'])
 

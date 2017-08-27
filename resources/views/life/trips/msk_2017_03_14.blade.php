@@ -33,9 +33,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_3718.jpg'])
 
 @ru
-  <p>Нара — прям как <a class="link" href="/life/nara.2017">городок на другом конце света</a>. А здесь подразумевается станция в Наро-Фоминске.</p>
+  <p>Нара — прям как <a class="link" href="nara.2017">городок на другом конце света</a>. А здесь подразумевается станция в Наро-Фоминске.</p>
 @en
-  <p>Nara. Just like <a class="link" href="/en/life/nara.2017">a city on the other side of the world</a>. But here it means a station in Naro-Fominsk city.</p>
+  <p>Nara. Just like <a class="link" href="nara.2017">the city on the other side of the world</a>. But right here it means a station in Naro-Fominsk city.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_3714.jpg'])
 

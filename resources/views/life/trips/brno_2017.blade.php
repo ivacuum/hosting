@@ -200,7 +200,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_9456.jpg'])
 
 @ru
-  <p>Тут есть дефибриллятор. Как в <a class="link" href="/life/kyoto.2017#aed">Киото</a>.</p>
+  <p>Тут есть дефибриллятор. Как в <a class="link" href="kyoto.2017#aed">Киото</a>.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_9460.jpg'])
 

@@ -2,7 +2,7 @@
 
 @section('content')
 @ru
-  <p>С вай-фаем в самолете время летит незаметно. На выходе из аэропорта Орли совсем неочевидно как добраться до нужной точки города, так как способов много и большинство из них с пересадками. За прямой <a class="link" href="http://en.lebusdirect.com/">автобус</a> до города стригут 12 евро (около 840 ₽) — сразу видно размах цен. Для сравнения в <a class="link" href="/life/msk">Москве</a> около 500 ₽, <a class="link" href="/life/minsk">Минске</a> — 100 ₽, <a class="link" href="/life/kaliningrad">Калининграде</a> — 70 ₽, <a class="link" href="/life/kazan">Казани</a> — 30 ₽, <a class="link" href="/life/spb">Питере</a> — 30 ₽, <a class="link" href="/life/kaluga">Калуге</a> — 16 ₽.</p>
+  <p>С вай-фаем в самолете время летит незаметно. На выходе из аэропорта Орли совсем неочевидно как добраться до нужной точки города, так как способов много и большинство из них с пересадками. За прямой <a class="link" href="http://en.lebusdirect.com/">автобус</a> до города стригут 12 евро (около 840 ₽) — сразу видно размах цен. Для сравнения в <a class="link" href="msk">Москве</a> около 500 ₽, <a class="link" href="minsk">Минске</a> — 100 ₽, <a class="link" href="kaliningrad">Калининграде</a> — 70 ₽, <a class="link" href="kazan">Казани</a> — 30 ₽, <a class="link" href="spb">Питере</a> — 30 ₽, <a class="link" href="kaluga">Калуге</a> — 16 ₽.</p>
 @endlang
 
 @ru
@@ -199,7 +199,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_1573.jpg'])
 
 @ru
-  <p>Уже знакомые после <a class="link" href="/life/cologne.2016#pacman">Кельна</a> персонажи из игры Пакман.</p>
+  <p>Уже знакомые после <a class="link" href="cologne.2016#pacman">Кельна</a> персонажи из игры Пакман.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_1575.jpg'])
 

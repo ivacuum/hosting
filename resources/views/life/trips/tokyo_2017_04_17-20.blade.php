@@ -461,7 +461,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_8702.jpg'])
 
 @ru
-  <p><a class="link" href="/life/japanese">Иероглифы</a> слоговой азбуки.</p>
+  <p><a class="link" href="japanese">Иероглифы</a> слоговой азбуки.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_8720.jpg'])
 

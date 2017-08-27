@@ -31,6 +31,6 @@
 
 @ru
   <p>Время в столице летит неумолимо — посещение нескольких точек в разных частях города растягивается на целый день. В лучшем случае.</p>
-  <p>Вечер закончился <a class="link" href="/life/dreamtheater.2015">концертом</a> группы Dream Theater.</p>
+  <p>Вечер закончился <a class="link" href="dreamtheater.2015">концертом</a> группы Dream Theater.</p>
 @endlang
 @endsection

@@ -335,7 +335,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_0713.jpg'])
 
 @ru
-  <p>Улицы. После <a class="link" href="/life/berlin.2017.05">Берлина</a> бросается в глаза малое количество деревьев.</p>
+  <p>Улицы. После <a class="link" href="berlin.2017.05">Берлина</a> бросается в глаза малое количество деревьев.</p>
 @en
   <p>Streets.</p>
 @endlang

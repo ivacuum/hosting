@@ -62,7 +62,7 @@
 
 <a name="nebyaspeka"></a>
 @ru
-  <p>Небяспека — опасность. <a class="link" href="/life/minsk.2017#byaspeka">Бяспека</a> — безопасность.</p>
+  <p>Небяспека — опасность. <a class="link" href="minsk.2017#byaspeka">Бяспека</a> — безопасность.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_1921.jpg'])
 @endsection

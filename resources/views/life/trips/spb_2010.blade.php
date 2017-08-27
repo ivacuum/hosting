@@ -2,9 +2,9 @@
 
 @section('content')
 @ru
-  <p>Второй визит в СПб снова на концерт — на этот раз <a class="link" href="/life/rammstein.2010">Раммштайна</a>.</p>
+  <p>Второй визит в СПб снова на концерт — на этот раз <a class="link" href="rammstein.2010">Раммштайна</a>.</p>
 @en
-  <p>One-day visit for the <a class="link" href="/en/life/rammstein.2010">Rammstein</a> show.</p>
+  <p>One-day visit for the <a class="link" href="rammstein.2010">Rammstein</a> show.</p>
 @endlang
 
 @ru

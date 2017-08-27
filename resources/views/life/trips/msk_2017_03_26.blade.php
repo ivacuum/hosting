@@ -106,7 +106,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_3806.jpg'])
 
 @ru
-  <p>Дело к вечеру. А вечером <a class="link" href="/life/oomph.2017">концерт Oomph</a>.</p>
+  <p>Дело к вечеру. А вечером <a class="link" href="oomph.2017">концерт Oomph</a>.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_3807.jpg'])
 

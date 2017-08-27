@@ -64,7 +64,7 @@
 ]])
 
 @ru
-  <p>Красный — цвет велосипедиста, как в <a class="link" href="/life/countries/germany">Германии</a>.</p>
+  <p>Красный — цвет велосипедиста, как в <a class="link" href="countries/germany">Германии</a>.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_1702.jpg'])
 
@@ -268,7 +268,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_1846.jpg'])
 
 @ru
-  <p>Трамвай довозит до стоянки парома. Последний доставит в <a class="link" href="/life/stockholm.2016">Стокгольм</a>.</p>
+  <p>Трамвай довозит до стоянки парома. Последний доставит в <a class="link" href="stockholm.2016">Стокгольм</a>.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_1847.jpg'])
 @endsection

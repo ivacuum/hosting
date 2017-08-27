@@ -245,7 +245,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_3239.jpg'])
 
 @ru
-  <p>Чем не <a class="link" href="/life/spb">Петербург</a>?</p>
+  <p>Чем не <a class="link" href="spb">Петербург</a>?</p>
 @endlang
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3240.jpg',

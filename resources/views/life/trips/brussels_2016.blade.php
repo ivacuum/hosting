@@ -122,7 +122,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_2315.jpg'])
 
 @ru
-  <p>7/7 — открыто ежедневно, но необязательно 24 часа. Как в <a class="link" href="/life/paris.2016#7j7">Париже</a>. Язык в Бельгии тоже французский.</p>
+  <p>7/7 — открыто ежедневно, но необязательно 24 часа. Как в <a class="link" href="paris.2016#7j7">Париже</a>. Язык в Бельгии тоже французский.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_2317.jpg'])
 
@@ -252,7 +252,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_2354.jpg'])
 
 @ru
-  <p>Одна из центральных улиц каждый вечер, когда я ее заставал, становилась пешеходной. На ней же находится клуб Ancienne Belgique, в котором отыграла концерт шведская группа <a class="link" href="/life/opeth.2016">Opeth</a>.</p>
+  <p>Одна из центральных улиц каждый вечер, когда я ее заставал, становилась пешеходной. На ней же находится клуб Ancienne Belgique, в котором отыграла концерт шведская группа <a class="link" href="opeth.2016">Opeth</a>.</p>
 @endlang
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2356.jpg',
@@ -282,9 +282,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_2376.jpg'])
 
 @ru
-  <p>Угловой дом, как в <a class="link" href="/life/helsinki.2016.09#corner-house">Хельсинки</a>.</p>
+  <p>Угловой дом, как в <a class="link" href="helsinki.2016.09#corner-house">Хельсинки</a>.</p>
 @en
-  <p>Corner house, as in <a class="link" href="/en/life/helsinki.2016.09#corner-house">Helsinki</a>.</p>
+  <p>Corner house, as in <a class="link" href="helsinki.2016.09#corner-house">Helsinki</a>.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_2378.jpg'])
 
@@ -329,12 +329,12 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_2447.jpg'])
 
 @ru
-  <p>Водоотвод, как в <a class="link" href="/life/hamburg.2016#gutter">Гамбурге</a>.</p>
+  <p>Водоотвод, как в <a class="link" href="hamburg.2016#gutter">Гамбурге</a>.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_2448.jpg'])
 
 @ru
-  <p>Табло отправлений. Интернет на вокзале позволяет понять на какой поезд сесть, чтобы попасть в <a class="link" href="/life/ghent.2016">Гент</a>.</p>
+  <p>Табло отправлений. Интернет на вокзале позволяет понять на какой поезд сесть, чтобы попасть в <a class="link" href="ghent.2016">Гент</a>.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_2449.jpg'])
 

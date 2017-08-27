@@ -103,7 +103,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_2426.jpg'])
 
 @ru
-  <p>Пора обратно в <a class="link" href="/life/brussels.2016">Брюссель</a> на концерт группы <a class="link" href="/life/opeth.2016">Opeth</a>. Железнодорожная платформа.</p>
+  <p>Пора обратно в <a class="link" href="brussels.2016">Брюссель</a> на концерт группы <a class="link" href="opeth.2016">Opeth</a>. Железнодорожная платформа.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_2441.jpg'])
 

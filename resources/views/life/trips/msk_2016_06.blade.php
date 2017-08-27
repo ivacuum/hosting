@@ -2,9 +2,9 @@
 
 @section('content')
 @ru
-  <p>Главная цель визита — фестиваль <a class="link" href="/life/rammstein.2016.06">Максидром</a>.</p>
+  <p>Главная цель визита — фестиваль <a class="link" href="rammstein.2016.06">Максидром</a>.</p>
 @en
-  <p>Main goal of the visit was <a class="link" href="/en/life/rammstein.2016.06">Maxidrom</a> festival.</p>
+  <p>Main goal of the visit was <a class="link" href="rammstein.2016.06">Maxidrom</a> festival.</p>
 @endlang
 @include('tpl.pic-2x', ['pic' => 'IMG_0618.jpg'])
 
@@ -65,7 +65,7 @@
 ]])
 
 @ru
-  <p>Еще в <a class="link" href="/life/msk.2014.12#triumph">декабре 2014</a> Триумфальная площадь вовсю реконструировалась. Теперь она стала пешеходной. От желающих покачаться на качелях нет отбоя.</p>
+  <p>Еще в <a class="link" href="msk.2014.12#triumph">декабре 2014</a> Триумфальная площадь вовсю реконструировалась. Теперь она стала пешеходной. От желающих покачаться на качелях нет отбоя.</p>
 @endlang
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0627.jpg',
