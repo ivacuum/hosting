@@ -13,6 +13,7 @@ Disallow: /parser
 Disallow: /photos
 Disallow: /torrents
 Disallow: /users
+Disallow: /@vacuum
 Disallow: /en/auth
 Disallow: /en/files
 Disallow: /en/gallery
@@ -22,5 +23,6 @@ Disallow: /en/parser
 Disallow: /en/photos
 Disallow: /en/torrents
 Disallow: /en/users
+Disallow: /en/@vacuum
 Sitemap: https://ivacuum.ru/sitemap.xml
 Host: https://ivacuum.ru
