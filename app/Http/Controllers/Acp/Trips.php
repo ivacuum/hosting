@@ -20,7 +20,8 @@ class Trips extends Controller
 
         list($sort_key, $sort_dir) = $this->getSortParams();
 
-        $models = Model::withCount('comments', 'photos')
+        $models = Model::with('user')
+            ->withCount('comments', 'photos')
             ->forCity($this->request->input('city_id'))
             ->forCountry($this->request->input('country_id'))
             ->unless(is_null($status), function (Builder $query) use ($status) {
@@ -75,6 +76,7 @@ class Trips extends Controller
         $city = City::findOrFail($this->request->input('city_id'));
 
         $data = $this->request->all();
+        $data['user_id'] = $this->request->user()->id;
         $data['title_ru'] = $city->title_ru;
         $data['title_en'] = $city->title_en;
 
