@@ -163,6 +163,12 @@ class Trip extends Model
         return $this->date_start->year;
     }
 
+    public function setMarkdownAttribute($value)
+    {
+        $this->attributes['markdown'] = $value;
+        $this->attributes['html'] = \Parsedown::instance()->text($value);
+    }
+
     // Methods
     public function breadcrumb()
     {
