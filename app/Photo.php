@@ -20,13 +20,6 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property \App\User $user
  *
- * @method static \Illuminate\Database\Eloquent\Builder applyFilter($filter)
- * @method static \Illuminate\Database\Eloquent\Builder forTag($id)
- * @method static \Illuminate\Database\Eloquent\Builder forTrip($id)
- * @method static \Illuminate\Database\Eloquent\Builder forTrips($ids)
- * @method static \Illuminate\Database\Eloquent\Builder onMap()
- * @method static \Illuminate\Database\Eloquent\Builder published()
- *
  * @mixin \Eloquent
  */
 class Photo extends Model

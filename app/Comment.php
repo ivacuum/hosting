@@ -18,9 +18,6 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  *
  * @property \App\User $user
  *
- * @method \Illuminate\Database\Eloquent\Builder byType($type)
- * @method \Illuminate\Database\Eloquent\Builder published()
- *
  * @mixin \Eloquent
  */
 class Comment extends Model

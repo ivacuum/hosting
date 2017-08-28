@@ -35,6 +35,7 @@ class Trips extends Controller
 
     public function notify($id)
     {
+        /* @var Model $model */
         $model = $this->getModel($id);
 
         if ($model->status !== Model::STATUS_PUBLISHED) {
@@ -73,6 +74,7 @@ class Trips extends Controller
 
     protected function storeModel()
     {
+        /* @var City $city */
         $city = City::findOrFail($this->request->input('city_id'));
 
         $data = $this->request->all();

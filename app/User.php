@@ -28,11 +28,6 @@ use Illuminate\Notifications\Notifiable;
  *
  * @property \Illuminate\Support\Collection $notifications
  *
- * @method \Illuminate\Database\Eloquent\Builder active()
- * @method \Illuminate\Database\Eloquent\Builder applyFilter($filter)
- * @method \Illuminate\Database\Eloquent\Builder forAnnouncement()
- * @method \Illuminate\Database\Eloquent\Builder unreadNotifications()
- *
  * @mixin \Eloquent
  */
 class User extends Authenticatable

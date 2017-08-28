@@ -33,11 +33,6 @@ use Symfony\Component\Finder\Finder;
  * @property-read string  $meta_title
  * @property-read string  $meta_description
  *
- * @method static \Illuminate\Database\Eloquent\Builder next()
- * @method static \Illuminate\Database\Eloquent\Builder previous()
- * @method static \Illuminate\Database\Eloquent\Builder published()
- * @method static \Illuminate\Database\Eloquent\Builder visible()
- *
  * @mixin \Eloquent
  */
 class Trip extends Model

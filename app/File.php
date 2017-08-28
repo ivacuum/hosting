@@ -17,8 +17,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
- * @method static \Illuminate\Database\Eloquent\Builder published()
- *
  * @mixin \Eloquent
  */
 class File extends Model
