@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
   <div class="col-md-6 mb-3">
-    <h3 class="mt-0 mb-3">{{ trans('my.profile') }}</h3>
+    <h3 class="mt-2 mb-3">{{ trans('my.profile') }}</h3>
     <form action="{{ path("$self@update") }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}
 
@@ -38,7 +38,7 @@
     </form>
   </div>
   <div class="col-md-6">
-    <h3 class="mt-0">Аватар</h3>
+    <h3 class="mt-5 mt-md-2">Аватар</h3>
     <avatar-uploader action="{{ path('MyAvatar@update') }}" current_avatar="{{ Auth::user()->avatarUrl() }}"></avatar-uploader>
   </div>
 </div>
