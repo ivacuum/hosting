@@ -6,7 +6,8 @@ class Home extends Controller
 {
     public function index()
     {
-        $trips = Trip::where('meta_image', '<>', '')
+        $trips = Trip::where('user_id', 1)
+            ->where('meta_image', '<>', '')
             ->take(3)
             ->inRandomOrder()
             ->get();
