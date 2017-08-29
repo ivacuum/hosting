@@ -103,5 +103,19 @@
 </pre>
 </div>
 
+<div class="shortcuts-item">
+<pre>
+<span class="terminal-comment"># Файл подкачки на 1024 МБ</span>
+<span class="terminal-command">dd if=/dev/zero of=/root/swap1 bs=1m count=1024</span>
+<span class="terminal-command">chmod 0600 /root/swap1</span>
+
+<span class="terminal-comment"># Добавление записи в /etc/fstab</span>
+<span>md99 none swap sw,file=/root/swap1 0 0</span>
+
+<span class="terminal-comment"># Активация файла подкачки без перезагрузки</span>
+<span class="terminal-command">swapon -aq</span>
+</pre>
+</div>
+
 <div>Больше полезностей на <a class="link" href="http://www.cyberciti.biz/faq/category/freebsd/">cyberciti.biz</a>.</div>
 @endsection
