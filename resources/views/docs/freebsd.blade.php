@@ -117,5 +117,12 @@
 </pre>
 </div>
 
+<div class="shortcuts-item">
+<pre>
+<span class="terminal-comment"># Обновление jenkins без обновления openjdk</span>
+<span class="terminal-command">portmaster -bdg -x openjdk8 devel/jenkins-lts</span>
+</pre>
+</div>
+
 <div>Больше полезностей на <a class="link" href="http://www.cyberciti.biz/faq/category/freebsd/">cyberciti.biz</a>.</div>
 @endsection
