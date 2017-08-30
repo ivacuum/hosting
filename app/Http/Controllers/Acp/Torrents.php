@@ -2,8 +2,8 @@
 
 use App\Services\Rto;
 use App\Torrent as Model;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Controllers\Acp\Controller;
 
@@ -35,6 +35,7 @@ class Torrents extends Controller
 
     public function updateRto($id, Rto $rto)
     {
+        /* @var Model $model */
         $model = $this->getModel($id);
 
         if (!is_array($data = $rto->torrentData($model->rto_id))) {
@@ -42,7 +43,7 @@ class Torrents extends Controller
         }
 
         $reg_time = Carbon::createFromTimestamp($data['reg_time']);
-        $registered_at = $reg_time->gt($model->registered_at) ? Carbon::now() : $model->registered_at;
+        $registered_at = $reg_time->gt($model->registered_at) ? now() : $model->registered_at;
 
         $model->update([
             'html' => $data['body'],

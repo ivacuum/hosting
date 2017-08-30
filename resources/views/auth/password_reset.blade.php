@@ -7,14 +7,14 @@
     {{ ViewHelper::inputHiddenMail() }}
 
     <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-      <input autofocus required type="email" class="form-control" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{ trans('auth.email') }}">
+      <input autofocus required class="form-control" type="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{ trans('auth.email') }}">
       @if ($errors->has('email'))
         <span class="help-block">{{ $errors->first('email') }}</span>
       @endif
     </div>
 
     <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-      <input required type="password" class="form-control" name="password" placeholder="{{ trans('auth.new_password') }}">
+      <input required class="form-control" type="password" name="password" placeholder="{{ trans('auth.new_password') }}">
       @if ($errors->has('password'))
         <span class="help-block">{{ $errors->first('password') }}</span>
       @endif

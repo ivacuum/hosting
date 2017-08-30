@@ -20,9 +20,9 @@ use Ivacuum\Generic\Traits\SoftDeleteTrait;
  * @property integer $status
  * @property integer $clicks
  * @property integer $views
- * @property \Carbon\Carbon $registered_at
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $registered_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
  *
  * @property-read \App\User $user
  *

@@ -47,9 +47,9 @@
   {{ ViewHelper::inputHiddenMail() }}
   <div class="form-group {{ $errors->has('file') ? 'has-error' : '' }}">
     <div class="input-group" style="width: 30em;">
-      <input type="text" class="form-control" name="file" value="{{ old('file') }}">
+      <input class="form-control" name="file" value="{{ old('file') }}">
       <span class="input-group-btn">
-        <button type="submit" class="btn btn-default">
+        <button class="btn btn-default">
           Создать файл
         </button>
       </span>
@@ -64,9 +64,9 @@
   {{ ViewHelper::inputHiddenMail() }}
   <div class="form-group {{ $errors->has('dir') ? 'has-error' : '' }}">
     <div class="input-group" style="width: 30em;">
-      <input type="text" class="form-control" name="dir" value="{{ old('dir') }}">
+      <input class="form-control" name="dir" value="{{ old('dir') }}">
       <span class="input-group-btn">
-        <button type="submit" class="btn btn-default">
+        <button class="btn btn-default">
           Создать папку
         </button>
       </span>
@@ -83,7 +83,7 @@
     <div class="input-group" style="width: 30em;">
       <input type="file" class="form-control" name="file">
       <span class="input-group-btn">
-        <button type="submit" class="btn btn-default">
+        <button class="btn btn-default">
           Загрузить файл
         </button>
       </span>

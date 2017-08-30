@@ -11,8 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $text
  * @property string  $html
  * @property string  $ip
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
  *
  * @property-read \App\User $user
  *

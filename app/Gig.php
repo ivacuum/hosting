@@ -11,15 +11,15 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $title_ru
  * @property string  $title_en
  * @property string  $slug
- * @property \Carbon\Carbon $date
+ * @property \Illuminate\Support\Carbon $date
  * @property integer $status
  * @property string  $meta_title_ru
  * @property string  $meta_title_en
  * @property string  $meta_description_ru
  * @property string  $meta_description_en
  * @property string  $meta_image
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
  *
  * @property-read \App\City $city
  *

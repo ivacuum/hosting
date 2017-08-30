@@ -3,7 +3,7 @@
 @section('header_form')
 <form class="navbar-form navbar-left" action="{{ path("$self@index") }}" method="get">
   <div class="input-group">
-    <input class="form-control navbar-search-input" type="text" name="q" value="{{ old('q', @$q) }}" placeholder="{{ trans('torrents.search') }}">
+    <input class="form-control navbar-search-input" name="q" value="{{ old('q', @$q) }}" placeholder="{{ trans('torrents.search') }}">
     <span class="input-group-btn">
       <button class="btn btn-default">
         @svg (search)

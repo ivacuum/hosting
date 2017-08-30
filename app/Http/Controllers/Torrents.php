@@ -3,7 +3,6 @@
 use App\Comment;
 use App\Services\Rto;
 use App\Torrent;
-use Carbon\Carbon;
 use Illuminate\Support\HtmlString;
 
 class Torrents extends Controller
@@ -21,7 +20,7 @@ class Torrents extends Controller
         $torrents = Torrent::published()->orderBy('registered_at', 'desc');
 
         if (!is_null($category)) {
-            $ids = \TorrentCategoryHelper::selfAndDescendantsIds($category_id, $category);
+            $ids = \TorrentCategoryHelper::selfAndDescendantsIds($category_id);
 
             event(new \App\Events\Stats\TorrentFilteredByCategory);
 
@@ -143,7 +142,7 @@ class Torrents extends Controller
             'info_hash' => $data['info_hash'],
             'announcer' => $data['announcer'],
             'category_id' => $category_id,
-            'registered_at' => Carbon::now(),
+            'registered_at' => now(),
         ]);
 
         event(new \App\Events\Stats\TorrentAdded);

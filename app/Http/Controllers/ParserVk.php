@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\CacheKey;
-use Carbon\Carbon;
 use GuzzleHttp\Client;
+use Illuminate\Support\Carbon;
 
 class ParserVk extends Controller
 {
@@ -35,7 +35,7 @@ class ParserVk extends Controller
         $date_start = Carbon::parse($date)->startOfDay()->timestamp;
         $date_end = Carbon::parse($date)->endOfDay()->timestamp;
         $previous = Carbon::parse($date)->subDay();
-        $next = Carbon::now()->startOfDay()->gt($date) ? Carbon::parse($date)->addDay() : null;
+        $next = now()->startOfDay()->gt($date) ? Carbon::parse($date)->addDay() : null;
 
         while (false === $parsed) {
             $json = $this->getPosts($count, $offset);

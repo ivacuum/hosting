@@ -22,7 +22,7 @@
 </div>
 
 <div class="form-group {{ $errors->has('input') ? 'has-error' : '' }}">
-  <input required type="text" class="form-control" name="input" value="{{ old('input') }}" placeholder="Ссылка или инфо-хэш">
+  <input required class="form-control" name="input" value="{{ old('input') }}" placeholder="Ссылка или инфо-хэш">
   @if ($errors->has('input'))
     <span class="help-block">{{ $errors->first('input') }}</span>
   @endif

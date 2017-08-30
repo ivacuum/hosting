@@ -9,7 +9,7 @@
 
       <div class="form-group {{ $errors->has('username') ? 'has-error' : '' }}">
         <label>{{ trans('my.username') }}</label>
-        <input type="text" class="form-control" name="username" value="{{ old('username', Auth::user()->login) }}">
+        <input class="form-control" name="username" value="{{ old('username', Auth::user()->login) }}">
         @if ($errors->has('username'))
           <span class="help-block">{{ $errors->first('username') }}</span>
         @else
@@ -23,13 +23,13 @@
 
       <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
         <label>{{ trans('auth.email') }}</label>
-        <input required type="text" class="form-control" name="email" value="{{ old('email', Auth::user()->email) }}">
+        <input required class="form-control" type="email" name="email" value="{{ old('email', Auth::user()->email) }}">
         @if ($errors->has('email'))
           <span class="help-block">{{ $errors->first('email') }}</span>
         @endif
       </div>
 
-      <button type="submit" class="btn btn-primary">
+      <button class="btn btn-primary">
         {{ trans('my.save') }}
       </button>
 

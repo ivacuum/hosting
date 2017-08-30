@@ -18,7 +18,7 @@
                   {{ $model->created_at->formatLocalized('%e %B %Y') }}
                 </time>
               </span>
-              @if (!is_null($model->user) && $model->user->login)
+              @if (optional($model->user)->login)
                 <span class="text-nowrap mr-3">
                   <span class="mr-1 svg-muted">
                     @svg (pencil)

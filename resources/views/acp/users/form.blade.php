@@ -3,14 +3,14 @@
 <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
   <label class="col-md-3 control-label required">Электронная почта:</label>
   <div class="col-md-9">
-    <input required type="email" class="form-control" name="email" value="{{ old('email', @$model->email) }}">
+    <input required class="form-control" type="email" name="email" value="{{ old('email', @$model->email) }}">
   </div>
 </div>
 
 <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
   <label class="col-md-3 control-label required">Пароль:</label>
   <div class="col-md-9">
-    <input required type="password" class="form-control" name="password">
+    <input required class="form-control" type="password" name="password">
   </div>
 </div>
 

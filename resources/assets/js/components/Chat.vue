@@ -14,9 +14,9 @@
   </div>
   <form class="mt-1 mb-3" @submit.prevent="post">
     <div class="input-group">
-      <input class="form-control" type="text" placeholder="Сообщение..." v-model="message">
+      <input class="form-control" placeholder="Сообщение..." v-model="message">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="submit">Отправить</button>
+        <button class="btn btn-default">Отправить</button>
       </span>
     </div>
   </form>

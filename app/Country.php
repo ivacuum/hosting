@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $title_en
  * @property string  $slug
  * @property string  $emoji
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
  *
  * @property-read \App\City $cities
  * @property-read \App\Trip $trips

@@ -43,7 +43,7 @@
         </div>
         <div class="comment-body">
           <div class="mb-3">
-            @if (!is_null($comment->rel) && $comment->rel->status === App\Torrent::STATUS_PUBLISHED)
+            @if (optional($comment->rel)->status === App\Torrent::STATUS_PUBLISHED)
               <a class="link" href="{{ $comment->rel->www() }}#comment-{{ $comment->id }}">{{ str_limit($comment->rel->title, 80) }}</a>
             @else
               <em>Раздача удалена</em>

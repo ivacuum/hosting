@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Image as Model;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Ivacuum\Generic\Controllers\Acp\Controller;
 
@@ -25,7 +24,7 @@ class Images extends Controller
                 return $query->whereYear('created_at', $year);
             })
             ->when($touch, function (Builder $query) use ($touch) {
-                return $query->whereYear('updated_at', Carbon::now()->subYear($touch)->year);
+                return $query->whereYear('updated_at', now()->subYear($touch)->year);
             })
             ->when($user_id, function (Builder $query) use ($user_id) {
                 return $query->where('user_id', $user_id);

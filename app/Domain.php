@@ -1,10 +1,10 @@
 <?php namespace App;
 
 use App\Events\DomainWhoisUpdated;
-use Carbon\Carbon;
 use GuzzleHttp\Client as HttpClient;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * Домен
@@ -36,11 +36,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $db_pma
  * @property string  $db_host
  * @property string  $db_user
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
- * @property \Carbon\Carbon $registered_at
- * @property \Carbon\Carbon $paid_till
- * @property \Carbon\Carbon $queried_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $registered_at
+ * @property \Illuminate\Support\Carbon $paid_till
+ * @property \Illuminate\Support\Carbon $queried_at
  *
  * @mixin \Eloquent
  */
@@ -105,7 +105,7 @@ class Domain extends Model
     public function scopeWhoisReady(Builder $query)
     {
         return $query->where('status', 1)
-            ->where('queried_at', '<', (string) Carbon::now()->subHours(3));
+            ->where('queried_at', '<', (string) now()->subHours(3));
     }
 
     // Methods
@@ -382,7 +382,7 @@ class Domain extends Model
 
         $data['registered_at'] = Carbon::parse($data['registered_at']);
         $data['paid_till'] = Carbon::parse($data['paid_till']);
-        $data['queried_at'] = Carbon::now();
+        $data['queried_at'] = now();
         $data['raw'] = $query->getRaw();
 
         return $data;
@@ -484,9 +484,9 @@ class Domain extends Model
             return false;
         }
 
-        if ($this->isExpired()) {
-            // unset($data['paid_till']);
-        }
+//        if ($this->isExpired()) {
+//            unset($data['paid_till']);
+//        }
 
         event(new DomainWhoisUpdated($this, $data));
 

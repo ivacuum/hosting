@@ -4,7 +4,6 @@ use App\Notifications\TorrentNotFoundDeleted;
 use App\Notifications\TorrentUpdated;
 use App\Services\Rto;
 use App\Torrent;
-use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Ivacuum\Generic\Commands\Command;
 
@@ -59,7 +58,7 @@ class RtoUpdate extends Command
                 if ($json->info_hash !== $torrent->info_hash) {
                     $torrent->size = $json->size;
                     $torrent->info_hash = $json->info_hash;
-                    $torrent->registered_at = Carbon::now();
+                    $torrent->registered_at = now();
 
                     if (!is_array($topic_data = $rto->parseTopicBody($id))) {
                         throw new \Exception("Проблема обновления раздачи {$id} [parseTopicBody]");

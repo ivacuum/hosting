@@ -1,8 +1,8 @@
 <?php namespace App;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * Новости
@@ -14,8 +14,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $html
  * @property integer $status
  * @property integer $views
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
  *
  * @property \Illuminate\Support\Collection $comments
  * @property \App\User $user

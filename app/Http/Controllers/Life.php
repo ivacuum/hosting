@@ -68,9 +68,9 @@ class Life extends Controller
             return redirect($trip->www());
         }
 
-        \Breadcrumbs::push(trans('menu.countries'), "life/countries");
-        \Breadcrumbs::push($city->country->title, "life/countries/{$city->country->slug}");
-        \Breadcrumbs::push($city->title);
+        \Breadcrumbs::push(trans('menu.countries'), "life/countries")
+            ->push($city->country->title, "life/countries/{$city->country->slug}")
+            ->push($city->title);
 
         return view('life.city', compact('city', 'trips'));
     }
@@ -123,8 +123,8 @@ class Life extends Controller
 
         abort_unless(view()->exists($tpl), 404);
 
-        \Breadcrumbs::push(trans('menu.gigs'), 'life/gigs');
-        \Breadcrumbs::push($gig->title);
+        \Breadcrumbs::push(trans('menu.gigs'), 'life/gigs')
+            ->push($gig->title);
 
         event(new \App\Events\Stats\GigViewed($gig->id));
 
@@ -169,10 +169,10 @@ class Life extends Controller
 
         abort_unless(view()->exists($tpl), 404);
 
-        \Breadcrumbs::push(trans('menu.countries'), "life/countries");
-        \Breadcrumbs::push($trip->city->country->title, "life/countries/{$trip->city->country->slug}");
-        \Breadcrumbs::push($trip->city->title, "life/{$trip->city->slug}");
-        \Breadcrumbs::push($trip->localizedDate(), "life/{$trip->slug}");
+        \Breadcrumbs::push(trans('menu.countries'), "life/countries")
+            ->push($trip->city->country->title, "life/countries/{$trip->city->country->slug}")
+            ->push($trip->city->title, "life/{$trip->city->slug}")
+            ->push($trip->localizedDate());
 
         event(new \App\Events\Stats\TripViewed($trip->id));
 

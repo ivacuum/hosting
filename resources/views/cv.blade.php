@@ -319,7 +319,7 @@ a:hover {
       <h3 class="my-caption">Личная информация</h3>
       <h4 class="my-info">
         Возраст
-        <span>{{ Carbon\Carbon::createFromDate(1989, 7, 13)->diffForHumans(null, true) }}</span>
+        <span>{{ Illuminate\Support\Carbon::createFromDate(1989, 7, 13)->diffForHumans(null, true) }}</span>
       </h4>
       <h4 class="my-info">
         Гражданство

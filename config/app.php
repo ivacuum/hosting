@@ -49,6 +49,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Telegram\Bot\Laravel\TelegramServiceProvider::class,
+
     ],
 
     'aliases' => [
@@ -88,6 +89,7 @@ return [
 
         'ViewHelper' => App\Facades\ViewHelper::class,
         'TorrentCategoryHelper' => App\Facades\TorrentCategoryHelper::class,
+
     ],
 
 ];

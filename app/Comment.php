@@ -13,8 +13,8 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  * @property string  $rel_type
  * @property integer $status
  * @property string  $html
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
  *
  * @property \App\User $user
  *

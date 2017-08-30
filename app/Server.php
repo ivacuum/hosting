@@ -12,8 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $ftp_host
  * @property string  $ftp_user
  * @property string  $ftp_pass
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
  *
  * @mixin \Eloquent
  */

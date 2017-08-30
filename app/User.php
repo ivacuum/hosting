@@ -1,7 +1,6 @@
 <?php namespace App;
 
 use App\Mail\ResetPassword;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\UploadedFile;
@@ -22,9 +21,9 @@ use Illuminate\Notifications\Notifiable;
  * @property string  $ip
  * @property string  $activation_token
  * @property string  $remember_token
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
- * @property \Carbon\Carbon $last_login_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $last_login_at
  *
  * @property \Illuminate\Support\Collection $notifications
  *
@@ -86,15 +85,15 @@ class User extends Authenticatable
     public function scopeApplyFilter(Builder $query, $filter = null)
     {
         return $query->when($filter === 'weekly-login', function (Builder $query) {
-            return $query->where('last_login_at', '>', Carbon::now()->subWeek()->toDateTimeString());
+            return $query->where('last_login_at', '>', now()->subWeek()->toDateTimeString());
         })->when($filter === 'monthly-login', function (Builder $query) {
-            return $query->where('last_login_at', '>', Carbon::now()->subMonth()->toDateTimeString());
+            return $query->where('last_login_at', '>', now()->subMonth()->toDateTimeString());
         });
     }
 
     public function scopeForAnnouncement(Builder $query)
     {
-        return $query->where('last_login_at', '>', Carbon::now()->subDays(7));
+        return $query->where('last_login_at', '>', now()->subDays(7));
     }
 
     // Methods
@@ -170,7 +169,7 @@ class User extends Authenticatable
         }
 
         if ($have_unread) {
-            $affected_rows = $this->unreadNotifications()->update(['read_at' => Carbon::now()]);
+            $affected_rows = $this->unreadNotifications()->update(['read_at' => now()]);
 
             for ($i = 0; $i < $affected_rows; $i++) {
                 event(new \App\Events\Stats\NotificationRead);

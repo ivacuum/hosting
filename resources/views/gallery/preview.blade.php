@@ -11,9 +11,9 @@
   </div>
   <div class="col-md-6">
     <div>Ссылка:</div>
-    <input class="form-control" type="text" value="{{ $image->originalUrl() }}">
+    <input class="form-control" value="{{ $image->originalUrl() }}">
     <div class="mt-2">Полная картинка:</div>
-    <input class="form-control" type="text" value="[img]{{ $image->originalUrl() }}[/img]">
+    <input class="form-control" value="[img]{{ $image->originalUrl() }}[/img]">
     {{-- TODO: thumb --}}
   </div>
 </div>

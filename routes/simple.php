@@ -1,10 +1,10 @@
 <?php
 
-Route::get('401', 'Errors@unauthorized');
-Route::get('403', 'Errors@forbidden');
-Route::get('404', 'Errors@notFound');
-Route::get('500', 'Errors@internalError');
-Route::get('503', 'Errors@serviceUnavailable');
+Route::view('401', 'errors.401');
+Route::view('403', 'errors.403');
+Route::view('404', 'errors.404');
+Route::view('500', 'errors.500');
+Route::view('503', 'errors.503');
 
 Route::post('internal/ci-build-notifier', 'Internal@ciBuildNotifier');
 Route::post('internal/telegram/webhook', 'Internal@telegramWebhook');

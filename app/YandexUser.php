@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $id
  * @property string  $account
  * @property string  $token
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
  *
  * @mixin \Eloquent
  */

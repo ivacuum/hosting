@@ -30,7 +30,7 @@
           <div>Ссылка:</div>
           <textarea class="form-control js-highlight" :rows="total" v-html="links"></textarea>
           <div class="mt-2">Полная картинка:</div>
-          <input class="form-control js-highlight" type="text" :value="linksInTag">
+          <input class="form-control js-highlight" :value="linksInTag">
         </div>
       </div>
       <h3 class="mt-5">Индивидуальные ссылки</h3>
@@ -42,9 +42,9 @@
         </div>
         <div class="col-md-6">
           <div>Ссылка:</div>
-          <input class="form-control js-highlight" type="text" :value="file.original">
+          <input class="form-control js-highlight" :value="file.original">
           <div class="mt-2">Полная картинка:</div>
-          <input class="form-control js-highlight" type="text" :value="`[img]${file.original}[/img]`">
+          <input class="form-control js-highlight" :value="`[img]${file.original}[/img]`">
         </div>
       </div>
     </div>

@@ -13,8 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $iata
  * @property string  $lat
  * @property string  $lon
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
  *
  * @property-read \App\Country $country
  * @property-read \App\Trip    $trips

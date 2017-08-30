@@ -1,6 +1,5 @@
 <?php namespace App\Listeners;
 
-use Carbon\Carbon;
 use Illuminate\Auth\Events\Login;
 
 class LogUserLogin
@@ -13,7 +12,7 @@ class LogUserLogin
         $user = $event->user;
 
         $user->ip = request()->ip();
-        $user->last_login_at = Carbon::now();
+        $user->last_login_at = now();
         $user->save();
     }
 }
