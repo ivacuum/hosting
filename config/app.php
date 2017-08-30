@@ -42,22 +42,12 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         Ivacuum\Generic\Providers\LocaleServiceProvider::class,
-        Laravel\Socialite\SocialiteServiceProvider::class,
 
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Ivacuum\Generic\Providers\BladeServiceProvider::class,
-        Ivacuum\Generic\Providers\BroadcastServiceProvider::class,
-        Ivacuum\Generic\Providers\DebugbarServiceProvider::class,
-        Ivacuum\Generic\Providers\FastcgiServiceProvider::class,
-        Ivacuum\Generic\Providers\MetricsServiceProvider::class,
-        Ivacuum\Generic\Providers\QueueServiceProvider::class,
-        Ivacuum\Generic\Providers\SftpServiceProvider::class,
-        Ivacuum\Generic\Providers\ValidatorServiceProvider::class,
-        Ivacuum\Generic\Providers\VkServiceProvider::class,
         Telegram\Bot\Laravel\TelegramServiceProvider::class,
     ],
 
@@ -96,14 +86,8 @@ return [
         'Validator'    => Illuminate\Support\Facades\Validator::class,
         'View'         => Illuminate\Support\Facades\View::class,
 
-        'Form' => Ivacuum\Generic\Facades\Form::class,
-        'UrlHelper' => Ivacuum\Generic\Facades\UrlHelper::class,
         'ViewHelper' => App\Facades\ViewHelper::class,
-        'Breadcrumbs' => Ivacuum\Generic\Facades\Breadcrumbs::class,
-        'MetricsHelper' => Ivacuum\Generic\Facades\MetricsHelper::class,
         'TorrentCategoryHelper' => App\Facades\TorrentCategoryHelper::class,
-
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

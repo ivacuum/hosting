@@ -9,7 +9,7 @@ class News extends Controller
         \Breadcrumbs::push(trans('news.index'), 'news');
 
         $news = Model::with('user')
-            ->withCount('commentsPublished as comments')
+            ->withCount('commentsPublished as comments_count')
             ->published()
             ->orderBy('created_at', 'desc');
 
