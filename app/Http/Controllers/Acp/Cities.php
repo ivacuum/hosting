@@ -64,7 +64,9 @@ class Cities extends Controller
                 Rule::unique('artists', 'slug')->ignore($model->id ?? null),
                 Rule::unique('cities', 'slug')->ignore($model->id ?? null),
                 Rule::unique('gigs', 'slug')->ignore($model->id ?? null),
-                Rule::unique('trips', 'slug')->ignore($model->id ?? null),
+                Rule::unique('trips', 'slug')
+                    ->where('user_id', 1)
+                    ->ignore($model->id ?? null),
             ],
             'title_ru' => 'required',
             'title_en' => 'required',

@@ -31,7 +31,9 @@ class Gigs extends Controller
                 Rule::unique('artists', 'slug')->ignore($model->id ?? null),
                 Rule::unique('cities', 'slug')->ignore($model->id ?? null),
                 Rule::unique('gigs', 'slug')->ignore($model->id ?? null),
-                Rule::unique('trips', 'slug')->ignore($model->id ?? null),
+                Rule::unique('trips', 'slug')
+                    ->where('user_id', 1)
+                    ->ignore($model->id ?? null),
             ],
             'date' => 'required|date',
             'city_id' => 'required|integer|min:1',

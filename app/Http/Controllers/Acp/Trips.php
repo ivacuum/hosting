@@ -62,7 +62,9 @@ class Trips extends Controller
                 Rule::unique('artists', 'slug')->ignore($model->id ?? null),
                 Rule::unique('cities', 'slug')->ignore($model->id ?? null),
                 Rule::unique('gigs', 'slug')->ignore($model->id ?? null),
-                Rule::unique('trips', 'slug')->ignore($model->id ?? null),
+                Rule::unique('trips', 'slug')
+                    ->where('user_id', $model->user_id ?? request()->user()->id)
+                    ->ignore($model->id ?? null),
             ],
             'city_id' => 'required|integer|min:1',
             'title_ru' => is_null($model) ? '' : 'required',
