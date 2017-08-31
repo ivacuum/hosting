@@ -186,9 +186,7 @@ class User extends Authenticatable
 
     public function sendPasswordResetNotification($token)
     {
-        register_shutdown_function(function () use ($token) {
-            \Mail::to($this)->send(new ResetPassword($token));
-        });
+        \Mail::to($this)->queue(new ResetPassword($token));
     }
 
     public function uploadAvatar(UploadedFile $file)
