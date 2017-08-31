@@ -18,6 +18,9 @@
       <a class="list-group-item {{ $self === 'MySettings' ? 'active' : '' }}" href="{{ path('MySettings@edit') }}">
         {{ trans('my.settings') }}
       </a>
+      <a class="list-group-item {{ $self === 'MyTrips' ? 'active' : '' }}" href="{{ path('MyTrips@index') }}">
+        {{ trans('my.trips') }}
+      </a>
       <a class="list-group-item visible-xs" href="{{ path('Notifications@index') }}">
         {{ trans('notifications.index') }}
       </a>

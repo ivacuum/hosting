@@ -44,6 +44,8 @@ class Trip extends Model
     const STATUS_PUBLISHED = 1;
     const STATUS_HIDDEN = 2;
 
+    const COLUMNS_LIST = ['id', 'user_id', 'city_id', 'title_ru', 'title_en', 'slug', 'date_start', 'date_end', 'status', 'views'];
+
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $dates = ['date_start', 'date_end'];
     protected $casts = [

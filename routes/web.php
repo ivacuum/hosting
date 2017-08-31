@@ -58,6 +58,14 @@ Route::put('my/profile', 'MyProfile@update')->middleware('auth');
 Route::get('my/settings', 'MySettings@edit')->middleware('auth');
 Route::put('my/settings', 'MySettings@update')->middleware('auth');
 
+Route::get('my/trips', 'MyTrips@index')->middleware('auth');
+Route::post('my/trips', 'MyTrips@store')->middleware('auth');
+Route::get('my/trips/create', 'MyTrips@create')->middleware('auth');
+Route::get('my/trips/{id}', 'MyTrips@show')->middleware('auth');
+Route::put('my/trips/{id}', 'MyTrips@update')->middleware('auth');
+Route::delete('my/trips/{id}', 'MyTrips@destroy')->middleware('auth');
+Route::get('my/trips/{id}/edit', 'MyTrips@edit')->middleware('auth');
+
 Route::get('news', 'News@index');
 Route::get('news/{id}', 'News@show');
 Route::get('news/{year}/{month}', 'News@bc');

@@ -5,6 +5,7 @@ return [
     'saved' => 'Changes saved',
     'index' => 'Account',
     'theme' => 'Theme',
+    'trips' => 'Trips',
     'profile' => 'Profile',
     'username' => 'Username',
     'password' => 'Password',

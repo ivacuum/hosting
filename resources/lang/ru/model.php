@@ -53,6 +53,7 @@ return [
     'torrent.info_hash' => 'Инфо-хэш',
     'torrent.updated_at' => 'Обновлена',
 
+    'trip.title' => 'Название',
     'trip.status' => 'Состояние',
     'trip.markdown' => 'Текст',
     'trip.title_en' => 'Название EN',

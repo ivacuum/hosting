@@ -28,7 +28,7 @@ class UserTravelTrips extends UserTravel
                 return $query->where('date_start', '<=', $to);
             })
             ->orderBy('date_start', $from || $to ? 'asc' : 'desc')
-            ->get();
+            ->get(Trip::COLUMNS_LIST);
 
         \Breadcrumbs::push(trans('menu.life'));
 
@@ -43,11 +43,11 @@ class UserTravelTrips extends UserTravel
             ->where('status', Trip::STATUS_PUBLISHED)
             ->firstOrFail();
 
-        \Breadcrumbs::push(trans('menu.life'), "@{$this->traveler->login}/travel");
-        \Breadcrumbs::push(trans('menu.countries'), "@{$this->traveler->login}/travel/countries");
-        \Breadcrumbs::push($trip->city->country->title, "@{$this->traveler->login}/travel/countries/{$trip->city->country->slug}");
-        \Breadcrumbs::push($trip->city->title, "@{$this->traveler->login}/travel/cities/{$trip->city->slug}");
-        \Breadcrumbs::push($trip->localizedDate());
+        \Breadcrumbs::push(trans('menu.life'), "@{$this->traveler->login}/travel")
+            ->push(trans('menu.countries'), "@{$this->traveler->login}/travel/countries")
+            ->push($trip->city->country->title, "@{$this->traveler->login}/travel/countries/{$trip->city->country->slug}")
+            ->push($trip->city->title, "@{$this->traveler->login}/travel/cities/{$trip->city->slug}")
+            ->push($trip->localizedDate());
 
         event(new \App\Events\Stats\TripViewed($trip->id));
 

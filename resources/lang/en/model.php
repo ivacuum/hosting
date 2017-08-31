@@ -56,6 +56,7 @@ return [
     'torrent.info_hash' => 'Info-hash',
     'torrent.updated_at' => 'Updated on',
 
+    'trip.title' => 'Title',
     'trip.status' => 'Status',
     'trip.title_en' => 'Title',
     'trip.title_ru' => 'Title RU',
