@@ -22,7 +22,7 @@
     <textarea class="form-control textarea-autosized js-autosize-textarea" name="source" rows="2" style="font-family: monospace;">{{ $source }}</textarea>
   </div>
 
-  <button type="submit" class="btn btn-primary">
+  <button class="btn btn-primary">
     Сохранить изменения
   </button>
 

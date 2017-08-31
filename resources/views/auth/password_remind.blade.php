@@ -14,7 +14,7 @@
     </div>
 
     <div class="text-center">
-      <button type="submit" class="btn btn-primary btn-lg">
+      <button class="btn btn-primary btn-lg">
         {{ trans('auth.password_remind') }}
       </button>
     </div>

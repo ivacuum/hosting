@@ -7,7 +7,7 @@
 
       @include("$tpl.form")
 
-      <button type="submit" class="btn btn-primary">
+      <button class="btn btn-primary">
         {{ trans("$tpl.create") }}
       </button>
 

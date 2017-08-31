@@ -10,7 +10,7 @@
     <label class="col-md-3 control-label">Ящик:</label>
     <div class="col-md-6">
       <div class="input-group">
-        <input type="text" class="form-control" name="logins">
+        <input class="form-control" name="logins">
         <span class="input-group-addon">{{ '@'.$model->domain }}</span>
       </div>
       <span class="help-block">Можно указать несколько ящиков через запятую. Пароли будут назначены автоматически</span>
@@ -26,7 +26,7 @@
 
   <div class="form-group">
     <div class="col-md-9 col-md-offset-3">
-      <button type="submit" class="btn btn-primary">
+      <button class="btn btn-primary">
         Создать ящик
       </button>
     </div>

@@ -32,7 +32,7 @@
         @endif
       </div>
 
-      <button type="submit" class="btn btn-primary">
+      <button class="btn btn-primary">
         {{ trans('my.save') }}
       </button>
 
@@ -53,7 +53,7 @@
       <p>The link will be sent to your e-mail <span class="font-bold">{{ Auth::user()->email }}</span></p>
     @endlang
 
-    <button type="submit" class="btn btn-default">
+    <button class="btn btn-default">
       {{ trans('auth.password_remind') }}
     </button>
 

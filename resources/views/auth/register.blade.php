@@ -20,7 +20,7 @@
       @endif
     </div>
 
-    <button type="submit" class="btn btn-primary btn-lg">
+    <button class="btn btn-primary btn-lg">
       {{ trans('auth.signup') }}
     </button>
 

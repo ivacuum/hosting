@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary btn-lg btn-login">
+    <button class="btn btn-primary btn-lg btn-login">
       {{ trans('auth.signin') }}
     </button>
 

@@ -5,7 +5,7 @@
 @if ($model->domain_control and ($model->ns != 'dns1.yandex.net dns2.yandex.net' and $model->ns != 'dns1.yandex.ru dns2.yandex.ru'))
   <form action="{{ path("$self@setYandexNs", $model) }}" method="post">
     <p>
-      <button type="submit" class="btn btn-default">
+      <button class="btn btn-default">
         Установить DNS Яндекса
       </button>
     </p>
@@ -16,7 +16,7 @@
 @if (!$model->yandex_user_id)
   <form action="{{ path("$self@setYandexPdd", $model) }}" method="post">
     <p>
-      <button type="submit" class="btn btn-default">
+      <button class="btn btn-default">
         Подключить Яндекс.Почту для домена
       </button>
     </p>
@@ -145,7 +145,7 @@
         <option>srv1.ivacuum.ru</option>
         <option>srv2.ivacuum.ru</option>
       </select>
-      <button type="submit" class="btn btn-default">
+      <button class="btn btn-default">
         Прописать днс-записи сервера
       </button>
     </p>

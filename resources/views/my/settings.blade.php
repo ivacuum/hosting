@@ -45,7 +45,7 @@
         @endlang
       </div>
 
-      <button type="submit" class="btn btn-primary">
+      <button class="btn btn-primary">
         {{ trans('my.save') }}
       </button>
 
