@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Ivacuum\Generic\Utilities\TextImagesParser;
 use Symfony\Component\Finder\Finder;
 
 /**
@@ -16,6 +17,8 @@ use Symfony\Component\Finder\Finder;
  * @property \Illuminate\Support\Carbon $date_start
  * @property \Illuminate\Support\Carbon $date_end
  * @property integer $status
+ * @property string  $markdown
+ * @property string  $html
  * @property string  $meta_title_ru
  * @property string  $meta_title_en
  * @property string  $meta_description_ru
@@ -161,7 +164,9 @@ class Trip extends Model
     public function setMarkdownAttribute($value)
     {
         $this->attributes['markdown'] = $value;
-        $this->attributes['html'] = \Parsedown::instance()->text($value);
+
+        $this->attributes['html'] = \Parsedown::instance()
+            ->text((new TextImagesParser)->parse($value));
     }
 
     // Methods
