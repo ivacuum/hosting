@@ -57,7 +57,13 @@ return [
     'torrent.updated_at' => 'Updated on',
 
     'trip.status' => 'Status',
+    'trip.title_en' => 'Title',
+    'trip.title_ru' => 'Title RU',
+    'trip.date_end' => 'End date',
     'trip.date_start' => 'Start date',
+    'trip.meta_image' => 'Cover image',
+    'trip.meta_description_en' => 'Meta description',
+    'trip.meta_description_ru' => 'Meta description RU',
 
     'user.last_login_at' => 'Last login',
 

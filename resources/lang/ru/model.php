@@ -54,7 +54,14 @@ return [
     'torrent.updated_at' => 'Обновлена',
 
     'trip.status' => 'Состояние',
+    'trip.markdown' => 'Текст',
+    'trip.title_en' => 'Название EN',
+    'trip.title_ru' => 'Название',
+    'trip.date_end' => 'Дата окончания',
     'trip.date_start' => 'Дата начала',
+    'trip.meta_image' => 'Обложка',
+    'trip.meta_description_en' => 'Meta description EN',
+    'trip.meta_description_ru' => 'Meta description',
 
     'user.last_login_at' => 'Последний вход',
 
