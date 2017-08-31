@@ -64,7 +64,7 @@
   @show
   <div class="container">
     <div class="js-flash-notification">
-      @if ($first_time_visit && !Auth::check() && $locale !== $locale_preffered)
+      @if ($first_time_visit && !Auth::check() && $locale !== $locale_preffered && !(new Ivacuum\Generic\Utilities\EnvironmentForCss(request()->userAgent()))->isCrawler())
         <div class="alert alert-warning">
           <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
           @ru

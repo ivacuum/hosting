@@ -526,16 +526,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "0.7.5",
+            "version": "0.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "6280b632ca844b39f0d10bc568753a4aa1785faf"
+                "reference": "dd8a95110fa69b0cf3236f74819567830a7887c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/6280b632ca844b39f0d10bc568753a4aa1785faf",
-                "reference": "6280b632ca844b39f0d10bc568753a4aa1785faf",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/dd8a95110fa69b0cf3236f74819567830a7887c1",
+                "reference": "dd8a95110fa69b0cf3236f74819567830a7887c1",
                 "shasum": ""
             },
             "require": {
@@ -584,7 +584,7 @@
                     "email": "vacuum@ivacuum.ru"
                 }
             ],
-            "time": "2017-08-30T15:31:22+00:00"
+            "time": "2017-08-31T11:09:56+00:00"
         },
         {
             "name": "laravel/framework",
