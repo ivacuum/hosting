@@ -16,14 +16,18 @@ class Trips extends Controller
 
     public function index()
     {
-        $status = $this->request->input('status');
+        $status = request('status');
+        $user_id = request('user_id');
 
-        list($sort_key, $sort_dir) = $this->getSortParams();
+        [$sort_key, $sort_dir] = $this->getSortParams();
 
         $models = Model::with('user')
             ->withCount('comments', 'photos')
-            ->forCity($this->request->input('city_id'))
-            ->forCountry($this->request->input('country_id'))
+            ->forCity(request('city_id'))
+            ->forCountry(request('country_id'))
+            ->when($user_id, function (Builder $query) use ($user_id) {
+                return $query->where('user_id', $user_id);
+            })
             ->unless(is_null($status), function (Builder $query) use ($status) {
                 return $query->where('status', $status);
             })
@@ -77,16 +81,15 @@ class Trips extends Controller
     protected function storeModel()
     {
         /* @var City $city */
-        $city = City::findOrFail($this->request->input('city_id'));
+        $city = City::findOrFail(request('city_id'));
 
-        $data = $this->request->all();
-        $data['user_id'] = $this->request->user()->id;
+        $data = request()->all();
+        $data['user_id'] = request()->user()->id;
         $data['title_ru'] = $city->title_ru;
         $data['title_en'] = $city->title_en;
 
         $model = Model::create($data);
 
-        // TODO
         if (\App::isLocal()) {
             $model->createStoryFile();
         }
