@@ -44,7 +44,7 @@
       <div>{{ trans('photos.index') }}</div>
     </a>
     @if (Auth::check())
-      <a class="bottom-tab {{ $self === 'My' ? 'active' : '' }}" href="{{ path('MyProfile@edit') }}">
+      <a class="bottom-tab {{ starts_with(request()->path(), 'my/') ? 'active' : '' }}" href="{{ path('MyProfile@edit') }}">
         @svg (user-circle-o)
         <div>{{ trans('my.profile') }}</div>
       </a>
