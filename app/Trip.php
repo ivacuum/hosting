@@ -46,7 +46,7 @@ class Trip extends Model
 
     const COLUMNS_LIST = ['id', 'user_id', 'city_id', 'title_ru', 'title_en', 'slug', 'date_start', 'date_end', 'status', 'views'];
 
-    protected $guarded = ['created_at', 'updated_at', 'goto'];
+    protected $guarded = ['created_at', 'updated_at', 'goto', 'mail'];
     protected $dates = ['date_start', 'date_end'];
     protected $casts = [
         'status' => 'int',
