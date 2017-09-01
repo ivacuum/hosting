@@ -7,6 +7,13 @@
 <p>Подборка различных инструкций.</p>
 
 <section>
+  <div class="h3 mt-0">Справка</div>
+  <ul class="list-unstyled">
+    <li><a class="link" href="/docs/trips">Поездки</a></li>
+  </ul>
+</section>
+
+<section>
   <div class="h3 mt-0">Хостинг</div>
   <ul class="list-unstyled">
     <li><a class="link" href="/docs/amazon-s3">Amazon S3</a></li>

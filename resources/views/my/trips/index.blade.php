@@ -7,8 +7,13 @@
   <a class="btn btn-success" href="{{ path('MyTrips@create') }}">
     {{ trans('acp.trips.create') }}
   </a>
-  <a class="btn btn-default" href="{{ path('UserTravelTrips@index', \Auth::user()->login) }}">
-    Просмотреть
+  @if (optional(Auth::user())->login)
+    <a class="btn btn-default" href="{{ path('UserTravelTrips@index', \Auth::user()->login) }}">
+      Просмотреть
+    </a>
+  @endif
+  <a class="btn btn-default" href="{{ path('Docs@page', 'trips') }}">
+    @svg (question-circle)
   </a>
 </h3>
 
