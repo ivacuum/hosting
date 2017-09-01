@@ -17,7 +17,7 @@
     <li class="divider"></li>
     @if (Auth::user()->isAdmin())
       <li>
-        <a href="{{ App::isLocal() ? "{$locale_uri}/acp/dev/templates" : "{$locale_uri}/acp/trips" }}">
+        <a href="{{ App::isLocal() ? "{$locale_uri}/acp/dev/templates" : "{$locale_uri}/acp/trips?user_id=1" }}">
           {{ trans('acp.index') }}
         </a>
       </li>

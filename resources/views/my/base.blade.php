@@ -5,7 +5,7 @@
   <div class="col-sm-3">
     <div class="list-group text-center">
       @if (Auth::user()->isAdmin())
-        <a class="list-group-item visible-xs" href="{{ App::isLocal() ? "{$locale_uri}/acp/dev/templates" : "{$locale_uri}/acp/trips" }}">
+        <a class="list-group-item visible-xs" href="{{ App::isLocal() ? "{$locale_uri}/acp/dev/templates" : "{$locale_uri}/acp/trips?user_id=1" }}">
           {{ trans('acp.index') }}
         </a>
       @endif
