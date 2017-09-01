@@ -70,6 +70,11 @@ class User extends Authenticatable
         return $this->hasMany(Torrent::class);
     }
 
+    public function trips()
+    {
+        return $this->hasMany(Trip::class);
+    }
+
     // Attributes
     public function setPasswordAttribute($value)
     {

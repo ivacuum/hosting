@@ -40,6 +40,9 @@
     <th class="text-right text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'torrents_count', 'svg' => 'magnet'])
     </th>
+    <th class="text-right text-nowrap">
+      @include('acp.tpl.sortable-header', ['key' => 'trips_count', 'svg' => 'plane'])
+    </th>
     <th>Дата реги</th>
     <th>
       @include('acp.tpl.sortable-header', ['key' => 'last_login_at'])
@@ -78,6 +81,13 @@
         @if ($model->torrents_count > 0)
           <a href="{{ path('Acp\Torrents@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->torrents_count) }}
+          </a>
+        @endif
+      </td>
+      <td class="text-right">
+        @if ($model->trips_count > 0)
+          <a href="{{ path('Acp\Trips@index', [$model->getForeignKey() => $model]) }}">
+            {{ ViewHelper::number($model->trips_count) }}
           </a>
         @endif
       </td>

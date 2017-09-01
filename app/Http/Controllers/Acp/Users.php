@@ -7,17 +7,17 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Users extends Controller
 {
-    protected $sortable_keys = ['id', 'last_login_at', 'comments_count', 'images_count', 'torrents_count'];
-    protected $show_with_count = ['chat_messages', 'comments', 'images', 'torrents'];
+    protected $sortable_keys = ['id', 'last_login_at', 'comments_count', 'images_count', 'torrents_count', 'trips_count'];
+    protected $show_with_count = ['chat_messages', 'comments', 'images', 'torrents', 'trips'];
 
     public function index()
     {
-        $q = $this->request->input('q');
-        $filter = $this->request->input('filter');
+        $q = request('q');
+        $filter = request('filter');
 
-        list($sort_key, $sort_dir) = $this->getSortParams();
+        [$sort_key, $sort_dir] = $this->getSortParams();
 
-        $models = Model::withCount(['comments', 'images', 'torrents'])
+        $models = Model::withCount(['comments', 'images', 'torrents', 'trips'])
             ->applyFilter($filter)
             ->when($q, function (Builder $query) use ($q) {
                 if (is_numeric($q)) {

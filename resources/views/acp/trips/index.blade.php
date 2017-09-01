@@ -42,7 +42,7 @@
     <th class="text-right text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
     </th>
-    <th></th>
+    <th>@svg (paperclip)</th>
     <th class="text-right text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'photos_count', 'svg' => 'picture-o'])
     </th>
@@ -102,9 +102,13 @@
         @endif
       </td>
       <td class="text-right">
-        <a href="{{ path('Acp\Dev\Templates@show', str_replace('.', '_', $model->slug)) }}">
-          @svg (file-text-o)
-        </a>
+        @if ($model->user_id === 1)
+          <a href="{{ path('Acp\Dev\Templates@show', str_replace('.', '_', $model->slug)) }}">
+            @svg (file-text-o)
+          </a>
+        @else
+          <a href="{{ path('Acp\Users@show', $model->user_id) }}">#{{ $model->user_id }}</a>
+        @endif
       </td>
     </tr>
   @endforeach
