@@ -7,8 +7,8 @@ class UserTravelTrips extends UserTravel
 {
     public function index()
     {
-        $to = $this->request->input('to');
-        $from = $this->request->input('from');
+        $to = request('to');
+        $from = request('from');
 
         $validator = \Validator::make(compact('from', 'to'), [
             'to' => 'nullable|date',
@@ -43,10 +43,10 @@ class UserTravelTrips extends UserTravel
             ->where('status', Trip::STATUS_PUBLISHED)
             ->firstOrFail();
 
-        \Breadcrumbs::push(trans('menu.life'), "@{$this->traveler->login}/travel")
-            ->push(trans('menu.countries'), "@{$this->traveler->login}/travel/countries")
-            ->push($trip->city->country->title, "@{$this->traveler->login}/travel/countries/{$trip->city->country->slug}")
-            ->push($trip->city->title, "@{$this->traveler->login}/travel/cities/{$trip->city->slug}")
+        \Breadcrumbs::push(trans('menu.life'), "@{$login}/travel")
+            ->push(trans('menu.countries'), "@{$login}/travel/countries")
+            ->push($trip->city->country->title, "@{$login}/travel/countries/{$trip->city->country->slug}")
+            ->push($trip->city->title, "@{$login}/travel/cities/{$trip->city->slug}")
             ->push($trip->localizedDate());
 
         event(new \App\Events\Stats\TripViewed($trip->id));

@@ -5,7 +5,7 @@ use App\Trip;
 
 class UserTravelCountries extends UserTravel
 {
-    public function index()
+    public function index($login)
     {
         $trips = Trip::tripsByCities($this->traveler->id);
 
@@ -28,7 +28,7 @@ class UserTravelCountries extends UserTravel
                 $country->trips_published_count = $trips_published_count;
             })->filter->trips_count;
 
-        \Breadcrumbs::push(trans('menu.life'), "@{$this->traveler->login}/travel");
+        \Breadcrumbs::push(trans('menu.life'), "@{$login}/travel");
         \Breadcrumbs::push(trans('menu.countries'));
 
         return view('user-travel.countries', compact('countries'));
@@ -43,8 +43,8 @@ class UserTravelCountries extends UserTravel
             ->visible()
             ->get();
 
-        \Breadcrumbs::push(trans('menu.life'), "@{$this->traveler->login}/travel");
-        \Breadcrumbs::push(trans('menu.countries'), "@{$this->traveler->login}/travel/countries");
+        \Breadcrumbs::push(trans('menu.life'), "@{$login}/travel");
+        \Breadcrumbs::push(trans('menu.countries'), "@{$login}/travel/countries");
         \Breadcrumbs::push($country->title);
 
         event(new \App\Events\Stats\CountryViewed($country->id));

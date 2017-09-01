@@ -6,7 +6,7 @@ use App\User;
 
 class UserTravelCities extends UserTravel
 {
-    public function index()
+    public function index($login)
     {
         $trips = Trip::tripsByCities($this->traveler->id);
 
@@ -17,7 +17,7 @@ class UserTravelCities extends UserTravel
                 $city->trips_published_count = $trips[$city->id]['published'] ?? 0;
             })->filter->trips_count;
 
-        \Breadcrumbs::push(trans('menu.life'), "@{$this->traveler->login}/travel");
+        \Breadcrumbs::push(trans('menu.life'), "@{$login}/travel");
         \Breadcrumbs::push(trans('menu.cities'));
 
         return view('user-travel.cities', compact('cities'));
@@ -45,9 +45,9 @@ class UserTravelCities extends UserTravel
             return redirect($trip->www());
         }
 
-        \Breadcrumbs::push(trans('menu.life'), "@{$this->traveler->login}/travel");
-        \Breadcrumbs::push(trans('menu.countries'), "@{$this->traveler->login}/travel/countries");
-        \Breadcrumbs::push($city->country->title, "@{$this->traveler->login}/travel/countries/{$city->country->slug}");
+        \Breadcrumbs::push(trans('menu.life'), "@{$login}/travel");
+        \Breadcrumbs::push(trans('menu.countries'), "@{$login}/travel/countries");
+        \Breadcrumbs::push($city->country->title, "@{$login}/travel/countries/{$city->country->slug}");
         \Breadcrumbs::push($city->title);
 
         return view('user-travel.city', compact('city', 'trips'));

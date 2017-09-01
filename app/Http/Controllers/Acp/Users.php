@@ -63,16 +63,16 @@ class Users extends Controller
 
     protected function storeModel()
     {
-        $random_password = $this->request->input('random_password');
-        $password = $random_password ? str_random(16) : $this->request->input('password');
+        $random_password = request('random_password');
+        $password = $random_password ? str_random(16) : request('password');
 
         $model = new Model;
-        $model->email = $this->request->input('email');
-        $model->status = $this->request->input('status', 0);
+        $model->email = request('email');
+        $model->status = request('status', 0);
         $model->password = $password;
         $model->save();
 
-        if ($this->request->input('mail_credentials')) {
+        if (request('mail_credentials')) {
             $this->mailCredentials($model, $password);
         }
 
@@ -84,12 +84,12 @@ class Users extends Controller
      */
     protected function updateModel($model)
     {
-        $random_password = $this->request->input('random_password');
-        $password = $random_password ? str_random(16) : $this->request->input('password');
-        $mail_credentials = $this->request->input('mail_credentials');
+        $random_password = request('random_password');
+        $password = $random_password ? str_random(16) : request('password');
+        $mail_credentials = request('mail_credentials');
 
-        $model->email = $this->request->input('email');
-        $model->status = $this->request->input('status', Model::STATUS_INACTIVE);
+        $model->email = request('email');
+        $model->status = request('status', Model::STATUS_INACTIVE);
 
         if ($password) {
             $model->password = $password;
