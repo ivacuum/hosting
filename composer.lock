@@ -526,16 +526,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "0.7.8",
+            "version": "0.7.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "533279b5c85d06c3640c8c1b8bc048c85d40202b"
+                "reference": "baf74f25ec111af5e6eb7635c8432122866e9492"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/533279b5c85d06c3640c8c1b8bc048c85d40202b",
-                "reference": "533279b5c85d06c3640c8c1b8bc048c85d40202b",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/baf74f25ec111af5e6eb7635c8432122866e9492",
+                "reference": "baf74f25ec111af5e6eb7635c8432122866e9492",
                 "shasum": ""
             },
             "require": {
@@ -584,20 +584,20 @@
                     "email": "vacuum@ivacuum.ru"
                 }
             ],
-            "time": "2017-08-31T21:44:44+00:00"
+            "time": "2017-09-02T16:49:57+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v5.5.0",
+            "version": "v5.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "bd352a0d2ca93775fce8ef02365b03fc4fb8cbb0"
+                "reference": "fad090f6e14b97df91489803644ac88b5321864e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/bd352a0d2ca93775fce8ef02365b03fc4fb8cbb0",
-                "reference": "bd352a0d2ca93775fce8ef02365b03fc4fb8cbb0",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/fad090f6e14b97df91489803644ac88b5321864e",
+                "reference": "fad090f6e14b97df91489803644ac88b5321864e",
                 "shasum": ""
             },
             "require": {
@@ -661,7 +661,7 @@
                 "aws/aws-sdk-php": "~3.0",
                 "doctrine/dbal": "~2.5",
                 "filp/whoops": "^2.1.4",
-                "mockery/mockery": "~0.9.4",
+                "mockery/mockery": "~1.0",
                 "orchestra/testbench-core": "3.5.*",
                 "pda/pheanstalk": "~3.0",
                 "phpunit/phpunit": "~6.0",
@@ -683,7 +683,7 @@
                 "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (~2.0).",
                 "symfony/css-selector": "Required to use some of the crawler integration testing tools (~3.3).",
                 "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (~3.3).",
-                "symfony/psr-http-message-bridge": "Required to psr7 bridging features (0.2.*)."
+                "symfony/psr-http-message-bridge": "Required to psr7 bridging features (~1.0)."
             },
             "type": "library",
             "extra": {
@@ -716,7 +716,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-08-30T09:25:30+00:00"
+            "time": "2017-09-01T06:33:38+00:00"
         },
         {
             "name": "laravel/socialite",

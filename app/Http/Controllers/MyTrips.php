@@ -47,16 +47,24 @@ class MyTrips extends Controller
     {
         /* @var \App\User $user */
         $user = request()->user();
-        $data = request()->validate($this->rules());
+
+        request()->validate($this->rules());
 
         /* @var City $city */
-        $city = City::findOrFail($data['city_id']);
+        $city = City::findOrFail(request('city_id'));
 
-        $data['user_id'] = $user->id;
-        $data['title_en'] = $city->title_en;
-        $data['title_ru'] = $city->title_ru;
+        $model = new Trip;
 
-        $model = Trip::create($data);
+        $model->slug = request('slug');
+        $model->status = request('status');
+        $model->user_id = $user->id;
+        $model->markdown = request('markdown');
+        $model->title_en = $city->title_en;
+        $model->title_ru = $city->title_ru;
+        $model->date_end = request('date_end');
+        $model->date_start = request('date_start');
+
+        $model->save();
 
         return $this->redirectAfterStore($model);
     }
@@ -65,11 +73,19 @@ class MyTrips extends Controller
     {
         $model = $this->getTrip($id);
 
-        $data = request()->validate($this->rules($model));
+        request()->validate($this->rules($model));
 
-        City::findOrFail($data['city_id']);
+        City::findOrFail(request('city_id'));
 
-        $model->update($data);
+        $model->slug = request('slug');
+        $model->status = request('status');
+        $model->markdown = request('markdown');
+        $model->title_en = request('title_en');
+        $model->title_ru = request('title_ru');
+        $model->date_end = request('date_end');
+        $model->date_start = request('date_start');
+
+        $model->save();
 
         return $this->redirectAfterUpdate($model);
     }

@@ -46,7 +46,7 @@ class Trip extends Model
 
     const COLUMNS_LIST = ['id', 'user_id', 'city_id', 'title_ru', 'title_en', 'slug', 'date_start', 'date_end', 'status', 'views'];
 
-    protected $guarded = ['created_at', 'updated_at', 'goto', 'mail'];
+    protected $guarded = ['id', 'html', 'views', 'created_at', 'updated_at'];
     protected $dates = ['date_start', 'date_end'];
     protected $casts = [
         'status' => 'int',
@@ -169,6 +169,11 @@ class Trip extends Model
 
         $this->attributes['html'] = \Parsedown::instance()
             ->text((new TextImagesParser)->parse($value));
+    }
+
+    public function setSlugAttribute($value)
+    {
+        $this->attributes['slug'] = mb_strtolower($value);
     }
 
     // Methods
