@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\City;
+use App\Rules\TripSlug;
 use App\Trip;
 use Illuminate\Validation\Rule;
 
@@ -107,6 +108,7 @@ class MyTrips extends Controller
             'slug' => [
                 'bail',
                 'required',
+                new TripSlug,
                 Rule::unique('trips', 'slug')
                     ->where('user_id', request()->user()->id)
                     ->ignore($model->id ?? null),
