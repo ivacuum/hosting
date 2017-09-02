@@ -35,7 +35,10 @@
     @foreach ($models as $model)
       <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
         <td class="text-right"><span class="d-sm-none">#</span>{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
+        {{--
         <td><a href="{{ path("$self@show", $model) }}">{{ $model->title }}</a></td>
+        --}}
+        <td>{{ $model->title }}</td>
         <td>
           @if ($model->status === App\Trip::STATUS_HIDDEN)
             <span class="tooltipped tooltipped-n" aria-label="Заметка скрыта">
