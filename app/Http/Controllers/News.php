@@ -1,28 +1,30 @@
 <?php namespace App\Http\Controllers;
 
 use App\News as Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class News extends Controller
 {
     public function index($year = null, $month = null, $day = null)
     {
-        \Breadcrumbs::push(trans('news.index'), 'news');
+        $locale = \App::getLocale();
 
         $news = Model::with('user')
             ->withCount('commentsPublished as comments_count')
             ->published()
-            ->orderBy('created_at', 'desc');
+            ->when($locale === 'en', function (Builder $query) {
+                return $query->where('site_id', 12);
+            })
+            ->when($locale === 'ru', function (Builder $query) {
+                return $query->where('site_id', 11);
+            })
+            ->when($year || $month || $day, function (Builder $query) use ($year, $month, $day) {
+                return $query->whereBetween('created_at', Model::interval($year, $month, $day));
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate();
 
-        switch (\App::getLocale()) {
-            case 'en': $news = $news->where('site_id', 12); break;
-            default: $news = $news->where('site_id', 11); break;
-        }
-
-        if ($year || $month || $day) {
-            $news = $news->whereBetween('created_at', Model::interval($year, $month, $day));
-        }
-
-        $news = $news->paginate();
+        \Breadcrumbs::push(trans('news.index'), 'news');
 
         return view('news.index', compact('news'));
     }
@@ -70,8 +72,8 @@ class News extends Controller
 
         event(new \App\Events\Stats\NewsViewed($news->id));
 
-        \Breadcrumbs::push(trans('news.index'), 'news');
-        \Breadcrumbs::push($news->title);
+        \Breadcrumbs::push(trans('news.index'), 'news')
+            ->push($news->title);
 
         $meta_title = $news->title;
 

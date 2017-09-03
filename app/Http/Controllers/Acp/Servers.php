@@ -22,10 +22,10 @@ class Servers extends Controller
 
     protected function updateModel($model)
     {
-        $input = $this->request->all();
+        $input = $this->requestDataForModel();
 
         /* Сохранение ранее указанного пароля */
-        $passwords = $this->request->only('ftp_pass');
+        $passwords = request()->only('ftp_pass');
 
         foreach ($passwords as $key => $value) {
             if (!$value) {

@@ -13,7 +13,7 @@ class Countries extends Controller
 
     public function index()
     {
-        list($sort_key, $sort_dir) = $this->getSortParams();
+        [$sort_key, $sort_dir] = $this->getSortParams();
 
         $sort_key = $sort_key === 'title' ? Model::titleField() : $sort_key;
 

@@ -12,9 +12,9 @@ class AjaxComment extends Controller
 {
     public function store($type, $id)
     {
-        $mail = $this->request->input('mail');
-        $text = e($this->request->input('text'));
-        $user_id = $this->request->user()->id;
+        $mail = request('mail');
+        $text = e(request('text'));
+        $user_id = request()->user()->id;
 
         $validator = \Validator::make(compact('id', 'mail', 'text', 'type'), [
             'id' => 'integer|min:1',
@@ -27,6 +27,7 @@ class AjaxComment extends Controller
 
         $model = $this->notifiableModel($type, $id);
 
+        /* @var Comment $comment */
         $comment = $model->comments()->create([
             'html' => $text,
             'status' => Comment::STATUS_PUBLISHED,

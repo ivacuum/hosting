@@ -29,16 +29,17 @@ class AjaxChat extends Controller
 
     public function store()
     {
-        $this->validate($this->request, [
+        request()->validate([
             'mail' => 'empty',
+
             'text' => 'required|max:1000',
         ]);
 
-        $text = trim($this->request->input('text'));
+        $text = trim(request('text'));
         $user = \Auth::user();
 
         $chat_message = ChatMessage::create([
-            'ip' => $this->request->ip(),
+            'ip' => request()->ip(),
             'text' => $text,
             'status' => ChatMessage::STATUS_PUBLISHED,
             'user_id' => $user->id,

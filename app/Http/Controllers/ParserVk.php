@@ -21,8 +21,8 @@ class ParserVk extends Controller
     public function index($vkpage = 'pn6', $date = false)
     {
         $this->vkpage = $vkpage;
-        $this->token = $token = $this->request->input('token', config('services.vk.access_token'));
-        $own = $this->request->input('own');
+        $this->token = $token = request('token', config('services.vk.access_token'));
+        $own = request('own');
         $date = false === $date ? '-1 day' : $date;
         $date = Carbon::parse($date);
         $token = $token === config('services.vk.access_token') ? null : $token;
@@ -118,7 +118,7 @@ class ParserVk extends Controller
 
     public function indexPost()
     {
-        return redirect(path("{$this->class}@index", $this->request->input('slug')));
+        return redirect(path("{$this->class}@index", request('slug')));
     }
 
     protected function getPosts($count = 100, $offset = 0)

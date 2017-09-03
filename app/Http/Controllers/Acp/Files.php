@@ -10,7 +10,7 @@ class Files extends Controller
 
     public function index()
     {
-        list($sort_key, $sort_dir) = $this->getSortParams();
+        [$sort_key, $sort_dir] = $this->getSortParams();
 
         $models = Model::orderBy($sort_key, $sort_dir)
             ->paginate();
@@ -39,11 +39,11 @@ class Files extends Controller
 
     protected function storeModel()
     {
-        $file = $this->request->file('file');
-        $folder = $this->request->input('folder');
+        $file = request()->file('file');
+        $folder = request('folder');
 
         /* @var Model $model */
-        $model = $this->newModel()->fill($this->request->all());
+        $model = $this->newModel()->fill($this->requestDataForModel());
         $model->size = $file->getSize();
         $model->extension = $file->getClientOriginalExtension();
         $model->downloads = 0;

@@ -51,10 +51,10 @@ class YandexUsers extends Controller
 
     protected function storeModel()
     {
-        $model = Model::create($this->request->all());
+        $model = Model::create($this->requestDataForModel());
 
         // Newly specified user domains
-        foreach ($this->request->input('domains', []) as $id => $one) {
+        foreach (request('domains', []) as $id => $one) {
             $user_domains[] = $id;
         }
 
@@ -71,9 +71,9 @@ class YandexUsers extends Controller
      */
     protected function updateModel($model)
     {
-        $token = $this->request->input('token');
+        $token = request('token');
 
-        $model->account = $this->request->input('account');
+        $model->account = request('account');
 
         if ($token) {
             $model->token = $token;
@@ -83,7 +83,7 @@ class YandexUsers extends Controller
 
         // Domains w/out yandex user specified
         foreach ($model->domains as $domain) {
-            if (!$this->request->input("domains.{$domain->id}")) {
+            if (!request()->input("domains.{$domain->id}")) {
                 $anon_domains[] = $domain->id;
             }
         }
@@ -94,7 +94,7 @@ class YandexUsers extends Controller
         }
 
         // Newly specified user domains
-        foreach ($this->request->input('domains', []) as $id => $one) {
+        foreach (request('domains', []) as $id => $one) {
             $user_domains[] = $id;
         }
 

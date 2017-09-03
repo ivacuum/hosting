@@ -11,26 +11,27 @@ class MyProfile extends Controller
 
     public function update()
     {
-        $user = $this->request->user();
+        /* @var \App\User $user */
+        $user = request()->user();
 
-        $this->validate($this->request, [
+        request()->validate([
             'mail' => 'empty',
-            'username' => [
-                'min:2',
-                'max:32',
-                'alpha_dash',
-                Rule::unique('users', 'login')->ignore($user->id),
-            ],
             'email' => [
                 'required',
                 'email',
                 'max:125',
                 Rule::unique('users')->ignore($user->id),
             ],
+            'username' => [
+                'min:2',
+                'max:32',
+                'alpha_dash',
+                Rule::unique('users', 'login')->ignore($user->id),
+            ],
         ]);
 
-        $user->login = $this->request->input('username');
-        $user->email = $this->request->input('email');
+        $user->login = request('username');
+        $user->email = request('email');
         $user->save();
 
         event(new \App\Events\Stats\MyProfileChanged);

@@ -4,16 +4,17 @@ class MyAvatar extends Controller
 {
     public function update()
     {
-        if (!$this->request->ajax()) {
+        if (!request()->ajax()) {
             return ['status' => 'error'];
         }
 
-        $this->validate($this->request, [
+        request()->validate([
             'file' => 'required|mimetypes:image/jpeg,image/png|max:3072',
         ]);
 
-        $file = $this->request->file('file');
-        $user = $this->request->user();
+        /* @var \App\User $user */
+        $user = request()->user();
+        $file = request()->file('file');
 
         if (is_null($file) || !$file->isValid()) {
             throw new \Exception('Необходимо предоставить хотя бы один файл');

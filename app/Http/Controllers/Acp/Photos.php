@@ -12,14 +12,14 @@ class Photos extends Controller
 
     public function index()
     {
-        $filter = $this->request->input('filter');
+        $filter = request('filter');
 
-        list($sort_key, $sort_dir) = $this->getSortParams();
+        [$sort_key, $sort_dir] = $this->getSortParams();
 
         $models = Model::with('tags')
-            ->forTrip($this->request->input('trip_id'))
+            ->forTrip(request('trip_id'))
             ->applyFilter($filter)
-            ->forTag($this->request->input('tag_id'))
+            ->forTag(request('tag_id'))
             ->orderBy($sort_key, $sort_dir)
             ->paginate();
 
@@ -38,13 +38,13 @@ class Photos extends Controller
     protected function storeModel()
     {
         $model = null;
-        $trip_id = $this->request->input('trip_id');
+        $trip_id = request('trip_id');
 
         if ($trip_id) {
             $model = Trip::findOrFail($trip_id);
         }
 
-        $file = $this->request->file('file');
+        $file = request()->file('file');
 
         if (is_null($file) || !$file->isValid()) {
             throw new \Exception('Необходимо предоставить хотя бы один файл');
@@ -72,7 +72,7 @@ class Photos extends Controller
             'slug' => "{$model->slug}/{$filename}",
             'views' => 0,
             'status' => Model::STATUS_HIDDEN,
-            'user_id' => $this->request->user()->id,
+            'user_id' => request()->user()->id,
         ]);
 
         return $photo;
@@ -80,8 +80,8 @@ class Photos extends Controller
 
     protected function updateModel($model)
     {
-        if ($this->request->has('tags')) {
-            $model->tags()->sync($this->request->input('tags'));
+        if (request()->has('tags')) {
+            $model->tags()->sync(request('tags'));
         } else {
             $model->tags()->detach();
         }

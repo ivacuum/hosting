@@ -27,10 +27,11 @@ use Symfony\Component\Finder\Finder;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
- * @property \App\City    $city
+ * @property \App\City $city
  * @property \Illuminate\Support\Collection $comments
  * @property \App\Country $country
  * @property \Illuminate\Database\Eloquent\Collection $photos
+ * @property \App\User $user
  *
  * @property-read string  $title
  * @property-read string  $meta_title

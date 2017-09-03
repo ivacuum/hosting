@@ -4,7 +4,6 @@ use App\Domain as Model;
 use App\Mail\DomainMailboxes;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Controllers\Acp\Controller;
-use Mail;
 
 class Domains extends Controller
 {
@@ -12,11 +11,11 @@ class Domains extends Controller
 
     public function index()
     {
-        $q = $this->request->input('q');
-        $sort = $this->request->input('sort');
-        $filter = $this->request->input('filter');
-        $client_id = $this->request->input('client_id');
-        $yandex_user_id = $this->request->input('yandex_user_id');
+        $q = request('q');
+        $sort = request('sort');
+        $filter = request('filter');
+        $client_id = request('client_id');
+        $yandex_user_id = request('yandex_user_id');
 
         if (!in_array($sort, ['domain', 'registered_at', 'paid_till'])) {
             $sort = self::DEFAULT_ORDER_BY;
@@ -80,8 +79,8 @@ class Domains extends Controller
     {
         $model = $this->getModel($domain);
 
-        $logins = $this->request->input('logins');
-        $send_to = $this->request->input('send_to');
+        $logins = request('logins');
+        $send_to = request('send_to');
 
         $logins = explode(',', $logins);
         $mailboxes = [];
@@ -97,7 +96,7 @@ class Domains extends Controller
             }
         }
 
-        Mail::to($send_to)->send(new DomainMailboxes($model, $mailboxes));
+        \Mail::to($send_to)->queue(new DomainMailboxes($model, $mailboxes));
 
         return redirect(path("{$this->class}@mailboxes", $model))
             ->with('message', "Данные высланы на почту {$send_to}");
@@ -108,15 +107,15 @@ class Domains extends Controller
         $model = $this->getModel($domain);
 
         return $model->addNsRecord(
-            $this->request->input('type'),
-            $this->request->only('content', 'subdomain', 'priority', 'port', 'weight')
+            request('type'),
+            request()->only('content', 'subdomain', 'priority', 'port', 'weight')
         );
     }
 
     public function batch()
     {
-        $action = $this->request->input('action');
-        $ids = $this->request->input('ids');
+        $action = request('action');
+        $ids = request('ids');
 
         $params = [];
 
@@ -159,7 +158,7 @@ class Domains extends Controller
     {
         $model = $this->getModel($domain);
 
-        $id = $this->request->input('record_id');
+        $id = request('record_id');
 
         return $model->deleteNsRecord($id);
     }
@@ -176,9 +175,9 @@ class Domains extends Controller
         $model = $this->getModel($domain);
 
         return $model->editNsRecord(
-            $this->request->input('record_id'),
-            $this->request->input('type'),
-            $this->request->only('content', 'subdomain', 'priority', 'port', 'weight', 'retry', 'refresh', 'expire', 'ttl')
+            request('record_id'),
+            request('type'),
+            request('content', 'subdomain', 'priority', 'port', 'weight', 'retry', 'refresh', 'expire', 'ttl')
         );
     }
 
@@ -226,7 +225,7 @@ class Domains extends Controller
     {
         $model = $this->getModel($domain);
 
-        $server = $this->request->input('server');
+        $server = request('server');
 
         $model->setServerNsRecords($server);
 
@@ -297,10 +296,10 @@ class Domains extends Controller
 
     protected function updateModel($model)
     {
-        $input = $this->request->all();
+        $input = $this->requestDataForModel();
 
         /* Сохранение ранее указанных паролей */
-        $passwords = $this->request->only('cms_pass', 'ftp_pass', 'ssh_pass', 'db_pass');
+        $passwords = request()->only('cms_pass', 'ftp_pass', 'ssh_pass', 'db_pass');
 
         foreach ($passwords as $key => $value) {
             if (!$value) {

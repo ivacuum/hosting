@@ -12,7 +12,7 @@ class Resize extends Controller
 
     public function image($width, $height, Client $client)
     {
-        $image = $this->request->input('image');
+        $image = request('image');
 
         abort_unless($image, 404);
 

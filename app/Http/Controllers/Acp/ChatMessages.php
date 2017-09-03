@@ -8,8 +8,8 @@ class ChatMessages extends Controller
 {
     public function index()
     {
-        $status = $this->request->input('status');
-        $user_id = $this->request->input('user_id');
+        $status = request('status');
+        $user_id = request('user_id');
 
         $models = Model::with('user')
             ->orderBy('id', 'desc')
@@ -26,8 +26,8 @@ class ChatMessages extends Controller
 
     public function batch()
     {
-        $ids = $this->request->input('ids');
-        $action = $this->request->input('action');
+        $ids = request('ids');
+        $action = request('action');
 
         $models = Model::find($ids);
 
@@ -44,7 +44,7 @@ class ChatMessages extends Controller
             }
         }
 
-        return $this->redirectAfterDestroy($model);
+        return $this->redirectAfterDestroy(new Model);
     }
 
     protected function rules($model = null)

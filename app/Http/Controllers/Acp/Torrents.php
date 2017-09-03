@@ -14,10 +14,10 @@ class Torrents extends Controller
 
     public function index()
     {
-        $status = $this->request->input('status');
-        $user_id = $this->request->input('user_id');
+        $status = request('status');
+        $user_id = request('user_id');
 
-        list($sort_key, $sort_dir) = $this->getSortParams();
+        [$sort_key, $sort_dir] = $this->getSortParams();
 
         $models = Model::with('user')
             ->withCount('comments')

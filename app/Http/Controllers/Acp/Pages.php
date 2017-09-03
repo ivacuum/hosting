@@ -13,8 +13,8 @@ class Pages extends Controller
 
     public function batch()
     {
-        $action = $this->request->input('action');
-        $pages  = $this->request->input('pages');
+        $pages = request('pages');
+        $action = request('action');
 
         switch ($action) {
             case 'activate':
@@ -39,9 +39,9 @@ class Pages extends Controller
 
     public function move()
     {
-        $how = $this->request->input('how');
-        $what = $this->request->input('what');
-        $where = $this->request->input('where');
+        $how = request('how');
+        $what = request('what');
+        $where = request('where');
 
         switch ($how) {
             case 'over': $method = 'makeChildOf'; break;

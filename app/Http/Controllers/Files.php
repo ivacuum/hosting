@@ -15,6 +15,7 @@ class Files extends Controller
 
     public function download($id)
     {
+        /* @var File $file */
         $file = File::findOrFail($id);
 
         abort_unless($file->status === File::STATUS_PUBLISHED, 404);

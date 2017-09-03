@@ -39,6 +39,16 @@ class UserPagesTest extends TestCase
         $this->get('/my/settings')->assertStatus(200);
     }
 
+    public function testPageMyTrips()
+    {
+        $this->get('/my/trips')->assertStatus(200);
+    }
+
+    public function testPageMyTripsCreate()
+    {
+        $this->get('/my/trips/create')->assertStatus(200);
+    }
+
     public function testPageNotifications()
     {
         $this->get('/notifications')->assertStatus(200);

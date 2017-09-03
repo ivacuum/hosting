@@ -16,7 +16,7 @@
     {{ ViewHelper::inputHiddenMail() }}
 
     <input class="form-control d-inline-block align-middle" type="email" name="email" placeholder="{{ trans('coupons.your_email') }}" style="width: 16rem;">
-    <input class="btn btn-primary d-inline-block" value="{{ trans('coupons.get_promocode') }}">
+    <button class="btn btn-primary">{{ trans('coupons.get_promocode') }}</button>
     @if ($errors->has('email'))
       <span class="has-error">
         <span class="help-block">{{ $errors->first('email') }}</span>

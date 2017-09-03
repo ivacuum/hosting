@@ -10,8 +10,8 @@ class Life extends Controller
 {
     public function index()
     {
-        $to = $this->request->input('to');
-        $from = $this->request->input('from');
+        $to = request('to');
+        $from = request('from');
 
         $validator = \Validator::make(compact('from', 'to'), [
             'to' => 'nullable|date',

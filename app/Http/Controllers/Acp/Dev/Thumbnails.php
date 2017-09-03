@@ -22,7 +22,7 @@ class Thumbnails extends BaseController
 
     public function thumbnailsPost()
     {
-        $file = $this->request->file('file');
+        $file = request()->file('file');
 
         if (is_null($file) || !$file->isValid()) {
             throw new \Exception('Необходимо предоставить хотя бы один файл');

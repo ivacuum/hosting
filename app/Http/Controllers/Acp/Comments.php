@@ -8,11 +8,11 @@ class Comments extends Controller
 {
     public function index()
     {
-        $status = $this->request->input('status');
-        $news_id = $this->request->input('news_id');
-        $trip_id = $this->request->input('trip_id');
-        $user_id = $this->request->input('user_id');
-        $torrent_id = $this->request->input('torrent_id');
+        $status = request('status');
+        $news_id = request('news_id');
+        $trip_id = request('trip_id');
+        $user_id = request('user_id');
+        $torrent_id = request('torrent_id');
 
         $models = Model::with('user')
             ->orderBy('id', 'desc')

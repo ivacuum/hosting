@@ -12,7 +12,7 @@ class MySettings extends Controller
 
     public function update()
     {
-        $this->validate($this->request, [
+        request()->validate([
             'mail' => 'empty',
             'theme' => [
                 'required',
@@ -21,10 +21,11 @@ class MySettings extends Controller
             'torrent_short_title' => 'in:0,1',
         ]);
 
-        $user = $this->request->user();
+        /* @var User $user */
+        $user = request()->user();
 
-        $user->theme = $this->request->input('theme', User::THEME_LIGHT);
-        $user->torrent_short_title = $this->request->input('torrent_short_title', 0);
+        $user->theme = request('theme', User::THEME_LIGHT);
+        $user->torrent_short_title = request('torrent_short_title', 0);
         $user->save();
 
         event(new \App\Events\Stats\MySettingsChanged);

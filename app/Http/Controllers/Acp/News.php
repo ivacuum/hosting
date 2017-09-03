@@ -13,9 +13,9 @@ class News extends Controller
 
     public function index()
     {
-        $user_id = $this->request->input('user_id');
+        $user_id = request('user_id');
 
-        list($sort_key, $sort_dir) = $this->getSortParams();
+        [$sort_key, $sort_dir] = $this->getSortParams();
 
         $models = Model::withCount('comments')
             ->orderBy($sort_key, $sort_dir)
@@ -29,6 +29,7 @@ class News extends Controller
 
     public function notify($id)
     {
+        /* @var Model $model */
         $model = $this->getModel($id);
 
         if ($model->status !== Model::STATUS_PUBLISHED) {
@@ -53,8 +54,8 @@ class News extends Controller
 
     protected function storeModel()
     {
-        $data = $this->request->all();
-        $data['user_id'] = $this->request->user()->id;
+        $data = $this->requestDataForModel();
+        $data['user_id'] = request()->user()->id;
 
         $model = Model::create($data);
 

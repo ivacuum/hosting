@@ -11,7 +11,7 @@ class Gigs extends Controller
 
     public function index()
     {
-        list($sort_key, $sort_dir) = $this->getSortParams();
+        [$sort_key, $sort_dir] = $this->getSortParams();
 
         $models = Model::orderBy($sort_key, $sort_dir)->get();
 

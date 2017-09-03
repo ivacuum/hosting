@@ -100,8 +100,8 @@ class Photos extends Controller
 
     public function map()
     {
-        if ($this->request->ajax()) {
-            $trip_id = $this->request->input('trip_id');
+        if (request()->ajax()) {
+            $trip_id = request('trip_id');
 
             return $this->pointsForMap($trip_id);
         }
@@ -111,14 +111,15 @@ class Photos extends Controller
 
     public function show($id)
     {
+        /* @var Photo $photo */
         $photo = Photo::with('rel', 'rel.city', 'rel.city.country', 'tags')->findOrFail($id);
 
         abort_unless($photo->status === Photo::STATUS_PUBLISHED, 404);
 
-        $tag_id = $this->request->input('tag_id');
-        $city_id = $this->request->input('city_id');
-        $trip_id = $this->request->input('trip_id');
-        $country_id = $this->request->input('country_id');
+        $tag_id = request('tag_id');
+        $city_id = request('city_id');
+        $trip_id = request('trip_id');
+        $country_id = request('country_id');
 
         $next = Photo::where('id', '>', $photo->id)->published();
         $prev = Photo::where('id', '<', $photo->id)->published()->orderBy('id', 'desc');
@@ -164,17 +165,17 @@ class Photos extends Controller
         if ($tag_id) {
             $tag = Tag::findOrFail($tag_id);
 
-            \Breadcrumbs::push(trans('photos.tags'), 'photos/tags');
-            \Breadcrumbs::push($tag->breadcrumb(), "photos/tags/{$tag_id}");
+            \Breadcrumbs::push(trans('photos.tags'), 'photos/tags')
+                ->push($tag->breadcrumb(), "photos/tags/{$tag_id}");
         } elseif ($city_id) {
-            \Breadcrumbs::push(trans('photos.cities'), 'photos/cities');
-            \Breadcrumbs::push($photo->rel->city->breadcrumb(), "photos/cities/{$photo->rel->city->slug}");
+            \Breadcrumbs::push(trans('photos.cities'), 'photos/cities')
+                ->push($photo->rel->city->breadcrumb(), "photos/cities/{$photo->rel->city->slug}");
         } elseif ($trip_id) {
-            \Breadcrumbs::push(trans('photos.trips'), 'photos/trips');
-            \Breadcrumbs::push($photo->rel->breadcrumb(), "photos/trips/{$trip_id}");
+            \Breadcrumbs::push(trans('photos.trips'), 'photos/trips')
+                ->push($photo->rel->breadcrumb(), "photos/trips/{$trip_id}");
         } elseif ($country_id) {
-            \Breadcrumbs::push(trans('photos.countries'), 'photos/countries');
-            \Breadcrumbs::push($photo->rel->city->country->breadcrumb(), "photos/countries/{$photo->rel->city->country->slug}");
+            \Breadcrumbs::push(trans('photos.countries'), 'photos/countries')
+                ->push($photo->rel->city->country->breadcrumb(), "photos/countries/{$photo->rel->city->country->slug}");
         }
 
         \Breadcrumbs::push(trans('photos.show'));
@@ -194,8 +195,8 @@ class Photos extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        \Breadcrumbs::push(trans('photos.tags'), 'photos/tags');
-        \Breadcrumbs::push($tag->breadcrumb());
+        \Breadcrumbs::push(trans('photos.tags'), 'photos/tags')
+            ->push($tag->breadcrumb());
 
         event(new \App\Events\Stats\TagViewed($tag->id));
 
@@ -236,21 +237,21 @@ class Photos extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        \Breadcrumbs::push(trans('photos.trips'), 'photos/trips');
-        \Breadcrumbs::push($trip->title);
+        \Breadcrumbs::push(trans('photos.trips'), 'photos/trips')
+            ->push($trip->title);
 
         return view($this->view, compact('photos', 'trip'));
     }
 
     public function trips()
     {
-        \Breadcrumbs::push(trans('photos.trips'), 'photos/trips');
-
         $trips = Trip::with('city.country')
             ->published()
             ->where('meta_image', '<>', '')
             ->orderBy('date_start', 'desc')
             ->get();
+
+        \Breadcrumbs::push(trans('photos.trips'), 'photos/trips');
 
         return view($this->view, compact('trips'));
     }

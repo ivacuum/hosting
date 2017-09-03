@@ -48,7 +48,7 @@ class Templates extends BaseController
         $trip = Trip::inRandomOrder()->first();
         $trip->slug = $slug;
 
-        if ($this->request->input('images')) {
+        if (request('images')) {
             $tpl = str_replace('.', '/', $trip->template());
             $path = base_path("resources/views/{$tpl}.blade.php");
 

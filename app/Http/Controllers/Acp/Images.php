@@ -10,12 +10,12 @@ class Images extends Controller
 
     public function index()
     {
-        $type = $this->request->input('type');
-        $year = $this->request->input('year');
-        $touch = $this->request->input('touch');
-        $user_id = $this->request->input('user_id');
+        $type = request('type');
+        $year = request('year');
+        $touch = request('touch');
+        $user_id = request('user_id');
 
-        list($sort_key, $sort_dir) = $this->getSortParams();
+        [$sort_key, $sort_dir] = $this->getSortParams();
 
         $models = Model::orderBy($sort_key, $sort_dir)
             // ->where('updated_at', '<', Carbon::now()->subYear()->toDateTimeString())
@@ -36,8 +36,8 @@ class Images extends Controller
 
     public function batch()
     {
-        $ids = $this->request->input('ids');
-        $action = $this->request->input('action');
+        $ids = request('ids');
+        $action = request('action');
 
         $models = Model::find($ids);
 
@@ -48,11 +48,12 @@ class Images extends Controller
             }
         }
 
-        return $this->redirectAfterDestroy($model);
+        return $this->redirectAfterDestroy(null);
     }
 
     public function view($id)
     {
+        /* @var Model $model */
         $model = $this->getModel($id);
 
         $model->views++;
@@ -65,7 +66,7 @@ class Images extends Controller
     {
         return [
             'status' => 'OK',
-            'redirect' => $this->request->header('referer'),
+            'redirect' => request()->header('referer'),
         ];
     }
 }

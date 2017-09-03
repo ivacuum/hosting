@@ -15,8 +15,8 @@ class Ftp extends BaseController
 
         $this->initFs($server);
 
-        $dir  = $this->request->input('dir', '/');
-        $file = $this->request->input('file');
+        $dir = request('dir', '/');
+        $file = request('file');
 
         $dirs = $files = [];
         $dir_up = ':';
@@ -45,17 +45,16 @@ class Ftp extends BaseController
 
         $this->initFs($server);
 
-        $this->validate($this->request, [
+        $data = request()->validate([
             'mail' => 'empty',
-            'dir'  => 'required',
+
+            'dir' => 'required',
             'path' => 'required',
         ]);
 
-        extract($this->request->only('dir', 'path'));
+        $this->fs->createDir("{$data['path']}/{$data['dir']}");
 
-        $this->fs->createDir("{$path}/{$dir}");
-
-        return redirect("/acp/servers/{$server->id}/ftp?dir={$path}");
+        return redirect("/acp/servers/{$server->id}/ftp?dir={$data['path']}");
     }
 
     public function filePost($id)
@@ -64,17 +63,16 @@ class Ftp extends BaseController
 
         $this->initFs($server);
 
-        $this->validate($this->request, [
+        $data = request()->validate([
             'mail' => 'empty',
+
             'file' => 'required',
             'path' => 'required',
         ]);
 
-        extract($this->request->only('file', 'path'));
+        $this->fs->write("{$data['path']}/{$data['file']}", '');
 
-        $this->fs->write("{$path}/{$file}", '');
-
-        return redirect("/acp/servers/{$server->id}/ftp?dir={$path}");
+        return redirect("/acp/servers/{$server->id}/ftp?dir={$data['path']}");
     }
 
     public function source($id)
@@ -83,7 +81,7 @@ class Ftp extends BaseController
 
         $this->initFs($server);
 
-        $file = $this->request->input('file');
+        $file = request('file');
 
         $source = $this->fs->read($file);
 
@@ -99,18 +97,18 @@ class Ftp extends BaseController
 
         $this->initFs($server);
 
-        $this->validate($this->request, [
+        $data = request()->validate([
             'mail' => 'empty',
+
             'file' => 'required',
+            'source' => '',
         ]);
 
-        extract($this->request->only('file', 'source'));
+        $source = str_replace(["\r\n", "\r"], "\n", $data['source']);
 
-        $source = str_replace(["\r\n", "\r"], "\n", $source);
+        $this->fs->update($data['file'], $source);
 
-        $this->fs->update($file, $source);
-
-        return redirect("/acp/servers/{$server->id}/ftp?dir=" . dirname($file));
+        return redirect("/acp/servers/{$server->id}/ftp?dir=" . dirname($data['file']));
     }
 
     public function uploadPost($id)
@@ -119,14 +117,15 @@ class Ftp extends BaseController
 
         $this->initFs($server);
 
-        $this->validate($this->request, [
+        request()->validate([
             'mail' => 'empty',
+
             'file' => 'required',
             'path' => 'required',
         ]);
 
-        $path = $this->request->input('path');
-        $file = $this->request->file('file');
+        $path = request('path');
+        $file = request()->file('file');
         $stream = fopen($file->getRealPath(), 'r+');
         $this->fs->writeStream($path . '/' . $file->getClientOriginalName(), $stream);
         fclose($stream);
@@ -134,7 +133,7 @@ class Ftp extends BaseController
         return redirect("/acp/servers/{$server->id}/ftp?dir={$path}");
     }
 
-    protected function getModel($id)
+    protected function getModel(int $id) : ?Server
     {
         return Server::findOrFail($id);
     }
@@ -142,14 +141,14 @@ class Ftp extends BaseController
     protected function initFs(Server $server)
     {
         $this->fs = new Filesystem(new FtpAdapter([
-            'host'     => $server->ftp_host ?: $server->host,
+            'ssl' => false,
+            'host' => $server->ftp_host ?: $server->host,
+            'port' => 21,
+            'root' => $server->ftp_root ?: '/',
+            'passive' => true,
+            'timeout' => 5,
             'username' => $server->ftp_user,
             'password' => $server->ftp_pass,
-            'port'     => 21,
-            'root'     => $server->ftp_root ?: '/',
-            'passive'  => true,
-            'ssl'      => false,
-            'timeout'  => 5,
         ]));
     }
 }

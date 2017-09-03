@@ -42,14 +42,13 @@ class Coupons extends Controller
 
     public function firstvdsPost()
     {
-        $this->validate($this->request, [
+        request()->validate([
             'mail' => 'empty',
+
             'email' => 'required|email|max:125',
         ]);
 
-        register_shutdown_function(function () {
-            \Mail::to($this->request->input('email'))->send(new FirstvdsPromocode);
-        });
+        \Mail::to(request('email'))->queue(new FirstvdsPromocode);
 
         return back()->with('message', trans('coupons.promocode_sent'));
     }

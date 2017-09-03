@@ -11,9 +11,9 @@ class Torrents extends Controller
 
     public function index()
     {
-        $q = trim($this->request->input('q'));
+        $q = trim(request('q'));
         $category = null;
-        $category_id = $this->request->input('category_id');
+        $category_id = request('category_id');
 
         abort_if($category_id && is_null($category = \TorrentCategoryHelper::find($category_id)), 404);
 
@@ -68,7 +68,7 @@ class Torrents extends Controller
 
         event(new \App\Events\Stats\TorrentMagnetClicked);
 
-        if (is_null($this->request->user())) {
+        if (is_null(request()->user())) {
             event(new \App\Events\Stats\TorrentMagnetGuestClicked);
         }
 
@@ -77,7 +77,7 @@ class Torrents extends Controller
 
     public function my()
     {
-        $user = $this->request->user();
+        $user = request()->user();
 
         $torrents = Torrent::select($this->list_columns)
             ->where('user_id', $user->id)
@@ -104,10 +104,10 @@ class Torrents extends Controller
 
     public function store(Rto $rto)
     {
-        $input = $this->request->input('input');
-        $category_id = $this->request->input('category_id');
+        $input = request('input');
+        $category_id = request('category_id');
 
-        $this->validate($this->request, [
+        request()->validate([
             'category_id' => 'required|integer|in:'.implode(',', \TorrentCategoryHelper::canPostIds()),
             'input' => 'required',
         ]);
@@ -138,7 +138,7 @@ class Torrents extends Controller
             'clicks' => 0,
             'status' => Torrent::STATUS_PUBLISHED,
             'seeders' => $data['seeders'],
-            'user_id' => $this->request->user()->id,
+            'user_id' => request()->user()->id,
             'info_hash' => $data['info_hash'],
             'announcer' => $data['announcer'],
             'category_id' => $category_id,

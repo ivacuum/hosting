@@ -15,9 +15,9 @@ class Cities extends Controller
 
     public function index()
     {
-        $country_id = $this->request->input('country_id');
+        $country_id = request('country_id');
 
-        list($sort_key, $sort_dir) = $this->getSortParams();
+        [$sort_key, $sort_dir] = $this->getSortParams();
 
         $sort_key = $sort_key === 'title' ? Model::titleField() : $sort_key;
 
@@ -34,6 +34,7 @@ class Cities extends Controller
 
     public function updateGeo($id, GoogleGeocoder $geocoder)
     {
+        /* @var Model $model */
         $model = $this->getModel($id);
 
         $geo = $geocoder->geocode("{$model->title}, {$model->country->title}")[0];
