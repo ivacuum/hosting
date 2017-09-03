@@ -1,4 +1,4 @@
-@if (is_object($user) && $user->avatar)
+@if (optional($user)->avatar)
   <img class="avatar-100" src="{{ $user->avatarUrl() }}">
 @else
   @include('tpl.svg-avatar', [
