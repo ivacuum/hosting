@@ -25,7 +25,7 @@ class Servers extends Controller
         $input = $this->requestDataForModel();
 
         /* Сохранение ранее указанного пароля */
-        $passwords = request()->only('ftp_pass');
+        $passwords = request(['ftp_pass']);
 
         foreach ($passwords as $key => $value) {
             if (!$value) {

@@ -41,7 +41,7 @@ class Users extends Controller
             $mail->to($model->email)->subject("Доступ к {$route}");
         });
 
-        request()->session()->flash('message', "Данные высланы на почту {$model->email}");
+        session()->flash('message', "Данные высланы на почту {$model->email}");
     }
 
     /**

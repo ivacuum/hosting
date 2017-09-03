@@ -10,7 +10,7 @@ class Auth extends Controller
         $goto = request('goto');
 
         if ($goto) {
-            request()->session()->put('url.intended', $goto);
+            session(['url.intended' => $goto]);
         }
 
         return view($this->view);
@@ -49,15 +49,14 @@ class Auth extends Controller
 
         return back()
             ->with('message', 'Электронная почта, логин или пароль неверны')
-            ->withInput(request()->only('email'));
+            ->withInput(request(['email']));
     }
 
     public function logout()
     {
         \Auth::logout();
 
-        request()->session()->flush();
-        request()->session()->regenerate();
+        session()->invalidate();
 
         event(new \App\Events\Stats\UserLoggedOut);
 
@@ -104,7 +103,7 @@ class Auth extends Controller
             'password' => 'required|min:6',
         ]);
 
-        $credentials = request()->only('email', 'password', 'token');
+        $credentials = request(['email', 'password', 'token']);
         $credentials['password_confirmation'] = $credentials['password'];
 
         $response = $passwords->reset($credentials, function (User $user, $password) {
@@ -124,7 +123,7 @@ class Auth extends Controller
         }
 
         return back()
-            ->withInput(request()->only('email'))
+            ->withInput(request(['email']))
             ->withErrors(['email' => trans($response)]);
     }
 
@@ -181,7 +180,7 @@ class Auth extends Controller
         $remember = true;
 
         if (\Auth::attempt($credentials, $remember)) {
-            request()->session()->regenerate();
+            session()->regenerate();
 
             return redirect()->intended(path('Home@index'));
         }

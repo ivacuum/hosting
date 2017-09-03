@@ -108,7 +108,7 @@ class Domains extends Controller
 
         return $model->addNsRecord(
             request('type'),
-            request()->only('content', 'subdomain', 'priority', 'port', 'weight')
+            request(['content', 'subdomain', 'priority', 'port', 'weight'])
         );
     }
 
@@ -299,7 +299,7 @@ class Domains extends Controller
         $input = $this->requestDataForModel();
 
         /* Сохранение ранее указанных паролей */
-        $passwords = request()->only('cms_pass', 'ftp_pass', 'ssh_pass', 'db_pass');
+        $passwords = request(['cms_pass', 'ftp_pass', 'ssh_pass', 'db_pass']);
 
         foreach ($passwords as $key => $value) {
             if (!$value) {

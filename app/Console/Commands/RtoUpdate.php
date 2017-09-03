@@ -18,7 +18,7 @@ class RtoUpdate extends Command
             $ids = implode(',', $torrents->pluck('rto_id')->toArray());
 
             foreach ($rto->topicDataByIds($ids) as $id => $json) {
-                /* @var $torrent \App\Torrent */
+                /* @var Torrent $torrent */
                 $torrent = $torrents->where('rto_id', $id)->first();
 
                 // Раздача не найдена

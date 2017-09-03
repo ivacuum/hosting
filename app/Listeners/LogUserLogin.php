@@ -8,7 +8,7 @@ class LogUserLogin
     {
         event(new \App\Events\Stats\UserSignedIn);
 
-        /* @var $user \App\User */
+        /* @var \App\User $user */
         $user = $event->user;
 
         $user->ip = request()->ip();

@@ -1,6 +1,6 @@
 <?php
 
-/* @var $factory Illuminate\Database\Eloquent\Factory */
+/* @var Illuminate\Database\Eloquent\Factory $factory */
 
 $factory->define(App\User::class, function ($faker) {
     return [
