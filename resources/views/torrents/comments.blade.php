@@ -10,20 +10,16 @@
         <div class="comment-author">
           @if (!is_null($comment->user))
             <div class="comment-author-avatar">
-              @if (!is_null($comment->user))
-                <a href="{{ $comment->user->www() }}">
-              @endif
-              @if ($comment->user->avatar)
-                <img class="comment-author-avatar-image" src="{{ $comment->user->avatarUrl() }}">
-              @else
-                @include('tpl.svg-avatar', [
-                  'bg' => ViewHelper::avatarBg($comment->user_id),
-                  'text' => $comment->user->avatarName(),
-                ])
-              @endif
-              @if (!is_null($comment->user))
-                </a>
-              @endif
+              <a href="{{ $comment->user->www() }}">
+                @if ($comment->user->avatar)
+                  <img class="comment-author-avatar-image" src="{{ $comment->user->avatarUrl() }}">
+                @else
+                  @include('tpl.svg-avatar', [
+                    'bg' => ViewHelper::avatarBg($comment->user_id),
+                    'text' => $comment->user->avatarName(),
+                  ])
+                @endif
+              </a>
             </div>
           @endif
           <div class="comment-author-details">
