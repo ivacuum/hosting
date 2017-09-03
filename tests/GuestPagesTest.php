@@ -206,4 +206,9 @@ class GuestPagesTest extends TestCase
     {
         $this->get('/users/1')->assertStatus(200);
     }
+
+    public function testPageUserTravel()
+    {
+        $this->get('/@vacuum/travel')->assertStatus(200);
+    }
 }
