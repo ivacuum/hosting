@@ -11,6 +11,11 @@
   {{ $trip->city->country->emoji }}
   {{ $trip->title }}
   @include('tpl.city-map-button', ['city' => $trip->city])
+  @if ($traveler->id == optional(auth()->user())->id)
+    <a class="btn btn-default" href="{{ UrlHelper::edit('MyTrips', $trip) }}">
+      @svg (pencil)
+    </a>
+  @endif
 </h1>
 <time datetime="{{ $trip->date_start->toDateString() }}"></time>
 <div hidden id="trip_city_map" class="trip-city-map"></div>
