@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3cef953098214ecb7654e6f13f5e1c4c",
+    "content-hash": "1a4d69d4d0d50261fc9aee1fd5e44810",
     "packages": [
         {
             "name": "baum/baum",
@@ -282,6 +282,57 @@
             "time": "2017-05-14T14:47:48+00:00"
         },
         {
+            "name": "foolz/sphinxql-query-builder",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FoolCode/SphinxQL-Query-Builder.git",
+                "reference": "dd8fc0370fb30919447056563c8c66ea0ff74075"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FoolCode/SphinxQL-Query-Builder/zipball/dd8fc0370fb30919447056563c8c66ea0ff74075",
+                "reference": "dd8fc0370fb30919447056563c8c66ea0ff74075",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "replace": {
+                "foolz/sphinxql": "self.version"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Foolz\\SphinxQL\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "foolz",
+                    "email": "support@foolz.us"
+                }
+            ],
+            "description": "A PHP query builder for SphinxQL. Uses MySQLi to connect to the Sphinx server.",
+            "homepage": "http://www.foolz.us",
+            "keywords": [
+                "database",
+                "query builder",
+                "search",
+                "sphinx",
+                "sphinxql",
+                "sql"
+            ],
+            "time": "2016-12-15T13:51:59+00:00"
+        },
+        {
             "name": "guzzlehttp/guzzle",
             "version": "6.3.0",
             "source": {
@@ -526,16 +577,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "0.7.11",
+            "version": "0.7.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "ac33c3b0e72d1bb032e3b99f474e7808e9ff2580"
+                "reference": "032b1265382914a74817a27ac3f3d125e90d5b84"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/ac33c3b0e72d1bb032e3b99f474e7808e9ff2580",
-                "reference": "ac33c3b0e72d1bb032e3b99f474e7808e9ff2580",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/032b1265382914a74817a27ac3f3d125e90d5b84",
+                "reference": "032b1265382914a74817a27ac3f3d125e90d5b84",
                 "shasum": ""
             },
             "require": {
@@ -560,6 +611,7 @@
                     ],
                     "aliases": {
                         "Form": "Ivacuum\\Generic\\Facades\\Form",
+                        "Sphinx": "Ivacuum\\Generic\\Facades\\Sphinx",
                         "UrlHelper": "Ivacuum\\Generic\\Facades\\UrlHelper",
                         "Breadcrumbs": "Ivacuum\\Generic\\Facades\\Breadcrumbs",
                         "MetricsHelper": "Ivacuum\\Generic\\Facades\\MetricsHelper"
@@ -584,7 +636,7 @@
                     "email": "vacuum@ivacuum.ru"
                 }
             ],
-            "time": "2017-09-03T20:29:49+00:00"
+            "time": "2017-09-04T01:44:45+00:00"
         },
         {
             "name": "laravel/framework",

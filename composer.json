@@ -5,6 +5,7 @@
   "require": {
     "php": "^7.1",
     "baum/baum": "~1.1",
+    "foolz/sphinxql-query-builder": "1.1.1",
     "guzzlehttp/guzzle": "~6.0",
     "irazasyed/telegram-bot-sdk": "^2.0",
     "ivacuum/generic": "~0.7",
