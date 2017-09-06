@@ -91,7 +91,7 @@ class MyTrips extends Controller
         return $this->redirectAfterUpdate($model);
     }
 
-    protected function getTrip(int $id) : ?Trip
+    protected function getTrip(int $id): ?Trip
     {
         /* @var Trip $model */
         $model = Trip::findOrFail($id);

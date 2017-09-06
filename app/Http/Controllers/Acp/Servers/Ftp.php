@@ -133,7 +133,7 @@ class Ftp extends BaseController
         return redirect("/acp/servers/{$server->id}/ftp?dir={$path}");
     }
 
-    protected function getModel(int $id) : ?Server
+    protected function getModel(int $id): ?Server
     {
         return Server::findOrFail($id);
     }

@@ -194,17 +194,17 @@ class Life extends Controller
         $this->middleware('breadcrumbs:menu.gigs,life/gigs')->only('gigs');
     }
 
-    protected function getCity(string $slug) : ?City
+    protected function getCity(string $slug): ?City
     {
         return City::where('slug', $slug)->first();
     }
 
-    protected function getGig(string $slug) : ?Gig
+    protected function getGig(string $slug): ?Gig
     {
         return Gig::where('slug', $slug)->first();
     }
 
-    protected function getTrip(string $slug) : ?Trip
+    protected function getTrip(string $slug): ?Trip
     {
         return Trip::where('user_id', 1)
             ->withCount('photos')
