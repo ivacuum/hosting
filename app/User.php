@@ -106,6 +106,7 @@ class User extends Authenticatable
     {
         if ($this->status === self::STATUS_INACTIVE) {
             $this->status = self::STATUS_ACTIVE;
+            $this->activation_token = '';
             $this->save();
 
             return true;

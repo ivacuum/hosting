@@ -40,7 +40,7 @@
 @else
   @ru
     <div class="mt-3">
-      <p>Для написания комментариев необходимо <a class="link" href="{{ path('Auth@login', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">войти на сайт</a>.</p>
+      <p>Для написания комментариев необходимо <a class="link" href="{{ path('Auth\SignIn@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">войти на сайт</a>.</p>
       <p>Можно войти в один клик через следующие соцсети:</p>
       <a class="btn btn-social bg-vk tooltipped tooltipped-n"
          href="{{ path('Auth\Vk@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}"
@@ -60,7 +60,7 @@
     </div>
   @en
     <div class="mt-3">
-      Please <a class="link" href="{{ path('Auth@login', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">sign in</a> to comment.
+      Please <a class="link" href="{{ path('Auth\SignIn@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">sign in</a> to comment.
     </div>
   @endlang
 @endif

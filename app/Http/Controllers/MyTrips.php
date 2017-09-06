@@ -104,7 +104,6 @@ class MyTrips extends Controller
     protected function rules(?Trip $model = null)
     {
         return [
-            'mail' => 'empty',
             'slug' => [
                 'bail',
                 'required',

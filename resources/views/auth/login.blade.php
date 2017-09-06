@@ -3,7 +3,7 @@
 @section('content')
 <div class="form-signin text-center">
   <h3 class="mt-0 mb-4">{{ trans('auth.signin_title') }}</h3>
-  <form action="{{ path('Auth@loginPost') }}" method="post">
+  <form action="{{ path('Auth\SignIn@login') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
     <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
@@ -30,10 +30,10 @@
 
     <div class="my-3 clearfix">
       <div class="pull-left">
-        <a class="link" href="{{ path('Auth@passwordRemind') }}">{{ trans('auth.forgot_password') }}</a>
+        <a class="link" href="{{ path('Auth\ForgotPassword@index') }}">{{ trans('auth.forgot_password') }}</a>
       </div>
       <div class="pull-right">
-        <a class="link" href="{{ path('Auth@register') }}">{{ trans('auth.new_account') }}</a>
+        <a class="link" href="{{ path('Auth\NewAccount@index') }}">{{ trans('auth.new_account') }}</a>
       </div>
     </div>
 

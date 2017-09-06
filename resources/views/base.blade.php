@@ -49,7 +49,7 @@
         <div>{{ trans('my.profile') }}</div>
       </a>
     @else
-      <a class="bottom-tab {{ $view === 'auth.login' ? 'active' : '' }}" href="{{ path('Auth@login') }}">
+      <a class="bottom-tab {{ $view === 'auth.login' ? 'active' : '' }}" href="{{ path('Auth\SignIn@index') }}">
         @svg (sign-in)
         <div>{{ trans('auth.signin') }}</div>
       </a>
@@ -78,6 +78,11 @@
         <div class="alert alert-info js-flash-notification">
           <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
           {{ Session::get('message') }}
+        </div>
+      @endif
+      @if ($errors->has('mail'))
+        <div class="alert alert-info js-flash-notification">
+          {{ $errors->first('mail') }}
         </div>
       @endif
     </div>

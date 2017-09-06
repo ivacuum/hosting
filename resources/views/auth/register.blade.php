@@ -3,7 +3,7 @@
 @section('content')
 <div class="form-signin text-center">
   <h3 class="mt-0 mb-4">{{ trans('auth.register_title') }}</h3>
-  <form action="{{ path('Auth@registerPost') }}" method="post">
+  <form action="{{ path('Auth\NewAccount@register') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
     <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">

@@ -29,11 +29,7 @@ class AjaxChat extends Controller
 
     public function store()
     {
-        request()->validate([
-            'mail' => 'empty',
-
-            'text' => 'required|max:1000',
-        ]);
+        request()->validate(['text' => 'required|max:1000']);
 
         $text = trim(request('text'));
         $user = \Auth::user();

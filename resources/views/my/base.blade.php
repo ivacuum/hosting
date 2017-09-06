@@ -24,7 +24,7 @@
       <a class="list-group-item visible-xs" href="{{ path('Notifications@index') }}">
         {{ trans('notifications.index') }}
       </a>
-      <a class="list-group-item visible-xs" href="{{ path('Auth@logout') }}">
+      <a class="list-group-item visible-xs" href="{{ path('Auth\SignIn@logout') }}">
         {{ trans('auth.logout') }}
       </a>
     </div>

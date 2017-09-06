@@ -29,7 +29,7 @@
     </li>
     <li class="divider"></li>
     <li>
-      <a href="{{ path('Auth@logout') }}">
+      <a href="{{ path('Auth\SignIn@logout') }}">
         {{ trans('auth.logout') }}
       </a>
     </li>

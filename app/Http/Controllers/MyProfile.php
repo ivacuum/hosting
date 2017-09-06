@@ -15,7 +15,6 @@ class MyProfile extends Controller
         $user = request()->user();
 
         request()->validate([
-            'mail' => 'empty',
             'email' => [
                 'required',
                 'email',

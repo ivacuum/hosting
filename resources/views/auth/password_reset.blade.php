@@ -3,7 +3,7 @@
 @section('content')
 <div class="form-signin">
   <h3 class="mt-0 mb-4 text-center">{{ trans('auth.password_reset_title') }}</h3>
-  <form action="{{ path('Auth@passwordResetPost') }}" method="post">
+  <form action="{{ path('Auth\ResetPassword@reset') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
     <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">

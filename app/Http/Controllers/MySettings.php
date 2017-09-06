@@ -13,7 +13,6 @@ class MySettings extends Controller
     public function update()
     {
         request()->validate([
-            'mail' => 'empty',
             'theme' => [
                 'required',
                 Rule::in([User::THEME_LIGHT, User::THEME_DARK])

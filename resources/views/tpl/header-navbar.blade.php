@@ -49,11 +49,11 @@
             @include('tpl.header-navbar-user')
           @else
             <li>
-              <a href="{{ path('Auth@login') }}">{{ trans('auth.signin') }}</a>
+              <a href="{{ path('Auth\SignIn@index') }}">{{ trans('auth.signin') }}</a>
             </li>
             {{--
             <form class="navbar-form navbar-right">
-              <a class="btn btn-default" href="{{ path('Auth@login') }}">{{ trans('auth.signin') }}</a>
+              <a class="btn btn-default" href="{{ path('Auth\SignIn@index') }}">{{ trans('auth.signin') }}</a>
             </form>
             --}}
           @endif

@@ -46,8 +46,6 @@ class Ftp extends BaseController
         $this->initFs($server);
 
         $data = request()->validate([
-            'mail' => 'empty',
-
             'dir' => 'required',
             'path' => 'required',
         ]);
@@ -64,8 +62,6 @@ class Ftp extends BaseController
         $this->initFs($server);
 
         $data = request()->validate([
-            'mail' => 'empty',
-
             'file' => 'required',
             'path' => 'required',
         ]);
@@ -98,8 +94,6 @@ class Ftp extends BaseController
         $this->initFs($server);
 
         $data = request()->validate([
-            'mail' => 'empty',
-
             'file' => 'required',
             'source' => '',
         ]);
@@ -118,8 +112,6 @@ class Ftp extends BaseController
         $this->initFs($server);
 
         request()->validate([
-            'mail' => 'empty',
-
             'file' => 'required',
             'path' => 'required',
         ]);

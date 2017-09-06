@@ -32,7 +32,7 @@
             @include('tpl.header-navbar-user')
           @else
             <li>
-              <a href="{{ path('Auth@login') }}">{{ trans('auth.signin') }}</a>
+              <a href="{{ path('Auth\SignIn@index') }}">{{ trans('auth.signin') }}</a>
             </li>
           @endif
         @show

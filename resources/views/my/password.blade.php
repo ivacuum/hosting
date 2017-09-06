@@ -44,7 +44,7 @@
 
 @if ($has_password)
   <h3 class="mt-5">{{ trans('auth.forgot_password') }}</h3>
-  <form action="{{ path('Auth@passwordRemindPost') }}" method="post">
+  <form action="{{ path('Auth\ForgotPassword@sendResetLink') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
     @ru

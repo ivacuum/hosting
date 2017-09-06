@@ -12,13 +12,11 @@ class AjaxComment extends Controller
 {
     public function store($type, $id)
     {
-        $mail = request('mail');
         $text = e(request('text'));
         $user_id = request()->user()->id;
 
-        $validator = \Validator::make(compact('id', 'mail', 'text', 'type'), [
+        $validator = \Validator::make(compact('id', 'text', 'type'), [
             'id' => 'integer|min:1',
-            'mail' => 'empty',
             'text' => 'required|max:1000',
             'type' => 'in:news,torrent,trip'
         ]);

@@ -16,6 +16,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Ivacuum\Generic\Middleware\Auth;
 use Ivacuum\Generic\Middleware\Breadcrumbs;
 use Ivacuum\Generic\Middleware\NoCacheHeaders;
+use Ivacuum\Generic\Middleware\SpammerTrap;
 
 class Kernel extends HttpKernel
 {
@@ -32,6 +33,7 @@ class Kernel extends HttpKernel
             ShareErrorsFromSession::class,
             VerifyCsrfToken::class,
             SubstituteBindings::class,
+            SpammerTrap::class,
             NoCacheHeaders::class,
         ],
 
