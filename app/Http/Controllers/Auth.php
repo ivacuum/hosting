@@ -76,7 +76,7 @@ class Auth extends Controller
         ]);
 
         $email = request('email');
-        $response = $passwords->sendResetLink(request('email'));
+        $response = $passwords->sendResetLink(request(['email']));
 
         if (PasswordBroker::RESET_LINK_SENT === $response) {
             event(new \App\Events\Stats\UserPasswordReminded);
