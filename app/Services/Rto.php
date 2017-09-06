@@ -7,6 +7,10 @@ use Symfony\Component\DomCrawler\Crawler;
 class Rto
 {
     const API_ENDPOINT = 'http://api.rutracker.org/v1/';
+
+    /**
+     * Зеркала: rutracker.org, rutracker.cr, xn--e1aaowadjh.org
+     */
     const SITE_ENDPOINT = 'http://rutracker.cr/forum/';
 
     protected $client;
@@ -30,13 +34,13 @@ class Rto
                 $url = parse_url($input);
 
                 if (!isset($url['query'])) {
-                    return;
+                    return null;
                 }
 
                 parse_str($url['query'], $args);
 
                 if (!isset($args['t'])) {
-                    return;
+                    return null;
                 }
 
                 $topic_id = (int) $args['t'];
@@ -45,12 +49,12 @@ class Rto
             $topic_id = $this->topicIdByHash($input);
 
             if (is_null($topic_id)) {
-                return;
+                return null;
             }
         }
 
         if (!$topic_id) {
-            return;
+            return null;
         }
 
         return $topic_id;
@@ -59,7 +63,7 @@ class Rto
     public function torrentData($input)
     {
         if (is_null($topic_id = $this->findTopicId($input))) {
-            return;
+            return null;
         }
 
         return $this->parseTopicData($topic_id);
@@ -89,7 +93,7 @@ class Rto
         $crawler = new Crawler($body);
 
         if (sizeof($link = $crawler->filter('.attach_link a')) === 0) {
-            return;
+            return null;
         }
 
         return $link->attr('href');
