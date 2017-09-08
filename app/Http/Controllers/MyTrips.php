@@ -58,6 +58,7 @@ class MyTrips extends Controller
 
         $model->slug = request('slug');
         $model->status = request('status');
+        $model->city_id = $city->id;
         $model->user_id = $user->id;
         $model->markdown = request('markdown');
         $model->title_en = $city->title_en;
@@ -76,10 +77,12 @@ class MyTrips extends Controller
 
         request()->validate($this->rules($model));
 
-        City::findOrFail(request('city_id'));
+        /* @var City $city */
+        $city = City::findOrFail(request('city_id'));
 
         $model->slug = request('slug');
         $model->status = request('status');
+        $model->city_id = $city->id;
         $model->markdown = request('markdown');
         $model->title_en = request('title_en');
         $model->title_ru = request('title_ru');
