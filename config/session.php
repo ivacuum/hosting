@@ -6,7 +6,7 @@ return [
     'driver' => env('SESSION_DRIVER', 'file'),
     'lifetime' => 120,
     'expire_on_close' => false,
-    'encrypt' => true,
+    'encrypt' => false,
     'files' => storage_path('framework/sessions'),
     'connection' => null,
     'table' => 'sessions',
@@ -17,5 +17,8 @@ return [
     'domain' => env('SESSION_DOMAIN', null),
     'secure' => env('COOKIE_SECURE', false),
     'http_only' => true,
+
+    // lax, strict
+    'same_site' => null,
 
 ];
