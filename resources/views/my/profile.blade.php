@@ -14,7 +14,7 @@
           <span class="help-block">{{ $errors->first('username') }}</span>
         @else
           @ru
-            <span class="help-block">От 2 до 32 символов. Первые два символа логина будут использованы для аватарки. В случае его отсутствия — первые два символа адреса электронной почты</span>
+            <span class="help-block">От 2 до 32 символов. Первый символ логина будет использован для аватарки. В случае его отсутствия — первый символ адреса электронной почты</span>
           @en
             <span class="help-block">From 2 to 32 characters. First two characters would be used as an avatar. In case of empty username, first two characters of email would be used.</span>
           @endlang
