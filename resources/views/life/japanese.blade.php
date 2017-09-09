@@ -1177,7 +1177,7 @@ $glyphs = [[
   <h3>53. Поезд</h3>
 @en
   <h3>53. Train</h3>
-@endlang
+@endru
 <?php
 $glyphs = [[
   'ru' => 'вокзал',
@@ -1207,7 +1207,7 @@ $glyphs = [[
   <h3>57. Приветствия и другие выражения</h3>
 @en
   <h3>57. Greetings and other expressions</h3>
-@endlang
+@endru
 <?php
 $glyphs = [[
   'ru' => 'извините (обращение)',
@@ -1278,90 +1278,97 @@ $glyphs = [[
   'ru' => 'один',
   'en' => 'one',
   'phonetic' => 'ichi',
-  'hiragana' => 'いち',
+  'kana' => 'いち',
   'jp' => '一'
 ], [
   'ru' => 'два',
   'en' => 'two',
   'phonetic' => 'ni',
-  'hiragana' => 'に',
+  'kana' => 'に',
   'jp' => '二'
 ], [
   'ru' => 'три',
   'en' => 'three',
   'phonetic' => 'san',
-  'hiragana' => 'さん',
+  'kana' => 'さん',
   'jp' => '三',
 ], [
   'ru' => 'четыре',
   'en' => 'four',
   'phonetic' => 'yon',
-  'hiragana' => 'よん',
+  'kana' => 'よん',
   'jp' => '四',
 ], [
   'ru' => 'пять',
   'en' => 'five',
   'phonetic' => 'go',
+  'kana' => 'ご',
   'jp' => '五',
 ], [
   'ru' => 'шесть',
   'en' => 'six',
   'phonetic' => 'roku',
-  'hiragana' => 'ろく',
+  'kana' => 'ろく',
   'jp' => '六',
 ], [
   'ru' => 'семь',
   'en' => 'seven',
   'phonetic' => 'nana',
-  'hiragana' => 'なな',
+  'kana' => 'なな',
   'jp' => '七',
 ], [
   'ru' => 'восемь',
   'en' => 'eight',
   'phonetic' => 'hachi',
+  'kana' => 'はち',
   'jp' => '八',
 ], [
   'ru' => 'девять',
   'en' => 'nine',
   'phonetic' => 'kyū',
+  'kana' => 'きゅう',
   'jp' => '九',
 ], [
   'ru' => 'десять',
   'en' => 'ten',
   'phonetic' => 'jū',
+  'kana' => 'じゅう',
   'jp' => '十',
 ], [
   'ru' => 'одиннадцать',
   'en' => 'eleven',
   'phonetic' => 'jū ichi',
+  'kana' => 'じゅういち',
   'jp' => '十一',
 ], [
   'ru' => 'двадцать',
   'en' => 'twenty',
   'phonetic' => 'ni jū',
+  'kana' => 'にじゅう',
   'jp' => '二十',
 ], [
   'ru' => 'сто',
   'en' => 'hundred',
   'phonetic' => 'hyaku',
-  'hiragana' => 'ひゃく',
+  'kana' => 'ひゃく',
   'jp' => '百',
 ], [
   'ru' => 'тысяча',
   'en' => 'thousand',
   'phonetic' => 'sen',
-  'hiragana' => 'せん',
+  'kana' => 'せん',
   'jp' => '千',
 ], [
   'ru' => 'десять тысяч',
   'en' => 'ten thousand',
   'phonetic' => 'man',
-  'hiragana' => 'まん',
+  'kana' => 'まん',
   'jp' => '万',
 ], [
   'ru' => 'миллион',
   'en' => 'million',
   'phonetic' => 'hyaku man',
+  'kana' => 'ひゃくまん',
   'jp' => '百万',
 ]];
 ?>
@@ -1377,7 +1384,7 @@ $glyphs = [[
   'ru' => 'белый',
   'en' => 'white',
   'phonetic' => 'shiro',
-  'hiragana' => 'しろ',
+  'kana' => 'しろ',
   'jp' => '白',
 ], [
   'ru' => 'синий',
