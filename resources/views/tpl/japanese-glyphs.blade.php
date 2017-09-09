@@ -1,21 +1,19 @@
-<table>
+<div class="d-flex flex-wrap text-center">
   @foreach ($glyphs as $glyph)
-    <tr>
-      <td class="pr-4">
+    <div class="align-self-end mb-4 mr-4">
+      <div class="f36">
+        <ruby>
+          {{ $glyph['jp'] }}
+          <rt class="f24 text-muted">{{ $glyph['kana'] ?? '' }}</rt>
+        </ruby>
+      </div>
+      <div>
         @ru
           {{ $glyph['ru'] }}
         @en
           {{ $glyph['en'] }}
         @endru
-      </td>
-      <td class="f28">
-        <ruby class="tooltipped tooltipped-e" aria-label="{{ $glyph['phonetic'] }}">
-          {{ $glyph['jp'] }}
-          @if (isset($glyph['kana']))
-            <rt class="text-muted f16">{{ $glyph['kana'] }}</rt>
-          @endif
-        </ruby>
-      </td>
-    </tr>
+      </div>
+    </div>
   @endforeach
-</table>
+</div>

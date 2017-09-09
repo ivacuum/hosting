@@ -1159,215 +1159,152 @@
 </div>
 
 @ru
-  <h3>Словарь</h3>
+  <div class="h2">Словарь</div>
 @en
-  <h3>Dictionary</h3>
+  <div class="h2">Dictionary</div>
 @endru
 <?php
 $glyphs = [[
   'ru' => 'да',
   'en' => 'yes',
-  'phonetic' => 'hai',
   'jp' => 'はい',
+], [
+  'ru' => 'иена',
+  'en' => 'yen',
+  'kana' => 'えん',
+  'jp' => '円',
+], [
+  'ru' => 'лево',
+  'en' => 'left',
+  'kana' => 'ひがり',
+  'jp' => '左',
+], [
+  'ru' => 'право',
+  'en' => 'right',
+  'kana' => 'みぎ',
+  'jp' => '右',
 ]];
 ?>
 @include('tpl.japanese-glyphs')
 
 @ru
-  <h3>53. Поезд</h3>
+  <div class="h2">Поезд</div>
 @en
-  <h3>53. Train</h3>
+  <div class="h2">Train</div>
 @endru
 <?php
 $glyphs = [[
   'ru' => 'вокзал',
   'en' => 'railway station',
-  'phonetic' => 'eki',
+  'kana' => 'えき',
   'jp' => '駅',
 ], [
   'ru' => 'камера хранения',
   'en' => 'baggage room',
-  'phonetic' => 'azukarisho',
+  'kana' => 'あずかりしょ',
   'jp' => '預かり所',
 ], [
   'ru' => 'платформа',
   'en' => 'platform',
-  'phonetic' => 'hōmu',
   'jp' => 'ホーム',
 ], [
   'ru' => 'электропоезд',
   'en' => 'electric train',
-  'phonetic' => 'densha',
+  'kana' => 'でんしゃ',
   'jp' => '電車',
 ]];
 ?>
 @include('tpl.japanese-glyphs')
 
 @ru
-  <h3>57. Приветствия и другие выражения</h3>
+  <div class="h2">Числа</div>
 @en
-  <h3>57. Greetings and other expressions</h3>
-@endru
-<?php
-$glyphs = [[
-  'ru' => 'извините (обращение)',
-  'en' => 'excuse me',
-  'phonetic' => 'sumi masen',
-  'jp' => 'すみません',
-],[
-  'ru' => 'доброе утро',
-  'en' => 'good morning',
-  'phonetic' => 'ohayō gozaimasu',
-  'jp' => 'おはようございます',
-], [
-  'ru' => 'добрый день',
-  'en' => 'good afternoon',
-  'phonetic' => 'konnichiwa',
-  'jp' => 'こんにちは',
-], [
-  'ru' => 'добрый вечер',
-  'en' => 'good afternoon',
-  'phonetic' => 'konbanwa',
-  'jp' => 'こんばんは',
-], [
-  'ru' => 'как поживаете?',
-  'en' => 'how are you?',
-  'phonetic' => 'ogenki desu ka',
-  'jp' => 'お元気ですか',
-], [
-  'ru' => 'привет',
-  'en' => 'hello',
-  'phonetic' => 'yaa',
-  'jp' => 'やあ',
-], [
-  'ru' => 'до свидания',
-  'en' => 'goodbye',
-  'phonetic' => 'sayōnara',
-  'jp' => 'さようなら',
-], [
-  'ru' => 'пока',
-  'en' => 'bye',
-  'phonetic' => 'mata ne',
-  'jp' => 'またね',
-], [
-  'ru' => 'счастливо',
-  'en' => 'good luck',
-  'phonetic' => 'ogenki de',
-  'jp' => 'お元気で',
-], [
-  'ru' => 'удачи',
-  'en' => 'good luck',
-  'phonetic' => 'seikō',
-  'jp' => '成功',
-]];
-?>
-@include('tpl.japanese-glyphs')
-
-@ru
-  <h3>95. Числа</h3>
-@en
-  <h3>95. Numbers</h3>
+  <div class="h2">Numbers</div>
 @endru
 <?php
 $glyphs = [[
   'ru' => 'ноль',
   'en' => 'zero',
-  'phonetic' => 'rei',
+  'kana' => 'れい',
   'jp' => '〇'
 ], [
   'ru' => 'один',
   'en' => 'one',
-  'phonetic' => 'ichi',
   'kana' => 'いち',
   'jp' => '一'
 ], [
   'ru' => 'два',
   'en' => 'two',
-  'phonetic' => 'ni',
   'kana' => 'に',
   'jp' => '二'
 ], [
   'ru' => 'три',
   'en' => 'three',
-  'phonetic' => 'san',
   'kana' => 'さん',
   'jp' => '三',
 ], [
   'ru' => 'четыре',
   'en' => 'four',
-  'phonetic' => 'yon',
   'kana' => 'よん',
   'jp' => '四',
 ], [
   'ru' => 'пять',
   'en' => 'five',
-  'phonetic' => 'go',
   'kana' => 'ご',
   'jp' => '五',
 ], [
   'ru' => 'шесть',
   'en' => 'six',
-  'phonetic' => 'roku',
   'kana' => 'ろく',
   'jp' => '六',
 ], [
   'ru' => 'семь',
   'en' => 'seven',
-  'phonetic' => 'nana',
   'kana' => 'なな',
   'jp' => '七',
 ], [
   'ru' => 'восемь',
   'en' => 'eight',
-  'phonetic' => 'hachi',
   'kana' => 'はち',
   'jp' => '八',
 ], [
   'ru' => 'девять',
   'en' => 'nine',
-  'phonetic' => 'kyū',
   'kana' => 'きゅう',
   'jp' => '九',
 ], [
   'ru' => 'десять',
   'en' => 'ten',
-  'phonetic' => 'jū',
   'kana' => 'じゅう',
   'jp' => '十',
 ], [
   'ru' => 'одиннадцать',
   'en' => 'eleven',
-  'phonetic' => 'jū ichi',
   'kana' => 'じゅういち',
   'jp' => '十一',
 ], [
   'ru' => 'двадцать',
   'en' => 'twenty',
-  'phonetic' => 'ni jū',
   'kana' => 'にじゅう',
   'jp' => '二十',
 ], [
   'ru' => 'сто',
   'en' => 'hundred',
-  'phonetic' => 'hyaku',
   'kana' => 'ひゃく',
   'jp' => '百',
 ], [
   'ru' => 'тысяча',
   'en' => 'thousand',
-  'phonetic' => 'sen',
   'kana' => 'せん',
   'jp' => '千',
 ], [
   'ru' => 'десять тысяч',
   'en' => 'ten thousand',
-  'phonetic' => 'man',
   'kana' => 'まん',
   'jp' => '万',
 ], [
   'ru' => 'миллион',
   'en' => 'million',
-  'phonetic' => 'hyaku man',
   'kana' => 'ひゃくまん',
   'jp' => '百万',
 ]];
@@ -1375,22 +1312,74 @@ $glyphs = [[
 @include('tpl.japanese-glyphs')
 
 @ru
-  <h3>Цвета</h3>
+  <div class="h2">Цвета</div>
 @en
-  <h3>Colors</h3>
+  <div class="h2">Colors</div>
 @endru
 <?php
 $glyphs = [[
   'ru' => 'белый',
   'en' => 'white',
-  'phonetic' => 'shiro',
   'kana' => 'しろ',
   'jp' => '白',
 ], [
   'ru' => 'синий',
   'en' => 'blue',
-  'phonetic' => 'ao',
-  'jp' => 'あお'
+  'kana' => 'あお',
+  'jp' => '青'
+]];
+?>
+@include('tpl.japanese-glyphs')
+
+@ru
+  <div class="h2">Приветствия и другие выражения</div>
+@en
+  <div class="h2">Greetings and other expressions</div>
+@endru
+<?php
+$glyphs = [[
+  'ru' => 'извините (обращение)',
+  'en' => 'excuse me',
+  'jp' => 'すみません',
+],[
+  'ru' => 'доброе утро',
+  'en' => 'good morning',
+  'jp' => 'おはようございます',
+], [
+  'ru' => 'добрый день',
+  'en' => 'good afternoon',
+  'jp' => 'こんにちは',
+], [
+  'ru' => 'добрый вечер',
+  'en' => 'good afternoon',
+  'jp' => 'こんばんは',
+], [
+  'ru' => 'как поживаете?',
+  'en' => 'how are you?',
+  'kana' => 'おげんきですか',
+  'jp' => 'お元気ですか',
+], [
+  'ru' => 'привет',
+  'en' => 'hello',
+  'jp' => 'やあ',
+], [
+  'ru' => 'до свидания',
+  'en' => 'goodbye',
+  'jp' => 'さようなら',
+], [
+  'ru' => 'пока',
+  'en' => 'bye',
+  'jp' => 'またね',
+], [
+  'ru' => 'счастливо',
+  'en' => 'good luck',
+  'kana' => 'おげんきで',
+  'jp' => 'お元気で',
+], [
+  'ru' => 'удачи',
+  'en' => 'good luck',
+  'kana' => 'せいこう',
+  'jp' => '成功',
 ]];
 ?>
 @include('tpl.japanese-glyphs')
