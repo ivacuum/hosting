@@ -5,14 +5,25 @@
 ])
 
 @section('content')
-<h3 class="mt-0">{{ trans('life.japanese') }}</h3>
-<div class="row">
+<h2 class="mt-0">{{ trans('life.japanese') }}</h2>
+
+@ru
+  <p>Полезные ресурсы:</p>
+  <ul>
+    <li><a class="link" href="http://jisho.org/">jisho.org</a> — словарь</li>
+    <li><a class="link" href="https://www.wanikani.com/">wanikani.com</a> — обучение составляющим иероглифов</li>
+  </ul>
+@endru
+
+<div class="row mt-4">
   <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
     @ru
-      <h4>Азбука катакана</h4>
+      <h3>Азбука катакана</h3>
+      <p><a class="link" href="http://www.tofugu.com/japanese/learn-katakana/">Ассоциации</a>.</p>
     @en
-      <h4>Katakana syllabary</h4>
-    @endlang
+      <h3>Katakana syllabary</h3>
+      <p><a class="link" href="http://www.tofugu.com/japanese/learn-katakana/">How to learn</a>.</p>
+    @endru
     <table class="table-stats text-center">
       <tr>
         <td>
@@ -343,10 +354,12 @@
   </div>
   <div class="col-lg-6 mb-4">
     @ru
-      <h4>Азбука хирагана</h4>
+      <h3>Азбука хирагана</h3>
+      <p><a class="link" href="http://www.tofugu.com/japanese/learn-hiragana/">Ассоциации</a>.</p>
     @en
-      <h4>Hiragana syllabary</h4>
-    @endlang
+      <h3>Hiragana syllabary</h3>
+      <p><a class="link" href="http://www.tofugu.com/japanese/learn-hiragana/">How to learn</a>.</p>
+    @endru
     <table class="table-stats text-center">
       <tr>
         <td>
@@ -1146,6 +1159,21 @@
 </div>
 
 @ru
+  <h3>Словарь</h3>
+@en
+  <h3>Dictionary</h3>
+@endru
+<?php
+$glyphs = [[
+  'ru' => 'да',
+  'en' => 'yes',
+  'phonetic' => 'hai',
+  'jp' => 'はい',
+]];
+?>
+@include('tpl.japanese-glyphs')
+
+@ru
   <h3>53. Поезд</h3>
 @en
   <h3>53. Train</h3>
@@ -1239,7 +1267,7 @@ $glyphs = [[
   <h3>95. Числа</h3>
 @en
   <h3>95. Numbers</h3>
-@endlang
+@endru
 <?php
 $glyphs = [[
   'ru' => 'ноль',
@@ -1250,21 +1278,25 @@ $glyphs = [[
   'ru' => 'один',
   'en' => 'one',
   'phonetic' => 'ichi',
+  'hiragana' => 'いち',
   'jp' => '一'
 ], [
   'ru' => 'два',
   'en' => 'two',
   'phonetic' => 'ni',
+  'hiragana' => 'に',
   'jp' => '二'
 ], [
   'ru' => 'три',
   'en' => 'three',
   'phonetic' => 'san',
+  'hiragana' => 'さん',
   'jp' => '三',
 ], [
   'ru' => 'четыре',
   'en' => 'four',
   'phonetic' => 'yon',
+  'hiragana' => 'よん',
   'jp' => '四',
 ], [
   'ru' => 'пять',
@@ -1275,11 +1307,13 @@ $glyphs = [[
   'ru' => 'шесть',
   'en' => 'six',
   'phonetic' => 'roku',
+  'hiragana' => 'ろく',
   'jp' => '六',
 ], [
   'ru' => 'семь',
   'en' => 'seven',
   'phonetic' => 'nana',
+  'hiragana' => 'なな',
   'jp' => '七',
 ], [
   'ru' => 'восемь',
@@ -1310,22 +1344,46 @@ $glyphs = [[
   'ru' => 'сто',
   'en' => 'hundred',
   'phonetic' => 'hyaku',
+  'hiragana' => 'ひゃく',
   'jp' => '百',
 ], [
   'ru' => 'тысяча',
   'en' => 'thousand',
   'phonetic' => 'sen',
+  'hiragana' => 'せん',
   'jp' => '千',
 ], [
   'ru' => 'десять тысяч',
   'en' => 'ten thousand',
   'phonetic' => 'man',
+  'hiragana' => 'まん',
   'jp' => '万',
 ], [
   'ru' => 'миллион',
   'en' => 'million',
   'phonetic' => 'hyaku man',
   'jp' => '百万',
+]];
+?>
+@include('tpl.japanese-glyphs')
+
+@ru
+  <h3>Цвета</h3>
+@en
+  <h3>Colors</h3>
+@endru
+<?php
+$glyphs = [[
+  'ru' => 'белый',
+  'en' => 'white',
+  'phonetic' => 'shiro',
+  'hiragana' => 'しろ',
+  'jp' => '白',
+], [
+  'ru' => 'синий',
+  'en' => 'blue',
+  'phonetic' => 'ao',
+  'jp' => 'あお'
 ]];
 ?>
 @include('tpl.japanese-glyphs')
