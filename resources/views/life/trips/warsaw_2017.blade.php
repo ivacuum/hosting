@@ -52,12 +52,12 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_1955.jpg'])
 
 @ru
-  <p>В Германии съезды для отдыха имеют названия.</p>
-@endru
-@include('tpl.pic-2x', ['pic' => 'IMG_1965.jpg'])
-
-@ru
-  <p>Само место отдыха.</p>
+  <p>Место отдыха вдоль трассы в Польше.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1956.jpg'])
+
+@ru
+  <p>В Германии более того каждое место отдыха имеет свое название.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_1965.jpg'])
 @endsection
