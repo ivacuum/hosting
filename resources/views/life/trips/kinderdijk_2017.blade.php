@@ -28,6 +28,7 @@
 @ru
   <p>Мельницы. Много мельниц.</p>
 @endru
+<youtube title="Kinderdijk Mills, July 2017" v="_hSuH_m9fTM"></youtube>
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2533.jpg',
   'IMG_2549.jpg',
