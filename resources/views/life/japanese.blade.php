@@ -11,7 +11,13 @@
   <p>Полезные ресурсы:</p>
   <ul>
     <li><a class="link" href="http://jisho.org/">jisho.org</a> — словарь</li>
-    <li><a class="link" href="https://www.wanikani.com/">wanikani.com</a> — обучение составляющим иероглифов</li>
+    <li><a class="link" href="https://www.wanikani.com/">wanikani.com</a> — онлайн-сервис для изучения ключей, кандзи и иероглифов</li>
+  </ul>
+@en
+  <p>Useful resources:</p>
+  <ul>
+    <li><a class="link" href="http://jisho.org/">jisho.org</a> — powerful dictionary</li>
+    <li><a class="link" href="https://www.wanikani.com/">wanikani.com</a> — web application for learning radicals, kanji and vocabulary</li>
   </ul>
 @endru
 
@@ -1157,6 +1163,146 @@
     </table>
   </div>
 </div>
+
+@ru
+  <div class="h2">Ключи (радикалы)</div>
+  <div class="h3">1 черта</div>
+@en
+  <div class="h2">Radicals</div>
+  <div class="h3">1 stroke</div>
+@endru
+<?php
+$glyphs = [[
+  'ru' => 'один',
+  'en' => 'one',
+  'jp' => '一',
+], [
+  'ru' => 'линия',
+  'en' => 'line',
+  'jp' => '丨',
+], [
+  'ru' => 'точка',
+  'en' => 'dot',
+  'jp' => '丶',
+], [
+  'ru' => 'откидная влево',
+  'en' => 'slash',
+  'jp' => 'ノ',
+], [
+  'ru' => 'второй',
+  'en' => 'second',
+  'jp' => '乙',
+], [
+  'ru' => 'крюк',
+  'en' => 'hook',
+  'jp' => '亅',
+]];
+?>
+@include('tpl.japanese-glyphs')
+
+@ru
+  <div class="h3">2 черты</div>
+@en
+  <div class="h3">2 strokes</div>
+@endru
+<?php
+$glyphs = [[
+  'ru' => 'два',
+  'en' => 'two',
+  'jp' => '二',
+], [
+  'ru' => 'верхушка',
+  'en' => 'lid',
+  'jp' => '亠',
+], [
+  'ru' => 'человек',
+  'en' => 'man',
+  'jp' => '人',
+], [
+  'ru' => 'ноги',
+  'en' => 'legs',
+  'jp' => '儿',
+], [
+  'ru' => 'входить',
+  'en' => 'enter',
+  'jp' => '乙',
+], [
+  'ru' => 'восемь',
+  'en' => 'eight',
+  'jp' => '亅',
+], [
+  'ru' => 'рамка',
+  'en' => 'inverted box',
+  'jp' => '冂',
+], [
+  'ru' => 'обложка',
+  'en' => 'cover',
+  'jp' => '冖',
+], [
+  'ru' => 'лед',
+  'en' => 'ice',
+  'jp' => '⼎',
+], [
+  'ru' => 'стол',
+  'en' => 'desk',
+  'jp' => '⼏',
+], [
+  'ru' => 'контейнер',
+  'en' => 'container',
+  'jp' => '⼐',
+], [
+  'ru' => 'меч',
+  'en' => 'sword',
+  'jp' => '⼑',
+], [
+  'ru' => 'сила',
+  'en' => 'power',
+  'jp' => '⼒',
+], [
+  'ru' => 'охватывать',
+  'en' => 'embrace',
+  'jp' => '⼓',
+], [
+  'ru' => 'ложка',
+  'en' => 'spoon',
+  'jp' => '⼔',
+], [
+  'ru' => 'ящик',
+  'en' => 'box frame',
+  'jp' => '⼕',
+], [
+  'ru' => 'десять',
+  'en' => 'ten',
+  'jp' => '⼗',
+], [
+  'ru' => 'гадать',
+  'en' => 'divination',
+  'jp' => '⼘',
+], [
+  'ru' => 'печать',
+  'en' => 'seal',
+  'jp' => '⼙',
+], [
+  'ru' => 'обрыв',
+  'en' => 'cliff',
+  'jp' => '⼚',
+], [
+  'ru' => 'личный',
+  'en' => 'private',
+  'jp' => '⼛',
+], [
+  'ru' => 'еще',
+  'en' => 'again',
+  'jp' => '⼜',
+]];
+?>
+@include('tpl.japanese-glyphs')
+
+@ru
+  <p><a class="link" href="https://en.wikipedia.org/wiki/List_of_kanji_radicals_by_stroke_count">Полный список ключей</a>.</p>
+@en
+  <p><a class="link" href="https://en.wikipedia.org/wiki/List_of_kanji_radicals_by_stroke_count">Full list of radicals</a>.</p>
+@endru
 
 @ru
   <div class="h2">Словарь</div>
