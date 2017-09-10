@@ -2,10 +2,19 @@
   @foreach ($glyphs as $glyph)
     <div class="align-self-end mb-4 mr-4">
       <div class="f36">
-        <ruby>
-          {{ $glyph['jp'] }}
-          <rt class="f24 text-muted">{{ $glyph['kana'] ?? '' }}</rt>
-        </ruby>
+        @if (is_array($glyph['jp']))
+          <ruby>
+            @foreach ($glyph['jp'] as $kanji => $kana)
+              <rb>{{ $kanji }}</rb>
+              <rt class="f24 text-muted">{{ $kana }}</rt>
+            @endforeach
+          </ruby>
+        @else
+          <ruby>
+            {{ $glyph['jp'] }}
+            <rt class="f24 text-muted">{{ $glyph['kana'] ?? '' }}</rt>
+          </ruby>
+        @endif
       </div>
       <div>
         @ru
