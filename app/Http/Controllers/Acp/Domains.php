@@ -177,7 +177,7 @@ class Domains extends Controller
         return $model->editNsRecord(
             request('record_id'),
             request('type'),
-            request('content', 'subdomain', 'priority', 'port', 'weight', 'retry', 'refresh', 'expire', 'ttl')
+            request(['content', 'subdomain', 'priority', 'port', 'weight', 'retry', 'refresh', 'expire', 'ttl'])
         );
     }
 
