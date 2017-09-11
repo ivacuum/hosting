@@ -4,6 +4,10 @@
   'meta_title' => trans('life.japanese'),
 ])
 
+{{--
+https://en.wikipedia.org/wiki/List_of_kanji_by_concept
+--}}
+
 @section('content')
 <h2 class="mt-0">{{ trans('life.japanese') }}</h2>
 
@@ -1294,6 +1298,218 @@ $glyphs = [[
   'ru' => 'еще',
   'en' => 'again',
   'jp' => '⼜',
+]];
+?>
+@include('tpl.japanese-glyphs')
+
+@ru
+  <div class="h3">3 черты</div>
+@en
+  <div class="h3">3 strokes</div>
+@endru
+<?php
+$glyphs = [[
+  'ru' => 'прятать',
+  'en' => 'dead',
+  'jp' => '⼖',
+], [
+  'ru' => 'рот',
+  'en' => 'mouth',
+  'jp' => '⼝',
+], [
+  'ru' => 'граница',
+  'en' => 'enclosure',
+  'jp' => '⼞',
+], [
+  'ru' => 'земля',
+  'en' => 'earth',
+  'jp' => '⼟',
+], [
+  'ru' => 'ученый',
+  'en' => 'scholar',
+  'jp' => '⼠',
+], [
+  'ru' => 'следовать',
+  'en' => 'winter',
+  'jp' => '⼡',
+], [
+  'ru' => 'медленно идти',
+  'en' => 'winter variant',
+  'jp' => '⼢',
+], [
+  'ru' => 'вечер',
+  'en' => 'evening',
+  'jp' => '⼣',
+], [
+  'ru' => 'большой',
+  'en' => 'big',
+  'jp' => '⼤',
+], [
+  'ru' => 'женщина',
+  'en' => 'woman',
+  'jp' => '⼥',
+], [
+  'ru' => 'ребенок',
+  'en' => 'child',
+  'jp' => '⼦',
+], [
+  'ru' => 'крыша',
+  'en' => 'roof',
+  'jp' => '⼧',
+], [
+  'ru' => 'дюйм',
+  'en' => 'inch',
+  'jp' => '⼨',
+], [
+  'ru' => 'маленький',
+  'en' => 'small',
+  'jp' => '⼩',
+], [
+  'ru' => 'хромой',
+  'en' => 'lame',
+  'jp' => '⼪',
+], [
+  'ru' => 'труп',
+  'en' => 'corpse',
+  'jp' => '⼫',
+], [
+  'ru' => 'росток',
+  'en' => 'sprout',
+  'jp' => '⼬',
+], [
+  'ru' => 'гора',
+  'en' => 'mountain',
+  'jp' => '⼭',
+], [
+  'ru' => 'река',
+  'en' => 'river',
+  'jp' => '川',
+], [
+  'ru' => 'труд',
+  'en' => 'work',
+  'jp' => '⼯',
+], [
+  'ru' => 'свой',
+  'en' => 'oneself',
+  'jp' => '⼰',
+], [
+  'ru' => 'платок',
+  'en' => 'turban',
+  'jp' => '⼱',
+], [
+  'ru' => 'сухой',
+  'en' => 'dry',
+  'jp' => '⼲',
+], [
+  'ru' => 'крохотный',
+  'en' => 'short thread',
+  'jp' => '⼳',
+], [
+  'ru' => 'кров',
+  'en' => 'dotted cliff',
+  'jp' => '⼴',
+], [
+  'ru' => 'тянуть',
+  'en' => 'long stride',
+  'jp' => '⼵',
+], [
+  'ru' => 'две руки',
+  'en' => 'two hands',
+  'jp' => '⼶',
+], [
+  'ru' => 'стрелять',
+  'en' => 'shoot',
+  'jp' => '⼷',
+], [
+  'ru' => 'лук',
+  'en' => 'bow',
+  'jp' => '⼸',
+], [
+  'ru' => 'свиная голова',
+  'en' => "pig's head",
+  'jp' => '⼹',
+], [
+  'ru' => 'борода',
+  'en' => 'hair',
+  'jp' => '⼺',
+], [
+  'ru' => 'шаг',
+  'en' => 'step',
+  'jp' => '⼻',
+], [
+  'ru' => 'трава',
+  'en' => 'grass',
+  'jp' => '⾋',
+], [
+  'ru' => 'гулять',
+  'en' => 'walk',
+  'jp' => '⾡',
+], [
+  'ru' => 'город',
+  'en' => 'town',
+  'jp' => '⾢',
+], [
+  'ru' => 'курган',
+  'en' => 'mound',
+  'jp' => '⾩',
+]];
+?>
+@include('tpl.japanese-glyphs')
+
+@ru
+  <div class="h3">13 черт</div>
+@en
+  <div class="h3">13 strokes</div>
+@endru
+<?php
+$glyphs = [[
+  'ru' => 'лягушка',
+  'en' => 'frog',
+  'jp' => '⿌',
+], [
+  'ru' => 'треножник',
+  'en' => 'tripod',
+  'jp' => '⿍',
+], [
+  'ru' => 'барабан',
+  'en' => 'drum',
+  'jp' => '⿎',
+], [
+  'ru' => 'крыса',
+  'en' => 'rat',
+  'jp' => '⿏',
+]];
+?>
+@include('tpl.japanese-glyphs')
+
+@ru
+  <div class="h3">14 черт</div>
+@en
+  <div class="h3">14 strokes</div>
+@endru
+<?php
+$glyphs = [[
+  'ru' => 'нос',
+  'en' => 'nose',
+  'jp' => '⿐',
+], [
+  'ru' => 'равномерный',
+  'en' => 'even',
+  'jp' => '⿑',
+]];
+?>
+@include('tpl.japanese-glyphs')
+
+@ru
+  <div class="h3">17 черт</div>
+@en
+  <div class="h3">17 strokes</div>
+@endru
+<?php
+$glyphs = [[
+  'ru' => 'флейта',
+  'en' => 'flute',
+  'jp' => '⿕',
 ]];
 ?>
 @include('tpl.japanese-glyphs')
