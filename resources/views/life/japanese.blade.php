@@ -1717,4 +1717,42 @@ $glyphs = [[
 ]];
 ?>
 @include('tpl.japanese-glyphs')
+
+@ru
+  <div class="h2">Дни недели</div>
+@en
+  <div class="h2">Weekdays</div>
+@endru
+<?php
+$glyphs = [[
+  'ru' => 'понедельник',
+  'en' => 'monday',
+  'jp' => ['月曜日' => 'げつようび'],
+], [
+  'ru' => 'вторник',
+  'en' => 'tuesday',
+  'jp' => ['火曜日' => 'かようび'],
+], [
+  'ru' => 'среда',
+  'en' => 'wednesday',
+  'jp' => ['水曜日' => 'すいようび'],
+], [
+  'ru' => 'четверг',
+  'en' => 'thursday',
+  'jp' => ['木曜日' => 'もくようび'],
+], [
+  'ru' => 'пятница',
+  'en' => 'friday',
+  'jp' => ['金曜日' => 'きんようび'],
+], [
+  'ru' => 'суббота',
+  'en' => 'saturday',
+  'jp' => ['土曜日' => 'どようび'],
+], [
+  'ru' => 'воскресенье',
+  'en' => 'sunday',
+  'jp' => ['日曜日' => 'にちようび'],
+]];
+?>
+@include('tpl.japanese-glyphs')
 @endsection
