@@ -13,7 +13,8 @@ ant
 echo "==> Installing front-end dependencies..."
 echo "==> yarn..."
 export NODE_ENV=dev
-yarn
+# --ignore-platform для freebsd, так как пакет default-gateway выдает ошибку
+yarn install --ignore-platform
 export NODE_ENV=production
 
 echo "==> npm run production..."
