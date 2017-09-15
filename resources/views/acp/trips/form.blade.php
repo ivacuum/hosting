@@ -30,3 +30,5 @@
     </div>
   </div>
 @endif
+
+{{ ViewHelper::inputHiddenConcurrencyControl($model->updated_at) }}
