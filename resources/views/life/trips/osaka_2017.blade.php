@@ -17,7 +17,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_4505.jpg'])
 
 @ru
-  <p>Телефоны.</p>
+  <p>Таксофоны.</p>
+@en
+  <p>Payphones.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4506.jpg'])
 
@@ -35,11 +37,15 @@
 
 @ru
   <p>Макет высотного здания.</p>
+@en
+  <p>Model of a high-rise building.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4515.jpg'])
 
 @ru
   <p>Панорамы с этого здания.</p>
+@en
+  <p>Panoramas from that building.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_4516.jpg',
@@ -64,6 +70,8 @@
 
 @ru
   <p>Дневные улицы.</p>
+@en
+  <p>Daytime streets.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_4545.jpg',

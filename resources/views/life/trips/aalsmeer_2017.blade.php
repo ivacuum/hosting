@@ -17,6 +17,8 @@
 
 @ru
   <p>Домики.</p>
+@en
+  <p>Houses.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2667.jpg'])
 

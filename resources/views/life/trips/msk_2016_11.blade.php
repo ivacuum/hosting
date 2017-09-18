@@ -13,6 +13,8 @@
 
 @ru
   <p>Когда одной Пятерочки недостаточно.</p>
+@en
+  <p>When one Pyaterochka is not enough.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2624.jpg'])
 

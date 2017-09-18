@@ -54,11 +54,15 @@
 
 @ru
   <p>Случайный двор.</p>
+@en
+  <p>Random yard.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0069.jpg'])
 
 @ru
   <p>Дороги.</p>
+@en
+  <p>Roads.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0062.jpg',

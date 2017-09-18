@@ -15,11 +15,15 @@
 
 @ru
   <p>Беседа на берегу.</p>
+@en
+  <p>Conversation on the shore.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2704.jpg'])
 
 @ru
   <p>Скутеров великое множество.</p>
+@en
+  <p>Lots of scooters.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2705.jpg'])
 
@@ -37,61 +41,85 @@
 
 @ru
   <p>Пляж.</p>
+@en
+  <p>Beach.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2698.jpg'])
 
 @ru
   <p>Улица вдоль пляжа.</p>
+@en
+  <p>Street along the beach.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2700.jpg'])
 
 @ru
   <p>Территория отеля.</p>
+@en
+  <p>Hotel's yard.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2701.jpg'])
 
 @ru
   <p>Мусорный ящик. Мусора внутри не было.</p>
+@en
+  <p>Trash box. There was no rubbish inside.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2702.jpg'])
 
 @ru
   <p>Набережная.</p>
+@en
+  <p>Embankment.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2706.jpg'])
 
 @ru
   <p>Шахматы.</p>
+@en
+  <p>Chess.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2707.jpg'])
 
 @ru
   <p>Редкий общественный транспорт — автобус.</p>
+@en
+  <p>Rare public transport — bus.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2709.jpg'])
 
 @ru
   <p>Если присмотреться, то можно увидеть меню.</p>
+@en
+  <p>If you look closely, you can see the menu in russian.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2710.jpg'])
 
 @ru
   <p>Свастика имеет положительное значение в Индонезии.</p>
+@en
+  <p>Swastika has a positive meaning in Indonesia.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2739.jpg'])
 
 @ru
   <p>Вид на пляж.</p>
+@en
+  <p>View of the beach.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2787.jpg'])
 
 @ru
   <p>Вид с пляжа.</p>
+@en
+  <p>View from the beach.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2792.jpg'])
 
 @ru
   <p>Редкие пальмы.</p>
+@en
+  <p>Rare palm trees.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2793.jpg'])
 
@@ -112,12 +140,16 @@
 
 @ru
   <p>Закат.</p>
+@en
+  <p>Sunset.</p>
 @endru
 <youtube v="2xUnV3yLl9Q" title="Bali Sea, December 2016"></youtube>
 @include('tpl.pic-2x', ['pic' => 'IMG_2796.jpg'])
 
 @ru
   <p>Пейзажи.</p>
+@en
+  <p>Landscapes.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2718.jpg',
@@ -272,6 +304,8 @@
 
 @ru
   <p>Рисовые поля.</p>
+@en
+  <p>Rice fields.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3073.jpg',
@@ -289,6 +323,8 @@
 
 @ru
   <p>Бонусные видео.</p>
+@en
+  <p>Bonus videos.</p>
 @endru
 <youtube v="dftzWN4at2Q" title="Bali Crabs, December 2016"></youtube>
 <youtube v="52QBBWT_yBc" title="Bali Fog, December 2016"></youtube>
