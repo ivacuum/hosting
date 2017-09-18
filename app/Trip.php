@@ -317,7 +317,8 @@ class Trip extends Model
             ->files()
             ->in(base_path('resources/views/life/trips'))
             ->name('*.blade.php')
-            ->notName('base.blade.php');
+            ->notName('base.blade.php')
+            ->sortByName();
     }
 
     public static function tripsByCities(?int $user_id = null)
