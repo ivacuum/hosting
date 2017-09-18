@@ -3,11 +3,15 @@
 @section('content')
 @ru
   <p>Подъезжаем.</p>
+@en
+  <p>Approaching.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2196.jpg'])
 
 @ru
   <p>Проезжаем.</p>
+@en
+  <p>Passing by.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2198.jpg',
