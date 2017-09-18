@@ -50,20 +50,14 @@
     <h3 class="text-center mt-5">{{ trans('auth.social_signin') }}</h3>
 
     <div class="text-center mt-3">
-      <a class="btn btn-social bg-vk tooltipped tooltipped-n"
-         href="{{ path('Auth\Vk@index') }}"
-         aria-label="{{ trans('auth.signin_vk') }}">
-        @svg (vk)
+      <a class="btn btn-social bg-vk" href="{{ path('Auth\Vk@index') }}">
+        {{ trans('auth.vk') }}
       </a>
-      <a class="btn btn-social bg-fb tooltipped tooltipped-n"
-         href="{{ path('Auth\Facebook@index') }}"
-         aria-label="{{ trans('auth.signin_facebook') }}">
-        @svg (facebook)
+      <a class="btn btn-social bg-fb" href="{{ path('Auth\Facebook@index') }}">
+        {{ trans('auth.facebook') }}
       </a>
-      <a class="btn btn-social bg-google tooltipped tooltipped-n"
-         href="{{ path('Auth\Google@index') }}"
-         aria-label="{{ trans('auth.signin_google') }}">
-        @svg (google)
+      <a class="btn btn-social bg-google" href="{{ path('Auth\Google@index') }}">
+        {{ trans('auth.google') }}
       </a>
     </div>
 

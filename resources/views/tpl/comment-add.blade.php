@@ -42,20 +42,17 @@
     <div class="mt-3">
       <p>Для написания комментариев необходимо <a class="link" href="{{ path('Auth\SignIn@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">войти на сайт</a>.</p>
       <p>Можно войти в один клик через следующие соцсети:</p>
-      <a class="btn btn-social bg-vk tooltipped tooltipped-n"
-         href="{{ path('Auth\Vk@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}"
-         aria-label="{{ trans('auth.signin_vk') }}">
-        @svg (vk)
+      <a class="btn btn-social bg-vk"
+         href="{{ path('Auth\Vk@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">
+        {{ trans('auth.vk') }}
       </a>
-      <a class="btn btn-social bg-fb tooltipped tooltipped-n"
-         href="{{ path('Auth\Facebook@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}"
-         aria-label="{{ trans('auth.signin_facebook') }}">
-        @svg (facebook)
+      <a class="btn btn-social bg-fb"
+         href="{{ path('Auth\Facebook@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">
+        {{ trans('auth.facebook') }}
       </a>
-      <a class="btn btn-social bg-google tooltipped tooltipped-n"
-         href="{{ path('Auth\Google@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}"
-         aria-label="{{ trans('auth.signin_google') }}">
-        @svg (google)
+      <a class="btn btn-social bg-google"
+         href="{{ path('Auth\Google@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">
+        {{ trans('auth.google') }}
       </a>
     </div>
   @en
