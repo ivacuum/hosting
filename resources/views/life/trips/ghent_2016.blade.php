@@ -8,6 +8,8 @@
 
 @ru
   <p>Железнодорожный вокзал.</p>
+@en
+  <p>Railway station.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2393.jpg'])
 
@@ -33,6 +35,8 @@
 
 @ru
   <p>Парк.</p>
+@en
+  <p>Park.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2404.jpg',
@@ -56,6 +60,8 @@
 
 @ru
   <p>Красота вокруг.</p>
+@en
+  <p>Beauty around.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2410.jpg',
@@ -114,5 +120,7 @@
 
 @ru
   <p>Гент — отличный выбор для однодневной вылазки.</p>
+@en
+  <p>Ghent is a nice choice for a one-day trip.</p>
 @endru
 @endsection
