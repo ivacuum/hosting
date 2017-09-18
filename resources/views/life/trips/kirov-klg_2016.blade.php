@@ -24,11 +24,15 @@
 
 @ru
   <p>Одуванчики.</p>
+@en
+  <p>Dandelions.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0395.jpg'])
 
 @ru
   <p>Пожарная лестница.</p>
+@en
+  <p>Fire escape.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0404.jpg'])
 

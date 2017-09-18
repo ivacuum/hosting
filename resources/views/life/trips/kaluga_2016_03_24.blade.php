@@ -13,6 +13,8 @@
 
 @ru
   <p>Пассажирский салон.</p>
+@en
+  <p>Passenger cabin.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0126.jpg'])
 

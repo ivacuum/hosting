@@ -18,6 +18,8 @@
 
 @ru
   <p>Красные такси.</p>
+@en
+  <p>Red taxies.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3126.jpg'])
 
@@ -28,6 +30,8 @@
 
 @ru
   <p>Улицы.</p>
+@en
+  <p>Streets.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3102.jpg',
@@ -54,6 +58,8 @@
 
 @ru
   <p>Набережная.</p>
+@en
+  <p>Embankment.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3116.jpg',
@@ -67,6 +73,8 @@
 
 @ru
   <p>Желтый арбуз.</p>
+@en
+  <p>Yellow watermelon.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3129.jpg'])
 
