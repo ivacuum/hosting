@@ -15,6 +15,7 @@ return [
     'signed_in_as' => 'Вы вошли как',
     'new_password' => 'Новый пароль',
     'signin_title' => 'Вход на сайт',
+    'dont_remember' => 'Чужой компьютер',
     'signin_google' => 'Вход через Гугл',
     'show_password' => 'Показать пароль',
     'hide_password' => 'Скрыть пароль',

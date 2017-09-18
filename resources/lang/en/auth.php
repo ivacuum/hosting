@@ -14,6 +14,7 @@ return [
     'email_taken' => 'There is an account with e-mail :email already, password reset link has been sent to this address',
     'signed_in_as' => 'Signed in as',
     'new_password' => 'New password',
+    'dont_remember' => "Don't remember me",
     'signin_title' => 'Sign in',
     'signin_google' => 'Sign in with Google',
     'show_password' => 'Show password',

@@ -1,8 +1,8 @@
 @extends('base')
 
 @section('content')
-<div class="form-signin text-center">
-  <h3 class="mt-0 mb-4">{{ trans('auth.signin_title') }}</h3>
+<div class="form-signin">
+  <h3 class="mt-0 mb-4 text-center">{{ trans('auth.signin_title') }}</h3>
   <form action="{{ path('Auth\SignIn@login') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
@@ -28,6 +28,10 @@
       @endif
     </div>
 
+    <div class="checkbox">
+      <label><input type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}> {{ trans('auth.dont_remember') }}</label>
+    </div>
+
     <div class="my-3 clearfix">
       <div class="pull-left">
         <a class="link" href="{{ path('Auth\ForgotPassword@index') }}">{{ trans('auth.forgot_password') }}</a>
@@ -37,9 +41,11 @@
       </div>
     </div>
 
-    <button class="btn btn-primary btn-lg btn-login">
-      {{ trans('auth.signin') }}
-    </button>
+    <div class="text-center">
+      <button class="btn btn-primary btn-lg btn-login">
+        {{ trans('auth.signin') }}
+      </button>
+    </div>
 
     <h3 class="text-center mt-5">{{ trans('auth.social_signin') }}</h3>
 

@@ -5,6 +5,8 @@ use Ivacuum\Generic\Controllers\Auth\SignIn as BaseSignIn;
 
 class SignIn extends BaseSignIn
 {
+    protected $remember = true;
+
     protected function attemptLogin(Request $request)
     {
         $credentials = $this->credentials($request);
