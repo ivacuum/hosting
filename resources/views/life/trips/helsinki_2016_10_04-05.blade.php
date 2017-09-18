@@ -8,11 +8,15 @@
 
 @ru
   <p>Осенние краски.</p>
+@en
+  <p>Fall colors.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2059.jpg'])
 
 @ru
   <p>Кладбище.</p>
+@en
+  <p>Cemetery.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2061.jpg',
@@ -50,16 +54,22 @@
 
 @ru
   <p>Пляж.</p>
+@en
+  <p>Beach.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2069.jpg'])
 
 @ru
   <p>Контраст красок.</p>
+@en
+  <p>Contrast of colors.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2071.jpg'])
 
 @ru
   <p>Места для прогулок.</p>
+@en
+  <p>Places for a walk.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2072.jpg',
@@ -72,6 +82,8 @@
 
 @ru
   <p>Улицы.</p>
+@en
+  <p>Streets.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2047.jpg',
@@ -105,11 +117,15 @@
 
 @ru
   <p>Тесла.</p>
+@en
+  <p>Tesla.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2083.jpg'])
 
 @ru
   <p>Трамвай.</p>
+@en
+  <p>Tram.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2085.jpg'])
 
@@ -140,6 +156,8 @@
 
 @ru
   <p>Дома.</p>
+@en
+  <p>Houses.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2106.jpg',
@@ -159,17 +177,23 @@
 
 @ru
   <p>Набережная.</p>
+@en
+  <p>Embankment.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2112.jpg'])
 
 @ru
   <p>Причал.</p>
+@en
+  <p>Pier.</p>
 @endru
 <youtube title="Helsinki Embankment, October 2016" v="JMtH89DsHEw"></youtube>
 @include('tpl.pic-2x', ['pic' => 'IMG_2119.jpg'])
 
 @ru
   <p>Набережная.</p>
+@en
+  <p>Embankment.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2124.jpg'])
 
@@ -185,6 +209,8 @@
 
 @ru
   <p>Триколор.</p>
+@en
+  <p>Tricolor.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2139.jpg'])
 
