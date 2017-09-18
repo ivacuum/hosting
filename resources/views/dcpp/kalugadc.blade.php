@@ -9,7 +9,7 @@
 @ru
   @section('i18n')
   @endsection
-@endlang
+@endru
 
 @section('about_software')
 @ru
@@ -25,5 +25,5 @@
   </section>
 @en
   <p>DC++ client made for Domolink ISP in Kaluga.</p>
-@endlang
+@endru
 @endsection

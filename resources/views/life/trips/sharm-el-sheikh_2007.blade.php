@@ -5,7 +5,7 @@
   <p>Полезная овощная поездка. Понял, что повторения больше не хочу.</p>
 @en
   <p>Useful lazy trip. No more lazy trips.</p>
-@endlang
+@endru
 @include('tpl.fotorama', ['pics' => [
   'IMG_0621.jpg',
   'IMG_0658.jpg',

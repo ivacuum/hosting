@@ -7,7 +7,7 @@
   <div class="col-md-7">
     @ru
       <p>Смело можно сказать, что два вокалиста в группе — это ад! Не дадут спуска практически ни на минуту. Прокричишь куплет, припев будешь уже прыгать и орать, далее все заново. И так 100 минут. Стоило оно того? Однозначно да!</p>
-    @endlang
+    @endru
     @include('tpl.setlist-title')
     <ol>
       <li>Guilty All the Same</li>
@@ -47,7 +47,7 @@
 
 @ru
   <p>Видеозаписи с концерта: полное шоу, флэшмоб (трек #19) и medley (трек #11).</p>
-@endlang
+@endru
 <div class="js-lazy" data-lazy-type="fotorama" data-width="1000" data-ratio="1000/595">
   <a href="https://www.youtube.com/watch?v=rLB0aIGS0zE"></a>
   <a href="https://www.youtube.com/watch?v=NdIBg8zHRFI"></a>

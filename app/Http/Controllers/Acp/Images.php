@@ -18,7 +18,7 @@ class Images extends Controller
         [$sort_key, $sort_dir] = $this->getSortParams();
 
         $models = Model::orderBy($sort_key, $sort_dir)
-            // ->where('updated_at', '<', Carbon::now()->subYear()->toDateTimeString())
+            // ->where('updated_at', '<', now()->subYear()->toDateTimeString())
             // ->where('views', '<', 1000);
             ->when($year, function (Builder $query) use ($year) {
                 return $query->whereYear('created_at', $year);

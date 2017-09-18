@@ -3,43 +3,43 @@
 @section('content')
 @ru
   <p>Второе пришествие.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1692.jpg'])
 
 @ru
   <p>В аэропорту в спецместах можно оставить на хранение ключи, одежду или конверт. И получить по паспорту. Оплата как заранее, так и получателем. Аэропорт не закрывается, автобус до города ходит всю ночь. Можно смело прилетать посреди ночи в шортах, тапках и без ключей — все схвачено. Подмыться в аэропорту тоже можно.</p>
-@endlang
+@endru
 
 @include('tpl.pic-2x', ['pic' => 'IMG_1681.jpg'])
 
 @ru
   <p>Дома в ванной вход в сауну. Стиральной машины в квартире не оказалось. Вместо этого предлагается бронировать время и пользоваться расположенной в подвале прачечной. Следует заметить, что ground floor — это именно подземный этаж, а не первый.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1682.jpg'])
 
 @ru
   <p>Сам дом. Один и тот же ключ подходил для двери и в подъезд и в квартиру. Еще и пить воду из-под крана по всей стране можно — она питьевая. Да-да, мыться тоже питьевой водой.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1820.jpg'])
 
 @ru
   <p>Ухоженный внутренний двор.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1686.jpg'])
 
 @ru
   <p>Чтиво в подъезде.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1821.jpg'])
 
 @ru
   <p>Схема квартала.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1687.jpg'])
 
 @ru
   <p>Осенние краски.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1704.jpg',
   'IMG_1708.jpg',
@@ -65,53 +65,53 @@
 
 @ru
   <p>Красный — цвет велосипедиста, как в <a class="link" href="countries/germany">Германии</a>.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1702.jpg'])
 
 @ru
   <p>Справа приближается отряд велосипедистов.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1764.jpg'])
 
 @ru
   <p>Дворик.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1694.jpg'])
 
 @ru
   <p>Трамвайная остановка.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1699.jpg'])
 
 @ru
   <p>Справа массивные камни. На них можно залезть.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1724.jpg'])
 
 @ru
   <p>Сразу приходит впечатление, что отправился в поход.</p>
-@endlang
+@endru
 <youtube title="Helsinki Railroad, October 2016" v="9m8GqENFUnA"></youtube>
 @include('tpl.pic-2x', ['pic' => 'IMG_1720.jpg'])
 
 @ru
   <p>Есть куда лезть еще выше.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1722.jpg'])
 
 @ru
   <p>Стадион.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1725.jpg'])
 
 @ru
   <p>Рампы.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1726.jpg'])
 
 @ru
   <p>Родные глазу пейзажи.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1727.jpg',
   'IMG_1728.jpg',
@@ -121,88 +121,88 @@
 
 @ru
   <p>Много разных труб.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1734.jpg'])
 
 @ru
   <p>Живность на газоне.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1759.jpg'])
 
 @ru
   <p>Живность в воде.</p>
-@endlang
+@endru
 <youtube title="Helsinki Park, October 2016" v="-HysOT4rKk4"></youtube>
 @include('tpl.pic-2x', ['pic' => 'IMG_1761.jpg'])
 
 @ru
   <p>Сбоку удобно бегать, по центру ходить и ездить.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1768.jpg'])
 
 @ru
   <p>Мост с деревянным покрытием.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1770.jpg'])
 
 @ru
   <p>Еще один мост — через железную дорогу.</p>
-@endlang
+@endru
 <youtube title="Helsinki Pedestrian Bridge, October 2016" v="4ZNVmOUhfNY"></youtube>
 @include('tpl.pic-2x', ['pic' => 'IMG_1783.jpg'])
 
 @ru
   <p>Вдали главный вокзал.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1785.jpg'])
 
 @ru
   <p>Минутах в тридцати находится аэропорт.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1784.jpg'])
 
 @ru
   <p>Парк для собак.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1790.jpg'])
 
 @ru
   <p>Еще один. Ошибиться сложно.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1839.jpg'])
 
 @ru
   <p>Лавочка.</p>
 @en
   <p>Bench.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1791.jpg'])
 
 @ru
   <p>Стоянка.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1793.jpg'])
 
 @ru
   <p>Финский алфавит на автомате для оплаты парковки. Из диковинных букв: Å, Ä и Ö в конце.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1798.jpg'])
 
 @ru
   <p>Фабрика?</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1813.jpg'])
 
 @ru
   <p>Жилой район.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1814.jpg'])
 
 @ru
   <p>Улицы.</p>
 @en
   <p>Streets.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1696.jpg',
   'IMG_1707.jpg',
@@ -223,52 +223,52 @@
 
 @ru
   <p>Автомат замерз. Конечно, тут тебе не теплая парижская осень.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1815.jpg'])
 
 @ru
   <p>Еще один погнутый ветром знак.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1829.jpg'])
 
 @ru
   <p>Ярмарка.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1833.jpg'])
 
 @ru
   <p>Парк-остров.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1834.jpg'])
 
 @ru
   <p>Пейзаж для обеда.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1835.jpg'])
 
 @ru
   <p>Пятиполосное движение по тротуару.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1838.jpg'])
 
 <a name="lifebuoy"></a>
 @ru
   <p>Вдоль набережных расставлены спасательные круги.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1842.jpg'])
 
 @ru
   <p>Песики. Нравятся песики?</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1843.jpg'])
 
 @ru
   <p>Жилой район.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1846.jpg'])
 
 @ru
   <p>Трамвай довозит до стоянки парома. Последний доставит в <a class="link" href="stockholm.2016">Стокгольм</a>.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1847.jpg'])
 @endsection

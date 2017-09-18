@@ -16,7 +16,7 @@
       </ul>
       <p>Дата запуска: 5 января 2017 г.</p>
     </div>
-  @endlang
+  @endru
   <div class="service-container">
     <div class="clearfix">
       <img class="service-image" src="https://ivacuum.org/i/services/hosting.png">
@@ -30,7 +30,7 @@
         <li>понравившиеся фильмы и книги.</li>
       </ul>
       <p>Дата запуска: 29 сентября 2014 г.</p>
-    @endlang
+    @endru
   </div>
   @ru
     <div class="service-container">
@@ -47,7 +47,7 @@
       </ul>
       <p>Дата запуска: 7 декабря 2015 г.</p>
     </div>
-  @endlang
+  @endru
   <div class="service-container">
     <div class="clearfix">
       <img class="service-image" src="https://ivacuum.org/i/services/gallery.png">
@@ -61,7 +61,7 @@
         <li>отображение специальной метки, если файл скоро будет удален.</li>
       </ul>
       <p>Дата запуска: 8 февраля 2009 г.</p>
-    @endlang
+    @endru
   </div>
   <div class="service-container">
     <div class="clearfix">
@@ -76,7 +76,7 @@
         <li>представлены клиенты для трёх самых популярных платформ.</li>
       </ul>
       <p>Дата запуска: 17 марта 2008 г.</p>
-    @endlang
+    @endru
   </div>
   @ru
     <div class="service-container">
@@ -87,14 +87,14 @@
       <p>Сервис для обмена файлами внутри локальной сети Билайн, проработавший шесть с лишним лет. Теперь исторический форум, доступный из интернета.</p>
       <p>Дата запуска: 5 июля 2010 г.</p>
     </div>
-  @endlang
+  @endru
 </div>
 
 @ru
   <h3 class="mt-0"><a class="link" href="/life">Истории о путешествиях</a></h3>
 @en
   <h3 class="mt-0"><a class="link" href="/en/life">Travel stories</a></h3>
-@endlang
+@endru
 
 @foreach ($trips->chunk(3) as $chunk)
   <div class="page-section">

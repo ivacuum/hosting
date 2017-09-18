@@ -7,13 +7,13 @@
 @ru
   @section('i18n')
   @endsection
-@endlang
+@endru
 
 @section('content')
 <h3 class="mt-0">{{ trans('life.german') }}</h3>
 @ru
   <p class="mb-5">Конспект информации, освоенной во время изучения языка.</p>
-@endlang
+@endru
 
 @ru
   <h3>Алфавит и произношение</h3>
@@ -172,5 +172,5 @@
   {{--<p>Другие примеры:</p>--}}
   {{--<div class="mt-3">— Wo sind Sie geboren?</div>--}}
   {{--<div>— Ich bin in Sankt-Petersburg geboren.</div>--}}
-@endlang
+@endru
 @endsection

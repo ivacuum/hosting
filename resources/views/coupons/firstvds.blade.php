@@ -11,7 +11,7 @@
     <p>Укажите вашу электронную почту, и мы пришлем вам код для получения скидки 25% на первый заказ.</p>
   @en
     <p>Type your e-mail and we will send you a promo code for 25% discount to your first order on any FirstVDS plan.</p>
-  @endlang
+  @endru
   <form action="{{ path('Coupons@firstvdsPost') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
@@ -27,19 +27,19 @@
   </form>
 
   <section>
-    <div class="h2 mt-5 mb-3">@ru Хотите способ проще? @en Looking for an easier way? @endlang</div>
+    <div class="h2 mt-5 mb-3">@ru Хотите способ проще? @en Looking for an easier way? @endru</div>
     @ru
       <p>Перейдите по ссылке для автоматического применения скидки к вашему первому заказу.</p>
     @en
       <p>Follow the link to automatically apply discount to your first order.</p>
-    @endlang
-    <div><button class="btn btn-primary" onclick="location.href='https://firstvds.ru/?from=149161'">@ru Получить скидку 25% @en Get a 25% discount @endlang</button></div>
+    @endru
+    <div><button class="btn btn-primary" onclick="location.href='https://firstvds.ru/?from=149161'">@ru Получить скидку 25% @en Get a 25% discount @endru</button></div>
     <span class="help-block">
       @ru
         После клика вы будете перемещены на сайт firstvds.ru
       @en
         After a click you will be redirected to firstvds.ru
-      @endlang
+      @endru
     </span>
   </section>
 </div>

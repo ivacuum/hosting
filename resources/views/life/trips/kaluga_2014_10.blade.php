@@ -5,7 +5,7 @@
   <p>Пара ночных снимков.</p>
 @en
   <p>A couple of night shots.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1250.jpg',
   'IMG_1247.jpg',

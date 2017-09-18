@@ -3,36 +3,36 @@
 @section('content')
 @ru
   <p>Вид из окна поезда.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6687.jpg'])
 
 @ru
   <p>Люди сушат вещи на крыше дома.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6680.jpg'])
 
 @ru
   <p>Короткая остановка. Иероглифы пишут как горизонтально, так и вертикально. Позади видно, что мусор собирается раздельно. Справа по форме узнается прорезь для бумаги, далее для бутылок и банок. Урны в городах попадаются не особо часто. Рядовая ситуация, что полчаса надо носить мусор с собой. А затем встречается урна, но не того типа. Самые распространенные — под бутылки и банки, их можно найти рядом практически с каждым автоматом по продаже напитков. Далее бумага. Реже всего под еду и прочие остатки.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6689.jpg'])
 
 @ru
   <p>Похоже на истребитель в воздухе.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6701.jpg'])
 
 @ru
   <p>Главный вокзал Канадзавы.</p>
 @en
   <p>Kanazawa central station.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6745.jpg'])
 
 @ru
   <p>Улицы.</p>
 @en
   <p>Streets.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6747.jpg',
   'IMG_6748.jpg',
@@ -43,32 +43,32 @@
 
 @ru
   <p>Выделяется красный знак пожарного гидранта.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6756.jpg'])
 
 @ru
   <p>Переход во все стороны.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6757.jpg'])
 
 @ru
   <p>Предлагается идти по дороге.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6758.jpg'])
 
 @ru
   <p>Разметка подтверждает. Место есть для всех.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6759.jpg'])
 
 @ru
   <p>Свой стиль знака пешеходного перехода.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6760.jpg'])
 
 @ru
   <p>Просторы и замки в первом парке напоминают пейзажи из игры Варкрафт 2.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6763.jpg',
   'IMG_6766.jpg',
@@ -85,14 +85,14 @@
 
 @ru
   <p>Можно ходить и собирать заставки на рабочий стол.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6764.jpg'])
 
 @ru
   <p>Дороги.</p>
 @en
   <p>Roads.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6784.jpg',
   'IMG_6785.jpg',
@@ -100,7 +100,7 @@
 
 @ru
   <p>Чудесной красоты следующий парк. Преимущественно за ним и едут в Канадзаву. В Японии вход почти во все стоящие храмы и парки платный. Иногда попадаются дни, когда вход свободный. В среднем стоимость от ¥400 до ¥1000. На данный момент в рубли цены переводятся делением пополам.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6787.jpg',
   'IMG_6789.jpg',
@@ -145,7 +145,7 @@
 
 @ru
   <p>Камень говорит, что проход закрыт.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6878.jpg',
   'IMG_6877.jpg',
@@ -153,7 +153,7 @@
 
 @ru
   <p>Аллея фонарей.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_7264.jpg',
   'IMG_7265.jpg',
@@ -163,24 +163,24 @@
 
 @ru
   <p>Широченная зебра. Даже автобус боком перейдет по такой дорогу.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7270.jpg'])
 
 @ru
   <p>Частые карты местности никогда не дадут потеряться.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7275.jpg'])
 
 @ru
   <p>Куда идет автобус? При построении маршрутов по регионам Японии названия остановок приложение показывало иероглифами. Проще было по местоположению на карте посмотреть доехал или нет, чем сопоставлять символы.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7277.jpg'])
 
 @ru
   <p>Вечерние улицы.</p>
 @en
   <p>Street in the evening.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_7279.jpg',
   'IMG_7283.jpg',
@@ -193,11 +193,11 @@
 
 @ru
   <p>У входа в магазины неизменно продаются журналы и книги.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7293.jpg'])
 
 @ru
   <p>Тьма способов оплаты, многие из них бесконтактные.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7308.jpg'])
 @endsection

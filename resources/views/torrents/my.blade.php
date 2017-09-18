@@ -46,7 +46,7 @@
     <p>Вы еще не добавили ни одной раздачи.</p>
   @en
     <p>You haven't released anything yet.</p>
-  @endlang
+  @endru
   <p><a class="btn btn-default" href="{{ path('Torrents@create') }}">{{ trans('torrents.create') }}</a></p>
 @endif
 @endsection

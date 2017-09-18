@@ -15,5 +15,5 @@
   <p><img src="https://img.ivacuum.ru/g/091002/1_Km1HDRuJH0.png" width="760" height="432"></p>
 @en
   <p><strong>ShakesPeer</strong> is a popular macOS DC++ client software.</p>
-@endlang
+@endru
 @endsection

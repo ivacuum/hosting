@@ -5,7 +5,7 @@
   <p>Мороз и солнце, день чудесный!</p>
 @en
   <p>Frost and sunshine, what a wonderful day!</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3149.jpg',
   'IMG_3150.jpg',

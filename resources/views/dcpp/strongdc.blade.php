@@ -26,7 +26,7 @@
 </a>
 @ru
   <a class="btn btn-default" href="{{ path('Dcpp@page', 'strongdc_install') }}">Инструкция по установке</a>
-@endlang
+@endru
 @endsection
 
 @section('about_software')
@@ -60,5 +60,5 @@
   </div>
 @en
   <p><strong>StrongDC++</strong> is a client for sharing files in Direct Connect network by using NMDC and ADC protocols. It is modification of program <a class="link" href="{{ path('Dcpp@page', 'dcpp') }}">DC++</a> and it brings many news and features from other modification.</p>
-@endlang
+@endru
 @endsection

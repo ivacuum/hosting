@@ -65,5 +65,5 @@
   <p><strong>Jucy DC++</strong> — это новый DC++ клиент, разработка которого ведется около года. Сам клиент очень удобен, поддерживает мультипотоковую скачку, обладает приятным интерфейсом. Основное отличие клиента от остальных — наличие версий для macOS и Linux.</p>
 @en
   <p><strong>Jucy DC++</strong> is a multiplatform DC++ client software.</p>
-@endlang
+@endru
 @endsection

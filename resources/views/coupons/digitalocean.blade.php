@@ -8,30 +8,30 @@
       <p>Вы когда-нибудь задумывались можно ли бесплатно попробовать услуги одного из лучших хостинг-провайдеров в мире совершенно бесплатно в течение нескольких месяцев? Да, это возможно с помощью промокодов ниже.</p>
     @en
       <p>Have you ever wondered if you could try one of the best web hosting for free for a few months? Yes, you can, thanks to the promo codes below.</p>
-    @endlang
+    @endru
     <table class="table-stats table-adaptive mb-3">
       <thead>
         <tr>
-          <th>@ru Промокод @en Promo Code @endlang</th>
-          <th>@ru Выгода @en Benefits @endlang</th>
+          <th>@ru Промокод @en Promo Code @endru</th>
+          <th>@ru Выгода @en Benefits @endru</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><span class="label label-info">DO10</span> / <span class="label label-info">DROPLET10</span></td>
-          <td>@ru $10 для новых пользователей @en $10 credit for new users @endlang</td>
+          <td>@ru $10 для новых пользователей @en $10 credit for new users @endru</td>
         </tr>
         <tr>
           <td><span class="label label-info">BITNAMI</span></td>
-          <td>@ru $10 на счет при регистрации @en $10 off for a new account @endlang</td>
+          <td>@ru $10 на счет при регистрации @en $10 off for a new account @endru</td>
         </tr>
         <tr>
           <td><span class="label label-info">ACTIVATE10</span></td>
-          <td>@ru $10 на счет для нынешних клиентов @en $10 credit for existing customers @endlang</td>
+          <td>@ru $10 на счет для нынешних клиентов @en $10 credit for existing customers @endru</td>
         </tr>
         <tr>
           <td><span class="label label-info">LOWENDBOX</span> / <span class="label label-info">DOPRODUCT</span></td>
-          <td>@ru $15 на счет @en $15 DigitalOcean credits @endlang</td>
+          <td>@ru $15 на счет @en $15 DigitalOcean credits @endru</td>
         </tr>
       </tbody>
     </table>
@@ -55,7 +55,7 @@
         <li>Move on to Billing and apply any promo code from the above.</li>
         <li>Link your credit card or pay $5 via PayPal to complete the process.</li>
       </ol>
-    @endlang
+    @endru
   </div>
 </div>
 @endsection

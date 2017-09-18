@@ -8,10 +8,10 @@
 <h1 class="mt-0">{{ trans('life.english') }}</h1>
 @ru
   <p class="mb-5">Конспект информации, освоенной во время изучения языка.</p>
-@endlang
+@endru
 
 <a name="irregular-verbs"></a>
-<h2>@ru Неправильные глаголы @en Irregular Verbs @endlang</h2>
+<h2>@ru Неправильные глаголы @en Irregular Verbs @endru</h2>
 <table class="table-stats mb-5">
   <thead>
   <tr>
@@ -65,7 +65,7 @@
 </table>
 
 <a name="articles"></a>
-<h2>@ru Артикли @en Articles @endlang</h2>
+<h2>@ru Артикли @en Articles @endru</h2>
 <blockquote>
   <div>— Johnny, do you know where <b>the</b> Pyramids are?</div>
   <div>— No, miss, they must be lost. There was <b>a</b> teacher here yesterday asking <b>the</b> same question.</div>

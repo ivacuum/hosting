@@ -55,5 +55,5 @@
   <p>После этих настроек перезапустите программу и пользуйтесь <strong>FlyLinkDC++</strong> с удовольствием!</p>
 @en
   <p><strong>FlyLinkDC++</strong> is a free and open-source DC++ client software. It is based on <a class="link" href="{{ path('Dcpp@page', 'strongdc') }}">StrongDC++</a>.</p>
-@endlang
+@endru
 @endsection

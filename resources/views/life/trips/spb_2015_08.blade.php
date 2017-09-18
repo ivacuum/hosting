@@ -7,5 +7,5 @@
   <p>Итого: 3 часа в Москве, 12 часов в Питере и 24 часа в пути. Почти как при <a class="link" href="rammstein.2010">поездке на Раммштайн</a> в 2010 году.</p>
 @en
   <p>One-day visit to the <a class="link" href="metallica.2015">Metallica show</a>.</p>
-@endlang
+@endru
 @endsection

@@ -5,7 +5,7 @@
   <p>Братислава — рельефный город.</p>
 @en
   <p>Bratislava isn't flat for sure.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3567.jpg',
   'IMG_3569.jpg',
@@ -17,7 +17,7 @@
   <p>Улицы старого города.</p>
 @en
   <p>Old town's streets.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3549.jpg',
   'IMG_3560.jpg',
@@ -27,7 +27,7 @@
   <p>Фасады зданий.</p>
 @en
   <p>Buildings' facades.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3551.jpg',
   'IMG_3552.jpg',
@@ -40,14 +40,14 @@
   <p>Указатели улиц.</p>
 @en
   <p>Street signs.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3553.jpg'])
 
 @ru
   <p>Мост с НЛО на крыше.</p>
 @en
   <p>Bridge with UFO on top.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3564.jpg',
   'IMG_3565.jpg',
@@ -57,14 +57,14 @@
   <p>Пешеходы идут по мосту на отдельном уровне ниже машин. Половина прохода отдана велосипедистам.</p>
 @en
   <p>People cross the bridge on a separate level below cars. Half of the space is given to cyclists.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3575.jpg'])
 
 @ru
   <p>Другой пример моста, но уже без машин.</p>
 @en
   <p>Another bridge, but this one without cars.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3583.jpg',
   'IMG_3584.jpg',
@@ -75,28 +75,28 @@
   <p>Панорама города.</p>
 @en
   <p>City's panorama.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3574.jpg'])
 
 @ru
   <p>Автомат по продаже билетов на общественный транспорт. Плох тем, что принимает только монеты.</p>
 @en
   <p>Ticket machine. Sadly, it accepts only coins.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3541.jpg'])
 
 @ru
   <p>Остановка трамвая.</p>
 @en
   <p>Tram stop.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3542.jpg'])
 
 @ru
   <p>Улицы.</p>
 @en
   <p>Streets.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3534.jpg',
   'IMG_3535.jpg',
@@ -112,47 +112,47 @@
   <p>Офис Амазона.</p>
 @en
   <p>Amazon's office.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3540.jpg'])
 
 @ru
   <p>Офис Есета.</p>
 @en
   <p>Eset's office.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3576.jpg'])
 
 @ru
   <p>Велопарковка.</p>
 @en
   <p>Bicycle parking.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3577.jpg'])
 
 @ru
   <p>Фрэши стоят не как на <a class="link" href="bali.2016">Бали</a>, но тоже сойдет.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3578.jpg'])
 
 @ru
   <p>Поразительной привлекательности торговый центр. Прекрасный дизайн навигации уже подсказывал, что и остальное должно быть сделано добротно.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3582.jpg'])
 
 @ru
   <p>Так и оказалось. Туалет был такой, что его хотелось фотографировать. К каждому крану пиктограмма.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3579.jpg'])
 
 @ru
   <p>Перед туалетом чистка обуви и питьевой фонтан. Далее столик с тремя кожаными креслами, чтобы снаружи подождать нуждающихся.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3580.jpg'])
 
 @ru
   <p>Лавочка с видом на Дунай.</p>
 @en
   <p>Bench overlooking the Danube.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3585.jpg'])
 @endsection

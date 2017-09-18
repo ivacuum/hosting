@@ -13,7 +13,7 @@
     <a class="btn btn-default" href="https://vk.com/oomph_msk">Группа ВК</a>
     <a class="btn btn-default" href="https://www.treehouse-ticketing.com/cat/index/sCategory/95">Meet&Greet</a>
   </p>
-@endlang
+@endru
 --}}
 <div class="row">
   <div class="col-md-7">
@@ -63,6 +63,6 @@
 
 @ru
   <p class="mb-1">Видеозапись выступления.</p>
-@endlang
+@endru
 <youtube title="Oomph 2017, Moscow, Russia" v="Apm0ySyi7mA"></youtube>
 @endsection

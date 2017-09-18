@@ -20,7 +20,7 @@
       @ru
         <li class="mb-2"><a class="link" href="{{ path('Life@page', 'chillout') }}">Chillout</a></li>
         <li class="mb-2"><a class="link" href="{{ path('Life@page', 'books') }}">Книги</a></li>
-      @endlang
+      @endru
       <li class="mb-2"><a class="link" href="{{ path('Life@page', 'gigs') }}">{{ trans('menu.gigs') }}</a></li>
       @ru
         <li class="mb-2"><a class="link" href="{{ path('Life@page', 'favorite-posts') }}">Любимые посты</a></li>
@@ -29,7 +29,7 @@
         <li class="mb-2"><a class="link" href="{{ path('Life@page', 'movies') }}">Фильмы и сериалы</a></li>
         <li class="mb-2"><a class="link" href="{{ path('Life@page', 'using-in-travels') }}">Чем пользуюсь в путешествиях</a>
         </li>
-      @endlang
+      @endru
     </ul>
 
     <h2 class="mt-5">{{ trans('life.languages') }}</h2>
@@ -41,7 +41,7 @@
         <li class="mb-2">
           <a class="link" href="{{ path('Life@page', 'german') }}">{{ trans('life.german') }}</a>
         </li>
-      @endlang
+      @endru
       <li class="mb-2">
         <a class="link" href="{{ path('Life@page', 'japanese') }}">{{ trans('life.japanese') }}</a>
       </li>

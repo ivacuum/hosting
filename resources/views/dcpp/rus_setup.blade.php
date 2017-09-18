@@ -5,7 +5,7 @@
 @ru
   @section('i18n')
   @endsection
-@endlang
+@endru
 
 @section('content')
 @ru
@@ -42,5 +42,5 @@
       <p><img src="https://img.ivacuum.ru/g/091002/1_06xcHm1YXB.gif" width="661" height="499"></p>
     </li>
   </ol>
-@endlang
+@endru
 @endsection

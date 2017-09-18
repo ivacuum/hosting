@@ -22,7 +22,7 @@
       {{ trans('dcpp.faq') }}
     </a>
   </li>
-@endlang
+@endru
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ trans('dcpp.clients') }} <span class="caret"></span></a>
   <ul class="dropdown-menu">
     <li>
@@ -48,7 +48,7 @@
         <a href="{{ path('Dcpp@page', 'kalugadc') }}">
           {{ trans('dcpp.kalugadc') }}
         </a>
-      @endlang
+      @endru
       <a href="{{ path('Dcpp@page', 'pelinkdc') }}">
         {{ trans('dcpp.pelinkdc') }}
       </a>
@@ -101,7 +101,7 @@
         <a class="link link-lang" href="{{ url("en/{$request_uri}") }}" lang="en">In english</a>
       @en
         <a class="link link-lang" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
-      @endlang
+      @endru
     </li>
   @show
 </ul>

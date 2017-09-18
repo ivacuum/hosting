@@ -23,6 +23,6 @@
     <h2 class="mt-0">About</h2>
     <p>This site is a free, best-effort service and cannot provide any uptime or support guarantees.</p>
     <p>I do my best to keep it running, but sometimes things go wrong. Sometimes there are network or provider issues outside of my control. Sometimes abusive traffic temporarily affects response times. Sometimes I break things by doing something wrong, but I try not to.</p>
-  @endlang
+  @endru
 </div>
 @endsection

@@ -24,7 +24,7 @@
       Файл русификации &middot; {{ ViewHelper::size(21464) }}
     </a>
     <a class="btn btn-default" href="{{ path('Dcpp@page', 'rus_setup') }}">Инструкция по русификации</a>
-  @endlang
+  @endru
 </p>
 @endsection
 
@@ -34,5 +34,5 @@
   <p>Удобный интерфейс программы ApexDC++ позволит легко обмениваться файлами в пиринговых сетях.</p>
 @en
   <p><strong>ApexDC++</strong> is a free DC++ client software. It is based on <a class="link" href="{{ path('Dcpp@page', 'strongdc') }}">StrongDC++</a> and including many its features. ApexDC++ contains plugin which may prevent connections from and to certain subnetworks.</p>
-@endlang
+@endru
 @endsection

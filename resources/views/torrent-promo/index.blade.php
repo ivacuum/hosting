@@ -20,7 +20,7 @@
       @en
         <h3>Tracker status</h3>
         <p class="text-success">ok</p>
-      @endlang
+      @endru
     </div>
   </div>
   <div class="col-md-9">
@@ -88,7 +88,7 @@
     @en
       <h1 class="h2 mt-0">Torrent-tracker in Beeline network in Kaluga</h1>
       <p><a class="btn btn-primary btn-lg" href="http://t.ivacuum.ru/">Go to the tracker &rarr;</a></p>
-    @endlang
+    @endru
   </div>
 </div>
 @endsection

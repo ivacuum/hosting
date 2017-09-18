@@ -8,7 +8,7 @@
   <p>Операторы отлично скрасили ожидание подготовки сцены под хэдлайнера камерой поцелуев и выискиванием отдельных забавных посетителей.</p>
 @en
   <p>Maxidrom festival returns after a long break.</p>
-@endlang
+@endru
 <div class="row">
   <div class="col-md-7">
     @include('tpl.setlist-title')
@@ -49,6 +49,6 @@
 @ru
   <p>Звуки взрывов были крайне мощными и громкими. Уже и позабылось как было на прошлых концертах.</p>
   <p>Новый свет фантастический. Нужен ракурс видео по центру, чтобы всю задуманную красоту оценить.</p>
-@endlang
+@endru
 <youtube title="Rammstein 2016, Maxidrom, Moscow, Russia" v="ateEiEHKBWE"></youtube>
 @endsection

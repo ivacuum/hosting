@@ -5,7 +5,7 @@
 @ru
   @section('i18n')
   @endsection
-@endlang
+@endru
 
 @section('content')
 @ru
@@ -78,5 +78,5 @@
     </li>
   </ol>
   <p><a class="btn btn-default" href="{{ path('Dcpp@page', 'strongdc') }}">Вернуться на страницу клиента StrongDC++</a></p>
-@endlang
+@endru
 @endsection

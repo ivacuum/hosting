@@ -21,5 +21,5 @@
   <p>Эта P2P сеть работает по принципу расшаривания ресурсов для всеобщего доступа. Каждый пользователь выделяет ряд файлов которыми хочет поделиться с обществом.</p>
 @en
   <p><strong>DC++</strong> is a popular client software for the Direct Connect file sharing network. Most of the forks are made from this client.</p>
-@endlang
+@endru
 @endsection

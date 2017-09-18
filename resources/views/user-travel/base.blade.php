@@ -14,7 +14,7 @@
     <div class="navbar-collapse">
       {{--
       @section('brand')
-        <a class="navbar-brand" href="{{ path('UserTravelTrips@index', $traveler->login) }}">{{ '@'.$traveler->login }}<br>@ru путешествует @en travels @endlang</a>
+        <a class="navbar-brand" href="{{ path('UserTravelTrips@index', $traveler->login) }}">{{ '@'.$traveler->login }}<br>@ru путешествует @en travels @endru</a>
       @show
       --}}
       <ul class="nav navbar-nav">

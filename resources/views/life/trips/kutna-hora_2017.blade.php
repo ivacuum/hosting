@@ -3,21 +3,21 @@
 @section('content')
 @ru
   <p>Отправление в 12:00. Будильник на 9:00. Подъем. Так-так-так, на часах 9:10, проверим-ка время отправления. Что? Как 10:04? Пора валить. Блин, сел не на тот трамвай. В выходной долго ждать обратного — так точно опоздаю. Интернета нет, новый маршрут до вокзала надо продумывать самостоятельно. Окей, на третьей остановке должен быть переход на метро. Так и есть. Отсюда прямой путь на главный вокзал. Подъезжаем, время 10:01. Придется побегать. Фух, успел. Внутри вагона смутило описание другого маршрута на табло, но проводник уже не выпустил из поезда, так как тронулись. Поезд все же оказался искомый.</p>
-@endlang
+@endru
 
 @ru
   <p>Платформа.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0070.jpg'])
 
 @ru
   <p>Главный вокзал. Находится далековато — до центра минут 20–30 пешком.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9831.jpg'])
 
 @ru
   <p>По пути небольшое кладбище.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_9833.jpg',
   'IMG_9834.jpg',
@@ -25,12 +25,12 @@
 
 @ru
   <p>Скелет откопали.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9836.jpg'])
 
 @ru
   <p>Снова на сцену выходят карты maps.me. Они показали тропинки в этом парке. Гугл и прочие показывали одно сплошное поле.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_9839.jpg',
   'IMG_9840.jpg',
@@ -44,27 +44,27 @@
 
 @ru
   <p>По тропинкам можно было выйти на дорогу. Около нее смотровая башня.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9847.jpg'])
 
 @ru
   <p>И пара домов на весь парк.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9848.jpg'])
 
 @ru
   <p>Продолжим путь.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9852.jpg'])
 
 @ru
   <p>На данной развилке из своих мыслей вывел чех с вопросом как куда-то пройти. Куда можно пройти в таком лесу? В нем было буквально три здания на весь лес: два домика с рестораном и обзорная башня. Наверное, ему надо было туда. Уточнить не представлялось возможным, так как я не силен в чешском, а он — ноль в английском. Однако, язык жестов работает везде. Держи путь прямо и налево, товарищ.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9854.jpg'])
 
 @ru
   <p>Нашелся выход из парка. Теперь пошли домики.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_9857.jpg',
   'IMG_9858.jpg',
@@ -75,27 +75,27 @@
 
 @ru
   <p>Добротный тротуар вдоль дороги. Знак сообщает, что закончился район Каньк.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9862.jpg'])
 
 @ru
   <p>Даже лавки вдоль дороги есть.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9864.jpg'])
 
 @ru
   <p>Пластиковые бутылки.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9865.jpg'])
 
 @ru
   <p>Одуванчик.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9869.jpg'])
 
 @ru
   <p>Начались поля.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_9863.jpg',
   'IMG_9866.jpg',
@@ -104,122 +104,122 @@
 
 @ru
   <p>Для полноты картины в центре круга недостает портала.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9871.jpg'])
 
 @ru
   <p>Множество маленьких домиков.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9872.jpg'])
 
 @ru
   <p>Посмотрим поближе.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9874.jpg'])
 
 @ru
   <p>Некоторые дома еще строятся.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9877.jpg'])
 
 @ru
   <p>Некоторые близки к завершению.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9878.jpg'])
 
 @ru
   <p>Некоторые далеки.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9879.jpg'])
 
 @ru
   <p>Некоторые закончены и заселены.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9880.jpg'])
 
 @ru
   <p>Есть домики посолиднее.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9876.jpg'])
 
 @ru
   <p>Овцы. При виде меня ближняя аж подпрыгнула от неожиданности и стала убегать.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9881.jpg'])
 
 @ru
   <p>Дорога из района.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9883.jpg'])
 
 @ru
   <p>Подъезд к домам.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9884.jpg'])
 
 @ru
   <p>В смысле Кутна-Гора начинается? А я где был?</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9889.jpg'])
 
 @ru
   <p>С обратной стороны, разумеется, перечеркнутый знак. Один из любимых подколов — это когда идешь с кем-то в неизвестном направлении, пошутить, мол, где мы и добавить, что сейчас встретим перечеркнутый знак города. В итоге знак встретил я сам, когда бродил в полной уверенности, что нахожусь в городе.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9890.jpg'])
 
 @ru
   <p>Улица.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9894.jpg'])
 
 @ru
   <p>Гаражи.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9893.jpg'])
 
 @ru
   <p>Указатель улицы.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9892.jpg'])
 
 @ru
   <p>Улица Орловская. Хоть стена и в ужасном состоянии, но детали и слои рельефа дома не дают равнодушно отвести взгляд.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9903.jpg'])
 
 @ru
   <p>Улица Под Валы. Водосток идет прямо <s>в подвалы</s> под землю.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9895.jpg'])
 
 @ru
   <p>Что за цветки?</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9899.jpg'])
 
 @ru
   <p>Может контекст подскажет. Поиск выдавал черешню, но слабо верится в этот вариант.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9897.jpg'])
 
 @ru
   <p>Вывеска магазина, вид сбоку.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9900.jpg'])
 
 @ru
   <p>Вывеска магазина, вид спереди. Прекрасно!</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9901.jpg'])
 
 @ru
   <p>Вход во двор и в дом.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9902.jpg'])
 
 @ru
   <p>Шикарные улицы старого города. Больше всего впечатляют города, которые в разных районах выглядят совершенно по-разному, но тем не менее привлекательно. Как несколько городов в одном. Кутна-Гора отличный пример. Сначала с главного вокзала идешь по окраинам, через лес и частные дома (1). Затем проходишь старый город (2). Потом долго спускаешься вниз и вдоль железной дороги попадаешь в район поновее (3). И еще дальше путь проходит через концентрат многоэтажек советских времен (4). Четыре в одном.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_9904.jpg',
   'IMG_9905.jpg',
@@ -243,37 +243,37 @@
 
 @ru
   <p>Карта под ногами.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9938.jpg'])
 
 @ru
   <p>Теперь в самый низ.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9952.jpg'])
 
 @ru
   <p>Через частные дома.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9958.jpg'])
 
 @ru
   <p>И мост.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9959.jpg'])
 
 @ru
   <p>Деревья обвили, чтобы стволы зарастали листвой.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9966.jpg'])
 
 @ru
   <p>Справа ствол уже вовсю оброс, а слева только начинает.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9975.jpg'])
 
 @ru
   <p>Железная дорога через лесок.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_9969.jpg',
   'IMG_9970.jpg',
@@ -286,137 +286,137 @@
 
 @ru
   <p>Портрет высечен в скале.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9977.jpg'])
 
 @ru
   <p>Напротив портрета музей.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9980.jpg'])
 
 @ru
   <p>Он же сбоку.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9936.jpg'])
 
 @ru
   <p>Гаражи.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9988.jpg'])
 
 @ru
   <p>Проход через дом.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9990.jpg'])
 
 @ru
   <p>Мост прямо из дома.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9992.jpg'])
 
 @ru
   <p>Ручей добавляет красок этому месту.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9995.jpg'])
 
 @ru
   <p>Около железнодорожного переезда.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9996.jpg'])
 
 @ru
   <p>Железных дорог в городе оказалось немало.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0001.jpg'])
 
 @ru
   <p>В другую сторону.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0002.jpg'])
 
 @ru
   <p>Баки разноцветные. Дома разноцветные. Красота!</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0004.jpg'])
 
 @ru
   <p>Лавочка перед огражденной скульптурой.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0005.jpg'])
 
 @ru
   <p>Рельефная улица.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0006.jpg'])
 
 @ru
   <p>Лоджия.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0007.jpg'])
 
 @ru
   <p>На тротуаре дорожный знак на закругленном к верху низком столбе.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0009.jpg'])
 
 @ru
   <p>Объемная дорога.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9998.jpg'])
 
 @ru
   <p>Объемная стена.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0010.jpg'])
 
 @ru
   <p>Подбитая стена.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0003.jpg'])
 
 @ru
   <p>Тротуар плавно переходит в проезжую часть. Один дорожный знак сменяет другой.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0012.jpg'])
 
 @ru
   <p>Внезапно заканчивающийся пешеходный переход.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0014.jpg'])
 
 @ru
   <p>После тушения пожара.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0017.jpg'])
 
 @ru
   <p>Старые вагоны.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0020.jpg'])
 
 @ru
   <p>Вокзал действующий. Двухвагонный состав возит людей между центром города и главным вокзалом, расположенным <s>черт знает где</s> далеко.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0022.jpg'])
 
 @ru
   <p>Забавные узкие платформы.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0023.jpg'])
 
 @ru
   <p>Среди прочих присутствует указатель на улицу Пушкина.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0016.jpg'])
 
 @ru
   <p>Вот и она.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0030.jpg'])
 
 @ru
   <p>Жилой район. Просто, опрятно и чисто. Если у нас убрать автомобили со дворов, то могло бы быть так же.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0024.jpg',
   'IMG_0025.jpg',
@@ -437,66 +437,66 @@
 
 @ru
   <p>Однако, чехи на земле тоже паркуются.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0026.jpg'])
 
 @ru
   <p>Окошко в балконах.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0028.jpg'])
 
 @ru
   <p>Так-так-так, припаркован автобус. Рассмотрим поближе.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0053.jpg'])
 
 @ru
   <p>Передняя дверь. Можно оплатить проезд банковской картой.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0054.jpg'])
 
 @ru
   <p>Неплохо оборудованное место водителя. Он ведь и роль кондуктора выполняет для редких пассажиров, у которых нет билета или проездного. На сидении подушка для мягкости.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0055.jpg'])
 
 @ru
   <p>Старый автомобиль.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0056.jpg'])
 
 @ru
   <p>Дорога.</p>
 @en
   <p>Road.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0060.jpg'])
 
 @ru
   <p>Храм.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0061.jpg'])
 
 @ru
   <p>Непонятно знак перечеркнут вандалами или дорожниками?</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0063.jpg'])
 
 @ru
   <p>Табло отправлений. Последняя колонка для задержек в минутах. Нам следует гордиться, что в РФ такая не нужна.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0064.jpg'])
 
 @ru
   <p>Обратное отправление снова с главного вокзала.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0071.jpg'])
 
 @ru
   <p>Осмотримся.</p>
 @en
   <p>Let's take a look.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0066.jpg',
   'IMG_0067.jpg',
@@ -507,41 +507,41 @@
 
 @ru
   <p>Прибывает поезд.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0076.jpg'])
 
 @ru
   <p>ČD — ческе драги (буква Г с моим любимым украинским или южным, как его еще называют, акцентом). Платформа низкая, поэтому забираться приходится по ступенькам. Проводников меньше, нежели вагонов. Иногда двери остаются открытыми после входа и выхода пассажиров.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0078.jpg'])
 
 @ru
   <p>Тогда женщине с зеленым диском предстоит пройти и все их закрыть, прежде чем дать сигнал отправления машинисту. Одну из дальних дверей подошла и закрыла девушка на платформе, за что получила одобрительный кивок от этой женщины.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0081.jpg'])
 
 @ru
   <p>Прямые рейсы в Кутну-Гору из Праги не особо часты. С пересадками на электричках всегда можно добраться через Колин. Из других регионов ситуация вряд ли лучше.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0086.jpg'])
 
 @ru
   <p>Впервые ехал в проходе с открытыми окнами, да еще и добрых полчаса. Обдувало так, что реально было стоять и не замерзнуть только в полностью застегнутой куртке и капюшоне. И это при +25&deg;C на улице.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0088.jpg'])
 
 @ru
   <p>RegioJet — это не только автобусы, но и поезда.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0092.jpg'])
 
 @ru
   <p>В купе на одной стороне сразу четыре тесных места. Вне часа пик, конечно, ездят по двое. Билеты продают как с резервацией мест, так и без. Признак резервации надо смотреть на бумажках перед купе — перечеркнутые места забронированы. За актуальностью информации следят проводники.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0099.jpg'])
 
 @ru
   <p>Проноситься мимо вокзалов и смотреть на красоту вокруг — кайф!</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0095.jpg'])
 @endsection

@@ -56,7 +56,7 @@
     <p>По данным критериям новости не найдены.</p>
   @en
     <p>No news found.</p>
-  @endlang
+  @endru
 @endif
 
 @endsection

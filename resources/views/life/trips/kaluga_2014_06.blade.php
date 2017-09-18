@@ -5,7 +5,7 @@
   <p>Купаемся.</p>
 @en
   <p>Swimming.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0749.jpg',
   'IMG_0750.jpg',

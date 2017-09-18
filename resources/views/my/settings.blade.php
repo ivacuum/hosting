@@ -42,7 +42,7 @@
         @endif
         @ru
           <span class="help-block">Из названий раздач будут скрыты данные в скобках, например, Deus Ex <s>[RePack] [RUS] (2007)</s>.</span>
-        @endlang
+        @endru
       </div>
 
       <button class="btn btn-primary">

@@ -28,7 +28,7 @@
             <span class="help-block">Не менее 6 символов</span>
           @en
             <span class="help-block">Minimum length is 6 characters</span>
-          @endlang
+          @endru
         @endif
       </div>
 
@@ -51,7 +51,7 @@
       <p>Ссылка будет отправлена на вашу электронную почту <span class="font-bold">{{ Auth::user()->email }}</span></p>
     @en
       <p>The link will be sent to your e-mail <span class="font-bold">{{ Auth::user()->email }}</span></p>
-    @endlang
+    @endru
 
     <button class="btn btn-default">
       {{ trans('auth.password_remind') }}

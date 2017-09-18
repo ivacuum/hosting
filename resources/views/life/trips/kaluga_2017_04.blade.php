@@ -5,7 +5,7 @@
   <p>Дело к дождю.</p>
 @en
   <p>It's going to rain.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8783.jpg',
   'IMG_8784.jpg',
@@ -20,7 +20,7 @@
   <p>Дело к закату.</p>
 @en
   <p>It's going to be a sunset.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8791.jpg',
   'IMG_8792.jpg',
@@ -36,7 +36,7 @@
   <p>Дело к стройке.</p>
 @en
   <p>It's going to be a construction.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8808.jpg',
   'IMG_8809.jpg',
@@ -47,27 +47,27 @@
   <p>Тоннель.</p>
 @en
   <p>Tunnel.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8790.jpg'])
 
 @ru
   <p>Женщина с ребенком ловко переходит широкую дорогу.</p>
 @en
   <p>A woman with a child skillfully crosses a wide road.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8804.jpg'])
 
 @ru
   <p>Тропинка вдоль забора.</p>
 @en
   <p>Path along the fence.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8807.jpg'])
 
 @ru
   <p>В Калуге много железнодорожных путей прямо в городе.</p>
 @en
   <p>There are many railroads right in the city.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8811.jpg'])
 @endsection

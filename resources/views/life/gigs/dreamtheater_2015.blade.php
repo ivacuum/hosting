@@ -7,7 +7,7 @@
   <p>Фестиваль музыки в стиле прогрессив метал с хэдлайнерами в лице Дрим Театра. Ограничение по времени фестивальных выступлений коснулось и их — сет был всего на полтора часа, когда <a class="link" href="dreamtheater.2014.spb">годом ранее</a> они играли три.</p>
   <p>Укрепилось впечатление, что музыкантам Москва нравится больше Питера по их активности на соответствующих шоу и вниманию к публике.</p>
   <p>Интересно составлен сет — по одной песне с каждого выпущенного альбома с 1989 по 2013 годы. Молодцы, что вернули в программу As I Am и Panic Attack — их нехватало с <a class="link" href="dreamtheater.2009">2009 года</a>.</p>
-@endlang
+@endru
 <div class="row">
   <div class="col-md-7">
     @include('tpl.setlist-title')
@@ -36,7 +36,7 @@
 
 @ru
   <p>Несколько фото с концерта.</p>
-@endlang
+@endru
 <div class="js-lazy" data-lazy-type="fotorama">
   <img src="https://life.ivacuum.ru/gigs/dreamtheater.2015/IMG_1682.jpg">
   <img src="https://life.ivacuum.ru/gigs/dreamtheater.2015/IMG_1688.jpg">
@@ -45,6 +45,6 @@
 
 @ru
   <p class="mb-1">Видеозапись выступления.</p>
-@endlang
+@endru
 <youtube title="Dream Theater 2015, Moscow, Russia" v="w0ZYxUeKsu8"></youtube>
 @endsection

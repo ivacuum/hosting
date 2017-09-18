@@ -18,7 +18,7 @@
   @ru
     <span class="text-muted">&nbsp;&middot;&nbsp;</span>
     <a class="link" href="{{ path('Dcpp@page', 'kalugadc') }}">{{ trans('dcpp.kalugadc') }}</a>
-  @endlang
+  @endru
   <span class="text-muted">&nbsp;&middot;&nbsp;</span>
   <a class="link" href="{{ path('Dcpp@page', 'pelinkdc') }}">{{ trans('dcpp.pelinkdc') }}</a>
   <span class="text-muted">&nbsp;&middot;&nbsp;</span>
@@ -36,7 +36,7 @@
     @en
       <h2>What is P2P network?</h2>
       <p>Peer-to-peer network allows users to share files with other users. All users connect to the special computer called hub that routes search requests/results and facilitates clients to connect to each other. All file transfers are being made directly between clients, not through the hub.</p>
-    @endlang
+    @endru
   </div>
   <div class="col-md-4">
     @ru
@@ -60,7 +60,7 @@
         <li>it will find better user to download from if the speed is too low</li>
         <li>it will perform file integrity check while it is being downloaded</li>
       </ul>
-    @endlang
+    @endru
   </div>
   <div class="col-md-4">
     @ru
@@ -81,7 +81,7 @@
         <li>Free access to terabytes of data.</li>
         <li>Universally: it is available on Windows, Linux and Mac OS.</li>
       </ul>
-    @endlang
+    @endru
   </div>
 </div>
 @endsection

@@ -6,7 +6,7 @@
           {{ $entry['ru'] }}
         @en
           {{ $entry['en'] ?? '' }}
-        @endlang
+        @endru
       </td>
       <td>
         <span class="{{ !empty($entry['phonetic']) ? 'tooltipped tooltipped-n' : '' }}" aria-label="{{ $entry['phonetic'] ?? '' }}">

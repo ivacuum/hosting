@@ -5,7 +5,7 @@
 @section('content')
 @ru
   <p>Заключительный концерт тура ирландцев. Гитаристы играли на одних и тех же гитарах все шоу, из-за этого чуть ли не каждую песню их перенастраивали — это резало глаз после популярных международных коллективов, где у каждой группы целая команда техников и множество предварительно настроенных инструментов.</p>
-@endlang
+@endru
 <div class="row">
   <div class="col-md-7">
     @include('tpl.setlist-title')
@@ -39,7 +39,7 @@
 
 @ru
   <p>Несколько фото с концерта.</p>
-@endlang
+@endru
 <div class="js-lazy" data-lazy-type="fotorama">
   <img src="https://life.ivacuum.ru/gigs/giaa.2014/IMG_1348.jpg" width="1000" height="750">
   <img src="https://life.ivacuum.ru/gigs/giaa.2014/IMG_1349.jpg" width="1000" height="750">

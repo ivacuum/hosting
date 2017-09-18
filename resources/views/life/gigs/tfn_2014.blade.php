@@ -5,7 +5,7 @@
 @section('content')
 @ru
   <p>На концерте всего было около полутора сотен человек — никогда прежде не был на столь малочисленных шоу.</p>
-@endlang
+@endru
 <div class="row">
   <div class="col-md-7">
     @include('tpl.setlist-title')

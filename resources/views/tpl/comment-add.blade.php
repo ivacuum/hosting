@@ -62,5 +62,5 @@
     <div class="mt-3">
       Please <a class="link" href="{{ path('Auth\SignIn@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">sign in</a> to comment.
     </div>
-  @endlang
+  @endru
 @endif

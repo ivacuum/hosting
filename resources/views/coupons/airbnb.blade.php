@@ -8,14 +8,14 @@
       <p>Вы легко можете получить скидку около 10 евро на ваши следующие бронирования на <a class="link" href="https://www.airbnb.ru/{{ config('cfg.airbnb_link') }}">airbnb.ru</a> с помощью купонов ниже. Также я привожу информацию где удалось успешно воспользоваться данными купонами. Коды <span class="font-bold">работают для уже зарегистрированных пользователей</span>.</p>
     @en
       <p>You could easily get €10 off your booking cost on <a class="link" href="https://www.airbnb.com/{{ config('cfg.airbnb_link') }}">airbnb.com</a> just by using coupons below. I also provide the info where I successfully applied these coupons. It <span class="font-bold">works for already registered users</span>.</p>
-    @endlang
+    @endru
   </div>
 </div>
 <table class="table-stats table-adaptive">
   <thead>
     <tr>
-      <td>@ru Купон @en Coupon Code @endlang</td>
-      <td>@ru Где проверен @en Successfully used in @endlang</td>
+      <td>@ru Купон @en Coupon Code @endru</td>
+      <td>@ru Где проверен @en Successfully used in @endru</td>
     </tr>
   </thead>
   <tbody>
@@ -26,7 +26,7 @@
           <a class="link" href="/life/hamburg.2016">Гамбург</a>
         @en
           <a class="link" href="/en/life/hamburg.2016">Hamburg</a>
-        @endlang
+        @endru
       </td>
     </tr>
     <tr>
@@ -40,7 +40,7 @@
           <a class="link" href="/life/amsterdam.2016">Амстердам</a>
         @en
           <a class="link" href="/en/life/amsterdam.2016">Amsterdam</a>
-        @endlang
+        @endru
       </td>
     </tr>
     <tr>
@@ -50,7 +50,7 @@
           <a class="link" href="/life/bali.2016">Бали</a>
         @en
           <a class="link" href="/en/life/bali.2016">Bali</a>
-        @endlang
+        @endru
       </td>
     </tr>
     <tr>
@@ -68,7 +68,7 @@
           <a class="link" href="/life/berlin.2016">Берлин</a>
         @en
           <a class="link" href="/en/life/berlin.2016">Berlin</a>
-        @endlang
+        @endru
       </td>
     </tr>
     <tr>
@@ -94,7 +94,7 @@
           <a class="link" href="/life/budapest.2017.01">Будапешт</a>
         @en
           <a class="link" href="/en/life/budapest.2017.01">Budapest</a>
-        @endlang
+        @endru
       </td>
     </tr>
     <tr>
@@ -108,7 +108,7 @@
           <a class="link" href="/life/cologne.2016">Кельн</a>
         @en
           <a class="link" href="/en/life/cologne.2016">Cologne</a>
-        @endlang
+        @endru
       </td>
     </tr>
     <tr>
@@ -178,7 +178,7 @@
           <a class="link" href="/life/msk.2016.06">Москва</a>
         @en
           <a class="link" href="/en/life/msk.2016.06">Moscow</a>
-        @endlang
+        @endru
       </td>
     </tr>
     <tr>
@@ -188,7 +188,7 @@
           <a class="link" href="/life/krasnodar.2016">Краснодар</a>
         @en
           <a class="link" href="/en/life/krasnodar.2016">Krasnodar</a>
-        @endlang
+        @endru
       </td>
     </tr>
     <tr>
@@ -206,7 +206,7 @@
           <a class="link" href="/life/spb.2016.03">Санкт-Петербург</a>
         @en
           <a class="link" href="/en/life/spb.2016.03">Saint Petersburg</a>
-        @endlang
+        @endru
       </td>
     </tr>
     <tr>
@@ -220,7 +220,7 @@
           <a class="link" href="/life/prague.2016">Прага</a>
         @en
           <a class="link" href="/en/life/prague.2016">Prague</a>
-        @endlang
+        @endru
       </td>
     </tr>
     <tr>
@@ -234,7 +234,7 @@
           <a class="link" href="/life/wiesbaden.2016">Висбаден</a>
         @en
           <a class="link" href="/en/life/wiesbaden.2016">Wiesbaden</a>
-        @endlang
+        @endru
       </td>
     </tr>
     <tr>
@@ -272,7 +272,7 @@
       <p>Then you can get even bigger discount for your first trip.</p>
       <a class="btn btn-primary" href="https://www.airbnb.com/{{ config('cfg.airbnb_link') }}">Get $25 coupon</a>
       <span class="help-block">After a click you will be redirected to airbnb.com</span>
-    @endlang
+    @endru
   </div>
 </div>
 @endsection

@@ -22,7 +22,7 @@
                 {{ trans('menu.torrents') }}
               </a>
             </li>
-          @endlang
+          @endru
           <li>
             <a class="{{ $self == 'Photos' ? 'navbar-selected' : '' }}" href="{{ path('Photos@trips') }}">
               {{ trans('photos.index') }}

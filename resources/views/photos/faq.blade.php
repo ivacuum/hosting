@@ -3,19 +3,19 @@
 @section('content')
 @component('accordion')
 @slot('title')
-@ru Что это за ресурс? @en What is this site section? @endlang
+@ru Что это за ресурс? @en What is this site section? @endru
 @endslot
 
 @ru
   <p>Фотографии, сделанные мною во время различных поездок. Большинство из них содержит метки геолокации, позволяющие посмотреть место снимка на карте. Все фотографии закреплены за историями о поездках. Также присутствует ручная разбивка по темам (тэги).</p>
 @en
   <p>The photos I took during my trips. Most of them have geotags included, so you can look up a pic on the map. All photos are linked with the stories about my trips. There are manually added tags as well.</p>
-@endlang
+@endru
 @endcomponent
 
 @component('accordion')
 @slot('title')
-@ru Что за данные рядом со снимком? @en What is the data on the side of the photo? @endlang
+@ru Что за данные рядом со снимком? @en What is the data on the side of the photo? @endru
 @endslot
 
 @ru
@@ -34,6 +34,6 @@
     — place of the shooting on the map.
   </p>
   <p><strong>Tags</strong> — topics of the photo. This way you can view all the fountains, sunsets, etc.</p>
-@endlang
+@endru
 @endcomponent
 @endsection

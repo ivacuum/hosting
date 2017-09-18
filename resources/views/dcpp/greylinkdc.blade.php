@@ -20,7 +20,7 @@
     Файл русификации &middot; {{ ViewHelper::size(108876) }}
   </a>
   <a class="btn btn-default" href="{{ path('Dcpp@page', 'rus_setup') }}">Инструкция по русификации</a>
-@endlang
+@endru
 @endsection
 
 @section('about_software')
@@ -35,5 +35,5 @@
   </ul>
 @en
   <p><strong>GreyLinkDC++</strong> is a stable and optimized DC++ client software.</p>
-@endlang
+@endru
 @endsection

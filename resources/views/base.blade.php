@@ -71,7 +71,7 @@
             Hey, looks like you might find useful the <a class="link" href="{{ url("en/{$request_uri}") }}">english version</a> of this page
           @en
             Похоже, что вам может пригодиться версия этой страницы <a class="link" href="{{ url($request_uri) }}">на русском языке</a>
-          @endlang
+          @endru
         </div>
       @endif
       @if (Session::has('message'))
@@ -109,7 +109,7 @@
               <a class="link link-lang" href="{{ url("en/{$request_uri}") }}" lang="en">In&nbsp;english</a>
             @en
               <a class="link link-lang" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
-            @endlang
+            @endru
           </li>
         @show
       </ul>

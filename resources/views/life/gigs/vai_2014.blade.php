@@ -15,12 +15,12 @@
         <li>30 мая — Денвер, штат Колорадо, США</li>
       </ul>
       <p>Стив Вай творил с гитарой во время своего полуторачасового выступления нечто невообразимое. Удалось шикануть и взять первый ряд, тем более после покупки билетов на Линкин Парк местные цены были смехотворны. Снова убедился, что как минимум один раз всем стоит взять лучшие места на ожидаемое шоу, так как впечатления потом непередаваемо крутые.</p>
-    @endlang
+    @endru
     @ru
       <p>Предполагаемый сетлист:</p>
     @en
       <p>Setlist probably was:</p>
-    @endlang
+    @endru
     <ol>
       <li>Racing the World</li>
       <li>Velorum</li>
@@ -56,7 +56,7 @@
   <p>Попали под прицел фотокамер.</p>
 @en
   <p>Were caught by the cameras.</p>
-@endlang
+@endru
 <div class="js-lazy" data-lazy-type="fotorama">
   <img src="https://life.ivacuum.ru/gigs/vai.2014/Steve_093.jpg">
   <img src="https://life.ivacuum.ru/gigs/vai.2014/Steve_008.jpg">
@@ -66,6 +66,6 @@
   <p>Видео одной из песен.</p>
 @en
   <p>Short footage from the show.</p>
-@endlang
+@endru
 <youtube title="Steve Vai, Kaluga 2014" v="OkpMqrPtY7M"></youtube>
 @endsection

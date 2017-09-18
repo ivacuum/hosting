@@ -5,22 +5,22 @@
   <p>Исследование города на велосипеде.</p>
 @en
   <p>City exploration on the bike.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0630.jpg'])
 
 @ru
   <p>Внезапно тупик у железной дороги.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0631.jpg'])
 
 @ru
   <p>Местами кучкуются деревянные дома.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0632.jpg'])
 
 @ru
   <p>В Туле очень много детских площадок во дворах. Вдобавок большинство дворов изобилует деревьями и теньком — детям в кайф проводить дни напролет на улице.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0638.jpg',
   'IMG_0646.jpg',
@@ -28,7 +28,7 @@
 
 @ru
   <p>Сам город очень рельефный.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0642.jpg',
   'IMG_0643.jpg',
@@ -36,7 +36,7 @@
 
 @ru
   <p>Трамвайным путям не позавидуешь.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0649.jpg',
   'IMG_0650.jpg',
@@ -48,7 +48,7 @@
 
 @ru
   <p>Да и пешеходу тоже. Крайне редко встречаются места с тротуарной плиткой — в основном в центре.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0676.jpg',
   'IMG_0655.jpg',
@@ -62,12 +62,12 @@
   <p>Река Упа.</p>
 @en
   <p>Upa river.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0680.jpg'])
 
 @ru
   <p>Укатив черт знает куда на восток Тулы, наткнулся на затяжной спуск вдоль гаражей по нелюбимой щебенке (даже по песку лучше ехать). После приятного спуска на велосипеде всегда следует тяжелый подъем. В этот раз это почему-то не смущало. В определенный момент слева обнаружился въезд на большую открытую зону, а там трасса для мотокросса.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0666.jpg',
   'IMG_0668.jpg',
@@ -79,7 +79,7 @@
   <p>Дороги.</p>
 @en
   <p>Roads.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0635.jpg',
   'IMG_0640.jpg',
@@ -93,6 +93,6 @@
   <p>Круг по городу сделан.</p>
 @en
   <p>Trip around the city is done.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0689.jpg'])
 @endsection

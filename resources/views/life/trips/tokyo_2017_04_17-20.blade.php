@@ -3,7 +3,7 @@
 @section('content')
 @ru
   <p>Район высоток.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8733.jpg',
   'IMG_8729.jpg',
@@ -27,7 +27,7 @@
   <p>Панорамы.</p>
 @en
   <p>Panoramas.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8745.jpg',
   'IMG_8752.jpg',
@@ -36,22 +36,22 @@
 
 @ru
   <p>Ближе к закату включается подсветка.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8769.jpg'])
 
 @ru
   <p>Ночная реклама.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8206.jpg'])
 
 @ru
   <p>Дневная реклама.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8208.jpg'])
 
 @ru
   <p>Парк.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8210.jpg',
   'IMG_8211.jpg',
@@ -76,7 +76,7 @@
 
 @ru
   <p>Зарядка.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8230.jpg',
   'IMG_8234.jpg',
@@ -87,22 +87,22 @@
 
 @ru
   <p>Удачный кадр.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8343.jpg'])
 
 @ru
   <p>Где черепаха?</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8360.jpg'])
 
 @ru
   <p>Где две спящие утки?</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8364.jpg'])
 
 @ru
   <p>Тойота Супра.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8371.jpg',
   'IMG_8372.jpg',
@@ -112,7 +112,7 @@
   <p>Улицы Токио.</p>
 @en
   <p>Tokyo streets.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8374.jpg',
   'IMG_8378.jpg',
@@ -125,12 +125,12 @@
 
 @ru
   <p>Выделяющегося вида трейлеры, которые ездят конвоем из трех машин.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8376.jpg'])
 
 @ru
   <p>Люди в костюмах, коих в час пик не счесть, особенно в общественном транспорте.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8380.jpg',
   'IMG_8381.jpg',
@@ -141,7 +141,7 @@
 
 @ru
   <p>Парк среди высоток.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8384.jpg',
   'IMG_8386.jpg',
@@ -160,12 +160,12 @@
 
 @ru
   <p>Цапля.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8393.jpg'])
 
 @ru
   <p>Дороги.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8404.jpg',
   'IMG_8405.jpg',
@@ -176,41 +176,41 @@
 
 @ru
   <p>Тротуар вперед.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8407.jpg'])
 
 @ru
   <p>Тротуар назад.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8408.jpg'])
 
 @ru
   <p>Да тут самолет посадить можно.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8412.jpg'])
 
 @ru
   <p>Улица высоток.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8425.jpg'])
 
 @ru
   <p>Здравствуйте.</p>
 @en
   <p>Hello there.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8444.jpg'])
 
 @ru
   <p>Бамбук.</p>
 @en
   <p>Bamboo.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8457.jpg'])
 
 @ru
   <p>Сад.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8460.jpg',
   'IMG_8463.jpg',
@@ -221,12 +221,12 @@
 
 @ru
   <p>Билет. В этот раз повезло с бесплатным входом, а вообще лучше откладывать тысячу-две иен на это дело каждый день.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8490.jpg'])
 
 @ru
   <p>Метро.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8511.jpg',
   'IMG_8512.jpg',
@@ -235,22 +235,22 @@
 
 @ru
   <p>Хитрое приспособление для подъема тяжестей по лестнице.</p>
-@endlang
+@endru
 <youtube title="Tokyo Stairs Helper, April 2017" v="m0wfg_86-vM"></youtube>
 
 @ru
   <p>Реклама выставки Марвел.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8513.jpg'])
 
 @ru
   <p>Маман.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8514.jpg'])
 
 @ru
   <p>Высотка днем и вечером.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8515.jpg',
   'IMG_8519.jpg',
@@ -258,12 +258,12 @@
 
 @ru
   <p>Что знакомое видно?</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8517.jpg'])
 
 @ru
   <p>Пейзажи при движении на велосипеде. <a class="link" href="https://www.endomondo.com/users/6097438/workouts/908025569">Трек маршрута</a>. После Европы больше всего радует отсутствие грязных граффити на фасадах.</p>
-@endlang
+@endru
 <youtube title="Tokyo Cycling, April 2017" v="j4kscRTpkr0"></youtube>
 <youtube title="Tokyo Cycling 2, April 2017" v="M-Ar1Wc0lxg"></youtube>
 @include('tpl.fotorama-2x', ['pics' => [
@@ -298,37 +298,37 @@
 
 @ru
   <p>Иногда потоки четко разделены.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8577.jpg'])
 
 @ru
   <p>Иногда велодорожка перемещается с тротуара на дорогу.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8582.jpg'])
 
 @ru
   <p>В один из моментов на улице объявились два регулировщика и перекрыли для заезда грузовика тротуар и часть дороги.</p>
-@endlang
+@endru
 <youtube title="Tokyo Traffic Guard, April 2017" v="S0mBz_2F8B8"></youtube>
 
 @ru
   <p>Жилой район.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8528.jpg'])
 
 @ru
   <p>Теннисный корт.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8552.jpg'])
 
 @ru
   <p>Парковка под крышей.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8554.jpg'])
 
 @ru
   <p>Практика в гольф.</p>
-@endlang
+@endru
 <youtube title="Tokyo Golf Practice, April 2017" v="A4k0hIFcDd4"></youtube>
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8556.jpg',
@@ -339,7 +339,7 @@
 
 @ru
   <p>Железная дорога.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8591.jpg',
   'IMG_8592.jpg',
@@ -348,103 +348,103 @@
 
 @ru
   <p>Где футбольный мяч?</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8639.jpg'])
 
 @ru
   <p>В такие моменты ощущение, что забрался на вершину мира.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8642.jpg'])
 
 @ru
   <p>Средство передвижения.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8644.jpg'])
 
 @ru
   <p>А вокруг.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8643.jpg'])
 
 @ru
   <p>Какой парк без цивилизованного туалета?</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8645.jpg'])
 
 @ru
   <p>Схема туалета на железнодорожной станции. Тип «дырка в полу» — традиционный японский, а унитаз — европейский. Женский туалет заметно больше мужского, и это правильно. На удивление в женском туалете имеется один писсуар.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8198.jpg'])
 
 @ru
   <p>Просьба кидать бумагу в унитаз.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8370.jpg'])
 
 @ru
   <p>Приборная панель унитаза. Даже показано отличие спрея от биде. Туалеты по всей стране бесплатные. Даже во всех продуктовых магазинах они есть и доступны всем желающим.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8667.jpg'])
 
 @ru
   <p>Источник грязи на наших улицах — земля. Автомобили растаскивают ее на ура.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8651.jpg'])
 
 @ru
   <p>Велосипеды встречаются куда чаще мотоциклов и скутеров.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8652.jpg'])
 
 @ru
   <p>Кому нужен надземный переход? Мало кому.</p>
-@endlang
+@endru
 <youtube title="Tokyo, Who Needs Footbridge, April 2017" v="m5y5PNHKwLQ"></youtube>
 @include('tpl.pic-2x', ['pic' => 'IMG_8653.jpg'])
 
 @ru
   <p>Железнодорожная станция.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8656.jpg'])
 
 @ru
   <p>Доехать запланированным маршрутом до точки назначения не вышло. После экстренного торможения состава было объявление на японском и английском. Судя по обстановке в вагоне, это была рядовая ситуация. Дальнейшие объявления были только на японском.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8655.jpg'])
 
 @ru
   <p>Стояли минут десять. Тронулись и доехали до следующей станции. Там половина людей вовсе вышла со станции, а другая половина перешла на соседний путь.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8657.jpg'])
 
 @ru
   <p>Подъехал некий экспресс, двери открылись только в его хвостовой части. В Японии неважно на чем ты доехал, важно лишь где зашел и где вышел. Решил доехать до следующей остановки и по совместительству до самого крупного пересадочного узла — станции Синдзюку.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8658.jpg'])
 
 @ru
   <p>Здесь было решено выйти и осмотреться, поискать причину экстренного торможения. В итоге попался экран, на котором объяснялось, что задержки на части линий вызваны сильным ветром, а именно на этой линии по причине препятствия в путях. Во время землетрясений и вовсе все железнодорожное сообщение останавливается.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8662.jpg'])
 
 @ru
   <p>Со станции Синдзюку на улицу можно выйти более чем в ста местах. На дороге пробка. Ощущалось, что из-за ветра случился транспортный коллапс. Но нет, часы показывали около 18:00 — обычный час пик и обычная загруженная станция.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8663.jpg'])
 
 @ru
   <p>Людей действительно много. После использования транспортной карты на турникете, она делает пик. Здесь же эти пики не прекращаются чуть ли не на секунду. В итоге до пункта назначения удалось добраться на метро, так как оно глубоко под землей, а железнодорожные линии компании JR, которой изначально планировалось доехать, располагаются в основном над землей.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8664.jpg'])
 
 @ru
   <p>Интервалы разделяет волнистая линия, а не тире. Время работы до двух часов ночи записывают как 26:00.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8666.jpg'])
 
 @ru
   <p>Вечерний Токио.</p>
-@endlang
+@endru
 <youtube title="Tokyo Mori Tower Observation, April 2017" v="31PYr4ACvB0"></youtube>
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8669.jpg',
@@ -457,36 +457,36 @@
 
 @ru
   <p>Кайф, когда открываешь йогурт, а этикетка не измазана.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8702.jpg'])
 
 @ru
   <p><a class="link" href="japanese">Иероглифы</a> слоговой азбуки.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8720.jpg'])
 
 @ru
   <p>Регулярно в нагрузку к журналу что-то прилагается. К женскому журналу может быть какой-нибудь пробник. Книги и журналы в нашем понимании листаются с конца — справа налево.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8722.jpg'])
 
 @ru
   <p>Часики.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8724.jpg'])
 
 @ru
   <p>Посмотрим в потолок.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8726.jpg'])
 
 @ru
   <p>Аэродром аэропорта Нарита.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8774.jpg'])
 
 @ru
   <p>Весь полет в Москву проходил примерно в обеденное время — обычная картина при полетах на запад, что самолет за час пролетает один часовой пояс. Тонировка стекол работает на ура — в любое время суток можно устроить ночь.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8778.jpg'])
 @endsection

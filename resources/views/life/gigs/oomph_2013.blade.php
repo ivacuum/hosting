@@ -5,7 +5,7 @@
 @section('content')
 @ru
   <p>Немцам определенно в России понравилось. Выступления стали проходить даже в менее населенных городах нашей родины.</p>
-@endlang
+@endru
 <div class="row">
   <div class="col-md-7">
     @include('tpl.setlist-title')
@@ -41,6 +41,6 @@
 
 @ru
   <p class="mb-1">Видеозапись выступления.</p>
-@endlang
+@endru
 <youtube title="Oomph 2013, Moscow, Russia" v="RsLFgW-wsP0"></youtube>
 @endsection

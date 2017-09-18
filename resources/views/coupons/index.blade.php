@@ -6,7 +6,7 @@
   <p>Простые способы сэкономить на услугах нижеприведенных сервисов.</p>
 @en
   <p>Easy ways to get discounts for the services below.</p>
-@endlang
+@endru
 
 <div class="life-text">
   <h3>{{ trans('coupons.hosting') }}</h3>

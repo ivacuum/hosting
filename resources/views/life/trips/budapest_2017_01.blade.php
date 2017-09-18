@@ -3,17 +3,17 @@
 @section('content')
 @ru
   <p>Хороший признак приятного города — это когда на этапе отбора фотографий для публикации мало какие хочется отсеять. До этой страницы добралось ни много ни мало аж 160!</p>
-@endlang
+@endru
 
 @ru
   <p>Будапешт — хороший бюджетный вариант для калужанина начать путешествие по Европе. Подать все документы на визу можно прямо в Калуге. Принимают даже бронь жилья с <a class="link" href="https://www.airbnb.ru/{{ config('cfg.airbnb_link') }}">Airbnb</a> — в соответствующих полях анкеты пишется apartment и контактные данные хоста: телефон и адрес. Из Москвы прямым сообщением летает лоукостер WizzAir. В самой Венгрии цены на удивление доступные — куда дешевле западной Европы.</p>
-@endlang
+@endru
 
 @ru
   <p>Улицы.</p>
 @en
   <p>Streets.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3178.jpg',
   'IMG_3182.jpg',
@@ -38,7 +38,7 @@
 
 @ru
   <p>Искусно разрисованные фасады.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3179.jpg',
   'IMG_3590.jpg',
@@ -46,7 +46,7 @@
 
 @ru
   <p>Настоящие тоже интересны.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3592.jpg',
   'IMG_3629.jpg',
@@ -54,12 +54,12 @@
 
 @ru
   <p>Такси можно оплатить картой.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3181.jpg'])
 
 @ru
   <p>Вход в метро.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3402.jpg',
   'IMG_3187.jpg',
@@ -69,7 +69,7 @@
   <p>Метро.</p>
 @en
   <p>Metro.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3183.jpg',
   'IMG_3321.jpg',
@@ -87,17 +87,17 @@
 
 @ru
   <p>Напольный рисунок объясняет изменения вследствие ремонтных работ на станции.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3184.jpg'])
 
 @ru
   <p>Автобусы разных эпох.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3185.jpg'])
 
 @ru
   <p>Трамваи. Шестой маршрут днем ходит каждые 10 минут, а ночью каждые 15 минут. Прекрасный способ перемещения в любое время суток.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3186.jpg',
   'IMG_3227.jpg',
@@ -111,7 +111,7 @@
   <p>Здания.</p>
 @en
   <p>Buildings.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3207.jpg',
   'IMG_3318.jpg',
@@ -127,27 +127,27 @@
   <p>Автомобильный номер.</p>
 @en
   <p>License plate.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3189.jpg'])
 
 @ru
   <p>Парковка на тротуаре. Даже елочка нарисована.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3190.jpg'])
 
 @ru
   <p>А под этим знаком нарисовано в какие дни действуют ограничения.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3198.jpg'])
 
 @ru
   <p>На такой лавке и прилечь удобно.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3196.jpg'])
 
 @ru
   <p>Велодорожки.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3197.jpg',
   'IMG_3250.jpg',
@@ -155,52 +155,52 @@
 
 @ru
   <p>Велонасос.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3343.jpg'])
 
 @ru
   <p>Компактная заправка прямо в городе.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3199.jpg'])
 
 @ru
   <p>Цвета подсказывают куда идти.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3202.jpg'])
 
 @ru
   <p>Внимательному читателю предлагается найти на снимке кондиционер.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3203.jpg'])
 
 @ru
   <p>Скромная остановка.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3204.jpg'])
 
 @ru
   <p>Остановка поинтереснее.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3205.jpg'])
 
 @ru
   <p>Телефонная будка.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3211.jpg'])
 
 @ru
   <p>Тротуары посыпают зеленой крошкой.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3216.jpg'])
 
 @ru
   <p>Местные надписи на заборе стройки. Венгерский на русский совершенно не похож.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3218.jpg'])
 
 @ru
   <p>Места для прогулок.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3222.jpg',
   'IMG_3223.jpg',
@@ -214,17 +214,17 @@
 
 @ru
   <p>Длинная лавка.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3224.jpg'])
 
 @ru
   <p>При пересмотре отснятого материала на этом снимке была обнаружена афиша концерта Ханса Циммера — повод вернуться в Будапешт 1 июня. В программе саундтреки из игр и фильмов.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3226.jpg'])
 
 @ru
   <p>Дороги. Ни дня не обойдется, чтобы не услышать мигалки.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3229.jpg',
   'IMG_3230.jpg',
@@ -241,12 +241,12 @@
 
 @ru
   <p>Троллейбус Икарус.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3239.jpg'])
 
 @ru
   <p>Чем не <a class="link" href="spb">Петербург</a>?</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3240.jpg',
   'IMG_3241.jpg',
@@ -256,37 +256,37 @@
 
 @ru
   <p>Двор-колодец в доме. Снаружи дубак, внутри квартиры тоже дубак, если нет обогревателя.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3248.jpg'])
 
 @ru
   <p>На втором этаже ловко припрятана стремянка.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3589.jpg'])
 
 @ru
   <p>Информация на остановке: карта, расписание и маршруты.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3252.jpg'])
 
 @ru
   <p>Ночные автобусы с интервалом каждые полчаса (а из-за наличия множества пересекающихся маршрутов и вовсе чаще) помогут добраться до аэропорта, когда метро закрыто. Да и не только до аэропорта, конечно же.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3594.jpg'])
 
 @ru
   <p>Подъем к панорамным местам.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3313.jpg'])
 
 @ru
   <p>По такой узенькой дорожке вдоль перил только и идти, если нет желания упасть.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3287.jpg'])
 
 @ru
   <p>Панорамы.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3212.jpg',
   'IMG_3215.jpg',
@@ -299,7 +299,7 @@
 
 @ru
   <p>Сочетание зелени и снега в одном места.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3301.jpg',
   'IMG_3302.jpg',
@@ -307,12 +307,12 @@
 
 @ru
   <p>Философский сад.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3312.jpg'])
 
 @ru
   <p>Дунай.</p>
-@endlang
+@endru
 <youtube title="Budapest River, January 2017" v="N3IkMR5eurA"></youtube>
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3235.jpg',
@@ -321,7 +321,7 @@
 
 @ru
   <p>Уточки плавают.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3327.jpg',
   'IMG_3324.jpg',
@@ -329,7 +329,7 @@
 
 @ru
   <p>Лавочки.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3325.jpg',
   'IMG_3326.jpg',
@@ -339,42 +339,42 @@
 
 @ru
   <p>Площадь героев.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3330.jpg'])
 
 @ru
   <p>Каток.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3332.jpg'])
 
 @ru
   <p>Елку выбросил. Слабак.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3338.jpg'])
 
 @ru
   <p>Паркомат.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3342.jpg'])
 
 @ru
   <p>Линейка в подземном переходе.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3345.jpg'])
 
 @ru
   <p>Электрошкафы.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3346.jpg'])
 
 @ru
   <p>Раздельный сбор мусора.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3348.jpg'])
 
 @ru
   <p>Указатели улиц.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3350.jpg',
   'IMG_3351.jpg',
@@ -385,57 +385,57 @@
 
 @ru
   <p>Навигация с тактильным шрифтом.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3355.jpg'])
 
 @ru
   <p>Рынок.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3359.jpg'])
 
 @ru
   <p>При входе на рынок обязательно нужно обтереться о шторку.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3360.jpg'])
 
 @ru
   <p>Схема метро и ж/д транспорта.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3367.jpg'])
 
 @ru
   <p>По зеленой ветке ходят составы без машинистов.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3371.jpg'])
 
 @ru
   <p>Цельный состав.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3374.jpg'])
 
 @ru
   <p>Карта зеленой ветки в вагоне.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3376.jpg'])
 
 @ru
   <p>Уличная навигация.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3379.jpg'])
 
 @ru
   <p>Смешение цветов.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3385.jpg'])
 
 @ru
   <p>Автомат по покупке ж/д билетов. Если рейс заранее оплатить через интернет, то по десятизначному коду заказа в автомате можно распечатать билет. Электронные пока не предусмотрены.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3493.jpg'])
 
 @ru
   <p>Кладбище. Немало русских имен.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3508.jpg',
   'IMG_3509.jpg',
@@ -447,7 +447,7 @@
 
 @ru
   <p>Аллея деревьев — место для красочных осенних снимков.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3507.jpg',
   'IMG_3510.jpg',
@@ -455,27 +455,27 @@
 
 @ru
   <p>Супермаркет расположился внутри рынка.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3588.jpg'])
 
 @ru
   <p>Слет на районе.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3604.jpg'])
 
 @ru
   <p>В посудине такого размера можно подать целое блюдо из молотого перца.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3609.jpg'])
 
 @ru
   <p>Над домофоном расписаны все жильцы.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3614.jpg'])
 
 @ru
   <p>Жилые районы.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3533.jpg',
   'IMG_3616.jpg',
@@ -483,31 +483,31 @@
 
 @ru
   <p>Прозрачный подъезд.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3617.jpg'])
 
 @ru
   <p>Двор.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3619.jpg'])
 
 @ru
   <p>Стройка.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3620.jpg'])
 
 @ru
   <p>Выходы в метро подписаны буквами. Удобно договариваться у какого встретиться.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3630.jpg'])
 
 @ru
   <p>Кино в Будапеште показывают как в дубляже, так и в оригинале с субтитрами, причем оригинальный язык может быть немецким, французским и т.п., а не только английским. 3D-очки продают вместе с билетом, а дальше их забираешь домой и сам за ними ухаживаешь. Но никто не запрещает при каждом походе покупать новые, благо стоят недорого.</p>
   <p>Дабы вместо сна скоротать время перед ранним вылетом, было решено посмотреть Обитель зла на венгерском в формате 4DX (с эффектами). Ее пустили в прокат на несколько недель раньше премьеры в России. Контролер был один на 14 залов кино, билеты без проблем считывает с экрана телефона. Его ничуть не смущает, что ты говоришь с ним на английском, когда направляешься на венгерский сеанс. Во время просмотра снова убедился, что сходу в венгерском ничего разобрать невозможно из-за других корней языка. Словацкий и чешский нам куда ближе.</p>
-@endlang
+@endru
 
 @ru
   <p>А вы смотрели Утяжок?</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3631.jpg'])
 @endsection

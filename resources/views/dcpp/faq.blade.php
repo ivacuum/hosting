@@ -5,7 +5,7 @@
 @ru
   @section('i18n')
   @endsection
-@endlang
+@endru
 
 @section('content')
 <h1 class="mt-0">Решение проблем с DC++</h1>

@@ -7,7 +7,7 @@
   <div class="col-md-7">
     @ru
       <p>Спустя два дня после Металлики в Олимпийском выступил Линкин Парк. Набор песен мало отличался от <a class="link" href="linkinpark.2014">прошлого года</a>. В этот раз было два флэшмоба: листы с надписью you are always welcome в начале песни #20 и слоеный флаг РФ после песни #23.</p>
-    @endlang
+    @endru
     @include('tpl.setlist-title')
     <ol>
       <li>Papercut</li>
@@ -49,7 +49,7 @@
   <p>Как шоу смотрелось и слышалось из фан-зоны.</p>
 @en
   <p>Fan-zone experience.</p>
-@endlang
+@endru
 <div class="js-lazy" data-lazy-type="fotorama" data-width="1000" data-ratio="1000/595">
   <a href="https://www.youtube.com/watch?v=x8i-KQowLZA"></a>
 </div>

@@ -3,43 +3,43 @@
 @section('content')
 @ru
   <p>С вай-фаем в самолете время летит незаметно. На выходе из аэропорта Орли совсем неочевидно как добраться до нужной точки города, так как способов много и большинство из них с пересадками. За прямой <a class="link" href="http://en.lebusdirect.com/">автобус</a> до города стригут 12 евро (около 840 ₽) — сразу видно размах цен. Для сравнения в <a class="link" href="msk">Москве</a> около 500 ₽, <a class="link" href="minsk">Минске</a> — 100 ₽, <a class="link" href="kaliningrad">Калининграде</a> — 70 ₽, <a class="link" href="kazan">Казани</a> — 30 ₽, <a class="link" href="spb">Питере</a> — 30 ₽, <a class="link" href="kaluga">Калуге</a> — 16 ₽.</p>
-@endlang
+@endru
 
 @ru
   <p>Буква П какая-то. Поразительно подстрекает передавать послания преимущественно п-шками.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1494.jpg'])
 
 @ru
   <p>Автобусная остановка.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1497.jpg'])
 
 @ru
   <p>Большинство зданий выполнено в едином стиле: серо-желтый цвет, черные чугунные ограды балконов.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1508.jpg'])
 
 @ru
   <p>Иногда попадаются гигантские балконы.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1622.jpg'])
 
 @ru
   <p>Хорошо окна моют.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1558.jpg'])
 
 @ru
   <p>И тротуары тоже.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1574.jpg'])
 
 @ru
   <p>Улицы.</p>
 @en
   <p>Streets.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1679.jpg',
   'IMG_1496.jpg',
@@ -62,7 +62,7 @@
 
 @ru
   <p>Места для прогулок.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1511.jpg',
   'IMG_1521.jpg',
@@ -74,7 +74,7 @@
 
 @ru
   <p>Подальше от центра дома меняют вид.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1550.jpg',
   'IMG_1561.jpg',
@@ -87,42 +87,42 @@
 
 @ru
   <p>Шлагбаум нацелился и собирается выстрелить.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1512.jpg'])
 
 @ru
   <p>Река Сена. На английском пишется Seine — читал на немецкий манер и недоумевал к чему это слово в предложениях.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1516.jpg'])
 
 @ru
   <p>В воде придерживаются левостороннего движения.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1584.jpg'])
 
 @ru
   <p>Раньше это была автомобильная набережная, теперь — пешеходная.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1587.jpg'])
 
 @ru
   <p>Жара. Фонтан высох.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1523.jpg'])
 
 @ru
   <p>Листьям тоже несладко приходится.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1526.jpg'])
 
 @ru
   <p>В Калуге и Москве +7&deg;C, в Париже +25&deg;C.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1620.jpg'])
 
 @ru
   <p>Дороги.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1501.jpg',
   'IMG_1569.jpg',
@@ -135,7 +135,7 @@
 
 @ru
   <p>Роскошные здания.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1505.jpg',
   'IMG_1589.jpg',
@@ -145,133 +145,133 @@
 
 @ru
   <p>Либхер не только холодильники делает. Самсунг вообще дома строит в Корее.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1536.jpg'])
 
 @ru
   <p>Учебное заведение.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1537.jpg'])
 
 @ru
   <p>Безбарьерная среда.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1541.jpg'])
 
 @ru
   <p>Вид из темницы (на самом деле нет).</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1546.jpg'])
 
 @ru
   <p>Зарядки для электромобилей.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1555.jpg'])
 
 @ru
   <p>Еще учебное заведение.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1559.jpg'])
 
 @ru
   <p>Чудо-куст.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1564.jpg'])
 
 @ru
   <p>Строящийся дом.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1570.jpg'])
 
 @ru
   <p>Полицейский участок.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1571.jpg'])
 
 @ru
   <p>Переход дороги в два этапа.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1572.jpg'])
 
 @ru
   <p>Так много вытяжек на крыше?</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1573.jpg'])
 
 @ru
   <p>Уже знакомые после <a class="link" href="cologne.2016#pacman">Кельна</a> персонажи из игры Пакман.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1575.jpg'])
 
 @ru
   <p>Увлекательный многочасовой путь домой для парижан. Показательно, что в понедельник вечером автобус из аэропорта довез в город за сорок минут, а в пятницу вечером обратный путь занял более чем два с половиной часа.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1577.jpg'])
 
 @ru
   <p>Справа регулировщик движения.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1621.jpg'])
 
 @ru
   <p>Иногда дороги бывают относительно свободны.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1578.jpg'])
 
 @ru
   <p>Но чаще так.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1642.jpg'])
 
 @ru
   <p>Где найти много граффити? На стенах вдоль железной дороги. Актуально для многих городов и стран.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1581.jpg'])
 
 <a name="units"></a>
 @ru
   <p>Можно попрактиковаться в переводе единиц измерения.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1586.jpg'])
 
 @ru
   <p>Зебру зажевало.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1597.jpg'])
 
 @ru
   <p>Очередь в кинотеатр.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1600.jpg'])
 
 @ru
   <p>Метро непривлекательное на вид, но в нем есть урны, в отличие от России. Еще нет предупреждения не опираться на двери в поезде, так как они полуавтоматические — нужно открывать самому.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1606.jpg'])
 
 @ru
   <p>Зонтик на стене.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1609.jpg'])
 
 @ru
   <p>Бумага сбоку выглядит позолоченной.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1613.jpg'])
 
 @ru
   <p>Трапеза начинается с обеда в 12:00. Далее кафешки заполнены до самого вечера. Культура кушать вне дома.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1614.jpg'])
 
 @ru
   <p>Завалялись дома громоздкие вещи, настала пора выбрасывать. Что делать? Пойти и отнести на помойку. Да, вариант. Но у парижан есть альтернативный выход: <a class="link" href="https://teleservices.paris.fr/sira/jsp/site/Portal.jsp?page=formengine&form=ramen">оставить заявку</a> на сайте мэрии, наклеить на вещи полученный номер и сложить их около дома. Городские службы уже на следующий день все заберут.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1615.jpg'])
 
 @ru
   <p>В Париже из оборота выводят один и два цента, автоматы принимают не меньше пяти. В Германии постоянно в каждой сдаче есть цент, так как цены везде 1.99, 2.99 и т.п., что в итоге не знаешь куда их девать после десятка покупок.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1616.jpg'])
 
 @ru
@@ -279,72 +279,72 @@
     <li>— На чем гоняешь?</li>
     <li>— На бэхе.</li>
   </ul>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1617.jpg'])
 
 @ru
   <p>В единственном попавшемся супермаркете не было камер хранения. Люди просто оставляли габаритные вещи на полу рядом с кассами.</p>
-@endlang
+@endru
 
 <a name="7j7"></a>
 @ru
   <p>7j/7 — открыто ежедневно, но необязательно 24 часа в сутки.</p>
-@endlang
+@endru
 
 @ru
   <p>Манго. Сначала прочитал происхождение Brest. Не мог поверить, что из Бреста привезли. И правильно не верил, потому что написано Brésil — Бразилия.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1629.jpg'])
 
 @ru
   <p>Парижане охотно научат переходить дорогу на красный.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1631.jpg'])
 
 @ru
   <p>Проход не закрыт, просто ворота нужно открывать и закрывать вручную.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1638.jpg'])
 
 @ru
   <p>Столбики не позволяют машинам проехать. Однако, водитель общественного транспорта может опустить их удаленно прямо из салона.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1639.jpg'])
 
 @ru
   <p>Футбольное поле.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1640.jpg'])
 
 @ru
   <p>Интересная крыша дома.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1649.jpg'])
 
 @ru
   <p>Путей всем хватит.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1652.jpg'])
 
 @ru
   <p>Гулькин трехэтажный дом.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1653.jpg'])
 
 @ru
   <p>Парк.</p>
-@endlang
+@endru
 <youtube title="Paris, Parc Clichy-Batignolles — Martin Luther King, September 2016" v="teU3i_W24R4"></youtube>
 @include('tpl.pic-2x', ['pic' => 'IMG_1655.jpg'])
 
 @ru
   <p>Водоотвод в деле.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1657.jpg'])
 
 @ru
   <p>Кладбище.</p>
-@endlang
+@endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1664.jpg',
   'IMG_1667.jpg',
@@ -360,26 +360,26 @@
   <p>Почта, телеграф, телефон.</p>
 @en
   <p>Post, telegraph, telephone.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1676.jpg'])
 
 @ru
   <p>Закат в красных тонах.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1601.jpg'])
 
 @ru
   <p>С примесью зеленого — все светофоры переключились одновременно.</p>
-@endlang
+@endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1603.jpg'])
 
 @ru
   <p>Сена на прощание.</p>
-@endlang
+@endru
 <youtube title="Paris Sunset, September 2016" v="txS910rrMQs"></youtube>
 @include('tpl.pic-2x', ['pic' => 'IMG_1594.jpg'])
 
 @ru
   <p>На обратный рейс зачем-то понадобился паспорт — смотрели визу и ФИО. Для владельцев Galaxy Note 7 было специальное объявление, что телефон должен быть выключен во время нахождения в самолете. В октябре 2016 авиакомпания Norwegian Air и вовсе запретила эти аппараты на своих рейсах.</p>
-@endlang
+@endru
 @endsection
