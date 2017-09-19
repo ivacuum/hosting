@@ -46,7 +46,7 @@
          href="{{ path('Auth\Vk@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">
         {{ trans('auth.vk') }}
       </a>
-      <a class="btn btn-social bg-fb"
+      <a class="btn btn-social bg-facebook"
          href="{{ path('Auth\Facebook@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">
         {{ trans('auth.facebook') }}
       </a>

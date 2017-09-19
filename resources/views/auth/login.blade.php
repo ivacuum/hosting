@@ -53,7 +53,7 @@
       <a class="btn btn-social bg-vk" href="{{ path('Auth\Vk@index') }}">
         {{ trans('auth.vk') }}
       </a>
-      <a class="btn btn-social bg-fb" href="{{ path('Auth\Facebook@index') }}">
+      <a class="btn btn-social bg-facebook" href="{{ path('Auth\Facebook@index') }}">
         {{ trans('auth.facebook') }}
       </a>
       <a class="btn btn-social bg-google" href="{{ path('Auth\Google@index') }}">
