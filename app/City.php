@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
 class City extends Model
 {
     protected $guarded = ['created_at', 'updated_at', 'goto'];
+    protected $perPage = 50;
 
     // Relations
     public function country()
