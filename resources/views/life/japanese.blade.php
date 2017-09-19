@@ -1168,13 +1168,8 @@ https://en.wikipedia.org/wiki/List_of_kanji_by_concept
   </div>
 </div>
 
-@ru
-  <div class="h2">Ключи (радикалы)</div>
-  <div class="h3">1 черта</div>
-@en
-  <div class="h2">Radicals</div>
-  <div class="h3">1 stroke</div>
-@endru
+<div class="h2">@ru Ключи (радикалы) @en Radicals @endru</div>
+<div class="h3">@ru 1 черта @en 1 stroke @endru</div>
 <?php
 $glyphs = [[
   'ru' => 'один',
@@ -1182,7 +1177,7 @@ $glyphs = [[
   'jp' => '一',
 ], [
   'ru' => 'линия',
-  'en' => 'line',
+  'en' => 'stick',
   'jp' => '丨',
 ], [
   'ru' => 'точка',
@@ -1204,11 +1199,7 @@ $glyphs = [[
 ?>
 @include('tpl.japanese-glyphs')
 
-@ru
-  <div class="h3">2 черты</div>
-@en
-  <div class="h3">2 strokes</div>
-@endru
+<div class="h3">@ru 2 черты @en 2 strokes @endru</div>
 <?php
 $glyphs = [[
   'ru' => 'два',
@@ -1302,11 +1293,7 @@ $glyphs = [[
 ?>
 @include('tpl.japanese-glyphs')
 
-@ru
-  <div class="h3">3 черты</div>
-@en
-  <div class="h3">3 strokes</div>
-@endru
+<div class="h3">@ru 3 черты @en 3 strokes @endru</div>
 <?php
 $glyphs = [[
   'ru' => 'прятать',
@@ -1456,11 +1443,7 @@ $glyphs = [[
 ?>
 @include('tpl.japanese-glyphs')
 
-@ru
-  <div class="h3">13 черт</div>
-@en
-  <div class="h3">13 strokes</div>
-@endru
+<div class="h3">@ru 13 черт @en 13 strokes @endru</div>
 <?php
 $glyphs = [[
   'ru' => 'лягушка',
@@ -1482,11 +1465,7 @@ $glyphs = [[
 ?>
 @include('tpl.japanese-glyphs')
 
-@ru
-  <div class="h3">14 черт</div>
-@en
-  <div class="h3">14 strokes</div>
-@endru
+<div class="h3">@ru 14 черт @en 14 strokes @endru</div>
 <?php
 $glyphs = [[
   'ru' => 'нос',
@@ -1500,11 +1479,7 @@ $glyphs = [[
 ?>
 @include('tpl.japanese-glyphs')
 
-@ru
-  <div class="h3">17 черт</div>
-@en
-  <div class="h3">17 strokes</div>
-@endru
+<div class="h3">@ru 17 черт @en 17 strokes @endru</div>
 <?php
 $glyphs = [[
   'ru' => 'флейта',
@@ -1520,11 +1495,7 @@ $glyphs = [[
   <p><a class="link" href="https://en.wikipedia.org/wiki/List_of_kanji_radicals_by_stroke_count">Full list of radicals</a>.</p>
 @endru
 
-@ru
-  <div class="h2">Словарь</div>
-@en
-  <div class="h2">Dictionary</div>
-@endru
+<div class="h2">@ru Словарь @en Dictionary @endru</div>
 <?php
 $glyphs = [[
   'ru' => 'да',
@@ -1546,11 +1517,7 @@ $glyphs = [[
 ?>
 @include('tpl.japanese-glyphs')
 
-@ru
-  <div class="h2">Поезд</div>
-@en
-  <div class="h2">Train</div>
-@endru
+<div class="h2">@ru Поезд @en Train @endru</div>
 <?php
 $glyphs = [[
   'ru' => 'вокзал',
@@ -1572,11 +1539,7 @@ $glyphs = [[
 ?>
 @include('tpl.japanese-glyphs')
 
-@ru
-  <div class="h2">Числа</div>
-@en
-  <div class="h2">Numbers</div>
-@endru
+<div class="h2">@ru Числа @en Numbers @endru</div>
 <?php
 $glyphs = [[
   'ru' => 'ноль',
@@ -1650,11 +1613,7 @@ $glyphs = [[
 ?>
 @include('tpl.japanese-glyphs')
 
-@ru
-  <div class="h2">Цвета</div>
-@en
-  <div class="h2">Colors</div>
-@endru
+<div class="h2">@ru Цвета @en Colors @endru</div>
 <?php
 $glyphs = [[
   'ru' => 'белый',
@@ -1668,11 +1627,7 @@ $glyphs = [[
 ?>
 @include('tpl.japanese-glyphs')
 
-@ru
-  <div class="h2">Приветствия и другие выражения</div>
-@en
-  <div class="h2">Greetings and other expressions</div>
-@endru
+<div class="h2">@ru Приветствия и другие выражения @en Greetings and other expressions @endru</div>
 <?php
 $glyphs = [[
   'ru' => 'извините (обращение)',
@@ -1718,11 +1673,7 @@ $glyphs = [[
 ?>
 @include('tpl.japanese-glyphs')
 
-@ru
-  <div class="h2">Дни недели</div>
-@en
-  <div class="h2">Weekdays</div>
-@endru
+<div class="h2">@ru Дни недели @en Weekdays @endru</div>
 <?php
 $glyphs = [[
   'ru' => 'понедельник',
