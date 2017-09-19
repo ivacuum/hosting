@@ -105,6 +105,8 @@ Route::get('retracker', 'Retracker@index');
 Route::get('retracker/dev', 'Retracker@dev');
 Route::get('retracker/usage', 'Retracker@usage');
 
+Route::get('stickers', 'Stickers@index');
+
 Route::get('torrent', 'TorrentPromo@index');
 
 Route::get('torrents', 'Torrents@index');
