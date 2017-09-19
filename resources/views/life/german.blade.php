@@ -159,6 +159,9 @@
   ?>
   @include('tpl.german-vocabulary')
 
+  <h3>Дни недели</h3>
+  <p>Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag, Sonntag.</p>
+
   <h3>Года</h3>
   <p>Читаются сотнями. Например, 1998 год: девятнадцать сотен, восемь и девяносто — neunzehnhundertachtundneunzig.</p>
   <p>В речи:</p>
