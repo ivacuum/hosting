@@ -159,11 +159,28 @@
   ?>
   @include('tpl.german-vocabulary')
 
-  <h3>Дни недели</h3>
-  <p>Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag, Sonntag.</p>
+  <h3 class="mt-5">Дни недели</h3>
+  <?php
+  $entries = [
+    ['ru' => 'понедельник', 'de' => 'Montag'],
+    ['ru' => 'вторник', 'de' => 'Dienstag'],
+    ['ru' => 'среда', 'de' => 'Mittwoch'],
+    ['ru' => 'четверг', 'de' => 'Donnerstag'],
+    ['ru' => 'пятница', 'de' => 'Freitag'],
+    ['ru' => 'суббота', 'de' => 'Samstag'],
+    ['ru' => 'воскресенье', 'de' => 'Sonntag'],
+  ];
+  ?>
+  @include('tpl.german-vocabulary')
 
-  <h3>Года</h3>
-  <p>Читаются сотнями. Например, 1998 год: девятнадцать сотен, восемь и девяносто — neunzehnhundertachtundneunzig.</p>
+  <p class="mt-3">Дни недели обычно употребляются с предлогом <strong>am</strong>.</p>
+
+  <p>Когда речь идет о повторяющихся в один день недели действиях, то используется множественное число без предлога.</p>
+
+  <p>Промежуток времени можно выразить с помощью предлогов <strong>von</strong> и <strong>bis</strong> и дней недели без артикля.</p>
+
+  <h3 class="mt-5">Года</h3>
+  <p>Читаются сотнями. Например, 1998 год: девятнадцать сотен, восемь и девяносто — neunzehn&middot;hundert&middot;acht&middot;und&middot;neunzig.</p>
   <p>В речи:</p>
   <p>
     <span class="tooltipped tooltipped-n" aria-label="Когда есть вы рожденный?">— Wann sind Sie geboren?</span>
