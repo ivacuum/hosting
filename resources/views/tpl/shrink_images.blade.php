@@ -15,7 +15,7 @@
         }
       });
 
-      $('.pic-container').css('width', 200);
+      $('.pic-centered-container').css('width', 200);
 
       $('.fotorama').fotorama({
         width: 200,
