@@ -19,6 +19,14 @@
   <img class="d-inline-block" src="https://s.tcdn.co/932/55d/93255d41-5636-3fb3-bbab-33835f24d937/{{ $i }}.png" width="128">
 @endforeach
 
+<div class="h3 mt-5">
+  @ru Чайка Джо @en Joe the Seagull @endru
+  <a class="btn btn-success" href="tg://addstickers?set=joe_the_seagull_ru">@ru Добавить в Телеграм @en Add to Telegram @endru</a>
+</div>
+@foreach (range(1, 40) as $i)
+  <img class="d-inline-block" src="https://s.tcdn.co/a82/ea3/a82ea393-a978-342f-b062-07823d877dae/{{ $i }}.png" width="128">
+@endforeach
+
 {{--
 ItsVacationTime
 --}}
