@@ -3,6 +3,8 @@
 @section('content')
 @ru
   <p>Выезд на рассвете.</p>
+@en
+  <p>Departure at sunrise.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3764.jpg'])
 
@@ -13,16 +15,22 @@
 
 @ru
   <p>Метро.</p>
+@en
+  <p>Metro.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3767.jpg'])
 
 @ru
   <p>Кунцево.</p>
+@en
+  <p>Kuntsevo district.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3768.jpg'])
 
 @ru
   <p>Океанариум в РИО.</p>
+@en
+  <p>Oceanarium in RIO mall.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3778.jpg',
@@ -31,6 +39,8 @@
 
 @ru
   <p>Фасады.</p>
+@en
+  <p>Facades.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3785.jpg',
@@ -40,6 +50,8 @@
 
 @ru
   <p>Улицы.</p>
+@en
+  <p>Streets.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3786.jpg',
@@ -49,11 +61,15 @@
 
 @ru
   <p>Стекляшки.</p>
+@en
+  <p>Glass buildings.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3788.jpg'])
 
 @ru
   <p>Высотка.</p>
+@en
+  <p>High-rise building.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3792.jpg'])
 
@@ -79,6 +95,8 @@
 
 @ru
   <p>Здания.</p>
+@en
+  <p>Buildings.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3796.jpg',
@@ -97,6 +115,8 @@
 
 @ru
   <p>Москва-река.</p>
+@en
+  <p>Moskva river.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3805.jpg'])
 

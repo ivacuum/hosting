@@ -85,6 +85,8 @@
 
 @ru
   <p>Разноцветная машина.</p>
+@en
+  <p>Colorful car.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1186.jpg'])
 

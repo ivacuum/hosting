@@ -68,7 +68,7 @@
         <div class="alert alert-warning">
           <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
           @ru
-            Hey, looks like you might find useful the <a class="link" href="{{ url("en/{$request_uri}") }}">english version</a> of this page
+            Hey, looks like you might find useful the <a class="link" href="{{ url("en/{$request_uri}") }}">English version</a> of this page
           @en
             Похоже, что вам может пригодиться версия этой страницы <a class="link" href="{{ url($request_uri) }}">на русском языке</a>
           @endru
@@ -106,7 +106,7 @@
         @section('i18n')
           <li>
             @ru
-              <a class="link link-lang" href="{{ url("en/{$request_uri}") }}" lang="en">In&nbsp;english</a>
+              <a class="link link-lang" href="{{ url("en/{$request_uri}") }}" lang="en">In&nbsp;English</a>
             @en
               <a class="link link-lang" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
             @endru

@@ -166,6 +166,8 @@
 
 @ru
   <p>Поезд.</p>
+@en
+  <p>Train.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2749.jpg'])
 

@@ -28,6 +28,8 @@
 
 @ru
   <p>В городе приятно.</p>
+@en
+  <p>It's nice to be in Saint Petersburg.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1816.jpg',

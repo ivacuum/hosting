@@ -55,6 +55,8 @@
 
 @ru
   <p>Панорамы.</p>
+@en
+  <p>Panoramas.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_9136.jpg',
@@ -66,6 +68,8 @@
 
 @ru
   <p>Места для прогулок.</p>
+@en
+  <p>Places for a walk.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_9138.jpg',

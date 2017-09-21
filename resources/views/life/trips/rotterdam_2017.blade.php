@@ -97,6 +97,8 @@
 
 @ru
   <p>Пешеходная зона.</p>
+@en
+  <p>Pedestrian zone.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2615.jpg',
@@ -112,11 +114,15 @@
 
 @ru
   <p>Сырный магазин.</p>
+@en
+  <p>Cheese shop.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2617.jpg'])
 
 @ru
   <p>Трамвай.</p>
+@en
+  <p>Tram.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2621.jpg'])
 

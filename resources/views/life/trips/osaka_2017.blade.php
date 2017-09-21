@@ -184,11 +184,15 @@
 
 @ru
   <p>Рыбки.</p>
+@en
+  <p>Fish.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4583.jpg'])
 
 @ru
   <p>Бананы.</p>
+@en
+  <p>Bananas.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_4584.jpg',

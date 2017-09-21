@@ -69,6 +69,8 @@
 
 @ru
   <p>Станции метро.</p>
+@en
+  <p>Metro stations.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2464.jpg',
@@ -103,6 +105,8 @@
 
 @ru
   <p>Дождливые улицы.</p>
+@en
+  <p>Rainy streets.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2475.jpg',
@@ -114,6 +118,8 @@
 
 @ru
   <p>Дождливые каналы.</p>
+@en
+  <p>Rainy canals.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2481.jpg',
@@ -188,6 +194,8 @@
 
 @ru
   <p>Пешеходный переход.</p>
+@en
+  <p>Pedestrian cross.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2509.jpg'])
 
@@ -203,6 +211,8 @@
 
 @ru
   <p>Велики.</p>
+@en
+  <p>Bicycles.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2512.jpg',
@@ -271,6 +281,8 @@
 
 @ru
   <p>Дома и здания.</p>
+@en
+  <p>Houses and buildings.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2536.jpg',
@@ -286,6 +298,8 @@
 
 @ru
   <p>Жилой район.</p>
+@en
+  <p>Pedestrian zone.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2544.jpg'])
 
@@ -369,6 +383,8 @@
 
 @ru
   <p>Канал.</p>
+@en
+  <p>Canal.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2575.jpg'])
 

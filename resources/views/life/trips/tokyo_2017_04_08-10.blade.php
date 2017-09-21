@@ -177,7 +177,7 @@
 @ru
   <p>На столбе название станции. Можно попрактиковаться в <a class="link" href="japanese">иероглифах</a>.</p>
 @en
-  <p>Name of the station on the column. It is time practice <a class="link" href="japanese">japanese</a>.</p>
+  <p>Name of the station on the column. It is time practice <a class="link" href="japanese">Japanese</a>.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3876.jpg'])
 
@@ -294,7 +294,7 @@
 @ru
   <p>Автобус НАТО.</p>
 @en
-  <p>Nato (in russian) bus.</p>
+  <p>Nato (in Russian) bus.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3925.jpg'])
 

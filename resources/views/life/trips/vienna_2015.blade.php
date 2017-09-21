@@ -162,6 +162,6 @@
 @ru
   <p>Наступление Рождества ведет к закрытию практически всего и вся, даже продуктов в супермаркете не купить. Самый настоящий семейный праздник. Если заранее не затариться на неделю вперед, то придется тяжеловато.</p>
 @en
-  <p>Christmas leads to short working hours on December 24th for pretty much everything, even supermarkets are getting closed at 4pm, which is rare in <a class="link" href="/en/life/countries/russia">Russia</a>. Truly family holiday. It's better to shop all the goods in advance.</p>
+  <p>Christmas leads to short working hours on December 24th for pretty much everything, even supermarkets are getting closed at 4pm, which is rare in <a class="link" href="countries/russia">Russia</a>. Truly family holiday. It's better to shop all the goods in advance.</p>
 @endru
 @endsection

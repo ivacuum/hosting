@@ -39,6 +39,8 @@
 
 @ru
   <p>Изобилие сыров.</p>
+@en
+  <p>Abundance of cheeses.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2650.jpg'])
 

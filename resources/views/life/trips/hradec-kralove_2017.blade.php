@@ -14,6 +14,8 @@
 
 @ru
   <p>Главный автовокзал.</p>
+@en
+  <p>Central bus station.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8838.jpg',
@@ -22,6 +24,8 @@
 
 @ru
   <p>Многоэтажная велосипедная парковка.</p>
+@en
+  <p>Multi-storey bicycle parking.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8840.jpg',
@@ -238,6 +242,8 @@
 
 @ru
   <p>Многоэтажная парковка.</p>
+@en
+  <p>Multi-storey parking.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8968.jpg'])
 

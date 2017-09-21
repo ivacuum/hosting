@@ -3,11 +3,15 @@
 @section('content')
 @ru
   <p>Пустой путь.</p>
+@en
+  <p>Empty track.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4596.jpg'])
 
 @ru
   <p>Путь с составом.</p>
+@en
+  <p>Track with train.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4597.jpg'])
 
@@ -22,22 +26,30 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_4599.jpg'])
 
 @ru
-  <p>Автобусная остановка. </p>
+  <p>Автобусная остановка.</p>
+@en
+  <p>Bus stop.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4600.jpg'])
 
 @ru
   <p>Табло парковок.</p>
+@en
+  <p>Parking display.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4601.jpg'])
 
 @ru
   <p>Разноцветная листва.</p>
+@en
+  <p>Colorful leaves.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4602.jpg'])
 
 @ru
   <p>Осторожно, олени.</p>
+@en
+  <p>Watch out! Deers.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5202.jpg'])
 
@@ -81,6 +93,8 @@
 
 @ru
   <p>Улитка.</p>
+@en
+  <p>Snail.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5226.jpg'])
 
@@ -132,6 +146,8 @@
 
 @ru
   <p>Железнодорожная станция.</p>
+@en
+  <p>Railway station.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5434.jpg'])
 

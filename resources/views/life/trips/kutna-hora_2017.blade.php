@@ -90,6 +90,8 @@
 
 @ru
   <p>Одуванчик.</p>
+@en
+  <p>Dandelion.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9869.jpg'])
 
@@ -114,6 +116,8 @@
 
 @ru
   <p>Посмотрим поближе.</p>
+@en
+  <p>Let's take a closer look.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9874.jpg'])
 
@@ -169,11 +173,15 @@
 
 @ru
   <p>Улица.</p>
+@en
+  <p>Street.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9894.jpg'])
 
 @ru
   <p>Гаражи.</p>
+@en
+  <p>Garages.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9893.jpg'])
 
@@ -194,6 +202,8 @@
 
 @ru
   <p>Что за цветки?</p>
+@en
+  <p>What are these flowers?</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9899.jpg'])
 
@@ -301,6 +311,8 @@
 
 @ru
   <p>Гаражи.</p>
+@en
+  <p>Garages.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9988.jpg'])
 
@@ -351,6 +363,8 @@
 
 @ru
   <p>Лоджия.</p>
+@en
+  <p>Loggia.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0007.jpg'])
 
@@ -391,6 +405,8 @@
 
 @ru
   <p>Старые вагоны.</p>
+@en
+  <p>Old wagons.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0020.jpg'])
 
@@ -474,6 +490,8 @@
 
 @ru
   <p>Храм.</p>
+@en
+  <p>Temple.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0061.jpg'])
 
@@ -507,6 +525,8 @@
 
 @ru
   <p>Прибывает поезд.</p>
+@en
+  <p>Train arrives.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0076.jpg'])
 

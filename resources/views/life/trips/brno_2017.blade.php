@@ -63,6 +63,8 @@
 
 @ru
   <p>Лавочки.</p>
+@en
+  <p>Benches.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9373.jpg'])
 

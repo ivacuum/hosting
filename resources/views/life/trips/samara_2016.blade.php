@@ -73,6 +73,8 @@
 
 @ru
   <p>Смотровая площадка.</p>
+@en
+  <p>Observation deck.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0581.jpg',

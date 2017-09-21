@@ -102,6 +102,8 @@
 
 @ru
   <p>Жилой район.</p>
+@en
+  <p>Pedestrian zone.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2076.jpg'])
 
@@ -151,6 +153,8 @@
 
 @ru
   <p>Жирафы на балконе.</p>
+@en
+  <p>Giraffes on the balcony.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2100.jpg'])
 
@@ -172,6 +176,8 @@
 
 @ru
   <p>Пустынный парк.</p>
+@en
+  <p>Empty park.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2111.jpg'])
 

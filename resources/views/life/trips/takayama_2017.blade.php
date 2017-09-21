@@ -59,6 +59,8 @@
 
 @ru
   <p>Маски.</p>
+@en
+  <p>Masks.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7548.jpg'])
 
@@ -94,6 +96,8 @@
 
 @ru
   <p>Сигареты.</p>
+@en
+  <p>Cigarettes.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7559.jpg'])
 
@@ -226,6 +230,8 @@
 
 @ru
   <p>Пинбол.</p>
+@en
+  <p>Pinball.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_7622.jpg',
@@ -392,6 +398,8 @@
 
 @ru
   <p>Улицы Такаямы.</p>
+@en
+  <p>Takayama streets.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_7626.jpg',
@@ -411,6 +419,8 @@
 
 @ru
   <p>Поезда.</p>
+@en
+  <p>Trains.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_7737.jpg',

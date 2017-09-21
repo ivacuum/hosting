@@ -8,7 +8,7 @@
 @ru
   <p>Посадка в аэропорту Каунаса.</p>
 @en
-  <p>Landing.</p>
+  <p>Landing in Kaunas airport.</p>
 @endru
 <youtube title="Landing in Kaunas" v="cC1J1EKUHDo"></youtube>
 @include('tpl.pic-2x', ['pic' => 'IMG_1223.jpg'])
@@ -70,11 +70,15 @@
 
 @ru
   <p>Сам ресторанный дворик.</p>
+@en
+  <p>Food court itself.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1336.jpg'])
 
 @ru
   <p>Многоэтажная парковка.</p>
+@en
+  <p>Multi-storey parking.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1245.jpg'])
 
@@ -85,6 +89,8 @@
 
 @ru
   <p>Пешеходный мост.</p>
+@en
+  <p>Pedestrian bridge.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1252.jpg'])
 
@@ -241,6 +247,8 @@
 
 @ru
   <p>Паркомат.</p>
+@en
+  <p>Parking meter.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1321.jpg'])
 

@@ -8,6 +8,8 @@
 
 @ru
   <p>Привет, ночная Польша!</p>
+@en
+  <p>Hello, night Poland!</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1928.jpg'])
 

@@ -115,6 +115,8 @@
 
 @ru
   <p>Телефонная будка.</p>
+@en
+  <p>Phone booth.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8086.jpg'])
 
@@ -211,6 +213,8 @@
 
 @ru
   <p>Каменный парк.</p>
+@en
+  <p>Stone park.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8128.jpg'])
 
@@ -237,6 +241,8 @@
 
 @ru
   <p>Обратный путь.</p>
+@en
+  <p>Way back.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8153.jpg',
@@ -260,6 +266,8 @@
 
 @ru
   <p>Пейзажи вокруг.</p>
+@en
+  <p>Sceneries around.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8166.jpg',
@@ -295,6 +303,8 @@
 
 @ru
   <p>Мост.</p>
+@en
+  <p>Bridge.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8185.jpg'])
 

@@ -22,6 +22,8 @@
 
 @ru
   <p>Двор.</p>
+@en
+  <p>Yard.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3410.jpg'])
 
@@ -34,6 +36,8 @@
 
 @ru
   <p>Дворец.</p>
+@en
+  <p>Palace.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3412.jpg'])
 
@@ -59,11 +63,15 @@
 
 @ru
   <p>Фасад.</p>
+@en
+  <p>Facade.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3430.jpg'])
 
 @ru
   <p>Указатели улиц.</p>
+@en
+  <p>Street signs.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3431.jpg',

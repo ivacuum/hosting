@@ -30,6 +30,8 @@
 
 @ru
   <p>Почтовый ящик.</p>
+@en
+  <p>Postbox.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3083.jpg'])
 
@@ -55,6 +57,8 @@
 
 @ru
   <p>Нема — одно из любимых слов.</p>
+@en
+  <p>Няма [nyamá] — one of my favorite words.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3110.jpg'])
 
@@ -123,6 +127,8 @@
 
 @ru
   <p>Часы в метро.</p>
+@en
+  <p>Clocks in metro.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3152.jpg'])
 
@@ -160,6 +166,8 @@
 
 @ru
   <p>Фонтаны.</p>
+@en
+  <p>Fountains.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3169.jpg',
@@ -170,6 +178,8 @@
 
 @ru
   <p>Набережная.</p>
+@en
+  <p>Embankment.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3174.jpg'])
 
@@ -180,6 +190,8 @@
 
 @ru
   <p>Фасад.</p>
+@en
+  <p>Facade.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3188.jpg'])
 

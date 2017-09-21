@@ -131,6 +131,8 @@
 
 @ru
   <p>Свадьба.</p>
+@en
+  <p>Wedding.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1044.jpg'])
 

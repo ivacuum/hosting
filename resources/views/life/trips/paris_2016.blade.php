@@ -12,6 +12,8 @@
 
 @ru
   <p>Автобусная остановка.</p>
+@en
+  <p>Bus stop.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1497.jpg'])
 
@@ -62,6 +64,8 @@
 
 @ru
   <p>Места для прогулок.</p>
+@en
+  <p>Places for a walk.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1511.jpg',
@@ -122,6 +126,8 @@
 
 @ru
   <p>Дороги.</p>
+@en
+  <p>Roads.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1501.jpg',
@@ -333,6 +339,8 @@
 
 @ru
   <p>Парк.</p>
+@en
+  <p>Park.</p>
 @endru
 <youtube title="Paris, Parc Clichy-Batignolles — Martin Luther King, September 2016" v="teU3i_W24R4"></youtube>
 @include('tpl.pic-2x', ['pic' => 'IMG_1655.jpg'])
@@ -344,6 +352,8 @@
 
 @ru
   <p>Кладбище.</p>
+@en
+  <p>Cemetery.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1664.jpg',

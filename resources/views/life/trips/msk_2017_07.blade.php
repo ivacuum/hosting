@@ -10,6 +10,8 @@
 
 @ru
   <p>Противоположную ее сторону еще доделывают.</p>
+@en
+  <p>Its opposite side is still being renovated.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3040.jpg'])
 
@@ -45,6 +47,8 @@
 
 @ru
   <p>Переулок. Городская навигация стремительно хорошеет.</p>
+@en
+  <p>Side street. City navigation is getting better each year.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3051.jpg'])
 
@@ -70,7 +74,7 @@
 @ru
   <p>Ветошный переулок.</p>
 @en
-  <p>Side street.</p>
+  <p>Vetoshny side street.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3059.jpg'])
 

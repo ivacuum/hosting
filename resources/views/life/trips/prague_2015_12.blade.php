@@ -248,16 +248,22 @@
 
 @ru
   <p>Паркомат.</p>
+@en
+  <p>Parking meter.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1990.jpg'])
 
 @ru
   <p>Конюшни.</p>
+@en
+  <p>Stables.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2181.jpg'])
 
 @ru
   <p>Кладбище без оград.</p>
+@en
+  <p>Cemetery.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2244.jpg',
@@ -320,6 +326,8 @@
 
 @ru
   <p>Жилые районы.</p>
+@en
+  <p>Residential areas.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1941.jpg',

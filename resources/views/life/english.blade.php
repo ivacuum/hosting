@@ -4,6 +4,10 @@
   'meta_title' => trans('life.english'),
 ])
 
+{{--
+https://english.stackexchange.com/questions/51209/translate-into-vs-translate-to
+--}}
+
 @section('content')
 <h1 class="mt-0">{{ trans('life.english') }}</h1>
 @ru

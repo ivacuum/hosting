@@ -19,6 +19,8 @@
 
 @ru
   <p>В горах полно снега.</p>
+@en
+  <p>The mountains are covered with snow.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7789.jpg'])
 
@@ -40,6 +42,8 @@
 
 @ru
   <p>Разноцветные люки.</p>
+@en
+  <p>Colorful manholes.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_7850.jpg',
@@ -53,6 +57,8 @@
 
 @ru
   <p>Цветы перед домом.</p>
+@en
+  <p>Flowers in front of the house.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7860.jpg'])
 
@@ -63,11 +69,15 @@
 
 @ru
   <p>Речка.</p>
+@en
+  <p>River.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7859.jpg'])
 
 @ru
   <p>Улицы.</p>
+@en
+  <p>Streets.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_7847.jpg',
@@ -80,6 +90,8 @@
 
 @ru
   <p>Дороги.</p>
+@en
+  <p>Roads.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_7853.jpg',
@@ -101,6 +113,8 @@
 
 @ru
   <p>Сам парк прекрасен.</p>
+@en
+  <p>The park itself is beautiful.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7881.jpg'])
 

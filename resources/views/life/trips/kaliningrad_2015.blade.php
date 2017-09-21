@@ -3,11 +3,15 @@
 @section('content')
 @ru
   <p>Город, в котором снег — редкий гость.</p>
+@en
+  <p>The city which rare sees snow.</p>
 @endru
 @include('tpl.pic', ['pic' => 'IMG_0076.jpg'])
 
 @ru
   <p>В Калининграде полно мест для прогулок, набережных так и вовсе несколько.</p>
+@en
+  <p>There are lots of places for a walk and embankments in Kaliningrad.</p>
 @endru
 @include('tpl.fotorama', ['pics' => [
   'IMG_1446.jpg',
@@ -97,6 +101,8 @@
 
 @ru
   <p>Дороги.</p>
+@en
+  <p>Roads.</p>
 @endru
 @include('tpl.fotorama', ['pics' => [
   'IMG_1447.jpg',

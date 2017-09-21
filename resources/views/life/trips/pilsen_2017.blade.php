@@ -28,7 +28,7 @@
 @ru
   <p>Улица. Постепенно складывалось впечатление, что я ошибся с выбором города для посещения.</p>
 @en
-  <p>Street.</p>
+  <p>Street. It seemed like a I chose the wrong city for the visit.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9737.jpg'])
 
@@ -107,6 +107,8 @@
 
 @ru
   <p>Одуванчики.</p>
+@en
+  <p>Dandelions.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9754.jpg'])
 
@@ -154,6 +156,8 @@
 
 @ru
   <p>Фасад.</p>
+@en
+  <p>Facade.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9819.jpg'])
 

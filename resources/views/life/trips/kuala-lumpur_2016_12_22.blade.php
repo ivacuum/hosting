@@ -8,11 +8,15 @@
 
 @ru
   <p>Указатели переведены на японский.</p>
+@en
+  <p>Navigation translated into Japanese.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3099.jpg'])
 
 @ru
   <p>Вход в аэропорт.</p>
+@en
+  <p>Entrance to the airport.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3101.jpg'])
 
@@ -53,6 +57,8 @@
 
 @ru
   <p>Вход в парк.</p>
+@en
+  <p>Entrance to the park.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3114.jpg'])
 
@@ -68,6 +74,8 @@
 
 @ru
   <p>Чух-чух. Пополнение коллекции поездов.</p>
+@en
+  <p>Chuh-chuh. Expanding the trains collection.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3127.jpg'])
 

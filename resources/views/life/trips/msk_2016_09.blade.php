@@ -4,7 +4,7 @@
 @ru
   <p>В Москве самые красивые станции метро.</p>
 @en
-  <p>Moscow has the most beautiful subway stations.</p>
+  <p>Moscow has the most beautiful metro stations.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1338.jpg'])
 

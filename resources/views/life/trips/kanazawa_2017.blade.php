@@ -48,6 +48,8 @@
 
 @ru
   <p>Переход во все стороны.</p>
+@en
+  <p>You can cross the road in any direction.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6757.jpg'])
 
@@ -145,6 +147,8 @@
 
 @ru
   <p>Камень говорит, что проход закрыт.</p>
+@en
+  <p>The stone means no entry.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6878.jpg',
@@ -153,6 +157,8 @@
 
 @ru
   <p>Аллея фонарей.</p>
+@en
+  <p>Lanterns.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_7264.jpg',
@@ -179,7 +185,7 @@
 @ru
   <p>Вечерние улицы.</p>
 @en
-  <p>Street in the evening.</p>
+  <p>Streets in the evening.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_7279.jpg',

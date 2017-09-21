@@ -120,6 +120,8 @@
 
 @ru
   <p>Паркомат. Blå zone — синяя зона.</p>
+@en
+  <p>Parking meter.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0624.jpg'])
 
@@ -129,12 +131,16 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_0628.jpg'])
 
 @ru
-  <p>Автомобильные номера.</p>
+  <p>Автомобильный номер.</p>
+@en
+  <p>License plate.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0636.jpg'])
 
 @ru
   <p>Лифт.</p>
+@en
+  <p>Elevator.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0638.jpg'])
 
@@ -237,6 +243,8 @@
 
 @ru
   <p>Двухэтажная велопарковка.</p>
+@en
+  <p>Double-decker bicycle parking.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0681.jpg'])
 

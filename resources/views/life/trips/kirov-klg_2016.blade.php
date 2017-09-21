@@ -7,6 +7,8 @@
 
 @ru
   <p>Места для прогулок. Весь город можно назвать таковым.</p>
+@en
+  <p>Places for a walk—the whole city is actually.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0422.jpg',
@@ -19,6 +21,8 @@
 <a name="trees"></a>
 @ru
   <p>Хороша аллея выросла.</p>
+@en
+  <p>A good alley has grown.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0405.jpg'])
 
@@ -38,6 +42,8 @@
 
 @ru
   <p>Озеро и речка, места для купания.</p>
+@en
+  <p>Lake and river—places for swimming.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0407.jpg',
@@ -47,6 +53,8 @@
 
 @ru
   <p>Зачем ящички?</p>
+@en
+  <p>What are these boxes for?</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0427.jpg'])
 @endsection

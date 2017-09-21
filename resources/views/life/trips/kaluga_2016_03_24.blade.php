@@ -3,6 +3,8 @@
 @section('content')
 @ru
   <p>Два похожих состава. Где экспресс и где электричка?</p>
+@en
+  <p>Two similar trains. Which one is the express and which one is the local train?</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0123.jpg'])
 

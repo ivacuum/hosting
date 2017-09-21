@@ -50,7 +50,7 @@
 
 {{--
 Диалог с водителем:
-— Do you speak english?
+— Do you speak English?
 — Nein. Sprechen sie Spanish?
 — Nein. ¯\_(ツ)_/¯
 --}}

@@ -59,7 +59,7 @@
 @ru
   <p>Режим работы на местном языке.</p>
 @en
-  <p>Opening hours in belarusian.</p>
+  <p>Opening hours in Belarusian.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3104.jpg'])
 

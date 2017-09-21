@@ -29,6 +29,8 @@
 
 @ru
   <p>Железная дорога.</p>
+@en
+  <p>Railroad.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5450.jpg'])
 
@@ -44,6 +46,8 @@
 
 @ru
   <p>Внутри автобуса.</p>
+@en
+  <p>Inside the bus.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5453.jpg'])
 
@@ -76,6 +80,8 @@
 
 @ru
   <p>Более высокая панорама.</p>
+@en
+  <p>Higher panorama.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6661.jpg'])
 

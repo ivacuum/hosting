@@ -4,7 +4,7 @@
 @ru
   <p>Вечерняя Москва.</p>
 @en
-  <p>Evening Moscow.</p>
+  <p>Moscow in the evening.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1289.jpg',

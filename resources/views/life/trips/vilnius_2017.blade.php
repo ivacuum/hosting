@@ -21,6 +21,8 @@
 
 @ru
   <p>Домофон.</p>
+@en
+  <p>Intercom.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1352.jpg'])
 
@@ -72,6 +74,8 @@
 
 @ru
   <p>Места для прогулок.</p>
+@en
+  <p>Places for a walk.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1363.jpg',
@@ -160,6 +164,8 @@
 
 @ru
   <p>Элмо в магазине.</p>
+@en
+  <p>Elmo in the shop.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1392.jpg'])
 

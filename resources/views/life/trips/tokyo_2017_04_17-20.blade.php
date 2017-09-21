@@ -51,6 +51,8 @@
 
 @ru
   <p>Парк.</p>
+@en
+  <p>Park.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8210.jpg',
@@ -102,6 +104,8 @@
 
 @ru
   <p>Тойота Супра.</p>
+@en
+  <p>Toyota Supra.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8371.jpg',
@@ -165,6 +169,8 @@
 
 @ru
   <p>Дороги.</p>
+@en
+  <p>Roads.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8404.jpg',
@@ -210,6 +216,8 @@
 
 @ru
   <p>Сад.</p>
+@en
+  <p>Garden.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8460.jpg',
@@ -226,6 +234,8 @@
 
 @ru
   <p>Метро.</p>
+@en
+  <p>Metro.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8511.jpg',
@@ -245,6 +255,8 @@
 
 @ru
   <p>Маман.</p>
+@en
+  <p>Maman.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8514.jpg'])
 
@@ -313,6 +325,8 @@
 
 @ru
   <p>Жилой район.</p>
+@en
+  <p>Pedestrian zone.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8528.jpg'])
 
@@ -339,6 +353,8 @@
 
 @ru
   <p>Железная дорога.</p>
+@en
+  <p>Railroad.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8591.jpg',
@@ -404,6 +420,8 @@
 
 @ru
   <p>Железнодорожная станция.</p>
+@en
+  <p>Railway station.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8656.jpg'])
 
@@ -444,6 +462,8 @@
 
 @ru
   <p>Вечерний Токио.</p>
+@en
+  <p>Tokyo in the evening.</p>
 @endru
 <youtube title="Tokyo Mori Tower Observation, April 2017" v="31PYr4ACvB0"></youtube>
 @include('tpl.fotorama-2x', ['pics' => [

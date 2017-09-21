@@ -3,6 +3,8 @@
 @section('content')
 @ru
   <p>Второе пришествие.</p>
+@en
+  <p>The second encounter.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1692.jpg'])
 
@@ -39,6 +41,8 @@
 
 @ru
   <p>Осенние краски.</p>
+@en
+  <p>Fall colors.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1704.jpg',
@@ -75,11 +79,15 @@
 
 @ru
   <p>Дворик.</p>
+@en
+  <p>Yard.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1694.jpg'])
 
 @ru
   <p>Трамвайная остановка.</p>
+@en
+  <p>Tram stop.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1699.jpg'])
 
@@ -106,6 +114,8 @@
 
 @ru
   <p>Рампы.</p>
+@en
+  <p>Ramps.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1726.jpg'])
 
@@ -195,6 +205,8 @@
 
 @ru
   <p>Жилой район.</p>
+@en
+  <p>Pedestrian zone.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1814.jpg'])
 
@@ -233,6 +245,8 @@
 
 @ru
   <p>Ярмарка.</p>
+@en
+  <p>The fair.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1833.jpg'])
 
@@ -264,6 +278,8 @@
 
 @ru
   <p>Жилой район.</p>
+@en
+  <p>Pedestrian zone.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1846.jpg'])
 

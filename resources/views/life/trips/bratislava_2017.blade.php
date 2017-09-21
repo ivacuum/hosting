@@ -81,7 +81,7 @@
 @ru
   <p>Автомат по продаже билетов на общественный транспорт. Плох тем, что принимает только монеты.</p>
 @en
-  <p>Ticket machine. Sadly, it accepts only coins.</p>
+  <p>Ticket vending machine. Sadly, it accepts only coins.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3541.jpg'])
 

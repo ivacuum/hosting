@@ -11,7 +11,7 @@
 @ru
   <p>Вечер. Место пересечения двух параллельных улиц: Московской и Ленина.</p>
 @en
-  <p>Evening. The place where two parallel streets — Moskovskaya and Lenin — intersect.</p>
+  <p>Evening. The place where two parallel streets—Moskovskaya and Lenin—intersect.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0116.jpg'])
 @endsection

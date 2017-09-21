@@ -22,11 +22,15 @@
 
 @ru
   <p>Водоем.</p>
+@en
+  <p>Pond.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2532.jpg'])
 
 @ru
   <p>Мельницы. Много мельниц.</p>
+@en
+  <p>Mills. Lots of mills.</p>
 @endru
 <youtube title="Kinderdijk Mills, July 2017" v="_hSuH_m9fTM"></youtube>
 @include('tpl.fotorama-2x', ['pics' => [
@@ -74,6 +78,8 @@
 
 @ru
   <p>Частная территория.</p>
+@en
+  <p>Private area.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2557.jpg'])
 
@@ -89,6 +95,8 @@
 
 @ru
   <p>Листья кувшинки.</p>
+@en
+  <p>Water lily flowers.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2588.jpg'])
 

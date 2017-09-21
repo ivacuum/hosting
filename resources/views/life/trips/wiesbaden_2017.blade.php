@@ -128,6 +128,8 @@
 
 @ru
   <p>Фонтанчик в торговом центре.</p>
+@en
+  <p>Fountain in the mall.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2190.jpg'])
 
