@@ -11,7 +11,7 @@
   <img class="d-inline-block" src="https://s.tcdn.co/887/736/8877364e-9bb8-306d-ae3a-1a49f15190ec/{{ $i }}.png" width="128">
 @endforeach
 
-<div class="h3">
+<div class="h3 mt-5">
   @ru Ленивая панда @en Lazy Panda @endru
   <a class="btn btn-success" href="tg://addstickers?set=LazyPanda">@ru Добавить в Телеграм @en Add to Telegram @endru</a>
 </div>
