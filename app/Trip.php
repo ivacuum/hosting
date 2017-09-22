@@ -366,11 +366,7 @@ class Trip extends Model
     {
         $ids = \Cache::rememberForever(CacheKey::TRIPS_PUBLISHED_BY_COUNTRY, function () {
             $trips = self::published()
-                ->with([
-                    'city' => function ($query) {
-                        $query->select(['id', 'country_id']);
-                    }
-                ])
+                ->with('city:id,country_id')
                 ->get(['id', 'city_id']);
 
             $result = [];
