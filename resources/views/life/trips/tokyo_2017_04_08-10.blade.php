@@ -4,7 +4,7 @@
 @ru
   <p>Рейс японской авиакомпанией JAL. Билеты удалось с горем пополам — с пятого раза — урвать по очень привлекательной цене (даже ниже Аэрофлота) еще во время нахождения на <a class="link" href="bali.2016">Бали</a>. С этого момента началась подготовка к поездке. Можно смело сказать, что к настоящему моменту приготовления были самые масштабные. Японцы хотят быть в курсе каждого дня пребывания в стране вплоть до контактов отеля.</p>
 @en
-  <p>Flight by Japanese airline—JAL. Tickets were bought while in <a class="link" href="bali.2016">Bali</a>. Preparation for the trip began from that moment. I can surely say by now that the preparations were the most comprehensive. The japanese want to be aware of every day of stay in the country—even accomodations' contacts and things you want to do in cities.</p>
+  <p>Flight by Japanese airline—JAL. Tickets were bought while in <a class="link" href="bali.2016">Bali</a>. Preparation for the trip began from that moment. I can surely say by now that the preparations were the most comprehensive. The Japanese want to be aware of every day of stay in the country—even accommodations' contacts and things you want to do in cities.</p>
 @endru
 
 @ru
@@ -40,14 +40,14 @@
 @ru
   <p>На табло пишут, что перелет в Токио, хотя на самом деле он в город Нарита к востоку от столицы. До Токио еще ехать на общественном транспорте. Уже тут уйма вариантов: автобус или поезд, поезд JR или поезд Keisei, поезд-экспресс или электричка.</p>
 @en
-  <p>Scoreboard reports the flight is to Tokyo, but in fact it is to Narita—city to the east of the capital. There are lots of options how to get to Tokyo by public transport: bus or train, JR train or Keisei train, express train or regular train.</p>
+  <p>Display reports the flight is to Tokyo, but in fact it is to Narita—city to the east of the capital. There are lots of options how to get to Tokyo by public transport: bus or train, JR train or Keisei train, express train or regular train.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3852.jpg'])
 
 @ru
   <p>По счастливому стечению обстоятельств с начала 2017 года стало возможным подавать на туристическую визу самостоятельно. Если это делать в консульстве, то процедура бесплатная. Разве что нужно самому привозить и забирать паспорт. Если подавать через Пони Экспресс, то можно заказать доставку домой.</p>
 @en
-  <p>Russians need to get visa in advance. Prior to 2017 it was not possible without japanese travel agency. Fortunately, since the beginning of 2017 we can apply for a visa by ourselves. If you apply in japanese consulate in Moscow, visa costs you nothing. The only caveat is that you can't get your passport delivered to your home then.</p>
+  <p>Russians need to get visa in advance. Prior to 2017 it was not possible without Japanese travel agency. Fortunately, since the beginning of 2017 we can apply for a visa by ourselves. If you apply in Japanese consulate in Moscow, visa costs you nothing. The only caveat is that you can't get your passport delivered to your home then.</p>
 @endru
 
 @ru
@@ -122,14 +122,14 @@
 @ru
   <p>Висящие поручни четко на своих местах. Верхние полки часто используются японцами, чтобы не держать сумки даже несколько станций.</p>
 @en
-  <p>Grab handles are locked to their places, so they look symmetrical. The upper shelves see an often use by japanese even if they are in for a few stops.</p>
+  <p>Grab handles are locked to their places, so they look symmetrical. The upper shelves see an often use by Japanese even if they are in for a few stops.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3867.jpg'])
 
 @ru
   <p>Раз была выбрана дешевая электричка, то предстояло сделать две пересадки. Если есть интернет, то проблем с навигацией совсем не возникнет. Если нету, то желательно знать время отправления поездов или хотя бы нужное направление движения.</p>
 @en
-  <p>Since the regular train was picked, there are two changes en route to the hotel. If you have internet, there will be no problems with nagivation at all. If you don't have it, it's best to know the time of the departure or at least the direction.</p>
+  <p>Since the regular train was picked, there are two changes en route to the hotel. If you have internet, there will be no problems with navigation at all. If you don't have it, it's best to know the time of the departure or at least the direction.</p>
 @endru
 
 @ru
@@ -183,11 +183,15 @@
 
 @ru
   <p>Автомат по продаже карты широкого назначения Pasmo. В Токио еще бывает карта Suica, которую и довелось опробовать. В других городах есть свои аналоги. Объединяет их то, что пользоваться ими можно по всей стране. Что ими делать? Прикладывать к турникетам, чтобы платить за транспорт. Прикладывать к считывателям в магазинах, чтобы платить за покупки. Обзавестись одной из карт лучше сразу прямо в аэропорту перед первым использованием общественного транспорта. С ней не придется искать название станции и стоимость проезда до нее, а затем покупать билет соответствующего номинала. В правой половине фотографии как раз станции и стоимость.</p>
+@en
+  <p>You can get Pasmo rechargeable contactless smart card from this ticket vending machine. There are also vending machines with Suica cards. Other parts of Japan have their own card analogs. What unites them is that they all can be used all over the country. What can you do with a smart card? Pay the fare by touching the ticket gates, for example. It's also gonna be your bank card replacement in Japan. It's better to get Pasmo or Suica right in the airport before your first use of public transport, so you don't need to look up your destination point in the table on the right side of the picture.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3877.jpg'])
 
 @ru
   <p>В какой магазин не зайдешь, так там на входе будут журналы и газеты. Еще копир, принтер, кофе-машина, столики для еды, обязательно бесплатный туалет, а то и еще что-нибудь.</p>
+@en
+  <p>There are magazines and newspapers in every convenience store. Copy machine, printer, coffeemaker, tables to eat, free WC and maybe something else are also can be found.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3882.jpg'])
 
@@ -215,30 +219,41 @@
     <li>в иенах</li>
   </ol>
   <p>Второй вариант заметно выгоднее. Было 16 800 ₽ против 15 800 ₽.</p>
+@en
 @endru
 
 @ru
   <p>Если втянуть живот, то можно протиснуться между домами.</p>
+@en
+  <p>If you pull in your belly, you can squeeze between the houses.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3886.jpg'])
 
 @ru
   <p>Указатели на перекрестке.</p>
+@en
+  <p>Signs at the intersection.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3887.jpg'])
 
 @ru
   <p>Зебры во все стороны. Можно переходить в любом направлении.</p>
+@en
+  <p>Road can be crossed in any direction.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3889.jpg'])
 
 @ru
   <p>В туристическом месте не продохнуть.</p>
+@en
+  <p>Overcrowded touristic place.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3893.jpg'])
 
 @ru
   <p>Сакура. Апрель — самое ее время в центральной части Японии.</p>
+@en
+  <p>Cherry blossoms. April is an ideal time to see it in central Japan.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3902.jpg',
@@ -271,6 +286,8 @@
 
 @ru
   <p>На фоне обычные жилые дома.</p>
+@en
+  <p>Ordinary residential buildings in the background.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3906.jpg'])
 
@@ -283,11 +300,15 @@
 
 @ru
   <p>Костюмы жутко популярны. В час пик чуть ли не половина людей в них.</p>
+@en
+  <p>Suits are quite popular. It's like half of the people are in costumes during peak hours.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3917.jpg'])
 
 @ru
   <p>Автомобили и гос номера. Взять автомобиль в аренду не выйдет, так как наше международное водительское удостоверение недействительно в Японии. Мы подписали конвенции о дорожном движении разных годов. Нужно сдавать местный экзамен. Или иметь, например, американское в/у.</p>
+@en
+  <p>Cars and license plates.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3922.jpg'])
 
@@ -300,6 +321,8 @@
 
 @ru
   <p>Рыбки плавают.</p>
+@en
+  <p>The fish are swimming.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3928.jpg',
@@ -308,61 +331,85 @@
 
 @ru
   <p>Просьба не кормить голубей, а то все засрут.</p>
+@en
+  <p>Don't feed the pigeons, or they will shit everything.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3930.jpg'])
 
 @ru
   <p>Сетка на доме.</p>
+@en
+  <p>Net on the house.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3932.jpg'])
 
 @ru
   <p>Похоже на лавку по продаже всякой всячины.</p>
+@en
+  <p>Shop or just yard?</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3933.jpg'])
 
 @ru
   <p>Платная парковка. Места пронумерованы и разграничены. Машину в Японии просто так не купишь — нужно еще и парковочное место к ней иметь.</p>
+@en
+  <p>Parking. Spaces are clearly numbered and delineated. By the way it's not so easy to buy a car in Japan—you need to buy a parking space for it as well.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3934.jpg'])
 
 @ru
   <p>Проезд закрыт. Камни берегут неподвижность ограждения.</p>
+@en
+  <p>No thoroughfare. Stones keep the barrier fixed.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3936.jpg'])
 
 @ru
-  <p>Подъезд.</p>
+  <p>Прозрачный подъезд.</p>
+@en
+  <p>Transparent entrance.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3937.jpg'])
 
 @ru
   <p>Вертикальный уличный указатель.</p>
+@en
+  <p>Vertical street sign.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3939.jpg'])
 
 @ru
   <p>Дома совсем близко друг к другу. Автомобильные светофоры все время горизонтальные.</p>
+@en
+  <p>Buildings are very close to each other. Traffic light for cars in always horizontal.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3941.jpg'])
 
 @ru
   <p>Снова упражнение по втягиванию живота.</p>
+@en
+  <p>One more exercise "pull in your belly".</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3942.jpg'])
 
 @ru
   <p>Оранжевое и зеленое такси. Работают в нем в основном люди в возрасте, когда некуда уже податься. Дверь открывается и закрывается автоматически.</p>
+@en
+  <p>Orange and green taxies. Passenger's door opens and closes automatically.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3943.jpg'])
 
 @ru
   <p>Низкопольный автобус.</p>
+@en
+  <p>Low-floor bus.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3944.jpg'])
 
 @ru
   <p>Переулки.</p>
+@en
+  <p>Side streets.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3945.jpg',
@@ -371,21 +418,29 @@
 
 @ru
   <p>Угловой дом.</p>
+@en
+  <p>Corner house.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3946.jpg'])
 
 @ru
   <p>Землетрясение застать не удалось, но они достаточно часты. На улице можно встретить указатели к паркам, которые и являются точкой эвакуации в случае землетрясений. В отелях встречаются брошюры с порядком действий в случае тряски.</p>
+@en
+  <p>There were no earthquakes during the trip, but they are frequent enough during the year. There are sings on the streets which lead to safety areas—parks. There are "what to do in an earthquake" booklets in the hotels' rooms.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3947.jpg'])
 
 @ru
   <p>Не переходите здесь дорогу.</p>
+@en
+  <p>No pedestrian crossing sign.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3949.jpg'])
 
 @ru
   <p>Улицы.</p>
+@en
+  <p>Streets.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3950.jpg',
@@ -395,16 +450,22 @@
 
 @ru
   <p>В парке на велике не разгонишься.</p>
+@en
+  <p>You won't accelerate much on a bicycle in the park.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3952.jpg'])
 
 @ru
   <p>Пикники процветают. Дождь не помеха.</p>
+@en
+  <p>Picnics boom. Rain is not a trouble.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3954.jpg'])
 
 @ru
   <p>Набережная.</p>
+@en
+  <p>Embankment.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3956.jpg',
@@ -449,31 +510,43 @@
 
 @ru
   <p>Берешь бутылки, а сзади остальные сами подкатываются.</p>
+@en
+  <p>Take the bottle and the rest of the line will move forward.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3974.jpg'])
 
 @ru
   <p>Пульт Мицубиши. Большие компании делают тут все, что могут.</p>
+@en
+  <p>Mitsubishi TV remote control. Large companies manufacture and construct everything they could.</p>
 @endru
 @include('tpl.pic-arbitrary', ['pic' => 'IMG_3979.jpg', 'w' => 563, 'h' => 750])
 
 @ru
   <p>Многоуровневый город. Запросто можно ехать на метро на уровне седьмого этажа.</p>
+@en
+  <p>Multilevel city. You can catch yourself riding metro at the height of the seventh floor.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3980.jpg'])
 
 @ru
   <p>Вид в другую сторону.</p>
+@en
+  <p>The view of the opposite side.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3981.jpg'])
 
 @ru
   <p>Терминалов для транспортных карт хватит на всех.</p>
+@en
+  <p>Enough ticket vending machines for everybody.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3982.jpg'])
 
 @ru
   <p>Обслуживание автоматов с водой. Выбор газировки ошеломляющий. Рядом с автоматами обязательно урна для бутылок и банок.</p>
+@en
+  <p>Beverage vending machines maintenance. A staggering variety of soda. There is always a bin for bottles and cans next to a vending machine.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3983.jpg'])
 
@@ -485,12 +558,16 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_3984.jpg'])
 
 @ru
-  <p>Во многих вагонах метро над каждым выходом экраны показывают схему движения.</p>
+  <p>Во многих составах метро над каждым выходом из вагонов экраны показывают схему движения. Правый экран подловлен на корейском.</p>
+@en
+  <p>There are displays with route in many metro trains right above the exit. Caught right screen while in Korean.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4085.jpg'])
 
 @ru
   <p>На улице. Да, первые деньки зонт был весьма актуален.</p>
+@en
+  <p>The weather outside. Yea, it was really important to have an umbrella for the first few days of the trip.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3985.jpg'])
 
@@ -542,16 +619,22 @@
 <a name="umbrella-cover"></a>
 @ru
   <p>Чехлы для мокрых зонтов словно презервативы. Не принято капать в помещениях, поэтому либо чехол, либо оставлять зонт снаружи. Где? На парковках для зонтов, конечно же.</p>
+@en
+  <p>Condoms for wet umbrellas. Dripping is not appropriate in buildings, so it's either condom or leaving an umbrella in a stand outside an establishment.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3999.jpg'])
 
 @ru
   <p>Макеты еды для упрощения выбора.</p>
+@en
+  <p>Food replicas to simplify the choice of dishes to order.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4001.jpg'])
 
 @ru
   <p>Своя статуя Свободы.</p>
+@en
+  <p>Statue of Liberty replica.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4003.jpg'])
 
@@ -606,16 +689,22 @@
 
 @ru
   <p>Почтовые ящики в жилом доме. Почтальоны заходят к ним через отдельный вход и закидывают бумагу сзади.</p>
+@en
+  <p>Mailboxes in residential building. Postman comes to them through a separate entrance and puts the mail from the back.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4051.jpg'])
 
 @ru
   <p>Для вещичек побольше есть камеры хранения. Посылку могут доставить прямо на дом, оставить в камере, а извещение закинуть в почтовый ящик, что вы могли по нему открыть камеру и забрать свою посылку.</p>
+@en
+  <p>For big things there are lockers. So you get the notification to your mailbox with the information how to open the locker with your parcel.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4052.jpg'])
 
 @ru
   <p>В центре дома колодец. Так сейсмоустойчивость выше.</p>
+@en
+  <p>Courtyard. It increases the seismic resistance.</p>
 @endru
 @include('tpl.pic-arbitrary', ['pic' => 'IMG_4055.jpg', 'w' => 563, 'h' => 750])
 
@@ -635,6 +724,8 @@
 
 @ru
   <p>По утрам в вагоны с такой маркировкой могут попасть только женщины.</p>
+@en
+  <p>Cars with this label are women only in the morning.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4059.jpg'])
 
@@ -663,7 +754,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_4065.jpg'])
 
 @ru
-  <p>Именно такие виды ассоциировались у меня с Японией до поездки.</p>
+  <p>Именно такие техногенные виды ассоциировались у меня с Японией до поездки.</p>
+@en
+  <p>This type of technogenic landscapes I had associated with Japan before the trip.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4067.jpg'])
 
@@ -690,6 +783,8 @@
 
 @ru
   <p>Сложно найти рюкзак без прицепленных штучек и игрушек. По эскалатору, как и по дорогам, ездят с левой стороны.</p>
+@en
+  <p>It's difficult to find a backpack without toys and stuff attached. Ride the escalator on the left side, just like on the road.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4086.jpg'])
 
@@ -709,6 +804,8 @@
 
 @ru
   <p>Как есть в заведении с конвейером суши. Садишься перед конвейером, набираешь понравившихся проезжающих тарелок с едой и ешь. Стоит только встать, так к тебе подбегают с предложением счета. Цена по цвету и оформлению набранных тарелок.</p>
+@en
+  <p>How to eat in a place with rotating belt of sushi.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4079.jpg'])
 
