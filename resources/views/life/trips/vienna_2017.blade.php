@@ -117,6 +117,8 @@
 
 @ru
   <p>Арка.</p>
+@en
+  <p>Arch.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3452.jpg'])
 
