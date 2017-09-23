@@ -22,7 +22,7 @@
 @ru
   <p>Хороша аллея выросла.</p>
 @en
-  <p>A good alley has grown.</p>
+  <p>A good allee has grown.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0405.jpg'])
 
