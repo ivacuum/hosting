@@ -83,7 +83,7 @@ class Trips extends Controller
         /* @var City $city */
         $city = City::findOrFail(request('city_id'));
 
-        $data = request()->all();
+        $data = $this->requestDataForModel();
         $data['user_id'] = request()->user()->id;
         $data['title_ru'] = $city->title_ru;
         $data['title_en'] = $city->title_en;
