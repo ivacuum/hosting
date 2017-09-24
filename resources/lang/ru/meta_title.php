@@ -23,5 +23,5 @@ return [
     'dcpp.shakespeer' => 'Скачать ShakesPeer 0.9.2 для macOS',
     'dcpp.strongdc_install' => 'Инструкция по установке и настройке StrongDC++',
 
-    'torrents.promo' => 'Торрент-трекер в локальной сети Билайн-Калуга',
+    'torrent-promo.index' => 'Торрент-трекер в локальной сети Билайн-Калуга',
 ];
