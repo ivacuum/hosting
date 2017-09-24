@@ -24,6 +24,8 @@
 
 @ru
   <p>Пейзажи за окном.</p>
+@en
+  <p>Landscapes outside the window.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_4088.jpg',
@@ -33,6 +35,8 @@
 
 @ru
   <p>На станции.</p>
+@en
+  <p>At the station.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_4093.jpg',
