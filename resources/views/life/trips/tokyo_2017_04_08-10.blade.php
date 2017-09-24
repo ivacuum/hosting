@@ -697,7 +697,7 @@
 @ru
   <p>Для вещичек побольше есть камеры хранения. Посылку могут доставить прямо на дом, оставить в камере, а извещение закинуть в почтовый ящик, что вы могли по нему открыть камеру и забрать свою посылку.</p>
 @en
-  <p>For big things there are lockers. So you get the notification to your mailbox with the information how to open the locker with your parcel.</p>
+  <p>There are lockers for big things. So you get the notification to your mailbox with the information how to open the locker with your parcel.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4052.jpg'])
 
