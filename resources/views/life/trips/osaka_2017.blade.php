@@ -13,6 +13,8 @@
 
 @ru
   <p>Разметка как формировать очередь.</p>
+@en
+  <p>Delineation how to form a queue.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4505.jpg'])
 
@@ -43,7 +45,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_4515.jpg'])
 
 @ru
-  <p>Панорамы с этого здания.</p>
+  <p>Панорамы с этого здания. Высокоскоростной лифт доставляет наверх и вниз за считанные секунды, при этом чувствовался легкий запах крови — видимо, у меня лопались сосуды от перегрузки.</p>
 @en
   <p>Panoramas from that building.</p>
 @endru
@@ -112,11 +114,15 @@
 
 @ru
   <p>Навигация.</p>
+@en
+  <p>Navigation.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4569.jpg'])
 
 @ru
   <p>Территория около замка.</p>
+@en
+  <p>Area around the castle.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_4551.jpg',
@@ -140,6 +146,8 @@
 
 @ru
   <p>Автомобильный мост.</p>
+@en
+  <p>Road bridge.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4572.jpg'])
 
@@ -165,6 +173,8 @@
 
 @ru
   <p>Пешеходный мост с чайками.</p>
+@en
+  <p>Pedestrian bridge with seagulls.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_4577.jpg',
@@ -201,6 +211,8 @@
 
 @ru
   <p>Над головой летают самолеты.</p>
+@en
+  <p>Planes fly.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4586.jpg'])
 
@@ -221,6 +233,8 @@
 
 @ru
   <p>Пешеходный переход.</p>
+@en
+  <p>Pedestrian cross.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4592.jpg'])
 
