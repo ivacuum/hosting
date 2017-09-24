@@ -1,56 +1,38 @@
 <?php namespace App\Http\Controllers;
 
 use App\ChatMessage;
+use App\Http\Resources\Chat as ChatResource;
 
 class AjaxChat extends Controller
 {
     public function index()
     {
-        $messages = ChatMessage::with('user')
-            ->where('status', ChatMessage::STATUS_PUBLISHED)
-            ->orderBy('id', 'desc')
-            ->take(20)
-            ->get()
-            ->reverse()
-            ->map(function ($item) {
-                /* @var \App\ChatMessage $item */
-                return [
-                    'id' => $item->id,
-                    'date' => $item->created_at->toDateString(),
-                    'time' => $item->created_at->toTimeString(),
-                    'html' => $item->html,
-                    'author' => $item->user->publicName(),
-                ];
-            })
-            ->values();
-
-        return compact('messages');
+        return ChatResource::collection(
+            ChatMessage::with('user')
+                ->where('status', ChatMessage::STATUS_PUBLISHED)
+                ->orderBy('id', 'desc')
+                ->take(20)
+                ->get()
+                ->reverse()
+                ->values()
+        );
     }
 
     public function store()
     {
         request()->validate(['text' => 'required|max:1000']);
 
-        $text = trim(request('text'));
-        $user = \Auth::user();
-
         $chat_message = ChatMessage::create([
             'ip' => request()->ip(),
-            'text' => $text,
+            'text' => trim(request('text')),
             'status' => ChatMessage::STATUS_PUBLISHED,
-            'user_id' => $user->id,
+            'user_id' => request()->user()->id,
         ]);
 
-        $message = [
-            'id' => $chat_message->id,
-            'date' => $chat_message->created_at->toDateString(),
-            'time' => $chat_message->created_at->toTimeString(),
-            'html' => $chat_message->html,
-            'author' => $user->publicName(),
-        ];
+        $chat = new ChatResource($chat_message);
 
-        broadcast(new \App\Events\ChatMessagePosted($message));
+        broadcast(new \App\Events\ChatMessagePosted($chat->toArray(request())));
 
-        return compact('message');
+        return $chat;
     }
 }

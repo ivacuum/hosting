@@ -63,7 +63,7 @@ export default {
     fetchMessages() {
       axios.get(this.action)
         .then((response) => {
-          this.messages = response.data.messages
+          this.messages = response.data.data
           this.scrollChatDown()
         })
     },
