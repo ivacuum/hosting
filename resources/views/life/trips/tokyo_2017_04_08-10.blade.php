@@ -66,7 +66,8 @@
   </thead>
   <tbody>
   <tr>
-    <td>08/04/2017</td>
+    {{-- Пробелы для переноса строк на мобилах --}}
+    <td>08 / 04 / 2017</td>
     <td>
       <div>Flight JL 422 from Moscow.</div>
       <div>Arrival to Narita airport at 08:35</div>
@@ -82,7 +83,7 @@
     </td>
   </tr>
   <tr>
-    <td>09/04/2017</td>
+    <td>09 / 04 / 2017</td>
     <td>Tours in Tokyo, train to Nikko</td>
     <td>—</td>
     <td>—</td>
