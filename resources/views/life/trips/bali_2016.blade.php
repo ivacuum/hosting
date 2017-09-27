@@ -7,6 +7,8 @@
 
 @ru
   <p>Также в относительной близости находится Австралия — до города Перт лететь около трех часов.</p>
+@en
+  <p>Australia is relatively close as well—just three hours flight to Perth.</p>
 @endru
 
 @ru
@@ -180,6 +182,8 @@
 
 @ru
   <p>Этот товарищ лучше любого будильника.</p>
+@en
+  <p>This pal is better than any alarm clock.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2804.jpg'])
 
@@ -200,6 +204,8 @@
 
 @ru
   <p>Вход в продуктовый магазин.</p>
+@en
+  <p>Entrance to the convenience store.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2844.jpg'])
 
@@ -235,11 +241,15 @@
 
 @ru
   <p>Одинокий рыбак.</p>
+@en
+  <p>Lonely fisherman.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2931.jpg'])
 
 @ru
   <p>Территория отеля.</p>
+@en
+  <p>Hotel's yard.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2961.jpg'])
 
@@ -321,6 +331,8 @@
 
 @ru
   <p>Фрукты в супермаркете.</p>
+@en
+  <p>Fruits in supermarket.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3095.jpg',
