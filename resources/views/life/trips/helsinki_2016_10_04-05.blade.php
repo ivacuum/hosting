@@ -148,6 +148,8 @@
 
 @ru
   <p>Высота примерно третьего этажа.</p>
+@en
+  <p>Height of the third floor.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2098.jpg'])
 
@@ -210,6 +212,8 @@
 
 @ru
   <p>Аллея молодых деревьев.</p>
+@en
+  <p>Allee with young trees.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2138.jpg'])
 
