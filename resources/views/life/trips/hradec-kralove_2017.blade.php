@@ -45,6 +45,8 @@
 
 @ru
   <p>Велодорожка.</p>
+@en
+  <p>Cycle lane.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8846.jpg'])
 
@@ -69,6 +71,8 @@
 
 @ru
   <p>Улицы.</p>
+@en
+  <p>Streets.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8852.jpg',
@@ -93,11 +97,15 @@
 
 @ru
   <p>Площадь.</p>
+@en
+  <p>Square.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8916.jpg'])
 
 @ru
   <p>Аллея деревьев, как в <a class="link" href="kirov-klg.2016#trees">Кирове</a>.</p>
+@en
+  <p>Allee, like in <a class="link" href="kirov-klg.2016#trees">Kirov</a>.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8857.jpg'])
 
@@ -113,6 +121,8 @@
 
 @ru
   <p>Жилой район.</p>
+@en
+  <p>Pedestrian zone.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8860.jpg'])
 
@@ -181,6 +191,8 @@
 
 @ru
   <p>Что же это за здание?</p>
+@en
+  <p>What is this building?</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8901.jpg'])
 
@@ -196,16 +208,22 @@
 
 @ru
   <p>Это библиотека.</p>
+@en
+  <p>It is a library.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8905.jpg'])
 
 @ru
   <p>Или книговня, если на местном.</p>
+@en
+  <p>Or knigovnya in Czech.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8908.jpg'])
 
 @ru
   <p>Вход в библиотеку.</p>
+@en
+  <p>Entrance to the library.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8906.jpg'])
 
@@ -216,11 +234,15 @@
 
 @ru
   <p>Остановка.</p>
+@en
+  <p>Bus stop.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8912.jpg'])
 
 @ru
   <p>Здания.</p>
+@en
+  <p>Buildings.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8913.jpg',
@@ -232,6 +254,8 @@
 
 @ru
   <p>Дороги.</p>
+@en
+  <p>Roads.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8925.jpg',
@@ -264,6 +288,8 @@
 
 @ru
   <p>Лавка двигается к дереву.</p>
+@en
+  <p>Bench is moving towards the tree.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8954.jpg'])
 
