@@ -299,6 +299,8 @@
 
 @ru
   <p>Переулок закрыли для проезда.</p>
+@en
+  <p>Side street is closed for cars.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7371.jpg'])
 
