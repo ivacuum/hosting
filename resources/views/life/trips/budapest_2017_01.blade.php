@@ -54,11 +54,15 @@
 
 @ru
   <p>Такси можно оплатить картой.</p>
+@en
+  <p>Taxi accepts cards.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3181.jpg'])
 
 @ru
   <p>Вход в метро.</p>
+@en
+  <p>Entrance to the metro.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3402.jpg',
@@ -147,6 +151,8 @@
 
 @ru
   <p>Велодорожки.</p>
+@en
+  <p>Cycle lanes.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3197.jpg',
@@ -200,6 +206,8 @@
 
 @ru
   <p>Места для прогулок.</p>
+@en
+  <p>Places for a walk.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3222.jpg',
@@ -214,6 +222,8 @@
 
 @ru
   <p>Длинная лавка.</p>
+@en
+  <p>Long bench.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3224.jpg'])
 
@@ -241,6 +251,8 @@
 
 @ru
   <p>Троллейбус Икарус.</p>
+@en
+  <p>Ikarus trolleybus.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3239.jpg'])
 
@@ -386,6 +398,8 @@
 
 @ru
   <p>Указатели улиц.</p>
+@en
+  <p>Street signs.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3350.jpg',
@@ -402,6 +416,8 @@
 
 @ru
   <p>Рынок.</p>
+@en
+  <p>Market.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3359.jpg'])
 
@@ -432,6 +448,8 @@
 
 @ru
   <p>Уличная навигация.</p>
+@en
+  <p>Street navigation.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3379.jpg'])
 
@@ -447,6 +465,8 @@
 
 @ru
   <p>Кладбище. Немало русских имен.</p>
+@en
+  <p>Cemetery. Quite a lot of Russian names.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3508.jpg',
@@ -459,6 +479,8 @@
 
 @ru
   <p>Аллея деревьев — место для красочных осенних снимков.</p>
+@en
+  <p>Allee is a nice place for colorful fall shots.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3507.jpg',
@@ -487,6 +509,8 @@
 
 @ru
   <p>Жилые районы.</p>
+@en
+  <p>Pedestrian zones.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3533.jpg',
@@ -500,11 +524,15 @@
 
 @ru
   <p>Двор.</p>
+@en
+  <p>Yard.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3619.jpg'])
 
 @ru
   <p>Стройка.</p>
+@en
+  <p>Construction.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3620.jpg'])
 
