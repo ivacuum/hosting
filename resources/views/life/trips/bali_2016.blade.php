@@ -265,16 +265,22 @@
 
 @ru
   <p>Фасовка конфет.</p>
+@en
+  <p>Packaged candies.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2977.jpg'])
 
 @ru
   <p>Фасовка печенья.</p>
+@en
+  <p>Packaged cookies.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2978.jpg'])
 
 @ru
   <p>Придумайте подпись к фотографии.</p>
+@en
+  <p>Suggest a caption for this photo.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2989.jpg'])
 
@@ -290,21 +296,29 @@
 
 @ru
   <p>Вараны на вывеске.</p>
+@en
+  <p>Varans on the signboard.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2999.jpg'])
 
 @ru
   <p>Варанище. Маленький для сравнения в левом верхнем углу вывески.</p>
+@en
+  <p>Giant varan. For comparison, the little one is in the upper left corner of the signboard.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3067.jpg'])
 
 @ru
   <p>Собаку на дроне не покатать.</p>
+@en
+  <p>Drone isn't allowed to give a dog a lift.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3046.jpg'])
 
 @ru
   <p>Порой даже на улице можно подзарядиться.</p>
+@en
+  <p>Sometimes you can charge up even on the street.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3064.jpg'])
 
@@ -350,10 +364,12 @@
 
 @ru
   <p>Еще бонус. Пограничник по прибытии на Бали смотрит иммиграционную карту:</p>
-  <ul class="list-unstyled">
-    <li>— CTO. Chief Technical..</li>
-    <li>— Officer, yea</li>
-    <li>— Where? Gazprom?</li>
-  </ul>
+@en
+  <p>Another bonus. The border guard in Bali is looking my immigration card:</p>
 @endru
+<ul class="list-unstyled">
+  <li>— CTO. Chief Technical..</li>
+  <li>— Officer, yea</li>
+  <li>— Where? Gazprom?</li>
+</ul>
 @endsection
