@@ -16,7 +16,7 @@
     <div class="input-group">
       <input class="form-control" placeholder="Сообщение..." v-model="message">
       <span class="input-group-btn">
-        <button class="btn btn-default">Отправить</button>
+        <button class="btn btn-default" :disabled="message.length <= 0">Отправить</button>
       </span>
     </div>
   </form>
