@@ -105,16 +105,22 @@
 
 @ru
   <p>Торговые ряды.</p>
+@en
+  <p>Shopping arcade.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4111.jpg'])
 
 @ru
   <p>Указатели.</p>
+@en
+  <p>Street navigation.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4118.jpg'])
 
 @ru
   <p>Территория у замка.</p>
+@en
+  <p>Castle area.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_4120.jpg',
@@ -160,16 +166,22 @@
 
 @ru
   <p>Коридор.</p>
+@en
+  <p>Long gallery.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4486.jpg'])
 
 @ru
   <p>Большой Брат.</p>
+@en
+  <p>Big Brother.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4487.jpg'])
 
 @ru
   <p>Большая прищепка.</p>
+@en
+  <p>Big pin.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4489.jpg'])
 
@@ -180,16 +192,22 @@
 
 @ru
   <p>Напоминает логотип Плейстейшн.</p>
+@en
+  <p>Reminds PlayStation logo.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4493.jpg'])
 
 @ru
   <p>Милые ограждения.</p>
+@en
+  <p>Cute fences.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4496.jpg'])
 
 @ru
   <p>Центральная станция Химедзи.</p>
+@en
+  <p>Himeji central station.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4497.jpg'])
 
