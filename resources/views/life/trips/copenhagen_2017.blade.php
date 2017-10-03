@@ -7,6 +7,8 @@
 @section('content')
 @ru
   <p>Что было известно о Дании заранее? Что она в Скандинавии и что в ней большое велосипедное движение.</p>
+@en
+  <p>What was known about Denmark before the trip? That it is a part of Scandinavia and it has a enormous bicycle traffic.</p>
 @endru
 
 @ru
@@ -33,6 +35,8 @@
 
 @ru
   <p>Внутри состава.</p>
+@en
+  <p>Inside the train.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0589.jpg'])
 
@@ -48,11 +52,15 @@
 
 @ru
   <p>Теперь включим свет.</p>
+@en
+  <p>Let's turn on the light now.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0882.jpg'])
 
 @ru
   <p>Пар из-под земли.</p>
+@en
+  <p>Steam from under the ground.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0592.jpg'])
 
@@ -77,6 +85,8 @@
 
 @ru
   <p>Дворы.</p>
+@en
+  <p>Yards.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0599.jpg',
@@ -94,16 +104,22 @@
 
 @ru
   <p>Переход между зданиями.</p>
+@en
+  <p>Skyway.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0602.jpg'])
 
 @ru
   <p>Еще один.</p>
+@en
+  <p>Another one.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0613.jpg'])
 
 @ru
   <p>Уличные кафе.</p>
+@en
+  <p>Street cafes.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0605.jpg'])
 

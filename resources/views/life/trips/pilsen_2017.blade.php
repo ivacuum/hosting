@@ -85,6 +85,8 @@
 
 @ru
   <p>Путь пешехода проходит через аллею.</p>
+@en
+  <p>Pedestrian path goes through the allee.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9751.jpg'])
 

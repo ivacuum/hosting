@@ -17,6 +17,8 @@
 
 @ru
   <p>Вещички можно оставить в камере хранения. С ключами свободные.</p>
+@en
+  <p>Bags can be left in a locker. Those with keys are empty.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4598.jpg'])
 
@@ -78,6 +80,8 @@
 
 @ru
   <p>Прекрасный сад. Вход платный, как и почти во все остальные парки, сады и замки.</p>
+@en
+  <p>Beautiful garden. Paid entrance as in most parks, gardens and castles in Japan.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_5211.jpg',
