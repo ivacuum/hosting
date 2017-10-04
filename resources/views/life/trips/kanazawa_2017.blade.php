@@ -3,11 +3,15 @@
 @section('content')
 @ru
   <p>Вид из окна поезда.</p>
+@en
+  <p>View from the train.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6687.jpg'])
 
 @ru
   <p>Люди сушат вещи на крыше дома.</p>
+@en
+  <p>People dry clothes and things on the roof of the house.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6680.jpg'])
 
@@ -18,6 +22,8 @@
 
 @ru
   <p>Похоже на истребитель в воздухе.</p>
+@en
+  <p>Looks like it's a fighter aircraft in the air.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6701.jpg'])
 
@@ -43,6 +49,8 @@
 
 @ru
   <p>Выделяется красный знак пожарного гидранта.</p>
+@en
+  <p>Fire hydrant sign stands out.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6756.jpg'])
 
@@ -55,16 +63,22 @@
 
 @ru
   <p>Предлагается идти по дороге.</p>
+@en
+  <p>It's proposed to walk on the road.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6758.jpg'])
 
 @ru
   <p>Разметка подтверждает. Место есть для всех.</p>
+@en
+  <p>Markup confirms it. There is a line for everyone.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6759.jpg'])
 
 @ru
   <p>Свой стиль знака пешеходного перехода.</p>
+@en
+  <p>Pedestrian crossing sign.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6760.jpg'])
 
@@ -87,6 +101,8 @@
 
 @ru
   <p>Можно ходить и собирать заставки на рабочий стол.</p>
+@en
+  <p>You can walk and collect desktop wallpapers.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6764.jpg'])
 
@@ -148,7 +164,7 @@
 @ru
   <p>Камень говорит, что проход закрыт.</p>
 @en
-  <p>The stone means no entry.</p>
+  <p>The stone means "no entry".</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6878.jpg',
@@ -204,6 +220,8 @@
 
 @ru
   <p>Тьма способов оплаты, многие из них бесконтактные.</p>
+@en
+  <p>Plenty of payment methods, many of them are contactless.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7308.jpg'])
 @endsection
