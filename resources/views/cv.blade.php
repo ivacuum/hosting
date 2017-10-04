@@ -359,7 +359,7 @@ a:hover {
   </div>
   <div class="my-caption">Профессиональные навыки</div>
   <ul>
-    <li>ОС: Windows, Linux, OS X <span class="muted">(преимущественно)</span>, FreeBSD</li>
+    <li>ОС: Windows, Linux, macOS <span class="muted">(преимущественно)</span>, FreeBSD</li>
     <li>
       Языки программирования:
       PHP <span class="muted">(с 2003 года)</span>,
@@ -380,7 +380,7 @@ a:hover {
       <a href="http://gardengnomesoftware.com/pano2vr.php">Pano2VR</a>,
       <a href="http://sphinxsearch.com/">sphinxsearch</a>
     </li>
-    <li>Прочие языки: HTML, CSS, JavaScript</li>
+    <li>Прочие языки: HTML, CSS, SASS, JavaScript</li>
     <li>Работа с API: <a href="https://developers.facebook.com/docs/reference/api/">Facebook</a>, <a href="http://developer.github.com/">GitHub</a>, <a href="https://code.google.com/apis/console/‎">Google</a>, <a href="http://mmedia.ozon.ru/multimedia/download/api_2.1_120115.pdf">OZON.ru</a>, <a href="https://vk.com/dev">VK</a>, <a href="http://wiki.webmoney.ru/projects/webmoney/wiki/wm-api">WebMoney</a>, <a href="http://api.yandex.ru/">Яндекс</a></li>
   </ul>
   <div class="my-caption">Выполненные проекты</div>
