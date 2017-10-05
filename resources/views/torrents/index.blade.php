@@ -34,6 +34,13 @@
     @if (Auth::check() && empty(request()->query()))
       <chat></chat>
     @endif
+    @if ($q)
+      @ru
+        <div class="h3 mt-0 mb-4">Результаты поиска по запросу «{{ $q }}»</div>
+      @en
+        <div class="h3 mt-0 mb-4">Search results for «{{ $q }}»</div>
+      @endru
+    @endif
     @php ($last_date = null)
     @if (sizeof($torrents))
       @foreach ($torrents as $torrent)
