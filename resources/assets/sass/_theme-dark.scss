@@ -68,19 +68,16 @@ $dark-bg-lighter-color: lighten($dark-bg-color, 10%);
   }
 
   .chat-container {
-    &::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-      background-color: lighten($dark-bg-color, 15%);
-    }
-
-    &::-webkit-scrollbar {
-      width: 12px;
-      background-color: $dark-bg-color;
-    }
+    &::-webkit-scrollbar { width: 12px; }
 
     &::-webkit-scrollbar-thumb {
       -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
       background-color: $dark-bg-color;
+    }
+
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      background-color: lighten($dark-bg-color, 15%);
     }
   }
 
