@@ -84,6 +84,8 @@
 
 @ru
   <p>Просторы и замки в первом парке напоминают пейзажи из игры Варкрафт 2.</p>
+@en
+  <p>Open spaces and castles in the first park remind Warcraft 2 the game.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6763.jpg',
@@ -102,7 +104,7 @@
 @ru
   <p>Можно ходить и собирать заставки на рабочий стол.</p>
 @en
-  <p>You can walk and collect desktop wallpapers.</p>
+  <p>Great place to walk and collect desktop wallpapers.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6764.jpg'])
 
@@ -185,16 +187,22 @@
 
 @ru
   <p>Широченная зебра. Даже автобус боком перейдет по такой дорогу.</p>
+@en
+  <p>Extremely wide zebra.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7270.jpg'])
 
 @ru
   <p>Частые карты местности никогда не дадут потеряться.</p>
+@en
+  <p>You will never get lost with this many maps on the streets.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7275.jpg'])
 
 @ru
   <p>Куда идет автобус? При построении маршрутов по регионам Японии названия остановок приложение показывало иероглифами. Проще было по местоположению на карте посмотреть доехал или нет, чем сопоставлять символы.</p>
+@en
+  <p>Where does this bus go? Maps.me has many stops written in hieroglyphics as well, so it was easier to track your location on the map and guess if it is the time to hop off.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7277.jpg'])
 
@@ -215,6 +223,8 @@
 
 @ru
   <p>У входа в магазины неизменно продаются журналы и книги.</p>
+@en
+  <p>Magazines and books are always at the entrance to the store.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7293.jpg'])
 
