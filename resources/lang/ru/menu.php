@@ -12,6 +12,7 @@ return [
     'trips' => 'Поездки',
     'cities' => 'Города',
     'artists' => 'Артисты',
+    'coupons' => 'Промокоды и купоны',
     'hosting' => 'Хостинг',
     'torrents' => 'Торренты',
     'countries' => 'Страны',

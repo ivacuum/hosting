@@ -1,15 +1,18 @@
 .services-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
+  margin-left: -1rem;
+  margin-right: -1rem;
 }
 
 .service-container {
   margin-bottom: 1rem;
-  flex: 0 0 100%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
-  @media (min-width: $screen-sm-min) { flex: 0 0 48%; }
-  @media (min-width: $screen-md-min) { flex: 0 0 32%; }
+  @media (min-width: $screen-sm-min) { flex-basis: 50%; }
+  @media (min-width: $screen-md-min) { flex-basis: 33.33%; }
 }
 
 .service-image {

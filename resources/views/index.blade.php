@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<div class="services-container">
+<div class="d-flex flex-row flex-wrap justify-content-start services-container">
   @ru
     <div class="service-container">
       <div class="clearfix">
@@ -30,6 +30,13 @@
         <li>понравившиеся фильмы и книги.</li>
       </ul>
       <p class="text-muted">Дата запуска: 29 сентября 2014 г.</p>
+    @en
+      <p>Notes about my life.</p>
+      <ul>
+        <li>trips around Russia and the whole world;</li>
+        <li>attended gigs;</li>
+        <li>favorite movies and books.</li>
+      </ul>
     @endru
   </div>
   @ru
@@ -47,13 +54,11 @@
       </ul>
       <p class="text-muted">Дата запуска: 7 декабря 2015 г.</p>
     </div>
-  @endru
-  <div class="service-container">
-    <div class="clearfix">
-      <img class="service-image" src="https://ivacuum.org/i/services/gallery.png">
-      <h2 class="service-title"><a class="link" href="{{ path('Gallery@index') }}">{{ trans('gallery.index') }}</a></h2>
-    </div>
-    @ru
+    <div class="service-container">
+      <div class="clearfix">
+        <img class="service-image" src="https://ivacuum.org/i/services/gallery.png">
+        <h2 class="service-title"><a class="link" href="{{ path('Gallery@index') }}">{{ trans('gallery.index') }}</a></h2>
+      </div>
       <p>Хранилище изображений для последующей публикации в интернете.</p>
       <ul>
         <li>учет показов изображений;</li>
@@ -61,8 +66,8 @@
         <li>отображение специальной метки, если файл скоро будет удален.</li>
       </ul>
       <p class="text-muted">Дата запуска: 8 февраля 2009 г.</p>
-    @endru
-  </div>
+    </div>
+  @endru
   <div class="service-container">
     <div class="clearfix">
       <img class="service-image" src="https://ivacuum.org/i/services/dcpp.png">
@@ -76,6 +81,8 @@
         <li>представлены клиенты для трёх самых популярных платформ.</li>
       </ul>
       <p class="text-muted">Дата запуска: 17 марта 2008 г.</p>
+    @en
+      <p>Large collection of DC++ client software.</p>
     @endru
   </div>
   @ru
@@ -87,13 +94,31 @@
       <p>Сервис для обмена файлами внутри локальной сети Билайн, проработавший шесть с лишним лет. Теперь исторический форум, доступный из интернета.</p>
       <p class="text-muted">Дата запуска: 5 июля 2010 г.</p>
     </div>
+    <div class="service-container">
+      <div class="clearfix">
+        <h2 class="service-title"><a class="link" href="{{ path('ParserVk@index') }}">{{ trans('menu.parser_vk') }}</a></h2>
+      </div>
+      <p>Ежедневная подборка десяти лучших постов выбранных страниц и групп ВК.</p>
+      <p class="text-muted">Дата запуска: 2 октября 2014 г.</p>
+    </div>
   @endru
+  <div class="service-container">
+    <div class="clearfix">
+      <h2 class="service-title"><a class="link" href="{{ path('Coupons@index') }}">{{ trans('menu.coupons') }}</a></h2>
+    </div>
+    @ru
+      <p>Коллекция способов сэкономить на услугах известных сервисов.</p>
+      <p class="text-muted">Дата запуска: 25 февраля 2017 г.</p>
+    @en
+      <p>Easy ways to get discounts for well known services.</p>
+    @endru
+  </div>
 </div>
 
 @ru
-  <h3 class="mt-0"><a class="link" href="/life">Истории о путешествиях</a></h3>
+  <h2 class="mt-0"><a class="link" href="/life">Истории о путешествиях</a></h2>
 @en
-  <h3 class="mt-0"><a class="link" href="/en/life">Travel stories</a></h3>
+  <h2 class="mt-0"><a class="link" href="/en/life">Travel stories</a></h2>
 @endru
 
 @foreach ($trips->chunk(3) as $chunk)

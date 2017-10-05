@@ -12,6 +12,7 @@ return [
     'trips' => 'Trips',
     'cities' => 'Cities',
     'artists' => 'Artists',
+    'coupons' => 'Promocodes and coupons',
     'hosting' => 'Hosting',
     'torrents' => 'Torrents',
     'countries' => 'Countries',
