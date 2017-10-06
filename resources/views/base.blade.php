@@ -1,3 +1,6 @@
+<?php
+$css_classes = new \Ivacuum\Generic\Utilities\EnvironmentForCss(Request::userAgent());
+?>
 @if (!Request::pjax())
 <!DOCTYPE html>
 <html lang="{{ $locale }}">
@@ -15,15 +18,17 @@
   <link rel="apple-touch-icon-precomposed" href="https://life.ivacuum.ru/apple-touch-icon-precomposed.png">
   <link rel="icon" href="https://life.ivacuum.ru/apple-touch-icon.png">
   <link rel="canonical" href="{{ canonical() }}">
-  <link rel="manifest" href="/pwa-manifest.json?1">
-  <script async src="/assets/service-worker-installer.js"></script>
+  @if (str_contains($css_classes, ['android', 'chrome', 'opera']))
+    <link rel="manifest" href="/pwa-manifest.json?1">
+    <script async src="/assets/service-worker-installer.js"></script>
+  @endif
   <link rel="alternate" hreflang="en" href="{{ url("en/{$request_uri}") }}">
   <link rel="alternate" hreflang="ru" href="{{ url($request_uri) }}">
   <link rel="stylesheet" href="/assets/fotorama.css">
   <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">
   @stack('head')
 </head>
-<body class="body-with-bottom-tabbar {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ new \Ivacuum\Generic\Utilities\EnvironmentForCss(Request::userAgent()) }}">
+<body class="body-with-bottom-tabbar {{ optional(Auth::user())->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ $css_classes }}">
 @section('header-navbar')
   @include('tpl.header-navbar')
 @show
