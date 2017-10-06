@@ -1,6 +1,7 @@
 import './bootstrap'
 
 import Map from './map'
+import NewsViewsObserver from './news-views-observer'
 import Pjax from './pjax'
 import YandexMetrika from './yandex-metrika'
 
@@ -17,6 +18,7 @@ class Application {
   constructor() {
     const options = window['AppOptions']
 
+    this.beacon_data = []
     this.locale = options.locale
     this.map = new Map(this.locale)
     this.metrika = new YandexMetrika(options.yandexMetrikaId)
@@ -30,6 +32,9 @@ class Application {
     $(() => {
       this.initOnReadyAndPjax()
       this.lazyLoadImages()
+
+      this.conditionalInit()
+      this.sendBeaconDataOnUnload()
     })
   }
 
@@ -37,6 +42,16 @@ class Application {
 
   autosizeTextareas() {
     autosize($('.js-autosize-textarea'))
+  }
+
+  conditionalInit() {
+    const view = document.body.dataset.view
+    const self = document.body.dataset.self
+
+    if (view === 'news.index') {
+      const observer = NewsViewsObserver()
+      observer.observe()
+    }
   }
 
   csrfToken() {
@@ -143,6 +158,23 @@ class Application {
 
   onPjaxSend() {
     $(document).on('pjax:send', (e) => this.pjax.onSend(e))
+  }
+
+  sendBeaconDataOnUnload() {
+    if (navigator.sendBeacon) {
+      window.addEventListener('unload', () => {
+        if (this.beacon_data.length === 0) {
+          return
+        }
+
+        let data = new FormData()
+
+        data.append('events', JSON.stringify(this.beacon_data))
+        data.append('_token', window['AppOptions'].csrfToken)
+
+        navigator.sendBeacon('/ajax/beacon', data)
+      })
+    }
   }
 }
 

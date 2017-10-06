@@ -28,7 +28,7 @@ $css_classes = new \Ivacuum\Generic\Utilities\EnvironmentForCss(Request::userAge
   <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">
   @stack('head')
 </head>
-<body class="body-with-bottom-tabbar {{ optional(Auth::user())->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ $css_classes }}">
+<body class="body-with-bottom-tabbar {{ optional(Auth::user())->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ $css_classes }}" data-self="{{ $self }}" data-view="{{ $view }}">
 @section('header-navbar')
   @include('tpl.header-navbar')
 @show
