@@ -10,7 +10,6 @@ if (window.matchMedia('(max-width: 768px)').matches) {
     let offset = window.pageYOffset
     const window_height = window.innerHeight
     const doc_height = $(document).height()
-    console.log('yes')
 
     // Домотали до конца
     if (offset + window_height >= doc_height - tabbar_height) {
