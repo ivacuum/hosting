@@ -3,114 +3,83 @@
 @section('content')
 <div class="d-flex flex-row flex-wrap justify-content-start services-container">
   @ru
-    <div class="service-container">
-      <div class="clearfix">
-        <img class="service-image" src="https://ivacuum.org/i/services/magnet.png">
-        <h2 class="service-title"><a class="link" href="{{ path('Torrents@index') }}">{{ trans('torrents.index') }}</a></h2>
-      </div>
-      <p>Сервис для скачивания файлов у многочисленных пользователей сети интернет.</p>
-      <ul>
-        <li>зеркало раздач рутрекера;</li>
-        <li>скачивание без регистрации и рейтинга;</li>
-        <li>легкое добавление раздач.</li>
-      </ul>
-      <p class="text-muted">Дата запуска: 5 января 2017 г.</p>
+    <div class="service-container d-none d-sm-block">
+      <a class="d-flex align-items-center mb-2 link-highlighted-parent" href="{{ path('Torrents@index') }}">
+        <img class="service-image mr-2" src="https://ivacuum.org/i/services/magnet.png">
+        <h2 class="service-title"><span class="link">{{ trans('torrents.index') }}</span></h2>
+      </a>
+      <div>Сервис для скачивания файлов у многочисленных пользователей сети интернет без регистрации и рейтинга.</div>
+      {{--<div class="text-muted">Дата запуска: 5 января 2017 г.</div>--}}
     </div>
   @endru
   <div class="service-container">
-    <div class="clearfix">
-      <img class="service-image" src="https://ivacuum.org/i/services/hosting.png">
-      <h2 class="service-title"><a class="link" href="{{ path('Life@index') }}">{{ trans('menu.life') }}</a></h2>
-    </div>
+    <a class="d-flex align-items-center mb-2 link-highlighted-parent" href="{{ path('Life@index') }}">
+      <img class="service-image mr-2" src="https://ivacuum.org/i/services/hosting.png">
+      <h2 class="service-title"><span class="link">{{ trans('menu.life') }}</span></h2>
+    </a>
     @ru
-      <p>Мои заметки о жизни.</p>
-      <ul>
-        <li>поездки по городам России и мира;</li>
-        <li>посещенные концерты;</li>
-        <li>понравившиеся фильмы и книги.</li>
-      </ul>
-      <p class="text-muted">Дата запуска: 29 сентября 2014 г.</p>
+      <div>Мои заметки о жизни: поездки по городам России и мира, посещенные концерты, понравившиеся фильмы и книги.</div>
+      {{--<div class="text-muted d-none d-sm-block">Дата запуска: 29 сентября 2014 г.</div>--}}
     @en
-      <p>Notes about my life.</p>
-      <ul>
-        <li>trips around Russia and the whole world;</li>
-        <li>attended gigs;</li>
-        <li>favorite movies and books.</li>
-      </ul>
+      <div>Notes about my life. Trips around Russia and the whole world. Attended gigs. Favorite movies and books.</div>
     @endru
   </div>
   @ru
-    <div class="service-container">
-      <div class="clearfix">
-        <img class="service-image" src="https://ivacuum.org/i/services/kupislona.png">
-        <h2 class="service-title"><a class="link" href="https://kupislona.ru/">KupiSlona.ru</a></h2>
-      </div>
-      <p>Доска объявлений Калужской области.</p>
-      <ul>
-        <li>десятки тысяч актуальных объявлений;</li>
-        <li>сотни рубрик для удобного поиска;</li>
-        <li>бесплатная подача объявления;</li>
-        <li>сайт адаптирован как для больших экранов, так и для мобильных устройств.</li>
-      </ul>
-      <p class="text-muted">Дата запуска: 7 декабря 2015 г.</p>
+    <div class="service-container d-sm-none">
+      <h2 class="service-title mb-2"><a class="link" href="{{ path('News@index') }}">{{ trans('news.index') }}</a></h2>
+      <div>Хроника развития сайта с 2004 года.</div>
     </div>
     <div class="service-container">
-      <div class="clearfix">
-        <img class="service-image" src="https://ivacuum.org/i/services/gallery.png">
-        <h2 class="service-title"><a class="link" href="{{ path('Gallery@index') }}">{{ trans('gallery.index') }}</a></h2>
-      </div>
-      <p>Хранилище изображений для последующей публикации в интернете.</p>
-      <ul>
-        <li>учет показов изображений;</li>
-        <li>получение ссылок на уже загруженные картинки;</li>
-        <li>отображение специальной метки, если файл скоро будет удален.</li>
-      </ul>
-      <p class="text-muted">Дата запуска: 8 февраля 2009 г.</p>
+      <a class="d-flex align-items-center mb-2 link-highlighted-parent" href="https://kupislona.ru/">
+        <img class="service-image mr-2" src="https://ivacuum.org/i/services/kupislona.png">
+        <h2 class="service-title"><span class="link">KupiSlona.ru</span></h2>
+      </a>
+      <div>Доска бесплатных объявлений Калужской области.</div>
+      {{--<div class="text-muted">Дата запуска: 7 декабря 2015 г.</div>--}}
+    </div>
+    <div class="service-container d-none d-sm-block">
+      <a class="d-flex align-items-center mb-2 link-highlighted-parent" href="{{ path('Gallery@index') }}">
+        <img class="service-image mr-2" src="https://ivacuum.org/i/services/gallery.png">
+        <h2 class="service-title"><span class="link">{{ trans('gallery.index') }}</span></h2>
+      </a>
+      <div>Хранилище изображений для последующей публикации в интернете.</div>
+      {{--<p class="text-muted">Дата запуска: 8 февраля 2009 г.</p>--}}
     </div>
   @endru
-  <div class="service-container">
-    <div class="clearfix">
-      <img class="service-image" src="https://ivacuum.org/i/services/dcpp.png">
-      <h2 class="service-title"><a class="link" href="{{ path('Dcpp@index') }}">ArtFly.DC++</a></h2>
-    </div>
+  <div class="service-container d-none d-sm-block">
+    <a class="d-flex align-items-center mb-2 link-highlighted-parent" href="{{ path('Dcpp@index') }}">
+      <img class="service-image mr-2" src="https://ivacuum.org/i/services/dcpp.png">
+      <h2 class="service-title"><span class="link">ArtFly.DC++</span></h2>
+    </a>
     @ru
-      <p>Большая коллекция русских DC++ клиентов.</p>
-      <ul>
-        <li>есть FAQ с ответами на самые частозадаваемые вопросы;</li>
-        <li>у большинства клиентов есть русская сборка или русификатор;</li>
-        <li>представлены клиенты для трёх самых популярных платформ.</li>
-      </ul>
-      <p class="text-muted">Дата запуска: 17 марта 2008 г.</p>
+      <div>Большая коллекция русских DC++ клиентов. Ответы на частые вопросы.</div>
+      {{--<p class="text-muted">Дата запуска: 17 марта 2008 г.</p>--}}
     @en
       <p>Large collection of DC++ client software.</p>
     @endru
   </div>
   @ru
-    <div class="service-container">
-      <div class="clearfix">
-        <img class="service-image" src="https://ivacuum.org/i/services/torrent.png">
-        <h2 class="service-title"><a class="link" href="http://t.ivacuum.ru">{{ trans('torrents.index') }}</a></h2>
-      </div>
-      <p>Сервис для обмена файлами внутри локальной сети Билайн, проработавший шесть с лишним лет. Теперь исторический форум, доступный из интернета.</p>
-      <p class="text-muted">Дата запуска: 5 июля 2010 г.</p>
+    <div class="service-container d-none d-sm-block">
+      <a class="d-flex align-items-center mb-2 link-highlighted-parent" href="http://t.ivacuum.ru">
+        <img class="service-image mr-2" src="https://ivacuum.org/i/services/torrent.png">
+        <h2 class="service-title"><span class="link">{{ trans('torrents.index') }}</span></h2>
+      </a>
+      <div>Исторический форум сервиса для обмена файлами внутри локальной сети Билайн.</div>
+      {{--<p class="text-muted">Дата запуска: 5 июля 2010 г.</p>--}}
     </div>
     <div class="service-container">
-      <div class="clearfix">
-        <h2 class="service-title"><a class="link" href="{{ path('ParserVk@index') }}">{{ trans('menu.parser_vk') }}</a></h2>
-      </div>
-      <p>Ежедневная подборка десяти лучших постов выбранных страниц и групп ВК.</p>
-      <p class="text-muted">Дата запуска: 2 октября 2014 г.</p>
+      <h2 class="service-title mb-2"><a class="link" href="{{ path('ParserVk@index') }}">{{ trans('menu.parser_vk') }}</a></h2>
+      <div>Ежедневная подборка десяти лучших постов выбранных страниц и групп ВК.</div>
+      {{--<div class="text-muted">Дата запуска: 2 октября 2014 г.</div>--}}
     </div>
   @endru
   <div class="service-container">
-    <div class="clearfix">
-      <h2 class="service-title"><a class="link" href="{{ path('Coupons@index') }}">{{ trans('menu.coupons') }}</a></h2>
-    </div>
+    <h2 class="service-title mb-2"><a class="link" href="{{ path('Coupons@index') }}">{{ trans('menu.coupons') }}</a></h2>
     @ru
-      <p>Коллекция способов сэкономить на услугах известных сервисов.</p>
-      <p class="text-muted">Дата запуска: 25 февраля 2017 г.</p>
+      <div>Коллекция способов сэкономить на услугах известных сервисов.</div>
+      {{--<div class="text-muted">Дата запуска: 25 февраля 2017 г.</div>--}}
     @en
-      <p>Easy ways to get discounts for well known services.</p>
+      <div>Easy ways to get discounts for well known services.</div>
     @endru
   </div>
 </div>
