@@ -91,6 +91,7 @@
       ['title' => "Экспорт Рэймонда\nExporting Raymond", 'id' => 581145],
       ['title' => "Начало\nInception", 'id' => 447301],
       ['title' => "Шерлок\nSherlock", 'id' => 502838],
+      ['title' => "Зеро 2\nZero II", 'id' => 497882],
     ]
   ])
 </div>
