@@ -103,7 +103,7 @@
             </div>
             <div class="page-block-cover-description">{{ $trip->meta_description }}</div>
           </div>
-          <a class="page-block-cover-link" href="{{ $trip->www() }}"><span></span></a>
+          <a class="page-block-cover-link" href="{{ $trip->www() }}"></a>
         </div>
       </div>
     @endforeach
