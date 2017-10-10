@@ -68,6 +68,10 @@ class News extends Controller
 
         abort_unless($news->status === Model::STATUS_PUBLISHED, 404);
 
+        if ($url = $this->redirectUrlToOriginLocale($news)) {
+            return redirect($url, 301);
+        }
+
         $comments = $news->commentsPublished()->with('user')->orderBy('id')->get();
 
         event(new \App\Events\Stats\NewsViewed($news->id));
@@ -90,5 +94,18 @@ class News extends Controller
         abort_unless($validator->passes(), 404);
 
         return $this->index($year);
+    }
+
+    protected function redirectUrlToOriginLocale(Model $news)
+    {
+        $locale = \App::getLocale();
+
+        if ($locale === 'en' && $news->site_id === 11) {
+            return request()->path();
+        } elseif ($locale === 'ru' && $news->site_id === 12) {
+            return '/en/'.request()->path();
+        }
+
+        return '';
     }
 }
