@@ -28,7 +28,7 @@ class Torrents extends Controller
         }
 
         $torrents = $this->applySearchQuery($q, $torrents);
-        $torrents = $torrents->simplePaginate(null, $this->list_columns);
+        $torrents = $torrents->simplePaginate(25, $this->list_columns);
 
         $tree = \TorrentCategoryHelper::tree();
         $stats = Torrent::statsByCategories();
