@@ -18,7 +18,6 @@ Disallow: /en/auth
 Disallow: /en/files
 Disallow: /en/gallery
 Disallow: /en/internal
-Disallow: /en/news
 Disallow: /en/parser
 Disallow: /en/photos
 Disallow: /en/torrents

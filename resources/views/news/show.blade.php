@@ -1,5 +1,8 @@
 @extends('base')
 
+@section('i18n')
+@endsection
+
 @section('content')
 <article itemscope itemtype="http://schema.org/BlogPosting">
   <header>
