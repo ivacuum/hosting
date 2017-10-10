@@ -139,7 +139,7 @@ $css_classes = new \Ivacuum\Generic\Utilities\EnvironmentForCss(Request::userAge
 <script src="/assets/vue.js?2.4.4"></script>
 <script src="/assets/axios.js?0.16.2"></script>
 @if (!empty($websockets))
-  <script src="{{ config('cfg.socketio_js') }}"></script>
+  <script src="/assets/socket.io.js?2.0.3"></script>
 @endif
 <script src="/assets/fotorama-settings.js?4.6.4"></script>
 <script src="/assets/fotorama.js?4.6.4"></script>

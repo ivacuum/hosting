@@ -27,6 +27,9 @@ mix.js('resources/assets/js/app.js', 'public/assets')
   .copy('node_modules/fotorama/fotorama.png', 'public/assets/fotorama.png')
   .copy('node_modules/fotorama/fotorama@2x.png', 'public/assets/fotorama@2x.png')
 
+  .copy('node_modules/socket.io-client/dist/socket.io.js', 'public/assets/socket.io.js')
+  .copy('resources/assets/js/empty.map', 'public/assets/socket.io.js.map')
+
   .sourceMaps(false)
   .version()
   .disableNotifications()
