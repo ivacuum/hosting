@@ -1,9 +1,11 @@
 import './bootstrap'
 
 import Map from './map'
-import NewsViewsObserver from './news-views-observer'
 import Pjax from './pjax'
 import YandexMetrika from './yandex-metrika'
+
+import NewsViewsObserver from './news-views-observer'
+import TorrentsViewsObserver from './torrents-views-observer'
 
 import './events'
 import './highlight'
@@ -50,6 +52,9 @@ class Application {
 
     if (view === 'news.index') {
       const observer = NewsViewsObserver()
+      observer.observe()
+    } else if (view === 'torrents.index') {
+      const observer = TorrentsViewsObserver()
       observer.observe()
     }
   }

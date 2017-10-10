@@ -49,7 +49,7 @@
           @php ($last_date = $torrent->registered_at)
         @endif
         @php ($category = TorrentCategoryHelper::find($torrent->category_id))
-        <div class="torrents-list-container font-smooth">
+        <div class="torrents-list-container font-smooth js-torrents-views-observer" data-id="{{ $torrent->id }}">
           <div class="torrents-list-cell torrents-list-icon torrent-icon" title="{{ $category['title'] }}">
             @php ($icon = $category['icon'] ?? 'file-text-o')
             @svg ($icon)

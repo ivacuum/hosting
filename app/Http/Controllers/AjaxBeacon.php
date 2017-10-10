@@ -23,4 +23,9 @@ class AjaxBeacon extends Controller
     {
         event(new \App\Events\Stats\NewsViewed($event->id));
     }
+
+    protected function processTorrentViewedEvent($event)
+    {
+        event(new \App\Events\Stats\TorrentViewed($event->id));
+    }
 }
