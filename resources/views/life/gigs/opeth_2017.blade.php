@@ -5,6 +5,9 @@
 @section('content')
 <div class="row">
   <div class="col-md-7">
+    @ru
+      <p>Повторение <a class="link" href="opeth.2016">брюссельской программы</a> в укороченном виде — тогда исполнение было лучше, а у нас зато всегда активная и громкая публика по сравнению с европейской. В целом концерт можно было пропускать — увидеть одно шоу тура достаточно.</p>
+    @endru
     @include('tpl.setlist-title')
     <ol>
       <li>Sorceress</li>
@@ -25,4 +28,5 @@
   </div>
 </div>
 
+<youtube title="Opeth 2017, Moscow, Russia" v="URhBcvRpt14"></youtube>
 @endsection
