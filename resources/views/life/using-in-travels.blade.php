@@ -88,6 +88,10 @@
       <a class="link" href="https://www.busradar.com/">busradar.com</a>
       — начало поиска, а дальше уже покупка билетов на сайтах местных перевозчиков
     </li>
+    <li>
+      <a class="link" href="https://www.goeuro.com/">goeuro.com</a>
+      — аналог предыдущего примера
+    </li>
   </ul>
 </section>
 
