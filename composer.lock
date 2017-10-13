@@ -577,16 +577,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "0.8.7",
+            "version": "0.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "41314235f513331fc4664119d4e7d534074d23da"
+                "reference": "71d348c43e1db056db332d61fb22f10b33757205"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/41314235f513331fc4664119d4e7d534074d23da",
-                "reference": "41314235f513331fc4664119d4e7d534074d23da",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/71d348c43e1db056db332d61fb22f10b33757205",
+                "reference": "71d348c43e1db056db332d61fb22f10b33757205",
                 "shasum": ""
             },
             "require": {
@@ -636,7 +636,7 @@
                     "email": "vacuum@ivacuum.ru"
                 }
             ],
-            "time": "2017-09-18T11:15:47+00:00"
+            "time": "2017-10-13T23:45:26+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3735,16 +3735,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "6.4.0",
+            "version": "6.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a1bcaca096998de32c29535fdd2dea0c475e8f61"
+                "reference": "b770d8ba7e60295ee91d69d5a5e01ae833cac220"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a1bcaca096998de32c29535fdd2dea0c475e8f61",
-                "reference": "a1bcaca096998de32c29535fdd2dea0c475e8f61",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b770d8ba7e60295ee91d69d5a5e01ae833cac220",
+                "reference": "b770d8ba7e60295ee91d69d5a5e01ae833cac220",
                 "shasum": ""
             },
             "require": {
@@ -3815,7 +3815,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-10-06T03:14:57+00:00"
+            "time": "2017-10-07T17:53:53+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
