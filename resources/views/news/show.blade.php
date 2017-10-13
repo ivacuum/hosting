@@ -1,7 +1,6 @@
-@extends('base')
-
-@section('i18n')
-@endsection
+@extends('base', [
+  'no_language_selector' => true,
+])
 
 @section('content')
 <article itemscope itemtype="http://schema.org/BlogPosting">

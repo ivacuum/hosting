@@ -87,22 +87,11 @@
 @endif
 @endsection
 
-@section('footer')
-<ul class="list-inline mb-0">
-  <li>&copy; {{ date('Y') }} ArtFly</li>
-  <li>
-    <a class="link" href="mailto:{{ config('email.dc') }}">
-      {{ trans('menu.feedback') }}
-    </a>
-  </li>
-  @section('i18n')
-    <li>
-      @ru
-        <a class="link link-lang" href="{{ url("en/{$request_uri}") }}" lang="en">In English</a>
-      @en
-        <a class="link link-lang" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
-      @endru
-    </li>
-  @show
-</ul>
+@section('footer_copyright')
+<li>&copy; {{ date('Y') }} ArtFly</li>
+<li>
+  <a class="link" href="mailto:{{ config('email.dc') }}">
+    {{ trans('menu.feedback') }}
+  </a>
+</li>
 @endsection

@@ -2,12 +2,8 @@
 
 @extends('life.base', [
   'meta_title' => trans('life.german'),
+  'no_language_selector' => $locale === 'ru',
 ])
-
-@ru
-  @section('i18n')
-  @endsection
-@endru
 
 @section('content')
 <h3 class="mt-0">{{ trans('life.german') }}</h3>

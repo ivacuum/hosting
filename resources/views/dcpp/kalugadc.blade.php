@@ -1,15 +1,12 @@
 @extends('dcpp.software', [
   'meta_title' => trans('meta_title.dcpp.kalugadc'),
+  'no_language_selector' => $locale === 'ru',
+
   'software_title' => trans('dcpp.kalugadc'),
   'software' => [
     ['version' => '', 'id' => 12, 'size' => 1861500, 'dl_suffix' => ''],
   ],
 ])
-
-@ru
-  @section('i18n')
-  @endsection
-@endru
 
 @section('about_software')
 @ru

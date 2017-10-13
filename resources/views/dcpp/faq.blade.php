@@ -1,11 +1,7 @@
 @extends('dcpp.base', [
   'meta_title' => trans('meta_title.dcpp.faq'),
+  'no_language_selector' => $locale === 'ru',
 ])
-
-@ru
-  @section('i18n')
-  @endsection
-@endru
 
 @section('content')
 <h1 class="mt-0">Решение проблем с DC++</h1>

@@ -1,5 +1,6 @@
 @extends('life.base', [
   'meta_title' => 'Какими вещами и сервисами пользуюсь в путешествиях',
+  'no_language_selector' => true,
 
   'breadcrumbs' => [
     ['title' => 'Заметки', 'url' => 'life'],

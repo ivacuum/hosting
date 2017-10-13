@@ -69,7 +69,7 @@ $css_classes = new \Ivacuum\Generic\Utilities\EnvironmentForCss(Request::userAge
   @show
   <div class="container">
     <div class="js-flash-notification">
-      @if ($first_time_visit && !Auth::check() && $locale !== $locale_preffered && !(new Ivacuum\Generic\Utilities\EnvironmentForCss(request()->userAgent()))->isCrawler())
+      @if ($first_time_visit && !Auth::check() && $locale !== $locale_preffered && empty($no_language_selector) && !(new Ivacuum\Generic\Utilities\EnvironmentForCss(request()->userAgent()))->isCrawler())
         <div class="alert alert-warning">
           <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
           @ru
@@ -107,15 +107,19 @@ $css_classes = new \Ivacuum\Generic\Utilities\EnvironmentForCss(Request::userAge
   <div class="container">
     @section('footer')
       <ul class="list-inline mb-0">
-        <li>&copy; {{ date('Y') }} vacuum</li>
+        @section('footer_copyright')
+          <li>&copy; {{ date('Y') }} vacuum</li>
+        @show
         @section('i18n')
-          <li>
-            @ru
-              <a class="link link-lang" href="{{ url("en/{$request_uri}") }}" lang="en">In&nbsp;English</a>
-            @en
-              <a class="link link-lang" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
-            @endru
-          </li>
+          @if (empty($no_language_selector))
+            <li>
+              @ru
+                <a class="link link-lang" href="{{ url("en/{$request_uri}") }}" lang="en">In&nbsp;English</a>
+              @en
+                <a class="link link-lang" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
+              @endru
+            </li>
+          @endif
         @show
       </ul>
     @show
