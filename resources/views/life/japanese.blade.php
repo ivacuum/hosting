@@ -13,17 +13,35 @@ https://en.wikipedia.org/wiki/List_of_kanji_by_concept
 
 @ru
   <p>Полезные ресурсы:</p>
-  <ul>
-    <li><a class="link" href="http://jisho.org/">jisho.org</a> — словарь</li>
-    <li><a class="link" href="https://www.wanikani.com/">wanikani.com</a> — онлайн-сервис для изучения ключей, кандзи и иероглифов</li>
-  </ul>
 @en
   <p>Useful resources:</p>
-  <ul>
-    <li><a class="link" href="http://jisho.org/">jisho.org</a> — powerful dictionary</li>
-    <li><a class="link" href="https://www.wanikani.com/">wanikani.com</a> — web application for learning radicals, kanji and vocabulary</li>
-  </ul>
 @endru
+<ul>
+  <li>
+    <a class="link" href="http://jisho.org/">jisho.org</a>
+    @ru
+      — словарь
+    @en
+      — powerful dictionary
+    @endru
+  </li>
+  <li>
+    <a class="link" href="https://www.wanikani.com/">wanikani.com</a>
+    @ru
+      — онлайн-сервис для изучения ключей, кандзи и иероглифов
+    @en
+      — web application for learning radicals, kanji and vocabulary
+    @endru
+  </li>
+  <li>
+    <a class="link" href="http://www.kanjidamage.com/">kanjidamage</a>
+    @ru
+      — все о кандзи
+    @en
+      — all about kanji
+    @endru
+  </li>
+</ul>
 
 <div class="row mt-4">
   <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
