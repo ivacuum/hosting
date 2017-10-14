@@ -34,11 +34,19 @@ https://en.wikipedia.org/wiki/List_of_kanji_by_concept
     @endru
   </li>
   <li>
-    <a class="link" href="http://www.kanjidamage.com/">kanjidamage</a>
+    <a class="link" href="http://www.kanjidamage.com/">kanjidamage.com</a>
     @ru
       — все о кандзи
     @en
       — all about kanji
+    @endru
+  </li>
+  <li>
+    <a class="link" href="https://bunpro.jp/">bunpro.jp</a>
+    @ru
+      — грамматика
+    @en
+      — grammar
     @endru
   </li>
 </ul>
