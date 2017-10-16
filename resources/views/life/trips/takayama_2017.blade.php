@@ -3,31 +3,43 @@
 @section('content')
 @ru
   <p>Воспользуемся обнаруженной машиной времени и переместимся на несколько десятилетий назад.</p>
+@en
+  <p>Let's use time machine to get a few decades back in time.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7533.jpg'])
 
 @ru
   <p>Маленькие телевизоры на любой вкус. Самое то в гараж поставить.</p>
+@en
+  <p>Small TVs for everyone's taste. Good one to have in the garage.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7530.jpg'])
 
 @ru
   <p>Уголок фотолюбителей.</p>
+@en
+  <p>Photographers' corner.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7534.jpg'])
 
 @ru
   <p>Неделя начинается с воскресенья.</p>
+@en
+  <p>Week starts on Sunday.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7535.jpg'])
 
 @ru
   <p>Ребята играют в настолку.</p>
+@en
+  <p>The guys play a board game.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7539.jpg'])
 
 @ru
   <p>Заглянем в кабинет доктора, пока его нет.</p>
+@en
+  <p>Let's take a look at the doctor's office while he's gone.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7540.jpg'])
 
@@ -43,6 +55,8 @@
 
 @ru
   <p>Игрушки детства.</p>
+@en
+  <p>Childhood toys.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_7542.jpg',
@@ -54,6 +68,8 @@
 
 @ru
   <p>Куда же без Годзиллы.</p>
+@en
+  <p>One does not simply pass by Godzilla.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7546.jpg'])
 
@@ -66,6 +82,8 @@
 
 @ru
   <p>Давайте все пересчитаем.</p>
+@en
+  <p>Let's count everything.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7551.jpg'])
 
