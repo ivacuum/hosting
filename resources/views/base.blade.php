@@ -22,8 +22,10 @@ $css_classes = new \Ivacuum\Generic\Utilities\EnvironmentForCss(Request::userAge
     <link rel="manifest" href="/pwa-manifest.json?1">
     <script async src="/assets/service-worker-installer.js"></script>
   @endif
-  <link rel="alternate" hreflang="en" href="{{ url("en/{$request_uri}") }}">
-  <link rel="alternate" hreflang="ru" href="{{ url($request_uri) }}">
+  @if (empty($no_language_selector))
+    <link rel="alternate" hreflang="en" href="{{ url("en/{$request_uri}") }}">
+    <link rel="alternate" hreflang="ru" href="{{ url($request_uri) }}">
+  @endif
   <link rel="stylesheet" href="/assets/fotorama.css">
   <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">
   @stack('head')
