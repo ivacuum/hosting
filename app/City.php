@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -67,6 +68,29 @@ class City extends Model
     public function isOnMap()
     {
         return $this->lat && $this->lon;
+    }
+
+    public function metaDescription(Collection $trips): string
+    {
+        if (!$total_trips = $trips->count()) {
+            return '';
+        }
+
+        $trips_text = \ViewHelper::plural('trips', $total_trips);
+        $total_photos = $trips->sum->photos_count;
+
+        if (!$total_photos) {
+            return $trips_text;
+        }
+
+        $photos_text = \ViewHelper::plural('photos', $total_photos);
+
+        return "{$trips_text} &middot; {$photos_text}";
+    }
+
+    public function metaTitle()
+    {
+        return "{$this->title}, {$this->country->title}";
     }
 
     public function www()

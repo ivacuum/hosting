@@ -1,5 +1,6 @@
 @extends('life.base', [
-  'meta_title' => $city->title,
+  'meta_title' => $city->metaTitle(),
+  'meta_description' => $city->metaDescription($trips),
 ])
 
 @section('content')
