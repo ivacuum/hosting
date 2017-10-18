@@ -45,11 +45,15 @@
 
 @ru
   <p>Закажем песню, что не было так беспокойно его ждать.</p>
+@en
+  <p>And listen to a song to ease anxious waiting.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7541.jpg'])
 
 @ru
   <p>Если вы вдруг не разглядели названия. Тут все куда ближе и понятнее.</p>
+@en
+  <p>A closer look to the titles in case they were too small before. Pretty understandable now (no).</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7556.jpg'])
 
@@ -88,27 +92,37 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_7551.jpg'])
 
 @ru
-  <p>В кабинете парикмахера. Ловкая попытка не отразиться в зеркалах.</p>
+  <p>В кабинете парикмахера. Ловкая попытка не отражаться в зеркалах.</p>
+@en
+  <p>At the barbershop. A clever attempt not to be reflected in mirrors.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7552.jpg'])
 
 @ru
   <p>Вид сбоку.</p>
+@en
+  <p>Side view.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7554.jpg'])
 
 @ru
   <p>Вид сверху.</p>
+@en
+  <p>Top view.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7562.jpg'])
 
 @ru
   <p>Колонка.</p>
+@en
+  <p>Gas tankless water heater.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7555.jpg'])
 
 @ru
-  <p>Что тут можно добавить? Только ААА в конце.</p>
+  <p>Что тут можно добавить? Только «ААА» в конце.</p>
+@en
+  <p>What can be added here? Only "AAA" at the end.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7557.jpg'])
 
@@ -121,11 +135,15 @@
 
 @ru
   <p>Свежие журналы.</p>
+@en
+  <p>Fresh magazines.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7563.jpg'])
 
 @ru
   <p>Игровые новинки.</p>
+@en
+  <p>Novelty games.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_7565.jpg',
@@ -134,6 +152,8 @@
 
 @ru
   <p>Можно сразу опробовать с друзьями.</p>
+@en
+  <p>You can immediately play a demo with friends.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_7567.jpg',
@@ -145,26 +165,36 @@
 
 @ru
   <p>Пеналы.</p>
+@en
+  <p>Pencil cases.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7571.jpg'])
 
 @ru
   <p>Калькуляторы.</p>
+@en
+  <p>Calculators.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7572.jpg'])
 
 @ru
   <p>В классе.</p>
+@en
+  <p>In the classroom.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7573.jpg'])
 
 @ru
   <p>Строение приборов, в том числе утюга.</p>
+@en
+  <p>Devices' internals. And iron's too.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7574.jpg'])
 
 @ru
   <p>Печатная машинка.</p>
+@en
+  <p>Typewriter.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7575.jpg'])
 
@@ -413,6 +443,8 @@
 
 @ru
   <p>Ограждения.</p>
+@en
+  <p>Cute guard rails.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7735.jpg'])
 
