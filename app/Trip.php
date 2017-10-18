@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Traits\HasLocalizedTitle;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Ivacuum\Generic\Utilities\TextImagesParser;
@@ -41,6 +42,8 @@ use Symfony\Component\Finder\Finder;
  */
 class Trip extends Model
 {
+    use HasLocalizedTitle;
+
     const STATUS_INACTIVE = 0;
     const STATUS_PUBLISHED = 1;
     const STATUS_HIDDEN = 2;
@@ -80,24 +83,6 @@ class Trip extends Model
     }
 
     // Scopes
-    public function scopeForCity(Builder $query, $id = null)
-    {
-        if (is_null($id)) {
-            return $query;
-        }
-
-        return $query->where('city_id', $id);
-    }
-
-    public function scopeForCountry(Builder $query, $id = null)
-    {
-        return $query->unless(is_null($id), function (Builder $query) use ($id) {
-            return $query->whereHas('city.country', function (Builder $query) use ($id) {
-                $query->where('country_id', $id);
-            });
-        });
-    }
-
     public function scopeNext(Builder $query)
     {
         return $query->where('user_id', $this->user_id)
@@ -135,28 +120,23 @@ class Trip extends Model
     }
 
     // Attributes
-    public function getMetaDescriptionAttribute()
+    public function getMetaDescriptionAttribute(): string
     {
         return $this->{'meta_description_' . \App::getLocale()};
     }
 
-    public function getMetaTitleAttribute()
+    public function getMetaTitleAttribute(): string
     {
         return $this->{'meta_title_' . \App::getLocale()};
     }
 
-    public function getPeriodAttribute()
+    public function getPeriodAttribute(): string
     {
         if ($this->date_start->month === $this->date_end->month) {
             return $this->monthName($this->date_start->month);
         }
 
         return $this->monthName($this->date_start->month) . '–' . $this->monthName($this->date_end->month);
-    }
-
-    public function getTitleAttribute()
-    {
-        return $this->{'title_' . \App::getLocale()};
     }
 
     public function getYearAttribute()
@@ -178,7 +158,7 @@ class Trip extends Model
     }
 
     // Methods
-    public function breadcrumb()
+    public function breadcrumb(): string
     {
         return "{$this->title} {$this->localizedDate()}";
     }
@@ -254,12 +234,12 @@ class Trip extends Model
         );
     }
 
-    public function metaDescription()
+    public function metaDescription(): string
     {
         return $this->meta_description;
     }
 
-    public function metaImage($width = null, $height = null)
+    public function metaImage(?int $width = null, ?int $height = null): string
     {
         if (!$this->meta_image) {
             return '';
@@ -276,7 +256,7 @@ class Trip extends Model
         return \ViewHelper::pic($this->slug, $this->meta_image);
     }
 
-    public function metaTitle()
+    public function metaTitle(): string
     {
         if ($this->meta_title) {
             return $this->meta_title;
@@ -291,17 +271,17 @@ class Trip extends Model
         return "{$this->title} &middot; {$this->localizedDate()}{$suffix}";
     }
 
-    public function template()
+    public function template(): string
     {
         return 'life.trips.'.str_replace('.', '_', $this->slug);
     }
 
-    public function timelinePeriod()
+    public function timelinePeriod(): string
     {
         return $this->monthName($this->date_start->month);
     }
 
-    public function www()
+    public function www(): string
     {
         return $this->user_id === 1
             ? path('Life@page', $this->slug)
@@ -341,7 +321,7 @@ class Trip extends Model
         return $trips_by_cities;
     }
 
-    public static function idsByCity($id = null)
+    public static function idsByCity(?int $id = null)
     {
         $ids = \Cache::rememberForever(CacheKey::TRIPS_PUBLISHED_BY_CITY, function () {
             $trips = self::published()->get(['id', 'city_id']);
@@ -362,7 +342,7 @@ class Trip extends Model
         return $ids;
     }
 
-    public static function idsByCountry($id = null)
+    public static function idsByCountry(?int $id = null)
     {
         $ids = \Cache::rememberForever(CacheKey::TRIPS_PUBLISHED_BY_COUNTRY, function () {
             $trips = self::published()
@@ -385,7 +365,7 @@ class Trip extends Model
         return $ids;
     }
 
-    protected function monthName($month)
+    protected function monthName(int $month): string
     {
         // Собственный перевод, так как нужен именительный падеж в русском языке
         return trans("months.{$month}");

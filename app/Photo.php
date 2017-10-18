@@ -73,7 +73,7 @@ class Photo extends Model
         });
     }
 
-    public function scopeForTrips(Builder $query, $ids = [])
+    public function scopeForTrips(Builder $query, array $ids = [])
     {
         return $query->unless(empty($ids), function (Builder $query) use ($ids) {
             return $query->whereIn('rel_id', $ids)->where('rel_type', 'Trip');
@@ -92,7 +92,7 @@ class Photo extends Model
     }
 
     // Methods
-    public function breadcrumb()
+    public function breadcrumb(): string
     {
         return str_replace('/', ' / ', $this->slug);
     }
@@ -102,39 +102,39 @@ class Photo extends Model
         return \Storage::disk('photos')->delete($this->slug);
     }
 
-    public function filename()
+    public function filename(): string
     {
         return explode('/', $this->slug)[1];
     }
 
-    public function folder()
+    public function folder(): string
     {
         return explode('/', $this->slug)[0];
     }
 
-    public function isOnMap()
+    public function isOnMap(): bool
     {
         return $this->lat && $this->lon;
     }
 
-    public function newSlugPrefix($new_prefix)
+    public function newSlugPrefix(string $new_prefix): void
     {
-        list($prefix, $filename) = explode('/', $this->slug);
+        [$prefix, $filename] = explode('/', $this->slug);
 
         $this->slug = "{$new_prefix}/{$filename}";
     }
 
-    public function originalUrl()
+    public function originalUrl(): string
     {
         return "https://life.ivacuum.ru/{$this->slug}";
     }
 
-    public function thumbnailUrl()
+    public function thumbnailUrl(): string
     {
         return "https://life.ivacuum.ru/-/400x300/{$this->slug}";
     }
 
-    public function www()
+    public function www(): string
     {
         return path('Photos@show', $this->id);
     }

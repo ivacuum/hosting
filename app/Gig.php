@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Traits\HasLocalizedTitle;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -31,6 +32,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Gig extends Model
 {
+    use HasLocalizedTitle;
+
     const STATUS_HIDDEN = 0;
     const STATUS_PUBLISHED = 1;
 
@@ -57,11 +60,6 @@ class Gig extends Model
     public function getMetaTitleAttribute()
     {
         return $this->{'meta_title_' . \App::getLocale()};
-    }
-
-    public function getTitleAttribute()
-    {
-        return $this->{'title_' . \App::getLocale()};
     }
 
     // Methods

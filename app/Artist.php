@@ -17,7 +17,7 @@ class Artist extends Model
 {
     protected $guarded = ['created_at', 'updated_at', 'goto'];
 
-    public function breadcrumb()
+    public function breadcrumb(): string
     {
         return $this->title;
     }

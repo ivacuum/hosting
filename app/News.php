@@ -59,18 +59,18 @@ class News extends Model
     }
 
     // Methods
-    public function breadcrumb()
+    public function breadcrumb(): string
     {
         return $this->title;
     }
 
-    public function www()
+    public function www(): string
     {
         return path('News@show', $this->id);
     }
 
     // Static methods
-    public static function interval($year, $month = null, $day = null)
+    public static function interval(int $year, ?int $month = null, ?int $day = null): array
     {
         $start = Carbon::createFromDate($year, $month, $day);
         $end = $start->copy();

@@ -36,7 +36,7 @@ class YandexUser extends Model
     }
 
     // Methods
-    public function breadcrumb()
+    public function breadcrumb(): string
     {
         return $this->account;
     }

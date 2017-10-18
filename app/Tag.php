@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Traits\HasLocalizedTitle;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -20,6 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Tag extends Model
 {
+    use HasLocalizedTitle;
+
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $perPage = 50;
 
@@ -53,26 +56,14 @@ class Tag extends Model
         });
     }
 
-    // Attributes
-    public function getTitleAttribute()
-    {
-        return $this->{self::titleField()};
-    }
-
     // Methods
-    public function breadcrumb()
+    public function breadcrumb(): string
     {
         return "#{$this->title}";
     }
 
-    public function initial()
+    public function initial(): string
     {
         return mb_substr($this->title, 0, 1);
-    }
-
-    // Static methods
-    public static function titleField()
-    {
-        return 'title_'.\App::getLocale();
     }
 }

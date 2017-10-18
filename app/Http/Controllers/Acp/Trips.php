@@ -17,14 +17,22 @@ class Trips extends Controller
     public function index()
     {
         $status = request('status');
+        $city_id = request('city_id');
         $user_id = request('user_id');
+        $country_id = request('country_id');
 
         [$sort_key, $sort_dir] = $this->getSortParams();
 
         $models = Model::with('user')
             ->withCount('comments', 'photos')
-            ->forCity(request('city_id'))
-            ->forCountry(request('country_id'))
+            ->when($city_id, function (Builder $query) use ($city_id) {
+                return $query->where('city_id', $city_id);
+            })
+            ->when($country_id, function (Builder $query) use ($country_id) {
+                return $query->whereHas('city.country', function (Builder $query) use ($country_id) {
+                    $query->where('country_id', $country_id);
+                });
+            })
             ->when($user_id, function (Builder $query) use ($user_id) {
                 return $query->where('user_id', $user_id);
             })

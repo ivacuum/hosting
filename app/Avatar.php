@@ -18,7 +18,7 @@ class Avatar
         return \Storage::disk('avatars')->delete($filename);
     }
 
-    public function originalUrl($filename)
+    public function originalUrl($filename): string
     {
         return \App::environment('production')
             ? "https://ivacuum.org/avatars/{$filename}"

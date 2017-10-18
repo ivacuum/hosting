@@ -102,7 +102,7 @@ class User extends Authenticatable
     }
 
     // Methods
-    public function activate()
+    public function activate(): bool
     {
         if ($this->status === self::STATUS_INACTIVE) {
             $this->status = self::STATUS_ACTIVE;
@@ -115,32 +115,32 @@ class User extends Authenticatable
         return false;
     }
 
-    public function avatarName()
+    public function avatarName(): string
     {
         return mb_strtoupper(mb_substr($this->login ?: $this->email, 0, 1));
     }
 
-    public function avatarUrl()
+    public function avatarUrl(): string
     {
         return $this->avatar ? (new Avatar)->originalUrl($this->avatar) : '';
     }
 
-    public function breadcrumb()
+    public function breadcrumb(): string
     {
         return $this->email;
     }
 
-    public function displayName()
+    public function displayName(): string
     {
         return $this->login ?: $this->email;
     }
 
-    public function isAdmin()
+    public function isAdmin(): bool
     {
         return $this->isRoot();
     }
 
-    public function isOldPasswordCorrect($password)
+    public function isOldPasswordCorrect($password): bool
     {
         if ($this->salt && md5($password.$this->salt) === $this->password) {
             return true;
@@ -153,17 +153,17 @@ class User extends Authenticatable
         return false;
     }
 
-    public function isPasswordOld()
+    public function isPasswordOld(): bool
     {
         return strlen($this->password) === 32;
     }
 
-    public function isRoot()
+    public function isRoot(): bool
     {
         return $this->id === 1;
     }
 
-    public function markNotificationsAsRead()
+    public function markNotificationsAsRead(): bool
     {
         $have_unread = false;
 
@@ -185,17 +185,17 @@ class User extends Authenticatable
         return $have_unread;
     }
 
-    public function publicName()
+    public function publicName(): string
     {
         return $this->login ?: "user #{$this->id}";
     }
 
-    public function sendPasswordResetNotification($token)
+    public function sendPasswordResetNotification($token): void
     {
         \Mail::to($this)->queue(new ResetPassword($token));
     }
 
-    public function uploadAvatar(UploadedFile $file)
+    public function uploadAvatar(UploadedFile $file): string
     {
         $avatar = new Avatar;
 
@@ -211,7 +211,7 @@ class User extends Authenticatable
         return $avatar->originalUrl($filename);
     }
 
-    public function www()
+    public function www(): string
     {
         return path('Users@show', $this->id);
     }

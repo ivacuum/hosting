@@ -47,13 +47,13 @@ class Image extends Model
     }
 
     // Attributes
-    public function getSplittedDateAttribute()
+    public function getSplittedDateAttribute(): string
     {
         return implode('/', str_split($this->date, 2));
     }
 
     // Methods
-    public function breadcrumb()
+    public function breadcrumb(): string
     {
         return "#{$this->id}";
     }
@@ -69,14 +69,14 @@ class Image extends Model
         return \Storage::disk('gallery')->delete($files);
     }
 
-    public function originalUrl()
+    public function originalUrl(): string
     {
         return \App::environment('production')
             ? "https://img.ivacuum.ru/g/{$this->date}/{$this->slug}"
             : url("/uploads/gallery/{$this->splitted_date}/{$this->slug}");
     }
 
-    public function originalSecretUrl()
+    public function originalSecretUrl(): string
     {
         return \App::environment('production')
             ? "https://ivacuum.org/g/{$this->splitted_date}/{$this->slug}"
@@ -108,14 +108,14 @@ class Image extends Model
         return \Storage::disk('gallery')->putFileAs("{$this->splitted_date}/t", $thumbnail, $this->slug);
     }
 
-    public function thumbnailUrl()
+    public function thumbnailUrl(): string
     {
         return \App::environment('production')
             ? "https://img.ivacuum.ru/g/{$this->date}/t/{$this->slug}"
             : "/uploads/gallery/{$this->splitted_date}/t/{$this->slug}";
     }
 
-    public function thumbnailSecretUrl()
+    public function thumbnailSecretUrl(): string
     {
         return \App::environment('production')
             ? "https://ivacuum.org/g/{$this->splitted_date}/t/{$this->slug}"

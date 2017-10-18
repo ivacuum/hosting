@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Traits\HasLocalizedTitle;
 use App\Traits\HasTripsMetaDescription;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,7 +24,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Country extends Model
 {
-    use HasTripsMetaDescription;
+    use HasLocalizedTitle,
+        HasTripsMetaDescription;
 
     protected $guarded = ['created_at', 'updated_at', 'goto'];
 
@@ -38,12 +40,6 @@ class Country extends Model
     {
         return $this->hasManyThrough(Trip::class, City::class)
             ->orderBy('date_start', 'asc');
-    }
-
-    // Attributes
-    public function getTitleAttribute(): string
-    {
-        return $this->{self::titleField()};
     }
 
     // Methods
@@ -72,11 +68,5 @@ class Country extends Model
     public function www(): string
     {
         return path('Life@country', $this->slug);
-    }
-
-    // Static methods
-    public static function titleField(): string
-    {
-        return 'title_'.\App::getLocale();
     }
 }

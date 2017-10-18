@@ -1,7 +1,9 @@
 <?php namespace App;
 
+use App\Traits\HasLocalizedTitle;
 use App\Traits\HasTripsMetaDescription;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 /**
  * Город
@@ -26,7 +28,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class City extends Model
 {
-    use HasTripsMetaDescription;
+    use HasLocalizedTitle,
+        HasTripsMetaDescription;
 
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $perPage = 50;
@@ -43,19 +46,13 @@ class City extends Model
             ->orderBy('date_start', 'asc');
     }
 
-    // Attributes
-    public function getTitleAttribute(): string
-    {
-        return $this->{self::titleField()};
-    }
-
     // Methods
     public function breadcrumb(): string
     {
         return "{$this->country->emoji} {$this->title}";
     }
 
-    public static function forInputSelect()
+    public static function forInputSelect(): Collection
     {
         $title_field = self::titleField();
 
@@ -80,11 +77,5 @@ class City extends Model
     public function www(): string
     {
         return path('Life@page', $this->slug);
-    }
-
-    // Static methods
-    public static function titleField(): string
-    {
-        return 'title_'.\App::getLocale();
     }
 }

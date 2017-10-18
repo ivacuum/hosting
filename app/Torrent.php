@@ -77,17 +77,17 @@ class Torrent extends Model
     }
 
     // Methods
-    public function breadcrumb()
+    public function breadcrumb(): string
     {
         return $this->title;
     }
 
-    public function externalLink()
+    public function externalLink(): string
     {
         return "https://rutracker.cr/forum/viewtopic.php?t={$this->rto_id}";
     }
 
-    public function fullDate()
+    public function fullDate(): string
     {
         $format = $this->registered_at->year == date('Y') ? '%e %B' : '%e %B %Y';
 
@@ -100,12 +100,12 @@ class Torrent extends Model
         return $this->registered_at->formatLocalized($format);
     }
 
-    public function magnet()
+    public function magnet(): string
     {
         return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode(str_limit($this->title, 100, ''));
     }
 
-    public function www()
+    public function www(): string
     {
         return path('Torrents@show', $this->id);
     }
