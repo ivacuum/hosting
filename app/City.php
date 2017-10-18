@@ -1,6 +1,6 @@
 <?php namespace App;
 
-use Illuminate\Database\Eloquent\Collection;
+use App\Traits\HasTripsMetaDescription;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class City extends Model
 {
+    use HasTripsMetaDescription;
+
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $perPage = 50;
 
@@ -42,13 +44,13 @@ class City extends Model
     }
 
     // Attributes
-    public function getTitleAttribute()
+    public function getTitleAttribute(): string
     {
         return $this->{self::titleField()};
     }
 
     // Methods
-    public function breadcrumb()
+    public function breadcrumb(): string
     {
         return "{$this->country->emoji} {$this->title}";
     }
@@ -60,46 +62,28 @@ class City extends Model
         return self::orderBy($title_field)->get(['id', $title_field])->pluck($title_field, 'id');
     }
 
-    public function initial()
+    public function initial(): string
     {
         return mb_substr($this->title, 0, 1);
     }
 
-    public function isOnMap()
+    public function isOnMap(): bool
     {
         return $this->lat && $this->lon;
     }
 
-    public function metaDescription(Collection $trips): string
+    public function metaTitle(): string
     {
-        if (!$total_trips = $trips->count()) {
-            return '';
-        }
-
-        $trips_text = \ViewHelper::plural('trips', $total_trips);
-        $total_photos = $trips->sum->photos_count;
-
-        if (!$total_photos) {
-            return $trips_text;
-        }
-
-        $photos_text = \ViewHelper::plural('photos', $total_photos);
-
-        return "{$trips_text} &middot; {$photos_text}";
+        return "{$this->country->emoji} {$this->title}, {$this->country->title}";
     }
 
-    public function metaTitle()
-    {
-        return "{$this->title}, {$this->country->title}";
-    }
-
-    public function www()
+    public function www(): string
     {
         return path('Life@page', $this->slug);
     }
 
     // Static methods
-    public static function titleField()
+    public static function titleField(): string
     {
         return 'title_'.\App::getLocale();
     }
