@@ -200,7 +200,7 @@
 @ru
   <p>Милые ограждения.</p>
 @en
-  <p>Cute fences.</p>
+  <p>Cute guard rails.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4496.jpg'])
 
