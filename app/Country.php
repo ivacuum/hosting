@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Traits\HasTripsMetaDescription;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -22,6 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Country extends Model
 {
+    use HasTripsMetaDescription;
+
     protected $guarded = ['created_at', 'updated_at', 'goto'];
 
     // Relations
@@ -38,13 +41,13 @@ class Country extends Model
     }
 
     // Attributes
-    public function getTitleAttribute()
+    public function getTitleAttribute(): string
     {
         return $this->{self::titleField()};
     }
 
     // Methods
-    public function breadcrumb()
+    public function breadcrumb(): string
     {
         return "{$this->emoji} {$this->title}";
     }
@@ -56,18 +59,23 @@ class Country extends Model
         return self::orderBy($title_field)->get(['id', $title_field])->pluck($title_field, 'id');
     }
 
-    public function initial()
+    public function initial(): string
     {
         return mb_substr($this->title, 0, 1);
     }
 
-    public function www()
+    public function metaTitle(): string
+    {
+        return "{$this->emoji} {$this->title}";
+    }
+
+    public function www(): string
     {
         return path('Life@country', $this->slug);
     }
 
     // Static methods
-    public static function titleField()
+    public static function titleField(): string
     {
         return 'title_'.\App::getLocale();
     }
