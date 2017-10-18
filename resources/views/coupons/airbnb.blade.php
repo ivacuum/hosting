@@ -14,8 +14,8 @@
 <table class="table-stats table-adaptive">
   <thead>
     <tr>
-      <td>@ru Купон @en Coupon Code @endru</td>
-      <td>@ru Где проверен @en Successfully used in @endru</td>
+      <th>@ru Купон @en Coupon Code @endru</th>
+      <th>@ru Где проверен @en Successfully used in @endru</th>
     </tr>
   </thead>
   <tbody>

@@ -6,12 +6,9 @@
     <thead>
       <tr>
         <th>{{ ViewHelper::modelFieldTrans('torrent', 'title') }}</th>
-        <th class="text-muted text-right tooltipped tooltipped-n"
-             aria-label="{{ ViewHelper::modelFieldTrans('torrent', 'views') }}">@svg (eye)</th>
-        <th class="text-right tooltipped tooltipped-n"
-             aria-label="{{ ViewHelper::modelFieldTrans('torrent', 'comments') }}">@svg (comment-o)</th>
-        <th class="text-right tooltipped tooltipped-n"
-             aria-label="{{ ViewHelper::modelFieldTrans('torrent', 'clicks') }}">@svg (magnet)</th>
+        <th class="text-muted text-right" title="{{ ViewHelper::modelFieldTrans('torrent', 'views') }}">@svg (eye)</th>
+        <th class="text-right" title="{{ ViewHelper::modelFieldTrans('torrent', 'comments') }}">@svg (comment-o)</th>
+        <th class="text-right" title="{{ ViewHelper::modelFieldTrans('torrent', 'clicks') }}">@svg (magnet)</th>
         <th>{{ ViewHelper::modelFieldTrans('torrent', 'size') }}</th>
         <th>{{ ViewHelper::modelFieldTrans('torrent', 'updated_at') }}</th>
         <th></th>

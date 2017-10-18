@@ -51,12 +51,23 @@
     border-bottom: 1px solid #ddd;
     font-weight: bold;
 
-    tr {
-      @media (min-width: $screen-sm-min) {
+    @media (min-width: $screen-sm-min) {
+      border-bottom: none;
+
+      th {
         position: sticky;
         top: -1px;
         z-index: 1;
         background: #ededed linear-gradient(#fbfbfb, #ededed) repeat-x;
+
+        &:after {
+          content:'';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          border-bottom: 1px solid #ddd;
+        }
       }
     }
   }
