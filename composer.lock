@@ -577,16 +577,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "0.8.8",
+            "version": "0.8.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "71d348c43e1db056db332d61fb22f10b33757205"
+                "reference": "ab2fc23110dd30197ba1c2afbf41660914b01c1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/71d348c43e1db056db332d61fb22f10b33757205",
-                "reference": "71d348c43e1db056db332d61fb22f10b33757205",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/ab2fc23110dd30197ba1c2afbf41660914b01c1a",
+                "reference": "ab2fc23110dd30197ba1c2afbf41660914b01c1a",
                 "shasum": ""
             },
             "require": {
@@ -636,20 +636,20 @@
                     "email": "vacuum@ivacuum.ru"
                 }
             ],
-            "time": "2017-10-13T23:45:26+00:00"
+            "time": "2017-10-19T17:45:32+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v5.5.17",
+            "version": "v5.5.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "3a16d196bd8d2b7761c9b0060a30a3687c3ea201"
+                "reference": "1cc21baac11551377734b8c17ead17db4c34fe21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/3a16d196bd8d2b7761c9b0060a30a3687c3ea201",
-                "reference": "3a16d196bd8d2b7761c9b0060a30a3687c3ea201",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/1cc21baac11551377734b8c17ead17db4c34fe21",
+                "reference": "1cc21baac11551377734b8c17ead17db4c34fe21",
                 "shasum": ""
             },
             "require": {
@@ -690,7 +690,6 @@
                 "illuminate/database": "self.version",
                 "illuminate/encryption": "self.version",
                 "illuminate/events": "self.version",
-                "illuminate/exception": "self.version",
                 "illuminate/filesystem": "self.version",
                 "illuminate/hashing": "self.version",
                 "illuminate/http": "self.version",
@@ -768,7 +767,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-10-17T12:19:22+00:00"
+            "time": "2017-10-19T12:50:26+00:00"
         },
         {
             "name": "laravel/socialite",

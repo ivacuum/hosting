@@ -6,6 +6,8 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 class Kernel extends ConsoleKernel
 {
     protected $commands = [
+        \Ivacuum\Generic\Commands\MetricDelete::class,
+        \Ivacuum\Generic\Commands\MetricRename::class,
         \Ivacuum\Generic\Commands\NotificationsPurge::class,
         \Ivacuum\Generic\Commands\PasswordRemindersPurge::class,
     ];
