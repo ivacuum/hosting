@@ -200,26 +200,36 @@
 
 @ru
   <p>Таблица умножения. Тут без сюрпризов.</p>
+@en
+  <p>Multiplication table. Nothing special here.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7590.jpg'])
 
 @ru
   <p>Термометр в Цельсиях и Фаренгейтах.</p>
+@en
+  <p>Thermometer with Celsius and Fahrenheit scales.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7591.jpg'])
 
 @ru
   <p>Все готово к игре.</p>
+@en
+  <p>Everything is ready to play.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7592.jpg'])
 
 @ru
   <p>Нас уже ждут в гости.</p>
+@en
+  <p>We are being awaited already.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7596.jpg'])
 
 @ru
   <p>Массажное кресло.</p>
+@en
+  <p>Massage chair.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7601.jpg'])
 
@@ -232,16 +242,22 @@
 
 @ru
   <p>Время забора корреспонденции.</p>
+@en
+  <p>Postbox collection times.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7603.jpg'])
 
 @ru
   <p>Все средства передвижения на ходу.</p>
+@en
+  <p>All vehicles are ready to go.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7604.jpg'])
 
 @ru
   <p>Еще всякая всячина.</p>
+@en
+  <p>More stuff.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_7536.jpg',
@@ -258,21 +274,29 @@
 
 @ru
   <p>Кинотеатр. Тише, идет сеанс.</p>
+@en
+  <p>Cinema. Shhh, movie is in progress.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7613.jpg'])
 
 @ru
   <p>Новинки проката.</p>
+@en
+  <p>New movies.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7615.jpg'])
 
 @ru
   <p>Туалет в японском стиле.</p>
+@en
+  <p>Japanese style toilet.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7617.jpg'])
 
 @ru
   <p>Телефонная будка.</p>
+@en
+  <p>Phone booth.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7620.jpg'])
 
@@ -293,6 +317,8 @@
 
 @ru
   <p>Вернемся в наше время. Новый день — новые поезда. У этого широкие панорамные окна.</p>
+@en
+  <p>Back in our time. New day—new trains. This one has wide panoramic windows.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7321.jpg'])
 
@@ -318,6 +344,8 @@
 
 @ru
   <p>Кегля.</p>
+@en
+  <p>Pin.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7365.jpg'])
 
@@ -330,11 +358,15 @@
 
 @ru
   <p>Во дворе храм.</p>
+@en
+  <p>There is a temple in the yard.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7366.jpg'])
 
 @ru
   <p>Лавочка у дороги. Снова спиной, как и остановки.</p>
+@en
+  <p>Bench with its back to the road, like at bus stops.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7369.jpg'])
 
@@ -386,6 +418,8 @@
 
 @ru
   <p>Одинаковые машины.</p>
+@en
+  <p>Identical cars.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7680.jpg'])
 
@@ -398,11 +432,15 @@
 
 @ru
   <p>Цветы перед домом.</p>
+@en
+  <p>Flowers in front of the house.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7685.jpg'])
 
 @ru
   <p>Разменник денег.</p>
+@en
+  <p>I like to withdraw from the ATM like $95 to get lots of small bills. It's redundant in Japan with such a machine.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7693.jpg'])
 
