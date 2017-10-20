@@ -28,7 +28,6 @@ Route::post('ajax/beacon', 'AjaxBeacon@store');
 Route::get('ajax/chat', 'AjaxChat@index')->middleware('auth');
 Route::post('ajax/chat', 'AjaxChat@store')->middleware('auth');
 Route::post('ajax/comment/{type}/{id}', 'AjaxComment@store')->middleware('auth');
-// Route::post('ajax/feedback', 'Ajax@feedback');
 
 Route::get('about', 'Home@about');
 

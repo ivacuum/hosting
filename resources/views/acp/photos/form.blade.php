@@ -9,7 +9,7 @@
   </div>
 @else
   <div class="img-container">
-    <img src="{{ $model->originalUrl() }}">
+    <img class="image-fit-viewport" src="{{ $model->originalUrl() }}">
   </div>
 
   <div class="form-group {{ $errors->has('tags') ? 'has-error' : '' }}">
