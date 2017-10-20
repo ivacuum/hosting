@@ -71,14 +71,14 @@ class Image extends Model
 
     public function originalUrl(): string
     {
-        return \App::environment('production')
+        return \App::environment() === 'production'
             ? "https://img.ivacuum.ru/g/{$this->date}/{$this->slug}"
             : url("/uploads/gallery/{$this->splitted_date}/{$this->slug}");
     }
 
     public function originalSecretUrl(): string
     {
-        return \App::environment('production')
+        return \App::environment() === 'production'
             ? "https://ivacuum.org/g/{$this->splitted_date}/{$this->slug}"
             : "/uploads/gallery/{$this->splitted_date}/{$this->slug}";
     }
@@ -110,14 +110,14 @@ class Image extends Model
 
     public function thumbnailUrl(): string
     {
-        return \App::environment('production')
+        return \App::environment() === 'production'
             ? "https://img.ivacuum.ru/g/{$this->date}/t/{$this->slug}"
             : "/uploads/gallery/{$this->splitted_date}/t/{$this->slug}";
     }
 
     public function thumbnailSecretUrl(): string
     {
-        return \App::environment('production')
+        return \App::environment() === 'production'
             ? "https://ivacuum.org/g/{$this->splitted_date}/t/{$this->slug}"
             : "/uploads/gallery/{$this->splitted_date}/t/{$this->slug}";
     }

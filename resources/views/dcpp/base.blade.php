@@ -74,7 +74,7 @@
 @endsection
 
 @section('content_footer')
-@if (App::environment('production'))
+@if (App::environment() === 'production')
   <div class="mt-3 google-b-horizontal">
     <ins class="adsbygoogle d-block"
          data-ad-client="ca-pub-7802683087624570"

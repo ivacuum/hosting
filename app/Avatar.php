@@ -20,7 +20,7 @@ class Avatar
 
     public function originalUrl($filename): string
     {
-        return \App::environment('production')
+        return \App::environment() === 'production'
             ? "https://ivacuum.org/avatars/{$filename}"
             : "/uploads/avatars/{$filename}";
     }
