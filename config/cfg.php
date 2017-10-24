@@ -21,6 +21,12 @@ return [
     ],
     'cron_output' => env('CRON_OUTPUT', '/dev/null'),
     'gm_bin' => env('GM_BIN', '/usr/bin/env gm'),
+    'limits' => [
+        'comment' => [
+            'ip' => 100,
+            'user' => 50,
+        ],
+    ],
     'locales' => [
         'ru' => ['posix' => 'ru_RU.UTF-8'],
         'en' => ['posix' => 'en_US.UTF-8'],

@@ -26,5 +26,9 @@ class EventServiceProvider extends ServiceProvider
             UserEmptySalt::class,
             LogUserLogin::class
         ],
+
+        'Ivacuum\Generic\Events\LimitExceeded' => [
+            \Ivacuum\Generic\Listeners\TelegramLimitExceeded::class,
+        ],
     ];
 }

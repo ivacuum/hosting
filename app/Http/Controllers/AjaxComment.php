@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Limits\CommentsTodayLimit;
 use App\News;
 use App\Notifications\NewsCommented;
 use App\Notifications\TorrentCommented;
@@ -24,6 +25,12 @@ class AjaxComment extends Controller
         $this->validateWith($validator);
 
         $model = $this->notifiableModel($type, $id);
+
+        $limits = new CommentsTodayLimit;
+
+        if ($limits->ipExceeded() || $limits->userExceeded()) {
+            return redirect($model->www())->with('message', trans('limits.comment'));
+        }
 
         /* @var Comment $comment */
         $comment = $model->comments()->create([
