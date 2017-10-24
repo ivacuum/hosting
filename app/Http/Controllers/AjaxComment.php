@@ -43,24 +43,20 @@ class AjaxComment extends Controller
      * @return \App\News|\App\Trip|\App\Torrent
      * @throws \Exception
      */
-    protected function notifiableModel($type, $id)
+    protected function notifiableModel(string $type, int $id)
     {
         if ($type === 'news') {
             return News::published()->findOrFail($id);
-        }
-
-        if ($type === 'trip') {
+        } elseif ($type === 'trip') {
             return Trip::published()->findOrFail($id);
-        }
-
-        if ($type === 'torrent') {
+        } elseif ($type === 'torrent') {
             return Torrent::published()->findOrFail($id);
         }
 
         throw new \Exception('Не выбран объект для комментирования');
     }
 
-    protected function notifyUsersAboutComment($type, $model, Comment $comment)
+    protected function notifyUsersAboutComment(string $type, $model, Comment $comment): bool
     {
         event(new \App\Events\Stats\CommentAdded);
 
@@ -91,18 +87,15 @@ class AjaxComment extends Controller
         return false;
     }
 
-    protected function redirectToComment($type, $model, Comment $comment)
+    protected function redirectToComment(string $type, $model, Comment $comment)
     {
+        $anchor = "#comment-{$comment->id}";
         if ($type === 'news') {
-            return redirect(path('News@show', [$model->id, "#comment-{$comment->id}"]));
-        }
-
-        if ($type === 'trip') {
-            return redirect(path('Life@page', [$model->slug, "#comment-{$comment->id}"]));
-        }
-
-        if ($type === 'torrent') {
-            return redirect(path('Torrents@show', [$model->id, "#comment-{$comment->id}"]));
+            return redirect(path('News@show', [$model->id, $anchor]));
+        } elseif ($type === 'trip') {
+            return redirect(path('Life@page', [$model->slug, $anchor]));
+        } elseif ($type === 'torrent') {
+            return redirect(path('Torrents@show', [$model->id, $anchor]));
         }
 
         return back()->with('message', trans('comments.posted'));
