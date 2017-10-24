@@ -20,19 +20,7 @@ class Gallery extends Controller
         return view($this->view, compact('image'));
     }
 
-    public function view(Image $image)
-    {
-        event(new \App\Events\Stats\GalleryImageViewed($image->id));
-
-        return view($this->view, compact('image'));
-    }
-
-    public function upload()
-    {
-        return view($this->view);
-    }
-
-    public function uploadPost()
+    public function store()
     {
         if (!request()->ajax()) {
             return ['status' => 'error'];
@@ -60,6 +48,18 @@ class Gallery extends Controller
             'original' => $image->originalUrl(),
             'thumbnail' => $image->thumbnailUrl(),
         ];
+    }
+
+    public function view(Image $image)
+    {
+        event(new \App\Events\Stats\GalleryImageViewed($image->id));
+
+        return view($this->view, compact('image'));
+    }
+
+    public function upload()
+    {
+        return view($this->view);
     }
 
     protected function appendBreadcrumbs()
