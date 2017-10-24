@@ -115,6 +115,9 @@ export default {
           if (error.response && error.response.status === 422) {
             this.errors = error.response.data
             this.incrementUploaded()
+          } else if (error.response && error.response.status === 500) {
+            alert('Загрузка временно недоступна. Попробуйте повторить попытку позднее')
+            this.incrementUploaded()
           }
 
           reject(error)
