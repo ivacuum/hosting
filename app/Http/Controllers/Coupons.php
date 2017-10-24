@@ -60,7 +60,7 @@ class Coupons extends Controller
         return view($this->view);
     }
 
-    protected function appendBreadcrumbs()
+    protected function appendBreadcrumbs(): void
     {
         $this->middleware('breadcrumbs:coupons.index,promocodes-coupons');
         $this->middleware('breadcrumbs:coupons.airbnb')->only('airbnb');

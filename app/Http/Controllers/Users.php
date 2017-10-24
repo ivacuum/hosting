@@ -24,7 +24,7 @@ class Users extends Controller
         return view($this->view, compact('user'));
     }
 
-    protected function appendBreadcrumbs()
+    protected function appendBreadcrumbs(): void
     {
         $this->middleware('breadcrumbs:users.index,users');
     }

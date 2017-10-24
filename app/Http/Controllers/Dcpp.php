@@ -20,7 +20,7 @@ class Dcpp extends Controller
         return view($view, compact('page'));
     }
 
-    protected function appendBreadcrumbs()
+    protected function appendBreadcrumbs(): void
     {
         $this->middleware('breadcrumbs:dcpp.index,dc');
     }

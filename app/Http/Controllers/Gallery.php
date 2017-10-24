@@ -62,7 +62,7 @@ class Gallery extends Controller
         return view($this->view);
     }
 
-    protected function appendBreadcrumbs()
+    protected function appendBreadcrumbs(): void
     {
         $this->middleware('breadcrumbs:gallery.index,gallery');
         $this->middleware('breadcrumbs:gallery.preview')->only('preview');

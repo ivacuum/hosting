@@ -186,7 +186,7 @@ class Life extends Controller
         return view($tpl, compact('comments', 'next_trips', 'previous_trips', 'timeline', 'trip'));
     }
 
-    protected function appendBreadcrumbs()
+    protected function appendBreadcrumbs(): void
     {
         $this->middleware('breadcrumbs:menu.life,life');
         $this->middleware('breadcrumbs:menu.cities,life/cities')->only('cities');

@@ -256,7 +256,7 @@ class Photos extends Controller
         return view($this->view, compact('trips'));
     }
 
-    protected function appendBreadcrumbs()
+    protected function appendBreadcrumbs(): void
     {
         $this->middleware('breadcrumbs:photos.index,photos');
         $this->middleware('breadcrumbs:photos.cities,photos/cities')->only('cities', 'city');

@@ -150,7 +150,7 @@ class Torrents extends Controller
         return redirect($torrent->www());
     }
 
-    protected function appendBreadcrumbs()
+    protected function appendBreadcrumbs(): void
     {
         $this->middleware('breadcrumbs:torrents.index,torrents');
         $this->middleware('breadcrumbs:torrents.create')->only('create');
