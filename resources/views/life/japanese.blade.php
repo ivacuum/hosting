@@ -49,6 +49,14 @@ https://en.wikipedia.org/wiki/List_of_kanji_by_concept
       — grammar
     @endru
   </li>
+  <li>
+    <a class="link" href="https://www.lingodeer.com/">lingodeer.com</a>
+    @ru
+      — мобильное приложение для изучения грамматики
+    @en
+      — mobile app for studying grammar
+    @endru
+  </li>
 </ul>
 
 <div class="row mt-4">
