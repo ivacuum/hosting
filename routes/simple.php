@@ -6,6 +6,8 @@ Route::view('404', 'errors.404');
 Route::view('500', 'errors.500');
 Route::view('503', 'errors.503');
 
+Route::post('ajax/beacon', 'AjaxBeacon@store');
+
 Route::post('internal/ci-build-notifier', 'Internal@ciBuildNotifier');
 Route::post('internal/telegram/webhook', 'Internal@telegramWebhook');
 
