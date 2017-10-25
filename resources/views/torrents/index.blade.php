@@ -29,6 +29,13 @@
         @endif
       @endforeach
     </nav>
+    @guest
+      @ru
+        <div class="alert alert-info mt-4">
+          <div>Для <a href="{{ path('Auth\SignIn@index', ['goto' => path('Torrents@index')]) }}">зарегистрированных пользователей</a> доступен чат</div>
+        </div>
+      @endru
+    @endguest
   </aside>
   <div class="col-md-9" v-cloak>
     @if (Auth::check() && empty(request()->query()))
