@@ -25,6 +25,7 @@ return [
         'comment' => [
             'ip' => 100,
             'user' => 50,
+            'flood_interval' => 2,
         ],
     ],
     'locales' => [

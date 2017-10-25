@@ -28,8 +28,15 @@ class AjaxComment extends Controller
 
         $limits = new CommentsTodayLimit;
 
+        if ($limits->floodControl()) {
+            return redirect($model->www())
+                ->with('message', trans('limits.flood_control'))
+                ->withInput();
+        }
+
         if ($limits->ipExceeded() || $limits->userExceeded()) {
-            return redirect($model->www())->with('message', trans('limits.comment'));
+            return redirect($model->www())
+                ->with('message', trans('limits.comment'));
         }
 
         /* @var Comment $comment */
