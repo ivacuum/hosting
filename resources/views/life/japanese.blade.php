@@ -72,212 +72,212 @@ https://en.wikipedia.org/wiki/List_of_kanji_by_concept
       <tr>
         <td>
           <div class="f28">ア</div>
-          @ru а @en a @endru
+          <div class="text-muted">@ru а @en a @endru</div>
         </td>
         <td>
           <div class="f28">イ</div>
-          @ru и @en i @endru
+          <div class="text-muted">@ru и @en i @endru</div>
         </td>
         <td>
           <div class="f28">ウ</div>
-          @ru у @en u @endru
+          <div class="text-muted">@ru у @en u @endru</div>
         </td>
         <td>
           <div class="f28">エ</div>
-          @ru э @en e @endru
+          <div class="text-muted">@ru э @en e @endru</div>
         </td>
         <td>
           <div class="f28">オ</div>
-          @ru о @en o @endru
+          <div class="text-muted">@ru о @en o @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">カ</div>
-          @ru ка @en ka @endru
+          <div class="text-muted">@ru ка @en ka @endru</div>
         </td>
         <td>
           <div class="f28">キ</div>
-          @ru ки @en ki @endru
+          <div class="text-muted">@ru ки @en ki @endru</div>
         </td>
         <td>
           <div class="f28">ク</div>
-          @ru ку @en ku @endru
+          <div class="text-muted">@ru ку @en ku @endru</div>
         </td>
         <td>
           <div class="f28">ケ</div>
-          @ru кэ @en ke @endru
+          <div class="text-muted">@ru кэ @en ke @endru</div>
         </td>
         <td>
           <div class="f28">コ</div>
-          @ru ко @en ko @endru
+          <div class="text-muted">@ru ко @en ko @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">サ</div>
-          @ru са @en sa @endru
+          <div class="text-muted">@ru са @en sa @endru</div>
         </td>
         <td>
           <div class="f28">シ</div>
-          @ru си @en s[h]i @endru
+          <div class="text-muted">@ru си @en s[h]i @endru</div>
         </td>
         <td>
           <div class="f28">ス</div>
-          @ru су @en su @endru
+          <div class="text-muted">@ru су @en su @endru</div>
         </td>
         <td>
           <div class="f28">セ</div>
-          @ru сэ @en se @endru
+          <div class="text-muted">@ru сэ @en se @endru</div>
         </td>
         <td>
           <div class="f28">ソ</div>
-          @ru со @en so @endru
+          <div class="text-muted">@ru со @en so @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">タ</div>
-          @ru та @en ta @endru
+          <div class="text-muted">@ru та @en ta @endru</div>
         </td>
         <td>
           <div class="f28">チ</div>
-          @ru ти @en chi @endru
+          <div class="text-muted">@ru ти @en chi @endru</div>
         </td>
         <td>
           <div class="f28">ツ</div>
-          @ru цу @en tsu @endru
+          <div class="text-muted">@ru цу @en tsu @endru</div>
         </td>
         <td>
           <div class="f28">テ</div>
-          @ru тэ @en te @endru
+          <div class="text-muted">@ru тэ @en te @endru</div>
         </td>
         <td>
           <div class="f28">ト</div>
-          @ru то @en to @endru
+          <div class="text-muted">@ru то @en to @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">ナ</div>
-          @ru на @en na @endru
+          <div class="text-muted">@ru на @en na @endru</div>
         </td>
         <td>
           <div class="f28">ニ</div>
-          @ru ни @en ni @endru
+          <div class="text-muted">@ru ни @en ni @endru</div>
         </td>
         <td>
           <div class="f28">ヌ</div>
-          @ru ну @en nu @endru
+          <div class="text-muted">@ru ну @en nu @endru</div>
         </td>
         <td>
           <div class="f28">ネ</div>
-          @ru нэ @en ne @endru
+          <div class="text-muted">@ru нэ @en ne @endru</div>
         </td>
         <td>
           <div class="f28">ノ</div>
-          @ru но @en no @endru
+          <div class="text-muted">@ru но @en no @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">ハ</div>
-          @ru ха @en ha @endru
+          <div class="text-muted">@ru ха @en ha @endru</div>
         </td>
         <td>
           <div class="f28">ヒ</div>
-          @ru хи @en hi @endru
+          <div class="text-muted">@ru хи @en hi @endru</div>
         </td>
         <td>
           <div class="f28">フ</div>
-          @ru фу @en fu @endru
+          <div class="text-muted">@ru фу @en fu @endru</div>
         </td>
         <td>
           <div class="f28">ヘ</div>
-          @ru хэ @en he @endru
+          <div class="text-muted">@ru хэ @en he @endru</div>
         </td>
         <td>
           <div class="f28">ホ</div>
-          @ru хо @en ho @endru
+          <div class="text-muted">@ru хо @en ho @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">マ</div>
-          @ru ма @en ma @endru
+          <div class="text-muted">@ru ма @en ma @endru</div>
         </td>
         <td>
           <div class="f28">ミ</div>
-          @ru ми @en mi @endru
+          <div class="text-muted">@ru ми @en mi @endru</div>
         </td>
         <td>
           <div class="f28">ム</div>
-          @ru му @en mu @endru
+          <div class="text-muted">@ru му @en mu @endru</div>
         </td>
         <td>
           <div class="f28">メ</div>
-          @ru мэ @en me @endru
+          <div class="text-muted">@ru мэ @en me @endru</div>
         </td>
         <td>
           <div class="f28">モ</div>
-          @ru мо @en mo @endru
+          <div class="text-muted">@ru мо @en mo @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">ヤ</div>
-          @ru я @en ya @endru
+          <div class="text-muted">@ru я @en ya @endru</div>
         </td>
         <td></td>
         <td>
           <div class="f28">ユ</div>
-          @ru ю @en yu @endru
+          <div class="text-muted">@ru ю @en yu @endru</div>
         </td>
         <td></td>
         <td>
           <div class="f28">ヨ</div>
-          @ru ё @en yo @endru
+          <div class="text-muted">@ru ё @en yo @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">ラ</div>
-          @ru ра @en ra @endru
+          <div class="text-muted">@ru ра @en ra @endru</div>
         </td>
         <td>
           <div class="f28">リ</div>
-          @ru ри @en ri @endru
+          <div class="text-muted">@ru ри @en ri @endru</div>
         </td>
         <td>
           <div class="f28">ル</div>
-          @ru ру @en ru @endru
+          <div class="text-muted">@ru ру @en ru @endru</div>
         </td>
         <td>
           <div class="f28">レ</div>
-          @ru рэ @en re @endru
+          <div class="text-muted">@ru рэ @en re @endru</div>
         </td>
         <td>
           <div class="f28">ロ</div>
-          @ru ро @en ro @endru
+          <div class="text-muted">@ru ро @en ro @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">ワ</div>
-          @ru ва @en wa @endru
+          <div class="text-muted">@ru ва @en wa @endru</div>
         </td>
         <td></td>
         <td></td>
         <td></td>
         <td>
           <div class="f28">ヲ</div>
-          @ru [у]о @en wo @endru
+          <div class="text-muted">@ru [у]о @en wo @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">ン</div>
-          @ru н @en n @endru
+          <div class="text-muted">@ru н @en n @endru</div>
         </td>
         <td></td>
         <td></td>
@@ -287,111 +287,111 @@ https://en.wikipedia.org/wiki/List_of_kanji_by_concept
       <tr>
         <td>
           <div class="f28">ガ</div>
-          @ru га @en ga @endru
+          <div class="text-muted">@ru га @en ga @endru</div>
         </td>
         <td>
           <div class="f28">ギ</div>
-          @ru ги @en gi @endru
+          <div class="text-muted">@ru ги @en gi @endru</div>
         </td>
         <td>
           <div class="f28">グ</div>
-          @ru гу @en gu @endru
+          <div class="text-muted">@ru гу @en gu @endru</div>
         </td>
         <td>
           <div class="f28">ゲ</div>
-          @ru ге @en ge @endru
+          <div class="text-muted">@ru ге @en ge @endru</div>
         </td>
         <td>
           <div class="f28">ゴ</div>
-          @ru го @en go @endru
+          <div class="text-muted">@ru го @en go @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">ザ</div>
-          @ru дза @en za @endru
+          <div class="text-muted">@ru дза @en za @endru</div>
         </td>
         <td>
           <div class="f28">ジ</div>
-          @ru дзи @en ji @endru
+          <div class="text-muted">@ru дзи @en ji @endru</div>
         </td>
         <td>
           <div class="f28">ズ</div>
-          @ru дзу @en zu @endru
+          <div class="text-muted">@ru дзу @en zu @endru</div>
         </td>
         <td>
           <div class="f28">ゼ</div>
-          @ru дзэ @en ze @endru
+          <div class="text-muted">@ru дзэ @en ze @endru</div>
         </td>
         <td>
           <div class="f28">ゾ</div>
-          @ru дзо @en zo @endru
+          <div class="text-muted">@ru дзо @en zo @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">ダ</div>
-          @ru да @en da @endru
+          <div class="text-muted">@ru да @en da @endru</div>
         </td>
         <td>
           <div class="f28">ヂ</div>
-          @ru дзи @en ji @endru
+          <div class="text-muted">@ru дзи @en ji @endru</div>
         </td>
         <td>
           <div class="f28">ヅ</div>
-          @ru дзу @en zu @endru
+          <div class="text-muted">@ru дзу @en zu @endru</div>
         </td>
         <td>
           <div class="f28">デ</div>
-          @ru дэ @en de @endru
+          <div class="text-muted">@ru дэ @en de @endru</div>
         </td>
         <td>
           <div class="f28">ド</div>
-          @ru до @en do @endru
+          <div class="text-muted">@ru до @en do @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">バ</div>
-          @ru ба @en ba @endru
+          <div class="text-muted">@ru ба @en ba @endru</div>
         </td>
         <td>
           <div class="f28">ビ</div>
-          @ru би @en bi @endru
+          <div class="text-muted">@ru би @en bi @endru</div>
         </td>
         <td>
           <div class="f28">ブ</div>
-          @ru бу @en bu @endru
+          <div class="text-muted">@ru бу @en bu @endru</div>
         </td>
         <td>
           <div class="f28">ベ</div>
-          @ru бэ @en be @endru
+          <div class="text-muted">@ru бэ @en be @endru</div>
         </td>
         <td>
           <div class="f28">ボ</div>
-          @ru бо @en bo @endru
+          <div class="text-muted">@ru бо @en bo @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">パ</div>
-          @ru па @en pa @endru
+          <div class="text-muted">@ru па @en pa @endru</div>
         </td>
         <td>
           <div class="f28">ピ</div>
-          @ru пи @en pi @endru
+          <div class="text-muted">@ru пи @en pi @endru</div>
         </td>
         <td>
           <div class="f28">プ</div>
-          @ru пу @en pu @endru
+          <div class="text-muted">@ru пу @en pu @endru</div>
         </td>
         <td>
           <div class="f28">ペ</div>
-          @ru пэ @en pe @endru
+          <div class="text-muted">@ru пэ @en pe @endru</div>
         </td>
         <td>
           <div class="f28">ポ</div>
-          @ru по @en po @endru
+          <div class="text-muted">@ru по @en po @endru</div>
         </td>
       </tr>
     </table>
@@ -408,212 +408,212 @@ https://en.wikipedia.org/wiki/List_of_kanji_by_concept
       <tr>
         <td>
           <div class="f28">あ</div>
-          @ru а @en a @endru
+          <div class="text-muted">@ru а @en a @endru</div>
         </td>
         <td>
           <div class="f28">い</div>
-          @ru и @en i @endru
+          <div class="text-muted">@ru и @en i @endru</div>
         </td>
         <td>
           <div class="f28">う</div>
-          @ru у @en u @endru
+          <div class="text-muted">@ru у @en u @endru</div>
         </td>
         <td>
           <div class="f28">え</div>
-          @ru э @en e @endru
+          <div class="text-muted">@ru э @en e @endru</div>
         </td>
         <td>
           <div class="f28">お</div>
-          @ru о @en o @endru
+          <div class="text-muted">@ru о @en o @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">か</div>
-          @ru ка @en ka @endru
+          <div class="text-muted">@ru ка @en ka @endru</div>
         </td>
         <td>
           <div class="f28">き</div>
-          @ru ки @en ki @endru
+          <div class="text-muted">@ru ки @en ki @endru</div>
         </td>
         <td>
           <div class="f28">く</div>
-          @ru ку @en ku @endru
+          <div class="text-muted">@ru ку @en ku @endru</div>
         </td>
         <td>
           <div class="f28">け</div>
-          @ru кэ @en ke @endru
+          <div class="text-muted">@ru кэ @en ke @endru</div>
         </td>
         <td>
           <div class="f28">こ</div>
-          @ru ко @en ko @endru
+          <div class="text-muted">@ru ко @en ko @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">さ</div>
-          @ru са @en sa @endru
+          <div class="text-muted">@ru са @en sa @endru</div>
         </td>
         <td>
           <div class="f28">し</div>
-          @ru си @en s[h]i @endru
+          <div class="text-muted">@ru си @en s[h]i @endru</div>
         </td>
         <td>
           <div class="f28">す</div>
-          @ru су @en su @endru
+          <div class="text-muted">@ru су @en su @endru</div>
         </td>
         <td>
           <div class="f28">せ</div>
-          @ru сэ @en se @endru
+          <div class="text-muted">@ru сэ @en se @endru</div>
         </td>
         <td>
           <div class="f28">そ</div>
-          @ru со @en so @endru
+          <div class="text-muted">@ru со @en so @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">た</div>
-          @ru та @en ta @endru
+          <div class="text-muted">@ru та @en ta @endru</div>
         </td>
         <td>
           <div class="f28">ち</div>
-          @ru ти @en chi @endru
+          <div class="text-muted">@ru ти @en chi @endru</div>
         </td>
         <td>
           <div class="f28">つ</div>
-          @ru цу @en tsu @endru
+          <div class="text-muted">@ru цу @en tsu @endru</div>
         </td>
         <td>
           <div class="f28">て</div>
-          @ru тэ @en te @endru
+          <div class="text-muted">@ru тэ @en te @endru</div>
         </td>
         <td>
           <div class="f28">と</div>
-          @ru то @en to @endru
+          <div class="text-muted">@ru то @en to @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">な</div>
-          @ru на @en na @endru
+          <div class="text-muted">@ru на @en na @endru</div>
         </td>
         <td>
           <div class="f28">に</div>
-          @ru ни @en ni @endru
+          <div class="text-muted">@ru ни @en ni @endru</div>
         </td>
         <td>
           <div class="f28">ぬ</div>
-          @ru ну @en nu @endru
+          <div class="text-muted">@ru ну @en nu @endru</div>
         </td>
         <td>
           <div class="f28">ね</div>
-          @ru нэ @en ne @endru
+          <div class="text-muted">@ru нэ @en ne @endru</div>
         </td>
         <td>
           <div class="f28">の</div>
-          @ru но @en no @endru
+          <div class="text-muted">@ru но @en no @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">は</div>
-          @ru ха @en ha @endru
+          <div class="text-muted">@ru ха @en ha @endru</div>
         </td>
         <td>
           <div class="f28">ひ</div>
-          @ru хи @en hi @endru
+          <div class="text-muted">@ru хи @en hi @endru</div>
         </td>
         <td>
           <div class="f28">ふ</div>
-          @ru фу @en fu @endru
+          <div class="text-muted">@ru фу @en fu @endru</div>
         </td>
         <td>
           <div class="f28">へ</div>
-          @ru хэ @en he @endru
+          <div class="text-muted">@ru хэ @en he @endru</div>
         </td>
         <td>
           <div class="f28">ほ</div>
-          @ru хо @en ho @endru
+          <div class="text-muted">@ru хо @en ho @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">ま</div>
-          @ru ма @en ma @endru
+          <div class="text-muted">@ru ма @en ma @endru</div>
         </td>
         <td>
           <div class="f28">み</div>
-          @ru ми @en mi @endru
+          <div class="text-muted">@ru ми @en mi @endru</div>
         </td>
         <td>
           <div class="f28">む</div>
-          @ru му @en mu @endru
+          <div class="text-muted">@ru му @en mu @endru</div>
         </td>
         <td>
           <div class="f28">め</div>
-          @ru мэ @en me @endru
+          <div class="text-muted">@ru мэ @en me @endru</div>
         </td>
         <td>
           <div class="f28">も</div>
-          @ru мо @en mo @endru
+          <div class="text-muted">@ru мо @en mo @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">や</div>
-          @ru я @en ya @endru
+          <div class="text-muted">@ru я @en ya @endru</div>
         </td>
         <td></td>
         <td>
           <div class="f28">ゆ</div>
-          @ru ю @en yu @endru
+          <div class="text-muted">@ru ю @en yu @endru</div>
         </td>
         <td></td>
         <td>
           <div class="f28">よ</div>
-          @ru ё @en yo @endru
+          <div class="text-muted">@ru ё @en yo @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">ら</div>
-          @ru ра @en ra @endru
+          <div class="text-muted">@ru ра @en ra @endru</div>
         </td>
         <td>
           <div class="f28">り</div>
-          @ru ри @en ri @endru
+          <div class="text-muted">@ru ри @en ri @endru</div>
         </td>
         <td>
           <div class="f28">る</div>
-          @ru ру @en ru @endru
+          <div class="text-muted">@ru ру @en ru @endru</div>
         </td>
         <td>
           <div class="f28">れ</div>
-          @ru рэ @en re @endru
+          <div class="text-muted">@ru рэ @en re @endru</div>
         </td>
         <td>
           <div class="f28">ろ</div>
-          @ru ро @en ro @endru
+          <div class="text-muted">@ru ро @en ro @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">わ</div>
-          @ru ва @en wa @endru
+          <div class="text-muted">@ru ва @en wa @endru</div>
         </td>
         <td></td>
         <td></td>
         <td></td>
         <td>
           <div class="f28">を</div>
-          @ru [у]о @en wo @endru
+          <div class="text-muted">@ru [у]о @en wo @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">ん</div>
-          @ru н @en n @endru
+          <div class="text-muted">@ru н @en n @endru</div>
         </td>
         <td></td>
         <td></td>
@@ -623,111 +623,111 @@ https://en.wikipedia.org/wiki/List_of_kanji_by_concept
       <tr>
         <td>
           <div class="f28">が</div>
-          @ru га @en ga @endru
+          <div class="text-muted">@ru га @en ga @endru</div>
         </td>
         <td>
           <div class="f28">ぎ</div>
-          @ru ги @en gi @endru
+          <div class="text-muted">@ru ги @en gi @endru</div>
         </td>
         <td>
           <div class="f28">ぐ</div>
-          @ru гу @en gu @endru
+          <div class="text-muted">@ru гу @en gu @endru</div>
         </td>
         <td>
           <div class="f28">げ</div>
-          @ru ге @en ge @endru
+          <div class="text-muted">@ru ге @en ge @endru</div>
         </td>
         <td>
           <div class="f28">ご</div>
-          @ru го @en go @endru
+          <div class="text-muted">@ru го @en go @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">ざ</div>
-          @ru дза @en za @endru
+          <div class="text-muted">@ru дза @en za @endru</div>
         </td>
         <td>
           <div class="f28">じ</div>
-          @ru дзи @en ji @endru
+          <div class="text-muted">@ru дзи @en ji @endru</div>
         </td>
         <td>
           <div class="f28">ず</div>
-          @ru дзу @en zu @endru
+          <div class="text-muted">@ru дзу @en zu @endru</div>
         </td>
         <td>
           <div class="f28">ぜ</div>
-          @ru дзэ @en ze @endru
+          <div class="text-muted">@ru дзэ @en ze @endru</div>
         </td>
         <td>
           <div class="f28">ぞ</div>
-          @ru дзо @en zo @endru
+          <div class="text-muted">@ru дзо @en zo @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">だ</div>
-          @ru да @en da @endru
+          <div class="text-muted">@ru да @en da @endru</div>
         </td>
         <td>
           <div class="f28">ぢ</div>
-          @ru дзи @en ji @endru
+          <div class="text-muted">@ru дзи @en ji @endru</div>
         </td>
         <td>
           <div class="f28">づ</div>
-          @ru дзу @en zu @endru
+          <div class="text-muted">@ru дзу @en zu @endru</div>
         </td>
         <td>
           <div class="f28">で</div>
-          @ru дэ @en de @endru
+          <div class="text-muted">@ru дэ @en de @endru</div>
         </td>
         <td>
           <div class="f28">ど</div>
-          @ru до @en do @endru
+          <div class="text-muted">@ru до @en do @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">ば</div>
-          @ru ба @en ba @endru
+          <div class="text-muted">@ru ба @en ba @endru</div>
         </td>
         <td>
           <div class="f28">び</div>
-          @ru би @en bi @endru
+          <div class="text-muted">@ru би @en bi @endru</div>
         </td>
         <td>
           <div class="f28">ぶ</div>
-          @ru бу @en bu @endru
+          <div class="text-muted">@ru бу @en bu @endru</div>
         </td>
         <td>
           <div class="f28">べ</div>
-          @ru бэ @en be @endru
+          <div class="text-muted">@ru бэ @en be @endru</div>
         </td>
         <td>
           <div class="f28">ぼ</div>
-          @ru бо @en bo @endru
+          <div class="text-muted">@ru бо @en bo @endru</div>
         </td>
       </tr>
       <tr>
         <td>
           <div class="f28">ぱ</div>
-          @ru па @en pa @endru
+          <div class="text-muted">@ru па @en pa @endru</div>
         </td>
         <td>
           <div class="f28">ぴ</div>
-          @ru пи @en pi @endru
+          <div class="text-muted">@ru пи @en pi @endru</div>
         </td>
         <td>
           <div class="f28">ぷ</div>
-          @ru пу @en pu @endru
+          <div class="text-muted">@ru пу @en pu @endru</div>
         </td>
         <td>
           <div class="f28">ぺ</div>
-          @ru пэ @en pe @endru
+          <div class="text-muted">@ru пэ @en pe @endru</div>
         </td>
         <td>
           <div class="f28">ぽ</div>
-          @ru по @en po @endru
+          <div class="text-muted">@ru по @en po @endru</div>
         </td>
       </tr>
     </table>
