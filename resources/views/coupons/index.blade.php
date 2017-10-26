@@ -10,10 +10,10 @@
 
 <div class="life-text">
   <h3>{{ trans('coupons.hosting') }}</h3>
-  <ul class="list-unstyled">
-    <li class="mb-2"><a class="link" href="{{ path('Coupons@digitalocean') }}">{{ trans('coupons.digitalocean') }}</a></li>
-    <li class="mb-2"><a class="link" href="{{ path('Coupons@firstvds') }}">{{ trans('coupons.firstvds') }}</a></li>
-    {{--<li class="mb-2"><a class="link" href="{{ path('Coupons@timeweb') }}">{{ trans('coupons.timeweb') }}</a></li>--}}
+  <ul class="list-styled">
+    <li class="mb-1"><a class="link" href="{{ path('Coupons@digitalocean') }}">{{ trans('coupons.digitalocean') }}</a></li>
+    <li class="mb-1"><a class="link" href="{{ path('Coupons@firstvds') }}">{{ trans('coupons.firstvds') }}</a></li>
+    <li class="mb-1"><a class="link" href="{{ path('Coupons@timeweb') }}">{{ trans('coupons.timeweb') }}</a></li>
   </ul>
 
   <h3>{{ trans('coupons.accomodation') }}</h3>
