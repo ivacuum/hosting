@@ -22,13 +22,16 @@ class CommentsTodayLimit implements Limit
             return false;
         }
 
-        $created_at = Activity::where('user_id', $user_id)
+        $last = Activity::where('user_id', $user_id)
             ->where('type', 'Comment.created')
             ->orderBy('id', 'desc')
-            ->first(['created_at'])
-            ->created_at;
+            ->first(['created_at']);
 
-        $diff = now()->diffInSeconds($created_at);
+        if (is_null($last)) {
+            return false;
+        }
+
+        $diff = now()->diffInSeconds($last->created_at);
 
         if ($diff < $interval) {
             event(new LimitExceeded('comment.flood_interval', $user_id));
