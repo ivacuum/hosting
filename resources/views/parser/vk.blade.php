@@ -151,9 +151,9 @@
           <a class="mr-3" href="https://t.me/share/url?url={{ $post['url'] }}">T</a>
           #{{ $loop->iteration }}
           @svg (bullhorn)
-          <span class="text-muted">{{ $post['reposts'] }}</span>
+          <span class="text-muted">{{ ViewHelper::numberShort($post['reposts']) }}</span>
           @svg (heart)
-          <span class="text-muted">{{ $post['likes'] }}</span>
+          <span class="text-muted">{{ ViewHelper::numberShort($post['likes']) }}</span>
           <a href="{{ $post['url'] }}">
             @svg (link)
           </a>
