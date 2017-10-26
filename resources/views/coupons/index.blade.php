@@ -13,7 +13,9 @@
   <ul class="list-styled">
     <li class="mb-1"><a class="link" href="{{ path('Coupons@digitalocean') }}">{{ trans('coupons.digitalocean') }}</a></li>
     <li class="mb-1"><a class="link" href="{{ path('Coupons@firstvds') }}">{{ trans('coupons.firstvds') }}</a></li>
-    <li class="mb-1"><a class="link" href="{{ path('Coupons@timeweb') }}">{{ trans('coupons.timeweb') }}</a></li>
+    @ru
+      <li class="mb-1"><a class="link" href="{{ path('Coupons@timeweb') }}">{{ trans('coupons.timeweb') }}</a></li>
+    @endru
   </ul>
 
   <h3>{{ trans('coupons.accomodation') }}</h3>
