@@ -16,7 +16,7 @@
           </ruby>
         @endif
       </div>
-      <div>
+      <div class="text-muted">
         @ru
           {{ $glyph['ru'] }}
         @en
