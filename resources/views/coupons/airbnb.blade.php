@@ -265,7 +265,7 @@
     @ru
       <h2>Новый пользователь Airbnb?</h2>
       <p>Тогда вы можете рассчитывать на еще большую скидку на вашу первую поездку.</p>
-      <a class="btn btn-primary" href="https://www.airbnb.ru/{{ config('cfg.airbnb_link') }}">Получить скидку на 1500 ₽</a>
+      <a class="btn btn-primary" href="https://www.airbnb.ru/{{ config('cfg.airbnb_link') }}">Получить скидку 1500 ₽</a>
       <span class="help-block">После клика вы будете перемещены на сайт airbnb.ru</span>
     @en
       <h2>New Airbnb user?</h2>
