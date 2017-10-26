@@ -11,28 +11,17 @@ class Coupons extends Controller
 
     public function airbnb()
     {
-        $month = intval(date('m'));
-        $year = date('Y');
+        return view($this->view, ['meta_title' => $this->getServiceMetaTitle('airbnb')]);
+    }
 
-        $meta_title = trans('coupons.airbnb.title', [
-            'month' => trans("months.$month"),
-            'year' => $year
-        ]);
-
-        return view($this->view, compact('meta_title'));
+    public function booking()
+    {
+        return view($this->view, ['meta_title' => $this->getServiceMetaTitle('booking')]);
     }
 
     public function digitalocean()
     {
-        $month = intval(date('m'));
-        $year = date('Y');
-
-        $meta_title = trans('coupons.do.title', [
-            'month' => trans("months.$month"),
-            'year' => $year
-        ]);
-
-        return view($this->view, compact('meta_title'));
+        return view($this->view, ['meta_title' => $this->getServiceMetaTitle('do')]);
     }
 
     public function firstvds()
@@ -42,11 +31,7 @@ class Coupons extends Controller
 
     public function firstvdsPost()
     {
-        request()->validate([
-            'mail' => 'empty',
-
-            'email' => 'required|email|max:125',
-        ]);
+        request()->validate(['email' => 'required|email|max:125']);
 
         \Mail::to(request('email'))->queue(new FirstvdsPromocode);
 
@@ -55,16 +40,27 @@ class Coupons extends Controller
 
     public function timeweb()
     {
-        \Breadcrumbs::push(trans('coupons.timeweb'));
-
-        return view($this->view);
+        return view($this->view, ['meta_title' => $this->getServiceMetaTitle('timeweb')]);
     }
 
     protected function appendBreadcrumbs(): void
     {
         $this->middleware('breadcrumbs:coupons.index,promocodes-coupons');
         $this->middleware('breadcrumbs:coupons.airbnb')->only('airbnb');
+        $this->middleware('breadcrumbs:coupons.booking')->only('booking');
         $this->middleware('breadcrumbs:coupons.digitalocean')->only('digitalocean');
         $this->middleware('breadcrumbs:coupons.firstvds')->only('firstvds');
+        $this->middleware('breadcrumbs:coupons.timeweb')->only('timeweb');
+    }
+
+    protected function getServiceMetaTitle(string $service): string
+    {
+        $month = intval(date('m'));
+        $year = date('Y');
+
+        return trans("coupons.{$service}.title", [
+            'month' => trans("months.$month"),
+            'year' => $year
+        ]);
     }
 }

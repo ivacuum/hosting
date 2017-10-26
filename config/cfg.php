@@ -41,6 +41,7 @@ return [
 
     // Купоны
     'airbnb_link' => 'c/spankov1?s=8',
+    'booking_link' => 'https://www.booking.com/s/34_6/f4544993',
     'digitalocean_link' => 'https://m.do.co/c/0864de50ab6c',
     'firstvds_link' => 'https://firstvds.ru/?from=149161',
     'firstvds_promocode' => '648149161',

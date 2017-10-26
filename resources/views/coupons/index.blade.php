@@ -17,8 +17,9 @@
   </ul>
 
   <h3>{{ trans('coupons.accomodation') }}</h3>
-  <ul class="list-unstyled">
-    <li><a class="link" href="{{ path('Coupons@airbnb') }}">{{ trans('coupons.airbnb') }}</a></li>
+  <ul class="list-styled">
+    <li class="mb-1"><a class="link" href="{{ path('Coupons@airbnb') }}">{{ trans('coupons.airbnb') }}</a></li>
+    <li class="mb-1"><a class="link" href="{{ path('Coupons@booking') }}">{{ trans('coupons.booking') }}</a></li>
   </ul>
 </div>
 @endsection

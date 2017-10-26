@@ -95,6 +95,7 @@ Route::get('photos/{id}', 'Photos@show');
 
 Route::get('promocodes-coupons', 'Coupons@index');
 Route::get('promocodes-coupons/airbnb', 'Coupons@airbnb');
+Route::get('promocodes-coupons/booking', 'Coupons@booking');
 Route::get('promocodes-coupons/digitalocean', 'Coupons@digitalocean');
 Route::get('promocodes-coupons/firstvds', 'Coupons@firstvds');
 Route::post('promocodes-coupons/firstvds', 'Coupons@firstvdsPost');
