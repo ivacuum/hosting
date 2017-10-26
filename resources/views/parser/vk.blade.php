@@ -147,7 +147,7 @@
         </div>
       @endif
       <div class="vk-post-meta text-muted text-right">
-        <samp><small>
+        <samp class="f12">
           <a class="mr-3" href="https://t.me/share/url?url={{ $post['url'] }}">T</a>
           #{{ $loop->iteration }}
           @svg (bullhorn)
@@ -157,7 +157,7 @@
           <a href="{{ $post['url'] }}">
             @svg (link)
           </a>
-        </small></samp>
+        </samp>
       </div>
     </div>
   </div>
