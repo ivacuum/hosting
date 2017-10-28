@@ -5,6 +5,7 @@ return [
     'file' => 'File',
     'size' => 'Size',
     'slug' => 'URL',
+    'clicks' => 'Clicks',
     'author' => 'Author',
     'status' => 'Status',
     'city_id' => 'City',
@@ -28,6 +29,11 @@ return [
     'country.title' => 'Country',
     'country.trips_count' => 'Trips',
     'country.cities_count' => 'Cities',
+
+    'dcpp-hub.port' => 'Port',
+    'dcpp-hub.title' => 'Title',
+    'dcpp-hub.status' => 'Status',
+    'dcpp-hub.address' => 'Address',
 
     'file.title' => 'Title',
     'file.folder' => 'Folder',

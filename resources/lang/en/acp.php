@@ -36,6 +36,12 @@ return [
     'countries.index' => 'Countries',
     'countries.create' => 'New country',
 
+    'dcpp-hubs.add' => 'Add hub',
+    'dcpp-hubs.edit' => 'Edit',
+    'dcpp-hubs.show' => 'DC++ hub',
+    'dcpp-hubs.index' => 'DC++ hubs',
+    'dcpp-hubs.create' => 'New hub',
+
     'dev.svg' => 'SVG',
     'dev.logs' => 'Logs',
     'dev.index' => 'Dev',

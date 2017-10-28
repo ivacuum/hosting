@@ -169,6 +169,17 @@ $(document).on('click', '.js-gif-click', Events.gifClick)
 // Редактирование по двойному клику
 $(document).on('dblclick', '.js-dblclick-edit', (e) => document.location = $(e.currentTarget).data('dblclick-url'))
 
+// Учет кликов по хабам
+$(document).on('click', '.js-dcpp-hub', function() {
+  const clicked = $(this).data('clicked')
+
+  if (clicked === undefined) {
+    $.post($(this).data('action'))
+
+    $(this).data('clicked', 1)
+  }
+})
+
 // Учет кликов по магнет-ссылкам
 $(document).on('click', '.js-magnet', function() {
   const clicked = $(this).data('clicked')

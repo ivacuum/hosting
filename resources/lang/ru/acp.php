@@ -36,6 +36,12 @@ return [
     'countries.index' => 'Страны',
     'countries.create' => 'Новая страна',
 
+    'dcpp-hubs.add' => 'Добавить хаб',
+    'dcpp-hubs.edit' => 'Редактирование хаба',
+    'dcpp-hubs.show' => 'DC++ хаб',
+    'dcpp-hubs.index' => 'DC++ хабы',
+    'dcpp-hubs.create' => 'Новый хаб',
+
     'dev.svg' => 'SVG',
     'dev.logs' => 'Логи',
     'dev.index' => 'Разработка',

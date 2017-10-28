@@ -3,6 +3,7 @@
 return [
     'file' => 'Файл',
     'size' => 'Размер',
+    'clicks' => 'Клики',
     'author' => 'Автор',
     'status' => 'Состояние',
     'city_id' => 'Город',
@@ -25,6 +26,11 @@ return [
     'country.title' => 'Страна',
     'country.trips_count' => 'Поездки',
     'country.cities_count' => 'Города',
+
+    'dcpp-hub.port' => 'Порт',
+    'dcpp-hub.title' => 'Название',
+    'dcpp-hub.status' => 'Состояние',
+    'dcpp-hub.address' => 'Адрес',
 
     'file.title' => 'Название',
     'file.folder' => 'Папка',

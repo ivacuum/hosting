@@ -105,6 +105,11 @@
               </a>
             </li>
             <li>
+              <a href="{{ $locale_uri }}/acp/dcpp-hubs">
+                {{ trans('acp.dcpp-hubs.index') }}
+              </a>
+            </li>
+            <li>
               <a href="{{ $locale_uri }}/acp/files">
                 {{ trans('acp.files.index') }}
               </a>

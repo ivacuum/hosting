@@ -10,6 +10,7 @@ return [
 	'acp.domains.trashed' => 'Удаленные домены',
 
     'dcpp.faq' => 'FAQ (ЧаВо) по DC++ | Решение проблем с DC++',
+    'dcpp.hubs' => 'DC++ хабы',
     'dcpp.dcpp' => 'Скачать DC++ 0.782',
     'dcpp.airdc' => 'Скачать AirDC++ 3.41',
     'dcpp.apexdc' => 'Скачать ApexDC++ 1.6.4 rus, русский, русифицированный, русификатор',

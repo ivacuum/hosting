@@ -2,6 +2,7 @@
 
 return [
     'for' => 'For',
+    'hubs' => 'Hubs',
     'index' => 'About DC++',
     'links' => 'Links',
     'pages' => 'Pages',

@@ -6,6 +6,7 @@ use App\City;
 use App\Client;
 use App\Comment;
 use App\Country;
+use App\DcppHub;
 use App\Domain;
 use App\ExternalIdentity;
 use App\File;
@@ -45,6 +46,7 @@ class AuthServiceProvider extends ServiceProvider
         Server::class => Base::class,
         Comment::class => WithoutCreate::class,
         Country::class => Base::class,
+        DcppHub::class => Base::class,
         Torrent::class => WithoutCreate::class,
         YandexUser::class => Base::class,
         ChatMessage::class => WithoutCreate::class,

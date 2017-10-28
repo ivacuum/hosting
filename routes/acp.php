@@ -18,6 +18,8 @@ RouteHelper::withoutCreate('Acp\Comments');
 
 RouteHelper::crud('Acp\Countries');
 
+RouteHelper::crud('Acp\DcppHubs');
+
 Route::get('dev', 'Acp\Dev@index');
 Route::get('dev/debugbar', 'Acp\Dev@debugbar');
 Route::get('dev/logs', 'Acp\Dev@logs');

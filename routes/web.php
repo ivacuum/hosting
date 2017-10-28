@@ -31,6 +31,8 @@ Route::post('ajax/comment/{type}/{id}', 'AjaxComment@store')->middleware('auth')
 Route::get('about', 'Home@about');
 
 Route::get('dc', 'Dcpp@index');
+Route::get('dc/hubs', 'DcppHubs@index');
+Route::post('dc/hubs/{dcpphub}/click', 'DcppHubClick@store');
 Route::get('dc/{slug}', 'Dcpp@page');
 
 Route::get('docs', 'Docs@index');
