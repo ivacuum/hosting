@@ -1,5 +1,4 @@
 @extends('dcpp.software', [
-  'meta_title' => trans('meta_title.dcpp.kalugadc'),
   'no_language_selector' => $locale === 'ru',
 
   'software_title' => trans('dcpp.kalugadc'),

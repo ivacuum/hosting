@@ -1,5 +1,4 @@
 @extends('dcpp.software', [
-  'meta_title' => trans('meta_title.dcpp.shakespeer'),
   'software_title' => trans('dcpp.shakespeer'),
   'software' => [
     ['version' => '0.9.2', 'id' => 33, 'size' => 3159067, 'icon' => 'apple', 'dl_suffix' => ''],

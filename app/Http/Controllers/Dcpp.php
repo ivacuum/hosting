@@ -4,9 +4,7 @@ class Dcpp extends Controller
 {
     public function index()
     {
-        $page = 'index';
-
-        return view($this->view, compact('page'));
+        return view($this->view, ['page' => 'index']);
     }
 
     public function page($page)
@@ -15,9 +13,11 @@ class Dcpp extends Controller
 
         abort_unless(view()->exists($view), 404);
 
+        $meta_title = \ViewHelper::metaTitle('', $view);
+
         \Breadcrumbs::push(trans("dcpp.{$page}"));
 
-        return view($view, compact('page'));
+        return view($view, compact('meta_title', 'page'));
     }
 
     protected function appendBreadcrumbs(): void

@@ -1,5 +1,4 @@
 @extends('dcpp.base', [
-  'meta_title' => trans('meta_title.dcpp.strongdc_install'),
   'no_language_selector' => $locale === 'ru',
 ])
 
