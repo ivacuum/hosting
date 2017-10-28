@@ -5,25 +5,25 @@
 
 <p>
   <a class="link" href="{{ path('Dcpp@page', 'airdc') }}">{{ trans('dcpp.airdc') }}</a>
-  <span class="text-muted">&nbsp;&middot;&nbsp;</span>
+  <span class="text-muted mx-1">&middot;</span>
   <a class="link" href="{{ path('Dcpp@page', 'apexdc') }}">{{ trans('dcpp.apexdc') }}</a>
-  <span class="text-muted">&nbsp;&middot;&nbsp;</span>
+  <span class="text-muted mx-1">&middot;</span>
   <a class="link" href="{{ path('Dcpp@page', 'dcpp') }}">{{ trans('dcpp.dcpp') }}</a>
-  <span class="text-muted">&nbsp;&middot;&nbsp;</span>
+  <span class="text-muted mx-1">&middot;</span>
   <a class="link" href="{{ path('Dcpp@page', 'flylinkdc') }}">{{ trans('dcpp.flylinkdc') }}</a>
-  <span class="text-muted">&nbsp;&middot;&nbsp;</span>
+  <span class="text-muted mx-1">&middot;</span>
   <a class="link" href="{{ path('Dcpp@page', 'greylinkdc') }}">{{ trans('dcpp.greylinkdc') }}</a>
-  <span class="text-muted">&nbsp;&middot;&nbsp;</span>
+  <span class="text-muted mx-1">&middot;</span>
   <a class="link" href="{{ path('Dcpp@page', 'jucydc') }}">{{ trans('dcpp.jucydc') }}</a>
   @ru
-    <span class="text-muted">&nbsp;&middot;&nbsp;</span>
+    <span class="text-muted mx-1">&middot;</span>
     <a class="link" href="{{ path('Dcpp@page', 'kalugadc') }}">{{ trans('dcpp.kalugadc') }}</a>
   @endru
-  <span class="text-muted">&nbsp;&middot;&nbsp;</span>
+  <span class="text-muted mx-1">&middot;</span>
   <a class="link" href="{{ path('Dcpp@page', 'pelinkdc') }}">{{ trans('dcpp.pelinkdc') }}</a>
-  <span class="text-muted">&nbsp;&middot;&nbsp;</span>
+  <span class="text-muted mx-1">&middot;</span>
   <a class="link" href="{{ path('Dcpp@page', 'shakespeer') }}">{{ trans('dcpp.shakespeer') }}</a>
-  <span class="text-muted">&nbsp;&middot;&nbsp;</span>
+  <span class="text-muted mx-1">&middot;</span>
   <a class="link" href="{{ path('Dcpp@page', 'strongdc') }}">{{ trans('dcpp.strongdc') }}</a>
 </p>
 
