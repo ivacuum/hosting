@@ -34,6 +34,24 @@
   </section>
 @endif
 
+<section>
+  <h2 class="mt-0">{{ trans('dcpp.hubs') }}</h2>
+  @ru
+    <p>Ищите куда подключиться для обмена файлами?</p>
+  @en
+    <p>Looking for a place to connect to share files?</p>
+  @endru
+  <p>
+    <a class="btn btn-success" href="{{ path('DcppHubs@index') }}">
+      @ru
+        Список популярных DC++ хабов
+      @en
+        List of popular DC++ hubs
+      @endru
+    </a>
+  </p>
+</section>
+
 @if (sizeof($software) > 1 || !empty($developer_site))
   <section>
     <h2 class="mt-0">{{ trans('dcpp.links') }}</h2>

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'dcpp.hubs' => 'DC++ Hubs',
+    'dcpp.hubs' => 'Popular DC++ Hubs',
     'dcpp.dcpp' => 'Download DC++ 0.782',
     'dcpp.airdc' => 'Download AirDC++ 3.41',
     'dcpp.apexdc' => 'Download ApexDC++ 1.6.4',

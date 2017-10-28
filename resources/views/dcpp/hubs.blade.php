@@ -1,7 +1,7 @@
 @extends('dcpp.base')
 
 @section('content')
-<h1 class="mt-0">{{ trans('dcpp.hubs') }}</h1>
+<h1 class="mt-0">{{ trans('meta_title.dcpp.hubs') }}</h1>
 <div class="row">
   <div class="col-md-6">
     @ru
