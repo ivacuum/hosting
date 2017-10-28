@@ -10,7 +10,7 @@
 
 <div class="life-text">
   <h3>{{ trans('coupons.hosting') }}</h3>
-  <ul class="list-styled">
+  <ul>
     <li class="mb-1"><a class="link" href="{{ path('Coupons@digitalocean') }}">{{ trans('coupons.digitalocean') }}</a></li>
     <li class="mb-1"><a class="link" href="{{ path('Coupons@firstvds') }}">{{ trans('coupons.firstvds') }}</a></li>
     @ru
@@ -19,7 +19,7 @@
   </ul>
 
   <h3>{{ trans('coupons.accomodation') }}</h3>
-  <ul class="list-styled">
+  <ul>
     <li class="mb-1"><a class="link" href="{{ path('Coupons@airbnb') }}">{{ trans('coupons.airbnb') }}</a></li>
     <li class="mb-1"><a class="link" href="{{ path('Coupons@booking') }}">{{ trans('coupons.booking') }}</a></li>
   </ul>
