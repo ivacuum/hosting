@@ -10,11 +10,14 @@ https://en.wikipedia.org/wiki/List_of_kanji_by_concept
 
 @section('content')
 <h2 class="mt-0">{{ trans('life.japanese') }}</h2>
+@ru
+  <p>В ходе изучения языка попалось много разной информации, которую хотелось бы зафиксировать. Эдакий пересказ как в нем все устроено в общих чертах.</p>
+@endru
 
 @ru
-  <p>Полезные ресурсы:</p>
+  <p class="mb-2">Полезные ресурсы. Все на английском, так как на нем материалов доступно в разы больше, чем на родном.</p>
 @en
-  <p>Useful resources:</p>
+  <p class="mb-2">Useful resources:</p>
 @endru
 <ul>
   <li>
@@ -59,13 +62,20 @@ https://en.wikipedia.org/wiki/List_of_kanji_by_concept
   </li>
 </ul>
 
+<section>
+  <div class="h2">@ru Азбуки @en Syllabaries @endru</div>
+  @ru
+    <p>Без азбук ничего не прочитать. Катакана в основном для заимствованных слов, хирагана — для всего остального.</p>
+  @endru
+</section>
+
 <div class="row mt-4">
   <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
     @ru
-      <h3>Азбука катакана</h3>
+      <h3>Катакана</h3>
       <p><a class="link" href="http://www.tofugu.com/japanese/learn-katakana/">Ассоциации</a>.</p>
     @en
-      <h3>Katakana syllabary</h3>
+      <h3>Katakana</h3>
       <p><a class="link" href="http://www.tofugu.com/japanese/learn-katakana/">How to learn</a>.</p>
     @endru
     <table class="table-stats text-center">
@@ -398,10 +408,10 @@ https://en.wikipedia.org/wiki/List_of_kanji_by_concept
   </div>
   <div class="col-lg-6 mb-4">
     @ru
-      <h3>Азбука хирагана</h3>
+      <h3>Хирагана</h3>
       <p><a class="link" href="http://www.tofugu.com/japanese/learn-hiragana/">Ассоциации</a>.</p>
     @en
-      <h3>Hiragana syllabary</h3>
+      <h3>Hiragana</h3>
       <p><a class="link" href="http://www.tofugu.com/japanese/learn-hiragana/">How to learn</a>.</p>
     @endru
     <table class="table-stats text-center">
@@ -734,8 +744,40 @@ https://en.wikipedia.org/wiki/List_of_kanji_by_concept
   </div>
 </div>
 
-<div class="h2">@ru Ключи (радикалы) @en Radicals @endru</div>
-<div class="h3">@ru 1 черта @en 1 stroke @endru</div>
+<section>
+  <div class="h2">@ru Кандзи (иероглифы) @en Kanji @endru</div>
+  @ru
+    <p>Иероглифы состоят из ключей, коих <a class="link" href="https://en.wikipedia.org/wiki/List_of_kanji_radicals_by_stroke_count">214 штук</a>. Приятный бонус в том, что ключи одни и те же как для японского, так и для китайского. И иероглифы общие. Чтение только разное.</p>
+    <p>У кандзи может быть несколько чтений: китайского происхождения и японского. Если в слове присутствует хирагана「生きる」, то чтение почти наверняка будет японское. Если слово состоит только из иероглифов「公用」(без символов азбуки хираганы), то чтение с большой вероятностью будет китайское. Почему с вероятностью? Потому что бывают исключения. И чтение каждого типа не обязательно одно — бывает и по три!</p>
+    <p>Знать кандзи — не обязательно значит знать слово. Слово может состоять из нескольких кандзи. Или чтение может отличаться между одинаковыми на вид кандзи и словом.「生」в качестве кандзи значит «жизнь» и читается「せい」. Этот же символ「生」в качестве словарного слова значит «свежий» и читается「なま」. Да, запоминать нужно много всего.</p>
+    <p>Нафига две азбуки и еще и иероглифы? Компенсируют отсутствие пробела, подсказывают границы слов. Рассмотрим на примере предложения: «Сколько нам нужно автобусов?».</p>
+    <ol>
+      <li>
+        <div class="f20">ばすはなんだいいりますか。</div>
+        <div>Все хираганой. Как минимум нужно знать слова, грамматику и контекст, чтобы понять смысл.</div>
+      </li>
+      <li class="mt-2">
+        <div class="f20">バスはなんだいいりますか。</div>
+        <div>Добавим катакану. Стал виден заимствованный автобус «басу». Неплохо для начала.</div>
+      </li>
+      <li class="mt-2">
+        <div class="f20">バスは何台いりますか。</div>
+        <div>Добавим иероглифы. Проявился вопрос «сколько штук».</div>
+      </li>
+      <li class="mt-2">
+        <div class="f20">バス　は　何台　いり　ます　か。</div>
+        <div>В идеале хотелось бы так, но нет. Может решатся когда-нибудь упростить письменность, как корейцы.</div>
+      </li>
+    </ol>
+  @endru
+</section>
+
+<section>
+  <div class="h2">@ru Ключи (радикалы) @en Radicals @endru</div>
+  @ru
+    <p>Составные блоки иероглифов — здорово помогают их распознавать.</p>
+  @endru
+  <div class="h3">@ru 1 черта @en 1 stroke @endru</div>
 <?php
 $glyphs = [[
   'ru' => 'один',
@@ -764,6 +806,7 @@ $glyphs = [[
 ]];
 ?>
 @include('tpl.japanese-glyphs')
+</section>
 
 <div class="h3">@ru 2 черты @en 2 strokes @endru</div>
 <?php
@@ -1056,12 +1099,12 @@ $glyphs = [[
 @include('tpl.japanese-glyphs')
 
 @ru
-  <p><a class="link" href="https://en.wikipedia.org/wiki/List_of_kanji_radicals_by_stroke_count">Полный список ключей</a>.</p>
 @en
   <p><a class="link" href="https://en.wikipedia.org/wiki/List_of_kanji_radicals_by_stroke_count">Full list of radicals</a>.</p>
 @endru
 
-<div class="h2">@ru Словарь @en Dictionary @endru</div>
+<section>
+  <div class="h2">@ru Словарь @en Dictionary @endru</div>
 <?php
 $glyphs = [[
   'ru' => 'да',
@@ -1082,6 +1125,7 @@ $glyphs = [[
 ]];
 ?>
 @include('tpl.japanese-glyphs')
+</section>
 
 <div class="h2">@ru Поезд @en Train @endru</div>
 <?php
