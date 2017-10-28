@@ -42,7 +42,7 @@
     <p>Looking for a place to connect to share files?</p>
   @endru
   <p>
-    <a class="btn btn-success" href="{{ path('DcppHubs@index') }}">
+    <a class="btn btn-warning" href="{{ path('DcppHubs@index') }}">
       @ru
         Список популярных DC++ хабов
       @en
