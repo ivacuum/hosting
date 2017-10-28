@@ -30,17 +30,4 @@
     @endru
   </div>
 </div>
-
-<ol>
-  <li><a class="link js-dcpp-hub" href="dchub://novosibirsk-forever.ru" data-action="{{ path('DcppHubClick@store', 1) }}">dchub://novosibirsk-forever.ru</a></li>
-  <li><a class="link" href="dchub://dc.milenahub.ru">dchub://dc.milenahub.ru</a></li>
-  <li><a class="link" href="dchub://allavtovo.ru">dchub://allavtovo.ru</a></li>
-  <li><a class="link" href="dchub://dc.tiera.ru">dchub://dc.tiera.ru</a></li>
-  <li><a class="link" href="dchub://dc.fly-server.ru">dchub://dc.fly-server.ru</a></li>
-  <li><a class="link" href="dchub://dc.filimania.com">dchub://dc.filimania.com</a></li>
-  <li><a class="link" href="dchub://favorite-hub.net">dchub://favorite-hub.net</a></li>
-  <li><a class="link" href="dchub://piknik-dc.ru">dchub://piknik-dc.ru</a></li>
-  <li><a class="link" href="dchub://dc.rutrack.net">dchub://dc.rutrack.net</a></li>
-  <li><a class="link" href="dchub://stealthhub.ru">dchub://stealthhub.ru</a></li>
-</ol>
 @endsection
