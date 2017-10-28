@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Exceptions\CommentLimitExceededException;
 use App\Limits\CommentsTodayLimit;
 use App\News;
 use App\Notifications\NewsCommented;
@@ -8,10 +9,11 @@ use App\Notifications\TorrentCommented;
 use App\Notifications\TripCommented;
 use App\Torrent;
 use App\Trip;
+use Ivacuum\Generic\Exceptions\FloodException;
 
 class AjaxComment extends Controller
 {
-    public function store($type, $id)
+    public function store($type, $id, CommentsTodayLimit $limits)
     {
         $text = e(request('text'));
         $user_id = request()->user()->id;
@@ -26,17 +28,10 @@ class AjaxComment extends Controller
 
         $model = $this->notifiableModel($type, $id);
 
-        $limits = new CommentsTodayLimit;
-
-        if ($limits->floodControl()) {
-            return redirect($model->www())
-                ->with('message', trans('limits.flood_control'))
-                ->withInput();
-        }
-
-        if ($limits->ipExceeded() || $limits->userExceeded()) {
-            return redirect($model->www())
-                ->with('message', trans('limits.comment'));
+        if ($limits->flood($user_id)) {
+            throw new FloodException;
+        } elseif ($limits->ipExceeded() || $limits->userExceeded($user_id)) {
+            throw new CommentLimitExceededException;
         }
 
         /* @var Comment $comment */

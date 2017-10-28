@@ -1,21 +1,12 @@
 <?php namespace App\Limits;
 
 use App\Activity;
-use Ivacuum\Generic\Contracts\Limit;
 use Ivacuum\Generic\Events\LimitExceeded;
 
-class CommentsTodayLimit implements Limit
+class CommentsTodayLimit
 {
-    public function __construct()
+    public function flood(int $user_id): bool
     {
-        if (auth()->guest()) {
-            throw new \Exception('Для гостя лимиты не предусмотрены');
-        }
-    }
-
-    public function floodControl(): bool
-    {
-        $user_id = auth()->id();
         $interval = config('cfg.limits.comment.flood_interval');
 
         if ($interval <= 0) {
@@ -61,10 +52,9 @@ class CommentsTodayLimit implements Limit
         return false;
     }
 
-    public function userExceeded(): bool
+    public function userExceeded(int $user_id): bool
     {
         $limit = config('cfg.limits.comment.user');
-        $user_id = auth()->id();
 
         $count = Activity::where('type', 'Comment.created')
             ->where('user_id', $user_id)
