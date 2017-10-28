@@ -23,6 +23,11 @@
     </a>
   </li>
 @endru
+<li>
+  <a class="{{ $page === 'hubs' ? 'navbar-selected' : '' }}" href="{{ path('Dcpp@page', 'hubs') }}">
+    {{ trans('dcpp.hubs') }}
+  </a>
+</li>
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ trans('dcpp.clients') }} <span class="caret"></span></a>
   <ul class="dropdown-menu">
     <li>
