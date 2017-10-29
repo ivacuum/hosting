@@ -4,13 +4,14 @@ use App\DcppHub;
 
 class DcppHubClick extends Controller
 {
-    public function store(DcppHub $hub)
+    public function store(int $id)
     {
-        $hub->timestamps = false;
-        $hub->increment('clicks');
-        $hub->timestamps = true;
+        /* @var DcppHub $hub */
+        $hub = DcppHub::find($id);
 
-        event(new \App\Events\Stats\DcppHubClicked);
+        if (!is_null($hub)) {
+            $hub->incrementClicks();
+        }
 
         return response('', 204);
     }

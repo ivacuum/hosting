@@ -50,4 +50,13 @@ class DcppHub extends Model
     {
         return "dchub://{$this->address}".($this->port !== 411 ? ":{$this->port}" : '');
     }
+
+    public function incrementClicks(): void
+    {
+        $this->timestamps = false;
+        $this->increment('clicks');
+        $this->timestamps = true;
+
+        event(new \App\Events\Stats\DcppHubClicked);
+    }
 }
