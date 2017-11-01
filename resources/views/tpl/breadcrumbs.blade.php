@@ -2,7 +2,7 @@
   <div class="breadcrumbs py-2 mb-3 border-bottom">
     <div class="container">
       <nav>
-        <span class="{{ !starts_with($self, 'Acp\\') ? 'hidden-xs' : '' }}">
+        <span class="{{ !starts_with($self, 'Acp\\') ? 'd-none d-sm-inline' : '' }}">
           <a href="{{ $locale_uri ?: '/' }}">
             @svg (home)
           </a>

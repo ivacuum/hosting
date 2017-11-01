@@ -12,8 +12,8 @@
       </a>
     </div>
 
-    <div class="visible-xs mb-3"></div>
-    <div class="hidden-xs">
+    <div class="mb-3 mb-sm-0"></div>
+    <div class="d-none d-sm-block">
       @ru
         <h3>Состояние трекера</h3>
         <p class="text-success">работает</p>

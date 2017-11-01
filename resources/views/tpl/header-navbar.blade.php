@@ -1,4 +1,4 @@
-<div class="navbar navbar-default hidden-xs {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'navbar-inverse' : '' }}">
+<div class="navbar navbar-default d-none d-sm-block {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'navbar-inverse' : '' }}">
   <div class="container">
     <div class="navbar-collapse">
       @section('brand')
