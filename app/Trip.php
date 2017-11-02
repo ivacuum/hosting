@@ -276,9 +276,9 @@ class Trip extends Model
         return 'life.trips.'.str_replace('.', '_', $this->slug);
     }
 
-    public function timelinePeriod(): string
+    public function timelinePeriod(bool $year = false): string
     {
-        return $this->monthName($this->date_start->month);
+        return $this->monthName($this->date_start->month) . ($year ? " {$this->date_start->year}" : '');
     }
 
     public function www(): string

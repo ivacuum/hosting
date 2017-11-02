@@ -99,7 +99,7 @@
           <div class="page-block-cover-info">
             <div class="page-block-cover-title">
               {{ $trip->title }}
-              <span class="page-block-cover-date">{{ $trip->localizedDate() }}</span>
+              <span class="page-block-cover-date">{{ $trip->timelinePeriod(true) }}</span>
             </div>
             <div class="page-block-cover-description">{{ $trip->meta_description }}</div>
           </div>
