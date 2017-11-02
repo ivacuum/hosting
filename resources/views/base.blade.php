@@ -8,7 +8,7 @@
 @if (!Request::pjax())
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="x-pjax-version" content="2">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="keywords" content="{{ $meta_keywords ?? '' }}">
   <meta name="description" content="{{ $meta_description ?? '' }}">
   <meta name="theme-color" content="#e7e7e7">
