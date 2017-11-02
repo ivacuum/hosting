@@ -184,6 +184,11 @@ class Trip extends Model
         return self::orderBy('date_start', 'desc')->get(['id', 'slug'])->pluck('slug', 'id');
     }
 
+    public function imgAltText()
+    {
+        return "{$this->city->country->emoji} {$this->title}, {$this->city->country->title}, {$this->timelinePeriod(true)}.";
+    }
+
     public function localizedDate()
     {
         if ($this->date_end->isSameDay($this->date_start)) {
