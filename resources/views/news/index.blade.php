@@ -43,7 +43,7 @@
             </div>
           </header>
           <div class="mb-5">
-            <div class="hidden-xs life-text js-news-views-observer" itemprop="articleBody" data-id="{{ $model->id }}">{!! $model->html !!}</div>
+            <div class="d-none d-sm-block life-text js-news-views-observer" itemprop="articleBody" data-id="{{ $model->id }}">{!! $model->html !!}</div>
           </div>
         </article>
       @endforeach

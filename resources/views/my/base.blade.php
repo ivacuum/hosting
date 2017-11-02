@@ -5,7 +5,7 @@
   <div class="col-sm-3">
     <div class="list-group text-center">
       @if (Auth::user()->isAdmin())
-        <a class="list-group-item visible-xs" href="{{ App::isLocal() ? "{$locale_uri}/acp/dev/templates" : "{$locale_uri}/acp/trips?user_id=1" }}">
+        <a class="list-group-item d-sm-none" href="{{ App::isLocal() ? "{$locale_uri}/acp/dev/templates" : "{$locale_uri}/acp/trips?user_id=1" }}">
           {{ trans('acp.index') }}
         </a>
       @endif
@@ -21,10 +21,10 @@
       <a class="list-group-item {{ $self === 'MyTrips' ? 'active' : '' }}" href="{{ path('MyTrips@index') }}">
         {{ trans('my.trips') }}
       </a>
-      <a class="list-group-item visible-xs" href="{{ path('Notifications@index') }}">
+      <a class="list-group-item d-sm-none" href="{{ path('Notifications@index') }}">
         {{ trans('notifications.index') }}
       </a>
-      <a class="list-group-item visible-xs" href="{{ path('Auth\SignIn@logout') }}">
+      <a class="list-group-item d-sm-none" href="{{ path('Auth\SignIn@logout') }}">
         {{ trans('auth.logout') }}
       </a>
     </div>
