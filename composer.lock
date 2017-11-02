@@ -577,16 +577,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "0.9.4",
+            "version": "0.9.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "b37270ac776d93ea871ff35f8c6c47a0711fdf9b"
+                "reference": "4c166170402a0079a54a42ae4dbab179b2c445f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/b37270ac776d93ea871ff35f8c6c47a0711fdf9b",
-                "reference": "b37270ac776d93ea871ff35f8c6c47a0711fdf9b",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/4c166170402a0079a54a42ae4dbab179b2c445f5",
+                "reference": "4c166170402a0079a54a42ae4dbab179b2c445f5",
                 "shasum": ""
             },
             "require": {
@@ -636,7 +636,7 @@
                     "email": "vacuum@ivacuum.ru"
                 }
             ],
-            "time": "2017-10-28T04:43:04+00:00"
+            "time": "2017-11-02T14:10:42+00:00"
         },
         {
             "name": "laravel/framework",
@@ -1104,7 +1104,7 @@
         },
         {
             "name": "mtdowling/cron-expression",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mtdowling/cron-expression.git",

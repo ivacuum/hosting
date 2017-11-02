@@ -1,6 +1,3 @@
-<?php
-$css_classes = new \Ivacuum\Generic\Utilities\EnvironmentForCss(Request::userAgent());
-?>
 @if (!Request::pjax())
 <!DOCTYPE html>
 <html lang="{{ $locale }}">
@@ -71,7 +68,7 @@ $css_classes = new \Ivacuum\Generic\Utilities\EnvironmentForCss(Request::userAge
   @show
   <div class="container">
     <div class="js-flash-notification">
-      @if ($first_time_visit && !Auth::check() && $locale !== $locale_preffered && empty($no_language_selector) && !(new Ivacuum\Generic\Utilities\EnvironmentForCss(request()->userAgent()))->isCrawler())
+      @if ($first_time_visit && !Auth::check() && $locale !== $locale_preffered && empty($no_language_selector) && !$is_crawler)
         <div class="alert alert-warning">
           <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
           @ru
