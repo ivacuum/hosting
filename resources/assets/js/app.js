@@ -114,11 +114,23 @@ class Application {
             const src = width > breakpoint ? (e.data('src2x') || e.data('src')) : e.data('src')
             e.attr('src', src)
           } else if (type === 'fotorama') {
+            $('img', e).each(function() {
+              $(this).attr('src', $(this).data('src'))
+            })
+
             e.fotorama()
           } else if (type === 'fotorama-2x') {
             if (width > breakpoint) {
               $('a', e).each(function() {
                 $(this).attr('href', $(this).data('src2x'))
+              })
+
+              $('img', e).each(function() {
+                $(this).attr('src', $(this).data('src2x'))
+              })
+            } else {
+              $('img', e).each(function() {
+                $(this).attr('src', $(this).data('src'))
               })
             }
 
