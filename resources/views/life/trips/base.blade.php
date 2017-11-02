@@ -7,16 +7,18 @@
 @section('content_header')
 @parent
 @include('tpl.city-timeline')
-<h1 class="h2 mt-0">
-  {{ $trip->city->country->emoji }}
-  {{ $trip->title }}
+<div class="d-flex flex-wrap align-items-center mb-2">
+  <h1 class="h2 mt-0 mb-1 mr-2">
+    {{ $trip->city->country->emoji }}
+    {{ $trip->title }}
+  </h1>
   @include('tpl.city-map-button', ['city' => $trip->city])
   @if (optional(auth()->user())->isRoot())
-    <a class="btn btn-default" href="{{ UrlHelper::edit('Acp\Trips', $trip) }}">
+    <a class="btn btn-default btn-sm" href="{{ UrlHelper::edit('Acp\Trips', $trip) }}">
       @svg (pencil)
     </a>
   @endif
-</h1>
+</div>
 <time datetime="{{ $trip->date_start->toDateString() }}"></time>
 <div hidden id="trip_city_map" class="trip-city-map"></div>
 
