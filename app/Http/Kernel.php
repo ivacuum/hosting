@@ -1,6 +1,7 @@
 <?php namespace App\Http;
 
 use App\Http\Middleware\Admin;
+use App\Http\Middleware\CookieDomain;
 use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\TrimStrings;
@@ -27,6 +28,7 @@ class Kernel extends HttpKernel
 
     protected $middlewareGroups = [
         'web' => [
+            CookieDomain::class,
             EncryptCookies::class,
             AddQueuedCookiesToResponse::class,
             StartSession::class,
