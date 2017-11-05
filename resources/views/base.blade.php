@@ -79,13 +79,13 @@
         </div>
       @endif
       @if (Session::has('message'))
-        <div class="alert alert-info js-flash-notification">
+        <div class="alert alert-info">
           <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
           {{ Session::get('message') }}
         </div>
       @endif
       @if ($errors->has('mail'))
-        <div class="alert alert-info js-flash-notification">
+        <div class="alert alert-info">
           {{ $errors->first('mail') }}
         </div>
       @endif
