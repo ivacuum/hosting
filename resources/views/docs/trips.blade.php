@@ -96,7 +96,7 @@
   <p>Ссылка на вашу хронологию поездок: <a class="link" href="{{ action('UserTravelTrips@index', Auth::user()->login) }}"></a></p>
 @else
   <p>Сначала укажите свой логин <a class="link" href="/my/profile">в профиле</a>.</p>
-  <p>После этого на сайте у вас будет целый раздел вида <code>ivacuum.ru/@login/travel</code>. На него будет вести кнопка «Просмотреть» на странице <a class="link" href="/my/trips">управления поездками</a>.</p>
+  <p>После этого на сайте у вас будет целый раздел вида <code>vacuum.name/@login/travel</code>. На него будет вести кнопка «Просмотреть» на странице <a class="link" href="/my/trips">управления поездками</a>.</p>
 @endif
 @endcomponent
 

@@ -16,7 +16,7 @@
   <meta content="100001136135534" property="fb:admins">
   <meta content="profile" property="og:type">
   <meta content="Сергей Панков &middot; Резюме" property="og:title">
-  <meta content="https://hosting.ivacuum.ru/cv/" property="og:url">
+  <meta content="https://vacuum.name/cv/" property="og:url">
   <meta content="https://life.ivacuum.ru/me.jpg" property="og:image">
   <meta content="Веб-программист (PHP). Заинтересован в создании полезных людям веб-сервисов. Веб-технологиями увлекаюсь с 2003 года. С кодом моих проектов можно ознакомиться на Гитхабе. Возможна удаленная работа." property="og:description">
   <meta content="Сергей" property="profile:first_name">
@@ -313,7 +313,7 @@ a:hover {
       </h4>
       <h4 class="my-info">
         Веб-сайт
-        <span><a href="http://ivacuum.ru/">ivacuum.ru</a></span>
+        <span><a href="/">vacuum.name</a></span>
       </h4>
 
       <h3 class="my-caption">Личная информация</h3>
@@ -465,7 +465,7 @@ a:hover {
     <li>
       2003 год
       <ul>
-        <li><a href="http://ivacuum.ru/">ivacuum.ru</a> &mdash; запуск головного сайта собственных проектов</li>
+        <li><a href="/">ivacuum.ru</a> &mdash; запуск головного сайта собственных проектов</li>
       </ul>
     </li>
   </ul>
