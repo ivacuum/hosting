@@ -167,6 +167,7 @@ class Trip extends Model
     {
         return $this->where('user_id', $this->user_id)
             ->where('city_id', $this->city_id)
+            ->where('status', '<>', self::STATUS_HIDDEN)
             ->orderBy('date_start')
             ->get()
             ->groupBy('year');
