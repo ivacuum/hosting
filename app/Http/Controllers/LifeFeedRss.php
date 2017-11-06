@@ -16,6 +16,7 @@ class LifeFeedRss extends Controller
             ->where('status', Trip::STATUS_PUBLISHED)
             ->where('meta_image', '<>', '')
             ->take(50)
+            ->orderBy('date_start', 'desc')
             ->get()
             ->map(function ($trip) {
                 /* @var Trip $trip */
