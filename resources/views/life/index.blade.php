@@ -2,6 +2,10 @@
   'meta_title' => trans('menu.life'),
 ])
 
+@push('head')
+<link rel="alternate" type="application/rss+xml" title="{{ trans('menu.life') }}" href="{{ url(path('LifeFeedRss@index')) }}">
+@endpush
+
 @section('content')
 <div class="row">
   <section class="col-sm-6 pt-0">
