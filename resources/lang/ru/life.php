@@ -35,4 +35,6 @@ return [
     'date.day_day_month_year' => '%d–%d&nbsp;%s&nbsp;%d', // 1–3 июня 2016
     'date.day_month_day_month' => '%d&nbsp;%s – %d&nbsp;%s', // 27 сентября – 3 октября
     'date.day_month_day_month_year' => '%d&nbsp;%s – %d&nbsp;%s&nbsp;%d', // 27 мая – 3 июня, 2016
+
+    'rss.description' => 'Истории о путешествиях.',
 ];
