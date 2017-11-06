@@ -32,7 +32,7 @@
     @guest
       @ru
         <div class="alert alert-info mt-4">
-          <div>Для <a href="{{ path('Auth\SignIn@index', ['goto' => path('Torrents@index')]) }}">зарегистрированных пользователей</a> доступен чат</div>
+          <div>Для <a href="{{ path('Auth\SignIn@index', ['goto' => path('Torrents@index')]) }}">зарегистрированных пользователей</a> доступен чат и добавление раздач</div>
         </div>
       @endru
     @endguest
