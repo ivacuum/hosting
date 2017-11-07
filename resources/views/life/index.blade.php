@@ -9,7 +9,13 @@
 @section('content')
 <div class="row">
   <section class="col-sm-6 pt-0">
-    <h1 class="h2 mt-0">{{ trans('life.trips') }}</h1>
+    <div class="d-flex flex-wrap align-items-center mb-2">
+      <h1 class="h2 mt-0 mb-1 mr-3">{{ trans('life.trips') }}</h1>
+      <a class="font-small-caps" href="{{ path('LifeFeedRss@index') }}">
+        @svg (rss-square)
+        rss
+      </a>
+    </div>
     <ul class="list-inline f14">
       <li><mark>{{ trans('life.by_year') }}</mark></li>
       <li><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
