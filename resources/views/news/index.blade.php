@@ -1,7 +1,17 @@
 @extends('base')
 
+@push('head')
+<link rel="alternate" type="application/rss+xml" title="{{ trans('news.index') }}" href="{{ url(path('NewsRss@index')) }}">
+@endpush
+
 @section('content')
-<h1 class="h2 mt-0 mb-4">{{ trans('news.index') }}</h1>
+<div class="d-flex flex-wrap align-items-center mb-4">
+  <h1 class="h2 mt-0 mb-1 mr-3">{{ trans('news.index') }}</h1>
+  <a class="font-small-caps" href="{{ path('NewsRss@index') }}">
+    @svg (rss-square)
+    rss
+  </a>
+</div>
 @if (sizeof($news))
   <div class="row">
     <div class="col-md-8">

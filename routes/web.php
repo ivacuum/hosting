@@ -74,6 +74,7 @@ Route::delete('my/trips/{id}', 'MyTrips@destroy')->middleware('auth');
 Route::get('my/trips/{id}/edit', 'MyTrips@edit')->middleware('auth');
 
 Route::get('news', 'News@index');
+Route::get('news/rss', 'NewsRss@index');
 Route::get('news/{id}', 'News@show');
 Route::get('news/{year}/{month}', 'News@bc');
 Route::get('news/{year}/{month}/{day}', 'News@bc');
