@@ -36,5 +36,5 @@ return [
     'date.day_month_day_month' => '%2$s&nbsp;%d – %4$s&nbsp;%3$d', // September 27 – October 3
     'date.day_month_day_month_year' => '%2$s&nbsp;%d – %4$s&nbsp;%3$d,&nbsp;%5$d', // May 27 – June 3, 2016
 
-    'rss.description' => 'Travel stories.',
+    'trips.rss.description' => 'Travel stories.',
 ];

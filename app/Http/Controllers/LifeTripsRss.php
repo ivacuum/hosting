@@ -2,14 +2,14 @@
 
 use App\Trip;
 
-class LifeFeedRss extends Controller
+class LifeTripsRss extends Controller
 {
     public function index()
     {
         $meta = [
             'title' => trans('menu.life'),
             'link' => url(path('Life@index')),
-            'description' => trans('life.rss.description'),
+            'description' => trans('life.trips.rss.description'),
         ];
 
         $items = Trip::where('user_id', 1)
@@ -27,7 +27,7 @@ class LifeFeedRss extends Controller
                     'title' => htmlspecialchars($trip->metaTitle()),
                     'link' => $link.'?from=rss-title',
                     'guid' => $link,
-                    'description' => "{$cover}<p>{$trip->metaDescription()}</p>",
+                    'description' => "<p>{$trip->metaDescription()}</p>{$cover}",
                     'pubDate' => $trip->date_start->toRfc2822String(),
                 ];
             });

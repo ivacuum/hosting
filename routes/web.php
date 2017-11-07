@@ -52,7 +52,7 @@ Route::get('life/cities', 'Life@cities');
 Route::get('life/countries', 'Life@countries');
 Route::get('life/countries/{slug}', 'Life@country');
 Route::get('life/gigs', 'Life@gigs');
-Route::get('life/rss', 'LifeFeedRss@index');
+Route::get('life/rss', 'LifeTripsRss@index');
 Route::get('life/{slug}', 'Life@page');
 
 Route::get('my', 'My@index')->middleware('auth');

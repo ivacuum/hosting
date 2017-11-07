@@ -3,7 +3,7 @@
 ])
 
 @push('head')
-<link rel="alternate" type="application/rss+xml" title="{{ trans('menu.life') }}" href="{{ url(path('LifeFeedRss@index')) }}">
+<link rel="alternate" type="application/rss+xml" title="{{ trans('menu.life') }}" href="{{ url(path('LifeTripsRss@index')) }}">
 @endpush
 
 @section('content')
@@ -11,7 +11,7 @@
   <section class="col-sm-6 pt-0">
     <div class="d-flex flex-wrap align-items-center mb-2">
       <h1 class="h2 mt-0 mb-1 mr-3">{{ trans('life.trips') }}</h1>
-      <a class="font-small-caps" href="{{ path('LifeFeedRss@index') }}">
+      <a class="font-small-caps" href="{{ path('LifeTripsRss@index') }}">
         @svg (rss-square)
         rss
       </a>
