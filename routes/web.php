@@ -52,6 +52,7 @@ Route::get('life/cities', 'Life@cities');
 Route::get('life/countries', 'Life@countries');
 Route::get('life/countries/{slug}', 'Life@country');
 Route::get('life/gigs', 'Life@gigs');
+Route::get('life/gigs/rss', 'LifeGigsRss@index');
 Route::get('life/rss', 'LifeTripsRss@index');
 Route::get('life/{slug}', 'Life@page');
 

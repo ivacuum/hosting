@@ -2,8 +2,18 @@
   'meta_title' => trans('life.gigs_intro_title'),
 ])
 
+@push('head')
+<link rel="alternate" type="application/rss+xml" title="{{ trans('menu.gigs') }}" href="{{ url(path('LifeGigsRss@index')) }}">
+@endpush
+
 @section('content')
-<h1 class="h2 mt-0">{{ trans('life.gigs_intro_title') }}</h1>
+<div class="d-flex flex-wrap align-items-center mb-2">
+  <h1 class="h2 mt-0 mb-1 mr-3">{{ trans('life.gigs_intro_title') }}</h1>
+  <a class="font-small-caps" href="{{ path('LifeGigsRss@index') }}">
+    @svg (rss-square)
+    rss
+  </a>
+</div>
 <p>{{ trans('life.gigs_intro_text') }}</p>
 
 @php ($year = false)
