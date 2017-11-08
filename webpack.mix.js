@@ -21,16 +21,13 @@ mix.js('resources/assets/js/app.js', 'public/assets')
   .copy('node_modules/axios/dist/axios.min.js', 'public/assets/axios.js')
   .copy('resources/assets/js/empty.map', 'public/assets/axios.min.map')
 
-  .copy('resources/assets/js/fotorama.js', 'public/assets/fotorama-settings.js')
-  .copy('node_modules/fotorama/fotorama.css', 'public/assets/fotorama.css')
-  .copy('node_modules/fotorama/fotorama.js', 'public/assets/fotorama.js')
-  .copy('node_modules/fotorama/fotorama.png', 'public/assets/fotorama.png')
-  .copy('node_modules/fotorama/fotorama@2x.png', 'public/assets/fotorama@2x.png')
+  .copy('resources/assets/js/fotorama.js', 'public/assets/fotorama/settings.js')
+  .copyDirectory('node_modules/fotorama', 'public/assets/fotorama')
 
   .copy('node_modules/socket.io-client/dist/socket.io.js', 'public/assets/socket.io.js')
   .copy('resources/assets/js/empty.map', 'public/assets/socket.io.js.map')
 
-  .sourceMaps(false)
+  .sourceMaps(false, false)
   .version()
   .disableNotifications()
 

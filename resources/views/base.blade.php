@@ -23,7 +23,7 @@
     <link rel="alternate" hreflang="en" href="{{ url("en/{$request_uri}") }}">
     <link rel="alternate" hreflang="ru" href="{{ url($request_uri) }}">
   @endif
-  <link rel="stylesheet" href="/assets/fotorama.css">
+  <link rel="stylesheet" href="/assets/fotorama/fotorama.css">
   <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">
   @stack('head')
 </head>
@@ -144,8 +144,8 @@
 @if (!empty($websockets))
   <script src="/assets/socket.io.js?2.0.4"></script>
 @endif
-<script src="/assets/fotorama-settings.js?4.6.4"></script>
-<script src="/assets/fotorama.js?4.6.4"></script>
+<script src="/assets/fotorama/settings.js"></script>
+<script src="/assets/fotorama/fotorama.js"></script>
 <script src="{{ mix('/assets/app.js') }}"></script>
 @stack('js')
 @section('counters')
