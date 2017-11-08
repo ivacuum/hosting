@@ -18,7 +18,7 @@
     "laravel-mix": "0.12.1",
     "lodash": "4.17.4",
     "promise-polyfill": "6.0.2",
-    "socket.io-client": "2.0.3",
+    "socket.io-client": "2.0.4",
     "vue": "2.4.4"
   }
 }
