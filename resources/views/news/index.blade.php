@@ -5,9 +5,9 @@
 @endpush
 
 @section('content')
-<div class="d-flex flex-wrap align-items-center mb-4">
+<div class="d-flex flex-wrap align-items-center font-smooth mb-4">
   <h1 class="h2 mt-0 mb-1 mr-3">{{ trans('news.index') }}</h1>
-  <a class="font-small-caps" href="{{ path('NewsRss@index') }}">
+  <a class="f18 font-small-caps" href="{{ path('NewsRss@index') }}">
     @svg (rss-square)
     rss
   </a>
