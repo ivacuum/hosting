@@ -22,20 +22,29 @@ class VkLikesAdd extends Command
         $page = $this->argument('page');
         $access_token = config('services.vk.access_token');
 
-        $response = $this->vk->wallGet($page, ['count' => 7])->response;
-
-        $bar = $this->output->createProgressBar(sizeof($response->items));
-
         $this->vk->accessToken($access_token);
 
+        $response = $this->vk->wallSearch($page, ['query' => '#ЛайкТайм', 'count' => 5])->response;
+
+        $i = 0;
+        $posts = sizeof($response->items);
+
+        $bar = $this->output->createProgressBar($posts);
+
         foreach ($response->items as $post) {
+            /*
             if (@$post->is_pinned) {
                 continue;
             }
+            */
 
             $this->vk->likePost($post->owner_id, $post->id);
             $bar->advance();
-            sleep(10);
+            $i++;
+
+            if ($posts !== $i) {
+                sleep(10);
+            }
         }
 
         $bar->finish();

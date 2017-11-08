@@ -7,7 +7,7 @@ class Vk
     const API_ENDPOINT = 'https://api.vk.com/method/';
 
     protected $client;
-    protected $version = '5.60';
+    protected $version = '5.69';
     protected $access_token = '';
 
     public function __construct()
@@ -75,6 +75,21 @@ class Vk
         }
 
         $response = $this->client->get('wall.get', ['query' => $params]);
+
+        return json_decode($response->getBody());
+    }
+
+    public function wallSearch($page, array $params = [])
+    {
+        $params = array_merge($this->params(), $params);
+
+        if (0 === strpos($page, '-')) {
+            $params['owner_id'] = $page;
+        } else {
+            $params['domain'] = $page;
+        }
+
+        $response = $this->client->get('wall.search', ['query' => $params]);
 
         return json_decode($response->getBody());
     }

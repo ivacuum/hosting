@@ -41,13 +41,11 @@ class Kernel extends ConsoleKernel
         $schedule->command('app:rto-update')->cron('0 */6 * * *')
             ->appendOutputTo($cron_output);
 
-        /*
         $schedule->command('app:vk-likes-add pn6')->cron('5,25,45 * * * *')
             ->appendOutputTo($cron_output);
 
         $schedule->command('app:vk-likes-delete pn6')->cron('15,35,55 * * * *')
             ->appendOutputTo($cron_output);
-        */
 
         // $schedule->command('app:whois-update')->cron('0 */4 * * *'); // каждые 4 часа
     }
