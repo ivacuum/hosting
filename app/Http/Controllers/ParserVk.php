@@ -8,7 +8,7 @@ class ParserVk extends Controller
 {
     protected $client;
     protected $token;
-    protected $version = '5.53';
+    protected $version = '5.69';
     protected $vkpage;
 
     public function __construct()
@@ -82,6 +82,7 @@ class ParserVk extends Controller
                 }
 
                 $posts->push([
+                    'views'       => $post->views->count,
                     'likes'       => $post->likes->count,
                     'reposts'     => $post->reposts->count,
                     'url'         => "https://vk.com/wall{$post->owner_id}_{$post->id}",
@@ -103,7 +104,7 @@ class ParserVk extends Controller
             $offset += $count;
         }
 
-        $posts = $posts->sortByDesc('likes')->take(10);
+        $posts = $posts->sortByDesc('views')->take(10);
 
         return view('parser.vk', compact(
             'date',

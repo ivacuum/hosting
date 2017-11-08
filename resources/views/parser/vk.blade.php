@@ -149,14 +149,16 @@
       <div class="vk-post-meta text-muted text-right">
         <samp class="f12">
           <a class="mr-3" href="https://t.me/share/url?url={{ $post['url'] }}">T</a>
+          <a class="mr-3" href="{{ $post['url'] }}">
+            @svg (link)
+          </a>
           #{{ $loop->iteration }}
           @svg (bullhorn)
           <span class="text-muted">{{ ViewHelper::numberShort($post['reposts']) }}</span>
           @svg (heart)
           <span class="text-muted">{{ ViewHelper::numberShort($post['likes']) }}</span>
-          <a href="{{ $post['url'] }}">
-            @svg (link)
-          </a>
+          @svg (eye)
+          <span class="text-muted">{{ ViewHelper::numberShort($post['views']) }}</span>
         </samp>
       </div>
     </div>
