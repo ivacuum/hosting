@@ -16,6 +16,7 @@ Disallow: /torrents
 Disallow: /users
 Disallow: /@vacuum
 Disallow: /en/auth
+Disallow: /en/docs
 Disallow: /en/files
 Disallow: /en/gallery
 Disallow: /en/internal
