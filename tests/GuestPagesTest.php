@@ -77,14 +77,35 @@ class GuestPagesTest extends TestCase
         $this->get('/life/gigs')->assertStatus(200);
     }
 
+    public function testPageLifeGigsRss()
+    {
+        $this->get('/life/gigs/rss')
+            ->assertStatus(200)
+            ->assertHeader('Content-Type', 'application/xml');
+    }
+
     public function testPageLifePage()
     {
         $this->get('/life/japanese')->assertStatus(200);
     }
 
+    public function testPageLifeRss()
+    {
+        $this->get('/life/rss')
+            ->assertStatus(200)
+            ->assertHeader('Content-Type', 'application/xml');
+    }
+
     public function testPageNews()
     {
         $this->get('/news')->assertStatus(200);
+    }
+
+    public function testPageNewsRss()
+    {
+        $this->get('/news/rss')
+            ->assertStatus(200)
+            ->assertHeader('Content-Type', 'application/xml');
     }
 
     public function testPageNewsShow()
