@@ -3,6 +3,7 @@
 use App\Comment;
 use App\Services\Rto;
 use App\Torrent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\HtmlString;
 
 class Torrents extends Controller
@@ -11,24 +12,27 @@ class Torrents extends Controller
 
     public function index()
     {
-        $q = trim(request('q'));
+        $q = request('q');
         $category = null;
         $category_id = request('category_id');
 
         abort_if($category_id && is_null($category = \TorrentCategoryHelper::find($category_id)), 404);
 
-        $torrents = Torrent::published()->orderBy('registered_at', 'desc');
+        $torrents = Torrent::published()
+            ->orderBy('registered_at', 'desc')
+            ->when(!is_null($category), function (Builder $query) use ($category_id) {
+                $ids = \TorrentCategoryHelper::selfAndDescendantsIds($category_id);
 
-        if (!is_null($category)) {
-            $ids = \TorrentCategoryHelper::selfAndDescendantsIds($category_id);
+                event(new \App\Events\Stats\TorrentFilteredByCategory);
 
-            event(new \App\Events\Stats\TorrentFilteredByCategory);
+                return $query->whereIn('category_id', $ids);
+            })
+            ->when(mb_strlen($q) > 2, function (Builder $query) use ($q) {
+                event(new \App\Events\Stats\TorrentSearched);
 
-            $torrents = $torrents->whereIn('category_id', $ids);
-        }
-
-        $torrents = $this->applySearchQuery($q, $torrents);
-        $torrents = $torrents->simplePaginate(25, $this->list_columns);
+                return $query->where('title', 'LIKE', "%{$q}%");
+            })
+            ->simplePaginate(25, $this->list_columns);
 
         $tree = \TorrentCategoryHelper::tree();
         $stats = Torrent::statsByCategories();
@@ -72,7 +76,7 @@ class Torrents extends Controller
             event(new \App\Events\Stats\TorrentMagnetGuestClicked);
         }
 
-        return 'OK';
+        return response('', 204);
     }
 
     public function my()

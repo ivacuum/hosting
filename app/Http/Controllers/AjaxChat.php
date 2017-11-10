@@ -24,7 +24,7 @@ class AjaxChat extends Controller
 
         $chat_message = ChatMessage::create([
             'ip' => request()->ip(),
-            'text' => trim(request('text')),
+            'text' => request('text'),
             'status' => ChatMessage::STATUS_PUBLISHED,
             'user_id' => request()->user()->id,
         ]);
