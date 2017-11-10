@@ -208,6 +208,11 @@ class GuestPagesTest extends TestCase
         $this->get('/torrents')->assertStatus(200);
     }
 
+    public function testPageTorrentsCategoryFilter()
+    {
+        $this->get('/torrents?category_id=2')->assertStatus(200);
+    }
+
     public function testPageTorrentsComments()
     {
         $this->get('/torrents/comments')->assertStatus(200);
@@ -216,6 +221,11 @@ class GuestPagesTest extends TestCase
     public function testPageTorrentsFaq()
     {
         $this->get('/torrents/faq')->assertStatus(200);
+    }
+
+    public function testPageTorrentsSearchQuery()
+    {
+        $this->get('/torrents?q=2017')->assertStatus(200);
     }
 
     public function testPageUsers()
