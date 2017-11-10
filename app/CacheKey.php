@@ -11,6 +11,7 @@ class CacheKey
 
     const TRIPS_PUBLISHED_BY_CITY = 'trips.published.by-cities';
     const TRIPS_PUBLISHED_BY_COUNTRY = 'trips.published.by-country';
+    const TRIPS_PUBLISHED_WITH_COVER = 'trips.published.with-cover';
 
     const VK_WALL_GET = 'vk.wall.get.{key}';
 

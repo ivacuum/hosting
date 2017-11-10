@@ -237,21 +237,14 @@ class Photos extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        \Breadcrumbs::push(trans('photos.trips'), 'photos/trips')
-            ->push($trip->title);
+        \Breadcrumbs::push($trip->title);
 
         return view($this->view, compact('photos', 'trip'));
     }
 
     public function trips()
     {
-        $trips = Trip::with('city.country')
-            ->published()
-            ->where('meta_image', '<>', '')
-            ->orderBy('date_start', 'desc')
-            ->get();
-
-        \Breadcrumbs::push(trans('photos.trips'), 'photos/trips');
+        $trips = Trip::tripswithCover();
 
         return view($this->view, compact('trips'));
     }
@@ -263,6 +256,7 @@ class Photos extends Controller
         $this->middleware('breadcrumbs:photos.countries,photos/countries')->only('countries', 'country');
         $this->middleware('breadcrumbs:photos.faq,photos/faq')->only('faq');
         $this->middleware('breadcrumbs:photos.map,photos/map')->only('map');
+        $this->middleware('breadcrumbs:photos.trips,photos/trips')->only('trip', 'trips');
     }
 
     protected function pointsForMap($trip_id)

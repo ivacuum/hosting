@@ -16,5 +16,6 @@ class ForgetTripsCache
     {
         $this->cache->forget(CacheKey::TRIPS_PUBLISHED_BY_COUNTRY);
         $this->cache->forget(CacheKey::TRIPS_PUBLISHED_BY_CITY);
+        $this->cache->forget(CacheKey::TRIPS_PUBLISHED_WITH_COVER);
     }
 }

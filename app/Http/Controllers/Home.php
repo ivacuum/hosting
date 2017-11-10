@@ -6,14 +6,7 @@ class Home extends Controller
 {
     public function index()
     {
-        $trips = Trip::where('user_id', 1)
-            ->where('status', Trip::STATUS_PUBLISHED)
-            ->where('meta_image', '<>', '')
-            ->take(3)
-            ->inRandomOrder()
-            ->get();
-
-        return view('index', compact('trips'));
+        return view('index', ['trips' => Trip::tripsWithCover(3)]);
     }
 
     public function about()
