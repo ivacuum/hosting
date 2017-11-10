@@ -73,7 +73,7 @@
                data-action="{{ path('Torrents@magnet', $torrent) }}">
               @svg (magnet)
               @if ($torrent->clicks > 0)
-                {{ $torrent->clicks }}
+                <span class="js-magnet-counter">{{ $torrent->clicks }}</span>
               @endif
             </a>
           </div>

@@ -188,6 +188,8 @@ $(document).on('click', '.js-magnet', function() {
     $.post($(this).data('action'))
 
     $(this).data('clicked', 1)
+
+    $('.js-magnet-counter', $(this)).text(parseInt($(this).text(), 10) + 1)
   }
 })
 
