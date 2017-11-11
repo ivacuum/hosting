@@ -16,6 +16,7 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175);
   background-clip: padding-box;
   max-width: 100%;
+  max-height: 80vh;
 
   @media (min-width: $screen-sm-min) {
     border: 1px solid rgba(0, 0, 0, 0.15);
