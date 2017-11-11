@@ -50,13 +50,13 @@
     <h3 class="text-center mt-5">{{ trans('auth.social_signin') }}</h3>
 
     <div class="text-center mt-3">
-      <a class="btn btn-social bg-vk" href="{{ path('Auth\Vk@index') }}">
+      <a class="btn btn-social bg-vk" href="{{ path('Auth\Vk@index') }}" rel="nofollow">
         {{ trans('auth.vk') }}
       </a>
-      <a class="btn btn-social bg-facebook" href="{{ path('Auth\Facebook@index') }}">
+      <a class="btn btn-social bg-facebook" href="{{ path('Auth\Facebook@index') }}" rel="nofollow">
         {{ trans('auth.facebook') }}
       </a>
-      <a class="btn btn-social bg-google" href="{{ path('Auth\Google@index') }}">
+      <a class="btn btn-social bg-google" href="{{ path('Auth\Google@index') }}" rel="nofollow">
         {{ trans('auth.google') }}
       </a>
     </div>

@@ -43,14 +43,17 @@
       <p>Для написания комментариев необходимо <a class="link" href="{{ path('Auth\SignIn@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">войти на сайт</a>.</p>
       <p>Можно войти в один клик через следующие соцсети:</p>
       <a class="btn btn-social bg-vk"
+         rel="nofollow"
          href="{{ path('Auth\Vk@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">
         {{ trans('auth.vk') }}
       </a>
       <a class="btn btn-social bg-facebook"
+         rel="nofollow"
          href="{{ path('Auth\Facebook@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">
         {{ trans('auth.facebook') }}
       </a>
       <a class="btn btn-social bg-google"
+         rel="nofollow"
          href="{{ path('Auth\Google@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">
         {{ trans('auth.google') }}
       </a>
