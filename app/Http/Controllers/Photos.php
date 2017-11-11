@@ -13,7 +13,7 @@ class Photos extends Controller
     {
         $photos = Photo::published()
             ->orderBy('id', 'desc')
-            ->paginate(20);
+            ->paginate(24);
 
         return view($this->view, compact('photos'));
     }

@@ -2,11 +2,11 @@
 
 @section('content')
 <h3 class="mt-0">{{ $trip->breadcrumb() }} <small>{{ sizeof($photos) }}</small></h3>
-<div class="gallery-flex">
+<div class="d-flex flex-wrap mobile-wide">
   @foreach ($photos as $photo)
-    <div class="gallery-image mb-4">
-      <a class="screenshot-link" href="{{ path("$self@show", [$photo, $trip->getForeignKey() => $trip]) }}">
-        <img class="image-200 screenshot" src="{{ $photo->thumbnailUrl() }}">
+    <div class="flex-sm-basis-50 flex-md-basis-33 mx-auto mx-sm-0">
+      <a href="{{ path("$self@show", [$photo, $trip->getForeignKey() => $trip]) }}">
+        <img class="image-fit-cover image-sm-4x3-2col image-md-4x3-3col" src="{{ $photo->thumbnailUrl() }}">
       </a>
     </div>
   @endforeach
