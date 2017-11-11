@@ -14,8 +14,10 @@ class ForgetTripsCache
 
     public function handle()
     {
-        $this->cache->forget(CacheKey::TRIPS_PUBLISHED_BY_COUNTRY);
-        $this->cache->forget(CacheKey::TRIPS_PUBLISHED_BY_CITY);
-        $this->cache->forget(CacheKey::TRIPS_PUBLISHED_WITH_COVER);
+        $this->cache->deleteMultiple([
+            CacheKey::TRIPS_PUBLISHED_BY_COUNTRY,
+            CacheKey::TRIPS_PUBLISHED_BY_CITY,
+            CacheKey::TRIPS_PUBLISHED_WITH_COVER,
+        ]);
     }
 }
