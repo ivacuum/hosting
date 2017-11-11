@@ -22,7 +22,7 @@
   @foreach ($lines->reverse() as $line)
     <tr>
       <td>
-        <span title="{{ $line->time }}">{{ $line->connection }}</span>
+        <a href="{{ UrlHelper::filter(['q' => "connection={$line->connection}"]) }}" title="{{ $line->time }}">{{ $line->connection }}</a>
       </td>
       <td>
         @if ($line->request_method !== 'GET')
