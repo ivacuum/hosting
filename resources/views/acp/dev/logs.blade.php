@@ -2,7 +2,7 @@
 
 @section('content')
 <h3 class="mt-0">Логи</h3>
-<table class="table-stats table-adaptive">
+<table class="f13 table-stats table-adaptive">
   <thead>
   <tr>
     <th>#</th>
