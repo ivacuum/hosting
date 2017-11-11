@@ -53,7 +53,7 @@
     </tr>
     <tr>
       <td></td>
-      <td colspan="6" class="text-muted">
+      <td colspan="5" class="text-muted">
         <a href="https://ipinfo.io/{{ $line->ip }}">{{ $line->ip }}</a>
         {{ $line->country }}
         &middot;
