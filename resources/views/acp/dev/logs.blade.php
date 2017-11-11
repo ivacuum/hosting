@@ -1,7 +1,12 @@
 @extends('acp.dev.base')
 
 @section('content')
-<h3 class="mt-0">Логи</h3>
+<div class="d-flex flex-wrap align-items-center mb-2">
+  <h3 class="mt-0 mb-1">Логи</h3>
+  <form class="heading-menu-search-form">
+    <input name="q" class="form-control" placeholder="Поиск..." value="{{ $q ?? '' }}">
+  </form>
+</div>
 <table class="f13 table-stats table-adaptive">
   <thead>
   <tr>

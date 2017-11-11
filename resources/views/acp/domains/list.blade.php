@@ -3,7 +3,7 @@
   <form class="form-inline">
     {{ ViewHelper::plural('domains', $models->total()) }}
     @include('acp.tpl.create')
-    <input type="text" name="q" class="form-control" placeholder="Поиск..." value="{{ $q ?? '' }}">
+    <input name="q" class="form-control" placeholder="Поиск..." value="{{ $q ?? '' }}">
     <input type="hidden" name="filter" value="{{ $filter ?? '' }}">
   </form>
 </h3>

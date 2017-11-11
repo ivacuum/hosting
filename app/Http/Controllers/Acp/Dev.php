@@ -22,9 +22,40 @@ class Dev extends BaseController
     // https://gist.github.com/lorenzos/1711e81a9162320fde20
     public function logs()
     {
+        $q = request('q');
         $log = \App::isLocal() ? public_path('uploads/access_log') : base_path('../../logs/access_log');
         $handle = fopen($log, 'r');
         $lines = collect();
+
+        $country = [];
+        $ip = $request_method = $request_uri = null;
+
+        if (str_contains($q, ['country=', 'country!='])) {
+            if (preg_match("/country(!=|=)([A-Z]{2})/", $q, $match)) {
+                $country = [
+                    'operator' => $match[1],
+                    'value' => $match[2],
+                ];
+            }
+        }
+
+        if (str_contains($q, 'ip=')) {
+            if (preg_match("/ip=([^ ]+)/", $q, $match)) {
+                $ip = $match[1];
+            }
+        }
+
+        if (str_contains($q, 'request_method=')) {
+            if (preg_match("/request_method=([^ ]+)/", $q, $match)) {
+                $request_method = strtoupper($match[1]);
+            }
+        }
+
+        if (str_contains($q, 'request_uri=')) {
+            if (preg_match("/request_uri=([^ ]+)/", $q, $match)) {
+                $request_uri = $match[1];
+            }
+        }
 
         if ($handle) {
             while (false !== $line = fgets($handle)) {
@@ -32,17 +63,68 @@ class Dev extends BaseController
                     continue;
                 }
 
-                if ($json->ip === '77.244.79.214') {
+                if (!$q) {
+                    if ($json->ip === '77.244.79.214') {
+                        continue;
+                    }
+
+                    $lines->push($json);
                     continue;
                 }
-                
-                $lines->push($json);
+
+                $found = false;
+                $proper = true;
+
+                if (!empty($country)) {
+                    if ($country['operator'] === '=' && $json->country === $country['value']) {
+                        $found = true;
+                        $proper &= true;
+                    } elseif ($country['operator'] === '!=' && $json->country !== $country['value']) {
+                        $found = true;
+                        $proper &= true;
+                    } else {
+                        $proper &= false;
+                    }
+                }
+
+                if ($ip) {
+                    if ($ip === $json->ip) {
+                        $found = true;
+                        $proper &= true;
+                    } else {
+                        $proper &= false;
+                    }
+                }
+
+                if ($request_method) {
+                    if ($request_method === $json->request_method) {
+                        $found = true;
+                        $proper &= true;
+                    } else {
+                        $proper &= false;
+                    }
+                }
+
+                if ($request_uri) {
+                    if ($request_uri === $json->request_uri) {
+                        $found = true;
+                        $proper &= true;
+                    } else {
+                        $proper &= false;
+                    }
+                }
+
+                if ($found && $proper) {
+                    $lines->push($json);
+                }
+
+                continue;
             }
 
             fclose($handle);
         }
 
-        return view($this->view, compact('lines'));
+        return view($this->view, compact('lines', 'q'));
     }
 
     public function svg()
