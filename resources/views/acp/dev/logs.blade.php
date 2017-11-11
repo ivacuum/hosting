@@ -28,7 +28,7 @@
         @if ($line->request_method !== 'GET')
           <code>{{ $line->request_method }}</code>
         @endif
-        {{ rawurldecode($line->request_uri) }}
+        <span title="{{ rawurldecode($line->request_uri) }}">{{ str_limit(rawurldecode($line->request_uri), 50) }}</span>
       </td>
       <td>
         @if ($line->status != 200)
