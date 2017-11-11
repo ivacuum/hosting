@@ -10,7 +10,6 @@
     <th>Статус</th>
     <th></th>
     <th></th>
-    <th>Клиент</th>
     <th>Источник</th>
   </tr>
   </thead>
@@ -45,8 +44,16 @@
           {{ ViewHelper::size($line->body_bytes_sent) }}
         @endif
       </td>
-      <td><span title="{{ $line->user_agent }}">{{ $line->ip }}&nbsp;{{ $line->country }}</span></td>
       <td>{{ str_limit(str_replace(['http://www.', 'https://www.', 'http://', 'https://'], '', $line->referer), 35) }}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td colspan="6" class="text-muted">
+        <a href="https://ipinfo.io/{{ $line->ip }}">{{ $line->ip }}</a>
+        {{ $line->country }}
+        &middot;
+        {{ Ivacuum\Generic\Utilities\UserAgent::tidy($line->user_agent) }}
+      </td>
     </tr>
   @endforeach
   </tbody>
