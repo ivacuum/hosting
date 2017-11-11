@@ -28,9 +28,15 @@ class Dev extends BaseController
 
         if ($handle) {
             while (false !== $line = fgets($handle)) {
-                if (!is_null($json = json_decode($line))) {
-                    $lines->push($json);
+                if (is_null($json = json_decode($line))) {
+                    continue;
                 }
+
+                if ($json->ip === '77.244.79.214') {
+                    continue;
+                }
+                
+                $lines->push($json);
             }
 
             fclose($handle);
