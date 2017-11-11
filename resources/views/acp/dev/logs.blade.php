@@ -58,8 +58,8 @@
     <tr>
       <td></td>
       <td colspan="5" class="text-muted">
-        <a href="https://ipinfo.io/{{ $line->ip }}">{{ $line->ip }}</a>
-        {{ $line->country }}
+        <a href="{{ UrlHelper::filter(['q' => "ip={$line->ip}"]) }}">{{ $line->ip }}</a>
+        <a href="https://ipinfo.io/{{ $line->ip }}">{{ $line->country }}</a>
         &middot;
         <span title="{{ $line->user_agent }}">{{ Ivacuum\Generic\Utilities\UserAgent::tidy($line->user_agent) }}</span>
       </td>
