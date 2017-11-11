@@ -3,11 +3,15 @@
 @section('content')
 @ru
   <p>Вагоны каждого типа шинкансена отличаются. Теперь достался попроще.</p>
+@en
+  <p>The cars of each type of shinkansen are little bit different. This time it's a simpler and cheaper model.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4500.jpg'])
 
 @ru
   <p>Табло просит быть осторожнее с играми на телефоне на ходу.</p>
+@en
+  <p>Display asks to pay attention to where you go while playing games on smartphone.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4504.jpg'])
 
@@ -57,16 +61,22 @@
 
 @ru
   <p>Если вдруг умеете ходить по стенам, то сможете присесть в красный автомобиль.</p>
+@en
+  <p>If all of a sudden you can walk on walls, you can sit in a red car.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4534.jpg'])
 
 @ru
   <p>Напольная информация. Слева выходят, справа входим в две линии.</p>
+@en
+  <p>Floor navigation.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4536.jpg'])
 
 @ru
   <p>Вид из обеденной зоны капсульного отеля. В таких отелях почти всегда есть разделение по полу — отдельный этаж для женщин и отдельный для мужчин. Стоит быть готовым, что часов с семи утра будильники будут включаться у людей каждые пять минут, так что спокойно поспать до обеда в капсуле не вариант.</p>
+@en
+  <p>View from the dining area of the capsule hotel. Accomodation in a capsule hotel usually means there are separate floors for men and women. You should also be ready to get up at 07:00, because there is nowhere to hide from beeping alarm clocks from every corner—audibility in rooms is incredible.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4544.jpg'])
 
@@ -82,6 +92,8 @@
 
 @ru
   <p>Стройные очереди как часть культуры.</p>
+@en
+  <p>Straight queues as a part of the culture.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4547.jpg'])
 
@@ -94,21 +106,29 @@
 
 @ru
   <p>Растения на продажу.</p>
+@en
+  <p>Plants for sale.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4549.jpg'])
 
 @ru
   <p>Причесанные деревья.</p>
+@en
+  <p>Combed trees.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4550.jpg'])
 
 @ru
   <p>Оголенное дерево.</p>
+@en
+  <p>Naked tree.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4555.jpg'])
 
 @ru
   <p>Выбор напитков и мороженого. Есть даже горячие напитки. Иногда попадаются автоматы с алкоголем, который в Японии продается круглосуточно.</p>
+@en
+  <p>The choice of drinks and ice cream. There are even hot drinks. You can also find alcohol in some beverage vending machines, which is sold 24/7 in Japan.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4565.jpg'])
 
@@ -141,6 +161,8 @@
 
 @ru
   <p>Зарастающий пешеходный мост.</p>
+@en
+  <p>Growing pedestrian bridge.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4571.jpg'])
 
@@ -168,6 +190,8 @@
 
 @ru
   <p>А сзади небольшой храм.</p>
+@en
+  <p>There is a small temple behind.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4576.jpg'])
 
@@ -183,6 +207,8 @@
 
 @ru
   <p>Проход к ярмарке, а затем и сквозь нее.</p>
+@en
+  <p>Approaching and passing through the fair.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_4578.jpg',
@@ -212,12 +238,14 @@
 @ru
   <p>Над головой летают самолеты.</p>
 @en
-  <p>Planes fly.</p>
+  <p>Planes fly in the sky.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4586.jpg'])
 
 @ru
   <p>А внизу вкусняшки.</p>
+@en
+  <p>As for down here, there are yummies.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4587.jpg'])
 
@@ -228,6 +256,8 @@
 
 @ru
   <p>В магазинах разметка начала очереди в кассу.</p>
+@en
+  <p>Marking of the queues in front of the cash desk in convenience store.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4591.jpg'])
 
