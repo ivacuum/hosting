@@ -52,7 +52,7 @@
         <a href="https://ipinfo.io/{{ $line->ip }}">{{ $line->ip }}</a>
         {{ $line->country }}
         &middot;
-        {{ Ivacuum\Generic\Utilities\UserAgent::tidy($line->user_agent) }}
+        <span title="{{ $line->user_agent }}">{{ Ivacuum\Generic\Utilities\UserAgent::tidy($line->user_agent) }}</span>
       </td>
     </tr>
   @endforeach
