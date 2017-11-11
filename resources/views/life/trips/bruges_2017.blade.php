@@ -82,7 +82,7 @@
 @ru
   <p>Ночные улицы.</p>
 @en
-  <p>Night streets.</p>
+  <p>Nighttime streets.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2241.jpg',

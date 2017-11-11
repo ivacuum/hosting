@@ -3,6 +3,8 @@
 @section('content')
 @ru
   <p>Район высоток.</p>
+@en
+  <p>High-rise buildings area.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8733.jpg',
@@ -36,16 +38,22 @@
 
 @ru
   <p>Ближе к закату включается подсветка.</p>
+@en
+  <p>Backlights turn on around sunset.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8769.jpg'])
 
 @ru
   <p>Ночная реклама.</p>
+@en
+  <p>Nighttime advertisement.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8206.jpg'])
 
 @ru
   <p>Дневная реклама.</p>
+@en
+  <p>Daytime advertisement.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8208.jpg'])
 
@@ -78,6 +86,8 @@
 
 @ru
   <p>Зарядка.</p>
+@en
+  <p>Stretching up.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8230.jpg',
@@ -89,16 +99,22 @@
 
 @ru
   <p>Удачный кадр.</p>
+@en
+  <p>Good catch.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8343.jpg'])
 
 @ru
   <p>Где черепаха?</p>
+@en
+  <p>Where is the turtle?</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8360.jpg'])
 
 @ru
   <p>Где две спящие утки?</p>
+@en
+  <p>Where are two sleeping ducks?</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8364.jpg'])
 
@@ -145,6 +161,8 @@
 
 @ru
   <p>Парк среди высоток.</p>
+@en
+  <p>Park is among tall buildings.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8384.jpg',
@@ -164,6 +182,8 @@
 
 @ru
   <p>Цапля.</p>
+@en
+  <p>Heron.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8393.jpg'])
 
@@ -197,6 +217,8 @@
 
 @ru
   <p>Улица высоток.</p>
+@en
+  <p>High-rise buildings' street.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8425.jpg'])
 
@@ -250,6 +272,8 @@
 
 @ru
   <p>Реклама выставки Марвел.</p>
+@en
+  <p>Marvel exhibition advertisement.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8513.jpg'])
 
@@ -332,6 +356,8 @@
 
 @ru
   <p>Теннисный корт.</p>
+@en
+  <p>Tennis court.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8552.jpg'])
 
@@ -342,6 +368,8 @@
 
 @ru
   <p>Практика в гольф.</p>
+@en
+  <p>Golf practice.</p>
 @endru
 <youtube title="Tokyo Golf Practice, April 2017" v="A4k0hIFcDd4"></youtube>
 @include('tpl.fotorama-2x', ['pics' => [
@@ -364,6 +392,8 @@
 
 @ru
   <p>Где футбольный мяч?</p>
+@en
+  <p>Where is the soccer ball?</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8639.jpg'])
 
@@ -492,16 +522,22 @@
 
 @ru
   <p>Часики.</p>
+@en
+  <p>Clock.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8724.jpg'])
 
 @ru
   <p>Посмотрим в потолок.</p>
+@en
+  <p>Let's look at the ceiling.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8726.jpg'])
 
 @ru
   <p>Аэродром аэропорта Нарита.</p>
+@en
+  <p>Narita airport aerodrome.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8774.jpg'])
 
