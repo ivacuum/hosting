@@ -28,7 +28,13 @@ class Dev extends BaseController
         $lines = collect();
 
         $country = [];
-        $ip = $request_method = $request_uri = null;
+        $connection = $ip = $request_method = $request_uri = null;
+
+        if (str_contains($q, 'connection=')) {
+            if (preg_match("/connection=([^ ]+)/", $q, $match)) {
+                $connection = $match[1];
+            }
+        }
 
         if (str_contains($q, ['country=', 'country!='])) {
             if (preg_match("/country(!=|=)([A-Z]{2})/", $q, $match)) {
@@ -74,6 +80,15 @@ class Dev extends BaseController
 
                 $found = false;
                 $proper = true;
+
+                if ($connection) {
+                    if ($connection === $json->connection) {
+                        $found = true;
+                        $proper &= true;
+                    } else {
+                        $proper &= false;
+                    }
+                }
 
                 if (!empty($country)) {
                     if ($country['operator'] === '=' && $json->country === $country['value']) {

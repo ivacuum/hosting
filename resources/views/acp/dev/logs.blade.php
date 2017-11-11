@@ -22,7 +22,7 @@
   @foreach ($lines->reverse() as $line)
     <tr>
       <td>
-        <span title="{{ $line->time }}">{{ $loop->iteration }}</span>
+        <span title="{{ $line->time }}">{{ $line->connection }}</span>
       </td>
       <td>
         @if ($line->request_method !== 'GET')
@@ -49,7 +49,11 @@
           {{ ViewHelper::size($line->body_bytes_sent) }}
         @endif
       </td>
-      <td>{{ str_limit(str_replace(['http://www.', 'https://www.', 'http://', 'https://'], '', $line->referer), 35) }}</td>
+      <td>
+        <span title="{{ $line->referer }}">
+          {{ str_limit(str_replace(['http://www.', 'https://www.', 'http://', 'https://'], '', $line->referer), 35) }}
+        </span>
+      </td>
     </tr>
     <tr>
       <td></td>
