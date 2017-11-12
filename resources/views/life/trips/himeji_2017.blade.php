@@ -3,22 +3,30 @@
 @section('content')
 @ru
   <p>Быстрее всего перемещаться по стране на шинкансенах — высокоскоростных поездах. Чтобы не остаться без штанов, иностранцы могут перед поездкой оплатить безлимитный проездной на 7, 14 или 21 день. Удивительный случай, когда проездной окупается чуть ли не одной поездкой туда-обратно, а дальше все только в плюс.</p>
+@en
+  <p>The best way to get around Japan is by shinkansen—high speed train. If don't want to be out of money in no time, you should consider buying unlimited travel card for a fixed period of 7, 14 or 21 consecutive days. One high-distance round-trip most likely would be cheaper with it than regular ticket.</p>
 @endru
 <youtube title="Shinkansen Arrival, April 2017" v="yeWyf65NxpI"></youtube>
 @include('tpl.pic-2x', ['pic' => 'IMG_4102.jpg'])
 
 @ru
   <p>На самом деле вне Японии приобретается ваучер, а по прибытии в страну он обменивается на сам именной проездной под названием JR Pass. В аэропорте Нарита очередь была примерно на полчаса. Кстати, прямо там же можно приобрести транспортную карту Suica или Pasmo.</p>
+@en
+  <p>In fact, you buy voucher outside of Japan, and then you exchange it for travel card called JR Pass. Queue to JR office in Narita airport was like 30 minutes long to finally get the pass. You can also get useful Suica or Pasmo card in the airport as well.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4105.jpg'])
 
 @ru
   <p>На самом проездном в дальнейшем персонал будет интересовать только дата его окончания. Да, именно персонал, поскольку через турникет с ним пройти не получится. Каждый раз надо проходить через человека, показывая ему JR Pass. Забавно, что ближе к девяти вечера на станции уже может никого не быть, поэтому проход получается свободный.</p>
+@en
+  <p>JR staff is only interested in expiration date on the pass. Yea, staff, because in order to use JR Pass you need to show it at the manned ticket barrier at the stations. It has no use at automatic gates. The funny thing is that after 21:00 there is usually nobody to show your pass to, so free ride then.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4098.jpg'])
 
 @ru
   <p>В вагоне поезда. Каждая остановка объявляется на японском и английском. Стоит быть бдительным, так как время стоянки чаще всего составляет всего одну минуту.</p>
+@en
+  <p>Inside the train. Each stop announced in Japanese and English. It's better to pay attention to the announcements, because most of the stops has stop time of just one minute.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4087.jpg'])
 
