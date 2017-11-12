@@ -184,7 +184,9 @@
 ]])
 
 @ru
-  <p>Дядя в белом направляет людей непонятным образом. Японский знак стоп треугольной формы с местной надписью. Указатель к ж/д станции компании JR. Сакура. Прекрасное и полное деталей место.</p>
+  <p>Дядя в белом направляет людей непонятным образом. Японский знак стоп треугольной формы с местной надписью. Указатель к ж/д станции компании JR. Разноцветные зонты. Сакура. Прекрасное и полное деталей место.</p>
+@en
+  <p>Man in white directs people in an obscure way. Japanese stop sign is a triangle with word "stop"「止まれ」on it. Directions to JR station of Tozai line. Colorful umbrellas. Cherry blossoms. A beautiful and full of details place.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4575.jpg'])
 
@@ -251,6 +253,8 @@
 
 @ru
   <p>Подъем наверх.</p>
+@en
+  <p>Wheelchair ramp all the way to the up.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4589.jpg'])
 
@@ -270,6 +274,8 @@
 
 @ru
   <p>Внезапно — пути поперек станции. На такой важно в телефоне не залипнуть во время ходьбы.</p>
+@en
+  <p>Suddenly, railroad is across the station.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4593.jpg'])
 @endsection
