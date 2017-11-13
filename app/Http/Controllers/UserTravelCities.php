@@ -2,7 +2,6 @@
 
 use App\City;
 use App\Trip;
-use App\User;
 
 class UserTravelCities extends UserTravel
 {

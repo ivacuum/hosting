@@ -54,7 +54,7 @@
 @push('js')
 <script>
 $(function() {
-  var selectedPages;
+  let selectedPages;
 
   $('#batch_submit').bind('click', function(e) {
     e.preventDefault();
@@ -64,8 +64,8 @@ $(function() {
     });
   });
 
-  var page_active_icon = $('#page_active_icon').html();
-  var page_edit_icon = $('#page_edit_icon').html();
+  let page_active_icon = $('#page_active_icon').html();
+  let page_edit_icon = $('#page_edit_icon').html();
 
   $('#tree').fancytree({
     icons: false,
@@ -133,7 +133,7 @@ $(function() {
     },
 
     renderColumns: function(e, data) {
-      var node = data.node,
+      let node = data.node,
         $tds = $(node.tr).find('>td');
 
       if (node.data.activated == 1) {

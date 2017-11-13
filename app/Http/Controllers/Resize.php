@@ -32,6 +32,7 @@ class Resize extends Controller
             $response = $client->get($image, ['sink' => $file]);
         } catch (ClientException $e) {
             abort($e->getCode());
+            exit;
         }
 
         $code = $response->getStatusCode();

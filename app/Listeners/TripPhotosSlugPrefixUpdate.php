@@ -1,6 +1,5 @@
 <?php namespace App\Listeners;
 
-use App\Photo;
 use App\Trip;
 
 class TripPhotosSlugPrefixUpdate

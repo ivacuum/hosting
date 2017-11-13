@@ -23,9 +23,13 @@ class EmailWhoisChanges
     }
 
     /**
-    * Проверка изменения данных домена (ip, mx, ns, etc.)
-    */
-    protected function checkForChanges(Domain $domain, array $new)
+     * Проверка изменения данных домена (ip, mx, ns, etc.)
+     *
+     * @param  \App\Domain $domain
+     * @param  array   $new
+     * @return array
+     */
+    protected function checkForChanges(Domain $domain, array $new): array
     {
         $diff = [];
 

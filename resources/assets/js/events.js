@@ -3,7 +3,7 @@ class Events {
   static aviasales() {
     $(this).contents().unwrap()
 
-    var s = document.createElement('script')
+    let s = document.createElement('script')
     s.type = 'text/javascript'
     s.src = 'https://www.travelpayouts.com/widgets/044c854e39d539701be0fa773757da42.js?v=443'
     s.async = true
@@ -62,8 +62,8 @@ class Events {
   static entityAction(e) {
     e.preventDefault()
 
-    var $this = $(this)
-    var confirm_text = $this.data('confirm')
+    let $this = $(this)
+    let confirm_text = $this.data('confirm')
 
     if ($this.hasClass('disabled')) {
       return false
@@ -75,7 +75,7 @@ class Events {
       }
     }
 
-    var method = $this.data('method') || 'post'
+    let method = $this.data('method') || 'post'
 
     $this.addClass('disabled')
 
@@ -138,7 +138,7 @@ class Events {
     e.preventDefault()
 
     let state = $(this).data('state') || 'password'
-    var $input = $(this).siblings('.form-control')
+    let $input = $(this).siblings('.form-control')
 
     if (state === 'password') {
       $input.attr('type', 'text')

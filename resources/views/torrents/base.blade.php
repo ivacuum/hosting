@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('header_form')
-<form class="navbar-form navbar-left" action="{{ path("$self@index") }}" method="get">
+<form class="navbar-form navbar-left" action="{{ path("$self@index") }}">
   <div class="input-group">
     <input class="form-control navbar-search-input" name="q" value="{{ old('q', @$q) }}" placeholder="{{ trans('torrents.search') }}">
     <span class="input-group-btn">

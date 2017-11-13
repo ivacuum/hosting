@@ -1,7 +1,6 @@
 <?php namespace App;
 
 use Baum\Node;
-use Illuminate\Database\Eloquent\Builder;
 
 class Page extends Node
 {

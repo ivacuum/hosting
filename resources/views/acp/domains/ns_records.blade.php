@@ -37,7 +37,7 @@
     </thead>
     <tr class="ns-record-container" data-action="{{ path("$self@addNsRecord", $model) }}">
       <td class="text-right">
-        <input type="text" name="subdomain" value="@" class="text-right w-100">
+        <input name="subdomain" value="@" class="text-right w-100">
       </td>
       <td class="text-center">
         <select name="type">
@@ -51,10 +51,10 @@
         </select>
       </td>
       <td>
-        <input class="w-100" type="text" name="content">
-        <br><input class="w-100" type="text" name="priority" placeholder="priority [MX, SRV]">
-        <br><input class="w-100" type="text" name="port" placeholder="port [SRV]">
-        <br><input class="w-100" type="text" name="weight" placeholder="weight [SRV]">
+        <input class="w-100" name="content">
+        <br><input class="w-100" name="priority" placeholder="priority [MX, SRV]">
+        <br><input class="w-100" name="port" placeholder="port [SRV]">
+        <br><input class="w-100" name="weight" placeholder="weight [SRV]">
       </td>
       <td>
         <a class="pseudo js-ns-record-add">добавить днс-запись</a>
@@ -67,7 +67,7 @@
             {{ $record->subdomain }}
           </div>
           <div class="edit hidden">
-            <input type="text" name="subdomain" value="{{ $record->subdomain }}" class="text-right" style="width: 100%;">
+            <input name="subdomain" value="{{ $record->subdomain }}" class="text-right" style="width: 100%;">
           </div>
         </td>
         <td class="text-center">
@@ -95,19 +95,19 @@
             @endif
           </div>
           <div class="edit hidden">
-            <input class="w-100" type="text" name="content" value="{{ $record->content }}" {{ $record->type == 'SOA' ? 'readonly' : '' }}>
+            <input class="w-100" name="content" value="{{ $record->content }}" {{ $record->type == 'SOA' ? 'readonly' : '' }}>
             @if ($record->priority > 0)
-              <br><input class="w-100" type="text" name="priority" value="{{ $record->priority }}" placeholder="priority">
+              <br><input class="w-100" name="priority" value="{{ $record->priority }}" placeholder="priority">
             @endif
             @if ($record->type == 'SRV')
-              <br><input class="w-100" type="text" name="port" value="{{ $record->port }}" placeholder="port">
-              <br><input class="w-100" type="text" name="weight" value="{{ $record->weight }}" placeholder="weight">
+              <br><input class="w-100" name="port" value="{{ $record->port }}" placeholder="port">
+              <br><input class="w-100" name="weight" value="{{ $record->weight }}" placeholder="weight">
             @endif
             @if ($record->type == 'SOA')
-              <br><input class="w-100" type="text" name="retry" value="{{ $record->retry }}" placeholder="retry">
-              <br><input class="w-100" type="text" name="refresh" value="{{ $record->refresh }}" placeholder="refresh">
-              <br><input class="w-100" type="text" name="expire" value="{{ $record->expire }}" placeholder="expire">
-              <br><input class="w-100" type="text" name="ttl" value="{{ $record->ttl }}" placeholder="ttl">
+              <br><input class="w-100" name="retry" value="{{ $record->retry }}" placeholder="retry">
+              <br><input class="w-100" name="refresh" value="{{ $record->refresh }}" placeholder="refresh">
+              <br><input class="w-100" name="expire" value="{{ $record->expire }}" placeholder="expire">
+              <br><input class="w-100" name="ttl" value="{{ $record->ttl }}" placeholder="ttl">
             @endif
             <input type="hidden" name="record_id" value="{{ $record->record_id }}">
             {{ method_field('PUT') }}

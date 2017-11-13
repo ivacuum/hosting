@@ -6,10 +6,10 @@
           return true; // skip
         }
 
-        var height = $(this).attr('height');
+        let height = $(this).attr('height');
 
         if (height > 100) {
-          var width = $(this).attr('width');
+          let width = $(this).attr('width');
 
           $(this).height(height / 5).width(width / 5);
         }
