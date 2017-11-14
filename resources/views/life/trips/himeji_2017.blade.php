@@ -54,16 +54,22 @@
 
 @ru
   <p>Обязательно на станции будет кто-то из персонала. И у одного человека будет микрофон, чтобы делать объявления. К сожалению, только на японском. На снимке микрофон у этого товарища справа.</p>
+@en
+  <p>There is always staff at the station. And there is one person with microphone—here on the photo it is this man to the right—to make announcements, but only in Japanese, unfortunately.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4094.jpg'])
 
 @ru
   <p>А в другой руке у него флажок.</p>
+@en
+  <p>In the other hand he has a flag.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4095.jpg'])
 
 @ru
   <p>Камеры хранения. Сверху маленькие за ¥300, посередине средние за ¥500, внизу большие за ¥700. Сначала попался блок со всеми занятыми камерами. Было совершенно непонятно как пользоваться. Оказалось, что следует искать камеры с ключами — они открытые.</p>
+@en
+  <p>Lockers. From top to bottom: small ones for ¥300, then medium for ¥500 and the big ones for ¥700 at last. Available lockers are with keys in them. At first I found the whole block of occupied lockers, so I had no way to distinguish occupied ones from free—what a shame and waste of 10 minutes.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4096.jpg'])
 
@@ -75,26 +81,42 @@
     <li>Non-reserved — свободная посадка, самый дешевый вариант.</li>
   </ul>
   <p>Места можно забронировать на все поезда путешествия сразу. Лучше их при этом выписать на бумагу или показать на экране — так японцам легче вас понять. Английский у них чаще всего на школьном уровне.</p>
+@en
+  <p>Explanation of shinkansen cars' layout.</p>
+  <ul>
+    <li>Reserved—reservation is required in advance</li>
+    <li>Green—first class, you also need to reserve a seat</li>
+    <li>Non-reserved—the cheapest way to take a ride with free seats, but there might be not enough seats for everyone, so you might end up standing</li>
+  </ul>
+  <p>You can make reservations for all your rides at once. It's better to write down departure times and destinations on paper or type them on phone, so Japanese staff would have no problem with understanding you. Their reading skill is the way better than listening and speaking. In overall it feels like they stuck at school level English, like Russians do, who don't travel.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4099.jpg'])
 
 @ru
   <p>На вагоне дублируется информация, что он без бронирования. И еще раз дублируется внутри него на табло.</p>
+@en
+  <p>Display duplicates the info that the car is non-reserved. There is also the same info inside the car.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4101.jpg'])
 
 @ru
   <p>Нагрузка на столик не более 10 кг. Подсказка номера вагона, направления движения и полезностей в этом и соседнем вагонах.</p>
+@en
+  <p>Hints about car number, direction of travel and other useful stuff.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4104.jpg'])
 
 @ru
   <p>В Химедзи первым делом встречает общественное пространство.</p>
+@en
+  <p>Public space in front of Himeji station.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4107.jpg'])
 
 @ru
   <p>Карты местности на каждом шагу.</p>
+@en
+  <p>Maps are at every turn.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4108.jpg'])
 
@@ -169,6 +191,8 @@
 
 @ru
   <p>Внутри замка. Ощущение, что попал в пятиэтажку после сдачи дома после строительства и скромного ремонта. И со свободным проходом между квартирами. Мебели внутри почти нет, разве что музейные экспонаты в некоторых комнатах.</p>
+@en
+  <p>Inside the castle. Feels like you are in Khrushchyovka after construction has ended and there is free access to every apartment. There is almost no furniture inside, except to museum exhibits.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4482.jpg'])
 
@@ -195,6 +219,8 @@
 
 @ru
   <p>По замкам можно ходить только босиком. Хорошо, если тепло на улице, тогда ногам норм.</p>
+@en
+  <p>No shoes allowed inside the castle, so it's little bit cold in mid-April.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4490.jpg'])
 
@@ -221,14 +247,20 @@
 
 @ru
   <p>Не все шинкансены здесь останавливаются. Они в основном и различаются по количеству остановок, хотя все гордо зовутся суперэкспрессами. Чем меньше остановок, тем быстрее и дороже путь. Один из таких безостановочных поездов пронесся всего в двух путях от места этого снимка на скорости 250 км/ч, а то и выше. Мгновенно вспомнилась похожая <a class="link" href="brussels.2016#train">история из Брюсселя</a>. Тут же отличие в отсутствии каких-либо ограждений, а также в занятости обеих рук сумками. Стоило только поднять голову по пути к выходу, как стало видно поезд вдали. Проходит несколько секунд, и он уже рядом. Первая мысль: «За что хвататься?». Еще пяток секунд, и он уже позади. Можно было успеть только обделаться, а не ухватиться за что-то.</p>
+@en
+  <p>Not all shinkansen trains do a stop here. That's the thing they differ at—number of stops. Although they all proudly called superexpress. The fewer stops, the higher the price. One of these non-stop-here trains flew by on speed around 250 kmh (150 mph) on the third track from me in no time.</p>
 @endru
 
 @ru
   <p>К сожалению, не удалось больше застать безостановочные поезда, чтобы уже уверенно запечатлеть данный момент на видео. Задача на следующий раз.</p>
+@en
+  <p>There were no non-stop trains in the next 10 minutes, so I had no chance to make a video. Next time then.</p>
 @endru
 
 @ru
   <p><a class="link" href="https://www.endomondo.com/users/6097438/workouts/903205508">Трек движения</a> поезда из Нагои в Киото. 130 км за полчаса! По графику видно, что большую часть пути поезд идет 284 км/ч. Для записи маршрута лучше всего во всех видах транспорта садиться у окна, чтобы лучше ловило сигнал. В проходе часто он пропадает. В поезде удобно оставлять телефон на подоконнике.</p>
+@en
+  <p><a class="link" href="https://www.endomondo.com/users/6097438/workouts/903205508">Route of a train</a> from Nagoya to Kyoto. 130 km (80 miles) in just half an hour! Chart shows most the time it keeps the speed of 284 kmh (176 mph). It's better to sit near the window in any transport if you want to record your own route, because GPS signal is much stronger there. It also convenient to leave a phone on windowsill.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4498.jpg'])
 @endsection
