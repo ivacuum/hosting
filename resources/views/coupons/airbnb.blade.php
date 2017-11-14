@@ -55,7 +55,13 @@
     </tr>
     <tr>
       <td>BARCELONE2015</td>
-      <td></td>
+      <td>
+        @ru
+          <a class="link" href="/life/barcelona.2016">Барселона</a>
+        @en
+          <a class="link" href="/en/life/barcelona.2016">Barcelona</a>
+        @endru
+      </td>
     </tr>
     <tr>
       <td>BELGIQUE2015</td>
@@ -85,7 +91,13 @@
     </tr>
     <tr>
       <td>COPENHAGUE2015</td>
-      <td></td>
+      <td>
+        @ru
+          <a class="link" href="/life/copenhagen.2017">Копенгаген</a>
+        @en
+          <a class="link" href="/en/life/copenhagen.2017">Copenhagen</a>
+        @endru
+      </td>
     </tr>
     <tr>
       <td>CROATIE2015</td>
@@ -243,7 +255,13 @@
     </tr>
     <tr>
       <td>STOCKHOLM2015</td>
-      <td></td>
+      <td>
+        @ru
+          <a class="link" href="/life/stockholm.2016">Стокгольм</a>
+        @en
+          <a class="link" href="/en/life/stockholm.2016">Stockholm</a>
+        @endru
+      </td>
     </tr>
     <tr>
       <td>SF2015</td>
@@ -255,7 +273,13 @@
     </tr>
     <tr>
       <td>VIENNE2015</td>
-      <td></td>
+      <td>
+        @ru
+          <a class="link" href="/life/vienna.2017">Вена</a>
+        @en
+          <a class="link" href="/en/life/vienna.2017">Vienna</a>
+        @endru
+      </td>
     </tr>
   </tbody>
 </table>
@@ -263,8 +287,10 @@
 <div class="row">
   <div class="col-md-6">
     @ru
+      <p class="mt-3">Возможно, вас смущает, что в названиях купонов указан 2015 год. Дело в том, что они были введены в период начала активного международного роста сервиса Airbnb. С тех пор прошло достаточно много времени — пользовательская база стала многомиллионной. Новых купонов с 2015 года так и не появлялось, что приводит к неутешительному прогнозу — скоро и эти могут перестать работать. Если они уже не срабатывают, то можно попробовать поменять год в купоне на 2016, 2017 и т.п. или же воспользоваться скидкой для новых пользователей. О ней ниже.</p>
+
       <h2>Новый пользователь Airbnb?</h2>
-      <p>Тогда вы можете рассчитывать на еще большую скидку на вашу первую поездку.</p>
+      <p>Вы можете рассчитывать на еще большую скидку на вашу первую поездку.</p>
       <a class="btn btn-primary" href="https://www.airbnb.ru/{{ config('cfg.airbnb_link') }}">Получить скидку 1500 ₽</a>
       <span class="help-block">После клика вы будете перемещены на сайт airbnb.ru</span>
     @en
