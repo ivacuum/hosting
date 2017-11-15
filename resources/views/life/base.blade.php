@@ -3,7 +3,7 @@
 @push('head')
 <meta content="article" property="og:type">
 <meta content="{{ $meta_title ?? '' }}" property="og:title">
-<meta content="{{ Request::url() }}" property="og:url">
+<meta content="{{ canonical() }}" property="og:url">
 <meta content="{{ $meta_image ?? '' }}" property="og:image">
 <meta content="{{ $meta_description ?? '' }}" property="og:description">
 @endpush
