@@ -28,11 +28,6 @@ class TorrentCategoryHelper
                 'title' => 'Русские сериалы',
                 'parent' => 1,
             ],
-            6 => [
-                'icon' => 'film',
-                'title' => '3D',
-                'parent' => 1,
-            ],
             7 => [
                 'icon' => 'film',
                 'title' => 'Мультфильмы',
