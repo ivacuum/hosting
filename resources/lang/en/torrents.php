@@ -13,4 +13,5 @@ return [
     'download' => 'Download',
     'yesterday' => 'Yesterday',
     'categories' => 'Categories',
+    'telegram_chat' => 'Telegram chat',
 ];

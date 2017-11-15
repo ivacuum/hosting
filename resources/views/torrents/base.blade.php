@@ -37,6 +37,11 @@
       <li class="{{ $view === 'torrents.my' ? 'active' : '' }}">
         <a href="{{ path('Torrents@my') }}">{{ trans('torrents.my') }}</a>
       </li>
+      <li>
+        <a href="https://t.me/joinchat/ARFYTgllrcJ-R5S07ZLgYQ" title="{{ trans('torrents.telegram_chat') }}">
+          @svg (telegram)
+        </a>
+      </li>
     @endif
   </ul>
 </nav>
