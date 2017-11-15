@@ -69,7 +69,7 @@
 @ru
   <p>Камеры хранения. Сверху маленькие за ¥300, посередине средние за ¥500, внизу большие за ¥700. Сначала попался блок со всеми занятыми камерами. Было совершенно непонятно как пользоваться. Оказалось, что следует искать камеры с ключами — они открытые.</p>
 @en
-  <p>Lockers. From top to bottom: small ones for ¥300, then medium for ¥500 and the big ones for ¥700 at last. Available lockers are with keys in them. At first I found the whole block of occupied lockers, so I had no way to distinguish occupied ones from free—what a shame and waste of 10 minutes.</p>
+  <p>Lockers. From top to bottom: small ones for ¥300, then medium for ¥500 and the big ones for ¥700 at last. Empty lockers are with keys in them. At first I found the whole block of occupied lockers, so I had no way to distinguish occupied ones from free—what a shame and waste of 10 minutes.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4096.jpg'])
 
