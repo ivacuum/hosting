@@ -50,27 +50,6 @@ class TorrentCategoryHelper
             ],
 
         //
-        10 => [
-            'title' => 'Документалистика, юмор и спорт',
-            'parent' => 0,
-        ],
-            11 => [
-                'icon' => 'microphone',
-                'title' => 'Документалки',
-                'parent' => 10,
-            ],
-            12 => [
-                'icon' => 'smile-o',
-                'title' => 'Развлекательные шоу, юмор',
-                'parent' => 10,
-            ],
-            13 => [
-                'icon' => 'soccer-ball-o',
-                'title' => 'Спорт',
-                'parent' => 10,
-            ],
-
-        //
         25 => [
             'title' => 'Игры для Windows',
             'parent' => 0,
