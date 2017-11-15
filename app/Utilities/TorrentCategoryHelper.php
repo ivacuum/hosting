@@ -122,62 +122,6 @@ class TorrentCategoryHelper
             ],
 
         //
-        14 => [
-            'title' => 'Музыка',
-            'parent' => 0,
-        ],
-            15 => [
-                'icon' => 'music',
-                'title' => 'Зарубежный рок',
-                'parent' => 14,
-            ],
-            16 => [
-                'icon' => 'music',
-                'title' => 'Отечественный рок',
-                'parent' => 14,
-            ],
-            17 => [
-                'icon' => 'music',
-                'title' => 'Джаз и блюз',
-                'parent' => 14,
-            ],
-            18 => [
-                'icon' => 'music',
-                'title' => 'Поп музыка, Eurodance, Disco',
-                'parent' => 14,
-            ],
-            19 => [
-                'icon' => 'music',
-                'title' => "Рэп, Хип-Хоп, R'n'B",
-                'parent' => 14,
-            ],
-            20 => [
-                'icon' => 'music',
-                'title' => 'Электронная музыка',
-                'parent' => 14,
-            ],
-            21 => [
-                'icon' => 'music',
-                'title' => 'Классическая музыка',
-                'parent' => 14,
-            ],
-            22 => [
-                'icon' => 'music',
-                'title' => 'Шансон, Авторская и Военная песня',
-                'parent' => 14,
-            ],
-            23 => [
-                'icon' => 'music',
-                'title' => 'Саундтреки и Караоке',
-                'parent' => 14,
-            ],
-            24 => [
-                'icon' => 'music',
-                'title' => 'Музыка других жанров',
-                'parent' => 14,
-            ],
-
-        //
         35 => [
             'icon' => 'file-text-o',
             'title' => 'Прочее',
