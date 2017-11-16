@@ -443,9 +443,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_5577.jpg'])
 
 @ru
-  <p>Кодовая панель перед номером в отеле. Отсчет каждый раз начинается с новой цифры (сейчас с 0), чтобы нельзя было жать те же самые кнопки.</p>
+  <p>Кодовый замок перед номером в отеле. Отсчет каждый раз начинается с новой цифры (сейчас с 0), чтобы нельзя было жать те же самые кнопки.</p>
 @en
-  <p>Room code input panel in hotel. Digits layout is always randomized (right now it starts from 0), so you couldn't memorize the sequence.</p>
+  <p>Hotel room has electronic lock with PIN entry. Digits layout is always randomized. Right now it starts from 0. Thus you couldn't memorize someone's sequence.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5580.jpg'])
 
