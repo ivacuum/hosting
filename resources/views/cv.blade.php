@@ -16,7 +16,7 @@
   <meta content="100001136135534" property="fb:admins">
   <meta content="profile" property="og:type">
   <meta content="Сергей Панков &middot; Резюме" property="og:title">
-  <meta content="https://vacuum.name/cv/" property="og:url">
+  <meta content="{{ canonical() }}" property="og:url">
   <meta content="https://life.ivacuum.ru/me.jpg" property="og:image">
   <meta content="Веб-программист (PHP). Заинтересован в создании полезных людям веб-сервисов. Веб-технологиями увлекаюсь с 2003 года. С кодом моих проектов можно ознакомиться на Гитхабе. Возможна удаленная работа." property="og:description">
   <meta content="Сергей" property="profile:first_name">
