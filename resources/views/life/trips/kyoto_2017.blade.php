@@ -120,6 +120,8 @@
 
 @ru
   <p>Вход в автобус через среднюю дверь, выход через переднюю. Если есть транспортная карта, то достаточно приложить ее на входе и выходе — сумма рассчитается и спишется автоматически. При отсутствии карты надо взять на входе билет, а на выходе билет вместе с деньгами за проезд кинуть в автомат около водителя (потому и выход через переднюю дверь). Сдачу автомат не дает, поэтому рядом же можно разменять деньги на мелочь. Как узнать стоимость проезда? Либо в приложении, которое построит вам маршрут, либо смотреть на табло стоимость напротив места посадки со входного билета. Еще можно купить безлимитный дневной проездной у водителя, который затем достаточно просто показывать другим водителям при выходе.</p>
+@en
+  <p>You need middle door to get on and front door to get off the bus. If you have card like Suica or Pasmo it is enough to touch terminal inside, so minimum fare calculates automatically. If you have no card you need to take a ticket when you get on and drop it with coins into a box near the driver when you exit. That's why you need to exit through the front door. No change is given when you pay, so there is an exchange machine nearby. How do you know how much to pay? Well, navigation app can tell you when you plan the route. Otherwise there is a display in the bus with fares under stop names. The farther you go, the more you pay. You can also buy day pass from driver, so you just show it when you get off.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5492.jpg'])
 
@@ -384,7 +386,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_5567.jpg'])
 
 @ru
-  <p>Большинство дверей в Японии либо автоматические, либо полуавтоматически — открываются по нажатию кнопки, как эти. К хорошему быстро привыкаешь. По возвращении негодуешь, что надо тягать двери.</p>
+  <p>Большинство дверей в Японии либо автоматические, либо полуавтоматические — открываются по нажатию кнопки, как эти. К хорошему быстро привыкаешь. По возвращении негодуешь, что надо тягать двери.</p>
+@en
+  <p>Most of the doors in Japan are automatic or semi-automatic. You just need to push the button to open this one. You quickly get used to good things. And then you indignant at home, because you need to open jammed doors with your own hands.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5568.jpg'])
 
@@ -440,6 +444,8 @@
 
 @ru
   <p>Кодовая панель перед номером в отеле. Отсчет каждый раз начинается с новой цифры (сейчас с 0), чтобы нельзя было жать те же самые кнопки.</p>
+@en
+  <p>Room code input panel in hotel. Digits layout is always randomized (right now it starts from 0), so you couldn't memorize the sequence.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5580.jpg'])
 
@@ -466,6 +472,8 @@
 
 @ru
   <p>Щит о ремонтных работах на той стороне дороги.</p>
+@en
+  <p>Street repair work information board is across the street.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5614.jpg'])
 
@@ -583,11 +591,15 @@
 
 @ru
   <p>Под лавкой тарелки для окурков.</p>
+@en
+  <p>Plates for stubs under the bench.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6560.jpg'])
 
 @ru
   <p>Иногда для детей иероглифы расшифровывают символами азбуки.</p>
+@en
+  <p>Sometimes there is furigana on top of kanji for kids.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6566.jpg'])
 
@@ -651,6 +663,8 @@
 
 @ru
   <p>Добро пожаловать к столу.</p>
+@en
+  <p>Please take a seat.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6595.jpg'])
 
@@ -677,11 +691,15 @@
 
 @ru
   <p>Приготовьтесь по пять раз в день разуваться и обуваться. Лучше выбрать для этого подходящую обувь.</p>
+@en
+  <p>Get ready to put on and off your shoes many times a day. So the best option is to have slip-on shoes.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6606.jpg'])
 
 @ru
   <p>В супермаркете. Немного видно интерфейс кассира. Ручной сканер они прикладывают к товару вплотную, в отличие от нашего способа поднесения товара к статичному сканеру. При оплате наличными касса сама выдает кассиру сдачу, ему остается только передать ее покупателю. Двумя руками и с небольшим поклоном. При покупке алкоголя надо подтвердить касанием экрана, что тебе исполнилось 20 лет.</p>
+@en
+  <p>In the supermarket. Little bit of cashier's UI can be seen. Cashbox gives the change to cashier automatically when you pay in cash. He just needs to give it back to you with two hands and a slight bow. You need to confirm you are 20+ with a touch of a screen if you buy alcohol.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6610.jpg',
@@ -690,6 +708,8 @@
 
 @ru
   <p>Немного продаваемых товаров. Фруктов мало, и они очень дорогие: один банан около 90 ₽, одно яблоко 150 ₽. Можно смело брать йогурты, желе, суши, какой-нибудь рис с рыбой и тому подобное, так как на кассе выдадут бесплатные приборы согласно вашим покупкам. Почему у нас такого нет? Сколько раз отсутствие приборов останавливало от покупки йогурта! Еще горячие и холодные покупки разложат по разным пакетам. Горячие? Да, помимо изначально теплых товаров еду можно попросить разогреть на кассе, либо сделать это самому — в зале бывают микроволновки. Можно даже автомат с кипятком найти для лапши.</p>
+@en
+  <p>Some food. Fruits are expensive—more than $1 for one apple. It's a joy to buy jogurt, jelly, sushi, rice with fish, etc, because cashier will give you spoon and chopsticks for free according to your purchase. Why don't we have such a thing? How many times lack of spoon has stopped me from buying yogurt? Countless! Cashier also puts hot and cold goods in different bags. Hot? Yea, you can buy warm food or ask cashier to warm it up. Sometimes there are microwave ovens and boiled water for noodles in the shop.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6612.jpg',
@@ -721,6 +741,8 @@
 
 @ru
   <p>В этот поезд двери открывать и закрывать надо самому.</p>
+@en
+  <p>You need to open and close the doors by yourself in this train.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6641.jpg'])
 
@@ -740,16 +762,22 @@
 
 @ru
   <p>Турникеты на станции. Обладателям проездного JR Pass проходить вдоль окошка с человеком.</p>
+@en
+  <p>Gates at the station. JR Pass holders need to pass along the window.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6648.jpg'])
 
 @ru
   <p>Многие станции не прямые.</p>
+@en
+  <p>Most of the platforms are curved.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6650.jpg'])
 
 @ru
   <p>К повороту налево готов.</p>
+@en
+  <p>Ready to turn left.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6651.jpg'])
 
@@ -763,16 +791,22 @@
 <a name="aed"></a>
 @ru
   <p>Много где можно найти дефибрилляторы. На станции.</p>
+@en
+  <p>Automated external defibrillators are in many places. At the station.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6674.jpg'])
 
 @ru
   <p>Или даже перед домом.</p>
+@en
+  <p>Or even in front of the house.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6669.jpg'])
 
 @ru
   <p>Навигация на станции. Поначалу казалось, что путь 0 в описании маршрута — это ошибка, и придется искать информацию на табло. Но нет, нулевой путь действительно есть прямо по курсу. Поезд оттуда доставит в Канадзаву.</p>
+@en
+  <p>Navigation at the station. At first I thought platform 0 on my ticket is a mistake and I would need to look my train up on the information board. But no, there is platform 0. It's Kanazawa direction.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6673.jpg'])
 @endsection
