@@ -36,11 +36,15 @@
 
 @ru
   <p>Автобусная остановка. Под маршрутами кругляши под иконку. Чем иконка левее, тем ближе автобус. 207-й еще далеко, 202-й уже на подходе.</p>
+@en
+  <p>Bus stop. Circle icons under routes tell how far the bus is from here. 207 is few stops away, 202 is almost here.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5449.jpg'])
 
 @ru
   <p>Подробное расписание каждого маршрута по дням недели, часам и минутам.</p>
+@en
+  <p>Detailed schedule.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5452.jpg'])
 
@@ -53,21 +57,29 @@
 
 @ru
   <p>Низкопольная только передняя половина — в хвосте ступеньки.</p>
+@en
+  <p>Only front half of the bus is low-floor, there is a step up to its rear half.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5607.jpg'])
 
 @ru
   <p>Рядом с каждым сиденьем имеется кнопка стоп. 25 сидений? Будет 25 кнопок. Если ее не нажать, то водитель может пропустить остановку. Вставать и выходить просят только после полной остановки транспорта и открытия дверей.</p>
+@en
+  <p>There is a stop button near each seat. Bus has 25 seats? There would be 25 buttons then. Driver could skip a stop if no button was pressed. Passengers are asked to stand up and get off only after full stop is made and doors are opened.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5774.jpg'])
 
 @ru
   <p>Нетипичные балконы.</p>
+@en
+  <p>Unusual balconies.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5455.jpg'])
 
 @ru
   <p>Желтая машина спряталась во дворе.</p>
+@en
+  <p>Yellow car hides in the yard.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5457.jpg'])
 
@@ -87,16 +99,22 @@
 
 @ru
   <p>Велопарковка перед входом в здание. Разметка для слепых — ее вообще немыслимое количество.</p>
+@en
+  <p>Bicycle parking near the entrance to the building. Enormous amount of tactile paving throughout the country.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5488.jpg'])
 
 @ru
   <p>Открытый переулок.</p>
+@en
+  <p>Opened side street.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5489.jpg'])
 
 @ru
   <p>Временно закрытый переулок. Товарищи с флажками все время присутствуют при каких-либо транспортных, ремонтных или строительных работах. Регулируют движение.</p>
+@en
+  <p>Temporarily closed side street. Man with flag is always in front of transport, repair or construction work mostly for traffic control and extra caution.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5491.jpg'])
 
@@ -107,11 +125,15 @@
 
 @ru
   <p>Цветы перед домом. Счетчики на улице.</p>
+@en
+  <p>Flowers in front of the house. Meters are outside.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5494.jpg'])
 
 @ru
   <p>Ворота под названием тории.</p>
+@en
+  <p>Gates called torii.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_5495.jpg',
@@ -131,16 +153,22 @@
 
 @ru
   <p>Парковка, терминал оплаты и стоимость.</p>
+@en
+  <p>Parking, its cost and a parking meter.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5498.jpg'])
 
 @ru
   <p>Еще парковка.</p>
+@en
+  <p>Another parking.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5508.jpg'])
 
 @ru
   <p>И еще парковка.</p>
+@en
+  <p>And one more parking.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5570.jpg'])
 
@@ -184,16 +212,22 @@
 
 @ru
   <p>Мост через нее.</p>
+@en
+  <p>Bridge across it.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5537.jpg'])
 
 @ru
   <p>Слева пешеходы, справа велосипеды. Немного далее слева заправка и стоимость бензина.</p>
+@en
+  <p>Pedestrians on the left, cyclists on the right. Gas station ahead, fuel price in yens can be seen at it.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5506.jpg'])
 
 @ru
   <p>Приятная улица.</p>
+@en
+  <p>Pleasant street.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_5507.jpg',
@@ -204,16 +238,22 @@
 
 @ru
   <p>Сакура опадает.</p>
+@en
+  <p>Sakura petals falling.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5514.jpg'])
 
 @ru
   <p>Заведенная машина с множеством громкоговорителей.</p>
+@en
+  <p>Started car with loudspeakers.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5517.jpg'])
 
 @ru
   <p>Еще улицы.</p>
+@en
+  <p>More streets.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_5519.jpg',
@@ -224,16 +264,22 @@
 
 @ru
   <p>Не только счетчики, но и колонка на улице.</p>
+@en
+  <p>Not only meters are outside, but gas tankless water heaters as well.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5520.jpg'])
 
 @ru
   <p>Сушка обуви на улице.</p>
+@en
+  <p>Shoes drying on the street.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5524.jpg'])
 
 @ru
   <p>Велопарковка и велопрокат на набережной.</p>
+@en
+  <p>Bicycle parking and rental along the embankment.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_5530.jpg',
@@ -243,31 +289,43 @@
 
 @ru
   <p>Парковка для скутеров.</p>
+@en
+  <p>Scooter parking.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5533.jpg'])
 
 @ru
   <p>Небольшие домики.</p>
+@en
+  <p>Little houses.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5536.jpg'])
 
 @ru
   <p>Домики в зелени.</p>
+@en
+  <p>Houses in greenery.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6668.jpg'])
 
 @ru
   <p>Строящийся мост.</p>
+@en
+  <p>Bridge is being constructed.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5554.jpg'])
 
 @ru
   <p>На функционирующем мосту.</p>
+@en
+  <p>On the finished bridge.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5556.jpg'])
 
 @ru
   <p>Трубы-трубы-трубы. Много труб.</p>
+@en
+  <p>Pipes-pipes-pipes. Lots of pipes.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_5557.jpg',
@@ -277,6 +335,8 @@
 
 @ru
   <p>На переезде чаще можно встретить людей перед шлагбаумами, нежели автомобили.</p>
+@en
+  <p>You are likely to see pedestrians at level crossing, rather than cars.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5560.jpg'])
 
@@ -290,26 +350,36 @@
 
 @ru
   <p>Вид снизу.</p>
+@en
+  <p>Bottom view.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6649.jpg'])
 
 @ru
-  <p>Улочка.</p>
+  <p>Взгляд сверху на улочку.</p>
+@en
+  <p>Top view on the street.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5563.jpg'])
 
 @ru
   <p>Крыша дома.</p>
+@en
+  <p>House roof.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5564.jpg'])
 
 @ru
   <p>Зелень за заборами.</p>
+@en
+  <p>Greenery behind the fence.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5565.jpg'])
 
 @ru
   <p>Сиденья на остановке спиной к дороге.</p>
+@en
+  <p>Seats with its back to the road at bus stop.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5567.jpg'])
 
@@ -320,6 +390,8 @@
 
 @ru
   <p>И еще улицы.</p>
+@en
+  <p>More streets.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_5566.jpg',
@@ -344,6 +416,8 @@
 
 @ru
   <p>Школьный двор.</p>
+@en
+  <p>School yard.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_5574.jpg',
@@ -352,11 +426,15 @@
 
 @ru
   <p>Улица около школы.</p>
+@en
+  <p>Street near the school.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5575.jpg'])
 
 @ru
   <p>Лифт.</p>
+@en
+  <p>Elevator.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5577.jpg'])
 
@@ -367,16 +445,22 @@
 
 @ru
   <p>Стиральная машина.</p>
+@en
+  <p>Washing machine.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5582.jpg'])
 
 @ru
   <p>Автобус для детей.</p>
+@en
+  <p>Kids bus.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5612.jpg'])
 
 @ru
   <p>Внезапно.</p>
+@en
+  <p>All of a sudden.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5613.jpg'])
 
@@ -387,46 +471,64 @@
 
 @ru
   <p>Красивое ограждение.</p>
+@en
+  <p>Cute guard rail.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5617.jpg'])
 
 @ru
   <p>Ограждение попроще.</p>
+@en
+  <p>Simple guard rail.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5616.jpg'])
 
 @ru
   <p>Парковка для зонтов.</p>
+@en
+  <p>Umbrella stands.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5618.jpg'])
 
 @ru
   <p>Зонт чаще всего оставляют на улице. В крайнем случае надевают на него <a class="link" href="tokyo.2017.04.08-10#umbrella-cover">чехол</a>, если надо зайти в здание.</p>
+@en
+  <p>Umbrellas are usually left outside of buildings. Another option is to <a class="link" href="tokyo.2017.04.08-10#umbrella-cover">use a cover</a>, if you need to take your umbrella inside with you.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6406.jpg'])
 
 @ru
   <p>Водосток интересной формы.</p>
+@en
+  <p>Interesting form of roof water drain.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5619.jpg'])
 
 @ru
   <p>Школьники в форме изучают красоты.</p>
+@en
+  <p>Schoolkids are interested in beauties.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5915.jpg'])
 
 @ru
   <p>Смайлик на крышке.</p>
+@en
+  <p>Smiley on a bottle cap.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6023.jpg'])
 
 @ru
   <p>Телефон с монетоприемником.</p>
+@en
+  <p>Payphone.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6032.jpg'])
 
 @ru
   <p>Пятиуровневая пагода.</p>
+@en
+  <p>Five-storied pagoda.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6046.jpg',
@@ -436,6 +538,8 @@
 
 @ru
   <p>Переезд. Поезда ходят очень близко к домам.</p>
+@en
+  <p>Level crossing. Trains move really close to the houses.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6403.jpg',
@@ -444,11 +548,15 @@
 
 @ru
   <p>Железная дорога.</p>
+@en
+  <p>Railroad.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6405.jpg'])
 
 @ru
   <p>Бамбуковая роща.</p>
+@en
+  <p>Bamboo grove.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6415.jpg',
@@ -458,11 +566,15 @@
 
 @ru
   <p>Рядом кладбище.</p>
+@en
+  <p>Cemetery is nearby.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6417.jpg'])
 
 @ru
   <p>Все японские монеты.</p>
+@en
+  <p>All Japanese coins.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6558.jpg',
@@ -481,6 +593,8 @@
 
 @ru
   <p>Места для прогулок.</p>
+@en
+  <p>Places for a walk.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_5621.jpg',
@@ -504,6 +618,8 @@
 
 @ru
   <p>Места не для прогулок. Любоваться можно только на расстоянии.</p>
+@en
+  <p>Places not for a walk. Enjoy at distance.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6034.jpg',
@@ -528,6 +644,8 @@
 
 @ru
   <p>Растут апельсины.</p>
+@en
+  <p>Oranges grow.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6589.jpg'])
 
@@ -538,16 +656,22 @@
 
 @ru
   <p>Кладбища очень компактные. В среднем по площади как один российский многоквартирный дом в регионе.</p>
+@en
+  <p>Cemeteries are really compact.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6590.jpg'])
 
 @ru
   <p>Домик рядом с кладбищем.</p>
+@en
+  <p>House near the cemetery.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6593.jpg'])
 
 @ru
   <p>Растения растут в подушках.</p>
+@en
+  <p>Plants grow from pillows.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6601.jpg'])
 
@@ -590,6 +714,8 @@
 
 @ru
   <p>Ночная башня.</p>
+@en
+  <p>Night tower.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6637.jpg'])
 
@@ -600,11 +726,15 @@
 
 @ru
   <p>Традиционные японские крыши.</p>
+@en
+  <p>Japanese roofs.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6646.jpg'])
 
 @ru
   <p>Комната для курения.</p>
+@en
+  <p>Smoking room.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6647.jpg'])
 

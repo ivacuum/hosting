@@ -56,6 +56,8 @@
 
 @ru
   <p>Терминал оплаты автомобильной парковки.</p>
+@en
+  <p>Parking meter.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2080.jpg'])
 
@@ -138,6 +140,8 @@
 
 @ru
   <p>Крутой низкопольный трамвай.</p>
+@en
+  <p>Nice low-floor tram.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2111.jpg'])
 
@@ -153,6 +157,8 @@
 
 @ru
   <p>Бесчетное количество мест для прогулок.</p>
+@en
+  <p>Countless of places for a walk.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2109.jpg',
@@ -185,6 +191,6 @@
 ]])
 
 @ru
-  <p>Бонус: подробнее <a class="link" href="http://ilyabirman.ru/meanwhile/all/deutsche-autobahnen/">об автобанах</a> в рассказе Ильи Бирмана.</p>
+  <p>Бонус: подробнее <a class="link" href="https://ilyabirman.ru/meanwhile/all/deutsche-autobahnen/">об автобанах</a> в рассказе Ильи Бирмана.</p>
 @endru
 @endsection
