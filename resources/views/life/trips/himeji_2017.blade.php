@@ -4,7 +4,7 @@
 @ru
   <p>Быстрее всего перемещаться по стране на шинкансенах — высокоскоростных поездах. Чтобы не остаться без штанов, иностранцы могут перед поездкой оплатить безлимитный проездной на 7, 14 или 21 день. Удивительный случай, когда проездной окупается чуть ли не одной поездкой туда-обратно, а дальше все только в плюс.</p>
 @en
-  <p>The best way to get around Japan is by shinkansen—high speed train. If don't want to be out of money in no time, you should consider buying unlimited travel card for a fixed period of 7, 14 or 21 consecutive days. One high-distance round-trip most likely would be cheaper with it than regular ticket.</p>
+  <p>The best way to get around Japan is by shinkansen—high speed train. If you don't want to be out of money in no time, you should consider buying an unlimited travel card for a fixed period of 7, 14 or 21 consecutive days. One high-distance round-trip most likely would be cheaper with it than regular ticket.</p>
 @endru
 <youtube title="Shinkansen Arrival, April 2017" v="yeWyf65NxpI"></youtube>
 @include('tpl.pic-2x', ['pic' => 'IMG_4102.jpg'])
