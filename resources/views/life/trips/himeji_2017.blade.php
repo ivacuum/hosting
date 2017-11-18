@@ -19,7 +19,7 @@
 @ru
   <p>На самом проездном в дальнейшем персонал будет интересовать только дата его окончания. Да, именно персонал, поскольку через турникет с ним пройти не получится. Каждый раз надо проходить через человека, показывая ему JR Pass. Забавно, что ближе к девяти вечера на станции уже может никого не быть, поэтому проход получается свободный.</p>
 @en
-  <p>JR staff is only interested in expiration date on the pass. Yea, staff, because in order to use JR Pass you need to show it at the manned ticket barrier at the stations. It has no use at automatic gates. The funny thing is that after 21:00 there is usually nobody to show your pass to, so free ride then.</p>
+  <p>JR staff is only interested in expiration date on the pass. Yeah, staff, because in order to use JR Pass you need to show it at the manned ticket barrier at the stations. It has no use at automatic gates. The funny thing is that after 21:00 there is usually nobody to show your pass to, so free ride then.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4098.jpg'])
 
@@ -55,7 +55,7 @@
 @ru
   <p>Обязательно на станции будет кто-то из персонала. И у одного человека будет микрофон, чтобы делать объявления. К сожалению, только на японском. На снимке микрофон у этого товарища справа.</p>
 @en
-  <p>There is always staff at the station. And there is one person with microphone—here on the photo it is this man to the right—to make announcements, but only in Japanese, unfortunately.</p>
+  <p>There is always staff at the station. And there is one person with microphone—here in the photo it is this man to the right—to make announcements, but only in Japanese, unfortunately.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4094.jpg'])
 

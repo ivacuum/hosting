@@ -4,7 +4,7 @@
 @ru
   <p>Дорога в Брюгге. Да, лобовое стекло определенно нуждается в чистке.</p>
 @en
-  <p>Road to Bruges. Yea, the windshield definitely needs cleaning.</p>
+  <p>Road to Bruges. Yeah, the windshield definitely needs cleaning.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2223.jpg',

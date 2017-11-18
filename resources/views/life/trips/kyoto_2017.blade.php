@@ -709,7 +709,7 @@
 @ru
   <p>Немного продаваемых товаров. Фруктов мало, и они очень дорогие: один банан около 90 ₽, одно яблоко 150 ₽. Можно смело брать йогурты, желе, суши, какой-нибудь рис с рыбой и тому подобное, так как на кассе выдадут бесплатные приборы согласно вашим покупкам. Почему у нас такого нет? Сколько раз отсутствие приборов останавливало от покупки йогурта! Еще горячие и холодные покупки разложат по разным пакетам. Горячие? Да, помимо изначально теплых товаров еду можно попросить разогреть на кассе, либо сделать это самому — в зале бывают микроволновки. Можно даже автомат с кипятком найти для лапши.</p>
 @en
-  <p>Some food. Fruits are expensive—more than $1 for one apple. It's a joy to buy jogurt, jelly, sushi, rice with fish, etc, because cashier will give you spoon and chopsticks for free according to your purchase. Why don't we have such a thing? How many times lack of spoon has stopped me from buying yogurt? Countless! Cashier also puts hot and cold goods in different bags. Hot? Yea, you can buy warm food or ask cashier to warm it up. Sometimes there are microwave ovens and boiled water for noodles in the shop.</p>
+  <p>Some food. Fruits are expensive—more than $1 for one apple. It's a joy to buy jogurt, jelly, sushi, rice with fish, etc, because cashier will give you spoon and chopsticks for free according to your purchase. Why don't we have such a thing? How many times lack of spoon has stopped me from buying yogurt? Countless! Cashier also puts hot and cold goods in different bags. Hot? Yeah, you can buy warm food or ask cashier to warm it up. Sometimes there are microwave ovens and boiled water for noodles in the shop.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6612.jpg',

@@ -27,7 +27,7 @@
 @ru
   <p>Перелет около 10 часов, за это время кормят дважды. Но эти два раза так растянуты, что ощущение, что ешь чуть ли не весь полет. Поспать дольше пары часов не удалось. По предыдущему положительному опыту было вновь заказано кошерное питание. И здесь оно не подкачало. Однако, удивило, что бортпроводники спрашивали можно ли им самим разогреть кошерную пищу или я схожу и проконтролирую процесс. А также просили вскрыть упаковку с едой и убедиться, что там все ОК, что никаких неожиданностей среди блюд. Ага, понимать бы еще что там внутри!</p>
 @en
-  <p>Flight is about 10 hours long, you get two meals during it. But meals are so big, that it feels like the only thing you do the entire flight is eat. I couldn't sleep for more than a couple of hours. Kosher meal was ordered given the previous positive experience. And it was good once again. However, it was surprising that flight attendant asked if she could warm up my kosher meal by herself or I would go with her and control the process. I was also asked to open the meal box and make sure everything is OK inside. Yea, I wish I knew what's inside!</p>
+  <p>Flight is about 10 hours long, you get two meals during it. But meals are so big, that it feels like the only thing you do the entire flight is eat. I couldn't sleep for more than a couple of hours. Kosher meal was ordered given the previous positive experience. And it was good once again. However, it was surprising that flight attendant asked if she could warm up my kosher meal by herself or I would go with her and control the process. I was also asked to open the meal box and make sure everything is OK inside. Yeah, I wish I knew what's inside!</p>
 @endru
 
 @ru
@@ -157,7 +157,7 @@
 @ru
   <p>Следующая пересадка. На столбе две схемы. На верхней можно заметить, что станции имеют оригинальное название, на латинице, а также простое вида А09. Нижняя схема — метро. Да, веток много. Еще и присутствуют разные ж/д компании. Ехать лучше какой-то одной, тогда будет минимальная стоимость проезда. Потому что один вход и выход. Если переходить между компаниями, то каждый раз это новый вход и выход, соответственно и новая плата. Если строить маршрут через тот же Гугл мэпс, то он предложит как самый дешевый вариант, так и самый быстрый.</p>
 @en
-  <p>The next change. There are two schemes on the column. The stations on the upper one have hieroglyphic, latin and symbolic names. The lower one is metro map. Yea, there lots of lines. There are different railway companies as well. It is cheaper to pick just one for a single ride, because it's one entrance and one exit this way. You are charged when you change railway companies. When you use apps like Apple or Google maps for directions, they suggest cheapest and fastest options mixed, so double-check.</p>
+  <p>The next change. There are two schemes on the column. The stations on the upper one have hieroglyphic, latin and symbolic names. The lower one is metro map. Yeah, there are lots of lines. There are different railway companies as well. It is cheaper to pick just one for a single ride, because it's one entrance and one exit this way. You are charged when you change railway companies. When you use apps like Apple or Google maps for directions, they suggest cheapest and fastest options mixed, so double-check.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3871.jpg'])
 
@@ -568,7 +568,7 @@
 @ru
   <p>На улице. Да, первые деньки зонт был весьма актуален.</p>
 @en
-  <p>The weather outside. Yea, it was really important to have an umbrella for the first few days of the trip.</p>
+  <p>The weather outside. Yeah, it was really important to have an umbrella for the first few days of the trip.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3985.jpg'])
 

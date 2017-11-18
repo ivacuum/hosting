@@ -369,7 +369,7 @@
 @endru
 <ul class="list-unstyled">
   <li>— CTO. Chief Technical..</li>
-  <li>— Officer, yea</li>
+  <li>— Officer, yeah</li>
   <li>— Where? Gazprom?</li>
 </ul>
 @endsection
