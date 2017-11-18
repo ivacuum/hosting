@@ -32,7 +32,7 @@
 @ru
   <p>Ребята играют в настолку.</p>
 @en
-  <p>The guys play a board game.</p>
+  <p>Guys play a board game.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7539.jpg'])
 
@@ -201,7 +201,7 @@
 @ru
   <p>Таблица умножения. Тут без сюрпризов.</p>
 @en
-  <p>Multiplication table. Nothing special here.</p>
+  <p>Multiplication table. Nothing surprising here.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7590.jpg'])
 
@@ -282,7 +282,7 @@
 @ru
   <p>Новинки проката.</p>
 @en
-  <p>New movies.</p>
+  <p>Posters.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7615.jpg'])
 
@@ -324,11 +324,15 @@
 
 @ru
   <p>Есть смысл обращать внимание на информацию на спинке кресла. Здесь информация, что можно регулировать высоту подголовника.</p>
+@en
+  <p>It makes sense to pay attention to the info on the seat's back. It says that the height of the headrest is adjustable.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7318.jpg'])
 
 @ru
   <p>Виды из окна.</p>
+@en
+  <p>Sceneries outside the window.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_7334.jpg',
@@ -339,6 +343,8 @@
 
 @ru
   <p>Пешеходный светофор. Нет, он не показывает 11. Деления исчезают сверху вниз. Когда все погаснут, то загорится зеленый.</p>
+@en
+  <p>Pedestrian signal. No, it doesn't show 11. Bars disappear from top to bottom. It's green when the last one is gone.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7362.jpg'])
 
@@ -352,7 +358,7 @@
 @ru
   <p>Почтовый ящик, велосипедист, гидрант, уже знакомый светофор, дорожные маршруты на столбе.</p>
 @en
-  <p>Postbox, cyclist, hydrant, already familiar traffic light, road routes on the pillar.</p>
+  <p>Postbox, cyclist, hydrant, already familiar pedestrian signal, road routes on the pillar.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7368.jpg'])
 
@@ -398,21 +404,29 @@
 
 @ru
   <p>Окошко на входе в один из музеев.</p>
+@en
+  <p>Window at the entrance to the one of the museums.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7642.jpg'])
 
 @ru
-  <p>Солнечный вид на улицу.</p>
+  <p>Солнечный вид на двор.</p>
+@en
+  <p>Sunny view of the yard.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7645.jpg'])
 
 @ru
   <p>Во время ежегодного фестиваля такие штуки катают по городу.</p>
+@en
+  <p>Things like this are part of the annual festival here.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7653.jpg'])
 
 @ru
   <p>Возможно, этот щит подсказывает, что тут проходит ее маршрут.</p>
+@en
+  <p>Perhaps this icon means that thing goes through this street during the festival.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7689.jpg'])
 
@@ -440,49 +454,63 @@
 @ru
   <p>Разменник денег.</p>
 @en
-  <p>I like to withdraw from the ATM like $95 to get lots of small bills. It's redundant in Japan with such a machine.</p>
+  <p>I like to withdraw from an ATM like $95 to get lots of small bills. It's redundant in Japan with such a machine.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7693.jpg'])
 
 @ru
   <p>Какой можно ожидать унитаз в туалете с «советским» интерьером?</p>
+@en
+  <p>What kind of toilet do you expect to see in a room with a USSR style interior?</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7694.jpg'])
 
 @ru
   <p>Конечно, самый современный! Воткнутый в розетку и с кучей кнопок. Некоторые люди сравнивают его панель управления с таковой у космического корабля. На самом деле полезно изучить его возможности и потом ими пользоваться. Кстати, розетки во всей стране американские <a class="link" href="http://www.iec.ch/worldplugs/typeA.htm">типа A</a> и <a class="link" href="http://www.iec.ch/worldplugs/typeB.htm">типа B</a>.</p>
+@en
+  <p>The modern one indeed! Plugged into a power outlet and with many buttons. Some people compare the amount of buttons with a starship. Anyway, it makes sense to get used to them. It proves useful later on. By the way, power outlets are <a class="link" href="http://www.iec.ch/worldplugs/typeA.htm">type A</a> and <a class="link" href="http://www.iec.ch/worldplugs/typeB.htm">type B</a> throughout the country.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7695.jpg'])
 
 @ru
   <p>Снаружи узнается традиционное японское жилье. Повсюду практикуется заселение не ранее 15:00 и выселение не позднее 10:00. Исключения возможны, но редки. Поздно просыпаться в этой стране не особо вариант.</p>
+@en
+  <p>Recognizable traditional Japanese houses. Usually check-in at hotels is after 15:00 and check-out is before 10:00. Exceptions are rare. Wrong country to sleep till noon or so.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7364.jpg'])
 
 @ru
   <p>Внутри жилья.</p>
+@en
+  <p>Inside the inn called ryokan.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7696.jpg'])
 
 @ru
   <p>Длинный умывальник на всех.</p>
+@en
+  <p>Long washbasin for everyone.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7697.jpg'])
 
 @ru
   <p>Отдельно краны с кипятком и ледяной водой. Без тазика для смешивания не обойтись.</p>
+@en
+  <p>Separate taps for <s>hot</s> scalding and <s>cold</s> icy water. Basin FTW!</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7734.jpg'])
 
 @ru
   <p>По телевизору боевик «<a class="link" href="https://www.kinopoisk.ru/film/4053/">В осаде</a>» на английском с субтитрами.</p>
+@en
+  <p>"Under siege" the movie is broadcasted on the TV in English with Japanese subtitles.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7698.jpg'])
 
 @ru
-  <p>Ограждения.</p>
+  <p>Ограждение.</p>
 @en
-  <p>Cute guard rails.</p>
+  <p>Cute guard rail.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7735.jpg'])
 
@@ -508,9 +536,9 @@
 ]])
 
 @ru
-  <p>Поезда.</p>
+  <p>Локомотивы.</p>
 @en
-  <p>Trains.</p>
+  <p>Locomotives.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_7737.jpg',
@@ -520,6 +548,8 @@
 
 @ru
   <p>Парковка для конусов, парковка для зонтов, вход в дом, парковка для велосипедов. Надпись AED подсказывает, что внутри есть дефибриллятор.</p>
+@en
+  <p>Cone parking, umbrella stand, entrance to the building, bicycle parking. AED sticker means there is a defibrillator inside.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7740.jpg'])
 @endsection
