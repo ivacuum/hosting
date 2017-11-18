@@ -158,7 +158,7 @@
 @ru
   <p>Бесчетное количество мест для прогулок.</p>
 @en
-  <p>Countless of places for a walk.</p>
+  <p>Countless places for a walk.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2109.jpg',

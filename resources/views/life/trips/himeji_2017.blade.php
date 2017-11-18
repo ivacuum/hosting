@@ -260,7 +260,7 @@
 @ru
   <p><a class="link" href="https://www.endomondo.com/users/6097438/workouts/903205508">Трек движения</a> поезда из Нагои в Киото. 130 км за полчаса! По графику видно, что большую часть пути поезд идет 284 км/ч. Для записи маршрута лучше всего во всех видах транспорта садиться у окна, чтобы лучше ловило сигнал. В проходе часто он пропадает. В поезде удобно оставлять телефон на подоконнике.</p>
 @en
-  <p><a class="link" href="https://www.endomondo.com/users/6097438/workouts/903205508">Route of a train</a> from Nagoya to Kyoto. 130 km (80 miles) in just half an hour! Chart shows most the time it keeps the speed of 284 kmh (176 mph). It's better to sit near the window in any transport if you want to record your own route, because GPS signal is much stronger there. It also convenient to leave a phone on windowsill.</p>
+  <p><a class="link" href="https://www.endomondo.com/users/6097438/workouts/903205508">Route of the ride</a> on the train from Nagoya to Kyoto. 130 km (80 miles) in just half an hour! Chart shows most the time it keeps the speed of 284 kmh (176 mph). It's better to sit near the window in any transport if you want to record your own route, because GPS signal is much stronger there. It also convenient to leave a phone on windowsill.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4498.jpg'])
 @endsection

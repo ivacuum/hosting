@@ -39,7 +39,7 @@
 @ru
   <p>Ближе к закату включается подсветка.</p>
 @en
-  <p>Backlights turn on around sunset.</p>
+  <p>Backlights turn on at sunset.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8769.jpg'])
 
@@ -60,7 +60,7 @@
 @ru
   <p>Парк.</p>
 @en
-  <p>Park.</p>
+  <p>Beautiful park.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8210.jpg',
