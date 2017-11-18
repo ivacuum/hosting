@@ -145,11 +145,15 @@
 
 @ru
   <p>Выделяющегося вида трейлеры, которые ездят конвоем из трех машин.</p>
+@en
+  <p>Convoy of three trailers stands out on the street.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8376.jpg'])
 
 @ru
   <p>Люди в костюмах, коих в час пик не счесть, особенно в общественном транспорте.</p>
+@en
+  <p>Countless number of people in suits. Especially at rush hours and in public transport.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8380.jpg',
@@ -202,16 +206,22 @@
 
 @ru
   <p>Тротуар вперед.</p>
+@en
+  <p>Sidewalk forward.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8407.jpg'])
 
 @ru
   <p>Тротуар назад.</p>
+@en
+  <p>Sidewalk backward.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8408.jpg'])
 
 @ru
   <p>Да тут самолет посадить можно.</p>
+@en
+  <p>You can land an aircraft here!</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8412.jpg'])
 
@@ -251,6 +261,8 @@
 
 @ru
   <p>Билет. В этот раз повезло с бесплатным входом, а вообще лучше откладывать тысячу-две иен на это дело каждый день.</p>
+@en
+  <p>Admission ticket. Lucky enough to get it for free this day. But it's better to save ¥1000–2000 yen for entrance fees everyday.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8490.jpg'])
 
@@ -267,6 +279,8 @@
 
 @ru
   <p>Хитрое приспособление для подъема тяжестей по лестнице.</p>
+@en
+  <p>Interesting thing to lift the weights up the stairs.</p>
 @endru
 <youtube title="Tokyo Stairs Helper, April 2017" v="m0wfg_86-vM"></youtube>
 
@@ -286,6 +300,8 @@
 
 @ru
   <p>Высотка днем и вечером.</p>
+@en
+  <p>Skyscraper at day and at night.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8515.jpg',
@@ -294,11 +310,15 @@
 
 @ru
   <p>Что знакомое видно?</p>
+@en
+  <p>Cheburashka and Gena are here!</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8517.jpg'])
 
 @ru
   <p>Пейзажи при движении на велосипеде. <a class="link" href="https://www.endomondo.com/users/6097438/workouts/908025569">Трек маршрута</a>. После Европы больше всего радует отсутствие грязных граффити на фасадах.</p>
+@en
+  <p>Sceneries as seen while cycling. <a class="link" href="https://www.endomondo.com/users/6097438/workouts/908025569">Track of the ride</a>. The most pleasant thing after Europe is lack of dirty graffiti on buildings.</p>
 @endru
 <youtube title="Tokyo Cycling, April 2017" v="j4kscRTpkr0"></youtube>
 <youtube title="Tokyo Cycling 2, April 2017" v="M-Ar1Wc0lxg"></youtube>
@@ -334,16 +354,22 @@
 
 @ru
   <p>Иногда потоки четко разделены.</p>
+@en
+  <p>Separated ways for pedestrians and cyclists.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8577.jpg'])
 
 @ru
   <p>Иногда велодорожка перемещается с тротуара на дорогу.</p>
+@en
+  <p>Sometimes cycle lane shifts from sidewalk to the road.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8582.jpg'])
 
 @ru
   <p>В один из моментов на улице объявились два регулировщика и перекрыли для заезда грузовика тротуар и часть дороги.</p>
+@en
+  <p>At some point two traffic guards have appeared and closed the sidewalk and part of the road for one minute to make sure the truck can get to the construction site.</p>
 @endru
 <youtube title="Tokyo Traffic Guard, April 2017" v="S0mBz_2F8B8"></youtube>
 
@@ -363,6 +389,8 @@
 
 @ru
   <p>Парковка под крышей.</p>
+@en
+  <p>Parking is covered with roof.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8554.jpg'])
 
@@ -399,51 +427,71 @@
 
 @ru
   <p>В такие моменты ощущение, что забрался на вершину мира.</p>
+@en
+  <p>At high places like this it feels like you are at the top of the world.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8642.jpg'])
 
 @ru
   <p>Средство передвижения.</p>
+@en
+  <p>Vehicle.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8644.jpg'])
 
 @ru
   <p>А вокруг.</p>
+@en
+  <p>What's around.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8643.jpg'])
 
 @ru
   <p>Какой парк без цивилизованного туалета?</p>
+@en
+  <p>What a park without a toilet? Well, usually Russian park.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8645.jpg'])
 
 @ru
   <p>Схема туалета на железнодорожной станции. Тип «дырка в полу» — традиционный японский, а унитаз — европейский. Женский туалет заметно больше мужского, и это правильно. На удивление в женском туалете имеется один писсуар.</p>
+@en
+  <p>Toilet plan at the station. There are both Western-style porcelain thrones for sitting and floor-level units for squatting. Female room is the biggest one, and that's the sign of a good design. For some reason there is one urinal in female room.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8198.jpg'])
 
 @ru
   <p>Просьба кидать бумагу в унитаз.</p>
+@en
+  <p>Request to flush the used toilet paper, not to throw it to the trashcan.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8370.jpg'])
 
 @ru
   <p>Приборная панель унитаза. Даже показано отличие спрея от биде. Туалеты по всей стране бесплатные. Даже во всех продуктовых магазинах они есть и доступны всем желающим.</p>
+@en
+  <p>Control panel of the washlet. Even the difference between spray and bidet is shown. Toilets are free in Japan. There is at least one WC with free access in every convenience store and at every station.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8667.jpg'])
 
 @ru
   <p>Источник грязи на наших улицах — земля. Автомобили растаскивают ее на ура.</p>
+@en
+  <p>Source of the dirt on our streets is soil. Cars carry it all around with ease.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8651.jpg'])
 
 @ru
   <p>Велосипеды встречаются куда чаще мотоциклов и скутеров.</p>
+@en
+  <p>Bicycles are more often to see than motorcycles and scooters.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8652.jpg'])
 
 @ru
   <p>Кому нужен надземный переход? Мало кому.</p>
+@en
+  <p>Really, who needs a foodbridge? Very few people want to use it.</p>
 @endru
 <youtube title="Tokyo, Who Needs Footbridge, April 2017" v="m5y5PNHKwLQ"></youtube>
 @include('tpl.pic-2x', ['pic' => 'IMG_8653.jpg'])
@@ -486,7 +534,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_8664.jpg'])
 
 @ru
-  <p>Интервалы разделяет волнистая линия, а не тире. Время работы до двух часов ночи записывают как 26:00.</p>
+  <p>Интервалы разделяет волнистая линия, а не тире. Время работы до двух часов ночи записывают как 26:00. Если вы только начинаете в два часа ночи, то тогда это остается 02:00.</p>
+@en
+  <p>Time intervals are written with ~ instead of –. Working hours past midnight like till 02:00 are written as 26:00. It's 02:00 if you start at 02:00.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8666.jpg'])
 
@@ -512,11 +562,15 @@
 
 @ru
   <p><a class="link" href="japanese">Иероглифы</a> слоговой азбуки.</p>
+@en
+  <p>Syllabary.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8720.jpg'])
 
 @ru
   <p>Регулярно в нагрузку к журналу что-то прилагается. К женскому журналу может быть какой-нибудь пробник. Книги и журналы в нашем понимании листаются с конца — справа налево.</p>
+@en
+  <p>Magazines are usually sold with something inside like perfume sampler, compact disc or whatever. Magazines are read from right to left. Feels like from the end to the start.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8722.jpg'])
 
@@ -543,6 +597,8 @@
 
 @ru
   <p>Весь полет в Москву проходил примерно в обеденное время — обычная картина при полетах на запад, что самолет за час пролетает один часовой пояс. Тонировка стекол работает на ура — в любое время суток можно устроить ночь.</p>
+@en
+  <p>Whole flight back to Moscow is like at noon—usual thing with west destinations. You fly 1 timezone per hour or so. Thanks to the window dimming, night feeling can be made at anytime.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8778.jpg'])
 @endsection
