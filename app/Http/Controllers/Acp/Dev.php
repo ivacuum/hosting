@@ -28,7 +28,13 @@ class Dev extends BaseController
         $lines = collect();
 
         $country = [];
-        $connection = $ip = $request_method = $request_uri = null;
+        $bots = $connection = $ip = $request_method = $request_uri = null;
+
+        if (str_contains($q, 'bots=no')) {
+            $bots = false;
+        } elseif (str_contains($q, 'bots=only')) {
+            $bots = true;
+        }
 
         if (str_contains($q, 'connection=')) {
             if (preg_match("/connection=([^ ]+)/", $q, $match)) {
@@ -80,6 +86,22 @@ class Dev extends BaseController
 
                 $found = false;
                 $proper = true;
+
+                if ($bots === true) {
+                    if (preg_match('/(bot|spider|google|crawler|yahoo)\//i', $json->user_agent)) {
+                        $found = true;
+                        $proper &= true;
+                    } else {
+                        $proper &= false;
+                    }
+                } elseif ($bots === false) {
+                    if (!preg_match('/(bot|spider|google|crawler|yahoo)\//i', $json->user_agent)) {
+                        $found = true;
+                        $proper &= true;
+                    } else {
+                        $proper &= false;
+                    }
+                }
 
                 if ($connection) {
                     if ($connection === $json->connection) {
