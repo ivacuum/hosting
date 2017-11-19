@@ -1,6 +1,9 @@
 @extends('acp.dev.base')
 
 @section('content')
+<p>
+  <a class="btn btn-default btn-xs" href="{{ UrlHelper::filter(['hide_finished' => 1]) }}">Скрыть переведенные</a>
+</p>
 <table class="table-stats table-adaptive">
   <thead>
     <tr>

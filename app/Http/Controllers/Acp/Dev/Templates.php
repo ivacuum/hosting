@@ -7,6 +7,9 @@ class Templates extends BaseController
 {
     public function index()
     {
+        $filter = request('filter');
+        $hide_finished = request('hide_finished', 0);
+
         $templates = collect();
         $total = (object) ['pics' => 0];
         $langs = config('cfg.locales');
@@ -16,18 +19,26 @@ class Templates extends BaseController
         }
 
         foreach (Trip::templatesIterator() as $template) {
-            $contents = $template->getContents();
+            if (!preg_match("/^{$filter}/", $template->getBasename('.blade.php'))) {
+                continue;
+            }
 
-            $pics = preg_match_all('/\.jpg/', $contents);
-            $total->pics += $pics;
+            $contents = $template->getContents();
 
             $i18n = collect($langs)->keys()->flip()->map(function ($value, $key) use ($contents, $total) {
                 return substr_count($contents, "@{$key}\n");
             })->all();
 
+            if ($hide_finished && $i18n['ru'] == $i18n['en']) {
+                continue;
+            }
+
             foreach ($langs as $lang => $ary) {
                 $total->{$lang} += $i18n[$lang];
             }
+
+            $pics = preg_match_all('/\.jpg/', $contents);
+            $total->pics += $pics;
 
             $templates->push((object) [
                 'name' => $template->getBasename('.blade.php'),
@@ -47,6 +58,8 @@ class Templates extends BaseController
 
         $trip = Trip::inRandomOrder()->first();
         $trip->slug = $slug;
+        $trip->meta_title_en = $slug;
+        $trip->meta_title_ru = $slug;
 
         if (request('images')) {
             $tpl = str_replace('.', '/', $trip->template());
