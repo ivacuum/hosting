@@ -505,31 +505,43 @@
 
 @ru
   <p>Доехать запланированным маршрутом до точки назначения не вышло. После экстренного торможения состава было объявление на японском и английском. Судя по обстановке в вагоне, это была рядовая ситуация. Дальнейшие объявления были только на японском.</p>
+@en
+  <p>Couldn't follow my initial route because of emergency braking. There was an announcement in Japanese and English after it. I saw nothing special in people behavior like it's a usual thing to happen. All following announcements were in Japanese only, so (sadly) nothing to understand.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8655.jpg'])
 
 @ru
   <p>Стояли минут десять. Тронулись и доехали до следующей станции. Там половина людей вовсе вышла со станции, а другая половина перешла на соседний путь.</p>
+@en
+  <p>It was like ten minutes stop in the middle of the track. Then we got to the next station. All people left the train, half of them left the station as well, the other half moved to the next track.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8657.jpg'])
 
 @ru
   <p>Подъехал некий экспресс, двери открылись только в его хвостовой части. В Японии неважно на чем ты доехал, важно лишь где зашел и где вышел. Решил доехать до следующей остановки и по совместительству до самого крупного пересадочного узла — станции Синдзюку.</p>
+@en
+  <p>Some sort of an express train arrived. Doors opened only in its rear cars. In Japan it doesn't matter what train and what route you used to get to your destination. The only things that matters are enter and exit stations. So I decided to take this train to the next station called Shinjuku, which is also the biggest connecting hub for rail traffic in Tokyo.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8658.jpg'])
 
 @ru
   <p>Здесь было решено выйти и осмотреться, поискать причину экстренного торможения. В итоге попался экран, на котором объяснялось, что задержки на части линий вызваны сильным ветром, а именно на этой линии по причине препятствия в путях. Во время землетрясений и вовсе все железнодорожное сообщение останавливается.</p>
+@en
+  <p>Time to look around and find the reason of emergency braking. Looks like some trees fell on the tracks. By the way, all trains stop during an earthquake.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8662.jpg'])
 
 @ru
   <p>Со станции Синдзюку на улицу можно выйти более чем в ста местах. На дороге пробка. Ощущалось, что из-за ветра случился транспортный коллапс. Но нет, часы показывали около 18:00 — обычный час пик и обычная загруженная станция.</p>
+@en
+  <p>There are about one hundred exit points from Shinjuku station. There is a traffic jam on the road. It felt like it was traffic collapse because of strong wind. But no, it was just 18:00 (peak hour) and extremely big and crowded station.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8663.jpg'])
 
 @ru
   <p>Людей действительно много. После использования транспортной карты на турникете, она делает пик. Здесь же эти пики не прекращаются чуть ли не на секунду. В итоге до пункта назначения удалось добраться на метро, так как оно глубоко под землей, а железнодорожные линии компании JR, которой изначально планировалось доехать, располагаются в основном над землей.</p>
+@en
+  <p>There were a lot of people for real. Suica card makes a beep after using at the gate. Mostly, these beeps didn't stop even for a second there. So I was able to get to my destination point on metro. It lays deeply under the ground, so no trees to fall on the tracks like on JR lines above the ground.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8664.jpg'])
 
@@ -557,6 +569,8 @@
 
 @ru
   <p>Кайф, когда открываешь йогурт, а этикетка не измазана.</p>
+@en
+  <p>It's a pleasure to open a yogurt and see its lid clean.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8702.jpg'])
 
