@@ -9,8 +9,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="x-pjax-version" content="2">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="keywords" content="{{ $meta_keywords ?? '' }}">
-  <meta name="description" content="{{ $meta_description ?? '' }}">
+  <meta name="keywords" content="{{ ViewHelper::metaKeywords($meta_keywords ?? '', $view) }}">
+  <meta name="description" content="{{ ViewHelper::metaDescription($meta_description ?? '', $view) }}">
   <meta name="theme-color" content="#e7e7e7">
   <link rel="apple-touch-icon-precomposed" href="https://life.ivacuum.ru/apple-touch-icon-precomposed.png">
   <link rel="icon" href="https://life.ivacuum.ru/apple-touch-icon.png">
