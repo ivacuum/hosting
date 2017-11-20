@@ -75,11 +75,11 @@ class Dev extends BaseController
                     continue;
                 }
 
-                if (!$q) {
-                    if ($json->ip === '77.244.79.214') {
-                        continue;
-                    }
+                if (!$ip && $json->ip === '77.244.79.214') {
+                    continue;
+                }
 
+                if (!$q) {
                     $lines->push($json);
                     continue;
                 }
@@ -88,14 +88,14 @@ class Dev extends BaseController
                 $proper = true;
 
                 if ($bots === true) {
-                    if (preg_match('/(bot|spider|google|crawler|yahoo)\//i', $json->user_agent)) {
+                    if (preg_match('/(bot|spider|google|crawler|yahoo)/i', $json->user_agent)) {
                         $found = true;
                         $proper &= true;
                     } else {
                         $proper &= false;
                     }
                 } elseif ($bots === false) {
-                    if (!preg_match('/(bot|spider|google|crawler|yahoo)\//i', $json->user_agent)) {
+                    if (!preg_match('/(bot|spider|google|crawler|yahoo)/i', $json->user_agent)) {
                         $found = true;
                         $proper &= true;
                     } else {
