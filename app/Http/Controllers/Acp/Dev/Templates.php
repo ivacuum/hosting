@@ -19,7 +19,7 @@ class Templates extends BaseController
         }
 
         foreach (Trip::templatesIterator() as $template) {
-            if (!preg_match("/^{$filter}/", $template->getBasename('.blade.php'))) {
+            if (!preg_match("/{$filter}/", $template->getBasename('.blade.php'))) {
                 continue;
             }
 
