@@ -24,7 +24,7 @@
   </thead>
   <tfoot>
     <tr>
-      <td><strong>Итого:</strong></td>
+      <td><strong>Итого: {{ sizeof($templates) }}</strong></td>
       <td class="text-right">{{ ViewHelper::number($total->pics) }}</td>
       @foreach (config('cfg.locales') as $key => $value)
         <td class="text-right">{{ ViewHelper::number($total->{$key}) }}</td>
