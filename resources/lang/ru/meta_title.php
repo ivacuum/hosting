@@ -24,6 +24,8 @@ return [
     'dcpp.shakespeer' => 'Скачать ShakesPeer 0.9.2 для macOS',
     'dcpp.strongdc_install' => 'Инструкция по установке и настройке StrongDC++',
 
+    'home.index' => 'Сергей Панков &middot; vacuum.kaluga',
+
     'retracker.dev' => 'О разработке ретрекера',
     'retracker.usage' => 'Как использовать ретрекер',
 

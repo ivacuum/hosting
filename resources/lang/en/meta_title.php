@@ -12,6 +12,8 @@ return [
     'dcpp.greylinkdc' => 'Download GreyLinkDC++ 0.49',
     'dcpp.shakespeer' => 'Download ShakesPeer 0.9.2 for macOS',
 
+    'home.index' => 'Sergey Pankov &middot; vacuum.kaluga',
+
     'retracker.dev' => 'About retracker development',
     'retracker.usage' => 'How to use retracker',
 ];
