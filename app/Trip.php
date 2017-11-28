@@ -287,11 +287,11 @@ class Trip extends Model
         return $this->monthName($this->date_start->month) . ($year ? " {$this->date_start->year}" : '');
     }
 
-    public function www(): string
+    public function www(?string $anchor = null): string
     {
         return $this->user_id === 1
-            ? path('Life@page', $this->slug)
-            : path('UserTravelTrips@show', [$this->user->login, $this->slug]);
+            ? path('Life@page', $this->slug).$anchor
+            : path('UserTravelTrips@show', [$this->user->login, $this->slug]).$anchor;
     }
 
     /**

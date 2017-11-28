@@ -123,6 +123,8 @@ Route::get('torrents/my', 'Torrents@my')->middleware('auth');
 Route::get('torrents/{torrent}', 'Torrents@show');
 Route::post('torrents/{torrent}/magnet', 'Torrents@magnet');
 
+Route::get('trips/{trip}', 'Trips@show');
+
 Route::get('users', 'Users@index');
 Route::get('users/{id}', 'Users@show');
 
