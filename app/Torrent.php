@@ -105,9 +105,9 @@ class Torrent extends Model
         return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode(str_limit($this->title, 100, ''));
     }
 
-    public function www(): string
+    public function www(?string $anchor = null): string
     {
-        return path('Torrents@show', $this->id);
+        return path('Torrents@show', $this->id).$anchor;
     }
 
     // Static methods
