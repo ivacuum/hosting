@@ -66,13 +66,15 @@
     </li>
   </ul>
 </li>
-<li>
-  <form class="navbar-form px-0">
-    <a class="btn btn-success" href="{{ path('Torrents@index') }}">
-      {{ trans('torrents.index') }}
-    </a>
-  </form>
-</li>
+@ru
+  <li>
+    <form class="navbar-form px-0">
+      <a class="btn btn-success" href="{{ path('Torrents@index') }}">
+        {{ trans('torrents.index') }}
+      </a>
+    </form>
+  </li>
+@endru
 @endsection
 
 @section('header_user')
