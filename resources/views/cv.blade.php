@@ -353,7 +353,7 @@ a:hover {
       </h4>
       <h4 class="my-info">
         Телеграм
-        <span><a href="https://telegram.me/vacuum">vacuum</a></span>
+        <span><a href="https://t.me/vacuum">vacuum</a></span>
       </h4>
     </div>
   </div>
