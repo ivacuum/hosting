@@ -139,7 +139,7 @@
 <script src="/assets/jquery.scrollto.js"></script>
 <script src="/assets/autosize.js?4.0.0"></script>
 <script src="/assets/bootstrap.js"></script>
-<script src="/assets/vue.js?2.5.9"></script>
+<script src="/assets/vue.js?2.5.10"></script>
 <script src="/assets/axios.js?0.17.1"></script>
 @if (!empty($websockets))
   <script src="/assets/socket.io.js?2.0.4"></script>
