@@ -16,7 +16,7 @@
     <p><img src="https://img.ivacuum.ru/g/100710/1_I1jXoj2RI3.png" width="619" height="116"></p>
   </li>
   <li>
-    <p>нажать <img src="http://ivacuum.org/i/_/mouse_select_right.png" width="16" height="16"> в пространстве окошка со списком трекеров и выбрать «Добавить трекер»:</p>
+    <p>нажать <img src="https://ivacuum.org/i/_/mouse_select_right.png" width="16" height="16"> в пространстве окошка со списком трекеров и выбрать «Добавить трекер»:</p>
     <p><img src="https://img.ivacuum.ru/g/100710/1_g5STffKBb4.png" width="236" height="146"></p>
   </li>
   <li>
