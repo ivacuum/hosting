@@ -35,7 +35,7 @@
     @endif
     <li class="hidden-xs">
       Топ 10
-      <input class="form-control d-inline-block" name="slug" value="{{ $vkpage }}" style="width: 8em;">
+      <input class="form-control d-inline-block" name="slug" value="{{ $vkpage }}" style="width: 8em;" autocapitalize="none">
       за {{ $date->formatLocalized('%e %B') }}
       @if ($date->year !== now()->year)
         {{ $date->year }}
