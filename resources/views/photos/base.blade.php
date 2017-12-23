@@ -1,8 +1,8 @@
 @extends('base')
 
 @section('content_header')
-<div class="nav-link-tabs-fader">
-  <ul class="nav nav-link-tabs mb-3">
+<div class="nav-link-tabs-fader mt--3">
+  <ul class="nav nav-link-tabs nav-link-tabs-border mb-3">
     <li class="{{ $view === 'photos.index' ? 'active' : '' }}">
       <a href="{{ path('Photos@index') }}">{{ trans('photos.new') }}</a>
     </li>

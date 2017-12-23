@@ -3,25 +3,27 @@
 ])
 
 @section('content')
-<ul class="nav nav-link-tabs">
-  <li class="{{ $vkpage == 'pn6' ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => 'pn6']) }}">#6</a>
-  </li>
-  <li class="{{ $vkpage == 'overhear' ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => 'overhear']) }}">Подслушано</a>
-  </li>
-  {{--
-  <li class="{{ $vkpage == 'leprum' ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => 'leprum']) }}">Лепра</a>
-  </li>
-  --}}
-  <li class="{{ $vkpage == 'pikabu' ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => 'pikabu']) }}">Пикабу</a>
-  </li>
-  <li class="{{ $vkpage == 'decaying_europe' ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => 'decaying_europe']) }}">Запад</a>
-  </li>
-</ul>
+<nav class="nav-link-tabs-fader mt--3">
+  <ul class="nav nav-link-tabs nav-link-tabs-border">
+    <li class="{{ $vkpage == 'pn6' ? 'active' : '' }}">
+      <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => 'pn6']) }}">#6</a>
+    </li>
+    <li class="{{ $vkpage == 'overhear' ? 'active' : '' }}">
+      <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => 'overhear']) }}">Подслушано</a>
+    </li>
+    {{--
+    <li class="{{ $vkpage == 'leprum' ? 'active' : '' }}">
+      <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => 'leprum']) }}">Лепра</a>
+    </li>
+    --}}
+    <li class="{{ $vkpage == 'pikabu' ? 'active' : '' }}">
+      <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => 'pikabu']) }}">Пикабу</a>
+    </li>
+    <li class="{{ $vkpage == 'decaying_europe' ? 'active' : '' }}">
+      <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => 'decaying_europe']) }}">Запад</a>
+    </li>
+  </ul>
+</nav>
 
 <form action="{{ path('ParserVk@indexPost') }}" method="post">
   <ul class="pager">

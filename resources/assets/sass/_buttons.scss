@@ -18,3 +18,9 @@
   &:focus,
   &:hover { color: #fff; }
 }
+
+.btn-right-addon {
+  margin-left: -1px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
