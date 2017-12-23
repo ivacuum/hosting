@@ -53,7 +53,6 @@ class RtoUpdate extends Command
                 }
 
                 $torrent->title = $json->topic_title;
-                $torrent->seeders = $json->seeders;
 
                 if ($json->info_hash !== $torrent->info_hash) {
                     $torrent->size = $json->size;

@@ -15,7 +15,6 @@ class CreateTorrentsTable extends Migration
             $table->string('title');
             $table->mediumText('html');
             $table->unsignedBigInteger('size')->default(0);
-            $table->unsignedInteger('seeders')->default(0);
             $table->char('info_hash', 40);
             $table->string('announcer');
             $table->unsignedInteger('clicks')->default(0);

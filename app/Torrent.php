@@ -14,7 +14,6 @@ use Ivacuum\Generic\Traits\SoftDeleteTrait;
  * @property string  $title
  * @property string  $html
  * @property integer $size
- * @property integer $seeders
  * @property string  $info_hash
  * @property string  $announcer
  * @property integer $status

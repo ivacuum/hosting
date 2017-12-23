@@ -141,7 +141,6 @@ class Torrents extends Controller
             'rto_id' => $data['rto_id'],
             'clicks' => 0,
             'status' => Torrent::STATUS_PUBLISHED,
-            'seeders' => $data['seeders'],
             'user_id' => request()->user()->id,
             'info_hash' => $data['info_hash'],
             'announcer' => $data['announcer'],

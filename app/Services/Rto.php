@@ -139,7 +139,6 @@ class Rto
             'size' => $json->size,
             'title' => $json->topic_title,
             'rto_id' => $topic_id,
-            'seeders' => $json->seeders,
             'reg_time' => $json->reg_time,
             'info_hash' => $json->info_hash,
             'tor_status' => $json->tor_status,

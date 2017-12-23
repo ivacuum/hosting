@@ -49,7 +49,6 @@ class Torrents extends Controller
             'html' => $data['body'],
             'size' => $data['size'],
             'title' => $data['title'],
-            'seeders' => $data['seeders'],
             'info_hash' => $data['info_hash'],
             'announcer' => $data['announcer'],
             'registered_at' => $registered_at,
