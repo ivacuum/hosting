@@ -580,16 +580,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "0.9.7",
+            "version": "0.9.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "d9f959503da4a8c939a618dc3c0b9bed3adf90a1"
+                "reference": "0395c19dcc2dc5ec2757db729d079defb0207180"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/d9f959503da4a8c939a618dc3c0b9bed3adf90a1",
-                "reference": "d9f959503da4a8c939a618dc3c0b9bed3adf90a1",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/0395c19dcc2dc5ec2757db729d079defb0207180",
+                "reference": "0395c19dcc2dc5ec2757db729d079defb0207180",
                 "shasum": ""
             },
             "require": {
@@ -639,7 +639,7 @@
                     "email": "vacuum@ivacuum.ru"
                 }
             ],
-            "time": "2017-11-20T11:01:48+00:00"
+            "time": "2017-12-20T15:58:23+00:00"
         },
         {
             "name": "laravel/framework",
@@ -4001,16 +4001,16 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "1174d9018191e93cb9d719edec01257fc05f8158"
+                "reference": "b11c729f95109b56a0fe9650c6a63a0fcd8c439f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/1174d9018191e93cb9d719edec01257fc05f8158",
-                "reference": "1174d9018191e93cb9d719edec01257fc05f8158",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/b11c729f95109b56a0fe9650c6a63a0fcd8c439f",
+                "reference": "b11c729f95109b56a0fe9650c6a63a0fcd8c439f",
                 "shasum": ""
             },
             "require": {
@@ -4061,7 +4061,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2017-11-03T07:16:52+00:00"
+            "time": "2017-12-22T14:50:35+00:00"
         },
         {
             "name": "sebastian/diff",
