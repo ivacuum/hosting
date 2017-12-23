@@ -1,7 +1,7 @@
 @extends('acp.list')
 
 @section('heading-after-search')
-@include('tpl.dropdown-filter', [
+@include('acp.tpl.dropdown-filter', [
   'field' => 'filter',
   'values' => [
     'Все' => null,

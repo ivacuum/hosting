@@ -4,7 +4,7 @@
 ])
 
 @section('heading-after-search')
-@include('tpl.dropdown-filter', [
+@include('acp.tpl.dropdown-filter', [
   'field' => 'filter',
   'values' => [
     'На мониторинге' => null,
