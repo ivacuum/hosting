@@ -24,6 +24,7 @@
     <th>Текст</th>
     <th></th>
     <th>Дата</th>
+    <th></th>
   </tr>
   </thead>
   <tbody>
@@ -53,6 +54,13 @@
         @endif
       </td>
       <td class="text-nowrap">{{ ViewHelper::dateShort($model->created_at) }}</td>
+      <td>
+        @if ($model->status === App\Comment::STATUS_PUBLISHED)
+          <a href="{{ $model->www() }}">
+            @svg (external-link)
+          </a>
+        @endif
+      </td>
     </tr>
   @endforeach
   </tbody>

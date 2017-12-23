@@ -41,9 +41,9 @@ class AjaxComment extends Controller
             'user_id' => $user_id,
         ]);
 
-        $this->notifyUsersAboutComment($type, $model, $comment);
+        $this->notifyUsersAboutComment($model, $comment);
 
-        return $this->redirectToComment($type, $model, $comment);
+        return $this->redirectToComment($model, $comment);
     }
 
     /**
@@ -65,11 +65,13 @@ class AjaxComment extends Controller
         throw new \Exception('Не выбран объект для комментирования');
     }
 
-    protected function notifyUsersAboutComment(string $type, $model, Comment $comment): bool
+    protected function notifyUsersAboutComment($model, Comment $comment): bool
     {
         event(new \App\Events\Stats\CommentAdded);
 
-        if ($type === 'news') {
+        $type = $model->getMorphClass();
+
+        if ($type === 'News') {
             event(new \App\Events\Stats\NewsCommented);
 
             \Notification::send($comment->usersForNotification($model), new NewsCommented($model, $comment));
@@ -77,7 +79,7 @@ class AjaxComment extends Controller
             return true;
         }
 
-        if ($type === 'trip') {
+        if ($type === 'Trip') {
             event(new \App\Events\Stats\TripCommented);
 
             \Notification::send($comment->usersForNotification($model), new TripCommented($model, $comment));
@@ -85,7 +87,7 @@ class AjaxComment extends Controller
             return true;
         }
 
-        if ($type === 'torrent') {
+        if ($type === 'Torrent') {
             event(new \App\Events\Stats\TorrentCommented);
 
             \Notification::send($comment->usersForNotification($model), new TorrentCommented($model, $comment));
@@ -96,15 +98,10 @@ class AjaxComment extends Controller
         return false;
     }
 
-    protected function redirectToComment(string $type, $model, Comment $comment)
+    protected function redirectToComment($model, Comment $comment)
     {
-        $anchor = "#comment-{$comment->id}";
-        if ($type === 'news') {
-            return redirect(path('News@show', [$model->id, $anchor]));
-        } elseif ($type === 'trip') {
-            return redirect(path('Life@page', [$model->slug, $anchor]));
-        } elseif ($type === 'torrent') {
-            return redirect(path('Torrents@show', [$model->id, $anchor]));
+        if (method_exists($model, 'www')) {
+            return redirect($model->www($comment->anchor()));
         }
 
         return back()->with('message', trans('comments.posted'));

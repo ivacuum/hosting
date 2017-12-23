@@ -53,6 +53,11 @@ class Comment extends Model
     }
 
     // Methods
+    public function anchor()
+    {
+        return "#comment-{$this->id}";
+    }
+
     public function breadcrumb()
     {
         return "#{$this->id}";
@@ -90,5 +95,16 @@ class Comment extends Model
             ->filter(function ($value) {
                 return !is_null($value);
             });
+    }
+
+    public function www(): string
+    {
+        switch ($this->rel_type) {
+            case 'News': return path('News@show', $this->rel_id).$this->anchor();
+            case 'Torrent': return path('Torrents@show', $this->rel_id).$this->anchor();
+            case 'Trip': return path('Trips@show', [$this->rel_id, 'anchor' => $this->anchor()]);
+        }
+
+        return '';
     }
 }
