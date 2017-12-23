@@ -1,23 +1,14 @@
 @extends('acp.list')
 
-@section('toolbar')
-<ul class="nav nav-link-tabs">
-  <li class="{{ is_null($status) ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ UrlHelper::filter(['status' => null]) }}">
-      Все
-    </a>
-  </li>
-  <li class="{{ $status === (string) App\Torrent::STATUS_HIDDEN ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ UrlHelper::filter(['status' => App\Torrent::STATUS_HIDDEN]) }}">
-      Скрытые
-    </a>
-  </li>
-  <li class="{{ $status == App\Torrent::STATUS_DELETED ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ UrlHelper::filter(['status' => App\Torrent::STATUS_DELETED]) }}">
-      Удаленные
-    </a>
-  </li>
-</ul>
+@section('heading-after-search')
+@include('tpl.dropdown-filter', [
+  'field' => 'status',
+  'values' => [
+    'Все' => null,
+    'Скрытые' => App\Torrent::STATUS_HIDDEN,
+    'Удаленные' => App\Torrent::STATUS_DELETED,
+  ]
+])
 @endsection
 
 @section('content-list')

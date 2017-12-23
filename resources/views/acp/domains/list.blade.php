@@ -1,71 +1,60 @@
-@if (sizeof($models))
-<h3>
-  <form class="form-inline">
-    {{ ViewHelper::plural('domains', $models->total()) }}
-    @include('acp.tpl.create')
-    <input name="q" class="form-control" placeholder="Поиск..." value="{{ $q ?? '' }}">
-    <input type="hidden" name="filter" value="{{ $filter ?? '' }}">
-  </form>
-</h3>
-@if (sizeof($models))
-  <table class="table-stats table-adaptive">
-    <thead>
-      <tr>
-        <th><input type="checkbox" class="js-select-all" data-selector=".domains-checkbox"></th>
-        <th>Домен</th>
-        <th>Оплачен до</th>
-        <th>Сервер</th>
-        <th>NS</th>
-        <th>CMS</th>
-      </tr>
-    </thead>
-    <tbody>
-    @foreach ($models as $model)
-      <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-        <td>
-          <input class="domains-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}">
-        </td>
-        <td>
-          <a class="mr-1" href="http://{{ $model->domain }}/" target="_blank">
-            @svg (external-link)
-          </a>
-          <a href="/acp/domains/{{ $model->domain }}">{{ $model->domain }}</a>
-          @if ($model->alias_id)
-            <span class="text-muted">
-              алиас
-              <a href="/acp/domains/{{ $model->alias->domain }}">{{ $model->alias->domain }}</a>
-            </span>
-          @endif
-          @if ($model->text)
-            <span class="label label-default tooltipped tooltipped-n" aria-label="есть заметки">...</span>
-          @endif
-          @if (!$model->domain_control)
-            <span class="label label-info tooltipped tooltipped-n" aria-label="не в нашей панели">?</span>
-          @endif
-          @if ($model->domain_control and $model->isExpired())
-            <span class="label label-danger tooltipped tooltipped-n" aria-label="просрочена оплата">$</span>
-          @endif
-          @if ($model->domain_control and $model->isExpiringSoon())
-            <span class="label label-warning tooltipped tooltipped-n" aria-label="подходит срок оплаты">$</span>
-          @endif
-        </td>
-        <td class="text-muted">
-          <span class="tooltipped tooltipped-n" aria-label="{{ $model->paid_till }}">
-            {{ $model->paid_till->toDateString() }}
+<table class="table-stats table-adaptive">
+  <thead>
+    <tr>
+      <th><input type="checkbox" class="js-select-all" data-selector=".domains-checkbox"></th>
+      <th>Домен</th>
+      <th>Оплачен до</th>
+      <th>Сервер</th>
+      <th>NS</th>
+      <th>CMS</th>
+    </tr>
+  </thead>
+  <tbody>
+  @foreach ($models as $model)
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
+      <td>
+        <input class="domains-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}">
+      </td>
+      <td>
+        <a class="mr-1" href="http://{{ $model->domain }}/" target="_blank">
+          @svg (external-link)
+        </a>
+        <a href="/acp/domains/{{ $model->domain }}">{{ $model->domain }}</a>
+        @if ($model->alias_id)
+          <span class="text-muted">
+            алиас
+            <a href="/acp/domains/{{ $model->alias->domain }}">{{ $model->alias->domain }}</a>
           </span>
-        </td>
-        <td>{!! $model->whatServerIpv4() !!}</td>
-        <td>{{ $model->firstNsServer() }}</td>
-        <td>
-          @if (!$model->isExpired() && ($model->cms_url || ($model->alias_id and $model->alias->cms_url)))
-            @include('acp.domains.cms_login', ['cms_button_class' => 'btn btn-default btn-xs'])
-          @endif
-        </td>
-      </tr>
-    @endforeach
-    </tbody>
-  </table>
-@endif
+        @endif
+        @if ($model->text)
+          <span class="label label-default tooltipped tooltipped-n" aria-label="есть заметки">...</span>
+        @endif
+        @if (!$model->domain_control)
+          <span class="label label-info tooltipped tooltipped-n" aria-label="не в нашей панели">?</span>
+        @endif
+        @if ($model->domain_control and $model->isExpired())
+          <span class="label label-danger tooltipped tooltipped-n" aria-label="просрочена оплата">$</span>
+        @endif
+        @if ($model->domain_control and $model->isExpiringSoon())
+          <span class="label label-warning tooltipped tooltipped-n" aria-label="подходит срок оплаты">$</span>
+        @endif
+      </td>
+      <td class="text-muted">
+        <span class="tooltipped tooltipped-n" aria-label="{{ $model->paid_till }}">
+          {{ $model->paid_till->toDateString() }}
+        </span>
+      </td>
+      <td>{!! $model->whatServerIpv4() !!}</td>
+      <td>{{ $model->firstNsServer() }}</td>
+      <td>
+        @if (!$model->isExpired() && ($model->cms_url || ($model->alias_id and $model->alias->cms_url)))
+          @include('acp.domains.cms_login', ['cms_button_class' => 'btn btn-default btn-xs'])
+        @endif
+      </td>
+    </tr>
+  @endforeach
+  </tbody>
+</table>
 
 <div class="my-3">
   <form class="form-inline js-batch-form" data-url="/acp/domains/batch" data-selector=".domains-checkbox">
@@ -108,8 +97,8 @@
     подходит срок оплаты
   </span>
 </div>
-@else
+{{--
   <div class="alert alert-warning">
     По заданному критерию не найдено ни одного домена.
   </div>
-@endif
+--}}

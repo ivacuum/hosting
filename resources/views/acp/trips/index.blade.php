@@ -1,28 +1,15 @@
 @extends('acp.list')
 
-@section('toolbar')
-<ul class="nav nav-link-tabs">
-  <li class="{{ is_null($status) ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ UrlHelper::filter(['status' => null]) }}">
-      Все
-    </a>
-  </li>
-  <li class="{{ $status === (string) App\Trip::STATUS_PUBLISHED ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ UrlHelper::filter(['status' => App\Trip::STATUS_PUBLISHED]) }}">
-      Опубликованные
-    </a>
-  </li>
-  <li class="{{ $status === (string) App\Trip::STATUS_INACTIVE ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ UrlHelper::filter(['status' => App\Trip::STATUS_INACTIVE]) }}">
-      Пишутся
-    </a>
-  </li>
-  <li class="{{ $status === (string) App\Trip::STATUS_HIDDEN ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ UrlHelper::filter(['status' => App\Trip::STATUS_HIDDEN]) }}">
-      Скрытые
-    </a>
-  </li>
-</ul>
+@section('heading-after-search')
+@include('tpl.dropdown-filter', [
+  'field' => 'status',
+  'values' => [
+    'Все' => null,
+    'Опубликованные' => App\Trip::STATUS_PUBLISHED,
+    'Пишутся' => App\Trip::STATUS_INACTIVE,
+    'Скрытые' => App\Trip::STATUS_HIDDEN,
+  ]
+])
 @endsection
 
 @section('content-list')

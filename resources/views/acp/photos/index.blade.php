@@ -1,23 +1,14 @@
 @extends('acp.list')
 
-@section('toolbar')
-<ul class="nav nav-link-tabs">
-  <li class="{{ !$filter ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ UrlHelper::filter(['filter' => null]) }}">
-      Все
-    </a>
-  </li>
-  <li class="{{ $filter === 'no-tags' ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ UrlHelper::filter(['filter' => 'no-tags']) }}">
-      Без тэгов
-    </a>
-  </li>
-  <li class="{{ $filter === 'no-geo' ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ UrlHelper::filter(['filter' => 'no-geo']) }}">
-      Без гео
-    </a>
-  </li>
-</ul>
+@section('heading-after-search')
+@include('tpl.dropdown-filter', [
+  'field' => 'filter',
+  'values' => [
+    'Все' => null,
+    'Без тэгов' => 'no-tags',
+    'Без гео' => 'no-geo',
+  ]
+])
 @endsection
 
 @section('content-list')

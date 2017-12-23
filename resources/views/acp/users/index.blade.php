@@ -2,24 +2,15 @@
   'search_form' => true,
 ])
 
-@section('toolbar')
-<ul class="nav nav-link-tabs">
-  <li class="{{ !$filter ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ UrlHelper::filter(['filter' => null]) }}">
-      Все
-    </a>
-  </li>
-  <li class="{{ $filter === 'weekly-login' ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ UrlHelper::filter(['filter' => 'weekly-login']) }}">
-      Заходили на неделе
-    </a>
-  </li>
-  <li class="{{ $filter === 'monthly-login' ? 'active' : '' }}">
-    <a class="js-pjax" href="{{ UrlHelper::filter(['filter' => 'monthly-login']) }}">
-      Заходили в месяце
-    </a>
-  </li>
-</ul>
+@section('heading-after-search')
+@include('tpl.dropdown-filter', [
+  'field' => 'filter',
+  'values' => [
+    'Все' => '',
+    'Заходили на неделе' => 'weekly-login',
+    'Заходили в месяце' => 'monthly-login',
+  ]
+])
 @endsection
 
 @section('content-list')

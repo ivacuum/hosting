@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="d-flex flex-wrap align-items-center mb-2">
-  <h3 class="mt-0 mb-1">Логи</h3>
-  <form class="heading-menu-search-form">
+  <h3 class="mt-0 mb-1 mr-3">Логи</h3>
+  <form>
     <input name="q" class="form-control" placeholder="Поиск..." value="{{ $q ?? '' }}">
   </form>
 </div>
