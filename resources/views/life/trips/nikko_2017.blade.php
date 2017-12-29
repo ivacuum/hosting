@@ -58,7 +58,7 @@
 @ru
   <p>Классный электрический кабель между вагонами. Шестой вагон только по предварительному бронированию мест. Остановка четко напротив стрелочки.</p>
 @en
-  <p>Nice eletric cable between cars. Car #6 requires reservation in advance. Arrow sign is precisely pointing at the door.</p>
+  <p>Nice electric cable between cars. Car #6 requires reservation in advance. Arrow sign is precisely pointing at the door.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7995.jpg'])
 
