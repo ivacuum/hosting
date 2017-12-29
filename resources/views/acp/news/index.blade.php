@@ -7,7 +7,7 @@
     <th class="text-right text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
-    <th>{{ trans("model.$model_tpl.title") }}</th>
+    <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'title') }}</th>
     <th></th>
     <th class="text-right text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
