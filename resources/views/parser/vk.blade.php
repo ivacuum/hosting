@@ -35,7 +35,7 @@
         </a>
       </li>
     @endif
-    <li class="hidden-xs">
+    <li class="d-none d-sm-inline">
       Топ 10
       <input class="form-control d-inline-block" name="slug" value="{{ $vkpage }}" style="width: 8em;" autocapitalize="none">
       за {{ $date->formatLocalized('%e %B') }}

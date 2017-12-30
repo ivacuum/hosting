@@ -1,4 +1,4 @@
-<ul class="pagination pagination-mobile pagination-mobile-only">
+<ul class="pagination pagination-mobile pagination-mobile-only m-0">
   @if ($paginator->onFirstPage())
     <li class="disabled"><span>@svg (chevron-left)</span></li>
   @else
@@ -12,7 +12,7 @@
   @endif
 </ul>
 
-<ul class="pagination hidden-xs">
+<ul class="pagination d-none d-sm-inline-block m-0">
   @if (!$paginator->onFirstPage())
     <li><a class="js-pjax tooltipped tooltipped-ne" href="{{ $paginator->previousPageUrl() }}" id="previous_page" rel="prev" aria-label="{{ trans('pagination.previous') }}">@svg (chevron-left)</a></li>
   @endif
