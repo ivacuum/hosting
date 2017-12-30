@@ -3,7 +3,7 @@
 @section('content_header')
 <div class="d-md-flex flex-row-reverse justify-content-between mt--3">
   <form class="d-flex align-items-start mb-2 mb-md-0 mt-3 mt-md-1" action="{{ path("$self@index") }}">
-    <input class="form-control w-1020 w2-md-auto input-has-right-addon" name="q" value="{{ old('q', @$q) }}" placeholder="{{ trans('torrents.search') }}">
+    <input class="form-control w-1020 w2-md-auto input-has-right-addon" name="q" value="{{ old('q', @$q) }}" placeholder="{{ trans('torrents.search') }}" autocapitalize="none">
     <button class="btn btn-default btn-right-addon">
       @svg (search)
     </button>
