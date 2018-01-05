@@ -11,7 +11,3 @@
     > span { width: 100%; }
   }
 }
-
-.pagination-mobile-only {
-  @media (min-width: $screen-sm-min) { display: none; }
-}

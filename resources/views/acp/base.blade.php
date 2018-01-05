@@ -1,6 +1,4 @@
-@extends('base', [
-  'meta_title' => !empty($meta_title) ? $meta_title : trans($view),
-])
+@extends('base')
 
 @section('bottom-tabbar')
 @endsection

@@ -56,7 +56,7 @@ RouteHelper::withoutCreateAndEdit('Acp\Images');
 Route::post('images/batch', 'Acp\Images@batch');
 Route::get('images/{id}/view', 'Acp\Images@view');
 
-Route::get('metrics/', 'Acp\Metrics@index');
+Route::get('metrics', 'Acp\Metrics@index');
 Route::get('metrics/{event}', 'Acp\Metrics@show');
 
 RouteHelper::crud('Acp\News');
