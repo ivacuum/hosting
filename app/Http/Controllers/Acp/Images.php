@@ -36,7 +36,7 @@ class Images extends Controller
 
     public function batch()
     {
-        $ids = request('ids');
+        $ids = request('ids', []);
         $action = request('action');
 
         $models = Model::find($ids);
