@@ -6,6 +6,8 @@ class Home extends BaseController
 {
     public function index()
     {
+        \Breadcrumbs::pop();
+
         return view('acp.index');
     }
 }
