@@ -2,6 +2,7 @@
 
 return [
     'index' => 'ACP',
+    'home.index' => 'ACP',
 
     'artists.add' => 'Add artist',
     'artists.edit' => 'Edit',
