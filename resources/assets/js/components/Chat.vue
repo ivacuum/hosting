@@ -4,7 +4,7 @@
     <div class="chat-comment" v-for="message in messages">
       <span class="chat-date" :title="message.date">[{{ message.time }}]</span>
       <span class="chat-user">{{ message.author }}</span>:
-      <span class="chat-message" v-html="message.html"></span>
+      <span class="text-break-word" v-html="message.html"></span>
     </div>
     <!--
     <div class="chat-comment" v-if="typing">

@@ -14,10 +14,7 @@
 .font-italic { font-style: italic; }
 .font-small-caps { font-variant: small-caps; }
 
-.text-break-word {
-  word-wrap: break-word;
-  word-break: break-all;
-}
+.text-break-word { word-wrap: break-word; }
 .text-nowrap { white-space: nowrap; }
 
 .text-lowercase  { text-transform: lowercase; }
