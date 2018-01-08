@@ -66,10 +66,10 @@
   @section('breadcrumbs')
     @include('tpl.breadcrumbs', ['breadcrumbs' => $breadcrumbs ?? Breadcrumbs::get()])
   @show
-  <div class="container">
-    <div class="js-flash-notification">
-      @if ($first_time_visit && !Auth::check() && $locale !== $locale_preffered && empty($no_language_selector) && !$is_crawler)
-        <div class="alert alert-warning">
+  <div class="js-flash-notification">
+    @if ($first_time_visit && !Auth::check() && $locale !== $locale_preffered && empty($no_language_selector) && !$is_crawler)
+      <div class="alert alert-warning my-0 px-0 rounded-0">
+        <div class="container">
           <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
           @ru
             Hey, looks like you might find useful the <a class="link" href="{{ url("en/{$request_uri}") }}">English version</a> of this page
@@ -77,19 +77,25 @@
             Похоже, что вам может пригодиться версия этой страницы <a class="link" href="{{ url($request_uri) }}">на русском языке</a>
           @endru
         </div>
-      @endif
-      @if (Session::has('message'))
-        <div class="alert alert-info">
+      </div>
+    @endif
+    @if (Session::has('message'))
+      <div class="alert alert-info my-0 px-0 rounded-0">
+        <div class="container">
           <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
           {{ Session::get('message') }}
         </div>
-      @endif
-      @if ($errors->has('mail'))
-        <div class="alert alert-info">
+      </div>
+    @endif
+    @if ($errors->has('mail'))
+      <div class="alert alert-info my-0 px-0 rounded-0">
+        <div class="container">
           {{ $errors->first('mail') }}
         </div>
-      @endif
-    </div>
+      </div>
+    @endif
+  </div>
+  <div class="container mt-3">
 
 <div id="pjax_container">
 @endif

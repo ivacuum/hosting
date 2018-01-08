@@ -1,5 +1,5 @@
 @if (!empty($breadcrumbs))
-  <div class="breadcrumbs py-2 mb-3 border-bottom">
+  <div class="breadcrumbs py-2 border-bottom">
     <div class="container">
       <nav>
         <span class="{{ !starts_with($self, 'Acp\\') ? 'd-none d-sm-inline' : '' }}">
@@ -19,6 +19,4 @@
       </nav>
     </div>
   </div>
-@else
-  <div class="mb-3"></div>
 @endif
