@@ -31,18 +31,6 @@
         @show
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        {{--
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            {{ trans('menu.language') }}
-            <b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="{{ url("en/{$request_uri}") }}" lang="en">English</a></li>
-            <li><a href="{{ url($request_uri) }}" lang="ru">Русский</a></li>
-          </ul>
-        </li>
-        --}}
         @section('header_user')
           @if (Auth::check())
             @include('tpl.header-navbar-user')
@@ -50,11 +38,6 @@
             <li>
               <a href="{{ path('Auth\SignIn@index') }}">{{ trans('auth.signin') }}</a>
             </li>
-            {{--
-            <form class="navbar-form navbar-right">
-              <a class="btn btn-default" href="{{ path('Auth\SignIn@index') }}">{{ trans('auth.signin') }}</a>
-            </form>
-            --}}
           @endif
         @show
       </ul>
