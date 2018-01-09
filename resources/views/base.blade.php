@@ -140,15 +140,16 @@
 ]); ?>
 </script>
 <script src="{{ mix('/assets/polyfills.js') }}"></script>
-<script src="/assets/jquery.js?3.2.1"></script>
-<script src="/assets/jquery.pjax.js?2.0.1"></script>
-<script src="/assets/jquery.scrollto.js"></script>
-<script src="/assets/autosize.js?4.0.0"></script>
-<script src="/assets/bootstrap.js"></script>
-<script src="/assets/vue.js?2.5.10"></script>
-<script src="/assets/axios.js?0.17.1"></script>
+<script src="{{ mix('/assets/jquery.js') }}"></script>
+<script src="{{ mix('/assets/jquery.pjax.js') }}"></script>
+<script src="{{ mix('/assets/jquery.scrollto.js') }}"></script>
+<script src="{{ mix('/assets/autosize.js') }}"></script>
+<script src="{{ mix('/assets/popper.js') }}"></script>
+<script src="{{ mix('/assets/bootstrap.js') }}"></script>
+<script src="{{ mix('/assets/vue.js') }}"></script>
+<script src="{{ mix('/assets/axios.js') }}"></script>
 @if (!empty($websockets))
-  <script src="/assets/socket.io.js?2.0.4"></script>
+  <script src="{{ mix('/assets/socket.io.js') }}"></script>
 @endif
 <script src="/assets/fotorama/settings.js"></script>
 <script src="/assets/fotorama/fotorama.js"></script>

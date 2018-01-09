@@ -27,6 +27,9 @@ mix.js('resources/assets/js/app.js', 'public/assets')
   .copy('node_modules/socket.io-client/dist/socket.io.js', 'public/assets/socket.io.js')
   .copy('resources/assets/js/empty.map', 'public/assets/socket.io.js.map')
 
+  .copy('node_modules/popper.js/dist/umd/popper.min.js', 'public/assets/popper.js')
+  .copy('resources/assets/js/empty.map', 'public/assets/popper.min.js.map')
+
   .sourceMaps(false, false)
   .version()
   .disableNotifications()
