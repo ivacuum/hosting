@@ -5,6 +5,7 @@
   'field' => 'status',
   'values' => [
     'Все' => null,
+    '---' => null,
     'Скрытые' => App\Torrent::STATUS_HIDDEN,
     'Удаленные' => App\Torrent::STATUS_DELETED,
   ]
@@ -15,17 +16,17 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="text-right text-nowrap">
+    <th class="text-md-right text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
     <th>{{ trans('model.author') }}</th>
-    <th class="text-right text-nowrap">
+    <th class="text-md-right text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
     </th>
-    <th class="text-right text-nowrap">
+    <th class="text-md-right text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
     </th>
-    <th class="text-right text-nowrap">
+    <th class="text-md-right text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'clicks', 'svg' => 'magnet'])
     </th>
     <th></th>
@@ -36,25 +37,25 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-      <td class="text-right">{{ $model->id }}</td>
+      <td class="text-md-right">{{ $model->id }}</td>
       <td>
         <a href="{{ path('Acp\Users@show', $model->user_id) }}">
           {{ $model->user->displayName() }}
         </a>
       </td>
-      <td class="text-right">
+      <td class="text-md-right">
         @if ($model->views > 0)
           {{ ViewHelper::number($model->views) }}
         @endif
       </td>
-      <td class="text-right">
+      <td class="text-md-right">
         @if ($model->comments_count > 0)
           <a href="{{ path('Acp\Comments@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->comments_count) }}
           </a>
         @endif
       </td>
-      <td class="text-right">
+      <td class="text-md-right">
         @if ($model->clicks > 0)
           {{ ViewHelper::number($model->clicks) }}
         @endif

@@ -27,15 +27,6 @@
 .city-initial { margin: 0 0 0 -1.5em; }
 .travel-year { margin: 0 0 0 -3.5em; }
 
-.travel-timeline-arrows {
-  .horizontal { display: none; }
-
-  @media (min-width: 768px) {
-    .horizontal { display: inline; }
-    .vertical { display: none; }
-  }
-}
-
 /*
 .cover {
   position: relative;
@@ -106,13 +97,11 @@
 }
 
 .life-text {
-  font-size: 16px;
-  line-height: 1.5;
   @include font-smoothing();
 
   p + .pic-container { margin-top: -.5rem; }
 
-  @media (min-width: $screen-md-min) { font-size: 18px; }
+  @include media-breakpoint-up(lg) { font-size: 18px; }
 }
 
 .pic {
@@ -128,7 +117,7 @@
     width: 100%;
     margin: 0;
 
-    @media (min-width: $screen-sm-min) { border-radius: $border-radius-large; }
+    @include media-breakpoint-up(md) { border-radius: $border-radius-lg; }
   }
 }
 
@@ -145,35 +134,28 @@
   text-align: center;
 }
 
-.travel-timeline-container {
-  display: flex;
-  flex-flow: column-reverse wrap;
-  justify-content: space-between;
-  font-size: 14px;
-  margin-top: 2rem;
-  text-align: center;
-
-  @media (min-width: $screen-sm-min) { flex-flow: row wrap; }
-}
-
-.travel-timeline {
-  margin-bottom: 1rem;
-
-  @media (min-width: $screen-sm-min) { margin-bottom: 0; }
-}
-
-.travel-timeline-date {
-  color: $gray-light;
-  font-size: 12px;
-}
-
 .trip-city-map {
   height: 250px;
-  margin-bottom: 1rem;
 
-  @media (min-width: $screen-sm-min) { height: 400px; }
-
+  @include media-breakpoint-up(md) { height: 400px; }
   @include mobile-wide;
 }
 
-.trip-text { max-width: 1000px; }
+.trip-cover-date {
+  color: #ccc;
+  font-size: 12px;
+}
+
+.trip-cover-description {
+  font-size: 12px;
+
+  @include media-breakpoint-up(md) { font-size: 14px; }
+}
+
+.trip-cover-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: #fff;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, .8);
+}

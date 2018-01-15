@@ -14,7 +14,8 @@ mix.js('resources/assets/js/app.js', 'public/assets')
 
   .copy('node_modules/autosize/dist/autosize.min.js', 'public/assets/autosize.js')
 
-  .copy('node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js', 'public/assets/bootstrap.js')
+  .copy('node_modules/bootstrap/dist/js/bootstrap.min.js', 'public/assets/bootstrap.js')
+  .copy('resources/assets/js/empty.map', 'public/assets/bootstrap.min.js.map')
 
   .copy('node_modules/vue/dist/vue.min.js', 'public/assets/vue.js')
 

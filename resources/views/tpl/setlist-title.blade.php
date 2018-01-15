@@ -1,5 +1,5 @@
 @ru
-  <p>Что играли:</p>
+  <div class="mb-1">Что играли:</div>
 @en
-  <p>Setlist:</p>
+  <div class="mb-1">Setlist:</div>
 @endru

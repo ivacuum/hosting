@@ -3,55 +3,43 @@
 ])
 
 @section('content')
-<nav class="nav-link-tabs-fader mt--3">
-  <ul class="nav nav-link-tabs nav-link-tabs-border">
-    <li class="{{ $vkpage == 'pn6' ? 'active' : '' }}">
-      <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => 'pn6']) }}">#6</a>
-    </li>
-    <li class="{{ $vkpage == 'overhear' ? 'active' : '' }}">
-      <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => 'overhear']) }}">Подслушано</a>
-    </li>
-    {{--
-    <li class="{{ $vkpage == 'leprum' ? 'active' : '' }}">
-      <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => 'leprum']) }}">Лепра</a>
-    </li>
-    --}}
-    <li class="{{ $vkpage == 'pikabu' ? 'active' : '' }}">
-      <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => 'pikabu']) }}">Пикабу</a>
-    </li>
-    <li class="{{ $vkpage == 'decaying_europe' ? 'active' : '' }}">
-      <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => 'decaying_europe']) }}">Запад</a>
-    </li>
-  </ul>
-</nav>
+<div class="nav-link-tabs-fader nav-border mt--3">
+  <div class="nav-scroll-container">
+    <div class="nav-scroll">
+      <nav class="nav nav-link-tabs">
+        <a class="nav-link js-pjax {{ $vkpage == 'pn6' ? 'active' : '' }}" href="{{ path('ParserVk@index', ['page' => 'pn6']) }}">#6</a>
+        <a class="nav-link js-pjax {{ $vkpage == 'overhear' ? 'active' : '' }}" href="{{ path('ParserVk@index', ['page' => 'overhear']) }}">Подслушано</a>
+        <a class="nav-link js-pjax {{ $vkpage == 'pikabu' ? 'active' : '' }}" href="{{ path('ParserVk@index', ['page' => 'pikabu']) }}">Пикабу</a>
+      </nav>
+    </div>
+  </div>
+</div>
 
-<form action="{{ path('ParserVk@indexPost') }}" method="post">
-  <ul class="pager">
+<form class="d-flex justify-content-between my-3" action="{{ path('ParserVk@indexPost') }}" method="post">
+  <div>
     @if (!empty($next))
-      <li class="previous">
-        <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}" id="previous_page">
-          @svg (chevron-left)
-          {{ $next->formatLocalized('%e %B') }}
-        </a>
-      </li>
+      <a class="btn border-b125 js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}" id="previous_page">
+        @svg (chevron-left)
+        {{ $next->formatLocalized('%e %B') }}
+      </a>
     @endif
-    <li class="d-none d-sm-inline">
-      Топ 10
-      <input class="form-control d-inline-block" name="slug" value="{{ $vkpage }}" style="width: 8em;" autocapitalize="none">
-      за {{ $date->formatLocalized('%e %B') }}
-      @if ($date->year !== now()->year)
-        {{ $date->year }}
-      @endif
-    </li>
+  </div>
+  <div class="d-none d-sm-flex align-items-center">
+    <span class="d-none d-md-block">Топ 10</span>
+    <input class="form-control mx-2" name="slug" value="{{ $vkpage }}" style="width: 8em;" autocapitalize="none">
+    за {{ $date->formatLocalized('%e %B') }}
+    @if ($date->year !== now()->year)
+      {{ $date->year }}
+    @endif
+  </div>
+  <div>
     @if (!empty($previous))
-      <li class="next">
-        <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $previous->toDateString(), 'own' => $own, 'token' => $token]) }}" id="next_page">
-          &nbsp;{{ $previous->formatLocalized('%e %B') }}
-          @svg (chevron-right)
-        </a>
-      </li>
+      <a class="btn border-b125 js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $previous->toDateString(), 'own' => $own, 'token' => $token]) }}" id="next_page">
+        &nbsp;{{ $previous->formatLocalized('%e %B') }}
+        @svg (chevron-right)
+      </a>
     @endif
-  </ul>
+  </div>
   {{ csrf_field() }}
 </form>
 
@@ -63,17 +51,17 @@
 
 <div class="js-shortcuts-items">
 @foreach ($posts as $post)
-  <div class="panel panel-default panel-mobile-wide shortcuts-item">
-    <div class="panel-body vk-post-container">
+  <div class="card card-mobile-wide shortcuts-item mb-3">
+    <div class="card-body text-break-work">
       @if ($post['text'])
-        <div class="vk-post-content life-text">{!! nl2br(e($post['text'])) !!}</div>
+        <div class="life-text mb-0">{!! nl2br(e($post['text'])) !!}</div>
       @endif
       @if (!empty($post['copy_history']))
         <div class="life-text {{ $post['text'] ? 'mt-3' : '' }} mb-0"><strong>Репост</strong></div>
-        <div class="vk-post-content life-text">{!! nl2br(e($post['copy_history'][0]->text)) !!}</div>
+        <div class="life-text mb-0">{!! nl2br(e($post['copy_history'][0]->text)) !!}</div>
       @endif
       @if ($post['attachments'])
-        <div class="vk-post-attachments">
+        <div class="mt-2">
         @if ($post['photos'] > 1)
           <div class="pic-container js-lazy" data-lazy-type="fotorama">
         @elseif ($post['photos'] == 1)
@@ -148,7 +136,7 @@
         @endforeach
         </div>
       @endif
-      <div class="vk-post-meta text-muted text-right">
+      <div class="mt-2 vk-post-meta text-muted text-right">
         <samp class="f12">
           <a class="mr-3" href="https://t.me/share/url?url={{ $post['url'] }}">
             @svg (telegram)
@@ -170,22 +158,22 @@
 @endforeach
 </div>
 
-<ul class="pager mb-0">
+<div class="d-flex justify-content-between">
   @if (!empty($next))
-    <li class="previous">
-      <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}">
+    <div>
+      <a class="btn border-b125 js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}">
         @svg (chevron-left)
         {{ $next->formatLocalized('%e %B') }}
       </a>
-    </li>
+    </div>
   @endif
   @if (!empty($previous))
-    <li class="next">
-      <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $previous->toDateString(), 'own' => $own, 'token' => $token]) }}">
+    <div>
+      <a class="btn border-b125 js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $previous->toDateString(), 'own' => $own, 'token' => $token]) }}">
         &nbsp;{{ $previous->formatLocalized('%e %B') }}
         @svg (chevron-right)
       </a>
-    </li>
+    </div>
   @endif
-</ul>
+</div>
 @endsection

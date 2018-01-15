@@ -1,53 +1,42 @@
 @extends('torrents.base')
 
 @section('content')
-<h3 class="mt-0">Последние комментарии</h3>
+<h3>Последние комментарии</h3>
 @foreach ($comments as $comment)
-  <div class="comment-container">
-    <a name="comment-{{ $comment->id }}"></a>
-    <div class="comment-content">
-      <aside class="comment-author-container">
-        <div class="comment-author">
-          @if (!is_null($comment->user))
-            <div class="comment-author-avatar">
-              <a href="{{ $comment->user->www() }}">
-                @if ($comment->user->avatar)
-                  <img class="comment-author-avatar-image" src="{{ $comment->user->avatarUrl() }}">
-                @else
-                  @include('tpl.svg-avatar', [
-                    'bg' => ViewHelper::avatarBg($comment->user_id),
-                    'text' => $comment->user->avatarName(),
-                  ])
-                @endif
-              </a>
-            </div>
-          @endif
-          <div class="comment-author-details">
-            <span class="comment-author-name">
-              @if (!is_null($comment->user))
-                <a class="link" href="{{ $comment->user->www() }}">{{ $comment->user->publicName() }}</a>
+  <a name="comment-{{ $comment->id }}"></a>
+  <div class="d-flex py-3 w-100 border-bottom">
+    <aside class="mr-3 mr-md-4">
+        @if (!is_null($comment->user))
+          <div class="comment-avatar-size mt-1">
+            <a href="{{ $comment->user->www() }}">
+              @if ($comment->user->avatar)
+                <img class="comment-avatar-size rounded-circle" src="{{ $comment->user->avatarUrl() }}">
               @else
-                <em>deleted user</em>
+                @include('tpl.svg-avatar', [
+                  'bg' => ViewHelper::avatarBg($comment->user_id),
+                  'text' => $comment->user->avatarName(),
+                ])
               @endif
-            </span>
+            </a>
           </div>
-        </div>
-      </aside>
-      <div class="comment-body-container">
-        <div class="comment-meta">
-          {{ $comment->fullDate() }}
-        </div>
-        <div class="comment-body">
-          <div class="mb-3">
-            @if (optional($comment->rel)->status === App\Torrent::STATUS_PUBLISHED)
-              <a class="link" href="{{ $comment->rel->www() }}#comment-{{ $comment->id }}">{{ str_limit($comment->rel->title, 80) }}</a>
-            @else
-              <em>Раздача удалена</em>
-            @endif
-          </div>
-          {!! nl2br($comment->html) !!}
-        </div>
+        @endif
+    </aside>
+    <div class="text-break-word mw-700 w-100">
+      <div>
+        @if (!is_null($comment->user))
+          <a href="{{ $comment->user->www() }}">{{ $comment->user->publicName() }}</a>
+        @else
+          <em>deleted user</em>
+        @endif
+        <span class="mx-2 text-muted">&middot;</span>
+        @if (optional($comment->rel)->status === App\Torrent::STATUS_PUBLISHED)
+          <a href="{{ $comment->rel->www() }}#comment-{{ $comment->id }}">{{ str_limit($comment->rel->title, 50) }}</a>
+        @else
+          <em class="text-muted">раздача удалена</em>
+        @endif
       </div>
+      <div class="comment-body">{!! nl2br($comment->html) !!}</div>
+      <div class="small text-muted">{{ $comment->fullDate() }}</div>
     </div>
   </div>
 @endforeach

@@ -77,6 +77,11 @@ class Domains extends Controller
 
     public function addMailbox($domain)
     {
+        request()->validate([
+            'logins' => 'required',
+            'send_to' => 'required|email',
+        ]);
+
         $model = $this->getModel($domain);
 
         $logins = request('logins');

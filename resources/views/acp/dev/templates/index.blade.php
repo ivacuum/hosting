@@ -2,15 +2,15 @@
 
 @section('content')
 <p>
-  <a class="btn btn-default btn-xs" href="{{ UrlHelper::filter(['hide_finished' => 1]) }}">Скрыть переведенные</a>
+  <a class="btn btn-default btn-sm" href="{{ UrlHelper::filter(['hide_finished' => 1]) }}">Скрыть переведенные</a>
 </p>
 <table class="table-stats table-adaptive">
   <thead>
     <tr>
       <th>Шаблон</th>
-      <th class="text-right">@svg (picture-o)</th>
+      <th class="text-md-right">@svg (picture-o)</th>
       @foreach (config('cfg.locales') as $key => $value)
-        <th class="text-right">
+        <th class="text-md-right">
           @if ($key === 'ru')
             &#x1f1f7;&#x1f1fa;
           @elseif ($key === 'en')
@@ -25,9 +25,9 @@
   <tfoot>
     <tr>
       <td><strong>Итого: {{ sizeof($templates) }}</strong></td>
-      <td class="text-right">{{ ViewHelper::number($total->pics) }}</td>
+      <td class="text-md-right">{{ ViewHelper::number($total->pics) }}</td>
       @foreach (config('cfg.locales') as $key => $value)
-        <td class="text-right">{{ ViewHelper::number($total->{$key}) }}</td>
+        <td class="text-md-right">{{ ViewHelper::number($total->{$key}) }}</td>
       @endforeach
     </tr>
   </tfoot>
@@ -39,9 +39,9 @@
             {{ $template->name }}
           </a>
         </td>
-        <td class="text-right">{{ $template->pics ?: '—' }}</td>
+        <td class="text-md-right">{{ $template->pics ?: '—' }}</td>
         @foreach (config('cfg.locales') as $key => $value)
-          <td class="text-right">{{ $template->i18n->{$key} ?: '—' }}</td>
+          <td class="text-md-right">{{ $template->i18n->{$key} ?: '—' }}</td>
         @endforeach
       </tr>
     @endforeach

@@ -1,39 +1,19 @@
 .navbar-nav .avatar-dropdown .svg-angle-down { margin-top: 2px; }
 
 .svg-avatar {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  vertical-align: middle;
+  @include size(50px);
 
-  .navbar-nav & {
-    width: 36px;
-    height: 36px;
-  }
+  .navbar-nav & { @include size(36px); }
 }
 
 .svg-icon {
   display: inline-block;
   vertical-align: text-top;
   fill: currentColor;
-  width: 1em;
-  height: 1em;
+  @include size(1em);
   margin-top: .125em;
 
   .svg-mt-0 & { margin-top: 0; }
-
-  /*
-  .list-group-svg & {
-    margin-right: 2px;
-
-    @media (min-width: 768px) {
-      display: block;
-      margin: 0 auto;
-      width: 16px;
-      height: 16px;
-    }
-  }
-  */
 
   .navbar-nav & {
     font-size: 18px;
@@ -41,19 +21,11 @@
   }
 }
 
-.svg-icon-16 .svg-icon {
-  width: 16px;
-  height: 16px;
-}
-
-.svg-icon-32 .svg-icon {
-  width: 32px;
-  height: 32px;
-}
+.svg-icon-16 .svg-icon { @include size(16px); }
+.svg-icon-32 .svg-icon { @include size(32px); }
 
 .svg-icon-160 .svg-icon {
-  width: 160px;
-  height: 160px;
+  @include size(160px);
   background: #ccc;
 }
 

@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<div class="h2 mt-0 mb-4">@ru Стикеры @en Stickers @endru</div>
+<div class="h2 mb-4">@ru Стикеры @en Stickers @endru</div>
 
 <div class="h3">
   @ru Акула @en It's a Shark @endru

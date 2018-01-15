@@ -3,7 +3,7 @@
 ])
 
 @section('content')
-<h1 class="h2 mt-0">
+<h1 class="h2">
   {{ $country->emoji }}
   {{ $country->title }}
 </h1>

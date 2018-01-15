@@ -9,7 +9,7 @@ https://english.stackexchange.com/questions/51209/translate-into-vs-translate-to
 --}}
 
 @section('content')
-<h1 class="mt-0">{{ trans('life.english') }}</h1>
+<h1>{{ trans('life.english') }}</h1>
 @ru
   <p class="mb-5">Конспект информации, освоенной во время изучения языка.</p>
 @endru

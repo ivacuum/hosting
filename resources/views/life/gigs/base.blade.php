@@ -7,11 +7,11 @@
 @section('content_header')
 @parent
 @include('tpl.gig-timeline')
-<h1 class="h2 mt-0">
+<h1 class="h2">
   {{ $gig->title }}
-  <small><time datetime="{{ $gig->date->toDateString() }}">{{ $gig->fullDate() }}</time></small>
+  <small class="text-muted"><time datetime="{{ $gig->date->toDateString() }}">{{ $gig->fullDate() }}</time></small>
 </h1>
-<div class="trip-text js-trip-shortcuts">
+<div class="mw-1000 js-trip-shortcuts">
 @endsection
 
 @section('content_footer')

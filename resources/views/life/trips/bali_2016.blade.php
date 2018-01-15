@@ -367,9 +367,9 @@
 @en
   <p>Another bonus. The border guard in Bali is looking my immigration card:</p>
 @endru
-<ul class="list-unstyled">
-  <li>— CTO. Chief Technical..</li>
-  <li>— Officer, yeah</li>
-  <li>— Where? Gazprom?</li>
+<ul class="list-dialog">
+  <li>CTO. Chief Technical..</li>
+  <li>Officer, yeah</li>
+  <li>Where? Gazprom?</li>
 </ul>
 @endsection

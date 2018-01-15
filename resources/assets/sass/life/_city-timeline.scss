@@ -1,5 +1,4 @@
 .city-timeline {
-  font-size: 14px;
   white-space: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
@@ -9,10 +8,8 @@
   display: inline-block;
   padding-left: 0;
   list-style: none;
-  margin: 0 25px 0 0;
+  margin: 0 1.5rem 0 0;
   vertical-align: top;
 
   &:last-child { margin-right: 0; }
 }
-
-.city-timeline-year { font-weight: bold; }

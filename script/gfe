@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# exits in case of any error
+set -e
+
+cd "$(dirname "$0")/../.."
+
+echo "==> Deleting installed vac-gfe package..."
+rm -rf hosting/node_modules/vac-gfe
+
+echo "==> Symlinking local vac-gfe package..."
+ln -s $(pwd)/gfe hosting/node_modules/vac-gfe

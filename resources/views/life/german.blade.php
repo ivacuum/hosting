@@ -6,7 +6,7 @@
 ])
 
 @section('content')
-<h3 class="mt-0">{{ trans('life.german') }}</h3>
+<h3>{{ trans('life.german') }}</h3>
 @ru
   <p class="mb-5">Конспект информации, освоенной во время изучения языка.</p>
 @endru

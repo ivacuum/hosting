@@ -59,6 +59,14 @@ class Events {
     $container.slideToggle()
   }
 
+  static dcppClientsShow(e) {
+    e.preventDefault()
+
+    document.querySelectorAll(this.dataset.target).forEach(el => el.hidden = false)
+
+    this.hidden = true
+  }
+
   static entityAction(e) {
     e.preventDefault()
 
@@ -144,14 +152,14 @@ class Events {
       $input.attr('type', 'text')
       $(this).data('state', 'text')
 
-      $('.js-password-eye-hide', $(this)).show()
-      $('.js-password-eye-show', $(this)).hide()
+      document.querySelector('.js-password-eye-hide').hidden = false
+      document.querySelector('.js-password-eye-show').hidden = true
     } else if (state === 'text') {
       $input.attr('type', 'password')
       $(this).data('state', 'password')
 
-      $('.js-password-eye-hide', $(this)).hide()
-      $('.js-password-eye-show', $(this)).show()
+      document.querySelector('.js-password-eye-hide').hidden = true
+      document.querySelector('.js-password-eye-show').hidden = false
     }
   }
 }
@@ -162,6 +170,9 @@ $(document).on('click', '.js-city-map-click', Events.cityMapClick)
 
 // Подтверждение действия
 $(document).on('click', '.js-confirm', (e) => confirm($(e.currentTarget).data('confirm')))
+
+// Показ клиентов DC++ для всех платформ
+$(document).on('click', '.js-dcpp-clients-show', Events.dcppClientsShow)
 
 // Проигрывание гифок по клику
 $(document).on('click', '.js-gif-click', Events.gifClick)

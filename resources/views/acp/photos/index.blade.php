@@ -5,6 +5,7 @@
   'field' => 'filter',
   'values' => [
     'Все' => null,
+    '---' => null,
     'Без тэгов' => 'no-tags',
     'Без гео' => 'no-geo',
   ]
@@ -15,14 +16,14 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="text-right text-nowrap">
+    <th class="text-md-right text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
     <th>Фото</th>
     <th>URL</th>
     <th>Тэги</th>
     <th>@svg (map-marker)</th>
-    <th class="text-right text-nowrap">
+    <th class="text-md-right text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
     </th>
     <th></th>
@@ -31,7 +32,7 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-      <td class="text-right">{{ $model->id }}</td>
+      <td class="text-md-right">{{ $model->id }}</td>
       <td class="text-center">
         <a class="screenshot-link" href="{{ path("$self@show", $model) }}">
           <img class="image-100 screenshot" src="{{ $model->thumbnailUrl() }}">
@@ -52,7 +53,7 @@
         <div>{{ $model->lat }}</div>
         <div>{{ $model->lon }}</div>
       </td>
-      <td class="text-right">
+      <td class="text-md-right">
         @if ($model->views > 0)
           {{ ViewHelper::number($model->views) }}
         @endif

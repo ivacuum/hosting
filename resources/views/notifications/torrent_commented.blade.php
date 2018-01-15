@@ -1,5 +1,10 @@
 {{-- Комментарий к раздаче --}}
 <strong>{{ $notification->data['comment']['user']['name'] }}</strong>
-{{ trans("notifications.{$class_basename}") }}
+<span class="text-muted">{{ trans("notifications.{$class_basename}") }}</span>
 <a class="link" href="{{ path('Torrents@show', $notification->data['id']) }}#comment-{{ $notification->data['comment']['id'] }}">{{ str_limit($notification->data['title'], 100) }}</a>
-<div class="my-1">{!! $notification->data['comment']['html'] !!}</div>
+<time class="text-muted"
+      datetime="{{ $notification->created_at->toDateString() }}"
+      title="{{ $notification->created_at->toAtomString() }}">
+  {{ $notification->created_at->diffForHumans() }}
+</time>
+<div class="mt-1">{!! $notification->data['comment']['html'] !!}</div>

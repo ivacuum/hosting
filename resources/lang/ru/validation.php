@@ -70,7 +70,7 @@ return [
     ],
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
-    'unique'               => 'The :attribute has already been taken.',
+    'unique'               => 'Такой :attribute уже занят',
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
 
@@ -80,6 +80,9 @@ return [
         ],
         'slug' => [
             'unique' => 'Этот адрес уже занят',
+        ],
+        'username' => [
+            'unique' => 'Такой логин уже занят, выберите другой',
         ],
     ],
 

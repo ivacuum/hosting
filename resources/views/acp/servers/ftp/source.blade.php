@@ -12,14 +12,15 @@
   <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $dir_up }}">
     @svg (chevron-left)
   </a>
-  {{ basename($file) }} <small>{{ $dir_up }}</small>
+  {{ basename($file) }}
+  <small class="text-muted">{{ $dir_up }}</small>
 </h2>
 
 <form action="/acp/servers/{{ $server->id }}/ftp/source" method="post">
   {{ ViewHelper::inputHiddenMail() }}
 
   <div class="form-group">
-    <textarea class="form-control textarea-autosized js-autosize-textarea" name="source" rows="2" style="font-family: monospace;">{{ $source }}</textarea>
+    <textarea class="form-control f14 textarea-autosized js-autosize-textarea" name="source" rows="2" style="font-family: var(--font-family-monospace);">{{ $source }}</textarea>
   </div>
 
   <button class="btn btn-primary">

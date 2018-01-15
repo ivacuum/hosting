@@ -24,9 +24,9 @@
 {!! Form::text('meta_image')->html() !!}
 
 @if ($model->meta_image)
-  <div class="form-group">
-    <div class="col-md-6 col-md-offset-3">
-      <img class="img-responsive img-rounded" src="{{ $model->metaImage() }}">
+  <div class="form-group form-row">
+    <div class="col-md-6 offset-md-4">
+      <img class="img-fluid rounded" src="{{ $model->metaImage() }}">
     </div>
   </div>
 @endif

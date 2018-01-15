@@ -5,6 +5,7 @@
   'field' => 'status',
   'values' => [
     'Все' => null,
+    '---' => null,
     'Скрытые' => App\ChatMessage::STATUS_HIDDEN,
   ]
 ])
@@ -15,7 +16,7 @@
   <thead>
   <tr>
     <th><input type="checkbox" class="js-select-all" data-selector=".models-checkbox"></th>
-    <th class="text-right">ID</th>
+    <th class="text-md-right">ID</th>
     <th>Автор</th>
     <th>Текст</th>
     <th></th>
@@ -26,7 +27,7 @@
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
       <td><input class="models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
-      <td class="text-right">
+      <td class="text-md-right">
         <a href="{{ path("$self@show", $model) }}">
           {{ $model->id }}
         </a>

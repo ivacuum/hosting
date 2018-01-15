@@ -27,16 +27,16 @@
           </span>
         @endif
         @if ($model->text)
-          <span class="label label-default tooltipped tooltipped-n" aria-label="есть заметки">...</span>
+          <span class="badge badge-secondary tooltipped tooltipped-n" aria-label="есть заметки">...</span>
         @endif
         @if (!$model->domain_control)
-          <span class="label label-info tooltipped tooltipped-n" aria-label="не в нашей панели">?</span>
+          <span class="badge badge-info tooltipped tooltipped-n" aria-label="не в нашей панели">?</span>
         @endif
         @if ($model->domain_control and $model->isExpired())
-          <span class="label label-danger tooltipped tooltipped-n" aria-label="просрочена оплата">$</span>
+          <span class="badge badge-danger tooltipped tooltipped-n" aria-label="просрочена оплата">$</span>
         @endif
         @if ($model->domain_control and $model->isExpiringSoon())
-          <span class="label label-warning tooltipped tooltipped-n" aria-label="подходит срок оплаты">$</span>
+          <span class="badge badge-warning tooltipped tooltipped-n" aria-label="подходит срок оплаты">$</span>
         @endif
       </td>
       <td class="text-muted">
@@ -48,7 +48,7 @@
       <td>{{ $model->firstNsServer() }}</td>
       <td>
         @if (!$model->isExpired() && ($model->cms_url || ($model->alias_id and $model->alias->cms_url)))
-          @include('acp.domains.cms_login', ['cms_button_class' => 'btn btn-default btn-xs'])
+          @include('acp.domains.cms_login', ['cms_button_class' => 'btn btn-default btn-sm'])
         @endif
       </td>
     </tr>
@@ -59,8 +59,8 @@
 <div class="my-3">
   <form class="form-inline js-batch-form" data-url="/acp/domains/batch" data-selector=".domains-checkbox">
     <div class="form-group">
-      <div class="form-select d-inline-block mr-1">
-        <select class="form-control" name="action">
+      <div class="d-inline-block mr-1">
+        <select required class="custom-select" name="action">
           <option value="">Выберите действие...</option>
           @if ($filter == 'trashed')
             <option value="restore">Восстановить</option>
@@ -81,19 +81,19 @@
 
 <div>
   <span class="text-nowrap mr-2">
-    <span class="label label-default mr-1">...</span>
+    <span class="badge badge-secondary mr-1">...</span>
     есть заметки
   </span>
   <span class="text-nowrap mr-2">
-    <span class="label label-info mr-1">?</span>
+    <span class="badge badge-info mr-1">?</span>
     не в нашей панели
   </span>
   <span class="text-nowrap mr-2">
-    <span class="label label-danger mr-1">$</span>
+    <span class="badge badge-danger mr-1">$</span>
     просрочена оплата
   </span>
   <span class="text-nowrap mr-2">
-    <span class="label label-warning mr-1">$</span>
+    <span class="badge badge-warning mr-1">$</span>
     подходит срок оплаты
   </span>
 </div>

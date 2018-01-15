@@ -5,7 +5,7 @@
 @section('content')
 <article itemscope itemtype="http://schema.org/BlogPosting">
   <header>
-    <h1 class="h3 mt-0" itemprop="headline">{{ $news->title }}</h1>
+    <h1 class="h3" itemprop="headline">{{ $news->title }}</h1>
     <link href="{{ $news->www() }}" itemprop="url">
     <div class="text-muted f14 mb-3">
       <span class="text-nowrap mr-3">

@@ -1,3 +1,5 @@
+$photo-max-height: 80vh;
+
 .photo-map-container {
   height: calc(100vh - 195px);
   margin-bottom: -1.5rem;
@@ -5,21 +7,15 @@
   @include always-wide;
 }
 
-.photo-show-container {
-  position: relative;
-
-  @include mobile-wide;
-}
-
 .photo-show-img {
   border: 0;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175);
   background-clip: padding-box;
   max-width: 100%;
-  max-height: 80vh;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     border: 1px solid rgba(0, 0, 0, 0.15);
+    max-height: $photo-max-height;
   }
 }
 
@@ -28,6 +24,7 @@
   top: 0;
   width: 50%;
   height: 100%;
+  z-index: 12; // На один больше фоторамы
 }
 
 .photo-show-next { left: 50%; }

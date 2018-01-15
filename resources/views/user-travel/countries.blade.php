@@ -3,14 +3,14 @@
 ])
 
 @section('content')
-<h1 class="h2 mt-0">
+<h1 class="h2">
   {{ trans('life.visited_countries') }}
-  <small>{{ sizeof($countries) }}</small>
+  <small class="text-muted">{{ sizeof($countries) }}</small>
 </h1>
 <ul class="list-inline f14">
-  <li><a class="link" href="{{ path('UserTravelTrips@index', $traveler->login) }}">{{ trans('life.by_year') }}</a></li>
-  <li><mark>{{ trans('life.by_country') }}</mark></li>
-  <li><a class="link" href="{{ path('UserTravelCities@index', $traveler->login) }}">{{ trans('life.by_city') }}</a></li>
+  <li class="list-inline-item"><a class="link" href="{{ path('UserTravelTrips@index', $traveler->login) }}">{{ trans('life.by_year') }}</a></li>
+  <li class="list-inline-item"><mark>{{ trans('life.by_country') }}</mark></li>
+  <li class="list-inline-item"><a class="link" href="{{ path('UserTravelCities@index', $traveler->login) }}">{{ trans('life.by_city') }}</a></li>
 </ul>
 
 @if (!empty($countries))

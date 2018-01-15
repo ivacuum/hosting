@@ -289,7 +289,7 @@ class Photos extends Controller
                         'coordinates' => [$photo->lat, $photo->lon],
                     ],
                     'properties' => [
-                        'balloonContent' => sprintf('<p><a href="%s#%s">%s, %s %s<br><img class="image-200" src="%s"></a></p>', $photo->rel->www(), $basename, $photo->rel->title, $photo->rel->period, $photo->rel->year, $photo->thumbnailUrl()),
+                        'balloonContent' => sprintf('<div><a href="%s#%s">%s, %s %s<br><img class="mt-1 image-200 rounded" src="%s"></a></div>', $photo->rel->www(), $basename, $photo->rel->title, $photo->rel->period, $photo->rel->year, $photo->thumbnailUrl()),
                         'clusterCaption' => $basename,
                     ],
                 ];

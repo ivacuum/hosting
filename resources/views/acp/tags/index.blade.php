@@ -7,10 +7,10 @@
     <th>
       @include('acp.tpl.sortable-header', ['key' => 'title', 'order' => 'asc'])
     </th>
-    <th class="text-right">
+    <th class="text-md-right">
       @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
     </th>
-    <th class="text-right">
+    <th class="text-md-right">
       @include('acp.tpl.sortable-header', ['key' => 'photos_count', 'svg' => 'picture-o'])
     </th>
   </tr>
@@ -23,12 +23,12 @@
           {{ $model->title }}
         </a>
       </td>
-      <td class="text-right">
+      <td class="text-md-right">
         @if ($model->views > 0)
           {{ ViewHelper::number($model->views) }}
         @endif
       </td>
-      <td class="text-right">
+      <td class="text-md-right">
         @if ($model->photos_count > 0)
           <a href="{{ path('Acp\Photos@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->photos_count) }}

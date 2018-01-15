@@ -1,25 +1,22 @@
-@include('tpl.form_errors')
-
-<div class="form-group {{ $errors->has('category_id') ? 'has-error' : '' }}">
-  <label class="col-md-3 control-label required">Рубрика:</label>
-  <div class="col-md-4">
-    <div class="form-select">
-      <select required class="form-control" name="category_id">
-        <option value="0">Выберите рубрику...</option>
-        @foreach (TorrentCategoryHelper::tree() as $id => $category)
-          <option value="{{ $id }}" {{ $id == old('category_id', @$model->category_id) ? 'selected' : '' }} {{ TorrentCategoryHelper::canPost($id) ? '' : 'disabled' }}>
-            {{ $category['title'] }}
-          </option>
-          @if (!empty($category['children']))
-            @foreach ($category['children'] as $id => $category)
-              <option value="{{ $id }}" {{ $id == old('category_id', @$model->category_id) ? 'selected' : '' }}>
-                &nbsp;&nbsp;&nbsp;&nbsp;{{ $category['title'] }}
-              </option>
-            @endforeach
-          @endif
-        @endforeach
-      </select>
-    </div>
+<div class="form-group form-row">
+  <label class="col-md-4 text-md-right col-form-label input-required">Рубрика</label>
+  <div class="col-md-6">
+    <select required class="custom-select {{ $errors->has('category_id') ? 'is-invalid' : '' }}" name="category_id">
+      <option value="0">Выберите рубрику...</option>
+      @foreach (TorrentCategoryHelper::tree() as $id => $category)
+        <option value="{{ $id }}" {{ $id == old('category_id', @$model->category_id) ? 'selected' : '' }} {{ TorrentCategoryHelper::canPost($id) ? '' : 'disabled' }}>
+          {{ $category['title'] }}
+        </option>
+        @if (!empty($category['children']))
+          @foreach ($category['children'] as $id => $category)
+            <option value="{{ $id }}" {{ $id == old('category_id', @$model->category_id) ? 'selected' : '' }}>
+              &nbsp;&nbsp;&nbsp;&nbsp;{{ $category['title'] }}
+            </option>
+          @endforeach
+        @endif
+      @endforeach
+    </select>
+    <div class="invalid-feedback">{{ $errors->first('category_id') }}</div>
   </div>
 </div>
 

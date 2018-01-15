@@ -4,6 +4,8 @@ class Dcpp extends Controller
 {
     public function index()
     {
+        \Breadcrumbs::pop();
+
         return view($this->view, ['page' => 'index']);
     }
 

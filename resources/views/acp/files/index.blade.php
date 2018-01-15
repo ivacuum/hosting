@@ -4,15 +4,15 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="text-right">
+    <th class="text-md-right">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
     <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'title') }}</th>
     <th></th>
-    <th class="text-right">
+    <th class="text-md-right">
       @include('acp.tpl.sortable-header', ['key' => 'size'])
     </th>
-    <th class="text-right">
+    <th class="text-md-right">
       @include('acp.tpl.sortable-header', ['key' => 'downloads'])
     </th>
   </tr>
@@ -20,7 +20,7 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-      <td class="text-right">{{ $model->id }}</td>
+      <td class="text-md-right">{{ $model->id }}</td>
       <td>
         <a href="{{ path("$self@show", $model) }}">
           {{ $model->title }}
@@ -33,8 +33,8 @@
           </span>
         @endif
       </td>
-      <td class="text-right text-muted">{{ ViewHelper::size($model->size) }}</td>
-      <td class="text-right">{{ ViewHelper::number($model->downloads) }}</td>
+      <td class="text-md-right text-muted">{{ ViewHelper::size($model->size) }}</td>
+      <td class="text-md-right">{{ ViewHelper::number($model->downloads) }}</td>
     </tr>
   @endforeach
   </tbody>

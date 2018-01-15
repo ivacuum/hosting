@@ -41,56 +41,50 @@
   @endforeach
 </table>
 
-
-
-<form action="/acp/servers/{{ $server->id }}/ftp/file" method="post">
-  {{ ViewHelper::inputHiddenMail() }}
-  <div class="form-group {{ $errors->has('file') ? 'has-error' : '' }}">
-    <div class="input-group" style="width: 30em;">
-      <input class="form-control" name="file" value="{{ old('file') }}">
-      <span class="input-group-btn">
-        <button class="btn btn-default">
-          Создать файл
-        </button>
-      </span>
+<div class="mw-500 mt-3">
+  <form action="/acp/servers/{{ $server->id }}/ftp/file" method="post">
+    {{ ViewHelper::inputHiddenMail() }}
+      <div class="input-group">
+        <input class="form-control {{ $errors->has('file') ? 'is-invalid' : '' }}" name="file" value="{{ old('file') }}">
+        <div class="input-group-append">
+          <button class="btn btn-default">
+            Создать файл
+          </button>
+        </div>
     </div>
-  </div>
 
-  <input type="hidden" name="path" value="{{ $dir }}">
-  {{ csrf_field() }}
-</form>
+    <input type="hidden" name="path" value="{{ $dir }}">
+    {{ csrf_field() }}
+  </form>
 
-<form action="/acp/servers/{{ $server->id }}/ftp/dir" method="post">
-  {{ ViewHelper::inputHiddenMail() }}
-  <div class="form-group {{ $errors->has('dir') ? 'has-error' : '' }}">
-    <div class="input-group" style="width: 30em;">
-      <input class="form-control" name="dir" value="{{ old('dir') }}">
-      <span class="input-group-btn">
+  <form class="mt-3" action="/acp/servers/{{ $server->id }}/ftp/dir" method="post">
+    {{ ViewHelper::inputHiddenMail() }}
+    <div class="input-group">
+      <input class="form-control {{ $errors->has('dir') ? 'is-invalid' : '' }}" name="dir" value="{{ old('dir') }}">
+      <div class="input-group-append">
         <button class="btn btn-default">
           Создать папку
         </button>
-      </span>
+      </div>
     </div>
-  </div>
 
-  <input type="hidden" name="path" value="{{ $dir }}">
-  {{ csrf_field() }}
-</form>
+    <input type="hidden" name="path" value="{{ $dir }}">
+    {{ csrf_field() }}
+  </form>
 
-<form action="/acp/servers/{{ $server->id }}/ftp/upload" enctype="multipart/form-data" method="post">
-  {{ ViewHelper::inputHiddenMail() }}
-  <div class="form-group {{ $errors->has('file') ? 'has-error' : '' }}">
-    <div class="input-group" style="width: 30em;">
-      <input type="file" class="form-control" name="file">
-      <span class="input-group-btn">
+  <form class="mt-3" action="/acp/servers/{{ $server->id }}/ftp/upload" enctype="multipart/form-data" method="post">
+    {{ ViewHelper::inputHiddenMail() }}
+    <div class="input-group align-items-center">
+      <input class="{{ $errors->has('file') ? 'is-invalid' : '' }}" type="file" name="file">
+      <span class="input-group-append">
         <button class="btn btn-default">
           Загрузить файл
         </button>
       </span>
     </div>
-  </div>
 
-  <input type="hidden" name="path" value="{{ $dir }}">
-  {{ csrf_field() }}
-</form>
+    <input type="hidden" name="path" value="{{ $dir }}">
+    {{ csrf_field() }}
+  </form>
+</div>
 @endsection

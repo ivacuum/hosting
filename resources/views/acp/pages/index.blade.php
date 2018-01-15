@@ -1,10 +1,10 @@
 @extends('acp.base')
 
 @section('content')
-<h3 class="mt-0">
-  {{ trans("$tpl.index") }}
-  @include('acp.tpl.create')
-</h3>
+  <div class="d-flex align-items-center flex-wrap mb-2 mt--2">
+  <h3 class="mb-1 mr-3">{{ trans("$tpl.index") }}</h3>
+  @include('acp.tpl.create-button')
+</div>
 <table id="tree" class="table-stats">
   <thead>
     <tr>
@@ -29,8 +29,8 @@
 </table>
 
 <form class="form-inline mt-3">
-  <div class="form-group">
-    <select class="form-control" name="action" id="batch_action">
+  <div class="mr-1">
+    <select class="custom-select" name="action" id="batch_action">
       <option value="">Выберите действие...</option>
       <option value="activate">Включить</option>
       <option value="deactivate">Выключить</option>
@@ -40,13 +40,13 @@
   <button class="btn btn-default" id="batch_submit">Выполнить</button>
 </form>
 
-<span id="page_active_icon" class="hidden">
+<span hidden id="page_active_icon">
   <span class="text-success" title="Отображается">
     @svg (eye)
   </span>
 </span>
 
-<span id="page_edit_icon" class="hidden">
+<span hidden id="page_edit_icon">
   @svg (pencil)
 </span>
 @endsection

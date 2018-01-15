@@ -1,23 +1,19 @@
 @extends('base')
 
 @section('content')
-<div class="form-signin">
-  <h3 class="mt-0 mb-4 text-center">{{ trans('auth.password_remind_title') }}</h3>
+<div class="mx-auto mw-400">
+  <h3>{{ trans('auth.password_remind_title') }}</h3>
   <form action="{{ path('Auth\ForgotPassword@sendResetLink') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
-    <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-      <input autofocus required class="form-control" type="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{ trans('auth.email') }}">
-      @if ($errors->has('email'))
-        <span class="help-block">{{ $errors->first('email') }}</span>
-      @endif
+    <div class="my-3">
+      <input autofocus required class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{ trans('auth.email') }}">
+      <div class="invalid-feedback">{{ $errors->first('email') }}</div>
     </div>
 
-    <div class="text-center">
-      <button class="btn btn-primary btn-lg">
-        {{ trans('auth.password_remind') }}
-      </button>
-    </div>
+    <button class="btn btn-primary btn-lg">
+      {{ trans('auth.password_remind') }}
+    </button>
 
     {{ csrf_field() }}
   </form>

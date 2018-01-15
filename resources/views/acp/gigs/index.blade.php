@@ -4,14 +4,14 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="text-right">#</th>
+    <th class="text-md-right">#</th>
     <th>Название</th>
     <th></th>
     <th class="text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'date'])
     </th>
     <th>URL</th>
-    <th class="text-right text-nowrap">
+    <th class="text-md-right text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
     </th>
     <th></th>
@@ -20,7 +20,7 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-      <td class="text-right">{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
+      <td class="text-md-right">{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
       <td>
         <a href="{{ path("$self@show", $model) }}">
           {{ $model->title }}
@@ -37,7 +37,7 @@
           {{ $model->slug }}
         </a>
       </td>
-      <td class="text-right">
+      <td class="text-md-right">
         @if ($model->views > 0)
           {{ ViewHelper::number($model->views) }}
         @endif

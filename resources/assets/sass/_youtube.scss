@@ -1,7 +1,4 @@
 .youtube-container {
   .svg-icon { color: #cd201f; }
-  .youtube-video {
-    width: 100%;
-    height: 100%;
-  }
+  .youtube-video { @include size(100%); }
 }

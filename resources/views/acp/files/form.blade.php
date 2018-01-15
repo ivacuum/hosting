@@ -9,16 +9,16 @@
   App\File::STATUS_PUBLISHED => 'Опубликован',
 ])->html() !!}
 
-<div class="form-group {{ $errors->has('file') ? 'has-error' : '' }}">
-  <label class="col-md-3 control-label">{{ ViewHelper::modelFieldTrans('file', 'file') }}:</label>
+<div class="form-group form-row">
+  <label class="col-md-4 col-form-label text-md-right">{{ ViewHelper::modelFieldTrans('file', 'file') }}</label>
   <div class="col-md-6">
-    <label class="custom-file">
-      <input class="custom-file-input" type="file" name="file">
-      <span class="custom-file-control"></span>
-    </label>
-    <span class="help-block">Не более 100 МБ</span>
+    <div class="custom-file">
+      <input class="custom-file-input {{ $errors->has('file') ? 'is-invalid' : '' }}" type="file" name="file">
+      <label class="custom-file-label">Выберите файл...</label>
+    </div>
     @if ($errors->has('file'))
-      <span class="help-block">{{ $errors->first('file') }}</span>
+      <div class="invalid-feedback d-block">{{ $errors->first('file') }}</div>
     @endif
+    <div class="form-help">Не более 100 МБ</div>
   </div>
 </div>

@@ -1,18 +1,18 @@
 @extends('my.base')
 
 @section('content')
-<h3 class="mt-2 mb-3">
+<h3>
   {{ trans('my.trips') }}
-  <small>{{ ViewHelper::number($models->total()) }}</small>
+  <small class="text-muted">{{ ViewHelper::number($models->total()) }}</small>
   <a class="btn btn-success" href="{{ path('MyTrips@create') }}">
     {{ trans('acp.trips.create') }}
   </a>
   @if (optional(Auth::user())->login)
-    <a class="btn btn-default" href="{{ path('UserTravelTrips@index', \Auth::user()->login) }}">
+    <a class="btn btn-default my-1" href="{{ path('UserTravelTrips@index', \Auth::user()->login) }}">
       Просмотреть
     </a>
   @endif
-  <a class="btn btn-default" href="{{ path('Docs@page', 'trips') }}">
+  <a class="btn btn-default my-1" href="{{ path('Docs@page', 'trips') }}">
     @svg (question-circle)
   </a>
 </h3>
@@ -21,20 +21,20 @@
   <table class="table-stats table-adaptive">
     <thead>
     <tr>
-      <th class="text-right">#</th>
+      <th class="text-md-right">#</th>
       <th>{{ ViewHelper::modelFieldTrans('trip', 'title') }}</th>
       <th></th>
       <th>Дата начала</th>
       <th>{{ ViewHelper::modelFieldTrans('trip', 'slug') }}</th>
-      <th class="text-right text-nowrap">@svg (eye)</th>
-      <th class="text-right text-nowrap">@svg (comment-o)</th>
+      <th class="text-md-right text-nowrap">@svg (eye)</th>
+      <th class="text-md-right text-nowrap">@svg (comment-o)</th>
       <th></th>
     </tr>
     </thead>
     <tbody>
     @foreach ($models as $model)
       <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-        <td class="text-right"><span class="d-sm-none">#</span>{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
+        <td class="text-md-right"><span class="d-sm-none">#</span>{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
         {{--
         <td><a href="{{ path("$self@show", $model) }}">{{ $model->title }}</a></td>
         --}}
@@ -58,12 +58,12 @@
             {{ $model->slug }}
           @endif
         </td>
-        <td class="text-right">
+        <td class="text-md-right">
           @if ($model->views > 0)
             {{ ViewHelper::number($model->views) }}
           @endif
         </td>
-        <td class="text-right">
+        <td class="text-md-right">
           @if ($model->comments_count > 0)
             {{ ViewHelper::number($model->comments_count) }}
           @endif

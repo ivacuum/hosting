@@ -3,18 +3,18 @@
 ])
 
 @section('content')
-<div class="h2 mt-0">Документация</div>
+<div class="h2">Документация</div>
 <p>Подборка различных инструкций.</p>
 
 <section>
-  <div class="h3 mt-0">Справка</div>
+  <div class="h3">Справка</div>
   <ul class="list-unstyled">
     <li><a class="link" href="/docs/trips">Поездки</a></li>
   </ul>
 </section>
 
 <section>
-  <div class="h3 mt-0">Хостинг</div>
+  <div class="h3">Хостинг</div>
   <ul class="list-unstyled">
     <li><a class="link" href="/docs/amazon-s3">Amazon S3</a></li>
     <li><a class="link" href="/docs/freebsd">FreeBSD</a></li>
@@ -23,16 +23,16 @@
 </section>
 
 <section>
-  <div class="h3 mt-0">Веб-технологии</div>
+  <div class="h3">Веб-технологии</div>
   <ul class="list-unstyled">
     <li>
-      <a class="link" href="https://developers.whatwg.org/">
+      <a class="link" href="https://developers.whatwg.org/" rel="nofollow">
         HTML Standart
         @svg (external-link)
       </a>
     </li>
     <li>
-      <a class="link" href="http://www.phptherightway.com/">
+      <a class="link" href="http://www.phptherightway.com/" rel="nofollow">
         PHP: The Right Way
         @svg (external-link)
       </a>

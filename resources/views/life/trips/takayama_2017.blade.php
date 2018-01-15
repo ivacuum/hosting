@@ -311,9 +311,7 @@
   'IMG_7624.jpg',
 ]])
 
-<p style="height: 15em;"></p>
-<p class="text-center">* * * * *</p>
-<p style="height: 15em;"></p>
+<p class="text-center" style="margin-top: 50vh; margin-bottom: 50vh;">* * * * *</p>
 
 @ru
   <p>Вернемся в наше время. Новый день — новые поезда. У этого широкие панорамные окна.</p>
@@ -466,9 +464,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_7694.jpg'])
 
 @ru
-  <p>Конечно, самый современный! Воткнутый в розетку и с кучей кнопок. Некоторые люди сравнивают его панель управления с таковой у космического корабля. На самом деле полезно изучить его возможности и потом ими пользоваться. Кстати, розетки во всей стране американские <a class="link" href="http://www.iec.ch/worldplugs/typeA.htm">типа A</a> и <a class="link" href="http://www.iec.ch/worldplugs/typeB.htm">типа B</a>.</p>
+  <p>Конечно, самый современный! Воткнутый в розетку и с кучей кнопок. Некоторые люди сравнивают его панель управления с таковой у космического корабля. На самом деле полезно изучить его возможности и потом ими пользоваться. Кстати, розетки во всей стране американские <a class="link" href="http://www.iec.ch/worldplugs/typeA.htm" rel="nofollow">типа A</a> и <a class="link" href="http://www.iec.ch/worldplugs/typeB.htm">типа B</a>.</p>
 @en
-  <p>The modern one indeed! Plugged into a power outlet and with many buttons. Some people compare the amount of buttons with a spaceship navigation panel. Anyway, it makes sense to get used to them. It proves useful later on. By the way, power outlets are <a class="link" href="http://www.iec.ch/worldplugs/typeA.htm">type A</a> and <a class="link" href="http://www.iec.ch/worldplugs/typeB.htm">type B</a> throughout the country.</p>
+  <p>The modern one indeed! Plugged into a power outlet and with many buttons. Some people compare the amount of buttons with a spaceship navigation panel. Anyway, it makes sense to get used to them. It proves useful later on. By the way, power outlets are <a class="link" href="http://www.iec.ch/worldplugs/typeA.htm" rel="nofollow">type A</a> and <a class="link" href="http://www.iec.ch/worldplugs/typeB.htm">type B</a> throughout the country.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7695.jpg'])
 

@@ -8,13 +8,13 @@
 ])
 
 @section('content')
-<h1 class="h2 mt-0">Chillout</h1>
+<h1 class="h2">Chillout</h1>
 <p>Спокойная музыка для фона.</p>
 
 <ul>
   <li>
     <a class="link" href="https://vk.com/audios-23004022">Chillout Breeze by M.SOUND</a>
-    <span class="text-muted">более 50 часовых сетов</span>
+    <span class="small text-muted">более 50 часовых сетов</span>
   </li>
 </ul>
 @endsection

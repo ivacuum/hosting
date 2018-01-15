@@ -7,12 +7,12 @@
   vertical-align: bottom;
   align-self: flex-end;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     flex: 0 0 33.3333%;
     max-width: 33.3333%;
   }
 
-  @media (min-width: $screen-md-min) {
+  @include media-breakpoint-up(lg) {
     flex: 0 0 20%;
     max-width: 20%;
   }
@@ -60,15 +60,29 @@
 
 .image-fit-viewport { max-height: 90vh; }
 
-.image-sm-4x3-2col {
-  @media (min-width: $screen-sm-min) { height: (720px / 2 * .75); }
-  @media (min-width: $screen-md-min) { height: (940px / 2 * .75); }
-  @media (min-width: $screen-lg-min) { height: (1140px / 2 * .75); }
+.image-tint {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include size(100%);
+    background-image: linear-gradient(rgba(26, 26, 26, 0.1) 0%, rgba(26, 26, 26, 0.3) 50%);
+  }
 }
 
-.image-md-4x3-3col {
-  @media (min-width: $screen-md-min) { height: (940px / 3 * .75); }
-  @media (min-width: $screen-lg-min) { height: (1140px / 3 * .75); }
+.image-sm-4x3-2col {
+  @include media-breakpoint-up(sm) { height: (map_get($container-max-widths, sm) - $grid-gutter-width) / 2 * .75; }
+  @include media-breakpoint-up(md) { height: (map_get($container-max-widths, md) - $grid-gutter-width) / 2 * .75; }
+  @include media-breakpoint-up(lg) { height: (map_get($container-max-widths, lg) - $grid-gutter-width) / 2 * .75; }
+  @include media-breakpoint-up(xl) { height: (map_get($container-max-widths, xl) - $grid-gutter-width) / 2 * .75; }
+}
+
+.image-lg-4x3-3col {
+  @include media-breakpoint-up(lg) { height: (map_get($container-max-widths, lg) - $grid-gutter-width) / 3 * .75; }
+  @include media-breakpoint-up(xl) { height: (map_get($container-max-widths, xl) - $grid-gutter-width) / 3 * .75; }
 }
 
 .screenshot {
@@ -76,6 +90,7 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175);
   background-clip: padding-box;
   max-width: 100%;
+  height: auto;
 }
 
 .screenshot-link .screenshot:hover { border-color: $link-hover-border-color; }
@@ -91,6 +106,6 @@
     max-height: 90vh;
     max-width: 100%;
 
-    @media (min-width: $screen-sm-min) { border-radius: $border-radius-large; }
+    @include media-breakpoint-up(md) { border-radius: $border-radius-lg; }
   }
 }

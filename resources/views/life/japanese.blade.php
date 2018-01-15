@@ -9,15 +9,15 @@ https://en.wikipedia.org/wiki/List_of_kanji_by_concept
 --}}
 
 @section('content')
-<h2 class="mt-0">{{ trans('life.japanese') }}</h2>
+<h2>{{ trans('life.japanese') }}</h2>
 @ru
   <p>В ходе изучения языка попалось много разной информации, которую хотелось бы зафиксировать. Эдакий пересказ как в нем все устроено в общих чертах.</p>
 @endru
 
 @ru
-  <p class="mb-2">Полезные ресурсы. Все на английском, так как на нем материалов доступно в разы больше, чем на родном.</p>
+  <div class="mb-1">Полезные ресурсы. Все на английском, так как на нем материалов доступно в разы больше, чем на родном.</div>
 @en
-  <p class="mb-2">Useful resources:</p>
+  <div class="mb-1">Useful resources:</div>
 @endru
 <ul>
   <li>

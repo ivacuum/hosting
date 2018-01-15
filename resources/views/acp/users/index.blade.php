@@ -4,11 +4,21 @@
 
 @section('heading-after-search')
 @include('acp.tpl.dropdown-filter', [
-  'field' => 'filter',
+  'field' => 'last_login_at',
   'values' => [
-    'Все' => '',
-    'Заходили на неделе' => 'weekly-login',
-    'Заходили в месяце' => 'monthly-login',
+    'Неважно' => null,
+    '---' => null,
+    'Неделя' => 'week',
+    'Месяц' => 'month',
+  ]
+])
+@include('acp.tpl.dropdown-filter', [
+  'field' => 'avatar',
+  'values' => [
+    'Все' => null,
+    '---' => null,
+    'Есть' => 1,
+    'Нет' => 0,
   ]
 ])
 @endsection
@@ -17,21 +27,24 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="text-right">
+    <th class="text-md-right">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
     <th>Электронная почта</th>
+    @if ($avatar)
+      <th>Аватар</th>
+    @endif
     <th>Активен</th>
-    <th class="text-right text-nowrap">
+    <th class="text-md-right text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
     </th>
-    <th class="text-right text-nowrap">
+    <th class="text-md-right text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'images_count', 'svg' => 'picture-o'])
     </th>
-    <th class="text-right text-nowrap">
+    <th class="text-md-right text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'torrents_count', 'svg' => 'magnet'])
     </th>
-    <th class="text-right text-nowrap">
+    <th class="text-md-right text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'trips_count', 'svg' => 'plane'])
     </th>
     <th>Дата реги</th>
@@ -43,39 +56,47 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-      <td class="text-right">{{ $model->id }}</td>
+      <td class="text-md-right">{{ $model->id }}</td>
       <td>
         <a href="{{ path("$self@show", $model) }}">
           {{ $model->email }}
         </a>
+        @if ($model->login)
+          <div class="small text-muted">{{ $model->login }}</div>
+        @endif
       </td>
+      @if ($avatar)
+      <td>
+        @include('tpl.avatar', ['user' => $model])
+      </td>
+      @endif
       <td>
         @if ($model->status === App\User::STATUS_ACTIVE)
           Да
         @endif
       </td>
-      <td class="text-right">
+      <td class="text-md-right">
         @if ($model->comments_count > 0)
           <a href="{{ path('Acp\Comments@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->comments_count) }}
           </a>
         @endif
       </td>
-      <td class="text-right">
+      <td class="text-md-right">
         @if ($model->images_count > 0)
           <a href="{{ path('Acp\Images@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->images_count) }}
           </a>
         @endif
       </td>
-      <td class="text-right">
+      <td class="text-md-right">
         @if ($model->torrents_count > 0)
           <a href="{{ path('Acp\Torrents@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->torrents_count) }}
           </a>
         @endif
       </td>
-      <td class="text-right">
+      <td class="text-md-right">
         @if ($model->trips_count > 0)
           <a href="{{ path('Acp\Trips@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->trips_count) }}

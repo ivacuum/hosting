@@ -11,7 +11,7 @@ a[href^="http"]:empty::before { content: attr(href); }
   &:hover,
   &:focus,
   &.active,
-  .link-highlighted-parent:hover & {
+  .link-parent:hover & {
     border-color: $link-hover-border-color !important;
     color: $link-hover-color !important;
 
@@ -21,7 +21,7 @@ a[href^="http"]:empty::before { content: attr(href); }
   &.active { border: none; }
 
   &:visited,
-  .link-highlighted-parent:visited & {
+  .link-parent:visited & {
     border-color: $link-visited-border-color;
     color: $link-visited-color;
 

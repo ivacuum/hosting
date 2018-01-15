@@ -17,12 +17,11 @@
 .has-unread-label:after {
   background: #ed4956;
   border-radius: 50%;
-  bottom: 5px;
+  bottom: 1px;
   content: '';
   position: absolute;
   left: 0;
   margin: 0 auto;
   right: 0;
-  height: 4px;
-  width: 4px;
+  @include size(4px);
 }

@@ -8,7 +8,7 @@
 @parent
 @include('tpl.city-timeline')
 <div class="d-flex flex-wrap align-items-center mb-2">
-  <h1 class="h2 mt-0 mb-1 mr-2">
+  <h1 class="h2 mb-1 mr-2">
     {{ $trip->city->country->emoji }}
     {{ $trip->title }}
   </h1>
@@ -20,9 +20,9 @@
   @endif
 </div>
 <time datetime="{{ $trip->date_start->toDateString() }}"></time>
-<div hidden id="trip_city_map" class="trip-city-map"></div>
+<div id="trip_city_map" class="trip-city-map mb-3" style="display: none;"></div>
 
-<div class="trip-text js-trip-shortcuts">
+<div class="mw-1000 js-trip-shortcuts">
 @endsection
 
 @section('content')

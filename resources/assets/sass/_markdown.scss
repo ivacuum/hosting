@@ -3,5 +3,5 @@
   max-height: 90vh;
   height: auto;
 
-  @media (min-width: $screen-sm-min) { border-radius: $border-radius-large; }
+  @include media-breakpoint-up(md) { border-radius: $border-radius-lg; }
 }

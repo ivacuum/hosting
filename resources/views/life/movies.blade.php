@@ -8,11 +8,11 @@
 ])
 
 @section('content')
-<h1 class="h2 mt-0">Фильмы и сериалы, достойные многократного просмотра</h1>
+<h1 class="h2">Фильмы и сериалы, достойные многократного просмотра</h1>
 <p>Под годом ниже подразумевается год выпуска, а не год просмотра.</p>
 
 <div class="movies-container">
-  <div class="h2">2017 год</div>
+  <div class="h3">2017 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "13 причин почему\n13 Reasons Why", 'id' => 582358],
@@ -22,8 +22,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">2016 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">2016 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Хардкор\nHardcore Henry", 'id' => 778218],
@@ -33,8 +33,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">2015 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">2015 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Головоломка\nInside Out", 'id' => 645118],
@@ -44,8 +44,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">2014 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">2014 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Бёрдмэн\nBirdman", 'id' => 722827],
@@ -60,8 +60,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">2013 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">2013 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Далласский клуб покупателей\nDallas Buyers Club", 'id' => 260162],
@@ -72,10 +72,20 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">2011 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">2012 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
+      ['title' => "Связь\nCoherence", 'id' => 760829],
+    ]
+  ])
+</div>
+
+<div class="movies-container mt-5">
+  <div class="h3">2011 год</div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => "Black Mirror\nЧерное зеркало", 'id' => 655800],
       ['title' => "Родина\nHomeland", 'id' => 574688],
       ['title' => "1+1\nIntouchables", 'id' => 535341],
       ['title' => "Бесстыдники\nShameless", 'id' => 571335],
@@ -85,8 +95,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">2010 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">2010 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Экспорт Рэймонда\nExporting Raymond", 'id' => 581145],
@@ -97,8 +107,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">2009 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">2009 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Три идиота\n3 Idiots", 'id' => 423210],
@@ -106,8 +116,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">2008 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">2008 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Бобро поржаловать!\nBienvenue chez les Ch'tis", 'id' => 391735],
@@ -119,8 +129,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">2007 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">2007 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Залечь на дно в Брюгге\nIn Bruges", 'id' => 276295],
@@ -132,8 +142,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">2006 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">2006 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Жизнь других\nDas Leben der Anderen", 'id' => 126196],
@@ -144,8 +154,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">2005 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">2005 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Счастливое число Слевина\nLucky Number Slevin", 'id' => 86326],
@@ -153,8 +163,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">2004 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">2004 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Вечное сияние чистого разума\nEternal Sunshine of the Spotless Mind", 'id' => 5492],
@@ -163,8 +173,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">2002 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">2002 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Поймай меня, если сможешь\nCatch Me If You Can", 'id' => 324],
@@ -172,8 +182,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">2000 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">2000 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Изгой\nCast Away", 'id' => 627],
@@ -182,8 +192,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">1999 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">1999 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Бойцовский клуб\nFight Club", 'id' => 361],
@@ -193,8 +203,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">1998 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">1998 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Карты, деньги, два ствола\nLock, Stock and Two Smoking Barrels", 'id' => 522],
@@ -203,8 +213,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">1997 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">1997 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Секреты Лос-Анджелеса\nL.A. Confidential", 'id' => 363],
@@ -213,8 +223,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">1996 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">1996 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Заводила\nKingpin", 'id' => 4343],
@@ -222,8 +232,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">1993 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">1993 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "День сурка\nGroundhog Day", 'id' => 527],
@@ -231,8 +241,8 @@
   ])
 </div>
 
-<div class="movies-container">
-  <div class="h2">1991 год</div>
+<div class="movies-container mt-5">
+  <div class="h3">1991 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Терминатор 2: Судный день\nTerminator 2: Judgement Day", 'id' => 444],

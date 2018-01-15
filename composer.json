@@ -8,7 +8,7 @@
     "foolz/sphinxql-query-builder": "1.1.1",
     "guzzlehttp/guzzle": "~6.0",
     "irazasyed/telegram-bot-sdk": "^2.0",
-    "ivacuum/generic": "~0.7",
+    "ivacuum/generic": "~1.0",
     "laravel/framework": "5.5.*",
     "laravel/socialite": "^3.0",
     "league/flysystem-sftp": "^1.0",

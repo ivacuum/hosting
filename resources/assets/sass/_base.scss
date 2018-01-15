@@ -1,10 +1,4 @@
-html {
-  font-size: $font-size-root;
-  height: 100%;
-
-  // В IE10 так не пропадает контент после закрытия модального окна
-  overflow-y: scroll;
-}
+html { height: 100%; }
 
 body {
   display: flex;
@@ -12,28 +6,41 @@ body {
   min-height: 100%;
 }
 
-// Чтобы страница не проматывалась в начало,
-// когда показываются модальные окна bootstrap
-body.modal-open { overflow: visible; }
+blockquote { margin-top: .5rem; }
 
-blockquote {
-  padding: 0 1.25rem;
-  margin: .5rem 0 1rem;
+label {
+  font-weight: $font-weight-bold;
+  line-height: 1.25;
 }
+
+mark {
+  padding-top: 0;
+  margin-left: -$mark_padding;
+  margin-right: -$mark_padding;
+  white-space: nowrap; // Для Firefox, чтобы не было переноса строк
+}
+
+ol, ul { padding-left: 1.25rem; }
+
+section { padding-top: 2rem; }
+
+.container-flex { flex: 1 0 auto; }
+.cursor-pointer { cursor: pointer; }
 
 .footer {
   background-color: #fafafa;
-  border-top: 1px solid $border-color;
-  padding-top: 0.7rem;
-  padding-bottom: 0.8rem;
-  margin-top: 1.5rem;
+  border-top: $border-width solid $border-color;
+  padding-top: .7rem;
+  padding-bottom: .8rem;
   color: $gray-light;
   font-size: 13px;
   line-height: 18px;
   min-height: 43px;
 }
 
-kbd {
+.hover-opacity-85:hover { opacity: .85; }
+
+.kbd {
   padding: 0 8px;
   color: #333;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 1.0);
@@ -43,15 +50,3 @@ kbd {
   border-top-color: #ddd;
   border-radius: 4px;
 }
-
-mark { padding-top: 0; }
-p { margin-bottom: 1rem; }
-small { font-size: 12px; }
-section { padding-top: 30px; }
-
-.alert ul,
-.alert ol {
-  margin-bottom: 0;
-}
-
-.container-flex { flex: 1 0 auto; }

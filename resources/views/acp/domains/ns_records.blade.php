@@ -36,11 +36,11 @@
       </tr>
     </thead>
     <tr class="ns-record-container" data-action="{{ path("$self@addNsRecord", $model) }}">
-      <td class="text-right">
-        <input name="subdomain" value="@" class="text-right w-100">
+      <td>
+        <input class="form-control form-control-sm text-right" name="subdomain" value="@">
       </td>
-      <td class="text-center">
-        <select name="type">
+      <td>
+        <select class="custom-select custom-select-sm" name="type">
           <option value="A" selected>A</option>
           <option value="CNAME">CNAME</option>
           <option value="AAAA">AAAA</option>
@@ -51,23 +51,23 @@
         </select>
       </td>
       <td>
-        <input class="w-100" name="content">
-        <br><input class="w-100" name="priority" placeholder="priority [MX, SRV]">
-        <br><input class="w-100" name="port" placeholder="port [SRV]">
-        <br><input class="w-100" name="weight" placeholder="weight [SRV]">
+        <input class="form-control form-control-sm" name="content">
+        <input class="form-control form-control-sm mt-1" name="priority" placeholder="priority [MX, SRV]">
+        <input class="form-control form-control-sm mt-1" name="port" placeholder="port [SRV]">
+        <input class="form-control form-control-sm mt-1" name="weight" placeholder="weight [SRV]">
       </td>
       <td>
-        <a class="pseudo js-ns-record-add">добавить днс-запись</a>
+        <a class="btn btn-default js-ns-record-add" href="#">добавить</a>
       </td>
     </tr>
     @foreach ($records as $record)
       <tr class="ns-record-container">
-        <td class="text-right">
-          <div class="presentation">
+        <td>
+          <div class="presentation text-right">
             {{ $record->subdomain }}
           </div>
-          <div class="edit hidden">
-            <input name="subdomain" value="{{ $record->subdomain }}" class="text-right" style="width: 100%;">
+          <div hidden class="edit">
+            <input class="form-control form-control-sm text-right" name="subdomain" value="{{ $record->subdomain }}">
           </div>
         </td>
         <td class="text-center">
@@ -94,20 +94,20 @@
               <br><span class="text-muted">ttl</span>: {{ $record->ttl }}
             @endif
           </div>
-          <div class="edit hidden">
-            <input class="w-100" name="content" value="{{ $record->content }}" {{ $record->type == 'SOA' ? 'readonly' : '' }}>
+          <div hidden class="edit">
+            <input class="form-control form-control-sm w-100" name="content" value="{{ $record->content }}" {{ $record->type == 'SOA' ? 'readonly' : '' }}>
             @if ($record->priority > 0)
-              <br><input class="w-100" name="priority" value="{{ $record->priority }}" placeholder="priority">
+              <input class="form-control form-control-sm mt-1 w-100" name="priority" value="{{ $record->priority }}" placeholder="priority">
             @endif
             @if ($record->type == 'SRV')
-              <br><input class="w-100" name="port" value="{{ $record->port }}" placeholder="port">
-              <br><input class="w-100" name="weight" value="{{ $record->weight }}" placeholder="weight">
+              <input class="form-control form-control-sm mt-1 w-100" name="port" value="{{ $record->port }}" placeholder="port">
+              <input class="form-control form-control-sm mt-1 w-100" name="weight" value="{{ $record->weight }}" placeholder="weight">
             @endif
             @if ($record->type == 'SOA')
-              <br><input class="w-100" name="retry" value="{{ $record->retry }}" placeholder="retry">
-              <br><input class="w-100" name="refresh" value="{{ $record->refresh }}" placeholder="refresh">
-              <br><input class="w-100" name="expire" value="{{ $record->expire }}" placeholder="expire">
-              <br><input class="w-100" name="ttl" value="{{ $record->ttl }}" placeholder="ttl">
+              <input class="form-control form-control-sm mt-1 w-100" name="retry" value="{{ $record->retry }}" placeholder="retry">
+              <input class="form-control form-control-sm mt-1 w-100" name="refresh" value="{{ $record->refresh }}" placeholder="refresh">
+              <input class="form-control form-control-sm mt-1 w-100" name="expire" value="{{ $record->expire }}" placeholder="expire">
+              <input class="form-control form-control-sm mt-1 w-100" name="ttl" value="{{ $record->ttl }}" placeholder="ttl">
             @endif
             <input type="hidden" name="record_id" value="{{ $record->record_id }}">
             {{ method_field('PUT') }}
@@ -115,16 +115,14 @@
         </td>
         <td>
           <div class="presentation">
-            <a class="pseudo js-ns-record-edit">настроить</a>
-            &nbsp;
-            <a class="pseudo js-ns-record-delete" data-id="{{ $record->record_id }}" data-action="{{ path("$self@deleteNsRecord", $model) }}">
+            <a class="pseudo js-ns-record-edit mr-2" href="#">настроить</a>
+            <a class="pseudo js-ns-record-delete" data-id="{{ $record->record_id }}" data-action="{{ path("$self@deleteNsRecord", $model) }}" href="#">
               @svg (times)
             </a>
           </div>
-          <div class="edit hidden">
-            <a class="pseudo js-ns-record-save" data-action="{{ path("$self@editNsRecord", $model) }}">сохранить</a>
-            &nbsp;
-            <a class="pseudo js-ns-record-cancel">
+          <div hidden class="edit">
+            <a class="pseudo js-ns-record-save mr-2" data-action="{{ path("$self@editNsRecord", $model) }}" href="#">сохранить</a>
+            <a class="pseudo js-ns-record-cancel" href="#">
               @svg (rotate-left)
             </a>
           </div>
@@ -134,8 +132,8 @@
   </table>
 
   <form class="form-inline mt-3" action="{{ path("$self@setServerNsRecords", $model) }}" method="post">
-    <p>
-      <select class="form-control" name="server">
+    <div class="d-inline-block mr-1">
+      <select class="custom-select" name="server">
         <option value="">-----</option>
         <option>srv1.korden.net</option>
         <option>srv2.korden.net</option>
@@ -145,10 +143,10 @@
         <option>srv1.ivacuum.ru</option>
         <option>srv2.ivacuum.ru</option>
       </select>
-      <button class="btn btn-default">
-        Прописать днс-записи сервера
-      </button>
-    </p>
+    </div>
+    <button class="btn btn-default">
+      Прописать днс-записи сервера
+    </button>
     {{ csrf_field() }}
   </form>
 @elseif ($model->yandex_user_id)

@@ -281,9 +281,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_1616.jpg'])
 
 @ru
-  <ul class="list-unstyled">
-    <li>— На чем гоняешь?</li>
-    <li>— На бэхе.</li>
+  <ul class="list-dialog">
+    <li>На чем гоняешь?</li>
+    <li>На бэхе.</li>
   </ul>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1617.jpg'])

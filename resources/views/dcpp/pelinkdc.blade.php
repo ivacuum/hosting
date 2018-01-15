@@ -10,6 +10,6 @@
 @ru
   <p><strong>PeLinkDC++</strong> — облегченная версия <a class="link" href="{{ path('Dcpp@page', 'greylinkdc') }}">GreyLinkDC++</a>. Поставляется с набором различных дополнений.</p>
 @en
-<p><strong>PeLinkDC++</strong> is a light version of <a class="link" href="{{ path('Dcpp@page', 'greylinkdc') }}">GreyLinkDC++</a>.</p>
+<p><strong>PeLinkDC++</strong> is a light version of <a class="link" href="{{ path('Dcpp@page', 'greylinkdc') }}">GreyLinkDC++</a> with a set of plugins.</p>
 @endru
 @endsection

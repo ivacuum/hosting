@@ -19,8 +19,8 @@ class YandexDns {
   static cancelEditing(e) {
     let $form = $(this).closest('.ns-record-container')
 
-    $('.edit', $form).addClass('hidden')
-    $('.presentation', $form).removeClass('hidden')
+    $('.edit', $form).get().forEach(el => el.hidden = true)
+    $('.presentation', $form).get().forEach(el => el.hidden = false)
 
     e.preventDefault()
   }
@@ -47,8 +47,8 @@ class YandexDns {
   static editRecord(e) {
     let $form = $(this).closest('.ns-record-container')
 
-    $('.edit', $form).removeClass('hidden')
-    $('.presentation', $form).addClass('hidden')
+    $('.edit', $form).get().forEach(el => el.hidden = false)
+    $('.presentation', $form).get().forEach(el => el.hidden = true)
 
     e.preventDefault()
   }

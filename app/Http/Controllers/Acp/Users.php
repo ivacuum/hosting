@@ -8,17 +8,29 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 class Users extends Controller
 {
     protected $sortable_keys = ['id', 'last_login_at', 'comments_count', 'images_count', 'torrents_count', 'trips_count'];
-    protected $show_with_count = ['chat_messages', 'comments', 'images', 'torrents', 'trips'];
+    protected $show_with_count = ['chat_messages', 'comments', 'external_identities', 'images', 'torrents', 'trips'];
 
     public function index()
     {
         $q = request('q');
-        $filter = request('filter');
+        $avatar = request('avatar');
+        $last_login_at = request('last_login_at');
 
         [$sort_key, $sort_dir] = $this->getSortParams();
 
         $models = Model::withCount(['comments', 'images', 'torrents', 'trips'])
-            ->applyFilter($filter)
+            ->when($avatar, function (Builder $query) {
+                return $query->where('avatar', '<>', '');
+            })
+            ->when(!is_null($avatar) && !$avatar, function (Builder $query) {
+                return $query->where('avatar', '');
+            })
+            ->when($last_login_at === 'week', function (Builder $query) {
+                return $query->where('last_login_at', '>', now()->subWeek()->toDateTimeString());
+            })
+            ->when($last_login_at === 'month', function (Builder $query) {
+                return $query->where('last_login_at', '>', now()->subMonth()->toDateTimeString());
+            })
             ->when($q, function (Builder $query) use ($q) {
                 if (is_numeric($q)) {
                     return $query->where('id', $q);
@@ -29,7 +41,7 @@ class Users extends Controller
             ->orderBy($sort_key, $sort_dir)
             ->paginate();
 
-        return view($this->view, compact('filter', 'models'));
+        return view($this->view, compact('avatar', 'models'));
     }
 
     protected function mailCredentials(Model $model, $password)

@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'or' => 'or',
     'vk' => 'VK',
     'email' => 'E-mail',
     'login' => 'Login',
@@ -29,6 +30,6 @@ return [
     'password_remind' => 'Begin restoration',
     'signin_to_view_page' => 'You need to sign in to view requested page',
     'password_reset_title' => 'Setting up a new password',
-    'change_password_email' => 'Follow the link to set up a new password for your ivacuum.ru account',
+    'change_password_email' => 'Follow the link to set up a new password for your vacuum.name account',
     'password_remind_title' => 'Restore password',
 ];

@@ -1,24 +1,23 @@
 @extends('photos.base')
 
 @section('content')
-@foreach ($trips->chunk(3) as $chunk)
-  <div class="page-section">
-    @foreach ($chunk as $trip)
-      <div class="page-block page-block-1x3">
-        <div class="page-block-cover">
-          <div class="page-block-cover-image" style="background-image: linear-gradient(rgba(26, 26, 26, 0.1) 0%, rgba(26, 26, 26, 0.3) 50%), url({{ $trip->metaImage(400, 300) }});"></div>
-          <div class="page-block-cover-info">
-            <div class="page-block-cover-title">
-              {{ $trip->city->country->emoji }}
-              {{ $trip->title }}
-              <span class="page-block-cover-date">{{ $trip->localizedDate() }}</span>
-            </div>
-            <div class="page-block-cover-description">{{ $trip->meta_description }}</div>
-          </div>
-          <a class="page-block-cover-link" href="{{ path('Photos@trip', $trip) }}"></a>
+<div class="d-flex flex-wrap mobile-wide">
+  @foreach ($trips as $trip)
+    <div class="flex-basis-100 flex-sm-basis-50 flex-lg-basis-33 mx-auto mx-sm-0 position-relative">
+      <a class="d-block" href="{{ $trip->www() }}">
+        <div class="hover-opacity-85 image-tint">
+          <img class="image-fit-cover image-sm-4x3-2col image-lg-4x3-3col" src="{{ $trip->metaImage(500, 375) }}">
         </div>
-      </div>
-    @endforeach
-  </div>
-@endforeach
+        <div class="trip-cover-info p-3">
+          <div class="f18">
+            {{ $trip->city->country->emoji }}
+            {{ $trip->title }}
+            <span class="trip-cover-date">{{ $trip->timelinePeriod(true) }}</span>
+          </div>
+          <div class="trip-cover-description">{{ $trip->meta_description }}</div>
+        </div>
+      </a>
+    </div>
+  @endforeach
+</div>
 @endsection

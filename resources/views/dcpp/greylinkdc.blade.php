@@ -6,33 +6,52 @@
 ])
 
 @section('download_latest')
-<a class="btn btn-success mr-2" href="{{ path('Files@download', 145) }}">
-  @svg (windows)
+<a class="btn btn-success btn-lg my-1 mr-2" href="{{ path('Files@download', 145) }}">
+  <span class="mr-1">
+    @svg (windows)
+  </span>
   {{ trans('dcpp.download') }} 32-Bit &middot; {{ ViewHelper::size(3006464) }}
 </a>
-<a class="btn btn-success mr-2" href="{{ path('Files@download', 146) }}">
-  @svg (windows)
+<a class="btn btn-success btn-lg my-1 mr-2" href="{{ path('Files@download', 146) }}">
+  <span class="mr-1">
+    @svg (windows)
+  </span>
   {{ trans('dcpp.download') }} 64-Bit &middot; {{ ViewHelper::size(4219940) }}
 </a>
-@ru
-  <a class="btn btn-primary mr-2" href="{{ path('Files@download', 28) }}">
-    Файл русификации &middot; {{ ViewHelper::size(108876) }}
-  </a>
-  <a class="btn btn-default" href="{{ path('Dcpp@page', 'rus_setup') }}">Инструкция по русификации</a>
-@endru
 @endsection
 
 @section('about_software')
 @ru
-  <p><strong>GreyLinkDC++</strong> — очень удобная в использовании программа для файлообменных сетей, (использующая скачку непосредственно с компьютера на компьютер), уже полностью настроенная и готовая к использованию сразу после установки.</p>
-  <p>В программу уже внесен список самых лучших хабов, обеспечивающих наивысшие скорости, настройка приоритетов. Нужно только указать логин, папки для скачки и закачки (файлообменная сеть, использующая скачку непосредственно с компьютера на компьютер), тем самым достигаются огромные скорости скачивания любых файлов, в том числе последних новинок. Используя данную программу можно скачать фильм размером около 700 мб за 1,5-2 часа не имея высокоскоростного интернета.</p>
-  <h3>Основные преимущества</h3>
-  <ul>
-    <li>Улучшенная стабильность, низкое потребление ресурсов.</li>
-    <li>Использование процессорного времени при нахождении на хабах с большим числом юзеров значительно ниже (в сравнении с другими клиентами). Потребление памяти также немного ниже.</li>
-    <li>Восстановление недокачаных или повреждённых файлов. Из меню "Файл" выбирается "Восстановление файла", указывается правильный MAGNET-линк и расположение повреждённого файла.</li>
-  </ul>
+  <p><strong>GreyLinkDC++</strong> — очень удобная в использовании программа для файлообменных сетей DC++. В программу уже внесен список хабов с множеством высокоскоростных пользователей и выполнена настройка приоритетов, поэтому пользоваться можно сразу после установки. Вам остается лишь указать логин и папки для скачивания и раздачи. Если английский язык не ваш конек, то мы приготовили для вас русификатор и инструкцию по переключению языка.</p>
+  <div class="mt-4">
+    <a class="btn btn-primary my-1 mr-2" href="{{ path('Files@download', 28) }}">
+      Скачать русификатор &middot; {{ ViewHelper::size(108876) }}
+    </a>
+    <a class="btn btn-default my-1" href="{{ path('Dcpp@page', 'rus_setup') }}">Инструкция по русификации</a>
+  </div>
 @en
-  <p><strong>GreyLinkDC++</strong> is a stable and optimized DC++ client software.</p>
+  <p><strong>GreyLinkDC++</strong> is a stable and optimized DC++ client software. It is provided with a list of hubs with lots of high-speed users, so you can use it pretty much right away. The only thing you are left to do is to type your name and select folders to share.</p>
 @endru
+@endsection
+
+@section('software_features')
+<section class="my-0 py-5">
+  <div class="container">
+    @ru
+      <h3>Основные преимущества GreyLinkDC++</h3>
+      <ul>
+        <li>Улучшенная стабильность, низкое потребление ресурсов.</li>
+        <li>Использование процессорного времени при нахождении на хабах с большим числом пользователей значительно ниже по сравнению с другими клиентами. Потребление памяти также немного ниже.</li>
+        <li>Восстановление недокачанных и поврежденных файлов. Из меню «Файл» выбирается «Восстановление файла», указывается правильный магнет-линк и расположение поврежденного файла.</li>
+      </ul>
+    @en
+      <h3>Main features of GreyLinkDC++</h3>
+      <ul>
+        <li>Improved stability and low resource usage.</li>
+        <li>Low cpu usage on hubs with high amount of users in comparison with other DC++ clients. Memory footprint is also lower.</li>
+        <li>Ability to restore incomplete and corrupted files.</li>
+      </ul>
+    @endru
+  </div>
+</section>
 @endsection

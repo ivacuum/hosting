@@ -291,12 +291,12 @@ a:hover {
 
           <p>&nbsp;</p>
           <p>18.11.2013 — 11.03.2014</p>
-          <p><a href="http://www.smart-media.ru/">ООО МедиаКонтент</a></p>
+          <p><a href="http://www.smart-media.ru/" rel="nofollow">ООО МедиаКонтент</a></p>
           <p>Ведущий разработчик</p>
 
           <p>&nbsp;</p>
           <p>10.09.2007 &mdash; 31.05.2013</p>
-          <p><a href="http://www.korden.ru/">ООО Корден</a></p>
+          <p><a href="http://www.korden.ru/" rel="nofollow">ООО Корден</a></p>
           <p>Веб-программист</p>
         </div>
       </div>
@@ -368,20 +368,20 @@ a:hover {
     </li>
     <li>
       Технологии, софт:
-      <a href="http://www.ansible.com/">Ansible</a>,
-      <a href="http://bittorrent.org/">BitTorrent</a>,
-      <a href="http://cfengine.com/">CFEngine</a>,
-      <a href="http://jenkins-ci.org/">Jenkins</a>,
-      <a href="http://laravel.com/">Laravel</a>,
-      <a href="http://software.schmorp.de/pkg/libev.html">libev</a>,
-      <a href="http://memcached.org/">memcached</a>,
-      <a href="http://www.mysql.com/">MySQL</a>,
-      <a href="http://nginx.org/ru/">nginx</a>,
-      <a href="http://gardengnomesoftware.com/pano2vr.php">Pano2VR</a>,
-      <a href="http://sphinxsearch.com/">sphinxsearch</a>
+      <a href="http://www.ansible.com/" rel="nofollow">Ansible</a>,
+      <a href="http://bittorrent.org/" rel="nofollow">BitTorrent</a>,
+      <a href="http://cfengine.com/" rel="nofollow">CFEngine</a>,
+      <a href="http://jenkins-ci.org/" rel="nofollow">Jenkins</a>,
+      <a href="http://laravel.com/" rel="nofollow">Laravel</a>,
+      <a href="http://software.schmorp.de/pkg/libev.html" rel="nofollow">libev</a>,
+      <a href="http://memcached.org/" rel="nofollow">memcached</a>,
+      <a href="http://www.mysql.com/" rel="nofollow">MySQL</a>,
+      <a href="http://nginx.org/ru/" rel="nofollow">nginx</a>,
+      <a href="http://gardengnomesoftware.com/pano2vr.php" rel="nofollow">Pano2VR</a>,
+      <a href="http://sphinxsearch.com/" rel="nofollow">sphinxsearch</a>
     </li>
     <li>Прочие языки: HTML, CSS, SASS, JavaScript</li>
-    <li>Работа с API: <a href="https://developers.facebook.com/docs/reference/api/">Facebook</a>, <a href="http://developer.github.com/">GitHub</a>, <a href="https://code.google.com/apis/console/‎">Google</a>, <a href="http://mmedia.ozon.ru/multimedia/download/api_2.1_120115.pdf">OZON.ru</a>, <a href="https://vk.com/dev">VK</a>, <a href="http://wiki.webmoney.ru/projects/webmoney/wiki/wm-api">WebMoney</a>, <a href="http://api.yandex.ru/">Яндекс</a></li>
+    <li>Работа с API: <a href="https://developers.facebook.com/docs/reference/api/" rel="nofollow">Facebook</a>, <a href="http://developer.github.com/" rel="nofollow">GitHub</a>, <a href="https://code.google.com/apis/console/‎" rel="nofollow">Google</a>, <a href="http://mmedia.ozon.ru/multimedia/download/api_2.1_120115.pdf" rel="nofollow">OZON.ru</a>, <a href="https://vk.com/dev" rel="nofollow">VK</a>, <a href="http://wiki.webmoney.ru/projects/webmoney/wiki/wm-api" rel="nofollow">WebMoney</a>, <a href="http://api.yandex.ru/" rel="nofollow">Яндекс</a></li>
   </ul>
   <div class="my-caption">Выполненные проекты</div>
   <ul>
@@ -401,22 +401,22 @@ a:hover {
       2013 год
       <ul>
         <li>Проектирование хостинга для веб-студии Корден (централизованное управление кластером из 6 серверов)</li>
-        <li><a href="http://teploclubknauf.ru/">ТеплоКлуб</a> &mdash; совместный проект с компаниями <a href="http://www.knaufinsulation.ru/">Knauf Insulation</a> и <a href="http://www.ozon.ru/">OZON.ru</a></li>
-        <li><a href="https://github.com/ivacuum/fw">ivacuum.fw</a> &mdash; фреймворк для разработки сайтов</li>
+        <li><a href="http://teploclubknauf.ru/" rel="nofollow">ТеплоКлуб</a> &mdash; совместный проект с компаниями <a href="http://www.knaufinsulation.ru/">Knauf Insulation</a> и <a href="http://www.ozon.ru/">OZON.ru</a></li>
+        <li><a href="https://github.com/ivacuum/fw" rel="nofollow">ivacuum.fw</a> &mdash; фреймворк для разработки сайтов</li>
       </ul>
     </li>
     <li>
       2012 год
       <ul>
         <li>Организация рабочего процесса разработки сайтов в веб-студии Корден (тестовые площадки, использование системы контроля версий, работа в команде, использование системы интеграции для распространения кода по серверам)</li>
-        <li>Сборка виртуальных туров из панорам: <a href="http://nayadakaluga.ru/pano-moskovski">ТЦ Московский</a>, <a href="http://nayadakaluga.ru/pano-suvorovski">ТЦ Суворовский</a>, <a href="http://nayadakaluga.ru/pano-obninsk">Технокерамика</a></li>
-        <li><a href="http://kwan-park.ru/">kwan-park.ru</a> &mdash; разработка сайта спортивного комплекса Квань</li>
+        <li>Сборка виртуальных туров из панорам: <a href="http://nayadakaluga.ru/pano-moskovski" rel="nofollow">ТЦ Московский</a>, <a href="http://nayadakaluga.ru/pano-suvorovski">ТЦ Суворовский</a>, <a href="http://nayadakaluga.ru/pano-obninsk">Технокерамика</a></li>
+        <li><a href="http://kwan-park.ru/" rel="nofollow">kwan-park.ru</a> &mdash; разработка сайта спортивного комплекса Квань</li>
       </ul>
     </li>
     <li>
       2011 год
       <ul>
-        <li>Проектирование и разработка системы документооборота для сайта <a href="http://korden.org/">korden.org</a> &mdash; выставление счетов, актов, формирование договоров, оплата по безналичному переводу и WebMoney</li>
+        <li>Проектирование и разработка системы документооборота для сайта <a href="http://korden.org/" rel="nofollow">korden.org</a> &mdash; выставление счетов, актов, формирование договоров, оплата по безналичному переводу и WebMoney</li>
       </ul>
     </li>
     <li>
@@ -453,7 +453,7 @@ a:hover {
     <li>
       2006 год
       <ul>
-        <li><a href="http://school5.kaluga.ru/">school5.kaluga.ru</a> &mdash; сайт школы №5 города Калуги <span class="muted">[проект представлялся на выпускном экзамене]</span></li>
+        <li><a href="http://school5.kaluga.ru/" rel="nofollow">school5.kaluga.ru</a> &mdash; сайт школы №5 города Калуги <span class="muted">[проект представлялся на выпускном экзамене]</span></li>
       </ul>
     </li>
     <li>

@@ -1,42 +1,45 @@
-<div class="navbar navbar-default d-none d-sm-block {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'navbar-inverse' : '' }}">
+<div class="navbar navbar-border navbar-expand-md py-md-0 {{ $navbar_classes ?? 'd-none d-md-flex' }} {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'navbar-dark text-light' : 'navbar-light bg-light' }}">
   <div class="container">
-    <div class="navbar-collapse">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
       @section('brand')
-        <a class="navbar-brand" href="{{ path('Home@index') }}">vacuum<br>kaluga</a>
+        <a class="navbar-brand font-weight-bold py-md-0 text-center" href="{{ path('Home@index') }}">vacuum<br>kaluga</a>
       @show
-      <ul class="nav navbar-nav">
+      <ul class="navbar-nav mr-auto align-items-md-center">
         @section('global_menu')
-          <li>
-            <a class="{{ $self == 'Life' ? 'navbar-selected' : '' }}" href="{{ path('Life@index') }}">
+          <li class="nav-item {{ $self == 'Life' ? 'active' : '' }}">
+            <a class="nav-link" href="{{ path('Life@index') }}">
               {{ trans('menu.life') }}
             </a>
           </li>
-          <li>
-            <a class="{{ $self == 'News' ? 'navbar-selected' : '' }}" href="{{ path('News@index') }}">
+          <li class="nav-item {{ $self == 'News' ? 'active' : '' }}">
+            <a class="nav-link" href="{{ path('News@index') }}">
               {{ trans('news.index') }}
             </a>
           </li>
           @ru
-            <li>
-              <a class="{{ $self == 'Torrents' ? 'navbar-selected' : '' }}" href="{{ path('Torrents@index') }}">
+            <li class="nav-item {{ $self == 'Torrents' ? 'active' : '' }}">
+              <a class="nav-link" href="{{ path('Torrents@index') }}">
                 {{ trans('menu.torrents') }}
               </a>
             </li>
           @endru
-          <li>
-            <a class="{{ $self == 'Photos' ? 'navbar-selected' : '' }}" href="{{ path('Photos@trips') }}">
+          <li class="nav-item {{ $self == 'Photos' ? 'active' : '' }}">
+            <a class="nav-link" href="{{ path('Photos@trips') }}">
               {{ trans('photos.index') }}
             </a>
           </li>
         @show
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="navbar-nav align-items-md-center">
         @section('header_user')
           @if (Auth::check())
             @include('tpl.header-navbar-user')
           @else
-            <li>
-              <a href="{{ path('Auth\SignIn@index') }}">{{ trans('auth.signin') }}</a>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('Auth\SignIn@index') }}">{{ trans('auth.signin') }}</a>
             </li>
           @endif
         @show

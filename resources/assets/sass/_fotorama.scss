@@ -1,7 +1,7 @@
 .fotorama__wrap { margin: 0 auto; }
 
 .fotorama__wrap--css3 .fotorama__stage .fotorama__img {
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     border-radius: 6px !important;
   }
 }

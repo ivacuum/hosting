@@ -4,9 +4,9 @@
 ])
 
 @section('content')
-<div class="text-center center-block" style="max-width: 600px;">
+<div class="mw-600">
   <img src="https://ivacuum.org/i/services/firstvds.png" width="135" height="72" onclick="location.href='https://firstvds.ru/?from=149161'">
-  <h1 class="mb-5">{{ trans('coupons.firstvds.subject') }}</h1>
+  <h1 class="mt-4">{{ trans('coupons.firstvds.subject') }}</h1>
   @ru
     <p>Укажите вашу электронную почту, и мы пришлем вам код для получения скидки 25% на первый заказ.</p>
   @en
@@ -15,32 +15,37 @@
   <form action="{{ path('Coupons@firstvdsPost') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
-    <input class="form-control d-inline-block align-middle" type="email" name="email" placeholder="{{ trans('coupons.your_email') }}" style="width: 16rem;">
-    <button class="btn btn-primary">{{ trans('coupons.get_promocode') }}</button>
-    @if ($errors->has('email'))
-      <span class="has-error">
-        <span class="help-block">{{ $errors->first('email') }}</span>
-      </span>
-    @endif
+    <div class="mw-500">
+
+      <div class="input-group">
+        <input required class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" autocomplete="email" placeholder="{{ trans('coupons.your_email') }}">
+        <div class="input-group-append">
+          <button class="btn btn-primary">{{ trans('coupons.get_promocode') }}</button>
+        </div>
+      </div>
+      @if ($errors->has('email'))
+        <div class="invalid-feedback d-block">{{ $errors->first('email') }}</div>
+      @endif
+    </div>
 
     {{ csrf_field() }}
   </form>
 
-  <section>
-    <div class="h2 mt-5 mb-3">@ru Хотите способ проще? @en Looking for an easier way? @endru</div>
+  <section class="mt-5">
+    <div class="h2">@ru Хотите способ проще? @en Looking for an easier way? @endru</div>
     @ru
       <p>Перейдите по ссылке для автоматического применения скидки к вашему первому заказу.</p>
     @en
       <p>Follow the link to automatically apply discount to your first order.</p>
     @endru
     <div><button class="btn btn-primary" onclick="location.href='https://firstvds.ru/?from=149161'">@ru Получить скидку 25% @en Get a 25% discount @endru</button></div>
-    <span class="help-block">
+    <div class="form-help">
       @ru
         После клика вы будете перемещены на сайт firstvds.ru
       @en
         After a click you will be redirected to firstvds.ru
       @endru
-    </span>
+    </div>
   </section>
 </div>
 @endsection

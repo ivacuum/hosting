@@ -161,8 +161,7 @@
 }
 .torrent-icon {
   .svg-icon {
-    width: 1.5em;
-    height: 1.5em;
+    @include size(1.5em);
     margin-top: 0;
   }
   .svg-icon-file-text-o { color: $gray-light; }
@@ -186,7 +185,7 @@
 
   & + & { margin-top: 2rem; }
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     flex-wrap: nowrap;
 
     & + & { margin-top: 1rem; }
@@ -204,14 +203,14 @@
   width: 32px;
   order: 1;
 
-  @media (min-width: $screen-sm-min) { order: 0; }
+  @include media-breakpoint-up(md) { order: 0; }
 }
 
 .torrents-list-title {
   width: 100%;
   margin-bottom: 0.5rem;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     width: 80%;
     margin-bottom: 0;
     padding-right: 1rem;
@@ -223,7 +222,7 @@
   justify-content: center;
   order: 2;
 
-  @media (min-width: $screen-sm-min) { justify-content: flex-start; }
+  @include media-breakpoint-up(md) { justify-content: flex-start; }
 }
 
 .torrents-list-size {

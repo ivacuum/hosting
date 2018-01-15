@@ -5,6 +5,7 @@
   'field' => 'status',
   'values' => [
     'Все' => null,
+    '---' => null,
     'Скрытые' => App\Comment::STATUS_HIDDEN,
   ]
 ])
@@ -14,7 +15,7 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="text-right">ID</th>
+    <th class="text-md-right">ID</th>
     <th>Автор</th>
     <th>Текст</th>
     <th></th>
@@ -25,7 +26,7 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-      <td class="text-right">
+      <td class="text-md-right">
         <a href="{{ path("$self@show", $model) }}">
           {{ $model->id }}
         </a>

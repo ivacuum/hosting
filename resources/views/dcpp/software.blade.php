@@ -1,81 +1,115 @@
-@extends('dcpp.base')
+@extends('dcpp.base', [
+  'content_container_class' => '',
+  'no_footer_banner' => true,
+])
 
 @section('content')
-<h1 class="mt-0">{{ trans('dcpp.download') }} {{ $software_title }} {{ $software[0]['version'] }}</h1>
-@section('download_latest')
-  <p>
-    <a class="btn btn-success" href="{{ path('Files@download', $software[0]['id']) }}">
-      @php ($icon = $software[0]['icon'] ?? 'windows')
-      @svg ($icon)
-      {{ trans('dcpp.download') }}{{ $software[0]['dl_suffix'] }}
-      @if (!empty($software[0]['size']))
-        &middot;
-        {{ ViewHelper::size($software[0]['size']) }}
-      @endif
-    </a>
-  </p>
-@show
-
-<section>
-  <h2 class="mt-0">{{ trans('dcpp.about_software') }}</h2>
-  @yield('about_software')
-</section>
-
-@if (!empty($software_screenshots))
-  <section>
-    <h2 class="mt-0">{{ trans('dcpp.screenshots') }}</h2>
-    <p>
-      @foreach ($software_screenshots as $screenshot)
-        <a href="{{ $screenshot['full'] }}">
-          <img class="screenshot" src="{{ $screenshot['thumb'] }}">
-        </a>
-      @endforeach
-    </p>
-  </section>
-@endif
-
-<section>
-  <h2 class="mt-0">{{ trans('dcpp.hubs') }}</h2>
-  @ru
-    <p>Ищите куда подключиться для обмена файлами?</p>
-  @en
-    <p>Looking for a place to connect to share files?</p>
-  @endru
-  <p>
-    <a class="btn btn-warning" href="{{ path('DcppHubs@index') }}">
-      @ru
-        Список популярных DC++ хабов
-      @en
-        List of popular DC++ hubs
-      @endru
-    </a>
-  </p>
-</section>
-
-@if (sizeof($software) > 1 || !empty($developer_site))
-  <section>
-    <h2 class="mt-0">{{ trans('dcpp.links') }}</h2>
-    <div class="row">
-      @if (sizeof($software) > 1)
-        <div class="col-md-4">
-          <h4>{{ trans('dcpp.earlier_versions') }}</h4>
-          <ul>
-            @foreach ($software as $soft)
-              @continue ($loop->index === 0)
-              <li><a class="link" href="{{ path('Files@download', $soft['id']) }}">{{ trans('dcpp.download') }} {{ $software_title }} {{ $soft['version'] }}{{ $soft['dl_suffix'] }}</a></li>
-            @endforeach
-          </ul>
+<div class="life-text">
+  <section class="my-0 pt-4">
+    <div class="container">
+      <h1 class="mb-4">{{ trans('dcpp.download') }} {{ $software_title }} {{ $software[0]['version'] }}</h1>
+      @section('download_latest')
+        <div>
+          <a class="btn btn-success my-1 btn-lg" href="{{ path('Files@download', $software[0]['id']) }}">
+            @php ($icon = $software[0]['icon'] ?? 'windows')
+            <span class="mr-1">
+              @svg ($icon)
+            </span>
+            {{ trans('dcpp.download') }}{{ $software[0]['dl_suffix'] }}
+            @if (!empty($software[0]['size']))
+              &middot;
+              {{ ViewHelper::size($software[0]['size']) }}
+            @endif
+          </a>
         </div>
-      @endif
-      @if (!empty($developer_site))
-        <div class="col-md-4">
-          <h4>{{ trans('dcpp.pages') }}</h4>
-          <ul>
-            <li><a class="link" href="{{ $developer_site }}">{{ trans('dcpp.developer_site') }}</a></li>
-          </ul>
-        </div>
-      @endif
+      @show
     </div>
   </section>
-@endif
+
+  <section class="my-0 py-5">
+    <div class="container">
+      <h2>{{ trans('dcpp.about_software') }}</h2>
+      @yield('about_software')
+    </div>
+  </section>
+
+  <div class="mb-3">
+    <div class="container">
+      <div class="mobile-wide">
+        @include('tpl.google-horizontal')
+      </div>
+    </div>
+  </div>
+
+  @if (!empty($software_screenshots))
+    <section class="bg-dark my-0 py-5 text-light">
+      <div class="container">
+        <h2 class="mb-4">{{ trans('dcpp.screenshots') }}</h2>
+        <p>
+          @foreach ($software_screenshots as $screenshot)
+            <a href="{{ $screenshot['full'] }}">
+              <img class="screenshot" src="{{ $screenshot['thumb'] }}">
+            </a>
+          @endforeach
+        </p>
+      </div>
+    </section>
+  @endif
+
+  <section class="bg-light border-top border-bottom my-0 py-5">
+    <div class="container">
+      <h2 class="mb-4">{{ trans('dcpp.hubs') }}</h2>
+      @ru
+        <p>Ищите куда подключиться для обмена файлами? Ознакомьтесь с нашими рекомендациями.</p>
+      @en
+        <p>Looking for a place to connect to download and share files?</p>
+      @endru
+      <p>
+        <a class="btn btn-important" href="{{ path('DcppHubs@index') }}">
+          @ru
+            Список популярных DC++ хабов
+          @en
+            List of popular DC++ hubs
+          @endru
+        </a>
+      </p>
+    </div>
+  </section>
+
+  @yield('software_features')
+
+  @if (sizeof($software) > 1 || !empty($developer_site))
+    <section class="my-0 py-5">
+      <div class="container">
+        <h2 class="mb-4">{{ trans('dcpp.links') }}</h2>
+        <div class="row">
+          @if (sizeof($software) > 1)
+            <div class="col-md-6 col-lg-5 col-xl-4">
+              <h4>{{ trans('dcpp.earlier_versions') }}</h4>
+              <ul>
+                @foreach ($software as $soft)
+                  @continue ($loop->index === 0)
+                  <li><a class="link" href="{{ path('Files@download', $soft['id']) }}">{{ trans('dcpp.download') }} {{ $software_title }} {{ $soft['version'] }}{{ $soft['dl_suffix'] }}</a></li>
+                @endforeach
+              </ul>
+            </div>
+          @endif
+          @if (!empty($developer_site))
+            <div class="col-md-6 col-lg-5 col-xl-4">
+              <h4>{{ trans('dcpp.pages') }}</h4>
+              <ul>
+                <li>
+                  <a class="link" href="{{ $developer_site }}">{{ trans('dcpp.developer_site') }}</a>
+                  <span class="text-muted">
+                    @svg (external-link)
+                  </span>
+                </li>
+              </ul>
+            </div>
+          @endif
+        </div>
+      </div>
+    </section>
+  @endif
+</div>
 @endsection

@@ -1,13 +1,13 @@
 @extends('base')
 
 @section('content')
-<h1 class="mt-0">{{ $meta_title }}</h1>
+<h1>{{ $meta_title }}</h1>
 <div class="row">
   <div class="col-md-6">
     @ru
-      <p>Вы легко можете получить скидку около 10 евро на ваши следующие бронирования на <a class="link" href="https://www.airbnb.ru/{{ config('cfg.airbnb_link') }}">airbnb.ru</a> с помощью купонов ниже. Также я привожу информацию где удалось успешно воспользоваться данными купонами. Коды <span class="font-bold">работают для уже зарегистрированных пользователей</span>.</p>
+      <p>Вы легко можете получить скидку около 10 евро на ваши следующие бронирования на <a class="link" href="https://www.airbnb.ru/{{ config('cfg.airbnb_link') }}">airbnb.ru</a> с помощью купонов ниже. Также я привожу информацию где удалось успешно воспользоваться данными купонами. Коды <span class="font-weight-bold">работают для уже зарегистрированных пользователей</span>.</p>
     @en
-      <p>You could easily get €10 off your booking cost on <a class="link" href="https://www.airbnb.com/{{ config('cfg.airbnb_link') }}">airbnb.com</a> just by using coupons below. I also provide the info where I successfully applied these coupons. It <span class="font-bold">works for already registered users</span>.</p>
+      <p>You could easily get €10 off your booking cost on <a class="link" href="https://www.airbnb.com/{{ config('cfg.airbnb_link') }}">airbnb.com</a> just by using coupons below. I also provide the info where I successfully applied these coupons. It <span class="font-weight-bold">works for already registered users</span>.</p>
     @endru
   </div>
 </div>
@@ -292,12 +292,12 @@
       <h2>Новый пользователь Airbnb?</h2>
       <p>Вы можете рассчитывать на еще большую скидку на вашу первую поездку.</p>
       <a class="btn btn-primary" href="https://www.airbnb.ru/{{ config('cfg.airbnb_link') }}">Получить скидку 1500 ₽</a>
-      <span class="help-block">После клика вы будете перемещены на сайт airbnb.ru</span>
+      <div class="form-help">После клика вы будете перемещены на сайт airbnb.ru</div>
     @en
       <h2>New Airbnb user?</h2>
       <p>Then you can get even bigger discount for your first trip.</p>
       <a class="btn btn-primary" href="https://www.airbnb.com/{{ config('cfg.airbnb_link') }}">Get $25 coupon</a>
-      <span class="help-block">After a click you will be redirected to airbnb.com</span>
+      <div class="form-help">After a click you will be redirected to airbnb.com</div>
     @endru
   </div>
 </div>

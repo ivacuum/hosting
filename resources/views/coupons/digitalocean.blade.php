@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<h1 class="mt-0">{{ $meta_title }}</h1>
+<h1>{{ $meta_title }}</h1>
 <div class="row">
   <div class="col-md-6">
     @ru
@@ -18,25 +18,25 @@
       </thead>
       <tbody>
         <tr>
-          <td><span class="label label-info">DO10</span> / <span class="label label-info">DROPLET10</span></td>
+          <td><span class="badge badge-success">DO10</span> / <span class="badge badge-success">DROPLET10</span></td>
           <td>@ru $10 для новых пользователей @en $10 credit for new users @endru</td>
         </tr>
         <tr>
-          <td><span class="label label-info">BITNAMI</span></td>
+          <td><span class="badge badge-success">BITNAMI</span></td>
           <td>@ru $10 на счет при регистрации @en $10 off for a new account @endru</td>
         </tr>
         <tr>
-          <td><span class="label label-info">ACTIVATE10</span></td>
+          <td><span class="badge badge-success">ACTIVATE10</span></td>
           <td>@ru $10 на счет для нынешних клиентов @en $10 credit for existing customers @endru</td>
         </tr>
         <tr>
-          <td><span class="label label-info">LOWENDBOX</span> / <span class="label label-info">DOPRODUCT</span></td>
+          <td><span class="badge badge-success">LOWENDBOX</span> / <span class="badge badge-success">DOPRODUCT</span></td>
           <td>@ru $15 на счет @en $15 DigitalOcean credits @endru</td>
         </tr>
       </tbody>
     </table>
     @ru
-      <p>Пожалуйста, учтите, что DigitalOcean разрешает использовать лишь <span class="font-bold">один промокод для каждой учетной записи</span>, поэтому, если вы уже использовали какой-либо промокод ранее, то новый может не сработать.</p>
+      <p>Пожалуйста, учтите, что DigitalOcean разрешает использовать лишь <span class="font-weight-bold">один промокод для каждой учетной записи</span>, поэтому, если вы уже использовали какой-либо промокод ранее, то новый может не сработать.</p>
 
       <h2>Как получить бесплатные месяцы хостинга</h2>
       <ol>
@@ -46,7 +46,7 @@
         <li>Привяжите банковскую карту или заплатите $5 через PayPal для завершения процесса регистрации на DigitalOcean.</li>
       </ol>
     @en
-      <p>Remember that DigitalOcean only allow <span class="font-bold">one promo code per account</span>, so if you have redeemed one in the past you may not be able to add another again.</p>
+      <p>Remember that DigitalOcean only allow <span class="font-weight-bold">one promo code per account</span>, so if you have redeemed one in the past you may not be able to add another again.</p>
 
       <h2>How to get free months of VPS</h2>
       <ol>

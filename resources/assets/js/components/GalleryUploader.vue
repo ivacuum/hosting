@@ -6,7 +6,7 @@
     </div>
   </div>
   <div v-if="!uploading">
-    <label class="custom-file">
+    <div class="custom-file mw-400">
       <input class="custom-file-input"
              accept="image/gif,image/jpeg,image/png"
              type="file"
@@ -14,9 +14,9 @@
              multiple
              :max="max"
              @change="uploadFiles($event.currentTarget.files)">
-      <span class="custom-file-control custom-file-multiple-control"></span>
-    </label>
-    <span class="help-block">Файлы можно выбрать в появившемся окне или перетащить прямо на элемент выбора</span>
+      <label class="custom-file-label">Выберите файлы...</label>
+    </div>
+    <div class="form-help">Файлы можно выбрать в появившемся окне или перетащить прямо на элемент выбора</div>
   </div>
   <div v-else>
     Идет загрузка... {{ uploaded }} из {{ total }}

@@ -10,22 +10,22 @@
 <div class="row">
   <section class="col-sm-6 pt-0">
     <div class="d-flex flex-wrap align-items-center mb-2">
-      <h1 class="h2 mt-0 mb-1 mr-3">{{ trans('life.trips') }}</h1>
-      <a class="font-small-caps" href="{{ path('LifeTripsRss@index') }}">
+      <h1 class="h2 mb-0 mr-3">{{ trans('life.trips') }}</h1>
+      <a class="font-small-caps mt-1" href="{{ path('LifeTripsRss@index') }}">
         @svg (rss-square)
         rss
       </a>
     </div>
     <ul class="list-inline f14">
-      <li><mark>{{ trans('life.by_year') }}</mark></li>
-      <li><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
-      <li><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></li>
+      <li class="list-inline-item"><mark class="text-nowrap">{{ trans('life.by_year') }}</mark></li>
+      <li class="list-inline-item"><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
+      <li class="list-inline-item"><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></li>
     </ul>
 
     @include('tpl.trips_by_years')
   </section>
   <section class="col-sm-6 pt-sm-0">
-    <h2 class="mt-0">{{ trans('life.favorites') }}</h2>
+    <h2>{{ trans('life.favorites') }}</h2>
     <ul class="list-unstyled">
       @ru
         <li class="mb-2"><a class="link" href="{{ path('Life@page', 'chillout') }}">Chillout</a></li>

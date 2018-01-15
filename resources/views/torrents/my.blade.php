@@ -6,9 +6,9 @@
     <thead>
       <tr>
         <th>{{ ViewHelper::modelFieldTrans('torrent', 'title') }}</th>
-        <th class="text-muted text-right" title="{{ ViewHelper::modelFieldTrans('torrent', 'views') }}">@svg (eye)</th>
-        <th class="text-right" title="{{ ViewHelper::modelFieldTrans('torrent', 'comments') }}">@svg (comment-o)</th>
-        <th class="text-right" title="{{ ViewHelper::modelFieldTrans('torrent', 'clicks') }}">@svg (magnet)</th>
+        <th class="text-muted text-md-right" title="{{ ViewHelper::modelFieldTrans('torrent', 'views') }}">@svg (eye)</th>
+        <th class="text-md-right" title="{{ ViewHelper::modelFieldTrans('torrent', 'comments') }}">@svg (comment-o)</th>
+        <th class="text-md-right" title="{{ ViewHelper::modelFieldTrans('torrent', 'clicks') }}">@svg (magnet)</th>
         <th>{{ ViewHelper::modelFieldTrans('torrent', 'size') }}</th>
         <th>{{ ViewHelper::modelFieldTrans('torrent', 'updated_at') }}</th>
         <th></th>
@@ -22,9 +22,9 @@
               <torrent-title title="{{ $torrent->title }}" hide_brackets="1"></torrent-title>
             </a>
           </td>
-          <td class="text-muted text-right">{{ $torrent->views ? ViewHelper::number($torrent->views) : '' }}</td>
-          <td class="text-right">{{ $torrent->comments_count ? ViewHelper::number($torrent->comments_count) : '' }}</td>
-          <td class="text-right">{{ $torrent->clicks ? ViewHelper::number($torrent->clicks) : '' }}</td>
+          <td class="text-muted text-md-right">{{ $torrent->views ? ViewHelper::number($torrent->views) : '' }}</td>
+          <td class="text-md-right">{{ $torrent->comments_count ? ViewHelper::number($torrent->comments_count) : '' }}</td>
+          <td class="text-md-right">{{ $torrent->clicks ? ViewHelper::number($torrent->clicks) : '' }}</td>
           <td class="text-muted">{{ ViewHelper::size($torrent->size) }}</td>
           <td>{{ ViewHelper::dateShort($torrent->registered_at) }}</td>
           <td>

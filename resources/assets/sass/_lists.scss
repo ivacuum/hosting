@@ -3,5 +3,14 @@ ul.inline > li:first-child {
   padding-left: 0;
 }
 
-.list-group-section { background-color: #f5f5f5; }
-.list-indent li { margin-bottom: 0.5rem; }
+.list-dialog {
+  position: relative;
+  list-style: none;
+  padding-left: 1.5rem;
+
+  li:before {
+    content: '—';
+    position: absolute;
+    left: 0;
+  }
+}

@@ -9,15 +9,15 @@
     </div>
   </div>
   <div v-if="!uploading">
-    <label class="custom-file">
+    <div class="custom-file">
       <input class="custom-file-input"
              accept="image/jpeg,image/png"
              type="file"
              name="file"
              @change="upload($event.currentTarget.files[0])">
-      <span class="custom-file-control"></span>
-    </label>
-    <span class="help-block">Аватар сохраняется автоматически после выбора</span>
+      <label class="custom-file-label">Выберите файл...</label>
+    </div>
+    <div class="form-help">Аватар сохраняется автоматически после выбора</div>
   </div>
   <div v-else>
     Идет загрузка...

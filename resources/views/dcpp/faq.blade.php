@@ -3,7 +3,7 @@
 ])
 
 @section('content')
-<h1 class="mt-0">Решение проблем с DC++</h1>
+<h1>Решение проблем с DC++</h1>
 
 @component('accordion')
 @slot('title')

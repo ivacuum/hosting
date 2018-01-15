@@ -69,6 +69,7 @@ class Torrents extends Controller
                 'required',
                 Rule::unique('torrents', 'rto_id')->ignore($model->id ?? null),
             ],
+            'category_id' => 'required|integer|min:1',
         ];
     }
 }

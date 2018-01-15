@@ -1,10 +1,7 @@
-.avatar-100 {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+.avatar-50 { @include size(50px); }
 
-  .navbar-nav & {
-    width: 36px;
-    height: 36px;
-  }
+.avatar-100 {
+  @include size(100px);
+
+  .navbar-nav & { @include size(36px); }
 }

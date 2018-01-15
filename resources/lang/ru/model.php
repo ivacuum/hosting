@@ -3,6 +3,7 @@
 return [
     'file' => 'Файл',
     'size' => 'Размер',
+    'email' => 'Электронная почта',
     'author' => 'Автор',
     'clicks' => 'Клики',
     'filter' => 'Фильтр',
@@ -10,21 +11,35 @@ return [
     'city_id' => 'Город',
     'trip_id' => 'Поездка',
     'site_id' => 'Сайт',
+    'alias_id' => 'Алиас',
     'artist_id' => 'Артист',
+    'client_id' => 'Клиент',
     'country_id' => 'Страна',
     'q_placeholder' => 'Поиск...',
+    'yandex_user_id' => 'Пользователь API Яндекса',
 
     'artist.title' => 'Название',
 
     'chat-message.text' => 'Текст',
     'chat-message.status' => 'Состояние',
 
+    'city.lat' => 'Широта',
+    'city.lon' => 'Долгота',
+    'city.iata' => 'Код IATA',
     'city.title' => 'Город',
+    'city.title_en' => 'Название EN',
+    'city.title_ru' => 'Название',
     'city.trips_count' => 'Поездки',
+
+    'client.name' => 'Имя',
+    'client.text' => 'Заметки',
 
     'comment.status' => 'Состояние',
 
+    'country.emoji' => 'Флаг эмодзи',
     'country.title' => 'Страна',
+    'country.title_en' => 'Страна EN',
+    'country.title_ru' => 'Страна',
     'country.trips_count' => 'Поездки',
     'country.cities_count' => 'Города',
 
@@ -32,6 +47,11 @@ return [
     'dcpp-hub.title' => 'Название',
     'dcpp-hub.status' => 'Состояние',
     'dcpp-hub.address' => 'Адрес',
+
+    'domain.text' => 'Заметки',
+    'domain.domain' => 'Домен',
+
+    'external-identity.provider' => 'Провайдер',
 
     'file.title' => 'Название',
     'file.folder' => 'Папка',
@@ -41,10 +61,18 @@ return [
 
     'gig.date' => 'Дата',
     'gig.status' => 'Состояние',
+    'gig.title_en' => 'Название EN',
+    'gig.title_ru' => 'Название',
+    'gig.meta_description_en' => 'Meta description EN',
+    'gig.meta_description_ru' => 'Meta description',
 
     'news.html' => 'HTML',
     'news.title' => 'Заголовок',
     'news.status' => 'Состояние',
+
+    'server.host' => 'Хост',
+    'server.text' => 'Заметки',
+    'server.title' => 'Название',
 
     'tag.title' => 'Тэг',
     'tag.title_ru' => 'Название',
@@ -71,6 +99,7 @@ return [
     'trip.meta_description_en' => 'Meta description EN',
     'trip.meta_description_ru' => 'Meta description',
 
+    'user.avatar' => 'Аватар',
     'user.last_login_at' => 'Последний вход',
 
     'yandex-user.token' => 'Токен',

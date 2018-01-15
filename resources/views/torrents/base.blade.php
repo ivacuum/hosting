@@ -1,38 +1,44 @@
 @extends('base')
 
 @section('content_header')
-<div class="d-md-flex flex-row-reverse justify-content-between mt--3">
-  <form class="d-flex align-items-start mb-2 mb-md-0 mt-3 mt-md-1" action="{{ path("$self@index") }}">
-    <input class="form-control w-1020 w2-md-auto input-has-right-addon" name="q" value="{{ old('q', @$q) }}" placeholder="{{ trans('torrents.search') }}" autocapitalize="none">
-    <button class="btn btn-default btn-right-addon">
-      @svg (search)
-    </button>
+<div class="d-lg-flex flex-row-reverse align-items-center justify-content-between mt--1 mt-lg--3 mb-3">
+  <form class="d-flex mb-2 mb-lg-0" action="{{ path("$self@index") }}">
+    <div class="input-group">
+      <input class="form-control" name="q" value="{{ old('q', @$q) }}" placeholder="{{ trans('torrents.search') }}" autocapitalize="none">
+      <div class="input-group-append">
+        <button class="btn btn-default">
+          @svg (search)
+        </button>
+      </div>
+    </div>
   </form>
-  <nav class="nav-link-tabs-fader">
-    <ul class="nav nav-link-tabs nav-link-tabs-border mb-4">
-      <li class="{{ $view === 'torrents.index' ? 'active' : '' }}">
-        <a href="{{ path('Torrents@index') }}">{{ trans('torrents.new') }}</a>
-      </li>
-      <li class="{{ $view === 'torrents.create' ? 'active' : '' }}">
-        <a href="{{ path('Torrents@create') }}">{{ trans('torrents.create') }}</a>
-      </li>
-      <li class="{{ $view === 'torrents.faq' ? 'active' : '' }}">
-        <a href="{{ path('Torrents@faq') }}">{{ trans('torrents.faq') }}</a>
-      </li>
-      <li class="{{ $view === 'torrents.comments' ? 'active' : '' }}">
-        <a href="{{ path('Torrents@comments') }}">{{ trans('torrents.comments') }}</a>
-      </li>
-      @if (Auth::check())
-        <li class="{{ $view === 'torrents.my' ? 'active' : '' }}">
-          <a href="{{ path('Torrents@my') }}">{{ trans('torrents.my') }}</a>
-        </li>
-        <li>
-          <a href="https://t.me/joinchat/ARFYTgllrcJ-R5S07ZLgYQ" title="{{ trans('torrents.telegram_chat') }}">
-            @svg (telegram)
+  <div class="nav-link-tabs-fader nav-border">
+    <div class="nav-scroll-container">
+      <div class="nav-scroll">
+        <nav class="nav nav-link-tabs">
+          <a class="nav-link {{ $view === 'torrents.index' ? 'active' : '' }}" href="{{ path('Torrents@index') }}">
+            {{ trans('torrents.new') }}
           </a>
-        </li>
-      @endif
-    </ul>
-  </nav>
+          <a class="nav-link {{ $view === 'torrents.create' ? 'active' : '' }}" href="{{ path('Torrents@create') }}">
+            {{ trans('torrents.create') }}
+          </a>
+          <a class="nav-link {{ $view === 'torrents.faq' ? 'active' : '' }}" href="{{ path('Torrents@faq') }}">
+            {{ trans('torrents.faq') }}
+          </a>
+          <a class="nav-link {{ $view === 'torrents.comments' ? 'active' : '' }}" href="{{ path('Torrents@comments') }}">
+            {{ trans('torrents.comments') }}
+          </a>
+          @if (Auth::check())
+            <a class="nav-link {{ $view === 'torrents.my' ? 'active' : '' }}" href="{{ path('Torrents@my') }}">
+              {{ trans('torrents.my') }}
+            </a>
+            <a class="nav-link" href="https://t.me/joinchat/ARFYTgllrcJ-R5S07ZLgYQ" title="{{ trans('torrents.telegram_chat') }}">
+              @svg (telegram)
+            </a>
+          @endif
+        </nav>
+      </div>
+    </div>
+  </div>
 </div>
 @endsection

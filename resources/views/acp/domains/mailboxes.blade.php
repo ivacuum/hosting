@@ -2,72 +2,73 @@
 
 @section('content')
 <h3>Новая электропочта</h3>
-<form action="{{ path("$self@addMailbox", $model) }}" class="form-horizontal" method="post">
+<form action="{{ path("$self@addMailbox", $model) }}" class="mw-600" method="post">
 
-  @include('tpl.form_errors')
-
-  <div class="form-group {{ $errors->has('domain') ? 'has-error' : '' }}">
-    <label class="col-md-3 control-label">Ящик:</label>
-    <div class="col-md-6">
-      <div class="input-group">
-        <input class="form-control" name="logins">
-        <span class="input-group-addon">{{ '@'.$model->domain }}</span>
+  <div class="form-group">
+    <label>Ящик</label>
+    <div class="input-group">
+      <input class="form-control {{ $errors->has('logins') ? 'is-invalid' : '' }}" name="logins">
+      <div class="input-group-append">
+        <span class="input-group-text">{{ '@'.$model->domain }}</span>
       </div>
-      <span class="help-block">Можно указать несколько ящиков через запятую. Пароли будут назначены автоматически</span>
     </div>
+    @if ($errors->has('logins'))
+      <div class="invalid-feedback d-block">{{ $errors->first('logins') }}</div>
+    @endif
+    <div class="form-help">Можно указать несколько ящиков через запятую. Пароли будут назначены автоматически</div>
   </div>
 
   <div class="form-group">
-    <label class="col-md-3 control-label">Выслать инфу на:</label>
-    <div class="col-md-6">
-      <input type="email" class="form-control" name="send_to" value="{{ Auth::user()->email }}">
-    </div>
+    <label>Выслать инфу по адресу</label>
+    <input class="form-control {{ $errors->has('send_to') ? 'is-invalid' : '' }}" type="email" name="send_to" value="{{ Auth::user()->email }}">
+    <div class="invalid-feedback">{{ $errors->first('send_to') }}</div>
   </div>
 
-  <div class="form-group">
-    <div class="col-md-9 col-md-offset-3">
-      <button class="btn btn-primary">
-        Создать ящик
-      </button>
-    </div>
-  </div>
+  <button class="btn btn-primary">
+    Создать ящик
+  </button>
 
   {{ csrf_field() }}
 </form>
 
 @if ($mailboxes->total > 0)
-  <h3>Найдено ящиков: {{ $mailboxes->total }}</h3>
+  <h3 class="mt-5">Существующие ящики <small class="text-muted">{{ $mailboxes->total }}</small></h3>
   <ul>
     @foreach ($mailboxes->accounts as $account)
       <li>
         @if ($account->enabled == 'no')
-          <samp class="text-danger"><s>{{ $account->login }}</s></samp>
+          <span class="text-danger"><s>{{ $account->login }}</s></span>
         @elseif ($account->ready == 'yes')
-          <samp class="text-success">{{ $account->login }}</samp>
+          <span class="text-success">{{ $account->login }}</span>
         @else
-          <samp class="text-warning">{{ $account->login }}</samp>
+          <span class="text-warning">{{ $account->login }}</span>
         @endif
         @if ($account->fio)
           &mdash;
           <span class="text-muted">{{ $account->fio }}</span>
         @endif
         @if (sizeof($account->aliases))
-          <br>Алиасы:
-          <samp>
-            <ul>
-              @foreach ($account->aliases as $alias)
-                <li>{{ $alias }}</li>
-              @endforeach
-            </ul>
-          </samp>
+          <div>Алиасы:</div>
+          <ul>
+            @foreach ($account->aliases as $alias)
+              <li>{{ $alias }}</li>
+            @endforeach
+          </ul>
         @endif
       </li>
     @endforeach
   </ul>
-  <p>
-    <span class="label label-success"> &nbsp; </span> &nbsp; активен &nbsp;
-    <span class="label label-warning"> &nbsp; </span> &nbsp; неактивен &nbsp;
-    <span class="label label-danger"> &nbsp; </span> &nbsp; отключен
-  </p>
+  <div>
+    <span class="mr-3">
+      <span class="badge badge-success px-2 mr-1">&nbsp;</span>
+      активен
+    </span>
+    <span class="mr-3">
+      <span class="badge badge-warning px-2 mr-1">&nbsp;</span>
+      неактивен
+    </span>
+    <span class="badge badge-danger px-2 mr-1">&nbsp;</span>
+    отключен
+  </div>
 @endif
 @endsection

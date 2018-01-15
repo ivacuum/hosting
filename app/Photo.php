@@ -131,7 +131,7 @@ class Photo extends Model
 
     public function thumbnailUrl(): string
     {
-        return "https://life.ivacuum.ru/-/400x300/{$this->slug}";
+        return "https://life.ivacuum.ru/-/500x375/{$this->slug}";
     }
 
     public function www(): string

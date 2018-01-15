@@ -5,6 +5,7 @@ return [
     'file' => 'File',
     'size' => 'Size',
     'slug' => 'URL',
+    'email' => 'Email',
     'author' => 'Author',
     'clicks' => 'Clicks',
     'filter' => 'Filter',
@@ -19,15 +20,24 @@ return [
 
     'artist.title' => 'Title',
 
+    'city.lat' => 'Latitude',
+    'city.lon' => 'Longitude',
+    'city.iata' => 'IATA airport code',
     'city.title' => 'City',
+    'city.title_en' => 'Title',
+    'city.title_ru' => 'Title RU',
     'city.trips_count' => 'Trips',
 
     'chat-message.text' => 'Text',
     'chat-message.status' => 'Status',
 
+    'comment.html' => 'HTML',
     'comment.status' => 'Status',
 
+    'country.emoji' => 'Flag emoji',
     'country.title' => 'Country',
+    'country.title_en' => 'Title',
+    'country.title_ru' => 'Title RU',
     'country.trips_count' => 'Trips',
     'country.cities_count' => 'Cities',
 
@@ -44,6 +54,11 @@ return [
 
     'gig.date' => 'Date',
     'gig.status' => 'Status',
+    'gig.title_en' => 'Title',
+    'gig.title_ru' => 'Title RU',
+    'gig.meta_image' => 'Meta image',
+    'gig.meta_description_en' => 'Meta description',
+    'gig.meta_description_ru' => 'Meta description RU',
 
     'news.html' => 'HTML',
     'news.title' => 'Title',

@@ -1,55 +1,30 @@
 @import "variables";
 @import "bootstrap";
 
-@import "mixins/font-smoothing";
-@import "mixins/mobile";
-
 @import "base";
 
-@import "acp";
 @import "avatars";
-@import "backgrounds";
 @import "banners";
 @import "bottom-tabbar";
 @import "breadcrumbs";
-@import "buttons";
+@import "card";
 @import "chat";
 @import "comments";
 @import "counters";
-@import "custom-forms";
 @import "dl";
-@import "dropdown";
-@import "faq";
-@import "form-select";
-@import "forms";
 @import "fotorama";
 @import "images";
 @import "life";
 @import "links";
 @import "lists";
 @import "markdown";
-@import "nav";
 @import "navbar";
-@import "page-blocks";
 @import "pagination";
-@import "panels";
 @import "photos";
-@import "services";
 @import "svg-icons";
-@import "tables";
 @import "terminal";
 @import "torrents";
 @import "vk";
 @import "youtube";
-
-@import "utilities/borders";
-@import "utilities/display";
-@import "utilities/flex";
-@import "utilities/text";
-@import "utilities/spacing";
-
-.is-desktop {
-  @import "tooltips";
-}
 
 @import "theme-dark";

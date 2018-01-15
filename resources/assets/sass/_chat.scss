@@ -1,9 +1,9 @@
 .chat-container {
   overflow: auto;
   height: 12rem;
-  padding: 0.5rem;
+  padding: .25rem .5rem;
   background: #efefef;
-  border: 1px solid #ddd;
+  border: $border-width solid $input-border-color;
 }
 
 .chat-date {

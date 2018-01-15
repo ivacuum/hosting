@@ -1,4 +1,7 @@
-@extends('base')
+@extends('base', [
+  'body_classes' => '',
+  'navbar_classes' => '',
+])
 
 @push('head')
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -10,95 +13,75 @@
 </script>
 @endpush
 
+@section('breadcrumbs')
+@endsection
+
+@section('bottom-tabbar')
+@endsection
+
 @section('global_menu')
-<li>
-  <a class="{{ $page === 'index' ? 'navbar-selected' : '' }}" href="{{ path('Dcpp@index') }}">
+<div class="nav-item {{ $page === 'index' ? 'active' : '' }}">
+  <a class="nav-link" href="{{ path('Dcpp@index') }}">
     {{ trans('dcpp.index') }}
   </a>
-</li>
+</div>
 @ru
-  <li>
-    <a class="{{ $page === 'faq' ? 'navbar-selected' : '' }}" href="{{ path('Dcpp@page', 'faq') }}">
+  <div class="nav-item {{ $page === 'faq' ? 'active' : '' }}">
+    <a class="nav-link" href="{{ path('Dcpp@page', 'faq') }}">
       {{ trans('dcpp.faq') }}
     </a>
-  </li>
+  </div>
 @endru
-<li>
-  <a class="{{ $page === 'hubs' ? 'navbar-selected' : '' }}" href="{{ path('Dcpp@page', 'hubs') }}">
+<div class="nav-item {{ $page === 'hubs' ? 'active' : '' }}">
+  <a class="nav-link" href="{{ path('Dcpp@page', 'hubs') }}">
     {{ trans('dcpp.hubs') }}
   </a>
-</li>
-<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ trans('dcpp.clients') }} <span class="caret"></span></a>
-  <ul class="dropdown-menu">
-    <li>
-      <a href="{{ path('Dcpp@page', 'airdc') }}">
-        {{ trans('dcpp.airdc') }}
-      </a>
-      <a href="{{ path('Dcpp@page', 'apexdc') }}">
-        {{ trans('dcpp.apexdc') }}
-      </a>
-      <a href="{{ path('Dcpp@page', 'dcpp') }}">
-        {{ trans('dcpp.dcpp') }}
-      </a>
-      <a href="{{ path('Dcpp@page', 'flylinkdc') }}">
-        {{ trans('dcpp.flylinkdc') }}
-      </a>
-      <a href="{{ path('Dcpp@page', 'greylinkdc') }}">
-        {{ trans('dcpp.greylinkdc') }}
-      </a>
-      <a href="{{ path('Dcpp@page', 'jucydc') }}">
-        {{ trans('dcpp.jucydc') }}
-      </a>
-      @ru
-        <a href="{{ path('Dcpp@page', 'kalugadc') }}">
-          {{ trans('dcpp.kalugadc') }}
-        </a>
-      @endru
-      <a href="{{ path('Dcpp@page', 'pelinkdc') }}">
-        {{ trans('dcpp.pelinkdc') }}
-      </a>
-      <a href="{{ path('Dcpp@page', 'shakespeer') }}">
-        {{ trans('dcpp.shakespeer') }}
-      </a>
-      <a href="{{ path('Dcpp@page', 'strongdc') }}">
-        {{ trans('dcpp.strongdc') }}
-      </a>
-    </li>
-  </ul>
-</li>
+</div>
+<div class="nav-item dropdown dropdown-hover mr-2 {{ in_array($page, ['airdc', 'apexdc', 'dcpp', 'flylinkdc', 'greylinkdc', 'jucydc', 'kalugadc', 'pelinkdc', 'shakespeer', 'strongdc']) ? 'active' : '' }}">
+  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">{{ trans('dcpp.clients') }}</a>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{{ path('Dcpp@page', 'airdc') }}">{{ trans('dcpp.airdc') }}</a>
+    <a class="dropdown-item" href="{{ path('Dcpp@page', 'apexdc') }}">{{ trans('dcpp.apexdc') }}</a>
+    <a class="dropdown-item" href="{{ path('Dcpp@page', 'dcpp') }}">{{ trans('dcpp.dcpp') }}</a>
+    <a class="dropdown-item" href="{{ path('Dcpp@page', 'flylinkdc') }}">{{ trans('dcpp.flylinkdc') }}</a>
+    <a class="dropdown-item" href="{{ path('Dcpp@page', 'greylinkdc') }}">{{ trans('dcpp.greylinkdc') }}</a>
+    <a class="dropdown-item" href="{{ path('Dcpp@page', 'jucydc') }}">{{ trans('dcpp.jucydc') }}</a>
+    @ru
+      <a class="dropdown-item" href="{{ path('Dcpp@page', 'kalugadc') }}">{{ trans('dcpp.kalugadc') }}</a>
+    @endru
+    <a class="dropdown-item" href="{{ path('Dcpp@page', 'pelinkdc') }}">{{ trans('dcpp.pelinkdc') }}</a>
+    <a class="dropdown-item" href="{{ path('Dcpp@page', 'shakespeer') }}">{{ trans('dcpp.shakespeer') }}</a>
+    <a class="dropdown-item" href="{{ path('Dcpp@page', 'strongdc') }}">{{ trans('dcpp.strongdc') }}</a>
+  </div>
+</div>
 @ru
-  <li>
-    <form class="navbar-form px-0">
-      <a class="btn btn-success" href="{{ path('Torrents@index') }}">
-        {{ trans('torrents.index') }}
-      </a>
-    </form>
-  </li>
+  <div class="nav-item d-none d-md-block">
+    <a class="btn btn-success btn-sm" href="{{ path('Torrents@index') }}">
+      {{ trans('torrents.index') }}
+    </a>
+  </div>
 @endru
 @endsection
 
 @section('header_user')
-@endsection
-
-@section('content_footer')
-@if (App::environment() === 'production')
-  <div class="mt-3 google-b-horizontal">
-    <ins class="adsbygoogle d-block"
-         data-ad-client="ca-pub-7802683087624570"
-         data-ad-slot="1858304644"
-         data-ad-format="auto"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+@if (empty($no_language_selector))
+  <div class="nav-item">
+    @ru
+      <a class="nav-link" href="{{ url("en/{$request_uri}") }}" lang="en">In&nbsp;English</a>
+    @en
+      <a class="nav-link" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
+    @endru
   </div>
-@elseif (App::isLocal())
-  <div class="mt-3 banner-local google-b-horizontal"></div>
 @endif
 @endsection
 
-@section('footer_copyright')
-<li>&copy; {{ date('Y') }} ArtFly</li>
-<li>
-  <a class="link" href="mailto:{{ config('email.dc') }}">
-    {{ trans('menu.feedback') }}
-  </a>
-</li>
+@section('content_footer')
+@if (empty($no_footer_banner))
+  <div class="my-3">
+    @include('tpl.google-horizontal')
+  </div>
+@endif
+@endsection
+
+@section('footer_container')
 @endsection

@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<h1 class="mt-0">{{ trans('coupons.index') }}</h1>
+<h1>{{ trans('coupons.index') }}</h1>
 @ru
   <p>Простые способы сэкономить на услугах нижеприведенных сервисов.</p>
 @en
@@ -9,7 +9,7 @@
 @endru
 
 <div class="life-text">
-  <h3>{{ trans('coupons.hosting') }}</h3>
+  <h3 class="mt-4">{{ trans('coupons.hosting') }}</h3>
   <ul>
     <li class="mb-1"><a class="link" href="{{ path('Coupons@digitalocean') }}">{{ trans('coupons.digitalocean') }}</a></li>
     <li class="mb-1"><a class="link" href="{{ path('Coupons@firstvds') }}">{{ trans('coupons.firstvds') }}</a></li>
@@ -18,7 +18,7 @@
     @endru
   </ul>
 
-  <h3>{{ trans('coupons.accomodation') }}</h3>
+  <h3 class="mt-4">{{ trans('coupons.accomodation') }}</h3>
   <ul>
     <li class="mb-1"><a class="link" href="{{ path('Coupons@airbnb') }}">{{ trans('coupons.airbnb') }}</a></li>
     <li class="mb-1"><a class="link" href="{{ path('Coupons@booking') }}">{{ trans('coupons.booking') }}</a></li>

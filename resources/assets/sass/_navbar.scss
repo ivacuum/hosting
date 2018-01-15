@@ -1,37 +1,27 @@
-.container > .navbar-collapse { padding-left: 0; }
-
 .navbar {
-  border-radius: 0;
-  margin-bottom: 0;
+  .navbar-brand {
+    color: #005784;
+    font-size: 18px;
+    line-height: 18px;
+    text-shadow: #ddd 2px 2px 2px;
 
-  .avatar-dropdown {
-    padding-top: 7px;
-    padding-bottom: 7px;
+    &:hover { color: #d46400; }
+  }
+
+  .nav-link {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+
+    &.avatar-dropdown {
+      padding-top: .375rem;
+      padding-bottom: .375rem;
+    }
   }
 }
 
-.navbar-default .navbar-brand {
-  font-weight: bold;
-  color: #005784;
-  // font-family: "Trebuchet MS", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  line-height: 18px;
-  text-shadow: #ddd 2px 2px 2px;
-  text-align: center;
-  padding-top: 6px;
-  padding-bottom: 6px;
-
-  &:hover { color: #d46400; }
-}
-
-.navbar-default.navbar-inverse .navbar-brand {
+.navbar-dark .navbar-brand {
   color: #9d9d9d;
   text-shadow: none;
 
   &:hover { color: #fff; }
-}
-
-.navbar-nav .navbar-selected {
-  border-bottom: 2px solid #51A7F9;
-  padding-bottom: 11px;
 }

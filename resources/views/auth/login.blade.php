@@ -1,21 +1,35 @@
 @extends('base')
 
 @section('content')
-<div class="form-signin">
-  <h3 class="mt-0 mb-4 text-center">{{ trans('auth.signin_title') }}</h3>
+<div class="mx-auto mw-400">
+  <div class="text-center mb-3">
+    <h3>{{ trans('auth.signin_title') }}</h3>
+
+    <div class="my-3">
+      <a class="btn bg-vk text-white" href="{{ path('Auth\Vk@index') }}" rel="nofollow">
+        {{ trans('auth.vk') }}
+      </a>
+      <a class="btn bg-facebook text-white" href="{{ path('Auth\Facebook@index') }}" rel="nofollow">
+        {{ trans('auth.facebook') }}
+      </a>
+      <a class="btn bg-google text-white" href="{{ path('Auth\Google@index') }}" rel="nofollow">
+        {{ trans('auth.google') }}
+      </a>
+    </div>
+    <div>{{ trans('auth.or') }}</div>
+  </div>
+
   <form action="{{ path('Auth\SignIn@login') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
-    <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-      <input autofocus required class="form-control" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{ trans('auth.email_or_login') }}">
-      @if ($errors->has('email'))
-        <span class="help-block">{{ $errors->first('email') }}</span>
-      @endif
+    <div class="form-group">
+      <input autofocus required class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{ trans('auth.email_or_login') }}">
+      <div class="invalid-feedback">{{ $errors->first('email') }}</div>
     </div>
 
-    <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
-      <input required class="form-control" type="password" name="password" placeholder="{{ trans('auth.password') }}">
-      <span class="form-control-feedback form-control-feedback-password js-password-eye">
+    <div class="form-group position-relative">
+      <input required class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password" placeholder="{{ trans('auth.password') }}">
+      <span class="form-control-feedback-password js-password-eye">
         <span class="js-password-eye-show" title="{{ trans('auth.show_password') }}">
           @svg (eye)
         </span>
@@ -23,42 +37,28 @@
           @svg (eye-slash)
         </span>
       </span>
-      @if ($errors->has('password'))
-        <span class="help-block">{{ $errors->first('password') }}</span>
-      @endif
+      <div class="invalid-feedback">{{ $errors->first('password') }}</div>
     </div>
 
-    <div class="checkbox">
-      <label><input type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}> {{ trans('auth.dont_remember') }}</label>
-    </div>
-
-    <div class="my-3 clearfix">
-      <div class="pull-left">
+    <div class="d-flex justify-content-between">
+      <div>
+        <label class="form-check">
+          <input class="form-check-input" type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}>
+          {{ trans('auth.dont_remember') }}
+        </label>
+      </div>
+      <div>
         <a class="link" href="{{ path('Auth\ForgotPassword@index') }}">{{ trans('auth.forgot_password') }}</a>
       </div>
-      <div class="pull-right">
-        <a class="link" href="{{ path('Auth\NewAccount@index') }}">{{ trans('auth.new_account') }}</a>
-      </div>
     </div>
 
-    <div class="text-center">
+    <div class="mt-3 text-center">
       <button class="btn btn-primary btn-lg btn-login">
         {{ trans('auth.signin') }}
       </button>
-    </div>
-
-    <h3 class="text-center mt-5">{{ trans('auth.social_signin') }}</h3>
-
-    <div class="text-center mt-3">
-      <a class="btn btn-social bg-vk" href="{{ path('Auth\Vk@index') }}" rel="nofollow">
-        {{ trans('auth.vk') }}
-      </a>
-      <a class="btn btn-social bg-facebook" href="{{ path('Auth\Facebook@index') }}" rel="nofollow">
-        {{ trans('auth.facebook') }}
-      </a>
-      <a class="btn btn-social bg-google" href="{{ path('Auth\Google@index') }}" rel="nofollow">
-        {{ trans('auth.google') }}
-      </a>
+      <div class="mt-4">
+        <a class="link" href="{{ path('Auth\NewAccount@index') }}">{{ trans('auth.new_account') }}</a>
+      </div>
     </div>
 
     {{ csrf_field() }}

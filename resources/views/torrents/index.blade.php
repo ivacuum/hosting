@@ -4,16 +4,16 @@
 
 @section('content')
 <div class="row">
-  <aside class="col-md-3 torrent-categories d-none d-md-block font-smooth">
+  <aside class="col-lg-3 torrent-categories d-none d-lg-block font-smooth">
     <nav>
       @foreach ($tree as $id => $category)
-        <h3 class="{{ $loop->first ? 'mt-0' : '' }}">
+        <h4 class="{{ $loop->first ? '' : 'mt-4' }}">
           @if (!empty($category_id) && $id == $category_id)
             <mark>{{ $category['title'] }}</mark>
           @else
             <a class="visited" href="{{ path("$self@index", ['category_id' => $id]) }}">{{ $category['title'] }}</a>
           @endif
-        </h3>
+        </h4>
         @if (!empty($category['children']))
           @foreach ($category['children'] as $id => $child)
             @continue (empty($stats[$id]))
@@ -32,27 +32,27 @@
     @guest
       @ru
         <div class="alert alert-info mt-4">
-          <div>Для <a href="{{ path('Auth\SignIn@index', ['goto' => path('Torrents@index')]) }}">зарегистрированных пользователей</a> доступен чат и добавление раздач</div>
+          <div>Для <a class="link" href="{{ path('Auth\SignIn@index', ['goto' => path('Torrents@index')]) }}">зарегистрированных пользователей</a> доступен чат и добавление раздач</div>
         </div>
       @endru
     @endguest
   </aside>
-  <div class="col-md-9" v-cloak>
+  <div class="col-lg-9" v-cloak>
     @if (Auth::check() && empty(request()->query()))
       <chat></chat>
     @endif
     @if ($q)
       @ru
-        <div class="h3 mt-0 mb-4">Результаты поиска по запросу «{{ $q }}»</div>
+        <div class="h3 mb-4">Результаты поиска по запросу «{{ $q }}»</div>
       @en
-        <div class="h3 mt-0 mb-4">Search results for «{{ $q }}»</div>
+        <div class="h3 mb-4">Search results for «{{ $q }}»</div>
       @endru
     @endif
     @php ($last_date = null)
     @if (sizeof($torrents))
       @foreach ($torrents as $torrent)
         @if (is_null($last_date) || !$torrent->registered_at->isSameDay($last_date))
-          <h4 class="{{ $loop->first ? 'mt-0' : 'mt-4' }}">{{ $torrent->fullDate() }}</h4>
+          <h6 class="{{ $loop->first ? 'mt-0' : 'mt-4' }}">{{ $torrent->fullDate() }}</h6>
           @php ($last_date = $torrent->registered_at)
         @endif
         @php ($category = TorrentCategoryHelper::find($torrent->category_id))
@@ -86,7 +86,7 @@
       <p class="alert alert-warning">Подходящих раздач не найдено.</p>
 
       @if ($q)
-        <p>Поиск по раздачам в настоящее время достаточно примитивный и ведется только по заголовку, поэтому рекомендуется использовать самые простые запросы. Лучше всего должны сработать отдельные слова. Примеры:</p>
+        <div class="mb-1">Поиск по раздачам в настоящее время достаточно примитивный и ведется только по заголовку, поэтому рекомендуется использовать самые простые запросы. Лучше всего должны сработать отдельные слова. Примеры:</div>
         <ul>
           <li>драма</li>
           <li>rpg</li>

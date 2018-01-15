@@ -1,15 +1,5 @@
-.banner-local {
-  border: 1px solid #ccc;
-  background: #eee;
-}
-
 .google-b-horizontal {
   overflow: hidden;
   height: 90px;
-
-  @media (min-width: $screen-sm-min) { width: 720px; }
-  @media (min-width: $screen-md-min) { width: 940px; }
-  @media (min-width: $screen-lg-min) { width: 1140px; }
-
-  @include mobile-wide;
+  width: 100%;
 }

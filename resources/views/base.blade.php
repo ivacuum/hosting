@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">
   @stack('head')
 </head>
-<body class="body-with-bottom-tabbar {{ optional(Auth::user())->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ $css_classes }}" data-self="{{ $self }}" data-view="{{ $view }}">
+<body class="{{ $body_classes ?? 'body-with-bottom-tabbar' }} {{ optional(Auth::user())->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ $css_classes }}" data-self="{{ $self }}" data-view="{{ $view }}">
 @section('header-navbar')
   @include('tpl.header-navbar')
 @show
@@ -95,29 +95,28 @@
       </div>
     @endif
   </div>
-  <div class="container mt-3">
+  <div class="{{ $content_container_class ?? 'container mt-3' }}" id="pjax_container">
 
-<div id="pjax_container">
 @endif
 @yield('content_header')
 @yield('content')
 @yield('content_footer')
 @if (!Request::pjax())
-</div>
 
   </div>
 </div>
 
-<footer class="footer">
+@section('footer_container')
+<footer class="footer mt-4">
   <div class="container">
     @section('footer')
       <ul class="list-inline mb-0">
         @section('footer_copyright')
-          <li>&copy; {{ date('Y') }} vacuum</li>
+          <li class="list-inline-item">&copy; {{ date('Y') }} vacuum</li>
         @show
         @section('i18n')
           @if (empty($no_language_selector))
-            <li>
+            <li class="list-inline-item">
               @ru
                 <a class="link link-lang" href="{{ url("en/{$request_uri}") }}" lang="en">In&nbsp;English</a>
               @en
@@ -130,6 +129,7 @@
     @show
   </div>
 </footer>
+@show
 <script>
 <?php echo 'window.AppOptions = ' . json_encode([
   'locale' => $locale,

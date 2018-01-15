@@ -6,7 +6,7 @@ class Home extends Controller
 {
     public function index()
     {
-        return view('index', ['trips' => Trip::tripsWithCover(3)]);
+        return view('index', ['trips' => Trip::tripsWithCover(6)]);
     }
 
     public function about()

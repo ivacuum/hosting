@@ -55,6 +55,11 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
+    public function external_identities()
+    {
+        return $this->hasMany(ExternalIdentity::class);
+    }
+
     public function images()
     {
         return $this->hasMany(Image::class);
@@ -85,15 +90,6 @@ class User extends Authenticatable
     public function scopeActive(Builder $query)
     {
         return $query->where('status', self::STATUS_ACTIVE);
-    }
-
-    public function scopeApplyFilter(Builder $query, $filter = null)
-    {
-        return $query->when($filter === 'weekly-login', function (Builder $query) {
-            return $query->where('last_login_at', '>', now()->subWeek()->toDateTimeString());
-        })->when($filter === 'monthly-login', function (Builder $query) {
-            return $query->where('last_login_at', '>', now()->subMonth()->toDateTimeString());
-        });
     }
 
     public function scopeForAnnouncement(Builder $query)

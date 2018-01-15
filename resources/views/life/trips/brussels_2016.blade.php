@@ -31,7 +31,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_2278.jpg'])
 
 @ru
-  <p>Коммунальщики вообще обнаглели, все в листве. На самом деле это <a class="link" href="http://tema.livejournal.com/1823344.html">хорошо для земли</a>. У проблемы дриста в наших городах примерно <a class="link" href="http://tema.livejournal.com/1620372.html">те же корни</a>.</p>
+  <p>Коммунальщики вообще обнаглели, все в листве. На самом деле это <a class="link" href="http://tema.livejournal.com/1823344.html" rel="nofollow">хорошо для земли</a>. У проблемы дриста в наших городах примерно <a class="link" href="http://tema.livejournal.com/1620372.html">те же корни</a>.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2284.jpg'])
 

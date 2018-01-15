@@ -11,10 +11,7 @@ $dark-bg-lighter-color: lighten($dark-bg-color, 10%);
   background-color: $dark-bg-color;
   color: $dark-text-color;
 
-  code {
-    background-color: lighten($dark-bg-color, 15%);
-    color: $dark-text-color;
-  }
+  code { color: $yellow; }
 
   footer {
     background-color: lighten($dark-bg-color, 10%);
@@ -22,16 +19,30 @@ $dark-bg-lighter-color: lighten($dark-bg-color, 10%);
   }
 
   hr { border-color: $dark-border-color; }
+  pre { color: $dark-text-color; }
 
-  pre,
   .chat-container,
+  .custom-file-label,
   .form-control {
     background-color: lighten($dark-bg-color, 15%);
     border-color: $dark-border-color;
     color: $dark-text-color;
   }
 
-  .form-select { border-color: $dark-border-color; }
+  .custom-select {
+    background: lighten($dark-bg-color, 15%) $custom-select-indicator no-repeat right $custom-select-padding-x center;
+    background-size: $custom-select-bg-size;
+    border-color: $dark-border-color;
+    color: $dark-text-color;
+  }
+
+  .sticky-bottom-buttons {
+    background: rgba(0, 0, 0, .3);
+    border-color: $dark-border-color;
+  }
+
+  .bg-light { background-color: lighten($dark-bg-color, 15%) !important; }
+  .border { border-color: $dark-border-color !important; }
 
   .breadcrumbs {
     background-color: lighten($dark-bg-color, 10%);
@@ -50,7 +61,10 @@ $dark-bg-lighter-color: lighten($dark-bg-color, 10%);
 
   .btn-default { border-color: $dark-border-color; }
 
-  .border-bottom { border-color: $dark-border-color; }
+  .border-top,
+  .border-right,
+  .border-bottom,
+  .border-left { border-color: $dark-border-color; }
 
   .bottom-tab {
     color: $dark-text-color;
@@ -85,10 +99,11 @@ $dark-bg-lighter-color: lighten($dark-bg-color, 10%);
 
   .dropdown-menu {
     background: $dark-bg-lighter-color;
+    border-color: $dark-border-color;
 
-    .divider { background-color: $dark-border-color; }
+    .dropdown-divider { border-color: $dark-border-color; }
 
-    > li > a {
+    .dropdown-item {
       color: $dark-text-color;
 
       &:hover {
@@ -107,64 +122,96 @@ $dark-bg-lighter-color: lighten($dark-bg-color, 10%);
 
     &:hover,
     &:focus,
-    &.active {
+    &.active,
+    .link-parent:hover & {
       color: $dark-link-hover-color !important;
 
       .svg-icon { fill: $dark-link-hover-color !important; }
     }
 
-    &:visited {
+    &:visited,
+    .link-parent:visited & {
       color: $dark-link-visited-color;
 
       .svg-icon { fill: $dark-link-visited-color; }
     }
   }
 
-  .list-group-item {
+  .link-parent:hover {
+    .torrent-categories a,
+    .torrents-list-container a,
+    .link,
+    .pseudo {
+      color: $dark-link-hover-color !important;
+
+      .svg-icon { fill: $dark-link-hover-color !important; }
+    }
+  }
+
+  .link-parent:visited {
+    .torrent-categories a,
+    .torrents-list-container a,
+    .link,
+    .pseudo {
+      color: $dark-link-visited-color;
+
+      .svg-icon { fill: $dark-link-visited-color; }
+    }
+  }
+
+  .list-group-item-action {
     background-color: $dark-bg-lighter-color;
     border-color: $dark-border-color;
     color: $dark-text-color;
 
-    &.active {
-      color: #fff;
-    }
+    &.active { color: $white; }
 
     &:hover {
       background-color: lighten($dark-bg-lighter-color, 5%);
       border-color: $dark-border-color;
-      color: #fff;
+      color: $white;
     }
   }
 
-  .nav-link-tabs > li.active > a { color: $dark-text-color; }
+  .nav-border,
+  .navbar-border { border-color: $dark-border-color; }
 
-  .pagination > li > a {
+  .nav-border .nav-link:hover {
+    border-color: $gray-600;
+    color: $dark-text-color;
+  }
+
+  .nav-link-tabs .nav-link.active {
+    border-color: $primary;
+    color: $dark-text-color;
+  }
+
+  .page-item .page-link {
     background-color: $dark-bg-lighter-color;
     border-color: $dark-border-color;
     color: $dark-text-color;
 
     &:hover {
       background-color: lighten($dark-bg-lighter-color, 5%);
-      color: #fff;
+      color: $white;
     }
   }
 
-  .pagination > .active > span { border-color: $dark-border-color; }
-  .pagination > .disabled > span {
+  .page-item.active .page-link {
+    background-color: $primary;
+    border-color: $dark-border-color;
+  }
+  .page-item.disabled .page-link {
     background-color: $dark-bg-lighter-color;
     border-color: $dark-border-color;
   }
 
-  .panel-default {
-    background-color: lighten($dark-bg-lighter-color, 5%);
+  .card,
+  .card-header,
+  .card-footer {
+    background: $dark-bg-lighter-color;
     border-color: $dark-border-color;
-
-    > .panel-heading,
-    > .panel-footer {
-      background: $dark-bg-lighter-color;
-      border-color: $dark-border-color;
-      color: $dark-text-color;
-    }
+    color: $dark-text-color;
   }
 
   .rutracker-post .sp-wrap {
@@ -179,11 +226,12 @@ $dark-bg-lighter-color: lighten($dark-bg-color, 10%);
 
   .rutracker-post .sp-head span { color: $dark-text-color; }
 
+  .text-dark { color: $dark-text-color !important; }
   .text-muted { color: #999; }
   .text-success { color: #5cb85c; }
 
   .torrents-list-container {
-    @media (min-width: $screen-sm-min) {
+    @include media-breakpoint-up(md) {
       &:hover { background-color: $dark-bg-lighter-color; }
     }
   }
@@ -200,10 +248,21 @@ $dark-bg-lighter-color: lighten($dark-bg-color, 10%);
     tbody tr:nth-child(2n) { background-color: lighten($dark-bg-color, 5%); }
 
     thead,
-    thead tr,
     tfoot,
     .thead {
       background: lighten($dark-bg-color, 5%) linear-gradient(lighten($dark-bg-color, 15%), lighten($dark-bg-color, 5%)) repeat-x;
+    }
+
+    thead {
+      @include media-breakpoint-up(md) {
+        th {
+          background: lighten($dark-bg-color, 5%) linear-gradient(lighten($dark-bg-color, 15%), lighten($dark-bg-color, 5%)) repeat-x;
+
+          &:after {
+            border-color: $dark-border-color;
+          }
+        }
+      }
     }
   }
 }
