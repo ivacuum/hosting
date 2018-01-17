@@ -36,26 +36,36 @@
 <header class="bottom-tabbar-container revealed js-nav-reveal">
   <nav class="bottom-tabbar">
     <a class="bottom-tab {{ $self === 'Home' ? 'active' : '' }}" href="{{ path('Home@index') }}">
-      @svg (home)
-      <div>{{ trans('menu.home') }}</div>
+      <div>
+        @svg (home)
+      </div>
+      <div class="bottom-tab-label">{{ trans('menu.home') }}</div>
     </a>
     <a class="bottom-tab {{ $self === 'Life' ? 'active' : '' }}" href="{{ path('Life@index') }}">
-      @svg (file-text-o)
-      <div>{{ trans('menu.life') }}</div>
+      <div>
+        @svg (file-text-o)
+      </div>
+      <div class="bottom-tab-label">{{ trans('menu.life') }}</div>
     </a>
     <a class="bottom-tab {{ $self === 'Photos' ? 'active' : '' }}" href="{{ path('Photos@trips') }}">
-      @svg (picture-o)
-      <div>{{ trans('photos.index') }}</div>
+      <div>
+        @svg (picture-o)
+      </div>
+      <div class="bottom-tab-label">{{ trans('photos.index') }}</div>
     </a>
     @if (Auth::check())
       <a class="bottom-tab {{ starts_with(request()->path(), 'my/') ? 'active' : '' }}" href="{{ path('MyProfile@edit') }}">
-        @svg (user-circle-o)
-        <div>{{ trans('my.profile') }}</div>
+        <div>
+          @svg (user-circle-o)
+        </div>
+        <div class="bottom-tab-label">{{ trans('my.profile') }}</div>
       </a>
     @else
       <a class="bottom-tab {{ $view === 'auth.login' ? 'active' : '' }}" href="{{ path('Auth\SignIn@index') }}">
-        @svg (sign-in)
-        <div>{{ trans('auth.signin') }}</div>
+        <div>
+          @svg (sign-in)
+        </div>
+        <div class="bottom-tab-label">{{ trans('auth.signin') }}</div>
       </a>
     @endif
   </nav>

@@ -1,10 +1,10 @@
-$navbar-height: 50px;
 $navbar-default-bg: #f8f8f8;
 $navbar-default-border: darken($navbar-default-bg, 6.5%);
 
 .body-with-bottom-tabbar {
-  padding-bottom: $navbar-height;
+  padding-bottom: $bottom-tabbar-height;
 
+  @include media-breakpoint-up(sm) { padding-bottom: $bottom-tabbar-sm-height; }
   @include media-breakpoint-up(md) { padding-bottom: 0; }
 }
 
@@ -14,10 +14,12 @@ $navbar-default-border: darken($navbar-default-bg, 6.5%);
   left: 0;
   bottom: 0;
   z-index: $zindex-fixed;
-  min-height: $navbar-height;
   background: $navbar-default-bg linear-gradient(to bottom, lighten($navbar-default-bg, 10%) 0%, $navbar-default-bg 100%) repeat-x;
   border-top: 1px solid $navbar-default-border;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 5px rgba(0, 0, 0, .075);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   transform: translateY(100%) translateZ(0);
   transition: 200ms ease-out;
@@ -32,24 +34,32 @@ $navbar-default-border: darken($navbar-default-bg, 6.5%);
   display: flex;
   flex-flow: row;
   justify-content: space-between;
-  font-size: 11px;
   text-align: center;
   margin: 0 5px;
+  width: 100%;
 }
 
 .bottom-tab {
-  display: block;
+  display: flex;
+  flex-flow: column;
   width: 100%;
   min-height: 1px;
   color: $gray-light;
   background-color: transparent;
-  padding: 5px 0 0;
+  padding: .5rem 0 .25rem;
   text-shadow: 0 1px 0 rgba(255, 255, 255, .25);
-  line-height: 22px;
   text-decoration: none;
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;
+  line-height: 1;
+
+  @include media-breakpoint-up(sm) {
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    padding: .625rem 0;
+  }
 
   &:hover,
   &:focus,
@@ -58,5 +68,16 @@ $navbar-default-border: darken($navbar-default-bg, 6.5%);
   .svg-icon {
     font-size: 18px;
     margin-top: 0;
+  }
+}
+
+.bottom-tab-label {
+  font-size: 11px;
+  margin-top: .25rem;
+
+  @include media-breakpoint-up(sm) {
+    font-size: 14px;
+    margin-top: 0;
+    margin-left: .5rem;
   }
 }
