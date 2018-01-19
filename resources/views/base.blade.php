@@ -33,7 +33,7 @@
 @show
 
 @section('bottom-tabbar')
-<header class="bottom-tabbar-container revealed js-nav-reveal">
+<header class="bottom-tabbar-container revealed js-bottom-tabbar-reveal">
   <nav class="bottom-tabbar">
     <a class="bottom-tab {{ $self === 'Home' ? 'active' : '' }}" href="{{ path('Home@index') }}">
       <div>
@@ -140,6 +140,7 @@
   </div>
 </footer>
 @show
+<div class="curtain curtain-closed js-curtain"></div>
 <script>
 <?php echo 'window.AppOptions = ' . json_encode([
   'locale' => $locale,

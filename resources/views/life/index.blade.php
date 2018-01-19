@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="row">
-  <section class="col-sm-6 pt-0">
+  <section class="col-sm-8 col-md-6 pt-0">
     <div class="d-flex flex-wrap align-items-center mb-2">
       <h1 class="h2 mb-0 mr-3">{{ trans('life.trips') }}</h1>
       <a class="font-small-caps mt-1" href="{{ path('LifeTripsRss@index') }}">
@@ -24,7 +24,7 @@
 
     @include('tpl.trips_by_years')
   </section>
-  <section class="col-sm-6 pt-sm-0">
+  <section class="col-sm-4 col-md-6 pt-sm-0">
     <h2>{{ trans('life.favorites') }}</h2>
     <ul class="list-unstyled">
       @ru

@@ -1,16 +1,17 @@
 import './bootstrap'
 
-import Map from './map'
-import Pjax from './pjax'
-import YandexMetrika from './yandex-metrika'
+import Map from 'vac-gfe/js/yandex-map'
+import Pjax from 'vac-gfe/js/pjax'
+import YandexMetrika from 'vac-gfe/js/yandex-metrika'
 
 import NewsViewsObserver from './news-views-observer'
 import TorrentsViewsObserver from './torrents-views-observer'
 
+import 'vac-gfe/js/jquery.bottom-tabbar'
+import 'vac-gfe/js/jquery.highlight'
+
 import './events'
-import './highlight'
 import './life'
-import './nav-reveal'
 import './shortcuts'
 import './yandex-dns'
 
