@@ -1,7 +1,7 @@
 @extends('photos.base')
 
 @section('content')
-<div class="row mt--2">
+<div class="row mt-n2">
   <div class="col-lg-10 mb-3">
     <div class="mobile-wide position-relative text-center">
       @if (!is_null($next))

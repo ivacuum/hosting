@@ -1,7 +1,7 @@
 @extends('acp.base')
 
 @section('content')
-  <div class="d-flex align-items-center flex-wrap mb-2 mt--2">
+  <div class="d-flex align-items-center flex-wrap mb-2 mt-n2">
   <h3 class="mb-1 mr-3">{{ trans("$tpl.index") }}</h3>
   @include('acp.tpl.create-button')
 </div>
