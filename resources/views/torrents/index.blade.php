@@ -72,9 +72,7 @@
                title="{{ trans('torrents.download') }}"
                data-action="{{ path('Torrents@magnet', $torrent) }}">
               @svg (magnet)
-              @if ($torrent->clicks > 0)
-                <span class="js-magnet-counter">{{ $torrent->clicks }}</span>
-              @endif
+              <span class="js-magnet-counter">{{ $torrent->clicks > 0 ? $torrent->clicks : '' }}</span>
             </a>
           </div>
           <div class="torrents-list-cell torrents-list-size">{{ ViewHelper::size($torrent->size) }}</div>

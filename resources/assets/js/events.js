@@ -10,20 +10,6 @@ class Events {
     document.getElementById('aviasales_container').appendChild(s)
   }
 
-  // Операции над несколькими записями
-  static batchForm(e) {
-    e.preventDefault()
-
-    let $form = $(this)
-    let ids = $($form.data('selector') + ':checked').serialize()
-
-    $.post($form.data('url'), $form.serialize() + '&' + ids, (data) => {
-      if (data.redirect) {
-        document.location = data.redirect
-      }
-    })
-  }
-
   static cityMapClick(e) {
     e.preventDefault()
 
@@ -57,51 +43,6 @@ class Events {
     }
 
     $container.slideToggle()
-  }
-
-  static dcppClientsShow(e) {
-    e.preventDefault()
-
-    document.querySelectorAll(this.dataset.target).forEach(el => el.hidden = false)
-
-    this.hidden = true
-  }
-
-  static entityAction(e) {
-    e.preventDefault()
-
-    let $this = $(this)
-    let confirm_text = $this.data('confirm')
-
-    if ($this.hasClass('disabled')) {
-      return false
-    }
-
-    if (confirm_text) {
-      if (!confirm(confirm_text)) {
-        return false
-      }
-    }
-
-    let method = $this.data('method') || 'post'
-
-    $this.addClass('disabled')
-
-    $.ajax({
-      url: $this.attr('href'),
-      method: method.toLowerCase() === 'get' ? 'get' : 'post',
-      data: { _method: method.toUpperCase() }
-    }).done((data) => {
-      if (data.status === 'OK') {
-        $.pjax({ url: data.redirect, container: App.pjax.container })
-      } else {
-        // App.addFlashNotification(data.message || 'Что-то пошло не так', 'danger')
-        alert(data.message || 'Что-то пошло не так')
-      }
-    }).fail((jqxhr) => {
-      // App.addFlashNotification(`${jqxhr.status} ${jqxhr.statusText}`, 'danger')
-      alert(`${jqxhr.status} ${jqxhr.statusText}`)
-    })
   }
 
   static gifClick(e) {
@@ -141,88 +82,36 @@ class Events {
         })
       })
   }
-
-  static passwordEye(e) {
-    e.preventDefault()
-
-    let state = $(this).data('state') || 'password'
-    let $input = $(this).siblings('.form-control')
-
-    if (state === 'password') {
-      $input.attr('type', 'text')
-      $(this).data('state', 'text')
-
-      document.querySelector('.js-password-eye-hide').hidden = false
-      document.querySelector('.js-password-eye-show').hidden = true
-    } else if (state === 'text') {
-      $input.attr('type', 'password')
-      $(this).data('state', 'password')
-
-      document.querySelector('.js-password-eye-hide').hidden = true
-      document.querySelector('.js-password-eye-show').hidden = false
-    }
-  }
 }
 
 $(document).on('click', '.js-aviasales', Events.aviasales)
-$(document).on('submit', '.js-batch-form', Events.batchForm)
 $(document).on('click', '.js-city-map-click', Events.cityMapClick)
-
-// Подтверждение действия
-$(document).on('click', '.js-confirm', (e) => confirm($(e.currentTarget).data('confirm')))
-
-// Показ клиентов DC++ для всех платформ
-$(document).on('click', '.js-dcpp-clients-show', Events.dcppClientsShow)
 
 // Проигрывание гифок по клику
 $(document).on('click', '.js-gif-click', Events.gifClick)
 
-// Редактирование по двойному клику
-$(document).on('dblclick', '.js-dblclick-edit', (e) => document.location = $(e.currentTarget).data('dblclick-url'))
-
-// Учет кликов по хабам
-$(document).on('click', '.js-dcpp-hub', function() {
-  const clicked = $(this).data('clicked')
-
-  if (clicked === undefined) {
-    $.post($(this).data('action'))
-
-    $(this).data('clicked', 1)
-  }
-})
-
 // Учет кликов по магнет-ссылкам
-$(document).on('click', '.js-magnet', function() {
-  const clicked = $(this).data('clicked')
+$(document).on('click', '.js-magnet', function () {
+  const clicked = this.dataset.clicked
 
   if (clicked === undefined) {
-    $.post($(this).data('action'))
+    axios.post(this.dataset.action)
 
-    $(this).data('clicked', 1)
+    this.dataset.clicked = 1
 
-    $('.js-magnet-counter', $(this)).text(parseInt($(this).text(), 10) + 1)
+    let counter = this.querySelector('.js-magnet-counter')
+
+    counter.textContent = Number(counter.textContent) + 1
   }
 })
 
-// Возможность посмотреть пароль
-$(document).on('click', '.js-password-eye', Events.passwordEye)
-
-// Выбрать все
-$(document).on('click', '.js-select-all', function() {
-  let is_checked = $(this).prop('checked')
-  let $selector = $($(this).data('selector'))
-  $selector.prop('checked', is_checked)
-})
-
-$(document).on('click', '.js-tick-onclick', function() {
-  let $selector = $($(this).data('tick'))
-  $selector.prop('checked', function(i, val) {
+$(document).on('click', '.js-tick-onclick', function () {
+  let $selector = $(this.dataset.tick)
+  $selector.prop('checked', function (i, val) {
     return !val
   })
 })
 
-$(document).on('click', '.js-entity-action', Events.entityAction)
-
-$(function() {
+$(function () {
   Events.photosMap()
 })

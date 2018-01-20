@@ -1,9 +1,11 @@
 class YandexDns {
   static addRecord(e) {
+    e.preventDefault()
+
     let $form = $(this).closest('.ns-record-container')
 
-    $.post($form.data('action'), $('input, select', $form).serialize(), data => {
-      if ('ok' === data) {
+    axios.post($form.data('action'), $('input, select', $form).serialize()).then((response) => {
+      if ('ok' === response.data) {
         $.pjax({
           url: document.location.href,
           container: App.pjax.container
@@ -12,8 +14,6 @@ class YandexDns {
         alert(data)
       }
     })
-
-    e.preventDefault()
   }
 
   static cancelEditing(e) {
@@ -26,11 +26,13 @@ class YandexDns {
   }
 
   static deleteRecord(e) {
+    e.preventDefault()
+
     let id = $(this).data('id')
 
     if (confirm('Запись будет удалена. Продолжить?')) {
-      $.post($(this).data('action'), { record_id: id, _method: 'DELETE' }, data => {
-        if ('ok' === data) {
+      axios.post($(this).data('action'), { record_id: id, _method: 'DELETE' }).then((response) => {
+        if ('ok' === response.data) {
           $.pjax({
             url: document.location.href,
             container: App.pjax.container
@@ -40,24 +42,24 @@ class YandexDns {
         }
       })
     }
-
-    e.preventDefault()
   }
 
   static editRecord(e) {
+    e.preventDefault()
+
     let $form = $(this).closest('.ns-record-container')
 
     $('.edit', $form).get().forEach(el => el.hidden = false)
     $('.presentation', $form).get().forEach(el => el.hidden = true)
-
-    e.preventDefault()
   }
 
   static saveRecord(e) {
+    e.preventDefault()
+
     let $form = $(this).closest('.ns-record-container')
 
-    $.post($(this).data('action'), $('input', $form).serialize(), data => {
-      if ('ok' === data) {
+    axios.post($(this).data('action'), $('input', $form).serialize()).then((response) => {
+      if ('ok' === response.data) {
         $.pjax({
           url: document.location.href,
           container: App.pjax.container
@@ -66,8 +68,6 @@ class YandexDns {
         alert(data)
       }
     })
-
-    e.preventDefault()
   }
 }
 
