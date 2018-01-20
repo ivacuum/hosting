@@ -19,13 +19,15 @@
               {{ trans('news.index') }}
             </a>
           </li>
-          @ru
-            <li class="nav-item {{ $self == 'Torrents' ? 'active' : '' }}">
-              <a class="nav-link" href="{{ path('Torrents@index') }}">
-                {{ trans('menu.torrents') }}
-              </a>
-            </li>
-          @endru
+          @if (!$is_crawler)
+            @ru
+              <li class="nav-item {{ $self == 'Torrents' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ path('Torrents@index') }}">
+                  {{ trans('menu.torrents') }}
+                </a>
+              </li>
+            @endru
+          @endif
           <li class="nav-item {{ $self == 'Photos' ? 'active' : '' }}">
             <a class="nav-link" href="{{ path('Photos@trips') }}">
               {{ trans('photos.index') }}
