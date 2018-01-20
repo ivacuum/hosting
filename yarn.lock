@@ -6915,9 +6915,9 @@ uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
 
-vac-gfe@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/vac-gfe/-/vac-gfe-1.0.4.tgz#08f9278141bad9c8416f89d86ba5bcb00b605745"
+vac-gfe@1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/vac-gfe/-/vac-gfe-1.0.6.tgz#2485b2a1f495f4d1b4d37b909f778ac6f43e4eda"
   dependencies:
     bootstrap "4.0.0"
 
