@@ -15,7 +15,7 @@
     <div class="text-break-word mw-700 w-100">
       <form action="{{ path('AjaxComment@store', $params) }}" method="post" novalidate>
         {{ ViewHelper::inputHiddenMail() }}
-        <textarea required class="form-control textarea-autosized js-autosize-textarea {{ $errors->has('text') ? 'is-invalid' : '' }}" name="text" placeholder="{{ trans('comments.placeholder') }}" rows="1" maxlength="1000">{{ old('text') }}</textarea>
+        <textarea required class="form-control {{ !$is_mobile ? 'textarea-autosized js-autosize-textarea' : '' }} {{ $errors->has('text') ? 'is-invalid' : '' }}" name="text" placeholder="{{ trans('comments.placeholder') }}" rows="{{ !$is_mobile ? 1 : 4 }}" maxlength="1000">{{ old('text') }}</textarea>
         <div class="invalid-feedback">{{ $errors->first('text') }}</div>
         <button class="btn btn-primary mt-2">
           {{ trans('comments.send') }}
