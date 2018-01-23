@@ -86,6 +86,7 @@
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Black Mirror\nЧерное зеркало", 'id' => 655800],
+      ['title' => "Bron/Broen\nМост", 'id' => 574497],
       ['title' => "Родина\nHomeland", 'id' => 574688],
       ['title' => "1+1\nIntouchables", 'id' => 535341],
       ['title' => "Бесстыдники\nShameless", 'id' => 571335],
