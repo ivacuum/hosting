@@ -10,13 +10,13 @@
 <div class="row">
   <section class="col-sm-8 col-md-6 pt-0">
     <div class="d-flex flex-wrap align-items-center mb-2">
-      <h1 class="h2 mb-0 mr-3">{{ trans('life.trips') }}</h1>
-      <a class="font-small-caps mt-1" href="{{ path('LifeTripsRss@index') }}">
+      <h1 class="h2 mb-1 mr-3">{{ trans('life.trips') }}</h1>
+      <a class="svg-flex svg-label font-small-caps" href="{{ path('LifeTripsRss@index') }}">
         @svg (rss-square)
         rss
       </a>
     </div>
-    <ul class="list-inline f14">
+    <ul class="list-inline f14 mt-n1">
       <li class="list-inline-item"><mark class="text-nowrap">{{ trans('life.by_year') }}</mark></li>
       <li class="list-inline-item"><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
       <li class="list-inline-item"><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></li>

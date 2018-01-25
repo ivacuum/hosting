@@ -9,7 +9,7 @@
 @section('content')
 <div class="d-flex flex-wrap align-items-center mb-2">
   <h1 class="h2 mb-1 mr-3">{{ trans('life.gigs_intro_title') }}</h1>
-  <a class="font-small-caps" href="{{ path('LifeGigsRss@index') }}">
+  <a class="svg-flex svg-label font-small-caps" href="{{ path('LifeGigsRss@index') }}">
     @svg (rss-square)
     rss
   </a>

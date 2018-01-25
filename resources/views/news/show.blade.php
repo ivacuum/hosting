@@ -7,27 +7,21 @@
   <header>
     <h1 class="h3" itemprop="headline">{{ $news->title }}</h1>
     <link href="{{ $news->www() }}" itemprop="url">
-    <div class="text-muted f14 mb-3">
-      <span class="text-nowrap mr-3">
-        <span class="svg-muted mr-1">
-          @svg (calendar-o)
-        </span>
+    <div class="svg-labels svg-muted text-muted f14 mb-3">
+      <span class="svg-flex svg-label">
+        @svg (calendar-o)
         <time itemprop="datePublished" datetime="{{ $news->created_at->toDateString() }}">
           {{ $news->created_at->formatLocalized('%e %B %Y') }}
         </time>
       </span>
       @if ($news->user->login)
-        <span class="text-nowrap mr-3">
-          <span class="mr-1 svg-muted">
-            @svg (pencil)
-          </span>
+        <span class="svg-flex svg-label">
+          @svg (pencil)
           {{ $news->user->login }}
         </span>
       @endif
-      <span class="text-nowrap mr-3">
-        <span class="mr-1 svg-muted">
-          @svg (eye)
-        </span>
+      <span class="svg-flex svg-label">
+        @svg (eye)
         {{ ViewHelper::number($news->views) }}
       </span>
     </div>

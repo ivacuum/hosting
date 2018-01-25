@@ -1,5 +1,3 @@
-.navbar-nav .avatar-dropdown .svg-angle-down { margin-top: 2px; }
-
 .svg-avatar {
   @include size(50px);
 
@@ -19,6 +17,9 @@
     font-size: 18px;
     margin-top: 0;
   }
+
+  .svg-label & { margin-right: .3125rem; }
+  .svg-muted & { color: #999; }
 }
 
 .svg-icon-16 .svg-icon { @include size(16px); }
@@ -29,6 +30,25 @@
   background: #ccc;
 }
 
-.svg-muted { color: #999; }
 .svg-muted-blue { color: #a8bbcf; }
 .svg-unread { color: #0af; }
+
+.svg-flex {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+
+  .svg-icon { margin-top: 0; }
+}
+
+.svg-labels {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .svg-flex {
+    margin-right: 1.25rem;
+
+    &:last-child { margin-right: 0; }
+  }
+}

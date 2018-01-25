@@ -14,38 +14,26 @@
 
 <rutracker-post>{!! $torrent->html !!}</rutracker-post>
 
-<div class="text-muted">
-  <span class="text-nowrap mr-3 tooltipped tooltipped-n" aria-label="{{ trans('model.torrent.updated_at') }}">
-    <span class="mr-1 svg-muted">
-      @svg (calendar-o)
-    </span>
+<div class="svg-labels text-muted">
+  <span class="svg-flex svg-label svg-muted tooltipped tooltipped-n" aria-label="{{ trans('model.torrent.updated_at') }}">
+    @svg (calendar-o)
     {{ ViewHelper::dateShort($torrent->registered_at) }}
   </span>
-  <span class="text-nowrap mr-3 tooltipped tooltipped-n" aria-label="{{ trans('model.torrent.views') }}">
-    <span class="mr-1 svg-muted">
-      @svg (eye)
-    </span>
+  <span class="svg-flex svg-label svg-muted tooltipped tooltipped-n" aria-label="{{ trans('model.torrent.views') }}">
+    @svg (eye)
     {{ ViewHelper::number($torrent->views) }}
   </span>
-  <span class="text-nowrap mr-3 tooltipped tooltipped-n" aria-label="{{ trans('model.torrent.clicks') }}">
-    <span class="mr-1 svg-muted">
-      @svg (magnet)
-    </span>
+  <span class="svg-flex svg-label svg-muted tooltipped tooltipped-n" aria-label="{{ trans('model.torrent.clicks') }}">
+    @svg (magnet)
     {{ ViewHelper::number($torrent->clicks) }}
   </span>
-  <span class="text-nowrap mr-3">
-    <a class="tooltipped tooltipped-n" href="{{ $torrent->externalLink() }}" aria-label="{{ trans('torrents.source') }}">
-      <span class="svg-muted">
-        @svg (external-link)
-      </span>
-    </a>
-  </span>
-  <a class="btn btn-success js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ path('Torrents@magnet', $torrent) }}">
-    <span class="mr-1">
-      @svg (magnet)
-    </span>
+  <a class="svg-flex svg-muted tooltipped tooltipped-n" href="{{ $torrent->externalLink() }}" aria-label="{{ trans('torrents.source') }}">
+    @svg (external-link)
+  </a>
+  <a class="btn btn-success svg-flex svg-label js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ path('Torrents@magnet', $torrent) }}">
+    @svg (magnet)
     {{ trans('torrents.download') }}
-    <span class="mx-1">&middot;</span>
+    <span class="mx-2">&middot;</span>
     {{ ViewHelper::size($torrent->size) }}
   </a>
 </div>
