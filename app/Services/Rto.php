@@ -11,7 +11,7 @@ class Rto
     /**
      * Зеркала: rutracker.org, rutracker.cr, xn--e1aaowadjh.org
      */
-    const SITE_ENDPOINT = 'http://rutracker.cr/forum/';
+    const SITE_ENDPOINT = 'http://maintracker.org/forum/';
 
     protected $client;
 
