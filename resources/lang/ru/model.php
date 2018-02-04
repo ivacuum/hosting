@@ -81,7 +81,7 @@ return [
     'torrent.title' => 'Название',
     'torrent.views' => 'Просмотры',
     'torrent.clicks' => 'Клики по магнету',
-    'torrent.rto_id' => 'rutracker.org topic_id',
+    'torrent.rto_id' => 'RTO ID',
     'torrent.status' => 'Состояние',
     'torrent.comments' => 'Комментарии',
     'torrent.announcer' => 'Анонсер',

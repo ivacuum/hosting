@@ -78,7 +78,7 @@ class Torrent extends Model
     // Methods
     public function breadcrumb(): string
     {
-        return $this->title;
+        return $this->shortTitle();
     }
 
     public function externalLink(): string
@@ -102,6 +102,12 @@ class Torrent extends Model
     public function magnet(): string
     {
         return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode(str_limit($this->title, 100, ''));
+    }
+
+    // Заголовок без скобок
+    public function shortTitle(): string
+    {
+        return str_replace('  ', ' ', preg_replace('/\([^)]+\)|\[[^\]]+\]/', '', $this->title));
     }
 
     public function www(?string $anchor = null): string

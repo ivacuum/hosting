@@ -17,11 +17,7 @@
     <tbody>
       @foreach ($torrents as $torrent)
         <tr>
-          <td>
-            <a class="visited" href="{{ $torrent->www() }}">
-              <torrent-title title="{{ $torrent->title }}" hide_brackets="1"></torrent-title>
-            </a>
-          </td>
+          <td><a class="visited" href="{{ $torrent->www() }}">{{ $torrent->shortTitle() }}</a></td>
           <td class="text-muted text-md-right">{{ $torrent->views ? ViewHelper::number($torrent->views) : '' }}</td>
           <td class="text-md-right">{{ $torrent->comments_count ? ViewHelper::number($torrent->comments_count) : '' }}</td>
           <td class="text-md-right">{{ $torrent->clicks ? ViewHelper::number($torrent->clicks) : '' }}</td>

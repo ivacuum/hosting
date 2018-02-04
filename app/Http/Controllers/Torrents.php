@@ -95,7 +95,7 @@ class Torrents extends Controller
 
     public function show(Torrent $torrent)
     {
-        \Breadcrumbs::push($torrent->title);
+        \Breadcrumbs::push($torrent->shortTitle());
 
         event(new \App\Events\Stats\TorrentViewed($torrent->id));
 

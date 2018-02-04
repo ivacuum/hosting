@@ -71,11 +71,7 @@
           </span>
         @endif
       </td>
-      <td>
-        <a href="{{ path("$self@show", $model) }}">
-          <torrent-title title="{{ $model->title }}" hide_brackets="1"></torrent-title>
-        </a>
-      </td>
+      <td><a href="{{ path("$self@show", $model) }}">{{ $model->shortTitle() }}</a></td>
       <td>
         <a href="{{ $model->externalLink() }}">
           @svg (external-link)
