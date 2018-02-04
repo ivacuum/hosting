@@ -21,7 +21,7 @@
   @endru
   <div class="col-md-6 col-lg-4 mb-4">
     <a class="d-flex align-items-center mb-2 link-parent" href="{{ path('Life@index') }}">
-      <img class="size-32 mr-2" src="https://ivacuum.org/i/services/hosting.png">
+      <img class="d-none d-md-block size-32 mr-2" src="https://ivacuum.org/i/services/hosting.png">
       <h2 class="h3 mb-0"><span class="link">{{ trans('menu.life') }}</span></h2>
     </a>
     @ru
@@ -40,7 +40,7 @@
     </div>
     <div class="col-md-6 col-lg-4 mb-4">
       <a class="d-flex align-items-center mb-2 link-parent" href="https://kupislona.ru/">
-        <img class="size-32 mr-2" src="https://ivacuum.org/i/services/kupislona.png">
+        <img class="d-none d-md-block size-32 mr-2" src="https://ivacuum.org/i/services/kupislona.png">
         <h2 class="h3 mb-0"><span class="link">KupiSlona.ru</span></h2>
       </a>
       <div>Доска бесплатных объявлений Калужской области.</div>
