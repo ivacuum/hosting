@@ -1,6 +1,13 @@
 @extends('base')
 
 @section('content')
+<h1 class="h5 d-md-none mb-4">
+  Сергей Панков
+  <span class="text-muted">
+    &middot;
+    vacuum kaluga
+  </span>
+</h1>
 <div class="row justify-content-start">
   @ru
     <div class="col-md-6 col-lg-4 d-none d-md-block mb-4">
