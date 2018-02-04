@@ -32,9 +32,6 @@
             <a class="nav-link {{ $view === 'torrents.my' ? 'active' : '' }}" href="{{ path('Torrents@my') }}">
               {{ trans('torrents.my') }}
             </a>
-            <a class="nav-link" href="https://t.me/joinchat/ARFYTgllrcJ-R5S07ZLgYQ" title="{{ trans('torrents.telegram_chat') }}">
-              @svg (telegram)
-            </a>
           @endif
         </nav>
       </div>
