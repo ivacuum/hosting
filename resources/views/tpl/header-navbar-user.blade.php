@@ -1,5 +1,5 @@
 <li class="nav-item {{ $self == 'Notifications' ? 'active' : '' }}">
-  <a class="nav-link tooltipped tooltipped-s" href="{{ path('Notifications@index') }}" aria-label="{{ trans('notifications.index') }}">
+  <a class="nav-link position-relative tooltipped tooltipped-s" href="{{ path('Notifications@index') }}" aria-label="{{ trans('notifications.index') }}">
     <span class="{{ !is_null(Auth::user()->unreadNotifications()->first()) ? 'has-unread-label' : '' }}">
       @svg (bell)
     </span>
