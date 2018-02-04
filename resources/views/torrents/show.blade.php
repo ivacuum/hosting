@@ -1,7 +1,7 @@
 @extends('torrents.base')
 
-@section('content')
-<div class="mb-3 text-center">
+@section('torrent-download-button')
+<div class="mr-3 text-center">
   <a class="btn btn-success js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ path('Torrents@magnet', $torrent) }}">
     <span class="mr-1">
       @svg (magnet)
@@ -11,7 +11,9 @@
     {{ ViewHelper::size($torrent->size) }}
   </a>
 </div>
+@endsection
 
+@section('content')
 <rutracker-post>{!! $torrent->html !!}</rutracker-post>
 
 <div class="svg-labels text-muted">

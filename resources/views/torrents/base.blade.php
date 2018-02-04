@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content_header')
-<div class="d-lg-flex flex-row-reverse align-items-center justify-content-between mt-n1 mt-lg-n3 mb-3">
+<div class="d-lg-flex flex-row-reverse align-items-center justify-content-between mt-n1 mt-lg-n2 mb-3">
   <form class="d-flex mb-2 mb-lg-0" action="{{ path("$self@index") }}">
     <div class="input-group">
       <input class="form-control" name="q" value="{{ old('q', @$q) }}" placeholder="{{ trans('torrents.search') }}" autocapitalize="none">
@@ -12,6 +12,7 @@
       </div>
     </div>
   </form>
+  @yield('torrent-download-button')
   <div class="nav-link-tabs-fader nav-border">
     <div class="nav-scroll-container">
       <div class="nav-scroll">
