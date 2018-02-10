@@ -8,10 +8,8 @@ class Rto
 {
     const API_ENDPOINT = 'http://api.rutracker.org/v1/';
 
-    /**
-     * Зеркала: rutracker.org, rutracker.cr, xn--e1aaowadjh.org
-     */
-    const SITE_ENDPOINT = 'http://maintracker.org/forum/';
+    // Зеркала: rutracker.org, rutracker.cr, xn--e1aaowadjh.org
+    const SITE_ENDPOINT = 'https://dostup.website/https://rutracker.org/forum/';
 
     protected $client;
 
