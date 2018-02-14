@@ -31,10 +31,9 @@ class Kernel extends ConsoleKernel
     {
         $cron_output = config('cfg.cron_output');
 
-        // ttl = a week
-        $schedule->command('app:metrics-init-today')
-            ->cron('0 0 * * *')
-            ->appendOutputTo($cron_output);
+//        $schedule->command('app:metrics-init-today')
+//            ->cron('0 0 * * *')
+//            ->appendOutputTo($cron_output);
 
         $schedule->command('app:notifications-purge')
             ->cron('0 2,14 * * *')
