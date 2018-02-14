@@ -64,7 +64,7 @@ class Domain extends Model
     // Relations
     public function alias()
     {
-        return $this->belongsTo(Domain::class);
+        return $this->belongsTo(self::class);
     }
 
     public function aliases()
