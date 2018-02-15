@@ -71,6 +71,10 @@ class ParserVk extends Controller
                     continue;
                 }
 
+                if (mb_strpos($post->text, '#Лайктайм@pn6') !== false) {
+                    continue;
+                }
+
                 $photos = 0;
 
                 if (isset($post->attachments)) {
