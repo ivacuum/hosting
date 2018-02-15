@@ -82,14 +82,14 @@ class ParserVk extends Controller
                 }
 
                 $posts->push([
-                    'views'       => $post->views->count,
-                    'likes'       => $post->likes->count,
-                    'reposts'     => $post->reposts->count,
-                    'url'         => "https://vk.com/wall{$post->owner_id}_{$post->id}",
-                    'text'        => $post->text,
-                    'type'        => $post->post_type,
-                    'photos'      => $photos,
-                    'attachment'  => @$post->attachment,
+                    'url' => "https://vk.com/wall{$post->owner_id}_{$post->id}",
+                    'text' => $post->text,
+                    'type' => $post->post_type,
+                    'likes' => $post->likes->count,
+                    'views' => $post->views->count ?? 0, // Иногда поле отсутствует
+                    'photos' => $photos,
+                    'reposts' => $post->reposts->count,
+                    'attachment' => @$post->attachment,
                     'attachments' => @$post->attachments,
                     'copy_history' => @$post->copy_history,
                 ]);
