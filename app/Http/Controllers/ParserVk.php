@@ -15,7 +15,10 @@ class ParserVk extends Controller
     {
         parent::__construct();
 
-        $this->client = new Client(['base_uri' => 'https://api.vk.com/method/']);
+        $this->client = new Client([
+            'timeout' => 10,
+            'base_uri' => 'https://api.vk.com/method/',
+        ]);
     }
 
     public function index($vkpage = 'pn6', $date = false)
