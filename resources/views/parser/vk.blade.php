@@ -136,21 +136,27 @@
         @endforeach
         </div>
       @endif
-      <div class="mt-2 vk-post-meta text-muted text-right">
-        <samp class="f12">
-          <a class="mr-3" href="https://t.me/share/url?url={{ $post['url'] }}">
+      <div class="mt-2 vk-post-meta text-muted">
+        <samp class="f12 svg-labels justify-content-end">
+          <a class="svg-flex svg-label" href="https://t.me/share/url?url={{ $post['url'] }}">
             @svg (telegram)
           </a>
-          <a class="mr-3" href="{{ $post['url'] }}">
+          <a class="svg-flex svg-label" href="{{ $post['url'] }}">
             @svg (link)
           </a>
-          #{{ $loop->iteration }}
-          @svg (bullhorn)
-          <span class="text-muted">{{ ViewHelper::numberShort($post['reposts']) }}</span>
-          @svg (heart)
-          <span class="text-muted">{{ ViewHelper::numberShort($post['likes']) }}</span>
-          @svg (eye)
-          <span class="text-muted">{{ ViewHelper::numberShort($post['views']) }}</span>
+          <span class="svg-flex svg-label">#{{ $loop->iteration }}</span>
+          <span class="svg-flex svg-label">
+            @svg (bullhorn)
+            <span class="text-muted">{{ ViewHelper::numberShort($post['reposts']) }}</span>
+          </span>
+          <span class="svg-flex svg-label">
+            @svg (heart)
+            <span class="text-muted">{{ ViewHelper::numberShort($post['likes']) }}</span>
+          </span>
+          <span class="svg-flex svg-label">
+            @svg (eye)
+            <span class="text-muted">{{ ViewHelper::numberShort($post['views']) }}</span>
+          </span>
         </samp>
       </div>
     </div>
