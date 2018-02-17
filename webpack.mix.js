@@ -38,3 +38,20 @@ mix.js('resources/assets/js/app.js', 'public/assets')
   .options({
     processCssUrls: false
   })
+
+  .webpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          include: /node_modules\/vac-gfe/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: Config.babel()
+            }
+          ]
+        }
+      ]
+    }
+  })
