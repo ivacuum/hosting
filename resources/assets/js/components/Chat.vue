@@ -14,7 +14,7 @@
   </div>
   <form class="mt-1 mb-3" @submit.prevent="post">
     <div class="input-group">
-      <input class="form-control" placeholder="Чат..." v-model="message">
+      <input class="form-control" placeholder="Сообщение в чат..." v-model="message">
       <div class="input-group-append">
         <button class="btn btn-default" :disabled="message.length <= 0">Отправить</button>
       </div>
