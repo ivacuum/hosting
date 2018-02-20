@@ -3,6 +3,7 @@
 use App\Comment;
 use App\Services\Rto;
 use App\Torrent;
+use Foolz\SphinxQL\SphinxQL;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\HtmlString;
 
@@ -13,31 +14,46 @@ class Torrents extends Controller
     public function index()
     {
         $q = request('q');
+        $q = mb_strlen($q) > 1 ? $q : null;
         $category = null;
+        $fulltext = request('fulltext');
         $category_id = request('category_id');
 
         abort_if($category_id && is_null($category = \TorrentCategoryHelper::find($category_id)), 404);
 
-        $torrents = Torrent::published()
+        if ($q) {
+            $ids = Torrent::search($q, function (SphinxQL $builder) use ($category_id, $fulltext, $q) {
+                $builder = $builder->match($fulltext ? '*' : 'title', $q);
+
+                if ($category_id) {
+                    $builder = $builder->where('category_id', '=', (int) $category_id);
+                }
+
+                return $builder->execute();
+            })->raw();
+
+            event(new \App\Events\Stats\TorrentSearched);
+
+            $torrents = Torrent::whereIn('id', array_pluck($ids, 'id'));
+        } else {
+            $torrents = Torrent::query();
+        }
+
+        $torrents = $torrents->published()
             ->orderBy('registered_at', 'desc')
-            ->when(!is_null($category), function (Builder $query) use ($category_id) {
+            ->when(!$q && !is_null($category), function (Builder $query) use ($category_id) {
                 $ids = \TorrentCategoryHelper::selfAndDescendantsIds($category_id);
 
                 event(new \App\Events\Stats\TorrentFilteredByCategory);
 
                 return $query->whereIn('category_id', $ids);
             })
-            ->when(mb_strlen($q) > 2, function (Builder $query) use ($q) {
-                event(new \App\Events\Stats\TorrentSearched);
-
-                return $query->where('title', 'LIKE', "%{$q}%");
-            })
             ->simplePaginate(25, $this->list_columns);
 
         $tree = \TorrentCategoryHelper::tree();
         $stats = Torrent::statsByCategories();
 
-        return view($this->view, compact('category_id', 'q', 'torrents', 'tree', 'stats'));
+        return view($this->view, compact('category_id', 'fulltext', 'q', 'torrents', 'tree', 'stats'));
     }
 
     public function create()

@@ -43,10 +43,27 @@
     @endif
     @if ($q)
       @ru
-        <div class="h3 mb-4">Результаты поиска по запросу «{{ $q }}»</div>
+        <div class="h3">Результаты поиска по запросу «{{ $q }}»</div>
       @en
-        <div class="h3 mb-4">Search results for «{{ $q }}»</div>
+        <div class="h3">Search results for «{{ $q }}»</div>
       @endru
+      @if ($fulltext)
+        <div class="mb-4">
+          <a class="btn btn-default" href="{{ UrlHelper::filter(['fulltext' => null]) }}">
+            <span class="text-danger">
+              @svg (times)
+            </span>
+            Искать только в заголовках
+          </a>
+        </div>
+      @else
+        <div class="mb-4">
+          <a class="btn btn-default" href="{{ UrlHelper::filter(['fulltext' => 1]) }}">
+            @svg (search)
+            Искать в описаниях раздач
+          </a>
+        </div>
+      @endif
     @endif
     @php ($last_date = null)
     @if (sizeof($torrents))

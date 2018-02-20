@@ -34,6 +34,11 @@ return [
     ],
     'metrics_address' => env('METRICS_ADDRESS'),
     'sitename' => 'vacuum.kaluga',
+    'sphinx' => [
+        'host'   => env('SPHINX_HOST', 'localhost'),
+        'port'   => env('SPHINX_PORT', 9306),
+        'socket' => env('SPHINX_SOCKET', ''),
+    ],
     'socketio_host' => env('SOCKETIO_HOST'),
     'telegram' => [
         'admin_id' => env('TELEGRAM_ADMIN_ID'),

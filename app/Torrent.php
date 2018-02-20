@@ -3,6 +3,7 @@
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Ivacuum\Generic\Traits\SoftDeleteTrait;
+use Laravel\Scout\Searchable;
 
 /**
  * Торрент
@@ -29,7 +30,7 @@ use Ivacuum\Generic\Traits\SoftDeleteTrait;
  */
 class Torrent extends Model
 {
-    use SoftDeleteTrait;
+    use Searchable, SoftDeleteTrait;
 
     const STATUS_HIDDEN = 0;
     const STATUS_PUBLISHED = 1;
@@ -47,6 +48,16 @@ class Torrent extends Model
     const RTO_STATUS_9 = 9; // проверяется
     const RTO_STATUS_10 = 10; // временная
     const RTO_STATUS_PREMODERATION = 11; // премодерация
+
+    protected $casts = [
+        'size' => 'int',
+        'views' => 'int',
+        'clicks' => 'int',
+        'rto_id' => 'int',
+        'status' => 'int',
+        'user_id' => 'int',
+        'category_id' => 'int',
+    ];
 
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $hidden = ['html'];
@@ -104,10 +115,30 @@ class Torrent extends Model
         return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode(str_limit($this->title, 100, ''));
     }
 
+    public function searchableAs()
+    {
+        return 'vac_torrents_v1';
+    }
+
     // Заголовок без скобок
     public function shortTitle(): string
     {
         return str_replace('  ', ' ', preg_replace('/\([^)]+\)|\[[^\]]+\]/', '', $this->title));
+    }
+
+    public function shouldBeSearchable()
+    {
+        return $this->status === self::STATUS_PUBLISHED;
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'id' => $this->id,
+            'text' => strip_tags($this->html),
+            'title' => $this->title,
+            'category_id' => $this->category_id,
+        ];
     }
 
     public function www(?string $anchor = null): string
