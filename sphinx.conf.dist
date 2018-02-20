@@ -1,5 +1,5 @@
 # Торренты
-index ivacuum_torrents_v1
+index vac_torrents_v1
 {
   type = rt
 
@@ -18,9 +18,8 @@ index ivacuum_torrents_v1
   html_strip = 1
 
   rt_field = title
-  rt_field = summary
+  rt_field = text
   rt_attr_uint = category_id
-  rt_attr_uint = user_id
 
-  path = /usr/local/var/data/ivacuum_torrents_v1
+  path = /usr/local/var/data/vac_torrents_v1
 }
