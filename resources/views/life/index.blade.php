@@ -20,6 +20,7 @@
       <li class="list-inline-item"><mark class="text-nowrap">{{ trans('life.by_year') }}</mark></li>
       <li class="list-inline-item"><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
       <li class="list-inline-item"><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></li>
+      <li class="list-inline-item"><a class="link" href="{{ path('Life@calendar') }}">{{ trans('life.by_days') }}</a></li>
     </ul>
 
     @include('tpl.trips_by_years')

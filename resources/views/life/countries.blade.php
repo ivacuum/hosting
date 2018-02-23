@@ -11,6 +11,7 @@
   <li class="list-inline-item"><a class="link" href="{{ path('Life@index') }}">{{ trans('life.by_year') }}</a></li>
   <li class="list-inline-item"><mark>{{ trans('life.by_country') }}</mark></li>
   <li class="list-inline-item"><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></li>
+  <li class="list-inline-item"><a class="link" href="{{ path('Life@calendar') }}">{{ trans('life.by_days') }}</a></li>
 </ul>
 
 @if (!empty($countries))
