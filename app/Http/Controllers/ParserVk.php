@@ -74,7 +74,7 @@ class ParserVk extends Controller
                     continue;
                 }
 
-                if (mb_strpos($post->text, '#Лайктайм@pn6') !== false) {
+                if (mb_stripos($post->text, '#лайктайм@') !== false) {
                     continue;
                 }
 
