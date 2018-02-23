@@ -41,6 +41,7 @@ $dark-bg-lighter-color: lighten($dark-bg-color, 10%);
     border-color: $dark-border-color;
   }
 
+  .bg-gray-200 { background-color: lighten($dark-bg-color, 10%) !important; }
   .bg-light { background-color: lighten($dark-bg-color, 15%) !important; }
   .border { border-color: $dark-border-color !important; }
 

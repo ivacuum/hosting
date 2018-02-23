@@ -1,7 +1,11 @@
 $blue: #337ab7;
 $orange: #fd7e14;
 
+// Around $gray-550
+$gray-light: #858585;
+
 $theme-colors: (
+  "gray-200": #e1e4e8,
   "important": $orange,
 );
 
@@ -18,6 +22,3 @@ $link-hover-decoration:     none;
 $link-hover-border-color:   rgba(210, 50, 50, .5);
 $link-visited-color:        #660e7a;
 $link-visited-border-color: rgba(102, 14, 122, .3);
-
-// Around $gray-550
-$gray-light: #858585;

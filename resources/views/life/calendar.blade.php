@@ -13,9 +13,9 @@
 
 <div class="calendar-grid text-center">
   @foreach (range(now()->year, $start->year, -1) as $year)
-    <div class="font-weight-bold text-right mt-3 pr-2 bg-light">{{ $year }}</div>
+    <div class="font-weight-bold text-right mt-3 pr-2 bg-gray-200">{{ $year }}</div>
     @foreach (range(1, 31) as $day)
-      <div class="mt-3 bg-light">{{ $day }}</div>
+      <div class="mt-3 bg-gray-200">{{ $day }}</div>
     @endforeach
     @foreach (range(1, 12) as $month)
       <div class="text-right pr-2">{{ trans("months.{$month}") }}</div>
