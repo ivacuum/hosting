@@ -13,11 +13,13 @@ return [
     'gigs_intro_title' => 'Посещенные и ожидаемые концерты',
 
     'by_city' => 'по городам',
+    'by_days' => 'календарь',
     'by_year' => 'по годам',
     'by_country' => 'по странам',
 
     'on_map' => 'на карте',
 
+    'calendar' => 'Календарь',
     'visited_cities' => 'Посещенные города',
     'visited_countries' => 'Посещенные страны',
 

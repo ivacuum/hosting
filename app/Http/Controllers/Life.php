@@ -35,6 +35,39 @@ class Life extends Controller
         return view($this->view, compact('trips'));
     }
 
+    public function calendar()
+    {
+        $trips = Trip::with('city.country')
+            ->where('user_id', 1)
+            ->where('city_id', '<>', 1)
+            ->visible()
+            ->orderBy('date_start')
+            ->get();
+
+        $start = null;
+        $calendar = [];
+
+        foreach ($trips as $trip) {
+            /* @var Trip $trip */
+            $start = $start === null ? $trip->date_start : $start;
+
+            for ($day = $trip->date_start, $end = $trip->date_end; $day->lte($end); $day->addDay()) {
+                $date = "{$day->year}-{$day->month}-{$day->day}";
+
+                if (!isset($calendar[$date])) {
+                    $calendar[$date] = [];
+                }
+
+                $calendar[$date][] = [
+                    'slug' => $trip->slug,
+                    'emoji' => $trip->city->country->emoji,
+                ];
+            }
+        }
+
+        return view($this->view, compact('calendar', 'start', 'trips'));
+    }
+
     public function cities()
     {
         $trips = Trip::tripsByCities(1);

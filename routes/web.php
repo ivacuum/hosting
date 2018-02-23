@@ -48,6 +48,7 @@ Route::get('gallery/upload', 'Gallery@upload')->middleware('auth');
 Route::post('gallery/upload', 'Gallery@store')->middleware('auth');
 
 Route::get('life', 'Life@index');
+Route::get('life/calendar', 'Life@calendar');
 Route::get('life/cities', 'Life@cities');
 Route::get('life/countries', 'Life@countries');
 Route::get('life/countries/{slug}', 'Life@country');

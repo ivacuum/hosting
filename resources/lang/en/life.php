@@ -13,11 +13,13 @@ return [
     'gigs_intro_title' => 'Attended and incoming concerts',
 
     'by_city' => 'by city',
+    'by_days' => 'calendar',
     'by_year' => 'by year',
     'by_country' => 'by country',
 
     'on_map' => 'on the map',
 
+    'calendar' => 'Calendar',
     'visited_cities' => 'Visited cities',
     'visited_countries' => 'Visited countries',
 

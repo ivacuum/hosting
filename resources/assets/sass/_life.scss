@@ -1,5 +1,13 @@
 @import "life/timelines";
 
+.calendar-grid {
+  display: grid;
+  grid-template-columns: max-content repeat(31, 1fr);
+  font-size: 11px;
+
+  @include media-breakpoint-up(md) { font-size: 13px; }
+}
+
 .cities-columns { column-width: 12rem; }
 
 .city-entry {
