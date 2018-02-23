@@ -44,11 +44,12 @@ class Life extends Controller
             ->orderBy('date_start')
             ->get();
 
-        $start = null;
+        $start = $end = null;
         $calendar = [];
 
         foreach ($trips as $trip) {
             /* @var Trip $trip */
+            $end = $end === null || $trip->date_end->lt($end) ? $trip->date_end : $end;
             $start = $start === null ? $trip->date_start : $start;
 
             for ($day = $trip->date_start, $end = $trip->date_end; $day->lte($end); $day->addDay()) {
@@ -59,13 +60,13 @@ class Life extends Controller
                 }
 
                 $calendar[$date][] = [
-                    'slug' => $trip->slug,
+                    'slug' => $trip->status === Trip::STATUS_PUBLISHED ? $trip->slug : '',
                     'emoji' => $trip->city->country->emoji,
                 ];
             }
         }
 
-        return view($this->view, compact('calendar', 'start', 'trips'));
+        return view($this->view, compact('calendar', 'end', 'start', 'trips'));
     }
 
     public function cities()

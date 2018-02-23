@@ -11,20 +11,28 @@
   <li class="list-inline-item"><mark>{{ trans('life.by_days') }}</mark></li>
 </ul>
 
+@ru
+  <p>Поездки по дням. Несколько флагов в один день означают несколько посещенных городов: как переезды, так и поездки одним днем туда-обратно. Каждый флаг является ссылкой на соответствующую историю, если она уже опубликована.</p>
+@endru
+
 <div class="calendar-grid text-center">
-  @foreach (range(now()->year, $start->year, -1) as $year)
+  @foreach (range($end->year, $start->year, -1) as $year)
     <div class="font-weight-bold text-right mt-3 pr-2 bg-gray-200">{{ $year }}</div>
     @foreach (range(1, 31) as $day)
       <div class="mt-3 bg-gray-200">{{ $day }}</div>
     @endforeach
-    @foreach (range(1, 12) as $month)
+    @foreach (range(1, $year === $end->year ? $end->month : 12) as $month)
       <div class="text-right pr-2">{{ trans("months.{$month}") }}</div>
       @foreach (range(1, 31) as $day)
         @php ($date = "{$year}-{$month}-{$day}")
         @if (isset($calendar[$date]))
           <div class="bg-light">
             @foreach ($calendar[$date] as $trip)
-              <a href="{{ $trip['slug'] }}">{{ $trip['emoji'] }}</a>
+              @if ($trip['slug'])
+                <a href="{{ $trip['slug'] }}">{{ $trip['emoji'] }}</a>
+              @else
+                {{ $trip['emoji'] }}
+              @endif
             @endforeach
           </div>
         @else
