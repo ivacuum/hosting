@@ -1,0 +1,34 @@
+.bg-kanji { background: linear-gradient(to bottom, #f0a, #dd0093); }
+.bg-radical { background: linear-gradient(to bottom, #0af, #0093dd); }
+.bg-vocab { background: linear-gradient(to bottom, #a0f, #9300dd); }
+
+.ja-character { line-height: 1; }
+
+.ja-kanji,
+.ja-radical {
+  font-size: 72px;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, .3);
+}
+
+.ja-radical-image { filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .3)); }
+
+.ja-meaning,
+.ja-reading { text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3); }
+
+.kanji-grid,
+.radicals-grid {
+  display: grid;
+  grid-gap: 1px;
+  grid-template-columns: repeat(3, 1fr);
+
+  @include media-breakpoint-up(md) { grid-template-columns: repeat(6, 1fr); }
+  @include media-breakpoint-up(lg) { grid-template-columns: repeat(7, 1fr); }
+  @include media-breakpoint-up(xl) { grid-template-columns: repeat(8, 1fr); }
+}
+
+.vocab-grid {
+  display: grid;
+  grid-gap: .25rem;
+  grid-template-columns: max-content max-content max-content auto max-content;
+  align-items: center;
+}

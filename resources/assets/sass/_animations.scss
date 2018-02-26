@@ -1,0 +1,30 @@
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s ease;
+}
+
+.fade-fast-enter-active,
+.fade-fast-leave-active {
+  transition: opacity .25s ease;
+}
+
+.fade-enter,
+.fade-leave-to,
+.fade-fast-enter,
+.fade-fast-leave-to {
+  opacity: 0;
+}
+
+.grid-enter-active,
+.grid-leave-active,
+.grid-move {
+  transition: all 1s;
+}
+
+.grid-leave-active { position: absolute; }
+
+.grid-enter,
+.grid-leave-to {
+  opacity: 0;
+  transform: translateY(2rem);
+}

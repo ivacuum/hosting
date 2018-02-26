@@ -57,6 +57,8 @@ Route::get('life/gigs/rss', 'LifeGigsRss@index');
 Route::get('life/rss', 'LifeTripsRss@index');
 Route::get('life/{slug}', 'Life@page');
 
+Route::get('japanese', 'Japanese@index');
+Route::get('japanese/hiragana-katakana', 'JapaneseHiraganaKatakana@index');
 Route::get('my', 'My@index')->middleware('auth');
 Route::put('my/avatar', 'MyAvatar@update')->middleware('auth');
 Route::get('my/password', 'MyPassword@edit')->middleware('auth');
