@@ -38,7 +38,7 @@
             <div class="text-muted" :class="{ invisible: !answerVisible }">{{ answer }}</div>
           </div>
           <div>
-            <input class="form-control text-center" :autofocus="focus" :value="input" @input="checkInput($event.target.value)" @keydown.space.prevent="revealAnswer">
+            <input class="form-control text-center" autocapitalize="none" :autofocus="focus" :value="input" @input="checkInput($event.target.value)" @keydown.space.prevent="revealAnswer">
           </div>
           <div class="d-flex align-items-center justify-content-between mt-2">
             <div><button class="btn btn-default" @click="pick">Назад к выбору</button></div>
