@@ -53,13 +53,13 @@
 
 @push('js')
 <script>
-$(function() {
+$(function () {
   let selectedPages;
 
-  $('#batch_submit').bind('click', function(e) {
+  $('#batch_submit').bind('click', function (e) {
     e.preventDefault();
 
-    $.post('/acp/pages/batch', { action: $('#batch_action').val(), pages: selectedPages }, function(data) {
+    $.post('/acp/pages/batch', { action: $('#batch_action').val(), pages: selectedPages }, function (data) {
       document.location = '/acp/pages';
     });
   });
@@ -74,17 +74,17 @@ $(function() {
 
     extensions: ['dnd', 'table'],
 
-    // click: function(e, data) {
+    // click: function (e, data) {
     //   console.log(e, data, data.targetType);
     // },
 
-    dblclick: function(e, data) {
+    dblclick: function (e, data) {
       document.location = data.node.data.edit_url;
       return true;
     },
 
-    select: function(e, data) {
-      selectedPages = $.map(data.tree.getSelectedNodes(), function(node) {
+    select: function (e, data) {
+      selectedPages = $.map(data.tree.getSelectedNodes(), function (node) {
         return node.key;
       });
 
@@ -95,28 +95,28 @@ $(function() {
       preventVoidMoves: true,
       preventRecursiveMoves: true,
       autoExpandMS: 400,
-      dragStart: function(node, data) {
+      dragStart: function (node, data) {
         return true;
       },
-      dragEnter: function(node, data) {
+      dragEnter: function (node, data) {
         // return ["before", "after"];
         return true;
       },
-      dragDrop: function(node, data) {
+      dragDrop: function (node, data) {
         data.otherNode.moveTo(node, data.hitMode);
 
         $.post('/acp/pages/move', {
           what: data.otherNode.key,
           how: data.hitMode,
           where: node.key
-        }, function(response) {
+        }, function (response) {
           if ('ok' === response) {
             // var tree = $("div:ui-fancytree").data("ui-fancytree").getTree();
             // console.log(data);
-            data.tree.reload().done(function() {
+            data.tree.reload().done(function () {
               // console.log('reloaded');
             });
-            // $('#ajax_container').each(function() {
+            // $('#ajax_container').each(function () {
             //   $(this).load($(this).data('deferred-url'));
             // });
           } else {
@@ -132,7 +132,7 @@ $(function() {
       checkboxColumnIdx: 0,
     },
 
-    renderColumns: function(e, data) {
+    renderColumns: function (e, data) {
       let node = data.node,
         $tds = $(node.tr).find('>td');
 

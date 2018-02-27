@@ -67,14 +67,14 @@ export default {
   },
 
   mounted() {
-    if (window.File == null || window.FileList == null || window.FormData == null) {
+    if (window.File === null || window.FileList === null || window.FormData === null) {
       alert('Проблемка. Файлы загрузить не выйдет')
       return false
     }
   },
 
   computed: {
-    links: function() {
+    links: function () {
       let originals = []
 
       this.files.forEach(file => originals.push(file.original))
@@ -82,7 +82,7 @@ export default {
       return originals.join('&#10')
     },
 
-    linksInTag: function() {
+    linksInTag: function () {
       let originals = []
 
       this.files.forEach(file => originals.push(`[img]${file.original}[/img]`))

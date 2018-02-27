@@ -1,7 +1,7 @@
 @push('js')
   <script>
-    $(function() {
-      $('img').each(function() {
+    $(function () {
+      $('img').each(function () {
         if ($(this).hasClass('fotorama__img')) {
           return true; // skip
         }

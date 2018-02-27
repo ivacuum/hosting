@@ -78,7 +78,7 @@ export default {
         if (!$body.hasClass('inited')) {
           this.renderImages($body)
 
-          let $fold_btn = $('<div class="sp-fold clickable">[свернуть]</div>').on('click', function() {
+          let $fold_btn = $('<div class="sp-fold clickable">[свернуть]</div>').on('click', function () {
             $.scrollTo($head, {
               duration: 200,
               axis: 'y',
@@ -101,7 +101,7 @@ export default {
 
           let fold = $head.hasClass('unfolded')
 
-          $('.sp-head').filter(function() {
+          $('.sp-head').filter(function () {
             return $(this).hasClass('unfolded') ? fold : !fold
           }).click()
         } else {

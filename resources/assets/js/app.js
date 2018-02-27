@@ -110,7 +110,7 @@ class Application {
       const scrolled_down = $w.scrollTop() + $w.height() + offset
       const scrolled_up = $w.scrollTop() - offset
 
-      $images = $images.filter(function() {
+      $images = $images.filter(function () {
         let e = $(this)
         let type = $(this).data('lazy-type') || 'image'
         const image_offset = e.offset().top
@@ -122,22 +122,22 @@ class Application {
             const src = width > breakpoint ? (e.data('src2x') || e.data('src')) : e.data('src')
             e.attr('src', src)
           } else if (type === 'fotorama') {
-            $('img', e).each(function() {
+            $('img', e).each(function () {
               $(this).attr('src', $(this).data('src'))
             })
 
             e.fotorama()
           } else if (type === 'fotorama-2x') {
             if (width > breakpoint) {
-              $('a', e).each(function() {
+              $('a', e).each(function () {
                 $(this).attr('href', $(this).data('src2x'))
               })
 
-              $('img', e).each(function() {
+              $('img', e).each(function () {
                 $(this).attr('src', $(this).data('src2x'))
               })
             } else {
-              $('img', e).each(function() {
+              $('img', e).each(function () {
                 $(this).attr('src', $(this).data('src'))
               })
             }
