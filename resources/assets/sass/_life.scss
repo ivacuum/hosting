@@ -98,6 +98,18 @@
 }
 */
 
+.flag-16 {
+  width: 16px;
+  height: 12px;
+}
+
+.flag-24 {
+  width: 24px;
+  height: 18px;
+}
+
+.flag-shadow { filter: drop-shadow(0 0 1px rgba(0, 0, 0, .5)); }
+
 .img-container .pic-1000x750 {
   width: 1000px;
   height: 750px;
