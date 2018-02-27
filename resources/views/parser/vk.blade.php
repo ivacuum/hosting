@@ -35,7 +35,7 @@
   <div>
     @if (!empty($previous))
       <a class="btn border-b125 js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $previous->toDateString(), 'own' => $own, 'token' => $token]) }}" id="next_page">
-        &nbsp;{{ $previous->formatLocalized('%e %B') }}
+        {{ $previous->formatLocalized('%e %B') }}
         @svg (chevron-right)
       </a>
     @endif
@@ -176,7 +176,7 @@
   @if (!empty($previous))
     <div>
       <a class="btn border-b125 js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $previous->toDateString(), 'own' => $own, 'token' => $token]) }}">
-        &nbsp;{{ $previous->formatLocalized('%e %B') }}
+        {{ $previous->formatLocalized('%e %B') }}
         @svg (chevron-right)
       </a>
     </div>
