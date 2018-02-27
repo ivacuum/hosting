@@ -128,9 +128,15 @@
           @if (empty($no_language_selector))
             <li class="list-inline-item">
               @ru
-                <a class="link link-lang" href="{{ url("en/{$request_uri}") }}" lang="en">In&nbsp;English</a>
+                <a class="d-flex flex-wrap align-items-center text-nowrap" href="{{ url("en/{$request_uri}") }}" lang="en">
+                  <img class="flag-16 flag-shadow mr-1" src="https://ivacuum.org/i/flags/svg/us.svg">
+                  In English
+                </a>
               @en
-                <a class="link link-lang" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
+                <a class="d-flex flex-wrap align-items-center text-nowrap" href="{{ url($request_uri) }}" lang="ru">
+                  <img class="flag-16 flag-shadow mr-1" src="https://ivacuum.org/i/flags/svg/ru.svg">
+                  По-русски
+                </a>
               @endru
             </li>
           @endif
