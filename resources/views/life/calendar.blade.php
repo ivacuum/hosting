@@ -26,14 +26,16 @@
       @foreach (range(1, 31) as $day)
         @php ($date = "{$year}-{$month}-{$day}")
         @if (isset($calendar[$date]))
-          <div class="bg-light d-flex flex-column align-items-center justify-content-start">
+          <div class="bg-light d-flex flex-column align-items-center justify-content-start pt-1">
             @foreach ($calendar[$date] as $trip)
               @if ($trip['slug'])
-                <a class="tooltipped tooltipped-n" href="{{ $trip['slug'] }}" aria-label="{{ $trip['title'] }}">
-                  <img class="flag-16 flag-shadow" src="{{ $trip['flag'] }}">
+                <a class="d-block pb-1 tooltipped tooltipped-n" href="{{ $trip['slug'] }}" aria-label="{{ $trip['title'] }}">
+                  <img class="d-block flag-16 flag-shadow" src="{{ $trip['flag'] }}">
                 </a>
               @else
-                <img class="flag-16 flag-shadow" src="{{ $trip['flag'] }}">
+                <div class="pb-1">
+                  <img class="d-block flag-16 flag-shadow" src="{{ $trip['flag'] }}">
+                </div>
               @endif
             @endforeach
           </div>
