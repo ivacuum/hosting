@@ -23,7 +23,7 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-      <td>{{ $model->emoji }}</td>
+      <td><img class="d-block flag-16 flag-shadow" src="{{ $model->flagUrl() }}"></td>
       <td>
         <a href="{{ path("$self@show", $model) }}">
           {{ $model->title }}

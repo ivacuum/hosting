@@ -8,10 +8,8 @@
 @parent
 @include('tpl.city-timeline')
 <div class="d-flex flex-wrap align-items-center mb-2">
-  <h1 class="h2 mb-1 mr-2">
-    {{ $trip->city->country->emoji }}
-    {{ $trip->title }}
-  </h1>
+  <img class="flag-24 flag-shadow mr-2" src="{{ $trip->city->country->flagUrl() }}">
+  <h1 class="h2 mb-1 mr-2">{{ $trip->title }}</h1>
   @include('tpl.city-map-button', ['city' => $trip->city])
   @if (optional(auth()->user())->isRoot())
     <a class="btn btn-default btn-sm" href="{{ UrlHelper::edit('Acp\Trips', $trip) }}">

@@ -23,10 +23,10 @@
   </div>
   <div class="col-lg-2">
     <div class="text-muted">{{ trans('photos.story') }}</div>
-    <div>
-      {{ $photo->rel->city->country->emoji }}
-      <a class="link" href="{{ $photo->rel->www() }}#{{ basename($photo->slug) }}">{{ $photo->rel->title }}</a>
-    </div>
+    <a class="d-flex flex-wrap align-items-center link-parent" href="{{ $photo->rel->www() }}#{{ basename($photo->slug) }}">
+      <img class="flag-16 flag-shadow mr-1" src="{{ $photo->rel->city->country->flagUrl() }}">
+      <span class="link">{{ $photo->rel->title }}</span>
+    </a>
 
     <div class="mt-3 text-muted">{{ trans('photos.date') }}</div>
     <div>{{ $photo->rel->period }} {{ $photo->rel->year }}</div>

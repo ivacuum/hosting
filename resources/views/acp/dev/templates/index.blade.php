@@ -12,9 +12,9 @@
       @foreach (config('cfg.locales') as $key => $value)
         <th class="text-md-right">
           @if ($key === 'ru')
-            &#x1f1f7;&#x1f1fa;
+            <img class="flag-16 flag-shadow" src="https://ivacuum.org/i/flags/svg/ru.svg">
           @elseif ($key === 'en')
-            &#x1f1ec;&#x1f1e7;
+            <img class="flag-16 flag-shadow" src="https://ivacuum.org/i/flags/svg/us.svg">
           @else
             {{ $key }}
           @endif

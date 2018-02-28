@@ -22,16 +22,18 @@
       <div class="mt-3 bg-gray-200">{{ $day }}</div>
     @endforeach
     @foreach (range(1, $year === $end->year ? $end->month : 12) as $month)
-      <div class="text-right pr-2">{{ trans("months.{$month}") }}</div>
+      <div class="text-right pr-2 border-right">{{ trans("months.{$month}") }}</div>
       @foreach (range(1, 31) as $day)
         @php ($date = "{$year}-{$month}-{$day}")
         @if (isset($calendar[$date]))
-          <div class="bg-light">
+          <div class="bg-light d-flex flex-column align-items-center justify-content-start">
             @foreach ($calendar[$date] as $trip)
               @if ($trip['slug'])
-                <a href="{{ $trip['slug'] }}">{{ $trip['emoji'] }}</a>
+                <a class="tooltipped tooltipped-n" href="{{ $trip['slug'] }}" aria-label="{{ $trip['title'] }}">
+                  <img class="flag-16 flag-shadow" src="{{ $trip['flag'] }}">
+                </a>
               @else
-                {{ $trip['emoji'] }}
+                <img class="flag-16 flag-shadow" src="{{ $trip['flag'] }}">
               @endif
             @endforeach
           </div>

@@ -331,7 +331,7 @@ class Trip extends Model
     {
         return \Cache::remember(CacheKey::TRIPS_PUBLISHED_WITH_COVER, 1440, function () {
             // Не нужно ограничение по пользователю, так как meta_image есть только у user_id=1
-            return self::with('city:id,country_id', 'city.country:id,emoji')
+            return self::with('city:id,country_id', 'city.country:id,slug,emoji')
                 ->published()
                 ->where('meta_image', '<>', '')
                 ->orderBy('date_start', 'desc')

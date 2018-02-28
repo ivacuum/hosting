@@ -24,7 +24,7 @@
       <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
         <td class="tooltipped tooltipped-n" aria-label="{{ $model->country->title }}">
           <a href="{{ path('Acp\Countries@show', $model->country) }}">
-            {{ $model->country->emoji }}
+            <img class="d-block flag-16 flag-shadow" src="{{ $model->country->flagUrl() }}">
           </a>
         </td>
         <td>

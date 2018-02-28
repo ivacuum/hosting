@@ -60,8 +60,9 @@ class Life extends Controller
                 }
 
                 $calendar[$date][] = [
+                    'flag' => $trip->city->country->flagUrl(),
                     'slug' => $trip->status === Trip::STATUS_PUBLISHED ? $trip->slug : '',
-                    'emoji' => $trip->city->country->emoji,
+                    'title' => $trip->title,
                 ];
             }
         }
