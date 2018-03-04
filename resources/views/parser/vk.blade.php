@@ -144,7 +144,6 @@
           <a class="svg-flex svg-label" href="{{ $post['url'] }}">
             @svg (link)
           </a>
-          <span class="svg-flex svg-label">#{{ $loop->iteration }}</span>
           <span class="svg-flex svg-label">
             @svg (bullhorn)
             <span class="text-muted">{{ ViewHelper::numberShort($post['reposts']) }}</span>
