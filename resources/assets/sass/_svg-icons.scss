@@ -6,27 +6,25 @@
 
 .svg-icon {
   display: inline-block;
-  vertical-align: text-top;
+  vertical-align: -.125em;
   fill: currentColor;
   @include size(1em);
-  margin-top: .125em;
 
-  .svg-mt-0 & { margin-top: 0; }
+  // Иконки отличных от 1х1 пропорций
+  // Отсчет относительно 16px
+  &.svg-18 { width: 1.125em; }
+  &.svg-20 { width: 1.25em; }
 
-  .navbar-nav & {
-    font-size: 18px;
-    margin-top: 0;
-  }
-
+  .navbar-nav & { font-size: 1.25rem; }
   .svg-label & { margin-right: .3125rem; }
   .svg-muted & { color: #999; }
 }
 
-.svg-icon-16 .svg-icon { @include size(16px); }
-.svg-icon-32 .svg-icon { @include size(32px); }
+.svg-icon-16 .svg-icon { font-size: 1rem; }
+.svg-icon-32 .svg-icon { font-size: 2rem; }
 
 .svg-icon-160 .svg-icon {
-  @include size(160px);
+  font-size: 10rem;
   background: #ccc;
 }
 
@@ -37,8 +35,6 @@
   display: flex;
   align-items: center;
   white-space: nowrap;
-
-  .svg-icon { margin-top: 0; }
 }
 
 .svg-labels {

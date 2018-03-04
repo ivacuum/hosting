@@ -160,20 +160,14 @@
   color: $gray-light;
 }
 .torrent-icon {
-  .svg-icon {
-    @include size(1.5em);
-    margin-top: 0;
-  }
+  .svg-icon { @include media-breakpoint-up(md) { font-size: 1.5rem; } }
   .svg-icon-file-text-o { color: $gray-light; }
   .svg-icon-film { color: #428bca; }
   .svg-icon-gamepad { color: #a94442; }
   .svg-icon-music { color: #960ed7; }
   .svg-icon-smile-o { color: #3c763d; }
-  .svg-icon-soccer-ball-o { color: #666; }
   .svg-icon-tv { color: #ca8e3f; }
 }
-.torrent-stats-container { max-width: 500px; }
-.torrent-stats-separator { padding: 0 10px; }
 .torrent-title { font-weight: bold; }
 
 // Список раздач
@@ -198,16 +192,11 @@
   overflow: hidden; // Для ссылок размером на всю ячейку .link-cell
 }
 
-.torrents-list-icon {
-  width: 32px;
-  order: 1;
-
-  @include media-breakpoint-up(md) { order: 0; }
-}
+.torrents-list-icon { width: 24px; }
 
 .torrents-list-title {
   width: 100%;
-  margin-bottom: 0.5rem;
+  margin-bottom: .5rem;
 
   @include media-breakpoint-up(md) {
     width: 80%;
@@ -218,14 +207,10 @@
 
 .torrents-list-magnet {
   width: 70px;
-  justify-content: center;
   order: 2;
-
-  @include media-breakpoint-up(md) { justify-content: flex-start; }
 }
 
 .torrents-list-size {
   width: 70px;
-  justify-content: center;
   order: 3;
 }
