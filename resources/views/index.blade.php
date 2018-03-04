@@ -112,7 +112,7 @@
         </div>
         <div class="trip-cover-info p-3">
           <div class="f18">
-            <img class="flag-16 flag-shadow" src="{{ $trip->city->country->flagUrl() }}">
+            <img class="flag-24 flag-shadow" src="{{ $trip->city->country->flagUrl() }}">
             {{ $trip->title }}
             <span class="trip-cover-date">{{ $trip->timelinePeriod(true) }}</span>
           </div>
