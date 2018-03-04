@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 @endif
-  <title>{{ ViewHelper::metaTitle($meta_title ?? '', $view) }}</title>
+  <title>{{ ViewHelper::metaTitle($meta_title ?? '', $view, $meta_title_replace ?? []) }}</title>
 @if (!Request::pjax())
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="x-pjax-version" content="2">
