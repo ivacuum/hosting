@@ -21,7 +21,7 @@ class CreateYandexUsersTable extends Migration
 
     public function down()
     {
-        Schema::drop('yandex_users');
+        Schema::dropIfExists('yandex_users');
 
         Schema::table('domains', function (Blueprint $table) {
             $table->dropColumn('yandex_user_id');

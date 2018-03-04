@@ -19,6 +19,6 @@ class CreateExternalIdentitiesTable extends Migration
 
 	public function down()
 	{
-        Schema::drop('external_identities');
+        Schema::dropIfExists('external_identities');
 	}
 }

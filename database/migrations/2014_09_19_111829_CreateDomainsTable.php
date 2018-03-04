@@ -27,6 +27,6 @@ class CreateDomainsTable extends Migration
 
     public function down()
     {
-        Schema::drop('domains');
+        Schema::dropIfExists('domains');
     }
 }
