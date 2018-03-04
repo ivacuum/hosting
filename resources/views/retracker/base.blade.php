@@ -1,8 +1,8 @@
 @extends('base', [
   'body_classes' => '',
-  'content_container_class' => 'life-text',
   'navbar_classes' => '',
   'no_language_selector' => $locale === 'ru',
+  'content_container_classes' => 'life-text',
 ])
 
 @section('bottom-tabbar')

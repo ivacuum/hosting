@@ -105,7 +105,7 @@
       </div>
     @endif
   </div>
-  <div class="{{ $content_container_class ?? 'container mt-3' }} {{ $content_container_extra_class ?? '' }}" id="pjax_container">
+  <div class="{{ $content_container_classes ?? 'container mt-3' }} {{ $content_container_extra_classes ?? '' }}" id="pjax_container">
 
 @endif
 @yield('content_header')

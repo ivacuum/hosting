@@ -1,6 +1,6 @@
 @extends('dcpp.base', [
-  'content_container_class' => '',
   'no_footer_banner' => true,
+  'content_container_classes' => '',
 ])
 
 @section('content')

@@ -1,6 +1,4 @@
-@extends('life.base', [
-  'meta_title' => trans('life.calendar'),
-])
+@extends('life.base')
 
 @section('content')
 <h1 class="h2">{{ trans('life.calendar') }}</h1>
