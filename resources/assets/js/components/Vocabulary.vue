@@ -47,7 +47,7 @@
                  :class="{ invisible: !labels && !revealed.includes(row.id), 'mt-3 mt-md-0': labels }"
                  :id="`kana-${row.id}`"
             >
-              <div class="ja-character text-nowrap" v-for="kana in row.kana.split(',')">
+              <div class="ja-character text-nowrap" v-for="kana in row.kana.split(', ')">
                 【{{ kana }}】
               </div>
             </div>
