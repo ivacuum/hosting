@@ -6,7 +6,7 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th>
+    <th class="text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'level', 'order' => 'asc'])
     </th>
     <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'character') }}</th>
