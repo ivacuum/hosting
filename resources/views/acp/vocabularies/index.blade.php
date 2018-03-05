@@ -1,4 +1,6 @@
-@extends('acp.list')
+@extends('acp.list', [
+  'search_form' => true,
+])
 
 @section('content-list')
 <table class="table-stats table-adaptive">

@@ -12,11 +12,16 @@ class Vocabularies extends Controller
 
     public function index()
     {
+        $q = request('q');
+
         [$sort_key, $sort_dir] = $this->getSortParams();
 
         $models = Model::orderBy($sort_key, $sort_dir)
             ->when($sort_key === 'level', function (Builder $query) {
                 return $query->orderBy('meaning');
+            })
+            ->when($q, function (Builder $query) use ($q) {
+                return $query->where('meaning', 'LIKE', "%{$q}%");
             })
             ->paginate()
             ->withPath(path("{$this->class}@index"));

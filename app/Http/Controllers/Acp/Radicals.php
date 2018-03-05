@@ -13,6 +13,7 @@ class Radicals extends Controller
 
     public function index()
     {
+        $q = request('q');
         $kanji_id = request('kanji_id');
 
         [$sort_key, $sort_dir] = $this->getSortParams();
@@ -26,6 +27,9 @@ class Radicals extends Controller
             })
             ->when($sort_key === 'level', function (Builder $query) {
                 return $query->orderBy('meaning');
+            })
+            ->when($q, function (Builder $query) use ($q) {
+                return $query->where('meaning', 'LIKE', "%{$q}%");
             })
             ->paginate()
             ->withPath(path("{$this->class}@index"));

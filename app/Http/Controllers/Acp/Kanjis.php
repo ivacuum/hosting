@@ -13,6 +13,7 @@ class Kanjis extends Controller
 
     public function index()
     {
+        $q = request('q');
         $radical_id = request('radical_id');
 
         [$sort_key, $sort_dir] = $this->getSortParams();
@@ -26,6 +27,9 @@ class Kanjis extends Controller
                 return $query->whereHas('radicals', function (Builder $query) use ($radical_id) {
                     $query->where('radical_id', $radical_id);
                 });
+            })
+            ->when($q, function (Builder $query) use ($q) {
+                return $query->where('meaning', 'LIKE', "%{$q}%");
             })
             ->paginate()
             ->withPath(path("{$this->class}@index"));
