@@ -154,11 +154,6 @@
 .torrent-title.hide-brackets { font-weight: normal; }
 
 .torrent-brackets { font-weight: normal; }
-.torrent-breadcrumbs {
-  font-size: 12px;
-  margin: 3px 0;
-  color: $gray-light;
-}
 .torrent-icon {
   .svg-icon { @include media-breakpoint-up(md) { font-size: 1.5rem; } }
   .svg-icon-file-text-o { color: $gray-light; }
@@ -172,30 +167,17 @@
 
 // Список раздач
 .torrents-list-container {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  flex-wrap: wrap;
-
   & + & { margin-top: 2rem; }
 
   @include media-breakpoint-up(md) {
-    flex-wrap: nowrap;
-
     & + & { margin-top: 1rem; }
     &:hover { background-color: #f6f6f6; }
   }
 }
 
-.torrents-list-cell {
-  display: flex;
-  overflow: hidden; // Для ссылок размером на всю ячейку .link-cell
-}
-
-.torrents-list-icon { width: 24px; }
+.torrents-list-icon { width: 32px; }
 
 .torrents-list-title {
-  width: 100%;
   margin-bottom: .5rem;
 
   @include media-breakpoint-up(md) {

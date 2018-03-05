@@ -73,15 +73,15 @@
           @php ($last_date = $torrent->registered_at)
         @endif
         @php ($category = TorrentCategoryHelper::find($torrent->category_id))
-        <div class="torrents-list-container font-smooth js-torrents-views-observer" data-id="{{ $torrent->id }}">
-          <div class="torrents-list-icon torrent-icon order-1 order-md-0 mr-2" title="{{ $category['title'] }}">
+        <div class="d-flex flex-wrap flex-md-nowrap justify-content-center justify-content-md-start torrents-list-container font-smooth js-torrents-views-observer" data-id="{{ $torrent->id }}">
+          <div class="torrents-list-icon torrent-icon order-1 order-md-0 pr-2" title="{{ $category['title'] }}">
             @php ($icon = $category['icon'] ?? 'file-text-o')
             @svg ($icon)
           </div>
-          <a class="torrents-list-title visited" href="{{ $torrent->www() }}">
+          <a class="pr-2 torrents-list-title visited" href="{{ $torrent->www() }}">
             <torrent-title title="{{ $torrent->title }}" hide_brackets="{{ Auth::check() && Auth::user()->torrent_short_title ? 1 : '' }}"></torrent-title>
           </a>
-          <a class="torrents-list-magnet text-center text-md-left js-magnet"
+          <a class="pr-2 torrents-list-magnet text-center text-md-left text-nowrap js-magnet"
              href="{{ $torrent->magnet() }}"
              title="{{ trans('torrents.download') }}"
              data-action="{{ path('Torrents@magnet', $torrent) }}"
@@ -89,7 +89,7 @@
             @svg (magnet)
             <span class="js-magnet-counter">{{ $torrent->clicks > 0 ? $torrent->clicks : '' }}</span>
           </a>
-          <div class="text-center text-md-left torrents-list-size">{{ ViewHelper::size($torrent->size) }}</div>
+          <div class="text-center text-md-left text-nowrap torrents-list-size">{{ ViewHelper::size($torrent->size) }}</div>
         </div>
       @endforeach
 
