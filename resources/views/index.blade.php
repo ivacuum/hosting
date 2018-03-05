@@ -64,7 +64,7 @@
       <div>Большая коллекция русских DC++ клиентов. Ответы на частые вопросы.</div>
       {{--<p class="text-muted">Дата запуска: 17 марта 2008 г.</p>--}}
     @en
-      <p>Large collection of DC++ client software.</p>
+      <p>Large collection of DC++ client software. Popular hubs to connect.</p>
     @endru
   </div>
   @ru
