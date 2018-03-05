@@ -27,7 +27,8 @@ class Cities extends Controller
             ->when($country_id, function (Builder $query) use ($country_id) {
                 return $query->where('country_id', $country_id);
             })
-            ->paginate();
+            ->paginate()
+            ->withPath(path("{$this->class}@index"));
 
         return view($this->view, compact('models'));
     }

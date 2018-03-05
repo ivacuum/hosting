@@ -11,7 +11,9 @@ class YandexUsers extends Controller
 
     public function index()
     {
-        $models = Model::orderBy('account')->paginate();
+        $models = Model::orderBy('account')
+            ->paginate()
+            ->withPath(path("{$this->class}@index"));
 
         return view($this->view, compact('models'));
     }

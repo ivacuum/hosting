@@ -19,7 +19,8 @@ class ChatMessages extends Controller
             ->when($user_id, function (Builder $query) use ($user_id) {
                 return $query->where('user_id', $user_id);
             })
-            ->paginate();
+            ->paginate()
+            ->withPath(path("{$this->class}@index"));
 
         return view($this->view, compact('models', 'status', 'user_id'));
     }

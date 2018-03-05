@@ -8,7 +8,10 @@ class Files extends Controller
     {
         \Breadcrumbs::push(trans('menu.files'));
 
-        $models = File::published()->orderBy('id', 'desc')->paginate();
+        $models = File::published()
+            ->orderBy('id', 'desc')
+            ->paginate()
+            ->withPath(path("{$this->class}@index"));
 
         return view($this->view, compact('models'));
     }

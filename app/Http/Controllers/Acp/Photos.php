@@ -21,7 +21,8 @@ class Photos extends Controller
             ->applyFilter($filter)
             ->forTag(request('tag_id'))
             ->orderBy($sort_key, $sort_dir)
-            ->paginate();
+            ->paginate()
+            ->withPath(path("{$this->class}@index"));
 
         return view($this->view, compact('filter', 'models'));
     }

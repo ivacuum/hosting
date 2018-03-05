@@ -70,7 +70,9 @@ class Domains extends Controller
             $models = $models->where('yandex_user_id', $yandex_user_id);
         }
 
-        $models = $models->orderBy($sort)->paginate();
+        $models = $models->orderBy($sort)
+            ->paginate()
+            ->withPath(path("{$this->class}@index"));
 
         return view($this->view, compact('filter', 'models', 'sort', 'q'));
     }

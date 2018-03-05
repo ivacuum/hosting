@@ -6,7 +6,9 @@ class Users extends Controller
 {
     public function index()
     {
-        $users = User::active()->orderBy('id')->simplePaginate();
+        $users = User::active()->orderBy('id')
+            ->simplePaginate()
+            ->withPath(path("{$this->class}@index"));
 
         return view($this->view, compact('users'));
     }

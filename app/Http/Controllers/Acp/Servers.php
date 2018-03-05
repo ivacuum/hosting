@@ -7,7 +7,8 @@ class Servers extends Controller
 {
     public function index()
     {
-        $models = Model::paginate();
+        $models = Model::paginate()
+            ->withPath(path("{$this->class}@index"));
 
         return view($this->view, compact('models'));
     }
