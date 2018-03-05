@@ -16,19 +16,19 @@ return [
 
     'japanese-hiragana-katakana.index' => 'Hiragana & Katakana Trainer. Practice Japanese Syllabaries Online',
 
-    'japanese-wanikani.index' => 'WaniKani &middot; Japanese',
+    'japanese-wanikani.index' => 'WaniKani V &middot; Japanese',
 
-    'japanese-wanikani-kanji.show' => 'Kanji :kanji · WaniKani · Japanese',
-    'japanese-wanikani-kanji.index' => 'Kanji · WaniKani · Japanese',
+    'japanese-wanikani-kanji.show' => 'Kanji :kanji · WaniKani V · Japanese',
+    'japanese-wanikani-kanji.index' => 'Kanji · WaniKani V · Japanese',
 
-    'japanese-wanikani-level.show' => 'Level :level · WaniKani · Japanese',
-    'japanese-wanikani-level.index' => 'Levels · WaniKani · Japanese',
+    'japanese-wanikani-level.show' => 'Level :level · WaniKani V · Japanese',
+    'japanese-wanikani-level.index' => 'Levels · WaniKani V · Japanese',
 
-    'japanese-wanikani-radicals.show' => 'Radical :radical · WaniKani · Japanese',
-    'japanese-wanikani-radicals.index' => 'Radicals · WaniKani · Japanese',
+    'japanese-wanikani-radicals.show' => 'Radical :radical · WaniKani V · Japanese',
+    'japanese-wanikani-radicals.index' => 'Radicals · WaniKani V · Japanese',
 
-    'japanese-wanikani-vocabulary.show' => ':vocab · WaniKani · Japanese',
-    'japanese-wanikani-vocabulary.index' => 'Vocabulary · WaniKani · Japanese',
+    'japanese-wanikani-vocabulary.show' => ':vocab · WaniKani V · Japanese',
+    'japanese-wanikani-vocabulary.index' => 'Vocabulary · WaniKani V · Japanese',
 
     'retracker.dev' => 'About retracker development',
     'retracker.usage' => 'How to use retracker',

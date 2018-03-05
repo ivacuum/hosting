@@ -8,7 +8,7 @@ return [
     'reading' => 'Чтение',
     'radicals' => 'Ключи',
     'readings' => 'Варианты чтения',
-    'wanikani' => 'WaniKani',
+    'wanikani' => 'WaniKani V',
     'by-levels' => 'По уровням',
     'vocabulary' => 'Словарные слова',
     'hiragana-katakana' => 'Хирагана и катакана',

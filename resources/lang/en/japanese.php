@@ -8,7 +8,7 @@ return [
     'reading' => 'Reading',
     'radicals' => 'Radicals',
     'readings' => 'Readings',
-    'wanikani' => 'WaniKani',
+    'wanikani' => 'WaniKani V',
     'by-levels' => 'By Levels',
     'vocabulary' => 'Vocabulary',
     'hiragana-katakana' => 'Hiragana and Katakana',
