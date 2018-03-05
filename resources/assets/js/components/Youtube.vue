@@ -2,23 +2,14 @@
   <div class="youtube-container">
     <div v-if="!expanded">
       <p>
-        <svg class="svg-icon svg-icon-youtube-play mr-1" viewBox="0 0 1792 1792"><path d="M1280 896q0-37-30-54l-512-320q-31-20-65-2-33 18-33 56v640q0 38 33 56 16 8 31 8 20 0 34-10l512-320q30-17 30-54zm512 0q0 96-1 150t-8.5 136.5-22.5 147.5q-16 73-69 123t-124 58q-222 25-671 25t-671-25q-71-8-124.5-58t-69.5-123q-14-65-21.5-147.5t-8.5-136.5-1-150 1-150 8.5-136.5 22.5-147.5q16-73 69-123t124-58q222-25 671-25t671 25q71 8 124.5 58t69.5 123q14 65 21.5 147.5t8.5 136.5 1 150z"/></svg>
-        <a class="pseudo" href="#" @click.prevent="expand">
-          {{ title }}
-        </a>
+        <svg class="svg-icon svg-icon-youtube-play svg-18 mr-1" viewBox="0 0 576 512" width="18" height="16"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+        <a class="pseudo" href="#" @click.prevent="expand">{{ openLabel }}</a>
       </p>
     </div>
     <div v-if="expanded">
       <p>
-        <svg class="svg-icon svg-icon-times mr-1" viewBox="0 0 1792 1792"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/></svg>
-        <a class="pseudo" href="#" @click.prevent="collapse">
-        <span v-if="lang === 'ru'">
-          Закрыть видео «{{ title }}»
-        </span>
-          <span v-if="lang === 'en'">
-          Close video "{{ title }}"
-        </span>
-        </a>
+        <svg class="svg-icon svg-icon-times mr-1" viewBox="0 0 12 16" width="16" height="16"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"/></svg>
+        <a class="pseudo" href="#" @click.prevent="collapse">{{ closeLabel }}</a>
       </p>
       <div class="pic-container">
         <iframe class="youtube-video" :style="{ height: height() + 'px' }" :src="`https://www.youtube.com/embed/${v}?autoplay=1`" frameborder="0" allowfullscreen></iframe>
@@ -47,6 +38,16 @@ export default {
 
   mounted() {
     this.lang = window['AppOptions'].locale
+  },
+
+  computed: {
+    closeLabel: function () {
+      return this.lang === 'ru' ? `Закрыть видео «${this.title}»` : `Close video "${this.title}"`
+    },
+
+    openLabel: function () {
+      return this.lang === 'ru' ? `Открыть видео «${this.title}»` : `Open video "${this.title}"`
+    }
   },
 
   methods: {
