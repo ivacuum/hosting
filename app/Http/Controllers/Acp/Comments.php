@@ -31,7 +31,8 @@ class Comments extends Controller
             ->when($user_id, function (Builder $query) use ($user_id) {
                 return $query->where('user_id', $user_id);
             })
-            ->paginate(20);
+            ->paginate(20)
+            ->withPath(path("{$this->class}@index"));
 
         return view($this->view, compact('models', 'status', 'user_id'));
     }

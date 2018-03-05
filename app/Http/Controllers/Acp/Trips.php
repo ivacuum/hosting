@@ -40,7 +40,8 @@ class Trips extends Controller
                 return $query->where('status', $status);
             })
             ->orderBy($sort_key, $sort_dir)
-            ->paginate(100);
+            ->paginate(100)
+            ->withPath(path("{$this->class}@index"));
 
         return view($this->view, compact('models', 'status'));
     }

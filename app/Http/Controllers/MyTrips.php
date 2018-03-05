@@ -13,7 +13,8 @@ class MyTrips extends Controller
             ->withCount('comments', 'photos')
             ->where('user_id', request()->user()->id)
             ->orderBy('date_start', 'desc')
-            ->paginate(50, Trip::COLUMNS_LIST);
+            ->paginate(50, Trip::COLUMNS_LIST)
+            ->withPath(path("{$this->class}@index"));
 
         return view('my.trips.index', compact('models'));
     }
