@@ -95,6 +95,16 @@
       <div>Easy ways to get discounts for well known services.</div>
     @endru
   </div>
+  <div class="col-md-6 col-lg-4 mb-4">
+    <a class="d-flex align-items-center mb-2 link-parent" href="{{ path('Japanese@index') }}">
+      <h2 class="h3 mb-0"><span class="link">{{ trans('japanese.index') }}</span></h2>
+    </a>
+    @ru
+      <div>Тренажер для запоминания слоговых азбук. Набор ключей, кандзи и словарных слов для самостоятельного изучения и повторения.</div>
+    @en
+      <div>Hiragana & Katakana trainer. Set of radicals, kanji and vocabulary to learn and review.</div>
+    @endru
+  </div>
 </div>
 
 @ru
