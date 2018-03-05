@@ -43,6 +43,7 @@ return [
     'telegram' => [
         'admin_id' => env('TELEGRAM_ADMIN_ID'),
     ],
+    'wanikani_api_key' => env('WANIKANI_API_KEY'),
 
     // Купоны
     'airbnb_link' => 'c/spankov1?s=8',

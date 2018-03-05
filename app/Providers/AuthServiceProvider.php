@@ -12,15 +12,18 @@ use App\ExternalIdentity;
 use App\File;
 use App\Gig;
 use App\Image;
+use App\Kanji;
 use App\News;
 use App\Notification;
 use App\Page;
 use App\Photo;
+use App\Radical;
 use App\Server;
 use App\Tag;
 use App\Torrent;
 use App\Trip;
 use App\User;
+use App\Vocabulary;
 use App\YandexUser;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Ivacuum\Generic\Policies\Base;
@@ -39,6 +42,7 @@ class AuthServiceProvider extends ServiceProvider
         Trip::class => Base::class,
         User::class => WithoutCreate::class,
         Image::class => WithoutCreateAndEdit::class,
+        Kanji::class => WithoutCreate::class,
         Photo::class => Base::class,
         Artist::class => Base::class,
         Client::class => Base::class,
@@ -47,7 +51,9 @@ class AuthServiceProvider extends ServiceProvider
         Comment::class => WithoutCreate::class,
         Country::class => Base::class,
         DcppHub::class => Base::class,
+        Radical::class => WithoutCreate::class,
         Torrent::class => WithoutCreate::class,
+        Vocabulary::class => WithoutCreate::class,
         YandexUser::class => Base::class,
         ChatMessage::class => WithoutCreate::class,
         Notification::class => WithoutCreateAndEdit::class,

@@ -20,6 +20,9 @@ return [
 
     'artist.title' => 'Title',
 
+    'chat-message.text' => 'Text',
+    'chat-message.status' => 'Status',
+
     'city.lat' => 'Latitude',
     'city.lon' => 'Longitude',
     'city.iata' => 'IATA airport code',
@@ -28,8 +31,8 @@ return [
     'city.title_ru' => 'Title RU',
     'city.trips_count' => 'Trips',
 
-    'chat-message.text' => 'Text',
-    'chat-message.status' => 'Status',
+    'client.name' => 'Name',
+    'client.text' => 'Notes',
 
     'comment.html' => 'HTML',
     'comment.status' => 'Status',
@@ -46,6 +49,11 @@ return [
     'dcpp-hub.status' => 'Status',
     'dcpp-hub.address' => 'Address',
 
+    'domain.text' => 'Notes',
+    'domain.domain' => 'Domain',
+
+    'external-identity.provider' => 'Provider',
+
     'file.title' => 'Title',
     'file.folder' => 'Folder',
     'file.extension' => 'Extension',
@@ -60,9 +68,23 @@ return [
     'gig.meta_description_en' => 'Meta description',
     'gig.meta_description_ru' => 'Meta description RU',
 
+    'kanji.level' => 'Level',
+    'kanji.meaning' => 'Meaning',
+    'kanji.character' => 'Kanji',
+    'kanji.radicals_count' => 'Radicals',
+
     'news.html' => 'HTML',
     'news.title' => 'Title',
     'news.status' => 'Status',
+
+    'radical.level' => 'Level',
+    'radical.meaning' => 'Meaning',
+    'radical.character' => 'Radical',
+    'radical.kanjis_count' => 'Kanji',
+
+    'server.host' => 'Host',
+    'server.text' => 'Notes',
+    'server.title' => 'Title',
 
     'tag.title' => 'Tag',
     'tag.title_ru' => 'Title RU',
@@ -80,6 +102,7 @@ return [
 
     'trip.title' => 'Title',
     'trip.status' => 'Status',
+    'trip.markdown' => 'Text',
     'trip.title_en' => 'Title',
     'trip.title_ru' => 'Title RU',
     'trip.date_end' => 'End date',
@@ -88,7 +111,13 @@ return [
     'trip.meta_description_en' => 'Meta description',
     'trip.meta_description_ru' => 'Meta description RU',
 
+    'user.avatar' => 'Avatar',
     'user.last_login_at' => 'Last login',
+
+    'vocabulary.level' => 'Level',
+    'vocabulary.meaning' => 'Meaning',
+    'vocabulary.character' => 'Vocabulary',
+    'vocabulary.sentences' => 'Sentences',
 
     'yandex-user.token' => 'Token',
     'yandex-user.account' => 'Username on Yandex',

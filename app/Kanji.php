@@ -1,0 +1,73 @@
+<?php namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+
+/**
+ * Иероглиф
+ *
+ * @property integer $id
+ * @property integer $level
+ * @property string  $character
+ * @property string  $meaning
+ * @property string  $onyomi
+ * @property string  $kunyomi
+ * @property string  $important_reading
+ * @property string  $nanori
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ *
+ * @property \App\Burnable $burnable
+ * @property \Illuminate\Database\Eloquent\Collection $radicals
+ *
+ * @mixin \Eloquent
+ */
+class Kanji extends Model
+{
+    protected $fillable = ['level']; // Чтобы не бросало исключение
+    protected $perPage = 50;
+
+    // Relations
+    public function burnable()
+    {
+        return $this->morphOne(Burnable::class, 'rel');
+    }
+
+    public function radicals()
+    {
+        return $this->belongsToMany(Radical::class);
+    }
+
+    // Methods
+    public function breadcrumb(): string
+    {
+        return "{$this->character}";
+    }
+
+    public function externalLink(): string
+    {
+        return "https://www.wanikani.com/kanji/{$this->character}";
+    }
+
+    public function firstMeaning(): string
+    {
+        return explode(', ', $this->meaning)[0];
+    }
+
+    public function importantReading(): string
+    {
+        return $this->important_reading === 'onyomi'
+            ? $this->katakanaOnyomi()
+            : $this->kunyomi;
+    }
+
+    public function katakanaOnyomi(): string
+    {
+        return mb_convert_kana($this->onyomi, 'C');
+    }
+
+    public function www(): string
+    {
+        return path('JapaneseWanikaniKanji@show', $this->character);
+    }
+}

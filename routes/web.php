@@ -59,6 +59,19 @@ Route::get('life/{slug}', 'Life@page');
 
 Route::get('japanese', 'Japanese@index');
 Route::get('japanese/hiragana-katakana', 'JapaneseHiraganaKatakana@index');
+Route::get('japanese/wanikani', 'JapaneseWanikani@index');
+Route::get('japanese/wanikani/kanji', 'JapaneseWanikaniKanji@index');
+Route::get('japanese/wanikani/kanji/{character}', 'JapaneseWanikaniKanji@show');
+Route::delete('japanese/wanikani/kanji/{id}', 'JapaneseWanikaniKanji@destroy')->middleware('auth');
+Route::get('japanese/wanikani/level', 'JapaneseWanikaniLevel@index');
+Route::get('japanese/wanikani/level/{level}', 'JapaneseWanikaniLevel@show');
+Route::get('japanese/wanikani/radicals', 'JapaneseWanikaniRadicals@index');
+Route::get('japanese/wanikani/radicals/{meaning}', 'JapaneseWanikaniRadicals@show');
+Route::delete('japanese/wanikani/radicals/{id}', 'JapaneseWanikaniRadicals@destroy')->middleware('auth');
+Route::get('japanese/wanikani/vocabulary', 'JapaneseWanikaniVocabulary@index');
+Route::get('japanese/wanikani/vocabulary/{characters}', 'JapaneseWanikaniVocabulary@show');
+Route::delete('japanese/wanikani/vocabulary/{id}', 'JapaneseWanikaniVocabulary@destroy')->middleware('auth');
+
 Route::get('my', 'My@index')->middleware('auth');
 Route::put('my/avatar', 'MyAvatar@update')->middleware('auth');
 Route::get('my/password', 'MyPassword@edit')->middleware('auth');

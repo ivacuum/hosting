@@ -1,19 +1,21 @@
+.bg-burned {
+  &.bg-kanji,
+  &.bg-radical,
+  &.bg-vocab {
+    background: linear-gradient(to bottom, #555, #484848);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .4) inset;
+  }
+}
+
 .bg-kanji { background: linear-gradient(to bottom, #f0a, #dd0093); }
 .bg-radical { background: linear-gradient(to bottom, #0af, #0093dd); }
 .bg-vocab { background: linear-gradient(to bottom, #a0f, #9300dd); }
 
+.ja-big { font-size: 72px; }
 .ja-character { line-height: 1; }
-
-.ja-kanji,
-.ja-radical {
-  font-size: 72px;
-  text-shadow: 0 2px 0 rgba(0, 0, 0, .3);
-}
-
-.ja-radical-image { filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .3)); }
-
-.ja-meaning,
-.ja-reading { text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3); }
+.ja-image-shadow { filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .3)); }
+.ja-shadow { text-shadow: 0 2px 0 rgba(0, 0, 0, .3); }
+.ja-shadow-light { text-shadow: 0 1px 0 rgba(0, 0, 0, .3); }
 
 .kanji-grid,
 .radicals-grid {
@@ -28,7 +30,14 @@
 
 .vocab-grid {
   display: grid;
-  grid-gap: .25rem;
-  grid-template-columns: max-content max-content max-content auto max-content;
   align-items: center;
+
+  @include media-breakpoint-down(sm) {
+    .invisible { display: none; }
+  }
+
+  @include media-breakpoint-up(md) {
+    grid-row-gap: .125rem;
+    grid-template-columns: max-content max-content max-content auto max-content;
+  }
 }

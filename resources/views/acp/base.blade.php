@@ -49,6 +49,14 @@
     <a class="dropdown-item" href="{{ $locale_uri }}/acp/torrents">{{ trans('acp.torrents.index') }}</a>
   </div>
 </li>
+<li class="nav-item dropdown dropdown-hover">
+  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">日本語</a>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{{ $locale_uri }}/acp/kanjis">{{ trans('acp.kanjis.index') }}</a>
+    <a class="dropdown-item" href="{{ $locale_uri }}/acp/radicals">{{ trans('acp.radicals.index') }}</a>
+    <a class="dropdown-item" href="{{ $locale_uri }}/acp/vocabularies">{{ trans('acp.vocabularies.index') }}</a>
+  </div>
+</li>
 <li class="nav-item dropdown dropdown-hover {{ in_array($self, ['Acp\Metrics', 'Acp\Users', 'Acp\ExternalIdentities', 'Acp\Pages', 'Acp\Notifications']) ? 'active' : '' }}">
   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
     {{ trans('menu.site') }}

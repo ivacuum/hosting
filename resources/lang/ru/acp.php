@@ -81,6 +81,10 @@ return [
     'images.user' => 'Картинки автора',
     'images.index' => 'Изображения',
 
+    'kanjis.edit' => 'Редактирование',
+    'kanjis.show' => 'Кандзи',
+    'kanjis.index' => 'Кандзи',
+
     'metrics.index' => 'Метрики',
 
     'news.add' => 'Добавить новость',
@@ -104,6 +108,10 @@ return [
     'photos.show' => 'Фотография',
     'photos.index' => 'Фотографии',
     'photos.create' => 'Новое фото',
+
+    'radicals.edit' => 'Редактирование',
+    'radicals.show' => 'Ключ',
+    'radicals.index' => 'Ключи',
 
     'servers.add' => 'Добавить сервер',
     'servers.edit' => 'Редактирование',
@@ -137,6 +145,10 @@ return [
     'users.show' => 'Пользователь',
     'users.index' => 'Пользователи',
     'users.create' => 'Новый пользователь',
+
+    'vocabularies.edit' => 'Редактирование',
+    'vocabularies.show' => 'Словарное слово',
+    'vocabularies.index' => 'Словарные слова',
 
     'yandex-users.add' => 'Добавить аккаунт',
     'yandex-users.edit' => 'Редактирование',

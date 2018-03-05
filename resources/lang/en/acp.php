@@ -80,6 +80,10 @@ return [
     'images.user' => 'Author\'s pics',
     'images.index' => 'Images',
 
+    'kanjis.edit' => 'Edit',
+    'kanjis.show' => 'Kanji',
+    'kanjis.index' => 'Kanji',
+
     'metrics.index' => 'Metrics',
 
     'news.add' => 'Post news',
@@ -103,6 +107,10 @@ return [
     'photos.show' => 'A photo',
     'photos.index' => 'Photos',
     'photos.create' => 'Add a photo',
+
+    'radicals.edit' => 'Edit',
+    'radicals.show' => 'Radical',
+    'radicals.index' => 'Radicals',
 
     'servers.add' => 'Add server',
     'servers.edit' => 'Edit',
@@ -136,6 +144,10 @@ return [
     'users.show' => 'User',
     'users.index' => 'Users',
     'users.create' => 'New user',
+
+    'vocabularies.edit' => 'Edit',
+    'vocabularies.show' => 'Vocabulary',
+    'vocabularies.index' => 'Vocabulary',
 
     'yandex-users.add' => 'Add account',
     'yandex-users.edit' => 'Edit',

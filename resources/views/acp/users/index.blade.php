@@ -30,9 +30,9 @@
     <th class="text-md-right">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
-    <th>Электронная почта</th>
+    <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'email') }}</th>
     @if ($avatar)
-      <th>Аватар</th>
+      <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'avatar') }}</th>
     @endif
     <th>Активен</th>
     <th class="text-md-right text-nowrap">

@@ -1,13 +1,13 @@
 <?php
 
 return [
-	'acp.domains.default' => 'Домены на мониторинге',
-	'acp.domains.orphan' => 'Домены на продажу',
-	'acp.domains.external' => 'Домены не в нашей панели reg.ru',
-	'acp.domains.no-server' => 'Домены без сервера',
-	'acp.domains.no-ns' => 'Домены без NS',
-	'acp.domains.inactive' => 'Неактивные домены',
-	'acp.domains.trashed' => 'Удаленные домены',
+    'acp.domains.no-ns' => 'Домены без NS',
+    'acp.domains.orphan' => 'Домены на продажу',
+    'acp.domains.default' => 'Домены на мониторинге',
+    'acp.domains.trashed' => 'Удаленные домены',
+    'acp.domains.external' => 'Домены не в нашей панели reg.ru',
+    'acp.domains.inactive' => 'Неактивные домены',
+    'acp.domains.no-server' => 'Домены без сервера',
 
     'dcpp.faq' => 'FAQ (ЧаВо) по DC++ | Решение проблем с DC++',
     'dcpp.hubs' => 'Популярные DC++ хабы',
@@ -24,7 +24,23 @@ return [
     'dcpp.shakespeer' => 'Скачать ShakesPeer 0.9.2 для macOS',
     'dcpp.strongdc_install' => 'Инструкция по установке и настройке StrongDC++',
 
-    'home.index' => 'Сергей Панков &middot; vacuum.kaluga',
+    'home.index' => 'Сергей Панков · vacuum.kaluga',
+
+    'japanese-hiragana-katakana.index' => 'Тренажер хираганы и катаканы, трейнер японских азбук',
+
+    'japanese-wanikani.index' => 'WaniKani · Японский язык',
+
+    'japanese-wanikani-kanji.show' => 'Кандзи :kanji · WaniKani · Японский язык',
+    'japanese-wanikani-kanji.index' => 'Кандзи · WaniKani · Японский язык',
+
+    'japanese-wanikani-level.show' => 'Уровень :level · WaniKani · Японский язык',
+    'japanese-wanikani-level.index' => 'Уровни · WaniKani · Японский язык',
+
+    'japanese-wanikani-radicals.show' => 'Ключ :radical · WaniKani · Японский язык',
+    'japanese-wanikani-radicals.index' => 'Ключи · WaniKani · Японский язык',
+
+    'japanese-wanikani-vocabulary.show' => ':vocab · WaniKani · Японский язык',
+    'japanese-wanikani-vocabulary.index' => 'Словарные слова · WaniKani · Японский язык',
 
     'retracker.dev' => 'О разработке ретрекера',
     'retracker.usage' => 'Как использовать ретрекер',

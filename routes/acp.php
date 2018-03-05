@@ -56,6 +56,8 @@ RouteHelper::withoutCreateAndEdit('Acp\Images');
 Route::post('images/batch', 'Acp\Images@batch');
 Route::get('images/{id}/view', 'Acp\Images@view');
 
+RouteHelper::withoutCreate('Acp\Kanjis');
+
 Route::get('metrics', 'Acp\Metrics@index');
 Route::get('metrics/{event}', 'Acp\Metrics@show');
 
@@ -70,6 +72,8 @@ Route::post('pages/move', 'Acp\Pages@move');
 Route::get('pages/tree', 'Acp\Pages@tree');
 
 RouteHelper::crud('Acp\Photos');
+
+RouteHelper::withoutCreate('Acp\Radicals');
 
 RouteHelper::crud('Acp\Servers');
 Route::get('servers/{id}/ftp', 'Acp\Servers\Ftp@index');
@@ -88,5 +92,7 @@ RouteHelper::crud('Acp\Trips');
 Route::post('trips/{id}/notify', 'Acp\Trips@notify');
 
 RouteHelper::crud('Acp\Users');
+
+RouteHelper::withoutCreate('Acp\Vocabularies');
 
 RouteHelper::crud('Acp\YandexUsers');

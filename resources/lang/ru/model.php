@@ -66,9 +66,19 @@ return [
     'gig.meta_description_en' => 'Meta description EN',
     'gig.meta_description_ru' => 'Meta description',
 
+    'kanji.level' => 'Уровень',
+    'kanji.meaning' => 'Значение',
+    'kanji.character' => 'Кандзи',
+    'kanji.radicals_count' => 'Ключи',
+
     'news.html' => 'HTML',
     'news.title' => 'Заголовок',
     'news.status' => 'Состояние',
+
+    'radical.level' => 'Уровень',
+    'radical.meaning' => 'Значение',
+    'radical.character' => 'Ключ',
+    'radical.kanjis_count' => 'Кандзи',
 
     'server.host' => 'Хост',
     'server.text' => 'Заметки',
@@ -101,6 +111,11 @@ return [
 
     'user.avatar' => 'Аватар',
     'user.last_login_at' => 'Последний вход',
+
+    'vocabulary.level' => 'Уровень',
+    'vocabulary.meaning' => 'Значение',
+    'vocabulary.character' => 'Словарное слово',
+    'vocabulary.sentences' => 'Предложения',
 
     'yandex-user.token' => 'Токен',
     'yandex-user.account' => 'Логин в Яндексе',
