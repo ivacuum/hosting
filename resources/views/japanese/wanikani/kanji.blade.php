@@ -17,7 +17,7 @@
   <div class="d-flex flex-wrap align-items-center">
     @foreach ($kanji->radicals as $radical)
       <div class="font-weight-bold text-center text-white">
-        <div class="bg-radical pt-1 pb-2 px-4 mr-1 rounded">
+        <div class="bg-radical pt-1 pb-2 px-4 mb-1 mr-1 rounded">
           <a class="text-white" href="{{ path('JapaneseWanikaniRadicals@show', $radical->meaning) }}">
             @if ($radical->character)
               <div class="ja-big ja-character ja-shadow pb-2">{{ $radical->character }}</div>

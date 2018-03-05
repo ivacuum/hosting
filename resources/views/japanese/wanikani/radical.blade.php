@@ -25,7 +25,7 @@
     <div class="d-flex flex-wrap">
       @foreach ($radical->kanjis as $kanji)
         <div class="font-weight-bold text-center text-white">
-          <div class="bg-kanji pt-1 pb-2 px-4 mr-1 rounded">
+          <div class="bg-kanji pt-1 pb-2 px-4 mb-1 mr-1 rounded">
             <a class="d-block ja-big ja-character ja-shadow pb-2 text-white"
                href="{{ path('JapaneseWanikaniKanji@show', $kanji->character) }}"
             >{{ $kanji->character }}</a>
