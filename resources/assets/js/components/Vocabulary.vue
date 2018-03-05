@@ -51,7 +51,7 @@
                 【{{ kana }}】
               </div>
             </div>
-            <div :class="{ invisible: !labels && !revealed.includes(row.id), 'mb-4 mb-md-0': row.burned }"
+            <div :class="{ invisible: !labels && !revealed.includes(row.id), 'mb-4 mb-md-0': row.burned || guest }"
                  :id="`meaning-${row.id}`"
             >{{ row.meaning }}</div>
             <a class="mb-4 mb-md-0 px-md-2 py-md-1 text-danger"
