@@ -2,6 +2,18 @@
   'search_form' => true,
 ])
 
+@section('heading-after-search')
+@include('acp.tpl.dropdown-filter', [
+  'field' => 'kanjis_count',
+  'values' => [
+    'Все' => null,
+    '---' => null,
+    'Есть' => 1,
+    'Нет' => 0,
+  ]
+])
+@endsection
+
 @section('content-list')
 <table class="table-stats table-adaptive">
   <thead>

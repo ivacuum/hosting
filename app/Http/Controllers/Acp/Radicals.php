@@ -15,6 +15,7 @@ class Radicals extends Controller
     {
         $q = request('q');
         $kanji_id = request('kanji_id');
+        $kanjis_count = request('kanjis_count');
 
         [$sort_key, $sort_dir] = $this->getSortParams();
 
@@ -24,6 +25,11 @@ class Radicals extends Controller
                 return $query->whereHas('kanjis', function (Builder $query) use ($kanji_id) {
                     $query->where('kanji_id', $kanji_id);
                 });
+            })
+            ->when(!is_null($kanjis_count), function (Builder $query) use ($kanjis_count) {
+                return $kanjis_count
+                    ? $query->has('kanjis')
+                    : $query->doesntHave('kanjis');
             })
             ->when($sort_key === 'level', function (Builder $query) {
                 return $query->orderBy('meaning');
