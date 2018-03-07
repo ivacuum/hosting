@@ -3,6 +3,7 @@ import 'vac-gfe/js/laravel-echo'
 
 Vue.component('avatar-uploader', require('./components/AvatarUploader.vue'))
 Vue.component('aviasales', require('./components/Aviasales.vue'))
+Vue.component('burn-kanji', require('./components/BurnKanji.vue'))
 Vue.component('burn-radical', require('./components/BurnRadical.vue'))
 Vue.component('chat', require('./components/Chat.vue'))
 Vue.component('gallery-uploader', require('./components/GalleryUploader.vue'))

@@ -1,7 +1,7 @@
 <?php namespace App;
 
+use App\Traits\UserBurnableScope;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
 /**
  * Иероглиф
@@ -24,6 +24,8 @@ use Illuminate\Support\Str;
  */
 class Kanji extends Model
 {
+    use UserBurnableScope;
+
     protected $fillable = ['level']; // Чтобы не бросало исключение
     protected $perPage = 50;
 

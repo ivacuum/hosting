@@ -1,6 +1,6 @@
 <?php namespace App;
 
-use Illuminate\Database\Eloquent\Builder;
+use App\Traits\UserBurnableScope;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -21,6 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Radical extends Model
 {
+    use UserBurnableScope;
+
     protected $fillable = ['level']; // Чтобы не бросало исключение
     protected $perPage = 50;
 
@@ -33,16 +35,6 @@ class Radical extends Model
     public function kanjis()
     {
         return $this->belongsToMany(Kanji::class);
-    }
-
-    // Scopes
-    public function scopeUserBurnable(Builder $query, ?int $user_id)
-    {
-        return $query->when($user_id, function (Builder $query) use ($user_id) {
-            return $query->with(['burnable' => function ($query) use ($user_id) {
-                return $query->where('user_id', $user_id);
-            }]);
-        });
     }
 
     // Methods

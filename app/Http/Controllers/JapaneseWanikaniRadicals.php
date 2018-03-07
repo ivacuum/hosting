@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Radical;
+use App\Radical as Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\QueryException;
 
@@ -12,7 +12,7 @@ class JapaneseWanikaniRadicals extends Controller
         $user_id = auth()->id();
 
         if (request()->ajax()) {
-            $radicals = Radical::orderBy('level')
+            $radicals = Model::orderBy('level')
                 ->orderBy('meaning')
                 ->userBurnable($user_id)
                 ->when($level >= 1 && $level <= 60, function (Builder $query) use ($level) {
@@ -20,7 +20,7 @@ class JapaneseWanikaniRadicals extends Controller
                 })
                 ->get(['id', 'level', 'character', 'meaning', 'image'])
                 ->map(function ($item) use ($user_id) {
-                    /* @var Radical $item */
+                    /* @var Model $item */
                     return [
                         'id' => $item->id,
                         'slug' => path('JapaneseWanikaniRadicals@show', $item->meaning),
@@ -41,10 +41,10 @@ class JapaneseWanikaniRadicals extends Controller
 
     public function destroy(int $id)
     {
-        $radical = Radical::findOrFail($id);
+        $model = Model::findOrFail($id);
 
         try {
-            $radical->burnable()
+            $model->burnable()
                 ->create(['user_id' => auth()->id()]);
         } catch (QueryException $e) {
         }
@@ -54,10 +54,8 @@ class JapaneseWanikaniRadicals extends Controller
 
     public function show(string $meaning)
     {
-        $user_id = auth()->id();
-
-        $radical = Radical::where('meaning', $meaning)
-            ->userBurnable($user_id)
+        $radical = Model::where('meaning', $meaning)
+            ->userBurnable(auth()->id())
             ->firstOrFail();
 
         \Breadcrumbs::push($radical->meaning);
@@ -67,9 +65,9 @@ class JapaneseWanikaniRadicals extends Controller
 
     public function update(int $id)
     {
-        $radical = Radical::findOrFail($id);
+        $model = Model::findOrFail($id);
 
-        $radical->burnable()
+        $model->burnable()
             ->where('user_id', auth()->id())
             ->delete();
 

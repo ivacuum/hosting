@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Kanji;
+use App\Kanji as Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\QueryException;
 
@@ -12,19 +12,15 @@ class JapaneseWanikaniKanji extends Controller
         $user_id = auth()->id();
 
         if (request()->ajax()) {
-            $kanji = Kanji::orderBy('level')
+            $kanji = Model::orderBy('level')
                 ->orderBy('meaning')
-                ->when($user_id, function (Builder $query) use ($user_id) {
-                    return $query->with(['burnable' => function ($query) use ($user_id) {
-                        return $query->where('user_id', $user_id);
-                    }]);
-                })
+                ->userBurnable($user_id)
                 ->when($level >= 1 && $level <= 60, function (Builder $query) use ($level) {
                     return $query->where('level', $level);
                 })
                 ->get(['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading'])
                 ->map(function ($item) use ($user_id) {
-                    /* @var Kanji $item */
+                    /* @var Model $item */
                     return [
                         'id' => $item->id,
                         'slug' => path('JapaneseWanikaniKanji@show', $item->character),
@@ -45,10 +41,11 @@ class JapaneseWanikaniKanji extends Controller
 
     public function destroy(int $id)
     {
-        $kanji = Kanji::findOrFail($id);
+        $model = Model::findOrFail($id);
 
         try {
-            $kanji->burnable()->create(['user_id' => request()->user()->id]);
+            $model->burnable()
+                ->create(['user_id' => auth()->id()]);
         } catch (QueryException $e) {
         }
 
@@ -57,11 +54,24 @@ class JapaneseWanikaniKanji extends Controller
 
     public function show(string $character)
     {
-        $kanji = Kanji::where('character', $character)->firstOrFail();
+        $kanji = Model::where('character', $character)
+            ->userBurnable(auth()->id())
+            ->firstOrFail();
 
         \Breadcrumbs::push($kanji->character);
 
         return view('japanese.wanikani.kanji', compact('kanji'));
+    }
+
+    public function update(int $id)
+    {
+        $model = Model::findOrFail($id);
+
+        $model->burnable()
+            ->where('user_id', auth()->id())
+            ->delete();
+
+        return ['status' => 'OK'];
     }
 
     protected function appendBreadcrumbs(): void

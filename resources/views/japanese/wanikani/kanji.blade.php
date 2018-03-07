@@ -55,4 +55,12 @@
     @svg (external-link)
   </a>
 </div>
+
+@auth
+<burn-kanji action="{{ path('JapaneseWanikaniKanji@destroy', $kanji->id) }}" :burned="{{ (int) !is_null($kanji->burnable) }}" inline-template>
+  <div class="mt-4">
+    <button class="btn btn-default" @click="toggleBurned">@{{ toggleBurnText }}</button>
+  </div>
+</burn-kanji>
+@endauth
 @endsection

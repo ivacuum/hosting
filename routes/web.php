@@ -62,6 +62,7 @@ Route::get('japanese/hiragana-katakana', 'JapaneseHiraganaKatakana@index');
 Route::get('japanese/wanikani', 'JapaneseWanikani@index');
 Route::get('japanese/wanikani/kanji', 'JapaneseWanikaniKanji@index');
 Route::get('japanese/wanikani/kanji/{character}', 'JapaneseWanikaniKanji@show');
+Route::put('japanese/wanikani/kanji/{id}', 'JapaneseWanikaniKanji@update')->middleware('auth');
 Route::delete('japanese/wanikani/kanji/{id}', 'JapaneseWanikaniKanji@destroy')->middleware('auth');
 Route::get('japanese/wanikani/level', 'JapaneseWanikaniLevel@index');
 Route::get('japanese/wanikani/level/{level}', 'JapaneseWanikaniLevel@show');
