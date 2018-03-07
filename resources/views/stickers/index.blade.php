@@ -24,7 +24,7 @@
   <a class="btn btn-success" href="tg://addstickers?set=Mesozoic">@ru Добавить в Телеграм @en Add to Telegram @endru</a>
 </div>
 @foreach (range(1, 40) as $i)
-  <img class="d-inline-block" src="https://s1.tcdn.co/990/349/9903498b-b760-3382-a71e-87d6d3e5c0e6/{{ $i }}.png"
+  <img class="d-inline-block" src="https://s.tcdn.co/990/349/9903498b-b760-3382-a71e-87d6d3e5c0e6/{{ $i }}.png"
   width="128">
 @endforeach
 
