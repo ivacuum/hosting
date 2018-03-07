@@ -44,4 +44,12 @@
     @svg (external-link)
   </a>
 </div>
+
+@auth
+<burn-radical action="{{ path('JapaneseWanikaniRadicals@destroy', $radical->id) }}" :burned="{{ (int) !is_null($radical->burnable) }}" inline-template>
+  <div class="mt-4">
+    <button class="btn btn-default" @click="toggleBurned">@{{ toggleBurnText }}</button>
+  </div>
+</burn-radical>
+@endauth
 @endsection

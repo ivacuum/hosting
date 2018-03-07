@@ -67,6 +67,7 @@ Route::get('japanese/wanikani/level', 'JapaneseWanikaniLevel@index');
 Route::get('japanese/wanikani/level/{level}', 'JapaneseWanikaniLevel@show');
 Route::get('japanese/wanikani/radicals', 'JapaneseWanikaniRadicals@index');
 Route::get('japanese/wanikani/radicals/{meaning}', 'JapaneseWanikaniRadicals@show');
+Route::put('japanese/wanikani/radicals/{id}', 'JapaneseWanikaniRadicals@update')->middleware('auth');
 Route::delete('japanese/wanikani/radicals/{id}', 'JapaneseWanikaniRadicals@destroy')->middleware('auth');
 Route::get('japanese/wanikani/vocabulary', 'JapaneseWanikaniVocabulary@index');
 Route::get('japanese/wanikani/vocabulary/{characters}', 'JapaneseWanikaniVocabulary@show');

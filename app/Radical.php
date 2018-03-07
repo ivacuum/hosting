@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -32,6 +33,16 @@ class Radical extends Model
     public function kanjis()
     {
         return $this->belongsToMany(Kanji::class);
+    }
+
+    // Scopes
+    public function scopeUserBurnable(Builder $query, ?int $user_id)
+    {
+        return $query->when($user_id, function (Builder $query) use ($user_id) {
+            return $query->with(['burnable' => function ($query) use ($user_id) {
+                return $query->where('user_id', $user_id);
+            }]);
+        });
     }
 
     // Methods

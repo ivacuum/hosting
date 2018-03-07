@@ -14,11 +14,7 @@ class JapaneseWanikaniRadicals extends Controller
         if (request()->ajax()) {
             $radicals = Radical::orderBy('level')
                 ->orderBy('meaning')
-                ->when($user_id, function (Builder $query) use ($user_id) {
-                    return $query->with(['burnable' => function ($query) use ($user_id) {
-                        return $query->where('user_id', $user_id);
-                    }]);
-                })
+                ->userBurnable($user_id)
                 ->when($level >= 1 && $level <= 60, function (Builder $query) use ($level) {
                     return $query->where('level', $level);
                 })
@@ -48,7 +44,8 @@ class JapaneseWanikaniRadicals extends Controller
         $radical = Radical::findOrFail($id);
 
         try {
-            $radical->burnable()->create(['user_id' => request()->user()->id]);
+            $radical->burnable()
+                ->create(['user_id' => auth()->id()]);
         } catch (QueryException $e) {
         }
 
@@ -57,11 +54,26 @@ class JapaneseWanikaniRadicals extends Controller
 
     public function show(string $meaning)
     {
-        $radical = Radical::where('meaning', $meaning)->firstOrFail();
+        $user_id = auth()->id();
+
+        $radical = Radical::where('meaning', $meaning)
+            ->userBurnable($user_id)
+            ->firstOrFail();
 
         \Breadcrumbs::push($radical->meaning);
 
         return view('japanese.wanikani.radical', compact('radical'));
+    }
+
+    public function update(int $id)
+    {
+        $radical = Radical::findOrFail($id);
+
+        $radical->burnable()
+            ->where('user_id', auth()->id())
+            ->delete();
+
+        return ['status' => 'OK'];
     }
 
     protected function appendBreadcrumbs(): void
