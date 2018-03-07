@@ -28,7 +28,7 @@
         </a>
       </td>
       <td>{{ $model->meaning }}</td>
-      <td class="text-md-right">
+      <td class="text-md-right text-nowrap">
         @if ($model->radicals_count > 0)
           <a href="{{ path('Acp\Radicals@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->radicals_count) }}

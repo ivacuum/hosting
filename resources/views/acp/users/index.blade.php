@@ -75,28 +75,28 @@
           Да
         @endif
       </td>
-      <td class="text-md-right">
+      <td class="text-md-right text-nowrap">
         @if ($model->comments_count > 0)
           <a href="{{ path('Acp\Comments@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->comments_count) }}
           </a>
         @endif
       </td>
-      <td class="text-md-right">
+      <td class="text-md-right text-nowrap">
         @if ($model->images_count > 0)
           <a href="{{ path('Acp\Images@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->images_count) }}
           </a>
         @endif
       </td>
-      <td class="text-md-right">
+      <td class="text-md-right text-nowrap">
         @if ($model->torrents_count > 0)
           <a href="{{ path('Acp\Torrents@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->torrents_count) }}
           </a>
         @endif
       </td>
-      <td class="text-md-right">
+      <td class="text-md-right text-nowrap">
         @if ($model->trips_count > 0)
           <a href="{{ path('Acp\Trips@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->trips_count) }}

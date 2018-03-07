@@ -34,21 +34,21 @@
           {{ $model->slug }}
         </a>
       </td>
-      <td class="text-md-right">
+      <td class="text-md-right text-nowrap">
         @if ($model->cities_count > 0)
           <a href="{{ path('Acp\Cities@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->cities_count) }}
           </a>
         @endif
       </td>
-      <td class="text-md-right">
+      <td class="text-md-right text-nowrap">
         @if ($model->trips_count > 0)
           <a href="{{ path('Acp\Trips@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->trips_count) }}
           </a>
         @endif
       </td>
-      <td class="text-md-right">
+      <td class="text-md-right text-nowrap">
         @if ($model->views > 0)
           {{ ViewHelper::number($model->views) }}
         @endif

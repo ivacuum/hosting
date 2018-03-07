@@ -3,7 +3,7 @@
 @section('content')
 <h3>
   {{ trans('my.trips') }}
-  <small class="text-muted">{{ ViewHelper::number($models->total()) }}</small>
+  <small class="text-muted text-nowrap">{{ ViewHelper::number($models->total()) }}</small>
   <a class="btn btn-success" href="{{ path('MyTrips@create') }}">
     {{ trans('acp.trips.create') }}
   </a>
@@ -58,12 +58,12 @@
             {{ $model->slug }}
           @endif
         </td>
-        <td class="text-md-right">
+        <td class="text-md-right text-nowrap">
           @if ($model->views > 0)
             {{ ViewHelper::number($model->views) }}
           @endif
         </td>
-        <td class="text-md-right">
+        <td class="text-md-right text-nowrap">
           @if ($model->comments_count > 0)
             {{ ViewHelper::number($model->comments_count) }}
           @endif

@@ -34,12 +34,12 @@
           </span>
         @endif
       </td>
-      <td class="text-md-right">
+      <td class="text-md-right text-nowrap">
         @if ($model->views > 0)
           {{ ViewHelper::number($model->views) }}
         @endif
       </td>
-      <td class="text-md-right">
+      <td class="text-md-right text-nowrap">
         @if ($model->comments_count > 0)
           <a href="{{ path('Acp\Comments@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->comments_count) }}

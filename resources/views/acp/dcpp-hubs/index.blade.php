@@ -6,7 +6,7 @@
   <tr>
     <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'title') }}</th>
     <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'address') }}</th>
-    <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'clicks') }}</th>
+    <th class="text-md-right text-nowrap">{{ ViewHelper::modelFieldTrans($model_tpl, 'clicks') }}</th>
   </tr>
   </thead>
   <tbody>
@@ -18,7 +18,7 @@
         </a>
       </td>
       <td>{{ $model->externalLink() }}</td>
-      <td>{{ ViewHelper::number($model->clicks) }}</td>
+      <td class="text-md-right text-nowrap">{{ ViewHelper::number($model->clicks) }}</td>
     </tr>
   @endforeach
   </tbody>

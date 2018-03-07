@@ -53,7 +53,7 @@
         <div>{{ $model->lat }}</div>
         <div>{{ $model->lon }}</div>
       </td>
-      <td class="text-md-right">
+      <td class="text-md-right text-nowrap">
         @if ($model->views > 0)
           {{ ViewHelper::number($model->views) }}
         @endif

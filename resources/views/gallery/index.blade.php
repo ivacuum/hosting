@@ -10,7 +10,7 @@
             <img class="screenshot" src="{{ $image->thumbnailUrl() }}">
           </a>
         </div>
-        <span class="text-muted">
+        <span class="text-muted text-nowrap">
           @svg (eye)
           {{ ViewHelper::number($image->views) }}
         </span>

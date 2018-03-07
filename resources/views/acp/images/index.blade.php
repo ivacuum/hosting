@@ -57,8 +57,8 @@
               <img class="screenshot" src="{{ $model->thumbnailSecretUrl() }}">
             </a>
           </td>
-          <td class="text-md-right text-muted">{{ ViewHelper::size($model->size) }}</td>
-          <td class="text-md-right">
+          <td class="text-md-right text-muted text-nowrap">{{ ViewHelper::size($model->size) }}</td>
+          <td class="text-md-right text-nowrap">
             @if ($model->views > 1500)
               <span class="badge badge-success">{{ ViewHelper::number($model->views) }}</span>
             @else

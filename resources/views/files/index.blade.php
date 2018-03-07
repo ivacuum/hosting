@@ -21,8 +21,8 @@
             {{ $model->title }}
           </a>
         </td>
-        <td class="text-md-right text-muted">{{ ViewHelper::size($model->size) }}</td>
-        <td class="text-md-right">{{ ViewHelper::number($model->downloads) }}</td>
+        <td class="text-md-right text-muted text-nowrap">{{ ViewHelper::size($model->size) }}</td>
+        <td class="text-md-right text-nowrap">{{ ViewHelper::number($model->downloads) }}</td>
         <td>{{ ViewHelper::dateShort($model->created_at) }}</td>
       </tr>
     @endforeach

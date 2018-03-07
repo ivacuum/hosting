@@ -63,12 +63,12 @@
           {{ $model->slug }}
         </a>
       </td>
-      <td class="text-md-right">
+      <td class="text-md-right text-nowrap">
         @if ($model->views > 0)
           {{ ViewHelper::number($model->views) }}
         @endif
       </td>
-      <td class="text-md-right">
+      <td class="text-md-right text-nowrap">
         @if ($model->comments_count > 0)
           {{ ViewHelper::number($model->comments_count) }}
         @endif
@@ -82,7 +82,7 @@
           </a>
         @endif
       </td>
-      <td class="text-md-right">
+      <td class="text-md-right text-nowrap">
         @if ($model->photos_count > 0)
           <a href="{{ path('Acp\Photos@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->photos_count) }}
