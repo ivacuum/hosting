@@ -44,4 +44,12 @@
     @svg (external-link)
   </a>
 </div>
+
+@auth
+<burn-vocabulary action="{{ path('JapaneseWanikaniVocabulary@destroy', $vocabulary->id) }}" :burned="{{ (int) !is_null($vocabulary->burnable) }}" inline-template>
+  <div class="mt-4">
+    <button class="btn btn-default" @click="toggleBurned">@{{ toggleBurnText }}</button>
+  </div>
+</burn-vocabulary>
+@endauth
 @endsection

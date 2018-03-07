@@ -72,6 +72,7 @@ Route::put('japanese/wanikani/radicals/{id}', 'JapaneseWanikaniRadicals@update')
 Route::delete('japanese/wanikani/radicals/{id}', 'JapaneseWanikaniRadicals@destroy')->middleware('auth');
 Route::get('japanese/wanikani/vocabulary', 'JapaneseWanikaniVocabulary@index');
 Route::get('japanese/wanikani/vocabulary/{characters}', 'JapaneseWanikaniVocabulary@show');
+Route::put('japanese/wanikani/vocabulary/{id}', 'JapaneseWanikaniVocabulary@update')->middleware('auth');
 Route::delete('japanese/wanikani/vocabulary/{id}', 'JapaneseWanikaniVocabulary@destroy')->middleware('auth');
 
 Route::get('my', 'My@index')->middleware('auth');

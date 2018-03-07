@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Kanji;
-use App\Vocabulary;
+use App\Vocabulary as Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\QueryException;
 
@@ -14,14 +14,10 @@ class JapaneseWanikaniVocabulary extends Controller
         $user_id = auth()->id();
 
         if (request()->ajax()) {
-            $vocabulary = Vocabulary::with('burnable')
+            $vocabulary = Model::with('burnable')
                 ->orderBy('level')
                 ->orderBy('meaning')
-                ->when($user_id, function (Builder $query) use ($user_id) {
-                    return $query->with(['burnable' => function ($query) use ($user_id) {
-                        return $query->where('user_id', $user_id);
-                    }]);
-                })
+                ->userBurnable($user_id)
                 ->when($kanji, function (Builder $query) use ($kanji) {
                     return $query->where('character', 'LIKE', "%{$kanji}%");
                 })
@@ -30,7 +26,7 @@ class JapaneseWanikaniVocabulary extends Controller
                 })
                 ->get(['id', 'level', 'character', 'kana', 'meaning'])
                 ->map(function ($item) use ($user_id) {
-                    /* @var Vocabulary $item */
+                    /* @var Model $item */
                     return [
                         'id' => $item->id,
                         'kana' => $item->kana,
@@ -51,10 +47,11 @@ class JapaneseWanikaniVocabulary extends Controller
 
     public function destroy(int $id)
     {
-        $vocabulary = Vocabulary::findOrFail($id);
+        $vocabulary = Model::findOrFail($id);
 
         try {
-            $vocabulary->burnable()->create(['user_id' => request()->user()->id]);
+            $vocabulary->burnable()
+                ->create(['user_id' => auth()->id()]);
         } catch (QueryException $e) {
         }
 
@@ -63,7 +60,9 @@ class JapaneseWanikaniVocabulary extends Controller
 
     public function show(string $characters)
     {
-        $vocabulary = Vocabulary::where('character', $characters)->firstOrFail();
+        $vocabulary = Model::where('character', $characters)
+            ->userBurnable(auth()->id())
+            ->firstOrFail();
 
         \Breadcrumbs::push($vocabulary->character);
 
@@ -84,6 +83,17 @@ class JapaneseWanikaniVocabulary extends Controller
             ->sortBy('sort');
 
         return view('japanese.wanikani.vocabulary', compact('kanjis', 'vocabulary'));
+    }
+
+    public function update(int $id)
+    {
+        $model = Model::findOrFail($id);
+
+        $model->burnable()
+            ->where('user_id', auth()->id())
+            ->delete();
+
+        return ['status' => 'OK'];
     }
 
     protected function appendBreadcrumbs(): void
