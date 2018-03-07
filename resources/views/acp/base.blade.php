@@ -49,7 +49,7 @@
     <a class="dropdown-item" href="{{ $locale_uri }}/acp/torrents">{{ trans('acp.torrents.index') }}</a>
   </div>
 </li>
-<li class="nav-item dropdown dropdown-hover">
+<li class="nav-item dropdown dropdown-hover {{ in_array($self, ['Acp\Kanjis', 'Acp\Radicals', 'Acp\Vocabularies']) ? 'active' : '' }}">
   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">日本語</a>
   <div class="dropdown-menu">
     <a class="dropdown-item" href="{{ $locale_uri }}/acp/kanjis">{{ trans('acp.kanjis.index') }}</a>
