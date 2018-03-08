@@ -1,5 +1,7 @@
 @include('tpl.form_errors')
 
+{!! Form::text('kanji_string')->html() !!}
+
 <div class="form-group form-row">
   <label class="col-md-4 text-md-right">Есть в кандзи</label>
   <div class="col-md-8">

@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Acp;
 
+use App\Kanji;
 use App\Radical as Model;
 use Illuminate\Database\Eloquent\Builder;
 use Ivacuum\Generic\Controllers\Acp\Controller;
@@ -41,6 +42,45 @@ class Radicals extends Controller
             ->withPath(path("{$this->class}@index"));
 
         return view($this->view, compact('models'));
+    }
+
+    protected function requestDataForModel()
+    {
+        $data = parent::requestDataForModel();
+
+        if (!empty($data['kanji_string'])) {
+            // Объединение кандзи из строки и списка галочек
+            // Приведение к числам для правильного объединения
+            $ids = Kanji::whereIn('character', $this->splitKanjiCharacters($data['kanji_string']))
+                ->get(['id'])
+                ->pluck('id')
+                ->toArray();
+
+            $data['kanjis'] = array_merge(
+                $ids,
+                array_map(function ($val) {
+                    return $val + 0;
+                }, $data['kanjis'] ?? [])
+            );
+
+            request()->merge($data);
+        }
+
+        return $data;
+    }
+
+    protected function splitKanjiCharacters(string $string): array
+    {
+        $len = mb_strlen($string);
+        $result = [];
+
+        while ($len) {
+            $result[] = mb_substr($string, 0, 1);
+            $string = mb_substr($string, 1);
+            $len--;
+        }
+
+        return $result;
     }
 
     /**

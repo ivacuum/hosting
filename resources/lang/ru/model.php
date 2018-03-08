@@ -78,6 +78,7 @@ return [
     'radical.level' => 'Уровень',
     'radical.meaning' => 'Значение',
     'radical.character' => 'Ключ',
+    'radical.kanji_string' => 'Строка с кандзи',
     'radical.kanjis_count' => 'Кандзи',
 
     'server.host' => 'Хост',
