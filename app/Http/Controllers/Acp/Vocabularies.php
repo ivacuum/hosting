@@ -32,4 +32,15 @@ class Vocabularies extends Controller
 
         return view($this->view, compact('models'));
     }
+
+    protected function requestDataForModel()
+    {
+        $data = parent::requestDataForModel();
+
+        if (isset($data['sentences'])) {
+            $data['sentences'] = str_replace(["\r", "。\n\n", "？\n\n", "！\n\n"], ['', "。\n", "？\n", "！\n"], $data['sentences']);
+        }
+
+        return $data;
+    }
 }
