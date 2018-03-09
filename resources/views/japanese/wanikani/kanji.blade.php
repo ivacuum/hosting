@@ -50,8 +50,18 @@
 <vocabulary action="{{ path('JapaneseWanikaniVocabulary@index') }}" kanji="{{ $kanji->character }}"></vocabulary>
 
 <div class="mt-5">
-  <a href="{{ $kanji->externalLink() }}">
+  <a class="mr-3" href="{{ $kanji->externalLink() }}">
     WaniKani
+    @svg (external-link)
+  </a>
+
+  <a class="mr-3" href="https://www.japandict.com/kanji/{{ $kanji->character }}">
+    JapanDict
+    @svg (external-link)
+  </a>
+
+  <a href="https://jisho.org/search/{{ $kanji->character }}%20%23kanji">
+    Jisho
     @svg (external-link)
   </a>
 </div>

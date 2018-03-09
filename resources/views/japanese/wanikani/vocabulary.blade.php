@@ -39,8 +39,18 @@
 @endif
 
 <div class="mt-4">
-  <a href="{{ $vocabulary->externalLink() }}">
+  <a class="mr-3" href="{{ $vocabulary->externalLink() }}">
     WaniKani
+    @svg (external-link)
+  </a>
+
+  <a class="mr-3" href="https://www.japandict.com/{{ $vocabulary->character }}">
+    JapanDict
+    @svg (external-link)
+  </a>
+
+  <a href="https://jisho.org/search/{{ $vocabulary->character }}">
+    Jisho
     @svg (external-link)
   </a>
 </div>
