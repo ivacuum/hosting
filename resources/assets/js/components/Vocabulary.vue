@@ -4,9 +4,9 @@
     <div v-show="loaded">
       <div v-if="level === 0 && !kanji">
         <p>
-          <button class="btn btn-default" @click="toggleLabels()">{{ toggleLabelsText }}</button>
-          <button class="btn btn-default" @click="shuffleAll()">Перемешать все</button>
-          <button class="btn btn-default" @click="toggleBurned()" v-if="!guest">{{ toggleBurnedText }}</button>
+          <button class="btn btn-default" @click="toggleLabels">{{ toggleLabelsText }}</button>
+          <button class="btn btn-default" @click="shuffleAll">Перемешать все</button>
+          <button class="btn btn-default" @click="toggleBurned" v-if="!guest">{{ toggleBurnedText }}</button>
         </p>
         <div class="d-flex flex-wrap align-items-center">
           <template v-for="(collection, lvl) in filteredElements" v-if="collection.length">
@@ -25,9 +25,9 @@
             <small class="text-muted">{{ collection.length }}</small>
           </h3>
           <div>
-            <button class="btn btn-default" @click="toggleLabels()" v-if="level > 0">{{ toggleLabelsText }}</button>
+            <button class="btn btn-default" @click="toggleLabels" v-if="level > 0">{{ toggleLabelsText }}</button>
             <button class="btn btn-default" @click="shuffleLevel(lvl)">Перемешать</button>
-            <button class="btn btn-default" @click="toggleBurned()" v-if="level > 0 && !guest">{{ toggleBurnedText }}</button>
+            <button class="btn btn-default" @click="toggleBurned" v-if="level > 0 && !guest">{{ toggleBurnedText }}</button>
           </div>
         </div>
         <div class="f20 text-center text-md-left vocab-grid">
