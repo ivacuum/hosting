@@ -7,10 +7,6 @@
 
 <script>
 export default {
-  mounted() {
-    // console.log('Aviasales ready.')
-  },
-
   methods: {
     aviasales(e) {
       $(e.target).contents().unwrap()

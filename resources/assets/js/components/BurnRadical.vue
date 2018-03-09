@@ -2,7 +2,10 @@
 export default {
   props: {
     action: String,
-    burned: Number,
+    burned: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data() {

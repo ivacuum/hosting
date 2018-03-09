@@ -20,14 +20,14 @@
         <a :name="`level-${lvl}`"></a>
         <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-1">
           <h3>
-            <span v-if="level === 0 || !kanji">Уровень {{ lvl }}</span>
+            <span v-if="!flat && (level === 0 || !kanji)">Уровень {{ lvl }}</span>
             <span v-else>Словарные слова</span>
             <small class="text-muted">{{ collection.length }}</small>
           </h3>
           <div>
-            <button class="btn btn-default" @click="toggleLabels" v-if="level > 0">{{ toggleLabelsText }}</button>
-            <button class="btn btn-default" @click="shuffleLevel(lvl)">Перемешать</button>
-            <button class="btn btn-default" @click="toggleBurned" v-if="level > 0 && !guest">{{ toggleBurnedText }}</button>
+            <button class="btn btn-default" @click="toggleLabels" v-if="flat || level > 0">{{ toggleLabelsText }}</button>
+            <button class="btn btn-default" @click="shuffleLevel(lvl)" v-if="collection.length > 1">Перемешать</button>
+            <button class="btn btn-default" @click="toggleBurned" v-if="flat || (level > 0 && !guest)">{{ toggleBurnedText }}</button>
           </div>
         </div>
         <div class="f20 text-center text-md-left vocab-grid">
@@ -75,6 +75,14 @@ let shuffle = require('lodash/shuffle')
 export default {
   props: {
     action: String,
+    burned: {
+      type: Boolean,
+      default: false,
+    },
+    flat: {
+      type: Boolean,
+      default: false,
+    },
     kanji: {
       type: String,
       default: '',
@@ -88,7 +96,6 @@ export default {
   data() {
     return {
       guest: false,
-      burned: false,
       labels: false,
       loaded: false,
       elements: [],
@@ -102,7 +109,17 @@ export default {
 
     axios.get(`${this.action}?kanji=${this.kanji}&level=${this.level}`)
       .then((response) => {
-        this.elements = response.data.vocabulary
+        if (this.flat) {
+          // Объединение уровней в один для страницы кандзи
+          this.elements = { 0: [] }
+
+          for (let level in response.data.vocabulary) {
+            response.data.vocabulary[level].forEach(el => this.elements[0].push(el))
+          }
+        } else {
+          this.elements = response.data.vocabulary
+        }
+
         this.loaded = true
       })
   },

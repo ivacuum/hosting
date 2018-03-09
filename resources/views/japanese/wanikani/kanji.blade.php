@@ -34,8 +34,8 @@
   </div>
 @endif
 
-<h3 class="mt-5">{{ trans('japanese.readings') }}</h3>
-<div>
+<h3 class="mt-4">{{ trans('japanese.readings') }}</h3>
+<div class="mb-4">
   @if ($kanji->onyomi)
     <span class="text-muted">On'yomi</span>
     <span class="f20 mr-3">【{{ $kanji->katakanaOnyomi() }}】</span>
@@ -46,8 +46,7 @@
   @endif
 </div>
 
-<h3 class="mt-5">{{ trans('japanese.vocabulary') }}</h3>
-<vocabulary action="{{ path('JapaneseWanikaniVocabulary@index') }}" kanji="{{ $kanji->character }}"></vocabulary>
+<vocabulary action="{{ path('JapaneseWanikaniVocabulary@index') }}" :burned="true" :flat="true" kanji="{{ $kanji->character }}"></vocabulary>
 
 <div class="mt-5">
   <a class="mr-3" href="{{ $kanji->externalLink() }}">
