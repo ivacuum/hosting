@@ -1,4 +1,5 @@
 import './bootstrap'
+import VueI18n from 'vue-i18n'
 
 import Map from 'vac-gfe/js/yandex-map'
 import Pjax from 'vac-gfe/js/pjax'
@@ -83,7 +84,10 @@ class Application {
 
   initVue() {
     new Vue({
-      el: '#pjax_container'
+      el: '#pjax_container',
+      i18n: new VueI18n({
+        locale: window['AppOptions'].locale,
+      }),
     })
   }
 

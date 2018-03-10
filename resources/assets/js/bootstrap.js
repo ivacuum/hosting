@@ -1,5 +1,8 @@
 import 'vac-gfe/js/laravel-axios'
 import 'vac-gfe/js/laravel-echo'
+import VueI18n from 'vue-i18n'
+
+Vue.use(VueI18n)
 
 Vue.component('avatar-uploader', require('./components/AvatarUploader.vue'))
 Vue.component('aviasales', require('./components/Aviasales.vue'))

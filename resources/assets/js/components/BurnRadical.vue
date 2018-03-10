@@ -20,8 +20,21 @@ export default {
 
   computed: {
     toggleBurnText() {
-      return this.burned ? 'Восстановить ключ' : 'Сжечь ключ';
+      return this.$i18n.t(this.burned ? 'RESTORE' : 'BURN')
     },
+  },
+
+  i18n: {
+    messages: {
+      en: {
+        BURN: 'Burn this key',
+        RESTORE: 'Restore',
+      },
+      ru: {
+        BURN: 'Сжечь ключ',
+        RESTORE: 'Восстановить',
+      },
+    }
   },
 
   methods: {

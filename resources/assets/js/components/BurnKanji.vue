@@ -4,10 +4,17 @@ import BurnRadical from './BurnRadical.vue'
 export default {
   extends: BurnRadical,
 
-  computed: {
-    toggleBurnText() {
-      return this.burned ? 'Восстановить кандзи' : 'Сжечь кандзи';
-    },
-  }
+  i18n: {
+    messages: {
+      en: {
+        BURN: 'Burn this kanji',
+        RESTORE: 'Restore',
+      },
+      ru: {
+        BURN: 'Сжечь кандзи',
+        RESTORE: 'Восстановить',
+      },
+    }
+  },
 }
 </script>

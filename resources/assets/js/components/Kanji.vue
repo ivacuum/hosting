@@ -11,7 +11,7 @@
           <button
             class="btn btn-default"
             @click="shuffleAll"
-          >Перемешать все</button>
+          >{{ $t('SHUFFLE_ALL') }}</button>
           <button
             class="btn btn-default"
             @click="toggleBurned"
@@ -43,7 +43,7 @@
               class="btn btn-default"
               @click="shuffleLevel(lvl)"
               v-if="showShuffleLevelButton(collection.length)"
-            >Перемешать</button>
+            >{{ $t('SHUFFLE') }}</button>
             <button
               class="btn btn-default"
               @click="toggleBurned"
@@ -69,6 +69,8 @@
 </template>
 
 <script>
+import I18nMessages from './../i18n/japanese'
+
 let shuffle = require('lodash/shuffle')
 
 export default {
@@ -102,6 +104,11 @@ export default {
       labels: false,
       elements: [],
     }
+  },
+
+  i18n: {
+    locale: window['AppOptions'].locale,
+    messages: I18nMessages,
   },
 
   mounted() {
@@ -157,12 +164,12 @@ export default {
     },
 
     toggleBurnedText() {
-      return this.burned ? 'Скрыть сожженные' : 'Показать сожженные'
+      return this.$i18n.t(this.burned ? 'BURNED_HIDE' : 'BURNED_SHOW')
     },
 
     toggleLabelsText() {
-      return this.labels ? 'Подписывать при наведении' : 'Показать подписи'
-    }
+      return this.$i18n.t(this.labels ? 'LABELS_HIDE' : 'LABELS_SHOW')
+    },
   },
 
   methods: {
@@ -180,12 +187,12 @@ export default {
       this.elements[level] = shuffle(this.elements[level])
     },
 
-    titleLabel(lvl) {
+    titleLabel(level) {
       if (this.level === 0 && !this.flat) {
-        return `Уровень ${lvl}`
+        return this.$i18n.t('LEVEL', { level })
       }
 
-      return 'Кандзи'
+      return this.$i18n.t('KANJI')
     },
 
     toggleBurned() {
