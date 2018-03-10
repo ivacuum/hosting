@@ -74,7 +74,7 @@ export default {
   },
 
   computed: {
-    links: function () {
+    links() {
       let originals = []
 
       this.files.forEach(file => originals.push(file.original))
@@ -82,7 +82,7 @@ export default {
       return originals.join('&#10')
     },
 
-    linksInTag: function () {
+    linksInTag() {
       let originals = []
 
       this.files.forEach(file => originals.push(`[img]${file.original}[/img]`))

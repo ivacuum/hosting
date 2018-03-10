@@ -14,8 +14,7 @@ class JapaneseWanikaniVocabulary extends Controller
         $user_id = auth()->id();
 
         if (request()->ajax()) {
-            $vocabulary = Model::with('burnable')
-                ->orderBy('level')
+            $vocabulary = Model::orderBy('level')
                 ->orderBy('meaning')
                 ->userBurnable($user_id)
                 ->when($kanji, function (Builder $query) use ($kanji) {
@@ -37,7 +36,9 @@ class JapaneseWanikaniVocabulary extends Controller
                         'character' => $item->character,
                     ];
                 })
-                ->groupBy('level');
+                ->when(!$kanji, function ($collection) {
+                    return $collection->groupBy('level');
+                });
 
             return compact('vocabulary');
         }
@@ -66,23 +67,7 @@ class JapaneseWanikaniVocabulary extends Controller
 
         \Breadcrumbs::push($vocabulary->character);
 
-        $characters = $vocabulary->splitKanjiCharacters();
-
-        $kanjis = Kanji::whereIn('character', $characters)
-            ->get(['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading'])
-            ->map(function ($item) use ($characters) {
-                /* @var Kanji $item */
-                $item->sort = 0;
-
-                foreach ($characters as $i => $character) {
-                    $item->sort = $character === $item->character ? $i * 10 : $item->sort;
-                }
-
-                return $item;
-            })
-            ->sortBy('sort');
-
-        return view('japanese.wanikani.vocabulary', compact('kanjis', 'vocabulary'));
+        return view('japanese.wanikani.vocabulary', compact('vocabulary'));
     }
 
     public function update(int $id)

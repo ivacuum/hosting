@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Kanji as Model;
+use App\Vocabulary;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\QueryException;
 
@@ -10,15 +11,43 @@ class JapaneseWanikaniKanji extends Controller
     {
         $level = request('level');
         $user_id = auth()->id();
+        $characters = [];
+        $radical_id = request('radical_id');
+        $vocabulary_id = request('vocabulary_id');
 
         if (request()->ajax()) {
             $kanji = Model::orderBy('level')
                 ->orderBy('meaning')
                 ->userBurnable($user_id)
+                ->when($radical_id, function (Builder $query) use ($radical_id) {
+                    return $query->whereHas('radicals', function (Builder $query) use ($radical_id) {
+                        $query->where('radical_id', $radical_id);
+                    });
+                })
                 ->when($level >= 1 && $level <= 60, function (Builder $query) use ($level) {
                     return $query->where('level', $level);
                 })
+                ->when($vocabulary_id, function (Builder $query) use (&$characters, $vocabulary_id) {
+                    $vocabulary = Vocabulary::findOrFail($vocabulary_id);
+                    $characters = $vocabulary->splitKanjiCharacters();
+
+                    return $query->whereIn('character', $characters);
+                })
                 ->get(['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading'])
+                ->when($vocabulary_id, function ($collection) use ($characters) {
+                    // Сортировка кандзи в порядке использования в словарном слове
+                    return $collection->map(function ($item) use ($characters) {
+                        /* @var Model $item */
+                        $item->sort = 0;
+
+                        foreach ($characters as $i => $character) {
+                            $item->sort = $character === $item->character ? $i * 10 : $item->sort;
+                        }
+
+                        return $item;
+                    })->sortBy('sort')->values();
+
+                })
                 ->map(function ($item) use ($user_id) {
                     /* @var Model $item */
                     return [
@@ -31,7 +60,9 @@ class JapaneseWanikaniKanji extends Controller
                         'character' => $item->character,
                     ];
                 })
-                ->groupBy('level');
+                ->when(!$radical_id && !$vocabulary_id, function ($collection) {
+                    return $collection->groupBy('level');
+                });
 
             return compact('kanji');
         }

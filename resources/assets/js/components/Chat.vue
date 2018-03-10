@@ -43,7 +43,7 @@ export default {
 
   /*
   watch: {
-    message: function () {
+    message() {
       this.setTyping()
     }
   },

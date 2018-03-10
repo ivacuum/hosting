@@ -41,11 +41,11 @@ export default {
   },
 
   computed: {
-    closeLabel: function () {
+    closeLabel() {
       return this.lang === 'ru' ? `Закрыть видео «${this.title}»` : `Close video "${this.title}"`
     },
 
-    openLabel: function () {
+    openLabel() {
       return this.lang === 'ru' ? `Открыть видео «${this.title}»` : `Open video "${this.title}"`
     }
   },

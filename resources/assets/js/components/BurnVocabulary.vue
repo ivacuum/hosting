@@ -5,7 +5,7 @@ export default {
   extends: BurnRadical,
 
   computed: {
-    toggleBurnText: function () {
+    toggleBurnText() {
       return this.burned ? 'Восстановить слово' : 'Сжечь слово';
     },
   }

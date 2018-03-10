@@ -17,26 +17,12 @@
   <div class="text-capitalize">{{ $radical->meaning }}</div>
 </h1>
 
-@if (sizeof($radical->kanjis))
-  @ru
-    <div class="mb-1">Иероглифы, в которых встречается данный ключ:</div>
-  @endru
-  <div class="d-flex flex-wrap">
-    <div class="d-flex flex-wrap">
-      @foreach ($radical->kanjis as $kanji)
-        <div class="font-weight-bold text-center text-white">
-          <div class="bg-kanji pt-1 pb-2 px-4 mb-1 mr-1 rounded">
-            <a class="d-block ja-big ja-character ja-shadow pb-2 text-white"
-               href="{{ path('JapaneseWanikaniKanji@show', $kanji->character) }}"
-            >{{ $kanji->character }}</a>
-            <div class="kanji-reading ja-shadow-light">{{ $kanji->importantReading() }}</div>
-            <div class="kanji-meaning ja-shadow-light text-capitalize">{{ $kanji->firstMeaning() }}</div>
-          </div>
-        </div>
-      @endforeach
-    </div>
-  </div>
-@endif
+<kanji
+  action="{{ path('JapaneseWanikaniKanji@index') }}"
+  :burned="true"
+  :flat="true"
+  :radical-id="{{ $radical->id }}"
+></kanji>
 
 <div class="mt-4">
   <a href="{{ $radical->externalLink() }}">
@@ -46,10 +32,11 @@
 </div>
 
 @auth
-<burn-radical action="{{ path('JapaneseWanikaniRadicals@destroy', $radical->id) }}" :burned="{{ (int) !is_null($radical->burnable) }}" inline-template>
-  <div class="mt-4">
-    <button class="btn btn-default" @click="toggleBurned">@{{ toggleBurnText }}</button>
-  </div>
-</burn-radical>
+<div class="mt-4">
+  <burn-radical
+    action="{{ path('JapaneseWanikaniRadicals@destroy', $radical->id) }}"
+    :burned="{{ (int) !is_null($radical->burnable) }}"
+  ></burn-radical>
+</div>
 @endauth
 @endsection

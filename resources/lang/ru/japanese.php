@@ -12,5 +12,4 @@ return [
     'by-levels' => 'По уровням',
     'vocabulary' => 'Словарные слова',
     'hiragana-katakana' => 'Хирагана и катакана',
-    'vocabulary-utilized-kanji' => 'В слове найдены следующие иероглифы:',
 ];

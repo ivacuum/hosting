@@ -162,7 +162,7 @@ export default {
   },
 
   computed: {
-    syllabaryLabel: function () {
+    syllabaryLabel() {
       return this.syllabaryIndex === 0 ? 'Переключиться на катакану' : 'Переключиться на хирагану'
     }
   },
@@ -173,7 +173,7 @@ export default {
       this.pickElements()
     },
 
-    checkInput: function (input) {
+    checkInput(input) {
       this.input = input
 
       if (this.answer && this.answer === input) {

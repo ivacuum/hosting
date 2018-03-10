@@ -12,5 +12,4 @@ return [
     'by-levels' => 'By Levels',
     'vocabulary' => 'Vocabulary',
     'hiragana-katakana' => 'Hiragana and Katakana',
-    'vocabulary-utilized-kanji' => 'Utilized kanji',
 ];

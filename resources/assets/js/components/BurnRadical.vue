@@ -1,3 +1,9 @@
+<template>
+  <div>
+    <button class="btn btn-default" @click="toggleBurned">{{ toggleBurnText }}</button>
+  </div>
+</template>
+
 <script>
 export default {
   props: {
@@ -13,13 +19,13 @@ export default {
   },
 
   computed: {
-    toggleBurnText: function () {
+    toggleBurnText() {
       return this.burned ? 'Восстановить ключ' : 'Сжечь ключ';
     },
   },
 
   methods: {
-    toggleBurned: function () {
+    toggleBurned() {
       if (this.burned) {
         axios.put(this.action)
           .then((response) => {

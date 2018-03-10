@@ -1,14 +1,24 @@
 <template>
 <div>
   <transition appear name="fade">
-    <div>
-      <div v-if="level === 0">
+    <div v-show="loaded">
+      <div v-if="showGroupActionButtons">
         <p>
-          <button class="btn btn-default" @click="toggleLabels">{{ toggleLabelsText }}</button>
-          <button class="btn btn-default" @click="shuffleAll">Перемешать все</button>
-          <button class="btn btn-default" @click="toggleBurned" v-if="!guest">{{ toggleBurnedText }}</button>
+          <button
+            class="btn btn-default"
+            @click="toggleLabels"
+          >{{ toggleLabelsText }}</button>
+          <button
+            class="btn btn-default"
+            @click="shuffleAll"
+          >Перемешать все</button>
+          <button
+            class="btn btn-default"
+            @click="toggleBurned"
+            v-if="!guest"
+          >{{ toggleBurnedText }}</button>
         </p>
-        <div class="d-flex flex-wrap align-items-center">
+        <div class="d-flex flex-wrap align-items-center" v-if="Object.keys(filteredElements).length > 1">
           <template v-for="(collection, lvl) in filteredElements">
             <a class="badge badge-secondary f16 ja-shadow-light mr-1 mb-1" :href="`#level-${lvl}`">
               {{ lvl }}
@@ -20,21 +30,33 @@
         <a :name="`level-${lvl}`"></a>
         <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-1">
           <h3>
-            <span v-if="level === 0">Уровень {{ lvl }}</span>
-            <span v-else>Ключи</span>
+            <span>{{ titleLabel(lvl) }}</span>
             <small class="text-muted">{{ collection.length }}</small>
           </h3>
           <div>
-            <button class="btn btn-default" @click="toggleLabels" v-if="level > 0">{{ toggleLabelsText }}</button>
-            <button class="btn btn-default" @click="shuffleLevel(lvl)">Перемешать</button>
-            <button class="btn btn-default" @click="toggleBurned" v-if="level > 0 && !guest">{{ toggleBurnedText }}</button>
+            <button
+              class="btn btn-default"
+              @click="toggleLabels"
+              v-if="showToggleLabelsButton"
+            >{{ toggleLabelsText }}</button>
+            <button
+              class="btn btn-default"
+              @click="shuffleLevel(lvl)"
+              v-if="showShuffleLevelButton(collection.length)"
+            >Перемешать</button>
+            <button
+              class="btn btn-default"
+              @click="toggleBurned"
+              v-if="showToggleBurnedButton"
+            >{{ toggleBurnedText }}</button>
           </div>
         </div>
         <div class="font-weight-bold radicals-grid text-center text-white" is="transition-group" name="grid">
-          <div class="bg-radical pb-2 rounded"
-               :class="{ 'labels-hidden': !labels, 'bg-burned': row.burned }"
-               :key="row.id"
-               v-for="row in collection"
+          <div
+            class="bg-radical pb-2 rounded"
+            :class="{ 'labels-hidden': !labels, 'bg-burned': row.burned }"
+            :key="row.id"
+            v-for="row in collection"
           >
             <a class="d-block pt-1 text-white" :href="row.slug">
               <div class="py-2" v-if="row.image">
@@ -57,17 +79,29 @@ let shuffle = require('lodash/shuffle')
 export default {
   props: {
     action: String,
+    burned: {
+      type: Boolean,
+      default: false,
+    },
+    flat: {
+      type: Boolean,
+      default: false,
+    },
+    kanjiId: {
+      type: Number,
+      default: 0,
+    },
     level: {
       type: Number,
       default: 0,
-    }
+    },
   },
 
   data() {
     return {
       guest: false,
-      burned: false,
       labels: false,
+      loaded: false,
       elements: [],
     }
   },
@@ -75,14 +109,23 @@ export default {
   mounted() {
     this.guest = !window['AppOptions'].loggedIn
 
-    axios.get(`${this.action}?level=${this.level}`)
+    axios.get(`${this.action}?kanji_id=${this.kanjiId}&level=${this.level}`)
       .then((response) => {
-        this.elements = response.data.radicals
+        if (this.flat) {
+          // Объединение уровней в один для страницы кандзи
+          if (response.data.radicals.length) {
+            this.elements = { 0: response.data.radicals }
+          }
+        } else {
+          this.elements = response.data.radicals
+        }
+
+        this.loaded = true
       })
   },
 
   computed: {
-    filteredElements: function () {
+    filteredElements() {
       if (this.burned) {
         return this.elements
       }
@@ -90,17 +133,37 @@ export default {
       let result = {}
 
       for (let level in this.elements) {
-        result[level] = this.elements[level].filter(el => !el.burned)
+        let ary = this.elements[level].filter(el => !el.burned)
+
+        if (ary.length) {
+          result[level] = ary
+        }
       }
 
       return result
     },
 
-    toggleBurnedText: function () {
-      return this.burned ? 'Скрыть сожженные' : 'Показать сожженные';
+    showGroupActionButtons() {
+      return this.level === 0 && !this.kanjiId
     },
 
-    toggleLabelsText: function () {
+    showToggleBurnedButton() {
+      if (this.guest || this.kanjiId) {
+        return false
+      }
+
+      return this.flat || this.level > 0
+    },
+
+    showToggleLabelsButton() {
+      return this.flat || this.level > 0
+    },
+
+    toggleBurnedText() {
+      return this.burned ? 'Скрыть сожженные' : 'Показать сожженные'
+    },
+
+    toggleLabelsText() {
       return this.labels ? 'Подписывать при наведении' : 'Показать подписи'
     }
   },
@@ -112,8 +175,20 @@ export default {
       }
     },
 
+    showShuffleLevelButton(length) {
+      return !this.flat && length > 1
+    },
+
     shuffleLevel(level) {
       this.elements[level] = shuffle(this.elements[level])
+    },
+
+    titleLabel(lvl) {
+      if (this.level === 0 && !this.flat) {
+        return `Уровень ${lvl}`
+      }
+
+      return 'Ключи'
     },
 
     toggleBurned() {

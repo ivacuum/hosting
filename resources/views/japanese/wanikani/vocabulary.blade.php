@@ -16,22 +16,12 @@
   <span class="f20">【{{ $vocabulary->kana }}】</span>
 </div>
 
-@if (sizeof($kanjis))
-  <div class="mt-4 mb-1">{{ trans('japanese.vocabulary-utilized-kanji') }}</div>
-  <div class="d-flex flex-wrap">
-    @foreach ($kanjis as $kanji)
-      <div class="font-weight-bold text-center text-white">
-        <div class="bg-kanji pt-1 pb-2 px-4 mb-1 mr-1 rounded">
-          <a class="d-block ja-big ja-character ja-shadow pb-2 text-white"
-             href="{{ path('JapaneseWanikaniKanji@show', $kanji->character) }}"
-          >{{ $kanji->character }}</a>
-          <div class="kanji-reading ja-shadow-light">{{ $kanji->importantReading() }}</div>
-          <div class="kanji-meaning ja-shadow-light text-capitalize">{{ $kanji->firstMeaning() }}</div>
-        </div>
-      </div>
-    @endforeach
-  </div>
-@endif
+<kanji
+  action="{{ path('JapaneseWanikaniKanji@index') }}"
+  :burned="true"
+  :flat="true"
+  :vocabulary-id="{{ $vocabulary->id }}"
+></kanji>
 
 @if ($vocabulary->sentences)
 <h3 class="mt-5">Примеры предложений</h3>
@@ -56,10 +46,11 @@
 </div>
 
 @auth
-<burn-vocabulary action="{{ path('JapaneseWanikaniVocabulary@destroy', $vocabulary->id) }}" :burned="{{ (int) !is_null($vocabulary->burnable) }}" inline-template>
-  <div class="mt-4">
-    <button class="btn btn-default" @click="toggleBurned">@{{ toggleBurnText }}</button>
-  </div>
-</burn-vocabulary>
+<div class="mt-4">
+  <burn-vocabulary
+    action="{{ path('JapaneseWanikaniVocabulary@destroy', $vocabulary->id) }}"
+    :burned="{{ (int) !is_null($vocabulary->burnable) }}"
+  ></burn-vocabulary>
+</div>
 @endauth
 @endsection

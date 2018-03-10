@@ -10,11 +10,17 @@ class JapaneseWanikaniRadicals extends Controller
     {
         $level = request('level');
         $user_id = auth()->id();
+        $kanji_id = request('kanji_id');
 
         if (request()->ajax()) {
             $radicals = Model::orderBy('level')
                 ->orderBy('meaning')
                 ->userBurnable($user_id)
+                ->when($kanji_id, function (Builder $query) use ($kanji_id) {
+                    return $query->whereHas('kanjis', function (Builder $query) use ($kanji_id) {
+                        $query->where('kanji_id', $kanji_id);
+                    });
+                })
                 ->when($level >= 1 && $level <= 60, function (Builder $query) use ($level) {
                     return $query->where('level', $level);
                 })
@@ -31,7 +37,9 @@ class JapaneseWanikaniRadicals extends Controller
                         'character' => $item->character,
                     ];
                 })
-                ->groupBy('level');
+                ->when(!$kanji_id, function ($collection) {
+                    return $collection->groupBy('level');
+                });
 
             return compact('radicals');
         }
