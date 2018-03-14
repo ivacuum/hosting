@@ -1,5 +1,5 @@
 @extends('japanese.base', [
-  'meta_title_replace' => ['kanji' => $kanji->character]
+  'meta_replace' => ['kanji' => $kanji->character]
 ])
 
 @section('content')

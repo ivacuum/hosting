@@ -4,13 +4,13 @@
 <head>
   <meta charset="utf-8">
 @endif
-  <title>{{ ViewHelper::metaTitle($meta_title ?? '', $view, $meta_title_replace ?? []) }}</title>
+  <title>{{ ViewHelper::metaTitle($meta_title ?? '', $view, $meta_replace ?? []) }}</title>
 @if (!Request::pjax())
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="x-pjax-version" content="2">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="keywords" content="{{ ViewHelper::metaKeywords($meta_keywords ?? '', $view) }}">
-  <meta name="description" content="{{ ViewHelper::metaDescription($meta_description ?? '', $view) }}">
+  <meta name="keywords" content="{{ ViewHelper::metaKeywords($meta_keywords ?? '', $view, $meta_replace ?? []) }}">
+  <meta name="description" content="{{ ViewHelper::metaDescription($meta_description ?? '', $view, $meta_replace ?? []) }}">
   <meta name="theme-color" content="#e7e7e7">
   <link rel="apple-touch-icon-precomposed" href="https://life.ivacuum.ru/apple-touch-icon-precomposed.png">
   <link rel="icon" href="https://life.ivacuum.ru/apple-touch-icon.png">

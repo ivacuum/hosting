@@ -1,5 +1,5 @@
 @extends('japanese.base', [
-  'meta_title_replace' => ['vocab' => $vocabulary->character]
+  'meta_replace' => ['vocab' => $vocabulary->character]
 ])
 
 @section('content')

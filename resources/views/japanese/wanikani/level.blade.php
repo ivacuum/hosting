@@ -1,5 +1,5 @@
 @extends('japanese.base', [
-  'meta_title_replace' => ['level' => $level],
+  'meta_replace' => ['level' => $level],
 ])
 
 @section('content')
