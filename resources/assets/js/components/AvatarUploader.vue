@@ -10,14 +10,15 @@
   </div>
   <div v-if="!uploading">
     <div class="custom-file">
-      <input class="custom-file-input"
-             accept="image/jpeg,image/png"
-             type="file"
-             name="file"
-             @change="upload($event.currentTarget.files[0])">
-      <label class="custom-file-label">Выберите файл...</label>
+      <input
+        class="custom-file-input"
+        accept="image/jpeg,image/png"
+        type="file"
+        name="file"
+        @change="upload($event.currentTarget.files[0])">
+      <label class="custom-file-label">{{ $t('CHOOSE_FILE') }}</label>
     </div>
-    <div class="form-help">Аватар сохраняется автоматически после выбора</div>
+    <div class="form-help">{{ $t('HELP_TEXT') }}</div>
   </div>
   <div v-else>
     Идет загрузка...
@@ -27,7 +28,7 @@
 
 <script>
 export default {
-  props: ['action', 'current_avatar'],
+  props: ['action', 'currentAvatar'],
 
   data() {
     return {
@@ -37,8 +38,21 @@ export default {
     }
   },
 
+  i18n: {
+    messages: {
+      en: {
+        HELP_TEXT: 'Avatar would be saved automatically after selection is made',
+        CHOOSE_FILE: 'Choose file...',
+      },
+      ru: {
+        HELP_TEXT: 'Аватар сохраняется автоматически после выбора',
+        CHOOSE_FILE: 'Выберите файл...',
+      },
+    },
+  },
+
   mounted() {
-    this.avatar = this.current_avatar
+    this.avatar = this.currentAvatar
 
     if (window.File == null || window.FileList == null || window.FormData == null) {
       alert('Проблемка. Файлы загрузить не выйдет')

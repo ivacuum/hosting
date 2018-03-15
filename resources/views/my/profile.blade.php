@@ -31,7 +31,10 @@
     {{ csrf_field() }}
   </form>
 
-  <h3 class="mt-5">Аватар</h3>
-  <avatar-uploader action="{{ path('MyAvatar@update') }}" current_avatar="{{ Auth::user()->avatarUrl() }}"></avatar-uploader>
+  <h3 class="mt-5">{{ trans('my.avatar') }}</h3>
+  <avatar-uploader
+    action="{{ path('MyAvatar@update') }}"
+    current-avatar="{{ Auth::user()->avatarUrl() }}"
+  ></avatar-uploader>
 </div>
 @endsection

@@ -6,6 +6,7 @@ return [
     'index' => 'Account',
     'theme' => 'Theme',
     'trips' => 'Trips',
+    'avatar' => 'Avatar',
     'profile' => 'Profile',
     'username' => 'Username',
     'password' => 'Password',
