@@ -3,7 +3,7 @@
   <transition appear name="fade" mode="out-in">
     <div :key="stage">
       <div v-show="stage === 'pick'">
-        <p>Выберите столбцы для практики.</p>
+        <p>{{ $t('PICKER_TEXT') }}</p>
         <div class="align-items-center text-center border-left" style="display: grid; grid-template-columns: repeat(16, max-content);">
           <template v-for="(cells, i) in elements">
             <template v-for="cell in cells">
@@ -16,33 +16,45 @@
           <template v-for="i in elements[0].length">
             <div class="border-right border-bottom">
               <label class="cursor-pointer d-block mb-0 py-2">
-                <input class="cursor-pointer" type="checkbox" :value="i - 1" v-model="checkedColumns" @change="pickElements">
+                <input
+                  class="cursor-pointer"
+                  type="checkbox"
+                  :value="i - 1"
+                  v-model="checkedColumns"
+                  @change="pickElements">
               </label>
             </div>
           </template>
         </div>
         <div class="mt-2">
-          <button class="btn btn-primary" :disabled="this.picked.length < 2" @click="practice">Практиковаться</button>
-          <button class="btn btn-default" @click="checkAll">Выбрать все</button>
-          <button class="btn btn-default" @click="uncheckAll">Снять выделение</button>
+          <button class="btn btn-primary" :disabled="this.picked.length < 2" @click="practice">{{ $t('PRACTICE') }}</button>
+          <button class="btn btn-default" @click="checkAll">{{ $t('CHECK_ALL') }}</button>
+          <button class="btn btn-default" @click="uncheckAll">{{ $t('UNCHECK_ALL') }}</button>
           <transition name="fade-fast" mode="out-in">
             <button class="btn btn-default" @click="switchSyllabary" :key="syllabaryLabel">{{ syllabaryLabel }}</button>
           </transition>
         </div>
       </div>
       <div v-show="stage === 'practice'">
-        <p>Ответ засчитывается автоматически без нажатия клавиши ввода. Пробел подсказывает ответ.</p>
+        <p>{{ $t('PRACTICE_TEXT') }}</p>
         <div class="mx-auto mw-400">
           <div class="text-center py-2 py-md-5">
             <div class="f48 font-weight-bold" @click="revealAnswer">{{ question }}</div>
             <div class="text-muted" :class="{ invisible: !answerVisible }">{{ answer }}</div>
           </div>
           <div>
-            <input class="form-control text-center" autocapitalize="none" placeholder="kana" :autofocus="focus" :value="input" @input="checkInput($event.target.value)" @keydown.space.prevent="revealAnswer">
+            <input
+              class="form-control text-center"
+              autocapitalize="none"
+              placeholder="kana"
+              :autofocus="focus"
+              :value="input"
+              @input="checkInput($event.target.value)"
+              @keydown.space.prevent="revealAnswer">
           </div>
           <div class="d-flex align-items-center justify-content-between mt-2">
-            <div><button class="btn btn-default" @click="pick">Назад к выбору</button></div>
-            <div class="text-muted" v-if="answered > 0">Отвечено: {{ answered }}</div>
+            <div><button class="btn btn-default" @click="pick">{{ $t('BACK_TO_PICKER') }}</button></div>
+            <div class="text-muted" v-if="answered > 0">{{ $t('ANSWERED', { answered }) }}</div>
           </div>
         </div>
       </div>
@@ -163,8 +175,35 @@ export default {
 
   computed: {
     syllabaryLabel() {
-      return this.syllabaryIndex === 0 ? 'Переключиться на катакану' : 'Переключиться на хирагану'
+      return this.$i18n.t(this.syllabaryIndex === 0 ? 'SWITCH_TO_KATAKANA' : 'SWITCH_TO_HIRAGANA')
     }
+  },
+
+  i18n: {
+    messages: {
+      en: {
+        ANSWERED: 'Answered: {answered}',
+        PRACTICE: 'Practice',
+        CHECK_ALL: 'Check all',
+        PICKER_TEXT: 'Select some columns to practice.',
+        UNCHECK_ALL: 'Uncheck all',
+        PRACTICE_TEXT: 'The answer is counted automatically, no need to press enter. Space button reveals the answer.',
+        BACK_TO_PICKER: 'Back to picker',
+        SWITCH_TO_HIRAGANA: 'Switch to hiragana',
+        SWITCH_TO_KATAKANA: 'Switch to katakana',
+      },
+      ru: {
+        ANSWERED: 'Отвечено: {answered}',
+        PRACTICE: 'Практиковаться',
+        CHECK_ALL: 'Выбрать все',
+        PICKER_TEXT: 'Выберите столбы для практики.',
+        UNCHECK_ALL: 'Снять выделение',
+        PRACTICE_TEXT: 'Ответ засчитывается автоматически без нажатия клавиши ввода. Пробел подсказывает ответ.',
+        BACK_TO_PICKER: 'Назад к выбору',
+        SWITCH_TO_HIRAGANA: 'Переключиться на хирагану',
+        SWITCH_TO_KATAKANA: 'Переключиться на катакану',
+      },
+    },
   },
 
   methods: {
