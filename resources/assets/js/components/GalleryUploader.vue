@@ -7,16 +7,17 @@
   </div>
   <div v-if="!uploading">
     <div class="custom-file mw-400">
-      <input class="custom-file-input"
-             accept="image/gif,image/jpeg,image/png"
-             type="file"
-             name="files[]"
-             multiple
-             :max="max"
-             @change="uploadFiles($event.currentTarget.files)">
-      <label class="custom-file-label">Выберите файлы...</label>
+      <input
+        class="custom-file-input"
+        accept="image/gif,image/jpeg,image/png"
+        type="file"
+        name="files[]"
+        multiple
+        :max="max"
+        @change="uploadFiles($event.currentTarget.files)">
+      <label class="custom-file-label">{{ $t('CHOOSE_FILES') }}</label>
     </div>
-    <div class="form-help">Файлы можно выбрать в появившемся окне или перетащить прямо на элемент выбора</div>
+    <div class="form-help">{{ $t('HELP_TEXT') }}</div>
   </div>
   <div v-else>
     Идет загрузка... {{ uploaded }} из {{ total }}
@@ -64,6 +65,19 @@ export default {
       uploaded: 0,
       uploading: false
     }
+  },
+
+  i18n: {
+    messages: {
+      en: {
+        HELP_TEXT: 'You can select files in pop-up window or drag&drop them on form element',
+        CHOOSE_FILES: 'Choose files...',
+      },
+      ru: {
+        HELP_TEXT: 'Файлы можно выбрать в появившемся окне или перетащить прямо на элемент выбора',
+        CHOOSE_FILES: 'Выберите файлы...',
+      },
+    },
   },
 
   mounted() {
