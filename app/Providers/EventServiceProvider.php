@@ -1,34 +1,27 @@
 <?php namespace App\Providers;
 
-use App\Listeners\DeletePhotoFiles;
-use App\Listeners\EmailWhoisChanges;
-use App\Listeners\ForgetTripsCache;
-use App\Listeners\LogUserLogin;
-use App\Listeners\ToggleTripPhotosStatus;
-use App\Listeners\TripPhotosSlugPrefixUpdate;
-use App\Listeners\UserEmptySalt;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
 {
     protected $listen = [
-        'eloquent.saved: App\City' => [ForgetTripsCache::class],
-        'eloquent.deleted: App\Photo' => [DeletePhotoFiles::class],
+        'eloquent.saved: App\City' => ['App\Listeners\ForgetTripsCache'],
+        'eloquent.deleted: App\Photo' => ['App\Listeners\DeletePhotoFiles'],
         'eloquent.saved: App\Trip' => [
-            ToggleTripPhotosStatus::class,
-            ForgetTripsCache::class
+            'App\Listeners\ToggleTripPhotosStatus',
+            'App\Listeners\ForgetTripsCache',
         ],
-        'eloquent.updated: App\Trip' => [TripPhotosSlugPrefixUpdate::class],
+        'eloquent.updated: App\Trip' => ['App\Listeners\TripPhotosSlugPrefixUpdate'],
 
-        'App\Events\DomainWhoisUpdated' => [EmailWhoisChanges::class],
+        'App\Events\DomainWhoisUpdated' => ['App\Listeners\EmailWhoisChanges'],
 
         'Illuminate\Auth\Events\Login' => [
-            UserEmptySalt::class,
-            LogUserLogin::class
+            'App\Listeners\UserEmptySalt',
+            'App\Listeners\LogUserLogin',
         ],
 
         'Ivacuum\Generic\Events\LimitExceeded' => [
-            \Ivacuum\Generic\Listeners\TelegramLimitExceeded::class,
+            'Ivacuum\Generic\Listeners\TelegramLimitExceeded',
         ],
     ];
 }
