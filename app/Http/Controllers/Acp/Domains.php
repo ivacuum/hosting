@@ -174,7 +174,7 @@ class Domains extends Controller
     {
         $model = $this->getModel($domain);
 
-        return nl2br($model->dkimSecretKey()->dkim->secretkey);
+        return $model->dkimSecretKey()->dkim->secretkey;
     }
 
     public function editNsRecord($domain)
@@ -261,7 +261,7 @@ class Domains extends Controller
 
         $model->updateWhois();
 
-        $whois = nl2br(trim($model->getWhoisData()));
+        $whois = trim($model->getWhoisData());
 
         return view($this->view, compact('model', 'whois'));
     }

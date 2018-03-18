@@ -2,7 +2,7 @@
 
 @section('content')
 @if ($model->text)
-  <div>{!! nl2br($model->text) !!}</div>
+  <div class="pre-line">{{ $model->text }}</div>
 @endif
 
 @parent

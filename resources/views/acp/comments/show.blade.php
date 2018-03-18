@@ -1,8 +1,6 @@
 @extends('acp.show')
 
 @section('content')
-<div>
-  {!! nl2br($model->html) !!}
-</div>
+<div class="pre-line">{!! $model->html !!}</div>
 @parent
 @endsection

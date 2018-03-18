@@ -54,11 +54,11 @@
   <div class="card card-mobile-wide shortcuts-item mb-3">
     <div class="card-body text-break-work">
       @if ($post['text'])
-        <div class="life-text mb-0">{!! nl2br(e($post['text'])) !!}</div>
+        <div class="life-text mb-0 pre-line">{{ $post['text'] }}</div>
       @endif
       @if (!empty($post['copy_history']))
         <div class="life-text {{ $post['text'] ? 'mt-3' : '' }} mb-0"><strong>Репост</strong></div>
-        <div class="life-text mb-0">{!! nl2br(e($post['copy_history'][0]->text)) !!}</div>
+        <div class="life-text mb-0 pre-line">{{ $post['copy_history'][0]->text }}</div>
       @endif
       @if ($post['attachments'])
         <div class="mt-2">

@@ -39,7 +39,7 @@
         @endif
       </td>
       <td>
-        <div>{{ $model->html }}</div>
+        <div class="pre-line">{{ $model->html }}</div>
         <div class="text-muted small">{{ $model->rel_type }} #{{ $model->rel_id }}</div>
       </td>
       <td>

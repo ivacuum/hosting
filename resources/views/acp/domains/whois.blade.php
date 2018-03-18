@@ -1,5 +1,5 @@
 @extends("$tpl.base")
 
 @section('content')
-<samp>{!! $whois !!}</samp>
+<samp class="pre-line">{{ $whois }}</samp>
 @endsection

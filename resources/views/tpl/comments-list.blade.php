@@ -32,7 +32,7 @@
           <em>deleted user</em>
         @endif
       </div>
-      <div class="comment-body">{!! nl2br($comment->html) !!}</div>
+      <div class="comment-body pre-line">{!! $comment->html !!}</div>
       <div class="small text-muted">{{ $comment->fullDate() }}</div>
     </div>
   </div>
