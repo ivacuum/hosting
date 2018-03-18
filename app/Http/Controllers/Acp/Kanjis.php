@@ -44,10 +44,6 @@ class Kanjis extends Controller
     {
         parent::updateModel($model);
 
-        if (request()->has('radicals')) {
-            $model->radicals()->sync(request('radicals'));
-        } else {
-            $model->radicals()->detach();
-        }
+        $model->radicals()->sync(request('radicals', []));
     }
 }

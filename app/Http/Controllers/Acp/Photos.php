@@ -81,10 +81,6 @@ class Photos extends Controller
 
     protected function updateModel($model)
     {
-        if (request()->has('tags')) {
-            $model->tags()->sync(request('tags'));
-        } else {
-            $model->tags()->detach();
-        }
+        $model->tags()->sync(request('tags', []));
     }
 }

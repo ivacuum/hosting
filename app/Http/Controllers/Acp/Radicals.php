@@ -90,10 +90,6 @@ class Radicals extends Controller
     {
         parent::updateModel($model);
 
-        if (request()->has('kanjis')) {
-            $model->kanjis()->sync(request('kanjis'));
-        } else {
-            $model->kanjis()->detach();
-        }
+        $model->kanjis()->sync(request('kanjis', []));
     }
 }
