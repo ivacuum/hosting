@@ -6,6 +6,7 @@ class EventServiceProvider extends ServiceProvider
 {
     protected $listen = [
         'eloquent.saved: App\City' => ['App\Listeners\ForgetTripsCache'],
+        'eloquent.deleted: App\City' => ['App\Listeners\ForgetTripsCache'],
         'eloquent.deleted: App\Photo' => ['App\Listeners\DeletePhotoFiles'],
         'eloquent.saved: App\Trip' => [
             'App\Listeners\ToggleTripPhotosStatus',
