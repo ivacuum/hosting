@@ -12,7 +12,7 @@ return [
     'rus_setup' => 'Инструкция по русификации',
     'screenshots' => 'Скриншоты',
     'about_software' => 'О программе',
-    'developer_site' => 'Сайт разработчика',
+    'developer_site' => 'Официальный сайт',
     'strongdc_install' => 'Инструкция по установке и настройке StrongDC++',
     'earlier_versions' => 'Ранние версии',
 ];

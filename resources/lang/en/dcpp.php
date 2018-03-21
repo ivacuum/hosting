@@ -10,7 +10,7 @@ return [
     'download' => 'Download',
     'screenshots' => 'Screenshots',
     'about_software' => 'About',
-    'developer_site' => 'Developer\'s site',
+    'developer_site' => 'Official site',
     'earlier_versions' => 'Earlier versions',
 
     'dcpp' => 'DC++',
