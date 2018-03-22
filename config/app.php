@@ -2,7 +2,7 @@
 
 return [
 
-    'name'            => 'ivacuum.ru',
+    'name'            => env('APP_NAME', 'vacuum.name'),
     'env'             => env('APP_ENV', 'production'),
     'debug'           => env('APP_DEBUG', false),
     'url'             => env('APP_URL', 'http://localhost'),
@@ -11,10 +11,6 @@ return [
     'fallback_locale' => 'en',
     'key'             => env('APP_KEY'),
     'cipher'          => 'AES-256-CBC',
-
-    // single, daily, syslog, errorlog
-    'log' => env('APP_LOG', 'errorlog'),
-    'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
     'providers' => [
 

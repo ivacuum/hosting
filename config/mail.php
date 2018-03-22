@@ -2,13 +2,13 @@
 
 return [
 
-    // smtp, mail, sendmail, mailgun, mandrill, log
+    // smtp, sendmail, mailgun, mandrill, ses, sparkpost, log, array
     'driver'     => env('MAIL_DRIVER', 'smtp'),
     'host'       => env('MAIL_HOST', 'localhost'),
     'port'       => env('MAIL_PORT', 25),
     'from'       => [
-        'address' => env('MAIL_USERNAME', null),
-        'name'    => 'vacuum.kaluga',
+        'address' => env('MAIL_FROM_ADDRESS', null),
+        'name'    => env('MAIL_FROM_NAME', 'vacuum.kaluga'),
     ],
     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
     'username'   => env('MAIL_USERNAME'),

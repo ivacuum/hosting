@@ -1,42 +1,25 @@
 <?php namespace App\Http;
 
-use App\Http\Middleware\Admin;
-use App\Http\Middleware\CookieDomain;
-use App\Http\Middleware\EncryptCookies;
-use App\Http\Middleware\RedirectIfAuthenticated;
-use App\Http\Middleware\TrimStrings;
-use App\Http\Middleware\VerifyCsrfToken;
-use Illuminate\Auth\Middleware\Authorize;
-use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
-use Illuminate\Routing\Middleware\SubstituteBindings;
-use Illuminate\Routing\Middleware\ThrottleRequests;
-use Illuminate\Session\Middleware\StartSession;
-use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Ivacuum\Generic\Middleware\Auth;
-use Ivacuum\Generic\Middleware\Breadcrumbs;
-use Ivacuum\Generic\Middleware\NoCacheHeaders;
-use Ivacuum\Generic\Middleware\SpammerTrap;
 
 class Kernel extends HttpKernel
 {
     protected $middleware = [
-        ValidatePostSize::class,
-        TrimStrings::class,
+        \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+        Middleware\TrimStrings::class,
     ];
 
     protected $middlewareGroups = [
         'web' => [
-            CookieDomain::class,
-            EncryptCookies::class,
-            AddQueuedCookiesToResponse::class,
-            StartSession::class,
-            ShareErrorsFromSession::class,
-            VerifyCsrfToken::class,
-            SubstituteBindings::class,
-            SpammerTrap::class,
-            NoCacheHeaders::class,
+            Middleware\CookieDomain::class,
+            Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            Middleware\VerifyCsrfToken::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \Ivacuum\Generic\Middleware\SpammerTrap::class,
+            \Ivacuum\Generic\Middleware\NoCacheHeaders::class,
         ],
 
         'api' => [
@@ -46,12 +29,13 @@ class Kernel extends HttpKernel
     ];
 
     protected $routeMiddleware = [
-        'can' => Authorize::class,
-        'auth' => Auth::class,
-        'admin' => Admin::class,
-        'guest' => RedirectIfAuthenticated::class,
-        'bindings' => SubstituteBindings::class,
-        'throttle' => ThrottleRequests::class,
-        'breadcrumbs' => Breadcrumbs::class,
+        'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        'auth' => \Ivacuum\Generic\Middleware\Auth::class,
+        'admin' => Middleware\Admin::class,
+        'guest' => Middleware\RedirectIfAuthenticated::class,
+        'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
+        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'breadcrumbs' => \Ivacuum\Generic\Middleware\Breadcrumbs::class,
     ];
 }

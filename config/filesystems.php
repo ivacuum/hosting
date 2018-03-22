@@ -2,11 +2,11 @@
 
 return [
 
-    // local, ftp, s3, rackspace
-    'default' => 'local',
+    // local, ftp, sftp, s3, rackspace
+    'default' => env('FILESYSTEM_DRIVER', 'local'),
 
     // for both local filesystem and remote cloud
-    'cloud' => 's3',
+    'cloud' => env('FILESYSTEM_CLOUD', 's3'),
 
     'disks' => [
 
@@ -18,6 +18,7 @@ return [
         'public' => [
             'driver'     => 'local',
             'root'       => storage_path('app/public'),
+            'url'        => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
@@ -62,20 +63,11 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key'    => env('S3_KEY'),
-            'secret' => env('S3_SECRET'),
-            'region' => env('S3_REGION'),
-            'bucket' => env('S3_BUCKET'),
-        ],
-
-        'rackspace' => [
-            'driver'    => 'rackspace',
-            'username'  => 'your-username',
-            'key'       => 'your-key',
-            'container' => 'your-container',
-            'endpoint'  => 'https://identity.api.rackspacecloud.com/v2.0/',
-            'region'    => 'IAD',
-            'url_type'  => 'publicURL',
+            'key'    => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'region' => env('AWS_DEFAULT_REGION'),
+            'bucket' => env('AWS_BUCKET'),
+            'aws'    => env('AWS_URL'),
         ],
 
     ],

@@ -2,6 +2,7 @@
 
 use App\Traits\HasLocalizedTitle;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\HtmlString;
 
 /**
  * Концерт
@@ -78,7 +79,7 @@ class Gig extends Model
 
     public function fullDate()
     {
-        return $this->date->formatLocalized(trans('life.date.day_month_year'));
+        return new HtmlString($this->date->formatLocalized(trans('life.date.day_month_year')));
     }
 
     public function metaTitle()
@@ -88,7 +89,7 @@ class Gig extends Model
 
     public function shortDate()
     {
-        return $this->date->formatLocalized(trans('life.date.day_month'));
+        return new HtmlString($this->date->formatLocalized(trans('life.date.day_month')));
     }
 
     public function template()

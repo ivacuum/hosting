@@ -83,7 +83,7 @@ class User extends Authenticatable
     // Attributes
     public function setPasswordAttribute($value)
     {
-        $this->attributes['password'] = bcrypt($value);
+        $this->attributes['password'] = \Hash::make($value);
     }
 
     // Scopes
