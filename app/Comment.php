@@ -54,17 +54,17 @@ class Comment extends Model
     }
 
     // Methods
-    public function anchor()
+    public function anchor(): string
     {
         return "#comment-{$this->id}";
     }
 
-    public function breadcrumb()
+    public function breadcrumb(): string
     {
         return "#{$this->id}";
     }
 
-    public function fullDate()
+    public function fullDate(): HtmlString
     {
         $format = $this->created_at->year == date('Y') ? '%e&nbsp;%B, %H:%M' : '%e&nbsp;%B&nbsp;%Y, %H:%M';
 
@@ -79,7 +79,7 @@ class Comment extends Model
 
     public function usersForNotification($model)
     {
-        return self::with('user')
+        return static::with('user')
             ->distinct()
             ->where('rel_id', $model->id)
             ->where('rel_type', class_basename($model))

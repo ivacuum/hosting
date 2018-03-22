@@ -48,7 +48,7 @@ class News extends Model
     // Scopes
     public function scopePublished(Builder $query)
     {
-        return $query->where('status', self::STATUS_PUBLISHED);
+        return $query->where('status', static::STATUS_PUBLISHED);
     }
 
     // Attributes

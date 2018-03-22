@@ -33,7 +33,7 @@ class Country extends Model
     public function cities()
     {
         return $this->hasMany(City::class)
-            ->orderBy(self::titleField());
+            ->orderBy(static::titleField());
     }
 
     public function trips()
@@ -165,9 +165,9 @@ class Country extends Model
 
     public static function forInputSelect()
     {
-        $title_field = self::titleField();
+        $title_field = static::titleField();
 
-        return self::orderBy($title_field)->get(['id', $title_field])->pluck($title_field, 'id');
+        return static::orderBy($title_field)->get(['id', $title_field])->pluck($title_field, 'id');
     }
 
     public function initial(): string

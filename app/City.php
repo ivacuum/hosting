@@ -54,9 +54,9 @@ class City extends Model
 
     public static function forInputSelect(): Collection
     {
-        $title_field = self::titleField();
+        $title_field = static::titleField();
 
-        return self::orderBy($title_field)->get(['id', $title_field])->pluck($title_field, 'id');
+        return static::orderBy($title_field)->get(['id', $title_field])->pluck($title_field, 'id');
     }
 
     public function initial(): string

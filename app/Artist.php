@@ -24,6 +24,6 @@ class Artist extends Model
 
     public static function forInputSelect()
     {
-        return self::orderBy('title')->get(['id', 'title'])->pluck('title', 'id');
+        return static::orderBy('title')->get(['id', 'title'])->pluck('title', 'id');
     }
 }

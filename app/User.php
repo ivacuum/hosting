@@ -89,7 +89,7 @@ class User extends Authenticatable
     // Scopes
     public function scopeActive(Builder $query)
     {
-        return $query->where('status', self::STATUS_ACTIVE);
+        return $query->where('status', static::STATUS_ACTIVE);
     }
 
     public function scopeForAnnouncement(Builder $query)
@@ -100,8 +100,8 @@ class User extends Authenticatable
     // Methods
     public function activate(): bool
     {
-        if ($this->status === self::STATUS_INACTIVE) {
-            $this->status = self::STATUS_ACTIVE;
+        if ($this->status === static::STATUS_INACTIVE) {
+            $this->status = static::STATUS_ACTIVE;
             $this->activation_token = '';
             $this->save();
 

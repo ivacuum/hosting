@@ -88,7 +88,7 @@ class Trip extends Model
     {
         return $query->where('user_id', $this->user_id)
             ->where('date_start', '>=', $this->date_start)
-            ->where('status', self::STATUS_PUBLISHED)
+            ->where('status', static::STATUS_PUBLISHED)
             ->where('id', '<>', $this->id)
             ->orderBy('date_start')
             ->take(2);
@@ -104,7 +104,7 @@ class Trip extends Model
 
         return $query->where('user_id', $this->user_id)
             ->where('date_start', '<=', $this->date_start)
-            ->where('status', self::STATUS_PUBLISHED)
+            ->where('status', static::STATUS_PUBLISHED)
             ->where('id', '<>', $this->id)
             ->orderBy('date_start', 'desc')
             ->take($take);
@@ -112,12 +112,12 @@ class Trip extends Model
 
     public function scopePublished(Builder $query)
     {
-        return $query->where('status', self::STATUS_PUBLISHED);
+        return $query->where('status', static::STATUS_PUBLISHED);
     }
 
     public function scopeVisible(Builder $query)
     {
-        return $query->where('status', '!=', self::STATUS_HIDDEN);
+        return $query->where('status', '!=', static::STATUS_HIDDEN);
     }
 
     // Attributes
@@ -168,7 +168,7 @@ class Trip extends Model
     {
         return $this->where('user_id', $this->user_id)
             ->where('city_id', $this->city_id)
-            ->where('status', '<>', self::STATUS_HIDDEN)
+            ->where('status', '<>', static::STATUS_HIDDEN)
             ->orderBy('date_start')
             ->get()
             ->groupBy('year');
@@ -183,7 +183,7 @@ class Trip extends Model
 
     public static function forInputSelect()
     {
-        return self::orderBy('date_start', 'desc')->get(['id', 'slug'])->pluck('slug', 'id');
+        return static::orderBy('date_start', 'desc')->get(['id', 'slug'])->pluck('slug', 'id');
     }
 
     public function imgAltText()
@@ -312,13 +312,13 @@ class Trip extends Model
     {
         $trips_by_cities = [];
 
-        self::when($user_id > 0, function (Builder $query) use ($user_id) {
+        static::when($user_id > 0, function (Builder $query) use ($user_id) {
                 return $query->where('user_id', $user_id);
             })
             ->visible()
             ->get(['id', 'city_id', 'status'])
             ->each(function ($trip) use (&$trips_by_cities) {
-                if ($trip->status === self::STATUS_PUBLISHED) {
+                if ($trip->status === static::STATUS_PUBLISHED) {
                     @$trips_by_cities[$trip->city_id]['published'] += 1;
                 }
 
@@ -332,7 +332,7 @@ class Trip extends Model
     {
         return \Cache::remember(CacheKey::TRIPS_PUBLISHED_WITH_COVER, 1440, function () {
             // Не нужно ограничение по пользователю, так как meta_image есть только у user_id=1
-            return self::with('city:id,country_id', 'city.country:id,slug,emoji')
+            return static::with('city:id,country_id', 'city.country:id,slug,emoji')
                 ->published()
                 ->where('meta_image', '<>', '')
                 ->orderBy('date_start', 'desc')
@@ -345,7 +345,7 @@ class Trip extends Model
     public static function idsByCity(?int $id = null)
     {
         $ids = \Cache::rememberForever(CacheKey::TRIPS_PUBLISHED_BY_CITY, function () {
-            $trips = self::published()->get(['id', 'city_id']);
+            $trips = static::published()->get(['id', 'city_id']);
 
             $result = [];
 
@@ -366,7 +366,7 @@ class Trip extends Model
     public static function idsByCountry(?int $id = null)
     {
         $ids = \Cache::rememberForever(CacheKey::TRIPS_PUBLISHED_BY_COUNTRY, function () {
-            $trips = self::published()
+            $trips = static::published()
                 ->with('city:id,country_id')
                 ->get(['id', 'city_id']);
 

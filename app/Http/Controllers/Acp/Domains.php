@@ -18,7 +18,7 @@ class Domains extends Controller
         $yandex_user_id = request('yandex_user_id');
 
         if (!in_array($sort, ['domain', 'registered_at', 'paid_till'])) {
-            $sort = self::DEFAULT_ORDER_BY;
+            $sort = static::DEFAULT_ORDER_BY;
         }
 
         switch ($filter) {

@@ -83,7 +83,7 @@ class Torrent extends Model
     // Scopes
     public function scopePublished(Builder $query)
     {
-        return $query->where('status', self::STATUS_PUBLISHED);
+        return $query->where('status', static::STATUS_PUBLISHED);
     }
 
     // Methods
@@ -128,7 +128,7 @@ class Torrent extends Model
 
     public function shouldBeSearchable()
     {
-        return $this->status === self::STATUS_PUBLISHED;
+        return $this->status === static::STATUS_PUBLISHED;
     }
 
     public function toSearchableArray()
@@ -150,8 +150,8 @@ class Torrent extends Model
     public static function statsByCategories()
     {
         return \Cache::remember(CacheKey::TORRENTS_STATS_BY_CATEGORIES, 15, function () {
-            return self::selectRaw('category_id, COUNT(*) as total')
-                ->where('status', self::STATUS_PUBLISHED)
+            return static::selectRaw('category_id, COUNT(*) as total')
+                ->where('status', static::STATUS_PUBLISHED)
                 ->groupBy('category_id')
                 ->get()
                 ->pluck('total', 'category_id');

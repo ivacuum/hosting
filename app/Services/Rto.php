@@ -17,7 +17,7 @@ class Rto
     {
         $this->client = new Client([
             'timeout' => 5,
-            'base_uri' => self::API_ENDPOINT,
+            'base_uri' => static::API_ENDPOINT,
         ]);
     }
 
@@ -99,7 +99,7 @@ class Rto
 
     public function parseTopicBody($topic_id)
     {
-        $response = $this->client->get(self::SITE_ENDPOINT . "viewtopic.php?t={$topic_id}");
+        $response = $this->client->get(static::SITE_ENDPOINT . "viewtopic.php?t={$topic_id}");
 
         $body = (string) $response->getBody();
         $magnet = $this->parseMagnetLink($body);

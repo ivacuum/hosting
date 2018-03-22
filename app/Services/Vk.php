@@ -12,7 +12,7 @@ class Vk
 
     public function __construct()
     {
-        $this->client = new Client(['base_uri' => self::API_ENDPOINT]);
+        $this->client = new Client(['base_uri' => static::API_ENDPOINT]);
     }
 
     public function accessToken($access_token)

@@ -28,9 +28,9 @@ class Avatar
     public function resize(UploadedFile $file)
     {
         return (new ImageConverter)
-            ->crop(self::WIDTH, self::HEIGHT)
-            ->filter(self::FILTER)
-            ->quality(self::QUALITY)
+            ->crop(static::WIDTH, static::HEIGHT)
+            ->filter(static::FILTER)
+            ->quality(static::QUALITY)
             ->convert($file->getRealPath());
     }
 

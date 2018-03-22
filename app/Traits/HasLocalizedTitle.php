@@ -4,7 +4,7 @@ trait HasLocalizedTitle
 {
     public function getTitleAttribute(): string
     {
-        return $this->{self::titleField()};
+        return $this->{static::titleField()};
     }
 
     public static function titleField(): string

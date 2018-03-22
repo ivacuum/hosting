@@ -64,12 +64,12 @@ class Domain extends Model
     // Relations
     public function alias()
     {
-        return $this->belongsTo(self::class);
+        return $this->belongsTo(static::class);
     }
 
     public function aliases()
     {
-        return $this->hasMany(self::class, 'alias_id');
+        return $this->hasMany(static::class, 'alias_id');
     }
 
     public function client()
@@ -460,8 +460,8 @@ class Domain extends Model
         $response = $client->get('domain/update_nss', [
             'query' => [
                 'dname' => $this->domain,
-                'ns0'   => self::NS0,
-                'ns1'   => self::NS1,
+                'ns0'   => static::NS0,
+                'ns1'   => static::NS1,
             ],
         ]);
 
@@ -524,7 +524,7 @@ class Domain extends Model
     protected function getRegRuApiClient()
     {
         return new HttpClient([
-            'base_uri' => self::REGRU_API_URL,
+            'base_uri' => static::REGRU_API_URL,
             'query' => [
                 'username' => env('REGRU_USER'),
                 'password' => env('REGRU_PASS'),
