@@ -1,5 +1,5 @@
 @extends('docs.base', [
-  'meta_title' => 'Поездки &middot; Документация',
+  'meta_title' => 'Поездки · Документация',
 
   'breadcrumbs' => [
     ['title' => 'Документация', 'url' => 'docs'],

@@ -19,6 +19,6 @@ trait HasTripsMetaDescription
 
         $photos_text = \ViewHelper::plural('photos', $total_photos);
 
-        return "{$trips_text} &middot; {$photos_text}";
+        return "{$trips_text} · {$photos_text}";
     }
 }

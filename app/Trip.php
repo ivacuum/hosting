@@ -272,10 +272,10 @@ class Trip extends Model
         $suffix = '';
 
         if (isset($this->photos_count) && $this->photos_count > 0) {
-            $suffix = " &middot; ".\ViewHelper::plural('photos', $this->photos_count);
+            $suffix = " · ".\ViewHelper::plural('photos', $this->photos_count);
         }
 
-        return "{$this->title} &middot; {$this->localizedDate()}{$suffix}";
+        return "{$this->title} · {$this->localizedDate()}{$suffix}";
     }
 
     public function template(): string

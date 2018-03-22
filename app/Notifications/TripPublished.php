@@ -22,7 +22,7 @@ class TripPublished extends Notification
         return [
             'id' => $this->trip->id,
             'slug' => $this->trip->slug,
-            'title' => "{$this->trip->title} &middot; {$this->trip->localizedDate()}",
+            'title' => "{$this->trip->title} · {$this->trip->localizedDate()}",
         ];
     }
 }

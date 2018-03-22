@@ -84,7 +84,7 @@ class Gig extends Model
 
     public function metaTitle()
     {
-        return $this->meta_title ?: "{$this->title} &middot; {$this->fullDate()}";
+        return $this->meta_title ?: "{$this->title} · {$this->fullDate()}";
     }
 
     public function shortDate()

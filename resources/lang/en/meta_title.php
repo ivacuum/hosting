@@ -16,7 +16,7 @@ return [
 
     'japanese-hiragana-katakana.index' => 'Hiragana & Katakana Trainer. Practice Japanese Syllabaries Online',
 
-    'japanese-wanikani.index' => 'WaniKani V &middot; Japanese',
+    'japanese-wanikani.index' => 'WaniKani V · Japanese',
 
     'japanese-wanikani-kanji.show' => 'Kanji :kanji · WaniKani V · Japanese',
     'japanese-wanikani-kanji.index' => 'Kanji · WaniKani V · Japanese',
