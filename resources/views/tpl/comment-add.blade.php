@@ -46,7 +46,7 @@
         </div>
       </div>
     @endif
-    <form action="{{ path('AjaxComment@store', $params) }}" method="post" novalidate>
+    <form action="{{ path('AjaxComment@store', $params) }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}
       @if (!Auth::check())
         <div class="mb-2">
