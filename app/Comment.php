@@ -17,6 +17,7 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
+ * @property \App\News|\App\Torrent|\App\Trip $rel
  * @property \App\User $user
  *
  * @mixin \Eloquent
@@ -27,11 +28,21 @@ class Comment extends Model
 
     const STATUS_HIDDEN = 0;
     const STATUS_PUBLISHED = 1;
+    const STATUS_PENDING = 2;
 
     protected $guarded = ['rel_id', 'rel_type', 'created_at', 'updated_at', 'goto'];
     protected $perPage = 20;
 
+    protected $casts = [
+        'status' => 'integer',
+    ];
+
     // Relations
+    public function emails()
+    {
+        return $this->morphMany(Email::class, 'rel');
+    }
+
     public function rel()
     {
         return $this->morphTo();
@@ -66,7 +77,9 @@ class Comment extends Model
 
     public function fullDate(): HtmlString
     {
-        $format = $this->created_at->year == date('Y') ? '%e&nbsp;%B, %H:%M' : '%e&nbsp;%B&nbsp;%Y, %H:%M';
+        $format = $this->created_at->year == date('Y')
+            ? '%e&nbsp;%B, %H:%M'
+            : '%e&nbsp;%B&nbsp;%Y, %H:%M';
 
         if ($this->created_at->isToday()) {
             return new HtmlString(trans('torrents.today').", ".$this->created_at->formatLocalized($format));

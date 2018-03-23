@@ -26,9 +26,11 @@ Route::get('auth/vk/callback', 'Auth\Vk@callback');
 
 Route::get('ajax/chat', 'AjaxChat@index')->middleware('auth');
 Route::post('ajax/chat', 'AjaxChat@store')->middleware('auth');
-Route::post('ajax/comment/{type}/{id}', 'AjaxComment@store')->middleware('auth');
+Route::post('ajax/comment/{type}/{id}', 'AjaxComment@store');
 
 Route::get('about', 'Home@about');
+
+Route::get('comments/{id}/confirm', 'CommentConfirm@update')->middleware('auth');
 
 Route::get('dc', 'Dcpp@index');
 Route::get('dc/hubs', 'DcppHubs@index');
@@ -74,6 +76,10 @@ Route::get('japanese/wanikani/vocabulary', 'JapaneseWanikaniVocabulary@index');
 Route::get('japanese/wanikani/vocabulary/{characters}', 'JapaneseWanikaniVocabulary@show');
 Route::put('japanese/wanikani/vocabulary/{id}', 'JapaneseWanikaniVocabulary@update')->middleware('auth');
 Route::delete('japanese/wanikani/vocabulary/{id}', 'JapaneseWanikaniVocabulary@destroy')->middleware('auth');
+
+Route::get('mail/click/{timestamp}/{id}', 'Mail@click')->name('mail.click');
+Route::get('mail/report/{timestamp}/{id}', 'Mail@report')->middleware('auth');
+Route::get('mail/view/{timestamp}/{id}', 'Mail@view');
 
 Route::get('my', 'My@index')->middleware('auth');
 Route::put('my/avatar', 'MyAvatar@update')->middleware('auth');

@@ -44,5 +44,6 @@
       </td>
     </tr>
   </table>
+@yield('hit')
 </body>
 </html>

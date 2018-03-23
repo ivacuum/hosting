@@ -14,6 +14,8 @@ class EventServiceProvider extends ServiceProvider
         ],
         'eloquent.updated: App\Trip' => ['App\Listeners\TripPhotosSlugPrefixUpdate'],
 
+        'App\Events\CommentPublished' => ['App\Listeners\NotifyUsersAboutComment'],
+
         'App\Events\DomainWhoisUpdated' => ['App\Listeners\EmailWhoisChanges'],
 
         'Illuminate\Auth\Events\Login' => [
@@ -23,6 +25,10 @@ class EventServiceProvider extends ServiceProvider
 
         'Ivacuum\Generic\Events\LimitExceeded' => [
             'Ivacuum\Generic\Listeners\TelegramLimitExceeded',
+        ],
+
+        'Ivacuum\Generic\Events\MailReported' => [
+            'Ivacuum\Generic\Listeners\TelegramMailReport',
         ],
     ];
 }

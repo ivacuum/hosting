@@ -32,5 +32,7 @@ class AppServiceProvider extends ServiceProvider
             'ChatMessage' => \App\ChatMessage::class,
             'ExternalIdentity' => \App\ExternalIdentity::class,
         ]);
+
+        \App\Comment::observe(\App\Observers\CommentObserver::class);
     }
 }

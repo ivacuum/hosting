@@ -11,7 +11,7 @@ return [
     'digitalocean' => 'DigitalOcean',
     'accomodation' => 'Accomodation',
     'get_promocode' => 'Get the promo code',
-    'promocode_sent' => 'We e-mailed you a promo code',
+    'promocode_sent' => 'We have e-mailed you the promo code',
 
     'airbnb.title' => 'Airbnb Coupon Codes for :Month :year',
 

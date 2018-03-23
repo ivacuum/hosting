@@ -131,6 +131,21 @@ class User extends Authenticatable
         return $this->login ?: $this->email;
     }
 
+    public function findByEmailOrCreate(array $data): self
+    {
+        $user = $this->where('email', $data['email'])->first();
+
+        if (!is_null($user)) {
+            return $user;
+        }
+
+        if (str_contains($data['email'], config('cfg.autoregister_suffixes_blacklist'))) {
+            throw new \InvalidArgumentException('Данная электронная почта недоступна, укажите другую');
+        }
+
+        return $this->registerAutomatically($data);
+    }
+
     public function isAdmin(): bool
     {
         return $this->isRoot();
@@ -184,6 +199,13 @@ class User extends Authenticatable
     public function publicName(): string
     {
         return $this->login ?: "user #{$this->id}";
+    }
+
+    public function registerAutomatically(array $data): self
+    {
+        event(new \App\Events\Stats\UserRegisteredAuto);
+
+        return $this->create($data);
     }
 
     public function sendPasswordResetNotification($token): void

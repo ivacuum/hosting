@@ -1,5 +1,5 @@
-@if (Auth::check())
-  <div class="d-flex pt-3 w-100">
+<div class="d-flex pt-3 w-100">
+  @if (Auth::check())
     <aside class="mr-3 mr-md-4">
       <div class="comment-avatar-size mt-1">
         @if (Auth::user()->avatar)
@@ -12,42 +12,68 @@
         @endif
       </div>
     </aside>
-    <div class="text-break-word mw-700 w-100">
-      <form action="{{ path('AjaxComment@store', $params) }}" method="post" novalidate>
-        {{ ViewHelper::inputHiddenMail() }}
-        <textarea required class="form-control {{ !$is_mobile ? 'textarea-autosized js-autosize-textarea' : '' }} {{ $errors->has('text') ? 'is-invalid' : '' }}" name="text" placeholder="{{ trans('comments.placeholder') }}" rows="{{ !$is_mobile ? 1 : 4 }}" maxlength="1000">{{ old('text') }}</textarea>
-        <div class="invalid-feedback">{{ $errors->first('text') }}</div>
-        <button class="btn btn-primary mt-2">
-          {{ trans('comments.send') }}
-        </button>
-        {{ csrf_field() }}
-      </form>
-    </div>
+  @endif
+  <div class="text-break-word mw-700 w-100">
+    @if (!Auth::check())
+      <div class="mb-3">
+        @ru
+          <div>Для комментирования необходимо ввести электронную почту или войти в один клик через один из социальных сервисов ниже.</div>
+        @en
+          <div>Please type your email or use one-click sign-in through one of the social services below to comment.</div>
+        @endru
+        <div class="mt-2">
+          <a
+            class="btn bg-vk text-white"
+            rel="nofollow"
+            href="{{ path('Auth\Vk@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}"
+          >
+            {{ trans('auth.vk') }}
+          </a>
+          <a
+            class="btn bg-facebook text-white"
+            rel="nofollow"
+            href="{{ path('Auth\Facebook@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}"
+          >
+            {{ trans('auth.facebook') }}
+          </a>
+          <a
+            class="btn bg-google text-white"
+            rel="nofollow"
+            href="{{ path('Auth\Google@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}"
+          >
+            {{ trans('auth.google') }}
+          </a>
+        </div>
+      </div>
+    @endif
+    <form action="{{ path('AjaxComment@store', $params) }}" method="post" novalidate>
+      {{ ViewHelper::inputHiddenMail() }}
+      @if (!Auth::check())
+        <div class="mb-2">
+          <input
+            required
+            class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
+            type="email"
+            name="email"
+            value="{{ old('email') }}"
+            placeholder="{{ trans('model.email') }}"
+          >
+          <div class="invalid-feedback">{{ $errors->first('email') }}</div>
+        </div>
+      @endif
+      <textarea
+        required
+        class="form-control {{ !$is_mobile ? 'textarea-autosized js-autosize-textarea' : '' }} {{ $errors->has('text') ? 'is-invalid' : '' }}"
+        name="text"
+        placeholder="{{ trans('comments.placeholder') }}"
+        rows="{{ !$is_mobile ? 1 : 4 }}"
+        maxlength="1000"
+      >{{ old('text') }}</textarea>
+      <div class="invalid-feedback">{{ $errors->first('text') }}</div>
+      <button class="btn btn-primary mt-2">
+        {{ trans('comments.send') }}
+      </button>
+      {{ csrf_field() }}
+    </form>
   </div>
-@else
-  @ru
-    <div class="mt-3">
-      <p>Для написания комментариев необходимо <a class="link" href="{{ path('Auth\SignIn@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">войти на сайт</a>.</p>
-      <div class="mb-1">Можно войти в один клик через следующие соцсети:</div>
-      <a class="btn bg-vk text-white"
-         rel="nofollow"
-         href="{{ path('Auth\Vk@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">
-        {{ trans('auth.vk') }}
-      </a>
-      <a class="btn bg-facebook text-white"
-         rel="nofollow"
-         href="{{ path('Auth\Facebook@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">
-        {{ trans('auth.facebook') }}
-      </a>
-      <a class="btn bg-google text-white"
-         rel="nofollow"
-         href="{{ path('Auth\Google@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">
-        {{ trans('auth.google') }}
-      </a>
-    </div>
-  @en
-    <div class="mt-3">
-      Please <a class="link" href="{{ path('Auth\SignIn@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}">sign in</a> to comment.
-    </div>
-  @endru
-@endif
+</div>
