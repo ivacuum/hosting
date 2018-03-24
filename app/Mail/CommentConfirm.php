@@ -1,17 +1,16 @@
 <?php namespace App\Mail;
 
-use App\Comment;
+use App\Comment as Model;
 use Illuminate\Mail\Mailable;
 
 class CommentConfirm extends Mailable
 {
     public $email;
-    public $comment;
+    public $model;
 
-    public function __construct(Comment $comment)
+    public function __construct(Model $model)
     {
-        $this->comment = $comment;
-
+        $this->model = $model;
         $this->email = $this->email();
     }
 
@@ -23,9 +22,9 @@ class CommentConfirm extends Mailable
 
     public function email()
     {
-        return $this->comment->emails()->create([
-            'to' => $this->comment->user->email,
-            'user_id' => $this->comment->user->id,
+        return $this->model->emails()->create([
+            'to' => $this->model->user->email,
+            'user_id' => $this->model->user->id,
             'template' => class_basename(static::class),
         ]);
     }

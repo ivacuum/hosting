@@ -1,25 +1,25 @@
 <?php namespace App\Observers;
 
-use App\Comment;
+use App\Comment as Model;
 use App\Events\CommentPublished;
 use App\Mail\CommentConfirm;
 
 class CommentObserver
 {
-    public function created(Comment $comment)
+    public function created(Model $model)
     {
-        if ($comment->status === Comment::STATUS_PENDING) {
-            \Mail::to($comment->user->email)
-                ->queue(new CommentConfirm($comment));
+        if ($model->status === Model::STATUS_PENDING) {
+            \Mail::to($model->user->email)
+                ->queue(new CommentConfirm($model));
         }
     }
 
-    public function saved(Comment $comment)
+    public function saved(Model $model)
     {
-        if ($comment->isDirty('status')) {
-            if (in_array($comment->getOriginal('status'), [null, Comment::STATUS_PENDING], true) &&
-                $comment->status === Comment::STATUS_PUBLISHED) {
-                event(new CommentPublished($comment));
+        if ($model->isDirty('status')) {
+            if (in_array($model->getOriginal('status'), [null, Model::STATUS_PENDING], true) &&
+                $model->status === Model::STATUS_PUBLISHED) {
+                event(new CommentPublished($model));
             }
         }
     }

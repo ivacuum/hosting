@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Comment;
+use App\Comment as Model;
 
 class CommentConfirm extends Controller
 {
@@ -8,19 +8,19 @@ class CommentConfirm extends Controller
     {
         $user = request()->user();
 
-        /* @var Comment $comment */
-        $comment = Comment::findOrFail($id);
+        /* @var Model $model */
+        $model = Model::findOrFail($id);
 
-        abort_unless($comment->user_id === $user->id, 404);
+        abort_unless($model->user_id === $user->id, 404);
 
-        if ($comment->status !== Comment::STATUS_PENDING) {
-            return redirect($comment->rel->www())
+        if ($model->status !== Model::STATUS_PENDING) {
+            return redirect($model->rel->www())
                 ->with('message', trans('comments.already_confirmed'));
         }
 
-        $comment->status = Comment::STATUS_PUBLISHED;
-        $comment->save();
+        $model->status = Model::STATUS_PUBLISHED;
+        $model->save();
 
-        return redirect($comment->rel->www($comment->anchor()));
+        return redirect($model->rel->www($model->anchor()));
     }
 }
