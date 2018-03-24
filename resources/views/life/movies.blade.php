@@ -251,4 +251,13 @@
     ]
   ])
 </div>
+
+<div class="movies-container mt-5">
+  <div class="h3">1988 год</div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => "L'ours\nМедведь", 'id' => 22907],
+    ]
+  ])
+</div>
 @endsection
