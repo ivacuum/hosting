@@ -9,8 +9,6 @@ use Illuminate\Support\HtmlString;
 
 class Torrents extends Controller
 {
-    protected $list_columns = ['id', 'category_id', 'rto_id', 'title', 'size', 'info_hash', 'announcer', 'clicks', 'views', 'registered_at'];
-
     public function index()
     {
         $q = request('q');
@@ -48,7 +46,7 @@ class Torrents extends Controller
 
                 return $query->whereIn('category_id', $ids);
             })
-            ->simplePaginate(25, $this->list_columns)
+            ->simplePaginate(25, Torrent::LIST_COLUMNS)
             ->withPath(path("{$this->class}@index"));
 
         $tree = \TorrentCategoryHelper::tree();
@@ -89,7 +87,7 @@ class Torrents extends Controller
 
         event(new \App\Events\Stats\TorrentMagnetClicked);
 
-        if (is_null(request()->user())) {
+        if (null === request()->user()) {
             event(new \App\Events\Stats\TorrentMagnetGuestClicked);
         }
 
@@ -100,7 +98,7 @@ class Torrents extends Controller
     {
         $user = request()->user();
 
-        $torrents = Torrent::select($this->list_columns)
+        $torrents = Torrent::select(Torrent::LIST_COLUMNS)
             ->where('user_id', $user->id)
             ->where('status', Torrent::STATUS_PUBLISHED)
             ->withCount('commentsPublished as comments')
@@ -121,7 +119,9 @@ class Torrents extends Controller
 
         $meta_title = $torrent->title;
 
-        return view($this->view, compact('comments', 'meta_title', 'torrent'));
+        $related_torrents = $torrent->relatedTorrents();
+
+        return view($this->view, compact('comments', 'meta_title', 'related_torrents', 'torrent'));
     }
 
     public function store(Rto $rto)
@@ -137,7 +137,7 @@ class Torrents extends Controller
         if (($topic_id = $rto->findTopicId($input)) > 0) {
             $torrent = Torrent::where('rto_id', $topic_id)->first();
 
-            if (!is_null($torrent)) {
+            if (null !== $torrent) {
                 event(new \App\Events\Stats\TorrentDuplicateFound);
 
                 return back()
@@ -178,16 +178,5 @@ class Torrents extends Controller
         $this->middleware('breadcrumbs:torrents.comments')->only('comments');
         $this->middleware('breadcrumbs:torrents.faq')->only('faq');
         $this->middleware('breadcrumbs:torrents.my')->only('my');
-    }
-
-    protected function applySearchQuery($q, $torrents)
-    {
-        if (mb_strlen($q) > 2) {
-            event(new \App\Events\Stats\TorrentSearched);
-
-            return $torrents->where('title', 'LIKE', "%{$q}%");
-        }
-
-        return $torrents;
     }
 }

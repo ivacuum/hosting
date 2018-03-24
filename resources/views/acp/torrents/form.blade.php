@@ -27,3 +27,5 @@
   App\Torrent::STATUS_PUBLISHED => 'Опубликован',
   App\Torrent::STATUS_DELETED => 'Удален',
 ])->html() !!}
+
+{!! Form::text('related_query')->required()->html() !!}

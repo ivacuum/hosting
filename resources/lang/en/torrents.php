@@ -9,6 +9,7 @@ return [
     'create' => 'Add a release',
     'search' => 'Search...',
     'source' => 'Source',
+    'related' => 'Related releases',
     'comments' => 'Comments',
     'download' => 'Download',
     'yesterday' => 'Yesterday',

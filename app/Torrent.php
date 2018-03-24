@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Foolz\SphinxQL\SphinxQL;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Ivacuum\Generic\Traits\SoftDeleteTrait;
@@ -14,6 +15,7 @@ use Laravel\Scout\Searchable;
  * @property integer $rto_id
  * @property string  $title
  * @property string  $html
+ * @property string  $related_query
  * @property integer $size
  * @property string  $info_hash
  * @property string  $announcer
@@ -48,6 +50,8 @@ class Torrent extends Model
     const RTO_STATUS_9 = 9; // проверяется
     const RTO_STATUS_10 = 10; // временная
     const RTO_STATUS_PREMODERATION = 11; // премодерация
+
+    const LIST_COLUMNS = ['id', 'category_id', 'rto_id', 'title', 'size', 'info_hash', 'announcer', 'clicks', 'views', 'registered_at'];
 
     protected $casts = [
         'size' => 'int',
@@ -115,6 +119,31 @@ class Torrent extends Model
         return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode(str_limit($this->title, 100, ''));
     }
 
+    public function relatedIds(): array
+    {
+        if (!$this->related_query) {
+            return [];
+        }
+
+        return array_filter(array_pluck($this->search($this->related_query, function (SphinxQL $builder) {
+            return $builder->match('*', $this->related_query)
+                ->execute();
+        })->raw(), 'id'), function ($item) {
+            return intval($item) !== $this->id;
+        });
+    }
+
+    public function relatedTorrents()
+    {
+        if (!sizeof($ids = $this->relatedIds())) {
+            return collect();
+        }
+
+        return $this->whereIn('id', $ids)
+            ->published()
+            ->get(static::LIST_COLUMNS);
+    }
+
     public function searchableAs()
     {
         return 'vac_torrents_v1';
@@ -150,7 +179,7 @@ class Torrent extends Model
     public static function statsByCategories()
     {
         return \Cache::remember(CacheKey::TORRENTS_STATS_BY_CATEGORIES, 15, function () {
-            return static::selectRaw('category_id, COUNT(*) as total')
+            return static::selectRaw('category_id, COUNT(*) AS total')
                 ->where('status', static::STATUS_PUBLISHED)
                 ->groupBy('category_id')
                 ->get()

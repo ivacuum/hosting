@@ -98,6 +98,7 @@ return [
     'torrent.announcer' => 'Анонсер',
     'torrent.info_hash' => 'Инфо-хэш',
     'torrent.updated_at' => 'Обновлена',
+    'torrent.related_query' => 'Запрос похожих раздач',
 
     'trip.title' => 'Название',
     'trip.status' => 'Состояние',
