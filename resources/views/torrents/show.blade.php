@@ -43,7 +43,7 @@
 @if (sizeof($tags = $torrent->titleTags()))
   <div class="mt-3">
     @foreach ($tags as $tag)
-      <a class="btn btn-outline-primary text-lowercase" href="{{ path('Torrents@index', ['q' => $tag]) }}">#{{ $tag }}</a>
+      <a class="btn btn-outline-primary text-lowercase" href="{{ path('Torrents@index', ['q' => mb_strtolower($tag)]) }}">#{{ $tag }}</a>
     @endforeach
   </div>
 @endif
