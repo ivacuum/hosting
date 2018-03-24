@@ -126,7 +126,7 @@ class Torrent extends Model
         }
 
         return array_filter(array_pluck($this->search($this->related_query, function (SphinxQL $builder) {
-            return $builder->match('*', $this->related_query)
+            return $builder->match('title', $this->related_query)
                 ->execute();
         })->raw(), 'id'), function ($item) {
             return intval($item) !== $this->id;
