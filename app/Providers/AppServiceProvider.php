@@ -34,5 +34,6 @@ class AppServiceProvider extends ServiceProvider
         ]);
 
         \App\Comment::observe(\App\Observers\CommentObserver::class);
+        \App\Torrent::observe(\App\Observers\TorrentObserver::class);
     }
 }

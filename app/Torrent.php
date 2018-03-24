@@ -26,7 +26,9 @@ use Laravel\Scout\Searchable;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
- * @property-read \App\User $user
+ * @property \Illuminate\Database\Eloquent\Collection $comments
+ * @property \Illuminate\Database\Eloquent\Collection $commentsPublished
+ * @property \App\User $user
  *
  * @mixin \Eloquent
  */
