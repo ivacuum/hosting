@@ -119,9 +119,7 @@ class Torrents extends Controller
 
         $meta_title = $torrent->title;
 
-        $related_torrents = $torrent->relatedTorrents();
-
-        return view($this->view, compact('comments', 'meta_title', 'related_torrents', 'torrent'));
+        return view($this->view, compact('comments', 'meta_title', 'torrent'));
     }
 
     public function store(Rto $rto)

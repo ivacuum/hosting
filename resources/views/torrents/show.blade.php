@@ -40,7 +40,7 @@
   </a>
 </div>
 
-@if ($related_torrents->count())
+@if (optional($related_torrents = $torrent->relatedTorrents())->count())
   <div class="h3 mt-5">
     {{ trans('torrents.related') }}
     <small class="text-muted">{{ $related_torrents->count() }}</small>
