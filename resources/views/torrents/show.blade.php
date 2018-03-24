@@ -40,6 +40,14 @@
   </a>
 </div>
 
+@if (sizeof($tags = $torrent->titleTags()))
+  <div class="mt-3">
+    @foreach ($tags as $tag)
+      <a class="btn btn-outline-primary text-lowercase" href="{{ path('Torrents@index', ['q' => $tag]) }}">#{{ $tag }}</a>
+    @endforeach
+  </div>
+@endif
+
 @if (optional($related_torrents = $torrent->relatedTorrents())->count())
   <div class="h3 mt-5">
     {{ trans('torrents.related') }}
