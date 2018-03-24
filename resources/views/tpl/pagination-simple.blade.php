@@ -8,6 +8,6 @@
   @if ($paginator->hasMorePages())
     <li class="page-item"><a class="page-link js-pjax tooltipped tooltipped-n" href="{{ $paginator->nextPageUrl() }}" id="next_page" rel="next" aria-label="{{ trans('pagination.next') }}">@svg (chevron-right)</a></li>
   @else
-    <li class="page-link disabled"><span class="page-link">@svg (chevron-right)</span></li>
+    <li class="page-item disabled"><span class="page-link">@svg (chevron-right)</span></li>
   @endif
 </ul>
