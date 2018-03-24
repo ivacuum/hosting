@@ -4,6 +4,7 @@ use App\Notifications\TorrentNotFoundDeleted;
 use App\Notifications\TorrentUpdated;
 use App\Services\Rto;
 use App\Torrent;
+use App\User;
 use Illuminate\Support\Collection;
 use Ivacuum\Generic\Commands\Command;
 
@@ -29,7 +30,8 @@ class RtoUpdate extends Command
 
                     event(new \App\Events\Stats\TorrentNotFoundDeleted);
 
-                    $torrent->user->notify(new TorrentNotFoundDeleted($torrent));
+                    $user = $torrent->user_id !== 1 ? User::find(1) : $torrent->user;
+                    $user->notify(new TorrentNotFoundDeleted($torrent));
 
                     continue;
                 }
@@ -42,7 +44,8 @@ class RtoUpdate extends Command
 
                     event(new \App\Events\Stats\TorrentDuplicateDeleted);
 
-                    $torrent->user->notify(new TorrentNotFoundDeleted($torrent));
+                    $user = $torrent->user_id !== 1 ? User::find(1) : $torrent->user;
+                    $user->notify(new TorrentNotFoundDeleted($torrent));
 
                     continue;
                 }
