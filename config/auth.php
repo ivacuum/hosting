@@ -31,7 +31,7 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'password_reminders',
+            'table' => 'password_resets',
             'expire' => 60, // min
         ],
     ],
