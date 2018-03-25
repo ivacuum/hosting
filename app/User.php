@@ -25,6 +25,13 @@ use Illuminate\Notifications\Notifiable;
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $last_login_at
  *
+ * @property \Illuminate\Database\Eloquent\Collection $chatMessages
+ * @property \Illuminate\Database\Eloquent\Collection $comments
+ * @property \Illuminate\Database\Eloquent\Collection $externalIdentities
+ * @property \Illuminate\Database\Eloquent\Collection $images
+ * @property \Illuminate\Database\Eloquent\Collection $news
+ * @property \Illuminate\Database\Eloquent\Collection $torrents
+ * @property \Illuminate\Database\Eloquent\Collection $trips
  * @property \Illuminate\Support\Collection $notifications
  *
  * @mixin \Eloquent
@@ -45,7 +52,7 @@ class User extends Authenticatable
     protected $perPage = 50;
 
     // Relations
-    public function chat_messages()
+    public function chatMessages()
     {
         return $this->hasMany(ChatMessage::class);
     }
@@ -55,7 +62,7 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public function external_identities()
+    public function externalIdentities()
     {
         return $this->hasMany(ExternalIdentity::class);
     }

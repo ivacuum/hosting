@@ -34,6 +34,9 @@ class AppServiceProvider extends ServiceProvider
         ]);
 
         \App\Tag::observe(\App\Observers\TagObserver::class);
+        \App\News::observe(\App\Observers\NewsObserver::class);
+        \App\Trip::observe(\App\Observers\TripObserver::class);
+        \App\User::observe(\App\Observers\UserObserver::class);
         \App\Image::observe(\App\Observers\ImageObserver::class);
         \App\Kanji::observe(\App\Observers\KanjiObserver::class);
         \App\Domain::observe(\App\Observers\DomainObserver::class);
