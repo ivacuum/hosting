@@ -54,6 +54,7 @@
       ['title' => "Фарго\nFargo", 'id' => 767379],
       ['title' => "Исчезнувшая\nGone Girl", 'id' => 692861],
       ['title' => "Интерстеллар\nInterstellar", 'id' => 258687],
+      ['title' => "Дикие истории\nRelatos salvajes", 'id' => 775727],
       ['title' => "Кремниевая долина\nSilicon Valley", 'id' => 723959],
       ['title' => "Настоящий детектив\nTrue Detective", 'id' => 681831],
       ['title' => "Волк с Уолл-стрит\nWolf of Wall Street", 'id' => 462682],
