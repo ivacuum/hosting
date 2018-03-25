@@ -35,9 +35,12 @@ class AppServiceProvider extends ServiceProvider
 
         \App\Tag::observe(\App\Observers\TagObserver::class);
         \App\Image::observe(\App\Observers\ImageObserver::class);
+        \App\Kanji::observe(\App\Observers\KanjiObserver::class);
         \App\Domain::observe(\App\Observers\DomainObserver::class);
         \App\Comment::observe(\App\Observers\CommentObserver::class);
+        \App\Radical::observe(\App\Observers\RadicalObserver::class);
         \App\Torrent::observe(\App\Observers\TorrentObserver::class);
+        \App\Vocabulary::observe(\App\Observers\VocabularyObserver::class);
         \App\YandexUser::observe(\App\Observers\YandexUserObserver::class);
     }
 }

@@ -35,6 +35,11 @@ class Kanji extends Model
         return $this->morphOne(Burnable::class, 'rel');
     }
 
+    public function burnables()
+    {
+        return $this->morphMany(Burnable::class, 'rel');
+    }
+
     public function radicals()
     {
         return $this->belongsToMany(Radical::class);

@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vocabulary extends Model
 {
     use UserBurnableScope;
-    
+
     protected $fillable = ['sentences'];
     protected $perPage = 50;
 
@@ -30,6 +30,11 @@ class Vocabulary extends Model
     public function burnable()
     {
         return $this->morphOne(Burnable::class, 'rel');
+    }
+
+    public function burnables()
+    {
+        return $this->morphMany(Burnable::class, 'rel');
     }
 
     // Methods
