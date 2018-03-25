@@ -5,17 +5,7 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 class EventServiceProvider extends ServiceProvider
 {
     protected $listen = [
-        'eloquent.saved: App\City' => ['App\Listeners\ForgetTripsCache'],
-        'eloquent.deleted: App\City' => ['App\Listeners\ForgetTripsCache'],
-        'eloquent.deleted: App\Photo' => ['App\Listeners\DeletePhotoFiles'],
-        'eloquent.saved: App\Trip' => [
-            'App\Listeners\ToggleTripPhotosStatus',
-            'App\Listeners\ForgetTripsCache',
-        ],
-        'eloquent.updated: App\Trip' => ['App\Listeners\TripPhotosSlugPrefixUpdate'],
-
         'App\Events\CommentPublished' => ['App\Listeners\NotifyUsersAboutComment'],
-
         'App\Events\DomainWhoisUpdated' => ['App\Listeners\EmailWhoisChanges'],
 
         'Illuminate\Auth\Events\Login' => [

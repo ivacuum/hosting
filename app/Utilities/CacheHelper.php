@@ -1,9 +1,9 @@
-<?php namespace App\Listeners;
+<?php namespace App\Utilities;
 
 use App\CacheKey;
 use Illuminate\Cache\Repository;
 
-class ForgetTripsCache
+class CacheHelper
 {
     protected $cache;
 
@@ -12,7 +12,7 @@ class ForgetTripsCache
         $this->cache = $cache;
     }
 
-    public function handle()
+    public function forgetTrips()
     {
         $this->cache->deleteMultiple([
             CacheKey::TRIPS_PUBLISHED_BY_COUNTRY,

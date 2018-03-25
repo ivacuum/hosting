@@ -84,6 +84,7 @@ return [
         'View'         => Illuminate\Support\Facades\View::class,
 
         'ViewHelper' => App\Facades\ViewHelper::class,
+        'CacheHelper' => App\Facades\CacheHelper::class,
         'TorrentCategoryHelper' => App\Facades\TorrentCategoryHelper::class,
 
     ],
