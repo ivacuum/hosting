@@ -16,4 +16,11 @@ class UserObserver
             $model->trips->each->delete();
         });
     }
+
+    public function saving(Model $model)
+    {
+        if ($model->isDirty('password')) {
+            $model->password_changed_at = now();
+        }
+    }
 }

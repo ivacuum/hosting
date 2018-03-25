@@ -24,6 +24,7 @@ use Illuminate\Notifications\Notifiable;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $last_login_at
+ * @property \Illuminate\Support\Carbon $password_changed_at
  *
  * @property \Illuminate\Database\Eloquent\Collection $chatMessages
  * @property \Illuminate\Database\Eloquent\Collection $comments
@@ -32,7 +33,7 @@ use Illuminate\Notifications\Notifiable;
  * @property \Illuminate\Database\Eloquent\Collection $news
  * @property \Illuminate\Database\Eloquent\Collection $torrents
  * @property \Illuminate\Database\Eloquent\Collection $trips
- * @property \Illuminate\Support\Collection $notifications
+ * @property \Illuminate\Database\Eloquent\Collection $notifications
  *
  * @mixin \Eloquent
  */
