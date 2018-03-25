@@ -82,18 +82,6 @@ class Domain extends Model
         return $this->belongsTo(YandexUser::class);
     }
 
-    // Events
-    protected static function boot()
-    {
-        parent::boot();
-
-        // Домен перестает быть алиасом для других
-        static::deleted(function (Domain $domain) {
-            $domain->where('alias_id', $domain->id)
-                ->update(['alias_id' => 0]);
-        });
-    }
-
     // Scopes
     public function scopeYandexReady(Builder $query, $user_id = 0)
     {

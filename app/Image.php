@@ -36,16 +36,6 @@ class Image extends Model
         return $this->belongsTo(User::class);
     }
 
-    // Events
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::deleted(function (Image $image) {
-            $image->deleteFiles();
-        });
-    }
-
     // Attributes
     public function getSplittedDateAttribute(): string
     {
@@ -60,13 +50,11 @@ class Image extends Model
 
     public function deleteFiles()
     {
-        $files = [
+        return \Storage::disk('gallery')->delete([
             "{$this->splitted_date}/s/{$this->slug}",
             "{$this->splitted_date}/t/{$this->slug}",
             "{$this->splitted_date}/{$this->slug}",
-        ];
-
-        return \Storage::disk('gallery')->delete($files);
+        ]);
     }
 
     public function originalUrl(): string

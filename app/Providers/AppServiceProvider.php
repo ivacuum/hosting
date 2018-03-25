@@ -33,7 +33,11 @@ class AppServiceProvider extends ServiceProvider
             'ExternalIdentity' => \App\ExternalIdentity::class,
         ]);
 
+        \App\Tag::observe(\App\Observers\TagObserver::class);
+        \App\Image::observe(\App\Observers\ImageObserver::class);
+        \App\Domain::observe(\App\Observers\DomainObserver::class);
         \App\Comment::observe(\App\Observers\CommentObserver::class);
         \App\Torrent::observe(\App\Observers\TorrentObserver::class);
+        \App\YandexUser::observe(\App\Observers\YandexUserObserver::class);
     }
 }

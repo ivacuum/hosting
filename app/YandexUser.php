@@ -25,16 +25,6 @@ class YandexUser extends Model
             ->orderBy('domain');
     }
 
-    // Events
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::deleted(function (YandexUser $user) {
-            $user->domains()->update(['yandex_user_id' => 0]);
-        });
-    }
-
     // Methods
     public function breadcrumb(): string
     {

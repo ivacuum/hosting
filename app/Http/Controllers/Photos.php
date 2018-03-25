@@ -218,7 +218,7 @@ class Photos extends Controller
             ->get()
             ->pluck('tag_id');
 
-        $tags = Tag::withCount('photos_published')
+        $tags = Tag::withCount('photosPublished')
             ->whereIn('id', $tags_ids)
             ->orderBy(Tag::titleField())
             ->get();

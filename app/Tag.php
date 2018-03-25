@@ -13,7 +13,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
+ * @property \Illuminate\Support\Collection $news
  * @property \Illuminate\Support\Collection $photos
+ * @property \Illuminate\Support\Collection $photosPublished
  *
  * @property-read string  $title
  *
@@ -37,23 +39,9 @@ class Tag extends Model
         return $this->morphedByMany(Photo::class, 'rel', 'taggable');
     }
 
-    public function photos_published()
+    public function photosPublished()
     {
         return $this->photos()->where('status', Photo::STATUS_PUBLISHED);
-    }
-
-    // Events
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::deleting(function (Tag $tag) {
-            \DB::transaction(function () use ($tag) {
-                foreach ($tag->photos as $photo) {
-                    $photo->tags()->detach($tag->id);
-                }
-            });
-        });
     }
 
     // Methods
