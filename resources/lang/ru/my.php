@@ -13,7 +13,9 @@ return [
     'settings' => 'Настройки',
     'theme_dark' => 'Темная',
     'theme_light' => 'Светлая (стандартная)',
+    'edit_profile' => 'Редактировать профиль',
     'old_password' => 'Текущий пароль',
     'new_password' => 'Новый пароль',
+    'go_to_profile' => 'Просмотреть профиль',
     'torrent_short_title' => 'Короткие названия раздач',
 ];

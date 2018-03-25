@@ -29,6 +29,11 @@
         <dd>{{ ViewHelper::number($user->torrents_count) }}</dd>
       @endif
     </dl>
+    @if (optional(Auth::user())->id === $user->id)
+      <div>
+        <a class="btn btn-default btn-block" href="{{ path('MyProfile@edit') }}">{{ trans('my.edit_profile') }}</a>
+      </div>
+    @endif
   </div>
   <div class="col-md-8"></div>
 </div>

@@ -3,6 +3,7 @@
 @section('content')
 <div class="mw-500">
   <h3 class="mb-3">{{ trans('my.profile') }}</h3>
+  <p><a class="btn btn-default" href="{{ Auth::user()->www() }}">{{ trans('my.go_to_profile') }}</a></p>
   <form action="{{ path("$self@update") }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
@@ -10,11 +11,13 @@
       <label>{{ trans('my.username') }}</label>
       <input class="form-control {{ $errors->has('username') ? 'is-invalid' : '' }}" name="username" value="{{ old('username', Auth::user()->login) }}">
       <div class="invalid-feedback">{{ $errors->first('username') }}</div>
-      @ru
-        <div class="form-help">От 2 до 32 символов. Первый символ логина будет использован для аватарки. В случае его отсутствия — первый символ адреса электронной почты</div>
-      @en
-        <div class="form-help">From 2 to 32 characters. First two characters would be used as an avatar. In case of empty username, first two characters of email would be used.</div>
-      @endru
+      <div class="form-help">
+        @ru
+          От 2 до 32 символов. Первый символ логина будет использован для аватарки. В случае его отсутствия — первый символ адреса электронной почты
+        @en
+          From 2 to 32 characters. First two characters would be used as an avatar. In case of empty username, first two characters of email would be used.
+        @endru
+      </div>
     </div>
 
     <div class="form-group">
