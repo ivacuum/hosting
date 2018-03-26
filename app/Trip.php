@@ -3,7 +3,6 @@
 use App\Traits\HasLocalizedTitle;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\HtmlString;
 use Ivacuum\Generic\Utilities\TextImagesParser;
 use Symfony\Component\Finder\Finder;
 
@@ -186,59 +185,59 @@ class Trip extends Model
         return static::orderBy('date_start', 'desc')->get(['id', 'slug'])->pluck('slug', 'id');
     }
 
-    public function imgAltText()
+    public function imgAltText(): string
     {
         return "{$this->city->country->emoji} {$this->title}, {$this->city->country->title}, {$this->timelinePeriod(true)}.";
     }
 
-    public function localizedDate()
+    public function localizedDate(): string
     {
         if ($this->date_end->isSameDay($this->date_start)) {
-            return new HtmlString(trim($this->date_start->formatLocalized(trans('life.date.day_month_year'))));
+            return trim($this->date_start->formatLocalized(trans('life.date.day_month_year')));
         }
 
         if ($this->date_start->month !== $this->date_end->month) {
-            return new HtmlString(sprintf(
+            return sprintf(
                 trans('life.date.day_month_day_month_year'),
                 $this->date_start->day,
                 $this->date_start->formatLocalized('%B'),
                 $this->date_end->day,
                 $this->date_end->formatLocalized('%B'),
                 $this->date_end->formatLocalized('%Y')
-            ));
+            );
         }
 
-        return new HtmlString(sprintf(
+        return sprintf(
             trans('life.date.day_day_month_year'),
             $this->date_start->day,
             $this->date_end->day,
             $this->date_start->formatLocalized('%B'),
             $this->date_start->formatLocalized('%Y')
-        ));
+        );
     }
 
-    public function localizedDateWithoutYear()
+    public function localizedDateWithoutYear(): string
     {
         if ($this->date_end->isSameDay($this->date_start)) {
-            return new HtmlString(trim($this->date_start->formatLocalized(trans('life.date.day_month'))));
+            return trim($this->date_start->formatLocalized(trans('life.date.day_month')));
         }
 
         if ($this->date_start->month !== $this->date_end->month) {
-            return new HtmlString(sprintf(
+            return sprintf(
                 trans('life.date.day_month_day_month'),
                 $this->date_start->day,
                 $this->date_start->formatLocalized('%B'),
                 $this->date_end->day,
                 $this->date_end->formatLocalized('%B')
-            ));
+            );
         }
 
-        return new HtmlString(sprintf(
+        return sprintf(
             trans('life.date.day_day_month'),
             $this->date_start->day,
             $this->date_end->day,
             $this->date_start->formatLocalized('%B')
-        ));
+        );
     }
 
     public function metaDescription(): string

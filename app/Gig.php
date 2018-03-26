@@ -2,7 +2,6 @@
 
 use App\Traits\HasLocalizedTitle;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\HtmlString;
 
 /**
  * Концерт
@@ -72,24 +71,24 @@ class Gig extends Model
             ->groupBy('date.year');
     }
 
-    public function breadcrumb()
+    public function breadcrumb(): string
     {
         return "{$this->title} {$this->fullDate()}";
     }
 
-    public function fullDate()
+    public function fullDate(): string
     {
-        return new HtmlString($this->date->formatLocalized(trans('life.date.day_month_year')));
+        return $this->date->formatLocalized(trans('life.date.day_month_year'));
     }
 
-    public function metaTitle()
+    public function metaTitle(): string
     {
         return $this->meta_title ?: "{$this->title} · {$this->fullDate()}";
     }
 
-    public function shortDate()
+    public function shortDate(): string
     {
-        return new HtmlString($this->date->formatLocalized(trans('life.date.day_month')));
+        return $this->date->formatLocalized(trans('life.date.day_month'));
     }
 
     public function template()

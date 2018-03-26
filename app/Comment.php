@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\HtmlString;
 use Ivacuum\Generic\Traits\RecordsActivity;
 
 /**
@@ -75,19 +74,19 @@ class Comment extends Model
         return "#{$this->id}";
     }
 
-    public function fullDate(): HtmlString
+    public function fullDate(): string
     {
         $format = $this->created_at->year == date('Y')
             ? '%e&nbsp;%B, %H:%M'
             : '%e&nbsp;%B&nbsp;%Y, %H:%M';
 
         if ($this->created_at->isToday()) {
-            return new HtmlString(trans('torrents.today').", ".$this->created_at->formatLocalized($format));
+            return trans('torrents.today').", ".$this->created_at->formatLocalized($format);
         } elseif ($this->created_at->isYesterday()) {
-            return new HtmlString(trans('torrents.yesterday').", ".$this->created_at->formatLocalized($format));
+            return trans('torrents.yesterday').", ".$this->created_at->formatLocalized($format);
         }
 
-        return new HtmlString($this->created_at->formatLocalized($format));
+        return $this->created_at->formatLocalized($format);
     }
 
     public function usersForNotification($model)

@@ -7,6 +7,8 @@ class AppServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        \Blade::withoutDoubleEncoding();
+
         Relation::morphMap([
             'Gig' => \App\Gig::class,
             'Tag' => \App\Tag::class,

@@ -207,7 +207,7 @@ class Life extends Controller
         \Breadcrumbs::push(trans('menu.countries'), "life/countries")
             ->push($trip->city->country->title, "life/countries/{$trip->city->country->slug}")
             ->push($trip->city->title, "life/{$trip->city->slug}")
-            ->pushHtml($trip->localizedDate());
+            ->push($trip->localizedDate());
 
         event(new \App\Events\Stats\TripViewed($trip->id));
 
