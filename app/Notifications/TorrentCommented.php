@@ -24,7 +24,7 @@ class TorrentCommented extends Notification
     {
         return [
             'id' => $this->torrent->id,
-            'title' => $this->torrent->title,
+            'title' => $this->torrent->shortTitle(),
             'comment' => [
                 'id' => $this->comment->id,
                 'html' => $this->comment->html,
