@@ -69,6 +69,7 @@
       ['title' => "Далласский клуб покупателей\nDallas Buyers Club", 'id' => 260162],
       ['title' => "Она\nHer", 'id' => 577488],
       ['title' => "Карточный домик\nHouse of Cards", 'id' => 581937],
+      ['title' => "Mandariinid\nМандарины", 'id' => 772017],
       ['title' => "Одержимость\nWhiplash", 'id' => 725190],
     ]
   ])
