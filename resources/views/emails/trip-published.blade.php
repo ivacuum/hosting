@@ -7,7 +7,9 @@
 {{ $model->metaDescription() }}
 
 @if ($model->meta_image)
-[![{{ $model->title }}]({{ $model->metaImage() }})]({{ $email->signedLink($model->wwwLocale(null, $user->locale)) }})
+<a href="{{ $email->signedLink($model->wwwLocale(null, $user->locale)) }}">
+  ![{{ $model->title }}]({{ $model->metaImage() }})
+</a>
 @endif
 
 @component('mail::button', ['url' => $email->signedLink($model->wwwLocale(null, $user->locale))])
