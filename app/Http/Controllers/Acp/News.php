@@ -22,6 +22,7 @@ class News extends Controller
             ->when($user_id, function (Builder $query) use ($user_id) {
                 return $query->where('user_id', $user_id);
             })
+            ->where('locale', \App::getLocale())
             ->paginate(20)
             ->withPath(path("{$this->class}@index"));
 
