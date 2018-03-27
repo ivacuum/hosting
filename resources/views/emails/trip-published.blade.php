@@ -4,6 +4,12 @@
 
 {{ trans('mail.trip_published') }}
 
+{{ $model->metaDescription() }}
+
+@if ($model->meta_image)
+[![{{ $model->title }}]({{ $model->metaImage() }})]({{ $email->signedLink($model->wwwLocale(null, $user->locale)) }})
+@endif
+
 @component('mail::button', ['url' => $email->signedLink($model->wwwLocale(null, $user->locale))])
 {{ trans('mail.read') }}
 @endcomponent
