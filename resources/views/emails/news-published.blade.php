@@ -6,10 +6,6 @@
 {{ trans('mail.read') }}
 @endcomponent
 
-@component('mail::button', ['url' => $email->signedLink($model->www().'#comments')])
-{{ trans('mail.comment') }}
-@endcomponent
-
 @component('mail::button', ['color' => 'light', 'url' => $email->signedLink(path('MySettings@edit'))])
 {{ trans('mail.settings') }}
 @endcomponent
