@@ -8,10 +8,10 @@ use Illuminate\Support\Carbon;
  * Новости
  *
  * @property integer $id
- * @property integer $site_id
  * @property integer $user_id
  * @property string  $title
  * @property string  $html
+ * @property string  $locale
  * @property integer $status
  * @property integer $views
  * @property \Illuminate\Support\Carbon $created_at

@@ -9,10 +9,10 @@ class CreateNewsTable extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('site_id')->default(0);
             $table->unsignedInteger('user_id')->default(0);
             $table->string('title');
             $table->text('html');
+            $table->string('locale', 10);
             $table->unsignedInteger('views')->default(0);
             $table->timestamps();
         });

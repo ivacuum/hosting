@@ -7,17 +7,10 @@ class News extends Controller
 {
     public function index($year = null, $month = null, $day = null)
     {
-        $locale = \App::getLocale();
-
         $news = Model::with('user')
             ->withCount('commentsPublished as comments_count')
             ->published()
-            ->when($locale === 'en', function (Builder $query) {
-                return $query->where('site_id', 12);
-            })
-            ->when($locale === 'ru', function (Builder $query) {
-                return $query->where('site_id', 11);
-            })
+            ->where('locale', \App::getLocale())
             ->when($year || $month || $day, function (Builder $query) use ($year, $month, $day) {
                 return $query->whereBetween('created_at', Model::interval($year, $month, $day));
             })
@@ -97,16 +90,16 @@ class News extends Controller
         return $this->index($year);
     }
 
-    protected function redirectUrlToOriginLocale(Model $news)
+    protected function redirectUrlToOriginLocale(Model $news): string
     {
         $locale = \App::getLocale();
 
-        if ($locale === 'en' && $news->site_id === 11) {
-            return request()->path();
-        } elseif ($locale === 'ru' && $news->site_id === 12) {
-            return '/en/'.request()->path();
+        if ($locale === $news->locale) {
+            return '';
         }
 
-        return '';
+        return $news->locale === 'ru'
+            ? request()->path()
+            : "/{$news->locale}/".request()->path();
     }
 }

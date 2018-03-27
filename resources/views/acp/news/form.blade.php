@@ -1,10 +1,5 @@
 @include('tpl.form_errors')
 
-{!! Form::radio('site_id')->required()->values([
-  11 => 'vacuum.name',
-  12 => 'vacuum.name/en',
-])->html() !!}
-
 {!! Form::text('title')->required()->html() !!}
 
 {!! Form::radio('status')->required()->values([

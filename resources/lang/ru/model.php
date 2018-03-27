@@ -10,7 +10,6 @@ return [
     'status' => 'Состояние',
     'city_id' => 'Город',
     'trip_id' => 'Поездка',
-    'site_id' => 'Сайт',
     'alias_id' => 'Алиас',
     'artist_id' => 'Артист',
     'client_id' => 'Клиент',

@@ -13,15 +13,8 @@ class NewsRss extends Controller
             'description' => trans('news.index'),
         ];
 
-        $locale = \App::getLocale();
-
         $items = News::where('status', News::STATUS_PUBLISHED)
-            ->when($locale === 'en', function (Builder $query) {
-                return $query->where('site_id', 12);
-            })
-            ->when($locale === 'ru', function (Builder $query) {
-                return $query->where('site_id', 11);
-            })
+            ->where('locale', \App::getLocale())
             ->take(20)
             ->orderBy('id', 'desc')
             ->get()

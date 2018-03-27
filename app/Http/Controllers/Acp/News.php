@@ -48,7 +48,6 @@ class News extends Controller
     {
         return [
             'title' => 'required',
-            'site_id' => 'required|integer|min:1',
             'markdown' => 'required',
         ];
     }
@@ -56,6 +55,7 @@ class News extends Controller
     protected function storeModel()
     {
         $data = $this->requestDataForModel();
+        $data['locale'] = \App::getLocale();
         $data['user_id'] = request()->user()->id;
 
         $model = Model::create($data);

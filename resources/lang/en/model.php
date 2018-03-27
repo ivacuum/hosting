@@ -11,7 +11,6 @@ return [
     'filter' => 'Filter',
     'status' => 'Status',
     'city_id' => 'City',
-    'site_id' => 'Site',
     'trip_id' => 'Trip',
     'markdown' => 'Markdown',
     'artist_id' => 'Artist',
