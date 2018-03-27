@@ -237,6 +237,15 @@ img {
   border-left: 18px solid #bf5329;
 }
 
+.button-light {
+  background-color: #f8f9fa;
+  border-top: 10px solid #f8f9fa;
+  border-right: 18px solid #f8f9fa;
+  border-bottom: 10px solid #f8f9fa;
+  border-left: 18px solid #f8f9fa;
+  color: #404040;
+}
+
 /* Panels */
 
 .panel {

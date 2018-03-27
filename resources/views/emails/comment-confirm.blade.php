@@ -18,7 +18,7 @@
   Someone else left the comment with your email? Please tell us.
 @endru
 
-@component('mail::button', ['url' => $email->signedLink($email->reportLink())])
+@component('mail::button', ['color' => 'light', 'url' => $email->signedLink($email->reportLink())])
 @ru Это не я @en It was not me @endru
 @endcomponent
 
