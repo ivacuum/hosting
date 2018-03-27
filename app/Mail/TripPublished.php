@@ -18,6 +18,7 @@ class TripPublished extends Mailable
         $this->user = $user;
         $this->model = $model;
         $this->email = $this->email();
+        $this->model->photos_count = $model->photos()->count();
 
         $this->setLocale($user->locale);
     }
