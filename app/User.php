@@ -15,8 +15,12 @@ use Illuminate\Notifications\Notifiable;
  * @property string  $password
  * @property string  $salt
  * @property integer $status
+ * @property string  $locale
  * @property integer $theme
  * @property integer $torrent_short_title
+ * @property integer $notify_gigs
+ * @property integer $notify_news
+ * @property integer $notify_trips
  * @property string  $avatar
  * @property string  $ip
  * @property string  $activation_token
@@ -46,6 +50,9 @@ class User extends Authenticatable
 
     const THEME_LIGHT = 0;
     const THEME_DARK = 1;
+
+    const NOTIFY_NO = 0;
+    const NOTIFY_MAIL = 1;
 
     protected $guarded = ['created_at', 'updated_at'];
     protected $hidden = ['password', 'remember_token'];

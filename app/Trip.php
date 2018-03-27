@@ -30,7 +30,9 @@ use Symfony\Component\Finder\Finder;
  *
  * @property \App\City $city
  * @property \Illuminate\Support\Collection $comments
+ * @property \Illuminate\Support\Collection $commentsPublished
  * @property \App\Country $country
+ * @property \Illuminate\Database\Eloquent\Collection $emails
  * @property \Illuminate\Database\Eloquent\Collection $photos
  * @property \App\User $user
  *
@@ -70,6 +72,11 @@ class Trip extends Model
     public function commentsPublished()
     {
         return $this->comments()->where('status', Comment::STATUS_PUBLISHED);
+    }
+
+    public function emails()
+    {
+        return $this->morphMany(Email::class, 'rel');
     }
 
     public function photos()
@@ -292,6 +299,13 @@ class Trip extends Model
         return $this->user_id === 1
             ? path('Life@page', $this->slug).$anchor
             : path('UserTravelTrips@show', [$this->user->login, $this->slug]).$anchor;
+    }
+
+    public function wwwLocale(?string $anchor = null, string $locale = ''): string
+    {
+        return $this->user_id === 1
+            ? path_locale('Life@page', $this->slug, false, $locale).$anchor
+            : path_locale('UserTravelTrips@show', [$this->user->login, $this->slug], false, $locale).$anchor;
     }
 
     /**

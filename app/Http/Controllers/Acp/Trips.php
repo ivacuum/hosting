@@ -50,12 +50,13 @@ class Trips extends Controller
     {
         /* @var Model $model */
         $model = $this->getModel($id);
+        $model->photos_count = $model->photos()->count();
 
         if ($model->status !== Model::STATUS_PUBLISHED) {
             return back()->with('message', 'Для рассылки уведомлений поездка должна быть опубликована');
         }
 
-        $users = User::forAnnouncement()->get();
+        $users = User::where('notify_trips', 1)->get();
 
         \Notification::send($users, new TripPublished($model));
 

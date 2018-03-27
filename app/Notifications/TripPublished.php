@@ -1,28 +1,39 @@
 <?php namespace App\Notifications;
 
-use App\Trip;
+use App\Mail\TripPublished as Mailable;
+use App\Trip as Model;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 
-class TripPublished extends Notification
+class TripPublished extends Notification implements ShouldQueue
 {
-    public $trip;
+    use Queueable;
 
-    public function __construct(Trip $trip)
+    public $model;
+
+    public function __construct(Model $model)
     {
-        $this->trip = $trip;
+        $this->model = $model;
     }
 
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail'];
     }
 
     public function toArray($notifiable)
     {
         return [
-            'id' => $this->trip->id,
-            'slug' => $this->trip->slug,
-            'title' => "{$this->trip->title} · {$this->trip->localizedDate()}",
+            'id' => $this->model->id,
+            'slug' => $this->model->slug,
+            'title' => "{$this->model->title} · {$this->model->localizedDate()}",
         ];
+    }
+
+    public function toMail($notifiable)
+    {
+        return (new Mailable($this->model, $notifiable))
+            ->to($notifiable->email);
     }
 }

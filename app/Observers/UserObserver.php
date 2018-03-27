@@ -4,6 +4,13 @@ use App\User as Model;
 
 class UserObserver
 {
+    public function creating(Model $model)
+    {
+        if (!$model->locale) {
+            $model->locale = \App::getLocale();
+        }
+    }
+
     public function deleting(Model $model)
     {
         \DB::transaction(function () use ($model) {

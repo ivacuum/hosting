@@ -40,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
         \App\News::observe(\App\Observers\NewsObserver::class);
         \App\Trip::observe(\App\Observers\TripObserver::class);
         \App\User::observe(\App\Observers\UserObserver::class);
+        \App\Email::observe(\App\Observers\EmailObserver::class);
         \App\Image::observe(\App\Observers\ImageObserver::class);
         \App\Kanji::observe(\App\Observers\KanjiObserver::class);
         \App\Photo::observe(\App\Observers\PhotoObserver::class);

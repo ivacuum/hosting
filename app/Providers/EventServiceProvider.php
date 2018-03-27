@@ -13,6 +13,10 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\LogUserLogin',
         ],
 
+        'Illuminate\Foundation\Events\LocaleUpdated' => [
+            'Ivacuum\Generic\Listeners\SetLocale',
+        ],
+
         'Ivacuum\Generic\Events\LimitExceeded' => [
             'Ivacuum\Generic\Listeners\TelegramLimitExceeded',
         ],
