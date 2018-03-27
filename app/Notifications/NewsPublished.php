@@ -1,27 +1,38 @@
 <?php namespace App\Notifications;
 
-use App\News;
+use App\Mail\NewsPublished as Mailable;
+use App\News as Model;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 
-class NewsPublished extends Notification
+class NewsPublished extends Notification implements ShouldQueue
 {
-    public $news;
+    use Queueable;
 
-    public function __construct(News $news)
+    public $model;
+
+    public function __construct(Model $model)
     {
-        $this->news = $news;
+        $this->model = $model;
     }
 
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail'];
     }
 
     public function toArray($notifiable)
     {
         return [
-            'id' => $this->news->id,
-            'title' => $this->news->title,
+            'id' => $this->model->id,
+            'title' => $this->model->title,
         ];
+    }
+
+    public function toMail($notifiable)
+    {
+        return (new Mailable($this->model, $notifiable))
+            ->to($notifiable->email);
     }
 }

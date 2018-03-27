@@ -1,14 +1,12 @@
 <?php namespace App\Mail;
 
 use App\Traits\LocalizedMail;
-use App\Trip as Model;
+use App\News as Model;
 use App\User;
 use Illuminate\Mail\Mailable;
 
-class TripPublished extends Mailable
+class NewsPublished extends Mailable
 {
-    use LocalizedMail;
-
     public $user;
     public $email;
     public $model;
@@ -18,18 +16,12 @@ class TripPublished extends Mailable
         $this->user = $user;
         $this->model = $model;
         $this->email = $this->email();
-
-        if (!isset($this->model->photos_count)) {
-            $this->model->photos_count = $model->photos()->count();
-        }
-
-        $this->setLocale($user->locale);
     }
 
     public function build()
     {
-        return $this->subject(trans('mail.trip_published_title', ['title' => $this->model->title]))
-            ->markdown('emails.trip-published');
+        return $this->subject($this->model->title)
+            ->markdown('emails.news-published');
     }
 
     public function email()

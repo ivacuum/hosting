@@ -37,7 +37,9 @@ class News extends Controller
             return back()->with('message', 'Для рассылки уведомлений новость должна быть опубликована');
         }
 
-        $users = User::forAnnouncement()->get();
+        $users = User::where('notify_news', 1)
+            ->where('locale', $model->locale)
+            ->get();
 
         \Notification::send($users, new NewsPublished($model));
 

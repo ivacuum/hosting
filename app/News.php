@@ -18,6 +18,8 @@ use Illuminate\Support\Carbon;
  * @property \Illuminate\Support\Carbon $updated_at
  *
  * @property \Illuminate\Support\Collection $comments
+ * @property \Illuminate\Support\Collection $commentsPublished
+ * @property \Illuminate\Support\Collection $emails
  * @property \App\User $user
  *
  * @mixin \Eloquent
@@ -38,6 +40,11 @@ class News extends Model
     public function commentsPublished()
     {
         return $this->comments()->where('status', Comment::STATUS_PUBLISHED);
+    }
+
+    public function emails()
+    {
+        return $this->morphMany(Email::class, 'rel');
     }
 
     public function user()
