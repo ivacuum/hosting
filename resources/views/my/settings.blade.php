@@ -18,7 +18,7 @@
         {{ trans('my.theme_dark') }}
       </label>
       @if ($errors->has('theme'))
-        <div class="form-help">{{ $errors->first('theme') }}</div>
+        <div class="invalid-feedback d-block">{{ $errors->first('theme') }}</div>
       @endif
     </div>
 
