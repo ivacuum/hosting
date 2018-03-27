@@ -8,7 +8,7 @@
 
 @if ($model->meta_image)
 <a href="{{ $email->signedLink($model->wwwLocale(null, $user->locale)) }}">
-  ![{{ $model->title }}]({{ $model->metaImage() }})
+  ![{{ $model->title }}]({{ $model->metaImage(500, 375) }})
 </a>
 @endif
 
