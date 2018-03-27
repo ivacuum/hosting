@@ -11,4 +11,6 @@
 @component('mail::button', ['color' => 'light', 'url' => $email->signedLink(path_locale('MySettings@edit', [], false, $user->locale))])
 {{ trans('mail.settings') }}
 @endcomponent
+
+@include('vendor.mail.html.hit')
 @endcomponent
