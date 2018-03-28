@@ -81,6 +81,11 @@ Route::get('mail/click/{timestamp}/{id}', 'Mail@click')->name('mail.click');
 Route::get('mail/report/{timestamp}/{id}', 'Mail@report')->middleware('auth');
 Route::get('mail/view/{timestamp}/{id}', 'Mail@view');
 
+Route::get('subscriptions', 'Subscriptions@edit');
+Route::post('subscriptions', 'Subscriptions@store');
+Route::put('subscriptions', 'Subscriptions@update')->middleware('auth');
+Route::get('subscriptions/confirm', 'Subscriptions@confirm')->middleware('auth');
+
 Route::get('my', 'My@index')->middleware('auth');
 Route::put('my/avatar', 'MyAvatar@update')->middleware('auth');
 Route::get('my/password', 'MyPassword@edit')->middleware('auth');
