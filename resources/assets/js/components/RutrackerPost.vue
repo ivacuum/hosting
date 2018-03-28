@@ -23,10 +23,10 @@ export default {
       return thumb.replace(
           /http(s?):\/\/i(\d+)\.imageban\.ru\/thumbs\/(\d+)\.(\d+)\.(\d+)\/([a-z\d]+)\.([a-z]+)/,
           'http$1://i$2.imageban.ru/out/$3/$4/$5/$6.$7'
-      ).replace(
+      )/*.replace(
           /https?:\/\/s(\d+)\.radikal\.ru\/i(\d+)\/(\d+)\/([a-z\d]+)\/([a-z\d]+)t\.([a-z]+)/,
           'https://s$1.radikal.ru/i$2/$3/$4/$5.$6'
-      )
+      )*/
     },
 
     fitImage(a, b) {
