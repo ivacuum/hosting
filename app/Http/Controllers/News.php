@@ -66,7 +66,7 @@ class News extends Controller
             return redirect($url, 301);
         }
 
-        $comments = $news->commentsPublished()->with('user')->orderBy('id')->get();
+        $comments = $news->commentsPublished()->with('user')->orderBy('created_at')->get();
 
         event(new \App\Events\Stats\NewsViewed($news->id));
 

@@ -65,7 +65,7 @@ class Torrents extends Controller
         $comments = Comment::with('rel', 'user')
             ->byType('Torrent')
             ->published()
-            ->orderBy('id', 'desc')
+            ->orderBy('created_at', 'desc')
             ->take(50)
             ->get();
 
@@ -115,7 +115,7 @@ class Torrents extends Controller
 
         event(new \App\Events\Stats\TorrentViewed($torrent->id));
 
-        $comments = $torrent->commentsPublished()->with('user')->orderBy('id')->get();
+        $comments = $torrent->commentsPublished()->with('user')->orderBy('created_at')->get();
 
         $meta_title = $torrent->title;
 
