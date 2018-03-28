@@ -7,6 +7,23 @@
 @section('content')
 <div class="d-flex flex-wrap align-items-center font-smooth mb-4">
   <h1 class="h2 mb-1 mr-3">{{ trans('news.index') }}</h1>
+  @if (Auth::check())
+    <form class="mr-3" action="{{ path('Subscriptions@update') }}" method="post">
+      {{ ViewHelper::inputHiddenMail() }}
+      <button class="btn btn-default btn-sm font-small-caps svg-flex svg-label">
+        @svg (mail)
+        {{ trans(Auth::user()->notify_news ? 'mail.unsubscribe' : 'mail.subscribe') }}
+      </button>
+      <input type="hidden" name="news" value="{{ Auth::user()->notify_news ? 0 : 1 }}">
+      @method('put')
+      @csrf
+    </form>
+  @else
+    <a class="btn btn-default btn-sm svg-flex svg-label font-small-caps mr-3" href="{{ path('Subscriptions@edit', ['news' => 1]) }}">
+      @svg (mail)
+      {{ trans('mail.subscribe') }}
+    </a>
+  @endif
   <a class="f18 svg-flex svg-label font-small-caps" href="{{ path('NewsRss@index') }}">
     @svg (rss-square)
     rss

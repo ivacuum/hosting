@@ -30,4 +30,31 @@ class UserObserver
             $model->password_changed_at = now();
         }
     }
+
+    public function saved(Model $model)
+    {
+        if ($model->isDirty('notify_gigs')) {
+            if ($model->notify_gigs === Model::NOTIFY_MAIL) {
+                event(new \App\Events\Stats\GigsSubscribed);
+            } elseif ($model->notify_gigs === Model::NOTIFY_NO) {
+                event(new \App\Events\Stats\GigsUnsubscribed);
+            }
+        }
+
+        if ($model->isDirty('notify_news')) {
+            if ($model->notify_news === Model::NOTIFY_MAIL) {
+                event(new \App\Events\Stats\NewsSubscribed);
+            } elseif ($model->notify_news === Model::NOTIFY_NO) {
+                event(new \App\Events\Stats\NewsUnsubscribed);
+            }
+        }
+
+        if ($model->isDirty('notify_trips')) {
+            if ($model->notify_trips === Model::NOTIFY_MAIL) {
+                event(new \App\Events\Stats\TripsSubscribed);
+            } elseif ($model->notify_trips === Model::NOTIFY_NO) {
+                event(new \App\Events\Stats\TripsUnsubscribed);
+            }
+        }
+    }
 }

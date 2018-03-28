@@ -70,6 +70,8 @@ p.sub {
   font-size: 12px;
 }
 
+li { color: #404040; }
+
 img {
   max-width: 100%;
 }

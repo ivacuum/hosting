@@ -81,7 +81,7 @@
         class="form-check-input {{ $errors->has('notify_gigs') ? 'is-invalid' : '' }}"
         type="checkbox"
         name="notify_gigs"
-        value="1"
+        value="{{ App\User::NOTIFY_MAIL }}"
         {{ old('notify_gigs', Auth::user()->notify_gigs) ? 'checked' : '' }}
       >
       <span class="form-check-label">{{ trans('my.notify_gigs') }}</span>
@@ -96,7 +96,7 @@
         class="form-check-input {{ $errors->has('notify_news') ? 'is-invalid' : '' }}"
         type="checkbox"
         name="notify_news"
-        value="1"
+        value="{{ App\User::NOTIFY_MAIL }}"
         {{ old('notify_news', Auth::user()->notify_news) ? 'checked' : '' }}
       >
       <span class="form-check-label">{{ trans('my.notify_news') }}</span>
@@ -112,7 +112,7 @@
           class="form-check-input {{ $errors->has('notify_trips') ? 'is-invalid' : '' }}"
           type="checkbox"
           name="notify_trips"
-          value="1"
+          value="{{ App\User::NOTIFY_MAIL }}"
           {{ old('notify_trips', Auth::user()->notify_trips) ? 'checked' : '' }}
         >
         <span class="form-check-label">{{ trans('my.notify_trips') }}</span>

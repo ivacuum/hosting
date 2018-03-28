@@ -32,6 +32,7 @@ use Illuminate\Notifications\Notifiable;
  *
  * @property \Illuminate\Database\Eloquent\Collection $chatMessages
  * @property \Illuminate\Database\Eloquent\Collection $comments
+ * @property \Illuminate\Database\Eloquent\Collection $emails
  * @property \Illuminate\Database\Eloquent\Collection $externalIdentities
  * @property \Illuminate\Database\Eloquent\Collection $images
  * @property \Illuminate\Database\Eloquent\Collection $news
@@ -59,6 +60,13 @@ class User extends Authenticatable
     protected $dates = ['last_login_at'];
     protected $perPage = 50;
 
+    protected $casts = [
+        'status' => 'int',
+        'notify_gigs' => 'int',
+        'notify_news' => 'int',
+        'notify_trips' => 'int',
+    ];
+
     // Relations
     public function chatMessages()
     {
@@ -68,6 +76,11 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function emails()
+    {
+        return $this->morphMany(Email::class, 'rel');
     }
 
     public function externalIdentities()
