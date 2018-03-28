@@ -45,8 +45,8 @@ export default {
       }
 
       const src = href.replace(
-          /https?:\/\/fastpic\.ru\/view\/(\d+)\/(\d+)\/([a-z\d]+)\/((?:[a-z\d]+)([a-z\d]{2}))\.([a-z]+)\.html/,
-          'https://i$1.fastpic.ru/big/$2/$3/$5/$4.$6'
+          /https?:\/\/fastpic\.ru\/view\/(\d+)\/(\d+)\/(\w+)\/((?:\w+)(\w{2}))\.(\w+)\.html/,
+          'https://i$1.fastpic.ru/big/$2/$3/$5/$4.$6?noht=1'
       )
 
       return src !== href ? src : ''
