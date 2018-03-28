@@ -6,7 +6,7 @@
   @ru
     <p>Хотите узнавать о новых историях о путешествиях, отчетах о посещенных концертах и новостях сайта сразу после их публикации? Тогда подпишитесь на уведомления с помощью формы ниже.</p>
   @endru
-  <form class="mw-400 mb-3" action="{{ path('Subscriptions@store') }}" method="post">
+  <form class="mw-400 mb-4" action="{{ path('Subscriptions@store') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
     <div class="form-group">
