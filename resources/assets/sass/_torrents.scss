@@ -50,7 +50,10 @@
     display: block;
   }
 
-  .postImg { margin: 2px 2px 0 0; }
+  .postImg {
+    margin: 2px 2px 0 0;
+    max-width: 100%;
+  }
   .postImgAligned { margin: 4px 4px 2px; }
 
   .img-left {
