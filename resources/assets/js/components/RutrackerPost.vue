@@ -1,5 +1,5 @@
 <template>
-  <div class="rutracker-post" v-once>
+  <div class="rutracker-post clearfix" v-once>
     <slot></slot>
   </div>
 </template>
