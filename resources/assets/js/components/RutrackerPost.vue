@@ -37,22 +37,36 @@ export default {
     },
 
     getOriginalImageFromLink($item) {
-      if (!$item.attr('title').search(/fastpic\.ru/)) {
+      const title = $item.attr('title')
+
+      if (-1 !== title.search(/fastpic\.ru/)) {
+        return this.getOriginalFastpicSrc($item.parent('.postLink').attr('href'))
+      } else if (-1 !== title.search(/\.radikal\.ru/)) {
+        return this.getOriginalRadikalSrc($item.parent('.postLink').attr('href'))
+      }
+
+      return
+    },
+
+    getOriginalFastpicSrc(path) {
+      if (!path || -1 === path.search(/fastpic\.ru/)) {
         return
       }
 
-      const href = $item.parent('.postLink').attr('href')
-
-      if (!href || -1 === href.search(/fastpic\.ru/)) {
-        return
-      }
-
-      const src = href.replace(
+      const src = path.replace(
           /https?:\/\/fastpic\.ru\/view\/(\d+)\/(\d+)\/(\w+)\/((?:\w+)(\w{2}))\.(\w+)\.html/,
           'https://i$1.fastpic.ru/big/$2/$3/$5/$4.$6?noht=1'
       )
 
-      return src !== href ? src : ''
+      return src !== path ? src : ''
+    },
+
+    getOriginalRadikalSrc(path) {
+      if (!path || -1 === path.search(/\.radikal\.ru/)) {
+        return
+      }
+
+      return path
     },
 
     getOriginalSrc($item) {
