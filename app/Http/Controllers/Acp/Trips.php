@@ -55,7 +55,9 @@ class Trips extends Controller
             return back()->with('message', 'Для рассылки уведомлений поездка должна быть опубликована');
         }
 
-        $users = User::where('notify_trips', 1)->get();
+        $users = User::where('notify_trips', 1)
+            ->where('status', User::STATUS_ACTIVE)
+            ->get();
 
         \Notification::send($users, new TripPublished($model));
 

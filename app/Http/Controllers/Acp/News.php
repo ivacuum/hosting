@@ -39,6 +39,7 @@ class News extends Controller
         }
 
         $users = User::where('notify_news', 1)
+            ->where('status', User::STATUS_ACTIVE)
             ->where('locale', $model->locale)
             ->get();
 
