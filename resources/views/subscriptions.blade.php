@@ -78,7 +78,28 @@
   </form>
   @ru
     <p><a class="link" href="{{ path('Life@gigs') }}">Истории о концертах</a> появляются всего несколько раз в год — по числу посещенных шоу. Количество <a class="link" href="{{ path('Life@index') }}">заметок о путешествиях</a> может доходить и до 50 в год, то есть в среднем это одна публикация в неделю. Иногда бывают пики до трех публикаций в неделю после насыщенных поездок. <a class="link" href="{{ path('News@index') }}">Новости сайта</a> в среднем публикуются раз в месяц с историей обновлений за прошедший период. Иногда в новостях публикуются материалы о полезных сервисах и разные мысли.</p>
-    <div>После отправки формы вы получите письмо со ссылкой на подтверждение желания получать письма-уведомления. В дальнейшем каждая рассылка будет содержать ссылку на управление настройками подписки — отписаться можно будет буквально в несколько кликов.</div>
+    <p>После отправки формы вы получите письмо со ссылкой на подтверждение желания получать письма-уведомления. В дальнейшем каждая рассылка будет содержать ссылку на управление настройками подписки — отписаться можно будет буквально в несколько кликов.</p>
   @endru
+
+  <h3 class="mt-5">RSS</h3>
+  @ru
+    <div class="mb-1">В качестве альтернативы все перечисленные уведомления можно получать через RSS.</div>
+  @en
+    <div class="mb-1">As an alternative you can subscribe to RSS feeds.</div>
+  @endru
+  <div class="d-flex align-items-middle flex-wrap">
+    <a class="f18 svg-flex svg-label font-small-caps mr-3" href="{{ path('LifeGigsRss@index') }}">
+      @svg (rss-square)
+      {{ mb_strtolower(trans('my.notify_gigs')) }}
+    </a>
+    <a class="f18 svg-flex svg-label font-small-caps mr-3" href="{{ path('NewsRss@index') }}">
+      @svg (rss-square)
+      {{ mb_strtolower(trans('my.notify_news')) }}
+    </a>
+    <a class="f18 svg-flex svg-label font-small-caps" href="{{ path('LifeTripsRss@index') }}">
+      @svg (rss-square)
+      {{ mb_strtolower(trans('my.notify_trips')) }}
+    </a>
+  </div>
 </div>
 @endsection
