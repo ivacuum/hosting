@@ -45,7 +45,7 @@ class Application {
       this.lazyLoadImages()
 
       this.conditionalInit()
-      this.sendBeaconDataOnUnload()
+      this.sendBeaconDataOnEvents()
     })
   }
 
@@ -189,21 +189,30 @@ class Application {
     $(document).on('pjax:send', (e) => this.pjax.onSend(e))
   }
 
-  sendBeaconDataOnUnload() {
-    if (navigator.sendBeacon) {
-      window.addEventListener('unload', () => {
-        if (this.beacon_data.length === 0) {
-          return
-        }
+  sendBeaconData() {
+    if (!navigator.sendBeacon) return
+    if (this.beacon_data.length === 0) return
 
-        let data = new FormData()
+    let data = new FormData()
 
-        data.append('events', JSON.stringify(this.beacon_data))
-        data.append('_token', window['AppOptions'].csrfToken)
+    data.append('events', JSON.stringify(this.beacon_data))
+    data.append('_token', window['AppOptions'].csrfToken)
+    this.beacon_data = []
 
-        navigator.sendBeacon('/ajax/beacon', data)
-      })
-    }
+    navigator.sendBeacon('/ajax/beacon', data)
+  }
+
+  sendBeaconDataOnEvents() {
+    if (!navigator.sendBeacon) return
+
+    document.addEventListener('visibilitychange', () => {
+      // При standalone может быть false?
+      if (document.visibilityState === 'hidden') {
+        this.sendBeaconData()
+      }
+    })
+
+    window.addEventListener('pagehide', () => this.sendBeaconData())
   }
 }
 

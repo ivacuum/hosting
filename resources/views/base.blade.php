@@ -158,6 +158,7 @@
 ]); ?>
 </script>
 <script src="{{ mix('/assets/polyfills.js') }}"></script>
+<script src="{{ mix('/assets/intersection-observer.js') }}"></script>
 <script src="{{ mix('/assets/jquery.js') }}"></script>
 <script src="{{ mix('/assets/jquery.pjax.js') }}"></script>
 <script src="{{ mix('/assets/jquery.scrollto.js') }}"></script>

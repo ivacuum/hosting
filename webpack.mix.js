@@ -6,6 +6,7 @@ mix.js('resources/assets/js/app.js', 'public/assets')
   .copy('resources/assets/js/pwa/service-worker.js', 'public/assets')
   .copy('resources/assets/js/pwa/service-worker-installer.js', 'public/assets')
 
+  .copy('node_modules/intersection-observer/intersection-observer.js', 'public/assets/intersection-observer.js')
   .copy('node_modules/promise-polyfill/promise.min.js', 'public/assets/polyfills.js')
 
   .copy('node_modules/jquery/dist/jquery.min.js', 'public/assets/jquery.js')
