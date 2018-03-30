@@ -30,7 +30,6 @@ Disallow: /en/japanese/wanikani
 Disallow: /en/life/chillout
 Disallow: /en/life/english
 Disallow: /en/life/german
-Disallow: /en/life/japanese
 Disallow: /en/life/podcasts
 Disallow: /en/life/using-in-travels
 Disallow: /en/my

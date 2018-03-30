@@ -71,7 +71,7 @@
         </li>
       @endru
       <li class="mb-2">
-        <a class="link" href="{{ path('Life@page', 'japanese') }}">{{ trans('life.japanese') }}</a>
+        <a class="link" href="{{ path('Japanese@index') }}">{{ trans('life.japanese') }}</a>
       </li>
     </ul>
   </section>

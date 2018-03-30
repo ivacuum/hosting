@@ -176,9 +176,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_3874.jpg'])
 
 @ru
-  <p>На столбе название станции. Можно попрактиковаться в <a class="link" href="japanese">иероглифах</a>.</p>
+  <p>На столбе название станции. Можно попрактиковаться в <a class="link" href="/japanese">иероглифах</a>.</p>
 @en
-  <p>Name of the station on the column. It is time practice <a class="link" href="japanese">Japanese</a>.</p>
+  <p>Name of the station on the column. It is time practice <a class="link" href="/en/japanese">Japanese</a>.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3876.jpg'])
 

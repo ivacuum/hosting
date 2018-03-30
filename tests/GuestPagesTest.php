@@ -86,7 +86,7 @@ class GuestPagesTest extends TestCase
 
     public function testPageLifePage()
     {
-        $this->get('/life/japanese')->assertStatus(200);
+        $this->get('/life/english')->assertStatus(200);
     }
 
     public function testPageLifeRss()
