@@ -1,9 +1,9 @@
 <template>
 <div>
   <div class="align-items-center d-md-flex justify-content-between mb-3 mb-md-0 mt-n2">
-    <div class="d-flex flex-wrap" v-if="elements.count">
-      <h3 class="mb-2 mb-md-0 mr-3 pt-1">{{ elements.count }} результатов</h3>
-      <button class="btn btn-default mb-2 mb-md-0" @click="reset">Очистить</button>
+    <div class="d-flex flex-wrap" v-if="results">
+      <h3 class="mb-2 mb-md-0 mr-3 pt-1">{{ $t('RESULTS', { results }) }}</h3>
+      <button class="btn btn-default mb-2 mb-md-0" @click="reset">{{ $t('CLEAR') }}</button>
     </div>
     <div class="d-none d-md-block" v-else>&nbsp;</div>
     <form class="mw-500" @submit.prevent="onSubmit">
@@ -11,7 +11,7 @@
         <input
           class="form-control"
           v-model="q"
-          placeholder="Поиск..."
+          :placeholder="$t('SEARCH')"
           autocapitalize="none"
         >
         <div class="input-group-append">
@@ -69,19 +69,37 @@ export default {
   data() {
     return {
       q: '',
+      results: 0,
       elements: [],
     }
+  },
+
+  i18n: {
+    messages: {
+      en: {
+        CLEAR: 'Clear',
+        SEARCH: 'Search...',
+        RESULTS: 'Results: {results}',
+      },
+      ru: {
+        CLEAR: 'Очистить',
+        SEARCH: 'Поиск...',
+        RESULTS: 'Результатов: {results}',
+      },
+    },
   },
 
   methods: {
     onSubmit() {
       axios.post(`${this.action}?q=${this.q}`)
         .then((response) => {
+          this.results = Number(response.data.count)
           this.elements = response.data
         })
     },
 
     reset() {
+      this.results = 0
       this.elements = []
     }
   }
