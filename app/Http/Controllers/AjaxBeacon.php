@@ -16,7 +16,8 @@ class AjaxBeacon extends Controller
             }
         }
 
-        return response('', 204);
+        return response('', 200)
+            ->header('Access-Control-Allow-Origin', '*');
     }
 
     protected function processNewsViewedEvent($event)
