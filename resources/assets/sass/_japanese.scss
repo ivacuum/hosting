@@ -11,6 +11,21 @@
 .bg-radical { background: linear-gradient(to bottom, #0af, #0093dd); }
 .bg-vocab { background: linear-gradient(to bottom, #a0f, #9300dd); }
 
+.border-kanji {
+  border-top: 1px solid #f6c;
+  border-bottom: 1px solid #cc0088;
+}
+
+.border-radical {
+  border-top: 1px solid #88d7ff;
+  border-bottom: 1px solid #069;
+}
+
+.border-vocab {
+  border-top: 1px solid #c655ff;
+  border-bottom: 1px solid #8800cc;
+}
+
 .ja-big { font-size: 72px; }
 .ja-character { line-height: 1; }
 .ja-image-shadow { filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .3)); }

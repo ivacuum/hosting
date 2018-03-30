@@ -1,4 +1,4 @@
-@extends('japanese.base', [
+@extends('japanese.wanikani.base', [
   'meta_replace' => ['kanji' => $kanji->character]
 ])
 

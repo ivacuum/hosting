@@ -1,4 +1,4 @@
-@extends('japanese.base', [
+@extends('japanese.wanikani.base', [
   'meta_replace' => ['radical' => $radical->meaning]
 ])
 

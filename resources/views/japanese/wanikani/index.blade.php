@@ -1,4 +1,4 @@
-@extends('japanese.base')
+@extends('japanese.wanikani.base')
 
 @section('content')
 <h1 class="h2">{{ trans('japanese.wanikani') }}</h1>

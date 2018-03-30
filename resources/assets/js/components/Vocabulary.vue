@@ -128,7 +128,6 @@ export default {
       loaded: false,
       elements: [],
       revealed: [],
-      hoveredId: 0,
     }
   },
 
