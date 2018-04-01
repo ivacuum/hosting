@@ -37,6 +37,38 @@ class Kanjis extends Controller
         return view($this->view, compact('models'));
     }
 
+    protected function requestDataForModel()
+    {
+        $data = parent::requestDataForModel();
+
+        if (!empty($data['similar_kanji'])) {
+            $characters = $this->splitKanjiCharacters($data['similar_kanji']);
+
+            $data['similar'] = Model::whereIn('character', $characters)
+                ->get(['id'])
+                ->pluck('id')
+                ->toArray();
+
+            request()->merge($data);
+        }
+
+        return $data;
+    }
+
+    protected function splitKanjiCharacters(string $string): array
+    {
+        $len = mb_strlen($string);
+        $result = [];
+
+        while ($len) {
+            $result[] = mb_substr($string, 0, 1);
+            $string = mb_substr($string, 1);
+            $len--;
+        }
+
+        return $result;
+    }
+
     /**
      * @param  Model $model
      */
@@ -45,5 +77,21 @@ class Kanjis extends Controller
         parent::updateModel($model);
 
         $model->radicals()->sync(request('radicals', []));
+
+        $result = $model->similar()->sync(request('similar', []));
+
+        $ids = $model->similar->pluck('id')->push($model->id);
+
+        $model->similar->each(function (Model $item) use ($ids) {
+            $item->similar()->sync($ids->filter(function ($id) use ($item) {
+                return $item->id !== $id;
+            }));
+        });
+
+        $detached = Model::find($result['detached']);
+
+        $detached->each(function (Model $item) use ($ids) {
+            $item->similar()->detach();
+        });
     }
 }

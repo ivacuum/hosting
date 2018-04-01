@@ -1,5 +1,7 @@
 @include('tpl.form_errors')
 
+{!! Form::text('similar_kanji')->default($model->exists ? $model->similar->pluck('character')->implode('') : '')->html() !!}
+
 <div class="form-group form-row">
   <label class="col-md-4 text-md-right">Состоит из ключей</label>
   <div class="col-md-8">
