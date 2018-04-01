@@ -70,6 +70,8 @@ return [
     'kanji.level' => 'Level',
     'kanji.meaning' => 'Meaning',
     'kanji.character' => 'Kanji',
+    'kanji.similar_count' => 'Similar',
+    'kanji.similar_kanji' => 'Similar kanji',
     'kanji.radicals_count' => 'Radicals',
 
     'news.html' => 'HTML',

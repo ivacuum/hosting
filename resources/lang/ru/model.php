@@ -68,6 +68,8 @@ return [
     'kanji.level' => 'Уровень',
     'kanji.meaning' => 'Значение',
     'kanji.character' => 'Кандзи',
+    'kanji.similar_count' => 'Похожие',
+    'kanji.similar_kanji' => 'Похожие кандзи',
     'kanji.radicals_count' => 'Ключи',
 
     'news.html' => 'HTML',
