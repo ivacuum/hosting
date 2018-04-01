@@ -78,6 +78,9 @@ Route::get('japanese/wanikani/vocabulary/{characters}', 'JapaneseWanikaniVocabul
 Route::put('japanese/wanikani/vocabulary/{id}', 'JapaneseWanikaniVocabulary@update')->middleware('auth');
 Route::delete('japanese/wanikani/vocabulary/{id}', 'JapaneseWanikaniVocabulary@destroy')->middleware('auth');
 
+Route::get('js/similar-kanji', 'JsSimilarKanji@index');
+Route::post('js/similar-kanji', 'JsSimilarKanji@store');
+
 Route::get('mail/click/{timestamp}/{id}', 'Mail@click')->name('mail.click');
 Route::get('mail/report/{timestamp}/{id}', 'Mail@report')->middleware('auth');
 Route::get('mail/view/{timestamp}/{id}', 'Mail@view');

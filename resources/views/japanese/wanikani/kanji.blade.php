@@ -37,17 +37,17 @@
 ></vocabulary>
 
 <div class="mt-5">
-  <a class="mr-3" href="{{ $kanji->externalLink() }}">
+  <a class="mr-3" href="{{ $kanji->externalLink() }}" rel="noreferrer">
     WaniKani
     @svg (external-link)
   </a>
 
-  <a class="mr-3" href="https://www.japandict.com/kanji/{{ $kanji->character }}">
+  <a class="mr-3" href="https://www.japandict.com/kanji/{{ $kanji->character }}" rel="noreferrer">
     JapanDict
     @svg (external-link)
   </a>
 
-  <a href="https://jisho.org/search/{{ $kanji->character }}%20%23kanji">
+  <a href="https://jisho.org/search/{{ $kanji->character }}%20%23kanji" rel="noreferrer">
     Jisho
     @svg (external-link)
   </a>

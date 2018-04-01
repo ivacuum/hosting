@@ -25,7 +25,7 @@
 ></kanji>
 
 <div class="mt-4">
-  <a href="{{ $radical->externalLink() }}">
+  <a href="{{ $radical->externalLink() }}" rel="noreferrer">
     WaniKani
     @svg (external-link)
   </a>

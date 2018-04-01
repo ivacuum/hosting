@@ -18,7 +18,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon $updated_at
  *
  * @property \App\Burnable $burnable
+ * @property \Illuminate\Database\Eloquent\Collection $burnables
  * @property \Illuminate\Database\Eloquent\Collection $radicals
+ * @property \Illuminate\Database\Eloquent\Collection $similar
  *
  * @mixin \Eloquent
  */
@@ -43,6 +45,11 @@ class Kanji extends Model
     public function radicals()
     {
         return $this->belongsToMany(Radical::class);
+    }
+
+    public function similar()
+    {
+        return $this->belongsToMany(static::class, 'kanji_similar', null, 'similar_id');
     }
 
     // Methods
