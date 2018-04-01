@@ -40,8 +40,8 @@
       :href="row.slug"
       v-for="row in elements.kanji"
     >
-      <div class="f36 font-weight-bold ja-character ja-shadow pb-1 text-nowrap">{{ row.character }}</div>
-      <div class="text-right">
+      <div class="f36 flex-shrink-0 font-weight-bold ja-character ja-shadow pb-1 text-nowrap">{{ row.character }}</div>
+      <div class="flex-grow-1 text-right">
         <div class="font-weight-bold ja-shadow-light">{{ row.reading }}</div>
         <div class="ja-shadow-light small text-capitalize">{{ row.meaning }}</div>
       </div>
