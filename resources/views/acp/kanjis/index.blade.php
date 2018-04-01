@@ -31,6 +31,7 @@
     <th class="text-md-right text-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'similar_count'])
     </th>
+    <th></th>
   </tr>
   </thead>
   <tbody>
@@ -38,6 +39,7 @@
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
       <td>{{ $model->level }}</td>
       <td>
+        <a class="anchor-sticky" name="id-{{ $model->id }}"></a>
         <a class="bg-kanji d-block font-weight-bold pb-1 px-2 rounded text-center text-white" href="{{ path("$self@show", $model) }}">
           <span class="d-inline-block ja-big ja-character ja-shadow">{{ $model->character }}</span>
         </a>
@@ -57,6 +59,11 @@
           </a>
         @endif
       </td>
+      <th>
+        <a href="{{ $model->externalLink() }}" rel="noreferrer">
+          @svg (external-link)
+        </a>
+      </th>
     </tr>
   @endforeach
   </tbody>
