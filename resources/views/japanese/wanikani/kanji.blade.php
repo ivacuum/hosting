@@ -22,19 +22,19 @@
   @endif
 </div>
 
-<kanji
-  action="{{ path('JapaneseWanikaniKanji@index') }}"
-  :burned="true"
-  :flat="true"
-  :similar-id="{{ $kanji->id }}"
-></kanji>
-
 <radicals
   action="{{ path('JapaneseWanikaniRadicals@index') }}"
   :burned="true"
   :flat="true"
   :kanji-id="{{ $kanji->id }}"
 ></radicals>
+
+<kanji
+  action="{{ path('JapaneseWanikaniKanji@index') }}"
+  :burned="true"
+  :flat="true"
+  :similar-id="{{ $kanji->id }}"
+></kanji>
 
 <vocabulary
   action="{{ path('JapaneseWanikaniVocabulary@index') }}"
