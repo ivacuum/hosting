@@ -92,6 +92,10 @@ export default {
       type: Number,
       default: 0,
     },
+    similarId: {
+      type: Number,
+      default: 0,
+    },
     vocabularyId: {
       type: Number,
       default: 0,
@@ -117,6 +121,7 @@ export default {
     axios.get(this.action, {
         params: {
           level: this.level,
+          similar_id: this.similarId,
           radical_id: this.radicalId,
           vocabulary_id: this.vocabularyId,
         }
@@ -154,11 +159,11 @@ export default {
     },
 
     showGroupActionButtons() {
-      return this.level === 0 && !this.radicalId && !this.vocabularyId
+      return this.level === 0 && !this.radicalId && !this.similarId && !this.vocabularyId
     },
 
     showToggleBurnedButton() {
-      if (this.guest || this.radicalId || this.vocabularyId) {
+      if (this.guest || this.radicalId || this.similarId || this.vocabularyId) {
         return false
       }
 
@@ -196,6 +201,10 @@ export default {
     titleLabel(level) {
       if (this.level === 0 && !this.flat) {
         return this.$i18n.t('LEVEL', { level })
+      }
+
+      if (this.similarId) {
+        return this.$i18n.t('SIMILAR_KANJI')
       }
 
       return this.$i18n.t('KANJI')

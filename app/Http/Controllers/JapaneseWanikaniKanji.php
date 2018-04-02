@@ -13,6 +13,7 @@ class JapaneseWanikaniKanji extends Controller
         $user_id = auth()->id();
         $characters = [];
         $radical_id = request('radical_id');
+        $similar_id = request('similar_id');
         $vocabulary_id = request('vocabulary_id');
 
         if (request()->ajax()) {
@@ -22,6 +23,11 @@ class JapaneseWanikaniKanji extends Controller
                 ->when($radical_id, function (Builder $query) use ($radical_id) {
                     return $query->whereHas('radicals', function (Builder $query) use ($radical_id) {
                         $query->where('radical_id', $radical_id);
+                    });
+                })
+                ->when($similar_id, function (Builder $query) use ($similar_id) {
+                    return $query->whereHas('similar', function (Builder $query) use ($similar_id) {
+                        $query->where('similar_id', $similar_id);
                     });
                 })
                 ->when($level >= 1 && $level <= 60, function (Builder $query) use ($level) {
@@ -60,7 +66,7 @@ class JapaneseWanikaniKanji extends Controller
                         'character' => $item->character,
                     ];
                 })
-                ->when(!$radical_id && !$vocabulary_id, function ($collection) {
+                ->when(!$radical_id && !$similar_id && !$vocabulary_id, function ($collection) {
                     return $collection->groupBy('level');
                 });
 

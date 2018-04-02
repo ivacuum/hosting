@@ -10,6 +10,7 @@ export default {
     LABELS_HIDE: 'Show labels on hover',
     LABELS_SHOW: 'Always show labels',
     SHUFFLE_ALL: 'Shuffle all',
+    SIMILAR_KANJI: 'Similar kanji',
   },
   ru: {
     KANJI: 'Кандзи',
@@ -22,5 +23,6 @@ export default {
     LABELS_HIDE: 'Подписывать при наведении',
     LABELS_SHOW: 'Показать подписи',
     SHUFFLE_ALL: 'Перемешать все',
+    SIMILAR_KANJI: 'Похожие кандзи',
   },
 }
