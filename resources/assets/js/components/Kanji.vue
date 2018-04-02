@@ -114,7 +114,13 @@ export default {
   mounted() {
     this.guest = !window['AppOptions'].loggedIn
 
-    axios.get(`${this.action}?radical_id=${this.radicalId}&level=${this.level}&vocabulary_id=${this.vocabularyId}`)
+    axios.get(this.action, {
+        params: {
+          level: this.level,
+          radical_id: this.radicalId,
+          vocabulary_id: this.vocabularyId,
+        }
+      })
       .then((response) => {
         if (this.flat) {
           if (response.data.kanji.length) {

@@ -115,7 +115,12 @@ export default {
   mounted() {
     this.guest = !window['AppOptions'].loggedIn
 
-    axios.get(`${this.action}?kanji_id=${this.kanjiId}&level=${this.level}`)
+    axios.get(this.action, {
+        params: {
+          level: this.level,
+          kanji_id: this.kanjiId,
+        }
+      })
       .then((response) => {
         if (this.flat) {
           // Объединение уровней в один для страницы кандзи
