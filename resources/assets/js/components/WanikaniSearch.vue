@@ -28,11 +28,11 @@
       :href="row.slug"
       v-for="row in elements.radicals"
     >
-      <div v-if="row.image">
+      <div class="flex-shrink-0" v-if="row.image">
         <img class="ja-character ja-image-shadow" :src="row.image" alt="" height="36">
       </div>
-      <div class="f36 font-weight-bold ja-character ja-shadow pb-1 text-nowrap" v-else>{{ row.character }}</div>
-      <div class="ja-shadow-light small text-capitalize text-right">{{ row.meaning }}</div>
+      <div class="f36 flex-shrink-0 font-weight-bold ja-character ja-shadow pb-1 text-nowrap" v-else>{{ row.character }}</div>
+      <div class="flex-grow-1 ja-shadow-light small text-capitalize text-right">{{ row.meaning }}</div>
     </a>
 
     <a
@@ -52,8 +52,8 @@
       :href="row.slug"
       v-for="row in elements.vocabulary"
     >
-      <div class="f36 font-weight-bold ja-character ja-shadow pb-1 text-nowrap">{{ row.character }}</div>
-      <div class="text-right">
+      <div class="f36 flex-shrink-0 font-weight-bold ja-character ja-shadow pb-1 text-nowrap">{{ row.character }}</div>
+      <div class="flex-grow-1 text-right">
         <div class="font-weight-bold ja-shadow-light">{{ row.kana }}</div>
         <div class="ja-shadow-light small text-capitalize">{{ row.meaning }}</div>
       </div>
