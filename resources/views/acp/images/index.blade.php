@@ -27,7 +27,7 @@
 
 @section('content-list')
 @if (!$type)
-  <table class="table-stats table-adaptive">
+  <table class="table-stats table-stats-align-top table-adaptive">
     <thead>
       <tr>
         <th><input type="checkbox" class="js-select-all" data-selector=".models-checkbox"></th>

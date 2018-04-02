@@ -1,7 +1,7 @@
 @extends('acp.list')
 
 @section('content-list')
-<table class="table-stats table-adaptive">
+<table class="table-stats table-stats-align-top table-adaptive">
   <thead>
   <tr>
     <th class="text-md-right">#</th>

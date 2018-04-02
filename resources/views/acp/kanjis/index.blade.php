@@ -15,7 +15,7 @@
 @endsection
 
 @section('content-list')
-<table class="table-stats table-adaptive">
+<table class="table-stats table-stats-align-top table-adaptive">
   <thead>
   <tr>
     <th class="text-nowrap">
@@ -37,14 +37,16 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-      <td>{{ $model->level }}</td>
       <td>
-        <a class="anchor-sticky" name="id-{{ $model->id }}"></a>
+        <a class="anchor-sticky" id="{{ $model->getRouteKeyName() }}-{{ $model->getRouteKey() }}"></a>
+        {{ $model->level }}
+      </td>
+      <td>
         <a class="bg-kanji d-block font-weight-bold pb-1 px-2 rounded text-center text-white" href="{{ path("$self@show", $model) }}">
           <span class="d-inline-block ja-big ja-character ja-shadow">{{ $model->character }}</span>
         </a>
       </td>
-      <td>{{ $model->meaning }}</td>
+      <td class="pre-line">{{ implode("\n", explode(', ', $model->meaning)) }}</td>
       <td class="text-md-right text-nowrap">
         @if ($model->radicals_count > 0)
           <a href="{{ path('Acp\Radicals@index', [$model->getForeignKey() => $model]) }}">

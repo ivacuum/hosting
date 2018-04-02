@@ -1,12 +1,5 @@
 a[href^="http"]:empty::before { content: attr(href); }
 
-.anchor-sticky {
-  display: block;
-  position: relative;
-  top: -2.25rem;
-  visibility: hidden;
-}
-
 .link,
 .pseudo {
   border-bottom: 1px solid;

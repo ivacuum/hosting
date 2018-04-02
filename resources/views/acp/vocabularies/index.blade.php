@@ -15,7 +15,7 @@
 @endsection
 
 @section('content-list')
-<table class="table-stats table-adaptive">
+<table class="table-stats table-stats-align-top table-adaptive">
   <thead>
   <tr>
     <th class="text-nowrap">
@@ -37,7 +37,7 @@
           <span class="d-inline-block f36 ja-character ja-shadow">{{ $model->character }}</span>
         </a>
       </td>
-      <td>{{ $model->meaning }}</td>
+      <td class="pre-line">{{ implode("\n", explode(', ', $model->meaning)) }}</td>
       <td>{{ !$model->sentences ? 'Нет' : '' }}</td>
     </tr>
   @endforeach

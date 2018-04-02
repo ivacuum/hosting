@@ -37,7 +37,7 @@
             {{ $model->slug }}
           </a>
         </td>
-        <td>{{ $model->iata }}</td>
+        <td class="text-muted">{{ $model->iata }}</td>
         <td class="text-md-right text-nowrap">
           @if ($model->trips_count > 0)
             <a href="{{ path('Acp\Trips@index', [$model->getForeignKey() => $model]) }}">
