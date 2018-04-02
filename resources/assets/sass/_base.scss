@@ -36,6 +36,8 @@ section { padding-top: 2rem; }
   font-size: 13px;
   line-height: 18px;
   min-height: 43px;
+
+  .no-footer & { display: none; }
 }
 
 .hover-opacity-85:hover { opacity: .85; }
