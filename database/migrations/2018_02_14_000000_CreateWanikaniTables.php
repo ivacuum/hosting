@@ -30,6 +30,7 @@ class CreateWanikaniTables extends Migration
 
         Schema::create('vocabularies', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('wk_id')->default(0);
             $table->unsignedTinyInteger('level')->default(0);
             $table->string('character');
             $table->string('meaning');

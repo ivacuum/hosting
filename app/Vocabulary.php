@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
  * Словарное слово
  *
  * @property integer $id
+ * @property integer $wk_id
  * @property integer $level
  * @property string  $character
  * @property string  $meaning
@@ -38,6 +39,13 @@ class Vocabulary extends Model
     }
 
     // Methods
+    public function audioMp3(): string
+    {
+        return $this->wk_id
+            ? "https://cdn.wanikani.com/subjects/audio/{$this->wk_id}-{$this->character}.mp3"
+            : '';
+    }
+
     public function breadcrumb(): string
     {
         return "{$this->character}";

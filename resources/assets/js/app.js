@@ -17,6 +17,7 @@ import 'vac-gfe/js/jquery.highlight'
 import 'vac-gfe/js/jquery.password-eye'
 import 'vac-gfe/js/jquery.select-all'
 
+import './audio-play'
 import './dcpp'
 import './events'
 import './life'

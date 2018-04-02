@@ -11,9 +11,13 @@
   <div class="f24 text-capitalize">{{ $vocabulary->meaning }}</div>
 </h1>
 
-<div>
+<div class="align-items-center d-flex flex-wrap">
   <span class="text-muted">{{ trans('japanese.reading') }}</span>
   <span class="f20">【{{ $vocabulary->kana }}】</span>
+  @if ($vocabulary->wk_id)
+    <button class="btn btn-default btn-sm js-audio-play" data-selector=".audio">Play</button>
+    <audio class="audio" src="{{ $vocabulary->audioMp3() }}"></audio>
+  @endif
 </div>
 
 <kanji
