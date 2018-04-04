@@ -93,7 +93,8 @@
   height: auto;
 }
 
-.screenshot-link .screenshot:hover { border-color: $link-hover-border-color; }
+.border-hover:hover,
+.screenshot-link .screenshot:hover { border-color: $link-hover-border-color !important; }
 
 .img-container {
   margin-bottom: 1.5rem;

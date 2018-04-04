@@ -13,7 +13,7 @@
 @endsection
 
 @section('content-list')
-<table class="table-stats table-adaptive">
+<table class="table-stats table-stats-align-top table-adaptive">
   <thead>
   <tr>
     <th class="text-md-right text-nowrap">
@@ -37,8 +37,8 @@
         {{ $model->id }}
       </td>
       <td class="text-center">
-        <a class="screenshot-link" href="{{ path("$self@show", $model) }}">
-          <img class="image-100 screenshot" src="{{ $model->thumbnailUrl() }}">
+        <a class="d-inline-block screenshot-link" href="{{ path("$self@show", $model) }}">
+          <img class="border border-hover image-100" src="{{ $model->thumbnailUrl() }}">
         </a>
       </td>
       <td>
