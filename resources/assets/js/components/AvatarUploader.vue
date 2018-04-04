@@ -75,7 +75,7 @@ export default {
         this.uploading = false
       }).catch((error) => {
         if (error.response && error.response.status === 422) {
-          this.errors = error.response.data
+          this.errors = error.response.data.errors
           this.uploading = false
         }
       })
