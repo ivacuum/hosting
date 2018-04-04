@@ -1,4 +1,4 @@
-<div class="d-flex pt-3 w-100">
+<div class="d-flex pt-3 w-100" id="comment-add">
   @if (Auth::check())
     <aside class="mr-3 mr-md-4">
       <div class="comment-avatar-size mt-1">
@@ -25,21 +25,21 @@
           <a
             class="btn bg-vk text-white"
             rel="nofollow"
-            href="{{ path('Auth\Vk@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}"
+            href="{{ path('Auth\Vk@index', ['goto' => "{$locale_uri}/{$request_uri}#comment-add"]) }}"
           >
             {{ trans('auth.vk') }}
           </a>
           <a
             class="btn bg-facebook text-white"
             rel="nofollow"
-            href="{{ path('Auth\Facebook@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}"
+            href="{{ path('Auth\Facebook@index', ['goto' => "{$locale_uri}/{$request_uri}#comment-add"]) }}"
           >
             {{ trans('auth.facebook') }}
           </a>
           <a
             class="btn bg-google text-white"
             rel="nofollow"
-            href="{{ path('Auth\Google@index', ['goto' => "{$locale_uri}/{$request_uri}#comments"]) }}"
+            href="{{ path('Auth\Google@index', ['goto' => "{$locale_uri}/{$request_uri}#comment-add"]) }}"
           >
             {{ trans('auth.google') }}
           </a>
