@@ -46,7 +46,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1627.jpg'])
 
-<a name="palace"></a>
+<a id="palace"></a>
 @ru
   <p>Дворец земледельцев и соседние дома.</p>
 @endru

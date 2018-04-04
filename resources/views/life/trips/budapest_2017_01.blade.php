@@ -362,7 +362,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3330.jpg'])
 
-<a name="rink"></a>
+<a id="rink"></a>
 @ru
   <p>Каток.</p>
 @en

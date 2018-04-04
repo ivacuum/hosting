@@ -17,7 +17,7 @@ $pic_centered_container_style = "max-width: {$w}px;";
     @endforeach
   @else
     @foreach ($pics as $pic)
-      <a name="{{ $pic }}"></a>
+      <a id="{{ $pic }}"></a>
     @endforeach
     <div class="pic-centered-container" style="{{ $pic_centered_container_style }}">
       <div class="pic" style="{{ $pic_style }}">

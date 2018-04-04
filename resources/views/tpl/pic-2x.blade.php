@@ -1,5 +1,4 @@
-<div class="pic-container shortcuts-item">
-  <a name="{{ $pic }}"></a>
+<div class="pic-container shortcuts-item" id="{{ $pic }}">
   <div class="pic-centered-container">
     <div class="pic">
       @if ($is_crawler)

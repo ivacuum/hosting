@@ -3,7 +3,7 @@
 @section('content')
 <h3>Последние комментарии</h3>
 @foreach ($comments as $comment)
-  <a name="comment-{{ $comment->id }}"></a>
+  <a id="comment-{{ $comment->id }}"></a>
   <div class="d-flex py-3 w-100 border-bottom">
     <aside class="mr-3 mr-md-4">
         @if (!is_null($comment->user))

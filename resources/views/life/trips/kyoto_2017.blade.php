@@ -788,7 +788,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6652.jpg'])
 
-<a name="aed"></a>
+<a id="aed"></a>
 @ru
   <p>Много где можно найти дефибрилляторы. На станции.</p>
 @en

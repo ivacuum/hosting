@@ -111,7 +111,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3125.jpg'])
 
-<a name="byaspeka"></a>
+<a id="byaspeka"></a>
 @ru
   <p>Бяспека — безопасность. <a class="link" href="brest.2017#nebyaspeka">Небяспека</a> — опасность.</p>
 @endru

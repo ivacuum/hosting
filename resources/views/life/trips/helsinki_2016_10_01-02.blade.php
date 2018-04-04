@@ -265,7 +265,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1838.jpg'])
 
-<a name="lifebuoy"></a>
+<a id="lifebuoy"></a>
 @ru
   <p>Вдоль набережных расставлены спасательные круги.</p>
 @endru

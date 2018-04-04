@@ -18,7 +18,7 @@
   'IMG_0409.jpg',
 ]])
 
-<a name="trees"></a>
+<a id="trees"></a>
 @ru
   <p>Хороша аллея выросла.</p>
 @en

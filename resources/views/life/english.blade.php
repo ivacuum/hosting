@@ -14,7 +14,7 @@ https://english.stackexchange.com/questions/51209/translate-into-vs-translate-to
   <p class="mb-5">Конспект информации, освоенной во время изучения языка.</p>
 @endru
 
-<a name="irregular-verbs"></a>
+<a id="irregular-verbs"></a>
 <h2>@ru Неправильные глаголы @en Irregular Verbs @endru</h2>
 <table class="table-stats mb-5">
   <thead>
@@ -68,7 +68,7 @@ https://english.stackexchange.com/questions/51209/translate-into-vs-translate-to
   </tbody>
 </table>
 
-<a name="articles"></a>
+<a id="articles"></a>
 <h2>@ru Артикли @en Articles @endru</h2>
 <blockquote>
   <div>— Johnny, do you know where <b>the</b> Pyramids are?</div>

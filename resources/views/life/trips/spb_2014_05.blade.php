@@ -113,7 +113,7 @@
 @endru
 @include('tpl.pic-arbitrary', ['pic' => 'IMG_0559.jpg', 'w' => 563, 'h' => 750])
 
-<a name="exhibition_photo"></a>
+<a id="exhibition_photo"></a>
 @ru
   <p>Аллея.</p>
 @en

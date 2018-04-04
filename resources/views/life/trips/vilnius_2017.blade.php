@@ -157,7 +157,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1383.jpg'])
 
-<a name="hot-air-balloon"></a>
+<a id="hot-air-balloon"></a>
 @ru
   <p>Воздушные шары украсят любой пейзаж.</p>
 @endru

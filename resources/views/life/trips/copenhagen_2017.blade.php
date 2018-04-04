@@ -131,7 +131,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0605.jpg'])
 
-<a name="pricy-meal"></a>
+<a id="pricy-meal"></a>
 @ru
   <p>За двойной бутерброд с ветчиной и помидором + стаканом апельсинового сока в кафе зарядили 1 500 ₽. Вот такая проба обеденного меню. Стало ясно, что дальше придется в этом городе <s>выживать</s> ходить в макдак, если не хочется остаться без штанов.</p>
 @en
@@ -1189,7 +1189,7 @@
   <p>So it was my first flight with RyanAir. Non-European citizen needs to do a visa check at the check-in desk. Usually desks close 40 minutes before the flight. I thought it's just a check and a stamp on the paper sheet, so no worries. Well, it really was that simple. 35 minutes to go. Gate was the farthest, like 15–20 minutes walk. Boarding had just started when I got there.</p>
 @endru
 
-<a name="no-bus"></a>
+<a id="no-bus"></a>
 @ru
   <p>Отличный способ понять как много услуг включено в стоимость авиабилета, когда пробуешь лететь без них. Например, не было даже автобуса до самолета — шли пешком из терминала по аэродрому.</p>
 @en

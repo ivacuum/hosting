@@ -62,7 +62,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0069.jpg'])
 
-<a name="lamps"></a>
+<a id="lamps"></a>
 @ru
   <p>Дороги.</p>
 @en

@@ -44,7 +44,7 @@
   'IMG_0138.jpg',
 ]])
 
-<a name="drama_theater"></a>
+<a id="drama_theater"></a>
 @ru
   <p>Пустынная площадь перед театром драмы.</p>
 @endru
@@ -58,7 +58,7 @@
   'IMG_0175.jpg',
 ]])
 
-<a name="sun_pole"></a>
+<a id="sun_pole"></a>
 @ru
   <p>На столбе с указателями солнечная панель.</p>
 @endru

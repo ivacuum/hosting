@@ -57,7 +57,7 @@
 @endru
 @include('tpl.pic-arbitrary', ['pic' => 'IMG_1062.jpg', 'w' => 563, 'h' => 750])
 
-<a name="banana"></a>
+<a id="banana"></a>
 @ru
   <p>Впервые попались маленькие бананы. Традиционные больше по вкусу.</p>
 @endru
