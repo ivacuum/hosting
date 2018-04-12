@@ -75,4 +75,4 @@ rm -rf $(ls -t | tail -n +4)
 
 # Чистка storage/framework/views
 touch $VIEWS_DIR/.gitignore
-find $VIEWS_DIR -mtime +7d -delete
+find $VIEWS_DIR -mtime +1d -delete
