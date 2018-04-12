@@ -14,6 +14,7 @@ class Torrents extends Controller
 
     public function index()
     {
+        $q = request('q');
         $status = request('status');
         $user_id = request('user_id');
 
@@ -27,6 +28,9 @@ class Torrents extends Controller
             })
             ->when($user_id, function (Builder $query) use ($user_id) {
                 return $query->where('user_id', $user_id);
+            })
+            ->when($q, function (Builder $query) use ($q) {
+                return $query->where('title', 'LIKE', "%{$q}%");
             })
             ->paginate()
             ->withPath(path("{$this->class}@index"));

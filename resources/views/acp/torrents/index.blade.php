@@ -1,4 +1,6 @@
-@extends('acp.list')
+@extends('acp.list', [
+  'search_form' => true,
+])
 
 @section('heading-after-search')
 @include('acp.tpl.dropdown-filter', [
