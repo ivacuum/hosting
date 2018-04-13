@@ -11,7 +11,6 @@ class Kernel extends HttpKernel
 
     protected $middlewareGroups = [
         'web' => [
-            Middleware\CookieDomain::class,
             Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
