@@ -64,7 +64,7 @@
 <div class="mt-4">
   <burn-kanji
     action="{{ path('JapaneseWanikaniKanji@destroy', $kanji->id) }}"
-    :burned="{{ (int) !is_null($kanji->burnable) }}"
+    :burned="{{ intval(null !== $kanji->burnable) }}"
   ></burn-kanji>
 </div>
 @endauth

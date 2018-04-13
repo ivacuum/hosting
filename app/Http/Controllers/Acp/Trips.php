@@ -36,7 +36,7 @@ class Trips extends Controller
             ->when($user_id, function (Builder $query) use ($user_id) {
                 return $query->where('user_id', $user_id);
             })
-            ->unless(is_null($status), function (Builder $query) use ($status) {
+            ->unless(null === $status, function (Builder $query) use ($status) {
                 return $query->where('status', $status);
             })
             ->orderBy($sort_key, $sort_dir)
@@ -82,8 +82,8 @@ class Trips extends Controller
                     ->ignore($model->id ?? null),
             ],
             'city_id' => 'required|integer|min:1',
-            'title_ru' => is_null($model) ? '' : 'required',
-            'title_en' => is_null($model) ? '' : 'required',
+            'title_ru' => null === $model ? '' : 'required',
+            'title_en' => null === $model ? '' : 'required',
             'date_end' => 'required|date',
             'date_start' => 'required|date',
         ];

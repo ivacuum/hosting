@@ -35,7 +35,7 @@
 <div class="mt-4">
   <burn-radical
     action="{{ path('JapaneseWanikaniRadicals@destroy', $radical->id) }}"
-    :burned="{{ (int) !is_null($radical->burnable) }}"
+    :burned="{{ intval(null !== $radical->burnable) }}"
   ></burn-radical>
 </div>
 @endauth

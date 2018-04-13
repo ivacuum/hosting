@@ -163,7 +163,7 @@ class User extends Authenticatable
     {
         $user = $this->where('email', $data['email'])->first();
 
-        if (!is_null($user)) {
+        if (null !== $user) {
             return $user;
         }
 

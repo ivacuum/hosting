@@ -119,8 +119,8 @@ class MyTrips extends Controller
             'status' => '',
             'city_id' => 'required|integer|min:1',
             'markdown' => '',
-            'title_ru' => is_null($model) ? '' : 'required',
-            'title_en' => is_null($model) ? '' : 'required',
+            'title_ru' => null === $model ? '' : 'required',
+            'title_en' => null === $model ? '' : 'required',
             'date_end' => 'required|date',
             'date_start' => 'required|date',
         ];

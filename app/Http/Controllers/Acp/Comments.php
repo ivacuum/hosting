@@ -16,7 +16,7 @@ class Comments extends Controller
 
         $models = Model::with('user')
             ->orderBy('id', 'desc')
-            ->when(!is_null($status), function (Builder $query) use ($status) {
+            ->when(null !== $status, function (Builder $query) use ($status) {
                 return $query->where('status', $status);
             })
             ->when($news_id, function (Builder $query) use ($news_id) {

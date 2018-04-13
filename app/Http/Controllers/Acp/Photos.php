@@ -47,7 +47,7 @@ class Photos extends Controller
 
         $file = request()->file('file');
 
-        if (is_null($file) || !$file->isValid()) {
+        if (null === $file || !$file->isValid()) {
             throw new \Exception('Необходимо предоставить хотя бы один файл');
         }
 

@@ -27,7 +27,7 @@ class Radicals extends Controller
                     $query->where('kanji_id', $kanji_id);
                 });
             })
-            ->when(!is_null($kanjis_count), function (Builder $query) use ($kanjis_count) {
+            ->when(null !== $kanjis_count, function (Builder $query) use ($kanjis_count) {
                 return $kanjis_count
                     ? $query->has('kanjis')
                     : $query->doesntHave('kanjis');

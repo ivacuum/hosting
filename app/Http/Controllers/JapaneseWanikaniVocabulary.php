@@ -31,7 +31,7 @@ class JapaneseWanikaniVocabulary extends Controller
                         'kana' => $item->kana,
                         'slug' => path('JapaneseWanikaniVocabulary@show', $item->character),
                         'level' => $item->level,
-                        'burned' => $user_id ? !is_null($item->burnable) : false,
+                        'burned' => $user_id ? null !== $item->burnable : false,
                         'meaning' => $item->meaning,
                         'character' => $item->character,
                     ];

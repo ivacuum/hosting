@@ -53,7 +53,7 @@
 <div class="mt-4">
   <burn-vocabulary
     action="{{ path('JapaneseWanikaniVocabulary@destroy', $vocabulary->id) }}"
-    :burned="{{ (int) !is_null($vocabulary->burnable) }}"
+    :burned="{{ intval(null !== $vocabulary->burnable) }}"
   ></burn-vocabulary>
 </div>
 @endauth

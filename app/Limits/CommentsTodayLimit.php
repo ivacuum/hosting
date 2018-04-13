@@ -18,7 +18,7 @@ class CommentsTodayLimit
             ->orderBy('id', 'desc')
             ->first(['created_at']);
 
-        if (is_null($last)) {
+        if (null === $last) {
             return false;
         }
 

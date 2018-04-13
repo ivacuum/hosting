@@ -46,7 +46,7 @@ class Rto
         } elseif (strlen($input) === 40) {
             $topic_id = $this->topicIdByHash($input);
 
-            if (is_null($topic_id)) {
+            if (null === $topic_id) {
                 return null;
             }
         }
@@ -60,7 +60,7 @@ class Rto
 
     public function torrentData($input)
     {
-        if (is_null($topic_id = $this->findTopicId($input))) {
+        if (null === $topic_id = $this->findTopicId($input)) {
             return null;
         }
 
@@ -104,7 +104,7 @@ class Rto
         $body = (string) $response->getBody();
         $magnet = $this->parseMagnetLink($body);
 
-        if (is_null($magnet)) {
+        if (null === $magnet) {
             return 'Магнет-ссылка не найдена в раздаче, попробуйте другую ссылку';
         }
 
@@ -121,7 +121,7 @@ class Rto
     {
         $json = $this->topicDataById($topic_id);
 
-        if (is_null($json)) {
+        if (null === $json) {
             return 'Раздача не найдена, попробуйте другую ссылку';
         }
 

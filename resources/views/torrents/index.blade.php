@@ -68,7 +68,7 @@
     @php ($last_date = null)
     @if (sizeof($torrents))
       @foreach ($torrents as $torrent)
-        @if (is_null($last_date) || !$torrent->registered_at->isSameDay($last_date))
+        @if (null === $last_date || !$torrent->registered_at->isSameDay($last_date))
           <h6 class="{{ $loop->first ? 'mt-0' : 'mt-4' }}">{{ $torrent->fullDate() }}</h6>
           @php ($last_date = $torrent->registered_at)
         @endif

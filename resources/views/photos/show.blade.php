@@ -4,17 +4,17 @@
 <div class="row mt-n2">
   <div class="col-lg-10 mb-3">
     <div class="mobile-wide position-relative text-center">
-      @if (!is_null($next))
+      @if (null !== $next)
         <a class="photo-show-nav photo-show-prev js-pjax js-pjax-no-dim" id="previous_page" href="{{ path("$self@show", [$next->id, 'city_id' => $city_id, 'country_id' => $country_id, 'tag_id' => $tag_id, 'trip_id' => $trip_id]) }}">&nbsp;</a>
       @endif
-      @if (!is_null($prev))
+      @if (null !== $prev)
         <a class="photo-show-nav photo-show-next js-pjax js-pjax-no-dim" id="next_page" href="{{ path("$self@show", [$prev->id, 'city_id' => $city_id, 'country_id' => $country_id, 'tag_id' => $tag_id, 'trip_id' => $trip_id]) }}">&nbsp;</a>
       @endif
       <div class="d-inline-block position-relative">
-        @if (!is_null($next))
+        @if (null !== $next)
           <div class="fotorama__arr fotorama__arr--prev no-pointer-events" tabindex="0" role="button"></div>
         @endif
-        @if (!is_null($prev))
+        @if (null !== $prev)
           <div class="fotorama__arr fotorama__arr--next no-pointer-events" tabindex="0" role="button"></div>
         @endif
         <img class="photo-show-img" src="{{ $photo->originalUrl() }}">
@@ -54,10 +54,10 @@
     @endif
   </div>
 </div>
-@if (!is_null($prev))
+@if (null !== $prev)
   <img hidden src="{{ $prev->originalUrl() }}">
 @endif
-@if (!is_null($next))
+@if (null !== $next)
   <img hidden src="{{ $next->originalUrl() }}">
 @endif
 @endsection

@@ -23,7 +23,7 @@ class RtoUpdate extends Command
                 $torrent = $torrents->where('rto_id', $id)->first();
 
                 // Раздача не найдена
-                if (is_null($json)) {
+                if (null === $json) {
                     $torrent->softDelete();
 
                     $this->info("Раздача {$id} не найдена и удалена: {$torrent->title}");

@@ -19,7 +19,7 @@ class Users extends Controller
         [$sort_key, $sort_dir] = $this->getSortParams();
 
         $models = Model::withCount(['comments', 'images', 'torrents', 'trips'])
-            ->when(!is_null($avatar), function (Builder $query) use ($avatar) {
+            ->when(null !== $avatar, function (Builder $query) use ($avatar) {
                 return $query->where('avatar', $avatar ? '<>' : '=', '');
             })
             ->when($last_login_at === 'week', function (Builder $query) {
@@ -67,7 +67,7 @@ class Users extends Controller
                 Rule::unique('users', 'email')->ignore($model->id ?? null),
             ],
             'status' => 'boolean',
-            'password' => is_null($model) ? 'required_without:random_password|min:6' : 'min:6',
+            'password' => null === $model ? 'required_without:random_password|min:6' : 'min:6',
         ];
     }
 

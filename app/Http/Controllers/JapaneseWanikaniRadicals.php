@@ -32,7 +32,7 @@ class JapaneseWanikaniRadicals extends Controller
                         'slug' => path('JapaneseWanikaniRadicals@show', $item->meaning),
                         'image' => $item->image,
                         'level' => $item->level,
-                        'burned' => $user_id ? !is_null($item->burnable) : false,
+                        'burned' => $user_id ? null !== $item->burnable : false,
                         'meaning' => $item->meaning,
                         'character' => $item->character,
                     ];

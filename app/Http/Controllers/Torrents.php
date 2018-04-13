@@ -17,7 +17,7 @@ class Torrents extends Controller
         $fulltext = request('fulltext');
         $category_id = request('category_id');
 
-        abort_if($category_id && is_null($category = \TorrentCategoryHelper::find($category_id)), 404);
+        abort_if($category_id && null === $category = \TorrentCategoryHelper::find($category_id), 404);
 
         if ($q) {
             $ids = Torrent::search($q, function (SphinxQL $builder) use ($category_id, $fulltext, $q) {
@@ -39,7 +39,7 @@ class Torrents extends Controller
 
         $torrents = $torrents->published()
             ->orderBy('registered_at', 'desc')
-            ->when(!$q && !is_null($category), function (Builder $query) use ($category_id) {
+            ->when(!$q && null !== $category, function (Builder $query) use ($category_id) {
                 $ids = \TorrentCategoryHelper::selfAndDescendantsIds($category_id);
 
                 event(new \App\Events\Stats\TorrentFilteredByCategory);

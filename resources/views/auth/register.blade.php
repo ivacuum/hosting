@@ -7,12 +7,27 @@
     {{ ViewHelper::inputHiddenMail() }}
 
     <div class="form-group">
-      <input autofocus required class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{ trans('auth.email') }}">
+      <input
+        autofocus
+        required
+        class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
+        type="email"
+        name="email"
+        value="{{ old('email') }}"
+        autocomplete="email"
+        placeholder="{{ trans('auth.email') }}"
+      >
       <div class="invalid-feedback">{{ $errors->first('email') }}</div>
     </div>
 
     <div class="form-group">
-      <input required class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password" placeholder="{{ trans('auth.password') }}">
+      <input
+        required
+        class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
+        type="password"
+        name="password"
+        placeholder="{{ trans('auth.password') }}"
+      >
       <div class="invalid-feedback">{{ $errors->first('password') }}</div>
     </div>
 

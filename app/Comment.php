@@ -106,7 +106,7 @@ class Comment extends Model
             ->pluck('user')
             // Фильтр удаленных пользователей
             ->filter(function ($value) {
-                return !is_null($value);
+                return null !== $value;
             });
     }
 

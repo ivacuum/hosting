@@ -56,7 +56,7 @@ class News extends Controller
     {
         $news = Model::find($id);
 
-        if (is_null($news)) {
+        if (null === $news) {
             return redirect(path("{$this->class}@index"), 301);
         }
 

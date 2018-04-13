@@ -59,7 +59,7 @@ class Photo extends Model
 
     public function scopeForTag(Builder $query, $id = null)
     {
-        return $query->unless(is_null($id), function (Builder $query) use ($id) {
+        return $query->unless(null === $id, function (Builder $query) use ($id) {
             return $query->whereHas('tags', function (Builder $query) use ($id) {
                 $query->where('tag_id', $id);
             });
@@ -68,7 +68,7 @@ class Photo extends Model
 
     public function scopeForTrip(Builder $query, $id = null)
     {
-        return $query->unless(is_null($id), function (Builder $query) use ($id) {
+        return $query->unless(null === $id, function (Builder $query) use ($id) {
             return $query->where('rel_id', $id)->where('rel_type', 'Trip');
         });
     }

@@ -71,7 +71,7 @@ class Dev extends BaseController
 
         if ($handle) {
             while (false !== $line = fgets($handle)) {
-                if (is_null($json = json_decode($line))) {
+                if (null === $json = json_decode($line)) {
                     continue;
                 }
 

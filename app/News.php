@@ -82,11 +82,11 @@ class News extends Model
         $start = Carbon::createFromDate($year, $month, $day);
         $end = $start->copy();
 
-        if (!is_null($day)) {
+        if (null !== $day) {
             return [$start->startOfDay(), $end->endOfDay()];
         }
 
-        if (!is_null($month)) {
+        if (null !== $month) {
             return [$start->startOfMonth(), $end->endOfMonth()];
         }
 

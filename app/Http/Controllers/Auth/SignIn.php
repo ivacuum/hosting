@@ -15,7 +15,7 @@ class SignIn extends BaseSignIn
             return true;
         }
 
-        if (is_null($user = \Auth::getLastAttempted())) {
+        if (null === $user = \Auth::getLastAttempted()) {
             return false;
         }
 

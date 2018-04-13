@@ -23,7 +23,7 @@ class Torrents extends Controller
         $models = Model::with('user')
             ->withCount('comments')
             ->orderBy($sort_key, $sort_dir)
-            ->when(!is_null($status), function (Builder $query) use ($status) {
+            ->when(null !== $status, function (Builder $query) use ($status) {
                 return $query->where('status', $status);
             })
             ->when($user_id, function (Builder $query) use ($user_id) {

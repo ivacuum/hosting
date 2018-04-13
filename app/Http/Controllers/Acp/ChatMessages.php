@@ -13,7 +13,7 @@ class ChatMessages extends Controller
 
         $models = Model::with('user')
             ->orderBy('id', 'desc')
-            ->unless(is_null($status), function (Builder $query) use ($status) {
+            ->unless(null === $status, function (Builder $query) use ($status) {
                 return $query->where('status', $status);
             })
             ->when($user_id, function (Builder $query) use ($user_id) {

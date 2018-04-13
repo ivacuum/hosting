@@ -7,9 +7,7 @@ class DcppHubClick extends Controller
     public function store(int $id)
     {
         /* @var DcppHub $hub */
-        $hub = DcppHub::find($id);
-
-        if (!is_null($hub)) {
+        if (null !== $hub = DcppHub::find($id)) {
             $hub->incrementClicks();
         }
 
