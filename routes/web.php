@@ -49,16 +49,6 @@ Route::get('gallery/view/{image}', 'Gallery@view');
 Route::get('gallery/upload', 'Gallery@upload')->middleware('auth');
 Route::post('gallery/upload', 'Gallery@store')->middleware('auth');
 
-Route::get('life', 'Life@index');
-Route::get('life/calendar', 'Life@calendar');
-Route::get('life/cities', 'Life@cities');
-Route::get('life/countries', 'Life@countries');
-Route::get('life/countries/{slug}', 'Life@country');
-Route::get('life/gigs', 'Life@gigs');
-Route::get('life/gigs/rss', 'LifeGigsRss@index');
-Route::get('life/rss', 'LifeTripsRss@index');
-Route::get('life/{slug}', 'Life@page');
-
 Route::get('japanese', 'Japanese@index');
 Route::get('japanese/hiragana-katakana', 'JapaneseHiraganaKatakana@index');
 Route::get('japanese/wanikani', 'JapaneseWanikani@index');
@@ -78,14 +68,19 @@ Route::get('japanese/wanikani/vocabulary/{characters}', 'JapaneseWanikaniVocabul
 Route::put('japanese/wanikani/vocabulary/{id}', 'JapaneseWanikaniVocabulary@update')->middleware('auth');
 Route::delete('japanese/wanikani/vocabulary/{id}', 'JapaneseWanikaniVocabulary@destroy')->middleware('auth');
 
+Route::get('life', 'Life@index');
+Route::get('life/calendar', 'Life@calendar');
+Route::get('life/cities', 'Life@cities');
+Route::get('life/countries', 'Life@countries');
+Route::get('life/countries/{slug}', 'Life@country');
+Route::get('life/gigs', 'Life@gigs');
+Route::get('life/gigs/rss', 'LifeGigsRss@index');
+Route::get('life/rss', 'LifeTripsRss@index');
+Route::get('life/{slug}', 'Life@page');
+
 Route::get('mail/click/{timestamp}/{id}', 'Mail@click')->name('mail.click');
 Route::get('mail/report/{timestamp}/{id}', 'Mail@report')->middleware('auth');
 Route::get('mail/view/{timestamp}/{id}', 'Mail@view');
-
-Route::get('subscriptions', 'Subscriptions@edit');
-Route::post('subscriptions', 'Subscriptions@store');
-Route::put('subscriptions', 'Subscriptions@update')->middleware('auth');
-Route::get('subscriptions/confirm', 'Subscriptions@confirm')->middleware('auth');
 
 Route::get('my', 'My@index')->middleware('auth');
 Route::put('my/avatar', 'MyAvatar@update')->middleware('auth');
@@ -142,6 +137,11 @@ Route::get('retracker/dev', 'Retracker@dev');
 Route::get('retracker/usage', 'Retracker@usage');
 
 Route::get('stickers', 'Stickers@index');
+
+Route::get('subscriptions', 'Subscriptions@edit');
+Route::post('subscriptions', 'Subscriptions@store');
+Route::put('subscriptions', 'Subscriptions@update')->middleware('auth');
+Route::get('subscriptions/confirm', 'Subscriptions@confirm')->middleware('auth');
 
 Route::get('torrent', 'TorrentPromo@index');
 
