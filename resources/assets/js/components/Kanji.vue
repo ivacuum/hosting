@@ -115,7 +115,7 @@ export default {
     messages: I18nMessages,
   },
 
-  mounted() {
+  created() {
     this.guest = !window['AppOptions'].loggedIn
 
     axios.get(this.action, {
