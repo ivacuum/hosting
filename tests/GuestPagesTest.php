@@ -2,79 +2,13 @@
 
 class GuestPagesTest extends TestCase
 {
-    public function testPageHome()
+    /**
+     * @dataProvider guestPages200
+     * @param string $url
+     */
+    public function testGuestPages200($url)
     {
-        $this->get('/')->assertStatus(200);
-    }
-
-    public function testPageAbout()
-    {
-        $this->get('/about')->assertStatus(200);
-    }
-
-    public function testPageAuthLogin()
-    {
-        $this->get('/auth/login')->assertStatus(200);
-    }
-
-    public function testPageAuthRegister()
-    {
-        $this->get('/auth/register')->assertStatus(200);
-    }
-
-    public function testPageAuthPasswordRemind()
-    {
-        $this->get('/auth/password/remind')->assertStatus(200);
-    }
-
-    public function testPageDc()
-    {
-        $this->get('/dc')->assertStatus(200);
-    }
-
-    public function testPageDcFaq()
-    {
-        $this->get('/dc/faq')->assertStatus(200);
-    }
-
-    public function testPageDocs()
-    {
-        $this->get('/docs')->assertStatus(200);
-    }
-
-    public function testPageFiles()
-    {
-        $this->get('/files')->assertStatus(200);
-    }
-
-    public function testPageLife()
-    {
-        $this->get('/life')->assertStatus(200);
-    }
-
-    public function testPageLifeCities()
-    {
-        $this->get('/life/cities')->assertStatus(200);
-    }
-
-    public function testPageLifeCity()
-    {
-        $this->get('/life/kaluga')->assertStatus(200);
-    }
-
-    public function testPageLifeCountries()
-    {
-        $this->get('/life/countries')->assertStatus(200);
-    }
-
-    public function testPageLifeCountry()
-    {
-        $this->get('/life/countries/russia')->assertStatus(200);
-    }
-
-    public function testPageLifeGigs()
-    {
-        $this->get('/life/gigs')->assertStatus(200);
+        $this->get($url)->assertStatus(200);
     }
 
     public function testPageLifeGigsRss()
@@ -84,21 +18,11 @@ class GuestPagesTest extends TestCase
             ->assertHeader('Content-Type', 'application/xml');
     }
 
-    public function testPageLifePage()
-    {
-        $this->get('/life/english')->assertStatus(200);
-    }
-
     public function testPageLifeRss()
     {
         $this->get('/life/rss')
             ->assertStatus(200)
             ->assertHeader('Content-Type', 'application/xml');
-    }
-
-    public function testPageNews()
-    {
-        $this->get('/news')->assertStatus(200);
     }
 
     public function testPageNewsRss()
@@ -108,138 +32,69 @@ class GuestPagesTest extends TestCase
             ->assertHeader('Content-Type', 'application/xml');
     }
 
-    public function testPageNewsShow()
+    public function guestPages200()
     {
-        $this->get('/news/1')->assertStatus(200);
-    }
-
-    public function testPagePhotos()
-    {
-        $this->get('/photos')->assertStatus(200);
-    }
-
-    public function testPagePhotosCities()
-    {
-        $this->get('/photos/cities')->assertStatus(200);
-    }
-
-    public function testPagePhotosCity()
-    {
-        $this->get('/photos/cities/barcelona')->assertStatus(200);
-    }
-
-    public function testPagePhotosCountries()
-    {
-        $this->get('/photos/countries')->assertStatus(200);
-    }
-
-    public function testPagePhotosCountry()
-    {
-        $this->get('/photos/countries/russia')->assertStatus(200);
-    }
-
-    public function testPagePhotosMap()
-    {
-        $this->get('/photos/map')->assertStatus(200);
-    }
-
-    public function testPagePhotosTags()
-    {
-        $this->get('/photos/tags')->assertStatus(200);
-    }
-
-    public function testPagePhotosTag()
-    {
-        $this->get('/photos/tags/1')->assertStatus(200);
-    }
-
-    public function testPagePhotosTrips()
-    {
-        $this->get('/photos/trips')->assertStatus(200);
-    }
-
-    public function testPagePhotosTrip()
-    {
-        $this->get('/photos/trips/1')->assertStatus(200);
-    }
-
-    public function testPageCoupons()
-    {
-        $this->get('/promocodes-coupons')->assertStatus(200);
-    }
-
-    public function testPageCouponsAirbnb()
-    {
-        $this->get('/promocodes-coupons/airbnb')->assertStatus(200);
-    }
-
-    public function testPageCouponsDigitalOcean()
-    {
-        $this->get('/promocodes-coupons/digitalocean')->assertStatus(200);
-    }
-
-    public function testPageCouponsFirstvds()
-    {
-        $this->get('/promocodes-coupons/firstvds')->assertStatus(200);
-    }
-
-    public function testPageRetracker()
-    {
-        $this->get('/retracker')->assertStatus(200);
-    }
-
-    public function testPageRetrackerDev()
-    {
-        $this->get('/retracker/dev')->assertStatus(200);
-    }
-
-    public function testPageRetrackerUsage()
-    {
-        $this->get('/retracker/usage')->assertStatus(200);
-    }
-
-    public function testPageTorrent()
-    {
-        $this->get('/torrent')->assertStatus(200);
-    }
-
-    public function testPageTorrents()
-    {
-        $this->get('/torrents')->assertStatus(200);
-    }
-
-    public function testPageTorrentsCategoryFilter()
-    {
-        $this->get('/torrents?category_id=2')->assertStatus(200);
-    }
-
-    public function testPageTorrentsComments()
-    {
-        $this->get('/torrents/comments')->assertStatus(200);
-    }
-
-    public function testPageTorrentsFaq()
-    {
-        $this->get('/torrents/faq')->assertStatus(200);
-    }
-
-    public function testPageTorrentsSearchQuery()
-    {
-        $this->get('/torrents?q=2017')->assertStatus(200);
-    }
-
-    public function testPageUsers()
-    {
-        $this->get('/users')->assertStatus(200);
-    }
-
-    public function testPageUsersShow()
-    {
-        $this->get('/users/1')->assertStatus(200);
-    }
-
-    public function testPageUserTravel()
-    {
-        $this->get('/@vacuum/travel')->assertStatus(200);
+        return [
+            ['/'],
+            ['/about'],
+            ['/auth/login'],
+            ['/auth/register'],
+            ['/auth/password/remind'],
+            ['/dc'],
+            ['/dc/faq'],
+            ['/dc/hubs'],
+            ['/docs'],
+            ['/docs/trips'],
+            ['/files'],
+            ['/japanese'],
+            ['/japanese/hiragana-katakana'],
+            ['/japanese/wanikani'],
+            ['/japanese/wanikani/level/1'],
+            ['/life'],
+            ['/life/calendar'],
+            ['/life/cities'],
+            ['/life/kaluga'],
+            ['/life/countries'],
+            ['/life/countries/russia'],
+            ['/life/english'],
+            ['/life/gigs'],
+            ['/news'],
+            ['/news/1'],
+            ['/photos'],
+            ['/photos/cities'],
+            ['/photos/cities/barcelona'],
+            ['/photos/countries'],
+            ['/photos/countries/russia'],
+            ['/photos/faq'],
+            ['/photos/map'],
+            ['/photos/tags'],
+            ['/photos/tags/1'],
+            ['/photos/trips'],
+            ['/photos/trips/1'],
+            ['/promocodes-coupons'],
+            ['/promocodes-coupons/airbnb'],
+            ['/promocodes-coupons/booking'],
+            ['/promocodes-coupons/digitalocean'],
+            ['/promocodes-coupons/firstvds'],
+            ['/promocodes-coupons/timeweb'],
+            ['/retracker'],
+            ['/retracker/dev'],
+            ['/retracker/usage'],
+            ['/stickers'],
+            ['/subscriptions'],
+            ['/torrent'],
+            ['/torrents'],
+            ['/torrents?category_id=2'],
+            ['/torrents/comments'],
+            ['/torrents/faq'],
+            ['/torrents?q=2017'],
+            ['/users'],
+            ['/users/1'],
+            ['/@vacuum/travel'],
+            ['/@vacuum/travel/cities'],
+            ['/@vacuum/travel/cities/kaluga'],
+            ['/@vacuum/travel/countries'],
+            ['/@vacuum/travel/countries/russia'],
+        ];
     }
 }

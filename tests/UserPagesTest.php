@@ -2,65 +2,31 @@
 
 class UserPagesTest extends TestCase
 {
-    protected function setUp()
+    /**
+     * @dataProvider userPages200
+     * @param string $url
+     */
+    public function testUserPages200($url)
     {
-        parent::setUp();
-
         $this->be(\App\User::find(1));
+
+        $this->get($url)->assertStatus(200);
     }
 
-    public function testPageGallery()
+    public function userPages200()
     {
-        $this->get('/gallery')->assertStatus(200);
-    }
-
-    public function testPageGalleryUpload()
-    {
-        $this->get('/gallery/upload')->assertStatus(200);
-    }
-
-    public function testPageMy()
-    {
-        $this->get('/my')->assertStatus(200);
-    }
-
-    public function testPageMyPassword()
-    {
-        $this->get('/my/password')->assertStatus(200);
-    }
-
-    public function testPageMyProfile()
-    {
-        $this->get('/my/profile')->assertStatus(200);
-    }
-
-    public function testPageMySettings()
-    {
-        $this->get('/my/settings')->assertStatus(200);
-    }
-
-    public function testPageMyTrips()
-    {
-        $this->get('/my/trips')->assertStatus(200);
-    }
-
-    public function testPageMyTripsCreate()
-    {
-        $this->get('/my/trips/create')->assertStatus(200);
-    }
-
-    public function testPageNotifications()
-    {
-        $this->get('/notifications')->assertStatus(200);
-    }
-
-    public function testPageTorrentsAdd()
-    {
-        $this->get('/torrents/add')->assertStatus(200);
-    }
-
-    public function testPageTorrentsMy()
-    {
-        $this->get('/torrents/my')->assertStatus(200);
+        return [
+            ['/gallery'],
+            ['/gallery/upload'],
+            ['/my'],
+            ['/my/password'],
+            ['/my/profile'],
+            ['/my/settings'],
+            ['/my/trips'],
+            ['/my/trips/create'],
+            ['/notifications'],
+            ['/torrents/add'],
+            ['/torrents/my'],
+        ];
     }
 }
