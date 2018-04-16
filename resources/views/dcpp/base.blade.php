@@ -14,6 +14,9 @@
 @endpush
 
 @section('breadcrumbs')
+<div class="d-none">
+  @include('tpl.breadcrumbs', ['breadcrumbs' => $breadcrumbs ?? Breadcrumbs::get()])
+</div>
 @endsection
 
 @section('bottom-tabbar')
