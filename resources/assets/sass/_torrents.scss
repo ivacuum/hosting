@@ -177,16 +177,6 @@
 
 .torrents-list-icon { width: 32px; }
 
-.torrents-list-title {
-  margin-bottom: .5rem;
-
-  @include media-breakpoint-up(md) {
-    width: 80%;
-    margin-bottom: 0;
-    padding-right: 1rem;
-  }
-}
-
 .torrents-list-magnet {
   width: 70px;
   order: 2;

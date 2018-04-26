@@ -3,11 +3,11 @@
 ])
 
 @section('content')
-<div class="row">
-  <aside class="col-lg-3 torrent-categories d-none d-lg-block font-smooth">
+<div class="d-flex">
+  <aside class="d-none d-lg-block font-smooth mr-5 torrent-categories">
     <nav>
       @foreach ($tree as $id => $category)
-        <h4 class="{{ $loop->first ? '' : 'mt-4' }}">
+        <h4 class="{{ $loop->first ? '' : 'mt-4' }} text-nowrap">
           @if (!empty($category_id) && $id == $category_id)
             <mark>{{ $category['title'] }}</mark>
           @else
@@ -17,7 +17,7 @@
         @if (!empty($category['children']))
           @foreach ($category['children'] as $id => $child)
             @continue (empty($stats[$id]))
-            <div>
+            <div class="text-nowrap">
               @if (!empty($category_id) && $id == $category_id)
                 <mark>{{ $child['title'] }}</mark>
               @else
@@ -31,13 +31,13 @@
     </nav>
     @guest
       @ru
-        <div class="alert alert-info mt-4">
-          <div>Для <a class="link" href="{{ path('Auth\SignIn@index', ['goto' => path('Torrents@index')]) }}">зарегистрированных пользователей</a> доступен чат и добавление раздач</div>
+        <div class="alert alert-info mt-4 p-2 small">
+          <a class="link" href="{{ path('Auth\SignIn@index', ['goto' => path('Torrents@index')]) }}">Пользователям</a> доступны чат и добавление раздач
         </div>
       @endru
     @endguest
   </aside>
-  <div class="col-lg-9" v-cloak>
+  <div v-cloak>
     @if (Auth::check() && empty(request()->query()))
       <chat></chat>
     @endif
@@ -74,14 +74,14 @@
         @endif
         @php ($category = TorrentCategoryHelper::find($torrent->category_id))
         <div class="d-flex flex-wrap flex-md-nowrap justify-content-center justify-content-md-start torrents-list-container font-smooth js-torrents-views-observer" data-id="{{ $torrent->id }}">
-          <div class="torrents-list-icon torrent-icon order-1 order-md-0 pr-2" title="{{ $category['title'] }}">
+          <div class="flex-shrink-0 torrents-list-icon torrent-icon order-1 order-md-0" title="{{ $category['title'] }}">
             @php ($icon = $category['icon'] ?? 'file-text-o')
             @svg ($icon)
           </div>
-          <a class="pr-2 torrents-list-title visited" href="{{ $torrent->www() }}">
+          <a class="flex-grow-1 mb-2 mb-md-0 mr-md-3 visited" href="{{ $torrent->www() }}">
             <torrent-title title="{{ $torrent->title }}" hide_brackets="{{ Auth::check() && Auth::user()->torrent_short_title ? 1 : '' }}"></torrent-title>
           </a>
-          <a class="pr-2 torrents-list-magnet text-center text-md-left text-nowrap js-magnet"
+          <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center text-md-left text-nowrap js-magnet"
              href="{{ $torrent->magnet() }}"
              title="{{ trans('torrents.download') }}"
              data-action="{{ path('Torrents@magnet', $torrent) }}"
@@ -89,7 +89,7 @@
             @svg (magnet)
             <span class="js-magnet-counter">{{ $torrent->clicks > 0 ? $torrent->clicks : '' }}</span>
           </a>
-          <div class="text-center text-md-left text-nowrap torrents-list-size">{{ ViewHelper::size($torrent->size) }}</div>
+          <div class="flex-shrink-0 text-center text-md-left text-nowrap torrents-list-size">{{ ViewHelper::size($torrent->size) }}</div>
         </div>
       @endforeach
 
