@@ -491,6 +491,7 @@ class Domain extends Model
             case '188.120.229.204': return 'srv2.korden.net';
             case '62.109.4.161': return 'srv3.korden.net';
             case '62.109.6.149': return 'srv4.korden.net';
+            case '94.250.254.141': return 'srv5.korden.net';
 
             case '93.81.237.72': return 'srv2.ivacuum.ru';
 
