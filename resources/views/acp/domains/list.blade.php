@@ -77,8 +77,6 @@
   </form>
 </div>
 
-@include('tpl.paginator', ['paginator' => $models])
-
 <div>
   <span class="text-nowrap mr-2">
     <span class="badge badge-secondary mr-1">...</span>
