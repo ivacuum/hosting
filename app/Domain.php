@@ -404,6 +404,7 @@ class Domain extends Model
             case 'srv2.korden.net': $ipv4 = '188.120.229.204'; $ipv6 = '2a01:230:2::1fc'; break;
             case 'srv3.korden.net': $ipv4 = '62.109.4.161';    $ipv6 = '2a01:230:2::1fd'; break;
             case 'srv4.korden.net': $ipv4 = '62.109.6.149';    $ipv6 = '2a01:230:2::e2'; break;
+            case 'srv5.korden.net': $ipv4 = '94.250.254.141';  $ipv6 = ''; break;
             case 'bsd.korden.net':  $ipv4 = '31.200.207.80';   $ipv6 = ''; break;
             case 'srv1.ivacuum.ru': $ipv4 = '82.146.36.248';   $ipv6 = '2a01:230:2:6::16c'; break;
             case 'srv2.ivacuum.ru': $ipv4 = '93.81.237.72';    $ipv6 = ''; break;
