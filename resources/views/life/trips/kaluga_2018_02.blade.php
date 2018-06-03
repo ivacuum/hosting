@@ -16,9 +16,9 @@
 ]])
 
 @ru
-  <p>Привет <a class="link" href="china">Китаю</a>.</p>
+  <p>Привет <a class="link" href="countries/china">Китаю</a>.</p>
 @en
-  <p>Shoutout to <a class="link" href="china">China</a>.</p>
+  <p>Shoutout to <a class="link" href="countries/china">China</a>.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5864.jpg'])
 @endsection
