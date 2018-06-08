@@ -10,15 +10,7 @@
       <th>Шаблон</th>
       <th class="text-md-right">@svg (picture-o)</th>
       @foreach (config('cfg.locales') as $key => $value)
-        <th class="text-md-right">
-          @if ($key === 'ru')
-            <img class="flag-24 flag-shadow" src="https://ivacuum.org/i/flags/svg/ru.svg">
-          @elseif ($key === 'en')
-            <img class="flag-24 flag-shadow" src="https://ivacuum.org/i/flags/svg/us.svg">
-          @else
-            {{ $key }}
-          @endif
-        </th>
+        <th class="text-md-right text-uppercase">{{ $key }}</th>
       @endforeach
     </tr>
   </thead>
