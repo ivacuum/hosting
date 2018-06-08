@@ -369,6 +369,7 @@
   <p>Видишь сову? Нет? А она есть.</p>
 @en
   <p>Do you see an owl? No? Yet it's there.</p>
+  {{-- Do you see an owl? Me neither. But there is one. --}}
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0330.jpg'])
 @endsection
