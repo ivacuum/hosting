@@ -134,9 +134,9 @@
 @endru
 
 @ru
-  <p>Неважно на каком поезде доберетесь и по какому маршруту. Важно лишь где вы зашли и на какой станции вышли — между ними будет подсчитан оптимальный маршрут и списана соответствующая дальности сумма. Если недостаточно денег на транспортной карте или билете, то можно доплатить разницу сотруднику на выходе. Если денег совсем нет (забыли), то можно вернуться на исходную станцию и выйти там словно никуда и не ездили. Также можно пополнить транспортную карту вплоть до ¥20 000 в терминале на станции. Продуманы, что тут скажешь. У пассажира есть право на ошибку, и это радует.</p>
+  <p>Неважно на каком поезде доберетесь и по какому маршруту. Важно лишь где вы зашли и на какой станции вышли — между ними будет подсчитан оптимальный маршрут и списана соответствующая дальности сумма. Если недостаточно денег на транспортной карте или билете, то можно доплатить разницу сотруднику на выходе. Если денег совсем нет (забыли), то можно вернуться на исходную станцию и выйти там словно никуда и не ездили. Также можно пополнить транспортную карту вплоть до ¥20&thinsp;000 в терминале на станции. Продуманы, что тут скажешь. У пассажира есть право на ошибку, и это радует.</p>
 @en
-  <p>In the end it doesn't even matter what train and what route you would take. There are two things that make up the cost of your ride: entrance and exit points. So you gonna be charged by the most optimal and the shortest route. If you have not enough money on your ticket or transport card, you can pay the difference to a man at the exit point. If you have no money at all (left a wallet at home, for example), you can ride back to the entrance point and exit like you didn't go anywhere. By the way transport card can be funded up to ¥20 000 right there at the station. Geniuses, what else can be said? Passenger has got a right to be wrong.</p>
+  <p>In the end it doesn't even matter what train and what route you would take. There are two things that make up the cost of your ride: entrance and exit points. So you gonna be charged by the most optimal and the shortest route. If you have not enough money on your ticket or transport card, you can pay the difference to a man at the exit point. If you have no money at all (left a wallet at home, for example), you can ride back to the entrance point and exit like you didn't go anywhere. By the way transport card can be funded up to ¥20&thinsp;000 right there at the station. Geniuses, what else can be said? Passenger has got a right to be wrong.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3868.jpg'])
 
@@ -220,7 +220,7 @@
     <li>в валюте карты</li>
     <li>в иенах</li>
   </ol>
-  <p>Второй вариант заметно выгоднее. Было 16 800 ₽ против 15 800 ₽.</p>
+  <p>Второй вариант заметно выгоднее. Было 16&thinsp;800 ₽ против 15&thinsp;800 ₽.</p>
 @en
 @endru
 

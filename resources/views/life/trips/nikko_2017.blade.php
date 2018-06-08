@@ -175,7 +175,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_8094.jpg'])
 
 @ru
-  <p>Еду в заведениях готовят голыми руками. После заказа приносят стакан воды со льдом, иногда целый кувшин. Существует интересное блюдо рамен, сочетающее в себе салат, суп и горячее, — его едят с двух рук: в левой ложка, в правой палочки. Чаевые отсутствует в принципе. Даже если при счете в ¥2 291 дать ¥2 300, то обязательно выдадут сдачу.</p>
+  <p>Еду в заведениях готовят голыми руками. После заказа приносят стакан воды со льдом, иногда целый кувшин. Существует интересное блюдо рамен, сочетающее в себе салат, суп и горячее, — его едят с двух рук: в левой ложка, в правой палочки. Чаевые отсутствует в принципе. Даже если при счете в ¥2&thinsp;291 дать ¥2&thinsp;300, то обязательно выдадут сдачу.</p>
 @en
   <p>Dishes are made with bare hands. After your order is taken, you get a jug of cold water. Or at least glass. There is a dish called ramen. It feels like it combines salad, soup and main course in one plate. You get a spoon for soup and chopsticks for everything else. It's totally okay to slurp. Also, there are no tips—you'll get all the change to the last coin.</p>
 @endru

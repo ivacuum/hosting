@@ -42,9 +42,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_7806.jpg'])
 
 @ru
-  <p>На табло слева цены за проезд от определенных участков пути. Полный путь в 91 км из Такаямы стоит 3 190 иен (около 1650 ₽ на момент поездки).</p>
+  <p>На табло слева цены за проезд от определенных участков пути. Полный путь в 91 км из Такаямы стоит 3&thinsp;190 иен (около 1&thinsp;650 ₽ на момент поездки).</p>
 @en
-  <p>Prices are on the display in the upper left corner of the photo. 91 km (57 mi) way from Takayama costs ¥3190 or $28.</p>
+  <p>Prices are on the display in the upper left corner of the photo. 91 km (57 mi) way from Takayama costs ¥3&thinsp;190 or $28.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7846.jpg'])
 

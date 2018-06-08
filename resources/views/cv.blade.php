@@ -422,7 +422,7 @@ a:hover {
     <li>
       2010 год
       <ul>
-        <li><a href="http://btt.ivacuum.ru/stats">btt.ivacuum.ru</a> &mdash; координатор взаимодействия клиентов в сети BitTorrent (обслуживает порядка 3 000 000 подключений в день) <span class="muted">[дипломный проект]</span></li>
+        <li><a href="http://btt.ivacuum.ru/stats">btt.ivacuum.ru</a> &mdash; координатор взаимодействия клиентов в сети BitTorrent (обслуживает порядка 3&thinsp;000&thinsp;000 подключений в день) <span class="muted">[дипломный проект]</span></li>
         <li><a href="http://retracker.ivacuum.ru/">retracker.ivacuum.ru</a> &mdash; оптимизация файлообмена в сети BitTorrent</li>
         <li><a href="http://torrent.ivacuum.ru/">torrent.ivacuum.ru</a> &mdash; торрент-трекер в локальной сети Билайн-Калуга</li>
       </ul>
@@ -432,8 +432,8 @@ a:hover {
       <ul>
         <li>bugs.ivacuum.ru &mdash; сервис для учета и хранения задач, которые необходимо выполнить</li>
         <li>ivacuum.ru/csstats/ &mdash; статистика в реальном времени для игры Counter-Strike</li>
-        <li><a href="http://img.ivacuum.ru/stats">img.ivacuum.ru</a> &mdash; сервис подсчета просмотров изображений (более <a href="http://up.ivacuum.ru/%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F/%D0%B3%D0%B4%D0%B5_%D1%81%D0%BC%D0%BE%D1%82%D1%80%D1%8F%D1%82/">100 000 000</a> просмотров)</li>
-        <li><a href="http://up.ivacuum.ru/">up.ivacuum.ru</a> &mdash; сервис загрузки изображений (загружено более <a href="http://up.ivacuum.ru/%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B0/">200 000</a> изображений)</li>
+        <li><a href="http://img.ivacuum.ru/stats">img.ivacuum.ru</a> &mdash; сервис подсчета просмотров изображений (более <a href="http://up.ivacuum.ru/%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F/%D0%B3%D0%B4%D0%B5_%D1%81%D0%BC%D0%BE%D1%82%D1%80%D1%8F%D1%82/">100&thinsp;000&thinsp;000</a> просмотров)</li>
+        <li><a href="http://up.ivacuum.ru/">up.ivacuum.ru</a> &mdash; сервис загрузки изображений (загружено более <a href="http://up.ivacuum.ru/%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B0/">200&thinsp;000</a> изображений)</li>
       </ul>
     </li>
     <li>
@@ -447,7 +447,7 @@ a:hover {
       <ul>
         <li>Сборка, запуск и администрирование игровых серверов в локальной сети Спарк-Калуга</li>
         <li><a href="http://dc.ivacuum.ru/">dc.ivacuum.ru</a> &mdash; энциклопедия клиентов DC++</li>
-        <li><a href="http://dl.ivacuum.ru/">dl.ivacuum.ru</a> &mdash; сервис учета скачиваний файлов (более <a href="http://dl.ivacuum.ru/stats/">1 700 000</a> скачиваний)</li>
+        <li><a href="http://dl.ivacuum.ru/">dl.ivacuum.ru</a> &mdash; сервис учета скачиваний файлов (более <a href="http://dl.ivacuum.ru/stats/">1&thinsp;700&thinsp;000</a> скачиваний)</li>
       </ul>
     </li>
     <li>

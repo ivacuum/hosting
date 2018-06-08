@@ -133,9 +133,9 @@
 
 <a id="pricy-meal"></a>
 @ru
-  <p>За двойной бутерброд с ветчиной и помидором + стаканом апельсинового сока в кафе зарядили 1 500 ₽. Вот такая проба обеденного меню. Стало ясно, что дальше придется в этом городе <s>выживать</s> ходить в макдак, если не хочется остаться без штанов.</p>
+  <p>За двойной бутерброд с ветчиной и помидором + стаканом апельсинового сока в кафе зарядили 1&thinsp;500 ₽. Вот такая проба обеденного меню. Стало ясно, что дальше придется в этом городе <s>выживать</s> ходить в макдак, если не хочется остаться без штанов.</p>
 @en
-  <p>I asked myself "why do we so poor in Russia?" when I got a check. Yeah, average salary is about 3 000 DKK back home.</p>
+  <p>I asked myself "why do we so poor in Russia?" when I got a check. Yeah, average salary is about 3&thinsp;000 DKK back home.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0607.jpg'])
 
