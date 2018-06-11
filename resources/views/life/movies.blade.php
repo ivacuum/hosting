@@ -150,6 +150,7 @@
   <div class="h3">2006 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
+      ['title' => "Вавилон\nBabel", 'id' => 102125],
       ['title' => "Жизнь других\nDas Leben der Anderen", 'id' => 126196],
       ['title' => "Отступники\nThe Departed", 'id' => 81314],
       ['title' => "Престиж\nThe Prestige", 'id' => 195334],
