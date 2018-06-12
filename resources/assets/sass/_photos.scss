@@ -9,12 +9,12 @@ $photo-max-height: 80vh;
 
 .photo-show-img {
   border: 0;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 3px 6px rgba($black, .175);
   background-clip: padding-box;
   max-width: 100%;
 
   @include media-breakpoint-up(md) {
-    border: 1px solid rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba($black, .15);
     max-height: $photo-max-height;
   }
 }

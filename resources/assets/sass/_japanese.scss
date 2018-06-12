@@ -3,7 +3,7 @@
   &.bg-radical,
   &.bg-vocab {
     background: linear-gradient(to bottom, #555, #484848);
-    box-shadow: 0 10px 10px rgba(0, 0, 0, .4) inset;
+    box-shadow: 0 10px 10px rgba($black, .4) inset;
   }
 }
 
@@ -28,9 +28,9 @@
 
 .ja-big { font-size: 72px; }
 .ja-character { line-height: 1; }
-.ja-image-shadow { filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .3)); }
-.ja-shadow { text-shadow: 0 2px 0 rgba(0, 0, 0, .3); }
-.ja-shadow-light { text-shadow: 0 1px 0 rgba(0, 0, 0, .3); }
+.ja-image-shadow { filter: drop-shadow(0 2px 0 rgba($black, .3)); }
+.ja-shadow { text-shadow: 0 2px 0 rgba($black, .3); }
+.ja-shadow-light { text-shadow: 0 1px 0 rgba($black, .3); }
 
 .kanji-grid,
 .radicals-grid {

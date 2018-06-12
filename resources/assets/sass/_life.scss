@@ -112,7 +112,7 @@
   vertical-align: -.125em;
 }
 
-.flag-shadow { filter: drop-shadow(0 0 1px rgba(0, 0, 0, .5)); }
+.flag-shadow { filter: drop-shadow(0 0 1px rgba($black, .5)); }
 
 .img-container .pic-1000x750 {
   width: 1000px;
@@ -180,5 +180,5 @@
   bottom: 0;
   left: 0;
   color: #fff;
-  text-shadow: 1px 1px 0 rgba(0, 0, 0, .8);
+  text-shadow: 1px 1px 0 rgba($black, .8);
 }
