@@ -55,6 +55,9 @@ class Torrent extends Model
 
     const LIST_COLUMNS = ['id', 'category_id', 'rto_id', 'title', 'size', 'info_hash', 'announcer', 'clicks', 'views', 'registered_at'];
 
+    const TITLE_REPLACE_FROM = [' )', ' ,', 'HD (1080p)'];
+    const TITLE_REPLACE_TO = [')', ',', 'HD 1080p'];
+
     protected $casts = [
         'size' => 'int',
         'views' => 'int',

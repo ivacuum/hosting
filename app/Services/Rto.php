@@ -135,7 +135,7 @@ class Rto
 
         return array_merge([
             'size' => $json->size,
-            'title' => $json->topic_title,
+            'title' => str_replace(Torrent::TITLE_REPLACE_FROM, Torrent::TITLE_REPLACE_TO, $json->topic_title),
             'rto_id' => $topic_id,
             'reg_time' => $json->reg_time,
             'info_hash' => $json->info_hash,

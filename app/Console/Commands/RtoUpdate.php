@@ -55,7 +55,7 @@ class RtoUpdate extends Command
                     continue;
                 }
 
-                $torrent->title = $json->topic_title;
+                $torrent->title = str_replace(Torrent::TITLE_REPLACE_FROM, Torrent::TITLE_REPLACE_TO, $json->topic_title);
 
                 if ($json->info_hash !== $torrent->info_hash) {
                     $torrent->size = $json->size;
