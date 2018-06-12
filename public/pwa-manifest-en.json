@@ -1,7 +1,7 @@
 {
-  "lang": "ru-RU",
+  "lang": "en-US",
   "name": "vacuum.kaluga",
-  "short_name": "vacuum.name",
+  "short_name": "vacuum",
   "icons": [
     {
       "src": "https://life.ivacuum.ru/apple-touch-icon-144x144.png",
@@ -14,7 +14,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/?homescreenapp=1",
+  "start_url": "/en/?homescreenapp=1",
   "background_color": "#ffffff",
   "theme_color": "#e7e7e7",
   "display": "standalone"
