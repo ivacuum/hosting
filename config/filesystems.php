@@ -40,6 +40,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'temp' => [
+            'driver'     => 'local',
+            'root'       => public_path('uploads/temp'),
+            'visibility' => 'public',
+        ],
+
         'ftp' => [
             'driver'   => 'ftp',
             'host'     => env('FTP_HOST'),
