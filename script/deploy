@@ -15,6 +15,7 @@ RELEASE_DIR=$(pwd)
 ROOT_DIR=$(dirname "$RELEASE_DIR")/..
 LIVE_DIR=$ROOT_DIR/live
 STORAGE_DIR=$ROOT_DIR/storage
+UPLOADS_DIR=$ROOT_DIR/uploads
 VIEWS_DIR=$STORAGE_DIR/framework/views
 
 if [ ! -f $ROOT_DIR/.env ]; then
@@ -43,6 +44,15 @@ else
 fi
 
 ln -s $STORAGE_DIR $RELEASE_DIR/storage
+
+# Общая папка для загрузок
+if [ -d $UPLOADS_DIR ]; then
+  rm -rf $RELEASE_DIR/public/uploads
+else
+  mv $RELEASE_DIR/public/uploads $UPLOADS_DIR
+fi
+
+ln -s $UPLOADS_DIR $RELEASE_DIR/public/uploads
 
 # Установка зависимостей
 cd $RELEASE_DIR
