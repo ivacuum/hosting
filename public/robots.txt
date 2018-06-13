@@ -39,5 +39,5 @@ Disallow: /en/torrents
 Disallow: /en/trips
 Disallow: /en/users
 Disallow: /en/@vacuum
-Sitemap: https://vacuum.name/sitemap.xml
+Sitemap: https://vacuum.name/uploads/sitemaps/sitemap.xml
 Host: https://vacuum.name
