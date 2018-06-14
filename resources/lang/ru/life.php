@@ -40,4 +40,6 @@ return [
 
     'gigs.rss.description' => 'Истории о посещенных концертах.',
     'trips.rss.description' => 'Истории о путешествиях.',
+
+    'newsletter.description' => 'Уведомления о новых публикациях можно получать на почту.',
 ];
