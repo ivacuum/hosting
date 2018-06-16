@@ -62,7 +62,7 @@
             </div>
           </header>
           <div class="{{ !$loop->last ? 'mb-5' : '' }}">
-            <div class="d-none d-sm-block life-text js-news-views-observer" itemprop="articleBody" data-id="{{ $model->id }}">{!! $model->html !!}</div>
+            <div class="d-none d-sm-block life-text markdown-body text-break-word js-news-views-observer" itemprop="articleBody" data-id="{{ $model->id }}">{!! $model->html !!}</div>
           </div>
         </article>
       @endforeach

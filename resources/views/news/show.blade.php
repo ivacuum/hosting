@@ -26,7 +26,7 @@
       </span>
     </div>
   </header>
-  <div class="life-text text-break-word" itemprop="articleBody">{!! $news->html !!}</div>
+  <div class="life-text markdown-body text-break-word" itemprop="articleBody">{!! $news->html !!}</div>
 </article>
 
 @include('tpl.comments-list')
