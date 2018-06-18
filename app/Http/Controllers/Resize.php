@@ -29,7 +29,10 @@ class Resize extends Controller
         $source = stream_get_meta_data($file)['uri'];
 
         try {
-            $response = $client->get($image, ['sink' => $file]);
+            $response = $client->get($image, [
+                'sink' => $file,
+                'force_ip_resolve' => 'v4',
+            ]);
         } catch (ClientException $e) {
             abort($e->getCode());
             exit;
