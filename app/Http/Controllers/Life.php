@@ -30,7 +30,10 @@ class Life extends Controller
                 return $query->where('date_start', '<=', $to);
             })
             ->orderBy('date_start', $from || $to ? 'asc' : 'desc')
-            ->get();
+            ->get()
+            ->groupBy(function ($model) {
+                return $model->year;
+            });
 
         return view($this->view, compact('trips'));
     }
@@ -90,7 +93,10 @@ class Life extends Controller
             ->where('user_id', 1)
             ->withCount('photos')
             ->visible()
-            ->get();
+            ->get()
+            ->groupBy(function ($model) {
+                return $model->year;
+            });
 
         $published_trips = $trips->where('status', Trip::STATUS_PUBLISHED);
 
@@ -143,7 +149,10 @@ class Life extends Controller
             ->where('user_id', 1)
             ->withCount('photos')
             ->visible()
-            ->get();
+            ->get()
+            ->groupBy(function ($model) {
+                return $model->year;
+            });
 
         \Breadcrumbs::push($country->title, "life/countries/{$country->slug}");
 
@@ -170,7 +179,12 @@ class Life extends Controller
 
     public function gigs()
     {
-        $gigs = Gig::with('artist')->orderBy('date', 'desc')->get();
+        $gigs = Gig::with('artist')
+            ->orderBy('date', 'desc')
+            ->get()
+            ->groupBy(function ($model) {
+                return $model->date->year;
+            });
 
         return view($this->view, compact('gigs'));
     }

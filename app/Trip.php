@@ -146,12 +146,12 @@ class Trip extends Model
         return $this->monthName($this->date_start->month) . '–' . $this->monthName($this->date_end->month);
     }
 
-    public function getYearAttribute()
+    public function getYearAttribute(): int
     {
         return $this->date_start->year;
     }
 
-    public function setMarkdownAttribute($value)
+    public function setMarkdownAttribute(string $value): void
     {
         $this->attributes['markdown'] = $value;
 
@@ -159,7 +159,7 @@ class Trip extends Model
             ->text((new TextImagesParser)->parse($value));
     }
 
-    public function setSlugAttribute($value)
+    public function setSlugAttribute(string $value): void
     {
         $this->attributes['slug'] = mb_strtolower($value);
     }
@@ -180,7 +180,7 @@ class Trip extends Model
             ->groupBy('year');
     }
 
-    public function createStoryFile()
+    public function createStoryFile(): bool
     {
         $tpl = str_replace('.', '/', $this->template());
 

@@ -33,19 +33,23 @@
 </div>
 <p>{{ trans('life.gigs_intro_text') }}</p>
 
-@php ($year = false)
-@foreach ($gigs as $gig)
-  <div class="travel-entry mb-2">
-    @if ($year !== $gig->date->year)
-      <span class="travel-year">{{ $gig->date->year }}</span>
-    @endif
-    @if ($gig->status === App\Gig::STATUS_PUBLISHED)
-      <a class="link" href="{{ $gig->www() }}">{{ $gig->artist->title }}</a>
-    @else
-      {{ $gig->artist->title }}
-    @endif
-    <span class="ml-1 travel-month">{{ $gig->shortDate() }}</span>
+@foreach ($gigs as $year => $rows)
+  <div class="d-flex {{ !$loop->last ? 'mb-2' : '' }}">
+    <div>
+      <div class="font-weight-bold travel-year">{{ $year }}</div>
+    </div>
+    <div>
+    @foreach ($rows as $gig)
+      <div class="{{ !$loop->last ? 'mb-2' : '' }}">
+        @if ($gig->status === App\Gig::STATUS_PUBLISHED)
+          <a class="link" href="{{ $gig->www() }}">{{ $gig->artist->title }}</a>
+        @else
+          {{ $gig->artist->title }}
+        @endif
+        <span class="ml-1 travel-month">{{ $gig->shortDate() }}</span>
+      </div>
+    @endforeach
+    </div>
   </div>
-  @php ($year = $gig->date->year)
 @endforeach
 @endsection

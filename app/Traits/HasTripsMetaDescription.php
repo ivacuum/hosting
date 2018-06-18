@@ -11,7 +11,7 @@ trait HasTripsMetaDescription
         }
 
         $trips_text = \ViewHelper::plural('trips', $total_trips);
-        $total_photos = $trips->sum->photos_count;
+        $total_photos = $trips->flatten()->sum->photos_count;
 
         if (!$total_photos) {
             return $trips_text;

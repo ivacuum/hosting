@@ -31,7 +31,10 @@ class UserTravelCities extends UserTravel
             ->where('user_id', $this->traveler->id)
             ->withCount('photos')
             ->visible()
-            ->get();
+            ->get()
+            ->groupBy(function ($model) {
+                return $model->year;
+            });
 
         $published_trips = $trips->where('status', Trip::STATUS_PUBLISHED);
 

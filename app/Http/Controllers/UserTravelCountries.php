@@ -41,7 +41,10 @@ class UserTravelCountries extends UserTravel
             ->where('user_id', $this->traveler->id)
             ->withCount('photos')
             ->visible()
-            ->get();
+            ->get()
+            ->groupBy(function ($model) {
+                return $model->year;
+            });
 
         \Breadcrumbs::push(trans('menu.life'), "@{$login}/travel");
         \Breadcrumbs::push(trans('menu.countries'), "@{$login}/travel/countries");

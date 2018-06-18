@@ -17,7 +17,7 @@
 @section('content_footer')
 </div>
 
-<div class="h4 mt-3">@ru Поделиться ссылкой @en Share @endru</div>
+<div class="h4 mt-4">@ru Поделиться ссылкой @en Share @endru</div>
 @include('tpl.social-buttons', ['title' => $gig->metaTitle(), 'url' => Request::url()])
 @parent
 @endsection

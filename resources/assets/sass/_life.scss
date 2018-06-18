@@ -24,15 +24,18 @@
   font-size: 12px;
 }
 
-.city-initial,
-.travel-year {
+.city-initial {
   position: absolute;
   font-weight: bold;
   text-transform: uppercase;
+  margin: 0 0 0 -1.5em;
 }
 
-.city-initial { margin: 0 0 0 -1.5em; }
-.travel-year { margin: 0 0 0 -3.5em; }
+.travel-year {
+  position: sticky;
+  top: .5rem;
+  width: 3.375rem;
+}
 
 /*
 .cover {

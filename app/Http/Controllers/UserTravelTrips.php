@@ -28,7 +28,10 @@ class UserTravelTrips extends UserTravel
                 return $query->where('date_start', '<=', $to);
             })
             ->orderBy('date_start', $from || $to ? 'asc' : 'desc')
-            ->get(Trip::COLUMNS_LIST);
+            ->get(Trip::COLUMNS_LIST)
+            ->groupBy(function ($model) {
+                return $model->year;
+            });
 
         \Breadcrumbs::push(trans('menu.life'));
 
