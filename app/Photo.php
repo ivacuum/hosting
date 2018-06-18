@@ -117,6 +117,11 @@ class Photo extends Model
         return $this->lat && $this->lon;
     }
 
+    public function mobileUrl(): string
+    {
+        return "https://life.ivacuum.ru/-/1000x750/{$this->slug}";
+    }
+
     public function newSlugPrefix(string $new_prefix): void
     {
         [$prefix, $filename] = explode('/', $this->slug);
