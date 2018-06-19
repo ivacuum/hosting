@@ -107,7 +107,16 @@ class Photos extends Controller
             return $this->pointsForMap($trip_id);
         }
 
-        return view($this->view);
+        $photo_slug = request('photo');
+
+        $photo = $photo_slug
+            ? Photo::query()
+                ->where('slug', $photo_slug)
+                ->where('status', Photo::STATUS_PUBLISHED)
+                ->first()
+            : null;
+
+        return view($this->view, compact('photo'));
     }
 
     public function show($id)

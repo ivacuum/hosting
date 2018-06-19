@@ -130,6 +130,17 @@
   @include media-breakpoint-up(lg) { font-size: 18px; }
 }
 
+.photo-overlay-button {
+  color: $white;
+  filter: drop-shadow(0 0 1px rgba($black, .4));
+}
+
+.photo-overlay-buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .pic {
   width: 100%;
   height: 0;

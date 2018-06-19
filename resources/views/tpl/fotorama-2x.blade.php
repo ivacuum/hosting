@@ -1,35 +1,30 @@
 <?php
-$w = $w ?? 1000;
-$h = $h ?? 750;
 $alt = $is_crawler && isset($trip) ? $trip->imgAltText() : '';
-$percent = round($h / $w, 2) * 100;
-$pic_style = "padding-bottom: calc({$percent}% + 68px);";
-$pic_centered_container_style = "max-width: {$w}px;";
 ?>
 <div class="pic-container shortcuts-item">
-  @if ($is_crawler)
+  <div class="pic-centered-container">
     @foreach ($pics as $pic)
-      <div class="pic-centered-container">
-        <div class="pic">
+      <div class="pic" id="{{ $pic }}">
+        @if ($is_crawler)
           <img alt="{{ $alt }}" src="{{ ViewHelper::pic2x($slug ?? $trip->slug, $pic) }}">
-        </div>
+        @else
+          <img class="js-lazy {{ $loop->first ? 'rounded-bottom-0' : '' }} {{ $loop->last ? 'rounded-top-0' : '' }} {{ !$loop->first && !$loop->last ? 'rounded-0' : '' }}"
+               alt=""
+               src="https://life.ivacuum.ru/0.gif"
+               data-src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"
+               data-src2x="{{ ViewHelper::pic2x($slug ?? $trip->slug, $pic) }}">
+          <div class="photo-overlay-buttons">
+            <a class="d-flex align-items-center justify-content-center p-2 photo-overlay-button"
+               href="{{ path('Photos@map', ['photo' => $slug ?? $trip->slug.'/'.$pic]) }}">
+              @svg (map-marker)
+            </a>
+            <a class="d-flex align-items-center justify-content-center p-2 photo-overlay-button"
+               href="{{ ViewHelper::pic2x($slug ?? $trip->slug, $pic) }}">
+              @svg (link)
+            </a>
+          </div>
+        @endif
       </div>
     @endforeach
-  @else
-    @foreach ($pics as $pic)
-      <a id="{{ $pic }}"></a>
-    @endforeach
-    <div class="pic-centered-container" style="{{ $pic_centered_container_style }}">
-      <div class="pic" style="{{ $pic_style }}">
-        <div class="js-lazy" data-lazy-type="fotorama-2x" data-width="1000">
-          @foreach ($pics as $pic)
-            <img src="https://life.ivacuum.ru/0.gif"
-                 data-src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"
-                 data-src2x="{{ ViewHelper::pic2x($slug ?? $trip->slug, $pic) }}"
-                 data-thumb="{{ ViewHelper::picThumb($slug ?? $trip->slug, $pic) }}">
-          @endforeach
-        </div>
-      </div>
-    </div>
-  @endif
+  </div>
 </div>
