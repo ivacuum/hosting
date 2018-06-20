@@ -9,7 +9,7 @@
 @endpush
 
 @section('content_header')
-<div class="life-text js-shortcuts-items">
+<div class="life-text">
 @endsection
 
 @section('content_footer')

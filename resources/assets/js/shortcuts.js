@@ -1,194 +1,201 @@
-// Горячие клавиши
-let shortcuts_enabled = true
+/* global $, Mousetrap */
 
-$(document).on('focus', 'input,textarea,select', function () {
-  shortcuts_enabled = false
+const NEXT_PAGE_SELECTOR = '#next_page'
+const PREV_PAGE_SELECTOR = '#previous_page'
+const SCROLL_ANIMATION_SPEED = 0
+
+Mousetrap.bind(['ctrl+left', 'alt+left'], function () {
+  $(document).trigger('shortcuts.to_prev_page')
 })
 
-$(document).on('blur', 'input,textarea,select', function () {
-  shortcuts_enabled = true
+Mousetrap.bind(['ctrl+right', 'alt+right'], function () {
+  $(document).trigger('shortcuts.to_next_page')
 })
 
-if ($('.js-shortcuts-items').length) {
-  let shortcuts_items = $('.js-shortcuts-items .shortcuts-item')
+// Русские буквы
+Mousetrap.addKeycodes({
+  1088: 'h', // р
+  1076: 'j', // о
+  1086: 'k', // л
+  1083: 'l', // д
+})
 
-  $(window).scroll(function () {
-    let active_start_position = window.pageYOffset
-    let active_end_position = window.pageYOffset + 50
+Mousetrap.bind('h', function () {
+  $(document).trigger('shortcuts.to_first_post')
+})
 
-    shortcuts_items.each(function (index, item) {
-      let shortcuts_item = $(item)
-      let shortcuts_item_position = shortcuts_item.offset().top + 20
+Mousetrap.bind('j', function () {
+  $(document).trigger('shortcuts.to_next_post')
+})
 
-      if (active_start_position < shortcuts_item_position && shortcuts_item_position < active_end_position) {
-        if (shortcuts_item.hasClass('focus')) {} else {
-          $('.js-shortcuts-items .shortcuts-item.focus').removeClass('focus')
-          shortcuts_item.addClass('focus')
-        }
-      }
-    })
-  })
-}
+Mousetrap.bind('k', function () {
+  $(document).trigger('shortcuts.to_prev_post')
+})
 
-$(document).on('keyup', 'body', function (e) {
-  if (shortcuts_enabled) {
-    if ((e.altKey || e.ctrlKey || e.metaKey) && e.which === 37) {
-      e.preventDefault()
+Mousetrap.bind('l', function () {
+  $(document).trigger('shortcuts.to_last_post')
+})
 
-      $(document).trigger('shortcuts.to_prev_page')
-    }
+Mousetrap.bind('/', function () {
+  let search = document.querySelector('.js-search-input')
 
-    if ((e.altKey || e.ctrlKey || e.metaKey) && e.which === 39) {
-      e.preventDefault()
+  if (search !== null) {
+    search.focus()
+  }
+}, 'keyup')
 
-      $(document).trigger('shortcuts.to_next_page')
-    }
+$(document).on('shortcuts.redirect', function (e, selector) {
+  let link = document.querySelector(selector)
+
+  if (!link) {
+    return false
+  }
+
+  let url = link.getAttribute('href')
+
+  if (!url) {
+    return false
+  }
+
+  if (link.classList.contains('js-pjax')) {
+    $.pjax({ url, container: '#pjax_container' })
+  } else {
+    document.location.href = url
   }
 })
-
-$(document).on('keypress', 'body', function (e) {
-  let not_meta_key = !e.altKey && !e.ctrlKey && !e.metaKey
-
-  if (shortcuts_enabled) {
-    // if ((e.which === 47 || e.which === 46) && not_meta_key) {
-    //   e.preventDefault()
-    //
-    //   $(document).trigger('shortcuts.focus_to_search')
-    // }
-
-    if ((e.which === 104 || e.which === 1088) && not_meta_key) {
-      e.preventDefault()
-
-      $(document).trigger('shortcuts.to_first_post')
-    }
-    if ((e.which === 108 || e.which === 1076) && not_meta_key) {
-      e.preventDefault()
-
-      $(document).trigger('shortcuts.to_last_post')
-    }
-    if ((e.which === 106 || e.which === 1086) && not_meta_key) {
-      e.preventDefault()
-
-      $(document).trigger('shortcuts.to_next_post')
-    }
-
-    if ((e.which === 107 || e.which === 1083) && not_meta_key) {
-      e.preventDefault()
-
-      $(document).trigger('shortcuts.to_prev_post')
-    }
-  }
-})
-
-// $(document).on('shortcuts.focus_to_search', function (event, form) {
-//   $('.nav_panel .tab_menu').click()
-//   $('.global_search_form input[name="q"]').focus()
-// })
 
 $(document).on('shortcuts.to_next_page', function () {
-  let $link = $('#next_page')
-  let url = $link.attr('href')
-
-  if (typeof url !== 'undefined') {
-    if ($link.hasClass('js-pjax')) {
-      $.pjax({ url, container: '#pjax_container' })
-    } else {
-      document.location.href = url
-    }
-  }
+  $(document).trigger('shortcuts.redirect', [NEXT_PAGE_SELECTOR])
 })
 
 $(document).on('shortcuts.to_prev_page', function () {
-  let $link = $('#previous_page')
-  let url = $link.attr('href')
-
-  if (typeof url !== 'undefined') {
-    if ($link.hasClass('js-pjax')) {
-      $.pjax({ url, container: '#pjax_container' })
-    } else {
-      document.location.href = url
-    }
-  }
+  $(document).trigger('shortcuts.redirect', [PREV_PAGE_SELECTOR])
 })
 
 $(document).on('shortcuts.to_first_post', function () {
-  let shortcuts_items = $('.js-shortcuts-items')
+  let first_item = document.querySelector('.js-shortcuts-item')
 
-  if (shortcuts_items.length) {
-    if ($('.shortcuts-item', shortcuts_items).first().hasClass('focus')) {
-      $(document).trigger('shortcuts.to_prev_page')
-    } else {
-      $('.shortcuts-item.focus', shortcuts_items).removeClass('focus')
-      $('.shortcuts-item', shortcuts_items).first().addClass('focus')
+  if (first_item === null) {
+    return false
+  }
+
+  if (first_item.classList.contains('focus')) {
+    $(document).trigger('shortcuts.to_prev_page')
+  } else {
+    let focused_item = document.querySelector('.js-shortcuts-item.focus')
+
+    if (focused_item !== null) {
+      focused_item.classList.remove('focus')
     }
 
-    $.scrollTo($('.shortcuts-item.focus', shortcuts_items), 200, {
+    first_item.classList.add('focus')
+
+    $.scrollTo(first_item, SCROLL_ANIMATION_SPEED, {
       axis: 'y'
     })
   }
 })
 
 $(document).on('shortcuts.to_last_post', function () {
-  let shortcuts_items = $('.js-shortcuts-items')
+  let items = document.querySelectorAll('.js-shortcuts-item')
 
-  if (shortcuts_items.length) {
-    if ($('.shortcuts-item', shortcuts_items).last().hasClass('focus')) {
-      $(document).trigger('shortcuts.to_next_page')
-    } else {
-      $('.shortcuts-item.focus', shortcuts_items).removeClass('focus')
-      $('.shortcuts-item', shortcuts_items).last().addClass('focus')
+  if (items.length === 0) {
+    return false
+  }
+
+  let last_item = items[items.length - 1]
+
+  if (last_item.classList.contains('focus')) {
+    $(document).trigger('shortcuts.to_next_page')
+  } else {
+    let focused_item = document.querySelector('.js-shortcuts-item.focus')
+
+    if (focused_item !== null) {
+      focused_item.classList.remove('focus')
     }
 
-    $.scrollTo($('.shortcuts-item.focus', shortcuts_items), 200, {
+    last_item.classList.add('focus')
+
+    $.scrollTo(last_item, SCROLL_ANIMATION_SPEED, {
       axis: 'y'
     })
   }
 })
 
 $(document).on('shortcuts.to_next_post', function () {
-  let shortcuts_items = $('.js-shortcuts-items')
+  let first_item = document.querySelector('.js-shortcuts-item')
 
-  if (shortcuts_items.length) {
-    if ($('.shortcuts-item.focus', shortcuts_items).length === 0) {
-      $('.shortcuts-item', shortcuts_items).first().addClass('focus')
-    } else {
-      let shortcuts_item = $('.shortcuts-item.focus', shortcuts_items)
-      let next_shortcuts_item = shortcuts_item.next()
+  if (first_item === null) {
+    return false
+  }
 
-      if (next_shortcuts_item.length === 0) {
-        $(document).trigger('shortcuts.to_next_page')
-      } else {
-        shortcuts_item.removeClass('focus')
-        next_shortcuts_item.addClass('focus')
+  let focused_item = document.querySelector('.js-shortcuts-item.focus')
+
+  if (focused_item === null) {
+    first_item.classList.add('focus')
+
+    $.scrollTo(first_item, SCROLL_ANIMATION_SPEED, {
+      axis: 'y'
+    })
+  } else {
+    let items = document.querySelectorAll('.js-shortcuts-item')
+    let next_item
+
+    for (let [i, item] of items.entries()) {
+      if (item.classList.contains('focus')) {
+        next_item = items.length > i + 1 ? items[i + 1] : null
+        break
       }
     }
 
-    $.scrollTo($('.shortcuts-item.focus', shortcuts_items), 200, {
-      axis: 'y'
-    })
+    if (next_item === null) {
+      $(document).trigger('shortcuts.to_next_page')
+    } else {
+      focused_item.classList.remove('focus')
+      next_item.classList.add('focus')
+
+      $.scrollTo(next_item, SCROLL_ANIMATION_SPEED, {
+        axis: 'y'
+      })
+    }
   }
 })
 
 $(document).on('shortcuts.to_prev_post', function () {
-  let shortcuts_items = $('.js-shortcuts-items')
+  let items = document.querySelectorAll('.js-shortcuts-item')
 
-  if (shortcuts_items.length) {
-    if ($('.shortcuts-item.focus', shortcuts_items).length === 0) {
-      $('.shortcuts-item', shortcuts_items).last().addClass('focus')
-    } else {
-      let shortcuts_item = $('.shortcuts-item.focus', shortcuts_items)
-      let prev_shortcuts_item = shortcuts_item.prev()
+  if (items.length === 0) {
+    return false
+  }
 
-      if (prev_shortcuts_item.length === 0) {
-        $(document).trigger('shortcuts.to_prev_page')
-      } else {
-        shortcuts_item.removeClass('focus')
-        prev_shortcuts_item.addClass('focus')
+  let last_item = items[items.length - 1]
+  let focused_item = document.querySelector('.js-shortcuts-item.focus')
+
+  if (focused_item === null) {
+    last_item.classList.add('focus')
+
+    $.scrollTo(last_item, SCROLL_ANIMATION_SPEED, {
+      axis: 'y'
+    })
+  } else {
+    let prev_item
+
+    for (let [i, item] of items.entries()) {
+      if (item.classList.contains('focus')) {
+        prev_item = i > 0 ? items[i - 1] : null
+        break
       }
     }
 
-    $.scrollTo($('.shortcuts-item.focus', shortcuts_items), 200, {
-      axis: 'y'
-    })
+    if (prev_item === null) {
+      $(document).trigger('shortcuts.to_prev_page')
+    } else {
+      focused_item.classList.remove('focus')
+      prev_item.classList.add('focus')
+
+      $.scrollTo(prev_item, SCROLL_ANIMATION_SPEED, {
+        axis: 'y'
+      })
+    }
   }
 })

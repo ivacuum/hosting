@@ -1,3 +1,1 @@
-$('p', '.js-trip-shortcuts').each(function () {
-  $(this).addClass('shortcuts-item')
-})
+document.querySelectorAll('.js-trip-shortcuts p').forEach(el => el.classList.add('js-shortcuts-item'))

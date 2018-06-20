@@ -10,7 +10,7 @@
 @section('content')
 <h2>Amazon S3</h2>
 
-<div class="shortcuts-item">
+<div class="js-shortcuts-item">
 <pre class="terminal">
 <span class="terminal-comment"># Политика свободного чтения</span>
 {

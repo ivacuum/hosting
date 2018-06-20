@@ -12,7 +12,7 @@
 @section('content')
 <h2>Сниппеты для выполнения различных задач на ОС FreeBSD</h2>
 
-<div class="shortcuts-item">
+<div class="js-shortcuts-item">
 <pre class="terminal">
 <span class="terminal-comment"># Обновление ОС</span>
 <span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=freebsd-update">freebsd-update</a> fetch install</span>
@@ -27,14 +27,14 @@
 </pre>
 </div>
 
-<div class="shortcuts-item">
+<div class="js-shortcuts-item">
 <pre>
 <span class="terminal-comment"># Чистка портов</span>
 <span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=pkg">pkg</a> clean</span>
 </pre>
 </div>
 
-<div class="shortcuts-item">
+<div class="js-shortcuts-item">
 <pre>
 <span class="terminal-comment"># Исходники ядра</span>
 <span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=fetch">fetch</a> http://mirror.yandex.ru/freebsd/releases/amd64/{{ $freebsd_version }}-RELEASE/src.txz</span>
@@ -42,14 +42,14 @@
 </pre>
 </div>
 
-<div class="shortcuts-item">
+<div class="js-shortcuts-item">
 <pre>
 <span class="terminal-comment"># Генерация зашифрованного пароля</span>
 <span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=openssl">openssl</a> passwd -1</span>
 </pre>
 </div>
 
-<div class="shortcuts-item">
+<div class="js-shortcuts-item">
 <pre>
 <span class="terminal-comment"># Билд ядра</span>
 <span class="terminal-command">cd /usr/src</span>
@@ -58,28 +58,28 @@
 </pre>
 </div>
 
-<div class="shortcuts-item">
+<div class="js-shortcuts-item">
 <pre>
 <span class="terminal-comment"># Первоначальная подготовка портов</span>
 <span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=portsnap">portsnap</a> fetch extract</span>
 </pre>
 </div>
 
-<div class="shortcuts-item">
+<div class="js-shortcuts-item">
 <pre>
 <span class="terminal-comment"># Очистка очереди exim</span>
 <span class="terminal-command">exim -bp | exiqgrep -i | xargs exim -Mrm</span>
 </pre>
 </div>
 
-<div class="shortcuts-item">
+<div class="js-shortcuts-item">
 <pre>
 <span class="terminal-comment"># Установка модулей npm для jenkins</span>
 <span class="terminal-command">npm install --global gulp-cli</span>
 </pre>
 </div>
 
-<div class="shortcuts-item">
+<div class="js-shortcuts-item">
 <pre>
 <span class="terminal-comment"># Утилиты</span>
 
@@ -103,7 +103,7 @@
 </pre>
 </div>
 
-<div class="shortcuts-item">
+<div class="js-shortcuts-item">
 <pre>
 <span class="terminal-comment"># Файл подкачки на 1024 МБ</span>
 <span class="terminal-command">dd if=/dev/zero of=/root/swap1 bs=1m count=1024</span>
@@ -117,7 +117,7 @@
 </pre>
 </div>
 
-<div class="shortcuts-item">
+<div class="js-shortcuts-item">
 <pre>
 <span class="terminal-comment"># Обновление jenkins без обновления openjdk</span>
 <span class="terminal-command">portmaster -bdg -x openjdk8 devel/jenkins-lts</span>

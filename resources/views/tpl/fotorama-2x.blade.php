@@ -1,10 +1,10 @@
 <?php
 $alt = $is_crawler && isset($trip) ? $trip->imgAltText() : '';
 ?>
-<div class="pic-container shortcuts-item">
+<div class="pic-container">
   <div class="pic-centered-container">
     @foreach ($pics as $pic)
-      <div class="pic" id="{{ $pic }}">
+      <div class="pic js-shortcuts-item" id="{{ $pic }}">
         @if ($is_crawler)
           <img alt="{{ $alt }}" src="{{ ViewHelper::pic2x($slug ?? $trip->slug, $pic) }}">
         @else

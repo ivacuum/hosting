@@ -170,6 +170,7 @@
 @if (!empty($websockets))
   <script src="{{ mix('/assets/socket.io.js') }}"></script>
 @endif
+<script src="{{ mix('/assets/mousetrap.js') }}"></script>
 <script src="/assets/fotorama/settings.js"></script>
 <script src="/assets/fotorama/fotorama.js"></script>
 <script src="{{ mix('/assets/app.js') }}"></script>

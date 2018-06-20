@@ -24,7 +24,7 @@ import './life'
 import './shortcuts'
 import './yandex-dns'
 
-let throttle = require('lodash/throttle')
+import throttle from 'lodash/throttle'
 
 class Application {
   constructor() {

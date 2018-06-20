@@ -9,6 +9,8 @@ mix.js('resources/assets/js/app.js', 'public/assets')
   .copy('node_modules/intersection-observer/intersection-observer.js', 'public/assets/intersection-observer.js')
   .copy('node_modules/promise-polyfill/promise.min.js', 'public/assets/polyfills.js')
 
+  .copy('node_modules/mousetrap/mousetrap.min.js', 'public/assets/mousetrap.js')
+
   .copy('node_modules/jquery/dist/jquery.min.js', 'public/assets/jquery.js')
   .copy('node_modules/vac-gfe/vendor/jquery.pjax.js', 'public/assets/jquery.pjax.js')
   .copy('node_modules/jquery.scrollto/jquery.scrollTo.min.js', 'public/assets/jquery.scrollto.js')

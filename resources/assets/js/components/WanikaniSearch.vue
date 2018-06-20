@@ -9,7 +9,7 @@
     <form class="mw-500" @submit.prevent="onSubmit">
       <div class="input-group">
         <input
-          class="form-control"
+          class="form-control js-search-input"
           v-model="q"
           :placeholder="$t('SEARCH')"
           autocapitalize="none"
@@ -91,7 +91,7 @@ export default {
 
   methods: {
     onSubmit() {
-      axios.post(`${this.action}?q=${this.q}`)
+      axios.post(this.action, { q: this.q })
         .then((response) => {
           this.results = Number(response.data.count)
           this.elements = response.data

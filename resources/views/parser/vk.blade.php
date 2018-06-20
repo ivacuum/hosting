@@ -49,9 +49,9 @@
   </div>
 @endif
 
-<div class="js-shortcuts-items">
+<div>
 @foreach ($posts as $post)
-  <div class="card card-mobile-wide shortcuts-item mb-3">
+  <div class="card card-mobile-wide mb-3 js-shortcuts-item">
     <div class="card-body text-break-work">
       @if ($post['text'])
         <div class="life-text mb-0 pre-line">{{ $post['text'] }}</div>

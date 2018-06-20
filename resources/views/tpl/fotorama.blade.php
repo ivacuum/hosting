@@ -6,7 +6,7 @@ $percent = round($h / $w, 2) * 100;
 $pic_style = "padding-bottom: calc({$percent}% + 68px);";
 $pic_centered_container_style = "max-width: {$w}px;";
 ?>
-<div class="pic-container shortcuts-item">
+<div class="pic-container js-shortcuts-item">
   @if ($is_crawler)
     @foreach ($pics as $pic)
       <div class="pic-centered-container">

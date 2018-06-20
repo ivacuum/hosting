@@ -1,7 +1,7 @@
 @extends("life.trips.{$template}")
 
 @section('content_header')
-<div class="life-text js-shortcuts-items">
+<div class="life-text">
   <div class="mw-1000 js-trip-shortcuts">
 @endsection
 
