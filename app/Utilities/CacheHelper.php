@@ -12,6 +12,22 @@ class CacheHelper
         $this->cache = $cache;
     }
 
+    public function forgetCities()
+    {
+        $this->cache->deleteMultiple([
+            CacheKey::CITIES_BY_ID,
+            CacheKey::CITIES_BY_SLUG,
+        ]);
+    }
+
+    public function forgetCountries()
+    {
+        $this->cache->deleteMultiple([
+            CacheKey::COUNTRIES_BY_ID,
+            CacheKey::COUNTRIES_BY_SLUG,
+        ]);
+    }
+
     public function forgetTrips()
     {
         $this->cache->deleteMultiple([

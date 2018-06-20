@@ -2,6 +2,12 @@
 
 class CacheKey
 {
+    const CITIES_BY_ID = 'cities.id';
+    const CITIES_BY_SLUG = 'cities.slug';
+
+    const COUNTRIES_BY_ID = 'countries.id';
+    const COUNTRIES_BY_SLUG = 'countries.slug';
+
     const DOMAINS_WHOIS = 'domains.whois.{key}';
 
     const PHOTOS_POINTS = 'photos.points.all';

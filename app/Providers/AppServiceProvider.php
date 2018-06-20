@@ -46,6 +46,7 @@ class AppServiceProvider extends ServiceProvider
         \App\Photo::observe(\App\Observers\PhotoObserver::class);
         \App\Domain::observe(\App\Observers\DomainObserver::class);
         \App\Comment::observe(\App\Observers\CommentObserver::class);
+        \App\Country::observe(\App\Observers\CountryObserver::class);
         \App\Radical::observe(\App\Observers\RadicalObserver::class);
         \App\Torrent::observe(\App\Observers\TorrentObserver::class);
         \App\Vocabulary::observe(\App\Observers\VocabularyObserver::class);

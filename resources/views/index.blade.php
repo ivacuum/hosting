@@ -115,6 +115,7 @@
 
 <div class="d-flex flex-wrap mobile-wide">
   @foreach ($trips as $trip)
+    <?php $trip->loadCityAndCountry(); ?>
     <div class="flex-basis-100 flex-sm-basis-50 flex-lg-basis-33 mx-auto mx-md-0 position-relative">
       <a class="d-block" href="{{ $trip->www() }}">
         <div class="hover-opacity-85 image-tint">

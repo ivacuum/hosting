@@ -21,6 +21,7 @@
   </thead>
   <tbody>
     @foreach ($models as $model)
+      <?php $model->loadCountry(); ?>
       <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
         <td class="tooltipped tooltipped-n" aria-label="{{ $model->country->title }}">
           <a href="{{ path('Acp\Countries@show', $model->country) }}">

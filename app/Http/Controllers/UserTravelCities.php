@@ -9,8 +9,8 @@ class UserTravelCities extends UserTravel
     {
         $trips = Trip::tripsByCities($this->traveler->id);
 
-        $cities = City::orderBy(City::titleField())
-            ->get()
+        $cities = \CityHelper::cachedById()
+            ->sortBy(City::titleField())
             ->each(function ($city) use (&$trips) {
                 $city->trips_count = $trips[$city->id]['total'] ?? 0;
                 $city->trips_published_count = $trips[$city->id]['published'] ?? 0;
@@ -24,8 +24,7 @@ class UserTravelCities extends UserTravel
 
     public function show($login, $slug)
     {
-        /* @var City $city */
-        $city = City::where('slug', $slug)->firstOrFail();
+        $city = \CityHelper::findBySlugOrFail($slug);
 
         $trips = $city->trips()
             ->where('user_id', $this->traveler->id)
@@ -46,6 +45,8 @@ class UserTravelCities extends UserTravel
 
             return redirect($trip->www());
         }
+
+        $city->loadCountry();
 
         \Breadcrumbs::push(trans('menu.life'), "@{$login}/travel");
         \Breadcrumbs::push(trans('menu.countries'), "@{$login}/travel/countries");

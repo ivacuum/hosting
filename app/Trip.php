@@ -36,9 +36,11 @@ use Symfony\Component\Finder\Finder;
  * @property \Illuminate\Database\Eloquent\Collection $photos
  * @property \App\User $user
  *
- * @property-read string  $title
  * @property-read string  $meta_title
  * @property-read string  $meta_description
+ * @property-read string  $period
+ * @property-read string  $title
+ * @property-read integer $year
  *
  * @mixin \Eloquent
  */
@@ -197,6 +199,19 @@ class Trip extends Model
         return "{$this->city->country->emoji} {$this->title}, {$this->city->country->title}, {$this->timelinePeriod(true)}.";
     }
 
+    public function loadCity(): void
+    {
+        if (!$this->relationLoaded('city')) {
+            $this->setRelation('city', \CityHelper::findById($this->city_id));
+        }
+    }
+
+    public function loadCityAndCountry(): void
+    {
+        $this->loadCity();
+        $this->city->loadCountry();
+    }
+
     public function localizedDate(): string
     {
         if ($this->date_end->isSameDay($this->date_start)) {
@@ -345,7 +360,7 @@ class Trip extends Model
     {
         return \Cache::remember(CacheKey::TRIPS_PUBLISHED_WITH_COVER, 1440, function () {
             // Не нужно ограничение по пользователю, так как meta_image есть только у user_id=1
-            return static::with('city:id,country_id', 'city.country:id,slug,emoji')
+            return static::query()
                 ->published()
                 ->where('meta_image', '<>', '')
                 ->orderBy('date_start', 'desc')
@@ -379,7 +394,8 @@ class Trip extends Model
     public static function idsByCountry(?int $id = null)
     {
         $ids = \Cache::rememberForever(CacheKey::TRIPS_PUBLISHED_BY_COUNTRY, function () {
-            $trips = static::published()
+            $trips = static::query()
+                ->published()
                 ->with('city:id,country_id')
                 ->get(['id', 'city_id']);
 

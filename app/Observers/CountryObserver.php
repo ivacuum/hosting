@@ -1,8 +1,8 @@
 <?php namespace App\Observers;
 
-use App\City as Model;
+use App\Country as Model;
 
-class CityObserver
+class CountryObserver
 {
     public function deleted(Model $model)
     {

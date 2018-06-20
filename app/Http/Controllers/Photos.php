@@ -34,7 +34,7 @@ class Photos extends Controller
 
     public function city($slug)
     {
-        $city = City::where('slug', $slug)->firstOrFail();
+        $city = \CityHelper::findBySlugOrFail($slug);
 
         $ids = Trip::idsByCity($city->id);
 
@@ -76,7 +76,7 @@ class Photos extends Controller
 
     public function country($slug)
     {
-        $country = Country::where('slug', $slug)->firstOrFail();
+        $country = \CountryHelper::findBySlugOrFail($slug);
 
         $ids = Trip::idsByCountry($country->id);
 
@@ -122,9 +122,11 @@ class Photos extends Controller
     public function show($id)
     {
         /* @var Photo $photo */
-        $photo = Photo::with('rel', 'rel.city', 'rel.city.country', 'tags')->findOrFail($id);
+        $photo = Photo::with('rel', 'tags')->findOrFail($id);
 
         abort_unless($photo->status === Photo::STATUS_PUBLISHED, 404);
+
+        $photo->rel->loadCityAndCountry();
 
         $tag_id = request('tag_id');
         $city_id = request('city_id');

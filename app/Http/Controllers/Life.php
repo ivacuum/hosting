@@ -40,7 +40,7 @@ class Life extends Controller
 
     public function calendar()
     {
-        $trips = Trip::with('city.country')
+        $trips = Trip::query()
             ->where('user_id', 1)
             ->where('city_id', '<>', 1)
             ->visible()
@@ -62,6 +62,8 @@ class Life extends Controller
                     $calendar[$date] = [];
                 }
 
+                $trip->loadCityAndCountry();
+
                 $calendar[$date][] = [
                     'flag' => $trip->city->country->flagUrl(),
                     'slug' => $trip->status === Trip::STATUS_PUBLISHED ? $trip->slug : '',
@@ -77,8 +79,8 @@ class Life extends Controller
     {
         $trips = Trip::tripsByCities(1);
 
-        $cities = City::orderBy(City::titleField())
-            ->get()
+        $cities = \CityHelper::cachedById()
+            ->sortBy(City::titleField())
             ->each(function ($city) use (&$trips) {
                 $city->trips_count = $trips[$city->id]['total'] ?? 0;
                 $city->trips_published_count = $trips[$city->id]['published'] ?? 0;
@@ -108,6 +110,8 @@ class Life extends Controller
 
             return redirect($trip->www());
         }
+
+        $city->loadCountry();
 
         \Breadcrumbs::push(trans('menu.countries'), "life/countries")
             ->push($city->country->title, "life/countries/{$city->country->slug}")
@@ -144,7 +148,8 @@ class Life extends Controller
 
     public function country($slug)
     {
-        $country = Country::where('slug', $slug)->firstOrFail();
+        $country = \CountryHelper::findBySlugOrFail($slug);
+
         $trips = $country->trips()
             ->where('user_id', 1)
             ->withCount('photos')
@@ -205,7 +210,7 @@ class Life extends Controller
             return $this->trip($trip);
         }
 
-        if ($city = $this->getCity($page)) {
+        if (null !== $city = \CityHelper::findBySlug($page)) {
             return $this->city($city);
         }
 
@@ -221,6 +226,8 @@ class Life extends Controller
         $tpl = $trip->template();
 
         abort_unless(view()->exists($tpl), 404);
+
+        $trip->loadCityAndCountry();
 
         \Breadcrumbs::push(trans('menu.countries'), "life/countries")
             ->push($trip->city->country->title, "life/countries/{$trip->city->country->slug}")
@@ -246,11 +253,6 @@ class Life extends Controller
         $this->middleware('breadcrumbs:menu.cities,life/cities')->only('cities');
         $this->middleware('breadcrumbs:menu.countries,life/countries')->only('countries', 'country');
         $this->middleware('breadcrumbs:menu.gigs,life/gigs')->only('gigs');
-    }
-
-    protected function getCity(string $slug): ?City
-    {
-        return City::where('slug', $slug)->first();
     }
 
     protected function getGig(string $slug): ?Gig

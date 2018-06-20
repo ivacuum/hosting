@@ -69,6 +69,13 @@ class City extends Model
         return $this->lat && $this->lon;
     }
 
+    public function loadCountry(): void
+    {
+        if (!$this->relationLoaded('country')) {
+            $this->setRelation('country', \CountryHelper::findById($this->country_id));
+        }
+    }
+
     public function metaTitle(): string
     {
         return "{$this->country->emoji} {$this->title}, {$this->country->title}";

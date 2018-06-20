@@ -46,6 +46,8 @@ class UserTravelTrips extends UserTravel
             ->where('status', Trip::STATUS_PUBLISHED)
             ->firstOrFail();
 
+        $trip->loadCityAndCountry();
+
         \Breadcrumbs::push(trans('menu.life'), "@{$login}/travel")
             ->push(trans('menu.countries'), "@{$login}/travel/countries")
             ->push($trip->city->country->title, "@{$login}/travel/countries/{$trip->city->country->slug}")

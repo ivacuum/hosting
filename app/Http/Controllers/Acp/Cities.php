@@ -21,7 +21,7 @@ class Cities extends Controller
 
         $sort_key = $sort_key === 'title' ? Model::titleField() : $sort_key;
 
-        $models = Model::with('country')
+        $models = Model::query()
             ->withCount('trips')
             ->orderBy($sort_key, $sort_dir)
             ->when($country_id, function (Builder $query) use ($country_id) {

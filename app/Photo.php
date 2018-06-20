@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
+ * @property \App\Trip $rel
  * @property \App\User $user
  *
  * @mixin \Eloquent
