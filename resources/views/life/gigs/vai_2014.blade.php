@@ -17,7 +17,7 @@
       <p>Стив Вай творил с гитарой во время своего полуторачасового выступления нечто невообразимое. Удалось шикануть и взять первый ряд, тем более после покупки билетов на Линкин Парк местные цены были смехотворны. Снова убедился, что как минимум один раз всем стоит взять лучшие места на ожидаемое шоу, так как впечатления потом непередаваемо крутые.</p>
     @endru
     @ru
-      <div class="mb-1">Предполагаемый сетлист:</divp>
+      <div class="mb-1">Предполагаемый сетлист:</div>
     @en
       <div class="mb-1">Setlist probably was:</div>
     @endru
@@ -57,15 +57,13 @@
 @en
   <p>Were caught by the cameras.</p>
 @endru
-<div class="js-lazy" data-lazy-type="fotorama">
-  <img src="https://life.ivacuum.ru/gigs/vai.2014/Steve_093.jpg">
-  <img src="https://life.ivacuum.ru/gigs/vai.2014/Steve_008.jpg">
-</div>
+@include('tpl.pic-arbitrary', ['pic' => 'Steve_093.jpg', 'w' => 900, 'h' => 600])
+@include('tpl.pic-arbitrary', ['pic' => 'Steve_008.jpg', 'w' => 900, 'h' => 600])
 
 @ru
   <p>Видео одной из песен.</p>
 @en
   <p>Short footage from the show.</p>
 @endru
-<youtube title="Steve Vai, Kaluga 2014" v="OkpMqrPtY7M"></youtube>
+<youtube title="Steve Vai 2014, Kaluga, Russia" v="OkpMqrPtY7M"></youtube>
 @endsection

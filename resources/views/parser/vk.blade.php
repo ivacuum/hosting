@@ -63,13 +63,13 @@
       @if ($post['attachments'])
         <div class="mt-2">
         @if ($post['photos'] > 1)
-          <div class="pic-container js-lazy" data-lazy-type="fotorama">
+          <div class="pic-container">
         @elseif ($post['photos'] == 1)
           <div class="img-container {{ sizeof($post['attachments']) <= 1 ? 'mb-0' : '' }}">
         @endif
         @foreach ($post['attachments'] as $attach)
           @if ($attach->type == 'photo' && isset($attach->photo->photo_604))
-            <img src="{{ @$attach->photo->photo_1280 ?: @$attach->photo->photo_807 ?: $attach->photo->photo_604 }}">
+            <img class="d-block markdown-responsive-image mx-auto {{ !$loop->first ? 'js-shortcuts-item' : '' }}" src="{{ @$attach->photo->photo_1280 ?: @$attach->photo->photo_807 ?: $attach->photo->photo_604 }}">
           @endif
         @endforeach
         @if ($post['photos'] > 0)

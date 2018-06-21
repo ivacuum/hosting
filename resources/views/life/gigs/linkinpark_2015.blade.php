@@ -50,7 +50,5 @@
 @en
   <p>Fan-zone experience.</p>
 @endru
-<div class="js-lazy" data-lazy-type="fotorama" data-width="1000" data-ratio="1000/595">
-  <a href="https://www.youtube.com/watch?v=x8i-KQowLZA"></a>
-</div>
+<youtube title="Linkin Park 2015, Moscow, Russia" v="x8i-KQowLZA"></youtube>
 @endsection

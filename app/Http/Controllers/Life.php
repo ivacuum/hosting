@@ -105,7 +105,7 @@ class Life extends Controller
         event(new \App\Events\Stats\CityViewed($city->id));
 
         if (1 === sizeof($published_trips)) {
-            /* @var \App\Trip $trip */
+            /* @var Trip $trip */
             $trip = $published_trips->first();
 
             return redirect($trip->www());
@@ -179,7 +179,10 @@ class Life extends Controller
 
         $timeline = $gig->artistTimeline();
 
-        return view($tpl, compact('gig', 'timeline'));
+        // Для собственных фотографий в тексте истории
+        $slug = "gigs/{$gig->slug}";
+
+        return view($tpl, compact('gig', 'slug', 'timeline'));
     }
 
     public function gigs()

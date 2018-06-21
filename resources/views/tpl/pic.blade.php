@@ -5,7 +5,7 @@
         <img alt="{{ isset($trip) ? $trip->imgAltText() : '' }}"
              src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}">
       @else
-        <img class="js-lazy"
+        <img class="rounded-md-pic js-lazy"
              alt=""
              src="https://life.ivacuum.ru/0.gif"
              data-src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}">

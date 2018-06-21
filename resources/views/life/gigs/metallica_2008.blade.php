@@ -14,7 +14,11 @@
   <div class="col-md-7">
     @include('tpl.setlist-title')
     <ol>
-      <li>Creeping Death</li>
+      <li>
+        <a class="link" href="https://vk.com/video_ext.php?oid=169906990&id=162953982&hash=598cee4929696e81&hd=1">
+          Creeping Death
+        </a>
+      </li>
       <li>For Whom the Bell Tolls</li>
       <li>Ride the Lightning</li>
       <li>Harvester of Sorrow <small class="text-muted">(followed by Kirk's solo incl. The Sails of Charon)</small></li>
@@ -44,11 +48,6 @@
 @ru
   <p>Видеозаписи концерта.</p>
 @endru
-<div class="js-lazy" data-lazy-type="fotorama" data-width="720" data-ratio="720/437">
-  <a href="https://www.youtube.com/watch?v=s3l5cyVLrTs"></a>
-  <a href="https://vk.com/video_ext.php?oid=169906990&id=162953982&hash=598cee4929696e81&hd=1" data-video="true">
-    <img src="https://pp.vk.me/c527523/u169906990/video/l_65e47bb1.jpg">
-  </a>
-  <a href="https://www.youtube.com/watch?v=J1pyT7G5dhY"></a>
-</div>
+<youtube title="Metallica 2008, Saint Petersburg, Russia" v="s3l5cyVLrTs"></youtube>
+<youtube title="Metallica — Nothing Else Matters" v="J1pyT7G5dhY"></youtube>
 @endsection

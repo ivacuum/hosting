@@ -130,6 +130,24 @@
   @include media-breakpoint-up(lg) { font-size: 18px; }
 }
 
+.photo-overlay-arrow {
+  font-size: 1rem;
+  position: absolute;
+  top: 50%;
+  margin-top: -.5rem;
+  color: $white;
+  filter: drop-shadow(0 0 1px rgba($black, .4));
+  line-height: 1;
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.5rem;
+    margin-top: -.75rem;
+  }
+}
+
+.photo-overlay-arrow-next { right: .25rem; }
+.photo-overlay-arrow-prev { left: .25rem; }
+
 .photo-overlay-button {
   color: $white;
   filter: drop-shadow(0 0 1px rgba($black, .4));
@@ -153,8 +171,6 @@
     left: 0;
     width: 100%;
     margin: 0;
-
-    @include media-breakpoint-up(md) { border-radius: $border-radius-lg; }
   }
 }
 
@@ -169,6 +185,22 @@
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+}
+
+@include media-breakpoint-up(md) {
+  .pic-centered-container {
+    .pic:first-child .pic-group-border-radius,
+    .pic-flexible:first-child .pic-group-border-radius {
+      border-top-left-radius: $border-radius-lg;
+      border-top-right-radius: $border-radius-lg;
+    }
+
+    .pic:last-child .pic-group-border-radius,
+    .pic-flexible:last-child .pic-group-border-radius {
+      border-bottom-right-radius: $border-radius-lg;
+      border-bottom-left-radius: $border-radius-lg;
+    }
+  }
 }
 
 .trip-city-map {

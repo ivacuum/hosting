@@ -24,7 +24,6 @@
     <link rel="alternate" hreflang="en" href="{{ url("en/{$request_uri}") }}">
     <link rel="alternate" hreflang="ru" href="{{ url($request_uri) }}">
   @endif
-  <link rel="stylesheet" href="/assets/fotorama/fotorama.css">
   <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">
   @stack('head')
 </head>
@@ -171,8 +170,6 @@
   <script src="{{ mix('/assets/socket.io.js') }}"></script>
 @endif
 <script src="{{ mix('/assets/mousetrap.js') }}"></script>
-<script src="/assets/fotorama/settings.js"></script>
-<script src="/assets/fotorama/fotorama.js"></script>
 <script src="{{ mix('/assets/app.js') }}"></script>
 @stack('js')
 @section('counters')

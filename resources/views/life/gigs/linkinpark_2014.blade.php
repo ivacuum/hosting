@@ -20,7 +20,11 @@
       <li>Runaway</li>
       <li>Wastelands</li>
       <li>Castle of Glass</li>
-      <li>Leave Out All the Rest / Shadow of the Day / Iridescent</li>
+      <li>
+        <a class="link" href="https://vk.com/video_ext.php?oid=169906990&id=168576241&hash=1112fdc7c48b81fc&hd=3">
+          Leave Out All the Rest / Shadow of the Day / Iridescent
+        </a>
+      </li>
       <li>Robot Boy</li>
       <li>Joe Hahn Solo</li>
       <li>Burn It Down</li>
@@ -28,7 +32,9 @@
       <li>Wretches and Kings / Remember the Name / When They Come for Me</li>
       <li>Numb</li>
       <li>In the End</li>
-      <li>Faint</li>
+      <li>
+        <a class="link" href="https://www.youtube.com/watch?v=NdIBg8zHRFI">Faint</a>
+      </li>
       <li>Until It's Gone</li>
       <li>A Light That Never Comes</li>
       <li>Lost in the Echo</li>
@@ -46,13 +52,8 @@
 </div>
 
 @ru
-  <p>Видеозаписи с концерта: полное шоу, флэшмоб (трек #19) и medley (трек #11).</p>
+  <p>Видеозаписи с концерта:</p>
 @endru
-<div class="js-lazy" data-lazy-type="fotorama" data-width="1000" data-ratio="1000/595">
-  <a href="https://www.youtube.com/watch?v=rLB0aIGS0zE"></a>
-  <a href="https://www.youtube.com/watch?v=NdIBg8zHRFI"></a>
-  <a href="https://vk.com/video_ext.php?oid=169906990&id=168576241&hash=1112fdc7c48b81fc&hd=3" data-video="true">
-    <img src="https://pp.vk.me/c540406/u15466377/video/l_d7946cfb.jpg">
-  </a>
-</div>
+<youtube title="Linkin Park 2014, Moscow, Russia" v="rLB0aIGS0zE"></youtube>
+<youtube title="Linkin Park — Faint (Pillows Flashmob)" v="NdIBg8zHRFI"></youtube>
 @endsection

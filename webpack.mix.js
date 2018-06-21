@@ -25,9 +25,6 @@ mix.js('resources/assets/js/app.js', 'public/assets')
   .copy('node_modules/axios/dist/axios.min.js', 'public/assets/axios.js')
   .copy('node_modules/vac-gfe/js/empty.map', 'public/assets/axios.min.map')
 
-  .copy('resources/assets/js/fotorama.js', 'public/assets/fotorama/settings.js')
-  .copyDirectory('node_modules/fotorama', 'public/assets/fotorama')
-
   .copy('node_modules/socket.io-client/dist/socket.io.js', 'public/assets/socket.io.js')
   .copy('node_modules/vac-gfe/js/empty.map', 'public/assets/socket.io.js.map')
 

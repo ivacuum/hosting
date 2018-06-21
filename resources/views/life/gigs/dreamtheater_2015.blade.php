@@ -37,11 +37,9 @@
 @ru
   <p>Несколько фото с концерта.</p>
 @endru
-<div class="js-lazy" data-lazy-type="fotorama">
-  <img src="https://life.ivacuum.ru/gigs/dreamtheater.2015/IMG_1682.jpg">
-  <img src="https://life.ivacuum.ru/gigs/dreamtheater.2015/IMG_1688.jpg">
-  <img src="https://life.ivacuum.ru/gigs/dreamtheater.2015/IMG_1689.jpg">
-</div>
+@include('tpl.pic-arbitrary', ['pic' => 'IMG_1682.jpg', 'w' => 1000, 'h' => 750])
+@include('tpl.pic-arbitrary', ['pic' => 'IMG_1688.jpg', 'w' => 1000, 'h' => 750])
+@include('tpl.pic-arbitrary', ['pic' => 'IMG_1689.jpg', 'w' => 1000, 'h' => 750])
 
 @ru
   <p class="mb-1">Видеозапись выступления.</p>

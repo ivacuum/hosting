@@ -17,8 +17,6 @@
       <li><kbd>ctrl &rarr;</kbd> и <kbd>alt &rarr;</kbd> — следующая страница</li>
       <li><kbd>ctrl &larr;</kbd> и <kbd>alt &larr;</kbd> — предыдущая страница</li>
     </ul>
-
-    <p>Наполнение и вывод <a class="link" href="/life">заметок</a> сильно упрощает <a class="link" href="http://fotorama.io/">фоторама</a>.</p>
   @en
     <h2>About</h2>
     <p>This site is a free, best-effort service and cannot provide any uptime or support guarantees.</p>

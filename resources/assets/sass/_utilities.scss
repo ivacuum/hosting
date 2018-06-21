@@ -1,13 +1,9 @@
-.rounded-bottom-0 {
-  border-bottom-right-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-}
-
-.rounded-top-0 {
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-}
+.lh-1 { line-height: 1; }
 
 @include media-breakpoint-up(sm) {
   .w-sm-auto { width: auto !important; }
+}
+
+@include media-breakpoint-up(md) {
+  .rounded-md-pic { border-radius: $border-radius-lg; }
 }

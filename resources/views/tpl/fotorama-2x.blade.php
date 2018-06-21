@@ -8,7 +8,7 @@ $alt = $is_crawler && isset($trip) ? $trip->imgAltText() : '';
         @if ($is_crawler)
           <img alt="{{ $alt }}" src="{{ ViewHelper::pic2x($slug ?? $trip->slug, $pic) }}">
         @else
-          <img class="js-lazy {{ $loop->first ? 'rounded-bottom-0' : '' }} {{ $loop->last ? 'rounded-top-0' : '' }} {{ !$loop->first && !$loop->last ? 'rounded-0' : '' }}"
+          <img class="pic-group-border-radius js-lazy"
                alt=""
                src="https://life.ivacuum.ru/0.gif"
                data-src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"

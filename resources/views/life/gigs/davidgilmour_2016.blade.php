@@ -2,9 +2,6 @@
 
 {{-- Bowling Green --}}
 
-{{-- Для собственных фотографий в тексте истории --}}
-@php ($slug = "gigs/{$gig->slug}")
-
 @section('content')
 @ru
   <p>Начал слушать Пинк Флойд только в конце нулевых, перед сложными экзаменами в университете. Через несколько лет пришла мысль, что неплохо было бы съездить на шоу группы, но оказалось, что их клавишника уже не было в живых, а вокалист и гитарист Дэвид Гилмор долгое время был вне новостных радаров. В 2014 году он неожиданно появился с сольным альбомом и объявил мировое турне в 2015 — в год, когда ему исполнялось 69 лет. Вот она — не исключено, что последняя — возможность услышать песни и гитарные соло от самого автора.</p>
@@ -68,26 +65,25 @@
 @ru
   <p>Несколько фотографий из интернета.</p>
 @endru
-@include('tpl.fotorama', ['h' => 627, 'pics' => [
-  '1.jpg',
-  '2.jpg',
-  '3.jpg',
-  '4.jpg',
-  '5.jpg',
-  '6.jpg',
-  '7.jpg',
-  '8.jpg',
-  '9.jpg',
-  '10.jpg',
-  '11.jpg',
-]])
+@include('tpl.pic-arbitrary', ['pic' => '1.jpg', 'w' => 1000, 'h' => 627])
+@include('tpl.pic-arbitrary', ['pic' => '2.jpg', 'w' => 938, 'h' => 750])
+@include('tpl.pic-arbitrary', ['pic' => '3.jpg', 'w' => 1000, 'h' => 667])
+@include('tpl.pic-arbitrary', ['pic' => '4.jpg', 'w' => 1000, 'h' => 667])
+@include('tpl.pic-arbitrary', ['pic' => '5.jpg', 'w' => 1000, 'h' => 563])
+@include('tpl.pic-arbitrary', ['pic' => '6.jpg', 'w' => 871, 'h' => 750])
+@include('tpl.pic-arbitrary', ['pic' => '7.jpg', 'w' => 967, 'h' => 750])
+@include('tpl.pic-arbitrary', ['pic' => '8.jpg', 'w' => 1000, 'h' => 654])
+@include('tpl.pic-arbitrary', ['pic' => '9.jpg', 'w' => 1000, 'h' => 562])
+@include('tpl.pic-arbitrary', ['pic' => '10.jpg', 'w' => 914, 'h' => 750])
+@include('tpl.pic-arbitrary', ['pic' => '11.jpg', 'w' => 1000, 'h' => 750])
 
 @ru
   <p>Первый концерт тура исполнялся в Польше совместно с оркестром и вышел в профессиональной съемке. Его запись показывали по телевизору, она представлена ниже. Кстати, тот концерт закончился около часа ночи, а место тоже посреди города. Сет немного отличается от Висбадена, но записи лучше все равно не найти.</p>
 @endru
-<div class="js-lazy" data-lazy-type="fotorama" data-width="1000" data-ratio="1000/595">
-  <a href="https://vk.com/video_ext.php?oid=-63247104&id=456239059&hash=91a9d66af1c534cc&hd=3" data-video="true">
-    <img src="https://pp.vk.me/c631626/v631626104/322aa/lnPtc9IRXxc.jpg">
+<p>
+  <a class="link" href="https://vk.com/video_ext.php?oid=-63247104&id=456239059&hash=91a9d66af1c534cc&hd=3">
+    @svg (film)
+    @ru Смотреть концерт на сайте vk.com @en Watch the concert on vk.com @endru
   </a>
-</div>
+</p>
 @endsection

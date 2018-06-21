@@ -28,7 +28,7 @@
 
 @include('tpl.trips-timeline')
 
-<div class="h4 mt-3">@ru Поделиться ссылкой @en Share @endru</div>
+<div class="h4 mt-4">@ru Поделиться ссылкой @en Share @endru</div>
 @include('tpl.social-buttons', ['title' => $trip->metaTitle(), 'url' => Request::url()])
 
 @if (Auth::check())
