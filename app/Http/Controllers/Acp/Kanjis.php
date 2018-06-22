@@ -59,7 +59,7 @@ class Kanjis extends Controller
             $data['similar'] = Model::whereIn('character', $characters)
                 ->get(['id'])
                 ->pluck('id')
-                ->toArray();
+                ->all();
 
             request()->merge($data);
         }

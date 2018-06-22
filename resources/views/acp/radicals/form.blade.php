@@ -5,7 +5,7 @@
 <div class="form-group form-row">
   <label class="col-md-4 text-md-right">Есть в кандзи</label>
   <div class="col-md-8">
-    @php ($kanjis = $model->kanjis->pluck('id')->toArray())
+    @php ($kanjis = $model->kanjis->pluck('id')->all())
     @foreach (App\Kanji::orderBy('level')->orderBy('meaning')->get(['id', 'character', 'meaning']) as $row)
       <label class="form-check">
         <input class="form-check-input" type="checkbox" name="kanjis[]" value="{{ $row->id }}" {{ in_array($row->id, (array) old('kanjis', $kanjis)) ? 'checked' : '' }}>

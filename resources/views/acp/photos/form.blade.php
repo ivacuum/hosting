@@ -17,7 +17,7 @@
     <div class="col-md-8">
       @foreach (App\Tag::orderBy(App\Tag::titleField())->get() as $tag)
         <label class="form-check">
-          <input class="form-check-input {{ $errors->has('tags') ? 'is-invalid' : '' }}" type="checkbox" name="tags[]" value="{{ $tag->id }}" {{ in_array($tag->id, (array) old('tags', !empty($model) ? $model->tags->pluck('id')->toArray() : null)) ? 'checked' : '' }}>
+          <input class="form-check-input {{ $errors->has('tags') ? 'is-invalid' : '' }}" type="checkbox" name="tags[]" value="{{ $tag->id }}" {{ in_array($tag->id, (array) old('tags', !empty($model) ? $model->tags->pluck('id')->all() : null)) ? 'checked' : '' }}>
           <span class="form-check-label">{{ $tag->title }}</span>
         </label>
       @endforeach
