@@ -21,13 +21,13 @@ class Photos extends Controller
 
     public function cities()
     {
-        $trips = Trip::tripsByCities();
+        $trips = Trip::tripsByCities(1);
 
-        $cities = City::orderBy(City::titleField())
-            ->get()
+        $cities = \CityHelper::cachedById()
             ->filter(function ($city) use (&$trips) {
                 return $trips[$city->id]['published'] ?? 0;
-            });
+            })
+            ->sortBy(City::titleField());
 
         return view($this->view, compact('cities'));
     }
@@ -54,22 +54,7 @@ class Photos extends Controller
 
     public function countries()
     {
-        $trips = Trip::tripsByCities();
-
-        $countries = Country::with('cities')
-            ->orderBy(Country::titleField())
-            ->get()
-            ->each(function ($country) use (&$trips) {
-                $trips_count = 0;
-
-                $country->cities->each(function ($city) use (&$trips, &$trips_count) {
-                    $city->trips_count = $trips[$city->id]['published'] ?? 0;
-
-                    $trips_count += $city->trips_count;
-                });
-
-                $country->trips_count = $trips_count;
-            })->filter->trips_count;
+        $countries = Country::allWithPublishedTrips(1);
 
         return view($this->view, compact('countries'));
     }
