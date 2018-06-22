@@ -10,11 +10,14 @@ class UserTravelCities extends UserTravel
         $trips = Trip::tripsByCities($this->traveler->id);
 
         $cities = \CityHelper::cachedById()
-            ->sortBy(City::titleField())
+            ->filter(function ($city, $id) use ($trips) {
+                return isset($trips[$id]);
+            })
             ->each(function ($city) use (&$trips) {
                 $city->trips_count = $trips[$city->id]['total'] ?? 0;
                 $city->trips_published_count = $trips[$city->id]['published'] ?? 0;
-            })->filter->trips_count;
+            })
+            ->sortBy(City::titleField());
 
         \Breadcrumbs::push(trans('menu.life'), "@{$login}/travel");
         \Breadcrumbs::push(trans('menu.cities'));

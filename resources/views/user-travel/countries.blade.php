@@ -13,17 +13,17 @@
   <li class="list-inline-item"><a class="link" href="{{ path('UserTravelCities@index', $traveler->login) }}">{{ trans('life.by_city') }}</a></li>
 </ul>
 
-@if (!empty($countries))
-  <ol>
+@if ($countries->count())
+  <ol class="mb-0">
     @foreach ($countries as $country)
       @continue ($country->trips_count === 0)
-      <li class="mb-2">
+      <li class="{{ !$loop->last ? 'mb-2' : '' }}">
         @if ($country->trips_published_count)
           <a class="link" href="{{ path('UserTravelCountries@show', [$traveler->login, $country->slug]) }}"><strong>{{ $country->title }}</strong></a>:
         @else
           <strong>{{ $country->title }}</strong>:
         @endif
-        @foreach ($country->filtered_cities as $city)
+        @foreach ($country->cities as $city)
           @if ($city->trips_published_count)
             <a class="link" href="{{ path('UserTravelCities@show', [$traveler->login, $city->slug]) }}">{{ $city->title }}</a>{{ !$loop->last ? ',' : '' }}
           @else

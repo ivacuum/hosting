@@ -7,26 +7,7 @@ class UserTravelCountries extends UserTravel
 {
     public function index($login)
     {
-        $trips = Trip::tripsByCities($this->traveler->id);
-
-        $countries = Country::with('cities')
-            ->orderBy(Country::titleField())
-            ->get()
-            ->each(function ($country) use (&$trips) {
-                $trips_count = 0;
-                $trips_published_count = 0;
-
-                $country->filtered_cities = $country->cities->each(function ($city) use (&$trips, &$trips_count, &$trips_published_count) {
-                    $city->trips_count = $trips[$city->id]['total'] ?? 0;
-                    $city->trips_published_count = $trips[$city->id]['published'] ?? 0;
-
-                    $trips_count += $city->trips_count;
-                    $trips_published_count += $city->trips_published_count;
-                })->filter->trips_count;
-
-                $country->trips_count = $trips_count;
-                $country->trips_published_count = $trips_published_count;
-            })->filter->trips_count;
+        $countries = Country::allWithCitiesAndTrips($this->traveler->id);
 
         \Breadcrumbs::push(trans('menu.life'), "@{$login}/travel");
         \Breadcrumbs::push(trans('menu.countries'));

@@ -33,7 +33,7 @@ class Country extends Model
     public function cities()
     {
         return $this->hasMany(City::class)
-            ->orderBy(static::titleField());
+            ->orderBy(City::titleField());
     }
 
     public function trips()
@@ -43,6 +43,58 @@ class Country extends Model
     }
 
     // Methods
+    public static function allWithCitiesAndTrips(int $user_id = 0)
+    {
+        $trips = Trip::tripsByCities($user_id);
+
+        $cities = \CityHelper::cachedById()
+            ->filter(function ($city, $id) use ($trips) {
+                return isset($trips[$id]);
+            })
+            ->each(function ($city, $id) use ($trips) {
+                $city->trips_count = $trips[$id]['total'] ?? 0;
+                $city->trips_published_count = $trips[$id]['published'] ?? 0;
+            });
+
+        $countries = $cities->groupBy('country_id');
+
+        return \CountryHelper::cachedById()
+            ->filter(function ($country, $id) use ($countries) {
+                return isset($countries[$id]);
+            })
+            ->each(function ($country, $id) use ($countries) {
+                $country->setRelation('cities', $countries[$id]);
+
+                $country->trips_count = $country->cities->sum->trips_count;
+                $country->trips_published_count = $country->cities->sum->trips_published_count;
+            })
+            ->sortBy(static::titleField());
+    }
+
+    public static function allWithPublishedTrips(int $user_id = 0)
+    {
+        $trips = Trip::tripsByCities($user_id);
+
+        $cities = \CityHelper::cachedById()
+            ->filter(function ($city, $id) use ($trips) {
+                return isset($trips[$id]['published']);
+            })
+            ->each(function ($city, $id) use ($trips) {
+                $city->trips_count = $trips[$id]['published'] ?? 0;
+            });
+
+        $countries = $cities->groupBy('country_id');
+
+        return \CountryHelper::cachedById()
+            ->filter(function ($country, $id) use ($countries) {
+                return isset($countries[$id]);
+            })
+            ->each(function ($country, $id) use ($countries) {
+                $country->trips_count = $countries[$id]->sum->trips_count;
+            })
+            ->sortBy(static::titleField());
+    }
+
     public function breadcrumb(): string
     {
         return "{$this->emoji} {$this->title}";

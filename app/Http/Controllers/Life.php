@@ -80,11 +80,14 @@ class Life extends Controller
         $trips = Trip::tripsByCities(1);
 
         $cities = \CityHelper::cachedById()
-            ->sortBy(City::titleField())
+            ->filter(function ($city, $id) use ($trips) {
+                return isset($trips[$id]);
+            })
             ->each(function ($city) use (&$trips) {
                 $city->trips_count = $trips[$city->id]['total'] ?? 0;
                 $city->trips_published_count = $trips[$city->id]['published'] ?? 0;
-            })->filter->trips_count;
+            })
+            ->sortBy(City::titleField());
 
         return view($this->view, compact('cities'));
     }
@@ -122,26 +125,7 @@ class Life extends Controller
 
     public function countries()
     {
-        $trips = Trip::tripsByCities(1);
-
-        $countries = Country::with('cities')
-            ->orderBy(Country::titleField())
-            ->get()
-            ->each(function ($country) use (&$trips) {
-                $trips_count = 0;
-                $trips_published_count = 0;
-
-                $country->filtered_cities = $country->cities->each(function ($city) use (&$trips, &$trips_count, &$trips_published_count) {
-                    $city->trips_count = $trips[$city->id]['total'] ?? 0;
-                    $city->trips_published_count = $trips[$city->id]['published'] ?? 0;
-
-                    $trips_count += $city->trips_count;
-                    $trips_published_count += $city->trips_published_count;
-                })->filter->trips_count;
-
-                $country->trips_count = $trips_count;
-                $country->trips_published_count = $trips_published_count;
-            })->filter->trips_count;
+        $countries = Country::allWithCitiesAndTrips(1);
 
         return view($this->view, compact('countries'));
     }

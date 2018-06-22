@@ -336,11 +336,12 @@ class Trip extends Model
             ->sortByName();
     }
 
-    public static function tripsByCities(?int $user_id = null)
+    public static function tripsByCities(int $user_id = 0)
     {
         $trips_by_cities = [];
 
-        static::when($user_id > 0, function (Builder $query) use ($user_id) {
+        static::query()
+            ->when($user_id > 0, function (Builder $query) use ($user_id) {
                 return $query->where('user_id', $user_id);
             })
             ->visible()
@@ -353,7 +354,7 @@ class Trip extends Model
                 @$trips_by_cities[$trip->city_id]['total'] += 1;
             });
 
-        return $trips_by_cities;
+        return collect($trips_by_cities);
     }
 
     public static function tripsWithCover(?int $count = null)
