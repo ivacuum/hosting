@@ -2,7 +2,7 @@
 
 @section('content')
 <h1 class="h5 d-md-none mb-4">
-  Сергей Панков
+  @ru Сергей Панков @en Sergey Pankov @endru
   <span class="text-muted">
     &middot;
     vacuum kaluga
