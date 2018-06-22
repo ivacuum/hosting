@@ -1,5 +1,6 @@
 <?php namespace App\Console\Commands;
 
+use App\Country;
 use App\Gig;
 use App\News;
 use App\Trip;
@@ -17,6 +18,7 @@ class SitemapBuild extends BaseSitemapBuild
 
         $this->page('en');
 
+        $this->appendCitiesAndCountries();
         $this->appendCouponPages();
         $this->appendDcppPages();
         $this->appendGigs();
@@ -24,6 +26,22 @@ class SitemapBuild extends BaseSitemapBuild
         $this->appendLifePages();
         $this->appendNews();
         $this->appendTrips();
+    }
+
+    protected function appendCitiesAndCountries()
+    {
+        Country::allWithCitiesAndTrips(1)
+            ->each(function ($country) {
+                /* @var Country $country */
+                $this->page("life/countries/{$country->slug}", '0.2');
+                $this->page("en/life/countries/{$country->slug}", '0.2');
+
+                $country->cities->each(function ($city) {
+                    /* @var \App\City $city */
+                    $this->page("life/{$city->slug}", '0.2');
+                    $this->page("en/life/{$city->slug}", '0.2');
+                });
+            });
     }
 
     protected function appendCouponPages()
