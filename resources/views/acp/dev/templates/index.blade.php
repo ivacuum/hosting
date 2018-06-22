@@ -2,7 +2,11 @@
 
 @section('content')
 <p>
-  <a class="btn btn-default btn-sm" href="{{ UrlHelper::filter(['hide_finished' => 1]) }}">Скрыть переведенные</a>
+  @if (request('hide_finished'))
+    <a class="btn btn-default btn-sm" href="{{ UrlHelper::filter(['hide_finished' => null]) }}">Показать все</a>
+  @else
+    <a class="btn btn-default btn-sm" href="{{ UrlHelper::filter(['hide_finished' => 1]) }}">Скрыть переведенные</a>
+  @endif
 </p>
 <table class="table-stats table-adaptive">
   <thead>
