@@ -54,7 +54,7 @@ class Radicals extends Controller
             $ids = Kanji::whereIn('character', $this->splitKanjiCharacters($data['kanji_string']))
                 ->get(['id'])
                 ->pluck('id')
-                ->toArray();
+                ->all();
 
             $data['kanjis'] = array_merge(
                 $ids,

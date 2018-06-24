@@ -30,12 +30,11 @@ class Kernel extends ConsoleKernel
 //            ->cron('0 0 * * *')
 //            ->appendOutputTo($cron_output);
 
-        $schedule->command('app:notifications-purge')
+        $schedule->command(\Ivacuum\Generic\Commands\NotificationsPurge::class)
             ->cron('0 2,14 * * *')
             ->appendOutputTo($cron_output);
 
-        // Ежедневное удаление старых заявок на восстановление пароля
-        $schedule->command('app:purge-password-reminders')
+        $schedule->command(\Ivacuum\Generic\Commands\PasswordRemindersPurge::class)
             ->cron('0 5 * * *')
             ->appendOutputTo($cron_output);
 
@@ -43,19 +42,19 @@ class Kernel extends ConsoleKernel
             ->cron('30 2 * * *')
             ->appendOutputTo($cron_output);
 
-        $schedule->command('app:rto-update')
+        $schedule->command(Commands\RtoUpdate::class)
             ->cron('0 */6 * * *')
             ->appendOutputTo($cron_output);
 
-        $schedule->command('app:vk-likes-add pn6')
-            ->cron('5,25,45 * * * *')
+        $schedule->command(Commands\VkLikesAdd::class, ['pn6'])
+            ->cron('5,25,45 * * * *');
             ->appendOutputTo($cron_output);
 
-        $schedule->command('app:vk-likes-delete pn6')
+        $schedule->command(Commands\VkLikesDelete::class, ['pn6'])
             ->cron('15,35,55 * * * *')
             ->appendOutputTo($cron_output);
 
-        // $schedule->command('app:whois-update')->cron('0 */4 * * *'); // каждые 4 часа
+        // $schedule->command(Commands\WhoisUpdate::class)->cron('0 */4 * * *');
     }
 
     protected function commands()
