@@ -56,6 +56,10 @@ class Application {
     autosize($('.js-autosize-textarea'))
   }
 
+  beacon(payload = {}) {
+    this.beacon_data.push(payload)
+  }
+
   conditionalInit() {
     const view = document.body.dataset.view
     const self = document.body.dataset.self

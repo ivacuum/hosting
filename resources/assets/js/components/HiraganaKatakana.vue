@@ -64,7 +64,8 @@
 </template>
 
 <script>
-let random = require('lodash/random')
+/* global App */
+import random from 'lodash/random'
 
 export default {
   props: ['value'],
@@ -176,6 +177,10 @@ export default {
   computed: {
     syllabaryLabel() {
       return this.$i18n.t(this.syllabaryIndex === 0 ? 'SWITCH_TO_KATAKANA' : 'SWITCH_TO_HIRAGANA')
+    },
+
+    syllabaryName() {
+      return this.syllabaryIndex === 0 ? 'Hiragana' : 'Katakana'
     }
   },
 
@@ -185,7 +190,7 @@ export default {
         ANSWERED: 'Answered: {answered}',
         PRACTICE: 'Practice',
         CHECK_ALL: 'Check all',
-        PICKER_TEXT: 'Select some columns to practice.',
+        PICKER_TEXT: 'Select columns to practice.',
         UNCHECK_ALL: 'Uncheck all',
         PRACTICE_TEXT: 'The answer is counted automatically, no need to press enter. Space button reveals the answer.',
         BACK_TO_PICKER: 'Back to picker',
@@ -196,7 +201,7 @@ export default {
         ANSWERED: 'Отвечено: {answered}',
         PRACTICE: 'Практиковаться',
         CHECK_ALL: 'Выбрать все',
-        PICKER_TEXT: 'Выберите столбы для практики.',
+        PICKER_TEXT: 'Выберите столбцы для практики.',
         UNCHECK_ALL: 'Снять выделение',
         PRACTICE_TEXT: 'Ответ засчитывается автоматически без нажатия клавиши ввода. Пробел подсказывает ответ.',
         BACK_TO_PICKER: 'Назад к выбору',
@@ -206,7 +211,17 @@ export default {
     },
   },
 
+  mounted() {
+    this.beacon('Selected')
+  },
+
   methods: {
+    beacon(action, appendSyllabaryName = true) {
+      App.beacon({
+        event: appendSyllabaryName ? this.syllabaryName + action : action
+      })
+    },
+
     checkAll() {
       this.checkedColumns = [...Array(this.elements[0].length).keys()]
       this.pickElements()
@@ -217,6 +232,7 @@ export default {
 
       if (this.answer && this.answer === input) {
         this.answered++
+        this.beacon('Answered')
         this.nextQuestion()
       }
     },
@@ -265,15 +281,18 @@ export default {
       this.stage = 'practice'
       this.focus = true
       this.answered = 0
+      this.beacon('Started')
       this.nextQuestion()
     },
 
     revealAnswer() {
       this.answerVisible = true
+      this.beacon('AnswerRevealed')
     },
 
     switchSyllabary() {
       this.syllabaryIndex = this.syllabaryIndex === 0 ? 1 : 0
+      this.beacon('Selected')
     },
 
     uncheckAll() {
