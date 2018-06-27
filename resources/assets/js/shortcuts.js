@@ -1,14 +1,12 @@
-/* global $, Mousetrap */
-
 const NEXT_PAGE_SELECTOR = '#next_page'
 const PREV_PAGE_SELECTOR = '#previous_page'
 const SCROLL_ANIMATION_SPEED = 0
 
-Mousetrap.bind(['ctrl+left', 'alt+left'], function () {
+Mousetrap.bind(['ctrl+left', 'alt+left'], () => {
   $(document).trigger('shortcuts.to_prev_page')
 })
 
-Mousetrap.bind(['ctrl+right', 'alt+right'], function () {
+Mousetrap.bind(['ctrl+right', 'alt+right'], () => {
   $(document).trigger('shortcuts.to_next_page')
 })
 
@@ -20,182 +18,184 @@ Mousetrap.addKeycodes({
   1083: 'l', // д
 })
 
-Mousetrap.bind('h', function () {
+Mousetrap.bind('h', () => {
   $(document).trigger('shortcuts.to_first_post')
 })
 
-Mousetrap.bind('j', function () {
+Mousetrap.bind('j', () => {
   $(document).trigger('shortcuts.to_next_post')
 })
 
-Mousetrap.bind('k', function () {
+Mousetrap.bind('k', () => {
   $(document).trigger('shortcuts.to_prev_post')
 })
 
-Mousetrap.bind('l', function () {
+Mousetrap.bind('l', () => {
   $(document).trigger('shortcuts.to_last_post')
 })
 
-Mousetrap.bind('/', function () {
-  let search = document.querySelector('.js-search-input')
+Mousetrap.bind('/', () => {
+  const search = document.querySelector('.js-search-input')
 
   if (search !== null) {
     search.focus()
   }
 }, 'keyup')
 
-$(document).on('shortcuts.redirect', function (e, selector) {
-  let link = document.querySelector(selector)
+$(document).on('shortcuts.redirect', (e, selector) => {
+  const link = document.querySelector(selector)
 
-  if (!link) {
-    return false
-  }
+  if (!link) return false
 
-  let url = link.getAttribute('href')
+  const url = link.getAttribute('href')
 
-  if (!url) {
-    return false
-  }
+  if (!url) return false
 
   if (link.classList.contains('js-pjax')) {
     $.pjax({ url, container: '#pjax_container' })
   } else {
     document.location.href = url
   }
+
+  return true
 })
 
-$(document).on('shortcuts.to_next_page', function () {
+$(document).on('shortcuts.to_next_page', () => {
   $(document).trigger('shortcuts.redirect', [NEXT_PAGE_SELECTOR])
 })
 
-$(document).on('shortcuts.to_prev_page', function () {
+$(document).on('shortcuts.to_prev_page', () => {
   $(document).trigger('shortcuts.redirect', [PREV_PAGE_SELECTOR])
 })
 
-$(document).on('shortcuts.to_first_post', function () {
-  let first_item = document.querySelector('.js-shortcuts-item')
+$(document).on('shortcuts.to_first_post', () => {
+  const firstItem = document.querySelector('.js-shortcuts-item')
 
-  if (first_item === null) {
-    return false
-  }
+  if (firstItem === null) return false
 
-  if (first_item.classList.contains('focus')) {
+  if (firstItem.classList.contains('focus')) {
     $(document).trigger('shortcuts.to_prev_page')
   } else {
-    let focused_item = document.querySelector('.js-shortcuts-item.focus')
+    const focusedItem = document.querySelector('.js-shortcuts-item.focus')
 
-    if (focused_item !== null) {
-      focused_item.classList.remove('focus')
+    if (focusedItem !== null) {
+      focusedItem.classList.remove('focus')
     }
 
-    first_item.classList.add('focus')
+    firstItem.classList.add('focus')
 
-    $.scrollTo(first_item, SCROLL_ANIMATION_SPEED, {
-      axis: 'y'
+    $.scrollTo(firstItem, SCROLL_ANIMATION_SPEED, {
+      axis: 'y',
     })
   }
+
+  return true
 })
 
-$(document).on('shortcuts.to_last_post', function () {
-  let items = document.querySelectorAll('.js-shortcuts-item')
+$(document).on('shortcuts.to_last_post', () => {
+  const items = [...document.querySelectorAll('.js-shortcuts-item')]
 
-  if (items.length === 0) {
-    return false
-  }
+  if (items.length === 0) return false
 
-  let last_item = items[items.length - 1]
+  const lastItem = items[items.length - 1]
 
-  if (last_item.classList.contains('focus')) {
+  if (lastItem.classList.contains('focus')) {
     $(document).trigger('shortcuts.to_next_page')
   } else {
-    let focused_item = document.querySelector('.js-shortcuts-item.focus')
+    const focusedItem = document.querySelector('.js-shortcuts-item.focus')
 
-    if (focused_item !== null) {
-      focused_item.classList.remove('focus')
+    if (focusedItem !== null) {
+      focusedItem.classList.remove('focus')
     }
 
-    last_item.classList.add('focus')
+    lastItem.classList.add('focus')
 
-    $.scrollTo(last_item, SCROLL_ANIMATION_SPEED, {
-      axis: 'y'
+    $.scrollTo(lastItem, SCROLL_ANIMATION_SPEED, {
+      axis: 'y',
     })
   }
+
+  return true
 })
 
-$(document).on('shortcuts.to_next_post', function () {
-  let first_item = document.querySelector('.js-shortcuts-item')
+$(document).on('shortcuts.to_next_post', () => {
+  const firstItem = document.querySelector('.js-shortcuts-item')
 
-  if (first_item === null) {
-    return false
-  }
+  if (firstItem === null) return false
 
-  let focused_item = document.querySelector('.js-shortcuts-item.focus')
+  const focusedItem = document.querySelector('.js-shortcuts-item.focus')
 
-  if (focused_item === null) {
-    first_item.classList.add('focus')
+  if (focusedItem === null) {
+    firstItem.classList.add('focus')
 
-    $.scrollTo(first_item, SCROLL_ANIMATION_SPEED, {
-      axis: 'y'
+    $.scrollTo(firstItem, SCROLL_ANIMATION_SPEED, {
+      axis: 'y',
     })
   } else {
-    let items = document.querySelectorAll('.js-shortcuts-item')
-    let next_item
+    const items = [...document.querySelectorAll('.js-shortcuts-item')]
+    let nextItem = null
 
-    for (let [i, item] of items.entries()) {
+    items.some((item, i) => {
       if (item.classList.contains('focus')) {
-        next_item = items.length > i + 1 ? items[i + 1] : null
-        break
+        nextItem = items.length > i + 1 ? items[i + 1] : null
+        return true
       }
-    }
 
-    if (next_item === null) {
+      return false
+    })
+
+    if (nextItem === null) {
       $(document).trigger('shortcuts.to_next_page')
     } else {
-      focused_item.classList.remove('focus')
-      next_item.classList.add('focus')
+      focusedItem.classList.remove('focus')
+      nextItem.classList.add('focus')
 
-      $.scrollTo(next_item, SCROLL_ANIMATION_SPEED, {
-        axis: 'y'
+      $.scrollTo(nextItem, SCROLL_ANIMATION_SPEED, {
+        axis: 'y',
       })
     }
   }
+
+  return true
 })
 
-$(document).on('shortcuts.to_prev_post', function () {
-  let items = document.querySelectorAll('.js-shortcuts-item')
+$(document).on('shortcuts.to_prev_post', () => {
+  const items = [...document.querySelectorAll('.js-shortcuts-item')]
 
-  if (items.length === 0) {
-    return false
-  }
+  if (items.length === 0) return false
 
-  let last_item = items[items.length - 1]
-  let focused_item = document.querySelector('.js-shortcuts-item.focus')
+  const lastItem = items[items.length - 1]
+  const focusedItem = document.querySelector('.js-shortcuts-item.focus')
 
-  if (focused_item === null) {
-    last_item.classList.add('focus')
+  if (focusedItem === null) {
+    lastItem.classList.add('focus')
 
-    $.scrollTo(last_item, SCROLL_ANIMATION_SPEED, {
-      axis: 'y'
+    $.scrollTo(lastItem, SCROLL_ANIMATION_SPEED, {
+      axis: 'y',
     })
   } else {
-    let prev_item
+    let prevItem = null
 
-    for (let [i, item] of items.entries()) {
+    items.some((item, i) => {
       if (item.classList.contains('focus')) {
-        prev_item = i > 0 ? items[i - 1] : null
-        break
+        prevItem = i > 0 ? items[i - 1] : null
+        return true
       }
-    }
 
-    if (prev_item === null) {
+      return false
+    })
+
+    if (prevItem === null) {
       $(document).trigger('shortcuts.to_prev_page')
     } else {
-      focused_item.classList.remove('focus')
-      prev_item.classList.add('focus')
+      focusedItem.classList.remove('focus')
+      prevItem.classList.add('focus')
 
-      $.scrollTo(prev_item, SCROLL_ANIMATION_SPEED, {
-        axis: 'y'
+      $.scrollTo(prevItem, SCROLL_ANIMATION_SPEED, {
+        axis: 'y',
       })
     }
   }
+
+  return true
 })

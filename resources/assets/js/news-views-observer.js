@@ -1,3 +1,5 @@
+/* global App */
+
 import io from 'vac-gfe/js/intersection-observer'
 
 export default function () {
@@ -6,10 +8,10 @@ export default function () {
     threshold: 1,
 
     callback(el) {
-      App.beacon_data.push({
-        'id': el.dataset.id,
-        'event': 'NewsViewed'
+      App.beacon({
+        id: el.dataset.id,
+        event: 'NewsViewed',
       })
-    }
+    },
   })
 }

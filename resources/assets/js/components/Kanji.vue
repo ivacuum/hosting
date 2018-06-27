@@ -70,8 +70,7 @@
 
 <script>
 import I18nMessages from './../i18n/japanese'
-
-let shuffle = require('lodash/shuffle')
+import shuffle from 'lodash/shuffle'
 
 export default {
   props: {
@@ -111,12 +110,12 @@ export default {
   },
 
   i18n: {
-    locale: window['AppOptions'].locale,
+    locale: window.AppOptions.locale,
     messages: I18nMessages,
   },
 
   created() {
-    this.guest = !window['AppOptions'].loggedIn
+    this.guest = !window.AppOptions.loggedIn
 
     axios.get(this.action, {
         params: {

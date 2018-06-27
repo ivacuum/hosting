@@ -1,6 +1,7 @@
 import './bootstrap'
 import VueI18n from 'vue-i18n'
 
+import throttle from 'lodash/throttle'
 import Map from 'vac-gfe/js/yandex-map'
 import Pjax from 'vac-gfe/js/pjax'
 import YandexMetrika from 'vac-gfe/js/yandex-metrika'
@@ -24,45 +25,49 @@ import './life'
 import './shortcuts'
 import './yandex-dns'
 
-import throttle from 'lodash/throttle'
+/**
+ * @namespace window.AppOptions
+ * @property {string} locale
+ * @property {boolean} loggedIn
+ * @property {string} csrfToken
+ * @property {string} socketIoHost
+ * @property {number} yandexMetrikaId
+ */
 
 class Application {
   constructor() {
-    const options = window['AppOptions']
+    this.options = window.AppOptions
 
-    this.beacon_data = []
-    this.locale = options.locale
+    this.beaconData = []
+    this.locale = this.options.locale
     this.map = new Map(this.locale)
-    this.metrika = new YandexMetrika(options.yandexMetrikaId)
+    this.metrika = new YandexMetrika(this.options.yandexMetrikaId)
     this.pjax = new Pjax()
+    this.vue = null
 
-    this.ajaxProgress()
     this.csrfToken()
     this.onPjaxComplete()
     this.onPjaxSend()
 
     $(() => {
       this.initOnReadyAndPjax()
-      this.lazyLoadImages()
+      Application.lazyLoadImages()
 
-      this.conditionalInit()
+      Application.conditionalInit()
       this.sendBeaconDataOnEvents()
     })
   }
 
-  ajaxProgress() {}
-
-  autosizeTextareas() {
-    autosize($('.js-autosize-textarea'))
+  static autosizeTextareas(selector = '.js-autosize-textarea') {
+    autosize(document.querySelectorAll(selector))
   }
 
   beacon(payload = {}) {
-    this.beacon_data.push(payload)
+    this.beaconData.push(payload)
   }
 
-  conditionalInit() {
-    const view = document.body.dataset.view
-    const self = document.body.dataset.self
+  static conditionalInit() {
+    const { view } = document.body.dataset
 
     if (view === 'news.index') {
       const observer = NewsViewsObserver()
@@ -75,7 +80,7 @@ class Application {
 
   csrfToken() {
     $.ajaxSetup({
-      headers: { 'X-CSRF-TOKEN': window['AppOptions'].csrfToken }
+      headers: { 'X-CSRF-TOKEN': this.options.csrfToken },
     })
   }
 
@@ -88,43 +93,33 @@ class Application {
   */
 
   initVue() {
-    new Vue({
+    this.vue = new Vue({
       el: '#pjax_container',
       i18n: new VueI18n({
-        locale: window['AppOptions'].locale,
+        locale: this.options.locale,
       }),
     })
   }
 
-  lazyLoadImages() {
+  static lazyLoadImages() {
     const offset = 1000
     const breakpoint = 1200
 
-    let $w = $(window)
-    let $body = $(document.body)
+    const $w = $(window)
+    const $body = $(document.body)
+    const width = $w.width()
     let $images
 
-    const width = $w.width()
-
-    function initLazyLoad() {
-      $images = $('.js-lazy')
-
-      $w.off('.js-lazy')
-        .on('scroll.js-lazy resize.js-lazy', throttle(performLazyLoad, 500))
-
-      performLazyLoad()
-    }
-
     function performLazyLoad() {
-      const scrolled_down = $w.scrollTop() + $w.height() + offset
-      const scrolled_up = $w.scrollTop() - offset
+      const scrolledUp = $w.scrollTop() - offset
+      const scrolledDown = $w.scrollTop() + $w.height() + offset
 
-      $images = $images.filter(function () {
-        let e = $(this)
-        let type = $(this).data('lazy-type') || 'image'
-        const image_offset = e.offset().top
+      $images = $images.filter(function lazyLoadImagesFilter() {
+        const e = $(this)
+        const type = $(this).data('lazy-type') || 'image'
+        const imageOffset = e.offset().top
 
-        if (image_offset < scrolled_down && image_offset > scrolled_up) {
+        if (imageOffset < scrolledDown && imageOffset > scrolledUp) {
           e.removeClass('js-lazy')
 
           if (type === 'image') {
@@ -143,14 +138,23 @@ class Application {
       }
     }
 
+    function initLazyLoad() {
+      $images = $('.js-lazy')
+
+      $w.off('.js-lazy')
+        .on('scroll.js-lazy resize.js-lazy', throttle(performLazyLoad, 500))
+
+      performLazyLoad()
+    }
+
     $body.off('reset.js-lazy').on('reset.js-lazy', initLazyLoad)
 
     initLazyLoad()
   }
 
-  initOnReadyAndPjax(pjax = false) {
+  initOnReadyAndPjax() {
     this.initVue()
-    this.autosizeTextareas()
+    Application.autosizeTextareas()
   }
 
   onPjaxComplete() {
@@ -169,18 +173,18 @@ class Application {
   }
 
   onPjaxSend() {
-    $(document).on('pjax:send', (e) => this.pjax.onSend(e))
+    $(document).on('pjax:send', e => this.pjax.onSend(e))
   }
 
   sendBeaconData() {
     if (!navigator.sendBeacon) return
-    if (this.beacon_data.length === 0) return
+    if (this.beaconData.length === 0) return
 
-    let data = new FormData()
+    const data = new FormData()
 
-    data.append('events', JSON.stringify(this.beacon_data))
-    data.append('_token', window['AppOptions'].csrfToken)
-    this.beacon_data = []
+    data.append('events', JSON.stringify(this.beaconData))
+    data.append('_token', this.options.csrfToken)
+    this.beaconData = []
 
     navigator.sendBeacon('/ajax/beacon', data)
   }
@@ -199,4 +203,4 @@ class Application {
   }
 }
 
-window.App = new Application
+window.App = new Application()

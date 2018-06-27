@@ -1,0 +1,22 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": "airbnb-base",
+  "globals": {
+    "$": true,
+    "autosize": true,
+    "axios": true,
+    "Mousetrap": true,
+    "Vue": true
+  },
+  "rules": {
+    "no-param-reassign": ["error", {
+      "props": true,
+      "ignorePropertyModificationsFor": [
+        "el"
+      ]
+    }],
+    "semi": ["error", "never"]
+  }
+}

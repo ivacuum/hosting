@@ -105,9 +105,7 @@ export default {
     },
 
     subscribe() {
-      if (typeof Echo === 'undefined') {
-        return false
-      }
+      if (typeof Echo === 'undefined') return false
 
       Echo.channel('chat')
         .listen('ChatMessagePosted', (e) => {

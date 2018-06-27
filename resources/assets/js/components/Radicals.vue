@@ -75,8 +75,7 @@
 
 <script>
 import I18nMessages from './../i18n/japanese'
-
-let shuffle = require('lodash/shuffle')
+import shuffle from 'lodash/shuffle'
 
 export default {
   props: {
@@ -113,7 +112,7 @@ export default {
   },
 
   created() {
-    this.guest = !window['AppOptions'].loggedIn
+    this.guest = !window.AppOptions.loggedIn
 
     axios.get(this.action, {
         params: {
@@ -159,9 +158,7 @@ export default {
     },
 
     showToggleBurnedButton() {
-      if (this.guest || this.kanjiId) {
-        return false
-      }
+      if (this.guest || this.kanjiId) return false
 
       return this.flat || this.level > 0
     },
