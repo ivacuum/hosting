@@ -5,16 +5,25 @@
   <div class="text-center mb-3">
     <h3>{{ trans('auth.signin_title') }}</h3>
 
-    <div class="my-3">
-      <a class="btn bg-vk text-white" href="{{ path('Auth\Vk@index') }}" rel="nofollow">
-        {{ trans('auth.vk') }}
-      </a>
-      <a class="btn bg-facebook text-white" href="{{ path('Auth\Facebook@index') }}" rel="nofollow">
-        {{ trans('auth.facebook') }}
-      </a>
-      <a class="btn bg-google text-white" href="{{ path('Auth\Google@index') }}" rel="nofollow">
-        {{ trans('auth.google') }}
-      </a>
+    <div class="d-flex justify-content-center my-3">
+      <div class="mr-2">
+        <a class="btn bg-vk f20 rounded-circle text-white" href="{{ path('Auth\Vk@index') }}">
+          @svg (vk)
+        </a>
+        <div class="mt-1 small text-muted">{{ trans('auth.vk') }}</div>
+      </div>
+      <div class="mr-2">
+        <a class="btn bg-facebook f20 rounded-circle text-white" href="{{ path('Auth\Facebook@index') }}">
+          @svg (facebook)
+        </a>
+        <div class="mt-1 small text-muted">{{ trans('auth.facebook') }}</div>
+      </div>
+      <div>
+        <a class="btn bg-google f20 rounded-circle text-white" href="{{ path('Auth\Google@index') }}">
+          @svg (google)
+        </a>
+        <div class="mt-1 small text-muted">{{ trans('auth.google') }}</div>
+      </div>
     </div>
     <div>{{ trans('auth.or') }}</div>
   </div>

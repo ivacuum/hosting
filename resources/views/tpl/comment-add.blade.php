@@ -21,28 +21,34 @@
         @en
           <div>Please type your email or use one-click sign-in through one of the social services below to comment.</div>
         @endru
-        <div class="mt-2">
-          <a
-            class="btn bg-vk text-white"
-            rel="nofollow"
-            href="{{ path('Auth\Vk@index', ['goto' => "{$locale_uri}/{$request_uri}#comment-add"]) }}"
-          >
-            {{ trans('auth.vk') }}
-          </a>
-          <a
-            class="btn bg-facebook text-white"
-            rel="nofollow"
-            href="{{ path('Auth\Facebook@index', ['goto' => "{$locale_uri}/{$request_uri}#comment-add"]) }}"
-          >
-            {{ trans('auth.facebook') }}
-          </a>
-          <a
-            class="btn bg-google text-white"
-            rel="nofollow"
-            href="{{ path('Auth\Google@index', ['goto' => "{$locale_uri}/{$request_uri}#comment-add"]) }}"
-          >
-            {{ trans('auth.google') }}
-          </a>
+        <div class="d-flex mt-2">
+          <div class="mr-2 text-center">
+            <a
+              class="btn bg-vk f20 rounded-circle text-white"
+              href="{{ path('Auth\Vk@index', ['goto' => "{$locale_uri}/{$request_uri}#comment-add"]) }}"
+            >
+              @svg (vk)
+            </a>
+            <div class="mt-1 small text-muted">{{ trans('auth.vk') }}</div>
+          </div>
+          <div class="mr-2 text-center">
+            <a
+              class="btn bg-facebook f20 rounded-circle text-white"
+              href="{{ path('Auth\Facebook@index', ['goto' => "{$locale_uri}/{$request_uri}#comment-add"]) }}"
+            >
+              @svg (facebook)
+            </a>
+            <div class="mt-1 small text-muted">{{ trans('auth.facebook') }}</div>
+          </div>
+          <div class="mr-2 text-center">
+            <a
+              class="btn bg-google f20 rounded-circle text-white"
+              href="{{ path('Auth\Google@index', ['goto' => "{$locale_uri}/{$request_uri}#comment-add"]) }}"
+            >
+              @svg (google)
+            </a>
+            <div class="mt-1 small text-muted">{{ trans('auth.google') }}</div>
+          </div>
         </div>
       </div>
     @endif
