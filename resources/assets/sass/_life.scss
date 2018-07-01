@@ -123,11 +123,12 @@
 }
 
 .life-text {
-  @include font-smoothing();
+  hanging-punctuation: first;
 
   p + .pic-container { margin-top: -.5rem; }
 
   @include media-breakpoint-up(lg) { font-size: 18px; }
+  @include font-smoothing();
 }
 
 .photo-overlay-arrow {
