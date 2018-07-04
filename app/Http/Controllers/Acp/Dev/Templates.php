@@ -52,6 +52,9 @@ class Templates extends BaseController
 
     public function show($template)
     {
+        // Внутренние ссылки на шаблоны
+        $template = str_replace('.', '_', $template);
+
         \Breadcrumbs::push($template);
 
         $slug = str_replace('_', '.', $template);
