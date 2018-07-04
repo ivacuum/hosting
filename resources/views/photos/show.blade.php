@@ -1,5 +1,17 @@
 @extends('photos.base')
 
+@push('js')
+<script>
+Mousetrap.bind('left', () => {
+  $(document).trigger('shortcuts.to_prev_page')
+})
+
+Mousetrap.bind('right', () => {
+  $(document).trigger('shortcuts.to_next_page')
+})
+</script>
+@endpush
+
 @section('content')
 <div class="row mt-n2">
   <div class="col-lg-10 mb-3">
