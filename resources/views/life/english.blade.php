@@ -16,6 +16,121 @@ https://english.stackexchange.com/questions/51209/translate-into-vs-translate-to
 
 <a id="irregular-verbs"></a>
 <h2>@ru Неправильные глаголы @en Irregular Verbs @endru</h2>
+<?php
+$irregular_verbs = [
+  ['be', 'was', 'been'],
+  ['bear', 'bore', 'born(e)'],
+  ['beat', 'beat', 'beaten'],
+  ['become', 'became', 'become'],
+  ['begin', 'began', 'begun'],
+  ['bite', 'bit', 'bitten'],
+  ['blow', 'blew', 'blown'],
+  ['break', 'broke', 'broken'],
+  ['bring', 'brought', 'brought'],
+  ['build', 'built', 'built'],
+  ['burn', 'burnt', 'burnt'],
+  ['burst', 'burst', 'burst'],
+  ['buy', 'bought', 'bought'],
+  ['can', 'could', '(been able to)'],
+  ['catch', 'caught', 'caught'],
+  ['choose', 'chose', 'chosen'],
+  ['come', 'came', 'come'],
+  ['cost', 'cost', 'cost'],
+  ['cut', 'cut', 'cut'],
+  ['deal', 'dealt', 'dealt'],
+  ['dig', 'dug', 'dug'],
+  ['do', 'did', 'done'],
+  ['draw', 'drew', 'drawn'],
+  ['dream', 'dreamt', 'dreamt'],
+  ['drink', 'drank', 'drunk'],
+  ['drive', 'drew', 'drawn'],
+  ['eat', 'ate', 'eaten'],
+  ['fall', 'fell', 'fallen'],
+  ['feed', 'fed', 'fed'],
+  ['feel', 'felt', 'felt'],
+  ['fight', 'fought', 'fought'],
+  ['find', 'found', 'found'],
+  ['fly', 'flew', 'flown'],
+  ['forbid', 'forbade', 'forbidden'],
+  ['forget', 'forgot', 'forgotten'],
+  ['freeze', 'froze', 'frozen'],
+  ['get', 'got', 'got'],
+  ['give', 'gave', 'given'],
+  ['go', 'went', 'gone'],
+  ['grow', 'grew', 'grown'],
+  ['hang', 'hung', 'hung'],
+  ['have', 'had', 'had'],
+  ['hear', 'heard', 'heard'],
+  ['hide', 'hid', 'hidden'],
+  ['hit', 'hit', 'hit'],
+  ['hold', 'held', 'held'],
+  ['hurt', 'hurt', 'hurt'],
+  ['keep', 'kept', 'kept'],
+  ['know', 'knew', 'known'],
+  ['lay', 'laid', 'laid'],
+  ['lead', 'led', 'led'],
+  ['learn', 'learnt', 'learnt'],
+  ['leave', 'left', 'left'],
+  ['lend', 'lent', 'lent'],
+  ['let', 'let', 'let'],
+  ['lie', 'lay', 'lain'],
+  ['light', 'lit', 'lit'],
+  ['lose', 'lost', 'lost'],
+  ['make', 'made', 'made'],
+  ['mean', 'meant', 'meant'],
+  ['meet', 'met', 'met'],
+  ['pay', 'paid', 'paid'],
+  ['put', 'put', 'put'],
+  ['read', 'read', 'read'],
+  ['ride', 'rode', 'ridden'],
+  ['ring', 'rang', 'rung'],
+  ['rise', 'rose', 'risen'],
+  ['run', 'ran', 'run'],
+  ['say', 'said', 'said'],
+  ['see', 'saw', 'seen'],
+  ['seek', 'sought', 'sought'],
+  ['sell', 'sold', 'sold'],
+  ['send', 'sent', 'sent'],
+  ['set', 'set', 'set'],
+  ['sew', 'sewed', 'sewn'],
+  ['shake', 'shook', 'shaken'],
+  ['shine', 'shone', 'shone'],
+  ['shoot', 'shot', 'shot'],
+  ['show', 'showed', 'shown'],
+  ['shut', 'shut', 'shut'],
+  ['sing', 'sang', 'sung'],
+  ['sit', 'sat', 'sat'],
+  ['sleep', 'slept', 'slept'],
+  ['smell', 'smelt', 'smelt'],
+  ['speak', 'spoke', 'spoken'],
+  ['spell', 'spelt', 'spelt'],
+  ['spend', 'spent', 'spent'],
+  ['spill', 'spilt', 'spilt'],
+  ['split', 'split', 'split'],
+  ['spoil', 'spoilt', 'spoilt'],
+  ['spread', 'spread', 'spread'],
+  ['spring', 'sprang', 'sprung'],
+  ['stand', 'stood', 'stood'],
+  ['steal', 'stole', 'stolen'],
+  ['stick', 'stuck', 'stuck'],
+  ['sting', 'stung', 'stung'],
+  ['strike', 'struck', 'struck'],
+  ['swear', 'swore', 'sworn'],
+  ['sweep', 'swept', 'swept'],
+  ['swim', 'swam', 'swum'],
+  ['take', 'took', 'taken'],
+  ['teach', 'taught', 'taught'],
+  ['tear', 'tore', 'torn'],
+  ['tell', 'told', 'told'],
+  ['think', 'thought', 'thought'],
+  ['throw', 'threw', 'thrown'],
+  ['understand', 'understood', 'understood'],
+  ['wake', 'woke', 'woken'],
+  ['wear', 'wore', 'worn'],
+  ['win', 'won', 'won'],
+  ['write', 'wrote', 'written'],
+];
+?>
 <table class="table-stats mb-5">
   <thead>
   <tr>
@@ -25,46 +140,13 @@ https://english.stackexchange.com/questions/51209/translate-into-vs-translate-to
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>be</td>
-    <td>was</td>
-    <td>been</td>
-  </tr>
-  <tr>
-    <td>burn</td>
-    <td>burnt</td>
-    <td>burnt</td>
-  </tr>
-  <tr>
-    <td>cut</td>
-    <td>cut</td>
-    <td>cut</td>
-  </tr>
-  <tr>
-    <td>hurt</td>
-    <td>hurt</td>
-    <td>hurt</td>
-  </tr>
-  <tr>
-    <td>wake</td>
-    <td>woke</td>
-    <td>woken</td>
-  </tr>
-  <tr>
-    <td>wear</td>
-    <td>wore</td>
-    <td>worn</td>
-  </tr>
-  <tr>
-    <td>win</td>
-    <td>won</td>
-    <td>won</td>
-  </tr>
-  <tr>
-    <td>write</td>
-    <td>wrote</td>
-    <td>written</td>
-  </tr>
+  @foreach ($irregular_verbs as [$infinitive, $past_simple, $past_participle])
+    <tr>
+      <td>{{ $infinitive }}</td>
+      <td>{{ $past_simple }}</td>
+      <td>{{ $past_participle }}</td>
+    </tr>
+  @endforeach
   </tbody>
 </table>
 
