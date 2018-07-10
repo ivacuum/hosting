@@ -6,6 +6,8 @@
 @endif
   <title>{{ ViewHelper::metaTitle($meta_title ?? '', $view, $meta_replace ?? []) }}</title>
 @if (!Request::pjax())
+  <link rel="dns-prefetch" href="https://life.ivacuum.ru">
+  <link rel="dns-prefetch" href="https://ivacuum.org">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="x-pjax-version" content="2">
   <meta name="format-detection" content="telephone=no">
