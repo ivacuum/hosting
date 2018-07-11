@@ -15,8 +15,8 @@
   <meta name="keywords" content="{{ ViewHelper::metaKeywords($meta_keywords ?? '', $view, $meta_replace ?? []) }}">
   <meta name="description" content="{{ ViewHelper::metaDescription($meta_description ?? '', $view, $meta_replace ?? []) }}">
   <meta name="theme-color" content="#e7e7e7">
-  <link rel="apple-touch-icon-precomposed" href="https://life.ivacuum.ru/apple-touch-icon-precomposed.png">
-  <link rel="icon" href="https://life.ivacuum.ru/apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
+  <link rel="icon" href="/apple-touch-icon.png">
   <link rel="canonical" href="{{ canonical() }}">
   @if (str_contains($css_classes, ['android', 'chrome', 'opera']) && in_array($locale, ['en', 'ru']))
     <link rel="manifest" href="/pwa-manifest-{{ $locale }}.json">
