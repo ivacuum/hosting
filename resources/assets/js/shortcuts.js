@@ -53,7 +53,7 @@ export default class Shortcuts {
 
       if (!url) return false
 
-      if (link.classList.contains('js-pjax')) {
+      if (link.matches('.js-pjax')) {
         $.pjax({ url, container: '#pjax_container' })
       } else {
         document.location.href = url
@@ -75,7 +75,7 @@ export default class Shortcuts {
 
       if (firstItem === null) return false
 
-      if (firstItem.classList.contains('focus')) {
+      if (firstItem.matches('.focus')) {
         $(document).trigger('shortcuts.to_prev_page')
       } else {
         const focusedItem = document.querySelector('.js-shortcuts-item.focus')
@@ -101,7 +101,7 @@ export default class Shortcuts {
 
       const lastItem = items[items.length - 1]
 
-      if (lastItem.classList.contains('focus')) {
+      if (lastItem.matches('.focus')) {
         $(document).trigger('shortcuts.to_next_page')
       } else {
         const focusedItem = document.querySelector('.js-shortcuts-item.focus')
@@ -138,7 +138,7 @@ export default class Shortcuts {
         let nextItem = null
 
         items.some((item, i) => {
-          if (item.classList.contains('focus')) {
+          if (item.matches('.focus')) {
             nextItem = items.length > i + 1 ? items[i + 1] : null
             return true
           }
@@ -179,7 +179,7 @@ export default class Shortcuts {
         let prevItem = null
 
         items.some((item, i) => {
-          if (item.classList.contains('focus')) {
+          if (item.matches('.focus')) {
             prevItem = i > 0 ? items[i - 1] : null
             return true
           }
