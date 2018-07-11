@@ -56,7 +56,7 @@ class User extends Authenticatable
     const NOTIFY_MAIL = 1;
 
     protected $guarded = ['created_at', 'updated_at'];
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = ['password', 'salt', 'remember_token'];
     protected $dates = ['last_login_at'];
     protected $perPage = 50;
 

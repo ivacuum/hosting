@@ -25,6 +25,7 @@ use Symfony\Component\Finder\Finder;
  * @property string  $meta_description_ru
  * @property string  $meta_description_en
  * @property string  $meta_image
+ * @property integer $views
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
