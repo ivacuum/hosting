@@ -1,18 +1,43 @@
 /* global App */
 /** @namespace App.map.ym.ObjectManager */
 
-class Events {
-  // Форма поиска авиабилетов по клику
-  static aviasales() {
+export default class EventHandlers {
+  static bind() {
+    $(document).on('click', '.js-audio-play', this.audioPlay)
+    $(document).on('click', '.js-aviasales', this.aviasalesClick)
+    $(document).on('click', '.js-city-map-click', this.cityMapClick)
+    $(document).on('click', '.js-dcpp-clients-show', this.dcppClientsShowClick)
+    $(document).on('click', '.js-dcpp-hub', this.dcppHubClick)
+    $(document).on('click', '.js-gif-click', this.gifClick)
+    $(document).on('click', '.js-magnet', this.magnetClick)
+    $(document).on('click', '.js-tick-onclick', this.tickOnClick)
+
+    // Навигация по заметкам с помощью горячих клавиш
+    document.querySelectorAll('.js-trip-shortcuts p').forEach(el => el.classList.add('js-shortcuts-item'))
+  }
+
+  static audioPlay() {
+    document.querySelector(this.dataset.selector).play()
+  }
+
+  /**
+   * Форма поиска авиабилетов по клику
+   */
+  static aviasalesClick() {
     $(this).contents().unwrap()
 
     const s = document.createElement('script')
     s.type = 'text/javascript'
     s.src = 'https://www.travelpayouts.com/widgets/044c854e39d539701be0fa773757da42.js?v=443'
-    s.async = true
+    s.defer = true
     document.getElementById('aviasales_container').appendChild(s)
   }
 
+  /**
+   * Карта снимков одной поездки
+   *
+   * @param e
+   */
   static cityMapClick(e) {
     e.preventDefault()
 
@@ -48,6 +73,37 @@ class Events {
     $container.slideToggle()
   }
 
+  /**
+   * Показ клиентов DC++ для всех платформ
+   *
+   * @param e
+   */
+  static dcppClientsShowClick(e) {
+    e.preventDefault()
+
+    document.querySelectorAll(this.dataset.target).forEach((el) => { el.hidden = false })
+
+    this.hidden = true
+  }
+
+  /**
+   * Учет статистики кликов по хабу
+   */
+  static dcppHubClick() {
+    const { clicked } = this.dataset
+
+    if (clicked === undefined) {
+      axios.post(this.dataset.action)
+
+      this.dataset.clicked = '1'
+    }
+  }
+
+  /**
+   * Проигрывание гифок по клику
+   *
+   * @param e
+   */
   static gifClick(e) {
     e.preventDefault()
 
@@ -62,56 +118,26 @@ class Events {
     }
   }
 
-  static photosMap() {
-    const container = 'photos_map'
-    const $el = $(`#${container}`)
+  /**
+   * Учет статистики кликов по магнету
+   */
+  static magnetClick() {
+    const { clicked } = this.dataset
 
-    if (!$el.length) return
+    if (clicked === undefined) {
+      axios.post(this.dataset.action)
 
-    App.map.create(container, $el.data('lat'), $el.data('lon'), $el.data('zoom'), true)
-      .then(() => {
-        const manager = new App.map.ym.ObjectManager({
-          clusterize: $el.data('clusterize'),
-          gridSize: $el.data('cluster_size'),
-        })
+      this.dataset.clicked = '1'
 
-        manager.objects.options.set('preset', 'islands#nightCircleDotIcon')
-        manager.clusters.options.set('preset', 'islands#nightClusterIcons')
+      const counter = this.querySelector('.js-magnet-counter')
 
-        App.map.map.geoObjects.add(manager)
+      counter.textContent = String(Number(counter.textContent) + 1)
+    }
+  }
 
-        axios.get($el.data('action')).then((response) => {
-          manager.add(response.data)
-        })
-      })
+  static tickOnClick() {
+    const $selector = $(this.dataset.tick)
+
+    $selector.prop('checked', (i, val) => !val)
   }
 }
-
-$(document).on('click', '.js-aviasales', Events.aviasales)
-$(document).on('click', '.js-city-map-click', Events.cityMapClick)
-
-// Проигрывание гифок по клику
-$(document).on('click', '.js-gif-click', Events.gifClick)
-
-// Учет кликов по магнет-ссылкам
-$(document).on('click', '.js-magnet', function jsMagnet() {
-  const { clicked } = this.dataset
-
-  if (clicked === undefined) {
-    axios.post(this.dataset.action)
-
-    this.dataset.clicked = '1'
-
-    const counter = this.querySelector('.js-magnet-counter')
-
-    counter.textContent = String(Number(counter.textContent) + 1)
-  }
-})
-
-$(document).on('click', '.js-tick-onclick', function jsTickOnclick() {
-  const $selector = $(this.dataset.tick)
-
-  $selector.prop('checked', (i, val) => !val)
-})
-
-Events.photosMap()

@@ -36,7 +36,7 @@ mix.js('resources/assets/js/app.js', 'public/assets')
   .disableNotifications()
 
   .options({
-    processCssUrls: false
+    processCssUrls: false,
   })
 
   .webpackConfig({
@@ -48,10 +48,10 @@ mix.js('resources/assets/js/app.js', 'public/assets')
           use: [
             {
               loader: 'babel-loader',
-              options: Config.babel()
-            }
-          ]
-        }
-      ]
-    }
+              options: Config.babel(),
+            },
+          ],
+        },
+      ],
+    },
   })

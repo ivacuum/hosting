@@ -1,39 +1,21 @@
 /* global App */
 
-class YandexDns {
-  static addRecord(e) {
-    e.preventDefault()
-
-    const $form = $(this).closest('.ns-record-container')
-
-    axios.post($form.data('action'), $('input, select', $form).serialize()).then((response) => {
-      if (response.data === 'ok') {
-        $.pjax({
-          url: document.location.href,
-          container: App.pjax.container,
-        })
-      } else {
-        alert(response.data)
-      }
-    })
+export default class YandexDns {
+  static bind() {
+    this.addRecord()
+    this.cancelEditing()
+    this.editRecord()
+    this.deleteRecord()
+    this.saveRecord()
   }
 
-  static cancelEditing(e) {
-    const $form = $(this).closest('.ns-record-container')
+  static addRecord() {
+    $(document).on('click', '.js-ns-record-add', function addRecordHandler(e) {
+      e.preventDefault()
 
-    $('.edit', $form).get().forEach((el) => { el.hidden = true })
-    $('.presentation', $form).get().forEach((el) => { el.hidden = false })
+      const $form = $(this).closest('.ns-record-container')
 
-    e.preventDefault()
-  }
-
-  static deleteRecord(e) {
-    e.preventDefault()
-
-    const id = $(this).data('id')
-
-    if (confirm('Запись будет удалена. Продолжить?')) {
-      axios.post($(this).data('action'), { record_id: id, _method: 'DELETE' }).then((response) => {
+      axios.post($form.data('action'), $('input, select', $form).serialize()).then((response) => {
         if (response.data === 'ok') {
           $.pjax({
             url: document.location.href,
@@ -43,38 +25,69 @@ class YandexDns {
           alert(response.data)
         }
       })
-    }
+    })
   }
 
-  static editRecord(e) {
-    e.preventDefault()
+  static cancelEditing() {
+    $(document).on('click', '.js-ns-record-cancel', function cancelEditingHandler(e) {
+      e.preventDefault()
 
-    const $form = $(this).closest('.ns-record-container')
+      const form = this.closest('.ns-record-container')
 
-    $('.edit', $form).get().forEach((el) => { el.hidden = false })
-    $('.presentation', $form).get().forEach((el) => { el.hidden = true })
+      form.querySelectorAll('.edit').forEach((el) => { el.hidden = true })
+      form.querySelectorAll('.presentation').forEach((el) => { el.hidden = false })
+    })
   }
 
-  static saveRecord(e) {
-    e.preventDefault()
+  static deleteRecord() {
+    $(document).on('click', '.js-ns-record-delete', function deleteRecordHandler(e) {
+      e.preventDefault()
 
-    const $form = $(this).closest('.ns-record-container')
+      const { id } = this.dataset
 
-    axios.post($(this).data('action'), $('input', $form).serialize()).then((response) => {
-      if (response.data === 'ok') {
-        $.pjax({
-          url: document.location.href,
-          container: App.pjax.container,
-        })
-      } else {
-        alert(response.data)
+      if (confirm('Запись будет удалена. Продолжить?')) {
+        axios.post($(this).data('action'), { record_id: id, _method: 'DELETE' })
+          .then((response) => {
+            if (response.data === 'ok') {
+              $.pjax({
+                url: document.location.href,
+                container: App.pjax.container,
+              })
+            } else {
+              alert(response.data)
+            }
+          })
       }
     })
   }
-}
 
-$(document).on('click', '.js-ns-record-add', YandexDns.addRecord)
-$(document).on('click', '.js-ns-record-edit', YandexDns.editRecord)
-$(document).on('click', '.js-ns-record-delete', YandexDns.deleteRecord)
-$(document).on('click', '.js-ns-record-save', YandexDns.saveRecord)
-$(document).on('click', '.js-ns-record-cancel', YandexDns.cancelEditing)
+  static editRecord(selector = '.js-ns-record-edit') {
+    $(document).on('click', selector, function editRecordHandler(e) {
+      e.preventDefault()
+
+      const form = this.closest('.ns-record-container')
+
+      form.querySelectorAll('.edit').forEach((el) => { el.hidden = false })
+      form.querySelectorAll('.presentation').forEach((el) => { el.hidden = true })
+    })
+  }
+
+  static saveRecord() {
+    $(document).on('click', '.js-ns-record-save', function saveRecordHandler(e) {
+      e.preventDefault()
+
+      const $form = $(this).closest('.ns-record-container')
+
+      axios.post($(this).data('action'), $('input', $form).serialize()).then((response) => {
+        if (response.data === 'ok') {
+          $.pjax({
+            url: document.location.href,
+            container: App.pjax.container,
+          })
+        } else {
+          alert(response.data)
+        }
+      })
+    })
+  }
+}

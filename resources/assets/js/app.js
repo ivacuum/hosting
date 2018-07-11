@@ -18,12 +18,11 @@ import 'vac-gfe/js/jquery.highlight'
 import 'vac-gfe/js/jquery.password-eye'
 import 'vac-gfe/js/jquery.select-all'
 
-import './audio-play'
-import './dcpp'
-import './events'
-import './life'
-import './shortcuts'
-import './yandex-dns'
+import Beacon from './beacon'
+import EventHandlers from './events'
+import PhotosMap from './photos-map'
+import Shortcuts from './shortcuts'
+import YandexDns from './yandex-dns'
 
 /**
  * @namespace window.AppOptions
@@ -38,7 +37,7 @@ class Application {
   constructor() {
     this.options = window.AppOptions
 
-    this.beaconData = []
+    this.beacon = new Beacon(this.options.csrfToken)
     this.locale = this.options.locale
     this.map = new Map(this.locale)
     this.metrika = new YandexMetrika(this.options.yandexMetrikaId)
@@ -51,19 +50,19 @@ class Application {
 
     $(() => {
       this.initOnReadyAndPjax()
-      Application.lazyLoadImages()
+      this.constructor.lazyLoadImages()
 
-      Application.conditionalInit()
-      this.sendBeaconDataOnEvents()
+      EventHandlers.bind()
+      Shortcuts.bind()
+      YandexDns.bind()
+
+      this.constructor.conditionalInit()
+      this.beacon.bind()
     })
   }
 
   static autosizeTextareas(selector = '.js-autosize-textarea') {
     autosize(document.querySelectorAll(selector))
-  }
-
-  beacon(payload = {}) {
-    this.beaconData.push(payload)
   }
 
   static conditionalInit() {
@@ -72,6 +71,8 @@ class Application {
     if (view === 'news.index') {
       const observer = NewsViewsObserver()
       observer.observe()
+    } else if (view === 'photos.map') {
+      PhotosMap.load()
     } else if (view === 'torrents.index') {
       const observer = TorrentsViewsObserver()
       observer.observe()
@@ -154,7 +155,7 @@ class Application {
 
   initOnReadyAndPjax() {
     this.initVue()
-    Application.autosizeTextareas()
+    this.constructor.autosizeTextareas()
   }
 
   onPjaxComplete() {
@@ -174,32 +175,6 @@ class Application {
 
   onPjaxSend() {
     $(document).on('pjax:send', e => this.pjax.onSend(e))
-  }
-
-  sendBeaconData() {
-    if (!navigator.sendBeacon) return
-    if (this.beaconData.length === 0) return
-
-    const data = new FormData()
-
-    data.append('events', JSON.stringify(this.beaconData))
-    data.append('_token', this.options.csrfToken)
-    this.beaconData = []
-
-    navigator.sendBeacon('/ajax/beacon', data)
-  }
-
-  sendBeaconDataOnEvents() {
-    if (!navigator.sendBeacon) return
-
-    document.addEventListener('visibilitychange', () => {
-      // При standalone может быть false?
-      if (document.visibilityState === 'hidden') {
-        this.sendBeaconData()
-      }
-    })
-
-    window.addEventListener('pagehide', () => this.sendBeaconData())
   }
 }
 

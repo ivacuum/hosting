@@ -8,7 +8,7 @@ export default function () {
     threshold: 1,
 
     callback(el) {
-      App.beacon({
+      App.beacon.push({
         id: el.dataset.id,
         event: 'NewsViewed',
       })

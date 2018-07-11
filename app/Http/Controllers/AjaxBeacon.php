@@ -20,32 +20,32 @@ class AjaxBeacon extends Controller
             ->header('Access-Control-Allow-Origin', '*');
     }
 
-    protected function processHiraganaAnsweredEvent($event)
+    protected function processHiraganaAnsweredEvent()
     {
         event(new \App\Events\Stats\HiraganaAnswered);
     }
 
-    protected function processHiraganaAnswerRevealedEvent($event)
+    protected function processHiraganaAnswerRevealedEvent()
     {
         event(new \App\Events\Stats\HiraganaAnswerRevealed);
     }
 
-    protected function processHiraganaSelectedEvent($event)
+    protected function processHiraganaSelectedEvent()
     {
         event(new \App\Events\Stats\HiraganaSelected);
     }
 
-    protected function processKatakanaAnsweredEvent($event)
+    protected function processKatakanaAnsweredEvent()
     {
         event(new \App\Events\Stats\KatakanaAnswered);
     }
 
-    protected function processKatakanaAnswerRevealedEvent($event)
+    protected function processKatakanaAnswerRevealedEvent()
     {
         event(new \App\Events\Stats\KatakanaAnswerRevealed);
     }
 
-    protected function processKatakanaSelectedEvent($event)
+    protected function processKatakanaSelectedEvent()
     {
         event(new \App\Events\Stats\KatakanaSelected);
     }

@@ -217,7 +217,7 @@ export default {
 
   methods: {
     beacon(action, appendSyllabaryName = true) {
-      App.beacon({
+      App.beacon.push({
         event: appendSyllabaryName ? this.syllabaryName + action : action
       })
     },
