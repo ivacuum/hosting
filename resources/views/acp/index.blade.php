@@ -1,4 +1,7 @@
-@extends('acp.base')
+@extends('base', [
+  'body_classes' => '',
+])
 
-@section('content')
+@section('body')
+<div id="app"></div>
 @endsection

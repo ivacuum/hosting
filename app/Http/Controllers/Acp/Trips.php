@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Controllers\Acp\Controller;
+use Ivacuum\Generic\Rules\ConcurrencyControl;
 
 class Trips extends Controller
 {
@@ -23,7 +24,7 @@ class Trips extends Controller
 
         [$sort_key, $sort_dir] = $this->getSortParams();
 
-        $models = Model::with('user')
+        $models = Model::with('user:id,login')
             ->withCount('comments', 'photos')
             ->when($city_id, function (Builder $query) use ($city_id) {
                 return $query->where('city_id', $city_id);
@@ -40,10 +41,14 @@ class Trips extends Controller
                 return $query->where('status', $status);
             })
             ->orderBy($sort_key, $sort_dir)
-            ->paginate(100)
+            ->paginate(50)
             ->withPath(path("{$this->class}@index"));
 
-        return view($this->view, compact('models', 'status'));
+        if (!$this->isApiRequest()) {
+            return view($this->view, compact('models', 'status'));
+        }
+
+        return $this->modelResourceCollection($models);
     }
 
     public function notify($id)
@@ -62,6 +67,28 @@ class Trips extends Controller
         \Notification::send($users, new TripPublished($model));
 
         return back()->with('message', 'Уведомления разосланы пользователям: '.sizeof($users));
+    }
+
+    protected function appendToCreateAndEditResponse($model): array
+    {
+        /* @var Model $model */
+        $ary = ['cities' => City::forInputSelect()];
+
+        if ($model->exists) {
+            $ary[ConcurrencyControl::FIELD] = md5($model->updated_at);
+        }
+
+        return $ary;
+    }
+
+    protected function newModelDefaults($model)
+    {
+        /* @var Model $model */
+        $model->status = Model::STATUS_HIDDEN;
+        $model->date_end = now()->startOfDay();
+        $model->date_start = now()->startOfDay();
+
+        return $model;
     }
 
     /**

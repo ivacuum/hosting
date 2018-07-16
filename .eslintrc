@@ -14,7 +14,9 @@
     "no-param-reassign": ["error", {
       "props": true,
       "ignorePropertyModificationsFor": [
-        "el"
+        "el",
+        "vm",
+        "state"
       ]
     }],
     "semi": ["error", "never"]

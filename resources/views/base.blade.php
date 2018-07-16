@@ -30,6 +30,7 @@
   @stack('head')
 </head>
 <body class="{{ $body_classes ?? 'body-with-bottom-tabbar' }} {{ optional(Auth::user())->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ $css_classes }}" data-self="{{ $self }}" data-view="{{ $view }}">
+@section('body')
 @section('header-navbar')
   @include('tpl.header-navbar')
 @show
@@ -149,6 +150,7 @@
 </footer>
 @show
 <div class="curtain curtain-closed js-curtain"></div>
+@show
 <script>
 <?php echo 'window.AppOptions = ' . json_encode([
   'locale' => $locale,
@@ -167,6 +169,9 @@
 <script src="{{ mix('/assets/popper.js') }}"></script>
 <script src="{{ mix('/assets/bootstrap.js') }}"></script>
 <script src="{{ mix('/assets/vue.js') }}"></script>
+<script src="{{ mix('/assets/vue-i18n.js') }}"></script>
+<script src="{{ mix('/assets/vue-router.js') }}"></script>
+<script src="{{ mix('/assets/vuex.js') }}"></script>
 <script src="{{ mix('/assets/axios.js') }}"></script>
 @if (!empty($websockets))
   <script src="{{ mix('/assets/socket.io.js') }}"></script>

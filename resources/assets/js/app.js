@@ -1,10 +1,15 @@
+/* global VueI18n */
 import './bootstrap'
-import VueI18n from 'vue-i18n'
 
 import throttle from 'lodash/throttle'
 import Map from 'vac-gfe/js/yandex-map'
 import Pjax from 'vac-gfe/js/pjax'
 import YandexMetrika from 'vac-gfe/js/yandex-metrika'
+import router from './router'
+import store from './store/store'
+import AcpApp from './components/AcpApp.vue'
+import AcpI18n from './i18n/acp'
+import svg from './svg-icons'
 
 import NewsViewsObserver from './news-views-observer'
 import TorrentsViewsObserver from './torrents-views-observer'
@@ -94,12 +99,35 @@ class Application {
   */
 
   initVue() {
-    this.vue = new Vue({
-      el: '#pjax_container',
-      i18n: new VueI18n({
-        locale: this.options.locale,
-      }),
-    })
+    const { self } = document.body.dataset
+
+    if (self.startsWith('Acp\\')) {
+      this.vue = new Vue({
+        el: '#app',
+        i18n: new VueI18n({
+          locale: this.options.locale,
+          messages: AcpI18n,
+          fallbackLocale: 'en',
+          silentTranslationWarn: true,
+        }),
+        store,
+        render: h => h(AcpApp),
+        router,
+
+        data() {
+          return {
+            svg,
+          }
+        },
+      })
+    } else {
+      this.vue = new Vue({
+        el: '#pjax_container',
+        i18n: new VueI18n({
+          locale: this.options.locale,
+        }),
+      })
+    }
   }
 
   static lazyLoadImages() {

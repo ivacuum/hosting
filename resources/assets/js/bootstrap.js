@@ -1,6 +1,5 @@
 import 'vac-gfe/js/laravel-axios'
 import 'vac-gfe/js/laravel-echo'
-import VueI18n from 'vue-i18n'
 
 import AvatarUploader from './components/AvatarUploader.vue'
 import Aviasales from './components/Aviasales.vue'
@@ -19,7 +18,9 @@ import Vocabulary from './components/Vocabulary.vue'
 import WanikaniSearch from './components/WanikaniSearch.vue'
 import Youtube from './components/Youtube.vue'
 
-Vue.use(VueI18n)
+import decimal from './decimal'
+
+Vue.filter('decimal', decimal)
 
 Vue.component('avatar-uploader', AvatarUploader)
 Vue.component('aviasales', Aviasales)

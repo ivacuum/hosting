@@ -170,7 +170,7 @@ class Trip extends Model
     // Methods
     public function breadcrumb(): string
     {
-        return "{$this->title} {$this->localizedDate()}";
+        return $this->title;
     }
 
     public function cityTimeline()
