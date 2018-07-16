@@ -18,7 +18,7 @@
 <form class="d-flex justify-content-between my-3" action="{{ path('ParserVk@indexPost') }}" method="post">
   <div>
     @if (!empty($next))
-      <a class="btn border-b125 js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}" id="previous_page">
+      <a class="btn border-b125 js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}" id="prev_page">
         @svg (chevron-left)
         {{ $next->formatLocalized('%e %B') }}
       </a>

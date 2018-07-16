@@ -11,7 +11,7 @@
 <div class="d-flex justify-content-between mt-3">
   <div>
     @if ($level > 1)
-      <a class="btn border-b125" href="{{ path('JapaneseWanikaniLevel@show', $level - 1) }}" id="previous_page">
+      <a class="btn border-b125" href="{{ path('JapaneseWanikaniLevel@show', $level - 1) }}" id="prev_page">
         @svg (chevron-left)
         {{ trans('japanese.level', ['level' => $level - 1]) }}
       </a>

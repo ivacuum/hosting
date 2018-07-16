@@ -14,7 +14,7 @@
 
 <ul class="pagination d-none d-sm-flex m-0 justify-content-center">
   @if (!$paginator->onFirstPage())
-    <li class="page-item"><a class="page-link js-pjax tooltipped tooltipped-ne" href="{{ $paginator->previousPageUrl() }}" id="previous_page" rel="prev" aria-label="{{ trans('pagination.previous') }}">@svg (chevron-left)</a></li>
+    <li class="page-item"><a class="page-link js-pjax tooltipped tooltipped-ne" href="{{ $paginator->previousPageUrl() }}" id="prev_page" rel="prev" aria-label="{{ trans('pagination.previous') }}">@svg (chevron-left)</a></li>
   @endif
 
   @foreach ($elements as $element)
