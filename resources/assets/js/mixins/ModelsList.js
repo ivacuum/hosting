@@ -16,6 +16,10 @@ export default {
   },
 
   computed: {
+    addition() {
+      return (this.collection.meta.current_page - 1) * this.collection.meta.per_page
+    },
+
     loaded() {
       return Object.keys(this.collection).length
     },

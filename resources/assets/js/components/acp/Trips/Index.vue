@@ -68,7 +68,7 @@ export default {
         :key="model.id"
         @dblclick="$router.push(model.edit_url)"
       >
-        <td class="text-md-right">{{ i + 1 }}</td>
+        <td class="text-md-right">{{ addition + i + 1 }}</td>
         <td>
           <router-link :to="model.show_url">
             {{ model.title }}
