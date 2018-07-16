@@ -2,12 +2,14 @@
   <div>
     <div v-if="!uploading">
       <div class="custom-file">
-        <input class="custom-file-input"
-               accept="image/jpeg,image/png"
-               type="file"
-               name="files[]"
-               multiple
-               @change="uploadFiles($event.currentTarget.files)">
+        <input
+          class="custom-file-input"
+          accept="image/jpeg,image/png"
+          type="file"
+          name="files[]"
+          multiple
+          @change="uploadFiles($event.currentTarget.files)"
+        >
         <label class="custom-file-label">Выберите файлы...</label>
       </div>
     </div>
@@ -36,13 +38,6 @@ export default {
     }
   },
 
-  mounted() {
-    if (window.File == null || window.FileList == null || window.FormData == null) {
-      alert('Проблемка. Файлы загрузить не выйдет')
-      return false
-    }
-  },
-
   methods: {
     uploadFile(file) {
       return new Promise((resolve) => {
@@ -54,16 +49,18 @@ export default {
 
         form.append('file', file)
 
-        axios.post(this.action, form).then((response) => {
-          this.thumbnails.push(response.data)
-          this.uploaded++
+        axios
+          .post(this.action, form)
+          .then((response) => {
+            this.thumbnails.push(response.data)
+            this.uploaded++
 
-          if (this.uploaded === this.total) {
-            this.uploading = false
-          }
+            if (this.uploaded === this.total) {
+              this.uploading = false
+            }
 
-          resolve()
-        })
+            resolve()
+          })
       })
     },
 

@@ -19,8 +19,8 @@
 
 <kanji
   action="{{ path('JapaneseWanikaniKanji@index') }}"
-  :burned="true"
-  :flat="true"
+  burned
+  flat
   :radical-id="{{ $radical->id }}"
 ></kanji>
 

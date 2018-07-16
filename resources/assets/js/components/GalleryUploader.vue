@@ -59,9 +59,9 @@ export default {
 
   data() {
     return {
-      errors: [],
       files: [],
       total: 0,
+      errors: [],
       uploaded: 0,
       uploading: false
     }
@@ -78,13 +78,6 @@ export default {
         CHOOSE_FILES: 'Выберите файлы...',
       },
     },
-  },
-
-  mounted() {
-    if (window.File === null || window.FileList === null || window.FormData === null) {
-      alert('Проблемка. Файлы загрузить не выйдет')
-      return false
-    }
   },
 
   computed: {
@@ -120,22 +113,25 @@ export default {
 
         form.append('file', file)
 
-        axios.post(this.action, form).then((response) => {
-          this.files.push(response.data)
-          this.incrementUploaded()
-
-          resolve()
-        }).catch((error) => {
-          if (error.response && error.response.status === 422) {
-            this.errors = error.response.data.errors
+        axios
+          .post(this.action, form)
+          .then((response) => {
+            this.files.push(response.data)
             this.incrementUploaded()
-          } else if (error.response && error.response.status === 500) {
-            alert('Загрузка временно недоступна. Попробуйте повторить попытку позднее')
-            this.incrementUploaded()
-          }
 
-          reject(error)
-        })
+            resolve()
+          })
+          .catch((error) => {
+            if (error.response && error.response.status === 422) {
+              this.errors = error.response.data.errors
+              this.incrementUploaded()
+            } else if (error.response && error.response.status === 500) {
+              alert('Загрузка временно недоступна. Попробуйте повторить попытку позднее')
+              this.incrementUploaded()
+            }
+
+            reject(error)
+          })
       })
     },
 

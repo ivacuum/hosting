@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import I18nMessages from './../i18n/japanese'
+import I18nMessages from '../i18n/japanese'
 import shuffle from 'lodash/shuffle'
 
 export default {
@@ -114,7 +114,8 @@ export default {
   created() {
     this.guest = !window.AppOptions.loggedIn
 
-    axios.get(this.action, {
+    axios
+      .get(this.action, {
         params: {
           level: this.level,
           kanji_id: this.kanjiId,

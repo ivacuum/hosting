@@ -69,8 +69,8 @@
 </template>
 
 <script>
-import I18nMessages from './../i18n/japanese'
 import shuffle from 'lodash/shuffle'
+import I18nMessages from '../i18n/japanese'
 
 export default {
   props: {
@@ -105,19 +105,20 @@ export default {
     return {
       guest: false,
       labels: false,
+      loaded: false,
       elements: [],
     }
   },
 
   i18n: {
-    locale: window.AppOptions.locale,
     messages: I18nMessages,
   },
 
   created() {
     this.guest = !window.AppOptions.loggedIn
 
-    axios.get(this.action, {
+    axios
+      .get(this.action, {
         params: {
           level: this.level,
           similar_id: this.similarId,

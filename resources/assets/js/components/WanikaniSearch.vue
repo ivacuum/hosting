@@ -91,7 +91,8 @@ export default {
 
   methods: {
     onSubmit() {
-      axios.post(this.action, { q: this.q })
+      axios
+        .post(this.action, { q: this.q })
         .then((response) => {
           this.results = Number(response.data.count)
           this.elements = response.data

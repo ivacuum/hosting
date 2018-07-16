@@ -21,7 +21,7 @@
     <div class="form-help">{{ $t('HELP_TEXT') }}</div>
   </div>
   <div v-else>
-    Идет загрузка...
+    {{ $t('LOADING') }}
   </div>
 </div>
 </template>
@@ -41,10 +41,12 @@ export default {
   i18n: {
     messages: {
       en: {
+        LOADING: 'Loading...',
         HELP_TEXT: 'Avatar would be saved automatically after selection is made',
         CHOOSE_FILE: 'Choose file...',
       },
       ru: {
+        LOADING: 'Идет загрузка...',
         HELP_TEXT: 'Аватар сохраняется автоматически после выбора',
         CHOOSE_FILE: 'Выберите файл...',
       },
@@ -53,11 +55,6 @@ export default {
 
   mounted() {
     this.avatar = this.currentAvatar
-
-    if (window.File == null || window.FileList == null || window.FormData == null) {
-      alert('Проблемка. Файлы загрузить не выйдет')
-      return false
-    }
   },
 
   methods: {
@@ -70,15 +67,18 @@ export default {
       form.append('file', file)
       form.append('_method', 'put')
 
-      axios.post(this.action, form).then((response) => {
-        this.avatar = response.data.avatar
-        this.uploading = false
-      }).catch((error) => {
-        if (error.response && error.response.status === 422) {
-          this.errors = error.response.data.errors
+      axios
+        .post(this.action, form)
+        .then((response) => {
+          this.avatar = response.data.avatar
           this.uploading = false
-        }
-      })
+        })
+        .catch((error) => {
+          if (error.response && error.response.status === 422) {
+            this.errors = error.response.data.errors
+            this.uploading = false
+          }
+        })
     },
   }
 }

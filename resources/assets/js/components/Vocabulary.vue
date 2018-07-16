@@ -96,7 +96,7 @@
 </template>
 
 <script>
-import I18nMessages from './../i18n/japanese'
+import I18nMessages from '../i18n/japanese'
 import shuffle from 'lodash/shuffle'
 
 export default {
@@ -137,7 +137,8 @@ export default {
   created() {
     this.guest = !window.AppOptions.loggedIn
 
-    axios.get(this.action, {
+    axios
+      .get(this.action, {
         params: {
           kanji: this.kanji,
           level: this.level,
@@ -200,7 +201,8 @@ export default {
 
   methods: {
     burn(level, id) {
-      axios.delete(`/japanese/wanikani/vocabulary/${id}`)
+      axios
+        .delete(`/japanese/wanikani/vocabulary/${id}`)
         .then((response) => {
           if (response.data.status === 'OK') {
             const i = this.elements[level].findIndex((el) => el.id === id)

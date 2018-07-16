@@ -40,16 +40,18 @@ export default {
   methods: {
     toggleBurned() {
       if (this.burned) {
-        axios.put(this.action)
-          .then((response) => {
-            if (response.data.status === 'OK') {
+        axios
+          .put(this.action)
+          .then(({ data }) => {
+            if (data.status === 'OK') {
               this.burned = 0
             }
           })
       } else {
-        axios.delete(this.action)
-          .then((response) => {
-            if (response.data.status === 'OK') {
+        axios
+          .delete(this.action)
+          .then(({ data }) => {
+            if (data.status === 'OK') {
               this.burned = 1
             }
           })

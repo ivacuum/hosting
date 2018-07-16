@@ -61,7 +61,8 @@ export default {
     */
 
     fetchMessages() {
-      axios.get(this.action)
+      axios
+        .get(this.action)
         .then((response) => {
           this.messages = response.data.data
           this.scrollChatDown()
@@ -107,19 +108,21 @@ export default {
     subscribe() {
       if (typeof Echo === 'undefined') return false
 
-      Echo.channel('chat')
+      Echo
+        .channel('chat')
         .listen('ChatMessagePosted', (e) => {
-          const is_scrolled_down = this.isScrolledDown(this.getChatContainer())
+          const isScrolledDown = this.isScrolledDown(this.getChatContainer())
 
           this.messages.push(e.message)
 
-          if (is_scrolled_down) {
+          if (isScrolledDown) {
             this.scrollChatDown()
           }
         })
 
       /*
-      Echo.private('chat.typing')
+      Echo
+        .private('chat.typing')
         .listenForWhisper('typing', (e) => {
           this.typing = true
           this.clearTyping()
