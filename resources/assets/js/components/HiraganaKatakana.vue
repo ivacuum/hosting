@@ -230,7 +230,7 @@ export default {
     checkInput(input) {
       this.input = input
 
-      if (this.answer && this.answer === input) {
+      if (this.answer && this.answer === input.toLowerCase()) {
         this.answered++
         this.beacon('Answered')
         this.nextQuestion()
