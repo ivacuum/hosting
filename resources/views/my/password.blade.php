@@ -6,6 +6,8 @@
 <div class="mw-500">
   <form action="{{ path("$self@update") }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
+    @method('put')
+    @csrf
 
     @if ($has_password)
       <div class="form-group">
@@ -29,9 +31,6 @@
     <button class="btn btn-primary">
       {{ trans('my.save') }}
     </button>
-
-    {{ method_field('put') }}
-    {{ csrf_field() }}
   </form>
 </div>
 
@@ -39,6 +38,7 @@
   <h3 class="mt-5">{{ trans('auth.forgot_password') }}</h3>
   <form action="{{ path('Auth\ForgotPassword@sendResetLink') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
+    @csrf
 
     @ru
       <p>Ссылка будет отправлена на вашу электронную почту <span class="font-weight-bold">{{ Auth::user()->email }}</span></p>
@@ -51,7 +51,6 @@
     </button>
 
     <input type="hidden" name="email" value="{{ Auth::user()->email }}">
-    {{ csrf_field() }}
   </form>
 @endif
 @endsection

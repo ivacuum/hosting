@@ -128,8 +128,8 @@ class Torrents extends Controller
         $category_id = request('category_id');
 
         request()->validate([
-            'category_id' => 'required|integer|in:'.implode(',', \TorrentCategoryHelper::canPostIds()),
             'input' => 'required',
+            'category_id' => 'required|integer|in:'.implode(',', \TorrentCategoryHelper::canPostIds()),
         ]);
 
         if (($topic_id = $rto->findTopicId($input)) > 0) {

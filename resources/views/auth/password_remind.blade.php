@@ -5,6 +5,7 @@
   <h3>{{ trans('auth.password_remind_title') }}</h3>
   <form action="{{ path('Auth\ForgotPassword@sendResetLink') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
+    @csrf
 
     <div class="my-3">
       <input autofocus required class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{ trans('auth.email') }}">
@@ -14,8 +15,6 @@
     <button class="btn btn-primary btn-lg">
       {{ trans('auth.password_remind') }}
     </button>
-
-    {{ csrf_field() }}
   </form>
 </div>
 @endsection

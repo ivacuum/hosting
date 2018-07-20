@@ -54,6 +54,8 @@
     @endif
     <form action="{{ path('AjaxComment@store', $params) }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}
+      @csrf
+
       @if (!Auth::check())
         <div class="mb-2">
           <input
@@ -79,7 +81,6 @@
       <button class="btn btn-primary mt-2">
         {{ trans('comments.send') }}
       </button>
-      {{ csrf_field() }}
     </form>
   </div>
 </div>

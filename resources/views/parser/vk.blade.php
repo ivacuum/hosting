@@ -16,6 +16,7 @@
 </div>
 
 <form class="d-flex justify-content-between my-3" action="{{ path('ParserVk@indexPost') }}" method="post">
+  @csrf
   <div>
     @if (!empty($next))
       <a class="btn border-b125 js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}" id="prev_page">
@@ -40,7 +41,6 @@
       </a>
     @endif
   </div>
-  {{ csrf_field() }}
 </form>
 
 @if (!sizeof($posts))

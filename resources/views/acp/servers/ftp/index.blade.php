@@ -44,21 +44,23 @@
 <div class="mw-500 mt-3">
   <form action="/acp/servers/{{ $server->id }}/ftp/file" method="post">
     {{ ViewHelper::inputHiddenMail() }}
-      <div class="input-group">
-        <input class="form-control {{ $errors->has('file') ? 'is-invalid' : '' }}" name="file" value="{{ old('file') }}">
-        <div class="input-group-append">
-          <button class="btn btn-default">
-            Создать файл
-          </button>
-        </div>
+    @csrf
+    <div class="input-group">
+      <input class="form-control {{ $errors->has('file') ? 'is-invalid' : '' }}" name="file" value="{{ old('file') }}">
+      <div class="input-group-append">
+        <button class="btn btn-default">
+          Создать файл
+        </button>
+      </div>
     </div>
 
     <input type="hidden" name="path" value="{{ $dir }}">
-    {{ csrf_field() }}
   </form>
 
   <form class="mt-3" action="/acp/servers/{{ $server->id }}/ftp/dir" method="post">
     {{ ViewHelper::inputHiddenMail() }}
+    @csrf
+
     <div class="input-group">
       <input class="form-control {{ $errors->has('dir') ? 'is-invalid' : '' }}" name="dir" value="{{ old('dir') }}">
       <div class="input-group-append">
@@ -69,11 +71,12 @@
     </div>
 
     <input type="hidden" name="path" value="{{ $dir }}">
-    {{ csrf_field() }}
   </form>
 
   <form class="mt-3" action="/acp/servers/{{ $server->id }}/ftp/upload" enctype="multipart/form-data" method="post">
     {{ ViewHelper::inputHiddenMail() }}
+    @csrf
+
     <div class="input-group align-items-center">
       <input class="{{ $errors->has('file') ? 'is-invalid' : '' }}" type="file" name="file">
       <span class="input-group-append">
@@ -84,7 +87,6 @@
     </div>
 
     <input type="hidden" name="path" value="{{ $dir }}">
-    {{ csrf_field() }}
   </form>
 </div>
 @endsection

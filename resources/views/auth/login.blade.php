@@ -30,6 +30,7 @@
 
   <form action="{{ path('Auth\SignIn@login') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
+    @csrf
 
     <div class="form-group">
       <input autofocus required class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{ trans('auth.email_or_login') }}">
@@ -69,8 +70,6 @@
         <a class="link" href="{{ path('Auth\NewAccount@index') }}">{{ trans('auth.new_account') }}</a>
       </div>
     </div>
-
-    {{ csrf_field() }}
   </form>
 </div>
 @endsection

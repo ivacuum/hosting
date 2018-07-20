@@ -18,6 +18,7 @@
 
 <form action="/acp/servers/{{ $server->id }}/ftp/source" method="post">
   {{ ViewHelper::inputHiddenMail() }}
+  @csrf
 
   <div class="form-group">
     <textarea class="form-control f14 textarea-autosized js-autosize-textarea" name="source" rows="2" style="font-family: var(--font-family-monospace);">{{ $source }}</textarea>
@@ -28,6 +29,5 @@
   </button>
 
   <input type="hidden" name="file" value="{{ $file }}">
-  {{ csrf_field() }}
 </form>
 @endsection

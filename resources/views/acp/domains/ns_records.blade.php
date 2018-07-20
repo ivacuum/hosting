@@ -4,23 +4,23 @@
 {{--
 @if ($model->domain_control and ($model->ns != 'dns1.yandex.net dns2.yandex.net' and $model->ns != 'dns1.yandex.ru dns2.yandex.ru'))
   <form action="{{ path("$self@setYandexNs", $model) }}" method="post">
+    @csrf
     <p>
       <button class="btn btn-default">
         Установить DNS Яндекса
       </button>
     </p>
-		{{ csrf_field() }}
   </form>
 @endif
 
 @if (!$model->yandex_user_id)
   <form action="{{ path("$self@setYandexPdd", $model) }}" method="post">
+    @csrf
     <p>
       <button class="btn btn-default">
         Подключить Яндекс.Почту для домена
       </button>
     </p>
-		{{ csrf_field() }}
   </form>
 @endif
 --}}
@@ -110,7 +110,7 @@
               <input class="form-control form-control-sm mt-1 w-100" name="ttl" value="{{ $record->ttl }}" placeholder="ttl">
             @endif
             <input type="hidden" name="record_id" value="{{ $record->record_id }}">
-            {{ method_field('PUT') }}
+            @method('put')
           </div>
         </td>
         <td>
@@ -132,6 +132,7 @@
   </table>
 
   <form class="form-inline mt-3" action="{{ path("$self@setServerNsRecords", $model) }}" method="post">
+    @csrf
     <div class="d-inline-block mr-1">
       <select class="custom-select" name="server">
         <option value="">-----</option>
@@ -147,7 +148,6 @@
     <button class="btn btn-default">
       Прописать днс-записи сервера
     </button>
-    {{ csrf_field() }}
   </form>
 @elseif ($model->yandex_user_id)
   <div class="alert alert-warning">

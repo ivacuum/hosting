@@ -5,6 +5,7 @@
   <h3 class="mb-3">{{ trans('auth.register_title') }}</h3>
   <form action="{{ path('Auth\NewAccount@register') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
+    @csrf
 
     <div class="form-group">
       <input
@@ -34,8 +35,6 @@
     <button class="btn btn-primary btn-lg">
       {{ trans('auth.signup') }}
     </button>
-
-    {{ csrf_field() }}
   </form>
 </div>
 @endsection

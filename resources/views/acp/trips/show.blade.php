@@ -10,8 +10,8 @@
   </div>
 @endif
 <form class="mt-3" action="{{ path("$self@notify", $model) }}" method="post">
+  @csrf
   <button class="btn btn-default">{{ trans("$tpl.notify") }}</button>
-  {{ csrf_field() }}
 </form>
 @parent
 @endsection

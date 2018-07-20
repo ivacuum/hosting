@@ -26,4 +26,4 @@
   <input type="hidden" name="goto" value="{{ $goto }}">
 @endif
 
-{{ csrf_field() }}
+@csrf

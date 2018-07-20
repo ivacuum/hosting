@@ -6,6 +6,8 @@
 <div class="mw-600">
   <form action="{{ path("$self@update") }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
+    @method('put')
+    @csrf
 
     <div class="form-group">
       <label>{{ trans('my.theme') }}</label>
@@ -125,9 +127,6 @@
     <button class="btn btn-primary">
       {{ trans('my.save') }}
     </button>
-
-    {{ method_field('put') }}
-    {{ csrf_field() }}
   </form>
 </div>
 @endsection

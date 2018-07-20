@@ -27,7 +27,6 @@ class AjaxComment extends Controller
             'email' => $is_guest ? 'required|email|max:125' : '',
         ]));
 
-        /* @var User $user */
         if ($is_guest) {
             $user = (new User)->findByEmailOrCreate([
                 'email' => $email,

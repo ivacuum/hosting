@@ -5,14 +5,13 @@
   <div class="col-lg-6">
     <form action="{{ path("$self@store") }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}
+      @csrf
 
       @include("$tpl.form")
 
       <button class="btn btn-primary">
         {{ trans("$tpl.create") }}
       </button>
-
-      {{ csrf_field() }}
     </form>
   </div>
   <div class="col-lg-6 mt-4 mt-lg-0">

@@ -6,6 +6,8 @@
   <p><a class="btn btn-default" href="{{ Auth::user()->www() }}">{{ trans('my.go_to_profile') }}</a></p>
   <form action="{{ path("$self@update") }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
+    @method('put')
+    @csrf
 
     <div class="form-group">
       <label>{{ trans('my.username') }}</label>
@@ -29,9 +31,6 @@
     <button class="btn btn-primary">
       {{ trans('my.save') }}
     </button>
-
-    {{ method_field('put') }}
-    {{ csrf_field() }}
   </form>
 
   <h3 class="mt-5">{{ trans('my.avatar') }}</h3>

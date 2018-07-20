@@ -23,7 +23,6 @@ class Trip extends Resource
             'breadcrumb' => $this->breadcrumb(),
             'meta_image' => $this->meta_image ? $this->metaImage() : '',
             'meta_title' => $this->meta_title,
-            'foreign_key' => $this->getForeignKey(),
             'localized_date' => $this->localizedDate(),
             'meta_description' => $this->meta_description,
 

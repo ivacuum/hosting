@@ -14,9 +14,9 @@
   @endru
   <form action="{{ path('Coupons@firstvdsPost') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
+    @csrf
 
     <div class="mw-500">
-
       <div class="input-group">
         <input required class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" autocomplete="email" placeholder="{{ trans('coupons.your_email') }}">
         <div class="input-group-append">
@@ -27,8 +27,6 @@
         <div class="invalid-feedback d-block">{{ $errors->first('email') }}</div>
       @endif
     </div>
-
-    {{ csrf_field() }}
   </form>
 
   <section class="mt-5">

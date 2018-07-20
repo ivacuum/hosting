@@ -5,6 +5,7 @@
   <h3 class="mb-3">{{ trans('auth.password_reset_title') }}</h3>
   <form action="{{ path('Auth\ResetPassword@reset') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
+    @csrf
 
     <div class="form-group">
       <input autofocus required class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{ trans('auth.email') }}">
@@ -21,7 +22,6 @@
     </button>
 
     <input type="hidden" name="token" value="{{ $token }}">
-    {{ csrf_field() }}
   </form>
 </div>
 @endsection

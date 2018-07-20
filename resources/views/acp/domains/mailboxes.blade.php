@@ -3,6 +3,7 @@
 @section('content')
 <h3>Новая электропочта</h3>
 <form action="{{ path("$self@addMailbox", $model) }}" class="mw-600" method="post">
+  @csrf
 
   <div class="form-group">
     <label>Ящик</label>
@@ -27,8 +28,6 @@
   <button class="btn btn-primary">
     Создать ящик
   </button>
-
-  {{ csrf_field() }}
 </form>
 
 @if ($mailboxes->total > 0)
