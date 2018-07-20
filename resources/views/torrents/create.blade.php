@@ -4,6 +4,7 @@
 <div class="row">
   <div class="col-lg-6">
     <form action="{{ path("$self@store") }}" method="post">
+      {{ ViewHelper::inputHiddenMail() }}
 
       @include("$tpl.form")
 
