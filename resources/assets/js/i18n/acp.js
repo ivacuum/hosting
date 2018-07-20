@@ -98,13 +98,17 @@ export default {
       notify: 'Notify about publication',
     },
 
+    yes: 'Yes',
     www: 'View on site',
     save: 'Save',
     apply: 'Apply',
     index: 'ACP',
+    cancel: 'Cancel',
     delete: 'Delete',
+    changes_saved: 'Changes saved',
     reset_filters: 'Reset all filters',
-    delete_confirm: 'Entry would be deleted. Continue?',
+    check_form_data: 'The form contains errors. Please check the data',
+    delete_confirmation: 'Are you sure you want to delete this entry?',
   },
   ru: {
     artists: {
@@ -251,11 +255,15 @@ export default {
       notify: 'Уведомить о публикации',
     },
 
+    yes: 'Да',
     www: 'Смотреть на сайте',
     save: 'Сохранить',
     apply: 'Применить',
+    cancel: 'Отмена',
     delete: 'Удалить',
+    changes_saved: 'Изменения сохранены',
     reset_filters: 'Сбросить все фильтры',
-    delete_confirm: 'Запись будет удалена. Продолжить?',
+    check_form_data: 'Проверьте правильность заполнения формы',
+    delete_confirmation: 'Вы уверены, что хотите удалить эту запись?',
   },
 }

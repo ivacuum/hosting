@@ -166,6 +166,7 @@
 <script src="{{ mix('/assets/jquery.pjax.js') }}"></script>
 <script src="{{ mix('/assets/jquery.scrollto.js') }}"></script>
 <script src="{{ mix('/assets/autosize.js') }}"></script>
+<script src="{{ mix('/assets/notie.js') }}"></script>
 <script src="{{ mix('/assets/popper.js') }}"></script>
 <script src="{{ mix('/assets/bootstrap.js') }}"></script>
 <script src="{{ mix('/assets/vue.js') }}"></script>

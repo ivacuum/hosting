@@ -1,3 +1,5 @@
+/* global notie */
+
 import 'vac-gfe/js/laravel-axios'
 import 'vac-gfe/js/laravel-echo'
 
@@ -38,3 +40,5 @@ Vue.component('torrent-title', TorrentTitle)
 Vue.component('vocabulary', Vocabulary)
 Vue.component('wanikani-search', WanikaniSearch)
 Vue.component('youtube', Youtube)
+
+notie.setOptions({ overlayOpacity: 1 })

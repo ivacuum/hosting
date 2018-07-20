@@ -4,6 +4,7 @@ import FormRadio from '../forms/FormInputRadio.vue'
 import FormSelect from '../forms/FormInputSelect.vue'
 import acpResourceUrl from '../../utils/acpResourceUrl'
 import StickyBottomButtons from './StickyBottomButtons.vue'
+import acpRequestErrorNotification from '../../utils/acpRequestErrorNotification'
 
 export default {
   components: {
@@ -56,6 +57,18 @@ export default {
       return this.update(false)
     },
 
+    catchFormError(error) {
+      if (!error.response) return
+
+      if (error.response.status === 422) {
+        this.$store.commit('setValidationErrors', error.response.data.errors)
+        notie.alert({ type: 'error', text: this.$i18n.t('check_form_data') })
+        return
+      }
+
+      acpRequestErrorNotification(error)
+    },
+
     payload(put = false) {
       const payload = new FormData(this.$refs.form)
 
@@ -76,14 +89,8 @@ export default {
             this.$router.push(response.headers.location)
           }
         })
-        .catch((error) => {
-          if (error.response && error.response.status === 422) {
-            this.$store.commit('setValidationErrors', error.response.data.errors)
-          }
-
-          // console.log(`${error.response.status} ${error.response.statusText}`)
-        })
-        .finally(() => {
+        .catch(this.catchFormError)
+        .then(() => {
           this.saving = false
         })
     },
@@ -102,16 +109,12 @@ export default {
 
           if (response.status === 204 && redirect) {
             this.$router.back()
+          } else {
+            notie.alert({ text: this.$i18n.t('changes_saved') })
           }
         })
-        .catch((error) => {
-          if (error.response && error.response.status === 422) {
-            this.$store.commit('setValidationErrors', error.response.data.errors)
-          }
-
-          // console.log(`${error.response.status} ${error.response.statusText}`)
-        })
-        .finally(() => {
+        .catch(this.catchFormError)
+        .then(() => {
           this.saving = false
         })
     },

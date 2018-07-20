@@ -1,4 +1,4 @@
-/* global App */
+/* global App, notie */
 
 export default class YandexDns {
   static bind() {
@@ -15,16 +15,18 @@ export default class YandexDns {
 
       const $form = $(this).closest('.ns-record-container')
 
-      axios.post($form.data('action'), $('input, select', $form).serialize()).then((response) => {
-        if (response.data === 'ok') {
-          $.pjax({
-            url: document.location.href,
-            container: App.pjax.container,
-          })
-        } else {
-          alert(response.data)
-        }
-      })
+      axios
+        .post($form.data('action'), $('input, select', $form).serialize())
+        .then((response) => {
+          if (response.data === 'ok') {
+            $.pjax({
+              url: document.location.href,
+              container: App.pjax.container,
+            })
+          } else {
+            notie.alert({ text: response.data })
+          }
+        })
     })
   }
 
@@ -45,19 +47,25 @@ export default class YandexDns {
 
       const { id } = this.dataset
 
-      if (confirm('Запись будет удалена. Продолжить?')) {
-        axios.post($(this).data('action'), { record_id: id, _method: 'DELETE' })
-          .then((response) => {
-            if (response.data === 'ok') {
-              $.pjax({
-                url: document.location.href,
-                container: App.pjax.container,
-              })
-            } else {
-              alert(response.data)
-            }
-          })
-      }
+      notie.confirm({
+        text: 'Запись будет удалена. Продолжить?',
+        submitText: 'Да',
+        cancelText: 'Отмена',
+        submitCallback: () => {
+          axios
+            .post($(this).data('action'), { record_id: id, _method: 'DELETE' })
+            .then((response) => {
+              if (response.data === 'ok') {
+                $.pjax({
+                  url: document.location.href,
+                  container: App.pjax.container,
+                })
+              } else {
+                notie.alert({ text: response.data })
+              }
+            })
+        },
+      })
     })
   }
 
@@ -78,16 +86,18 @@ export default class YandexDns {
 
       const $form = $(this).closest('.ns-record-container')
 
-      axios.post($(this).data('action'), $('input', $form).serialize()).then((response) => {
-        if (response.data === 'ok') {
-          $.pjax({
-            url: document.location.href,
-            container: App.pjax.container,
-          })
-        } else {
-          alert(response.data)
-        }
-      })
+      axios
+        .post($(this).data('action'), $('input', $form).serialize())
+        .then((response) => {
+          if (response.data === 'ok') {
+            $.pjax({
+              url: document.location.href,
+              container: App.pjax.container,
+            })
+          } else {
+            notie.alert({ text: response.data })
+          }
+        })
     })
   }
 }

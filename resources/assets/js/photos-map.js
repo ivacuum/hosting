@@ -7,7 +7,8 @@ export default class PhotosMap {
 
     if (!$el.length) return
 
-    App.map.create(container, $el.data('lat'), $el.data('lon'), $el.data('zoom'), true)
+    App.map
+      .create(container, $el.data('lat'), $el.data('lon'), $el.data('zoom'), true)
       .then(() => {
         const manager = new App.map.ym.ObjectManager({
           clusterize: $el.data('clusterize'),
@@ -19,9 +20,11 @@ export default class PhotosMap {
 
         App.map.map.geoObjects.add(manager)
 
-        axios.get($el.data('action')).then((response) => {
-          manager.add(response.data)
-        })
+        axios
+          .get($el.data('action'))
+          .then((response) => {
+            manager.add(response.data)
+          })
       })
   }
 }

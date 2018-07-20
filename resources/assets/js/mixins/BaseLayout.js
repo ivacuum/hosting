@@ -1,4 +1,7 @@
+/* global notie */
+
 import acpResourceUrl from '../utils/acpResourceUrl'
+import acpRequestErrorNotification from '../utils/acpRequestErrorNotification'
 
 export default {
   data() {
@@ -38,18 +41,21 @@ export default {
 
   methods: {
     destroy() {
-      if (confirm('Запись будет удалена. Продолжить?')) {
-        axios
-          .delete(this.resource.show_url)
-          .then((response) => {
-            if (response.data.status === 'OK') {
-              this.$router.push(response.data.redirect)
-            }
-          })
-          // .catch((error) => {
-          // console.log(`${error.response.status} ${error.response.statusText}`)
-          // })
-      }
+      notie.confirm({
+        text: this.$i18n.t('delete_confirmation'),
+        submitText: this.$i18n.t('yes'),
+        cancelText: this.$i18n.t('cancel'),
+        submitCallback: () => {
+          axios
+            .delete(this.resource.show_url)
+            .then((response) => {
+              if (response.data.status === 'OK') {
+                this.$router.push(response.data.redirect)
+              }
+            })
+            .catch(acpRequestErrorNotification)
+        },
+      })
     },
   },
 }

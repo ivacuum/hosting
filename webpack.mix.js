@@ -17,6 +17,8 @@ mix.js('resources/assets/js/app.js', 'public/assets')
 
   .copy('node_modules/autosize/dist/autosize.min.js', 'public/assets/autosize.js')
 
+  .copy('node_modules/notie/dist/notie.min.js', 'public/assets/notie.js')
+
   .copy('node_modules/bootstrap/dist/js/bootstrap.min.js', 'public/assets/bootstrap.js')
   .copy('node_modules/vac-gfe/js/empty.map', 'public/assets/bootstrap.min.js.map')
 
