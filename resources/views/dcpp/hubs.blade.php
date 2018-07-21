@@ -15,9 +15,10 @@
 <ol>
   @foreach ($hubs as $hub)
     <li>
-      <a class="link js-dcpp-hub"
-         href="{{ $hub->externalLink() }}"
-         data-action="{{ path('DcppHubClick@store', $hub->id) }}"
+      <a
+        class="link js-dcpp-hub"
+        href="{{ $hub->externalLink() }}"
+        data-action="{{ path('DcppHubClick@store', $hub->id) }}"
       >{{ $hub->externalLink() }}</a>
     </li>
   @endforeach
@@ -27,6 +28,8 @@
   <div class="col-md-6">
     @ru
       <p>Обычно клика по названию хаба достаточно, чтобы подключиться. Однако, если клик не сработал должным образом, то вы можете скопировать адрес и добавить хаб вручную в своем DC++ клиенте.</p>
+    @en
+      <p>Usually, it is just enough to click a link to connect to a hub. However, if it didn't work for you, you can manually copy-paste the address into your DC++ client.</p>
     @endru
   </div>
 </div>

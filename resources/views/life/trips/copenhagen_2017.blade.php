@@ -10,13 +10,13 @@
 @ru
   <p>Что стало известно по ходу планирования поездки? Например, что стоимость аренды комнаты в 2–3 раза выше, чем в <a class="link" href="berlin.2017.05">Берлине</a>. Это сразу насторожило, так как весь тур изначально предполагался очень бюджетный. В Копенгагене все пошло под откос.</p>
 @en
-  <p>What have I learnt during the planning phase? Accommodation in Copenhagen is a few times more expensive than in <a class="link" href="berlin.2017.05">Berlin</a>. I thought of a budget eurotrip at first, but that idea got derailed.</p>
+  <p>What have I learned during the planning phase? Accommodation in Copenhagen is a few times more expensive than in <a class="link" href="berlin.2017.05">Berlin</a>. I thought of a budget eurotrip at first, but that idea got derailed.</p>
 @endru
 
 @ru
   <p>Прекрасный аэропорт Копенгагена не удалось рассмотреть подробно. Прилет был поздний, надо было спешить заселяться. По пути на выход было заметно, что скоротать в нем несколько часов перед вылетом одно удовольствие.</p>
 @en
-  <p>Sadly, I had no time to explore beautiful Copenhagen airport. It was late—like around midnight—arrival, so I was in a rush to check-in—didn't want it to take hours to get to the accommodation place. On the way to exit it was obvious that the airport is very comfortable for a long wait.</p>
+  <p>Sadly, I had no time to explore the beautiful Copenhagen airport. It was late—like around midnight—arrival, so I was in a rush to check-in—didn't want it to take hours to get to the accommodation place. On the way to exit it was obvious that the airport is very comfortable for a long wait.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0584.jpg'])
 
@@ -71,7 +71,7 @@
 @ru
   <p>Сужение проезжей части у пешеходного перехода.</p>
 @en
-  <p>Roadway is narrowing right before the pedestrian cross.</p>
+  <p>The roadway is narrowing right before the pedestrian cross.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0593.jpg'])
 
@@ -106,7 +106,7 @@
 @ru
   <p>Солнечные панели на крыше, закрывающей мусорки.</p>
 @en
-  <p>Solar panel is covering waste containers.</p>
+  <p>The solar panel is covering waste containers.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0600.jpg'])
 
@@ -135,7 +135,7 @@
 @ru
   <p>За двойной бутерброд с ветчиной и помидором + стаканом апельсинового сока в кафе зарядили 1&thinsp;500 ₽. Вот такая проба обеденного меню. Стало ясно, что дальше придется в этом городе <s>выживать</s> ходить в макдак, если не хочется остаться без штанов.</p>
 @en
-  <p>I asked myself "why do we so poor in Russia?" when I got a check. Yeah, average salary is about 3&thinsp;000 DKK back home.</p>
+  <p>I asked myself "why do we so poor in Russia?" when I got a check. Yeah, the average salary is about 3&thinsp;000 DKK back home.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0607.jpg'])
 
@@ -206,7 +206,7 @@
 @ru
   <p><a class="link" href="http://www.carrier.com/container-refrigeration/en/worldwide/products/Container-Units/PrimeLINE/">Система охлаждения</a> для контейнеров. Не спрашивайте как нашлась эта ссылка.</p>
 @en
-  <p><a class="link" href="http://www.carrier.com/container-refrigeration/en/worldwide/products/Container-Units/PrimeLINE/">Cooling system</a> of the container. Don't ask me how that link was found.</p>
+  <p><a class="link" href="http://www.carrier.com/container-refrigeration/en/worldwide/products/Container-Units/PrimeLINE/">The cooling system</a> of the container. Don't ask me how that link was found.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0647.jpg'])
 
@@ -220,7 +220,7 @@
 @ru
   <p>Только осторожно и не в воду, как этот автомобиль. Знакомый по книжкам с детства дорожный знак встретился впервые именно в Копенгагене.</p>
 @en
-  <p>But let's go carefully, not like this car. It reminds me road signs from the books of my childhood.</p>
+  <p>But let's go carefully, not like this car. It reminds me of road signs from the books of my childhood.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0649.jpg'])
 
@@ -241,7 +241,7 @@
 @ru
   <p>Закругленная форма опоры у знака. Совсем крохотные стрелки направления. Велодорожки размечены даже пустынном портовом районе. И люди действительно катаются.</p>
 @en
-  <p>Pipe goes around the sign at the top. Direction arrow is really tiny. Cycle lanes are marked even at deserted/industrial area near the port.</p>
+  <p>The pipe goes around the sign at the top. Direction arrow is really tiny. Cycle lanes are marked even at deserted/industrial area near the port.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0654.jpg'])
 
@@ -304,7 +304,7 @@
 @ru
   <p>Хитрой формы дом.</p>
 @en
-  <p>Building has unusual shapes.</p>
+  <p>The building has unusual shapes.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0678.jpg'])
 
@@ -332,7 +332,7 @@
 @ru
   <p>Велосипед можно перевезти в поезде.</p>
 @en
-  <p>You can take a bike on train with you.</p>
+  <p>You can take a bike on the train with you.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0695.jpg'])
 
@@ -405,7 +405,7 @@
 @ru
   <p>Часто встречаются электронные ценники на товары. Не надо перепечатывать.</p>
 @en
-  <p>Electronic price tags are common. Less things to reprint.</p>
+  <p>Electronic price tags are common. Fewer things to reprint.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0891.jpg'])
 
@@ -529,7 +529,7 @@
 @ru
   <p>С лебедем выбрались на фотосессию.</p>
 @en
-  <p>Went out with a swan to do a photo shoot. Last pic is my favorite.</p>
+  <p>Went out with a swan to do a photo shoot. The last pic is my favorite one.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0763.jpg',
@@ -706,7 +706,7 @@
 @ru
   <p>Фонтан по нраву собаке.</p>
 @en
-  <p>Dog really likes the fountain.</p>
+  <p>The dog really likes the fountain.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0880.jpg'])
 
@@ -748,14 +748,14 @@
 @ru
   <p>Часть проезжей части перекрыли для ремонта. Но по ней проходит велодорожка. Перекрытием дело не закончилось — еще поставили знак велосипедистам заезжать на тротуар и продолжать движение по нему вдоль ремонтируемого участка. Особого внимания заслуживает прилегающий к бордюру кусок асфальта, чтобы среда оставалась безбарьерной. Ведь по велодорожкам ездят не только на велосипедисты, но и инвалиды. Разумеется, в конце огражденного участка сделан такой же заботливый съезд обратно.</p>
 @en
-  <p>Part of the cycle lane is closed for some repair work. But it's not the end of the story, because there is also a road sign here asking cyclists to shift to the side walk. Well, that's not the thing you probably gonna see in Russia. Alright, we don't have many cycle lanes too. But a really wonderful thing here is a tiny piece of asphalt, connecting the cycle lane with the side walk, so it's still a barrier-free environment. Such care! We are many steps behind indeed.</p>
+  <p>Part of the cycle lane is closed for some repair work. But it's not the end of the story, because there is also a road sign here asking cyclists to shift to the sidewalk. Well, that's not the thing you probably gonna see in Russia. Alright, we don't have many cycle lanes too. But a really wonderful thing here is a tiny piece of asphalt, connecting the cycle lane with the sidewalk, so it's still a barrier-free environment. Such care! We are many steps behind indeed.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0906.jpg'])
 
 @ru
   <p>Что характерного есть в Копенгагене? Кирпичи.</p>
 @en
-  <p>What is the one of the main attributes of Copenhagen? Bricks.</p>
+  <p>What is one of the main attributes of Copenhagen? Bricks.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0909.jpg',
@@ -766,7 +766,7 @@
 @ru
   <p>И велосипеды. Много велосипедов. Около 40% населения страны на них передвигается.</p>
 @en
-  <p>And bicycles. Lots of bicycles. Lots of like 40% of population of Denmark is using them.</p>
+  <p>And bicycles. Lots of bicycles. Lots of like 40% of the population of Denmark uses them.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0610.jpg',
@@ -803,7 +803,7 @@
 @ru
   <p>Парк? Нет, кладбище. Но используется как парк: люди отдыхают, устраивают пикники, загорают и просто гуляют. А что, так можно было?</p>
 @en
-  <p>Park? No, cemetery. But it's used as a park: people rest, go on a picnic, sunbathe or just stroll. Wait, what? It was possible to use it this way?</p>
+  <p>Park? No, cemetery. But it's used as a park: people rest, go on a picnic, sunbathe or just stroll. Wait, what? Was it possible to use it this way?</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0922.jpg',
@@ -822,7 +822,7 @@
 @ru
   <p>Подземный переход закрыли. Ура! Знак еще можно убрать.</p>
 @en
-  <p>Underpass is closed. Yay! Its road sign is redundant now.</p>
+  <p>The underpass is closed. Yay! Its road sign is redundant now.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0942.jpg'])
 
@@ -1006,35 +1006,35 @@
 @ru
   <p>При наличии транспортной карты надо делать чек-ин и чек-аут у подобных терминалов. Карты бывают персональные (для местных) и обезличенные. Проезд по карте вдвое дешевле одноразовых билетов, но у ее обезличенного варианта высокая минимальная сумма пополнения, поэтому туристам она едва ли выгодна. Так что будьте добры готовить минимум 24 кроны (≈240 ₽) на одну поездку.</p>
 @en
-  <p>Gates to check-in and check-out with Rejsekort card at the metro station. Card can be personal (for locals) or anonymous. Single ride with a card is half the price of a paper ticket. Huge deal? Not for tourists. You have to charge anonymous card with a lot of money in order to start using it. So forget it and get ready to pay 24 DKK for each ticket.</p>
+  <p>Gates to check-in and check-out with Rejsekort card at the metro station. The card can be personal (for locals) or anonymous. Single ride with a card is half the price of a paper ticket. Huge deal? Not for tourists. You have to charge an anonymous card with a lot of money in order to start using it. So forget it and get ready to pay 24 DKK for each ticket.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1016.jpg'])
 
 @ru
   <p>Бумажный билет можно купить в терминалах на станциях метро и у водителя автобуса за наличные. Вход в автобус только через переднюю дверь. Минимум нужно оплатить две зоны. Для поездки из центра в аэропорт и наоборот понадобится билет на три зоны. Ездить и делать пересадки можно около полутора часов, дальше понадобится новый билет. В автобусе сдачу с покупки выдает автомат, нужно самому открывать отсек и забирать монеты.</p>
 @en
-  <p>Ticket can be bought from terminal at the stations or from a bus driver. Entrance to the bus is only through its front door. At least two zones ticket has to be bought. You need three zones ticket to get to/from the airport. Ticket is valid for about 90 minutes, there are unlimited transfers within this period. You have to collect the change from the machine by yourself when you pay to the driver with cash.</p>
+  <p>Ticket can be bought from the terminal at the stations or from a bus driver. Entrance to the bus is only through its front door. At least two zones ticket has to be bought. You need three zones ticket to get to/from the airport. Ticket is valid for about 90 minutes, there are unlimited transfers within this period. You have to collect the change from the machine by yourself when you pay to the driver with cash.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1013.jpg'])
 
 @ru
   <p>Красный цвет и буква А у маршрута 8А означают, что он проложен по самому центру и ходит наиболее часто. Во время посадки и высадки пассажиры перекрывают велодорожку.</p>
 @en
-  <p>Route 8A has red color and A letter. It means that it has very short interval and goes through the heart of Copenhagen. In other words, it's central. People usually stop bicycle traffic while boarding and disembarking.</p>
+  <p>Route 8A has red color and A letter. It means that it has a very short interval and goes through the heart of Copenhagen. In other words, it's central. People usually stop bicycle traffic while boarding and disembarking.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0596.jpg'])
 
 @ru
   <p>Оранжевый цвет для обычных маршрутов.</p>
 @en
-  <p>Orange color is for regular—less central—routes. Interval is also longer.</p>
+  <p>The orange color is for regular—less central—routes. Interval is also longer.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0659.jpg'])
 
 @ru
   <p>Синий цвет и буква S для маршрутов с меньшим количеством остановок. Еще бывает серый цвет и буква N для ночных маршрутов.</p>
 @en
-  <p>Blue color and S letter are for routes with less stops. There are also gray color and N letter for night routes.</p>
+  <p>Blue color and S letter are for routes with fewer stops. There are also gray color and N letter for night routes.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0854.jpg'])
 
@@ -1055,14 +1055,14 @@
 @ru
   <p>На экране в салоне показывается маршрут, транспортная зона и следующая остановка. Вместе с рекламой чередуется расписание транспорта будущих остановок для удобства осуществления пересадок.</p>
 @en
-  <p>There is a route number on the screen, fare zone and the next stop. Advertisement take turns with schedule of the future stops, which makes transfers more convenient.</p>
+  <p>There is a route number on the screen, fare zone, and the next stop. Advertisement takes turns with the schedule of the future stops, which makes transfers more convenient.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1188.jpg'])
 
 @ru
   <p>Может забить и не платить? Товарищи вроде этого лысого дядьки регулярно проверяют билеты. За четыре поездки на метро наличие билета у меня проверили трижды. Для сравнения — в <a class="link" href="countries/czech-republic">Чехии</a> не проверили ни разу за 3 визита в страну.</p>
 @en
-  <p>What about going without a ticket? Folks like this one won't like it. I was checked three times during four rides on metro. By the way, I was checked zero times in <a class="link" href="countries/czech-republic">Czechia</a> during my all 3 trips.</p>
+  <p>What about going without a ticket? Folks like this one won't like it. I was checked three times during four rides on the metro. By the way, I was checked zero times in <a class="link" href="countries/czech-republic">Czechia</a> during my all 3 trips.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1179.jpg'])
 
@@ -1139,28 +1139,28 @@
 @ru
   <p>На снимке в Википедии на этой станции первое время не было ограждений. Теперь есть.</p>
 @en
-  <p>I came across a photo of this station on internet. There were no guard rail here years back. Now there is.</p>
+  <p>I came across a photo of this station on the internet. There was no guard rail here years back. Now there is.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1120.jpg'])
 
 @ru
   <p>Ограждения открываются одновременно с дверьми поезда.</p>
 @en
-  <p>Station's and train's doors are opened simultaneously.</p>
+  <p>Station's and the train's doors are opened simultaneously.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1121.jpg'])
 
 @ru
   <p>Машинистов действительно нет — спереди пассажиры. Интересно ощущать как состав поддает газу во время движения. Невольно возникают вопросы: «Как поезд понимает с какой скоростью ему ехать? Эталонно человек проехался? Подкручивают параметры на ходу?». Скорее всего подкручивают, а то и как-то управляют удаленно, ведь интервал движения в разное время суток разный, проводится обслуживание рельс, плюс всегда возможны аварии и прочие ситуации, ведущие к задержкам движения.</p>
 @en
-  <p>There are no drivers indeed. There are passengers in the front row. It's interesting to feel how train accelerates. You ask yourself "why does it keep this particular speed here? Does it just do what man did before? Like following a standard? Does it adjust to what happens around?" Most likely it does adjust, because interval is different throughout a day. There should be remote control as well, because there might be failures and emergencies—therefore delays.</p>
+  <p>There are no drivers indeed. There are passengers in the front row. It's interesting to feel how the train accelerates. You ask yourself "why does it keep this particular speed here? Does it just do what man did before? Like following a standard? Does it adjust to what happens around?" Most likely it does adjust because the interval is different throughout a day. There should be remote control as well because there might be failures and emergencies—therefore delays.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1176.jpg'])
 
 @ru
   <p>До поездки стоял вопрос где и сколько крон закупить, чтобы хватило на мелкие расходы на месте. На удивление банк ВТБ выручил и в этот раз — японские йены в Калуге у них тоже были. Оставалось решить сколько брать крон. Посчитал, что двести будет достаточно. В кассе банка мой выбор встретили недоуменным взглядом. Еще бы! Это словно 200 рублей пойти снять со счета.</p>
 @en
-  <p>Before the trip I thought how much DKK I need to have for small purchases. The bank across the street from my home rescued me once again—it had Japanese yens earlier this year as well. So the question remained "how much to buy?" Well, I assumed 200 DKK would be enough. If you could only see how cashier looked at me. Yeah! It was like withdrawal or 200 RUB—barely enough money for a lunch in Russia.</p>
+  <p>Before the trip, I thought how much DKK I need to have for small purchases. The bank across the street from my home rescued me once again—it had Japanese yens earlier this year as well. So the question remained "how much to buy?" Well, I assumed 200 DKK would be enough. If you could only see how the cashier looked at me. Yeah! It was like withdrawal or 200 RUB—barely enough money for a lunch in Russia.</p>
 @endru
 
 @ru
@@ -1173,7 +1173,7 @@
 @ru
   <p>Они же с обратной стороны.</p>
 @en
-  <p>Back side.</p>
+  <p>Backside.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1194.jpg'])
 
@@ -1187,7 +1187,7 @@
 @ru
   <p>В качестве эксперимента был выбран европейский лоукостер РайанЭйр. Россиян (если точнее — неевропейцев) они требуют пройти процедуру проверки визы на стойке регистрации. Обычно регистрация заканчивается за 40 минут до вылета, но тут всего лишь проверка и печать на листе, думал я. Впрочем, так и оказалось. Во время получения штампа до вылета оставалось менее 35 минут. Выход на посадку был в самом дальнем углу аэропорта, идти до него минут 15–20. Впрочем, посадка только начиналась, когда я добрался до точки назначения.</p>
 @en
-  <p>So it was my first flight with RyanAir. Non-European citizen needs to do a visa check at the check-in desk. Usually desks close 40 minutes before the flight. I thought it's just a check and a stamp on the paper sheet, so no worries. Well, it really was that simple. 35 minutes to go. Gate was the farthest, like 15–20 minutes walk. Boarding had just started when I got there.</p>
+  <p>So it was my first flight with RyanAir. Non-European citizen needs to do a visa check at the check-in desk. Usually, desks close 40 minutes before the flight. I thought it's just a check and a stamp on the paper sheet, so no worries. Well, it really was that simple. 35 minutes to go. Gate was the farthest, like 15–20 minutes walk. Boarding had just started when I got there.</p>
 @endru
 
 <a id="no-bus"></a>
@@ -1221,14 +1221,14 @@
 @ru
   <p>Мост между Данией и Швецией (город Мальмё).</p>
 @en
-  <p>Bridge between Denmark and Sweden (city is called Malmö).</p>
+  <p>The bridge between Denmark and Sweden (the city is called Malmö).</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1211.jpg'])
 
 @ru
   <p>Пролетаем над Швецией. До взлета была проблема с распределением веса в самолете — хвост перевешивал. Конечно, туда ведь автоматически сажает система, если не платить за выбор места. Бортпроводники попросили бесплатно пересесть к носу — до 12 ряда.</p>
 @en
-  <p>Flying over Sweden. There was a weight ditribution problem inside the plane, the rear half was overweight. Yeah, that's where you end up if you don't pay for the seat selection. We were asked by the cabin crew to take any seat in the first twelve rows.</p>
+  <p>Flying over Sweden. There was a weight distribution problem inside the plane, the rear half was overweight. Yeah, that's where you end up if you don't pay for the seat selection. We were asked by the cabin crew to take any seat in the first twelve rows.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1213.jpg'])
 

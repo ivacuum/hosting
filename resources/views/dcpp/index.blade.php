@@ -26,7 +26,7 @@
       <p>Говоря проще, вы сможете «увидеть» и скачать файлы, открытые для доступа другим абонентом сети, а также, открыв доступ к своим файлам, позволить скачать их у вас.</p>
     @en
       <h2>What is P2P network?</h2>
-      <p>Peer-to-peer network allows users to share files with other users. All users connect to the special computer called hub that routes search requests/results and facilitates clients to connect to each other. All file transfers are being made directly between clients, not through the hub.</p>
+      <p>A peer-to-peer network allows users to share files with other users. All users connect to a special computer called a hub that routes search requests/results and facilitates clients to connect to each other. All file transfers are being made directly between clients, not through the hub.</p>
     @endru
 
     @ru
@@ -43,12 +43,12 @@
       </ul>
     @en
       <h2 class="mt-5">How does it work?</h2>
-      <p>First of all you need DC++ client software. Then you can connect to the hub, search for the files you need and put them into download queue. You may also view all the files single user shared with everyone.</p>
+      <p>First of all, you need a DC++ client software. Then, you can connect to the hub, search for the files you need and put them into a download queue. You may also view all the files a single user shared with everyone.</p>
       <ul>
-        <li>DC++ client software will download files</li>
-        <li>if the file is large, it will split it into pieces and download multiple computers on the network</li>
-        <li>it will find better user to download from if the speed is too low</li>
-        <li>it will perform file integrity check while it is being downloaded</li>
+        <li>The DC++ client software will download files.</li>
+        <li>If the file is large, it will split it into pieces and download from multiple computers on the network.</li>
+        <li>It will find a better user to download from if the speed is too low.</li>
+        <li>It will perform a file integrity check while it is being downloaded.</li>
       </ul>
     @endru
 
@@ -64,11 +64,11 @@
     @en
       <h2 class="mt-5">Using DC++ is</h2>
       <ul>
-        <li><strong>Easy</strong>: you don't even need to remember computers ip's or scan network for the files. Client software will do it for you.</li>
-        <li><strong>Fast</strong>: files are being splitted into pieces and downloaded from multiple computers.</li>
+        <li><strong>Easy</strong>: you don't even need to remember computer IPs or scan the network for the files. The client software will do it for you.</li>
+        <li><strong>Fast</strong>: files are being split into pieces and downloaded from multiple computers.</li>
         <li><strong>Reliably</strong>: pieces are checked when downloaded.</li>
         <li><strong>Free</strong>: access to terabytes of data.</li>
-        <li><strong>Universally</strong>: it is available on Windows, Linux and macOS.</li>
+        <li><strong>Universally</strong>: it is available for Windows, Linux, and macOS.</li>
       </ul>
     @endru
   </div>
