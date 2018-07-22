@@ -28,7 +28,7 @@
       <p>Usually, it is just enough to click a link to connect to a hub. However, if it didn't work for you, you can manually copy-paste the address into your DC++ client.</p>
     @endru
 
-    <h3 class="mt-5">{{ trans('issues.create') }}</h3>
+    <div class="h3 mt-5">{{ trans('issues.create') }}</div>
     @ru
       <p>Знаете хаб, достойный добавления в список? Пришлите его нам, чтобы мы пополнили страницу.</p>
     @en
@@ -36,7 +36,7 @@
     @endru
     <feedback-form
       email="{{ Auth::user()->email ?? '' }}"
-      title="DC++ хабы"
+      title="DC++ Hubs"
       action="{{ path('Issues@store') }}"
       hide-name
       hide-title

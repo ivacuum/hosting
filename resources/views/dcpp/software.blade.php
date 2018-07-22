@@ -58,7 +58,7 @@
 
   <section class="bg-light border-top border-bottom my-0 py-5">
     <div class="container">
-      <h2 class="mb-4">{{ trans('dcpp.hubs') }}</h2>
+      <h2>{{ trans('dcpp.hubs') }}</h2>
       @ru
         <p>Ищите куда подключиться для обмена файлами? Ознакомьтесь с нашими рекомендациями.</p>
       @en
@@ -79,7 +79,7 @@
   @yield('software_features')
 
   @if (sizeof($software) > 1 || !empty($developer_site))
-    <section class="my-0 py-5">
+    <section class="border-bottom my-0 py-5">
       <div class="container">
         <h2 class="mb-4">{{ trans('dcpp.links') }}</h2>
         <div class="row">
@@ -111,5 +111,26 @@
       </div>
     </section>
   @endif
+
+  <section class="bg-light my-0 py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="h3">{{ trans('issues.create') }}</div>
+          @ru
+            <p>Поделитесь своими знаниями или задайте вопрос. Мы постараемся обработать информацию и дополнить эту страницу новыми материалами.</p>
+          @en
+            <p>Use the form below to ask a question or just to tell us how to make this page better.</p>
+          @endru
+          <feedback-form
+            email="{{ Auth::user()->email ?? '' }}"
+            title="DC++ Client"
+            action="{{ path('Issues@store') }}"
+            hide-title
+          ></feedback-form>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 @endsection

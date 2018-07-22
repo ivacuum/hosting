@@ -265,4 +265,21 @@
 
 <div>Ваш жесткий диск размечен в файловой системе FAT32, вам нужно переформатировать его в систему NTFS.</div>
 @endcomponent
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="h3 mt-5">{{ trans('issues.create') }}</div>
+    @ru
+      <p>Поделитесь своими знаниями или задайте вопрос. Мы постараемся обработать информацию и дополнить эту страницу новыми материалами.</p>
+    @en
+      <p>Use the form below to ask a question or just to tell us how to make this page better.</p>
+    @endru
+    <feedback-form
+      email="{{ Auth::user()->email ?? '' }}"
+      title="DC++ FAQ"
+      action="{{ path('Issues@store') }}"
+      hide-title
+    ></feedback-form>
+  </div>
+</div>
 @endsection
