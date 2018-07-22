@@ -346,7 +346,7 @@
 @ru
   <p>Фрукты в супермаркете.</p>
 @en
-  <p>Fruits in supermarket.</p>
+  <p>Fruits in a supermarket.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3095.jpg',
@@ -368,7 +368,7 @@
   <p>Another bonus. The border guard in Bali is looking my immigration card:</p>
 @endru
 <ul class="list-dialog">
-  <li>CTO. Chief Technical..</li>
+  <li>CTO. Chief Technical...</li>
   <li>Officer, yeah</li>
   <li>Where? Gazprom?</li>
 </ul>

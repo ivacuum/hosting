@@ -37,7 +37,7 @@
 @ru
   <p>Автобусная остановка. Под маршрутами кругляши под иконку. Чем иконка левее, тем ближе автобус. 207-й еще далеко, 202-й уже на подходе.</p>
 @en
-  <p>Bus stop. Circle icons under routes tell how far the bus is from here. 207 is few stops away, 202 is almost here.</p>
+  <p>Bus stop. Circle icons under routes tell how far the bus is from here. 207 is a few stops away, 202 is almost here.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5449.jpg'])
 
@@ -65,7 +65,7 @@
 @ru
   <p>Рядом с каждым сиденьем имеется кнопка стоп. 25 сидений? Будет 25 кнопок. Если ее не нажать, то водитель может пропустить остановку. Вставать и выходить просят только после полной остановки транспорта и открытия дверей.</p>
 @en
-  <p>There is a stop button near each seat. Bus has 25 seats? There would be 25 buttons then. Driver could skip a stop if no button was pressed. Passengers are asked to stand up and get off only after full stop is made and doors are opened.</p>
+  <p>There is a stop button near each seat. The bus has 25 seats? There would be 25 buttons then. The driver could skip a stop if no button was pressed. Passengers are asked to stand up and get off only after full stop is made and doors are opened.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5774.jpg'])
 
@@ -100,7 +100,7 @@
 @ru
   <p>Велопарковка перед входом в здание. Разметка для слепых — ее вообще немыслимое количество.</p>
 @en
-  <p>Bicycle parking near the entrance to the building. Enormous amount of tactile paving throughout the country.</p>
+  <p>Bicycle parking near the entrance to the building. An enormous amount of tactile paving throughout the country.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5488.jpg'])
 
@@ -114,14 +114,14 @@
 @ru
   <p>Временно закрытый переулок. Товарищи с флажками все время присутствуют при каких-либо транспортных, ремонтных или строительных работах. Регулируют движение.</p>
 @en
-  <p>Temporarily closed side street. Man with flag is always in front of transport, repair or construction work mostly for traffic control and extra caution.</p>
+  <p>Temporarily closed side street. A man with a flag is always in front of transport, repair or construction work mostly for traffic control and extra caution.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5491.jpg'])
 
 @ru
   <p>Вход в автобус через среднюю дверь, выход через переднюю. Если есть транспортная карта, то достаточно приложить ее на входе и выходе — сумма рассчитается и спишется автоматически. При отсутствии карты надо взять на входе билет, а на выходе билет вместе с деньгами за проезд кинуть в автомат около водителя (потому и выход через переднюю дверь). Сдачу автомат не дает, поэтому рядом же можно разменять деньги на мелочь. Как узнать стоимость проезда? Либо в приложении, которое построит вам маршрут, либо смотреть на табло стоимость напротив места посадки со входного билета. Еще можно купить безлимитный дневной проездной у водителя, который затем достаточно просто показывать другим водителям при выходе.</p>
 @en
-  <p>You need middle door to get on and front door to get off the bus. If you have card like Suica or Pasmo it is enough to touch terminal inside, so minimum fare calculates automatically. If you have no card you need to take a ticket when you get on and drop it with coins into a box near the driver when you exit. That's why you need to exit through the front door. No change is given when you pay, so there is an exchange machine nearby. How do you know how much to pay? Well, navigation app can tell you when you plan the route. Otherwise there is a display in the bus with fares under stop names. The farther you go, the more you pay. You can also buy day pass from driver, so you just show it when you get off.</p>
+  <p>You need the middle door to get on and front door to get off the bus. If you have a card like Suica or Pasmo it is enough to touch terminal inside, so minimum fare calculates automatically. If you have no card you need to take a ticket when you get on and drop it with coins into a box near the driver when you exit. That's why you need to exit through the front door. No change is given when you pay, so there is an exchange machine nearby. How do you know how much to pay? Well, a navigation app can tell you when you plan the route. Otherwise, there is a display in the bus with fares under stop names. The farther you go, the more you pay. You can also buy a day pass from the driver, so you just show it when you get off.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5492.jpg'])
 
@@ -313,7 +313,7 @@
 @ru
   <p>Строящийся мост.</p>
 @en
-  <p>Bridge is being constructed.</p>
+  <p>The bridge is being constructed.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5554.jpg'])
 
@@ -338,7 +338,7 @@
 @ru
   <p>На переезде чаще можно встретить людей перед шлагбаумами, нежели автомобили.</p>
 @en
-  <p>You are likely to see pedestrians at level crossing, rather than cars.</p>
+  <p>You are likely to see pedestrians at a level crossing, rather than cars.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5560.jpg'])
 
@@ -381,7 +381,7 @@
 @ru
   <p>Сиденья на остановке спиной к дороге.</p>
 @en
-  <p>Seats with its back to the road at bus stop.</p>
+  <p>Seats with its back to the road at the bus stop.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5567.jpg'])
 
@@ -421,7 +421,7 @@
 @ru
   <p>Школьный двор.</p>
 @en
-  <p>School yard.</p>
+  <p>Schoolyard.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_5574.jpg',
@@ -445,7 +445,7 @@
 @ru
   <p>Кодовый замок перед номером в отеле. Отсчет каждый раз начинается с новой цифры (сейчас с 0), чтобы нельзя было жать те же самые кнопки.</p>
 @en
-  <p>Hotel room has electronic lock with PIN entry. Digits layout is always randomized. Right now it starts from 0. Thus you couldn't memorize someone's sequence.</p>
+  <p>The hotel room has an electronic lock with PIN entry. Digits layout is always randomized. Right now it starts from 0. Thus you couldn't memorize someone's sequence.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5580.jpg'])
 
@@ -480,14 +480,14 @@
 @ru
   <p>Красивое ограждение.</p>
 @en
-  <p>Cute guard rail.</p>
+  <p>Cute guardrail.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5617.jpg'])
 
 @ru
   <p>Ограждение попроще.</p>
 @en
-  <p>Simple guard rail.</p>
+  <p>Simple guardrail.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5616.jpg'])
 
@@ -501,7 +501,7 @@
 @ru
   <p>Зонт чаще всего оставляют на улице. В крайнем случае надевают на него <a class="link" href="tokyo.2017.04.08-10#umbrella-cover">чехол</a>, если надо зайти в здание.</p>
 @en
-  <p>Umbrellas are usually left outside of buildings. Another option is to <a class="link" href="tokyo.2017.04.08-10#umbrella-cover">use a cover</a>, if you need to take your umbrella inside with you.</p>
+  <p>Umbrellas are usually left outside of buildings. Another option is to <a class="link" href="tokyo.2017.04.08-10#umbrella-cover">use a cover</a> if you need to take your umbrella inside with you.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6406.jpg'])
 
@@ -699,7 +699,7 @@
 @ru
   <p>В супермаркете. Немного видно интерфейс кассира. Ручной сканер они прикладывают к товару вплотную, в отличие от нашего способа поднесения товара к статичному сканеру. При оплате наличными касса сама выдает кассиру сдачу, ему остается только передать ее покупателю. Двумя руками и с небольшим поклоном. При покупке алкоголя надо подтвердить касанием экрана, что тебе исполнилось 20 лет.</p>
 @en
-  <p>In the supermarket. Little bit of cashier's UI can be seen. Cashbox gives the change to cashier automatically when you pay in cash. He just needs to give it back to you with two hands and a slight bow. You need to confirm you are 20+ with a touch of a screen if you buy alcohol.</p>
+  <p>In the supermarket. A little bit of cashier's UI can be seen. Cashbox gives the change to cashier automatically when you pay in cash. He just needs to give it back to you with two hands and a slight bow. You need to confirm you are 20+ with a touch of a screen if you buy alcohol.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6610.jpg',
@@ -709,7 +709,7 @@
 @ru
   <p>Немного продаваемых товаров. Фруктов мало, и они очень дорогие: один банан около 90 ₽, одно яблоко 150 ₽. Можно смело брать йогурты, желе, суши, какой-нибудь рис с рыбой и тому подобное, так как на кассе выдадут бесплатные приборы согласно вашим покупкам. Почему у нас такого нет? Сколько раз отсутствие приборов останавливало от покупки йогурта! Еще горячие и холодные покупки разложат по разным пакетам. Горячие? Да, помимо изначально теплых товаров еду можно попросить разогреть на кассе, либо сделать это самому — в зале бывают микроволновки. Можно даже автомат с кипятком найти для лапши.</p>
 @en
-  <p>Some food. Fruits are expensive—more than $1 for one apple. It's a joy to buy yogurt, jelly, sushi, rice with fish, etc, because cashier will give you spoon and chopsticks for free according to your purchase. Why don't we have such a thing? How many times lack of spoon has stopped me from buying yogurt? Countless times! Cashier also puts hot and cold goods in different bags. Hot? Yeah, you can buy warm food or ask cashier to warm it up. Sometimes there are microwave ovens and boiled water for noodles in the shop.</p>
+  <p>Some food. Fruits are expensive—more than $1 for one apple. It's a joy to buy yogurt, jelly, sushi, rice with fish, etc because the cashier will give you a spoon and chopsticks for free according to your purchase. Why don't we have such a thing? How many times has a lack of spoon stopped me from buying yogurt? Countless times! Cashier also puts hot and cold goods in different bags. Hot? Yeah, you can buy warm food or ask the cashier to warm it up. Sometimes there are microwave ovens and boiled water for noodles in the shop.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6612.jpg',
@@ -806,7 +806,7 @@
 @ru
   <p>Навигация на станции. Поначалу казалось, что путь 0 в описании маршрута — это ошибка, и придется искать информацию на табло. Но нет, нулевой путь действительно есть прямо по курсу. Поезд оттуда доставит в Канадзаву.</p>
 @en
-  <p>Navigation at the station. At first I thought platform 0 on my ticket is a mistake and I would need to look my train up on the information board. But no, there is platform 0. It's Kanazawa direction.</p>
+  <p>Navigation at the station. At first, I thought platform 0 on my ticket is a mistake and I would need to look my train up on the information board. But no, there is platform 0. It's Kanazawa direction.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6673.jpg'])
 @endsection

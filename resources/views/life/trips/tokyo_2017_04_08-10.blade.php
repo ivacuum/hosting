@@ -27,33 +27,33 @@
 @ru
   <p>Перелет около 10 часов, за это время кормят дважды. Но эти два раза так растянуты, что ощущение, что ешь чуть ли не весь полет. Поспать дольше пары часов не удалось. По предыдущему положительному опыту было вновь заказано кошерное питание. И здесь оно не подкачало. Однако, удивило, что бортпроводники спрашивали можно ли им самим разогреть кошерную пищу или я схожу и проконтролирую процесс. А также просили вскрыть упаковку с едой и убедиться, что там все ОК, что никаких неожиданностей среди блюд. Ага, понимать бы еще что там внутри!</p>
 @en
-  <p>Flight is about 10 hours long, you get two meals during it. But meals are so big, that it feels like the only thing you do the entire flight is eat. I couldn't sleep for more than a couple of hours. Kosher meal was ordered given the previous positive experience. And it was good once again. However, it was surprising that flight attendant asked if she could warm up my kosher meal by herself or I would go with her and control the process. I was also asked to open the meal box and make sure everything is OK inside. Yeah, I wish I knew what's inside!</p>
+  <p>Flight is about 10 hours long, you get two meals during it. But meals are so big, that it feels like the only thing you do the entire flight is eat. I couldn't sleep for more than a couple of hours. A kosher meal was ordered given the previous positive experience. And it was good once again. However, it was surprising that the flight attendant asked if she could warm up my kosher meal by herself or I would go with her and control the process. I was also asked to open the meal box and make sure everything is OK inside. Yeah, I wish I knew what's inside!</p>
 @endru
 
 @ru
   <p>За час-два до посадки всю еду повторили. Это снова, грубо говоря, пять блюд.</p>
 @en
-  <p>The second meal was given few hours before landing. It's roughly five courses once again.</p>
+  <p>The second meal was given a few hours before landing. It's roughly five courses once again.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3850.jpg'])
 
 @ru
   <p>На табло пишут, что перелет в Токио, хотя на самом деле он в город Нарита к востоку от столицы. До Токио еще ехать на общественном транспорте. Уже тут уйма вариантов: автобус или поезд, поезд JR или поезд Keisei, поезд-экспресс или электричка.</p>
 @en
-  <p>Display reports the flight is to Tokyo, but in fact it is to Narita—city to the east of the capital. There are lots of options how to get to Tokyo by public transport: bus or train, JR train or Keisei train, express train or regular train.</p>
+  <p>Display reports the flight is to Tokyo, but in fact, it is to Narita—city to the east of the capital. There are lots of options on how to get to Tokyo by public transport: bus or train, JR train or Keisei train, express train or regular train.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3852.jpg'])
 
 @ru
   <p>По счастливому стечению обстоятельств с начала 2017 года стало возможным подавать на туристическую визу самостоятельно. Если это делать в консульстве, то процедура бесплатная. Разве что нужно самому привозить и забирать паспорт. Если подавать через Пони Экспресс, то можно заказать доставку домой.</p>
 @en
-  <p>Russians need to get visa in advance. Prior to 2017 it was not possible without Japanese travel agency. Fortunately, since the beginning of 2017 we can apply for a visa by ourselves. If you apply in Japanese consulate in Moscow, visa costs you nothing. The only caveat is that you can't get your passport delivered to your home then.</p>
+  <p>Russians need to get a visa in advance. Prior to 2017, it was not possible without a Japanese travel agency. Fortunately, since the beginning of 2017, we can apply for a visa by ourselves. If you apply at the Japanese consulate in Moscow, visa costs you nothing. The only caveat is that you can't get your passport delivered to your home then.</p>
 @endru
 
 @ru
   <p>Набор документов стал повторять таковой для Шенгенской визы, но с парой отличий: дополнение в виде плана поездки и необязательность наличия медицинской страховки. В таблице ниже пример двух дней плана поездки. Да, заполнять все документы нужно на английском.</p>
 @en
-  <p>The application is now almost the same as for Schengen visa, but with a couple of differences: schedule of stay is mandatory, and medical insurance is optional. You can find an example of two days of schedule of stay in a table below.</p>
+  <p>The application is now almost the same as for Schengen visa, but with a couple of differences: the schedule of stay is mandatory, and medical insurance is optional. You can find an example of two days of schedule of stay in a table below.</p>
 @endru
 <table class="table-stats mb-3">
   <thead>
@@ -95,7 +95,7 @@
 @ru
   <p>Добро пожаловать в Японию — страну восходящего солнца! И рано заходящего. Серьезно — в семь вечера темно круглый год.</p>
 @en
-  <p>Welcome to Japan—the land of the rising sun. And early setting sun. Seriously, it's dark at 7PM all year round.</p>
+  <p>Welcome to Japan—the land of the rising sun. And early setting sun. Seriously, it's dark at 7 PM all year round.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3856.jpg'])
 
@@ -136,7 +136,7 @@
 @ru
   <p>Неважно на каком поезде доберетесь и по какому маршруту. Важно лишь где вы зашли и на какой станции вышли — между ними будет подсчитан оптимальный маршрут и списана соответствующая дальности сумма. Если недостаточно денег на транспортной карте или билете, то можно доплатить разницу сотруднику на выходе. Если денег совсем нет (забыли), то можно вернуться на исходную станцию и выйти там словно никуда и не ездили. Также можно пополнить транспортную карту вплоть до ¥20&thinsp;000 в терминале на станции. Продуманы, что тут скажешь. У пассажира есть право на ошибку, и это радует.</p>
 @en
-  <p>In the end it doesn't even matter what train and what route you would take. There are two things that make up the cost of your ride: entrance and exit points. So you gonna be charged by the most optimal and the shortest route. If you have not enough money on your ticket or transport card, you can pay the difference to a man at the exit point. If you have no money at all (left a wallet at home, for example), you can ride back to the entrance point and exit like you didn't go anywhere. By the way transport card can be funded up to ¥20&thinsp;000 right there at the station. Geniuses, what else can be said? Passenger has got a right to be wrong.</p>
+  <p>In the end, it doesn't even matter what train and what route you would take. There are two things that make up the cost of your ride: entrance and exit points. So you gonna be charged by the most optimal and the shortest route. If you have not enough money on your ticket or transport card, you can pay the difference to a man at the exit point. If you have no money at all (left a wallet at home, for example), you can ride back to the entry point and exit like you didn't go anywhere. By the way, transport card can be funded up to ¥20&thinsp;000 right there at the station. Geniuses, what else can be said? Passenger has got a right to be wrong.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3868.jpg'])
 
@@ -157,7 +157,7 @@
 @ru
   <p>Следующая пересадка. На столбе две схемы. На верхней можно заметить, что станции имеют оригинальное название, на латинице, а также простое вида А09. Нижняя схема — метро. Да, веток много. Еще и присутствуют разные ж/д компании. Ехать лучше какой-то одной, тогда будет минимальная стоимость проезда. Потому что один вход и выход. Если переходить между компаниями, то каждый раз это новый вход и выход, соответственно и новая плата. Если строить маршрут через тот же Гугл мэпс, то он предложит как самый дешевый вариант, так и самый быстрый.</p>
 @en
-  <p>The next change. There are two schemes on the column. The stations on the upper one have hieroglyphic, latin and symbolic names. The lower one is metro map. Yeah, there are lots of lines. There are different railway companies as well. It is cheaper to pick just one for a single ride, because it's one entrance and one exit this way. You are charged when you change railway companies. When you use apps like Apple or Google maps for directions, they suggest cheapest and fastest options mixed, so double-check.</p>
+  <p>The next change. There are two schemes on the column. The stations on the upper one have hieroglyphic, latin and symbolic names. The lower one is the metro map. Yeah, there are lots of lines. There are different railway companies as well. It is cheaper to pick just one for a single ride because it's one entrance and one exit this way. You are charged when you change railway companies. When you use apps like Apple or Google maps for directions, they suggest the cheapest and fastest options mixed, so double-check.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3871.jpg'])
 
@@ -178,7 +178,7 @@
 @ru
   <p>На столбе название станции. Можно попрактиковаться в <a class="link" href="/japanese">иероглифах</a>.</p>
 @en
-  <p>Name of the station on the column. It is time practice <a class="link" href="/en/japanese">Japanese</a>.</p>
+  <p>Name of the station on the column. It is time to practice <a class="link" href="/en/japanese">Japanese</a>.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3876.jpg'])
 
@@ -241,7 +241,7 @@
 @ru
   <p>Зебры во все стороны. Можно переходить в любом направлении.</p>
 @en
-  <p>Road can be crossed in any direction.</p>
+  <p>The road can be crossed in any direction.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3889.jpg'])
 
@@ -562,7 +562,7 @@
 @ru
   <p>Во многих составах метро над каждым выходом из вагонов экраны показывают схему движения. Правый экран подловлен на корейском.</p>
 @en
-  <p>There are displays with route in many metro trains right above the exit. Caught right screen while in Korean.</p>
+  <p>There are displays with the route in many metro trains right above the exit. Caught right screen while in Korean.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4085.jpg'])
 
@@ -622,7 +622,7 @@
 @ru
   <p>Чехлы для мокрых зонтов словно презервативы. Не принято капать в помещениях, поэтому либо чехол, либо оставлять зонт снаружи. Где? На парковках для зонтов, конечно же.</p>
 @en
-  <p>Condoms for wet umbrellas. Dripping is not appropriate in buildings, so it's either condom or leaving an umbrella in a stand outside an establishment.</p>
+  <p>Condoms for wet umbrellas. Dripping is not appropriate in buildings, so it's either a condom or leaving an umbrella in a stand outside an establishment.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3999.jpg'])
 
@@ -692,14 +692,14 @@
 @ru
   <p>Почтовые ящики в жилом доме. Почтальоны заходят к ним через отдельный вход и закидывают бумагу сзади.</p>
 @en
-  <p>Mailboxes in residential building. Postman comes to them through a separate entrance and puts the mail from the back.</p>
+  <p>Mailboxes in a residential building. Postman comes to them through a separate entrance and puts the mail from the back.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4051.jpg'])
 
 @ru
   <p>Для вещичек побольше есть камеры хранения. Посылку могут доставить прямо на дом, оставить в камере, а извещение закинуть в почтовый ящик, что вы могли по нему открыть камеру и забрать свою посылку.</p>
 @en
-  <p>There are lockers for big things. So you get the notification to your mailbox with the information how to open the locker with your parcel.</p>
+  <p>There are lockers for big things. So you get the notification to your mailbox with the information on how to open the locker with your parcel.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4052.jpg'])
 
@@ -807,7 +807,7 @@
 @ru
   <p>Как есть в заведении с конвейером суши. Садишься перед конвейером, набираешь понравившихся проезжающих тарелок с едой и ешь. Стоит только встать, так к тебе подбегают с предложением счета. Цена по цвету и оформлению набранных тарелок.</p>
 @en
-  <p>How to eat in a place with rotating belt of sushi.</p>
+  <p>How to eat in a place with a rotating belt of sushi.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4079.jpg'])
 

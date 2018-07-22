@@ -18,7 +18,7 @@
 @ru
   <p>По праздникам улица Кирова на несколько часов становится пешеходной.</p>
 @en
-  <p>During the holidays Kirov street becomes pedestrian street for a few hours.</p>
+  <p>During the holidays Kirov street becomes a pedestrian street for a few hours.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0270.jpg'])
 

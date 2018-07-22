@@ -25,7 +25,7 @@
 @ru
   <p>Около железнодорожной станции. Рекламы на домах, конечно, много. Но она почти не бросается в глаза, когда не можешь ее прочитать.</p>
 @en
-  <p>Near the central station. Lots of advertisement on buildings indeed, but here is the strange thing—eyes don't notice ads if you couldn't read it. Is it sort of built-in ad-block?</p>
+  <p>Near the central station. Lots of advertisement on buildings indeed, but here is the strange thing—eyes don't notice advertisement if you couldn't read it. Is it sort of built-in ad-block?</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4599.jpg'])
 
@@ -53,21 +53,21 @@
 @ru
   <p>Осторожно, олени.</p>
 @en
-  <p>Watch out! Deers.</p>
+  <p>Watch out! Deer.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5202.jpg'])
 
 @ru
   <p>Их тут много, и они свободно ходят по улицам. Под зеленым зонтом рядом с картой продают печеньки для их кормления. Кстати, карты местности на улицах Японии встречаются регулярно.</p>
 @en
-  <p>There are lots of them. They freely move around the city. Person under the green umbrella sells some sort of cookies for deers. By the way, maps are at every turn in Japan.</p>
+  <p>There are lots of them. They freely move around the city. The person under the green umbrella sells some sort of cookies for deer. By the way, maps are at every turn in Japan.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4607.jpg'])
 
 @ru
   <p>Если бы олени могли, то смело покупали бы себе разнообразные напитки в автомате.</p>
 @en
-  <p>If deers could only buy themselves a drink in a vending machine, they would definitely do it.</p>
+  <p>If deer could only buy themselves a drink in a vending machine, they would definitely do it.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5415.jpg'])
 
@@ -91,7 +91,7 @@
 @ru
   <p>Прекрасный сад. Вход платный, как и почти во все остальные парки, сады и замки.</p>
 @en
-  <p>Beautiful garden. There is an entrance fee as in most parks, gardens and castles in Japan.</p>
+  <p>Beautiful garden. There is an entrance fee as in most parks, gardens, and castles in Japan.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_5211.jpg',
@@ -122,7 +122,7 @@
 @ru
   <p>В Наре отличный гигантский парк с разнообразными видами и сооружениями.</p>
 @en
-  <p>There is a beautiful giant park in Nara with various structures and many view points.</p>
+  <p>There is a beautiful giant park in Nara with various structures and many viewpoints.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_5418.jpg',
@@ -142,14 +142,14 @@
 @ru
   <p>Камни застревают в решетке.</p>
 @en
-  <p>Stones stucked in a lattice.</p>
+  <p>Stones stuck in a lattice.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5424.jpg'])
 
 @ru
   <p>Атмосферная туманная картина, да еще и с зеленоватым цветом фонаря.</p>
 @en
-  <p>Atmospheric foggy picture with green-ish lantern.</p>
+  <p>An atmospheric foggy picture with a green-ish lantern.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5427.jpg'])
 

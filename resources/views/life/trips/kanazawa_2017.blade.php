@@ -18,7 +18,7 @@
 @ru
   <p>Короткая остановка. Иероглифы пишут как горизонтально, так и вертикально. Позади видно, что мусор собирается раздельно. Справа по форме узнается прорезь для бумаги, далее для бутылок и банок. Урны в городах попадаются не особо часто. Рядовая ситуация, что полчаса надо носить мусор с собой. А затем встречается урна, но не того типа. Самые распространенные — под бутылки и банки, их можно найти рядом практически с каждым автоматом по продаже напитков. Далее бумага. Реже всего под еду и прочие остатки.</p>
 @en
-  <p>Brief stop. There are horizontal and vertical writings. Wastes are collected separately. It's not so easy to find waste containers in cities. Most likely you gonna carry your wastes for half an hour or so, desperately looking for a place to throw it out. Finally you find a container, but it's not the type of waste you need, so the quest continues. Bottle containers are the most common, there is at least one next to beverage vending machines. Then paper. It felt like containers for food and other wastes are the least common.</p>
+  <p>Brief stop. There are horizontal and vertical writings. Wastes are collected separately. It's not so easy to find waste containers in cities. Most likely you gonna carry your wastes for half an hour or so, desperately looking for a place to throw it out. Finally, you find a container, but it's not the type of waste you need, so the quest continues. Bottle containers are the most common, there is at least one next to beverage vending machines. Then paper. It felt like containers for food and other wastes are the least common.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6689.jpg'])
 
@@ -123,7 +123,7 @@
 @ru
   <p>Чудесной красоты следующий парк. Преимущественно за ним и едут в Канадзаву. В Японии вход почти во все стоящие храмы и парки платный. Иногда попадаются дни, когда вход свободный. В среднем стоимость от ¥400 до ¥1000. На данный момент в рубли цены переводятся делением пополам.</p>
 @en
-  <p>The next park is simply stunning. Most people go to Kanazawa to see it. Most parks and temples in Japan have entrance fee, which is ¥400–¥1000 on average. There are days when admission is free.</p>
+  <p>The next park is simply stunning. Most people go to Kanazawa to see it. Most parks and temples in Japan have an entrance fee, which is ¥400–¥1000 on average. There are days when admission is free.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6787.jpg',

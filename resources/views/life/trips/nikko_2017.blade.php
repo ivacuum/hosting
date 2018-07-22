@@ -4,7 +4,7 @@
 @ru
   <p>Из горной <a class="link" href="takayama.2017">Такаямы</a> оказалось непросто добраться до Никко. Одними поездами выходило около шести часов с несколькими пересадками, причем сначала предстояло ехать назад по уже увиденным местам. Если же сначала доехать на автобусе до <a class="link" href="matsumoto.2017">Мацумото</a>, а оттуда поездами, то в итоге те же шесть часов, но без повторений пути и плюс один город на осмотр.</p>
 @en
-  <p>There is no easy way to get to Nikko from nested among mountains <a class="link" href="takayama.2017">Takayama</a>. It's a six hours ride on trains with a few changes at cities I have been to. The other option is to take a bus to <a class="link" href="matsumoto.2017">Matsumoto</a> first, and then continue the journey on trains. Same six hours ride, but one new city to see and no repeats.</p>
+  <p>There is no easy way to get to Nikko from nested among mountains <a class="link" href="takayama.2017">Takayama</a>. It's a six hours ride on trains with a few changes in cities I have been to. The other option is to take a bus to <a class="link" href="matsumoto.2017">Matsumoto</a> first, and then continue the journey on trains. Same six hours ride, but one new city to see and no repeats.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7907.jpg'])
 
@@ -58,7 +58,7 @@
 @ru
   <p>Классный электрический кабель между вагонами. Шестой вагон только по предварительному бронированию мест. Остановка четко напротив стрелочки.</p>
 @en
-  <p>Nice electric cable between cars. Car #6 requires reservation in advance. Arrow sign is precisely pointing at the door.</p>
+  <p>A nice electric cable between cars. Car #6 requires a reservation in advance. Arrow sign is precisely pointing at the door.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7995.jpg'])
 
@@ -142,7 +142,7 @@
 @ru
   <p>Если необходимо пополнить транспортную карту, то можно сразу вставлять ее в терминал. Помимо пополнения, можно распечатать историю трат по карте. Слева от экрана классные кнопки-заготовки для выбора количества пассажиров.</p>
 @en
-  <p>If you need to charge your transport card, you can put it into terminal right away. There is also an option to print history of your expenses. There are nice buttons to the left of the display for number of persons you most likely need tickets for.</p>
+  <p>If you need to charge your transport card, you can put it into terminal right away. There is also an option to print the history of your expenses. There are nice buttons to the left of the display for the number of persons you most likely need tickets for.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8081.jpg'])
 
@@ -156,14 +156,14 @@
 @ru
   <p>Телефонная будка.</p>
 @en
-  <p>Phone booth.</p>
+  <p>Phonebooth.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8086.jpg'])
 
 @ru
   <p>По случаю проведения фестиваля на улице регулировщики движения.</p>
 @en
-  <p>Traffic guards are on streets, because some festival is going on right now.</p>
+  <p>Traffic guards are on the streets because some festival is going on right now.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8087.jpg'])
 
@@ -394,28 +394,28 @@
 @ru
   <p>Пора отправляться в Токио. Поезд уже поджидает.</p>
 @en
-  <p>Time to go to Tokyo. Train is already waiting.</p>
+  <p>Time to go to Tokyo. The train is already waiting.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8191.jpg'])
 
 @ru
   <p>Состав всего из двух вагонов. Всего через пару станций предстоит сделать первую пересадку. Планировщик маршрута указывает, что следующий поезд отправляется в ту же минуту, когда прибывает этот. Менее минуты на пересадку! Реально? Да. Когда в таком случае приезжаешь на нужную станцию, то напротив уже стоит состав с открытыми дверьми, остается только перейти в него. Конечно, большинство бежит, так как боится его упустить. Когда планировщик пишет, что две минуты на пересадку, то состав аналогично придет на соседний путь. Нереальные варианты не предлагаются.</p>
 @en
-  <p>Just two cars train. First change is only a few stops away from here. Navigation app says the train we need to make a change for departures at the same minute as this one arrives. Less than a minute for a change! Is it real? Yes. In this case you gonna see the next train on the opposite side of the platform with doors wide open waiting for you to get in. Most folks run for it, but it's really unnecessary. If there is two minutes change, then your next train should arrive to the adjacent track as well. No unreal options through navigation app.</p>
+  <p>Just two cars train. The first change is only a few stops away from here. Navigation app says the train we need to make a change for departures at the same minute as this one arrives. Less than a minute for a change! Is it real? Yes. In this case, you gonna see the next train on the opposite side of the platform with doors wide open waiting for you to get in. Most folks run for it, but it's really unnecessary. If there is two minutes change, then your next train should arrive to the adjacent track as well. No unreal options through navigation app.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8193.jpg'])
 
 @ru
   <p>Бригада на путях.</p>
 @en
-  <p>Crew is at railroad.</p>
+  <p>The crew is at the railroad.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8196.jpg'])
 
 @ru
   <p>Железный человек в транспортном обличии.</p>
 @en
-  <p>Iron man is in transport form.</p>
+  <p>Ironman is in transport form.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8194.jpg'])
 @endsection
