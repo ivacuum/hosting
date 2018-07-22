@@ -7,7 +7,7 @@
     @ru
       <p>Вы легко можете получить скидку около 10 евро на ваши следующие бронирования на <a class="link" href="https://www.airbnb.ru/{{ config('cfg.airbnb_link') }}">airbnb.ru</a> с помощью купонов ниже. Также я привожу информацию где удалось успешно воспользоваться данными купонами. Коды <span class="font-weight-bold">работают для уже зарегистрированных пользователей</span>.</p>
     @en
-      <p>You could easily get €10 off your booking cost on <a class="link" href="https://www.airbnb.com/{{ config('cfg.airbnb_link') }}">airbnb.com</a> just by using coupons below. I also provide the info where I successfully applied these coupons. It <span class="font-weight-bold">works for already registered users</span>.</p>
+      <p>You could easily get $36 off your booking cost on <a class="link" href="https://www.airbnb.com/{{ config('cfg.airbnb_link') }}">airbnb.com</a> just by using coupons below. I also provide the info where I successfully applied these coupons. It <span class="font-weight-bold">works for already registered users</span>.</p>
     @endru
   </div>
 </div>
@@ -294,11 +294,24 @@
       <a class="btn btn-primary" href="https://www.airbnb.ru/{{ config('cfg.airbnb_link') }}">Получить скидку 2100 ₽</a>
       <div class="form-help">После клика вы будете перемещены на сайт airbnb.ru</div>
     @en
-      <h2>New Airbnb user?</h2>
+      <h2 class="mt-3">New Airbnb user?</h2>
       <p>Then you can get even bigger discount for your first trip.</p>
       <a class="btn btn-primary" href="https://www.airbnb.com/{{ config('cfg.airbnb_link') }}">Get $36 coupon</a>
       <div class="form-help">After a click you will be redirected to airbnb.com</div>
     @endru
+
+    <div class="h3 mt-5">{{ trans('issues.create') }}</div>
+    @ru
+      <p>Знаете промокод или другие способы сэкономить на Airbnb? Хотите оставить отзыв или задать вопрос? Используйте форму ниже, чтобы поделиться с нами информацией. По возможности мы дополним эту страницу новыми материалами.</p>
+    @en
+      <p>Use the form below to ask a question or just to tell us how to make this page better. New coupons and ways to cut down the expenses are welcome.</p>
+    @endru
+    <feedback-form
+      email="{{ Auth::user()->email ?? '' }}"
+      title="Airbnb"
+      action="{{ path('Issues@store') }}"
+      hide-title
+    ></feedback-form>
   </div>
 </div>
 @endsection
