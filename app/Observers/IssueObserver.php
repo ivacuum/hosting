@@ -19,7 +19,7 @@ class IssueObserver
 
     protected function notify(Model $model)
     {
-        $text = "Обратная связь от {$model->email}\n{$model->title}\n".url($model->page)."\n\n".htmlspecialchars_decode($model->text, ENT_QUOTES);
+        $text = "Обратная связь {$model->id} от {$model->email}\n{$model->title}\n".url($model->page)."\n\n".htmlspecialchars_decode($model->text, ENT_QUOTES);
 
         $this->telegram->notifyAdmin($text);
     }
