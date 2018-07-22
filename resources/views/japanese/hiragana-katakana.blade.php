@@ -8,9 +8,9 @@
   <div class="col-md-6">
     <div class="h3 mt-5">{{ trans('issues.create') }}</div>
     @ru
-      <p>Поделитесь своим опытом использования тренажера или задайте вопрос. Мы постараемся обработать информацию и сделать тренажер еще лучше.</p>
+      <p>Поделитесь своим опытом использования тренажера или задайте вопрос. Мы постараемся обработать информацию и сделать тренажер еще лучше. ありがとうございます。</p>
     @en
-      <p>Use the form below to ask a question or share your thoughts. We will use your feedback to make the trainer better. There are certainly things to improve.</p>
+      <p>Use the form below to ask a question or share your thoughts. We will use your feedback to make the trainer better. There are certainly things to improve. ありがとうございます。</p>
     @endru
     <feedback-form
       email="{{ Auth::user()->email ?? '' }}"
