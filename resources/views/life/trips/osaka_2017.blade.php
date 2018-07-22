@@ -4,14 +4,14 @@
 @ru
   <p>Вагоны каждого типа шинкансена отличаются. Теперь достался попроще.</p>
 @en
-  <p>The cars of each type of shinkansen are little bit different. This time it's a simpler and cheaper model.</p>
+  <p>The cars of each type of shinkansen are a little bit different. This time it's a simpler and cheaper model.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4500.jpg'])
 
 @ru
   <p>Табло просит быть осторожнее с играми на телефоне на ходу.</p>
 @en
-  <p>Display asks to pay attention to where you go while playing games on smartphone.</p>
+  <p>Display asks to pay attention to where you go while playing games on a smartphone.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4504.jpg'])
 
@@ -76,7 +76,7 @@
 @ru
   <p>Вид из обеденной зоны капсульного отеля. В таких отелях почти всегда есть разделение по полу — отдельный этаж для женщин и отдельный для мужчин. Стоит быть готовым, что часов с семи утра будильники будут включаться у людей каждые пять минут, так что спокойно поспать до обеда в капсуле не вариант.</p>
 @en
-  <p>View from the dining area of the capsule hotel. Accomodation in a capsule hotel usually means there are separate floors for men and women. You should also be ready to get up at 07:00, because there is nowhere to hide from beeping alarm clocks from every corner—audibility in rooms is incredible.</p>
+  <p>View from the dining area of the capsule hotel. Accommodation in a capsule hotel usually means there are separate floors for men and women. You should also be ready to get up at 07:00, because there is nowhere to hide from beeping alarm clocks from every corner—audibility in rooms is incredible.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4544.jpg'])
 
@@ -142,7 +142,7 @@
 @ru
   <p>Территория около замка.</p>
 @en
-  <p>Area around the castle.</p>
+  <p>The area around the castle.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_4551.jpg',
@@ -186,7 +186,7 @@
 @ru
   <p>Дядя в белом направляет людей непонятным образом. Японский знак стоп треугольной формы с местной надписью. Указатель к ж/д станции компании JR. Разноцветные зонты. Сакура. Прекрасное и полное деталей место.</p>
 @en
-  <p>Man in white directs people in an obscure way. Japanese stop sign is a triangle with word "stop"「止まれ」on it. Directions to JR station of Tozai line. Colorful umbrellas. Cherry blossoms. A beautiful and full of details place.</p>
+  <p>Man in white directs people in an obscure way. Japanese stop sign is a triangle with the word "stop"「止まれ」on it. Directions to JR station of Tozai line. Colorful umbrellas. Cherry blossoms. A beautiful and full of details place.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4575.jpg'])
 
@@ -261,7 +261,7 @@
 @ru
   <p>В магазинах разметка начала очереди в кассу.</p>
 @en
-  <p>Marking of the queues in front of the cash desk in convenience store.</p>
+  <p>Marking of the queues in front of the cash desk in a convenience store.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4591.jpg'])
 
@@ -275,7 +275,7 @@
 @ru
   <p>Внезапно — пути поперек станции. На такой важно в телефоне не залипнуть во время ходьбы.</p>
 @en
-  <p>Suddenly, railroad is across the station.</p>
+  <p>Suddenly, the railroad is across the station.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4593.jpg'])
 @endsection

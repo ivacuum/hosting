@@ -146,14 +146,14 @@
 @ru
   <p>Выделяющегося вида трейлеры, которые ездят конвоем из трех машин.</p>
 @en
-  <p>Convoy of three trailers stands out on the street.</p>
+  <p>A convoy of three trailers stands out on the street.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8376.jpg'])
 
 @ru
   <p>Люди в костюмах, коих в час пик не счесть, особенно в общественном транспорте.</p>
 @en
-  <p>Countless number of people in suits. Especially at rush hours and in public transport.</p>
+  <p>A countless number of people in suits. Especially during rush hours and on public transport.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8380.jpg',
@@ -166,7 +166,7 @@
 @ru
   <p>Парк среди высоток.</p>
 @en
-  <p>Park is among tall buildings.</p>
+  <p>Park is among the tall buildings.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8384.jpg',
@@ -262,7 +262,7 @@
 @ru
   <p>Билет. В этот раз повезло с бесплатным входом, а вообще лучше откладывать тысячу-две иен на это дело каждый день.</p>
 @en
-  <p>Admission ticket. Lucky enough to get it for free this day. But it's better to save ¥1000–2000 yen for entrance fees everyday.</p>
+  <p>Admission ticket. Lucky enough to get it for free this day. But it's better to save ¥1000–2000 yen for entrance fees every day.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8490.jpg'])
 
@@ -280,7 +280,7 @@
 @ru
   <p>Хитрое приспособление для подъема тяжестей по лестнице.</p>
 @en
-  <p>Interesting thing to lift the weights up the stairs.</p>
+  <p>An interesting thing to lift the weights up the stairs.</p>
 @endru
 <youtube title="Tokyo Stairs Helper, April 2017" v="m0wfg_86-vM"></youtube>
 
@@ -362,14 +362,14 @@
 @ru
   <p>Иногда велодорожка перемещается с тротуара на дорогу.</p>
 @en
-  <p>Sometimes cycle lane shifts from sidewalk to the road.</p>
+  <p>Sometimes cycle lane shifts from a sidewalk to the road.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8582.jpg'])
 
 @ru
   <p>В один из моментов на улице объявились два регулировщика и перекрыли для заезда грузовика тротуар и часть дороги.</p>
 @en
-  <p>At some point two traffic guards have appeared and closed the sidewalk and part of the road for one minute to make sure the truck can get to the construction site.</p>
+  <p>At some point, two traffic guards have appeared and closed the sidewalk and part of the road for one minute to make sure the truck can get to the construction site.</p>
 @endru
 <youtube title="Tokyo Traffic Guard, April 2017" v="S0mBz_2F8B8"></youtube>
 
@@ -390,7 +390,7 @@
 @ru
   <p>Парковка под крышей.</p>
 @en
-  <p>Parking is covered with roof.</p>
+  <p>Parking is covered with a roof.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8554.jpg'])
 
@@ -428,7 +428,7 @@
 @ru
   <p>В такие моменты ощущение, что забрался на вершину мира.</p>
 @en
-  <p>At high places like this it feels like you are at the top of the world.</p>
+  <p>At high places like this, it feels like you are at the top of the world.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8642.jpg'])
 
@@ -456,14 +456,14 @@
 @ru
   <p>Схема туалета на железнодорожной станции. Тип «дырка в полу» — традиционный японский, а унитаз — европейский. Женский туалет заметно больше мужского, и это правильно. На удивление в женском туалете имеется один писсуар.</p>
 @en
-  <p>Toilet plan at the station. There are both Western-style porcelain thrones for sitting and floor-level units for squatting. Female room is the biggest one, and that's the sign of a good design. For some reason there is one urinal in female room.</p>
+  <p>Toilet plan at the station. There are both Western-style porcelain thrones for sitting and floor-level units for squatting. The female room is the biggest one, and that's the sign of a good design. For some reason, there is one urinal in the female room.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8198.jpg'])
 
 @ru
   <p>Просьба кидать бумагу в унитаз.</p>
 @en
-  <p>Request to flush the used toilet paper, not to throw it to the trashcan.</p>
+  <p>Request to flush the used toilet paper, not to throw it into the trashcan.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8370.jpg'])
 
@@ -491,7 +491,7 @@
 @ru
   <p>Кому нужен надземный переход? Мало кому.</p>
 @en
-  <p>Really, who needs a foodbridge? Very few people want to use it.</p>
+  <p>Really, who needs a footbridge? Very few people want to use it.</p>
 @endru
 <youtube title="Tokyo, Who Needs Footbridge, April 2017" v="m5y5PNHKwLQ"></youtube>
 @include('tpl.pic-2x', ['pic' => 'IMG_8653.jpg'])
@@ -520,7 +520,7 @@
 @ru
   <p>Подъехал некий экспресс, двери открылись только в его хвостовой части. В Японии неважно на чем ты доехал, важно лишь где зашел и где вышел. Решил доехать до следующей остановки и по совместительству до самого крупного пересадочного узла — станции Синдзюку.</p>
 @en
-  <p>Some sort of an express train arrived. Doors opened only in its rear cars. In Japan it doesn't matter what train and what route you used to get to your destination. The only things that matters are enter and exit stations. So I decided to take this train to the next station called Shinjuku, which is also the biggest connecting hub for rail traffic in Tokyo.</p>
+  <p>Some sort of an express train arrived. Doors opened only in its rear cars. In Japan, it doesn't matter what train and what route you used to get to your destination. The only things that matter are enter and exit stations. So I decided to take this train to the next station called Shinjuku, which is also the biggest connecting hub for rail traffic in Tokyo.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8658.jpg'])
 
@@ -541,7 +541,7 @@
 @ru
   <p>Людей действительно много. После использования транспортной карты на турникете, она делает пик. Здесь же эти пики не прекращаются чуть ли не на секунду. В итоге до пункта назначения удалось добраться на метро, так как оно глубоко под землей, а железнодорожные линии компании JR, которой изначально планировалось доехать, располагаются в основном над землей.</p>
 @en
-  <p>There were a lot of people for real. Suica card makes a beep after using at the gate. Mostly, these beeps didn't stop even for a second there. So I was able to get to my destination point on metro. It lays deeply under the ground, so no trees to fall on the tracks like on JR lines above the ground.</p>
+  <p>There were a lot of people for real. Suica card makes a beep after using at the gate. Mostly, these beeps didn't stop even for a second there. So I was able to get to my destination point on the metro. It lays deeply under the ground, so no trees to fall on the tracks like on JR lines above the ground.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8664.jpg'])
 
@@ -612,7 +612,7 @@
 @ru
   <p>Весь полет в Москву проходил примерно в обеденное время — обычная картина при полетах на запад, что самолет за час пролетает один часовой пояс. Тонировка стекол работает на ура — в любое время суток можно устроить ночь.</p>
 @en
-  <p>Whole flight back to Moscow is like at noon—usual thing with west destinations. You fly 1 timezone per hour or so. Thanks to the window dimming, night feeling can be made at anytime.</p>
+  <p>The whole flight back to Moscow is like at noon—usual thing with west destinations. You fly 1 timezone per hour or so. Thanks to the window dimming, night feeling can be made at any time.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8778.jpg'])
 @endsection

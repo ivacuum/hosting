@@ -4,7 +4,7 @@
 @ru
   <p>Воспользуемся обнаруженной машиной времени и переместимся на несколько десятилетий назад.</p>
 @en
-  <p>Let's use time machine to get a few decades back in time.</p>
+  <p>Let's use a time machine to get a few decades back in time.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7533.jpg'])
 
@@ -53,7 +53,7 @@
 @ru
   <p>Если вы вдруг не разглядели названия. Тут все куда ближе и понятнее.</p>
 @en
-  <p>A closer look to the titles in case they were too small before. Pretty understandable now (no).</p>
+  <p>A closer look at the titles in case they were too small before. Pretty understandable now (no).</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7556.jpg'])
 
@@ -275,7 +275,7 @@
 @ru
   <p>Кинотеатр. Тише, идет сеанс.</p>
 @en
-  <p>Cinema. Shhh, movie is in progress.</p>
+  <p>Cinema. Shhh, the movie is in progress.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7613.jpg'])
 
@@ -296,7 +296,7 @@
 @ru
   <p>Телефонная будка.</p>
 @en
-  <p>Phone booth.</p>
+  <p>Phonebooth.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7620.jpg'])
 
@@ -384,7 +384,7 @@
 @ru
   <p>Переулок закрыли для проезда.</p>
 @en
-  <p>Side street is closed for cars.</p>
+  <p>The side street is closed for cars.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7371.jpg'])
 
@@ -403,7 +403,7 @@
 @ru
   <p>Окошко на входе в один из музеев.</p>
 @en
-  <p>Window at the entrance to the one of the museums.</p>
+  <p>Window at the entrance to one of the museums.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7642.jpg'])
 
@@ -466,14 +466,14 @@
 @ru
   <p>Конечно, самый современный! Воткнутый в розетку и с кучей кнопок. Некоторые люди сравнивают его панель управления с таковой у космического корабля. На самом деле полезно изучить его возможности и потом ими пользоваться. Кстати, розетки во всей стране американские <a class="link" href="http://www.iec.ch/worldplugs/typeA.htm" rel="nofollow">типа A</a> и <a class="link" href="http://www.iec.ch/worldplugs/typeB.htm">типа B</a>.</p>
 @en
-  <p>The modern one indeed! Plugged into a power outlet and with many buttons. Some people compare the amount of buttons with a spaceship navigation panel. Anyway, it makes sense to get used to them. It proves useful later on. By the way, power outlets are <a class="link" href="http://www.iec.ch/worldplugs/typeA.htm" rel="nofollow">type A</a> and <a class="link" href="http://www.iec.ch/worldplugs/typeB.htm">type B</a> throughout the country.</p>
+  <p>The modern one indeed! Plugged into a power outlet and with many buttons. Some people compare the number of buttons with a spaceship navigation panel. Anyway, it makes sense to get used to them. It proves useful later on. By the way, power outlets are <a class="link" href="http://www.iec.ch/worldplugs/typeA.htm" rel="nofollow">type A</a> and <a class="link" href="http://www.iec.ch/worldplugs/typeB.htm">type B</a> throughout the country.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7695.jpg'])
 
 @ru
   <p>Снаружи узнается традиционное японское жилье. Повсюду практикуется заселение не ранее 15:00 и выселение не позднее 10:00. Исключения возможны, но редки. Поздно просыпаться в этой стране не особо вариант.</p>
 @en
-  <p>Recognizable traditional Japanese houses. Usually check-in at hotels is after 15:00 and check-out is before 10:00. Exceptions are rare. Wrong country to sleep till noon or so.</p>
+  <p>Recognizable traditional Japanese houses. Usually, check-in at hotels is after 15:00 and check-out is before 10:00. Exceptions are rare. Wrong country to sleep till noon or so.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7364.jpg'])
 
@@ -508,7 +508,7 @@
 @ru
   <p>Ограждение.</p>
 @en
-  <p>Cute guard rail.</p>
+  <p>Cute guardrail.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7735.jpg'])
 
