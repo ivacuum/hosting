@@ -80,6 +80,8 @@ return [
     'images.user' => 'Author\'s pics',
     'images.index' => 'Images',
 
+    'issues.index' => 'Issues',
+
     'kanjis.edit' => 'Edit',
     'kanjis.show' => 'Kanji',
     'kanjis.index' => 'Kanji',

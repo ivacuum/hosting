@@ -56,6 +56,8 @@ RouteHelper::withoutCreateAndEdit('Acp\Images');
 Route::post('images/batch', 'Acp\Images@batch');
 Route::get('images/{id}/view', 'Acp\Images@view');
 
+RouteHelper::withoutCreateAndEdit('Acp\Issues');
+
 RouteHelper::withoutCreate('Acp\Kanjis');
 
 Route::get('metrics', 'Acp\Metrics@index');

@@ -9,6 +9,7 @@ import BurnKanji from './components/BurnKanji.vue'
 import BurnRadical from './components/BurnRadical.vue'
 import BurnVocabulary from './components/BurnVocabulary.vue'
 import Chat from './components/Chat.vue'
+import FeedbackForm from './components/FeedbackForm.vue'
 import GalleryUploader from './components/GalleryUploader.vue'
 import HiraganaKatakana from './components/HiraganaKatakana.vue'
 import ImagesUploader from './components/ImagesUploader.vue'
@@ -30,6 +31,7 @@ Vue.component('burn-kanji', BurnKanji)
 Vue.component('burn-radical', BurnRadical)
 Vue.component('burn-vocabulary', BurnVocabulary)
 Vue.component('chat', Chat)
+Vue.component('feedback-form', FeedbackForm)
 Vue.component('gallery-uploader', GalleryUploader)
 Vue.component('hiragana-katakana', HiraganaKatakana)
 Vue.component('images-uploader', ImagesUploader)

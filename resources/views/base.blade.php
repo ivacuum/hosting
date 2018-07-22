@@ -143,6 +143,11 @@
               @endru
             </li>
           @endif
+          <li class="list-inline-item">
+            <a href="{{ path('Issues@create') }}">
+              {{ trans('issues.create') }}
+            </a>
+          </li>
         @show
       </ul>
     @show

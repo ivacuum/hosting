@@ -32,6 +32,9 @@ Route::get('about', 'Home@about');
 
 Route::get('comments/{id}/confirm', 'CommentConfirm@update')->middleware('auth');
 
+Route::get('contact', 'Issues@create');
+Route::post('contact', 'Issues@store');
+
 Route::get('dc', 'Dcpp@index');
 Route::get('dc/hubs', 'DcppHubs@index');
 Route::post('dc/hubs/{id}/click', 'DcppHubClick@store');

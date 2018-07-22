@@ -81,6 +81,8 @@ return [
     'images.user' => 'Картинки автора',
     'images.index' => 'Изображения',
 
+    'issues.index' => 'Обращения',
+
     'kanjis.edit' => 'Редактирование',
     'kanjis.show' => 'Кандзи',
     'kanjis.index' => 'Кандзи',

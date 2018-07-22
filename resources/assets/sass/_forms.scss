@@ -1,0 +1,50 @@
+.form-label-group {
+  position: relative;
+
+  input:not(:placeholder-shown):not(.placeholder-shown) {
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
+
+    & ~ label {
+      padding-top: .25rem;
+      padding-bottom: .25rem;
+      font-size: .75rem;
+      color: #686f76;
+    }
+  }
+
+  & > input,
+  & > label {
+    padding: .75rem;
+  }
+
+  & > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+    line-height: 1.5;
+    text-align: left;
+    color: #a9acb0;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    font-weight: normal;
+    transition: all .1s ease-in-out;
+    pointer-events: none;
+  }
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder,
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}

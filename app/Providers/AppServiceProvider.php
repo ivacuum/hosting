@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
             'Trip' => \App\Trip::class,
             'User' => \App\User::class,
             'Image' => \App\Image::class,
+            'Issue' => \App\Issue::class,
             'Kanji' => \App\Kanji::class,
             'Photo' => \App\Photo::class,
             'Artist' => \App\Artist::class,
@@ -42,6 +43,7 @@ class AppServiceProvider extends ServiceProvider
         \App\User::observe(\App\Observers\UserObserver::class);
         \App\Email::observe(\App\Observers\EmailObserver::class);
         \App\Image::observe(\App\Observers\ImageObserver::class);
+        \App\Issue::observe(\App\Observers\IssueObserver::class);
         \App\Kanji::observe(\App\Observers\KanjiObserver::class);
         \App\Photo::observe(\App\Observers\PhotoObserver::class);
         \App\Domain::observe(\App\Observers\DomainObserver::class);

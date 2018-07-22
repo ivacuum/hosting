@@ -6,7 +6,7 @@ export default {
     return {
       locale,
       lifeMenu: ['cities', 'countries', 'trips', 'gigs', 'artists', 'tags', 'photos'],
-      siteMenu: ['metrics', 'users', 'external-identities', 'notifications', 'pages'],
+      siteMenu: ['metrics', 'issues', 'users', 'external-identities', 'notifications', 'pages'],
       hostingMenu: ['clients', 'domains', 'servers', 'yandex-users'],
       japaneseMenu: ['kanji', 'radicals', 'vocabularies'],
       resourcesMenu: ['chat-messages', 'comments', 'dcpp-hubs', 'files', 'news', 'images', 'torrents'],

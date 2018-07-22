@@ -33,6 +33,11 @@ export default {
       create: 'New gig',
     },
 
+    issues: {
+      show: 'Issue',
+      index: 'Issues',
+    },
+
     menu: {
       life: 'Life',
       site: 'Site',
@@ -180,6 +185,18 @@ export default {
       create: 'Новый концерт',
     },
 
+    images: {
+      show: 'Изображение',
+      view: 'Засчитать просмотр',
+      user: 'Картинки автора',
+      index: 'Изображения',
+    },
+
+    issues: {
+      show: 'Обращение',
+      index: 'Обращения',
+    },
+
     model: {
       file: 'Файл',
       size: 'Размер',
@@ -196,6 +213,12 @@ export default {
       country_id: 'Страна',
       q_placeholder: 'Поиск...',
       yandex_user_id: 'Пользователь API Яндекса',
+
+      issue: {
+        page: 'Страница',
+        title: 'Тема',
+        created_at: 'Дата',
+      },
 
       trip: {
         title: 'Название',

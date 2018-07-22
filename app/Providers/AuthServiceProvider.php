@@ -12,6 +12,7 @@ use App\ExternalIdentity;
 use App\File;
 use App\Gig;
 use App\Image;
+use App\Issue;
 use App\Kanji;
 use App\News;
 use App\Notification;
@@ -42,6 +43,7 @@ class AuthServiceProvider extends ServiceProvider
         Trip::class => Base::class,
         User::class => WithoutCreate::class,
         Image::class => WithoutCreateAndEdit::class,
+        Issue::class => WithoutCreateAndEdit::class,
         Kanji::class => WithoutCreate::class,
         Photo::class => Base::class,
         Artist::class => Base::class,
