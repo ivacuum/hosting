@@ -36,6 +36,8 @@ class Torrent extends Model
 {
     use Searchable, SoftDeleteTrait;
 
+    const SEARCH_INDEX = 'vac_torrents_v1';
+
     const STATUS_HIDDEN = 0;
     const STATUS_PUBLISHED = 1;
     const STATUS_DELETED = 2;
@@ -151,7 +153,7 @@ class Torrent extends Model
 
     public function searchableAs()
     {
-        return 'vac_torrents_v1';
+        return static::SEARCH_INDEX;
     }
 
     // Заголовок без скобок

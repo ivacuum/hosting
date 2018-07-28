@@ -4,27 +4,27 @@ use Ivacuum\Generic\Utilities\ViewHelper as BaseViewHelper;
 
 class ViewHelper extends BaseViewHelper
 {
-    public function magnet($info_hash, $announcer, $title)
+    public function magnet(string $info_hash, string $announcer, string $title): string
     {
         return "magnet:?xt=urn:btih:{$info_hash}&tr=" . urlencode($announcer) . "&dn=" . rawurlencode($title);
     }
 
-    public function pic($folder, $file)
+    public function pic(string $folder, string $file): string
     {
         return "https://life.ivacuum.ru/-/1000x750/{$folder}/{$file}";
     }
 
-    public function pic2x($folder, $file)
+    public function pic2x(string $folder, string $file): string
     {
         return "https://life.ivacuum.ru/{$folder}/{$file}";
     }
 
-    public function picArbitrary($width, $height, $folder, $file)
+    public function picArbitrary(int $width, int $height, string $folder, string $file): string
     {
         return "https://life.ivacuum.ru/-/{$width}x{$height}/{$folder}/{$file}";
     }
 
-    public function picThumb($folder, $file)
+    public function picThumb(string $folder, string $file): string
     {
         return "https://life.ivacuum.ru/-/100x75/{$folder}/{$file}";
     }
