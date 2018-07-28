@@ -31,7 +31,7 @@ export default {
     :filters="filters"
   />
 
-  <table class="table-stats table-adaptive">
+  <table class="table-stats table-adaptive" v-if="collection.data.length">
     <thead>
     <tr>
       <th class="text-md-right">#</th>
@@ -119,6 +119,8 @@ export default {
       </tr>
     </tbody>
   </table>
+
+  <div v-else>No {{ modelPlural }} matched the given criteria.</div>
 
   <pagination :meta="collection.meta"/>
 </div>
