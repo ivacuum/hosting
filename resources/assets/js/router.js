@@ -15,7 +15,7 @@ export default new VueRouter({
         { path: 'issues', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Issues/Index.vue') },
         {
           path: 'issues/:id',
-          component: () => import(/* webpackChunkName: "acp" */'./components/acp/Issues/Layout.vue'),
+          component: () => import(/* webpackChunkName: "acp" */'./components/acp/DefaultItemLayout.vue'),
           children: [
             { path: '/', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Issues/Show.vue') },
           ],

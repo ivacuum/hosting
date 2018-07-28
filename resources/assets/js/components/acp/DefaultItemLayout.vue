@@ -1,6 +1,6 @@
 <script>
-import Layout from '../BaseItemLayout'
-import LayoutMixin from '../../../mixins/BaseLayout'
+import Layout from './BaseItemLayout'
+import LayoutMixin from '../../mixins/BaseLayout'
 
 export default {
   mixins: [LayoutMixin],

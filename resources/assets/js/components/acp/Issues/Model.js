@@ -1,13 +1,15 @@
 import ModelProvide from '../../../mixins/ModelProvide'
 import ModelFieldTrans from '../../../mixins/ModelFieldTrans'
 
+const model = 'Issue'
+
 export default {
   mixins: [ModelFieldTrans, ModelProvide],
 
   data() {
     return {
-      modelPlural: window.singularAndPluralForms.Issue.plural,
-      modelSingular: window.singularAndPluralForms.Issue.singular,
+      modelPlural: window.singularAndPluralForms[model].plural,
+      modelSingular: window.singularAndPluralForms[model].singular,
     }
   },
 }
