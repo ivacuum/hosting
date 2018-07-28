@@ -43,7 +43,7 @@
         <img class="d-none d-md-block size-32 mr-2" src="https://ivacuum.org/i/services/kupislona.png">
         <h2 class="h3 mb-0"><span class="link">KupiSlona.ru</span></h2>
       </a>
-      <div>Доска бесплатных объявлений Калужской области.</div>
+      <div>Доска бесплатных объявлений России. Место встречи продавцов и покупателей.</div>
       {{--<div class="text-muted">Дата запуска: 7 декабря 2015 г.</div>--}}
     </div>
     <div class="col-md-6 col-lg-4 d-none d-md-block mb-4">
@@ -61,7 +61,7 @@
       <h2 class="h3 mb-0"><span class="link">ArtFly.DC++</span></h2>
     </a>
     @ru
-      <div>Большая коллекция русских DC++ клиентов. Ответы на частые вопросы.</div>
+      <div>Большая коллекция русских DC++ клиентов. Ответы на вопросы. Популярные хабы.</div>
       {{--<p class="text-muted">Дата запуска: 17 марта 2008 г.</p>--}}
     @en
       <p>Large collection of DC++ client software. Popular hubs to connect.</p>
