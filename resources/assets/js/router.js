@@ -12,6 +12,17 @@ export default new VueRouter({
       children: [
         { path: '/', name: 'acp', component: () => import(/* webpackChunkName: "acp" */'./components/acp/AcpDashboard.vue') },
 
+        { path: 'artists', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Artists/Index.vue') },
+        { path: 'artists/create', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Artists/Form.vue') },
+        {
+          path: 'artists/:id',
+          component: () => import(/* webpackChunkName: "acp" */'./components/acp/DefaultItemLayout.vue'),
+          children: [
+            { path: '/', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Artists/Show.vue') },
+            { path: 'edit', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Artists/Form.vue') },
+          ],
+        },
+
         { path: 'issues', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Issues/Index.vue') },
         {
           path: 'issues/:id',
