@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Comment;
+use App\SearchSynonym;
 use App\Services\Rto;
 use App\Torrent;
 use Foolz\SphinxQL\SphinxQL;
@@ -21,7 +22,7 @@ class Torrents extends Controller
 
         if ($q) {
             $ids = Torrent::search($q, function (SphinxQL $builder) use ($category_id, $fulltext, $q) {
-                $builder = $builder->match($fulltext ? '*' : 'title', $q);
+                $builder = $builder->match($fulltext ? '*' : 'title', SearchSynonym::addSynonymsToQuery($q), true);
 
                 if ($category_id) {
                     $builder = $builder->where('category_id', '=', (int) $category_id);
