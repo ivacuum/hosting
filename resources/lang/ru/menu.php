@@ -14,6 +14,7 @@ return [
     'artists' => 'Артисты',
     'coupons' => 'Промокоды и купоны',
     'hosting' => 'Хостинг',
+    'japanese' => '日本語',
     'torrents' => 'Торренты',
     'countries' => 'Страны',
     'parser_vk' => 'Парсер ВК',

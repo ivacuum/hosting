@@ -1,8 +1,12 @@
 <?php
 
+// Без вложенных массивов, чтобы можно было
+// одновременно писать как file, так и file.title
 return [
+    'id' => 'ID',
     'file' => 'Файл',
     'size' => 'Размер',
+    'slug' => 'URL',
     'email' => 'Электронная почта',
     'author' => 'Автор',
     'clicks' => 'Клики',
@@ -11,6 +15,7 @@ return [
     'city_id' => 'Город',
     'trip_id' => 'Поездка',
     'alias_id' => 'Алиас',
+    'markdown' => 'Markdown',
     'artist_id' => 'Артист',
     'client_id' => 'Клиент',
     'country_id' => 'Страна',

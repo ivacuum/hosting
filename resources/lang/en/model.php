@@ -12,10 +12,13 @@ return [
     'status' => 'Status',
     'city_id' => 'City',
     'trip_id' => 'Trip',
+    'alias_id' => 'Alias',
     'markdown' => 'Markdown',
     'artist_id' => 'Artist',
+    'client_id' => 'Client',
     'country_id' => 'Country',
     'q_placeholder' => 'Search...',
+    'yandex_user_id' => 'Yandex API User',
 
     'artist.title' => 'Title',
 

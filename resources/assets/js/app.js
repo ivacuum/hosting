@@ -8,7 +8,6 @@ import YandexMetrika from 'vac-gfe/js/yandex-metrika'
 import router from './router'
 import store from './store/store'
 import AcpApp from './components/AcpApp.vue'
-import AcpI18n from './i18n/acp'
 import svg from './svg-icons'
 
 import NewsViewsObserver from './news-views-observer'
@@ -106,7 +105,7 @@ class Application {
         el: '#app',
         i18n: new VueI18n({
           locale: this.options.locale,
-          messages: AcpI18n,
+          messages: window.i18nData,
           fallbackLocale: 'en',
           silentTranslationWarn: true,
         }),

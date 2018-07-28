@@ -8,7 +8,7 @@ export default {
       lifeMenu: ['cities', 'countries', 'trips', 'gigs', 'artists', 'tags', 'photos'],
       siteMenu: ['metrics', 'issues', 'users', 'external-identities', 'notifications', 'pages'],
       hostingMenu: ['clients', 'domains', 'servers', 'yandex-users'],
-      japaneseMenu: ['kanji', 'radicals', 'vocabularies'],
+      japaneseMenu: ['kanjis', 'radicals', 'vocabularies'],
       resourcesMenu: ['chat-messages', 'comments', 'dcpp-hubs', 'files', 'news', 'images', 'torrents'],
     }
   },
@@ -47,7 +47,7 @@ export default {
       <ul class="navbar-nav mr-auto align-items-md-center">
         <li class="nav-item">
           <router-link class="nav-link" :to="{ name: 'acp' }" exact>
-            {{ $t('menu.index') }}
+            {{ $t('home.index') }}
           </router-link>
         </li>
         <li class="nav-item dropdown" :class="{ active: lifeMenuActive }">

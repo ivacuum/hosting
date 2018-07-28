@@ -28,4 +28,16 @@ class ViewHelper extends BaseViewHelper
     {
         return "https://life.ivacuum.ru/-/100x75/{$folder}/{$file}";
     }
+
+    public function prependTransKeysForJson(string $file): array
+    {
+        $trans = trans($file);
+
+        return array_combine(
+            array_map(function ($key) use ($file) {
+                return "{$file}.{$key}";
+            }, array_keys($trans)),
+            array_values($trans)
+        );
+    }
 }

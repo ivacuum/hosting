@@ -80,6 +80,7 @@ return [
     'images.user' => 'Author\'s pics',
     'images.index' => 'Images',
 
+    'issues.show' => 'Issue',
     'issues.index' => 'Issues',
 
     'kanjis.edit' => 'Edit',
@@ -157,10 +158,15 @@ return [
     'yandex-users.index' => 'Yandex accounts',
     'yandex-users.create' => 'New account',
 
+    'yes' => 'Yes',
     'www' => 'View on site',
     'save' => 'Save',
-    'apply' => 'Apply',
+    'apply' => 'Apply', // Update & Continue editing
+    'cancel' => 'Cancel',
     'delete' => 'Delete',
+    'changes_saved' => 'Changes saved',
     'reset_filters' => 'Reset all filters',
     'delete_confirm' => 'Entry would be deleted. Continue?',
+    'check_form_data' => 'The form contains errors. Please check the data',
+    'delete_confirmation' => 'Are you sure you want to delete this entry?',
 ];
