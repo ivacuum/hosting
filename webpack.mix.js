@@ -59,4 +59,7 @@ mix.js('resources/assets/js/app.js', 'public/assets')
         },
       ],
     },
+    output: {
+      chunkFilename: 'assets/chunk-[name].js?id=[chunkhash]',
+    },
   })

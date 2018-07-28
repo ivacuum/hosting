@@ -1,15 +1,6 @@
 /* global VueRouter */
 import locale from './i18n/locale'
 
-import Dashboard from './components/acp/AcpDashboard.vue'
-import IssueShow from './components/acp/Issues/Show.vue'
-import IssueLayout from './components/acp/Issues/Layout.vue'
-import IssuesIndex from './components/acp/Issues/Index.vue'
-import TripForm from './components/acp/Trips/Form.vue'
-import TripShow from './components/acp/Trips/Show.vue'
-import TripLayout from './components/acp/Trips/Layout.vue'
-import TripsIndex from './components/acp/Trips/Index.vue'
-
 export default new VueRouter({
   mode: 'history',
   linkActiveClass: 'active',
@@ -19,25 +10,25 @@ export default new VueRouter({
       path: `${locale}/acp`,
       component: { render: h => h('router-view') },
       children: [
-        { path: '/', name: 'acp', component: Dashboard },
+        { path: '/', name: 'acp', component: () => import(/* webpackChunkName: "acp" */'./components/acp/AcpDashboard.vue') },
 
-        { path: 'issues', component: IssuesIndex },
+        { path: 'issues', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Issues/Index.vue') },
         {
           path: 'issues/:id',
-          component: IssueLayout,
+          component: () => import(/* webpackChunkName: "acp" */'./components/acp/Issues/Layout.vue'),
           children: [
-            { path: '/', component: IssueShow },
+            { path: '/', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Issues/Show.vue') },
           ],
         },
 
-        { path: 'trips', component: TripsIndex },
-        { path: 'trips/create', component: TripForm },
+        { path: 'trips', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Trips/Index.vue') },
+        { path: 'trips/create', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Trips/Form.vue') },
         {
           path: 'trips/:id',
-          component: TripLayout,
+          component: () => import(/* webpackChunkName: "acp" */'./components/acp/Trips/Layout.vue'),
           children: [
-            { path: '/', component: TripShow },
-            { path: 'edit', component: TripForm },
+            { path: '/', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Trips/Show.vue') },
+            { path: 'edit', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Trips/Form.vue') },
           ],
         },
       ],

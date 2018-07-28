@@ -1,11 +1,8 @@
 <script>
-import AcpBreadcrumbs from './acp/AcpBreadcrumbs.vue'
-import AcpMenu from './acp/AcpMenu.vue'
-
 export default {
   components: {
-    AcpBreadcrumbs,
-    AcpMenu,
+    'acp-breadcrumbs': () => import(/* webpackChunkName: "acp" */'./acp/AcpBreadcrumbs.vue'),
+    'acp-menu': () => import(/* webpackChunkName: "acp" */'./acp/AcpMenu.vue'),
   }
 }
 </script>
