@@ -6,12 +6,6 @@ export default {
       required: true,
     },
   },
-
-  data() {
-    return {
-      model: {},
-    }
-  },
 }
 </script>
 

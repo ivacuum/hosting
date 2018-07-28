@@ -17,8 +17,8 @@ export NODE_ENV=dev
 yarn install --ignore-platform
 export NODE_ENV=production
 
-echo "==> npm run production..."
-npm run production
+echo "==> yarn run production..."
+yarn run production
 
 # composer global require "hirak/prestissimo:^0.3"
 # composer global update
