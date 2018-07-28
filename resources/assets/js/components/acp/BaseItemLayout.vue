@@ -54,7 +54,9 @@ export default {
         <h2 class="mt-3 mt-lg-0 text-break-word">
           <a href="back" @click.prevent="$router.go(-1)" v-html="$root.svg.chevron_left"></a>
           <slot>{{ resource.breadcrumb }}</slot>
-          <slot name="append"></slot>
+          <slot name="append">
+            <small class="text-muted" v-if="resource.id">#{{ resource.id }}</small>
+          </slot>
         </h2>
       </slot>
 

@@ -9,9 +9,5 @@ export default {
 </script>
 
 <template>
-<layout v-bind="{ resource, svg, extra }" @destroy="destroy">
-  <template slot="append">
-    <small class="text-muted">#{{ resource.id }}</small>
-  </template>
-</layout>
+<layout v-bind="{ resource, svg, extra }" @destroy="destroy"/>
 </template>
