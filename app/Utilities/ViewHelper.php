@@ -1,5 +1,6 @@
 <?php namespace App\Utilities;
 
+use Ivacuum\Generic\Utilities\NamingHelper;
 use Ivacuum\Generic\Utilities\ViewHelper as BaseViewHelper;
 
 class ViewHelper extends BaseViewHelper
@@ -7,6 +8,22 @@ class ViewHelper extends BaseViewHelper
     public function magnet(string $info_hash, string $announcer, string $title): string
     {
         return "magnet:?xt=urn:btih:{$info_hash}&tr=" . urlencode($announcer) . "&dn=" . rawurlencode($title);
+    }
+
+    public function modelsSingularAndPluralForms(): array
+    {
+        $forms = [];
+
+        foreach (glob(app_path('*.php')) as $file) {
+            $model = pathinfo($file, PATHINFO_FILENAME);
+
+            $forms[$model] = [
+                'plural' => NamingHelper::transField($model),
+                'singular' => NamingHelper::kebab($model),
+            ];
+        }
+
+        return $forms;
     }
 
     public function pic(string $folder, string $file): string

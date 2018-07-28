@@ -1,5 +1,5 @@
 <script>
-import Model from '../../../models/Issue'
+import Model from './Model'
 import ModelsList from '../../../mixins/ModelsList'
 
 export default {

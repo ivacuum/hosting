@@ -1,5 +1,5 @@
 <script>
-import Model from '../../../models/Trip'
+import Model from './Model'
 import BaseForm from '../BaseForm.vue'
 
 export default {

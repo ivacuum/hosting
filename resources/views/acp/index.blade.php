@@ -13,5 +13,7 @@
     ViewHelper::prependTransKeysForJson('model')
   )
 ]); ?>
+
+<?php echo 'window.singularAndPluralForms = '.json_encode(ViewHelper::modelsSingularAndPluralForms()); ?>
 </script>
 @endsection
