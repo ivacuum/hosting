@@ -10,10 +10,6 @@ class Issues extends Controller
 
     public function index()
     {
-        if ($this->api_only && !$this->isApiRequest()) {
-            return $this->apiOnlyResponse();
-        }
-
         $status = request('status');
         $user_id = request('user_id');
 
