@@ -42,7 +42,7 @@
       hide-title
     ></feedback-form>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-3">
     @if (App::environment() === 'production')
       <ins
         class="adsbygoogle d-block"
