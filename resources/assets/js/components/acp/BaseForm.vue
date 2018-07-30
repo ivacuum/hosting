@@ -14,6 +14,10 @@ export default {
     StickyBottomButtons,
   },
 
+  props: {
+    resource: Object,
+  },
+
   data() {
     return {
       mode: 'new',
@@ -62,6 +66,16 @@ export default {
 
       if (error.response.status === 422) {
         this.$store.commit('setValidationErrors', error.response.data.errors)
+
+        if (error.response.data.errors._concurrency_control) {
+          notie.alert({
+            type: 'error',
+            text: error.response.data.errors._concurrency_control[0],
+            stay: true,
+          })
+          return
+        }
+
         notie.alert({ type: 'error', text: this.$i18n.t('check_form_data') })
         return
       }
@@ -77,7 +91,7 @@ export default {
       return payload
     },
 
-    store() {
+    store(addAnother = false) {
       this.saving = true
 
       axios
@@ -86,13 +100,21 @@ export default {
           this.$store.commit('clearValidationErrors')
 
           if (response.status === 201) {
-            this.$router.push(response.headers.location)
+            if (addAnother) {
+              notie.alert({ text: this.$i18n.t('changes_saved') })
+            } else {
+              this.$router.push(response.headers.location)
+            }
           }
         })
         .catch(this.catchFormError)
         .then(() => {
           this.saving = false
         })
+    },
+
+    storeAndAddAnother() {
+      return this.store(true)
     },
 
     submit() {
@@ -107,9 +129,13 @@ export default {
         .then((response) => {
           this.$store.commit('clearValidationErrors')
 
-          if (response.status === 204 && redirect) {
+          if (response.status === 200 && redirect) {
             this.$router.back()
           } else {
+            if (response.data._concurrency_control) {
+              this.extra._concurrency_control = response.data._concurrency_control
+            }
+
             notie.alert({ text: this.$i18n.t('changes_saved') })
           }
         })

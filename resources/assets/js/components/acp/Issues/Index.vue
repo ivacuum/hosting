@@ -12,7 +12,7 @@ export default {
   <list-header
     :meta="collection.meta"
     :plural="modelPlural"
-    :filters="filters"
+    :filters="collection.filters"
   />
 
   <table class="table-stats table-adaptive" v-if="collection.data.length">

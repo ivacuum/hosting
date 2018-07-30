@@ -19,8 +19,11 @@ export default {
     <input hidden type="text" name="mail" value="">
     <input hidden type="text" name="_concurrency_control" :value="extra._concurrency_control" v-if="isEditing">
 
-    <form-text required name="title" v-model="model.title"/>
+    <form-text required name="title_ru" v-model="model.title_ru"/>
+    <form-text required name="title_en" v-model="model.title_en"/>
     <form-text required name="slug" v-model="model.slug"/>
+
+    <form-text name="emoji" v-model="model.emoji"/>
 
     <sticky-bottom-buttons v-bind="{ isEditing, saving }" @apply="apply" @stay="storeAndAddAnother"/>
   </form>

@@ -16,6 +16,7 @@ use Illuminate\Support\Collection;
  * @property string  $iata
  * @property string  $lat
  * @property string  $lon
+ * @property integer $views
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
@@ -31,7 +32,7 @@ class City extends Model
     use HasLocalizedTitle,
         HasTripsMetaDescription;
 
-    protected $guarded = ['created_at', 'updated_at', 'goto'];
+    protected $guarded = ['created_at', 'updated_at'];
     protected $perPage = 50;
 
     // Relations
@@ -57,6 +58,22 @@ class City extends Model
         $title_field = static::titleField();
 
         return static::orderBy($title_field)->get(['id', $title_field])->pluck($title_field, 'id');
+    }
+
+    public static function forInputSelectJs(): Collection
+    {
+        $title_field = static::titleField();
+
+        return static::orderBy($title_field)
+            ->get(['id', 'slug', $title_field])
+            ->map(function ($item) use ($title_field) {
+                /* @var static $item */
+                return [
+                    'key' => $item->id,
+                    'slug' => $item->slug,
+                    'value' => $item->{$title_field},
+                ];
+            });
     }
 
     public function initial(): string

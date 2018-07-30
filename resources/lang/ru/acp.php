@@ -15,7 +15,7 @@ return [
     'cities.show' => 'Город',
     'cities.index' => 'Города',
     'cities.create' => 'Новый город',
-    'cities.update_geo' => 'Обновить геоданные',
+    'cities.fill_geodata' => 'Заполнить геоданные',
 
     'clients.add' => 'Добавить клиента',
     'clients.edit' => 'Редактирование',
@@ -165,6 +165,7 @@ return [
     'apply' => 'Применить',
     'cancel' => 'Отмена',
     'delete' => 'Удалить',
+    'add_stay' => 'Добавить и остаться',
     'changes_saved' => 'Изменения сохранены',
     'reset_filters' => 'Сбросить все фильтры',
     'delete_confirm' => 'Запись будет удалена. Продолжить?',

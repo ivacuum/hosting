@@ -27,7 +27,7 @@ return [
 
     'city.lat' => 'Latitude',
     'city.lon' => 'Longitude',
-    'city.iata' => 'IATA airport code',
+    'city.iata' => 'IATA',
     'city.title' => 'City',
     'city.title_en' => 'Title',
     'city.title_ru' => 'Title RU',

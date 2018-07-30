@@ -1,4 +1,7 @@
 <script>
+const hiddenFilters = ['filter', 'page', 'sd', 'sk']
+const excludedFilters = ['sd', 'sk']
+
 export default {
   props: {
     filters: {
@@ -9,19 +12,22 @@ export default {
 
   computed: {
     activeFilters() {
-      return this.filters.filter((el) => typeof this.$route.query[el.field] !== 'undefined')
+      return Object
+        .keys(this.$route.query)
+        .filter(el => !hiddenFilters.includes(el) && typeof this.$route.query[el] !== 'undefined')
     },
   },
 
   methods: {
     resetAll() {
-      const filters = this.filters.reduce((result, filter) => {
-        result[filter.field] = undefined
+      const query = Object.assign({}, this.$route.query)
 
-        return result
-      }, {})
+      Object
+        .keys(query)
+        .filter(el => !excludedFilters.includes(el))
+        .forEach((el) => { query[el] = undefined })
 
-      return { query: { ...this.$route.query, ...filters } }
+      return { query }
     },
 
     resetOne(field) {
@@ -48,12 +54,12 @@ export default {
   </router-link>
   <router-link
     class="btn btn-default my-1 mr-1"
-    :to="resetOne(filter.field)"
+    :to="resetOne(filter)"
     v-for="filter in activeFilters"
-    :key="filter.field"
+    :key="filter"
     active-class="noop-active"
   >
-    {{ filter.field }}: {{ $route.query[filter.field] }}
+    {{ filter }}: {{ $route.query[filter] }}
     <span class="text-danger" v-html="$root.svg.times"></span>
   </router-link>
 </div>

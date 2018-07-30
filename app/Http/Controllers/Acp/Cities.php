@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\City as Model;
+use App\Country;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Controllers\Acp\Controller;
@@ -8,10 +9,12 @@ use Ivacuum\Generic\Services\GoogleGeocoder;
 
 class Cities extends Controller
 {
+    protected $api_only = true;
     protected $sort_dir = 'asc';
     protected $sort_key = 'title';
     protected $sortable_keys = ['title', 'trips_count', 'views'];
     protected $show_with_count = ['trips'];
+    protected $reactive_fields = ['country_id', 'title_en', 'title_ru', 'lat', 'lon'];
 
     public function index()
     {
@@ -22,6 +25,7 @@ class Cities extends Controller
         $sort_key = $sort_key === 'title' ? Model::titleField() : $sort_key;
 
         $models = Model::query()
+            ->with('country')
             ->withCount('trips')
             ->orderBy($sort_key, $sort_dir)
             ->when($country_id, function (Builder $query) use ($country_id) {
@@ -30,27 +34,25 @@ class Cities extends Controller
             ->paginate()
             ->withPath(path("{$this->class}@index"));
 
-        return view($this->view, compact('models'));
+        return $this->modelResourceCollection($models);
     }
 
-    public function updateGeo($id, GoogleGeocoder $geocoder)
+    public function geodata(GoogleGeocoder $geocoder)
     {
-        /* @var Model $model */
-        $model = $this->getModel($id);
+        $q = request('q');
 
-        $geo = $geocoder->geocode("{$model->title}, {$model->country->title}")[0];
+        $geo = $geocoder->geocode($q)[0];
 
-        $model->update([
-            'lat' => $geo['lat'],
-            'lon' => $geo['lon'],
-        ]);
-
-        return back()->with('message', "Геоданные обновлены: [{$model->lat} {$model->lon}]");
+        return [
+            'lat' => str_replace(',', '.', $geo['lat']),
+            'lon' => str_replace(',', '.', $geo['lon']),
+            'address' => $geo['address'],
+        ];
     }
 
-    protected function redirectAfterStore($model)
+    protected function appendToCreateAndEditResponse($model): array
     {
-        return redirect(path("{$this->class}@show", $model));
+        return ['countries' => Country::forInputSelectJs()];
     }
 
     /**

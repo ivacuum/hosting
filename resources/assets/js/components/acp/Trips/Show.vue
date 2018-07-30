@@ -6,6 +6,21 @@ export default {
       required: true,
     },
   },
+
+  methods: {
+    notify() {
+      axios
+        .post(`${this.resource.show_url}/notify`)
+        .then(({ data }) => {
+          if (data.status === 'OK') {
+            notie.alert({ text: data.message })
+            return
+          }
+
+          notie.alert({ type: 'error', text: data.message })
+        })
+    }
+  }
 }
 </script>
 
@@ -17,5 +32,8 @@ export default {
   <div class="mt-3" v-if="resource.meta_image">
     <img class="img-fluid rounded" :src="resource.meta_image">
   </div>
+  <button class="btn btn-default mt-3" @click.prevent="notify">
+    {{ $t('trips.notify') }}
+  </button>
 </div>
 </template>

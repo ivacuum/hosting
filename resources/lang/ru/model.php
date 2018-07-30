@@ -29,7 +29,7 @@ return [
 
     'city.lat' => 'Широта',
     'city.lon' => 'Долгота',
-    'city.iata' => 'Код IATA',
+    'city.iata' => 'IATA',
     'city.title' => 'Город',
     'city.title_en' => 'Название EN',
     'city.title_ru' => 'Название',

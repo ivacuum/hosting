@@ -18,7 +18,7 @@ export default {
   computed: {
     current() {
       return typeof this.$route.query[this.field] !== 'undefined'
-        ? this.values.find((el) => el.value === this.$route.query[this.field]).label
+        ? this.values.find((el) => String(el.value) === String(this.$route.query[this.field])).label
         : 'Все'
     },
   },
@@ -54,8 +54,8 @@ export default {
       class="dropdown-item"
       active-class="noop-active"
       :to="applyFilter(row.value)"
-      v-for="(row, i) in values"
-      :key="i"
+      v-for="row in values"
+      :key="row.value"
     >
       {{ row.label }}
     </router-link>

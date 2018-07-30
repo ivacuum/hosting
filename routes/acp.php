@@ -10,7 +10,7 @@ RouteHelper::withoutCreate('Acp\ChatMessages');
 Route::post('chat-messages/batch', 'Acp\ChatMessages@batch');
 
 RouteHelper::crud('Acp\Cities');
-Route::get('cities/{id}/geo', 'Acp\Cities@updateGeo');
+Route::get('cities/geodata', 'Acp\Cities@geodata');
 
 RouteHelper::crud('Acp\Clients');
 

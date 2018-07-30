@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 /**
  * Артист
@@ -15,15 +16,29 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Artist extends Model
 {
-    protected $guarded = ['created_at', 'updated_at', 'goto'];
+    protected $guarded = ['created_at', 'updated_at'];
 
     public function breadcrumb(): string
     {
         return $this->title;
     }
 
-    public static function forInputSelect()
+    public static function forInputSelect(): Collection
     {
         return static::orderBy('title')->get(['id', 'title'])->pluck('title', 'id');
+    }
+
+    public static function forInputSelectJs(): Collection
+    {
+        return static::orderBy('title')
+            ->get(['id', 'title', 'slug'])
+            ->map(function ($item) {
+                /* @var static $item */
+                return [
+                    'key' => $item->id,
+                    'slug' => $item->slug,
+                    'value' => $item->title,
+                ];
+            });
     }
 }

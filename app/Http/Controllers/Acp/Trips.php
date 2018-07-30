@@ -7,10 +7,10 @@ use App\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Controllers\Acp\Controller;
-use Ivacuum\Generic\Rules\ConcurrencyControl;
 
 class Trips extends Controller
 {
+    protected $api_only = true;
     protected $sort_key = 'date_start';
     protected $sortable_keys = ['date_start', 'views', 'comments_count', 'photos_count'];
     protected $show_with_count = ['comments', 'photos'];
@@ -44,10 +44,6 @@ class Trips extends Controller
             ->paginate(50)
             ->withPath(path("{$this->class}@index"));
 
-        if (!$this->isApiRequest()) {
-            return view($this->view, compact('models', 'status'));
-        }
-
         return $this->modelResourceCollection($models);
     }
 
@@ -57,7 +53,10 @@ class Trips extends Controller
         $model = $this->getModel($id);
 
         if ($model->status !== Model::STATUS_PUBLISHED) {
-            return back()->with('message', 'Для рассылки уведомлений поездка должна быть опубликована');
+            return [
+                'status' => 'error',
+                'message' => 'Для рассылки уведомлений поездка должна быть опубликована',
+            ];
         }
 
         $users = User::where('notify_trips', 1)
@@ -66,24 +65,21 @@ class Trips extends Controller
 
         \Notification::send($users, new TripPublished($model));
 
-        return back()->with('message', 'Уведомления разосланы пользователям: '.sizeof($users));
+        return [
+            'status' => 'OK',
+            'message' => 'Уведомления разосланы пользователям: '.sizeof($users),
+        ];
     }
 
     protected function appendToCreateAndEditResponse($model): array
     {
-        /* @var Model $model */
-        $ary = ['cities' => City::forInputSelect()];
-
-        if ($model->exists) {
-            $ary[ConcurrencyControl::FIELD] = md5($model->updated_at);
-        }
-
-        return $ary;
+        return ['cities' => City::forInputSelectJs()];
     }
 
     protected function newModelDefaults($model)
     {
         /* @var Model $model */
+        $model->slug = 'city.'.now()->year;
         $model->status = Model::STATUS_HIDDEN;
         $model->date_end = now()->startOfDay();
         $model->date_start = now()->startOfDay();

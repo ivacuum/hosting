@@ -3,6 +3,7 @@
 use App\Traits\HasLocalizedTitle;
 use App\Traits\HasTripsMetaDescription;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 /**
  * Страна
@@ -12,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $title_en
  * @property string  $slug
  * @property string  $emoji
+ * @property integer $views
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
@@ -27,7 +29,7 @@ class Country extends Model
     use HasLocalizedTitle,
         HasTripsMetaDescription;
 
-    protected $guarded = ['created_at', 'updated_at', 'goto'];
+    protected $guarded = ['created_at', 'updated_at'];
 
     // Relations
     public function cities()
@@ -215,11 +217,26 @@ class Country extends Model
             : "https://life.ivacuum.ru/0.gif";
     }
 
-    public static function forInputSelect()
+    public static function forInputSelect(): Collection
     {
         $title_field = static::titleField();
 
         return static::orderBy($title_field)->get(['id', $title_field])->pluck($title_field, 'id');
+    }
+
+    public static function forInputSelectJs(): Collection
+    {
+        $title_field = static::titleField();
+
+        return static::orderBy($title_field)
+            ->get(['id', $title_field])
+            ->map(function ($item) use ($title_field) {
+                /* @var static $item */
+                return [
+                    'key' => $item->id,
+                    'value' => $item->{$title_field},
+                ];
+            });
     }
 
     public function initial(): string

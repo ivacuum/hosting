@@ -4,22 +4,6 @@ import ModelsList from '../../../mixins/ModelsList'
 
 export default {
   mixins: [Model, ModelsList],
-
-  data() {
-    return {
-      filters: [
-        {
-          field: 'status',
-          title: 'Состояние',
-          values: [
-            { label: 'Опубликованные', value: 1 },
-            { label: 'Пишутся', value: 0 },
-            { label: 'Скрытые', value: 2 },
-          ],
-        },
-      ],
-    }
-  },
 }
 </script>
 
@@ -28,7 +12,7 @@ export default {
   <list-header
     :meta="collection.meta"
     :plural="modelPlural"
-    :filters="filters"
+    :filters="collection.filters"
   />
 
   <table class="table-stats table-adaptive" v-if="collection.data.length">

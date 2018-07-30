@@ -18,6 +18,18 @@ export default {
       ],
     }
   },
+
+  methods: {
+    fillSlug() {
+      const slug = this.model.slug
+      const city = this.extra.cities.filter(el => String(el.key) === String(this.model.city_id))[0]
+      const segments = slug.split('.')
+
+      segments[0] = city.slug
+
+      this.model.slug = segments.join('.')
+    }
+  }
 }
 </script>
 
@@ -30,12 +42,12 @@ export default {
 
   <form class="my-3" ref="form" @submit.prevent="submit">
     <input hidden type="text" name="mail" value="">
-    <input hidden type="text" name="_concurrency_control" :value="extra._concurrency_control">
+    <input hidden type="text" name="_concurrency_control" :value="extra._concurrency_control" v-if="isEditing">
 
     <form-text required name="title_ru" v-model="model.title_ru" v-if="isEditing"/>
     <form-text required name="title_en" v-model="model.title_en" v-if="isEditing"/>
 
-    <form-select required name="city_id" :options="extra.cities" v-model="model.city_id"/>
+    <form-select required name="city_id" :options="extra.cities" v-model="model.city_id" @input="fillSlug"/>
 
     <form-text required name="slug" v-model="model.slug"/>
     <form-text required name="date_start" v-model="model.date_start"/>
@@ -47,7 +59,13 @@ export default {
     <form-text name="meta_description_en" v-model="model.meta_description_en"/>
     <form-text name="meta_image" v-model="model.meta_image"/>
 
-    <sticky-bottom-buttons v-bind="{ isEditing, saving }" @apply="apply"/>
+    <div class="form-group form-row" v-if="resource && resource.meta_image">
+      <div class="col-md-6 offset-md-4">
+        <img class="img-fluid rounded" :src="resource.meta_image">
+      </div>
+    </div>
+
+    <sticky-bottom-buttons v-bind="{ isEditing, saving }" @apply="apply" @stay="storeAndAddAnother"/>
   </form>
 </div>
 </template>

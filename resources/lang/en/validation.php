@@ -101,6 +101,8 @@ return [
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
 
+    'concurrency_control' => 'Another user has updated this resource since this page was loaded. Please refresh the page and try again.',
+
     'custom' => [
         /*
         'attribute-name' => [

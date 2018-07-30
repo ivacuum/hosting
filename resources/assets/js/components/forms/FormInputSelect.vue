@@ -28,10 +28,10 @@ export default {
       >
         <option :disabled="required" value=""></option>
         <option
-          v-for="(option, i) in options"
-          :key="i"
-          :value="i"
-        >{{ option }}</option>
+          v-for="option in options"
+          :key="option.key"
+          :value="option.key"
+        >{{ option.value }}</option>
       </select>
     </slot>
     <slot name="feedback">

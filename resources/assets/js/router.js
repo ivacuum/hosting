@@ -23,6 +23,28 @@ export default new VueRouter({
           ],
         },
 
+        { path: 'cities', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Cities/Index.vue') },
+        { path: 'cities/create', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Cities/Form.vue') },
+        {
+          path: 'cities/:id',
+          component: () => import(/* webpackChunkName: "acp" */'./components/acp/Cities/Layout.vue'),
+          children: [
+            { path: '/', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Cities/Show.vue') },
+            { path: 'edit', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Cities/Form.vue') },
+          ],
+        },
+
+        { path: 'countries', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Countries/Index.vue') },
+        { path: 'countries/create', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Countries/Form.vue') },
+        {
+          path: 'countries/:id',
+          component: () => import(/* webpackChunkName: "acp" */'./components/acp/DefaultItemLayout.vue'),
+          children: [
+            { path: '/', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Countries/Show.vue') },
+            { path: 'edit', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Countries/Form.vue') },
+          ],
+        },
+
         { path: 'issues', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Issues/Index.vue') },
         {
           path: 'issues/:id',
