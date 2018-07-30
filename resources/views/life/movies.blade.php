@@ -16,6 +16,7 @@
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "13 причин почему\n13 Reasons Why", 'id' => 582358],
+      ['title' => "Сделано в Америке\nAmerican Made", 'id' => 837552],
       ['title' => "Подлый Пит\nSneaky Pete", 'id' => 848297],
       ['title' => "Таксист\nTaeksi unjeonsa", 'id' => 1008113],
       ['title' => "Горе-творец\nThe Disaster Artist", 'id' => 828242],
