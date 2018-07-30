@@ -59,6 +59,18 @@ class ParserVk extends Controller
                 });
             }
 
+            $json = collect($json)->reject(function ($post) {
+                if (isset($post->attachments)) {
+                    foreach ($post->attachments as $attach) {
+                        if ($attach->type === 'link' && false !== mb_strpos($attach->link->url, 'vk.com/@')) {
+                            return true;
+                        }
+                    }
+                }
+
+                return false;
+            });
+
             foreach ($json as $post) {
                 if (@$post->is_pinned) {
                     continue;
@@ -82,7 +94,7 @@ class ParserVk extends Controller
 
                 if (isset($post->attachments)) {
                     foreach ($post->attachments as $attach) {
-                        if ($attach->type == 'photo') {
+                        if ($attach->type === 'photo') {
                             $photos++;
                         }
                     }
