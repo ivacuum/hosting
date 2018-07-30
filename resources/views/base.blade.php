@@ -18,6 +18,7 @@
   <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
   <link rel="icon" href="/apple-touch-icon.png">
   <link rel="canonical" href="{{ canonical() }}">
+  @yield('pagination_seo')
   @if (str_contains($css_classes, ['android', 'chrome', 'opera']) && in_array($locale, ['en', 'ru']))
     <link rel="manifest" href="/pwa-manifest-{{ $locale }}.json">
     <script async src="/assets/service-worker-installer.js"></script>

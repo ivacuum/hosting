@@ -6,4 +6,13 @@
       {{ $paginator->appends(UrlHelper::except())->links('tpl.pagination-simple') }}
     @endif
   </div>
+
+  @section('pagination_seo')
+    @if ($paginator->hasMorePages())
+      <link rel="next" href="{{ $paginator->nextPageUrl() }}">
+    @endif
+    @if (!$paginator->onFirstPage())
+      <link rel="prev" href="{{ $paginator->previousPageUrl() }}">
+    @endif
+  @endsection
 @endif
