@@ -11,7 +11,7 @@ export default {
 <template>
 <layout v-bind="{ resource, svg, extra }" @destroy="destroy">
   <template slot="append">
-    <small class="text-muted" v-html="resource.country.title"></small>
+    <small class="text-muted" v-html="resource.country.title" v-if="resource.country"></small>
   </template>
 </layout>
 </template>
