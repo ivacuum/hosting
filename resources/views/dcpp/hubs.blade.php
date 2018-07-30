@@ -42,19 +42,8 @@
       hide-title
     ></feedback-form>
   </div>
-  <div class="col-md-3">
-    @if (App::environment() === 'production')
-      <ins
-        class="adsbygoogle d-block"
-        data-ad-client="ca-pub-7802683087624570"
-        data-ad-slot="3039258747"
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      ></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({})</script>
-    @elseif (App::isLocal())
-      <div class="bg-info text-white d-flex justify-content-center align-items-center">google-vertical</div>
-    @endif
+  <div class="col-md-6 col-lg-4 col-xl-3 mt-3 mt-md-0">
+    @include('tpl.google-vertical')
   </div>
 </div>
 @endsection
