@@ -1,9 +1,19 @@
+$input-padding-top: 1.25rem;
+$input-padding-bottom: .25rem;
+$height-inner: ($font-size-base * $input-btn-line-height) + $input-padding-top + $input-padding-bottom;
+$height-inner-sm: ($font-size-sm * $input-btn-line-height-sm) + $input-padding-top + $input-padding-bottom;
+$height-inner-lg: ($font-size-lg * $input-btn-line-height-lg) + $input-padding-top + $input-padding-bottom;
+
 .form-label-group {
   position: relative;
 
-  input:not(:placeholder-shown):not(.placeholder-shown) {
-    padding-top: 1.25rem;
-    padding-bottom: .25rem;
+  .form-control { height: calc(#{$height-inner} + #{$input-height-border}); }
+  .form-control-sm { height: calc(#{$height-inner-sm} + #{$input-height-border}); }
+  .form-control-lg { height: calc(#{$height-inner-lg} + #{$input-height-border}); }
+
+  .form-control:not(:placeholder-shown):not(.placeholder-shown) {
+    padding-top: $input-padding-top;
+    padding-bottom: $input-padding-bottom;
 
     & ~ label {
       padding-top: .25rem;
