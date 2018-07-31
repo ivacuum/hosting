@@ -184,6 +184,7 @@
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Поймай меня, если сможешь\nCatch Me If You Can", 'id' => 324],
+      ['title' => "Особое мнение\nMinority Report", 'id' => 496],
     ]
   ])
 </div>
