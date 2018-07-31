@@ -4,8 +4,10 @@ return [
     'index' => 'Promocodes and coupons',
     'airbnb' => 'Airbnb',
     'booking' => 'Booking',
+    'drimsim' => 'Drimsim',
     'hosting' => 'Web-hosting',
     'timeweb' => 'Timeweb',
+    'simcards' => 'SIM cards',
     'firstvds' => 'FirstVDS',
     'your_email' => 'Your e-mail',
     'digitalocean' => 'DigitalOcean',
@@ -18,6 +20,8 @@ return [
     'booking.title' => 'Booking Coupon Codes for :Month :year',
 
     'do.title' => 'DigitalOcean Coupon Codes for :Month :year',
+
+    'drimsim.title' => 'Drimsim Coupon Codes for :Month :year',
 
     'firstvds.subject' => 'Promo code for 25% discount FirstVDS',
 

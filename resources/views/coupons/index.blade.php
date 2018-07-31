@@ -23,5 +23,10 @@
     <li class="mb-1"><a class="link" href="{{ path('Coupons@airbnb') }}">{{ trans('coupons.airbnb') }}</a></li>
     <li class="mb-1"><a class="link" href="{{ path('Coupons@booking') }}">{{ trans('coupons.booking') }}</a></li>
   </ul>
+
+  <h3 class="mt-4">{{ trans('coupons.simcards') }}</h3>
+  <ul>
+    <li class="mb-1"><a class="link" href="{{ path('Coupons@drimsim') }}">{{ trans('coupons.drimsim') }}</a></li>
+  </ul>
 </div>
 @endsection

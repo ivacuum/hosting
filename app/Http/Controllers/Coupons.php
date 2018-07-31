@@ -24,6 +24,11 @@ class Coupons extends Controller
         return view($this->view, ['meta_title' => $this->getServiceMetaTitle('do')]);
     }
 
+    public function drimsim()
+    {
+        return view($this->view, ['meta_title' => $this->getServiceMetaTitle('drimsim')]);
+    }
+
     public function firstvds()
     {
         return view($this->view);
@@ -49,6 +54,7 @@ class Coupons extends Controller
         $this->middleware('breadcrumbs:coupons.airbnb')->only('airbnb');
         $this->middleware('breadcrumbs:coupons.booking')->only('booking');
         $this->middleware('breadcrumbs:coupons.digitalocean')->only('digitalocean');
+        $this->middleware('breadcrumbs:coupons.drimsim')->only('drimsim');
         $this->middleware('breadcrumbs:coupons.firstvds')->only('firstvds');
         $this->middleware('breadcrumbs:coupons.timeweb')->only('timeweb');
     }

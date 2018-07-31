@@ -131,6 +131,7 @@ Route::get('promocodes-coupons', 'Coupons@index');
 Route::get('promocodes-coupons/airbnb', 'Coupons@airbnb');
 Route::get('promocodes-coupons/booking', 'Coupons@booking');
 Route::get('promocodes-coupons/digitalocean', 'Coupons@digitalocean');
+Route::get('promocodes-coupons/drimsim', 'Coupons@drimsim');
 Route::get('promocodes-coupons/firstvds', 'Coupons@firstvds');
 Route::post('promocodes-coupons/firstvds', 'Coupons@firstvdsPost');
 Route::get('promocodes-coupons/timeweb', 'Coupons@timeweb');

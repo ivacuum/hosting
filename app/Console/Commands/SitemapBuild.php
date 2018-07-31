@@ -50,6 +50,7 @@ class SitemapBuild extends BaseSitemapBuild
             'promocodes-coupons/airbnb',
             'promocodes-coupons/booking',
             'promocodes-coupons/digitalocean',
+            'promocodes-coupons/drimsim',
             'promocodes-coupons/firstvds',
             'promocodes-coupons/timeweb',
 
