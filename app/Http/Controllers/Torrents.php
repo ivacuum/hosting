@@ -20,6 +20,8 @@ class Torrents extends Controller
 
         abort_if($category_id && null === $category = \TorrentCategoryHelper::find($category_id), 404);
 
+        $torrents = Torrent::query();
+
         if ($q) {
             $ids = Torrent::search($q, function (SphinxQL $builder) use ($category_id, $fulltext, $q) {
                 $builder = $builder->match($fulltext ? '*' : 'title', SearchSynonym::addSynonymsToQuery($q), true);
@@ -33,9 +35,7 @@ class Torrents extends Controller
 
             event(new \App\Events\Stats\TorrentSearched);
 
-            $torrents = Torrent::whereIn('id', array_pluck($ids, 'id'));
-        } else {
-            $torrents = Torrent::query();
+            $torrents = $torrents->whereIn('id', array_pluck($ids, 'id'));
         }
 
         $torrents = $torrents->published()
@@ -102,7 +102,7 @@ class Torrents extends Controller
         $torrents = Torrent::select(Torrent::LIST_COLUMNS)
             ->where('user_id', $user->id)
             ->where('status', Torrent::STATUS_PUBLISHED)
-            ->withCount('commentsPublished as comments')
+            ->withCount('commentsPublished AS comments')
             ->orderBy('registered_at', 'desc')
             ->simplePaginate(null, ['id'])
             ->withPath(path("{$this->class}@my"));

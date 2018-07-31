@@ -1,14 +1,9 @@
-/* global VueI18n */
 import './bootstrap'
 
 import throttle from 'lodash/throttle'
 import Map from 'vac-gfe/js/yandex-map'
 import Pjax from 'vac-gfe/js/pjax'
 import YandexMetrika from 'vac-gfe/js/yandex-metrika'
-import router from './router'
-import store from './store/store'
-import AcpApp from './components/AcpApp.vue'
-import svg from './svg-icons'
 
 import NewsViewsObserver from './news-views-observer'
 import TorrentsViewsObserver from './torrents-views-observer'
@@ -27,6 +22,8 @@ import EventHandlers from './events'
 import PhotosMap from './photos-map'
 import Shortcuts from './shortcuts'
 import YandexDns from './yandex-dns'
+import initVueAcpSpa from './vue-init-acp-spa'
+import initVueComponents from './vue-init-components'
 
 /**
  * @namespace window.AppOptions
@@ -98,35 +95,8 @@ class Application {
   */
 
   initVue() {
-    const { self } = document.body.dataset
-
-    if (self.startsWith('Acp\\')) {
-      this.vue = new Vue({
-        el: '#app',
-        i18n: new VueI18n({
-          locale: this.options.locale,
-          messages: window.i18nData,
-          fallbackLocale: 'en',
-          silentTranslationWarn: true,
-        }),
-        store,
-        render: h => h(AcpApp),
-        router,
-
-        data() {
-          return {
-            svg,
-          }
-        },
-      })
-    } else {
-      this.vue = new Vue({
-        el: '#pjax_container',
-        i18n: new VueI18n({
-          locale: this.options.locale,
-        }),
-      })
-    }
+    initVueAcpSpa('#vue_acp', this.options.locale)
+    initVueComponents('#pjax_container', this.options.locale)
   }
 
   static lazyLoadImages() {

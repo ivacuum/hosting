@@ -3,7 +3,7 @@
 ])
 
 @section('body')
-<div id="app"></div>
+<div id="vue_acp"></div>
 
 <script>
 <?php echo 'window.i18nData = '.json_encode([
