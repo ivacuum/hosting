@@ -1,5 +1,6 @@
 <?php namespace App\Observers;
 
+use App\Avatar;
 use App\User as Model;
 
 class UserObserver
@@ -22,6 +23,13 @@ class UserObserver
             $model->torrents->each->delete();
             $model->trips->each->delete();
         });
+    }
+
+    public function deleted(Model $model)
+    {
+        if ($model->avatar) {
+            (new Avatar)->delete($model->avatar);
+        }
     }
 
     public function saving(Model $model)
