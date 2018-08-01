@@ -22,6 +22,19 @@ export default {
       default: [],
     },
   },
+
+  watch: {
+    '$route' (to, from) {
+      // Сброс ввода при сбросе фильтра
+      this.q = to.query.q
+    }
+  },
+
+  data() {
+    return {
+      q: this.$route.query.q,
+    }
+  },
 }
 </script>
 
@@ -39,6 +52,18 @@ export default {
     >
       {{ $t(`${plural}.create`) }}
     </router-link>
+    <form
+      class="my-1 mr-2"
+      @submit.prevent="$emit('search', q)"
+      v-if="!!$listeners.search"
+    >
+      <input
+        class="form-control"
+        :placeholder="$t('model.q_placeholder')"
+        autocapitalize="none"
+        v-model="q"
+      >
+    </form>
     <list-filter
       v-bind="filter"
       v-for="filter in filters"

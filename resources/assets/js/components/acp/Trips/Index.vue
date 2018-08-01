@@ -13,6 +13,7 @@ export default {
     :meta="collection.meta"
     :plural="modelPlural"
     :filters="collection.filters"
+    @search="search"
   />
 
   <table class="table-stats table-adaptive" v-if="collection.data.length">

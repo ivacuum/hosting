@@ -17,6 +17,7 @@ class Trips extends Controller
 
     public function index()
     {
+        $q = request('q');
         $status = request('status');
         $city_id = request('city_id');
         $user_id = request('user_id');
@@ -39,6 +40,11 @@ class Trips extends Controller
             })
             ->unless(null === $status, function (Builder $query) use ($status) {
                 return $query->where('status', $status);
+            })
+            ->when($q, function (Builder $query) use ($q) {
+                return $query->where('id', $q)
+                    ->orWhere(Model::titleField(), 'LIKE', "%{$q}%")
+                    ->orWhere('slug', 'LIKE', "%{$q}%");
             })
             ->orderBy($sort_key, $sort_dir)
             ->paginate(50)
