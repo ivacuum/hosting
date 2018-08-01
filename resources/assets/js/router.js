@@ -54,6 +54,17 @@ export default new VueRouter({
           ],
         },
 
+        { path: 'tags', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Tags/Index.vue') },
+        { path: 'tags/create', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Tags/Form.vue') },
+        {
+          path: 'tags/:id',
+          component: () => import(/* webpackChunkName: "acp" */'./components/acp/DefaultItemLayout.vue'),
+          children: [
+            { path: '/', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Tags/Show.vue') },
+            { path: 'edit', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Tags/Form.vue') },
+          ],
+        },
+
         { path: 'trips', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Trips/Index.vue') },
         { path: 'trips/create', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Trips/Form.vue') },
         {

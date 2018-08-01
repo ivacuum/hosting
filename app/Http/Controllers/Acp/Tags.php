@@ -6,6 +6,7 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Tags extends Controller
 {
+    protected $api_only = true;
     protected $sort_dir = 'asc';
     protected $sort_key = 'title';
     protected $sortable_keys = ['title', 'views', 'photos_count'];
@@ -19,9 +20,10 @@ class Tags extends Controller
 
         $models = Model::withCount('photos')
             ->orderBy($sort_key, $sort_dir)
-            ->get();
+            ->paginate(500)
+            ->withPath(path("{$this->class}@index"));
 
-        return view($this->view, compact('models'));
+        return $this->modelResourceCollection($models);
     }
 
     /**
