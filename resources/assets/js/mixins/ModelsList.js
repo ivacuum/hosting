@@ -46,4 +46,16 @@ export default {
         next()
       })
   },
+
+  methods: {
+    search(q) {
+      this.$router.push({
+        query: {
+          ...this.$route.query,
+          page: undefined,
+          q,
+        },
+      })
+    },
+  },
 }
