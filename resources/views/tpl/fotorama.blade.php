@@ -10,7 +10,7 @@ $alt = $is_crawler && isset($trip) ? $trip->imgAltText() : '';
         @else
           <img class="pic-group-border-radius js-lazy"
                alt=""
-               src="https://life.ivacuum.ru/0.gif"
+               src="https://life.ivacuum.org/0.gif"
                data-src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}">
         @endif
       </div>

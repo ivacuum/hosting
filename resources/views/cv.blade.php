@@ -17,7 +17,7 @@
   <meta content="profile" property="og:type">
   <meta content="Сергей Панков &middot; Резюме" property="og:title">
   <meta content="{{ canonical() }}" property="og:url">
-  <meta content="https://life.ivacuum.ru/me.jpg" property="og:image">
+  <meta content="https://life.ivacuum.org/me.jpg" property="og:image">
   <meta content="Веб-программист (PHP). Заинтересован в создании полезных людям веб-сервисов. Веб-технологиями увлекаюсь с 2003 года. С кодом моих проектов можно ознакомиться на Гитхабе. Возможна удаленная работа." property="og:description">
   <meta content="Сергей" property="profile:first_name">
   <meta content="Панков" property="profile:last_name">
@@ -258,7 +258,7 @@ a:hover {
   <div class="row-fluid heading">
     <div class="span8">
       {{-- <img class="my-picture" src="http://www.gravatar.com/avatar/693c6f7aa6029f0055a455ae89a989f7?s=150"> --}}
-      <img class="my-picture" src="https://life.ivacuum.ru/me.jpg" width="160" height="160">
+      <img class="my-picture" src="https://life.ivacuum.org/me.jpg" width="160" height="160">
       <h1 class="my-name">Сергей Панков</h1>
       <h2 class="my-profession">Веб-программист (PHP)</h2>
       <p class="my-message">Заинтересован в создании полезных людям веб-сервисов. Веб-технологиями увлекаюсь с 2003 года. С кодом моих проектов можно ознакомиться на <a href="https://github.com/ivacuum">Гитхабе</a>. Возможна удаленная работа.</p>

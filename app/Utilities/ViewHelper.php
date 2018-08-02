@@ -28,22 +28,22 @@ class ViewHelper extends BaseViewHelper
 
     public function pic(string $folder, string $file): string
     {
-        return "https://life.ivacuum.ru/-/1000x750/{$folder}/{$file}";
+        return "https://life.ivacuum.org/-/1000x750/{$folder}/{$file}";
     }
 
     public function pic2x(string $folder, string $file): string
     {
-        return "https://life.ivacuum.ru/{$folder}/{$file}";
+        return "https://life.ivacuum.org/{$folder}/{$file}";
     }
 
     public function picArbitrary(int $width, int $height, string $folder, string $file): string
     {
-        return "https://life.ivacuum.ru/-/{$width}x{$height}/{$folder}/{$file}";
+        return "https://life.ivacuum.org/-/{$width}x{$height}/{$folder}/{$file}";
     }
 
     public function picThumb(string $folder, string $file): string
     {
-        return "https://life.ivacuum.ru/-/100x75/{$folder}/{$file}";
+        return "https://life.ivacuum.org/-/100x75/{$folder}/{$file}";
     }
 
     public function prependTransKeysForJson(string $file): array

@@ -120,7 +120,7 @@ class Photo extends Model
 
     public function mobileUrl(): string
     {
-        return "https://life.ivacuum.ru/-/1000x750/{$this->slug}";
+        return "https://life.ivacuum.org/-/1000x750/{$this->slug}";
     }
 
     public function newSlugPrefix(string $new_prefix): void
@@ -132,12 +132,12 @@ class Photo extends Model
 
     public function originalUrl(): string
     {
-        return "https://life.ivacuum.ru/{$this->slug}";
+        return "https://life.ivacuum.org/{$this->slug}";
     }
 
     public function thumbnailUrl(): string
     {
-        return "https://life.ivacuum.ru/-/500x375/{$this->slug}";
+        return "https://life.ivacuum.org/-/500x375/{$this->slug}";
     }
 
     public function www(): string

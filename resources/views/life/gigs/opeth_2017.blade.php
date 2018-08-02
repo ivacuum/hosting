@@ -23,7 +23,7 @@
   </div>
   <div class="col-md-5">
     <div class="img-container">
-      <img src="https://life.ivacuum.ru/gigs/opeth.2017.10.11.jpg">
+      <img src="https://life.ivacuum.org/gigs/opeth.2017.10.11.jpg">
     </div>
   </div>
 </div>

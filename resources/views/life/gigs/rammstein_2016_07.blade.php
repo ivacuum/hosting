@@ -53,7 +53,7 @@
   </div>
   <div class="col-md-5">
     <div class="img-container">
-      <img src="https://life.ivacuum.ru/gigs/rammstein.2016.07.09.jpg">
+      <img src="https://life.ivacuum.org/gigs/rammstein.2016.07.09.jpg">
     </div>
   </div>
 </div>

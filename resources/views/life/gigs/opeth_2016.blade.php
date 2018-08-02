@@ -83,7 +83,7 @@ Highlights
   </div>
   <div class="col-md-5">
     <div class="img-container">
-      <img src="https://life.ivacuum.ru/gigs/opeth.2016.11.17.jpg">
+      <img src="https://life.ivacuum.org/gigs/opeth.2016.11.17.jpg">
     </div>
   </div>
 </div>

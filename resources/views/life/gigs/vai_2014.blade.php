@@ -47,7 +47,7 @@
   </div>
   <div class="col-md-5">
     <div class="img-container">
-      <img src="https://life.ivacuum.ru/gigs/vai.2014.05.26.jpg">
+      <img src="https://life.ivacuum.org/gigs/vai.2014.05.26.jpg">
     </div>
   </div>
 </div>

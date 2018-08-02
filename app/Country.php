@@ -214,7 +214,7 @@ class Country extends Model
     {
         return ($code = $this->flagCode())
             ? "https://ivacuum.org/i/flags/svg/{$code}.svg"
-            : "https://life.ivacuum.ru/0.gif";
+            : "https://life.ivacuum.org/0.gif";
     }
 
     public static function forInputSelect(): Collection

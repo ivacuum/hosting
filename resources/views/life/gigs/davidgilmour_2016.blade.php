@@ -41,7 +41,7 @@
   </div>
   <div class="col-md-5">
     <div class="img-container">
-      <img src="https://life.ivacuum.ru/gigs/davidgilmour.2016.07.18.png">
+      <img src="https://life.ivacuum.org/gigs/davidgilmour.2016.07.18.png">
     </div>
   </div>
 </div>
