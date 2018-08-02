@@ -8,6 +8,7 @@ return [
     'size' => 'Размер',
     'slug' => 'URL',
     'email' => 'Электронная почта',
+    'title' => 'Название',
     'author' => 'Автор',
     'clicks' => 'Клики',
     'filter' => 'Фильтр',
@@ -16,13 +17,13 @@ return [
     'trip_id' => 'Поездка',
     'alias_id' => 'Алиас',
     'markdown' => 'Markdown',
+    'title_en' => 'Название EN',
+    'title_ru' => 'Название',
     'artist_id' => 'Артист',
     'client_id' => 'Клиент',
     'country_id' => 'Страна',
     'q_placeholder' => 'Поиск...',
     'yandex_user_id' => 'Пользователь API Яндекса',
-
-    'artist.title' => 'Название',
 
     'chat-message.text' => 'Текст',
     'chat-message.status' => 'Состояние',
@@ -31,8 +32,6 @@ return [
     'city.lon' => 'Долгота',
     'city.iata' => 'IATA',
     'city.title' => 'Город',
-    'city.title_en' => 'Название EN',
-    'city.title_ru' => 'Название',
     'city.trips_count' => 'Поездки',
 
     'client.name' => 'Имя',
@@ -48,7 +47,6 @@ return [
     'country.cities_count' => 'Города',
 
     'dcpp-hub.port' => 'Порт',
-    'dcpp-hub.title' => 'Название',
     'dcpp-hub.status' => 'Состояние',
     'dcpp-hub.address' => 'Адрес',
 
@@ -57,7 +55,6 @@ return [
 
     'external-identity.provider' => 'Провайдер',
 
-    'file.title' => 'Название',
     'file.folder' => 'Папка',
     'file.extension' => 'Расширение',
     'file.downloads' => 'Скачивания',
@@ -65,8 +62,7 @@ return [
 
     'gig.date' => 'Дата',
     'gig.status' => 'Состояние',
-    'gig.title_en' => 'Название EN',
-    'gig.title_ru' => 'Название',
+    'gig.meta_image' => 'Обложка',
     'gig.meta_description_en' => 'Meta description EN',
     'gig.meta_description_ru' => 'Meta description',
 
@@ -89,13 +85,9 @@ return [
 
     'server.host' => 'Хост',
     'server.text' => 'Заметки',
-    'server.title' => 'Название',
 
     'tag.title' => 'Тэг',
-    'tag.title_ru' => 'Название',
-    'tag.title_en' => 'Название EN',
 
-    'torrent.title' => 'Название',
     'torrent.views' => 'Просмотры',
     'torrent.clicks' => 'Клики по магнету',
     'torrent.rto_id' => 'RTO ID',
@@ -106,11 +98,8 @@ return [
     'torrent.updated_at' => 'Обновлена',
     'torrent.related_query' => 'Запрос похожих раздач',
 
-    'trip.title' => 'Название',
     'trip.status' => 'Состояние',
     'trip.markdown' => 'Текст',
-    'trip.title_en' => 'Название EN',
-    'trip.title_ru' => 'Название',
     'trip.date_end' => 'Дата окончания',
     'trip.date_start' => 'Дата начала',
     'trip.meta_image' => 'Обложка',

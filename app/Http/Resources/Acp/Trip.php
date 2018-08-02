@@ -24,7 +24,7 @@ class Trip extends Resource
             'meta_image' => $this->meta_image ? $this->metaImage() : '',
             'meta_title' => $this->meta_title,
             'localized_date' => $this->localizedDate(),
-            'meta_description' => $this->meta_description,
+            'meta_description' => $this->metaDescription(),
 
             'edit_url' => $this->when($me->can('edit', 'App\Trip'), path('Acp\Trips@edit', $this)),
             'show_url' => $this->when($me->can('show', 'App\Trip'), path('Acp\Trips@show', $this)),

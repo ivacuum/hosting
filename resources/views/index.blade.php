@@ -127,7 +127,7 @@
             {{ $trip->title }}
             <span class="trip-cover-date">{{ $trip->timelinePeriod(true) }}</span>
           </div>
-          <div class="trip-cover-description">{{ $trip->meta_description }}</div>
+          <div class="trip-cover-description">{{ $trip->metaDescription() }}</div>
         </div>
       </a>
     </div>

@@ -91,7 +91,7 @@ RouteHelper::withoutCreate('Acp\Torrents');
 Route::get('torrents/{id}/updateRto', 'Acp\Torrents@updateRto');
 
 RouteHelper::crud('Acp\Trips');
-Route::post('trips/{id}/notify', 'Acp\Trips@notify');
+Route::post('trips/{id}/notify', 'Acp\TripPublishedNotify');
 
 RouteHelper::crud('Acp\Users');
 

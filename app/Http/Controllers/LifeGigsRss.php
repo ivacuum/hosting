@@ -26,7 +26,7 @@ class LifeGigsRss extends Controller
                     'title' => htmlspecialchars($gig->metaTitle()),
                     'link' => $link.'?from=rss-title',
                     'guid' => $link,
-                    'description' => "<p>{$gig->meta_description}</p>{$cover}",
+                    'description' => "<p>{$gig->metaDescription()}</p>{$cover}",
                     'pubDate' => $gig->date->toRfc2822String(),
                 ];
             });

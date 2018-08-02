@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $meta_description_ru
  * @property string  $meta_description_en
  * @property string  $meta_image
+ * @property integer $views
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
@@ -51,6 +52,11 @@ class Gig extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function emails()
+    {
+        return $this->morphMany(Email::class, 'rel');
+    }
+
     // Attributes
     public function getMetaDescriptionAttribute()
     {
@@ -73,12 +79,17 @@ class Gig extends Model
 
     public function breadcrumb(): string
     {
-        return "{$this->title} {$this->fullDate()}";
+        return $this->title;
     }
 
     public function fullDate(): string
     {
         return $this->date->formatLocalized(trans('life.date.day_month_year'));
+    }
+
+    public function metaDescription(): string
+    {
+        return $this->meta_description;
     }
 
     public function metaTitle(): string
@@ -91,12 +102,12 @@ class Gig extends Model
         return $this->date->formatLocalized(trans('life.date.day_month'));
     }
 
-    public function template()
+    public function template(): string
     {
         return 'life.gigs.'.str_replace('.', '_', $this->slug);
     }
 
-    public function www()
+    public function www(): string
     {
         return path('Life@page', $this->slug);
     }

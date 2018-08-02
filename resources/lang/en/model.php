@@ -6,6 +6,7 @@ return [
     'size' => 'Size',
     'slug' => 'URL',
     'email' => 'Email',
+    'title' => 'Title',
     'author' => 'Author',
     'clicks' => 'Clicks',
     'filter' => 'Filter',
@@ -14,13 +15,13 @@ return [
     'trip_id' => 'Trip',
     'alias_id' => 'Alias',
     'markdown' => 'Markdown',
+    'title_en' => 'Title',
+    'title_ru' => 'Title RU',
     'artist_id' => 'Artist',
     'client_id' => 'Client',
     'country_id' => 'Country',
     'q_placeholder' => 'Search...',
     'yandex_user_id' => 'Yandex API User',
-
-    'artist.title' => 'Title',
 
     'chat-message.text' => 'Text',
     'chat-message.status' => 'Status',
@@ -29,8 +30,6 @@ return [
     'city.lon' => 'Longitude',
     'city.iata' => 'IATA',
     'city.title' => 'City',
-    'city.title_en' => 'Title',
-    'city.title_ru' => 'Title RU',
     'city.trips_count' => 'Trips',
 
     'client.name' => 'Name',
@@ -41,13 +40,10 @@ return [
 
     'country.emoji' => 'Flag emoji',
     'country.title' => 'Country',
-    'country.title_en' => 'Title',
-    'country.title_ru' => 'Title RU',
     'country.trips_count' => 'Trips',
     'country.cities_count' => 'Cities',
 
     'dcpp-hub.port' => 'Port',
-    'dcpp-hub.title' => 'Title',
     'dcpp-hub.status' => 'Status',
     'dcpp-hub.address' => 'Address',
 
@@ -56,7 +52,6 @@ return [
 
     'external-identity.provider' => 'Provider',
 
-    'file.title' => 'Title',
     'file.folder' => 'Folder',
     'file.extension' => 'Extension',
     'file.downloads' => 'Downloads',
@@ -64,9 +59,7 @@ return [
 
     'gig.date' => 'Date',
     'gig.status' => 'Status',
-    'gig.title_en' => 'Title',
-    'gig.title_ru' => 'Title RU',
-    'gig.meta_image' => 'Meta image',
+    'gig.meta_image' => 'Cover image',
     'gig.meta_description_en' => 'Meta description',
     'gig.meta_description_ru' => 'Meta description RU',
 
@@ -78,7 +71,6 @@ return [
     'kanji.radicals_count' => 'Radicals',
 
     'news.html' => 'HTML',
-    'news.title' => 'Title',
     'news.status' => 'Status',
 
     'radical.level' => 'Level',
@@ -88,13 +80,9 @@ return [
 
     'server.host' => 'Host',
     'server.text' => 'Notes',
-    'server.title' => 'Title',
 
     'tag.title' => 'Tag',
-    'tag.title_ru' => 'Title RU',
-    'tag.title_en' => 'Title',
 
-    'torrent.title' => 'Title',
     'torrent.views' => 'Views',
     'torrent.clicks' => 'Magnet clicked',
     'torrent.rto_id' => 'RTO ID',
@@ -105,11 +93,8 @@ return [
     'torrent.updated_at' => 'Updated on',
     'torrent.related_query' => 'Related query',
 
-    'trip.title' => 'Title',
     'trip.status' => 'Status',
     'trip.markdown' => 'Text',
-    'trip.title_en' => 'Title',
-    'trip.title_ru' => 'Title RU',
     'trip.date_end' => 'End date',
     'trip.date_start' => 'Start date',
     'trip.meta_image' => 'Cover image',
