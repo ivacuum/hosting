@@ -111,4 +111,9 @@ class Gig extends Model
     {
         return path('Life@page', $this->slug);
     }
+
+    public function wwwLocale(string $locale = ''): string
+    {
+        return path_locale('Life@page', $this->slug, false, $locale);
+    }
 }

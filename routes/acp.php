@@ -51,6 +51,7 @@ RouteHelper::withoutCreateAndEdit('Acp\ExternalIdentities');
 RouteHelper::crud('Acp\Files');
 
 RouteHelper::crud('Acp\Gigs');
+Route::post('gigs/{id}/notify', 'Acp\GigPublishedNotify');
 
 RouteHelper::withoutCreateAndEdit('Acp\Images');
 Route::post('images/batch', 'Acp\Images@batch');
