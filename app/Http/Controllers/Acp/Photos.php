@@ -13,6 +13,7 @@ class Photos extends Controller
     public function index()
     {
         $filter = request('filter');
+        $on_page = request('on_page');
 
         [$sort_key, $sort_dir] = $this->getSortParams();
 
@@ -21,7 +22,7 @@ class Photos extends Controller
             ->applyFilter($filter)
             ->forTag(request('tag_id'))
             ->orderBy($sort_key, $sort_dir)
-            ->paginate()
+            ->paginate($on_page)
             ->withPath(path("{$this->class}@index"));
 
         return view($this->view, compact('filter', 'models'));
