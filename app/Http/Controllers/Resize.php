@@ -8,6 +8,7 @@ class Resize extends Controller
 {
     protected $whitelist = [
         'https://life.ivacuum.ru/',
+        'https://life.ivacuum.org/',
     ];
 
     public function image($width, $height, Client $client)
