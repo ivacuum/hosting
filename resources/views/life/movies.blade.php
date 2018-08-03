@@ -89,10 +89,11 @@
   <div class="h3">2011 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
-      ['title' => "Black Mirror\nЧерное зеркало", 'id' => 655800],
-      ['title' => "Bron/Broen\nМост", 'id' => 574497],
+      ['title' => "Черное зеркало\nBlack Mirror", 'id' => 655800],
+      ['title' => "Мост\nBron/Broen", 'id' => 574497],
       ['title' => "Родина\nHomeland", 'id' => 574688],
       ['title' => "1+1\nIntouchables", 'id' => 535341],
+      ['title' => "Миссия невыполнима: Протокол Фантом\nMission: Impossible - Ghost Protocol", 'id' => 472362],
       ['title' => "Бесстыдники\nShameless", 'id' => 571335],
       ['title' => "Форс-мажоры\nSuits", 'id' => 557806],
       ['title' => "Однажды в Ирландии\nThe Guard", 'id' => 484474],
