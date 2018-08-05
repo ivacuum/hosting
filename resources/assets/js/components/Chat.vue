@@ -1,23 +1,30 @@
 <template>
 <div>
-  <div class="chat-container rounded">
-    <div class="d-flex mt-2" style="font-size: 14px;" v-for="message in messages">
-      <div class="flex-shrink-0" style="width: 2.75rem;">
-        <img
-          class="rounded-circle"
-          :src="message.user.avatar"
-          style="width: 2.25rem; height: 2.25rem;"
-          v-if="message.user.avatar"
-        >
-        <div v-else>
-          <svg class="d-inline-block align-middle" viewBox="0 0 130 130" style="width: 2.25rem; height: 2.25rem;"><rect x="0" y="0" width="100%" height="100%" rx="50%" :fill="message.user.color"></rect><text font-size="59.8" font-family="Helvetica Neue,Helvetica,Arial" x="65" y="65" dy=".38em" letter-spacing="-.05em" text-anchor="middle" fill="#fff">{{ message.user.avatar_text }}</text></svg>
+  <div class="chat-container rounded" style="font-size: .875rem;">
+    <div v-for="(messagesForDate, date) in messagesGroupedByDate">
+      <div class="chat-date my-1 text-center">
+        <div class="chat-bg d-inline-block mx-auto p-1 rounded">{{ date }}</div>
+      </div>
+      <div class="d-flex mt-2" v-for="(message, index) in messagesForDate">
+        <div class="flex-shrink-0" style="width: 2.75rem;">
+          <div v-if="!sameUser[date][index]">
+            <img
+              class="rounded-circle"
+              :src="message.user.avatar"
+              style="width: 2.25rem; height: 2.25rem;"
+              v-if="message.user.avatar"
+            >
+            <div v-else>
+              <svg class="d-inline-block align-middle" viewBox="0 0 130 130" style="width: 2.25rem; height: 2.25rem;"><rect x="0" y="0" width="100%" height="100%" rx="50%" :fill="message.user.color"></rect><text font-size="59.8" font-family="Helvetica Neue,Helvetica,Arial" x="65" y="65" dy=".38em" letter-spacing="-.05em" text-anchor="middle" fill="#fff">{{ message.user.avatar_text }}</text></svg>
+            </div>
+          </div>
         </div>
+        <div class="flex-grow-1">
+          <div class="lh-1" :style="{ color: message.user.color }" v-if="!sameUser[date][index]">{{ message.user.public_name }}</div>
+          <div class="text-break-word" v-html="message.html"></div>
+        </div>
+        <div class="flex-shrink-0 chat-time text-right small" :title="message.date" style="width: 3rem;">{{ message.time }}</div>
       </div>
-      <div class="flex-grow-1">
-        <div style="line-height: 1;" :style="{ color: message.user.color }">{{ message.user.public_name }}</div>
-        <div class="text-break-word" v-html="message.html"></div>
-      </div>
-      <div class="flex-shrink-0 chat-date text-right small" :title="message.date" style="width: 3rem;">{{ message.time }}</div>
     </div>
     <!--
     <div class="chat-comment" v-if="typing">
@@ -61,6 +68,38 @@ export default {
     }
   },
   */
+
+  computed: {
+    messagesGroupedByDate() {
+      return this.messages.reduce((result, message) => {
+        if (typeof result[message.date] === 'undefined') result[message.date] = []
+
+        result[message.date].push(message)
+
+        return result
+      }, {})
+    },
+
+    sameUser() {
+      if (!this.messages.length) return
+
+      const result = {}
+
+      Object.entries(this.messagesGroupedByDate).map(([date, messages]) => {
+        let previous
+
+        messages.forEach((message) => {
+          if (typeof result[date] === 'undefined') result[date] = []
+
+          result[date].push(message.user.id === previous ? true : false)
+
+          previous = message.user.id
+        })
+      })
+
+      return result
+    }
+  },
 
   methods: {
     /*

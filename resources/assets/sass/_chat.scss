@@ -6,7 +6,15 @@
   border: $border-width solid $input-border-color;
 }
 
+.chat-bg { background: #efefef; }
+
 .chat-date {
+  position: sticky;
+  top: 0;
+}
+
+.chat-date,
+.chat-time {
   font-size: .75rem;
   color: #aaa;
 }
