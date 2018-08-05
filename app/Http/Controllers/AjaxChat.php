@@ -1,13 +1,13 @@
 <?php namespace App\Http\Controllers;
 
 use App\ChatMessage;
-use App\Http\Resources\Chat as ChatResource;
+use App\Http\Resources\ChatMessage as ChatMessageResource;
 
 class AjaxChat extends Controller
 {
     public function index()
     {
-        return ChatResource::collection(
+        return ChatMessageResource::collection(
             ChatMessage::with('user')
                 ->where('status', ChatMessage::STATUS_PUBLISHED)
                 ->orderBy('id', 'desc')
@@ -29,7 +29,9 @@ class AjaxChat extends Controller
             'user_id' => request()->user()->id,
         ]);
 
-        $chat = new ChatResource($chat_message);
+        $chat_message->setRelation('user', request()->user());
+
+        $chat = new ChatMessageResource($chat_message);
 
         broadcast(new \App\Events\ChatMessagePosted($chat->toArray(request())));
 

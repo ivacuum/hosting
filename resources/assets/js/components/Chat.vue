@@ -1,10 +1,23 @@
 <template>
 <div>
   <div class="chat-container rounded">
-    <div class="chat-comment" v-for="message in messages">
-      <span class="chat-date" :title="message.date">[{{ message.time }}]</span>
-      <span class="chat-user">{{ message.author }}</span>:
-      <span class="text-break-word" v-html="message.html"></span>
+    <div class="d-flex mt-2" style="font-size: 14px;" v-for="message in messages">
+      <div class="flex-shrink-0" style="width: 2.75rem;">
+        <img
+          class="rounded-circle"
+          :src="message.user.avatar"
+          style="width: 2.25rem; height: 2.25rem;"
+          v-if="message.user.avatar"
+        >
+        <div v-else>
+          <svg class="d-inline-block align-middle" viewBox="0 0 130 130" style="width: 2.25rem; height: 2.25rem;"><rect x="0" y="0" width="100%" height="100%" rx="50%" :fill="message.user.color"></rect><text font-size="59.8" font-family="Helvetica Neue,Helvetica,Arial" x="65" y="65" dy=".38em" letter-spacing="-.05em" text-anchor="middle" fill="#fff">{{ message.user.avatar_text }}</text></svg>
+        </div>
+      </div>
+      <div class="flex-grow-1">
+        <div style="line-height: 1;" :style="{ color: message.user.color }">{{ message.user.public_name }}</div>
+        <div class="text-break-word" v-html="message.html"></div>
+      </div>
+      <div class="flex-shrink-0 chat-date text-right small" :title="message.date" style="width: 3rem;">{{ message.time }}</div>
     </div>
     <!--
     <div class="chat-comment" v-if="typing">
@@ -28,11 +41,11 @@ export default {
   data() {
     return {
       action: '/ajax/chat',
+      typing: false,
       message: '',
       messages: [],
-      typing: false,
-      typing_clear_interval: 5000,
-      typing_timer_id: ''
+      typingClearInterval: 5000,
+      typingTimerId: ''
     }
   },
 
@@ -52,11 +65,11 @@ export default {
   methods: {
     /*
     clearTyping() {
-      clearTimeout(this.typing_timer_id)
+      clearTimeout(this.typingTimerId)
 
-      this.typing_timer_id = setTimeout(() => {
+      this.typingTimerId = setTimeout(() => {
         this.typing = false
-      }, this.typing_clear_interval)
+      }, this.typingClearInterval)
     },
     */
 
@@ -99,9 +112,9 @@ export default {
 
     scrollChatDown() {
       this.$nextTick(() => {
-        let chat_container = this.getChatContainer()
+        let chatContainer = this.getChatContainer()
 
-        chat_container.scrollTop = chat_container.scrollHeight
+        chatContainer.scrollTop = chatContainer.scrollHeight
       })
     },
 

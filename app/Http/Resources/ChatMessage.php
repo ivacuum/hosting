@@ -2,19 +2,19 @@
 
 use Illuminate\Http\Resources\Json\Resource;
 
-class Chat extends Resource
+/**
+ * @mixin \App\ChatMessage
+ */
+class ChatMessage extends Resource
 {
     public function toArray($request)
     {
-        /* @var \App\ChatMessage $this */
         return [
             'id' => $this->id,
             'date' => $this->created_at->toDateString(),
-            'time' => $this->created_at->toTimeString(),
+            'time' => $this->created_at->format('H:i'),
             'html' => $this->html,
-            'author' => $this->relationLoaded('user')
-                ? $this->user->publicName()
-                : optional($request->user())->publicName(),
+            'user' => $this->relationLoaded('user') ? new User($this->user) : null,
         ];
     }
 }
