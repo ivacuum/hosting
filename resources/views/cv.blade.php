@@ -553,6 +553,17 @@ body {
     @endru
   </div>
 
+  <div class="h4 portfolio-year">2014</div>
+  <div>
+    <div class="h5">
+      <span class="text-success">@svg (primitive-dot)</span>
+      <a href="http://www.veloman.org/" rel="nofollow">veloman.org</a>
+    </div>
+    @ru
+      <p>В дополнение к физическому магазину Веломан был сделан интернет-магазин с <strong>интеграцией с 1С</strong>. Все представленные на сайте товары можно купить с оплатой через Робокассу.</p>
+    @endru
+  </div>
+
   <div class="h4 portfolio-year">2013</div>
   <div>
     @ru
