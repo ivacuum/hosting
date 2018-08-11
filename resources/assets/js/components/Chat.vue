@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="chat-container rounded" style="font-size: .875rem;">
+  <div class="chat-container font-smooth rounded" style="font-size: .875rem;">
     <div v-for="(messagesForDate, date) in messagesGroupedByDate">
       <div class="chat-date my-1 text-center">
         <div class="chat-bg d-inline-block mx-auto p-1 rounded">{{ date }}</div>
