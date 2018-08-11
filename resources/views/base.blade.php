@@ -8,7 +8,6 @@
 @if (!Request::pjax())
   <link rel="dns-prefetch" href="https://life.ivacuum.org">
   <link rel="dns-prefetch" href="https://ivacuum.org">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="x-pjax-version" content="2">
   <meta name="format-detection" content="telephone=no">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
