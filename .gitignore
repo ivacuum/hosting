@@ -9,6 +9,7 @@
 /.phpstorm.meta.php
 .DS_Store
 .env
+.phpunit.result.cache
 .tm_properties
 Thumbs.db
 composer.phar
