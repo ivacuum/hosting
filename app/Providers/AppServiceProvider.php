@@ -53,5 +53,6 @@ class AppServiceProvider extends ServiceProvider
         \App\Torrent::observe(\App\Observers\TorrentObserver::class);
         \App\Vocabulary::observe(\App\Observers\VocabularyObserver::class);
         \App\YandexUser::observe(\App\Observers\YandexUserObserver::class);
+        \App\ChatMessage::observe(\App\Observers\ChatMessageObserver::class);
     }
 }
