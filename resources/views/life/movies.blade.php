@@ -128,6 +128,7 @@
     'movies' => [
       ['title' => "Бобро поржаловать!\nBienvenue chez les Ch'tis", 'id' => 391735],
       ['title' => "Во все тяжкие\nBreaking Bad", 'id' => 404900],
+      ['title' => "Темный рыцарь\nThe Dark Knight", 'id' => 111543],
       ['title' => "Всегда говори «ДА»\nYes Man", 'id' => 391772],
       ['title' => "ВАЛЛ·И\nWALL·E", 'id' => 279102],
       ['title' => "Ип Ман\nYip Man", 'id' => 409507],
