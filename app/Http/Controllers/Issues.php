@@ -32,6 +32,19 @@ class Issues extends Controller
             'title' => request()->ajax() ? '' : 'required',
         ]);
 
+        if ($is_guest) {
+            $user = (new User)->findByEmailOrCreate([
+                'email' => $email,
+                'status' => User::STATUS_INACTIVE,
+            ]);
+
+            if ($user->wasRecentlyCreated) {
+                event(new \App\Events\Stats\UserRegisteredAutoWhenIssueAdded);
+            } else {
+                event(new \App\Events\Stats\UserFoundByEmailWhenIssueAdded);
+            }
+        }
+
         Issue::create([
             'name' => $name,
             'page' => $this->pathFromUrl(session()->previousUrl()),
@@ -39,7 +52,7 @@ class Issues extends Controller
             'email' => $email,
             'title' => $title,
             'status' => Issue::STATUS_OPEN,
-            'user_id' => $is_guest ? 0 : $user->id,
+            'user_id' => $user->id,
         ]);
 
         return response('', 201);
