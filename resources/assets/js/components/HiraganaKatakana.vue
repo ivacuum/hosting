@@ -35,7 +35,7 @@
           </transition>
         </div>
       </div>
-      <div v-show="stage === 'practice'">
+      <div class="mw-600" v-show="stage === 'practice'">
         <p>{{ $t('PRACTICE_TEXT') }}</p>
         <div class="mx-auto mw-400">
           <div class="text-center py-2 py-md-5">
