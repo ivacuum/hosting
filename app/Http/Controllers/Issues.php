@@ -42,8 +42,6 @@ class Issues extends Controller
             'user_id' => $is_guest ? 0 : $user->id,
         ]);
 
-        event(new \App\Events\Stats\IssueAdded);
-
         return response('', 201);
     }
 

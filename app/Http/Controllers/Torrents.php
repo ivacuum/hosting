@@ -165,8 +165,6 @@ class Torrents extends Controller
             'registered_at' => now(),
         ]);
 
-        event(new \App\Events\Stats\TorrentAdded);
-
         return redirect($torrent->www());
     }
 

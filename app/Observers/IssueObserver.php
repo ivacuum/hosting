@@ -15,6 +15,8 @@ class IssueObserver
     public function created(Model $model)
     {
         $this->notify($model);
+
+        event(new \App\Events\Stats\IssueAdded);
     }
 
     protected function notify(Model $model)

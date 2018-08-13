@@ -4,6 +4,11 @@ use App\Torrent as Model;
 
 class TorrentObserver
 {
+    public function created(Model $model)
+    {
+        event(new \App\Events\Stats\TorrentAdded);
+    }
+
     public function deleting(Model $model)
     {
         \DB::transaction(function () use ($model) {
