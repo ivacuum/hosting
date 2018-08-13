@@ -22,15 +22,6 @@ class TripPublished extends Notification implements ShouldQueue
         return ['mail'];
     }
 
-    public function toArray($notifiable)
-    {
-        return [
-            'id' => $this->model->id,
-            'slug' => $this->model->slug,
-            'title' => "{$this->model->title} · {$this->model->localizedDate()}",
-        ];
-    }
-
     public function toMail($notifiable)
     {
         return (new Mailable($this->model, $notifiable))

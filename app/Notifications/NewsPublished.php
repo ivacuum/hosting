@@ -22,14 +22,6 @@ class NewsPublished extends Notification implements ShouldQueue
         return ['mail'];
     }
 
-    public function toArray($notifiable)
-    {
-        return [
-            'id' => $this->model->id,
-            'title' => $this->model->title,
-        ];
-    }
-
     public function toMail($notifiable)
     {
         return (new Mailable($this->model, $notifiable))
