@@ -37,7 +37,7 @@ class Trip extends Resource
             'photos_count' => $this->photos_count,
             'comments_count' => $this->comments_count,
 
-            'user' => $this->relationLoaded('user') ? $this->user : null,
+            'user' => $this->relationLoaded('user') ? new User($this->user) : null,
         ];
     }
 }

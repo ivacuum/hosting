@@ -23,7 +23,7 @@ class Trips extends Controller
 
         [$sort_key, $sort_dir] = $this->getSortParams();
 
-        $models = Model::with('user:id,login')
+        $models = Model::with('user')
             ->withCount('comments', 'photos')
             ->when($city_id, function (Builder $query) use ($city_id) {
                 return $query->where('city_id', $city_id);
