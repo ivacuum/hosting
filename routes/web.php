@@ -71,6 +71,8 @@ Route::get('japanese/wanikani/vocabulary/{characters}', 'JapaneseWanikaniVocabul
 Route::put('japanese/wanikani/vocabulary/{id}', 'JapaneseWanikaniVocabulary@update')->middleware('auth');
 Route::delete('japanese/wanikani/vocabulary/{id}', 'JapaneseWanikaniVocabulary@destroy')->middleware('auth');
 
+Route::post('js/typo', 'JsTypo');
+
 Route::get('life', 'Life@index');
 Route::get('life/calendar', 'Life@calendar');
 Route::get('life/cities', 'Life@cities');

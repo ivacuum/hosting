@@ -12,6 +12,25 @@ export default class Shortcuts {
       $(document).trigger('shortcuts.to_next_page')
     })
 
+    Mousetrap.bind('ctrl+enter', () => {
+      const selection = window.getSelection().toString()
+
+      if (selection.length > 200) {
+        notie.alert({ type: 'error', text: 'Selection is too long' })
+        return
+      }
+
+      if (selection.length < 3) {
+        return
+      }
+
+      axios
+        .post('/js/typo', { selection })
+        .then(({ data }) => {
+          notie.alert({ text: data.message })
+        })
+    }, 'keyup')
+
     // Русские буквы
     Mousetrap.addKeycodes({
       1088: 'h', // р
