@@ -252,6 +252,7 @@ export default {
 
     pick() {
       this.stage = 'pick'
+      $.scrollTo(document.body, 300, { axis: 'y' })
     },
 
     pickElements() {
