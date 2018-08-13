@@ -1,7 +1,7 @@
 <template>
 <div>
   <transition appear name="fade" mode="out-in">
-    <div :key="stage">
+    <div :key="stage" style="min-height: 420px;">
       <div v-show="stage === 'pick'">
         <p>{{ $t('PICKER_TEXT') }}</p>
         <div class="align-items-center text-center border-left" style="display: grid; grid-template-columns: repeat(16, max-content);">
@@ -26,12 +26,12 @@
             </div>
           </template>
         </div>
-        <div class="mt-2">
-          <button class="btn btn-primary" :disabled="this.picked.length < 2" @click="practice">{{ $t('PRACTICE') }}</button>
-          <button class="btn btn-default" @click="checkAll">{{ $t('CHECK_ALL') }}</button>
-          <button class="btn btn-default" @click="uncheckAll">{{ $t('UNCHECK_ALL') }}</button>
+        <div class="d-flex flex-wrap mt-2">
+          <button class="btn btn-primary mb-2 mr-2" :disabled="this.picked.length < 2" @click="practice">{{ $t('PRACTICE') }}</button>
+          <button class="btn btn-default mb-2 mr-2" @click="checkAll">{{ $t('CHECK_ALL') }}</button>
+          <button class="btn btn-default mb-2 mr-2" @click="uncheckAll">{{ $t('UNCHECK_ALL') }}</button>
           <transition name="fade-fast" mode="out-in">
-            <button class="btn btn-default" @click="switchSyllabary" :key="syllabaryLabel">{{ syllabaryLabel }}</button>
+            <button class="btn btn-default mb-2" @click="switchSyllabary" :key="syllabaryLabel">{{ syllabaryLabel }}</button>
           </transition>
         </div>
       </div>
@@ -282,6 +282,7 @@ export default {
       this.answered = 0
       this.beacon('Started')
       this.nextQuestion()
+      $.scrollTo(document.body, 300, { axis: 'y' })
     },
 
     revealAnswer() {
