@@ -97,12 +97,14 @@ export default {
 
   <div class="my-3 pre-line">{{ resource.text }}</div>
 
-  <h3 class="mt-4">{{ $t('comments.index') }}</h3>
-  <div v-for="comment in comments" :key="comment.id">
-    <header :style="{ color: comment.user.color }">{{ comment.user.public_name }}</header>
-    <div class="comment-body pre-line" v-html="comment.html"></div>
-    <footer class="small text-muted">{{ comment.created_at }}</footer>
-    <hr>
+  <div v-if="comments.length">
+    <h3 class="mt-4">{{ $t('comments.index') }}</h3>
+    <div v-for="comment in comments" :key="comment.id">
+      <header :style="{ color: comment.user.color }">{{ comment.user.public_name }}</header>
+      <div class="comment-body pre-line" v-html="comment.html"></div>
+      <footer class="small text-muted">{{ comment.created_at }}</footer>
+      <hr>
+    </div>
   </div>
 
   <div v-show="status === 1">
