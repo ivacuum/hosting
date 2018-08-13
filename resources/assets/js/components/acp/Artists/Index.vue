@@ -25,17 +25,17 @@ export default {
     </thead>
     <tbody>
       <tr
-        v-for="(model, i) in collection.data"
-        :key="model.id"
-        @dblclick="$router.push(model.edit_url)"
+        v-for="(resource, i) in collection.data"
+        :key="resource.id"
+        @dblclick="$router.push(resource.edit_url)"
       >
         <td class="text-md-right">{{ addition + i + 1 }}</td>
         <td>
-          <router-link :to="model.show_url">
-            {{ model.title }}
+          <router-link :to="resource.show_url">
+            {{ resource.title }}
           </router-link>
         </td>
-        <td>{{ model.slug }}</td>
+        <td>{{ resource.slug }}</td>
       </tr>
     </tbody>
   </table>

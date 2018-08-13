@@ -49,14 +49,14 @@ export default {
     </thead>
     <tbody>
       <tr
-        v-for="(model, i) in collection.data"
-        :key="model.id"
-        @dblclick="$router.push(model.edit_url)"
+        v-for="(resource, i) in collection.data"
+        :key="resource.id"
+        @dblclick="$router.push(resource.edit_url)"
       >
         <td class="text-md-right">{{ addition + i + 1 }}</td>
         <td>
-          <router-link :to="model.show_url">
-            {{ model.title }}
+          <router-link :to="resource.show_url">
+            {{ resource.title }}
           </router-link>
         </td>
         <td>
@@ -64,42 +64,42 @@ export default {
             class="tooltipped tooltipped-n"
             aria-label="Заметка скрыта"
             v-html="$root.svg.eye_slash"
-            v-if="model.status === 2"
+            v-if="resource.status === 2"
           ></span>
           <span
             class="tooltipped tooltipped-n"
             aria-label="Заметка пишется"
             v-html="$root.svg.pencil"
-            v-if="model.status === 0"
+            v-if="resource.status === 0"
           ></span>
         </td>
-        <td v-html="model.localized_date"></td>
+        <td v-html="resource.localized_date"></td>
         <td>
-          <a :href="model.www">
-            {{ model.slug }}
+          <a :href="resource.www">
+            {{ resource.slug }}
           </a>
         </td>
         <td class="text-md-right text-nowrap">
-          {{ model.views | decimal }}
+          {{ resource.views | decimal }}
         </td>
         <td class="text-md-right text-nowrap">
-          <a :href="model.comments_url">
-            {{ model.comments_count | decimal }}
+          <a :href="resource.comments_url">
+            {{ resource.comments_count | decimal }}
           </a>
         </td>
         <td>
-          <a :href="model.meta_image" v-if="model.meta_image">
+          <a :href="resource.meta_image" v-if="resource.meta_image">
             <span class="tooltipped tooltipped-n" aria-label="Обложка" v-html="$root.svg.paperclip"></span>
           </a>
         </td>
         <td class="text-md-right text-nowrap">
-          <a :href="model.photos_url">
-            {{ model.photos_count | decimal }}
+          <a :href="resource.photos_url">
+            {{ resource.photos_count | decimal }}
           </a>
         </td>
         <td class="text-md-right">
-          <a :href="model.template_url" v-if="model.user.id === 1" v-html="$root.svg.file_text_o"></a>
-          <a :href="model.user_url" v-else>#{{ model.user.id }}</a>
+          <a :href="resource.template_url" v-if="resource.user.id === 1" v-html="$root.svg.file_text_o"></a>
+          <a :href="resource.user_url" v-else>#{{ resource.user.id }}</a>
         </td>
       </tr>
     </tbody>
