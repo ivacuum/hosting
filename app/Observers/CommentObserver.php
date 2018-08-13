@@ -12,6 +12,8 @@ class CommentObserver
             \Mail::to($model->user->email)
                 ->queue(new CommentConfirm($model));
         }
+
+        event(new \App\Events\Stats\CommentAdded);
     }
 
     public function saving(Model $model)

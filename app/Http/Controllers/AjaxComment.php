@@ -55,8 +55,6 @@ class AjaxComment extends Controller
             'user_id' => $user->id,
         ]);
 
-        event(new \App\Events\Stats\CommentAdded);
-
         return $this->redirectToComment($model, $is_guest ? null : $comment);
     }
 
