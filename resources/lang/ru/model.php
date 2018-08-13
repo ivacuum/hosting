@@ -66,6 +66,8 @@ return [
     'gig.meta_description_en' => 'Meta description EN',
     'gig.meta_description_ru' => 'Meta description',
 
+    'issue.title' => 'Тема',
+
     'kanji.level' => 'Уровень',
     'kanji.meaning' => 'Значение',
     'kanji.character' => 'Кандзи',

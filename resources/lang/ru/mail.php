@@ -9,6 +9,7 @@ return [
     'report_thanks' => 'Спасибо за информацию о письме. Мы проверим ее.',
     'news_published' => 'На сайте опубликована новость **:title**.',
     'trip_published' => 'Опубликована новая заметка о поездке.',
+    'issue_commented' => 'Обратная связь: :title',
     'gig_published_title' => 'Заметка о концерте: :title',
     'trip_published_title' => 'Заметка о поездке: :title',
     'subscription_pending_title' => 'Подтверждение подписки',

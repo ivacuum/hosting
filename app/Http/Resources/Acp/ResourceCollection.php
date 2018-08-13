@@ -6,6 +6,10 @@ class ResourceCollection extends BaseResourceCollection
 {
     public function __construct($resource)
     {
-        parent::__construct($resource->appends(\UrlHelper::except()));
+        if (method_exists($resource, 'appends')) {
+            $resource = $resource->appends(\UrlHelper::except());
+        }
+
+        parent::__construct($resource);
     }
 }

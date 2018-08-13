@@ -9,6 +9,7 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  * @property integer $id
  * @property integer $user_id
  * @property integer $status
+ * @property string  $name
  * @property string  $email
  * @property string  $title
  * @property string  $text
@@ -16,7 +17,7 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
- * @property \App\Comment|\App\User $rel
+ * @property \Illuminate\Database\Eloquent\Collection $comments
  * @property \App\User $user
  *
  * @mixin \Eloquent
@@ -33,6 +34,16 @@ class Issue extends Model
     protected $perPage = 50;
 
     // Relations
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'rel');
+    }
+
+    public function emails()
+    {
+        return $this->morphMany(Email::class, 'rel');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -42,5 +53,20 @@ class Issue extends Model
     public function breadcrumb(): string
     {
         return $this->title;
+    }
+
+    public function canBeClosed(): bool
+    {
+        return $this->status === static::STATUS_OPEN;
+    }
+
+    public function canBeCommented(): bool
+    {
+        return $this->status === static::STATUS_OPEN;
+    }
+
+    public function canBeOpened(): bool
+    {
+        return $this->status === static::STATUS_CLOSED;
     }
 }

@@ -7,6 +7,7 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 class Issues extends Controller
 {
     protected $api_only = true;
+    protected $show_with = ['comments.user'];
 
     public function index()
     {
@@ -15,7 +16,8 @@ class Issues extends Controller
 
         [$sort_key, $sort_dir] = $this->getSortParams();
 
-        $models = Model::with('user:id,login')
+        $models = Model::with('user')
+            ->withCount('comments')
             ->when($user_id, function (Builder $query) use ($user_id) {
                 return $query->where('user_id', $user_id);
             })

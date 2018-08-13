@@ -3,9 +3,9 @@
 use Illuminate\Http\Resources\Json\Resource;
 
 /**
- * @mixin \App\Issue
+ * @mixin \App\Comment
  */
-class Issue extends Resource
+class Comment extends Resource
 {
     public function toArray($request)
     {
@@ -14,22 +14,15 @@ class Issue extends Resource
 
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'page' => $this->page,
-            'text' => $this->text,
-            'email' => $this->email,
-            'title' => $this->title,
+            'html' => $this->html,
             'status' => $this->status,
             'breadcrumb' => $this->breadcrumb(),
             'created_at' => \ViewHelper::dateShort($this->created_at),
 
-            'show_url' => $this->when($me->can('show', 'App\Issue'), path('Acp\Issues@show', $this)),
+            'show_url' => $this->when($me->can('show', 'App\Comment'), path('Acp\Comments@show', $this)),
             'user_url' => $this->when($me->can('show', 'App\User'), path('Acp\Users@show', $this->user_id)),
 
-            'comments_count' => $this->comments_count,
-
             'user' => $this->relationLoaded('user') ? new User($this->user) : null,
-            'comments' => $this->relationLoaded('comments') ? new CommentCollection($this->comments) : null,
         ];
     }
 }
