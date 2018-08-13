@@ -1,5 +1,3 @@
-/* global notie */
-
 import acpResourceUrl from '../utils/acpResourceUrl'
 import acpRequestErrorNotification from '../utils/acpRequestErrorNotification'
 

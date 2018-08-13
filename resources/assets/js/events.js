@@ -1,4 +1,3 @@
-/* global App */
 /** @namespace App.map.ym.ObjectManager */
 
 export default class EventHandlers {

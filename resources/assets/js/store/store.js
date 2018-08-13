@@ -1,5 +1,3 @@
-/* global Vuex */
-
 export default new Vuex.Store({
   state: {
     breadcrumbs: [],

@@ -1,4 +1,3 @@
-/* global VueI18n */
 import svg from './svg-icons'
 import store from './store/store'
 import router from './router'

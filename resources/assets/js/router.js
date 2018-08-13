@@ -1,4 +1,3 @@
-/* global VueRouter */
 import locale from './i18n/locale'
 
 export default new VueRouter({

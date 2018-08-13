@@ -5,10 +5,15 @@
   "extends": "airbnb-base",
   "globals": {
     "$": true,
+    "App": true,
     "autosize": true,
     "axios": true,
     "Mousetrap": true,
-    "Vue": true
+    "notie": true,
+    "Vue": true,
+    "VueI18n": true,
+    "VueRouter": true,
+    "Vuex": true
   },
   "rules": {
     "no-param-reassign": ["error", {

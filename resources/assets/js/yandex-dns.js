@@ -1,5 +1,3 @@
-/* global App, notie */
-
 export default class YandexDns {
   static bind() {
     this.addRecord()

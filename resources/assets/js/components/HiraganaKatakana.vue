@@ -64,7 +64,6 @@
 </template>
 
 <script>
-/* global App */
 import random from 'lodash/random'
 
 export default {

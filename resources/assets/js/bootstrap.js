@@ -1,5 +1,3 @@
-/* global notie */
-
 import 'vac-gfe/js/laravel-axios'
 import 'vac-gfe/js/laravel-echo'
 

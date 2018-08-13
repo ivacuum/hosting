@@ -1,5 +1,3 @@
-/* global notie */
-
 export default function acpRequestErrorNotification(error) {
   const { message, file, line } = error.response.data
   const debugInfo = message && file && line

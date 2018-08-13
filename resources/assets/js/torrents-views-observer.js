@@ -1,5 +1,3 @@
-/* global App */
-
 import io from 'vac-gfe/js/intersection-observer'
 
 export default function () {

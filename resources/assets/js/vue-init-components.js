@@ -1,4 +1,3 @@
-/* global VueI18n */
 export default function initVueComponents(selector, locale = 'ru') {
   if (document.querySelector(selector)) {
     return new Vue({
