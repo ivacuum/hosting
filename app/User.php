@@ -151,7 +151,7 @@ class User extends Authenticatable
 
     public function breadcrumb(): string
     {
-        return $this->email;
+        return $this->email ?? '';
     }
 
     public function displayName(): string

@@ -1,7 +1,10 @@
 <?php namespace App\Http\Controllers;
 
+use App\Exceptions\IssueLimitExceededException;
 use App\Issue;
+use App\Limits\IssuesTodayLimit;
 use App\User;
+use Ivacuum\Generic\Exceptions\FloodException;
 
 class Issues extends Controller
 {
@@ -10,7 +13,7 @@ class Issues extends Controller
         return view($this->view);
     }
 
-    public function store()
+    public function store(IssuesTodayLimit $limits)
     {
         if (!request()->ajax()) {
             return redirect(path('Home@index'));
@@ -43,6 +46,12 @@ class Issues extends Controller
             } else {
                 event(new \App\Events\Stats\UserFoundByEmailWhenIssueAdded);
             }
+        }
+
+        if ($limits->flood($user->id)) {
+            throw new FloodException;
+        } elseif ($limits->ipExceeded() || $limits->userExceeded($user->id)) {
+            throw new IssueLimitExceededException;
         }
 
         Issue::create([

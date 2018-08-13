@@ -23,6 +23,11 @@ return [
     'cron_output' => env('CRON_OUTPUT', '/dev/null'),
     'gm_bin' => env('GM_BIN', '/usr/bin/env gm'),
     'limits' => [
+        'issue' => [
+            'ip' => 100,
+            'user' => 50,
+            'flood_interval' => 2,
+        ],
         'comment' => [
             'ip' => 100,
             'user' => 50,

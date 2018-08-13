@@ -111,7 +111,14 @@ export default {
           if (error.response.status === 422) {
             notie.alert({
               type: 'error',
-              text: this.$i18n.t('FORM_INVALID')
+              text: this.$i18n.t('FORM_INVALID'),
+            })
+          }
+
+          if (error.response.status === 429) {
+            notie.alert({
+              type: 'error',
+              text: error.response.data.message,
             })
           }
         })
