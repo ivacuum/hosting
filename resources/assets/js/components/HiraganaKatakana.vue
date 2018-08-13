@@ -6,8 +6,8 @@
         <p>{{ $t('PICKER_TEXT') }}</p>
         <div class="align-items-center text-center border-left" style="display: grid; grid-template-columns: repeat(16, max-content);">
           <template v-for="(cells, i) in elements">
-            <template v-for="cell in cells">
-              <div class="px-2 pt-2 pb-1 border-right" :class="{ 'border-top': i === 0 }">
+            <template v-for="(cell, j) in cells">
+              <div class="border-right cursor-pointer px-2 pt-2 pb-1" :class="{ 'border-top': i === 0 }" @click="clickOnColumn(j)">
                 <div class="f28 font-weight-bold ja-character">{{ cell[syllabaryIndex] ? cell[syllabaryIndex] : '&nbsp;' }}</div>
                 <div class="text-muted">{{ cell[answerIndex] ? cell[answerIndex] : '&nbsp;' }}</div>
               </div>
@@ -17,6 +17,7 @@
             <div class="border-right border-bottom">
               <label class="cursor-pointer d-block mb-0 py-2">
                 <input
+                  :id="`column_${i - 1}`"
                   class="cursor-pointer"
                   type="checkbox"
                   :value="i - 1"
@@ -238,6 +239,10 @@ export default {
 
     clearInput() {
       this.input = ''
+    },
+
+    clickOnColumn(n) {
+      document.querySelector(`#column_${n}`).click()
     },
 
     nextQuestion() {
