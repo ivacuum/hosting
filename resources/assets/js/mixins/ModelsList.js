@@ -1,6 +1,7 @@
 import ListHeader from '../components/acp/ListHeader.vue'
 import Pagination from '../components/acp/Pagination.vue'
 import SortableHeader from '../components/acp/SortableHeader.vue'
+import acpRequestErrorNotification from '../utils/acpRequestErrorNotification'
 
 export default {
   components: {
@@ -11,6 +12,7 @@ export default {
 
   data() {
     return {
+      selected: [],
       collection: {},
     }
   },
@@ -22,6 +24,27 @@ export default {
 
     loaded() {
       return Object.keys(this.collection).length
+    },
+
+    selectAll: {
+      get() {
+        return this.selected.length === this.collection.data.length
+      },
+
+      set(value) {
+        if (value === false) {
+          this.selected = []
+          return
+        }
+
+        const selected = []
+
+        this.collection.data.forEach((resource) => {
+          selected.push(resource.id)
+        })
+
+        this.selected = selected
+      },
     },
   },
 
@@ -48,6 +71,23 @@ export default {
   },
 
   methods: {
+    batch(action) {
+      axios
+        .post(`${this.$route.path}/batch`, { action, selected: this.selected })
+        .then((response) => {
+          axios
+            .get(this.$route.fullPath)
+            .then(({ data }) => {
+              this.collection = data
+              this.selected = []
+              $.scrollTo(document.body, 300, { axis: 'y' })
+            })
+
+          notie.alert({ text: response.data.message })
+        })
+        .catch(acpRequestErrorNotification)
+    },
+
     search(q) {
       this.$router.push({
         query: {

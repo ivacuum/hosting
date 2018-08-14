@@ -58,6 +58,7 @@ Route::post('images/batch', 'Acp\Images@batch');
 Route::get('images/{id}/view', 'Acp\Images@view');
 
 RouteHelper::withoutCreateAndEdit('Acp\Issues');
+Route::post('issues/batch', 'Acp\Issues@batch');
 Route::post('issues/{id}/close', 'Acp\IssueClose');
 Route::post('issues/{id}/comment', 'Acp\IssueComment');
 Route::post('issues/{id}/open', 'Acp\IssueOpen');

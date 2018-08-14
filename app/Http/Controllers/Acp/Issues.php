@@ -30,4 +30,44 @@ class Issues extends Controller
 
         return $this->modelResourceCollection($models);
     }
+
+    public function batch()
+    {
+        $ids = request('selected', []);
+        $action = request('action');
+
+        $models = Model::find($ids);
+        $message = '';
+        $affected = 0;
+
+        foreach ($models as $model) {
+            /* @var Model $model */
+            if ($action === 'close' && $model->canBeClosed()) {
+                $model->status = Model::STATUS_CLOSED;
+                $model->save();
+
+                $affected++;
+            } elseif ($action === 'delete') {
+                if ($model->delete()) {
+                    $affected++;
+                }
+            } elseif ($action === 'open' && $model->canBeOpened()) {
+                $model->status = Model::STATUS_OPEN;
+                $model->save();
+
+                $affected++;
+            }
+        }
+
+        switch ($action) {
+            case 'open': $message = "Открыто обращений: {$affected}"; break;
+            case 'close': $message = "Закрыто обращений: {$affected}"; break;
+            case 'delete': $message = "Удалено записей: {$affected}"; break;
+        }
+
+        return [
+            'status' => 'OK',
+            'message' => $message,
+        ];
+    }
 }

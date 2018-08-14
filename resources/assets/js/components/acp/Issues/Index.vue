@@ -18,6 +18,7 @@ export default {
   <table class="table-stats table-stats-align-top table-adaptive" v-if="collection.data.length">
     <thead>
     <tr>
+      <th><input type="checkbox" v-model="selectAll"></th>
       <th class="text-md-right">{{ modelFieldTrans('id') }}</th>
       <th>{{ modelFieldTrans('title') }}</th>
       <th></th>
@@ -33,6 +34,7 @@ export default {
         v-for="resource in collection.data"
         :key="resource.id"
       >
+        <td><input type="checkbox" v-model="selected" :value="resource.id"></td>
         <td class="text-md-right">{{ resource.id }}</td>
         <td>
           <router-link :to="resource.show_url">
@@ -77,6 +79,15 @@ export default {
   </table>
 
   <div v-else>No {{ modelPlural }} matched the given criteria.</div>
+
+  <div v-show="selected.length">
+    <div class="align-items-center d-flex flex-wrap my-2">
+      <div class="mr-2">Выбрано: {{ selected.length }}</div>
+      <button class="btn btn-default mr-1" type="button" @click="batch('close')">Закрыть</button>
+      <button class="btn btn-default mr-1" type="button" @click="batch('open')">Открыть</button>
+      <button class="btn btn-default mr-1" type="button" @click="batch('delete')">Удалить</button>
+    </div>
+  </div>
 
   <pagination :meta="collection.meta"/>
 </div>
