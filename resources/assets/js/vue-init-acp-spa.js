@@ -1,6 +1,6 @@
 import svg from './svg-icons'
 import store from './store/store'
-import router from './router'
+import router from './router-acp'
 import AcpApp from './components/acp/AcpApp.vue'
 
 /**
