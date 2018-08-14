@@ -17,6 +17,7 @@ class IssueCommented extends ModelMailNotification
     public function toMail($notifiable)
     {
         return (new Mailable($this->model, $this->comment, $notifiable))
-            ->to($notifiable->email);
+            ->to($notifiable->email)
+            ->replyTo(config('email.support'));
     }
 }
