@@ -2,7 +2,6 @@
 
 export default class EventHandlers {
   static bind() {
-    $(document).on('click', '.js-audio-play', this.audioPlay)
     $(document).on('click', '.js-aviasales', this.aviasalesClick)
     $(document).on('click', '.js-city-map-click', this.cityMapClick)
     $(document).on('click', '.js-dcpp-clients-show', this.dcppClientsShowClick)
@@ -13,10 +12,6 @@ export default class EventHandlers {
 
     // Навигация по заметкам с помощью горячих клавиш
     document.querySelectorAll('.js-trip-shortcuts p').forEach(el => el.classList.add('js-shortcuts-item'))
-  }
-
-  static audioPlay() {
-    document.querySelector(this.dataset.selector).play()
   }
 
   /**
