@@ -57,9 +57,12 @@
                :key="row.id"
                v-for="row in collection"
           >
-            <a class="d-block ja-big ja-character ja-shadow pt-1 pb-2 text-white" :href="row.slug">{{ row.character }}</a>
+            <router-link
+              class="d-block ja-big ja-character ja-shadow pt-1 pb-2 text-white"
+              :to="{ name: 'wk.kanji', params: { character: row.character }}"
+            >{{ row.character }}</router-link>
             <div class="kanji-reading ja-shadow-light">{{ row.reading }}</div>
-            <div class="kanji-meaning ja-shadow-light text-capitalize">{{ row.meaning }}</div>
+            <div class="kanji-meaning ja-shadow-light text-capitalize">{{ row.first_meaning }}</div>
           </div>
         </div>
       </template>
@@ -69,12 +72,12 @@
 </template>
 
 <script>
+import locale from '../../i18n/locale'
 import shuffle from 'lodash/shuffle'
-import I18nMessages from '../i18n/japanese'
+import I18nMessages from '../../i18n/japanese'
 
 export default {
   props: {
-    action: String,
     burned: {
       type: Boolean,
       default: false,
@@ -85,19 +88,19 @@ export default {
     },
     level: {
       type: Number,
-      default: 0,
+      default: undefined,
     },
     radicalId: {
       type: Number,
-      default: 0,
+      default: undefined,
     },
     similarId: {
       type: Number,
-      default: 0,
+      default: undefined,
     },
     vocabularyId: {
       type: Number,
-      default: 0,
+      default: undefined,
     },
   },
 
@@ -116,27 +119,7 @@ export default {
 
   created() {
     this.guest = !window.AppOptions.loggedIn
-
-    axios
-      .get(this.action, {
-        params: {
-          level: this.level,
-          similar_id: this.similarId,
-          radical_id: this.radicalId,
-          vocabulary_id: this.vocabularyId,
-        }
-      })
-      .then((response) => {
-        if (this.flat) {
-          if (response.data.kanji.length) {
-            this.elements = { 0: response.data.kanji }
-          }
-        } else {
-          this.elements = response.data.kanji
-        }
-
-        this.loaded = true
-      })
+    this.loadData()
   },
 
   computed: {
@@ -159,7 +142,7 @@ export default {
     },
 
     showGroupActionButtons() {
-      return this.level === 0 && !this.radicalId && !this.similarId && !this.vocabularyId
+      return this.level === undefined && !this.radicalId && !this.similarId && !this.vocabularyId
     },
 
     showToggleBurnedButton() {
@@ -184,6 +167,29 @@ export default {
   },
 
   methods: {
+    loadData() {
+      axios
+        .get(`${locale}/japanese/wanikani/kanji`, {
+          params: {
+            level: this.level,
+            similar_id: this.similarId,
+            radical_id: this.radicalId,
+            vocabulary_id: this.vocabularyId,
+          }
+        })
+        .then((response) => {
+          if (this.flat) {
+            if (response.data.data.length) {
+              this.elements = { 0: response.data.data }
+            }
+          } else {
+            this.elements = response.data.data
+          }
+
+          this.loaded = true
+        })
+    },
+
     showShuffleLevelButton(length) {
       return !this.flat && length > 1
     },
@@ -199,7 +205,7 @@ export default {
     },
 
     titleLabel(level) {
-      if (this.level === 0 && !this.flat) {
+      if (this.level === undefined && !this.flat) {
         return this.$i18n.t('LEVEL', { level })
       }
 
@@ -216,6 +222,12 @@ export default {
 
     toggleLabels() {
       this.labels = !this.labels
+    }
+  },
+
+  watch: {
+    level() {
+      this.loadData()
     }
   }
 }

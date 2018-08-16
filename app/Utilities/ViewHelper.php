@@ -46,7 +46,7 @@ class ViewHelper extends BaseViewHelper
         return "https://life.ivacuum.org/-/100x75/{$folder}/{$file}";
     }
 
-    public function prependTransKeysForJson(string $file): array
+    public function prependTransKeysForJson(string $file, bool $vue_i18n_formatter = false): array
     {
         $trans = trans($file);
 
@@ -54,7 +54,9 @@ class ViewHelper extends BaseViewHelper
             array_map(function ($key) use ($file) {
                 return "{$file}.{$key}";
             }, array_keys($trans)),
-            array_values($trans)
+            $vue_i18n_formatter
+                ? array_map(function ($value) { return preg_replace('/:(\w+)/', '{$1}', $value); }, array_values($trans))
+                : array_values($trans)
         );
     }
 }

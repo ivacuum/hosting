@@ -51,21 +51,43 @@
             >{{ toggleBurnedText }}</button>
           </div>
         </div>
-        <div class="font-weight-bold radicals-grid text-center text-white" is="transition-group" name="grid">
-          <div
-            class="bg-radical pb-2 rounded"
-            :class="{ 'labels-hidden': !labels, 'bg-burned': row.burned }"
-            :key="row.id"
-            v-for="row in collection"
-          >
-            <a class="d-block pt-1 text-white" :href="row.slug">
-              <div class="py-2" v-if="row.image">
-                <img class="ja-character ja-image-shadow" :src="row.image" alt="" height="64">
+        <div class="f20 text-center text-md-left vocab-grid">
+          <template v-for="row in collection">
+            <div>
+              <router-link
+                class="bg-vocab d-inline-block f36 ja-character ja-shadow-light px-2 py-1 rounded text-nowrap text-white"
+                :class="{ 'bg-burned': row.burned }"
+                :to="{ name: 'wk.vocabulary', params: { characters: row.character }}"
+              >{{ row.character }}</router-link>
+            </div>
+            <a
+              class="my-3 my-md-0 pl-md-3 pr-md-2 py-md-1"
+              :class="{ invisible: labels }"
+              href="#"
+              @click.prevent="reveal(row.id)"
+            >？</a>
+            <div
+              class="text-muted"
+              :class="{ invisible: !labels && !revealed.includes(row.id), 'mt-3 mt-md-0': labels }"
+              :id="`kana-${row.id}`"
+            >
+              <div class="ja-character text-nowrap" v-for="kana in row.kana.split(', ')">
+                【{{ kana }}】
               </div>
-              <div class="ja-big ja-character ja-shadow pb-2" v-else>{{ row.character }}</div>
+            </div>
+            <div
+              :class="{ invisible: !labels && !revealed.includes(row.id), 'mb-4 mb-md-0': row.burned || guest }"
+              :id="`meaning-${row.id}`"
+            >{{ row.meaning }}</div>
+            <a
+              class="mb-4 mb-md-0 px-md-2 py-md-1 text-danger"
+              :class="{ invisible: row.burned || guest || (!labels && !revealed.includes(row.id)) }"
+              href="#"
+              @click.prevent="burn(lvl, row.id)"
+            >
+              <svg class="svg-icon svg-flame" viewBox="0 0 12 16" width="16" height="16"><path d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z"/></svg>
             </a>
-            <div class="font-weight-bold ja-shadow-light radical-meaning text-capitalize">{{ row.meaning }}</div>
-          </div>
+          </template>
         </div>
       </template>
     </div>
@@ -74,12 +96,12 @@
 </template>
 
 <script>
-import I18nMessages from '../i18n/japanese'
+import locale from '../../i18n/locale'
 import shuffle from 'lodash/shuffle'
+import I18nMessages from '../../i18n/japanese'
 
 export default {
   props: {
-    action: String,
     burned: {
       type: Boolean,
       default: false,
@@ -88,13 +110,13 @@ export default {
       type: Boolean,
       default: false,
     },
-    kanjiId: {
-      type: Number,
-      default: 0,
+    kanji: {
+      type: String,
+      default: undefined,
     },
     level: {
       type: Number,
-      default: 0,
+      default: undefined,
     },
   },
 
@@ -104,6 +126,7 @@ export default {
       labels: false,
       loaded: false,
       elements: [],
+      revealed: [],
     }
   },
 
@@ -113,26 +136,7 @@ export default {
 
   created() {
     this.guest = !window.AppOptions.loggedIn
-
-    axios
-      .get(this.action, {
-        params: {
-          level: this.level,
-          kanji_id: this.kanjiId,
-        }
-      })
-      .then((response) => {
-        if (this.flat) {
-          // Объединение уровней в один для страницы кандзи
-          if (response.data.radicals.length) {
-            this.elements = { 0: response.data.radicals }
-          }
-        } else {
-          this.elements = response.data.radicals
-        }
-
-        this.loaded = true
-      })
+    this.loadData()
   },
 
   computed: {
@@ -155,11 +159,11 @@ export default {
     },
 
     showGroupActionButtons() {
-      return this.level === 0 && !this.kanjiId
+      return this.level === undefined && !this.kanji
     },
 
     showToggleBurnedButton() {
-      if (this.guest || this.kanjiId) return false
+      if (this.guest) return false
 
       return this.flat || this.level > 0
     },
@@ -178,14 +182,53 @@ export default {
   },
 
   methods: {
-    shuffleAll() {
-      for (let level in this.elements) {
-        this.shuffleLevel(level)
-      }
+    burn(level, id) {
+      axios
+        .delete(`/japanese/wanikani/vocabulary/${id}`)
+        .then((response) => {
+          if (response.data.status === 'OK') {
+            const i = this.elements[level].findIndex((el) => el.id === id)
+
+            this.elements[level][i].burned = true
+          }
+        })
+    },
+
+    loadData() {
+      axios
+        .get(`${locale}/japanese/wanikani/vocabulary`, {
+          params: {
+            kanji: this.kanji,
+            level: this.level,
+          }
+        })
+        .then((response) => {
+          if (this.flat) {
+            if (response.data.data.length) {
+              this.elements = { 0: response.data.data }
+            }
+          } else {
+            this.elements = response.data.data
+          }
+
+          this.loaded = true
+        })
+    },
+
+    reveal(id) {
+      const i = this.revealed.indexOf(id)
+
+      i !== -1 ? this.revealed.splice(i, 1) : this.revealed.push(id)
     },
 
     showShuffleLevelButton(length) {
       return !this.flat && length > 1
+    },
+
+    shuffleAll() {
+      for (let level in this.elements) {
+        this.shuffleLevel(level)
+      }
     },
 
     shuffleLevel(level) {
@@ -193,11 +236,11 @@ export default {
     },
 
     titleLabel(level) {
-      if (this.level === 0 && !this.flat) {
+      if (this.level === undefined && !this.flat) {
         return this.$i18n.t('LEVEL', { level })
       }
 
-      return this.$i18n.t('RADICALS')
+      return this.$i18n.t('VOCABULARY')
     },
 
     toggleBurned() {
@@ -207,12 +250,12 @@ export default {
     toggleLabels() {
       this.labels = !this.labels
     }
+  },
+
+  watch: {
+    level() {
+      this.loadData()
+    }
   }
 }
 </script>
-
-<style lang="scss">
-.labels-hidden .radical-meaning { visibility: hidden; }
-.labels-hidden:hover .radical-meaning,
-.labels-hidden:focus .radical-meaning { visibility: visible; }
-</style>

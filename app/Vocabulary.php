@@ -56,11 +56,6 @@ class Vocabulary extends Model
         return "https://www.wanikani.com/vocabulary/{$this->character}";
     }
 
-    public function firstMeaning(): string
-    {
-        return explode(', ', $this->meaning)[0];
-    }
-
     public function onlyKanjiCharacters(): string
     {
         return preg_replace('/([ぁ-んァ-ン])/u', '', $this->character);

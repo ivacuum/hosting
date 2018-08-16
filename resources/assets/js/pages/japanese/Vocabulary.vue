@@ -1,0 +1,102 @@
+<script>
+import locale from '../../i18n/locale'
+import KanjiList from '../../components/japanese/KanjiList.vue'
+import BurnVocabulary from '../../components/BurnVocabulary.vue'
+
+export default {
+  components: {
+    KanjiList,
+    BurnVocabulary,
+  },
+
+  props: {
+    characters: String,
+  },
+
+  data() {
+    return {
+      guest: !window.AppOptions.loggedIn,
+      vocab: {},
+    }
+  },
+
+  beforeRouteEnter(to, from, next) {
+    axios
+      .get(`${locale}/japanese/wanikani/vocabulary/${to.params.characters}`)
+      .then((response) => {
+        next((vm) => {
+          vm.vocab = response.data.data
+          document.title = response.data.data.character
+        })
+      })
+  },
+
+  beforeRouteUpdate(to, from, next) {
+    axios
+      .get(`${locale}/japanese/wanikani/vocabulary/${to.params.characters}`)
+      .then((response) => {
+        this.vocab = response.data.data
+        document.title = response.data.data.character
+        next()
+      })
+  },
+}
+</script>
+
+<template>
+<div>
+  <div class="align-items-center d-flex flex-wrap h1">
+    <router-link
+      class="bg-secondary ja-shadow-light mr-2 px-3 py-1 rounded text-white"
+      :to="{ name: 'wk.level', params: { level: vocab.level }}"
+    >{{ vocab.level }}</router-link>
+    <div class="bg-vocab ja-shadow-light mr-3 px-2 py-1 rounded text-white">{{ vocab.character }}</div>
+    <div class="f24 text-capitalize">{{ vocab.meaning }}</div>
+  </div>
+
+  <div class="align-items-center d-flex flex-wrap">
+    <span class="text-muted">{{ $t('japanese.reading') }}</span>
+    <span class="f20">【{{ vocab.kana }}】</span>
+    <div v-if="vocab.audio">
+      <button class="btn btn-default btn-sm js-audio-play" data-selector=".audio">Play</button>
+      <audio class="audio" :src="vocab.audio"></audio>
+    </div>
+  </div>
+
+  <kanji-list
+    burned
+    flat
+    :vocabulary-id="vocab.id"
+    v-if="vocab.id"
+  />
+
+  <div class="mt-5" v-if="vocab.sentences">
+    <h3 class="mt-0">{{ $t('japanese.sentences') }}</h3>
+    <div class="f20 pre-line">{{ vocab.sentences }}</div>
+  </div>
+
+  <div class="mt-4">
+    <a class="mr-3" :href="`https://www.wanikani.com/vocabulary/${vocab.character}`" rel="noreferrer">
+      WaniKani
+      <span v-html="$root.svg.external_link"></span>
+    </a>
+
+    <a class="mr-3" :href="`https://www.japandict.com/${vocab.character}`" rel="noreferrer">
+      JapanDict
+      <span v-html="$root.svg.external_link"></span>
+    </a>
+
+    <a :href="`https://jisho.org/search/${vocab.character}`" rel="noreferrer">
+      Jisho
+      <span v-html="$root.svg.external_link"></span>
+    </a>
+  </div>
+
+  <div class="mt-4" v-if="!guest">
+    <burn-vocabulary
+      :id="vocab.id"
+      :burned="vocab.burned"
+    />
+  </div>
+</div>
+</template>

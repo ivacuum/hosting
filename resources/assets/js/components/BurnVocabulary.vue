@@ -4,6 +4,12 @@ import BurnRadical from './BurnRadical.vue'
 export default {
   extends: BurnRadical,
 
+  data() {
+    return {
+      section: 'vocabulary',
+    }
+  },
+
   i18n: {
     messages: {
       en: {

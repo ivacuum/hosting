@@ -30,17 +30,17 @@ return [
 
     'japanese-wanikani.index' => 'WaniKani V · Японский язык',
 
-    'japanese-wanikani-kanji.show' => 'Кандзи :kanji · WaniKani V · Японский язык',
-    'japanese-wanikani-kanji.index' => 'Кандзи · WaniKani V · Японский язык',
+    'japanese-wanikani-kanji.show' => ':kanji',
+    'japanese-wanikani-kanji.index' => 'Кандзи',
 
-    'japanese-wanikani-level.show' => 'Уровень :level · WaniKani V · Японский язык',
-    'japanese-wanikani-level.index' => 'Уровни · WaniKani V · Японский язык',
+    'japanese-wanikani-level.show' => 'Уровень :level',
+    'japanese-wanikani-level.index' => 'Уровни',
 
-    'japanese-wanikani-radicals.show' => 'Ключ :radical · WaniKani V · Японский язык',
-    'japanese-wanikani-radicals.index' => 'Ключи · WaniKani V · Японский язык',
+    'japanese-wanikani-radicals.show' => ':radical',
+    'japanese-wanikani-radicals.index' => 'Ключи',
 
-    'japanese-wanikani-vocabulary.show' => ':vocab · WaniKani V · Японский язык',
-    'japanese-wanikani-vocabulary.index' => 'Словарные слова · WaniKani V · Японский язык',
+    'japanese-wanikani-vocabulary.show' => ':vocab',
+    'japanese-wanikani-vocabulary.index' => 'Словарные слова',
 
     'retracker.dev' => 'О разработке ретрекера',
     'retracker.usage' => 'Как использовать ретрекер',

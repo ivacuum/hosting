@@ -1,13 +1,12 @@
-<template>
-  <div>
-    <button class="btn btn-default" @click="toggleBurned">{{ toggleBurnText }}</button>
-  </div>
-</template>
-
 <script>
+import locale from '../i18n/locale'
+
 export default {
   props: {
-    action: String,
+    id: {
+      type: Number,
+      required: true,
+    },
     burned: {
       type: Boolean,
       default: false,
@@ -15,7 +14,9 @@ export default {
   },
 
   data() {
-    return {}
+    return {
+      section: 'radicals',
+    }
   },
 
   computed: {
@@ -39,9 +40,11 @@ export default {
 
   methods: {
     toggleBurned() {
+      const action = `${locale}/japanese/wanikani/${this.section}/${this.id}`
+
       if (this.burned) {
         axios
-          .put(this.action)
+          .put(action)
           .then(({ data }) => {
             if (data.status === 'OK') {
               this.burned = 0
@@ -49,7 +52,7 @@ export default {
           })
       } else {
         axios
-          .delete(this.action)
+          .delete(action)
           .then(({ data }) => {
             if (data.status === 'OK') {
               this.burned = 1
@@ -60,3 +63,9 @@ export default {
   }
 }
 </script>
+
+<template>
+<div>
+  <button class="btn btn-default" type="button" @click="toggleBurned">{{ toggleBurnText }}</button>
+</div>
+</template>

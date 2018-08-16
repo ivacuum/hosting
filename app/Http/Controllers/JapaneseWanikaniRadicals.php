@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Resources\Radical;
+use App\Http\Resources\RadicalCollection;
 use App\Radical as Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\QueryException;
@@ -8,43 +10,28 @@ class JapaneseWanikaniRadicals extends Controller
 {
     public function index()
     {
+        if (!request()->ajax()) {
+            return view('japanese.wanikani.vue');
+        }
+
         $level = request('level');
         $user_id = auth()->id();
         $kanji_id = request('kanji_id');
 
-        if (request()->ajax()) {
-            $radicals = Model::orderBy('level')
-                ->orderBy('meaning')
-                ->userBurnable($user_id)
-                ->when($kanji_id, function (Builder $query) use ($kanji_id) {
-                    return $query->whereHas('kanjis', function (Builder $query) use ($kanji_id) {
-                        $query->where('kanji_id', $kanji_id);
-                    });
-                })
-                ->when($level >= 1 && $level <= 60, function (Builder $query) use ($level) {
-                    return $query->where('level', $level);
-                })
-                ->get(['id', 'level', 'character', 'meaning', 'image'])
-                ->map(function ($item) use ($user_id) {
-                    /* @var Model $item */
-                    return [
-                        'id' => $item->id,
-                        'slug' => path('JapaneseWanikaniRadicals@show', $item->meaning),
-                        'image' => $item->image,
-                        'level' => $item->level,
-                        'burned' => $user_id ? null !== $item->burnable : false,
-                        'meaning' => $item->meaning,
-                        'character' => $item->character,
-                    ];
-                })
-                ->when(!$kanji_id, function ($collection) {
-                    return $collection->groupBy('level');
+        $radicals = Model::orderBy('level')
+            ->orderBy('meaning')
+            ->userBurnable($user_id)
+            ->when($kanji_id, function (Builder $query) use ($kanji_id) {
+                return $query->whereHas('kanjis', function (Builder $query) use ($kanji_id) {
+                    $query->where('kanji_id', $kanji_id);
                 });
+            })
+            ->when($level >= 1 && $level <= 60, function (Builder $query) use ($level) {
+                return $query->where('level', $level);
+            })
+            ->get(['id', 'level', 'character', 'meaning', 'image']);
 
-            return compact('radicals');
-        }
-
-        return view('japanese.wanikani.radicals');
+        return new RadicalCollection($radicals);
     }
 
     public function destroy(int $id)
@@ -62,13 +49,15 @@ class JapaneseWanikaniRadicals extends Controller
 
     public function show(string $meaning)
     {
+        if (!request()->ajax()) {
+            return view('japanese.wanikani.vue', ['meta_replace' => ['radical' => $meaning]]);
+        }
+
         $radical = Model::where('meaning', $meaning)
             ->userBurnable(auth()->id())
             ->firstOrFail();
 
-        \Breadcrumbs::push($radical->meaning);
-
-        return view('japanese.wanikani.radical', compact('radical'));
+        return new Radical($radical);
     }
 
     public function update(int $id)
@@ -86,6 +75,6 @@ class JapaneseWanikaniRadicals extends Controller
     {
         $this->middleware('breadcrumbs:japanese.index,japanese');
         $this->middleware('breadcrumbs:japanese.wanikani,japanese/wanikani');
-        $this->middleware('breadcrumbs:japanese.radicals,japanese/wanikani/radicals');
+        $this->middleware('breadcrumbs:japanese.browsing');
     }
 }

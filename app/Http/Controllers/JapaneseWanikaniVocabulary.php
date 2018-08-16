@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use App\Kanji;
+use App\Http\Resources\Vocabulary;
+use App\Http\Resources\VocabularyCollection;
 use App\Vocabulary as Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\QueryException;
@@ -9,41 +10,26 @@ class JapaneseWanikaniVocabulary extends Controller
 {
     public function index()
     {
+        if (!request()->ajax()) {
+            return view('japanese.wanikani.vue');
+        }
+
         $kanji = request('kanji');
         $level = request('level');
         $user_id = auth()->id();
 
-        if (request()->ajax()) {
-            $vocabulary = Model::orderBy('level')
-                ->orderBy('meaning')
-                ->userBurnable($user_id)
-                ->when($kanji, function (Builder $query) use ($kanji) {
-                    return $query->where('character', 'LIKE', "%{$kanji}%");
-                })
-                ->when($level >= 1 && $level <= 60, function (Builder $query) use ($level) {
-                    return $query->where('level', $level);
-                })
-                ->get(['id', 'level', 'character', 'kana', 'meaning'])
-                ->map(function ($item) use ($user_id) {
-                    /* @var Model $item */
-                    return [
-                        'id' => $item->id,
-                        'kana' => $item->kana,
-                        'slug' => path('JapaneseWanikaniVocabulary@show', $item->character),
-                        'level' => $item->level,
-                        'burned' => $user_id ? null !== $item->burnable : false,
-                        'meaning' => $item->meaning,
-                        'character' => $item->character,
-                    ];
-                })
-                ->when(!$kanji, function ($collection) {
-                    return $collection->groupBy('level');
-                });
+        $vocabulary = Model::orderBy('level')
+            ->orderBy('meaning')
+            ->userBurnable($user_id)
+            ->when($kanji, function (Builder $query) use ($kanji) {
+                return $query->where('character', 'LIKE', "%{$kanji}%");
+            })
+            ->when($level >= 1 && $level <= 60, function (Builder $query) use ($level) {
+                return $query->where('level', $level);
+            })
+            ->get(['id', 'level', 'character', 'kana', 'meaning']);
 
-            return compact('vocabulary');
-        }
-
-        return view('japanese.wanikani.vocabularies');
+        return new VocabularyCollection($vocabulary);
     }
 
     public function destroy(int $id)
@@ -61,13 +47,15 @@ class JapaneseWanikaniVocabulary extends Controller
 
     public function show(string $characters)
     {
+        if (!request()->ajax()) {
+            return view('japanese.wanikani.vue', ['meta_replace' => ['vocab' => $characters]]);
+        }
+
         $vocabulary = Model::where('character', $characters)
             ->userBurnable(auth()->id())
             ->firstOrFail();
 
-        \Breadcrumbs::push($vocabulary->character);
-
-        return view('japanese.wanikani.vocabulary', compact('vocabulary'));
+        return new Vocabulary($vocabulary);
     }
 
     public function update(int $id)
@@ -85,6 +73,6 @@ class JapaneseWanikaniVocabulary extends Controller
     {
         $this->middleware('breadcrumbs:japanese.index,japanese');
         $this->middleware('breadcrumbs:japanese.wanikani,japanese/wanikani');
-        $this->middleware('breadcrumbs:japanese.vocabulary,japanese/wanikani/vocabulary');
+        $this->middleware('breadcrumbs:japanese.browsing');
     }
 }

@@ -18,17 +18,17 @@ return [
 
     'japanese-wanikani.index' => 'WaniKani V · Japanese',
 
-    'japanese-wanikani-kanji.show' => 'Kanji :kanji · WaniKani V · Japanese',
-    'japanese-wanikani-kanji.index' => 'Kanji · WaniKani V · Japanese',
+    'japanese-wanikani-kanji.show' => 'Kanji :kanji',
+    'japanese-wanikani-kanji.index' => 'Kanji',
 
-    'japanese-wanikani-level.show' => 'Level :level · WaniKani V · Japanese',
-    'japanese-wanikani-level.index' => 'Levels · WaniKani V · Japanese',
+    'japanese-wanikani-level.show' => 'Level :level',
+    'japanese-wanikani-level.index' => 'Levels',
 
-    'japanese-wanikani-radicals.show' => 'Radical :radical · WaniKani V · Japanese',
-    'japanese-wanikani-radicals.index' => 'Radicals · WaniKani V · Japanese',
+    'japanese-wanikani-radicals.show' => ':radical',
+    'japanese-wanikani-radicals.index' => 'Radicals',
 
-    'japanese-wanikani-vocabulary.show' => ':vocab · WaniKani V · Japanese',
-    'japanese-wanikani-vocabulary.index' => 'Vocabulary · WaniKani V · Japanese',
+    'japanese-wanikani-vocabulary.show' => ':vocab',
+    'japanese-wanikani-vocabulary.index' => 'Vocabulary',
 
     'retracker.dev' => 'About retracker development',
     'retracker.usage' => 'How to use retracker',

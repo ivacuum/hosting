@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Resources\KanjiCollection;
+use App\Http\Resources\RadicalCollection;
+use App\Http\Resources\VocabularyCollection;
 use App\Kanji;
 use App\Radical;
 use App\Vocabulary;
@@ -17,53 +20,25 @@ class JapaneseWanikaniSearch extends Controller
         $radicals = Radical::where('meaning', 'LIKE', "%{$q}%")
             ->orderBy('level')
             ->orderBy('meaning')
-            ->get(['id', 'level', 'character', 'meaning', 'image'])
-            ->map(function ($item) {
-                /* @var Radical $item */
-                return [
-                    'id' => $item->id,
-                    'slug' => path('JapaneseWanikaniRadicals@show', $item->meaning),
-                    'image' => $item->image,
-                    'level' => $item->level,
-                    'meaning' => $item->meaning,
-                    'character' => $item->character,
-                ];
-            });
+            ->get(['id', 'level', 'character', 'meaning', 'image']);
 
         $kanji = Kanji::where('meaning', 'LIKE', "%{$q}%")
             ->orderBy('level')
             ->orderBy('meaning')
-            ->get(['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading'])
-            ->map(function ($item) {
-                /* @var Kanji $item */
-                return [
-                    'id' => $item->id,
-                    'slug' => path('JapaneseWanikaniKanji@show', $item->character),
-                    'level' => $item->level,
-                    'meaning' => $item->meaning,
-                    'reading' => $item->importantReading(),
-                    'character' => $item->character,
-                ];
-            });
+            ->get(['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading']);
 
         $vocabulary = Vocabulary::where('meaning', 'LIKE', "%{$q}%")
             ->orderBy('level')
             ->orderBy('meaning')
-            ->get(['id', 'level', 'character', 'kana', 'meaning'])
-            ->map(function ($item) {
-                /* @var Vocabulary $item */
-                return [
-                    'id' => $item->id,
-                    'kana' => $item->kana,
-                    'slug' => path('JapaneseWanikaniVocabulary@show', $item->character),
-                    'level' => $item->level,
-                    'meaning' => $item->meaning,
-                    'character' => $item->character,
-                ];
-            });
+            ->get(['id', 'level', 'character', 'kana', 'meaning']);
 
         $count = $radicals->count() + $kanji->count() + $vocabulary->count();
 
-        return compact('count', 'kanji', 'radicals', 'vocabulary');
+        return [
+            'count' => $count,
+            'kanji' => new KanjiCollection($kanji),
+            'radicals' => new RadicalCollection($radicals),
+            'vocabulary' => new VocabularyCollection($vocabulary),
+        ];
     }
 }

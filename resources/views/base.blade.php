@@ -108,7 +108,7 @@
       </div>
     @endif
   </div>
-  <div class="{{ $content_container_classes ?? 'container mt-3' }} {{ $content_container_extra_classes ?? '' }}" id="pjax_container">
+  <div class="{{ $content_container_classes ?? 'container mt-3' }} {{ $content_container_extra_classes ?? '' }}" id="{{ $content_container_id ?? 'pjax_container' }}">
 
 @endif
 @yield('content_header')
@@ -202,6 +202,7 @@
   <script src="{{ mix('/assets/socket.io.js') }}"></script>
 @endif
 <script src="{{ mix('/assets/mousetrap.js') }}"></script>
+@stack('js_vendor')
 <script src="{{ mix('/assets/app.js') }}"></script>
 @stack('js')
 @section('counters')

@@ -1,12 +1,13 @@
-@extends('japanese.wanikani.base')
+@extends('japanese.base')
 
 @section('content')
 <h1 class="h2">{{ trans('japanese.wanikani') }}</h1>
 <div class="row text-center mb-2">
   <div class="col-md-4 mb-2">
     <div class="bg-radical rounded">
-      <a class="d-block ja-shadow-light py-4 text-white"
-         href="{{ path('JapaneseWanikaniRadicals@index') }}"
+      <a
+        class="d-block ja-shadow-light py-4 text-white"
+        href="{{ path('JapaneseWanikaniRadicals@index') }}"
       >
         <span class="d-block f36">部首</span>
         {{ trans('japanese.radicals') }}
@@ -15,8 +16,9 @@
   </div>
   <div class="col-md-4 mb-2">
     <div class="bg-kanji rounded">
-      <a class="d-block ja-shadow-light py-4 text-white"
-         href="{{ path('JapaneseWanikaniKanji@index') }}"
+      <a
+        class="d-block ja-shadow-light py-4 text-white"
+        href="{{ path('JapaneseWanikaniKanji@index') }}"
       >
         <span class="d-block f36">漢字</span>
         {{ trans('japanese.kanji') }}
@@ -25,8 +27,9 @@
   </div>
   <div class="col-md-4 mb-2">
     <div class="bg-vocab rounded">
-      <a class="d-block ja-shadow-light py-4 text-white"
-         href="{{ path('JapaneseWanikaniVocabulary@index') }}"
+      <a
+        class="d-block ja-shadow-light py-4 text-white"
+        href="{{ path('JapaneseWanikaniVocabulary@index') }}"
       >
         <span class="d-block f36">単語</span>
         {{ trans('japanese.vocabulary') }}
