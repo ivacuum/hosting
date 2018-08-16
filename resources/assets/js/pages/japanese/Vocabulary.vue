@@ -1,7 +1,7 @@
 <script>
 import locale from '../../i18n/locale'
 import KanjiList from '../../components/japanese/KanjiList.vue'
-import BurnVocabulary from '../../components/BurnVocabulary.vue'
+import BurnVocabulary from '../../components/japanese/BurnVocabulary.vue'
 
 export default {
   components: {

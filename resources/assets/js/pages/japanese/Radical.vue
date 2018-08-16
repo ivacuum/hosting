@@ -1,7 +1,7 @@
 <script>
 import locale from '../../i18n/locale'
 import KanjiList from '../../components/japanese/KanjiList.vue'
-import BurnRadical from '../../components/BurnRadical.vue'
+import BurnRadical from '../../components/japanese/BurnRadical.vue'
 
 export default {
   components: {

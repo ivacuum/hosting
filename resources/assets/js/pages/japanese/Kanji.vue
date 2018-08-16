@@ -1,6 +1,6 @@
 <script>
 import locale from '../../i18n/locale'
-import BurnKanji from '../../components/BurnKanji.vue'
+import BurnKanji from '../../components/japanese/BurnKanji.vue'
 import KanjiList from '../../components/japanese/KanjiList.vue'
 import RadicalsList from '../../components/japanese/RadicalsList.vue'
 import VocabularyList from '../../components/japanese/VocabularyList.vue'

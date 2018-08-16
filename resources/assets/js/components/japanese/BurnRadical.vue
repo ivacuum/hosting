@@ -1,5 +1,5 @@
 <script>
-import locale from '../i18n/locale'
+import locale from '../../i18n/locale'
 
 export default {
   props: {
