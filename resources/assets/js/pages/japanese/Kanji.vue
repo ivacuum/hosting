@@ -2,14 +2,14 @@
 import locale from '../../i18n/locale'
 import BurnKanji from '../../components/japanese/BurnKanji.vue'
 import KanjiList from '../../components/japanese/KanjiList.vue'
-import RadicalsList from '../../components/japanese/RadicalsList.vue'
+import RadicalList from '../../components/japanese/RadicalList.vue'
 import VocabularyList from '../../components/japanese/VocabularyList.vue'
 
 export default {
   components: {
     BurnKanji,
     KanjiList,
-    RadicalsList,
+    RadicalList,
     VocabularyList,
   },
 
@@ -70,7 +70,7 @@ export default {
     </span>
   </div>
 
-  <radicals-list
+  <radical-list
     burned
     flat
     :kanji-id="kanji.id"

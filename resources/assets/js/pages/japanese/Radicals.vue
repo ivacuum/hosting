@@ -1,8 +1,8 @@
 <script>
-import RadicalsList from '../../components/japanese/RadicalsList.vue'
+import RadicalList from '../../components/japanese/RadicalList.vue'
 
 export default {
-  components: { RadicalsList },
+  components: { RadicalList },
 
   created() {
     document.title = this.$i18n.t('japanese.radicals')
@@ -13,6 +13,6 @@ export default {
 <template>
 <div>
   <h1 class="h2">{{ $t('japanese.radicals') }}</h1>
-  <radicals-list/>
+  <radical-list/>
 </div>
 </template>

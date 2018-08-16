@@ -1,12 +1,12 @@
 <script>
 import KanjiList from '../../components/japanese/KanjiList.vue'
-import RadicalsList from '../../components/japanese/RadicalsList.vue'
+import RadicalList from '../../components/japanese/RadicalList.vue'
 import VocabularyList from '../../components/japanese/VocabularyList.vue'
 
 export default {
   components: {
     KanjiList,
-    RadicalsList,
+    RadicalList,
     VocabularyList,
   },
 
@@ -38,7 +38,7 @@ export default {
 <template>
 <div>
   <h1 class="h2">{{ $t('japanese.level', { level }) }}</h1>
-  <radicals-list :level="level"/>
+  <radical-list :level="level"/>
   <kanji-list :level="level"/>
   <vocabulary-list :level="level"/>
 
