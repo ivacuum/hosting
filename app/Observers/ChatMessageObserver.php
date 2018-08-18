@@ -17,8 +17,12 @@ class ChatMessageObserver
         $this->notify($model);
     }
 
-    protected function notify(Model $model)
+    protected function notify(Model $model): void
     {
+        if ($model->user->isRoot()) {
+            return;
+        }
+
         $text = "💬 Сообщение в чат от {$model->user->publicName()}\n".htmlspecialchars_decode($model->text, ENT_QUOTES);
 
         $this->telegram->notifyAdmin($text);
