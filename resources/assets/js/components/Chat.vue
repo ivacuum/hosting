@@ -91,7 +91,7 @@ export default {
         messages.forEach((message) => {
           if (typeof result[date] === 'undefined') result[date] = []
 
-          result[date].push(message.user.id === previous ? true : false)
+          result[date].push(message.user.id === previous)
 
           previous = message.user.id
         })

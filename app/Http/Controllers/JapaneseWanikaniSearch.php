@@ -32,10 +32,8 @@ class JapaneseWanikaniSearch extends Controller
             ->orderBy('meaning')
             ->get(['id', 'level', 'character', 'kana', 'meaning']);
 
-        $count = $radicals->count() + $kanji->count() + $vocabulary->count();
-
         return [
-            'count' => $count,
+            'count' => $radicals->count() + $kanji->count() + $vocabulary->count(),
             'kanji' => new KanjiCollection($kanji),
             'radicals' => new RadicalCollection($radicals),
             'vocabulary' => new VocabularyCollection($vocabulary),
