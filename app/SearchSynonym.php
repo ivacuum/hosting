@@ -27,7 +27,7 @@ class SearchSynonym
 
     public static function applySynonyms(string $query, array $synonyms, bool $replace = false): string
     {
-        $result = preg_replace('/\s{2,}/', ' ', $query);
+        $result = preg_replace('/\s{2,}/u', ' ', $query);
 
         foreach ($synonyms as $pattern => $replacement) {
             $result = preg_replace(
