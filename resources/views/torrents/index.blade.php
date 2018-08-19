@@ -37,7 +37,7 @@
       @endru
     @endguest
   </aside>
-  <div v-cloak>
+  <div class="flex-grow-1" v-cloak>
     @if (Auth::check() && empty(request()->query()))
       <chat></chat>
     @endif
