@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex">
-  <aside class="d-none d-lg-block font-smooth mr-5 torrent-categories">
+  <aside class="d-none d-lg-block flex-shrink-0 font-smooth torrent-categories" style="width: 14rem;">
     <nav>
       @foreach ($tree as $id => $category)
         <h4 class="{{ $loop->first ? '' : 'mt-4' }} text-nowrap">
@@ -31,7 +31,7 @@
     </nav>
     @guest
       @ru
-        <div class="alert alert-info mt-4 p-2 small">
+        <div class="alert alert-info mr-4 mt-4 p-2 small">
           <a class="link" href="{{ path('Auth\SignIn@index', ['goto' => path('Torrents@index')]) }}">Пользователям</a> доступны чат и добавление раздач
         </div>
       @endru
