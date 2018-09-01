@@ -31,6 +31,10 @@ class Country extends Model
 
     protected $guarded = ['created_at', 'updated_at'];
 
+    protected $casts = [
+        'views' => 'int',
+    ];
+
     // Relations
     public function cities()
     {

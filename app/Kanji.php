@@ -31,6 +31,10 @@ class Kanji extends Model
     protected $fillable = ['level']; // Чтобы не бросало исключение
     protected $perPage = 50;
 
+    protected $casts = [
+        'level' => 'int',
+    ];
+
     // Relations
     public function burnable()
     {

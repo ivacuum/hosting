@@ -31,6 +31,13 @@ class Photo extends Model
     protected $guarded = ['rel_id', 'rel_type', 'created_at', 'updated_at', 'goto'];
     protected $perPage = 50;
 
+    protected $casts = [
+        'views' => 'int',
+        'rel_id' => 'int',
+        'status' => 'int',
+        'user_id' => 'int',
+    ];
+
     // Relations
     public function rel()
     {

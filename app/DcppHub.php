@@ -23,6 +23,12 @@ class DcppHub extends Model
 
     protected $guarded = ['created_at', 'updated_at'];
 
+    protected $casts = [
+        'port' => 'int',
+        'status' => 'int',
+        'clicks' => 'int',
+    ];
+
     public function breadcrumb(): string
     {
         return $this->address;

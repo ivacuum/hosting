@@ -33,7 +33,9 @@ class Comment extends Model
     protected $perPage = 20;
 
     protected $casts = [
-        'status' => 'integer',
+        'rel_id' => 'int',
+        'status' => 'int',
+        'user_id' => 'int',
     ];
 
     // Relations

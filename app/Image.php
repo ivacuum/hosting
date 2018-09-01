@@ -30,6 +30,12 @@ class Image extends Model
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $perPage = 50;
 
+    protected $casts = [
+        'size' => 'int',
+        'views' => 'int',
+        'user_id' => 'int',
+    ];
+
     // Relations
     public function user()
     {

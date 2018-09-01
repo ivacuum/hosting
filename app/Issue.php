@@ -33,6 +33,11 @@ class Issue extends Model
     protected $guarded = ['created_at', 'updated_at'];
     protected $perPage = 50;
 
+    protected $casts = [
+        'status' => 'int',
+        'user_id' => 'int',
+    ];
+
     // Relations
     public function comments()
     {

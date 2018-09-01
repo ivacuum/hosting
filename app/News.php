@@ -31,6 +31,12 @@ class News extends Model
 
     protected $guarded = ['created_at', 'updated_at', 'goto'];
 
+    protected $casts = [
+        'views' => 'int',
+        'status' => 'int',
+        'user_id' => 'int',
+    ];
+
     // Relations
     public function comments()
     {

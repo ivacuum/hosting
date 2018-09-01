@@ -57,8 +57,12 @@ class Trip extends Model
 
     protected $guarded = ['id', 'html', 'views', 'created_at', 'updated_at'];
     protected $dates = ['date_start', 'date_end'];
+
     protected $casts = [
+        'views' => 'int',
         'status' => 'int',
+        'city_id' => 'int',
+        'user_id' => 'int',
     ];
 
     // Relations

@@ -61,10 +61,12 @@ class User extends Authenticatable
     protected $perPage = 50;
 
     protected $casts = [
+        'theme' => 'int',
         'status' => 'int',
         'notify_gigs' => 'int',
         'notify_news' => 'int',
         'notify_trips' => 'int',
+        'torrent_short_title' => 'int',
     ];
 
     // Relations

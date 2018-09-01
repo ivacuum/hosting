@@ -25,6 +25,11 @@ class ChatMessage extends Model
 
     protected $guarded = ['html', 'created_at', 'updated_at', 'goto'];
 
+    protected $casts = [
+        'status' => 'int',
+        'user_id' => 'int',
+    ];
+
     // Relations
     public function user()
     {

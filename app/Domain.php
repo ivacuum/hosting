@@ -55,6 +55,15 @@ class Domain extends Model
     protected $dates = ['mailed_at', 'queried_at', 'registered_at', 'paid_till'];
     protected $perPage = 50;
 
+    protected $casts = [
+        'orphan' => 'int',
+        'status' => 'int',
+        'alias_id' => 'int',
+        'client_id' => 'int',
+        'domain_control' => 'int',
+        'yandex_user_id' => 'int',
+    ];
+
     // Internal
     public function getRouteKeyName()
     {

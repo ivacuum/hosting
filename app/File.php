@@ -27,6 +27,12 @@ class File extends Model
     protected $guarded = ['created_at', 'updated_at', 'goto', 'file'];
     protected $perPage = 50;
 
+    protected $casts = [
+        'size' => 'int',
+        'status' => 'int',
+        'downloads' => 'int',
+    ];
+
     // Scopes
     public function scopePublished(Builder $query)
     {

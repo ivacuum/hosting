@@ -28,6 +28,10 @@ class Tag extends Model
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $perPage = 50;
 
+    protected $casts = [
+        'views' => 'int',
+    ];
+
     // Relations
     public function news()
     {

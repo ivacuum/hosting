@@ -41,6 +41,13 @@ class Gig extends Model
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $dates = ['date'];
 
+    protected $casts = [
+        'views' => 'int',
+        'status' => 'int',
+        'city_id' => 'int',
+        'artist_id' => 'int',
+    ];
+
     // Relations
     public function artist()
     {

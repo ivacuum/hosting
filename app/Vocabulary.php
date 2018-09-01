@@ -27,6 +27,11 @@ class Vocabulary extends Model
     protected $fillable = ['sentences'];
     protected $perPage = 50;
 
+    protected $casts = [
+        'level' => 'int',
+        'wk_id' => 'int',
+    ];
+
     // Relations
     public function burnable()
     {
