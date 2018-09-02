@@ -13,7 +13,7 @@ class WhoisQuery
 
     public function __construct($domain)
     {
-        $this->domain = idn_to_ascii($domain);
+        $this->domain = idn_to_ascii($domain, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
 
         $this->servers = json_decode(
             File::get(base_path('database/whois_servers.json')),

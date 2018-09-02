@@ -155,8 +155,8 @@ class Domain extends Model
                 'port' => $input['port'] ?? '',
                 'domain' => $this->domain,
                 'weight' => $input['weight'] ?? '',
-                'target' => idn_to_ascii($content),
-                'content' => !in_array($type, ['A', 'AAAA', 'TXT']) ? idn_to_ascii($content) : $content,
+                'target' => idn_to_ascii($content, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46),
+                'content' => !in_array($type, ['A', 'AAAA', 'TXT']) ? idn_to_ascii($content, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46) : $content,
                 'priority' => $input['priority'] ?? '',
                 'subdomain' => $input['subdomain'],
             ],
@@ -245,9 +245,9 @@ class Domain extends Model
                 'retry' => $input['retry'] ?? '',
                 'expire' => $input['expire'] ?? '',
                 'domain' => $this->domain,
-                'target' => idn_to_ascii($input['content']),
+                'target' => idn_to_ascii($input['content'], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46),
                 'weight' => $input['weight'] ?? '',
-                'content' => !in_array($type, ['A', 'AAAA', 'TXT']) ? idn_to_ascii($input['content']) : $input['content'],
+                'content' => !in_array($type, ['A', 'AAAA', 'TXT']) ? idn_to_ascii($input['content'], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46) : $input['content'],
                 'refresh' => $input['refresh'] ?? '',
                 'priority' => $input['priority'] ?? '',
                 'subdomain' => $input['subdomain'],
@@ -349,7 +349,7 @@ class Domain extends Model
     public function getRobotsTxt()
     {
         $client = new HttpClient;
-        $domain = idn_to_ascii($this->domain);
+        $domain = idn_to_ascii($this->domain, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
 
         try {
             $response = $client->get("http://{$domain}/robots.txt");
