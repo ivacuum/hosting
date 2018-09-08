@@ -2,13 +2,17 @@
   <div class="pic-centered-container">
     <div class="pic">
       @if ($is_crawler)
-        <img alt="{{ isset($trip) ? $trip->imgAltText() : '' }}"
-             src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}">
+        <img
+          src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"
+          alt="{{ isset($trip) ? $trip->imgAltText() : '' }}"
+        >
       @else
-        <img class="rounded-md-pic js-lazy"
-             alt=""
-             src="https://life.ivacuum.org/0.gif"
-             data-src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}">
+        <img
+          class="rounded-md-pic js-lazy"
+          src="https://life.ivacuum.org/0.gif"
+          data-src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"
+          alt=""
+        >
       @endif
     </div>
   </div>

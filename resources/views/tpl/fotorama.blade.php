@@ -6,12 +6,17 @@ $alt = $is_crawler && isset($trip) ? $trip->imgAltText() : '';
     @foreach ($pics as $pic)
       <div class="pic js-shortcuts-item" id="{{ $pic }}">
         @if ($is_crawler)
-          <img alt="{{ $alt }}" src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}">
+          <img
+            src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"
+            alt="{{ $alt }}"
+          >
         @else
-          <img class="pic-group-border-radius js-lazy"
-               alt=""
-               src="https://life.ivacuum.org/0.gif"
-               data-src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}">
+          <img
+            class="pic-group-border-radius js-lazy"
+            src="https://life.ivacuum.org/0.gif"
+            data-src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"
+            alt=""
+          >
         @endif
       </div>
     @endforeach
