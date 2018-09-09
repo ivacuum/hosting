@@ -372,7 +372,9 @@ class Trip extends Model
                 ->orderBy('date_start', 'desc')
                 ->get();
         })->when($count > 0, function ($trips) use ($count) {
-            return $trips->random($count);
+            return $trips->count()
+                ? $trips->random($count)
+                : $trips;
         });
     }
 
