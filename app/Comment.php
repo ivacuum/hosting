@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Ivacuum\Generic\Traits\OriginalWithCast;
 use Ivacuum\Generic\Traits\RecordsActivity;
 
 /**
@@ -23,7 +24,7 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  */
 class Comment extends Model
 {
-    use RecordsActivity;
+    use OriginalWithCast, RecordsActivity;
 
     const STATUS_HIDDEN = 0;
     const STATUS_PUBLISHED = 1;
