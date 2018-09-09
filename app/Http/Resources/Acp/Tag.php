@@ -23,7 +23,7 @@ class Tag extends Resource
             'show_url' => $this->when($me->can('show', 'App\Tag'), path('Acp\Tags@show', $this)),
             'photos_url' => $this->when($me->can('show', 'App\Photo'), path('Acp\Photos@index', $foreign_key)),
 
-            'photos_count' => $this->photos_count,
+            'photos_count' => (int) $this->photos_count,
         ];
     }
 }

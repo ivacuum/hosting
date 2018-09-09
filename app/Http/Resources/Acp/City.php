@@ -28,7 +28,7 @@ class City extends Resource
             'show_url' => $this->when($me->can('show', 'App\City'), path('Acp\Cities@show', $this)),
             'trips_url' => $this->when($me->can('list', 'App\Trip'), path('Acp\Trips@index', $foreign_key)),
 
-            'trips_count' => $this->trips_count,
+            'trips_count' => (int) $this->trips_count,
 
             'country' => $this->relationLoaded('country') ? new Country($this->country) : null,
         ];

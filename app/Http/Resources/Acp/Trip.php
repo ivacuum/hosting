@@ -34,8 +34,8 @@ class Trip extends Resource
             'template_url' => $this->when($me->isRoot(), path('Acp\Dev\Templates@show', $this->slug)),
             'new_photo_url' => $this->when($me->can('create', 'App\Photo'), path('Acp\Photos@create', $foreign_key)),
 
-            'photos_count' => $this->photos_count,
-            'comments_count' => $this->comments_count,
+            'photos_count' => (int) $this->photos_count,
+            'comments_count' => (int) $this->comments_count,
 
             'user' => $this->relationLoaded('user') ? new User($this->user) : null,
         ];
