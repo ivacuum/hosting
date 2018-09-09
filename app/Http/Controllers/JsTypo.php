@@ -1,30 +1,28 @@
 <?php namespace App\Http\Controllers;
 
+use App\Events\TypoReceived;
+use App\Http\Requests\TypoStore;
 use Ivacuum\Generic\Services\Telegram;
 
 class JsTypo extends Controller
 {
-    public function __invoke(Telegram $telegram)
+    public function __invoke(TypoStore $request, Telegram $telegram)
     {
-        request()->validate(['selection' => 'required|string|min:3|max:200']);
-
-        $page = session()->previousUrl();
-        $selection = request('selection');
+        $page = $request->session()->previousUrl();
+        $selection = $request->input('selection');
 
         if (!$page) {
-            return [
+            return response()->json([
                 'status' => 'error',
                 'message' => 'На какой странице ошибка?',
-            ];
+            ], 422);
         }
 
-        $text = "📝️ Опечатка на странице\n{$page}\n\n".htmlspecialchars_decode($selection, ENT_QUOTES);
+        event(new TypoReceived($selection, $page));
 
-        $telegram->notifyAdmin($text);
-
-        return [
+        return response()->json([
             'status' => 'OK',
             'message' => 'Спасибо за информацию об ошибке',
-        ];
+        ], 201);
     }
 }

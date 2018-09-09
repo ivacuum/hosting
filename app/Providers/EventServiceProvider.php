@@ -7,6 +7,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\CommentPublished' => ['App\Listeners\NotifyUsersAboutComment'],
         'App\Events\DomainWhoisUpdated' => ['App\Listeners\EmailWhoisChanges'],
+        'App\Events\TypoReceived' => ['App\Listeners\TelegramTypo'],
 
         'Illuminate\Auth\Events\Login' => [
             'App\Listeners\UserEmptySalt',
