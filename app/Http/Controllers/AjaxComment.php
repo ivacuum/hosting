@@ -2,6 +2,8 @@
 
 use App\Comment;
 use App\Exceptions\CommentLimitExceededException;
+use App\Http\Requests\CommentStore;
+use App\Http\Resources\Comment as CommentResource;
 use App\Limits\CommentsTodayLimit;
 use App\News;
 use App\Torrent;
@@ -11,21 +13,14 @@ use Ivacuum\Generic\Exceptions\FloodException;
 
 class AjaxComment extends Controller
 {
-    public function store($type, $id, CommentsTodayLimit $limits)
+    public function store(string $type, int $id, CommentsTodayLimit $limits, CommentStore $request)
     {
-        $text = e(request('text'));
-        $email = request('email');
+        $text = $request->input('text');
+        $email = $request->input('email');
 
         /* @var User $user */
-        $user = request()->user();
+        $user = $request->user();
         $is_guest = null === $user;
-
-        $this->validateWith(\Validator::make(compact('id', 'text', 'type', 'email'), [
-            'id' => 'integer|min:1',
-            'text' => 'required|max:1000',
-            'type' => 'in:news,torrent,trip',
-            'email' => $is_guest ? 'required|email|max:125' : '',
-        ]));
 
         if ($is_guest) {
             $user = (new User)->findByEmailOrCreate([
@@ -49,11 +44,19 @@ class AjaxComment extends Controller
         }
 
         /* @var Comment $comment */
-        $comment = $model->comments()->create([
+        $comment = new Comment([
             'html' => $text,
             'status' => $is_guest ? Comment::STATUS_PENDING : Comment::STATUS_PUBLISHED,
             'user_id' => $user->id,
         ]);
+
+        $comment->setRelation('user', $user);
+
+        $model->comments()->save($comment);
+
+        if ($request->expectsJson()) {
+            return new CommentResource($comment);
+        }
 
         return $this->redirectToComment($model, $is_guest ? null : $comment);
     }
