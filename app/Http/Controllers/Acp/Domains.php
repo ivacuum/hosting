@@ -2,6 +2,7 @@
 
 use App\Domain as Model;
 use App\Mail\DomainMailboxes;
+use App\Rules\Email;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Controllers\Acp\Controller;
 
@@ -81,7 +82,7 @@ class Domains extends Controller
     {
         request()->validate([
             'logins' => 'required',
-            'send_to' => 'required|email',
+            'send_to' => Email::rules(),
         ]);
 
         $model = $this->getModel($domain);

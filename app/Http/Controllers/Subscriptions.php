@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Mail\SubscriptionConfirm;
+use App\Rules\Email;
 use App\User;
 use Illuminate\Contracts\Encryption\DecryptException;
 
@@ -56,7 +57,7 @@ class Subscriptions extends Controller
         request()->validate([
             'gigs' => 'in:0,1',
             'news' => 'in:0,1',
-            'email' => $is_guest ? 'required|email|max:125' : '',
+            'email' => $is_guest ? Email::rules() : '',
             'trips' => 'in:0,1',
         ]);
 

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Mail\FirstvdsPromocode;
+use App\Rules\Email;
 
 class Coupons extends Controller
 {
@@ -36,7 +37,7 @@ class Coupons extends Controller
 
     public function firstvdsPost()
     {
-        request()->validate(['email' => 'required|email|max:125']);
+        request()->validate(['email' => Email::rules()]);
 
         \Mail::to(request('email'))->queue(new FirstvdsPromocode);
 
