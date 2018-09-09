@@ -176,6 +176,7 @@ class ParseWanikani extends Command
                     'level' => $vocab->level,
                     'meaning' => $vocab->meaning,
                     'character' => $vocab->character,
+                    'sentences' => '',
                 ]);
 
                 $this->info("New Vocabulary: {$vocab->character}");
