@@ -1,9 +1,11 @@
 <?php namespace App\Http\Controllers;
 
 use App\Exceptions\IssueLimitExceededException;
+use App\Http\Requests\IssueStore;
 use App\Issue;
 use App\Limits\IssuesTodayLimit;
 use App\User;
+use Illuminate\Http\Request;
 use Ivacuum\Generic\Exceptions\FloodException;
 
 class Issues extends Controller
@@ -13,27 +15,20 @@ class Issues extends Controller
         return view($this->view);
     }
 
-    public function store(IssuesTodayLimit $limits)
+    public function store(IssuesTodayLimit $limits, IssueStore $request)
     {
-        if (!request()->ajax()) {
+        if (!$request->ajax()) {
             return redirect(path('Home@index'));
         }
 
-        $name = request('name');
-        $text = e(request('text'));
-        $email = request('email');
-        $title = request('title');
+        $name = $request->input('name');
+        $text = $request->input('text');
+        $email = $request->input('email');
+        $title = $request->input('title');
 
         /* @var User $user */
-        $user = request()->user();
+        $user = $request->user();
         $is_guest = null === $user;
-
-        request()->validate([
-            'name' => request()->ajax() ? '' : 'required',
-            'text' => 'required|max:1000',
-            'email' => 'required|email|max:125',
-            'title' => request()->ajax() ? '' : 'required',
-        ]);
 
         if ($is_guest) {
             $user = (new User)->findByEmailOrCreate([
@@ -56,7 +51,7 @@ class Issues extends Controller
 
         Issue::create([
             'name' => $name,
-            'page' => $this->pathFromUrl(session()->previousUrl()),
+            'page' => $this->pathFromUrl($request->session()->previousUrl(), $request->server->get('LARAVEL_LOCALE')),
             'text' => $text,
             'email' => $email,
             'title' => $title,
@@ -67,13 +62,12 @@ class Issues extends Controller
         return response('', 201);
     }
 
-    protected function pathFromUrl(string $url): string
+    protected function pathFromUrl(string $url, string $locale): string
     {
         $parsed = parse_url($url);
 
         $path = $parsed['path'] ?? '';
         $query = isset($parsed['query']) ? "?{$parsed['query']}" : '';
-        $locale = request()->server->get('LARAVEL_LOCALE');
         $locale_uri = $locale ? "/{$locale}" : '';
 
         return $locale_uri.$path.$query;
