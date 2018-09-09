@@ -111,9 +111,9 @@ class User extends Authenticatable
     }
 
     // Attributes
-    public function setPasswordAttribute($value)
+    public function setPasswordAttribute(string $value): void
     {
-        $this->attributes['password'] = \Hash::make($value);
+        $this->attributes['password'] = $value ? \Hash::make($value) : '';
     }
 
     // Scopes
