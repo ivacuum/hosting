@@ -10,7 +10,7 @@ class CreateIssuesTable extends Migration
         Schema::create('issues', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id')->default(0);
-            $table->unsignedTinyInteger('status')->default(0);
+            $table->unsignedTinyInteger('status')->default(App\Issue::STATUS_PENDING);
             $table->string('name');
             $table->string('email');
             $table->string('title');

@@ -8,7 +8,7 @@ class CommentStatusField extends Migration
     public function up()
     {
         Schema::table('comments', function (Blueprint $table) {
-            $table->unsignedTinyInteger('status')->after('rel_type')->default(1);
+            $table->unsignedTinyInteger('status')->after('rel_type')->default(App\Comment::STATUS_PUBLISHED);
         });
     }
 

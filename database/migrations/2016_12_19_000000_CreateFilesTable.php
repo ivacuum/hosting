@@ -14,7 +14,7 @@ class CreateFilesTable extends Migration
             $table->string('slug');
             $table->unsignedBigInteger('size')->default(0);
             $table->string('extension', 25);
-            $table->unsignedTinyInteger('status')->default(0);
+            $table->unsignedTinyInteger('status')->default(App\File::STATUS_HIDDEN);
             $table->unsignedInteger('downloads')->default(0);
             $table->timestamps();
         });
