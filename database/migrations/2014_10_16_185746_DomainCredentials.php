@@ -8,7 +8,7 @@ class DomainCredentials extends Migration
     public function up()
     {
         Schema::table('domains', function (Blueprint $table) {
-            $table->mediumText('text')->default('');
+            $table->mediumText('text');
             $table->string('cms_type')->default('');
             $table->string('cms_version')->default('');
             $table->string('cms_url')->default('');
