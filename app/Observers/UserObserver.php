@@ -10,6 +10,10 @@ class UserObserver
         if (!$model->locale) {
             $model->locale = \App::getLocale();
         }
+
+        if (!$model->ip) {
+            $model->ip = request()->ip();
+        }
     }
 
     public function deleting(Model $model)

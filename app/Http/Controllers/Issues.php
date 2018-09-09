@@ -5,7 +5,6 @@ use App\Http\Requests\IssueStore;
 use App\Issue;
 use App\Limits\IssuesTodayLimit;
 use App\User;
-use Illuminate\Http\Request;
 use Ivacuum\Generic\Exceptions\FloodException;
 
 class Issues extends Controller
