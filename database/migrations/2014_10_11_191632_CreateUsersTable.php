@@ -10,12 +10,12 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email')->unique();
-            $table->string('login');
-            $table->string('password');
-            $table->string('salt', 5);
+            $table->string('login')->default('');
+            $table->string('password')->default('');
+            $table->string('salt', 5)->default('');
             $table->unsignedTinyInteger('status')->default(0);
-            $table->ipAddress('ip');
-            $table->string('activation_token');
+            $table->ipAddress('ip')->default('');
+            $table->string('activation_token')->default('');
             $table->rememberToken();
             $table->timestamps();
             $table->timestamp('last_login_at')->nullable();

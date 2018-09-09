@@ -15,10 +15,10 @@ class CreateDomainsTable extends Migration
             $table->boolean('domain_control')->unsigned()->default(0);
             $table->timestamp('registered_at')->nullable();
             $table->timestamp('paid_till')->nullable();
-            $table->string('ipv4');
-            $table->string('ipv6');
-            $table->string('mx');
-            $table->string('ns');
+            $table->string('ipv4')->default('');
+            $table->string('ipv6')->default('');
+            $table->string('mx')->default('');
+            $table->string('ns')->default('');
             $table->timestamp('queried_at')->nullable();
             $table->timestamp('mailed_at')->nullable();
             $table->timestamps();
