@@ -5,6 +5,7 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 class EventServiceProvider extends ServiceProvider
 {
     protected $listen = [
+        'App\Events\ChatMessageCreated' => ['App\Listeners\TelegramChatMessage'],
         'App\Events\CommentPublished' => ['App\Listeners\NotifyUsersAboutComment'],
         'App\Events\DomainWhoisUpdated' => ['App\Listeners\EmailWhoisChanges'],
         'App\Events\TypoReceived' => ['App\Listeners\TelegramTypo'],

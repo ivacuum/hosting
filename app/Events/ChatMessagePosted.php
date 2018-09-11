@@ -7,7 +7,7 @@ class ChatMessagePosted extends Event implements ShouldBroadcastNow
 {
     public $message;
 
-    public function __construct($message)
+    public function __construct(array $message)
     {
         $this->message = $message;
     }

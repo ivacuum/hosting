@@ -63,7 +63,7 @@ class Comment extends Model
 
     public function scopePublished(Builder $query)
     {
-        return $query->where('status', Comment::STATUS_PUBLISHED);
+        return $query->where('status', static::STATUS_PUBLISHED);
     }
 
     // Methods

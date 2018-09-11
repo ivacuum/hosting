@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\ChatMessage;
+use App\Http\Requests\ChatStore;
 use App\Http\Resources\ChatMessage as ChatMessageResource;
 
 class AjaxChat extends Controller
@@ -18,23 +19,22 @@ class AjaxChat extends Controller
         );
     }
 
-    public function store()
+    public function store(ChatStore $request)
     {
-        request()->validate(['text' => 'required|max:1000']);
-
-        $chat_message = ChatMessage::create([
-            'ip' => request()->ip(),
-            'text' => request('text'),
+        $chat_message = new ChatMessage([
+            'ip' => $request->ip(),
+            'text' => $request->input('text'),
             'status' => ChatMessage::STATUS_PUBLISHED,
-            'user_id' => request()->user()->id,
+            'user_id' => $request->user()->id,
         ]);
 
-        $chat_message->setRelation('user', request()->user());
+        $chat_message->setRelation('user', $request->user());
+        $chat_message->save();
 
-        $chat = new ChatMessageResource($chat_message);
+        $chat_resource = new ChatMessageResource($chat_message);
 
-        broadcast(new \App\Events\ChatMessagePosted($chat->toArray(request())));
+        broadcast(new \App\Events\ChatMessagePosted($chat_resource->toArray($request)));
 
-        return $chat;
+        return $chat_resource;
     }
 }
