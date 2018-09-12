@@ -8,8 +8,8 @@ class CitiesMapFields extends Migration
     public function up()
     {
         Schema::table('cities', function (Blueprint $table) {
-            $table->string('lat', 10)->after('iata')->default('');
-            $table->string('lon', 10)->after('lat')->default('');
+            $table->string('lat', 12)->after('iata')->default('');
+            $table->string('lon', 12)->after('lat')->default('');
         });
     }
 
