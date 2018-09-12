@@ -11,16 +11,16 @@ class CreateGigsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('city_id')->default(0);
             $table->unsignedInteger('artist_id')->default(0);
-            $table->string('title_ru');
-            $table->string('title_en');
-            $table->string('slug');
+            $table->string('title_ru')->default('');
+            $table->string('title_en')->default('');
+            $table->string('slug')->default('');
             $table->timestamp('date')->nullable();
-            $table->tinyInteger('status')->unsigned()->default(0);
-            $table->string('meta_title_ru');
-            $table->string('meta_title_en');
-            $table->string('meta_description_ru');
-            $table->string('meta_description_en');
-            $table->string('meta_image');
+            $table->tinyInteger('status')->unsigned()->default(App\Gig::STATUS_HIDDEN);
+            $table->string('meta_title_ru')->default('');
+            $table->string('meta_title_en')->default('');
+            $table->string('meta_description_ru')->default('');
+            $table->string('meta_description_en')->default('');
+            $table->string('meta_image')->default('');
             $table->timestamps();
         });
     }
