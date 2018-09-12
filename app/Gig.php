@@ -2,6 +2,7 @@
 
 use App\Traits\HasLocalizedTitle;
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\Finder\Finder;
 
 /**
  * Концерт
@@ -112,6 +113,19 @@ class Gig extends Model
     public function template(): string
     {
         return 'life.gigs.'.str_replace('.', '_', $this->slug);
+    }
+
+    /**
+     * @return \Symfony\Component\Finder\Finder|\Symfony\Component\Finder\SplFileInfo[]
+     */
+    public static function templatesIterator()
+    {
+        return Finder::create()
+            ->files()
+            ->in(base_path('resources/views/life/gigs'))
+            ->name('*.blade.php')
+            ->notName('base.blade.php')
+            ->sortByName();
     }
 
     public function www(): string
