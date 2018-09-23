@@ -16,7 +16,7 @@ class Issues extends Controller
 
     public function store(IssuesTodayLimit $limits, IssueStore $request)
     {
-        if (!$request->ajax()) {
+        if (!$request->expectsJson()) {
             return redirect(path('Home@index'));
         }
 
@@ -50,7 +50,7 @@ class Issues extends Controller
 
         Issue::create([
             'name' => $name,
-            'page' => $this->pathFromUrl($request->session()->previousUrl(), $request->server->get('LARAVEL_LOCALE')),
+            'page' => $this->pathFromUrl($request->session()->previousUrl(), $request->server->get('LARAVEL_LOCALE') ?? ''),
             'text' => $text,
             'email' => $email,
             'title' => $title,

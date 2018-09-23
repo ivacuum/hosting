@@ -8,6 +8,7 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\ChatMessageCreated' => ['App\Listeners\TelegramChatMessage'],
         'App\Events\CommentPublished' => ['App\Listeners\NotifyUsersAboutComment'],
         'App\Events\DomainWhoisUpdated' => ['App\Listeners\EmailWhoisChanges'],
+        'App\Events\IssueCreated' => ['App\Listeners\TelegramIssue'],
         'App\Events\TypoReceived' => ['App\Listeners\TelegramTypo'],
 
         'Illuminate\Auth\Events\Login' => [
