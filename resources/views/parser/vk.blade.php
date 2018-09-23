@@ -84,8 +84,13 @@
                 {{ $attach->doc->title }}
               </div>
               <div class="embed-responsive embed-responsive-4by3">
-                <video class="embed-responsive-item" width="{{ $attach->doc->preview->video->width }}" height="{{ $attach->doc->preview->video->height }}" controls>
+                <video
+                  controls
                   class="embed-responsive-item"
+                  width="{{ $attach->doc->preview->video->width }}"
+                  height="{{ $attach->doc->preview->video->height }}"
+                  poster="{{ array_last($attach->doc->preview->photo->sizes)->src }}"
+                >
                   <source src="{{ $attach->doc->preview->video->src }}" type="video/mp4">
                 </video>
               </div>
