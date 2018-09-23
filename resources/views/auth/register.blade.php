@@ -27,6 +27,7 @@
         class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
         type="password"
         name="password"
+        autocomplete="new-password"
         placeholder="{{ trans('auth.password') }}"
       >
       <div class="invalid-feedback">{{ $errors->first('password') }}</div>

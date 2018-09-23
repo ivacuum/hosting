@@ -18,7 +18,14 @@
 
     <div class="mw-500">
       <div class="input-group">
-        <input required class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" autocomplete="email" placeholder="{{ trans('coupons.your_email') }}">
+        <input
+          required
+          class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
+          type="email"
+          name="email"
+          autocomplete="email"
+          placeholder="{{ trans('coupons.your_email') }}"
+        >
         <div class="input-group-append">
           <button class="btn btn-primary">{{ trans('coupons.get_promocode') }}</button>
         </div>

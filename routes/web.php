@@ -172,3 +172,5 @@ Route::get('@{login}/travel/cities/{slug}', 'UserTravelCities@show');
 Route::get('@{login}/travel/countries', 'UserTravelCountries@index');
 Route::get('@{login}/travel/countries/{slug}', 'UserTravelCountries@show');
 Route::get('@{login}/travel/{slug}', 'UserTravelTrips@show');
+
+Route::get('.well-known/change-password', 'WellKnownChangePassword');

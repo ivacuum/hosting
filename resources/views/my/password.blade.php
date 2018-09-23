@@ -12,14 +12,26 @@
     @if ($has_password)
       <div class="form-group">
         <label>{{ trans('my.old_password') }}</label>
-        <input required class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password">
+        <input
+          required
+          class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
+          type="password"
+          name="password"
+          autocomplete="current-password"
+        >
         <div class="invalid-feedback">{{ $errors->first('password') }}</div>
       </div>
     @endif
 
     <div class="form-group">
       <label>{{ trans('my.new_password') }}</label>
-      <input required class="form-control {{ $errors->has('new_password') ? 'is-invalid' : '' }}" type="password" name="new_password">
+      <input
+        required
+        class="form-control {{ $errors->has('new_password') ? 'is-invalid' : '' }}"
+        type="password"
+        name="new_password"
+        autocomplete="new-password"
+      >
       <div class="invalid-feedback">{{ $errors->first('new_password') }}</div>
       @ru
         <div class="form-help">Не менее 6 символов</div>

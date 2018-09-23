@@ -33,12 +33,27 @@
     @csrf
 
     <div class="form-group">
-      <input autofocus required class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{ trans('auth.email_or_login') }}">
+      <input
+        autofocus
+        required
+        class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
+        name="email"
+        value="{{ old('email') }}"
+        autocomplete="email"
+        placeholder="{{ trans('auth.email_or_login') }}"
+      >
       <div class="invalid-feedback">{{ $errors->first('email') }}</div>
     </div>
 
     <div class="form-group position-relative">
-      <input required class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password" placeholder="{{ trans('auth.password') }}">
+      <input
+        required
+        class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
+        type="password"
+        name="password"
+        autocomplete="current-password"
+        placeholder="{{ trans('auth.password') }}"
+      >
       <span class="form-control-feedback-password js-password-eye">
         <span class="js-password-eye-show" title="{{ trans('auth.show_password') }}">
           @svg (eye)

@@ -8,7 +8,16 @@
     @csrf
 
     <div class="my-3">
-      <input autofocus required class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{ trans('auth.email') }}">
+      <input
+        autofocus
+        required
+        class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
+        type="email"
+        name="email"
+        value="{{ old('email') }}"
+        autocomplete="email"
+        placeholder="{{ trans('auth.email') }}"
+      >
       <div class="invalid-feedback">{{ $errors->first('email') }}</div>
     </div>
 
