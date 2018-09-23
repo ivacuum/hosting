@@ -85,6 +85,7 @@
               </div>
               <div class="embed-responsive embed-responsive-4by3">
                 <video class="embed-responsive-item" width="{{ $attach->doc->preview->video->width }}" height="{{ $attach->doc->preview->video->height }}" controls>
+                  class="embed-responsive-item"
                   <source src="{{ $attach->doc->preview->video->src }}" type="video/mp4">
                 </video>
               </div>
