@@ -42,6 +42,10 @@ class Kernel extends ConsoleKernel
             ->cron('30 2 * * *')
             ->appendOutputTo($cron_output);
 
+        $schedule->command(Commands\WarmUpPhotoCache::class)
+            ->cron('0 5 * * *')
+            ->appendOutputTo($cron_output);
+
         $schedule->command(Commands\RtoUpdate::class)
             ->cron('0 */6 * * *')
             ->appendOutputTo($cron_output);
