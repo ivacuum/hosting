@@ -95,11 +95,7 @@ class SitemapBuild extends BaseSitemapBuild
 
     protected function appendGigs()
     {
-        foreach (Gig::query()
-                     ->select(['id', 'slug'])
-                     ->where('status', Gig::STATUS_PUBLISHED)
-                     ->orderBy('id')
-                     ->cursor() as $model) {
+        foreach ($this->gigModels() as $model) {
             $this->page("life/{$model->slug}", '0.7');
             $this->page("en/life/{$model->slug}", '0.7');
         }
@@ -144,11 +140,7 @@ class SitemapBuild extends BaseSitemapBuild
     {
         $this->page('news', '0.2');
 
-        foreach (News::query()
-            ->select(['id', 'locale'])
-            ->published()
-            ->orderBy('id')
-            ->cursor() as $model) {
+        foreach ($this->newsModels() as $model) {
             $prefix = $model->locale === 'ru' ? '' : "{$model->locale}/";
 
             $this->page("{$prefix}news/{$model->id}", '0.2');
@@ -157,14 +149,37 @@ class SitemapBuild extends BaseSitemapBuild
 
     protected function appendTrips()
     {
-        foreach (Trip::query()
+        foreach ($this->tripModels() as $model) {
+            $this->page("life/{$model->slug}", '0.7');
+            $this->page("en/life/{$model->slug}", '0.7');
+        }
+    }
+
+    protected function gigModels()
+    {
+        return Gig::query()
+            ->select(['id', 'slug'])
+            ->where('status', Gig::STATUS_PUBLISHED)
+            ->orderBy('id')
+            ->cursor();
+    }
+
+    protected function newsModels()
+    {
+        return News::query()
+            ->select(['id', 'locale'])
+            ->published()
+            ->orderBy('id')
+            ->cursor();
+    }
+
+    protected function tripModels()
+    {
+        return Trip::query()
             ->select(['id', 'user_id', 'slug'])
             ->where('user_id', 1)
             ->where('status', Trip::STATUS_PUBLISHED)
             ->orderBy('id')
-            ->cursor() as $model) {
-            $this->page("life/{$model->slug}", '0.7');
-            $this->page("en/life/{$model->slug}", '0.7');
-        }
+            ->cursor();
     }
 }
