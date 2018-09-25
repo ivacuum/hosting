@@ -26,7 +26,7 @@ return [
 
     'home.index' => 'Сергей Панков · vacuum.kaluga',
 
-    'japanese-hiragana-katakana.index' => 'Тренажер хираганы и катаканы, трейнер японских азбук',
+    'japanese-hiragana-katakana.index' => 'Тренажер хираганы и катаканы онлайн, трейнер японских азбук',
 
     'japanese-wanikani.index' => 'WaniKani V · Японский язык',
 
