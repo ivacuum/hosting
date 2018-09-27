@@ -17,9 +17,9 @@ use Illuminate\Support\Carbon;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
- * @property \Illuminate\Support\Collection $comments
- * @property \Illuminate\Support\Collection $commentsPublished
- * @property \Illuminate\Support\Collection $emails
+ * @property \Illuminate\Support\Collection|\App\Comment[] $comments
+ * @property \Illuminate\Support\Collection|\App\Comment[] $commentsPublished
+ * @property \Illuminate\Support\Collection|\App\Email[] $emails
  * @property \App\User $user
  *
  * @mixin \Eloquent

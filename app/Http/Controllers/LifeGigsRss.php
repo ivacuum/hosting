@@ -17,8 +17,7 @@ class LifeGigsRss extends Controller
             ->take(50)
             ->orderBy('date', 'desc')
             ->get()
-            ->map(function ($gig) {
-                /* @var Gig $gig */
+            ->map(function (Gig $gig) {
                 $link = url($gig->www());
                 $cover = '<p><a href="'.$link.'?from=rss-image"><img src="'.$gig->meta_image.'"></a></p>';
 

@@ -30,15 +30,15 @@ use Illuminate\Notifications\Notifiable;
  * @property \Illuminate\Support\Carbon $last_login_at
  * @property \Illuminate\Support\Carbon $password_changed_at
  *
- * @property \Illuminate\Database\Eloquent\Collection $chatMessages
- * @property \Illuminate\Database\Eloquent\Collection $comments
- * @property \Illuminate\Database\Eloquent\Collection $emails
- * @property \Illuminate\Database\Eloquent\Collection $externalIdentities
- * @property \Illuminate\Database\Eloquent\Collection $images
- * @property \Illuminate\Database\Eloquent\Collection $news
- * @property \Illuminate\Database\Eloquent\Collection $torrents
- * @property \Illuminate\Database\Eloquent\Collection $trips
- * @property \Illuminate\Database\Eloquent\Collection $notifications
+ * @property \Illuminate\Database\Eloquent\Collection|\App\ChatMessage[] $chatMessages
+ * @property \Illuminate\Database\Eloquent\Collection|\App\Comment[] $comments
+ * @property \Illuminate\Database\Eloquent\Collection|\App\Email[] $emails
+ * @property \Illuminate\Database\Eloquent\Collection|\App\ExternalIdentity[] $externalIdentities
+ * @property \Illuminate\Database\Eloquent\Collection|\App\Image[] $images
+ * @property \Illuminate\Database\Eloquent\Collection|\App\News[] $news
+ * @property \Illuminate\Database\Eloquent\Collection|\App\Notification[] $notifications
+ * @property \Illuminate\Database\Eloquent\Collection|\App\Torrent[] $torrents
+ * @property \Illuminate\Database\Eloquent\Collection|\App\Trip[] $trips
  *
  * @mixin \Eloquent
  */

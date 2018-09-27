@@ -18,8 +18,7 @@ class LifeTripsRss extends Controller
             ->take(50)
             ->orderBy('date_start', 'desc')
             ->get()
-            ->map(function ($trip) {
-                /* @var Trip $trip */
+            ->map(function (Trip $trip) {
                 $link = url($trip->www());
                 $cover = '<p><a href="'.$link.'?from=rss-image"><img src="'.$trip->metaImage().'"></a></p>';
 

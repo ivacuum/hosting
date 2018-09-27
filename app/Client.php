@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
+ * @property \Illuminate\Database\Eloquent\Collection|\App\Domain[] $domains
+ *
  * @mixin \Eloquent
  */
 class Client extends Model

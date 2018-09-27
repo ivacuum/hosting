@@ -1,5 +1,6 @@
 <?php namespace App\Console\Commands;
 
+use App\City;
 use App\Country;
 use App\Gig;
 use App\News;
@@ -31,13 +32,11 @@ class SitemapBuild extends BaseSitemapBuild
     protected function appendCitiesAndCountries()
     {
         Country::allWithCitiesAndTrips(1)
-            ->each(function ($country) {
-                /* @var Country $country */
+            ->each(function (Country $country) {
                 $this->page("life/countries/{$country->slug}", '0.2');
                 $this->page("en/life/countries/{$country->slug}", '0.2');
 
-                $country->cities->each(function ($city) {
-                    /* @var \App\City $city */
+                $country->cities->each(function (City $city) {
                     $this->page("life/{$city->slug}", '0.2');
                     $this->page("en/life/{$city->slug}", '0.2');
                 });

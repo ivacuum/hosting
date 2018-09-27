@@ -20,8 +20,8 @@ use Illuminate\Support\Collection;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
- * @property-read \App\Country $country
- * @property-read \App\Trip    $trips
+ * @property \App\Country $country
+ * @property \App\Trip $trips
  *
  * @property-read string  $title
  *
@@ -71,8 +71,7 @@ class City extends Model
 
         return static::orderBy($title_field)
             ->get(['id', 'slug', $title_field])
-            ->map(function ($item) use ($title_field) {
-                /* @var static $item */
+            ->map(function (City $item) use ($title_field) {
                 return [
                     'key' => $item->id,
                     'slug' => $item->slug,

@@ -47,8 +47,7 @@ class JapaneseWanikaniKanji extends Controller
             ->get(['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading'])
             ->when($vocabulary_id, function ($collection) use ($characters) {
                 // Сортировка кандзи в порядке использования в словарном слове
-                return $collection->map(function ($item) use ($characters) {
-                    /* @var Model $item */
+                return $collection->map(function (Model $item) use ($characters) {
                     $item->sort = 0;
 
                     foreach ($characters as $i => $character) {

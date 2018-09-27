@@ -18,9 +18,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon $updated_at
  *
  * @property \App\Burnable $burnable
- * @property \Illuminate\Database\Eloquent\Collection $burnables
- * @property \Illuminate\Database\Eloquent\Collection $radicals
- * @property \Illuminate\Database\Eloquent\Collection $similar
+ * @property \Illuminate\Database\Eloquent\Collection|\App\Burnable[] $burnables
+ * @property \Illuminate\Database\Eloquent\Collection|\App\Radical[] $radicals
+ * @property \Illuminate\Database\Eloquent\Collection|\App\Kanji[] $similar
  *
  * @mixin \Eloquent
  */

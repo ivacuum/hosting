@@ -17,7 +17,7 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
- * @property \Illuminate\Database\Eloquent\Collection $comments
+ * @property \Illuminate\Database\Eloquent\Collection|\App\Comment[] $comments
  * @property \App\User $user
  *
  * @mixin \Eloquent

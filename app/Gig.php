@@ -24,7 +24,9 @@ use Symfony\Component\Finder\Finder;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
- * @property-read \App\City $city
+ * @property \App\Artist $artist
+ * @property \App\City $city
+ * @property \Illuminate\Database\Eloquent\Collection|\App\Email[] $emails
  *
  * @property-read string  $title
  * @property-read string  $meta_title

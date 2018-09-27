@@ -17,8 +17,8 @@ use Illuminate\Support\Collection;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
- * @property-read \App\City $cities
- * @property-read \App\Trip $trips
+ * @property \Illuminate\Database\Eloquent\Collection|\App\City[] $cities
+ * @property \Illuminate\Database\Eloquent\Collection|\App\Trip[] $trips
  *
  * @property-read string  $title
  *
@@ -235,8 +235,7 @@ class Country extends Model
 
         return static::orderBy($title_field)
             ->get(['id', $title_field])
-            ->map(function ($item) use ($title_field) {
-                /* @var static $item */
+            ->map(function (Country $item) use ($title_field) {
                 return [
                     'key' => $item->id,
                     'value' => $item->{$title_field},

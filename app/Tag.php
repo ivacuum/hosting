@@ -13,9 +13,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
- * @property \Illuminate\Support\Collection $news
- * @property \Illuminate\Support\Collection $photos
- * @property \Illuminate\Support\Collection $photosPublished
+ * @property \Illuminate\Support\Collection|\App\News[] $news
+ * @property \Illuminate\Support\Collection|\App\Photo[] $photos
+ * @property \Illuminate\Support\Collection|\App\Photo[] $photosPublished
  *
  * @property-read string  $title
  *

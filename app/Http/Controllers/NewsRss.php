@@ -18,8 +18,7 @@ class NewsRss extends Controller
             ->take(20)
             ->orderBy('id', 'desc')
             ->get()
-            ->map(function ($news) {
-                /* @var News $news */
+            ->map(function (News $news) {
                 $link = url($news->www());
 
                 return [

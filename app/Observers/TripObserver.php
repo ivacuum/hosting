@@ -41,7 +41,6 @@ class TripObserver
             : Photo::STATUS_HIDDEN;
 
         foreach ($model->photos as $photo) {
-            /* @var Photo $photo */
             $photo->status = $status;
             $photo->save();
         }
@@ -54,7 +53,6 @@ class TripObserver
         }
 
         foreach ($model->photos as $photo) {
-            /* @var Photo $photo */
             $photo->newSlugPrefix($model->slug);
             $photo->save();
         }
