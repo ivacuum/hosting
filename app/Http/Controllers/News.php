@@ -8,7 +8,7 @@ class News extends Controller
     public function index($year = null, $month = null, $day = null)
     {
         $news = Model::with('user')
-            ->withCount('commentsPublished as comments_count')
+            ->withCount('commentsPublished AS comments_count')
             ->published()
             ->where('locale', \App::getLocale())
             ->when($year || $month || $day, function (Builder $query) use ($year, $month, $day) {
@@ -52,7 +52,7 @@ class News extends Controller
         return $this->index($year, $month);
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         $news = Model::find($id);
 

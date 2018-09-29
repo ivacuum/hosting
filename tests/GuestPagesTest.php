@@ -57,8 +57,6 @@ class GuestPagesTest extends TestCase
             ['/life/countries/russia'],
             ['/life/english'],
             ['/life/gigs'],
-            ['/news'],
-            ['/news/1'],
             ['/photos'],
             ['/photos/cities'],
             ['/photos/cities/barcelona'],

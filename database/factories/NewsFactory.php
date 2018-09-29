@@ -11,3 +11,11 @@ $factory->define(App\News::class, function (Faker\Generator $faker) {
         'markdown' => $faker->text,
     ];
 });
+
+$factory->state(App\News::class, 'user', function () {
+    return [
+        'user_id' => function () {
+            return factory(App\User::class)->create()->id;
+        }
+    ];
+});
