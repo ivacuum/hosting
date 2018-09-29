@@ -1,6 +1,5 @@
 <?php namespace Tests\Feature;
 
-use App\News;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
