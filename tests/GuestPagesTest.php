@@ -85,8 +85,6 @@ class GuestPagesTest extends TestCase
             ['/torrents/comments'],
             ['/torrents/faq'],
             ['/torrents?q=2017'],
-            ['/users'],
-            ['/users/1'],
         ];
     }
 }
