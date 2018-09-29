@@ -45,7 +45,6 @@ class GuestPagesTest extends TestCase
             ['/dc/hubs'],
             ['/docs'],
             ['/docs/trips'],
-            ['/files'],
             ['/japanese'],
             ['/japanese/hiragana-katakana'],
             ['/japanese/wanikani'],

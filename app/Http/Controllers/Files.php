@@ -16,7 +16,7 @@ class Files extends Controller
         return view($this->view, compact('models'));
     }
 
-    public function download($id)
+    public function download(int $id)
     {
         /* @var File $file */
         $file = File::findOrFail($id);
