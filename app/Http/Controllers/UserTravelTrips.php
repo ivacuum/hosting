@@ -38,7 +38,7 @@ class UserTravelTrips extends UserTravel
         return view('user-travel.index', compact('trips'));
     }
 
-    public function show($login, $slug)
+    public function show(string $login, string $slug)
     {
         $trip = Trip::withCount('photos')
             ->where('user_id', $this->traveler->id)

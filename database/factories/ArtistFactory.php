@@ -6,7 +6,7 @@ $factory->define(App\Artist::class, function (Faker\Generator $faker) {
     $title = $faker->word;
 
     return [
-        'slug' => $title,
+        'slug' => str_slug($title),
         'title' => $title,
     ];
 });

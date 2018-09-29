@@ -5,7 +5,7 @@ use App\Trip;
 
 class UserTravelCountries extends UserTravel
 {
-    public function index($login)
+    public function index(string $login)
     {
         $countries = Country::allWithCitiesAndTrips($this->traveler->id);
 
@@ -15,7 +15,7 @@ class UserTravelCountries extends UserTravel
         return view('user-travel.countries', compact('countries'));
     }
 
-    public function show($login, $slug)
+    public function show(string $login, string $slug)
     {
         $country = Country::where('slug', $slug)->firstOrFail();
         $trips = $country->trips()

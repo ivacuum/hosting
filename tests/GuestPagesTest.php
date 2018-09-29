@@ -90,11 +90,6 @@ class GuestPagesTest extends TestCase
             ['/torrents?q=2017'],
             ['/users'],
             ['/users/1'],
-            ['/@vacuum/travel'],
-            ['/@vacuum/travel/cities'],
-            ['/@vacuum/travel/cities/kaluga'],
-            ['/@vacuum/travel/countries'],
-            ['/@vacuum/travel/countries/russia'],
         ];
     }
 }

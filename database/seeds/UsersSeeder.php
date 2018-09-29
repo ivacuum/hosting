@@ -17,11 +17,5 @@ class UsersSeeder extends Seeder
             'login' => 'guest',
             'password' => 'secret',
         ]);
-
-        factory(App\User::class)->create([
-            'email' => 'vacuum@example.com',
-            'login' => 'vacuum',
-            'password' => 'secret',
-        ]);
     }
 }

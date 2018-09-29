@@ -233,16 +233,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.5",
+            "version": "2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "54859fabea8b3beecbb1a282888d5c990036b9e3"
+                "reference": "0578b32b30b22de3e8664f797cf846fc9246f786"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/54859fabea8b3beecbb1a282888d5c990036b9e3",
-                "reference": "54859fabea8b3beecbb1a282888d5c990036b9e3",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/0578b32b30b22de3e8664f797cf846fc9246f786",
+                "reference": "0578b32b30b22de3e8664f797cf846fc9246f786",
                 "shasum": ""
             },
             "require": {
@@ -286,7 +286,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2018-08-16T20:49:45+00:00"
+            "time": "2018-09-25T20:47:26+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -677,16 +677,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "1.10.2",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "0f122c615068ea20405ec214967891aeae81fa49"
+                "reference": "fd349579d2099b5ed84413b1b65425b275c21964"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/0f122c615068ea20405ec214967891aeae81fa49",
-                "reference": "0f122c615068ea20405ec214967891aeae81fa49",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/fd349579d2099b5ed84413b1b65425b275c21964",
+                "reference": "fd349579d2099b5ed84413b1b65425b275c21964",
                 "shasum": ""
             },
             "require": {
@@ -738,7 +738,7 @@
                     "email": "vacuum@ivacuum.ru"
                 }
             ],
-            "time": "2018-09-14T08:37:00+00:00"
+            "time": "2018-09-29T11:42:29+00:00"
         },
         {
             "name": "laravel/framework",

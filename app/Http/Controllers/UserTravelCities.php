@@ -5,7 +5,7 @@ use App\Trip;
 
 class UserTravelCities extends UserTravel
 {
-    public function index($login)
+    public function index(string $login)
     {
         $trips = Trip::tripsByCities($this->traveler->id);
 
@@ -25,7 +25,7 @@ class UserTravelCities extends UserTravel
         return view('user-travel.cities', compact('cities'));
     }
 
-    public function show($login, $slug)
+    public function show(string $login, string $slug)
     {
         $city = \CityHelper::findBySlugOrFail($slug);
 
