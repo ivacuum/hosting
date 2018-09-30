@@ -1,31 +1,6 @@
 <?php namespace App\Providers;
 
-use App\Artist;
-use App\ChatMessage;
-use App\City;
-use App\Client;
-use App\Comment;
-use App\Country;
-use App\DcppHub;
-use App\Domain;
-use App\ExternalIdentity;
-use App\File;
-use App\Gig;
-use App\Image;
-use App\Issue;
-use App\Kanji;
-use App\News;
-use App\Notification;
-use App\Page;
-use App\Photo;
-use App\Radical;
-use App\Server;
-use App\Tag;
-use App\Torrent;
-use App\Trip;
-use App\User;
-use App\Vocabulary;
-use App\YandexUser;
+use App;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Ivacuum\Generic\Policies\Base;
 use Ivacuum\Generic\Policies\WithoutCreate;
@@ -34,32 +9,32 @@ use Ivacuum\Generic\Policies\WithoutCreateAndEdit;
 class AuthServiceProvider extends ServiceProvider
 {
     protected $policies = [
-        Gig::class => Base::class,
-        Tag::class => Base::class,
-        City::class => Base::class,
-        File::class => Base::class,
-        News::class => Base::class,
-        Page::class => Base::class,
-        Trip::class => Base::class,
-        User::class => WithoutCreate::class,
-        Image::class => WithoutCreateAndEdit::class,
-        Issue::class => WithoutCreateAndEdit::class,
-        Kanji::class => WithoutCreate::class,
-        Photo::class => Base::class,
-        Artist::class => Base::class,
-        Client::class => Base::class,
-        Domain::class => Base::class,
-        Server::class => Base::class,
-        Comment::class => WithoutCreate::class,
-        Country::class => Base::class,
-        DcppHub::class => Base::class,
-        Radical::class => WithoutCreate::class,
-        Torrent::class => WithoutCreate::class,
-        Vocabulary::class => WithoutCreate::class,
-        YandexUser::class => Base::class,
-        ChatMessage::class => WithoutCreate::class,
-        Notification::class => WithoutCreateAndEdit::class,
-        ExternalIdentity::class => WithoutCreateAndEdit::class,
+        App\Gig::class => Base::class,
+        App\Tag::class => Base::class,
+        App\City::class => Base::class,
+        App\File::class => Base::class,
+        App\News::class => Base::class,
+        App\Page::class => Base::class,
+        App\Trip::class => Base::class,
+        App\User::class => WithoutCreate::class,
+        App\Image::class => WithoutCreateAndEdit::class,
+        App\Issue::class => WithoutCreateAndEdit::class,
+        App\Kanji::class => WithoutCreate::class,
+        App\Photo::class => Base::class,
+        App\Artist::class => Base::class,
+        App\Client::class => Base::class,
+        App\Domain::class => Base::class,
+        App\Server::class => Base::class,
+        App\Comment::class => WithoutCreate::class,
+        App\Country::class => Base::class,
+        App\DcppHub::class => Base::class,
+        App\Radical::class => WithoutCreate::class,
+        App\Torrent::class => WithoutCreate::class,
+        App\Vocabulary::class => WithoutCreate::class,
+        App\YandexUser::class => Base::class,
+        App\ChatMessage::class => WithoutCreate::class,
+        App\Notification::class => WithoutCreateAndEdit::class,
+        App\ExternalIdentity::class => WithoutCreateAndEdit::class,
     ];
 
     public function boot()
