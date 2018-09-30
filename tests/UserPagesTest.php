@@ -19,7 +19,6 @@ class UserPagesTest extends TestCase
             ['/gallery'],
             ['/gallery/upload'],
             ['/my'],
-            ['/my/password'],
             ['/my/trips'],
             ['/my/trips/create'],
             ['/notifications'],
