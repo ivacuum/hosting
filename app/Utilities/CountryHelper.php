@@ -25,9 +25,6 @@ class CountryHelper extends ModelCacheHelper
         'emoji',
     ];
 
-    protected static $cached_id;
-    protected static $cached_slug;
-
     public function __construct(Model $model)
     {
         $this->model = $model;

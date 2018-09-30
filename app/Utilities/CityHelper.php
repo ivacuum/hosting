@@ -28,9 +28,6 @@ class CityHelper extends ModelCacheHelper
         'lon',
     ];
 
-    protected static $cached_id;
-    protected static $cached_slug;
-
     public function __construct(Model $model)
     {
         $this->model = $model;

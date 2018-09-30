@@ -5,6 +5,11 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    public $singletons = [
+        \App\Utilities\CityHelper::class => \App\Utilities\CityHelper::class,
+        \App\Utilities\CountryHelper::class => \App\Utilities\CountryHelper::class,
+    ];
+
     public function boot()
     {
         \Blade::withoutDoubleEncoding();

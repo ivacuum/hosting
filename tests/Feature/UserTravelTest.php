@@ -11,14 +11,6 @@ class UserTravelTest extends TestCase
 
     const LOGIN = '_test-user5';
 
-    protected function setUp()
-    {
-        parent::setUp();
-
-        \CityHelper::flush();
-        \CountryHelper::flush();
-    }
-
     public function testCitiesIndex()
     {
         /* @var User $user */
