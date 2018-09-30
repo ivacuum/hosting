@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 /**
  * Фотография
@@ -19,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon $updated_at
  *
  * @property \App\Trip $rel
+ * @property \Illuminate\Database\Eloquent\Collection|\App\Tag[] $tags
  * @property \App\User $user
  *
  * @mixin \Eloquent
@@ -44,7 +46,7 @@ class Photo extends Model
         return $this->morphTo();
     }
 
-    public function tags()
+    public function tags(): MorphToMany
     {
         return $this->morphToMany(Tag::class, 'rel', 'taggable')
             ->orderBy(Tag::titleField());

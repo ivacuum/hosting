@@ -28,3 +28,7 @@ $factory->state(App\Trip::class, 'city', function () {
         }
     ];
 });
+
+$factory->state(App\Trip::class, 'meta_image', function (Faker\Generator $faker) {
+    return ['meta_image' => "test/IMG_{$faker->numberBetween(1000, 9999)}.jpg"];
+});

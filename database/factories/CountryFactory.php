@@ -3,7 +3,7 @@
 /* @var Illuminate\Database\Eloquent\Factory $factory */
 
 $factory->define(App\Country::class, function (Faker\Generator $faker) {
-    $title = $faker->country;
+    $title = "{$faker->country} {$faker->randomDigit}";
 
     return [
         'slug' => str_slug($title),

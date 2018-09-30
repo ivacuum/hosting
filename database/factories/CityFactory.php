@@ -3,7 +3,7 @@
 /* @var Illuminate\Database\Eloquent\Factory $factory */
 
 $factory->define(App\City::class, function (Faker\Generator $faker) {
-    $title = $faker->city;
+    $title = "{$faker->city} {$faker->randomDigit}";
 
     return [
         'lat' => (string) $faker->latitude,
