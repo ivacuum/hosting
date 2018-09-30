@@ -1,8 +1,5 @@
 <?php namespace App\Http\Requests;
 
-use App\Rules\Email;
-use App\Rules\Locale;
-use App\Rules\Username;
 use App\User;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Http\FormRequest;
