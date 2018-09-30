@@ -2,6 +2,7 @@
 
 use App\Traits\HasLocalizedTitle;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Ivacuum\Generic\Utilities\TextImagesParser;
 use Symfony\Component\Finder\Finder;
@@ -371,8 +372,8 @@ class Trip extends Model
                 ->where('meta_image', '<>', '')
                 ->orderBy('date_start', 'desc')
                 ->get();
-        })->when($count > 0, function ($trips) use ($count) {
-            return $trips->count()
+        })->when($count > 0, function (Collection $trips) use ($count) {
+            return $trips->count() > $count
                 ? $trips->random($count)
                 : $trips;
         });

@@ -35,8 +35,6 @@ class GuestPagesTest extends TestCase
     public function guestPages200()
     {
         return [
-            ['/'],
-            ['/about'],
             ['/auth/login'],
             ['/auth/register'],
             ['/auth/password/remind'],
