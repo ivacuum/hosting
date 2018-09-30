@@ -1,6 +1,7 @@
 <?php namespace App\Observers;
 
 use App\Avatar;
+use App\Events\Stats;
 use App\User as Model;
 
 class UserObserver
@@ -47,25 +48,25 @@ class UserObserver
     {
         if ($model->isDirty('notify_gigs')) {
             if ($model->notify_gigs === Model::NOTIFY_MAIL) {
-                event(new \App\Events\Stats\GigsSubscribed);
+                event(new Stats\GigsSubscribed);
             } elseif ($model->notify_gigs === Model::NOTIFY_NO) {
-                event(new \App\Events\Stats\GigsUnsubscribed);
+                event(new Stats\GigsUnsubscribed);
             }
         }
 
         if ($model->isDirty('notify_news')) {
             if ($model->notify_news === Model::NOTIFY_MAIL) {
-                event(new \App\Events\Stats\NewsSubscribed);
+                event(new Stats\NewsSubscribed);
             } elseif ($model->notify_news === Model::NOTIFY_NO) {
-                event(new \App\Events\Stats\NewsUnsubscribed);
+                event(new Stats\NewsUnsubscribed);
             }
         }
 
         if ($model->isDirty('notify_trips')) {
             if ($model->notify_trips === Model::NOTIFY_MAIL) {
-                event(new \App\Events\Stats\TripsSubscribed);
+                event(new Stats\TripsSubscribed);
             } elseif ($model->notify_trips === Model::NOTIFY_NO) {
-                event(new \App\Events\Stats\TripsUnsubscribed);
+                event(new Stats\TripsUnsubscribed);
             }
         }
     }

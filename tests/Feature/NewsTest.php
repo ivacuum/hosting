@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App;
 use App\News;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -20,7 +21,7 @@ class NewsTest extends TestCase
     {
         $news = factory(News::class)->state('user')->create();
 
-        $this->expectsEvents(\App\Events\Stats\NewsViewed::class);
+        $this->expectsEvents(App\Events\Stats\NewsViewed::class);
 
         $this->get(action('News@show', $news))
             ->assertStatus(200);
