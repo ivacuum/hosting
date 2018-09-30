@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use Illuminate\Validation\Rule;
+use App\Http\Requests\MyProfileUpdate;
 
 class MyProfile extends Controller
 {
@@ -9,28 +9,12 @@ class MyProfile extends Controller
         return view('my.profile');
     }
 
-    public function update()
+    public function update(MyProfileUpdate $request)
     {
         /* @var \App\User $user */
-        $user = request()->user();
-
-        request()->validate([
-            'email' => [
-                'required',
-                'email',
-                'max:125',
-                Rule::unique('users')->ignore($user->id),
-            ],
-            'username' => [
-                'min:2',
-                'max:32',
-                'alpha_dash',
-                Rule::unique('users', 'login')->ignore($user->id),
-            ],
-        ]);
-
-        $user->login = request('username');
-        $user->email = request('email');
+        $user = $request->user();
+        $user->login = $request->input('username');
+        $user->email = $request->input('email');
         $user->save();
 
         event(new \App\Events\Stats\MyProfileChanged);
