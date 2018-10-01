@@ -1,20 +1,26 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\MyAvatarUpdate;
+use App\User;
+use Illuminate\Http\Request;
+
 class MyAvatar extends Controller
 {
-    public function update()
+    public function destroy(Request $request)
     {
-        if (!request()->ajax()) {
-            return ['status' => 'error'];
-        }
+        tap($request->user(), function (User $user) {
+            $user->avatar = '';
+            $user->save();
+        });
 
-        request()->validate([
-            'file' => 'required|mimetypes:image/jpeg,image/png|max:3072',
-        ]);
+        return response('', 204);
+    }
 
-        /* @var \App\User $user */
-        $user = request()->user();
-        $file = request()->file('file');
+    public function update(MyAvatarUpdate $request)
+    {
+        /* @var User $user */
+        $user = $request->user();
+        $file = $request->file('file');
 
         if (null === $file || !$file->isValid()) {
             throw new \Exception('Необходимо предоставить хотя бы один файл');

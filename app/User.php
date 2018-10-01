@@ -247,10 +247,6 @@ class User extends Authenticatable
     {
         $avatar = new Avatar;
 
-        if ($this->avatar) {
-            $avatar->delete($this->avatar);
-        }
-
         $filename = $avatar->upload($file, $this->id);
 
         $this->avatar = $filename;
