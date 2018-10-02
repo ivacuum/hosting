@@ -89,6 +89,7 @@ Route::get('mail/view/{timestamp}/{id}', 'Mail@view');
 
 Route::get('my', 'My@index')->middleware('auth');
 Route::put('my/avatar', 'MyAvatar@update')->middleware('auth');
+Route::delete('my/avatar', 'MyAvatar@destroy')->middleware('auth');
 Route::get('my/password', 'MyPassword@edit')->middleware('auth');
 Route::put('my/password', 'MyPassword@update')->middleware('auth');
 Route::get('my/profile', 'MyProfile@edit')->middleware('auth');
