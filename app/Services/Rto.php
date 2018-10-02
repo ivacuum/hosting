@@ -9,7 +9,7 @@ class Rto
     const API_ENDPOINT = 'http://api.rutracker.org/v1/';
 
     // Зеркала: rutracker.org, rutracker.cr, xn--e1aaowadjh.org, dostup.website/https://rutracker.org
-    const SITE_ENDPOINT = 'https://rutracker.cr/forum/';
+    const SITE_ENDPOINT = 'https://rutracker.nl/forum/';
 
     protected $client;
 
@@ -28,7 +28,7 @@ class Rto
         if (is_numeric($input)) {
             $topic_id = (int) $input;
         } elseif (starts_with($input, 'http')) {
-            if (str_contains($input, ['://rutracker.org', '://rutracker.cr', '://rutracker.net', '://maintracker.org'])) {
+            if (str_contains($input, ['://rutracker.org', '://rutracker.cr', '://rutracker.net', '://rutracker.nl', '://maintracker.org'])) {
                 $url = parse_url($input);
 
                 if (!isset($url['query'])) {
