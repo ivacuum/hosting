@@ -84,11 +84,13 @@ export default {
         CLEAR: 'Clear',
         SEARCH: 'Search...',
         RESULTS: 'Results: {results}',
+        SHORT_QUERY: 'Search query should be at least 3 characters long',
       },
       ru: {
         CLEAR: 'Очистить',
         SEARCH: 'Поиск...',
         RESULTS: 'Результатов: {results}',
+        SHORT_QUERY: 'Поисковый запрос должен быть не менее 3 символов',
       },
     },
   },
@@ -104,6 +106,18 @@ export default {
             kanji: response.data.kanji.data,
             radicals: response.data.radicals.data,
             vocabulary: response.data.vocabulary.data,
+          }
+        })
+        .catch((error) => {
+          if (!error.response) return
+
+          if (error.response.status === 422) {
+            notie.alert({
+              type: 'error',
+              text: this.$i18n.t('SHORT_QUERY'),
+            })
+
+            document.querySelector('.js-search-input').focus()
           }
         })
     },

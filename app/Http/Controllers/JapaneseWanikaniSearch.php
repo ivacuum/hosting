@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\JapaneseWanikaniSearchRequest;
 use App\Http\Resources\KanjiCollection;
 use App\Http\Resources\RadicalCollection;
 use App\Http\Resources\VocabularyCollection;
@@ -9,13 +10,9 @@ use App\Vocabulary;
 
 class JapaneseWanikaniSearch extends Controller
 {
-    public function index()
+    public function index(JapaneseWanikaniSearchRequest $request)
     {
-        $q = request('q');
-
-        if (mb_strlen($q) < 2) {
-            return ['status' => 'error_length'];
-        }
+        $q = $request->input('q');
 
         $radicals = Radical::where('meaning', 'LIKE', "%{$q}%")
             ->orderBy('level')

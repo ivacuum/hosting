@@ -19,6 +19,10 @@ class DatabaseSeeder extends Seeder
 
             TagsSeeder::class,
             NewsSeeder::class,
+
+            RadicalSeeder::class,
+            KanjiSeeder::class,
+            VocabularySeeder::class,
         ]);
 	}
 }
