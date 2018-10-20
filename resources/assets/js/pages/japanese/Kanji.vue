@@ -73,6 +73,7 @@ export default {
   <radical-list
     burned
     flat
+    :key="kanji.id"
     :kanji-id="kanji.id"
     v-if="kanji.id"
   />
@@ -80,6 +81,7 @@ export default {
   <kanji-list
     burned
     flat
+    :key="kanji.id"
     :similar-id="kanji.id"
     v-if="kanji.id"
   />
@@ -87,6 +89,7 @@ export default {
   <vocabulary-list
     burned
     flat
+    :key="kanji.id"
     :kanji="kanji.character"
     v-if="kanji.character"
   />

@@ -66,6 +66,7 @@ export default {
   <kanji-list
     burned
     flat
+    :key="vocab.id"
     :vocabulary-id="vocab.id"
     v-if="vocab.id"
   />

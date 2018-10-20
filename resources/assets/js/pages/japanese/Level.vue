@@ -38,9 +38,9 @@ export default {
 <template>
 <div>
   <h1 class="h2">{{ $t('japanese.level', { level }) }}</h1>
-  <radical-list :level="level"/>
-  <kanji-list :level="level"/>
-  <vocabulary-list :level="level"/>
+  <radical-list :key="level" :level="level"/>
+  <kanji-list :key="level" :level="level"/>
+  <vocabulary-list :key="level" :level="level"/>
 
   <div class="d-flex justify-content-between mt-3">
     <div>

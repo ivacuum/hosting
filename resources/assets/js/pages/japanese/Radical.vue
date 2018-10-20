@@ -60,6 +60,7 @@ export default {
   <kanji-list
     burned
     flat
+    :key="radical.id"
     :radical-id="radical.id"
     v-if="radical.id"
   />
