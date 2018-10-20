@@ -16,6 +16,7 @@ class Comment extends Resource
             'id' => $this->id,
             'html' => $this->html,
             'status' => $this->status,
+            'posted_at' => $this->fullDate(),
             'breadcrumb' => $this->breadcrumb(),
             'created_at' => \ViewHelper::dateShort($this->created_at),
 

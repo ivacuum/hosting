@@ -14,6 +14,7 @@ class User extends Resource
 
         return [
             'id' => $this->id,
+            'www' => $this->www(),
             'color' => \ViewHelper::avatarBg($this->id),
             'email' => $this->email,
             'avatar' => $this->avatarUrl(),
