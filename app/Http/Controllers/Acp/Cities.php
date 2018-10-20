@@ -44,8 +44,8 @@ class Cities extends Controller
         $geo = $geocoder->geocode($q)[0];
 
         return [
-            'lat' => str_replace(',', '.', $geo['lat']),
-            'lon' => str_replace(',', '.', $geo['lon']),
+            'lat' => $geo['lat'],
+            'lon' => $geo['lon'],
             'address' => $geo['address'],
         ];
     }
