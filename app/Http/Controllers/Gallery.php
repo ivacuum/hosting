@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\GalleryStore;
 use App\Image;
 
 class Gallery extends Controller
@@ -21,23 +22,15 @@ class Gallery extends Controller
         return view($this->view, compact('image'));
     }
 
-    public function store()
+    public function store(GalleryStore $request)
     {
-        if (!request()->ajax()) {
-            return ['status' => 'error'];
-        }
-
-        request()->validate([
-            'file' => 'required|mimetypes:image/gif,image/jpeg,image/png|max:6144',
-        ]);
-
-        $file = request()->file('file');
+        $file = $request->file('file');
 
         if (null === $file || !$file->isValid()) {
             throw new \Exception('Необходимо предоставить хотя бы один файл');
         }
 
-        $image = Image::createFromFile($file, request()->user()->id);
+        $image = Image::createFromFile($file, $request->user()->id);
         $image->siteThumbnail($file);
         $image->upload($file);
         $image->save();
@@ -45,6 +38,7 @@ class Gallery extends Controller
         event(new \App\Events\Stats\GalleryImageUploaded);
 
         return [
+            'id' => $image->id,
             'status' => 'OK',
             'original' => $image->originalUrl(),
             'thumbnail' => $image->thumbnailUrl(),
