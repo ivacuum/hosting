@@ -25,7 +25,7 @@ const router = new VueRouter({
         },
         {
           name: 'wk.level',
-          path: 'level/:level',
+          path: 'level/:level(\\d+)',
           props: (route) => ({ level: Number(route.params.level) }),
           component: () => import(/* webpackChunkName: "japanese" */'./pages/japanese/Level.vue'),
         },
