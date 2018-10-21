@@ -1,17 +1,16 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Resources\Kanji;
+use App\Http\Resources\Kanji as KanjiResource;
 use App\Http\Resources\KanjiCollection;
-use App\Kanji as Model;
+use App\Kanji;
 use App\Vocabulary;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\QueryException;
 
 class JapaneseWanikaniKanji extends Controller
 {
     public function index()
     {
-        if (!request()->ajax()) {
+        if (!request()->wantsJson()) {
             return view('japanese.wanikani.vue');
         }
 
@@ -22,7 +21,7 @@ class JapaneseWanikaniKanji extends Controller
         $similar_id = request('similar_id');
         $vocabulary_id = request('vocabulary_id');
 
-        $kanji = Model::orderBy('level')
+        $kanji = Kanji::orderBy('level')
             ->orderBy('meaning')
             ->userBurnable($user_id)
             ->when($radical_id, function (Builder $query) use ($radical_id) {
@@ -47,7 +46,7 @@ class JapaneseWanikaniKanji extends Controller
             ->get(['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading'])
             ->when($vocabulary_id, function ($collection) use ($characters) {
                 // Сортировка кандзи в порядке использования в словарном слове
-                return $collection->map(function (Model $item) use ($characters) {
+                return $collection->map(function (Kanji $item) use ($characters) {
                     $item->sort = 0;
 
                     foreach ($characters as $i => $character) {
@@ -61,39 +60,29 @@ class JapaneseWanikaniKanji extends Controller
         return new KanjiCollection($kanji);
     }
 
-    public function destroy(int $id)
+    public function destroy(Kanji $kanji)
     {
-        $model = Model::findOrFail($id);
-
-        try {
-            $model->burnable()
-                ->create(['user_id' => auth()->id()]);
-        } catch (QueryException $e) {
-        }
+        $kanji->burn(auth()->id());
 
         return ['status' => 'OK'];
     }
 
     public function show(string $character)
     {
-        if (!request()->ajax()) {
+        if (!request()->wantsJson()) {
             return view('japanese.wanikani.vue', ['meta_replace' => ['kanji' => $character]]);
         }
 
-        $kanji = Model::where('character', $character)
+        $kanji = Kanji::where('character', $character)
             ->userBurnable(auth()->id())
             ->firstOrFail();
 
-        return new Kanji($kanji);
+        return new KanjiResource($kanji);
     }
 
-    public function update(int $id)
+    public function update(Kanji $kanji)
     {
-        $model = Model::findOrFail($id);
-
-        $model->burnable()
-            ->where('user_id', auth()->id())
-            ->delete();
+        $kanji->resurrect(auth()->id());
 
         return ['status' => 'OK'];
     }

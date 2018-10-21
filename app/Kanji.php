@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Traits\BurnsAndResurrects;
 use App\Traits\UserBurnableScope;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Kanji extends Model
 {
-    use UserBurnableScope;
+    use BurnsAndResurrects, UserBurnableScope;
 
     protected $fillable = ['level']; // Чтобы не бросало исключение
     protected $perPage = 50;
