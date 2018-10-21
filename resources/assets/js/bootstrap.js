@@ -6,6 +6,8 @@ import Youtube from './components/Youtube.vue'
 
 import decimal from './decimal'
 
+Vue.config.productionTip = false
+
 Vue.filter('decimal', decimal)
 
 Vue.component('avatar-uploader', () => import(/* webpackChunkName: "my" */'./components/AvatarUploader.vue'))
