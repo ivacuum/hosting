@@ -13,6 +13,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Burnable extends Model
 {
+    public $incrementing = false;
+
+    protected $primaryKey = null;
     protected $fillable = ['user_id'];
     protected $perPage = 50;
 
