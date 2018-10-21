@@ -1,16 +1,15 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Resources\Vocabulary;
+use App\Http\Resources\Vocabulary as VocabularyResource;
 use App\Http\Resources\VocabularyCollection;
-use App\Vocabulary as Model;
+use App\Vocabulary;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\QueryException;
 
 class JapaneseWanikaniVocabulary extends Controller
 {
     public function index()
     {
-        if (!request()->ajax()) {
+        if (!request()->wantsJson()) {
             return view('japanese.wanikani.vue');
         }
 
@@ -18,7 +17,7 @@ class JapaneseWanikaniVocabulary extends Controller
         $level = request('level');
         $user_id = auth()->id();
 
-        $vocabulary = Model::orderBy('level')
+        $vocabulary = Vocabulary::orderBy('level')
             ->orderBy('meaning')
             ->userBurnable($user_id)
             ->when($kanji, function (Builder $query) use ($kanji) {
@@ -32,39 +31,29 @@ class JapaneseWanikaniVocabulary extends Controller
         return new VocabularyCollection($vocabulary);
     }
 
-    public function destroy(int $id)
+    public function destroy(Vocabulary $vocabulary)
     {
-        $vocabulary = Model::findOrFail($id);
-
-        try {
-            $vocabulary->burnable()
-                ->create(['user_id' => auth()->id()]);
-        } catch (QueryException $e) {
-        }
+        $vocabulary->burn(auth()->id());
 
         return ['status' => 'OK'];
     }
 
     public function show(string $characters)
     {
-        if (!request()->ajax()) {
+        if (!request()->wantsJson()) {
             return view('japanese.wanikani.vue', ['meta_replace' => ['vocab' => $characters]]);
         }
 
-        $vocabulary = Model::where('character', $characters)
+        $vocabulary = Vocabulary::where('character', $characters)
             ->userBurnable(auth()->id())
             ->firstOrFail();
 
-        return new Vocabulary($vocabulary);
+        return new VocabularyResource($vocabulary);
     }
 
-    public function update(int $id)
+    public function update(Vocabulary $vocabulary)
     {
-        $model = Model::findOrFail($id);
-
-        $model->burnable()
-            ->where('user_id', auth()->id())
-            ->delete();
+        $vocabulary->resurrect(auth()->id());
 
         return ['status' => 'OK'];
     }

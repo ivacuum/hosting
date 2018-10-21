@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Traits\BurnsAndResurrects;
 use App\Traits\UserBurnableScope;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Vocabulary extends Model
 {
-    use UserBurnableScope;
+    use BurnsAndResurrects, UserBurnableScope;
 
     protected $fillable = ['sentences'];
     protected $perPage = 50;

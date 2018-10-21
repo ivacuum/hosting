@@ -68,8 +68,8 @@ Route::delete('japanese/wanikani/radicals/{radical}', 'JapaneseWanikaniRadicals@
 Route::post('japanese/wanikani/search', 'JapaneseWanikaniSearch@index');
 Route::get('japanese/wanikani/vocabulary', 'JapaneseWanikaniVocabulary@index');
 Route::get('japanese/wanikani/vocabulary/{characters}', 'JapaneseWanikaniVocabulary@show');
-Route::put('japanese/wanikani/vocabulary/{id}', 'JapaneseWanikaniVocabulary@update')->middleware('auth');
-Route::delete('japanese/wanikani/vocabulary/{id}', 'JapaneseWanikaniVocabulary@destroy')->middleware('auth');
+Route::put('japanese/wanikani/vocabulary/{vocabulary}', 'JapaneseWanikaniVocabulary@update')->middleware('auth');
+Route::delete('japanese/wanikani/vocabulary/{vocabulary}', 'JapaneseWanikaniVocabulary@destroy')->middleware('auth');
 
 Route::post('js/typo', 'JsTypo');
 
