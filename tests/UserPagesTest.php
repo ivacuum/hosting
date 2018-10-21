@@ -16,8 +16,6 @@ class UserPagesTest extends TestCase
     public function userPages200()
     {
         return [
-            ['/gallery'],
-            ['/gallery/upload'],
             ['/my/trips'],
             ['/my/trips/create'],
             ['/notifications'],
