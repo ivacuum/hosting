@@ -22,5 +22,20 @@
     <a class="btn btn-primary" href="{{ config('cfg.drimsim_link') }}">Get SIM card with extra €5</a>
     <div class="form-help">After a click you will be redirected to drimsim.com</div>
   @endru
+
+  <section class="mt-5">
+    <div class="h3">{{ trans('issues.create') }}</div>
+    @ru
+      <p>Знаете промокод или другие способы сэкономить на услугах Дримсима? Хотите оставить отзыв или задать вопрос? Используйте форму ниже, чтобы поделиться с нами информацией. По возможности мы дополним эту страницу новыми материалами.</p>
+    @en
+      <p>Use the form below to ask a question or just to tell us how to make this page better. New coupons and ways to cut down the expenses are welcome.</p>
+    @endru
+    <feedback-form
+      email="{{ Auth::user()->email ?? '' }}"
+      title="Drimsim"
+      action="{{ path('Issues@store') }}"
+      hide-title
+    ></feedback-form>
+  </section>
 </div>
 @endsection
