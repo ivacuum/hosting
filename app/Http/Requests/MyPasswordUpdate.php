@@ -4,6 +4,11 @@ use Ivacuum\Generic\Http\FormRequest;
 
 class MyPasswordUpdate extends FormRequest
 {
+    public function authorize(): bool
+    {
+        return true;
+    }
+
     public function rules(): array
     {
         /* @var \App\User $user */

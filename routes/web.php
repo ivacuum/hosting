@@ -30,7 +30,7 @@ Route::post('ajax/comment/{type}/{id}', 'AjaxComment@store');
 
 Route::get('about', 'Home@about');
 
-Route::get('comments/{id}/confirm', 'CommentConfirm@update')->middleware('auth');
+Route::get('comments/{comment}/confirm', 'CommentConfirm@update')->middleware('auth');
 
 Route::get('contact', 'Issues@create');
 Route::post('contact', 'Issues@store');

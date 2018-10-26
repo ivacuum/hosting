@@ -13,7 +13,7 @@ class Users extends Controller
         return view($this->view, compact('users'));
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         /* @var User $user */
         $user = User::withCount(['comments', 'images', 'torrents'])

@@ -5,6 +5,11 @@ use Ivacuum\Generic\Http\FormRequest;
 
 class CommentStore extends FormRequest
 {
+    public function authorize(): bool
+    {
+        return true;
+    }
+
     public function rules(): array
     {
         $is_guest = null === $this->user();

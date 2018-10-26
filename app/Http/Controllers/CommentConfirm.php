@@ -1,26 +1,20 @@
 <?php namespace App\Http\Controllers;
 
-use App\Comment as Model;
+use App\Comment;
+use App\Http\Requests\CommentConfirm as CommentConfirmRequest;
 
 class CommentConfirm extends Controller
 {
-    public function update(int $id)
+    public function update(Comment $comment, CommentConfirmRequest $request)
     {
-        $user = request()->user();
-
-        /* @var Model $model */
-        $model = Model::findOrFail($id);
-
-        abort_unless($model->user_id === $user->id, 404);
-
-        if ($model->status !== Model::STATUS_PENDING) {
-            return redirect($model->rel->www())
+        if ($comment->status !== Comment::STATUS_PENDING) {
+            return redirect($comment->rel->www())
                 ->with('message', trans('comments.already_confirmed'));
         }
 
-        $model->status = Model::STATUS_PUBLISHED;
-        $model->save();
+        $comment->status = Comment::STATUS_PUBLISHED;
+        $comment->save();
 
-        return redirect($model->rel->www($model->anchor()));
+        return redirect($comment->rel->www($comment->anchor()));
     }
 }
