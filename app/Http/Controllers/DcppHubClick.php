@@ -4,12 +4,9 @@ use App\DcppHub;
 
 class DcppHubClick extends Controller
 {
-    public function store(int $id)
+    public function store(DcppHub $hub)
     {
-        /* @var DcppHub $hub */
-        if (null !== $hub = DcppHub::find($id)) {
-            $hub->incrementClicks();
-        }
+        $hub->incrementClicks();
 
         return response('', 204);
     }

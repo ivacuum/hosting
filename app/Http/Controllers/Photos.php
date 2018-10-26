@@ -104,13 +104,11 @@ class Photos extends Controller
         return view($this->view, compact('photo'));
     }
 
-    public function show($id)
+    public function show(Photo $photo)
     {
-        /* @var Photo $photo */
-        $photo = Photo::with('rel', 'tags')->findOrFail($id);
-
         abort_unless($photo->status === Photo::STATUS_PUBLISHED, 404);
 
+        $photo->load('rel', 'tags');
         $photo->rel->loadCityAndCountry();
 
         $tag_id = request('tag_id');
@@ -182,11 +180,8 @@ class Photos extends Controller
         return view($this->view, compact('city_id', 'country_id', 'meta_title', 'next', 'photo', 'prev', 'tag_id', 'trip_id'));
     }
 
-    public function tag($id)
+    public function tag(Tag $tag)
     {
-        /* @var Tag $tag */
-        $tag = Tag::findOrFail($id);
-
         $photos = Photo::forTag($tag->id)
             ->published()
             ->orderBy('id', 'desc')
@@ -222,11 +217,8 @@ class Photos extends Controller
         return view($this->view, compact('tags'));
     }
 
-    public function trip($id)
+    public function trip(Trip $trip)
     {
-        /* @var Trip $trip */
-        $trip = Trip::findOrFail($id);
-
         abort_unless($trip->status === Trip::STATUS_PUBLISHED, 404);
 
         $photos = Photo::forTrip($trip->id)

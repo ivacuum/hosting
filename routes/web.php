@@ -37,14 +37,14 @@ Route::post('contact', 'Issues@store');
 
 Route::get('dc', 'Dcpp@index');
 Route::get('dc/hubs', 'DcppHubs@index');
-Route::post('dc/hubs/{id}/click', 'DcppHubClick@store');
+Route::post('dc/hubs/{hub}/click', 'DcppHubClick@store');
 Route::get('dc/{slug}', 'Dcpp@page');
 
 Route::get('docs', 'Docs@index');
 Route::get('docs/{slug}', 'Docs@page');
 
 Route::get('files', 'Files@index');
-Route::get('files/{id}/dl', 'Files@download');
+Route::get('files/{file}/dl', 'Files@download');
 
 Route::get('gallery', 'Gallery@index')->middleware('auth');
 Route::get('gallery/preview/{image}', 'Gallery@preview');
@@ -125,10 +125,10 @@ Route::get('photos/countries/{slug}', 'Photos@country');
 Route::get('photos/faq', 'Photos@faq');
 Route::get('photos/map', 'Photos@map');
 Route::get('photos/tags', 'Photos@tags');
-Route::get('photos/tags/{id}', 'Photos@tag');
+Route::get('photos/tags/{tag}', 'Photos@tag');
 Route::get('photos/trips', 'Photos@trips');
-Route::get('photos/trips/{id}', 'Photos@trip');
-Route::get('photos/{id}', 'Photos@show');
+Route::get('photos/trips/{trip}', 'Photos@trip');
+Route::get('photos/{photo}', 'Photos@show');
 
 Route::get('promocodes-coupons', 'Coupons@index');
 Route::get('promocodes-coupons/airbnb', 'Coupons@airbnb');

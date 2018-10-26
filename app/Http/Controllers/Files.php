@@ -16,11 +16,8 @@ class Files extends Controller
         return view($this->view, compact('models'));
     }
 
-    public function download(int $id)
+    public function download(File $file)
     {
-        /* @var File $file */
-        $file = File::findOrFail($id);
-
         abort_unless($file->status === File::STATUS_PUBLISHED, 404);
 
         $file->timestamps = false;
