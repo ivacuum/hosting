@@ -25,7 +25,7 @@ class AuthServiceProvider extends ServiceProvider
         App\Client::class => Base::class,
         App\Domain::class => Base::class,
         App\Server::class => Base::class,
-        App\Comment::class => WithoutCreate::class,
+        App\Comment::class => App\Policies\CommentPolicy::class,
         App\Country::class => Base::class,
         App\DcppHub::class => Base::class,
         App\Radical::class => WithoutCreate::class,

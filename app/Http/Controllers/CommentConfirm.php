@@ -1,11 +1,10 @@
 <?php namespace App\Http\Controllers;
 
 use App\Comment;
-use App\Http\Requests\CommentConfirm as CommentConfirmRequest;
 
 class CommentConfirm extends Controller
 {
-    public function update(Comment $comment, CommentConfirmRequest $request)
+    public function update(Comment $comment)
     {
         if ($comment->status !== Comment::STATUS_PENDING) {
             return redirect($comment->rel->www())
