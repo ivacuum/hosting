@@ -9,7 +9,7 @@ class CommentConfirm extends FormRequest
         /** @var \App\User $user */
         /** @var \App\Comment $comment */
         $user = $this->user();
-        $comment = $this->route()->parameter('comment');
+        $comment = $this->route('comment');
 
         return $comment->user_id === $user->id;
     }

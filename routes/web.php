@@ -100,10 +100,9 @@ Route::put('my/settings', 'MySettings@update')->middleware('auth');
 Route::get('my/trips', 'MyTrips@index')->middleware('auth');
 Route::post('my/trips', 'MyTrips@store')->middleware('auth');
 Route::get('my/trips/create', 'MyTrips@create')->middleware('auth');
-Route::get('my/trips/{id}', 'MyTrips@show')->middleware('auth');
-Route::put('my/trips/{id}', 'MyTrips@update')->middleware('auth');
-Route::delete('my/trips/{id}', 'MyTrips@destroy')->middleware('auth');
-Route::get('my/trips/{id}/edit', 'MyTrips@edit')->middleware('auth');
+Route::put('my/trips/{trip}', 'MyTrips@update')->middleware('auth', 'can:user-update,trip');
+Route::delete('my/trips/{trip}', 'MyTrips@destroy')->middleware('auth', 'can:user-delete,trip');
+Route::get('my/trips/{trip}/edit', 'MyTrips@edit')->middleware('auth', 'can:user-update,trip');
 
 Route::get('news', 'News@index');
 Route::get('news/rss', 'NewsRss@index');

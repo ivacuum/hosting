@@ -1,9 +1,8 @@
 <?php namespace App\Http\Controllers;
 
-use App\City;
-use App\Rules\TripSlug;
+use App\Http\Requests\TripStore;
+use App\Http\Requests\TripUpdate;
 use App\Trip;
-use Illuminate\Validation\Rule;
 
 class MyTrips extends Controller
 {
@@ -19,110 +18,61 @@ class MyTrips extends Controller
         return view('my.trips.index', compact('models'));
     }
 
-    public function create()
+    public function create(Trip $trip)
     {
-        $model = new Trip;
-
-        return view('my.trips.create', compact('model'));
+        return view('my.trips.create', ['model' => $trip]);
     }
 
-    public function destroy()
+    public function destroy(Trip $trip)
     {
-        return back();
+        $trip->delete();
+
+        return redirect(path("{$this->class}@index"));
     }
 
-    public function edit($id)
+    public function edit(Trip $trip)
     {
-        $model = $this->getTrip($id);
-
-        return view('my.trips.edit', compact('model'));
+        return view('my.trips.edit', ['model' => $trip]);
     }
 
-    public function show($id)
+    public function store(TripStore $request)
     {
-        $model = $this->getTrip($id);
+        /** @var \App\User $user */
+        $user = $request->user();
+        $city = \CityHelper::findByIdOrFail($request->input('city_id'));
 
-        return view('my.trips.show', compact('model'));
+        $trip = new Trip;
+
+        $trip->slug = $request->input('slug');
+        $trip->status = $request->input('status');
+        $trip->city_id = $city->id;
+        $trip->user_id = $user->id;
+        $trip->markdown = $request->input('markdown');
+        $trip->title_en = $city->title_en;
+        $trip->title_ru = $city->title_ru;
+        $trip->date_end = $request->input('date_end');
+        $trip->date_start = $request->input('date_start');
+
+        $trip->save();
+
+        return $this->redirectAfterStore($trip);
     }
 
-    public function store()
+    public function update(Trip $trip, TripUpdate $request)
     {
-        /* @var \App\User $user */
-        $user = request()->user();
+        $city = \CityHelper::findByIdOrFail($request->input('city_id'));
 
-        request()->validate($this->rules());
+        $trip->slug = $request->input('slug');
+        $trip->status = $request->input('status');
+        $trip->city_id = $city->id;
+        $trip->markdown = $request->input('markdown');
+        $trip->title_en = $request->input('title_en');
+        $trip->title_ru = $request->input('title_ru');
+        $trip->date_end = $request->input('date_end');
+        $trip->date_start = $request->input('date_start');
 
-        /* @var City $city */
-        $city = City::findOrFail(request('city_id'));
+        $trip->save();
 
-        $model = new Trip;
-
-        $model->slug = request('slug');
-        $model->status = request('status');
-        $model->city_id = $city->id;
-        $model->user_id = $user->id;
-        $model->markdown = request('markdown');
-        $model->title_en = $city->title_en;
-        $model->title_ru = $city->title_ru;
-        $model->date_end = request('date_end');
-        $model->date_start = request('date_start');
-
-        $model->save();
-
-        return $this->redirectAfterStore($model);
-    }
-
-    public function update($id)
-    {
-        $model = $this->getTrip($id);
-
-        request()->validate($this->rules($model));
-
-        /* @var City $city */
-        $city = City::findOrFail(request('city_id'));
-
-        $model->slug = request('slug');
-        $model->status = request('status');
-        $model->city_id = $city->id;
-        $model->markdown = request('markdown');
-        $model->title_en = request('title_en');
-        $model->title_ru = request('title_ru');
-        $model->date_end = request('date_end');
-        $model->date_start = request('date_start');
-
-        $model->save();
-
-        return $this->redirectAfterUpdate($model);
-    }
-
-    protected function getTrip(int $id): ?Trip
-    {
-        /* @var Trip $model */
-        $model = Trip::findOrFail($id);
-
-        abort_unless($model->user_id === request()->user()->id, 404);
-
-        return $model;
-    }
-
-    protected function rules(?Trip $model = null)
-    {
-        return [
-            'slug' => [
-                'bail',
-                'required',
-                new TripSlug,
-                Rule::unique('trips', 'slug')
-                    ->where('user_id', request()->user()->id)
-                    ->ignore($model->id ?? null),
-            ],
-            'status' => '',
-            'city_id' => 'required|integer|min:1',
-            'markdown' => '',
-            'title_ru' => null === $model ? '' : 'required',
-            'title_en' => null === $model ? '' : 'required',
-            'date_end' => 'required|date',
-            'date_start' => 'required|date',
-        ];
+        return $this->redirectAfterUpdate($trip);
     }
 }

@@ -101,6 +101,7 @@ class Trips extends Controller
         $data['user_id'] = request()->user()->id;
         $data['title_ru'] = $city->title_ru;
         $data['title_en'] = $city->title_en;
+        $data['markdown'] = '';
 
         $model = Model::create($data);
 

@@ -15,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
         App\File::class => Base::class,
         App\News::class => Base::class,
         App\Page::class => Base::class,
-        App\Trip::class => Base::class,
+        App\Trip::class => App\Policies\TripPolicy::class,
         App\User::class => WithoutCreate::class,
         App\Image::class => WithoutCreateAndEdit::class,
         App\Issue::class => WithoutCreateAndEdit::class,
