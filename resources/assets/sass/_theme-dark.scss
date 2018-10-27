@@ -65,7 +65,7 @@ $dark-bg-lighter-color: lighten($dark-bg-color, 10%);
   .border-top,
   .border-right,
   .border-bottom,
-  .border-left { border-color: $dark-border-color; }
+  .border-left { border-color: $dark-border-color !important; }
 
   .bottom-tab {
     color: $dark-text-color;
