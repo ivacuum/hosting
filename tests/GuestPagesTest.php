@@ -11,27 +11,6 @@ class GuestPagesTest extends TestCase
         $this->get($url)->assertStatus(200);
     }
 
-    public function testPageLifeGigsRss()
-    {
-        $this->get('/life/gigs/rss')
-            ->assertStatus(200)
-            ->assertHeader('Content-Type', 'application/xml');
-    }
-
-    public function testPageLifeRss()
-    {
-        $this->get('/life/rss')
-            ->assertStatus(200)
-            ->assertHeader('Content-Type', 'application/xml');
-    }
-
-    public function testPageNewsRss()
-    {
-        $this->get('/news/rss')
-            ->assertStatus(200)
-            ->assertHeader('Content-Type', 'application/xml');
-    }
-
     public function guestPages200()
     {
         return [
@@ -44,14 +23,6 @@ class GuestPagesTest extends TestCase
             ['/japanese/hiragana-katakana'],
             ['/japanese/wanikani'],
             ['/japanese/wanikani/level/1'],
-            ['/life'],
-            ['/life/calendar'],
-            ['/life/cities'],
-            ['/life/kaluga'],
-            ['/life/countries'],
-            ['/life/countries/russia'],
-            ['/life/english'],
-            ['/life/gigs'],
             ['/promocodes-coupons'],
             ['/promocodes-coupons/airbnb'],
             ['/promocodes-coupons/booking'],

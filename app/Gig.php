@@ -92,6 +92,20 @@ class Gig extends Model
         return $this->title;
     }
 
+    public function createStoryFile(): bool
+    {
+        $tpl = str_replace('.', '/', $this->template());
+
+        return touch(base_path("resources/views/{$tpl}.blade.php"));
+    }
+
+    public function deleteStoryFile(): bool
+    {
+        $tpl = str_replace('.', '/', $this->template());
+
+        return unlink(base_path("resources/views/{$tpl}.blade.php"));
+    }
+
     public function fullDate(): string
     {
         return $this->date->formatLocalized(trans('life.date.day_month_year'));

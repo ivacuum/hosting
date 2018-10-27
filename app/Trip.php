@@ -195,6 +195,13 @@ class Trip extends Model
         return touch(base_path("resources/views/{$tpl}.blade.php"));
     }
 
+    public function deleteStoryFile(): bool
+    {
+        $tpl = str_replace('.', '/', $this->template());
+
+        return unlink(base_path("resources/views/{$tpl}.blade.php"));
+    }
+
     public static function forInputSelect()
     {
         return static::orderBy('date_start', 'desc')->get(['id', 'slug'])->pluck('slug', 'id');
