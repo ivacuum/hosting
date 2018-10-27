@@ -228,7 +228,7 @@ export default {
     },
 
     checkInput(input) {
-      this.input = input
+      this.input = input.replace(/\s+/, '')
 
       if (this.answer && this.answer === input.toLowerCase()) {
         this.answered++
