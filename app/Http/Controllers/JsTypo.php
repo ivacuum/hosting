@@ -2,11 +2,10 @@
 
 use App\Events\TypoReceived;
 use App\Http\Requests\TypoStore;
-use Ivacuum\Generic\Services\Telegram;
 
 class JsTypo extends Controller
 {
-    public function __invoke(TypoStore $request, Telegram $telegram)
+    public function __invoke(TypoStore $request)
     {
         $page = $request->session()->previousUrl();
         $selection = $request->input('selection');

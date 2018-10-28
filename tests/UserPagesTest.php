@@ -16,7 +16,6 @@ class UserPagesTest extends TestCase
     public function userPages200()
     {
         return [
-            ['/notifications'],
             ['/torrents/add'],
             ['/torrents/my'],
         ];
