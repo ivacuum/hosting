@@ -50,7 +50,7 @@
               placeholder="kana"
               :autofocus="focus"
               :value="input"
-              @input="checkInput($event.target.value)"
+              @input="checkInput($event.target.value, $event)"
               @keydown.space.prevent="revealAnswer">
           </div>
           <div class="d-flex align-items-center justify-content-between mt-2">
@@ -68,8 +68,6 @@
 import random from 'lodash/random'
 
 export default {
-  props: ['value'],
-
   data() {
     return {
       focus: false,
@@ -216,6 +214,12 @@ export default {
   },
 
   methods: {
+    androidSpaceFix(e) {
+      if (e.inputType === 'insertText' && e.data === ' ') {
+        this.revealAnswer()
+      }
+    },
+
     beacon(action, appendSyllabaryName = true) {
       App.beacon.push({
         event: appendSyllabaryName ? this.syllabaryName + action : action
@@ -227,10 +231,12 @@ export default {
       this.pickElements()
     },
 
-    checkInput(input) {
-      this.input = input.replace(/\s+/, '')
+    checkInput(input, e) {
+      this.androidSpaceFix(e)
 
-      if (this.answer && this.answer === input.toLowerCase()) {
+      this.input = input.replace(/\s/g, '')
+
+      if (this.answer && this.answer === this.input.toLowerCase()) {
         this.answered++
         this.beacon('Answered')
         this.nextQuestion()
