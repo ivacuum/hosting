@@ -12,6 +12,15 @@
 <p>Под годом ниже подразумевается год выпуска, а не год просмотра.</p>
 
 <div class="movies-container">
+  <div class="h3">2018 год</div>
+  @include('tpl.kp_movies', [
+    'movies' => [
+      ['title' => "Телохранитель\nBodyguard", 'id' => 1176115],
+    ]
+  ])
+</div>
+
+<div class="movies-container mt-5">
   <div class="h3">2017 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
