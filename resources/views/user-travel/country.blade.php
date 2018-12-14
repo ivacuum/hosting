@@ -1,5 +1,6 @@
 @extends('user-travel.base', [
   'meta_title' => $country->title,
+  'meta_description' => $country->metaDescription($trips),
 ])
 
 @section('content')
