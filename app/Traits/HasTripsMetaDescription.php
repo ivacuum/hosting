@@ -6,7 +6,7 @@ trait HasTripsMetaDescription
 {
     public function metaDescription(Collection $trips): string
     {
-        if (!$total_trips = $trips->count()) {
+        if (!$total_trips = $trips->flatten()->count()) {
             return '';
         }
 
