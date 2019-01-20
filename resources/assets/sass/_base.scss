@@ -7,6 +7,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  font-variant-numeric: tabular-nums;
 }
 
 blockquote { margin-top: .5rem; }
