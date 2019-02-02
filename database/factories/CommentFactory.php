@@ -23,3 +23,12 @@ $factory->state(App\Comment::class, 'news', function () {
         'rel_type' => 'News',
     ];
 });
+
+$factory->state(App\Comment::class, 'torrent', function () {
+    return [
+        'rel_id' => function () {
+            return factory(App\Torrent::class)->create()->id;
+        },
+        'rel_type' => 'Torrent',
+    ];
+});
