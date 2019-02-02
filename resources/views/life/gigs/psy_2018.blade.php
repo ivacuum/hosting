@@ -488,9 +488,10 @@
 @endru
 @ru
   <ul>
-    <li>Песня It's Art <a class="link" href="https://www.youtube.com/watch?v=1cKc1rkZwf8">в официальном клипе</a> из нарезки выступлений разных лет и <a class="link" href="https://www.youtube.com/watch?v=C3v2z75AizY&t=119">вживую</a>.</li>
+    <li>Песня It's Art <a class="link" href="https://www.youtube.com/watch?v=1cKc1rkZwf8">в официальном клипе</a> из нарезки выступлений разных лет и <a class="link" href="https://www.youtube.com/watch?v=C3v2z75AizY&t=119">вживую</a>; на ней же <a class="link" href="https://www.youtube.com/watch?v=9g0WukEo0U0">трибуны ходят ходуном</a></li>
     <li>Полет на песне <a class="link" href="https://www.youtube.com/watch?v=DyW04ui2Sf0">Paradise</a>. Публике забавно предложили зачитать весьма быстрый рэп</li>
     <li>Продолжение полета на <a class="link" href="https://www.youtube.com/watch?v=hdAmWEemJmw">Don't Worry</a></li>
+    <li>Лазерное шоу в полной красе с трибун, <a class="link" href="https://youtu.be/dm0bi47c6cY?t=246">пример 1</a>, <a class="link" href="https://youtu.be/rC6ss1D2ogU?t=257">пример 2</a></li>
   </ul>
 @endru
 @endsection
