@@ -13,6 +13,7 @@ class ArtistsSeeder extends Seeder
         ['slug' => 'oomph', 'title' => 'Oomph'],
         ['slug' => 'opeth', 'title' => 'Opeth'],
         ['slug' => 'prodigy', 'title' => 'The Prodigy'],
+        ['slug' => 'psy', 'title' => 'PSY'],
         ['slug' => 'rammstein', 'title' => 'Rammstein'],
         ['slug' => 'tfn', 'title' => 'Tides from Nebula'],
         ['slug' => 'vai', 'title' => 'Steve Vai'],
