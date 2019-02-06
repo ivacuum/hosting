@@ -11,6 +11,7 @@
     "notie": "4.3.1",
     "vac-gfe": "1.2.2",
     "vue": "2.6.2",
+    "vue-template-compiler": "2.6.2",
     "vue-i18n": "7.8.0",
     "vue-router": "3.0.2",
     "vuex": "3.1.0"
