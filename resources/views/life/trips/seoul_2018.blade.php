@@ -7,6 +7,8 @@
 
 @ru
   <p>На обратный рейс самолет наполняют корейской едой.</p>
+@en
+  <p>Plane is getting filled with Korean food for the return flight.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5786.jpg'])
 
@@ -59,6 +61,8 @@
 
 @ru
   <p>Ночная подсветка.</p>
+@en
+  <p>Night lights.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_5827.jpg',
@@ -215,6 +219,8 @@
 
 @ru
   <p>Все вместе.</p>
+@en
+  <p>All together.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5883.jpg'])
 
@@ -270,11 +276,15 @@
 
 @ru
   <p>Подсказка где поднимать и спускать велосипед.</p>
+@en
+  <p>Hint where to lift up and pull down a bicycle with ease.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5886.jpg'])
 
 @ru
   <p>Масштабы видеонаблюдения.</p>
+@en
+  <p>CCTV scale.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_5875.jpg',
@@ -285,26 +295,36 @@
 
 @ru
   <p>Объяснение что, с какой целью и сколько времени в сутки мониторит видеокамера.</p>
+@en
+  <p>Explanation why, how long, and when CCTV is up.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6320.jpg'])
 
 @ru
   <p>Пробник зубной щетки гигантских размеров в супермаркете.</p>
+@en
+  <p>Giant tooth brush tester in the supermarket.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6227.jpg'])
 
 @ru
   <p>Чаек.</p>
+@en
+  <p>Tea.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6228.jpg'])
 
 @ru
   <p>Книги, еда и кофе.</p>
+@en
+  <p>Books, food, and coffee.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6230.jpg'])
 
 @ru
   <p>Конвейер суши.</p>
+@en
+  <p>Sushi conveyor belt.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6232.jpg'])
 
@@ -320,6 +340,8 @@
 
 @ru
   <p>Олимпийский люк.</p>
+@en
+  <p>Olympic hatch.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6239.jpg'])
 
@@ -363,6 +385,8 @@
 
 @ru
   <p>Доска объявлений.</p>
+@en
+  <p>Bulletin board.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6396.jpg'])
 
@@ -398,11 +422,15 @@
 
 @ru
   <p>Карта района.</p>
+@en
+  <p>Neighborhood map.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6288.jpg'])
 
 @ru
   <p>Пешеходный мост.</p>
+@en
+  <p>Pedestrian bridge.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6289.jpg'])
 
@@ -413,6 +441,8 @@
 
 @ru
   <p>Под мостом. Лифт может доставить наверх.</p>
+@en
+  <p>Under the bridge. Elevator can get you up.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6299.jpg'])
 
