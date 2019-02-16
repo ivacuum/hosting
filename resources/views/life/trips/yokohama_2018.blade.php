@@ -17,6 +17,8 @@
 
 @ru
   <p>Привезли напитки для автоматов.</p>
+@en
+  <p>Beverages for vending machines got delivered.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0189.jpg'])
 
@@ -32,21 +34,29 @@
 
 @ru
   <p>Велопарковка.</p>
+@en
+  <p>Bicycle parking.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0197.jpg'])
 
 @ru
   <p>Автобусопарковка.</p>
+@en
+  <p>Bus parking.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0200.jpg'])
 
 @ru
   <p>Мотопарковка.</p>
+@en
+  <p>Motorcycle parking.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0425.jpg'])
 
 @ru
   <p>В штабе автомобильной компании Ниссан.</p>
+@en
+  <p>Nissan HQ.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0201.jpg',
@@ -111,11 +121,15 @@
 
 @ru
   <p>Семь ручек на двери.</p>
+@en
+  <p>Door has seven handles.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0291.jpg'])
 
 @ru
   <p>Тихий час.</p>
+@en
+  <p>Nap time.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0293.jpg'])
 
@@ -127,11 +141,15 @@
 
 @ru
   <p>Карта окрестностей.</p>
+@en
+  <p>Neighborhood map.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0314.jpg'])
 
 @ru
   <p>Напольная навигация.</p>
+@en
+  <p>Floor navigation.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0330.jpg'])
 
@@ -146,11 +164,15 @@
 
 @ru
   <p>Электровелопрокат.</p>
+@en
+  <p>Electric bicycle rental.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0350.jpg'])
 
 @ru
   <p>Водонапорная башня.</p>
+@en
+  <p>Water tower.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0361.jpg'])
 
@@ -172,6 +194,8 @@
 
 @ru
   <p>Фонтаны.</p>
+@en
+  <p>Fountains.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0396.jpg',
@@ -198,6 +222,8 @@
 
 @ru
   <p>Панорама.</p>
+@en
+  <p>Panorama.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0433.jpg'])
 
@@ -258,6 +284,8 @@
 
 @ru
   <p>Платформа.</p>
+@en
+  <p>Platform.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0499.jpg'])
 
@@ -273,6 +301,8 @@
 
 @ru
   <p>Манекены в пижамах.</p>
+@en
+  <p>Mannequins in pajamas.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0504.jpg'])
 
