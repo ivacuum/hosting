@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Http\Resources\TorrentCollection;
+use App\Rules\TorrentCategoryId;
 use App\SearchSynonym;
 use App\Services\Rto;
 use App\Torrent;
@@ -49,6 +51,10 @@ class Torrents extends Controller
             })
             ->simplePaginate(25, Torrent::LIST_COLUMNS)
             ->withPath(path("{$this->class}@index"));
+
+        if (request()->wantsJson()) {
+            return new TorrentCollection($torrents);
+        }
 
         $tree = \TorrentCategoryHelper::tree();
         $stats = Torrent::statsByCategories();
@@ -130,7 +136,7 @@ class Torrents extends Controller
 
         request()->validate([
             'input' => 'required',
-            'category_id' => 'required|integer|in:'.implode(',', \TorrentCategoryHelper::canPostIds()),
+            'category_id' => TorrentCategoryId::rules(),
         ]);
 
         if (($topic_id = $rto->findTopicId($input)) > 0) {
