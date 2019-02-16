@@ -4,7 +4,7 @@
 @ru
   <p>Из горной <a class="link" href="takayama.2017">Такаямы</a> оказалось непросто добраться до Никко. Одними поездами выходило около шести часов с несколькими пересадками, причем сначала предстояло ехать назад по уже увиденным местам. Если же сначала доехать на автобусе до <a class="link" href="matsumoto.2017">Мацумото</a>, а оттуда поездами, то в итоге те же шесть часов, но без повторений пути и плюс один город на осмотр.</p>
 @en
-  <p>There is no easy way to get to Nikko from nested among mountains <a class="link" href="takayama.2017">Takayama</a>. It's a six hours ride on trains with a few changes in cities I have been to. The other option is to take a bus to <a class="link" href="matsumoto.2017">Matsumoto</a> first, and then continue the journey on trains. Same six hours ride, but one new city to see and no repeats.</p>
+  <p>There is no easy way to get to Nikko from nested among mountains <a class="link" href="takayama.2017">Takayama</a>. It's a six-hour ride on trains with a few changes in cities I have been to. The other option is to take a bus to <a class="link" href="matsumoto.2017">Matsumoto</a> first, and then continue the journey on trains. Same six-hour ride, but one new city to see and no repeats.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7907.jpg'])
 

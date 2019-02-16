@@ -8,7 +8,7 @@
 @ru
   <p>Также в относительной близости находится Австралия — до города Перт лететь около трех часов.</p>
 @en
-  <p>Australia is relatively close as well—just three hours flight to Perth.</p>
+  <p>Australia is relatively close as well—just three-hour flight to Perth.</p>
 @endru
 
 @ru

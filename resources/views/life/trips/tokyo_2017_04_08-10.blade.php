@@ -27,7 +27,7 @@
 @ru
   <p>Перелет около 10 часов, за это время кормят дважды. Но эти два раза так растянуты, что ощущение, что ешь чуть ли не весь полет. Поспать дольше пары часов не удалось. По предыдущему положительному опыту было вновь заказано кошерное питание. И здесь оно не подкачало. Однако, удивило, что бортпроводники спрашивали можно ли им самим разогреть кошерную пищу или я схожу и проконтролирую процесс. А также просили вскрыть упаковку с едой и убедиться, что там все ОК, что никаких неожиданностей среди блюд. Ага, понимать бы еще что там внутри!</p>
 @en
-  <p>Flight is about 10 hours long, you get two meals during it. But meals are so big, that it feels like the only thing you do the entire flight is eat. I couldn't sleep for more than a couple of hours. A kosher meal was ordered given the previous positive experience. And it was good once again. However, it was surprising that the flight attendant asked if she could warm up my kosher meal by herself or I would go with her and control the process. I was also asked to open the meal box and make sure everything is OK inside. Yeah, I wish I knew what's inside!</p>
+  <p>Flight is about 10-hour long, you get two meals during it. But meals are so big, that it feels like the only thing you do the entire flight is eat. I couldn't sleep for more than a couple of hours. A kosher meal was ordered given the previous positive experience. And it was good once again. However, it was surprising that the flight attendant asked if she could warm up my kosher meal by herself or I would go with her and control the process. I was also asked to open the meal box and make sure everything is OK inside. Yeah, I wish I knew what's inside!</p>
 @endru
 
 @ru
