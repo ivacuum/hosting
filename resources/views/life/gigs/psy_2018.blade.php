@@ -57,9 +57,7 @@
 @endru
 <youtube title="PSY Live @ Korea Univ. IPSELENTI 2018" v="cJgK1T3uzBU"></youtube>
 
-@ru
-  <h3 class="mt-5">Анонс и покупка билета</h3>
-@endru
+<h3 class="mt-5">@ru Анонс и покупка билета @en Announcement and ticket purchase @endru</h3>
 
 @ru
   <p>13 ноября 2018 года перед сном — около двух ночи по Москве — решил проверить ленту твиттера, а там внезапный анонс.</p>
@@ -94,9 +92,7 @@
 @endru
 @include('tpl.pic-arbitrary-2x', ['pic' => 'ticket-04.png', 'w' => 1096, 'h' => 809])
 
-@ru
-  <h3 class="mt-5">Предконцертная подготовка</h3>
-@endru
+<h3 class="mt-5">@ru Предконцертная подготовка @en Preparation @endru</h3>
 
 @ru
   <p>В твиттере после анонса сохранялась полная тишина. Ближе к декабрю меня посетила светлая мысль «а не проверить-ка ли мне инстаграм?». Вот где оказалась вся движуха. Там и сводка о поле и возрасте купивших билеты, объявление о красном дресс-коде на концерт, примеры ожидаемого мерча, анонс, что все билеты распроданы, и прочая полезная инфа.</p>
@@ -145,9 +141,7 @@
   <p>Заблаговременно вспомнил как разминался дома за неделю до <a class="link" href="prodigy.2016">концерта Продиджи</a> в 2016 году. Собрал примерный сетлист и пропрыгал его. Было очень похоже на прыжки на скакалке в течение 30–40 минут. На следующий день ноги ожидаемо отваливались. Еще через день полегче. Еще на день позже наступил кайф. Зато на следующий после их концерта день никаких болезненных ощущений. Для этого концерта повторил подготовку. Спойлер — она снова безупречно сработала, поэтому рекомендую всем попробовать подход.</p>
 @endru
 
-@ru
-  <h3 class="mt-5">День концерта</h3>
-@endru
+<h3 class="mt-5">@ru День концерта @en The day of the show @endru</h3>
 
 @ru
   <p>Вы прибыли к месту назначения. Крытый гимнастический стадион. Неподалеку отсюда был стол, на котором представлены <a class="link" href="https://www.instagram.com/p/BrjrbthhnTN/">все продаваемые товары</a> (мерч). Самое удивительное, что около этого стола не было никого со стороны организатора. Посетители просто подходили, брали и рассматривали вещи, а потом возвращали их на место. Более того — в палатках по соседству бесплатно раздавали кофе всем <span class="text-nowrap">12&thinsp;500</span> участникам концерта.</p>
@@ -199,11 +193,15 @@
 
 @ru
   <p>Погасили свет, стало ярко видно весь купленный мерч. Начинается!</p>
+@en
+  <p>Lights off. Now all merchandise people bought is clearly visible. Show is starting!</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5914.jpg'])
 
 @ru
   <p>Понеслась.</p>
+@en
+  <p>Show is on.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5927.jpg'])
 
@@ -214,6 +212,8 @@
 
 @ru
   <p>Свет. Псай в этот раз выступал светорежиссером собственного концерта. Получился качественный рывок вперед по зрелищности, поэтому концерты прошлых лет теперь тяжело смотреть, ведь не покидает стойкое ощущение, что там света не было вовсе.</p>
+@en
+  <p>The light. PSY was the light director of his own show this time.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_5964.jpg',
@@ -225,6 +225,8 @@
 
 @ru
   <p>О, да.</p>
+@en
+  <p>Oh yes.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6048.jpg',
@@ -233,6 +235,8 @@
 
 @ru
   <p>Еще кадры разных песен.</p>
+@en
+  <p>More shots of different songs.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6078.jpg',
@@ -242,11 +246,15 @@
 
 @ru
   <p>Он улетел, но обещал <s>вернуться</s> спуститься.</p>
+@en
+  <p>He flew away but promised to come down.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6119.jpg'])
 
 @ru
   <p>Концерт закончился.</p>
+@en
+  <p>Show is over.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_6177.jpg',
@@ -260,7 +268,7 @@
     @ru
       <div class="mb-1">Что было исполнено. На каждую песню можно нажать и посмотреть видео. Сердечком отмечен самый смак.</div>
     @en
-      <div class="mb-1">Setlist:</div>
+      <div class="mb-1">Setlist. Each song is a link to its video. The most spectacular are marked with a heart.</div>
     @endru
     <h5 class="mb-1">@ru Сет @en Set @endru 1</h5>
     <ol>
@@ -336,10 +344,7 @@
         <small class="text-muted">Father</small>
         <span class="text-danger">@svg (heart)</span>
       </li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=WUB9kZMSMFw">New Face</a>
-        <span class="text-danger">@svg (heart)</span>
-      </li>
+      <li><a class="link" href="https://www.youtube.com/watch?v=WUB9kZMSMFw">New Face</a></li>
       <li><a class="link" href="https://www.youtube.com/watch?v=XIH5tFK9eU8">Dream</a></li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=8GksPfIR9uA">강남스타일</a>
@@ -451,9 +456,7 @@
   <p>Концерт и публика задали высочайшую планку по впечатлениям, которую неизвестно теперь чем превзойти. Поездка однозначно стоила того. Даже <a class="link" href="rammstein.2016.07">Раммштайн в Берлине</a> так не принимали. Может потому что в Берлине прямо на площадке люди пили пиво, а в Сеуле всех снабжали кофе?</p>
 @endru
 
-@ru
-  <h3 class="mt-5">Собственные видео</h3>
-@endru
+<h3 class="mt-5">@ru Собственные видео @en My own videos @endru</h3>
 @ru
   <p>Впервые записал на концерте пачку собственных видосов. Было пофиг на качество и стабилизацию — самому было интересно какой выйдет результат. Вдруг на память что достойное останется. Плюс актуально было записывать спокойные и неизвестные песни, все равно подпевать не мог. Записал в итоге десять видосов, из которых выделил бы всего один: 29-й трек из сета, где на экране сам себя заснял. Но смотреть лучше всего равно ту версию, что по ссылке в сете, так как она с нормальной стабилизацией и лучшим качеством.</p>
 @endru
@@ -461,11 +464,15 @@
 
 @ru
   <p>Движущаяся дополнительная сцена.</p>
+@en
+  <p>Moving second scene.</p>
 @endru
 <youtube title="GENTLEMAN (젠틀맨)" v="Nvf6nYJDf5k"></youtube>
 
 @ru
   <p>Активные песни.</p>
+@en
+  <p>Energetic songs.</p>
 @endru
 <youtube title="We are the one" v="V_BchYEfUAY"></youtube>
 <youtube title="Napal Baji (나발바지)" v="i9qPaUptbmc"></youtube>
@@ -479,6 +486,8 @@
 
 @ru
   <p>Медляки.</p>
+@en
+  <p>Slow songs.</p>
 @endru
 <youtube title="Place to Lean On / Refuge (기댈곳)" v="AAMGCLkW-yc"></youtube>
 <youtube title="Last Scene (마지막 장면)" v="z1q6Lgi2Bxo"></youtube>
@@ -486,6 +495,8 @@
 
 @ru
   <p>Полет.</p>
+@en
+  <p>Fly.</p>
 @endru
 <youtube title="Paradise (낙원)" v="H4lo6V-Bt60"></youtube>
 
@@ -494,9 +505,7 @@
 @endru
 <youtube title="Don't Worry (걱정말아요 그대)" v="OaXl57L2rTc"></youtube>
 
-@ru
-  <h3 class="mt-5">Бонусные материалы</h3>
-@endru
+<h3 class="mt-5">@ru Бонусные материалы @en Bonus materials @endru</h3>
 @ru
   <ul>
     <li>Песня It's Art <a class="link" href="https://www.youtube.com/watch?v=1cKc1rkZwf8">в официальном клипе</a> из нарезки выступлений разных лет и <a class="link" href="https://www.youtube.com/watch?v=C3v2z75AizY&t=119">вживую</a>; на ней же <a class="link" href="https://www.youtube.com/watch?v=9g0WukEo0U0">трибуны ходят ходуном</a></li>
