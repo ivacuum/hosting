@@ -11,6 +11,7 @@ class SearchSynonym
         'nfs|нфс' => 'need for speed',
         'tes' => 'the elder scrolls',
         'асс?асс?ин' => 'assassin',
+        'ass?ass?in' => 'assassin',
         'д[еэ]дпул' => 'deadpool',
         'фифа' => 'fifa',
     ];
