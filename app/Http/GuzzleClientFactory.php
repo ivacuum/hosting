@@ -20,6 +20,10 @@ class GuzzleClientFactory
     {
         $config['on_stats'] = new ExternalHttpRequestTransferStatsDispatcher($serviceName);
 
+        if ($this->baseUri) {
+            $config['base_uri'] = $this->baseUri;
+        }
+
         if ($this->timeout) {
             $config['timeout'] = $this->timeout;
         }
