@@ -17,14 +17,14 @@ class Vk
             ->createForService('vk');
     }
 
-    public function accessToken($access_token)
+    public function accessToken(string $access_token): self
     {
         $this->access_token = $access_token;
 
         return $this;
     }
 
-    public function version($version)
+    public function version(string $version): self
     {
         $this->version = $version;
 
@@ -96,7 +96,7 @@ class Vk
         return json_decode($response->getBody());
     }
 
-    protected function params()
+    protected function params(): array
     {
         return [
             'v' => $this->version,
