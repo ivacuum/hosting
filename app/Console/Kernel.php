@@ -47,7 +47,7 @@ class Kernel extends ConsoleKernel
             ->appendOutputTo($cron_output);
 
         $schedule->command(Commands\RtoUpdate::class)
-            ->cron('0 */6 * * *')
+            ->cron('0 */3 * * *')
             ->appendOutputTo($cron_output);
 
         $schedule->command(Commands\VkLikesAdd::class, ['pn6'])
