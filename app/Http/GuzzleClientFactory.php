@@ -6,10 +6,31 @@ use GuzzleHttp\Client;
 
 class GuzzleClientFactory
 {
-    public function createForService(string $serviceName)
+    private $baseUri;
+    private $timeout;
+
+    public function baseUri(string $baseUri): self
     {
-        return new Client([
-            'on_stats' => new ExternalHttpRequestTransferStatsDispatcher($serviceName),
-        ]);
+        $this->baseUri = $baseUri;
+
+        return $this;
+    }
+
+    public function createForService(string $serviceName): Client
+    {
+        $config['on_stats'] = new ExternalHttpRequestTransferStatsDispatcher($serviceName);
+
+        if ($this->timeout) {
+            $config['timeout'] = $this->timeout;
+        }
+
+        return new Client($config);
+    }
+
+    public function timeout(int $timeout): self
+    {
+        $this->timeout = $timeout;
+
+        return $this;
     }
 }

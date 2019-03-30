@@ -1,6 +1,6 @@
 <?php namespace App\Services;
 
-use GuzzleHttp\Client;
+use App\Http\GuzzleClientFactory;
 
 class Wanikani
 {
@@ -8,10 +8,10 @@ class Wanikani
 
     public function __construct()
     {
-        $this->client = new Client([
-            'timeout' => 10,
-            'base_uri' => 'https://www.wanikani.com/api/user/'.config('cfg.wanikani_api_key').'/',
-        ]);
+        $this->client = (new GuzzleClientFactory)
+            ->baseUri('https://www.wanikani.com/api/user/'.config('cfg.wanikani_api_key').'/')
+            ->timeout(10)
+            ->createForService('wanikani');
     }
 
     public function kanji(int $level)

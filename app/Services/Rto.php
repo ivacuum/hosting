@@ -1,7 +1,7 @@
 <?php namespace App\Services;
 
+use App\Http\GuzzleClientFactory;
 use App\Torrent;
-use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 
 class Rto
@@ -15,10 +15,9 @@ class Rto
 
     public function __construct()
     {
-        $this->client = new Client([
-            'timeout' => 5,
-            'base_uri' => static::API_ENDPOINT,
-        ]);
+        $this->client = (new GuzzleClientFactory)
+            ->timeout(5)
+            ->createForService('rto');
     }
 
     public function findTopicId($input)
@@ -155,7 +154,7 @@ class Rto
             'val' => $ids,
         ];
 
-        $response = $this->client->get('get_tor_topic_data', ['query' => $params]);
+        $response = $this->client->get(static::API_ENDPOINT . 'get_tor_topic_data', ['query' => $params]);
 
         return json_decode($response->getBody())->result;
     }
@@ -167,7 +166,7 @@ class Rto
             'val' => $hash,
         ];
 
-        $response = $this->client->get('get_topic_id', ['query' => $params]);
+        $response = $this->client->get(static::API_ENDPOINT . 'get_topic_id', ['query' => $params]);
 
         return json_decode($response->getBody())->result->{$hash};
     }

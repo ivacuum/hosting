@@ -1,6 +1,6 @@
 <?php namespace App\Services;
 
-use GuzzleHttp\Client;
+use App\Http\GuzzleClientFactory;
 
 class Vk
 {
@@ -12,7 +12,9 @@ class Vk
 
     public function __construct()
     {
-        $this->client = new Client(['base_uri' => static::API_ENDPOINT]);
+        $this->client = (new GuzzleClientFactory)
+            ->baseUri(static::API_ENDPOINT)
+            ->createForService('vk');
     }
 
     public function accessToken($access_token)

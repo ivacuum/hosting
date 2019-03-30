@@ -2,7 +2,7 @@
 
 use App\CacheKey;
 use App\Http\GuzzleClientFactory;
-use GuzzleHttp\Client;
+use App\Services\Vk;
 use Illuminate\Support\Carbon;
 
 class ParserVk extends Controller
@@ -16,7 +16,10 @@ class ParserVk extends Controller
     {
         parent::__construct();
 
-        $this->client = (new GuzzleClientFactory)->createForService('vk.parser');
+        $this->client = (new GuzzleClientFactory)
+            ->baseUri(Vk::API_ENDPOINT)
+            ->timeout(10)
+            ->createForService('vk.parser');
     }
 
     public function index($vkpage = 'pn6', $date = false)
@@ -159,10 +162,7 @@ class ParserVk extends Controller
                 sleep(1);
             }
 
-            $response = $this->client->get('https://api.vk.com/method/wall.get', [
-                'query' => $params,
-                'timeout' => 10,
-            ]);
+            $response = $this->client->get('wall.get', ['query' => $params]);
 
             event(new \App\Events\Stats\ParserVkWallGet);
 
