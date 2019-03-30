@@ -7,6 +7,15 @@ class LogExternalHttpRequest
 {
     public function handle(ExternalHttpRequestMade $event)
     {
+        if (\App::runningInConsole()) {
+            $this->saveRequest($event);
+        } else {
+            register_shutdown_function([$this, 'saveRequest'], [$event]);
+        }
+    }
+
+    protected function saveRequest(ExternalHttpRequestMade $event)
+    {
         ExternalHttpRequest::create([
             'host' => $event->host,
             'path' => $event->path,
