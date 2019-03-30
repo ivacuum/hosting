@@ -40,12 +40,12 @@ class Vk
         return json_decode($response->getBody());
     }
 
-    public function likePost($owner_id, $id)
+    public function likePost(Vk\Post $post)
     {
         $params = array_merge($this->params(), [
             'type' => 'post',
-            'item_id' => $id,
-            'owner_id' => $owner_id,
+            'item_id' => $post->id(),
+            'owner_id' => $post->ownerId(),
         ]);
 
         $response = $this->client->get('likes.add', ['query' => $params]);
@@ -53,12 +53,12 @@ class Vk
         return json_decode($response->getBody());
     }
 
-    public function unlikePost($owner_id, $id)
+    public function unlikePost(Vk\Post $post)
     {
         $params = array_merge($this->params(), [
             'type' => 'post',
-            'item_id' => $id,
-            'owner_id' => $owner_id,
+            'item_id' => $post->id(),
+            'owner_id' => $post->ownerId(),
         ]);
 
         $response = $this->client->get('likes.delete', ['query' => $params]);

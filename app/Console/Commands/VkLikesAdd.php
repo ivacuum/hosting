@@ -1,5 +1,6 @@
 <?php namespace App\Console\Commands;
 
+use App\Jobs\LikeVkPost;
 use App\Services\Vk;
 use Ivacuum\Generic\Commands\Command;
 
@@ -8,43 +9,30 @@ class VkLikesAdd extends Command
     protected $signature = 'app:vk-likes-add {page}';
     protected $description = 'Add VK likes';
 
-    protected $vk;
-
-    public function __construct(Vk $vk)
-    {
-        parent::__construct();
-
-        $this->vk = $vk;
-    }
-
-    public function handle()
+    public function handle(Vk $vk)
     {
         $page = $this->argument('page');
-        $access_token = config('services.vk.access_token');
 
-        $this->vk->accessToken($access_token);
+        $vk->accessToken(config('services.vk.access_token'));
 
-        $response = $this->vk->wallSearch($page, ['query' => '#ЛайкТайм', 'count' => 5])->response;
+        // $response = $vk->wallSearch($page, ['query' => '#ЛайкТайм', 'count' => 5])->response;
+        $response = $vk->wallGet($page, ['count' => 6])->response;
 
         $i = 0;
-        $posts = sizeof($response->items);
+        $bar = $this->output->createProgressBar(sizeof($response->items));
 
-        $bar = $this->output->createProgressBar($posts);
+        foreach ($response->items as $postJson) {
+            $post = Vk\Post::fromJson($postJson);
 
-        foreach ($response->items as $post) {
-            /*
-            if (@$post->is_pinned) {
+            if ($post->isPinned() || $post->isAd() || !$post->canLike() || $post->isUserLiked()) {
                 continue;
             }
-            */
 
-            $this->vk->likePost($post->owner_id, $post->id);
+            LikeVkPost::dispatch($post)
+                ->delay(now()->addSeconds(10 * $i));
+
             $bar->advance();
             $i++;
-
-            if ($posts !== $i) {
-                sleep(10);
-            }
         }
 
         $bar->finish();
