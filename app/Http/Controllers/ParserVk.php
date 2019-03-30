@@ -157,7 +157,7 @@ class ParserVk extends Controller
             $params['domain'] = $this->vkpage;
         }
 
-        return \Cache::remember($cache_entry, 15 + intval($offset / 100), function () use ($params) {
+        return \Cache::remember($cache_entry, now()->addMinutes(15 + intval($offset / 100)), function () use ($params) {
             if ($params['access_token'] && $params['offset']) {
                 sleep(1);
             }

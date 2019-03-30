@@ -372,7 +372,7 @@ class Trip extends Model
 
     public static function tripsWithCover(?int $count = null)
     {
-        return \Cache::remember(CacheKey::TRIPS_PUBLISHED_WITH_COVER, 1440, function () {
+        return \Cache::remember(CacheKey::TRIPS_PUBLISHED_WITH_COVER, now()->addDays(1), function () {
             // Не нужно ограничение по пользователю, так как meta_image есть только у user_id=1
             return static::query()
                 ->published()

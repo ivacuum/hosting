@@ -238,7 +238,7 @@ class Torrent extends Model
     // Static methods
     public static function statsByCategories()
     {
-        return \Cache::remember(CacheKey::TORRENTS_STATS_BY_CATEGORIES, 15, function () {
+        return \Cache::remember(CacheKey::TORRENTS_STATS_BY_CATEGORIES, now()->addMinutes(15), function () {
             return static::selectRaw('category_id, COUNT(*) AS total')
                 ->where('status', static::STATUS_PUBLISHED)
                 ->groupBy('category_id')

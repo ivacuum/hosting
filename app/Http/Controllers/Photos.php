@@ -254,7 +254,7 @@ class Photos extends Controller
         $cache_entry = $trip_id ? CacheKey::PHOTOS_POINTS_FOR_TRIP : CacheKey::PHOTOS_POINTS;
         $minutes = $trip_id ? 0 : 30;
 
-        return \Cache::remember($cache_entry, $minutes, function () use ($trip_id) {
+        return \Cache::remember($cache_entry, now()->addMinutes($minutes), function () use ($trip_id) {
             $photos = Photo::with('rel')
                 ->forTrip($trip_id)
                 ->published()
