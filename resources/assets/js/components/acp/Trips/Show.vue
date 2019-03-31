@@ -1,5 +1,11 @@
 <script>
 export default {
+  data() {
+    return {
+      date: null,
+    }
+  },
+
   props: {
     resource: {
       type: Object,
@@ -7,10 +13,23 @@ export default {
     },
   },
 
+  created() {
+    this.date = this.calculatePlaceholderDate()
+  },
+
   methods: {
+    calculatePlaceholderDate() {
+      let date = new Date()
+
+      date.setUTCHours(20, 30, 0, 0)
+      date.setDate(date.getDate() + 2)
+
+      return date.toISOString().replace(/T/, ' ').replace(/\.000Z/, '')
+    },
+
     notify() {
       axios
-        .post(`${this.resource.show_url}/notify`)
+        .post(`${this.resource.show_url}/notify`, { date: this.date })
         .then(({ data }) => {
           if (data.status === 'OK') {
             notie.alert({ text: data.message })
@@ -19,7 +38,7 @@ export default {
 
           notie.alert({ type: 'error', text: data.message })
         })
-    }
+    },
   }
 }
 </script>
@@ -32,8 +51,22 @@ export default {
   <div class="mt-3" v-if="resource.meta_image">
     <img class="img-fluid rounded" :src="resource.meta_image">
   </div>
-  <button class="btn btn-default mt-3" @click.prevent="notify">
-    {{ $t('trips.notify') }}
-  </button>
+  <div class="input-group mt-3">
+    <input
+      required
+      class="form-control"
+      type="date"
+      name="date"
+      v-model="date"
+    >
+    <div class="input-group-append">
+      <button
+        class="btn btn-default"
+        @click.prevent="notify"
+        :title="$t('trips.notify')"
+        v-html="$root.svg.bell"
+      ></button>
+    </div>
+  </div>
 </div>
 </template>

@@ -1,13 +1,14 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Notifications\TripPublished;
+use App\Http\Requests\Acp\TripPublishedNotifyRequest;
+use App\Jobs\NotifyTripSubscribers;
 use App\Trip as Model;
-use App\User;
+use Illuminate\Support\Carbon;
 use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class TripPublishedNotify extends Controller
 {
-    public function __invoke(int $id): array
+    public function __invoke(int $id, TripPublishedNotifyRequest $request): array
     {
         /* @var Model $model */
         $model = $this->getModel($id);
@@ -19,15 +20,12 @@ class TripPublishedNotify extends Controller
             ];
         }
 
-        $users = User::where('notify_trips', 1)
-            ->where('status', User::STATUS_ACTIVE)
-            ->get();
-
-        \Notification::send($users, new TripPublished($model));
+        NotifyTripSubscribers::dispatch($model)
+            ->delay(Carbon::parse($request->input('date')));
 
         return [
             'status' => 'OK',
-            'message' => 'Уведомления разосланы пользователям: '.sizeof($users),
+            'message' => 'Рассылка уведомлений добавлена в очередь',
         ];
     }
 
