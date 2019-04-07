@@ -32,7 +32,7 @@
       @include('acp.tpl.sortable-header', ['key' => 'clicks', 'svg' => 'magnet'])
     </th>
     <th></th>
-    <th>{{ trans('model.torrent.title') }}</th>
+    <th>{{ trans('model.title') }}</th>
     <th></th>
   </tr>
   </thead>
