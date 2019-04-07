@@ -169,6 +169,7 @@ class Torrents extends Controller
             'announcer' => $data['announcer'],
             'category_id' => $category_id,
             'registered_at' => now(),
+            'related_query' => '',
         ]);
 
         return redirect($torrent->www());
