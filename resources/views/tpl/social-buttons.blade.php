@@ -35,6 +35,7 @@
   >
     @svg (twitter)
   </a>
+  {{--
   <a
     class="btn bg-google f20 flex-grow-1 py-1 rounded-0 text-white w-50 w-sm-auto"
     href="https://plus.google.com/share?url={{ rawurlencode($url) }}&utm_source=share_button"
@@ -44,6 +45,7 @@
   >
     @svg (google)
   </a>
+  --}}
   <a
     class="btn bg-odnoklassniki f20 flex-grow-1 py-1 rounded-0 text-white w-50 w-sm-auto"
     href="https://connect.ok.ru/offer?url={{ rawurlencode($url) }}&title={{ rawurlencode($title) }}&utm_source=share_button"
