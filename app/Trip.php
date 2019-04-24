@@ -349,25 +349,25 @@ class Trip extends Model
             ->sortByName();
     }
 
-    public static function tripsByCities(int $user_id = 0)
+    public static function tripsByCities(int $userId = 0)
     {
-        $trips_by_cities = [];
+        $tripsByCities = [];
 
         static::query()
-            ->when($user_id > 0, function (Builder $query) use ($user_id) {
-                return $query->where('user_id', $user_id);
+            ->when($userId > 0, function (Builder $query) use ($userId) {
+                return $query->where('user_id', $userId);
             })
             ->visible()
             ->get(['id', 'city_id', 'status'])
-            ->each(function ($trip) use (&$trips_by_cities) {
+            ->each(function ($trip) use (&$tripsByCities) {
                 if ($trip->status === static::STATUS_PUBLISHED) {
-                    @$trips_by_cities[$trip->city_id]['published'] += 1;
+                    @$tripsByCities[$trip->city_id]['published'] += 1;
                 }
 
-                @$trips_by_cities[$trip->city_id]['total'] += 1;
+                @$tripsByCities[$trip->city_id]['total'] += 1;
             });
 
-        return collect($trips_by_cities);
+        return collect($tripsByCities);
     }
 
     public static function tripsWithCover(?int $count = null)

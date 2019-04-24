@@ -49,9 +49,9 @@ class Country extends Model
     }
 
     // Methods
-    public static function allWithCitiesAndTrips(int $user_id = 0)
+    public static function allWithCitiesAndTrips(int $userId = 0)
     {
-        $trips = Trip::tripsByCities($user_id);
+        $trips = Trip::tripsByCities($userId);
 
         $cities = \CityHelper::cachedById()
             ->filter(function ($city, $id) use ($trips) {
@@ -60,7 +60,8 @@ class Country extends Model
             ->each(function ($city, $id) use ($trips) {
                 $city->trips_count = $trips[$id]['total'] ?? 0;
                 $city->trips_published_count = $trips[$id]['published'] ?? 0;
-            });
+            })
+            ->sortBy(Trip::titleField());
 
         $countries = $cities->groupBy('country_id');
 
