@@ -132,6 +132,8 @@
 
   .postLink {
     text-decoration: underline;
+    text-decoration-color: $link-border-color;
+    text-underline-offset: $link-underline-offset;
     color: $link-color;
     cursor: pointer;
     outline: 0;
