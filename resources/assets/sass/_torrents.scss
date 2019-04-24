@@ -142,14 +142,14 @@
     &:focus,
     &.active {
       color: $link-hover-color !important;
-      text-underline-color: $link-hover-border-color;
+      text-decoration-color: $link-hover-border-color;
     }
 
     &.active { border: none; }
 
     &:visited {
       color: $link-visited-color;
-      text-underline-color: $link-visited-border-color;
+      text-decoration-color: $link-visited-border-color;
     }
   }
 }
