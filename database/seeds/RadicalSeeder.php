@@ -26,6 +26,10 @@ class RadicalSeeder extends Seeder
             'level' => 2,
             'meaning' => 'moon',
             'character' => '月',
+        ], [
+            'level' => 2,
+            'meaning' => 'rice paddy',
+            'character' => '田',
         ],
     ];
 
