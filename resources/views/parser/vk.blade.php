@@ -144,14 +144,13 @@
       @endif
       <div class="mt-2 vk-post-meta text-muted">
         <samp class="f12 svg-labels justify-content-end">
-          <a class="svg-flex svg-label" href="https://t.me/share/url?url={{ $post['url'] }}">
-            @svg (telegram)
-          </a>
           <a class="svg-flex svg-label" href="{{ $post['url'] }}">
             @svg (link)
           </a>
           <span class="svg-flex svg-label">
-            @svg (bullhorn)
+            <a class="js-share-click" href="{{ $post['url'] }}">
+              @svg (bullhorn)
+            </a>
             <span class="text-muted">{{ ViewHelper::numberShort($post['reposts']) }}</span>
           </span>
           <span class="svg-flex svg-label">

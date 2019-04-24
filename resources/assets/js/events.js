@@ -10,8 +10,20 @@ export default class EventHandlers {
     $(document).on('click', '.js-magnet', this.magnetClick)
     $(document).on('click', '.js-tick-onclick', this.tickOnClick)
 
+    $(document).on('click', '.js-share-click', this.shareClick)
+
     // Навигация по заметкам с помощью горячих клавиш
     document.querySelectorAll('.js-trip-shortcuts p').forEach(el => el.classList.add('js-shortcuts-item'))
+  }
+
+  static shareClick(e) {
+    if (navigator.share) {
+      e.preventDefault()
+
+      const url = this.getAttribute('href') || ''
+
+      navigator.share({ url })
+    }
   }
 
   /**
