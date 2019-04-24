@@ -22,11 +22,7 @@ $factory->define(App\Trip::class, function (Faker\Generator $faker) {
 });
 
 $factory->state(App\Trip::class, 'city', function () {
-    return [
-        'city_id' => function () {
-            return factory(App\City::class)->state('country')->create()->id;
-        }
-    ];
+    return ['city_id' => factory(App\City::class)->state('country')];
 });
 
 $factory->state(App\Trip::class, 'meta_image', function (Faker\Generator $faker) {

@@ -16,9 +16,7 @@ $factory->define(App\Torrent::class, function (Faker\Generator $faker) {
         'registered_at' => $faker->dateTimeBetween('-4 years'),
         'related_query' => '',
 
-        'user_id' => function () {
-            return factory(App\User::class)->create()->id;
-        },
+        'user_id' => factory(App\User::class),
         'category_id' => $faker->randomElement([2, 3, 4, 5, 7, 8, 9, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]),
     ];
 });

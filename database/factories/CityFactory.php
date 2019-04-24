@@ -18,9 +18,5 @@ $factory->define(App\City::class, function (Faker\Generator $faker) {
 });
 
 $factory->state(App\City::class, 'country', function () {
-    return [
-        'country_id' => function () {
-            return factory(App\Country::class)->create()->id;
-        }
-    ];
+    return ['country_id' => factory(App\Country::class)];
 });

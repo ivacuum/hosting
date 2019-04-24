@@ -13,16 +13,10 @@ $factory->define(App\Gig::class, function (Faker\Generator $faker) {
         'title_ru' => $title,
         'title_en' => $title,
 
-        'artist_id' => function () {
-            return factory(App\Artist::class)->create()->id;
-        }
+        'artist_id' => factory(App\Artist::class),
     ];
 });
 
 $factory->state(App\Gig::class, 'city', function () {
-    return [
-        'city_id' => function () {
-            return factory(App\City::class)->state('country')->create()->id;
-        }
-    ];
+    return ['city_id' => factory(App\City::class)->state('country')];
 });

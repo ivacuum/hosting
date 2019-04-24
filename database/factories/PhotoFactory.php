@@ -15,13 +15,11 @@ $factory->define(App\Photo::class, function (Faker\Generator $faker) {
 
 $factory->state(App\Photo::class, 'trip', function () {
     return [
-        'rel_id' => function () {
-            return factory(App\Trip::class)->states('city', 'meta_image')->create()->id;
-        },
+        'rel_id' => factory(App\Trip::class)->states('city', 'meta_image'),
         'rel_type' => (new App\Trip)->getMorphClass(),
     ];
 });
 
 $factory->afterCreatingState(App\Photo::class, 'tag', function (App\Photo $photo) {
-    $photo->tags()->attach(factory(App\Tag::class)->create()->id);
+    $photo->tags()->attach(factory(App\Tag::class)->create()->getKey());
 });

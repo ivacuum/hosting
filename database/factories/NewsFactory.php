@@ -13,9 +13,5 @@ $factory->define(App\News::class, function (Faker\Generator $faker) {
 });
 
 $factory->state(App\News::class, 'user', function () {
-    return [
-        'user_id' => function () {
-            return factory(App\User::class)->create()->id;
-        }
-    ];
+    return ['user_id' => factory(App\User::class)];
 });
