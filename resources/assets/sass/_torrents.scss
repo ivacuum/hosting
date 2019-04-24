@@ -142,7 +142,7 @@
     &:focus,
     &.active {
       color: $link-hover-color !important;
-      text-decoration-color: $link-hover-border-color;
+      text-decoration-color: $link-hover-border-color !important;
     }
 
     &.active { border: none; }
