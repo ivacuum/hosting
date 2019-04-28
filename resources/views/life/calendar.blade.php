@@ -21,7 +21,7 @@
       @foreach (range(1, 31) as $day)
         <div class="mt-3 bg-gray-200">{{ $day }}</div>
       @endforeach
-      @foreach (range(1, $year === $end->year ? $end->month : 12) as $month)
+      @foreach (range($year === $end->year ? $end->month : 12, 1, -1) as $month)
         <div class="text-right pr-2 border-right">{{ trans("months.{$month}") }}</div>
         @foreach (range(1, 31) as $day)
           @php ($date = "{$year}-{$month}-{$day}")
