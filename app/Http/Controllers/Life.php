@@ -52,19 +52,22 @@ class Life extends Controller
 
         foreach ($trips as $trip) {
             /* @var Trip $trip */
-            $end = $end === null || $trip->date_end->lt($end) ? $trip->date_end : $end;
-            $start = $start === null ? $trip->date_start : $start;
+            $end = $end === null || $trip->date_end->gt($end) ? clone $trip->date_end : $end;
+            $start = $start === null ? clone $trip->date_start : $start;
 
-            for ($day = $trip->date_start, $end = $trip->date_end; $day->lte($end); $day->addDay()) {
-                $date = "{$day->year}-{$day->month}-{$day->day}";
+            $tripStartedAt = (clone $trip->date_start)->startOfDay();
+            $tripEndedAt = (clone $trip->date_end)->startOfDay();
 
-                if (!isset($calendar[$date])) {
-                    $calendar[$date] = [];
+            for ($date = $tripStartedAt; $date->lte($tripEndedAt); $date->addDay()) {
+                $ymd = "{$date->year}-{$date->month}-{$date->day}";
+
+                if (!isset($calendar[$ymd])) {
+                    $calendar[$ymd] = [];
                 }
 
                 $trip->loadCityAndCountry();
 
-                $calendar[$date][] = [
+                $calendar[$ymd][] = [
                     'flag' => $trip->city->country->flagUrl(),
                     'slug' => $trip->status === Trip::STATUS_PUBLISHED ? $trip->slug : '',
                     'title' => $trip->title,
