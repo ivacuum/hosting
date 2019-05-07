@@ -145,8 +145,6 @@
       text-decoration-color: $link-hover-border-color !important;
     }
 
-    &.active { border: none; }
-
     &:visited {
       color: $link-visited-color;
       text-decoration-color: $link-visited-border-color;
