@@ -10,11 +10,11 @@
     "lodash": "4.17.11",
     "notie": "4.3.1",
     "vac-gfe": "1.2.2",
-    "vue": "2.6.2",
-    "vue-template-compiler": "2.6.2",
+    "vue": "2.6.10",
+    "vue-template-compiler": "2.6.10",
     "vue-i18n": "7.8.0",
-    "vue-router": "3.0.2",
-    "vuex": "3.1.0"
+    "vue-router": "3.0.6",
+    "vuex": "3.1.1"
   },
   "devDependencies": {
     "autosize": "4.0.2",
@@ -27,9 +27,9 @@
     "intersection-observer": "0.5.1",
     "jquery": "3.3.1",
     "jquery.scrollto": "2.1.2",
-    "laravel-echo": "1.5.2",
+    "laravel-echo": "1.5.3",
     "laravel-mix": "2.1.14",
-    "mousetrap": "1.6.2",
+    "mousetrap": "1.6.3",
     "popper.js": "1.14.7",
     "promise-polyfill": "6.1.0",
     "socket.io-client": "2.2.0"
