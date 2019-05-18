@@ -50,13 +50,13 @@ class Kernel extends ConsoleKernel
             ->cron('0 */3 * * *')
             ->appendOutputTo($cron_output);
 
-        $schedule->command(Commands\VkLikesAdd::class, ['pn6'])
-            ->cron('5,25,45 * * * *')
-            ->appendOutputTo($cron_output);
+//        $schedule->command(Commands\VkLikesAdd::class, ['pn6'])
+//            ->cron('5,25,45 * * * *')
+//            ->appendOutputTo($cron_output);
 
-        $schedule->command(Commands\VkLikesDelete::class, ['pn6'])
-            ->cron('15,35,55 * * * *')
-            ->appendOutputTo($cron_output);
+//        $schedule->command(Commands\VkLikesDelete::class, ['pn6'])
+//            ->cron('15,35,55 * * * *')
+//            ->appendOutputTo($cron_output);
 
         // $schedule->command(Commands\WhoisUpdate::class)->cron('0 */4 * * *');
     }
