@@ -12,32 +12,34 @@ class ExternalHttpRequestTransferStatsDispatcher
         $this->serviceName = $serviceName;
     }
 
-    public function __invoke(TransferStats $stats)
+    public function __invoke(TransferStats $stats): void
     {
         $request = $stats->getRequest();
         $response = $stats->getResponse();
         $uri = $request->getUri();
 
-        if ($stats->hasResponse()) {
-            event(new ExternalHttpRequestMade(
-                $this->serviceName,
-                $request->getMethod(),
-                $uri->getScheme(),
-                $uri->getHost(),
-                $uri->getPath(),
-                $uri->getQuery(),
-                json_encode($request->getHeaders(), JSON_UNESCAPED_UNICODE),
-                (string) $request->getBody(),
-                json_encode($response->getHeaders(), JSON_UNESCAPED_UNICODE),
-                (string) $response->getBody(),
-                $stats->getHandlerStat('download_content_length'),
-                $stats->getHandlerStat('total_time_us') ?? $stats->getHandlerStat('total_time') * 100000,
-                $response->getStatusCode(),
-                $stats->getHandlerStat('http_version') ?? '',
-                $stats->getHandlerStat('redirect_count'),
-                $stats->getHandlerStat('redirect_time_us') ?? $stats->getHandlerStat('redirect_time') * 100000,
-                $stats->getHandlerStat('redirect_url') ?? ''
-            ));
+        if (!$stats->hasResponse()) {
+            return;
         }
+
+        event(new ExternalHttpRequestMade(
+            $this->serviceName,
+            $request->getMethod(),
+            $uri->getScheme(),
+            $uri->getHost(),
+            $uri->getPath(),
+            $uri->getQuery(),
+            json_encode($request->getHeaders(), JSON_UNESCAPED_UNICODE),
+            (string) $request->getBody(),
+            json_encode($response->getHeaders(), JSON_UNESCAPED_UNICODE),
+            (string) $response->getBody(),
+            $stats->getHandlerStat('download_content_length'),
+            $stats->getHandlerStat('total_time_us') ?? $stats->getHandlerStat('total_time') * 100000,
+            $response->getStatusCode(),
+            $stats->getHandlerStat('http_version') ?? '',
+            $stats->getHandlerStat('redirect_count'),
+            $stats->getHandlerStat('redirect_time_us') ?? $stats->getHandlerStat('redirect_time') * 100000,
+            $stats->getHandlerStat('redirect_url') ?? ''
+        ));
     }
 }
