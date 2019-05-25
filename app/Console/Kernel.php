@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $cron_output = config('cfg.cron_output');
+        $cronOutput = config('cfg.cron_output');
 
 //        $schedule->command('app:metrics-init-today')
 //            ->cron('0 0 * * *')
@@ -32,35 +32,35 @@ class Kernel extends ConsoleKernel
 
         $schedule->command(\Ivacuum\Generic\Commands\NotificationsPurge::class)
             ->cron('0 2,14 * * *')
-            ->appendOutputTo($cron_output);
+            ->appendOutputTo($cronOutput);
 
         $schedule->command(\Ivacuum\Generic\Commands\PasswordRemindersPurge::class)
             ->cron('0 5 * * *')
-            ->appendOutputTo($cron_output);
+            ->appendOutputTo($cronOutput);
 
         $schedule->command(Commands\ExternalHttpRequestsPurge::class)
             ->cron('0 5 * * *')
-            ->appendOutputTo($cron_output);
+            ->appendOutputTo($cronOutput);
 
         $schedule->command(Commands\SitemapBuild::class)
             ->cron('30 2 * * *')
-            ->appendOutputTo($cron_output);
+            ->appendOutputTo($cronOutput);
 
         $schedule->command(Commands\WarmUpPhotoCache::class)
             ->cron('0 5 * * *')
-            ->appendOutputTo($cron_output);
+            ->appendOutputTo($cronOutput);
 
         $schedule->command(Commands\RtoUpdate::class)
             ->cron('0 */3 * * *')
-            ->appendOutputTo($cron_output);
+            ->appendOutputTo($cronOutput);
 
 //        $schedule->command(Commands\VkLikesAdd::class, ['pn6'])
 //            ->cron('5,25,45 * * * *')
-//            ->appendOutputTo($cron_output);
+//            ->appendOutputTo($cronOutput);
 
 //        $schedule->command(Commands\VkLikesDelete::class, ['pn6'])
 //            ->cron('15,35,55 * * * *')
-//            ->appendOutputTo($cron_output);
+//            ->appendOutputTo($cronOutput);
 
         // $schedule->command(Commands\WhoisUpdate::class)->cron('0 */4 * * *');
     }
