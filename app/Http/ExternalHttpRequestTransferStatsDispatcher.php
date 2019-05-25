@@ -33,7 +33,7 @@ class ExternalHttpRequestTransferStatsDispatcher
             (string) $request->getBody(),
             json_encode($response->getHeaders(), JSON_UNESCAPED_UNICODE),
             (string) $response->getBody(),
-            $stats->getHandlerStat('download_content_length'),
+            $this->responseSize($stats),
             $stats->getHandlerStat('total_time_us') ?? $stats->getHandlerStat('total_time') * 100000,
             $response->getStatusCode(),
             $stats->getHandlerStat('http_version') ?? '',
@@ -41,5 +41,16 @@ class ExternalHttpRequestTransferStatsDispatcher
             $stats->getHandlerStat('redirect_time_us') ?? $stats->getHandlerStat('redirect_time') * 100000,
             $stats->getHandlerStat('redirect_url') ?? ''
         ));
+    }
+
+    private function responseSize(TransferStats $stats)
+    {
+        $responseSize = $stats->getHandlerStat('download_content_length');
+
+        if ($responseSize >= 0) {
+            return $responseSize;
+        }
+
+        return mb_strlen((string) $stats->getResponse()->getBody());
     }
 }
