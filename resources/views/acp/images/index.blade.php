@@ -54,8 +54,8 @@
     </thead>
     <tbody>
       @foreach ($models as $model)
-        <tr class="js-tick-onclick" data-tick="#checkbox_{{ $model->id }}">
-          <td><input class="models-checkbox" type="checkbox" id="checkbox_{{ $model->id }}" name="ids[]" value="{{ $model->id }}"></td>
+        <tr id="image_{{ $model->id }}">
+          <td><input class="models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
           <td class="text-md-right">{{ $model->id }}</td>
           <td class="text-md-right">
             <a href="{{ UrlHelper::filter(['user_id' => $model->user_id]) }}">
@@ -85,7 +85,12 @@
               <a class="btn btn-default" href="{{ path("$self@view", $model) }}">
                 @svg (eye)
               </a>
-              <a class="btn btn-default js-entity-action" data-confirm="Запись будет удалена. Продолжить?" data-method="delete" href="{{ path("$self@destroy", $model) }}">
+              <a
+                class="btn btn-default js-image-delete"
+                data-confirm="{{ $model->views >= 1000 ? 'Запись будет удалена. Продолжить?' : '' }}"
+                data-selector="#image_{{ $model->id }}"
+                href="{{ path("$self@destroy", $model) }}"
+              >
                 @svg (trash-o)
               </a>
             </div>
@@ -111,3 +116,43 @@
   </div>
 @endif
 @endsection
+
+@push('js')
+<script type="module">
+$(document).on('click', '.js-image-delete', function jsImageDelete(e) {
+  e.preventDefault()
+
+  const $this = $(this)
+  const confirmText = this.dataset.confirm
+
+  if ($this.hasClass('disabled')) {
+    return false
+  }
+
+  if (confirmText) {
+    if (!confirm(confirmText)) {
+      return false
+    }
+  }
+
+  $this.addClass('disabled')
+
+  axios
+    .post($this.attr('href'), {
+      _method: 'delete'
+    })
+    .then((response) => {
+      if (response.data.status === 'OK') {
+        document.querySelector($this.data('selector')).hidden = true
+      } else {
+        notie.alert({ type: 'error', text: response.data.message })
+      }
+    })
+    .catch((error) => {
+      notie.alert({ type: 'error', text: error.response.data.message, stay: true })
+    })
+
+  return true
+})
+</script>
+@endpush
