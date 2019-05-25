@@ -14,7 +14,7 @@ class CreateExternalHttpRequestsTable extends Migration
             $table->string('scheme');
             $table->string('host');
             $table->string('path');
-            $table->string('query');
+            $table->string('query', 1000);
             $table->text('request_headers');
             $table->text('request_body');
             $table->text('response_headers');
