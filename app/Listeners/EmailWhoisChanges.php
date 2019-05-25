@@ -73,14 +73,15 @@ class EmailWhoisChanges
 
     protected function mail($domain, $diff, $data)
     {
-        register_shutdown_function(
-            [$this->mailer, 'send'],
-            'emails.whois.changed',
-            compact('diff', 'data'),
-            function ($mail) use ($domain) {
-                $mail->to('domains@ivacuum.ru')
-                    ->subject($domain->domain);
-            }
-        );
+        register_shutdown_function(function () use ($domain, $diff, $data) {
+            $this->mailer->send(
+                'emails.whois.changed',
+                compact('diff', 'data'),
+                function ($mail) use ($domain) {
+                    $mail->to('domains@ivacuum.ru')
+                        ->subject($domain->domain);
+                }
+            );
+        });
     }
 }
