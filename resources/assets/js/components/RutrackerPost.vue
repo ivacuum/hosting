@@ -41,11 +41,11 @@ export default {
 
       if (-1 !== title.search(/fastpic\.ru\/thumb/)) {
         return this.getOriginalFastpicSrc($item.parent('.postLink').attr('href'))
+      } else if (-1 !== title.search(/\.imageban\.ru\/out\//)) {
+        return this.getOriginalImagebanSrc($item.parent('.postLink').attr('href'))
       } else if (-1 !== title.search(/\.radikal\.ru/)) {
         return this.getOriginalRadikalSrc($item.parent('.postLink').attr('href'))
       }
-
-      return
     },
 
     getOriginalFastpicSrc(path) {
@@ -59,6 +59,14 @@ export default {
       )
 
       return src !== path ? src : ''
+    },
+
+    getOriginalImagebanSrc(path) {
+      if (!path || -1 === path.search(/\.imageban\.ru\/out\//)) {
+        return
+      }
+
+      return path
     },
 
     getOriginalRadikalSrc(path) {
