@@ -18,6 +18,14 @@ class LogExternalHttpRequest
 
     protected function saveRequest(ExternalHttpRequestMade $event)
     {
+        if (mb_check_encoding($event->responseBody) === false) {
+            if (mb_check_encoding($event->responseBody, 'windows-1251') === true) {
+                $event->responseBody = iconv('windows-1251', 'utf-8', $event->responseBody);
+            } else {
+                $event->responseBody = 'Not valid UTF-8.';
+            }
+        }
+
         ExternalHttpRequest::create([
             'host' => $event->host,
             'path' => $event->path,
