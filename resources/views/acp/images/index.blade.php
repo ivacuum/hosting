@@ -1,3 +1,7 @@
+<?php
+/** @var App\Image $model */
+?>
+
 @extends('acp.list')
 
 @section('toolbar')
@@ -34,6 +38,7 @@
         <th class="text-md-right text-nowrap">
           @include('acp.tpl.sortable-header', ['key' => 'id'])
         </th>
+        <th class="text-md-right text-nowrap">Автор</th>
         <th class="text-center">Изображение</th>
         <th class="text-md-right text-nowrap">
           @include('acp.tpl.sortable-header', ['key' => 'size'])
@@ -52,6 +57,11 @@
         <tr class="js-tick-onclick" data-tick="#checkbox_{{ $model->id }}">
           <td><input class="models-checkbox" type="checkbox" id="checkbox_{{ $model->id }}" name="ids[]" value="{{ $model->id }}"></td>
           <td class="text-md-right">{{ $model->id }}</td>
+          <td class="text-md-right">
+            <a href="{{ UrlHelper::filter(['user_id' => $model->user_id]) }}">
+              {{ $model->user_id }}
+            </a>
+          </td>
           <td class="text-center">
             <a class="screenshot-link" href="{{ path("$self@show", $model) }}">
               <img class="screenshot" src="{{ $model->thumbnailSecretUrl() }}">
