@@ -10,7 +10,9 @@ class LogExternalHttpRequest
         if (\App::runningInConsole()) {
             $this->saveRequest($event);
         } else {
-            register_shutdown_function([$this, 'saveRequest'], [$event]);
+            register_shutdown_function(function () use ($event) {
+                $this->saveRequest($event);
+            });
         }
     }
 
