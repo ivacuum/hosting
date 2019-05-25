@@ -38,6 +38,10 @@ class Kernel extends ConsoleKernel
             ->cron('0 5 * * *')
             ->appendOutputTo($cron_output);
 
+        $schedule->command(Commands\ExternalHttpRequestsPurge::class)
+            ->cron('0 5 * * *')
+            ->appendOutputTo($cron_output);
+
         $schedule->command(Commands\SitemapBuild::class)
             ->cron('30 2 * * *')
             ->appendOutputTo($cron_output);
