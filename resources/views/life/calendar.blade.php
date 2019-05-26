@@ -9,19 +9,19 @@
   <li class="list-inline-item"><mark>{{ trans('life.by_days') }}</mark></li>
 </ul>
 
-@if (null !== $end && null !== $start)
+@if ($firstDate !== null && $lastDate !== null)
   @ru
     <p>Поездки по дням. Несколько флагов в один день означают несколько посещенных городов: как переезды, так и поездки одним днем туда-обратно. Каждый флаг является ссылкой на соответствующую историю, если она уже опубликована.</p>
   @en
     <p>Trips by days. Several flags in one cell means there were multiple cities visited during that day: moving from one place to another or just one-day trips. Each flag is a link to the story about the trip if the story is published.</p>
   @endru
   <div class="calendar-grid text-center">
-    @foreach (range($end->year, $start->year, -1) as $year)
+    @foreach (range($lastDate->year, $firstDate->year, -1) as $year)
       <div class="font-weight-bold text-right mt-3 pr-2 bg-gray-200">{{ $year }}</div>
       @foreach (range(1, 31) as $day)
         <div class="mt-3 bg-gray-200">{{ $day }}</div>
       @endforeach
-      @foreach (range($year === $end->year ? $end->month : 12, 1, -1) as $month)
+      @foreach (range($year === $lastDate->year ? $lastDate->month : 12, 1, -1) as $month)
         <div class="text-right pr-2 border-right">{{ trans("months.{$month}") }}</div>
         @foreach (range(1, 31) as $day)
           @php ($date = "{$year}-{$month}-{$day}")
@@ -45,6 +45,49 @@
         @endforeach
       @endforeach
     @endforeach
+  </div>
+  <h3 class="mt-5">
+    @ru
+      Количество посещенных стран и городов
+    @en
+      Number of countries and cities visited
+    @endru
+  </h3>
+  <div class="d-flex">
+    <div class="mr-4">
+      <div class="font-weight-bold text-right">@ru Год @en Year @endru</div>
+      @foreach ($daysInTrips as $year => $days)
+        <div>{{ $year }}</div>
+      @endforeach
+    </div>
+    <div class="mr-4">
+      <div class="font-weight-bold text-right">@ru Дни @en Days @endru</div>
+      @foreach ($daysInTrips as $year => $days)
+        <div class="text-right">{{ $days }}</div>
+      @endforeach
+    </div>
+    <div class="mr-4">
+      <div class="font-weight-bold text-right">@ru Города @en Cities @endru</div>
+      @foreach ($cities as $year => $count)
+        <div class="text-right">
+          {{ $count }}
+          @if (isset($newCities[$year]) && $count !== $newCities[$year])
+            (+{{ $newCities[$year] }})
+          @endif
+        </div>
+      @endforeach
+    </div>
+    <div>
+      <div class="font-weight-bold text-right">@ru Страны @en Countries @endru</div>
+      @foreach ($countries as $year => $count)
+        <div class="text-right">
+          {{ $count }}
+          @if (isset($newCountries[$year]) && $count !== $newCountries[$year])
+            (+{{ $newCountries[$year] }})
+          @endif
+        </div>
+      @endforeach
+    </div>
   </div>
 @else
   @ru

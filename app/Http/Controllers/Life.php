@@ -2,6 +2,7 @@
 
 use App\City;
 use App\Country;
+use App\Domain\TripStatsCalculator;
 use App\Gig;
 use App\Trip;
 use Illuminate\Database\Eloquent\Builder;
@@ -47,35 +48,19 @@ class Life extends Controller
             ->orderBy('date_start')
             ->get();
 
-        $start = $end = null;
-        $calendar = [];
+        $stats = new TripStatsCalculator($trips);
 
-        foreach ($trips as $trip) {
-            /* @var Trip $trip */
-            $end = $end === null || $trip->date_end->gt($end) ? clone $trip->date_end : $end;
-            $start = $start === null ? clone $trip->date_start : $start;
-
-            $tripStartedAt = (clone $trip->date_start)->startOfDay();
-            $tripEndedAt = (clone $trip->date_end)->startOfDay();
-
-            for ($date = $tripStartedAt; $date->lte($tripEndedAt); $date->addDay()) {
-                $ymd = "{$date->year}-{$date->month}-{$date->day}";
-
-                if (!isset($calendar[$ymd])) {
-                    $calendar[$ymd] = [];
-                }
-
-                $trip->loadCityAndCountry();
-
-                $calendar[$ymd][] = [
-                    'flag' => $trip->city->country->flagUrl(),
-                    'slug' => $trip->status === Trip::STATUS_PUBLISHED ? $trip->slug : '',
-                    'title' => $trip->title,
-                ];
-            }
-        }
-
-        return view($this->view, compact('calendar', 'end', 'start', 'trips'));
+        return view($this->view, [
+            'trips' => $trips,
+            'cities' => $stats->citiesByYearsCount(),
+            'calendar' => $stats->calendar(),
+            'lastDate' => $stats->lastDate(),
+            'countries' => $stats->countriesByYearsCount(),
+            'firstDate' => $stats->firstDate(),
+            'newCities' => $stats->newCitiesByYearsCount(),
+            'daysInTrips' => $stats->daysInTrips(),
+            'newCountries' => $stats->newCountriesByYearsCount(),
+        ]);
     }
 
     public function cities()
