@@ -71,7 +71,7 @@
       @foreach ($cities as $year => $count)
         <div class="text-right">
           {{ $count }}
-          @if (isset($newCities[$year]) && $count !== $newCities[$year])
+          @if (isset($newCities[$year]))
             (+{{ $newCities[$year] }})
           @endif
         </div>
@@ -82,7 +82,7 @@
       @foreach ($countries as $year => $count)
         <div class="text-right">
           {{ $count }}
-          @if (isset($newCountries[$year]) && $count !== $newCountries[$year])
+          @if (isset($newCountries[$year]))
             (+{{ $newCountries[$year] }})
           @endif
         </div>
