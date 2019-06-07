@@ -29,7 +29,9 @@ class Images extends Controller
             ->when($user_id, function (Builder $query) use ($user_id) {
                 return $query->where('user_id', $user_id);
             })
-            ->paginate()
+            ->where('views', '<', 1000)
+            ->where('user_id', '<>', 1)
+            ->paginate(111)
             ->withPath(path("{$this->class}@index"));
 
         return view($this->view, compact('models', 'touch', 'type', 'user_id', 'year'));
