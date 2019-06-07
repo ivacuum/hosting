@@ -32,6 +32,9 @@ class City extends Model
     use HasLocalizedTitle,
         HasTripsMetaDescription;
 
+    public $trips_count;
+    public $trips_published_count;
+
     protected $guarded = ['created_at', 'updated_at'];
     protected $perPage = 50;
 

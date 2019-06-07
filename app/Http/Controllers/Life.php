@@ -68,10 +68,10 @@ class Life extends Controller
         $trips = Trip::tripsByCities(1);
 
         $cities = \CityHelper::cachedById()
-            ->filter(function ($city, $id) use ($trips) {
-                return isset($trips[$id]);
+            ->filter(function (City $city) use (&$trips) {
+                return isset($trips[$city->id]);
             })
-            ->each(function ($city) use (&$trips) {
+            ->each(function (City $city) use (&$trips) {
                 $city->trips_count = $trips[$city->id]['total'] ?? 0;
                 $city->trips_published_count = $trips[$city->id]['published'] ?? 0;
             })

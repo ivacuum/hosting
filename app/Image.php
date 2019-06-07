@@ -8,18 +8,18 @@ use Ivacuum\Generic\Traits\RecordsActivity;
 /**
  * Изображение в галерее
  *
- * @property integer $id
- * @property integer $user_id
- * @property string  $slug
- * @property string  $date
- * @property integer $size
- * @property integer $views
+ * @property int $id
+ * @property int $user_id
+ * @property string $slug
+ * @property string $date
+ * @property int $size
+ * @property int $views
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
- * @property \App\User $user
+ * @property User $user
  *
- * @property-read string  $splitted_date
+ * @property-read string $splitted_date
  *
  * @mixin \Eloquent
  */

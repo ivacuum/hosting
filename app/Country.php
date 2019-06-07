@@ -29,6 +29,9 @@ class Country extends Model
     use HasLocalizedTitle,
         HasTripsMetaDescription;
 
+    public $trips_count;
+    public $trips_published_count;
+
     protected $guarded = ['created_at', 'updated_at'];
 
     protected $casts = [
@@ -54,23 +57,23 @@ class Country extends Model
         $trips = Trip::tripsByCities($userId);
 
         $cities = \CityHelper::cachedById()
-            ->filter(function ($city, $id) use ($trips) {
-                return isset($trips[$id]);
+            ->filter(function (City $city) use (&$trips) {
+                return isset($trips[$city->id]);
             })
-            ->each(function ($city, $id) use ($trips) {
-                $city->trips_count = $trips[$id]['total'] ?? 0;
-                $city->trips_published_count = $trips[$id]['published'] ?? 0;
+            ->each(function (City $city) use (&$trips) {
+                $city->trips_count = $trips[$city->id]['total'] ?? 0;
+                $city->trips_published_count = $trips[$city->id]['published'] ?? 0;
             })
             ->sortBy(Trip::titleField());
 
         $countries = $cities->groupBy('country_id');
 
         return \CountryHelper::cachedById()
-            ->filter(function ($country, $id) use ($countries) {
-                return isset($countries[$id]);
+            ->filter(function (Country $country) use ($countries) {
+                return isset($countries[$country->id]);
             })
-            ->each(function ($country, $id) use ($countries) {
-                $country->setRelation('cities', $countries[$id]);
+            ->each(function (Country $country) use ($countries) {
+                $country->setRelation('cities', $countries[$country->id]);
 
                 $country->trips_count = $country->cities->sum->trips_count;
                 $country->trips_published_count = $country->cities->sum->trips_published_count;
@@ -83,21 +86,21 @@ class Country extends Model
         $trips = Trip::tripsByCities($user_id);
 
         $cities = \CityHelper::cachedById()
-            ->filter(function ($city, $id) use ($trips) {
-                return isset($trips[$id]['published']);
+            ->filter(function (City $city) use (&$trips) {
+                return isset($trips[$city->id]['published']);
             })
-            ->each(function ($city, $id) use ($trips) {
-                $city->trips_count = $trips[$id]['published'] ?? 0;
+            ->each(function (City $city) use (&$trips) {
+                $city->trips_count = $trips[$city->id]['published'] ?? 0;
             });
 
         $countries = $cities->groupBy('country_id');
 
         return \CountryHelper::cachedById()
-            ->filter(function ($country, $id) use ($countries) {
-                return isset($countries[$id]);
+            ->filter(function (Country $country) use ($countries) {
+                return isset($countries[$country->id]);
             })
-            ->each(function ($country, $id) use ($countries) {
-                $country->trips_count = $countries[$id]->sum->trips_count;
+            ->each(function (Country $country) use ($countries) {
+                $country->trips_count = $countries[$country->id]->sum->trips_count;
             })
             ->sortBy(static::titleField());
     }
