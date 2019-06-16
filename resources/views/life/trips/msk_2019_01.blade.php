@@ -18,7 +18,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_7259.jpg'])
 
 @ru
-  <p>Коньки на любой размер.</p>
+  <p>Коньки любого размера.</p>
 @en
   <p>Skates of any size.</p>
 @endru
