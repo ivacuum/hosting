@@ -64,7 +64,8 @@ class Photos extends Controller
             ->convert($file->getRealPath());
 
         $pathinfo = pathinfo($file->getClientOriginalName());
-        $filename = $pathinfo['filename'].'.'.strtolower($pathinfo['extension']);
+        $extension = str_replace('jpeg', 'jpg', strtolower($pathinfo['extension']));
+        $filename = "{$pathinfo['filename']}.{$extension}";
 
         \Storage::disk('photos')->putFileAs($model->slug, $image, $filename);
 
