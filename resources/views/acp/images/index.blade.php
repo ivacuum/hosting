@@ -69,7 +69,7 @@
           </td>
           <td class="text-md-right text-muted text-nowrap">{{ ViewHelper::size($model->size) }}</td>
           <td class="text-md-right text-nowrap">
-            @if ($model->views > 1500)
+            @if ($model->views > 2000)
               <span class="badge badge-success">{{ ViewHelper::number($model->views) }}</span>
             @else
               {{ ViewHelper::number($model->views) }}
@@ -87,7 +87,7 @@
               </a>
               <a
                 class="btn btn-default js-image-delete"
-                data-confirm="{{ $model->views >= 1000 ? 'Запись будет удалена. Продолжить?' : '' }}"
+                data-confirm="{{ $model->views >= 2000 ? 'Запись будет удалена. Продолжить?' : '' }}"
                 data-selector="#image_{{ $model->id }}"
                 href="{{ path("$self@destroy", $model) }}"
               >
