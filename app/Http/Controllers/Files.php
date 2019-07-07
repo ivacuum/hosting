@@ -20,10 +20,7 @@ class Files extends Controller
     {
         abort_unless($file->status === File::STATUS_PUBLISHED, 404);
 
-        $file->timestamps = false;
-        $file->increment('downloads');
-
-        event(new \App\Events\Stats\FileDownloadClicked);
+        $file->incrementDownloads();
 
         return redirect($file->downloadPath())
             ->header('Content-Type', 'application/octet-stream')

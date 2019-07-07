@@ -24,12 +24,6 @@ class GuestPagesTest extends TestCase
             ['/retracker/usage'],
             ['/stickers'],
             ['/subscriptions'],
-            ['/torrent'],
-            ['/torrents'],
-            ['/torrents?category_id=2'],
-            ['/torrents/comments'],
-            ['/torrents/faq'],
-            ['/torrents?q=2017'],
         ];
     }
 }

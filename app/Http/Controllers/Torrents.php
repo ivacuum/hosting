@@ -88,11 +88,7 @@ class Torrents extends Controller
 
     public function magnet(Torrent $torrent)
     {
-        $torrent->timestamps = false;
-        $torrent->increment('clicks');
-        $torrent->timestamps = true;
-
-        event(new \App\Events\Stats\TorrentMagnetClicked);
+        $torrent->incrementClicks();
 
         if (null === request()->user()) {
             event(new \App\Events\Stats\TorrentMagnetGuestClicked);

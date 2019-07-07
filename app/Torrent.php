@@ -44,7 +44,7 @@ class Torrent extends Model
 
     const RTO_STATUS_0 = 1; // не проверено
     const RTO_STATUS_1 = 1; // закрыто
-    const RTO_STATUS_2 = 2; // проверено
+    const RTO_STATUS_OK = 2; // проверено
     const RTO_STATUS_3 = 3; // недооформлено
     const RTO_STATUS_4 = 4; // не оформлено
     const RTO_STATUS_DUPLICATE = 5; // повтор
@@ -119,6 +119,15 @@ class Torrent extends Model
         }
 
         return $this->registered_at->formatLocalized($format);
+    }
+
+    public function incrementClicks(): void
+    {
+        $this->timestamps = false;
+        $this->increment('clicks');
+        $this->timestamps = true;
+
+        event(new \App\Events\Stats\TorrentMagnetClicked);
     }
 
     public function magnet(): string

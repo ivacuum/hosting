@@ -59,4 +59,13 @@ class File extends Model
     {
         return "filename*=utf-8''" . rawurlencode(htmlspecialchars_decode($this->basename()));
     }
+
+    public function incrementDownloads(): void
+    {
+        $this->timestamps = false;
+        $this->increment('downloads');
+        $this->timestamps = true;
+
+        event(new \App\Events\Stats\FileDownloadClicked);
+    }
 }
