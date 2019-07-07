@@ -1,56 +1,78 @@
 a[href^="http"]:empty::before { content: attr(href); }
 
+// После достаточной поддержки браузерами можно будет
+// отказаться от border-bottom в ссылках в пользу [text-]underline
+
 .link,
 .pseudo {
-  border-bottom: 1px solid;
-  border-color: $link-border-color;
+  border-bottom: 1px solid; // underline migration
+  border-color: $link-border-color; // underline migration
   color: $link-color;
   cursor: pointer;
   outline: 0;
+  // text-decoration-color: $link-border-color;
+  // text-underline-offset: $link-underline-offset;
 
   &:hover,
   &:focus,
   &.active,
   .link-parent:hover & {
-    border-color: $link-hover-border-color !important;
+    border-color: $link-hover-border-color !important; // underline migration
     color: $link-hover-color !important;
+    // text-decoration-color: $link-hover-border-color !important;
 
     .svg-icon { fill: $link-hover-color !important; }
   }
 
-  &.active { border: none; }
+  &.active { border: none; } // underline migration
 
   &:visited,
   .link-parent:visited & {
-    border-color: $link-visited-border-color;
+    border-color: $link-visited-border-color; // underline migration
     color: $link-visited-color;
+    // text-decoration-color: $link-visited-border-color;
 
     .svg-icon { fill: $link-visited-color; }
   }
 }
 
-.link-cell {
-  display: block;
-  margin: -10rem;
-  padding: 10rem;
+/*
+.link,
+.link:hover,
+.link:focus,
+.link:visited,
+.link.active {
+  text-decoration: underline;
 }
+*/
 
 .no-pointer-events { pointer-events: none; }
 
-.pseudo { border-bottom-style: dotted; }
+.pseudo { border-bottom-style: dotted; } // underline migration
+/*
+.pseudo,
+.pseudo:hover,
+.pseudo:focus,
+.pseudo:visited,
+.pseudo.active {
+  text-decoration: underline dashed;
+}
+*/
 
 .visited {
   &:hover,
   &:focus {
-    border-color: $link-hover-border-color !important;
+    border-color: $link-hover-border-color !important; // underline migration
     color: $link-hover-color !important;
+    // text-decoration-color: $link-hover-border-color !important;
 
     .svg-icon { fill: $link-hover-color !important; }
   }
 
   &:visited {
-    border-color: $link-visited-border-color;
+    border-color: $link-visited-border-color; // underline migration
     color: $link-visited-color;
+    // text-decoration-color: $link-visited-border-color;
 
     .svg-icon { fill: $link-visited-color; }
   }
