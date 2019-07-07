@@ -1,3 +1,6 @@
+<?php
+/** @var string $locale */
+?>
 @if (!Request::pjax())
 <!DOCTYPE html>
 <html lang="{{ $locale }}">
@@ -176,13 +179,13 @@
 <div class="curtain curtain-closed js-curtain"></div>
 @show
 <script>
-<?php echo 'window.AppOptions = ' . json_encode([
+window.AppOptions = JSON.parse('<?= json_encode([
   'locale' => $locale,
   'loggedIn' => Auth::check(),
   'csrfToken' => csrf_token(),
   'socketIoHost' => config('cfg.socketio_host'),
   'yandexMetrikaId' => 5266444,
-]); ?>
+], JSON_HEX_APOS) ?>')
 </script>
 <script src="{{ mix('/assets/polyfills.js') }}"></script>
 <script src="{{ mix('/assets/intersection-observer.js') }}"></script>

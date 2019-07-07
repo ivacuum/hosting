@@ -1,3 +1,6 @@
+<?php
+/** @var string $locale */
+?>
 @extends('base', [
   'body_classes' => '',
 ])
@@ -6,14 +9,14 @@
 <div id="vue_acp"></div>
 
 <script>
-<?php echo 'window.i18nData = '.json_encode([
+window.i18nData = JSON.parse('<?= json_encode([
   $locale => array_merge(
     trans('acp'),
     ViewHelper::prependTransKeysForJson('menu'),
     ViewHelper::prependTransKeysForJson('model')
   )
-]); ?>
+], JSON_HEX_APOS) ?>')
 
-<?php echo 'window.singularAndPluralForms = '.json_encode(ViewHelper::modelsSingularAndPluralForms()); ?>
+window.singularAndPluralForms = JSON.parse('<?= json_encode(ViewHelper::modelsSingularAndPluralForms(), JSON_HEX_APOS) ?>')
 </script>
 @endsection
