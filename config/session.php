@@ -2,15 +2,15 @@
 
 return [
 
-    // file, cookie, database, apc, memcached, redis, array
+    // file, cookie, database, apc, memcached, redis, dynamodb, array
     'driver' => env('SESSION_DRIVER', 'file'),
     'lifetime' => env('SESSION_LIFETIME', 120),
     'expire_on_close' => false,
     'encrypt' => false,
     'files' => storage_path('framework/sessions'),
-    'connection' => null,
+    'connection' => env('SESSION_CONNECTION', null),
     'table' => 'sessions',
-    'store' => null,
+    'store' => env('SESSION_STORE', null),
     'lottery' => [2, 100],
     'cookie' => env('SESSION_COOKIE', 'laravel_session'),
     'path' => '/',

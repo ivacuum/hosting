@@ -2,7 +2,7 @@
 
 return [
 
-    // bcrypt, argon
+    // bcrypt, argon, argon2id
     'driver' => 'bcrypt',
 
 ];

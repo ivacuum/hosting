@@ -2,7 +2,7 @@
 
 return [
 
-    // apc, array, database, file, memcached, redis
+    // apc, array, database, file, memcached, redis, dynamodb
     'default' => env('CACHE_DRIVER', 'file'),
 
     'stores' => [
