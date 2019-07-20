@@ -14,11 +14,11 @@ class TorrentTest extends TestCase
 
     public function testCategoryFilter()
     {
-        $category_id = 2;
+        $categoryId = 2;
 
-        factory(Torrent::class)->create(compact('category_id'));
+        factory(Torrent::class)->create(['category_id' => $categoryId]);
 
-        $this->get(action('Torrents@index', compact('category_id')))
+        $this->get(action('Torrents@index', ['category_id' => $categoryId]))
             ->assertStatus(200);
     }
 

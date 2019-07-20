@@ -8,18 +8,18 @@ class MyPassword extends Controller
 {
     public function edit(Request $request)
     {
-        $has_password = !empty($request->user()->password);
-
-        return view('my.password', compact('has_password'));
+        return view('my.password', [
+            'has_password' => !empty($request->user()->password),
+        ]);
     }
 
     public function update(MyPasswordUpdate $request, Hasher $hash)
     {
         /* @var \App\User $user */
         $user = $request->user();
-        $has_password = !empty($user->password);
+        $hasPassword = !empty($user->password);
 
-        if ($has_password && !$hash->check($request->input('password'), $user->password)) {
+        if ($hasPassword && !$hash->check($request->input('password'), $user->password)) {
             return back()->withErrors(['password' => 'Неверно введен текущий пароль']);
         }
 

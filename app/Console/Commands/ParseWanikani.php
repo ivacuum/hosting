@@ -15,13 +15,13 @@ class ParseWanikani extends Command
     {
         $type = $this->argument('type');
         $timeout = (int) $this->argument('timeout');
-        $min_level = max(1, min(60, $this->argument('min_level')));
-        $max_level = max(1, min(60, $this->argument('max_level')));
+        $minLevel = max(1, min(60, $this->argument('min_level')));
+        $maxLevel = max(1, min(60, $this->argument('max_level')));
 
         $data = [];
 
         if ($type === 'radicals') {
-            foreach (range($min_level, $max_level) as $level) {
+            foreach (range($minLevel, $maxLevel) as $level) {
                 $json = $api->radicals($level);
 
                 foreach ($json->requested_information as $radical) {
@@ -34,7 +34,7 @@ class ParseWanikani extends Command
 
                 $this->info("Запрос {$level} уровня {$type}");
 
-                if ($level > $min_level && $level < $max_level) {
+                if ($level > $minLevel && $level < $maxLevel) {
                     sleep($timeout);
                 }
             }
@@ -73,7 +73,7 @@ class ParseWanikani extends Command
                 $this->info("New Radical: {$radical->meaning}");
             }
         } elseif ($type === 'kanji') {
-            foreach (range($min_level, $max_level) as $level) {
+            foreach (range($minLevel, $maxLevel) as $level) {
                 $json = $api->kanji($level);
 
                 foreach ($json->requested_information as $kanji) {
@@ -88,7 +88,7 @@ class ParseWanikani extends Command
 
                 $this->info("Запрос {$level} уровня {$type}");
 
-                if ($level > $min_level && $level < $max_level) {
+                if ($level > $minLevel && $level < $maxLevel) {
                     sleep($timeout);
                 }
             }
@@ -133,7 +133,7 @@ class ParseWanikani extends Command
                 $this->info("New Kanji: {$kanji->character}");
             }
         } elseif ($type === 'vocabulary') {
-            foreach (range($min_level, $max_level) as $level) {
+            foreach (range($minLevel, $maxLevel) as $level) {
                 $json = $api->vocabulary($level);
 
                 foreach ($json->requested_information as $vocab) {
@@ -142,7 +142,7 @@ class ParseWanikani extends Command
 
                 $this->info("Запрос {$level} уровня {$type}");
 
-                if ($level > $min_level && $level < $max_level) {
+                if ($level > $minLevel && $level < $maxLevel) {
                     sleep($timeout);
                 }
             }

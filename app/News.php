@@ -7,20 +7,20 @@ use Illuminate\Support\Carbon;
 /**
  * Новости
  *
- * @property integer $id
- * @property integer $user_id
- * @property string  $title
- * @property string  $html
- * @property string  $locale
- * @property integer $status
- * @property integer $views
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property int $id
+ * @property int $user_id
+ * @property string $title
+ * @property string $html
+ * @property string $locale
+ * @property int $status
+ * @property int $views
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  *
- * @property \Illuminate\Support\Collection|\App\Comment[] $comments
- * @property \Illuminate\Support\Collection|\App\Comment[] $commentsPublished
- * @property \Illuminate\Support\Collection|\App\Email[] $emails
- * @property \App\User $user
+ * @property \Illuminate\Support\Collection|Comment[] $comments
+ * @property \Illuminate\Support\Collection|Comment[] $commentsPublished
+ * @property \Illuminate\Support\Collection|Email[] $emails
+ * @property User $user
  *
  * @mixin \Eloquent
  */

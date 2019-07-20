@@ -15,11 +15,11 @@ class JapaneseWanikaniVocabulary extends Controller
 
         $kanji = request('kanji');
         $level = request('level');
-        $user_id = auth()->id();
+        $userId = auth()->id();
 
         $vocabulary = Vocabulary::orderBy('level')
             ->orderBy('meaning')
-            ->userBurnable($user_id)
+            ->userBurnable($userId)
             ->when($kanji, function (Builder $query) use ($kanji) {
                 return $query->where('character', 'LIKE', "%{$kanji}%");
             })

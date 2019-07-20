@@ -15,36 +15,36 @@ class JapaneseWanikaniKanji extends Controller
         }
 
         $level = request('level');
-        $user_id = auth()->id();
+        $userId = auth()->id();
         $characters = [];
-        $radical_id = request('radical_id');
-        $similar_id = request('similar_id');
-        $vocabulary_id = request('vocabulary_id');
+        $radicalId = request('radical_id');
+        $similarId = request('similar_id');
+        $vocabularyId = request('vocabulary_id');
 
         $kanji = Kanji::orderBy('level')
             ->orderBy('meaning')
-            ->userBurnable($user_id)
-            ->when($radical_id, function (Builder $query) use ($radical_id) {
-                return $query->whereHas('radicals', function (Builder $query) use ($radical_id) {
-                    $query->where('radical_id', $radical_id);
+            ->userBurnable($userId)
+            ->when($radicalId, function (Builder $query) use ($radicalId) {
+                return $query->whereHas('radicals', function (Builder $query) use ($radicalId) {
+                    $query->where('radical_id', $radicalId);
                 });
             })
-            ->when($similar_id, function (Builder $query) use ($similar_id) {
-                return $query->whereHas('similar', function (Builder $query) use ($similar_id) {
-                    $query->where('similar_id', $similar_id);
+            ->when($similarId, function (Builder $query) use ($similarId) {
+                return $query->whereHas('similar', function (Builder $query) use ($similarId) {
+                    $query->where('similar_id', $similarId);
                 });
             })
             ->when($level >= 1 && $level <= 60, function (Builder $query) use ($level) {
                 return $query->where('level', $level);
             })
-            ->when($vocabulary_id, function (Builder $query) use (&$characters, $vocabulary_id) {
-                $vocabulary = Vocabulary::findOrFail($vocabulary_id);
+            ->when($vocabularyId, function (Builder $query) use (&$characters, $vocabularyId) {
+                $vocabulary = Vocabulary::findOrFail($vocabularyId);
                 $characters = $vocabulary->splitKanjiCharacters();
 
                 return $query->whereIn('character', $characters);
             })
             ->get(['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading'])
-            ->when($vocabulary_id, function ($collection) use ($characters) {
+            ->when($vocabularyId, function ($collection) use ($characters) {
                 // Сортировка кандзи в порядке использования в словарном слове
                 return $collection->map(function (Kanji $item) use ($characters) {
                     $item->sort = 0;

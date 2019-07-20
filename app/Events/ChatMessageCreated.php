@@ -5,17 +5,15 @@ use Illuminate\Queue\SerializesModels;
 
 /**
  * Комментарий опубликован
- *
- * @property \App\ChatMessage $chat_message
  */
 class ChatMessageCreated extends Event
 {
     use SerializesModels;
 
-    public $chat_message;
+    public $chatMessage;
 
-    public function __construct(ChatMessage $chat_message)
+    public function __construct(ChatMessage $chatMessage)
     {
-        $this->chat_message = $chat_message;
+        $this->chatMessage = $chatMessage;
     }
 }

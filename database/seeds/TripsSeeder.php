@@ -9,9 +9,9 @@ class TripsSeeder extends Seeder
         // Для каждого шаблона нужно создать поездку
         foreach (App\Trip::templatesIterator() as $template) {
             $slug = str_replace('_', '.', $template->getBasename('.blade.php'));
-            $city_slug = str_before($slug, '.');
+            $citySlug = Illuminate\Support\Str::before($slug, '.');
 
-            if (null === $city = App\City::where('slug', $city_slug)->first()) {
+            if (null === $city = App\City::where('slug', $citySlug)->first()) {
                 continue;
             }
 

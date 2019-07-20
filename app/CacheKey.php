@@ -24,12 +24,12 @@ class CacheKey
     /**
      * Динамическое название ключа для кэша
      *
-     * @param  string $cache_entry
+     * @param  string $cacheEntry
      * @param  string $replace
      * @return string
      */
-    public static function key($cache_entry, $replace)
+    public static function key($cacheEntry, $replace)
     {
-        return str_replace('{key}', $replace, $cache_entry);
+        return str_replace('{key}', $replace, $cacheEntry);
     }
 }

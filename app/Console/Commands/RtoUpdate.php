@@ -62,12 +62,12 @@ class RtoUpdate extends Command
                     $torrent->info_hash = $json->info_hash;
                     $torrent->registered_at = now();
 
-                    if (!is_array($topic_data = $rto->parseTopicBody($id))) {
+                    if (!is_array($topicData = $rto->parseTopicBody($id))) {
                         throw new \Exception("Проблема обновления раздачи {$id} [parseTopicBody]");
                     }
 
-                    $torrent->html = $topic_data['body'];
-                    $torrent->announcer = $topic_data['announcer'];
+                    $torrent->html = $topicData['body'];
+                    $torrent->announcer = $topicData['announcer'];
 
                     // Раздача обновлена
                     $this->info("Раздача {$id} обновлена");

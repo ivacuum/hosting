@@ -12,13 +12,13 @@ class CommentStore extends FormRequest
 
     public function rules(): array
     {
-        $is_guest = null === $this->user();
+        $isGuest = null === $this->user();
 
         return [
             'id' => 'integer|min:1',
             'text' => 'required|max:1000',
             'type' => 'in:news,torrent,trip',
-            'email' => $is_guest ? Email::rules() : '',
+            'email' => $isGuest ? Email::rules() : '',
         ];
     }
 

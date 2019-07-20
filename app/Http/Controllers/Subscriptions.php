@@ -49,19 +49,19 @@ class Subscriptions extends Controller
 
     public function store()
     {
-        /* @var User $user */
+        /** @var User $user */
         $user = request()->user();
         $email = request('email');
-        $is_guest = null === $user;
+        $isGuest = null === $user;
 
         request()->validate([
             'gigs' => 'in:0,1',
             'news' => 'in:0,1',
-            'email' => $is_guest ? Email::rules() : '',
+            'email' => $isGuest ? Email::rules() : '',
             'trips' => 'in:0,1',
         ]);
 
-        if ($is_guest) {
+        if ($isGuest) {
             $user = (new User)->findByEmailOrCreate([
                 'email' => $email,
                 'status' => User::STATUS_INACTIVE,

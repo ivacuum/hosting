@@ -5,17 +5,17 @@ use Illuminate\Database\QueryException;
 
 trait BurnsAndResurrects
 {
-    public function burn(int $user_id): ?Burnable
+    public function burn(int $userId): ?Burnable
     {
         try {
-            return $this->burnable()->create(['user_id' => $user_id]);
+            return $this->burnable()->create(['user_id' => $userId]);
         } catch (QueryException $e) {
             return null;
         }
     }
 
-    public function resurrect(int $user_id): int
+    public function resurrect(int $userId): int
     {
-        return $this->burnable()->where('user_id', $user_id)->delete();
+        return $this->burnable()->where('user_id', $userId)->delete();
     }
 }

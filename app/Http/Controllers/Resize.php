@@ -2,6 +2,7 @@
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use Illuminate\Support\Str;
 use Ivacuum\Generic\Services\ImageConverter;
 
 class Resize extends Controller
@@ -43,7 +44,7 @@ class Resize extends Controller
 
         abort_unless($code === 200, $code);
 
-        $new_image = (new ImageConverter)
+        $newImage = (new ImageConverter)
             ->resize($width, $height)
             ->quality(75)
             ->convert($source);
@@ -51,14 +52,14 @@ class Resize extends Controller
         event(new \App\Events\Stats\ImageResizedOnDemand);
 
         header('Content-Type: ' . $this->mimeByExtension($extension));
-        readfile($new_image->getRealPath());
+        readfile($newImage->getRealPath());
         exit;
     }
 
     protected function isWhitelisted($uri)
     {
         foreach ($this->whitelist as $site) {
-            if (starts_with($uri, $site)) {
+            if (Str::startsWith($uri, $site)) {
                 return true;
             }
         }

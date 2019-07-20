@@ -18,12 +18,12 @@ class DomainsSeeder extends Seeder
 
     public function run()
     {
-        $client_ids = App\Client::get(['id'])->pluck('id');
+        $clientIds = App\Client::get(['id'])->pluck('id');
 
         foreach (self::DOMAINS as $domain) {
             factory(App\Domain::class)->create([
                 'domain' => $domain,
-                'client_id' => $client_ids->random(),
+                'client_id' => $clientIds->random(),
             ]);
         }
     }

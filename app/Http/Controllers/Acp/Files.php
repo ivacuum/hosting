@@ -10,9 +10,9 @@ class Files extends Controller
 
     public function index()
     {
-        [$sort_key, $sort_dir] = $this->getSortParams();
+        [$sortKey, $sortDir] = $this->getSortParams();
 
-        $models = Model::orderBy($sort_key, $sort_dir)
+        $models = Model::orderBy($sortKey, $sortDir)
             ->paginate()
             ->withPath(path("{$this->class}@index"));
 

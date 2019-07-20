@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
 
 //        $schedule->command('app:metrics-init-today')
 //            ->cron('0 0 * * *')
-//            ->appendOutputTo($cron_output);
+//            ->appendOutputTo($cronOutput);
 
         $schedule->command(\Ivacuum\Generic\Commands\NotificationsPurge::class)
             ->cron('0 2,14 * * *')

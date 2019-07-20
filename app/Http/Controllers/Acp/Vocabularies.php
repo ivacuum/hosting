@@ -15,10 +15,10 @@ class Vocabularies extends Controller
         $q = request('q');
         $sentences = request('sentences');
 
-        [$sort_key, $sort_dir] = $this->getSortParams();
+        [$sortKey, $sortDir] = $this->getSortParams();
 
-        $models = Model::orderBy($sort_key, $sort_dir)
-            ->when($sort_key === 'level', function (Builder $query) {
+        $models = Model::orderBy($sortKey, $sortDir)
+            ->when($sortKey === 'level', function (Builder $query) {
                 return $query->orderBy('meaning');
             })
             ->when(null !== $sentences, function (Builder $query) use ($sentences) {

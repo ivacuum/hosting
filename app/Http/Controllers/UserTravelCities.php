@@ -38,13 +38,13 @@ class UserTravelCities extends UserTravel
                 return $model->year;
             });
 
-        $published_trips = $trips->where('status', Trip::STATUS_PUBLISHED);
+        $publishedTrips = $trips->where('status', Trip::STATUS_PUBLISHED);
 
         event(new \App\Events\Stats\CityViewed($city->id));
 
-        if (1 === sizeof($published_trips)) {
+        if (1 === sizeof($publishedTrips)) {
             /* @var \App\Trip $trip */
-            $trip = $published_trips->first();
+            $trip = $publishedTrips->first();
 
             return redirect($trip->www());
         }

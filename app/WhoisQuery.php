@@ -86,18 +86,18 @@ class WhoisQuery
             return "Domainname isn't valid!";
         }
 
-        $cache_entry = CacheKey::key(CacheKey::DOMAINS_WHOIS, "{$this->subdomain}.{$this->tlds}");
-        $whois_server = $this->servers[$this->tlds][0];
+        $cacheEntry = CacheKey::key(CacheKey::DOMAINS_WHOIS, "{$this->subdomain}.{$this->tlds}");
+        $whoisServer = $this->servers[$this->tlds][0];
 
-        if (!$whois_server) {
+        if (!$whoisServer) {
             return "No whois server for this tld in list!";
         }
 
-        return $this->data = Cache::remember($cache_entry, 15, function () use ($whois_server) {
-            if (preg_match("/^https?:\/\//i", $whois_server)) {
-                $string = $this->curlRequest($whois_server);
+        return $this->data = Cache::remember($cacheEntry, now()->addMinutes(15), function () use ($whoisServer) {
+            if (preg_match("/^https?:\/\//i", $whoisServer)) {
+                $string = $this->curlRequest($whoisServer);
             } else {
-                $string = $this->socketRequest($whois_server);
+                $string = $this->socketRequest($whoisServer);
             }
 
             $encoding = mb_detect_encoding($string, "UTF-8, ISO-8859-1, ISO-8859-15", true);
@@ -199,10 +199,10 @@ class WhoisQuery
         if (isset($this->servers[$this->tlds][0]) &&
             strlen($this->servers[$this->tlds][0]) > 6)
         {
-            $tmp_domain = strtolower($this->subdomain);
+            $tmpDomain = strtolower($this->subdomain);
 
-            if (preg_match("/^[a-z0-9\-]{3,}$/", $tmp_domain) &&
-                !preg_match("/^-|-$/", $tmp_domain))
+            if (preg_match("/^[a-z0-9\-]{3,}$/", $tmpDomain) &&
+                !preg_match("/^-|-$/", $tmpDomain))
             {
                 return true;
             }
@@ -211,9 +211,9 @@ class WhoisQuery
         return false;
     }
 
-    protected function curlRequest($whois_server)
+    protected function curlRequest($whoisServer)
     {
-        $url = "{$whois_server}{$this->subdomain}.{$this->tlds}";
+        $url = "{$whoisServer}{$this->subdomain}.{$this->tlds}";
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -244,9 +244,9 @@ class WhoisQuery
         }
     }
 
-    protected function socketRequest($whois_server)
+    protected function socketRequest($whoisServer)
     {
-        if (false === $fp = fsockopen($whois_server, 43)) {
+        if (false === $fp = fsockopen($whoisServer, 43)) {
             return "Connection error!";
         }
 

@@ -13,11 +13,11 @@ class MyPasswordUpdate extends FormRequest
     {
         /* @var \App\User $user */
         $user = $this->user();
-        $has_password = !empty($user->password);
+        $hasPassword = !empty($user->password);
 
         return [
-            'password' => $has_password ? 'required' : '',
-            'new_password' => 'required|string|min:6',
+            'password' => $hasPassword ? 'required' : '',
+            'new_password' => 'required|string|min:8',
         ];
     }
 }

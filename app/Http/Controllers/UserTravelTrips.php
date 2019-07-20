@@ -40,6 +40,7 @@ class UserTravelTrips extends UserTravel
 
     public function show(string $login, string $slug)
     {
+        /** @var Trip $trip */
         $trip = Trip::withCount('photos')
             ->where('user_id', $this->traveler->id)
             ->where('slug', $slug)

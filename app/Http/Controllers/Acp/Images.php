@@ -15,9 +15,9 @@ class Images extends Controller
         $touch = request('touch');
         $user_id = request('user_id');
 
-        [$sort_key, $sort_dir] = $this->getSortParams();
+        [$sortKey, $sortDir] = $this->getSortParams();
 
-        $models = Model::orderBy($sort_key, $sort_dir)
+        $models = Model::orderBy($sortKey, $sortDir)
             // ->where('updated_at', '<', now()->subYear()->toDateTimeString())
             // ->where('views', '<', 1000);
             ->when($year, function (Builder $query) use ($year) {

@@ -4,11 +4,11 @@ use Illuminate\Database\Eloquent\Builder;
 
 trait UserBurnableScope
 {
-    public function scopeUserBurnable(Builder $query, ?int $user_id)
+    public function scopeUserBurnable(Builder $query, ?int $userId)
     {
-        return $query->when($user_id, function (Builder $query) use ($user_id) {
-            return $query->with(['burnable' => function ($query) use ($user_id) {
-                return $query->where('user_id', $user_id);
+        return $query->when($userId, function (Builder $query) use ($userId) {
+            return $query->with(['burnable' => function ($query) use ($userId) {
+                return $query->where('user_id', $userId);
             }]);
         });
     }

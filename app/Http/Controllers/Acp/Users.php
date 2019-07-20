@@ -16,7 +16,7 @@ class Users extends Controller
         $avatar = request('avatar');
         $last_login_at = request('last_login_at');
 
-        [$sort_key, $sort_dir] = $this->getSortParams();
+        [$sortKey, $sortDir] = $this->getSortParams();
 
         $models = Model::withCount(['comments', 'images', 'torrents', 'trips'])
             ->when(null !== $avatar, function (Builder $query) use ($avatar) {
@@ -35,7 +35,7 @@ class Users extends Controller
 
                 return $query->where('email', 'LIKE', "%{$q}%");
             })
-            ->orderBy($sort_key, $sort_dir)
+            ->orderBy($sortKey, $sortDir)
             ->paginate()
             ->withPath(path("{$this->class}@index"));
 
@@ -67,7 +67,7 @@ class Users extends Controller
                 Rule::unique('users', 'email')->ignore($model->id ?? null),
             ],
             'status' => 'boolean',
-            'password' => null === $model ? 'required_without:random_password|min:6' : 'min:6',
+            'password' => null === $model ? 'required_without:random_password|min:8' : 'min:8',
         ];
     }
 
@@ -94,9 +94,9 @@ class Users extends Controller
      */
     protected function updateModel($model)
     {
-        $random_password = request('random_password');
-        $password = $random_password ? str_random(16) : request('password');
-        $mail_credentials = request('mail_credentials');
+        $randomPassword = request('random_password');
+        $password = $randomPassword ? str_random(16) : request('password');
+        $mailCredentials = request('mail_credentials');
 
         $model->email = request('email');
         $model->status = request('status', Model::STATUS_INACTIVE);
@@ -107,7 +107,7 @@ class Users extends Controller
 
         $model->save();
 
-        if ($password && $mail_credentials) {
+        if ($password && $mailCredentials) {
             $this->mailCredentials($model, $password);
         }
     }

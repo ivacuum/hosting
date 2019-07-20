@@ -25,6 +25,8 @@ class Tag extends Model
 {
     use HasLocalizedTitle;
 
+    public $photos_count;
+
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $perPage = 50;
 

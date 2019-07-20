@@ -63,22 +63,22 @@ class City extends Model
 
     public static function forInputSelect(): Collection
     {
-        $title_field = static::titleField();
+        $titleField = static::titleField();
 
-        return static::orderBy($title_field)->get(['id', $title_field])->pluck($title_field, 'id');
+        return static::orderBy($titleField)->get(['id', $titleField])->pluck($titleField, 'id');
     }
 
     public static function forInputSelectJs(): Collection
     {
-        $title_field = static::titleField();
+        $titleField = static::titleField();
 
-        return static::orderBy($title_field)
-            ->get(['id', 'slug', $title_field])
-            ->map(function (City $item) use ($title_field) {
+        return static::orderBy($titleField)
+            ->get(['id', 'slug', $titleField])
+            ->map(function (City $item) use ($titleField) {
                 return [
                     'key' => $item->id,
                     'slug' => $item->slug,
-                    'value' => $item->{$title_field},
+                    'value' => $item->{$titleField},
                 ];
             });
     }

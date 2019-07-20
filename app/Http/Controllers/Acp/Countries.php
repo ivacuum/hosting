@@ -14,12 +14,12 @@ class Countries extends Controller
 
     public function index()
     {
-        [$sort_key, $sort_dir] = $this->getSortParams();
+        [$sortKey, $sortDir] = $this->getSortParams();
 
-        $sort_key = $sort_key === 'title' ? Model::titleField() : $sort_key;
+        $sortKey = $sortKey === 'title' ? Model::titleField() : $sortKey;
 
         $models = Model::withCount(['cities', 'trips'])
-            ->orderBy($sort_key, $sort_dir)
+            ->orderBy($sortKey, $sortDir)
             ->paginate(500)
             ->withPath(path("{$this->class}@index"));
 

@@ -18,11 +18,12 @@ class Kanjis extends Controller
         $radical_id = request('radical_id');
         $similar_count = request('similar_count');
 
-        [$sort_key, $sort_dir] = $this->getSortParams();
+        [$sortKey, $sortDir] = $this->getSortParams();
 
-        $models = Model::withCount('radicals', 'similar')
-            ->orderBy($sort_key, $sort_dir)
-            ->when($sort_key === 'level', function (Builder $query) {
+        $models = Model::query()
+            ->withCount('radicals', 'similar')
+            ->orderBy($sortKey, $sortDir)
+            ->when($sortKey === 'level', function (Builder $query) {
                 return $query->orderBy('meaning');
             })
             ->when($radical_id, function (Builder $query) use ($radical_id) {

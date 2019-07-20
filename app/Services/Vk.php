@@ -8,7 +8,7 @@ class Vk
 
     protected $client;
     protected $version = '5.69';
-    protected $access_token = '';
+    protected $accessToken = '';
 
     public function __construct()
     {
@@ -17,9 +17,9 @@ class Vk
             ->createForService('vk');
     }
 
-    public function accessToken(string $access_token): self
+    public function accessToken(string $accessToken): self
     {
-        $this->access_token = $access_token;
+        $this->accessToken = $accessToken;
 
         return $this;
     }
@@ -100,7 +100,7 @@ class Vk
     {
         return [
             'v' => $this->version,
-            'access_token' => $this->access_token,
+            'access_token' => $this->accessToken,
         ];
     }
 }

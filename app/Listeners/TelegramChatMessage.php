@@ -7,7 +7,7 @@ class TelegramChatMessage extends TelegramNotifier
 {
     public function handle(ChatMessageCreated $event)
     {
-        $model = $event->chat_message;
+        $model = $event->chatMessage;
 
         if ($model->user->isRoot()) {
             return;

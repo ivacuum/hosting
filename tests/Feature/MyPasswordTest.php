@@ -19,7 +19,7 @@ class MyPasswordTest extends TestCase
 
     public function testSetNewPassword()
     {
-        $new_password = 'secret ';
+        $new_password = 'top-secret ';
 
         /* @var User $user */
         $this->be($user = factory(User::class)->create());
@@ -36,7 +36,7 @@ class MyPasswordTest extends TestCase
 
     public function testUpdatePassword()
     {
-        $password = 'secret';
+        $password = 'top-secret';
         $new_password = 'password ';
 
         /* @var User $user */

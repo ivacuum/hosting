@@ -21,20 +21,20 @@ class AjaxChat extends Controller
 
     public function store(ChatStore $request)
     {
-        $chat_message = new ChatMessage([
+        $chatMessage = new ChatMessage([
             'ip' => $request->ip(),
             'text' => $request->input('text'),
             'status' => ChatMessage::STATUS_PUBLISHED,
             'user_id' => $request->user()->id,
         ]);
 
-        $chat_message->setRelation('user', $request->user());
-        $chat_message->save();
+        $chatMessage->setRelation('user', $request->user());
+        $chatMessage->save();
 
-        $chat_resource = new ChatMessageResource($chat_message);
+        $chatResource = new ChatMessageResource($chatMessage);
 
-        broadcast(new \App\Events\ChatMessagePosted($chat_resource->toArray($request)));
+        broadcast(new \App\Events\ChatMessagePosted($chatResource->toArray($request)));
 
-        return $chat_resource;
+        return $chatResource;
     }
 }

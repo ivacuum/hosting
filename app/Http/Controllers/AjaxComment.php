@@ -18,11 +18,11 @@ class AjaxComment extends Controller
         $text = $request->input('text');
         $email = $request->input('email');
 
-        /* @var User $user */
+        /** @var User $user */
         $user = $request->user();
-        $is_guest = null === $user;
+        $isGuest = null === $user;
 
-        if ($is_guest) {
+        if ($isGuest) {
             $user = (new User)->findByEmailOrCreate([
                 'email' => $email,
                 'status' => User::STATUS_INACTIVE,
@@ -46,7 +46,7 @@ class AjaxComment extends Controller
         /* @var Comment $comment */
         $comment = new Comment([
             'html' => $text,
-            'status' => $is_guest ? Comment::STATUS_PENDING : Comment::STATUS_PUBLISHED,
+            'status' => $isGuest ? Comment::STATUS_PENDING : Comment::STATUS_PUBLISHED,
             'user_id' => $user->id,
         ]);
 
@@ -58,7 +58,7 @@ class AjaxComment extends Controller
             return new CommentResource($comment);
         }
 
-        return $this->redirectToComment($model, $is_guest ? null : $comment);
+        return $this->redirectToComment($model, $isGuest ? null : $comment);
     }
 
     /**

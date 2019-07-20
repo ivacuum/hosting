@@ -92,10 +92,10 @@ class Domain extends Model
     }
 
     // Scopes
-    public function scopeYandexReady(Builder $query, $user_id = 0)
+    public function scopeYandexReady(Builder $query, $userId = 0)
     {
         return $query->where('status', 1)
-            ->whereIn('yandex_user_id', [0, $user_id])
+            ->whereIn('yandex_user_id', [0, $userId])
             ->orderBy('domain');
     }
 
@@ -138,9 +138,9 @@ class Domain extends Model
             throw new \Exception('Домен не связан с учеткой в Яндексе');
         }
 
-        $allowed_types = ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'SRV', 'TXT'];
+        $allowedTypes = ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'SRV', 'TXT'];
 
-        if (!in_array($type, $allowed_types)) {
+        if (!in_array($type, $allowedTypes)) {
             throw new \Exception('Неподдерживаемый тип записи');
         }
 
@@ -172,24 +172,19 @@ class Domain extends Model
         return $this->domain;
     }
 
-    /**
-     * Удаление днс-записей через API Яндекса
-     *
-     * @param  integer $record_id
-     * @return string
-     * @throws \Exception
-     */
-    public function deleteNsRecord($record_id)
+    public function deleteNsRecord(int $recordId): string
     {
         if (!$this->yandex_user_id) {
             throw new \Exception('Домен не связан с учеткой в Яндексе');
         }
 
         $client = $this->getYandexPddApiClient();
-        $domain = $this->domain;
 
         $response = $client->post('admin/dns/del', [
-            'query' => compact('domain', 'record_id'),
+            'query' => [
+                'domain' => $this->domain,
+                'record_id' => $recordId,
+            ],
         ]);
 
         $json = json_decode($response->getBody());
@@ -230,9 +225,9 @@ class Domain extends Model
             throw new \Exception('Домен не связан с учеткой в Яндексе');
         }
 
-        $allowed_types = ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'SOA', 'SRV', 'TXT'];
+        $allowedTypes = ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'SOA', 'SRV', 'TXT'];
 
-        if (!in_array($type, $allowed_types)) {
+        if (!in_array($type, $allowedTypes)) {
             throw new \Exception('Неподдерживаемый тип записи');
         }
 

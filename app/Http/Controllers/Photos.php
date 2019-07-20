@@ -87,16 +87,16 @@ class Photos extends Controller
     public function map()
     {
         if (request()->ajax()) {
-            $trip_id = request('trip_id');
+            $tripId = request('trip_id');
 
-            return $this->pointsForMap($trip_id);
+            return $this->pointsForMap($tripId);
         }
 
-        $photo_slug = request('photo');
+        $photoSlug = request('photo');
 
-        $photo = $photo_slug
+        $photo = $photoSlug
             ? Photo::query()
-                ->where('slug', $photo_slug)
+                ->where('slug', $photoSlug)
                 ->where('status', Photo::STATUS_PUBLISHED)
                 ->first()
             : null;
@@ -248,15 +248,15 @@ class Photos extends Controller
         $this->middleware('breadcrumbs:photos.trips,photos/trips')->only('trip', 'trips');
     }
 
-    protected function pointsForMap($trip_id)
+    protected function pointsForMap($tripId)
     {
         // Кэширование отключено при фильтре по поездке
-        $cache_entry = $trip_id ? CacheKey::PHOTOS_POINTS_FOR_TRIP : CacheKey::PHOTOS_POINTS;
-        $minutes = $trip_id ? 0 : 30;
+        $cacheEntry = $tripId ? CacheKey::PHOTOS_POINTS_FOR_TRIP : CacheKey::PHOTOS_POINTS;
+        $minutes = $tripId ? 0 : 30;
 
-        return \Cache::remember($cache_entry, now()->addMinutes($minutes), function () use ($trip_id) {
+        return \Cache::remember($cacheEntry, now()->addMinutes($minutes), function () use ($tripId) {
             $photos = Photo::with('rel')
-                ->forTrip($trip_id)
+                ->forTrip($tripId)
                 ->published()
                 ->onMap()
                 ->orderBy('id', 'asc')

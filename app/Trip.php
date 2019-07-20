@@ -56,6 +56,9 @@ class Trip extends Model
 
     const COLUMNS_LIST = ['id', 'user_id', 'city_id', 'title_ru', 'title_en', 'slug', 'date_start', 'date_end', 'status', 'views'];
 
+    public $photos_count;
+    public $comments_count;
+
     protected $guarded = ['id', 'html', 'views', 'created_at', 'updated_at'];
     protected $dates = ['date_start', 'date_end'];
 
@@ -108,13 +111,13 @@ class Trip extends Model
             ->take(2);
     }
 
-    public function scopePrevious(Builder $query, $next_trips = 2)
+    public function scopePrevious(Builder $query, $nextTrips = 2)
     {
         // Всего 4 места под ссылки помимо текущей поездки
         // prev prev current next next
         // При просмотре последней поездки будет
         // prev prev prev prev current
-        $take = 4 - $next_trips;
+        $take = 4 - $nextTrips;
 
         return $query->where('user_id', $this->user_id)
             ->where('date_start', '<=', $this->date_start)

@@ -13,16 +13,16 @@ class Photos extends Controller
     public function index()
     {
         $filter = request('filter');
-        $on_page = request('on_page');
+        $onPage = request('on_page');
 
-        [$sort_key, $sort_dir] = $this->getSortParams();
+        [$sortKey, $sortDir] = $this->getSortParams();
 
         $models = Model::with('tags')
             ->forTrip(request('trip_id'))
             ->applyFilter($filter)
             ->forTag(request('tag_id'))
-            ->orderBy($sort_key, $sort_dir)
-            ->paginate($on_page)
+            ->orderBy($sortKey, $sortDir)
+            ->paginate($onPage)
             ->withPath(path("{$this->class}@index"));
 
         return view($this->view, compact('filter', 'models'));
@@ -40,10 +40,10 @@ class Photos extends Controller
     protected function storeModel()
     {
         $model = null;
-        $trip_id = request('trip_id');
+        $tripId = request('trip_id');
 
-        if ($trip_id) {
-            $model = Trip::findOrFail($trip_id);
+        if ($tripId) {
+            $model = Trip::findOrFail($tripId);
         }
 
         $file = request()->file('file');

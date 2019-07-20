@@ -47,10 +47,10 @@ class UserObserver
     public function saved(Model $model)
     {
         if ($model->isDirty('avatar')) {
-            $last_avatar = $model->getOriginal('avatar');
+            $lastAvatar = $model->getOriginal('avatar');
 
-            if ($last_avatar) {
-                (new Avatar)->delete($last_avatar);
+            if ($lastAvatar) {
+                (new Avatar)->delete($lastAvatar);
             }
         }
 

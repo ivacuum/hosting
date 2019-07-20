@@ -71,7 +71,7 @@ class CitiesSeeder extends Seeder
     public function run()
     {
         foreach (self::CITIES_BY_COUNTRY as $country => $cities) {
-            $city_models = array_map(function ($city) {
+            $cityModels = array_map(function ($city) {
                 return factory(App\City::class)->make($city);
             }, $cities);
 
@@ -79,7 +79,7 @@ class CitiesSeeder extends Seeder
                 ->where('slug', $country)
                 ->first()
                 ->cities()
-                ->saveMany($city_models);
+                ->saveMany($cityModels);
         }
     }
 }

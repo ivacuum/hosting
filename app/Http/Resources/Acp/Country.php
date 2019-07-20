@@ -9,9 +9,9 @@ class Country extends Resource
 {
     public function toArray($request)
     {
-        /* @var \App\User $me */
+        /** @var \App\User $me */
         $me = $request->user();
-        $foreign_key = [$this->getForeignKey() => $this->id];
+        $foreignKey = [$this->getForeignKey() => $this->id];
 
         return [
             'id' => $this->id,
@@ -24,8 +24,8 @@ class Country extends Resource
 
             'edit_url' => $this->when($me->can('edit', 'App\Country'), path('Acp\Countries@edit', $this)),
             'show_url' => $this->when($me->can('show', 'App\Country'), path('Acp\Countries@show', $this)),
-            'trips_url' => $this->when($me->can('list', 'App\Trip'), path('Acp\Trips@index', $foreign_key)),
-            'cities_url' => $this->when($me->can('show', 'App\City'), path('Acp\Cities@index', $foreign_key)),
+            'trips_url' => $this->when($me->can('list', 'App\Trip'), path('Acp\Trips@index', $foreignKey)),
+            'cities_url' => $this->when($me->can('show', 'App\City'), path('Acp\Cities@index', $foreignKey)),
 
             'trips_count' => (int) $this->trips_count,
             'cities_count' => (int) $this->cities_count,

@@ -5,7 +5,7 @@ use Ivacuum\Generic\Events\LimitExceeded;
 
 class IssuesTodayLimit
 {
-    public function flood(int $user_id): bool
+    public function flood(int $userId): bool
     {
         $interval = config('cfg.limits.issue.flood_interval');
 
@@ -13,7 +13,7 @@ class IssuesTodayLimit
             return false;
         }
 
-        $last = Activity::where('user_id', $user_id)
+        $last = Activity::where('user_id', $userId)
             ->where('type', 'Issue.created')
             ->orderBy('id', 'desc')
             ->first(['created_at']);
@@ -25,7 +25,7 @@ class IssuesTodayLimit
         $diff = now()->diffInSeconds($last->created_at);
 
         if ($diff < $interval) {
-            event(new LimitExceeded('issue.flood_interval', $user_id));
+            event(new LimitExceeded('issue.flood_interval', $userId));
 
             return true;
         }
@@ -52,17 +52,17 @@ class IssuesTodayLimit
         return false;
     }
 
-    public function userExceeded(int $user_id): bool
+    public function userExceeded(int $userId): bool
     {
         $limit = config('cfg.limits.issue.user');
 
         $count = Activity::where('type', 'Issue.created')
-            ->where('user_id', $user_id)
+            ->where('user_id', $userId)
             ->where('created_at', '>', now()->startOfDay())
             ->count();
 
         if ($count >= $limit) {
-            event(new LimitExceeded('issue.user', $user_id));
+            event(new LimitExceeded('issue.user', $userId));
 
             return true;
         }

@@ -206,24 +206,24 @@ class User extends Authenticatable
 
     public function markNotificationsAsRead(): bool
     {
-        $have_unread = false;
+        $hasUnread = false;
 
         foreach ($this->notifications as $notification) {
             if ($notification->unread()) {
-                $have_unread = true;
+                $hasUnread = true;
                 break;
             }
         }
 
-        if ($have_unread) {
-            $affected_rows = $this->unreadNotifications()->update(['read_at' => now()]);
+        if ($hasUnread) {
+            $affectedRows = $this->unreadNotifications()->update(['read_at' => now()]);
 
-            for ($i = 0; $i < $affected_rows; $i++) {
+            for ($i = 0; $i < $affectedRows; $i++) {
                 event(new \App\Events\Stats\NotificationRead);
             }
         }
 
-        return $have_unread;
+        return $hasUnread;
     }
 
     public function publicName(): string

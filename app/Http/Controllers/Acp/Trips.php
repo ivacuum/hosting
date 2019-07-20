@@ -21,7 +21,7 @@ class Trips extends Controller
         $user_id = request('user_id');
         $country_id = request('country_id');
 
-        [$sort_key, $sort_dir] = $this->getSortParams();
+        [$sortKey, $sortDir] = $this->getSortParams();
 
         $models = Model::with('user')
             ->withCount('comments', 'photos')
@@ -44,7 +44,7 @@ class Trips extends Controller
                     ->orWhere(Model::titleField(), 'LIKE', "%{$q}%")
                     ->orWhere('slug', 'LIKE', "%{$q}%");
             })
-            ->orderBy($sort_key, $sort_dir)
+            ->orderBy($sortKey, $sortDir)
             ->paginate(50)
             ->withPath(path("{$this->class}@index"));
 

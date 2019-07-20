@@ -22,10 +22,10 @@ class Rto
 
     public function findTopicId($input)
     {
-        $topic_id = 0;
+        $topicId = 0;
 
         if (is_numeric($input)) {
-            $topic_id = (int) $input;
+            $topicId = (int) $input;
         } elseif (starts_with($input, 'http')) {
             if (str_contains($input, ['://rutracker.org', '://rutracker.cr', '://rutracker.net', '://rutracker.nl', '://maintracker.org'])) {
                 $url = parse_url($input);
@@ -40,30 +40,30 @@ class Rto
                     return null;
                 }
 
-                $topic_id = (int) $args['t'];
+                $topicId = (int) $args['t'];
             }
         } elseif (strlen($input) === 40) {
-            $topic_id = $this->topicIdByHash($input);
+            $topicId = $this->topicIdByHash($input);
 
-            if (null === $topic_id) {
+            if (null === $topicId) {
                 return null;
             }
         }
 
-        if (!$topic_id) {
+        if (!$topicId) {
             return null;
         }
 
-        return $topic_id;
+        return $topicId;
     }
 
     public function torrentData($input)
     {
-        if (null === $topic_id = $this->findTopicId($input)) {
+        if (null === $topicId = $this->findTopicId($input)) {
             return null;
         }
 
-        return $this->parseTopicData($topic_id);
+        return $this->parseTopicData($topicId);
     }
 
     public function parseAnnouncerLink($link)
@@ -96,9 +96,9 @@ class Rto
         return $link->attr('href');
     }
 
-    public function parseTopicBody($topic_id)
+    public function parseTopicBody($topicId)
     {
-        $response = $this->client->get(static::SITE_ENDPOINT . "viewtopic.php?t={$topic_id}");
+        $response = $this->client->get(static::SITE_ENDPOINT . "viewtopic.php?t={$topicId}");
 
         $body = (string) $response->getBody();
         $magnet = $this->parseMagnetLink($body);
@@ -116,9 +116,9 @@ class Rto
         ];
     }
 
-    public function parseTopicData($topic_id)
+    public function parseTopicData($topicId)
     {
-        $json = $this->topicDataById($topic_id);
+        $json = $this->topicDataById($topicId);
 
         if (null === $json) {
             return 'Раздача не найдена, попробуйте другую ссылку';
@@ -128,18 +128,18 @@ class Rto
             return 'Раздача закрыта как повторная, попробуйте другую ссылку';
         }
 
-        if (!is_array($topic_body_data = $this->parseTopicBody($topic_id))) {
-            return $topic_body_data;
+        if (!is_array($topicBodyData = $this->parseTopicBody($topicId))) {
+            return $topicBodyData;
         }
 
         return array_merge([
             'size' => $json->size,
             'title' => str_replace(Torrent::TITLE_REPLACE_FROM, Torrent::TITLE_REPLACE_TO, $json->topic_title),
-            'rto_id' => $topic_id,
+            'rto_id' => $topicId,
             'reg_time' => $json->reg_time,
             'info_hash' => $json->info_hash,
             'tor_status' => $json->tor_status,
-        ], $topic_body_data);
+        ], $topicBodyData);
     }
 
     public function topicDataById($id)

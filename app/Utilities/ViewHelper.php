@@ -5,9 +5,9 @@ use Ivacuum\Generic\Utilities\ViewHelper as BaseViewHelper;
 
 class ViewHelper extends BaseViewHelper
 {
-    public function magnet(string $info_hash, string $announcer, string $title): string
+    public function magnet(string $infoHash, string $announcer, string $title): string
     {
-        return "magnet:?xt=urn:btih:{$info_hash}&tr=" . urlencode($announcer) . "&dn=" . rawurlencode($title);
+        return "magnet:?xt=urn:btih:{$infoHash}&tr=" . urlencode($announcer) . "&dn=" . rawurlencode($title);
     }
 
     public function modelsSingularAndPluralForms(): array
@@ -46,7 +46,7 @@ class ViewHelper extends BaseViewHelper
         return "https://life.ivacuum.org/-/100x75/{$folder}/{$file}";
     }
 
-    public function prependTransKeysForJson(string $file, bool $vue_i18n_formatter = false): array
+    public function prependTransKeysForJson(string $file, bool $vueI18nFormatter = false): array
     {
         $trans = trans($file);
 
@@ -54,7 +54,7 @@ class ViewHelper extends BaseViewHelper
             array_map(function ($key) use ($file) {
                 return "{$file}.{$key}";
             }, array_keys($trans)),
-            $vue_i18n_formatter
+            $vueI18nFormatter
                 ? array_map(function ($value) { return preg_replace('/:(\w+)/', '{$1}', $value); }, array_values($trans))
                 : array_values($trans)
         );

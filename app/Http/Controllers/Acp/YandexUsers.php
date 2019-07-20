@@ -57,11 +57,11 @@ class YandexUsers extends Controller
 
         // Newly specified user domains
         foreach (request('domains', []) as $id => $one) {
-            $user_domains[] = $id;
+            $userDomains[] = $id;
         }
 
-        if (!empty($user_domains)) {
-            Domain::whereIn('id', $user_domains)
+        if (!empty($userDomains)) {
+            Domain::whereIn('id', $userDomains)
                 ->update(['yandex_user_id' => $model->id]);
         }
 
@@ -86,22 +86,22 @@ class YandexUsers extends Controller
         // Domains w/out yandex user specified
         foreach ($model->domains as $domain) {
             if (!request()->input("domains.{$domain->id}")) {
-                $anon_domains[] = $domain->id;
+                $anonDomains[] = $domain->id;
             }
         }
 
-        if (!empty($anon_domains)) {
-            Domain::whereIn('id', $anon_domains)
+        if (!empty($anonDomains)) {
+            Domain::whereIn('id', $anonDomains)
                 ->update(['yandex_user_id' => 0]);
         }
 
         // Newly specified user domains
         foreach (request('domains', []) as $id => $one) {
-            $user_domains[] = $id;
+            $userDomains[] = $id;
         }
 
-        if (!empty($user_domains)) {
-            Domain::whereIn('id', $user_domains)
+        if (!empty($userDomains)) {
+            Domain::whereIn('id', $userDomains)
                 ->update(['yandex_user_id' => $model->id]);
         }
     }

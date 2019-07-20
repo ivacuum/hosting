@@ -8,7 +8,7 @@ class Templates extends BaseController
     public function index()
     {
         $filter = request('filter');
-        $hide_finished = (int) request('hide_finished', 0);
+        $hideFinished = (int) request('hide_finished', 0);
 
         $templates = collect();
         $total = (object) ['pics' => 0];
@@ -29,11 +29,11 @@ class Templates extends BaseController
                 return substr_count($contents, "@{$key}\n");
             })->all();
 
-            if ($hide_finished === 1 && $i18n['ru'] === $i18n['en']) {
+            if ($hideFinished === 1 && $i18n['ru'] === $i18n['en']) {
                 continue;
             }
 
-            if ($hide_finished === 2 && $i18n['ru'] !== $i18n['en']) {
+            if ($hideFinished === 2 && $i18n['ru'] !== $i18n['en']) {
                 continue;
             }
 

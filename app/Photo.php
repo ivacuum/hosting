@@ -132,11 +132,11 @@ class Photo extends Model
         return "https://life.ivacuum.org/-/1000x750/{$this->slug}";
     }
 
-    public function newSlugPrefix(string $new_prefix): void
+    public function newSlugPrefix(string $newPrefix): void
     {
         [$prefix, $filename] = explode('/', $this->slug);
 
-        $this->slug = "{$new_prefix}/{$filename}";
+        $this->slug = "{$newPrefix}/{$filename}";
     }
 
     public function originalUrl(): string

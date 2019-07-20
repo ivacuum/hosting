@@ -20,14 +20,14 @@ class Cities extends Controller
     {
         $country_id = request('country_id');
 
-        [$sort_key, $sort_dir] = $this->getSortParams();
+        [$sortKey, $sortDir] = $this->getSortParams();
 
-        $sort_key = $sort_key === 'title' ? Model::titleField() : $sort_key;
+        $sortKey = $sortKey === 'title' ? Model::titleField() : $sortKey;
 
         $models = Model::query()
             ->with('country')
             ->withCount('trips')
-            ->orderBy($sort_key, $sort_dir)
+            ->orderBy($sortKey, $sortDir)
             ->when($country_id, function (Builder $query) use ($country_id) {
                 return $query->where('country_id', $country_id);
             })

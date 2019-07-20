@@ -36,8 +36,8 @@ class ParserVk extends Controller
         $parsed = false;
         $posts = collect();
 
-        $date_start = Carbon::parse($date)->startOfDay()->timestamp;
-        $date_end = Carbon::parse($date)->endOfDay()->timestamp;
+        $dateStart = Carbon::parse($date)->startOfDay()->timestamp;
+        $dateEnd = Carbon::parse($date)->endOfDay()->timestamp;
         $previous = Carbon::parse($date)->subDay();
         $next = now()->startOfDay()->gt($date) ? Carbon::parse($date)->addDay() : null;
 
@@ -77,13 +77,13 @@ class ParserVk extends Controller
                     continue;
                 }
 
-                if ($post->date < $date_start) {
+                if ($post->date < $dateStart) {
                     $previous = Carbon::createFromTimestamp($post->date);
                     $parsed = true;
                     break 2;
                 }
 
-                if ($post->date > $date_end) {
+                if ($post->date > $dateEnd) {
                     continue;
                 }
 
@@ -144,12 +144,15 @@ class ParserVk extends Controller
 
     protected function getPosts($count = 100, $offset = 0)
     {
-        $cache_entry = CacheKey::key(CacheKey::VK_WALL_GET, "{$this->vkpage}_{$count}_{$offset}");
-        $access_token = $this->token;
-        $filter = 'owner';
-        $v = $this->version;
+        $cacheEntry = CacheKey::key(CacheKey::VK_WALL_GET, "{$this->vkpage}_{$count}_{$offset}");
 
-        $params = compact('access_token', 'count', 'filter', 'offset', 'v');
+        $params = [
+            'v' => $this->version,
+            'count' => $count,
+            'filter' => 'owner',
+            'offset' => $offset,
+            'access_token' => $this->token,
+        ];
 
         if (is_numeric($this->vkpage)) {
             $params['owner_id'] = $this->vkpage;
@@ -157,7 +160,7 @@ class ParserVk extends Controller
             $params['domain'] = $this->vkpage;
         }
 
-        return \Cache::remember($cache_entry, now()->addMinutes(15 + intval($offset / 100)), function () use ($params) {
+        return \Cache::remember($cacheEntry, now()->addMinutes(15 + intval($offset / 100)), function () use ($params) {
             if ($params['access_token'] && $params['offset']) {
                 sleep(1);
             }

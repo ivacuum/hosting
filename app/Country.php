@@ -30,6 +30,7 @@ class Country extends Model
         HasTripsMetaDescription;
 
     public $trips_count;
+    public $cities_count;
     public $trips_published_count;
 
     protected $guarded = ['created_at', 'updated_at'];
@@ -81,9 +82,9 @@ class Country extends Model
             ->sortBy(static::titleField());
     }
 
-    public static function allWithPublishedTrips(int $user_id = 0)
+    public static function allWithPublishedTrips(int $userId = 0)
     {
-        $trips = Trip::tripsByCities($user_id);
+        $trips = Trip::tripsByCities($userId);
 
         $cities = \CityHelper::cachedById()
             ->filter(function (City $city) use (&$trips) {
@@ -228,21 +229,21 @@ class Country extends Model
 
     public static function forInputSelect(): Collection
     {
-        $title_field = static::titleField();
+        $titleField = static::titleField();
 
-        return static::orderBy($title_field)->get(['id', $title_field])->pluck($title_field, 'id');
+        return static::orderBy($titleField)->get(['id', $titleField])->pluck($titleField, 'id');
     }
 
     public static function forInputSelectJs(): Collection
     {
-        $title_field = static::titleField();
+        $titleField = static::titleField();
 
-        return static::orderBy($title_field)
-            ->get(['id', $title_field])
-            ->map(function (Country $item) use ($title_field) {
+        return static::orderBy($titleField)
+            ->get(['id', $titleField])
+            ->map(function (Country $item) use ($titleField) {
                 return [
                     'key' => $item->id,
-                    'value' => $item->{$title_field},
+                    'value' => $item->{$titleField},
                 ];
             });
     }

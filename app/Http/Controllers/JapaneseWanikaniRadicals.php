@@ -14,15 +14,15 @@ class JapaneseWanikaniRadicals extends Controller
         }
 
         $level = request('level');
-        $user_id = auth()->id();
-        $kanji_id = request('kanji_id');
+        $userId = auth()->id();
+        $kanjiId = request('kanji_id');
 
         $radicals = Radical::orderBy('level')
             ->orderBy('meaning')
-            ->userBurnable($user_id)
-            ->when($kanji_id, function (Builder $query) use ($kanji_id) {
-                return $query->whereHas('kanjis', function (Builder $query) use ($kanji_id) {
-                    $query->where('kanji_id', $kanji_id);
+            ->userBurnable($userId)
+            ->when($kanjiId, function (Builder $query) use ($kanjiId) {
+                return $query->whereHas('kanjis', function (Builder $query) use ($kanjiId) {
+                    $query->where('kanji_id', $kanjiId);
                 });
             })
             ->when($level >= 1 && $level <= 60, function (Builder $query) use ($level) {

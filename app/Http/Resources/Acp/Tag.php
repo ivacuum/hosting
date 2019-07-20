@@ -9,9 +9,9 @@ class Tag extends Resource
 {
     public function toArray($request)
     {
-        /* @var \App\User $me */
+        /** @var \App\User $me */
         $me = $request->user();
-        $foreign_key = [$this->getForeignKey() => $this->id];
+        $foreignKey = [$this->getForeignKey() => $this->id];
 
         return [
             'id' => $this->id,
@@ -21,7 +21,7 @@ class Tag extends Resource
 
             'edit_url' => $this->when($me->can('edit', 'App\Tag'), path('Acp\Tags@edit', $this)),
             'show_url' => $this->when($me->can('show', 'App\Tag'), path('Acp\Tags@show', $this)),
-            'photos_url' => $this->when($me->can('show', 'App\Photo'), path('Acp\Photos@index', $foreign_key)),
+            'photos_url' => $this->when($me->can('show', 'App\Photo'), path('Acp\Photos@index', $foreignKey)),
 
             'photos_count' => (int) $this->photos_count,
         ];

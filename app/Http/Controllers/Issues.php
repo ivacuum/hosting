@@ -27,9 +27,9 @@ class Issues extends Controller
 
         /* @var User $user */
         $user = $request->user();
-        $is_guest = null === $user;
+        $isGuest = null === $user;
 
-        if ($is_guest) {
+        if ($isGuest) {
             $user = (new User)->findByEmailOrCreate([
                 'email' => $email,
                 'status' => User::STATUS_INACTIVE,
@@ -67,8 +67,8 @@ class Issues extends Controller
 
         $path = $parsed['path'] ?? '';
         $query = isset($parsed['query']) ? "?{$parsed['query']}" : '';
-        $locale_uri = $locale ? "/{$locale}" : '';
+        $localeUri = $locale ? "/{$locale}" : '';
 
-        return $locale_uri.$path.$query;
+        return $localeUri.$path.$query;
     }
 }

@@ -9,13 +9,13 @@ class UsersSeeder extends Seeder
         factory(App\User::class)->create([
             'email' => 'root@example.com',
             'login' => 'root',
-            'password' => 'secret',
+            'password' => 'top-secret',
         ]);
 
         factory(App\User::class)->create([
             'email' => 'guest@example.com',
             'login' => 'guest',
-            'password' => 'secret',
+            'password' => 'top-secret',
         ]);
     }
 }

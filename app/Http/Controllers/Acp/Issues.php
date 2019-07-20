@@ -12,19 +12,19 @@ class Issues extends Controller
     public function index()
     {
         $status = request('status');
-        $user_id = request('user_id');
+        $userId = request('user_id');
 
-        [$sort_key, $sort_dir] = $this->getSortParams();
+        [$sortKey, $sortDir] = $this->getSortParams();
 
         $models = Model::with('user')
             ->withCount('comments')
-            ->when($user_id, function (Builder $query) use ($user_id) {
-                return $query->where('user_id', $user_id);
+            ->when($userId, function (Builder $query) use ($userId) {
+                return $query->where('user_id', $userId);
             })
             ->unless(null === $status, function (Builder $query) use ($status) {
                 return $query->where('status', $status);
             })
-            ->orderBy($sort_key, $sort_dir)
+            ->orderBy($sortKey, $sortDir)
             ->paginate(50)
             ->withPath(path("{$this->class}@index"));
 

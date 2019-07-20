@@ -168,14 +168,14 @@ class TorrentCategoryHelper
         return array_keys($children);
     }
 
-    public function tree($parent_id = 0)
+    public function tree($parentId = 0)
     {
         if (empty($this->tree)) {
             $this->initTree();
         }
 
-        return collect(array_filter($this->tree, function ($value) use ($parent_id) {
-            return $value['parent'] === $parent_id;
+        return collect(array_filter($this->tree, function ($value) use ($parentId) {
+            return $value['parent'] === $parentId;
         }));
     }
 

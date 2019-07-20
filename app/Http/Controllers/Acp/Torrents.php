@@ -18,11 +18,11 @@ class Torrents extends Controller
         $status = request('status');
         $user_id = request('user_id');
 
-        [$sort_key, $sort_dir] = $this->getSortParams();
+        [$sortKey, $sortDir] = $this->getSortParams();
 
         $models = Model::with('user')
             ->withCount('comments')
-            ->orderBy($sort_key, $sort_dir)
+            ->orderBy($sortKey, $sortDir)
             ->when(null !== $status, function (Builder $query) use ($status) {
                 return $query->where('status', $status);
             })

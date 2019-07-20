@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Str;
 use Ivacuum\Generic\Services\ImageConverter;
 use Ivacuum\Generic\Traits\RecordsActivity;
 
@@ -77,22 +78,22 @@ class Image extends Model
             : "/uploads/gallery/{$this->splitted_date}/{$this->slug}";
     }
 
-    public function resize(UploadedFile $file, $new_width, $new_height)
+    public function resize(UploadedFile $file, $newWidth, $newHeight)
     {
         $source = $file->getRealPath();
 
         list($width, $height, $type) = getimagesize($source);
 
         // Даже маленькие исходники пересохраняем, чтобы повернуть их и почистить профили (exif, icc)
-        if ($width <= $new_width && $height <= $new_height) {
+        if ($width <= $newWidth && $height <= $newHeight) {
             return $this->convertSmallSource($source);
         }
 
         if ($type === IMAGETYPE_GIF) {
-            return $this->gifFirstFrame($source, $new_width, $new_height);
+            return $this->gifFirstFrame($source, $newWidth, $newHeight);
         }
 
-        return $this->convert($source, $new_width, $new_height);
+        return $this->convert($source, $newWidth, $newHeight);
     }
 
     public function siteThumbnail(UploadedFile $file)
@@ -118,21 +119,21 @@ class Image extends Model
 
     public function upload(UploadedFile $file)
     {
-        $new_file = $this->resize($file, 2000, 2000);
+        $newFile = $this->resize($file, 2000, 2000);
 
-        $this->size = $new_file->getSize();
+        $this->size = $newFile->getSize();
 
-        return \Storage::disk('gallery')->putFileAs($this->splitted_date, $new_file, $this->slug);
+        return \Storage::disk('gallery')->putFileAs($this->splitted_date, $newFile, $this->slug);
     }
 
-    public static function createFromFile(UploadedFile $file, $user_id)
+    public static function createFromFile(UploadedFile $file, $userId)
     {
         return new static([
-            'slug' => sprintf('%s_%s.%s', $user_id, str_random(10), strtolower($file->getClientOriginalExtension())),
+            'slug' => sprintf('%s_%s.%s', $userId, Str::random(10), strtolower($file->getClientOriginalExtension())),
             'date' => date('ymd'),
             'size' => 0,
             'views' => 0,
-            'user_id' => $user_id,
+            'user_id' => $userId,
         ]);
     }
 
