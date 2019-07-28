@@ -18,7 +18,6 @@
     <ol>
       <li>Was ich liebe</li>
       <li>Links 2-3-4</li>
-      <li>Sex</li>
       <li>Tattoo</li>
       <li>Sehnsucht</li>
       <li>Zeig dich</li>
