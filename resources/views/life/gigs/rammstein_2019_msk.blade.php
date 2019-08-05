@@ -2,19 +2,23 @@
 
 @section('content')
 @ru
+  {{--
   <div class="mb-2">
     @include('tpl.gig-countdown', ['show_datetime' => '2019-07-29 19:00:00'])
   </div>
-  <p>Новый тур группы Rammstein. Это будет уже шестнадцатое выступление по счету в России. В этот раз концерт в поддержку нового студийного альбома под названием Rammstein, выпущенного 17 мая. Место проведения концерта: большая спортивная арена Лужники.</p>
-  <p>Ждем-с.</p>
+  --}}
+  <p>Новый тур группы Rammstein. Шестнадцатое выступление по счету в России. В этот раз концерт в поддержку нового студийного альбома под названием Rammstein, выпущенного 17 мая. Место проведения концерта: большая спортивная арена Лужники.</p>
+  {{-- Смена стадиона --}}
+  {{--
   <p>
     <a class="btn btn-primary" href="http://tci.ru/rammstein2019/">Купить билет</a>
     <a class="btn btn-default" href="https://vk.com/rammstein_2019_msk">Группа ВК</a>
   </p>
+  --}}
 @endru
 <div class="row">
   <div class="col-md-7">
-    <div class="mb-1">@ru Ожидаемый сетлист: @endru</div>
+    @include('tpl.setlist-title')
     <ol>
       <li>Was ich liebe</li>
       <li>Links 2-3-4</li>
@@ -46,4 +50,11 @@
     </div>
   </div>
 </div>
+
+@ru
+  <p>Видеозапись концерта.</p>
+@en
+  <p>Video of the show.</p>
+@endru
+<youtube title="Rammstein 2019, Luzhniki Stadium, Moscow, Russia" v="hYFAxa5lDMo"></youtube>
 @endsection
