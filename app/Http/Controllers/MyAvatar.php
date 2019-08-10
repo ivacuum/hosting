@@ -13,7 +13,7 @@ class MyAvatar extends Controller
             $user->save();
         });
 
-        return response('', 204);
+        return response()->noContent();
     }
 
     public function update(MyAvatarUpdate $request)

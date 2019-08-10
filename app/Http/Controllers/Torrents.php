@@ -94,7 +94,7 @@ class Torrents extends Controller
             event(new \App\Events\Stats\TorrentMagnetGuestClicked);
         }
 
-        return response('', 204);
+        return response()->noContent();
     }
 
     public function my()

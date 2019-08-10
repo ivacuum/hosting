@@ -37,7 +37,8 @@ class Beacon extends Controller
             }
         }
 
-        return response('', 204)
+        return response()
+            ->noContent()
             ->header('Access-Control-Allow-Origin', '*');
     }
 

@@ -8,6 +8,6 @@ class DcppHubClick extends Controller
     {
         $hub->incrementClicks();
 
-        return response('', 204);
+        return response()->noContent();
     }
 }
