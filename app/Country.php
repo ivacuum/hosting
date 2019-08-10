@@ -20,7 +20,10 @@ use Illuminate\Support\Collection;
  * @property \Illuminate\Database\Eloquent\Collection|\App\City[] $cities
  * @property \Illuminate\Database\Eloquent\Collection|\App\Trip[] $trips
  *
- * @property-read string  $title
+ * @property-read int $cities_count
+ * @property-read string $title
+ * @property int $trips_count
+ * @property int $trips_published_count
  *
  * @mixin \Eloquent
  */
@@ -28,10 +31,6 @@ class Country extends Model
 {
     use HasLocalizedTitle,
         HasTripsMetaDescription;
-
-    public $trips_count;
-    public $cities_count;
-    public $trips_published_count;
 
     protected $guarded = ['created_at', 'updated_at'];
 

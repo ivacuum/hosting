@@ -17,15 +17,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Collection|\App\Photo[] $photos
  * @property \Illuminate\Support\Collection|\App\Photo[] $photosPublished
  *
- * @property-read string  $title
+ * @property-read int $photos_count
+ * @property-read string $title
  *
  * @mixin \Eloquent
  */
 class Tag extends Model
 {
     use HasLocalizedTitle;
-
-    public $photos_count;
 
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $perPage = 50;

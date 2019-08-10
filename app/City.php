@@ -23,7 +23,9 @@ use Illuminate\Support\Collection;
  * @property \App\Country $country
  * @property \App\Trip $trips
  *
- * @property-read string  $title
+ * @property-read string $title
+ * @property int $trips_count
+ * @property int $trips_published_count
  *
  * @mixin \Eloquent
  */
@@ -31,9 +33,6 @@ class City extends Model
 {
     use HasLocalizedTitle,
         HasTripsMetaDescription;
-
-    public $trips_count;
-    public $trips_published_count;
 
     protected $guarded = ['created_at', 'updated_at'];
     protected $perPage = 50;

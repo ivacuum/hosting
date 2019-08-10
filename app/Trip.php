@@ -38,11 +38,13 @@ use Symfony\Component\Finder\Finder;
  * @property \Illuminate\Database\Eloquent\Collection|\App\Photo[] $photos
  * @property \App\User $user
  *
- * @property-read string  $meta_title
- * @property-read string  $meta_description
- * @property-read string  $period
- * @property-read string  $title
- * @property-read integer $year
+ * @property-read int $comments_count
+ * @property-read string $meta_title
+ * @property-read string $meta_description
+ * @property-read string $period
+ * @property-read int $photos_count
+ * @property-read string $title
+ * @property-read int $year
  *
  * @mixin \Eloquent
  */
@@ -55,9 +57,6 @@ class Trip extends Model
     const STATUS_HIDDEN = 2;
 
     const COLUMNS_LIST = ['id', 'user_id', 'city_id', 'title_ru', 'title_en', 'slug', 'date_start', 'date_end', 'status', 'views'];
-
-    public $photos_count;
-    public $comments_count;
 
     protected $guarded = ['id', 'html', 'views', 'created_at', 'updated_at'];
     protected $dates = ['date_start', 'date_end'];
