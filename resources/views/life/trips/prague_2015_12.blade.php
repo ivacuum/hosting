@@ -193,6 +193,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1947.jpg'])
 
+<a id="kaki"></a>
 @ru
   <p>Может поэтому хурма мне никогда не нравилась?</p>
 @endru
