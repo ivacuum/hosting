@@ -41,7 +41,7 @@ export default {
 
   computed: {
     errors() {
-      return this.$store.state.validationErrors[this.name]
+      return this.$store.state.global.validationErrors[this.name]
     },
 
     inputClasses() {

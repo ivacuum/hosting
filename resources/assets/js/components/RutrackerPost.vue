@@ -1,5 +1,5 @@
 <template>
-  <div class="rutracker-post clearfix" v-once>
+  <div class="rutracker-post clearfix">
     <slot/>
   </div>
 </template>
@@ -8,14 +8,21 @@
 export default {
   data() {
     return {
-      absolute_link_regexp: new RegExp("^https?://"),
-      image_aligned_max_width: 0,
+      absoluteLinkRegexp: new RegExp("^https?://"),
+      imageAlignedMaxWidth: 0,
     }
   },
 
   mounted() {
-    this.image_aligned_max_width = Math.round(document.documentElement.clientWidth / 3) + 50
+    this.imageAlignedMaxWidth = Math.round(document.documentElement.clientWidth / 3) + 50
     this.initPost()
+  },
+
+  destroyed() {
+    $(document).off('click.spoiler', '.rutracker-post .sp-head')
+    $(document).off('click', '.sp-fold')
+    $(document).off('click', '.postImg')
+    $(document).off('load', '.postImg')
   },
 
   methods: {
@@ -33,7 +40,7 @@ export default {
     },
 
     fitImage(a, b) {
-      return "undefined" == typeof a.naturalHeight && (a.naturalHeight = a.height, a.naturalWidth = a.width), a.width > b ? (a.height = Math.round(b / a.width * a.height), a.width = b, a.style.cursor = "move", !1) : !(a.width == b && a.width < a.naturalWidth) || (a.height = a.naturalHeight, a.width = a.naturalWidth, !1)
+      return "undefined" === typeof a.naturalHeight && (a.naturalHeight = a.height, a.naturalWidth = a.width), a.width > b ? (a.height = Math.round(b / a.width * a.height), a.width = b, a.style.cursor = "move", !1) : !(a.width == b && a.width < a.naturalWidth) || (a.height = a.naturalHeight, a.width = a.naturalWidth, !1)
     },
 
     getOriginalImageFromLink($item) {
@@ -101,7 +108,7 @@ export default {
     renderLinks() {
       $('.postLink', '.rutracker-post').each((index, item) => {
         let href = $(item).attr('href')
-        if (!this.absolute_link_regexp.test(href)) {
+        if (!this.absoluteLinkRegexp.test(href)) {
           $(item).attr('href', `https://rutracker.nl/forum/${href}`)
         }
       })
@@ -123,11 +130,11 @@ export default {
 
         if ($item.hasClass('postImgAligned')) {
           $img.on('click', (e) => {
-            return this.fitImage(e.currentTarget, this.image_aligned_max_width)
+            return this.fitImage(e.currentTarget, this.imageAlignedMaxWidth)
           })
 
           $img.one('load', (e) => {
-            this.fitImage(e.currentTarget, this.image_aligned_max_width)
+            this.fitImage(e.currentTarget, this.imageAlignedMaxWidth)
           })
         }
 
@@ -151,7 +158,8 @@ export default {
               offset: -200,
             })
 
-            $head.click()
+            $head
+              .click()
               .animate({ opacity: .1 }, 500)
               .animate({ opacity: 1 }, 700)
           })

@@ -5,6 +5,8 @@ export default {
     resource: Object,
   },
 }
+
+// TODO: consider .sync for passing resource
 </script>
 
 <template>

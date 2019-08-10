@@ -1,5 +1,8 @@
 <script>
+import CommentItem from '../../CommentItem'
+
 export default {
+  components: { CommentItem },
   props: {
     resource: {
       type: Object,
@@ -16,12 +19,12 @@ export default {
   },
 
   watch: {
-    'resource.comments' () {
-      this.comments = this.resource.comments
+    'resource.comments' (value) {
+      this.comments = value
     },
 
-    'resource.status' () {
-      this.status = this.resource.status
+    'resource.status' (value) {
+      this.status = value
     }
   },
 
@@ -98,17 +101,17 @@ export default {
   <div class="my-3 pre-line">{{ resource.text }}</div>
 
   <div v-if="comments.length">
-    <h3 class="mt-4">{{ $t('comments.index') }}</h3>
+    <h3 class="mt-4">
+      {{ $t('comments.index') }}
+      <small class="text-muted">{{ comments.length }}</small>
+    </h3>
     <div v-for="comment in comments" :key="comment.id">
-      <header :style="{ color: comment.user.color }">{{ comment.user.public_name }}</header>
-      <div class="comment-body pre-line" v-html="comment.html"></div>
-      <footer class="small text-muted">{{ comment.created_at }}</footer>
-      <hr>
+      <comment-item :comment="comment"/>
     </div>
   </div>
 
   <div v-show="status === 1">
-    <div class="mb-2">
+    <div class="my-2">
       <textarea
         required
         class="form-control textarea-autosized js-autosize-textarea-vue"

@@ -45,16 +45,16 @@ export default {
       if (this.burned) {
         axios
           .put(action)
-          .then(({ data }) => {
-            if (data.status === 'OK') {
+          .then((response) => {
+            if (response.status === 204) {
               this.burned = 0
             }
           })
       } else {
         axios
           .delete(action)
-          .then(({ data }) => {
-            if (data.status === 'OK') {
+          .then((response) => {
+            if (response.status === 204) {
               this.burned = 1
             }
           })

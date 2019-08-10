@@ -83,6 +83,13 @@ Route::get('life/gigs/rss', 'LifeGigsRss@index');
 Route::get('life/rss', 'LifeTripsRss@index');
 Route::get('life/{slug}', 'Life@page');
 
+Route::get('magnets', 'Torrents@vue');
+Route::get('magnets/add', 'Torrents@vue');
+Route::get('magnets/comments', 'Torrents@vue');
+Route::get('magnets/faq', 'Torrents@vue');
+Route::get('magnets/my', 'Torrents@vue');
+Route::get('magnets/{torrent}', 'Torrents@vueShow');
+
 Route::get('mail/click/{timestamp}/{id}', 'Mail@click')->name('mail.click');
 Route::get('mail/report/{timestamp}/{id}', 'Mail@report')->middleware('auth');
 Route::get('mail/view/{timestamp}/{id}', 'Mail@view');

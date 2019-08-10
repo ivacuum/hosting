@@ -10,7 +10,7 @@ export default {
 
   computed: {
     breadcrumbs() {
-      return this.$store.state.breadcrumbs
+      return this.$store.state.global.breadcrumbs
     },
 
     count() {

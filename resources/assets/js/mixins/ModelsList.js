@@ -1,3 +1,4 @@
+import * as types from '../store/mutation-types'
 import ListHeader from '../components/acp/ListHeader.vue'
 import Pagination from '../components/acp/Pagination.vue'
 import SortableHeader from '../components/acp/SortableHeader.vue'
@@ -54,7 +55,7 @@ export default {
       .then(({ data }) => {
         next((vm) => {
           vm.collection = data
-          vm.$store.commit('setBreadcrumbs', data.breadcrumbs)
+          vm.$store.commit(types.BREADCRUMBS_SET, data.breadcrumbs)
         })
       })
   },
@@ -65,7 +66,7 @@ export default {
       .get(to.fullPath)
       .then(({ data }) => {
         this.collection = data
-        this.$store.commit('setBreadcrumbs', data.breadcrumbs)
+        this.$store.commit(types.BREADCRUMBS_SET, data.breadcrumbs)
         next()
       })
   },

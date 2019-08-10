@@ -1,3 +1,4 @@
+import * as types from '../store/mutation-types'
 import acpResourceUrl from '../utils/acpResourceUrl'
 import acpRequestErrorNotification from '../utils/acpRequestErrorNotification'
 
@@ -20,7 +21,7 @@ export default {
 
           vm.resource = data
           vm.extra = extra
-          vm.$store.commit('setBreadcrumbs', extra.breadcrumbs)
+          vm.$store.commit(types.BREADCRUMBS_SET, extra.breadcrumbs)
         })
       })
   },
@@ -32,7 +33,7 @@ export default {
       .get(acpResourceUrl(to.path, true))
       .then(({ data }) => {
         this.resource = data.data
-        this.$store.commit('setBreadcrumbs', data.breadcrumbs)
+        this.$store.commit(types.BREADCRUMBS_SET, data.breadcrumbs)
         next()
       })
   },

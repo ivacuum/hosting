@@ -96,6 +96,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import locale from '../../i18n/locale'
 import shuffle from 'lodash/shuffle'
 import I18nMessages from '../../i18n/japanese'
@@ -122,7 +123,6 @@ export default {
 
   data() {
     return {
-      guest: false,
       labels: false,
       loaded: false,
       elements: [],
@@ -135,11 +135,14 @@ export default {
   },
 
   created() {
-    this.guest = !window.AppOptions.loggedIn
     this.loadData()
   },
 
   computed: {
+    ...mapState({
+      guest: state => state.global.guest,
+    }),
+
     filteredElements() {
       if (this.burned) {
         return this.elements

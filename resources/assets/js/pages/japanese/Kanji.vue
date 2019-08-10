@@ -1,4 +1,5 @@
 <script>
+import { mapState } from 'vuex'
 import locale from '../../i18n/locale'
 import BurnKanji from '../../components/japanese/BurnKanji.vue'
 import KanjiList from '../../components/japanese/KanjiList.vue'
@@ -19,7 +20,6 @@ export default {
 
   data() {
     return {
-      guest: !window.AppOptions.loggedIn,
       kanji: {},
     }
   },
@@ -44,6 +44,10 @@ export default {
         next()
       })
   },
+
+  computed: mapState({
+    guest: state => state.global.guest,
+  }),
 }
 </script>
 

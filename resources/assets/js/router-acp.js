@@ -10,6 +10,7 @@ export default new VueRouter({
       component: { render: h => h('router-view') },
       children: [
         { path: '/', name: 'acp', component: () => import(/* webpackChunkName: "acp" */'./components/acp/AcpDashboard.vue') },
+        { path: 'quiz', component: () => import(/* webpackChunkName: "trainers" */'./components/trainer/Quiz.vue') },
 
         { path: 'artists', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Artists/Index.vue') },
         { path: 'artists/create', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Artists/Form.vue') },

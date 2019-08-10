@@ -1,20 +1,11 @@
+import global from './modules/global'
+import magnets from './modules/magnets'
+
 export default new Vuex.Store({
-  state: {
-    breadcrumbs: [],
-    validationErrors: {},
+  modules: {
+    global,
+    magnets,
   },
 
-  mutations: {
-    clearValidationErrors(state) {
-      state.validationErrors = {}
-    },
-
-    setBreadcrumbs(state, payload) {
-      state.breadcrumbs = payload
-    },
-
-    setValidationErrors(state, payload) {
-      state.validationErrors = payload
-    },
-  },
+  strict: process.env.NODE_ENV !== 'production',
 })

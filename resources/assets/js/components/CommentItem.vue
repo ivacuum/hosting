@@ -1,0 +1,34 @@
+<script>
+import UserAvatar from './UserAvatar'
+
+export default {
+  components: { UserAvatar },
+  props: {
+    comment: {
+      type: Object,
+      required: true,
+    },
+  },
+}
+</script>
+
+<template>
+<div :id="`comment-${comment.id}`" class="d-flex py-3 w-100 border-bottom">
+  <aside class="mr-3 mr-md-4">
+    <div class="comment-avatar-size mt-1" v-if="comment.user">
+      <a :href="comment.user.www">
+        <user-avatar :user="comment.user"/>
+      </a>
+    </div>
+    <div class="comment-avatar-size" v-else></div>
+  </aside>
+  <div class="text-break-word mw-700 w-100">
+    <div>
+      <a :href="comment.user.www" v-if="comment.user">{{ comment.user.public_name }}</a>
+      <em v-else>deleted user</em>
+    </div>
+    <div class="comment-body pre-line" v-html="comment.html"></div>
+    <div class="small text-muted" v-html="comment.posted_at"></div>
+  </div>
+</div>
+</template>

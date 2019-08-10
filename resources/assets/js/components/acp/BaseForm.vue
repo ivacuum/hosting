@@ -1,4 +1,5 @@
 <script>
+import * as types from '../../store/mutation-types'
 import FormText from '../forms/FormInputText.vue'
 import FormRadio from '../forms/FormInputRadio.vue'
 import FormSelect from '../forms/FormInputSelect.vue'
@@ -41,7 +42,7 @@ export default {
           vm.extra = extra
           vm.model = model
 
-          vm.$store.commit('setBreadcrumbs', breadcrumbs)
+          vm.$store.commit(types.BREADCRUMBS_SET, breadcrumbs)
         })
       })
   },
@@ -65,7 +66,7 @@ export default {
       if (!error.response) return
 
       if (error.response.status === 422) {
-        this.$store.commit('setValidationErrors', error.response.data.errors)
+        this.$store.commit(types.VALIDATION_ERRORS_SET, error.response.data.errors)
 
         if (error.response.data.errors._concurrency_control) {
           notie.alert({
@@ -97,7 +98,7 @@ export default {
       axios
         .post(acpResourceUrl(this.$route.path), this.payload())
         .then((response) => {
-          this.$store.commit('clearValidationErrors')
+          this.$store.commit(types.VALIDATION_ERRORS_CLEAR)
 
           if (response.status === 201) {
             if (addAnother) {
@@ -127,7 +128,7 @@ export default {
       axios
         .post(acpResourceUrl(this.$route.path, true), this.payload(true))
         .then((response) => {
-          this.$store.commit('clearValidationErrors')
+          this.$store.commit(types.VALIDATION_ERRORS_CLEAR)
 
           if (response.status === 200 && redirect) {
             this.$router.back()
@@ -147,7 +148,7 @@ export default {
   },
 
   destroyed() {
-    this.$store.commit('clearValidationErrors')
+    this.$store.commit(types.VALIDATION_ERRORS_CLEAR)
   }
 }
 </script>

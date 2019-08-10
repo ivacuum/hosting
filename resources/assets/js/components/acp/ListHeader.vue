@@ -23,16 +23,16 @@ export default {
     },
   },
 
-  watch: {
-    '$route' (to, from) {
-      // Сброс ввода при сбросе фильтра
-      this.q = to.query.q
-    }
-  },
-
   data() {
     return {
       q: this.$route.query.q,
+    }
+  },
+
+  watch: {
+    $route(to) {
+      // Сброс ввода при сбросе фильтра
+      this.q = to.query.q
     }
   },
 }
@@ -58,7 +58,7 @@ export default {
       v-if="!!$listeners.search"
     >
       <input
-        class="form-control"
+        class="form-control js-search-input"
         :placeholder="$t('model.q_placeholder')"
         autocapitalize="none"
         v-model="q"

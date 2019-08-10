@@ -171,6 +171,24 @@ class Torrents extends Controller
         return redirect($torrent->www());
     }
 
+    public function vue()
+    {
+        return view('magnets-spa');
+    }
+
+    public function vueShow(Torrent $torrent)
+    {
+        if (!request()->ajax()) {
+            return view('magnets-spa');
+        }
+
+        event(new \App\Events\Stats\TorrentViewed($torrent->id));
+
+        $torrent->setRelation('comments', $torrent->commentsPublished()->with('user')->orderBy('created_at')->get());
+
+        return new \App\Http\Resources\Torrent($torrent);
+    }
+
     protected function appendBreadcrumbs(): void
     {
         $this->middleware('breadcrumbs:torrents.index,torrents');

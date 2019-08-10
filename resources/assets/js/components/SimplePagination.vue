@@ -5,6 +5,10 @@ export default {
       type: Object,
       required: true,
     },
+    links: {
+      type: Object,
+      required: true,
+    },
     classes: {
       type: String,
       default: 'mt-3 text-center',
@@ -13,7 +17,7 @@ export default {
 
   computed: {
     hasMorePages() {
-      return this.meta.last_page > this.meta.current_page
+      return this.links.next !== null
     },
 
     onFirstPage() {
@@ -52,7 +56,7 @@ export default {
 </script>
 
 <template>
-<div :class="classes" v-if="meta.last_page > 1">
+<div :class="classes" v-if="links.next || meta.current_page !== 1">
   <ul class="pagination pagination-mobile m-0">
     <li class="page-item disabled" v-if="onFirstPage">
       <span class="page-link" v-html="$root.svg.chevron_left"></span>
