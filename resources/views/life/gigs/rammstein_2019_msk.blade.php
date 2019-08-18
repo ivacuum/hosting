@@ -3,7 +3,7 @@
 @section('content')
 @ru
   {{--
-  <div class="mb-2">
+  <div class="tw-mb-2">
     @include('tpl.gig-countdown', ['show_datetime' => '2019-07-29 19:00:00'])
   </div>
   --}}

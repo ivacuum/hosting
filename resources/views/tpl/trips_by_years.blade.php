@@ -5,7 +5,7 @@
     </div>
     <div>
     @foreach ($rows as $trip)
-      <div class="{{ !$loop->last ? 'mb-2' : '' }}">
+      <div class="{{ !$loop->last ? 'tw-mb-2' : '' }}">
         @if ($trip->status === App\Trip::STATUS_PUBLISHED)
           <a class="link tw-mr-1" href="{{ $trip->www() }}">{{ $trip->title }}</a>
         @else

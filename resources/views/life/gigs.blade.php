@@ -7,7 +7,7 @@
 @endpush
 
 @section('content')
-<div class="d-flex flex-wrap align-items-center mb-2">
+<div class="d-flex flex-wrap align-items-center tw-mb-2">
   <h1 class="h2 tw-mb-1 mr-3">{{ trans('life.gigs_intro_title') }}</h1>
   @if (Auth::check())
     <form class="mr-3" action="{{ path('Subscriptions@update') }}" method="post">
@@ -34,13 +34,13 @@
 <p>{{ trans('life.gigs_intro_text') }}</p>
 
 @foreach ($gigs as $year => $rows)
-  <div class="d-flex {{ !$loop->last ? 'mb-2' : '' }}">
+  <div class="d-flex {{ !$loop->last ? 'tw-mb-2' : '' }}">
     <div>
       <div class="font-weight-bold travel-year">{{ $year }}</div>
     </div>
     <div>
     @foreach ($rows as $gig)
-      <div class="{{ !$loop->last ? 'mb-2' : '' }}">
+      <div class="{{ !$loop->last ? 'tw-mb-2' : '' }}">
         @if ($gig->status === App\Gig::STATUS_PUBLISHED)
           <a class="link" href="{{ $gig->www() }}">{{ $gig->artist->title }}</a>
         @else

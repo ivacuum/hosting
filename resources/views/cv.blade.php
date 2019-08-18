@@ -82,7 +82,7 @@ body {
   <div class="row">
     <div class="col-md-8 mb-4 mb-sm-0">
       <div class="d-sm-flex mb-4">
-        <div class="mb-2 mb-sm-0">
+        <div class="tw-mb-2 mb-sm-0">
           <img class="my-picture mr-3 p-1" src="https://life.ivacuum.org/me.jpg" width="160" height="160">
         </div>
         <div>
@@ -206,7 +206,7 @@ body {
 
   <div class="color-green h5 mt-4">@ru Языки программирования @en Programming languages @endru</div>
   <ul>
-    <li class="mb-2">
+    <li class="tw-mb-2">
       <strong>PHP</strong>
       @ru
         — сделал множество сайтов и сервисов c 2003 года по настоящее время.
@@ -214,7 +214,7 @@ body {
         — built many websites since 2003.
       @endru
     </li>
-    <li class="mb-2">
+    <li class="tw-mb-2">
       <strong>Perl</strong>
       @ru
         — написал пять event-driven приложений для эффективной обработки большого количества поступающих сообщений.
@@ -237,14 +237,14 @@ body {
 
   <div class="color-green h5 mt-4">@ru Технологии и софт @en Technology and Software @endru</div>
   <ul>
-    <li class="mb-2">
+    <li class="tw-mb-2">
       <strong>Ansible</strong>
       @ru
       — простым и централизованным образом настраивал серверы.
       @en
       @endru
     </li>
-    <li class="mb-2">
+    <li class="tw-mb-2">
       <strong>BitTorrent</strong>
       @ru
         — написал серверную часть (анонсер) для координации взаимодействия клиентов в сети BitTorrent.
@@ -252,47 +252,47 @@ body {
       @endru
     </li>
     {{--
-      <li class="mb-2">
+      <li class="tw-mb-2">
         <strong>CFEngine</strong>
         — централизованная настройка серверов до перехода на Ansible.
       </li>
     --}}
-    <li class="mb-2">
+    <li class="tw-mb-2">
       <strong>Jenkins</strong>
       @ru
         — деплой сайтов при появлении изменений в репозиториях.
       @en
       @endru
     </li>
-    <li class="mb-2">
+    <li class="tw-mb-2">
       <strong>Laravel</strong>
       @ru
         — основной инструмент разработки сайтов с декабря 2014 года. Сподвигнул забросить собственный фреймворк и сделать упор на создание большего количества полезных сервисов. Делал поддержку многоязычности для данного сайта. Пользовался большинством компонентов, представленных в документации фреймворка.
       @en
       @endru
     </li>
-    <li class="mb-2">
+    <li class="tw-mb-2">
       <strong>libev</strong>
       @ru
         — без этой библиотеки не обошлось ни одно приложение, написанное на перле с использованием событийной модели.
       @en
       @endru
     </li>
-    <li class="mb-2">
+    <li class="tw-mb-2">
       <strong>memcached</strong>
       @ru
         — ускоряет проекты с первой встречи.
       @en
       @endru
     </li>
-    <li class="mb-2">
+    <li class="tw-mb-2">
       <strong>MySQL</strong>
       @ru
         — хранилище данных всех сайтов.
       @en
       @endru
     </li>
-    <li class="mb-2">
+    <li class="tw-mb-2">
       <strong>nginx</strong>
       @ru
         — многолетний опыт настройки, проксирование файлов из отдаленных регионов (S3).
@@ -300,12 +300,12 @@ body {
       @endru
     </li>
     {{--
-      <li class="mb-2">
+      <li class="tw-mb-2">
         <strong>Pano2VR</strong>
         — панорамы, виртуальные туры.
       </li>
     --}}
-    <li class="mb-2">
+    <li class="tw-mb-2">
       <strong>sphinxsearch</strong>
       @ru
         — полнотекстовый поиск, поисковые подсказки.
@@ -325,16 +325,16 @@ body {
   <ul>
     @ru
     @en
-      <li class="mb-2">
+      <li class="tw-mb-2">
         <strong>Russian</strong>
         — native.
       </li>
     @endru
-    <li class="mb-2">
+    <li class="tw-mb-2">
       <strong>@ru Английский @en English @endru</strong>
       @ru — свободный. @en — fluent. @endru
     </li>
-    <li class="mb-2">
+    <li class="tw-mb-2">
       <strong>@ru Немецкий @en German @endru</strong>
       @ru — начальный. @en — beginner. @endru
     </li>
@@ -351,18 +351,18 @@ body {
     <p>Social login via Facebook, GitHub, Google, Instagram, OK, Twitter, VK, and Yandex.</p>
   @endru
   <ul>
-    <li class="mb-2">
+    <li class="tw-mb-2">
       <strong>Google</strong>
       @ru — геокодер и карты. @en — geocoder and maps. @endru
     </li>
-    <li class="mb-2">
+    <li class="tw-mb-2">
       <strong>OZON.ru</strong>
       @ru
         — использовался для разработки white-label сайта, позволяющего заказывать товары с озона по программе лояльности.
       @en
       @endru
     </li>
-    <li class="mb-2">
+    <li class="tw-mb-2">
       <strong>WebMoney</strong>
       @ru — прием платежей. @en — payments processing. @endru
     </li>

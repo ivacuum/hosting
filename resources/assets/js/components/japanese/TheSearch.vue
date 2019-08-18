@@ -2,8 +2,8 @@
 <div>
   <div class="align-items-center d-md-flex justify-content-between mb-3 mb-md-0 mt-n2">
     <div class="d-flex flex-wrap" v-if="results">
-      <h3 class="mb-2 mb-md-0 mr-3 pt-1">{{ $t('RESULTS', { results }) }}</h3>
-      <button class="btn btn-default mb-2 mb-md-0" @click="reset">{{ $t('CLEAR') }}</button>
+      <h3 class="tw-mb-2 mb-md-0 mr-3 pt-1">{{ $t('RESULTS', { results }) }}</h3>
+      <button class="btn btn-default tw-mb-2 mb-md-0" @click="reset">{{ $t('CLEAR') }}</button>
     </div>
     <div class="d-none d-md-block" v-else>&nbsp;</div>
     <form class="mw-500" @submit.prevent="onSubmit">

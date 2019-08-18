@@ -57,7 +57,7 @@
       @csrf
 
       @if (!Auth::check())
-        <div class="mb-2">
+        <div class="tw-mb-2">
           <input
             required
             class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"

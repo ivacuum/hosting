@@ -30,7 +30,7 @@ export default {
     :title="category.title"
     v-html="$root.svg[category.icon]"
   ></div>
-  <router-link class="flex-grow-1 mb-2 mb-md-0 mr-md-3 visited" :to="{ name: 'magnet', params: { id: magnet.id }}">
+  <router-link class="flex-grow-1 tw-mb-2 mb-md-0 mr-md-3 visited" :to="{ name: 'magnet', params: { id: magnet.id }}">
     <torrent-title :title="magnet.title" hide_brackets=""/>
   </router-link>
   <a

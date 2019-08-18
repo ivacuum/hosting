@@ -1,5 +1,5 @@
 @php ($id = $id ?? 'accordion_'.str_random(6))
-<div class="card mb-2" itemscope itemtype="http://schema.org/Question">
+<div class="card tw-mb-2" itemscope itemtype="http://schema.org/Question">
   <div class="card-header">
     <h3 class="f18 tw-mb-0"><a class="d-block text-dark" href="#{{ $id }}" data-toggle="collapse" itemprop="name">{{ $title }}</a></h3>
   </div>

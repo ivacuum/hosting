@@ -17,7 +17,7 @@
   <ol class="tw-mb-0">
     @foreach ($countries as $country)
       @continue ($country->trips_count === 0)
-      <li class="{{ !$loop->last ? 'mb-2' : '' }}">
+      <li class="{{ !$loop->last ? 'tw-mb-2' : '' }}">
         @if ($country->trips_published_count)
           <a class="link" href="{{ path('UserTravelCountries@show', [$traveler->login, $country->slug]) }}"><strong>{{ $country->title }}</strong></a>:
         @else

@@ -7,7 +7,7 @@
 @section('content_header')
 @parent
 @include('tpl.city-timeline')
-<div class="d-flex flex-wrap align-items-center mb-2">
+<div class="d-flex flex-wrap align-items-center tw-mb-2">
   <img class="flag-24 flag-shadow mr-2" src="{{ $trip->city->country->flagUrl() }}">
   <h1 class="h2 tw-mb-1 mr-2">{{ $trip->title }}</h1>
   @include('tpl.city-map-button', ['city' => $trip->city])

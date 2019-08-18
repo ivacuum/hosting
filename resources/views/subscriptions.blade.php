@@ -35,7 +35,7 @@
       <span class="form-check-label">{{ trans('my.notify_gigs') }}</span>
     </label>
     @if ($errors->has('gigs'))
-      <div class="invalid-feedback d-block mb-2">{{ $errors->first('gigs') }}</div>
+      <div class="invalid-feedback d-block tw-mb-2">{{ $errors->first('gigs') }}</div>
     @endif
 
     <input type="hidden" name="news" value="{{ App\User::NOTIFY_NO }}">
@@ -50,7 +50,7 @@
       <span class="form-check-label">{{ trans('my.notify_news') }}</span>
     </label>
     @if ($errors->has('news'))
-      <div class="invalid-feedback d-block mb-2">{{ $errors->first('news') }}</div>
+      <div class="invalid-feedback d-block tw-mb-2">{{ $errors->first('news') }}</div>
     @endif
 
     <div class="form-group">
@@ -66,7 +66,7 @@
         <span class="form-check-label">{{ trans('my.notify_trips') }}</span>
       </label>
       @if ($errors->has('trips'))
-        <div class="invalid-feedback d-block mb-2">{{ $errors->first('trips') }}</div>
+        <div class="invalid-feedback d-block tw-mb-2">{{ $errors->first('trips') }}</div>
       @endif
     </div>
 

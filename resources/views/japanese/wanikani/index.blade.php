@@ -2,8 +2,8 @@
 
 @section('content')
 <h1 class="h2">{{ trans('japanese.wanikani') }}</h1>
-<div class="row text-center mb-2">
-  <div class="col-md-4 mb-2">
+<div class="row text-center tw-mb-2">
+  <div class="col-md-4 tw-mb-2">
     <div class="bg-radical rounded">
       <a
         class="d-block ja-shadow-light py-4 text-white"
@@ -14,7 +14,7 @@
       </a>
     </div>
   </div>
-  <div class="col-md-4 mb-2">
+  <div class="col-md-4 tw-mb-2">
     <div class="bg-kanji rounded">
       <a
         class="d-block ja-shadow-light py-4 text-white"
@@ -25,7 +25,7 @@
       </a>
     </div>
   </div>
-  <div class="col-md-4 mb-2">
+  <div class="col-md-4 tw-mb-2">
     <div class="bg-vocab rounded">
       <a
         class="d-block ja-shadow-light py-4 text-white"
@@ -46,7 +46,7 @@
 <h3 class="mt-4">{{ trans('japanese.by-levels') }}</h3>
 <div class="d-flex flex-wrap align-items-center">
   @foreach (range(1, 60) as $level)
-    <a class="badge badge-secondary f18 ja-shadow-light mr-2 mb-2" href="{{ path('JapaneseWanikaniLevel@show', $level) }}">
+    <a class="badge badge-secondary f18 ja-shadow-light mr-2 tw-mb-2" href="{{ path('JapaneseWanikaniLevel@show', $level) }}">
       {{ $level }}
     </a>
   @endforeach

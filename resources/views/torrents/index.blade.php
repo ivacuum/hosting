@@ -78,7 +78,7 @@
             @php ($icon = $category['icon'] ?? 'file-text-o')
             @svg ($icon)
           </div>
-          <a class="flex-grow-1 mb-2 mb-md-0 mr-md-3 visited" href="{{ $torrent->www() }}">
+          <a class="flex-grow-1 tw-mb-2 mb-md-0 mr-md-3 visited" href="{{ $torrent->www() }}">
             <torrent-title title="{{ $torrent->title }}" hide_brackets="{{ Auth::check() && Auth::user()->torrent_short_title ? 1 : '' }}"></torrent-title>
           </a>
           <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center text-md-left tw-whitespace-no-wrap js-magnet"

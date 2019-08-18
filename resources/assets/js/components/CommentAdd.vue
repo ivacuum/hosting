@@ -37,7 +37,7 @@ export default {
     </div>
 
     <form method="post">
-      <div class="mb-2" v-if="guest">
+      <div class="tw-mb-2" v-if="guest">
         <input
           required
           class="form-control"
