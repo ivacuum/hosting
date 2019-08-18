@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-<section class="bg-light pt-3 pb-5">
+<section class="bg-light tw-pt-4 tw-pb-12">
   <div class="tw-container tw-max-w-3xl">
     <div class="text-center tw-mb-4">
       <a href="{{ path('Torrents@index') }}">
@@ -30,7 +30,7 @@
   </div>
 </section>
 
-<section class="border-top border-bottom py-5">
+<section class="border-top border-bottom tw-py-12">
   <div class="tw-container tw-max-w-3xl">
     <h2 class="h3">Я подключен к ТТК (Спарку), Ростелекому, МТС, Макснету, ДомНету. Можно ли воспользоваться вашим трекером? Нужна ли локальная сеть для доступа к ресурсам?</h2>
     <p>Трекер доступен через интернет для всех желающих. Локальная сеть более не обязательна для подключения. Калуга тоже больше не ограничение — можно заходить из любой точки мира.</p>
@@ -46,7 +46,7 @@
   </div>
 </section>
 
-<section class="bg-light py-5">
+<section class="bg-light tw-py-12">
   <div class="tw-container tw-max-w-3xl">
     <h3>Доступен ли еще тот старый трекер 2010 года?</h3>
     <p>Да, он все еще доступен. Нынче он больше похож на форум, так как вместе с открытием нового трекера в начале 2017 года на <strong>t.ivacuum.ru</strong> была закрыта регистрация новых пользователей. Если у вас нет учетки или она была удалена за неактивностью, то вам будет доступно для чтения всего несколько разделов.</p>
@@ -62,7 +62,7 @@
   </div>
 </section>
 
-<section class="bg-dark py-5 text-light">
+<section class="bg-dark tw-py-12 text-light">
   <div class="tw-container tw-max-w-3xl">
     <h3 class="tw-mb-6">Ключевые особенности трекера t.ivacuum.ru</h3>
     <div class="row">
@@ -108,7 +108,7 @@
   </div>
 </section>
 
-<section class="py-5">
+<section class="tw-py-12">
   <div class="tw-container tw-max-w-3xl">
     <h3>Какие еще есть полезные ресурсы помимо трекера?</h3>
     <p>Ознакомиться с актуальным списком можно на отдельной странице.</p>

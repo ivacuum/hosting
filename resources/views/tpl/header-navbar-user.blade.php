@@ -12,7 +12,7 @@
   <div class="dropdown-menu dropdown-menu-right">
     <div class="dropdown-header">
       {{ trans('auth.signed_in_as') }}
-      <span class="font-weight-bold">{{ Auth::user()->displayName() }}</span>
+      <span class="tw-font-bold">{{ Auth::user()->displayName() }}</span>
     </div>
     <div class="dropdown-divider"></div>
     @if (Auth::user()->isAdmin())

@@ -6,7 +6,7 @@
   <div class="col-md-4 tw-mb-2">
     <div class="bg-radical rounded">
       <a
-        class="d-block ja-shadow-light py-4 text-white"
+        class="d-block ja-shadow-light tw-py-6 text-white"
         href="{{ path('JapaneseWanikaniRadicals@index') }}"
       >
         <span class="d-block f36">部首</span>
@@ -17,7 +17,7 @@
   <div class="col-md-4 tw-mb-2">
     <div class="bg-kanji rounded">
       <a
-        class="d-block ja-shadow-light py-4 text-white"
+        class="d-block ja-shadow-light tw-py-6 text-white"
         href="{{ path('JapaneseWanikaniKanji@index') }}"
       >
         <span class="d-block f36">漢字</span>
@@ -28,7 +28,7 @@
   <div class="col-md-4 tw-mb-2">
     <div class="bg-vocab rounded">
       <a
-        class="d-block ja-shadow-light py-4 text-white"
+        class="d-block ja-shadow-light tw-py-6 text-white"
         href="{{ path('JapaneseWanikaniVocabulary@index') }}"
       >
         <span class="d-block f36">単語</span>

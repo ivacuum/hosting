@@ -7,7 +7,7 @@
       <img class="screenshot" src="{{ $image->thumbnailUrl() }}">
     </a>
   </div>
-  <div class="col-lg-7 col-xl-6 tw-mt-6 mt-md-0">
+  <div class="col-lg-7 col-xl-6 tw-mt-6 md:tw-mt-0">
     <div>Ссылка:</div>
     <input class="form-control js-highlight" value="{{ $image->originalUrl() }}">
     <div class="tw-mt-2">Полная картинка:</div>

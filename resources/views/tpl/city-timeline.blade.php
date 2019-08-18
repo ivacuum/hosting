@@ -4,7 +4,7 @@
       <div class="f14 d-flex">
         @foreach ($timeline as $year => $rows)
           <div class="d-flex flex-column timeline-column">
-            <div class="font-weight-bold">{{ $year }}</div>
+            <div class="tw-font-bold">{{ $year }}</div>
             @foreach ($rows as $row)
               <div>
                 @if ($row->id === $trip->id)

@@ -1,13 +1,13 @@
-<div class="navbar navbar-border navbar-expand-md py-md-0 {{ $navbar_classes ?? 'd-none d-md-flex' }} {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'navbar-dark text-light' : 'navbar-light bg-light' }}">
+<div class="navbar navbar-border navbar-expand-md md:tw-py-0 {{ $navbar_classes ?? 'd-none d-md-flex' }} {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'navbar-dark text-light' : 'navbar-light bg-light' }}">
   <div class="tw-container">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse">
       @section('brand')
-        <a class="navbar-brand font-weight-bold py-md-0 text-center" href="{{ path('Home@index') }}">vacuum<br>kaluga</a>
+        <a class="navbar-brand tw-font-bold md:tw-py-0 text-center" href="{{ path('Home@index') }}">vacuum<br>kaluga</a>
       @show
-      <ul class="navbar-nav mr-auto align-items-md-center">
+      <ul class="navbar-nav tw-mr-auto md:tw-items-center">
         @section('global_menu')
           <li class="nav-item {{ $self == 'Life' ? 'active' : '' }}">
             <a class="nav-link" href="{{ path('Life@index') }}">
@@ -35,7 +35,7 @@
           </li>
         @show
       </ul>
-      <ul class="navbar-nav align-items-md-center">
+      <ul class="navbar-nav md:tw-items-center">
         @section('header_user')
           @if (Auth::check())
             @include('tpl.header-navbar-user')

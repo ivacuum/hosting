@@ -17,7 +17,7 @@
   @php ($initial = $current_initial = false)
   @foreach ($cities as $city)
     @php ($current_initial = $city->initial())
-    <div class="city-entry pb-2">
+    <div class="city-entry tw-pb-2">
       @if ($initial !== $current_initial)
         <span class="city-initial">{{ $current_initial }}</span>
       @endif

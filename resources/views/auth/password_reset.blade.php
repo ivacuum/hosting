@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<div class="mx-auto mw-400">
+<div class="tw-mx-auto mw-400">
   <h3 class="tw-mb-4">{{ trans('auth.password_reset_title') }}</h3>
   <form action="{{ path('Auth\ResetPassword@reset') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}

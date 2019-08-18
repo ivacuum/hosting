@@ -34,7 +34,7 @@
     </div>
   </div>
   <div class="col-md-6">
-    <div class="card tw-mt-4 mt-md-0">
+    <div class="card tw-mt-4 md:tw-mt-0">
       <div class="card-header bg-dark text-white">
         <h2 class="h4 tw-mb-0">@ru Внешние полезные ресурсы @en External resources @endru</h2>
       </div>

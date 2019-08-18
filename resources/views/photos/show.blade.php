@@ -13,7 +13,7 @@ Mousetrap.bind('right', () => {
 @endpush
 
 @section('content')
-<div class="row mt-n2">
+<div class="row tw--mt-2">
   <div class="col-lg-10 tw-mb-4">
     <div class="mobile-wide position-relative text-center">
       @if (null !== $next)
@@ -39,15 +39,15 @@ Mousetrap.bind('right', () => {
   </div>
   <div class="col-lg-2">
     <div class="d-flex flex-wrap flex-md-column">
-      <div class="tw-mr-2 mr-md-0 text-muted">{{ trans('photos.story') }}</div>
+      <div class="tw-mr-2 md:tw-mr-0 text-muted">{{ trans('photos.story') }}</div>
       <a class="d-flex flex-wrap tw-items-center link-parent" href="{{ $photo->rel->www() }}#{{ basename($photo->slug) }}">
         <img class="flag-16 flag-shadow tw-mr-1" src="{{ $photo->rel->city->country->flagUrl() }}">
         <span class="link">{{ $photo->rel->title }}</span>
       </a>
     </div>
 
-    <div class="d-flex flex-wrap flex-md-column tw-mt-1 mt-md-3">
-      <div class="tw-mr-2 mr-md-0 text-muted">{{ trans('photos.date') }}</div>
+    <div class="d-flex flex-wrap flex-md-column tw-mt-1 md:tw-mt-4">
+      <div class="tw-mr-2 md:tw-mr-0 text-muted">{{ trans('photos.date') }}</div>
       <div>{{ $photo->rel->period }} {{ $photo->rel->year }}</div>
     </div>
 

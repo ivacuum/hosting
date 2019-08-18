@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<div class="mx-auto mw-400">
+<div class="tw-mx-auto mw-400">
   <div class="text-center tw-mb-4">
     <h3>{{ trans('auth.signin_title') }}</h3>
 

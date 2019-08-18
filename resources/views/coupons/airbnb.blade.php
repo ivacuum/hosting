@@ -4,9 +4,9 @@
 <h1>{{ $meta_title }}</h1>
 <div class="mw-600">
   @ru
-    <p>Вы легко можете получить скидку около 10 евро на ваши следующие бронирования на <a class="link" href="https://www.airbnb.ru/{{ config('cfg.airbnb_link') }}">airbnb.ru</a> с помощью купонов ниже. Также я привожу информацию где удалось успешно воспользоваться данными купонами. Коды <span class="font-weight-bold">работают для уже зарегистрированных пользователей</span>.</p>
+    <p>Вы легко можете получить скидку около 10 евро на ваши следующие бронирования на <a class="link" href="https://www.airbnb.ru/{{ config('cfg.airbnb_link') }}">airbnb.ru</a> с помощью купонов ниже. Также я привожу информацию где удалось успешно воспользоваться данными купонами. Коды <span class="tw-font-bold">работают для уже зарегистрированных пользователей</span>.</p>
   @en
-    <p>You could easily get $36 off your booking cost on <a class="link" href="https://www.airbnb.com/{{ config('cfg.airbnb_link') }}">airbnb.com</a> just by using coupons below. I also provide the info where I successfully applied these coupons. It <span class="font-weight-bold">works for already registered users</span>.</p>
+    <p>You could easily get $36 off your booking cost on <a class="link" href="https://www.airbnb.com/{{ config('cfg.airbnb_link') }}">airbnb.com</a> just by using coupons below. I also provide the info where I successfully applied these coupons. It <span class="tw-font-bold">works for already registered users</span>.</p>
   @endru
   <table class="table-stats table-adaptive">
     <thead>

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">
+  <link rel="stylesheet" href="{{ mix('/assets/tailwind.css') }}">
 
   <meta content="summary" property="twitter:card">
   <meta content="@knifevacuum" property="twitter:site">
@@ -80,10 +81,10 @@ body {
 <body>
 <div class="container-fluid wrapper">
   <div class="row">
-    <div class="col-md-8 tw-mb-6 mb-sm-0">
+    <div class="col-md-8 tw-mb-6 sm:tw-mb-0">
       <div class="d-sm-flex tw-mb-6">
-        <div class="tw-mb-2 mb-sm-0">
-          <img class="my-picture tw-mr-4 p-1" src="https://life.ivacuum.org/me.jpg" width="160" height="160">
+        <div class="tw-mb-2 sm:tw-mb-0">
+          <img class="my-picture tw-mr-4 tw-p-1" src="https://life.ivacuum.org/me.jpg" width="160" height="160">
         </div>
         <div>
           <h1 class="my-name h3 text-uppercase">@ru Сергей Панков @en Sergey Pankov @endru</h1>
@@ -98,13 +99,13 @@ body {
       <div class="row">
         <div class="col-md-6 tw-mb-6">
           <h3 class="my-caption h5 text-uppercase">@ru Образование @en Education @endru</h3>
-          <div class="font-weight-bold">@ru Высшее, МГТУ им. Баумана @en Bauman Moscow State Technical University @endru</div>
+          <div class="tw-font-bold">@ru Высшее, МГТУ им. Баумана @en Bauman Moscow State Technical University @endru</div>
           <div>
             @ru Инженер-программист @en IT Engineer's degree @endru
             <span class="small text-muted">2006–2012</span>
           </div>
-          <h3 class="my-caption h5 tw-mt-6 mt-sm-5 text-uppercase">@ru Курсы и тренинги @en Courses & Trainings @endru</h3>
-          <div class="font-weight-bold">@ru Английский язык @en English @endru</div>
+          <h3 class="my-caption h5 tw-mt-6 sm:tw-mt-12 text-uppercase">@ru Курсы и тренинги @en Courses & Trainings @endru</h3>
+          <div class="tw-font-bold">@ru Английский язык @en English @endru</div>
           <div>
             @ru Грамматика @en Grammar @endru
             <span class="small text-muted">2006</span>

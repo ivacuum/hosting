@@ -1,7 +1,7 @@
-<nav class="bg-light border d-flex flex-wrap flex-column-reverse flex-md-row justify-content-between f14 tw-mt-6 p-2 rounded text-center">
+<nav class="bg-light border d-flex flex-wrap flex-column-reverse flex-md-row justify-content-between f14 tw-mt-6 tw-p-2 rounded text-center">
   @if (isset($previous_trips) && sizeof($previous_trips))
     @foreach ($previous_trips as $previous)
-      <div class="{{ !$loop->first ? 'tw-mb-4 mb-md-0' : '' }}">
+      <div class="{{ !$loop->first ? 'tw-mb-4 md:tw-mb-0' : '' }}">
         <a class="link" href="{{ $previous->www() }}">{{ $previous->title }}</a>
         <div class="f12 text-muted">
           {{ $previous->year !== $trip->year ? $previous->localizedDate() : $previous->localizedDateWithoutYear() }}
@@ -9,7 +9,7 @@
       </div>
     @endforeach
   @endif
-  <div class="tw-mb-4 mb-md-0">
+  <div class="tw-mb-4 md:tw-mb-0">
     @if (isset($previous_trips) && sizeof($previous_trips))
       <span class="d-none d-md-inline">&larr;</span>
       <span class="d-md-none">&darr;</span>
@@ -23,7 +23,7 @@
   </div>
   @if (isset($next_trips) && sizeof($next_trips))
     @foreach ($next_trips as $next)
-      <div class="tw-mb-4 mb-md-0">
+      <div class="tw-mb-4 md:tw-mb-0">
         <a class="link" href="{{ $next->www() }}">{{ $next->title }}</a>
         <div class="f12 text-muted">
           {{ $next->year !== $trip->year ? $next->localizedDate() : $next->localizedDateWithoutYear() }}

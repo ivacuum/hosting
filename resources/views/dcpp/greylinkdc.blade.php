@@ -35,7 +35,7 @@
 @endsection
 
 @section('software_features')
-<section class="tw-my-0 py-5">
+<section class="tw-my-0 tw-py-12">
   <div class="tw-container">
     @ru
       <h3>Основные преимущества GreyLinkDC++</h3>

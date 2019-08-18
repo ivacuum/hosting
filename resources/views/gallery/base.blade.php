@@ -2,7 +2,7 @@
 
 @section('content_header')
 @if (Auth::check())
-  <div class="nav-link-tabs-fader nav-border mt-n3 tw-mb-6">
+  <div class="nav-link-tabs-fader nav-border tw--mt-4 tw-mb-6">
     <div class="nav-scroll-container">
       <div class="nav-scroll">
         <nav class="nav nav-link-tabs">

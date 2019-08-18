@@ -1,8 +1,8 @@
 @extends('base')
 
 @section('content_header')
-<div class="d-lg-flex flex-row-reverse tw-items-center justify-content-between mt-n1 mt-lg-n2 tw-mb-4">
-  <form class="d-flex tw-mb-2 mb-lg-0" action="{{ path("$self@index") }}">
+<div class="d-lg-flex flex-row-reverse tw-items-center justify-content-between tw--mt-1 lg:tw--mt-2 tw-mb-4">
+  <form class="d-flex tw-mb-2 lg:tw-mb-0" action="{{ path("$self@index") }}">
     <div class="input-group">
       <input class="form-control js-search-input" name="q" value="{{ request('q') }}" placeholder="{{ trans('torrents.search') }}" autocapitalize="none">
       <div class="input-group-append">

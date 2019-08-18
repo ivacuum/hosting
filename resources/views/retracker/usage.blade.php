@@ -1,7 +1,7 @@
 @extends('retracker.base')
 
 @section('content')
-<section class="pt-3 pb-5">
+<section class="tw-pt-4 tw-pb-12">
   <div class="tw-container tw-max-w-3xl">
     <h3>При использовании трекеров rutracker.org, tapochek.net и tfile.ru</h3>
     <p>Эти трекеры автоматически добавляют ретрекер в каждый торрент-файл и вам нет необходимости проделывать эту операцию вручную.</p>

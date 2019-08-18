@@ -1,4 +1,4 @@
-<ul class="pagination pagination-mobile m-0">
+<ul class="pagination pagination-mobile tw-m-0">
   @if ($paginator->onFirstPage())
     <li class="page-item disabled"><span class="page-link">@svg (chevron-left)</span></li>
   @else

@@ -3,7 +3,7 @@
 ])
 
 @section('content')
-<section class="pt-0">
+<section class="tw-pt-0">
   <h1 class="h2">
     {{ trans('life.trips') }}
     @if ($traveler->id == optional(auth()->user())->id)

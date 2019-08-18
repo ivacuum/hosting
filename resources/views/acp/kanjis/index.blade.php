@@ -42,7 +42,7 @@
         {{ $model->level }}
       </td>
       <td>
-        <a class="bg-kanji d-block font-weight-bold pb-1 px-2 rounded text-center text-white" href="{{ path("$self@show", $model) }}">
+        <a class="bg-kanji d-block tw-font-bold tw-pb-1 tw-px-2 rounded text-center text-white" href="{{ path("$self@show", $model) }}">
           <span class="d-inline-block ja-big ja-character ja-shadow">{{ $model->character }}</span>
         </a>
       </td>

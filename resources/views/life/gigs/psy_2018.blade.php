@@ -51,7 +51,7 @@
 @endru
 
 @ru
-  <p><span class="font-weight-bold">Обновление от 10 февраля 2019 года.</span> Появилась полная запись самого активного концерта, который больше всего зарядил желанием оказаться среди корейской публики. Рекомендую моменты на <a class="link" href="https://youtu.be/cJgK1T3uzBU?t=463
+  <p><span class="tw-font-bold">Обновление от 10 февраля 2019 года.</span> Появилась полная запись самого активного концерта, который больше всего зарядил желанием оказаться среди корейской публики. Рекомендую моменты на <a class="link" href="https://youtu.be/cJgK1T3uzBU?t=463
 ">7:43</a>, <a class="link" href="https://youtu.be/cJgK1T3uzBU?t=525
 ">8:45</a> и <a class="link" href="https://youtu.be/cJgK1T3uzBU?t=2830">47:10</a> — прыгает весь стадион, включая трибуны! Где еще такое увидишь?!</p>
 @endru
@@ -108,11 +108,11 @@
 
 @ru
   <p>Проведем небольшую демонстрацию на примере припева песни 아버지 (отец).</p>
-  <div class="tw-mb-1 font-weight-bold">Оригинал:</div>
+  <div class="tw-mb-1 tw-font-bold">Оригинал:</div>
   <p>아버지 이제야 깨달아요<br>어찌 그렇게 사셨나요?<br>더 이상 쓸쓸해 하지 마요<br>이젠 나와 같이 가요</p>
-  <div class="tw-mb-1 font-weight-bold">Романизация:</div>
+  <div class="tw-mb-1 tw-font-bold">Романизация:</div>
   <p>abeoji ijeya kkaedarayo<br>eojji geureoke sasyeonnayo<br>deo isang sseulsseulhae haji mayo<br>ije nawa gachi gayo</p>
-  <div class="tw-mb-1 font-weight-bold">Кириллизация:</div>
+  <div class="tw-mb-1 tw-font-bold">Кириллизация:</div>
   <p>абоджи иджэя ккэда лаё<br>оджи кырохкэ сашёт наё<br>до исанн сыль сыль хэ хаджи маё<br>иджэн наоа катщи каё</p>
 @endru
 

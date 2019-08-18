@@ -53,9 +53,9 @@
     @csrf
 
     @ru
-      <p>Ссылка будет отправлена на вашу электронную почту <span class="font-weight-bold">{{ Auth::user()->email }}</span></p>
+      <p>Ссылка будет отправлена на вашу электронную почту <span class="tw-font-bold">{{ Auth::user()->email }}</span></p>
     @en
-      <p>The link will be sent to your e-mail <span class="font-weight-bold">{{ Auth::user()->email }}</span></p>
+      <p>The link will be sent to your e-mail <span class="tw-font-bold">{{ Auth::user()->email }}</span></p>
     @endru
 
     <button class="btn btn-default">

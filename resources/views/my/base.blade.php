@@ -29,7 +29,7 @@
       </a>
     </div>
   </div>
-  <div class="col-lg-9 tw-mt-4 mt-lg-0">
+  <div class="col-lg-9 tw-mt-4 lg:tw-mt-0">
 @endsection
 
 @section('content_footer')

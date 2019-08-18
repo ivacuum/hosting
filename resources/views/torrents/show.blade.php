@@ -63,10 +63,10 @@
         @php ($icon = $category['icon'] ?? 'file-text-o')
         @svg ($icon)
       </div>
-      <a class="flex-grow-1 tw-mb-2 mb-md-0 mr-md-3 visited" href="{{ $row->www() }}">
+      <a class="flex-grow-1 tw-mb-2 md:tw-mb-0 md:tw-mr-4 visited" href="{{ $row->www() }}">
         <torrent-title title="{{ $row->title }}" hide_brackets="{{ optional(Auth::user())->torrent_short_title ? 1 : '' }}"></torrent-title>
       </a>
-      <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center text-md-left tw-whitespace-no-wrap js-magnet"
+      <a class="flex-shrink-0 tw-pr-2 torrents-list-magnet text-center text-md-left tw-whitespace-no-wrap js-magnet"
          href="{{ $row->magnet() }}"
          title="{{ trans('torrents.download') }}"
          data-action="{{ path('Torrents@magnet', $row) }}"

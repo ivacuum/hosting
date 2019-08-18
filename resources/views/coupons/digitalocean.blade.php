@@ -35,7 +35,7 @@
     </tbody>
   </table>
   @ru
-    <p>Пожалуйста, учтите, что DigitalOcean разрешает использовать лишь <span class="font-weight-bold">один промокод для каждой учетной записи</span>, поэтому, если вы уже использовали какой-либо промокод ранее, то новый может не сработать.</p>
+    <p>Пожалуйста, учтите, что DigitalOcean разрешает использовать лишь <span class="tw-font-bold">один промокод для каждой учетной записи</span>, поэтому, если вы уже использовали какой-либо промокод ранее, то новый может не сработать.</p>
 
     <h2>Как получить бесплатные месяцы хостинга</h2>
     <ol>
@@ -45,7 +45,7 @@
       <li>Привяжите банковскую карту или заплатите $5 через PayPal для завершения процесса регистрации на DigitalOcean.</li>
     </ol>
   @en
-    <p>Remember that DigitalOcean only allow <span class="font-weight-bold">one promo code per account</span>, so if you have redeemed one in the past you may not be able to add another again.</p>
+    <p>Remember that DigitalOcean only allow <span class="tw-font-bold">one promo code per account</span>, so if you have redeemed one in the past you may not be able to add another again.</p>
 
     <h2>How to get free months of VPS</h2>
     <ol>

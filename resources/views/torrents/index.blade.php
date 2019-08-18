@@ -31,7 +31,7 @@
     </nav>
     @guest
       @ru
-        <div class="alert alert-info tw-mr-6 tw-mt-6 p-2 small">
+        <div class="alert alert-info tw-mr-6 tw-mt-6 tw-p-2 small">
           <a class="link" href="{{ path('Auth\SignIn@index', ['goto' => path('Torrents@index')]) }}">Пользователям</a> доступны чат и добавление раздач
         </div>
       @endru
@@ -78,10 +78,10 @@
             @php ($icon = $category['icon'] ?? 'file-text-o')
             @svg ($icon)
           </div>
-          <a class="flex-grow-1 tw-mb-2 mb-md-0 mr-md-3 visited" href="{{ $torrent->www() }}">
+          <a class="flex-grow-1 tw-mb-2 md:tw-mb-0 md:tw-mr-4 visited" href="{{ $torrent->www() }}">
             <torrent-title title="{{ $torrent->title }}" hide_brackets="{{ Auth::check() && Auth::user()->torrent_short_title ? 1 : '' }}"></torrent-title>
           </a>
-          <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center text-md-left tw-whitespace-no-wrap js-magnet"
+          <a class="flex-shrink-0 tw-pr-2 torrents-list-magnet text-center text-md-left tw-whitespace-no-wrap js-magnet"
              href="{{ $torrent->magnet() }}"
              title="{{ trans('torrents.download') }}"
              data-action="{{ path('Torrents@magnet', $torrent) }}"

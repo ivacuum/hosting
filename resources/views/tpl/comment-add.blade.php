@@ -1,6 +1,6 @@
-<div class="d-flex pt-3 w-100" id="comment-add">
+<div class="d-flex tw-pt-4 w-100" id="comment-add">
   @if (Auth::check())
-    <aside class="tw-mr-4 mr-md-4">
+    <aside class="tw-mr-4 md:tw-mr-6">
       <div class="comment-avatar-size tw-mt-1">
         @if (Auth::user()->avatar)
           <img class="comment-avatar-size rounded-circle" src="{{ Auth::user()->avatarUrl() }}">

@@ -6,8 +6,8 @@
   <div class="list-unstyled tw-mb-0">
     @foreach ($notifications as $notification)
       @php ($class_basename = snake_case(class_basename($notification->type)))
-      <div class="py-3 {{ !$loop->last ? 'border-bottom' : '' }}">
-        <div class="d-table-cell pr-3 svg-muted-blue f20">
+      <div class="tw-py-4 {{ !$loop->last ? 'border-bottom' : '' }}">
+        <div class="d-table-cell tw-pr-4 svg-muted-blue f20">
           @if ($class_basename === 'torrent_updated')
             @svg (magnet)
           @elseif ($class_basename === 'torrent_not_found_deleted')

@@ -1,9 +1,14 @@
+<?php
+/** @var string $vkpage */
+/** @var Carbon\Carbon $date */
+?>
+
 @extends('base', [
   'meta_title' => "Топ 10 vk.com/{$vkpage} за " . $date->formatLocalized('%e %B'),
 ])
 
 @section('content')
-<div class="nav-link-tabs-fader nav-border mt-n3">
+<div class="nav-link-tabs-fader nav-border tw--mt-4">
   <div class="nav-scroll-container">
     <div class="nav-scroll">
       <nav class="nav nav-link-tabs">
@@ -72,7 +77,7 @@
         @endif
         @foreach ($post['attachments'] as $attach)
           @if ($attach->type == 'photo' && isset($attach->photo->photo_604))
-            <img class="d-block markdown-responsive-image mx-auto {{ !$loop->first ? 'js-shortcuts-item' : '' }}" src="{{ @$attach->photo->photo_1280 ?: @$attach->photo->photo_807 ?: $attach->photo->photo_604 }}">
+            <img class="d-block markdown-responsive-image tw-mx-auto {{ !$loop->first ? 'js-shortcuts-item' : '' }}" src="{{ @$attach->photo->photo_1280 ?: @$attach->photo->photo_807 ?: $attach->photo->photo_604 }}">
           @endif
         @endforeach
         @if ($post['photos'] > 0)

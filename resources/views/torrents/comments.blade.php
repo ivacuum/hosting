@@ -4,8 +4,8 @@
 <h3>Последние комментарии</h3>
 @foreach ($comments as $comment)
   <a id="comment-{{ $comment->id }}"></a>
-  <div class="d-flex py-3 w-100 border-bottom">
-    <aside class="tw-mr-4 mr-md-4">
+  <div class="d-flex tw-py-4 w-100 border-bottom">
+    <aside class="tw-mr-4 md:tw-mr-6">
         @if (null !== $comment->user)
           <div class="comment-avatar-size tw-mt-1">
             <a href="{{ $comment->user->www() }}">

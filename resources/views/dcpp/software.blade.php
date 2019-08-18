@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="life-text">
-  <section class="tw-my-0 pt-4">
+  <section class="tw-my-0 tw-pt-6">
     <div class="tw-container">
       <h1 class="tw-mb-6">{{ trans('dcpp.download') }} {{ $software_title }} {{ $software[0]['version'] }}</h1>
       @section('download_latest')
@@ -26,7 +26,7 @@
     </div>
   </section>
 
-  <section class="tw-my-0 py-5">
+  <section class="tw-my-0 tw-py-12">
     <div class="tw-container">
       <h2>{{ trans('dcpp.about_software') }}</h2>
       @yield('about_software')
@@ -42,7 +42,7 @@
   </div>
 
   @if (!empty($software_screenshots))
-    <section class="bg-dark tw-my-0 py-5 text-light">
+    <section class="bg-dark tw-my-0 tw-py-12 text-light">
       <div class="tw-container">
         <h2 class="tw-mb-6">{{ trans('dcpp.screenshots') }}</h2>
         <p>
@@ -56,7 +56,7 @@
     </section>
   @endif
 
-  <section class="bg-light border-top border-bottom tw-my-0 py-5">
+  <section class="bg-light border-top border-bottom tw-my-0 tw-py-12">
     <div class="tw-container">
       <h2>{{ trans('dcpp.hubs') }}</h2>
       @ru
@@ -79,7 +79,7 @@
   @yield('software_features')
 
   @if (sizeof($software) > 1 || !empty($developer_site))
-    <section class="border-bottom tw-my-0 py-5">
+    <section class="border-bottom tw-my-0 tw-py-12">
       <div class="tw-container">
         <h2 class="tw-mb-6">{{ trans('dcpp.links') }}</h2>
         <div class="row">
@@ -112,7 +112,7 @@
     </section>
   @endif
 
-  <section class="bg-light tw-my-0 py-5">
+  <section class="bg-light tw-my-0 tw-py-12">
     <div class="tw-container">
       <div class="row">
         <div class="col-md-6">
@@ -129,7 +129,7 @@
             hide-title
           ></feedback-form>
         </div>
-        <div class="col-md-6 col-lg-4 col-xl-3 tw-mt-0 mt-md-3">
+        <div class="col-md-6 col-lg-4 col-xl-3 tw-mt-0 md:tw-mt-4">
           @include('tpl.google-vertical')
         </div>
       </div>

@@ -36,7 +36,7 @@
 @foreach ($gigs as $year => $rows)
   <div class="d-flex {{ !$loop->last ? 'tw-mb-2' : '' }}">
     <div>
-      <div class="font-weight-bold travel-year">{{ $year }}</div>
+      <div class="tw-font-bold travel-year">{{ $year }}</div>
     </div>
     <div>
     @foreach ($rows as $gig)

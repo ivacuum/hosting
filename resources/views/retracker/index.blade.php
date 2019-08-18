@@ -1,7 +1,7 @@
 @extends('retracker.base')
 
 @section('content')
-<section class="pt-3 pb-5">
+<section class="tw-pt-4 tw-pb-12">
   <div class="tw-container tw-max-w-3xl">
     <div class="text-center tw-mb-4">
       <a href="{{ path('Retracker@index') }}">
@@ -20,7 +20,7 @@
   </div>
 </section>
 
-<section class="bg-light border-top border-bottom py-5">
+<section class="bg-light border-top border-bottom tw-py-12">
   <div class="tw-container tw-max-w-3xl">
     <h3>Зачем он нужен?</h3>
     <ul class="tw-mb-0">
@@ -30,7 +30,7 @@
   </div>
 </section>
 
-<section class="py-5">
+<section class="tw-py-12">
   <div class="tw-container tw-max-w-3xl">
     <h3>Как настроить?</h3>
     <p>Использование ретрекера по адресу <b>retracker.local</b> требует дополнительной настройки.</p>
@@ -44,7 +44,7 @@ sudo ./retracker.local.sh</pre>
   </div>
 </section>
 
-<section class="bg-light border-top py-5">
+<section class="bg-light border-top tw-py-12">
   <div class="tw-container tw-max-w-3xl">
     <h3>Как понять, что ретрекер заработал?</h3>
     <p>Статус трекера «retracker.local» в вашем торрент-клиент на вкладке «Трекеры» (Trackers) должен измениться на «работает» (working) как на картинке ниже:</p>
