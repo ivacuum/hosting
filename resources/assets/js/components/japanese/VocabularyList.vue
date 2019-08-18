@@ -76,11 +76,11 @@
               </div>
             </div>
             <div
-              :class="{ invisible: !labels && !revealed.includes(row.id), 'mb-4 mb-md-0': row.burned || guest }"
+              :class="{ invisible: !labels && !revealed.includes(row.id), 'tw-mb-6 mb-md-0': row.burned || guest }"
               :id="`meaning-${row.id}`"
             >{{ row.meaning }}</div>
             <a
-              class="mb-4 mb-md-0 px-md-2 py-md-1 text-danger"
+              class="tw-mb-6 mb-md-0 px-md-2 py-md-1 text-danger"
               :class="{ invisible: row.burned || guest || (!labels && !revealed.includes(row.id)) }"
               href="#"
               @click.prevent="burn(lvl, row.id)"

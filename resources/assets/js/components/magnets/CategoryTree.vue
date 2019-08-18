@@ -11,7 +11,7 @@ export default {
 
 <template>
 <nav>
-  <div class="mb-4" v-for="(category, id) in tree" :key="id">
+  <div class="tw-mb-6" v-for="(category, id) in tree" :key="id">
     <h4>
       <mark v-if="$route.query.category_id === id">{{ category.title }}</mark>
       <router-link class="visited" :to="{ query: { category_id: id }}" v-else>{{ category.title }}</router-link>

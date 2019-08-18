@@ -64,7 +64,7 @@
 
 <section class="bg-dark py-5 text-light">
   <div class="container mw-800">
-    <h3 class="mb-4">Ключевые особенности трекера t.ivacuum.ru</h3>
+    <h3 class="tw-mb-6">Ключевые особенности трекера t.ivacuum.ru</h3>
     <div class="row">
       <div class="col-md-6">
         <h5 class="text-secondary">Обсуждение раздач</h5>

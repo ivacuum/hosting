@@ -7,7 +7,7 @@
 <div class="life-text">
   <section class="my-0 pt-4">
     <div class="container">
-      <h1 class="mb-4">{{ trans('dcpp.download') }} {{ $software_title }} {{ $software[0]['version'] }}</h1>
+      <h1 class="tw-mb-6">{{ trans('dcpp.download') }} {{ $software_title }} {{ $software[0]['version'] }}</h1>
       @section('download_latest')
         <div>
           <a class="btn btn-success my-1 btn-lg" href="{{ path('Files@download', $software[0]['id']) }}">
@@ -44,7 +44,7 @@
   @if (!empty($software_screenshots))
     <section class="bg-dark my-0 py-5 text-light">
       <div class="container">
-        <h2 class="mb-4">{{ trans('dcpp.screenshots') }}</h2>
+        <h2 class="tw-mb-6">{{ trans('dcpp.screenshots') }}</h2>
         <p>
           @foreach ($software_screenshots as $screenshot)
             <a href="{{ $screenshot['full'] }}">
@@ -81,7 +81,7 @@
   @if (sizeof($software) > 1 || !empty($developer_site))
     <section class="border-bottom my-0 py-5">
       <div class="container">
-        <h2 class="mb-4">{{ trans('dcpp.links') }}</h2>
+        <h2 class="tw-mb-6">{{ trans('dcpp.links') }}</h2>
         <div class="row">
           @if (sizeof($software) > 1)
             <div class="col-md-6 col-lg-5 col-xl-4">

@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<h1 class="h5 d-md-none mb-4">
+<h1 class="h5 d-md-none tw-mb-6">
   @ru Сергей Панков @en Sergey Pankov @endru
   <span class="text-muted">
     &middot;
@@ -10,7 +10,7 @@
 </h1>
 <div class="row justify-content-start">
   @ru
-    <div class="col-md-6 col-lg-4 d-none d-md-block mb-4">
+    <div class="col-md-6 col-lg-4 d-none d-md-block tw-mb-6">
       <a class="d-flex align-items-center tw-mb-2 link-parent" href="{{ path('Torrents@index') }}">
         <img class="size-32 mr-2" src="https://ivacuum.org/i/services/magnet.png">
         <h2 class="h3 tw-mb-0"><span class="link">{{ trans('torrents.index') }}</span></h2>
@@ -19,7 +19,7 @@
       {{--<div class="text-muted">Дата запуска: 5 января 2017 г.</div>--}}
     </div>
   @endru
-  <div class="col-md-6 col-lg-4 mb-4">
+  <div class="col-md-6 col-lg-4 tw-mb-6">
     <a class="d-flex align-items-center tw-mb-2 link-parent" href="{{ path('Life@index') }}">
       <img class="d-none d-md-block size-32 mr-2" src="https://ivacuum.org/i/services/hosting.png">
       <h2 class="h3 tw-mb-0"><span class="link">{{ trans('menu.life') }}</span></h2>
@@ -32,13 +32,13 @@
     @endru
   </div>
   @ru
-    <div class="col-md-6 col-lg-4 d-md-none mb-4">
+    <div class="col-md-6 col-lg-4 d-md-none tw-mb-6">
       <a class="d-flex align-items-center tw-mb-2 link-parent" href="{{ path('News@index') }}">
         <h2 class="h3 tw-mb-0"><span class="link">{{ trans('news.index') }}</span></h2>
       </a>
       <div>Хроника развития сайта с 2004 года.</div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4">
+    <div class="col-md-6 col-lg-4 tw-mb-6">
       <a class="d-flex align-items-center tw-mb-2 link-parent" href="https://kupislona.ru/">
         <img class="d-none d-md-block size-32 mr-2" src="https://ivacuum.org/i/services/kupislona.png">
         <h2 class="h3 tw-mb-0"><span class="link">KupiSlona.ru</span></h2>
@@ -46,7 +46,7 @@
       <div>Доска бесплатных объявлений России. Место встречи продавцов и покупателей.</div>
       {{--<div class="text-muted">Дата запуска: 7 декабря 2015 г.</div>--}}
     </div>
-    <div class="col-md-6 col-lg-4 d-none d-md-block mb-4">
+    <div class="col-md-6 col-lg-4 d-none d-md-block tw-mb-6">
       <a class="d-flex align-items-center tw-mb-2 link-parent" href="{{ path('Gallery@index') }}">
         <img class="size-32 mr-2" src="https://ivacuum.org/i/services/gallery.png">
         <h2 class="h3 tw-mb-0"><span class="link">{{ trans('gallery.index') }}</span></h2>
@@ -55,7 +55,7 @@
       {{--<p class="text-muted">Дата запуска: 8 февраля 2009 г.</p>--}}
     </div>
   @endru
-  <div class="col-md-6 col-lg-4 d-none d-md-block mb-4">
+  <div class="col-md-6 col-lg-4 d-none d-md-block tw-mb-6">
     <a class="d-flex align-items-center tw-mb-2 link-parent" href="{{ path('Dcpp@index') }}">
       <img class="size-32 mr-2" src="https://ivacuum.org/i/services/dcpp.png">
       <h2 class="h3 tw-mb-0"><span class="link">ArtFly.DC++</span></h2>
@@ -68,7 +68,7 @@
     @endru
   </div>
   @ru
-    <div class="col-md-6 col-lg-4 d-none d-md-block mb-4">
+    <div class="col-md-6 col-lg-4 d-none d-md-block tw-mb-6">
       <a class="d-flex align-items-center tw-mb-2 link-parent" href="http://t.ivacuum.ru">
         <img class="size-32 mr-2" src="https://ivacuum.org/i/services/torrent.png">
         <h2 class="h3 tw-mb-0"><span class="link">{{ trans('torrents.index') }}</span></h2>
@@ -76,7 +76,7 @@
       <div>Исторический форум сервиса для обмена файлами внутри локальной сети Билайн.</div>
       {{--<p class="text-muted">Дата запуска: 5 июля 2010 г.</p>--}}
     </div>
-    <div class="col-md-6 col-lg-4 mb-4">
+    <div class="col-md-6 col-lg-4 tw-mb-6">
       <a class="d-flex align-items-center tw-mb-2 link-parent" href="{{ path('ParserVk@index') }}">
         <h2 class="h3 tw-mb-0"><span class="link">{{ trans('menu.parser_vk') }}</span></h2>
       </a>
@@ -84,7 +84,7 @@
       {{--<div class="text-muted">Дата запуска: 2 октября 2014 г.</div>--}}
     </div>
   @endru
-  <div class="col-md-6 col-lg-4 mb-4">
+  <div class="col-md-6 col-lg-4 tw-mb-6">
     <a class="d-flex align-items-center tw-mb-2 link-parent" href="{{ path('Coupons@index') }}">
       <h2 class="h3 tw-mb-0"><span class="link">{{ trans('menu.coupons') }}</span></h2>
     </a>
@@ -95,7 +95,7 @@
       <div>Easy ways to get discounts for well known services.</div>
     @endru
   </div>
-  <div class="col-md-6 col-lg-4 mb-4">
+  <div class="col-md-6 col-lg-4 tw-mb-6">
     <a class="d-flex align-items-center tw-mb-2 link-parent" href="{{ path('Japanese@index') }}">
       <h2 class="h3 tw-mb-0"><span class="link">{{ trans('japanese.index') }}</span></h2>
     </a>

@@ -48,7 +48,7 @@
         <div class="h3">Search results for «{{ $q }}»</div>
       @endru
       @if ($fulltext)
-        <div class="mb-4">
+        <div class="tw-mb-6">
           <a class="btn btn-default" href="{{ UrlHelper::filter(['fulltext' => null]) }}">
             <span class="text-danger">
               @svg (times)
@@ -57,7 +57,7 @@
           </a>
         </div>
       @else
-        <div class="mb-4">
+        <div class="tw-mb-6">
           <a class="btn btn-default" href="{{ UrlHelper::filter(['fulltext' => 1]) }}">
             @svg (search)
             Искать в описаниях раздач

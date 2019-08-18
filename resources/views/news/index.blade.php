@@ -5,7 +5,7 @@
 @endpush
 
 @section('content')
-<div class="d-flex flex-wrap align-items-center font-smooth mb-4">
+<div class="d-flex flex-wrap align-items-center font-smooth tw-mb-6">
   <h1 class="h2 tw-mb-1 mr-3">{{ trans('news.index') }}</h1>
   @if (Auth::check())
     <form class="mr-3" action="{{ path('Subscriptions@update') }}" method="post">

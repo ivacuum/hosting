@@ -80,8 +80,8 @@ body {
 <body>
 <div class="container-fluid wrapper">
   <div class="row">
-    <div class="col-md-8 mb-4 mb-sm-0">
-      <div class="d-sm-flex mb-4">
+    <div class="col-md-8 tw-mb-6 mb-sm-0">
+      <div class="d-sm-flex tw-mb-6">
         <div class="tw-mb-2 mb-sm-0">
           <img class="my-picture mr-3 p-1" src="https://life.ivacuum.org/me.jpg" width="160" height="160">
         </div>
@@ -96,7 +96,7 @@ body {
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6 mb-4">
+        <div class="col-md-6 tw-mb-6">
           <h3 class="my-caption h5 text-uppercase">@ru Образование @en Education @endru</h3>
           <div class="font-weight-bold">@ru Высшее, МГТУ им. Баумана @en Bauman Moscow State Technical University @endru</div>
           <div>

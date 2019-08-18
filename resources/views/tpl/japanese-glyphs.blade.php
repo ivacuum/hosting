@@ -1,6 +1,6 @@
 <div class="d-flex flex-wrap text-center">
   @foreach ($glyphs as $glyph)
-    <div class="align-self-end mb-4 mr-4">
+    <div class="align-self-end tw-mb-6 mr-4">
       <div class="f36">
         @if (is_array($glyph['jp']))
           <ruby>

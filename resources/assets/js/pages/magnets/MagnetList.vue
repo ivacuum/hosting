@@ -80,13 +80,13 @@ export default {
 
       <div v-if="$route.query.q">
         <div class="h3">Результаты поиска по запросу «{{ $route.query.q }}»</div>
-        <div class="mb-4" v-if="$route.query.fulltext">
+        <div class="tw-mb-6" v-if="$route.query.fulltext">
           <router-link class="btn btn-default" active-class="noop-active" :to="searchUrl($route.query.q)">
             <span class="text-danger" v-html="$root.svg.times"></span>
             Искать только в заголовках
           </router-link>
         </div>
-        <div class="mb-4" v-else>
+        <div class="tw-mb-6" v-else>
           <router-link class="btn btn-default" active-class="noop-active" :to="searchUrl($route.query.q, 1)">
             <span v-html="$root.svg.search"></span>
             Искать в описаниях раздач

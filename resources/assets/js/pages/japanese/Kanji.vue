@@ -63,7 +63,7 @@ export default {
   </div>
 
   <h3 class="mt-4">{{ $t('japanese.readings') }}</h3>
-  <div class="mb-4">
+  <div class="tw-mb-6">
     <span v-if="kanji.onyomi">
       <span class="text-muted">On'yomi</span>
       <span class="f20 mr-3">【{{ kanji.onyomi }}】</span>
