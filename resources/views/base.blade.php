@@ -30,6 +30,7 @@
     <link rel="alternate" hreflang="ru" href="{{ url($request_uri) }}">
   @endif
   <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">
+  <link rel="stylesheet" href="{{ mix('/assets/tailwind.css') }}">
   @stack('head')
 </head>
 <body class="{{ $body_classes ?? 'body-with-bottom-tabbar' }} {{ optional(Auth::user())->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ $css_classes }}" data-self="{{ $self }}" data-view="{{ $view }}">
