@@ -23,7 +23,7 @@ export default {
       <th>{{ modelFieldTrans('title') }}</th>
       <th></th>
       <th>{{ modelFieldTrans('author') }}</th>
-      <th class="text-md-right text-nowrap">
+      <th class="text-md-right tw-whitespace-no-wrap">
         <span v-html="$root.svg.comment_o"></span>
       </th>
       <th>{{ modelFieldTrans('created_at') }}</th>
@@ -70,7 +70,7 @@ export default {
             <div class="small text-muted">{{ resource.name }}</div>
           </div>
         </td>
-        <td class="text-md-right text-nowrap">
+        <td class="text-md-right tw-whitespace-no-wrap">
           {{ resource.comments_count | decimal }}
         </td>
         <td>{{ resource.created_at }}</td>

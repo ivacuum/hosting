@@ -16,14 +16,14 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
   <tr>
-    <th class="text-md-right text-nowrap">
+    <th class="text-md-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
     <th>Фото</th>
     <th>URL</th>
     <th>Тэги</th>
     <th>@svg (map-marker)</th>
-    <th class="text-md-right text-nowrap">
+    <th class="text-md-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
     </th>
     <th></th>
@@ -56,7 +56,7 @@
         <div>{{ $model->lat }}</div>
         <div>{{ $model->lon }}</div>
       </td>
-      <td class="text-md-right text-nowrap">
+      <td class="text-md-right tw-whitespace-no-wrap">
         @if ($model->views > 0)
           {{ ViewHelper::number($model->views) }}
         @endif

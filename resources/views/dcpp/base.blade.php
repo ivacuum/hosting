@@ -60,9 +60,9 @@
 @if (empty($no_language_selector))
   <div class="nav-item">
     @ru
-      <a class="nav-link text-nowrap" href="{{ url("en/{$request_uri}") }}" lang="en">In English</a>
+      <a class="nav-link tw-whitespace-no-wrap" href="{{ url("en/{$request_uri}") }}" lang="en">In English</a>
     @en
-      <a class="nav-link text-nowrap" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
+      <a class="nav-link tw-whitespace-no-wrap" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
     @endru
   </div>
 @endif

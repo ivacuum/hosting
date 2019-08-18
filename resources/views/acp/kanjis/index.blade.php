@@ -18,17 +18,17 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
   <tr>
-    <th class="text-nowrap">
+    <th class="tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'level', 'order' => 'asc'])
     </th>
     <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'character') }}</th>
-    <th class="text-nowrap">
+    <th class="tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'meaning', 'order' => 'asc'])
     </th>
-    <th class="text-md-right text-nowrap">
+    <th class="text-md-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'radicals_count'])
     </th>
-    <th class="text-md-right text-nowrap">
+    <th class="text-md-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'similar_count'])
     </th>
     <th></th>
@@ -47,14 +47,14 @@
         </a>
       </td>
       <td class="pre-line">{{ implode("\n", explode(', ', $model->meaning)) }}</td>
-      <td class="text-md-right text-nowrap">
+      <td class="text-md-right tw-whitespace-no-wrap">
         @if ($model->radicals_count > 0)
           <a href="{{ path('Acp\Radicals@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->radicals_count) }}
           </a>
         @endif
       </td>
-      <td class="text-md-right text-nowrap">
+      <td class="text-md-right tw-whitespace-no-wrap">
         @if ($model->similar_count > 0)
           <a href="{{ path("$self@index", [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->similar_count) }}

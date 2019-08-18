@@ -25,17 +25,17 @@ export default {
         </sortable-header>
       </th>
       <th>{{ modelFieldTrans('slug') }}</th>
-      <th class="text-md-right text-nowrap">
+      <th class="text-md-right tw-whitespace-no-wrap">
         <sortable-header field="cities_count">
           {{ modelFieldTrans('cities_count') }}
         </sortable-header>
       </th>
-      <th class="text-md-right text-nowrap">
+      <th class="text-md-right tw-whitespace-no-wrap">
         <sortable-header field="trips_count">
           {{ modelFieldTrans('trips_count') }}
         </sortable-header>
       </th>
-      <th class="text-md-right text-nowrap">
+      <th class="text-md-right tw-whitespace-no-wrap">
         <sortable-header field="views">
           <span v-html="$root.svg.eye"></span>
         </sortable-header>
@@ -59,17 +59,17 @@ export default {
             {{ resource.slug }}
           </a>
         </td>
-        <td class="text-md-right text-nowrap">
+        <td class="text-md-right tw-whitespace-no-wrap">
           <router-link :to="resource.cities_url">
             {{ resource.cities_count | decimal }}
           </router-link>
         </td>
-        <td class="text-md-right text-nowrap">
+        <td class="text-md-right tw-whitespace-no-wrap">
           <router-link :to="resource.trips_url">
             {{ resource.trips_count | decimal }}
           </router-link>
         </td>
-        <td class="text-md-right text-nowrap">
+        <td class="text-md-right tw-whitespace-no-wrap">
           {{ resource.views | decimal }}
         </td>
       </tr>

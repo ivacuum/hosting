@@ -78,19 +78,19 @@
 </div>
 
 <div>
-  <span class="text-nowrap mr-2">
+  <span class="tw-whitespace-no-wrap mr-2">
     <span class="badge badge-secondary mr-1">...</span>
     есть заметки
   </span>
-  <span class="text-nowrap mr-2">
+  <span class="tw-whitespace-no-wrap mr-2">
     <span class="badge badge-info mr-1">?</span>
     не в нашей панели
   </span>
-  <span class="text-nowrap mr-2">
+  <span class="tw-whitespace-no-wrap mr-2">
     <span class="badge badge-danger mr-1">$</span>
     просрочена оплата
   </span>
-  <span class="text-nowrap mr-2">
+  <span class="tw-whitespace-no-wrap mr-2">
     <span class="badge badge-warning mr-1">$</span>
     подходит срок оплаты
   </span>

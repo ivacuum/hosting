@@ -36,7 +36,7 @@ export default {
           :key="relation.i18n_index"
         >
           {{ $t(`${relation.i18n_index}.index`) }}
-          <span class="text-muted small text-nowrap">{{ relation.count | decimal }}</span>
+          <span class="text-muted small tw-whitespace-no-wrap">{{ relation.count | decimal }}</span>
         </router-link>
         <a
           class="list-group-item list-group-item-action"

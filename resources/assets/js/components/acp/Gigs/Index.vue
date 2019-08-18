@@ -27,7 +27,7 @@ export default {
         </sortable-header>
       </th>
       <th>{{ modelFieldTrans('slug') }}</th>
-      <th class="text-md-right text-nowrap">
+      <th class="text-md-right tw-whitespace-no-wrap">
         <sortable-header field="views">
           <span v-html="$root.svg.eye"></span>
         </sortable-header>
@@ -61,7 +61,7 @@ export default {
             {{ resource.slug }}
           </a>
         </td>
-        <td class="text-md-right text-nowrap">
+        <td class="text-md-right tw-whitespace-no-wrap">
           {{ resource.views | decimal }}
         </td>
         <td>

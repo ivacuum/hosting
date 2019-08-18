@@ -24,14 +24,14 @@
       @include('acp.tpl.sortable-header', ['key' => 'date_start'])
     </th>
     <th>URL</th>
-    <th class="text-md-right text-nowrap">
+    <th class="text-md-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
     </th>
-    <th class="text-md-right text-nowrap">
+    <th class="text-md-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
     </th>
     <th>@svg (paperclip)</th>
-    <th class="text-md-right text-nowrap">
+    <th class="text-md-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'photos_count', 'svg' => 'picture-o'])
     </th>
     <th class="text-md-right"></th>
@@ -63,12 +63,12 @@
           {{ $model->slug }}
         </a>
       </td>
-      <td class="text-md-right text-nowrap">
+      <td class="text-md-right tw-whitespace-no-wrap">
         @if ($model->views > 0)
           {{ ViewHelper::number($model->views) }}
         @endif
       </td>
-      <td class="text-md-right text-nowrap">
+      <td class="text-md-right tw-whitespace-no-wrap">
         @if ($model->comments_count > 0)
           {{ ViewHelper::number($model->comments_count) }}
         @endif
@@ -82,7 +82,7 @@
           </a>
         @endif
       </td>
-      <td class="text-md-right text-nowrap">
+      <td class="text-md-right tw-whitespace-no-wrap">
         @if ($model->photos_count > 0)
           <a href="{{ path('Acp\Photos@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->photos_count) }}

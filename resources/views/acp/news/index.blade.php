@@ -4,15 +4,15 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="text-md-right text-nowrap">
+    <th class="text-md-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
     <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'title') }}</th>
     <th></th>
-    <th class="text-md-right text-nowrap">
+    <th class="text-md-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
     </th>
-    <th class="text-md-right text-nowrap">
+    <th class="text-md-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
     </th>
     <th>Дата</th>
@@ -34,12 +34,12 @@
           </span>
         @endif
       </td>
-      <td class="text-md-right text-nowrap">
+      <td class="text-md-right tw-whitespace-no-wrap">
         @if ($model->views > 0)
           {{ ViewHelper::number($model->views) }}
         @endif
       </td>
-      <td class="text-md-right text-nowrap">
+      <td class="text-md-right tw-whitespace-no-wrap">
         @if ($model->comments_count > 0)
           <a href="{{ path('Acp\Comments@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->comments_count) }}

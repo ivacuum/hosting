@@ -47,7 +47,7 @@
           </span>
         @endif
       </td>
-      <td class="text-nowrap">{{ ViewHelper::dateShort($model->created_at) }}</td>
+      <td class="tw-whitespace-no-wrap">{{ ViewHelper::dateShort($model->created_at) }}</td>
     </tr>
   @endforeach
   </tbody>

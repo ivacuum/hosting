@@ -18,17 +18,17 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="text-md-right text-nowrap">
+    <th class="text-md-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
     <th>{{ trans('model.author') }}</th>
-    <th class="text-md-right text-nowrap">
+    <th class="text-md-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
     </th>
-    <th class="text-md-right text-nowrap">
+    <th class="text-md-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
     </th>
-    <th class="text-md-right text-nowrap">
+    <th class="text-md-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'clicks', 'svg' => 'magnet'])
     </th>
     <th></th>
@@ -45,19 +45,19 @@
           {{ $model->user->displayName() }}
         </a>
       </td>
-      <td class="text-md-right text-nowrap">
+      <td class="text-md-right tw-whitespace-no-wrap">
         @if ($model->views > 0)
           {{ ViewHelper::number($model->views) }}
         @endif
       </td>
-      <td class="text-md-right text-nowrap">
+      <td class="text-md-right tw-whitespace-no-wrap">
         @if ($model->comments_count > 0)
           <a href="{{ path('Acp\Comments@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->comments_count) }}
           </a>
         @endif
       </td>
-      <td class="text-md-right text-nowrap">
+      <td class="text-md-right tw-whitespace-no-wrap">
         @if ($model->clicks > 0)
           {{ ViewHelper::number($model->clicks) }}
         @endif

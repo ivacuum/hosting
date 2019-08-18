@@ -28,18 +28,18 @@ export default {
         </sortable-header>
       </th>
       <th>{{ modelFieldTrans('slug') }}</th>
-      <th class="text-md-right text-nowrap">
+      <th class="text-md-right tw-whitespace-no-wrap">
         <sortable-header field="views">
           <span v-html="$root.svg.eye"></span>
         </sortable-header>
       </th>
-      <th class="text-md-right text-nowrap">
+      <th class="text-md-right tw-whitespace-no-wrap">
         <sortable-header field="comments_count">
           <span v-html="$root.svg.comment_o"></span>
         </sortable-header>
       </th>
       <th v-html="$root.svg.paperclip"></th>
-      <th class="text-md-right text-nowrap">
+      <th class="text-md-right tw-whitespace-no-wrap">
         <sortable-header field="photos_count">
           <span v-html="$root.svg.picture_o"></span>
         </sortable-header>
@@ -79,10 +79,10 @@ export default {
             {{ resource.slug }}
           </a>
         </td>
-        <td class="text-md-right text-nowrap">
+        <td class="text-md-right tw-whitespace-no-wrap">
           {{ resource.views | decimal }}
         </td>
-        <td class="text-md-right text-nowrap">
+        <td class="text-md-right tw-whitespace-no-wrap">
           <a :href="resource.comments_url">
             {{ resource.comments_count | decimal }}
           </a>
@@ -92,7 +92,7 @@ export default {
             <span class="tooltipped tooltipped-n" aria-label="Обложка" v-html="$root.svg.paperclip"></span>
           </a>
         </td>
-        <td class="text-md-right text-nowrap">
+        <td class="text-md-right tw-whitespace-no-wrap">
           <a :href="resource.photos_url">
             {{ resource.photos_count | decimal }}
           </a>

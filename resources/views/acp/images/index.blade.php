@@ -35,15 +35,15 @@
     <thead>
       <tr>
         <th><input type="checkbox" class="js-select-all" data-selector=".models-checkbox"></th>
-        <th class="text-md-right text-nowrap">
+        <th class="text-md-right tw-whitespace-no-wrap">
           @include('acp.tpl.sortable-header', ['key' => 'id'])
         </th>
-        <th class="text-md-right text-nowrap">Автор</th>
+        <th class="text-md-right tw-whitespace-no-wrap">Автор</th>
         <th class="text-center">Изображение</th>
-        <th class="text-md-right text-nowrap">
+        <th class="text-md-right tw-whitespace-no-wrap">
           @include('acp.tpl.sortable-header', ['key' => 'size'])
         </th>
-        <th class="text-md-right text-nowrap">
+        <th class="text-md-right tw-whitespace-no-wrap">
           @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
         </th>
         <th>
@@ -67,8 +67,8 @@
               <img class="screenshot" src="{{ $model->thumbnailSecretUrl() }}">
             </a>
           </td>
-          <td class="text-md-right text-muted text-nowrap">{{ ViewHelper::size($model->size) }}</td>
-          <td class="text-md-right text-nowrap">
+          <td class="text-md-right text-muted tw-whitespace-no-wrap">{{ ViewHelper::size($model->size) }}</td>
+          <td class="text-md-right tw-whitespace-no-wrap">
             @if ($model->views > 3000)
               <span class="badge badge-success">{{ ViewHelper::number($model->views) }}</span>
             @else

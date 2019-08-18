@@ -7,7 +7,7 @@
   <aside class="d-none d-lg-block flex-shrink-0 font-smooth torrent-categories" style="width: 14rem;">
     <nav>
       @foreach ($tree as $id => $category)
-        <h4 class="{{ $loop->first ? '' : 'mt-4' }} text-nowrap">
+        <h4 class="{{ $loop->first ? '' : 'mt-4' }} tw-whitespace-no-wrap">
           @if (!empty($category_id) && $id == $category_id)
             <mark>{{ $category['title'] }}</mark>
           @else
@@ -17,7 +17,7 @@
         @if (!empty($category['children']))
           @foreach ($category['children'] as $id => $child)
             @continue (empty($stats[$id]))
-            <div class="text-nowrap">
+            <div class="tw-whitespace-no-wrap">
               @if (!empty($category_id) && $id == $category_id)
                 <mark>{{ $child['title'] }}</mark>
               @else
@@ -81,7 +81,7 @@
           <a class="flex-grow-1 mb-2 mb-md-0 mr-md-3 visited" href="{{ $torrent->www() }}">
             <torrent-title title="{{ $torrent->title }}" hide_brackets="{{ Auth::check() && Auth::user()->torrent_short_title ? 1 : '' }}"></torrent-title>
           </a>
-          <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center text-md-left text-nowrap js-magnet"
+          <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center text-md-left tw-whitespace-no-wrap js-magnet"
              href="{{ $torrent->magnet() }}"
              title="{{ trans('torrents.download') }}"
              data-action="{{ path('Torrents@magnet', $torrent) }}"
@@ -89,7 +89,7 @@
             @svg (magnet)
             <span class="js-magnet-counter">{{ $torrent->clicks > 0 ? $torrent->clicks : '' }}</span>
           </a>
-          <div class="flex-shrink-0 text-center text-md-left text-nowrap torrents-list-size">{{ ViewHelper::size($torrent->size) }}</div>
+          <div class="flex-shrink-0 text-center text-md-left tw-whitespace-no-wrap torrents-list-size">{{ ViewHelper::size($torrent->size) }}</div>
         </div>
       @endforeach
 

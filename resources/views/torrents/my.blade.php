@@ -18,10 +18,10 @@
       @foreach ($torrents as $torrent)
         <tr>
           <td><a class="visited" href="{{ $torrent->www() }}">{{ $torrent->shortTitle() }}</a></td>
-          <td class="text-muted text-md-right text-nowrap">{{ $torrent->views ? ViewHelper::number($torrent->views) : '' }}</td>
-          <td class="text-md-right text-nowrap">{{ $torrent->comments_count ? ViewHelper::number($torrent->comments_count) : '' }}</td>
-          <td class="text-md-right text-nowrap">{{ $torrent->clicks ? ViewHelper::number($torrent->clicks) : '' }}</td>
-          <td class="text-muted text-nowrap">{{ ViewHelper::size($torrent->size) }}</td>
+          <td class="text-muted text-md-right tw-whitespace-no-wrap">{{ $torrent->views ? ViewHelper::number($torrent->views) : '' }}</td>
+          <td class="text-md-right tw-whitespace-no-wrap">{{ $torrent->comments_count ? ViewHelper::number($torrent->comments_count) : '' }}</td>
+          <td class="text-md-right tw-whitespace-no-wrap">{{ $torrent->clicks ? ViewHelper::number($torrent->clicks) : '' }}</td>
+          <td class="text-muted tw-whitespace-no-wrap">{{ ViewHelper::size($torrent->size) }}</td>
           <td>{{ ViewHelper::dateShort($torrent->registered_at) }}</td>
           <td>
             <a class="visited" href="{{ $torrent->externalLink() }}">

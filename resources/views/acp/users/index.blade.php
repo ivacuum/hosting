@@ -35,16 +35,16 @@
       <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'avatar') }}</th>
     @endif
     <th>Активен</th>
-    <th class="text-md-right text-nowrap">
+    <th class="text-md-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
     </th>
-    <th class="text-md-right text-nowrap">
+    <th class="text-md-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'images_count', 'svg' => 'picture-o'])
     </th>
-    <th class="text-md-right text-nowrap">
+    <th class="text-md-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'torrents_count', 'svg' => 'magnet'])
     </th>
-    <th class="text-md-right text-nowrap">
+    <th class="text-md-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'trips_count', 'svg' => 'plane'])
     </th>
     <th>Дата реги</th>
@@ -75,28 +75,28 @@
           Да
         @endif
       </td>
-      <td class="text-md-right text-nowrap">
+      <td class="text-md-right tw-whitespace-no-wrap">
         @if ($model->comments_count > 0)
           <a href="{{ path('Acp\Comments@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->comments_count) }}
           </a>
         @endif
       </td>
-      <td class="text-md-right text-nowrap">
+      <td class="text-md-right tw-whitespace-no-wrap">
         @if ($model->images_count > 0)
           <a href="{{ path('Acp\Images@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->images_count) }}
           </a>
         @endif
       </td>
-      <td class="text-md-right text-nowrap">
+      <td class="text-md-right tw-whitespace-no-wrap">
         @if ($model->torrents_count > 0)
           <a href="{{ path('Acp\Torrents@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->torrents_count) }}
           </a>
         @endif
       </td>
-      <td class="text-md-right text-nowrap">
+      <td class="text-md-right tw-whitespace-no-wrap">
         @if ($model->trips_count > 0)
           <a href="{{ path('Acp\Trips@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->trips_count) }}

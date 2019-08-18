@@ -135,7 +135,7 @@
           @if (empty($no_language_selector))
             <li class="list-inline-item">
               @ru
-                <a class="d-flex flex-wrap align-items-center text-nowrap" href="{{ url("en/{$request_uri}") }}" lang="en">
+                <a class="d-flex flex-wrap align-items-center tw-whitespace-no-wrap" href="{{ url("en/{$request_uri}") }}" lang="en">
                   <div class="mr-1">
                     <svg class="flag-16 flag-shadow" viewBox="0 0 640 480" width="16" height="12">
                       <g fill-rule="evenodd">
@@ -151,7 +151,7 @@
                   <div>In English</div>
                 </a>
               @en
-                <a class="d-flex flex-wrap align-items-center text-nowrap" href="{{ url($request_uri) }}" lang="ru">
+                <a class="d-flex flex-wrap align-items-center tw-whitespace-no-wrap" href="{{ url($request_uri) }}" lang="ru">
                   <div class="mr-1">
                     <svg class="flag-16 flag-shadow" viewBox="0 0 640 480" width="16" height="12">
                       <g fill-rule="evenodd" stroke-width="1pt">

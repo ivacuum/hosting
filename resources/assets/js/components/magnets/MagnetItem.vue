@@ -34,7 +34,7 @@ export default {
     <torrent-title :title="magnet.title" hide_brackets=""/>
   </router-link>
   <a
-    class="flex-shrink-0 pr-2 torrents-list-magnet text-center text-md-left text-nowrap"
+    class="flex-shrink-0 pr-2 torrents-list-magnet text-center text-md-left tw-whitespace-no-wrap"
     :href="magnet.magnet"
     :title="$t('torrents.download')"
     @click="download(magnet)"
@@ -42,6 +42,6 @@ export default {
     <span v-html="$root.svg.magnet"></span>
     <span v-if="magnet.clicks > 0">{{ magnet.clicks }}</span>
   </a>
-  <div class="flex-shrink-0 text-center text-md-left text-nowrap torrents-list-size" v-html="magnet.size"></div>
+  <div class="flex-shrink-0 text-center text-md-left tw-whitespace-no-wrap torrents-list-size" v-html="magnet.size"></div>
 </div>
 </template>
