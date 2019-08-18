@@ -42,11 +42,11 @@
     @foreach ($rows as $gig)
       <div class="{{ !$loop->last ? 'tw-mb-2' : '' }}">
         @if ($gig->status === App\Gig::STATUS_PUBLISHED)
-          <a class="link" href="{{ $gig->www() }}">{{ $gig->artist->title }}</a>
+          <a class="link tw-mr-1" href="{{ $gig->www() }}">{{ $gig->artist->title }}</a>
         @else
-          {{ $gig->artist->title }}
+          <span class="tw-mr-1">{{ $gig->artist->title }}</span>
         @endif
-        <span class="ml-1 travel-month">{{ $gig->shortDate() }}</span>
+        <span class="travel-month">{{ $gig->shortDate() }}</span>
       </div>
     @endforeach
     </div>

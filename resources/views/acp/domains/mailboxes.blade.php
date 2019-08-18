@@ -31,7 +31,7 @@
 </form>
 
 @if ($mailboxes->total > 0)
-  <h3 class="mt-5">Существующие ящики <small class="text-muted">{{ $mailboxes->total }}</small></h3>
+  <h3 class="tw-mt-12">Существующие ящики <small class="text-muted">{{ $mailboxes->total }}</small></h3>
   <ul>
     @foreach ($mailboxes->accounts as $account)
       <li>

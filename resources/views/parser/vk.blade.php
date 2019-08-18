@@ -60,11 +60,11 @@
         <div class="life-text tw-mb-0 pre-line">{{ $post['text'] }}</div>
       @endif
       @if (!empty($post['copy_history']))
-        <div class="life-text {{ $post['text'] ? 'mt-3' : '' }} tw-mb-0"><strong>Репост</strong></div>
+        <div class="life-text {{ $post['text'] ? 'tw-mt-4' : '' }} tw-mb-0"><strong>Репост</strong></div>
         <div class="life-text tw-mb-0 pre-line">{{ $post['copy_history'][0]->text }}</div>
       @endif
       @if ($post['attachments'])
-        <div class="mt-2">
+        <div class="tw-mt-2">
         @if ($post['photos'] > 1)
           <div class="pic-container">
         @elseif ($post['photos'] == 1)
@@ -145,7 +145,7 @@
         @endforeach
         </div>
       @endif
-      <div class="mt-2 vk-post-meta text-muted">
+      <div class="tw-mt-2 vk-post-meta text-muted">
         <samp class="f12 svg-labels justify-content-end">
           <a class="svg-flex svg-label" href="{{ $post['url'] }}">
             @svg (link)

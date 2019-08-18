@@ -267,7 +267,7 @@
 @endcomponent
 
 <div class="mw-600">
-  <div class="h3 mt-5">{{ trans('issues.create') }}</div>
+  <div class="h3 tw-mt-12">{{ trans('issues.create') }}</div>
   @ru
     <p>Поделитесь своими знаниями или задайте вопрос. Мы постараемся обработать информацию и дополнить эту страницу новыми материалами.</p>
   @en

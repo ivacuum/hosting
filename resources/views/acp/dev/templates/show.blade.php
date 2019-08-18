@@ -6,7 +6,7 @@
 @endsection
 
 @section('content_footer')
-    <div class="mt-3"><a class="btn btn-primary" href="?images=1">Запилить картинки</a></div>
+    <div class="tw-mt-4"><a class="btn btn-primary" href="?images=1">Запилить картинки</a></div>
   </div>
 </div>
 @endsection

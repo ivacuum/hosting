@@ -28,7 +28,7 @@
       </div>
       <template v-for="(collection, lvl) in filteredElements">
         <a :name="`level-${lvl}`"></a>
-        <div class="d-sm-flex align-items-center justify-content-between mt-4 tw-mb-1">
+        <div class="d-sm-flex align-items-center justify-content-between tw-mt-6 tw-mb-1">
           <h3>
             <span>{{ titleLabel(lvl) }}</span>
             <small class="text-muted">{{ collection.length }}</small>
@@ -68,7 +68,7 @@
             >？</a>
             <div
               class="text-muted"
-              :class="{ invisible: !labels && !revealed.includes(row.id), 'mt-3 mt-md-0': labels }"
+              :class="{ invisible: !labels && !revealed.includes(row.id), 'tw-mt-4 mt-md-0': labels }"
               :id="`kana-${row.id}`"
             >
               <div class="ja-character tw-whitespace-no-wrap" v-for="kana in row.kana.split(', ')">

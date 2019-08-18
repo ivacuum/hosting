@@ -11,7 +11,7 @@
   <img class="d-inline-block" src="https://s.tcdn.co/887/736/8877364e-9bb8-306d-ae3a-1a49f15190ec/{{ $i }}.png" width="128" height="128">
 @endforeach
 
-<div class="h3 mt-5">
+<div class="h3 tw-mt-12">
   @ru Ленивая панда @en Lazy Panda @endru
   <a class="btn btn-success" href="tg://addstickers?set=LazyPanda">@ru Добавить в Телеграм @en Add to Telegram @endru</a>
 </div>
@@ -19,7 +19,7 @@
   <img class="d-inline-block" src="https://s.tcdn.co/932/55d/93255d41-5636-3fb3-bbab-33835f24d937/{{ $i }}.png" width="128" height="128">
 @endforeach
 
-<div class="h3 mt-5">
+<div class="h3 tw-mt-12">
   @ru Динозавры @en Dinosaurs @endru
   <a class="btn btn-success" href="tg://addstickers?set=Mesozoic">@ru Добавить в Телеграм @en Add to Telegram @endru</a>
 </div>
@@ -28,7 +28,7 @@
   width="128" height="128">
 @endforeach
 
-<div class="h3 mt-5">
+<div class="h3 tw-mt-12">
   @ru Чайка Джо @en Joe the Seagull @endru
   <a class="btn btn-success" href="tg://addstickers?set=joe_the_seagull_ru">@ru Добавить в Телеграм @en Add to Telegram @endru</a>
 </div>
@@ -36,7 +36,7 @@
   <img class="d-inline-block" src="https://s.tcdn.co/a82/ea3/a82ea393-a978-342f-b062-07823d877dae/{{ $i }}.png" width="128" height="128">
 @endforeach
 
-<div class="h3 mt-5">
+<div class="h3 tw-mt-12">
   @ru Змея Снэки @en Sneaky Snakie @endru
   <a class="btn btn-success" href="tg://addstickers?set=SneakySnakie">@ru Добавить в Телеграм @en Add to Telegram @endru</a>
 </div>

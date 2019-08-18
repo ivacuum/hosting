@@ -53,7 +53,7 @@
   </tbody>
 </table>
 
-<div class="mt-3">
+<div class="tw-mt-4">
   @include('acp.tpl.batch', ['actions' => [
     'hide' => 'Скрыть',
     'publish' => 'Опубликовать',

@@ -6,7 +6,7 @@
 @section('content')
 <div class="mw-600">
   <img src="https://ivacuum.org/i/services/firstvds.png" width="135" height="72" onclick="location.href='https://firstvds.ru/?from=149161'">
-  <h1 class="mt-4">{{ trans('coupons.firstvds.subject') }}</h1>
+  <h1 class="tw-mt-6">{{ trans('coupons.firstvds.subject') }}</h1>
   @ru
     <p>Укажите вашу электронную почту, и мы пришлем вам код для получения скидки 25% на первый заказ.</p>
   @en
@@ -36,7 +36,7 @@
     </div>
   </form>
 
-  <section class="mt-5">
+  <section class="tw-mt-12">
     <div class="h2">@ru Хотите способ проще? @en Looking for an easier way? @endru</div>
     @ru
       <p>Перейдите по ссылке для автоматического применения скидки к вашему первому заказу.</p>

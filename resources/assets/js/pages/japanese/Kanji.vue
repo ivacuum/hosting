@@ -62,7 +62,7 @@ export default {
     <div class="text-capitalize">{{ kanji.meaning }}</div>
   </div>
 
-  <h3 class="mt-4">{{ $t('japanese.readings') }}</h3>
+  <h3 class="tw-mt-6">{{ $t('japanese.readings') }}</h3>
   <div class="tw-mb-6">
     <span v-if="kanji.onyomi">
       <span class="text-muted">On'yomi</span>
@@ -98,7 +98,7 @@ export default {
     v-if="kanji.character"
   />
 
-  <div class="mt-5">
+  <div class="tw-mt-12">
     <a class="mr-3" :href="`https://www.wanikani.com/kanji/${kanji.character}`" rel="noreferrer">
       WaniKani
       <span v-html="$root.svg.external_link"></span>
@@ -115,7 +115,7 @@ export default {
     </a>
   </div>
 
-  <div class="mt-4" v-if="!guest">
+  <div class="tw-mt-6" v-if="!guest">
     <burn-kanji
       :id="kanji.id"
       :burned="kanji.burned"

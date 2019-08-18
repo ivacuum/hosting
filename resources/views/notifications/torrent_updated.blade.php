@@ -8,7 +8,7 @@
 >
   {{ $notification->created_at->diffForHumans() }}
 </time>
-<div class="mt-2">
+<div class="tw-mt-2">
   <a
     class="btn btn-success btn-sm js-magnet"
     href="{{ ViewHelper::magnet($notification->data['info_hash'], $notification->data['announcer'], $notification->data['title']) }}"

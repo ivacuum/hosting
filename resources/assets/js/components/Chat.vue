@@ -5,7 +5,7 @@
       <div class="chat-date my-1 text-center">
         <div class="chat-bg d-inline-block mx-auto p-1 rounded">{{ date }}</div>
       </div>
-      <div class="d-flex mt-2" v-for="(message, index) in messagesForDate">
+      <div class="d-flex tw-mt-2" v-for="(message, index) in messagesForDate">
         <div class="flex-shrink-0" style="width: 2.75rem;">
           <div v-if="!sameUser[date][index]">
             <img
@@ -32,7 +32,7 @@
     </div>
     -->
   </div>
-  <form class="mt-1 tw-mb-4" @submit.prevent="post">
+  <form class="tw-mt-1 tw-mb-4" @submit.prevent="post">
     <div class="input-group">
       <input class="form-control" placeholder="Сообщение в чат..." v-model="message">
       <div class="input-group-append">

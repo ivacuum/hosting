@@ -112,7 +112,7 @@
       </div>
     @endif
   </div>
-  <div class="{{ $content_container_classes ?? 'container mt-3' }} {{ $content_container_extra_classes ?? '' }}" id="{{ $content_container_id ?? 'pjax_container' }}">
+  <div class="{{ $content_container_classes ?? 'container tw-mt-4' }} {{ $content_container_extra_classes ?? '' }}" id="{{ $content_container_id ?? 'pjax_container' }}">
 
 @endif
 @yield('content_header')
@@ -124,7 +124,7 @@
 </div>
 
 @section('footer_container')
-<footer class="footer mt-4">
+<footer class="footer tw-mt-6">
   <div class="container">
     @section('footer')
       <ul class="list-inline tw-mb-0">

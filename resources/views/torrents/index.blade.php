@@ -7,7 +7,7 @@
   <aside class="d-none d-lg-block flex-shrink-0 font-smooth torrent-categories" style="width: 14rem;">
     <nav>
       @foreach ($tree as $id => $category)
-        <h4 class="{{ $loop->first ? '' : 'mt-4' }} tw-whitespace-no-wrap">
+        <h4 class="{{ $loop->first ? '' : 'tw-mt-6' }} tw-whitespace-no-wrap">
           @if (!empty($category_id) && $id == $category_id)
             <mark>{{ $category['title'] }}</mark>
           @else
@@ -31,7 +31,7 @@
     </nav>
     @guest
       @ru
-        <div class="alert alert-info mr-4 mt-4 p-2 small">
+        <div class="alert alert-info mr-4 tw-mt-6 p-2 small">
           <a class="link" href="{{ path('Auth\SignIn@index', ['goto' => path('Torrents@index')]) }}">Пользователям</a> доступны чат и добавление раздач
         </div>
       @endru
@@ -69,7 +69,7 @@
     @if (sizeof($torrents))
       @foreach ($torrents as $torrent)
         @if (null === $last_date || !$torrent->registered_at->isSameDay($last_date))
-          <h6 class="{{ $loop->first ? 'mt-0' : 'mt-4' }}">{{ $torrent->fullDate() }}</h6>
+          <h6 class="{{ $loop->first ? 'tw-mt-0' : 'tw-mt-6' }}">{{ $torrent->fullDate() }}</h6>
           @php ($last_date = $torrent->registered_at)
         @endif
         @php ($category = TorrentCategoryHelper::find($torrent->category_id))
@@ -105,7 +105,7 @@
       @if ($q)
         <details>
           <summary>Как пользоваться поиском?</summary>
-          <div class="mt-2 tw-mb-1">Поиск по раздачам учитывает морфологию русского языка, поэтому «комедия» найдется даже при запросе «комедии». Ниже приведены примеры запросов для понимания особенностей поиска:</div>
+          <div class="tw-mt-2 tw-mb-1">Поиск по раздачам учитывает морфологию русского языка, поэтому «комедия» найдется даже при запросе «комедии». Ниже приведены примеры запросов для понимания особенностей поиска:</div>
           <ul class="text-muted">
             <li>
               <a href="{{ UrlHelper::filter(['q' => 'драма']) }}">драма</a>

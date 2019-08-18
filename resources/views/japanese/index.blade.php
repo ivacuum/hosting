@@ -10,7 +10,7 @@
 
 @section('content')
 <h1 class="h2">{{ trans('japanese.index') }}</h1>
-<div class="row mt-4">
+<div class="row tw-mt-6">
   <div class="col-md-6">
     <div class="card">
       <div class="card-header bg-success text-white">
@@ -21,20 +21,20 @@
           <h3 class="h4"><a class="link" href="{{ path('JapaneseHiraganaKatakana@index') }}">Тренажер хираганы и катаканы</a></h3>
           <p>Быстрое освоение японских слоговых азбук столбик за столбиком.</p>
 
-          <h3 class="h4 mt-4"><a class="link" href="{{ path('JapaneseWanikani@index') }}">{{ trans('japanese.wanikani') }}</a></h3>
+          <h3 class="h4 tw-mt-6"><a class="link" href="{{ path('JapaneseWanikani@index') }}">{{ trans('japanese.wanikani') }}</a></h3>
           <p>Набор ключей, иероглифов и словарных слов для изучения и повторения. Данные и вдохновение взяты с сайта <a class="link" href="https://www.wanikani.com/">wanikani.com</a> и приправлены дополнительными функциями для улучшения процесса обучения.</p>
         @en
           <h3 class="h4"><a class="link" href="{{ path('JapaneseHiraganaKatakana@index') }}">Hiragana & Katakana trainer</a></h3>
           <p>Learn Japanese syllabaries column by column the fast way.</p>
 
-          <h3 class="h4 mt-4"><a class="link" href="{{ path('JapaneseWanikani@index') }}">{{ trans('japanese.wanikani') }}</a></h3>
+          <h3 class="h4 tw-mt-6"><a class="link" href="{{ path('JapaneseWanikani@index') }}">{{ trans('japanese.wanikani') }}</a></h3>
           <p>Set of radicals, kanji and vocabulary to study and review. Data and inspiration from <a class="link" href="https://www.wanikani.com/">wanikani.com</a> with features added to make learning and review process more effective.</p>
         @endru
       </div>
     </div>
   </div>
   <div class="col-md-6">
-    <div class="card mt-3 mt-md-0">
+    <div class="card tw-mt-4 mt-md-0">
       <div class="card-header bg-dark text-white">
         <h2 class="h4 tw-mb-0">@ru Внешние полезные ресурсы @en External resources @endru</h2>
       </div>
@@ -92,7 +92,7 @@
 </div>
 
 @ru
-  <h2 class="mt-5">О самом японском языке</h2>
+  <h2 class="tw-mt-12">О самом японском языке</h2>
 @endru
 @ru
   <p>В ходе изучения языка попалось много разной информации, которую хотелось бы зафиксировать. Эдакий пересказ как в нем все устроено в общих чертах.</p>
@@ -126,15 +126,15 @@
         <div class="f20">ばすはなんだいいりますか。</div>
         <div>Все хираганой. Как минимум нужно знать слова, грамматику и контекст, чтобы понять смысл.</div>
       </li>
-      <li class="mt-2">
+      <li class="tw-mt-2">
         <div class="f20">バスはなんだいいりますか。</div>
         <div>Добавим катакану. Стал виден заимствованный автобус «басу». Неплохо для начала.</div>
       </li>
-      <li class="mt-2">
+      <li class="tw-mt-2">
         <div class="f20">バスは何台いりますか。</div>
         <div>Добавим иероглифы. Проявился вопрос «сколько штук».</div>
       </li>
-      <li class="mt-2">
+      <li class="tw-mt-2">
         <div class="f20">バス　は　何台　いり　ます　か。</div>
         <div>В идеале хотелось бы так, но нет. Может решатся когда-нибудь упростить письменность, как корейцы.</div>
       </li>

@@ -10,19 +10,19 @@
         <a class="btn bg-vk f20 rounded-circle text-white" href="{{ path('Auth\Vk@index') }}">
           @svg (vk)
         </a>
-        <div class="mt-1 small text-muted">{{ trans('auth.vk') }}</div>
+        <div class="tw-mt-1 small text-muted">{{ trans('auth.vk') }}</div>
       </div>
       <div class="mr-2">
         <a class="btn bg-facebook f20 rounded-circle text-white" href="{{ path('Auth\Facebook@index') }}">
           @svg (facebook)
         </a>
-        <div class="mt-1 small text-muted">{{ trans('auth.facebook') }}</div>
+        <div class="tw-mt-1 small text-muted">{{ trans('auth.facebook') }}</div>
       </div>
       <div>
         <a class="btn bg-google f20 rounded-circle text-white" href="{{ path('Auth\Google@index') }}">
           @svg (google)
         </a>
-        <div class="mt-1 small text-muted">{{ trans('auth.google') }}</div>
+        <div class="tw-mt-1 small text-muted">{{ trans('auth.google') }}</div>
       </div>
     </div>
     <div>{{ trans('auth.or') }}</div>
@@ -77,11 +77,11 @@
       </div>
     </div>
 
-    <div class="mt-3 text-center">
+    <div class="tw-mt-4 text-center">
       <button class="btn btn-primary btn-lg btn-login">
         {{ trans('auth.signin') }}
       </button>
-      <div class="mt-4">
+      <div class="tw-mt-6">
         <a class="link" href="{{ path('Auth\NewAccount@index') }}">{{ trans('auth.new_account') }}</a>
       </div>
     </div>

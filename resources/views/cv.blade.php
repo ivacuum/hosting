@@ -103,7 +103,7 @@ body {
             @ru Инженер-программист @en IT Engineer's degree @endru
             <span class="small text-muted">2006–2012</span>
           </div>
-          <h3 class="my-caption h5 mt-4 mt-sm-5 text-uppercase">@ru Курсы и тренинги @en Courses & Trainings @endru</h3>
+          <h3 class="my-caption h5 tw-mt-6 mt-sm-5 text-uppercase">@ru Курсы и тренинги @en Courses & Trainings @endru</h3>
           <div class="font-weight-bold">@ru Английский язык @en English @endru</div>
           <div>
             @ru Грамматика @en Grammar @endru
@@ -120,11 +120,11 @@ body {
           <div>@ru ООО Гала Маркетинг @en OOO Gala Marketing @endru</div>
           <div>@ru Технический директор @en CTO @endru</div>
 
-          <div class="mt-4">@ru 18.11.2013 — 11.03.2014 @en Nov 2013 — Mar 2014 @endru</div>
+          <div class="tw-mt-6">@ru 18.11.2013 — 11.03.2014 @en Nov 2013 — Mar 2014 @endru</div>
           <div><a href="http://www.smart-media.ru/" rel="nofollow">@ru ООО МедиаКонтент @en OOO MediaContent @endru</a></div>
           <div>@ru Ведущий разработчик (тимлид) @en Lead Developer (Team Lead) @endru</div>
 
-          <div class="mt-4">@ru 10.09.2007 &mdash; 31.05.2013 @en Sep 2007 — May 2013 @endru</div>
+          <div class="tw-mt-6">@ru 10.09.2007 &mdash; 31.05.2013 @en Sep 2007 — May 2013 @endru</div>
           <div><a href="http://www.korden.ru/" rel="nofollow">@ru ООО Корден @en OOO Korden @endru</a></div>
           <div>@ru Веб-программист @en PHP Developer @endru</div>
         </div>
@@ -145,7 +145,7 @@ body {
         <div><a href="/">vacuum.name</a></div>
       </div>
 
-      <h3 class="my-caption h5 mt-4 text-uppercase">@ru Личная информация @en Personal info @endru</h3>
+      <h3 class="my-caption h5 tw-mt-6 text-uppercase">@ru Личная информация @en Personal info @endru</h3>
       <div class="d-flex justify-content-between">
         <div>@ru Возраст @en Age @endru</div>
         <div>{{ Illuminate\Support\Carbon::createFromDate(1989, 7, 13)->diffForHumans(null, true) }} @ru @en old @endru</div>
@@ -167,7 +167,7 @@ body {
         <div>@ru Нет @en No @endru</div>
       </div>
 
-      <h3 class="my-caption h5 mt-4 text-uppercase">@ru В сети @en Online @endru</h3>
+      <h3 class="my-caption h5 tw-mt-6 text-uppercase">@ru В сети @en Online @endru</h3>
       <div class="d-flex flex-column">
         <a href="https://github.com/ivacuum" rel="nofollow">Github</a>
         {{--<a href="skype:knifevacuum?call" rel="nofollow">Skype</a>--}}
@@ -177,7 +177,7 @@ body {
     </div>
   </div>
 
-  <div class="my-caption h3 mt-5 text-uppercase">@ru О себе @en About me @endru</div>
+  <div class="my-caption h3 tw-mt-12 text-uppercase">@ru О себе @en About me @endru</div>
   @ru
     <p>Более половины своей жизни увлекаюсь созданием сайтов и в целом полезных сервисов. Всегда нравился английский язык, впоследствии обнаружил интерес и к другим иностранным языкам. В свободное время играю на электрогитаре, смотрю кинематограф в оригинале (даже если это датский — английские субтитры все равно найдутся) и катаюсь на велосипеде. Посещаю музыкальные концерты.</p>
   @en
@@ -196,7 +196,7 @@ body {
     <p>I'm considering only remote employment. Not ready for relocation because it won't allow me to see the different parts of the world. But I'm ready to meet occasionally.</p>
   @endru
 
-  <div class="my-caption h3 mt-5 text-uppercase">@ru Навыки @en Skills @endru</div>
+  <div class="my-caption h3 tw-mt-12 text-uppercase">@ru Навыки @en Skills @endru</div>
   <div class="color-green h5">@ru Операционные системы @en Operating systems @endru</div>
   @ru
     <p>Опыт использования <strong>Windows</strong> и <strong>macOS</strong>, настраивал серверы под управлением <strong>Linux</strong> и <strong>FreeBSD</strong>. Повседневно использую <strong>macOS</strong>.</p>
@@ -204,7 +204,7 @@ body {
     <p>Experienced in <strong>Windows</strong> and <strong>macOS</strong>, set up servers running <strong>Linux</strong> and <strong>FreeBSD</strong>. I use <strong>macOS</strong> on a daily basis.</p>
   @endru
 
-  <div class="color-green h5 mt-4">@ru Языки программирования @en Programming languages @endru</div>
+  <div class="color-green h5 tw-mt-6">@ru Языки программирования @en Programming languages @endru</div>
   <ul>
     <li class="tw-mb-2">
       <strong>PHP</strong>
@@ -232,10 +232,10 @@ body {
     </li>
   </ul>
 
-  <div class="color-green h5 mt-4">@ru Прочие языки @en Other languages @endru</div>
+  <div class="color-green h5 tw-mt-6">@ru Прочие языки @en Other languages @endru</div>
   <p>HTML, CSS, SASS.</p>
 
-  <div class="color-green h5 mt-4">@ru Технологии и софт @en Technology and Software @endru</div>
+  <div class="color-green h5 tw-mt-6">@ru Технологии и софт @en Technology and Software @endru</div>
   <ul>
     <li class="tw-mb-2">
       <strong>Ansible</strong>
@@ -321,7 +321,7 @@ body {
     </li>
   </ul>
 
-  <div class="color-green h5 mt-4">@ru Иностранные языки @en Foreign languages @endru</div>
+  <div class="color-green h5 tw-mt-6">@ru Иностранные языки @en Foreign languages @endru</div>
   <ul>
     @ru
     @en
@@ -344,7 +344,7 @@ body {
     </li>
   </ul>
 
-  <div class="color-green h5 mt-4">@ru Работа с API @en APIs usage @endru</div>
+  <div class="color-green h5 tw-mt-6">@ru Работа с API @en APIs usage @endru</div>
   @ru
     <p>Вход через соцсети: Facebook, GitHub, Google, Instagram, OK, Twitter, VK, Яндекс.</p>
   @en
@@ -376,7 +376,7 @@ body {
     </li>
   </ul>
 
-  <div class="my-caption h3 mt-5 text-uppercase">@ru Проекты @en Projects @endru</div>
+  <div class="my-caption h3 tw-mt-12 text-uppercase">@ru Проекты @en Projects @endru</div>
   @ru
     <p>По списку ниже можно заметить, что важные для меня проекты стараюсь не бросать и поддерживать годами.</p>
   @en
@@ -536,7 +536,7 @@ body {
       @endru
     </ul>
 
-    <div class="h5 mt-4">
+    <div class="h5 tw-mt-6">
       <span class="text-warning">@svg (star)</span>
       <span class="text-success">@svg (primitive-dot)</span>
       <a href="/">vacuum.name</a>
@@ -570,7 +570,7 @@ body {
       <p>Проектирование хостинга для веб-студии Корден. Централизованное управление кластером из 6 серверов. Использование Ansible для развертывания и настройки серверов под управлением FreeBSD.</p>
     @endru
 
-    <div class="h5 mt-4">
+    <div class="h5 tw-mt-6">
       <span class="svg-muted">@svg (primitive-dot)</span>
       Теплоклуб
     </div>
@@ -578,7 +578,7 @@ body {
       <p>Разработан сайт, позволяющий клиентам компании <a href="https://www.knaufinsulation.ru/" rel="nofollow">Knauf Insulation</a> за накопленную виртуальную валюту программы лояльности купить реальные товары интернет-магазина <a href="https://www.ozon.ru/" rel="nofollow">OZON.ru</a> на разработанном white-label сайте.</p>
     @endru
 
-    <div class="h5 mt-4">
+    <div class="h5 tw-mt-6">
       <span class="svg-muted">@svg (primitive-dot)</span>
       FW
       <a href="https://github.com/ivacuum/fw" rel="nofollow">@svg (github)</a>
@@ -594,7 +594,7 @@ body {
       <p>Организация рабочего процесса разработки сайтов в веб-студии Корден: тестовые площадки, использование системы контроля версий, работа в команде, использование системы интеграции для распространения кода по серверам.</p>
       {{--<p>Сборка виртуальных туров из панорам: <a href="http://nayadakaluga.ru/pano-moskovski" rel="nofollow">ТЦ Московский</a>, <a href="http://nayadakaluga.ru/pano-suvorovski" rel="nofollow">ТЦ Суворовский</a>, <a href="http://nayadakaluga.ru/pano-obninsk" rel="nofollow">Технокерамика</a>.</p>--}}
     @endru
-    <div class="h5 mt-4">
+    <div class="h5 tw-mt-6">
       <span class="svg-muted">@svg (primitive-dot)</span>
       kwan-park.ru
     </div>
@@ -625,7 +625,7 @@ body {
       <p>Координатор взаимодействия клиентов в сети BitTorrent. В первые же месяцы обслуживал порядка 3&thinsp;000&thinsp;000 подключений в день — около 100 запросов в секунду в вечернее время. Написан на языке Perl на основе демона статистики для игры Counter-Strike, выпущенного годом ранее. В 2012 году представлен как <strong>дипломный проект</strong> при выпуске из МГТУ им. Баумана.</p>
     @endru
 
-    <div class="h5 mt-4">
+    <div class="h5 tw-mt-6">
       <span class="text-success">@svg (primitive-dot)</span>
       <a href="/retracker">BTRT</a>
       <a href="https://github.com/ivacuum/btrt" rel="nofollow">@svg (github)</a>
@@ -634,7 +634,7 @@ body {
       <p>Оптимизация файлообмена в сети BitTorrent. Совместное скачивание файлов пользователями сети одного провайдера. Позволяет, например, вдесятером превратить 0,25 Мбит/сек в 2,50 Мбит/сек при скачивании всеми одной раздачи. Если у кого-то уже есть необходимый файл, то скачивание производится на максильной доступной скорости локальной сети, например, 100 Мбит/сек.</p>
     @endru
 
-    <div class="h5 mt-4">
+    <div class="h5 tw-mt-6">
       <span class="text-success">@svg (primitive-dot)</span>
       <a href="http://t.ivacuum.ru/">torrent.ivacuum.ru</a>
       <a href="https://github.com/ivacuum/t.ivacuum.ru" rel="nofollow">@svg (github)</a>
@@ -656,7 +656,7 @@ body {
       <p>Проект представлен в качестве <strong>курсовой работы</strong> по сетевым приложениям в МГТУ им. Баумана.</p>
     @endru
 
-    <div class="h5 mt-4">
+    <div class="h5 tw-mt-6">
       <span class="svg-muted">@svg (primitive-dot)</span>
       bugs.ivacuum.ru
     </div>
@@ -664,7 +664,7 @@ body {
       <p>Баг-трекер — сервис для учета и хранения задач, которые необходимо выполнить.</p>
     @endru
 
-    <div class="h5 mt-4">
+    <div class="h5 tw-mt-6">
       <span class="text-success">@svg (primitive-dot)</span>
       <a href="https://img.ivacuum.ru/stats">img.ivacuum.ru</a>
       <a href="https://github.com/ivacuum/imageviewer" rel="nofollow">@svg (github)</a>
@@ -673,7 +673,7 @@ body {
       <p>Сервис подсчета просмотров изображений. Более 100&thinsp;000&thinsp;000 просмотров за время существования.</p>
     @endru
 
-    <div class="h5 mt-4">
+    <div class="h5 tw-mt-6">
       <span class="text-success">@svg (primitive-dot)</span>
       <a href="/gallery">up.ivacuum.ru</a>
     </div>
@@ -692,7 +692,7 @@ body {
       <p>Мониторинг игровых серверов Call of Duty, Counter-Strike, Diablo II, Killing Floor, Left 4 Dead, Warcraft 3. Инструкции для игры по сети. Обслуживание игровых серверов.</p>
     @endru
 
-    <div class="h5 mt-4">
+    <div class="h5 tw-mt-6">
       <span class="svg-muted">@svg (primitive-dot)</span>
       torrent.elcomnet.ru
     </div>
@@ -707,7 +707,7 @@ body {
       <p>Сборка, запуск и администрирование игровых серверов в локальной сети Спарк-Калуга. Основной упор на игру Counter-Strike. Организация и проведение нескольких турниров.</p>
     @endru
 
-    <div class="h5 mt-4">
+    <div class="h5 tw-mt-6">
       <span class="text-success">@svg (primitive-dot)</span>
       <a href="/dc">dc.ivacuum.ru</a>
     </div>
@@ -715,7 +715,7 @@ body {
       <p>Энциклопедия клиентов DC++. Ответы на часто задаваемые вопросы.</p>
     @endru
 
-    <div class="h5 mt-4">
+    <div class="h5 tw-mt-6">
       <span class="text-success">@svg (primitive-dot)</span>
       <a href="/files">dl.ivacuum.ru</a>
     </div>

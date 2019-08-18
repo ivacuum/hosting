@@ -1,7 +1,7 @@
 <div class="d-flex pt-3 w-100" id="comment-add">
   @if (Auth::check())
     <aside class="mr-3 mr-md-4">
-      <div class="comment-avatar-size mt-1">
+      <div class="comment-avatar-size tw-mt-1">
         @if (Auth::user()->avatar)
           <img class="comment-avatar-size rounded-circle" src="{{ Auth::user()->avatarUrl() }}">
         @else
@@ -21,7 +21,7 @@
         @en
           <div>Please type your email or use one-click sign-in through one of the social services below to comment.</div>
         @endru
-        <div class="d-flex mt-2">
+        <div class="d-flex tw-mt-2">
           <div class="mr-2 text-center">
             <a
               class="btn bg-vk f20 rounded-circle text-white"
@@ -29,7 +29,7 @@
             >
               @svg (vk)
             </a>
-            <div class="mt-1 small text-muted">{{ trans('auth.vk') }}</div>
+            <div class="tw-mt-1 small text-muted">{{ trans('auth.vk') }}</div>
           </div>
           <div class="mr-2 text-center">
             <a
@@ -38,7 +38,7 @@
             >
               @svg (facebook)
             </a>
-            <div class="mt-1 small text-muted">{{ trans('auth.facebook') }}</div>
+            <div class="tw-mt-1 small text-muted">{{ trans('auth.facebook') }}</div>
           </div>
           <div class="mr-2 text-center">
             <a
@@ -47,7 +47,7 @@
             >
               @svg (google)
             </a>
-            <div class="mt-1 small text-muted">{{ trans('auth.google') }}</div>
+            <div class="tw-mt-1 small text-muted">{{ trans('auth.google') }}</div>
           </div>
         </div>
       </div>
@@ -78,7 +78,7 @@
         maxlength="1000"
       >{{ old('text') }}</textarea>
       <div class="invalid-feedback">{{ $errors->first('text') }}</div>
-      <button class="btn btn-primary mt-2">
+      <button class="btn btn-primary tw-mt-2">
         {{ trans('comments.send') }}
       </button>
     </form>

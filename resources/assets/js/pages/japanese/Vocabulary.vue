@@ -75,12 +75,12 @@ export default {
     v-if="vocab.id"
   />
 
-  <div class="mt-5" v-if="vocab.sentences">
-    <h3 class="mt-0">{{ $t('japanese.sentences') }}</h3>
+  <div class="tw-mt-12" v-if="vocab.sentences">
+    <h3 class="tw-mt-0">{{ $t('japanese.sentences') }}</h3>
     <div class="f20 pre-line">{{ vocab.sentences }}</div>
   </div>
 
-  <div class="mt-4">
+  <div class="tw-mt-6">
     <a class="mr-3" :href="`https://www.wanikani.com/vocabulary/${vocab.character}`" rel="noreferrer">
       WaniKani
       <span v-html="$root.svg.external_link"></span>
@@ -97,7 +97,7 @@ export default {
     </a>
   </div>
 
-  <div class="mt-4" v-if="!guest">
+  <div class="tw-mt-6" v-if="!guest">
     <burn-vocabulary
       :id="vocab.id"
       :burned="vocab.burned"

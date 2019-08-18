@@ -52,9 +52,9 @@
       </td>
       <td>
         <input class="form-control form-control-sm" name="content">
-        <input class="form-control form-control-sm mt-1" name="priority" placeholder="priority [MX, SRV]">
-        <input class="form-control form-control-sm mt-1" name="port" placeholder="port [SRV]">
-        <input class="form-control form-control-sm mt-1" name="weight" placeholder="weight [SRV]">
+        <input class="form-control form-control-sm tw-mt-1" name="priority" placeholder="priority [MX, SRV]">
+        <input class="form-control form-control-sm tw-mt-1" name="port" placeholder="port [SRV]">
+        <input class="form-control form-control-sm tw-mt-1" name="weight" placeholder="weight [SRV]">
       </td>
       <td>
         <a class="btn btn-default js-ns-record-add" href="#">добавить</a>
@@ -97,17 +97,17 @@
           <div hidden class="edit">
             <input class="form-control form-control-sm w-100" name="content" value="{{ $record->content }}" {{ $record->type == 'SOA' ? 'readonly' : '' }}>
             @if ($record->priority > 0)
-              <input class="form-control form-control-sm mt-1 w-100" name="priority" value="{{ $record->priority }}" placeholder="priority">
+              <input class="form-control form-control-sm tw-mt-1 w-100" name="priority" value="{{ $record->priority }}" placeholder="priority">
             @endif
             @if ($record->type == 'SRV')
-              <input class="form-control form-control-sm mt-1 w-100" name="port" value="{{ $record->port }}" placeholder="port">
-              <input class="form-control form-control-sm mt-1 w-100" name="weight" value="{{ $record->weight }}" placeholder="weight">
+              <input class="form-control form-control-sm tw-mt-1 w-100" name="port" value="{{ $record->port }}" placeholder="port">
+              <input class="form-control form-control-sm tw-mt-1 w-100" name="weight" value="{{ $record->weight }}" placeholder="weight">
             @endif
             @if ($record->type == 'SOA')
-              <input class="form-control form-control-sm mt-1 w-100" name="retry" value="{{ $record->retry }}" placeholder="retry">
-              <input class="form-control form-control-sm mt-1 w-100" name="refresh" value="{{ $record->refresh }}" placeholder="refresh">
-              <input class="form-control form-control-sm mt-1 w-100" name="expire" value="{{ $record->expire }}" placeholder="expire">
-              <input class="form-control form-control-sm mt-1 w-100" name="ttl" value="{{ $record->ttl }}" placeholder="ttl">
+              <input class="form-control form-control-sm tw-mt-1 w-100" name="retry" value="{{ $record->retry }}" placeholder="retry">
+              <input class="form-control form-control-sm tw-mt-1 w-100" name="refresh" value="{{ $record->refresh }}" placeholder="refresh">
+              <input class="form-control form-control-sm tw-mt-1 w-100" name="expire" value="{{ $record->expire }}" placeholder="expire">
+              <input class="form-control form-control-sm tw-mt-1 w-100" name="ttl" value="{{ $record->ttl }}" placeholder="ttl">
             @endif
             <input type="hidden" name="record_id" value="{{ $record->record_id }}">
             @method('put')
@@ -131,7 +131,7 @@
     @endforeach
   </table>
 
-  <form class="form-inline mt-3" action="{{ path("$self@setServerNsRecords", $model) }}" method="post">
+  <form class="form-inline tw-mt-4" action="{{ path("$self@setServerNsRecords", $model) }}" method="post">
     @csrf
     <div class="d-inline-block mr-1">
       <select class="custom-select" name="server">

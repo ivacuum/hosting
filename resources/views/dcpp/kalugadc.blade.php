@@ -14,11 +14,11 @@
   <section>
     <h2>Установка и настройка</h2>
     <div>После установки клиентка вам необходимо будет указать ваш ник:</div>
-    <div class="mt-2 img-container text-left">
+    <div class="tw-mt-2 img-container text-left">
       <img class="screenshot" src="https://img.ivacuum.ru/g/091002/1_1aVMvTi73f.jpg" width="664" height="503">
     </div>
     <div>А также указать папки, доступ к которым будет открыт для других пользователей:</div>
-    <div class="mt-2 img-container text-left">
+    <div class="tw-mt-2 img-container text-left">
       <img class="screenshot" src="https://img.ivacuum.ru/g/091002/1_aid11fD5AJ.jpg" width="657" height="500">
     </div>
     <div>После этих настроек перезапустите программу и пользуйтесь <strong>Kaluga DC++</strong> с удовольствием!</div>

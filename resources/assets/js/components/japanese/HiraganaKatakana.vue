@@ -27,7 +27,7 @@
             </div>
           </template>
         </div>
-        <div class="d-flex flex-wrap mt-2">
+        <div class="d-flex flex-wrap tw-mt-2">
           <button class="btn btn-primary tw-mb-2 mr-2" :disabled="this.picked.length < 2" @click="practice">{{ $t('PRACTICE') }}</button>
           <button class="btn btn-default tw-mb-2 mr-2" @click="checkAll">{{ $t('CHECK_ALL') }}</button>
           <button class="btn btn-default tw-mb-2 mr-2" @click="uncheckAll">{{ $t('UNCHECK_ALL') }}</button>
@@ -53,7 +53,7 @@
               @input="checkInput($event.target.value, $event)"
               @keydown.space.prevent="revealAnswer">
           </div>
-          <div class="d-flex align-items-center justify-content-between mt-2">
+          <div class="d-flex align-items-center justify-content-between tw-mt-2">
             <div><button class="btn btn-default" @click="pick">{{ $t('BACK_TO_PICKER') }}</button></div>
             <div class="text-muted" v-if="answered > 0">{{ $t('ANSWERED', { answered }) }}</div>
           </div>

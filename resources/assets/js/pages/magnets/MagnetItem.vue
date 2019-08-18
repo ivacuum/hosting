@@ -85,7 +85,7 @@ export default {
     </a>
   </div>
 
-  <div class="mt-3" v-if="magnet.title_tags.length">
+  <div class="tw-mt-4" v-if="magnet.title_tags.length">
     <router-link
       class="btn btn-outline-primary tw-mb-1 mr-1 text-lowercase"
       :to="searchUrl(tag)"
@@ -95,7 +95,7 @@ export default {
   </div>
 
   <div v-if="magnet.related.length">
-    <div class="h3 mt-5">
+    <div class="h3 tw-mt-12">
       {{ $t('torrents.related') }}
       <small class="text-muted">{{ magnet.related.length }}</small>
     </div>
@@ -108,7 +108,7 @@ export default {
     </template>
   </div>
 
-  <div class="h3 mt-5">
+  <div class="h3 tw-mt-12">
     {{ $t('comments.discussion') }}
     <small class="text-muted">{{ magnet.comments.length }}</small>
   </div>

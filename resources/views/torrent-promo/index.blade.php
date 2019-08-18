@@ -112,7 +112,7 @@
   <div class="container mw-800">
     <h3>Какие еще есть полезные ресурсы помимо трекера?</h3>
     <p>Ознакомиться с актуальным списком можно на отдельной странице.</p>
-    <div class="mt-3">
+    <div class="tw-mt-4">
       <a class="btn btn-secondary" href="{{ path('Home@index') }}">
         <span class="mr-1">
           @svg (sign-in)

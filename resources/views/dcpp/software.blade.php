@@ -129,7 +129,7 @@
             hide-title
           ></feedback-form>
         </div>
-        <div class="col-md-6 col-lg-4 col-xl-3 mt-0 mt-md-3">
+        <div class="col-md-6 col-lg-4 col-xl-3 tw-mt-0 mt-md-3">
           @include('tpl.google-vertical')
         </div>
       </div>

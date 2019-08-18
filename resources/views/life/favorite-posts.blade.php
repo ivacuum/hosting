@@ -36,7 +36,7 @@
       <li><a class="link" href="https://tema.livejournal.com/1915712.html" rel="nofollow">Эмбоссеры</a></li>
       <li><a class="link" href="https://www.artlebedev.ru/kovodstvo/sections/180/" rel="nofollow">Эстетика контроля и запрета</a></li>
     </ul>
-    <h3 class="mt-5">Пополняемое</h3>
+    <h3 class="tw-mt-12">Пополняемое</h3>
     <ul>
       <li><a class="link" href="http://www.geoguessr.com/" rel="nofollow">Игра на знание панорам улиц и дорог городов мира</a></li>
       <li><a class="link" href="https://www.google.com/maps/views/streetview?gl=us" rel="nofollow">Просмотр улиц на картах Гугла</a></li>
@@ -62,7 +62,7 @@
       <li><a class="link" href="https://varlamov.ru/1316354.html" rel="nofollow">Южноамериканское воскресенье</a></li>
       <li><a class="link" href="https://varlamov.ru/1219201.html" rel="nofollow">Японское воскресенье</a></li>
     </ul>
-    <h3 class="mt-5">Отдельные посты про путешествия</h3>
+    <h3 class="tw-mt-12">Отдельные посты про путешествия</h3>
     <ul>
       <li><a class="link" href="https://varlamov.ru/962585.html" rel="nofollow">Аруба, Банейро и Кюрасао</a></li>
       <li><a class="link" href="https://le-milady.livejournal.com/1135247.html" rel="nofollow">В каких домах живут денверовцы</a></li>

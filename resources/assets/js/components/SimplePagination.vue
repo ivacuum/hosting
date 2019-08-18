@@ -11,7 +11,7 @@ export default {
     },
     classes: {
       type: String,
-      default: 'mt-3 text-center',
+      default: 'tw-mt-4 text-center',
     },
   },
 

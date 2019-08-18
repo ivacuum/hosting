@@ -28,7 +28,7 @@
       <p>Usually, it is just enough to click a link to connect to a hub. However, if it didn't work for you, you can manually copy-paste the address into your DC++ client.</p>
     @endru
 
-    <div class="h3 mt-5">{{ trans('issues.create') }}</div>
+    <div class="h3 tw-mt-12">{{ trans('issues.create') }}</div>
     @ru
       <p>Знаете хаб, достойный добавления в список? Пришлите его нам, чтобы мы пополнили страницу.</p>
     @en
@@ -42,7 +42,7 @@
       hide-title
     ></feedback-form>
   </div>
-  <div class="col-md-6 col-lg-4 col-xl-3 mt-3 mt-md-0">
+  <div class="col-md-6 col-lg-4 col-xl-3 tw-mt-4 mt-md-0">
     @include('tpl.google-vertical')
   </div>
 </div>

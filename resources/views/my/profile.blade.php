@@ -33,7 +33,7 @@
     </button>
   </form>
 
-  <h3 class="mt-5">{{ trans('my.avatar') }}</h3>
+  <h3 class="tw-mt-12">{{ trans('my.avatar') }}</h3>
   <avatar-uploader
     action="{{ path('MyAvatar@update') }}"
     current-avatar="{{ Auth::user()->avatarUrl() }}"

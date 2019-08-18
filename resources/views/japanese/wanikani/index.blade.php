@@ -43,7 +43,7 @@
   <p>Вся информация по ключам, кандзи и словарным словам представлена только на английском языке, как и на WaniKani. Без изменений, чтобы не возникало путаницы. Этот сервис — дополнение, а не полноценная замена.</p>
 @endru
 
-<h3 class="mt-4">{{ trans('japanese.by-levels') }}</h3>
+<h3 class="tw-mt-6">{{ trans('japanese.by-levels') }}</h3>
 <div class="d-flex flex-wrap align-items-center">
   @foreach (range(1, 60) as $level)
     <a class="badge badge-secondary f18 ja-shadow-light mr-2 tw-mb-2" href="{{ path('JapaneseWanikaniLevel@show', $level) }}">

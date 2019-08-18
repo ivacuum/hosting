@@ -28,7 +28,7 @@
   </tbody>
 </table>
 
-<form class="form-inline mt-3">
+<form class="form-inline tw-mt-4">
   <div class="mr-1">
     <select class="custom-select" name="action" id="batch_action">
       <option value="">Выберите действие...</option>

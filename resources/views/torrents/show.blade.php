@@ -41,7 +41,7 @@
 </div>
 
 @if (sizeof($tags = $torrent->titleTags()))
-  <div class="mt-3">
+  <div class="tw-mt-4">
     @foreach ($tags as $tag)
       <a
         class="btn btn-outline-primary tw-mb-1 text-lowercase"
@@ -52,7 +52,7 @@
 @endif
 
 @if (optional($related_torrents = $torrent->relatedTorrents())->count())
-  <div class="h3 mt-5">
+  <div class="h3 tw-mt-12">
     {{ trans('torrents.related') }}
     <small class="text-muted">{{ $related_torrents->count() }}</small>
   </div>

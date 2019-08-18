@@ -28,12 +28,12 @@
 
 @include('tpl.trips-timeline')
 
-<div class="h4 mt-4">@ru Поделиться ссылкой @en Share @endru</div>
+<div class="h4 tw-mt-6">@ru Поделиться ссылкой @en Share @endru</div>
 @include('tpl.social-buttons', ['title' => $trip->metaTitle(), 'url' => Request::url()])
 
 @if (Auth::check())
   @if (!Auth::user()->notify_trips)
-    <div class="alert alert-info mt-4">
+    <div class="alert alert-info tw-mt-6">
       <div class="tw-mb-2">{{ trans('life.newsletter.description') }}</div>
       <form action="{{ path('Subscriptions@update') }}" method="post">
         {{ ViewHelper::inputHiddenMail() }}
@@ -48,7 +48,7 @@
     </div>
   @endif
 @else
-  <div class="alert alert-info mt-4">
+  <div class="alert alert-info tw-mt-6">
     <div class="tw-mb-2">{{ trans('life.newsletter.description') }}</div>
     <div class="d-flex">
       <a class="btn btn-default btn-sm svg-flex svg-label font-small-caps mr-3" href="{{ path('Subscriptions@edit', ['trips' => 1]) }}">

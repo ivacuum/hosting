@@ -21,7 +21,7 @@
   </div>
   <div class="col-md-9">
     @ru
-      <h2 class="mt-5 mt-md-0">Что такое пиринговая сеть?</h2>
+      <h2 class="tw-mt-12 mt-md-0">Что такое пиринговая сеть?</h2>
       <p><strong>Пиринговая сеть</strong> (Peer-to-peеr или P2P) — это обмен файлами между пользователями сети. Все пользователи подключаются к единому серверу, где происходит аккумуляция списков файлов у пользователей, потом эти файлы уже напрямую скачиваются между двумя пользователями сети.</p>
       <p>Говоря проще, вы сможете «увидеть» и скачать файлы, открытые для доступа другим абонентом сети, а также, открыв доступ к своим файлам, позволить скачать их у вас.</p>
     @en
@@ -30,7 +30,7 @@
     @endru
 
     @ru
-      <h2 class="mt-5">Как это работает?</h2>
+      <h2 class="tw-mt-12">Как это работает?</h2>
       <p>С помощью специальной программы-клиента (DC++), вы подключаетесь к серверу (хабу), находите нужный вам файл через поиск по всем компьютерам сети или при просмотре списка открытых для доступа файлов на компьютере одного из пользователей, и добавляете этот файл в очередь закачки.</p>
       <ul>
         <li>Программа-клиент сама скачает файл.</li>
@@ -42,7 +42,7 @@
         <li>В это время вы можете искать и качать другие файлы или общаться во встроенном чате с другими пользователями.</li>
       </ul>
     @en
-      <h2 class="mt-5">How does it work?</h2>
+      <h2 class="tw-mt-12">How does it work?</h2>
       <p>First of all, you need a DC++ client software. Then, you can connect to the hub, search for the files you need and put them into a download queue. You may also view all the files a single user shared with everyone.</p>
       <ul>
         <li>The DC++ client software will download files.</li>
@@ -53,7 +53,7 @@
     @endru
 
     @ru
-      <h2 class="mt-5">Пользоваться DC++</h2>
+      <h2 class="tw-mt-12">Пользоваться DC++</h2>
       <ul>
         <li><strong>Удобно</strong>: вам не нужно знать адреса компьютеров или сканировать сеть: клиент все сделает за вас.</li>
         <li><strong>Быстро</strong>: клиенты соединяются напрямую, за счет чего достигается скорость, большая, чем при работе через сетевое окружение или FTP.</li>
@@ -62,7 +62,7 @@
         <li><strong>Универсально</strong>: клиенты на любой вкус с различными возможностями и под любую ОС: от <span class="tw-whitespace-no-wrap">@svg (windows) Windows</span> до <span class="tw-whitespace-no-wrap">@svg (apple) macOS</span>.</li>
       </ul>
     @en
-      <h2 class="mt-5">Using DC++ is</h2>
+      <h2 class="tw-mt-12">Using DC++ is</h2>
       <ul>
         <li><strong>Easy</strong>: you don't even need to remember computer IPs or scan the network for the files. The client software will do it for you.</li>
         <li><strong>Fast</strong>: files are being split into pieces and downloaded from multiple computers.</li>

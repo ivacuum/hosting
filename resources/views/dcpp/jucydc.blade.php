@@ -28,7 +28,7 @@
 </div>
 
 <div {{ !Illuminate\Support\Str::contains($css_classes, ['linux']) ? 'hidden' : '' }} class="js-dcpp-client">
-  <h4 class="mt-3">{{ trans('dcpp.for') }} @svg (linux) Linux</h4>
+  <h4 class="tw-mt-4">{{ trans('dcpp.for') }} @svg (linux) Linux</h4>
   <a class="btn btn-success btn-lg my-1 mr-2" href="{{ path('Files@download', 74) }}">
     {{ trans('dcpp.download') }} 32bit
     &middot;
@@ -42,7 +42,7 @@
 </div>
 
 <div {{ !Illuminate\Support\Str::contains($css_classes, ['macos']) ? 'hidden' : '' }} class="js-dcpp-client">
-  <h4 class="mt-3">{{ trans('dcpp.for') }} @svg (apple) macOS</h4>
+  <h4 class="tw-mt-4">{{ trans('dcpp.for') }} @svg (apple) macOS</h4>
   <a class="btn btn-success btn-lg my-1 mr-2" href="{{ path('Files@download', 51) }}">
     {{ trans('dcpp.download') }} 32bit
     &middot;
@@ -56,7 +56,7 @@
 </div>
 
 <div>
-  <button class="btn btn-default mt-4 js-dcpp-clients-show" data-target=".js-dcpp-client">
+  <button class="btn btn-default tw-mt-6 js-dcpp-clients-show" data-target=".js-dcpp-client">
     @ru
       Показать клиенты для всех ОС
     @en

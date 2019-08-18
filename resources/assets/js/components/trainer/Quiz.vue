@@ -34,7 +34,7 @@ export default {
     }
   },
 
-  <h3 class="mt-5">Component</h3>
+  <h3 class="tw-mt-12">Component</h3>
   <div class="text-center">{{ mission }}</div>
   <div v-for="task in compiledTasks">
     <component :is="task"></component>

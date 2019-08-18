@@ -15,7 +15,7 @@ export default {
 <template>
 <div :id="`comment-${comment.id}`" class="d-flex py-3 w-100 border-bottom">
   <aside class="mr-3 mr-md-4">
-    <div class="comment-avatar-size mt-1" v-if="comment.user">
+    <div class="comment-avatar-size tw-mt-1" v-if="comment.user">
       <a :href="comment.user.www">
         <user-avatar :user="comment.user"/>
       </a>

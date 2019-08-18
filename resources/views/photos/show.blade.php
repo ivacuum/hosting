@@ -46,12 +46,12 @@ Mousetrap.bind('right', () => {
       </a>
     </div>
 
-    <div class="d-flex flex-wrap flex-md-column mt-1 mt-md-3">
+    <div class="d-flex flex-wrap flex-md-column tw-mt-1 mt-md-3">
       <div class="mr-2 mr-md-0 text-muted">{{ trans('photos.date') }}</div>
       <div>{{ $photo->rel->period }} {{ $photo->rel->year }}</div>
     </div>
 
-    <div class="mt-3">
+    <div class="tw-mt-4">
       <div class="text-muted">
         {{ trans('photos.geotags') }}
         @if ($photo->isOnMap())
@@ -63,7 +63,7 @@ Mousetrap.bind('right', () => {
     </div>
 
     @if (sizeof($photo->tags))
-      <div class="mt-3">
+      <div class="tw-mt-4">
         <div class="text-muted">{{ trans('photos.tags') }}</div>
         @foreach ($photo->tags as $tag)
           <div>

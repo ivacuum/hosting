@@ -69,14 +69,14 @@ export default {
     v-if="radical.id"
   />
 
-  <div class="mt-4">
+  <div class="tw-mt-6">
     <a :href="`https://www.wanikani.com/radicals/${radical.meaning}`" rel="noreferrer">
       WaniKani
       <span v-html="$root.svg.external_link"></span>
     </a>
   </div>
 
-  <div class="mt-4" v-if="!guest">
+  <div class="tw-mt-6" v-if="!guest">
     <burn-radical
       :id="radical.id"
       :burned="radical.burned"

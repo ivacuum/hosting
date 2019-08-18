@@ -42,7 +42,7 @@ export default {
   <kanji-list :key="level" :level="level"/>
   <vocabulary-list :key="level" :level="level"/>
 
-  <div class="d-flex justify-content-between mt-3">
+  <div class="d-flex justify-content-between tw-mt-4">
     <div>
       <router-link class="btn border-b125" :to="{ name: 'wk.level', params: { level: this.level - 1 }}" v-if="level > 1">
         <span v-html="$root.svg.chevron_left"></span>

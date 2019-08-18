@@ -1,4 +1,4 @@
-<div class="h3 mt-5">
+<div class="h3 tw-mt-12">
   {{ trans('comments.discussion') }}
   <small class="text-muted">{{ sizeof($comments) }}</small>
 </div>
@@ -8,7 +8,7 @@
   <div class="d-flex py-3 w-100 border-bottom">
     <aside class="mr-3 mr-md-4">
       @if (null !== $comment->user)
-        <div class="comment-avatar-size mt-1">
+        <div class="comment-avatar-size tw-mt-1">
           <a href="{{ $comment->user->www() }}">
             @if ($comment->user->avatar)
               <img class="comment-avatar-size rounded-circle" src="{{ $comment->user->avatarUrl() }}">

@@ -70,7 +70,7 @@ export default {
   <div class="d-flex">
     <aside class="d-none d-lg-block flex-shrink-0 font-smooth torrent-categories" style="width: 14rem;">
       <category-tree/>
-      <div class="alert alert-info mr-4 mt-4 p-2 small" v-if="guest">
+      <div class="alert alert-info mr-4 tw-mt-6 p-2 small" v-if="guest">
         <a class="link" href="/auth/login?goto=/torrents">Пользователям</a>
         доступны чат и добавление раздач
       </div>
@@ -96,7 +96,7 @@ export default {
 
       <div v-if="magnets.length">
         <template v-for="(magnet, i) in magnets">
-          <h6 :class="{ 'mt-0': i === 0, 'mt-4': i !== 0 }" v-if="!sameDate[i]">{{ magnet.registered_at }}</h6>
+          <h6 :class="{ 'tw-mt-0': i === 0, 'tw-mt-6': i !== 0 }" v-if="!sameDate[i]">{{ magnet.registered_at }}</h6>
           <magnet-item :magnet="magnet" :category="categoryList[magnet.category_id]"/>
         </template>
 
@@ -112,7 +112,7 @@ export default {
 
         <details v-if="$route.query.q">
           <summary>Как пользоваться поиском?</summary>
-          <div class="mt-2 tw-mb-1">Поиск по раздачам учитывает морфологию русского языка, поэтому «комедия» найдется даже при запросе «комедии». Ниже приведены примеры запросов для понимания особенностей поиска:</div>
+          <div class="tw-mt-2 tw-mb-1">Поиск по раздачам учитывает морфологию русского языка, поэтому «комедия» найдется даже при запросе «комедии». Ниже приведены примеры запросов для понимания особенностей поиска:</div>
           <ul class="text-muted">
             <li>
               <router-link :to="searchUrl('драма')">драма</router-link>

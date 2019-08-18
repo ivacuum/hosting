@@ -92,7 +92,7 @@ export default {
     </div>
   </div>
   <div class="d-flex">
-    <div class="bg-light border mt-2 p-2 rounded">
+    <div class="bg-light border tw-mt-2 p-2 rounded">
       <div class="text-muted">{{ resource.email }}</div>
       <div><a :href="resource.page">{{ resource.page }}</a></div>
     </div>
@@ -101,7 +101,7 @@ export default {
   <div class="my-3 pre-line">{{ resource.text }}</div>
 
   <div v-if="comments.length">
-    <h3 class="mt-4">
+    <h3 class="tw-mt-6">
       {{ $t('comments.index') }}
       <small class="text-muted">{{ comments.length }}</small>
     </h3>

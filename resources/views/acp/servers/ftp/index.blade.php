@@ -45,7 +45,7 @@
   @endforeach
 </table>
 
-<div class="mw-500 mt-3">
+<div class="mw-500 tw-mt-4">
   <form action="/acp/servers/{{ $server->id }}/ftp/file" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
@@ -61,7 +61,7 @@
     <input type="hidden" name="path" value="{{ $dir }}">
   </form>
 
-  <form class="mt-3" action="/acp/servers/{{ $server->id }}/ftp/dir" method="post">
+  <form class="tw-mt-4" action="/acp/servers/{{ $server->id }}/ftp/dir" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 
@@ -77,7 +77,7 @@
     <input type="hidden" name="path" value="{{ $dir }}">
   </form>
 
-  <form class="mt-3" action="/acp/servers/{{ $server->id }}/ftp/upload" enctype="multipart/form-data" method="post">
+  <form class="tw-mt-4" action="/acp/servers/{{ $server->id }}/ftp/upload" enctype="multipart/form-data" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 

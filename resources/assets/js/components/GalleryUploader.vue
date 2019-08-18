@@ -30,21 +30,21 @@
         <div class="col-md-8">
           <div>Ссылка:</div>
           <textarea class="form-control js-highlight" :rows="total" v-html="links"></textarea>
-          <div class="mt-2">Полная картинка:</div>
+          <div class="tw-mt-2">Полная картинка:</div>
           <input class="form-control js-highlight" :value="linksInTag">
         </div>
       </div>
-      <h3 class="mt-5">Индивидуальные ссылки</h3>
+      <h3 class="tw-mt-12">Индивидуальные ссылки</h3>
     </div>
     <div v-for="file in files">
-      <div class="row mt-3">
-        <div class="col-md-2 text-center mt-2 tw-mb-4">
+      <div class="row tw-mt-4">
+        <div class="col-md-2 text-center tw-mt-2 tw-mb-4">
           <img class="screenshot" :src="file.thumbnail">
         </div>
         <div class="col-md-6">
           <div>Ссылка:</div>
           <input class="form-control js-highlight" :value="file.original">
-          <div class="mt-2">Полная картинка:</div>
+          <div class="tw-mt-2">Полная картинка:</div>
           <input class="form-control js-highlight" :value="`[img]${file.original}[/img]`">
         </div>
       </div>
