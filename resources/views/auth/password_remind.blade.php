@@ -7,7 +7,7 @@
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 
-    <div class="my-3">
+    <div class="tw-my-4">
       <input
         autofocus
         required

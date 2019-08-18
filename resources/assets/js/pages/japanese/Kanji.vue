@@ -55,10 +55,10 @@ export default {
 <div>
   <div class="align-items-center d-flex flex-wrap h1">
     <router-link
-      class="bg-secondary ja-shadow-light mr-2 px-3 py-1 rounded text-white"
+      class="bg-secondary ja-shadow-light tw-mr-2 px-3 py-1 rounded text-white"
       :to="{ name: 'wk.level', params: { level: kanji.level }}"
     >{{ kanji.level }}</router-link>
-    <div class="bg-kanji ja-shadow-light text-white mr-3 px-2 py-1 rounded">{{ kanji.character }}</div>
+    <div class="bg-kanji ja-shadow-light text-white tw-mr-4 px-2 py-1 rounded">{{ kanji.character }}</div>
     <div class="text-capitalize">{{ kanji.meaning }}</div>
   </div>
 
@@ -66,7 +66,7 @@ export default {
   <div class="tw-mb-6">
     <span v-if="kanji.onyomi">
       <span class="text-muted">On'yomi</span>
-      <span class="f20 mr-3">【{{ kanji.onyomi }}】</span>
+      <span class="f20 tw-mr-4">【{{ kanji.onyomi }}】</span>
     </span>
     <span v-if="kanji.kunyomi">
       <span class="text-muted">Kun'yomi</span>
@@ -99,12 +99,12 @@ export default {
   />
 
   <div class="tw-mt-12">
-    <a class="mr-3" :href="`https://www.wanikani.com/kanji/${kanji.character}`" rel="noreferrer">
+    <a class="tw-mr-4" :href="`https://www.wanikani.com/kanji/${kanji.character}`" rel="noreferrer">
       WaniKani
       <span v-html="$root.svg.external_link"></span>
     </a>
 
-    <a class="mr-3" :href="`https://www.japandict.com/kanji/${kanji.character}`" rel="noreferrer">
+    <a class="tw-mr-4" :href="`https://www.japandict.com/kanji/${kanji.character}`" rel="noreferrer">
       JapanDict
       <span v-html="$root.svg.external_link"></span>
     </a>

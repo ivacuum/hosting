@@ -51,10 +51,10 @@ export default {
 <div>
   <div class="align-items-center d-flex flex-wrap h1">
     <router-link
-      class="bg-secondary ja-shadow-light mr-2 px-3 py-1 rounded text-white"
+      class="bg-secondary ja-shadow-light tw-mr-2 px-3 py-1 rounded text-white"
       :to="{ name: 'wk.level', params: { level: vocab.level }}"
     >{{ vocab.level }}</router-link>
-    <div class="bg-vocab ja-shadow-light mr-3 px-2 py-1 rounded text-white">{{ vocab.character }}</div>
+    <div class="bg-vocab ja-shadow-light tw-mr-4 px-2 py-1 rounded text-white">{{ vocab.character }}</div>
     <div class="f24 text-capitalize">{{ vocab.meaning }}</div>
   </div>
 
@@ -81,12 +81,12 @@ export default {
   </div>
 
   <div class="tw-mt-6">
-    <a class="mr-3" :href="`https://www.wanikani.com/vocabulary/${vocab.character}`" rel="noreferrer">
+    <a class="tw-mr-4" :href="`https://www.wanikani.com/vocabulary/${vocab.character}`" rel="noreferrer">
       WaniKani
       <span v-html="$root.svg.external_link"></span>
     </a>
 
-    <a class="mr-3" :href="`https://www.japandict.com/${vocab.character}`" rel="noreferrer">
+    <a class="tw-mr-4" :href="`https://www.japandict.com/${vocab.character}`" rel="noreferrer">
       JapanDict
       <span v-html="$root.svg.external_link"></span>
     </a>

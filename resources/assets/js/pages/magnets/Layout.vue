@@ -22,11 +22,11 @@ export default {
   <div class="d-lg-flex flex-row-reverse align-items-center justify-content-between mt-n1 mt-lg-n2 tw-mb-4">
     <the-search/>
 
-    <div class="mr-3 text-center" v-if="magnet.magnet">
+    <div class="tw-mr-4 text-center" v-if="magnet.magnet">
       <a class="btn btn-success js-magnet" :href="magnet.magnet" @click="download(magnet)">
-        <span class="mr-1" v-html="$root.svg.magnet"></span>
+        <span class="tw-mr-1" v-html="$root.svg.magnet"></span>
         {{ $t('torrents.download') }}
-        <span class="mx-1">&middot;</span>
+        <span class="tw-mx-1">&middot;</span>
         <span v-html="magnet.size"></span>
       </a>
     </div>

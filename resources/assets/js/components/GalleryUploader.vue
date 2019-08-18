@@ -23,7 +23,7 @@
     Идет загрузка... {{ uploaded }} из {{ total }}
   </div>
 
-  <div v-if="files.length" class="my-4">
+  <div v-if="files.length" class="tw-my-6">
     <div v-if="files.length > 1">
       <h3>Ссылки на все картинки</h3>
       <div class="row">

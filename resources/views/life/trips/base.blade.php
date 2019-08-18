@@ -8,8 +8,8 @@
 @parent
 @include('tpl.city-timeline')
 <div class="d-flex flex-wrap align-items-center tw-mb-2">
-  <img class="flag-24 flag-shadow mr-2" src="{{ $trip->city->country->flagUrl() }}">
-  <h1 class="h2 tw-mb-1 mr-2">{{ $trip->title }}</h1>
+  <img class="flag-24 flag-shadow tw-mr-2" src="{{ $trip->city->country->flagUrl() }}">
+  <h1 class="h2 tw-mb-1 tw-mr-2">{{ $trip->title }}</h1>
   @include('tpl.city-map-button', ['city' => $trip->city])
   @if (optional(auth()->user())->isRoot())
     <a class="btn btn-default btn-sm" href="{{ UrlHelper::edit('Acp\Trips', $trip) }}">
@@ -51,7 +51,7 @@
   <div class="alert alert-info tw-mt-6">
     <div class="tw-mb-2">{{ trans('life.newsletter.description') }}</div>
     <div class="d-flex">
-      <a class="btn btn-default btn-sm svg-flex svg-label font-small-caps mr-3" href="{{ path('Subscriptions@edit', ['trips' => 1]) }}">
+      <a class="btn btn-default btn-sm svg-flex svg-label font-small-caps tw-mr-4" href="{{ path('Subscriptions@edit', ['trips' => 1]) }}">
         @svg (mail)
         {{ trans('mail.subscribe') }}
       </a>

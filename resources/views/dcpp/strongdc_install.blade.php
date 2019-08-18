@@ -20,14 +20,14 @@
     <li>
       <p>Скачайте программу-клиент <a class="link" href="{{ path('Dcpp@page', 'strongdc') }}">StrongDC++</a>.</p>
       <p>
-        <a class="btn btn-success my-1 mr-2" href="{{ path('Files@download', 132) }}">
-          <span class="mr-1">
+        <a class="btn btn-success tw-my-1 tw-mr-2" href="{{ path('Files@download', 132) }}">
+          <span class="tw-mr-1">
             @svg (windows)
           </span>
           {{ trans('dcpp.download') }} 32-Bit &middot; {{ ViewHelper::size(8046097) }}
         </a>
-        <a class="btn btn-success my-1" href="{{ path('Files@download', 134) }}">
-          <span class="mr-1">
+        <a class="btn btn-success tw-my-1" href="{{ path('Files@download', 134) }}">
+          <span class="tw-mr-1">
             @svg (windows)
           </span>
           {{ trans('dcpp.download') }} 64-Bit &middot; {{ ViewHelper::size(16138442) }}

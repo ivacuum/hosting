@@ -33,7 +33,7 @@ export default {
 <template>
 <div class="d-flex flex-wrap tw-mb-4 text-success">
   <template v-for="answer in answers">
-    <span class="mr-3" :class="{ 'bank-used': answer.used }">{{ answer.key }}</span>
+    <span class="tw-mr-4" :class="{ 'bank-used': answer.used }">{{ answer.key }}</span>
   </template>
 </div>
 </template>

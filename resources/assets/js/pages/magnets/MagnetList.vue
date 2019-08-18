@@ -70,7 +70,7 @@ export default {
   <div class="d-flex">
     <aside class="d-none d-lg-block flex-shrink-0 font-smooth torrent-categories" style="width: 14rem;">
       <category-tree/>
-      <div class="alert alert-info mr-4 tw-mt-6 p-2 small" v-if="guest">
+      <div class="alert alert-info tw-mr-6 tw-mt-6 p-2 small" v-if="guest">
         <a class="link" href="/auth/login?goto=/torrents">Пользователям</a>
         доступны чат и добавление раздач
       </div>

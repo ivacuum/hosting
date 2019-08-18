@@ -8,9 +8,9 @@
 
 @section('content')
 <div class="d-flex flex-wrap align-items-center tw-mb-2">
-  <h1 class="h2 tw-mb-1 mr-3">{{ trans('life.gigs_intro_title') }}</h1>
+  <h1 class="h2 tw-mb-1 tw-mr-4">{{ trans('life.gigs_intro_title') }}</h1>
   @if (Auth::check())
-    <form class="mr-3" action="{{ path('Subscriptions@update') }}" method="post">
+    <form class="tw-mr-4" action="{{ path('Subscriptions@update') }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}
       <button class="btn btn-default btn-sm font-small-caps svg-flex svg-label">
         @svg (mail)
@@ -21,7 +21,7 @@
       @csrf
     </form>
   @else
-    <a class="btn btn-default btn-sm svg-flex svg-label font-small-caps mr-3" href="{{ path('Subscriptions@edit', ['gigs' => 1]) }}">
+    <a class="btn btn-default btn-sm svg-flex svg-label font-small-caps tw-mr-4" href="{{ path('Subscriptions@edit', ['gigs' => 1]) }}">
       @svg (mail)
       {{ trans('mail.subscribe') }}
     </a>

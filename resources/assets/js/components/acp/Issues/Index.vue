@@ -81,11 +81,11 @@ export default {
   <div v-else>No {{ modelPlural }} matched the given criteria.</div>
 
   <div v-show="selected.length">
-    <div class="align-items-center d-flex flex-wrap my-2">
-      <div class="mr-2">Выбрано: {{ selected.length }}</div>
-      <button class="btn btn-default mr-1" type="button" @click="batch('close')">Закрыть</button>
-      <button class="btn btn-default mr-1" type="button" @click="batch('open')">Открыть</button>
-      <button class="btn btn-default mr-1" type="button" @click="batch('delete')">Удалить</button>
+    <div class="align-items-center d-flex flex-wrap tw-my-2">
+      <div class="tw-mr-2">Выбрано: {{ selected.length }}</div>
+      <button class="btn btn-default tw-mr-1" type="button" @click="batch('close')">Закрыть</button>
+      <button class="btn btn-default tw-mr-1" type="button" @click="batch('open')">Открыть</button>
+      <button class="btn btn-default tw-mr-1" type="button" @click="batch('delete')">Удалить</button>
     </div>
   </div>
 

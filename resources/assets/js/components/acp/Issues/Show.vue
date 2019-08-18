@@ -98,7 +98,7 @@ export default {
     </div>
   </div>
 
-  <div class="my-3 pre-line">{{ resource.text }}</div>
+  <div class="tw-my-4 pre-line">{{ resource.text }}</div>
 
   <div v-if="comments.length">
     <h3 class="tw-mt-6">
@@ -111,7 +111,7 @@ export default {
   </div>
 
   <div v-show="status === 1">
-    <div class="my-2">
+    <div class="tw-my-2">
       <textarea
         required
         class="form-control textarea-autosized js-autosize-textarea-vue"

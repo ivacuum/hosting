@@ -85,7 +85,7 @@
   @show
   <div class="js-flash-notification">
     @if ($first_time_visit && !Auth::check() && $locale !== $locale_preffered && empty($no_language_selector) && !$is_crawler)
-      <div class="alert alert-warning my-0 px-0 rounded-0">
+      <div class="alert alert-warning tw-my-0 px-0 rounded-0">
         <div class="container">
           <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
           @ru
@@ -97,7 +97,7 @@
       </div>
     @endif
     @if (Session::has('message'))
-      <div class="alert alert-info my-0 px-0 rounded-0">
+      <div class="alert alert-info tw-my-0 px-0 rounded-0">
         <div class="container">
           <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
           {{ Session::get('message') }}
@@ -105,7 +105,7 @@
       </div>
     @endif
     @if ($errors->has('mail'))
-      <div class="alert alert-info my-0 px-0 rounded-0">
+      <div class="alert alert-info tw-my-0 px-0 rounded-0">
         <div class="container">
           {{ $errors->first('mail') }}
         </div>
@@ -136,7 +136,7 @@
             <li class="list-inline-item">
               @ru
                 <a class="d-flex flex-wrap align-items-center tw-whitespace-no-wrap" href="{{ url("en/{$request_uri}") }}" lang="en">
-                  <div class="mr-1">
+                  <div class="tw-mr-1">
                     <svg class="flag-16 flag-shadow" viewBox="0 0 640 480" width="16" height="12">
                       <g fill-rule="evenodd">
                         <g stroke-width="1pt">
@@ -152,7 +152,7 @@
                 </a>
               @en
                 <a class="d-flex flex-wrap align-items-center tw-whitespace-no-wrap" href="{{ url($request_uri) }}" lang="ru">
-                  <div class="mr-1">
+                  <div class="tw-mr-1">
                     <svg class="flag-16 flag-shadow" viewBox="0 0 640 480" width="16" height="12">
                       <g fill-rule="evenodd" stroke-width="1pt">
                         <path fill="#fff" d="M0 0h640v480H0z"/>

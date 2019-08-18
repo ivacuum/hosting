@@ -16,7 +16,7 @@
         <input class="domains-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}">
       </td>
       <td>
-        <a class="mr-1" href="http://{{ $model->domain }}/" target="_blank">
+        <a class="tw-mr-1" href="http://{{ $model->domain }}/" target="_blank">
           @svg (external-link)
         </a>
         <a href="/acp/domains/{{ $model->domain }}">{{ $model->domain }}</a>
@@ -56,10 +56,10 @@
   </tbody>
 </table>
 
-<div class="my-3">
+<div class="tw-my-4">
   <form class="form-inline js-batch-form" data-url="/acp/domains/batch" data-selector=".domains-checkbox">
     <div class="form-group">
-      <div class="d-inline-block mr-1">
+      <div class="d-inline-block tw-mr-1">
         <select required class="custom-select" name="action">
           <option value="">Выберите действие...</option>
           @if ($filter == 'trashed')
@@ -78,20 +78,20 @@
 </div>
 
 <div>
-  <span class="tw-whitespace-no-wrap mr-2">
-    <span class="badge badge-secondary mr-1">...</span>
+  <span class="tw-whitespace-no-wrap tw-mr-2">
+    <span class="badge badge-secondary tw-mr-1">...</span>
     есть заметки
   </span>
-  <span class="tw-whitespace-no-wrap mr-2">
-    <span class="badge badge-info mr-1">?</span>
+  <span class="tw-whitespace-no-wrap tw-mr-2">
+    <span class="badge badge-info tw-mr-1">?</span>
     не в нашей панели
   </span>
-  <span class="tw-whitespace-no-wrap mr-2">
-    <span class="badge badge-danger mr-1">$</span>
+  <span class="tw-whitespace-no-wrap tw-mr-2">
+    <span class="badge badge-danger tw-mr-1">$</span>
     просрочена оплата
   </span>
-  <span class="tw-whitespace-no-wrap mr-2">
-    <span class="badge badge-warning mr-1">$</span>
+  <span class="tw-whitespace-no-wrap tw-mr-2">
+    <span class="badge badge-warning tw-mr-1">$</span>
     подходит срок оплаты
   </span>
 </div>

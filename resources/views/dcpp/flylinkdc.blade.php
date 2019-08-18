@@ -23,7 +23,7 @@
 @endsection
 
 @section('software_features')
-<section class="my-0 py-5">
+<section class="tw-my-0 py-5">
   <div class="container">
     <h3>
       @ru

@@ -1,13 +1,13 @@
 @extends('torrents.base')
 
 @section('torrent-download-button')
-<div class="mr-3 text-center">
+<div class="tw-mr-4 text-center">
   <a class="btn btn-success js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ path('Torrents@magnet', $torrent) }}">
-    <span class="mr-1">
+    <span class="tw-mr-1">
       @svg (magnet)
     </span>
     {{ trans('torrents.download') }}
-    <span class="mx-1">&middot;</span>
+    <span class="tw-mx-1">&middot;</span>
     {{ ViewHelper::size($torrent->size) }}
   </a>
 </div>
@@ -35,7 +35,7 @@
   <a class="btn btn-success svg-flex svg-label js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ path('Torrents@magnet', $torrent) }}">
     @svg (magnet)
     {{ trans('torrents.download') }}
-    <span class="mx-2">&middot;</span>
+    <span class="tw-mx-2">&middot;</span>
     {{ ViewHelper::size($torrent->size) }}
   </a>
 </div>

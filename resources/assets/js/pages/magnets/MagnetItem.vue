@@ -80,14 +80,14 @@ export default {
     <a class="btn btn-success svg-flex svg-label" :href="magnet.magnet" @click="download(magnet)">
       <span v-html="$root.svg.magnet"></span>
       {{ $t('torrents.download') }}
-      <span class="mx-2">&middot;</span>
+      <span class="tw-mx-2">&middot;</span>
       <span v-html="magnet.size"></span>
     </a>
   </div>
 
   <div class="tw-mt-4" v-if="magnet.title_tags.length">
     <router-link
-      class="btn btn-outline-primary tw-mb-1 mr-1 text-lowercase"
+      class="btn btn-outline-primary tw-mb-1 tw-mr-1 text-lowercase"
       :to="searchUrl(tag)"
       v-for="(tag, i) in magnet.title_tags"
       :key="i"

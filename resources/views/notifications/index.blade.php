@@ -22,7 +22,7 @@
         </div>
         <div class="d-table-cell align-top">
           @if ($notification->unread())
-            <span class="svg-unread mr-1 tooltipped tooltipped-n" aria-label="{{ trans('notifications.unread') }}">
+            <span class="svg-unread tw-mr-1 tooltipped tooltipped-n" aria-label="{{ trans('notifications.unread') }}">
               @svg (circle)
             </span>
           @endif

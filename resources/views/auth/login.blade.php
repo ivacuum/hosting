@@ -5,14 +5,14 @@
   <div class="text-center tw-mb-4">
     <h3>{{ trans('auth.signin_title') }}</h3>
 
-    <div class="d-flex justify-content-center my-3">
-      <div class="mr-2">
+    <div class="d-flex justify-content-center tw-my-4">
+      <div class="tw-mr-2">
         <a class="btn bg-vk f20 rounded-circle text-white" href="{{ path('Auth\Vk@index') }}">
           @svg (vk)
         </a>
         <div class="tw-mt-1 small text-muted">{{ trans('auth.vk') }}</div>
       </div>
-      <div class="mr-2">
+      <div class="tw-mr-2">
         <a class="btn bg-facebook f20 rounded-circle text-white" href="{{ path('Auth\Facebook@index') }}">
           @svg (facebook)
         </a>

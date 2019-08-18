@@ -58,15 +58,15 @@
     @endforeach
   </ul>
   <div>
-    <span class="mr-3">
-      <span class="badge badge-success px-2 mr-1">&nbsp;</span>
+    <span class="tw-mr-4">
+      <span class="badge badge-success px-2 tw-mr-1">&nbsp;</span>
       активен
     </span>
-    <span class="mr-3">
-      <span class="badge badge-warning px-2 mr-1">&nbsp;</span>
+    <span class="tw-mr-4">
+      <span class="badge badge-warning px-2 tw-mr-1">&nbsp;</span>
       неактивен
     </span>
-    <span class="badge badge-danger px-2 mr-1">&nbsp;</span>
+    <span class="badge badge-danger px-2 tw-mr-1">&nbsp;</span>
     отключен
   </div>
 @endif

@@ -28,9 +28,9 @@
           </template>
         </div>
         <div class="d-flex flex-wrap tw-mt-2">
-          <button class="btn btn-primary tw-mb-2 mr-2" :disabled="this.picked.length < 2" @click="practice">{{ $t('PRACTICE') }}</button>
-          <button class="btn btn-default tw-mb-2 mr-2" @click="checkAll">{{ $t('CHECK_ALL') }}</button>
-          <button class="btn btn-default tw-mb-2 mr-2" @click="uncheckAll">{{ $t('UNCHECK_ALL') }}</button>
+          <button class="btn btn-primary tw-mb-2 tw-mr-2" :disabled="this.picked.length < 2" @click="practice">{{ $t('PRACTICE') }}</button>
+          <button class="btn btn-default tw-mb-2 tw-mr-2" @click="checkAll">{{ $t('CHECK_ALL') }}</button>
+          <button class="btn btn-default tw-mb-2 tw-mr-2" @click="uncheckAll">{{ $t('UNCHECK_ALL') }}</button>
           <transition name="fade-fast" mode="out-in">
             <button class="btn btn-default tw-mb-2" @click="switchSyllabary" :key="syllabaryLabel">{{ syllabaryLabel }}</button>
           </transition>

@@ -15,12 +15,12 @@
 @section('download_latest')
 <div {{ Illuminate\Support\Str::contains($css_classes, ['linux', 'macos']) ? 'hidden' : '' }} class="js-dcpp-client">
   <h4>{{ trans('dcpp.for') }} @svg (windows) Windows</h4>
-  <a class="btn btn-success btn-lg my-1 mr-2" href="{{ path('Files@download', 49) }}">
+  <a class="btn btn-success btn-lg tw-my-1 tw-mr-2" href="{{ path('Files@download', 49) }}">
     {{ trans('dcpp.download') }} 32bit
     &middot;
     {{ ViewHelper::size(36586416) }}
   </a>
-  <a class="btn btn-success btn-lg my-1" href="{{ path('Files@download', 50) }}">
+  <a class="btn btn-success btn-lg tw-my-1" href="{{ path('Files@download', 50) }}">
     {{ trans('dcpp.download') }} 64bit
     &middot;
     {{ ViewHelper::size(36562647) }}
@@ -29,12 +29,12 @@
 
 <div {{ !Illuminate\Support\Str::contains($css_classes, ['linux']) ? 'hidden' : '' }} class="js-dcpp-client">
   <h4 class="tw-mt-4">{{ trans('dcpp.for') }} @svg (linux) Linux</h4>
-  <a class="btn btn-success btn-lg my-1 mr-2" href="{{ path('Files@download', 74) }}">
+  <a class="btn btn-success btn-lg tw-my-1 tw-mr-2" href="{{ path('Files@download', 74) }}">
     {{ trans('dcpp.download') }} 32bit
     &middot;
     {{ ViewHelper::size(36756573) }}
   </a>
-  <a class="btn btn-success btn-lg my-1" href="{{ path('Files@download', 148) }}">
+  <a class="btn btn-success btn-lg tw-my-1" href="{{ path('Files@download', 148) }}">
     {{ trans('dcpp.download') }} 64bit
     &middot;
     {{ ViewHelper::size(36924947) }}
@@ -43,12 +43,12 @@
 
 <div {{ !Illuminate\Support\Str::contains($css_classes, ['macos']) ? 'hidden' : '' }} class="js-dcpp-client">
   <h4 class="tw-mt-4">{{ trans('dcpp.for') }} @svg (apple) macOS</h4>
-  <a class="btn btn-success btn-lg my-1 mr-2" href="{{ path('Files@download', 51) }}">
+  <a class="btn btn-success btn-lg tw-my-1 tw-mr-2" href="{{ path('Files@download', 51) }}">
     {{ trans('dcpp.download') }} 32bit
     &middot;
     {{ ViewHelper::size(36626671) }}
   </a>
-  <a class="btn btn-success btn-lg my-1" href="{{ path('Files@download', 147) }}">
+  <a class="btn btn-success btn-lg tw-my-1" href="{{ path('Files@download', 147) }}">
     {{ trans('dcpp.download') }} 64bit
     &middot;
     {{ ViewHelper::size(36508412) }}
@@ -76,7 +76,7 @@
 @endsection
 
 @section('software_features')
-<section class="my-0 py-5">
+<section class="tw-my-0 py-5">
   <div class="container">
     @ru
     <h3>Основные преимущества Jucy DC++</h3>

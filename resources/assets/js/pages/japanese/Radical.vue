@@ -51,10 +51,10 @@ export default {
 <div>
   <div class="align-items-center d-flex flex-wrap h1">
     <router-link
-      class="bg-secondary ja-shadow-light mr-2 px-3 py-1 rounded text-white"
+      class="bg-secondary ja-shadow-light tw-mr-2 px-3 py-1 rounded text-white"
       :to="{ name: 'wk.level', params: { level: radical.level }}"
     >{{ radical.level }}</router-link>
-    <div class="bg-radical text-white mr-3 px-2 py-1 rounded">
+    <div class="bg-radical text-white tw-mr-4 px-2 py-1 rounded">
       <span class="ja-character ja-shadow-light" v-if="radical.character">{{ radical.character }}</span>
       <img class="d-block ja-character ja-image-shadow" :src="radical.image" alt="" height="38" v-else>
     </div>

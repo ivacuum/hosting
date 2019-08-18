@@ -115,13 +115,13 @@
         </td>
         <td>
           <div class="presentation">
-            <a class="pseudo js-ns-record-edit mr-2" href="#">настроить</a>
+            <a class="pseudo js-ns-record-edit tw-mr-2" href="#">настроить</a>
             <a class="pseudo js-ns-record-delete" data-id="{{ $record->record_id }}" data-action="{{ path("$self@deleteNsRecord", $model) }}" href="#">
               @svg (times)
             </a>
           </div>
           <div hidden class="edit">
-            <a class="pseudo js-ns-record-save mr-2" data-action="{{ path("$self@editNsRecord", $model) }}" href="#">сохранить</a>
+            <a class="pseudo js-ns-record-save tw-mr-2" data-action="{{ path("$self@editNsRecord", $model) }}" href="#">сохранить</a>
             <a class="pseudo js-ns-record-cancel" href="#">
               @svg (rotate-left)
             </a>
@@ -133,7 +133,7 @@
 
   <form class="form-inline tw-mt-4" action="{{ path("$self@setServerNsRecords", $model) }}" method="post">
     @csrf
-    <div class="d-inline-block mr-1">
+    <div class="d-inline-block tw-mr-1">
       <select class="custom-select" name="server">
         <option value="">-----</option>
         <option>srv1.korden.net</option>

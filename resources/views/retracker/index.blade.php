@@ -34,7 +34,7 @@
   <div class="container mw-800">
     <h3>Как настроить?</h3>
     <p>Использование ретрекера по адресу <b>retracker.local</b> требует дополнительной настройки.</p>
-    <p><a class="btn btn-primary my-1" href="{{ path('Files@download', 123) }}">Файл настроек для Windows</a> <a class="btn btn-primary my-1" href="{{ path('Files@download', 124) }}">Файл настроек для Linux</a></p>
+    <p><a class="btn btn-primary tw-my-1" href="{{ path('Files@download', 123) }}">Файл настроек для Windows</a> <a class="btn btn-primary tw-my-1" href="{{ path('Files@download', 124) }}">Файл настроек для Linux</a></p>
     <p>Пользователям ОС Windows достаточно сохранить и запустить файл настроек от имени администратора.</p>
     <p>Пользователям ОС семейства Linux необходимо либо запустить файл настроек от имени администратора, либо набрать в терминале следующие команды:</p>
     <pre>wget https://ivacuum.org/d/rt/retracker.local.sh

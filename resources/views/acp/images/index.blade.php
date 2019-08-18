@@ -6,7 +6,7 @@
 
 @section('toolbar')
 <div class="btn-toolbar tw-mb-4">
-  <div class="btn-group mr-2">
+  <div class="btn-group tw-mr-2">
     <a class="btn btn-default js-pjax {{ !$type ? 'active' : '' }}" href="{{ UrlHelper::filter(['type' => null]) }}">
       @svg (th-list)
     </a>
@@ -14,7 +14,7 @@
       @svg (th)
     </a>
   </div>
-  <div class="btn-group mr-2">
+  <div class="btn-group tw-mr-2">
     <a class="btn btn-default js-pjax {{ !$year ? 'active' : '' }}" href="{{ UrlHelper::filter(['year' => null]) }}">Все</a>
     @foreach (range(date('Y'), 2009) as $value)
       <a class="btn btn-default js-pjax {{ $year == $value ? 'active' : '' }}" href="{{ UrlHelper::filter(['year' => $value]) }}">{{ substr($value, 2) }}</a>

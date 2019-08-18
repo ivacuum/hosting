@@ -2,7 +2,7 @@
 <div>
   <div class="align-items-center d-md-flex justify-content-between tw-mb-4 mb-md-0 mt-n2">
     <div class="d-flex flex-wrap" v-if="results">
-      <h3 class="tw-mb-2 mb-md-0 mr-3 pt-1">{{ $t('RESULTS', { results }) }}</h3>
+      <h3 class="tw-mb-2 mb-md-0 tw-mr-4 pt-1">{{ $t('RESULTS', { results }) }}</h3>
       <button class="btn btn-default tw-mb-2 mb-md-0" @click="reset">{{ $t('CLEAR') }}</button>
     </div>
     <div class="d-none d-md-block" v-else>&nbsp;</div>
@@ -20,7 +20,7 @@
       </div>
     </form>
   </div>
-  <div class="my-3" v-if="Object.keys(elements).length">
+  <div class="tw-my-4" v-if="Object.keys(elements).length">
     <router-link
       class="align-items-center bg-radical border-radical d-flex justify-content-between px-2 px-sm-3 py-2 text-white"
       :to="{ name: 'wk.radical', params: { meaning: row.meaning }}"

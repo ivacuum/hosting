@@ -42,7 +42,7 @@ export default {
 </script>
 
 <template>
-<div class="dropdown my-1 mr-2">
+<div class="dropdown tw-my-1 tw-mr-2">
   <a class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown">
     <span class="text-muted" v-html="$root.svg.filter"></span>
     {{ title }}: {{ current }}

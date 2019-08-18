@@ -8,11 +8,11 @@
     {{ trans('acp.trips.create') }}
   </a>
   @if (optional(Auth::user())->login)
-    <a class="btn btn-default my-1" href="{{ path('UserTravelTrips@index', \Auth::user()->login) }}">
+    <a class="btn btn-default tw-my-1" href="{{ path('UserTravelTrips@index', \Auth::user()->login) }}">
       Просмотреть
     </a>
   @endif
-  <a class="btn btn-default my-1" href="{{ path('Docs@page', 'trips') }}">
+  <a class="btn btn-default tw-my-1" href="{{ path('Docs@page', 'trips') }}">
     @svg (question-circle)
   </a>
 </h3>

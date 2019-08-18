@@ -41,19 +41,19 @@ export default {
 <template>
 <div>
   <div class="d-flex align-items-center flex-wrap tw-mb-2 mt-n2">
-    <h3 class="tw-mb-1 mr-3">
+    <h3 class="tw-mb-1 tw-mr-4">
       {{ $t(`${plural}.index`) }}
       <small class="text-muted tw-whitespace-no-wrap">{{ meta.total }}</small>
     </h3>
     <router-link
-      class="btn btn-success my-1 mr-2"
+      class="btn btn-success tw-my-1 tw-mr-2"
       :to="meta.new_url"
       v-if="meta.new_url"
     >
       {{ $t(`${plural}.create`) }}
     </router-link>
     <form
-      class="my-1 mr-2"
+      class="tw-my-1 tw-mr-2"
       @submit.prevent="$emit('search', q)"
       v-if="!!$listeners.search"
     >

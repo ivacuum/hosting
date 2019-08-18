@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="d-flex align-items-center flex-wrap tw-mb-2 mt-n2">
-  <h3 class="tw-mb-1 mr-3">{{ trans("$tpl.index") }}</h3>
+  <h3 class="tw-mb-1 tw-mr-4">{{ trans("$tpl.index") }}</h3>
   @include('acp.tpl.create-button')
 </div>
 <table id="tree" class="table-stats">
@@ -29,7 +29,7 @@
 </table>
 
 <form class="form-inline tw-mt-4">
-  <div class="mr-1">
+  <div class="tw-mr-1">
     <select class="custom-select" name="action" id="batch_action">
       <option value="">Выберите действие...</option>
       <option value="activate">Включить</option>

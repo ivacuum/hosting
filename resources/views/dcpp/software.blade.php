@@ -5,14 +5,14 @@
 
 @section('content')
 <div class="life-text">
-  <section class="my-0 pt-4">
+  <section class="tw-my-0 pt-4">
     <div class="container">
       <h1 class="tw-mb-6">{{ trans('dcpp.download') }} {{ $software_title }} {{ $software[0]['version'] }}</h1>
       @section('download_latest')
         <div>
-          <a class="btn btn-success my-1 btn-lg" href="{{ path('Files@download', $software[0]['id']) }}">
+          <a class="btn btn-success tw-my-1 btn-lg" href="{{ path('Files@download', $software[0]['id']) }}">
             @php ($icon = $software[0]['icon'] ?? 'windows')
-            <span class="mr-1">
+            <span class="tw-mr-1">
               @svg ($icon)
             </span>
             {{ trans('dcpp.download') }}{{ $software[0]['dl_suffix'] }}
@@ -26,7 +26,7 @@
     </div>
   </section>
 
-  <section class="my-0 py-5">
+  <section class="tw-my-0 py-5">
     <div class="container">
       <h2>{{ trans('dcpp.about_software') }}</h2>
       @yield('about_software')
@@ -42,7 +42,7 @@
   </div>
 
   @if (!empty($software_screenshots))
-    <section class="bg-dark my-0 py-5 text-light">
+    <section class="bg-dark tw-my-0 py-5 text-light">
       <div class="container">
         <h2 class="tw-mb-6">{{ trans('dcpp.screenshots') }}</h2>
         <p>
@@ -56,7 +56,7 @@
     </section>
   @endif
 
-  <section class="bg-light border-top border-bottom my-0 py-5">
+  <section class="bg-light border-top border-bottom tw-my-0 py-5">
     <div class="container">
       <h2>{{ trans('dcpp.hubs') }}</h2>
       @ru
@@ -79,7 +79,7 @@
   @yield('software_features')
 
   @if (sizeof($software) > 1 || !empty($developer_site))
-    <section class="border-bottom my-0 py-5">
+    <section class="border-bottom tw-my-0 py-5">
       <div class="container">
         <h2 class="tw-mb-6">{{ trans('dcpp.links') }}</h2>
         <div class="row">
@@ -112,7 +112,7 @@
     </section>
   @endif
 
-  <section class="bg-light my-0 py-5">
+  <section class="bg-light tw-my-0 py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-6">

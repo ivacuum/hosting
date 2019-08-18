@@ -46,7 +46,7 @@
 <h3 class="tw-mt-6">{{ trans('japanese.by-levels') }}</h3>
 <div class="d-flex flex-wrap align-items-center">
   @foreach (range(1, 60) as $level)
-    <a class="badge badge-secondary f18 ja-shadow-light mr-2 tw-mb-2" href="{{ path('JapaneseWanikaniLevel@show', $level) }}">
+    <a class="badge badge-secondary f18 ja-shadow-light tw-mr-2 tw-mb-2" href="{{ path('JapaneseWanikaniLevel@show', $level) }}">
       {{ $level }}
     </a>
   @endforeach

@@ -44,16 +44,16 @@ export default {
 </script>
 
 <template>
-<div class="d-flex flex-wrap my-2" v-if="activeFilters.length">
+<div class="d-flex flex-wrap tw-my-2" v-if="activeFilters.length">
   <router-link
-    class="btn btn-default my-1 mr-1"
+    class="btn btn-default tw-my-1 tw-mr-1"
     :to="resetAll()"
     active-class="noop-active"
   >
     {{ $t('reset_filters') }}
   </router-link>
   <router-link
-    class="btn btn-default my-1 mr-1"
+    class="btn btn-default tw-my-1 tw-mr-1"
     :to="resetOne(filter)"
     v-for="filter in activeFilters"
     :key="filter"

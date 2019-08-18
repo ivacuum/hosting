@@ -2,7 +2,7 @@
 <div>
   <div class="chat-container font-smooth rounded" style="font-size: .875rem;">
     <div v-for="(messagesForDate, date) in messagesGroupedByDate">
-      <div class="chat-date my-1 text-center">
+      <div class="chat-date tw-my-1 text-center">
         <div class="chat-bg d-inline-block mx-auto p-1 rounded">{{ date }}</div>
       </div>
       <div class="d-flex tw-mt-2" v-for="(message, index) in messagesForDate">

@@ -30,7 +30,7 @@
     {{ trans('dcpp.hubs') }}
   </a>
 </div>
-<div class="nav-item dropdown dropdown-hover mr-2 {{ in_array($page, ['airdc', 'apexdc', 'dcpp', 'flylinkdc', 'greylinkdc', 'jucydc', 'kalugadc', 'pelinkdc', 'shakespeer', 'strongdc']) ? 'active' : '' }}">
+<div class="nav-item dropdown dropdown-hover tw-mr-2 {{ in_array($page, ['airdc', 'apexdc', 'dcpp', 'flylinkdc', 'greylinkdc', 'jucydc', 'kalugadc', 'pelinkdc', 'shakespeer', 'strongdc']) ? 'active' : '' }}">
   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">{{ trans('dcpp.clients') }}</a>
   <div class="dropdown-menu">
     <a class="dropdown-item" href="{{ path('Dcpp@page', 'airdc') }}">{{ trans('dcpp.airdc') }}</a>
@@ -70,7 +70,7 @@
 
 @section('content_footer')
 @if (empty($no_footer_banner))
-  <div class="my-3">
+  <div class="tw-my-4">
     @include('tpl.google-horizontal')
   </div>
 @endif

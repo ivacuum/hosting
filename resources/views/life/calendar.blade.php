@@ -54,19 +54,19 @@
     @endru
   </h3>
   <div class="d-flex">
-    <div class="mr-4">
+    <div class="tw-mr-6">
       <div class="font-weight-bold text-right">@ru Год @en Year @endru</div>
       @foreach ($daysInTrips as $year => $days)
         <div>{{ $year }}</div>
       @endforeach
     </div>
-    <div class="mr-4">
+    <div class="tw-mr-6">
       <div class="font-weight-bold text-right">@ru Дни @en Days @endru</div>
       @foreach ($daysInTrips as $year => $days)
         <div class="text-right">{{ $days }}</div>
       @endforeach
     </div>
-    <div class="mr-4">
+    <div class="tw-mr-6">
       <div class="font-weight-bold text-right">@ru Города @en Cities @endru</div>
       @foreach ($cities as $year => $count)
         <div class="text-right">

@@ -21,7 +21,7 @@
 
     <div>
       <a class="btn btn-primary btn-lg" href="{{ path('Torrents@index') }}">
-        <span class="mr-1">
+        <span class="tw-mr-1">
           @svg (sign-in)
         </span>
         Перейти на трекер
@@ -37,7 +37,7 @@
 
     <div>
       <a class="btn btn-primary btn-lg" href="{{ path('Torrents@index') }}">
-        <span class="mr-1">
+        <span class="tw-mr-1">
           @svg (sign-in)
         </span>
         Перейти на трекер
@@ -53,7 +53,7 @@
 
     <div>
       <a class="btn btn-default btn-lg" href="http://t.ivacuum.ru/">
-        <span class="mr-1">
+        <span class="tw-mr-1">
           @svg (sign-in)
         </span>
         Перейти на <span class="d-none d-md-inline">старый трекер</span> t.ivacuum.ru
@@ -114,7 +114,7 @@
     <p>Ознакомиться с актуальным списком можно на отдельной странице.</p>
     <div class="tw-mt-4">
       <a class="btn btn-secondary" href="{{ path('Home@index') }}">
-        <span class="mr-1">
+        <span class="tw-mr-1">
           @svg (sign-in)
         </span>
         Список ресурсов

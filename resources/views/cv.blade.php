@@ -83,7 +83,7 @@ body {
     <div class="col-md-8 tw-mb-6 mb-sm-0">
       <div class="d-sm-flex tw-mb-6">
         <div class="tw-mb-2 mb-sm-0">
-          <img class="my-picture mr-3 p-1" src="https://life.ivacuum.org/me.jpg" width="160" height="160">
+          <img class="my-picture tw-mr-4 p-1" src="https://life.ivacuum.org/me.jpg" width="160" height="160">
         </div>
         <div>
           <h1 class="my-name h3 text-uppercase">@ru Сергей Панков @en Sergey Pankov @endru</h1>
@@ -411,7 +411,7 @@ body {
       <span class="text-success">@svg (primitive-dot)</span>
       <a href="https://kupislona.ru/" rel="nofollow">kupislona.ru</a>
     </div>
-    <div class="my-2 svg-muted text-muted">
+    <div class="tw-my-2 svg-muted text-muted">
       @svg (calendar)
       @ru с декабря 2014 года @en December 2014 — Present @endru
     </div>
@@ -542,7 +542,7 @@ body {
       <a href="/">vacuum.name</a>
       <a href="https://github.com/ivacuum/hosting" rel="nofollow">@svg (github)</a>
     </div>
-    <div class="my-2 svg-muted text-muted">
+    <div class="tw-my-2 svg-muted text-muted">
       @svg (calendar)
       @ru с февраля 2015 года @en Since February 2015 — Present @endru
     </div>

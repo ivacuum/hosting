@@ -20,7 +20,7 @@
         </p>
         <div class="d-flex flex-wrap align-items-center" v-if="Object.keys(filteredElements).length > 1">
           <template v-for="(collection, lvl) in filteredElements">
-            <a class="badge badge-secondary f16 ja-shadow-light mr-1 tw-mb-1" :href="`#level-${lvl}`">
+            <a class="badge badge-secondary f16 ja-shadow-light tw-mr-1 tw-mb-1" :href="`#level-${lvl}`">
               {{ lvl }}
             </a>
           </template>
@@ -61,7 +61,7 @@
               >{{ row.character }}</router-link>
             </div>
             <a
-              class="my-3 my-md-0 pl-md-3 pr-md-2 py-md-1"
+              class="tw-my-4 my-md-0 pl-md-3 pr-md-2 py-md-1"
               :class="{ invisible: labels }"
               href="#"
               @click.prevent="reveal(row.id)"

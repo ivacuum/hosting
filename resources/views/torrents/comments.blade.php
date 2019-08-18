@@ -5,7 +5,7 @@
 @foreach ($comments as $comment)
   <a id="comment-{{ $comment->id }}"></a>
   <div class="d-flex py-3 w-100 border-bottom">
-    <aside class="mr-3 mr-md-4">
+    <aside class="tw-mr-4 mr-md-4">
         @if (null !== $comment->user)
           <div class="comment-avatar-size tw-mt-1">
             <a href="{{ $comment->user->www() }}">
@@ -28,7 +28,7 @@
         @else
           <em>deleted user</em>
         @endif
-        <span class="mx-2 text-muted">&middot;</span>
+        <span class="tw-mx-2 text-muted">&middot;</span>
         @if (optional($comment->rel)->status === App\Torrent::STATUS_PUBLISHED)
           <a href="{{ $comment->rel->www() }}#comment-{{ $comment->id }}">{{ Illuminate\Support\Str::limit($comment->rel->title, 50) }}</a>
         @else

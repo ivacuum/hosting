@@ -31,7 +31,7 @@
     </nav>
     @guest
       @ru
-        <div class="alert alert-info mr-4 tw-mt-6 p-2 small">
+        <div class="alert alert-info tw-mr-6 tw-mt-6 p-2 small">
           <a class="link" href="{{ path('Auth\SignIn@index', ['goto' => path('Torrents@index')]) }}">Пользователям</a> доступны чат и добавление раздач
         </div>
       @endru

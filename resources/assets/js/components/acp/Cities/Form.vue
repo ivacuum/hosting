@@ -53,7 +53,7 @@ export default {
     {{ createTitle }}
   </h3>
 
-  <form class="my-3" ref="form" @submit.prevent="submit">
+  <form class="tw-my-4" ref="form" @submit.prevent="submit">
     <input hidden type="text" name="mail" value="">
     <input hidden type="text" name="_concurrency_control" :value="extra._concurrency_control" v-if="isEditing">
 

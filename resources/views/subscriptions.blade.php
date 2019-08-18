@@ -88,11 +88,11 @@
     <div class="tw-mb-1">As an alternative you can subscribe to RSS feeds.</div>
   @endru
   <div class="d-flex align-items-middle flex-wrap">
-    <a class="f18 svg-flex svg-label font-small-caps mr-3" href="{{ path('LifeGigsRss@index') }}">
+    <a class="f18 svg-flex svg-label font-small-caps tw-mr-4" href="{{ path('LifeGigsRss@index') }}">
       @svg (rss-square)
       {{ mb_strtolower(trans('my.notify_gigs')) }}
     </a>
-    <a class="f18 svg-flex svg-label font-small-caps mr-3" href="{{ path('NewsRss@index') }}">
+    <a class="f18 svg-flex svg-label font-small-caps tw-mr-4" href="{{ path('NewsRss@index') }}">
       @svg (rss-square)
       {{ mb_strtolower(trans('my.notify_news')) }}
     </a>

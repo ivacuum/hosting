@@ -15,7 +15,7 @@
   </div>
 </div>
 
-<form class="d-flex justify-content-between my-3" action="{{ path('ParserVk@indexPost') }}" method="post">
+<form class="d-flex justify-content-between tw-my-4" action="{{ path('ParserVk@indexPost') }}" method="post">
   @csrf
   <div>
     @if (!empty($next))
@@ -27,7 +27,7 @@
   </div>
   <div class="d-none d-sm-flex align-items-center">
     <span class="d-none d-md-block">Топ 10</span>
-    <input class="form-control mx-2" name="slug" value="{{ $vkpage }}" style="width: 8em;" autocapitalize="none">
+    <input class="form-control tw-mx-2" name="slug" value="{{ $vkpage }}" style="width: 8em;" autocapitalize="none">
     за {{ $date->formatLocalized('%e %B') }}
     @if ($date->year !== now()->year)
       {{ $date->year }}

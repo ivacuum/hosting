@@ -39,15 +39,15 @@ Mousetrap.bind('right', () => {
   </div>
   <div class="col-lg-2">
     <div class="d-flex flex-wrap flex-md-column">
-      <div class="mr-2 mr-md-0 text-muted">{{ trans('photos.story') }}</div>
+      <div class="tw-mr-2 mr-md-0 text-muted">{{ trans('photos.story') }}</div>
       <a class="d-flex flex-wrap align-items-center link-parent" href="{{ $photo->rel->www() }}#{{ basename($photo->slug) }}">
-        <img class="flag-16 flag-shadow mr-1" src="{{ $photo->rel->city->country->flagUrl() }}">
+        <img class="flag-16 flag-shadow tw-mr-1" src="{{ $photo->rel->city->country->flagUrl() }}">
         <span class="link">{{ $photo->rel->title }}</span>
       </a>
     </div>
 
     <div class="d-flex flex-wrap flex-md-column tw-mt-1 mt-md-3">
-      <div class="mr-2 mr-md-0 text-muted">{{ trans('photos.date') }}</div>
+      <div class="tw-mr-2 mr-md-0 text-muted">{{ trans('photos.date') }}</div>
       <div>{{ $photo->rel->period }} {{ $photo->rel->year }}</div>
     </div>
 
