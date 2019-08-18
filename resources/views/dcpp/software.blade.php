@@ -33,7 +33,7 @@
     </div>
   </section>
 
-  <div class="mb-3">
+  <div class="tw-mb-4">
     <div class="container">
       <div class="mobile-wide">
         @include('tpl.google-horizontal')

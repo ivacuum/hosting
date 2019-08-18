@@ -15,7 +15,7 @@
   @endif
   <div class="text-break-word mw-700 w-100">
     @if (!Auth::check())
-      <div class="mb-3">
+      <div class="tw-mb-4">
         @ru
           <div>Для комментирования необходимо ввести электронную почту или войти в один клик через один из социальных сервисов ниже.</div>
         @en

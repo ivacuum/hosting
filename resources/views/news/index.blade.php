@@ -36,7 +36,7 @@
         <article itemscope itemtype="http://schema.org/BlogPosting">
           <header>
             <h3 itemprop="headline"><a class="link" href="{{ $model->www() }}" itemprop="url">{{ $model->title }}</a></h3>
-            <div class="svg-labels svg-muted text-muted f14 mb-3">
+            <div class="svg-labels svg-muted text-muted f14 tw-mb-4">
               <span class="svg-flex svg-label">
                 @svg (calendar-o)
                 <time itemprop="datePublished" datetime="{{ $model->created_at->toDateString() }}">

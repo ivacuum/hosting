@@ -54,7 +54,7 @@
 /** @var array[] $posts */
 ?>
 @foreach ($posts as $post)
-  <div class="card card-mobile-wide mb-3 js-shortcuts-item">
+  <div class="card card-mobile-wide tw-mb-4 js-shortcuts-item">
     <div class="card-body text-break-work">
       @if ($post['text'])
         <div class="life-text tw-mb-0 pre-line">{{ $post['text'] }}</div>

@@ -30,7 +30,7 @@ export default {
     </div>
   </aside>
   <div class="text-break-word mw-700 w-100" v-else>
-    <div class="mb-3" v-if="guest">
+    <div class="tw-mb-4" v-if="guest">
       <div>Для комментирования необходимо ввести электронную почту или войти в один клик через один из социальных сервисов ниже.</div>
       <!--<div>Please type your email or use one-click sign-in through one of the social services below to comment.</div>-->
       <social-login-buttons/>

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="mw-500">
-  <h3 class="mb-3">{{ trans('my.profile') }}</h3>
+  <h3 class="tw-mb-4">{{ trans('my.profile') }}</h3>
   <p><a class="btn btn-default" href="{{ Auth::user()->www() }}">{{ trans('my.go_to_profile') }}</a></p>
   <form action="{{ path("$self@update") }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}

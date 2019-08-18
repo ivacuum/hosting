@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="mx-auto mw-400">
-  <h3 class="mb-3">{{ trans('auth.register_title') }}</h3>
+  <h3 class="tw-mb-4">{{ trans('auth.register_title') }}</h3>
   <form action="{{ path('Auth\NewAccount@register') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf

@@ -11,7 +11,7 @@
 @section('content')
 <section class="bg-light pt-3 pb-5">
   <div class="container mw-800">
-    <div class="text-center mb-3">
+    <div class="text-center tw-mb-4">
       <a href="{{ path('Torrents@index') }}">
         <img src="https://ivacuum.org/i/t/images/logo_arrows.png" width="64" height="64">
       </a>

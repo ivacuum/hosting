@@ -8,7 +8,7 @@
   @en
     <p>Have you ever wondered if you could try one of the best web hosting for free for a few months? Yes, you can, thanks to the promo codes below.</p>
   @endru
-  <table class="table-stats table-adaptive mb-3">
+  <table class="table-stats table-adaptive tw-mb-4">
     <thead>
       <tr>
         <th>@ru Промокод @en Promo Code @endru</th>

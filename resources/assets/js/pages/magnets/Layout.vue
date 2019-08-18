@@ -19,7 +19,7 @@ export default {
 
 <template>
 <div class="font-smooth">
-  <div class="d-lg-flex flex-row-reverse align-items-center justify-content-between mt-n1 mt-lg-n2 mb-3">
+  <div class="d-lg-flex flex-row-reverse align-items-center justify-content-between mt-n1 mt-lg-n2 tw-mb-4">
     <the-search/>
 
     <div class="mr-3 text-center" v-if="magnet.magnet">

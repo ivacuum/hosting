@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="mx-auto mw-400">
-  <div class="text-center mb-3">
+  <div class="text-center tw-mb-4">
     <h3>{{ trans('auth.signin_title') }}</h3>
 
     <div class="d-flex justify-content-center my-3">

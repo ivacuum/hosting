@@ -1,5 +1,5 @@
 @if (isset($timeline) && sizeof($timeline->flatten()) > 1)
-  <div class="timeline-container mb-3">
+  <div class="timeline-container tw-mb-4">
     <div class="timeline-scroll">
       <div class="f14 d-flex">
         @foreach ($timeline as $year => $rows)

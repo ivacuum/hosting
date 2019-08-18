@@ -116,7 +116,7 @@
 
 @ru
   <p>Справочник по расшифровке окончаний названий улиц.</p>
-  <table class="table-stats mb-3">
+  <table class="table-stats tw-mb-4">
     <thead>
       <tr>
         <th>Финский</th>

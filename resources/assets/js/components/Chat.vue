@@ -32,7 +32,7 @@
     </div>
     -->
   </div>
-  <form class="mt-1 mb-3" @submit.prevent="post">
+  <form class="mt-1 tw-mb-4" @submit.prevent="post">
     <div class="input-group">
       <input class="form-control" placeholder="Сообщение в чат..." v-model="message">
       <div class="input-group-append">

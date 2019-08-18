@@ -14,7 +14,7 @@ Mousetrap.bind('right', () => {
 
 @section('content')
 <div class="row mt-n2">
-  <div class="col-lg-10 mb-3">
+  <div class="col-lg-10 tw-mb-4">
     <div class="mobile-wide position-relative text-center">
       @if (null !== $next)
         <a class="photo-show-nav photo-show-prev js-pjax js-pjax-no-dim" id="prev_page" href="{{ path("$self@show", [$next->id, 'city_id' => $city_id, 'country_id' => $country_id, 'tag_id' => $tag_id, 'trip_id' => $trip_id]) }}">&nbsp;</a>

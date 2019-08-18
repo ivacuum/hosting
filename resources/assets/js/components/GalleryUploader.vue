@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="mb-3" v-if="errors.file && errors.file.length">
+  <div class="tw-mb-4" v-if="errors.file && errors.file.length">
     <div v-for="error in errors.file">
       <div class="text-danger">{{ error }}</div>
     </div>
@@ -38,7 +38,7 @@
     </div>
     <div v-for="file in files">
       <div class="row mt-3">
-        <div class="col-md-2 text-center mt-2 mb-3">
+        <div class="col-md-2 text-center mt-2 tw-mb-4">
           <img class="screenshot" :src="file.thumbnail">
         </div>
         <div class="col-md-6">

@@ -28,7 +28,7 @@
 
 {!! Form::textarea('text')->wide()->html() !!}
 
-<h3 class="mt-5 mb-3">Реквизиты доступа к сайту</h3>
+<h3 class="mt-5 tw-mb-4">Реквизиты доступа к сайту</h3>
 
 <div class="form-group">
   <label>CMS</label>

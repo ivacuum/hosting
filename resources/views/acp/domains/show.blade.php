@@ -4,7 +4,7 @@
 
 @section('content')
 @if (!$model->isExpired() && ($model->cms_url || ($model->alias_id && $model->alias->cms_url)))
-  <div class="mb-3">
+  <div class="tw-mb-4">
     @include("$tpl.cms_login", ['cms_button_class' => 'btn btn-default'])
   </div>
 @endif

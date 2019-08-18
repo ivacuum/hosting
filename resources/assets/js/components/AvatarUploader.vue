@@ -1,9 +1,9 @@
 <template>
 <div>
-  <div class="mb-3" v-if="avatar">
+  <div class="tw-mb-4" v-if="avatar">
     <img class="avatar-100 rounded-circle" :src="avatar">
   </div>
-  <div class="mb-3" v-if="errors.file && errors.file.length">
+  <div class="tw-mb-4" v-if="errors.file && errors.file.length">
     <div v-for="error in errors.file">
       <div class="text-danger">{{ error }}</div>
     </div>

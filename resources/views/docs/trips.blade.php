@@ -8,7 +8,7 @@
 ])
 
 @section('content')
-<h2 class="mb-3">Поездки</h2>
+<h2 class="tw-mb-4">Поездки</h2>
 
 @component('accordion')
 @slot('title')

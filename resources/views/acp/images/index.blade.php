@@ -5,7 +5,7 @@
 @extends('acp.list')
 
 @section('toolbar')
-<div class="btn-toolbar mb-3">
+<div class="btn-toolbar tw-mb-4">
   <div class="btn-group mr-2">
     <a class="btn btn-default js-pjax {{ !$type ? 'active' : '' }}" href="{{ UrlHelper::filter(['type' => null]) }}">
       @svg (th-list)

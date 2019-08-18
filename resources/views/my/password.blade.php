@@ -1,7 +1,7 @@
 @extends('my.base')
 
 @section('content')
-<h3 class="mb-3">{{ trans('my.password') }}</h3>
+<h3 class="tw-mb-4">{{ trans('my.password') }}</h3>
 
 <div class="mw-500">
   <form action="{{ path("$self@update") }}" method="post">
