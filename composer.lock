@@ -246,16 +246,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.10",
+            "version": "2.1.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "a6c8d7101b19a451c1707b1b79bbbc56e4bdb7ec"
+                "reference": "92dd169c32f6f55ba570c309d83f5209cefb5e23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/a6c8d7101b19a451c1707b1b79bbbc56e4bdb7ec",
-                "reference": "a6c8d7101b19a451c1707b1b79bbbc56e4bdb7ec",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/92dd169c32f6f55ba570c309d83f5209cefb5e23",
+                "reference": "92dd169c32f6f55ba570c309d83f5209cefb5e23",
                 "shasum": ""
             },
             "require": {
@@ -274,7 +274,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.1.x-dev"
                 }
             },
             "autoload": {
@@ -300,7 +300,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2019-07-19T20:52:08+00:00"
+            "time": "2019-08-13T17:33:27+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -762,16 +762,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.8.31",
+            "version": "v5.8.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "24cc1786bd55876fa52380306354772355345efd"
+                "reference": "ee16d719516dfd77ed6c9538000bca49ded284e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/24cc1786bd55876fa52380306354772355345efd",
-                "reference": "24cc1786bd55876fa52380306354772355345efd",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/ee16d719516dfd77ed6c9538000bca49ded284e2",
+                "reference": "ee16d719516dfd77ed6c9538000bca49ded284e2",
                 "shasum": ""
             },
             "require": {
@@ -905,7 +905,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-08-06T15:09:02+00:00"
+            "time": "2019-08-13T14:11:52+00:00"
         },
         {
             "name": "laravel/scout",
@@ -1305,16 +1305,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.22.3",
+            "version": "2.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "738fbd8d80b2c5e158fda76c29c2de432fcc6f7e"
+                "reference": "767617a047e5b8b8b3b0b6023a2650847ed7df02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/738fbd8d80b2c5e158fda76c29c2de432fcc6f7e",
-                "reference": "738fbd8d80b2c5e158fda76c29c2de432fcc6f7e",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/767617a047e5b8b8b3b0b6023a2650847ed7df02",
+                "reference": "767617a047e5b8b8b3b0b6023a2650847ed7df02",
                 "shasum": ""
             },
             "require": {
@@ -1361,14 +1361,14 @@
                     "homepage": "http://github.com/kylekatarnls"
                 }
             ],
-            "description": "A simple API extension for DateTime.",
+            "description": "A API extension for DateTime that supports 281 different languages.",
             "homepage": "http://carbon.nesbot.com",
             "keywords": [
                 "date",
                 "datetime",
                 "time"
             ],
-            "time": "2019-08-07T12:36:44+00:00"
+            "time": "2019-08-17T13:57:34+00:00"
         },
         {
             "name": "opis/closure",
@@ -4568,20 +4568,20 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.9.2",
+            "version": "1.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "8d0a041a565fc1e927e75f1d1bea5f34edf6e7d1"
+                "reference": "007c053ae6f31bba39dfa19a7726f56e9763bbea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/8d0a041a565fc1e927e75f1d1bea5f34edf6e7d1",
-                "reference": "8d0a041a565fc1e927e75f1d1bea5f34edf6e7d1",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/007c053ae6f31bba39dfa19a7726f56e9763bbea",
+                "reference": "007c053ae6f31bba39dfa19a7726f56e9763bbea",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2"
+                "php": "^7.1"
             },
             "replace": {
                 "myclabs/deep-copy": "self.version"
@@ -4589,8 +4589,6 @@
             "require-dev": {
                 "doctrine/collections": "^1.0",
                 "doctrine/common": "^2.6",
-                "phpstan/phpstan": "^0.9.2",
-                "phpstan/phpstan-phpunit": "^0.9.4",
                 "phpunit/phpunit": "^7.1"
             },
             "type": "library",
@@ -4614,7 +4612,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2019-08-09T12:38:39+00:00"
+            "time": "2019-08-09T12:45:53+00:00"
         },
         {
             "name": "nunomaduro/collision",
@@ -5553,16 +5551,16 @@
         },
         {
             "name": "sebastian/exporter",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/exporter.git",
-                "reference": "234199f4528de6d12aaa58b612e98f7d36adb937"
+                "reference": "06a9a5947f47b3029d76118eb5c22802e5869687"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/234199f4528de6d12aaa58b612e98f7d36adb937",
-                "reference": "234199f4528de6d12aaa58b612e98f7d36adb937",
+                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/06a9a5947f47b3029d76118eb5c22802e5869687",
+                "reference": "06a9a5947f47b3029d76118eb5c22802e5869687",
                 "shasum": ""
             },
             "require": {
@@ -5590,6 +5588,10 @@
             ],
             "authors": [
                 {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de"
+                },
+                {
                     "name": "Jeff Welch",
                     "email": "whatthejeff@gmail.com"
                 },
@@ -5598,16 +5600,12 @@
                     "email": "github@wallbash.com"
                 },
                 {
-                    "name": "Bernhard Schussek",
-                    "email": "bschussek@2bepublished.at"
-                },
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
-                },
-                {
                     "name": "Adam Harvey",
                     "email": "aharvey@php.net"
+                },
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
                 }
             ],
             "description": "Provides the functionality to export PHP variables for visualization",
@@ -5616,7 +5614,7 @@
                 "export",
                 "exporter"
             ],
-            "time": "2017-04-03T13:19:02+00:00"
+            "time": "2019-08-11T12:43:14+00:00"
         },
         {
             "name": "sebastian/global-state",
