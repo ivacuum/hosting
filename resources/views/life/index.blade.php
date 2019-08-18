@@ -8,11 +8,11 @@
 
 @section('content')
 <div class="row">
-  <section class="col-sm-8 col-md-6 pt-0">
-    <div class="d-flex flex-wrap align-items-center mb-2">
-      <h1 class="h2 mb-1 mr-3">{{ trans('life.trips') }}</h1>
+  <section class="col-sm-8 col-md-6 tw-pt-0">
+    <div class="tw-flex tw-flex-wrap tw-items-center tw-mb-2">
+      <h1 class="tw-text-3xl tw-mb-1 tw-mr-4">{{ trans('life.trips') }}</h1>
       @if (Auth::check())
-        <form class="mr-3" action="{{ path('Subscriptions@update') }}" method="post">
+        <form class="tw-mr-4" action="{{ path('Subscriptions@update') }}" method="post">
           {{ ViewHelper::inputHiddenMail() }}
           <button class="btn btn-default btn-sm font-small-caps svg-flex svg-label">
             @svg (mail)
@@ -23,7 +23,7 @@
           @csrf
         </form>
       @else
-        <a class="btn btn-default btn-sm svg-flex svg-label font-small-caps mr-3" href="{{ path('Subscriptions@edit', ['trips' => 1]) }}">
+        <a class="btn btn-default btn-sm svg-flex svg-label font-small-caps tw-mr-4" href="{{ path('Subscriptions@edit', ['trips' => 1]) }}">
           @svg (mail)
           {{ trans('mail.subscribe') }}
         </a>
@@ -33,17 +33,17 @@
         rss
       </a>
     </div>
-    <ul class="list-inline tw-text-sm tw--mt-1">
-      <li class="list-inline-item"><mark class="text-nowrap">{{ trans('life.by_year') }}</mark></li>
-      <li class="list-inline-item"><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
-      <li class="list-inline-item"><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></li>
-      <li class="list-inline-item"><a class="link" href="{{ path('Life@calendar') }}">{{ trans('life.by_days') }}</a></li>
+    <ul class="tw-list-none tw-pl-0 tw-text-sm tw--mt-1">
+      <li class="list-inline-item tw-whitespace-no-wrap"><mark>{{ trans('life.by_year') }}</mark></li>
+      <li class="list-inline-item tw-whitespace-no-wrap"><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
+      <li class="list-inline-item tw-whitespace-no-wrap"><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></li>
+      <li class="list-inline-item tw-whitespace-no-wrap"><a class="link" href="{{ path('Life@calendar') }}">{{ trans('life.by_days') }}</a></li>
     </ul>
 
     @include('tpl.trips_by_years')
   </section>
   <section class="col-sm-4 col-md-6 pt-sm-0">
-    <h2>{{ trans('life.favorites') }}</h2>
+    <h2 class="tw-text-3xl">{{ trans('life.favorites') }}</h2>
     <ul class="list-unstyled">
       @ru
         <li class="tw-mb-2"><a class="link" href="{{ path('Life@page', 'chillout') }}">Chillout</a></li>
@@ -60,20 +60,20 @@
       @endru
     </ul>
 
-    <h2 class="tw-mt-12">{{ trans('life.languages') }}</h2>
-    <ul class="list-unstyled">
-      <li class="tw-mb-2">
+    <h2 class="tw-text-3xl tw-mt-12">{{ trans('life.languages') }}</h2>
+    <nav>
+      <div class="tw-mb-2">
         <a class="link" href="{{ path('Life@page', 'english') }}">{{ trans('life.english') }}</a>
-      </li>
+      </div>
       @ru
-        <li class="tw-mb-2">
+        <div class="tw-mb-2">
           <a class="link" href="{{ path('Life@page', 'german') }}">{{ trans('life.german') }}</a>
-        </li>
+        </div>
       @endru
-      <li class="tw-mb-2">
+      <div class="tw-mb-2">
         <a class="link" href="{{ path('Japanese@index') }}">{{ trans('life.japanese') }}</a>
-      </li>
-    </ul>
+      </div>
+    </nav>
   </section>
 </div>
 @endsection

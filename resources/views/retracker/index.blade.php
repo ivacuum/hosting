@@ -23,7 +23,7 @@
 <section class="bg-light border-top border-bottom py-5">
   <div class="container mw-800">
     <h3>Зачем он нужен?</h3>
-    <ul class="mb-0">
+    <ul class="tw-mb-0">
       <li>для совместной закачки файлов из интернета;</li>
       <li>появляется возможность скачать раздачу на локальной скорости, если раздающие тоже пользуются ретрекером.</li>
     </ul>

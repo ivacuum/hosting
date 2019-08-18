@@ -15,7 +15,7 @@
           </template>
           <template v-for="i in elements[0].length">
             <div class="border-right border-bottom">
-              <label class="cursor-pointer d-block mb-0 py-2">
+              <label class="cursor-pointer d-block tw-mb-0 py-2">
                 <input
                   :id="`column_${i - 1}`"
                   class="cursor-pointer"

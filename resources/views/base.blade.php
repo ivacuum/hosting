@@ -127,7 +127,7 @@
 <footer class="footer mt-4">
   <div class="container">
     @section('footer')
-      <ul class="list-inline mb-0">
+      <ul class="list-inline tw-mb-0">
         @section('footer_copyright')
           <li class="list-inline-item">&copy; {{ date('Y') }} vacuum</li>
         @show

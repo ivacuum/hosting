@@ -13,7 +13,7 @@
     <div class="col-md-6 col-lg-4 d-none d-md-block mb-4">
       <a class="d-flex align-items-center mb-2 link-parent" href="{{ path('Torrents@index') }}">
         <img class="size-32 mr-2" src="https://ivacuum.org/i/services/magnet.png">
-        <h2 class="h3 mb-0"><span class="link">{{ trans('torrents.index') }}</span></h2>
+        <h2 class="h3 tw-mb-0"><span class="link">{{ trans('torrents.index') }}</span></h2>
       </a>
       <div>Сервис для скачивания файлов у многочисленных пользователей сети интернет без регистрации и рейтинга.</div>
       {{--<div class="text-muted">Дата запуска: 5 января 2017 г.</div>--}}
@@ -22,7 +22,7 @@
   <div class="col-md-6 col-lg-4 mb-4">
     <a class="d-flex align-items-center mb-2 link-parent" href="{{ path('Life@index') }}">
       <img class="d-none d-md-block size-32 mr-2" src="https://ivacuum.org/i/services/hosting.png">
-      <h2 class="h3 mb-0"><span class="link">{{ trans('menu.life') }}</span></h2>
+      <h2 class="h3 tw-mb-0"><span class="link">{{ trans('menu.life') }}</span></h2>
     </a>
     @ru
       <div>Мои заметки о жизни: поездки по городам России и мира, посещенные концерты, понравившиеся фильмы и книги.</div>
@@ -34,14 +34,14 @@
   @ru
     <div class="col-md-6 col-lg-4 d-md-none mb-4">
       <a class="d-flex align-items-center mb-2 link-parent" href="{{ path('News@index') }}">
-        <h2 class="h3 mb-0"><span class="link">{{ trans('news.index') }}</span></h2>
+        <h2 class="h3 tw-mb-0"><span class="link">{{ trans('news.index') }}</span></h2>
       </a>
       <div>Хроника развития сайта с 2004 года.</div>
     </div>
     <div class="col-md-6 col-lg-4 mb-4">
       <a class="d-flex align-items-center mb-2 link-parent" href="https://kupislona.ru/">
         <img class="d-none d-md-block size-32 mr-2" src="https://ivacuum.org/i/services/kupislona.png">
-        <h2 class="h3 mb-0"><span class="link">KupiSlona.ru</span></h2>
+        <h2 class="h3 tw-mb-0"><span class="link">KupiSlona.ru</span></h2>
       </a>
       <div>Доска бесплатных объявлений России. Место встречи продавцов и покупателей.</div>
       {{--<div class="text-muted">Дата запуска: 7 декабря 2015 г.</div>--}}
@@ -49,7 +49,7 @@
     <div class="col-md-6 col-lg-4 d-none d-md-block mb-4">
       <a class="d-flex align-items-center mb-2 link-parent" href="{{ path('Gallery@index') }}">
         <img class="size-32 mr-2" src="https://ivacuum.org/i/services/gallery.png">
-        <h2 class="h3 mb-0"><span class="link">{{ trans('gallery.index') }}</span></h2>
+        <h2 class="h3 tw-mb-0"><span class="link">{{ trans('gallery.index') }}</span></h2>
       </a>
       <div>Хранилище изображений для последующей публикации в интернете.</div>
       {{--<p class="text-muted">Дата запуска: 8 февраля 2009 г.</p>--}}
@@ -58,7 +58,7 @@
   <div class="col-md-6 col-lg-4 d-none d-md-block mb-4">
     <a class="d-flex align-items-center mb-2 link-parent" href="{{ path('Dcpp@index') }}">
       <img class="size-32 mr-2" src="https://ivacuum.org/i/services/dcpp.png">
-      <h2 class="h3 mb-0"><span class="link">ArtFly.DC++</span></h2>
+      <h2 class="h3 tw-mb-0"><span class="link">ArtFly.DC++</span></h2>
     </a>
     @ru
       <div>Большая коллекция русских DC++ клиентов. Ответы на вопросы. Популярные хабы.</div>
@@ -71,14 +71,14 @@
     <div class="col-md-6 col-lg-4 d-none d-md-block mb-4">
       <a class="d-flex align-items-center mb-2 link-parent" href="http://t.ivacuum.ru">
         <img class="size-32 mr-2" src="https://ivacuum.org/i/services/torrent.png">
-        <h2 class="h3 mb-0"><span class="link">{{ trans('torrents.index') }}</span></h2>
+        <h2 class="h3 tw-mb-0"><span class="link">{{ trans('torrents.index') }}</span></h2>
       </a>
       <div>Исторический форум сервиса для обмена файлами внутри локальной сети Билайн.</div>
       {{--<p class="text-muted">Дата запуска: 5 июля 2010 г.</p>--}}
     </div>
     <div class="col-md-6 col-lg-4 mb-4">
       <a class="d-flex align-items-center mb-2 link-parent" href="{{ path('ParserVk@index') }}">
-        <h2 class="h3 mb-0"><span class="link">{{ trans('menu.parser_vk') }}</span></h2>
+        <h2 class="h3 tw-mb-0"><span class="link">{{ trans('menu.parser_vk') }}</span></h2>
       </a>
       <div>Ежедневная подборка десяти лучших постов выбранных страниц и групп ВК.</div>
       {{--<div class="text-muted">Дата запуска: 2 октября 2014 г.</div>--}}
@@ -86,7 +86,7 @@
   @endru
   <div class="col-md-6 col-lg-4 mb-4">
     <a class="d-flex align-items-center mb-2 link-parent" href="{{ path('Coupons@index') }}">
-      <h2 class="h3 mb-0"><span class="link">{{ trans('menu.coupons') }}</span></h2>
+      <h2 class="h3 tw-mb-0"><span class="link">{{ trans('menu.coupons') }}</span></h2>
     </a>
     @ru
       <div>Коллекция способов сэкономить на услугах известных сервисов.</div>
@@ -97,7 +97,7 @@
   </div>
   <div class="col-md-6 col-lg-4 mb-4">
     <a class="d-flex align-items-center mb-2 link-parent" href="{{ path('Japanese@index') }}">
-      <h2 class="h3 mb-0"><span class="link">{{ trans('japanese.index') }}</span></h2>
+      <h2 class="h3 tw-mb-0"><span class="link">{{ trans('japanese.index') }}</span></h2>
     </a>
     @ru
       <div>Тренажер для запоминания слоговых азбук. Набор ключей, кандзи и словарных слов для самостоятельного изучения и повторения.</div>

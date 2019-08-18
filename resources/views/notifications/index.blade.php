@@ -3,7 +3,7 @@
 @section('content')
 <h2>{{ trans('notifications.index') }}</h2>
 @if (sizeof($notifications))
-  <div class="list-unstyled mb-0">
+  <div class="list-unstyled tw-mb-0">
     @foreach ($notifications as $notification)
       @php ($class_basename = snake_case(class_basename($notification->type)))
       <div class="py-3 {{ !$loop->last ? 'border-bottom' : '' }}">

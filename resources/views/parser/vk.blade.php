@@ -54,18 +54,18 @@
   <div class="card card-mobile-wide mb-3 js-shortcuts-item">
     <div class="card-body text-break-work">
       @if ($post['text'])
-        <div class="life-text mb-0 pre-line">{{ $post['text'] }}</div>
+        <div class="life-text tw-mb-0 pre-line">{{ $post['text'] }}</div>
       @endif
       @if (!empty($post['copy_history']))
-        <div class="life-text {{ $post['text'] ? 'mt-3' : '' }} mb-0"><strong>Репост</strong></div>
-        <div class="life-text mb-0 pre-line">{{ $post['copy_history'][0]->text }}</div>
+        <div class="life-text {{ $post['text'] ? 'mt-3' : '' }} tw-mb-0"><strong>Репост</strong></div>
+        <div class="life-text tw-mb-0 pre-line">{{ $post['copy_history'][0]->text }}</div>
       @endif
       @if ($post['attachments'])
         <div class="mt-2">
         @if ($post['photos'] > 1)
           <div class="pic-container">
         @elseif ($post['photos'] == 1)
-          <div class="img-container {{ sizeof($post['attachments']) <= 1 ? 'mb-0' : '' }}">
+          <div class="img-container {{ sizeof($post['attachments']) <= 1 ? 'tw-mb-0' : '' }}">
         @endif
         @foreach ($post['attachments'] as $attach)
           @if ($attach->type == 'photo' && isset($attach->photo->photo_604))
