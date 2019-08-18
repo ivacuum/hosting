@@ -7,7 +7,7 @@
 @endpush
 
 @section('content')
-<div class="d-flex flex-wrap align-items-center tw-mb-2">
+<div class="d-flex flex-wrap tw-items-center tw-mb-2">
   <h1 class="h2 tw-mb-1 tw-mr-4">{{ trans('life.gigs_intro_title') }}</h1>
   @if (Auth::check())
     <form class="tw-mr-4" action="{{ path('Subscriptions@update') }}" method="post">

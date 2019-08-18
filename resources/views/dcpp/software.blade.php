@@ -6,7 +6,7 @@
 @section('content')
 <div class="life-text">
   <section class="tw-my-0 pt-4">
-    <div class="container">
+    <div class="tw-container">
       <h1 class="tw-mb-6">{{ trans('dcpp.download') }} {{ $software_title }} {{ $software[0]['version'] }}</h1>
       @section('download_latest')
         <div>
@@ -27,14 +27,14 @@
   </section>
 
   <section class="tw-my-0 py-5">
-    <div class="container">
+    <div class="tw-container">
       <h2>{{ trans('dcpp.about_software') }}</h2>
       @yield('about_software')
     </div>
   </section>
 
   <div class="tw-mb-4">
-    <div class="container">
+    <div class="tw-container">
       <div class="mobile-wide">
         @include('tpl.google-horizontal')
       </div>
@@ -43,7 +43,7 @@
 
   @if (!empty($software_screenshots))
     <section class="bg-dark tw-my-0 py-5 text-light">
-      <div class="container">
+      <div class="tw-container">
         <h2 class="tw-mb-6">{{ trans('dcpp.screenshots') }}</h2>
         <p>
           @foreach ($software_screenshots as $screenshot)
@@ -57,7 +57,7 @@
   @endif
 
   <section class="bg-light border-top border-bottom tw-my-0 py-5">
-    <div class="container">
+    <div class="tw-container">
       <h2>{{ trans('dcpp.hubs') }}</h2>
       @ru
         <p>Ищите куда подключиться для обмена файлами? Ознакомьтесь с нашими рекомендациями.</p>
@@ -80,7 +80,7 @@
 
   @if (sizeof($software) > 1 || !empty($developer_site))
     <section class="border-bottom tw-my-0 py-5">
-      <div class="container">
+      <div class="tw-container">
         <h2 class="tw-mb-6">{{ trans('dcpp.links') }}</h2>
         <div class="row">
           @if (sizeof($software) > 1)
@@ -113,7 +113,7 @@
   @endif
 
   <section class="bg-light tw-my-0 py-5">
-    <div class="container">
+    <div class="tw-container">
       <div class="row">
         <div class="col-md-6">
           <div class="h3">{{ trans('issues.create') }}</div>

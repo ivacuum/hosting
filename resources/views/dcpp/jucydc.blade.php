@@ -77,7 +77,7 @@
 
 @section('software_features')
 <section class="tw-my-0 py-5">
-  <div class="container">
+  <div class="tw-container">
     @ru
     <h3>Основные преимущества Jucy DC++</h3>
     <ul>

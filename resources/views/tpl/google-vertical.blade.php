@@ -8,5 +8,5 @@
   ></ins>
   <script>(adsbygoogle = window.adsbygoogle || []).push({})</script>
 @elseif (App::isLocal())
-  <div class="bg-info text-white d-flex justify-content-center align-items-center" style="height: 100%;">google-vertical</div>
+  <div class="bg-info text-white d-flex justify-content-center tw-items-center" style="height: 100%;">google-vertical</div>
 @endif

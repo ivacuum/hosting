@@ -1,7 +1,7 @@
 @extends('acp.dev.base')
 
 @section('content')
-<div class="d-flex flex-wrap align-items-center tw-mb-2">
+<div class="d-flex flex-wrap tw-items-center tw-mb-2">
   <h3 class="tw-mb-1 tw-mr-4">Логи</h3>
   <form>
     <input name="q" class="form-control" placeholder="Поиск..." value="{{ $q ?? '' }}">

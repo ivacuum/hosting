@@ -25,7 +25,7 @@
       </a>
     @endif
   </div>
-  <div class="d-none d-sm-flex align-items-center">
+  <div class="d-none d-sm-flex tw-items-center">
     <span class="d-none d-md-block">Топ 10</span>
     <input class="form-control tw-mx-2" name="slug" value="{{ $vkpage }}" style="width: 8em;" autocapitalize="none">
     за {{ $date->formatLocalized('%e %B') }}

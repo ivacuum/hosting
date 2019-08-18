@@ -26,7 +26,7 @@
         @foreach (range(1, 31) as $day)
           @php ($date = "{$year}-{$month}-{$day}")
           @if (isset($calendar[$date]))
-            <div class="bg-light d-flex flex-column align-items-center justify-content-start pt-1">
+            <div class="bg-light d-flex flex-column tw-items-center justify-content-start pt-1">
               @foreach ($calendar[$date] as $trip)
                 @if ($trip['slug'])
                   <a class="d-block pb-1 tooltipped tooltipped-n" href="{{ $trip['slug'] }}" aria-label="{{ $trip['title'] }}">

@@ -40,7 +40,7 @@ Mousetrap.bind('right', () => {
   <div class="col-lg-2">
     <div class="d-flex flex-wrap flex-md-column">
       <div class="tw-mr-2 mr-md-0 text-muted">{{ trans('photos.story') }}</div>
-      <a class="d-flex flex-wrap align-items-center link-parent" href="{{ $photo->rel->www() }}#{{ basename($photo->slug) }}">
+      <a class="d-flex flex-wrap tw-items-center link-parent" href="{{ $photo->rel->www() }}#{{ basename($photo->slug) }}">
         <img class="flag-16 flag-shadow tw-mr-1" src="{{ $photo->rel->city->country->flagUrl() }}">
         <span class="link">{{ $photo->rel->title }}</span>
       </a>

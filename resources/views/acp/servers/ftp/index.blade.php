@@ -81,7 +81,7 @@
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 
-    <div class="input-group align-items-center">
+    <div class="input-group tw-items-center">
       <input class="{{ $errors->has('file') ? 'is-invalid' : '' }}" type="file" name="file">
       <span class="input-group-append">
         <button class="btn btn-default">
