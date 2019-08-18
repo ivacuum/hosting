@@ -8,6 +8,7 @@ use App\Services\Rto;
 use App\Torrent;
 use Foolz\SphinxQL\SphinxQL;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
 use Illuminate\Support\HtmlString;
 
 class Torrents extends Controller
@@ -37,7 +38,7 @@ class Torrents extends Controller
 
             event(new \App\Events\Stats\TorrentSearched);
 
-            $torrents = $torrents->whereIn('id', array_pluck($ids, 'id'));
+            $torrents = $torrents->whereIn('id', Arr::pluck($ids, 'id'));
         }
 
         $torrents = $torrents->published()

@@ -54,7 +54,7 @@ class Photos extends Controller
 
         try {
             $coords = ExifHelper::latLon(exif_read_data($file->getRealPath()));
-        } catch (\ErrorException $e) {
+        } catch (\Throwable $e) {
             $coords = ['lat' => null, 'lon' => null];
         }
 

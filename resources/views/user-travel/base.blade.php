@@ -13,7 +13,7 @@
 @endsection
 
 @section('global_menu')
-<li class="nav-item {{ starts_with($self, 'UserTravel') ? 'active' : '' }}">
+<li class="nav-item {{ Illuminate\Support\Str::startsWith($self, 'UserTravel') ? 'active' : '' }}">
   <a class="nav-link" href="{{ path('UserTravelTrips@index', $traveler->login) }}">
     {{ trans('menu.life') }}
   </a>

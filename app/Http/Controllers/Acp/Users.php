@@ -2,6 +2,7 @@
 
 use App\User as Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Controllers\Acp\Controller;
 
@@ -74,7 +75,7 @@ class Users extends Controller
     protected function storeModel()
     {
         $random_password = request('random_password');
-        $password = $random_password ? str_random(16) : request('password');
+        $password = $random_password ? Str::random(16) : request('password');
 
         $model = new Model;
         $model->email = request('email');
@@ -95,7 +96,7 @@ class Users extends Controller
     protected function updateModel($model)
     {
         $randomPassword = request('random_password');
-        $password = $randomPassword ? str_random(16) : request('password');
+        $password = $randomPassword ? Str::random(16) : request('password');
         $mailCredentials = request('mail_credentials');
 
         $model->email = request('email');

@@ -76,7 +76,7 @@
         </td>
         <td>
           <div class="presentation">
-            {{ str_limit($record->content, 35) }}
+            {{ Illuminate\Support\Str::limit($record->content, 35) }}
             @if ($record->type == 'CNAME' && $model->isIdn($record->content))
               <br><span class="text-muted">{{ idn_to_utf8($record->content, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46) }}</span>
             @endif

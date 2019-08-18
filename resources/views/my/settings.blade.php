@@ -59,7 +59,7 @@
 
     <div class="form-group">
       <label>{{ trans('my.locale') }}</label>
-      @foreach (array_sort(array_keys(config('cfg.locales'))) as $loc)
+      @foreach (Illuminate\Support\Arr::sort(array_keys(config('cfg.locales'))) as $loc)
         <label class="form-check">
           <input
             class="form-check-input {{ $errors->has('locale') ? 'is-invalid' : '' }}"

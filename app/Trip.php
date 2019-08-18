@@ -4,6 +4,7 @@ use App\Traits\HasLocalizedTitle;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Ivacuum\Generic\Utilities\TextImagesParser;
 use Symfony\Component\Finder\Finder;
 
@@ -288,7 +289,7 @@ class Trip extends Model
             return '';
         }
 
-        if (starts_with($this->meta_image, 'http')) {
+        if (Str::startsWith($this->meta_image, 'http')) {
             return $this->meta_image;
         }
 

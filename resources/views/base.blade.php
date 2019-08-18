@@ -21,7 +21,7 @@
   <link rel="icon" href="/apple-touch-icon.png">
   <link rel="canonical" href="{{ canonical() }}">
   @yield('pagination_seo')
-  @if (str_contains($css_classes, ['android', 'chrome', 'opera']) && in_array($locale, ['en', 'ru']))
+  @if (Illuminate\Support\Str::contains($css_classes, ['android', 'chrome', 'opera']) && in_array($locale, ['en', 'ru']))
     <link rel="manifest" href="/pwa-manifest-{{ $locale }}.json">
     <script async src="/assets/service-worker-installer.js"></script>
   @endif
@@ -61,7 +61,7 @@
       <div class="bottom-tab-label">{{ trans('photos.index') }}</div>
     </a>
     @if (Auth::check())
-      <a class="bottom-tab {{ starts_with(request()->path(), 'my/') ? 'active' : '' }}" href="{{ path('MyProfile@edit') }}">
+      <a class="bottom-tab {{ Illuminate\Support\Str::startsWith(request()->path(), 'my/') ? 'active' : '' }}" href="{{ path('MyProfile@edit') }}">
         <div>
           @svg (user-circle-o)
         </div>

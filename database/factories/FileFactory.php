@@ -7,7 +7,7 @@ $factory->define(App\File::class, function (Faker\Generator $faker) {
 
     return [
         'size' => $faker->numberBetween(1000, 1000000),
-        'slug' => str_slug($title),
+        'slug' => Illuminate\Support\Str::slug($title),
         'title' => $title,
         'folder' => $faker->word,
         'status' => App\File::STATUS_PUBLISHED,

@@ -20,6 +20,8 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  * @property \Illuminate\Database\Eloquent\Collection|\App\Comment[] $comments
  * @property \App\User $user
  *
+ * @property-read int $comments_count
+ *
  * @mixin \Eloquent
  */
 class Issue extends Model

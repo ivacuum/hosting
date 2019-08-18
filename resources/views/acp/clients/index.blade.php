@@ -19,7 +19,7 @@
       </a>
     </td>
     <td>{{ $model->email }}</td>
-    <td class="pre-line">{{ str_limit($model->text, 100) }}</td>
+    <td class="pre-line">{{ Illuminate\Support\Str::limit($model->text, 100) }}</td>
   </tr>
   @endforeach
 </table>

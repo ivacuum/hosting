@@ -69,7 +69,7 @@
     <a class="dropdown-item" href="{{ $locale_uri }}/acp/pages">{{ trans('acp.pages.index') }}</a>
   </div>
 </li>
-<li class="nav-item {{ starts_with($self, 'Acp\Dev') ? 'active' : '' }}">
+<li class="nav-item {{ Illuminate\Support\Str::startsWith($self, 'Acp\Dev') ? 'active' : '' }}">
   <a class="nav-link" href="{{ $locale_uri }}/acp/dev/templates">
     {{ trans('acp.dev.index') }}
   </a>

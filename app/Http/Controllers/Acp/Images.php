@@ -24,7 +24,7 @@ class Images extends Controller
                 return $query->whereYear('created_at', $year);
             })
             ->when($touch, function (Builder $query) use ($touch) {
-                return $query->whereYear('updated_at', now()->subYear($touch)->year);
+                return $query->whereYear('updated_at', now()->subYears($touch)->year);
             })
             ->when($user_id, function (Builder $query) use ($user_id) {
                 return $query->where('user_id', $user_id);

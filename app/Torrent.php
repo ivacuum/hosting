@@ -3,6 +3,8 @@
 use Foolz\SphinxQL\SphinxQL;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Ivacuum\Generic\Traits\SoftDeleteTrait;
 use Laravel\Scout\Searchable;
 
@@ -132,7 +134,7 @@ class Torrent extends Model
 
     public function magnet(): string
     {
-        return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode(str_limit($this->title, 100, ''));
+        return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode(Str::limit($this->title, 100, ''));
     }
 
     public function relatedIds(): array
@@ -141,7 +143,7 @@ class Torrent extends Model
             return [];
         }
 
-        return array_filter(array_pluck($this->search($this->related_query, function (SphinxQL $builder) {
+        return array_filter(Arr::pluck($this->search($this->related_query, function (SphinxQL $builder) {
             return $builder->match('title', $this->related_query, true)
                 ->execute();
         })->raw(), 'id'), function ($item) {

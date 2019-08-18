@@ -5,6 +5,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 /**
  * Пользователь
@@ -113,7 +115,7 @@ class User extends Authenticatable
     // Attributes
     public function setPasswordAttribute(string $value): void
     {
-        $this->attributes['password'] = $value ? \Hash::make($value) : '';
+        $this->attributes['password'] = $value ? Hash::make($value) : '';
     }
 
     // Scopes
@@ -163,13 +165,14 @@ class User extends Authenticatable
 
     public function findByEmailOrCreate(array $data): self
     {
+        /** @var self $user */
         $user = $this->where('email', $data['email'])->first();
 
         if (null !== $user) {
             return $user;
         }
 
-        if (str_contains($data['email'], config('cfg.autoregister_suffixes_blacklist'))) {
+        if (Str::contains($data['email'], config('cfg.autoregister_suffixes_blacklist'))) {
             throw new \InvalidArgumentException('Данная электронная почта недоступна, укажите другую');
         }
 

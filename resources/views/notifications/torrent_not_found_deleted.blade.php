@@ -1,6 +1,6 @@
 {{-- Раздача удалена на сайте-первоисточнике --}}
 {{ trans("notifications.{$class_basename}") }}
-<a class="link" href="{{ (new App\Torrent(['rto_id' => $notification->data['rto_id']]))->externalLink() }}">{{ str_limit($notification->data['title'], 100) }}</a>
+<a class="link" href="{{ (new App\Torrent(['rto_id' => $notification->data['rto_id']]))->externalLink() }}">{{ Illuminate\Support\Str::limit($notification->data['title'], 100) }}</a>
 <time class="text-muted"
       datetime="{{ $notification->created_at->toDateString() }}"
       title="{{ $notification->created_at->toAtomString() }}">

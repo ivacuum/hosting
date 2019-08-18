@@ -1,3 +1,7 @@
+<?php
+/** @var App\Server $server */
+?>
+
 @extends('acp.base')
 
 @section('content')

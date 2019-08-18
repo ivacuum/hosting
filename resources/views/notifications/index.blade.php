@@ -14,7 +14,7 @@
             @svg (trash-o)
           @elseif ($class_basename === 'trip_published')
             @svg (plane)
-          @elseif (ends_with($class_basename, '_commented'))
+          @elseif (Illuminate\Support\Str::endsWith($class_basename, '_commented'))
             @svg (comment-o)
           @else
             @svg (bullhorn)
