@@ -36,7 +36,7 @@
 </div>
 
 @ru
-  <p class="mb-1">Видеозапись выступления.</p>
+  <p class="tw-mb-1">Видеозапись выступления.</p>
 @endru
 <youtube title="Dream Theater 2009, Moscow, Russia" v="eDqIfvtmalM"></youtube>
 @endsection

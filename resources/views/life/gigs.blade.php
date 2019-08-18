@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="d-flex flex-wrap align-items-center mb-2">
-  <h1 class="h2 mb-1 mr-3">{{ trans('life.gigs_intro_title') }}</h1>
+  <h1 class="h2 tw-mb-1 mr-3">{{ trans('life.gigs_intro_title') }}</h1>
   @if (Auth::check())
     <form class="mr-3" action="{{ path('Subscriptions@update') }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}

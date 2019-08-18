@@ -42,7 +42,7 @@
 @include('tpl.pic-arbitrary', ['pic' => 'IMG_1689.jpg', 'w' => 1000, 'h' => 750])
 
 @ru
-  <p class="mb-1">Видеозапись выступления.</p>
+  <p class="tw-mb-1">Видеозапись выступления.</p>
 @endru
 <youtube title="Dream Theater 2015, Moscow, Russia" v="w0ZYxUeKsu8"></youtube>
 @endsection

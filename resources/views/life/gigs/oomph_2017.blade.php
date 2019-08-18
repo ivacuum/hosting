@@ -62,7 +62,7 @@
 </div>
 
 @ru
-  <p class="mb-1">Видеозапись выступления.</p>
+  <p class="tw-mb-1">Видеозапись выступления.</p>
 @endru
 <youtube title="Oomph 2017, Moscow, Russia" v="Apm0ySyi7mA"></youtube>
 @endsection

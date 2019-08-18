@@ -20,7 +20,7 @@
         </p>
         <div class="d-flex flex-wrap align-items-center" v-if="Object.keys(filteredElements).length > 1">
           <template v-for="(collection, lvl) in filteredElements">
-            <a class="badge badge-secondary f16 ja-shadow-light mr-1 mb-1" :href="`#level-${lvl}`">
+            <a class="badge badge-secondary f16 ja-shadow-light mr-1 tw-mb-1" :href="`#level-${lvl}`">
               {{ lvl }}
             </a>
           </template>
@@ -28,7 +28,7 @@
       </div>
       <template v-for="(collection, lvl) in filteredElements">
         <a :name="`level-${lvl}`"></a>
-        <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-1">
+        <div class="d-sm-flex align-items-center justify-content-between mt-4 tw-mb-1">
           <h3>
             <span>{{ titleLabel(lvl) }}</span>
             <small class="text-muted">{{ collection.length }}</small>

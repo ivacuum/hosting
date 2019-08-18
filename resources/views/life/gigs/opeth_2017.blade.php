@@ -29,7 +29,7 @@
 </div>
 
 @ru
-  <p class="mb-1">Видеозапись выступления.</p>
+  <p class="tw-mb-1">Видеозапись выступления.</p>
 @endru
 <youtube title="Opeth 2017, Moscow, Russia" v="URhBcvRpt14"></youtube>
 @endsection

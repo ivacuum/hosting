@@ -87,7 +87,7 @@ export default {
 
   <div class="mt-3" v-if="magnet.title_tags.length">
     <router-link
-      class="btn btn-outline-primary mb-1 mr-1 text-lowercase"
+      class="btn btn-outline-primary tw-mb-1 mr-1 text-lowercase"
       :to="searchUrl(tag)"
       v-for="(tag, i) in magnet.title_tags"
       :key="i"

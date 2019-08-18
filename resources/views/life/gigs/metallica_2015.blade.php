@@ -39,9 +39,9 @@
 </div>
 
 @ru
-  <p class="mb-1">Каково оно было в фан-зоне:</p>
+  <p class="tw-mb-1">Каково оно было в фан-зоне:</p>
 @en
-  <p class="mb-1">What it was like to be in the fan-zone:</p>
+  <p class="tw-mb-1">What it was like to be in the fan-zone:</p>
 @endru
 <youtube title="King Nothing + Disposable Heroes" v="WkVGeBGM5yc"></youtube>
 
@@ -54,7 +54,7 @@
 @endru
 
 @ru
-  <p class="mb-1">Видеозапись концерта.</p>
+  <p class="tw-mb-1">Видеозапись концерта.</p>
 @endru
 <youtube title="Metallica 2015, St. Petersburg, Russia" v="-VQMs8zQRj8"></youtube>
 @endsection

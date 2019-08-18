@@ -45,9 +45,9 @@
 </div>
 
 @ru
-  <p class="mb-1">Видеозапись концерта. На 54:12 разглядел свой затылок.</p>
+  <p class="tw-mb-1">Видеозапись концерта. На 54:12 разглядел свой затылок.</p>
 @en
-  <p class="mb-1">Video of the show. Saw back of my head on 54:12.</p>
+  <p class="tw-mb-1">Video of the show. Saw back of my head on 54:12.</p>
 @endru
 <youtube title="The Prodigy 2016, Moscow, Russia" v="HND1SuZMseY"></youtube>
 @endsection

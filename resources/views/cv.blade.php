@@ -383,18 +383,18 @@ body {
     <p>It's easy to notice that I tend to support the projects that are important to me.</p>
   @endru
 
-  <div class="mb-1">@ru Легенда: @en Legend: @endru</div>
+  <div class="tw-mb-1">@ru Легенда: @en Legend: @endru</div>
 
   <ul class="list-unstyled">
-    <li class="mb-1">
+    <li class="tw-mb-1">
       <span class="text-warning">@svg (star)</span>
       @ru любимый проект @en favorite project @endru
     </li>
-    <li class="mb-1">
+    <li class="tw-mb-1">
       <span class="text-success">@svg (primitive-dot)</span>
       @ru проект жив и здоров @en project is up and running @endru
     </li>
-    <li class="mb-1">
+    <li class="tw-mb-1">
       <span class="text-muted">@svg (primitive-dot)</span>
       @ru проект более недоступен, например, его переделали или выключили, но могли остаться исходники @en project is no longer available—it was rebuilt or shut down—still there might be source code available @endru
     </li>

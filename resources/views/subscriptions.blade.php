@@ -83,9 +83,9 @@
 
   <h3 class="mt-5">RSS</h3>
   @ru
-    <div class="mb-1">В качестве альтернативы все перечисленные уведомления можно получать через RSS.</div>
+    <div class="tw-mb-1">В качестве альтернативы все перечисленные уведомления можно получать через RSS.</div>
   @en
-    <div class="mb-1">As an alternative you can subscribe to RSS feeds.</div>
+    <div class="tw-mb-1">As an alternative you can subscribe to RSS feeds.</div>
   @endru
   <div class="d-flex align-items-middle flex-wrap">
     <a class="f18 svg-flex svg-label font-small-caps mr-3" href="{{ path('LifeGigsRss@index') }}">

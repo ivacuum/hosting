@@ -11,22 +11,22 @@
 <div class="life-text">
   <h3 class="mt-4">{{ trans('coupons.hosting') }}</h3>
   <ul>
-    <li class="mb-1"><a class="link" href="{{ path('Coupons@digitalocean') }}">{{ trans('coupons.digitalocean') }}</a></li>
-    <li class="mb-1"><a class="link" href="{{ path('Coupons@firstvds') }}">{{ trans('coupons.firstvds') }}</a></li>
+    <li class="tw-mb-1"><a class="link" href="{{ path('Coupons@digitalocean') }}">{{ trans('coupons.digitalocean') }}</a></li>
+    <li class="tw-mb-1"><a class="link" href="{{ path('Coupons@firstvds') }}">{{ trans('coupons.firstvds') }}</a></li>
     @ru
-      <li class="mb-1"><a class="link" href="{{ path('Coupons@timeweb') }}">{{ trans('coupons.timeweb') }}</a></li>
+      <li class="tw-mb-1"><a class="link" href="{{ path('Coupons@timeweb') }}">{{ trans('coupons.timeweb') }}</a></li>
     @endru
   </ul>
 
   <h3 class="mt-4">{{ trans('coupons.accomodation') }}</h3>
   <ul>
-    <li class="mb-1"><a class="link" href="{{ path('Coupons@airbnb') }}">{{ trans('coupons.airbnb') }}</a></li>
-    <li class="mb-1"><a class="link" href="{{ path('Coupons@booking') }}">{{ trans('coupons.booking') }}</a></li>
+    <li class="tw-mb-1"><a class="link" href="{{ path('Coupons@airbnb') }}">{{ trans('coupons.airbnb') }}</a></li>
+    <li class="tw-mb-1"><a class="link" href="{{ path('Coupons@booking') }}">{{ trans('coupons.booking') }}</a></li>
   </ul>
 
   <h3 class="mt-4">{{ trans('coupons.simcards') }}</h3>
   <ul>
-    <li class="mb-1"><a class="link" href="{{ path('Coupons@drimsim') }}">{{ trans('coupons.drimsim') }}</a></li>
+    <li class="tw-mb-1"><a class="link" href="{{ path('Coupons@drimsim') }}">{{ trans('coupons.drimsim') }}</a></li>
   </ul>
 </div>
 @endsection

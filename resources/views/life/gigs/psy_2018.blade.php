@@ -16,7 +16,7 @@
 @endru
 
 @ru
-  <div class="mb-1">Самые вау-находки:</div>
+  <div class="tw-mb-1">Самые вау-находки:</div>
   <ul>
     <li>Пожалуй, <a class="link" href="https://youtu.be/XyzhL74DgA0?t=439">самая шумная и активная концертная публика</a>, что доводилось видеть</li>
     <li><a class="link" href="https://www.instagram.com/p/Bmn_AwEn7F8/">Летние фонтаны #1</a></li>
@@ -35,7 +35,7 @@
 @endru
 
 @ru
-  <div class="mb-1">В августе закончилась пора летних концертов. Спустя некоторое время для каждого города появлялась официальная минутная видеонарезка.</div>
+  <div class="tw-mb-1">В августе закончилась пора летних концертов. Спустя некоторое время для каждого города появлялась официальная минутная видеонарезка.</div>
   <ul>
     <li><a class="link" href="https://twitter.com/psy_oppa/status/1045491184452304896">Сеул</a></li>
     <li><a class="link" href="https://twitter.com/psy_oppa/status/1040402670777819136">Пусан</a></li>
@@ -108,11 +108,11 @@
 
 @ru
   <p>Проведем небольшую демонстрацию на примере припева песни 아버지 (отец).</p>
-  <div class="mb-1 font-weight-bold">Оригинал:</div>
+  <div class="tw-mb-1 font-weight-bold">Оригинал:</div>
   <p>아버지 이제야 깨달아요<br>어찌 그렇게 사셨나요?<br>더 이상 쓸쓸해 하지 마요<br>이젠 나와 같이 가요</p>
-  <div class="mb-1 font-weight-bold">Романизация:</div>
+  <div class="tw-mb-1 font-weight-bold">Романизация:</div>
   <p>abeoji ijeya kkaedarayo<br>eojji geureoke sasyeonnayo<br>deo isang sseulsseulhae haji mayo<br>ije nawa gachi gayo</p>
-  <div class="mb-1 font-weight-bold">Кириллизация:</div>
+  <div class="tw-mb-1 font-weight-bold">Кириллизация:</div>
   <p>абоджи иджэя ккэда лаё<br>оджи кырохкэ сашёт наё<br>до исанн сыль сыль хэ хаджи маё<br>иджэн наоа катщи каё</p>
 @endru
 
@@ -266,11 +266,11 @@
 <div class="row">
   <div class="col-md-7">
     @ru
-      <div class="mb-1">Что было исполнено. На каждую песню можно нажать и посмотреть видео. Сердечком отмечен самый смак.</div>
+      <div class="tw-mb-1">Что было исполнено. На каждую песню можно нажать и посмотреть видео. Сердечком отмечен самый смак.</div>
     @en
-      <div class="mb-1">Setlist. Each song is a link to its video. The most spectacular are marked with a heart.</div>
+      <div class="tw-mb-1">Setlist. Each song is a link to its video. The most spectacular are marked with a heart.</div>
     @endru
-    <h5 class="mb-1">@ru Сет @en Set @endru 1</h5>
+    <h5 class="tw-mb-1">@ru Сет @en Set @endru 1</h5>
     <ol>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=e5VriO_mdv8">챔피언</a>
@@ -299,7 +299,7 @@
       </li>
     </ol>
 
-    <h5 class="mb-1">@ru Сет @en Set @endru 2</h5>
+    <h5 class="tw-mb-1">@ru Сет @en Set @endru 2</h5>
     <ol start="8">
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=vjpYGfYCnqI">We are the One</a>
@@ -329,7 +329,7 @@
       </li>
     </ol>
 
-    <h5 class="mb-1">@ru Сет @en Set @endru 3</h5>
+    <h5 class="tw-mb-1">@ru Сет @en Set @endru 3</h5>
     <ol start="14">
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=4tnCBnhEGX4">Right Now</a>
@@ -352,7 +352,7 @@
       </li>
     </ol>
 
-    <h5 class="mb-1">@ru Сет @en Set @endru 4</h5>
+    <h5 class="tw-mb-1">@ru Сет @en Set @endru 4</h5>
     <ol start="20">
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=dptfI1Nfe5M">낙원</a>
@@ -375,7 +375,7 @@
       </li>
     </ol>
 
-    <h5 class="mb-1"><a class="link" href="https://www.youtube.com/watch?v=vwEn2rh4RUw">Encore 1</a></h5>
+    <h5 class="tw-mb-1"><a class="link" href="https://www.youtube.com/watch?v=vwEn2rh4RUw">Encore 1</a></h5>
     <ol start="24">
       <li><a class="link" href="https://www.youtube.com/watch?v=PsTLjzWw0pQ">Dance medley</a></li>
       <li>
@@ -393,7 +393,7 @@
       </li>
     </ol>
 
-    <h5 class="mb-1">Encore 2</h5>
+    <h5 class="tw-mb-1">Encore 2</h5>
     <ol start="28">
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=RwX6OxhcvYM">챔피언</a>

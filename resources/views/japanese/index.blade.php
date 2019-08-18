@@ -14,7 +14,7 @@
   <div class="col-md-6">
     <div class="card">
       <div class="card-header bg-success text-white">
-        <h2 class="h4 mb-0">@ru Собственные ресурсы @en Own services @endru</h2>
+        <h2 class="h4 tw-mb-0">@ru Собственные ресурсы @en Own services @endru</h2>
       </div>
       <div class="card-body">
         @ru
@@ -36,13 +36,13 @@
   <div class="col-md-6">
     <div class="card mt-3 mt-md-0">
       <div class="card-header bg-dark text-white">
-        <h2 class="h4 mb-0">@ru Внешние полезные ресурсы @en External resources @endru</h2>
+        <h2 class="h4 tw-mb-0">@ru Внешние полезные ресурсы @en External resources @endru</h2>
       </div>
       <div class="card-body">
         @ru
-          <div class="mb-1">Все на английском, так как на нем материалов доступно в разы больше, чем на родном.</div>
+          <div class="tw-mb-1">Все на английском, так как на нем материалов доступно в разы больше, чем на родном.</div>
         @en
-          <div class="mb-1">Helpful resources for self-learning students:</div>
+          <div class="tw-mb-1">Helpful resources for self-learning students:</div>
         @endru
         <ul>
           <li>

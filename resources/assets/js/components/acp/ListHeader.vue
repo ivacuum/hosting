@@ -41,7 +41,7 @@ export default {
 <template>
 <div>
   <div class="d-flex align-items-center flex-wrap mb-2 mt-n2">
-    <h3 class="mb-1 mr-3">
+    <h3 class="tw-mb-1 mr-3">
       {{ $t(`${plural}.index`) }}
       <small class="text-muted tw-whitespace-no-wrap">{{ meta.total }}</small>
     </h3>
