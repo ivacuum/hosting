@@ -77,8 +77,8 @@
     <thead>
     <tr>
       <td rowspan="2"></td>
-      <td class="text-center" colspan="2">a</td>
-      <td class="text-center" colspan="2">b</td>
+      <td class="tw-text-center" colspan="2">a</td>
+      <td class="tw-text-center" colspan="2">b</td>
     </tr>
     <tr>
       <td>heißen</td>

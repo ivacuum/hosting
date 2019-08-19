@@ -1,4 +1,4 @@
-<nav class="bg-light border d-flex flex-wrap flex-column-reverse flex-md-row justify-content-between f14 tw-mt-6 tw-p-2 rounded text-center">
+<nav class="bg-light border d-flex flex-wrap flex-column-reverse flex-md-row justify-content-between f14 tw-mt-6 tw-p-2 rounded tw-text-center">
   @if (isset($previous_trips) && sizeof($previous_trips))
     @foreach ($previous_trips as $previous)
       <div class="{{ !$loop->first ? 'tw-mb-4 md:tw-mb-0' : '' }}">

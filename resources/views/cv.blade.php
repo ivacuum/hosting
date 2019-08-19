@@ -87,7 +87,7 @@ body {
           <img class="my-picture tw-mr-4 tw-p-1" src="https://life.ivacuum.org/me.jpg" width="160" height="160">
         </div>
         <div>
-          <h1 class="my-name h3 text-uppercase">@ru Сергей Панков @en Sergey Pankov @endru</h1>
+          <h1 class="my-name h3 tw-uppercase">@ru Сергей Панков @en Sergey Pankov @endru</h1>
           <h2 class="color-green h4">@ru Веб-программист (Laravel PHP, Vue.js) @en Laravel PHP + Vue.js Developer @endru</h2>
           @ru
             <div>Заинтересован в создании полезных людям веб-сервисов. Веб-технологиями увлекаюсь с 2003 года. С кодом моих проектов можно ознакомиться на <a href="https://github.com/ivacuum" rel="nofollow">Гитхабе</a>. Только удаленная работа.</div>
@@ -98,13 +98,13 @@ body {
       </div>
       <div class="row">
         <div class="col-md-6 tw-mb-6">
-          <h3 class="my-caption h5 text-uppercase">@ru Образование @en Education @endru</h3>
+          <h3 class="my-caption h5 tw-uppercase">@ru Образование @en Education @endru</h3>
           <div class="tw-font-bold">@ru Высшее, МГТУ им. Баумана @en Bauman Moscow State Technical University @endru</div>
           <div>
             @ru Инженер-программист @en IT Engineer's degree @endru
             <span class="small text-muted">2006–2012</span>
           </div>
-          <h3 class="my-caption h5 tw-mt-6 sm:tw-mt-12 text-uppercase">@ru Курсы и тренинги @en Courses & Trainings @endru</h3>
+          <h3 class="my-caption h5 tw-mt-6 sm:tw-mt-12 tw-uppercase">@ru Курсы и тренинги @en Courses & Trainings @endru</h3>
           <div class="tw-font-bold">@ru Английский язык @en English @endru</div>
           <div>
             @ru Грамматика @en Grammar @endru
@@ -116,7 +116,7 @@ body {
           </div>
         </div>
         <div class="col-md-6">
-          <h3 class="my-caption h5 text-uppercase">@ru Опыт работы @en Experience @endru</h3>
+          <h3 class="my-caption h5 tw-uppercase">@ru Опыт работы @en Experience @endru</h3>
           <div>@ru 01.12.2014 — по настоящее время @en Dec 2014 — Present @endru</div>
           <div>@ru ООО Гала Маркетинг @en OOO Gala Marketing @endru</div>
           <div>@ru Технический директор @en CTO @endru</div>
@@ -132,7 +132,7 @@ body {
       </div>
     </div>
     <div class="col-md-4">
-      <h3 class="my-caption h5 text-uppercase">@ru Контактная информация @en Contacts @endru</h3>
+      <h3 class="my-caption h5 tw-uppercase">@ru Контактная информация @en Contacts @endru</h3>
       <div class="d-flex justify-content-between">
         <div>@ru Телефон @en Phone @endru</div>
         <div><a href="tel:+79105141181">+7 910 514-1181</a></div>
@@ -146,7 +146,7 @@ body {
         <div><a href="/">vacuum.name</a></div>
       </div>
 
-      <h3 class="my-caption h5 tw-mt-6 text-uppercase">@ru Личная информация @en Personal info @endru</h3>
+      <h3 class="my-caption h5 tw-mt-6 tw-uppercase">@ru Личная информация @en Personal info @endru</h3>
       <div class="d-flex justify-content-between">
         <div>@ru Возраст @en Age @endru</div>
         <div>{{ Illuminate\Support\Carbon::createFromDate(1989, 7, 13)->diffForHumans(null, true) }} @ru @en old @endru</div>
@@ -168,7 +168,7 @@ body {
         <div>@ru Нет @en No @endru</div>
       </div>
 
-      <h3 class="my-caption h5 tw-mt-6 text-uppercase">@ru В сети @en Online @endru</h3>
+      <h3 class="my-caption h5 tw-mt-6 tw-uppercase">@ru В сети @en Online @endru</h3>
       <div class="d-flex flex-column">
         <a href="https://github.com/ivacuum" rel="nofollow">Github</a>
         {{--<a href="skype:knifevacuum?call" rel="nofollow">Skype</a>--}}
@@ -178,7 +178,7 @@ body {
     </div>
   </div>
 
-  <div class="my-caption h3 tw-mt-12 text-uppercase">@ru О себе @en About me @endru</div>
+  <div class="my-caption h3 tw-mt-12 tw-uppercase">@ru О себе @en About me @endru</div>
   @ru
     <p>Более половины своей жизни увлекаюсь созданием сайтов и в целом полезных сервисов. Всегда нравился английский язык, впоследствии обнаружил интерес и к другим иностранным языкам. В свободное время играю на электрогитаре, смотрю кинематограф в оригинале (даже если это датский — английские субтитры все равно найдутся) и катаюсь на велосипеде. Посещаю музыкальные концерты.</p>
   @en
@@ -197,7 +197,7 @@ body {
     <p>I'm considering only remote employment. Not ready for relocation because it won't allow me to see the different parts of the world. But I'm ready to meet occasionally.</p>
   @endru
 
-  <div class="my-caption h3 tw-mt-12 text-uppercase">@ru Навыки @en Skills @endru</div>
+  <div class="my-caption h3 tw-mt-12 tw-uppercase">@ru Навыки @en Skills @endru</div>
   <div class="color-green h5">@ru Операционные системы @en Operating systems @endru</div>
   @ru
     <p>Опыт использования <strong>Windows</strong> и <strong>macOS</strong>, настраивал серверы под управлением <strong>Linux</strong> и <strong>FreeBSD</strong>. Повседневно использую <strong>macOS</strong>.</p>
@@ -377,7 +377,7 @@ body {
     </li>
   </ul>
 
-  <div class="my-caption h3 tw-mt-12 text-uppercase">@ru Проекты @en Projects @endru</div>
+  <div class="my-caption h3 tw-mt-12 tw-uppercase">@ru Проекты @en Projects @endru</div>
   @ru
     <p>По списку ниже можно заметить, что важные для меня проекты стараюсь не бросать и поддерживать годами.</p>
   @en

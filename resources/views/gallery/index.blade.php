@@ -2,7 +2,7 @@
 
 @section('content')
 @if (sizeof($images))
-  <div class="d-flex flex-wrap text-center">
+  <div class="d-flex flex-wrap tw-text-center">
     @foreach ($images as $image)
       <div class="gallery-image tw-mb-6">
         <div class="tw-mb-4">

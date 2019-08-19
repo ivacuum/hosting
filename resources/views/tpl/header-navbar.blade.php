@@ -5,7 +5,7 @@
     </button>
     <div class="collapse navbar-collapse">
       @section('brand')
-        <a class="navbar-brand tw-font-bold md:tw-py-0 text-center" href="{{ path('Home@index') }}">vacuum<br>kaluga</a>
+        <a class="navbar-brand tw-font-bold md:tw-py-0 tw-text-center" href="{{ path('Home@index') }}">vacuum<br>kaluga</a>
       @show
       <ul class="navbar-nav tw-mr-auto md:tw-items-center">
         @section('global_menu')

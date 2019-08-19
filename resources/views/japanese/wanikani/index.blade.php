@@ -2,7 +2,7 @@
 
 @section('content')
 <h1 class="h2">{{ trans('japanese.wanikani') }}</h1>
-<div class="row text-center tw-mb-2">
+<div class="row tw-text-center tw-mb-2">
   <div class="col-md-4 tw-mb-2">
     <div class="bg-radical rounded">
       <a

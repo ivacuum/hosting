@@ -1,4 +1,4 @@
-<div class="d-flex flex-wrap text-center">
+<div class="d-flex flex-wrap tw-text-center">
   @foreach ($glyphs as $glyph)
     <div class="align-self-end tw-mb-6 tw-mr-6">
       <div class="f36">

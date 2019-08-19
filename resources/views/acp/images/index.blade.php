@@ -35,15 +35,15 @@
     <thead>
       <tr>
         <th><input type="checkbox" class="js-select-all" data-selector=".models-checkbox"></th>
-        <th class="text-md-right tw-whitespace-no-wrap">
+        <th class="md:tw-text-right tw-whitespace-no-wrap">
           @include('acp.tpl.sortable-header', ['key' => 'id'])
         </th>
-        <th class="text-md-right tw-whitespace-no-wrap">Автор</th>
-        <th class="text-center">Изображение</th>
-        <th class="text-md-right tw-whitespace-no-wrap">
+        <th class="md:tw-text-right tw-whitespace-no-wrap">Автор</th>
+        <th class="tw-text-center">Изображение</th>
+        <th class="md:tw-text-right tw-whitespace-no-wrap">
           @include('acp.tpl.sortable-header', ['key' => 'size'])
         </th>
-        <th class="text-md-right tw-whitespace-no-wrap">
+        <th class="md:tw-text-right tw-whitespace-no-wrap">
           @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
         </th>
         <th>
@@ -56,19 +56,19 @@
       @foreach ($models as $model)
         <tr id="image_{{ $model->id }}">
           <td><input class="models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
-          <td class="text-md-right">{{ $model->id }}</td>
-          <td class="text-md-right">
+          <td class="md:tw-text-right">{{ $model->id }}</td>
+          <td class="md:tw-text-right">
             <a href="{{ UrlHelper::filter(['user_id' => $model->user_id]) }}">
               {{ $model->user_id }}
             </a>
           </td>
-          <td class="text-center">
+          <td class="tw-text-center">
             <a class="screenshot-link" href="{{ path("$self@show", $model) }}">
               <img class="screenshot" src="{{ $model->thumbnailSecretUrl() }}">
             </a>
           </td>
-          <td class="text-md-right text-muted tw-whitespace-no-wrap">{{ ViewHelper::size($model->size) }}</td>
-          <td class="text-md-right tw-whitespace-no-wrap">
+          <td class="md:tw-text-right text-muted tw-whitespace-no-wrap">{{ ViewHelper::size($model->size) }}</td>
+          <td class="md:tw-text-right tw-whitespace-no-wrap">
             @if ($model->views > 3000)
               <span class="badge badge-success">{{ ViewHelper::number($model->views) }}</span>
             @else
@@ -106,7 +106,7 @@
     ]])
   </div>
 @elseif ($type === 'grid')
-  <div class="text-center">
+  <div class="tw-text-center">
     @foreach ($models as $model)
       <a class="gallery-photo-container" href="{{ path("$self@show", $model) }}">
         <img class="gallery-photo" src="{{ $model->thumbnailSecretUrl() }}">

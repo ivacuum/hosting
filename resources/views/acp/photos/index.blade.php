@@ -16,14 +16,14 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
   <tr>
-    <th class="text-md-right tw-whitespace-no-wrap">
+    <th class="md:tw-text-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
     <th>Фото</th>
     <th>URL</th>
     <th>Тэги</th>
     <th>@svg (map-marker)</th>
-    <th class="text-md-right tw-whitespace-no-wrap">
+    <th class="md:tw-text-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
     </th>
     <th></th>
@@ -32,11 +32,11 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-      <td class="text-md-right">
+      <td class="md:tw-text-right">
         <a class="anchor-sticky" id="{{ $model->getRouteKeyName() }}-{{ $model->getRouteKey() }}"></a>
         {{ $model->id }}
       </td>
-      <td class="text-center">
+      <td class="tw-text-center">
         <a class="d-inline-block screenshot-link" href="{{ path("$self@show", $model) }}">
           <img class="border border-hover image-100" src="{{ request('size') == 2000 ? $model->originalUrl() : (request('size') == 1000 ? $model->mobileUrl() : $model->thumbnailUrl()) }}">
         </a>
@@ -56,7 +56,7 @@
         <div>{{ $model->lat }}</div>
         <div>{{ $model->lon }}</div>
       </td>
-      <td class="text-md-right tw-whitespace-no-wrap">
+      <td class="md:tw-text-right tw-whitespace-no-wrap">
         @if ($model->views > 0)
           {{ ViewHelper::number($model->views) }}
         @endif

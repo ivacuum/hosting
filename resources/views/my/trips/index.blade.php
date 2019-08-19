@@ -21,20 +21,20 @@
   <table class="table-stats table-adaptive">
     <thead>
     <tr>
-      <th class="text-md-right">#</th>
+      <th class="md:tw-text-right">#</th>
       <th>{{ ViewHelper::modelFieldTrans('trip', 'title') }}</th>
       <th></th>
       <th>Дата начала</th>
       <th>{{ ViewHelper::modelFieldTrans('trip', 'slug') }}</th>
-      <th class="text-md-right tw-whitespace-no-wrap">@svg (eye)</th>
-      <th class="text-md-right tw-whitespace-no-wrap">@svg (comment-o)</th>
+      <th class="md:tw-text-right tw-whitespace-no-wrap">@svg (eye)</th>
+      <th class="md:tw-text-right tw-whitespace-no-wrap">@svg (comment-o)</th>
       <th></th>
     </tr>
     </thead>
     <tbody>
     @foreach ($models as $model)
       <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-        <td class="text-md-right"><span class="d-sm-none">#</span>{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
+        <td class="md:tw-text-right"><span class="d-sm-none">#</span>{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
         {{--
         <td><a href="{{ path("$self@show", $model) }}">{{ $model->title }}</a></td>
         --}}
@@ -58,12 +58,12 @@
             {{ $model->slug }}
           @endif
         </td>
-        <td class="text-md-right tw-whitespace-no-wrap">
+        <td class="md:tw-text-right tw-whitespace-no-wrap">
           @if ($model->views > 0)
             {{ ViewHelper::number($model->views) }}
           @endif
         </td>
-        <td class="text-md-right tw-whitespace-no-wrap">
+        <td class="md:tw-text-right tw-whitespace-no-wrap">
           @if ($model->comments_count > 0)
             {{ ViewHelper::number($model->comments_count) }}
           @endif

@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
   <div class="col-md-4">
-    <div class="text-center">
+    <div class="tw-text-center">
       @include('tpl.avatar')
       <h1 class="h3 tw-mt-2">{{ $user->publicName() }}</h1>
     </div>

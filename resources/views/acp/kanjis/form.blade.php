@@ -3,7 +3,7 @@
 {!! Form::text('similar_kanji')->default($model->exists ? $model->similar->pluck('character')->implode('') : '')->html() !!}
 
 <div class="form-group form-row">
-  <label class="col-md-4 text-md-right">Состоит из ключей</label>
+  <label class="col-md-4 md:tw-text-right">Состоит из ключей</label>
   <div class="col-md-8">
     @php ($radicals = $model->radicals->pluck('id')->all())
     @foreach (App\Radical::orderBy('level')->orderBy('meaning')->get(['id', 'character', 'meaning']) as $row)

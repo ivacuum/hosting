@@ -10,7 +10,7 @@
 ])->html() !!}
 
 <div class="form-group form-row">
-  <label class="col-md-4 col-form-label text-md-right">{{ ViewHelper::modelFieldTrans('file', 'file') }}</label>
+  <label class="col-md-4 col-form-label md:tw-text-right">{{ ViewHelper::modelFieldTrans('file', 'file') }}</label>
   <div class="col-md-6">
     <div class="custom-file">
       <input class="custom-file-input {{ $errors->has('file') ? 'is-invalid' : '' }}" type="file" name="file">

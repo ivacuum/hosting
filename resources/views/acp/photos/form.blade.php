@@ -2,7 +2,7 @@
   {!! Form::select('trip_id')->required()->classes(['js-append-formdata'])->values(App\Trip::forInputSelect())->html() !!}
 
   <div class="form-group form-row">
-    <label class="col-md-4 col-form-label text-md-right">{{ trans('acp.photos.index') }}</label>
+    <label class="col-md-4 col-form-label md:tw-text-right">{{ trans('acp.photos.index') }}</label>
     <div class="col-md-6">
       <images-uploader action="{{ path("$self@store") }}" append=".js-append-formdata"></images-uploader>
     </div>
@@ -13,7 +13,7 @@
   </div>
 
   <div class="form-group form-row">
-    <label class="col-md-4 text-md-right">Тэги</label>
+    <label class="col-md-4 md:tw-text-right">Тэги</label>
     <div class="col-md-8">
       @foreach (App\Tag::orderBy(App\Tag::titleField())->get() as $tag)
         <label class="form-check">

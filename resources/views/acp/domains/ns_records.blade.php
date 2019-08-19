@@ -30,14 +30,14 @@
     <thead>
       <tr>
         <th>Хост</th>
-        <th class="text-center">Тип</th>
+        <th class="tw-text-center">Тип</th>
         <th>Значение записи</th>
         <th></th>
       </tr>
     </thead>
     <tr class="ns-record-container" data-action="{{ path("$self@addNsRecord", $model) }}">
       <td>
-        <input class="form-control form-control-sm text-right" name="subdomain" value="@">
+        <input class="form-control form-control-sm tw-text-right" name="subdomain" value="@">
       </td>
       <td>
         <select class="custom-select custom-select-sm" name="type">
@@ -63,14 +63,14 @@
     @foreach ($records as $record)
       <tr class="ns-record-container">
         <td>
-          <div class="presentation text-right">
+          <div class="presentation tw-text-right">
             {{ $record->subdomain }}
           </div>
           <div hidden class="edit">
-            <input class="form-control form-control-sm text-right" name="subdomain" value="{{ $record->subdomain }}">
+            <input class="form-control form-control-sm tw-text-right" name="subdomain" value="{{ $record->subdomain }}">
           </div>
         </td>
-        <td class="text-center">
+        <td class="tw-text-center">
           {{ $record->type }}
           <input type="hidden" name="type" value="{{ $record->type }}">
         </td>

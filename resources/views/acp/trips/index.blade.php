@@ -17,30 +17,30 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="text-md-right">#</th>
+    <th class="md:tw-text-right">#</th>
     <th>Название</th>
     <th></th>
     <th>
       @include('acp.tpl.sortable-header', ['key' => 'date_start'])
     </th>
     <th>URL</th>
-    <th class="text-md-right tw-whitespace-no-wrap">
+    <th class="md:tw-text-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
     </th>
-    <th class="text-md-right tw-whitespace-no-wrap">
+    <th class="md:tw-text-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
     </th>
     <th>@svg (paperclip)</th>
-    <th class="text-md-right tw-whitespace-no-wrap">
+    <th class="md:tw-text-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'photos_count', 'svg' => 'picture-o'])
     </th>
-    <th class="text-md-right"></th>
+    <th class="md:tw-text-right"></th>
   </tr>
   </thead>
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-      <td class="text-md-right">{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
+      <td class="md:tw-text-right">{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
       <td>
         <a href="{{ path("$self@show", $model) }}">
           {{ $model->title }}
@@ -63,12 +63,12 @@
           {{ $model->slug }}
         </a>
       </td>
-      <td class="text-md-right tw-whitespace-no-wrap">
+      <td class="md:tw-text-right tw-whitespace-no-wrap">
         @if ($model->views > 0)
           {{ ViewHelper::number($model->views) }}
         @endif
       </td>
-      <td class="text-md-right tw-whitespace-no-wrap">
+      <td class="md:tw-text-right tw-whitespace-no-wrap">
         @if ($model->comments_count > 0)
           {{ ViewHelper::number($model->comments_count) }}
         @endif
@@ -82,14 +82,14 @@
           </a>
         @endif
       </td>
-      <td class="text-md-right tw-whitespace-no-wrap">
+      <td class="md:tw-text-right tw-whitespace-no-wrap">
         @if ($model->photos_count > 0)
           <a href="{{ path('Acp\Photos@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->photos_count) }}
           </a>
         @endif
       </td>
-      <td class="text-md-right">
+      <td class="md:tw-text-right">
         @if ($model->user_id === 1)
           <a href="{{ path('Acp\Dev\Templates@show', str_replace('.', '_', $model->slug)) }}">
             @svg (file-text-o)

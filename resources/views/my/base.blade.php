@@ -3,7 +3,7 @@
 @section('content_header')
 <div class="row">
   <div class="col-lg-3">
-    <div class="list-group text-center">
+    <div class="list-group tw-text-center">
       @if (Auth::user()->isAdmin())
         <a class="list-group-item list-group-item-action d-md-none" href="{{ App::isLocal() ? "{$locale_uri}/acp/dev/templates" : "{$locale_uri}/acp/trips?user_id=1" }}">
           {{ trans('acp.index') }}

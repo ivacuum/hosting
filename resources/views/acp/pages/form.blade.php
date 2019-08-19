@@ -4,7 +4,7 @@
 {!! Form::text('url')->required()->html() !!}
 
 <div class="form-group form-row">
-  <label class="col-md-4 col-form-label text-md-right">Обработчик</label>
+  <label class="col-md-4 col-form-label md:tw-text-right">Обработчик</label>
   <div class="col-md-6">
     <div class="input-group">
       <input class="form-control" type="text" name="handler" value="{{ old('handler', @$model->handler) }}">

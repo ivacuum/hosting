@@ -27,7 +27,7 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="text-md-right">
+    <th class="md:tw-text-right">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
     <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'email') }}</th>
@@ -35,16 +35,16 @@
       <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'avatar') }}</th>
     @endif
     <th>Активен</th>
-    <th class="text-md-right tw-whitespace-no-wrap">
+    <th class="md:tw-text-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
     </th>
-    <th class="text-md-right tw-whitespace-no-wrap">
+    <th class="md:tw-text-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'images_count', 'svg' => 'picture-o'])
     </th>
-    <th class="text-md-right tw-whitespace-no-wrap">
+    <th class="md:tw-text-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'torrents_count', 'svg' => 'magnet'])
     </th>
-    <th class="text-md-right tw-whitespace-no-wrap">
+    <th class="md:tw-text-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'trips_count', 'svg' => 'plane'])
     </th>
     <th>Дата реги</th>
@@ -56,7 +56,7 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-      <td class="text-md-right">{{ $model->id }}</td>
+      <td class="md:tw-text-right">{{ $model->id }}</td>
       <td>
         <a href="{{ path("$self@show", $model) }}">
           {{ $model->email }}
@@ -75,28 +75,28 @@
           Да
         @endif
       </td>
-      <td class="text-md-right tw-whitespace-no-wrap">
+      <td class="md:tw-text-right tw-whitespace-no-wrap">
         @if ($model->comments_count > 0)
           <a href="{{ path('Acp\Comments@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->comments_count) }}
           </a>
         @endif
       </td>
-      <td class="text-md-right tw-whitespace-no-wrap">
+      <td class="md:tw-text-right tw-whitespace-no-wrap">
         @if ($model->images_count > 0)
           <a href="{{ path('Acp\Images@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->images_count) }}
           </a>
         @endif
       </td>
-      <td class="text-md-right tw-whitespace-no-wrap">
+      <td class="md:tw-text-right tw-whitespace-no-wrap">
         @if ($model->torrents_count > 0)
           <a href="{{ path('Acp\Torrents@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->torrents_count) }}
           </a>
         @endif
       </td>
-      <td class="text-md-right tw-whitespace-no-wrap">
+      <td class="md:tw-text-right tw-whitespace-no-wrap">
         @if ($model->trips_count > 0)
           <a href="{{ path('Acp\Trips@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->trips_count) }}

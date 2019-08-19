@@ -15,14 +15,14 @@
   @en
     <p>Trips by days. Several flags in one cell means there were multiple cities visited during that day: moving from one place to another or just one-day trips. Each flag is a link to the story about the trip if the story is published.</p>
   @endru
-  <div class="calendar-grid text-center">
+  <div class="calendar-grid tw-text-center">
     @foreach (range($lastDate->year, $firstDate->year, -1) as $year)
-      <div class="tw-font-bold text-right tw-mt-4 tw-pr-2 bg-gray-200">{{ $year }}</div>
+      <div class="tw-font-bold tw-text-right tw-mt-4 tw-pr-2 bg-gray-200">{{ $year }}</div>
       @foreach (range(1, 31) as $day)
         <div class="tw-mt-4 bg-gray-200">{{ $day }}</div>
       @endforeach
       @foreach (range($year === $lastDate->year ? $lastDate->month : 12, 1, -1) as $month)
-        <div class="text-right tw-pr-2 border-right">{{ trans("months.{$month}") }}</div>
+        <div class="tw-text-right tw-pr-2 border-right">{{ trans("months.{$month}") }}</div>
         @foreach (range(1, 31) as $day)
           @php ($date = "{$year}-{$month}-{$day}")
           @if (isset($calendar[$date]))
@@ -55,21 +55,21 @@
   </h3>
   <div class="d-flex">
     <div class="tw-mr-6">
-      <div class="tw-font-bold text-right">@ru Год @en Year @endru</div>
+      <div class="tw-font-bold tw-text-right">@ru Год @en Year @endru</div>
       @foreach ($daysInTrips as $year => $days)
         <div>{{ $year }}</div>
       @endforeach
     </div>
     <div class="tw-mr-6">
-      <div class="tw-font-bold text-right">@ru Дни @en Days @endru</div>
+      <div class="tw-font-bold tw-text-right">@ru Дни @en Days @endru</div>
       @foreach ($daysInTrips as $year => $days)
-        <div class="text-right">{{ $days }}</div>
+        <div class="tw-text-right">{{ $days }}</div>
       @endforeach
     </div>
     <div class="tw-mr-6">
-      <div class="tw-font-bold text-right">@ru Города @en Cities @endru</div>
+      <div class="tw-font-bold tw-text-right">@ru Города @en Cities @endru</div>
       @foreach ($cities as $year => $count)
-        <div class="text-right">
+        <div class="tw-text-right">
           {{ $count }}
           @if (isset($newCities[$year]))
             (+{{ $newCities[$year] }})
@@ -78,9 +78,9 @@
       @endforeach
     </div>
     <div>
-      <div class="tw-font-bold text-right">@ru Страны @en Countries @endru</div>
+      <div class="tw-font-bold tw-text-right">@ru Страны @en Countries @endru</div>
       @foreach ($countries as $year => $count)
-        <div class="text-right">
+        <div class="tw-text-right">
           {{ $count }}
           @if (isset($newCountries[$year]))
             (+{{ $newCountries[$year] }})

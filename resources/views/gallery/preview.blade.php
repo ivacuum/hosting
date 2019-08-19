@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-  <div class="col-lg-3 col-xl-2 text-center">
+  <div class="col-lg-3 col-xl-2 tw-text-center">
     <a href="{{ path("$self@view", $image) }}">
       <img class="screenshot" src="{{ $image->thumbnailUrl() }}">
     </a>

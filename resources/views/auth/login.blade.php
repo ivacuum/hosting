@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="tw-mx-auto mw-400">
-  <div class="text-center tw-mb-4">
+  <div class="tw-text-center tw-mb-4">
     <h3>{{ trans('auth.signin_title') }}</h3>
 
     <div class="d-flex justify-content-center tw-my-4">
@@ -77,7 +77,7 @@
       </div>
     </div>
 
-    <div class="tw-mt-4 text-center">
+    <div class="tw-mt-4 tw-text-center">
       <button class="btn btn-primary btn-lg btn-login">
         {{ trans('auth.signin') }}
       </button>

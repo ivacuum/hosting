@@ -17,7 +17,7 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
   <tr>
-    <th class="text-md-right">ID</th>
+    <th class="md:tw-text-right">ID</th>
     <th>Автор</th>
     <th>Текст</th>
     <th>Дата</th>
@@ -27,7 +27,7 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-      <td class="text-md-right">
+      <td class="md:tw-text-right">
         <a href="{{ path("$self@show", $model) }}">
           {{ $model->id }}
         </a>

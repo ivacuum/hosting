@@ -3,7 +3,7 @@
 @section('content')
 <section class="tw-pt-4 tw-pb-12">
   <div class="tw-container tw-max-w-3xl">
-    <div class="text-center tw-mb-4">
+    <div class="tw-text-center tw-mb-4">
       <a href="{{ path('Retracker@index') }}">
         <img src="https://ivacuum.org/i/rt/logo.png" width="64" height="64">
       </a>

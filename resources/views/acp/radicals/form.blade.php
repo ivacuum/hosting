@@ -3,7 +3,7 @@
 {!! Form::text('kanji_string')->html() !!}
 
 <div class="form-group form-row">
-  <label class="col-md-4 text-md-right">Есть в кандзи</label>
+  <label class="col-md-4 md:tw-text-right">Есть в кандзи</label>
   <div class="col-md-8">
     @php ($kanjis = $model->kanjis->pluck('id')->all())
     @foreach (App\Kanji::orderBy('level')->orderBy('meaning')->get(['id', 'character', 'meaning']) as $row)

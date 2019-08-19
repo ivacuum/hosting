@@ -1,7 +1,7 @@
 @extends('gallery.base')
 
 @section('content')
-<div class="text-center">
+<div class="tw-text-center">
   <img class="image-fit-viewport screenshot" src="{{ $image->originalUrl() }}">
 </div>
 

@@ -2,7 +2,7 @@
 {!! Form::text('token')->required(!$model->token)->html() !!}
 
 <div class="form-group form-row">
-  <label class="col-md-4 text-md-right">Домены</label>
+  <label class="col-md-4 md:tw-text-right">Домены</label>
   <div class="col-md-8">
     @foreach ($domains as $domain)
       <label class="form-check">

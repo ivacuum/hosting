@@ -5,7 +5,7 @@
   <table class="table-stats table-adaptive">
     <thead>
     <tr>
-      <th class="text-md-right">ID</th>
+      <th class="md:tw-text-right">ID</th>
       <th></th>
       <th>Псевдоним</th>
       <th>Дата регистрации</th>
@@ -14,8 +14,8 @@
     <tbody>
     @foreach ($users as $user)
       <tr>
-        <td class="text-md-right">{{ $user->id }}</td>
-        <td class="text-center">
+        <td class="md:tw-text-right">{{ $user->id }}</td>
+        <td class="tw-text-center">
           <a href="{{ path("$self@show", $user) }}">
             @include('tpl.avatar', ['size' => 50])
           </a>

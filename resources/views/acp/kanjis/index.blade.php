@@ -25,10 +25,10 @@
     <th class="tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'meaning', 'order' => 'asc'])
     </th>
-    <th class="text-md-right tw-whitespace-no-wrap">
+    <th class="md:tw-text-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'radicals_count'])
     </th>
-    <th class="text-md-right tw-whitespace-no-wrap">
+    <th class="md:tw-text-right tw-whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'similar_count'])
     </th>
     <th></th>
@@ -42,19 +42,19 @@
         {{ $model->level }}
       </td>
       <td>
-        <a class="bg-kanji d-block tw-font-bold tw-pb-1 tw-px-2 rounded text-center text-white" href="{{ path("$self@show", $model) }}">
+        <a class="bg-kanji d-block tw-font-bold tw-pb-1 tw-px-2 rounded tw-text-center text-white" href="{{ path("$self@show", $model) }}">
           <span class="d-inline-block ja-big ja-character ja-shadow">{{ $model->character }}</span>
         </a>
       </td>
       <td class="pre-line">{{ implode("\n", explode(', ', $model->meaning)) }}</td>
-      <td class="text-md-right tw-whitespace-no-wrap">
+      <td class="md:tw-text-right tw-whitespace-no-wrap">
         @if ($model->radicals_count > 0)
           <a href="{{ path('Acp\Radicals@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->radicals_count) }}
           </a>
         @endif
       </td>
-      <td class="text-md-right tw-whitespace-no-wrap">
+      <td class="md:tw-text-right tw-whitespace-no-wrap">
         @if ($model->similar_count > 0)
           <a href="{{ path("$self@index", [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->similar_count) }}
