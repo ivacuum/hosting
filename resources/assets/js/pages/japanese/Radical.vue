@@ -51,10 +51,10 @@ export default {
 <div>
   <div class="tw-items-center tw-flex tw-flex-wrap h1">
     <router-link
-      class="bg-secondary ja-shadow-light tw-mr-2 tw-px-4 tw-py-1 rounded tw-text-white hover:tw-text-white"
+      class="bg-secondary ja-shadow-light tw-mr-2 tw-px-4 tw-py-1 tw-rounded tw-text-white hover:tw-text-white"
       :to="{ name: 'wk.level', params: { level: radical.level }}"
     >{{ radical.level }}</router-link>
-    <div class="bg-radical tw-text-white tw-mr-4 tw-px-2 tw-py-1 rounded">
+    <div class="bg-radical tw-text-white tw-mr-4 tw-px-2 tw-py-1 tw-rounded">
       <span class="ja-character ja-shadow-light" v-if="radical.character">{{ radical.character }}</span>
       <img class="tw-block ja-character ja-image-shadow" :src="radical.image" alt="" height="38" v-else>
     </div>

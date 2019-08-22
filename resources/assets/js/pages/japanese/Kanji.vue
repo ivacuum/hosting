@@ -55,10 +55,10 @@ export default {
 <div>
   <div class="tw-items-center tw-flex tw-flex-wrap h1">
     <router-link
-      class="bg-secondary ja-shadow-light tw-mr-2 tw-px-4 tw-py-1 rounded tw-text-white hover:tw-text-white"
+      class="bg-secondary ja-shadow-light tw-mr-2 tw-px-4 tw-py-1 tw-rounded tw-text-white hover:tw-text-white"
       :to="{ name: 'wk.level', params: { level: kanji.level }}"
     >{{ kanji.level }}</router-link>
-    <div class="bg-kanji ja-shadow-light tw-text-white tw-mr-4 tw-px-2 tw-py-1 rounded">{{ kanji.character }}</div>
+    <div class="bg-kanji ja-shadow-light tw-text-white tw-mr-4 tw-px-2 tw-py-1 tw-rounded">{{ kanji.character }}</div>
     <div class="tw-capitalize">{{ kanji.meaning }}</div>
   </div>
 
@@ -66,11 +66,11 @@ export default {
   <div class="tw-mb-6">
     <span v-if="kanji.onyomi">
       <span class="text-muted">On'yomi</span>
-      <span class="f20 tw-mr-4">【{{ kanji.onyomi }}】</span>
+      <span class="tw-text-xl tw-mr-4">【{{ kanji.onyomi }}】</span>
     </span>
     <span v-if="kanji.kunyomi">
       <span class="text-muted">Kun'yomi</span>
-      <span class="f20">【{{ kanji.kunyomi }}】</span>
+      <span class="tw-text-xl">【{{ kanji.kunyomi }}】</span>
     </span>
   </div>
 

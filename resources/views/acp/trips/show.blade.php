@@ -6,7 +6,7 @@
 </div>
 @if ($model->meta_image)
   <div class="tw-mt-4">
-    <img class="img-fluid rounded" src="{{ $model->metaImage() }}">
+    <img class="img-fluid tw-rounded" src="{{ $model->metaImage() }}">
   </div>
 @endif
 <form class="tw-mt-4" action="{{ path("$self@notify", $model) }}" method="post">

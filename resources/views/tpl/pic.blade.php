@@ -8,7 +8,7 @@
         >
       @else
         <img
-          class="rounded-md-pic js-lazy"
+          class="md:tw-rounded js-lazy"
           src="https://life.ivacuum.org/0.gif"
           data-src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"
           alt=""

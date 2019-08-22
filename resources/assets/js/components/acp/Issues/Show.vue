@@ -92,7 +92,7 @@ export default {
     </div>
   </div>
   <div class="tw-flex">
-    <div class="bg-light border tw-mt-2 tw-p-2 rounded">
+    <div class="bg-light border tw-mt-2 tw-p-2 tw-rounded">
       <div class="text-muted">{{ resource.email }}</div>
       <div><a :href="resource.page">{{ resource.page }}</a></div>
     </div>

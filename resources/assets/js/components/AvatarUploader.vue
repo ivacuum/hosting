@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="tw-mb-4" v-if="avatar">
-    <img class="avatar-100 rounded-circle" :src="avatar">
+    <img class="avatar-100 tw-rounded-full" :src="avatar">
   </div>
   <div class="tw-mb-4" v-if="errors.file && errors.file.length">
     <div v-for="error in errors.file">

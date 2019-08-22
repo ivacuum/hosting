@@ -7,7 +7,7 @@
     @foreach ($notifications as $notification)
       @php ($class_basename = snake_case(class_basename($notification->type)))
       <div class="tw-py-4 {{ !$loop->last ? 'border-bottom' : '' }}">
-        <div class="tw-table-cell tw-pr-4 svg-muted-blue f20">
+        <div class="tw-table-cell tw-pr-4 svg-muted-blue tw-text-xl">
           @if ($class_basename === 'torrent_updated')
             @svg (magnet)
           @elseif ($class_basename === 'torrent_not_found_deleted')
@@ -20,7 +20,7 @@
             @svg (bullhorn)
           @endif
         </div>
-        <div class="tw-table-cell align-top">
+        <div class="tw-table-cell tw-align-top">
           @if ($notification->unread())
             <span class="svg-unread tw-mr-1 tooltipped tooltipped-n" aria-label="{{ trans('notifications.unread') }}">
               @svg (circle)

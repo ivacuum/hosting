@@ -3,7 +3,7 @@
     <aside class="tw-mr-4 md:tw-mr-6">
       <div class="comment-avatar-size tw-mt-1">
         @if (Auth::user()->avatar)
-          <img class="comment-avatar-size rounded-circle" src="{{ Auth::user()->avatarUrl() }}">
+          <img class="comment-avatar-size tw-rounded-full" src="{{ Auth::user()->avatarUrl() }}">
         @else
           @include('tpl.svg-avatar', [
             'bg' => ViewHelper::avatarBg(Auth::user()->id),
@@ -24,7 +24,7 @@
         <div class="tw-flex tw-mt-2">
           <div class="tw-mr-2 tw-text-center">
             <a
-              class="btn bg-vk f20 rounded-circle tw-text-white hover:tw-text-white"
+              class="btn bg-vk tw-text-xl tw-rounded-full tw-text-white hover:tw-text-white"
               href="{{ path('Auth\Vk@index', ['goto' => "{$locale_uri}/{$request_uri}#comment-add"]) }}"
             >
               @svg (vk)
@@ -33,7 +33,7 @@
           </div>
           <div class="tw-mr-2 tw-text-center">
             <a
-              class="btn bg-facebook f20 rounded-circle tw-text-white hover:tw-text-white"
+              class="btn bg-facebook tw-text-xl tw-rounded-full tw-text-white hover:tw-text-white"
               href="{{ path('Auth\Facebook@index', ['goto' => "{$locale_uri}/{$request_uri}#comment-add"]) }}"
             >
               @svg (facebook)
@@ -42,7 +42,7 @@
           </div>
           <div class="tw-mr-2 tw-text-center">
             <a
-              class="btn bg-google f20 rounded-circle tw-text-white hover:tw-text-white"
+              class="btn bg-google tw-text-xl tw-rounded-full tw-text-white hover:tw-text-white"
               href="{{ path('Auth\Google@index', ['goto' => "{$locale_uri}/{$request_uri}#comment-add"]) }}"
             >
               @svg (google)

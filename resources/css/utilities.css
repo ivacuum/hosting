@@ -1,7 +1,9 @@
 .tw-mobile-wide {
   @apply -mx-4;
+}
 
-  @screen sm {
+@screen sm {
+  .tw-mobile-wide {
     @apply mx-0;
   }
 }

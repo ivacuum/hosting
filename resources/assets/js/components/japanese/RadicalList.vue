@@ -20,7 +20,7 @@
         </p>
         <div class="tw-flex tw-flex-wrap tw-items-center" v-if="Object.keys(filteredElements).length > 1">
           <template v-for="(collection, lvl) in filteredElements">
-            <a class="badge badge-secondary f16 ja-shadow-light tw-mr-1 tw-mb-1" :href="`#level-${lvl}`">
+            <a class="badge badge-secondary tw-text-base ja-shadow-light tw-mr-1 tw-mb-1" :href="`#level-${lvl}`">
               {{ lvl }}
             </a>
           </template>
@@ -53,7 +53,7 @@
         </div>
         <div class="tw-font-bold radicals-grid tw-text-center tw-text-white" is="transition-group" name="grid">
           <div
-            class="bg-radical tw-pb-2 rounded"
+            class="bg-radical tw-pb-2 tw-rounded"
             :class="{ 'labels-hidden': !labels, 'bg-burned': row.burned }"
             :key="row.id"
             v-for="row in collection"

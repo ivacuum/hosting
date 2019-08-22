@@ -20,7 +20,7 @@
         </p>
         <div class="tw-flex tw-flex-wrap tw-items-center" v-if="Object.keys(filteredElements).length > 1">
           <template v-for="(collection, lvl) in filteredElements">
-            <a class="badge badge-secondary f16 ja-shadow-light tw-mr-1 tw-mb-1" :href="`#level-${lvl}`">
+            <a class="badge badge-secondary tw-text-base ja-shadow-light tw-mr-1 tw-mb-1" :href="`#level-${lvl}`">
               {{ lvl }}
             </a>
           </template>
@@ -51,11 +51,11 @@
             >{{ toggleBurnedText }}</button>
           </div>
         </div>
-        <div class="f20 tw-text-center md:tw-text-left vocab-grid">
+        <div class="tw-text-xl tw-text-center md:tw-text-left vocab-grid">
           <template v-for="row in collection">
             <div>
               <router-link
-                class="bg-vocab tw-inline-block f36 ja-character ja-shadow-light tw-px-2 tw-py-1 rounded tw-whitespace-no-wrap tw-text-white hover:tw-text-gray-400"
+                class="bg-vocab tw-inline-block f36 ja-character ja-shadow-light tw-px-2 tw-py-1 tw-rounded tw-whitespace-no-wrap tw-text-white hover:tw-text-gray-400"
                 :class="{ 'bg-burned': row.burned }"
                 :to="{ name: 'wk.vocabulary', params: { characters: row.character }}"
               >{{ row.character }}</router-link>

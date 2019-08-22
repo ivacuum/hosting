@@ -1,7 +1,9 @@
 .pic-container {
   @apply mb-6 -mx-4;
+}
 
-  @screen sm {
+@screen sm {
+  .pic-container {
     @apply mx-0;
   }
 }

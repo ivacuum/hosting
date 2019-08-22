@@ -51,16 +51,16 @@ export default {
 <div>
   <div class="tw-items-center tw-flex tw-flex-wrap h1">
     <router-link
-      class="bg-secondary ja-shadow-light tw-mr-2 tw-px-4 tw-py-1 rounded tw-text-white hover:tw-text-white"
+      class="bg-secondary ja-shadow-light tw-mr-2 tw-px-4 tw-py-1 tw-rounded tw-text-white hover:tw-text-white"
       :to="{ name: 'wk.level', params: { level: vocab.level }}"
     >{{ vocab.level }}</router-link>
-    <div class="bg-vocab ja-shadow-light tw-mr-4 tw-px-2 tw-py-1 rounded tw-text-white">{{ vocab.character }}</div>
+    <div class="bg-vocab ja-shadow-light tw-mr-4 tw-px-2 tw-py-1 tw-rounded tw-text-white">{{ vocab.character }}</div>
     <div class="f24 tw-capitalize">{{ vocab.meaning }}</div>
   </div>
 
   <div class="tw-items-center tw-flex tw-flex-wrap">
     <span class="text-muted">{{ $t('japanese.reading') }}</span>
-    <span class="f20">【{{ vocab.kana }}】</span>
+    <span class="tw-text-xl">【{{ vocab.kana }}】</span>
     <div v-if="vocab.audio">
       <button class="btn btn-default btn-sm" @click="$refs.audio.play()">Play</button>
       <audio ref="audio" :src="vocab.audio"></audio>
@@ -77,7 +77,7 @@ export default {
 
   <div class="tw-mt-12" v-if="vocab.sentences">
     <h3 class="tw-mt-0">{{ $t('japanese.sentences') }}</h3>
-    <div class="f20 pre-line">{{ vocab.sentences }}</div>
+    <div class="tw-text-xl pre-line">{{ vocab.sentences }}</div>
   </div>
 
   <div class="tw-mt-6">

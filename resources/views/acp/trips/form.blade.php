@@ -26,7 +26,7 @@
 @if ($model->meta_image)
   <div class="form-group form-row">
     <div class="col-md-6 offset-md-4">
-      <img class="img-fluid rounded" src="{{ $model->metaImage() }}">
+      <img class="img-fluid tw-rounded" src="{{ $model->metaImage() }}">
     </div>
   </div>
 @endif

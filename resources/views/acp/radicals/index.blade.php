@@ -35,7 +35,7 @@
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
       <td>{{ $model->level }}</td>
       <td>
-        <a class="bg-radical tw-block tw-font-bold tw-pb-1 tw-px-2 rounded tw-text-center tw-text-white hover:tw-text-gray-400" href="{{ path("$self@show", $model) }}">
+        <a class="bg-radical tw-block tw-font-bold tw-pb-1 tw-px-2 tw-rounded tw-text-center tw-text-white hover:tw-text-gray-400" href="{{ path("$self@show", $model) }}">
           @if ($model->character)
             <span class="tw-inline-block ja-big ja-character ja-shadow">{{ $model->character }}</span>
           @else

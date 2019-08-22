@@ -1,9 +1,0 @@
-.lh-1 { line-height: 1; }
-
-@include media-breakpoint-up(sm) {
-  .w-sm-auto { width: auto !important; }
-}
-
-@include media-breakpoint-up(md) {
-  .rounded-md-pic { border-radius: $border-radius-lg; }
-}
