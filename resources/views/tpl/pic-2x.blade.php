@@ -14,7 +14,7 @@
           data-src2x="{{ ViewHelper::pic2x($slug ?? $trip->slug, $pic) }}"
           alt=""
         >
-        <div class="photo-overlay-buttons">
+        <div class="tw-absolute tw-top-0 tw-right-0">
           <a
             class="tw-flex tw-items-center tw-justify-center tw-p-2 photo-overlay-button"
             href="{{ path('Photos@map', ['photo' => $slug ?? $trip->slug.'/'.$pic]) }}"

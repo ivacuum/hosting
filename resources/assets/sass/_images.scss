@@ -18,13 +18,6 @@
   }
 }
 
-.gallery-photo-container {
-  display: inline-block;
-  position: relative;
-}
-
-.gallery-photo { max-width: 100%; }
-
 .image-label {
   position: absolute;
   left: 4px;
@@ -43,34 +36,14 @@
 .image-100 {
   width: 100px;
   height: 75px;
-  object-fit: cover;
 }
 
 .image-200 {
   width: 200px;
   height: 150px;
-  object-fit: cover;
-}
-
-.image-fit-cover {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
 }
 
 .image-fit-viewport { max-height: 90vh; }
-
-.image-sm-4x3-2col {
-  @include media-breakpoint-up(sm) { height: (map_get($container-max-widths, sm) - $grid-gutter-width) / 2 * .75; }
-  @include media-breakpoint-up(md) { height: (map_get($container-max-widths, md) - $grid-gutter-width) / 2 * .75; }
-  @include media-breakpoint-up(lg) { height: (map_get($container-max-widths, lg) - $grid-gutter-width) / 2 * .75; }
-  @include media-breakpoint-up(xl) { height: (map_get($container-max-widths, xl) - $grid-gutter-width) / 2 * .75; }
-}
-
-.image-lg-4x3-3col {
-  @include media-breakpoint-up(lg) { height: (map_get($container-max-widths, lg) - $grid-gutter-width) / 3 * .75; }
-  @include media-breakpoint-up(xl) { height: (map_get($container-max-widths, xl) - $grid-gutter-width) / 3 * .75; }
-}
 
 .screenshot {
   border: 1px solid rgba($black, .15);

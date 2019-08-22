@@ -108,8 +108,8 @@
 @elseif ($type === 'grid')
   <div class="tw-text-center">
     @foreach ($models as $model)
-      <a class="gallery-photo-container" href="{{ path("$self@show", $model) }}">
-        <img class="gallery-photo" src="{{ $model->thumbnailSecretUrl() }}">
+      <a class="tw-inline-block tw-relative" href="{{ path("$self@show", $model) }}">
+        <img class="tw-max-w-full" src="{{ $model->thumbnailSecretUrl() }}">
         <span class="image-label">@svg (eye) {{ $model->views }} &middot; {{ ViewHelper::size($model->size) }}</span>
       </a>
     @endforeach

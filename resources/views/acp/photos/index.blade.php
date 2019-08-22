@@ -38,7 +38,7 @@
       </td>
       <td class="tw-text-center">
         <a class="tw-inline-block screenshot-link" href="{{ path("$self@show", $model) }}">
-          <img class="border border-hover image-100" src="{{ request('size') == 2000 ? $model->originalUrl() : (request('size') == 1000 ? $model->mobileUrl() : $model->thumbnailUrl()) }}">
+          <img class="border border-hover image-100 tw-object-cover" src="{{ request('size') == 2000 ? $model->originalUrl() : (request('size') == 1000 ? $model->mobileUrl() : $model->thumbnailUrl()) }}">
         </a>
       </td>
       <td>

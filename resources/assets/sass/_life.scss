@@ -37,70 +37,6 @@
   width: 3.375em;
 }
 
-/*
-.cover {
-  position: relative;
-  margin-bottom: 1.5em;
-  max-width: 1000px;
-}
-
-.cover-image {
-  position: relative;
-  height: 0;
-  padding-bottom: 50%;
-  background-size: cover;
-  background: center no-repeat;
-  border-radius: 6px;
-
-  &:before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    content: '';
-    background-image: linear-gradient(rgba(26, 26, 26, 0.1) 0%, rgba(26, 26, 26, 0.5) 50%);
-    border-radius: 6px;
-  }
-}
-
-.cover-description {
-  font-weight: normal;
-  display: none;
-
-  @media (min-width: 768px) {
-    font-size: 22px;
-    display: block;
-  }
-}
-
-.cover-meta {
-  margin-top: 1em;
-  font-size: 13px;
-
-  @media (min-width: 768px) {
-    margin-top: 2em;
-  }
-}
-
-.cover-title {
-  padding: 0;
-  margin: 0;
-  position: absolute;
-  right: 3rem;
-  bottom: 3rem;
-  left: 3rem;
-  color: #fff;
-  font-family: 'Helvetica Neue', sans-serif;
-  font-weight: bold;
-  font-size: 24px;
-
-  @media (min-width: 768px) {
-    font-size: 36px;
-  }
-}
-*/
-
 .flag-16 {
   width: 1em;
   height: .75em;
@@ -146,22 +82,9 @@
   }
 }
 
-.photo-overlay-arrow-next { right: .25rem; }
-.photo-overlay-arrow-prev { left: .25rem; }
-
 .photo-overlay-button {
   color: $white;
   filter: drop-shadow(0 0 1px rgba($black, .4));
-}
-
-.photo-overlay-buttons {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.image-4x3 {
-  padding-bottom: 75%;
 }
 
 .pic {

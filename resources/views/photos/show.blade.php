@@ -24,12 +24,12 @@ Mousetrap.bind('right', () => {
       @endif
       <div class="tw-inline-block tw-relative">
         @if (null !== $next)
-          <div class="photo-overlay-arrow photo-overlay-arrow-prev">
+          <div class="photo-overlay-arrow tw-left-0 tw-pl-1">
             @svg (chevron-left)
           </div>
         @endif
         @if (null !== $prev)
-          <div class="photo-overlay-arrow photo-overlay-arrow-next">
+          <div class="photo-overlay-arrow tw-right-0 tw-pr-1">
             @svg (chevron-right)
           </div>
         @endif
