@@ -32,7 +32,7 @@
         <span class="form-check-label">{{ trans('my.theme_dark') }}</span>
       </label>
       @if ($errors->has('theme'))
-        <div class="invalid-feedback d-block">{{ $errors->first('theme') }}</div>
+        <div class="invalid-feedback tw-block">{{ $errors->first('theme') }}</div>
       @endif
     </div>
 
@@ -50,7 +50,7 @@
         <span class="form-check-label">{{ trans('my.torrent_short_title') }}</span>
       </label>
       @if ($errors->has('torrent_short_title'))
-        <div class="invalid-feedback d-block">{{ $errors->first('torrent_short_title') }}</div>
+        <div class="invalid-feedback tw-block">{{ $errors->first('torrent_short_title') }}</div>
       @endif
       @ru
         <div class="form-help">Из названий раздач будут скрыты данные в скобках, например, Deus Ex <s>[RePack] [RUS] (2007)</s>.</div>
@@ -72,7 +72,7 @@
         </label>
       @endforeach
       @if ($errors->has('locale'))
-        <div class="invalid-feedback d-block">{{ $errors->first('locale') }}</div>
+        <div class="invalid-feedback tw-block">{{ $errors->first('locale') }}</div>
       @endif
     </div>
 
@@ -89,7 +89,7 @@
       <span class="form-check-label">{{ trans('my.notify_gigs') }}</span>
     </label>
     @if ($errors->has('notify_gigs'))
-      <div class="invalid-feedback d-block tw-mb-2">{{ $errors->first('notify_gigs') }}</div>
+      <div class="invalid-feedback tw-block tw-mb-2">{{ $errors->first('notify_gigs') }}</div>
     @endif
 
     <input type="hidden" name="notify_news" value="{{ App\User::NOTIFY_NO }}">
@@ -104,7 +104,7 @@
       <span class="form-check-label">{{ trans('my.notify_news') }}</span>
     </label>
     @if ($errors->has('notify_news'))
-      <div class="invalid-feedback d-block tw-mb-2">{{ $errors->first('notify_news') }}</div>
+      <div class="invalid-feedback tw-block tw-mb-2">{{ $errors->first('notify_news') }}</div>
     @endif
 
     <div class="form-group">
@@ -120,7 +120,7 @@
         <span class="form-check-label">{{ trans('my.notify_trips') }}</span>
       </label>
       @if ($errors->has('notify_trips'))
-        <div class="invalid-feedback d-block tw-mb-2">{{ $errors->first('notify_trips') }}</div>
+        <div class="invalid-feedback tw-block tw-mb-2">{{ $errors->first('notify_trips') }}</div>
       @endif
     </div>
 

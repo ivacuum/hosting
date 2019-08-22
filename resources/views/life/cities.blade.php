@@ -3,15 +3,15 @@
 ])
 
 @section('content')
-<h1 class="h2">
+<h1 class="tw-text-3xl">
   {{ trans('life.visited_cities') }}
   <small class="text-muted">{{ sizeof($cities) }}</small>
 </h1>
-<ul class="list-inline f14">
-  <li class="list-inline-item"><a class="link" href="{{ path('Life@index') }}">{{ trans('life.by_year') }}</a></li>
-  <li class="list-inline-item"><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
-  <li class="list-inline-item"><mark>{{ trans('life.by_city') }}</mark></li>
-  <li class="list-inline-item"><a class="link" href="{{ path('Life@calendar') }}">{{ trans('life.by_days') }}</a></li>
+<ul class="list-inline tw-text-sm">
+  <li class="list-inline-item tw-whitespace-no-wrap"><a class="link" href="{{ path('Life@index') }}">{{ trans('life.by_year') }}</a></li>
+  <li class="list-inline-item tw-whitespace-no-wrap"><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
+  <li class="list-inline-item tw-whitespace-no-wrap"><mark>{{ trans('life.by_city') }}</mark></li>
+  <li class="list-inline-item tw-whitespace-no-wrap"><a class="link" href="{{ path('Life@calendar') }}">{{ trans('life.by_days') }}</a></li>
 </ul>
 
 <div class="cities-columns">

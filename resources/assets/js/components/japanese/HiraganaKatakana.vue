@@ -4,18 +4,18 @@
     <div :key="stage" style="min-height: 420px;">
       <div v-show="stage === 'pick'">
         <p>{{ $t('PICKER_TEXT') }}</p>
-        <div class="align-items-center text-center border-left" style="display: grid; grid-template-columns: repeat(16, max-content);">
+        <div class="tw-items-center tw-text-center border-left" style="display: grid; grid-template-columns: repeat(16, max-content);">
           <template v-for="(cells, i) in elements">
             <template v-for="(cell, j) in cells">
-              <div class="border-right cursor-pointer px-2 pt-2 pb-1" :class="{ 'border-top': i === 0 }" @click="clickOnColumn(j)">
-                <div class="f28 font-weight-bold ja-character">{{ cell[syllabaryIndex] ? cell[syllabaryIndex] : '&nbsp;' }}</div>
+              <div class="border-right cursor-pointer tw-px-2 tw-pt-2 tw-pb-1" :class="{ 'border-top': i === 0 }" @click="clickOnColumn(j)">
+                <div class="f28 tw-font-bold ja-character">{{ cell[syllabaryIndex] ? cell[syllabaryIndex] : '&nbsp;' }}</div>
                 <div class="text-muted">{{ cell[answerIndex] ? cell[answerIndex] : '&nbsp;' }}</div>
               </div>
             </template>
           </template>
           <template v-for="i in elements[0].length">
             <div class="border-right border-bottom">
-              <label class="cursor-pointer d-block tw-mb-0 py-2">
+              <label class="cursor-pointer tw-block tw-mb-0 tw-py-2">
                 <input
                   :id="`column_${i - 1}`"
                   class="cursor-pointer"
@@ -27,7 +27,7 @@
             </div>
           </template>
         </div>
-        <div class="d-flex flex-wrap tw-mt-2">
+        <div class="tw-flex tw-flex-wrap tw-mt-2">
           <button class="btn btn-primary tw-mb-2 tw-mr-2" :disabled="this.picked.length < 2" @click="practice">{{ $t('PRACTICE') }}</button>
           <button class="btn btn-default tw-mb-2 tw-mr-2" @click="checkAll">{{ $t('CHECK_ALL') }}</button>
           <button class="btn btn-default tw-mb-2 tw-mr-2" @click="uncheckAll">{{ $t('UNCHECK_ALL') }}</button>
@@ -38,14 +38,14 @@
       </div>
       <div class="mw-600" v-show="stage === 'practice'">
         <p>{{ $t('PRACTICE_TEXT') }}</p>
-        <div class="mx-auto mw-400">
-          <div class="text-center py-2 py-md-5">
-            <div class="f48 font-weight-bold" @click="revealAnswer">{{ question }}</div>
+        <div class="tw-mx-auto mw-400">
+          <div class="tw-text-center tw-py-2 md:tw-py-12">
+            <div class="f48 tw-font-bold" @click="revealAnswer">{{ question }}</div>
             <div class="text-muted" :class="{ invisible: !answerVisible }">{{ answer }}</div>
           </div>
           <div>
             <input
-              class="form-control text-center"
+              class="form-control tw-text-center"
               autocapitalize="none"
               placeholder="kana"
               :autofocus="focus"
@@ -53,7 +53,7 @@
               @input="checkInput($event.target.value, $event)"
               @keydown.space.prevent="revealAnswer">
           </div>
-          <div class="d-flex align-items-center justify-content-between tw-mt-2">
+          <div class="tw-flex tw-items-center tw-justify-between tw-mt-2">
             <div><button class="btn btn-default" @click="pick">{{ $t('BACK_TO_PICKER') }}</button></div>
             <div class="text-muted" v-if="answered > 0">{{ $t('ANSWERED', { answered }) }}</div>
           </div>

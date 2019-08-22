@@ -18,7 +18,7 @@
             v-if="!guest"
           >{{ toggleBurnedText }}</button>
         </p>
-        <div class="d-flex flex-wrap align-items-center" v-if="Object.keys(filteredElements).length > 1">
+        <div class="tw-flex tw-flex-wrap tw-items-center" v-if="Object.keys(filteredElements).length > 1">
           <template v-for="(collection, lvl) in filteredElements">
             <a class="badge badge-secondary f16 ja-shadow-light tw-mr-1 tw-mb-1" :href="`#level-${lvl}`">
               {{ lvl }}
@@ -28,10 +28,10 @@
       </div>
       <template v-for="(collection, lvl) in filteredElements">
         <a :name="`level-${lvl}`"></a>
-        <div class="d-sm-flex align-items-center justify-content-between tw-mt-6 tw-mb-1">
+        <div class="sm:tw-flex tw-items-center tw-justify-between tw-mt-6 tw-mb-1">
           <h3>
             <span>{{ titleLabel(lvl) }}</span>
-            <small class="text-muted">{{ collection.length }}</small>
+            <span class="tw-text-base tw-text-gray-600">{{ collection.length }}</span>
           </h3>
           <div>
             <button
@@ -51,20 +51,20 @@
             >{{ toggleBurnedText }}</button>
           </div>
         </div>
-        <div class="font-weight-bold radicals-grid text-center text-white" is="transition-group" name="grid">
+        <div class="tw-font-bold radicals-grid tw-text-center tw-text-white" is="transition-group" name="grid">
           <div
-            class="bg-radical pb-2 rounded"
+            class="bg-radical tw-pb-2 rounded"
             :class="{ 'labels-hidden': !labels, 'bg-burned': row.burned }"
             :key="row.id"
             v-for="row in collection"
           >
-            <router-link class="d-block pt-1 text-white" :to="{ name: 'wk.radical', params: { meaning: row.meaning }}">
-              <div class="py-2" v-if="row.image">
+            <router-link class="tw-block tw-pt-1 tw-text-white hover:tw-text-gray-400" :to="{ name: 'wk.radical', params: { meaning: row.meaning }}">
+              <div class="tw-py-2" v-if="row.image">
                 <img class="ja-character ja-image-shadow" :src="row.image" alt="" height="64">
               </div>
-              <div class="ja-big ja-character ja-shadow pb-2" v-else>{{ row.character }}</div>
+              <div class="ja-big ja-character ja-shadow tw-pb-2" v-else>{{ row.character }}</div>
             </router-link>
-            <div class="font-weight-bold ja-shadow-light radical-meaning text-capitalize">{{ row.meaning }}</div>
+            <div class="tw-font-bold ja-shadow-light radical-meaning tw-capitalize">{{ row.meaning }}</div>
           </div>
         </div>
       </template>

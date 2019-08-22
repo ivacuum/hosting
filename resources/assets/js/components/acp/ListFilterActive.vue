@@ -44,7 +44,7 @@ export default {
 </script>
 
 <template>
-<div class="d-flex flex-wrap tw-my-2" v-if="activeFilters.length">
+<div class="tw-flex tw-flex-wrap tw-my-2" v-if="activeFilters.length">
   <router-link
     class="btn btn-default tw-my-1 tw-mr-1"
     :to="resetAll()"
@@ -60,7 +60,7 @@ export default {
     active-class="noop-active"
   >
     {{ filter }}: {{ $route.query[filter] }}
-    <span class="text-danger" v-html="$root.svg.times"></span>
+    <span class="tw-text-red-600" v-html="$root.svg.times"></span>
   </router-link>
 </div>
 </template>

@@ -53,13 +53,13 @@ export default {
 
 <template>
 <div>
-  <div class="align-items-center d-flex flex-wrap h1">
+  <div class="tw-items-center tw-flex tw-flex-wrap h1">
     <router-link
-      class="bg-secondary ja-shadow-light tw-mr-2 px-3 py-1 rounded text-white"
+      class="bg-secondary ja-shadow-light tw-mr-2 tw-px-4 tw-py-1 rounded tw-text-white hover:tw-text-white"
       :to="{ name: 'wk.level', params: { level: kanji.level }}"
     >{{ kanji.level }}</router-link>
-    <div class="bg-kanji ja-shadow-light text-white tw-mr-4 px-2 py-1 rounded">{{ kanji.character }}</div>
-    <div class="text-capitalize">{{ kanji.meaning }}</div>
+    <div class="bg-kanji ja-shadow-light tw-text-white tw-mr-4 tw-px-2 tw-py-1 rounded">{{ kanji.character }}</div>
+    <div class="tw-capitalize">{{ kanji.meaning }}</div>
   </div>
 
   <h3 class="tw-mt-6">{{ $t('japanese.readings') }}</h3>

@@ -23,8 +23,8 @@ export default {
 </script>
 
 <template>
-<div class="d-flex pt-3 w-100" id="comment-add">
-  <aside class="tw-mr-4 mr-md-4" v-if="!guest">
+<div class="tw-flex tw-pt-3 w-100" id="comment-add">
+  <aside class="tw-mr-4 md:tw-mr-6" v-if="!guest">
     <div class="comment-avatar-size tw-mt-1">
       <user-avatar :user="user"/>
     </div>

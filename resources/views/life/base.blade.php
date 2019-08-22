@@ -21,7 +21,7 @@
 @parent
 <span class="tw-whitespace-no-wrap">
   Поделиться:
-  <div class="yashare-auto-init d-inline-block" data-yashareL10n="ru" data-yashareType="big" data-yashareQuickServices="vkontakte,facebook,twitter,gplus" data-yashareTheme="counter"></div>
+  <div class="yashare-auto-init tw-inline-block" data-yashareL10n="ru" data-yashareType="big" data-yashareQuickServices="vkontakte,facebook,twitter,gplus" data-yashareTheme="counter"></div>
 </span>
 @endsection
 

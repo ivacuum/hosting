@@ -19,11 +19,11 @@ export default {
     <thead>
     <tr>
       <th><input type="checkbox" v-model="selectAll"></th>
-      <th class="text-md-right">{{ modelFieldTrans('id') }}</th>
+      <th class="md:tw-text-right">{{ modelFieldTrans('id') }}</th>
       <th>{{ modelFieldTrans('title') }}</th>
       <th></th>
       <th>{{ modelFieldTrans('author') }}</th>
-      <th class="text-md-right tw-whitespace-no-wrap">
+      <th class="md:tw-text-right tw-whitespace-no-wrap">
         <span v-html="$root.svg.comment_o"></span>
       </th>
       <th>{{ modelFieldTrans('created_at') }}</th>
@@ -35,7 +35,7 @@ export default {
         :key="resource.id"
       >
         <td><input type="checkbox" v-model="selected" :value="resource.id"></td>
-        <td class="text-md-right">{{ resource.id }}</td>
+        <td class="md:tw-text-right">{{ resource.id }}</td>
         <td>
           <router-link :to="resource.show_url">
             {{ resource.title }}
@@ -48,13 +48,13 @@ export default {
         </td>
         <td>
           <span
-            class="text-danger tooltipped tooltipped-n"
+            class="tw-text-red-600 tooltipped tooltipped-n"
             aria-label="Открыто"
             v-html="$root.svg.issue_opened"
             v-if="resource.status === 1"
           ></span>
           <span
-            class="text-success tooltipped tooltipped-n"
+            class="tw-text-green-600 tooltipped tooltipped-n"
             aria-label="Закрыто"
             v-html="$root.svg.check"
             v-if="resource.status === 2"
@@ -70,7 +70,7 @@ export default {
             <div class="small text-muted">{{ resource.name }}</div>
           </div>
         </td>
-        <td class="text-md-right tw-whitespace-no-wrap">
+        <td class="md:tw-text-right tw-whitespace-no-wrap">
           {{ resource.comments_count | decimal }}
         </td>
         <td>{{ resource.created_at }}</td>
@@ -81,7 +81,7 @@ export default {
   <div v-else>No {{ modelPlural }} matched the given criteria.</div>
 
   <div v-show="selected.length">
-    <div class="align-items-center d-flex flex-wrap tw-my-2">
+    <div class="tw-items-center tw-flex tw-flex-wrap tw-my-2">
       <div class="tw-mr-2">Выбрано: {{ selected.length }}</div>
       <button class="btn btn-default tw-mr-1" type="button" @click="batch('close')">Закрыть</button>
       <button class="btn btn-default tw-mr-1" type="button" @click="batch('open')">Открыть</button>

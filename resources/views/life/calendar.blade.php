@@ -1,12 +1,12 @@
 @extends('life.base')
 
 @section('content')
-<h1 class="h2">{{ trans('life.calendar') }}</h1>
-<ul class="list-inline f14">
-  <li class="list-inline-item"><a class="link" href="{{ path('Life@index') }}">{{ trans('life.by_year') }}</a></li>
-  <li class="list-inline-item"><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
-  <li class="list-inline-item"><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></li>
-  <li class="list-inline-item"><mark>{{ trans('life.by_days') }}</mark></li>
+<h1 class="tw-text-3xl">{{ trans('life.calendar') }}</h1>
+<ul class="list-inline tw-text-sm">
+  <li class="list-inline-item tw-whitespace-no-wrap"><a class="link" href="{{ path('Life@index') }}">{{ trans('life.by_year') }}</a></li>
+  <li class="list-inline-item tw-whitespace-no-wrap"><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
+  <li class="list-inline-item tw-whitespace-no-wrap"><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></li>
+  <li class="list-inline-item tw-whitespace-no-wrap"><mark>{{ trans('life.by_days') }}</mark></li>
 </ul>
 
 @if ($firstDate !== null && $lastDate !== null)
@@ -26,15 +26,15 @@
         @foreach (range(1, 31) as $day)
           @php ($date = "{$year}-{$month}-{$day}")
           @if (isset($calendar[$date]))
-            <div class="bg-light d-flex flex-column tw-items-center justify-content-start tw-pt-1">
+            <div class="bg-light tw-flex tw-flex-col tw-items-center tw-justify-start tw-pt-1">
               @foreach ($calendar[$date] as $trip)
                 @if ($trip['slug'])
-                  <a class="d-block tw-pb-1 tooltipped tooltipped-n" href="{{ $trip['slug'] }}" aria-label="{{ $trip['title'] }}">
-                    <img class="d-block flag-16 flag-shadow" src="{{ $trip['flag'] }}">
+                  <a class="tw-block tw-pb-1 tooltipped tooltipped-n" href="{{ $trip['slug'] }}" aria-label="{{ $trip['title'] }}">
+                    <img class="tw-block flag-16 flag-shadow" src="{{ $trip['flag'] }}">
                   </a>
                 @else
                   <div class="tw-pb-1">
-                    <img class="d-block flag-16 flag-shadow" src="{{ $trip['flag'] }}">
+                    <img class="tw-block flag-16 flag-shadow" src="{{ $trip['flag'] }}">
                   </div>
                 @endif
               @endforeach
@@ -53,7 +53,7 @@
       Number of countries and cities visited
     @endru
   </h3>
-  <div class="d-flex">
+  <div class="tw-flex">
     <div class="tw-mr-6">
       <div class="tw-font-bold tw-text-right">@ru Год @en Year @endru</div>
       @foreach ($daysInTrips as $year => $days)

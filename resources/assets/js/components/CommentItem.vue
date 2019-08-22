@@ -13,8 +13,8 @@ export default {
 </script>
 
 <template>
-<div :id="`comment-${comment.id}`" class="d-flex py-3 w-100 border-bottom">
-  <aside class="tw-mr-4 mr-md-4">
+<div :id="`comment-${comment.id}`" class="tw-flex tw-py-4 w-100 border-bottom">
+  <aside class="tw-mr-4 md:tw-mr-6">
     <div class="comment-avatar-size tw-mt-1" v-if="comment.user">
       <a :href="comment.user.www">
         <user-avatar :user="comment.user"/>

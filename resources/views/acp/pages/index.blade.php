@@ -1,7 +1,7 @@
 @extends('acp.base')
 
 @section('content')
-<div class="d-flex tw-items-center flex-wrap tw-mb-2 tw--mt-2">
+<div class="tw-flex tw-items-center tw-flex-wrap tw-mb-2 tw--mt-2">
   <h3 class="tw-mb-1 tw-mr-4">{{ trans("$tpl.index") }}</h3>
   @include('acp.tpl.create-button')
 </div>
@@ -41,7 +41,7 @@
 </form>
 
 <span hidden id="page_active_icon">
-  <span class="text-success" title="Отображается">
+  <span class="tw-text-green-600" title="Отображается">
     @svg (eye)
   </span>
 </span>

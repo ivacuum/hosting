@@ -44,7 +44,7 @@
   <div class="tw-mt-4">
     @foreach ($tags as $tag)
       <a
-        class="btn btn-outline-primary tw-mb-1 text-lowercase"
+        class="btn btn-outline-primary tw-mb-1 tw-lowercase"
         href="{{ path('Torrents@index', ['q' => mb_strtolower($tag)]) }}"
       >#{{ $tag }}</a>
     @endforeach
@@ -58,15 +58,15 @@
   </div>
   @foreach ($related_torrents as $row)
     @php ($category = TorrentCategoryHelper::find($row->category_id))
-    <div class="d-flex flex-wrap flex-md-nowrap justify-content-center justify-content-md-start torrents-list-container font-smooth js-torrents-views-observer" data-id="{{ $row->id }}">
-      <div class="flex-shrink-0 torrents-list-icon torrent-icon order-1 order-md-0" title="{{ $category['title'] }}">
+    <div class="tw-flex tw-flex-wrap md:tw-flex-no-wrap tw-justify-center md:tw-justify-start torrents-list-container tw-antialiased js-torrents-views-observer" data-id="{{ $row->id }}">
+      <div class="tw-flex-shrink-0 torrents-list-icon torrent-icon order-1 order-md-0" title="{{ $category['title'] }}">
         @php ($icon = $category['icon'] ?? 'file-text-o')
         @svg ($icon)
       </div>
-      <a class="flex-grow-1 tw-mb-2 md:tw-mb-0 md:tw-mr-4 visited" href="{{ $row->www() }}">
+      <a class="tw-flex-grow tw-mb-2 md:tw-mb-0 md:tw-mr-4 visited" href="{{ $row->www() }}">
         <torrent-title title="{{ $row->title }}" hide_brackets="{{ optional(Auth::user())->torrent_short_title ? 1 : '' }}"></torrent-title>
       </a>
-      <a class="flex-shrink-0 tw-pr-2 torrents-list-magnet tw-text-center md:tw-text-left tw-whitespace-no-wrap js-magnet"
+      <a class="tw-flex-shrink-0 tw-pr-2 torrents-list-magnet tw-text-center md:tw-text-left tw-whitespace-no-wrap js-magnet"
          href="{{ $row->magnet() }}"
          title="{{ trans('torrents.download') }}"
          data-action="{{ path('Torrents@magnet', $row) }}"
@@ -74,7 +74,7 @@
         @svg (magnet)
         <span class="js-magnet-counter">{{ $row->clicks > 0 ? $row->clicks : '' }}</span>
       </a>
-      <div class="flex-shrink-0 tw-text-center md:tw-text-left tw-whitespace-no-wrap torrents-list-size">{{ ViewHelper::size($row->size) }}</div>
+      <div class="tw-flex-shrink-0 tw-text-center md:tw-text-left tw-whitespace-no-wrap torrents-list-size">{{ ViewHelper::size($row->size) }}</div>
     </div>
   @endforeach
 @endif

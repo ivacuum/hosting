@@ -67,22 +67,22 @@ export default {
 
 <template>
 <div>
-  <div class="d-flex">
-    <aside class="d-none d-lg-block flex-shrink-0 font-smooth torrent-categories" style="width: 14rem;">
+  <div class="tw-flex">
+    <aside class="tw-hidden lg:tw-block tw-flex-shrink-0 tw-antialiased torrent-categories" style="width: 14rem;">
       <category-tree/>
-      <div class="alert alert-info tw-mr-6 tw-mt-6 p-2 small" v-if="guest">
+      <div class="alert alert-info tw-mr-6 tw-mt-6 tw-p-2 small" v-if="guest">
         <a class="link" href="/auth/login?goto=/torrents">Пользователям</a>
         доступны чат и добавление раздач
       </div>
     </aside>
-    <div class="flex-grow-1" v-if="loaded">
+    <div class="tw-flex-grow" v-if="loaded">
       <chat v-if="!guest && !$route.query.q"/>
 
       <div v-if="$route.query.q">
         <div class="h3">Результаты поиска по запросу «{{ $route.query.q }}»</div>
         <div class="tw-mb-6" v-if="$route.query.fulltext">
           <router-link class="btn btn-default" active-class="noop-active" :to="searchUrl($route.query.q)">
-            <span class="text-danger" v-html="$root.svg.times"></span>
+            <span class="tw-text-red-600" v-html="$root.svg.times"></span>
             Искать только в заголовках
           </router-link>
         </div>

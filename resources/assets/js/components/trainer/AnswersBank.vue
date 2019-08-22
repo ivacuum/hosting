@@ -31,7 +31,7 @@ export default {
 </script>
 
 <template>
-<div class="d-flex flex-wrap tw-mb-4 text-success">
+<div class="tw-flex tw-flex-wrap tw-mb-4 tw-text-green-600">
   <template v-for="answer in answers">
     <span class="tw-mr-4" :class="{ 'bank-used': answer.used }">{{ answer.key }}</span>
   </template>

@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<h1 class="h3">{{ trans('my.mail_subscriptions') }}</h1>
+<h1 class="tw-text-2xl">{{ trans('my.mail_subscriptions') }}</h1>
 <div class="life-text">
   @ru
     <p>Хотите узнавать о новых историях о путешествиях, отчетах о посещенных концертах и новостях сайта сразу после их публикации? Тогда подпишитесь на уведомления с помощью формы ниже.</p>
@@ -35,7 +35,7 @@
       <span class="form-check-label">{{ trans('my.notify_gigs') }}</span>
     </label>
     @if ($errors->has('gigs'))
-      <div class="invalid-feedback d-block tw-mb-2">{{ $errors->first('gigs') }}</div>
+      <div class="invalid-feedback tw-block tw-mb-2">{{ $errors->first('gigs') }}</div>
     @endif
 
     <input type="hidden" name="news" value="{{ App\User::NOTIFY_NO }}">
@@ -50,7 +50,7 @@
       <span class="form-check-label">{{ trans('my.notify_news') }}</span>
     </label>
     @if ($errors->has('news'))
-      <div class="invalid-feedback d-block tw-mb-2">{{ $errors->first('news') }}</div>
+      <div class="invalid-feedback tw-block tw-mb-2">{{ $errors->first('news') }}</div>
     @endif
 
     <div class="form-group">
@@ -66,11 +66,11 @@
         <span class="form-check-label">{{ trans('my.notify_trips') }}</span>
       </label>
       @if ($errors->has('trips'))
-        <div class="invalid-feedback d-block tw-mb-2">{{ $errors->first('trips') }}</div>
+        <div class="invalid-feedback tw-block tw-mb-2">{{ $errors->first('trips') }}</div>
       @endif
     </div>
 
-    <button class="btn btn-primary text-capitalize">
+    <button class="btn btn-primary tw-capitalize">
       {{ trans('mail.subscribe') }}
     </button>
 

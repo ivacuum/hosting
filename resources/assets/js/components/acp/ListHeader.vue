@@ -40,7 +40,7 @@ export default {
 
 <template>
 <div>
-  <div class="d-flex align-items-center flex-wrap tw-mb-2 mt-n2">
+  <div class="tw-flex tw-items-center tw-flex-wrap tw-mb-2 tw--mt-2">
     <h3 class="tw-mb-1 tw-mr-4">
       {{ $t(`${plural}.index`) }}
       <small class="text-muted tw-whitespace-no-wrap">{{ meta.total }}</small>

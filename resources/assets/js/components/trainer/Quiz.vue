@@ -35,7 +35,7 @@ export default {
   },
 
   <h3 class="tw-mt-12">Component</h3>
-  <div class="text-center">{{ mission }}</div>
+  <div class="tw-text-center">{{ mission }}</div>
   <div v-for="task in compiledTasks">
     <component :is="task"></component>
   </div>
@@ -91,7 +91,7 @@ export default {
 
     <exercise n="12">
       <template slot="title">Put the verbs in brackets into Present Simple or Present Continuous.</template>
-      <p class="text-success">Chris is asking Kim about her holiday arrangements.</p>
+      <p class="tw-text-green-600">Chris is asking Kim about her holiday arrangements.</p>
       <ol class="spacious">
         <li>Where <type1 answer="are" answered/> you <type1 answer="going" answered/> ? <em>(go)</em></li>
         <li>How <type1 answer="are"/> you <type1 answer="getting"/> there? <em>(get)</em></li>

@@ -2,7 +2,7 @@
 <div>
   <div class="tw-mb-4" v-if="errors.file && errors.file.length">
     <div v-for="error in errors.file">
-      <div class="text-danger">{{ error }}</div>
+      <div class="tw-text-red-600">{{ error }}</div>
     </div>
   </div>
   <div v-if="!uploading">
@@ -38,7 +38,7 @@
     </div>
     <div v-for="file in files">
       <div class="row tw-mt-4">
-        <div class="col-md-2 text-center tw-mt-2 tw-mb-4">
+        <div class="col-md-2 tw-text-center tw-mt-2 tw-mb-4">
           <img class="screenshot" :src="file.thumbnail">
         </div>
         <div class="col-md-6">

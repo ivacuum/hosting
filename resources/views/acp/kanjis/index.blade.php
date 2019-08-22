@@ -42,8 +42,8 @@
         {{ $model->level }}
       </td>
       <td>
-        <a class="bg-kanji d-block tw-font-bold tw-pb-1 tw-px-2 rounded tw-text-center text-white" href="{{ path("$self@show", $model) }}">
-          <span class="d-inline-block ja-big ja-character ja-shadow">{{ $model->character }}</span>
+        <a class="bg-kanji tw-block tw-font-bold tw-pb-1 tw-px-2 rounded tw-text-center tw-text-white hover:tw-text-gray-400" href="{{ path("$self@show", $model) }}">
+          <span class="tw-inline-block ja-big ja-character ja-shadow">{{ $model->character }}</span>
         </a>
       </td>
       <td class="pre-line">{{ implode("\n", explode(', ', $model->meaning)) }}</td>

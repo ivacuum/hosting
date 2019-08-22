@@ -35,14 +35,14 @@
 
   <div class="tw-mb-4">
     <div class="tw-container">
-      <div class="mobile-wide">
+      <div class="tw-mobile-wide">
         @include('tpl.google-horizontal')
       </div>
     </div>
   </div>
 
   @if (!empty($software_screenshots))
-    <section class="bg-dark tw-my-0 tw-py-12 text-light">
+    <section class="bg-dark tw-my-0 tw-py-12 tw-text-gray-200">
       <div class="tw-container">
         <h2 class="tw-mb-6">{{ trans('dcpp.screenshots') }}</h2>
         <p>
@@ -129,7 +129,7 @@
             hide-title
           ></feedback-form>
         </div>
-        <div class="col-md-6 col-lg-4 col-xl-3 tw-mt-0 md:tw-mt-4">
+        <div class="col-md-6 col-lg-4 col-xl-3 tw-mt-4 md:tw-mt-0">
           @include('tpl.google-vertical')
         </div>
       </div>

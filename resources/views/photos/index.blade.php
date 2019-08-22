@@ -1,7 +1,7 @@
 @extends('photos.base')
 
 @section('content')
-<div class="d-flex flex-wrap mobile-wide">
+<div class="tw-flex tw-flex-wrap tw-mobile-wide">
   @foreach ($photos as $photo)
     <div class="flex-basis-100 flex-sm-basis-50 flex-lg-basis-33 tw-mx-auto md:tw-mx-0">
       <a href="{{ $photo->www() }}">

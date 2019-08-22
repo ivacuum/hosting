@@ -10,7 +10,7 @@
 @section('content')
 <h1 class="h2">Понравившиеся книги</h1>
 
-<div class="d-flex tw-mb-2">
+<div class="tw-flex tw-mb-2">
   <div>
     <div class="tw-font-bold travel-year">2014</div>
   </div>
@@ -19,7 +19,7 @@
   </div>
 </div>
 
-<div class="d-flex tw-mb-2">
+<div class="tw-flex tw-mb-2">
   <div>
     <div class="tw-font-bold travel-year">2013</div>
   </div>

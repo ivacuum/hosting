@@ -18,11 +18,11 @@ export default {
 </script>
 
 <template>
-<div class="font-smooth">
-  <div class="d-lg-flex flex-row-reverse align-items-center justify-content-between mt-n1 mt-lg-n2 tw-mb-4">
+<div class="tw-antialiased">
+  <div class="lg:tw-flex tw-flex-row-reverse tw-items-center tw-justify-between tw--mt-1 lg:tw--mt-2 tw-mb-4">
     <the-search/>
 
-    <div class="tw-mr-4 text-center" v-if="magnet.magnet">
+    <div class="tw-mr-4 tw-text-center" v-if="magnet.magnet">
       <a class="btn btn-success js-magnet" :href="magnet.magnet" @click="download(magnet)">
         <span class="tw-mr-1" v-html="$root.svg.magnet"></span>
         {{ $t('torrents.download') }}

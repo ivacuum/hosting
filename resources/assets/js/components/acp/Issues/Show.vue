@@ -77,22 +77,22 @@ export default {
 <div v-if="resource">
   <div>
     <div v-if="status === 1">
-      <span class="text-danger" v-html="$root.svg.issue_opened"></span>
+      <span class="tw-text-red-600" v-html="$root.svg.issue_opened"></span>
       Открыто
       <button class="btn btn-sm btn-default" type="button" @click="close">
         Закрыть
       </button>
     </div>
     <div v-if="status === 2">
-      <span class="text-success" v-html="$root.svg.check"></span>
+      <span class="tw-text-green-600" v-html="$root.svg.check"></span>
       Закрыто
       <button class="btn btn-sm btn-default" type="button" @click="open">
         Открыть
       </button>
     </div>
   </div>
-  <div class="d-flex">
-    <div class="bg-light border tw-mt-2 p-2 rounded">
+  <div class="tw-flex">
+    <div class="bg-light border tw-mt-2 tw-p-2 rounded">
       <div class="text-muted">{{ resource.email }}</div>
       <div><a :href="resource.page">{{ resource.page }}</a></div>
     </div>

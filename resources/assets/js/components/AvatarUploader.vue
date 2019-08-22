@@ -5,7 +5,7 @@
   </div>
   <div class="tw-mb-4" v-if="errors.file && errors.file.length">
     <div v-for="error in errors.file">
-      <div class="text-danger">{{ error }}</div>
+      <div class="tw-text-red-600">{{ error }}</div>
     </div>
   </div>
   <div v-if="!uploading">

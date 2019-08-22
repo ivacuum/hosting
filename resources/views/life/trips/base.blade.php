@@ -7,7 +7,7 @@
 @section('content_header')
 @parent
 @include('tpl.city-timeline')
-<div class="d-flex flex-wrap tw-items-center tw-mb-2">
+<div class="tw-flex tw-flex-wrap tw-items-center tw-mb-2">
   <img class="flag-24 flag-shadow tw-mr-2" src="{{ $trip->city->country->flagUrl() }}">
   <h1 class="h2 tw-mb-1 tw-mr-2">{{ $trip->title }}</h1>
   @include('tpl.city-map-button', ['city' => $trip->city])
@@ -50,7 +50,7 @@
 @else
   <div class="alert alert-info tw-mt-6">
     <div class="tw-mb-2">{{ trans('life.newsletter.description') }}</div>
-    <div class="d-flex">
+    <div class="tw-flex">
       <a class="btn btn-default btn-sm svg-flex svg-label font-small-caps tw-mr-4" href="{{ path('Subscriptions@edit', ['trips' => 1]) }}">
         @svg (mail)
         {{ trans('mail.subscribe') }}

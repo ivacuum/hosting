@@ -6,10 +6,10 @@
   <div class="col-md-4 tw-mb-2">
     <div class="bg-radical rounded">
       <a
-        class="d-block ja-shadow-light tw-py-6 text-white"
+        class="tw-block ja-shadow-light tw-py-6 tw-text-white hover:tw-text-gray-300"
         href="{{ path('JapaneseWanikaniRadicals@index') }}"
       >
-        <span class="d-block f36">部首</span>
+        <span class="tw-block f36">部首</span>
         {{ trans('japanese.radicals') }}
       </a>
     </div>
@@ -17,10 +17,10 @@
   <div class="col-md-4 tw-mb-2">
     <div class="bg-kanji rounded">
       <a
-        class="d-block ja-shadow-light tw-py-6 text-white"
+        class="tw-block ja-shadow-light tw-py-6 tw-text-white hover:tw-text-gray-300"
         href="{{ path('JapaneseWanikaniKanji@index') }}"
       >
-        <span class="d-block f36">漢字</span>
+        <span class="tw-block f36">漢字</span>
         {{ trans('japanese.kanji') }}
       </a>
     </div>
@@ -28,10 +28,10 @@
   <div class="col-md-4 tw-mb-2">
     <div class="bg-vocab rounded">
       <a
-        class="d-block ja-shadow-light tw-py-6 text-white"
+        class="tw-block ja-shadow-light tw-py-6 tw-text-white hover:tw-text-gray-300"
         href="{{ path('JapaneseWanikaniVocabulary@index') }}"
       >
-        <span class="d-block f36">単語</span>
+        <span class="tw-block f36">単語</span>
         {{ trans('japanese.vocabulary') }}
       </a>
     </div>
@@ -44,7 +44,7 @@
 @endru
 
 <h3 class="tw-mt-6">{{ trans('japanese.by-levels') }}</h3>
-<div class="d-flex flex-wrap tw-items-center">
+<div class="tw-flex tw-flex-wrap tw-items-center">
   @foreach (range(1, 60) as $level)
     <a class="badge badge-secondary f18 ja-shadow-light tw-mr-2 tw-mb-2" href="{{ path('JapaneseWanikaniLevel@show', $level) }}">
       {{ $level }}

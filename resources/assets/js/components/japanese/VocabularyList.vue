@@ -18,7 +18,7 @@
             v-if="!guest"
           >{{ toggleBurnedText }}</button>
         </p>
-        <div class="d-flex flex-wrap align-items-center" v-if="Object.keys(filteredElements).length > 1">
+        <div class="tw-flex tw-flex-wrap tw-items-center" v-if="Object.keys(filteredElements).length > 1">
           <template v-for="(collection, lvl) in filteredElements">
             <a class="badge badge-secondary f16 ja-shadow-light tw-mr-1 tw-mb-1" :href="`#level-${lvl}`">
               {{ lvl }}
@@ -28,10 +28,10 @@
       </div>
       <template v-for="(collection, lvl) in filteredElements">
         <a :name="`level-${lvl}`"></a>
-        <div class="d-sm-flex align-items-center justify-content-between tw-mt-6 tw-mb-1">
+        <div class="sm:tw-flex tw-items-center tw-justify-between tw-mt-6 tw-mb-1">
           <h3>
             <span>{{ titleLabel(lvl) }}</span>
-            <small class="text-muted">{{ collection.length }}</small>
+            <span class="tw-text-base tw-text-gray-600">{{ collection.length }}</span>
           </h3>
           <div>
             <button
@@ -51,24 +51,24 @@
             >{{ toggleBurnedText }}</button>
           </div>
         </div>
-        <div class="f20 text-center text-md-left vocab-grid">
+        <div class="f20 tw-text-center md:tw-text-left vocab-grid">
           <template v-for="row in collection">
             <div>
               <router-link
-                class="bg-vocab d-inline-block f36 ja-character ja-shadow-light px-2 py-1 rounded tw-whitespace-no-wrap text-white"
+                class="bg-vocab tw-inline-block f36 ja-character ja-shadow-light tw-px-2 tw-py-1 rounded tw-whitespace-no-wrap tw-text-white hover:tw-text-gray-400"
                 :class="{ 'bg-burned': row.burned }"
                 :to="{ name: 'wk.vocabulary', params: { characters: row.character }}"
               >{{ row.character }}</router-link>
             </div>
             <a
-              class="tw-my-4 my-md-0 pl-md-3 pr-md-2 py-md-1"
+              class="tw-my-4 md:tw-my-0 md:tw-pl-4 md:tw-pr-2 md:tw-py-1"
               :class="{ invisible: labels }"
               href="#"
               @click.prevent="reveal(row.id)"
             >？</a>
             <div
               class="text-muted"
-              :class="{ invisible: !labels && !revealed.includes(row.id), 'tw-mt-4 mt-md-0': labels }"
+              :class="{ invisible: !labels && !revealed.includes(row.id), 'tw-mt-4 md:tw-mt-0': labels }"
               :id="`kana-${row.id}`"
             >
               <div class="ja-character tw-whitespace-no-wrap" v-for="kana in row.kana.split(', ')">
@@ -76,11 +76,11 @@
               </div>
             </div>
             <div
-              :class="{ invisible: !labels && !revealed.includes(row.id), 'tw-mb-6 mb-md-0': row.burned || guest }"
+              :class="{ invisible: !labels && !revealed.includes(row.id), 'tw-mb-6 md:tw-mb-0': row.burned || guest }"
               :id="`meaning-${row.id}`"
             >{{ row.meaning }}</div>
             <a
-              class="tw-mb-6 mb-md-0 px-md-2 py-md-1 text-danger"
+              class="tw-mb-6 md:tw-mb-0 md:tw-px-2 md:tw-py-1 tw-text-red-600"
               :class="{ invisible: row.burned || guest || (!labels && !revealed.includes(row.id)) }"
               href="#"
               @click.prevent="burn(lvl, row.id)"

@@ -82,7 +82,7 @@ body {
 <div class="container-fluid wrapper">
   <div class="row">
     <div class="col-md-8 tw-mb-6 sm:tw-mb-0">
-      <div class="d-sm-flex tw-mb-6">
+      <div class="sm:tw-flex tw-mb-6">
         <div class="tw-mb-2 sm:tw-mb-0">
           <img class="my-picture tw-mr-4 tw-p-1" src="https://life.ivacuum.org/me.jpg" width="160" height="160">
         </div>
@@ -133,43 +133,43 @@ body {
     </div>
     <div class="col-md-4">
       <h3 class="my-caption h5 tw-uppercase">@ru Контактная информация @en Contacts @endru</h3>
-      <div class="d-flex justify-content-between">
+      <div class="tw-flex tw-justify-between">
         <div>@ru Телефон @en Phone @endru</div>
         <div><a href="tel:+79105141181">+7 910 514-1181</a></div>
       </div>
-      <div class="d-flex justify-content-between">
+      <div class="tw-flex tw-justify-between">
         <div>@ru Электропочта @en E-mail @endru</div>
         <div><a href="mailto:me@ivacuum.ru">me@ivacuum.ru</a></div>
       </div>
-      <div class="d-flex justify-content-between">
+      <div class="tw-flex tw-justify-between">
         <div>@ru Веб-сайт @en Website @endru</div>
         <div><a href="/">vacuum.name</a></div>
       </div>
 
       <h3 class="my-caption h5 tw-mt-6 tw-uppercase">@ru Личная информация @en Personal info @endru</h3>
-      <div class="d-flex justify-content-between">
+      <div class="tw-flex tw-justify-between">
         <div>@ru Возраст @en Age @endru</div>
         <div>{{ Illuminate\Support\Carbon::createFromDate(1989, 7, 13)->diffForHumans(null, true) }} @ru @en old @endru</div>
       </div>
-      <div class="d-flex justify-content-between">
+      <div class="tw-flex tw-justify-between">
         <div>@ru Гражданство @en Nationality @endru</div>
         <div>@ru Россия @en Russian @endru</div>
       </div>
-      <div class="d-flex justify-content-between">
+      <div class="tw-flex tw-justify-between">
         <div>@ru Проживание @en Based in @endru</div>
         <div>@ru Калуга @en Kaluga @endru</div>
       </div>
-      <div class="d-flex justify-content-between">
+      <div class="tw-flex tw-justify-between">
         <div>@ru Семейное положение @en Marital status @endru</div>
         <div>@ru Не женат @en Single @endru</div>
       </div>
-      <div class="d-flex justify-content-between">
+      <div class="tw-flex tw-justify-between">
         <div>@ru Дети @en Children @endru</div>
         <div>@ru Нет @en No @endru</div>
       </div>
 
       <h3 class="my-caption h5 tw-mt-6 tw-uppercase">@ru В сети @en Online @endru</h3>
-      <div class="d-flex flex-column">
+      <div class="tw-flex tw-flex-col">
         <a href="https://github.com/ivacuum" rel="nofollow">Github</a>
         {{--<a href="skype:knifevacuum?call" rel="nofollow">Skype</a>--}}
         <a href="https://t.me/vacuum" rel="nofollow">Telegram</a>
@@ -388,11 +388,11 @@ body {
 
   <ul class="list-unstyled">
     <li class="tw-mb-1">
-      <span class="text-warning">@svg (star)</span>
+      <span class="tw-text-orange-400">@svg (star)</span>
       @ru любимый проект @en favorite project @endru
     </li>
     <li class="tw-mb-1">
-      <span class="text-success">@svg (primitive-dot)</span>
+      <span class="tw-text-green-600">@svg (primitive-dot)</span>
       @ru проект жив и здоров @en project is up and running @endru
     </li>
     <li class="tw-mb-1">
@@ -408,8 +408,8 @@ body {
   <div class="h4 portfolio-year">@ru В настоящее время @en Present @endru</div>
   <div>
     <div class="h5">
-      <span class="text-warning">@svg (star)</span>
-      <span class="text-success">@svg (primitive-dot)</span>
+      <span class="tw-text-orange-400">@svg (star)</span>
+      <span class="tw-text-green-600">@svg (primitive-dot)</span>
       <a href="https://kupislona.ru/" rel="nofollow">kupislona.ru</a>
     </div>
     <div class="tw-my-2 svg-muted text-muted">
@@ -538,8 +538,8 @@ body {
     </ul>
 
     <div class="h5 tw-mt-6">
-      <span class="text-warning">@svg (star)</span>
-      <span class="text-success">@svg (primitive-dot)</span>
+      <span class="tw-text-orange-400">@svg (star)</span>
+      <span class="tw-text-green-600">@svg (primitive-dot)</span>
       <a href="/">vacuum.name</a>
       <a href="https://github.com/ivacuum/hosting" rel="nofollow">@svg (github)</a>
     </div>
@@ -557,7 +557,7 @@ body {
   <div class="h4 portfolio-year">2014</div>
   <div>
     <div class="h5">
-      <span class="text-success">@svg (primitive-dot)</span>
+      <span class="tw-text-green-600">@svg (primitive-dot)</span>
       <a href="http://www.veloman.org/" rel="nofollow">veloman.org</a>
     </div>
     @ru
@@ -607,7 +607,7 @@ body {
   <div class="h4 portfolio-year">2011</div>
   <div>
     <div class="h5">
-      <span class="text-success">@svg (primitive-dot)</span>
+      <span class="tw-text-green-600">@svg (primitive-dot)</span>
       <a href="https://korden.org" rel="nofollow">korden.org</a>
     </div>
     @ru
@@ -618,7 +618,7 @@ body {
   <div class="h4 portfolio-year">2010</div>
   <div>
     <div class="h5">
-      <span class="text-success">@svg (primitive-dot)</span>
+      <span class="tw-text-green-600">@svg (primitive-dot)</span>
       BTT
       <a href="https://github.com/ivacuum/btt" rel="nofollow">@svg (github)</a>
     </div>
@@ -627,7 +627,7 @@ body {
     @endru
 
     <div class="h5 tw-mt-6">
-      <span class="text-success">@svg (primitive-dot)</span>
+      <span class="tw-text-green-600">@svg (primitive-dot)</span>
       <a href="/retracker">BTRT</a>
       <a href="https://github.com/ivacuum/btrt" rel="nofollow">@svg (github)</a>
     </div>
@@ -636,7 +636,7 @@ body {
     @endru
 
     <div class="h5 tw-mt-6">
-      <span class="text-success">@svg (primitive-dot)</span>
+      <span class="tw-text-green-600">@svg (primitive-dot)</span>
       <a href="http://t.ivacuum.ru/">torrent.ivacuum.ru</a>
       <a href="https://github.com/ivacuum/t.ivacuum.ru" rel="nofollow">@svg (github)</a>
     </div>
@@ -666,7 +666,7 @@ body {
     @endru
 
     <div class="h5 tw-mt-6">
-      <span class="text-success">@svg (primitive-dot)</span>
+      <span class="tw-text-green-600">@svg (primitive-dot)</span>
       <a href="https://img.ivacuum.ru/stats">img.ivacuum.ru</a>
       <a href="https://github.com/ivacuum/imageviewer" rel="nofollow">@svg (github)</a>
     </div>
@@ -675,7 +675,7 @@ body {
     @endru
 
     <div class="h5 tw-mt-6">
-      <span class="text-success">@svg (primitive-dot)</span>
+      <span class="tw-text-green-600">@svg (primitive-dot)</span>
       <a href="/gallery">up.ivacuum.ru</a>
     </div>
     @ru
@@ -709,7 +709,7 @@ body {
     @endru
 
     <div class="h5 tw-mt-6">
-      <span class="text-success">@svg (primitive-dot)</span>
+      <span class="tw-text-green-600">@svg (primitive-dot)</span>
       <a href="/dc">dc.ivacuum.ru</a>
     </div>
     @ru
@@ -717,7 +717,7 @@ body {
     @endru
 
     <div class="h5 tw-mt-6">
-      <span class="text-success">@svg (primitive-dot)</span>
+      <span class="tw-text-green-600">@svg (primitive-dot)</span>
       <a href="/files">dl.ivacuum.ru</a>
     </div>
     @ru
@@ -751,7 +751,7 @@ body {
   <div class="h4 portfolio-year">2003</div>
   <div>
     <div class="h5">
-      <span class="text-success">@svg (primitive-dot)</span>
+      <span class="tw-text-green-600">@svg (primitive-dot)</span>
       <a href="/">ivacuum.ru</a>
       <a href="https://github.com/ivacuum/hosting" rel="nofollow">@svg (github)</a>
     </div>

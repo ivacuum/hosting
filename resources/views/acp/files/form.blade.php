@@ -17,7 +17,7 @@
       <label class="custom-file-label">Выберите файл...</label>
     </div>
     @if ($errors->has('file'))
-      <div class="invalid-feedback d-block">{{ $errors->first('file') }}</div>
+      <div class="invalid-feedback tw-block">{{ $errors->first('file') }}</div>
     @endif
     <div class="form-help">Не более 100 МБ</div>
   </div>

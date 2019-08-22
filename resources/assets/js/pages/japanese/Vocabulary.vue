@@ -49,16 +49,16 @@ export default {
 
 <template>
 <div>
-  <div class="align-items-center d-flex flex-wrap h1">
+  <div class="tw-items-center tw-flex tw-flex-wrap h1">
     <router-link
-      class="bg-secondary ja-shadow-light tw-mr-2 px-3 py-1 rounded text-white"
+      class="bg-secondary ja-shadow-light tw-mr-2 tw-px-4 tw-py-1 rounded tw-text-white hover:tw-text-white"
       :to="{ name: 'wk.level', params: { level: vocab.level }}"
     >{{ vocab.level }}</router-link>
-    <div class="bg-vocab ja-shadow-light tw-mr-4 px-2 py-1 rounded text-white">{{ vocab.character }}</div>
-    <div class="f24 text-capitalize">{{ vocab.meaning }}</div>
+    <div class="bg-vocab ja-shadow-light tw-mr-4 tw-px-2 tw-py-1 rounded tw-text-white">{{ vocab.character }}</div>
+    <div class="f24 tw-capitalize">{{ vocab.meaning }}</div>
   </div>
 
-  <div class="align-items-center d-flex flex-wrap">
+  <div class="tw-items-center tw-flex tw-flex-wrap">
     <span class="text-muted">{{ $t('japanese.reading') }}</span>
     <span class="f20">【{{ vocab.kana }}】</span>
     <div v-if="vocab.audio">

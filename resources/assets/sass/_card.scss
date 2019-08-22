@@ -2,17 +2,3 @@
 .card-body p:last-child,
 .card-body ol:last-child,
 .card-body ul:last-child { margin-bottom: 0; }
-
-.card-mobile-wide {
-  @include mobile-wide;
-
-  border-radius: 0;
-  border-left-width: 0;
-  border-right-width: 0;
-
-  @include media-breakpoint-up(md) {
-    border-radius: $border-radius;
-    border-left-width: $card-border-width;
-    border-right-width: $card-border-width;
-  }
-}

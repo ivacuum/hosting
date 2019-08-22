@@ -48,7 +48,7 @@
   </div>
 </div>
 @ru
-  <div class="nav-item d-none d-md-block">
+  <div class="nav-item tw-hidden md:tw-block">
     <a class="btn btn-success btn-sm" href="{{ path('Torrents@index') }}">
       {{ trans('torrents.index') }}
     </a>

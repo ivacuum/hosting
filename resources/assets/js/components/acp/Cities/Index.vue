@@ -26,12 +26,12 @@ export default {
       </th>
       <th>{{ modelFieldTrans('slug') }}</th>
       <th>{{ modelFieldTrans('iata') }}</th>
-      <th class="text-md-right tw-whitespace-no-wrap">
+      <th class="md:tw-text-right tw-whitespace-no-wrap">
         <sortable-header field="trips_count">
           {{ modelFieldTrans('trips_count') }}
         </sortable-header>
       </th>
-      <th class="text-md-right tw-whitespace-no-wrap">
+      <th class="md:tw-text-right tw-whitespace-no-wrap">
         <sortable-header field="views">
           <span v-html="$root.svg.eye"></span>
         </sortable-header>
@@ -47,7 +47,7 @@ export default {
       >
         <td class="tooltipped tooltipped-n" :aria-label="resource.country.title">
           <router-link :to="resource.country.show_url">
-            <img class="d-block flag-16 flag-shadow" :src="resource.country.flag_url">
+            <img class="tw-block flag-16 flag-shadow" :src="resource.country.flag_url">
           </router-link>
         </td>
         <td>
@@ -63,12 +63,12 @@ export default {
         <td class="text-muted">
           {{ resource.iata }}
         </td>
-        <td class="text-md-right tw-whitespace-no-wrap">
+        <td class="md:tw-text-right tw-whitespace-no-wrap">
           <router-link :to="resource.trips_url">
             {{ resource.trips_count | decimal }}
           </router-link>
         </td>
-        <td class="text-md-right tw-whitespace-no-wrap">
+        <td class="md:tw-text-right tw-whitespace-no-wrap">
           {{ resource.views | decimal }}
         </td>
         <td>

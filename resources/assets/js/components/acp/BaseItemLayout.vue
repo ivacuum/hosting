@@ -13,7 +13,7 @@ export default {
 <div v-if="resource">
   <div class="row">
     <div class="col-lg-3">
-      <div class="list-group text-center">
+      <div class="list-group tw-text-center">
         <router-link
           class="list-group-item list-group-item-action"
           :to="resource.show_url"
@@ -53,7 +53,7 @@ export default {
     </div>
     <div class="col-lg-9">
       <slot name="header">
-        <h2 class="tw-mt-4 mt-lg-0 text-break-word">
+        <h2 class="tw-mt-4 lg:tw-mt-0 text-break-word">
           <a href="back" @click.prevent="$router.go(-1)" v-html="$root.svg.chevron_left"></a>
           <slot>{{ resource.breadcrumb }}</slot>
           <slot name="append">

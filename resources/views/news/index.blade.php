@@ -5,7 +5,7 @@
 @endpush
 
 @section('content')
-<div class="d-flex flex-wrap tw-items-center font-smooth tw-mb-6">
+<div class="tw-flex tw-flex-wrap tw-items-center tw-antialiased tw-mb-6">
   <h1 class="h2 tw-mb-1 tw-mr-4">{{ trans('news.index') }}</h1>
   @if (Auth::check())
     <form class="tw-mr-4" action="{{ path('Subscriptions@update') }}" method="post">
@@ -36,7 +36,7 @@
         <article itemscope itemtype="http://schema.org/BlogPosting">
           <header>
             <h3 itemprop="headline"><a class="link" href="{{ $model->www() }}" itemprop="url">{{ $model->title }}</a></h3>
-            <div class="svg-labels svg-muted text-muted f14 tw-mb-4">
+            <div class="svg-labels svg-muted tw-text-gray-600 tw-text-sm tw-mb-4">
               <span class="svg-flex svg-label">
                 @svg (calendar-o)
                 <time itemprop="datePublished" datetime="{{ $model->created_at->toDateString() }}">
@@ -62,7 +62,7 @@
             </div>
           </header>
           <div class="{{ !$loop->last ? 'tw-mb-12' : '' }}">
-            <div class="d-none d-sm-block life-text markdown-body text-break-word js-news-views-observer" itemprop="articleBody" data-id="{{ $model->id }}">{!! $model->html !!}</div>
+            <div class="tw-hidden sm:tw-block life-text markdown-body text-break-word js-news-views-observer" itemprop="articleBody" data-id="{{ $model->id }}">{!! $model->html !!}</div>
           </div>
         </article>
       @endforeach

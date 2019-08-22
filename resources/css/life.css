@@ -1,0 +1,7 @@
+.pic-container {
+  @apply mb-6 -mx-4;
+
+  @screen sm {
+    @apply mx-0;
+  }
+}

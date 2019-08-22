@@ -20,13 +20,13 @@ $alt = $is_crawler && isset($trip) ? $trip->imgAltText() : '';
           >
           <div class="photo-overlay-buttons">
             <a
-              class="d-flex tw-items-center justify-content-center tw-p-2 photo-overlay-button"
+              class="tw-flex tw-items-center tw-justify-center tw-p-2 photo-overlay-button"
               href="{{ path('Photos@map', ['photo' => $slug ?? $trip->slug.'/'.$pic]) }}"
             >
               @svg (map-marker)
             </a>
             <a
-              class="d-flex tw-items-center justify-content-center tw-p-2 photo-overlay-button"
+              class="tw-flex tw-items-center tw-justify-center tw-p-2 photo-overlay-button"
               href="{{ ViewHelper::pic2x($slug ?? $trip->slug, $pic) }}"
             >
               @svg (link)

@@ -18,7 +18,7 @@ export default {
   <table class="table-stats table-adaptive" v-if="collection.data.length">
     <thead>
     <tr>
-      <th class="text-md-right">#</th>
+      <th class="md:tw-text-right">#</th>
       <th>{{ modelFieldTrans('title') }}</th>
       <th>{{ modelFieldTrans('slug') }}</th>
     </tr>
@@ -29,7 +29,7 @@ export default {
         :key="resource.id"
         @dblclick="$router.push(resource.edit_url)"
       >
-        <td class="text-md-right">{{ addition + i + 1 }}</td>
+        <td class="md:tw-text-right">{{ addition + i + 1 }}</td>
         <td>
           <router-link :to="resource.show_url">
             {{ resource.title }}

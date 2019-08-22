@@ -31,7 +31,7 @@
         </div>
       </div>
       @if ($errors->has('email'))
-        <div class="invalid-feedback d-block">{{ $errors->first('email') }}</div>
+        <div class="invalid-feedback tw-block">{{ $errors->first('email') }}</div>
       @endif
     </div>
   </form>

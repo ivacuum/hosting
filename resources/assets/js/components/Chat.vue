@@ -1,12 +1,12 @@
 <template>
 <div>
-  <div class="chat-container font-smooth rounded" style="font-size: .875rem;">
+  <div class="chat-container tw-antialiased rounded" style="font-size: .875rem;">
     <div v-for="(messagesForDate, date) in messagesGroupedByDate">
-      <div class="chat-date tw-my-1 text-center">
-        <div class="chat-bg d-inline-block mx-auto p-1 rounded">{{ date }}</div>
+      <div class="chat-date tw-my-1 tw-text-center">
+        <div class="chat-bg tw-inline-block tw-mx-auto tw-p-1 rounded">{{ date }}</div>
       </div>
-      <div class="d-flex tw-mt-2" v-for="(message, index) in messagesForDate">
-        <div class="flex-shrink-0" style="width: 2.75rem;">
+      <div class="tw-flex tw-mt-2" v-for="(message, index) in messagesForDate">
+        <div class="tw-flex-shrink-0" style="width: 2.75rem;">
           <div v-if="!sameUser[date][index]">
             <img
               class="rounded-circle"
@@ -15,15 +15,15 @@
               v-if="message.user.avatar"
             >
             <div v-else>
-              <svg class="d-inline-block align-middle" viewBox="0 0 130 130" style="width: 2.25rem; height: 2.25rem;"><rect x="0" y="0" width="100%" height="100%" rx="50%" :fill="message.user.color"></rect><text font-size="59.8" font-family="Helvetica Neue,Helvetica,Arial" x="65" y="65" dy=".38em" letter-spacing="-.05em" text-anchor="middle" fill="#fff">{{ message.user.avatar_text }}</text></svg>
+              <svg class="tw-inline-block align-middle" viewBox="0 0 130 130" style="width: 2.25rem; height: 2.25rem;"><rect x="0" y="0" width="100%" height="100%" rx="50%" :fill="message.user.color"></rect><text font-size="59.8" font-family="Helvetica Neue,Helvetica,Arial" x="65" y="65" dy=".38em" letter-spacing="-.05em" text-anchor="middle" fill="#fff">{{ message.user.avatar_text }}</text></svg>
             </div>
           </div>
         </div>
-        <div class="flex-grow-1">
+        <div class="tw-flex-grow">
           <div class="lh-1" :style="{ color: message.user.color }" v-if="!sameUser[date][index]">{{ message.user.public_name }}</div>
           <div class="text-break-word" v-html="message.html"></div>
         </div>
-        <div class="flex-shrink-0 chat-time text-right small" :title="message.date" style="width: 3rem;">{{ message.time }}</div>
+        <div class="tw-flex-shrink-0 chat-time tw-text-right small" :title="message.date" style="width: 3rem;">{{ message.time }}</div>
       </div>
     </div>
     <!--

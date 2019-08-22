@@ -23,12 +23,12 @@ export default {
           {{ modelFieldTrans('title') }}
         </sortable-header>
       </th>
-      <th class="text-md-right tw-whitespace-no-wrap">
+      <th class="md:tw-text-right tw-whitespace-no-wrap">
         <sortable-header field="views">
           <span v-html="$root.svg.eye"></span>
         </sortable-header>
       </th>
-      <th class="text-md-right tw-whitespace-no-wrap">
+      <th class="md:tw-text-right tw-whitespace-no-wrap">
         <sortable-header field="photos_count">
           <span v-html="$root.svg.picture_o"></span>
         </sortable-header>
@@ -46,10 +46,10 @@ export default {
             {{ resource.title }}
           </router-link>
         </td>
-        <td class="text-md-right tw-whitespace-no-wrap">
+        <td class="md:tw-text-right tw-whitespace-no-wrap">
           {{ resource.views | decimal }}
         </td>
-        <td class="text-md-right tw-whitespace-no-wrap">
+        <td class="md:tw-text-right tw-whitespace-no-wrap">
           <router-link :to="resource.photos_url">
             {{ resource.photos_count | decimal }}
           </router-link>

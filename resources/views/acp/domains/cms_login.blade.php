@@ -1,4 +1,4 @@
-<form class="d-inline" method="post" action="{{ optional($model->alias)->cms_url ?? $model->cms_url }}" target="_blank">
+<form class="tw-inline" method="post" action="{{ optional($model->alias)->cms_url ?? $model->cms_url }}" target="_blank">
   @if (in_array($model->cms_type, ['korden.cms', 'simpla']))
     <input type="hidden" name="login" value="{{ $model->cms_user }}">
     <input type="hidden" name="password" value="{{ $model->cms_pass }}">

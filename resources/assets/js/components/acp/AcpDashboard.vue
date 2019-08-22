@@ -10,7 +10,7 @@ export default {
 <div>
   <div>AcpDashboard Inc.</div>
 
-  <div class="mw-700 mx-auto">
+  <div class="mw-700 tw-mx-auto">
     <quiz/>
   </div>
 </div>

@@ -13,7 +13,7 @@
 <div class="row tw-mt-6">
   <div class="col-md-6">
     <div class="card">
-      <div class="card-header bg-success text-white">
+      <div class="card-header bg-success tw-text-white">
         <h2 class="h4 tw-mb-0">@ru Собственные ресурсы @en Own services @endru</h2>
       </div>
       <div class="card-body">
@@ -35,7 +35,7 @@
   </div>
   <div class="col-md-6">
     <div class="card tw-mt-4 md:tw-mt-0">
-      <div class="card-header bg-dark text-white">
+      <div class="card-header bg-dark tw-text-white">
         <h2 class="h4 tw-mb-0">@ru Внешние полезные ресурсы @en External resources @endru</h2>
       </div>
       <div class="card-body">

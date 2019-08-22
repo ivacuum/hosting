@@ -14,7 +14,7 @@
       </div>
     </div>
     @if ($errors->has('logins'))
-      <div class="invalid-feedback d-block">{{ $errors->first('logins') }}</div>
+      <div class="invalid-feedback tw-block">{{ $errors->first('logins') }}</div>
     @endif
     <div class="form-help">Можно указать несколько ящиков через запятую. Пароли будут назначены автоматически</div>
   </div>
@@ -36,11 +36,11 @@
     @foreach ($mailboxes->accounts as $account)
       <li>
         @if ($account->enabled == 'no')
-          <span class="text-danger"><s>{{ $account->login }}</s></span>
+          <span class="tw-text-red-600"><s>{{ $account->login }}</s></span>
         @elseif ($account->ready == 'yes')
-          <span class="text-success">{{ $account->login }}</span>
+          <span class="tw-text-green-600">{{ $account->login }}</span>
         @else
-          <span class="text-warning">{{ $account->login }}</span>
+          <span class="tw-text-orange-400">{{ $account->login }}</span>
         @endif
         @if ($account->fio)
           &mdash;

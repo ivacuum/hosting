@@ -85,7 +85,7 @@
   @show
   <div class="js-flash-notification">
     @if ($first_time_visit && !Auth::check() && $locale !== $locale_preffered && empty($no_language_selector) && !$is_crawler)
-      <div class="alert alert-warning tw-my-0 tw-px-0 rounded-0">
+      <div class="alert alert-warning tw-my-0 tw-px-0 tw-rounded-none">
         <div class="tw-container">
           <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
           @ru
@@ -97,7 +97,7 @@
       </div>
     @endif
     @if (Session::has('message'))
-      <div class="alert alert-info tw-my-0 tw-px-0 rounded-0">
+      <div class="alert alert-info tw-my-0 tw-px-0 tw-rounded-none">
         <div class="tw-container">
           <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
           {{ Session::get('message') }}
@@ -105,7 +105,7 @@
       </div>
     @endif
     @if ($errors->has('mail'))
-      <div class="alert alert-info tw-my-0 tw-px-0 rounded-0">
+      <div class="alert alert-info tw-my-0 tw-px-0 tw-rounded-none">
         <div class="tw-container">
           {{ $errors->first('mail') }}
         </div>
@@ -151,7 +151,7 @@
                   <div>In English</div>
                 </a>
               @en
-                <a class="d-flex flex-wrap tw-items-center tw-whitespace-no-wrap" href="{{ url($request_uri) }}" lang="ru">
+                <a class="tw-flex tw-flex-wrap tw-items-center tw-whitespace-no-wrap" href="{{ url($request_uri) }}" lang="ru">
                   <div class="tw-mr-1">
                     <svg class="flag-16 flag-shadow" viewBox="0 0 640 480" width="16" height="12">
                       <g fill-rule="evenodd" stroke-width="1pt">

@@ -1,25 +1,25 @@
 @extends('base')
 
 @section('content')
-<div class="tw-mx-auto mw-400">
+<div class="tw-mx-auto tw-max-w-sm">
   <div class="tw-text-center tw-mb-4">
     <h3>{{ trans('auth.signin_title') }}</h3>
 
-    <div class="d-flex justify-content-center tw-my-4">
+    <div class="tw-flex tw-justify-center tw-my-4">
       <div class="tw-mr-2">
-        <a class="btn bg-vk f20 rounded-circle text-white" href="{{ path('Auth\Vk@index') }}">
+        <a class="btn bg-vk f20 rounded-circle tw-text-white hover:tw-text-white" href="{{ path('Auth\Vk@index') }}">
           @svg (vk)
         </a>
         <div class="tw-mt-1 small text-muted">{{ trans('auth.vk') }}</div>
       </div>
       <div class="tw-mr-2">
-        <a class="btn bg-facebook f20 rounded-circle text-white" href="{{ path('Auth\Facebook@index') }}">
+        <a class="btn bg-facebook f20 rounded-circle tw-text-white hover:tw-text-white" href="{{ path('Auth\Facebook@index') }}">
           @svg (facebook)
         </a>
         <div class="tw-mt-1 small text-muted">{{ trans('auth.facebook') }}</div>
       </div>
       <div>
-        <a class="btn bg-google f20 rounded-circle text-white" href="{{ path('Auth\Google@index') }}">
+        <a class="btn bg-google f20 rounded-circle tw-text-white hover:tw-text-white" href="{{ path('Auth\Google@index') }}">
           @svg (google)
         </a>
         <div class="tw-mt-1 small text-muted">{{ trans('auth.google') }}</div>
@@ -45,7 +45,7 @@
       <div class="invalid-feedback">{{ $errors->first('email') }}</div>
     </div>
 
-    <div class="form-group position-relative">
+    <div class="form-group tw-relative">
       <input
         required
         class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
@@ -65,7 +65,7 @@
       <div class="invalid-feedback">{{ $errors->first('password') }}</div>
     </div>
 
-    <div class="d-flex justify-content-between">
+    <div class="tw-flex tw-justify-between">
       <div>
         <label class="form-check">
           <input class="form-check-input" type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}>

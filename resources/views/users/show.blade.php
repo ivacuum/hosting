@@ -7,28 +7,34 @@
       @include('tpl.avatar')
       <h1 class="h3 tw-mt-2">{{ $user->publicName() }}</h1>
     </div>
-    <dl class="dl-table dt-gray tw-mx-auto">
-      <dt>Зарегистрирован</dt>
-      <dd>{{ ViewHelper::dateShort($user->created_at) }}</dd>
-      <dd class="d-table-row"></dd>
-      <dt>Последний вход</dt>
-      <dd>{{ ViewHelper::dateShort($user->last_login_at) }}</dd>
+    <table class="tw-table tw-mx-auto tw-mb-4 tw-break-words">
+      <tr>
+        <td class="tw-text-gray-600 tw-text-right tw-pr-1">Зарегистрирован</td>
+        <td class="tw-pl-1 tw-mb-2">{{ ViewHelper::dateShort($user->created_at) }}</td>
+      </tr>
+      <tr>
+        <td class="tw-text-gray-600 tw-text-right tw-pr-1">Последний вход</td>
+        <td class="tw-pl-1 tw-mb-2">{{ ViewHelper::dateShort($user->last_login_at) }}</td>
+      </tr>
       @if ($user->comments_count)
-        <dd class="d-table-row"></dd>
-        <dt>Комментарии</dt>
-        <dd>{{ ViewHelper::number($user->comments_count) }}</dd>
+        <tr>
+          <td class="tw-text-gray-600 tw-text-right tw-pr-1">Комментарии</td>
+          <td class="tw-pl-1 tw-mb-2">{{ ViewHelper::number($user->comments_count) }}</td>
+        </tr>
       @endif
       @if ($user->images_count)
-        <dd class="d-table-row"></dd>
-        <dt>В галерее</dt>
-        <dd>{{ ViewHelper::plural('photos', $user->images_count) }}</dd>
+        <tr>
+          <td class="tw-text-gray-600 tw-text-right tw-pr-1">В галерее</td>
+          <td class="tw-pl-1 tw-mb-2">{{ ViewHelper::plural('photos', $user->images_count) }}</td>
+        </tr>
       @endif
       @if ($user->torrents_count)
-        <dd class="d-table-row"></dd>
-        <dt>Раздачи</dt>
-        <dd>{{ ViewHelper::number($user->torrents_count) }}</dd>
+        <tr>
+          <td class="tw-text-gray-600 tw-text-right tw-pr-1">Раздачи</td>
+          <td class="tw-pl-1 tw-mb-2">{{ ViewHelper::number($user->torrents_count) }}</td>
+        </tr>
       @endif
-    </dl>
+    </table>
     @if (optional(Auth::user())->id === $user->id)
       <div>
         <a class="btn btn-default btn-block" href="{{ path('MyProfile@edit') }}">{{ trans('my.edit_profile') }}</a>

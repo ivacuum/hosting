@@ -133,7 +133,7 @@
 
   <form class="form-inline tw-mt-4" action="{{ path("$self@setServerNsRecords", $model) }}" method="post">
     @csrf
-    <div class="d-inline-block tw-mr-1">
+    <div class="tw-inline-block tw-mr-1">
       <select class="custom-select" name="server">
         <option value="">-----</option>
         <option>srv1.korden.net</option>

@@ -88,8 +88,8 @@
   </ol>
   <p>
     <a class="btn btn-secondary" href="{{ path('Dcpp@page', 'strongdc') }}">
-      <span class="d-sm-none">Вернуться к StrongDC++</span>
-      <span class="d-none d-sm-inline">Вернуться на страницу клиента StrongDC++</span>
+      <span class="sm:tw-hidden">Вернуться к StrongDC++</span>
+      <span class="tw-hidden sm:tw-inline">Вернуться на страницу клиента StrongDC++</span>
     </a>
   </p>
 @endru

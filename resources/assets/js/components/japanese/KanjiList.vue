@@ -18,7 +18,7 @@
             v-if="!guest"
           >{{ toggleBurnedText }}</button>
         </p>
-        <div class="d-flex flex-wrap align-items-center" v-if="Object.keys(filteredElements).length > 1">
+        <div class="tw-flex tw-flex-wrap tw-items-center" v-if="Object.keys(filteredElements).length > 1">
           <template v-for="(collection, lvl) in filteredElements">
             <a class="badge badge-secondary f16 ja-shadow-light tw-mr-1 tw-mb-1" :href="`#level-${lvl}`">
               {{ lvl }}
@@ -28,10 +28,10 @@
       </div>
       <template v-for="(collection, lvl) in filteredElements">
         <a :name="`level-${lvl}`"></a>
-        <div class="d-sm-flex align-items-center justify-content-between tw-mt-6 tw-mb-1">
+        <div class="sm:tw-flex tw-items-center tw-justify-between tw-mt-6 tw-mb-1">
           <h3>
             <span>{{ titleLabel(lvl) }}</span>
-            <small class="text-muted">{{ collection.length }}</small>
+            <span class="tw-text-base tw-text-gray-600">{{ collection.length }}</span>
           </h3>
           <div>
             <button
@@ -51,18 +51,18 @@
             >{{ toggleBurnedText }}</button>
           </div>
         </div>
-        <div class="font-weight-bold kanji-grid text-center text-white" is="transition-group" name="grid">
-          <div class="bg-kanji pb-2 rounded"
+        <div class="tw-font-bold kanji-grid tw-text-center tw-text-white" is="transition-group" name="grid">
+          <div class="bg-kanji tw-pb-2 rounded"
                :class="{ 'labels-hidden': !labels, 'bg-burned': row.burned }"
                :key="row.id"
                v-for="row in collection"
           >
             <router-link
-              class="d-block ja-big ja-character ja-shadow pt-1 pb-2 text-white"
+              class="tw-block ja-big ja-character ja-shadow tw-pt-1 tw-pb-2 tw-text-white hover:tw-text-gray-400"
               :to="{ name: 'wk.kanji', params: { character: row.character }}"
             >{{ row.character }}</router-link>
             <div class="kanji-reading ja-shadow-light">{{ row.reading }}</div>
-            <div class="kanji-meaning ja-shadow-light text-capitalize">{{ row.first_meaning }}</div>
+            <div class="kanji-meaning ja-shadow-light tw-capitalize">{{ row.first_meaning }}</div>
           </div>
         </div>
       </template>

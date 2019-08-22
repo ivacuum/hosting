@@ -11,7 +11,7 @@ export default {
     },
     classes: {
       type: String,
-      default: 'tw-mt-4 text-center',
+      default: 'tw-mt-4 tw-text-center',
     },
   },
 
@@ -57,7 +57,7 @@ export default {
 
 <template>
 <div :class="classes" v-if="links.next || meta.current_page !== 1">
-  <ul class="pagination pagination-mobile m-0">
+  <ul class="pagination pagination-mobile tw-m-0">
     <li class="page-item disabled" v-if="onFirstPage">
       <span class="page-link" v-html="$root.svg.chevron_left"></span>
     </li>

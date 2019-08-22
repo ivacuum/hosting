@@ -22,7 +22,7 @@
         </label>
       @endforeach
       @if ($errors->has('tags'))
-        <div class="invalid-feedback d-block">{{ $errors->first('tags') }}</div>
+        <div class="invalid-feedback tw-block">{{ $errors->first('tags') }}</div>
       @endif
     </div>
   </div>

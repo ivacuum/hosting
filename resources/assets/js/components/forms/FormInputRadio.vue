@@ -15,7 +15,7 @@ export default {
 
 <template>
 <div class="form-group form-row">
-  <label class="col-md-4 text-md-right" :class="labelClasses">
+  <label class="col-md-4 md:tw-text-right" :class="labelClasses">
     <slot name="label">{{ labelText }}</slot>
   </label>
   <div class="col-md-6">
@@ -37,7 +37,7 @@ export default {
       </label>
     </slot>
     <slot name="feedback">
-      <div class="invalid-feedback d-block" v-if="errors">
+      <div class="invalid-feedback tw-block" v-if="errors">
         <div v-for="error in errors">{{ error }}</div>
       </div>
     </slot>

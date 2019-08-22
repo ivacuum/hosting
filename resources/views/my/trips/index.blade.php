@@ -34,7 +34,7 @@
     <tbody>
     @foreach ($models as $model)
       <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-        <td class="md:tw-text-right"><span class="d-sm-none">#</span>{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
+        <td class="md:tw-text-right"><span class="sm:tw-hidden">#</span>{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
         {{--
         <td><a href="{{ path("$self@show", $model) }}">{{ $model->title }}</a></td>
         --}}

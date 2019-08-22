@@ -1,9 +1,9 @@
-<nav class="bg-light border d-flex flex-wrap flex-column-reverse flex-md-row justify-content-between f14 tw-mt-6 tw-p-2 rounded tw-text-center">
+<nav class="bg-light border tw-flex tw-flex-wrap tw-flex-col-reverse md:tw-flex-row tw-justify-between tw-text-sm tw-mt-6 tw-p-2 rounded tw-text-center">
   @if (isset($previous_trips) && sizeof($previous_trips))
     @foreach ($previous_trips as $previous)
       <div class="{{ !$loop->first ? 'tw-mb-4 md:tw-mb-0' : '' }}">
         <a class="link" href="{{ $previous->www() }}">{{ $previous->title }}</a>
-        <div class="f12 text-muted">
+        <div class="tw-text-xs tw-text-gray-600">
           {{ $previous->year !== $trip->year ? $previous->localizedDate() : $previous->localizedDateWithoutYear() }}
         </div>
       </div>
@@ -11,21 +11,21 @@
   @endif
   <div class="tw-mb-4 md:tw-mb-0">
     @if (isset($previous_trips) && sizeof($previous_trips))
-      <span class="d-none d-md-inline">&larr;</span>
-      <span class="d-md-none">&darr;</span>
+      <span class="tw-hidden md:tw-inline">&larr;</span>
+      <span class="md:tw-hidden">&darr;</span>
     @endif
     <strong>{{ $trip->title }}</strong>
     @if (isset($previous_trips) && sizeof($next_trips))
-      <span class="d-none d-md-inline">&rarr;</span>
-      <span class="d-md-none">&uarr;</span>
+      <span class="tw-hidden md:tw-inline">&rarr;</span>
+      <span class="md:tw-hidden">&uarr;</span>
     @endif
-    <div class="f12 text-muted">{{ $trip->localizedDate() }}</div>
+    <div class="tw-text-xs tw-text-gray-600">{{ $trip->localizedDate() }}</div>
   </div>
   @if (isset($next_trips) && sizeof($next_trips))
     @foreach ($next_trips as $next)
       <div class="tw-mb-4 md:tw-mb-0">
         <a class="link" href="{{ $next->www() }}">{{ $next->title }}</a>
-        <div class="f12 text-muted">
+        <div class="tw-text-xs tw-text-gray-600">
           {{ $next->year !== $trip->year ? $next->localizedDate() : $next->localizedDateWithoutYear() }}
         </div>
       </div>

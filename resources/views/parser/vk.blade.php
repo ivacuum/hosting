@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<form class="d-flex justify-content-between tw-my-4" action="{{ path('ParserVk@indexPost') }}" method="post">
+<form class="tw-flex tw-justify-between tw-my-4" action="{{ path('ParserVk@indexPost') }}" method="post">
   @csrf
   <div>
     @if (!empty($next))
@@ -30,8 +30,8 @@
       </a>
     @endif
   </div>
-  <div class="d-none d-sm-flex tw-items-center">
-    <span class="d-none d-md-block">Топ 10</span>
+  <div class="tw-hidden sm:tw-flex tw-items-center">
+    <span class="tw-hidden md:tw-block">Топ 10</span>
     <input class="form-control tw-mx-2" name="slug" value="{{ $vkpage }}" style="width: 8em;" autocapitalize="none">
     за {{ $date->formatLocalized('%e %B') }}
     @if ($date->year !== now()->year)
@@ -59,8 +59,8 @@
 /** @var array[] $posts */
 ?>
 @foreach ($posts as $post)
-  <div class="card card-mobile-wide tw-mb-4 js-shortcuts-item">
-    <div class="card-body text-break-work">
+  <div class="card tw-border-l-0 sm:tw-border-l tw-border-r-0 sm:tw-border-r tw-rounded-none sm:tw-rounded tw-mb-4 tw--mx-4 sm:tw-mx-0 js-shortcuts-item">
+    <div class="card-body text-break-word">
       @if ($post['text'])
         <div class="life-text tw-mb-0 pre-line">{{ $post['text'] }}</div>
       @endif
@@ -77,7 +77,7 @@
         @endif
         @foreach ($post['attachments'] as $attach)
           @if ($attach->type == 'photo' && isset($attach->photo->photo_604))
-            <img class="d-block markdown-responsive-image tw-mx-auto {{ !$loop->first ? 'js-shortcuts-item' : '' }}" src="{{ @$attach->photo->photo_1280 ?: @$attach->photo->photo_807 ?: $attach->photo->photo_604 }}">
+            <img class="tw-block markdown-responsive-image tw-mx-auto {{ !$loop->first ? 'js-shortcuts-item' : '' }}" src="{{ @$attach->photo->photo_1280 ?: @$attach->photo->photo_807 ?: $attach->photo->photo_604 }}">
           @endif
         @endforeach
         @if ($post['photos'] > 0)
@@ -151,7 +151,7 @@
         </div>
       @endif
       <div class="tw-mt-2 vk-post-meta text-muted">
-        <samp class="f12 svg-labels justify-content-end">
+        <samp class="f12 svg-labels tw-justify-end">
           <a class="svg-flex svg-label" href="{{ $post['url'] }}">
             @svg (link)
           </a>
@@ -176,7 +176,7 @@
 @endforeach
 </div>
 
-<div class="d-flex justify-content-between">
+<div class="tw-flex tw-justify-between">
   @if (!empty($next))
     <div>
       <a class="btn border-b125 js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}">

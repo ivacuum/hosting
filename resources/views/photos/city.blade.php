@@ -2,7 +2,7 @@
 
 @section('content')
 <h3>{{ $city->title }} <small class="text-muted">{{ sizeof($photos) }}</small></h3>
-<div class="d-flex flex-wrap mobile-wide">
+<div class="tw-flex tw-flex-wrap tw-mobile-wide">
   @foreach ($photos as $photo)
     <div class="flex-basis-100 flex-sm-basis-50 flex-lg-basis-33 tw-mx-auto sm:tw-mx-0">
       <a href="{{ path("$self@show", [$photo, $city->getForeignKey() => $city]) }}">

@@ -19,7 +19,7 @@ export default {
   <table class="table-stats table-adaptive" v-if="collection.data.length">
     <thead>
     <tr>
-      <th class="text-md-right">#</th>
+      <th class="md:tw-text-right">#</th>
       <th>{{ modelFieldTrans('title') }}</th>
       <th></th>
       <th>
@@ -28,23 +28,23 @@ export default {
         </sortable-header>
       </th>
       <th>{{ modelFieldTrans('slug') }}</th>
-      <th class="text-md-right tw-whitespace-no-wrap">
+      <th class="md:tw-text-right tw-whitespace-no-wrap">
         <sortable-header field="views">
           <span v-html="$root.svg.eye"></span>
         </sortable-header>
       </th>
-      <th class="text-md-right tw-whitespace-no-wrap">
+      <th class="md:tw-text-right tw-whitespace-no-wrap">
         <sortable-header field="comments_count">
           <span v-html="$root.svg.comment_o"></span>
         </sortable-header>
       </th>
       <th v-html="$root.svg.paperclip"></th>
-      <th class="text-md-right tw-whitespace-no-wrap">
+      <th class="md:tw-text-right tw-whitespace-no-wrap">
         <sortable-header field="photos_count">
           <span v-html="$root.svg.picture_o"></span>
         </sortable-header>
       </th>
-      <th class="text-md-right"></th>
+      <th class="md:tw-text-right"></th>
     </tr>
     </thead>
     <tbody>
@@ -53,7 +53,7 @@ export default {
         :key="resource.id"
         @dblclick="$router.push(resource.edit_url)"
       >
-        <td class="text-md-right">{{ addition + i + 1 }}</td>
+        <td class="md:tw-text-right">{{ addition + i + 1 }}</td>
         <td>
           <router-link :to="resource.show_url">
             {{ resource.title }}
@@ -79,10 +79,10 @@ export default {
             {{ resource.slug }}
           </a>
         </td>
-        <td class="text-md-right tw-whitespace-no-wrap">
+        <td class="md:tw-text-right tw-whitespace-no-wrap">
           {{ resource.views | decimal }}
         </td>
-        <td class="text-md-right tw-whitespace-no-wrap">
+        <td class="md:tw-text-right tw-whitespace-no-wrap">
           <a :href="resource.comments_url">
             {{ resource.comments_count | decimal }}
           </a>
@@ -92,12 +92,12 @@ export default {
             <span class="tooltipped tooltipped-n" aria-label="Обложка" v-html="$root.svg.paperclip"></span>
           </a>
         </td>
-        <td class="text-md-right tw-whitespace-no-wrap">
+        <td class="md:tw-text-right tw-whitespace-no-wrap">
           <a :href="resource.photos_url">
             {{ resource.photos_count | decimal }}
           </a>
         </td>
-        <td class="text-md-right">
+        <td class="md:tw-text-right">
           <a :href="resource.template_url" v-if="resource.user.id === 1" v-html="$root.svg.file_text_o"></a>
           <a :href="resource.user_url" v-else>#{{ resource.user.id }}</a>
         </td>

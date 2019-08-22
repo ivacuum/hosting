@@ -56,42 +56,42 @@
         <span class="tw-mr-1">
           @svg (sign-in)
         </span>
-        Перейти на <span class="d-none d-md-inline">старый трекер</span> t.ivacuum.ru
+        Перейти на <span class="tw-hidden md:tw-inline">старый трекер</span> t.ivacuum.ru
       </a>
     </div>
   </div>
 </section>
 
-<section class="bg-dark tw-py-12 text-light">
+<section class="bg-dark tw-py-12 tw-text-gray-200">
   <div class="tw-container tw-max-w-3xl">
     <h3 class="tw-mb-6">Ключевые особенности трекера t.ivacuum.ru</h3>
     <div class="row">
       <div class="col-md-6">
-        <h5 class="text-secondary">Обсуждение раздач</h5>
+        <h5 class="tw-text-gray-500">Обсуждение раздач</h5>
         <p>Трекер построен на основе форума, следовательно, можно не только скачивать раздачи, но и комментировать их и читать отзывы других посетителей.</p>
       </div>
       <div class="col-md-6">
-        <h5 class="text-secondary">Отсутствие рейтинга</h5>
+        <h5 class="tw-text-gray-500">Отсутствие рейтинга</h5>
         <p>Рейтинг &mdash; не повод отказывать себе в просмотре интересного материала! Скачивайте любое количество информации!</p>
       </div>
       <div class="col-md-6">
-        <h5 class="text-secondary">Скорость обмена</h5>
+        <h5 class="tw-text-gray-500">Скорость обмена</h5>
         <p>Абоненты Билайн-Калуга &mdash; счастливые обладатели возможности обмениваться информацией на скорости до 100 мбит в секунду!</p>
       </div>
       <div class="col-md-6">
-        <h5 class="text-secondary">Быстродействие</h5>
+        <h5 class="tw-text-gray-500">Быстродействие</h5>
         <p>Узкие места трекера были оптимизированы для достижения максимального быстродействия и низкого времени отклика.</p>
       </div>
       <div class="col-md-6">
-        <h5 class="text-secondary">Опытная команда</h5>
+        <h5 class="tw-text-gray-500">Опытная команда</h5>
         <p>Администраторы знакомы с технологией BitTorrent и возможностями трекера уже много лет и всегда готовы прийти вам на помощь.</p>
       </div>
       <div class="col-md-6">
-        <h5 class="text-secondary">Поиск</h5>
+        <h5 class="tw-text-gray-500">Поиск</h5>
         <p>Умная система поиска найдет раздачи даже по одному символу! А также предложит подсказки по мере ввода запроса!</p>
       </div>
       <div class="col-md-6">
-        <h5 class="text-secondary">Информеры</h5>
+        <h5 class="tw-text-gray-500">Информеры</h5>
         <p>Всегда будьте в курсе прогноза погоды, курса валют и новых раздач. Всё самое необходимое &mdash; на главной странице трекера.</p>
       </div>
       {{--
@@ -101,7 +101,7 @@
       </div>
       --}}
       <div class="col-md-6">
-        <h5 class="text-secondary">Графики</h5>
+        <h5 class="tw-text-gray-500">Графики</h5>
         <p>Вы можете окунуться в историю развития трекера, посмотрев на рост графиков статистики: скорости обмена, посещамости, притока пользователей, раздач, сообщений и трафика.</p>
       </div>
     </div>

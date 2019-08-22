@@ -1,7 +1,7 @@
 @if (!empty($breadcrumbs))
   <div class="breadcrumbs tw-py-2 border-bottom">
     <nav class="tw-container" itemscope itemtype="http://schema.org/BreadcrumbList">
-      <span class="{{ !Illuminate\Support\Str::startsWith($self, 'Acp\\') ? 'd-none d-sm-inline' : '' }}">
+      <span class="{{ !Illuminate\Support\Str::startsWith($self, 'Acp\\') ? 'tw-hidden sm:tw-inline' : '' }}">
         <a href="{{ $locale_uri ?: '/' }}">
           @svg (home)
         </a>

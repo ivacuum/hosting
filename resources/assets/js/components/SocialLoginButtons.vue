@@ -11,21 +11,21 @@ export default {
 </script>
 
 <template>
-<div class="d-flex tw-mt-2">
-  <div class="tw-mr-2 text-center">
-    <a class="btn bg-vk f20 rounded-circle text-white" :href="loginUrl('vk')">
+<div class="tw-flex tw-mt-2">
+  <div class="tw-mr-2 tw-text-center">
+    <a class="btn bg-vk f20 rounded-circle tw-text-white hover:tw-text-white" :href="loginUrl('vk')">
       vk
     </a>
     <div class="tw-mt-1 small text-muted">{{ $t('auth.vk') }}</div>
   </div>
-  <div class="tw-mr-2 text-center">
-    <a class="btn bg-facebook f20 rounded-circle text-white" :href="loginUrl('facebook')">
+  <div class="tw-mr-2 tw-text-center">
+    <a class="btn bg-facebook f20 rounded-circle tw-text-white hover:tw-text-white" :href="loginUrl('facebook')">
       fb
     </a>
     <div class="tw-mt-1 small text-muted">{{ $t('auth.facebook') }}</div>
   </div>
-  <div class="tw-mr-2 text-center">
-    <a class="btn bg-google f20 rounded-circle text-white" :href="loginUrl('google')">
+  <div class="tw-mr-2 tw-text-center">
+    <a class="btn bg-google f20 rounded-circle tw-text-white hover:tw-text-white" :href="loginUrl('google')">
       gl
     </a>
     <div class="tw-mt-1 small text-muted">{{ $t('auth.google') }}</div>

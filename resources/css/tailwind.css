@@ -1,3 +1,4 @@
-@tailwind components;
-
-@tailwind utilities;
+@import "~tailwindcss/components.css";
+@import "life.css";
+@import "~tailwindcss/utilities.css";
+@import "utilities.css";
