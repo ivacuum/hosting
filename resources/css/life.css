@@ -1,3 +1,11 @@
+.tw-brightness-3\/4 {
+  filter: brightness(.75);
+}
+
+.group:hover .group-hover\:tw-brightness-full {
+  filter: brightness(1);
+}
+
 .pic-container {
   @apply mb-6 -mx-4;
 }

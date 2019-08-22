@@ -1,7 +1,11 @@
 module.exports = {
   prefix: 'tw-',
   theme: {
-    extend: {},
+    extend: {
+      padding: {
+        '3/4': '75%',
+      },
+    },
     screens: {
       sm: '576px',
       md: '768px',
@@ -13,6 +17,9 @@ module.exports = {
       padding: '1rem',
     },
   },
-  variants: {},
+  variants: {
+    textColor: ['responsive', 'hover', 'focus', 'group-hover'],
+    textDecoration: ['responsive', 'hover', 'focus', 'group-hover'],
+  },
   plugins: [],
 }
