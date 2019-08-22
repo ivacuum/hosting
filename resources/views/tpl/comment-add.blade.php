@@ -13,7 +13,7 @@
       </div>
     </aside>
   @endif
-  <div class="text-break-word mw-700 tw-w-full">
+  <div class="tw-break-words mw-700 tw-w-full">
     @if (!Auth::check())
       <div class="tw-mb-4">
         @ru

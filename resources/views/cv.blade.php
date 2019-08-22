@@ -102,17 +102,17 @@ body {
           <div class="tw-font-bold">@ru Высшее, МГТУ им. Баумана @en Bauman Moscow State Technical University @endru</div>
           <div>
             @ru Инженер-программист @en IT Engineer's degree @endru
-            <span class="small text-muted">2006–2012</span>
+            <span class="tw-text-xs text-muted">2006–2012</span>
           </div>
           <h3 class="my-caption h5 tw-mt-6 sm:tw-mt-12 tw-uppercase">@ru Курсы и тренинги @en Courses & Trainings @endru</h3>
           <div class="tw-font-bold">@ru Английский язык @en English @endru</div>
           <div>
             @ru Грамматика @en Grammar @endru
-            <span class="small text-muted">2006</span>
+            <span class="tw-text-xs text-muted">2006</span>
           </div>
           <div>
             @ru Разговорный @en Spoken @endru
-            <span class="small text-muted">2011</span>
+            <span class="tw-text-xs text-muted">2011</span>
           </div>
         </div>
         <div class="col-md-6">

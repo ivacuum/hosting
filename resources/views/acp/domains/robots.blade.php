@@ -1,6 +1,6 @@
 @extends("$tpl.base")
 
 @section('content')
-<samp class="pre-line">{{ $robots }}</samp>
+<samp class="tw-whitespace-pre-line">{{ $robots }}</samp>
 @endsection
 

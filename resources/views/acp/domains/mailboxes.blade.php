@@ -59,14 +59,14 @@
   </ul>
   <div>
     <span class="tw-mr-4">
-      <span class="badge badge-success tw-px-2 tw-mr-1">&nbsp;</span>
+      <span class="tw-bg-green-600 tw-text-white tw-p-1 tw-text-xs tw-font-bold tw-rounded tw-px-2 tw-mr-1">&nbsp;</span>
       активен
     </span>
     <span class="tw-mr-4">
-      <span class="badge badge-warning tw-px-2 tw-mr-1">&nbsp;</span>
+      <span class="tw-bg-orange-400 tw-p-1 tw-text-xs tw-font-bold tw-rounded tw-px-2 tw-mr-1">&nbsp;</span>
       неактивен
     </span>
-    <span class="badge badge-danger tw-px-2 tw-mr-1">&nbsp;</span>
+    <span class="tw-bg-red-600 tw-text-white tw-p-1 tw-text-xs tw-font-bold tw-rounded tw-px-2 tw-mr-1">&nbsp;</span>
     отключен
   </div>
 @endif

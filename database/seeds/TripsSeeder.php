@@ -11,6 +11,7 @@ class TripsSeeder extends Seeder
             $slug = str_replace('_', '.', $template->getBasename('.blade.php'));
             $citySlug = Illuminate\Support\Str::before($slug, '.');
 
+            /** @var App\City $city */
             if (null === $city = App\City::where('slug', $citySlug)->first()) {
                 continue;
             }

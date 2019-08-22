@@ -24,7 +24,7 @@
         <div class="comment-avatar-size"></div>
       @endif
     </aside>
-    <div class="text-break-word mw-700 tw-w-full">
+    <div class="tw-break-words mw-700 tw-w-full">
       <div>
         @if (null !== $comment->user)
           <a href="{{ $comment->user->www() }}">{{ $comment->user->publicName() }}</a>
@@ -32,7 +32,7 @@
           <em>deleted user</em>
         @endif
       </div>
-      <div class="comment-body pre-line">{!! $comment->html !!}</div>
+      <div class="comment-body tw-whitespace-pre-line">{!! $comment->html !!}</div>
       <div class="small text-muted">{{ $comment->fullDate() }}</div>
     </div>
   </div>

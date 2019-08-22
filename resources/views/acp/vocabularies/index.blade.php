@@ -37,7 +37,7 @@
           <span class="tw-inline-block f36 ja-character ja-shadow">{{ $model->character }}</span>
         </a>
       </td>
-      <td class="pre-line">{{ implode("\n", explode(', ', $model->meaning)) }}</td>
+      <td class="tw-whitespace-pre-line">{{ implode("\n", explode(', ', $model->meaning)) }}</td>
       <td>{{ !$model->sentences ? 'Нет' : '' }}</td>
     </tr>
   @endforeach

@@ -22,12 +22,12 @@ export default {
     </div>
     <div class="comment-avatar-size" v-else></div>
   </aside>
-  <div class="text-break-word mw-700 tw-w-full">
+  <div class="tw-break-words mw-700 tw-w-full">
     <div>
       <a :href="comment.user.www" v-if="comment.user">{{ comment.user.public_name }}</a>
       <em v-else>deleted user</em>
     </div>
-    <div class="comment-body pre-line" v-html="comment.html"></div>
+    <div class="comment-body tw-whitespace-pre-line" v-html="comment.html"></div>
     <div class="small text-muted" v-html="comment.posted_at"></div>
   </div>
 </div>

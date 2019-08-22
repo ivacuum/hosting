@@ -20,14 +20,14 @@
         </p>
         <div class="tw-flex tw-flex-wrap tw-items-center" v-if="Object.keys(filteredElements).length > 1">
           <template v-for="(collection, lvl) in filteredElements">
-            <a class="badge badge-secondary tw-text-base ja-shadow-light tw-mr-1 tw-mb-1" :href="`#level-${lvl}`">
+            <a class="tw-flex tw-bg-gray-600 hover:tw-bg-gray-700 tw-text-white hover:tw-text-gray-100 tw-px-2 tw-text-base tw-font-bold tw-rounded ja-shadow-light tw-mr-1 tw-mb-1" :href="`#level-${lvl}`">
               {{ lvl }}
             </a>
           </template>
         </div>
       </div>
       <template v-for="(collection, lvl) in filteredElements">
-        <a :name="`level-${lvl}`"></a>
+        <a :id="`level-${lvl}`"></a>
         <div class="sm:tw-flex tw-items-center tw-justify-between tw-mt-6 tw-mb-1">
           <h3>
             <span>{{ titleLabel(lvl) }}</span>

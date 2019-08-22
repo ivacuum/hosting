@@ -2,7 +2,7 @@
 
 @section('content')
 @if ($model->text)
-  <div class="pre-line">{{ $model->text }}</div>
+  <div class="tw-whitespace-pre-line">{{ $model->text }}</div>
 @endif
 
 @parent

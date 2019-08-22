@@ -70,7 +70,7 @@
           <td class="md:tw-text-right text-muted tw-whitespace-no-wrap">{{ ViewHelper::size($model->size) }}</td>
           <td class="md:tw-text-right tw-whitespace-no-wrap">
             @if ($model->views > 3000)
-              <span class="badge badge-success">{{ ViewHelper::number($model->views) }}</span>
+              <span class="tw-flex tw-bg-green-600 tw-text-white tw-px-2 tw-text-xs tw-font-bold tw-rounded">{{ ViewHelper::number($model->views) }}</span>
             @else
               {{ ViewHelper::number($model->views) }}
             @endif

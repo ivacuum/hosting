@@ -62,7 +62,7 @@
             </div>
           </header>
           <div class="{{ !$loop->last ? 'tw-mb-12' : '' }}">
-            <div class="tw-hidden sm:tw-block life-text markdown-body text-break-word js-news-views-observer" itemprop="articleBody" data-id="{{ $model->id }}">{!! $model->html !!}</div>
+            <div class="tw-hidden sm:tw-block life-text markdown-body tw-break-words js-news-views-observer" itemprop="articleBody" data-id="{{ $model->id }}">{!! $model->html !!}</div>
           </div>
         </article>
       @endforeach

@@ -1,6 +1,6 @@
 @extends('acp.show')
 
 @section('content')
-<div class="pre-line">{!! $model->html !!}</div>
+<div class="tw-whitespace-pre-line">{!! $model->html !!}</div>
 @parent
 @endsection

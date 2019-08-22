@@ -53,7 +53,7 @@ export default {
     </div>
     <div class="col-lg-9">
       <slot name="header">
-        <h2 class="tw-mt-4 lg:tw-mt-0 text-break-word">
+        <h2 class="tw-mt-4 lg:tw-mt-0 tw-break-words">
           <a href="back" @click.prevent="$router.go(-1)" v-html="$root.svg.chevron_left"></a>
           <slot>{{ resource.breadcrumb }}</slot>
           <slot name="append">

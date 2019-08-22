@@ -9,7 +9,7 @@
 @include('tpl.gig-timeline')
 <h1 class="h2">
   {{ $gig->title }}
-  <small class="text-muted"><time datetime="{{ $gig->date->toDateString() }}">{{ $gig->fullDate() }}</time></small>
+  <span class="tw-text-base tw-text-gray-600"><time datetime="{{ $gig->date->toDateString() }}">{{ $gig->fullDate() }}</time></span>
 </h1>
 <div class="mw-1000 js-trip-shortcuts">
 @endsection

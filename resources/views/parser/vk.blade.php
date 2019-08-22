@@ -60,13 +60,13 @@
 ?>
 @foreach ($posts as $post)
   <div class="card tw-border-l-0 sm:tw-border-l tw-border-r-0 sm:tw-border-r tw-rounded-none sm:tw-rounded tw-mb-4 tw--mx-4 sm:tw-mx-0 js-shortcuts-item">
-    <div class="card-body tw-pb-0 text-break-word">
+    <div class="card-body tw-pb-0 tw-break-words">
       @if ($post['text'])
-        <div class="life-text tw-mb-0 pre-line">{{ $post['text'] }}</div>
+        <div class="life-text tw-mb-0 tw-whitespace-pre-line">{{ $post['text'] }}</div>
       @endif
       @if (!empty($post['copy_history']))
         <div class="life-text {{ $post['text'] ? 'tw-mt-4' : '' }} tw-mb-0"><strong>Репост</strong></div>
-        <div class="life-text tw-mb-0 pre-line">{{ $post['copy_history'][0]->text }}</div>
+        <div class="life-text tw-mb-0 tw-whitespace-pre-line">{{ $post['copy_history'][0]->text }}</div>
       @endif
       @if ($post['attachments'])
         <div class="tw-mt-2">

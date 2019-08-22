@@ -77,7 +77,7 @@ export default {
 
   <div class="tw-mt-12" v-if="vocab.sentences">
     <h3 class="tw-mt-0">{{ $t('japanese.sentences') }}</h3>
-    <div class="tw-text-xl pre-line">{{ vocab.sentences }}</div>
+    <div class="tw-text-xl tw-whitespace-pre-line">{{ vocab.sentences }}</div>
   </div>
 
   <div class="tw-mt-6">

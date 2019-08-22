@@ -27,16 +27,16 @@
           </span>
         @endif
         @if ($model->text)
-          <span class="badge badge-secondary tooltipped tooltipped-n" aria-label="есть заметки">...</span>
+          <span class="tw-bg-gray-600 tw-text-white tw-p-1 tw-text-xs tw-font-bold tw-rounded tooltipped tooltipped-n" aria-label="есть заметки">...</span>
         @endif
         @if (!$model->domain_control)
-          <span class="badge badge-info tooltipped tooltipped-n" aria-label="не в нашей панели">?</span>
+          <span class="tw-bg-teal-600 tw-text-white tw-p-1 tw-text-xs tw-font-bold tw-rounded tooltipped tooltipped-n" aria-label="не в нашей панели">?</span>
         @endif
         @if ($model->domain_control and $model->isExpired())
-          <span class="badge badge-danger tooltipped tooltipped-n" aria-label="просрочена оплата">$</span>
+          <span class="tw-bg-red-600 tw-text-white tw-p-1 tw-text-xs tw-font-bold tw-rounded tooltipped tooltipped-n" aria-label="просрочена оплата">$</span>
         @endif
         @if ($model->domain_control and $model->isExpiringSoon())
-          <span class="badge badge-warning tooltipped tooltipped-n" aria-label="подходит срок оплаты">$</span>
+          <span class="tw-bg-orange-400 tw-p-1 tw-text-xs tw-font-bold tw-rounded tooltipped tooltipped-n" aria-label="подходит срок оплаты">$</span>
         @endif
       </td>
       <td class="text-muted">
@@ -79,19 +79,19 @@
 
 <div>
   <span class="tw-whitespace-no-wrap tw-mr-2">
-    <span class="badge badge-secondary tw-mr-1">...</span>
+    <span class="tw-bg-gray-600 tw-text-white tw-p-1 tw-text-xs tw-font-bold tw-rounded tw-mr-1">...</span>
     есть заметки
   </span>
   <span class="tw-whitespace-no-wrap tw-mr-2">
-    <span class="badge badge-info tw-mr-1">?</span>
+    <span class="tw-bg-teal-600 tw-text-white tw-py-1 tw-px-2 tw-text-xs tw-font-bold tw-rounded tw-mr-1">?</span>
     не в нашей панели
   </span>
   <span class="tw-whitespace-no-wrap tw-mr-2">
-    <span class="badge badge-danger tw-mr-1">$</span>
+    <span class="tw-bg-red-600 tw-text-white tw-py-1 tw-px-2 tw-text-xs tw-font-bold tw-rounded tw-mr-1">$</span>
     просрочена оплата
   </span>
   <span class="tw-whitespace-no-wrap tw-mr-2">
-    <span class="badge badge-warning tw-mr-1">$</span>
+    <span class="tw-bg-orange-400 tw-py-1 tw-px-2 tw-text-xs tw-font-bold tw-rounded tw-mr-1">$</span>
     подходит срок оплаты
   </span>
 </div>

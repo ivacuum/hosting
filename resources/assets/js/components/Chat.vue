@@ -21,7 +21,7 @@
         </div>
         <div class="tw-flex-grow">
           <div class="tw-leading-none" :style="{ color: message.user.color }" v-if="!sameUser[date][index]">{{ message.user.public_name }}</div>
-          <div class="text-break-word" v-html="message.html"></div>
+          <div class="tw-break-words" v-html="message.html"></div>
         </div>
         <div class="tw-flex-shrink-0 chat-time tw-text-right small" :title="message.date" style="width: 3rem;">{{ message.time }}</div>
       </div>

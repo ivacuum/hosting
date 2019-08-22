@@ -40,7 +40,7 @@
         @endif
       </td>
       <td>
-        <div class="pre-line">{{ $model->html }}</div>
+        <div class="tw-whitespace-pre-line">{{ $model->html }}</div>
         <div class="text-muted small">{{ $model->rel_type }} #{{ $model->rel_id }}</div>
       </td>
       <td class="tw-whitespace-no-wrap">{{ ViewHelper::dateShort($model->created_at) }}</td>

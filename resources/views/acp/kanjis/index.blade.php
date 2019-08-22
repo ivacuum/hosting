@@ -46,7 +46,7 @@
           <span class="tw-inline-block ja-big ja-character ja-shadow">{{ $model->character }}</span>
         </a>
       </td>
-      <td class="pre-line">{{ implode("\n", explode(', ', $model->meaning)) }}</td>
+      <td class="tw-whitespace-pre-line">{{ implode("\n", explode(', ', $model->meaning)) }}</td>
       <td class="md:tw-text-right tw-whitespace-no-wrap">
         @if ($model->radicals_count > 0)
           <a href="{{ path('Acp\Radicals@index', [$model->getForeignKey() => $model]) }}">

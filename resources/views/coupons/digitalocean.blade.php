@@ -17,19 +17,19 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="badge badge-success">DO10</span> / <span class="badge badge-success">DROPLET10</span></td>
+        <td><span class="tw-bg-green-600 tw-text-white tw-p-1 tw-text-xs tw-font-bold tw-rounded">DO10</span> / <span class="tw-bg-green-600 tw-text-white tw-p-1 tw-text-xs tw-font-bold tw-rounded">DROPLET10</span></td>
         <td>@ru $10 для новых пользователей @en $10 credit for new users @endru</td>
       </tr>
       <tr>
-        <td><span class="badge badge-success">BITNAMI</span></td>
+        <td><span class="tw-bg-green-600 tw-text-white tw-p-1 tw-text-xs tw-font-bold tw-rounded">BITNAMI</span></td>
         <td>@ru $10 на счет при регистрации @en $10 off for a new account @endru</td>
       </tr>
       <tr>
-        <td><span class="badge badge-success">ACTIVATE10</span></td>
+        <td><span class="tw-bg-green-600 tw-text-white tw-p-1 tw-text-xs tw-font-bold tw-rounded">ACTIVATE10</span></td>
         <td>@ru $10 на счет для нынешних клиентов @en $10 credit for existing customers @endru</td>
       </tr>
       <tr>
-        <td><span class="badge badge-success">LOWENDBOX</span> / <span class="badge badge-success">DOPRODUCT</span></td>
+        <td><span class="tw-bg-green-600 tw-text-white tw-p-1 tw-text-xs tw-font-bold tw-rounded">LOWENDBOX</span> / <span class="tw-bg-green-600 tw-text-white tw-p-1 tw-text-xs tw-font-bold tw-rounded">DOPRODUCT</span></td>
         <td>@ru $15 на счет @en $15 DigitalOcean credits @endru</td>
       </tr>
     </tbody>

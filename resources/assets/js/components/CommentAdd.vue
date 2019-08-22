@@ -29,7 +29,7 @@ export default {
       <user-avatar :user="user"/>
     </div>
   </aside>
-  <div class="text-break-word mw-700 tw-w-full" v-else>
+  <div class="tw-break-words mw-700 tw-w-full" v-else>
     <div class="tw-mb-4" v-if="guest">
       <div>Для комментирования необходимо ввести электронную почту или войти в один клик через один из социальных сервисов ниже.</div>
       <!--<div>Please type your email or use one-click sign-in through one of the social services below to comment.</div>-->

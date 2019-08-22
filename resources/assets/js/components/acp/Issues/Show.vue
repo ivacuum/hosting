@@ -98,7 +98,7 @@ export default {
     </div>
   </div>
 
-  <div class="tw-my-4 pre-line">{{ resource.text }}</div>
+  <div class="tw-my-4 tw-whitespace-pre-line">{{ resource.text }}</div>
 
   <div v-if="comments.length">
     <h3 class="tw-mt-6">

@@ -274,27 +274,27 @@
     <ol>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=e5VriO_mdv8">챔피언</a>
-        <small class="text-muted">Champion</small>
+        <span class="tw-text-sm tw-text-gray-600">Champion</span>
         <span class="tw-text-red-600">@svg (heart)</span>
       </li>
       <li><a class="link" href="https://www.youtube.com/watch?v=OcRA6dwfdW4">I LUV IT</a></li>
       <li><a class="link" href="https://www.youtube.com/watch?v=ztZnqo0IJA4">I Remember You</a></li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=vVmkMz0OwfM">내 눈에는</a>
-        <small class="text-muted">In My Eyes</small>
+        <span class="tw-text-sm tw-text-gray-600">In My Eyes</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=KOW6APjojWw">나 이런 사람이야</a>
-        <small class="text-muted">I'm a Guy Like This [Cover]</small>
+        <span class="tw-text-sm tw-text-gray-600">I'm a Guy Like This</span>
         <span class="tw-text-red-600">@svg (heart)</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=_HVIq803T2U">새</a>
-        <small class="text-muted">Bird</small>
+        <span class="tw-text-sm tw-text-gray-600">Bird</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=ddyyKt_hr2Q">오늘밤 새</a>
-        <small class="text-muted">All Night Long</small>
+        <span class="tw-text-sm tw-text-gray-600">All Night Long</span>
         <span class="tw-text-red-600">@svg (heart)</span>
       </li>
     </ol>
@@ -307,12 +307,12 @@
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=MauVE6F3nMo">나팔바지</a>
-        <small class="text-muted">Napal Baji</small>
+        <span class="tw-text-sm tw-text-gray-600">Napal Baji</span>
         <span class="tw-text-red-600">@svg (heart)</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=5TT4qvedULU">끝</a>
-        <small class="text-muted">The End</small>
+        <span class="tw-text-sm tw-text-gray-600">The End</span>
         <span class="tw-text-red-600">@svg (heart)</span>
       </li>
       <li>
@@ -321,11 +321,11 @@
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=j5yKlTTDxPY">흔들어 주세요</a>
-        <small class="text-muted">Shake It</small>
+        <span class="tw-text-sm tw-text-gray-600">Shake It</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=gxavJwXQc0M">어땠을까 (feat. 헤이즈)</a>
-        <small class="text-muted">What Would Have Been</small>
+        <span class="tw-text-sm tw-text-gray-600">What Would Have Been</span>
       </li>
     </ol>
 
@@ -341,14 +341,14 @@
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=E21OCvoJKJQ">아버지</a>
-        <small class="text-muted">Father</small>
+        <span class="tw-text-sm tw-text-gray-600">Father</span>
         <span class="tw-text-red-600">@svg (heart)</span>
       </li>
       <li><a class="link" href="https://www.youtube.com/watch?v=WUB9kZMSMFw">New Face</a></li>
       <li><a class="link" href="https://www.youtube.com/watch?v=XIH5tFK9eU8">Dream</a></li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=8GksPfIR9uA">강남스타일</a>
-        <small class="text-muted">Gangnam Style</small>
+        <span class="tw-text-sm tw-text-gray-600">Gangnam Style</span>
       </li>
     </ol>
 
@@ -356,21 +356,21 @@
     <ol start="20">
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=dptfI1Nfe5M">낙원</a>
-        <small class="text-muted">Paradise</small>
+        <span class="tw-text-sm tw-text-gray-600">Paradise</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=JwgVC1YKMs4">걱정말아요 그대</a>
-        <small class="text-muted">Don't Worry</small>
+        <span class="tw-text-sm tw-text-gray-600">Don't Worry</span>
         <span class="tw-text-red-600">@svg (heart)</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=bzj_NOpg1vQ">연예인</a>
-        <small class="text-muted">Entertainer</small>
+        <span class="tw-text-sm tw-text-gray-600">Entertainer</span>
         <span class="tw-text-red-600">@svg (heart)</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=MWqBXsNYrgM">에술이야</a>
-        <small class="text-muted">It's Art</small>
+        <span class="tw-text-sm tw-text-gray-600">It's Art</span>
         <span class="tw-text-red-600">@svg (heart)</span>
       </li>
     </ol>
@@ -380,7 +380,7 @@
       <li><a class="link" href="https://www.youtube.com/watch?v=PsTLjzWw0pQ">Dance medley</a></li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=qqj1OIpDAgY">기댈곳</a>
-        <small class="text-muted">Refuge</small>
+        <span class="tw-text-sm tw-text-gray-600">Refuge</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=dG0uq27J77Q">Rock medley</a>
@@ -388,7 +388,7 @@
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=8YL4NvSleAc">마지막 장면</a>
-        <small class="text-muted">Last Scene</small>
+        <span class="tw-text-sm tw-text-gray-600">Last Scene</span>
         <span class="tw-text-red-600">@svg (heart)</span>
       </li>
     </ol>
@@ -397,17 +397,17 @@
     <ol start="28">
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=RwX6OxhcvYM">챔피언</a>
-        <small class="text-muted">Champion</small>
+        <span class="tw-text-sm tw-text-gray-600">Champion</span>
         <span class="tw-text-red-600">@svg (heart)</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=qeCAoacwaIk">강남스타일</a>
-        <small class="text-muted">Gangnam Style</small>
+        <span class="tw-text-sm tw-text-gray-600">Gangnam Style</span>
         <span class="tw-text-red-600">@svg (heart)</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=nz6bswnz9KM">언젠가는</a>
-        <small class="text-muted">Someday</small>
+        <span class="tw-text-sm tw-text-gray-600">Someday</span>
       </li>
     </ol>
   </div>

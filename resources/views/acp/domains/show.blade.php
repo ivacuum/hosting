@@ -10,7 +10,7 @@
 @endif
 
 @if ($model->text)
-  <blockquote class="pre-line">{{ $model->text }}</blockquote>
+  <blockquote class="tw-whitespace-pre-line">{{ $model->text }}</blockquote>
 @endif
 
 @if ($model->isExpired())
