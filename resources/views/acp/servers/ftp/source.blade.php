@@ -21,7 +21,7 @@
   @csrf
 
   <div class="form-group">
-    <textarea class="form-control f14 textarea-autosized js-autosize-textarea" name="source" rows="2" style="font-family: var(--font-family-monospace);">{{ $source }}</textarea>
+    <textarea class="form-control tw-text-sm textarea-autosized js-autosize-textarea" name="source" rows="2" style="font-family: var(--font-family-monospace);">{{ $source }}</textarea>
   </div>
 
   <button class="btn btn-primary">

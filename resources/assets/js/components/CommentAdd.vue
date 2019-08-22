@@ -23,13 +23,13 @@ export default {
 </script>
 
 <template>
-<div class="tw-flex tw-pt-3 w-100" id="comment-add">
+<div class="tw-flex tw-pt-3 tw-w-full" id="comment-add">
   <aside class="tw-mr-4 md:tw-mr-6" v-if="!guest">
     <div class="comment-avatar-size tw-mt-1">
       <user-avatar :user="user"/>
     </div>
   </aside>
-  <div class="text-break-word mw-700 w-100" v-else>
+  <div class="text-break-word mw-700 tw-w-full" v-else>
     <div class="tw-mb-4" v-if="guest">
       <div>Для комментирования необходимо ввести электронную почту или войти в один клик через один из социальных сервисов ниже.</div>
       <!--<div>Please type your email or use one-click sign-in through one of the social services below to comment.</div>-->

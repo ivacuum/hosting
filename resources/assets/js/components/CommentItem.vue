@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-<div :id="`comment-${comment.id}`" class="tw-flex tw-py-4 w-100 border-bottom">
+<div :id="`comment-${comment.id}`" class="tw-flex tw-py-4 tw-w-full border-bottom">
   <aside class="tw-mr-4 md:tw-mr-6">
     <div class="comment-avatar-size tw-mt-1" v-if="comment.user">
       <a :href="comment.user.www">
@@ -22,7 +22,7 @@ export default {
     </div>
     <div class="comment-avatar-size" v-else></div>
   </aside>
-  <div class="text-break-word mw-700 w-100">
+  <div class="text-break-word mw-700 tw-w-full">
     <div>
       <a :href="comment.user.www" v-if="comment.user">{{ comment.user.public_name }}</a>
       <em v-else>deleted user</em>

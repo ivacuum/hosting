@@ -1,4 +1,4 @@
-<div class="tw-flex tw-pt-4 w-100" id="comment-add">
+<div class="tw-flex tw-pt-4 tw-w-full" id="comment-add">
   @if (Auth::check())
     <aside class="tw-mr-4 md:tw-mr-6">
       <div class="comment-avatar-size tw-mt-1">
@@ -13,7 +13,7 @@
       </div>
     </aside>
   @endif
-  <div class="text-break-word mw-700 w-100">
+  <div class="text-break-word mw-700 tw-w-full">
     @if (!Auth::check())
       <div class="tw-mb-4">
         @ru

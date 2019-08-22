@@ -95,19 +95,19 @@
             @endif
           </div>
           <div hidden class="edit">
-            <input class="form-control form-control-sm w-100" name="content" value="{{ $record->content }}" {{ $record->type == 'SOA' ? 'readonly' : '' }}>
+            <input class="form-control form-control-sm tw-w-full" name="content" value="{{ $record->content }}" {{ $record->type == 'SOA' ? 'readonly' : '' }}>
             @if ($record->priority > 0)
-              <input class="form-control form-control-sm tw-mt-1 w-100" name="priority" value="{{ $record->priority }}" placeholder="priority">
+              <input class="form-control form-control-sm tw-mt-1 tw-w-full" name="priority" value="{{ $record->priority }}" placeholder="priority">
             @endif
             @if ($record->type == 'SRV')
-              <input class="form-control form-control-sm tw-mt-1 w-100" name="port" value="{{ $record->port }}" placeholder="port">
-              <input class="form-control form-control-sm tw-mt-1 w-100" name="weight" value="{{ $record->weight }}" placeholder="weight">
+              <input class="form-control form-control-sm tw-mt-1 tw-w-full" name="port" value="{{ $record->port }}" placeholder="port">
+              <input class="form-control form-control-sm tw-mt-1 tw-w-full" name="weight" value="{{ $record->weight }}" placeholder="weight">
             @endif
             @if ($record->type == 'SOA')
-              <input class="form-control form-control-sm tw-mt-1 w-100" name="retry" value="{{ $record->retry }}" placeholder="retry">
-              <input class="form-control form-control-sm tw-mt-1 w-100" name="refresh" value="{{ $record->refresh }}" placeholder="refresh">
-              <input class="form-control form-control-sm tw-mt-1 w-100" name="expire" value="{{ $record->expire }}" placeholder="expire">
-              <input class="form-control form-control-sm tw-mt-1 w-100" name="ttl" value="{{ $record->ttl }}" placeholder="ttl">
+              <input class="form-control form-control-sm tw-mt-1 tw-w-full" name="retry" value="{{ $record->retry }}" placeholder="retry">
+              <input class="form-control form-control-sm tw-mt-1 tw-w-full" name="refresh" value="{{ $record->refresh }}" placeholder="refresh">
+              <input class="form-control form-control-sm tw-mt-1 tw-w-full" name="expire" value="{{ $record->expire }}" placeholder="expire">
+              <input class="form-control form-control-sm tw-mt-1 tw-w-full" name="ttl" value="{{ $record->ttl }}" placeholder="ttl">
             @endif
             <input type="hidden" name="record_id" value="{{ $record->record_id }}">
             @method('put')

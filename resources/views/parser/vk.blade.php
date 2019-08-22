@@ -60,7 +60,7 @@
 ?>
 @foreach ($posts as $post)
   <div class="card tw-border-l-0 sm:tw-border-l tw-border-r-0 sm:tw-border-r tw-rounded-none sm:tw-rounded tw-mb-4 tw--mx-4 sm:tw-mx-0 js-shortcuts-item">
-    <div class="card-body text-break-word">
+    <div class="card-body tw-pb-0 text-break-word">
       @if ($post['text'])
         <div class="life-text tw-mb-0 pre-line">{{ $post['text'] }}</div>
       @endif
@@ -119,7 +119,7 @@
                 @svg (film)
                 {{ $attach->video->title }}
               </a>
-              <span class="text-muted">
+              <span class="tw-text-sm tw-text-gray-600">
                 {{ sprintf('%02d', $attach->video->duration / 60) }}:{{ sprintf('%02d', $attach->video->duration % 60) }}
               </span>
             </p>
@@ -136,22 +136,21 @@
                 <img src="{{ @$attach->link->photo->photo_604 }}">
               </div>
             @endif
-            <p>
+            <div>
               <a class="link" href="{{ $attach->link->url }}">
                 @svg (link)
                 {{ $attach->link->title }}
               </a>
-              <br>
-              <span class="text-muted">
+              <div class="tw-text-sm tw-text-gray-600">
                 {{ $attach->link->url }}
-              </span>
-            </p>
+              </div>
+            </div>
           @endif
         @endforeach
         </div>
       @endif
-      <div class="tw-mt-2 vk-post-meta text-muted">
-        <samp class="f12 svg-labels tw-justify-end">
+      <div class="tw-mt-2 tw-mb-1 tw-text-gray-600">
+        <samp class="tw-text-xs svg-labels tw-justify-end">
           <a class="svg-flex svg-label" href="{{ $post['url'] }}">
             @svg (link)
           </a>
@@ -159,15 +158,15 @@
             <a class="js-share-click" href="{{ $post['url'] }}">
               @svg (bullhorn)
             </a>
-            <span class="text-muted">{{ ViewHelper::numberShort($post['reposts']) }}</span>
+            {{ ViewHelper::numberShort($post['reposts']) }}
           </span>
           <span class="svg-flex svg-label">
             @svg (heart)
-            <span class="text-muted">{{ ViewHelper::numberShort($post['likes']) }}</span>
+            {{ ViewHelper::numberShort($post['likes']) }}
           </span>
           <span class="svg-flex svg-label">
             @svg (eye)
-            <span class="text-muted">{{ ViewHelper::numberShort($post['views']) }}</span>
+            {{ ViewHelper::numberShort($post['views']) }}
           </span>
         </samp>
       </div>

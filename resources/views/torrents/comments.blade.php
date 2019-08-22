@@ -4,7 +4,7 @@
 <h3>Последние комментарии</h3>
 @foreach ($comments as $comment)
   <a id="comment-{{ $comment->id }}"></a>
-  <div class="tw-flex tw-py-4 w-100 border-bottom">
+  <div class="tw-flex tw-py-4 tw-w-full border-bottom">
     <aside class="tw-mr-4 md:tw-mr-6">
         @if (null !== $comment->user)
           <div class="comment-avatar-size tw-mt-1">
@@ -21,7 +21,7 @@
           </div>
         @endif
     </aside>
-    <div class="text-break-word mw-700 w-100">
+    <div class="text-break-word mw-700 tw-w-full">
       <div>
         @if (null !== $comment->user)
           <a href="{{ $comment->user->www() }}">{{ $comment->user->publicName() }}</a>

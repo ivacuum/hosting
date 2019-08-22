@@ -7,7 +7,7 @@
   {{ trans('life.visited_countries') }}
   <small class="text-muted">{{ sizeof($countries) }}</small>
 </h1>
-<ul class="list-inline f14">
+<ul class="list-inline tw-text-sm">
   <li class="list-inline-item"><a class="link" href="{{ path('UserTravelTrips@index', $traveler->login) }}">{{ trans('life.by_year') }}</a></li>
   <li class="list-inline-item"><mark>{{ trans('life.by_country') }}</mark></li>
   <li class="list-inline-item"><a class="link" href="{{ path('UserTravelCities@index', $traveler->login) }}">{{ trans('life.by_city') }}</a></li>

@@ -12,7 +12,7 @@
       </a>
     @endif
   </h1>
-  <ul class="list-inline f14">
+  <ul class="list-inline tw-text-sm">
     <li class="list-inline-item"><mark>{{ trans('life.by_year') }}</mark></li>
     <li class="list-inline-item"><a class="link" href="{{ path('UserTravelCountries@index', $traveler->login) }}">{{ trans('life.by_country') }}</a></li>
     <li class="list-inline-item"><a class="link" href="{{ path('UserTravelCities@index', $traveler->login) }}">{{ trans('life.by_city') }}</a></li>
