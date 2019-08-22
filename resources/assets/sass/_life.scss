@@ -132,21 +132,4 @@
   @include mobile-wide;
 }
 
-.trip-cover-date {
-  color: #ccc;
-  font-size: 12px;
-}
-
-.trip-cover-description {
-  font-size: 12px;
-
-  @include media-breakpoint-up(md) { font-size: 14px; }
-}
-
-.trip-cover-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  color: #fff;
-  text-shadow: 1px 1px 0 rgba($black, .8);
-}
+.trip-cover-info { text-shadow: 1px 1px 0 rgba($black, .8); }
