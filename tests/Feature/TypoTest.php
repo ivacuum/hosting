@@ -9,10 +9,8 @@ class TypoTest extends TestCase
     {
         $this->expectsEvents(TypoReceived::class);
 
-        // Сообщить об опечатке можно только с какой-либо страницы сайта
-        $this->get('/')->assertStatus(200);
-
-        $this->post(action('JsTypo'), ['selection' => 'Typo is right here'])
+        $this->from('/')
+            ->post(action('JsTypo'), ['selection' => 'Typo is right here'])
             ->assertStatus(201)
             ->assertJson(['status' => 'OK']);
     }

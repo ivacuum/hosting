@@ -17,11 +17,8 @@ class IssuesTest extends TestCase
             \App\Events\Stats\UserRegisteredAuto::class,
         ]);
 
-        // Оставить обратную связь можно только с какой-либо страницы сайта
-        $this->get('/')->assertStatus(200);
-
-        $this->postJson(
-            action('Issues@store'), [
+        $this->from('/')
+            ->postJson(action('Issues@store'), [
                 'name' => 'name',
                 'text' => 'some text from the guest',
                 'email' => $email,
@@ -35,13 +32,10 @@ class IssuesTest extends TestCase
         /* @var User $user */
         $this->be($user = factory(User::class)->create());
 
-        // Оставить обратную связь можно только с какой-либо страницы сайта
-        $this->get('/')->assertStatus(200);
-
         $this->expectsEvents(\App\Events\Stats\IssueAdded::class);
 
-        $this->postJson(
-                action('Issues@store'), [
+        $this->from('/')
+            ->postJson(action('Issues@store'), [
                 'name' => 'name',
                 'text' => 'some text from the guest',
                 'email' => $user->email,
