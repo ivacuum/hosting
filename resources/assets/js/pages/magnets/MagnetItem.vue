@@ -97,7 +97,7 @@ export default {
   <div v-if="magnet.related.length">
     <div class="h3 tw-mt-12">
       {{ $t('torrents.related') }}
-      <small class="text-muted">{{ magnet.related.length }}</small>
+      <span class="tw-text-base text-muted">{{ magnet.related.length }}</span>
     </div>
     <template v-for="related in magnet.related">
       <magnet-item
@@ -110,7 +110,7 @@ export default {
 
   <div class="h3 tw-mt-12">
     {{ $t('comments.discussion') }}
-    <small class="text-muted">{{ magnet.comments.length }}</small>
+    <span class="tw-text-base text-muted">{{ magnet.comments.length }}</span>
   </div>
   <a id="comments"></a>
   <div v-for="comment in magnet.comments" :key="comment.id">

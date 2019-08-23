@@ -8,8 +8,8 @@
   <p>Укрепилось впечатление, что музыкантам Москва нравится больше Питера по их активности на соответствующих шоу и вниманию к публике.</p>
   <p>Интересно составлен сет — по одной песне с каждого выпущенного альбома с 1989 по 2013 годы. Молодцы, что вернули в программу As I Am и Panic Attack — их нехватало с <a class="link" href="dreamtheater.2009">2009 года</a>.</p>
 @endru
-<div class="row">
-  <div class="col-md-7">
+<div class="md:tw-flex md:tw--mx-4">
+  <div class="md:tw-w-7/12 md:tw-px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>Afterlife</li>
@@ -27,7 +27,7 @@
       <li>Behind the Veil</li>
     </ol>
   </div>
-  <div class="col-md-5">
+  <div class="md:tw-w-5/12 md:tw-px-4">
     <div class="img-container">
       <img src="https://life.ivacuum.org/gigs/dreamtheater.2015.07.03.jpg">
     </div>

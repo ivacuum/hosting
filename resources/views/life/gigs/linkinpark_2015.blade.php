@@ -3,8 +3,8 @@
 {{-- СК Олимпийский --}}
 
 @section('content')
-<div class="row">
-  <div class="col-md-7">
+<div class="md:tw-flex md:tw--mx-4">
+  <div class="md:tw-w-7/12 md:tw-px-4">
     @ru
       <p>Спустя два дня после Металлики в Олимпийском выступил Линкин Парк. Набор песен мало отличался от <a class="link" href="linkinpark.2014">прошлого года</a>. В этот раз было два флэшмоба: листы с надписью you are always welcome в начале песни #20 и слоеный флаг РФ после песни #23.</p>
     @endru
@@ -38,7 +38,7 @@
       <li>Bleed It Out</li>
     </ol>
   </div>
-  <div class="col-md-5">
+  <div class="md:tw-w-5/12 md:tw-px-4">
     <div class="img-container">
       <img src="https://life.ivacuum.org/gigs/linkinpark.2015.08.29.jpg">
     </div>

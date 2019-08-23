@@ -10,8 +10,8 @@
   <p>За полночь удалось добраться до Крестовского острова. В ближайшей палатке было куплено три полулитровых бутылки воды, так как других не было. Две из них было выпито залпом. Фух, выжил.</p>
 @endru
 
-<div class="row">
-  <div class="col-md-7">
+<div class="md:tw-flex md:tw--mx-4">
+  <div class="md:tw-w-7/12 md:tw-px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>
@@ -21,8 +21,8 @@
       </li>
       <li>For Whom the Bell Tolls</li>
       <li>Ride the Lightning</li>
-      <li>Harvester of Sorrow <small class="text-muted">(followed by Kirk's solo incl. The Sails of Charon)</small></li>
-      <li>The Unforgiven <small class="text-muted">(w/ acoustic The Call of Ktulu intro)</small></li>
+      <li>Harvester of Sorrow <span class="tw-text-sm text-muted">(followed by Kirk's solo incl. The Sails of Charon)</span></li>
+      <li>The Unforgiven <span class="tw-text-sm text-muted">(w/ acoustic The Call of Ktulu intro)</span></li>
       <li>Leper Messiah</li>
       <li>...And Justice for All</li>
       <li>No Remorse</li>
@@ -33,12 +33,12 @@
       <li>Sad But True</li>
       <li>One</li>
       <li>Enter Sandman</li>
-      <li>Last Caress <small class="text-muted">(Misfits cover)</small></li>
+      <li>Last Caress <span class="tw-text-sm text-muted">(Misfits cover)</span></li>
       <li>Motorbreath</li>
-      <li>Seek &amp; Destroy <small class="text-muted">(w/ Let There Be Rock outro)</small></li>
+      <li>Seek &amp; Destroy <span class="tw-text-sm text-muted">(w/ Let There Be Rock outro)</span></li>
     </ol>
   </div>
-  <div class="col-md-5">
+  <div class="md:tw-w-5/12 md:tw-px-4">
     <div class="img-container">
       <img src="https://life.ivacuum.org/gigs/metallica.2008.07.18.jpg">
     </div>

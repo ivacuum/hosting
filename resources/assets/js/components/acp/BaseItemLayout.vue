@@ -57,7 +57,7 @@ export default {
           <a href="back" @click.prevent="$router.go(-1)" v-html="$root.svg.chevron_left"></a>
           <slot>{{ resource.breadcrumb }}</slot>
           <slot name="append">
-            <small class="text-muted" v-if="resource.id">#{{ resource.id }}</small>
+            <span class="tw-text-base text-muted" v-if="resource.id">#{{ resource.id }}</span>
           </slot>
         </h2>
       </slot>

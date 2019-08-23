@@ -43,7 +43,7 @@ export default {
   <div class="tw-flex tw-items-center tw-flex-wrap tw-mb-2 tw--mt-2">
     <h3 class="tw-mb-1 tw-mr-4">
       {{ $t(`${plural}.index`) }}
-      <small class="text-muted tw-whitespace-no-wrap">{{ meta.total }}</small>
+      <span class="tw-text-base text-muted tw-whitespace-no-wrap">{{ meta.total }}</span>
     </h3>
     <router-link
       class="btn btn-success tw-my-1 tw-mr-2"

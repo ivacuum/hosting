@@ -103,7 +103,7 @@ export default {
   <div v-if="comments.length">
     <h3 class="tw-mt-6">
       {{ $t('comments.index') }}
-      <small class="text-muted">{{ comments.length }}</small>
+      <span class="tw-text-base text-muted">{{ comments.length }}</span>
     </h3>
     <div v-for="comment in comments" :key="comment.id">
       <comment-item :comment="comment"/>

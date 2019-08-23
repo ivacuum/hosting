@@ -13,7 +13,7 @@
     @svg (chevron-left)
   </a>
   {{ basename($file) }}
-  <small class="text-muted">{{ $dir_up }}</small>
+  <span class="tw-text-base text-muted">{{ $dir_up }}</span>
 </h2>
 
 <form action="/acp/servers/{{ $server->id }}/ftp/source" method="post">

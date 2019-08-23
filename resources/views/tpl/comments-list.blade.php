@@ -1,6 +1,6 @@
 <div class="h3 tw-mt-12">
   {{ trans('comments.discussion') }}
-  <small class="text-muted">{{ sizeof($comments) }}</small>
+  <span class="tw-text-base text-muted">{{ sizeof($comments) }}</span>
 </div>
 <a id="comments"></a>
 @foreach ($comments as $comment)

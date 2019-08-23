@@ -5,7 +5,7 @@
 @section('content')
 <h1 class="tw-text-3xl">
   {{ trans('life.visited_countries') }}
-  <small class="text-muted">{{ sizeof($countries) }}</small>
+  <span class="tw-text-base text-muted">{{ sizeof($countries) }}</span>
 </h1>
 <ul class="list-inline tw-text-sm">
   <li class="list-inline-item tw-whitespace-no-wrap"><a class="link" href="{{ path('Life@index') }}">{{ trans('life.by_year') }}</a></li>

@@ -6,8 +6,8 @@
 @ru
   <p>На концерте всего было около полутора сотен человек — никогда прежде не был на столь малочисленных шоу.</p>
 @endru
-<div class="row">
-  <div class="col-md-7">
+<div class="md:tw-flex md:tw--mx-4">
+  <div class="md:tw-w-7/12 md:tw-px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>Sleepmonster</li>
@@ -24,7 +24,7 @@
       <li>Tragedy of Joseph Merrick</li>
     </ol>
   </div>
-  <div class="col-md-5">
+  <div class="md:tw-w-5/12 md:tw-px-4">
     <div class="img-container">
       <img src="https://life.ivacuum.org/gigs/tfn.2014.12.21.jpg">
     </div>

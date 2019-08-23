@@ -3,8 +3,8 @@
 {{-- СК Олимпийский --}}
 
 @section('content')
-<div class="row">
-  <div class="col-md-7">
+<div class="md:tw-flex md:tw--mx-4">
+  <div class="md:tw-w-7/12 md:tw-px-4">
     @ru
       <p>Смело можно сказать, что два вокалиста в группе — это ад! Не дадут спуска практически ни на минуту. Прокричишь куплет, припев будешь уже прыгать и орать, далее все заново. И так 100 минут. Стоило оно того? Однозначно да!</p>
     @endru
@@ -44,7 +44,7 @@
       <li>Bleed It Out</li>
     </ol>
   </div>
-  <div class="col-md-5">
+  <div class="md:tw-w-5/12 md:tw-px-4">
     <div class="img-container">
       <img src="https://life.ivacuum.org/gigs/linkinpark.2014.06.02.jpg">
     </div>

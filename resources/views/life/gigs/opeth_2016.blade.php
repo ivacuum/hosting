@@ -61,8 +61,8 @@ Highlights
   <p><a class="link" href="rammstein.2016.07">Раммштайн в Берлине</a> был дешевле, чем в Москве. В случае с Опет скорее всего концерт в Москве тоже был бы дороже такового в Брюсселе.</p>
 @endru
 
-<div class="row">
-  <div class="col-md-7">
+<div class="md:tw-flex md:tw--mx-4">
+  <div class="md:tw-w-7/12 md:tw-px-4">
     @ru
       <p>Песен сыграли мало — сказывается их средняя продолжительность в десять минут. Зато охватили большинство выпущенных альбомов в рамках одного выступления.</p>
     @endru
@@ -81,7 +81,7 @@ Highlights
       <li>Deliverance</li>
     </ol>
   </div>
-  <div class="col-md-5">
+  <div class="md:tw-w-5/12 md:tw-px-4">
     <div class="img-container">
       <img src="https://life.ivacuum.org/gigs/opeth.2016.11.17.jpg">
     </div>

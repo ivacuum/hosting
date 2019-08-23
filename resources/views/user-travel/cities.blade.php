@@ -5,7 +5,7 @@
 @section('content')
 <h1 class="h2">
   {{ trans('life.visited_cities') }}
-  <small class="text-muted">{{ sizeof($cities) }}</small>
+  <span class="tw-text-base text-muted">{{ sizeof($cities) }}</span>
 </h1>
 <ul class="list-inline tw-text-sm">
   <li class="list-inline-item"><a class="link" href="{{ path('UserTravelTrips@index', $traveler->login) }}">{{ trans('life.by_year') }}</a></li>

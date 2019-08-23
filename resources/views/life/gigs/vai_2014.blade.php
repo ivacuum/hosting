@@ -3,8 +3,8 @@
 {{-- Калужская областная филармония --}}
 
 @section('content')
-<div class="row">
-  <div class="col-md-7">
+<div class="md:tw-flex md:tw--mx-4">
+  <div class="md:tw-w-7/12 md:tw-px-4">
     @ru
       <div class="tw-mb-1">Как попала Калуга в график его гастролей — решительно непонятно:</div>
       <ul>
@@ -45,7 +45,7 @@
       <li>Fire Garden Suite IV - Taurus Bulba</li>
     </ol>
   </div>
-  <div class="col-md-5">
+  <div class="md:tw-w-5/12 md:tw-px-4">
     <div class="img-container">
       <img src="https://life.ivacuum.org/gigs/vai.2014.05.26.jpg">
     </div>

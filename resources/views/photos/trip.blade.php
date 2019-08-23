@@ -1,7 +1,7 @@
 @extends('photos.base')
 
 @section('content')
-<h3>{{ $trip->breadcrumb() }} <small class="tw-text-base tw-text-gray-600">{{ sizeof($photos) }}</small></h3>
+<h3>{{ $trip->breadcrumb() }} <span class="tw-text-base tw-text-gray-600">{{ sizeof($photos) }}</span></h3>
 <div class="tw-flex tw-flex-wrap tw-mobile-wide">
   @foreach ($photos as $photo)
     <div class="tw-w-full sm:tw-w-1/2 lg:tw-w-1/3 tw-mx-auto sm:tw-mx-0">

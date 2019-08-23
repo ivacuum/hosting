@@ -263,8 +263,8 @@
   'IMG_6199.jpg',
 ]])
 
-<div class="row">
-  <div class="col-md-7">
+<div class="md:tw-flex md:tw--mx-4">
+  <div class="md:tw-w-7/12 md:tw-px-4">
     @ru
       <div class="tw-mb-1">Что было исполнено. На каждую песню можно нажать и посмотреть видео. Сердечком отмечен самый смак.</div>
     @en
@@ -411,7 +411,7 @@
       </li>
     </ol>
   </div>
-  <div class="col-md-5">
+  <div class="md:tw-w-5/12 md:tw-px-4">
     <div class="img-container">
       <img src="https://life.ivacuum.org/gigs/psy.2018.12.23.jpg">
     </div>

@@ -15,8 +15,8 @@
   </p>
   --}}
 @endru
-<div class="row">
-  <div class="col-md-7">
+<div class="md:tw-flex md:tw--mx-4">
+  <div class="md:tw-w-7/12 md:tw-px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>Was ich liebe</li>
@@ -43,7 +43,7 @@
       <li>Ich will</li>
     </ol>
   </div>
-  <div class="col-md-5">
+  <div class="md:tw-w-5/12 md:tw-px-4">
     <div class="img-container">
       <img src="https://life.ivacuum.org/gigs/rammstein.2019.08.02.jpg">
     </div>

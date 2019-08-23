@@ -54,7 +54,7 @@
 @if (optional($related_torrents = $torrent->relatedTorrents())->count())
   <div class="h3 tw-mt-12">
     {{ trans('torrents.related') }}
-    <small class="text-muted">{{ $related_torrents->count() }}</small>
+    <span class="tw-text-base text-muted">{{ $related_torrents->count() }}</span>
   </div>
   @foreach ($related_torrents as $row)
     @php ($category = TorrentCategoryHelper::find($row->category_id))

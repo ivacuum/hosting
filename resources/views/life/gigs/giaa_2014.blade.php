@@ -6,8 +6,8 @@
 @ru
   <p>Заключительный концерт тура ирландцев. Гитаристы играли на одних и тех же гитарах все шоу, из-за этого чуть ли не каждую песню их перенастраивали — это резало глаз после популярных международных коллективов, где у каждой группы целая команда техников и множество предварительно настроенных инструментов.</p>
 @endru
-<div class="row">
-  <div class="col-md-7">
+<div class="md:tw-flex md:tw--mx-4">
+  <div class="md:tw-w-7/12 md:tw-px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>When Everything Dies</li>
@@ -30,7 +30,7 @@
       <li>Route 666</li>
     </ol>
   </div>
-  <div class="col-md-5">
+  <div class="md:tw-w-5/12 md:tw-px-4">
     <div class="img-container">
       <img src="https://life.ivacuum.org/gigs/giaa.2014.11.23.jpg">
     </div>

@@ -11,8 +11,8 @@
   <p>Стоило ли идти? Разок определенно интересно увидеть каков он этот рейв. Если бы цена билета была не 4&thinsp;400 ₽, а вдвое меньше, то можно было бы однозначно всем рекомендовать сходить. Публика очень активная.</p>
 @endru
 
-<div class="row">
-  <div class="col-md-7">
+<div class="md:tw-flex md:tw--mx-4">
+  <div class="md:tw-w-7/12 md:tw-px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>Breathe</li>
@@ -37,7 +37,7 @@
       <li>Take Me to the Hospital</li>
     </ol>
   </div>
-  <div class="col-md-5">
+  <div class="md:tw-w-5/12 md:tw-px-4">
     <div class="img-container">
       <img src="https://life.ivacuum.org/gigs/prodigy.2016.11.09.jpg">
     </div>
