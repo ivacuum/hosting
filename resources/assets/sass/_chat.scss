@@ -1,20 +1,7 @@
 .chat-container {
-  overflow-y: auto;
   height: 25vh;
-  padding: .25rem .75rem .25rem .5rem;
   background: #efefef;
   border: $border-width solid $input-border-color;
 }
 
 .chat-bg { background: #efefef; }
-
-.chat-date {
-  position: sticky;
-  top: 0;
-}
-
-.chat-date,
-.chat-time {
-  font-size: .75rem;
-  color: #aaa;
-}

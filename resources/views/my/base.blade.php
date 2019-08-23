@@ -1,8 +1,8 @@
 @extends('base')
 
 @section('content_header')
-<div class="row">
-  <div class="col-lg-3">
+<div class="lg:tw-flex lg:tw--mx-4">
+  <div class="lg:tw-w-3/12 lg:tw-px-4">
     <div class="list-group tw-text-center">
       @if (Auth::user()->isAdmin())
         <a class="list-group-item list-group-item-action md:tw-hidden" href="{{ App::isLocal() ? "{$locale_uri}/acp/dev/templates" : "{$locale_uri}/acp/trips?user_id=1" }}">
@@ -29,7 +29,7 @@
       </a>
     </div>
   </div>
-  <div class="col-lg-9 tw-mt-4 lg:tw-mt-0">
+  <div class="lg:tw-w-9/12 lg:tw-px-4 tw-mt-4 lg:tw-mt-0">
 @endsection
 
 @section('content_footer')

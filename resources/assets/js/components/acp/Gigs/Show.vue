@@ -27,7 +27,7 @@ export default {
 <template>
 <div v-if="resource">
   <div class="tw-mt-4" v-if="resource.meta_image">
-    <img class="img-fluid tw-rounded image-fit-viewport" :src="resource.meta_image">
+    <img class="tw-max-w-full tw-h-auto tw-rounded image-fit-viewport" :src="resource.meta_image">
   </div>
   <button class="btn btn-default tw-mt-4" @click.prevent="notify">
     {{ $t('trips.notify') }}

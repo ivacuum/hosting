@@ -14,7 +14,7 @@
 <ul>
   <li>
     <a class="link" href="https://vk.com/audios-23004022">Chillout Breeze by M.SOUND</a>
-    <span class="small text-muted">более 50 часовых сетов</span>
+    <span class="tw-text-sm text-muted">более 50 часовых сетов</span>
   </li>
 </ul>
 @endsection

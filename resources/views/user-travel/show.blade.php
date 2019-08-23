@@ -18,7 +18,7 @@
   @endif
 </div>
 <time datetime="{{ $trip->date_start->toDateString() }}"></time>
-<div id="trip_city_map" class="trip-city-map tw-mb-4" style="display: none;"></div>
+<div id="trip_city_map" class="trip-city-map tw-mb-4 tw-hidden"></div>
 
 <div class="mw-1000 js-trip-shortcuts">
 @endsection

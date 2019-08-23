@@ -48,7 +48,7 @@ sudo ./retracker.local.sh</pre>
   <div class="tw-container tw-max-w-3xl">
     <h3>Как понять, что ретрекер заработал?</h3>
     <p>Статус трекера «retracker.local» в вашем торрент-клиент на вкладке «Трекеры» (Trackers) должен измениться на «работает» (working) как на картинке ниже:</p>
-    <div><img class="img-fluid" src="https://img.ivacuum.ru/g/100710/1_899GTp1JNl.png"></div>
+    <div><img class="tw-max-w-full tw-h-auto" src="https://img.ivacuum.ru/g/100710/1_899GTp1JNl.png"></div>
   </div>
 </section>
 @endsection

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="tw-flex">
-  <aside class="tw-hidden lg:tw-block tw-flex-shrink-0 tw-antialiased torrent-categories" style="width: 14rem;">
+  <aside class="tw-hidden lg:tw-block tw-flex-shrink-0 tw-antialiased torrent-categories tw-w-56">
     <nav>
       @foreach ($tree as $id => $category)
         <h4 class="{{ $loop->first ? '' : 'tw-mt-6' }} tw-whitespace-no-wrap">

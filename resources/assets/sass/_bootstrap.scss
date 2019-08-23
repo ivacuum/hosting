@@ -6,10 +6,10 @@
 @import "~bootstrap/scss/root";
 @import "~bootstrap/scss/reboot";
 @import "~bootstrap/scss/type";
-@import "~bootstrap/scss/images";
+// @import "~bootstrap/scss/images";
 @import "~bootstrap/scss/code";
 @import "~bootstrap/scss/grid";
-@import "~bootstrap/scss/tables";
+// @import "~bootstrap/scss/tables";
 @import "~bootstrap/scss/forms";
 @import "~bootstrap/scss/buttons";
 @import "~bootstrap/scss/transitions";
@@ -33,7 +33,11 @@
 // @import "~bootstrap/scss/tooltip";
 // @import "~bootstrap/scss/popover";
 // @import "~bootstrap/scss/carousel";
-@import "~bootstrap/scss/utilities";
+// @import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/utilities/background";
+@import "~bootstrap/scss/utilities/borders";
+@import "~bootstrap/scss/utilities/embed";
+@import "~bootstrap/scss/utilities/text";
 @import "~bootstrap/scss/print";
 
 @import "~vac-gfe/scss/gfe";

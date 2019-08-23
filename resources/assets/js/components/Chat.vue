@@ -1,21 +1,20 @@
 <template>
 <div>
-  <div class="chat-container tw-antialiased tw-rounded" style="font-size: .875rem;">
+  <div class="chat-container tw-antialiased tw-rounded tw-overflow-y-auto tw-py-1 tw-pr-3 tw-pl-2 tw-text-sm">
     <div v-for="(messagesForDate, date) in messagesGroupedByDate">
-      <div class="chat-date tw-my-1 tw-text-center">
+      <div class="tw-sticky tw-top-0 tw-text-gray-500 tw-text-xs tw-my-1 tw-text-center">
         <div class="chat-bg tw-inline-block tw-mx-auto tw-p-1 tw-rounded">{{ date }}</div>
       </div>
       <div class="tw-flex tw-mt-2" v-for="(message, index) in messagesForDate">
-        <div class="tw-flex-shrink-0" style="width: 2.75rem;">
+        <div class="tw-flex-shrink-0 tw-w-10">
           <div v-if="!sameUser[date][index]">
             <img
-              class="tw-rounded-full"
+              class="tw-rounded-full tw-w-8 tw-h-8"
               :src="message.user.avatar"
-              style="width: 2.25rem; height: 2.25rem;"
               v-if="message.user.avatar"
             >
             <div v-else>
-              <svg class="tw-inline-block tw-align-middle" viewBox="0 0 130 130" style="width: 2.25rem; height: 2.25rem;"><rect x="0" y="0" width="100%" height="100%" rx="50%" :fill="message.user.color"></rect><text font-size="59.8" font-family="Helvetica Neue,Helvetica,Arial" x="65" y="65" dy=".38em" letter-spacing="-.05em" text-anchor="middle" fill="#fff">{{ message.user.avatar_text }}</text></svg>
+              <svg class="tw-inline-block tw-align-middle tw-w-8 tw-h-8" viewBox="0 0 130 130"><rect x="0" y="0" width="100%" height="100%" rx="50%" :fill="message.user.color"></rect><text font-size="59.8" font-family="Helvetica Neue,Helvetica,Arial" x="65" y="65" dy=".38em" letter-spacing="-.05em" text-anchor="middle" fill="#fff">{{ message.user.avatar_text }}</text></svg>
             </div>
           </div>
         </div>
@@ -23,7 +22,7 @@
           <div class="tw-leading-none" :style="{ color: message.user.color }" v-if="!sameUser[date][index]">{{ message.user.public_name }}</div>
           <div class="tw-break-words" v-html="message.html"></div>
         </div>
-        <div class="tw-flex-shrink-0 chat-time tw-text-right small" :title="message.date" style="width: 3rem;">{{ message.time }}</div>
+        <div class="tw-flex-shrink-0 tw-text-xs tw-text-gray-500 tw-text-right tw-w-12" :title="message.date">{{ message.time }}</div>
       </div>
     </div>
     <!--

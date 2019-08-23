@@ -4,7 +4,7 @@
 ])
 
 @section('content')
-<div id="trip_city_map" class="trip-city-map tw-mb-4" style="display: none;"></div>
+<div id="trip_city_map" class="trip-city-map tw-mb-4 tw-hidden"></div>
 <div class="row">
   <div class="col-sm-6">
     <div class="tw-flex tw-flex-wrap tw-items-center tw-mb-4">

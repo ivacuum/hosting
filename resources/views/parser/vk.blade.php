@@ -32,7 +32,7 @@
   </div>
   <div class="tw-hidden sm:tw-flex tw-items-center">
     <span class="tw-hidden md:tw-block">Топ 10</span>
-    <input class="form-control tw-mx-2" name="slug" value="{{ $vkpage }}" style="width: 8em;" autocapitalize="none">
+    <input class="form-control tw-mx-2 tw-w-32" name="slug" value="{{ $vkpage }}" autocapitalize="none">
     за {{ $date->formatLocalized('%e %B') }}
     @if ($date->year !== now()->year)
       {{ $date->year }}

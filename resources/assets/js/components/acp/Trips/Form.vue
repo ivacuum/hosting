@@ -61,7 +61,7 @@ export default {
 
     <div class="form-group form-row" v-if="resource && resource.meta_image">
       <div class="col-md-6 offset-md-4">
-        <img class="img-fluid tw-rounded" :src="resource.meta_image">
+        <img class="tw-max-w-full tw-h-auto tw-rounded" :src="resource.meta_image">
       </div>
     </div>
 

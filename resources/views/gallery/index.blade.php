@@ -4,7 +4,7 @@
 @if (sizeof($images))
   <div class="tw-flex tw-flex-wrap tw-text-center">
     @foreach ($images as $image)
-      <div class="gallery-image tw-mb-6">
+      <div class="tw-w-full sm:tw-w-1/2 md:tw-w-1/3 lg:tw-w-1/4 xl:tw-w-1/5 tw-self-end tw-mb-6">
         <div class="tw-mb-4">
           <a class="screenshot-link" href="{{ path("$self@view", $image) }}">
             <img class="screenshot" src="{{ $image->thumbnailUrl() }}">

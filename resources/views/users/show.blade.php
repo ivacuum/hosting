@@ -7,7 +7,7 @@
       @include('tpl.avatar')
       <h1 class="h3 tw-mt-2">{{ $user->publicName() }}</h1>
     </div>
-    <table class="tw-table tw-mx-auto tw-mb-4 tw-break-words">
+    <table class="tw-mx-auto tw-mb-4 tw-break-words">
       <tr>
         <td class="tw-text-gray-600 tw-text-right tw-pr-1">Зарегистрирован</td>
         <td class="tw-pl-1 tw-mb-2">{{ ViewHelper::dateShort($user->created_at) }}</td>

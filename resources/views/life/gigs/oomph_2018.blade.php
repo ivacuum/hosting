@@ -9,8 +9,8 @@
 @ru
   <p>В сетлисте можно заметить, что три песни повторяются. Niemand должна была стать последней в сете, но из-за технических заминок три песни пришлось сыграть заново. До этого в <a class="link" href="oomph.2012">2012 году</a> дважды исполнялась Augen auf.</p>
 @endru
-<div class="row">
-  <div class="col-md-7">
+<div class="sm:tw-flex sm:tw--mx-4">
+  <div class="sm:tw-w-1/2 md:tw-w-7/12 tw-px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>Gekreuzigt</li>
@@ -33,15 +33,13 @@
       <li>Labyrinth</li>
     </ol>
   </div>
-  <div class="col-md-5">
+  <div class="sm:tw-w-1/2 md:tw-w-5/12 sm:tw-px-4">
     <div class="img-container">
       <img src="https://life.ivacuum.org/gigs/oomph.2018.09.14.jpg">
     </div>
   </div>
 </div>
 
-@ru
-  <p class="tw-mb-1">Видеозапись выступления.</p>
-@endru
+<p class="tw-mb-1">@ru Видеозапись выступления. @en Video of the show. @endru</p>
 <youtube title="Oomph 2018, Moscow, Russia" v="Nv-LLFJYvOI"></youtube>
 @endsection
