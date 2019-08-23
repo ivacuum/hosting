@@ -1,13 +1,5 @@
 .breadcrumbs {
   background-color: #fafafa;
-  font-size: 12px;
-  line-height: 17px;
-
-  .svg-icon {
-    @include size(12px);
-    margin-top: 2px;
-    vertical-align: text-top;
-  }
 
   .svg-angle-right { color: $gray-light; }
 }

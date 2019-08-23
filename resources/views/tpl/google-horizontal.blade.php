@@ -1,5 +1,5 @@
 @if (App::environment() === 'production')
-  <div class="google-b-horizontal">
+  <div class="tw-overflow-hidden tw-w-full tw-h-90px">
     <ins
       class="adsbygoogle tw-block"
       data-ad-client="ca-pub-7802683087624570"
@@ -9,5 +9,5 @@
     <script>(adsbygoogle = window.adsbygoogle || []).push({})</script>
   </div>
 @elseif (App::isLocal())
-  <div class="google-b-horizontal bg-info tw-text-white tw-flex tw-justify-center tw-items-center">google-horizontal</div>
+  <div class="tw-overflow-hidden tw-w-full tw-h-90px bg-info tw-text-white tw-flex tw-justify-center tw-items-center">google-horizontal</div>
 @endif
