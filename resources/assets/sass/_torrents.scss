@@ -75,6 +75,30 @@
   .post-s { text-decoration: line-through; }
   .post-u { text-decoration: underline; }
 
+  .post-box {
+    display: inline-block;
+    border: 1px solid #a7b4ba;
+    border-radius: 3px;
+    line-height: 150%;
+    margin: 1px 5px;
+    padding: 0 8px 1px;
+  }
+
+  .post-box .sp-wrap { min-width: 250px; }
+  .post-box-default { display: inline-block; }
+  .post-box-left { float: left; }
+  .post-box-right { float: right; }
+
+  .post-box-center {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .post-ul { list-style: disc; }
+  .post-ul .post-ul { list-style: circle; }
+  .post-ul .post-ul .post-ul { list-style: square; }
+
   .sp-body {
     border-width: 1px 0 0 0;
     display: none;
