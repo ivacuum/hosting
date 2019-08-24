@@ -4,7 +4,7 @@
 {!! Form::text('host')->required()->placeholder('srv1.example.com')->html() !!}
 {!! Form::textarea('text')->wide()->html() !!}
 
-<div class="form-group">
+<div class="tw-mb-4">
   <label>FTP</label>
   <div class="input-group">
     <input class="form-control" type="text" name="ftp_user" placeholder="user" value="{{ old('ftp_user', @$model->ftp_user) }}">

@@ -3,7 +3,7 @@
 @section('content')
 <h3>
   {{ trans('my.trips') }}
-  <span class="tw-text-base tw-text-gray-600 tw-whitespace-no-wrap">{{ ViewHelper::number($models->total()) }}</span>
+  <span class="tw-text-base text-muted tw-whitespace-no-wrap">{{ ViewHelper::number($models->total()) }}</span>
   <a class="btn btn-success" href="{{ path('MyTrips@create') }}">
     {{ trans('acp.trips.create') }}
   </a>

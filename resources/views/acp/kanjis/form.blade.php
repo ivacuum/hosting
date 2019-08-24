@@ -2,18 +2,14 @@
 
 {!! Form::text('similar_kanji')->default($model->exists ? $model->similar->pluck('character')->implode('') : '')->html() !!}
 
-<div class="form-group form-row">
-  <label class="col-md-4 md:tw-text-right">Состоит из ключей</label>
-  <div class="col-md-8">
-    @php ($radicals = $model->radicals->pluck('id')->all())
-    @foreach (App\Radical::orderBy('level')->orderBy('meaning')->get(['id', 'character', 'meaning']) as $row)
-      <label class="form-check">
-        <input class="form-check-input" type="checkbox" name="radicals[]" value="{{ $row->id }}" {{ in_array($row->id, (array) old('radicals', $radicals)) ? 'checked' : '' }}>
-        <span class="form-check-label">
-          {{ $row->character }}
-          <span class="text-muted">{{ $row->meaning }}</span>
-        </span>
-      </label>
-    @endforeach
-  </div>
+<div class="tw-mb-4">
+  <label>Состоит из ключей</label>
+  @php ($radicals = $model->radicals->pluck('id')->all())
+  @foreach (App\Radical::orderBy('level')->orderBy('meaning')->get(['id', 'character', 'meaning']) as $row)
+    <label class="tw-flex tw-items-center tw-font-normal">
+      <input class="tw-mr-2" type="checkbox" name="radicals[]" value="{{ $row->id }}" {{ in_array($row->id, (array) old('radicals', $radicals)) ? 'checked' : '' }}>
+      <span class="tw-mr-1">{{ $row->character }}</span>
+      <span class="text-muted">{{ $row->meaning }}</span>
+    </label>
+  @endforeach
 </div>

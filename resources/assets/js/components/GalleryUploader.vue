@@ -26,26 +26,26 @@
   <div v-if="files.length" class="tw-my-6">
     <div v-if="files.length > 1">
       <h3>Ссылки на все картинки</h3>
-      <div class="row">
-        <div class="col-md-8">
+      <div class="md:tw-flex md:tw--mx-4">
+        <div class="md:tw-w-2/3 md:tw-px-4">
           <div>Ссылка:</div>
-          <textarea class="form-control js-highlight" :rows="total" v-html="links"></textarea>
+          <textarea class="form-control tw-select-all" :rows="total" v-html="links"></textarea>
           <div class="tw-mt-2">Полная картинка:</div>
-          <input class="form-control js-highlight" :value="linksInTag">
+          <input class="form-control tw-select-all" :value="linksInTag">
         </div>
       </div>
       <h3 class="tw-mt-12">Индивидуальные ссылки</h3>
     </div>
     <div v-for="file in files">
-      <div class="row tw-mt-4">
-        <div class="col-md-2 tw-text-center tw-mt-2 tw-mb-4">
+      <div class="md:tw-flex md:tw--mx-4 tw-mt-4">
+        <div class="md:tw-w-1/6 md:tw-px-4 tw-text-center tw-mt-2 tw-mb-4">
           <img class="screenshot" :src="file.thumbnail">
         </div>
-        <div class="col-md-6">
+        <div class="md:tw-w-1/2 md:tw-px-4">
           <div>Ссылка:</div>
-          <input class="form-control js-highlight" :value="file.original">
+          <input class="form-control tw-select-all" :value="file.original">
           <div class="tw-mt-2">Полная картинка:</div>
-          <input class="form-control js-highlight" :value="`[img]${file.original}[/img]`">
+          <input class="form-control tw-select-all" :value="`[img]${file.original}[/img]`">
         </div>
       </div>
     </div>

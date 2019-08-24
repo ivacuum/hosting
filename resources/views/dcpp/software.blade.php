@@ -82,9 +82,9 @@
     <section class="border-bottom tw-my-0 tw-py-12">
       <div class="tw-container">
         <h2 class="tw-mb-6">{{ trans('dcpp.links') }}</h2>
-        <div class="row">
+        <div class="md:tw-flex md:tw--mx-4">
           @if (sizeof($software) > 1)
-            <div class="col-md-6 col-lg-5 col-xl-4">
+            <div class="md:tw-w-1/2 lg:tw-w-5/12 xl:tw-w-1/3 md:tw-px-4">
               <h4>{{ trans('dcpp.earlier_versions') }}</h4>
               <ul>
                 @foreach ($software as $soft)
@@ -95,7 +95,7 @@
             </div>
           @endif
           @if (!empty($developer_site))
-            <div class="col-md-6 col-lg-5 col-xl-4">
+            <div class="md:tw-w-1/2 lg:tw-w-5/12 xl:tw-w-1/3 md:tw-px-4">
               <h4>{{ trans('dcpp.pages') }}</h4>
               <ul>
                 <li>
@@ -114,8 +114,8 @@
 
   <section class="bg-light tw-my-0 tw-py-12">
     <div class="tw-container">
-      <div class="row">
-        <div class="col-md-6">
+      <div class="md:tw-flex md:tw--mx-4">
+        <div class="md:tw-w-1/2 md:tw-px-4">
           <div class="h3">{{ trans('issues.create') }}</div>
           @ru
             <p>Поделитесь своими знаниями или задайте вопрос. Мы постараемся обработать информацию и дополнить эту страницу новыми материалами.</p>
@@ -129,7 +129,7 @@
             hide-title
           ></feedback-form>
         </div>
-        <div class="col-md-6 col-lg-4 col-xl-3 tw-mt-4 md:tw-mt-0">
+        <div class="md:tw-w-1/2 lg:tw-w-1/3 xl:tw-w-1/4 md:tw-px-4 tw-mt-4 md:tw-mt-0">
           @include('tpl.google-vertical')
         </div>
       </div>

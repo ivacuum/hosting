@@ -11,8 +11,8 @@ export default {
 
 <template>
 <div v-if="resource">
-  <div class="row">
-    <div class="col-lg-3">
+  <div class="lg:tw-flex lg:tw--mx-4">
+    <div class="lg:tw-w-1/4 lg:tw-px-4">
       <div class="list-group tw-text-center">
         <router-link
           class="list-group-item list-group-item-action"
@@ -51,7 +51,7 @@ export default {
         </a>
       </div>
     </div>
-    <div class="col-lg-9">
+    <div class="lg:tw-w-3/4 lg:tw-px-4">
       <slot name="header">
         <h2 class="tw-mt-4 lg:tw-mt-0 tw-break-words">
           <a href="back" @click.prevent="$router.go(-1)" v-html="$root.svg.chevron_left"></a>

@@ -52,7 +52,6 @@ export default {
 
     labelClasses() {
       return {
-        'col-form-label': this.type !== 'checkbox' && this.type !== 'radio',
         'input-required': this.required,
       }
     },

@@ -131,28 +131,28 @@ export default {
 <form @submit.prevent="submit">
   <input hidden type="text" name="mail" value="" v-model="trap">
 
-  <div class="form-group" v-if="!hideName">
+  <div class="tw-mb-4" v-if="!hideName">
     <div class="form-label-group">
       <input required class="form-control" v-model="localName" :placeholder="$t('NAME_LABEL')">
       <label>{{ $t('NAME_LABEL') }}</label>
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="tw-mb-4">
     <div class="form-label-group">
       <input required class="form-control" type="email" v-model="localEmail" :placeholder="$t('EMAIL_LABEL')">
       <label>{{ $t('EMAIL_LABEL') }}</label>
     </div>
   </div>
 
-  <div class="form-group" v-if="!hideTitle">
+  <div class="tw-mb-4" v-if="!hideTitle">
     <div class="form-label-group">
       <input required class="form-control" v-model="localTitle" :placeholder="$t('TITLE_LABEL')">
       <label>{{ $t('TITLE_LABEL') }}</label>
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="tw-mb-4">
     <label>{{ textareaLabel }}</label>
     <textarea
       required

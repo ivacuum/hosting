@@ -3,7 +3,7 @@
     @foreach ($previous_trips as $previous)
       <div class="{{ !$loop->first ? 'tw-mb-4 md:tw-mb-0' : '' }}">
         <a class="link" href="{{ $previous->www() }}">{{ $previous->title }}</a>
-        <div class="tw-text-xs tw-text-gray-600">
+        <div class="tw-text-xs text-muted">
           {{ $previous->year !== $trip->year ? $previous->localizedDate() : $previous->localizedDateWithoutYear() }}
         </div>
       </div>
@@ -19,13 +19,13 @@
       <span class="tw-hidden md:tw-inline">&rarr;</span>
       <span class="md:tw-hidden">&uarr;</span>
     @endif
-    <div class="tw-text-xs tw-text-gray-600">{{ $trip->localizedDate() }}</div>
+    <div class="tw-text-xs text-muted">{{ $trip->localizedDate() }}</div>
   </div>
   @if (isset($next_trips) && sizeof($next_trips))
     @foreach ($next_trips as $next)
       <div class="tw-mb-4 md:tw-mb-0">
         <a class="link" href="{{ $next->www() }}">{{ $next->title }}</a>
-        <div class="tw-text-xs tw-text-gray-600">
+        <div class="tw-text-xs text-muted">
           {{ $next->year !== $trip->year ? $next->localizedDate() : $next->localizedDateWithoutYear() }}
         </div>
       </div>

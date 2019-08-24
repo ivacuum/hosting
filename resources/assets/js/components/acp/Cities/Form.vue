@@ -65,13 +65,11 @@ export default {
 
     <form-text name="iata" v-model="model.iata"/>
 
-    <div class="form-group form-row">
-      <div class="col-md-6 offset-md-4">
-        <button class="btn btn-default" @click.prevent="fillGeodata">
-          {{ $t(`cities.fill_geodata`)}}
-        </button>
-      </div>
-    </div>
+    <!--<div class="tw-mb-4">
+      <button class="btn btn-default" @click.prevent="fillGeodata">
+        {{ $t(`cities.fill_geodata`)}}
+      </button>
+    </div>-->
 
     <form-text name="lat" v-model="model.lat"/>
     <form-text name="lon" v-model="model.lon"/>

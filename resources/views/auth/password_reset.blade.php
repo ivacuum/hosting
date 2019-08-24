@@ -7,7 +7,7 @@
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 
-    <div class="form-group">
+    <div class="tw-mb-4">
       <input
         autofocus
         required
@@ -21,7 +21,7 @@
       <div class="invalid-feedback">{{ $errors->first('email') }}</div>
     </div>
 
-    <div class="form-group">
+    <div class="tw-mb-4">
       <input
         required
         class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"

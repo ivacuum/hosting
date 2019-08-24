@@ -32,7 +32,7 @@
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 
-    <div class="form-group">
+    <div class="tw-mb-4">
       <input
         autofocus
         required
@@ -45,7 +45,7 @@
       <div class="invalid-feedback">{{ $errors->first('email') }}</div>
     </div>
 
-    <div class="form-group tw-relative">
+    <div class="tw-mb-4 tw-relative">
       <input
         required
         class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
@@ -65,10 +65,10 @@
       <div class="invalid-feedback">{{ $errors->first('password') }}</div>
     </div>
 
-    <div class="tw-flex tw-justify-between">
+    <div class="tw-flex tw-items-center tw-justify-between">
       <div>
-        <label class="form-check">
-          <input class="form-check-input" type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}>
+        <label class="tw-flex tw-items-center tw-font-normal tw-mb-0">
+          <input class="tw-mr-2" type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}>
           {{ trans('auth.dont_remember') }}
         </label>
       </div>

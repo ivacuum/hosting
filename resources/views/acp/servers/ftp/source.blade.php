@@ -20,7 +20,7 @@
   {{ ViewHelper::inputHiddenMail() }}
   @csrf
 
-  <div class="form-group">
+  <div class="tw-mb-4">
     <textarea class="form-control tw-text-sm textarea-autosized js-autosize-textarea" name="source" rows="2" style="font-family: var(--font-family-monospace);">{{ $source }}</textarea>
   </div>
 

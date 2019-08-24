@@ -119,7 +119,7 @@
                 @svg (film)
                 {{ $attach->video->title }}
               </a>
-              <span class="tw-text-sm tw-text-gray-600">
+              <span class="tw-text-sm text-muted">
                 {{ sprintf('%02d', $attach->video->duration / 60) }}:{{ sprintf('%02d', $attach->video->duration % 60) }}
               </span>
             </p>
@@ -141,7 +141,7 @@
                 @svg (link)
                 {{ $attach->link->title }}
               </a>
-              <div class="tw-text-sm tw-text-gray-600">
+              <div class="tw-text-sm text-muted">
                 {{ $attach->link->url }}
               </div>
             </div>
@@ -149,7 +149,7 @@
         @endforeach
         </div>
       @endif
-      <div class="tw-mt-2 tw-mb-1 tw-text-gray-600">
+      <div class="tw-mt-2 tw-mb-1 text-muted">
         <samp class="tw-text-xs svg-labels tw-justify-end">
           <a class="svg-flex svg-label" href="{{ $post['url'] }}">
             @svg (link)

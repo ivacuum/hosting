@@ -3,33 +3,33 @@
 @section('content')
 <h3 class="tw-mb-4">{{ trans('my.settings') }}</h3>
 
-<div class="mw-600">
+<div>
   <form action="{{ path("$self@update") }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @method('put')
     @csrf
 
-    <div class="form-group">
+    <div class="tw-mb-4">
       <label>{{ trans('my.theme') }}</label>
-      <label class="form-check">
+      <label class="tw-flex tw-items-center tw-font-normal">
         <input
-          class="form-check-input {{ $errors->has('theme') ? 'is-invalid' : '' }}"
+          class="tw-mr-2 {{ $errors->has('theme') ? 'is-invalid' : '' }}"
           type="radio"
           name="theme"
           value="{{ App\User::THEME_LIGHT }}"
           {{ old('theme', Auth::user()->theme) == App\User::THEME_LIGHT ? 'checked' : '' }}
         >
-        <span class="form-check-label">{{ trans('my.theme_light') }}</span>
+        {{ trans('my.theme_light') }}
       </label>
-      <label class="form-check">
+      <label class="tw-flex tw-items-center tw-font-normal">
         <input
-          class="form-check-input {{ $errors->has('theme') ? 'is-invalid' : '' }}"
+          class="tw-mr-2 {{ $errors->has('theme') ? 'is-invalid' : '' }}"
           type="radio"
           name="theme"
           value="{{ App\User::THEME_DARK }}"
           {{ old('theme', Auth::user()->theme) == App\User::THEME_DARK ? 'checked' : '' }}
         >
-        <span class="form-check-label">{{ trans('my.theme_dark') }}</span>
+        {{ trans('my.theme_dark') }}
       </label>
       @if ($errors->has('theme'))
         <div class="invalid-feedback tw-block">{{ $errors->first('theme') }}</div>
@@ -37,17 +37,17 @@
     </div>
 
     <label>{{ trans('torrents.index') }}</label>
-    <div class="form-group">
+    <div class="tw-mb-4">
       <input type="hidden" name="torrent_short_title" value="0">
-      <label class="form-check">
+      <label class="tw-flex tw-items-center tw-font-normal">
         <input
-          class="form-check-input {{ $errors->has('torrent_short_title') ? 'is-invalid' : '' }}"
+          class="tw-mr-2 {{ $errors->has('torrent_short_title') ? 'is-invalid' : '' }}"
           type="checkbox"
           name="torrent_short_title"
           value="1"
           {{ old('torrent_short_title', Auth::user()->torrent_short_title) ? 'checked' : '' }}
         >
-        <span class="form-check-label">{{ trans('my.torrent_short_title') }}</span>
+        {{ trans('my.torrent_short_title') }}
       </label>
       @if ($errors->has('torrent_short_title'))
         <div class="invalid-feedback tw-block">{{ $errors->first('torrent_short_title') }}</div>
@@ -57,18 +57,18 @@
       @endru
     </div>
 
-    <div class="form-group">
+    <div class="tw-mb-4">
       <label>{{ trans('my.locale') }}</label>
       @foreach (Illuminate\Support\Arr::sort(array_keys(config('cfg.locales'))) as $loc)
-        <label class="form-check">
+        <label class="tw-flex tw-items-center tw-font-normal">
           <input
-            class="form-check-input {{ $errors->has('locale') ? 'is-invalid' : '' }}"
+            class="tw-mr-2 {{ $errors->has('locale') ? 'is-invalid' : '' }}"
             type="radio"
             name="locale"
             value="{{ $loc }}"
             {{ old('locale', Auth::user()->locale ?: config('app.locale')) === $loc ? 'checked' : '' }}
           >
-          <span class="form-check-label">{{ trans("locale.{$loc}") }}</span>
+          {{ trans("locale.{$loc}") }}
         </label>
       @endforeach
       @if ($errors->has('locale'))
@@ -78,46 +78,46 @@
 
     <label>{{ trans('my.mail_subscriptions') }}</label>
     <input type="hidden" name="notify_gigs" value="{{ App\User::NOTIFY_NO }}">
-    <label class="form-check">
+    <label class="tw-flex tw-items-center tw-font-normal">
       <input
-        class="form-check-input {{ $errors->has('notify_gigs') ? 'is-invalid' : '' }}"
+        class="tw-mr-2 {{ $errors->has('notify_gigs') ? 'is-invalid' : '' }}"
         type="checkbox"
         name="notify_gigs"
         value="{{ App\User::NOTIFY_MAIL }}"
         {{ old('notify_gigs', Auth::user()->notify_gigs) ? 'checked' : '' }}
       >
-      <span class="form-check-label">{{ trans('my.notify_gigs') }}</span>
+      {{ trans('my.notify_gigs') }}
     </label>
     @if ($errors->has('notify_gigs'))
       <div class="invalid-feedback tw-block tw-mb-2">{{ $errors->first('notify_gigs') }}</div>
     @endif
 
     <input type="hidden" name="notify_news" value="{{ App\User::NOTIFY_NO }}">
-    <label class="form-check">
+    <label class="tw-flex tw-items-center tw-font-normal">
       <input
-        class="form-check-input {{ $errors->has('notify_news') ? 'is-invalid' : '' }}"
+        class="tw-mr-2 {{ $errors->has('notify_news') ? 'is-invalid' : '' }}"
         type="checkbox"
         name="notify_news"
         value="{{ App\User::NOTIFY_MAIL }}"
         {{ old('notify_news', Auth::user()->notify_news) ? 'checked' : '' }}
       >
-      <span class="form-check-label">{{ trans('my.notify_news') }}</span>
+      {{ trans('my.notify_news') }}
     </label>
     @if ($errors->has('notify_news'))
       <div class="invalid-feedback tw-block tw-mb-2">{{ $errors->first('notify_news') }}</div>
     @endif
 
-    <div class="form-group">
+    <div class="tw-mb-4">
       <input type="hidden" name="notify_trips" value="{{ App\User::NOTIFY_NO }}">
-      <label class="form-check">
+      <label class="tw-flex tw-items-center tw-font-normal">
         <input
-          class="form-check-input {{ $errors->has('notify_trips') ? 'is-invalid' : '' }}"
+          class="tw-mr-2 {{ $errors->has('notify_trips') ? 'is-invalid' : '' }}"
           type="checkbox"
           name="notify_trips"
           value="{{ App\User::NOTIFY_MAIL }}"
           {{ old('notify_trips', Auth::user()->notify_trips) ? 'checked' : '' }}
         >
-        <span class="form-check-label">{{ trans('my.notify_trips') }}</span>
+        {{ trans('my.notify_trips') }}
       </label>
       @if ($errors->has('notify_trips'))
         <div class="invalid-feedback tw-block tw-mb-2">{{ $errors->first('notify_trips') }}</div>

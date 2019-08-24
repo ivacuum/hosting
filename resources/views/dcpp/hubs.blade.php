@@ -2,8 +2,8 @@
 
 @section('content')
 <h1>{{ trans('meta_title.dcpp.hubs') }}</h1>
-<div class="row">
-  <div class="col-md-6">
+<div class="md:tw-flex md:tw--mx-4">
+  <div class="md:tw-w-1/2 md:tw-px-4">
     @ru
       <p>Итак, вы установили DC++ клиент и, наверное, уже задались вопросом куда же подключиться для обмена файлами? Подключиться нужно к хабу, можно даже сразу к нескольким. А выбрать хаб по нраву можно из списка ниже.</p>
     @en
@@ -42,7 +42,7 @@
       hide-title
     ></feedback-form>
   </div>
-  <div class="col-md-6 col-lg-4 col-xl-3 tw-mt-4 md:tw-mt-0">
+  <div class="md:tw-w-1/2 lg:tw-w-1/3 xl:tw-w-1/4 md:tw-px-4 tw-mt-4 md:tw-mt-0">
     @include('tpl.google-vertical')
   </div>
 </div>

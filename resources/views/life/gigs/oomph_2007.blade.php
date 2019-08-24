@@ -33,7 +33,7 @@
       <li>Brennende Liebe</li>
       <li>Gott ist ein Popstar</li>
       <li>Menschsein</li>
-      <li>Strangers in the Night <span class="tw-text-sm tw-text-gray-600">Frank Sinatra cover</span></li>
+      <li>Strangers in the Night <span class="tw-text-sm text-muted">Frank Sinatra cover</span></li>
       <li>Burn Your Eyes</li>
     </ol>
   </div>

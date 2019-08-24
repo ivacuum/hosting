@@ -9,7 +9,7 @@
     @method('put')
     @csrf
 
-    <div class="form-group">
+    <div class="tw-mb-4">
       <label>{{ trans('my.username') }}</label>
       <input class="form-control {{ $errors->has('username') ? 'is-invalid' : '' }}" name="username" value="{{ old('username', Auth::user()->login) }}">
       <div class="invalid-feedback">{{ $errors->first('username') }}</div>
@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="tw-mb-4">
       <label>{{ trans('auth.email') }}</label>
       <input required class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" value="{{ old('email', Auth::user()->email) }}">
       <div class="invalid-feedback">{{ $errors->first('email') }}</div>

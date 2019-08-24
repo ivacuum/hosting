@@ -50,8 +50,8 @@
         Main features of StrongDC++
       @endru
     </h3>
-    <div class="row">
-      <div class="col-md-6 col-lg-4">
+    <div class="md:tw-flex md:tw-flex-wrap md:tw--mx-4">
+      <div class="md:tw-w-1/2 lg:tw-w-1/3 md:tw-px-4">
         <h5>
           @ru
             Сегментационная закачка файла
@@ -65,7 +65,7 @@
           <p>Files are divided to many parts and they are downloaded from many users in parallel. Checksum guarantees combined parts are identical to an original file.</p>
         @endru
       </div>
-      <div class="col-md-6 col-lg-4">
+      <div class="md:tw-w-1/2 lg:tw-w-1/3 md:tw-px-4">
         <h5>
           @ru
             Частичное расшаривание файла
@@ -79,7 +79,7 @@
           <p>You start sharing segments you've downloaded right away. So as other users. Better speed for everyone.</p>
         @endru
       </div>
-      <div class="col-md-6 col-lg-4">
+      <div class="md:tw-w-1/2 lg:tw-w-1/3 md:tw-px-4">
         <h5>
           @ru
             Персональная настройка
@@ -93,7 +93,7 @@
           <p>You have lots of options to fine-tune: sound notifications, popup windows, smilies, etc.</p>
         @endru
       </div>
-      <div class="col-md-6 col-lg-4">
+      <div class="md:tw-w-1/2 lg:tw-w-1/3 md:tw-px-4">
         <h5>
           @ru
             Отключение медленных соединений
@@ -107,7 +107,7 @@
           <p>It frees slots for high-speed exchange.</p>
         @endru
       </div>
-      <div class="col-md-6 col-lg-4">
+      <div class="md:tw-w-1/2 lg:tw-w-1/3 md:tw-px-4">
         <h5>
           @ru
             Ограничение на загрузку и отдачу

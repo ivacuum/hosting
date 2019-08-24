@@ -1,8 +1,8 @@
 @extends('dcpp.base')
 
 @section('content')
-<div class="life-text row">
-  <div class="col-md-3">
+<div class="life-text md:tw-flex md:tw--mx-4">
+  <div class="md:tw-w-1/4 md:tw-px-4">
     <h1>{{ trans('dcpp.index') }}</h1>
     <div class="list-group">
       <a class="list-group-item list-group-item-action" href="{{ path('Dcpp@page', 'airdc') }}">{{ trans('dcpp.airdc') }}</a>
@@ -19,7 +19,7 @@
       <a class="list-group-item list-group-item-action" href="{{ path('Dcpp@page', 'strongdc') }}">{{ trans('dcpp.strongdc') }}</a>
     </div>
   </div>
-  <div class="col-md-9">
+  <div class="md:tw-w-3/4 md:tw-px-4">
     @ru
       <h2 class="tw-mt-12 md:tw-mt-0">Что такое пиринговая сеть?</h2>
       <p><strong>Пиринговая сеть</strong> (Peer-to-peеr или P2P) — это обмен файлами между пользователями сети. Все пользователи подключаются к единому серверу, где происходит аккумуляция списков файлов у пользователей, потом эти файлы уже напрямую скачиваются между двумя пользователями сети.</p>

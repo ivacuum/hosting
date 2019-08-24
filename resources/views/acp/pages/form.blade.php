@@ -3,16 +3,14 @@
 {!! Form::text('title')->required()->html() !!}
 {!! Form::text('url')->required()->html() !!}
 
-<div class="form-group form-row">
-  <label class="col-md-4 col-form-label md:tw-text-right">Обработчик</label>
-  <div class="col-md-6">
-    <div class="input-group">
-      <input class="form-control" type="text" name="handler" value="{{ old('handler', @$model->handler) }}">
-      <div class="input-group-append">
-        <span class="input-group-text border-right-0">@</span>
-      </div>
-      <input class="form-control" type="text" name="method" value="{{ old('method', @$model->method) }}">
+<div class="tw-mb-4">
+  <label>Обработчик</label>
+  <div class="input-group">
+    <input class="form-control" type="text" name="handler" value="{{ old('handler', @$model->handler) }}">
+    <div class="input-group-append">
+      <span class="input-group-text border-right-0">@</span>
     </div>
+    <input class="form-control" type="text" name="method" value="{{ old('method', @$model->method) }}">
   </div>
 </div>
 

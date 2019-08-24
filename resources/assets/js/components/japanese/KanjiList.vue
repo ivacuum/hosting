@@ -31,7 +31,7 @@
         <div class="sm:tw-flex tw-items-center tw-justify-between tw-mt-6 tw-mb-1">
           <h3>
             <span>{{ titleLabel(lvl) }}</span>
-            <span class="tw-text-base tw-text-gray-600">{{ collection.length }}</span>
+            <span class="tw-text-base text-muted">{{ collection.length }}</span>
           </h3>
           <div>
             <button

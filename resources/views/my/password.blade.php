@@ -10,7 +10,7 @@
     @csrf
 
     @if ($has_password)
-      <div class="form-group">
+      <div class="tw-mb-4">
         <label>{{ trans('my.old_password') }}</label>
         <input
           required
@@ -23,7 +23,7 @@
       </div>
     @endif
 
-    <div class="form-group">
+    <div class="tw-mb-4">
       <label>{{ trans('my.new_password') }}</label>
       <input
         required
@@ -34,9 +34,9 @@
       >
       <div class="invalid-feedback">{{ $errors->first('new_password') }}</div>
       @ru
-        <div class="form-help">Не менее 6 символов</div>
+        <div class="form-help">Не менее 8 символов</div>
       @en
-        <div class="form-help">Minimum length is 6 characters</div>
+        <div class="form-help">Minimum length is 8 characters</div>
       @endru
     </div>
 

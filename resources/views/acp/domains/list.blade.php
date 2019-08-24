@@ -58,7 +58,7 @@
 
 <div class="tw-my-4">
   <form class="form-inline js-batch-form" data-url="/acp/domains/batch" data-selector=".domains-checkbox">
-    <div class="form-group">
+    <div class="tw-mb-4">
       <div class="tw-inline-block tw-mr-1">
         <select required class="custom-select" name="action">
           <option value="">Выберите действие...</option>

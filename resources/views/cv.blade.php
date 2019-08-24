@@ -28,7 +28,6 @@ body {
   color: #4b4b4b;
 }
 
-.container-fluid { max-width: 940px; }
 .wrapper { box-shadow: 0 1px 6px rgba(0, 0, 0, .30), 0 0 2.5rem rgba(0, 0, 0, .10) inset; }
 
 .my-picture {
@@ -58,7 +57,7 @@ body {
 </style>
 </head>
 <body class="lg:tw-pt-4 lg:tw-pb-8">
-<div class="container-fluid wrapper tw-bg-white tw-p-4 sm:tw-p-6 lg:tw-p-8">
+<div class="tw-mx-auto tw-max-w-4xl wrapper tw-bg-white tw-p-4 sm:tw-p-6 lg:tw-p-8">
   <div class="md:tw-flex md:tw--mx-4">
     <div class="md:tw-w-2/3 md:tw-px-4 tw-mb-6 sm:tw-mb-0">
       <div class="sm:tw-flex tw-mb-6">

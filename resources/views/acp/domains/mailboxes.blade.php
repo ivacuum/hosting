@@ -5,7 +5,7 @@
 <form action="{{ path("$self@addMailbox", $model) }}" class="mw-600" method="post">
   @csrf
 
-  <div class="form-group">
+  <div class="tw-mb-4">
     <label>Ящик</label>
     <div class="input-group">
       <input class="form-control {{ $errors->has('logins') ? 'is-invalid' : '' }}" name="logins">
@@ -19,7 +19,7 @@
     <div class="form-help">Можно указать несколько ящиков через запятую. Пароли будут назначены автоматически</div>
   </div>
 
-  <div class="form-group">
+  <div class="tw-mb-4">
     <label>Выслать инфу по адресу</label>
     <input class="form-control {{ $errors->has('send_to') ? 'is-invalid' : '' }}" type="email" name="send_to" value="{{ Auth::user()->email }}">
     <div class="invalid-feedback">{{ $errors->first('send_to') }}</div>

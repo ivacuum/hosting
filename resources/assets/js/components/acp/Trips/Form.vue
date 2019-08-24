@@ -59,10 +59,8 @@ export default {
     <form-text name="meta_description_en" v-model="model.meta_description_en"/>
     <form-text name="meta_image" v-model="model.meta_image"/>
 
-    <div class="form-group form-row" v-if="resource && resource.meta_image">
-      <div class="col-md-6 offset-md-4">
-        <img class="tw-max-w-full tw-h-auto tw-rounded" :src="resource.meta_image">
-      </div>
+    <div class="tw-mb-4" v-if="resource && resource.meta_image">
+      <img class="tw-max-w-full tw-h-auto tw-rounded" :src="resource.meta_image">
     </div>
 
     <sticky-bottom-buttons v-bind="{ isEditing, saving }" @apply="apply" @stay="storeAndAddAnother"/>

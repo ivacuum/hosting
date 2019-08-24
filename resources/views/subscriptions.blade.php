@@ -9,7 +9,7 @@
   <form class="mw-400 tw-mb-6" action="{{ path('Subscriptions@store') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
-    <div class="form-group">
+    <div class="tw-mb-4">
       <input
         required
         class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
@@ -24,46 +24,46 @@
     </div>
 
     <input type="hidden" name="gigs" value="{{ App\User::NOTIFY_NO }}">
-    <label class="form-check">
+    <label class="tw-flex tw-items-center tw-font-normal">
       <input
-        class="form-check-input {{ $errors->has('gigs') ? 'is-invalid' : '' }}"
+        class="tw-mr-2 {{ $errors->has('gigs') ? 'is-invalid' : '' }}"
         type="checkbox"
         name="gigs"
         value="{{ App\User::NOTIFY_MAIL }}"
         {{ old('gigs', request('gigs')) ? 'checked' : '' }}
       >
-      <span class="form-check-label">{{ trans('my.notify_gigs') }}</span>
+      {{ trans('my.notify_gigs') }}
     </label>
     @if ($errors->has('gigs'))
       <div class="invalid-feedback tw-block tw-mb-2">{{ $errors->first('gigs') }}</div>
     @endif
 
     <input type="hidden" name="news" value="{{ App\User::NOTIFY_NO }}">
-    <label class="form-check">
+    <label class="tw-flex tw-items-center tw-font-normal">
       <input
-        class="form-check-input {{ $errors->has('news') ? 'is-invalid' : '' }}"
+        class="tw-mr-2 {{ $errors->has('news') ? 'is-invalid' : '' }}"
         type="checkbox"
         name="news"
         value="{{ App\User::NOTIFY_MAIL }}"
         {{ old('news', request('news')) ? 'checked' : '' }}
       >
-      <span class="form-check-label">{{ trans('my.notify_news') }}</span>
+      {{ trans('my.notify_news') }}
     </label>
     @if ($errors->has('news'))
       <div class="invalid-feedback tw-block tw-mb-2">{{ $errors->first('news') }}</div>
     @endif
 
-    <div class="form-group">
+    <div class="tw-mb-4">
       <input type="hidden" name="trips" value="{{ App\User::NOTIFY_NO }}">
-      <label class="form-check">
+      <label class="tw-flex tw-items-center tw-font-normal">
         <input
-          class="form-check-input {{ $errors->has('trips') ? 'is-invalid' : '' }}"
+          class="tw-mr-2 {{ $errors->has('trips') ? 'is-invalid' : '' }}"
           type="checkbox"
           name="trips"
           value="{{ App\User::NOTIFY_MAIL }}"
           {{ old('trips', request('trips')) ? 'checked' : '' }}
         >
-        <span class="form-check-label">{{ trans('my.notify_trips') }}</span>
+        {{ trans('my.notify_trips') }}
       </label>
       @if ($errors->has('trips'))
         <div class="invalid-feedback tw-block tw-mb-2">{{ $errors->first('trips') }}</div>

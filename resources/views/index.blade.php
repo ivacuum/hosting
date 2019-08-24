@@ -7,7 +7,7 @@
 @section('content')
 <h1 class="tw-text-lg md:tw-hidden tw-mb-6">
   @ru Сергей Панков @en Sergey Pankov @endru
-  <span class="tw-text-gray-600">
+  <span class="text-muted">
     &middot;
     vacuum kaluga
   </span>

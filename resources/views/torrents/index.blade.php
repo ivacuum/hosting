@@ -23,7 +23,7 @@
               @else
                 <a class="visited" href="{{ path("$self@index", ['category_id' => $id]) }}">{{ $child['title'] }}</a>
               @endif
-              <span class="tw-text-gray-600 f13">{{ $stats[$id] }}</span>
+              <span class="text-muted f13">{{ $stats[$id] }}</span>
             </div>
           @endforeach
         @endif

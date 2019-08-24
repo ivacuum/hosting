@@ -5,12 +5,10 @@
   <img class="image-fit-viewport screenshot" src="{{ $image->originalUrl() }}">
 </div>
 
-<div class="row tw-mt-6">
-  <div class="col-lg-6 offset-lg-3">
-    <div>Ссылка:</div>
-    <input class="form-control js-highlight" value="{{ $image->originalUrl() }}">
-    <div class="tw-mt-2">Полная картинка:</div>
-    <input class="form-control js-highlight" value="[img]{{ $image->originalUrl() }}[/img]">
-  </div>
+<div class="tw-mx-auto tw-max-w-xl tw-mt-6">
+  <div>Ссылка:</div>
+  <input class="form-control tw-select-all" value="{{ $image->originalUrl() }}">
+  <div class="tw-mt-2">Полная картинка:</div>
+  <input class="form-control tw-select-all" value="[img]{{ $image->originalUrl() }}[/img]">
 </div>
 @endsection

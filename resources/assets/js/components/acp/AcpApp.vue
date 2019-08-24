@@ -13,7 +13,7 @@ export default {
   <acp-breadcrumbs/>
 
   <div class="container-flex">
-    <div class="container tw-my-4">
+    <div class="tw-container tw-my-4">
       <router-view/>
     </div>
   </div>

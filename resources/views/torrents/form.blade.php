@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="tw-mb-4">
   <select required class="custom-select {{ $errors->has('category_id') ? 'is-invalid' : '' }}" name="category_id">
     <option value="">Выберите рубрику...</option>
     @foreach (TorrentCategoryHelper::tree() as $id => $category)
@@ -19,8 +19,14 @@
   @endif
 </div>
 
-<div class="form-group">
-  <input required class="form-control {{ $errors->has('input') ? 'is-invalid' : '' }}" name="input" value="{{ old('input') }}" placeholder="Ссылка или инфо-хэш">
+<div class="tw-mb-4">
+  <input
+    required
+    class="form-control {{ $errors->has('input') ? 'is-invalid' : '' }}"
+    name="input"
+    value="{{ old('input') }}"
+    placeholder="Ссылка или инфо-хэш"
+  >
   @if ($errors->has('input'))
     <div class="invalid-feedback">{{ $errors->first('input') }}</div>
   @endif

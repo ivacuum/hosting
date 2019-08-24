@@ -24,10 +24,8 @@
 {!! Form::text('meta_image')->html() !!}
 
 @if ($model->meta_image)
-  <div class="form-group form-row">
-    <div class="col-md-6 offset-md-4">
-      <img class="tw-max-w-full tw-h-auto tw-rounded" src="{{ $model->metaImage() }}">
-    </div>
+  <div class="tw-mb-4">
+    <img class="tw-max-w-full tw-h-auto tw-rounded" src="{{ $model->metaImage() }}">
   </div>
 @endif
 
