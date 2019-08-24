@@ -7,8 +7,8 @@
 @endpush
 
 @section('content')
-<div class="row">
-  <section class="col-sm-8 col-md-6 tw-pt-0">
+<div class="sm:tw-flex sm:tw--mx-4">
+  <section class="sm:tw-w-2/3 md:tw-w-1/2 sm:tw-px-4 tw-pt-0">
     <div class="tw-flex tw-flex-wrap tw-items-center tw-mb-2">
       <h1 class="tw-text-3xl tw-mb-1 tw-mr-4">{{ trans('life.trips') }}</h1>
       @if (Auth::check())
@@ -42,7 +42,7 @@
 
     @include('tpl.trips_by_years')
   </section>
-  <section class="col-sm-4 col-md-6 sm:tw-pt-0">
+  <section class="sm:tw-w-1/3 md:tw-w-1/2 sm:tw-px-4 sm:tw-pt-0">
     <h2 class="tw-text-3xl">{{ trans('life.favorites') }}</h2>
     <ul class="list-unstyled">
       @ru

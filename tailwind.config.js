@@ -2,6 +2,9 @@ module.exports = {
   prefix: 'tw-',
   theme: {
     extend: {
+      fontSize: {
+        '2xs': '0.6875rem',
+      },
       padding: {
         '3/4': '75%',
       },

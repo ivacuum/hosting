@@ -13,8 +13,8 @@ Mousetrap.bind('right', () => {
 @endpush
 
 @section('content')
-<div class="row tw--mt-2">
-  <div class="col-lg-10 tw-mb-4">
+<div class="lg:tw-flex lg:tw--mx-4 tw--mt-2">
+  <div class="lg:tw-w-5/6 lg:tw-px-4 tw-mb-4">
     <div class="tw-mobile-wide tw-relative tw-text-center">
       @if (null !== $next)
         <a class="photo-show-nav photo-show-prev js-pjax js-pjax-no-dim" id="prev_page" href="{{ path("$self@show", [$next->id, 'city_id' => $city_id, 'country_id' => $country_id, 'tag_id' => $tag_id, 'trip_id' => $trip_id]) }}">&nbsp;</a>
@@ -37,7 +37,7 @@ Mousetrap.bind('right', () => {
       </div>
     </div>
   </div>
-  <div class="col-lg-2">
+  <div class="lg:tw-w-1/6 lg:tw-px-4">
     <div class="tw-flex tw-flex-wrap md:tw-flex-col">
       <div class="tw-mr-2 md:tw-mr-0 text-muted">{{ trans('photos.story') }}</div>
       <a class="tw-flex tw-flex-wrap tw-items-center link-parent" href="{{ $photo->rel->www() }}#{{ basename($photo->slug) }}">

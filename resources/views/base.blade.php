@@ -40,39 +40,39 @@
 @show
 
 @section('bottom-tabbar')
-<header class="bottom-tabbar-container revealed js-bottom-tabbar-reveal">
-  <nav class="bottom-tabbar">
-    <a class="bottom-tab {{ $self === 'Home' ? 'active' : '' }}" href="{{ path('Home@index') }}">
+<header class="bottom-tabbar-container tw-fixed tw-bottom-0 tw-left-0 tw-right-0 tw-flex tw-items-center tw-justify-center md:tw-hidden revealed js-bottom-tabbar-reveal">
+  <nav class="tw-flex tw-justify-between tw-text-center tw-mx-1 tw-w-full">
+    <a class="bottom-tab tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-center sm:tw-justify-center tw-no-underline tw-w-full bg-transparent tw-pt-2 tw-pb-1 sm:tw-py-3 tw-flex-1 tw-leading-none {{ $self === 'Home' ? 'active' : '' }}" href="{{ path('Home@index') }}">
       <div>
         @svg (home)
       </div>
-      <div class="bottom-tab-label">{{ trans('menu.home') }}</div>
+      <div class="tw-text-2xs sm:tw-text-sm tw-mt-1 sm:tw-mt-0 sm:tw-ml-2">{{ trans('menu.home') }}</div>
     </a>
-    <a class="bottom-tab {{ $self === 'Life' ? 'active' : '' }}" href="{{ path('Life@index') }}">
+    <a class="bottom-tab tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-center sm:tw-justify-center tw-no-underline tw-w-full bg-transparent tw-pt-2 tw-pb-1 sm:tw-py-3 tw-flex-1 tw-leading-none {{ $self === 'Life' ? 'active' : '' }}" href="{{ path('Life@index') }}">
       <div>
         @svg (file-text-o)
       </div>
-      <div class="bottom-tab-label">{{ trans('menu.life') }}</div>
+      <div class="tw-text-2xs sm:tw-text-sm tw-mt-1 sm:tw-mt-0 sm:tw-ml-2">{{ trans('menu.life') }}</div>
     </a>
-    <a class="bottom-tab {{ $self === 'Photos' ? 'active' : '' }}" href="{{ path('Photos@trips') }}">
+    <a class="bottom-tab tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-center sm:tw-justify-center tw-no-underline tw-w-full bg-transparent tw-pt-2 tw-pb-1 sm:tw-py-3 tw-flex-1 tw-leading-none {{ $self === 'Photos' ? 'active' : '' }}" href="{{ path('Photos@trips') }}">
       <div>
         @svg (picture-o)
       </div>
-      <div class="bottom-tab-label">{{ trans('photos.index') }}</div>
+      <div class="tw-text-2xs sm:tw-text-sm tw-mt-1 sm:tw-mt-0 sm:tw-ml-2">{{ trans('photos.index') }}</div>
     </a>
     @if (Auth::check())
-      <a class="bottom-tab {{ Illuminate\Support\Str::startsWith(request()->path(), 'my/') ? 'active' : '' }}" href="{{ path('MyProfile@edit') }}">
+      <a class="bottom-tab tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-center sm:tw-justify-center tw-no-underline tw-w-full bg-transparent tw-pt-2 tw-pb-1 sm:tw-py-3 tw-flex-1 tw-leading-none {{ Illuminate\Support\Str::startsWith(request()->path(), 'my/') ? 'active' : '' }}" href="{{ path('MyProfile@edit') }}">
         <div>
           @svg (user-circle-o)
         </div>
-        <div class="bottom-tab-label">{{ trans('my.profile') }}</div>
+        <div class="tw-text-2xs sm:tw-text-sm tw-mt-1 sm:tw-mt-0 sm:tw-ml-2">{{ trans('my.profile') }}</div>
       </a>
     @else
-      <a class="bottom-tab {{ $view === 'auth.login' ? 'active' : '' }}" href="{{ path('Auth\SignIn@index') }}">
+      <a class="bottom-tab tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-center sm:tw-justify-center tw-no-underline tw-w-full bg-transparent tw-pt-2 tw-pb-1 sm:tw-py-3 tw-flex-1 tw-leading-none {{ $view === 'auth.login' ? 'active' : '' }}" href="{{ path('Auth\SignIn@index') }}">
         <div>
           @svg (sign-in)
         </div>
-        <div class="bottom-tab-label">{{ trans('auth.signin') }}</div>
+        <div class="tw-text-2xs sm:tw-text-sm tw-mt-1 sm:tw-mt-0 sm:tw-ml-2">{{ trans('auth.signin') }}</div>
       </a>
     @endif
   </nav>

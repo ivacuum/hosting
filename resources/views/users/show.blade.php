@@ -1,8 +1,8 @@
 @extends('base')
 
 @section('content')
-<div class="row">
-  <div class="col-md-4">
+<div class="md:tw-flex md:tw--mx-4">
+  <div class="md:tw-w-1/3 md:tw-px-4">
     <div class="tw-text-center">
       @include('tpl.avatar')
       <h1 class="h3 tw-mt-2">{{ $user->publicName() }}</h1>
@@ -41,6 +41,5 @@
       </div>
     @endif
   </div>
-  <div class="col-md-8"></div>
 </div>
 @endsection

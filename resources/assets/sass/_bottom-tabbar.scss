@@ -10,57 +10,20 @@ $navbar-default-bg: #f8f8f8;
 }
 
 .bottom-tabbar-container {
-  position: fixed;
-  right: 0;
-  left: 0;
-  bottom: 0;
   z-index: $zindex-fixed;
   background: $navbar-default-bg linear-gradient(to bottom, lighten($navbar-default-bg, 10%) 0%, $navbar-default-bg 100%) repeat-x;
   border-top: 1px solid $gray-300;
   box-shadow: inset 0 1px 0 rgba($white, .15), 0 1px 5px rgba($black, .075);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   transform: translateY(100%) translateZ(0);
   transition: 200ms ease-out;
   will-change: transform;
 
   &.revealed { transform: translateY(0%) translateZ(0); }
-
-  @include media-breakpoint-up(md) { display: none; }
-}
-
-.bottom-tabbar {
-  display: flex;
-  flex-flow: row;
-  justify-content: space-between;
-  text-align: center;
-  margin: 0 5px;
-  width: 100%;
 }
 
 .bottom-tab {
-  display: flex;
-  flex-flow: column;
-  width: 100%;
-  min-height: 1px;
   color: $gray-light;
-  background-color: transparent;
-  padding: .5rem 0 .25rem;
   text-shadow: 0 1px 0 rgba($white, .25);
-  text-decoration: none;
-  flex-basis: 0;
-  flex-grow: 1;
-  max-width: 100%;
-  line-height: 1;
-
-  @include media-breakpoint-up(sm) {
-    flex-flow: row;
-    align-items: center;
-    justify-content: center;
-    padding: .625rem 0;
-  }
 
   &:hover,
   &:focus,
@@ -69,16 +32,5 @@ $navbar-default-bg: #f8f8f8;
   .svg-icon {
     font-size: 18px;
     margin-top: 0;
-  }
-}
-
-.bottom-tab-label {
-  font-size: 11px;
-  margin-top: .25rem;
-
-  @include media-breakpoint-up(sm) {
-    font-size: 14px;
-    margin-top: 0;
-    margin-left: .5rem;
   }
 }

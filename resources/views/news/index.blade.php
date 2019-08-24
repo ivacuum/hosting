@@ -30,8 +30,8 @@
   </a>
 </div>
 @if (sizeof($news))
-  <div class="row">
-    <div class="col-md-8">
+  <div class="md:tw-flex md:tw--mx-4">
+    <div class="md:tw-w-2/3 md:tw-px-4">
       @foreach ($news as $model)
         <article itemscope itemtype="http://schema.org/BlogPosting">
           <header>

@@ -29,17 +29,9 @@ body {
 }
 
 .container-fluid { max-width: 940px; }
-
-.wrapper {
-  background-color: #fff;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, .30), 0 0 2.5rem rgba(0, 0, 0, .10) inset;
-  padding: 1rem;
-}
-
-.color-green { color: #389b17; }
+.wrapper { box-shadow: 0 1px 6px rgba(0, 0, 0, .30), 0 0 2.5rem rgba(0, 0, 0, .10) inset; }
 
 .my-picture {
-  background-color: #fff;
   border: 1px solid rgba(0, 0, 0, .2);
   box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
   width: 150px;
@@ -47,8 +39,8 @@ body {
 }
 
 .my-caption {
-  border-bottom: 1px solid #389b17;
-  color: #389b17;
+  border-bottom: 1px solid #2c7a7b;
+  color: #2c7a7b;
   padding-bottom: .25rem;
 }
 
@@ -63,32 +55,19 @@ body {
   top: 0;
   background: #fff;
 }
-
-@media (min-width: 576px) {
-  .wrapper { padding: 1.5rem; }
-}
-
-@media (min-width: 992px) {
-  body {
-    padding-bottom: 2rem;
-    padding-top: 1rem;
-  }
-
-  .wrapper { padding: 2rem; }
-}
 </style>
 </head>
-<body>
-<div class="container-fluid wrapper">
-  <div class="row">
-    <div class="col-md-8 tw-mb-6 sm:tw-mb-0">
+<body class="lg:tw-pt-4 lg:tw-pb-8">
+<div class="container-fluid wrapper tw-bg-white tw-p-4 sm:tw-p-6 lg:tw-p-8">
+  <div class="md:tw-flex md:tw--mx-4">
+    <div class="md:tw-w-2/3 md:tw-px-4 tw-mb-6 sm:tw-mb-0">
       <div class="sm:tw-flex tw-mb-6">
         <div class="tw-mb-2 sm:tw-mb-0">
-          <img class="my-picture tw-mr-4 tw-p-1" src="https://life.ivacuum.org/me.jpg" width="160" height="160">
+          <img class="my-picture tw-bg-white tw-mr-4 tw-p-1" src="https://life.ivacuum.org/me.jpg" width="160" height="160">
         </div>
         <div>
           <h1 class="my-name h3 tw-uppercase">@ru Сергей Панков @en Sergey Pankov @endru</h1>
-          <h2 class="color-green h4">@ru Веб-программист (Laravel PHP, Vue.js) @en Laravel PHP + Vue.js Developer @endru</h2>
+          <h2 class="tw-text-teal-700 h4">@ru Веб-программист (Laravel PHP, Vue.js) @en Laravel PHP + Vue.js Developer @endru</h2>
           @ru
             <div>Заинтересован в создании полезных людям веб-сервисов. Веб-технологиями увлекаюсь с 2003 года. С кодом моих проектов можно ознакомиться на <a href="https://github.com/ivacuum" rel="nofollow">Гитхабе</a>. Только удаленная работа.</div>
           @en
@@ -96,9 +75,9 @@ body {
           @endru
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-6 tw-mb-6">
-          <h3 class="my-caption h5 tw-uppercase">@ru Образование @en Education @endru</h3>
+      <div class="md:tw-flex md:tw--mx-4">
+        <div class="md:tw-w-1/2 md:tw-px-4 tw-mb-6">
+          <h3 class="my-caption h5 tw-text-teal-600 tw-uppercase">@ru Образование @en Education @endru</h3>
           <div class="tw-font-bold">@ru Высшее, МГТУ им. Баумана @en Bauman Moscow State Technical University @endru</div>
           <div>
             @ru Инженер-программист @en IT Engineer's degree @endru
@@ -115,7 +94,7 @@ body {
             <span class="tw-text-xs text-muted">2011</span>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="md:tw-w-1/2 md:tw-px-4">
           <h3 class="my-caption h5 tw-uppercase">@ru Опыт работы @en Experience @endru</h3>
           <div>@ru 01.12.2014 — по настоящее время @en Dec 2014 — Present @endru</div>
           <div>@ru ООО Гала Маркетинг @en OOO Gala Marketing @endru</div>
@@ -131,7 +110,7 @@ body {
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="md:tw-w-1/3 md:tw-px-4">
       <h3 class="my-caption h5 tw-uppercase">@ru Контактная информация @en Contacts @endru</h3>
       <div class="tw-flex tw-justify-between">
         <div>@ru Телефон @en Phone @endru</div>
@@ -198,14 +177,14 @@ body {
   @endru
 
   <div class="my-caption h3 tw-mt-12 tw-uppercase">@ru Навыки @en Skills @endru</div>
-  <div class="color-green h5">@ru Операционные системы @en Operating systems @endru</div>
+  <div class="tw-text-teal-600 h5">@ru Операционные системы @en Operating systems @endru</div>
   @ru
     <p>Опыт использования <strong>Windows</strong> и <strong>macOS</strong>, настраивал серверы под управлением <strong>Linux</strong> и <strong>FreeBSD</strong>. Повседневно использую <strong>macOS</strong>.</p>
   @en
     <p>Experienced in <strong>Windows</strong> and <strong>macOS</strong>, set up servers running <strong>Linux</strong> and <strong>FreeBSD</strong>. I use <strong>macOS</strong> on a daily basis.</p>
   @endru
 
-  <div class="color-green h5 tw-mt-6">@ru Языки программирования @en Programming languages @endru</div>
+  <div class="tw-text-teal-600 h5 tw-mt-6">@ru Языки программирования @en Programming languages @endru</div>
   <ul>
     <li class="tw-mb-2">
       <strong>PHP</strong>
@@ -233,10 +212,10 @@ body {
     </li>
   </ul>
 
-  <div class="color-green h5 tw-mt-6">@ru Прочие языки @en Other languages @endru</div>
+  <div class="tw-text-teal-600 h5 tw-mt-6">@ru Прочие языки @en Other languages @endru</div>
   <p>HTML, CSS, SASS.</p>
 
-  <div class="color-green h5 tw-mt-6">@ru Технологии и софт @en Technology and Software @endru</div>
+  <div class="tw-text-teal-600 h5 tw-mt-6">@ru Технологии и софт @en Technology and Software @endru</div>
   <ul>
     <li class="tw-mb-2">
       <strong>Ansible</strong>
@@ -322,7 +301,7 @@ body {
     </li>
   </ul>
 
-  <div class="color-green h5 tw-mt-6">@ru Иностранные языки @en Foreign languages @endru</div>
+  <div class="tw-text-teal-600 h5 tw-mt-6">@ru Иностранные языки @en Foreign languages @endru</div>
   <ul>
     @ru
     @en
@@ -345,7 +324,7 @@ body {
     </li>
   </ul>
 
-  <div class="color-green h5 tw-mt-6">@ru Работа с API @en APIs usage @endru</div>
+  <div class="tw-text-teal-600 h5 tw-mt-6">@ru Работа с API @en APIs usage @endru</div>
   @ru
     <p>Вход через соцсети: Facebook, GitHub, Google, Instagram, OK, Twitter, VK, Яндекс.</p>
   @en

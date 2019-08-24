@@ -201,8 +201,8 @@ $irregular_verbs = [
   </li>
 </ol>
 
-<div class="row tw-mt-12">
-  <div class="col-md-6">
+<div class="md:tw-flex md:tw--mx-4 tw-mt-12">
+  <div class="md:tw-w-1/2 md:tw-px-4">
     <p><b>The</b> is also used before:</p>
     <ol>
       <li class="tw-mb-4">
@@ -243,7 +243,7 @@ $irregular_verbs = [
       </li>
     </ol>
   </div>
-  <div class="col-md-6">
+  <div class="md:tw-w-1/2 md:tw-px-4">
     <p><b>The</b> is omitted before:</p>
     <ol>
       <li class="tw-mb-4">
