@@ -1,9 +1,9 @@
 @extends('retracker.base')
 
 @section('content')
-<section class="tw-pt-4 tw-pb-12">
-  <div class="tw-container tw-max-w-3xl">
-    <div class="tw-text-center tw-mb-4">
+<section class="pt-4 pb-12">
+  <div class="container max-w-3xl">
+    <div class="text-center mb-4">
       <a href="{{ path('Retracker@index') }}">
         <img src="https://ivacuum.org/i/rt/logo.png" width="64" height="64">
       </a>
@@ -20,21 +20,21 @@
   </div>
 </section>
 
-<section class="tw-bg-light border-top border-bottom tw-py-12">
-  <div class="tw-container tw-max-w-3xl">
+<section class="bg-light border-top border-bottom py-12">
+  <div class="container max-w-3xl">
     <h3>Зачем он нужен?</h3>
-    <ul class="tw-mb-0">
+    <ul class="mb-0">
       <li>для совместной закачки файлов из интернета;</li>
       <li>появляется возможность скачать раздачу на локальной скорости, если раздающие тоже пользуются ретрекером.</li>
     </ul>
   </div>
 </section>
 
-<section class="tw-py-12">
-  <div class="tw-container tw-max-w-3xl">
+<section class="py-12">
+  <div class="container max-w-3xl">
     <h3>Как настроить?</h3>
     <p>Использование ретрекера по адресу <b>retracker.local</b> требует дополнительной настройки.</p>
-    <p><a class="btn btn-primary tw-my-1" href="{{ path('Files@download', 123) }}">Файл настроек для Windows</a> <a class="btn btn-primary tw-my-1" href="{{ path('Files@download', 124) }}">Файл настроек для Linux</a></p>
+    <p><a class="btn btn-primary my-1" href="{{ path('Files@download', 123) }}">Файл настроек для Windows</a> <a class="btn btn-primary my-1" href="{{ path('Files@download', 124) }}">Файл настроек для Linux</a></p>
     <p>Пользователям ОС Windows достаточно сохранить и запустить файл настроек от имени администратора.</p>
     <p>Пользователям ОС семейства Linux необходимо либо запустить файл настроек от имени администратора, либо набрать в терминале следующие команды:</p>
     <pre>wget https://ivacuum.org/d/rt/retracker.local.sh
@@ -44,11 +44,11 @@ sudo ./retracker.local.sh</pre>
   </div>
 </section>
 
-<section class="tw-bg-light border-top tw-py-12">
-  <div class="tw-container tw-max-w-3xl">
+<section class="bg-light border-top py-12">
+  <div class="container max-w-3xl">
     <h3>Как понять, что ретрекер заработал?</h3>
     <p>Статус трекера «retracker.local» в вашем торрент-клиент на вкладке «Трекеры» (Trackers) должен измениться на «работает» (working) как на картинке ниже:</p>
-    <div><img class="tw-max-w-full tw-h-auto" src="https://img.ivacuum.ru/g/100710/1_899GTp1JNl.png"></div>
+    <div><img class="max-w-full h-auto" src="https://img.ivacuum.ru/g/100710/1_899GTp1JNl.png"></div>
   </div>
 </section>
 @endsection

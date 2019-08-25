@@ -24,8 +24,8 @@
 {!! Form::text('meta_image')->html() !!}
 
 @if ($model->meta_image)
-  <div class="tw-mb-4">
-    <img class="tw-max-w-full tw-h-auto tw-rounded" src="{{ $model->metaImage() }}">
+  <div class="mb-4">
+    <img class="max-w-full h-auto rounded" src="{{ $model->metaImage() }}">
   </div>
 @endif
 

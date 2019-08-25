@@ -1,12 +1,12 @@
 @if (isset($timeline) && sizeof($timeline->flatten()) > 1)
-  <div class="tw-overflow-hidden tw-mb-4">
-    <div class="tw-whitespace-no-wrap tw-pb-8 tw--mb-8 tw-overflow-x-auto">
-      <div class="tw-text-sm tw-flex">
+  <div class="overflow-hidden mb-4">
+    <div class="whitespace-no-wrap pb-8 -mb-8 overflow-x-auto">
+      <div class="text-sm flex">
         @foreach ($timeline as $year => $rows)
-          <div class="tw-flex tw-flex-col tw-mr-5 {{ $loop->last ? 'tw-mr-0' : '' }}">
-            <div class="tw-font-bold">{{ $year }}</div>
+          <div class="flex flex-col mr-5 {{ $loop->last ? 'mr-0' : '' }}">
+            <div class="font-bold">{{ $year }}</div>
             @foreach ($rows as $row)
-              <div class="tw-text-xs">
+              <div class="text-xs">
                 @if ($row->id === $trip->id)
                   <mark>{{ $row->timelinePeriod() }}</mark>
                 @elseif ($row->status === App\Trip::STATUS_PUBLISHED)

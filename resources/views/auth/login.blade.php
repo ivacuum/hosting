@@ -1,28 +1,28 @@
 @extends('base')
 
 @section('content')
-<div class="tw-mx-auto tw-max-w-sm">
-  <div class="tw-text-center tw-mb-4">
+<div class="mx-auto max-w-sm">
+  <div class="text-center mb-4">
     <h3>{{ trans('auth.signin_title') }}</h3>
 
-    <div class="tw-flex tw-justify-center tw-my-4">
-      <div class="tw-mr-2">
-        <a class="btn bg-vk tw-text-xl tw-rounded-full tw-text-white hover:tw-text-white" href="{{ path('Auth\Vk@index') }}">
+    <div class="flex justify-center my-4">
+      <div class="mr-2">
+        <a class="btn bg-vk text-xl rounded-full text-white hover:text-white" href="{{ path('Auth\Vk@index') }}">
           @svg (vk)
         </a>
-        <div class="tw-mt-1 tw-text-xs text-muted">{{ trans('auth.vk') }}</div>
+        <div class="mt-1 text-xs text-muted">{{ trans('auth.vk') }}</div>
       </div>
-      <div class="tw-mr-2">
-        <a class="btn bg-facebook tw-text-xl tw-rounded-full tw-text-white hover:tw-text-white" href="{{ path('Auth\Facebook@index') }}">
+      <div class="mr-2">
+        <a class="btn bg-facebook text-xl rounded-full text-white hover:text-white" href="{{ path('Auth\Facebook@index') }}">
           @svg (facebook)
         </a>
-        <div class="tw-mt-1 tw-text-xs text-muted">{{ trans('auth.facebook') }}</div>
+        <div class="mt-1 text-xs text-muted">{{ trans('auth.facebook') }}</div>
       </div>
       <div>
-        <a class="btn bg-google tw-text-xl tw-rounded-full tw-text-white hover:tw-text-white" href="{{ path('Auth\Google@index') }}">
+        <a class="btn bg-google text-xl rounded-full text-white hover:text-white" href="{{ path('Auth\Google@index') }}">
           @svg (google)
         </a>
-        <div class="tw-mt-1 tw-text-xs text-muted">{{ trans('auth.google') }}</div>
+        <div class="mt-1 text-xs text-muted">{{ trans('auth.google') }}</div>
       </div>
     </div>
     <div>{{ trans('auth.or') }}</div>
@@ -32,7 +32,7 @@
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 
-    <div class="tw-mb-4">
+    <div class="mb-4">
       <input
         autofocus
         required
@@ -45,7 +45,7 @@
       <div class="invalid-feedback">{{ $errors->first('email') }}</div>
     </div>
 
-    <div class="tw-mb-4 tw-relative">
+    <div class="mb-4 relative">
       <input
         required
         class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
@@ -65,10 +65,10 @@
       <div class="invalid-feedback">{{ $errors->first('password') }}</div>
     </div>
 
-    <div class="tw-flex tw-items-center tw-justify-between">
+    <div class="flex items-center justify-between">
       <div>
-        <label class="tw-flex tw-items-center tw-font-normal tw-mb-0">
-          <input class="tw-mr-2" type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}>
+        <label class="flex items-center font-normal mb-0">
+          <input class="mr-2" type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}>
           {{ trans('auth.dont_remember') }}
         </label>
       </div>
@@ -77,11 +77,11 @@
       </div>
     </div>
 
-    <div class="tw-mt-4 tw-text-center">
+    <div class="mt-4 text-center">
       <button class="btn btn-primary btn-lg btn-login">
         {{ trans('auth.signin') }}
       </button>
-      <div class="tw-mt-6">
+      <div class="mt-6">
         <a class="link" href="{{ path('Auth\NewAccount@index') }}">{{ trans('auth.new_account') }}</a>
       </div>
     </div>

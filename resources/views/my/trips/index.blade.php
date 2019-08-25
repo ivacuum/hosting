@@ -3,16 +3,16 @@
 @section('content')
 <h3>
   {{ trans('my.trips') }}
-  <span class="tw-text-base text-muted tw-whitespace-no-wrap">{{ ViewHelper::number($models->total()) }}</span>
+  <span class="text-base text-muted whitespace-no-wrap">{{ ViewHelper::number($models->total()) }}</span>
   <a class="btn btn-success" href="{{ path('MyTrips@create') }}">
     {{ trans('acp.trips.create') }}
   </a>
   @if (optional(Auth::user())->login)
-    <a class="btn btn-default tw-my-1" href="{{ path('UserTravelTrips@index', \Auth::user()->login) }}">
+    <a class="btn btn-default my-1" href="{{ path('UserTravelTrips@index', \Auth::user()->login) }}">
       Просмотреть
     </a>
   @endif
-  <a class="btn btn-default tw-my-1" href="{{ path('Docs@page', 'trips') }}">
+  <a class="btn btn-default my-1" href="{{ path('Docs@page', 'trips') }}">
     @svg (question-circle)
   </a>
 </h3>
@@ -21,20 +21,20 @@
   <table class="table-stats table-adaptive">
     <thead>
     <tr>
-      <th class="md:tw-text-right">#</th>
+      <th class="md:text-right">#</th>
       <th>{{ ViewHelper::modelFieldTrans('trip', 'title') }}</th>
       <th></th>
       <th>Дата начала</th>
       <th>{{ ViewHelper::modelFieldTrans('trip', 'slug') }}</th>
-      <th class="md:tw-text-right tw-whitespace-no-wrap">@svg (eye)</th>
-      <th class="md:tw-text-right tw-whitespace-no-wrap">@svg (comment-o)</th>
+      <th class="md:text-right whitespace-no-wrap">@svg (eye)</th>
+      <th class="md:text-right whitespace-no-wrap">@svg (comment-o)</th>
       <th></th>
     </tr>
     </thead>
     <tbody>
     @foreach ($models as $model)
       <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-        <td class="md:tw-text-right"><span class="sm:tw-hidden">#</span>{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
+        <td class="md:text-right"><span class="sm:hidden">#</span>{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
         {{--
         <td><a href="{{ path("$self@show", $model) }}">{{ $model->title }}</a></td>
         --}}
@@ -58,12 +58,12 @@
             {{ $model->slug }}
           @endif
         </td>
-        <td class="md:tw-text-right tw-whitespace-no-wrap">
+        <td class="md:text-right whitespace-no-wrap">
           @if ($model->views > 0)
             {{ ViewHelper::number($model->views) }}
           @endif
         </td>
-        <td class="md:tw-text-right tw-whitespace-no-wrap">
+        <td class="md:text-right whitespace-no-wrap">
           @if ($model->comments_count > 0)
             {{ ViewHelper::number($model->comments_count) }}
           @endif

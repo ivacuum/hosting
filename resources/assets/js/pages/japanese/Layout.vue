@@ -7,7 +7,7 @@ export default {
 </script>
 
 <template>
-<div class="tw-antialiased">
+<div class="antialiased">
   <the-search/>
   <router-view/>
 </div>

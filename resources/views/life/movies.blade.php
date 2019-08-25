@@ -20,7 +20,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">2017 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -33,7 +33,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">2016 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -44,7 +44,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">2015 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -55,7 +55,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">2014 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -72,7 +72,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">2013 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -85,7 +85,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">2012 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -94,7 +94,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">2011 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -110,7 +110,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">2010 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -122,7 +122,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">2009 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -131,7 +131,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">2008 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -145,7 +145,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">2007 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -158,7 +158,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">2006 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -171,7 +171,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">2005 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -180,7 +180,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">2004 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -190,7 +190,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">2002 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -200,7 +200,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">2000 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -210,7 +210,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">1999 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -221,7 +221,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">1998 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -231,7 +231,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">1997 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -241,7 +241,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">1996 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -250,7 +250,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">1993 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -259,7 +259,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">1991 год</div>
   @include('tpl.kp_movies', [
     'movies' => [
@@ -268,7 +268,7 @@
   ])
 </div>
 
-<div class="movies-container tw-mt-12">
+<div class="movies-container mt-12">
   <div class="h3">1988 год</div>
   @include('tpl.kp_movies', [
     'movies' => [

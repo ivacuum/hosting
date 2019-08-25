@@ -7,7 +7,7 @@ export default {
 </script>
 
 <template>
-<div class="tw-mb-4">
+<div class="mb-4">
   <label :class="labelClasses">
     <slot name="label">{{ labelText }}</slot>
   </label>
@@ -20,7 +20,7 @@ export default {
     >
   </slot>
   <slot name="feedback">
-    <div class="invalid-feedback tw-block" v-if="errors">
+    <div class="invalid-feedback block" v-if="errors">
       <div v-for="error in errors">{{ error }}</div>
     </div>
   </slot>

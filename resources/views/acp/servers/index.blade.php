@@ -4,7 +4,7 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="md:tw-text-right">#</th>
+    <th class="md:text-right">#</th>
     <th>Сервер</th>
     <th>Хост</th>
     <th></th>
@@ -13,7 +13,7 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-      <td class="md:tw-text-right">{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
+      <td class="md:text-right">{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
       <td>
         <a href="{{ path("$self@show", $model) }}">
           {{ $model->title }}

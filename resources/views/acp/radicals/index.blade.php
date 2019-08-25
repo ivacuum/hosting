@@ -18,14 +18,14 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
   <tr>
-    <th class="tw-whitespace-no-wrap">
+    <th class="whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'level', 'order' => 'asc'])
     </th>
     <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'character') }}</th>
-    <th class="tw-whitespace-no-wrap">
+    <th class="whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'meaning', 'order' => 'asc'])
     </th>
-    <th class="md:tw-text-right tw-whitespace-no-wrap">
+    <th class="md:text-right whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'kanjis_count'])
     </th>
   </tr>
@@ -35,16 +35,16 @@
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
       <td>{{ $model->level }}</td>
       <td>
-        <a class="bg-radical tw-block tw-font-bold tw-pb-1 tw-px-2 tw-rounded tw-text-center tw-text-white hover:tw-text-gray-400" href="{{ path("$self@show", $model) }}">
+        <a class="bg-radical block font-bold pb-1 px-2 rounded text-center text-white hover:text-gray-400" href="{{ path("$self@show", $model) }}">
           @if ($model->character)
-            <span class="tw-inline-block ja-big ja-character ja-shadow">{{ $model->character }}</span>
+            <span class="inline-block ja-big ja-character ja-shadow">{{ $model->character }}</span>
           @else
-            <img class="ja-character ja-image-shadow tw-mt-1" src="{{ $model->image }}" height="72">
+            <img class="ja-character ja-image-shadow mt-1" src="{{ $model->image }}" height="72">
           @endif
         </a>
       </td>
       <td>{{ $model->meaning }}</td>
-      <td class="md:tw-text-right tw-whitespace-no-wrap">
+      <td class="md:text-right whitespace-no-wrap">
         @if ($model->kanjis_count > 0)
           <a href="{{ path('Acp\Kanjis@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->kanjis_count) }}

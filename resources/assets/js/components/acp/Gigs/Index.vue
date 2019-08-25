@@ -18,7 +18,7 @@ export default {
   <table class="table-stats table-adaptive" v-if="collection.data.length">
     <thead>
     <tr>
-      <th class="md:tw-text-right">#</th>
+      <th class="md:text-right">#</th>
       <th>{{ modelFieldTrans('title') }}</th>
       <th></th>
       <th>
@@ -27,7 +27,7 @@ export default {
         </sortable-header>
       </th>
       <th>{{ modelFieldTrans('slug') }}</th>
-      <th class="md:tw-text-right tw-whitespace-no-wrap">
+      <th class="md:text-right whitespace-no-wrap">
         <sortable-header field="views">
           <span v-html="$root.svg.eye"></span>
         </sortable-header>
@@ -41,7 +41,7 @@ export default {
         :key="resource.id"
         @dblclick="$router.push(resource.edit_url)"
       >
-        <td class="md:tw-text-right">{{ addition + i + 1 }}</td>
+        <td class="md:text-right">{{ addition + i + 1 }}</td>
         <td>
           <router-link :to="resource.show_url">
             {{ resource.title }}
@@ -61,7 +61,7 @@ export default {
             {{ resource.slug }}
           </a>
         </td>
-        <td class="md:tw-text-right tw-whitespace-no-wrap">
+        <td class="md:text-right whitespace-no-wrap">
           {{ resource.views | decimal }}
         </td>
         <td>

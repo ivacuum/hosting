@@ -17,7 +17,7 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
   <tr>
-    <th class="md:tw-text-right">ID</th>
+    <th class="md:text-right">ID</th>
     <th>Автор</th>
     <th>Текст</th>
     <th>Дата</th>
@@ -27,7 +27,7 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-      <td class="md:tw-text-right">
+      <td class="md:text-right">
         <a href="{{ path("$self@show", $model) }}">
           {{ $model->id }}
         </a>
@@ -40,10 +40,10 @@
         @endif
       </td>
       <td>
-        <div class="tw-whitespace-pre-line">{{ $model->html }}</div>
-        <div class="tw-text-xs text-muted">{{ $model->rel_type }} #{{ $model->rel_id }}</div>
+        <div class="whitespace-pre-line">{{ $model->html }}</div>
+        <div class="text-xs text-muted">{{ $model->rel_type }} #{{ $model->rel_id }}</div>
       </td>
-      <td class="tw-whitespace-no-wrap">{{ ViewHelper::dateShort($model->created_at) }}</td>
+      <td class="whitespace-no-wrap">{{ ViewHelper::dateShort($model->created_at) }}</td>
       <td>
         @if ($model->status === App\Comment::STATUS_PUBLISHED)
           <a href="{{ $model->www() }}">

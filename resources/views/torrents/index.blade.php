@@ -3,11 +3,11 @@
 ])
 
 @section('content')
-<div class="tw-flex">
-  <aside class="tw-hidden lg:tw-block tw-flex-shrink-0 tw-antialiased torrent-categories tw-w-56">
+<div class="flex">
+  <aside class="hidden lg:block flex-shrink-0 antialiased torrent-categories w-56">
     <nav>
       @foreach ($tree as $id => $category)
-        <h4 class="{{ $loop->first ? '' : 'tw-mt-6' }} tw-whitespace-no-wrap">
+        <h4 class="{{ $loop->first ? '' : 'mt-6' }} whitespace-no-wrap">
           @if (!empty($category_id) && $id == $category_id)
             <mark>{{ $category['title'] }}</mark>
           @else
@@ -17,13 +17,13 @@
         @if (!empty($category['children']))
           @foreach ($category['children'] as $id => $child)
             @continue (empty($stats[$id]))
-            <div class="tw-whitespace-no-wrap">
+            <div class="whitespace-no-wrap">
               @if (!empty($category_id) && $id == $category_id)
                 <mark>{{ $child['title'] }}</mark>
               @else
                 <a class="visited" href="{{ path("$self@index", ['category_id' => $id]) }}">{{ $child['title'] }}</a>
               @endif
-              <span class="text-muted tw-text-xs">{{ $stats[$id] }}</span>
+              <span class="text-muted text-xs">{{ $stats[$id] }}</span>
             </div>
           @endforeach
         @endif
@@ -31,13 +31,13 @@
     </nav>
     @guest
       @ru
-        <div class="alert alert-info tw-mr-6 tw-mt-6 tw-p-2 tw-text-xs">
+        <div class="alert alert-info mr-6 mt-6 p-2 text-xs">
           <a class="link" href="{{ path('Auth\SignIn@index', ['goto' => path('Torrents@index')]) }}">Пользователям</a> доступны чат и добавление раздач
         </div>
       @endru
     @endguest
   </aside>
-  <div class="tw-flex-grow" v-cloak>
+  <div class="flex-grow" v-cloak>
     @if (Auth::check() && empty(request()->query()))
       <chat></chat>
     @endif
@@ -48,16 +48,16 @@
         <div class="h3">Search results for «{{ $q }}»</div>
       @endru
       @if ($fulltext)
-        <div class="tw-mb-6">
+        <div class="mb-6">
           <a class="btn btn-default" href="{{ UrlHelper::filter(['fulltext' => null]) }}">
-            <span class="tw-text-red-600">
+            <span class="text-red-600">
               @svg (times)
             </span>
             Искать только в заголовках
           </a>
         </div>
       @else
-        <div class="tw-mb-6">
+        <div class="mb-6">
           <a class="btn btn-default" href="{{ UrlHelper::filter(['fulltext' => 1]) }}">
             @svg (search)
             Искать в описаниях раздач
@@ -69,19 +69,19 @@
     @if (sizeof($torrents))
       @foreach ($torrents as $torrent)
         @if (null === $last_date || !$torrent->registered_at->isSameDay($last_date))
-          <h6 class="{{ $loop->first ? 'tw-mt-0' : 'tw-mt-6' }}">{{ $torrent->fullDate() }}</h6>
+          <h6 class="{{ $loop->first ? 'mt-0' : 'mt-6' }}">{{ $torrent->fullDate() }}</h6>
           @php ($last_date = $torrent->registered_at)
         @endif
         @php ($category = TorrentCategoryHelper::find($torrent->category_id))
-        <div class="tw-flex tw-flex-wrap md:tw-flex-no-wrap tw-justify-center md:tw-justify-start torrents-list-container tw-antialiased js-torrents-views-observer" data-id="{{ $torrent->id }}">
-          <div class="tw-flex-shrink-0 torrents-list-icon torrent-icon order-1 order-md-0" title="{{ $category['title'] }}">
+        <div class="flex flex-wrap md:flex-no-wrap justify-center md:justify-start torrents-list-container antialiased js-torrents-views-observer" data-id="{{ $torrent->id }}">
+          <div class="flex-shrink-0 torrents-list-icon torrent-icon order-1 order-md-0" title="{{ $category['title'] }}">
             @php ($icon = $category['icon'] ?? 'file-text-o')
             @svg ($icon)
           </div>
-          <a class="tw-flex-grow tw-mb-2 md:tw-mb-0 md:tw-mr-4 visited" href="{{ $torrent->www() }}">
+          <a class="flex-grow mb-2 md:mb-0 md:mr-4 visited" href="{{ $torrent->www() }}">
             <torrent-title title="{{ $torrent->title }}" hide_brackets="{{ Auth::check() && Auth::user()->torrent_short_title ? 1 : '' }}"></torrent-title>
           </a>
-          <a class="tw-flex-shrink-0 tw-pr-2 torrents-list-magnet tw-text-center md:tw-text-left tw-whitespace-no-wrap js-magnet"
+          <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center md:text-left whitespace-no-wrap js-magnet"
              href="{{ $torrent->magnet() }}"
              title="{{ trans('torrents.download') }}"
              data-action="{{ path('Torrents@magnet', $torrent) }}"
@@ -89,7 +89,7 @@
             @svg (magnet)
             <span class="js-magnet-counter">{{ $torrent->clicks > 0 ? $torrent->clicks : '' }}</span>
           </a>
-          <div class="tw-flex-shrink-0 tw-text-center md:tw-text-left tw-whitespace-no-wrap torrents-list-size">{{ ViewHelper::size($torrent->size) }}</div>
+          <div class="flex-shrink-0 text-center md:text-left whitespace-no-wrap torrents-list-size">{{ ViewHelper::size($torrent->size) }}</div>
         </div>
       @endforeach
 
@@ -105,7 +105,7 @@
       @if ($q)
         <details>
           <summary>Как пользоваться поиском?</summary>
-          <div class="tw-mt-2 tw-mb-1">Поиск по раздачам учитывает морфологию русского языка, поэтому «комедия» найдется даже при запросе «комедии». Ниже приведены примеры запросов для понимания особенностей поиска:</div>
+          <div class="mt-2 mb-1">Поиск по раздачам учитывает морфологию русского языка, поэтому «комедия» найдется даже при запросе «комедии». Ниже приведены примеры запросов для понимания особенностей поиска:</div>
           <ul class="text-muted">
             <li>
               <a href="{{ UrlHelper::filter(['q' => 'драма']) }}">драма</a>
@@ -140,7 +140,7 @@
               — поиск отдельного сезона сериала
             </li>
           </ul>
-          <div class="tw-mb-1">Изначально поиск выполняется только по заголовкам раздач. Но его область можно расширить и до их описаний с помощью клика по соответствующей кнопке перед результатами поиска. Это позволяет находить фильмы по актерам, отдельные игры в раздачах антологий и т.п. Примеры:</div>
+          <div class="mb-1">Изначально поиск выполняется только по заголовкам раздач. Но его область можно расширить и до их описаний с помощью клика по соответствующей кнопке перед результатами поиска. Это позволяет находить фильмы по актерам, отдельные игры в раздачах антологий и т.п. Примеры:</div>
           <ul class="text-muted">
             <li>
               <a href="{{ UrlHelper::filter(['q' => 'мэтт дэймон', 'fulltext' => 1]) }}">мэтт дэймон</a>

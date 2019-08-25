@@ -11,11 +11,11 @@
 @ru
   <p><strong>FlyLinkDC++</strong> — свободный и открытый клиент сети DC++. Основан на <a class="link" href="{{ path('Dcpp@page', 'strongdc') }}">StrongDC++</a>. Русский язык входит в стандартный комплект поставки. Инсталлятор включает в себя как 32-битную версию, так и 64.</p>
 
-  <h3 class="tw-mt-12">Установка и настройка</h3>
+  <h3 class="mt-12">Установка и настройка</h3>
   <p>После установки клиента вам необходимо будет указать ваш ник:</p>
-  <p><img class="tw-max-w-full tw-h-auto" src="https://img.ivacuum.ru/g/110320/1_hdZWo1DiV3.png" width="670" height="229"></p>
+  <p><img class="max-w-full h-auto" src="https://img.ivacuum.ru/g/110320/1_hdZWo1DiV3.png" width="670" height="229"></p>
   <p>А также открыть доступ к тем файлам, которыми вы готовы поделиться с другими пользователями:</p>
-  <p><img class="tw-max-w-full tw-h-auto" src="https://img.ivacuum.ru/g/110320/1_aVZjr1LGHI.png" width="633" height="443"></p>
+  <p><img class="max-w-full h-auto" src="https://img.ivacuum.ru/g/110320/1_aVZjr1LGHI.png" width="633" height="443"></p>
   <p>После этих настроек перезапустите программу и пользуйтесь <strong>FlyLinkDC++</strong> с удовольствием!</p>
 @en
   <p><strong>FlyLinkDC++</strong> is a free and open-source DC++ client software. It is based on <a class="link" href="{{ path('Dcpp@page', 'strongdc') }}">StrongDC++</a>. Installer has both 32-bit and 64-bit versions of the client in it.</p>
@@ -23,8 +23,8 @@
 @endsection
 
 @section('software_features')
-<section class="tw-my-0 tw-py-12">
-  <div class="tw-container">
+<section class="my-0 py-12">
+  <div class="container">
     <h3>
       @ru
         Основные возможности FlyLinkDC++
@@ -32,8 +32,8 @@
         Main features of FlyLinkDC++
       @endru
     </h3>
-    <div class="md:tw-flex md:tw--mx-4">
-      <div class="md:tw-flex-1 md:tw-px-4">
+    <div class="md:flex md:-mx-4">
+      <div class="md:flex-1 md:px-4">
         <ul>
           @ru
             <li>Увеличена скорость закачки распространенных файлов</li>
@@ -51,7 +51,7 @@
           @endru
         </ul>
       </div>
-      <div class="md:tw-flex-1 md:tw-px-4">
+      <div class="md:flex-1 md:px-4">
         <ul>
           @ru
             <li>Фильтрация по IP-адресу, чтобы качать только из бесплатной локальной сети</li>

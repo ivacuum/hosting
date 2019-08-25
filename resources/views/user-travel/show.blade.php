@@ -7,9 +7,9 @@
 @section('content_header')
 @parent
 @include('tpl.city-timeline')
-<div class="tw-flex tw-flex-wrap tw-items-center tw-mb-2">
-  <img class="flag-24 svg-shadow tw-mr-2" src="{{ $trip->city->country->flagUrl() }}">
-  <h1 class="h2 tw-mb-1 tw-mr-2">{{ $trip->title }}</h1>
+<div class="flex flex-wrap items-center mb-2">
+  <img class="flag-24 svg-shadow mr-2" src="{{ $trip->city->country->flagUrl() }}">
+  <h1 class="h2 mb-1 mr-2">{{ $trip->title }}</h1>
   @include('tpl.city-map-button', ['city' => $trip->city])
   @if ($traveler->id == optional(auth()->user())->id)
     <a class="btn btn-default btn-sm" href="{{ UrlHelper::edit('MyTrips', $trip) }}">
@@ -18,9 +18,9 @@
   @endif
 </div>
 <time datetime="{{ $trip->date_start->toDateString() }}"></time>
-<div id="trip_city_map" class="tw-mb-4 tw-hidden tw-mobile-wide tw-h-1/2-screen"></div>
+<div id="trip_city_map" class="mb-4 hidden mobile-wide h-1/2-screen"></div>
 
-<article class="tw-max-w-1000px js-trip-shortcuts">
+<article class="max-w-1000px js-trip-shortcuts">
 @endsection
 
 @section('content')

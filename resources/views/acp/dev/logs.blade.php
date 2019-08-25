@@ -1,13 +1,13 @@
 @extends('acp.dev.base')
 
 @section('content')
-<div class="tw-flex tw-flex-wrap tw-items-center tw-mb-2">
-  <h3 class="tw-mb-1 tw-mr-4">Логи</h3>
+<div class="flex flex-wrap items-center mb-2">
+  <h3 class="mb-1 mr-4">Логи</h3>
   <form>
     <input name="q" class="form-control" placeholder="Поиск..." value="{{ $q ?? '' }}">
   </form>
 </div>
-<table class="tw-text-xs table-stats table-adaptive">
+<table class="text-xs table-stats table-adaptive">
   <thead>
   <tr>
     <th>#</th>
@@ -38,7 +38,7 @@
       <td>
         @if ($line->request_time != 0)
           @if ($line->request_time > 2)
-            <span class="tw-text-red-600">{{ $line->request_time }}</span>
+            <span class="text-red-600">{{ $line->request_time }}</span>
           @else
             {{ $line->request_time }}
           @endif

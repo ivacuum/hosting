@@ -311,7 +311,7 @@
   'IMG_7624.jpg',
 ]])
 
-<p class="tw-text-center" style="margin-top: 50vh; margin-bottom: 50vh;">* * * * *</p>
+<p class="text-center" style="margin-top: 50vh; margin-bottom: 50vh;">* * * * *</p>
 
 @ru
   <p>Вернемся в наше время. Новый день — новые поезда. У этого широкие панорамные окна.</p>

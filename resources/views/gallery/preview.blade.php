@@ -1,17 +1,17 @@
 @extends('gallery.base')
 
 @section('content')
-<div class="lg:tw-flex lg:tw--mx-4">
-  <div class="lg:tw-w-1/4 xl:tw-w-1/6 lg:tw-px-4 tw-text-center">
+<div class="lg:flex lg:-mx-4">
+  <div class="lg:w-1/4 xl:w-1/6 lg:px-4 text-center">
     <a href="{{ path("$self@view", $image) }}">
       <img class="screenshot" src="{{ $image->thumbnailUrl() }}">
     </a>
   </div>
-  <div class="lg:tw-w-7/12 xl:tw-w-1/2 lg:tw-px-4 tw-mt-6 md:tw-mt-0">
+  <div class="lg:w-7/12 xl:w-1/2 lg:px-4 mt-6 md:mt-0">
     <div>Ссылка:</div>
-    <input class="form-control tw-select-all" value="{{ $image->originalUrl() }}">
-    <div class="tw-mt-2">Полная картинка:</div>
-    <input class="form-control tw-select-all" value="[img]{{ $image->originalUrl() }}[/img]">
+    <input class="form-control select-all" value="{{ $image->originalUrl() }}">
+    <div class="mt-2">Полная картинка:</div>
+    <input class="form-control select-all" value="[img]{{ $image->originalUrl() }}[/img]">
     {{-- TODO: thumb --}}
   </div>
 </div>

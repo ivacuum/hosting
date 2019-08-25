@@ -9,8 +9,8 @@
 @en
   <p>Maxidrom festival returns after a long break.</p>
 @endru
-<div class="md:tw-flex md:tw--mx-4">
-  <div class="md:tw-w-7/12 md:tw-px-4">
+<div class="md:flex md:-mx-4">
+  <div class="md:w-7/12 md:px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>Ramm 4</li>
@@ -39,9 +39,9 @@
       <li>Moskau</li>
     </ol>
   </div>
-  <div class="md:tw-w-5/12 md:tw-px-4">
-    <div class="tw-mb-6 tw-text-center tw-mobile-wide">
-      <img class="image-fit-viewport tw-max-w-full sm:tw-rounded" src="https://life.ivacuum.org/gigs/rammstein.2016.06.19.jpg">
+  <div class="md:w-5/12 md:px-4">
+    <div class="mb-6 text-center mobile-wide">
+      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/rammstein.2016.06.19.jpg">
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<ul class="pagination pagination-mobile sm:tw-hidden tw-m-0">
+<ul class="pagination pagination-mobile sm:hidden m-0">
   @if ($paginator->onFirstPage())
     <li class="page-item disabled"><span class="page-link">@svg (chevron-left)</span></li>
   @else
@@ -12,7 +12,7 @@
   @endif
 </ul>
 
-<ul class="pagination tw-hidden sm:tw-flex tw-m-0 tw-justify-center">
+<ul class="pagination hidden sm:flex m-0 justify-center">
   @if (!$paginator->onFirstPage())
     <li class="page-item"><a class="page-link js-pjax tooltipped tooltipped-ne" href="{{ $paginator->previousPageUrl() }}" id="prev_page" rel="prev" aria-label="{{ trans('pagination.previous') }}">@svg (chevron-left)</a></li>
   @endif

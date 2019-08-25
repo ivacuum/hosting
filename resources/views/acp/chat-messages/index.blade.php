@@ -16,7 +16,7 @@
   <thead>
   <tr>
     <th><input type="checkbox" class="js-select-all" data-selector=".models-checkbox"></th>
-    <th class="md:tw-text-right">ID</th>
+    <th class="md:text-right">ID</th>
     <th>Автор</th>
     <th>Текст</th>
     <th></th>
@@ -27,7 +27,7 @@
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
       <td><input class="models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
-      <td class="md:tw-text-right">
+      <td class="md:text-right">
         <a href="{{ path("$self@show", $model) }}">
           {{ $model->id }}
         </a>
@@ -47,13 +47,13 @@
           </span>
         @endif
       </td>
-      <td class="tw-whitespace-no-wrap">{{ ViewHelper::dateShort($model->created_at) }}</td>
+      <td class="whitespace-no-wrap">{{ ViewHelper::dateShort($model->created_at) }}</td>
     </tr>
   @endforeach
   </tbody>
 </table>
 
-<div class="tw-mt-4">
+<div class="mt-4">
   @include('acp.tpl.batch', ['actions' => [
     'hide' => 'Скрыть',
     'publish' => 'Опубликовать',

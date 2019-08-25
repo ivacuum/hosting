@@ -1,13 +1,13 @@
 @extends('base')
 
 @section('content')
-<div class="tw-mx-auto tw-max-w-400px">
-  <h3 class="tw-mb-4">{{ trans('auth.password_reset_title') }}</h3>
+<div class="mx-auto max-w-400px">
+  <h3 class="mb-4">{{ trans('auth.password_reset_title') }}</h3>
   <form action="{{ path('Auth\ResetPassword@reset') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 
-    <div class="tw-mb-4">
+    <div class="mb-4">
       <input
         autofocus
         required
@@ -21,7 +21,7 @@
       <div class="invalid-feedback">{{ $errors->first('email') }}</div>
     </div>
 
-    <div class="tw-mb-4">
+    <div class="mb-4">
       <input
         required
         class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"

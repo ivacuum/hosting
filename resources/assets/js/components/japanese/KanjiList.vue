@@ -18,9 +18,9 @@
             v-if="!guest"
           >{{ toggleBurnedText }}</button>
         </p>
-        <div class="tw-flex tw-flex-wrap tw-items-center" v-if="Object.keys(filteredElements).length > 1">
+        <div class="flex flex-wrap items-center" v-if="Object.keys(filteredElements).length > 1">
           <template v-for="(collection, lvl) in filteredElements">
-            <a class="tw-flex tw-bg-gray-600 hover:tw-bg-gray-700 tw-text-white hover:tw-text-gray-100 tw-px-2 tw-text-base tw-font-bold tw-rounded ja-shadow-light tw-mr-1 tw-mb-1" :href="`#level-${lvl}`">
+            <a class="flex bg-gray-600 hover:bg-gray-700 text-white hover:text-gray-100 px-2 text-base font-bold rounded ja-shadow-light mr-1 mb-1" :href="`#level-${lvl}`">
               {{ lvl }}
             </a>
           </template>
@@ -28,10 +28,10 @@
       </div>
       <template v-for="(collection, lvl) in filteredElements">
         <a :id="`level-${lvl}`"></a>
-        <div class="sm:tw-flex tw-items-center tw-justify-between tw-mt-6 tw-mb-1">
+        <div class="sm:flex items-center justify-between mt-6 mb-1">
           <h3>
             <span>{{ titleLabel(lvl) }}</span>
-            <span class="tw-text-base text-muted">{{ collection.length }}</span>
+            <span class="text-base text-muted">{{ collection.length }}</span>
           </h3>
           <div>
             <button
@@ -51,18 +51,18 @@
             >{{ toggleBurnedText }}</button>
           </div>
         </div>
-        <div class="tw-font-bold kanji-grid tw-text-center tw-text-white" is="transition-group" name="grid">
-          <div class="bg-kanji tw-pb-2 tw-rounded"
+        <div class="font-bold kanji-grid text-center text-white" is="transition-group" name="grid">
+          <div class="bg-kanji pb-2 rounded"
                :class="{ 'labels-hidden': !labels, 'bg-burned': row.burned }"
                :key="row.id"
                v-for="row in collection"
           >
             <router-link
-              class="tw-block ja-big ja-character ja-shadow tw-pt-1 tw-pb-2 tw-text-white hover:tw-text-gray-400"
+              class="block ja-big ja-character ja-shadow pt-1 pb-2 text-white hover:text-gray-400"
               :to="{ name: 'wk.kanji', params: { character: row.character }}"
             >{{ row.character }}</router-link>
             <div class="kanji-reading ja-shadow-light">{{ row.reading }}</div>
-            <div class="kanji-meaning ja-shadow-light tw-capitalize">{{ row.first_meaning }}</div>
+            <div class="kanji-meaning ja-shadow-light capitalize">{{ row.first_meaning }}</div>
           </div>
         </div>
       </template>

@@ -16,7 +16,7 @@
         <input class="domains-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}">
       </td>
       <td>
-        <a class="tw-mr-1" href="http://{{ $model->domain }}/" target="_blank">
+        <a class="mr-1" href="http://{{ $model->domain }}/" target="_blank">
           @svg (external-link)
         </a>
         <a href="/acp/domains/{{ $model->domain }}">{{ $model->domain }}</a>
@@ -27,16 +27,16 @@
           </span>
         @endif
         @if ($model->text)
-          <span class="tw-bg-gray-600 tw-text-white tw-p-1 tw-text-xs tw-font-bold tw-rounded tooltipped tooltipped-n" aria-label="есть заметки">...</span>
+          <span class="bg-gray-600 text-white p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="есть заметки">...</span>
         @endif
         @if (!$model->domain_control)
-          <span class="tw-bg-teal-600 tw-text-white tw-p-1 tw-text-xs tw-font-bold tw-rounded tooltipped tooltipped-n" aria-label="не в нашей панели">?</span>
+          <span class="bg-teal-600 text-white p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="не в нашей панели">?</span>
         @endif
         @if ($model->domain_control and $model->isExpired())
-          <span class="tw-bg-red-600 tw-text-white tw-p-1 tw-text-xs tw-font-bold tw-rounded tooltipped tooltipped-n" aria-label="просрочена оплата">$</span>
+          <span class="bg-red-600 text-white p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="просрочена оплата">$</span>
         @endif
         @if ($model->domain_control and $model->isExpiringSoon())
-          <span class="tw-bg-orange-400 tw-p-1 tw-text-xs tw-font-bold tw-rounded tooltipped tooltipped-n" aria-label="подходит срок оплаты">$</span>
+          <span class="bg-orange-400 p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="подходит срок оплаты">$</span>
         @endif
       </td>
       <td class="text-muted">
@@ -56,10 +56,10 @@
   </tbody>
 </table>
 
-<div class="tw-my-4">
+<div class="my-4">
   <form class="form-inline js-batch-form" data-url="/acp/domains/batch" data-selector=".domains-checkbox">
-    <div class="tw-mb-4">
-      <div class="tw-inline-block tw-mr-1">
+    <div class="mb-4">
+      <div class="inline-block mr-1">
         <select required class="custom-select" name="action">
           <option value="">Выберите действие...</option>
           @if ($filter == 'trashed')
@@ -78,20 +78,20 @@
 </div>
 
 <div>
-  <span class="tw-whitespace-no-wrap tw-mr-2">
-    <span class="tw-bg-gray-600 tw-text-white tw-p-1 tw-text-xs tw-font-bold tw-rounded tw-mr-1">...</span>
+  <span class="whitespace-no-wrap mr-2">
+    <span class="bg-gray-600 text-white p-1 text-xs font-bold rounded mr-1">...</span>
     есть заметки
   </span>
-  <span class="tw-whitespace-no-wrap tw-mr-2">
-    <span class="tw-bg-teal-600 tw-text-white tw-py-1 tw-px-2 tw-text-xs tw-font-bold tw-rounded tw-mr-1">?</span>
+  <span class="whitespace-no-wrap mr-2">
+    <span class="bg-teal-600 text-white py-1 px-2 text-xs font-bold rounded mr-1">?</span>
     не в нашей панели
   </span>
-  <span class="tw-whitespace-no-wrap tw-mr-2">
-    <span class="tw-bg-red-600 tw-text-white tw-py-1 tw-px-2 tw-text-xs tw-font-bold tw-rounded tw-mr-1">$</span>
+  <span class="whitespace-no-wrap mr-2">
+    <span class="bg-red-600 text-white py-1 px-2 text-xs font-bold rounded mr-1">$</span>
     просрочена оплата
   </span>
-  <span class="tw-whitespace-no-wrap tw-mr-2">
-    <span class="tw-bg-orange-400 tw-py-1 tw-px-2 tw-text-xs tw-font-bold tw-rounded tw-mr-1">$</span>
+  <span class="whitespace-no-wrap mr-2">
+    <span class="bg-orange-400 py-1 px-2 text-xs font-bold rounded mr-1">$</span>
     подходит срок оплаты
   </span>
 </div>

@@ -12,18 +12,18 @@
   <thead>
     <tr>
       <th>Шаблон</th>
-      <th class="md:tw-text-right">@svg (picture-o)</th>
+      <th class="md:text-right">@svg (picture-o)</th>
       @foreach (config('cfg.locales') as $key => $value)
-        <th class="md:tw-text-right tw-uppercase">{{ $key }}</th>
+        <th class="md:text-right uppercase">{{ $key }}</th>
       @endforeach
     </tr>
   </thead>
   <tfoot>
     <tr>
       <td><strong>Итого: {{ sizeof($templates) }}</strong></td>
-      <td class="md:tw-text-right tw-whitespace-no-wrap">{{ ViewHelper::number($total->pics) }}</td>
+      <td class="md:text-right whitespace-no-wrap">{{ ViewHelper::number($total->pics) }}</td>
       @foreach (config('cfg.locales') as $key => $value)
-        <td class="md:tw-text-right tw-whitespace-no-wrap">{{ ViewHelper::number($total->{$key}) }}</td>
+        <td class="md:text-right whitespace-no-wrap">{{ ViewHelper::number($total->{$key}) }}</td>
       @endforeach
     </tr>
   </tfoot>
@@ -35,9 +35,9 @@
             {{ $template->name }}
           </a>
         </td>
-        <td class="md:tw-text-right">{{ $template->pics ?: '—' }}</td>
+        <td class="md:text-right">{{ $template->pics ?: '—' }}</td>
         @foreach (config('cfg.locales') as $key => $value)
-          <td class="md:tw-text-right">{{ $template->i18n->{$key} ?: '—' }}</td>
+          <td class="md:text-right">{{ $template->i18n->{$key} ?: '—' }}</td>
         @endforeach
       </tr>
     @endforeach

@@ -3,7 +3,7 @@
 {!! Form::text('title')->required()->html() !!}
 {!! Form::text('url')->required()->html() !!}
 
-<div class="tw-mb-4">
+<div class="mb-4">
   <label>Обработчик</label>
   <div class="input-group">
     <input class="form-control" type="text" name="handler" value="{{ old('handler', @$model->handler) }}">

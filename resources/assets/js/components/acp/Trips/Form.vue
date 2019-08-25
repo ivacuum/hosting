@@ -40,7 +40,7 @@ export default {
     {{ createTitle }}
   </h3>
 
-  <form class="tw-my-4" ref="form" @submit.prevent="submit">
+  <form class="my-4" ref="form" @submit.prevent="submit">
     <input hidden type="text" name="mail" value="">
     <input hidden type="text" name="_concurrency_control" :value="extra._concurrency_control" v-if="isEditing">
 
@@ -59,8 +59,8 @@ export default {
     <form-text name="meta_description_en" v-model="model.meta_description_en"/>
     <form-text name="meta_image" v-model="model.meta_image"/>
 
-    <div class="tw-mb-4" v-if="resource && resource.meta_image">
-      <img class="tw-max-w-full tw-h-auto tw-rounded" :src="resource.meta_image">
+    <div class="mb-4" v-if="resource && resource.meta_image">
+      <img class="max-w-full h-auto rounded" :src="resource.meta_image">
     </div>
 
     <sticky-bottom-buttons v-bind="{ isEditing, saving }" @apply="apply" @stay="storeAndAddAnother"/>

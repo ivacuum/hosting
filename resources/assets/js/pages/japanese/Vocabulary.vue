@@ -49,18 +49,18 @@ export default {
 
 <template>
 <div>
-  <div class="tw-items-center tw-flex tw-flex-wrap h1">
+  <div class="items-center flex flex-wrap h1">
     <router-link
-      class="bg-secondary ja-shadow-light tw-mr-2 tw-px-4 tw-py-1 tw-rounded tw-text-white hover:tw-text-white"
+      class="bg-secondary ja-shadow-light mr-2 px-4 py-1 rounded text-white hover:text-white"
       :to="{ name: 'wk.level', params: { level: vocab.level }}"
     >{{ vocab.level }}</router-link>
-    <div class="bg-vocab ja-shadow-light tw-mr-4 tw-px-2 tw-py-1 tw-rounded tw-text-white">{{ vocab.character }}</div>
-    <div class="tw-text-2xl tw-capitalize">{{ vocab.meaning }}</div>
+    <div class="bg-vocab ja-shadow-light mr-4 px-2 py-1 rounded text-white">{{ vocab.character }}</div>
+    <div class="text-2xl capitalize">{{ vocab.meaning }}</div>
   </div>
 
-  <div class="tw-items-center tw-flex tw-flex-wrap">
+  <div class="items-center flex flex-wrap">
     <span class="text-muted">{{ $t('japanese.reading') }}</span>
-    <span class="tw-text-xl">【{{ vocab.kana }}】</span>
+    <span class="text-xl">【{{ vocab.kana }}】</span>
     <div v-if="vocab.audio">
       <button class="btn btn-default btn-sm" @click="$refs.audio.play()">Play</button>
       <audio ref="audio" :src="vocab.audio"></audio>
@@ -75,18 +75,18 @@ export default {
     v-if="vocab.id"
   />
 
-  <div class="tw-mt-12" v-if="vocab.sentences">
-    <h3 class="tw-mt-0">{{ $t('japanese.sentences') }}</h3>
-    <div class="tw-text-xl tw-whitespace-pre-line">{{ vocab.sentences }}</div>
+  <div class="mt-12" v-if="vocab.sentences">
+    <h3 class="mt-0">{{ $t('japanese.sentences') }}</h3>
+    <div class="text-xl whitespace-pre-line">{{ vocab.sentences }}</div>
   </div>
 
-  <div class="tw-mt-6">
-    <a class="tw-mr-4" :href="`https://www.wanikani.com/vocabulary/${vocab.character}`" rel="noreferrer">
+  <div class="mt-6">
+    <a class="mr-4" :href="`https://www.wanikani.com/vocabulary/${vocab.character}`" rel="noreferrer">
       WaniKani
       <span v-html="$root.svg.external_link"></span>
     </a>
 
-    <a class="tw-mr-4" :href="`https://www.japandict.com/${vocab.character}`" rel="noreferrer">
+    <a class="mr-4" :href="`https://www.japandict.com/${vocab.character}`" rel="noreferrer">
       JapanDict
       <span v-html="$root.svg.external_link"></span>
     </a>
@@ -97,7 +97,7 @@ export default {
     </a>
   </div>
 
-  <div class="tw-mt-6" v-if="!guest">
+  <div class="mt-6" v-if="!guest">
     <burn-vocabulary
       :id="vocab.id"
       :burned="vocab.burned"

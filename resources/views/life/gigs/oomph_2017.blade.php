@@ -15,8 +15,8 @@
   </p>
 @endru
 --}}
-<div class="md:tw-flex md:tw--mx-4">
-  <div class="md:tw-w-7/12 md:tw-px-4">
+<div class="md:flex md:-mx-4">
+  <div class="md:w-7/12 md:px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>Das weisse Licht</li>
@@ -31,7 +31,7 @@
       <li>Jetzt oder nie</li>
       <li>
         Sex hat keine Macht
-        <span class="tw-text-sm text-muted">(Acoustic)</span>
+        <span class="text-sm text-muted">(Acoustic)</span>
       </li>
       <li>Jede Reise hat ein Ende</li>
       <li>Mein Herz</li>
@@ -41,11 +41,11 @@
       <li>Kleinstadtboy</li>
       <li>
         Fieber
-        <span class="tw-text-sm text-muted">(Acoustic)</span>
+        <span class="text-sm text-muted">(Acoustic)</span>
       </li>
       <li>
         Das letzte Streichholz
-        <span class="tw-text-sm text-muted">(Acoustic)</span>
+        <span class="text-sm text-muted">(Acoustic)</span>
       </li>
       <li>Давай, давай работай</li>
       <li>Labyrinth</li>
@@ -54,9 +54,9 @@
       <li>Auf Kurs</li>
     </ol>
   </div>
-  <div class="md:tw-w-5/12 md:tw-px-4">
-    <div class="tw-mb-6 tw-text-center tw-mobile-wide">
-      <img class="image-fit-viewport tw-max-w-full sm:tw-rounded" src="https://life.ivacuum.org/gigs/oomph.2017.03.26.jpg">
+  <div class="md:w-5/12 md:px-4">
+    <div class="mb-6 text-center mobile-wide">
+      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/oomph.2017.03.26.jpg">
     </div>
   </div>
 </div>

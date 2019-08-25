@@ -53,24 +53,24 @@ export default {
 
 <template>
 <div>
-  <div class="tw-items-center tw-flex tw-flex-wrap h1">
+  <div class="items-center flex flex-wrap h1">
     <router-link
-      class="bg-secondary ja-shadow-light tw-mr-2 tw-px-4 tw-py-1 tw-rounded tw-text-white hover:tw-text-white"
+      class="bg-secondary ja-shadow-light mr-2 px-4 py-1 rounded text-white hover:text-white"
       :to="{ name: 'wk.level', params: { level: kanji.level }}"
     >{{ kanji.level }}</router-link>
-    <div class="bg-kanji ja-shadow-light tw-text-white tw-mr-4 tw-px-2 tw-py-1 tw-rounded">{{ kanji.character }}</div>
-    <div class="tw-capitalize">{{ kanji.meaning }}</div>
+    <div class="bg-kanji ja-shadow-light text-white mr-4 px-2 py-1 rounded">{{ kanji.character }}</div>
+    <div class="capitalize">{{ kanji.meaning }}</div>
   </div>
 
-  <h3 class="tw-mt-6">{{ $t('japanese.readings') }}</h3>
-  <div class="tw-mb-6">
+  <h3 class="mt-6">{{ $t('japanese.readings') }}</h3>
+  <div class="mb-6">
     <span v-if="kanji.onyomi">
       <span class="text-muted">On'yomi</span>
-      <span class="tw-text-xl tw-mr-4">【{{ kanji.onyomi }}】</span>
+      <span class="text-xl mr-4">【{{ kanji.onyomi }}】</span>
     </span>
     <span v-if="kanji.kunyomi">
       <span class="text-muted">Kun'yomi</span>
-      <span class="tw-text-xl">【{{ kanji.kunyomi }}】</span>
+      <span class="text-xl">【{{ kanji.kunyomi }}】</span>
     </span>
   </div>
 
@@ -98,13 +98,13 @@ export default {
     v-if="kanji.character"
   />
 
-  <div class="tw-mt-12">
-    <a class="tw-mr-4" :href="`https://www.wanikani.com/kanji/${kanji.character}`" rel="noreferrer">
+  <div class="mt-12">
+    <a class="mr-4" :href="`https://www.wanikani.com/kanji/${kanji.character}`" rel="noreferrer">
       WaniKani
       <span v-html="$root.svg.external_link"></span>
     </a>
 
-    <a class="tw-mr-4" :href="`https://www.japandict.com/kanji/${kanji.character}`" rel="noreferrer">
+    <a class="mr-4" :href="`https://www.japandict.com/kanji/${kanji.character}`" rel="noreferrer">
       JapanDict
       <span v-html="$root.svg.external_link"></span>
     </a>
@@ -115,7 +115,7 @@ export default {
     </a>
   </div>
 
-  <div class="tw-mt-6" v-if="!guest">
+  <div class="mt-6" v-if="!guest">
     <burn-kanji
       :id="kanji.id"
       :burned="kanji.burned"

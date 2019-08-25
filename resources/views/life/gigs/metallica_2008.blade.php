@@ -10,8 +10,8 @@
   <p>За полночь удалось добраться до Крестовского острова. В ближайшей палатке было куплено три полулитровых бутылки воды, так как других не было. Две из них было выпито залпом. Фух, выжил.</p>
 @endru
 
-<div class="md:tw-flex md:tw--mx-4">
-  <div class="md:tw-w-7/12 md:tw-px-4">
+<div class="md:flex md:-mx-4">
+  <div class="md:w-7/12 md:px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>
@@ -21,8 +21,8 @@
       </li>
       <li>For Whom the Bell Tolls</li>
       <li>Ride the Lightning</li>
-      <li>Harvester of Sorrow <span class="tw-text-sm text-muted">(followed by Kirk's solo incl. The Sails of Charon)</span></li>
-      <li>The Unforgiven <span class="tw-text-sm text-muted">(w/ acoustic The Call of Ktulu intro)</span></li>
+      <li>Harvester of Sorrow <span class="text-sm text-muted">(followed by Kirk's solo incl. The Sails of Charon)</span></li>
+      <li>The Unforgiven <span class="text-sm text-muted">(w/ acoustic The Call of Ktulu intro)</span></li>
       <li>Leper Messiah</li>
       <li>...And Justice for All</li>
       <li>No Remorse</li>
@@ -33,14 +33,14 @@
       <li>Sad But True</li>
       <li>One</li>
       <li>Enter Sandman</li>
-      <li>Last Caress <span class="tw-text-sm text-muted">(Misfits cover)</span></li>
+      <li>Last Caress <span class="text-sm text-muted">(Misfits cover)</span></li>
       <li>Motorbreath</li>
-      <li>Seek &amp; Destroy <span class="tw-text-sm text-muted">(w/ Let There Be Rock outro)</span></li>
+      <li>Seek &amp; Destroy <span class="text-sm text-muted">(w/ Let There Be Rock outro)</span></li>
     </ol>
   </div>
-  <div class="md:tw-w-5/12 md:tw-px-4">
-    <div class="tw-mb-6 tw-text-center tw-mobile-wide">
-      <img class="image-fit-viewport tw-max-w-full sm:tw-rounded" src="https://life.ivacuum.org/gigs/metallica.2008.07.18.jpg">
+  <div class="md:w-5/12 md:px-4">
+    <div class="mb-6 text-center mobile-wide">
+      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/metallica.2008.07.18.jpg">
     </div>
   </div>
 </div>

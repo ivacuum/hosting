@@ -11,8 +11,8 @@
 <h1 class="h2">Любимые посты</h1>
 <p>Сборка ссылок на различные понравившиеся страницы в интернете.</p>
 
-<div class="md:tw-flex md:tw--mx-4">
-  <div class="md:tw-flex-1 md:tw-px-4">
+<div class="md:flex md:-mx-4">
+  <div class="md:flex-1 md:px-4">
     <h3>Интересное</h3>
     <ul>
       <li><a class="link" href="https://ru.wikipedia.org/wiki/Визовые_требования_для_граждан_России" rel="nofollow">Визовые требования для граждан России</a></li>
@@ -36,14 +36,14 @@
       <li><a class="link" href="https://tema.livejournal.com/1915712.html" rel="nofollow">Эмбоссеры</a></li>
       <li><a class="link" href="https://www.artlebedev.ru/kovodstvo/sections/180/" rel="nofollow">Эстетика контроля и запрета</a></li>
     </ul>
-    <h3 class="tw-mt-12">Пополняемое</h3>
+    <h3 class="mt-12">Пополняемое</h3>
     <ul>
       <li><a class="link" href="http://www.geoguessr.com/" rel="nofollow">Игра на знание панорам улиц и дорог городов мира</a></li>
       <li><a class="link" href="https://www.google.com/maps/views/streetview?gl=us" rel="nofollow">Просмотр улиц на картах Гугла</a></li>
       <li><a class="link" href="http://urixblog.com/" rel="nofollow">Стереопары</a></li>
     </ul>
   </div>
-  <div class="md:tw-flex-1 md:tw-px-4 tw-mt-12 md:tw-mt-0">
+  <div class="md:flex-1 md:px-4 mt-12 md:mt-0">
     <h3>Подборки по странам</h3>
     <ul>
       <li><a class="link" href="https://varlamov.ru/1224669.html" rel="nofollow">Американское воскресенье</a></li>
@@ -62,7 +62,7 @@
       <li><a class="link" href="https://varlamov.ru/1316354.html" rel="nofollow">Южноамериканское воскресенье</a></li>
       <li><a class="link" href="https://varlamov.ru/1219201.html" rel="nofollow">Японское воскресенье</a></li>
     </ul>
-    <h3 class="tw-mt-12">Отдельные посты про путешествия</h3>
+    <h3 class="mt-12">Отдельные посты про путешествия</h3>
     <ul>
       <li><a class="link" href="https://varlamov.ru/962585.html" rel="nofollow">Аруба, Банейро и Кюрасао</a></li>
       <li><a class="link" href="https://le-milady.livejournal.com/1135247.html" rel="nofollow">В каких домах живут денверовцы</a></li>

@@ -80,14 +80,14 @@ export default {
     <a class="btn btn-success svg-flex svg-label" :href="magnet.magnet" @click="download(magnet)">
       <span v-html="$root.svg.magnet"></span>
       {{ $t('torrents.download') }}
-      <span class="tw-mx-2">&middot;</span>
+      <span class="mx-2">&middot;</span>
       <span v-html="magnet.size"></span>
     </a>
   </div>
 
-  <div class="tw-mt-4" v-if="magnet.title_tags.length">
+  <div class="mt-4" v-if="magnet.title_tags.length">
     <router-link
-      class="btn btn-outline-primary tw-mb-1 tw-mr-1 tw-lowercase"
+      class="btn btn-outline-primary mb-1 mr-1 lowercase"
       :to="searchUrl(tag)"
       v-for="(tag, i) in magnet.title_tags"
       :key="i"
@@ -95,9 +95,9 @@ export default {
   </div>
 
   <div v-if="magnet.related.length">
-    <div class="h3 tw-mt-12">
+    <div class="h3 mt-12">
       {{ $t('torrents.related') }}
-      <span class="tw-text-base text-muted">{{ magnet.related.length }}</span>
+      <span class="text-base text-muted">{{ magnet.related.length }}</span>
     </div>
     <template v-for="related in magnet.related">
       <magnet-item
@@ -108,9 +108,9 @@ export default {
     </template>
   </div>
 
-  <div class="h3 tw-mt-12">
+  <div class="h3 mt-12">
     {{ $t('comments.discussion') }}
-    <span class="tw-text-base text-muted">{{ magnet.comments.length }}</span>
+    <span class="text-base text-muted">{{ magnet.comments.length }}</span>
   </div>
   <a id="comments"></a>
   <div v-for="comment in magnet.comments" :key="comment.id">

@@ -56,17 +56,17 @@ body {
 }
 </style>
 </head>
-<body class="lg:tw-pt-4 lg:tw-pb-8">
-<div class="tw-mx-auto tw-max-w-4xl wrapper tw-bg-white tw-p-4 sm:tw-p-6 lg:tw-p-8">
-  <div class="md:tw-flex md:tw--mx-4">
-    <div class="md:tw-w-2/3 md:tw-px-4 tw-mb-6 sm:tw-mb-0">
-      <div class="sm:tw-flex tw-mb-6">
-        <div class="tw-mb-2 sm:tw-mb-0">
-          <img class="my-picture tw-bg-white tw-mr-4 tw-p-1" src="https://life.ivacuum.org/me.jpg" width="160" height="160">
+<body class="lg:pt-4 lg:pb-8">
+<div class="mx-auto max-w-4xl wrapper bg-white p-4 sm:p-6 lg:p-8">
+  <div class="md:flex md:-mx-4">
+    <div class="md:w-2/3 md:px-4 mb-6 sm:mb-0">
+      <div class="sm:flex mb-6">
+        <div class="mb-2 sm:mb-0">
+          <img class="my-picture bg-white mr-4 p-1" src="https://life.ivacuum.org/me.jpg" width="160" height="160">
         </div>
         <div>
-          <h1 class="my-name h3 tw-uppercase">@ru Сергей Панков @en Sergey Pankov @endru</h1>
-          <h2 class="tw-text-teal-700 h4">@ru Веб-программист (Laravel PHP, Vue.js) @en Laravel PHP + Vue.js Developer @endru</h2>
+          <h1 class="my-name h3 uppercase">@ru Сергей Панков @en Sergey Pankov @endru</h1>
+          <h2 class="text-teal-700 h4">@ru Веб-программист (Laravel PHP, Vue.js) @en Laravel PHP + Vue.js Developer @endru</h2>
           @ru
             <div>Заинтересован в создании полезных людям веб-сервисов. Веб-технологиями увлекаюсь с 2003 года. С кодом моих проектов можно ознакомиться на <a href="https://github.com/ivacuum" rel="nofollow">Гитхабе</a>. Только удаленная работа.</div>
           @en
@@ -74,80 +74,80 @@ body {
           @endru
         </div>
       </div>
-      <div class="md:tw-flex md:tw--mx-4">
-        <div class="md:tw-w-1/2 md:tw-px-4 tw-mb-6">
-          <h3 class="my-caption h5 tw-text-teal-600 tw-uppercase">@ru Образование @en Education @endru</h3>
-          <div class="tw-font-bold">@ru Высшее, МГТУ им. Баумана @en Bauman Moscow State Technical University @endru</div>
+      <div class="md:flex md:-mx-4">
+        <div class="md:w-1/2 md:px-4 mb-6">
+          <h3 class="my-caption h5 text-teal-600 uppercase">@ru Образование @en Education @endru</h3>
+          <div class="font-bold">@ru Высшее, МГТУ им. Баумана @en Bauman Moscow State Technical University @endru</div>
           <div>
             @ru Инженер-программист @en IT Engineer's degree @endru
-            <span class="tw-text-xs text-muted">2006–2012</span>
+            <span class="text-xs text-muted">2006–2012</span>
           </div>
-          <h3 class="my-caption h5 tw-mt-6 sm:tw-mt-12 tw-uppercase">@ru Курсы и тренинги @en Courses & Trainings @endru</h3>
-          <div class="tw-font-bold">@ru Английский язык @en English @endru</div>
+          <h3 class="my-caption h5 mt-6 sm:mt-12 uppercase">@ru Курсы и тренинги @en Courses & Trainings @endru</h3>
+          <div class="font-bold">@ru Английский язык @en English @endru</div>
           <div>
             @ru Грамматика @en Grammar @endru
-            <span class="tw-text-xs text-muted">2006</span>
+            <span class="text-xs text-muted">2006</span>
           </div>
           <div>
             @ru Разговорный @en Spoken @endru
-            <span class="tw-text-xs text-muted">2011</span>
+            <span class="text-xs text-muted">2011</span>
           </div>
         </div>
-        <div class="md:tw-w-1/2 md:tw-px-4">
-          <h3 class="my-caption h5 tw-uppercase">@ru Опыт работы @en Experience @endru</h3>
+        <div class="md:w-1/2 md:px-4">
+          <h3 class="my-caption h5 uppercase">@ru Опыт работы @en Experience @endru</h3>
           <div>@ru 01.12.2014 — по настоящее время @en Dec 2014 — Present @endru</div>
           <div>@ru ООО Гала Маркетинг @en OOO Gala Marketing @endru</div>
           <div>@ru Технический директор @en CTO @endru</div>
 
-          <div class="tw-mt-6">@ru 18.11.2013 — 11.03.2014 @en Nov 2013 — Mar 2014 @endru</div>
+          <div class="mt-6">@ru 18.11.2013 — 11.03.2014 @en Nov 2013 — Mar 2014 @endru</div>
           <div><a href="http://www.smart-media.ru/" rel="nofollow">@ru ООО МедиаКонтент @en OOO MediaContent @endru</a></div>
           <div>@ru Ведущий разработчик (тимлид) @en Lead Developer (Team Lead) @endru</div>
 
-          <div class="tw-mt-6">@ru 10.09.2007 &mdash; 31.05.2013 @en Sep 2007 — May 2013 @endru</div>
+          <div class="mt-6">@ru 10.09.2007 &mdash; 31.05.2013 @en Sep 2007 — May 2013 @endru</div>
           <div><a href="http://www.korden.ru/" rel="nofollow">@ru ООО Корден @en OOO Korden @endru</a></div>
           <div>@ru Веб-программист @en PHP Developer @endru</div>
         </div>
       </div>
     </div>
-    <div class="md:tw-w-1/3 md:tw-px-4">
-      <h3 class="my-caption h5 tw-uppercase">@ru Контактная информация @en Contacts @endru</h3>
-      <div class="tw-flex tw-justify-between">
+    <div class="md:w-1/3 md:px-4">
+      <h3 class="my-caption h5 uppercase">@ru Контактная информация @en Contacts @endru</h3>
+      <div class="flex justify-between">
         <div>@ru Телефон @en Phone @endru</div>
         <div><a href="tel:+79105141181">+7 910 514-1181</a></div>
       </div>
-      <div class="tw-flex tw-justify-between">
+      <div class="flex justify-between">
         <div>@ru Электропочта @en E-mail @endru</div>
         <div><a href="mailto:me@ivacuum.ru">me@ivacuum.ru</a></div>
       </div>
-      <div class="tw-flex tw-justify-between">
+      <div class="flex justify-between">
         <div>@ru Веб-сайт @en Website @endru</div>
         <div><a href="/">vacuum.name</a></div>
       </div>
 
-      <h3 class="my-caption h5 tw-mt-6 tw-uppercase">@ru Личная информация @en Personal info @endru</h3>
-      <div class="tw-flex tw-justify-between">
+      <h3 class="my-caption h5 mt-6 uppercase">@ru Личная информация @en Personal info @endru</h3>
+      <div class="flex justify-between">
         <div>@ru Возраст @en Age @endru</div>
         <div>{{ Illuminate\Support\Carbon::createFromDate(1989, 7, 13)->diffForHumans(null, true) }} @ru @en old @endru</div>
       </div>
-      <div class="tw-flex tw-justify-between">
+      <div class="flex justify-between">
         <div>@ru Гражданство @en Nationality @endru</div>
         <div>@ru Россия @en Russian @endru</div>
       </div>
-      <div class="tw-flex tw-justify-between">
+      <div class="flex justify-between">
         <div>@ru Проживание @en Based in @endru</div>
         <div>@ru Калуга @en Kaluga @endru</div>
       </div>
-      <div class="tw-flex tw-justify-between">
+      <div class="flex justify-between">
         <div>@ru Семейное положение @en Marital status @endru</div>
         <div>@ru Не женат @en Single @endru</div>
       </div>
-      <div class="tw-flex tw-justify-between">
+      <div class="flex justify-between">
         <div>@ru Дети @en Children @endru</div>
         <div>@ru Нет @en No @endru</div>
       </div>
 
-      <h3 class="my-caption h5 tw-mt-6 tw-uppercase">@ru В сети @en Online @endru</h3>
-      <div class="tw-flex tw-flex-col">
+      <h3 class="my-caption h5 mt-6 uppercase">@ru В сети @en Online @endru</h3>
+      <div class="flex flex-col">
         <a href="https://github.com/ivacuum" rel="nofollow">Github</a>
         {{--<a href="skype:knifevacuum?call" rel="nofollow">Skype</a>--}}
         <a href="https://t.me/vacuum" rel="nofollow">Telegram</a>
@@ -156,7 +156,7 @@ body {
     </div>
   </div>
 
-  <div class="my-caption h3 tw-mt-12 tw-uppercase">@ru О себе @en About me @endru</div>
+  <div class="my-caption h3 mt-12 uppercase">@ru О себе @en About me @endru</div>
   @ru
     <p>Более половины своей жизни увлекаюсь созданием сайтов и в целом полезных сервисов. Всегда нравился английский язык, впоследствии обнаружил интерес и к другим иностранным языкам. В свободное время играю на электрогитаре, смотрю кинематограф в оригинале (даже если это датский — английские субтитры все равно найдутся) и катаюсь на велосипеде. Посещаю музыкальные концерты.</p>
   @en
@@ -175,17 +175,17 @@ body {
     <p>I'm considering only remote employment. Not ready for relocation because it won't allow me to see the different parts of the world. But I'm ready to meet occasionally.</p>
   @endru
 
-  <div class="my-caption h3 tw-mt-12 tw-uppercase">@ru Навыки @en Skills @endru</div>
-  <div class="tw-text-teal-600 h5">@ru Операционные системы @en Operating systems @endru</div>
+  <div class="my-caption h3 mt-12 uppercase">@ru Навыки @en Skills @endru</div>
+  <div class="text-teal-600 h5">@ru Операционные системы @en Operating systems @endru</div>
   @ru
     <p>Опыт использования <strong>Windows</strong> и <strong>macOS</strong>, настраивал серверы под управлением <strong>Linux</strong> и <strong>FreeBSD</strong>. Повседневно использую <strong>macOS</strong>.</p>
   @en
     <p>Experienced in <strong>Windows</strong> and <strong>macOS</strong>, set up servers running <strong>Linux</strong> and <strong>FreeBSD</strong>. I use <strong>macOS</strong> on a daily basis.</p>
   @endru
 
-  <div class="tw-text-teal-600 h5 tw-mt-6">@ru Языки программирования @en Programming languages @endru</div>
+  <div class="text-teal-600 h5 mt-6">@ru Языки программирования @en Programming languages @endru</div>
   <ul>
-    <li class="tw-mb-2">
+    <li class="mb-2">
       <strong>PHP</strong>
       @ru
         — сделал множество сайтов и сервисов c 2003 года по настоящее время.
@@ -193,7 +193,7 @@ body {
         — built many websites since 2003.
       @endru
     </li>
-    <li class="tw-mb-2">
+    <li class="mb-2">
       <strong>Perl</strong>
       @ru
         — написал пять event-driven приложений для эффективной обработки большого количества поступающих сообщений.
@@ -211,19 +211,19 @@ body {
     </li>
   </ul>
 
-  <div class="tw-text-teal-600 h5 tw-mt-6">@ru Прочие языки @en Other languages @endru</div>
+  <div class="text-teal-600 h5 mt-6">@ru Прочие языки @en Other languages @endru</div>
   <p>HTML, CSS, SASS.</p>
 
-  <div class="tw-text-teal-600 h5 tw-mt-6">@ru Технологии и софт @en Technology and Software @endru</div>
+  <div class="text-teal-600 h5 mt-6">@ru Технологии и софт @en Technology and Software @endru</div>
   <ul>
-    <li class="tw-mb-2">
+    <li class="mb-2">
       <strong>Ansible</strong>
       @ru
       — простым и централизованным образом настраивал серверы.
       @en
       @endru
     </li>
-    <li class="tw-mb-2">
+    <li class="mb-2">
       <strong>BitTorrent</strong>
       @ru
         — написал серверную часть (анонсер) для координации взаимодействия клиентов в сети BitTorrent.
@@ -231,47 +231,47 @@ body {
       @endru
     </li>
     {{--
-      <li class="tw-mb-2">
+      <li class="mb-2">
         <strong>CFEngine</strong>
         — централизованная настройка серверов до перехода на Ansible.
       </li>
     --}}
-    <li class="tw-mb-2">
+    <li class="mb-2">
       <strong>Jenkins</strong>
       @ru
         — деплой сайтов при появлении изменений в репозиториях.
       @en
       @endru
     </li>
-    <li class="tw-mb-2">
+    <li class="mb-2">
       <strong>Laravel</strong>
       @ru
         — основной инструмент разработки сайтов с декабря 2014 года. Сподвигнул забросить собственный фреймворк и сделать упор на создание большего количества полезных сервисов. Делал поддержку многоязычности для данного сайта. Пользовался большинством компонентов, представленных в документации фреймворка.
       @en
       @endru
     </li>
-    <li class="tw-mb-2">
+    <li class="mb-2">
       <strong>libev</strong>
       @ru
         — без этой библиотеки не обошлось ни одно приложение, написанное на перле с использованием событийной модели.
       @en
       @endru
     </li>
-    <li class="tw-mb-2">
+    <li class="mb-2">
       <strong>memcached</strong>
       @ru
         — ускоряет проекты с первой встречи.
       @en
       @endru
     </li>
-    <li class="tw-mb-2">
+    <li class="mb-2">
       <strong>MySQL</strong>
       @ru
         — хранилище данных всех сайтов.
       @en
       @endru
     </li>
-    <li class="tw-mb-2">
+    <li class="mb-2">
       <strong>nginx</strong>
       @ru
         — многолетний опыт настройки, проксирование файлов из отдаленных регионов (S3).
@@ -279,12 +279,12 @@ body {
       @endru
     </li>
     {{--
-      <li class="tw-mb-2">
+      <li class="mb-2">
         <strong>Pano2VR</strong>
         — панорамы, виртуальные туры.
       </li>
     --}}
-    <li class="tw-mb-2">
+    <li class="mb-2">
       <strong>sphinxsearch</strong>
       @ru
         — полнотекстовый поиск, поисковые подсказки.
@@ -300,20 +300,20 @@ body {
     </li>
   </ul>
 
-  <div class="tw-text-teal-600 h5 tw-mt-6">@ru Иностранные языки @en Foreign languages @endru</div>
+  <div class="text-teal-600 h5 mt-6">@ru Иностранные языки @en Foreign languages @endru</div>
   <ul>
     @ru
     @en
-      <li class="tw-mb-2">
+      <li class="mb-2">
         <strong>Russian</strong>
         — native.
       </li>
     @endru
-    <li class="tw-mb-2">
+    <li class="mb-2">
       <strong>@ru Английский @en English @endru</strong>
       @ru — свободный. @en — fluent. @endru
     </li>
-    <li class="tw-mb-2">
+    <li class="mb-2">
       <strong>@ru Немецкий @en German @endru</strong>
       @ru — начальный. @en — beginner. @endru
     </li>
@@ -323,25 +323,25 @@ body {
     </li>
   </ul>
 
-  <div class="tw-text-teal-600 h5 tw-mt-6">@ru Работа с API @en APIs usage @endru</div>
+  <div class="text-teal-600 h5 mt-6">@ru Работа с API @en APIs usage @endru</div>
   @ru
     <p>Вход через соцсети: Facebook, GitHub, Google, Instagram, OK, Twitter, VK, Яндекс.</p>
   @en
     <p>Social login via Facebook, GitHub, Google, Instagram, OK, Twitter, VK, and Yandex.</p>
   @endru
   <ul>
-    <li class="tw-mb-2">
+    <li class="mb-2">
       <strong>Google</strong>
       @ru — геокодер и карты. @en — geocoder and maps. @endru
     </li>
-    <li class="tw-mb-2">
+    <li class="mb-2">
       <strong>OZON.ru</strong>
       @ru
         — использовался для разработки white-label сайта, позволяющего заказывать товары с озона по программе лояльности.
       @en
       @endru
     </li>
-    <li class="tw-mb-2">
+    <li class="mb-2">
       <strong>WebMoney</strong>
       @ru — прием платежей. @en — payments processing. @endru
     </li>
@@ -355,25 +355,25 @@ body {
     </li>
   </ul>
 
-  <div class="my-caption h3 tw-mt-12 tw-uppercase">@ru Проекты @en Projects @endru</div>
+  <div class="my-caption h3 mt-12 uppercase">@ru Проекты @en Projects @endru</div>
   @ru
     <p>По списку ниже можно заметить, что важные для меня проекты стараюсь не бросать и поддерживать годами.</p>
   @en
     <p>It's easy to notice that I tend to support the projects that are important to me.</p>
   @endru
 
-  <div class="tw-mb-1">@ru Легенда: @en Legend: @endru</div>
+  <div class="mb-1">@ru Легенда: @en Legend: @endru</div>
 
   <ul class="list-unstyled">
-    <li class="tw-mb-1">
-      <span class="tw-text-orange-400">@svg (star)</span>
+    <li class="mb-1">
+      <span class="text-orange-400">@svg (star)</span>
       @ru любимый проект @en favorite project @endru
     </li>
-    <li class="tw-mb-1">
-      <span class="tw-text-green-600">@svg (primitive-dot)</span>
+    <li class="mb-1">
+      <span class="text-green-600">@svg (primitive-dot)</span>
       @ru проект жив и здоров @en project is up and running @endru
     </li>
-    <li class="tw-mb-1">
+    <li class="mb-1">
       <span class="text-muted">@svg (primitive-dot)</span>
       @ru проект более недоступен, например, его переделали или выключили, но могли остаться исходники @en project is no longer available—it was rebuilt or shut down—still there might be source code available @endru
     </li>
@@ -386,11 +386,11 @@ body {
   <div class="h4 portfolio-year">@ru В настоящее время @en Present @endru</div>
   <div>
     <div class="h5">
-      <span class="tw-text-orange-400">@svg (star)</span>
-      <span class="tw-text-green-600">@svg (primitive-dot)</span>
+      <span class="text-orange-400">@svg (star)</span>
+      <span class="text-green-600">@svg (primitive-dot)</span>
       <a href="https://kupislona.ru/" rel="nofollow">kupislona.ru</a>
     </div>
-    <div class="tw-my-2 svg-muted text-muted">
+    <div class="my-2 svg-muted text-muted">
       @svg (calendar)
       @ru с декабря 2014 года @en December 2014 — Present @endru
     </div>
@@ -515,19 +515,19 @@ body {
       @endru
     </ul>
 
-    <div class="h5 tw-mt-6">
-      <span class="tw-text-orange-400">@svg (star)</span>
-      <span class="tw-text-green-600">@svg (primitive-dot)</span>
+    <div class="h5 mt-6">
+      <span class="text-orange-400">@svg (star)</span>
+      <span class="text-green-600">@svg (primitive-dot)</span>
       <a href="/">vacuum.name</a>
       <a href="https://github.com/ivacuum/hosting" rel="nofollow">@svg (github)</a>
     </div>
-    <div class="tw-my-2 svg-muted text-muted">
+    <div class="my-2 svg-muted text-muted">
       @svg (calendar)
       @ru с февраля 2015 года @en Since February 2015 — Present @endru
     </div>
     @ru
       <p>Смена домена существующего более десяти лет сайта <strong>ivacuum.ru</strong> для улучшения позиций в иностранных поисковиках. Воссоздание сайта с использованием Laravel, SASS, Vue.js и прочих современных технологий.</p>
-      <p><strong>Открытие <a href="/life">раздела заметок</a></strong>. По состоянию на 2018 год это <strong>150+</strong> историй с около <strong class="tw-whitespace-no-wrap">7&thinsp;000</strong> фотографий и более <strong class="tw-whitespace-no-wrap">4&thinsp;000</strong> абзацев текста о посещенных городах, странах и концертах. Около <strong class="tw-whitespace-no-wrap">1&thinsp;500</strong> абзацев текста переведены на английский язык. Практически все фотографии можно посмотреть на <a href="/photos/map">карте мира</a>, благодаря сохранению и обработке геометок снимков.</p>
+      <p><strong>Открытие <a href="/life">раздела заметок</a></strong>. По состоянию на 2018 год это <strong>150+</strong> историй с около <strong class="whitespace-no-wrap">7&thinsp;000</strong> фотографий и более <strong class="whitespace-no-wrap">4&thinsp;000</strong> абзацев текста о посещенных городах, странах и концертах. Около <strong class="whitespace-no-wrap">1&thinsp;500</strong> абзацев текста переведены на английский язык. Практически все фотографии можно посмотреть на <a href="/photos/map">карте мира</a>, благодаря сохранению и обработке геометок снимков.</p>
       <p><strong>Раздел о <a href="/japanese">японском языке</a></strong>. Он понадобился вслед за созданием тренажера японских азбук и помощника по изучению иероглифов.</p>
     @endru
   </div>
@@ -535,7 +535,7 @@ body {
   <div class="h4 portfolio-year">2014</div>
   <div>
     <div class="h5">
-      <span class="tw-text-green-600">@svg (primitive-dot)</span>
+      <span class="text-green-600">@svg (primitive-dot)</span>
       <a href="http://www.veloman.org/" rel="nofollow">veloman.org</a>
     </div>
     @ru
@@ -549,7 +549,7 @@ body {
       <p>Проектирование хостинга для веб-студии Корден. Централизованное управление кластером из 6 серверов. Использование Ansible для развертывания и настройки серверов под управлением FreeBSD.</p>
     @endru
 
-    <div class="h5 tw-mt-6">
+    <div class="h5 mt-6">
       <span class="svg-muted">@svg (primitive-dot)</span>
       Теплоклуб
     </div>
@@ -557,7 +557,7 @@ body {
       <p>Разработан сайт, позволяющий клиентам компании <a href="https://www.knaufinsulation.ru/" rel="nofollow">Knauf Insulation</a> за накопленную виртуальную валюту программы лояльности купить реальные товары интернет-магазина <a href="https://www.ozon.ru/" rel="nofollow">OZON.ru</a> на разработанном white-label сайте.</p>
     @endru
 
-    <div class="h5 tw-mt-6">
+    <div class="h5 mt-6">
       <span class="svg-muted">@svg (primitive-dot)</span>
       FW
       <a href="https://github.com/ivacuum/fw" rel="nofollow">@svg (github)</a>
@@ -573,7 +573,7 @@ body {
       <p>Организация рабочего процесса разработки сайтов в веб-студии Корден: тестовые площадки, использование системы контроля версий, работа в команде, использование системы интеграции для распространения кода по серверам.</p>
       {{--<p>Сборка виртуальных туров из панорам: <a href="http://nayadakaluga.ru/pano-moskovski" rel="nofollow">ТЦ Московский</a>, <a href="http://nayadakaluga.ru/pano-suvorovski" rel="nofollow">ТЦ Суворовский</a>, <a href="http://nayadakaluga.ru/pano-obninsk" rel="nofollow">Технокерамика</a>.</p>--}}
     @endru
-    <div class="h5 tw-mt-6">
+    <div class="h5 mt-6">
       <span class="svg-muted">@svg (primitive-dot)</span>
       kwan-park.ru
     </div>
@@ -585,7 +585,7 @@ body {
   <div class="h4 portfolio-year">2011</div>
   <div>
     <div class="h5">
-      <span class="tw-text-green-600">@svg (primitive-dot)</span>
+      <span class="text-green-600">@svg (primitive-dot)</span>
       <a href="https://korden.org" rel="nofollow">korden.org</a>
     </div>
     @ru
@@ -596,7 +596,7 @@ body {
   <div class="h4 portfolio-year">2010</div>
   <div>
     <div class="h5">
-      <span class="tw-text-green-600">@svg (primitive-dot)</span>
+      <span class="text-green-600">@svg (primitive-dot)</span>
       BTT
       <a href="https://github.com/ivacuum/btt" rel="nofollow">@svg (github)</a>
     </div>
@@ -604,8 +604,8 @@ body {
       <p>Координатор взаимодействия клиентов в сети BitTorrent. В первые же месяцы обслуживал порядка 3&thinsp;000&thinsp;000 подключений в день — около 100 запросов в секунду в вечернее время. Написан на языке Perl на основе демона статистики для игры Counter-Strike, выпущенного годом ранее. В 2012 году представлен как <strong>дипломный проект</strong> при выпуске из МГТУ им. Баумана.</p>
     @endru
 
-    <div class="h5 tw-mt-6">
-      <span class="tw-text-green-600">@svg (primitive-dot)</span>
+    <div class="h5 mt-6">
+      <span class="text-green-600">@svg (primitive-dot)</span>
       <a href="/retracker">BTRT</a>
       <a href="https://github.com/ivacuum/btrt" rel="nofollow">@svg (github)</a>
     </div>
@@ -613,8 +613,8 @@ body {
       <p>Оптимизация файлообмена в сети BitTorrent. Совместное скачивание файлов пользователями сети одного провайдера. Позволяет, например, вдесятером превратить 0,25 Мбит/сек в 2,50 Мбит/сек при скачивании всеми одной раздачи. Если у кого-то уже есть необходимый файл, то скачивание производится на максильной доступной скорости локальной сети, например, 100 Мбит/сек.</p>
     @endru
 
-    <div class="h5 tw-mt-6">
-      <span class="tw-text-green-600">@svg (primitive-dot)</span>
+    <div class="h5 mt-6">
+      <span class="text-green-600">@svg (primitive-dot)</span>
       <a href="http://t.ivacuum.ru/">torrent.ivacuum.ru</a>
       <a href="https://github.com/ivacuum/t.ivacuum.ru" rel="nofollow">@svg (github)</a>
     </div>
@@ -635,7 +635,7 @@ body {
       <p>Проект представлен в качестве <strong>курсовой работы</strong> по сетевым приложениям в МГТУ им. Баумана.</p>
     @endru
 
-    <div class="h5 tw-mt-6">
+    <div class="h5 mt-6">
       <span class="svg-muted">@svg (primitive-dot)</span>
       bugs.ivacuum.ru
     </div>
@@ -643,8 +643,8 @@ body {
       <p>Баг-трекер — сервис для учета и хранения задач, которые необходимо выполнить.</p>
     @endru
 
-    <div class="h5 tw-mt-6">
-      <span class="tw-text-green-600">@svg (primitive-dot)</span>
+    <div class="h5 mt-6">
+      <span class="text-green-600">@svg (primitive-dot)</span>
       <a href="https://img.ivacuum.ru/stats">img.ivacuum.ru</a>
       <a href="https://github.com/ivacuum/imageviewer" rel="nofollow">@svg (github)</a>
     </div>
@@ -652,8 +652,8 @@ body {
       <p>Сервис подсчета просмотров изображений. Более 100&thinsp;000&thinsp;000 просмотров за время существования.</p>
     @endru
 
-    <div class="h5 tw-mt-6">
-      <span class="tw-text-green-600">@svg (primitive-dot)</span>
+    <div class="h5 mt-6">
+      <span class="text-green-600">@svg (primitive-dot)</span>
       <a href="/gallery">up.ivacuum.ru</a>
     </div>
     @ru
@@ -671,7 +671,7 @@ body {
       <p>Мониторинг игровых серверов Call of Duty, Counter-Strike, Diablo II, Killing Floor, Left 4 Dead, Warcraft 3. Инструкции для игры по сети. Обслуживание игровых серверов.</p>
     @endru
 
-    <div class="h5 tw-mt-6">
+    <div class="h5 mt-6">
       <span class="svg-muted">@svg (primitive-dot)</span>
       torrent.elcomnet.ru
     </div>
@@ -686,16 +686,16 @@ body {
       <p>Сборка, запуск и администрирование игровых серверов в локальной сети Спарк-Калуга. Основной упор на игру Counter-Strike. Организация и проведение нескольких турниров.</p>
     @endru
 
-    <div class="h5 tw-mt-6">
-      <span class="tw-text-green-600">@svg (primitive-dot)</span>
+    <div class="h5 mt-6">
+      <span class="text-green-600">@svg (primitive-dot)</span>
       <a href="/dc">dc.ivacuum.ru</a>
     </div>
     @ru
       <p>Энциклопедия клиентов DC++. Ответы на часто задаваемые вопросы.</p>
     @endru
 
-    <div class="h5 tw-mt-6">
-      <span class="tw-text-green-600">@svg (primitive-dot)</span>
+    <div class="h5 mt-6">
+      <span class="text-green-600">@svg (primitive-dot)</span>
       <a href="/files">dl.ivacuum.ru</a>
     </div>
     @ru
@@ -729,7 +729,7 @@ body {
   <div class="h4 portfolio-year">2003</div>
   <div>
     <div class="h5">
-      <span class="tw-text-green-600">@svg (primitive-dot)</span>
+      <span class="text-green-600">@svg (primitive-dot)</span>
       <a href="/">ivacuum.ru</a>
       <a href="https://github.com/ivacuum/hosting" rel="nofollow">@svg (github)</a>
     </div>

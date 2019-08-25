@@ -23,21 +23,21 @@ export default {
 </script>
 
 <template>
-<div class="tw-flex tw-pt-3 tw-w-full" id="comment-add">
-  <aside class="tw-mr-4 md:tw-mr-6" v-if="!guest">
-    <div class="comment-avatar-size tw-mt-1">
+<div class="flex pt-3 w-full" id="comment-add">
+  <aside class="mr-4 md:mr-6" v-if="!guest">
+    <div class="comment-avatar-size mt-1">
       <user-avatar :user="user"/>
     </div>
   </aside>
-  <div class="tw-break-words tw-max-w-700px tw-w-full" v-else>
-    <div class="tw-mb-4" v-if="guest">
+  <div class="break-words max-w-700px w-full" v-else>
+    <div class="mb-4" v-if="guest">
       <div>Для комментирования необходимо ввести электронную почту или войти в один клик через один из социальных сервисов ниже.</div>
       <!--<div>Please type your email or use one-click sign-in through one of the social services below to comment.</div>-->
       <social-login-buttons/>
     </div>
 
     <form method="post">
-      <div class="tw-mb-2" v-if="guest">
+      <div class="mb-2" v-if="guest">
         <input
           required
           class="form-control"
@@ -54,7 +54,7 @@ export default {
         :rows="isMobile ? 1 : 4"
         maxlength="1000"
       ></textarea>
-      <button class="btn btn-primary tw-mt-2">
+      <button class="btn btn-primary mt-2">
         {{ $t('comments.send') }}
       </button>
     </form>

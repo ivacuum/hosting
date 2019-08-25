@@ -4,15 +4,15 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="md:tw-text-right tw-whitespace-no-wrap">
+    <th class="md:text-right whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
     <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'title') }}</th>
     <th></th>
-    <th class="md:tw-text-right tw-whitespace-no-wrap">
+    <th class="md:text-right whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
     </th>
-    <th class="md:tw-text-right tw-whitespace-no-wrap">
+    <th class="md:text-right whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
     </th>
     <th>Дата</th>
@@ -21,7 +21,7 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-      <td class="md:tw-text-right">{{ $model->id }}</td>
+      <td class="md:text-right">{{ $model->id }}</td>
       <td>
         <a href="{{ path("$self@show", $model) }}">
           {{ $model->title }}
@@ -34,12 +34,12 @@
           </span>
         @endif
       </td>
-      <td class="md:tw-text-right tw-whitespace-no-wrap">
+      <td class="md:text-right whitespace-no-wrap">
         @if ($model->views > 0)
           {{ ViewHelper::number($model->views) }}
         @endif
       </td>
-      <td class="md:tw-text-right tw-whitespace-no-wrap">
+      <td class="md:text-right whitespace-no-wrap">
         @if ($model->comments_count > 0)
           <a href="{{ path('Acp\Comments@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->comments_count) }}

@@ -17,7 +17,7 @@
       Идет загрузка... {{ uploaded }} из {{ total }}
     </div>
 
-    <div v-if="thumbnails.length" class="tw-my-4">
+    <div v-if="thumbnails.length" class="my-4">
       <div v-for="thumbnail in thumbnails">
         {{ thumbnail.filename }} ... ok
       </div>

@@ -13,22 +13,22 @@ export default {
 </script>
 
 <template>
-<div :id="`comment-${comment.id}`" class="tw-flex tw-py-4 tw-w-full border-bottom">
-  <aside class="tw-mr-4 md:tw-mr-6">
-    <div class="comment-avatar-size tw-mt-1" v-if="comment.user">
+<div :id="`comment-${comment.id}`" class="flex py-4 w-full border-bottom">
+  <aside class="mr-4 md:mr-6">
+    <div class="comment-avatar-size mt-1" v-if="comment.user">
       <a :href="comment.user.www">
         <user-avatar :user="comment.user"/>
       </a>
     </div>
     <div class="comment-avatar-size" v-else></div>
   </aside>
-  <div class="tw-break-words tw-max-w-700px tw-w-full">
+  <div class="break-words max-w-700px w-full">
     <div>
       <a :href="comment.user.www" v-if="comment.user">{{ comment.user.public_name }}</a>
       <em v-else>deleted user</em>
     </div>
-    <div class="comment-body tw-whitespace-pre-line" v-html="comment.html"></div>
-    <div class="tw-text-xs text-muted" v-html="comment.posted_at"></div>
+    <div class="comment-body whitespace-pre-line" v-html="comment.html"></div>
+    <div class="text-xs text-muted" v-html="comment.posted_at"></div>
   </div>
 </div>
 </template>

@@ -4,13 +4,13 @@
 <h3>Последние комментарии</h3>
 @foreach ($comments as $comment)
   <a id="comment-{{ $comment->id }}"></a>
-  <div class="tw-flex tw-py-4 tw-w-full border-bottom">
-    <aside class="tw-mr-4 md:tw-mr-6">
+  <div class="flex py-4 w-full border-bottom">
+    <aside class="mr-4 md:mr-6">
         @if (null !== $comment->user)
-          <div class="comment-avatar-size tw-mt-1">
+          <div class="comment-avatar-size mt-1">
             <a href="{{ $comment->user->www() }}">
               @if ($comment->user->avatar)
-                <img class="comment-avatar-size tw-rounded-full" src="{{ $comment->user->avatarUrl() }}">
+                <img class="comment-avatar-size rounded-full" src="{{ $comment->user->avatarUrl() }}">
               @else
                 @include('tpl.svg-avatar', [
                   'bg' => ViewHelper::avatarBg($comment->user_id),
@@ -21,22 +21,22 @@
           </div>
         @endif
     </aside>
-    <div class="tw-break-words tw-max-w-700px tw-w-full">
+    <div class="break-words max-w-700px w-full">
       <div>
         @if (null !== $comment->user)
           <a href="{{ $comment->user->www() }}">{{ $comment->user->publicName() }}</a>
         @else
           <em>deleted user</em>
         @endif
-        <span class="tw-mx-2 text-muted">&middot;</span>
+        <span class="mx-2 text-muted">&middot;</span>
         @if (optional($comment->rel)->status === App\Torrent::STATUS_PUBLISHED)
           <a href="{{ $comment->rel->www() }}#comment-{{ $comment->id }}">{{ Illuminate\Support\Str::limit($comment->rel->title, 50) }}</a>
         @else
           <em class="text-muted">раздача удалена</em>
         @endif
       </div>
-      <div class="comment-body tw-whitespace-pre-line">{!! $comment->html !!}</div>
-      <div class="tw-text-xs text-muted">{{ $comment->fullDate() }}</div>
+      <div class="comment-body whitespace-pre-line">{!! $comment->html !!}</div>
+      <div class="text-xs text-muted">{{ $comment->fullDate() }}</div>
     </div>
   </div>
 @endforeach

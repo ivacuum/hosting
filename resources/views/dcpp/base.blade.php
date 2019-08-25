@@ -30,7 +30,7 @@
     {{ trans('dcpp.hubs') }}
   </a>
 </div>
-<div class="nav-item dropdown dropdown-hover tw-mr-2 {{ in_array($page, ['airdc', 'apexdc', 'dcpp', 'flylinkdc', 'greylinkdc', 'jucydc', 'kalugadc', 'pelinkdc', 'shakespeer', 'strongdc']) ? 'active' : '' }}">
+<div class="nav-item dropdown dropdown-hover mr-2 {{ in_array($page, ['airdc', 'apexdc', 'dcpp', 'flylinkdc', 'greylinkdc', 'jucydc', 'kalugadc', 'pelinkdc', 'shakespeer', 'strongdc']) ? 'active' : '' }}">
   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">{{ trans('dcpp.clients') }}</a>
   <div class="dropdown-menu">
     <a class="dropdown-item" href="{{ path('Dcpp@page', 'airdc') }}">{{ trans('dcpp.airdc') }}</a>
@@ -48,7 +48,7 @@
   </div>
 </div>
 @ru
-  <div class="nav-item tw-hidden md:tw-block">
+  <div class="nav-item hidden md:block">
     <a class="btn btn-success btn-sm" href="{{ path('Torrents@index') }}">
       {{ trans('torrents.index') }}
     </a>
@@ -60,9 +60,9 @@
 @if (empty($no_language_selector))
   <div class="nav-item">
     @ru
-      <a class="nav-link tw-whitespace-no-wrap" href="{{ url("en/{$request_uri}") }}" lang="en">In English</a>
+      <a class="nav-link whitespace-no-wrap" href="{{ url("en/{$request_uri}") }}" lang="en">In English</a>
     @en
-      <a class="nav-link tw-whitespace-no-wrap" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
+      <a class="nav-link whitespace-no-wrap" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
     @endru
   </div>
 @endif
@@ -70,7 +70,7 @@
 
 @section('content_footer')
 @if (empty($no_footer_banner))
-  <div class="tw-my-4">
+  <div class="my-4">
     @include('tpl.google-horizontal')
   </div>
 @endif

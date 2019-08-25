@@ -1,12 +1,12 @@
 <template>
 <div>
-  <div class="tw-items-center md:tw-flex tw-justify-between tw-mb-4 md:tw-mb-0 tw--mt-2">
-    <div class="tw-flex tw-flex-wrap" v-if="results">
-      <h3 class="tw-mb-2 md:tw-mb-0 tw-mr-4 tw-pt-1">{{ $t('RESULTS', { results }) }}</h3>
-      <button class="btn btn-default tw-mb-2 md:tw-mb-0" @click="reset">{{ $t('CLEAR') }}</button>
+  <div class="items-center md:flex justify-between mb-4 md:mb-0 -mt-2">
+    <div class="flex flex-wrap" v-if="results">
+      <h3 class="mb-2 md:mb-0 mr-4 pt-1">{{ $t('RESULTS', { results }) }}</h3>
+      <button class="btn btn-default mb-2 md:mb-0" @click="reset">{{ $t('CLEAR') }}</button>
     </div>
-    <div class="tw-hidden md:tw-block" v-else>&nbsp;</div>
-    <form class="tw-max-w-500px" @submit.prevent="onSubmit">
+    <div class="hidden md:block" v-else>&nbsp;</div>
+    <form class="max-w-500px" @submit.prevent="onSubmit">
       <div class="input-group">
         <input
           class="form-control js-search-input"
@@ -20,46 +20,46 @@
       </div>
     </form>
   </div>
-  <div class="tw-my-4" v-if="Object.keys(elements).length">
+  <div class="my-4" v-if="Object.keys(elements).length">
     <router-link
-      class="tw-items-center bg-radical border-radical tw-flex tw-justify-between tw-px-2 sm:tw-px-4 tw-py-2 tw-text-white hover:tw-text-gray-400"
+      class="items-center bg-radical border-radical flex justify-between px-2 sm:px-4 py-2 text-white hover:text-gray-400"
       :to="{ name: 'wk.radical', params: { meaning: row.meaning }}"
       @click.native="reset"
       v-for="row in elements.radicals"
       :key="row.id"
     >
-      <div class="tw-flex-shrink-0" v-if="row.image">
+      <div class="flex-shrink-0" v-if="row.image">
         <img class="ja-character ja-image-shadow" :src="row.image" alt="" height="36">
       </div>
-      <div class="tw-text-4xl tw-flex-shrink-0 tw-font-bold ja-character ja-shadow tw-pb-1 tw-whitespace-no-wrap" v-else>{{ row.character }}</div>
-      <div class="tw-flex-grow ja-shadow-light tw-text-xs tw-capitalize tw-text-right">{{ row.meaning }}</div>
+      <div class="text-4xl flex-shrink-0 font-bold ja-character ja-shadow pb-1 whitespace-no-wrap" v-else>{{ row.character }}</div>
+      <div class="flex-grow ja-shadow-light text-xs capitalize text-right">{{ row.meaning }}</div>
     </router-link>
 
     <router-link
-      class="tw-items-center bg-kanji border-kanji tw-flex tw-justify-between tw-px-2 sm:tw-px-4 tw-py-2 tw-text-white hover:tw-text-gray-400"
+      class="items-center bg-kanji border-kanji flex justify-between px-2 sm:px-4 py-2 text-white hover:text-gray-400"
       :to="{ name: 'wk.kanji', params: { character: row.character }}"
       @click.native="reset"
       v-for="row in elements.kanji"
       :key="row.id"
     >
-      <div class="tw-text-4xl tw-flex-shrink-0 tw-font-bold ja-character ja-shadow tw-pb-1 tw-whitespace-no-wrap">{{ row.character }}</div>
-      <div class="tw-flex-grow tw-text-right">
-        <div class="tw-font-bold ja-shadow-light">{{ row.reading }}</div>
-        <div class="ja-shadow-light tw-text-xs tw-capitalize">{{ row.meaning }}</div>
+      <div class="text-4xl flex-shrink-0 font-bold ja-character ja-shadow pb-1 whitespace-no-wrap">{{ row.character }}</div>
+      <div class="flex-grow text-right">
+        <div class="font-bold ja-shadow-light">{{ row.reading }}</div>
+        <div class="ja-shadow-light text-xs capitalize">{{ row.meaning }}</div>
       </div>
     </router-link>
 
     <router-link
-      class="tw-items-center bg-vocab border-vocab tw-flex tw-justify-between tw-px-2 sm:tw-px-4 tw-py-2 tw-text-white hover:tw-text-gray-400"
+      class="items-center bg-vocab border-vocab flex justify-between px-2 sm:px-4 py-2 text-white hover:text-gray-400"
       :to="{ name: 'wk.vocabulary', params: { characters: row.character }}"
       @click.native="reset"
       v-for="row in elements.vocabulary"
       :key="row.id"
     >
-      <div class="tw-text-4xl tw-flex-shrink-0 tw-font-bold ja-character ja-shadow tw-pb-1 tw-whitespace-no-wrap">{{ row.character }}</div>
-      <div class="tw-flex-grow tw-text-right">
-        <div class="tw-font-bold ja-shadow-light">{{ row.kana }}</div>
-        <div class="ja-shadow-light tw-text-xs tw-capitalize">{{ row.meaning }}</div>
+      <div class="text-4xl flex-shrink-0 font-bold ja-character ja-shadow pb-1 whitespace-no-wrap">{{ row.character }}</div>
+      <div class="flex-grow text-right">
+        <div class="font-bold ja-shadow-light">{{ row.kana }}</div>
+        <div class="ja-shadow-light text-xs capitalize">{{ row.meaning }}</div>
       </div>
     </router-link>
   </div>

@@ -11,7 +11,7 @@ export default {
 <template>
 <layout v-bind="{ resource, svg, extra }" @destroy="destroy">
   <template slot="append">
-    <span class="tw-text-base text-muted" v-html="resource.localized_date"></span>
+    <span class="text-base text-muted" v-html="resource.localized_date"></span>
   </template>
 </layout>
 </template>

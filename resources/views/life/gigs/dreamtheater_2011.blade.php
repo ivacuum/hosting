@@ -8,8 +8,8 @@
   <p>Ко второму визиту в Россию была подготовлена совершенно новая программа. Лишь Learning to Live уже исполнялась в <a class="link" href="dreamtheater.2009">прошлый раз</a>, но и то как часть большого микса в конце шоу. Такой огромный репертуар и разнообразие вызывают уважение.</p>
   <p>У Петруччи день рождения всего на сутки раньше моего. На сцене поздравляли его, а по пути домой наступил уже и мой.</p>
 @endru
-<div class="md:tw-flex md:tw--mx-4">
-  <div class="md:tw-w-7/12 md:tw-px-4">
+<div class="md:flex md:-mx-4">
+  <div class="md:w-7/12 md:px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>Under a Glass Moon</li>
@@ -21,7 +21,7 @@
       <li>Peruvian Skies</li>
       <li>The Great Debate</li>
       <li>On the Backs of Angels</li>
-      <li>Happy Birthday <span class="tw-text-sm text-muted">(Mildred J. Hill cover) (to John Petrucci)</span></li>
+      <li>Happy Birthday <span class="text-sm text-muted">(Mildred J. Hill cover) (to John Petrucci)</span></li>
       <li>Caught in a Web</li>
       <li>Through My Words</li>
       <li>Fatal Tragedy</li>
@@ -29,9 +29,9 @@
       <li>Learning to Live</li>
     </ol>
   </div>
-  <div class="md:tw-w-5/12 md:tw-px-4">
-    <div class="tw-mb-6 tw-text-center tw-mobile-wide">
-      <img class="image-fit-viewport tw-max-w-full sm:tw-rounded" src="https://life.ivacuum.org/gigs/dreamtheater.2011.07.12.jpg">
+  <div class="md:w-5/12 md:px-4">
+    <div class="mb-6 text-center mobile-wide">
+      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/dreamtheater.2011.07.12.jpg">
     </div>
   </div>
 </div>

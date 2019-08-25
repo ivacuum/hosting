@@ -1,8 +1,8 @@
 @extends('acp.base')
 
 @section('content')
-<div class="tw-flex tw-items-center tw-flex-wrap tw-mb-2 tw--mt-2">
-  <h3 class="tw-mb-1 tw-mr-4">{{ trans("$tpl.index") }}</h3>
+<div class="flex items-center flex-wrap mb-2 -mt-2">
+  <h3 class="mb-1 mr-4">{{ trans("$tpl.index") }}</h3>
   @include('acp.tpl.create-button')
 </div>
 <table id="tree" class="table-stats">
@@ -28,8 +28,8 @@
   </tbody>
 </table>
 
-<form class="form-inline tw-mt-4">
-  <div class="tw-mr-1">
+<form class="form-inline mt-4">
+  <div class="mr-1">
     <select class="custom-select" name="action" id="batch_action">
       <option value="">Выберите действие...</option>
       <option value="activate">Включить</option>
@@ -41,7 +41,7 @@
 </form>
 
 <span hidden id="page_active_icon">
-  <span class="tw-text-green-600" title="Отображается">
+  <span class="text-green-600" title="Отображается">
     @svg (eye)
   </span>
 </span>

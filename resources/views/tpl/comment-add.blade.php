@@ -1,9 +1,9 @@
-<div class="tw-flex tw-pt-4 tw-w-full" id="comment-add">
+<div class="flex pt-4 w-full" id="comment-add">
   @if (Auth::check())
-    <aside class="tw-mr-4 md:tw-mr-6">
-      <div class="comment-avatar-size tw-mt-1">
+    <aside class="mr-4 md:mr-6">
+      <div class="comment-avatar-size mt-1">
         @if (Auth::user()->avatar)
-          <img class="comment-avatar-size tw-rounded-full" src="{{ Auth::user()->avatarUrl() }}">
+          <img class="comment-avatar-size rounded-full" src="{{ Auth::user()->avatarUrl() }}">
         @else
           @include('tpl.svg-avatar', [
             'bg' => ViewHelper::avatarBg(Auth::user()->id),
@@ -13,41 +13,41 @@
       </div>
     </aside>
   @endif
-  <div class="tw-break-words tw-max-w-700px tw-w-full">
+  <div class="break-words max-w-700px w-full">
     @if (!Auth::check())
-      <div class="tw-mb-4">
+      <div class="mb-4">
         @ru
           <div>Для комментирования необходимо ввести электронную почту или войти в один клик через один из социальных сервисов ниже.</div>
         @en
           <div>Please type your email or use one-click sign-in through one of the social services below to comment.</div>
         @endru
-        <div class="tw-flex tw-mt-2">
-          <div class="tw-mr-2 tw-text-center">
+        <div class="flex mt-2">
+          <div class="mr-2 text-center">
             <a
-              class="btn bg-vk tw-text-xl tw-rounded-full tw-text-white hover:tw-text-white"
+              class="btn bg-vk text-xl rounded-full text-white hover:text-white"
               href="{{ path('Auth\Vk@index', ['goto' => "{$locale_uri}/{$request_uri}#comment-add"]) }}"
             >
               @svg (vk)
             </a>
-            <div class="tw-mt-1 tw-text-xs text-muted">{{ trans('auth.vk') }}</div>
+            <div class="mt-1 text-xs text-muted">{{ trans('auth.vk') }}</div>
           </div>
-          <div class="tw-mr-2 tw-text-center">
+          <div class="mr-2 text-center">
             <a
-              class="btn bg-facebook tw-text-xl tw-rounded-full tw-text-white hover:tw-text-white"
+              class="btn bg-facebook text-xl rounded-full text-white hover:text-white"
               href="{{ path('Auth\Facebook@index', ['goto' => "{$locale_uri}/{$request_uri}#comment-add"]) }}"
             >
               @svg (facebook)
             </a>
-            <div class="tw-mt-1 tw-text-xs text-muted">{{ trans('auth.facebook') }}</div>
+            <div class="mt-1 text-xs text-muted">{{ trans('auth.facebook') }}</div>
           </div>
-          <div class="tw-mr-2 tw-text-center">
+          <div class="mr-2 text-center">
             <a
-              class="btn bg-google tw-text-xl tw-rounded-full tw-text-white hover:tw-text-white"
+              class="btn bg-google text-xl rounded-full text-white hover:text-white"
               href="{{ path('Auth\Google@index', ['goto' => "{$locale_uri}/{$request_uri}#comment-add"]) }}"
             >
               @svg (google)
             </a>
-            <div class="tw-mt-1 tw-text-xs text-muted">{{ trans('auth.google') }}</div>
+            <div class="mt-1 text-xs text-muted">{{ trans('auth.google') }}</div>
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@
       @csrf
 
       @if (!Auth::check())
-        <div class="tw-mb-2">
+        <div class="mb-2">
           <input
             required
             class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
@@ -78,7 +78,7 @@
         maxlength="1000"
       >{{ old('text') }}</textarea>
       <div class="invalid-feedback">{{ $errors->first('text') }}</div>
-      <button class="btn btn-primary tw-mt-2">
+      <button class="btn btn-primary mt-2">
         {{ trans('comments.send') }}
       </button>
     </form>

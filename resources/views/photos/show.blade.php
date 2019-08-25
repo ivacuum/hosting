@@ -13,23 +13,23 @@ Mousetrap.bind('right', () => {
 @endpush
 
 @section('content')
-<div class="lg:tw-flex lg:tw--mx-4 tw--mt-2">
-  <div class="lg:tw-w-5/6 lg:tw-px-4 tw-mb-4">
-    <div class="tw-mobile-wide tw-relative tw-text-center">
+<div class="lg:flex lg:-mx-4 -mt-2">
+  <div class="lg:w-5/6 lg:px-4 mb-4">
+    <div class="mobile-wide relative text-center">
       @if (null !== $next)
-        <a class="tw-absolute tw-top-0 tw-w-1/2 tw-h-full tw-z-10 tw-left-0 js-pjax js-pjax-no-dim" id="prev_page" href="{{ path("$self@show", [$next->id, 'city_id' => $city_id, 'country_id' => $country_id, 'tag_id' => $tag_id, 'trip_id' => $trip_id]) }}">&nbsp;</a>
+        <a class="absolute top-0 w-1/2 h-full z-10 left-0 js-pjax js-pjax-no-dim" id="prev_page" href="{{ path("$self@show", [$next->id, 'city_id' => $city_id, 'country_id' => $country_id, 'tag_id' => $tag_id, 'trip_id' => $trip_id]) }}">&nbsp;</a>
       @endif
       @if (null !== $prev)
-        <a class="tw-absolute tw-top-0 tw-w-1/2 tw-h-full tw-z-10 tw-left-1/2 js-pjax js-pjax-no-dim" id="next_page" href="{{ path("$self@show", [$prev->id, 'city_id' => $city_id, 'country_id' => $country_id, 'tag_id' => $tag_id, 'trip_id' => $trip_id]) }}">&nbsp;</a>
+        <a class="absolute top-0 w-1/2 h-full z-10 left-1/2 js-pjax js-pjax-no-dim" id="next_page" href="{{ path("$self@show", [$prev->id, 'city_id' => $city_id, 'country_id' => $country_id, 'tag_id' => $tag_id, 'trip_id' => $trip_id]) }}">&nbsp;</a>
       @endif
-      <div class="tw-inline-block tw-relative">
+      <div class="inline-block relative">
         @if (null !== $next)
-          <div class="tw-absolute tw-top-1/2 tw-left-0 tw-text-base md:tw-text-2xl tw-leading-none tw-text-white svg-shadow tw--mt-2 md:tw--mt-3 tw-pl-1">
+          <div class="absolute top-1/2 left-0 text-base md:text-2xl leading-none text-white svg-shadow -mt-2 md:-mt-3 pl-1">
             @svg (chevron-left)
           </div>
         @endif
         @if (null !== $prev)
-          <div class="tw-absolute tw-top-1/2 tw-right-0 tw-text-base md:tw-text-2xl tw-leading-none tw-text-white photo-overlay-arrowt tw--mt-2 md:tw--mt-3 tw-pr-1">
+          <div class="absolute top-1/2 right-0 text-base md:text-2xl leading-none text-white photo-overlay-arrowt -mt-2 md:-mt-3 pr-1">
             @svg (chevron-right)
           </div>
         @endif
@@ -37,21 +37,21 @@ Mousetrap.bind('right', () => {
       </div>
     </div>
   </div>
-  <div class="lg:tw-w-1/6 lg:tw-px-4">
-    <div class="tw-flex tw-flex-wrap md:tw-flex-col">
-      <div class="tw-mr-2 md:tw-mr-0 text-muted">{{ trans('photos.story') }}</div>
-      <a class="tw-flex tw-flex-wrap tw-items-center link-parent" href="{{ $photo->rel->www() }}#{{ basename($photo->slug) }}">
-        <img class="flag-16 svg-shadow tw-mr-1" src="{{ $photo->rel->city->country->flagUrl() }}">
+  <div class="lg:w-1/6 lg:px-4">
+    <div class="flex flex-wrap md:flex-col">
+      <div class="mr-2 md:mr-0 text-muted">{{ trans('photos.story') }}</div>
+      <a class="flex flex-wrap items-center link-parent" href="{{ $photo->rel->www() }}#{{ basename($photo->slug) }}">
+        <img class="flag-16 svg-shadow mr-1" src="{{ $photo->rel->city->country->flagUrl() }}">
         <span class="link">{{ $photo->rel->title }}</span>
       </a>
     </div>
 
-    <div class="tw-flex tw-flex-wrap md:tw-flex-col tw-mt-1 md:tw-mt-4">
-      <div class="tw-mr-2 md:tw-mr-0 text-muted">{{ trans('photos.date') }}</div>
+    <div class="flex flex-wrap md:flex-col mt-1 md:mt-4">
+      <div class="mr-2 md:mr-0 text-muted">{{ trans('photos.date') }}</div>
       <div>{{ $photo->rel->period }} {{ $photo->rel->year }}</div>
     </div>
 
-    <div class="tw-mt-4">
+    <div class="mt-4">
       <div class="text-muted">
         {{ trans('photos.geotags') }}
         @if ($photo->isOnMap())
@@ -63,7 +63,7 @@ Mousetrap.bind('right', () => {
     </div>
 
     @if (sizeof($photo->tags))
-      <div class="tw-mt-4">
+      <div class="mt-4">
         <div class="text-muted">{{ trans('photos.tags') }}</div>
         @foreach ($photo->tags as $tag)
           <div>

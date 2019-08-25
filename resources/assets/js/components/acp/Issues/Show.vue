@@ -77,33 +77,33 @@ export default {
 <div v-if="resource">
   <div>
     <div v-if="status === 1">
-      <span class="tw-text-red-600" v-html="$root.svg.issue_opened"></span>
+      <span class="text-red-600" v-html="$root.svg.issue_opened"></span>
       Открыто
       <button class="btn btn-sm btn-default" type="button" @click="close">
         Закрыть
       </button>
     </div>
     <div v-if="status === 2">
-      <span class="tw-text-green-600" v-html="$root.svg.check"></span>
+      <span class="text-green-600" v-html="$root.svg.check"></span>
       Закрыто
       <button class="btn btn-sm btn-default" type="button" @click="open">
         Открыть
       </button>
     </div>
   </div>
-  <div class="tw-flex">
-    <div class="tw-bg-light border tw-mt-2 tw-p-2 tw-rounded">
+  <div class="flex">
+    <div class="bg-light border mt-2 p-2 rounded">
       <div class="text-muted">{{ resource.email }}</div>
       <div><a :href="resource.page">{{ resource.page }}</a></div>
     </div>
   </div>
 
-  <div class="tw-my-4 tw-whitespace-pre-line">{{ resource.text }}</div>
+  <div class="my-4 whitespace-pre-line">{{ resource.text }}</div>
 
   <div v-if="comments.length">
-    <h3 class="tw-mt-6">
+    <h3 class="mt-6">
       {{ $t('comments.index') }}
-      <span class="tw-text-base text-muted">{{ comments.length }}</span>
+      <span class="text-base text-muted">{{ comments.length }}</span>
     </h3>
     <div v-for="comment in comments" :key="comment.id">
       <comment-item :comment="comment"/>
@@ -111,7 +111,7 @@ export default {
   </div>
 
   <div v-show="status === 1">
-    <div class="tw-my-2">
+    <div class="my-2">
       <textarea
         required
         class="form-control textarea-autosized js-autosize-textarea-vue"

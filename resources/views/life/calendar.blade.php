@@ -1,12 +1,12 @@
 @extends('life.base')
 
 @section('content')
-<h1 class="tw-text-3xl">{{ trans('life.calendar') }}</h1>
-<ul class="list-inline tw-text-sm">
-  <li class="list-inline-item tw-whitespace-no-wrap"><a class="link" href="{{ path('Life@index') }}">{{ trans('life.by_year') }}</a></li>
-  <li class="list-inline-item tw-whitespace-no-wrap"><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
-  <li class="list-inline-item tw-whitespace-no-wrap"><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></li>
-  <li class="list-inline-item tw-whitespace-no-wrap"><mark>{{ trans('life.by_days') }}</mark></li>
+<h1 class="text-3xl">{{ trans('life.calendar') }}</h1>
+<ul class="list-inline text-sm">
+  <li class="list-inline-item whitespace-no-wrap"><a class="link" href="{{ path('Life@index') }}">{{ trans('life.by_year') }}</a></li>
+  <li class="list-inline-item whitespace-no-wrap"><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
+  <li class="list-inline-item whitespace-no-wrap"><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></li>
+  <li class="list-inline-item whitespace-no-wrap"><mark>{{ trans('life.by_days') }}</mark></li>
 </ul>
 
 @if ($firstDate !== null && $lastDate !== null)
@@ -15,26 +15,26 @@
   @en
     <p>Trips by days. Several flags in one cell means there were multiple cities visited during that day: moving from one place to another or just one-day trips. Each flag is a link to the story about the trip if the story is published.</p>
   @endru
-  <div class="calendar-grid tw-text-2xs md:tw-text-sm tw-text-center">
+  <div class="calendar-grid text-2xs md:text-sm text-center">
     @foreach (range($lastDate->year, $firstDate->year, -1) as $year)
-      <div class="tw-font-bold tw-text-right tw-mt-4 tw-pr-2 tw-bg-gray-300">{{ $year }}</div>
+      <div class="font-bold text-right mt-4 pr-2 bg-gray-300">{{ $year }}</div>
       @foreach (range(1, 31) as $day)
-        <div class="tw-mt-4 tw-bg-gray-300">{{ $day }}</div>
+        <div class="mt-4 bg-gray-300">{{ $day }}</div>
       @endforeach
       @foreach (range($year === $lastDate->year ? $lastDate->month : 12, 1, -1) as $month)
-        <div class="tw-text-right tw-pr-2 border-right">{{ trans("months.{$month}") }}</div>
+        <div class="text-right pr-2 border-right">{{ trans("months.{$month}") }}</div>
         @foreach (range(1, 31) as $day)
           @php ($date = "{$year}-{$month}-{$day}")
           @if (isset($calendar[$date]))
-            <div class="tw-bg-light tw-flex tw-flex-col tw-items-center tw-justify-start tw-pt-1 tw-shadow-inner">
+            <div class="bg-light flex flex-col items-center justify-start pt-1 shadow-inner">
               @foreach ($calendar[$date] as $trip)
                 @if ($trip['slug'])
-                  <a class="tw-block tw-pb-1 tooltipped tooltipped-n" href="{{ $trip['slug'] }}" aria-label="{{ $trip['title'] }}">
-                    <img class="tw-block flag-16 svg-shadow" src="{{ $trip['flag'] }}">
+                  <a class="block pb-1 tooltipped tooltipped-n" href="{{ $trip['slug'] }}" aria-label="{{ $trip['title'] }}">
+                    <img class="block flag-16 svg-shadow" src="{{ $trip['flag'] }}">
                   </a>
                 @else
-                  <div class="tw-pb-1">
-                    <img class="tw-block flag-16 svg-shadow" src="{{ $trip['flag'] }}">
+                  <div class="pb-1">
+                    <img class="block flag-16 svg-shadow" src="{{ $trip['flag'] }}">
                   </div>
                 @endif
               @endforeach
@@ -46,30 +46,30 @@
       @endforeach
     @endforeach
   </div>
-  <h3 class="tw-mt-12">
+  <h3 class="mt-12">
     @ru
       Количество посещенных стран и городов
     @en
       Number of countries and cities visited
     @endru
   </h3>
-  <div class="tw-flex">
-    <div class="tw-mr-6">
-      <div class="tw-font-bold tw-text-right">@ru Год @en Year @endru</div>
+  <div class="flex">
+    <div class="mr-6">
+      <div class="font-bold text-right">@ru Год @en Year @endru</div>
       @foreach ($daysInTrips as $year => $days)
         <div>{{ $year }}</div>
       @endforeach
     </div>
-    <div class="tw-mr-6">
-      <div class="tw-font-bold tw-text-right">@ru Дни @en Days @endru</div>
+    <div class="mr-6">
+      <div class="font-bold text-right">@ru Дни @en Days @endru</div>
       @foreach ($daysInTrips as $year => $days)
-        <div class="tw-text-right">{{ $days }}</div>
+        <div class="text-right">{{ $days }}</div>
       @endforeach
     </div>
-    <div class="tw-mr-6">
-      <div class="tw-font-bold tw-text-right">@ru Города @en Cities @endru</div>
+    <div class="mr-6">
+      <div class="font-bold text-right">@ru Города @en Cities @endru</div>
       @foreach ($cities as $year => $count)
-        <div class="tw-text-right">
+        <div class="text-right">
           {{ $count }}
           @if (isset($newCities[$year]))
             (+{{ $newCities[$year] }})
@@ -78,9 +78,9 @@
       @endforeach
     </div>
     <div>
-      <div class="tw-font-bold tw-text-right">@ru Страны @en Countries @endru</div>
+      <div class="font-bold text-right">@ru Страны @en Countries @endru</div>
       @foreach ($countries as $year => $count)
-        <div class="tw-text-right">
+        <div class="text-right">
           {{ $count }}
           @if (isset($newCountries[$year]))
             (+{{ $newCountries[$year] }})

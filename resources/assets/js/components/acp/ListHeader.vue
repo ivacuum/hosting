@@ -40,20 +40,20 @@ export default {
 
 <template>
 <div>
-  <div class="tw-flex tw-items-center tw-flex-wrap tw-mb-2 tw--mt-2">
-    <h3 class="tw-mb-1 tw-mr-4">
+  <div class="flex items-center flex-wrap mb-2 -mt-2">
+    <h3 class="mb-1 mr-4">
       {{ $t(`${plural}.index`) }}
-      <span class="tw-text-base text-muted tw-whitespace-no-wrap">{{ meta.total }}</span>
+      <span class="text-base text-muted whitespace-no-wrap">{{ meta.total }}</span>
     </h3>
     <router-link
-      class="btn btn-success tw-my-1 tw-mr-2"
+      class="btn btn-success my-1 mr-2"
       :to="meta.new_url"
       v-if="meta.new_url"
     >
       {{ $t(`${plural}.create`) }}
     </router-link>
     <form
-      class="tw-my-1 tw-mr-2"
+      class="my-1 mr-2"
       @submit.prevent="$emit('search', q)"
       v-if="!!$listeners.search"
     >

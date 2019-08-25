@@ -5,10 +5,10 @@
 @endpush
 
 @section('content')
-<div class="tw-flex tw-flex-wrap tw-items-center tw-antialiased tw-mb-6">
-  <h1 class="h2 tw-mb-1 tw-mr-4">{{ trans('news.index') }}</h1>
+<div class="flex flex-wrap items-center antialiased mb-6">
+  <h1 class="h2 mb-1 mr-4">{{ trans('news.index') }}</h1>
   @if (Auth::check())
-    <form class="tw-mr-4" action="{{ path('Subscriptions@update') }}" method="post">
+    <form class="mr-4" action="{{ path('Subscriptions@update') }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}
       <button class="btn btn-default btn-sm small-caps svg-flex svg-label">
         @svg (mail)
@@ -19,24 +19,24 @@
       @csrf
     </form>
   @else
-    <a class="btn btn-default btn-sm svg-flex svg-label small-caps tw-mr-4" href="{{ path('Subscriptions@edit', ['news' => 1]) }}">
+    <a class="btn btn-default btn-sm svg-flex svg-label small-caps mr-4" href="{{ path('Subscriptions@edit', ['news' => 1]) }}">
       @svg (mail)
       {{ trans('mail.subscribe') }}
     </a>
   @endif
-  <a class="tw-text-lg svg-flex svg-label small-caps" href="{{ path('NewsRss@index') }}">
+  <a class="text-lg svg-flex svg-label small-caps" href="{{ path('NewsRss@index') }}">
     @svg (rss-square)
     rss
   </a>
 </div>
 @if (sizeof($news))
-  <div class="md:tw-flex md:tw--mx-4">
-    <div class="md:tw-w-2/3 md:tw-px-4">
+  <div class="md:flex md:-mx-4">
+    <div class="md:w-2/3 md:px-4">
       @foreach ($news as $model)
         <article itemscope itemtype="http://schema.org/BlogPosting">
           <header>
             <h3 itemprop="headline"><a class="link" href="{{ $model->www() }}" itemprop="url">{{ $model->title }}</a></h3>
-            <div class="svg-labels svg-muted text-muted tw-text-sm tw-mb-4">
+            <div class="svg-labels svg-muted text-muted text-sm mb-4">
               <span class="svg-flex svg-label">
                 @svg (calendar-o)
                 <time itemprop="datePublished" datetime="{{ $model->created_at->toDateString() }}">
@@ -61,8 +61,8 @@
               @endif
             </div>
           </header>
-          <div class="{{ !$loop->last ? 'tw-mb-12' : '' }}">
-            <div class="tw-hidden sm:tw-block tw-antialiased hanging-puntuation-first lg:tw-text-lg markdown-body tw-break-words js-news-views-observer" itemprop="articleBody" data-id="{{ $model->id }}">{!! $model->html !!}</div>
+          <div class="{{ !$loop->last ? 'mb-12' : '' }}">
+            <div class="hidden sm:block antialiased hanging-puntuation-first lg:text-lg markdown-body break-words js-news-views-observer" itemprop="articleBody" data-id="{{ $model->id }}">{!! $model->html !!}</div>
           </div>
         </article>
       @endforeach

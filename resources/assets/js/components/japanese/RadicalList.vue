@@ -18,9 +18,9 @@
             v-if="!guest"
           >{{ toggleBurnedText }}</button>
         </p>
-        <div class="tw-flex tw-flex-wrap tw-items-center" v-if="Object.keys(filteredElements).length > 1">
+        <div class="flex flex-wrap items-center" v-if="Object.keys(filteredElements).length > 1">
           <template v-for="(collection, lvl) in filteredElements">
-            <a class="tw-flex tw-bg-gray-600 hover:tw-bg-gray-700 tw-text-white hover:tw-text-gray-100 tw-px-2 tw-text-base tw-font-bold tw-rounded ja-shadow-light tw-mr-1 tw-mb-1" :href="`#level-${lvl}`">
+            <a class="flex bg-gray-600 hover:bg-gray-700 text-white hover:text-gray-100 px-2 text-base font-bold rounded ja-shadow-light mr-1 mb-1" :href="`#level-${lvl}`">
               {{ lvl }}
             </a>
           </template>
@@ -28,10 +28,10 @@
       </div>
       <template v-for="(collection, lvl) in filteredElements">
         <a :id="`level-${lvl}`"></a>
-        <div class="sm:tw-flex tw-items-center tw-justify-between tw-mt-6 tw-mb-1">
+        <div class="sm:flex items-center justify-between mt-6 mb-1">
           <h3>
             <span>{{ titleLabel(lvl) }}</span>
-            <span class="tw-text-base text-muted">{{ collection.length }}</span>
+            <span class="text-base text-muted">{{ collection.length }}</span>
           </h3>
           <div>
             <button
@@ -51,20 +51,20 @@
             >{{ toggleBurnedText }}</button>
           </div>
         </div>
-        <div class="tw-font-bold radicals-grid tw-text-center tw-text-white" is="transition-group" name="grid">
+        <div class="font-bold radicals-grid text-center text-white" is="transition-group" name="grid">
           <div
-            class="bg-radical tw-pb-2 tw-rounded"
+            class="bg-radical pb-2 rounded"
             :class="{ 'labels-hidden': !labels, 'bg-burned': row.burned }"
             :key="row.id"
             v-for="row in collection"
           >
-            <router-link class="tw-block tw-pt-1 tw-text-white hover:tw-text-gray-400" :to="{ name: 'wk.radical', params: { meaning: row.meaning }}">
-              <div class="tw-py-2" v-if="row.image">
+            <router-link class="block pt-1 text-white hover:text-gray-400" :to="{ name: 'wk.radical', params: { meaning: row.meaning }}">
+              <div class="py-2" v-if="row.image">
                 <img class="ja-character ja-image-shadow" :src="row.image" alt="" height="64">
               </div>
-              <div class="ja-big ja-character ja-shadow tw-pb-2" v-else>{{ row.character }}</div>
+              <div class="ja-big ja-character ja-shadow pb-2" v-else>{{ row.character }}</div>
             </router-link>
-            <div class="tw-font-bold ja-shadow-light radical-meaning tw-capitalize">{{ row.meaning }}</div>
+            <div class="font-bold ja-shadow-light radical-meaning capitalize">{{ row.meaning }}</div>
           </div>
         </div>
       </template>

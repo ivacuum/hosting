@@ -1,7 +1,7 @@
 @extends('photos.base')
 
 @section('content')
-<div class="tw-max-w-600px">
+<div class="max-w-600px">
   @component('accordion')
     @slot('title')
       @ru Что это за ресурс? @en What is this site section? @endru
@@ -38,7 +38,7 @@
     @endru
   @endcomponent
 
-  <div class="h3 tw-mt-12">{{ trans('issues.create') }}</div>
+  <div class="h3 mt-12">{{ trans('issues.create') }}</div>
   @ru
     <p>Поделитесь своими знаниями или задайте вопрос. Мы постараемся обработать информацию и дополнить эту страницу новыми материалами.</p>
   @en

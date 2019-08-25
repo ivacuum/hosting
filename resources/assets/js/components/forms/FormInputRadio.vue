@@ -14,18 +14,18 @@ export default {
 </script>
 
 <template>
-<div class="tw-mb-4">
+<div class="mb-4">
   <label :class="labelClasses">
     <slot name="label">{{ labelText }}</slot>
   </label>
   <slot>
     <label
-      class="tw-flex tw-items-center tw-font-normal"
+      class="flex items-center font-normal"
       v-for="option in options"
       :key="option.value"
     >
       <input
-        class="tw-mr-2"
+        class="mr-2"
         v-bind="{ name, type, required }"
         :class="inputClasses"
         :value="option.value"
@@ -36,7 +36,7 @@ export default {
     </label>
   </slot>
   <slot name="feedback">
-    <div class="invalid-feedback tw-block" v-if="errors">
+    <div class="invalid-feedback block" v-if="errors">
       <div v-for="error in errors">{{ error }}</div>
     </div>
   </slot>

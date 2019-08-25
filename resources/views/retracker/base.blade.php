@@ -2,7 +2,7 @@
   'body_classes' => '',
   'navbar_classes' => '',
   'no_language_selector' => $locale === 'ru',
-  'content_container_classes' => 'tw-antialiased hanging-puntuation-first lg:tw-text-lg',
+  'content_container_classes' => 'antialiased hanging-puntuation-first lg:text-lg',
 ])
 
 @section('bottom-tabbar')

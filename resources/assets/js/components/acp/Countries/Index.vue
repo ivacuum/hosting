@@ -25,17 +25,17 @@ export default {
         </sortable-header>
       </th>
       <th>{{ modelFieldTrans('slug') }}</th>
-      <th class="md:tw-text-right tw-whitespace-no-wrap">
+      <th class="md:text-right whitespace-no-wrap">
         <sortable-header field="cities_count">
           {{ modelFieldTrans('cities_count') }}
         </sortable-header>
       </th>
-      <th class="md:tw-text-right tw-whitespace-no-wrap">
+      <th class="md:text-right whitespace-no-wrap">
         <sortable-header field="trips_count">
           {{ modelFieldTrans('trips_count') }}
         </sortable-header>
       </th>
-      <th class="md:tw-text-right tw-whitespace-no-wrap">
+      <th class="md:text-right whitespace-no-wrap">
         <sortable-header field="views">
           <span v-html="$root.svg.eye"></span>
         </sortable-header>
@@ -48,7 +48,7 @@ export default {
         :key="resource.id"
         @dblclick="$router.push(resource.edit_url)"
       >
-        <td><img class="tw-block flag-16 svg-shadow" :src="resource.flag_url"></td>
+        <td><img class="block flag-16 svg-shadow" :src="resource.flag_url"></td>
         <td>
           <router-link :to="resource.show_url">
             {{ resource.title }}
@@ -59,17 +59,17 @@ export default {
             {{ resource.slug }}
           </a>
         </td>
-        <td class="md:tw-text-right tw-whitespace-no-wrap">
+        <td class="md:text-right whitespace-no-wrap">
           <router-link :to="resource.cities_url">
             {{ resource.cities_count | decimal }}
           </router-link>
         </td>
-        <td class="md:tw-text-right tw-whitespace-no-wrap">
+        <td class="md:text-right whitespace-no-wrap">
           <router-link :to="resource.trips_url">
             {{ resource.trips_count | decimal }}
           </router-link>
         </td>
-        <td class="md:tw-text-right tw-whitespace-no-wrap">
+        <td class="md:text-right whitespace-no-wrap">
           {{ resource.views | decimal }}
         </td>
       </tr>

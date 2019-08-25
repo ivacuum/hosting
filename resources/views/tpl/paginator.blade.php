@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-  <div class="{{ $class ?? 'tw-mt-4 tw-text-center' }}">
+  <div class="{{ $class ?? 'mt-4 text-center' }}">
     @if ($paginator instanceof Illuminate\Pagination\LengthAwarePaginator)
       {{ $paginator->appends(UrlHelper::except())->links('tpl.pagination') }}
     @else

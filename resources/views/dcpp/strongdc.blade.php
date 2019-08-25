@@ -15,14 +15,14 @@
 ])
 
 @section('download_latest')
-<a class="btn btn-success btn-lg tw-my-1 tw-mr-2" href="{{ path('Files@download', 132) }}">
-  <span class="tw-mr-1">
+<a class="btn btn-success btn-lg my-1 mr-2" href="{{ path('Files@download', 132) }}">
+  <span class="mr-1">
     @svg (windows)
   </span>
   {{ trans('dcpp.download') }} 32-Bit &middot; {{ ViewHelper::size(8046097) }}
 </a>
-<a class="btn btn-success btn-lg tw-my-1 tw-mr-2" href="{{ path('Files@download', 134) }}">
-  <span class="tw-mr-1">
+<a class="btn btn-success btn-lg my-1 mr-2" href="{{ path('Files@download', 134) }}">
+  <span class="mr-1">
     @svg (windows)
   </span>
   {{ trans('dcpp.download') }} 64-Bit &middot; {{ ViewHelper::size(16138442) }}
@@ -32,7 +32,7 @@
 @section('about_software')
 @ru
   <p><strong>StrongDC++</strong> — это мощный клиент, позволяющий работать в P2P сети и обмениваться любыми файлами и приложениями. При помощи StrongDC++ вы сможете качать файлы от пользователей, находящихся в каком-то одном регионе или городе, фильмы, которые были выпущены только в какой-то одной стране. Или загрузить только файлы маленького размера, которые вы вряд ли сможете найти обычной поисковой машиной.</p>
-  <div class="tw-mt-6">
+  <div class="mt-6">
     <a class="btn btn-default" href="{{ path('Dcpp@page', 'strongdc_install') }}">Инструкция по установке</a>
   </div>
 @en
@@ -41,17 +41,17 @@
 @endsection
 
 @section('software_features')
-<section class="tw-my-0 tw-py-12">
-  <div class="tw-container">
-    <h3 class="tw-mb-6">
+<section class="my-0 py-12">
+  <div class="container">
+    <h3 class="mb-6">
       @ru
         Основные преимущества StrongDC++
       @en
         Main features of StrongDC++
       @endru
     </h3>
-    <div class="md:tw-flex md:tw-flex-wrap md:tw--mx-4">
-      <div class="md:tw-w-1/2 lg:tw-w-1/3 md:tw-px-4">
+    <div class="md:flex md:flex-wrap md:-mx-4">
+      <div class="md:w-1/2 lg:w-1/3 md:px-4">
         <h5>
           @ru
             Сегментационная закачка файла
@@ -65,7 +65,7 @@
           <p>Files are divided to many parts and they are downloaded from many users in parallel. Checksum guarantees combined parts are identical to an original file.</p>
         @endru
       </div>
-      <div class="md:tw-w-1/2 lg:tw-w-1/3 md:tw-px-4">
+      <div class="md:w-1/2 lg:w-1/3 md:px-4">
         <h5>
           @ru
             Частичное расшаривание файла
@@ -79,7 +79,7 @@
           <p>You start sharing segments you've downloaded right away. So as other users. Better speed for everyone.</p>
         @endru
       </div>
-      <div class="md:tw-w-1/2 lg:tw-w-1/3 md:tw-px-4">
+      <div class="md:w-1/2 lg:w-1/3 md:px-4">
         <h5>
           @ru
             Персональная настройка
@@ -93,7 +93,7 @@
           <p>You have lots of options to fine-tune: sound notifications, popup windows, smilies, etc.</p>
         @endru
       </div>
-      <div class="md:tw-w-1/2 lg:tw-w-1/3 md:tw-px-4">
+      <div class="md:w-1/2 lg:w-1/3 md:px-4">
         <h5>
           @ru
             Отключение медленных соединений
@@ -107,7 +107,7 @@
           <p>It frees slots for high-speed exchange.</p>
         @endru
       </div>
-      <div class="md:tw-w-1/2 lg:tw-w-1/3 md:tw-px-4">
+      <div class="md:w-1/2 lg:w-1/3 md:px-4">
         <h5>
           @ru
             Ограничение на загрузку и отдачу

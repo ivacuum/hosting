@@ -1,16 +1,16 @@
 @extends('my.base')
 
 @section('content')
-<h3 class="tw-mb-4">{{ trans('my.password') }}</h3>
+<h3 class="mb-4">{{ trans('my.password') }}</h3>
 
-<div class="tw-max-w-500px">
+<div class="max-w-500px">
   <form action="{{ path("$self@update") }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @method('put')
     @csrf
 
     @if ($has_password)
-      <div class="tw-mb-4">
+      <div class="mb-4">
         <label>{{ trans('my.old_password') }}</label>
         <input
           required
@@ -23,7 +23,7 @@
       </div>
     @endif
 
-    <div class="tw-mb-4">
+    <div class="mb-4">
       <label>{{ trans('my.new_password') }}</label>
       <input
         required
@@ -47,15 +47,15 @@
 </div>
 
 @if ($has_password)
-  <h3 class="tw-mt-12">{{ trans('auth.forgot_password') }}</h3>
+  <h3 class="mt-12">{{ trans('auth.forgot_password') }}</h3>
   <form action="{{ path('Auth\ForgotPassword@sendResetLink') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 
     @ru
-      <p>Ссылка будет отправлена на вашу электронную почту <span class="tw-font-bold">{{ Auth::user()->email }}</span></p>
+      <p>Ссылка будет отправлена на вашу электронную почту <span class="font-bold">{{ Auth::user()->email }}</span></p>
     @en
-      <p>The link will be sent to your e-mail <span class="tw-font-bold">{{ Auth::user()->email }}</span></p>
+      <p>The link will be sent to your e-mail <span class="font-bold">{{ Auth::user()->email }}</span></p>
     @endru
 
     <button class="btn btn-default">

@@ -18,9 +18,9 @@
             v-if="!guest"
           >{{ toggleBurnedText }}</button>
         </p>
-        <div class="tw-flex tw-flex-wrap tw-items-center" v-if="Object.keys(filteredElements).length > 1">
+        <div class="flex flex-wrap items-center" v-if="Object.keys(filteredElements).length > 1">
           <template v-for="(collection, lvl) in filteredElements">
-            <a class="tw-flex tw-bg-gray-600 hover:tw-bg-gray-700 tw-text-white hover:tw-text-gray-100 tw-px-2 tw-text-base tw-font-bold tw-rounded ja-shadow-light tw-mr-1 tw-mb-1" :href="`#level-${lvl}`">
+            <a class="flex bg-gray-600 hover:bg-gray-700 text-white hover:text-gray-100 px-2 text-base font-bold rounded ja-shadow-light mr-1 mb-1" :href="`#level-${lvl}`">
               {{ lvl }}
             </a>
           </template>
@@ -28,10 +28,10 @@
       </div>
       <template v-for="(collection, lvl) in filteredElements">
         <a :id="`level-${lvl}`"></a>
-        <div class="sm:tw-flex tw-items-center tw-justify-between tw-mt-6 tw-mb-1">
+        <div class="sm:flex items-center justify-between mt-6 mb-1">
           <h3>
             <span>{{ titleLabel(lvl) }}</span>
-            <span class="tw-text-base text-muted">{{ collection.length }}</span>
+            <span class="text-base text-muted">{{ collection.length }}</span>
           </h3>
           <div>
             <button
@@ -51,37 +51,37 @@
             >{{ toggleBurnedText }}</button>
           </div>
         </div>
-        <div class="tw-text-xl tw-text-center md:tw-text-left vocab-grid">
+        <div class="text-xl text-center md:text-left vocab-grid">
           <template v-for="row in collection">
             <div>
               <router-link
-                class="bg-vocab tw-inline-block tw-text-4xl ja-character ja-shadow-light tw-px-2 tw-py-1 tw-rounded tw-whitespace-no-wrap tw-text-white hover:tw-text-gray-400"
+                class="bg-vocab inline-block text-4xl ja-character ja-shadow-light px-2 py-1 rounded whitespace-no-wrap text-white hover:text-gray-400"
                 :class="{ 'bg-burned': row.burned }"
                 :to="{ name: 'wk.vocabulary', params: { characters: row.character }}"
               >{{ row.character }}</router-link>
             </div>
             <a
-              class="tw-my-4 md:tw-my-0 md:tw-pl-4 md:tw-pr-2 md:tw-py-1"
-              :class="{ 'tw-invisible': labels }"
+              class="my-4 md:my-0 md:pl-4 md:pr-2 md:py-1"
+              :class="{ 'invisible': labels }"
               href="#"
               @click.prevent="reveal(row.id)"
             >？</a>
             <div
               class="text-muted"
-              :class="{ 'tw-invisible': !labels && !revealed.includes(row.id), 'tw-mt-4 md:tw-mt-0': labels }"
+              :class="{ 'invisible': !labels && !revealed.includes(row.id), 'mt-4 md:mt-0': labels }"
               :id="`kana-${row.id}`"
             >
-              <div class="ja-character tw-whitespace-no-wrap" v-for="kana in row.kana.split(', ')">
+              <div class="ja-character whitespace-no-wrap" v-for="kana in row.kana.split(', ')">
                 【{{ kana }}】
               </div>
             </div>
             <div
-              :class="{ 'tw-invisible': !labels && !revealed.includes(row.id), 'tw-mb-6 md:tw-mb-0': row.burned || guest }"
+              :class="{ 'invisible': !labels && !revealed.includes(row.id), 'mb-6 md:mb-0': row.burned || guest }"
               :id="`meaning-${row.id}`"
             >{{ row.meaning }}</div>
             <a
-              class="tw-mb-6 md:tw-mb-0 md:tw-px-2 md:tw-py-1 tw-text-red-600"
-              :class="{ 'tw-invisible': row.burned || guest || (!labels && !revealed.includes(row.id)) }"
+              class="mb-6 md:mb-0 md:px-2 md:py-1 text-red-600"
+              :class="{ 'invisible': row.burned || guest || (!labels && !revealed.includes(row.id)) }"
               href="#"
               @click.prevent="burn(lvl, row.id)"
             >

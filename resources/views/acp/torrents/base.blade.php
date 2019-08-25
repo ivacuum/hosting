@@ -4,7 +4,7 @@
 <a class="list-group-item list-group-item-action" href="{{ path('Acp\Users@show', $model->user_id) }}">
   {{ trans("$tpl.user") }}
   @if (null !== $model->user)
-    <div class="tw-text-xs text-muted">{{ $model->user->email }}</div>
+    <div class="text-xs text-muted">{{ $model->user->email }}</div>
   @endif
 </a>
 <a class="list-group-item list-group-item-action" href="{{ path("$self@updateRto", $model) }}">

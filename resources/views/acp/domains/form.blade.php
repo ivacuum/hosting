@@ -28,9 +28,9 @@
 
 {!! Form::textarea('text')->wide()->html() !!}
 
-<h3 class="tw-mt-12 tw-mb-4">Реквизиты доступа к сайту</h3>
+<h3 class="mt-12 mb-4">Реквизиты доступа к сайту</h3>
 
-<div class="tw-mb-4">
+<div class="mb-4">
   <label>CMS</label>
   <div class="input-group">
     <input class="form-control" type="text" name="cms_user" placeholder="admin" value="{{ old('cms_user', @$model->cms_user) }}">
@@ -45,17 +45,17 @@
   </div>
 </div>
 
-<div class="tw-mb-4">
+<div class="mb-4">
   <label>Название CMS</label>
   <input class="form-control" type="text" name="cms_type" placeholder="korden.cms" value="{{ old('cms_type', @$model->cms_type) }}">
 </div>
 
-<div class="tw-mb-4">
+<div class="mb-4">
   <label>Версия CMS</label>
   <input class="form-control" type="text" name="cms_version" placeholder="3.5" value="{{ old('cms_version', @$model->cms_version) }}">
 </div>
 
-<div class="tw-mb-4">
+<div class="mb-4">
   <label>FTP</label>
   <div class="input-group">
     <input class="form-control" type="text" name="ftp_user" placeholder="user" value="{{ old('ftp_user', @$model->ftp_user) }}">
@@ -70,7 +70,7 @@
   </div>
 </div>
 
-<div class="tw-mb-4">
+<div class="mb-4">
   <label>SSH</label>
   <div class="input-group">
     <input class="form-control" type="text" name="ssh_user" placeholder="user" value="{{ old('ssh_user', @$model->ssh_user) }}">
@@ -85,7 +85,7 @@
   </div>
 </div>
 
-<div class="tw-mb-4">
+<div class="mb-4">
   <label>БД</label>
   <div class="input-group">
     <input class="form-control" type="text" name="db_user" placeholder="user" value="{{ old('db_user', @$model->db_user) }}">
@@ -100,7 +100,7 @@
   </div>
 </div>
 
-<div class="tw-mb-4">
+<div class="mb-4">
   <label>phpMyAdmin</label>
   <input class="form-control" type="text" name="db_pma" placeholder="http://pma.example.com/" value="{{ old('db_pma', @$model->db_pma) }}">
 </div>

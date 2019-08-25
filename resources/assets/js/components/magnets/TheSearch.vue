@@ -29,7 +29,7 @@ export default {
 </script>
 
 <template>
-<form class="tw-flex tw-mb-2 lg:tw-mb-0" @submit.prevent="search">
+<form class="flex mb-2 lg:mb-0" @submit.prevent="search">
   <div class="input-group">
     <input class="form-control js-search-input" :placeholder="$t('torrents.search')" autocapitalize="none" v-model="q">
     <div class="input-group-append">

@@ -1,11 +1,11 @@
 <template>
 <div>
-  <div class="tw-mb-4" v-if="avatar">
-    <img class="avatar-100 tw-rounded-full" :src="avatar">
+  <div class="mb-4" v-if="avatar">
+    <img class="avatar-100 rounded-full" :src="avatar">
   </div>
-  <div class="tw-mb-4" v-if="errors.file && errors.file.length">
+  <div class="mb-4" v-if="errors.file && errors.file.length">
     <div v-for="error in errors.file">
-      <div class="tw-text-red-600">{{ error }}</div>
+      <div class="text-red-600">{{ error }}</div>
     </div>
   </div>
   <div v-if="!uploading">

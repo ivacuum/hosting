@@ -11,7 +11,7 @@ https://english.stackexchange.com/questions/51209/translate-into-vs-translate-to
 @section('content')
 <h1>{{ trans('life.english') }}</h1>
 @ru
-  <p class="tw-mb-12">Конспект информации, освоенной во время изучения языка.</p>
+  <p class="mb-12">Конспект информации, освоенной во время изучения языка.</p>
 @endru
 
 <a id="irregular-verbs"></a>
@@ -131,7 +131,7 @@ $irregular_verbs = [
   ['write', 'wrote', 'written'],
 ];
 ?>
-<table class="table-stats tw-mb-12">
+<table class="table-stats mb-12">
   <thead>
   <tr>
     <th>Infinitive</th>
@@ -157,36 +157,36 @@ $irregular_verbs = [
   <div>— No, miss, they must be lost. There was <b>a</b> teacher here yesterday asking <b>the</b> same question.</div>
 </blockquote>
 
-<ol class="tw-mt-12">
-  <li class="tw-mb-4">
+<ol class="mt-12">
+  <li class="mb-4">
     <b>A/An</b> is used with <b>singular countable</b> nouns when we talk about things <b>in general</b>.
     <blockquote class="text-muted">
       <div><b>An</b> aeroplane is faster than <b>a</b> train.</div>
       <div>(Which aeroplane? Aeroplanes in general.)</div>
-      <div class="tw-mt-4"><b>A</b> greengrocer sells vegetables.</div>
+      <div class="mt-4"><b>A</b> greengrocer sells vegetables.</div>
       <div>(Which greengrocer? Greengrocers in general.)</div>
     </blockquote>
   </li>
-  <li class="tw-mb-4">
+  <li class="mb-4">
     We often use <b>a/an</b> after the verbs <b>to be</b> and <b>to have</b>.
     <blockquote class="text-muted">
       <div>He <b>is</b> a photographer. He <b>has got</b> a camera.</div>
     </blockquote>
   </li>
-  <li class="tw-mb-4">
+  <li class="mb-4">
     We do not use <b>a/an</b> with <b>uncountable</b> or <b>plural</b> nouns. We can use <b>some</b> instead.
     <blockquote class="text-muted">
       <div>Would you like <b>some</b> tea? Yes, please! And I'd like <b>some</b> biscuits.</div>
     </blockquote>
   </li>
-  <li class="tw-mb-4">
+  <li class="mb-4">
     <b>The</b> is used before <b>singular</b> and <b>plural</b> nouns, both <b>countable</b> and <b>uncountable</b> when we are talking about something <b>specific</b> or when the noun is mentioned <b>for a second time</b>.
     <blockquote class="text-muted">
       <div><b>The</b> boy who has just left is my cousin. (Which boy? Not any boy. The specific boy, the boy who has just left.)</div>
-      <div class="tw-mt-4">There is a cat on the sofa. <b>The</b> cat is sleeping. ("The cat" is mentioned for a second time.)</div>
+      <div class="mt-4">There is a cat on the sofa. <b>The</b> cat is sleeping. ("The cat" is mentioned for a second time.)</div>
     </blockquote>
   </li>
-  <li class="tw-mb-4">
+  <li class="mb-4">
     We use <b>the</b> with the words <b>cinema, theatre, radio, country(side), seaside, beach, etc</b>.
     <blockquote class="text-muted">
       <div>We go to <b>the beach</b> every Sunday.</div>
@@ -196,40 +196,40 @@ $irregular_verbs = [
     We use both <b>a/an</b> or <b>the</b> before a singular countable noun to represent a <b>class</b> of people, animals or things.
     <blockquote class="text-muted">
       <div><b>A/The</b> dolphin is more intelligent than <b>a/the</b> shark. (We mean dolphins and sharks in general.)</div>
-      <div class="tw-mt-4"><b>ALSO:</b> Dolphins are more intelligent than sharks.</div>
+      <div class="mt-4"><b>ALSO:</b> Dolphins are more intelligent than sharks.</div>
     </blockquote>
   </li>
 </ol>
 
-<div class="md:tw-flex md:tw--mx-4 tw-mt-12">
-  <div class="md:tw-w-1/2 md:tw-px-4">
+<div class="md:flex md:-mx-4 mt-12">
+  <div class="md:w-1/2 md:px-4">
     <p><b>The</b> is also used before:</p>
     <ol>
-      <li class="tw-mb-4">
+      <li class="mb-4">
         nouns which are unique.
         <blockquote class="text-muted">
           Haven't you been to <b>the Acropolis</b> yet?
         </blockquote>
       </li>
-      <li class="tw-mb-4">
+      <li class="mb-4">
         names of cinemas (the Odeon), hotels (the Hilton), theatres (the Rex), museums (the Prado), newspapers (the Times), ships (the Queen Mary).
       </li>
-      <li class="tw-mb-4">
+      <li class="mb-4">
         names of rivers (the Thames), seas (the Black Sea), groups of islands/states (the Bahamas, the USA), mountain ranges (the Alps), deserts (the Gobi desert), oceans (the Pacific) and names with ... of (The Tower of London).
       </li>
-      <li class="tw-mb-4">
+      <li class="mb-4">
         musical instruments.
         <blockquote class="text-muted">
           Can you play the guitar?
         </blockquote>
       </li>
-      <li class="tw-mb-4">
+      <li class="mb-4">
         names of people / families / nationalities in the plural.
         <blockquote class="text-muted">
           the Smiths, the English, the Dutch etc.
         </blockquote>
       </li>
-      <li class="tw-mb-4">
+      <li class="mb-4">
         titles without proper names.
         <blockquote class="text-muted">
           the Queen, the President
@@ -243,16 +243,16 @@ $irregular_verbs = [
       </li>
     </ol>
   </div>
-  <div class="md:tw-w-1/2 md:tw-px-4">
+  <div class="md:w-1/2 md:px-4">
     <p><b>The</b> is omitted before:</p>
     <ol>
-      <li class="tw-mb-4">
+      <li class="mb-4">
         proper nouns.
         <blockquote class="text-muted">
           <b>Paula</b> comes from <b>Canada</b>.
         </blockquote>
       </li>
-      <li class="tw-mb-4">
+      <li class="mb-4">
         names of sports, activities, colours, substances and meals.
         <blockquote class="text-muted">
           <div>He plays <b>tennis</b> well.</div>
@@ -261,28 +261,28 @@ $irregular_verbs = [
           <div><b>Lunch</b> is ready.</div>
         </blockquote>
       </li>
-      <li class="tw-mb-4">
+      <li class="mb-4">
         names of countries (England), cities (London), streets (Bond Street), parks (Hyde Park), mountains (Everest), islands (Cyprus), lakes (Lake Michigan), continents (Europe).
       </li>
-      <li class="tw-mb-4">
+      <li class="mb-4">
         the possessive case or possessive adj.
         <blockquote class="text-muted">
           This isn't <b>your</b> coat, it's <b>Kate's</b>.
         </blockquote>
       </li>
-      <li class="tw-mb-4">
+      <li class="mb-4">
         the words "home" and "Father/Mother" when we talk about our own home/parents.
         <blockquote class="text-muted">
           <b>Father</b> isn't at <b>home</b>.
         </blockquote>
       </li>
-      <li class="tw-mb-4">
+      <li class="mb-4">
         titles with proper names.
         <blockquote class="text-muted">
           Queen Elizabeth, President Kennedy
         </blockquote>
       </li>
-      <li class="tw-mb-4">
+      <li class="mb-4">
         bed, school, church, hospital, prison, when they are used for the reason they exist.
         <blockquote class="text-muted">
           <div>John was sent to <b>prison</b>.</div>

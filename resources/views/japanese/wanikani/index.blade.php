@@ -2,36 +2,36 @@
 
 @section('content')
 <h1 class="h2">{{ trans('japanese.wanikani') }}</h1>
-<div class="md:tw-flex md:tw--mx-4 tw-text-center tw-mb-2">
-  <div class="md:tw-w-1/3 md:tw-px-4 tw-mb-2">
-    <div class="bg-radical tw-rounded">
+<div class="md:flex md:-mx-4 text-center mb-2">
+  <div class="md:w-1/3 md:px-4 mb-2">
+    <div class="bg-radical rounded">
       <a
-        class="tw-block ja-shadow-light tw-py-6 tw-text-white hover:tw-text-gray-300"
+        class="block ja-shadow-light py-6 text-white hover:text-gray-300"
         href="{{ path('JapaneseWanikaniRadicals@index') }}"
       >
-        <span class="tw-block tw-text-4xl">部首</span>
+        <span class="block text-4xl">部首</span>
         {{ trans('japanese.radicals') }}
       </a>
     </div>
   </div>
-  <div class="md:tw-w-1/3 md:tw-px-4 tw-mb-2">
-    <div class="bg-kanji tw-rounded">
+  <div class="md:w-1/3 md:px-4 mb-2">
+    <div class="bg-kanji rounded">
       <a
-        class="tw-block ja-shadow-light tw-py-6 tw-text-white hover:tw-text-gray-300"
+        class="block ja-shadow-light py-6 text-white hover:text-gray-300"
         href="{{ path('JapaneseWanikaniKanji@index') }}"
       >
-        <span class="tw-block tw-text-4xl">漢字</span>
+        <span class="block text-4xl">漢字</span>
         {{ trans('japanese.kanji') }}
       </a>
     </div>
   </div>
-  <div class="md:tw-w-1/3 md:tw-px-4 tw-mb-2">
-    <div class="bg-vocab tw-rounded">
+  <div class="md:w-1/3 md:px-4 mb-2">
+    <div class="bg-vocab rounded">
       <a
-        class="tw-block ja-shadow-light tw-py-6 tw-text-white hover:tw-text-gray-300"
+        class="block ja-shadow-light py-6 text-white hover:text-gray-300"
         href="{{ path('JapaneseWanikaniVocabulary@index') }}"
       >
-        <span class="tw-block tw-text-4xl">単語</span>
+        <span class="block text-4xl">単語</span>
         {{ trans('japanese.vocabulary') }}
       </a>
     </div>
@@ -43,10 +43,10 @@
   <p>Вся информация по ключам, кандзи и словарным словам представлена только на английском языке, как и на WaniKani. Без изменений, чтобы не возникало путаницы. Этот сервис — дополнение, а не полноценная замена.</p>
 @endru
 
-<h3 class="tw-mt-6">{{ trans('japanese.by-levels') }}</h3>
-<div class="tw-flex tw-flex-wrap tw-items-center">
+<h3 class="mt-6">{{ trans('japanese.by-levels') }}</h3>
+<div class="flex flex-wrap items-center">
   @foreach (range(1, 60) as $level)
-    <a class="tw-flex tw-bg-gray-600 hover:tw-bg-gray-700 tw-text-white hover:tw-text-gray-100 tw-px-2 tw-text-lg tw-font-bold tw-rounded ja-shadow-light tw-mr-2 tw-mb-2" href="{{ path('JapaneseWanikaniLevel@show', $level) }}">
+    <a class="flex bg-gray-600 hover:bg-gray-700 text-white hover:text-gray-100 px-2 text-lg font-bold rounded ja-shadow-light mr-2 mb-2" href="{{ path('JapaneseWanikaniLevel@show', $level) }}">
       {{ $level }}
     </a>
   @endforeach

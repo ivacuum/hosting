@@ -12,8 +12,8 @@ export default {
   <acp-menu/>
   <acp-breadcrumbs/>
 
-  <div class="tw-flex-h-full">
-    <div class="tw-container tw-my-4">
+  <div class="flex-h-full">
+    <div class="container my-4">
       <router-view/>
     </div>
   </div>

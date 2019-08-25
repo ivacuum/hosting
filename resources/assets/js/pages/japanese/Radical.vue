@@ -49,16 +49,16 @@ export default {
 
 <template>
 <div>
-  <div class="tw-items-center tw-flex tw-flex-wrap h1">
+  <div class="items-center flex flex-wrap h1">
     <router-link
-      class="bg-secondary ja-shadow-light tw-mr-2 tw-px-4 tw-py-1 tw-rounded tw-text-white hover:tw-text-white"
+      class="bg-secondary ja-shadow-light mr-2 px-4 py-1 rounded text-white hover:text-white"
       :to="{ name: 'wk.level', params: { level: radical.level }}"
     >{{ radical.level }}</router-link>
-    <div class="bg-radical tw-text-white tw-mr-4 tw-px-2 tw-py-1 tw-rounded">
+    <div class="bg-radical text-white mr-4 px-2 py-1 rounded">
       <span class="ja-character ja-shadow-light" v-if="radical.character">{{ radical.character }}</span>
-      <img class="tw-block ja-character ja-image-shadow" :src="radical.image" alt="" height="38" v-else>
+      <img class="block ja-character ja-image-shadow" :src="radical.image" alt="" height="38" v-else>
     </div>
-    <div class="tw-capitalize">{{ radical.meaning }}</div>
+    <div class="capitalize">{{ radical.meaning }}</div>
   </div>
 
   <kanji-list
@@ -69,14 +69,14 @@ export default {
     v-if="radical.id"
   />
 
-  <div class="tw-mt-6">
+  <div class="mt-6">
     <a :href="`https://www.wanikani.com/radicals/${radical.meaning}`" rel="noreferrer">
       WaniKani
       <span v-html="$root.svg.external_link"></span>
     </a>
   </div>
 
-  <div class="tw-mt-6" v-if="!guest">
+  <div class="mt-6" v-if="!guest">
     <burn-radical
       :id="radical.id"
       :burned="radical.burned"

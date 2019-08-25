@@ -1,5 +1,5 @@
 <li class="nav-item {{ $self == 'Notifications' ? 'active' : '' }}">
-  <a class="nav-link tw-relative tooltipped tooltipped-s" href="{{ path('Notifications@index') }}" aria-label="{{ trans('notifications.index') }}">
+  <a class="nav-link relative tooltipped tooltipped-s" href="{{ path('Notifications@index') }}" aria-label="{{ trans('notifications.index') }}">
     <span class="{{ null !== Auth::user()->unreadNotifications()->first() ? 'has-unread-label' : '' }}">
       @svg (bell)
     </span>
@@ -12,7 +12,7 @@
   <div class="dropdown-menu dropdown-menu-right">
     <div class="dropdown-header">
       {{ trans('auth.signed_in_as') }}
-      <span class="tw-font-bold">{{ Auth::user()->displayName() }}</span>
+      <span class="font-bold">{{ Auth::user()->displayName() }}</span>
     </div>
     <div class="dropdown-divider"></div>
     @if (Auth::user()->isAdmin())

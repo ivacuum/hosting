@@ -45,7 +45,7 @@
   @endforeach
 </table>
 
-<div class="tw-max-w-500px tw-mt-4">
+<div class="max-w-500px mt-4">
   <form action="/acp/servers/{{ $server->id }}/ftp/file" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
@@ -61,7 +61,7 @@
     <input type="hidden" name="path" value="{{ $dir }}">
   </form>
 
-  <form class="tw-mt-4" action="/acp/servers/{{ $server->id }}/ftp/dir" method="post">
+  <form class="mt-4" action="/acp/servers/{{ $server->id }}/ftp/dir" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 
@@ -77,11 +77,11 @@
     <input type="hidden" name="path" value="{{ $dir }}">
   </form>
 
-  <form class="tw-mt-4" action="/acp/servers/{{ $server->id }}/ftp/upload" enctype="multipart/form-data" method="post">
+  <form class="mt-4" action="/acp/servers/{{ $server->id }}/ftp/upload" enctype="multipart/form-data" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 
-    <div class="input-group tw-items-center">
+    <div class="input-group items-center">
       <input class="{{ $errors->has('file') ? 'is-invalid' : '' }}" type="file" name="file">
       <span class="input-group-append">
         <button class="btn btn-default">

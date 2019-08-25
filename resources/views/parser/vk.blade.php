@@ -8,7 +8,7 @@
 ])
 
 @section('content')
-<div class="nav-link-tabs-fader nav-border tw--mt-4">
+<div class="nav-link-tabs-fader nav-border -mt-4">
   <div class="nav-scroll-container">
     <div class="nav-scroll">
       <nav class="nav nav-link-tabs">
@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<form class="tw-flex tw-justify-between tw-my-4" action="{{ path('ParserVk@indexPost') }}" method="post">
+<form class="flex justify-between my-4" action="{{ path('ParserVk@indexPost') }}" method="post">
   @csrf
   <div>
     @if (!empty($next))
@@ -30,9 +30,9 @@
       </a>
     @endif
   </div>
-  <div class="tw-hidden sm:tw-flex tw-items-center">
-    <span class="tw-hidden md:tw-block">Топ 10</span>
-    <input class="form-control tw-mx-2 tw-w-32" name="slug" value="{{ $vkpage }}" autocapitalize="none">
+  <div class="hidden sm:flex items-center">
+    <span class="hidden md:block">Топ 10</span>
+    <input class="form-control mx-2 w-32" name="slug" value="{{ $vkpage }}" autocapitalize="none">
     за {{ $date->formatLocalized('%e %B') }}
     @if ($date->year !== now()->year)
       {{ $date->year }}
@@ -59,25 +59,25 @@
 /** @var array[] $posts */
 ?>
 @foreach ($posts as $post)
-  <div class="card tw-border-l-0 sm:tw-border-l tw-border-r-0 sm:tw-border-r tw-rounded-none sm:tw-rounded tw-mb-4 tw--mx-4 sm:tw-mx-0 js-shortcuts-item">
-    <div class="card-body tw-pb-0 tw-break-words">
+  <div class="card border-l-0 sm:border-l border-r-0 sm:border-r rounded-none sm:rounded mb-4 -mx-4 sm:mx-0 js-shortcuts-item">
+    <div class="card-body pb-0 break-words">
       @if ($post['text'])
-        <div class="tw-antialiased hanging-puntuation-first lg:tw-text-lg tw-mb-0 tw-whitespace-pre-line">{{ $post['text'] }}</div>
+        <div class="antialiased hanging-puntuation-first lg:text-lg mb-0 whitespace-pre-line">{{ $post['text'] }}</div>
       @endif
       @if (!empty($post['copy_history']))
-        <div class="tw-antialiased hanging-puntuation-first lg:tw-text-lg {{ $post['text'] ? 'tw-mt-4' : '' }} tw-mb-0"><strong>Репост</strong></div>
-        <div class="tw-antialiased hanging-puntuation-first lg:tw-text-lg tw-mb-0 tw-whitespace-pre-line">{{ $post['copy_history'][0]->text }}</div>
+        <div class="antialiased hanging-puntuation-first lg:text-lg {{ $post['text'] ? 'mt-4' : '' }} mb-0"><strong>Репост</strong></div>
+        <div class="antialiased hanging-puntuation-first lg:text-lg mb-0 whitespace-pre-line">{{ $post['copy_history'][0]->text }}</div>
       @endif
       @if ($post['attachments'])
-        <div class="tw-mt-2">
+        <div class="mt-2">
         @if ($post['photos'] > 1)
-          <div class="tw-mb-6 tw-mobile-wide">
+          <div class="mb-6 mobile-wide">
         @elseif ($post['photos'] == 1)
-          <div class="tw-mb-6 {{ sizeof($post['attachments']) <= 1 ? 'tw-mb-0' : '' }}">
+          <div class="mb-6 {{ sizeof($post['attachments']) <= 1 ? 'mb-0' : '' }}">
         @endif
         @foreach ($post['attachments'] as $attach)
           @if ($attach->type == 'photo' && isset($attach->photo->photo_604))
-            <img class="tw-block markdown-responsive-image {{ $post['photos'] === 1 ? 'tw-rounded' : '' }} {{ !$loop->first ? 'js-shortcuts-item' : '' }}" src="{{ @$attach->photo->photo_1280 ?: @$attach->photo->photo_807 ?: $attach->photo->photo_604 }}">
+            <img class="block markdown-responsive-image {{ $post['photos'] === 1 ? 'rounded' : '' }} {{ !$loop->first ? 'js-shortcuts-item' : '' }}" src="{{ @$attach->photo->photo_1280 ?: @$attach->photo->photo_807 ?: $attach->photo->photo_604 }}">
           @endif
         @endforeach
         @if ($post['photos'] > 0)
@@ -91,10 +91,10 @@
                 @svg (paperclip)
                 {{ $attach->doc->title }}
               </div>
-              <div class="tw-flex tw-mt-1">
+              <div class="flex mt-1">
                 <video
                   controls
-                  class="tw-block markdown-responsive-image tw-rounded"
+                  class="block markdown-responsive-image rounded"
                   width="{{ $attach->doc->preview->video->width }}"
                   height="{{ $attach->doc->preview->video->height }}"
                   poster="{{ Illuminate\Support\Arr::last($attach->doc->preview->photo->sizes)->src }}"
@@ -119,7 +119,7 @@
                 @svg (film)
                 {{ $attach->video->title }}
               </a>
-              <span class="tw-text-sm text-muted">
+              <span class="text-sm text-muted">
                 {{ sprintf('%02d', $attach->video->duration / 60) }}:{{ sprintf('%02d', $attach->video->duration % 60) }}
               </span>
             </p>
@@ -132,7 +132,7 @@
             </p>
           @elseif ($attach->type == 'link')
             @if (isset($attach->link->photo->photo_604))
-              <div class="tw-mb-6">
+              <div class="mb-6">
                 <img src="{{ @$attach->link->photo->photo_604 }}">
               </div>
             @endif
@@ -141,7 +141,7 @@
                 @svg (link)
                 {{ $attach->link->title }}
               </a>
-              <div class="tw-text-sm text-muted">
+              <div class="text-sm text-muted">
                 {{ $attach->link->url }}
               </div>
             </div>
@@ -149,8 +149,8 @@
         @endforeach
         </div>
       @endif
-      <div class="tw-mt-2 tw-mb-1 text-muted">
-        <samp class="tw-text-xs svg-labels tw-justify-end">
+      <div class="mt-2 mb-1 text-muted">
+        <samp class="text-xs svg-labels justify-end">
           <a class="svg-flex svg-label" href="{{ $post['url'] }}">
             @svg (link)
           </a>
@@ -175,7 +175,7 @@
 @endforeach
 </div>
 
-<div class="tw-flex tw-justify-between">
+<div class="flex justify-between">
   @if (!empty($next))
     <div>
       <a class="btn border-b125 js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}">

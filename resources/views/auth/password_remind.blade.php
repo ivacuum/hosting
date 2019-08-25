@@ -1,13 +1,13 @@
 @extends('base')
 
 @section('content')
-<div class="tw-mx-auto tw-max-w-400px">
+<div class="mx-auto max-w-400px">
   <h3>{{ trans('auth.password_remind_title') }}</h3>
   <form action="{{ path('Auth\ForgotPassword@sendResetLink') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 
-    <div class="tw-my-4">
+    <div class="my-4">
       <input
         autofocus
         required

@@ -3,10 +3,10 @@
 {{-- Калужская областная филармония --}}
 
 @section('content')
-<div class="md:tw-flex md:tw--mx-4">
-  <div class="md:tw-w-7/12 md:tw-px-4">
+<div class="md:flex md:-mx-4">
+  <div class="md:w-7/12 md:px-4">
     @ru
-      <div class="tw-mb-1">Как попала Калуга в график его гастролей — решительно непонятно:</div>
+      <div class="mb-1">Как попала Калуга в график его гастролей — решительно непонятно:</div>
       <ul>
         <li>10 мая — Утрехт, Голландия</li>
         <li>13 мая — Нанси, Франция</li>
@@ -17,9 +17,9 @@
       <p>Стив Вай творил с гитарой во время своего полуторачасового выступления нечто невообразимое. Удалось шикануть и взять первый ряд, тем более после покупки билетов на Линкин Парк местные цены были смехотворны. Снова убедился, что как минимум один раз всем стоит взять лучшие места на ожидаемое шоу, так как впечатления потом непередаваемо крутые.</p>
     @endru
     @ru
-      <div class="tw-mb-1">Предполагаемый сетлист:</div>
+      <div class="mb-1">Предполагаемый сетлист:</div>
     @en
-      <div class="tw-mb-1">Setlist probably was:</div>
+      <div class="mb-1">Setlist probably was:</div>
     @endru
     <ol>
       <li>Racing the World</li>
@@ -45,9 +45,9 @@
       <li>Fire Garden Suite IV - Taurus Bulba</li>
     </ol>
   </div>
-  <div class="md:tw-w-5/12 md:tw-px-4">
-    <div class="tw-mb-6 tw-text-center tw-mobile-wide">
-      <img class="image-fit-viewport tw-max-w-full sm:tw-rounded" src="https://life.ivacuum.org/gigs/vai.2014.05.26.jpg">
+  <div class="md:w-5/12 md:px-4">
+    <div class="mb-6 text-center mobile-wide">
+      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/vai.2014.05.26.jpg">
     </div>
   </div>
 </div>

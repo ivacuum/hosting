@@ -55,7 +55,7 @@
 @en
   <p>The application is now almost the same as for Schengen visa, but with a couple of differences: the schedule of stay is mandatory, and medical insurance is optional. You can find an example of two days of schedule of stay in a table below.</p>
 @endru
-<table class="table-stats tw-mb-4">
+<table class="table-stats mb-4">
   <thead>
   <tr>
     <th>Date</th>

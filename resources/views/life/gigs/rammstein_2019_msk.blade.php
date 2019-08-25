@@ -3,7 +3,7 @@
 @section('content')
 @ru
   {{--
-  <div class="tw-mb-2">
+  <div class="mb-2">
     @include('tpl.gig-countdown', ['show_datetime' => '2019-07-29 19:00:00'])
   </div>
   --}}
@@ -16,8 +16,8 @@
   </p>
   --}}
 @endru
-<div class="md:tw-flex md:tw--mx-4">
-  <div class="md:tw-w-7/12 md:tw-px-4">
+<div class="md:flex md:-mx-4">
+  <div class="md:w-7/12 md:px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>Was ich liebe</li>
@@ -44,9 +44,9 @@
       <li>Ich will</li>
     </ol>
   </div>
-  <div class="md:tw-w-5/12 md:tw-px-4">
-    <div class="tw-mb-6 tw-text-center tw-mobile-wide">
-      <img class="image-fit-viewport tw-max-w-full sm:tw-rounded" src="https://life.ivacuum.org/gigs/rammstein.2019.07.29.png">
+  <div class="md:w-5/12 md:px-4">
+    <div class="mb-6 text-center mobile-wide">
+      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/rammstein.2019.07.29.png">
     </div>
   </div>
 </div>

@@ -21,8 +21,8 @@ export default {
 </script>
 
 <template>
-<div class="breadcrumbs tw-text-xs tw-py-2 border-bottom tw-leading-snug" v-if="count">
-  <nav class="tw-container">
+<div class="breadcrumbs text-xs py-2 border-bottom leading-snug" v-if="count">
+  <nav class="container">
     <span>
       <a :href="`${locale}/`" v-html="$root.svg.home"></a>
       <span v-html="$root.svg.angle_right"></span>

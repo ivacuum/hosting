@@ -11,24 +11,24 @@ export default {
 </script>
 
 <template>
-<div class="tw-flex tw-mt-2">
-  <div class="tw-mr-2 tw-text-center">
-    <a class="btn bg-vk tw-text-xl tw-rounded-full tw-text-white hover:tw-text-white" :href="loginUrl('vk')">
+<div class="flex mt-2">
+  <div class="mr-2 text-center">
+    <a class="btn bg-vk text-xl rounded-full text-white hover:text-white" :href="loginUrl('vk')">
       vk
     </a>
-    <div class="tw-mt-1 tw-text-xs text-muted">{{ $t('auth.vk') }}</div>
+    <div class="mt-1 text-xs text-muted">{{ $t('auth.vk') }}</div>
   </div>
-  <div class="tw-mr-2 tw-text-center">
-    <a class="btn bg-facebook tw-text-xl tw-rounded-full tw-text-white hover:tw-text-white" :href="loginUrl('facebook')">
+  <div class="mr-2 text-center">
+    <a class="btn bg-facebook text-xl rounded-full text-white hover:text-white" :href="loginUrl('facebook')">
       fb
     </a>
-    <div class="tw-mt-1 tw-text-xs text-muted">{{ $t('auth.facebook') }}</div>
+    <div class="mt-1 text-xs text-muted">{{ $t('auth.facebook') }}</div>
   </div>
-  <div class="tw-mr-2 tw-text-center">
-    <a class="btn bg-google tw-text-xl tw-rounded-full tw-text-white hover:tw-text-white" :href="loginUrl('google')">
+  <div class="mr-2 text-center">
+    <a class="btn bg-google text-xl rounded-full text-white hover:text-white" :href="loginUrl('google')">
       gl
     </a>
-    <div class="tw-mt-1 tw-text-xs text-muted">{{ $t('auth.google') }}</div>
+    <div class="mt-1 text-xs text-muted">{{ $t('auth.google') }}</div>
   </div>
 </div>
 </template>

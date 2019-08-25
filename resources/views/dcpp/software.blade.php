@@ -4,15 +4,15 @@
 ])
 
 @section('content')
-<div class="tw-antialiased hanging-puntuation-first lg:tw-text-lg">
-  <section class="tw-my-0 tw-pt-6">
-    <div class="tw-container">
-      <h1 class="tw-mb-6">{{ trans('dcpp.download') }} {{ $software_title }} {{ $software[0]['version'] }}</h1>
+<div class="antialiased hanging-puntuation-first lg:text-lg">
+  <section class="my-0 pt-6">
+    <div class="container">
+      <h1 class="mb-6">{{ trans('dcpp.download') }} {{ $software_title }} {{ $software[0]['version'] }}</h1>
       @section('download_latest')
         <div>
-          <a class="btn btn-success tw-my-1 btn-lg" href="{{ path('Files@download', $software[0]['id']) }}">
+          <a class="btn btn-success my-1 btn-lg" href="{{ path('Files@download', $software[0]['id']) }}">
             @php ($icon = $software[0]['icon'] ?? 'windows')
-            <span class="tw-mr-1">
+            <span class="mr-1">
               @svg ($icon)
             </span>
             {{ trans('dcpp.download') }}{{ $software[0]['dl_suffix'] }}
@@ -26,25 +26,25 @@
     </div>
   </section>
 
-  <section class="tw-my-0 tw-py-12">
-    <div class="tw-container">
+  <section class="my-0 py-12">
+    <div class="container">
       <h2>{{ trans('dcpp.about_software') }}</h2>
       @yield('about_software')
     </div>
   </section>
 
-  <div class="tw-mb-4">
-    <div class="tw-container">
-      <div class="tw-mobile-wide">
+  <div class="mb-4">
+    <div class="container">
+      <div class="mobile-wide">
         @include('tpl.google-horizontal')
       </div>
     </div>
   </div>
 
   @if (!empty($software_screenshots))
-    <section class="tw-bg-gray-800 tw-my-0 tw-py-12 tw-text-gray-200">
-      <div class="tw-container">
-        <h2 class="tw-mb-6">{{ trans('dcpp.screenshots') }}</h2>
+    <section class="bg-gray-800 my-0 py-12 text-gray-200">
+      <div class="container">
+        <h2 class="mb-6">{{ trans('dcpp.screenshots') }}</h2>
         <p>
           @foreach ($software_screenshots as $screenshot)
             <a href="{{ $screenshot['full'] }}">
@@ -56,8 +56,8 @@
     </section>
   @endif
 
-  <section class="tw-bg-light border-top border-bottom tw-my-0 tw-py-12">
-    <div class="tw-container">
+  <section class="bg-light border-top border-bottom my-0 py-12">
+    <div class="container">
       <h2>{{ trans('dcpp.hubs') }}</h2>
       @ru
         <p>Ищите куда подключиться для обмена файлами? Ознакомьтесь с нашими рекомендациями.</p>
@@ -79,12 +79,12 @@
   @yield('software_features')
 
   @if (sizeof($software) > 1 || !empty($developer_site))
-    <section class="border-bottom tw-my-0 tw-py-12">
-      <div class="tw-container">
-        <h2 class="tw-mb-6">{{ trans('dcpp.links') }}</h2>
-        <div class="md:tw-flex md:tw--mx-4">
+    <section class="border-bottom my-0 py-12">
+      <div class="container">
+        <h2 class="mb-6">{{ trans('dcpp.links') }}</h2>
+        <div class="md:flex md:-mx-4">
           @if (sizeof($software) > 1)
-            <div class="md:tw-w-1/2 lg:tw-w-5/12 xl:tw-w-1/3 md:tw-px-4">
+            <div class="md:w-1/2 lg:w-5/12 xl:w-1/3 md:px-4">
               <h4>{{ trans('dcpp.earlier_versions') }}</h4>
               <ul>
                 @foreach ($software as $soft)
@@ -95,7 +95,7 @@
             </div>
           @endif
           @if (!empty($developer_site))
-            <div class="md:tw-w-1/2 lg:tw-w-5/12 xl:tw-w-1/3 md:tw-px-4">
+            <div class="md:w-1/2 lg:w-5/12 xl:w-1/3 md:px-4">
               <h4>{{ trans('dcpp.pages') }}</h4>
               <ul>
                 <li>
@@ -112,10 +112,10 @@
     </section>
   @endif
 
-  <section class="tw-bg-light tw-my-0 tw-py-12">
-    <div class="tw-container">
-      <div class="md:tw-flex md:tw--mx-4">
-        <div class="md:tw-w-1/2 md:tw-px-4">
+  <section class="bg-light my-0 py-12">
+    <div class="container">
+      <div class="md:flex md:-mx-4">
+        <div class="md:w-1/2 md:px-4">
           <div class="h3">{{ trans('issues.create') }}</div>
           @ru
             <p>Поделитесь своими знаниями или задайте вопрос. Мы постараемся обработать информацию и дополнить эту страницу новыми материалами.</p>
@@ -129,7 +129,7 @@
             hide-title
           ></feedback-form>
         </div>
-        <div class="md:tw-w-1/2 lg:tw-w-1/3 xl:tw-w-1/4 md:tw-px-4 tw-mt-4 md:tw-mt-0">
+        <div class="md:w-1/2 lg:w-1/3 xl:w-1/4 md:px-4 mt-4 md:mt-0">
           @include('tpl.google-vertical')
         </div>
       </div>

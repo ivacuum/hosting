@@ -4,21 +4,21 @@
     <div :key="stage" style="min-height: 420px;">
       <div v-show="stage === 'pick'">
         <p>{{ $t('PICKER_TEXT') }}</p>
-        <div class="tw-items-center tw-text-center border-left" style="display: grid; grid-template-columns: repeat(16, max-content);">
+        <div class="items-center text-center border-left" style="display: grid; grid-template-columns: repeat(16, max-content);">
           <template v-for="(cells, i) in elements">
             <template v-for="(cell, j) in cells">
-              <div class="border-right tw-cursor-pointer tw-px-2 tw-pt-2 tw-pb-1" :class="{ 'border-top': i === 0 }" @click="clickOnColumn(j)">
-                <div class="tw-text-2xl tw-font-bold ja-character">{{ cell[syllabaryIndex] ? cell[syllabaryIndex] : '&nbsp;' }}</div>
+              <div class="border-right cursor-pointer px-2 pt-2 pb-1" :class="{ 'border-top': i === 0 }" @click="clickOnColumn(j)">
+                <div class="text-2xl font-bold ja-character">{{ cell[syllabaryIndex] ? cell[syllabaryIndex] : '&nbsp;' }}</div>
                 <div class="text-muted">{{ cell[answerIndex] ? cell[answerIndex] : '&nbsp;' }}</div>
               </div>
             </template>
           </template>
           <template v-for="i in elements[0].length">
             <div class="border-right border-bottom">
-              <label class="tw-cursor-pointer tw-block tw-mb-0 tw-py-2">
+              <label class="cursor-pointer block mb-0 py-2">
                 <input
                   :id="`column_${i - 1}`"
-                  class="tw-cursor-pointer"
+                  class="cursor-pointer"
                   type="checkbox"
                   :value="i - 1"
                   v-model="checkedColumns"
@@ -27,25 +27,25 @@
             </div>
           </template>
         </div>
-        <div class="tw-flex tw-flex-wrap tw-mt-2">
-          <button class="btn btn-primary tw-mb-2 tw-mr-2" :disabled="this.picked.length < 2" @click="practice">{{ $t('PRACTICE') }}</button>
-          <button class="btn btn-default tw-mb-2 tw-mr-2" @click="checkAll">{{ $t('CHECK_ALL') }}</button>
-          <button class="btn btn-default tw-mb-2 tw-mr-2" @click="uncheckAll">{{ $t('UNCHECK_ALL') }}</button>
+        <div class="flex flex-wrap mt-2">
+          <button class="btn btn-primary mb-2 mr-2" :disabled="this.picked.length < 2" @click="practice">{{ $t('PRACTICE') }}</button>
+          <button class="btn btn-default mb-2 mr-2" @click="checkAll">{{ $t('CHECK_ALL') }}</button>
+          <button class="btn btn-default mb-2 mr-2" @click="uncheckAll">{{ $t('UNCHECK_ALL') }}</button>
           <transition name="fade-fast" mode="out-in">
-            <button class="btn btn-default tw-mb-2" @click="switchSyllabary" :key="syllabaryLabel">{{ syllabaryLabel }}</button>
+            <button class="btn btn-default mb-2" @click="switchSyllabary" :key="syllabaryLabel">{{ syllabaryLabel }}</button>
           </transition>
         </div>
       </div>
-      <div class="tw-max-w-600px" v-show="stage === 'practice'">
+      <div class="max-w-600px" v-show="stage === 'practice'">
         <p>{{ $t('PRACTICE_TEXT') }}</p>
-        <div class="tw-mx-auto tw-max-w-400px">
-          <div class="tw-text-center tw-py-2 md:tw-py-12">
-            <div class="tw-text-5xl tw-font-bold" @click="revealAnswer">{{ question }}</div>
-            <div class="text-muted" :class="{ 'tw-invisible': !answerVisible }">{{ answer }}</div>
+        <div class="mx-auto max-w-400px">
+          <div class="text-center py-2 md:py-12">
+            <div class="text-5xl font-bold" @click="revealAnswer">{{ question }}</div>
+            <div class="text-muted" :class="{ 'invisible': !answerVisible }">{{ answer }}</div>
           </div>
           <div>
             <input
-              class="form-control tw-text-center"
+              class="form-control text-center"
               autocapitalize="none"
               placeholder="kana"
               :autofocus="focus"
@@ -53,7 +53,7 @@
               @input="checkInput($event.target.value, $event)"
               @keydown.space.prevent="revealAnswer">
           </div>
-          <div class="tw-flex tw-items-center tw-justify-between tw-mt-2">
+          <div class="flex items-center justify-between mt-2">
             <div><button class="btn btn-default" @click="pick">{{ $t('BACK_TO_PICKER') }}</button></div>
             <div class="text-muted" v-if="answered > 0">{{ $t('ANSWERED', { answered }) }}</div>
           </div>

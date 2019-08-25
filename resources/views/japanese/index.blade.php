@@ -1,7 +1,7 @@
 @extends('japanese.base')
 
 @section('content_header')
-<div class="tw-antialiased hanging-puntuation-first lg:tw-text-lg">
+<div class="antialiased hanging-puntuation-first lg:text-lg">
 @endsection
 
 @section('content_footer')
@@ -10,39 +10,39 @@
 
 @section('content')
 <h1 class="h2">{{ trans('japanese.index') }}</h1>
-<div class="md:tw-flex md:tw--mx-4 tw-mt-6">
-  <div class="md:tw-w-1/2 md:tw-px-4">
+<div class="md:flex md:-mx-4 mt-6">
+  <div class="md:w-1/2 md:px-4">
     <div class="card">
-      <div class="card-header tw-bg-green-600 tw-text-white">
-        <h2 class="h4 tw-mb-0">@ru Собственные ресурсы @en Own services @endru</h2>
+      <div class="card-header bg-green-600 text-white">
+        <h2 class="h4 mb-0">@ru Собственные ресурсы @en Own services @endru</h2>
       </div>
       <div class="card-body">
         @ru
           <h3 class="h4"><a class="link" href="{{ path('JapaneseHiraganaKatakana@index') }}">Тренажер хираганы и катаканы</a></h3>
           <p>Быстрое освоение японских слоговых азбук столбик за столбиком.</p>
 
-          <h3 class="h4 tw-mt-6"><a class="link" href="{{ path('JapaneseWanikani@index') }}">{{ trans('japanese.wanikani') }}</a></h3>
+          <h3 class="h4 mt-6"><a class="link" href="{{ path('JapaneseWanikani@index') }}">{{ trans('japanese.wanikani') }}</a></h3>
           <p>Набор ключей, иероглифов и словарных слов для изучения и повторения. Данные и вдохновение взяты с сайта <a class="link" href="https://www.wanikani.com/">wanikani.com</a> и приправлены дополнительными функциями для улучшения процесса обучения.</p>
         @en
           <h3 class="h4"><a class="link" href="{{ path('JapaneseHiraganaKatakana@index') }}">Hiragana & Katakana trainer</a></h3>
           <p>Learn Japanese syllabaries column by column the fast way.</p>
 
-          <h3 class="h4 tw-mt-6"><a class="link" href="{{ path('JapaneseWanikani@index') }}">{{ trans('japanese.wanikani') }}</a></h3>
+          <h3 class="h4 mt-6"><a class="link" href="{{ path('JapaneseWanikani@index') }}">{{ trans('japanese.wanikani') }}</a></h3>
           <p>Set of radicals, kanji and vocabulary to study and review. Data and inspiration from <a class="link" href="https://www.wanikani.com/">wanikani.com</a> with features added to make learning and review process more effective.</p>
         @endru
       </div>
     </div>
   </div>
-  <div class="md:tw-w-1/2 md:tw-px-4">
-    <div class="card tw-mt-4 md:tw-mt-0">
-      <div class="card-header tw-bg-gray-800 tw-text-white">
-        <h2 class="h4 tw-mb-0">@ru Внешние полезные ресурсы @en External resources @endru</h2>
+  <div class="md:w-1/2 md:px-4">
+    <div class="card mt-4 md:mt-0">
+      <div class="card-header bg-gray-800 text-white">
+        <h2 class="h4 mb-0">@ru Внешние полезные ресурсы @en External resources @endru</h2>
       </div>
       <div class="card-body">
         @ru
-          <div class="tw-mb-1">Все на английском, так как на нем материалов доступно в разы больше, чем на родном.</div>
+          <div class="mb-1">Все на английском, так как на нем материалов доступно в разы больше, чем на родном.</div>
         @en
-          <div class="tw-mb-1">Helpful resources for self-learning students:</div>
+          <div class="mb-1">Helpful resources for self-learning students:</div>
         @endru
         <ul>
           <li>
@@ -92,7 +92,7 @@
 </div>
 
 @ru
-  <h2 class="tw-mt-12">О самом японском языке</h2>
+  <h2 class="mt-12">О самом японском языке</h2>
 @endru
 @ru
   <p>В ходе изучения языка попалось много разной информации, которую хотелось бы зафиксировать. Эдакий пересказ как в нем все устроено в общих чертах.</p>
@@ -123,19 +123,19 @@
     <p>Нафига две азбуки и еще и иероглифы? Компенсируют отсутствие пробела, подсказывают границы слов. Рассмотрим на примере предложения: «Сколько нам нужно автобусов?».</p>
     <ol>
       <li>
-        <div class="tw-text-xl">ばすはなんだいいりますか。</div>
+        <div class="text-xl">ばすはなんだいいりますか。</div>
         <div>Все хираганой. Как минимум нужно знать слова, грамматику и контекст, чтобы понять смысл.</div>
       </li>
-      <li class="tw-mt-2">
-        <div class="tw-text-xl">バスはなんだいいりますか。</div>
+      <li class="mt-2">
+        <div class="text-xl">バスはなんだいいりますか。</div>
         <div>Добавим катакану. Стал виден заимствованный автобус «басу». Неплохо для начала.</div>
       </li>
-      <li class="tw-mt-2">
-        <div class="tw-text-xl">バスは何台いりますか。</div>
+      <li class="mt-2">
+        <div class="text-xl">バスは何台いりますか。</div>
         <div>Добавим иероглифы. Проявился вопрос «сколько штук».</div>
       </li>
-      <li class="tw-mt-2">
-        <div class="tw-text-xl">バス　は　何台　いり　ます　か。</div>
+      <li class="mt-2">
+        <div class="text-xl">バス　は　何台　いり　ます　か。</div>
         <div>В идеале хотелось бы так, но нет. Может решатся когда-нибудь упростить письменность, как корейцы.</div>
       </li>
     </ol>

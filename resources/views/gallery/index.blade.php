@@ -2,15 +2,15 @@
 
 @section('content')
 @if (sizeof($images))
-  <div class="tw-flex tw-flex-wrap tw-text-center">
+  <div class="flex flex-wrap text-center">
     @foreach ($images as $image)
-      <div class="tw-w-full sm:tw-w-1/2 md:tw-w-1/3 lg:tw-w-1/4 xl:tw-w-1/5 tw-self-end tw-mb-6">
-        <div class="tw-mb-4">
+      <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 self-end mb-6">
+        <div class="mb-4">
           <a class="screenshot-link" href="{{ path("$self@view", $image) }}">
             <img class="screenshot" src="{{ $image->thumbnailUrl() }}">
           </a>
         </div>
-        <span class="text-muted tw-whitespace-no-wrap">
+        <span class="text-muted whitespace-no-wrap">
           @svg (eye)
           {{ ViewHelper::number($image->views) }}
         </span>

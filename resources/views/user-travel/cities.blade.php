@@ -5,9 +5,9 @@
 @section('content')
 <h1 class="h2">
   {{ trans('life.visited_cities') }}
-  <span class="tw-text-base text-muted">{{ sizeof($cities) }}</span>
+  <span class="text-base text-muted">{{ sizeof($cities) }}</span>
 </h1>
-<ul class="list-inline tw-text-sm">
+<ul class="list-inline text-sm">
   <li class="list-inline-item"><a class="link" href="{{ path('UserTravelTrips@index', $traveler->login) }}">{{ trans('life.by_year') }}</a></li>
   <li class="list-inline-item"><a class="link" href="{{ path('UserTravelCountries@index', $traveler->login) }}">{{ trans('life.by_country') }}</a></li>
   <li class="list-inline-item"><mark>{{ trans('life.by_city') }}</mark></li>
@@ -17,9 +17,9 @@
   @php ($initial = $current_initial = false)
   @foreach ($cities as $city)
     @php ($current_initial = $city->initial())
-    <div class="city-entry tw-relative tw-ml-6 tw-pb-2">
+    <div class="city-entry relative ml-6 pb-2">
       @if ($initial !== $current_initial)
-        <span class="tw-absolute tw-font-bold tw-uppercase tw--ml-6">{{ $current_initial }}</span>
+        <span class="absolute font-bold uppercase -ml-6">{{ $current_initial }}</span>
       @endif
       @if ($city->trips_published_count)
         <a class="link" href="{{ path('UserTravelCities@show', [$traveler->login, $city->slug]) }}">{{ $city->title }}</a>
@@ -27,7 +27,7 @@
         {{ $city->title }}
       @endif
       @if ($city->trips_count > 1)
-        <span class="tw-text-xs text-muted">{{ $city->trips_count }}</span>
+        <span class="text-xs text-muted">{{ $city->trips_count }}</span>
       @endif
     </div>
     @php ($initial = $current_initial)

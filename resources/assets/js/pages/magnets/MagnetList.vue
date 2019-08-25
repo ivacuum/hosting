@@ -67,26 +67,26 @@ export default {
 
 <template>
 <div>
-  <div class="tw-flex">
-    <aside class="tw-hidden lg:tw-block tw-flex-shrink-0 tw-antialiased torrent-categories" style="width: 14rem;">
+  <div class="flex">
+    <aside class="hidden lg:block flex-shrink-0 antialiased torrent-categories" style="width: 14rem;">
       <category-tree/>
-      <div class="alert alert-info tw-mr-6 tw-mt-6 tw-p-2 small" v-if="guest">
+      <div class="alert alert-info mr-6 mt-6 p-2 small" v-if="guest">
         <a class="link" href="/auth/login?goto=/torrents">Пользователям</a>
         доступны чат и добавление раздач
       </div>
     </aside>
-    <div class="tw-flex-grow" v-if="loaded">
+    <div class="flex-grow" v-if="loaded">
       <chat v-if="!guest && !$route.query.q"/>
 
       <div v-if="$route.query.q">
         <div class="h3">Результаты поиска по запросу «{{ $route.query.q }}»</div>
-        <div class="tw-mb-6" v-if="$route.query.fulltext">
+        <div class="mb-6" v-if="$route.query.fulltext">
           <router-link class="btn btn-default" active-class="noop-active" :to="searchUrl($route.query.q)">
-            <span class="tw-text-red-600" v-html="$root.svg.times"></span>
+            <span class="text-red-600" v-html="$root.svg.times"></span>
             Искать только в заголовках
           </router-link>
         </div>
-        <div class="tw-mb-6" v-else>
+        <div class="mb-6" v-else>
           <router-link class="btn btn-default" active-class="noop-active" :to="searchUrl($route.query.q, 1)">
             <span v-html="$root.svg.search"></span>
             Искать в описаниях раздач
@@ -96,7 +96,7 @@ export default {
 
       <div v-if="magnets.length">
         <template v-for="(magnet, i) in magnets">
-          <h6 :class="{ 'tw-mt-0': i === 0, 'tw-mt-6': i !== 0 }" v-if="!sameDate[i]">{{ magnet.registered_at }}</h6>
+          <h6 :class="{ 'mt-0': i === 0, 'mt-6': i !== 0 }" v-if="!sameDate[i]">{{ magnet.registered_at }}</h6>
           <magnet-item :magnet="magnet" :category="categoryList[magnet.category_id]"/>
         </template>
 
@@ -112,7 +112,7 @@ export default {
 
         <details v-if="$route.query.q">
           <summary>Как пользоваться поиском?</summary>
-          <div class="tw-mt-2 tw-mb-1">Поиск по раздачам учитывает морфологию русского языка, поэтому «комедия» найдется даже при запросе «комедии». Ниже приведены примеры запросов для понимания особенностей поиска:</div>
+          <div class="mt-2 mb-1">Поиск по раздачам учитывает морфологию русского языка, поэтому «комедия» найдется даже при запросе «комедии». Ниже приведены примеры запросов для понимания особенностей поиска:</div>
           <ul class="text-muted">
             <li>
               <router-link :to="searchUrl('драма')">драма</router-link>
@@ -147,7 +147,7 @@ export default {
               — поиск отдельного сезона сериала
             </li>
           </ul>
-          <div class="tw-mb-1">Изначально поиск выполняется только по заголовкам раздач. Но его область можно расширить и до их описаний с помощью клика по соответствующей кнопке перед результатами поиска. Это позволяет находить фильмы по актерам, отдельные игры в раздачах антологий и т.п. Примеры:</div>
+          <div class="mb-1">Изначально поиск выполняется только по заголовкам раздач. Но его область можно расширить и до их описаний с помощью клика по соответствующей кнопке перед результатами поиска. Это позволяет находить фильмы по актерам, отдельные игры в раздачах антологий и т.п. Примеры:</div>
           <ul class="text-muted">
             <li>
               <router-link :to="searchUrl('мэтт дэймон', 1)">мэтт дэймон</router-link>

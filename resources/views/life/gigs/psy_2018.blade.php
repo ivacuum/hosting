@@ -16,7 +16,7 @@
 @endru
 
 @ru
-  <div class="tw-mb-1">Самые вау-находки:</div>
+  <div class="mb-1">Самые вау-находки:</div>
   <ul>
     <li>Пожалуй, <a class="link" href="https://youtu.be/XyzhL74DgA0?t=439">самая шумная и активная концертная публика</a>, что доводилось видеть</li>
     <li><a class="link" href="https://www.instagram.com/p/Bmn_AwEn7F8/">Летние фонтаны #1</a></li>
@@ -35,7 +35,7 @@
 @endru
 
 @ru
-  <div class="tw-mb-1">В августе закончилась пора летних концертов. Спустя некоторое время для каждого города появлялась официальная минутная видеонарезка.</div>
+  <div class="mb-1">В августе закончилась пора летних концертов. Спустя некоторое время для каждого города появлялась официальная минутная видеонарезка.</div>
   <ul>
     <li><a class="link" href="https://twitter.com/psy_oppa/status/1045491184452304896">Сеул</a></li>
     <li><a class="link" href="https://twitter.com/psy_oppa/status/1040402670777819136">Пусан</a></li>
@@ -51,13 +51,13 @@
 @endru
 
 @ru
-  <p><span class="tw-font-bold">Обновление от 10 февраля 2019 года.</span> Появилась полная запись самого активного концерта, который больше всего зарядил желанием оказаться среди корейской публики. Рекомендую моменты на <a class="link" href="https://youtu.be/cJgK1T3uzBU?t=463
+  <p><span class="font-bold">Обновление от 10 февраля 2019 года.</span> Появилась полная запись самого активного концерта, который больше всего зарядил желанием оказаться среди корейской публики. Рекомендую моменты на <a class="link" href="https://youtu.be/cJgK1T3uzBU?t=463
 ">7:43</a>, <a class="link" href="https://youtu.be/cJgK1T3uzBU?t=525
 ">8:45</a> и <a class="link" href="https://youtu.be/cJgK1T3uzBU?t=2830">47:10</a> — прыгает весь стадион, включая трибуны! Где еще такое увидишь?!</p>
 @endru
 <youtube title="PSY Live @ Korea Univ. IPSELENTI 2018" v="cJgK1T3uzBU"></youtube>
 
-<h3 class="tw-mt-12">@ru Анонс и покупка билета @en Announcement and ticket purchase @endru</h3>
+<h3 class="mt-12">@ru Анонс и покупка билета @en Announcement and ticket purchase @endru</h3>
 
 @ru
   <p>13 ноября 2018 года перед сном — около двух ночи по Москве — решил проверить ленту твиттера, а там внезапный анонс.</p>
@@ -78,7 +78,7 @@
 @include('tpl.pic-arbitrary-2x', ['pic' => 'ticket-01.png', 'w' => 1126, 'h' => 844])
 
 @ru
-  <p>Пришлось овладеть навыком скоростного нажатия F5 и моментального выбора ячейки. Эдак с десятой попытки получилось урвать билет в самый ближний к сцене стоячий сектор. <span class="tw-whitespace-no-wrap">145&thinsp;000</span> вон — это около <span class="tw-whitespace-no-wrap">9&thinsp;000</span> рублей. Так-то конвертер валют вам может показать сумму меньше, но еще ж двойная конвертация валют, которая суммарно съест дополнительные 5–10%.</p>
+  <p>Пришлось овладеть навыком скоростного нажатия F5 и моментального выбора ячейки. Эдак с десятой попытки получилось урвать билет в самый ближний к сцене стоячий сектор. <span class="whitespace-no-wrap">145&thinsp;000</span> вон — это около <span class="whitespace-no-wrap">9&thinsp;000</span> рублей. Так-то конвертер валют вам может показать сумму меньше, но еще ж двойная конвертация валют, которая суммарно съест дополнительные 5–10%.</p>
 @endru
 @include('tpl.pic-arbitrary-2x', ['pic' => 'ticket-02.png', 'w' => 1096, 'h' => 750])
 
@@ -92,7 +92,7 @@
 @endru
 @include('tpl.pic-arbitrary-2x', ['pic' => 'ticket-04.png', 'w' => 1096, 'h' => 809])
 
-<h3 class="tw-mt-12">@ru Предконцертная подготовка @en Preparation @endru</h3>
+<h3 class="mt-12">@ru Предконцертная подготовка @en Preparation @endru</h3>
 
 @ru
   <p>В твиттере после анонса сохранялась полная тишина. Ближе к декабрю меня посетила светлая мысль «а не проверить-ка ли мне инстаграм?». Вот где оказалась вся движуха. Там и сводка о поле и возрасте купивших билеты, объявление о красном дресс-коде на концерт, примеры ожидаемого мерча, анонс, что все билеты распроданы, и прочая полезная инфа.</p>
@@ -108,11 +108,11 @@
 
 @ru
   <p>Проведем небольшую демонстрацию на примере припева песни 아버지 (отец).</p>
-  <div class="tw-mb-1 tw-font-bold">Оригинал:</div>
+  <div class="mb-1 font-bold">Оригинал:</div>
   <p>아버지 이제야 깨달아요<br>어찌 그렇게 사셨나요?<br>더 이상 쓸쓸해 하지 마요<br>이젠 나와 같이 가요</p>
-  <div class="tw-mb-1 tw-font-bold">Романизация:</div>
+  <div class="mb-1 font-bold">Романизация:</div>
   <p>abeoji ijeya kkaedarayo<br>eojji geureoke sasyeonnayo<br>deo isang sseulsseulhae haji mayo<br>ije nawa gachi gayo</p>
-  <div class="tw-mb-1 tw-font-bold">Кириллизация:</div>
+  <div class="mb-1 font-bold">Кириллизация:</div>
   <p>абоджи иджэя ккэда лаё<br>оджи кырохкэ сашёт наё<br>до исанн сыль сыль хэ хаджи маё<br>иджэн наоа катщи каё</p>
 @endru
 
@@ -141,10 +141,10 @@
   <p>Заблаговременно вспомнил как разминался дома за неделю до <a class="link" href="prodigy.2016">концерта Продиджи</a> в 2016 году. Собрал примерный сетлист и пропрыгал его. Было очень похоже на прыжки на скакалке в течение 30–40 минут. На следующий день ноги ожидаемо отваливались. Еще через день полегче. Еще на день позже наступил кайф. Зато на следующий после их концерта день никаких болезненных ощущений. Для этого концерта повторил подготовку. Спойлер — она снова безупречно сработала, поэтому рекомендую всем попробовать подход.</p>
 @endru
 
-<h3 class="tw-mt-12">@ru День концерта @en The day of the show @endru</h3>
+<h3 class="mt-12">@ru День концерта @en The day of the show @endru</h3>
 
 @ru
-  <p>Вы прибыли к месту назначения. Крытый гимнастический стадион. Неподалеку отсюда был стол, на котором представлены <a class="link" href="https://www.instagram.com/p/BrjrbthhnTN/">все продаваемые товары</a> (мерч). Самое удивительное, что около этого стола не было никого со стороны организатора. Посетители просто подходили, брали и рассматривали вещи, а потом возвращали их на место. Более того — в палатках по соседству бесплатно раздавали кофе всем <span class="tw-whitespace-no-wrap">12&thinsp;500</span> участникам концерта.</p>
+  <p>Вы прибыли к месту назначения. Крытый гимнастический стадион. Неподалеку отсюда был стол, на котором представлены <a class="link" href="https://www.instagram.com/p/BrjrbthhnTN/">все продаваемые товары</a> (мерч). Самое удивительное, что около этого стола не было никого со стороны организатора. Посетители просто подходили, брали и рассматривали вещи, а потом возвращали их на место. Более того — в палатках по соседству бесплатно раздавали кофе всем <span class="whitespace-no-wrap">12&thinsp;500</span> участникам концерта.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5896.jpg'])
 
@@ -263,157 +263,157 @@
   'IMG_6199.jpg',
 ]])
 
-<div class="md:tw-flex md:tw--mx-4">
-  <div class="md:tw-w-7/12 md:tw-px-4">
+<div class="md:flex md:-mx-4">
+  <div class="md:w-7/12 md:px-4">
     @ru
-      <div class="tw-mb-1">Что было исполнено. На каждую песню можно нажать и посмотреть видео. Сердечком отмечен самый смак.</div>
+      <div class="mb-1">Что было исполнено. На каждую песню можно нажать и посмотреть видео. Сердечком отмечен самый смак.</div>
     @en
-      <div class="tw-mb-1">Setlist. Each song is a link to its video. The most spectacular are marked with a heart.</div>
+      <div class="mb-1">Setlist. Each song is a link to its video. The most spectacular are marked with a heart.</div>
     @endru
-    <h5 class="tw-mb-1">@ru Сет @en Set @endru 1</h5>
+    <h5 class="mb-1">@ru Сет @en Set @endru 1</h5>
     <ol>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=e5VriO_mdv8">챔피언</a>
-        <span class="tw-text-sm text-muted">Champion</span>
-        <span class="tw-text-red-600">@svg (heart)</span>
+        <span class="text-sm text-muted">Champion</span>
+        <span class="text-red-600">@svg (heart)</span>
       </li>
       <li><a class="link" href="https://www.youtube.com/watch?v=OcRA6dwfdW4">I LUV IT</a></li>
       <li><a class="link" href="https://www.youtube.com/watch?v=ztZnqo0IJA4">I Remember You</a></li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=vVmkMz0OwfM">내 눈에는</a>
-        <span class="tw-text-sm text-muted">In My Eyes</span>
+        <span class="text-sm text-muted">In My Eyes</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=KOW6APjojWw">나 이런 사람이야</a>
-        <span class="tw-text-sm text-muted">I'm a Guy Like This</span>
-        <span class="tw-text-red-600">@svg (heart)</span>
+        <span class="text-sm text-muted">I'm a Guy Like This</span>
+        <span class="text-red-600">@svg (heart)</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=_HVIq803T2U">새</a>
-        <span class="tw-text-sm text-muted">Bird</span>
+        <span class="text-sm text-muted">Bird</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=ddyyKt_hr2Q">오늘밤 새</a>
-        <span class="tw-text-sm text-muted">All Night Long</span>
-        <span class="tw-text-red-600">@svg (heart)</span>
+        <span class="text-sm text-muted">All Night Long</span>
+        <span class="text-red-600">@svg (heart)</span>
       </li>
     </ol>
 
-    <h5 class="tw-mb-1">@ru Сет @en Set @endru 2</h5>
+    <h5 class="mb-1">@ru Сет @en Set @endru 2</h5>
     <ol start="8">
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=vjpYGfYCnqI">We are the One</a>
-        <span class="tw-text-red-600">@svg (heart)</span>
+        <span class="text-red-600">@svg (heart)</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=MauVE6F3nMo">나팔바지</a>
-        <span class="tw-text-sm text-muted">Napal Baji</span>
-        <span class="tw-text-red-600">@svg (heart)</span>
+        <span class="text-sm text-muted">Napal Baji</span>
+        <span class="text-red-600">@svg (heart)</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=5TT4qvedULU">끝</a>
-        <span class="tw-text-sm text-muted">The End</span>
-        <span class="tw-text-red-600">@svg (heart)</span>
+        <span class="text-sm text-muted">The End</span>
+        <span class="text-red-600">@svg (heart)</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=N59H7TgwC24">DADDY</a>
-        <span class="tw-text-red-600">@svg (heart)</span>
+        <span class="text-red-600">@svg (heart)</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=j5yKlTTDxPY">흔들어 주세요</a>
-        <span class="tw-text-sm text-muted">Shake It</span>
+        <span class="text-sm text-muted">Shake It</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=gxavJwXQc0M">어땠을까 (feat. 헤이즈)</a>
-        <span class="tw-text-sm text-muted">What Would Have Been</span>
+        <span class="text-sm text-muted">What Would Have Been</span>
       </li>
     </ol>
 
-    <h5 class="tw-mb-1">@ru Сет @en Set @endru 3</h5>
+    <h5 class="mb-1">@ru Сет @en Set @endru 3</h5>
     <ol start="14">
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=4tnCBnhEGX4">Right Now</a>
-        <span class="tw-text-red-600">@svg (heart)</span>
+        <span class="text-red-600">@svg (heart)</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=4tnCBnhEGX4&t=272">GENTLEMAN</a>
-        <span class="tw-text-red-600">@svg (heart)</span>
+        <span class="text-red-600">@svg (heart)</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=E21OCvoJKJQ">아버지</a>
-        <span class="tw-text-sm text-muted">Father</span>
-        <span class="tw-text-red-600">@svg (heart)</span>
+        <span class="text-sm text-muted">Father</span>
+        <span class="text-red-600">@svg (heart)</span>
       </li>
       <li><a class="link" href="https://www.youtube.com/watch?v=WUB9kZMSMFw">New Face</a></li>
       <li><a class="link" href="https://www.youtube.com/watch?v=XIH5tFK9eU8">Dream</a></li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=8GksPfIR9uA">강남스타일</a>
-        <span class="tw-text-sm text-muted">Gangnam Style</span>
+        <span class="text-sm text-muted">Gangnam Style</span>
       </li>
     </ol>
 
-    <h5 class="tw-mb-1">@ru Сет @en Set @endru 4</h5>
+    <h5 class="mb-1">@ru Сет @en Set @endru 4</h5>
     <ol start="20">
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=dptfI1Nfe5M">낙원</a>
-        <span class="tw-text-sm text-muted">Paradise</span>
+        <span class="text-sm text-muted">Paradise</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=JwgVC1YKMs4">걱정말아요 그대</a>
-        <span class="tw-text-sm text-muted">Don't Worry</span>
-        <span class="tw-text-red-600">@svg (heart)</span>
+        <span class="text-sm text-muted">Don't Worry</span>
+        <span class="text-red-600">@svg (heart)</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=bzj_NOpg1vQ">연예인</a>
-        <span class="tw-text-sm text-muted">Entertainer</span>
-        <span class="tw-text-red-600">@svg (heart)</span>
+        <span class="text-sm text-muted">Entertainer</span>
+        <span class="text-red-600">@svg (heart)</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=MWqBXsNYrgM">에술이야</a>
-        <span class="tw-text-sm text-muted">It's Art</span>
-        <span class="tw-text-red-600">@svg (heart)</span>
+        <span class="text-sm text-muted">It's Art</span>
+        <span class="text-red-600">@svg (heart)</span>
       </li>
     </ol>
 
-    <h5 class="tw-mb-1"><a class="link" href="https://www.youtube.com/watch?v=vwEn2rh4RUw">Encore 1</a></h5>
+    <h5 class="mb-1"><a class="link" href="https://www.youtube.com/watch?v=vwEn2rh4RUw">Encore 1</a></h5>
     <ol start="24">
       <li><a class="link" href="https://www.youtube.com/watch?v=PsTLjzWw0pQ">Dance medley</a></li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=qqj1OIpDAgY">기댈곳</a>
-        <span class="tw-text-sm text-muted">Refuge</span>
+        <span class="text-sm text-muted">Refuge</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=dG0uq27J77Q">Rock medley</a>
-        <span class="tw-text-red-600">@svg (heart)</span>
+        <span class="text-red-600">@svg (heart)</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=8YL4NvSleAc">마지막 장면</a>
-        <span class="tw-text-sm text-muted">Last Scene</span>
-        <span class="tw-text-red-600">@svg (heart)</span>
+        <span class="text-sm text-muted">Last Scene</span>
+        <span class="text-red-600">@svg (heart)</span>
       </li>
     </ol>
 
-    <h5 class="tw-mb-1">Encore 2</h5>
+    <h5 class="mb-1">Encore 2</h5>
     <ol start="28">
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=RwX6OxhcvYM">챔피언</a>
-        <span class="tw-text-sm text-muted">Champion</span>
-        <span class="tw-text-red-600">@svg (heart)</span>
+        <span class="text-sm text-muted">Champion</span>
+        <span class="text-red-600">@svg (heart)</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=qeCAoacwaIk">강남스타일</a>
-        <span class="tw-text-sm text-muted">Gangnam Style</span>
-        <span class="tw-text-red-600">@svg (heart)</span>
+        <span class="text-sm text-muted">Gangnam Style</span>
+        <span class="text-red-600">@svg (heart)</span>
       </li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=nz6bswnz9KM">언젠가는</a>
-        <span class="tw-text-sm text-muted">Someday</span>
+        <span class="text-sm text-muted">Someday</span>
       </li>
     </ol>
   </div>
-  <div class="md:tw-w-5/12 md:tw-px-4">
-    <div class="tw-mb-6 tw-text-center tw-mobile-wide">
-      <img class="image-fit-viewport tw-max-w-full sm:tw-rounded" src="https://life.ivacuum.org/gigs/psy.2018.12.23.jpg">
+  <div class="md:w-5/12 md:px-4">
+    <div class="mb-6 text-center mobile-wide">
+      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/psy.2018.12.23.jpg">
     </div>
   </div>
 </div>
@@ -436,7 +436,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_6174.jpg'])
 
 @ru
-  <p>В определенный момент стало ясно, что это имена и фамилии присутствующих. У корейцев они суммарно из трех слогов. Последний слайд содержал имена на одной латинице. Буквально несколько десятков имен из <span class="tw-whitespace-no-wrap">12&thinsp;500</span> посетителей! <a class="link" href="https://youtu.be/mixE6js4dps?t=242">Видео</a>.</p>
+  <p>В определенный момент стало ясно, что это имена и фамилии присутствующих. У корейцев они суммарно из трех слогов. Последний слайд содержал имена на одной латинице. Буквально несколько десятков имен из <span class="whitespace-no-wrap">12&thinsp;500</span> посетителей! <a class="link" href="https://youtu.be/mixE6js4dps?t=242">Видео</a>.</p>
 @endru
 @include('tpl.pic-arbitrary', ['pic' => 'names.png', 'w' => 462, 'h' => 351])
 
@@ -456,7 +456,7 @@
   <p>Концерт и публика задали высочайшую планку по впечатлениям, которую неизвестно теперь чем превзойти. Поездка однозначно стоила того. Даже <a class="link" href="rammstein.2016.07">Раммштайн в Берлине</a> так не принимали. Может потому что в Берлине прямо на площадке люди пили пиво, а в Сеуле всех снабжали кофе?</p>
 @endru
 
-<h3 class="tw-mt-12">@ru Собственные видео @en My own videos @endru</h3>
+<h3 class="mt-12">@ru Собственные видео @en My own videos @endru</h3>
 @ru
   <p>Впервые записал на концерте пачку собственных видосов. Было пофиг на качество и стабилизацию — самому было интересно какой выйдет результат. Вдруг на память что достойное останется. Плюс актуально было записывать спокойные и неизвестные песни, все равно подпевать не мог. Записал в итоге десять видосов, из которых выделил бы всего один: 29-й трек из сета, где на экране сам себя заснял. Но смотреть лучше всего равно ту версию, что по ссылке в сете, так как она с нормальной стабилизацией и лучшим качеством.</p>
 @endru
@@ -505,7 +505,7 @@
 @endru
 <youtube title="Don't Worry (걱정말아요 그대)" v="OaXl57L2rTc"></youtube>
 
-<h3 class="tw-mt-12">@ru Бонусные материалы @en Bonus materials @endru</h3>
+<h3 class="mt-12">@ru Бонусные материалы @en Bonus materials @endru</h3>
 @ru
   <ul>
     <li>Песня It's Art <a class="link" href="https://www.youtube.com/watch?v=1cKc1rkZwf8">в официальном клипе</a> из нарезки выступлений разных лет и <a class="link" href="https://www.youtube.com/watch?v=C3v2z75AizY&t=119">вживую</a>; на ней же <a class="link" href="https://www.youtube.com/watch?v=9g0WukEo0U0">трибуны ходят ходуном</a></li>

@@ -7,10 +7,10 @@
 @endpush
 
 @section('content')
-<div class="tw-flex tw-flex-wrap tw-items-center tw-mb-2">
-  <h1 class="h2 tw-mb-1 tw-mr-4">{{ trans('life.gigs_intro_title') }}</h1>
+<div class="flex flex-wrap items-center mb-2">
+  <h1 class="h2 mb-1 mr-4">{{ trans('life.gigs_intro_title') }}</h1>
   @if (Auth::check())
-    <form class="tw-mr-4" action="{{ path('Subscriptions@update') }}" method="post">
+    <form class="mr-4" action="{{ path('Subscriptions@update') }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}
       <button class="btn btn-default btn-sm small-caps svg-flex svg-label">
         @svg (mail)
@@ -21,7 +21,7 @@
       @csrf
     </form>
   @else
-    <a class="btn btn-default btn-sm svg-flex svg-label small-caps tw-mr-4" href="{{ path('Subscriptions@edit', ['gigs' => 1]) }}">
+    <a class="btn btn-default btn-sm svg-flex svg-label small-caps mr-4" href="{{ path('Subscriptions@edit', ['gigs' => 1]) }}">
       @svg (mail)
       {{ trans('mail.subscribe') }}
     </a>
@@ -34,19 +34,19 @@
 <p>{{ trans('life.gigs_intro_text') }}</p>
 
 @foreach ($gigs as $year => $rows)
-  <div class="tw-flex {{ !$loop->last ? 'tw-mb-2' : '' }}">
+  <div class="flex {{ !$loop->last ? 'mb-2' : '' }}">
     <div>
-      <div class="tw-sticky top-2 tw-font-bold tw-mr-3">{{ $year }}</div>
+      <div class="sticky top-2 font-bold mr-3">{{ $year }}</div>
     </div>
     <div>
     @foreach ($rows as $gig)
-      <div class="{{ !$loop->last ? 'tw-mb-2' : '' }}">
+      <div class="{{ !$loop->last ? 'mb-2' : '' }}">
         @if ($gig->status === App\Gig::STATUS_PUBLISHED)
-          <a class="link tw-mr-1" href="{{ $gig->www() }}">{{ $gig->artist->title }}</a>
+          <a class="link mr-1" href="{{ $gig->www() }}">{{ $gig->artist->title }}</a>
         @else
-          <span class="tw-mr-1">{{ $gig->artist->title }}</span>
+          <span class="mr-1">{{ $gig->artist->title }}</span>
         @endif
-        <span class="tw-text-xs text-muted">{{ $gig->shortDate() }}</span>
+        <span class="text-xs text-muted">{{ $gig->shortDate() }}</span>
       </div>
     @endforeach
     </div>

@@ -2,7 +2,7 @@
 
 @section('content')
 <h1 class="h2">{{ trans('issues.create') }}</h1>
-<div class="tw-max-w-600px">
+<div class="max-w-600px">
   @ru
     <p>Используйте форму ниже, чтобы задать вопрос, оставить отзыв, получить помощь или подсказать как сделать сайт лучше.</p>
   @en

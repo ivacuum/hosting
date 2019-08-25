@@ -5,8 +5,8 @@
 @extends('acp.list')
 
 @section('toolbar')
-<div class="btn-toolbar tw-mb-4">
-  <div class="btn-group tw-mr-2">
+<div class="btn-toolbar mb-4">
+  <div class="btn-group mr-2">
     <a class="btn btn-default js-pjax {{ !$year ? 'active' : '' }}" href="{{ UrlHelper::filter(['year' => null]) }}">Все</a>
     @foreach (range(date('Y'), 2009) as $value)
       <a class="btn btn-default js-pjax {{ $year == $value ? 'active' : '' }}" href="{{ UrlHelper::filter(['year' => $value]) }}">{{ substr($value, 2) }}</a>
@@ -26,15 +26,15 @@
   <thead>
     <tr>
       <th><input type="checkbox" class="js-select-all" data-selector=".models-checkbox"></th>
-      <th class="md:tw-text-right tw-whitespace-no-wrap">
+      <th class="md:text-right whitespace-no-wrap">
         @include('acp.tpl.sortable-header', ['key' => 'id'])
       </th>
-      <th class="md:tw-text-right tw-whitespace-no-wrap">Автор</th>
-      <th class="tw-text-center">Изображение</th>
-      <th class="md:tw-text-right tw-whitespace-no-wrap">
+      <th class="md:text-right whitespace-no-wrap">Автор</th>
+      <th class="text-center">Изображение</th>
+      <th class="md:text-right whitespace-no-wrap">
         @include('acp.tpl.sortable-header', ['key' => 'size'])
       </th>
-      <th class="md:tw-text-right tw-whitespace-no-wrap">
+      <th class="md:text-right whitespace-no-wrap">
         @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
       </th>
       <th>
@@ -47,21 +47,21 @@
     @foreach ($models as $model)
       <tr id="image_{{ $model->id }}">
         <td><input class="models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
-        <td class="md:tw-text-right">{{ $model->id }}</td>
-        <td class="md:tw-text-right">
+        <td class="md:text-right">{{ $model->id }}</td>
+        <td class="md:text-right">
           <a href="{{ UrlHelper::filter(['user_id' => $model->user_id]) }}">
             {{ $model->user_id }}
           </a>
         </td>
-        <td class="tw-text-center">
+        <td class="text-center">
           <a class="screenshot-link" href="{{ path("$self@show", $model) }}">
             <img class="screenshot" src="{{ $model->thumbnailSecretUrl() }}">
           </a>
         </td>
-        <td class="md:tw-text-right text-muted tw-whitespace-no-wrap">{{ ViewHelper::size($model->size) }}</td>
-        <td class="md:tw-text-right tw-whitespace-no-wrap">
+        <td class="md:text-right text-muted whitespace-no-wrap">{{ ViewHelper::size($model->size) }}</td>
+        <td class="md:text-right whitespace-no-wrap">
           @if ($model->views > 3000)
-            <span class="tw-flex tw-bg-green-600 tw-text-white tw-px-2 tw-text-xs tw-font-bold tw-rounded">{{ ViewHelper::number($model->views) }}</span>
+            <span class="flex bg-green-600 text-white px-2 text-xs font-bold rounded">{{ ViewHelper::number($model->views) }}</span>
           @else
             {{ ViewHelper::number($model->views) }}
           @endif
@@ -91,7 +91,7 @@
   </tbody>
 </table>
 
-<div class="tw-mt-4">
+<div class="mt-4">
   @include('acp.tpl.batch', ['actions' => [
     'delete' => 'Удалить',
   ]])

@@ -38,13 +38,13 @@ export default {
 </script>
 
 <template>
-<div class="navbar navbar-border navbar-expand-md tw-px-0 md:tw-py-0 navbar-light tw-bg-light">
-  <div class="tw-container">
+<div class="navbar navbar-border navbar-expand-md px-0 md:py-0 navbar-light bg-light">
+  <div class="container">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse">
-      <ul class="navbar-nav tw-mr-auto md:tw-items-center">
+      <ul class="navbar-nav mr-auto md:items-center">
         <li class="nav-item">
           <router-link class="nav-link" :to="{ name: 'acp' }" exact>
             {{ $t('home.index') }}

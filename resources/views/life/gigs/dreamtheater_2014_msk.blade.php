@@ -14,8 +14,8 @@
   <p>Примерно в 19:45 приехал на площадку, а там снаружи некислых размеров очередь. Это тебе не отдельный вип-вход с досрочным запуском. Сам зал уже был прилично подзабит. Разница кардинальная. И впечатления совершенно другие. Сетлист играли один в один, но отличались импровизации — на то они и импровизации.</p>
   <p>Активно перемещался по залу, изучал звук, смотрел на поведение людей. В голове были мысли: «Эх, знали бы вы что я парой дней ранее испытал, в каких красках я все видел! Да ладно, так все просто будут стоять и смотреть? Капец, лучше бы я правда этой пассивности не видел!» Все это жутко угнетало. За несколько песен до конца покинул зал, чтобы забрать вещи из камеры хранения на вокзале. Вывод один — не стоит после пятизвездочного отеля ехать в хостел. Рад, что в этом плане была наглядная возможность сравнить оба шоу.</p>
 @endru
-<div class="md:tw-flex md:tw--mx-4">
-  <div class="md:tw-w-7/12 md:tw-px-4">
+<div class="md:flex md:-mx-4">
+  <div class="md:w-7/12 md:px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>The Enemy Inside</li>
@@ -38,9 +38,9 @@
       <li>Finally Free</li>
     </ol>
   </div>
-  <div class="md:tw-w-5/12 md:tw-px-4">
-    <div class="tw-mb-6 tw-text-center tw-mobile-wide">
-      <img class="image-fit-viewport tw-max-w-full sm:tw-rounded" src="https://life.ivacuum.org/gigs/dreamtheater.2014.02.28.jpg">
+  <div class="md:w-5/12 md:px-4">
+    <div class="mb-6 text-center mobile-wide">
+      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/dreamtheater.2014.02.28.jpg">
     </div>
   </div>
 </div>

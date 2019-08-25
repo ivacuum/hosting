@@ -1,7 +1,7 @@
 <table>
   @foreach ($entries as $entry)
     <tr>
-      <td class="tw-pr-6">
+      <td class="pr-6">
         @ru
           {{ $entry['ru'] }}
         @en

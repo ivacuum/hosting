@@ -13,16 +13,16 @@
     @svg (chevron-left)
   </a>
   {{ basename($file) }}
-  <span class="tw-text-base text-muted">{{ $dir_up }}</span>
+  <span class="text-base text-muted">{{ $dir_up }}</span>
 </h2>
 
 <form action="/acp/servers/{{ $server->id }}/ftp/source" method="post">
   {{ ViewHelper::inputHiddenMail() }}
   @csrf
 
-  <div class="tw-mb-4">
+  <div class="mb-4">
     <textarea
-      class="form-control tw-text-sm tw-font-mono textarea-autosized js-autosize-textarea"
+      class="form-control text-sm font-mono textarea-autosized js-autosize-textarea"
       name="source"
       rows="2"
     >{{ $source }}</textarea>

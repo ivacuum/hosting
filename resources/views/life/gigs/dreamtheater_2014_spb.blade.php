@@ -65,8 +65,8 @@
   <p>Такой дорогой билет окупил себя сполна. Играла группа 3 часа с 15-минутным перерывом. Опять новая программа выступления, подготовиться за последнюю неделю удалось лишь к восьми песням из восемнадцати — дико много слов. Активность публики была достаточно низкая, но и концерт был крайне сложный — трындец как непросто махать в такт музыке, когда ее ритм постоянно меняется! И лучше быть в первом ряду, чтобы не видеть пассивность позади.</p>
 @endru
 
-<div class="md:tw-flex md:tw--mx-4">
-  <div class="md:tw-w-7/12 md:tw-px-4">
+<div class="md:flex md:-mx-4">
+  <div class="md:w-7/12 md:px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>The Enemy Inside</li>
@@ -89,9 +89,9 @@
       <li>Finally Free</li>
     </ol>
   </div>
-  <div class="md:tw-w-5/12 md:tw-px-4">
-    <div class="tw-mb-6 tw-text-center tw-mobile-wide">
-      <img class="image-fit-viewport tw-max-w-full sm:tw-rounded" src="https://life.ivacuum.org/gigs/dreamtheater.2014.02.26.jpg">
+  <div class="md:w-5/12 md:px-4">
+    <div class="mb-6 text-center mobile-wide">
+      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/dreamtheater.2014.02.26.jpg">
     </div>
   </div>
 </div>

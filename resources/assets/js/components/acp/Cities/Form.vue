@@ -53,7 +53,7 @@ export default {
     {{ createTitle }}
   </h3>
 
-  <form class="tw-my-4" ref="form" @submit.prevent="submit">
+  <form class="my-4" ref="form" @submit.prevent="submit">
     <input hidden type="text" name="mail" value="">
     <input hidden type="text" name="_concurrency_control" :value="extra._concurrency_control" v-if="isEditing">
 
@@ -65,7 +65,7 @@ export default {
 
     <form-text name="iata" v-model="model.iata"/>
 
-    <!--<div class="tw-mb-4">
+    <!--<div class="mb-4">
       <button class="btn btn-default" @click.prevent="fillGeodata">
         {{ $t(`cities.fill_geodata`)}}
       </button>

@@ -19,11 +19,11 @@ export default {
     <thead>
     <tr>
       <th><input type="checkbox" v-model="selectAll"></th>
-      <th class="md:tw-text-right">{{ modelFieldTrans('id') }}</th>
+      <th class="md:text-right">{{ modelFieldTrans('id') }}</th>
       <th>{{ modelFieldTrans('title') }}</th>
       <th></th>
       <th>{{ modelFieldTrans('author') }}</th>
-      <th class="md:tw-text-right tw-whitespace-no-wrap">
+      <th class="md:text-right whitespace-no-wrap">
         <span v-html="$root.svg.comment_o"></span>
       </th>
       <th>{{ modelFieldTrans('created_at') }}</th>
@@ -35,7 +35,7 @@ export default {
         :key="resource.id"
       >
         <td><input type="checkbox" v-model="selected" :value="resource.id"></td>
-        <td class="md:tw-text-right">{{ resource.id }}</td>
+        <td class="md:text-right">{{ resource.id }}</td>
         <td>
           <router-link :to="resource.show_url">
             {{ resource.title }}
@@ -48,13 +48,13 @@ export default {
         </td>
         <td>
           <span
-            class="tw-text-red-600 tooltipped tooltipped-n"
+            class="text-red-600 tooltipped tooltipped-n"
             aria-label="Открыто"
             v-html="$root.svg.issue_opened"
             v-if="resource.status === 1"
           ></span>
           <span
-            class="tw-text-green-600 tooltipped tooltipped-n"
+            class="text-green-600 tooltipped tooltipped-n"
             aria-label="Закрыто"
             v-html="$root.svg.check"
             v-if="resource.status === 2"
@@ -63,14 +63,14 @@ export default {
         <td>
           <a :href="resource.user_url" v-if="resource.user_id">
             <div>{{ resource.email }}</div>
-            <div class="tw-text-xs text-muted">{{ resource.name }}</div>
+            <div class="text-xs text-muted">{{ resource.name }}</div>
           </a>
           <div v-else>
             <div>{{ resource.email }}</div>
-            <div class="tw-text-xs text-muted">{{ resource.name }}</div>
+            <div class="text-xs text-muted">{{ resource.name }}</div>
           </div>
         </td>
-        <td class="md:tw-text-right tw-whitespace-no-wrap">
+        <td class="md:text-right whitespace-no-wrap">
           {{ resource.comments_count | decimal }}
         </td>
         <td>{{ resource.created_at }}</td>
@@ -81,11 +81,11 @@ export default {
   <div v-else>No {{ modelPlural }} matched the given criteria.</div>
 
   <div v-show="selected.length">
-    <div class="tw-items-center tw-flex tw-flex-wrap tw-my-2">
-      <div class="tw-mr-2">Выбрано: {{ selected.length }}</div>
-      <button class="btn btn-default tw-mr-1" type="button" @click="batch('close')">Закрыть</button>
-      <button class="btn btn-default tw-mr-1" type="button" @click="batch('open')">Открыть</button>
-      <button class="btn btn-default tw-mr-1" type="button" @click="batch('delete')">Удалить</button>
+    <div class="items-center flex flex-wrap my-2">
+      <div class="mr-2">Выбрано: {{ selected.length }}</div>
+      <button class="btn btn-default mr-1" type="button" @click="batch('close')">Закрыть</button>
+      <button class="btn btn-default mr-1" type="button" @click="batch('open')">Открыть</button>
+      <button class="btn btn-default mr-1" type="button" @click="batch('delete')">Удалить</button>
     </div>
   </div>
 

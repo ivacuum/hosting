@@ -11,9 +11,9 @@ export default {
 
 <template>
 <div v-if="resource">
-  <div class="lg:tw-flex lg:tw--mx-4">
-    <div class="lg:tw-w-1/4 lg:tw-px-4">
-      <div class="list-group tw-text-center">
+  <div class="lg:flex lg:-mx-4">
+    <div class="lg:w-1/4 lg:px-4">
+      <div class="list-group text-center">
         <router-link
           class="list-group-item list-group-item-action"
           :to="resource.show_url"
@@ -36,7 +36,7 @@ export default {
           :key="relation.i18n_index"
         >
           {{ $t(`${relation.i18n_index}.index`) }}
-          <span class="text-muted tw-text-xs tw-whitespace-no-wrap">{{ relation.count | decimal }}</span>
+          <span class="text-muted text-xs whitespace-no-wrap">{{ relation.count | decimal }}</span>
         </router-link>
         <a
           class="list-group-item list-group-item-action"
@@ -51,13 +51,13 @@ export default {
         </a>
       </div>
     </div>
-    <div class="lg:tw-w-3/4 lg:tw-px-4">
+    <div class="lg:w-3/4 lg:px-4">
       <slot name="header">
-        <h2 class="tw-mt-4 lg:tw-mt-0 tw-break-words">
+        <h2 class="mt-4 lg:mt-0 break-words">
           <a href="back" @click.prevent="$router.go(-1)" v-html="$root.svg.chevron_left"></a>
           <slot>{{ resource.breadcrumb }}</slot>
           <slot name="append">
-            <span class="tw-text-base text-muted" v-if="resource.id">#{{ resource.id }}</span>
+            <span class="text-base text-muted" v-if="resource.id">#{{ resource.id }}</span>
           </slot>
         </h2>
       </slot>

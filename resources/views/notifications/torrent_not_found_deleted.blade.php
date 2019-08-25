@@ -6,7 +6,7 @@
       title="{{ $notification->created_at->toAtomString() }}">
   {{ $notification->created_at->diffForHumans() }}
 </time>
-<div class="tw-my-2 alert alert-warning">
+<div class="my-2 alert alert-warning">
   {{ trans("notifications.{$class_basename}_help") }}
 </div>
 <div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="rutracker-post tw-clearfix">
+  <div class="rutracker-post clearfix">
     <slot/>
   </div>
 </template>
@@ -164,8 +164,8 @@ export default {
               .animate({ opacity: 1 }, 700)
           })
 
-          $body.append($fold_btn).addClass('tw-clearfix inited')
-          $body.parent().addClass('tw-clearfix')
+          $body.append($fold_btn).addClass('clearfix inited')
+          $body.parent().addClass('clearfix')
         }
 
         if (e.shiftKey) {

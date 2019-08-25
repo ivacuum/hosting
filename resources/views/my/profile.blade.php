@@ -1,15 +1,15 @@
 @extends('my.base')
 
 @section('content')
-<div class="tw-max-w-500px">
-  <h3 class="tw-mb-4">{{ trans('my.profile') }}</h3>
+<div class="max-w-500px">
+  <h3 class="mb-4">{{ trans('my.profile') }}</h3>
   <p><a class="btn btn-default" href="{{ Auth::user()->www() }}">{{ trans('my.go_to_profile') }}</a></p>
   <form action="{{ path("$self@update") }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @method('put')
     @csrf
 
-    <div class="tw-mb-4">
+    <div class="mb-4">
       <label>{{ trans('my.username') }}</label>
       <input class="form-control {{ $errors->has('username') ? 'is-invalid' : '' }}" name="username" value="{{ old('username', Auth::user()->login) }}">
       <div class="invalid-feedback">{{ $errors->first('username') }}</div>
@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <div class="tw-mb-4">
+    <div class="mb-4">
       <label>{{ trans('auth.email') }}</label>
       <input required class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" value="{{ old('email', Auth::user()->email) }}">
       <div class="invalid-feedback">{{ $errors->first('email') }}</div>
@@ -33,7 +33,7 @@
     </button>
   </form>
 
-  <h3 class="tw-mt-12">{{ trans('my.avatar') }}</h3>
+  <h3 class="mt-12">{{ trans('my.avatar') }}</h3>
   <avatar-uploader
     action="{{ path('MyAvatar@update') }}"
     current-avatar="{{ Auth::user()->avatarUrl() }}"

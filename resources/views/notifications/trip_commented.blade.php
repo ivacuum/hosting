@@ -7,4 +7,4 @@
       title="{{ $notification->created_at->toAtomString() }}">
   {{ $notification->created_at->diffForHumans() }}
 </time>
-<div class="tw-mt-1">{!! $notification->data['comment']['html'] !!}</div>
+<div class="mt-1">{!! $notification->data['comment']['html'] !!}</div>

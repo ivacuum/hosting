@@ -8,8 +8,8 @@
   <p>После концерта благополучно выбрались из зала и вспомнили, что забыли рюкзак с вещами. Предстояло вернуться, но охрана упорно не пускала, говоря, что шоу закончилось, и пора идти домой. Прошло около часа, нас все-таки пустили. Оказалось, что к этому времени музыканты вышли в зал пообщаться с людьми. Говорили со всеми желающими на английском и немецком.</p>
   <p>Обратно предстояло идти пешком до Киевского вокзала. Навигатором выступала карта автомобильных дорог.</p>
 @endru
-<div class="md:tw-flex md:tw--mx-4">
-  <div class="md:tw-w-7/12 md:tw-px-4">
+<div class="md:flex md:-mx-4">
+  <div class="md:w-7/12 md:px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>Träumst Du</li>
@@ -33,13 +33,13 @@
       <li>Brennende Liebe</li>
       <li>Gott ist ein Popstar</li>
       <li>Menschsein</li>
-      <li>Strangers in the Night <span class="tw-text-sm text-muted">Frank Sinatra cover</span></li>
+      <li>Strangers in the Night <span class="text-sm text-muted">Frank Sinatra cover</span></li>
       <li>Burn Your Eyes</li>
     </ol>
   </div>
-  <div class="md:tw-w-5/12 md:tw-px-4">
-    <div class="tw-mb-6 tw-text-center tw-mobile-wide">
-      <img class="image-fit-viewport tw-max-w-full sm:tw-rounded" src="https://life.ivacuum.org/gigs/oomph.2007.04.21.jpg">
+  <div class="md:w-5/12 md:px-4">
+    <div class="mb-6 text-center mobile-wide">
+      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/oomph.2007.04.21.jpg">
     </div>
   </div>
 </div>

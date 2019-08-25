@@ -30,14 +30,14 @@
     <thead>
       <tr>
         <th>Хост</th>
-        <th class="tw-text-center">Тип</th>
+        <th class="text-center">Тип</th>
         <th>Значение записи</th>
         <th></th>
       </tr>
     </thead>
     <tr class="ns-record-container" data-action="{{ path("$self@addNsRecord", $model) }}">
       <td>
-        <input class="form-control form-control-sm tw-text-right" name="subdomain" value="@">
+        <input class="form-control form-control-sm text-right" name="subdomain" value="@">
       </td>
       <td>
         <select class="custom-select custom-select-sm" name="type">
@@ -52,9 +52,9 @@
       </td>
       <td>
         <input class="form-control form-control-sm" name="content">
-        <input class="form-control form-control-sm tw-mt-1" name="priority" placeholder="priority [MX, SRV]">
-        <input class="form-control form-control-sm tw-mt-1" name="port" placeholder="port [SRV]">
-        <input class="form-control form-control-sm tw-mt-1" name="weight" placeholder="weight [SRV]">
+        <input class="form-control form-control-sm mt-1" name="priority" placeholder="priority [MX, SRV]">
+        <input class="form-control form-control-sm mt-1" name="port" placeholder="port [SRV]">
+        <input class="form-control form-control-sm mt-1" name="weight" placeholder="weight [SRV]">
       </td>
       <td>
         <a class="btn btn-default js-ns-record-add" href="#">добавить</a>
@@ -63,14 +63,14 @@
     @foreach ($records as $record)
       <tr class="ns-record-container">
         <td>
-          <div class="presentation tw-text-right">
+          <div class="presentation text-right">
             {{ $record->subdomain }}
           </div>
           <div hidden class="edit">
-            <input class="form-control form-control-sm tw-text-right" name="subdomain" value="{{ $record->subdomain }}">
+            <input class="form-control form-control-sm text-right" name="subdomain" value="{{ $record->subdomain }}">
           </div>
         </td>
-        <td class="tw-text-center">
+        <td class="text-center">
           {{ $record->type }}
           <input type="hidden" name="type" value="{{ $record->type }}">
         </td>
@@ -95,19 +95,19 @@
             @endif
           </div>
           <div hidden class="edit">
-            <input class="form-control form-control-sm tw-w-full" name="content" value="{{ $record->content }}" {{ $record->type == 'SOA' ? 'readonly' : '' }}>
+            <input class="form-control form-control-sm w-full" name="content" value="{{ $record->content }}" {{ $record->type == 'SOA' ? 'readonly' : '' }}>
             @if ($record->priority > 0)
-              <input class="form-control form-control-sm tw-mt-1 tw-w-full" name="priority" value="{{ $record->priority }}" placeholder="priority">
+              <input class="form-control form-control-sm mt-1 w-full" name="priority" value="{{ $record->priority }}" placeholder="priority">
             @endif
             @if ($record->type == 'SRV')
-              <input class="form-control form-control-sm tw-mt-1 tw-w-full" name="port" value="{{ $record->port }}" placeholder="port">
-              <input class="form-control form-control-sm tw-mt-1 tw-w-full" name="weight" value="{{ $record->weight }}" placeholder="weight">
+              <input class="form-control form-control-sm mt-1 w-full" name="port" value="{{ $record->port }}" placeholder="port">
+              <input class="form-control form-control-sm mt-1 w-full" name="weight" value="{{ $record->weight }}" placeholder="weight">
             @endif
             @if ($record->type == 'SOA')
-              <input class="form-control form-control-sm tw-mt-1 tw-w-full" name="retry" value="{{ $record->retry }}" placeholder="retry">
-              <input class="form-control form-control-sm tw-mt-1 tw-w-full" name="refresh" value="{{ $record->refresh }}" placeholder="refresh">
-              <input class="form-control form-control-sm tw-mt-1 tw-w-full" name="expire" value="{{ $record->expire }}" placeholder="expire">
-              <input class="form-control form-control-sm tw-mt-1 tw-w-full" name="ttl" value="{{ $record->ttl }}" placeholder="ttl">
+              <input class="form-control form-control-sm mt-1 w-full" name="retry" value="{{ $record->retry }}" placeholder="retry">
+              <input class="form-control form-control-sm mt-1 w-full" name="refresh" value="{{ $record->refresh }}" placeholder="refresh">
+              <input class="form-control form-control-sm mt-1 w-full" name="expire" value="{{ $record->expire }}" placeholder="expire">
+              <input class="form-control form-control-sm mt-1 w-full" name="ttl" value="{{ $record->ttl }}" placeholder="ttl">
             @endif
             <input type="hidden" name="record_id" value="{{ $record->record_id }}">
             @method('put')
@@ -115,13 +115,13 @@
         </td>
         <td>
           <div class="presentation">
-            <a class="pseudo js-ns-record-edit tw-mr-2" href="#">настроить</a>
+            <a class="pseudo js-ns-record-edit mr-2" href="#">настроить</a>
             <a class="pseudo js-ns-record-delete" data-id="{{ $record->record_id }}" data-action="{{ path("$self@deleteNsRecord", $model) }}" href="#">
               @svg (times)
             </a>
           </div>
           <div hidden class="edit">
-            <a class="pseudo js-ns-record-save tw-mr-2" data-action="{{ path("$self@editNsRecord", $model) }}" href="#">сохранить</a>
+            <a class="pseudo js-ns-record-save mr-2" data-action="{{ path("$self@editNsRecord", $model) }}" href="#">сохранить</a>
             <a class="pseudo js-ns-record-cancel" href="#">
               @svg (rotate-left)
             </a>
@@ -131,9 +131,9 @@
     @endforeach
   </table>
 
-  <form class="form-inline tw-mt-4" action="{{ path("$self@setServerNsRecords", $model) }}" method="post">
+  <form class="form-inline mt-4" action="{{ path("$self@setServerNsRecords", $model) }}" method="post">
     @csrf
-    <div class="tw-inline-block tw-mr-1">
+    <div class="inline-block mr-1">
       <select class="custom-select" name="server">
         <option value="">-----</option>
         <option>srv1.korden.net</option>

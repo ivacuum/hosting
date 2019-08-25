@@ -11,7 +11,7 @@ export default {
 
 <template>
 <nav>
-  <div class="tw-mb-6" v-for="(category, id) in tree" :key="id">
+  <div class="mb-6" v-for="(category, id) in tree" :key="id">
     <h4>
       <mark v-if="$route.query.category_id === id">{{ category.title }}</mark>
       <router-link class="visited" :to="{ query: { category_id: id }}" v-else>{{ category.title }}</router-link>
@@ -19,7 +19,7 @@ export default {
     <div v-for="(child, childId) in category.children" :key="childId">
       <mark v-if="$route.query.category_id === childId">{{ child.title }}</mark>
       <router-link class="visited" :to="{ query: { category_id: childId }}" v-else>{{ child.title }}</router-link>
-      <span class="text-muted tw-text-xs">{{ stats[childId] }}</span>
+      <span class="text-muted text-xs">{{ stats[childId] }}</span>
     </div>
   </div>
 </nav>

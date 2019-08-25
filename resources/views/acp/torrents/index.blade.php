@@ -18,17 +18,17 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="md:tw-text-right tw-whitespace-no-wrap">
+    <th class="md:text-right whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
     <th>{{ trans('model.author') }}</th>
-    <th class="md:tw-text-right tw-whitespace-no-wrap">
+    <th class="md:text-right whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
     </th>
-    <th class="md:tw-text-right tw-whitespace-no-wrap">
+    <th class="md:text-right whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
     </th>
-    <th class="md:tw-text-right tw-whitespace-no-wrap">
+    <th class="md:text-right whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'clicks', 'svg' => 'magnet'])
     </th>
     <th></th>
@@ -39,25 +39,25 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
-      <td class="md:tw-text-right">{{ $model->id }}</td>
+      <td class="md:text-right">{{ $model->id }}</td>
       <td>
         <a href="{{ path('Acp\Users@show', $model->user_id) }}">
           {{ $model->user->displayName() }}
         </a>
       </td>
-      <td class="md:tw-text-right tw-whitespace-no-wrap">
+      <td class="md:text-right whitespace-no-wrap">
         @if ($model->views > 0)
           {{ ViewHelper::number($model->views) }}
         @endif
       </td>
-      <td class="md:tw-text-right tw-whitespace-no-wrap">
+      <td class="md:text-right whitespace-no-wrap">
         @if ($model->comments_count > 0)
           <a href="{{ path('Acp\Comments@index', [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->comments_count) }}
           </a>
         @endif
       </td>
-      <td class="md:tw-text-right tw-whitespace-no-wrap">
+      <td class="md:text-right whitespace-no-wrap">
         @if ($model->clicks > 0)
           {{ ViewHelper::number($model->clicks) }}
         @endif

@@ -4,13 +4,13 @@
 
 @section('content')
 @if (!$model->isExpired() && ($model->cms_url || ($model->alias_id && $model->alias->cms_url)))
-  <div class="tw-mb-4">
+  <div class="mb-4">
     @include("$tpl.cms_login", ['cms_button_class' => 'btn btn-default'])
   </div>
 @endif
 
 @if ($model->text)
-  <blockquote class="tw-whitespace-pre-line">{{ $model->text }}</blockquote>
+  <blockquote class="whitespace-pre-line">{{ $model->text }}</blockquote>
 @endif
 
 @if ($model->isExpired())
@@ -28,7 +28,7 @@
 <table class="table-stats">
   @if ($model->alias)
     <tr>
-      <td class="tw-text-right tw-font-bold">Алиас</td>
+      <td class="text-right font-bold">Алиас</td>
       <td>
         <a href="{{ path("$self@show", $model->alias) }}">{{ $model->alias->domain }}</a>
       </td>
@@ -36,7 +36,7 @@
   @endif
   @if (sizeof($model->aliases))
     <tr>
-      <td class="tw-text-right tw-font-bold">Алиасы</td>
+      <td class="text-right font-bold">Алиасы</td>
       <td>
         @foreach ($model->aliases as $alias)
           <a href="{{ path("$self@show", $alias) }}">{{ $alias->domain }}</a>
@@ -45,7 +45,7 @@
     </tr>
   @endif
   <tr>
-    <td class="tw-text-right tw-font-bold">Клиент</td>
+    <td class="text-right font-bold">Клиент</td>
     <td>
       <a href="{{ path('Acp\Clients@show', $model->client) }}">
         {{ $model->client->name }}
@@ -54,7 +54,7 @@
   </tr>
   @if ($model->yandex_user_id)
     <tr>
-      <td class="tw-text-right tw-font-bold">Яндекс</td>
+      <td class="text-right font-bold">Яндекс</td>
       <td>
         <a href="{{ path('Acp\YandexUsers@show', $model->yandexUser->id) }}">
           {{ $model->yandexUser->account }}
@@ -64,22 +64,22 @@
   @endif
   @if ($model->ipv4)
     <tr>
-      <td class="tw-text-right tw-font-bold">IPv4</td>
+      <td class="text-right font-bold">IPv4</td>
       <td>{{ $model->ipv4 }}</td>
     </tr>
   @endif
   @if ($model->ipv6)
     <tr>
-      <td class="tw-text-right tw-font-bold">IPv6</td>
+      <td class="text-right font-bold">IPv6</td>
       <td>{{ $model->ipv6 }}</td>
     </tr>
   @endif
   <tr>
-    <td class="tw-text-right tw-font-bold">MX</td>
+    <td class="text-right font-bold">MX</td>
     <td>{{ $model->mx }}</td>
   </tr>
   <tr>
-    <td class="tw-text-right tw-font-bold">NS</td>
+    <td class="text-right font-bold">NS</td>
     <td>{{ $model->ns }}</td>
   </tr>
 </table>

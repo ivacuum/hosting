@@ -1,28 +1,28 @@
 <template>
 <div>
-  <div class="chat-container tw-antialiased tw-rounded tw-overflow-y-auto tw-py-1 tw-pr-3 tw-pl-2 tw-text-sm">
+  <div class="chat-container antialiased rounded overflow-y-auto py-1 pr-3 pl-2 text-sm">
     <div v-for="(messagesForDate, date) in messagesGroupedByDate">
-      <div class="tw-sticky tw-top-0 tw-text-gray-500 tw-text-xs tw-my-1 tw-text-center">
-        <div class="chat-bg tw-inline-block tw-mx-auto tw-p-1 tw-rounded">{{ date }}</div>
+      <div class="sticky top-0 text-gray-500 text-xs my-1 text-center">
+        <div class="chat-bg inline-block mx-auto p-1 rounded">{{ date }}</div>
       </div>
-      <div class="tw-flex tw-mt-2" v-for="(message, index) in messagesForDate">
-        <div class="tw-flex-shrink-0 tw-w-10">
+      <div class="flex mt-2" v-for="(message, index) in messagesForDate">
+        <div class="flex-shrink-0 w-10">
           <div v-if="!sameUser[date][index]">
             <img
-              class="tw-rounded-full tw-w-8 tw-h-8"
+              class="rounded-full w-8 h-8"
               :src="message.user.avatar"
               v-if="message.user.avatar"
             >
             <div v-else>
-              <svg class="tw-inline-block tw-align-middle tw-w-8 tw-h-8" viewBox="0 0 130 130"><rect x="0" y="0" width="100%" height="100%" rx="50%" :fill="message.user.color"></rect><text font-size="59.8" font-family="Helvetica Neue,Helvetica,Arial" x="65" y="65" dy=".38em" letter-spacing="-.05em" text-anchor="middle" fill="#fff">{{ message.user.avatar_text }}</text></svg>
+              <svg class="inline-block align-middle w-8 h-8" viewBox="0 0 130 130"><rect x="0" y="0" width="100%" height="100%" rx="50%" :fill="message.user.color"></rect><text font-size="59.8" font-family="Helvetica Neue,Helvetica,Arial" x="65" y="65" dy=".38em" letter-spacing="-.05em" text-anchor="middle" fill="#fff">{{ message.user.avatar_text }}</text></svg>
             </div>
           </div>
         </div>
-        <div class="tw-flex-grow">
-          <div class="tw-leading-none" :style="{ color: message.user.color }" v-if="!sameUser[date][index]">{{ message.user.public_name }}</div>
-          <div class="tw-break-words" v-html="message.html"></div>
+        <div class="flex-grow">
+          <div class="leading-none" :style="{ color: message.user.color }" v-if="!sameUser[date][index]">{{ message.user.public_name }}</div>
+          <div class="break-words" v-html="message.html"></div>
         </div>
-        <div class="tw-flex-shrink-0 tw-text-xs tw-text-gray-500 tw-text-right tw-w-12" :title="message.date">{{ message.time }}</div>
+        <div class="flex-shrink-0 text-xs text-gray-500 text-right w-12" :title="message.date">{{ message.time }}</div>
       </div>
     </div>
     <!--
@@ -31,7 +31,7 @@
     </div>
     -->
   </div>
-  <form class="tw-mt-1 tw-mb-4" @submit.prevent="post">
+  <form class="mt-1 mb-4" @submit.prevent="post">
     <div class="input-group">
       <input class="form-control" placeholder="Сообщение в чат..." v-model="message">
       <div class="input-group-append">
