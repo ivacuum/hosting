@@ -59,7 +59,7 @@
   @foreach ($related_torrents as $row)
     @php ($category = TorrentCategoryHelper::find($row->category_id))
     <div class="flex flex-wrap md:flex-no-wrap justify-center md:justify-start torrents-list-container antialiased js-torrents-views-observer" data-id="{{ $row->id }}">
-      <div class="flex-shrink-0 torrents-list-icon torrent-icon order-1 order-md-0" title="{{ $category['title'] }}">
+      <div class="flex-shrink-0 torrents-list-icon torrent-icon order-1 md:order-none mr-1" title="{{ $category['title'] }}">
         @php ($icon = $category['icon'] ?? 'file-text-o')
         @svg ($icon)
       </div>
