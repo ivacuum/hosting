@@ -51,7 +51,7 @@ export default {
 <div>
   <div class="items-center flex flex-wrap h1">
     <router-link
-      class="bg-secondary ja-shadow-light mr-2 px-4 py-1 rounded text-white hover:text-white"
+      class="bg-gray-700 hover:bg-gray-800 ja-shadow-light mr-2 px-4 py-1 rounded text-white hover:text-white"
       :to="{ name: 'wk.level', params: { level: vocab.level }}"
     >{{ vocab.level }}</router-link>
     <div class="bg-vocab ja-shadow-light mr-4 px-2 py-1 rounded text-white">{{ vocab.character }}</div>

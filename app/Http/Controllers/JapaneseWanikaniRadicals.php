@@ -37,7 +37,7 @@ class JapaneseWanikaniRadicals extends Controller
     {
         $radical->burn(auth()->id());
 
-        return ['status' => 'OK'];
+        return response()->noContent();
     }
 
     public function show(string $meaning)
@@ -57,7 +57,7 @@ class JapaneseWanikaniRadicals extends Controller
     {
         $radical->resurrect(auth()->id());
 
-        return ['status' => 'OK'];
+        return response()->noContent();
     }
 
     protected function appendBreadcrumbs(): void

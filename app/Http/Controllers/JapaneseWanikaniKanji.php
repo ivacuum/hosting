@@ -64,7 +64,7 @@ class JapaneseWanikaniKanji extends Controller
     {
         $kanji->burn(auth()->id());
 
-        return ['status' => 'OK'];
+        return response()->noContent();
     }
 
     public function show(string $character)
@@ -84,7 +84,7 @@ class JapaneseWanikaniKanji extends Controller
     {
         $kanji->resurrect(auth()->id());
 
-        return ['status' => 'OK'];
+        return response()->noContent();
     }
 
     protected function appendBreadcrumbs(): void

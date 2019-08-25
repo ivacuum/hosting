@@ -16,8 +16,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
         $kanji = $this->kanji();
 
         $this->delete(action('JapaneseWanikaniKanji@destroy', $kanji))
-            ->assertStatus(200)
-            ->assertJson(['status' => 'OK']);
+            ->assertStatus(204);
 
         $this->assertEquals($user->id, $kanji->burnable->user_id);
     }
@@ -67,8 +66,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
         $kanji->burn($user->id);
 
         $this->put(action('JapaneseWanikaniKanji@update', $kanji))
-            ->assertStatus(200)
-            ->assertJson(['status' => 'OK']);
+            ->assertStatus(204);
 
         $this->assertNull($kanji->burnable);
     }

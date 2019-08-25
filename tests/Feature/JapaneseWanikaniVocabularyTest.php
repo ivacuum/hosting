@@ -16,8 +16,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
         $vocab = $this->vocabulary();
 
         $this->delete(action('JapaneseWanikaniVocabulary@destroy', $vocab))
-            ->assertStatus(200)
-            ->assertJson(['status' => 'OK']);
+            ->assertStatus(204);
 
         $this->assertEquals($user->id, $vocab->burnable->user_id);
     }
@@ -67,8 +66,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
         $vocab->burn($user->id);
 
         $this->put(action('JapaneseWanikaniVocabulary@update', $vocab))
-            ->assertStatus(200)
-            ->assertJson(['status' => 'OK']);
+            ->assertStatus(204);
 
         $this->assertNull($vocab->burnable);
     }

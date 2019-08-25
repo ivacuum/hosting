@@ -35,7 +35,7 @@ class JapaneseWanikaniVocabulary extends Controller
     {
         $vocabulary->burn(auth()->id());
 
-        return ['status' => 'OK'];
+        return response()->noContent();
     }
 
     public function show(string $characters)
@@ -55,7 +55,7 @@ class JapaneseWanikaniVocabulary extends Controller
     {
         $vocabulary->resurrect(auth()->id());
 
-        return ['status' => 'OK'];
+        return response()->noContent();
     }
 
     protected function appendBreadcrumbs(): void
