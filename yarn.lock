@@ -7471,10 +7471,10 @@ uuid@^3.0.1, uuid@^3.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
   integrity sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
 
-vac-gfe@1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/vac-gfe/-/vac-gfe-1.2.2.tgz#8933d0e10fd7b51c378853fffbfe90eba8c29c59"
-  integrity sha512-lR08YNA6kJMNAZgBHkrmEDNzg8U30LmuxIDntpzay3aootBXO4QQG7lzaKnQX1BmFaMPepABrfCMvd9qpZkPuQ==
+vac-gfe@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/vac-gfe/-/vac-gfe-2.0.0.tgz#185492c664fedd11c754d2c94867097bb87f849f"
+  integrity sha512-dDUzqqopvWffYps+gnBKSJy+MUgMIwU9G4IE1sP0/KnLaPS6FgdEDzLbQW96TymFcyEJuvZpwbxMilwtiq4Hww==
   dependencies:
     bootstrap "4.1.3"
     lodash "4.17.10"

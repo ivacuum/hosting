@@ -41,7 +41,7 @@
         <div class="mx-auto max-w-400px">
           <div class="text-center py-2 md:py-12">
             <div class="text-5xl font-bold" @click="revealAnswer">{{ question }}</div>
-            <div class="text-muted" :class="{ 'invisible': !answerVisible }">{{ answer }}</div>
+            <div class="text-muted" :class="{ invisible: !answerVisible }">{{ answer }}</div>
           </div>
           <div>
             <input

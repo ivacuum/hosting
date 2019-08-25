@@ -62,13 +62,13 @@
             </div>
             <a
               class="my-4 md:my-0 md:pl-4 md:pr-2 md:py-1"
-              :class="{ 'invisible': labels }"
+              :class="{ invisible: labels }"
               href="#"
               @click.prevent="reveal(row.id)"
             >？</a>
             <div
               class="text-muted"
-              :class="{ 'invisible': !labels && !revealed.includes(row.id), 'mt-4 md:mt-0': labels }"
+              :class="{ invisible: !labels && !revealed.includes(row.id), 'mt-4 md:mt-0': labels }"
               :id="`kana-${row.id}`"
             >
               <div class="ja-character whitespace-no-wrap" v-for="kana in row.kana.split(', ')">
@@ -76,12 +76,12 @@
               </div>
             </div>
             <div
-              :class="{ 'invisible': !labels && !revealed.includes(row.id), 'mb-6 md:mb-0': row.burned || guest }"
+              :class="{ invisible: !labels && !revealed.includes(row.id), 'mb-6 md:mb-0': row.burned || guest }"
               :id="`meaning-${row.id}`"
             >{{ row.meaning }}</div>
             <a
               class="mb-6 md:mb-0 md:px-2 md:py-1 text-red-600"
-              :class="{ 'invisible': row.burned || guest || (!labels && !revealed.includes(row.id)) }"
+              :class="{ invisible: row.burned || guest || (!labels && !revealed.includes(row.id)) }"
               href="#"
               @click.prevent="burn(lvl, row.id)"
             >
