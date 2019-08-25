@@ -38,16 +38,16 @@
     </ol>
   </div>
   <div class="md:tw-w-5/12 md:tw-px-4">
-    <div class="img-container">
-      <img src="https://life.ivacuum.org/gigs/prodigy.2016.11.09.jpg">
+    <div class="tw-mb-6 tw-text-center tw-mobile-wide">
+      <img class="image-fit-viewport tw-max-w-full sm:tw-rounded" src="https://life.ivacuum.org/gigs/prodigy.2016.11.09.jpg">
     </div>
   </div>
 </div>
 
 @ru
-  <p class="tw-mb-1">Видеозапись концерта. На 54:12 разглядел свой затылок.</p>
+  <p>Видеозапись концерта. На 54:12 разглядел свой затылок.</p>
 @en
-  <p class="tw-mb-1">Video of the show. Saw back of my head on 54:12.</p>
+  <p>Video of the show. Saw back of my head on 54:12.</p>
 @endru
 <youtube title="The Prodigy 2016, Moscow, Russia" v="HND1SuZMseY"></youtube>
 @endsection

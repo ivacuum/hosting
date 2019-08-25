@@ -1,7 +1,7 @@
 @extends('my.base')
 
 @section('content')
-<div class="mw-500">
+<div class="tw-max-w-500px">
   <h3 class="tw-mb-4">{{ trans('my.profile') }}</h3>
   <p><a class="btn btn-default" href="{{ Auth::user()->www() }}">{{ trans('my.go_to_profile') }}</a></p>
   <form action="{{ path("$self@update") }}" method="post">

@@ -62,22 +62,22 @@
   <div class="card tw-border-l-0 sm:tw-border-l tw-border-r-0 sm:tw-border-r tw-rounded-none sm:tw-rounded tw-mb-4 tw--mx-4 sm:tw-mx-0 js-shortcuts-item">
     <div class="card-body tw-pb-0 tw-break-words">
       @if ($post['text'])
-        <div class="life-text tw-mb-0 tw-whitespace-pre-line">{{ $post['text'] }}</div>
+        <div class="tw-antialiased hanging-puntuation-first lg:tw-text-lg tw-mb-0 tw-whitespace-pre-line">{{ $post['text'] }}</div>
       @endif
       @if (!empty($post['copy_history']))
-        <div class="life-text {{ $post['text'] ? 'tw-mt-4' : '' }} tw-mb-0"><strong>Репост</strong></div>
-        <div class="life-text tw-mb-0 tw-whitespace-pre-line">{{ $post['copy_history'][0]->text }}</div>
+        <div class="tw-antialiased hanging-puntuation-first lg:tw-text-lg {{ $post['text'] ? 'tw-mt-4' : '' }} tw-mb-0"><strong>Репост</strong></div>
+        <div class="tw-antialiased hanging-puntuation-first lg:tw-text-lg tw-mb-0 tw-whitespace-pre-line">{{ $post['copy_history'][0]->text }}</div>
       @endif
       @if ($post['attachments'])
         <div class="tw-mt-2">
         @if ($post['photos'] > 1)
-          <div class="pic-container">
+          <div class="tw-mb-6 tw-mobile-wide">
         @elseif ($post['photos'] == 1)
-          <div class="img-container {{ sizeof($post['attachments']) <= 1 ? 'tw-mb-0' : '' }}">
+          <div class="tw-mb-6 {{ sizeof($post['attachments']) <= 1 ? 'tw-mb-0' : '' }}">
         @endif
         @foreach ($post['attachments'] as $attach)
           @if ($attach->type == 'photo' && isset($attach->photo->photo_604))
-            <img class="tw-block markdown-responsive-image tw-mx-auto {{ !$loop->first ? 'js-shortcuts-item' : '' }}" src="{{ @$attach->photo->photo_1280 ?: @$attach->photo->photo_807 ?: $attach->photo->photo_604 }}">
+            <img class="tw-block markdown-responsive-image {{ $post['photos'] === 1 ? 'tw-rounded' : '' }} {{ !$loop->first ? 'js-shortcuts-item' : '' }}" src="{{ @$attach->photo->photo_1280 ?: @$attach->photo->photo_807 ?: $attach->photo->photo_604 }}">
           @endif
         @endforeach
         @if ($post['photos'] > 0)
@@ -91,10 +91,10 @@
                 @svg (paperclip)
                 {{ $attach->doc->title }}
               </div>
-              <div class="embed-responsive embed-responsive-4by3">
+              <div class="tw-flex tw-mt-1">
                 <video
                   controls
-                  class="embed-responsive-item"
+                  class="tw-block markdown-responsive-image tw-rounded"
                   width="{{ $attach->doc->preview->video->width }}"
                   height="{{ $attach->doc->preview->video->height }}"
                   poster="{{ Illuminate\Support\Arr::last($attach->doc->preview->photo->sizes)->src }}"
@@ -132,7 +132,7 @@
             </p>
           @elseif ($attach->type == 'link')
             @if (isset($attach->link->photo->photo_604))
-              <div class="img-container">
+              <div class="tw-mb-6">
                 <img src="{{ @$attach->link->photo->photo_604 }}">
               </div>
             @endif

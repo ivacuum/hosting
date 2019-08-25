@@ -48,7 +48,7 @@ export default {
         :key="resource.id"
         @dblclick="$router.push(resource.edit_url)"
       >
-        <td><img class="tw-block flag-16 flag-shadow" :src="resource.flag_url"></td>
+        <td><img class="tw-block flag-16 svg-shadow" :src="resource.flag_url"></td>
         <td>
           <router-link :to="resource.show_url">
             {{ resource.title }}

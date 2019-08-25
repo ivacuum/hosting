@@ -1,8 +1,8 @@
 @extends("life.trips.{$template}")
 
 @section('content_header')
-<div class="life-text">
-  <div class="mw-1000 js-trip-shortcuts">
+<div class="tw-antialiased hanging-puntuation-first lg:tw-text-lg">
+  <div class="tw-max-w-1000px js-trip-shortcuts">
 @endsection
 
 @section('content_footer')

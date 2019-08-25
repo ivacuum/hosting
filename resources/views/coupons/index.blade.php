@@ -8,7 +8,7 @@
   <p>Easy ways to get discounts for the services below.</p>
 @endru
 
-<div class="life-text">
+<div class="tw-antialiased hanging-puntuation-first lg:tw-text-lg">
   <h3 class="tw-mt-6">{{ trans('coupons.hosting') }}</h3>
   <ul>
     <li class="tw-mb-1"><a class="link" href="{{ path('Coupons@digitalocean') }}">{{ trans('coupons.digitalocean') }}</a></li>

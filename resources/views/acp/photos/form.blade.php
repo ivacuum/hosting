@@ -6,8 +6,8 @@
     <images-uploader action="{{ path("$self@store") }}" append=".js-append-formdata"></images-uploader>
   </div>
 @else
-  <div class="img-container">
-    <img class="image-fit-viewport" src="{{ $model->originalUrl() }}">
+  <div class="tw-mb-6">
+    <img class="image-fit-viewport tw-mobile-wide sm:tw-rounded tw-max-w-full" src="{{ $model->originalUrl() }}">
   </div>
 
   <div class="tw-mb-4">

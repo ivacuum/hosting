@@ -1,11 +1,6 @@
-@import "life/timelines";
-
 .calendar-grid {
   display: grid;
   grid-template-columns: max-content repeat(31, 1fr);
-  font-size: 11px;
-
-  @include media-breakpoint-up(md) { font-size: 13px; }
 }
 
 .cities-columns { column-width: 12rem; }
@@ -13,107 +8,6 @@
 .city-entry {
   page-break-inside: avoid;
   break-inside: avoid;
-  margin-left: 1.5em;
-  position: relative;
-}
-.travel-entry { margin-left: 3.5em; }
-
-.city-trips,
-.travel-month {
-  color: $gray-light;
-  font-size: 12px;
-}
-
-.city-initial {
-  position: absolute;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin: 0 0 0 -1.5em;
-}
-
-.travel-year {
-  position: sticky;
-  top: .5rem;
-  width: 3.375em;
-}
-
-.img-container .pic-1000x750 {
-  width: 1000px;
-  height: 750px;
-}
-
-.life-text {
-  hanging-punctuation: first;
-
-  p + .pic-container { margin-top: -.5rem; }
-
-  @include media-breakpoint-up(lg) { font-size: 18px; }
-  @include font-smoothing();
-}
-
-.photo-overlay-arrow {
-  font-size: 1rem;
-  position: absolute;
-  top: 50%;
-  margin-top: -.5rem;
-  color: $white;
-  filter: drop-shadow(0 0 1px rgba($black, .4));
-  line-height: 1;
-
-  @include media-breakpoint-up(md) {
-    font-size: 1.5rem;
-    margin-top: -.75rem;
-  }
-}
-
-.photo-overlay-button {
-  color: $white;
-  filter: drop-shadow(0 0 1px rgba($black, .4));
-}
-
-.pic {
-  width: 100%;
-  height: 0;
-  padding-bottom: 75%;
-  position: relative;
-
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    margin: 0;
-  }
-}
-
-.pic-centered-container {
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-@include media-breakpoint-up(md) {
-  .pic-centered-container {
-    .pic:first-child .pic-group-border-radius,
-    .pic-flexible:first-child .pic-group-border-radius {
-      border-top-left-radius: $border-radius-lg;
-      border-top-right-radius: $border-radius-lg;
-    }
-
-    .pic:last-child .pic-group-border-radius,
-    .pic-flexible:last-child .pic-group-border-radius {
-      border-bottom-right-radius: $border-radius-lg;
-      border-bottom-left-radius: $border-radius-lg;
-    }
-  }
-}
-
-.trip-city-map {
-  height: 250px;
-
-  @include media-breakpoint-up(md) { height: 400px; }
-  @include mobile-wide;
 }
 
 .trip-cover-info { text-shadow: 1px 1px 0 rgba($black, .8); }

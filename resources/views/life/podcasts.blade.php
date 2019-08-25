@@ -18,15 +18,15 @@
   <ul>
     <li>
       <a class="link" href="http://brand.podfm.ru/1270/">Twitter</a>
-      <span class="small text-muted">#243</span>
+      <span class="tw-text-xs text-muted">#243</span>
     </li>
     <li>
       <a class="link" href="http://brand.podfm.ru/782/">Туполев</a>
-      <span class="small text-muted">#204</span>
+      <span class="tw-text-xs text-muted">#204</span>
     </li>
     <li>
       <a class="link" href="http://brand.podfm.ru/102/">FedEx</a>
-      <span class="small text-muted">#102</span>
+      <span class="tw-text-xs text-muted">#102</span>
     </li>
   </ul>
 </section>

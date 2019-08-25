@@ -10,19 +10,19 @@
         <a class="btn bg-vk tw-text-xl tw-rounded-full tw-text-white hover:tw-text-white" href="{{ path('Auth\Vk@index') }}">
           @svg (vk)
         </a>
-        <div class="tw-mt-1 small text-muted">{{ trans('auth.vk') }}</div>
+        <div class="tw-mt-1 tw-text-xs text-muted">{{ trans('auth.vk') }}</div>
       </div>
       <div class="tw-mr-2">
         <a class="btn bg-facebook tw-text-xl tw-rounded-full tw-text-white hover:tw-text-white" href="{{ path('Auth\Facebook@index') }}">
           @svg (facebook)
         </a>
-        <div class="tw-mt-1 small text-muted">{{ trans('auth.facebook') }}</div>
+        <div class="tw-mt-1 tw-text-xs text-muted">{{ trans('auth.facebook') }}</div>
       </div>
       <div>
         <a class="btn bg-google tw-text-xl tw-rounded-full tw-text-white hover:tw-text-white" href="{{ path('Auth\Google@index') }}">
           @svg (google)
         </a>
-        <div class="tw-mt-1 small text-muted">{{ trans('auth.google') }}</div>
+        <div class="tw-mt-1 tw-text-xs text-muted">{{ trans('auth.google') }}</div>
       </div>
     </div>
     <div>{{ trans('auth.or') }}</div>

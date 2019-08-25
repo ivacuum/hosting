@@ -1,11 +1,6 @@
 $photo-max-height: 80vh;
 
-.photo-map-container {
-  height: calc(100vh - 195px);
-  margin-bottom: -1.5rem;
-
-  @include always-wide;
-}
+.photo-map-container { height: calc(100vh - 200px); }
 
 .photo-show-img {
   border: 0;
@@ -18,14 +13,3 @@ $photo-max-height: 80vh;
     max-height: $photo-max-height;
   }
 }
-
-.photo-show-nav {
-  position: absolute;
-  top: 0;
-  width: 50%;
-  height: 100%;
-  z-index: 12; // На один больше фоторамы
-}
-
-.photo-show-next { left: 50%; }
-.photo-show-prev { left: 0; }

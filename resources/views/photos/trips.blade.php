@@ -18,7 +18,7 @@
         </div>
         <div class="tw-absolute tw-bottom-0 tw-left-0 tw-text-white trip-cover-info tw-p-4">
           <div class="tw-text-lg">
-            <img class="flag-24 flag-shadow" src="{{ $trip->city->country->flagUrl() }}">
+            <img class="flag-24 svg-shadow" src="{{ $trip->city->country->flagUrl() }}">
             {{ $trip->title }}
             <span class="tw-text-gray-400 tw-text-xs">{{ $trip->timelinePeriod(true) }}</span>
           </div>

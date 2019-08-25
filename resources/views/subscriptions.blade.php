@@ -2,11 +2,11 @@
 
 @section('content')
 <h1 class="tw-text-2xl">{{ trans('my.mail_subscriptions') }}</h1>
-<div class="life-text">
+<div class="tw-antialiased hanging-puntuation-first lg:tw-text-lg">
   @ru
     <p>Хотите узнавать о новых историях о путешествиях, отчетах о посещенных концертах и новостях сайта сразу после их публикации? Тогда подпишитесь на уведомления с помощью формы ниже.</p>
   @endru
-  <form class="mw-400 tw-mb-6" action="{{ path('Subscriptions@store') }}" method="post">
+  <form class="tw-max-w-400px tw-mb-6" action="{{ path('Subscriptions@store') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
     <div class="tw-mb-4">
@@ -88,15 +88,15 @@
     <div class="tw-mb-1">As an alternative you can subscribe to RSS feeds.</div>
   @endru
   <div class="tw-flex tw-items-center tw-flex-wrap">
-    <a class="f18 svg-flex svg-label font-small-caps tw-mr-4" href="{{ path('LifeGigsRss@index') }}">
+    <a class="tw-text-lg svg-flex svg-label small-caps tw-mr-4" href="{{ path('LifeGigsRss@index') }}">
       @svg (rss-square)
       {{ mb_strtolower(trans('my.notify_gigs')) }}
     </a>
-    <a class="f18 svg-flex svg-label font-small-caps tw-mr-4" href="{{ path('NewsRss@index') }}">
+    <a class="tw-text-lg svg-flex svg-label small-caps tw-mr-4" href="{{ path('NewsRss@index') }}">
       @svg (rss-square)
       {{ mb_strtolower(trans('my.notify_news')) }}
     </a>
-    <a class="f18 svg-flex svg-label font-small-caps" href="{{ path('LifeTripsRss@index') }}">
+    <a class="tw-text-lg svg-flex svg-label small-caps" href="{{ path('LifeTripsRss@index') }}">
       @svg (rss-square)
       {{ mb_strtolower(trans('my.notify_trips')) }}
     </a>

@@ -15,26 +15,26 @@
   @en
     <p>Trips by days. Several flags in one cell means there were multiple cities visited during that day: moving from one place to another or just one-day trips. Each flag is a link to the story about the trip if the story is published.</p>
   @endru
-  <div class="calendar-grid tw-text-center">
+  <div class="calendar-grid tw-text-2xs md:tw-text-sm tw-text-center">
     @foreach (range($lastDate->year, $firstDate->year, -1) as $year)
-      <div class="tw-font-bold tw-text-right tw-mt-4 tw-pr-2 bg-gray-200">{{ $year }}</div>
+      <div class="tw-font-bold tw-text-right tw-mt-4 tw-pr-2 tw-bg-gray-300">{{ $year }}</div>
       @foreach (range(1, 31) as $day)
-        <div class="tw-mt-4 bg-gray-200">{{ $day }}</div>
+        <div class="tw-mt-4 tw-bg-gray-300">{{ $day }}</div>
       @endforeach
       @foreach (range($year === $lastDate->year ? $lastDate->month : 12, 1, -1) as $month)
         <div class="tw-text-right tw-pr-2 border-right">{{ trans("months.{$month}") }}</div>
         @foreach (range(1, 31) as $day)
           @php ($date = "{$year}-{$month}-{$day}")
           @if (isset($calendar[$date]))
-            <div class="bg-light tw-flex tw-flex-col tw-items-center tw-justify-start tw-pt-1">
+            <div class="tw-bg-light tw-flex tw-flex-col tw-items-center tw-justify-start tw-pt-1 tw-shadow-inner">
               @foreach ($calendar[$date] as $trip)
                 @if ($trip['slug'])
                   <a class="tw-block tw-pb-1 tooltipped tooltipped-n" href="{{ $trip['slug'] }}" aria-label="{{ $trip['title'] }}">
-                    <img class="tw-block flag-16 flag-shadow" src="{{ $trip['flag'] }}">
+                    <img class="tw-block flag-16 svg-shadow" src="{{ $trip['flag'] }}">
                   </a>
                 @else
                   <div class="tw-pb-1">
-                    <img class="tw-block flag-16 flag-shadow" src="{{ $trip['flag'] }}">
+                    <img class="tw-block flag-16 svg-shadow" src="{{ $trip['flag'] }}">
                   </div>
                 @endif
               @endforeach

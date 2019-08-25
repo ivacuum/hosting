@@ -7,18 +7,18 @@
         <div class="tw-items-center tw-text-center border-left" style="display: grid; grid-template-columns: repeat(16, max-content);">
           <template v-for="(cells, i) in elements">
             <template v-for="(cell, j) in cells">
-              <div class="border-right cursor-pointer tw-px-2 tw-pt-2 tw-pb-1" :class="{ 'border-top': i === 0 }" @click="clickOnColumn(j)">
-                <div class="f28 tw-font-bold ja-character">{{ cell[syllabaryIndex] ? cell[syllabaryIndex] : '&nbsp;' }}</div>
+              <div class="border-right tw-cursor-pointer tw-px-2 tw-pt-2 tw-pb-1" :class="{ 'border-top': i === 0 }" @click="clickOnColumn(j)">
+                <div class="tw-text-2xl tw-font-bold ja-character">{{ cell[syllabaryIndex] ? cell[syllabaryIndex] : '&nbsp;' }}</div>
                 <div class="text-muted">{{ cell[answerIndex] ? cell[answerIndex] : '&nbsp;' }}</div>
               </div>
             </template>
           </template>
           <template v-for="i in elements[0].length">
             <div class="border-right border-bottom">
-              <label class="cursor-pointer tw-block tw-mb-0 tw-py-2">
+              <label class="tw-cursor-pointer tw-block tw-mb-0 tw-py-2">
                 <input
                   :id="`column_${i - 1}`"
-                  class="cursor-pointer"
+                  class="tw-cursor-pointer"
                   type="checkbox"
                   :value="i - 1"
                   v-model="checkedColumns"
@@ -36,12 +36,12 @@
           </transition>
         </div>
       </div>
-      <div class="mw-600" v-show="stage === 'practice'">
+      <div class="tw-max-w-600px" v-show="stage === 'practice'">
         <p>{{ $t('PRACTICE_TEXT') }}</p>
-        <div class="tw-mx-auto mw-400">
+        <div class="tw-mx-auto tw-max-w-400px">
           <div class="tw-text-center tw-py-2 md:tw-py-12">
-            <div class="f48 tw-font-bold" @click="revealAnswer">{{ question }}</div>
-            <div class="text-muted" :class="{ invisible: !answerVisible }">{{ answer }}</div>
+            <div class="tw-text-5xl tw-font-bold" @click="revealAnswer">{{ question }}</div>
+            <div class="text-muted" :class="{ 'tw-invisible': !answerVisible }">{{ answer }}</div>
           </div>
           <div>
             <input

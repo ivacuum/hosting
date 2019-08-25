@@ -6,7 +6,7 @@
       <button class="btn btn-default tw-mb-2 md:tw-mb-0" @click="reset">{{ $t('CLEAR') }}</button>
     </div>
     <div class="tw-hidden md:tw-block" v-else>&nbsp;</div>
-    <form class="mw-500" @submit.prevent="onSubmit">
+    <form class="tw-max-w-500px" @submit.prevent="onSubmit">
       <div class="input-group">
         <input
           class="form-control js-search-input"
@@ -31,8 +31,8 @@
       <div class="tw-flex-shrink-0" v-if="row.image">
         <img class="ja-character ja-image-shadow" :src="row.image" alt="" height="36">
       </div>
-      <div class="f36 tw-flex-shrink-0 tw-font-bold ja-character ja-shadow tw-pb-1 tw-whitespace-no-wrap" v-else>{{ row.character }}</div>
-      <div class="tw-flex-grow ja-shadow-light small tw-capitalize tw-text-right">{{ row.meaning }}</div>
+      <div class="tw-text-4xl tw-flex-shrink-0 tw-font-bold ja-character ja-shadow tw-pb-1 tw-whitespace-no-wrap" v-else>{{ row.character }}</div>
+      <div class="tw-flex-grow ja-shadow-light tw-text-xs tw-capitalize tw-text-right">{{ row.meaning }}</div>
     </router-link>
 
     <router-link
@@ -42,10 +42,10 @@
       v-for="row in elements.kanji"
       :key="row.id"
     >
-      <div class="f36 tw-flex-shrink-0 tw-font-bold ja-character ja-shadow tw-pb-1 tw-whitespace-no-wrap">{{ row.character }}</div>
+      <div class="tw-text-4xl tw-flex-shrink-0 tw-font-bold ja-character ja-shadow tw-pb-1 tw-whitespace-no-wrap">{{ row.character }}</div>
       <div class="tw-flex-grow tw-text-right">
         <div class="tw-font-bold ja-shadow-light">{{ row.reading }}</div>
-        <div class="ja-shadow-light small tw-capitalize">{{ row.meaning }}</div>
+        <div class="ja-shadow-light tw-text-xs tw-capitalize">{{ row.meaning }}</div>
       </div>
     </router-link>
 
@@ -56,10 +56,10 @@
       v-for="row in elements.vocabulary"
       :key="row.id"
     >
-      <div class="f36 tw-flex-shrink-0 tw-font-bold ja-character ja-shadow tw-pb-1 tw-whitespace-no-wrap">{{ row.character }}</div>
+      <div class="tw-text-4xl tw-flex-shrink-0 tw-font-bold ja-character ja-shadow tw-pb-1 tw-whitespace-no-wrap">{{ row.character }}</div>
       <div class="tw-flex-grow tw-text-right">
         <div class="tw-font-bold ja-shadow-light">{{ row.kana }}</div>
-        <div class="ja-shadow-light small tw-capitalize">{{ row.meaning }}</div>
+        <div class="ja-shadow-light tw-text-xs tw-capitalize">{{ row.meaning }}</div>
       </div>
     </router-link>
   </div>

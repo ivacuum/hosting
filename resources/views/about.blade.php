@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<div class="life-text">
+<div class="tw-antialiased hanging-puntuation-first lg:tw-text-lg">
   @ru
     <h2>О проекте</h2>
     <p>Этот сайт — результат пробы фреймворка <a class="link" href="https://laravel.com/">Laravel</a>. Первое время в основе была версия 4.2, сейчас — {{ implode('.', array_slice(explode('.', App::version()), 0, 2)) }}.</p>

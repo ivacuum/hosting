@@ -1,7 +1,7 @@
 @extends('photos.base')
 
 @section('content')
-<div class="mw-600">
+<div class="tw-max-w-600px">
   @component('accordion')
     @slot('title')
       @ru Что это за ресурс? @en What is this site section? @endru

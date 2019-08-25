@@ -412,8 +412,8 @@
     </ol>
   </div>
   <div class="md:tw-w-5/12 md:tw-px-4">
-    <div class="img-container">
-      <img src="https://life.ivacuum.org/gigs/psy.2018.12.23.jpg">
+    <div class="tw-mb-6 tw-text-center tw-mobile-wide">
+      <img class="image-fit-viewport tw-max-w-full sm:tw-rounded" src="https://life.ivacuum.org/gigs/psy.2018.12.23.jpg">
     </div>
   </div>
 </div>

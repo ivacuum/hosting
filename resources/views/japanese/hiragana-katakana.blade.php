@@ -4,7 +4,7 @@
 <h1 class="h2">{{ trans('japanese.hiragana-katakana') }}</h1>
 <hiragana-katakana></hiragana-katakana>
 
-<div class="tw-mt-12 mw-600">
+<div class="tw-mt-12 tw-max-w-600px">
   <div class="h3 tw-mt-12">{{ trans('issues.create') }}</div>
   @ru
     <p>Поделитесь своим опытом использования тренажера или задайте вопрос. Мы постараемся обработать информацию и сделать тренажер еще лучше. <span class="tw-whitespace-no-wrap">ありがとうございます。</span></p>

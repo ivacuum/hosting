@@ -45,7 +45,7 @@
   @endforeach
 </table>
 
-<div class="mw-500 tw-mt-4">
+<div class="tw-max-w-500px tw-mt-4">
   <form action="/acp/servers/{{ $server->id }}/ftp/file" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf

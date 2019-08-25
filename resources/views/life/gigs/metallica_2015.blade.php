@@ -32,16 +32,16 @@
     </ol>
   </div>
   <div class="md:tw-w-5/12 md:tw-px-4">
-    <div class="img-container">
-      <img src="https://life.ivacuum.org/gigs/metallica.2015.08.25.jpg">
+    <div class="tw-mb-6 tw-text-center tw-mobile-wide">
+      <img class="image-fit-viewport tw-max-w-full sm:tw-rounded" src="https://life.ivacuum.org/gigs/metallica.2015.08.25.jpg">
     </div>
   </div>
 </div>
 
 @ru
-  <p class="tw-mb-1">Каково оно было в фан-зоне:</p>
+  <p>Каково оно было в фан-зоне:</p>
 @en
-  <p class="tw-mb-1">What it was like to be in the fan-zone:</p>
+  <p>What it was like to be in the fan-zone:</p>
 @endru
 <youtube title="King Nothing + Disposable Heroes" v="WkVGeBGM5yc"></youtube>
 
@@ -54,7 +54,7 @@
 @endru
 
 @ru
-  <p class="tw-mb-1">Видеозапись концерта.</p>
+  <p>Видеозапись концерта.</p>
 @endru
 <youtube title="Metallica 2015, St. Petersburg, Russia" v="-VQMs8zQRj8"></youtube>
 @endsection

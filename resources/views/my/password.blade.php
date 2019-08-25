@@ -3,7 +3,7 @@
 @section('content')
 <h3 class="tw-mb-4">{{ trans('my.password') }}</h3>
 
-<div class="mw-500">
+<div class="tw-max-w-500px">
   <form action="{{ path("$self@update") }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @method('put')

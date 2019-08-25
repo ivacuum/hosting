@@ -2,7 +2,7 @@
 
 @section('content')
 <h1>{{ $meta_title }}</h1>
-<div class="mw-600">
+<div class="tw-max-w-600px">
   @ru
     <p>Вы легко можете получить скидку около 10 евро на ваши следующие бронирования на <a class="link" href="https://www.airbnb.ru/{{ config('cfg.airbnb_link') }}">airbnb.ru</a> с помощью купонов ниже. Также я привожу информацию где удалось успешно воспользоваться данными купонами. Коды <span class="tw-font-bold">работают для уже зарегистрированных пользователей</span>.</p>
   @en

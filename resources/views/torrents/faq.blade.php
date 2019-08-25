@@ -1,7 +1,7 @@
 @extends('torrents.base')
 
 @section('content')
-<div class="mw-700">
+<div class="tw-max-w-700px">
   @component('accordion')
     @slot('title')
       Что это за ресурс?

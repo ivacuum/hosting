@@ -14,7 +14,7 @@
       @if (Auth::check())
         <form class="tw-mr-4" action="{{ path('Subscriptions@update') }}" method="post">
           {{ ViewHelper::inputHiddenMail() }}
-          <button class="btn btn-default btn-sm font-small-caps svg-flex svg-label">
+          <button class="btn btn-default btn-sm small-caps svg-flex svg-label">
             @svg (mail)
             {{ trans(Auth::user()->notify_trips ? 'mail.unsubscribe' : 'mail.subscribe') }}
           </button>
@@ -23,12 +23,12 @@
           @csrf
         </form>
       @else
-        <a class="btn btn-default btn-sm svg-flex svg-label font-small-caps tw-mr-4" href="{{ path('Subscriptions@edit', ['trips' => 1]) }}">
+        <a class="btn btn-default btn-sm svg-flex svg-label small-caps tw-mr-4" href="{{ path('Subscriptions@edit', ['trips' => 1]) }}">
           @svg (mail)
           {{ trans('mail.subscribe') }}
         </a>
       @endif
-      <a class="svg-flex svg-label font-small-caps" href="{{ path('LifeTripsRss@index') }}">
+      <a class="svg-flex svg-label small-caps" href="{{ path('LifeTripsRss@index') }}">
         @svg (rss-square)
         rss
       </a>

@@ -4,7 +4,7 @@
 ])
 
 @section('content')
-<div class="life-text">
+<div class="tw-antialiased hanging-puntuation-first lg:tw-text-lg">
   <section class="tw-my-0 tw-pt-6">
     <div class="tw-container">
       <h1 class="tw-mb-6">{{ trans('dcpp.download') }} {{ $software_title }} {{ $software[0]['version'] }}</h1>
@@ -42,7 +42,7 @@
   </div>
 
   @if (!empty($software_screenshots))
-    <section class="bg-dark tw-my-0 tw-py-12 tw-text-gray-200">
+    <section class="tw-bg-gray-800 tw-my-0 tw-py-12 tw-text-gray-200">
       <div class="tw-container">
         <h2 class="tw-mb-6">{{ trans('dcpp.screenshots') }}</h2>
         <p>
@@ -56,7 +56,7 @@
     </section>
   @endif
 
-  <section class="bg-light border-top border-bottom tw-my-0 tw-py-12">
+  <section class="tw-bg-light border-top border-bottom tw-my-0 tw-py-12">
     <div class="tw-container">
       <h2>{{ trans('dcpp.hubs') }}</h2>
       @ru
@@ -112,7 +112,7 @@
     </section>
   @endif
 
-  <section class="bg-light tw-my-0 tw-py-12">
+  <section class="tw-bg-light tw-my-0 tw-py-12">
     <div class="tw-container">
       <div class="md:tw-flex md:tw--mx-4">
         <div class="md:tw-w-1/2 md:tw-px-4">

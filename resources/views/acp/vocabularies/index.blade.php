@@ -34,7 +34,7 @@
       <td>{{ $model->level }}</td>
       <td class="tw-whitespace-no-wrap">
         <a class="bg-vocab tw-block tw-font-bold tw-pb-1 tw-px-2 tw-rounded tw-text-center tw-text-white hover:tw-text-gray-400" href="{{ path("$self@show", $model) }}">
-          <span class="tw-inline-block f36 ja-character ja-shadow">{{ $model->character }}</span>
+          <span class="tw-inline-block tw-text-4xl ja-character ja-shadow">{{ $model->character }}</span>
         </a>
       </td>
       <td class="tw-whitespace-pre-line">{{ implode("\n", explode(', ', $model->meaning)) }}</td>

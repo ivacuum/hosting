@@ -7,7 +7,7 @@
     <input name="q" class="form-control" placeholder="Поиск..." value="{{ $q ?? '' }}">
   </form>
 </div>
-<table class="f13 table-stats table-adaptive">
+<table class="tw-text-xs table-stats table-adaptive">
   <thead>
   <tr>
     <th>#</th>

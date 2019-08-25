@@ -5,10 +5,6 @@ $notie-border-bottom-color: rgba($black, .2);
 
 @import "~notie/src/notie";
 
-.notie-container {
-  @include font-smoothing();
-}
-
 .notie-textbox {
   padding: 1rem;
 }

@@ -21,7 +21,7 @@
           </div>
         @endif
     </aside>
-    <div class="tw-break-words mw-700 tw-w-full">
+    <div class="tw-break-words tw-max-w-700px tw-w-full">
       <div>
         @if (null !== $comment->user)
           <a href="{{ $comment->user->www() }}">{{ $comment->user->publicName() }}</a>
@@ -36,7 +36,7 @@
         @endif
       </div>
       <div class="comment-body tw-whitespace-pre-line">{!! $comment->html !!}</div>
-      <div class="small text-muted">{{ $comment->fullDate() }}</div>
+      <div class="tw-text-xs text-muted">{{ $comment->fullDate() }}</div>
     </div>
   </div>
 @endforeach

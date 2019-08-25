@@ -24,7 +24,7 @@ export default {
       date.setUTCHours(20, 30, 0, 0)
       date.setDate(date.getDate() + 2)
 
-      return date.toISOString().replace(/T/, ' ').replace(/\.000Z/, '')
+      return date.toISOString().replace(/\.000Z/, '')
     },
 
     notify() {
@@ -55,7 +55,7 @@ export default {
     <input
       required
       class="form-control"
-      type="date"
+      type="datetime-local"
       name="date"
       v-model="date"
     >

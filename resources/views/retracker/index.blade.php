@@ -20,7 +20,7 @@
   </div>
 </section>
 
-<section class="bg-light border-top border-bottom tw-py-12">
+<section class="tw-bg-light border-top border-bottom tw-py-12">
   <div class="tw-container tw-max-w-3xl">
     <h3>Зачем он нужен?</h3>
     <ul class="tw-mb-0">
@@ -44,7 +44,7 @@ sudo ./retracker.local.sh</pre>
   </div>
 </section>
 
-<section class="bg-light border-top tw-py-12">
+<section class="tw-bg-light border-top tw-py-12">
   <div class="tw-container tw-max-w-3xl">
     <h3>Как понять, что ретрекер заработал?</h3>
     <p>Статус трекера «retracker.local» в вашем торрент-клиент на вкладке «Трекеры» (Trackers) должен измениться на «работает» (working) как на картинке ниже:</p>

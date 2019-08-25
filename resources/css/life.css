@@ -12,22 +12,10 @@
   vertical-align: -.125em;
 }
 
-.flag-shadow { filter: drop-shadow(0 0 1px rgba($black, .5)); }
-
 .brightness-3\/4 {
   filter: brightness(.75);
 }
 
 .group:hover .group-hover\:brightness-full {
   filter: brightness(1);
-}
-
-.pic-container {
-  @apply mb-6 -mx-4;
-}
-
-@screen sm {
-  .pic-container {
-    @apply mx-0;
-  }
 }

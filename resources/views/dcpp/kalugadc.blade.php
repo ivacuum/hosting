@@ -13,14 +13,10 @@
 
   <section>
     <h2>Установка и настройка</h2>
-    <div>После установки клиентка вам необходимо будет указать ваш ник:</div>
-    <div class="tw-mt-2 img-container tw-text-left">
-      <img class="screenshot" src="https://img.ivacuum.ru/g/091002/1_1aVMvTi73f.jpg" width="664" height="503">
-    </div>
-    <div>А также указать папки, доступ к которым будет открыт для других пользователей:</div>
-    <div class="tw-mt-2 img-container tw-text-left">
-      <img class="screenshot" src="https://img.ivacuum.ru/g/091002/1_aid11fD5AJ.jpg" width="657" height="500">
-    </div>
+    <p>После установки клиентка вам необходимо будет указать ваш ник:</p>
+    @include('tpl.screenshot', ['pic' => 'https://img.ivacuum.ru/g/091002/1_1aVMvTi73f.jpg', 'w' => 664, 'h' => 503])
+    <p>А также указать папки, доступ к которым будет открыт для других пользователей:</p>
+    @include('tpl.screenshot', ['pic' => 'https://img.ivacuum.ru/g/091002/1_aid11fD5AJ.jpg', 'w' => 657, 'h' => 500])
     <div>После этих настроек перезапустите программу и пользуйтесь <strong>Kaluga DC++</strong> с удовольствием!</div>
   </section>
 @en

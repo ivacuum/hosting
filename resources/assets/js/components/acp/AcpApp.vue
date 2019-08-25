@@ -12,7 +12,7 @@ export default {
   <acp-menu/>
   <acp-breadcrumbs/>
 
-  <div class="container-flex">
+  <div class="tw-flex-h-full">
     <div class="tw-container tw-my-4">
       <router-view/>
     </div>

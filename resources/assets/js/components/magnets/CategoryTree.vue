@@ -19,7 +19,7 @@ export default {
     <div v-for="(child, childId) in category.children" :key="childId">
       <mark v-if="$route.query.category_id === childId">{{ child.title }}</mark>
       <router-link class="visited" :to="{ query: { category_id: childId }}" v-else>{{ child.title }}</router-link>
-      <span class="text-muted f13">{{ stats[childId] }}</span>
+      <span class="text-muted tw-text-xs">{{ stats[childId] }}</span>
     </div>
   </div>
 </nav>

@@ -10,7 +10,7 @@
   @if (Auth::check())
     <form class="tw-mr-4" action="{{ path('Subscriptions@update') }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}
-      <button class="btn btn-default btn-sm font-small-caps svg-flex svg-label">
+      <button class="btn btn-default btn-sm small-caps svg-flex svg-label">
         @svg (mail)
         {{ trans(Auth::user()->notify_news ? 'mail.unsubscribe' : 'mail.subscribe') }}
       </button>
@@ -19,12 +19,12 @@
       @csrf
     </form>
   @else
-    <a class="btn btn-default btn-sm svg-flex svg-label font-small-caps tw-mr-4" href="{{ path('Subscriptions@edit', ['news' => 1]) }}">
+    <a class="btn btn-default btn-sm svg-flex svg-label small-caps tw-mr-4" href="{{ path('Subscriptions@edit', ['news' => 1]) }}">
       @svg (mail)
       {{ trans('mail.subscribe') }}
     </a>
   @endif
-  <a class="f18 svg-flex svg-label font-small-caps" href="{{ path('NewsRss@index') }}">
+  <a class="tw-text-lg svg-flex svg-label small-caps" href="{{ path('NewsRss@index') }}">
     @svg (rss-square)
     rss
   </a>
@@ -62,7 +62,7 @@
             </div>
           </header>
           <div class="{{ !$loop->last ? 'tw-mb-12' : '' }}">
-            <div class="tw-hidden sm:tw-block life-text markdown-body tw-break-words js-news-views-observer" itemprop="articleBody" data-id="{{ $model->id }}">{!! $model->html !!}</div>
+            <div class="tw-hidden sm:tw-block tw-antialiased hanging-puntuation-first lg:tw-text-lg markdown-body tw-break-words js-news-views-observer" itemprop="articleBody" data-id="{{ $model->id }}">{!! $model->html !!}</div>
           </div>
         </article>
       @endforeach

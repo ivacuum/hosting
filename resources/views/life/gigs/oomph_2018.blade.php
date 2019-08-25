@@ -34,12 +34,16 @@
     </ol>
   </div>
   <div class="sm:tw-w-1/2 md:tw-w-5/12 sm:tw-px-4">
-    <div class="img-container">
-      <img src="https://life.ivacuum.org/gigs/oomph.2018.09.14.jpg">
+    <div class="tw-mb-6 tw-text-center tw-mobile-wide">
+      <img class="image-fit-viewport tw-max-w-full sm:tw-rounded" src="https://life.ivacuum.org/gigs/oomph.2018.09.14.jpg">
     </div>
   </div>
 </div>
 
-<p class="tw-mb-1">@ru Видеозапись выступления. @en Video of the show. @endru</p>
+@ru
+  <p>Видеозапись выступления.</p>
+@en
+  <p>Video of the show.</p>
+@endru
 <youtube title="Oomph 2018, Moscow, Russia" v="Nv-LLFJYvOI"></youtube>
 @endsection

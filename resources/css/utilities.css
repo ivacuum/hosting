@@ -1,3 +1,13 @@
+.top-2 {
+  top: .5rem;
+}
+
+.hanging-puntuation-first {
+  hanging-punctuation: first;
+}
+
+.small-caps { font-variant: small-caps; }
+
 .tw-mobile-wide {
   @apply -mx-4;
 }

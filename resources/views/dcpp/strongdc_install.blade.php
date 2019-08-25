@@ -4,7 +4,7 @@
 
 @section('content_header')
 @parent
-<div class="life-text">
+<div class="tw-antialiased hanging-puntuation-first lg:tw-text-lg">
 @endsection
 
 @section('content_footer')

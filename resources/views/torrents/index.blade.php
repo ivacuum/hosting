@@ -23,7 +23,7 @@
               @else
                 <a class="visited" href="{{ path("$self@index", ['category_id' => $id]) }}">{{ $child['title'] }}</a>
               @endif
-              <span class="text-muted f13">{{ $stats[$id] }}</span>
+              <span class="text-muted tw-text-xs">{{ $stats[$id] }}</span>
             </div>
           @endforeach
         @endif
@@ -31,7 +31,7 @@
     </nav>
     @guest
       @ru
-        <div class="alert alert-info tw-mr-6 tw-mt-6 tw-p-2 small">
+        <div class="alert alert-info tw-mr-6 tw-mt-6 tw-p-2 tw-text-xs">
           <a class="link" href="{{ path('Auth\SignIn@index', ['goto' => path('Torrents@index')]) }}">Пользователям</a> доступны чат и добавление раздач
         </div>
       @endru

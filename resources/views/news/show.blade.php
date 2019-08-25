@@ -26,7 +26,7 @@
       </span>
     </div>
   </header>
-  <div class="life-text markdown-body tw-break-words" itemprop="articleBody">{!! $news->html !!}</div>
+  <div class="tw-antialiased hanging-puntuation-first lg:tw-text-lg markdown-body tw-break-words" itemprop="articleBody">{!! $news->html !!}</div>
 </article>
 
 @include('tpl.comments-list')

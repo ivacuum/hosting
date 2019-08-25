@@ -9,7 +9,7 @@
         class="tw-block ja-shadow-light tw-py-6 tw-text-white hover:tw-text-gray-300"
         href="{{ path('JapaneseWanikaniRadicals@index') }}"
       >
-        <span class="tw-block f36">部首</span>
+        <span class="tw-block tw-text-4xl">部首</span>
         {{ trans('japanese.radicals') }}
       </a>
     </div>
@@ -20,7 +20,7 @@
         class="tw-block ja-shadow-light tw-py-6 tw-text-white hover:tw-text-gray-300"
         href="{{ path('JapaneseWanikaniKanji@index') }}"
       >
-        <span class="tw-block f36">漢字</span>
+        <span class="tw-block tw-text-4xl">漢字</span>
         {{ trans('japanese.kanji') }}
       </a>
     </div>
@@ -31,7 +31,7 @@
         class="tw-block ja-shadow-light tw-py-6 tw-text-white hover:tw-text-gray-300"
         href="{{ path('JapaneseWanikaniVocabulary@index') }}"
       >
-        <span class="tw-block f36">単語</span>
+        <span class="tw-block tw-text-4xl">単語</span>
         {{ trans('japanese.vocabulary') }}
       </a>
     </div>

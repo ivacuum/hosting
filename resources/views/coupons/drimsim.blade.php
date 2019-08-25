@@ -4,7 +4,7 @@
 
 @section('content')
 <h1>{{ $meta_title }}</h1>
-<div class="mw-600">
+<div class="tw-max-w-600px">
   @ru
     <p>Если вы только собираетесь заказать симку, то по ссылке ниже можно получить дополнительные 7&nbsp;евро на счет при первом пополнении баланса.</p>
     <a class="btn btn-primary" href="{{ config('cfg.drimsim_link') }}">Заказать симку с бонусом в 7&nbsp;евро</a>

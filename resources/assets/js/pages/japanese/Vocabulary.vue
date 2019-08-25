@@ -55,7 +55,7 @@ export default {
       :to="{ name: 'wk.level', params: { level: vocab.level }}"
     >{{ vocab.level }}</router-link>
     <div class="bg-vocab ja-shadow-light tw-mr-4 tw-px-2 tw-py-1 tw-rounded tw-text-white">{{ vocab.character }}</div>
-    <div class="f24 tw-capitalize">{{ vocab.meaning }}</div>
+    <div class="tw-text-2xl tw-capitalize">{{ vocab.meaning }}</div>
   </div>
 
   <div class="tw-items-center tw-flex tw-flex-wrap">

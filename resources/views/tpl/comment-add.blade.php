@@ -13,7 +13,7 @@
       </div>
     </aside>
   @endif
-  <div class="tw-break-words mw-700 tw-w-full">
+  <div class="tw-break-words tw-max-w-700px tw-w-full">
     @if (!Auth::check())
       <div class="tw-mb-4">
         @ru
@@ -29,7 +29,7 @@
             >
               @svg (vk)
             </a>
-            <div class="tw-mt-1 small text-muted">{{ trans('auth.vk') }}</div>
+            <div class="tw-mt-1 tw-text-xs text-muted">{{ trans('auth.vk') }}</div>
           </div>
           <div class="tw-mr-2 tw-text-center">
             <a
@@ -38,7 +38,7 @@
             >
               @svg (facebook)
             </a>
-            <div class="tw-mt-1 small text-muted">{{ trans('auth.facebook') }}</div>
+            <div class="tw-mt-1 tw-text-xs text-muted">{{ trans('auth.facebook') }}</div>
           </div>
           <div class="tw-mr-2 tw-text-center">
             <a
@@ -47,7 +47,7 @@
             >
               @svg (google)
             </a>
-            <div class="tw-mt-1 small text-muted">{{ trans('auth.google') }}</div>
+            <div class="tw-mt-1 tw-text-xs text-muted">{{ trans('auth.google') }}</div>
           </div>
         </div>
       </div>

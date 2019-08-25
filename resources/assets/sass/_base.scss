@@ -26,11 +26,7 @@ mark {
 
 ol { padding-left: 1.5rem; }
 ul { padding-left: 1.25rem; }
-
 section { padding-top: 2rem; }
-
-.container-flex { flex: 1 0 auto; }
-.cursor-pointer { cursor: pointer; }
 
 .footer {
   background-color: #fafafa;
@@ -57,3 +53,5 @@ section { padding-top: 2rem; }
   border-top-color: #ddd;
   border-radius: 4px;
 }
+
+.text-muted { color: $text-muted; }

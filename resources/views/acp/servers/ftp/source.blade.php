@@ -21,7 +21,11 @@
   @csrf
 
   <div class="tw-mb-4">
-    <textarea class="form-control tw-text-sm textarea-autosized js-autosize-textarea" name="source" rows="2" style="font-family: var(--font-family-monospace);">{{ $source }}</textarea>
+    <textarea
+      class="form-control tw-text-sm tw-font-mono textarea-autosized js-autosize-textarea"
+      name="source"
+      rows="2"
+    >{{ $source }}</textarea>
   </div>
 
   <button class="btn btn-primary">

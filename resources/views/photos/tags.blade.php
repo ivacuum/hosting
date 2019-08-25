@@ -5,12 +5,12 @@
   @php ($initial = $current_initial = false)
   @foreach ($tags as $tag)
     @php ($current_initial = $tag->initial())
-    <div class="city-entry tw-pb-2">
+    <div class="city-entry tw-relative tw-ml-6 tw-pb-2">
       @if ($initial !== $current_initial)
-        <span class="city-initial">{{ $current_initial }}</span>
+        <span class="tw-absolute tw-font-bold tw-uppercase tw--ml-6">{{ $current_initial }}</span>
       @endif
       <a class="link" href="{{ path('Photos@tag', $tag) }}">#{{ $tag->title }}</a>
-      <span class="city-trips">{{ $tag->photos_published_count }}</span>
+      <span class="tw-text-xs text-muted">{{ $tag->photos_published_count }}</span>
     </div>
     @php ($initial = $current_initial)
   @endforeach

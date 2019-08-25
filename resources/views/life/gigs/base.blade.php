@@ -11,7 +11,7 @@
   {{ $gig->title }}
   <span class="tw-text-base text-muted"><time datetime="{{ $gig->date->toDateString() }}">{{ $gig->fullDate() }}</time></span>
 </h1>
-<div class="mw-1000 js-trip-shortcuts">
+<div class="tw-max-w-1000px js-trip-shortcuts">
 @endsection
 
 @section('content_footer')

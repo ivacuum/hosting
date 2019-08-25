@@ -48,7 +48,7 @@
   align-items: center;
 
   @include media-breakpoint-down(sm) {
-    .invisible { display: none; }
+    .tw-invisible { display: none; }
   }
 
   @include media-breakpoint-up(md) {

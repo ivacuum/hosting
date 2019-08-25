@@ -1,4 +1,4 @@
-<div class="navbar navbar-border navbar-expand-md tw-px-0 md:tw-py-0 {{ $navbar_classes ?? 'tw-hidden md:tw-flex' }} {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'navbar-dark text-light' : 'navbar-light bg-light' }}">
+<div class="navbar navbar-border navbar-expand-md tw-px-0 md:tw-py-0 {{ $navbar_classes ?? 'tw-hidden md:tw-flex' }} {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'navbar-dark text-light' : 'navbar-light tw-bg-light' }}">
   <div class="tw-container">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="navbar-toggler-icon"></span>

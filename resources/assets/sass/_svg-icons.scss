@@ -48,3 +48,5 @@
     &:last-child { margin-right: 0; }
   }
 }
+
+.svg-shadow { filter: drop-shadow(0 0 1px rgba(0, 0, 0, .4)); }

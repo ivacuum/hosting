@@ -17,19 +17,19 @@ Mousetrap.bind('right', () => {
   <div class="lg:tw-w-5/6 lg:tw-px-4 tw-mb-4">
     <div class="tw-mobile-wide tw-relative tw-text-center">
       @if (null !== $next)
-        <a class="photo-show-nav photo-show-prev js-pjax js-pjax-no-dim" id="prev_page" href="{{ path("$self@show", [$next->id, 'city_id' => $city_id, 'country_id' => $country_id, 'tag_id' => $tag_id, 'trip_id' => $trip_id]) }}">&nbsp;</a>
+        <a class="tw-absolute tw-top-0 tw-w-1/2 tw-h-full tw-z-10 tw-left-0 js-pjax js-pjax-no-dim" id="prev_page" href="{{ path("$self@show", [$next->id, 'city_id' => $city_id, 'country_id' => $country_id, 'tag_id' => $tag_id, 'trip_id' => $trip_id]) }}">&nbsp;</a>
       @endif
       @if (null !== $prev)
-        <a class="photo-show-nav photo-show-next js-pjax js-pjax-no-dim" id="next_page" href="{{ path("$self@show", [$prev->id, 'city_id' => $city_id, 'country_id' => $country_id, 'tag_id' => $tag_id, 'trip_id' => $trip_id]) }}">&nbsp;</a>
+        <a class="tw-absolute tw-top-0 tw-w-1/2 tw-h-full tw-z-10 tw-left-1/2 js-pjax js-pjax-no-dim" id="next_page" href="{{ path("$self@show", [$prev->id, 'city_id' => $city_id, 'country_id' => $country_id, 'tag_id' => $tag_id, 'trip_id' => $trip_id]) }}">&nbsp;</a>
       @endif
       <div class="tw-inline-block tw-relative">
         @if (null !== $next)
-          <div class="photo-overlay-arrow tw-left-0 tw-pl-1">
+          <div class="tw-absolute tw-top-1/2 tw-left-0 tw-text-base md:tw-text-2xl tw-leading-none tw-text-white svg-shadow tw--mt-2 md:tw--mt-3 tw-pl-1">
             @svg (chevron-left)
           </div>
         @endif
         @if (null !== $prev)
-          <div class="photo-overlay-arrow tw-right-0 tw-pr-1">
+          <div class="tw-absolute tw-top-1/2 tw-right-0 tw-text-base md:tw-text-2xl tw-leading-none tw-text-white photo-overlay-arrowt tw--mt-2 md:tw--mt-3 tw-pr-1">
             @svg (chevron-right)
           </div>
         @endif
@@ -41,7 +41,7 @@ Mousetrap.bind('right', () => {
     <div class="tw-flex tw-flex-wrap md:tw-flex-col">
       <div class="tw-mr-2 md:tw-mr-0 text-muted">{{ trans('photos.story') }}</div>
       <a class="tw-flex tw-flex-wrap tw-items-center link-parent" href="{{ $photo->rel->www() }}#{{ basename($photo->slug) }}">
-        <img class="flag-16 flag-shadow tw-mr-1" src="{{ $photo->rel->city->country->flagUrl() }}">
+        <img class="flag-16 svg-shadow tw-mr-1" src="{{ $photo->rel->city->country->flagUrl() }}">
         <span class="link">{{ $photo->rel->title }}</span>
       </a>
     </div>

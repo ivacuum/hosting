@@ -32,14 +32,14 @@
     </ol>
   </div>
   <div class="md:tw-w-5/12 md:tw-px-4">
-    <div class="img-container">
-      <img src="https://life.ivacuum.org/gigs/rammstein.2013.06.08.jpg">
+    <div class="tw-mb-6 tw-text-center tw-mobile-wide">
+      <img class="image-fit-viewport tw-max-w-full sm:tw-rounded" src="https://life.ivacuum.org/gigs/rammstein.2013.06.08.jpg">
     </div>
   </div>
 </div>
 
 @ru
-  <p class="tw-mb-1">Видеозапись концерта.</p>
+  <p>Видеозапись концерта.</p>
 @endru
 <youtube title="Rammstein 2013, Samara, Russia" v="pG9fkA_FYGQ"></youtube>
 

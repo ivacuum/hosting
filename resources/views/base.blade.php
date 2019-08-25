@@ -42,33 +42,33 @@
 @section('bottom-tabbar')
 <header class="bottom-tabbar-container tw-fixed tw-bottom-0 tw-left-0 tw-right-0 tw-flex tw-items-center tw-justify-center md:tw-hidden revealed js-bottom-tabbar-reveal">
   <nav class="tw-flex tw-justify-between tw-text-center tw-mx-1 tw-w-full">
-    <a class="bottom-tab tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-center sm:tw-justify-center tw-no-underline tw-w-full bg-transparent tw-pt-2 tw-pb-1 sm:tw-py-3 tw-flex-1 tw-leading-none {{ $self === 'Home' ? 'active' : '' }}" href="{{ path('Home@index') }}">
+    <a class="bottom-tab tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-center sm:tw-justify-center tw-no-underline tw-w-full tw-bg-transparent tw-pt-2 tw-pb-1 sm:tw-py-3 tw-flex-1 tw-leading-none {{ $self === 'Home' ? 'active' : '' }}" href="{{ path('Home@index') }}">
       <div>
         @svg (home)
       </div>
       <div class="tw-text-2xs sm:tw-text-sm tw-mt-1 sm:tw-mt-0 sm:tw-ml-2">{{ trans('menu.home') }}</div>
     </a>
-    <a class="bottom-tab tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-center sm:tw-justify-center tw-no-underline tw-w-full bg-transparent tw-pt-2 tw-pb-1 sm:tw-py-3 tw-flex-1 tw-leading-none {{ $self === 'Life' ? 'active' : '' }}" href="{{ path('Life@index') }}">
+    <a class="bottom-tab tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-center sm:tw-justify-center tw-no-underline tw-w-full tw-bg-transparent tw-pt-2 tw-pb-1 sm:tw-py-3 tw-flex-1 tw-leading-none {{ $self === 'Life' ? 'active' : '' }}" href="{{ path('Life@index') }}">
       <div>
         @svg (file-text-o)
       </div>
       <div class="tw-text-2xs sm:tw-text-sm tw-mt-1 sm:tw-mt-0 sm:tw-ml-2">{{ trans('menu.life') }}</div>
     </a>
-    <a class="bottom-tab tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-center sm:tw-justify-center tw-no-underline tw-w-full bg-transparent tw-pt-2 tw-pb-1 sm:tw-py-3 tw-flex-1 tw-leading-none {{ $self === 'Photos' ? 'active' : '' }}" href="{{ path('Photos@trips') }}">
+    <a class="bottom-tab tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-center sm:tw-justify-center tw-no-underline tw-w-full tw-bg-transparent tw-pt-2 tw-pb-1 sm:tw-py-3 tw-flex-1 tw-leading-none {{ $self === 'Photos' ? 'active' : '' }}" href="{{ path('Photos@trips') }}">
       <div>
         @svg (picture-o)
       </div>
       <div class="tw-text-2xs sm:tw-text-sm tw-mt-1 sm:tw-mt-0 sm:tw-ml-2">{{ trans('photos.index') }}</div>
     </a>
     @if (Auth::check())
-      <a class="bottom-tab tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-center sm:tw-justify-center tw-no-underline tw-w-full bg-transparent tw-pt-2 tw-pb-1 sm:tw-py-3 tw-flex-1 tw-leading-none {{ Illuminate\Support\Str::startsWith(request()->path(), 'my/') ? 'active' : '' }}" href="{{ path('MyProfile@edit') }}">
+      <a class="bottom-tab tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-center sm:tw-justify-center tw-no-underline tw-w-full tw-bg-transparent tw-pt-2 tw-pb-1 sm:tw-py-3 tw-flex-1 tw-leading-none {{ Illuminate\Support\Str::startsWith(request()->path(), 'my/') ? 'active' : '' }}" href="{{ path('MyProfile@edit') }}">
         <div>
           @svg (user-circle-o)
         </div>
         <div class="tw-text-2xs sm:tw-text-sm tw-mt-1 sm:tw-mt-0 sm:tw-ml-2">{{ trans('my.profile') }}</div>
       </a>
     @else
-      <a class="bottom-tab tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-center sm:tw-justify-center tw-no-underline tw-w-full bg-transparent tw-pt-2 tw-pb-1 sm:tw-py-3 tw-flex-1 tw-leading-none {{ $view === 'auth.login' ? 'active' : '' }}" href="{{ path('Auth\SignIn@index') }}">
+      <a class="bottom-tab tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-center sm:tw-justify-center tw-no-underline tw-w-full tw-bg-transparent tw-pt-2 tw-pb-1 sm:tw-py-3 tw-flex-1 tw-leading-none {{ $view === 'auth.login' ? 'active' : '' }}" href="{{ path('Auth\SignIn@index') }}">
         <div>
           @svg (sign-in)
         </div>
@@ -79,28 +79,36 @@
 </header>
 @show
 
-<div class="container-flex">
+<div class="tw-flex-h-full">
   @section('breadcrumbs')
     @include('tpl.breadcrumbs', ['breadcrumbs' => $breadcrumbs ?? Breadcrumbs::get()])
   @show
   <div class="js-flash-notification">
     @if ($first_time_visit && !Auth::check() && $locale !== $locale_preffered && empty($no_language_selector) && !$is_crawler)
       <div class="alert alert-warning tw-my-0 tw-px-0 tw-rounded-none">
-        <div class="tw-container">
-          <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
-          @ru
-            Hey, looks like you might find useful the <a class="link" href="{{ url("en/{$request_uri}") }}">English version</a> of this page
-          @en
-            Похоже, что вам может пригодиться версия этой страницы <a class="link" href="{{ url($request_uri) }}">на русском языке</a>
-          @endru
+        <div class="tw-container tw-flex">
+          <div class="tw-mr-auto">
+            @ru
+              Hey, looks like you might find useful the <a class="link" href="{{ url("en/{$request_uri}") }}">English version</a> of this page
+            @en
+              Похоже, что вам может пригодиться версия этой страницы <a class="link" href="{{ url($request_uri) }}">на русском языке</a>
+            @endru
+          </div>
+          <div>
+            <button type="button" class="tw-border-0 tw-bg-transparent tw-appearance-none tw-cursor-pointer tw-leading-none tw-text-xl tw-p-0 tw-opacity-50 hover:tw-opacity-75 hover:tw-no-underline" data-dismiss="alert">&times;</button>
+          </div>
         </div>
       </div>
     @endif
     @if (Session::has('message'))
       <div class="alert alert-info tw-my-0 tw-px-0 tw-rounded-none">
-        <div class="tw-container">
-          <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
-          {{ Session::get('message') }}
+        <div class="tw-container tw-flex">
+          <div class="tw-mr-auto">
+            {{ Session::get('message') }}
+          </div>
+          <div>
+            <button type="button" class="tw-border-0 tw-bg-transparent tw-appearance-none tw-cursor-pointer tw-leading-none tw-text-xl tw-p-0 tw-opacity-50 hover:tw-opacity-75 hover:tw-no-underline" data-dismiss="alert">&times;</button>
+          </div>
         </div>
       </div>
     @endif
@@ -137,7 +145,7 @@
               @ru
                 <a class="tw-flex tw-flex-wrap tw-items-center tw-whitespace-no-wrap" href="{{ url("en/{$request_uri}") }}" lang="en">
                   <div class="tw-mr-1">
-                    <svg class="flag-16 flag-shadow" viewBox="0 0 640 480" width="16" height="12">
+                    <svg class="flag-16 svg-shadow" viewBox="0 0 640 480" width="16" height="12">
                       <g fill-rule="evenodd">
                         <g stroke-width="1pt">
                           <path fill="#bd3d44" d="M0 0h972.81v39.385H0zm0 78.77h972.81v39.385H0zm0 78.77h972.81v39.385H0zm0 78.77h972.81v39.385H0zm0 78.77h972.81v39.385H0zm0 78.77h972.81v39.385H0zm0 78.77h972.81v39.385H0z" transform="scale(.9375)"/>
@@ -153,7 +161,7 @@
               @en
                 <a class="tw-flex tw-flex-wrap tw-items-center tw-whitespace-no-wrap" href="{{ url($request_uri) }}" lang="ru">
                   <div class="tw-mr-1">
-                    <svg class="flag-16 flag-shadow" viewBox="0 0 640 480" width="16" height="12">
+                    <svg class="flag-16 svg-shadow" viewBox="0 0 640 480" width="16" height="12">
                       <g fill-rule="evenodd" stroke-width="1pt">
                         <path fill="#fff" d="M0 0h640v480H0z"/>
                         <path fill="#0039a6" d="M0 160.003h640V480H0z"/>

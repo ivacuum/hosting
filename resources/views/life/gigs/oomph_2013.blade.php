@@ -33,14 +33,14 @@
     </ol>
   </div>
   <div class="md:tw-w-5/12 md:tw-px-4">
-    <div class="img-container">
-      <img src="https://life.ivacuum.org/gigs/oomph.2013.10.19.jpg">
+    <div class="tw-mb-6 tw-text-center tw-mobile-wide">
+      <img class="image-fit-viewport tw-max-w-full sm:tw-rounded" src="https://life.ivacuum.org/gigs/oomph.2013.10.19.jpg">
     </div>
   </div>
 </div>
 
 @ru
-  <p class="tw-mb-1">Видеозапись выступления.</p>
+  <p>Видеозапись выступления.</p>
 @endru
 <youtube title="Oomph 2013, Moscow, Russia" v="RsLFgW-wsP0"></youtube>
 @endsection

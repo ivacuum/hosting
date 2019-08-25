@@ -47,7 +47,7 @@ export default {
       >
         <td class="tooltipped tooltipped-n" :aria-label="resource.country.title">
           <router-link :to="resource.country.show_url">
-            <img class="tw-block flag-16 flag-shadow" :src="resource.country.flag_url">
+            <img class="tw-block flag-16 svg-shadow" :src="resource.country.flag_url">
           </router-link>
         </td>
         <td>

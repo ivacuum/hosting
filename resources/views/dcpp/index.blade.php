@@ -1,7 +1,7 @@
 @extends('dcpp.base')
 
 @section('content')
-<div class="life-text md:tw-flex md:tw--mx-4">
+<div class="tw-antialiased hanging-puntuation-first lg:tw-text-lg md:tw-flex md:tw--mx-4">
   <div class="md:tw-w-1/4 md:tw-px-4">
     <h1>{{ trans('dcpp.index') }}</h1>
     <div class="list-group">

@@ -8,7 +8,7 @@
 @parent
 @include('tpl.city-timeline')
 <div class="tw-flex tw-flex-wrap tw-items-center tw-mb-2">
-  <img class="flag-24 flag-shadow tw-mr-2" src="{{ $trip->city->country->flagUrl() }}">
+  <img class="flag-24 svg-shadow tw-mr-2" src="{{ $trip->city->country->flagUrl() }}">
   <h1 class="h2 tw-mb-1 tw-mr-2">{{ $trip->title }}</h1>
   @include('tpl.city-map-button', ['city' => $trip->city])
   @if (optional(auth()->user())->isRoot())
@@ -18,13 +18,13 @@
   @endif
 </div>
 <time datetime="{{ $trip->date_start->toDateString() }}"></time>
-<div id="trip_city_map" class="trip-city-map tw-mb-4 tw-hidden"></div>
+<div id="trip_city_map" class="tw-mb-4 tw-hidden tw-mobile-wide tw-h-1/2-screen"></div>
 
-<div class="mw-1000 js-trip-shortcuts">
+<article class="tw-max-w-1000px js-trip-shortcuts">
 @endsection
 
 @section('content_footer')
-</div>
+</article>
 
 @include('tpl.trips-timeline')
 
@@ -37,7 +37,7 @@
       <div class="tw-mb-2">{{ trans('life.newsletter.description') }}</div>
       <form action="{{ path('Subscriptions@update') }}" method="post">
         {{ ViewHelper::inputHiddenMail() }}
-        <button class="btn btn-default btn-sm font-small-caps svg-flex svg-label">
+        <button class="btn btn-default btn-sm small-caps svg-flex svg-label">
           @svg (mail)
           {{ trans('mail.subscribe') }}
         </button>
@@ -51,7 +51,7 @@
   <div class="alert alert-info tw-mt-6">
     <div class="tw-mb-2">{{ trans('life.newsletter.description') }}</div>
     <div class="tw-flex">
-      <a class="btn btn-default btn-sm svg-flex svg-label font-small-caps tw-mr-4" href="{{ path('Subscriptions@edit', ['trips' => 1]) }}">
+      <a class="btn btn-default btn-sm svg-flex svg-label small-caps tw-mr-4" href="{{ path('Subscriptions@edit', ['trips' => 1]) }}">
         @svg (mail)
         {{ trans('mail.subscribe') }}
       </a>

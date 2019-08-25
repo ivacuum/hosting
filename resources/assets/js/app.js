@@ -10,10 +10,8 @@ import TorrentsViewsObserver from './torrents-views-observer'
 
 import 'vac-gfe/js/jquery.batch-form'
 import 'vac-gfe/js/jquery.bottom-tabbar'
-import 'vac-gfe/js/jquery.confirm'
 import 'vac-gfe/js/jquery.dblclick-edit'
 import 'vac-gfe/js/jquery.entity-action'
-import 'vac-gfe/js/jquery.highlight'
 import 'vac-gfe/js/jquery.password-eye'
 import 'vac-gfe/js/jquery.select-all'
 

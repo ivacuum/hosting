@@ -2,7 +2,7 @@
 
 @section('content')
 <h1>{{ $meta_title }}</h1>
-<div class="mw-600">
+<div class="tw-max-w-600px">
   @ru
     <p>Получите скидку около 1000 рублей на ваше следующее бронирование на <a class="link" href="{{ config('cfg.booking_link') }}">booking.com</a> с помощью кнопки ниже.</p>
     <a class="btn btn-primary" href="{{ config('cfg.booking_link') }}">Получить скидку 1000 ₽</a>

@@ -20,18 +20,3 @@
 
 .border-hover:hover,
 .screenshot-link .screenshot:hover { border-color: $link-hover-border-color !important; }
-
-.img-container {
-  margin-bottom: 1.5rem;
-  text-align: center;
-
-  @include mobile-wide;
-
-  img {
-    height: auto;
-    max-height: 90vh;
-    max-width: 100%;
-
-    @include media-breakpoint-up(md) { border-radius: $border-radius-lg; }
-  }
-}

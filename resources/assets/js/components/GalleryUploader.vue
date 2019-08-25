@@ -6,7 +6,7 @@
     </div>
   </div>
   <div v-if="!uploading">
-    <div class="custom-file mw-400">
+    <div class="custom-file tw-max-w-400px">
       <input
         class="custom-file-input"
         accept="image/gif,image/jpeg,image/png"

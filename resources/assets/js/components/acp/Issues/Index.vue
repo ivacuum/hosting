@@ -63,11 +63,11 @@ export default {
         <td>
           <a :href="resource.user_url" v-if="resource.user_id">
             <div>{{ resource.email }}</div>
-            <div class="small text-muted">{{ resource.name }}</div>
+            <div class="tw-text-xs text-muted">{{ resource.name }}</div>
           </a>
           <div v-else>
             <div>{{ resource.email }}</div>
-            <div class="small text-muted">{{ resource.name }}</div>
+            <div class="tw-text-xs text-muted">{{ resource.name }}</div>
           </div>
         </td>
         <td class="md:tw-text-right tw-whitespace-no-wrap">

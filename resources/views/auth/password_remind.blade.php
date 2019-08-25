@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<div class="tw-mx-auto mw-400">
+<div class="tw-mx-auto tw-max-w-400px">
   <h3>{{ trans('auth.password_remind_title') }}</h3>
   <form action="{{ path('Auth\ForgotPassword@sendResetLink') }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}

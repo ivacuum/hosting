@@ -55,20 +55,20 @@
           <template v-for="row in collection">
             <div>
               <router-link
-                class="bg-vocab tw-inline-block f36 ja-character ja-shadow-light tw-px-2 tw-py-1 tw-rounded tw-whitespace-no-wrap tw-text-white hover:tw-text-gray-400"
+                class="bg-vocab tw-inline-block tw-text-4xl ja-character ja-shadow-light tw-px-2 tw-py-1 tw-rounded tw-whitespace-no-wrap tw-text-white hover:tw-text-gray-400"
                 :class="{ 'bg-burned': row.burned }"
                 :to="{ name: 'wk.vocabulary', params: { characters: row.character }}"
               >{{ row.character }}</router-link>
             </div>
             <a
               class="tw-my-4 md:tw-my-0 md:tw-pl-4 md:tw-pr-2 md:tw-py-1"
-              :class="{ invisible: labels }"
+              :class="{ 'tw-invisible': labels }"
               href="#"
               @click.prevent="reveal(row.id)"
             >？</a>
             <div
               class="text-muted"
-              :class="{ invisible: !labels && !revealed.includes(row.id), 'tw-mt-4 md:tw-mt-0': labels }"
+              :class="{ 'tw-invisible': !labels && !revealed.includes(row.id), 'tw-mt-4 md:tw-mt-0': labels }"
               :id="`kana-${row.id}`"
             >
               <div class="ja-character tw-whitespace-no-wrap" v-for="kana in row.kana.split(', ')">
@@ -76,12 +76,12 @@
               </div>
             </div>
             <div
-              :class="{ invisible: !labels && !revealed.includes(row.id), 'tw-mb-6 md:tw-mb-0': row.burned || guest }"
+              :class="{ 'tw-invisible': !labels && !revealed.includes(row.id), 'tw-mb-6 md:tw-mb-0': row.burned || guest }"
               :id="`meaning-${row.id}`"
             >{{ row.meaning }}</div>
             <a
               class="tw-mb-6 md:tw-mb-0 md:tw-px-2 md:tw-py-1 tw-text-red-600"
-              :class="{ invisible: row.burned || guest || (!labels && !revealed.includes(row.id)) }"
+              :class="{ 'tw-invisible': row.burned || guest || (!labels && !revealed.includes(row.id)) }"
               href="#"
               @click.prevent="burn(lvl, row.id)"
             >

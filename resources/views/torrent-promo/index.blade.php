@@ -2,14 +2,14 @@
   'body_classes' => '',
   'navbar_classes' => '',
   'no_language_selector' => $locale === 'ru',
-  'content_container_classes' => 'life-text',
+  'content_container_classes' => 'tw-antialiased hanging-puntuation-first lg:tw-text-lg',
 ])
 
 @section('bottom-tabbar')
 @endsection
 
 @section('content')
-<section class="bg-light tw-pt-4 tw-pb-12">
+<section class="tw-bg-light tw-pt-4 tw-pb-12">
   <div class="tw-container tw-max-w-3xl">
     <div class="tw-text-center tw-mb-4">
       <a href="{{ path('Torrents@index') }}">
@@ -46,7 +46,7 @@
   </div>
 </section>
 
-<section class="bg-light tw-py-12">
+<section class="tw-bg-light tw-py-12">
   <div class="tw-container tw-max-w-3xl">
     <h3>Доступен ли еще тот старый трекер 2010 года?</h3>
     <p>Да, он все еще доступен. Нынче он больше похож на форум, так как вместе с открытием нового трекера в начале 2017 года на <strong>t.ivacuum.ru</strong> была закрыта регистрация новых пользователей. Если у вас нет учетки или она была удалена за неактивностью, то вам будет доступно для чтения всего несколько разделов.</p>
@@ -62,7 +62,7 @@
   </div>
 </section>
 
-<section class="bg-dark tw-py-12 tw-text-gray-200">
+<section class="tw-bg-gray-800 tw-py-12 tw-text-gray-200">
   <div class="tw-container tw-max-w-3xl">
     <h3 class="tw-mb-6">Ключевые особенности трекера t.ivacuum.ru</h3>
     <div class="tw-flex tw-flex-wrap tw--mx-4">

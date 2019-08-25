@@ -4,7 +4,7 @@
 ])
 
 @section('content')
-<div class="mw-600">
+<div class="tw-max-w-600px">
   <img src="https://ivacuum.org/i/services/firstvds.png" width="135" height="72" onclick="location.href='https://firstvds.ru/?from=149161'">
   <h1 class="tw-mt-6">{{ trans('coupons.firstvds.subject') }}</h1>
   @ru
@@ -16,7 +16,7 @@
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 
-    <div class="mw-500">
+    <div class="tw-max-w-500px">
       <div class="input-group">
         <input
           required
