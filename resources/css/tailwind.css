@@ -3,6 +3,7 @@
 @import "~tailwindcss/components.css";
 @import "banners.css";
 @import "buttons.css";
+@import "forms.css";
 @import "life.css";
 @import "notie.css";
 @import "~tailwindcss/utilities.css";

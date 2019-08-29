@@ -1,11 +1,11 @@
-<div class="navbar navbar-border navbar-expand-md px-0 md:py-0 {{ $navbar_classes ?? 'hidden md:flex' }} {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'navbar-dark text-light' : 'navbar-light bg-light' }}">
+<div class="navbar navbar-border navbar-expand-md md:p-0 {{ $navbar_classes ?? 'hidden md:flex' }} {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'navbar-dark text-light' : 'navbar-light bg-light' }}">
   <div class="container">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse">
       @section('brand')
-        <a class="navbar-brand font-bold md:py-0 text-center" href="{{ path('Home@index') }}">vacuum<br>kaluga</a>
+        <a class="navbar-brand font-bold py-0 text-center" href="{{ path('Home@index') }}">vacuum<br>kaluga</a>
       @show
       <ul class="navbar-nav mr-auto md:items-center">
         @section('global_menu')

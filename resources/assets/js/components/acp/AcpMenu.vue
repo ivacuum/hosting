@@ -38,7 +38,7 @@ export default {
 </script>
 
 <template>
-<div class="navbar navbar-border navbar-expand-md px-0 md:py-0 navbar-light bg-light">
+<div class="navbar navbar-border navbar-expand-md md:p-0 navbar-light bg-light">
   <div class="container">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="navbar-toggler-icon"></span>

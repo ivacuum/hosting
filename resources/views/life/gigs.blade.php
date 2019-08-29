@@ -38,7 +38,7 @@
     <div>
       <div class="sticky top-2 font-bold mr-3">{{ $year }}</div>
     </div>
-    <div>
+    <div class="w-full">
     @foreach ($rows as $gig)
       <div class="{{ !$loop->last ? 'mb-2' : '' }}">
         @if ($gig->status === App\Gig::STATUS_PUBLISHED)

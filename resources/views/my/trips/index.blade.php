@@ -1,21 +1,23 @@
 @extends('my.base')
 
 @section('content')
-<h3>
-  {{ trans('my.trips') }}
-  <span class="text-base text-muted whitespace-no-wrap">{{ ViewHelper::number($models->total()) }}</span>
-  <a class="btn btn-success" href="{{ path('MyTrips@create') }}">
+<div class="flex flex-wrap items-center">
+  <h3 class="my-1 mr-3">
+    {{ trans('my.trips') }}
+    <span class="text-base text-muted whitespace-no-wrap">{{ ViewHelper::number($models->total()) }}</span>
+  </h3>
+  <a class="btn btn-success my-1 mr-1" href="{{ path('MyTrips@create') }}">
     {{ trans('acp.trips.create') }}
   </a>
   @if (optional(Auth::user())->login)
-    <a class="btn btn-default my-1" href="{{ path('UserTravelTrips@index', \Auth::user()->login) }}">
+    <a class="btn btn-default my-1 mr-1" href="{{ path('UserTravelTrips@index', \Auth::user()->login) }}">
       Просмотреть
     </a>
   @endif
   <a class="btn btn-default my-1" href="{{ path('Docs@page', 'trips') }}">
     @svg (question-circle)
   </a>
-</h3>
+</div>
 
 @if ($models->count())
   <table class="table-stats table-adaptive">

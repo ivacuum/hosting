@@ -4,8 +4,17 @@
   @apply inline-block rounded px-3 text-center;
 }
 
+.btn:focus {
+  @apply outline-none;
+}
+
 .btn:hover {
   @apply cursor-pointer;
+}
+
+.btn.disabled,
+.btn:disabled {
+  @apply opacity-50;
 }
 
 .btn-default {

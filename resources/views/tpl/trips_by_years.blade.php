@@ -3,7 +3,7 @@
     <div>
       <div class="sticky top-2 font-bold mr-3">{{ $year }}</div>
     </div>
-    <div>
+    <div class="w-full">
     @foreach ($rows as $trip)
       <div class="{{ !$loop->last ? 'mb-2' : '' }}">
         @if ($trip->status === App\Trip::STATUS_PUBLISHED)
