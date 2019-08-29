@@ -7,11 +7,11 @@
   {{ trans('life.visited_cities') }}
   <span class="text-base text-muted">{{ sizeof($cities) }}</span>
 </h1>
-<ul class="list-inline text-sm">
-  <li class="list-inline-item"><a class="link" href="{{ path('UserTravelTrips@index', $traveler->login) }}">{{ trans('life.by_year') }}</a></li>
-  <li class="list-inline-item"><a class="link" href="{{ path('UserTravelCountries@index', $traveler->login) }}">{{ trans('life.by_country') }}</a></li>
-  <li class="list-inline-item"><mark>{{ trans('life.by_city') }}</mark></li>
-</ul>
+<nav class="flex flex-wrap text-sm mb-4">
+  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path('UserTravelTrips@index', $traveler->login) }}">{{ trans('life.by_year') }}</a></div>
+  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path('UserTravelCountries@index', $traveler->login) }}">{{ trans('life.by_country') }}</a></div>
+  <div class="whitespace-no-wrap"><mark>{{ trans('life.by_city') }}</mark></div>
+</nav>
 
 <div class="cities-columns">
   @php ($initial = $current_initial = false)

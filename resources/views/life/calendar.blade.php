@@ -2,12 +2,12 @@
 
 @section('content')
 <h1 class="text-3xl">{{ trans('life.calendar') }}</h1>
-<ul class="list-inline text-sm">
-  <li class="list-inline-item whitespace-no-wrap"><a class="link" href="{{ path('Life@index') }}">{{ trans('life.by_year') }}</a></li>
-  <li class="list-inline-item whitespace-no-wrap"><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
-  <li class="list-inline-item whitespace-no-wrap"><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></li>
-  <li class="list-inline-item whitespace-no-wrap"><mark>{{ trans('life.by_days') }}</mark></li>
-</ul>
+<nav class="flex flex-wrap text-sm mb-4">
+  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path('Life@index') }}">{{ trans('life.by_year') }}</a></div>
+  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></div>
+  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></div>
+  <div class="whitespace-no-wrap"><mark>{{ trans('life.by_days') }}</mark></div>
+</nav>
 
 @if ($firstDate !== null && $lastDate !== null)
   @ru

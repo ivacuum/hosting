@@ -9,7 +9,7 @@
 @section('content')
 <div class="sm:flex sm:-mx-4">
   <section class="sm:w-2/3 md:w-1/2 sm:px-4 pt-0">
-    <div class="flex flex-wrap items-center mb-2">
+    <div class="flex flex-wrap items-center mb-1">
       <h1 class="text-3xl mb-1 mr-4">{{ trans('life.trips') }}</h1>
       @if (Auth::check())
         <form class="mr-4" action="{{ path('Subscriptions@update') }}" method="post">
@@ -33,12 +33,12 @@
         rss
       </a>
     </div>
-    <ul class="list-none pl-0 text-sm -mt-1">
-      <li class="list-inline-item whitespace-no-wrap"><mark>{{ trans('life.by_year') }}</mark></li>
-      <li class="list-inline-item whitespace-no-wrap"><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></li>
-      <li class="list-inline-item whitespace-no-wrap"><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></li>
-      <li class="list-inline-item whitespace-no-wrap"><a class="link" href="{{ path('Life@calendar') }}">{{ trans('life.by_days') }}</a></li>
-    </ul>
+    <nav class="flex flex-wrap text-sm mb-4">
+      <div class="mr-3 whitespace-no-wrap"><mark>{{ trans('life.by_year') }}</mark></div>
+      <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></div>
+      <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></div>
+      <div class="whitespace-no-wrap"><a class="link" href="{{ path('Life@calendar') }}">{{ trans('life.by_days') }}</a></div>
+    </nav>
 
     @include('tpl.trips_by_years')
   </section>

@@ -135,13 +135,13 @@
 <footer class="footer mt-6">
   <div class="container">
     @section('footer')
-      <ul class="list-inline mb-0">
+      <nav class="flex flex-wrap">
         @section('footer_copyright')
-          <li class="list-inline-item">&copy; {{ date('Y') }} vacuum</li>
+          <div class="mr-3">&copy; {{ date('Y') }} vacuum</div>
         @show
         @section('i18n')
           @if (empty($no_language_selector))
-            <li class="list-inline-item">
+            <div class="mr-3">
               @ru
                 <a class="flex flex-wrap items-center whitespace-no-wrap" href="{{ url("en/{$request_uri}") }}" lang="en">
                   <div class="mr-1">
@@ -172,15 +172,15 @@
                   <div>По-русски</div>
                 </a>
               @endru
-            </li>
+            </div>
           @endif
-          <li class="list-inline-item">
+          <div>
             <a href="{{ path('Issues@create') }}">
               {{ trans('issues.create') }}
             </a>
-          </li>
+          </div>
         @show
-      </ul>
+      </nav>
     @show
   </div>
 </footer>

@@ -7,12 +7,12 @@
   {{ trans('life.visited_countries') }}
   <span class="text-base text-muted">{{ sizeof($countries) }}</span>
 </h1>
-<ul class="list-inline text-sm">
-  <li class="list-inline-item whitespace-no-wrap"><a class="link" href="{{ path('Life@index') }}">{{ trans('life.by_year') }}</a></li>
-  <li class="list-inline-item whitespace-no-wrap"><mark>{{ trans('life.by_country') }}</mark></li>
-  <li class="list-inline-item whitespace-no-wrap"><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></li>
-  <li class="list-inline-item whitespace-no-wrap"><a class="link" href="{{ path('Life@calendar') }}">{{ trans('life.by_days') }}</a></li>
-</ul>
+<nav class="flex flex-wrap text-sm mb-4">
+  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path('Life@index') }}">{{ trans('life.by_year') }}</a></div>
+  <div class="mr-3 whitespace-no-wrap"><mark>{{ trans('life.by_country') }}</mark></div>
+  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></div>
+  <div class="whitespace-no-wrap"><a class="link" href="{{ path('Life@calendar') }}">{{ trans('life.by_days') }}</a></div>
+</nav>
 
 @if ($countries->count())
   <ol class="mb-0">

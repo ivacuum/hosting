@@ -12,11 +12,11 @@
       </a>
     @endif
   </h1>
-  <ul class="list-inline text-sm">
-    <li class="list-inline-item"><mark>{{ trans('life.by_year') }}</mark></li>
-    <li class="list-inline-item"><a class="link" href="{{ path('UserTravelCountries@index', $traveler->login) }}">{{ trans('life.by_country') }}</a></li>
-    <li class="list-inline-item"><a class="link" href="{{ path('UserTravelCities@index', $traveler->login) }}">{{ trans('life.by_city') }}</a></li>
-  </ul>
+  <nav class="flex flex-wrap text-sm mb-4">
+    <div class="mr-3 whitespace-no-wrap"><mark>{{ trans('life.by_year') }}</mark></div>
+    <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path('UserTravelCountries@index', $traveler->login) }}">{{ trans('life.by_country') }}</a></div>
+    <div class="whitespace-no-wrap"><a class="link" href="{{ path('UserTravelCities@index', $traveler->login) }}">{{ trans('life.by_city') }}</a></div>
+  </nav>
 
   @include('tpl.trips_by_years')
 </section>
