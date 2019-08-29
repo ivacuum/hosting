@@ -48,7 +48,7 @@
       <td>{{ $model->firstNsServer() }}</td>
       <td>
         @if (!$model->isExpired() && ($model->cms_url || ($model->alias_id and $model->alias->cms_url)))
-          @include('acp.domains.cms_login', ['cms_button_class' => 'btn btn-default btn-sm'])
+          @include('acp.domains.cms_login', ['cms_button_class' => 'btn btn-default text-sm py-1'])
         @endif
       </td>
     </tr>

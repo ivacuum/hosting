@@ -44,7 +44,7 @@
   <div class="mt-4">
     @foreach ($tags as $tag)
       <a
-        class="btn btn-outline-primary mb-1 lowercase"
+        class="btn btn-outline-primary mb-1 py-1 text-sm lowercase"
         href="{{ path('Torrents@index', ['q' => mb_strtolower($tag)]) }}"
       >#{{ $tag }}</a>
     @endforeach

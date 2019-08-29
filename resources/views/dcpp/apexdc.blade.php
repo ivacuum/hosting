@@ -10,13 +10,13 @@
 
 @section('download_latest')
 <div>
-  <a class="btn btn-success btn-lg my-1 mr-2" href="{{ path('Files@download', 154) }}">
+  <a class="btn btn-success my-1 mr-2 text-lg px-4 py-2" href="{{ path('Files@download', 154) }}">
     <span class="mr-1">
       @svg (windows)
     </span>
     {{ trans('dcpp.download') }} 32-Bit &middot; {{ ViewHelper::size(23018257) }}
   </a>
-  <a class="btn btn-success btn-lg my-1 mr-2" href="{{ path('Files@download', 155) }}">
+  <a class="btn btn-success my-1 mr-2 text-lg px-4 py-2" href="{{ path('Files@download', 155) }}">
     <span class="mr-1">
       @svg (windows)
     </span>

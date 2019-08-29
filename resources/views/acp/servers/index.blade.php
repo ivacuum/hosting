@@ -22,7 +22,7 @@
       <td>{{ $model->host }}</td>
       <td>
         @if ($model->ftp_user and $model->ftp_pass)
-          <a class="btn btn-default btn-sm" href="{{ path("$self\\Ftp@index", [$model]) }}">FTP</a>
+          <a class="btn btn-default text-sm py-1" href="{{ path("$self\\Ftp@index", [$model]) }}">FTP</a>
         @endif
       </td>
     </tr>

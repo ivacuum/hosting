@@ -62,7 +62,7 @@ export default {
     <span class="text-muted">{{ $t('japanese.reading') }}</span>
     <span class="text-xl">【{{ vocab.kana }}】</span>
     <div v-if="vocab.audio">
-      <button class="btn btn-default btn-sm" @click="$refs.audio.play()">Play</button>
+      <button class="btn btn-default text-sm py-1" @click="$refs.audio.play()">Play</button>
       <audio ref="audio" :src="vocab.audio"></audio>
     </div>
   </div>

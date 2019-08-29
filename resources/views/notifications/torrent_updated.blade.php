@@ -10,7 +10,7 @@
 </time>
 <div class="mt-2">
   <a
-    class="btn btn-success btn-sm js-magnet"
+    class="btn btn-success text-sm py-1 js-magnet"
     href="{{ ViewHelper::magnet($notification->data['info_hash'], $notification->data['announcer'], $notification->data['title']) }}"
     data-action="{{ path('Torrents@magnet', $notification->data['id']) }}"
   >

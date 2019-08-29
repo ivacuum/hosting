@@ -10,7 +10,7 @@
       <h1 class="mb-6">{{ trans('dcpp.download') }} {{ $software_title }} {{ $software[0]['version'] }}</h1>
       @section('download_latest')
         <div>
-          <a class="btn btn-success my-1 btn-lg" href="{{ path('Files@download', $software[0]['id']) }}">
+          <a class="btn btn-success my-1 text-lg px-4 py-2" href="{{ path('Files@download', $software[0]['id']) }}">
             @php ($icon = $software[0]['icon'] ?? 'windows')
             <span class="mr-1">
               @svg ($icon)

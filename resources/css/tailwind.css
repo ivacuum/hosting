@@ -1,5 +1,8 @@
+/* @import "~tailwindcss/base.css"; */
+@import "base.css";
 @import "~tailwindcss/components.css";
 @import "banners.css";
+@import "buttons.css";
 @import "life.css";
 @import "notie.css";
 @import "~tailwindcss/utilities.css";

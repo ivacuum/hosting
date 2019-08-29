@@ -20,7 +20,7 @@
     <p><strong>torrent.ivacuum.ru</strong> &mdash; наглядный сервис для обмена файлами, открывшийся <span class="whitespace-no-wrap">5 июля</span> 2010 года в локальной сети Билайн города Калуга. Трекер довольно быстро набрал основную массу пользователей и стал местом общения нескольких тысяч калужан. <span class="whitespace-no-wrap">1 января 2017</span> года он потерял пристанище в локальной сети и переместился в интернет. Вместе с тем была закрыта регистрация новых пользователей в пользу перехода на новый торрент-трекер на основе магнет-ссылок, открывшийся <span class="whitespace-no-wrap">5 января</span> 2017 года.</p>
 
     <div>
-      <a class="btn btn-primary btn-lg" href="{{ path('Torrents@index') }}">
+      <a class="btn btn-primary text-lg px-4 py-2" href="{{ path('Torrents@index') }}">
         <span class="mr-1">
           @svg (sign-in)
         </span>
@@ -36,7 +36,7 @@
     <p>Трекер доступен через интернет для всех желающих. Локальная сеть более не обязательна для подключения. Калуга тоже больше не ограничение — можно заходить из любой точки мира.</p>
 
     <div>
-      <a class="btn btn-primary btn-lg" href="{{ path('Torrents@index') }}">
+      <a class="btn btn-primary text-lg px-4 py-2" href="{{ path('Torrents@index') }}">
         <span class="mr-1">
           @svg (sign-in)
         </span>
@@ -52,7 +52,7 @@
     <p>Да, он все еще доступен. Нынче он больше похож на форум, так как вместе с открытием нового трекера в начале 2017 года на <strong>t.ivacuum.ru</strong> была закрыта регистрация новых пользователей. Если у вас нет учетки или она была удалена за неактивностью, то вам будет доступно для чтения всего несколько разделов.</p>
 
     <div>
-      <a class="btn btn-default btn-lg" href="http://t.ivacuum.ru/">
+      <a class="btn btn-default text-lg px-4 py-2" href="http://t.ivacuum.ru/">
         <span class="mr-1">
           @svg (sign-in)
         </span>
@@ -125,7 +125,7 @@
     @ru
     @en
       <h1 class="h2">Torrent-tracker in Beeline network in Kaluga</h1>
-      <p><a class="btn btn-primary btn-lg" href="http://t.ivacuum.ru/">Go to the tracker &rarr;</a></p>
+      <p><a class="btn btn-primary text-lg px-4 py-2" href="http://t.ivacuum.ru/">Go to the tracker &rarr;</a></p>
     @endru
 @endsection
 

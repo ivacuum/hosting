@@ -49,7 +49,7 @@
 </div>
 @ru
   <div class="nav-item hidden md:block">
-    <a class="btn btn-success btn-sm" href="{{ path('Torrents@index') }}">
+    <a class="btn btn-success text-sm py-1" href="{{ path('Torrents@index') }}">
       {{ trans('torrents.index') }}
     </a>
   </div>

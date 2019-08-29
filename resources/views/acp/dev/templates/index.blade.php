@@ -3,9 +3,9 @@
 @section('content')
 <p>
   @if (request('hide_finished'))
-    <a class="btn btn-default btn-sm" href="{{ UrlHelper::filter(['hide_finished' => null]) }}">Показать все</a>
+    <a class="btn btn-default py-1" href="{{ UrlHelper::filter(['hide_finished' => null]) }}">Показать все</a>
   @else
-    <a class="btn btn-default btn-sm" href="{{ UrlHelper::filter(['hide_finished' => 1]) }}">Скрыть переведенные</a>
+    <a class="btn btn-default py-1" href="{{ UrlHelper::filter(['hide_finished' => 1]) }}">Скрыть переведенные</a>
   @endif
 </p>
 <table class="table-stats table-adaptive">

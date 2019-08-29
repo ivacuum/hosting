@@ -165,7 +165,7 @@ export default {
     ></textarea>
   </div>
 
-  <button class="btn btn-primary btn-lg" :disabled="!filled">
+  <button class="btn btn-primary text-lg px-4 py-2" :disabled="!filled">
     {{ submitText }}
   </button>
 </form>

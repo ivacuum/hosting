@@ -12,7 +12,7 @@
   <h1 class="h2 mb-1 mr-2">{{ $trip->title }}</h1>
   @include('tpl.city-map-button', ['city' => $trip->city])
   @if ($traveler->id == optional(auth()->user())->id)
-    <a class="btn btn-default btn-sm" href="{{ UrlHelper::edit('MyTrips', $trip) }}">
+    <a class="btn btn-default text-sm py-1" href="{{ UrlHelper::edit('MyTrips', $trip) }}">
       @svg (pencil)
     </a>
   @endif

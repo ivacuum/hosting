@@ -21,7 +21,7 @@
       <div class="invalid-feedback">{{ $errors->first('email') }}</div>
     </div>
 
-    <button class="btn btn-primary btn-lg">
+    <button class="btn btn-primary text-lg px-4 py-2">
       {{ trans('auth.password_remind') }}
     </button>
   </form>

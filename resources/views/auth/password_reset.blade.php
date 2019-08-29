@@ -33,7 +33,7 @@
       <div class="invalid-feedback">{{ $errors->first('password') }}</div>
     </div>
 
-    <button class="btn btn-primary btn-lg">
+    <button class="btn btn-primary text-lg px-4 py-2">
       {{ trans('auth.change_password') }}
     </button>
 

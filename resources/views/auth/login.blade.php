@@ -78,7 +78,7 @@
     </div>
 
     <div class="mt-4 text-center">
-      <button class="btn btn-primary btn-lg btn-login">
+      <button class="btn btn-primary text-lg px-4 py-2 w-40">
         {{ trans('auth.signin') }}
       </button>
       <div class="mt-6">
