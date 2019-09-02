@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="pt-4 pb-12">
-  <div class="container max-w-3xl">
+  <div class="container lg:max-w-3xl">
     <div class="text-center mb-4">
       <a href="{{ path('Retracker@index') }}">
         <img class="w-16 h-16" src="https://ivacuum.org/i/rt/logo.png" alt="">
@@ -21,7 +21,7 @@
 </section>
 
 <section class="bg-light border-t border-b border-gray-200 py-12">
-  <div class="container max-w-3xl">
+  <div class="container lg:max-w-3xl">
     <h3>Зачем он нужен?</h3>
     <ul>
       <li>для совместной закачки файлов из интернета;</li>
@@ -31,7 +31,7 @@
 </section>
 
 <section class="py-12">
-  <div class="container max-w-3xl">
+  <div class="container lg:max-w-3xl">
     <h3>Как настроить?</h3>
     <p>Использование ретрекера по адресу <b>retracker.local</b> требует дополнительной настройки.</p>
     <p><a class="btn btn-primary my-1" href="{{ path('Files@download', 123) }}">Файл настроек для Windows</a> <a class="btn btn-primary my-1" href="{{ path('Files@download', 124) }}">Файл настроек для Linux</a></p>
@@ -45,7 +45,7 @@ sudo ./retracker.local.sh</pre>
 </section>
 
 <section class="bg-light border-t border-gray-200 py-12">
-  <div class="container max-w-3xl">
+  <div class="container lg:max-w-3xl">
     <h3>Как понять, что ретрекер заработал?</h3>
     <p>Статус трекера «retracker.local» в вашем торрент-клиент на вкладке «Трекеры» (Trackers) должен измениться на «работает» (working) как на картинке ниже:</p>
     @include('tpl.screenshot', ['pic' => 'https://img.ivacuum.ru/g/100710/1_899GTp1JNl.png', 'w' => 594, 'h' => 25])

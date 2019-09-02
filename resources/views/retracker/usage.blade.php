@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="pt-4 pb-12">
-  <div class="container max-w-3xl">
+  <div class="container lg:max-w-3xl">
     <h3>При использовании трекеров rutracker.org, tapochek.net и tfile.ru</h3>
     <p>Эти трекеры автоматически добавляют ретрекер в каждый торрент-файл и вам нет необходимости проделывать эту операцию вручную.</p>
 

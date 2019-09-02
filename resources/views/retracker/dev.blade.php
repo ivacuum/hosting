@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="pt-4 pb-12">
-  <div class="container max-w-3xl">
+  <div class="container lg:max-w-3xl">
     <h3>Общие сведения</h3>
     <div>Ретрекер написан на языке <a class="link" href="http://www.perl.org/">Perl</a> с использованием следующих модулей:</div>
     <ul class="mt-1 mb-4">
