@@ -74,7 +74,7 @@
         @endif
         @php ($category = TorrentCategoryHelper::find($torrent->category_id))
         <div class="flex flex-wrap md:flex-no-wrap justify-center md:justify-start torrents-list-container antialiased js-torrents-views-observer" data-id="{{ $torrent->id }}">
-          <div class="flex-shrink-0 torrents-list-icon torrent-icon order-1 md:order-none mr-1" title="{{ $category['title'] }}">
+          <div class="flex-shrink-0 w-8 torrent-icon order-1 md:order-none mr-1" title="{{ $category['title'] }}">
             @php ($icon = $category['icon'] ?? 'file-text-o')
             @svg ($icon)
           </div>
@@ -106,7 +106,7 @@
         <details>
           <summary>Как пользоваться поиском?</summary>
           <div class="mt-2 mb-1">Поиск по раздачам учитывает морфологию русского языка, поэтому «комедия» найдется даже при запросе «комедии». Ниже приведены примеры запросов для понимания особенностей поиска:</div>
-          <ul class="text-muted">
+          <ul class="text-muted mb-4">
             <li>
               <a href="{{ UrlHelper::filter(['q' => 'драма']) }}">драма</a>
               — кинематограф соответствующей тематики
@@ -141,7 +141,7 @@
             </li>
           </ul>
           <div class="mb-1">Изначально поиск выполняется только по заголовкам раздач. Но его область можно расширить и до их описаний с помощью клика по соответствующей кнопке перед результатами поиска. Это позволяет находить фильмы по актерам, отдельные игры в раздачах антологий и т.п. Примеры:</div>
-          <ul class="text-muted">
+          <ul class="text-muted mb-4">
             <li>
               <a href="{{ UrlHelper::filter(['q' => 'мэтт дэймон', 'fulltext' => 1]) }}">мэтт дэймон</a>
               — кино с актером

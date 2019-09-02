@@ -57,30 +57,26 @@ export default {
 
 <template>
 <div :class="classes" v-if="links.next || meta.current_page !== 1">
-  <ul class="pagination pagination-mobile m-0">
-    <li class="page-item disabled" v-if="onFirstPage">
-      <span class="page-link" v-html="$root.svg.chevron_left"></span>
-    </li>
-    <li class="page-item" v-else>
+  <nav class="flex items-center justify-between w-full">
+    <div v-if="!onFirstPage">
       <router-link
-        class="page-link"
+        class="btn btn-default"
         :to="prevPage()"
         rel="prev"
         v-html="$root.svg.chevron_left"
       />
-    </li>
+    </div>
 
-    <li class="page-item" v-if="hasMorePages">
+    <div class="w-4"></div>
+
+    <div v-if="hasMorePages">
       <router-link
-        class="page-link"
+        class="btn btn-default"
         :to="nextPage()"
         rel="next"
         v-html="$root.svg.chevron_right"
       />
-    </li>
-    <li class="page-item disabled" v-else>
-      <span class="page-link" v-html="$root.svg.chevron_right"></span>
-    </li>
-  </ul>
+    </div>
+  </nav>
 </div>
 </template>

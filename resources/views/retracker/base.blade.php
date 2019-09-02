@@ -9,21 +9,15 @@
 @endsection
 
 @section('global_menu')
-<li class="nav-item {{ $view === 'retracker.index' ? 'active' : '' }}">
-  <a class="nav-link" href="{{ path('Retracker@index') }}">
-    {{ trans('retracker.index') }}
-  </a>
-</li>
-<li class="nav-item {{ $view === 'retracker.usage' ? 'active' : '' }}">
-  <a class="nav-link" href="{{ path('Retracker@usage') }}">
-    {{ trans('retracker.usage') }}
-  </a>
-</li>
-<li class="nav-item {{ $view === 'retracker.dev' ? 'active' : '' }}">
-  <a class="nav-link" href="{{ path('Retracker@dev') }}">
-    {{ trans('retracker.dev') }}
-  </a>
-</li>
+@component('tpl.menu-item', ['href' => path('Retracker@index'), 'isActive' => $view === 'retracker.index'])
+  {{ trans('retracker.index') }}
+@endcomponent
+@component('tpl.menu-item', ['href' => path('Retracker@usage'), 'isActive' => $view === 'retracker.usage'])
+  {{ trans('retracker.usage') }}
+@endcomponent
+@component('tpl.menu-item', ['href' => path('Retracker@dev'), 'isActive' => $view === 'retracker.dev'])
+  {{ trans('retracker.dev') }}
+@endcomponent
 @endsection
 
 @section('footer_container')

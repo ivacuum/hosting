@@ -49,13 +49,11 @@
   <form action="/acp/servers/{{ $server->id }}/ftp/file" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
-    <div class="input-group">
-      <input class="form-control {{ $errors->has('file') ? 'is-invalid' : '' }}" name="file" value="{{ old('file') }}">
-      <div class="input-group-append">
-        <button class="btn btn-default">
-          Создать файл
-        </button>
-      </div>
+    <div class="flex w-full">
+      <input class="form-control mr-1 {{ $errors->has('file') ? 'is-invalid' : '' }}" name="file" value="{{ old('file') }}">
+      <button class="btn btn-default whitespace-no-wrap">
+        Создать файл
+      </button>
     </div>
 
     <input type="hidden" name="path" value="{{ $dir }}">
@@ -65,13 +63,11 @@
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 
-    <div class="input-group">
-      <input class="form-control {{ $errors->has('dir') ? 'is-invalid' : '' }}" name="dir" value="{{ old('dir') }}">
-      <div class="input-group-append">
-        <button class="btn btn-default">
-          Создать папку
-        </button>
-      </div>
+    <div class="flex w-full">
+      <input class="form-control mr-1 {{ $errors->has('dir') ? 'is-invalid' : '' }}" name="dir" value="{{ old('dir') }}">
+      <button class="btn btn-default whitespace-no-wrap">
+        Создать папку
+      </button>
     </div>
 
     <input type="hidden" name="path" value="{{ $dir }}">
@@ -81,13 +77,11 @@
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 
-    <div class="input-group items-center">
-      <input class="{{ $errors->has('file') ? 'is-invalid' : '' }}" type="file" name="file">
-      <span class="input-group-append">
-        <button class="btn btn-default">
-          Загрузить файл
-        </button>
-      </span>
+    <div class="flex items-center w-full">
+      <input class="mr-1 {{ $errors->has('file') ? 'is-invalid' : '' }}" type="file" name="file">
+      <button class="btn btn-default">
+        Загрузить файл
+      </button>
     </div>
 
     <input type="hidden" name="path" value="{{ $dir }}">

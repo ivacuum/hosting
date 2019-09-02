@@ -33,8 +33,6 @@ body {
 .my-picture {
   border: 1px solid rgba(0, 0, 0, .2);
   box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
-  width: 150px;
-  height: 150px;
 }
 
 .my-caption {
@@ -62,7 +60,7 @@ body {
     <div class="md:w-2/3 md:px-4 mb-6 sm:mb-0">
       <div class="sm:flex mb-6">
         <div class="mb-2 sm:mb-0">
-          <img class="my-picture bg-white mr-4 p-1" src="https://life.ivacuum.org/me.jpg" width="160" height="160">
+          <img class="my-picture bg-white mr-4 p-1 w-32 h-32 max-w-none" src="https://life.ivacuum.org/me.jpg" alt="">
         </div>
         <div>
           <h1 class="my-name h3 uppercase">@ru Сергей Панков @en Sergey Pankov @endru</h1>
@@ -364,24 +362,22 @@ body {
 
   <div class="mb-1">@ru Легенда: @en Legend: @endru</div>
 
-  <ul class="list-unstyled">
-    <li class="mb-1">
-      <span class="text-orange-400">@svg (star)</span>
-      @ru любимый проект @en favorite project @endru
-    </li>
-    <li class="mb-1">
-      <span class="text-green-600">@svg (primitive-dot)</span>
-      @ru проект жив и здоров @en project is up and running @endru
-    </li>
-    <li class="mb-1">
-      <span class="text-muted">@svg (primitive-dot)</span>
-      @ru проект более недоступен, например, его переделали или выключили, но могли остаться исходники @en project is no longer available—it was rebuilt or shut down—still there might be source code available @endru
-    </li>
-    <li>
-      @svg (github)
-      @ru ссылка на исходники @en source code link @endru
-    </li>
-  </ul>
+  <div class="mb-1">
+    <span class="text-orange-400">@svg (star)</span>
+    @ru любимый проект @en favorite project @endru
+  </div>
+  <div class="mb-1">
+    <span class="text-green-600">@svg (primitive-dot)</span>
+    @ru проект жив и здоров @en project is up and running @endru
+  </div>
+  <div class="mb-1">
+    <span class="text-muted">@svg (primitive-dot)</span>
+    @ru проект более недоступен, например, его переделали или выключили, но могли остаться исходники @en project is no longer available—it was rebuilt or shut down—still there might be source code available @endru
+  </div>
+  <div>
+    @svg (github)
+    @ru ссылка на исходники @en source code link @endru
+  </div>
 
   <div class="h4 portfolio-year">@ru В настоящее время @en Present @endru</div>
   <div>

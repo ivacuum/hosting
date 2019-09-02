@@ -4,14 +4,16 @@
 
 @section('content')
 <section class="pt-0">
-  <h1 class="h2">
-    {{ trans('life.trips') }}
+  <div class="flex flex-wrap items-center">
+    <h1 class="h2 mr-4">
+      {{ trans('life.trips') }}
+    </h1>
     @if ($traveler->id == optional(auth()->user())->id)
-      <a class="btn btn-success" href="{{ path('MyTrips@create') }}">
+      <a class="btn btn-success text-sm py-1" href="{{ path('MyTrips@create') }}">
         {{ trans('acp.trips.create') }}
       </a>
     @endif
-  </h1>
+  </div>
   <nav class="flex flex-wrap text-sm mb-4">
     <div class="mr-3 whitespace-no-wrap"><mark>{{ trans('life.by_year') }}</mark></div>
     <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path('UserTravelCountries@index', $traveler->login) }}">{{ trans('life.by_country') }}</a></div>

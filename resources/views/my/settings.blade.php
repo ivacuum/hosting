@@ -10,8 +10,8 @@
     @csrf
 
     <div class="mb-4">
-      <label>{{ trans('my.theme') }}</label>
-      <label class="flex items-center font-normal">
+      <div class="font-bold">{{ trans('my.theme') }}</div>
+      <label class="flex items-center">
         <input
           class="mr-2 {{ $errors->has('theme') ? 'is-invalid' : '' }}"
           type="radio"
@@ -21,7 +21,7 @@
         >
         {{ trans('my.theme_light') }}
       </label>
-      <label class="flex items-center font-normal">
+      <label class="flex items-center">
         <input
           class="mr-2 {{ $errors->has('theme') ? 'is-invalid' : '' }}"
           type="radio"
@@ -36,10 +36,10 @@
       @endif
     </div>
 
-    <label>{{ trans('torrents.index') }}</label>
+    <div class="font-bold">{{ trans('torrents.index') }}</div>
     <div class="mb-4">
       <input type="hidden" name="torrent_short_title" value="0">
-      <label class="flex items-center font-normal">
+      <label class="flex items-center">
         <input
           class="mr-2 {{ $errors->has('torrent_short_title') ? 'is-invalid' : '' }}"
           type="checkbox"
@@ -58,9 +58,9 @@
     </div>
 
     <div class="mb-4">
-      <label>{{ trans('my.locale') }}</label>
+      <div class="font-bold">{{ trans('my.locale') }}</div>
       @foreach (Illuminate\Support\Arr::sort(array_keys(config('cfg.locales'))) as $loc)
-        <label class="flex items-center font-normal">
+        <label class="flex items-center">
           <input
             class="mr-2 {{ $errors->has('locale') ? 'is-invalid' : '' }}"
             type="radio"
@@ -76,9 +76,9 @@
       @endif
     </div>
 
-    <label>{{ trans('my.mail_subscriptions') }}</label>
+    <div class="font-bold">{{ trans('my.mail_subscriptions') }}</div>
     <input type="hidden" name="notify_gigs" value="{{ App\User::NOTIFY_NO }}">
-    <label class="flex items-center font-normal">
+    <label class="flex items-center">
       <input
         class="mr-2 {{ $errors->has('notify_gigs') ? 'is-invalid' : '' }}"
         type="checkbox"
@@ -93,7 +93,7 @@
     @endif
 
     <input type="hidden" name="notify_news" value="{{ App\User::NOTIFY_NO }}">
-    <label class="flex items-center font-normal">
+    <label class="flex items-center">
       <input
         class="mr-2 {{ $errors->has('notify_news') ? 'is-invalid' : '' }}"
         type="checkbox"
@@ -109,7 +109,7 @@
 
     <div class="mb-4">
       <input type="hidden" name="notify_trips" value="{{ App\User::NOTIFY_NO }}">
-      <label class="flex items-center font-normal">
+      <label class="flex items-center">
         <input
           class="mr-2 {{ $errors->has('notify_trips') ? 'is-invalid' : '' }}"
           type="checkbox"

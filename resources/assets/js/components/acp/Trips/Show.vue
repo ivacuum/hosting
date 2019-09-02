@@ -51,22 +51,20 @@ export default {
   <div class="mt-4" v-if="resource.meta_image">
     <img class="max-w-full h-auto rounded" :src="resource.meta_image">
   </div>
-  <div class="input-group mt-4">
+  <div class="flex w-full mt-4">
     <input
       required
-      class="form-control"
+      class="form-control rounded-r-none"
       type="datetime-local"
       name="date"
       v-model="date"
     >
-    <div class="input-group-append">
-      <button
-        class="btn btn-default"
-        @click.prevent="notify"
-        :title="$t('trips.notify')"
-        v-html="$root.svg.bell"
-      ></button>
-    </div>
+    <button
+      class="btn btn-default -ml-px rounded-l-none"
+      @click.prevent="notify"
+      :title="$t('trips.notify')"
+      v-html="$root.svg.bell"
+    ></button>
   </div>
 </div>
 </template>

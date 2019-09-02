@@ -44,21 +44,18 @@
   </section>
   <section class="sm:w-1/3 md:w-1/2 sm:px-4 sm:pt-0">
     <h2 class="text-3xl">{{ trans('life.favorites') }}</h2>
-    <ul class="list-unstyled">
-      @ru
-        <li class="mb-2"><a class="link" href="{{ path('Life@page', 'chillout') }}">Chillout</a></li>
-        <li class="mb-2"><a class="link" href="{{ path('Life@page', 'books') }}">Книги</a></li>
-      @endru
-      <li class="mb-2"><a class="link" href="{{ path('Life@page', 'gigs') }}">{{ trans('menu.gigs') }}</a></li>
-      @ru
-        <li class="mb-2"><a class="link" href="{{ path('Life@page', 'favorite-posts') }}">Любимые посты</a></li>
-        <li class="mb-2"><a class="link" href="{{ path('Life@page', 'podcasts') }}">Подкасты</a></li>
-        <li class="mb-2"><a class="link" href="{{ path('Life@page', 'laundry') }}">Условные обозначения стирки</a></li>
-        <li class="mb-2"><a class="link" href="{{ path('Life@page', 'movies') }}">Фильмы и сериалы</a></li>
-        <li class="mb-2"><a class="link" href="{{ path('Life@page', 'using-in-travels') }}">Чем пользуюсь в путешествиях</a>
-        </li>
-      @endru
-    </ul>
+    @ru
+      <div class="mb-2"><a class="link" href="{{ path('Life@page', 'chillout') }}">Chillout</a></div>
+      <div class="mb-2"><a class="link" href="{{ path('Life@page', 'books') }}">Книги</a></div>
+    @endru
+    <div class="mb-2"><a class="link" href="{{ path('Life@page', 'gigs') }}">{{ trans('menu.gigs') }}</a></div>
+    @ru
+      <div class="mb-2"><a class="link" href="{{ path('Life@page', 'favorite-posts') }}">Любимые посты</a></div>
+      <div class="mb-2"><a class="link" href="{{ path('Life@page', 'podcasts') }}">Подкасты</a></div>
+      <div class="mb-2"><a class="link" href="{{ path('Life@page', 'laundry') }}">Условные обозначения стирки</a></div>
+      <div class="mb-2"><a class="link" href="{{ path('Life@page', 'movies') }}">Фильмы и сериалы</a></div>
+      <div class="mb-2"><a class="link" href="{{ path('Life@page', 'using-in-travels') }}">Чем пользуюсь в путешествиях</a></div>
+    @endru
 
     <h2 class="text-3xl mt-12">{{ trans('life.languages') }}</h2>
     <nav>

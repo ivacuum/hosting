@@ -7,7 +7,7 @@
   <div class="md:w-7/12 md:px-4">
     @ru
       <div class="mb-1">Как попала Калуга в график его гастролей — решительно непонятно:</div>
-      <ul>
+      <ul class="mb-4">
         <li>10 мая — Утрехт, Голландия</li>
         <li>13 мая — Нанси, Франция</li>
         <li>14 мая — Рим, Италия</li>
@@ -21,7 +21,7 @@
     @en
       <div class="mb-1">Setlist probably was:</div>
     @endru
-    <ol>
+    <ol class="mb-4">
       <li>Racing the World</li>
       <li>Velorum</li>
       <li>Building the Church</li>

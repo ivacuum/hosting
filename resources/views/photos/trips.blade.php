@@ -16,13 +16,15 @@
             src="{{ $trip->metaImage(500, 375) }}"
           >
         </div>
-        <div class="absolute bottom-0 left-0 text-white trip-cover-info p-4">
-          <div class="text-lg">
-            <img class="flag-24 svg-shadow" src="{{ $trip->city->country->flagUrl() }}">
-            {{ $trip->title }}
-            <span class="text-gray-400 text-xs">{{ $trip->timelinePeriod(true) }}</span>
+        <div class="absolute bottom-0 left-0 text-white trip-cover-info p-4 w-full">
+          <div class="flex flex-wrap items-center text-lg">
+            <img class="flag-24 mr-1 svg-shadow" src="{{ $trip->city->country->flagUrl() }}" alt="">
+            <span class="leading-none mr-1">{{ $trip->title }}</span>
+            <span class="leading-tight self-end text-gray-300 text-xs">{{ $trip->timelinePeriod(true) }}</span>
           </div>
-          <div class="text-xs md:text-sm">{{ $trip->metaDescription() }}</div>
+          @if ($trip->metaDescription())
+            <div class="leading-tight mt-1 text-xs md:text-2sm">{{ $trip->metaDescription() }}</div>
+          @endif
         </div>
       </a>
     </div>

@@ -11,7 +11,7 @@
 
     @if ($has_password)
       <div class="mb-4">
-        <label>{{ trans('my.old_password') }}</label>
+        <label class="font-bold">{{ trans('my.old_password') }}</label>
         <input
           required
           class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
@@ -24,7 +24,7 @@
     @endif
 
     <div class="mb-4">
-      <label>{{ trans('my.new_password') }}</label>
+      <label class="font-bold">{{ trans('my.new_password') }}</label>
       <input
         required
         class="form-control {{ $errors->has('new_password') ? 'is-invalid' : '' }}"

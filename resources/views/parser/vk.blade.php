@@ -20,11 +20,11 @@
   </div>
 </div>
 
-<form class="flex justify-between my-4" action="{{ path('ParserVk@indexPost') }}" method="post">
+<form class="flex items-center justify-between my-4" action="{{ path('ParserVk@indexPost') }}" method="post">
   @csrf
   <div>
     @if (!empty($next))
-      <a class="btn border-b125 js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}" id="prev_page">
+      <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}" id="prev_page">
         @svg (chevron-left)
         {{ $next->formatLocalized('%e %B') }}
       </a>
@@ -40,7 +40,7 @@
   </div>
   <div>
     @if (!empty($previous))
-      <a class="btn border-b125 js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $previous->toDateString(), 'own' => $own, 'token' => $token]) }}" id="next_page">
+      <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $previous->toDateString(), 'own' => $own, 'token' => $token]) }}" id="next_page">
         {{ $previous->formatLocalized('%e %B') }}
         @svg (chevron-right)
       </a>
@@ -175,10 +175,10 @@
 @endforeach
 </div>
 
-<div class="flex justify-between">
+<div class="flex items-center justify-between">
   @if (!empty($next))
     <div>
-      <a class="btn border-b125 js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}">
+      <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}">
         @svg (chevron-left)
         {{ $next->formatLocalized('%e %B') }}
       </a>
@@ -186,7 +186,7 @@
   @endif
   @if (!empty($previous))
     <div>
-      <a class="btn border-b125 js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $previous->toDateString(), 'own' => $own, 'token' => $token]) }}">
+      <a class="js-pjax" href="{{ path('ParserVk@index', ['page' => $vkpage, 'date' => $previous->toDateString(), 'own' => $own, 'token' => $token]) }}">
         {{ $previous->formatLocalized('%e %B') }}
         @svg (chevron-right)
       </a>

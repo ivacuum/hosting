@@ -3,13 +3,17 @@
 @section('content_header')
 <div class="lg:flex flex-row-reverse items-center justify-between -mt-1 lg:-mt-2 mb-4">
   <form class="flex mb-2 lg:mb-0" action="{{ path("$self@index") }}">
-    <div class="input-group">
-      <input class="form-control js-search-input" name="q" value="{{ request('q') }}" placeholder="{{ trans('torrents.search') }}" autocapitalize="none">
-      <div class="input-group-append">
-        <button class="btn btn-default">
-          @svg (search)
-        </button>
-      </div>
+    <div class="flex w-full">
+      <input
+        class="form-control rounded-r-none js-search-input"
+        name="q"
+        value="{{ request('q') }}"
+        placeholder="{{ trans('torrents.search') }}"
+        autocapitalize="none"
+      >
+      <button class="btn btn-default -ml-px rounded-l-none">
+        @svg (search)
+      </button>
     </div>
   </form>
   @yield('torrent-download-button')

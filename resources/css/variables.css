@@ -1,0 +1,10 @@
+:root {
+  --link-color: #337ab7;
+  --link-decoration: none;
+  --link-hover-color: #d23232;
+  --link-hover-decoration: none;
+
+  --mark-bg: #fcf8e3;
+
+  --nav-border-color: #51a7f9;
+}

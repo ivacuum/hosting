@@ -1,39 +1,39 @@
-<ul class="pagination pagination-mobile sm:hidden m-0">
-  @if ($paginator->onFirstPage())
-    <li class="page-item disabled"><span class="page-link">@svg (chevron-left)</span></li>
-  @else
-    <li class="page-item"><a class="page-link js-pjax" href="{{ $paginator->previousPageUrl() }}" rel="prev">@svg (chevron-left)</a></li>
-  @endif
-
-  @if ($paginator->hasMorePages())
-    <li class="page-item"><a class="page-link js-pjax" href="{{ $paginator->nextPageUrl() }}" rel="next">@svg (chevron-right)</a></li>
-  @else
-    <li class="page-item disabled"><span class="page-link">@svg (chevron-right)</span></li>
-  @endif
-</ul>
-
-<ul class="pagination hidden sm:flex m-0 justify-center">
+<nav class="hidden md:flex flex-wrap items-center justify-center">
   @if (!$paginator->onFirstPage())
-    <li class="page-item"><a class="page-link js-pjax tooltipped tooltipped-ne" href="{{ $paginator->previousPageUrl() }}" id="prev_page" rel="prev" aria-label="{{ trans('pagination.previous') }}">@svg (chevron-left)</a></li>
+    <a
+      class="px-3 py-1 js-pjax"
+      href="{{ $paginator->previousPageUrl() }}"
+      id="prev_page"
+      rel="prev"
+    >
+      @svg (chevron-left)
+    </a>
   @endif
 
   @foreach ($elements as $element)
     @if (is_string($element))
-      <li class="page-item disabled"><span class="page-link">{{ $element }}</span></li>
+      <div class="p-1">{{ $element }}</div>
     @endif
 
     @if (is_array($element))
       @foreach ($element as $page => $url)
         @if ($page == $paginator->currentPage())
-          <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+          <div class="bg-blue-600 rounded text-white px-3 py-1">{{ $page }}</div>
         @else
-          <li class="page-item"><a class="page-link js-pjax" href="{{ $url }}">{{ $page }}</a></li>
+          <a class="px-3 py-1 js-pjax" href="{{ $url }}">{{ $page }}</a>
         @endif
       @endforeach
     @endif
   @endforeach
 
   @if ($paginator->hasMorePages())
-    <li class="page-item"><a class="page-link js-pjax tooltipped tooltipped-nw" href="{{ $paginator->nextPageUrl() }}" id="next_page" rel="next" aria-label="{{ trans('pagination.next') }}">@svg (chevron-right)</a></li>
+    <a
+      class="px-3 py-1 js-pjax"
+      href="{{ $paginator->nextPageUrl() }}"
+      id="next_page"
+      rel="next"
+    >
+      @svg (chevron-right)
+    </a>
   @endif
-</ul>
+</nav>

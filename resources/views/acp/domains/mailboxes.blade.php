@@ -7,11 +7,9 @@
 
   <div class="mb-4">
     <label>Ящик</label>
-    <div class="input-group">
+    <div class="flex items-center w-full">
       <input class="form-control {{ $errors->has('logins') ? 'is-invalid' : '' }}" name="logins">
-      <div class="input-group-append">
-        <span class="input-group-text">{{ '@'.$model->domain }}</span>
-      </div>
+      <div class="ml-2">{{ '@'.$model->domain }}</div>
     </div>
     @if ($errors->has('logins'))
       <div class="invalid-feedback block">{{ $errors->first('logins') }}</div>

@@ -131,9 +131,9 @@
     @endforeach
   </table>
 
-  <form class="form-inline mt-4" action="{{ path("$self@setServerNsRecords", $model) }}" method="post">
+  <form class="flex flex-wrap mt-4" action="{{ path("$self@setServerNsRecords", $model) }}" method="post">
     @csrf
-    <div class="inline-block mr-1">
+    <div class="mr-1">
       <select class="custom-select" name="server">
         <option value="">-----</option>
         <option>srv1.korden.net</option>

@@ -13,7 +13,7 @@
   <div class="container max-w-3xl">
     <div class="text-center mb-4">
       <a href="{{ path('Torrents@index') }}">
-        <img src="https://ivacuum.org/i/t/images/logo_arrows.png" width="64" height="64">
+        <img class="w-16 h-16" src="https://ivacuum.org/i/t/images/logo_arrows.png" alt="">
       </a>
     </div>
     <h1 class="h2">Торрент-трекер в локальной сети Билайн-Калуга</h1>
@@ -30,7 +30,7 @@
   </div>
 </section>
 
-<section class="border-top border-bottom py-12">
+<section class="border-t border-b border-gray-200 py-12">
   <div class="container max-w-3xl">
     <h2 class="h3">Я подключен к ТТК (Спарку), Ростелекому, МТС, Макснету, ДомНету. Можно ли воспользоваться вашим трекером? Нужна ли локальная сеть для доступа к ресурсам?</h2>
     <p>Трекер доступен через интернет для всех желающих. Локальная сеть более не обязательна для подключения. Калуга тоже больше не ограничение — можно заходить из любой точки мира.</p>

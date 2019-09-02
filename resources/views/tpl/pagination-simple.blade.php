@@ -1,13 +1,25 @@
-<ul class="pagination pagination-mobile m-0">
-  @if ($paginator->onFirstPage())
-    <li class="page-item disabled"><span class="page-link">@svg (chevron-left)</span></li>
-  @else
-    <li class="page-item"><a class="page-link js-pjax tooltipped tooltipped-n" href="{{ $paginator->previousPageUrl() }}" id="prev_page" rel="prev" aria-label="{{ trans('pagination.previous') }}">@svg (chevron-left)</a></li>
+<nav class="flex items-center justify-between w-full">
+  @if (!$paginator->onFirstPage())
+    <a
+      class="btn btn-default js-pjax"
+      href="{{ $paginator->previousPageUrl() }}"
+      id="prev_page"
+      rel="prev"
+    >
+      {{ trans('pagination.previous') }}
+    </a>
   @endif
 
+  <div class="w-2"></div>
+
   @if ($paginator->hasMorePages())
-    <li class="page-item"><a class="page-link js-pjax tooltipped tooltipped-n" href="{{ $paginator->nextPageUrl() }}" id="next_page" rel="next" aria-label="{{ trans('pagination.next') }}">@svg (chevron-right)</a></li>
-  @else
-    <li class="page-item disabled"><span class="page-link">@svg (chevron-right)</span></li>
+    <a
+      class="btn btn-default js-pjax"
+      href="{{ $paginator->nextPageUrl() }}"
+      id="next_page"
+      rel="next"
+    >
+      {{ trans('pagination.next') }}
+    </a>
   @endif
-</ul>
+</nav>

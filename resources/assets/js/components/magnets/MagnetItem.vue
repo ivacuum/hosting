@@ -26,7 +26,7 @@ export default {
   :key="magnet.id"
 >
   <div
-    class="flex-shrink-0 order-1 md:order-none torrents-list-icon torrent-icon mr-1"
+    class="flex-shrink-0 order-1 md:order-none w-8 torrent-icon mr-1"
     :title="category.title"
     v-html="$root.svg[category.icon]"
   ></div>

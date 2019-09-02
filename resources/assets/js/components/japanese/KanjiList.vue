@@ -58,7 +58,7 @@
                v-for="row in collection"
           >
             <router-link
-              class="block ja-big ja-character ja-shadow pt-1 pb-2 text-white hover:text-gray-400"
+              class="block ja-big ja-character ja-shadow pt-1 pb-2 text-white hover:text-gray-200"
               :to="{ name: 'wk.kanji', params: { character: row.character }}"
             >{{ row.character }}</router-link>
             <div class="kanji-reading ja-shadow-light">{{ row.reading }}</div>

@@ -13,58 +13,49 @@
 @endsection
 
 @section('global_menu')
-<div class="nav-item {{ $page === 'index' ? 'active' : '' }}">
-  <a class="nav-link" href="{{ path('Dcpp@index') }}">
-    {{ trans('dcpp.index') }}
-  </a>
-</div>
+@component('tpl.menu-item', ['href' => path('Dcpp@index'), 'isActive' => $page === 'index'])
+  {{ trans('dcpp.index') }}
+@endcomponent
 @ru
-  <div class="nav-item {{ $page === 'faq' ? 'active' : '' }}">
-    <a class="nav-link" href="{{ path('Dcpp@page', 'faq') }}">
-      {{ trans('dcpp.faq') }}
-    </a>
-  </div>
+  @component('tpl.menu-item', ['href' => path('Dcpp@page', 'faq'), 'isActive' => $page === 'faq'])
+    {{ trans('dcpp.faq') }}
+  @endcomponent
 @endru
-<div class="nav-item {{ $page === 'hubs' ? 'active' : '' }}">
-  <a class="nav-link" href="{{ path('Dcpp@page', 'hubs') }}">
-    {{ trans('dcpp.hubs') }}
-  </a>
-</div>
-<div class="nav-item dropdown dropdown-hover mr-2 {{ in_array($page, ['airdc', 'apexdc', 'dcpp', 'flylinkdc', 'greylinkdc', 'jucydc', 'kalugadc', 'pelinkdc', 'shakespeer', 'strongdc']) ? 'active' : '' }}">
-  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">{{ trans('dcpp.clients') }}</a>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="{{ path('Dcpp@page', 'airdc') }}">{{ trans('dcpp.airdc') }}</a>
-    <a class="dropdown-item" href="{{ path('Dcpp@page', 'apexdc') }}">{{ trans('dcpp.apexdc') }}</a>
-    <a class="dropdown-item" href="{{ path('Dcpp@page', 'dcpp') }}">{{ trans('dcpp.dcpp') }}</a>
-    <a class="dropdown-item" href="{{ path('Dcpp@page', 'flylinkdc') }}">{{ trans('dcpp.flylinkdc') }}</a>
-    <a class="dropdown-item" href="{{ path('Dcpp@page', 'greylinkdc') }}">{{ trans('dcpp.greylinkdc') }}</a>
-    <a class="dropdown-item" href="{{ path('Dcpp@page', 'jucydc') }}">{{ trans('dcpp.jucydc') }}</a>
-    @ru
-      <a class="dropdown-item" href="{{ path('Dcpp@page', 'kalugadc') }}">{{ trans('dcpp.kalugadc') }}</a>
-    @endru
-    <a class="dropdown-item" href="{{ path('Dcpp@page', 'pelinkdc') }}">{{ trans('dcpp.pelinkdc') }}</a>
-    <a class="dropdown-item" href="{{ path('Dcpp@page', 'shakespeer') }}">{{ trans('dcpp.shakespeer') }}</a>
-    <a class="dropdown-item" href="{{ path('Dcpp@page', 'strongdc') }}">{{ trans('dcpp.strongdc') }}</a>
-  </div>
-</div>
+@component('tpl.menu-item', ['href' => path('Dcpp@page', 'hubs'), 'isActive' => $page === 'hubs'])
+  {{ trans('dcpp.hubs') }}
+@endcomponent
+@component('tpl.menu-dropdown', ['isActive' => in_array($page, ['airdc', 'apexdc', 'dcpp', 'flylinkdc', 'greylinkdc', 'jucydc', 'kalugadc', 'pelinkdc', 'shakespeer', 'strongdc'])])
+  @slot('title')
+    {{ trans('dcpp.clients') }}
+  @endslot
+
+  <a class="dropdown-item" href="{{ path('Dcpp@page', 'airdc') }}">{{ trans('dcpp.airdc') }}</a>
+  <a class="dropdown-item" href="{{ path('Dcpp@page', 'apexdc') }}">{{ trans('dcpp.apexdc') }}</a>
+  <a class="dropdown-item" href="{{ path('Dcpp@page', 'dcpp') }}">{{ trans('dcpp.dcpp') }}</a>
+  <a class="dropdown-item" href="{{ path('Dcpp@page', 'flylinkdc') }}">{{ trans('dcpp.flylinkdc') }}</a>
+  <a class="dropdown-item" href="{{ path('Dcpp@page', 'greylinkdc') }}">{{ trans('dcpp.greylinkdc') }}</a>
+  <a class="dropdown-item" href="{{ path('Dcpp@page', 'jucydc') }}">{{ trans('dcpp.jucydc') }}</a>
+  @ru
+    <a class="dropdown-item" href="{{ path('Dcpp@page', 'kalugadc') }}">{{ trans('dcpp.kalugadc') }}</a>
+  @endru
+  <a class="dropdown-item" href="{{ path('Dcpp@page', 'pelinkdc') }}">{{ trans('dcpp.pelinkdc') }}</a>
+  <a class="dropdown-item" href="{{ path('Dcpp@page', 'shakespeer') }}">{{ trans('dcpp.shakespeer') }}</a>
+  <a class="dropdown-item" href="{{ path('Dcpp@page', 'strongdc') }}">{{ trans('dcpp.strongdc') }}</a>
+@endcomponent
 @ru
-  <div class="nav-item hidden md:block">
-    <a class="btn btn-success text-sm py-1" href="{{ path('Torrents@index') }}">
-      {{ trans('torrents.index') }}
-    </a>
-  </div>
+  <a class="hidden md:block btn btn-success text-sm ml-2 py-1" href="{{ path('Torrents@index') }}">
+    {{ trans('torrents.index') }}
+  </a>
 @endru
 @endsection
 
 @section('header_user')
 @if (empty($no_language_selector))
-  <div class="nav-item">
-    @ru
-      <a class="nav-link whitespace-no-wrap" href="{{ url("en/{$request_uri}") }}" lang="en">In English</a>
-    @en
-      <a class="nav-link whitespace-no-wrap" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
-    @endru
-  </div>
+  @ru
+    <a class="block px-2 py-3 text-gray-600 hover:text-gray-900 whitespace-no-wrap" href="{{ url("en/{$request_uri}") }}" lang="en">In English</a>
+  @en
+    <a class="block px-2 py-3 text-gray-600 hover:text-gray-900 whitespace-no-wrap" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
+  @endru
 @endif
 @endsection
 

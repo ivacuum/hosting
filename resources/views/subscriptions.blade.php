@@ -24,7 +24,7 @@
     </div>
 
     <input type="hidden" name="gigs" value="{{ App\User::NOTIFY_NO }}">
-    <label class="flex items-center font-normal">
+    <label class="flex items-center">
       <input
         class="mr-2 {{ $errors->has('gigs') ? 'is-invalid' : '' }}"
         type="checkbox"
@@ -39,7 +39,7 @@
     @endif
 
     <input type="hidden" name="news" value="{{ App\User::NOTIFY_NO }}">
-    <label class="flex items-center font-normal">
+    <label class="flex items-center">
       <input
         class="mr-2 {{ $errors->has('news') ? 'is-invalid' : '' }}"
         type="checkbox"
@@ -55,7 +55,7 @@
 
     <div class="mb-4">
       <input type="hidden" name="trips" value="{{ App\User::NOTIFY_NO }}">
-      <label class="flex items-center font-normal">
+      <label class="flex items-center">
         <input
           class="mr-2 {{ $errors->has('trips') ? 'is-invalid' : '' }}"
           type="checkbox"

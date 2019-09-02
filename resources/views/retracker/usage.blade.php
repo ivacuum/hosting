@@ -8,25 +8,35 @@
 
     <h3 class="mt-12">При использовании других интернет-трекеров</h3>
     <p>Если вы решили скачать раздачу из интернета вместе с кем-либо и если ретрекера нет в списке трекеров скачанного торрент-файла, то вам необходимо выполнить следующие действия (на примере программы uTorrent 2.0.2):</p>
-    <ul>
-      <li>
-        <p>выбрать в клиенте раздачу:</p>
-        <p><img class="max-w-full h-auto" src="https://img.ivacuum.ru/g/100710/1_58sS4cweRE.png" width="438" height="70"></p>
-      </li>
-      <li>
-        <p>открыть вкладку «<strong>Трекеры</strong>» (Trackers):</p>
-        <p><img class="max-w-full h-auto" src="https://img.ivacuum.ru/g/100710/1_I1jXoj2RI3.png" width="619" height="116"></p>
-      </li>
-      <li>
-        <p>нажать <img src="https://ivacuum.org/i/_/mouse_select_right.png" width="16" height="16"> в пространстве окошка со списком трекеров и выбрать «<strong>Добавить трекер</strong>»:</p>
-        <p><img class="max-w-full h-auto" src="https://img.ivacuum.ru/g/100710/1_g5STffKBb4.png" width="236" height="146"></p>
-      </li>
-      <li>
-        <p>добавить строку «<strong>http://retracker.local/announce</strong>», как показано на рисунке:</p>
-        <p><img class="max-w-full h-auto" src="https://img.ivacuum.ru/g/100710/1_ZnPu3tIvZm.png" width="469" height="646"></p>
-      </li>
-      <li>нажать «OK».</li>
-    </ul>
+    <p>
+      <span class="inline-flex bg-gray-600 text-white px-2 font-semibold rounded mr-1">1</span>
+      Выбрать в клиенте раздачу:
+    </p>
+    @include('tpl.screenshot', ['pic' => 'https://img.ivacuum.ru/g/100710/1_58sS4cweRE.png', 'w' => 438, 'h' => 70])
+
+    <p>
+      <span class="inline-flex bg-gray-600 text-white px-2 font-semibold rounded mr-1">2</span>
+      Открыть вкладку «<span class="font-bold">Трекеры</span>» (Trackers):
+    </p>
+    @include('tpl.screenshot', ['pic' => 'https://img.ivacuum.ru/g/100710/1_I1jXoj2RI3.png', 'w' => 619, 'h' => 116])
+
+    <p>
+      <span class="inline-flex bg-gray-600 text-white px-2 font-semibold rounded mr-1">3</span>
+      Нажать <img class="inline w-4 h-4" src="https://ivacuum.org/i/_/mouse_select_right.png" alt=""> в пространстве окошка со списком трекеров и выбрать «<span class="font-bold">Добавить трекер</span>»:
+    </p>
+    @include('tpl.screenshot', ['pic' => 'https://img.ivacuum.ru/g/100710/1_g5STffKBb4.png', 'w' => 236, 'h' => 146])
+
+    <p>
+      <span class="inline-flex bg-gray-600 text-white px-2 font-semibold rounded mr-1">4</span>
+      Добавить строку «<span class="font-bold">http://retracker.local/announce</span>», как показано на рисунке:
+    </p>
+    <p><img class="max-w-full h-auto" src="https://img.ivacuum.ru/g/100710/1_ZnPu3tIvZm.png" alt="" width="469" height="646"></p>
+
+    <p>
+      <span class="inline-flex bg-gray-600 text-white px-2 font-semibold rounded mr-1">5</span>
+      Нажать «<span class="font-bold">OK</span>».
+    </p>
+
     <div>Ретрекер должны добавлять <span class="font-bold">все</span> пользователи, которые собрались качать раздачу.</div>
   </div>
 </section>

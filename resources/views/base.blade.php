@@ -3,7 +3,7 @@
 ?>
 @if (!Request::pjax())
 <!DOCTYPE html>
-<html lang="{{ $locale }}">
+<html class="h-full overflow-y-scroll" lang="{{ $locale }}">
 <head>
   <meta charset="utf-8">
 @endif
@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="{{ mix('/assets/tailwind.css') }}">
   @stack('head')
 </head>
-<body class="{{ $body_classes ?? 'body-with-bottom-tabbar' }} {{ optional(Auth::user())->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ $css_classes }}" data-self="{{ $self }}" data-view="{{ $view }}">
+<body class="flex flex-col font-tabular-nums min-h-full {{ $body_classes ?? 'body-with-bottom-tabbar' }} {{ optional(Auth::user())->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ $css_classes }}" data-self="{{ $self }}" data-view="{{ $view }}">
 @section('body')
 @section('header-navbar')
   @include('tpl.header-navbar')
@@ -132,7 +132,7 @@
 </div>
 
 @section('footer_container')
-<footer class="footer mt-6">
+<footer class="footer mt-6 py-3 text-2sm">
   <div class="container">
     @section('footer')
       <nav class="flex flex-wrap">
@@ -145,7 +145,7 @@
               @ru
                 <a class="flex flex-wrap items-center whitespace-no-wrap" href="{{ url("en/{$request_uri}") }}" lang="en">
                   <div class="mr-1">
-                    <svg class="flag-16 svg-shadow" viewBox="0 0 640 480" width="16" height="12">
+                    <svg class="flag-16 svg-shadow" viewBox="0 0 640 480">
                       <g fill-rule="evenodd">
                         <g stroke-width="1pt">
                           <path fill="#bd3d44" d="M0 0h972.81v39.385H0zm0 78.77h972.81v39.385H0zm0 78.77h972.81v39.385H0zm0 78.77h972.81v39.385H0zm0 78.77h972.81v39.385H0zm0 78.77h972.81v39.385H0zm0 78.77h972.81v39.385H0z" transform="scale(.9375)"/>
@@ -161,7 +161,7 @@
               @en
                 <a class="flex flex-wrap items-center whitespace-no-wrap" href="{{ url($request_uri) }}" lang="ru">
                   <div class="mr-1">
-                    <svg class="flag-16 svg-shadow" viewBox="0 0 640 480" width="16" height="12">
+                    <svg class="flag-16 svg-shadow" viewBox="0 0 640 480">
                       <g fill-rule="evenodd" stroke-width="1pt">
                         <path fill="#fff" d="M0 0h640v480H0z"/>
                         <path fill="#0039a6" d="M0 160.003h640V480H0z"/>

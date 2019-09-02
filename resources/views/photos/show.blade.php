@@ -33,7 +33,7 @@ Mousetrap.bind('right', () => {
             @svg (chevron-right)
           </div>
         @endif
-        <img class="photo-show-img" src="{{ $photo->originalUrl() }}">
+        <img class="photo-show-img" src="{{ $photo->originalUrl() }}" alt="">
       </div>
     </div>
   </div>

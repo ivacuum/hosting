@@ -7,36 +7,34 @@
     </div>
     <div class="hidden md:block" v-else>&nbsp;</div>
     <form class="max-w-500px" @submit.prevent="onSubmit">
-      <div class="input-group">
+      <div class="flex w-full">
         <input
-          class="form-control js-search-input"
+          class="form-control rounded-r-none js-search-input"
           v-model="q"
           :placeholder="$t('SEARCH')"
           autocapitalize="none"
         >
-        <div class="input-group-append">
-          <button class="btn btn-default" v-html="$root.svg.search"></button>
-        </div>
+        <button class="btn btn-default -ml-px rounded-l-none" v-html="$root.svg.search"></button>
       </div>
     </form>
   </div>
   <div class="my-4" v-if="Object.keys(elements).length">
     <router-link
-      class="items-center bg-radical border-radical flex justify-between px-2 sm:px-4 py-2 text-white hover:text-gray-400"
+      class="items-center bg-radical border-radical flex justify-between px-2 sm:px-4 py-2 text-white hover:text-gray-200"
       :to="{ name: 'wk.radical', params: { meaning: row.meaning }}"
       @click.native="reset"
       v-for="row in elements.radicals"
       :key="row.id"
     >
       <div class="flex-shrink-0" v-if="row.image">
-        <img class="ja-character ja-image-shadow" :src="row.image" alt="" height="36">
+        <img class="ja-character ja-image-shadow h-12" :src="row.image" alt="">
       </div>
       <div class="text-4xl flex-shrink-0 font-bold ja-character ja-shadow pb-1 whitespace-no-wrap" v-else>{{ row.character }}</div>
       <div class="flex-grow ja-shadow-light text-xs capitalize text-right">{{ row.meaning }}</div>
     </router-link>
 
     <router-link
-      class="items-center bg-kanji border-kanji flex justify-between px-2 sm:px-4 py-2 text-white hover:text-gray-400"
+      class="items-center bg-kanji border-kanji flex justify-between px-2 sm:px-4 py-2 text-white hover:text-gray-200"
       :to="{ name: 'wk.kanji', params: { character: row.character }}"
       @click.native="reset"
       v-for="row in elements.kanji"
@@ -50,7 +48,7 @@
     </router-link>
 
     <router-link
-      class="items-center bg-vocab border-vocab flex justify-between px-2 sm:px-4 py-2 text-white hover:text-gray-400"
+      class="items-center bg-vocab border-vocab flex justify-between px-2 sm:px-4 py-2 text-white hover:text-gray-200"
       :to="{ name: 'wk.vocabulary', params: { characters: row.character }}"
       @click.native="reset"
       v-for="row in elements.vocabulary"

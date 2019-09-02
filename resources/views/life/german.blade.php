@@ -46,7 +46,7 @@
     <div class="city-entry pb-2">ß <span class="text-muted">[es'tset]</span> с</div>
   </div>
 
-  <h3>Дифтонги</h3>
+  <h3 class="mt-6">Дифтонги</h3>
   <div class="cities-columns">
     <div class="city-entry pb-2">ai, ei <span class="text-muted">[ай]</span></div>
     <div class="city-entry pb-2">ie <span class="text-muted">[и:]</span></div>
@@ -72,7 +72,7 @@
     <div class="city-entry pb-2">ch <span class="text-muted">[ч]</span> checken</div>
   </div>
 
-  <h3>Спряжение глаголов</h3>
+  <h3 class="mt-6">Спряжение глаголов</h3>
   <table class="table-stats">
     <thead>
     <tr>
@@ -103,7 +103,7 @@
     <li>Глаголы, основа которых оканчивается на -t, -d во 2-м и 3-м лице ед.ч. (du; er/sie/es), а также во 2-м лице мн. числа (ihr) для удобства произнесения получают дополнительную -e- перед окончанием.</li>
   </ol>
 
-  <h3>Вопросительные слова</h3>
+  <h3 class="mt-6">Вопросительные слова</h3>
   <ul>
     <li>wer — кто?</li>
     <li>was — что?</li>
@@ -114,7 +114,7 @@
     <li>woher — откуда?</li>
   </ul>
 
-  <h3>Числа</h3>
+  <h3 class="mt-6">Числа</h3>
   <?php
   $entries = [
     ['ru' => 1, 'de' => 'eins'],
@@ -177,11 +177,11 @@
 
   <h3 class="mt-12">Года</h3>
   <p>Читаются сотнями. Например, 1998 год: девятнадцать сотен, восемь и девяносто — neunzehn&middot;hundert&middot;acht&middot;und&middot;neunzig.</p>
-  <p>В речи:</p>
+  <div>В речи:</div>
   <p>
     <span class="tooltipped tooltipped-n" aria-label="Когда есть вы рожденный?">— Wann sind Sie geboren?</span>
   </p>
-  <p>Два варианта ответа:</p>
+  <div>Два варианта ответа:</div>
   <div>— Ich bin 1980 geboren.</div>
   <p>— Ich bin im Jahre 1980 geboren.</p>
 

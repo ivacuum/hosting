@@ -1,51 +1,38 @@
-<div class="navbar navbar-border navbar-expand-md md:p-0 {{ $navbar_classes ?? 'hidden md:flex' }} {{ Auth::check() && Auth::user()->theme === App\User::THEME_DARK ? 'navbar-dark text-light' : 'navbar-light bg-light' }}">
+<div class="border-b-2 border-gray-200 md:p-0 bg-light {{ $navbar_classes ?? 'hidden md:flex' }}">
   <div class="container">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse">
+    <div class="flex flex-wrap items-center w-full">
       @section('brand')
-        <a class="navbar-brand font-bold py-0 text-center" href="{{ path('Home@index') }}">vacuum<br>kaluga</a>
+        <a class="site-brand text-lg leading-none text-blue-700 hover:text-orange-600 font-bold mr-3 py-0 text-center" href="{{ path('Home@index') }}">vacuum<br>kaluga</a>
       @show
-      <ul class="navbar-nav mr-auto md:items-center">
+      <nav class="flex flex-wrap mr-auto md:items-center">
         @section('global_menu')
-          <li class="nav-item {{ $self == 'Life' ? 'active' : '' }}">
-            <a class="nav-link" href="{{ path('Life@index') }}">
-              {{ trans('menu.life') }}
-            </a>
-          </li>
-          <li class="nav-item {{ $self == 'News' ? 'active' : '' }}">
-            <a class="nav-link" href="{{ path('News@index') }}">
-              {{ trans('news.index') }}
-            </a>
-          </li>
+          @component('tpl.menu-item', ['href' => path('Life@index'), 'isActive' => $self === 'Life'])
+            {{ trans('menu.life') }}
+          @endcomponent
+          @component('tpl.menu-item', ['href' => path('News@index'), 'isActive' => $self === 'News'])
+            {{ trans('news.index') }}
+          @endcomponent
           @if (!$is_crawler)
             @ru
-              <li class="nav-item {{ $self == 'Torrents' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ path('Torrents@index') }}">
-                  {{ trans('menu.torrents') }}
-                </a>
-              </li>
+              @component('tpl.menu-item', ['href' => path('Torrents@index'), 'isActive' => $self === 'Torrents'])
+                {{ trans('menu.torrents') }}
+              @endcomponent
             @endru
           @endif
-          <li class="nav-item {{ $self == 'Photos' ? 'active' : '' }}">
-            <a class="nav-link" href="{{ path('Photos@trips') }}">
-              {{ trans('photos.index') }}
-            </a>
-          </li>
+          @component('tpl.menu-item', ['href' => path('Photos@trips'), 'isActive' => $self === 'Photos'])
+            {{ trans('photos.index') }}
+          @endcomponent
         @show
-      </ul>
-      <ul class="navbar-nav md:items-center">
+      </nav>
+      <nav class="flex md:items-center">
         @section('header_user')
           @if (Auth::check())
             @include('tpl.header-navbar-user')
           @else
-            <li class="nav-item">
-              <a class="nav-link" href="{{ path('Auth\SignIn@index') }}">{{ trans('auth.signin') }}</a>
-            </li>
+            <a class="block px-2 py-3 text-gray-600 hover:text-gray-900" href="{{ path('Auth\SignIn@index') }}">{{ trans('auth.signin') }}</a>
           @endif
         @show
-      </ul>
+      </nav>
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 @if (!empty($breadcrumbs))
-  <div class="breadcrumbs text-xs py-2 border-bottom leading-snug">
+  <div class="breadcrumbs text-xs py-2 border-b border-gray-200 leading-snug">
     <nav class="container" itemscope itemtype="http://schema.org/BreadcrumbList">
       <span class="{{ !Illuminate\Support\Str::startsWith($self, 'Acp\\') ? 'hidden sm:inline' : '' }}">
         <a href="{{ $locale_uri ?: '/' }}">

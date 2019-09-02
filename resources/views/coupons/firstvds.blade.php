@@ -17,18 +17,16 @@
     @csrf
 
     <div class="max-w-500px">
-      <div class="input-group">
+      <div class="flex w-full">
         <input
           required
-          class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
+          class="form-control rounded-r-none {{ $errors->has('email') ? 'is-invalid' : '' }}"
           type="email"
           name="email"
           autocomplete="email"
           placeholder="{{ trans('coupons.your_email') }}"
         >
-        <div class="input-group-append">
-          <button class="btn btn-primary">{{ trans('coupons.get_promocode') }}</button>
-        </div>
+        <button class="btn btn-primary -ml-px rounded-l-none whitespace-no-wrap">{{ trans('coupons.get_promocode') }}</button>
       </div>
       @if ($errors->has('email'))
         <div class="invalid-feedback block">{{ $errors->first('email') }}</div>

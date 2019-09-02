@@ -5,7 +5,7 @@
   <div class="container max-w-3xl">
     <div class="text-center mb-4">
       <a href="{{ path('Retracker@index') }}">
-        <img src="https://ivacuum.org/i/rt/logo.png" width="64" height="64">
+        <img class="w-16 h-16" src="https://ivacuum.org/i/rt/logo.png" alt="">
       </a>
     </div>
     <h1 class="h2">Что такое ретрекер?</h1>
@@ -20,10 +20,10 @@
   </div>
 </section>
 
-<section class="bg-light border-top border-bottom py-12">
+<section class="bg-light border-t border-b border-gray-200 py-12">
   <div class="container max-w-3xl">
     <h3>Зачем он нужен?</h3>
-    <ul class="mb-0">
+    <ul>
       <li>для совместной закачки файлов из интернета;</li>
       <li>появляется возможность скачать раздачу на локальной скорости, если раздающие тоже пользуются ретрекером.</li>
     </ul>
@@ -37,18 +37,18 @@
     <p><a class="btn btn-primary my-1" href="{{ path('Files@download', 123) }}">Файл настроек для Windows</a> <a class="btn btn-primary my-1" href="{{ path('Files@download', 124) }}">Файл настроек для Linux</a></p>
     <p>Пользователям ОС Windows достаточно сохранить и запустить файл настроек от имени администратора.</p>
     <p>Пользователям ОС семейства Linux необходимо либо запустить файл настроек от имени администратора, либо набрать в терминале следующие команды:</p>
-    <pre>wget https://ivacuum.org/d/rt/retracker.local.sh
+    <pre class="mb-4 text-sm bg-light border p-2 rounded whitespace-pre-wrap">wget https://ivacuum.org/d/rt/retracker.local.sh
 chmod +x ./retracker.local.sh
 sudo ./retracker.local.sh</pre>
     <div>После завершения настройки необходимо подождать около 15 минут, либо перезапустить торрент-клиент.</div>
   </div>
 </section>
 
-<section class="bg-light border-top py-12">
+<section class="bg-light border-t border-gray-200 py-12">
   <div class="container max-w-3xl">
     <h3>Как понять, что ретрекер заработал?</h3>
     <p>Статус трекера «retracker.local» в вашем торрент-клиент на вкладке «Трекеры» (Trackers) должен измениться на «работает» (working) как на картинке ниже:</p>
-    <div><img class="max-w-full h-auto" src="https://img.ivacuum.ru/g/100710/1_899GTp1JNl.png"></div>
+    @include('tpl.screenshot', ['pic' => 'https://img.ivacuum.ru/g/100710/1_899GTp1JNl.png', 'w' => 594, 'h' => 25])
   </div>
 </section>
 @endsection

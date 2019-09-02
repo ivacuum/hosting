@@ -67,7 +67,7 @@
 
     <div class="flex items-center justify-between">
       <div>
-        <label class="flex items-center font-normal mb-0">
+        <label class="flex items-center">
           <input class="mr-2" type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}>
           {{ trans('auth.dont_remember') }}
         </label>

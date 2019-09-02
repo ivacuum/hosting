@@ -6,7 +6,7 @@
   <div class="md:w-1/3 md:px-4 mb-2">
     <div class="bg-radical rounded">
       <a
-        class="block ja-shadow-light py-6 text-white hover:text-gray-300"
+        class="block ja-shadow-light py-6 text-white hover:text-gray-200"
         href="{{ path('JapaneseWanikaniRadicals@index') }}"
       >
         <span class="block text-4xl">部首</span>
@@ -17,7 +17,7 @@
   <div class="md:w-1/3 md:px-4 mb-2">
     <div class="bg-kanji rounded">
       <a
-        class="block ja-shadow-light py-6 text-white hover:text-gray-300"
+        class="block ja-shadow-light py-6 text-white hover:text-gray-200"
         href="{{ path('JapaneseWanikaniKanji@index') }}"
       >
         <span class="block text-4xl">漢字</span>
@@ -28,7 +28,7 @@
   <div class="md:w-1/3 md:px-4 mb-2">
     <div class="bg-vocab rounded">
       <a
-        class="block ja-shadow-light py-6 text-white hover:text-gray-300"
+        class="block ja-shadow-light py-6 text-white hover:text-gray-200"
         href="{{ path('JapaneseWanikaniVocabulary@index') }}"
       >
         <span class="block text-4xl">単語</span>

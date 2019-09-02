@@ -57,21 +57,19 @@
 </table>
 
 <div class="my-4">
-  <form class="form-inline js-batch-form" data-url="/acp/domains/batch" data-selector=".domains-checkbox">
-    <div class="mb-4">
-      <div class="inline-block mr-1">
-        <select required class="custom-select" name="action">
-          <option value="">Выберите действие...</option>
-          @if ($filter == 'trashed')
-            <option value="restore">Восстановить</option>
-            <option value="force_delete">Удалить окончательно</option>
-          @else
-            <option value="activate">Включить мониторинг</option>
-            <option value="deactivate">Выключить мониторинг</option>
-            <option value="delete">Удалить</option>
-          @endif
-        </select>
-      </div>
+  <form class="flex flex-wrap js-batch-form" data-url="/acp/domains/batch" data-selector=".domains-checkbox">
+    <div class="mr-1">
+      <select required class="custom-select" name="action">
+        <option value="">Выберите действие...</option>
+        @if ($filter == 'trashed')
+          <option value="restore">Восстановить</option>
+          <option value="force_delete">Удалить окончательно</option>
+        @else
+          <option value="activate">Включить мониторинг</option>
+          <option value="deactivate">Выключить мониторинг</option>
+          <option value="delete">Удалить</option>
+        @endif
+      </select>
     </div>
     <button class="btn btn-default">Выполнить</button>
   </form>

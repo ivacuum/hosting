@@ -15,12 +15,12 @@ export default {
 
 <template>
 <div class="mb-4">
-  <label :class="labelClasses">
+  <label class="font-bold" :class="labelClasses">
     <slot name="label">{{ labelText }}</slot>
   </label>
   <slot>
     <label
-      class="flex items-center font-normal"
+      class="flex items-center"
       v-for="option in options"
       :key="option.value"
     >

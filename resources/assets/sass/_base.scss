@@ -1,50 +1,14 @@
-html {
-  height: 100%;
-  overflow-y: scroll;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  font-variant-numeric: tabular-nums;
-}
-
-blockquote { margin-top: .5rem; }
-
-label {
-  font-weight: $font-weight-bold;
-  line-height: 1.25;
-}
-
-mark {
-  padding-top: 0;
-  margin-left: -$mark_padding;
-  margin-right: -$mark_padding;
-  white-space: nowrap; // Для Firefox, чтобы не было переноса строк
-}
-
-ol { padding-left: 1.5rem; }
-ul { padding-left: 1.25rem; }
-section { padding-top: 2rem; }
-
 .footer {
   background-color: #fafafa;
   border-top: $border-width solid $border-color;
-  padding-top: .7rem;
-  padding-bottom: .8rem;
   color: $gray-light;
-  font-size: 13px;
-  line-height: 18px;
-  min-height: 43px;
+  min-height: 44px;
 
   .no-footer & { display: none; }
 }
 
-.hover-opacity-85:hover { opacity: .85; }
-
 .kbd {
-  padding: 0 8px;
+  padding: 0 .5rem;
   color: #333;
   text-shadow: 0 1px 0 rgba($white, 1.0);
   box-shadow: 0 1px 1px rgba($black, .1);

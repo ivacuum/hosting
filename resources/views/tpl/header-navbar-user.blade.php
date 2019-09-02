@@ -1,13 +1,15 @@
-<li class="nav-item {{ $self == 'Notifications' ? 'active' : '' }}">
-  <a class="nav-link relative tooltipped tooltipped-s" href="{{ path('Notifications@index') }}" aria-label="{{ trans('notifications.index') }}">
-    <span class="{{ null !== Auth::user()->unreadNotifications()->first() ? 'has-unread-label' : '' }}">
-      @svg (bell)
-    </span>
-  </a>
-</li>
-<li class="nav-item dropdown dropdown-hover">
-  <a class="nav-link dropdown-toggle avatar-dropdown" href="#" data-toggle="dropdown">
-    @include('tpl.avatar', ['user' => Auth::user()])
+<a
+  class="block border-b-2 border-transparent -mb-2px px-2 py-3 text-gray-600 hover:text-gray-900 relative tooltipped tooltipped-s {{ $self == 'Notifications' ? 'border-blue-500 text-gray-900' : '' }}"
+  href="{{ path('Notifications@index') }}"
+  aria-label="{{ trans('notifications.index') }}"
+>
+  <span class="leading-none text-xl {{ null !== Auth::user()->unreadNotifications()->first() ? 'has-unread-label' : '' }}">
+    @svg (bell)
+  </span>
+</a>
+<div class="dropdown dropdown-hover">
+  <a class="flex items-center px-2 py-2 text-gray-600 hover:text-gray-900 dropdown-toggle" href="#" data-toggle="dropdown">
+    @include('tpl.avatar', ['user' => Auth::user(), 'classes' => 'w-8 h-8'])
   </a>
   <div class="dropdown-menu dropdown-menu-right">
     <div class="dropdown-header">
@@ -28,4 +30,4 @@
       {{ trans('auth.logout') }}
     </a>
   </div>
-</li>
+</div>

@@ -281,7 +281,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_1616.jpg'])
 
 @ru
-  <ul class="list-dialog">
+  <ul class="list-dialog mb-4">
     <li>На чем гоняешь?</li>
     <li>На бэхе.</li>
   </ul>

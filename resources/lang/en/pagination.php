@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'next' => 'Next page',
-	'previous' => 'Previous page',
+    'next' => 'Next page &rarr;',
+    'previous' => '&larr; Previous page',
 ];

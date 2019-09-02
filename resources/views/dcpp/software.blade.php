@@ -48,7 +48,7 @@
         <p>
           @foreach ($software_screenshots as $screenshot)
             <a href="{{ $screenshot['full'] }}">
-              <img class="screenshot" src="{{ $screenshot['thumb'] }}">
+              <img class="inline-block screenshot" src="{{ $screenshot['thumb'] }}">
             </a>
           @endforeach
         </p>
@@ -56,7 +56,7 @@
     </section>
   @endif
 
-  <section class="bg-light border-top border-bottom my-0 py-12">
+  <section class="bg-light border-t border-b border-gray-200 my-0 py-12">
     <div class="container">
       <h2>{{ trans('dcpp.hubs') }}</h2>
       @ru
@@ -79,7 +79,7 @@
   @yield('software_features')
 
   @if (sizeof($software) > 1 || !empty($developer_site))
-    <section class="border-bottom my-0 py-12">
+    <section class="border-b border-gray-200 my-0 py-12">
       <div class="container">
         <h2 class="mb-6">{{ trans('dcpp.links') }}</h2>
         <div class="md:flex md:-mx-4">

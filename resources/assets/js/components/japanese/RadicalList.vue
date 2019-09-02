@@ -58,9 +58,9 @@
             :key="row.id"
             v-for="row in collection"
           >
-            <router-link class="block pt-1 text-white hover:text-gray-400" :to="{ name: 'wk.radical', params: { meaning: row.meaning }}">
+            <router-link class="block pt-1 text-white hover:text-gray-200" :to="{ name: 'wk.radical', params: { meaning: row.meaning }}">
               <div class="py-2" v-if="row.image">
-                <img class="ja-character ja-image-shadow" :src="row.image" alt="" height="64">
+                <img class="inline ja-character ja-image-shadow h-16" :src="row.image" alt="">
               </div>
               <div class="ja-big ja-character ja-shadow pb-2" v-else>{{ row.character }}</div>
             </router-link>

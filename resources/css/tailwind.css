@@ -1,4 +1,5 @@
-/* @import "~tailwindcss/base.css"; */
+@import "~tailwindcss/base.css";
+@import "variables.css";
 @import "base.css";
 @import "~tailwindcss/components.css";
 @import "banners.css";

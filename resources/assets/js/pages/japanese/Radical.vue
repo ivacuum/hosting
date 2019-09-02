@@ -56,7 +56,7 @@ export default {
     >{{ radical.level }}</router-link>
     <div class="bg-radical text-white mr-4 px-2 py-1 rounded">
       <span class="ja-character ja-shadow-light" v-if="radical.character">{{ radical.character }}</span>
-      <img class="block ja-character ja-image-shadow" :src="radical.image" alt="" height="38" v-else>
+      <img class="block ja-character ja-image-shadow h-10" :src="radical.image" alt="" v-else>
     </div>
     <div class="capitalize">{{ radical.meaning }}</div>
   </div>

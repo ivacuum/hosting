@@ -13,11 +13,9 @@
 @endsection
 
 @section('global_menu')
-<li class="nav-item {{ Illuminate\Support\Str::startsWith($self, 'UserTravel') ? 'active' : '' }}">
-  <a class="nav-link" href="{{ path('UserTravelTrips@index', $traveler->login) }}">
-    {{ trans('menu.life') }}
-  </a>
-</li>
+@component('tpl.menu-item', ['href' => path('UserTravelTrips@index', $traveler->login), 'isActive' => Illuminate\Support\Str::startsWith($self, 'UserTravel')])
+  {{ trans('menu.life') }}
+@endcomponent
 @endsection
 
 @section('content_header')

@@ -33,7 +33,7 @@
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
       <td>{{ $model->level }}</td>
       <td class="whitespace-no-wrap">
-        <a class="bg-vocab block font-bold pb-1 px-2 rounded text-center text-white hover:text-gray-400" href="{{ path("$self@show", $model) }}">
+        <a class="bg-vocab block font-bold pb-1 px-2 rounded text-center text-white hover:text-gray-200" href="{{ path("$self@show", $model) }}">
           <span class="inline-block text-4xl ja-character ja-shadow">{{ $model->character }}</span>
         </a>
       </td>

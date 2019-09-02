@@ -14,7 +14,7 @@ export default {
 
 <template>
 <div class="mb-4">
-  <label :class="labelClasses">
+  <label class="font-bold" :class="labelClasses">
     <slot name="label">{{ labelText }}</slot>
   </label>
   <slot>

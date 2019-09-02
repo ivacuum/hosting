@@ -153,7 +153,7 @@ export default {
   </div>
 
   <div class="mb-4">
-    <label>{{ textareaLabel }}</label>
+    <label class="font-bold">{{ textareaLabel }}</label>
     <textarea
       required
       class="form-control"

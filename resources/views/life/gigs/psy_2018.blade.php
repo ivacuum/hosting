@@ -17,7 +17,7 @@
 
 @ru
   <div class="mb-1">Самые вау-находки:</div>
-  <ul>
+  <ul class="mb-4">
     <li>Пожалуй, <a class="link" href="https://youtu.be/XyzhL74DgA0?t=439">самая шумная и активная концертная публика</a>, что доводилось видеть</li>
     <li><a class="link" href="https://www.instagram.com/p/Bmn_AwEn7F8/">Летние фонтаны #1</a></li>
     <li><a class="link" href="https://www.instagram.com/p/BXhGj0BBAUN/">Летние фонтаны #2</a></li>
@@ -36,7 +36,7 @@
 
 @ru
   <div class="mb-1">В августе закончилась пора летних концертов. Спустя некоторое время для каждого города появлялась официальная минутная видеонарезка.</div>
-  <ul>
+  <ul class="mb-4">
     <li><a class="link" href="https://twitter.com/psy_oppa/status/1045491184452304896">Сеул</a></li>
     <li><a class="link" href="https://twitter.com/psy_oppa/status/1040402670777819136">Пусан</a></li>
     <li><a class="link" href="https://twitter.com/psy_oppa/status/1042341109135958017">Тэгу</a></li>

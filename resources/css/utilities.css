@@ -1,12 +1,14 @@
-.top-2 {
-  top: .5rem;
+.font-tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.is-desktop .desktop-hidden {
+  display: none;
 }
 
 .hanging-puntuation-first {
   hanging-punctuation: first;
 }
-
-.small-caps { font-variant: small-caps; }
 
 .mobile-wide {
   @apply -mx-4;
@@ -17,3 +19,11 @@
     @apply mx-0;
   }
 }
+
+.small-caps { font-variant: small-caps; }
+
+.top-2 {
+  top: .5rem;
+}
+
+[v-cloak] { display: none; }

@@ -1,27 +1,8 @@
 .navbar {
-  .navbar-brand {
-    color: #005784;
-    font-size: 18px;
-    line-height: 18px;
-    text-shadow: #ddd 2px 2px 2px;
-
-    &:hover { color: #d46400; }
-  }
-
   .nav-link {
     padding-top: .75rem;
     padding-bottom: .75rem;
-
-    &.avatar-dropdown {
-      padding-top: .375rem;
-      padding-bottom: .375rem;
-    }
   }
 }
 
-.navbar-dark .navbar-brand {
-  color: #9d9d9d;
-  text-shadow: none;
-
-  &:hover { color: #fff; }
-}
+.site-brand { text-shadow: #ddd 2px 2px 2px; }

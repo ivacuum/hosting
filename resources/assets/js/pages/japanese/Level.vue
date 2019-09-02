@@ -42,15 +42,15 @@ export default {
   <kanji-list :key="level" :level="level"/>
   <vocabulary-list :key="level" :level="level"/>
 
-  <div class="flex justify-between mt-4">
+  <div class="flex items-center justify-between mt-4">
     <div>
-      <router-link class="btn border-b125" :to="{ name: 'wk.level', params: { level: this.level - 1 }}" v-if="level > 1">
+      <router-link :to="{ name: 'wk.level', params: { level: this.level - 1 }}" v-if="level > 1">
         <span v-html="$root.svg.chevron_left"></span>
         {{ $t('japanese.level', { level: level - 1 }) }}
       </router-link>
     </div>
     <div>
-      <router-link class="btn border-b125" :to="{ name: 'wk.level', params: { level: this.level + 1 }}" v-if="level < 60">
+      <router-link :to="{ name: 'wk.level', params: { level: this.level + 1 }}" v-if="level < 60">
         {{ $t('japanese.level', { level: level + 1 }) }}
         <span v-html="$root.svg.chevron_right"></span>
       </router-link>

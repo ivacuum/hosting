@@ -14,8 +14,8 @@
 @endru
 
 @ru
-  <p>Забавный диалог между двумя пассажирами в этом самом автобусе:</p>
-  <ul class="list-dialog">
+  <div>Забавный диалог между двумя пассажирами в этом самом автобусе:</div>
+  <ul class="list-dialog mb-4">
     <li>Скажите, а этот автобус до Будапешта?</li>
     <li>Надеюсь, что только до самолета</li>
   </ul>
@@ -23,16 +23,14 @@
 
 @ru
   <p>Временной план. В среднем на общественном транспорте нужно выдвигаться за шесть часов до вылета из любого аэропорта Москвы.</p>
-  <ul class="list-unstyled">
-    <li><kbd class="text-sm">04:40</kbd> выезд из Калуги</li>
-    <li><s class="text-red-600"><kbd class="text-sm">07:18</kbd> <span class="text-black">прибытие на Киевский вокзал</span></s></li>
-    <li><kbd class="text-sm">08:50</kbd> прибытие на Киевский вокзал</li>
-    <li><kbd class="text-sm">09:00</kbd> аэроэкспресс</li>
-    <li><kbd class="text-sm">09:37</kbd> прибытие во Внуково</li>
-    <li><kbd class="text-sm">09:50</kbd> окончание реги</li>
-    <li><kbd class="text-sm">10:15</kbd> окончание посадки</li>
-    <li><kbd class="text-sm">10:30</kbd> вылет</li>
-  </ul>
+  <div><kbd class="text-sm">04:40</kbd> выезд из Калуги</div>
+  <div><s class="text-red-600"><kbd class="text-sm">07:18</kbd> <span class="text-black">прибытие на Киевский вокзал</span></s></div>
+  <div><kbd class="text-sm">08:50</kbd> прибытие на Киевский вокзал</div>
+  <div><kbd class="text-sm">09:00</kbd> аэроэкспресс</div>
+  <div><kbd class="text-sm">09:37</kbd> прибытие во Внуково</div>
+  <div><kbd class="text-sm">09:50</kbd> окончание реги</div>
+  <div><kbd class="text-sm">10:15</kbd> окончание посадки</div>
+  <div class="mb-4"><kbd class="text-sm">10:30</kbd> вылет</div>
 @endru
 
 @ru

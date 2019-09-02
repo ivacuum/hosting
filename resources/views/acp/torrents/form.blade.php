@@ -1,5 +1,5 @@
 <div class="mb-4">
-  <label class="input-required">Рубрика</label>
+  <label class="font-bold input-required">Рубрика</label>
   <select required class="custom-select {{ $errors->has('category_id') ? 'is-invalid' : '' }}" name="category_id">
     <option value="0">Выберите рубрику...</option>
     @foreach (TorrentCategoryHelper::tree() as $id => $category)

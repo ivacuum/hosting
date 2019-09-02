@@ -42,7 +42,7 @@
       </a>
       <div>Хроника развития сайта с 2004 года.</div>
     </div>
-    <div class="md:w-1/2 lg:w-1/3 mb-6 px-4">
+    <div class="hidden md:block md:w-1/2 lg:w-1/3 mb-6 px-4">
       <a class="flex items-center mb-2 link-parent" href="https://kupislona.ru/">
         <img class="hidden md:block mr-2 w-8 h-8" src="https://ivacuum.org/i/services/kupislona.png">
         <h2 class="text-2xl mb-0"><span class="link">KupiSlona.ru</span></h2>
@@ -128,13 +128,15 @@
             src="{{ $trip->metaImage(500, 375) }}"
           >
         </div>
-        <div class="absolute bottom-0 text-white trip-cover-info p-4">
-          <div class="text-lg">
-            <img class="flag-24 svg-shadow" src="{{ $trip->city->country->flagUrl() }}">
-            {{ $trip->title }}
-            <span class="text-gray-400 text-xs">{{ $trip->timelinePeriod(true) }}</span>
+        <div class="absolute bottom-0 text-white trip-cover-info p-4 w-full">
+          <div class="flex flex-wrap items-center text-lg">
+            <img class="flag-24 mr-1 svg-shadow" src="{{ $trip->city->country->flagUrl() }}">
+            <span class="leading-none mr-1">{{ $trip->title }}</span>
+            <span class="leading-tight self-end text-gray-300 text-xs">{{ $trip->timelinePeriod(true) }}</span>
           </div>
-          <div class="text-xs md:text-sm">{{ $trip->metaDescription() }}</div>
+          @if ($trip->metaDescription())
+            <div class="leading-tight mt-1 text-xs md:text-2sm">{{ $trip->metaDescription() }}</div>
+          @endif
         </div>
       </a>
     </div>

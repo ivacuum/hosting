@@ -4,5 +4,6 @@
   @include('tpl.svg-avatar', [
     'bg' => ViewHelper::avatarBg($user->id),
     'text' => $user->avatarName(),
+    'classes' => $classes ?? '',
   ])
 @endif

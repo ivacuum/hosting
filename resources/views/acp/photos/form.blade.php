@@ -2,7 +2,7 @@
   {!! Form::select('trip_id')->required()->classes(['js-append-formdata'])->values(App\Trip::forInputSelect())->html() !!}
 
   <div class="mb-4">
-    <label>{{ trans('acp.photos.index') }}</label>
+    <label class="font-bold">{{ trans('acp.photos.index') }}</label>
     <images-uploader action="{{ path("$self@store") }}" append=".js-append-formdata"></images-uploader>
   </div>
 @else
@@ -11,9 +11,9 @@
   </div>
 
   <div class="mb-4">
-    <label>Тэги</label>
+    <label class="font-bold">{{ trans('acp.tags.index') }}</label>
     @foreach (App\Tag::orderBy(App\Tag::titleField())->get() as $tag)
-      <label class="flex items-center font-normal">
+      <label class="flex items-center">
         <input class="mr-2 {{ $errors->has('tags') ? 'is-invalid' : '' }}" type="checkbox" name="tags[]" value="{{ $tag->id }}" {{ in_array($tag->id, (array) old('tags', !empty($model) ? $model->tags->pluck('id')->all() : null)) ? 'checked' : '' }}>
         {{ $tag->title }}
       </label>

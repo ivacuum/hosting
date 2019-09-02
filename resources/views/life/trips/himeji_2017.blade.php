@@ -75,7 +75,7 @@
 
 @ru
   <p>Объяснение компоновки вагонов в скоростных поездах разного типа.</p>
-  <ul>
+  <ul class="mb-4">
     <li>Reserved — требуется предварительное бронирование места.</li>
     <li>Green — первый класс, тоже нужно бронирование места.</li>
     <li>Non-reserved — свободная посадка, самый дешевый вариант.</li>
@@ -83,7 +83,7 @@
   <p>Места можно забронировать на все поезда путешествия сразу. Лучше их при этом выписать на бумагу или показать на экране — так японцам легче вас понять. Английский у них чаще всего на школьном уровне.</p>
 @en
   <p>Explanation of shinkansen cars' layout.</p>
-  <ul>
+  <ul class="mb-4">
     <li>Reserved—reservation is required in advance</li>
     <li>Green—first class, you also need to reserve a seat</li>
     <li>Non-reserved—the cheapest way to take a ride with free seats, but there might be not enough seats for everyone, so you might end up standing</li>

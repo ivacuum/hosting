@@ -4,18 +4,18 @@
     <div :key="stage" style="min-height: 420px;">
       <div v-show="stage === 'pick'">
         <p>{{ $t('PICKER_TEXT') }}</p>
-        <div class="items-center text-center border-left" style="display: grid; grid-template-columns: repeat(16, max-content);">
+        <div class="items-center text-center border-l border-gray-200" style="display: grid; grid-template-columns: repeat(16, max-content);">
           <template v-for="(cells, i) in elements">
             <template v-for="(cell, j) in cells">
-              <div class="border-right cursor-pointer px-2 pt-2 pb-1" :class="{ 'border-top': i === 0 }" @click="clickOnColumn(j)">
+              <div class="border-r border-gray-200 cursor-pointer px-2 pt-2 pb-1" :class="{ 'border-t': i === 0 }" @click="clickOnColumn(j)">
                 <div class="text-2xl font-bold ja-character">{{ cell[syllabaryIndex] ? cell[syllabaryIndex] : '&nbsp;' }}</div>
                 <div class="text-muted">{{ cell[answerIndex] ? cell[answerIndex] : '&nbsp;' }}</div>
               </div>
             </template>
           </template>
           <template v-for="i in elements[0].length">
-            <div class="border-right border-bottom">
-              <label class="cursor-pointer block mb-0 py-2">
+            <div class="border-r border-b border-gray-200">
+              <label class="block cursor-pointer py-2">
                 <input
                   :id="`column_${i - 1}`"
                   class="cursor-pointer"

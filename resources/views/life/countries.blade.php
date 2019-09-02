@@ -15,7 +15,7 @@
 </nav>
 
 @if ($countries->count())
-  <ol class="mb-0">
+  <ol class="pl-8">
     @foreach ($countries as $country)
       <li class="{{ !$loop->last ? 'mb-2' : '' }}">
         @if ($country->trips_published_count)

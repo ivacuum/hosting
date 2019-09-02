@@ -17,12 +17,12 @@
   @endru
   <div class="calendar-grid text-2xs md:text-sm text-center">
     @foreach (range($lastDate->year, $firstDate->year, -1) as $year)
-      <div class="font-bold text-right mt-4 pr-2 bg-gray-300">{{ $year }}</div>
+      <div class="font-bold text-right mt-4 pr-2 bg-gray-200">{{ $year }}</div>
       @foreach (range(1, 31) as $day)
-        <div class="mt-4 bg-gray-300">{{ $day }}</div>
+        <div class="mt-4 bg-gray-200">{{ $day }}</div>
       @endforeach
       @foreach (range($year === $lastDate->year ? $lastDate->month : 12, 1, -1) as $month)
-        <div class="text-right pr-2 border-right">{{ trans("months.{$month}") }}</div>
+        <div class="text-right pr-2 border-r border-gray-200">{{ trans("months.{$month}") }}</div>
         @foreach (range(1, 31) as $day)
           @php ($date = "{$year}-{$month}-{$day}")
           @if (isset($calendar[$date]))
