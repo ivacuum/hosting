@@ -104,10 +104,7 @@ export default class Shortcuts {
         }
 
         firstItem.classList.add('focus')
-
-        $.scrollTo(firstItem, SCROLL_ANIMATION_SPEED, {
-          axis: 'y',
-        })
+        firstItem.scrollIntoView()
       }
 
       return true
@@ -130,10 +127,7 @@ export default class Shortcuts {
         }
 
         lastItem.classList.add('focus')
-
-        $.scrollTo(lastItem, SCROLL_ANIMATION_SPEED, {
-          axis: 'y',
-        })
+        lastItem.scrollIntoView()
       }
 
       return true
@@ -148,10 +142,7 @@ export default class Shortcuts {
 
       if (focusedItem === null) {
         firstItem.classList.add('focus')
-
-        $.scrollTo(firstItem, SCROLL_ANIMATION_SPEED, {
-          axis: 'y',
-        })
+        firstItem.scrollIntoView()
       } else {
         const items = [...document.querySelectorAll('.js-shortcuts-item')]
         let nextItem = null
@@ -170,10 +161,7 @@ export default class Shortcuts {
         } else {
           focusedItem.classList.remove('focus')
           nextItem.classList.add('focus')
-
-          $.scrollTo(nextItem, SCROLL_ANIMATION_SPEED, {
-            axis: 'y',
-          })
+          nextItem.scrollIntoView()
         }
       }
 
@@ -190,10 +178,7 @@ export default class Shortcuts {
 
       if (focusedItem === null) {
         lastItem.classList.add('focus')
-
-        $.scrollTo(lastItem, SCROLL_ANIMATION_SPEED, {
-          axis: 'y',
-        })
+        lastItem.scrollIntoView()
       } else {
         let prevItem = null
 
@@ -211,10 +196,7 @@ export default class Shortcuts {
         } else {
           focusedItem.classList.remove('focus')
           prevItem.classList.add('focus')
-
-          $.scrollTo(prevItem, SCROLL_ANIMATION_SPEED, {
-            axis: 'y',
-          })
+          prevItem.scrollIntoView()
         }
       }
 
