@@ -11,7 +11,7 @@
   <p>Предполагалось, что этот концерт станет первым посещенным заграницей, но потом в график вписался <a class="link" href="rammstein.2016.07">Раммштайн</a> на неделю раньше в той же Германии.</p>
 @endru
 <div class="md:flex md:-mx-4">
-  <div class="md:w-7/12 md:px-4">
+  <div class="mb-4 md:w-7/12 md:px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>5 A.M.</li>
@@ -41,7 +41,7 @@
   </div>
   <div class="md:w-5/12 md:px-4">
     <div class="mb-6 text-center mobile-wide">
-      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/davidgilmour.2016.07.18.png">
+      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/davidgilmour.2016.07.18.png">
     </div>
   </div>
 </div>

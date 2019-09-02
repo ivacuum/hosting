@@ -135,7 +135,14 @@
         <div>Добавим иероглифы. Проявился вопрос «сколько штук».</div>
       </li>
       <li class="mt-2">
-        <div class="text-xl">バス　は　何台　いり　ます　か。</div>
+        <div class="inline-flex text-xl">
+          <span class="mr-2">バス</span>
+          <span class="mr-2">は</span>
+          <span class="mr-2">何台</span>
+          <span class="mr-2">いり</span>
+          <span class="mr-2">ます</span>
+          か。
+        </div>
         <div>В идеале хотелось бы так, но нет. Может решатся когда-нибудь упростить письменность, как корейцы.</div>
       </li>
     </ol>

@@ -9,7 +9,7 @@
   <p>Обратно предстояло идти пешком до Киевского вокзала. Навигатором выступала карта автомобильных дорог.</p>
 @endru
 <div class="md:flex md:-mx-4">
-  <div class="md:w-7/12 md:px-4">
+  <div class="mb-4 md:w-7/12 md:px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>Träumst Du</li>
@@ -39,7 +39,7 @@
   </div>
   <div class="md:w-5/12 md:px-4">
     <div class="mb-6 text-center mobile-wide">
-      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/oomph.2007.04.21.jpg">
+      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/oomph.2007.04.21.jpg">
     </div>
   </div>
 </div>

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="md:flex md:-mx-4">
-  <div class="md:w-7/12 md:px-4">
+  <div class="mb-4 md:w-7/12 md:px-4">
     @ru
       <p>Повторение <a class="link" href="opeth.2016">брюссельской программы</a> в укороченном виде — тогда исполнение было лучше, а у нас зато всегда активная и громкая публика по сравнению с европейской. В целом концерт можно было пропускать — увидеть одно шоу тура достаточно.</p>
     @endru
@@ -23,7 +23,7 @@
   </div>
   <div class="md:w-5/12 md:px-4">
     <div class="mb-6 text-center mobile-wide">
-      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/opeth.2017.10.11.jpg">
+      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/opeth.2017.10.11.jpg">
     </div>
   </div>
 </div>

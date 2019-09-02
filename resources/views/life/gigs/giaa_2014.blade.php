@@ -7,7 +7,7 @@
   <p>Заключительный концерт тура ирландцев. Гитаристы играли на одних и тех же гитарах все шоу, из-за этого чуть ли не каждую песню их перенастраивали — это резало глаз после популярных международных коллективов, где у каждой группы целая команда техников и множество предварительно настроенных инструментов.</p>
 @endru
 <div class="md:flex md:-mx-4">
-  <div class="md:w-7/12 md:px-4">
+  <div class="mb-4 md:w-7/12 md:px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>When Everything Dies</li>
@@ -32,7 +32,7 @@
   </div>
   <div class="md:w-5/12 md:px-4">
     <div class="mb-6 text-center mobile-wide">
-      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/giaa.2014.11.23.jpg">
+      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/giaa.2014.11.23.jpg">
     </div>
   </div>
 </div>

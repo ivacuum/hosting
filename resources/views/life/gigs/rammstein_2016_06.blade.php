@@ -10,7 +10,7 @@
   <p>Maxidrom festival returns after a long break.</p>
 @endru
 <div class="md:flex md:-mx-4">
-  <div class="md:w-7/12 md:px-4">
+  <div class="mb-4 md:w-7/12 md:px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>Ramm 4</li>
@@ -41,7 +41,7 @@
   </div>
   <div class="md:w-5/12 md:px-4">
     <div class="mb-6 text-center mobile-wide">
-      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/rammstein.2016.06.19.jpg">
+      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/rammstein.2016.06.19.jpg">
     </div>
   </div>
 </div>

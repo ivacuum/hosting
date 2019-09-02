@@ -10,7 +10,7 @@
   <p>В сетлисте можно заметить, что три песни повторяются. Niemand должна была стать последней в сете, но из-за технических заминок три песни пришлось сыграть заново. До этого в <a class="link" href="oomph.2012">2012 году</a> дважды исполнялась Augen auf.</p>
 @endru
 <div class="sm:flex sm:-mx-4">
-  <div class="sm:w-1/2 md:w-7/12 px-4">
+  <div class="mb-4 sm:w-1/2 md:w-7/12 px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>Gekreuzigt</li>
@@ -35,7 +35,7 @@
   </div>
   <div class="sm:w-1/2 md:w-5/12 sm:px-4">
     <div class="mb-6 text-center mobile-wide">
-      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/oomph.2018.09.14.jpg">
+      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/oomph.2018.09.14.jpg">
     </div>
   </div>
 </div>

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="md:flex md:-mx-4">
-  <div class="md:w-7/12 md:px-4">
+  <div class="mb-4 md:w-7/12 md:px-4">
     @ru
       <div class="mb-1">Как попала Калуга в график его гастролей — решительно непонятно:</div>
       <ul class="mb-4">
@@ -21,7 +21,7 @@
     @en
       <div class="mb-1">Setlist probably was:</div>
     @endru
-    <ol class="mb-4">
+    <ol>
       <li>Racing the World</li>
       <li>Velorum</li>
       <li>Building the Church</li>
@@ -47,7 +47,7 @@
   </div>
   <div class="md:w-5/12 md:px-4">
     <div class="mb-6 text-center mobile-wide">
-      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/vai.2014.05.26.jpg">
+      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/vai.2014.05.26.jpg">
     </div>
   </div>
 </div>

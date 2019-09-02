@@ -10,7 +10,7 @@
       <p>So you have installed a DC++ client software. The next question is where to connect. To a hub! You can find our top-10 list of DC++ hubs below.</p>
     @endru
 
-    <ol>
+    <ol class="mb-4">
       @foreach ($hubs as $hub)
         <li>
           <a

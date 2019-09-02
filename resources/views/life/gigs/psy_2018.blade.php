@@ -264,14 +264,14 @@
 ]])
 
 <div class="md:flex md:-mx-4">
-  <div class="md:w-7/12 md:px-4">
+  <div class="mb-4 md:w-7/12 md:px-4">
     @ru
       <div class="mb-1">Что было исполнено. На каждую песню можно нажать и посмотреть видео. Сердечком отмечен самый смак.</div>
     @en
       <div class="mb-1">Setlist. Each song is a link to its video. The most spectacular are marked with a heart.</div>
     @endru
     <h5 class="mb-1">@ru Сет @en Set @endru 1</h5>
-    <ol>
+    <ol class="list-inside pl-0">
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=e5VriO_mdv8">챔피언</a>
         <span class="text-sm text-muted">Champion</span>
@@ -299,8 +299,8 @@
       </li>
     </ol>
 
-    <h5 class="mb-1">@ru Сет @en Set @endru 2</h5>
-    <ol start="8">
+    <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 2</h5>
+    <ol class="list-inside pl-0" start="8">
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=vjpYGfYCnqI">We are the One</a>
         <span class="text-red-600">@svg (heart)</span>
@@ -329,8 +329,8 @@
       </li>
     </ol>
 
-    <h5 class="mb-1">@ru Сет @en Set @endru 3</h5>
-    <ol start="14">
+    <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 3</h5>
+    <ol class="list-inside pl-0" start="14">
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=4tnCBnhEGX4">Right Now</a>
         <span class="text-red-600">@svg (heart)</span>
@@ -352,8 +352,8 @@
       </li>
     </ol>
 
-    <h5 class="mb-1">@ru Сет @en Set @endru 4</h5>
-    <ol start="20">
+    <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 4</h5>
+    <ol class="list-inside pl-0" start="20">
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=dptfI1Nfe5M">낙원</a>
         <span class="text-sm text-muted">Paradise</span>
@@ -375,8 +375,8 @@
       </li>
     </ol>
 
-    <h5 class="mb-1"><a class="link" href="https://www.youtube.com/watch?v=vwEn2rh4RUw">Encore 1</a></h5>
-    <ol start="24">
+    <h5 class="mt-4 mb-1"><a class="link" href="https://www.youtube.com/watch?v=vwEn2rh4RUw">Encore 1</a></h5>
+    <ol class="list-inside pl-0" start="24">
       <li><a class="link" href="https://www.youtube.com/watch?v=PsTLjzWw0pQ">Dance medley</a></li>
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=qqj1OIpDAgY">기댈곳</a>
@@ -393,8 +393,8 @@
       </li>
     </ol>
 
-    <h5 class="mb-1">Encore 2</h5>
-    <ol start="28">
+    <h5 class="mt-4 mb-1">Encore 2</h5>
+    <ol class="list-inside pl-0" start="28">
       <li>
         <a class="link" href="https://www.youtube.com/watch?v=RwX6OxhcvYM">챔피언</a>
         <span class="text-sm text-muted">Champion</span>
@@ -413,7 +413,7 @@
   </div>
   <div class="md:w-5/12 md:px-4">
     <div class="mb-6 text-center mobile-wide">
-      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/psy.2018.12.23.jpg">
+      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/psy.2018.12.23.jpg">
     </div>
   </div>
 </div>

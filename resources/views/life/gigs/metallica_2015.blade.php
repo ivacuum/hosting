@@ -8,7 +8,7 @@
   <p>Отличная затея начать шоу с заводной песни Fuel. Побольше бы групп делало ставку на активное начало. В целом сет очень понравился, особенно King Nothing и Turn the Page. Вяло зашли зашли The Frayed Ends of Sanity и Nothing Else Matters.</p>
 @endru
 <div class="md:flex md:-mx-4">
-  <div class="md:w-7/12 md:px-4">
+  <div class="mb-4 md:w-7/12 md:px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>Fuel</li>
@@ -33,7 +33,7 @@
   </div>
   <div class="md:w-5/12 md:px-4">
     <div class="mb-6 text-center mobile-wide">
-      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/metallica.2015.08.25.jpg">
+      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/metallica.2015.08.25.jpg">
     </div>
   </div>
 </div>

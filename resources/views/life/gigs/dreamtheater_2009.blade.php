@@ -9,7 +9,7 @@
   <p>На пятой минуте шоу понял, что сорву голос, если не перестану орать, а ведь еще не начались слова!</p>
 @endru
 <div class="md:flex md:-mx-4">
-  <div class="md:w-7/12 md:px-4">
+  <div class="mb-4 md:w-7/12 md:px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>In the Presence of Enemies Pt. 1</li>
@@ -30,7 +30,7 @@
   </div>
   <div class="md:w-5/12 md:px-4">
     <div class="mb-6 text-center mobile-wide">
-      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/dreamtheater.2009.06.10.jpg">
+      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/dreamtheater.2009.06.10.jpg">
     </div>
   </div>
 </div>

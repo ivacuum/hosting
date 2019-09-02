@@ -9,7 +9,7 @@
   <p>У Петруччи день рождения всего на сутки раньше моего. На сцене поздравляли его, а по пути домой наступил уже и мой.</p>
 @endru
 <div class="md:flex md:-mx-4">
-  <div class="md:w-7/12 md:px-4">
+  <div class="mb-4 md:w-7/12 md:px-4">
     @include('tpl.setlist-title')
     <ol>
       <li>Under a Glass Moon</li>
@@ -31,7 +31,7 @@
   </div>
   <div class="md:w-5/12 md:px-4">
     <div class="mb-6 text-center mobile-wide">
-      <img class="image-fit-viewport max-w-full sm:rounded" src="https://life.ivacuum.org/gigs/dreamtheater.2011.07.12.jpg">
+      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/dreamtheater.2011.07.12.jpg">
     </div>
   </div>
 </div>
