@@ -59,8 +59,8 @@
 /** @var array[] $posts */
 ?>
 @foreach ($posts as $post)
-  <div class="card border-l-0 sm:border-l border-r-0 sm:border-r rounded-none sm:rounded mb-4 -mx-4 sm:mx-0 js-shortcuts-item">
-    <div class="card-body pb-0 break-words">
+  <div class="border border-l-0 sm:border-l border-r-0 sm:border-r rounded-none sm:rounded mb-4 -mx-4 sm:mx-0 js-shortcuts-item">
+    <div class="px-5 pt-4 pb-0 break-words">
       @if ($post['text'])
         <div class="antialiased hanging-puntuation-first lg:text-lg mb-0 whitespace-pre-line">{{ $post['text'] }}</div>
       @endif

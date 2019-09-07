@@ -1,11 +1,6 @@
-<?php
-$id = $id ?? 'accordion_' . Illuminate\Support\Str::random(6);
-?>
-<div class="card mb-2" itemscope itemtype="http://schema.org/Question">
-  <div class="card-header">
-    <h3 class="text-lg mb-0"><a class="block text-black hover:text-gray-700" href="#{{ $id }}" data-toggle="collapse" itemprop="name">{{ $title }}</a></h3>
+<details class="border mb-2 rounded overflow-hidden" itemscope itemtype="http://schema.org/Question">
+  <summary class="bg-aa-100 border-b font-semibold text-lg px-5 py-3 hover:text-gray-800" itemprop="name">{{ $title }}</summary>
+  <div class="antialiased px-5 py-3" itemprop="acceptedAnswer" itemscope itemtype="http://schema.org/Answer">
+    <div itemprop="text">{{ $slot }}</div>
   </div>
-  <div id="{{ $id }}" class="collapse" itemprop="acceptedAnswer" itemscope itemtype="http://schema.org/Answer">
-    <div class="card-body antialiased" itemprop="text">{{ $slot }}</div>
-  </div>
-</div>
+</details>

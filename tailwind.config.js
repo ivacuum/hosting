@@ -3,6 +3,7 @@ module.exports = {
     extend: {
       colors: {
         light: 'hsl(210, 16.7%, 97.6%)',
+        'aa-100': 'hsla(0, 100%, 0%, 0.03)',
         'gray-100': 'hsl(208, 10%, 95%)',
         'gray-200': 'hsl(208, 10%, 90%)',
         'gray-300': 'hsl(208, 10%, 80%)',

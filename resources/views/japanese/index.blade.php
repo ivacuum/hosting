@@ -11,34 +11,34 @@
 @section('content')
 <h1 class="h2">{{ trans('japanese.index') }}</h1>
 <div class="md:flex md:-mx-4 mt-6">
-  <div class="md:w-1/2 md:px-4">
-    <div class="card">
-      <div class="card-header bg-green-600 text-white">
+  <div class="flex md:w-1/2 md:px-4">
+    <div class="flex-1 border overflow-hidden rounded">
+      <div class="bg-green-600 px-5 py-3 text-white">
         <h2 class="h4 mb-0">@ru Собственные ресурсы @en Own services @endru</h2>
       </div>
-      <div class="card-body">
+      <div class="px-5 py-4">
         @ru
           <h3 class="h4"><a class="link" href="{{ path('JapaneseHiraganaKatakana@index') }}">Тренажер хираганы и катаканы</a></h3>
-          <p>Быстрое освоение японских слоговых азбук столбик за столбиком.</p>
+          <div>Быстрое освоение японских слоговых азбук столбик за столбиком.</div>
 
           <h3 class="h4 mt-6"><a class="link" href="{{ path('JapaneseWanikani@index') }}">{{ trans('japanese.wanikani') }}</a></h3>
-          <p>Набор ключей, иероглифов и словарных слов для изучения и повторения. Данные и вдохновение взяты с сайта <a class="link" href="https://www.wanikani.com/">wanikani.com</a> и приправлены дополнительными функциями для улучшения процесса обучения.</p>
+          <div>Набор ключей, иероглифов и словарных слов для изучения и повторения. Данные и вдохновение взяты с сайта <a class="link" href="https://www.wanikani.com/">wanikani.com</a> и приправлены дополнительными функциями для улучшения процесса обучения.</div>
         @en
           <h3 class="h4"><a class="link" href="{{ path('JapaneseHiraganaKatakana@index') }}">Hiragana & Katakana trainer</a></h3>
-          <p>Learn Japanese syllabaries column by column the fast way.</p>
+          <div>Learn Japanese syllabaries column by column the fast way.</div>
 
           <h3 class="h4 mt-6"><a class="link" href="{{ path('JapaneseWanikani@index') }}">{{ trans('japanese.wanikani') }}</a></h3>
-          <p>Set of radicals, kanji and vocabulary to study and review. Data and inspiration from <a class="link" href="https://www.wanikani.com/">wanikani.com</a> with features added to make learning and review process more effective.</p>
+          <div>Set of radicals, kanji and vocabulary to study and review. Data and inspiration from <a class="link" href="https://www.wanikani.com/">wanikani.com</a> with features added to make learning and review process more effective.</div>
         @endru
       </div>
     </div>
   </div>
-  <div class="md:w-1/2 md:px-4">
-    <div class="card mt-4 md:mt-0">
-      <div class="card-header bg-gray-800 text-white">
+  <div class="flex md:w-1/2 md:px-4">
+    <div class="flex-1 border overflow-hidden rounded mt-4 md:mt-0">
+      <div class="bg-gray-800 px-5 py-3 text-white">
         <h2 class="h4 mb-0">@ru Внешние полезные ресурсы @en External resources @endru</h2>
       </div>
-      <div class="card-body">
+      <div class="px-5 py-4">
         @ru
           <div class="mb-1">Все на английском, так как на нем материалов доступно в разы больше, чем на родном.</div>
         @en
