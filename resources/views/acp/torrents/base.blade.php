@@ -1,13 +1,13 @@
 @extends('acp.layout')
 
 @section('model_menu')
-<a class="list-group-item list-group-item-action" href="{{ path('Acp\Users@show', $model->user_id) }}">
+@component('tpl.list-group-item', ['href' => path('Acp\Users@show', $model->user_id)])
   {{ trans("$tpl.user") }}
   @if (null !== $model->user)
     <div class="text-xs text-muted">{{ $model->user->email }}</div>
   @endif
-</a>
-<a class="list-group-item list-group-item-action" href="{{ path("$self@updateRto", $model) }}">
+@endcomponent
+@component('tpl.list-group-item', ['href' => path("$self@updateRto", $model)])
   {{ trans("$tpl.update_rto") }}
-</a>
+@endcomponent
 @endsection

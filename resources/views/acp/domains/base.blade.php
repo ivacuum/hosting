@@ -1,22 +1,22 @@
 @extends('acp.layout')
 
 @section('model_menu')
-<a class="list-group-item list-group-item-action {{ $view == "$tpl.whois" ? 'active' : '' }}" href="{{ path("$self@whois", $model) }}">
+@component('tpl.list-group-item', ['href' => path("$self@whois", $model), 'isActive' => $view === "$tpl.whois"])
   {{ trans("$tpl.whois") }}
-</a>
+@endcomponent
 @if ($model->yandex_user_id)
-  <a class="list-group-item list-group-item-action {{ $view == "$tpl.mailboxes" ? 'active' : '' }}" href="{{ path("$self@mailboxes", $model) }}">
+  @component('tpl.list-group-item', ['href' => path("$self@mailboxes", $model), 'isActive' => $view === "$tpl.mailboxes"])
     {{ trans("$tpl.mailboxes") }}
-  </a>
-  <a class="list-group-item list-group-item-action {{ $view == "$tpl.ns_records" ? 'active' : '' }}" href="{{ path("$self@nsRecords", $model) }}">
+  @endcomponent
+  @component('tpl.list-group-item', ['href' => path("$self@nsRecords", $model), 'isActive' => $view === "$tpl.ns_records"])
     {{ trans("$tpl.ns_records") }}
-  </a>
+  @endcomponent
 @endif
-<a class="list-group-item list-group-item-action" href="http://{{ $model->domain }}/">
+@component('tpl.list-group-item', ['href' => "http://{{ $model->domain }}/"])
   {{ $model->domain }}
   @svg (external-link)
-</a>
-<a class="list-group-item list-group-item-action {{ $view == "$tpl.robots" ? 'active' : '' }}" href="{{ path("$self@robots", $model) }}">
+@endcomponent
+@component('tpl.list-group-item', ['href' => path("$self@robots", $model), 'isActive' => $view === "$tpl.robots"])
   {{ trans("$tpl.robots") }}
-</a>
+@endcomponent
 @endsection

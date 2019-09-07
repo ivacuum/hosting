@@ -24,10 +24,10 @@
     <thead>
     <tr>
       <th class="md:text-right">#</th>
-      <th>{{ ViewHelper::modelFieldTrans('trip', 'title') }}</th>
+      <th class="md:text-left">{{ ViewHelper::modelFieldTrans('trip', 'title') }}</th>
       <th></th>
-      <th>Дата начала</th>
-      <th>{{ ViewHelper::modelFieldTrans('trip', 'slug') }}</th>
+      <th class="md:text-left">Дата начала</th>
+      <th class="md:text-left">{{ ViewHelper::modelFieldTrans('trip', 'slug') }}</th>
       <th class="md:text-right whitespace-no-wrap">@svg (eye)</th>
       <th class="md:text-right whitespace-no-wrap">@svg (comment-o)</th>
       <th></th>

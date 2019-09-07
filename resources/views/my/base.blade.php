@@ -2,34 +2,34 @@
 
 @section('content_header')
 <div class="lg:flex lg:-mx-4">
-  <div class="lg:w-3/12 lg:px-4">
-    <div class="list-group text-center">
+  <div class="lg:w-2/12 lg:px-4">
+    <div class="flex flex-col w-full">
       @if (Auth::user()->isAdmin())
-        <a class="list-group-item list-group-item-action md:hidden" href="{{ App::isLocal() ? "{$locale_uri}/acp/dev/templates" : "{$locale_uri}/acp/trips?user_id=1" }}">
+        @component('tpl.list-group-item', ['href' => App::isLocal() ? "{$locale_uri}/acp/dev/templates" : "{$locale_uri}/acp/trips?user_id=1", 'classes' => 'md:hidden'])
           {{ trans('acp.index') }}
-        </a>
+        @endcomponent
       @endif
-      <a class="list-group-item list-group-item-action {{ $self === 'MyProfile' ? 'active' : '' }}" href="{{ path('MyProfile@edit') }}">
+      @component('tpl.list-group-item', ['href' => path('MyProfile@edit'), 'isActive' => $self === 'MyProfile'])
         {{ trans('my.profile') }}
-      </a>
-      <a class="list-group-item list-group-item-action {{ $self === 'MyPassword' ? 'active' : '' }}" href="{{ path('MyPassword@edit') }}">
+      @endcomponent
+      @component('tpl.list-group-item', ['href' => path('MyPassword@edit'), 'isActive' => $self === 'MyPassword'])
         {{ trans('my.password') }}
-      </a>
-      <a class="list-group-item list-group-item-action {{ $self === 'MySettings' ? 'active' : '' }}" href="{{ path('MySettings@edit') }}">
+      @endcomponent
+      @component('tpl.list-group-item', ['href' => path('MySettings@edit'), 'isActive' => $self === 'MySettings'])
         {{ trans('my.settings') }}
-      </a>
-      <a class="list-group-item list-group-item-action {{ $self === 'MyTrips' ? 'active' : '' }}" href="{{ path('MyTrips@index') }}">
+      @endcomponent
+      @component('tpl.list-group-item', ['href' => path('MyTrips@index'), 'isActive' => $self === 'MyTrips'])
         {{ trans('my.trips') }}
-      </a>
-      <a class="list-group-item list-group-item-action md:hidden" href="{{ path('Notifications@index') }}">
+      @endcomponent
+      @component('tpl.list-group-item', ['href' => path('Notifications@index'), 'classes' => 'md:hidden'])
         {{ trans('notifications.index') }}
-      </a>
-      <a class="list-group-item list-group-item-action md:hidden" href="{{ path('Auth\SignIn@logout') }}">
+      @endcomponent
+      @component('tpl.list-group-item', ['href' => path('Auth\SignIn@logout'), 'classes' => 'md:hidden'])
         {{ trans('auth.logout') }}
-      </a>
+      @endcomponent
     </div>
   </div>
-  <div class="lg:w-9/12 lg:px-4 mt-4 lg:mt-0">
+  <div class="lg:w-10/12 lg:px-4 mt-4 lg:mt-0">
 @endsection
 
 @section('content_footer')

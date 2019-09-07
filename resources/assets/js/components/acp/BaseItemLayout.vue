@@ -13,40 +13,43 @@ export default {
 <div v-if="resource">
   <div class="lg:flex lg:-mx-4">
     <div class="lg:w-1/4 lg:px-4">
-      <div class="list-group text-center">
+      <div class="flex flex-col w-full">
         <router-link
-          class="list-group-item list-group-item-action"
+          class="border-l-2 border-transparent px-3 py-2"
           :to="resource.show_url"
           v-if="resource.show_url"
+          active-class="border-orange-600 text-black hover:text-black"
           exact
         >
           {{ $t(`${extra.i18n_index}.show`) }}
         </router-link>
         <router-link
-          class="list-group-item list-group-item-action"
+          class="border-l-2 border-transparent px-3 py-2"
           :to="resource.edit_url"
           v-if="resource.edit_url"
+          active-class="border-orange-600 text-black hover:text-black"
         >
           {{ $t(`${extra.i18n_index}.edit`) }}
         </router-link>
         <router-link
-          class="list-group-item list-group-item-action"
+          class="border-l-2 border-transparent px-3 py-2"
           :to="relation.path"
           v-for="relation in extra.relations"
           :key="relation.i18n_index"
+          active-class="border-orange-600 text-black hover:text-black"
         >
           {{ $t(`${relation.i18n_index}.index`) }}
           <span class="text-muted text-xs whitespace-no-wrap">{{ relation.count | decimal }}</span>
         </router-link>
         <a
-          class="list-group-item list-group-item-action"
+          class="border-l-2 border-transparent px-3 py-2"
           :href="resource.www"
           v-if="resource.www"
         >
           {{ $t('www') }}
           <span v-html="$root.svg.external_link"></span>
         </a>
-        <a class="list-group-item list-group-item-action" href="#" @click.prevent="$emit('destroy')">
+        <a class="border-l-2 border-transparent px-3 py-2" href="#" @click.prevent="$emit('destroy')">
           {{ $t('delete') }}
         </a>
       </div>

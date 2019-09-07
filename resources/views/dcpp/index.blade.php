@@ -4,19 +4,20 @@
 <div class="antialiased hanging-puntuation-first lg:text-lg md:flex md:-mx-4">
   <div class="md:w-1/4 md:px-4">
     <h1>{{ trans('dcpp.index') }}</h1>
-    <div class="list-group">
-      <a class="list-group-item list-group-item-action" href="{{ path('Dcpp@page', 'airdc') }}">{{ trans('dcpp.airdc') }}</a>
-      <a class="list-group-item list-group-item-action" href="{{ path('Dcpp@page', 'apexdc') }}">{{ trans('dcpp.apexdc') }}</a>
-      <a class="list-group-item list-group-item-action" href="{{ path('Dcpp@page', 'dcpp') }}">{{ trans('dcpp.dcpp') }}</a>
-      <a class="list-group-item list-group-item-action" href="{{ path('Dcpp@page', 'flylinkdc') }}">{{ trans('dcpp.flylinkdc') }}</a>
-      <a class="list-group-item list-group-item-action" href="{{ path('Dcpp@page', 'greylinkdc') }}">{{ trans('dcpp.greylinkdc') }}</a>
-      <a class="list-group-item list-group-item-action" href="{{ path('Dcpp@page', 'jucydc') }}">{{ trans('dcpp.jucydc') }}</a>
+    <div class="h3 text-gray-500">{{ trans('dcpp.clients') }}</div>
+    <div class="flex flex-col w-full">
+      <a class="py-1" href="{{ path('Dcpp@page', 'airdc') }}">{{ trans('dcpp.airdc') }}</a>
+      <a class="py-1" href="{{ path('Dcpp@page', 'apexdc') }}">{{ trans('dcpp.apexdc') }}</a>
+      <a class="py-1" href="{{ path('Dcpp@page', 'dcpp') }}">{{ trans('dcpp.dcpp') }}</a>
+      <a class="py-1" href="{{ path('Dcpp@page', 'flylinkdc') }}">{{ trans('dcpp.flylinkdc') }}</a>
+      <a class="py-1" href="{{ path('Dcpp@page', 'greylinkdc') }}">{{ trans('dcpp.greylinkdc') }}</a>
+      <a class="py-1" href="{{ path('Dcpp@page', 'jucydc') }}">{{ trans('dcpp.jucydc') }}</a>
       @ru
-        <a class="list-group-item list-group-item-action" href="{{ path('Dcpp@page', 'kalugadc') }}">{{ trans('dcpp.kalugadc') }}</a>
+        <a class="py-1" href="{{ path('Dcpp@page', 'kalugadc') }}">{{ trans('dcpp.kalugadc') }}</a>
       @endru
-      <a class="list-group-item list-group-item-action" href="{{ path('Dcpp@page', 'pelinkdc') }}">{{ trans('dcpp.pelinkdc') }}</a>
-      <a class="list-group-item list-group-item-action" href="{{ path('Dcpp@page', 'shakespeer') }}">{{ trans('dcpp.shakespeer') }}</a>
-      <a class="list-group-item list-group-item-action" href="{{ path('Dcpp@page', 'strongdc') }}">{{ trans('dcpp.strongdc') }}</a>
+      <a class="py-1" href="{{ path('Dcpp@page', 'pelinkdc') }}">{{ trans('dcpp.pelinkdc') }}</a>
+      <a class="py-1" href="{{ path('Dcpp@page', 'shakespeer') }}">{{ trans('dcpp.shakespeer') }}</a>
+      <a class="py-1" href="{{ path('Dcpp@page', 'strongdc') }}">{{ trans('dcpp.strongdc') }}</a>
     </div>
   </div>
   <div class="md:w-3/4 md:px-4">
@@ -25,7 +26,7 @@
       <p><strong>Пиринговая сеть</strong> (Peer-to-peеr или P2P) — это обмен файлами между пользователями сети. Все пользователи подключаются к единому серверу, где происходит аккумуляция списков файлов у пользователей, потом эти файлы уже напрямую скачиваются между двумя пользователями сети.</p>
       <p>Говоря проще, вы сможете «увидеть» и скачать файлы, открытые для доступа другим абонентом сети, а также, открыв доступ к своим файлам, позволить скачать их у вас.</p>
     @en
-      <h2>What is P2P network?</h2>
+      <h2 class="mt-12 md:mt-0">What is P2P network?</h2>
       <p>A peer-to-peer network allows users to share files with other users. All users connect to a special computer called a hub that routes search requests/results and facilitates clients to connect to each other. All file transfers are being made directly between clients, not through the hub.</p>
     @endru
 

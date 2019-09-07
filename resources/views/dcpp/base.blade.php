@@ -52,9 +52,9 @@
 @section('header_user')
 @if (empty($no_language_selector))
   @ru
-    <a class="block px-2 py-3 text-gray-600 hover:text-gray-900 whitespace-no-wrap" href="{{ url("en/{$request_uri}") }}" lang="en">In English</a>
+    <a class="px-2 py-3 text-gray-600 hover:text-gray-900 whitespace-no-wrap" href="{{ url("en/{$request_uri}") }}" lang="en">In English</a>
   @en
-    <a class="block px-2 py-3 text-gray-600 hover:text-gray-900 whitespace-no-wrap" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
+    <a class="px-2 py-3 text-gray-600 hover:text-gray-900 whitespace-no-wrap" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
   @endru
 @endif
 @endsection
