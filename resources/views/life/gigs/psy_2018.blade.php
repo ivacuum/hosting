@@ -113,7 +113,7 @@
   <div class="mb-1 font-bold">Романизация:</div>
   <p>abeoji ijeya kkaedarayo<br>eojji geureoke sasyeonnayo<br>deo isang sseulsseulhae haji mayo<br>ije nawa gachi gayo</p>
   <div class="mb-1 font-bold">Кириллизация:</div>
-  <p>абоджи иджэя ккэда лаё<br>оджи кырохкэ сашёт наё<br>до исанн сыль сыль хэ хаджи маё<br>иджэн наоа катщи каё</p>
+  <p>абоджи иджэя кэда лаё<br>оджи кырокэ сашёт наё<br>до исан сыль сыль хэ хаджи маё<br>иджэн наоа катщи каё</p>
 @endru
 
 @ru
