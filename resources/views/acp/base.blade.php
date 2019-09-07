@@ -33,7 +33,7 @@
   <a class="dropdown-item" href="{{ $locale_uri }}/acp/servers">{{ trans('acp.servers.index') }}</a>
   <a class="dropdown-item" href="{{ $locale_uri }}/acp/yandex-users">{{ trans('acp.yandex-users.index') }}</a>
 @endcomponent
-@component('tpl.menu-dropdown', ['isActive' => in_array($self, ['Acp\Comments', 'Acp\Torrents', 'Acp\Files', 'Acp\News', 'Acp\Images'])])
+@component('tpl.menu-dropdown', ['isActive' => in_array($self, ['Acp\ChatMessages', 'Acp\Comments', 'Acp\DcppHubs', 'Acp\Torrents', 'Acp\Files', 'Acp\News', 'Acp\Images'])])
   @slot('title')
     {{ trans('menu.resources') }}
   @endslot
