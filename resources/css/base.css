@@ -10,7 +10,7 @@ a:hover {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  @apply font-semibold leading-tight mb-2;
+  @apply font-medium leading-tight mb-2;
 }
 
 h1, .h1 {
@@ -62,3 +62,5 @@ ul ul {
 section {
   padding-top: 2rem;
 }
+
+.site-brand { text-shadow: #ddd 2px 2px 2px; }

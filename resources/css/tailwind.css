@@ -4,6 +4,8 @@
 @import "~tailwindcss/components.css";
 @import "banners.css";
 @import "buttons.css";
+@import "details.css";
+@import "dropdown.css";
 @import "forms.css";
 @import "life.css";
 @import "notie.css";

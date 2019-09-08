@@ -38,25 +38,32 @@ export default {
 </script>
 
 <template>
-<div class="navbar navbar-border navbar-expand-md md:p-0 navbar-light bg-light">
+<header class="bg-light border-b-2 border-gray-200 leading-none">
   <div class="container">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav mr-auto md:items-center">
-        <li class="nav-item">
-          <router-link class="nav-link" :to="{ name: 'acp' }" exact>
-            {{ $t('home.index') }}
-          </router-link>
-        </li>
-        <li class="nav-item dropdown" :class="{ active: lifeMenuActive }">
-          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+    <div class="flex flex-wrap justify-between items-center w-full">
+      <a class="md:hidden site-brand font-bold text-lg text-blue-700 flex items-center hover:text-orange-600 md:mr-3 h-12 text-center" :href="`${locale}/`">vacuum<br>kaluga</a>
+      <button class="md:hidden px-4 py-3 text-2xl text-gray-600 hover:text-gray-900 js-collapse" data-target="#header_menu" v-html="$root.svg.three_bars"></button>
+      <nav id="header_menu" class="flex md:flex flex-col md:flex-row order-4 md:order-3 md:mr-auto md:items-center whitespace-no-wrap md:whitespace-normal w-full md:w-auto hidden">
+        <router-link
+          class="md:border-b-2 md:border-transparent md:-mb-2px px-0 md:px-2 py-3 md:py-4 text-gray-600 hover:text-gray-900"
+          :to="{ name: 'acp' }"
+          active-class="md:border-blue-500 text-gray-900"
+          exact
+        >
+          {{ $t('home.index') }}
+        </router-link>
+        <div class="dropdown">
+          <a
+            class="block md:border-b-2 md:border-transparent md:-mb-2px px-0 md:px-2 py-3 md:py-4 text-gray-600 hover:text-gray-900 outline-none dropdown-toggle"
+            :class="{ 'md:border-blue-500 text-gray-900': lifeMenuActive }"
+            href="#"
+            data-toggle="dropdown"
+          >
             {{ $t('menu.life') }}
           </a>
-          <div class="dropdown-menu">
+          <div class="dropdown-menu leading-normal">
             <router-link
-              class="dropdown-item"
+              class="dropdown-item-tw"
               :to="`${locale}/acp/${section}`"
               v-for="section in lifeMenu"
               :key="section"
@@ -64,14 +71,19 @@ export default {
               {{ $t(`${section}.index`)}}
             </router-link>
           </div>
-        </li>
-        <li class="nav-item dropdown" :class="{ active: hostingMenuActive }">
-          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+        </div>
+        <div class="dropdown">
+          <a
+            class="block md:border-b-2 md:border-transparent md:-mb-2px px-0 md:px-2 py-3 md:py-4 text-gray-600 hover:text-gray-900 outline-none dropdown-toggle"
+            :class="{ 'md:border-blue-500 text-gray-900': hostingMenuActive }"
+            href="#"
+            data-toggle="dropdown"
+          >
             {{ $t('menu.hosting') }}
           </a>
-          <div class="dropdown-menu">
+          <div class="dropdown-menu leading-normal">
             <router-link
-              class="dropdown-item"
+              class="dropdown-item-tw"
               :to="`${locale}/acp/${section}`"
               v-for="section in hostingMenu"
               :key="section"
@@ -79,14 +91,19 @@ export default {
               {{ $t(`${section}.index`)}}
             </router-link>
           </div>
-        </li>
-        <li class="nav-item dropdown" :class="{ active: resourcesMenuActive }">
-          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+        </div>
+        <div class="dropdown">
+          <a
+            class="block md:border-b-2 md:border-transparent md:-mb-2px px-0 md:px-2 py-3 md:py-4 text-gray-600 hover:text-gray-900 outline-none dropdown-toggle"
+            :class="{ 'md:border-blue-500 text-gray-900': resourcesMenuActive }"
+            href="#"
+            data-toggle="dropdown"
+          >
             {{ $t('menu.resources') }}
           </a>
-          <div class="dropdown-menu">
+          <div class="dropdown-menu leading-normal">
             <router-link
-              class="dropdown-item"
+              class="dropdown-item-tw"
               :to="`${locale}/acp/${section}`"
               v-for="section in resourcesMenu"
               :key="section"
@@ -94,14 +111,19 @@ export default {
               {{ $t(`${section}.index`)}}
             </router-link>
           </div>
-        </li>
-        <li class="nav-item dropdown" :class="{ active: japaneseMenuActive }">
-          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+        </div>
+        <div class="dropdown">
+          <a
+            class="block md:border-b-2 md:border-transparent md:-mb-2px px-0 md:px-2 py-3 md:py-4 text-gray-600 hover:text-gray-900 outline-none dropdown-toggle"
+            :class="{ 'md:border-blue-500 text-gray-900': japaneseMenuActive }"
+            href="#"
+            data-toggle="dropdown"
+          >
             {{ $t('menu.japanese') }}
           </a>
-          <div class="dropdown-menu">
+          <div class="dropdown-menu leading-normal">
             <router-link
-              class="dropdown-item"
+              class="dropdown-item-tw"
               :to="`${locale}/acp/${section}`"
               v-for="section in japaneseMenu"
               :key="section"
@@ -109,14 +131,19 @@ export default {
               {{ $t(`${section}.index`)}}
             </router-link>
           </div>
-        </li>
-        <li class="nav-item dropdown" :class="{ active: siteMenuActive }">
-          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+        </div>
+        <div class="dropdown">
+          <a
+            class="block md:border-b-2 md:border-transparent md:-mb-2px px-0 md:px-2 py-3 md:py-4 text-gray-600 hover:text-gray-900 outline-none dropdown-toggle"
+            :class="{ 'md:border-blue-500 text-gray-900': siteMenuActive }"
+            href="#"
+            data-toggle="dropdown"
+          >
             {{ $t('menu.site') }}
           </a>
-          <div class="dropdown-menu">
+          <div class="dropdown-menu leading-normal">
             <router-link
-              class="dropdown-item"
+              class="dropdown-item-tw"
               :to="`${locale}/acp/${section}`"
               v-for="section in siteMenu"
               :key="section"
@@ -124,9 +151,9 @@ export default {
               {{ $t(`${section}.index`)}}
             </router-link>
           </div>
-        </li>
-      </ul>
+        </div>
+      </nav>
     </div>
   </div>
-</div>
+</header>
 </template>

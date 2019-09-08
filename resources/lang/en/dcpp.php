@@ -8,6 +8,7 @@ return [
     'pages' => 'Pages',
     'clients' => 'Client software',
     'download' => 'Download',
+    'dc_clients' => 'DC++ client software',
     'screenshots' => 'Screenshots',
     'about_software' => 'About',
     'developer_site' => 'Official site',

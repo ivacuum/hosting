@@ -48,10 +48,14 @@ export default {
     {{ title }}: {{ current }}
   </a>
   <div class="dropdown-menu">
-    <router-link class="dropdown-item" active-class="noop-active" :to="clearFilter()">Все</router-link>
+    <router-link
+      class="dropdown-item-tw"
+      active-class="noop-active"
+      :to="clearFilter()"
+    >Все</router-link>
     <div class="dropdown-divider"></div>
     <router-link
-      class="dropdown-item"
+      class="dropdown-item-tw"
       active-class="noop-active"
       :to="applyFilter(row.value)"
       v-for="row in values"

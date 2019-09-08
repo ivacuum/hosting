@@ -4,6 +4,7 @@ export default class EventHandlers {
   static bind() {
     $(document).on('click', '.js-aviasales', this.aviasalesClick)
     $(document).on('click', '.js-city-map-click', this.cityMapClick)
+    $(document).on('click', '.js-collapse', this.collapse)
     $(document).on('click', '.js-dcpp-clients-show', this.dcppClientsShowClick)
     $(document).on('click', '.js-dcpp-hub', this.dcppHubClick)
     $(document).on('click', '.js-gif-click', this.gifClick)
@@ -77,6 +78,14 @@ export default class EventHandlers {
     }
 
     $container.slideToggle()
+  }
+
+  static collapse(e) {
+    e.preventDefault()
+
+    const el = document.querySelector(this.dataset.target)
+
+    el.classList.toggle('hidden')
   }
 
   /**

@@ -9,7 +9,7 @@
 @endpush
 
 @section('brand')
-{{--<a class="navbar-brand" href="{{ path('UserTravelTrips@index', $traveler->login) }}">{{ '@'.$traveler->login }}<br>@ru путешествует @en travels @endru</a>--}}
+{{--<a class="site-brand" href="{{ path('UserTravelTrips@index', $traveler->login) }}">{{ '@'.$traveler->login }}<br>@ru путешествует @en travels @endru</a>--}}
 @endsection
 
 @section('global_menu')

@@ -10,6 +10,7 @@ return [
     'clients' => 'Клиенты',
     'download' => 'Скачать',
     'rus_setup' => 'Инструкция по русификации',
+    'dc_clients' => 'Клиенты DC++',
     'screenshots' => 'Скриншоты',
     'about_software' => 'О программе',
     'developer_site' => 'Официальный сайт',

@@ -2,6 +2,4 @@
 
 .avatar-100 {
   @include size(100px);
-
-  .navbar-nav & { @include size(36px); }
 }
