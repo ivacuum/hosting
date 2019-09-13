@@ -388,6 +388,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9567.jpg'])
 
+<a id="roof"></a>
 @ru
   <p><s>Макароны</s> соломенная крыша.</p>
 @endru
