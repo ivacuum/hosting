@@ -78,8 +78,8 @@ class Templates extends BaseController
             $images = $result = [];
 
             foreach ($lines as $line) {
-                if (preg_match('#^([A-Za-z_\d]+\.[a-z]{3})$#', $line, $match)) {
-                    $images[] = $match[1];
+                if (preg_match('#^([A-Za-z_\d]+\.[a-z]{3,4})$#', $line, $match)) {
+                    $images[] = str_replace('.jpeg', '.jpg', $match[1]);
                 } else {
                     $sizeof = sizeof($images);
 
