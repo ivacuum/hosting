@@ -27,7 +27,7 @@ return [
             'collation' => 'utf8mb4_unicode_ci',
             'prefix'    => '',
             'prefix_indexes' => true,
-            'strict'    => false,
+            'strict'    => true,
             'engine'    => null,
             'options' => [
                 \PDO::ATTR_EMULATE_PREPARES => true,
