@@ -183,5 +183,6 @@
 @ru
   <p>Самолеты заходят на посадку примерно каждые пять минут.</p>
 @endru
+<youtube title="Plane Lands at Fukuoka Airport, Japan, April 2019" v="4YrEpTolo_4"></youtube>
 @include('tpl.pic-2x', ['pic' => 'IMG_9385.jpg'])
 @endsection
