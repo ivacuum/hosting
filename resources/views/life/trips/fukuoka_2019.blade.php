@@ -175,6 +175,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9329.jpg'])
 
+<a id="photographers"></a>
 @ru
   <p>Желающих пофотографировать весьма достаточно.</p>
 @endru
