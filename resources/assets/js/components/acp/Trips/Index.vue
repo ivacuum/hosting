@@ -20,14 +20,14 @@ export default {
     <thead>
     <tr>
       <th class="md:text-right">#</th>
-      <th>{{ modelFieldTrans('title') }}</th>
+      <th class="md:text-left">{{ modelFieldTrans('title') }}</th>
       <th></th>
-      <th>
+      <th class="md:text-left">
         <sortable-header default field="date_start">
           {{ modelFieldTrans('date_start') }}
         </sortable-header>
       </th>
-      <th>{{ modelFieldTrans('slug') }}</th>
+      <th class="md:text-left">{{ modelFieldTrans('slug') }}</th>
       <th class="md:text-right whitespace-no-wrap">
         <sortable-header field="views">
           <span v-html="$root.svg.eye"></span>
