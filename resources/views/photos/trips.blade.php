@@ -12,8 +12,10 @@
       <a class="block group" href="{{ $trip->www() }}">
         <div class="relative pb-3/4">
           <img
-            class="absolute w-full h-full object-cover brightness-3/4 group-hover:brightness-full"
-            src="{{ $trip->metaImage(500, 375) }}"
+            class="absolute w-full h-full object-cover brightness-3/4 group-hover:brightness-full js-lazy"
+            src="https://life.ivacuum.org/0.gif"
+            data-src="{{ $trip->metaImage(500, 375) }}"
+            alt=""
           >
         </div>
         <div class="absolute bottom-0 left-0 text-white trip-cover-info p-4 w-full">
