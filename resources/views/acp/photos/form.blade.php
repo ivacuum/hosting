@@ -7,7 +7,7 @@
   </div>
 @else
   <div class="mb-6">
-    <img class="image-fit-viewport mobile-wide sm:rounded max-w-full" src="{{ $model->originalUrl() }}">
+    <img class="image-fit-viewport mobile-wide sm:rounded max-w-full" src="{{ $model->originalUrl() }}" alt="">
   </div>
 
   <div class="mb-4">
