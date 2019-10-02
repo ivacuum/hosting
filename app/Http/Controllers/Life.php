@@ -6,6 +6,7 @@ use App\Domain\TripStatsCalculator;
 use App\Gig;
 use App\Trip;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 
 class Life extends Controller
 {
@@ -39,12 +40,18 @@ class Life extends Controller
         return view($this->view, compact('trips'));
     }
 
-    public function calendar()
+    public function calendar(Request $request)
     {
+        /** @var \App\User $user */
+        $user = $request->user();
+        $includeOnlyVisible = $user === null || !$user->isAdmin();
+
         $trips = Trip::query()
             ->where('user_id', 1)
             ->where('city_id', '<>', 1)
-            ->visible()
+            ->when($includeOnlyVisible, function (Builder $query) {
+                $query->visible();
+            })
             ->orderBy('date_start')
             ->get();
 
