@@ -125,6 +125,11 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_1005.jpg'])
 
 @ru
+  <p>Чайки делят территорию.</p>
+@endru
+<youtube title="Seagulls in Park of Porto, Portugal, May 2019" v="hCfTs96qX_c"></youtube>
+
+@ru
   <p>Думал, что хотя бы это знакомое слово правильно прочитаю с португальского, но нет.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1009.jpg'])
