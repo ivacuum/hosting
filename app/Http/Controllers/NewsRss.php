@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers;
 
 use App\News;
-use Illuminate\Database\Eloquent\Builder;
 
 class NewsRss extends Controller
 {

@@ -2,6 +2,10 @@
 
 use Baum\Node;
 
+/**
+ * @property string $title
+ * @property string $url
+ */
 class Page extends Node
 {
     protected $hidden = ['left_id', 'right_id', 'depth'];

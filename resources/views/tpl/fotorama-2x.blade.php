@@ -1,4 +1,5 @@
 <?php
+/** @var bool $is_crawler */
 $alt = $is_crawler && isset($trip) ? $trip->imgAltText() : '';
 ?>
 <div class="-mt-2 mb-6 mobile-wide">

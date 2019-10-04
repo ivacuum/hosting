@@ -1,7 +1,8 @@
 <?php
-$show_time = Carbon\Carbon::parse($show_datetime);
-$diff = now()->diff($show_time);
-$diff_in_days = $diff->invert ? -1 * $diff->days : $diff->days;
+/** @var string $showDatetime */
+$showTime = Carbon\Carbon::parse($showDatetime);
+$diff = now()->diff($showTime);
+$diffInDays = $diff->invert ? -1 * $diff->days : $diff->days;
 ?>
 
 @if ($diff_in_days >= 1)

@@ -133,7 +133,7 @@ class Country extends Model
             case 'croatia': return 'hr';
             case 'cuba': return 'cu';
             case 'cyprus': return 'cy';
-            case 'czech-republic': return 'cz';
+            case 'czech-republic':
             case 'czechia': return 'cz';
             case 'denmark': return 'dk';
             case 'ecuador': return 'ec';

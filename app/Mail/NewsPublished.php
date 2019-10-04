@@ -1,6 +1,5 @@
 <?php namespace App\Mail;
 
-use App\Traits\LocalizedMail;
 use App\News as Model;
 use App\User;
 use Illuminate\Mail\Mailable;

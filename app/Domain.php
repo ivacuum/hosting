@@ -42,6 +42,8 @@ use Illuminate\Support\Carbon;
  * @property \Illuminate\Support\Carbon $paid_till
  * @property \Illuminate\Support\Carbon $queried_at
  *
+ * @property YandexUser $yandexUser
+ *
  * @mixin \Eloquent
  */
 class Domain extends Model

@@ -5,13 +5,14 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Сервер
  *
- * @property integer $id
- * @property string  $title
- * @property string  $host
- * @property string  $text
- * @property string  $ftp_host
- * @property string  $ftp_user
- * @property string  $ftp_pass
+ * @property int $id
+ * @property string $title
+ * @property string $host
+ * @property string $text
+ * @property string $ftp_host
+ * @property string $ftp_root
+ * @property string $ftp_user
+ * @property string $ftp_pass
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *

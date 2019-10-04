@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers;
 
 use App\Country;
-use App\Trip;
 
 class UserTravelCountries extends UserTravel
 {

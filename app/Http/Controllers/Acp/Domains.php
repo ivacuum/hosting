@@ -283,7 +283,10 @@ class Domains extends Controller
      */
     protected function getModel($domain)
     {
-        return parent::getModel($domain);
+        /** @var Model $model */
+        $model = parent::getModel($domain);
+
+        return $model;
     }
 
     /**
