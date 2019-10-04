@@ -11,19 +11,19 @@ use Laravel\Scout\Searchable;
 /**
  * Торрент
  *
- * @property integer $id
- * @property integer $user_id
- * @property integer $category_id
- * @property integer $rto_id
- * @property string  $title
- * @property string  $html
- * @property string  $related_query
- * @property integer $size
- * @property string  $info_hash
- * @property string  $announcer
- * @property integer $status
- * @property integer $clicks
- * @property integer $views
+ * @property int $id
+ * @property int $user_id
+ * @property int $category_id
+ * @property int $rto_id
+ * @property string $title
+ * @property string $html
+ * @property string $related_query
+ * @property int $size
+ * @property string $info_hash
+ * @property string $announcer
+ * @property int $status
+ * @property int $clicks
+ * @property int $views
  * @property \Illuminate\Support\Carbon $registered_at
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
@@ -57,7 +57,18 @@ class Torrent extends Model
     const RTO_STATUS_10 = 10; // временная
     const RTO_STATUS_PREMODERATION = 11; // премодерация
 
-    const LIST_COLUMNS = ['id', 'category_id', 'rto_id', 'title', 'size', 'info_hash', 'announcer', 'clicks', 'views', 'registered_at'];
+    const LIST_COLUMNS = [
+        'id',
+        'category_id',
+        'rto_id',
+        'title',
+        'size',
+        'info_hash',
+        'announcer',
+        'clicks',
+        'views',
+        'registered_at',
+    ];
 
     const TITLE_REPLACE_FROM = [' )', ' ,', 'HD (1080p)'];
     const TITLE_REPLACE_TO = [')', ',', 'HD 1080p'];
@@ -115,9 +126,9 @@ class Torrent extends Model
         $format = $this->registered_at->year == date('Y') ? '%e %B' : '%e %B %Y';
 
         if ($this->registered_at->isToday()) {
-            return trans('torrents.today').", ".$this->registered_at->formatLocalized($format);
+            return trans('torrents.today') . ", " . $this->registered_at->formatLocalized($format);
         } elseif ($this->registered_at->isYesterday()) {
-            return trans('torrents.yesterday').", ".$this->registered_at->formatLocalized($format);
+            return trans('torrents.yesterday') . ", " . $this->registered_at->formatLocalized($format);
         }
 
         return $this->registered_at->formatLocalized($format);
@@ -243,7 +254,7 @@ class Torrent extends Model
 
     public function www(?string $anchor = null): string
     {
-        return path('Torrents@show', $this->id).$anchor;
+        return path('Torrents@show', $this->id) . $anchor;
     }
 
     // Static methods

@@ -5,12 +5,12 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * DC++ хаб
  *
- * @property integer $id
- * @property string  $title
- * @property string  $address
- * @property integer $port
- * @property integer $status
- * @property integer $clicks
+ * @property int $id
+ * @property string $title
+ * @property string $address
+ * @property int $port
+ * @property int $status
+ * @property int $clicks
  * @property \Illuminate\Support\Carbon $queried_at
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
@@ -54,7 +54,7 @@ class DcppHub extends Model
 
     public function externalLink(): string
     {
-        return "dchub://{$this->address}".($this->port !== 411 ? ":{$this->port}" : '');
+        return "dchub://{$this->address}" . ($this->port !== 411 ? ":{$this->port}" : '');
     }
 
     public function incrementClicks(): void

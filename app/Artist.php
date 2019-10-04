@@ -6,9 +6,9 @@ use Illuminate\Support\Collection;
 /**
  * Артист
  *
- * @property integer $id
- * @property string  $title
- * @property string  $slug
+ * @property int $id
+ * @property string $title
+ * @property string $slug
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *

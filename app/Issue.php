@@ -6,14 +6,14 @@ use Ivacuum\Generic\Traits\RecordsActivity;
 /**
  * Обращение пользователя
  *
- * @property integer $id
- * @property integer $user_id
- * @property integer $status
- * @property string  $name
- * @property string  $email
- * @property string  $title
- * @property string  $text
- * @property string  $page
+ * @property int $id
+ * @property int $user_id
+ * @property int $status
+ * @property string $name
+ * @property string $email
+ * @property string $title
+ * @property string $text
+ * @property string $page
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *

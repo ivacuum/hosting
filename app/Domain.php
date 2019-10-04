@@ -9,33 +9,33 @@ use Illuminate\Support\Carbon;
 /**
  * Домен
  *
- * @property integer $id
- * @property integer $alias_id
- * @property integer $client_id
- * @property integer $yandex_user_id
- * @property string  $domain
- * @property integer $status
- * @property integer $domain_control
- * @property integer $orphan
- * @property string  $ipv4
- * @property string  $ipv6
- * @property string  $mx
- * @property string  $ns
- * @property string  $text
- * @property string  $cms_type
- * @property string  $cms_version
- * @property string  $cms_url
- * @property string  $cms_user
- * @property string  $cms_pass
- * @property string  $ftp_host
- * @property string  $ftp_user
- * @property string  $ftp_pass
- * @property string  $ssh_host
- * @property string  $ssh_user
- * @property string  $ssh_pass
- * @property string  $db_pma
- * @property string  $db_host
- * @property string  $db_user
+ * @property int $id
+ * @property int $alias_id
+ * @property int $client_id
+ * @property int $yandex_user_id
+ * @property string $domain
+ * @property int $status
+ * @property int $domain_control
+ * @property int $orphan
+ * @property string $ipv4
+ * @property string $ipv6
+ * @property string $mx
+ * @property string $ns
+ * @property string $text
+ * @property string $cms_type
+ * @property string $cms_version
+ * @property string $cms_url
+ * @property string $cms_user
+ * @property string $cms_pass
+ * @property string $ftp_host
+ * @property string $ftp_user
+ * @property string $ftp_pass
+ * @property string $ssh_host
+ * @property string $ssh_user
+ * @property string $ssh_pass
+ * @property string $db_pma
+ * @property string $db_host
+ * @property string $db_user
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $registered_at
@@ -129,8 +129,8 @@ class Domain extends Model
     /**
      * Добавление днс-записей через API Яндекса
      *
-     * @param  string $type
-     * @param  array  $input
+     * @param string $type
+     * @param array $input
      * @return string
      * @throws \Exception
      */
@@ -158,7 +158,9 @@ class Domain extends Model
                 'domain' => $this->domain,
                 'weight' => $input['weight'] ?? '',
                 'target' => idn_to_ascii($content, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46),
-                'content' => !in_array($type, ['A', 'AAAA', 'TXT']) ? idn_to_ascii($content, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46) : $content,
+                'content' => !in_array($type, ['A', 'AAAA', 'TXT'])
+                    ? idn_to_ascii($content, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46)
+                    : $content,
                 'priority' => $input['priority'] ?? '',
                 'subdomain' => $input['subdomain'],
             ],
@@ -215,9 +217,9 @@ class Domain extends Model
     /**
      * Редактирование днс-записей через API Яндекса
      *
-     * @param  integer $id
-     * @param  string  $type
-     * @param  array   $input
+     * @param int $id
+     * @param string $type
+     * @param array $input
      * @return string
      * @throws \Exception
      */
@@ -244,7 +246,9 @@ class Domain extends Model
                 'domain' => $this->domain,
                 'target' => idn_to_ascii($input['content'], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46),
                 'weight' => $input['weight'] ?? '',
-                'content' => !in_array($type, ['A', 'AAAA', 'TXT']) ? idn_to_ascii($input['content'], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46) : $input['content'],
+                'content' => !in_array($type, ['A', 'AAAA', 'TXT'])
+                    ? idn_to_ascii($input['content'], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46)
+                    : $input['content'],
                 'refresh' => $input['refresh'] ?? '',
                 'priority' => $input['priority'] ?? '',
                 'subdomain' => $input['subdomain'],
@@ -280,8 +284,8 @@ class Domain extends Model
     }
 
     /**
-    * Какие домены прописаны в панели reg.ru
-    */
+     * Какие домены прописаны в панели reg.ru
+     */
     public function getNsServers()
     {
         $client = $this->getRegRuApiClient();
@@ -384,7 +388,8 @@ class Domain extends Model
 
     public function isExpired()
     {
-        return $this->paid_till->year > 1970 && ($this->paid_till->isPast() || false !== strpos($this->ns, 'expired.reg.ru'));
+        return $this->paid_till->year > 1970
+            && ($this->paid_till->isPast() || false !== strpos($this->ns, 'expired.reg.ru'));
     }
 
     public function isExpiringSoon()
@@ -406,15 +411,40 @@ class Domain extends Model
         }
 
         switch ($server) {
-            case 'srv1.korden.net': $ipv4 = '62.109.0.61';     $ipv6 = '2a01:230:2::1fb'; break;
-            case 'srv2.korden.net': $ipv4 = '188.120.229.204'; $ipv6 = '2a01:230:2::1fc'; break;
-            case 'srv3.korden.net': $ipv4 = '62.109.4.161';    $ipv6 = '2a01:230:2::1fd'; break;
-            case 'srv4.korden.net': $ipv4 = '62.109.6.149';    $ipv6 = '2a01:230:2::e2'; break;
-            case 'srv5.korden.net': $ipv4 = '94.250.254.141';  $ipv6 = ''; break;
-            case 'bsd.korden.net':  $ipv4 = '31.200.207.80';   $ipv6 = ''; break;
-            case 'srv1.ivacuum.ru': $ipv4 = '82.146.36.248';   $ipv6 = '2a01:230:2:6::16c'; break;
-            case 'srv2.ivacuum.ru': $ipv4 = '93.81.237.72';    $ipv6 = ''; break;
-            default: $ipv4 = $ipv6 = '';
+            case 'srv1.korden.net':
+                $ipv4 = '62.109.0.61';
+                $ipv6 = '2a01:230:2::1fb';
+                break;
+            case 'srv2.korden.net':
+                $ipv4 = '188.120.229.204';
+                $ipv6 = '2a01:230:2::1fc';
+                break;
+            case 'srv3.korden.net':
+                $ipv4 = '62.109.4.161';
+                $ipv6 = '2a01:230:2::1fd';
+                break;
+            case 'srv4.korden.net':
+                $ipv4 = '62.109.6.149';
+                $ipv6 = '2a01:230:2::e2';
+                break;
+            case 'srv5.korden.net':
+                $ipv4 = '94.250.254.141';
+                $ipv6 = '';
+                break;
+            case 'bsd.korden.net':
+                $ipv4 = '31.200.207.80';
+                $ipv6 = '';
+                break;
+            case 'srv1.ivacuum.ru':
+                $ipv4 = '82.146.36.248';
+                $ipv6 = '2a01:230:2:6::16c';
+                break;
+            case 'srv2.ivacuum.ru':
+                $ipv4 = '93.81.237.72';
+                $ipv6 = '';
+                break;
+            default:
+                $ipv4 = $ipv6 = '';
         }
 
         if ($ipv4) {
@@ -455,8 +485,8 @@ class Domain extends Model
         $response = $client->get('domain/update_nss', [
             'query' => [
                 'dname' => $this->domain,
-                'ns0'   => static::NS0,
-                'ns1'   => static::NS1,
+                'ns0' => static::NS0,
+                'ns1' => static::NS1,
             ],
         ]);
 
@@ -466,7 +496,7 @@ class Domain extends Model
 
         if ('success' != $status) {
             \Log::error('Unable to set yandex ns servers via reg.ru api', [
-                'context' => $response
+                'context' => $response,
             ]);
         }
 
@@ -493,20 +523,31 @@ class Domain extends Model
     public function whatServerIpv4()
     {
         switch ($this->ipv4) {
-            case '62.109.0.61': return 'srv1.korden.net';
-            case '188.120.229.204': return 'srv2.korden.net';
-            case '62.109.4.161': return 'srv3.korden.net';
-            case '62.109.6.149': return 'srv4.korden.net';
-            case '94.250.254.141': return 'srv5.korden.net';
+            case '62.109.0.61':
+                return 'srv1.korden.net';
+            case '188.120.229.204':
+                return 'srv2.korden.net';
+            case '62.109.4.161':
+                return 'srv3.korden.net';
+            case '62.109.6.149':
+                return 'srv4.korden.net';
+            case '94.250.254.141':
+                return 'srv5.korden.net';
 
-            case '93.81.237.72': return 'srv2.ivacuum.ru';
+            case '93.81.237.72':
+                return 'srv2.ivacuum.ru';
 
-            case '77.221.130.18': return 'srv018.infobox.ru';
-            case '77.221.130.22': return 'srv022.infobox.ru';
-            case '77.221.130.25': return 'srv025.infobox.ru';
-            case '77.221.130.41': return 'srv041.infobox.ru';
+            case '77.221.130.18':
+                return 'srv018.infobox.ru';
+            case '77.221.130.22':
+                return 'srv022.infobox.ru';
+            case '77.221.130.25':
+                return 'srv025.infobox.ru';
+            case '77.221.130.41':
+                return 'srv041.infobox.ru';
 
-            case '77.222.56.62': return 'vh213.sweb.ru';
+            case '77.222.56.62':
+                return 'vh213.sweb.ru';
         }
 
         return str_replace(' ', '<br>', $this->ipv4);

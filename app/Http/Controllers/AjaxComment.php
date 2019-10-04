@@ -62,8 +62,8 @@ class AjaxComment extends Controller
     }
 
     /**
-     * @param  string  $type
-     * @param  integer $id
+     * @param string $type
+     * @param int $id
      * @return \App\News|\App\Torrent|\App\Trip
      * @throws \Exception
      */

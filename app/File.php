@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Файлы для скачивания
  *
- * @property integer $id
- * @property string  $folder
- * @property string  $title
- * @property string  $slug
- * @property integer $size
- * @property string  $extension
- * @property integer $status
- * @property integer $downloads
+ * @property int $id
+ * @property string $folder
+ * @property string $title
+ * @property string $slug
+ * @property int $size
+ * @property string $extension
+ * @property int $status
+ * @property int $downloads
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *

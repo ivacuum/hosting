@@ -5,9 +5,9 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Сожженный ключ, кандзи или словарное слово
  *
- * @property integer $user_id
- * @property string  $rel_type
- * @property integer $rel_id
+ * @property int $user_id
+ * @property string $rel_type
+ * @property int $rel_id
  *
  * @mixin \Eloquent
  */

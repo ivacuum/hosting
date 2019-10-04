@@ -5,9 +5,9 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Учетка на Яндексе
  *
- * @property integer $id
- * @property string  $account
- * @property string  $token
+ * @property int $id
+ * @property string $account
+ * @property string $token
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *

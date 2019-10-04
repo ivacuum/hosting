@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Ключ
  *
- * @property integer $id
- * @property integer $level
- * @property string  $character
- * @property string  $meaning
- * @property string  $image
+ * @property int $id
+ * @property int $level
+ * @property string $character
+ * @property string $meaning
+ * @property string $image
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *

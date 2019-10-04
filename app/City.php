@@ -8,15 +8,15 @@ use Illuminate\Support\Collection;
 /**
  * Город
  *
- * @property integer $id
- * @property integer $country_id
- * @property string  $title_ru
- * @property string  $title_en
- * @property string  $slug
- * @property string  $iata
- * @property string  $lat
- * @property string  $lon
- * @property integer $views
+ * @property int $id
+ * @property int $country_id
+ * @property string $title_ru
+ * @property string $title_en
+ * @property string $slug
+ * @property string $iata
+ * @property string $lat
+ * @property string $lon
+ * @property int $views
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *

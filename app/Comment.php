@@ -8,12 +8,12 @@ use Ivacuum\Generic\Traits\RecordsActivity;
 /**
  * Комментарий
  *
- * @property integer $id
- * @property integer $user_id
- * @property integer $rel_id
- * @property string  $rel_type
- * @property integer $status
- * @property string  $html
+ * @property int $id
+ * @property int $user_id
+ * @property int $rel_id
+ * @property string $rel_type
+ * @property int $status
+ * @property string $html
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
@@ -84,9 +84,9 @@ class Comment extends Model
             : '%e&nbsp;%B&nbsp;%Y, %H:%M';
 
         if ($this->created_at->isToday()) {
-            return trans('torrents.today').", ".$this->created_at->formatLocalized($format);
+            return trans('torrents.today') . ", " . $this->created_at->formatLocalized($format);
         } elseif ($this->created_at->isYesterday()) {
-            return trans('torrents.yesterday').", ".$this->created_at->formatLocalized($format);
+            return trans('torrents.yesterday') . ", " . $this->created_at->formatLocalized($format);
         }
 
         return $this->created_at->formatLocalized($format);
@@ -116,9 +116,12 @@ class Comment extends Model
     public function www(): string
     {
         switch ($this->rel_type) {
-            case 'News': return path('News@show', $this->rel_id).$this->anchor();
-            case 'Torrent': return path('Torrents@show', $this->rel_id).$this->anchor();
-            case 'Trip': return path('Trips@show', [$this->rel_id, 'anchor' => $this->anchor()]);
+            case 'News':
+                return path('News@show', $this->rel_id) . $this->anchor();
+            case 'Torrent':
+                return path('Torrents@show', $this->rel_id) . $this->anchor();
+            case 'Trip':
+                return path('Trips@show', [$this->rel_id, 'anchor' => $this->anchor()]);
         }
 
         return '';
