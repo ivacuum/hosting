@@ -6,10 +6,10 @@ use File;
 class WhoisQuery
 {
     protected $data;
+    protected $tlds;
     protected $domain;
     protected $servers;
     protected $subdomain;
-    protected $tlds;
 
     public function __construct($domain)
     {
@@ -51,10 +51,18 @@ class WhoisQuery
 
         foreach ($ips as $row) {
             switch ($row['type']) {
-                case 'A':    $ipv4[] = $row['ip']; break;
-                case 'AAAA': $ipv6[] = $row['ipv6']; break;
-                case 'MX':   $mx[] = $row['target']; break;
-                case 'NS':   $ns[] = $row['target']; break;
+                case 'A':
+                    $ipv4[] = $row['ip'];
+                    break;
+                case 'AAAA':
+                    $ipv6[] = $row['ipv6'];
+                    break;
+                case 'MX':
+                    $mx[] = $row['target'];
+                    break;
+                case 'NS':
+                    $ns[] = $row['target'];
+                    break;
             }
         }
 
@@ -71,8 +79,8 @@ class WhoisQuery
         return [
             'ipv4' => implode(' ', $ipv4),
             'ipv6' => implode(' ', $ipv6),
-            'mx'   => implode(' ', $mx),
-            'ns'   => implode(' ', $ns),
+            'mx' => implode(' ', $mx),
+            'ns' => implode(' ', $ns),
         ];
     }
 
@@ -136,22 +144,18 @@ class WhoisQuery
                         case 'created on': // aero
                         case 'creation date': // com & net
                         case 'domain registration date': // biz
-
                             $data['registered_at'] = $value;
-
-                        break;
+                            break;
                         case 'domain expiration date': // biz
                         case 'expiration date': // com & net
                         case 'expires on': // aero
                         case 'registry expiry date':
                         case 'registrar registration expiration date'; // com
-
                             $data['paid_till'] = $value;
-
-                        break;
+                            break;
                     }
 
-                break;
+                    break;
                 case 'com.ua':
                 case 'ru':
                 case 'su':
@@ -159,35 +163,27 @@ class WhoisQuery
 
                     switch ($var) {
                         case 'created':
-
                             $data['registered_at'] = str_replace('.', '-', $value);
-
-                        break;
+                            break;
                         case 'expires': // com.ua
                         case 'paid-till':
-
                             $data['paid_till'] = str_replace('.', '-', $value);
-
-                        break;
+                            break;
                     }
 
-                break;
+                    break;
                 case 'es':
 
                     switch ($var) {
                         case 'creation date':
-
                             $data['registered_at'] = str_replace('/', '.', $value);
-
-                        break;
+                            break;
                         case 'expiration date':
-
                             $data['paid_till'] = str_replace('/', '.', $value);
-
-                        break;
+                            break;
                     }
 
-                break;
+                    break;
             }
         }
 
@@ -197,13 +193,11 @@ class WhoisQuery
     public function isValid()
     {
         if (isset($this->servers[$this->tlds][0]) &&
-            strlen($this->servers[$this->tlds][0]) > 6)
-        {
+            strlen($this->servers[$this->tlds][0]) > 6) {
             $tmpDomain = strtolower($this->subdomain);
 
             if (preg_match("/^[a-z0-9\-]{3,}$/", $tmpDomain) &&
-                !preg_match("/^-|-$/", $tmpDomain))
-            {
+                !preg_match("/^-|-$/", $tmpDomain)) {
                 return true;
             }
         }

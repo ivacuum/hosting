@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Словарное слово
  *
- * @property integer $id
- * @property integer $wk_id
- * @property integer $level
+ * @property int $id
+ * @property int $wk_id
+ * @property int $level
  * @property string  $character
  * @property string  $meaning
  * @property string  $kana

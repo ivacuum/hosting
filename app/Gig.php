@@ -7,20 +7,20 @@ use Symfony\Component\Finder\Finder;
 /**
  * Концерт
  *
- * @property integer $id
- * @property integer $city_id
- * @property integer $artist_id
- * @property string  $title_ru
- * @property string  $title_en
- * @property string  $slug
+ * @property int $id
+ * @property int $city_id
+ * @property int $artist_id
+ * @property string $title_ru
+ * @property string $title_en
+ * @property string $slug
  * @property \Illuminate\Support\Carbon $date
- * @property integer $status
- * @property string  $meta_title_ru
- * @property string  $meta_title_en
- * @property string  $meta_description_ru
- * @property string  $meta_description_en
- * @property string  $meta_image
- * @property integer $views
+ * @property int $status
+ * @property string $meta_title_ru
+ * @property string $meta_title_en
+ * @property string $meta_description_ru
+ * @property string $meta_description_en
+ * @property string $meta_image
+ * @property int $views
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
@@ -28,9 +28,9 @@ use Symfony\Component\Finder\Finder;
  * @property \App\City $city
  * @property \Illuminate\Database\Eloquent\Collection|\App\Email[] $emails
  *
- * @property-read string  $title
- * @property-read string  $meta_title
- * @property-read string  $meta_description
+ * @property-read string $title
+ * @property-read string $meta_title
+ * @property-read string $meta_description
  *
  * @mixin \Eloquent
  */
@@ -128,7 +128,7 @@ class Gig extends Model
 
     public function template(): string
     {
-        return 'life.gigs.'.str_replace('.', '_', $this->slug);
+        return 'life.gigs.' . str_replace('.', '_', $this->slug);
     }
 
     /**

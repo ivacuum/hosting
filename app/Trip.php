@@ -11,23 +11,23 @@ use Symfony\Component\Finder\Finder;
 /**
  * Поездка
  *
- * @property integer $id
- * @property integer $city_id
- * @property integer $user_id
- * @property string  $title_ru
- * @property string  $title_en
- * @property string  $slug
+ * @property int $id
+ * @property int $city_id
+ * @property int $user_id
+ * @property string $title_ru
+ * @property string $title_en
+ * @property string $slug
  * @property \Illuminate\Support\Carbon $date_start
  * @property \Illuminate\Support\Carbon $date_end
- * @property integer $status
- * @property string  $markdown
- * @property string  $html
- * @property string  $meta_title_ru
- * @property string  $meta_title_en
- * @property string  $meta_description_ru
- * @property string  $meta_description_en
- * @property string  $meta_image
- * @property integer $views
+ * @property int $status
+ * @property string $markdown
+ * @property string $html
+ * @property string $meta_title_ru
+ * @property string $meta_title_en
+ * @property string $meta_description_ru
+ * @property string $meta_description_en
+ * @property string $meta_image
+ * @property int $views
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
@@ -57,7 +57,18 @@ class Trip extends Model
     const STATUS_PUBLISHED = 1;
     const STATUS_HIDDEN = 2;
 
-    const COLUMNS_LIST = ['id', 'user_id', 'city_id', 'title_ru', 'title_en', 'slug', 'date_start', 'date_end', 'status', 'views'];
+    const COLUMNS_LIST = [
+        'id',
+        'user_id',
+        'city_id',
+        'title_ru',
+        'title_en',
+        'slug',
+        'date_start',
+        'date_end',
+        'status',
+        'views',
+    ];
 
     protected $guarded = ['id', 'html', 'views', 'created_at', 'updated_at'];
     protected $dates = ['date_start', 'date_end'];
@@ -309,7 +320,7 @@ class Trip extends Model
         $suffix = '';
 
         if (isset($this->photos_count) && $this->photos_count > 0) {
-            $suffix = " · ".\ViewHelper::plural('photos', $this->photos_count);
+            $suffix = " · " . \ViewHelper::plural('photos', $this->photos_count);
         }
 
         return "{$this->title} · {$this->localizedDate()}{$suffix}";
@@ -317,7 +328,7 @@ class Trip extends Model
 
     public function template(): string
     {
-        return 'life.trips.'.str_replace('.', '_', $this->slug);
+        return 'life.trips.' . str_replace('.', '_', $this->slug);
     }
 
     public function timelinePeriod(bool $year = false): string
@@ -328,15 +339,15 @@ class Trip extends Model
     public function www(?string $anchor = null): string
     {
         return $this->user_id === 1
-            ? path('Life@page', $this->slug).$anchor
-            : path('UserTravelTrips@show', [$this->user->login, $this->slug]).$anchor;
+            ? path('Life@page', $this->slug) . $anchor
+            : path('UserTravelTrips@show', [$this->user->login, $this->slug]) . $anchor;
     }
 
     public function wwwLocale(?string $anchor = null, string $locale = ''): string
     {
         return $this->user_id === 1
-            ? path_locale('Life@page', $this->slug, false, $locale).$anchor
-            : path_locale('UserTravelTrips@show', [$this->user->login, $this->slug], false, $locale).$anchor;
+            ? path_locale('Life@page', $this->slug, false, $locale) . $anchor
+            : path_locale('UserTravelTrips@show', [$this->user->login, $this->slug], false, $locale) . $anchor;
     }
 
     /**

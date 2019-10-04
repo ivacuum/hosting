@@ -8,12 +8,12 @@ use Illuminate\Support\Collection;
 /**
  * Страна
  *
- * @property integer $id
+ * @property int $id
  * @property string  $title_ru
  * @property string  $title_en
  * @property string  $slug
  * @property string  $emoji
- * @property integer $views
+ * @property int $views
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *

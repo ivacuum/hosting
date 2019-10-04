@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Иероглиф
  *
- * @property integer $id
- * @property integer $level
- * @property string  $character
- * @property string  $meaning
- * @property string  $onyomi
- * @property string  $kunyomi
- * @property string  $important_reading
- * @property string  $nanori
+ * @property int $id
+ * @property int $level
+ * @property string $character
+ * @property string $meaning
+ * @property string $onyomi
+ * @property string $kunyomi
+ * @property string $important_reading
+ * @property string $nanori
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *

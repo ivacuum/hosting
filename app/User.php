@@ -11,22 +11,22 @@ use Illuminate\Support\Str;
 /**
  * Пользователь
  *
- * @property integer $id
- * @property string  $email
- * @property string  $login
- * @property string  $password
- * @property string  $salt
- * @property integer $status
- * @property string  $locale
- * @property integer $theme
- * @property integer $torrent_short_title
- * @property integer $notify_gigs
- * @property integer $notify_news
- * @property integer $notify_trips
- * @property string  $avatar
- * @property string  $ip
- * @property string  $activation_token
- * @property string  $remember_token
+ * @property int $id
+ * @property string $email
+ * @property string $login
+ * @property string $password
+ * @property string $salt
+ * @property int $status
+ * @property string $locale
+ * @property int $theme
+ * @property int $torrent_short_title
+ * @property int $notify_gigs
+ * @property int $notify_news
+ * @property int $notify_trips
+ * @property string $avatar
+ * @property string $ip
+ * @property string $activation_token
+ * @property string $remember_token
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $last_login_at
@@ -186,7 +186,7 @@ class User extends Authenticatable
 
     public function isOldPasswordCorrect($password): bool
     {
-        if ($this->salt && md5($password.$this->salt) === $this->password) {
+        if ($this->salt && md5($password . $this->salt) === $this->password) {
             return true;
         }
 

@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Тэг
  *
- * @property integer $id
- * @property string  $title_ru
- * @property string  $title_en
- * @property integer $views
+ * @property int $id
+ * @property string $title_ru
+ * @property string $title_en
+ * @property int $views
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *

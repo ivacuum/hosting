@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 /**
  * Фотография
  *
- * @property integer $id
- * @property integer $user_id
- * @property integer $rel_id
+ * @property int $id
+ * @property int $user_id
+ * @property int $rel_id
  * @property string  $rel_type
  * @property string  $slug
  * @property string  $lat
  * @property string  $lon
- * @property integer $status
- * @property integer $views
+ * @property int $status
+ * @property int $views
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  *
