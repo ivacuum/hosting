@@ -28,7 +28,7 @@
         @if ($line->request_method !== 'GET')
           <code>{{ $line->request_method }}</code>
         @endif
-        <span title="{{ rawurldecode($line->request_uri) }}">{{ Illuminate\Support\Str::limit(rawurldecode($line->request_uri), 50) }}</span>
+        <span title="{{ rawurldecode($line->request_uri) }}">{{ Str::limit(rawurldecode($line->request_uri), 50) }}</span>
       </td>
       <td>
         @if ($line->status != 200)
@@ -51,7 +51,7 @@
       </td>
       <td>
         <span title="{{ $line->referer }}">
-          {{ Illuminate\Support\Str::limit(str_replace(['http://www.', 'https://www.', 'http://', 'https://'], '', $line->referer), 35) }}
+          {{ Str::limit(str_replace(['http://www.', 'https://www.', 'http://', 'https://'], '', $line->referer), 35) }}
         </span>
       </td>
     </tr>

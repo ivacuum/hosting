@@ -167,7 +167,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0636.jpg'])
 
-<a name="tiny-elevator"></a>
+<a id="tiny-elevator"></a>
 @ru
   <p>Лифт.</p>
 @en

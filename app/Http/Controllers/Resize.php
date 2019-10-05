@@ -2,7 +2,6 @@
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
-use Illuminate\Support\Str;
 use Ivacuum\Generic\Services\ImageConverter;
 
 class Resize extends Controller
@@ -59,7 +58,7 @@ class Resize extends Controller
     protected function isWhitelisted($uri)
     {
         foreach ($this->whitelist as $site) {
-            if (Str::startsWith($uri, $site)) {
+            if (\Str::startsWith($uri, $site)) {
                 return true;
             }
         }

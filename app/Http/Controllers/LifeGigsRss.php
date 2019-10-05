@@ -19,7 +19,7 @@ class LifeGigsRss extends Controller
             ->get()
             ->map(function (Gig $gig) {
                 $link = url($gig->www());
-                $cover = '<p><a href="'.$link.'?from=rss-image"><img src="'.$gig->meta_image.'"></a></p>';
+                $cover = '<p><a href="'.$link.'?from=rss-image"><img src="'.$gig->meta_image.'" alt=""></a></p>';
 
                 return [
                     'title' => htmlspecialchars($gig->metaTitle()),

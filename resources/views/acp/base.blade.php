@@ -69,7 +69,7 @@
   <a class="dropdown-item-tw" href="{{ $locale_uri }}/acp/notifications">{{ trans('acp.notifications.index') }}</a>
   <a class="dropdown-item-tw" href="{{ $locale_uri }}/acp/pages">{{ trans('acp.pages.index') }}</a>
 @endcomponent
-@component('tpl.menu-item', ['href' => $locale_uri . '/acp/dev/templates', 'isActive' => Illuminate\Support\Str::startsWith($self, 'Acp\Dev')])
+@component('tpl.menu-item', ['href' => $locale_uri . '/acp/dev/templates', 'isActive' => Str::startsWith($self, 'Acp\Dev')])
   {{ trans('acp.dev.index') }}
 @endcomponent
 @endsection

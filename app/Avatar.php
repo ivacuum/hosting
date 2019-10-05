@@ -1,7 +1,6 @@
 <?php namespace App;
 
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Str;
 use Ivacuum\Generic\Services\ImageConverter;
 
 class Avatar
@@ -37,7 +36,7 @@ class Avatar
 
     public function upload(UploadedFile $file, $userId)
     {
-        $filename = sprintf('%s_%s.%s', $userId, Str::random(6), strtolower($file->getClientOriginalExtension()));
+        $filename = sprintf('%s_%s.%s', $userId, \Str::random(6), strtolower($file->getClientOriginalExtension()));
 
         \Storage::disk('avatars')->putFileAs('', $this->resize($file), $filename);
 

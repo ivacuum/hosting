@@ -3,7 +3,7 @@
     <aside class="mr-4 md:mr-6">
       <div class="comment-avatar-size mt-1">
         @if (Auth::user()->avatar)
-          <img class="comment-avatar-size rounded-full" src="{{ Auth::user()->avatarUrl() }}">
+          <img class="comment-avatar-size rounded-full" src="{{ Auth::user()->avatarUrl() }}" alt="">
         @else
           @include('tpl.svg-avatar', [
             'bg' => ViewHelper::avatarBg(Auth::user()->id),

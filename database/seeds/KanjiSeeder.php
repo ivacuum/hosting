@@ -54,31 +54,23 @@ class KanjiSeeder extends Seeder
     public function run()
     {
         foreach (self::KANJI as $kanji) {
-            /* @var App\Kanji $kanji */
-            $kanji = factory(App\Kanji::class)->create($kanji);
+            /** @var App\Kanji $kanji */
+            $kanji = factory(App\Kanji::class)->create($kanji->toArray());
 
             switch ($kanji->character) {
                 case '一':
                 case '二':
-
                     $this->attachRadicals($kanji, ['ground']);
-
-                break;
+                    break;
                 case '月':
-
                     $this->attachRadicals($kanji, ['moon']);
-
-                break;
+                    break;
                 case '時':
-
                     $this->attachSimilarKanji($kanji, ['待']);
-
-                break;
+                    break;
                 case '待':
-
                     $this->attachSimilarKanji($kanji, ['時']);
-
-                break;
+                    break;
             }
         }
     }

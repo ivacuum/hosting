@@ -3,6 +3,7 @@
 use App\CacheKey;
 use App\Http\GuzzleClientFactory;
 use App\Services\Vk;
+use Carbon\CarbonInterval;
 use Illuminate\Support\Carbon;
 
 class ParserVk extends Controller
@@ -160,7 +161,7 @@ class ParserVk extends Controller
             $params['domain'] = $this->vkpage;
         }
 
-        return \Cache::remember($cacheEntry, now()->addMinutes(15 + intval($offset / 100)), function () use ($params) {
+        return \Cache::remember($cacheEntry, CarbonInterval::minutes(15 + intval($offset / 100)), function () use ($params) {
             if ($params['access_token'] && $params['offset']) {
                 sleep(1);
             }

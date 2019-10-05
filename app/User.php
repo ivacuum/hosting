@@ -5,8 +5,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 /**
  * Пользователь
@@ -115,7 +113,7 @@ class User extends Authenticatable
     // Attributes
     public function setPasswordAttribute(string $value): void
     {
-        $this->attributes['password'] = $value ? Hash::make($value) : '';
+        $this->attributes['password'] = $value ? \Hash::make($value) : '';
     }
 
     // Scopes
@@ -172,7 +170,7 @@ class User extends Authenticatable
             return $user;
         }
 
-        if (Str::contains($data['email'], config('cfg.autoregister_suffixes_blacklist'))) {
+        if (\Str::contains($data['email'], config('cfg.autoregister_suffixes_blacklist'))) {
             throw new \InvalidArgumentException('Данная электронная почта недоступна, укажите другую');
         }
 

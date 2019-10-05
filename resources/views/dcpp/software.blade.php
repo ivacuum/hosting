@@ -11,7 +11,7 @@
       @section('download_latest')
         <div>
           <a class="btn btn-success my-1 text-lg px-4 py-2" href="{{ path('Files@download', $software[0]['id']) }}">
-            @php ($icon = $software[0]['icon'] ?? 'windows')
+            <?php $icon = $software[0]['icon'] ?? 'windows' ?>
             <span class="mr-1">
               @svg ($icon)
             </span>
@@ -48,7 +48,7 @@
         <p>
           @foreach ($software_screenshots as $screenshot)
             <a href="{{ $screenshot['full'] }}">
-              <img class="inline-block screenshot" src="{{ $screenshot['thumb'] }}">
+              <img class="inline-block screenshot" src="{{ $screenshot['thumb'] }}" alt="">
             </a>
           @endforeach
         </p>

@@ -1,4 +1,5 @@
 <?php
+/** @var $actionUrl */
 if (!empty($greeting)) {
   echo $greeting, "\n\n";
 }/* else {

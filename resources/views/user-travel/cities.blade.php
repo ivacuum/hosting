@@ -14,12 +14,13 @@
 </nav>
 
 <div class="cities-columns">
-  @php ($initial = $current_initial = false)
+  <?php $initial = $currentInitial = false ?>
+  <?php /** @var App\City $city */ ?>
   @foreach ($cities as $city)
-    @php ($current_initial = $city->initial())
+    <?php $currentInitial = $city->initial() ?>
     <div class="city-entry relative ml-6 pb-2">
-      @if ($initial !== $current_initial)
-        <span class="absolute font-bold uppercase -ml-6">{{ $current_initial }}</span>
+      @if ($initial !== $currentInitial)
+        <span class="absolute font-bold uppercase -ml-6">{{ $currentInitial }}</span>
       @endif
       @if ($city->trips_published_count)
         <a class="link" href="{{ path('UserTravelCities@show', [$traveler->login, $city->slug]) }}">{{ $city->title }}</a>
@@ -30,7 +31,7 @@
         <span class="text-xs text-muted">{{ $city->trips_count }}</span>
       @endif
     </div>
-    @php ($initial = $current_initial)
+    <?php $initial = $currentInitial ?>
   @endforeach
 </div>
 @endsection

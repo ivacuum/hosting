@@ -59,7 +59,7 @@
 
     <div class="mb-4">
       <div class="font-bold">{{ trans('my.locale') }}</div>
-      @foreach (Illuminate\Support\Arr::sort(array_keys(config('cfg.locales'))) as $loc)
+      @foreach (Arr::sort(array_keys(config('cfg.locales'))) as $loc)
         <label class="flex items-center">
           <input
             class="mr-2 {{ $errors->has('locale') ? 'is-invalid' : '' }}"

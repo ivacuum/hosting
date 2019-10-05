@@ -1,10 +1,10 @@
 <?php namespace App;
 
 use App\Traits\HasLocalizedTitle;
+use Carbon\CarbonInterval;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 use Ivacuum\Generic\Utilities\TextImagesParser;
 use Symfony\Component\Finder\Finder;
 
@@ -43,7 +43,7 @@ use Symfony\Component\Finder\Finder;
  * @property-read string $meta_title
  * @property-read string $meta_description
  * @property-read string $period
- * @property-read int $photos_count
+ * @property int $photos_count
  * @property-read string $title
  * @property-read int $year
  *
@@ -300,7 +300,7 @@ class Trip extends Model
             return '';
         }
 
-        if (Str::startsWith($this->meta_image, 'http')) {
+        if (\Str::startsWith($this->meta_image, 'http')) {
             return $this->meta_image;
         }
 
@@ -386,7 +386,7 @@ class Trip extends Model
 
     public static function tripsWithCover(?int $count = null)
     {
-        return \Cache::remember(CacheKey::TRIPS_PUBLISHED_WITH_COVER, now()->addDays(1), function () {
+        return \Cache::remember(CacheKey::TRIPS_PUBLISHED_WITH_COVER, CarbonInterval::day(), function () {
             // Не нужно ограничение по пользователю, так как meta_image есть только у user_id=1
             return static::query()
                 ->published()

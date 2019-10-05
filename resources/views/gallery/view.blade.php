@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="text-center">
-  <img class="image-fit-viewport screenshot" src="{{ $image->originalUrl() }}">
+  <img class="image-fit-viewport screenshot" src="{{ $image->originalUrl() }}" alt="">
 </div>
 
 <div class="mx-auto max-w-xl mt-6">

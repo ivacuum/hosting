@@ -65,17 +65,18 @@
         </div>
       @endif
     @endif
-    @php ($last_date = null)
+    <?php $lastDate = null ?>
     @if (sizeof($torrents))
+      <?php /** @var App\Torrent $torrent */ ?>
       @foreach ($torrents as $torrent)
-        @if (null === $last_date || !$torrent->registered_at->isSameDay($last_date))
+        @if (null === $lastDate || !$torrent->registered_at->isSameDay($lastDate))
           <h6 class="{{ $loop->first ? 'mt-0' : 'mt-6' }}">{{ $torrent->fullDate() }}</h6>
-          @php ($last_date = $torrent->registered_at)
+          <?php $lastDate = $torrent->registered_at ?>
         @endif
-        @php ($category = TorrentCategoryHelper::find($torrent->category_id))
+        <?php $category = TorrentCategoryHelper::find($torrent->category_id) ?>
         <div class="flex flex-wrap md:flex-no-wrap justify-center md:justify-start torrents-list-container antialiased js-torrents-views-observer" data-id="{{ $torrent->id }}">
           <div class="flex-shrink-0 w-8 torrent-icon order-1 md:order-none mr-1" title="{{ $category['title'] }}">
-            @php ($icon = $category['icon'] ?? 'file-text-o')
+            <?php $icon = $category['icon'] ?? 'file-text-o' ?>
             @svg ($icon)
           </div>
           <a class="flex-grow mb-2 md:mb-0 md:mr-4 visited" href="{{ $torrent->www() }}">

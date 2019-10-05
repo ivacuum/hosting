@@ -16,25 +16,28 @@
     <p>Trips by days. Several flags in one cell means there were multiple cities visited during that day: moving from one place to another or just one-day trips. Each flag is a link to the story about the trip if the story is published.</p>
   @endru
   <div class="calendar-grid text-2xs md:text-sm text-center">
+    <?php /** @var int $year */ ?>
     @foreach (range($lastDate->year, $firstDate->year, -1) as $year)
       <div class="font-bold text-right mt-4 pr-2 bg-gray-200">{{ $year }}</div>
       @foreach (range(1, 31) as $day)
         <div class="mt-4 bg-gray-200">{{ $day }}</div>
       @endforeach
+      <?php /** @var int $month */ ?>
       @foreach (range($year === $lastDate->year ? $lastDate->month : 12, 1, -1) as $month)
         <div class="text-right pr-2 border-r border-gray-200">{{ trans("months.{$month}") }}</div>
+        <?php /** @var int $day */ ?>
         @foreach (range(1, 31) as $day)
-          @php ($date = "{$year}-{$month}-{$day}")
+          <?php $date = "{$year}-{$month}-{$day}" ?>
           @if (isset($calendar[$date]))
             <div class="bg-light flex flex-col items-center justify-start pt-1 shadow-inner">
               @foreach ($calendar[$date] as $trip)
                 @if ($trip['slug'])
                   <a class="block pb-1 tooltipped tooltipped-n" href="{{ $trip['slug'] }}" aria-label="{{ $trip['title'] }}">
-                    <img class="block flag-16 svg-shadow" src="{{ $trip['flag'] }}">
+                    <img class="block flag-16 svg-shadow" src="{{ $trip['flag'] }}" alt="">
                   </a>
                 @else
                   <div class="pb-1">
-                    <img class="block flag-16 svg-shadow" src="{{ $trip['flag'] }}">
+                    <img class="block flag-16 svg-shadow" src="{{ $trip['flag'] }}" alt="">
                   </div>
                 @endif
               @endforeach

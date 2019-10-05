@@ -12,7 +12,7 @@
   @endif
   <p>
     <a href="/{{ $thumbnail['dest'] }}">
-      <img class="screenshot" src="/{{ $thumbnail['dest'] }}">
+      <img class="screenshot" src="/{{ $thumbnail['dest'] }}" alt="">
     </a>
   </p>
 @endforeach

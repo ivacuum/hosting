@@ -9,7 +9,7 @@ $factory->define(App\Trip::class, function (Faker\Generator $faker) {
 
     return [
         'html' => '',
-        'slug' => Illuminate\Support\Str::slug($title),
+        'slug' => Str::slug($title),
         'views' => $faker->optional(0.9, 0)->numberBetween(1, 10000),
         'status' => App\Trip::STATUS_PUBLISHED,
         'user_id' => 1,

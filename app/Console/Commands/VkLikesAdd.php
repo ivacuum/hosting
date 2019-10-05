@@ -2,6 +2,7 @@
 
 use App\Jobs\LikeVkPost;
 use App\Services\Vk;
+use Carbon\CarbonInterval;
 use Ivacuum\Generic\Commands\Command;
 
 class VkLikesAdd extends Command
@@ -29,7 +30,7 @@ class VkLikesAdd extends Command
             }
 
             LikeVkPost::dispatch($post)
-                ->delay(now()->addSeconds(10 * $i));
+                ->delay(CarbonInterval::seconds(10 * $i));
 
             $bar->advance();
             $i++;

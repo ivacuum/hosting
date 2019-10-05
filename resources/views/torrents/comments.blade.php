@@ -10,7 +10,7 @@
           <div class="comment-avatar-size mt-1">
             <a href="{{ $comment->user->www() }}">
               @if ($comment->user->avatar)
-                <img class="comment-avatar-size rounded-full" src="{{ $comment->user->avatarUrl() }}">
+                <img class="comment-avatar-size rounded-full" src="{{ $comment->user->avatarUrl() }}" alt="">
               @else
                 @include('tpl.svg-avatar', [
                   'bg' => ViewHelper::avatarBg($comment->user_id),
@@ -30,7 +30,7 @@
         @endif
         <span class="mx-2 text-muted">&middot;</span>
         @if (optional($comment->rel)->status === App\Torrent::STATUS_PUBLISHED)
-          <a href="{{ $comment->rel->www() }}#comment-{{ $comment->id }}">{{ Illuminate\Support\Str::limit($comment->rel->title, 50) }}</a>
+          <a href="{{ $comment->rel->www() }}#comment-{{ $comment->id }}">{{ Str::limit($comment->rel->title, 50) }}</a>
         @else
           <em class="text-muted">раздача удалена</em>
         @endif

@@ -11,7 +11,7 @@ class GigsSeeder extends Seeder
         // Для каждого шаблона нужно создать концерт
         foreach (App\Gig::templatesIterator() as $template) {
             $slug = str_replace('_', '.', $template->getBasename('.blade.php'));
-            $artistSlug = Illuminate\Support\Str::before($slug, '.');
+            $artistSlug = Str::before($slug, '.');
 
             if (null === $artist = App\Artist::where('slug', $artistSlug)->first()) {
                 continue;

@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use Illuminate\Cookie\CookieJar;
-use Illuminate\Support\Str;
 use Ivacuum\Generic\Controllers\Acp\BaseController;
 
 class Dev extends BaseController
@@ -31,19 +30,19 @@ class Dev extends BaseController
         $country = [];
         $bots = $connection = $ip = $request_method = $request_uri = null;
 
-        if (Str::contains($q, 'bots=no')) {
+        if (\Str::contains($q, 'bots=no')) {
             $bots = false;
-        } elseif (Str::contains($q, 'bots=only')) {
+        } elseif (\Str::contains($q, 'bots=only')) {
             $bots = true;
         }
 
-        if (Str::contains($q, 'connection=')) {
+        if (\Str::contains($q, 'connection=')) {
             if (preg_match("/connection=([^ ]+)/", $q, $match)) {
                 $connection = $match[1];
             }
         }
 
-        if (Str::contains($q, ['country=', 'country!='])) {
+        if (\Str::contains($q, ['country=', 'country!='])) {
             if (preg_match("/country(!=|=)([A-Z]{2})/", $q, $match)) {
                 $country = [
                     'operator' => $match[1],
@@ -52,19 +51,19 @@ class Dev extends BaseController
             }
         }
 
-        if (Str::contains($q, 'ip=')) {
+        if (\Str::contains($q, 'ip=')) {
             if (preg_match("/ip=([^ ]+)/", $q, $match)) {
                 $ip = $match[1];
             }
         }
 
-        if (Str::contains($q, 'request_method=')) {
+        if (\Str::contains($q, 'request_method=')) {
             if (preg_match("/request_method=([^ ]+)/", $q, $match)) {
                 $request_method = strtoupper($match[1]);
             }
         }
 
-        if (Str::contains($q, 'request_uri=')) {
+        if (\Str::contains($q, 'request_uri=')) {
             if (preg_match("/request_uri=([^ ]+)/", $q, $match)) {
                 $request_uri = $match[1];
             }

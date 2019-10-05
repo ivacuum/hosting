@@ -3,7 +3,6 @@
 use App\Domain as Model;
 use App\Mail\DomainMailboxes;
 use App\Rules\Email;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Controllers\Acp\Controller;
 
@@ -95,7 +94,7 @@ class Domains extends Controller
         $mailboxes = [];
 
         foreach ($logins as $login) {
-            $password = Str::random(16);
+            $password = \Str::random(16);
 
             if ('ok' === $model->addMailbox($login, $password)) {
                 $mailboxes[] = [

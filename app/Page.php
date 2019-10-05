@@ -1,18 +1,15 @@
 <?php namespace App;
 
-use Baum\Node;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property string $title
  * @property string $url
  */
-class Page extends Node
+class Page extends Model
 {
     protected $hidden = ['left_id', 'right_id', 'depth'];
     protected $guarded = ['id', 'parent_id', 'left_id', 'right_id', 'depth'];
-
-    protected $leftColumn = 'left_id';
-    protected $rightColumn = 'right_id';
 
     public function breadcrumb()
     {

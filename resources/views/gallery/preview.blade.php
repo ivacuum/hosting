@@ -4,7 +4,7 @@
 <div class="lg:flex lg:-mx-4">
   <div class="lg:w-1/4 xl:w-1/6 lg:px-4 text-center">
     <a href="{{ path("$self@view", $image) }}">
-      <img class="screenshot" src="{{ $image->thumbnailUrl() }}">
+      <img class="screenshot" src="{{ $image->thumbnailUrl() }}" alt="">
     </a>
   </div>
   <div class="lg:w-7/12 xl:w-1/2 lg:px-4 mt-6 md:mt-0">

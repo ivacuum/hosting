@@ -1,6 +1,6 @@
 <?php
 /** @var string $vkpage */
-/** @var Carbon\Carbon $date */
+/** @var Illuminate\Support\Carbon $date */
 ?>
 
 @extends('base', [
@@ -55,9 +55,7 @@
 @endif
 
 <div>
-<?php
-/** @var array[] $posts */
-?>
+<?php /** @var array[] $posts */ ?>
 @foreach ($posts as $post)
   <div class="border border-l-0 sm:border-l border-r-0 sm:border-r rounded-none sm:rounded mb-4 -mx-4 sm:mx-0 js-shortcuts-item">
     <div class="px-5 pt-4 pb-0 break-words">
@@ -77,7 +75,7 @@
         @endif
         @foreach ($post['attachments'] as $attach)
           @if ($attach->type == 'photo' && isset($attach->photo->photo_604))
-            <img class="block markdown-responsive-image {{ $post['photos'] === 1 ? 'rounded' : '' }} {{ !$loop->first ? 'js-shortcuts-item' : '' }}" src="{{ @$attach->photo->photo_1280 ?: @$attach->photo->photo_807 ?: $attach->photo->photo_604 }}">
+            <img class="block markdown-responsive-image {{ $post['photos'] === 1 ? 'rounded' : '' }} {{ !$loop->first ? 'js-shortcuts-item' : '' }}" src="{{ @$attach->photo->photo_1280 ?: @$attach->photo->photo_807 ?: $attach->photo->photo_604 }}" alt="">
           @endif
         @endforeach
         @if ($post['photos'] > 0)
@@ -97,7 +95,7 @@
                   class="block markdown-responsive-image rounded"
                   width="{{ $attach->doc->preview->video->width }}"
                   height="{{ $attach->doc->preview->video->height }}"
-                  poster="{{ Illuminate\Support\Arr::last($attach->doc->preview->photo->sizes)->src }}"
+                  poster="{{ Arr::last($attach->doc->preview->photo->sizes)->src }}"
                 >
                   <source src="{{ $attach->doc->preview->video->src }}" type="video/mp4">
                 </video>
@@ -133,7 +131,7 @@
           @elseif ($attach->type == 'link')
             @if (isset($attach->link->photo->photo_604))
               <div class="mb-6">
-                <img src="{{ @$attach->link->photo->photo_604 }}">
+                <img src="{{ @$attach->link->photo->photo_604 }}" alt="">
               </div>
             @endif
             <div>

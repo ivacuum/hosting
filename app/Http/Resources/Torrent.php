@@ -22,7 +22,9 @@ class Torrent extends Resource
             'external_link' => $this->externalLink(),
             'registered_at' => $this->fullDate(),
 
-            'related' => $this->when($this->html, new TorrentCollection($this->relatedTorrents())),
+            'related' => $this->when($this->related_query, function () {
+                return new TorrentCollection($this->relatedTorrents());
+            }),
             // 'comments' => $this->relationLoaded('comments') ? Comment::collection($this->comments) : null,
             'comments' => $this->whenLoaded('comments', Comment::collection($this->comments), null),
         ];

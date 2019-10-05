@@ -20,7 +20,7 @@ class LifeTripsRss extends Controller
             ->get()
             ->map(function (Trip $trip) {
                 $link = url($trip->www());
-                $cover = '<p><a href="'.$link.'?from=rss-image"><img src="'.$trip->metaImage().'"></a></p>';
+                $cover = '<p><a href="'.$link.'?from=rss-image"><img src="'.$trip->metaImage().'" alt=""></a></p>';
 
                 return [
                     'title' => htmlspecialchars($trip->metaTitle()),

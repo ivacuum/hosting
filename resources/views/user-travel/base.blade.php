@@ -13,7 +13,7 @@
 @endsection
 
 @section('global_menu')
-@component('tpl.menu-item', ['href' => path('UserTravelTrips@index', $traveler->login), 'isActive' => Illuminate\Support\Str::startsWith($self, 'UserTravel')])
+@component('tpl.menu-item', ['href' => path('UserTravelTrips@index', $traveler->login), 'isActive' => Str::startsWith($self, 'UserTravel')])
   {{ trans('menu.life') }}
 @endcomponent
 @endsection

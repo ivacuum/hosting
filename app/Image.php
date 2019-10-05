@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Str;
 use Ivacuum\Generic\Services\ImageConverter;
 use Ivacuum\Generic\Traits\RecordsActivity;
 
@@ -129,7 +128,7 @@ class Image extends Model
     public static function createFromFile(UploadedFile $file, $userId)
     {
         return new static([
-            'slug' => sprintf('%s_%s.%s', $userId, Str::random(10), strtolower($file->getClientOriginalExtension())),
+            'slug' => sprintf('%s_%s.%s', $userId, \Str::random(10), strtolower($file->getClientOriginalExtension())),
             'date' => date('ymd'),
             'size' => 0,
             'views' => 0,

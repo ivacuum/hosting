@@ -23,6 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Database\Eloquent\Collection|\App\Radical[] $radicals
  * @property \Illuminate\Database\Eloquent\Collection|\App\Kanji[] $similar
  *
+ * @property int $sort
+ *
  * @mixin \Eloquent
  */
 class Kanji extends Model

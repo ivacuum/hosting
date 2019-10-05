@@ -21,7 +21,7 @@
   <link rel="icon" href="/apple-touch-icon.png">
   <link rel="canonical" href="{{ canonical() }}">
   @yield('pagination_seo')
-  @if (Illuminate\Support\Str::contains($css_classes, ['android', 'chrome', 'opera']) && in_array($locale, ['en', 'ru']))
+  @if (Str::contains($css_classes, ['android', 'chrome', 'opera']) && in_array($locale, ['en', 'ru']))
     <link rel="manifest" href="/pwa-manifest-{{ $locale }}.json">
     <script async src="/assets/service-worker-installer.js"></script>
   @endif
@@ -61,7 +61,7 @@
       <div class="text-2xs sm:text-sm mt-1 sm:mt-0 sm:ml-2">{{ trans('photos.index') }}</div>
     </a>
     @if (Auth::check())
-      <a class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ Illuminate\Support\Str::startsWith(request()->path(), 'my/') ? 'active' : '' }}" href="{{ path('MyProfile@edit') }}">
+      <a class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ Str::startsWith(request()->path(), 'my/') ? 'active' : '' }}" href="{{ path('MyProfile@edit') }}">
         <div>
           @svg (user-circle-o)
         </div>

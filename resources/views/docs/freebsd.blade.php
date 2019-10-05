@@ -7,7 +7,7 @@
   ]
 ])
 
-@php ($freebsd_version = '12.0')
+<?php $freebsdVersion = '12.0' ?>
 
 @section('content')
 <h2>Сниппеты для выполнения различных задач на ОС FreeBSD</h2>
@@ -16,7 +16,7 @@
 <pre class="terminal">
 <span class="terminal-comment"># Обновление ОС</span>
 <span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=freebsd-update">freebsd-update</a> fetch install</span>
-<span class="terminal-command">freebsd-update upgrade -r {{ $freebsd_version }}-RELEASE</span>
+<span class="terminal-command">freebsd-update upgrade -r {{ $freebsdVersion }}-RELEASE</span>
 <span class="terminal-command">freebsd-update install</span>
 <span class="terminal-command">shutdown -r now</span>
 <span class="terminal-command">freebsd-update install</span>
@@ -37,7 +37,7 @@
 <div class="js-shortcuts-item">
 <pre>
 <span class="terminal-comment"># Исходники ядра</span>
-<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=fetch">fetch</a> https://mirror.yandex.ru/freebsd/releases/amd64/{{ $freebsd_version }}-RELEASE/src.txz</span>
+<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=fetch">fetch</a> https://mirror.yandex.ru/freebsd/releases/amd64/{{ $freebsdVersion }}-RELEASE/src.txz</span>
 <span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=tar">tar</a> -C / -xzf src.txz</span>
 </pre>
 </div>

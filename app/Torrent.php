@@ -1,10 +1,9 @@
 <?php namespace App;
 
+use Carbon\CarbonInterval;
 use Foolz\SphinxQL\SphinxQL;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use Ivacuum\Generic\Traits\SoftDeleteTrait;
 use Laravel\Scout\Searchable;
 
@@ -145,7 +144,7 @@ class Torrent extends Model
 
     public function magnet(): string
     {
-        return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode(Str::limit($this->title, 100, ''));
+        return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode(\Str::limit($this->title, 100, ''));
     }
 
     public function relatedIds(): array
@@ -154,7 +153,7 @@ class Torrent extends Model
             return [];
         }
 
-        return array_filter(Arr::pluck($this->search($this->related_query, function (SphinxQL $builder) {
+        return array_filter(\Arr::pluck($this->search($this->related_query, function (SphinxQL $builder) {
             return $builder->match('title', $this->related_query, true)
                 ->execute();
         })->raw(), 'id'), function ($item) {
@@ -260,7 +259,7 @@ class Torrent extends Model
     // Static methods
     public static function statsByCategories()
     {
-        return \Cache::remember(CacheKey::TORRENTS_STATS_BY_CATEGORIES, now()->addMinutes(15), function () {
+        return \Cache::remember(CacheKey::TORRENTS_STATS_BY_CATEGORIES, CarbonInterval::minutes(15), function () {
             return static::selectRaw('category_id, COUNT(*) AS total')
                 ->where('status', static::STATUS_PUBLISHED)
                 ->groupBy('category_id')

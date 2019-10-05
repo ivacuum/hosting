@@ -6,6 +6,7 @@ use App\Country;
 use App\Photo;
 use App\Tag;
 use App\Trip;
+use Carbon\CarbonInterval;
 
 class Photos extends Controller
 {
@@ -254,7 +255,7 @@ class Photos extends Controller
         $cacheEntry = $tripId ? CacheKey::PHOTOS_POINTS_FOR_TRIP : CacheKey::PHOTOS_POINTS;
         $minutes = $tripId ? 0 : 30;
 
-        return \Cache::remember($cacheEntry, now()->addMinutes($minutes), function () use ($tripId) {
+        return \Cache::remember($cacheEntry, CarbonInterval::minutes($minutes), function () use ($tripId) {
             $photos = Photo::with('rel')
                 ->forTrip($tripId)
                 ->published()
@@ -278,7 +279,7 @@ class Photos extends Controller
                         'coordinates' => [$photo->lat, $photo->lon],
                     ],
                     'properties' => [
-                        'balloonContent' => sprintf('<div><a href="%s#%s">%s, %s %s<br><img class="mt-1 image-200 object-cover rounded" src="%s"></a></div>', $photo->rel->www(), $basename, $photo->rel->title, $photo->rel->period, $photo->rel->year, $photo->thumbnailUrl()),
+                        'balloonContent' => sprintf('<div><a href="%s#%s">%s, %s %s<br><img class="mt-1 image-200 object-cover rounded" src="%s" alt=""></a></div>', $photo->rel->www(), $basename, $photo->rel->title, $photo->rel->period, $photo->rel->year, $photo->thumbnailUrl()),
                         'clusterCaption' => $basename,
                     ],
                 ];

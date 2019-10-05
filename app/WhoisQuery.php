@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Cache;
+use Carbon\CarbonInterval;
 use File;
 
 class WhoisQuery
@@ -101,7 +102,7 @@ class WhoisQuery
             return "No whois server for this tld in list!";
         }
 
-        return $this->data = Cache::remember($cacheEntry, now()->addMinutes(15), function () use ($whoisServer) {
+        return $this->data = Cache::remember($cacheEntry, CarbonInterval::minutes(15), function () use ($whoisServer) {
             if (preg_match("/^https?:\/\//i", $whoisServer)) {
                 $string = $this->curlRequest($whoisServer);
             } else {

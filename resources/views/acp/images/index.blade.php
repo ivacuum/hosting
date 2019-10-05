@@ -55,7 +55,7 @@
         </td>
         <td class="text-center">
           <a class="screenshot-link" href="{{ path("$self@show", $model) }}">
-            <img class="screenshot" src="{{ $model->thumbnailSecretUrl() }}">
+            <img class="screenshot" src="{{ $model->thumbnailSecretUrl() }}" alt="">
           </a>
         </td>
         <td class="md:text-right text-muted whitespace-no-wrap">{{ ViewHelper::size($model->size) }}</td>

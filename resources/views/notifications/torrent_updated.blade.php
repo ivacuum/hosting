@@ -1,6 +1,6 @@
 {{-- Раздача обновлена --}}
-{{ trans("notifications.{$class_basename}") }}
-<a class="link" href="{{ path('Torrents@show', $notification->data['id']) }}">{{ Illuminate\Support\Str::limit($notification->data['title'], 100) }}</a>
+{{ trans("notifications.{$classBasename}") }}
+<a class="link" href="{{ path('Torrents@show', $notification->data['id']) }}">{{ Str::limit($notification->data['title'], 100) }}</a>
 <time
   class="text-muted"
   datetime="{{ $notification->created_at->toDateString() }}"

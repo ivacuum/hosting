@@ -7,7 +7,7 @@
       <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 self-end mb-6">
         <div class="mb-4">
           <a class="screenshot-link" href="{{ path("$self@view", $image) }}">
-            <img class="screenshot" src="{{ $image->thumbnailUrl() }}">
+            <img class="screenshot" src="{{ $image->thumbnailUrl() }}" alt="">
           </a>
         </div>
         <span class="text-muted whitespace-no-wrap">

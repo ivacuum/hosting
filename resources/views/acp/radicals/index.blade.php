@@ -39,7 +39,7 @@
           @if ($model->character)
             <span class="inline-block ja-big ja-character ja-shadow">{{ $model->character }}</span>
           @else
-            <img class="ja-character ja-image-shadow mt-1 h-16" src="{{ $model->image }}">
+            <img class="ja-character ja-image-shadow mt-1 h-16" src="{{ $model->image }}" alt="">
           @endif
         </a>
       </td>

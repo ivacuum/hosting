@@ -1,10 +1,16 @@
+<?php
+/** @var App\Kanji $model */
+?>
+
 @include('tpl.form_errors')
 
-{!! Form::text('similar_kanji')->default($model->exists ? $model->similar->pluck('character')->implode('') : '')->html() !!}
+{!! Form::text('similar_kanji')
+  ->default($model->exists ? $model->similar->pluck('character')->implode('') : '')
+  ->html() !!}
 
 <div class="mb-4">
   <label class="font-bold">Состоит из ключей</label>
-  @php ($radicals = $model->radicals->pluck('id')->all())
+  <?php $radicals = $model->radicals->pluck('id')->all() ?>
   @foreach (App\Radical::orderBy('level')->orderBy('meaning')->get(['id', 'character', 'meaning']) as $row)
     <label class="flex items-center">
       <input

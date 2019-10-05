@@ -13,7 +13,7 @@
 ])
 
 @section('download_latest')
-<div {{ Illuminate\Support\Str::contains($css_classes, ['linux', 'macos']) ? 'hidden' : '' }} class="js-dcpp-client">
+<div {{ Str::contains($css_classes, ['linux', 'macos']) ? 'hidden' : '' }} class="js-dcpp-client">
   <h4>{{ trans('dcpp.for') }} @svg (windows) Windows</h4>
   <a class="btn btn-success my-1 mr-2 text-lg px-4 py-2" href="{{ path('Files@download', 49) }}">
     {{ trans('dcpp.download') }} 32bit
@@ -27,7 +27,7 @@
   </a>
 </div>
 
-<div {{ !Illuminate\Support\Str::contains($css_classes, ['linux']) ? 'hidden' : '' }} class="js-dcpp-client">
+<div {{ !Str::contains($css_classes, ['linux']) ? 'hidden' : '' }} class="js-dcpp-client">
   <h4 class="mt-4">{{ trans('dcpp.for') }} @svg (linux) Linux</h4>
   <a class="btn btn-success my-1 mr-2 text-lg px-4 py-2" href="{{ path('Files@download', 74) }}">
     {{ trans('dcpp.download') }} 32bit
@@ -41,7 +41,7 @@
   </a>
 </div>
 
-<div {{ !Illuminate\Support\Str::contains($css_classes, ['macos']) ? 'hidden' : '' }} class="js-dcpp-client">
+<div {{ !Str::contains($css_classes, ['macos']) ? 'hidden' : '' }} class="js-dcpp-client">
   <h4 class="mt-4">{{ trans('dcpp.for') }} @svg (apple) macOS</h4>
   <a class="btn btn-success my-1 mr-2 text-lg px-4 py-2" href="{{ path('Files@download', 51) }}">
     {{ trans('dcpp.download') }} 32bit

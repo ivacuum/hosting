@@ -11,7 +11,7 @@
         <a class="nav-link {{ 0 === strpos($view, 'acp.dev.thumbnails') ? 'active' : '' }}" href="{{ path('Acp\Dev\Thumbnails@index') }}">
           {{ trans('acp.dev.thumbnails.index') }}
         </a>
-        <a class="nav-link {{ Illuminate\Support\Str::startsWith($view, 'acp.dev.logs') ? 'active' : '' }}" href="{{ path('Acp\Dev@logs') }}">
+        <a class="nav-link {{ Str::startsWith($view, 'acp.dev.logs') ? 'active' : '' }}" href="{{ path('Acp\Dev@logs') }}">
           {{ trans('acp.dev.logs') }}
         </a>
         <a class="nav-link {{ 0 === strpos($view, 'acp.dev.svg') ? 'active' : '' }}" href="{{ path('Acp\Dev@svg') }}">
