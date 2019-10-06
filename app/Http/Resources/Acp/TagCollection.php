@@ -8,7 +8,9 @@ class TagCollection extends ResourceCollection
     {
         return [
             'meta' => [
-                'new_url' => \Auth::user()->can('create', Tag::class) ? path('Acp\Tags@create') : null,
+                'new_url' => \Auth::user()->can('create', Tag::class)
+                    ? path(['App\Http\Controllers\Acp\Tags', 'create'])
+                    : null,
             ],
         ];
     }

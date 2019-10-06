@@ -25,7 +25,7 @@
           <div class="mr-2 text-center">
             <a
               class="btn bg-vk text-xl rounded-full text-white hover:text-white"
-              href="{{ path('Auth\Vk@index', ['goto' => "{$localeUri}/{$requestUri}#comment-add"]) }}"
+              href="{{ path([App\Http\Controllers\Auth\Vk::class, 'index'], ['goto' => "{$localeUri}/{$requestUri}#comment-add"]) }}"
             >
               @svg (vk)
             </a>
@@ -34,7 +34,7 @@
           <div class="mr-2 text-center">
             <a
               class="btn bg-facebook text-xl rounded-full text-white hover:text-white"
-              href="{{ path('Auth\Facebook@index', ['goto' => "{$localeUri}/{$requestUri}#comment-add"]) }}"
+              href="{{ path([App\Http\Controllers\Auth\Facebook::class, 'index'], ['goto' => "{$localeUri}/{$requestUri}#comment-add"]) }}"
             >
               @svg (facebook)
             </a>
@@ -43,7 +43,7 @@
           <div class="mr-2 text-center">
             <a
               class="btn bg-google text-xl rounded-full text-white hover:text-white"
-              href="{{ path('Auth\Google@index', ['goto' => "{$localeUri}/{$requestUri}#comment-add"]) }}"
+              href="{{ path([App\Http\Controllers\Auth\Google::class, 'index'], ['goto' => "{$localeUri}/{$requestUri}#comment-add"]) }}"
             >
               @svg (google)
             </a>
@@ -52,7 +52,7 @@
         </div>
       </div>
     @endif
-    <form action="{{ path('AjaxComment@store', $params) }}" method="post">
+    <form action="{{ path([App\Http\Controllers\AjaxComment::class, 'store'], $params) }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}
       @csrf
 

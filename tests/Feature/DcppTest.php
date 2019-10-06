@@ -1,6 +1,9 @@
 <?php namespace Tests\Feature;
 
 use App\DcppHub;
+use App\Http\Controllers\Dcpp;
+use App\Http\Controllers\DcppHubClick;
+use App\Http\Controllers\DcppHubs;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -10,7 +13,7 @@ class DcppTest extends TestCase
 
     public function testIndex()
     {
-        $this->get(action('Dcpp@index'))
+        $this->get(action([Dcpp::class, 'index']))
             ->assertStatus(200);
     }
 
@@ -18,7 +21,7 @@ class DcppTest extends TestCase
     {
         factory(DcppHub::class)->create();
 
-        $this->get(action('DcppHubs@index'))
+        $this->get(action([DcppHubs::class, 'index']))
             ->assertStatus(200);
     }
 
@@ -28,7 +31,7 @@ class DcppTest extends TestCase
         $hub = factory(DcppHub::class)->create();
         $clicks = $hub->clicks;
 
-        $this->post(action('DcppHubClick@store', $hub))
+        $this->post(action([DcppHubClick::class, 'store'], $hub))
             ->assertNoContent();
 
         $hub->refresh();

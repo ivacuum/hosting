@@ -16,7 +16,7 @@ class News extends Controller
             })
             ->orderBy('created_at', 'desc')
             ->paginate()
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         \Breadcrumbs::push(trans('news.index'), 'news');
 
@@ -25,7 +25,7 @@ class News extends Controller
 
     public function bc()
     {
-        return redirect(path([$this->controller, 'index']), 301);
+        return redirect(path([self::class, 'index']), 301);
     }
 
     public function day($year, $month, $day)
@@ -57,7 +57,7 @@ class News extends Controller
         $news = Model::find($id);
 
         if (null === $news) {
-            return redirect(path([$this->controller, 'index']), 301);
+            return redirect(path([self::class, 'index']), 301);
         }
 
         abort_unless($news->status === Model::STATUS_PUBLISHED, 404);

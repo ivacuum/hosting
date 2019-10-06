@@ -32,7 +32,7 @@ class Comments extends Controller
                 return $query->where('user_id', $userId);
             })
             ->paginate(20)
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         return view($this->view, [
             'models' => $models,

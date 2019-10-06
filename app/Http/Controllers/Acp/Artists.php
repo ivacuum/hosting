@@ -12,7 +12,7 @@ class Artists extends Controller
     {
         $models = Model::orderBy('title')
             ->paginate(500)
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         return $this->modelResourceCollection($models);
     }

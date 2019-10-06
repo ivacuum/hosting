@@ -4,7 +4,7 @@
 <section class="pt-4 pb-12">
   <div class="container lg:max-w-3xl">
     <div class="text-center mb-4">
-      <a href="{{ path('Retracker@index') }}">
+      <a href="{{ path([App\Http\Controllers\Retracker::class, 'index']) }}">
         <img class="w-16 h-16" src="https://ivacuum.org/i/rt/logo.png" alt="">
       </a>
     </div>
@@ -13,7 +13,7 @@
     <p>По информации с сайта <a class="link" href="https://ru.wikipedia.org/wiki/Ретрекер">wikipedia.org</a>.</p>
 
     <div>
-      <a class="btn btn-default" href="{{ path('Files@download', 122) }}">
+      <a class="btn btn-default" href="{{ path([App\Http\Controllers\Files::class, 'download'], 122) }}">
         Скачать исходный код ретрекера
       </a>
     </div>
@@ -34,7 +34,7 @@
   <div class="container lg:max-w-3xl">
     <h3>Как настроить?</h3>
     <p>Использование ретрекера по адресу <b>retracker.local</b> требует дополнительной настройки.</p>
-    <p><a class="btn btn-primary my-1" href="{{ path('Files@download', 123) }}">Файл настроек для Windows</a> <a class="btn btn-primary my-1" href="{{ path('Files@download', 124) }}">Файл настроек для Linux</a></p>
+    <p><a class="btn btn-primary my-1" href="{{ path([App\Http\Controllers\Files::class, 'download'], 123) }}">Файл настроек для Windows</a> <a class="btn btn-primary my-1" href="{{ path([App\Http\Controllers\Files::class, 'download'], 124) }}">Файл настроек для Linux</a></p>
     <p>Пользователям ОС Windows достаточно сохранить и запустить файл настроек от имени администратора.</p>
     <p>Пользователям ОС семейства Linux необходимо либо запустить файл настроек от имени администратора, либо набрать в терминале следующие команды:</p>
     <pre class="mb-4 text-sm bg-light border p-2 rounded whitespace-pre-wrap">wget https://ivacuum.org/d/rt/retracker.local.sh

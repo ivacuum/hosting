@@ -1,6 +1,7 @@
 <?php namespace Tests\Feature;
 
 use App\Comment;
+use App\Http\Controllers\Notifications;
 use App\Notifications\NewsCommented;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -19,7 +20,7 @@ class NotificationTest extends TestCase
         \Notification::send($notifiable, new NewsCommented($comment->rel, $comment));
 
         $this->be($notifiable)
-            ->get(action('Notifications@index'))
+            ->get(action([Notifications::class, 'index']))
             ->assertStatus(200);
     }
 }

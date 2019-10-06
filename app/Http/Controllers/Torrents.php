@@ -50,7 +50,7 @@ class Torrents extends Controller
                 return $query->whereIn('category_id', $ids);
             })
             ->simplePaginate(25, Torrent::LIST_COLUMNS)
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         if (request()->wantsJson()) {
             return new TorrentCollection($torrents);
@@ -111,7 +111,7 @@ class Torrents extends Controller
             ->withCount('commentsPublished AS comments')
             ->orderBy('registered_at', 'desc')
             ->simplePaginate(null, ['id'])
-            ->withPath(path([$this->controller, 'my']));
+            ->withPath(path([self::class, 'my']));
 
         return view($this->view, ['torrents' => $torrents]);
     }

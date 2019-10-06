@@ -20,7 +20,7 @@ class ChatMessages extends Controller
                 return $query->where('user_id', $userId);
             })
             ->paginate()
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         return view($this->view, [
             'models' => $models,

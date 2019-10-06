@@ -46,7 +46,7 @@ class Trips extends Controller
             })
             ->orderBy($sortKey, $sortDir)
             ->paginate(50)
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         return $this->modelResourceCollection($models);
     }

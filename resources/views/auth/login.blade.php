@@ -7,19 +7,28 @@
 
     <div class="flex justify-center my-4">
       <div class="mr-2">
-        <a class="btn bg-vk text-xl rounded-full text-white hover:text-white" href="{{ path('Auth\Vk@index') }}">
+        <a
+          class="btn bg-vk text-xl rounded-full text-white hover:text-white"
+          href="{{ path([App\Http\Controllers\Auth\Vk::class, 'index']) }}"
+        >
           @svg (vk)
         </a>
         <div class="mt-1 text-xs text-muted">{{ trans('auth.vk') }}</div>
       </div>
       <div class="mr-2">
-        <a class="btn bg-facebook text-xl rounded-full text-white hover:text-white" href="{{ path('Auth\Facebook@index') }}">
+        <a
+          class="btn bg-facebook text-xl rounded-full text-white hover:text-white"
+          href="{{ path([App\Http\Controllers\Auth\Facebook::class, 'index']) }}"
+        >
           @svg (facebook)
         </a>
         <div class="mt-1 text-xs text-muted">{{ trans('auth.facebook') }}</div>
       </div>
       <div>
-        <a class="btn bg-google text-xl rounded-full text-white hover:text-white" href="{{ path('Auth\Google@index') }}">
+        <a
+          class="btn bg-google text-xl rounded-full text-white hover:text-white"
+          href="{{ path([App\Http\Controllers\Auth\Google::class, 'index']) }}"
+        >
           @svg (google)
         </a>
         <div class="mt-1 text-xs text-muted">{{ trans('auth.google') }}</div>
@@ -28,7 +37,7 @@
     <div>{{ trans('auth.or') }}</div>
   </div>
 
-  <form action="{{ path('Auth\SignIn@login') }}" method="post">
+  <form action="{{ path([App\Http\Controllers\Auth\SignIn::class, 'login']) }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 
@@ -73,7 +82,10 @@
         </label>
       </div>
       <div>
-        <a class="link" href="{{ path('Auth\ForgotPassword@index') }}">{{ trans('auth.forgot_password') }}</a>
+        <a
+          class="link"
+          href="{{ path([App\Http\Controllers\Auth\ForgotPassword::class, 'index']) }}"
+        >{{ trans('auth.forgot_password') }}</a>
       </div>
     </div>
 
@@ -82,7 +94,10 @@
         {{ trans('auth.signin') }}
       </button>
       <div class="mt-6">
-        <a class="link" href="{{ path('Auth\NewAccount@index') }}">{{ trans('auth.new_account') }}</a>
+        <a
+          class="link"
+          href="{{ path([App\Http\Controllers\Auth\NewAccount::class, 'index']) }}"
+        >{{ trans('auth.new_account') }}</a>
       </div>
     </div>
   </form>

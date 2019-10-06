@@ -11,7 +11,9 @@ class TripCollection extends ResourceCollection
 
         return [
             'meta' => [
-                'new_url' => $me->can('create', Trip::class) ? path(['App\Http\Controllers\Acp\Trips', 'create']) : null,
+                'new_url' => $me->can('create', Trip::class)
+                    ? path(['App\Http\Controllers\Acp\Trips', 'create'])
+                    : null,
             ],
             'filters' => [[
                 'field' => 'status',

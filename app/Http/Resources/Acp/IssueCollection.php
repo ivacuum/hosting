@@ -8,7 +8,9 @@ class IssueCollection extends ResourceCollection
     {
         return [
             'meta' => [
-                'new_url' => \Auth::user()->can('create', Issue::class) ? path('Acp\Issues@create') : null,
+                'new_url' => \Auth::user()->can('create', Issue::class)
+                    ? path(['App\Http\Controllers\Acp\Issues', 'create'])
+                    : null,
             ],
         ];
     }

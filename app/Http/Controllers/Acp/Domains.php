@@ -60,7 +60,7 @@ class Domains extends Controller
 
         $models = $models->orderBy($sort)
             ->paginate()
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         return view($this->view, [
             'q' => $q,
@@ -98,7 +98,7 @@ class Domains extends Controller
 
         \Mail::to($sendTo)->queue(new DomainMailboxes($model, $mailboxes));
 
-        return redirect(path([$this->controller, 'mailboxes'], $model))
+        return redirect(path([self::class, 'mailboxes'], $model))
             ->with('message', "Данные высланы на почту {$sendTo}");
     }
 
@@ -151,7 +151,7 @@ class Domains extends Controller
             break;
         }
 
-        return ['redirect' => path([$this->controller, 'index'], $params)];
+        return ['redirect' => path([self::class, 'index'], $params)];
     }
 
     public function deleteNsRecord($domain)
@@ -234,7 +234,7 @@ class Domains extends Controller
 
         $model->setServerNsRecords($server);
 
-        return redirect(path([$this->controller, 'nsRecords'], $model));
+        return redirect(path([self::class, 'nsRecords'], $model));
     }
 
     public function setYandexNs($domain)
@@ -247,7 +247,7 @@ class Domains extends Controller
             ? 'Днс Яндекса установлены'
             : 'Не удалось установить днс Яндекса';
 
-        return redirect(path([$this->controller, 'show'], $model))
+        return redirect(path([self::class, 'show'], $model))
             ->with('message', $message);
     }
 

@@ -49,7 +49,7 @@ Mousetrap.bind('right', () => {
     <div class="flex flex-wrap md:flex-col">
       <div class="mr-2 md:mr-0 text-muted">{{ trans('photos.story') }}</div>
       <a class="flex flex-wrap items-center link-parent" href="{{ $photo->rel->www() }}#{{ basename($photo->slug) }}">
-        <img class="flag-16 svg-shadow mr-1" src="{{ $photo->rel->city->country->flagUrl() }}">
+        <img class="flag-16 svg-shadow mr-1" src="{{ $photo->rel->city->country->flagUrl() }}" alt="">
         <span class="link">{{ $photo->rel->title }}</span>
       </a>
     </div>
@@ -63,11 +63,11 @@ Mousetrap.bind('right', () => {
       <div class="text-muted">
         {{ trans('photos.geotags') }}
         @if ($photo->isOnMap())
-          <a href="{{ path('Photos@map', ['lat' => $photo->lat, 'lon' => $photo->lon, 'zoom' => 16]) }}">@svg (map-marker)</a>
+          <a href="{{ path([App\Http\Controllers\Photos::class, 'map'], ['lat' => $photo->lat, 'lon' => $photo->lon, 'zoom' => 16]) }}">@svg (map-marker)</a>
         @endif
       </div>
-      <div><a class="link" href="{{ path('Photos@city', $photo->rel->city->slug) }}">#{{ mb_strtolower($photo->rel->city->title) }}</a></div>
-      <div><a class="link" href="{{ path('Photos@country', $photo->rel->city->country->slug) }}">#{{ mb_strtolower($photo->rel->city->country->title) }}</a></div>
+      <div><a class="link" href="{{ path([App\Http\Controllers\Photos::class, 'city'], $photo->rel->city->slug) }}">#{{ mb_strtolower($photo->rel->city->title) }}</a></div>
+      <div><a class="link" href="{{ path([App\Http\Controllers\Photos::class, 'country'], $photo->rel->city->country->slug) }}">#{{ mb_strtolower($photo->rel->city->country->title) }}</a></div>
     </div>
 
     @if (sizeof($photo->tags))
@@ -75,7 +75,7 @@ Mousetrap.bind('right', () => {
         <div class="text-muted">{{ trans('photos.tags') }}</div>
         @foreach ($photo->tags as $tag)
           <div>
-            <a class="link" href="{{ path('Photos@tag', $tag) }}">#{{ $tag->title }}</a>
+            <a class="link" href="{{ path([App\Http\Controllers\Photos::class, 'tag'], $tag) }}">#{{ $tag->title }}</a>
           </div>
         @endforeach
       </div>
@@ -83,9 +83,9 @@ Mousetrap.bind('right', () => {
   </div>
 </div>
 @if (null !== $prev)
-  <img hidden src="{{ $prev->originalUrl() }}">
+  <img hidden src="{{ $prev->originalUrl() }}" alt="">
 @endif
 @if (null !== $next)
-  <img hidden src="{{ $next->originalUrl() }}">
+  <img hidden src="{{ $next->originalUrl() }}" alt="">
 @endif
 @endsection

@@ -48,7 +48,7 @@
       <td>
         @foreach ($model->tags as $tag)
           <div>
-            <a href="{{ path('Acp\Tags@show', $tag) }}">#{{ $tag->title }}</a>
+            <a href="{{ path([App\Http\Controllers\Acp\Tags::class, 'show'], $tag) }}">#{{ $tag->title }}</a>
           </div>
         @endforeach
       </td>

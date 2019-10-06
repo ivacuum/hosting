@@ -32,7 +32,7 @@ class Images extends Controller
                     ->where('user_id', '<>', 1);
             })
             ->paginate(111)
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         return view($this->view, [
             'type' => $type,

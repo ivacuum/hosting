@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Http\Controllers\JapaneseWanikaniVocabulary;
 use App\User;
 use App\Vocabulary;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -15,7 +16,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
 
         $vocab = $this->vocabulary();
 
-        $this->delete(action('JapaneseWanikaniVocabulary@destroy', $vocab))
+        $this->delete(action([JapaneseWanikaniVocabulary::class, 'destroy'], $vocab))
             ->assertNoContent();
 
         $this->assertEquals($user->id, $vocab->burnable->user_id);
@@ -23,7 +24,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
 
     public function testIndex()
     {
-        $this->get(action('JapaneseWanikaniVocabulary@index'))
+        $this->get(action([JapaneseWanikaniVocabulary::class, 'index']))
             ->assertStatus(200)
             ->assertViewIs('japanese.wanikani.vue');
     }
@@ -33,7 +34,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
         $level = 60;
         $vocab = $this->vocabulary(['level' => $level]);
 
-        $json = $this->getJson(action('JapaneseWanikaniVocabulary@index'))
+        $json = $this->getJson(action([JapaneseWanikaniVocabulary::class, 'index']))
             ->assertStatus(200)
             ->json("data.{$level}");
 
@@ -65,7 +66,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
         $vocab = $this->vocabulary();
         $vocab->burn($user->id);
 
-        $this->put(action('JapaneseWanikaniVocabulary@update', $vocab))
+        $this->put(action([JapaneseWanikaniVocabulary::class, 'update'], $vocab))
             ->assertNoContent();
 
         $this->assertNull($vocab->burnable);

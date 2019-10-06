@@ -3,7 +3,7 @@
 @section('content')
 <div class="mx-auto max-w-400px">
   <h3>{{ trans('auth.password_remind_title') }}</h3>
-  <form action="{{ path('Auth\ForgotPassword@sendResetLink') }}" method="post">
+  <form action="{{ path([App\Http\Controllers\Auth\ForgotPassword::class, 'sendResetLink']) }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 

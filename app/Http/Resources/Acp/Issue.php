@@ -23,8 +23,14 @@ class Issue extends Resource
             'breadcrumb' => $this->breadcrumb(),
             'created_at' => \ViewHelper::dateShort($this->created_at),
 
-            'show_url' => $this->when($me->can('show', 'App\Issue'), path('Acp\Issues@show', $this)),
-            'user_url' => $this->when($me->can('show', 'App\User'), path('Acp\Users@show', $this->user_id)),
+            'show_url' => $this->when(
+                $me->can('show', 'App\Issue'),
+                path(['App\Http\Controllers\Acp\Issues', 'show'], $this)
+            ),
+            'user_url' => $this->when(
+                $me->can('show', 'App\User'),
+                path(['App\Http\Controllers\Acp\Users', 'show'], $this->user_id)
+            ),
 
             'comments_count' => (int) $this->comments_count,
 

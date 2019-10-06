@@ -1,6 +1,7 @@
 <?php namespace Tests\Feature;
 
 use App\Gig;
+use App\Http\Controllers\Life;
 use App\Trip;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -13,7 +14,7 @@ class LifeTest extends TestCase
     {
         factory(Trip::class)->state('city')->create();
 
-        $this->get(action('Life@calendar'))
+        $this->get(action([Life::class, 'calendar']))
             ->assertStatus(200);
     }
 
@@ -21,7 +22,7 @@ class LifeTest extends TestCase
     {
         factory(Trip::class)->state('city')->create();
 
-        $this->get(action('Life@cities'))
+        $this->get(action([Life::class, 'cities']))
             ->assertStatus(200);
     }
 
@@ -38,7 +39,7 @@ class LifeTest extends TestCase
     {
         factory(Trip::class)->state('city')->create();
 
-        $this->get(action('Life@countries'))
+        $this->get(action([Life::class, 'countries']))
             ->assertStatus(200);
     }
 
@@ -55,7 +56,7 @@ class LifeTest extends TestCase
     {
         factory(Gig::class)->state('city')->create();
 
-        $this->get(action('Life@gigs'))
+        $this->get(action([Life::class, 'gigs']))
             ->assertStatus(200);
     }
 
@@ -85,7 +86,7 @@ class LifeTest extends TestCase
     {
         factory(Trip::class)->state('city')->create();
 
-        $this->get(action('Life@index'))
+        $this->get(action([Life::class, 'index']))
             ->assertStatus(200);
     }
 

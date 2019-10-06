@@ -25,8 +25,8 @@
 
 @section('about_software')
 @ru
-  <p><strong>AirDC++</strong> — это клиент, основанный на <a class="link" href="{{ path('Dcpp@page', 'strongdc') }}">StrongDC++</a>. Соответственно, он поддерживает многопотоковую, сегментную закачку и другие функции, приобретенные от <a class="link" href="{{ path('Dcpp@page', 'strongdc') }}">StrongDC++</a>, а также обладает приятным дизайном — крупными, красивыми кнопками, дружественным интерфейсом, но не имеет русского языка в стандартной поставке.</p>
+  <p><strong>AirDC++</strong> — это клиент, основанный на <a class="link" href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'strongdc') }}">StrongDC++</a>. Соответственно, он поддерживает многопотоковую, сегментную закачку и другие функции, приобретенные от <a class="link" href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'strongdc') }}">StrongDC++</a>, а также обладает приятным дизайном — крупными, красивыми кнопками, дружественным интерфейсом, но не имеет русского языка в стандартной поставке.</p>
 @en
-  <p><strong>AirDC++</strong> is based on <a class="link" href="{{ path('Dcpp@page', 'strongdc') }}">StrongDC++</a> and supports segmented downloads and many other features.</p>
+  <p><strong>AirDC++</strong> is based on <a class="link" href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'strongdc') }}">StrongDC++</a> and supports segmented downloads and many other features.</p>
 @endru
 @endsection

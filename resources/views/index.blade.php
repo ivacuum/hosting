@@ -24,7 +24,7 @@
     </div>
   @endru
   <div class="md:w-1/2 lg:w-1/3 mb-6 px-4">
-    <a class="flex items-center mb-2 link-parent" href="{{ path('Life@index') }}">
+    <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Life::class, 'index']) }}">
       <img class="hidden md:block mr-2 w-8 h-8" src="https://ivacuum.org/i/services/hosting.png" alt="">
       <h2 class="text-2xl mb-0"><span class="link">{{ trans('menu.life') }}</span></h2>
     </a>
@@ -37,7 +37,7 @@
   </div>
   @ru
     <div class="md:w-1/2 lg:w-1/3 md:hidden mb-6 px-4">
-      <a class="flex items-center mb-2 link-parent" href="{{ path('News@index') }}">
+      <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\News::class, 'index']) }}">
         <h2 class="text-2xl mb-0"><span class="link">{{ trans('news.index') }}</span></h2>
       </a>
       <div>Хроника развития сайта с 2004 года.</div>
@@ -51,7 +51,7 @@
       {{--<div class="text-muted">Дата запуска: 7 декабря 2015 г.</div>--}}
     </div>
     <div class="md:w-1/2 lg:w-1/3 hidden md:block mb-6 px-4">
-      <a class="flex items-center mb-2 link-parent" href="{{ path('Gallery@index') }}">
+      <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Gallery::class, 'index']) }}">
         <img class="mr-2 w-8 h-8" src="https://ivacuum.org/i/services/gallery.png" alt="">
         <h2 class="text-2xl mb-0"><span class="link">{{ trans('gallery.index') }}</span></h2>
       </a>
@@ -60,7 +60,7 @@
     </div>
   @endru
   <div class="md:w-1/2 lg:w-1/3 hidden md:block mb-6 px-4">
-    <a class="flex items-center mb-2 link-parent" href="{{ path('Dcpp@index') }}">
+    <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Dcpp::class, 'index']) }}">
       <img class="mr-2 w-8 h-8" src="https://ivacuum.org/i/services/dcpp.png" alt="">
       <h2 class="text-2xl mb-0"><span class="link">ArtFly.DC++</span></h2>
     </a>
@@ -81,7 +81,7 @@
       {{--<p class="text-muted">Дата запуска: 5 июля 2010 г.</p>--}}
     </div>
     <div class="md:w-1/2 lg:w-1/3 mb-6 px-4">
-      <a class="flex items-center mb-2 link-parent" href="{{ path('ParserVk@index') }}">
+      <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\ParserVk::class, 'index']) }}">
         <h2 class="text-2xl mb-0"><span class="link">{{ trans('menu.parser_vk') }}</span></h2>
       </a>
       <div>Ежедневная подборка десяти лучших постов выбранных страниц и групп ВК.</div>
@@ -89,7 +89,7 @@
     </div>
   @endru
   <div class="md:w-1/2 lg:w-1/3 mb-6 px-4">
-    <a class="flex items-center mb-2 link-parent" href="{{ path('Coupons@index') }}">
+    <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Coupons::class, 'index']) }}">
       <h2 class="text-2xl mb-0"><span class="link">{{ trans('menu.coupons') }}</span></h2>
     </a>
     @ru
@@ -100,7 +100,7 @@
     @endru
   </div>
   <div class="md:w-1/2 lg:w-1/3 mb-6 px-4">
-    <a class="flex items-center mb-2 link-parent" href="{{ path('Japanese@index') }}">
+    <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Japanese::class, 'index']) }}">
       <h2 class="text-2xl mb-0"><span class="link">{{ trans('japanese.index') }}</span></h2>
     </a>
     @ru

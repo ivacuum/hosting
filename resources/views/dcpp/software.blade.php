@@ -10,7 +10,7 @@
       <h1 class="mb-6">{{ trans('dcpp.download') }} {{ $softwareTitle }} {{ $software[0]['version'] }}</h1>
       @section('download_latest')
         <div>
-          <a class="btn btn-success my-1 text-lg px-4 py-2" href="{{ path('Files@download', $software[0]['id']) }}">
+          <a class="btn btn-success my-1 text-lg px-4 py-2" href="{{ path([App\Http\Controllers\Files::class, 'download'], $software[0]['id']) }}">
             <?php $icon = $software[0]['icon'] ?? 'windows' ?>
             <span class="mr-1">
               @svg ($icon)
@@ -65,7 +65,7 @@
         <p>Looking for a place to connect to download and share files?</p>
       @endru
       <p>
-        <a class="btn btn-important" href="{{ path('DcppHubs@index') }}">
+        <a class="btn btn-important" href="{{ path([App\Http\Controllers\DcppHubs::class, 'index']) }}">
           @ru
             Список популярных DC++ хабов
           @en
@@ -89,7 +89,7 @@
               <ul>
                 @foreach ($software as $soft)
                   @continue ($loop->index === 0)
-                  <li><a class="link" href="{{ path('Files@download', $soft['id']) }}">{{ trans('dcpp.download') }} {{ $softwareTitle }} {{ $soft['version'] }}{{ $soft['dl_suffix'] }}</a></li>
+                  <li><a class="link" href="{{ path([App\Http\Controllers\Files::class, 'download'], $soft['id']) }}">{{ trans('dcpp.download') }} {{ $softwareTitle }} {{ $soft['version'] }}{{ $soft['dl_suffix'] }}</a></li>
                 @endforeach
               </ul>
             </div>
@@ -125,7 +125,7 @@
           <feedback-form
             email="{{ Auth::user()->email ?? '' }}"
             title="DC++ Client"
-            action="{{ path('Issues@store') }}"
+            action="{{ path([App\Http\Controllers\Issues::class, 'store']) }}"
             hide-title
           ></feedback-form>
         </div>

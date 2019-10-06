@@ -11,7 +11,7 @@ class Files extends Controller
         $models = File::published()
             ->orderBy('id', 'desc')
             ->paginate()
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         return view($this->view, ['models' => $models]);
     }

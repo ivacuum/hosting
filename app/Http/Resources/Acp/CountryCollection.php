@@ -8,7 +8,9 @@ class CountryCollection extends ResourceCollection
     {
         return [
             'meta' => [
-                'new_url' => \Auth::user()->can('create', Country::class) ? path('Acp\Countries@create') : null,
+                'new_url' => \Auth::user()->can('create', Country::class)
+                    ? path(['App\Http\Controllers\Acp\Countries', 'create'])
+                    : null,
             ],
         ];
     }

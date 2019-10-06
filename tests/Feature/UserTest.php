@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Http\Controllers\Users;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -12,7 +13,7 @@ class UserTest extends TestCase
     {
         factory(User::class)->create();
 
-        $this->get(action('Users@index'))
+        $this->get(action([Users::class, 'index']))
             ->assertStatus(200);
     }
 
@@ -20,7 +21,7 @@ class UserTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $this->get(action('Users@show', $user))
+        $this->get(action([Users::class, 'show'], $user))
             ->assertStatus(200);
     }
 
@@ -28,7 +29,7 @@ class UserTest extends TestCase
     {
         $user = factory(User::class)->create(['status' => User::STATUS_INACTIVE]);
 
-        $this->get(action('Users@show', $user))
+        $this->get(action([Users::class, 'show'], $user))
             ->assertStatus(404);
     }
 }

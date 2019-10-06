@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Http\Controllers\Auth\NewAccount;
 use App\Http\Controllers\Home;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -11,7 +12,7 @@ class RegisterTest extends TestCase
 
     public function testFormGuest()
     {
-        $this->get(action('Auth\NewAccount@index'))
+        $this->get(action([NewAccount::class, 'index']))
             ->assertStatus(200);
 
         $this->assertGuest();
@@ -20,7 +21,7 @@ class RegisterTest extends TestCase
     public function testFormUser()
     {
         $this->be(factory(User::class)->make())
-            ->get(action('Auth\NewAccount@index'))
+            ->get(action([NewAccount::class, 'index']))
             ->assertRedirect(action([Home::class, 'index']));
 
         $this->assertAuthenticated();
@@ -28,8 +29,8 @@ class RegisterTest extends TestCase
 
     public function testSubmitGuest()
     {
-        $this->from(action('Auth\NewAccount@index'))
-            ->post(action('Auth\NewAccount@register'), [
+        $this->from(action([NewAccount::class, 'index']))
+            ->post(action([NewAccount::class, 'register']), [
                 'email' => 'phpunit@example.com',
                 'password' => 'secret42',
             ])

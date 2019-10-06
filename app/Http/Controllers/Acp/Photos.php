@@ -23,7 +23,7 @@ class Photos extends Controller
             ->forTag(request('tag_id'))
             ->orderBy($sortKey, $sortDir)
             ->paginate($onPage)
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         return view($this->view, [
             'filter' => $filter,

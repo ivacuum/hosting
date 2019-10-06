@@ -1,6 +1,5 @@
 <?php namespace Tests\Feature;
 
-use App;
 use App\News;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -13,7 +12,7 @@ class NewsTest extends TestCase
     {
         factory(News::class)->create();
 
-        $this->get(action('News@index'))
+        $this->get(action([\App\Http\Controllers\News::class, 'index']))
             ->assertStatus(200);
     }
 
@@ -21,9 +20,9 @@ class NewsTest extends TestCase
     {
         $news = factory(News::class)->state('user')->create();
 
-        $this->expectsEvents(App\Events\Stats\NewsViewed::class);
+        $this->expectsEvents(\App\Events\Stats\NewsViewed::class);
 
-        $this->get(action('News@show', $news))
+        $this->get(action([\App\Http\Controllers\News::class, 'show'], $news))
             ->assertStatus(200);
     }
 
@@ -35,7 +34,7 @@ class NewsTest extends TestCase
     {
         $this->get($url)
             ->assertStatus(301)
-            ->assertRedirect(action('News@index'));
+            ->assertRedirect(action([\App\Http\Controllers\News::class, 'index']));
     }
 
     public function testRedirectToNewsLocale()
@@ -44,9 +43,9 @@ class NewsTest extends TestCase
 
         $news = factory(News::class)->state('user')->create(['locale' => $locale]);
 
-        $this->get(action('News@show', $news))
+        $this->get(action([\App\Http\Controllers\News::class, 'show'], $news))
             ->assertStatus(301)
-            ->assertRedirect($locale.path('News@show', $news));
+            ->assertRedirect($locale . path([\App\Http\Controllers\News::class, 'show'], $news));
     }
 
     public function oldUrls()

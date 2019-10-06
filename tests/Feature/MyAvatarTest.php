@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App;
+use App\Http\Controllers\MyAvatar;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
@@ -19,9 +19,9 @@ class MyAvatarTest extends TestCase
         /** @var User $user */
         $this->be($user = factory(User::class)->create());
 
-        $this->expectsEvents(App\Events\Stats\UserAvatarUploaded::class);
+        $this->expectsEvents(\App\Events\Stats\UserAvatarUploaded::class);
 
-        $this->putJson(action('MyAvatar@update'), ['file' => $file])
+        $this->putJson(action([MyAvatar::class, 'update']), ['file' => $file])
             ->assertStatus(200)
             ->assertJson(['status' => 'OK']);
 
@@ -35,7 +35,7 @@ class MyAvatarTest extends TestCase
 
         $file = UploadedFile::fake()->image('new-avatar.jpg');
 
-        $this->putJson(action('MyAvatar@update'), ['file' => $file])
+        $this->putJson(action([MyAvatar::class, 'update']), ['file' => $file])
             ->assertStatus(200)
             ->assertJson(['status' => 'OK']);
 
@@ -57,9 +57,9 @@ class MyAvatarTest extends TestCase
         /** @var User $user */
         $this->be($user = factory(User::class)->create());
 
-        $this->expectsEvents(App\Events\Stats\UserAvatarUploaded::class);
+        $this->expectsEvents(\App\Events\Stats\UserAvatarUploaded::class);
 
-        $this->putJson(action('MyAvatar@update'), ['file' => $file])
+        $this->putJson(action([MyAvatar::class, 'update']), ['file' => $file])
             ->assertStatus(200)
             ->assertJson(['status' => 'OK']);
 
@@ -71,7 +71,7 @@ class MyAvatarTest extends TestCase
 
         \Storage::disk('avatars')->assertExists($avatar);
 
-        $this->deleteJson(action('MyAvatar@destroy'))
+        $this->deleteJson(action([MyAvatar::class, 'destroy']))
             ->assertNoContent();
 
         $user->refresh();

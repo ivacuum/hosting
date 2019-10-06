@@ -10,7 +10,7 @@
       @if ($initial !== $currentInitial)
         <span class="absolute font-bold uppercase -ml-6">{{ $currentInitial }}</span>
       @endif
-      <a class="link" href="{{ path('Photos@city', $city->slug) }}">{{ $city->title }}</a>
+      <a class="link" href="{{ path([App\Http\Controllers\Photos::class, 'city'], $city->slug) }}">{{ $city->title }}</a>
     </div>
     <?php $initial = $currentInitial ?>
   @endforeach

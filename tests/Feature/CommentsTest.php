@@ -2,6 +2,7 @@
 
 use App\Comment;
 use App\Events\CommentPublished;
+use App\Http\Controllers\AjaxComment;
 use App\Mail\CommentConfirm;
 use App\News;
 use App\User;
@@ -25,7 +26,7 @@ class CommentsTest extends TestCase
         $this->expectsEvents(\App\Events\Stats\UserRegisteredAuto::class);
 
         $this->postJson(
-            action('AjaxComment@store', ['type' => 'news', 'id' => $news->id]), [
+            action([AjaxComment::class, 'store'], ['type' => 'news', 'id' => $news->id]), [
                 'text' => 'some text from the guest',
                 'email' => $email,
             ])
@@ -41,7 +42,7 @@ class CommentsTest extends TestCase
 
         $this->expectsEvents(CommentPublished::class);
 
-        $this->get(action('CommentConfirm@update', $comment))
+        $this->get(action([\App\Http\Controllers\CommentConfirm::class, 'update'], $comment))
             ->assertRedirect($comment->www());
     }
 
@@ -56,7 +57,7 @@ class CommentsTest extends TestCase
         $this->expectsEvents(CommentPublished::class);
 
         $this->postJson(
-            action('AjaxComment@store', ['type' => 'news', 'id' => $news->id]), [
+            action([AjaxComment::class, 'store'], ['type' => 'news', 'id' => $news->id]), [
                 'text' => 'some text from the user is here',
             ])
             ->assertStatus(201)

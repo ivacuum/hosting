@@ -47,7 +47,7 @@
   <feedback-form
     email="{{ Auth::user()->email ?? '' }}"
     title="Photos FAQ"
-    action="{{ path('Issues@store') }}"
+    action="{{ path([App\Http\Controllers\Issues::class, 'store']) }}"
     hide-title
   ></feedback-form>
 </div>

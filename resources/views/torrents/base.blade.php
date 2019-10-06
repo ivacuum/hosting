@@ -21,20 +21,20 @@
     <div class="nav-scroll-container">
       <div class="nav-scroll">
         <nav class="nav nav-link-tabs">
-          <a class="nav-link {{ $view === 'torrents.index' ? 'active' : '' }}" href="{{ path('Torrents@index') }}">
+          <a class="nav-link {{ $view === 'torrents.index' ? 'active' : '' }}" href="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}">
             {{ trans('torrents.new') }}
           </a>
-          <a class="nav-link {{ $view === 'torrents.create' ? 'active' : '' }}" href="{{ path('Torrents@create') }}">
+          <a class="nav-link {{ $view === 'torrents.create' ? 'active' : '' }}" href="{{ path([App\Http\Controllers\Torrents::class, 'create']) }}">
             {{ trans('torrents.create') }}
           </a>
-          <a class="nav-link {{ $view === 'torrents.faq' ? 'active' : '' }}" href="{{ path('Torrents@faq') }}">
+          <a class="nav-link {{ $view === 'torrents.faq' ? 'active' : '' }}" href="{{ path([App\Http\Controllers\Torrents::class, 'faq']) }}">
             {{ trans('torrents.faq') }}
           </a>
-          <a class="nav-link {{ $view === 'torrents.comments' ? 'active' : '' }}" href="{{ path('Torrents@comments') }}">
+          <a class="nav-link {{ $view === 'torrents.comments' ? 'active' : '' }}" href="{{ path([App\Http\Controllers\Torrents::class, 'comments']) }}">
             {{ trans('torrents.comments') }}
           </a>
           @if (Auth::check())
-            <a class="nav-link {{ $view === 'torrents.my' ? 'active' : '' }}" href="{{ path('Torrents@my') }}">
+            <a class="nav-link {{ $view === 'torrents.my' ? 'active' : '' }}" href="{{ path([App\Http\Controllers\Torrents::class, 'my']) }}">
               {{ trans('torrents.my') }}
             </a>
           @endif

@@ -12,7 +12,7 @@
     <div class="flex flex-wrap items-center mb-1">
       <h1 class="text-3xl mb-1 mr-4">{{ trans('life.trips') }}</h1>
       @if (Auth::check())
-        <form class="mr-4" action="{{ path('Subscriptions@update') }}" method="post">
+        <form class="mr-4" action="{{ path([App\Http\Controllers\Subscriptions::class, 'update']) }}" method="post">
           {{ ViewHelper::inputHiddenMail() }}
           <button class="btn btn-default text-sm py-1 small-caps svg-flex svg-label">
             @svg (mail)
@@ -23,21 +23,21 @@
           @csrf
         </form>
       @else
-        <a class="btn btn-default text-sm py-1 svg-flex svg-label small-caps mr-4" href="{{ path('Subscriptions@edit', ['trips' => 1]) }}">
+        <a class="btn btn-default text-sm py-1 svg-flex svg-label small-caps mr-4" href="{{ path([App\Http\Controllers\Subscriptions::class, 'edit'], ['trips' => 1]) }}">
           @svg (mail)
           {{ trans('mail.subscribe') }}
         </a>
       @endif
-      <a class="svg-flex svg-label small-caps" href="{{ path('LifeTripsRss@index') }}">
+      <a class="svg-flex svg-label small-caps" href="{{ path([App\Http\Controllers\LifeTripsRss::class, 'index']) }}">
         @svg (rss-square)
         rss
       </a>
     </div>
     <nav class="flex flex-wrap text-sm mb-4">
       <div class="mr-3 whitespace-no-wrap"><mark>{{ trans('life.by_year') }}</mark></div>
-      <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></div>
-      <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></div>
-      <div class="whitespace-no-wrap"><a class="link" href="{{ path('Life@calendar') }}">{{ trans('life.by_days') }}</a></div>
+      <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'countries']) }}">{{ trans('life.by_country') }}</a></div>
+      <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'cities']) }}">{{ trans('life.by_city') }}</a></div>
+      <div class="whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'calendar']) }}">{{ trans('life.by_days') }}</a></div>
     </nav>
 
     @include('tpl.trips_by_years')
@@ -45,30 +45,30 @@
   <section class="sm:w-1/3 md:w-1/2 sm:px-4 sm:pt-0">
     <h2 class="text-3xl">{{ trans('life.favorites') }}</h2>
     @ru
-      <div class="mb-2"><a class="link" href="{{ path('Life@page', 'chillout') }}">Chillout</a></div>
-      <div class="mb-2"><a class="link" href="{{ path('Life@page', 'books') }}">Книги</a></div>
+      <div class="mb-2"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'chillout') }}">Chillout</a></div>
+      <div class="mb-2"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'books') }}">Книги</a></div>
     @endru
-    <div class="mb-2"><a class="link" href="{{ path('Life@page', 'gigs') }}">{{ trans('menu.gigs') }}</a></div>
+    <div class="mb-2"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'gigs') }}">{{ trans('menu.gigs') }}</a></div>
     @ru
-      <div class="mb-2"><a class="link" href="{{ path('Life@page', 'favorite-posts') }}">Любимые посты</a></div>
-      <div class="mb-2"><a class="link" href="{{ path('Life@page', 'podcasts') }}">Подкасты</a></div>
-      <div class="mb-2"><a class="link" href="{{ path('Life@page', 'laundry') }}">Условные обозначения стирки</a></div>
-      <div class="mb-2"><a class="link" href="{{ path('Life@page', 'movies') }}">Фильмы и сериалы</a></div>
-      <div class="mb-2"><a class="link" href="{{ path('Life@page', 'using-in-travels') }}">Чем пользуюсь в путешествиях</a></div>
+      <div class="mb-2"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'favorite-posts') }}">Любимые посты</a></div>
+      <div class="mb-2"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'podcasts') }}">Подкасты</a></div>
+      <div class="mb-2"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'laundry') }}">Условные обозначения стирки</a></div>
+      <div class="mb-2"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'movies') }}">Фильмы и сериалы</a></div>
+      <div class="mb-2"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'using-in-travels') }}">Чем пользуюсь в путешествиях</a></div>
     @endru
 
     <h2 class="text-3xl mt-12">{{ trans('life.languages') }}</h2>
     <nav>
       <div class="mb-2">
-        <a class="link" href="{{ path('Life@page', 'english') }}">{{ trans('life.english') }}</a>
+        <a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'english') }}">{{ trans('life.english') }}</a>
       </div>
       @ru
         <div class="mb-2">
-          <a class="link" href="{{ path('Life@page', 'german') }}">{{ trans('life.german') }}</a>
+          <a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'german') }}">{{ trans('life.german') }}</a>
         </div>
       @endru
       <div class="mb-2">
-        <a class="link" href="{{ path('Japanese@index') }}">{{ trans('life.japanese') }}</a>
+        <a class="link" href="{{ path([App\Http\Controllers\Japanese::class, 'index']) }}">{{ trans('life.japanese') }}</a>
       </div>
     </nav>
   </section>

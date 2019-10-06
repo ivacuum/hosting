@@ -10,7 +10,7 @@ class Gallery extends Controller
         $images = Image::where('user_id', request()->user()->id)
             ->orderBy('id', 'desc')
             ->paginate(25)
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         return view($this->view, ['images' => $images]);
     }

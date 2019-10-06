@@ -52,7 +52,7 @@
       <td class="whitespace-pre-line">{{ implode("\n", explode(', ', $model->meaning)) }}</td>
       <td class="md:text-right whitespace-no-wrap">
         @if ($model->radicals_count > 0)
-          <a href="{{ path('Acp\Radicals@index', [$model->getForeignKey() => $model]) }}">
+          <a href="{{ path([App\Http\Controllers\Acp\Radicals::class, 'index'], [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->radicals_count) }}
           </a>
         @endif

@@ -8,7 +8,9 @@ class ArtistCollection extends ResourceCollection
     {
         return [
             'meta' => [
-                'new_url' => \Auth::user()->can('create', Artist::class) ? path('Acp\Artists@create') : null,
+                'new_url' => \Auth::user()->can('create', Artist::class)
+                    ? path(['App\Http\Controllers\Acp\Artists', 'create'])
+                    : null,
             ],
         ];
     }

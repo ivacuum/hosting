@@ -25,8 +25,8 @@ class Gig extends Resource
             'meta_title' => $this->meta_title,
             'meta_description' => $this->metaDescription(),
 
-            'edit_url' => $this->when($me->can('edit', 'App\Gig'), path('Acp\Gigs@edit', $this)),
-            'show_url' => $this->when($me->can('show', 'App\Gig'), path('Acp\Gigs@show', $this)),
+            'edit_url' => $this->when($me->can('edit', 'App\Gig'), path(['App\Http\Controllers\Acp\Gigs', 'edit'], $this)),
+            'show_url' => $this->when($me->can('show', 'App\Gig'), path(['App\Http\Controllers\Acp\Gigs', 'show'], $this)),
         ];
     }
 }

@@ -8,7 +8,9 @@ class GigCollection extends ResourceCollection
     {
         return [
             'meta' => [
-                'new_url' => \Auth::user()->can('create', Gig::class) ? path('Acp\Gigs@create') : null,
+                'new_url' => \Auth::user()->can('create', Gig::class)
+                    ? path(['App\Http\Controllers\Acp\Gigs', 'create'])
+                    : null,
             ],
         ];
     }

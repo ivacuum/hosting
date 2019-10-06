@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Http\Controllers\Auth\ResetPassword;
 use App\Http\Controllers\Home;
 use App\User;
 use Illuminate\Auth\Passwords\PasswordBroker;
@@ -12,7 +13,7 @@ class ResetPasswordTest extends TestCase
 
     public function testFormGuest()
     {
-        $this->get(action('Auth\ResetPassword@index', ['token']))
+        $this->get(action([ResetPassword::class, 'index'], ['token']))
             ->assertStatus(200);
 
         $this->assertGuest();
@@ -21,7 +22,7 @@ class ResetPasswordTest extends TestCase
     public function testFormUser()
     {
         $this->be(factory(User::class)->state('id')->make())
-            ->get(action('Auth\ResetPassword@index', ['token']))
+            ->get(action([ResetPassword::class, 'index'], ['token']))
             ->assertStatus(200);
 
         $this->assertAuthenticated();
@@ -35,8 +36,8 @@ class ResetPasswordTest extends TestCase
         $broker = app(PasswordBroker::class);
         $token = $broker->createToken($user);
 
-        $this->from(action('Auth\ResetPassword@index', [$token]))
-            ->post(action('Auth\ResetPassword@reset'), [
+        $this->from(action([ResetPassword::class, 'index'], [$token]))
+            ->post(action([ResetPassword::class, 'reset']), [
                 'email' => $user->email,
                 'token' => $token,
                 'password' => 'secret42',
@@ -55,8 +56,8 @@ class ResetPasswordTest extends TestCase
         $broker = app(PasswordBroker::class);
         $token = $broker->createToken($user);
 
-        $this->from(action('Auth\ResetPassword@index', [$token]))
-            ->post(action('Auth\ResetPassword@reset'), [
+        $this->from(action([ResetPassword::class, 'index'], [$token]))
+            ->post(action([ResetPassword::class, 'reset']), [
                 'email' => $user->email,
                 'token' => $token,
                 'password' => 'secret42',

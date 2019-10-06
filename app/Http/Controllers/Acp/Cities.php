@@ -32,7 +32,7 @@ class Cities extends Controller
                 return $query->where('country_id', $countryId);
             })
             ->paginate()
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         return $this->modelResourceCollection($models);
     }

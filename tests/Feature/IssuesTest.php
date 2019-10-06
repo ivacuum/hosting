@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Http\Controllers\Issues;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -18,7 +19,7 @@ class IssuesTest extends TestCase
         ]);
 
         $this->from('/')
-            ->postJson(action('Issues@store'), [
+            ->postJson(action([Issues::class, 'store']), [
                 'name' => 'name',
                 'text' => 'some text from the guest',
                 'email' => $email,
@@ -35,7 +36,7 @@ class IssuesTest extends TestCase
         $this->expectsEvents(\App\Events\Stats\IssueAdded::class);
 
         $this->from('/')
-            ->postJson(action('Issues@store'), [
+            ->postJson(action([Issues::class, 'store']), [
                 'name' => 'name',
                 'text' => 'some text from the guest',
                 'email' => $user->email,

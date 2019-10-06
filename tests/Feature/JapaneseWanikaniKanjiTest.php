@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Http\Controllers\JapaneseWanikaniKanji;
 use App\Kanji;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -15,7 +16,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
 
         $kanji = $this->kanji();
 
-        $this->delete(action('JapaneseWanikaniKanji@destroy', $kanji))
+        $this->delete(action([JapaneseWanikaniKanji::class, 'destroy'], $kanji))
             ->assertNoContent();
 
         $this->assertEquals($user->id, $kanji->burnable->user_id);
@@ -23,7 +24,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
 
     public function testIndex()
     {
-        $this->get(action('JapaneseWanikaniKanji@index'))
+        $this->get(action([JapaneseWanikaniKanji::class, 'index']))
             ->assertStatus(200)
             ->assertViewIs('japanese.wanikani.vue');
     }
@@ -33,7 +34,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
         $level = 60;
         $kanji = $this->kanji(['level' => $level]);
 
-        $json = $this->getJson(action('JapaneseWanikaniKanji@index'))
+        $json = $this->getJson(action([JapaneseWanikaniKanji::class, 'index']))
             ->assertStatus(200)
             ->json("data.{$level}");
 
@@ -65,7 +66,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
         $kanji = $this->kanji();
         $kanji->burn($user->id);
 
-        $this->put(action('JapaneseWanikaniKanji@update', $kanji))
+        $this->put(action([JapaneseWanikaniKanji::class, 'update'], $kanji))
             ->assertNoContent();
 
         $this->assertNull($kanji->burnable);

@@ -45,7 +45,7 @@ class Kanjis extends Controller
                 return $query->where('meaning', 'LIKE', "%{$q}%");
             })
             ->paginate()
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         return view($this->view, ['models' => $models]);
     }

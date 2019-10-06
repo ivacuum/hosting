@@ -16,7 +16,7 @@
           <a
             class="link js-dcpp-hub"
             href="{{ $hub->externalLink() }}"
-            data-action="{{ path('DcppHubClick@store', $hub->id) }}"
+            data-action="{{ path([App\Http\Controllers\DcppHubClick::class, 'store'], $hub->id) }}"
           >{{ $hub->externalLink() }}</a>
         </li>
       @endforeach
@@ -37,7 +37,7 @@
     <feedback-form
       email="{{ Auth::user()->email ?? '' }}"
       title="DC++ Hubs"
-      action="{{ path('Issues@store') }}"
+      action="{{ path([App\Http\Controllers\Issues::class, 'store']) }}"
       hide-name
       hide-title
     ></feedback-form>

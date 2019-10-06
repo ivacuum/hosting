@@ -8,8 +8,8 @@
   <span class="text-base text-muted">{{ sizeof($cities) }}</span>
 </h1>
 <nav class="flex flex-wrap text-sm mb-4">
-  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path('UserTravelTrips@index', $traveler->login) }}">{{ trans('life.by_year') }}</a></div>
-  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path('UserTravelCountries@index', $traveler->login) }}">{{ trans('life.by_country') }}</a></div>
+  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\UserTravelTrips::class, 'index'], $traveler->login) }}">{{ trans('life.by_year') }}</a></div>
+  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\UserTravelCountries::class, 'index'], $traveler->login) }}">{{ trans('life.by_country') }}</a></div>
   <div class="whitespace-no-wrap"><mark>{{ trans('life.by_city') }}</mark></div>
 </nav>
 
@@ -23,7 +23,7 @@
         <span class="absolute font-bold uppercase -ml-6">{{ $currentInitial }}</span>
       @endif
       @if ($city->trips_published_count)
-        <a class="link" href="{{ path('UserTravelCities@show', [$traveler->login, $city->slug]) }}">{{ $city->title }}</a>
+        <a class="link" href="{{ path([App\Http\Controllers\UserTravelCities::class, 'show'], [$traveler->login, $city->slug]) }}">{{ $city->title }}</a>
       @else
         {{ $city->title }}
       @endif

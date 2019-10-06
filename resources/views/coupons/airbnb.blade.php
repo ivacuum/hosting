@@ -346,7 +346,7 @@
     <feedback-form
       email="{{ Auth::user()->email ?? '' }}"
       title="Airbnb"
-      action="{{ path('Issues@store') }}"
+      action="{{ path([App\Http\Controllers\Issues::class, 'store']) }}"
       hide-title
     ></feedback-form>
   </section>

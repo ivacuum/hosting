@@ -76,7 +76,7 @@ class Subscriptions extends Controller
 
         \Mail::to($user->email)->queue(new SubscriptionConfirm($user, array_keys(array_filter(request(['gigs', 'news', 'trips'])))));
 
-        return redirect(path([$this->controller, 'edit']))
+        return redirect(path([self::class, 'edit']))
             ->with('message', 'Теперь необходимо подтвердить подписку по ссылке в письме, которое мы вам отправили.');
     }
 

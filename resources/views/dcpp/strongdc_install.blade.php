@@ -18,15 +18,15 @@
   <h2>Установка</h2>
   <ol>
     <li>
-      <p>Скачайте программу-клиент <a class="link" href="{{ path('Dcpp@page', 'strongdc') }}">StrongDC++</a>.</p>
+      <p>Скачайте программу-клиент <a class="link" href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'strongdc') }}">StrongDC++</a>.</p>
       <p>
-        <a class="btn btn-success my-1 mr-2" href="{{ path('Files@download', 132) }}">
+        <a class="btn btn-success my-1 mr-2" href="{{ path([App\Http\Controllers\Files::class, 'download'], 132) }}">
           <span class="mr-1">
             @svg (windows)
           </span>
           {{ trans('dcpp.download') }} 32-Bit &middot; {{ ViewHelper::size(8046097) }}
         </a>
-        <a class="btn btn-success my-1" href="{{ path('Files@download', 134) }}">
+        <a class="btn btn-success my-1" href="{{ path([App\Http\Controllers\Files::class, 'download'], 134) }}">
           <span class="mr-1">
             @svg (windows)
           </span>
@@ -87,7 +87,7 @@
     </li>
   </ol>
   <p>
-    <a class="btn btn-secondary" href="{{ path('Dcpp@page', 'strongdc') }}">
+    <a class="btn btn-secondary" href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'strongdc') }}">
       <span class="sm:hidden">Вернуться к StrongDC++</span>
       <span class="hidden sm:inline">Вернуться на страницу клиента StrongDC++</span>
     </a>

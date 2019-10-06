@@ -19,9 +19,18 @@ class Tag extends Resource
             'views' => $this->views,
             'breadcrumb' => $this->breadcrumb(),
 
-            'edit_url' => $this->when($me->can('edit', 'App\Tag'), path('Acp\Tags@edit', $this)),
-            'show_url' => $this->when($me->can('show', 'App\Tag'), path('Acp\Tags@show', $this)),
-            'photos_url' => $this->when($me->can('show', 'App\Photo'), path('Acp\Photos@index', $foreignKey)),
+            'edit_url' => $this->when(
+                $me->can('edit', 'App\Tag'),
+                path(['App\Http\Controllers\Acp\Tags', 'edit'], $this)
+            ),
+            'show_url' => $this->when(
+                $me->can('show', 'App\Tag'),
+                path(['App\Http\Controllers\Acp\Tags', 'show'], $this)
+            ),
+            'photos_url' => $this->when(
+                $me->can('show', 'App\Photo'),
+                path(['App\Http\Controllers\Acp\Photos', 'index'], $foreignKey)
+            ),
 
             'photos_count' => (int) $this->photos_count,
         ];

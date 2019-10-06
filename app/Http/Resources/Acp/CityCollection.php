@@ -8,7 +8,9 @@ class CityCollection extends ResourceCollection
     {
         return [
             'meta' => [
-                'new_url' => \Auth::user()->can('create', City::class) ? path('Acp\Cities@create') : null,
+                'new_url' => \Auth::user()->can('create', City::class)
+                    ? path(['App\Http\Controllers\Acp\Cities', 'create'])
+                    : null,
             ],
         ];
     }

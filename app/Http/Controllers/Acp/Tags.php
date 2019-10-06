@@ -21,7 +21,7 @@ class Tags extends Controller
         $models = Model::withCount('photos')
             ->orderBy($sortKey, $sortDir)
             ->paginate(500)
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         return $this->modelResourceCollection($models);
     }

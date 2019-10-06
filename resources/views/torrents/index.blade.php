@@ -35,7 +35,7 @@
     @guest
       @ru
         <div class="alert alert-info mr-6 mt-6 p-2 text-xs">
-          <a class="link" href="{{ path('Auth\SignIn@index', ['goto' => path('Torrents@index')]) }}">Пользователям</a> доступны чат и добавление раздач
+          <a class="link" href="{{ path([App\Http\Controllers\Auth\SignIn::class, 'index'], ['goto' => path([App\Http\Controllers\Torrents::class, 'index'])]) }}">Пользователям</a> доступны чат и добавление раздач
         </div>
       @endru
     @endguest
@@ -88,7 +88,7 @@
           <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center md:text-left whitespace-no-wrap js-magnet"
              href="{{ $torrent->magnet() }}"
              title="{{ trans('torrents.download') }}"
-             data-action="{{ path('Torrents@magnet', $torrent) }}"
+             data-action="{{ path([App\Http\Controllers\Torrents::class, 'magnet'], $torrent) }}"
           >
             @svg (magnet)
             <span class="js-magnet-counter">{{ $torrent->clicks > 0 ? $torrent->clicks : '' }}</span>

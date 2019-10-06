@@ -5,25 +5,40 @@
   <div class="nav-scroll-container">
     <div class="nav-scroll">
       <nav class="nav nav-link-tabs">
-        <a class="nav-link {{ $view === 'photos.index' ? 'active' : '' }}" href="{{ path('Photos@index') }}">
+        <a
+          class="nav-link {{ $view === 'photos.index' ? 'active' : '' }}"
+          href="{{ path([App\Http\Controllers\Photos::class, 'index']) }}"
+        >
           {{ trans('photos.new') }}
         </a>
-        <a class="nav-link {{ in_array($view, ['photos.trip', 'photos.trips']) ? 'active' : '' }}" href="{{ path('Photos@trips') }}">
+        <a
+          class="nav-link {{ in_array($view, ['photos.trip', 'photos.trips']) ? 'active' : '' }}"
+          href="{{ path([App\Http\Controllers\Photos::class, 'trips']) }}">
           {{ trans('photos.trips') }}
         </a>
-        <a class="nav-link {{ in_array($view, ['photos.tag', 'photos.tags']) ? 'active' : '' }}" href="{{ path('Photos@tags') }}">
+        <a
+          class="nav-link {{ in_array($view, ['photos.tag', 'photos.tags']) ? 'active' : '' }}"
+          href="{{ path([App\Http\Controllers\Photos::class, 'tags']) }}">
           {{ trans('photos.tags') }}
         </a>
-        <a class="nav-link {{ $view === 'photos.map' ? 'active' : '' }}" href="{{ path('Photos@map') }}">
+        <a
+          class="nav-link {{ $view === 'photos.map' ? 'active' : '' }}"
+          href="{{ path([App\Http\Controllers\Photos::class, 'map']) }}">
           {{ trans('photos.map') }}
         </a>
-        <a class="nav-link {{ in_array($view, ['photos.cities', 'photos.city']) ? 'active' : '' }}" href="{{ path('Photos@cities') }}">
+        <a
+          class="nav-link {{ in_array($view, ['photos.cities', 'photos.city']) ? 'active' : '' }}"
+          href="{{ path([App\Http\Controllers\Photos::class, 'cities']) }}">
           {{ trans('photos.cities') }}
         </a>
-        <a class="nav-link {{ in_array($view, ['photos.countries', 'photos.country']) ? 'active' : '' }}" href="{{ path('Photos@countries') }}">
+        <a
+          class="nav-link {{ in_array($view, ['photos.countries', 'photos.country']) ? 'active' : '' }}"
+          href="{{ path([App\Http\Controllers\Photos::class, 'countries']) }}">
           {{ trans('photos.countries') }}
         </a>
-        <a class="nav-link {{ $view === 'photos.faq' ? 'active' : '' }}" href="{{ path('Photos@faq') }}">
+        <a
+          class="nav-link {{ $view === 'photos.faq' ? 'active' : '' }}"
+          href="{{ path([App\Http\Controllers\Photos::class, 'faq']) }}">
           {{ trans('photos.faq') }}
         </a>
       </nav>

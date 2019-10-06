@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Http\Controllers\JapaneseWanikaniSearch;
 use App\Kanji;
 use App\Radical;
 use App\Vocabulary;
@@ -16,7 +17,7 @@ class JapaneseWanikaniSearchTest extends TestCase
         $radical = factory(Radical::class)->create();
         $q = $radical->meaning;
 
-        $json = $this->post(action('JapaneseWanikaniSearch@index'), ['q' => $q])
+        $json = $this->post(action([JapaneseWanikaniSearch::class, 'index']), ['q' => $q])
             ->assertStatus(200)
             ->json('radicals.data');
 
@@ -29,7 +30,7 @@ class JapaneseWanikaniSearchTest extends TestCase
         $kanji = factory(Kanji::class)->create();
         $q = $kanji->meaning;
 
-        $json = $this->post(action('JapaneseWanikaniSearch@index'), ['q' => $q])
+        $json = $this->post(action([JapaneseWanikaniSearch::class, 'index']), ['q' => $q])
             ->assertStatus(200)
             ->json('kanji.data');
 
@@ -42,7 +43,7 @@ class JapaneseWanikaniSearchTest extends TestCase
         $vocab = factory(Vocabulary::class)->create();
         $q = $vocab->meaning;
 
-        $json = $this->post(action('JapaneseWanikaniSearch@index'), ['q' => $q])
+        $json = $this->post(action([JapaneseWanikaniSearch::class, 'index']), ['q' => $q])
             ->assertStatus(200)
             ->json('vocabulary.data');
 

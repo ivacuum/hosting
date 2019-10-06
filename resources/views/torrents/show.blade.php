@@ -2,7 +2,7 @@
 
 @section('torrent-download-button')
 <div class="mr-4 text-center">
-  <a class="btn btn-success js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ path('Torrents@magnet', $torrent) }}">
+  <a class="btn btn-success js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ path([App\Http\Controllers\Torrents::class, 'magnet'], $torrent) }}">
     <span class="mr-1">
       @svg (magnet)
     </span>
@@ -32,7 +32,7 @@
   <a class="svg-flex svg-muted tooltipped tooltipped-n" href="{{ $torrent->externalLink() }}" aria-label="{{ trans('torrents.source') }}">
     @svg (external-link)
   </a>
-  <a class="btn btn-success svg-flex svg-label js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ path('Torrents@magnet', $torrent) }}">
+  <a class="btn btn-success svg-flex svg-label js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ path([App\Http\Controllers\Torrents::class, 'magnet'], $torrent) }}">
     @svg (magnet)
     {{ trans('torrents.download') }}
     <span class="mx-2">&middot;</span>
@@ -45,7 +45,7 @@
     @foreach ($tags as $tag)
       <a
         class="btn btn-outline-primary mb-1 py-1 text-sm lowercase"
-        href="{{ path('Torrents@index', ['q' => mb_strtolower($tag)]) }}"
+        href="{{ path([App\Http\Controllers\Torrents::class, 'index'], ['q' => mb_strtolower($tag)]) }}"
       >#{{ $tag }}</a>
     @endforeach
   </div>
@@ -70,7 +70,7 @@
       <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center md:text-left whitespace-no-wrap js-magnet"
          href="{{ $row->magnet() }}"
          title="{{ trans('torrents.download') }}"
-         data-action="{{ path('Torrents@magnet', $row) }}"
+         data-action="{{ path([App\Http\Controllers\Torrents::class, 'magnet'], $row) }}"
       >
         @svg (magnet)
         <span class="js-magnet-counter">{{ $row->clicks > 0 ? $row->clicks : '' }}</span>

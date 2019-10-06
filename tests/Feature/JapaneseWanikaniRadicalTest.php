@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Http\Controllers\JapaneseWanikaniRadicals;
 use App\Radical;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -15,7 +16,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
 
         $radical = $this->radical();
 
-        $this->delete(action('JapaneseWanikaniRadicals@destroy', $radical))
+        $this->delete(action([JapaneseWanikaniRadicals::class, 'destroy'], $radical))
             ->assertNoContent();
 
         $this->assertEquals($user->id, $radical->burnable->user_id);
@@ -23,7 +24,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
 
     public function testIndex()
     {
-        $this->get(action('JapaneseWanikaniRadicals@index'))
+        $this->get(action([JapaneseWanikaniRadicals::class, 'index']))
             ->assertStatus(200)
             ->assertViewIs('japanese.wanikani.vue');
     }
@@ -33,7 +34,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
         $level = 60;
         $radical = $this->radical(['level' => $level]);
 
-        $json = $this->getJson(action('JapaneseWanikaniRadicals@index'))
+        $json = $this->getJson(action([JapaneseWanikaniRadicals::class, 'index']))
             ->assertStatus(200)
             ->json("data.{$level}");
 
@@ -65,7 +66,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
         $radical = $this->radical();
         $radical->burn($user->id);
 
-        $this->put(action('JapaneseWanikaniRadicals@update', $radical))
+        $this->put(action([JapaneseWanikaniRadicals::class, 'update'], $radical))
             ->assertNoContent();
 
         $this->assertNull($radical->burnable);

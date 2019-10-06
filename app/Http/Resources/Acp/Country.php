@@ -22,10 +22,22 @@ class Country extends Resource
             'flag_url' => $this->flagUrl(),
             'breadcrumb' => $this->breadcrumb(),
 
-            'edit_url' => $this->when($me->can('edit', 'App\Country'), path('Acp\Countries@edit', $this)),
-            'show_url' => $this->when($me->can('show', 'App\Country'), path('Acp\Countries@show', $this)),
-            'trips_url' => $this->when($me->can('list', 'App\Trip'), path('Acp\Trips@index', $foreignKey)),
-            'cities_url' => $this->when($me->can('show', 'App\City'), path('Acp\Cities@index', $foreignKey)),
+            'edit_url' => $this->when(
+                $me->can('edit', 'App\Country'),
+                path(['App\Http\Controllers\Acp\Countries', 'edit'], $this)
+            ),
+            'show_url' => $this->when(
+                $me->can('show', 'App\Country'),
+                path(['App\Http\Controllers\Acp\Countries', 'show'], $this)
+            ),
+            'trips_url' => $this->when(
+                $me->can('list', 'App\Trip'),
+                path(['App\Http\Controllers\Acp\Trips', 'index'], $foreignKey)
+            ),
+            'cities_url' => $this->when(
+                $me->can('show', 'App\City'),
+                path(['App\Http\Controllers\Acp\Cities', 'index'], $foreignKey)
+            ),
 
             'trips_count' => (int) $this->trips_count,
             'cities_count' => (int) $this->cities_count,

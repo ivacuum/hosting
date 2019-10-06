@@ -40,6 +40,6 @@
   @en
     <p>You haven't released anything yet.</p>
   @endru
-  <p><a class="btn btn-default" href="{{ path('Torrents@create') }}">{{ trans('torrents.create') }}</a></p>
+  <p><a class="btn btn-default" href="{{ path([App\Http\Controllers\Torrents::class, 'create']) }}">{{ trans('torrents.create') }}</a></p>
 @endif
 @endsection

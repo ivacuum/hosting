@@ -24,9 +24,18 @@ class City extends Resource
             'views' => $this->views,
             'breadcrumb' => $this->breadcrumb(),
 
-            'edit_url' => $this->when($me->can('edit', 'App\City'), path('Acp\Cities@edit', $this)),
-            'show_url' => $this->when($me->can('show', 'App\City'), path('Acp\Cities@show', $this)),
-            'trips_url' => $this->when($me->can('list', 'App\Trip'), path('Acp\Trips@index', $foreignKey)),
+            'edit_url' => $this->when(
+                $me->can('edit', 'App\City'),
+                path(['App\Http\Controllers\Acp\Cities', 'edit'], $this)
+            ),
+            'show_url' => $this->when(
+                $me->can('show', 'App\City'),
+                path(['App\Http\Controllers\Acp\Cities', 'show'], $this)
+            ),
+            'trips_url' => $this->when(
+                $me->can('list', 'App\Trip'),
+                path(['App\Http\Controllers\Acp\Trips', 'index'], $foreignKey)
+            ),
 
             'trips_count' => (int) $this->trips_count,
 

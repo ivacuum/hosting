@@ -190,7 +190,7 @@
             </div>
           @endif
           <div>
-            <a href="{{ path('Issues@create') }}">
+            <a href="{{ path([App\Http\Controllers\Issues::class, 'create']) }}">
               {{ trans('issues.create') }}
             </a>
           </div>

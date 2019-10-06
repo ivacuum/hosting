@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App;
+use App\Http\Controllers\MySettings;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -12,7 +12,7 @@ class MySettingsTest extends TestCase
     public function testEdit()
     {
         $this->be(factory(User::class)->create())
-            ->get(action('MySettings@edit'))
+            ->get(action([MySettings::class, 'edit']))
             ->assertStatus(200);
     }
 
@@ -30,7 +30,7 @@ class MySettingsTest extends TestCase
 
         $this->expectsEvents($events);
 
-        $this->put(action('MySettings@update'), [$field => $new])
+        $this->put(action([MySettings::class, 'update']), [$field => $new])
             ->assertStatus(302);
 
         $user->refresh();
@@ -46,7 +46,7 @@ class MySettingsTest extends TestCase
                 'new' => User::THEME_DARK,
                 'field' => 'theme',
                 'events' => [
-                    App\Events\Stats\MySettingsChanged::class,
+                    \App\Events\Stats\MySettingsChanged::class,
                 ],
             ],
             'Change locale' => [
@@ -54,7 +54,7 @@ class MySettingsTest extends TestCase
                 'new' => 'en',
                 'field' => 'locale',
                 'events' => [
-                    App\Events\Stats\MySettingsChanged::class,
+                    \App\Events\Stats\MySettingsChanged::class,
                 ],
             ],
             'Subscribe to gig notifications' => [
@@ -62,8 +62,8 @@ class MySettingsTest extends TestCase
                 'new' => 1,
                 'field' => 'notify_gigs',
                 'events' => [
-                    App\Events\Stats\GigsSubscribed::class,
-                    App\Events\Stats\MySettingsChanged::class,
+                    \App\Events\Stats\GigsSubscribed::class,
+                    \App\Events\Stats\MySettingsChanged::class,
                 ],
             ],
             'Unsubscribe from gigs notifications' => [
@@ -71,8 +71,8 @@ class MySettingsTest extends TestCase
                 'new' => 0,
                 'field' => 'notify_gigs',
                 'events' => [
-                    App\Events\Stats\GigsUnsubscribed::class,
-                    App\Events\Stats\MySettingsChanged::class,
+                    \App\Events\Stats\GigsUnsubscribed::class,
+                    \App\Events\Stats\MySettingsChanged::class,
                 ],
             ],
             'Subscribe to news notifications' => [
@@ -80,8 +80,8 @@ class MySettingsTest extends TestCase
                 'new' => 1,
                 'field' => 'notify_news',
                 'events' => [
-                    App\Events\Stats\NewsSubscribed::class,
-                    App\Events\Stats\MySettingsChanged::class,
+                    \App\Events\Stats\NewsSubscribed::class,
+                    \App\Events\Stats\MySettingsChanged::class,
                 ],
             ],
             'Unsubscribe from news notifications' => [
@@ -89,8 +89,8 @@ class MySettingsTest extends TestCase
                 'new' => 0,
                 'field' => 'notify_news',
                 'events' => [
-                    App\Events\Stats\NewsUnsubscribed::class,
-                    App\Events\Stats\MySettingsChanged::class,
+                    \App\Events\Stats\NewsUnsubscribed::class,
+                    \App\Events\Stats\MySettingsChanged::class,
                 ],
             ],
             'Subscribe to trip notifications' => [
@@ -98,8 +98,8 @@ class MySettingsTest extends TestCase
                 'new' => 1,
                 'field' => 'notify_trips',
                 'events' => [
-                    App\Events\Stats\TripsSubscribed::class,
-                    App\Events\Stats\MySettingsChanged::class,
+                    \App\Events\Stats\TripsSubscribed::class,
+                    \App\Events\Stats\MySettingsChanged::class,
                 ],
             ],
             'Unsubscribe from trip notifications' => [
@@ -107,8 +107,8 @@ class MySettingsTest extends TestCase
                 'new' => 0,
                 'field' => 'notify_trips',
                 'events' => [
-                    App\Events\Stats\TripsUnsubscribed::class,
-                    App\Events\Stats\MySettingsChanged::class,
+                    \App\Events\Stats\TripsUnsubscribed::class,
+                    \App\Events\Stats\MySettingsChanged::class,
                 ],
             ],
             'Shorten release titles' => [
@@ -116,7 +116,7 @@ class MySettingsTest extends TestCase
                 'new' => 1,
                 'field' => 'torrent_short_title',
                 'events' => [
-                    App\Events\Stats\MySettingsChanged::class,
+                    \App\Events\Stats\MySettingsChanged::class,
                 ],
             ],
         ];

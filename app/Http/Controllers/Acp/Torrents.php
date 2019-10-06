@@ -33,7 +33,7 @@ class Torrents extends Controller
                 return $query->where('title', 'LIKE', "%{$q}%");
             })
             ->paginate()
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         return view($this->view, [
             'models' => $models,
@@ -63,7 +63,7 @@ class Torrents extends Controller
             'registered_at' => $registeredAt,
         ]);
 
-        return redirect(path([$this->controller, 'show'], $model))
+        return redirect(path([self::class, 'show'], $model))
             ->with('message', 'Раздача обновлена');
     }
 

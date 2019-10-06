@@ -18,16 +18,16 @@
       </div>
       <div class="px-5 py-4">
         @ru
-          <h3 class="h4"><a class="link" href="{{ path('JapaneseHiraganaKatakana@index') }}">Тренажер хираганы и катаканы</a></h3>
+          <h3 class="h4"><a class="link" href="{{ path([App\Http\Controllers\JapaneseHiraganaKatakana::class, 'index']) }}">Тренажер хираганы и катаканы</a></h3>
           <div>Быстрое освоение японских слоговых азбук столбик за столбиком.</div>
 
-          <h3 class="h4 mt-6"><a class="link" href="{{ path('JapaneseWanikani@index') }}">{{ trans('japanese.wanikani') }}</a></h3>
+          <h3 class="h4 mt-6"><a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikani::class, 'index']) }}">{{ trans('japanese.wanikani') }}</a></h3>
           <div>Набор ключей, иероглифов и словарных слов для изучения и повторения. Данные и вдохновение взяты с сайта <a class="link" href="https://www.wanikani.com/">wanikani.com</a> и приправлены дополнительными функциями для улучшения процесса обучения.</div>
         @en
-          <h3 class="h4"><a class="link" href="{{ path('JapaneseHiraganaKatakana@index') }}">Hiragana & Katakana trainer</a></h3>
+          <h3 class="h4"><a class="link" href="{{ path([App\Http\Controllers\JapaneseHiraganaKatakana::class, 'index']) }}">Hiragana & Katakana trainer</a></h3>
           <div>Learn Japanese syllabaries column by column the fast way.</div>
 
-          <h3 class="h4 mt-6"><a class="link" href="{{ path('JapaneseWanikani@index') }}">{{ trans('japanese.wanikani') }}</a></h3>
+          <h3 class="h4 mt-6"><a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikani::class, 'index']) }}">{{ trans('japanese.wanikani') }}</a></h3>
           <div>Set of radicals, kanji and vocabulary to study and review. Data and inspiration from <a class="link" href="https://www.wanikani.com/">wanikani.com</a> with features added to make learning and review process more effective.</div>
         @endru
       </div>
@@ -101,7 +101,7 @@
 <section>
   <div class="h2">@ru Азбуки @en Syllabaries @endru</div>
   @ru
-    <p>Без азбук ничего не прочитать. Катакана в основном для заимствованных слов, хирагана — для всего остального. Запомнить азбуки проще всего с помощью <a class="link" href="{{ path('JapaneseHiraganaKatakana@index') }}">тренажера</a>. Практикуя столбик за столбиком, можно за считанные дни добиться автоматизма чтения слогов.</p>
+    <p>Без азбук ничего не прочитать. Катакана в основном для заимствованных слов, хирагана — для всего остального. Запомнить азбуки проще всего с помощью <a class="link" href="{{ path([App\Http\Controllers\JapaneseHiraganaKatakana::class, 'index']) }}">тренажера</a>. Практикуя столбик за столбиком, можно за считанные дни добиться автоматизма чтения слогов.</p>
   @endru
 </section>
 
@@ -109,7 +109,7 @@
   <div class="h2">@ru Ключи (радикалы) @en Radicals @endru</div>
   @ru
     <p>Это составные блоки иероглифов. Они здорово помогают их распознавать.</p>
-    <p>Возьмем, например, иероглиф неба <a class="link" href="{{ path('JapaneseWanikaniKanji@show', '空') }}">空</a>. Он состоит из следующих ключей: <a class="link" href="{{ path('JapaneseWanikaniRadicals@show', 'construction') }}">工</a>, <a class="link" href="{{ path('JapaneseWanikaniRadicals@show', 'legs') }}">儿</a> и <a class="link" href="{{ path('JapaneseWanikaniRadicals@show', 'helmet') }}">宀</a>.</p>
+    <p>Возьмем, например, иероглиф неба <a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikaniKanji::class, 'show'], '空') }}">空</a>. Он состоит из следующих ключей: <a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikaniRadicals::class, 'show'], 'construction') }}">工</a>, <a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikaniRadicals::class, 'show'], 'legs') }}">儿</a> и <a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikaniRadicals::class, 'show'], 'helmet') }}">宀</a>.</p>
     <p>Зная хотя бы один ключ, можно найти даже самый заковыристый иероглиф.</p>
   @endru
 </section>

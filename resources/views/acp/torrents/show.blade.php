@@ -8,7 +8,7 @@
   </h4>
   <ol>
     @foreach ($relatedTorrents as $row)
-      <li><a href="{{ path('Acp\Torrents@show', $row) }}">{{ $row->shortTitle() }}</a></li>
+      <li><a href="{{ path([App\Http\Controllers\Acp\Torrents::class, 'show'], $row) }}">{{ $row->shortTitle() }}</a></li>
     @endforeach
   </ol>
 @endif

@@ -1,5 +1,8 @@
 <?php namespace Tests\Feature;
 
+use App\Http\Controllers\UserTravelCities;
+use App\Http\Controllers\UserTravelCountries;
+use App\Http\Controllers\UserTravelTrips;
 use App\Trip;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -17,7 +20,7 @@ class UserTravelTest extends TestCase
         $user = factory(User::class)->create(['login' => self::LOGIN]);
         $user->trips()->save(factory(Trip::class)->state('city')->make());
 
-        $this->get(action('UserTravelCities@index', self::LOGIN))
+        $this->get(action([UserTravelCities::class, 'index'], self::LOGIN))
             ->assertStatus(200);
     }
 
@@ -28,7 +31,7 @@ class UserTravelTest extends TestCase
         $user = factory(User::class)->create(['login' => self::LOGIN]);
         $trip = $user->trips()->save(factory(Trip::class)->state('city')->make());
 
-        $this->get(action('UserTravelCities@show', [self::LOGIN, $trip->city->slug]))
+        $this->get(action([UserTravelCities::class, 'show'], [self::LOGIN, $trip->city->slug]))
             ->assertStatus(200);
     }
 
@@ -38,7 +41,7 @@ class UserTravelTest extends TestCase
         $user = factory(User::class)->create(['login' => self::LOGIN]);
         $user->trips()->save(factory(Trip::class)->state('city')->make());
 
-        $this->get(action('UserTravelCountries@index', self::LOGIN))
+        $this->get(action([UserTravelCountries::class, 'index'], self::LOGIN))
             ->assertStatus(200);
     }
 
@@ -49,7 +52,7 @@ class UserTravelTest extends TestCase
         $user = factory(User::class)->create(['login' => self::LOGIN]);
         $trip = $user->trips()->save(factory(Trip::class)->state('city')->make());
 
-        $this->get(action('UserTravelCountries@show', [self::LOGIN, $trip->city->country->slug]))
+        $this->get(action([UserTravelCountries::class, 'show'], [self::LOGIN, $trip->city->country->slug]))
             ->assertStatus(200);
     }
 
@@ -57,7 +60,7 @@ class UserTravelTest extends TestCase
     {
         factory(User::class)->create(['login' => self::LOGIN]);
 
-        $this->get(action('UserTravelTrips@index', self::LOGIN))
+        $this->get(action([UserTravelTrips::class, 'index'], self::LOGIN))
             ->assertStatus(200);
     }
 
@@ -68,7 +71,7 @@ class UserTravelTest extends TestCase
         $user = factory(User::class)->create(['login' => self::LOGIN]);
         $trip = $user->trips()->save(factory(Trip::class)->state('city')->make());
 
-        $this->get(action('UserTravelTrips@show', [self::LOGIN, $trip->slug]))
+        $this->get(action([UserTravelTrips::class, 'show'], [self::LOGIN, $trip->slug]))
             ->assertStatus(200);
     }
 }

@@ -24,7 +24,7 @@ class News extends Controller
             })
             ->where('locale', \App::getLocale())
             ->paginate(20)
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         return view($this->view, [
             'models' => $models,

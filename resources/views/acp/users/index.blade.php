@@ -77,28 +77,28 @@
       </td>
       <td class="md:text-right whitespace-no-wrap">
         @if ($model->comments_count > 0)
-          <a href="{{ path('Acp\Comments@index', [$model->getForeignKey() => $model]) }}">
+          <a href="{{ path([App\Http\Controllers\Acp\Comments::class, 'index'], [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->comments_count) }}
           </a>
         @endif
       </td>
       <td class="md:text-right whitespace-no-wrap">
         @if ($model->images_count > 0)
-          <a href="{{ path('Acp\Images@index', [$model->getForeignKey() => $model]) }}">
+          <a href="{{ path([App\Http\Controllers\Acp\Images::class, 'index'], [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->images_count) }}
           </a>
         @endif
       </td>
       <td class="md:text-right whitespace-no-wrap">
         @if ($model->torrents_count > 0)
-          <a href="{{ path('Acp\Torrents@index', [$model->getForeignKey() => $model]) }}">
+          <a href="{{ path([App\Http\Controllers\Acp\Torrents::class, 'index'], [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->torrents_count) }}
           </a>
         @endif
       </td>
       <td class="md:text-right whitespace-no-wrap">
         @if ($model->trips_count > 0)
-          <a href="{{ path('Acp\Trips@index', [$model->getForeignKey() => $model]) }}">
+          <a href="{{ path([App\Http\Controllers\Acp\Trips::class, 'index'], [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->trips_count) }}
           </a>
         @endif

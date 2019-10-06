@@ -93,7 +93,7 @@
 @endslot
 
 @if (optional(Auth::user())->login)
-  <div>Ссылка на вашу хронологию поездок: <a class="link" href="{{ action('UserTravelTrips@index', Auth::user()->login) }}"></a></div>
+  <div>Ссылка на вашу хронологию поездок: <a class="link" href="{{ action([App\Http\Controllers\UserTravelTrips::class, 'index'], Auth::user()->login) }}"></a></div>
 @else
   <p>Сначала укажите свой логин <a class="link" href="/my/profile">в профиле</a>.</p>
   <div>После этого на сайте у вас будет целый раздел вида <code>vacuum.name/@login/travel</code>. На него будет вести кнопка «Просмотреть» на странице <a class="link" href="/my/trips">управления поездками</a>.</div>

@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Http\Controllers\Auth\SignIn;
 use App\Http\Controllers\Home;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -11,7 +12,7 @@ class SignInTest extends TestCase
 
     public function testFormGuest()
     {
-        $this->get(action('Auth\SignIn@index'))
+        $this->get(action([SignIn::class, 'index']))
             ->assertStatus(200);
 
         $this->assertGuest();
@@ -20,7 +21,7 @@ class SignInTest extends TestCase
     public function testFormUser()
     {
         $this->be(factory(User::class)->make())
-            ->get(action('Auth\SignIn@index'))
+            ->get(action([SignIn::class, 'index']))
             ->assertSessionHasNoErrors()
             ->assertRedirect(action([Home::class, 'index']));
 
@@ -31,8 +32,8 @@ class SignInTest extends TestCase
     {
         $user = factory(User::class)->create(['password' => 'secret42']);
 
-        $this->from(action('Auth\SignIn@index'))
-            ->post(action('Auth\SignIn@login'), [
+        $this->from(action([SignIn::class, 'index']))
+            ->post(action([SignIn::class, 'login']), [
                 'email' => $user->email,
                 'password' => 'secret42',
             ])

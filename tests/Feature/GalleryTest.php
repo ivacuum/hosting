@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App;
+use App\Http\Controllers\Gallery;
 use App\Image;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -18,7 +18,7 @@ class GalleryTest extends TestCase
 
         $user->images()->save(factory(Image::class)->make());
 
-        $this->get(action('Gallery@index'))
+        $this->get(action([Gallery::class, 'index']))
             ->assertStatus(200);
     }
 
@@ -29,7 +29,7 @@ class GalleryTest extends TestCase
 
         $image = $user->images()->save(factory(Image::class)->make());
 
-        $this->get(action('Gallery@preview', $image))
+        $this->get(action([Gallery::class, 'preview'], $image))
             ->assertStatus(200);
     }
 
@@ -42,9 +42,9 @@ class GalleryTest extends TestCase
         /** @var User $user */
         $this->be($user = factory(User::class)->create());
 
-        $this->expectsEvents(App\Events\Stats\GalleryImageUploaded::class);
+        $this->expectsEvents(\App\Events\Stats\GalleryImageUploaded::class);
 
-        $id = $this->postJson(action('Gallery@upload'), ['file' => $file])
+        $id = $this->postJson(action([Gallery::class, 'upload']), ['file' => $file])
             ->assertStatus(200)
             ->assertJson(['status' => 'OK'])
             ->json('id');
@@ -59,7 +59,7 @@ class GalleryTest extends TestCase
     public function testUploadPage()
     {
         $this->be(factory(User::class)->create())
-            ->get(action('Gallery@upload'))
+            ->get(action([Gallery::class, 'upload']))
             ->assertStatus(200);
     }
 
@@ -70,7 +70,7 @@ class GalleryTest extends TestCase
 
         $image = $user->images()->save(factory(Image::class)->make());
 
-        $this->get(action('Gallery@view', $image))
+        $this->get(action([Gallery::class, 'view'], $image))
             ->assertStatus(200);
     }
 }

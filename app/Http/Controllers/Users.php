@@ -8,7 +8,7 @@ class Users extends Controller
     {
         $users = User::active()->orderBy('id')
             ->simplePaginate()
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         return view($this->view, ['users' => $users]);
     }

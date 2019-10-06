@@ -20,8 +20,14 @@ class Comment extends Resource
             'breadcrumb' => $this->breadcrumb(),
             'created_at' => \ViewHelper::dateShort($this->created_at),
 
-            'show_url' => $this->when($me->can('show', 'App\Comment'), path('Acp\Comments@show', $this)),
-            'user_url' => $this->when($me->can('show', 'App\User'), path('Acp\Users@show', $this->user_id)),
+            'show_url' => $this->when(
+                $me->can('show', 'App\Comment'),
+                path(['App\Http\Controllers\Acp\Comments', 'show'], $this)
+            ),
+            'user_url' => $this->when(
+                $me->can('show', 'App\User'),
+                path(['App\Http\Controllers\Acp\Users', 'show'], $this->user_id)
+            ),
 
             'user' => $this->relationLoaded('user') ? new User($this->user) : null,
         ];

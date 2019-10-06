@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Http\Controllers\Auth\ForgotPassword;
 use App\Http\Controllers\Home;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -11,7 +12,7 @@ class ForgotPasswordTest extends TestCase
 
     public function testFormGuest()
     {
-        $this->get(action('Auth\ForgotPassword@index'))
+        $this->get(action([ForgotPassword::class, 'index']))
             ->assertStatus(200);
 
         $this->assertGuest();
@@ -20,7 +21,7 @@ class ForgotPasswordTest extends TestCase
     public function testFormUser()
     {
         $this->be(factory(User::class)->make())
-            ->get(action('Auth\ForgotPassword@index'))
+            ->get(action([ForgotPassword::class, 'index']))
             ->assertSessionHasNoErrors()
             ->assertRedirect(action([Home::class, 'index']));
 
@@ -32,11 +33,11 @@ class ForgotPasswordTest extends TestCase
         /** @var User $user */
         $user = factory(User::class)->create();
 
-        $this->from(action('Auth\ForgotPassword@index'))
-            ->post(action('Auth\ForgotPassword@sendResetLink'), ['email' => $user->email])
+        $this->from(action([ForgotPassword::class, 'index']))
+            ->post(action([ForgotPassword::class, 'sendResetLink']), ['email' => $user->email])
             ->assertSessionHasNoErrors()
             ->assertSessionHas('message')
-            ->assertRedirect(action('Auth\ForgotPassword@index'));
+            ->assertRedirect(action([ForgotPassword::class, 'index']));
 
         $this->assertGuest();
     }

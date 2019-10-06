@@ -13,7 +13,7 @@ class MyTrips extends Controller
             ->where('user_id', request()->user()->id)
             ->orderBy('date_start', 'desc')
             ->paginate(50, Trip::COLUMNS_LIST)
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         return view('my.trips.index', ['models' => $models]);
     }
@@ -27,7 +27,7 @@ class MyTrips extends Controller
     {
         $trip->delete();
 
-        return redirect(path([$this->controller, 'index']));
+        return redirect(path([self::class, 'index']));
     }
 
     public function edit(Trip $trip)

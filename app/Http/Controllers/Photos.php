@@ -15,7 +15,7 @@ class Photos extends Controller
         $photos = Photo::published()
             ->orderBy('id', 'desc')
             ->paginate(24)
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         return view($this->view, ['photos' => $photos]);
     }
@@ -210,8 +210,6 @@ class Photos extends Controller
 
     public function tags()
     {
-        \Breadcrumbs::push(trans('photos.tags'));
-
         // Тэги с фотками
         $tagIds = \DB::table('taggable')
             ->select('tag_id')

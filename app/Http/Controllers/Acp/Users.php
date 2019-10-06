@@ -37,7 +37,7 @@ class Users extends Controller
             })
             ->orderBy($sortKey, $sortDir)
             ->paginate()
-            ->withPath(path([$this->controller, 'index']));
+            ->withPath(path([self::class, 'index']));
 
         return view($this->view, [
             'avatar' => $avatar,

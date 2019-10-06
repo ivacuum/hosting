@@ -1,6 +1,8 @@
 <?php namespace Tests\Feature;
 
 use App\Comment;
+use App\Http\Controllers\TorrentPromo;
+use App\Http\Controllers\Torrents;
 use App\Services\Rto;
 use App\Torrent;
 use App\User;
@@ -18,7 +20,7 @@ class TorrentTest extends TestCase
 
         factory(Torrent::class)->create(['category_id' => $categoryId]);
 
-        $this->get(action('Torrents@index', ['category_id' => $categoryId]))
+        $this->get(action([Torrents::class, 'index'], ['category_id' => $categoryId]))
             ->assertStatus(200);
     }
 
@@ -26,7 +28,7 @@ class TorrentTest extends TestCase
     {
         factory(Comment::class)->state('torrent')->create();
 
-        $this->get(action('Torrents@comments'))
+        $this->get(action([Torrents::class, 'comments']))
             ->assertStatus(200);
     }
 
@@ -35,13 +37,13 @@ class TorrentTest extends TestCase
         $user = factory(User::class)->state('id')->make();
 
         $this->be($user)
-            ->get(action('Torrents@create'))
+            ->get(action([Torrents::class, 'create']))
             ->assertStatus(200);
     }
 
     public function testFaq()
     {
-        $this->get(action('Torrents@faq'))
+        $this->get(action([Torrents::class, 'faq']))
             ->assertStatus(200);
     }
 
@@ -49,7 +51,7 @@ class TorrentTest extends TestCase
     {
         factory(Torrent::class)->create();
 
-        $this->get(action('Torrents@index'))
+        $this->get(action([Torrents::class, 'index']))
             ->assertStatus(200);
     }
 
@@ -65,13 +67,13 @@ class TorrentTest extends TestCase
         factory(Torrent::class)->create(['user_id' => $user->id]);
 
         $this->be($user)
-            ->get(action('Torrents@my'))
+            ->get(action([Torrents::class, 'my']))
             ->assertStatus(200);
     }
 
     public function testPromo()
     {
-        $this->get(action('TorrentPromo@index'))
+        $this->get(action([TorrentPromo::class, 'index']))
             ->assertStatus(200);
     }
 
@@ -79,7 +81,7 @@ class TorrentTest extends TestCase
     {
         factory(Torrent::class)->create(['title' => 'title _2017_ something else']);
 
-        $this->get(action('Torrents@index', ['q' => '_2017_']))
+        $this->get(action([Torrents::class, 'index'], ['q' => '_2017_']))
             ->assertStatus(200);
     }
 
@@ -114,7 +116,7 @@ class TorrentTest extends TestCase
         }));
 
         $response = $this->be($user)
-            ->post(action('Torrents@store'), ['input' => $rtoId, 'category_id' => 2]);
+            ->post(action([Torrents::class, 'store']), ['input' => $rtoId, 'category_id' => 2]);
 
         $torrent = $user->torrents[0];
 
