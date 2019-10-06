@@ -1,17 +1,17 @@
 @extends('dcpp.software', [
-  'software_title' => trans('dcpp.strongdc'),
+  'softwareTitle' => trans('dcpp.strongdc'),
   'software' => [
     ['version' => '2.42', 'id' => 132, 'dl_suffix' => ''],
     ['version' => '2.41', 'id' => 98, 'dl_suffix' => ' 32bit'],
     ['version' => '2.41', 'id' => 100, 'dl_suffix' => ' 64bit'],
   ],
-  'software_screenshots' => [
+  'softwareScreenshots' => [
     [
       'full' => 'https://img.ivacuum.ru/g/091001/1_BJDziOKhf1.png',
       'thumb' => 'https://img.ivacuum.ru/g/091001/s/1_BJDziOKhf1.png',
     ],
   ],
-  'developer_site' => 'http://strongdc.sourceforge.net/?lang=eng',
+  'developerSite' => 'http://strongdc.sourceforge.net/?lang=eng',
 ])
 
 @section('download_latest')

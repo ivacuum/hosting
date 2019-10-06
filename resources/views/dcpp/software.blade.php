@@ -1,13 +1,13 @@
 @extends('dcpp.base', [
-  'no_footer_banner' => true,
-  'content_container_classes' => '',
+  'noFooterBanner' => true,
+  'contentContainerClasses' => '',
 ])
 
 @section('content')
 <div class="antialiased hanging-puntuation-first lg:text-lg">
   <section class="my-0 pt-6">
     <div class="container">
-      <h1 class="mb-6">{{ trans('dcpp.download') }} {{ $software_title }} {{ $software[0]['version'] }}</h1>
+      <h1 class="mb-6">{{ trans('dcpp.download') }} {{ $softwareTitle }} {{ $software[0]['version'] }}</h1>
       @section('download_latest')
         <div>
           <a class="btn btn-success my-1 text-lg px-4 py-2" href="{{ path('Files@download', $software[0]['id']) }}">
@@ -41,12 +41,12 @@
     </div>
   </div>
 
-  @if (!empty($software_screenshots))
+  @if (!empty($softwareScreenshots))
     <section class="bg-gray-800 my-0 py-12 text-gray-200">
       <div class="container">
         <h2 class="mb-6">{{ trans('dcpp.screenshots') }}</h2>
         <p>
-          @foreach ($software_screenshots as $screenshot)
+          @foreach ($softwareScreenshots as $screenshot)
             <a href="{{ $screenshot['full'] }}">
               <img class="inline-block screenshot" src="{{ $screenshot['thumb'] }}" alt="">
             </a>
@@ -78,7 +78,7 @@
 
   @yield('software_features')
 
-  @if (sizeof($software) > 1 || !empty($developer_site))
+  @if (sizeof($software) > 1 || !empty($developerSite))
     <section class="border-b border-gray-200 my-0 py-12">
       <div class="container">
         <h2 class="mb-6">{{ trans('dcpp.links') }}</h2>
@@ -89,17 +89,17 @@
               <ul>
                 @foreach ($software as $soft)
                   @continue ($loop->index === 0)
-                  <li><a class="link" href="{{ path('Files@download', $soft['id']) }}">{{ trans('dcpp.download') }} {{ $software_title }} {{ $soft['version'] }}{{ $soft['dl_suffix'] }}</a></li>
+                  <li><a class="link" href="{{ path('Files@download', $soft['id']) }}">{{ trans('dcpp.download') }} {{ $softwareTitle }} {{ $soft['version'] }}{{ $soft['dl_suffix'] }}</a></li>
                 @endforeach
               </ul>
             </div>
           @endif
-          @if (!empty($developer_site))
+          @if (!empty($developerSite))
             <div class="md:w-1/2 lg:w-5/12 xl:w-1/3 md:px-4">
               <h4>{{ trans('dcpp.pages') }}</h4>
               <ul>
                 <li>
-                  <a class="link" href="{{ $developer_site }}">{{ trans('dcpp.developer_site') }}</a>
+                  <a class="link" href="{{ $developerSite }}">{{ trans('dcpp.developer_site') }}</a>
                   <span class="text-muted">
                     @svg (external-link)
                   </span>

@@ -1,11 +1,11 @@
 @extends('acp.show', [
-  'meta_title' => $model->domain,
+  'metaTitle' => $model->domain,
 ])
 
 @section('content')
 @if (!$model->isExpired() && ($model->cms_url || ($model->alias_id && $model->alias->cms_url)))
   <div class="mb-4">
-    @include("$tpl.cms_login", ['cms_button_class' => 'btn btn-default'])
+    @include("$tpl.cms_login", ['cmsButtonClass' => 'btn btn-default'])
   </div>
 @endif
 
@@ -30,7 +30,7 @@
     <tr>
       <td class="text-right font-bold">Алиас</td>
       <td>
-        <a href="{{ path("$self@show", $model->alias) }}">{{ $model->alias->domain }}</a>
+        <a href="{{ path([$controller, 'show'], $model->alias) }}">{{ $model->alias->domain }}</a>
       </td>
     </tr>
   @endif
@@ -39,7 +39,7 @@
       <td class="text-right font-bold">Алиасы</td>
       <td>
         @foreach ($model->aliases as $alias)
-          <a href="{{ path("$self@show", $alias) }}">{{ $alias->domain }}</a>
+          <a href="{{ path([$controller, 'show'], $alias) }}">{{ $alias->domain }}</a>
         @endforeach
       </td>
     </tr>
@@ -47,7 +47,7 @@
   <tr>
     <td class="text-right font-bold">Клиент</td>
     <td>
-      <a href="{{ path('Acp\Clients@show', $model->client) }}">
+      <a href="{{ path([App\Http\Controllers\Acp\Clients::class, 'show'], $model->client) }}">
         {{ $model->client->name }}
       </a>
     </td>

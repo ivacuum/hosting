@@ -13,7 +13,7 @@ class GalleryTest extends TestCase
 
     public function testIndex()
     {
-        /* @var User $user */
+        /** @var User $user */
         $this->be($user = factory(User::class)->create());
 
         $user->images()->save(factory(Image::class)->make());
@@ -24,7 +24,7 @@ class GalleryTest extends TestCase
 
     public function testPreview()
     {
-        /* @var User $user */
+        /** @var User $user */
         $user = factory(User::class)->create();
 
         $image = $user->images()->save(factory(Image::class)->make());
@@ -39,17 +39,17 @@ class GalleryTest extends TestCase
 
         $file = UploadedFile::fake()->image('screenshot.png');
 
-        /* @var User $user */
+        /** @var User $user */
         $this->be($user = factory(User::class)->create());
 
         $this->expectsEvents(App\Events\Stats\GalleryImageUploaded::class);
 
-        $id = $this->postJson(action('Gallery@upload'), compact('file'))
+        $id = $this->postJson(action('Gallery@upload'), ['file' => $file])
             ->assertStatus(200)
             ->assertJson(['status' => 'OK'])
             ->json('id');
 
-        /* @var Image $image */
+        /** @var Image $image */
         $image = Image::findOrFail($id);
 
         \Storage::disk('gallery')->assertExists("{$image->splitted_date}/{$image->slug}");
@@ -58,16 +58,14 @@ class GalleryTest extends TestCase
 
     public function testUploadPage()
     {
-        /* @var User $user */
-        $this->be($user = factory(User::class)->create());
-
-        $this->get(action('Gallery@upload'))
+        $this->be(factory(User::class)->create())
+            ->get(action('Gallery@upload'))
             ->assertStatus(200);
     }
 
     public function testView()
     {
-        /* @var User $user */
+        /** @var User $user */
         $user = factory(User::class)->create();
 
         $image = $user->images()->save(factory(Image::class)->make());

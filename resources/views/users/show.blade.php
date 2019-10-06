@@ -37,7 +37,10 @@
     </table>
     @if (optional(Auth::user())->id === $user->id)
       <div>
-        <a class="btn btn-default block" href="{{ path('MyProfile@edit') }}">{{ trans('my.edit_profile') }}</a>
+        <a
+          class="btn btn-default block"
+          href="{{ path([App\Http\Controllers\MyProfile::class, 'edit']) }}"
+        >{{ trans('my.edit_profile') }}</a>
       </div>
     @endif
   </div>

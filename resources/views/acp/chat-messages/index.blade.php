@@ -25,16 +25,16 @@
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
       <td><input class="models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
       <td class="md:text-right">
-        <a href="{{ path("$self@show", $model) }}">
+        <a href="{{ path([$controller, 'show'], $model) }}">
           {{ $model->id }}
         </a>
       </td>
       <td>
         @if (null !== $model->user)
-          <a href="{{ path('Acp\Users@show', $model->user_id) }}">
+          <a href="{{ path([App\Http\Controllers\Acp\Users::class, 'show'], $model->user_id) }}">
             {{ $model->user->displayName() }}
           </a>
         @endif

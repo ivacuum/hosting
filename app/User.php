@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Http\Controllers\Users;
 use App\Mail\ResetPassword;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -258,6 +259,6 @@ class User extends Authenticatable
 
     public function www(): string
     {
-        return path('Users@show', $this->id);
+        return path([Users::class, 'show'], $this->id);
     }
 }

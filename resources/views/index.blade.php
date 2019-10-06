@@ -15,7 +15,7 @@
 <div class="flex flex-wrap justify-start -mx-4">
   @ru
     <div class="md:w-1/2 lg:w-1/3 hidden md:block mb-6 px-4">
-      <a class="flex items-center mb-2 link-parent" href="{{ path('Torrents@index') }}">
+      <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}">
         <img class="mr-2 w-8 h-8" src="https://ivacuum.org/i/services/magnet.png" alt="">
         <h2 class="text-2xl mb-0"><span class="link">{{ trans('torrents.index') }}</span></h2>
       </a>

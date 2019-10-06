@@ -12,11 +12,11 @@ class JapaneseWanikaniSearchTest extends TestCase
 
     public function testSearchForRadical()
     {
-        /* @var Radical $radical */
+        /** @var Radical $radical */
         $radical = factory(Radical::class)->create();
         $q = $radical->meaning;
 
-        $json = $this->post(action('JapaneseWanikaniSearch@index'), compact('q'))
+        $json = $this->post(action('JapaneseWanikaniSearch@index'), ['q' => $q])
             ->assertStatus(200)
             ->json('radicals.data');
 
@@ -25,11 +25,11 @@ class JapaneseWanikaniSearchTest extends TestCase
 
     public function testSearchForKanji()
     {
-        /* @var Kanji $kanji */
+        /** @var Kanji $kanji */
         $kanji = factory(Kanji::class)->create();
         $q = $kanji->meaning;
 
-        $json = $this->post(action('JapaneseWanikaniSearch@index'), compact('q'))
+        $json = $this->post(action('JapaneseWanikaniSearch@index'), ['q' => $q])
             ->assertStatus(200)
             ->json('kanji.data');
 
@@ -38,11 +38,11 @@ class JapaneseWanikaniSearchTest extends TestCase
 
     public function testSearchForVocabulary()
     {
-        /* @var Vocabulary $vocab */
+        /** @var Vocabulary $vocab */
         $vocab = factory(Vocabulary::class)->create();
         $q = $vocab->meaning;
 
-        $json = $this->post(action('JapaneseWanikaniSearch@index'), compact('q'))
+        $json = $this->post(action('JapaneseWanikaniSearch@index'), ['q' => $q])
             ->assertStatus(200)
             ->json('vocabulary.data');
 

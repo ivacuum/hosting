@@ -6,14 +6,14 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Clients extends Controller
 {
-    protected $show_with_count = ['domains'];
+    protected $showWithCount = ['domains'];
 
     public function index()
     {
         $models = Model::paginate()
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
-        return view($this->view, compact('models'));
+        return view($this->view, ['models' => $models]);
     }
 
     /**

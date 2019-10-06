@@ -6,9 +6,12 @@ class TripCollection extends ResourceCollection
 {
     public function with($request)
     {
+        /** @var \App\User $me */
+        $me = $request->user();
+
         return [
             'meta' => [
-                'new_url' => \Auth::user()->can('create', Trip::class) ? path('Acp\Trips@create') : null,
+                'new_url' => $me->can('create', Trip::class) ? path(['App\Http\Controllers\Acp\Trips', 'create']) : null,
             ],
             'filters' => [[
                 'field' => 'status',

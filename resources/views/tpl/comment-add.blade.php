@@ -25,7 +25,7 @@
           <div class="mr-2 text-center">
             <a
               class="btn bg-vk text-xl rounded-full text-white hover:text-white"
-              href="{{ path('Auth\Vk@index', ['goto' => "{$locale_uri}/{$request_uri}#comment-add"]) }}"
+              href="{{ path('Auth\Vk@index', ['goto' => "{$localeUri}/{$requestUri}#comment-add"]) }}"
             >
               @svg (vk)
             </a>
@@ -34,7 +34,7 @@
           <div class="mr-2 text-center">
             <a
               class="btn bg-facebook text-xl rounded-full text-white hover:text-white"
-              href="{{ path('Auth\Facebook@index', ['goto' => "{$locale_uri}/{$request_uri}#comment-add"]) }}"
+              href="{{ path('Auth\Facebook@index', ['goto' => "{$localeUri}/{$requestUri}#comment-add"]) }}"
             >
               @svg (facebook)
             </a>
@@ -43,7 +43,7 @@
           <div class="mr-2 text-center">
             <a
               class="btn bg-google text-xl rounded-full text-white hover:text-white"
-              href="{{ path('Auth\Google@index', ['goto' => "{$locale_uri}/{$request_uri}#comment-add"]) }}"
+              href="{{ path('Auth\Google@index', ['goto' => "{$localeUri}/{$requestUri}#comment-add"]) }}"
             >
               @svg (google)
             </a>
@@ -71,10 +71,10 @@
       @endif
       <textarea
         required
-        class="form-control {{ !$is_mobile ? 'textarea-autosized js-autosize-textarea' : '' }} {{ $errors->has('text') ? 'is-invalid' : '' }}"
+        class="form-control {{ !$isMobile ? 'textarea-autosized js-autosize-textarea' : '' }} {{ $errors->has('text') ? 'is-invalid' : '' }}"
         name="text"
         placeholder="{{ trans('comments.placeholder') }}"
-        rows="{{ !$is_mobile ? 1 : 4 }}"
+        rows="{{ !$isMobile ? 1 : 4 }}"
         maxlength="1000"
       >{{ old('text') }}</textarea>
       <div class="invalid-feedback">{{ $errors->first('text') }}</div>

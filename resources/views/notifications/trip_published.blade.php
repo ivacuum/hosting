@@ -2,7 +2,7 @@
 {{ trans("notifications.{$classBasename}") }}
 <a
   class="link"
-  href="{{ path('Life@page', $notification->data['slug']) }}"
+  href="{{ path([App\Http\Controllers\Life::class, 'page'], $notification->data['slug']) }}"
 >{{ Str::limit($notification->data['title'], 100) }}</a>
 <time
   class="text-muted"

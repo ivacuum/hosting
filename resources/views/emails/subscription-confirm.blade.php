@@ -13,7 +13,7 @@
   - {{ trans("my.notify_{$subscription}") }}
 @endforeach
 
-@component('mail::button', ['url' => $email->signedLink(path('Subscriptions@confirm', compact('hash')))])
+@component('mail::button', ['url' => $email->signedLink(path('Subscriptions@confirm', ['hash' => $hash]))])
 @ru Подтвердить подписку @en Confirm subscription @endru
 @endcomponent
 

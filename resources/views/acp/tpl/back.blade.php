@@ -1,3 +1,3 @@
-<a href="{{ !empty($goto) ? url($goto) : path("$self@index") }}">
+<a href="{{ !empty($goto) ? url($goto) : path([$controller, 'index']) }}">
   @svg (chevron-left)
 </a>

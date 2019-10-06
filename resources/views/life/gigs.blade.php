@@ -1,5 +1,5 @@
 @extends('life.base', [
-  'meta_title' => trans('life.gigs_intro_title'),
+  'metaTitle' => trans('life.gigs_intro_title'),
 ])
 
 @push('head')

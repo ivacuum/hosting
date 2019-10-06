@@ -11,9 +11,8 @@ class MyTripsTest extends TestCase
 
     public function testCreate()
     {
-        $this->be($user = factory(User::class)->make());
-
-        $this->get(action('MyTrips@create'))
+        $this->be(factory(User::class)->state('id')->make())
+            ->get(action('MyTrips@create'))
             ->assertStatus(200);
     }
 
@@ -56,7 +55,7 @@ class MyTripsTest extends TestCase
 
     public function testStore()
     {
-        /* @var User $user */
+        /** @var User $user */
         $user = factory(User::class)->create();
 
         /** @var Trip $trip */
@@ -66,15 +65,15 @@ class MyTripsTest extends TestCase
             ->post(action('MyTrips@store', $trip), $trip->attributesToArray())
             ->assertRedirect(action('MyTrips@index'));
 
-        $trip_saved = Trip::where('city_id', $trip->city_id)->first();
+        $tripSaved = Trip::where('city_id', $trip->city_id)->first();
 
-        $this->assertEquals($trip->city->title_en, $trip_saved->title_en);
-        $this->assertEquals($trip->city->title_ru, $trip_saved->title_ru);
+        $this->assertEquals($trip->city->title_en, $tripSaved->title_en);
+        $this->assertEquals($trip->city->title_ru, $tripSaved->title_ru);
     }
 
     public function testUpdate()
     {
-        /* @var User $user */
+        /** @var User $user */
         $user = factory(User::class)->create();
 
         /** @var Trip $trip */

@@ -15,8 +15,8 @@ class Domains extends Controller
         $q = request('q');
         $sort = request('sort');
         $filter = request('filter');
-        $client_id = request('client_id');
-        $yandex_user_id = request('yandex_user_id');
+        $clientId = request('client_id');
+        $yandexUserId = request('yandex_user_id');
 
         if (!in_array($sort, ['domain', 'registered_at', 'paid_till'])) {
             $sort = static::DEFAULT_ORDER_BY;
@@ -24,58 +24,50 @@ class Domains extends Controller
 
         switch ($filter) {
             case 'external':
-
                 $models = Model::where('status', 1)
                     ->whereDomainControl(0);
-
-            break;
+                break;
             case 'inactive':
-
                 $models = Model::where('status', 0);
-
-            break;
+                break;
             case 'no-ns':
-
                 $models = Model::where('status', 1)
                     ->whereNs('');
-
-            break;
+                break;
             case 'no-server':
-
                 $models = Model::where('status', 1)
                     ->whereIpv4('');
-
-            break;
+                break;
             case 'orphan':
-
                 $models = Model::whereOrphan(1);
-
-            break;
+                break;
             case 'trashed':
-
                 $models = Model::onlyTrashed();
-
-            break;
+                break;
             default:
-
                 $models = Model::where('status', 1);
         }
 
         if ($q) {
             $models = $models->where('domain', 'LIKE', "%{$q}%");
         }
-        if ($client_id) {
-            $models = $models->where('client_id', $client_id);
+        if ($clientId) {
+            $models = $models->where('client_id', $clientId);
         }
-        if ($yandex_user_id) {
-            $models = $models->where('yandex_user_id', $yandex_user_id);
+        if ($yandexUserId) {
+            $models = $models->where('yandex_user_id', $yandexUserId);
         }
 
         $models = $models->orderBy($sort)
             ->paginate()
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
-        return view($this->view, compact('filter', 'models', 'sort', 'q'));
+        return view($this->view, [
+            'q' => $q,
+            'sort' => $sort,
+            'filter' => $filter,
+            'models' => $models,
+        ]);
     }
 
     public function addMailbox($domain)
@@ -88,7 +80,7 @@ class Domains extends Controller
         $model = $this->getModel($domain);
 
         $logins = request('logins');
-        $send_to = request('send_to');
+        $sendTo = request('send_to');
 
         $logins = explode(',', $logins);
         $mailboxes = [];
@@ -104,10 +96,10 @@ class Domains extends Controller
             }
         }
 
-        \Mail::to($send_to)->queue(new DomainMailboxes($model, $mailboxes));
+        \Mail::to($sendTo)->queue(new DomainMailboxes($model, $mailboxes));
 
-        return redirect(path("{$this->class}@mailboxes", $model))
-            ->with('message', "Данные высланы на почту {$send_to}");
+        return redirect(path([$this->controller, 'mailboxes'], $model))
+            ->with('message', "Данные высланы на почту {$sendTo}");
     }
 
     public function addNsRecord($domain)
@@ -159,7 +151,7 @@ class Domains extends Controller
             break;
         }
 
-        return ['redirect' => path("{$this->class}@index", $params)];
+        return ['redirect' => path([$this->controller, 'index'], $params)];
     }
 
     public function deleteNsRecord($domain)
@@ -195,9 +187,10 @@ class Domains extends Controller
 
         $this->breadcrumbsModelSubpage($model);
 
-        $mailboxes = $model->getMailboxes();
-
-        return view($this->view, compact('mailboxes', 'model'));
+        return view($this->view, [
+            'model' => $model,
+            'mailboxes' => $model->getMailboxes(),
+        ]);
     }
 
     public function nsRecords($domain)
@@ -206,9 +199,12 @@ class Domains extends Controller
 
         $this->breadcrumbsModelSubpage($model);
 
-        $records = $model->yandex_user_id ? $model->getNsRecords() : [];
-
-        return view($this->view, compact('model', 'records'));
+        return view($this->view, [
+            'model' => $model,
+            'records' => $model->yandex_user_id
+                ? $model->getNsRecords()
+                : [],
+        ]);
     }
 
     public function nsServers($domain)
@@ -224,9 +220,10 @@ class Domains extends Controller
 
         $this->breadcrumbsModelSubpage($model);
 
-        $robots = $model->getRobotsTxt();
-
-        return view($this->view, compact('model', 'robots'));
+        return view($this->view, [
+            'model' => $model,
+            'robots' => $model->getRobotsTxt(),
+        ]);
     }
 
     public function setServerNsRecords($domain)
@@ -237,7 +234,7 @@ class Domains extends Controller
 
         $model->setServerNsRecords($server);
 
-        return redirect(path("{$this->class}@nsRecords", $model));
+        return redirect(path([$this->controller, 'nsRecords'], $model));
     }
 
     public function setYandexNs($domain)
@@ -250,7 +247,7 @@ class Domains extends Controller
             ? 'Днс Яндекса установлены'
             : 'Не удалось установить днс Яндекса';
 
-        return redirect(path("{$this->class}@show", $model))
+        return redirect(path([$this->controller, 'show'], $model))
             ->with('message', $message);
     }
 
@@ -262,9 +259,10 @@ class Domains extends Controller
 
         $model->updateWhois();
 
-        $whois = trim($model->getWhoisData());
-
-        return view($this->view, compact('model', 'whois'));
+        return view($this->view, [
+            'model' => $model,
+            'whois' => trim($model->getWhoisData()),
+        ]);
     }
 
     public function yandexPddStatus($domain)

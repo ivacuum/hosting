@@ -1,5 +1,5 @@
 @extends('life.base', [
-  'meta_title' => 'Понравившиеся книги',
+  'metaTitle' => 'Понравившиеся книги',
 
   'breadcrumbs' => [
     ['title' => 'Заметки', 'url' => 'life'],

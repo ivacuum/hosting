@@ -1,11 +1,11 @@
 @extends('dcpp.software', [
-  'software_title' => trans('dcpp.apexdc'),
+  'softwareTitle' => trans('dcpp.apexdc'),
   'software' => [
     ['version' => '1.6.4', 'id' => 154, 'size' => 23018257, 'dl_suffix' => ''],
     ['version' => '1.4.3', 'id' => 141, 'size' => 12395187, 'dl_suffix' => ''],
     ['version' => '1.4.2', 'id' => 137, 'dl_suffix' => ''],
   ],
-  'developer_site' => 'http://www.apexdc.net/',
+  'developerSite' => 'http://www.apexdc.net/',
 ])
 
 @section('download_latest')

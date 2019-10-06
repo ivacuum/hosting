@@ -55,7 +55,7 @@
   >
     @svg (odnoklassniki)
   </a>
-  @if ($is_mobile)
+  @if ($isMobile)
     <a
       class="btn bg-whatsapp text-xl py-1 rounded-none text-white hover:text-white w-20"
       href="whatsapp://send?text={{ rawurlencode($url) }}"

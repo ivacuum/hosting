@@ -10,7 +10,7 @@ class TripTest extends TestCase
 
     public function testShow()
     {
-        /* @var Trip $trip */
+        /** @var Trip $trip */
         $trip = factory(Trip::class)->create();
 
         $this->get(action('Trips@show', $trip))
@@ -19,7 +19,7 @@ class TripTest extends TestCase
 
     public function testShowWithAnchor()
     {
-        /* @var Trip $trip */
+        /** @var Trip $trip */
         $trip = factory(Trip::class)->create();
         $anchor = '#anchor';
 

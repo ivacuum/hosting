@@ -1,5 +1,5 @@
 @extends('acp.list', [
-  'search_form' => true,
+  'searchForm' => true,
 ])
 
 @section('heading-after-search')
@@ -30,9 +30,9 @@
     <th class="md:text-right">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
-    <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'email') }}</th>
+    <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'email') }}</th>
     @if ($avatar)
-      <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'avatar') }}</th>
+      <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'avatar') }}</th>
     @endif
     <th>Активен</th>
     <th class="md:text-right whitespace-no-wrap">
@@ -55,10 +55,10 @@
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
       <td class="md:text-right">{{ $model->id }}</td>
       <td>
-        <a href="{{ path("$self@show", $model) }}">
+        <a href="{{ path([$controller, 'show'], $model) }}">
           {{ $model->email }}
         </a>
         @if ($model->login)

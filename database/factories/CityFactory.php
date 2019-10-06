@@ -1,6 +1,6 @@
 <?php
 
-/* @var Illuminate\Database\Eloquent\Factory $factory */
+/** @var Illuminate\Database\Eloquent\Factory $factory */
 
 $factory->define(App\City::class, function (Faker\Generator $faker) {
     $title = "{$faker->city} {$faker->randomDigit}";

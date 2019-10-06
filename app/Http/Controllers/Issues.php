@@ -25,7 +25,7 @@ class Issues extends Controller
         $email = $request->input('email');
         $title = $request->input('title');
 
-        /* @var User $user */
+        /** @var User $user */
         $user = $request->user();
         $isGuest = null === $user;
 

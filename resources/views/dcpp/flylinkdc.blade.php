@@ -1,10 +1,10 @@
 @extends('dcpp.software', [
-  'software_title' => trans('dcpp.flylinkdc'),
+  'softwareTitle' => trans('dcpp.flylinkdc'),
   'software' => [
     ['version' => 'r504', 'id' => 153, 'size' => 14172792, 'dl_suffix' => ''],
     ['version' => 'r500', 'id' => 140, 'size' => 17611794, 'dl_suffix' => ''],
   ],
-  'developer_site' => 'http://www.flylinkdc.ru/',
+  'developerSite' => 'http://www.flylinkdc.ru/',
 ])
 
 @section('about_software')

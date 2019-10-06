@@ -9,7 +9,7 @@ class DcppHubs extends Controller
     {
         $models = Model::orderBy('title')->get();
 
-        return view($this->view, compact('models'));
+        return view($this->view, ['models' => $models]);
     }
 
     /**

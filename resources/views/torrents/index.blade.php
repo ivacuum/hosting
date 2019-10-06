@@ -8,20 +8,23 @@
     <nav>
       @foreach ($tree as $id => $category)
         <h4 class="{{ $loop->first ? '' : 'mt-6' }} whitespace-no-wrap">
-          @if (!empty($category_id) && $id == $category_id)
+          @if (!empty($categoryId) && $id == $categoryId)
             <mark>{{ $category['title'] }}</mark>
           @else
-            <a class="visited" href="{{ path("$self@index", ['category_id' => $id]) }}">{{ $category['title'] }}</a>
+            <a class="visited" href="{{ path([$controller, 'index'], ['category_id' => $id]) }}">{{ $category['title'] }}</a>
           @endif
         </h4>
         @if (!empty($category['children']))
           @foreach ($category['children'] as $id => $child)
             @continue (empty($stats[$id]))
             <div class="whitespace-no-wrap">
-              @if (!empty($category_id) && $id == $category_id)
+              @if (!empty($categoryId) && $id == $categoryId)
                 <mark>{{ $child['title'] }}</mark>
               @else
-                <a class="visited" href="{{ path("$self@index", ['category_id' => $id]) }}">{{ $child['title'] }}</a>
+                <a
+                  class="visited"
+                  href="{{ path([App\Http\Controllers\Torrents::class, 'index'], ['category_id' => $id]) }}"
+                >{{ $child['title'] }}</a>
               @endif
               <span class="text-muted text-xs">{{ $stats[$id] }}</span>
             </div>

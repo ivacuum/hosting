@@ -15,7 +15,10 @@ class Life extends Controller
         $to = request('to');
         $from = request('from');
 
-        $validator = \Validator::make(compact('from', 'to'), [
+        $validator = \Validator::make([
+            'to' => $to,
+            'from' => $from,
+        ], [
             'to' => 'nullable|date',
             'from' => 'nullable|date'
         ]);
@@ -37,7 +40,7 @@ class Life extends Controller
                 return $model->year;
             });
 
-        return view($this->view, compact('trips'));
+        return view($this->view, ['trips' => $trips]);
     }
 
     public function calendar(Request $request)
@@ -84,7 +87,7 @@ class Life extends Controller
             })
             ->sortBy(City::titleField());
 
-        return view($this->view, compact('cities'));
+        return view($this->view, ['cities' => $cities]);
     }
 
     public function city(City $city)
@@ -103,7 +106,7 @@ class Life extends Controller
         event(new \App\Events\Stats\CityViewed($city->id));
 
         if (1 === sizeof($publishedTrips)) {
-            /* @var Trip $trip */
+            /** @var Trip $trip */
             $trip = $publishedTrips->first();
 
             return redirect($trip->www());
@@ -115,14 +118,17 @@ class Life extends Controller
             ->push($city->country->title, "life/countries/{$city->country->slug}")
             ->push($city->title);
 
-        return view('life.city', compact('city', 'trips'));
+        return view('life.city', [
+            'city' => $city,
+            'trips' => $trips,
+        ]);
     }
 
     public function countries()
     {
-        $countries = Country::allWithCitiesAndTrips(1);
-
-        return view($this->view, compact('countries'));
+        return view($this->view, [
+            'countries' => Country::allWithCitiesAndTrips(1),
+        ]);
     }
 
     public function country($slug)
@@ -142,7 +148,10 @@ class Life extends Controller
 
         event(new \App\Events\Stats\CountryViewed($country->id));
 
-        return view($this->view, compact('country', 'trips'));
+        return view($this->view, [
+            'trips' => $trips,
+            'country' => $country,
+        ]);
     }
 
     public function gig(Gig $gig)
@@ -156,12 +165,11 @@ class Life extends Controller
 
         event(new \App\Events\Stats\GigViewed($gig->id));
 
-        $timeline = $gig->artistTimeline();
-
-        // Для собственных фотографий в тексте истории
-        $slug = "gigs/{$gig->slug}";
-
-        return view($tpl, compact('gig', 'slug', 'timeline'));
+        return view($tpl, [
+            'gig' => $gig,
+            'slug' => "gigs/{$gig->slug}", // Для собственных фотографий в тексте истории
+            'timeline' => $gig->artistTimeline(),
+        ]);
     }
 
     public function gigs()
@@ -173,7 +181,7 @@ class Life extends Controller
                 return $model->date->year;
             });
 
-        return view($this->view, compact('gigs'));
+        return view($this->view, ['gigs' => $gigs]);
     }
 
     public function page($page)
@@ -185,7 +193,7 @@ class Life extends Controller
         $tpl = 'life.' . str_replace('.', '_', $page);
 
         if (view()->exists($tpl)) {
-            return view($tpl, compact('page'));
+            return view($tpl, ['page' => $page]);
         }
 
         if ($trip = $this->getTrip($page)) {
@@ -218,14 +226,15 @@ class Life extends Controller
 
         event(new \App\Events\Stats\TripViewed($trip->id));
 
-        $timeline = $trip->cityTimeline();
+        $nextTrips = $trip->next()->get();
 
-        $next_trips = $trip->next()->get();
-        $previous_trips = $trip->previous($next_trips->count())->get()->reverse();
-
-        $comments = $trip->commentsPublished()->with('user')->orderBy('created_at')->get();
-
-        return view($tpl, compact('comments', 'next_trips', 'previous_trips', 'timeline', 'trip'));
+        return view($tpl, [
+            'trip' => $trip,
+            'comments' => $trip->commentsPublished()->with('user')->orderBy('created_at')->get(),
+            'timeline' => $trip->cityTimeline(),
+            'nextTrips' => $nextTrips,
+            'previousTrips' => $trip->previous($nextTrips->count())->get()->reverse(),
+        ]);
     }
 
     protected function appendBreadcrumbs(): void

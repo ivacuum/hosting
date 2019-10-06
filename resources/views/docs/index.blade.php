@@ -1,5 +1,5 @@
 @extends('docs.base', [
-  'meta_title' => 'Документация',
+  'metaTitle' => 'Документация',
 ])
 
 @section('content')

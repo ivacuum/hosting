@@ -6,11 +6,11 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Countries extends Controller
 {
-    protected $api_only = true;
-    protected $sort_dir = 'asc';
-    protected $sort_key = 'title';
-    protected $sortable_keys = ['title', 'cities_count', 'trips_count', 'views'];
-    protected $show_with_count = ['cities', 'trips'];
+    protected $apiOnly = true;
+    protected $sortDir = 'asc';
+    protected $sortKey = 'title';
+    protected $sortableKeys = ['title', 'cities_count', 'trips_count', 'views'];
+    protected $showWithCount = ['cities', 'trips'];
 
     public function index()
     {
@@ -21,7 +21,7 @@ class Countries extends Controller
         $models = Model::withCount(['cities', 'trips'])
             ->orderBy($sortKey, $sortDir)
             ->paginate(500)
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
         return $this->modelResourceCollection($models);
     }

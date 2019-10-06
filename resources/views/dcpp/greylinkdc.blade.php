@@ -1,5 +1,5 @@
 @extends('dcpp.software', [
-  'software_title' => trans('dcpp.greylinkdc'),
+  'softwareTitle' => trans('dcpp.greylinkdc'),
   'software' => [
     ['version' => '0.49', 'id' => 145, 'dl_suffix' => ''],
   ],

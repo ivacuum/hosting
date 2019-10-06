@@ -1,5 +1,7 @@
 <?php namespace App;
 
+use App\Http\Controllers\Life;
+use App\Http\Controllers\UserTravelTrips;
 use App\Traits\HasLocalizedTitle;
 use Carbon\CarbonInterval;
 use Illuminate\Database\Eloquent\Builder;
@@ -339,15 +341,15 @@ class Trip extends Model
     public function www(?string $anchor = null): string
     {
         return $this->user_id === 1
-            ? path('Life@page', $this->slug) . $anchor
-            : path('UserTravelTrips@show', [$this->user->login, $this->slug]) . $anchor;
+            ? path([Life::class, 'page'], $this->slug) . $anchor
+            : path([UserTravelTrips::class, 'show'], [$this->user->login, $this->slug]) . $anchor;
     }
 
     public function wwwLocale(?string $anchor = null, string $locale = ''): string
     {
         return $this->user_id === 1
-            ? path_locale('Life@page', $this->slug, false, $locale) . $anchor
-            : path_locale('UserTravelTrips@show', [$this->user->login, $this->slug], false, $locale) . $anchor;
+            ? path_locale([Life::class, 'page'], $this->slug, false, $locale) . $anchor
+            : path_locale([UserTravelTrips::class, 'show'], [$this->user->login, $this->slug], false, $locale) . $anchor;
     }
 
     /**

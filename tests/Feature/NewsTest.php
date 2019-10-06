@@ -42,7 +42,7 @@ class NewsTest extends TestCase
     {
         $locale = 'en';
 
-        $news = factory(News::class)->state('user')->create(compact('locale'));
+        $news = factory(News::class)->state('user')->create(['locale' => $locale]);
 
         $this->get(action('News@show', $news))
             ->assertStatus(301)

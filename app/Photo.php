@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Http\Controllers\Photos;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
@@ -151,6 +152,6 @@ class Photo extends Model
 
     public function www(): string
     {
-        return path('Photos@show', $this->id);
+        return path([Photos::class, 'show'], $this->id);
     }
 }

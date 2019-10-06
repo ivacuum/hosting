@@ -1,20 +1,27 @@
 <?php namespace App\Observers;
 
-use App\Country as Model;
+use App\Utilities\CacheHelper;
 
 class CountryObserver
 {
-    public function deleted(Model $model)
+    private $cache;
+
+    public function __construct(CacheHelper $cache)
     {
-        \CacheHelper::forgetCities();
-        \CacheHelper::forgetCountries();
-        \CacheHelper::forgetTrips();
+        $this->cache = $cache;
     }
 
-    public function saved(Model $model)
+    public function deleted()
     {
-        \CacheHelper::forgetCities();
-        \CacheHelper::forgetCountries();
-        \CacheHelper::forgetTrips();
+        $this->cache->forgetCities();
+        $this->cache->forgetCountries();
+        $this->cache->forgetTrips();
+    }
+
+    public function saved()
+    {
+        $this->cache->forgetCities();
+        $this->cache->forgetCountries();
+        $this->cache->forgetTrips();
     }
 }

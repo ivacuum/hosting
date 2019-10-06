@@ -9,16 +9,16 @@ use Ivacuum\Generic\Services\GoogleGeocoder;
 
 class Cities extends Controller
 {
-    protected $api_only = true;
-    protected $sort_dir = 'asc';
-    protected $sort_key = 'title';
-    protected $sortable_keys = ['title', 'trips_count', 'views'];
-    protected $show_with_count = ['trips'];
-    protected $reactive_fields = ['country_id', 'title_en', 'title_ru', 'lat', 'lon'];
+    protected $apiOnly = true;
+    protected $sortDir = 'asc';
+    protected $sortKey = 'title';
+    protected $sortableKeys = ['title', 'trips_count', 'views'];
+    protected $showWithCount = ['trips'];
+    protected $reactiveFields = ['country_id', 'title_en', 'title_ru', 'lat', 'lon'];
 
     public function index()
     {
-        $country_id = request('country_id');
+        $countryId = request('country_id');
 
         [$sortKey, $sortDir] = $this->getSortParams();
 
@@ -28,11 +28,11 @@ class Cities extends Controller
             ->with('country')
             ->withCount('trips')
             ->orderBy($sortKey, $sortDir)
-            ->when($country_id, function (Builder $query) use ($country_id) {
-                return $query->where('country_id', $country_id);
+            ->when($countryId, function (Builder $query) use ($countryId) {
+                return $query->where('country_id', $countryId);
             })
             ->paginate()
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
         return $this->modelResourceCollection($models);
     }

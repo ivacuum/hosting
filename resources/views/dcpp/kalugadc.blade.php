@@ -1,7 +1,7 @@
 @extends('dcpp.software', [
-  'no_language_selector' => $locale === 'ru',
+  'noLanguageSelector' => $locale === 'ru',
 
-  'software_title' => trans('dcpp.kalugadc'),
+  'softwareTitle' => trans('dcpp.kalugadc'),
   'software' => [
     ['version' => '', 'id' => 12, 'size' => 1861500, 'dl_suffix' => ''],
   ],

@@ -6,18 +6,48 @@
     <h1>{{ trans('dcpp.index') }}</h1>
     <div class="h3 text-gray-500">{{ trans('dcpp.clients') }}</div>
     <div class="flex flex-col w-full">
-      <a class="font-medium py-1" href="{{ path('Dcpp@page', 'airdc') }}">{{ trans('dcpp.airdc') }}</a>
-      <a class="font-medium py-1" href="{{ path('Dcpp@page', 'apexdc') }}">{{ trans('dcpp.apexdc') }}</a>
-      <a class="font-medium py-1" href="{{ path('Dcpp@page', 'dcpp') }}">{{ trans('dcpp.dcpp') }}</a>
-      <a class="font-medium py-1" href="{{ path('Dcpp@page', 'flylinkdc') }}">{{ trans('dcpp.flylinkdc') }}</a>
-      <a class="font-medium py-1" href="{{ path('Dcpp@page', 'greylinkdc') }}">{{ trans('dcpp.greylinkdc') }}</a>
-      <a class="font-medium py-1" href="{{ path('Dcpp@page', 'jucydc') }}">{{ trans('dcpp.jucydc') }}</a>
+      <a
+        class="font-medium py-1"
+        href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'airdc') }}"
+      >{{ trans('dcpp.airdc') }}</a>
+      <a
+        class="font-medium py-1"
+        href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'apexdc') }}"
+      >{{ trans('dcpp.apexdc') }}</a>
+      <a
+        class="font-medium py-1"
+        href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'dcpp') }}"
+      >{{ trans('dcpp.dcpp') }}</a>
+      <a
+        class="font-medium py-1"
+        href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'flylinkdc') }}"
+      >{{ trans('dcpp.flylinkdc') }}</a>
+      <a
+        class="font-medium py-1"
+        href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'greylinkdc') }}"
+      >{{ trans('dcpp.greylinkdc') }}</a>
+      <a
+        class="font-medium py-1"
+        href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'jucydc') }}"
+      >{{ trans('dcpp.jucydc') }}</a>
       @ru
-        <a class="font-medium py-1" href="{{ path('Dcpp@page', 'kalugadc') }}">{{ trans('dcpp.kalugadc') }}</a>
+        <a
+          class="font-medium py-1"
+          href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'kalugadc') }}"
+        >{{ trans('dcpp.kalugadc') }}</a>
       @endru
-      <a class="font-medium py-1" href="{{ path('Dcpp@page', 'pelinkdc') }}">{{ trans('dcpp.pelinkdc') }}</a>
-      <a class="font-medium py-1" href="{{ path('Dcpp@page', 'shakespeer') }}">{{ trans('dcpp.shakespeer') }}</a>
-      <a class="font-medium py-1" href="{{ path('Dcpp@page', 'strongdc') }}">{{ trans('dcpp.strongdc') }}</a>
+      <a
+        class="font-medium py-1"
+        href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'pelinkdc') }}"
+      >{{ trans('dcpp.pelinkdc') }}</a>
+      <a
+        class="font-medium py-1"
+        href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'shakespeer') }}"
+      >{{ trans('dcpp.shakespeer') }}</a>
+      <a
+        class="font-medium py-1"
+        href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'strongdc') }}"
+      >{{ trans('dcpp.strongdc') }}</a>
     </div>
   </div>
   <div class="md:w-3/4 md:px-4">

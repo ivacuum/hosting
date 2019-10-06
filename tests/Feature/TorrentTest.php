@@ -32,7 +32,7 @@ class TorrentTest extends TestCase
 
     public function testCreate()
     {
-        $user = factory(User::class)->make();
+        $user = factory(User::class)->state('id')->make();
 
         $this->be($user)
             ->get(action('Torrents@create'))
@@ -94,7 +94,7 @@ class TorrentTest extends TestCase
 
     public function testStore()
     {
-        /* @var User $user */
+        /** @var User $user */
         $user = factory(User::class)->create();
         $rtoId = 1234567890;
 

@@ -16,8 +16,8 @@ class CommentsTest extends TestCase
     {
         \Mail::fake();
 
-        /* @var User $user */
-        /* @var News $news */
+        /** @var User $user */
+        /** @var News $news */
         $user = factory(User::class)->create();
         $news = factory(News::class)->create(['user_id' => $user->id]);
         $email = 'guest+'.random_int(10000, 99999).'@example.com';
@@ -47,10 +47,10 @@ class CommentsTest extends TestCase
 
     public function testCommentPostAsUser()
     {
-        /* @var User $user */
+        /** @var User $user */
         $this->be($user = factory(User::class)->create());
 
-        /* @var News $news */
+        /** @var News $news */
         $news = factory(News::class)->create(['user_id' => $user->id]);
 
         $this->expectsEvents(CommentPublished::class);

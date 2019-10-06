@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Facade;
 
+/** @noinspection PhpUndefinedClassInspection */
+
 class ViewHelper extends Facade
 {
     protected static function getFacadeAccessor()

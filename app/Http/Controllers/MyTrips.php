@@ -13,9 +13,9 @@ class MyTrips extends Controller
             ->where('user_id', request()->user()->id)
             ->orderBy('date_start', 'desc')
             ->paginate(50, Trip::COLUMNS_LIST)
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
-        return view('my.trips.index', compact('models'));
+        return view('my.trips.index', ['models' => $models]);
     }
 
     public function create(Trip $trip)
@@ -27,7 +27,7 @@ class MyTrips extends Controller
     {
         $trip->delete();
 
-        return redirect(path("{$this->class}@index"));
+        return redirect(path([$this->controller, 'index']));
     }
 
     public function edit(Trip $trip)

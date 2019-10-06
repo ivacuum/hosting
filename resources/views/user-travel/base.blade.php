@@ -2,10 +2,10 @@
 
 @push('head')
 <meta content="article" property="og:type">
-<meta content="{{ $meta_title ?? '' }}" property="og:title">
+<meta content="{{ $metaTitle ?? '' }}" property="og:title">
 <meta content="{{ canonical() }}" property="og:url">
-<meta content="{{ $meta_image ?? '' }}" property="og:image">
-<meta content="{{ $meta_description ?? '' }}" property="og:description">
+<meta content="{{ $metaImage ?? '' }}" property="og:image">
+<meta content="{{ $metaDescription ?? '' }}" property="og:description">
 @endpush
 
 @section('brand')
@@ -13,7 +13,10 @@
 @endsection
 
 @section('global_menu')
-@component('tpl.menu-item', ['href' => path('UserTravelTrips@index', $traveler->login), 'isActive' => Str::startsWith($self, 'UserTravel')])
+@component('tpl.menu-item', [
+  'href' => path([App\Http\Controllers\UserTravelTrips::class, 'index'], $traveler->login),
+  'isActive' => Str::startsWith($self, 'UserTravel'),
+])
   {{ trans('menu.life') }}
 @endcomponent
 @endsection

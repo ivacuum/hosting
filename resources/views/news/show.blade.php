@@ -1,5 +1,5 @@
 @extends('base', [
-  'no_language_selector' => true,
+  'noLanguageSelector' => true,
 ])
 
 @section('content')

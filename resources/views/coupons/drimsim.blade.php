@@ -1,9 +1,9 @@
 @extends('base', [
-  'no_language_selector' => $locale === 'ru',
+  'noLanguageSelector' => $locale === 'ru',
 ])
 
 @section('content')
-<h1>{{ $meta_title }}</h1>
+<h1>{{ $metaTitle }}</h1>
 <div class="max-w-600px">
   @ru
     <p>Если вы только собираетесь заказать симку, то по ссылке ниже можно получить дополнительные 7&nbsp;евро на счет при первом пополнении баланса.</p>

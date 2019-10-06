@@ -1,5 +1,5 @@
 @extends('acp.list', [
-  'search_form' => true,
+  'searchForm' => true,
 ])
 
 @section('heading-after-search')
@@ -38,7 +38,7 @@
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
       <td class="md:text-right">{{ $model->id }}</td>
       <td>
         <a href="{{ path('Acp\Users@show', $model->user_id) }}">
@@ -73,7 +73,7 @@
           </span>
         @endif
       </td>
-      <td><a href="{{ path("$self@show", $model) }}">{{ $model->shortTitle() }}</a></td>
+      <td><a href="{{ path([$controller, 'show'], $model) }}">{{ $model->shortTitle() }}</a></td>
       <td>
         <a href="{{ $model->externalLink() }}">
           @svg (external-link)

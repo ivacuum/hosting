@@ -8,30 +8,33 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class News extends Controller
 {
-    protected $sortable_keys = ['id', 'views', 'comments_count'];
-    protected $show_with_count = ['comments'];
+    protected $sortableKeys = ['id', 'views', 'comments_count'];
+    protected $showWithCount = ['comments'];
 
     public function index()
     {
-        $user_id = request('user_id');
+        $userId = request('user_id');
 
         [$sortKey, $sortDir] = $this->getSortParams();
 
         $models = Model::withCount('comments')
             ->orderBy($sortKey, $sortDir)
-            ->when($user_id, function (Builder $query) use ($user_id) {
-                return $query->where('user_id', $user_id);
+            ->when($userId, function (Builder $query) use ($userId) {
+                return $query->where('user_id', $userId);
             })
             ->where('locale', \App::getLocale())
             ->paginate(20)
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
-        return view($this->view, compact('models', 'user_id'));
+        return view($this->view, [
+            'models' => $models,
+            'user_id' => $userId,
+        ]);
     }
 
     public function notify($id)
     {
-        /* @var Model $model */
+        /** @var Model $model */
         $model = $this->getModel($id);
 
         if ($model->status !== Model::STATUS_PUBLISHED) {

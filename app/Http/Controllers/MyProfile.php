@@ -11,7 +11,7 @@ class MyProfile extends Controller
 
     public function update(MyProfileUpdate $request)
     {
-        /* @var \App\User $user */
+        /** @var \App\User $user */
         $user = $request->user();
         $user->login = $request->input('username');
         $user->email = $request->input('email');

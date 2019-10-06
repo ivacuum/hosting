@@ -1,28 +1,40 @@
-<header class="bg-light border-b-2 border-gray-200 leading-none {{ $navbar_classes ?? 'hidden md:flex' }}">
+<header class="bg-light border-b-2 border-gray-200 leading-none {{ $navbarClasses ?? 'hidden md:flex' }}">
   <div class="container">
     <div class="flex flex-wrap justify-between items-center w-full">
       @section('brand')
-        <a class="site-brand font-bold text-lg text-blue-700 flex items-center hover:text-orange-600 md:mr-3 h-12 text-center" href="{{ path('Home@index') }}">vacuum<br>kaluga</a>
+        <a class="site-brand font-bold text-lg text-blue-700 flex items-center hover:text-orange-600 md:mr-3 h-12 text-center" href="{{ path([App\Http\Controllers\Home::class, 'index']) }}">vacuum<br>kaluga</a>
       @show
       <button class="md:hidden px-4 py-3 text-2xl text-gray-600 hover:text-gray-900 js-collapse" data-target="#header_menu">
         @svg (three-bars)
       </button>
       <nav id="header_menu" class="flex md:flex flex-col md:flex-row order-4 md:order-3 md:mr-auto md:items-center whitespace-no-wrap md:whitespace-normal w-full md:w-auto hidden">
         @section('global_menu')
-          @component('tpl.menu-item', ['href' => path('Life@index'), 'isActive' => $self === 'Life'])
+          @component('tpl.menu-item', [
+            'href' => path([App\Http\Controllers\Life::class, 'index']),
+            'isActive' => $controller === App\Http\Controllers\Life::class,
+          ])
             {{ trans('menu.life') }}
           @endcomponent
-          @component('tpl.menu-item', ['href' => path('News@index'), 'isActive' => $self === 'News'])
+          @component('tpl.menu-item', [
+            'href' => path([App\Http\Controllers\News::class, 'index']),
+            'isActive' => $controller === App\Http\Controllers\News::class,
+          ])
             {{ trans('news.index') }}
           @endcomponent
-          @if (!$is_crawler)
+          @if (!$isCrawler)
             @ru
-              @component('tpl.menu-item', ['href' => path('Torrents@index'), 'isActive' => $self === 'Torrents'])
+              @component('tpl.menu-item', [
+                'href' => path([App\Http\Controllers\Torrents::class, 'index']),
+                'isActive' => $controller === App\Http\Controllers\Torrents::class,
+              ])
                 {{ trans('menu.torrents') }}
               @endcomponent
             @endru
           @endif
-          @component('tpl.menu-item', ['href' => path('Photos@trips'), 'isActive' => $self === 'Photos'])
+          @component('tpl.menu-item', [
+            'href' => path([App\Http\Controllers\Photos::class, 'trips']),
+            'isActive' => $controller === App\Http\Controllers\Photos::class,
+          ])
             {{ trans('photos.index') }}
           @endcomponent
         @show
@@ -32,7 +44,10 @@
           @if (Auth::check())
             @include('tpl.header-navbar-user')
           @else
-            <a class="px-2 py-3 text-gray-600 hover:text-gray-900" href="{{ path('Auth\SignIn@index') }}">{{ trans('auth.signin') }}</a>
+            <a
+              class="px-2 py-3 text-gray-600 hover:text-gray-900"
+              href="{{ path([App\Http\Controllers\Auth\SignIn::class, 'index']) }}"
+            >{{ trans('auth.signin') }}</a>
           @endif
         @show
       </nav>

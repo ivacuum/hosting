@@ -9,10 +9,10 @@ class Docs extends Controller
 
     public function page($page)
     {
-        $view = "{$this->prefix}.{$page}";
+        $view = "docs.{$page}";
 
         abort_unless(view()->exists($view), 404);
 
-        return view($view, compact('page'));
+        return view($view, ['page' => $page]);
     }
 }

@@ -6,9 +6,9 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Vocabularies extends Controller
 {
-    protected $sort_dir = 'asc';
-    protected $sort_key = 'level';
-    protected $sortable_keys = ['level', 'meaning'];
+    protected $sortDir = 'asc';
+    protected $sortKey = 'level';
+    protected $sortableKeys = ['level', 'meaning'];
 
     public function index()
     {
@@ -28,9 +28,9 @@ class Vocabularies extends Controller
                 return $query->where('meaning', 'LIKE', "%{$q}%");
             })
             ->paginate()
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
-        return view($this->view, compact('models'));
+        return view($this->view, ['models' => $models]);
     }
 
     protected function requestDataForModel()

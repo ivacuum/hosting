@@ -1,54 +1,72 @@
 @extends('dcpp.software', [
-  'software_title' => trans('dcpp.jucydc'),
+  'softwareTitle' => trans('dcpp.jucydc'),
   'software' => [
     ['version' => '0.85', 'id' => 49, 'dl_suffix' => ''],
   ],
-  'software_screenshots' => [
+  'softwareScreenshots' => [
     [
       'full' => 'https://img.ivacuum.ru/g/091002/1_ZaESRgyfi0.jpg',
       'thumb' => 'https://img.ivacuum.ru/g/091002/s/1_ZaESRgyfi0.jpg',
     ],
   ],
-  'developer_site' => 'http://www.jucy.eu/',
+  'developerSite' => 'http://www.jucy.eu/',
 ])
 
 @section('download_latest')
-<div {{ Str::contains($css_classes, ['linux', 'macos']) ? 'hidden' : '' }} class="js-dcpp-client">
+<div {{ Str::contains($cssClasses, ['linux', 'macos']) ? 'hidden' : '' }} class="js-dcpp-client">
   <h4>{{ trans('dcpp.for') }} @svg (windows) Windows</h4>
-  <a class="btn btn-success my-1 mr-2 text-lg px-4 py-2" href="{{ path('Files@download', 49) }}">
+  <a
+    class="btn btn-success my-1 mr-2 text-lg px-4 py-2"
+    href="{{ path([App\Http\Controllers\Files::class, 'download'], 49) }}"
+  >
     {{ trans('dcpp.download') }} 32bit
     &middot;
     {{ ViewHelper::size(36586416) }}
   </a>
-  <a class="btn btn-success my-1 text-lg px-4 py-2" href="{{ path('Files@download', 50) }}">
+  <a
+    class="btn btn-success my-1 text-lg px-4 py-2"
+    href="{{ path([App\Http\Controllers\Files::class, 'download'], 50) }}"
+  >
     {{ trans('dcpp.download') }} 64bit
     &middot;
     {{ ViewHelper::size(36562647) }}
   </a>
 </div>
 
-<div {{ !Str::contains($css_classes, ['linux']) ? 'hidden' : '' }} class="js-dcpp-client">
+<div {{ !Str::contains($cssClasses, ['linux']) ? 'hidden' : '' }} class="js-dcpp-client">
   <h4 class="mt-4">{{ trans('dcpp.for') }} @svg (linux) Linux</h4>
-  <a class="btn btn-success my-1 mr-2 text-lg px-4 py-2" href="{{ path('Files@download', 74) }}">
+  <a
+    class="btn btn-success my-1 mr-2 text-lg px-4 py-2"
+    href="{{ path([App\Http\Controllers\Files::class, 'download'], 74) }}"
+  >
     {{ trans('dcpp.download') }} 32bit
     &middot;
     {{ ViewHelper::size(36756573) }}
   </a>
-  <a class="btn btn-success my-1 text-lg px-4 py-2" href="{{ path('Files@download', 148) }}">
+  <a
+    class="btn btn-success my-1 text-lg px-4 py-2"
+    href="{{ path([App\Http\Controllers\Files::class, 'download'], 148) }}"
+  >
     {{ trans('dcpp.download') }} 64bit
     &middot;
     {{ ViewHelper::size(36924947) }}
   </a>
 </div>
 
-<div {{ !Str::contains($css_classes, ['macos']) ? 'hidden' : '' }} class="js-dcpp-client">
+<div {{ !Str::contains($cssClasses, ['macos']) ? 'hidden' : '' }} class="js-dcpp-client">
   <h4 class="mt-4">{{ trans('dcpp.for') }} @svg (apple) macOS</h4>
-  <a class="btn btn-success my-1 mr-2 text-lg px-4 py-2" href="{{ path('Files@download', 51) }}">
+  <a
+    class="btn btn-success my-1 mr-2 text-lg px-4 py-2"
+    href="{{ path([App\Http\Controllers\Files::class, 'download'], 51) }}"
+  >
     {{ trans('dcpp.download') }} 32bit
     &middot;
     {{ ViewHelper::size(36626671) }}
   </a>
-  <a class="btn btn-success my-1 text-lg px-4 py-2" href="{{ path('Files@download', 147) }}">
+  <a
+    class="btn btn-success my-1 text-lg px-4 py-2"
+    href="{{ path([App\Http\Controllers\Files::class, 'download'], 147) }}"
+  >
     {{ trans('dcpp.download') }} 64bit
     &middot;
     {{ ViewHelper::size(36508412) }}
@@ -69,7 +87,7 @@
 @section('about_software')
 @ru
   <p><strong>Jucy DC++</strong> — это клиент для файлообменной сети DC++. Он очень удобен, поддерживает мультипотоковую скачку, обладает приятным интерфейсом. Основное отличие клиента от остальных — наличие версий для macOS и Linux. Если выбор Linux или macOS вас ранее ограничивал в возможностях обмена файлами, то эти времена прошли.</p>
-  <p>В базовой поставке нет русского языка. Если для вас это критичный фактор, то обратите внимание на другие клиенты на нашем сайте, например, на <a class="link" href="{{ path('Dcpp@page', 'flylinkdc') }}">FlyLinkDC++</a>.</p>
+  <p>В базовой поставке нет русского языка. Если для вас это критичный фактор, то обратите внимание на другие клиенты на нашем сайте, например, на <a class="link" href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'flylinkdc') }}">FlyLinkDC++</a>.</p>
 @en
   <p><strong>Jucy DC++</strong> is a peer-to-peer client software. It's main feature is that it supports many OSes: Windows, Linux, macOS. So now you are finally able to share files while using Linux or macOS.</p>
 @endru

@@ -1,5 +1,5 @@
 @extends('docs.base', [
-  'meta_title' => 'Поездки · Документация',
+  'metaTitle' => 'Поездки · Документация',
 
   'breadcrumbs' => [
     ['title' => 'Документация', 'url' => 'docs'],
@@ -105,6 +105,6 @@
 Есть пожелания по улучшению сервиса. Кому писать?
 @endslot
 
-<div>Для обратной связи есть <a class="link" href="{{ path('Issues@create') }}">специальная форма</a>.</div>
+<div>Для обратной связи есть <a class="link" href="{{ path([App\Http\Controllers\Issues::class, 'create']) }}">специальная форма</a>.</div>
 @endcomponent
 @endsection

@@ -3,9 +3,9 @@
 @section('content')
 <h1 class="text-3xl">{{ trans('life.calendar') }}</h1>
 <nav class="flex flex-wrap text-sm mb-4">
-  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path('Life@index') }}">{{ trans('life.by_year') }}</a></div>
-  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path('Life@countries') }}">{{ trans('life.by_country') }}</a></div>
-  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path('Life@cities') }}">{{ trans('life.by_city') }}</a></div>
+  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'index']) }}">{{ trans('life.by_year') }}</a></div>
+  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'countries']) }}">{{ trans('life.by_country') }}</a></div>
+  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'cities']) }}">{{ trans('life.by_city') }}</a></div>
   <div class="whitespace-no-wrap"><mark>{{ trans('life.by_days') }}</mark></div>
 </nav>
 

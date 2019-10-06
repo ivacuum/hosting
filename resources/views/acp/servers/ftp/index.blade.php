@@ -13,8 +13,8 @@
 </h2>
 
 <h3>
-  @if ($dir_up != ':')
-    <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $dir_up }}">
+  @if ($dirUp != ':')
+    <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $dirUp }}">
       @svg (chevron-left)
     </a>
   @endif

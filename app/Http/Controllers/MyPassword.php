@@ -9,13 +9,13 @@ class MyPassword extends Controller
     public function edit(Request $request)
     {
         return view('my.password', [
-            'has_password' => !empty($request->user()->password),
+            'hasPassword' => !empty($request->user()->password),
         ]);
     }
 
     public function update(MyPasswordUpdate $request, Hasher $hash)
     {
-        /* @var \App\User $user */
+        /** @var \App\User $user */
         $user = $request->user();
         $hasPassword = !empty($user->password);
 

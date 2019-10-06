@@ -1,12 +1,12 @@
 <?php
-/** @var bool $is_crawler */
-$alt = $is_crawler && isset($trip) ? $trip->imgAltText() : '';
+/** @var bool $isCrawler */
+$alt = $isCrawler && isset($trip) ? $trip->imgAltText() : '';
 ?>
 <div class="-mt-2 mb-6 mobile-wide">
   <div class="max-w-1000px mx-auto text-center">
     @foreach ($pics as $pic)
       <div class="pb-3/4 relative js-shortcuts-item" id="{{ $pic }}">
-        @if ($is_crawler)
+        @if ($isCrawler)
           <img
             src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"
             alt="{{ $alt }}"

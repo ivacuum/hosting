@@ -119,9 +119,9 @@ export default {
     },
 
     renderImages(context) {
-      let $in_spoilers = $('.sp-body var.postImg', context)
+      let $inSpoilers = $('.sp-body var.postImg', context)
 
-      $('var.postImg', context).not($in_spoilers).each((index, item) => {
+      $('var.postImg', context).not($inSpoilers).each((index, item) => {
         let $item = $(item)
         let src = this.getOriginalSrc($item)
         let cls = $item.attr('class')
@@ -151,7 +151,7 @@ export default {
         if (!$body.hasClass('inited')) {
           this.renderImages($body)
 
-          let $fold_btn = $('<div class="sp-fold clickable">[свернуть]</div>').on('click', function () {
+          let $foldBtn = $('<div class="sp-fold clickable">[свернуть]</div>').on('click', function () {
             $.scrollTo($head, {
               duration: 200,
               axis: 'y',
@@ -164,7 +164,7 @@ export default {
               .animate({ opacity: 1 }, 700)
           })
 
-          $body.append($fold_btn).addClass('clearfix inited')
+          $body.append($foldBtn).addClass('clearfix inited')
           $body.parent().addClass('clearfix')
         }
 

@@ -31,13 +31,13 @@
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
       <td class="md:text-right">
         <a class="anchor-sticky" id="{{ $model->getRouteKeyName() }}-{{ $model->getRouteKey() }}"></a>
         {{ $model->id }}
       </td>
       <td class="text-center">
-        <a class="inline-block screenshot-link" href="{{ path("$self@show", $model) }}">
+        <a class="inline-block screenshot-link" href="{{ path([$controller, 'show'], $model) }}">
           <img class="border border-hover image-100 object-cover" src="{{ request('size') == 2000 ? $model->originalUrl() : (request('size') == 1000 ? $model->mobileUrl() : $model->thumbnailUrl()) }}" alt="">
         </a>
       </td>
@@ -63,7 +63,7 @@
       </td>
       <td>
         <div class="desktop-hidden">
-          <a class="btn btn-default" href="{{ UrlHelper::edit($self, $model) }}">
+          <a class="btn btn-default" href="{{ UrlHelper::edit($controller, $model) }}">
             @svg (pencil)
           </a>
         </div>

@@ -51,13 +51,13 @@
   </div>
 @endif
 
-@if (optional($related_torrents = $torrent->relatedTorrents())->count())
+@if (optional($relatedTorrents = $torrent->relatedTorrents())->count())
   <div class="h3 mt-12">
     {{ trans('torrents.related') }}
-    <span class="text-base text-muted">{{ $related_torrents->count() }}</span>
+    <span class="text-base text-muted">{{ $relatedTorrents->count() }}</span>
   </div>
   <?php /** @var \App\Torrent $row */ ?>
-  @foreach ($related_torrents as $row)
+  @foreach ($relatedTorrents as $row)
     <?php $category = TorrentCategoryHelper::find($row->category_id) ?>
     <div class="flex flex-wrap md:flex-no-wrap justify-center md:justify-start torrents-list-container antialiased js-torrents-views-observer" data-id="{{ $row->id }}">
       <div class="flex-shrink-0 w-8 torrent-icon order-1 md:order-none mr-1" title="{{ $category['title'] }}">

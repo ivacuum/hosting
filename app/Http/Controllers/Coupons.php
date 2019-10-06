@@ -12,22 +12,22 @@ class Coupons extends Controller
 
     public function airbnb()
     {
-        return view($this->view, ['meta_title' => $this->getServiceMetaTitle('airbnb')]);
+        return view($this->view, ['metaTitle' => $this->getServiceMetaTitle('airbnb')]);
     }
 
     public function booking()
     {
-        return view($this->view, ['meta_title' => $this->getServiceMetaTitle('booking')]);
+        return view($this->view, ['metaTitle' => $this->getServiceMetaTitle('booking')]);
     }
 
     public function digitalocean()
     {
-        return view($this->view, ['meta_title' => $this->getServiceMetaTitle('do')]);
+        return view($this->view, ['metaTitle' => $this->getServiceMetaTitle('do')]);
     }
 
     public function drimsim()
     {
-        return view($this->view, ['meta_title' => $this->getServiceMetaTitle('drimsim')]);
+        return view($this->view, ['metaTitle' => $this->getServiceMetaTitle('drimsim')]);
     }
 
     public function firstvds()
@@ -46,7 +46,7 @@ class Coupons extends Controller
 
     public function timeweb()
     {
-        return view($this->view, ['meta_title' => $this->getServiceMetaTitle('timeweb')]);
+        return view($this->view, ['metaTitle' => $this->getServiceMetaTitle('timeweb')]);
     }
 
     protected function appendBreadcrumbs(): void

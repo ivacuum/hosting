@@ -22,7 +22,7 @@ class UserTravelCities extends UserTravel
         \Breadcrumbs::push(trans('menu.life'), "@{$login}/travel");
         \Breadcrumbs::push(trans('menu.cities'));
 
-        return view('user-travel.cities', compact('cities'));
+        return view('user-travel.cities', ['cities' => $cities]);
     }
 
     public function show(string $login, string $slug)
@@ -43,7 +43,7 @@ class UserTravelCities extends UserTravel
         event(new \App\Events\Stats\CityViewed($city->id));
 
         if (1 === sizeof($publishedTrips)) {
-            /* @var \App\Trip $trip */
+            /** @var \App\Trip $trip */
             $trip = $publishedTrips->first();
 
             return redirect($trip->www());
@@ -56,6 +56,9 @@ class UserTravelCities extends UserTravel
         \Breadcrumbs::push($city->country->title, "@{$login}/travel/countries/{$city->country->slug}");
         \Breadcrumbs::push($city->title);
 
-        return view('user-travel.city', compact('city', 'trips'));
+        return view('user-travel.city', [
+            'city' => $city,
+            'trips' => $trips,
+        ]);
     }
 }

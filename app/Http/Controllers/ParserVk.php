@@ -15,8 +15,6 @@ class ParserVk extends Controller
 
     public function __construct()
     {
-        parent::__construct();
-
         $this->client = (new GuzzleClientFactory)
             ->baseUri(Vk::API_ENDPOINT)
             ->timeout(10)
@@ -125,22 +123,20 @@ class ParserVk extends Controller
             $offset += $count;
         }
 
-        $posts = $posts->sortByDesc('views')->take(10);
-
-        return view('parser.vk', compact(
-            'date',
-            'next',
-            'own',
-            'posts',
-            'previous',
-            'token',
-            'vkpage'
-        ));
+        return view('parser.vk', [
+            'own' => $own,
+            'date' => $date,
+            'next' => $next,
+            'token' => $token,
+            'posts' => $posts->sortByDesc('views')->take(10),
+            'vkpage' => $vkpage,
+            'previous' => $previous,
+        ]);
     }
 
     public function indexPost()
     {
-        return redirect(path("{$this->class}@index", request('slug')));
+        return redirect(path([$this->controller, 'index'], request('slug')));
     }
 
     protected function getPosts($count = 100, $offset = 0)

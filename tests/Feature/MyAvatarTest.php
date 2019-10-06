@@ -16,12 +16,12 @@ class MyAvatarTest extends TestCase
 
         $file = UploadedFile::fake()->image('avatar.jpg');
 
-        /* @var User $user */
+        /** @var User $user */
         $this->be($user = factory(User::class)->create());
 
         $this->expectsEvents(App\Events\Stats\UserAvatarUploaded::class);
 
-        $this->putJson(action('MyAvatar@update'), compact('file'))
+        $this->putJson(action('MyAvatar@update'), ['file' => $file])
             ->assertStatus(200)
             ->assertJson(['status' => 'OK']);
 
@@ -31,20 +31,20 @@ class MyAvatarTest extends TestCase
 
         \Storage::disk('avatars')->assertExists($user->avatar);
 
-        $last_avatar = $user->avatar;
+        $lastAvatar = $user->avatar;
 
         $file = UploadedFile::fake()->image('new-avatar.jpg');
 
-        $this->putJson(action('MyAvatar@update'), compact('file'))
+        $this->putJson(action('MyAvatar@update'), ['file' => $file])
             ->assertStatus(200)
             ->assertJson(['status' => 'OK']);
 
         $user->refresh();
 
         $this->assertNotEmpty($user->avatar);
-        $this->assertNotEquals($last_avatar, $user->avatar);
+        $this->assertNotEquals($lastAvatar, $user->avatar);
 
-        \Storage::disk('avatars')->assertMissing($last_avatar);
+        \Storage::disk('avatars')->assertMissing($lastAvatar);
         \Storage::disk('avatars')->assertExists($user->avatar);
     }
 
@@ -54,12 +54,12 @@ class MyAvatarTest extends TestCase
 
         $file = UploadedFile::fake()->image('avatar.jpg');
 
-        /* @var User $user */
+        /** @var User $user */
         $this->be($user = factory(User::class)->create());
 
         $this->expectsEvents(App\Events\Stats\UserAvatarUploaded::class);
 
-        $this->putJson(action('MyAvatar@update'), compact('file'))
+        $this->putJson(action('MyAvatar@update'), ['file' => $file])
             ->assertStatus(200)
             ->assertJson(['status' => 'OK']);
 
@@ -72,7 +72,7 @@ class MyAvatarTest extends TestCase
         \Storage::disk('avatars')->assertExists($avatar);
 
         $this->deleteJson(action('MyAvatar@destroy'))
-            ->assertStatus(204);
+            ->assertNoContent();
 
         $user->refresh();
 

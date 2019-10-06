@@ -19,11 +19,11 @@ class Ftp extends BaseController
         $file = request('file');
 
         $dirs = $files = [];
-        $dir_up = ':';
+        $dirUp = ':';
 
         if ($dir && $dir != '/') {
-            $dir_up = implode('/', explode('/', $dir, -1));
-            $dir_up = !$dir_up ? '/' : $dir_up;
+            $dirUp = implode('/', explode('/', $dir, -1));
+            $dirUp = !$dirUp ? '/' : $dirUp;
         }
 
         $contents = $this->fs->listContents($dir);
@@ -36,7 +36,14 @@ class Ftp extends BaseController
             }
         }
 
-        return view($this->view, compact('dir', 'dir_up', 'dirs', 'file', 'files', 'server'));
+        return view($this->view, [
+            'dir' => $dir,
+            'dirs' => $dirs,
+            'file' => $file,
+            'files' => $files,
+            'dirUp' => $dirUp,
+            'server' => $server,
+        ]);
     }
 
     public function dirPost($id)
@@ -81,10 +88,15 @@ class Ftp extends BaseController
 
         $source = $this->fs->read($file);
 
-        $dir_up = dirname($file);
-        $dir_up = $dir_up == '.' ? '/' : $dir_up;
+        $dirUp = dirname($file);
+        $dirUp = $dirUp == '.' ? '/' : $dirUp;
 
-        return view($this->view, compact('dir_up', 'file', 'server', 'source'));
+        return view($this->view, [
+            'file' => $file,
+            'dirUp' => $dirUp,
+            'server' => $server,
+            'source' => $source,
+        ]);
     }
 
     public function sourcePost($id)

@@ -9,7 +9,7 @@ class Issue extends Resource
 {
     public function toArray($request)
     {
-        /* @var \App\User $me */
+        /** @var \App\User $me */
         $me = $request->user();
 
         return [

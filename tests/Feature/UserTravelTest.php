@@ -13,7 +13,7 @@ class UserTravelTest extends TestCase
 
     public function testCitiesIndex()
     {
-        /* @var User $user */
+        /** @var User $user */
         $user = factory(User::class)->create(['login' => self::LOGIN]);
         $user->trips()->save(factory(Trip::class)->state('city')->make());
 
@@ -23,8 +23,8 @@ class UserTravelTest extends TestCase
 
     public function testCitiesShow()
     {
-        /* @var User $user */
-        /* @var Trip $trip */
+        /** @var User $user */
+        /** @var Trip $trip */
         $user = factory(User::class)->create(['login' => self::LOGIN]);
         $trip = $user->trips()->save(factory(Trip::class)->state('city')->make());
 
@@ -34,7 +34,7 @@ class UserTravelTest extends TestCase
 
     public function testCountriesIndex()
     {
-        /* @var User $user */
+        /** @var User $user */
         $user = factory(User::class)->create(['login' => self::LOGIN]);
         $user->trips()->save(factory(Trip::class)->state('city')->make());
 
@@ -44,8 +44,8 @@ class UserTravelTest extends TestCase
 
     public function testCountriesShow()
     {
-        /* @var User $user */
-        /* @var Trip $trip */
+        /** @var User $user */
+        /** @var Trip $trip */
         $user = factory(User::class)->create(['login' => self::LOGIN]);
         $trip = $user->trips()->save(factory(Trip::class)->state('city')->make());
 
@@ -63,8 +63,8 @@ class UserTravelTest extends TestCase
 
     public function testTripsShow()
     {
-        /* @var User $user */
-        /* @var Trip $trip */
+        /** @var User $user */
+        /** @var Trip $trip */
         $user = factory(User::class)->create(['login' => self::LOGIN]);
         $trip = $user->trips()->save(factory(Trip::class)->state('city')->make());
 

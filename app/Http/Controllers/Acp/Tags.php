@@ -6,11 +6,11 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Tags extends Controller
 {
-    protected $api_only = true;
-    protected $sort_dir = 'asc';
-    protected $sort_key = 'title';
-    protected $sortable_keys = ['title', 'views', 'photos_count'];
-    protected $show_with_count = ['photos'];
+    protected $apiOnly = true;
+    protected $sortDir = 'asc';
+    protected $sortKey = 'title';
+    protected $sortableKeys = ['title', 'views', 'photos_count'];
+    protected $showWithCount = ['photos'];
 
     public function index()
     {
@@ -21,7 +21,7 @@ class Tags extends Controller
         $models = Model::withCount('photos')
             ->orderBy($sortKey, $sortDir)
             ->paginate(500)
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
         return $this->modelResourceCollection($models);
     }

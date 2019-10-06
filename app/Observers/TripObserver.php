@@ -2,9 +2,17 @@
 
 use App\Photo;
 use App\Trip as Model;
+use App\Utilities\CacheHelper;
 
 class TripObserver
 {
+    private $cache;
+
+    public function __construct(CacheHelper $cache)
+    {
+        $this->cache = $cache;
+    }
+
     public function deleting(Model $model)
     {
         \DB::transaction(function () use ($model) {
@@ -12,16 +20,16 @@ class TripObserver
         });
     }
 
-    public function deleted(Model $model)
+    public function deleted()
     {
-        \CacheHelper::forgetTrips();
+        $this->cache->forgetTrips();
     }
 
     public function saved(Model $model)
     {
         $this->toggleTripPhotosStatus($model);
 
-        \CacheHelper::forgetTrips();
+        $this->cache->forgetTrips();
     }
 
     public function updated(Model $model)

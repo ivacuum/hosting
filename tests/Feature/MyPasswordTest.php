@@ -11,44 +11,43 @@ class MyPasswordTest extends TestCase
 
     public function testEdit()
     {
-        $this->be($user = factory(User::class)->create());
-
-        $this->get(action('MyPassword@edit'))
+        $this->be($user = factory(User::class)->create())
+            ->get(action('MyPassword@edit'))
             ->assertStatus(200);
     }
 
     public function testSetNewPassword()
     {
-        $new_password = 'top-secret ';
+        $newPassword = 'top-secret ';
 
-        /* @var User $user */
+        /** @var User $user */
         $this->be($user = factory(User::class)->create());
 
         $this->expectsEvents(App\Events\Stats\MyPasswordChanged::class);
 
-        $this->put(action('MyPassword@update'), compact('new_password'))
+        $this->put(action('MyPassword@update'), ['new_password' => $newPassword])
             ->assertStatus(302);
 
         $user->refresh();
 
-        $this->assertTrue(\Hash::check($new_password, $user->password));
+        $this->assertTrue(\Hash::check($newPassword, $user->password));
     }
 
     public function testUpdatePassword()
     {
         $password = 'top-secret';
-        $new_password = 'password ';
+        $newPassword = 'password ';
 
-        /* @var User $user */
-        $this->be($user = factory(User::class)->create(compact('password')));
+        /** @var User $user */
+        $this->be($user = factory(User::class)->create(['password' => $password]));
 
         $this->expectsEvents(App\Events\Stats\MyPasswordChanged::class);
 
-        $this->put(action('MyPassword@update'), compact('password', 'new_password'))
+        $this->put(action('MyPassword@update'), ['password' => $password, 'new_password' => $newPassword])
             ->assertStatus(302);
 
         $user->refresh();
 
-        $this->assertTrue(\Hash::check($new_password, $user->password));
+        $this->assertTrue(\Hash::check($newPassword, $user->password));
     }
 }

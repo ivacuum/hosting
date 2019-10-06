@@ -8,9 +8,9 @@ class Servers extends Controller
     public function index()
     {
         $models = Model::paginate()
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
-        return view($this->view, compact('models'));
+        return view($this->view, ['models' => $models]);
     }
 
     protected function rules($model = null)

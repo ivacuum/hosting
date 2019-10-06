@@ -9,7 +9,7 @@ class JapaneseWanikaniLevel extends Controller
 
     public function show(int $level)
     {
-        return view('japanese.wanikani.vue', ['meta_replace' => compact('level')]);
+        return view('japanese.wanikani.vue', ['metaReplace' => ['level' => $level]]);
     }
 
     protected function appendBreadcrumbs(): void

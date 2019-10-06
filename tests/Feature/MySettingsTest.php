@@ -11,9 +11,8 @@ class MySettingsTest extends TestCase
 
     public function testEdit()
     {
-        $this->be($user = factory(User::class)->create());
-
-        $this->get(action('MySettings@edit'))
+        $this->be(factory(User::class)->create())
+            ->get(action('MySettings@edit'))
             ->assertStatus(200);
     }
 
@@ -26,7 +25,7 @@ class MySettingsTest extends TestCase
      */
     public function testUpdate($old, $new, string $field, array $events)
     {
-        /* @var User $user */
+        /** @var User $user */
         $this->be($user = factory(User::class)->create([$field => $old]));
 
         $this->expectsEvents($events);

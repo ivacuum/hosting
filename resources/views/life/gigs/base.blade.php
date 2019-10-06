@@ -1,7 +1,7 @@
 @extends('life.base', [
-  'meta_title' => $gig->metaTitle(),
-  'meta_description' => $gig->metaDescription(),
-  'meta_image' => $gig->meta_image,
+  'metaTitle' => $gig->metaTitle(),
+  'metaDescription' => $gig->metaDescription(),
+  'metaImage' => $gig->meta_image,
 ])
 
 @section('content_header')

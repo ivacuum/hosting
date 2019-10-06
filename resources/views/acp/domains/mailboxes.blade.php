@@ -2,7 +2,7 @@
 
 @section('content')
 <h3>Новая электропочта</h3>
-<form action="{{ path("$self@addMailbox", $model) }}" class="max-w-600px" method="post">
+<form action="{{ path([$controller, 'addMailbox'], $model) }}" class="max-w-600px" method="post">
   @csrf
 
   <div class="mb-4">

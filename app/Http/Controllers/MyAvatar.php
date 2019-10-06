@@ -18,7 +18,7 @@ class MyAvatar extends Controller
 
     public function update(MyAvatarUpdate $request)
     {
-        /* @var User $user */
+        /** @var User $user */
         $user = $request->user();
         $file = $request->file('file');
 

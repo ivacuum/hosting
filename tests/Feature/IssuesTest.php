@@ -29,7 +29,7 @@ class IssuesTest extends TestCase
 
     public function testPostIssueAsUser()
     {
-        /* @var User $user */
+        /** @var User $user */
         $this->be($user = factory(User::class)->create());
 
         $this->expectsEvents(\App\Events\Stats\IssueAdded::class);

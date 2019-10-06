@@ -1,5 +1,5 @@
 @extends('docs.base', [
-  'meta_title' => 'FreeBSD · Сниппеты для выполнения различных задач',
+  'metaTitle' => 'FreeBSD · Сниппеты для выполнения различных задач',
 
   'breadcrumbs' => [
     ['title' => 'Документация', 'url' => 'docs'],

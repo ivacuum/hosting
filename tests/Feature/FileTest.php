@@ -16,7 +16,7 @@ class FileTest extends TestCase
 
     public function testDownload()
     {
-        /* @var File $file */
+        /** @var File $file */
         $file = factory(File::class)->create();
         $downloads = $file->downloads;
 

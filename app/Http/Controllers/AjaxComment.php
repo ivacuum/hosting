@@ -43,7 +43,7 @@ class AjaxComment extends Controller
             throw new CommentLimitExceededException;
         }
 
-        /* @var Comment $comment */
+        /** @var Comment $comment */
         $comment = new Comment([
             'html' => $text,
             'status' => $isGuest ? Comment::STATUS_PENDING : Comment::STATUS_PUBLISHED,

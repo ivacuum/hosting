@@ -40,7 +40,7 @@ class ParseWanikani extends Command
             }
 
             foreach (Radical::whereIn('meaning', array_keys($data))->get(['id', 'level', 'character', 'meaning', 'image']) as $radical) {
-                /* @var Radical $radical */
+                /** @var Radical $radical */
                 $row = $data[$radical->meaning];
 
                 $radical->timestamps = false;
@@ -94,7 +94,7 @@ class ParseWanikani extends Command
             }
 
             foreach (Kanji::whereIn('character', array_keys($data))->get(['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading', 'nanori']) as $kanji) {
-                /* @var Kanji $kanji */
+                /** @var Kanji $kanji */
                 $row = $data[$kanji->character];
 
                 $kanji->timestamps = false;
@@ -148,7 +148,7 @@ class ParseWanikani extends Command
             }
 
             foreach (Vocabulary::whereIn('character', array_keys($data))->get(['id', 'level', 'character', 'meaning', 'kana']) as $vocab) {
-                /* @var Vocabulary $vocab */
+                /** @var Vocabulary $vocab */
                 $row = $data[$vocab->character];
 
                 $vocab->timestamps = false;

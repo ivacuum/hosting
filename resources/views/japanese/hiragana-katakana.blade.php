@@ -14,7 +14,7 @@
   <feedback-form
     email="{{ Auth::user()->email ?? '' }}"
     title="Hiragana Katakana Trainer"
-    action="{{ path('Issues@store') }}"
+    action="{{ path([App\Http\Controllers\Issues::class, 'store']) }}"
     hide-title
   ></feedback-form>
 </div>

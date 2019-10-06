@@ -115,10 +115,13 @@ class Domain extends Model
         }
 
         $client = $this->getYandexPddApiClient();
-        $domain = $this->domain;
 
         $response = $client->post('admin/email/add', [
-            'query' => compact('domain', 'login', 'password'),
+            'query' => [
+                'login' => $login,
+                'domain' => $this->domain,
+                'password' => $password,
+            ],
         ]);
 
         $json = json_decode($response->getBody());
@@ -290,10 +293,7 @@ class Domain extends Model
     {
         $client = $this->getRegRuApiClient();
 
-        $domain_name = $this->domain;
-        $params = compact('domain_name');
-
-        $response = $client->get('domain/get_nss', ['query' => $params]);
+        $response = $client->get('domain/get_nss', ['query' => ['domain_name' => $this->domain]]);
 
         $json = json_decode($response->getBody());
 

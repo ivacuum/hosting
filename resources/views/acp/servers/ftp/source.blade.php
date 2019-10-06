@@ -13,11 +13,11 @@
 </h2>
 
 <h2>
-  <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $dir_up }}">
+  <a href="/acp/servers/{{ $server->id }}/ftp?dir={{ $dirUp }}">
     @svg (chevron-left)
   </a>
   {{ basename($file) }}
-  <span class="text-base text-muted">{{ $dir_up }}</span>
+  <span class="text-base text-muted">{{ $dirUp }}</span>
 </h2>
 
 <form action="/acp/servers/{{ $server->id }}/ftp/source" method="post">

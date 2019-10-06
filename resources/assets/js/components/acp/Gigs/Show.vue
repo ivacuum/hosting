@@ -27,7 +27,7 @@ export default {
 <template>
 <div v-if="resource">
   <div class="mt-4" v-if="resource.meta_image">
-    <img class="rounded image-fit-viewport" :src="resource.meta_image">
+    <img class="rounded image-fit-viewport" :src="resource.meta_image" alt="">
   </div>
   <button class="btn btn-default mt-4" @click.prevent="notify">
     {{ $t('trips.notify') }}

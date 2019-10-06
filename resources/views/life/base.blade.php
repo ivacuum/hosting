@@ -2,10 +2,10 @@
 
 @push('head')
 <meta content="article" property="og:type">
-<meta content="{{ $meta_title ?? '' }}" property="og:title">
+<meta content="{{ $metaTitle ?? '' }}" property="og:title">
 <meta content="{{ canonical() }}" property="og:url">
-<meta content="{{ $meta_image ?? '' }}" property="og:image">
-<meta content="{{ $meta_description ?? '' }}" property="og:description">
+<meta content="{{ $metaImage ?? '' }}" property="og:image">
+<meta content="{{ $metaDescription ?? '' }}" property="og:description">
 @endpush
 
 @section('content_header')

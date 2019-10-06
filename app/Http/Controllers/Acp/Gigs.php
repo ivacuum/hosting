@@ -8,9 +8,9 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Gigs extends Controller
 {
-    protected $api_only = true;
-    protected $sort_key = 'date';
-    protected $sortable_keys = ['date', 'views'];
+    protected $apiOnly = true;
+    protected $sortKey = 'date';
+    protected $sortableKeys = ['date', 'views'];
 
     public function index()
     {
@@ -18,7 +18,7 @@ class Gigs extends Controller
 
         $models = Model::orderBy($sortKey, $sortDir)
             ->paginate(500)
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
         return $this->modelResourceCollection($models);
     }
@@ -33,7 +33,7 @@ class Gigs extends Controller
 
     protected function newModelDefaults($model)
     {
-        /* @var Model $model */
+        /** @var Model $model */
         $model->date = now()->startOfDay();
         $model->slug = 'artist.'.now()->year;
         $model->status = Model::STATUS_HIDDEN;

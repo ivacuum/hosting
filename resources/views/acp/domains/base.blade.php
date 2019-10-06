@@ -1,14 +1,23 @@
 @extends('acp.layout')
 
 @section('model_menu')
-@component('tpl.list-group-item', ['href' => path("$self@whois", $model), 'isActive' => $view === "$tpl.whois"])
+@component('tpl.list-group-item', [
+  'href' => path([$controller, 'whois'], $model),
+  'isActive' => $view === "$tpl.whois",
+])
   {{ trans("$tpl.whois") }}
 @endcomponent
 @if ($model->yandex_user_id)
-  @component('tpl.list-group-item', ['href' => path("$self@mailboxes", $model), 'isActive' => $view === "$tpl.mailboxes"])
+  @component('tpl.list-group-item', [
+    'href' => path([$controller, 'mailboxes'], $model),
+    'isActive' => $view === "$tpl.mailboxes",
+  ])
     {{ trans("$tpl.mailboxes") }}
   @endcomponent
-  @component('tpl.list-group-item', ['href' => path("$self@nsRecords", $model), 'isActive' => $view === "$tpl.ns_records"])
+  @component('tpl.list-group-item', [
+    'href' => path([$controller, 'nsRecords'], $model),
+    'isActive' => $view === "$tpl.ns_records",
+  ])
     {{ trans("$tpl.ns_records") }}
   @endcomponent
 @endif
@@ -16,7 +25,10 @@
   {{ $model->domain }}
   @svg (external-link)
 @endcomponent
-@component('tpl.list-group-item', ['href' => path("$self@robots", $model), 'isActive' => $view === "$tpl.robots"])
+@component('tpl.list-group-item', [
+  'href' => path([$controller, 'robots'], $model),
+  'isActive' => $view === "$tpl.robots",
+])
   {{ trans("$tpl.robots") }}
 @endcomponent
 @endsection

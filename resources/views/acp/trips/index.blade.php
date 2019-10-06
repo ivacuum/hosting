@@ -39,10 +39,10 @@
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
       <td class="md:text-right">{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
       <td>
-        <a href="{{ path("$self@show", $model) }}">
+        <a href="{{ path([$controller, 'show'], $model) }}">
           {{ $model->title }}
         </a>
       </td>
@@ -84,18 +84,18 @@
       </td>
       <td class="md:text-right whitespace-no-wrap">
         @if ($model->photos_count > 0)
-          <a href="{{ path('Acp\Photos@index', [$model->getForeignKey() => $model]) }}">
+          <a href="{{ path([App\Http\Controllers\Acp\Photos::class, 'index'], [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->photos_count) }}
           </a>
         @endif
       </td>
       <td class="md:text-right">
         @if ($model->user_id === 1)
-          <a href="{{ path('Acp\Dev\Templates@show', str_replace('.', '_', $model->slug)) }}">
+          <a href="{{ path([App\Http\Controllers\Acp\Dev\Templates::class, 'show'], str_replace('.', '_', $model->slug)) }}">
             @svg (file-text-o)
           </a>
         @else
-          <a href="{{ path('Acp\Users@show', $model->user_id) }}">#{{ $model->user_id }}</a>
+          <a href="{{ path([App\Http\Controllers\Acp\Users::class, 'show'], $model->user_id) }}">#{{ $model->user_id }}</a>
         @endif
       </td>
     </tr>

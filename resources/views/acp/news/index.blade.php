@@ -7,7 +7,7 @@
     <th class="md:text-right whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
-    <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'title') }}</th>
+    <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'title') }}</th>
     <th></th>
     <th class="md:text-right whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
@@ -20,10 +20,10 @@
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
       <td class="md:text-right">{{ $model->id }}</td>
       <td>
-        <a href="{{ path("$self@show", $model) }}">
+        <a href="{{ path([$controller, 'show'], $model) }}">
           {{ $model->title }}
         </a>
       </td>
@@ -41,7 +41,7 @@
       </td>
       <td class="md:text-right whitespace-no-wrap">
         @if ($model->comments_count > 0)
-          <a href="{{ path('Acp\Comments@index', [$model->getForeignKey() => $model]) }}">
+          <a href="{{ path([App\Http\Controllers\Acp\Comments::class, 'index'], [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->comments_count) }}
           </a>
         @endif

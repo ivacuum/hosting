@@ -11,7 +11,7 @@
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
       <td>
         <input class="domains-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}">
       </td>
@@ -48,7 +48,7 @@
       <td>{{ $model->firstNsServer() }}</td>
       <td>
         @if (!$model->isExpired() && ($model->cms_url || ($model->alias_id and $model->alias->cms_url)))
-          @include('acp.domains.cms_login', ['cms_button_class' => 'btn btn-default text-sm py-1'])
+          @include('acp.domains.cms_login', ['cmsButtonClass' => 'btn btn-default text-sm py-1'])
         @endif
       </td>
     </tr>

@@ -1,6 +1,6 @@
 @extends('base', [
-  'meta_keywords' => 'firstvds, first, vds, 1vds, фёствдс, фест вдс, вдс, промо, код, промокод, скидка, купон',
-  'meta_description' => 'Скидка 25% на любой тариф для новых пользователей FirstVDS.',
+  'metaKeywords' => 'firstvds, first, vds, 1vds, фёствдс, фест вдс, вдс, промо, код, промокод, скидка, купон',
+  'metaDescription' => 'Скидка 25% на любой тариф для новых пользователей FirstVDS.',
 ])
 
 @section('content')

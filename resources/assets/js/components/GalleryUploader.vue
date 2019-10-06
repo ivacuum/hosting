@@ -39,7 +39,7 @@
     <div v-for="file in files">
       <div class="md:flex md:-mx-4 mt-4">
         <div class="md:w-1/6 md:px-4 text-center mt-2 mb-4">
-          <img class="screenshot" :src="file.thumbnail">
+          <img class="inline-block screenshot" :src="file.thumbnail">
         </div>
         <div class="md:w-1/2 md:px-4">
           <div>Ссылка:</div>

@@ -1,6 +1,6 @@
 <?php
 
-/* @var Illuminate\Database\Eloquent\Factory $factory */
+/** @var Illuminate\Database\Eloquent\Factory $factory */
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
@@ -9,4 +9,8 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'locale' => 'ru',
         'status' => App\User::STATUS_ACTIVE,
     ];
+});
+
+$factory->state(App\User::class, 'id', function () {
+    return ['id' => 1];
 });

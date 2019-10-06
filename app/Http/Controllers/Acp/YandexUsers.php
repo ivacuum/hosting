@@ -7,33 +7,35 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class YandexUsers extends Controller
 {
-    protected $show_with_count = ['domains'];
+    protected $showWithCount = ['domains'];
 
     public function index()
     {
         $models = Model::orderBy('account')
             ->paginate()
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
-        return view($this->view, compact('models'));
+        return view($this->view, ['models' => $models]);
     }
 
     public function create()
     {
         $model = $this->createGeneric();
 
-        $domains = Domain::yandexReady()->get();
-
-        return view($this->getView(), compact('domains', 'model'));
+        return view($this->getAcpView(), [
+            'model' => $model,
+            'domains' => Domain::yandexReady()->get(),
+        ]);
     }
 
     public function edit($id)
     {
         $model = $this->editGeneric($id);
 
-        $domains = Domain::yandexReady($model->id)->get();
-
-        return view($this->getView(), compact('domains', 'model'));
+        return view($this->getAcpView(), [
+            'model' => $model,
+            'domains' => Domain::yandexReady($model->id)->get(),
+        ]);
     }
 
     /**

@@ -44,7 +44,7 @@ class LifeTest extends TestCase
 
     public function testCountry()
     {
-        /* @var Trip $trip */
+        /** @var Trip $trip */
         $trip = factory(Trip::class)->state('city')->create();
 
         $this->get($trip->city->country->www())

@@ -14,7 +14,7 @@ class MyProfileUpdate extends FormRequest
 
     public function rules(): array
     {
-        /* @var \App\User $user */
+        /** @var \App\User $user */
         $user = $this->user();
 
         return [

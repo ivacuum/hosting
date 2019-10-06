@@ -6,7 +6,7 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Files extends Controller
 {
-    protected $sortable_keys = ['id', 'size', 'downloads'];
+    protected $sortableKeys = ['id', 'size', 'downloads'];
 
     public function index()
     {
@@ -14,9 +14,9 @@ class Files extends Controller
 
         $models = Model::orderBy($sortKey, $sortDir)
             ->paginate()
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
-        return view($this->view, compact('models'));
+        return view($this->view, ['models' => $models]);
     }
 
     /**
@@ -43,7 +43,7 @@ class Files extends Controller
         $file = request()->file('file');
         $folder = request('folder');
 
-        /* @var Model $model */
+        /** @var Model $model */
         $model = $this->newModel()->fill($this->requestDataForModel());
         $model->size = $file->getSize();
         $model->extension = $file->getClientOriginalExtension();

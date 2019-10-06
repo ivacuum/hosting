@@ -1,9 +1,9 @@
 @extends('dcpp.software', [
-  'software_title' => trans('dcpp.shakespeer'),
+  'softwareTitle' => trans('dcpp.shakespeer'),
   'software' => [
     ['version' => '0.9.2', 'id' => 33, 'size' => 3159067, 'icon' => 'apple', 'dl_suffix' => ''],
   ],
-  'software_screenshots' => $locale === 'en' ? [
+  'softwareScreenshots' => $locale === 'en' ? [
     [
       'full' => 'https://img.ivacuum.ru/g/091002/1_Km1HDRuJH0.png',
       'thumb' => 'https://img.ivacuum.ru/g/091002/t/1_Km1HDRuJH0.png',

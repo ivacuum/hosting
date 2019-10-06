@@ -28,8 +28,6 @@ Route::get('ajax/chat', 'AjaxChat@index')->middleware('auth');
 Route::post('ajax/chat', 'AjaxChat@store')->middleware('auth');
 Route::post('ajax/comment/{type}/{id}', 'AjaxComment@store');
 
-Route::get('about', 'Home@about');
-
 Route::get('comments/{comment}/confirm', 'CommentConfirm@update')->middleware('auth', 'can:confirm,comment');
 
 Route::get('contact', 'Issues@create');
@@ -179,5 +177,3 @@ Route::get('@{login}/travel/cities/{slug}', 'UserTravelCities@show');
 Route::get('@{login}/travel/countries', 'UserTravelCountries@index');
 Route::get('@{login}/travel/countries/{slug}', 'UserTravelCountries@show');
 Route::get('@{login}/travel/{slug}', 'UserTravelTrips@show');
-
-Route::get('.well-known/change-password', 'WellKnownChangePassword');

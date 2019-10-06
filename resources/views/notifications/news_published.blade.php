@@ -1,8 +1,8 @@
 {{-- Опубликована новость --}}
 {{ trans("notifications.{$classBasename}") }}
-<a class="link" href="{{ path('News@show', $notification->data['id']) }}">{{ Str::limit($notification->data['title'], 100) }}</a>
-<time class="text-muted"
-      datetime="{{ $notification->created_at->toDateString() }}"
-      title="{{ $notification->created_at->toAtomString() }}">
-  {{ $notification->created_at->diffForHumans() }}
-</time>
+<a class="link" href="{{ path([App\Http\Controllers\News::class, 'show'], $notification->data['id']) }}">{{ Str::limit($notification->data['title'], 100) }}</a>
+<time
+  class="text-muted"
+  datetime="{{ $notification->created_at->toDateString() }}"
+  title="{{ $notification->created_at->toAtomString() }}"
+>{{ $notification->created_at->diffForHumans() }}</time>

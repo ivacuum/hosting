@@ -4,14 +4,18 @@
 <div class="max-w-500px">
   <h3 class="mb-4">{{ trans('my.profile') }}</h3>
   <p><a class="btn btn-default" href="{{ Auth::user()->www() }}">{{ trans('my.go_to_profile') }}</a></p>
-  <form action="{{ path("$self@update") }}" method="post">
+  <form action="{{ path([App\Http\Controllers\MyProfile::class, 'update']) }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @method('put')
     @csrf
 
     <div class="mb-4">
       <label class="font-bold">{{ trans('my.username') }}</label>
-      <input class="form-control {{ $errors->has('username') ? 'is-invalid' : '' }}" name="username" value="{{ old('username', Auth::user()->login) }}">
+      <input
+        class="form-control {{ $errors->has('username') ? 'is-invalid' : '' }}"
+        name="username"
+        value="{{ old('username', Auth::user()->login) }}"
+      >
       <div class="invalid-feedback">{{ $errors->first('username') }}</div>
       <div class="form-help">
         @ru
@@ -24,7 +28,13 @@
 
     <div class="mb-4">
       <label class="font-bold">{{ trans('auth.email') }}</label>
-      <input required class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" value="{{ old('email', Auth::user()->email) }}">
+      <input
+        required
+        class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
+        type="email"
+        name="email"
+        value="{{ old('email', Auth::user()->email) }}"
+      >
       <div class="invalid-feedback">{{ $errors->first('email') }}</div>
     </div>
 
@@ -35,7 +45,7 @@
 
   <h3 class="mt-12">{{ trans('my.avatar') }}</h3>
   <avatar-uploader
-    action="{{ path('MyAvatar@update') }}"
+    action="{{ path([App\Http\Controllers\MyAvatar::class, 'update']) }}"
     current-avatar="{{ Auth::user()->avatarUrl() }}"
   ></avatar-uploader>
 </div>

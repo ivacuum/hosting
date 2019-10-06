@@ -7,7 +7,7 @@
     <th class="md:text-right">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
-    <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'title') }}</th>
+    <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'title') }}</th>
     <th></th>
     <th class="md:text-right">
       @include('acp.tpl.sortable-header', ['key' => 'size'])
@@ -19,10 +19,10 @@
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
       <td class="md:text-right">{{ $model->id }}</td>
       <td>
-        <a href="{{ path("$self@show", $model) }}">
+        <a href="{{ path([$controller, 'show'], $model) }}">
           {{ $model->title }}
         </a>
       </td>

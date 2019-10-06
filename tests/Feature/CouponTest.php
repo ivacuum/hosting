@@ -14,7 +14,7 @@ class CouponTest extends TestCase
 
         \Mail::fake();
 
-        $this->post(action('Coupons@firstvdsPost'), compact('email'))
+        $this->post(action('Coupons@firstvdsPost'), ['email' => $email])
             ->assertStatus(302);
 
         \Mail::assertQueued(FirstvdsPromocode::class, function (FirstvdsPromocode $mail) use ($email) {

@@ -4,12 +4,12 @@
 <h3 class="mb-4">{{ trans('my.password') }}</h3>
 
 <div class="max-w-500px">
-  <form action="{{ path("$self@update") }}" method="post">
+  <form action="{{ path([App\Http\Controllers\MyPassword::class, 'update']) }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @method('put')
     @csrf
 
-    @if ($has_password)
+    @if ($hasPassword)
       <div class="mb-4">
         <label class="font-bold">{{ trans('my.old_password') }}</label>
         <input
@@ -46,9 +46,9 @@
   </form>
 </div>
 
-@if ($has_password)
+@if ($hasPassword)
   <h3 class="mt-12">{{ trans('auth.forgot_password') }}</h3>
-  <form action="{{ path('Auth\ForgotPassword@sendResetLink') }}" method="post">
+  <form action="{{ path([App\Http\Controllers\Auth\ForgotPassword::class, 'sendResetLink']) }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 

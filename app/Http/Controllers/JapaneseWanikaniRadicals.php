@@ -43,7 +43,7 @@ class JapaneseWanikaniRadicals extends Controller
     public function show(string $meaning)
     {
         if (!request()->wantsJson()) {
-            return view('japanese.wanikani.vue', ['meta_replace' => ['radical' => $meaning]]);
+            return view('japanese.wanikani.vue', ['metaReplace' => ['radical' => $meaning]]);
         }
 
         $radical = Radical::where('meaning', $meaning)

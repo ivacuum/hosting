@@ -1,7 +1,7 @@
 <?php \Breadcrumbs::push(trans('life.english')); ?>
 
 @extends('life.base', [
-  'meta_title' => trans('life.english'),
+  'metaTitle' => trans('life.english'),
 ])
 
 {{--
@@ -17,7 +17,7 @@ https://english.stackexchange.com/questions/51209/translate-into-vs-translate-to
 <a id="irregular-verbs"></a>
 <h2>@ru Неправильные глаголы @en Irregular Verbs @endru</h2>
 <?php
-$irregular_verbs = [
+$irregularVerbs = [
   ['be', 'was', 'been'],
   ['bear', 'bore', 'born(e)'],
   ['beat', 'beat', 'beaten'],
@@ -140,11 +140,11 @@ $irregular_verbs = [
   </tr>
   </thead>
   <tbody>
-  @foreach ($irregular_verbs as [$infinitive, $past_simple, $past_participle])
+  @foreach ($irregularVerbs as [$infinitive, $pastSimple, $pastParticiple])
     <tr>
       <td>{{ $infinitive }}</td>
-      <td>{{ $past_simple }}</td>
-      <td>{{ $past_participle }}</td>
+      <td>{{ $pastSimple }}</td>
+      <td>{{ $pastParticiple }}</td>
     </tr>
   @endforeach
   </tbody>

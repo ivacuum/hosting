@@ -7,33 +7,33 @@
 <head>
   <meta charset="utf-8">
 @endif
-  <title>{{ ViewHelper::metaTitle($meta_title ?? '', $view, $meta_replace ?? []) }}</title>
+  <title>{{ $metaTitle ?? ViewHelper::metaTitle($view, $metaReplace ?? []) }}</title>
 @if (!Request::pjax())
   <link rel="dns-prefetch" href="https://life.ivacuum.org">
   <link rel="dns-prefetch" href="https://ivacuum.org">
   <meta http-equiv="x-pjax-version" content="2">
   <meta name="format-detection" content="telephone=no">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="keywords" content="{{ ViewHelper::metaKeywords($meta_keywords ?? '', $view, $meta_replace ?? []) }}">
-  <meta name="description" content="{{ ViewHelper::metaDescription($meta_description ?? '', $view, $meta_replace ?? []) }}">
+  <meta name="keywords" content="{{ $metaKeywords ?? ViewHelper::metaKeywords($view, $metaReplace ?? []) }}">
+  <meta name="description" content="{{ $metaDescription ?? ViewHelper::metaDescription($view, $metaReplace ?? []) }}">
   <meta name="theme-color" content="#e7e7e7">
   <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
   <link rel="icon" href="/apple-touch-icon.png">
   <link rel="canonical" href="{{ canonical() }}">
   @yield('pagination_seo')
-  @if (Str::contains($css_classes, ['android', 'chrome', 'opera']) && in_array($locale, ['en', 'ru']))
+  @if (Str::contains($cssClasses, ['android', 'chrome', 'opera']) && in_array($locale, ['en', 'ru']))
     <link rel="manifest" href="/pwa-manifest-{{ $locale }}.json">
     <script async src="/assets/service-worker-installer.js"></script>
   @endif
-  @if (empty($no_language_selector))
-    <link rel="alternate" hreflang="en" href="{{ url("en/{$request_uri}") }}">
-    <link rel="alternate" hreflang="ru" href="{{ url($request_uri) }}">
+  @if (empty($noLanguageSelector))
+    <link rel="alternate" hreflang="en" href="{{ url("en/{$requestUri}") }}">
+    <link rel="alternate" hreflang="ru" href="{{ url($requestUri) }}">
   @endif
   <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">
   <link rel="stylesheet" href="{{ mix('/assets/tailwind.css') }}">
   @stack('head')
 </head>
-<body class="flex flex-col font-tabular-nums min-h-full {{ $body_classes ?? 'body-with-bottom-tabbar' }} {{ optional(Auth::user())->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ $css_classes }}" data-self="{{ $self }}" data-view="{{ $view }}">
+<body class="flex flex-col font-tabular-nums min-h-full {{ $bodyClasses ?? 'body-with-bottom-tabbar' }} {{ optional(Auth::user())->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ $cssClasses }}" data-self="{{ $self }}" data-view="{{ $view }}">
 @section('body')
 @section('header-navbar')
   @include('tpl.header-navbar')
@@ -42,33 +42,48 @@
 @section('bottom-tabbar')
 <header class="bottom-tabbar-container fixed bottom-0 left-0 right-0 flex items-center justify-center md:hidden revealed js-bottom-tabbar-reveal">
   <nav class="flex justify-between text-center mx-1 w-full">
-    <a class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ $self === 'Home' ? 'active' : '' }}" href="{{ path('Home@index') }}">
+    <a
+      class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ $controller === App\Http\Controllers\Home::class ? 'active' : '' }}"
+      href="{{ path([App\Http\Controllers\Home::class, 'index']) }}"
+    >
       <div>
         @svg (home)
       </div>
       <div class="text-2xs sm:text-sm mt-1 sm:mt-0 sm:ml-2">{{ trans('menu.home') }}</div>
     </a>
-    <a class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ $self === 'Life' ? 'active' : '' }}" href="{{ path('Life@index') }}">
+    <a
+      class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ $controller === App\Http\Controllers\Life::class ? 'active' : '' }}"
+      href="{{ path([App\Http\Controllers\Life::class, 'index']) }}"
+    >
       <div>
         @svg (file-text-o)
       </div>
       <div class="text-2xs sm:text-sm mt-1 sm:mt-0 sm:ml-2">{{ trans('menu.life') }}</div>
     </a>
-    <a class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ $self === 'Photos' ? 'active' : '' }}" href="{{ path('Photos@trips') }}">
+    <a
+      class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ $controller === App\Http\Controllers\Photos::class ? 'active' : '' }}"
+      href="{{ path([App\Http\Controllers\Photos::class, 'trips']) }}"
+    >
       <div>
         @svg (picture-o)
       </div>
       <div class="text-2xs sm:text-sm mt-1 sm:mt-0 sm:ml-2">{{ trans('photos.index') }}</div>
     </a>
     @if (Auth::check())
-      <a class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ Str::startsWith(request()->path(), 'my/') ? 'active' : '' }}" href="{{ path('MyProfile@edit') }}">
+      <a
+        class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ Str::startsWith(request()->path(), 'my/') ? 'active' : '' }}"
+        href="{{ path([App\Http\Controllers\MyProfile::class, 'edit']) }}"
+      >
         <div>
           @svg (user-circle-o)
         </div>
         <div class="text-2xs sm:text-sm mt-1 sm:mt-0 sm:ml-2">{{ trans('my.profile') }}</div>
       </a>
     @else
-      <a class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ $view === 'auth.login' ? 'active' : '' }}" href="{{ path('Auth\SignIn@index') }}">
+      <a
+        class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ $controller === App\Http\Controllers\Auth\SignIn::class ? 'active' : '' }}"
+        href="{{ path([App\Http\Controllers\Auth\SignIn::class, 'index']) }}"
+      >
         <div>
           @svg (sign-in)
         </div>
@@ -84,14 +99,14 @@
     @include('tpl.breadcrumbs', ['breadcrumbs' => $breadcrumbs ?? Breadcrumbs::get()])
   @show
   <div class="js-flash-notification">
-    @if ($first_time_visit && !Auth::check() && $locale !== $locale_preffered && empty($no_language_selector) && !$is_crawler)
+    @if ($firstTimeVisit && !Auth::check() && $locale !== $localePreffered && empty($noLanguageSelector) && !$isCrawler)
       <div class="alert alert-warning my-0 px-0 rounded-none">
         <div class="container flex">
           <div class="mr-auto">
             @ru
-              Hey, looks like you might find useful the <a class="link" href="{{ url("en/{$request_uri}") }}">English version</a> of this page
+              Hey, looks like you might find useful the <a class="link" href="{{ url("en/{$requestUri}") }}">English version</a> of this page
             @en
-              Похоже, что вам может пригодиться версия этой страницы <a class="link" href="{{ url($request_uri) }}">на русском языке</a>
+              Похоже, что вам может пригодиться версия этой страницы <a class="link" href="{{ url($requestUri) }}">на русском языке</a>
             @endru
           </div>
           <div>
@@ -120,7 +135,7 @@
       </div>
     @endif
   </div>
-  <div class="{{ $content_container_classes ?? 'container mt-4' }} {{ $content_container_extra_classes ?? '' }}" id="{{ $content_container_id ?? 'pjax_container' }}">
+  <div class="{{ $contentContainerClasses ?? 'container mt-4' }} {{ $contentContainerExtraClasses ?? '' }}" id="{{ $contentContainerId ?? 'pjax_container' }}">
 
 @endif
 @yield('content_header')
@@ -140,10 +155,10 @@
           <div class="mr-3">&copy; {{ date('Y') }} vacuum</div>
         @show
         @section('i18n')
-          @if (empty($no_language_selector))
+          @if (empty($noLanguageSelector))
             <div class="mr-3">
               @ru
-                <a class="flex flex-wrap items-center whitespace-no-wrap" href="{{ url("en/{$request_uri}") }}" lang="en">
+                <a class="flex flex-wrap items-center whitespace-no-wrap" href="{{ url("en/{$requestUri}") }}" lang="en">
                   <div class="mr-1">
                     <svg class="flag-16 svg-shadow" viewBox="0 0 640 480">
                       <g fill-rule="evenodd">
@@ -159,7 +174,7 @@
                   <div>In English</div>
                 </a>
               @en
-                <a class="flex flex-wrap items-center whitespace-no-wrap" href="{{ url($request_uri) }}" lang="ru">
+                <a class="flex flex-wrap items-center whitespace-no-wrap" href="{{ url($requestUri) }}" lang="ru">
                   <div class="mr-1">
                     <svg class="flag-16 svg-shadow" viewBox="0 0 640 480">
                       <g fill-rule="evenodd" stroke-width="1pt">

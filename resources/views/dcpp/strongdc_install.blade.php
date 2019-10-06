@@ -1,5 +1,5 @@
 @extends('dcpp.base', [
-  'no_language_selector' => $locale === 'ru',
+  'noLanguageSelector' => $locale === 'ru',
 ])
 
 @section('content_header')

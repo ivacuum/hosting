@@ -1,5 +1,5 @@
 @extends('acp.list', [
-  'search_form' => true,
+  'searchForm' => true,
 ])
 
 @section('heading-after-search')
@@ -21,19 +21,22 @@
     <th class="whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'level', 'order' => 'asc'])
     </th>
-    <th class="whitespace-no-wrap">{{ ViewHelper::modelFieldTrans($model_tpl, 'character') }}</th>
+    <th class="whitespace-no-wrap">{{ ViewHelper::modelFieldTrans($modelTpl, 'character') }}</th>
     <th class="whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'meaning', 'order' => 'asc'])
     </th>
-    <th>{{ ViewHelper::modelFieldTrans($model_tpl, 'sentences') }}</th>
+    <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'sentences') }}</th>
   </tr>
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
       <td>{{ $model->level }}</td>
       <td class="whitespace-no-wrap">
-        <a class="bg-vocab block font-bold pb-1 px-2 rounded text-center text-white hover:text-gray-200" href="{{ path("$self@show", $model) }}">
+        <a
+          class="bg-vocab block font-bold pb-1 px-2 rounded text-center text-white hover:text-gray-200"
+          href="{{ path([$controller, 'show'], $model) }}"
+        >
           <span class="inline-block text-4xl ja-character ja-shadow">{{ $model->character }}</span>
         </a>
       </td>

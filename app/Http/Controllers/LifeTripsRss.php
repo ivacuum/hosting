@@ -16,15 +16,15 @@ class LifeTripsRss extends Controller
             ->where('status', Trip::STATUS_PUBLISHED)
             ->where('meta_image', '<>', '')
             ->take(50)
-            ->orderBy('date_start', 'desc')
+            ->orderByDesc('date_start')
             ->get()
             ->map(function (Trip $trip) {
                 $link = url($trip->www());
-                $cover = '<p><a href="'.$link.'?from=rss-image"><img src="'.$trip->metaImage().'" alt=""></a></p>';
+                $cover = '<p><a href="' . $link . '?from=rss-image"><img src="' . $trip->metaImage() . '" alt=""></a></p>';
 
                 return [
                     'title' => htmlspecialchars($trip->metaTitle()),
-                    'link' => $link.'?from=rss-title',
+                    'link' => $link . '?from=rss-title',
                     'guid' => $link,
                     'description' => "<p>{$trip->metaDescription()}</p>{$cover}",
                     'pubDate' => $trip->date_start->toRfc2822String(),
@@ -32,7 +32,7 @@ class LifeTripsRss extends Controller
             });
 
         return response()
-            ->view('life.feed-rss', compact('items', 'meta'))
+            ->view('life.feed-rss', ['items' => $items, 'meta' => $meta])
             ->header('Content-Type', 'application/xml');
     }
 }

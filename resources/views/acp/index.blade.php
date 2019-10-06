@@ -2,7 +2,7 @@
 /** @var string $locale */
 ?>
 @extends('base', [
-  'body_classes' => '',
+  'bodyClasses' => '',
 ])
 
 @section('body')

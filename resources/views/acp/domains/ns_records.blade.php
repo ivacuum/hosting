@@ -7,7 +7,7 @@
 @section('content')
 {{--
 @if ($model->domain_control and ($model->ns != 'dns1.yandex.net dns2.yandex.net' and $model->ns != 'dns1.yandex.ru dns2.yandex.ru'))
-  <form action="{{ path("$self@setYandexNs", $model) }}" method="post">
+  <form action="{{ path([$controller, 'setYandexNs'], $model) }}" method="post">
     @csrf
     <p>
       <button class="btn btn-default">
@@ -18,7 +18,7 @@
 @endif
 
 @if (!$model->yandex_user_id)
-  <form action="{{ path("$self@setYandexPdd", $model) }}" method="post">
+  <form action="{{ path([$controller, 'setYandexPdd'], $model) }}" method="post">
     @csrf
     <p>
       <button class="btn btn-default">
@@ -39,7 +39,7 @@
         <th></th>
       </tr>
     </thead>
-    <tr class="ns-record-container" data-action="{{ path("$self@addNsRecord", $model) }}">
+    <tr class="ns-record-container" data-action="{{ path([$controller, 'addNsRecord'], $model) }}">
       <td>
         <input class="form-control form-control-sm text-right" name="subdomain" value="@">
       </td>
@@ -120,12 +120,21 @@
         <td>
           <div class="presentation">
             <a class="pseudo js-ns-record-edit mr-2" href="#">настроить</a>
-            <a class="pseudo js-ns-record-delete" data-id="{{ $record->record_id }}" data-action="{{ path("$self@deleteNsRecord", $model) }}" href="#">
+            <a
+              class="pseudo js-ns-record-delete"
+              data-id="{{ $record->record_id }}"
+              data-action="{{ path([$controller, 'deleteNsRecord'], $model) }}"
+              href="#"
+            >
               @svg (times)
             </a>
           </div>
           <div hidden class="edit">
-            <a class="pseudo js-ns-record-save mr-2" data-action="{{ path("$self@editNsRecord", $model) }}" href="#">сохранить</a>
+            <a
+              class="pseudo js-ns-record-save mr-2"
+              data-action="{{ path([$controller, 'editNsRecord'], $model) }}"
+              href="#"
+            >сохранить</a>
             <a class="pseudo js-ns-record-cancel" href="#">
               @svg (rotate-left)
             </a>
@@ -135,7 +144,7 @@
     @endforeach
   </table>
 
-  <form class="flex flex-wrap mt-4" action="{{ path("$self@setServerNsRecords", $model) }}" method="post">
+  <form class="flex flex-wrap mt-4" action="{{ path([$controller, 'setServerNsRecords'], $model) }}" method="post">
     @csrf
     <div class="mr-1">
       <select class="custom-select" name="server">

@@ -76,7 +76,7 @@ class EmailWhoisChanges
         register_shutdown_function(function () use ($domain, $diff, $data) {
             $this->mailer->send(
                 'emails.whois.changed',
-                compact('diff', 'data'),
+                ['diff' => $diff, 'data' => $data],
                 function ($mail) use ($domain) {
                     $mail->to('domains@ivacuum.ru')
                         ->subject($domain->domain);

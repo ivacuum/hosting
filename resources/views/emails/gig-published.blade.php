@@ -16,7 +16,10 @@
 {{ trans('mail.read') }}
 @endcomponent
 
-@component('mail::button', ['color' => 'light', 'url' => $email->signedLink(path_locale('MySettings@edit', [], false, $user->locale))])
+@component('mail::button', [
+  'color' => 'light',
+  'url' => $email->signedLink(path_locale([App\Http\Controllers\MySettings::class, 'edit'], [], false, $user->locale)),
+])
 {{ trans('mail.settings') }}
 @endcomponent
 

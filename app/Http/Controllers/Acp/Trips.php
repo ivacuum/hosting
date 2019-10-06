@@ -8,33 +8,33 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Trips extends Controller
 {
-    protected $api_only = true;
-    protected $sort_key = 'date_start';
-    protected $sortable_keys = ['date_start', 'views', 'comments_count', 'photos_count'];
-    protected $show_with_count = ['comments', 'photos'];
+    protected $apiOnly = true;
+    protected $sortKey = 'date_start';
+    protected $sortableKeys = ['date_start', 'views', 'comments_count', 'photos_count'];
+    protected $showWithCount = ['comments', 'photos'];
 
     public function index()
     {
         $q = request('q');
         $status = request('status');
-        $city_id = request('city_id');
-        $user_id = request('user_id');
-        $country_id = request('country_id');
+        $cityId = request('city_id');
+        $userId = request('user_id');
+        $countryId = request('country_id');
 
         [$sortKey, $sortDir] = $this->getSortParams();
 
         $models = Model::with('user')
             ->withCount('comments', 'photos')
-            ->when($city_id, function (Builder $query) use ($city_id) {
-                return $query->where('city_id', $city_id);
+            ->when($cityId, function (Builder $query) use ($cityId) {
+                return $query->where('city_id', $cityId);
             })
-            ->when($country_id, function (Builder $query) use ($country_id) {
-                return $query->whereHas('city.country', function (Builder $query) use ($country_id) {
-                    $query->where('country_id', $country_id);
+            ->when($countryId, function (Builder $query) use ($countryId) {
+                return $query->whereHas('city.country', function (Builder $query) use ($countryId) {
+                    $query->where('country_id', $countryId);
                 });
             })
-            ->when($user_id, function (Builder $query) use ($user_id) {
-                return $query->where('user_id', $user_id);
+            ->when($userId, function (Builder $query) use ($userId) {
+                return $query->where('user_id', $userId);
             })
             ->unless(null === $status, function (Builder $query) use ($status) {
                 return $query->where('status', $status);
@@ -46,7 +46,7 @@ class Trips extends Controller
             })
             ->orderBy($sortKey, $sortDir)
             ->paginate(50)
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
         return $this->modelResourceCollection($models);
     }
@@ -58,7 +58,7 @@ class Trips extends Controller
 
     protected function newModelDefaults($model)
     {
-        /* @var Model $model */
+        /** @var Model $model */
         $model->slug = 'city.'.now()->year;
         $model->status = Model::STATUS_HIDDEN;
         $model->date_end = now()->startOfDay();
@@ -94,7 +94,7 @@ class Trips extends Controller
 
     protected function storeModel()
     {
-        /* @var City $city */
+        /** @var City $city */
         $city = City::findOrFail(request('city_id'));
 
         $data = $this->requestDataForModel();

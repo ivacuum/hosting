@@ -9,7 +9,7 @@ class User extends Resource
 {
     public function toArray($request)
     {
-        /* @var \App\User $me */
+        /** @var \App\User $me */
         $me = $request->user();
 
         return [
@@ -24,7 +24,7 @@ class User extends Resource
             'public_name' => $this->publicName(),
             'created_at' => \ViewHelper::dateShort($this->created_at),
 
-            'show_url' => $this->when($me->can('show', 'App\User'), path('Acp\Users@show', $this)),
+            'show_url' => $this->when($me->can('show', 'App\User'), path(['App\Http\Controllers\Acp\Users', 'show'], $this)),
         ];
     }
 }

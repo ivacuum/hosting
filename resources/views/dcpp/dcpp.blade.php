@@ -1,16 +1,16 @@
 @extends('dcpp.software', [
-  'software_title' => trans('dcpp.dcpp'),
+  'softwareTitle' => trans('dcpp.dcpp'),
   'software' => [
     ['version' => '0.782', 'id' => 143, 'size' => 22703161, 'dl_suffix' => ''],
     ['version' => '0.770', 'id' => 110, 'dl_suffix' => ''],
   ],
-  'software_screenshots' => [
+  'softwareScreenshots' => [
     [
       'full' => 'https://img.ivacuum.ru/g/091002/1_9Xb39T30l4.gif',
       'thumb' => 'https://img.ivacuum.ru/g/091002/s/1_9Xb39T30l4.gif',
     ],
   ],
-  'developer_site' => 'http://dcplusplus.sourceforge.net/',
+  'developerSite' => 'http://dcplusplus.sourceforge.net/',
 ])
 
 @section('about_software')

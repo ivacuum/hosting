@@ -8,7 +8,7 @@ use Ivacuum\Generic\Utilities\ExifHelper;
 
 class Photos extends Controller
 {
-    protected $sortable_keys = ['id', 'views'];
+    protected $sortableKeys = ['id', 'views'];
 
     public function index()
     {
@@ -23,9 +23,12 @@ class Photos extends Controller
             ->forTag(request('tag_id'))
             ->orderBy($sortKey, $sortDir)
             ->paginate($onPage)
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
-        return view($this->view, compact('filter', 'models'));
+        return view($this->view, [
+            'filter' => $filter,
+            'models' => $models,
+        ]);
     }
 
     /**

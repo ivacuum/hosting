@@ -17,10 +17,18 @@ Mousetrap.bind('right', () => {
   <div class="lg:w-5/6 lg:px-4 mb-4">
     <div class="mobile-wide relative text-center">
       @if (null !== $next)
-        <a class="absolute top-0 w-1/2 h-full z-10 left-0 js-pjax js-pjax-no-dim" id="prev_page" href="{{ path("$self@show", [$next->id, 'city_id' => $city_id, 'country_id' => $country_id, 'tag_id' => $tag_id, 'trip_id' => $trip_id]) }}">&nbsp;</a>
+        <a
+          class="absolute top-0 w-1/2 h-full z-10 left-0 js-pjax js-pjax-no-dim"
+          id="prev_page"
+          href="{{ path([App\Http\Controllers\Photos::class, 'show'], [$next->id, 'city_id' => $cityId, 'country_id' => $countryId, 'tag_id' => $tagId, 'trip_id' => $tripId]) }}"
+        >&nbsp;</a>
       @endif
       @if (null !== $prev)
-        <a class="absolute top-0 w-1/2 h-full z-10 left-1/2 js-pjax js-pjax-no-dim" id="next_page" href="{{ path("$self@show", [$prev->id, 'city_id' => $city_id, 'country_id' => $country_id, 'tag_id' => $tag_id, 'trip_id' => $trip_id]) }}">&nbsp;</a>
+        <a
+          class="absolute top-0 w-1/2 h-full z-10 left-1/2 js-pjax js-pjax-no-dim"
+          id="next_page"
+          href="{{ path([App\Http\Controllers\Photos::class, 'show'], [$prev->id, 'city_id' => $cityId, 'country_id' => $countryId, 'tag_id' => $tagId, 'trip_id' => $tripId]) }}"
+        >&nbsp;</a>
       @endif
       <div class="inline-block relative">
         @if (null !== $next)

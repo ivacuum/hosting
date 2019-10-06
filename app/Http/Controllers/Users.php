@@ -8,14 +8,14 @@ class Users extends Controller
     {
         $users = User::active()->orderBy('id')
             ->simplePaginate()
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
-        return view($this->view, compact('users'));
+        return view($this->view, ['users' => $users]);
     }
 
     public function show(int $id)
     {
-        /* @var User $user */
+        /** @var User $user */
         $user = User::withCount(['comments', 'images', 'torrents'])
             ->findOrFail($id);
 
@@ -23,7 +23,7 @@ class Users extends Controller
 
         \Breadcrumbs::push($user->publicName());
 
-        return view($this->view, compact('user'));
+        return view($this->view, ['user' => $user]);
     }
 
     protected function appendBreadcrumbs(): void

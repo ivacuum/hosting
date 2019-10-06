@@ -1,7 +1,7 @@
 @extends('life.base', [
-  'meta_title' => $trip->metaTitle(),
-  'meta_image' => $trip->metaImage(),
-  'meta_description' => $trip->metaDescription(),
+  'metaTitle' => $trip->metaTitle(),
+  'metaImage' => $trip->metaImage(),
+  'metaDescription' => $trip->metaDescription(),
 ])
 
 @section('content_header')
@@ -12,7 +12,7 @@
   <h1 class="h2 mb-1 mr-2">{{ $trip->title }}</h1>
   @include('tpl.city-map-button', ['city' => $trip->city])
   @if (optional(auth()->user())->isRoot())
-    <a class="btn btn-default text-sm py-1" href="{{ UrlHelper::edit('Acp\Trips', $trip) }}">
+    <a class="btn btn-default text-sm py-1" href="{{ UrlHelper::edit(App\Http\Controllers\Acp\Trips::class, $trip) }}">
       @svg (pencil)
     </a>
   @endif
@@ -35,7 +35,7 @@
   @if (!Auth::user()->notify_trips)
     <div class="alert alert-info mt-6">
       <div class="mb-2">{{ trans('life.newsletter.description') }}</div>
-      <form action="{{ path('Subscriptions@update') }}" method="post">
+      <form action="{{ path([App\Http\Controllers\Subscriptions::class, 'update']) }}" method="post">
         {{ ViewHelper::inputHiddenMail() }}
         <button class="btn btn-default text-sm py-1 small-caps svg-flex svg-label">
           @svg (mail)
@@ -51,7 +51,10 @@
   <div class="alert alert-info mt-6">
     <div class="mb-2">{{ trans('life.newsletter.description') }}</div>
     <div class="flex">
-      <a class="btn btn-default text-sm py-1 svg-flex svg-label small-caps mr-4" href="{{ path('Subscriptions@edit', ['trips' => 1]) }}">
+      <a
+        class="btn btn-default text-sm py-1 svg-flex svg-label small-caps mr-4"
+        href="{{ path([App\Http\Controllers\Subscriptions::class, 'edit'], ['trips' => 1]) }}"
+      >
         @svg (mail)
         {{ trans('mail.subscribe') }}
       </a>

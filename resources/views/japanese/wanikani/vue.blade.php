@@ -2,7 +2,7 @@
 /** @var string $locale */
 ?>
 @extends('base', [
-  'content_container_id' => 'vue_app',
+  'contentContainerId' => 'vue_app',
 ])
 
 @push('js_vendor')

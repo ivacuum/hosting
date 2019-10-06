@@ -15,7 +15,7 @@ class RouteServiceProvider extends ServiceProvider
 
     public function map()
     {
-        \Route::namespace($this->namespace)
+        \Route::prefix('')
             ->group(base_path('routes/simple.php'));
 
         \Route::middleware(['web', 'auth', 'admin'])
@@ -26,5 +26,8 @@ class RouteServiceProvider extends ServiceProvider
         \Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
+
+        \Route::middleware('web')
+            ->group(base_path('routes/web-invokable.php'));
     }
 }

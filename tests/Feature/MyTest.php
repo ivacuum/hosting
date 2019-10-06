@@ -10,9 +10,8 @@ class MyTest extends TestCase
 
     public function testIndex()
     {
-        $this->be(factory(User::class)->make());
-
-        $this->get(action('My@index'))
+        $this->be(factory(User::class)->state('id')->make())
+            ->get(action('My@index'))
             ->assertStatus(200);
     }
 }

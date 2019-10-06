@@ -1,5 +1,5 @@
 @extends('docs.base', [
-  'meta_title' => 'Nginx',
+  'metaTitle' => 'Nginx',
 
   'breadcrumbs' => [
     ['title' => 'Документация', 'url' => 'docs'],

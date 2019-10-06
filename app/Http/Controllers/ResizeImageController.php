@@ -4,14 +4,14 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Ivacuum\Generic\Services\ImageConverter;
 
-class Resize extends Controller
+class ResizeImageController extends Controller
 {
     protected $whitelist = [
         'https://life.ivacuum.ru/',
         'https://life.ivacuum.org/',
     ];
 
-    public function image($width, $height, Client $client)
+    public function __invoke(int $width, int $height, Client $client)
     {
         $image = request('image');
 
@@ -23,8 +23,8 @@ class Resize extends Controller
         abort_unless($this->isWhitelisted($info['dirname']), 403);
 
         // От 50 до 2000px
-        $width = (int) min(2000, max(50, $width));
-        $height = (int) min(2000, max(50, $height));
+        $width = min(2000, max(50, $width));
+        $height = min(2000, max(50, $height));
 
         $file = tmpfile();
         $source = stream_get_meta_data($file)['uri'];

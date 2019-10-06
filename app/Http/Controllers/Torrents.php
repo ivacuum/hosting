@@ -18,18 +18,18 @@ class Torrents extends Controller
         $q = mb_strlen($q) > 1 ? $q : null;
         $category = null;
         $fulltext = request('fulltext');
-        $category_id = request('category_id');
+        $categoryId = request('category_id');
 
-        abort_if($category_id && null === $category = \TorrentCategoryHelper::find($category_id), 404);
+        abort_if($categoryId && null === $category = \TorrentCategoryHelper::find($categoryId), 404);
 
         $torrents = Torrent::query();
 
         if ($q) {
-            $ids = Torrent::search($q, function (SphinxQL $builder) use ($category_id, $fulltext, $q) {
+            $ids = Torrent::search($q, function (SphinxQL $builder) use ($categoryId, $fulltext, $q) {
                 $builder = $builder->match($fulltext ? '*' : 'title', SearchSynonym::addSynonymsToQuery($q), true);
 
-                if ($category_id) {
-                    $builder = $builder->where('category_id', '=', (int) $category_id);
+                if ($categoryId) {
+                    $builder = $builder->where('category_id', '=', (int) $categoryId);
                 }
 
                 return $builder->execute();
@@ -42,24 +42,28 @@ class Torrents extends Controller
 
         $torrents = $torrents->published()
             ->orderBy('registered_at', 'desc')
-            ->when(!$q && null !== $category, function (Builder $query) use ($category_id) {
-                $ids = \TorrentCategoryHelper::selfAndDescendantsIds($category_id);
+            ->when(!$q && null !== $category, function (Builder $query) use ($categoryId) {
+                $ids = \TorrentCategoryHelper::selfAndDescendantsIds($categoryId);
 
                 event(new \App\Events\Stats\TorrentFilteredByCategory);
 
                 return $query->whereIn('category_id', $ids);
             })
             ->simplePaginate(25, Torrent::LIST_COLUMNS)
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
         if (request()->wantsJson()) {
             return new TorrentCollection($torrents);
         }
 
-        $tree = \TorrentCategoryHelper::tree();
-        $stats = Torrent::statsByCategories();
-
-        return view($this->view, compact('category_id', 'fulltext', 'q', 'torrents', 'tree', 'stats'));
+        return view($this->view, [
+            'q' => $q,
+            'tree' => \TorrentCategoryHelper::tree(),
+            'stats' => Torrent::statsByCategories(),
+            'fulltext' => $fulltext,
+            'torrents' => $torrents,
+            'categoryId' => $categoryId,
+        ]);
     }
 
     public function create()
@@ -76,7 +80,7 @@ class Torrents extends Controller
             ->take(50)
             ->get();
 
-        return view($this->view, compact('comments'));
+        return view($this->view, ['comments' => $comments]);
     }
 
     public function faq()
@@ -107,9 +111,9 @@ class Torrents extends Controller
             ->withCount('commentsPublished AS comments')
             ->orderBy('registered_at', 'desc')
             ->simplePaginate(null, ['id'])
-            ->withPath(path("{$this->class}@my"));
+            ->withPath(path([$this->controller, 'my']));
 
-        return view($this->view, compact('torrents'));
+        return view($this->view, ['torrents' => $torrents]);
     }
 
     public function show(Torrent $torrent)
@@ -118,25 +122,25 @@ class Torrents extends Controller
 
         event(new \App\Events\Stats\TorrentViewed($torrent->id));
 
-        $comments = $torrent->commentsPublished()->with('user')->orderBy('created_at')->get();
-
-        $meta_title = $torrent->title;
-
-        return view($this->view, compact('comments', 'meta_title', 'torrent'));
+        return view($this->view, [
+            'torrent' => $torrent,
+            'comments' => $torrent->commentsPublished()->with('user')->orderBy('created_at')->get(),
+            'metaTitle' => $torrent->title,
+        ]);
     }
 
     public function store(Rto $rto)
     {
         $input = request('input');
-        $category_id = request('category_id');
+        $categoryId = request('category_id');
 
         request()->validate([
             'input' => 'required',
             'category_id' => TorrentCategoryId::rules(),
         ]);
 
-        if (($topic_id = $rto->findTopicId($input)) > 0) {
-            $torrent = Torrent::where('rto_id', $topic_id)->first();
+        if (($topicId = $rto->findTopicId($input)) > 0) {
+            $torrent = Torrent::where('rto_id', $topicId)->first();
 
             if (null !== $torrent) {
                 event(new \App\Events\Stats\TorrentDuplicateFound);
@@ -163,7 +167,7 @@ class Torrents extends Controller
             'user_id' => request()->user()->id,
             'info_hash' => $data['info_hash'],
             'announcer' => $data['announcer'],
-            'category_id' => $category_id,
+            'category_id' => $categoryId,
             'registered_at' => now(),
             'related_query' => '',
         ]);

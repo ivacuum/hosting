@@ -4,7 +4,7 @@
 ?>
 
 @extends('base', [
-  'meta_title' => "Топ 10 vk.com/{$vkpage} за " . $date->formatLocalized('%e %B'),
+  'metaTitle' => "Топ 10 vk.com/{$vkpage} за " . $date->formatLocalized('%e %B'),
 ])
 
 @section('content')

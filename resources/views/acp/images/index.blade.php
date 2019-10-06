@@ -54,8 +54,8 @@
           </a>
         </td>
         <td class="text-center">
-          <a class="screenshot-link" href="{{ path("$self@show", $model) }}">
-            <img class="screenshot" src="{{ $model->thumbnailSecretUrl() }}" alt="">
+          <a class="screenshot-link" href="{{ path([$controller, 'show'], $model) }}">
+            <img class="inline-block screenshot" src="{{ $model->thumbnailSecretUrl() }}" alt="">
           </a>
         </td>
         <td class="md:text-right text-muted whitespace-no-wrap">{{ ViewHelper::size($model->size) }}</td>
@@ -73,14 +73,14 @@
         </td>
         <td>
           <div class="flex">
-            <a class="btn btn-default rounded-r-none" href="{{ path("$self@view", $model) }}">
+            <a class="btn btn-default rounded-r-none" href="{{ path([$controller, 'view'], $model) }}">
               @svg (eye)
             </a>
             <a
               class="btn btn-default rounded-l-none -ml-px js-image-delete"
               data-confirm="{{ $model->views >= 3000 ? 'Запись будет удалена. Продолжить?' : '' }}"
               data-selector="#image_{{ $model->id }}"
-              href="{{ path("$self@destroy", $model) }}"
+              href="{{ path([$controller, 'destroy'], $model) }}"
             >
               @svg (trash-o)
             </a>

@@ -24,12 +24,12 @@ class DcppTest extends TestCase
 
     public function testHubClick()
     {
-        /* @var DcppHub $hub */
+        /** @var DcppHub $hub */
         $hub = factory(DcppHub::class)->create();
         $clicks = $hub->clicks;
 
         $this->post(action('DcppHubClick@store', $hub))
-            ->assertStatus(204);
+            ->assertNoContent();
 
         $hub->refresh();
 

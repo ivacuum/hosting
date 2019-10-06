@@ -9,7 +9,7 @@ class Artist extends Resource
 {
     public function toArray($request)
     {
-        /* @var \App\User $me */
+        /** @var \App\User $me */
         $me = $request->user();
 
         return [
@@ -18,8 +18,8 @@ class Artist extends Resource
             'title' => $this->title,
             'breadcrumb' => $this->breadcrumb(),
 
-            'edit_url' => $this->when($me->can('edit', 'App\Artist'), path('Acp\Artists@edit', $this)),
-            'show_url' => $this->when($me->can('show', 'App\Artist'), path('Acp\Artists@show', $this)),
+            'edit_url' => $this->when($me->can('edit', 'App\Artist'), path(['App\Http\Controllers\Acp\Artists', 'edit'], $this)),
+            'show_url' => $this->when($me->can('show', 'App\Artist'), path(['App\Http\Controllers\Acp\Artists', 'show'], $this)),
         ];
     }
 }

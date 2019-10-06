@@ -49,7 +49,7 @@ export default {
     <a class="btn btn-default" :href="resource.new_photo_url">Добавить фотографии</a>
   </div>
   <div class="mt-4" v-if="resource.meta_image">
-    <img class="max-w-full h-auto rounded" :src="resource.meta_image">
+    <img class="max-w-full h-auto rounded" :src="resource.meta_image" alt="">
   </div>
   <div class="flex w-full mt-4">
     <input

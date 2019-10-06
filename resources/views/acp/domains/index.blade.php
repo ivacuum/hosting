@@ -1,6 +1,6 @@
 @extends('acp.list', [
-  'meta_title' => $filter ? trans("meta_title.acp.domains.{$filter}") : trans('meta_title.acp.domains.default'),
-  'search_form' => true,
+  'metaTitle' => $filter ? trans("meta_title.acp.domains.{$filter}") : trans('meta_title.acp.domains.default'),
+  'searchForm' => true,
 ])
 
 @section('heading-after-search')

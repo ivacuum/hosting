@@ -3,7 +3,7 @@
 @section('content')
 <div class="lg:flex lg:-mx-4">
   <div class="lg:w-1/2 lg:px-4">
-    <form action="{{ path("$self@store") }}" method="post">
+    <form action="{{ path([App\Http\Controllers\Torrents::class, 'store']) }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}
       @csrf
 

@@ -25,7 +25,7 @@
 
 @if ($model->meta_image)
   <div class="mb-4">
-    <img class="max-w-full h-auto rounded" src="{{ $model->metaImage() }}">
+    <img class="max-w-full h-auto rounded" src="{{ $model->metaImage() }}" alt="">
   </div>
 @endif
 

@@ -51,7 +51,10 @@ class Templates extends BaseController
             ]);
         }
 
-        return view($this->view, compact('templates', 'total'));
+        return view($this->view, [
+            'total' => $total,
+            'templates' => $templates,
+        ]);
     }
 
     public function show($template)
@@ -104,6 +107,9 @@ class Templates extends BaseController
             \File::put($path, implode("\n", $result));
         }
 
-        return view($this->view, compact('template', 'trip'));
+        return view($this->view, [
+            'trip' => $trip,
+            'template' => $template,
+        ]);
     }
 }

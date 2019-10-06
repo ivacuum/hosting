@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Http\Controllers\Torrents;
 use Carbon\CarbonInterval;
 use Foolz\SphinxQL\SphinxQL;
 use Illuminate\Database\Eloquent\Builder;
@@ -253,7 +254,7 @@ class Torrent extends Model
 
     public function www(?string $anchor = null): string
     {
-        return path('Torrents@show', $this->id) . $anchor;
+        return path([Torrents::class, 'show'], $this->id) . $anchor;
     }
 
     // Static methods

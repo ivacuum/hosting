@@ -1,5 +1,5 @@
 @if (optional($user)->avatar)
-  <img class="inline-block avatar-{{ $size ?? 100 }} rounded-full {{ $classes ?? '' }}" src="{{ $user->avatarUrl() }}">
+  <img class="inline-block avatar-{{ $size ?? 100 }} rounded-full {{ $classes ?? '' }}" src="{{ $user->avatarUrl() }}" alt="">
 @else
   @include('tpl.svg-avatar', [
     'bg' => ViewHelper::avatarBg($user->id),

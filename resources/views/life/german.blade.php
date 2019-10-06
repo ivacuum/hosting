@@ -1,8 +1,8 @@
 <?php \Breadcrumbs::push(trans('life.german')); ?>
 
 @extends('life.base', [
-  'meta_title' => trans('life.german'),
-  'no_language_selector' => $locale === 'ru',
+  'metaTitle' => trans('life.german'),
+  'noLanguageSelector' => $locale === 'ru',
 ])
 
 @section('content')

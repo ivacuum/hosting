@@ -10,7 +10,7 @@ class TripPublishedNotify extends Controller
 {
     public function __invoke(int $id, TripPublishedNotifyRequest $request): array
     {
-        /* @var Model $model */
+        /** @var Model $model */
         $model = $this->getModel($id);
 
         if ($model->status !== Model::STATUS_PUBLISHED) {

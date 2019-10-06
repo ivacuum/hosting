@@ -3,8 +3,8 @@
 ?>
 @extends('base', [
   'websockets' => Auth::check(),
-  'content_container_id' => 'vue_app',
-  'no_language_selector' => $locale === 'ru',
+  'noLanguageSelector' => $locale === 'ru',
+  'contentContainerId' => 'vue_app',
 ])
 
 @push('js_vendor')

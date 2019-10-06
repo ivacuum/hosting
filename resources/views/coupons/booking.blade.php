@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<h1>{{ $meta_title }}</h1>
+<h1>{{ $metaTitle }}</h1>
 <div class="max-w-600px">
   @ru
     <p>Получите скидку около 1000 рублей на ваше следующее бронирование на <a class="link" href="{{ config('cfg.booking_link') }}">booking.com</a> с помощью кнопки ниже.</p>

@@ -16,7 +16,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
         $radical = $this->radical();
 
         $this->delete(action('JapaneseWanikaniRadicals@destroy', $radical))
-            ->assertStatus(204);
+            ->assertNoContent();
 
         $this->assertEquals($user->id, $radical->burnable->user_id);
     }
@@ -66,7 +66,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
         $radical->burn($user->id);
 
         $this->put(action('JapaneseWanikaniRadicals@update', $radical))
-            ->assertStatus(204);
+            ->assertNoContent();
 
         $this->assertNull($radical->burnable);
     }

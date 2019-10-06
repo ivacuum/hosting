@@ -6,12 +6,12 @@ class UserTravelCountries extends UserTravel
 {
     public function index(string $login)
     {
-        $countries = Country::allWithCitiesAndTrips($this->traveler->id);
-
         \Breadcrumbs::push(trans('menu.life'), "@{$login}/travel");
         \Breadcrumbs::push(trans('menu.countries'));
 
-        return view('user-travel.countries', compact('countries'));
+        return view('user-travel.countries', [
+            'countries' => Country::allWithCitiesAndTrips($this->traveler->id),
+        ]);
     }
 
     public function show(string $login, string $slug)
@@ -32,6 +32,9 @@ class UserTravelCountries extends UserTravel
 
         event(new \App\Events\Stats\CountryViewed($country->id));
 
-        return view('user-travel.country', compact('country', 'trips'));
+        return view('user-travel.country', [
+            'trips' => $trips,
+            'country' => $country,
+        ]);
     }
 }

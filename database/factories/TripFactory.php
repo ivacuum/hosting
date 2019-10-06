@@ -1,6 +1,6 @@
 <?php
 
-/* @var Illuminate\Database\Eloquent\Factory $factory */
+/** @var Illuminate\Database\Eloquent\Factory $factory */
 
 $factory->define(App\Trip::class, function (Faker\Generator $faker) {
     $title = "{$faker->city} {$faker->numberBetween(2000, 3000)}";

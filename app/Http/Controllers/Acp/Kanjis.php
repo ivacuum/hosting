@@ -6,17 +6,17 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Kanjis extends Controller
 {
-    protected $sort_dir = 'asc';
-    protected $sort_key = 'level';
-    protected $sortable_keys = ['level', 'meaning', 'radicals_count', 'similar_count'];
-    protected $show_with_count = ['radicals', 'similar'];
+    protected $sortDir = 'asc';
+    protected $sortKey = 'level';
+    protected $sortableKeys = ['level', 'meaning', 'radicals_count', 'similar_count'];
+    protected $showWithCount = ['radicals', 'similar'];
 
     public function index()
     {
         $q = request('q');
-        $kanji_id = request('kanji_id');
-        $radical_id = request('radical_id');
-        $similar_count = request('similar_count');
+        $kanjiId = request('kanji_id');
+        $radicalId = request('radical_id');
+        $similarCount = request('similar_count');
 
         [$sortKey, $sortDir] = $this->getSortParams();
 
@@ -26,18 +26,18 @@ class Kanjis extends Controller
             ->when($sortKey === 'level', function (Builder $query) {
                 return $query->orderBy('meaning');
             })
-            ->when($radical_id, function (Builder $query) use ($radical_id) {
-                return $query->whereHas('radicals', function (Builder $query) use ($radical_id) {
-                    $query->where('radical_id', $radical_id);
+            ->when($radicalId, function (Builder $query) use ($radicalId) {
+                return $query->whereHas('radicals', function (Builder $query) use ($radicalId) {
+                    $query->where('radical_id', $radicalId);
                 });
             })
-            ->when($kanji_id, function (Builder $query) use ($kanji_id) {
-                return $query->whereHas('similar', function (Builder $query) use ($kanji_id) {
-                    $query->where('similar_id', $kanji_id);
+            ->when($kanjiId, function (Builder $query) use ($kanjiId) {
+                return $query->whereHas('similar', function (Builder $query) use ($kanjiId) {
+                    $query->where('similar_id', $kanjiId);
                 });
             })
-            ->when(null !== $similar_count, function (Builder $query) use ($similar_count) {
-                return $similar_count
+            ->when(null !== $similarCount, function (Builder $query) use ($similarCount) {
+                return $similarCount
                     ? $query->has('similar')
                     : $query->doesntHave('similar');
             })
@@ -45,9 +45,9 @@ class Kanjis extends Controller
                 return $query->where('meaning', 'LIKE', "%{$q}%");
             })
             ->paginate()
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
-        return view($this->view, compact('models'));
+        return view($this->view, ['models' => $models]);
     }
 
     protected function requestDataForModel()

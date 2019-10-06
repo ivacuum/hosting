@@ -9,14 +9,14 @@ class Subscriptions extends Controller
 {
     public function confirm()
     {
-        /* @var User $user */
+        /** @var User $user */
         $user = request()->user();
         $hash = request('hash');
 
         try {
             $subscriptions = array_flip(explode(',', \Crypt::decryptString($hash)));
         } catch (DecryptException $e) {
-            return redirect(path('MySettings@edit'))
+            return redirect(path([MySettings::class, 'edit']))
                 ->with('message', 'Запрос не найден. Измените настройки уведомлений вручную на этой странице.');
         }
 
@@ -34,14 +34,14 @@ class Subscriptions extends Controller
 
         $user->save();
 
-        return redirect(path('MySettings@edit'))
+        return redirect(path([MySettings::class, 'edit']))
             ->with('message', 'Настройки уведомлений сохранены');
     }
 
     public function edit()
     {
         if (null !== request()->user()) {
-            return redirect(path('MySettings@edit'));
+            return redirect(path([MySettings::class, 'edit']));
         }
 
         return view('subscriptions');
@@ -76,13 +76,13 @@ class Subscriptions extends Controller
 
         \Mail::to($user->email)->queue(new SubscriptionConfirm($user, array_keys(array_filter(request(['gigs', 'news', 'trips'])))));
 
-        return redirect(path("$this->class@edit"))
+        return redirect(path([$this->controller, 'edit']))
             ->with('message', 'Теперь необходимо подтвердить подписку по ссылке в письме, которое мы вам отправили.');
     }
 
     public function update()
     {
-        /* @var User $user */
+        /** @var User $user */
         $user = request()->user();
 
         if (null !== $value = request('gigs')) {

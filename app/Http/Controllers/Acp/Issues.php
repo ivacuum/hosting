@@ -6,8 +6,8 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Issues extends Controller
 {
-    protected $api_only = true;
-    protected $show_with = ['comments.user'];
+    protected $apiOnly = true;
+    protected $showWith = ['comments.user'];
 
     public function index()
     {
@@ -26,7 +26,7 @@ class Issues extends Controller
             })
             ->orderBy($sortKey, $sortDir)
             ->paginate(50)
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
         return $this->modelResourceCollection($models);
     }
@@ -41,7 +41,7 @@ class Issues extends Controller
         $affected = 0;
 
         foreach ($models as $model) {
-            /* @var Model $model */
+            /** @var Model $model */
             if ($action === 'close' && $model->canBeClosed()) {
                 $model->status = Model::STATUS_CLOSED;
                 $model->save();

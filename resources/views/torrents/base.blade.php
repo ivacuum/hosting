@@ -2,7 +2,7 @@
 
 @section('content_header')
 <div class="lg:flex flex-row-reverse items-center justify-between -mt-1 lg:-mt-2 mb-4">
-  <form class="flex mb-2 lg:mb-0" action="{{ path("$self@index") }}">
+  <form class="flex mb-2 lg:mb-0" action="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}">
     <div class="flex w-full">
       <input
         class="form-control rounded-r-none js-search-input"

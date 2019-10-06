@@ -1,5 +1,5 @@
 @extends('life.base', [
-  'meta_title' => trans('menu.countries'),
+  'metaTitle' => trans('menu.countries'),
 ])
 
 @section('content')

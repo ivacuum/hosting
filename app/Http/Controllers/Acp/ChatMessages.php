@@ -9,20 +9,24 @@ class ChatMessages extends Controller
     public function index()
     {
         $status = request('status');
-        $user_id = request('user_id');
+        $userId = request('user_id');
 
         $models = Model::with('user')
             ->orderBy('id', 'desc')
             ->unless(null === $status, function (Builder $query) use ($status) {
                 return $query->where('status', $status);
             })
-            ->when($user_id, function (Builder $query) use ($user_id) {
-                return $query->where('user_id', $user_id);
+            ->when($userId, function (Builder $query) use ($userId) {
+                return $query->where('user_id', $userId);
             })
             ->paginate()
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
-        return view($this->view, compact('models', 'status', 'user_id'));
+        return view($this->view, [
+            'models' => $models,
+            'status' => $status,
+            'user_id' => $userId,
+        ]);
     }
 
     public function batch()
@@ -33,7 +37,7 @@ class ChatMessages extends Controller
         $models = Model::find($ids);
 
         foreach ($models as $model) {
-            /* @var Model $model */
+            /** @var Model $model */
             if ($action === 'delete') {
                 $model->delete();
             } elseif ($action === 'hide') {

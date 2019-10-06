@@ -3,7 +3,7 @@
 
   <div class="mb-4">
     <label class="font-bold">{{ trans('acp.photos.index') }}</label>
-    <images-uploader action="{{ path("$self@store") }}" append=".js-append-formdata"></images-uploader>
+    <images-uploader action="{{ path([$controller, 'store']) }}" append=".js-append-formdata"></images-uploader>
   </div>
 @else
   <div class="mb-6">

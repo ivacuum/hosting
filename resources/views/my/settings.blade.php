@@ -4,7 +4,7 @@
 <h3 class="mb-4">{{ trans('my.settings') }}</h3>
 
 <div>
-  <form action="{{ path("$self@update") }}" method="post">
+  <form action="{{ path([App\Http\Controllers\MySettings::class, 'update']) }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @method('put')
     @csrf

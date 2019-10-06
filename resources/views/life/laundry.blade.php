@@ -1,5 +1,5 @@
 @extends('life.base', [
-  'meta_title' => 'Условные обозначения стирки',
+  'metaTitle' => 'Условные обозначения стирки',
 
   'breadcrumbs' => [
     ['title' => 'Заметки', 'url' => 'life'],

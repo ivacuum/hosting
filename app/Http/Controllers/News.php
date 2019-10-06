@@ -16,16 +16,16 @@ class News extends Controller
             })
             ->orderBy('created_at', 'desc')
             ->paginate()
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
         \Breadcrumbs::push(trans('news.index'), 'news');
 
-        return view('news.index', compact('news'));
+        return view('news.index', ['news' => $news]);
     }
 
     public function bc()
     {
-        return redirect(path("{$this->class}@index"), 301);
+        return redirect(path([$this->controller, 'index']), 301);
     }
 
     public function day($year, $month, $day)
@@ -57,7 +57,7 @@ class News extends Controller
         $news = Model::find($id);
 
         if (null === $news) {
-            return redirect(path("{$this->class}@index"), 301);
+            return redirect(path([$this->controller, 'index']), 301);
         }
 
         abort_unless($news->status === Model::STATUS_PUBLISHED, 404);
@@ -66,22 +66,22 @@ class News extends Controller
             return redirect($url, 301);
         }
 
-        $comments = $news->commentsPublished()->with('user')->orderBy('created_at')->get();
-
         event(new \App\Events\Stats\NewsViewed($news->id));
 
         \Breadcrumbs::push(trans('news.index'), 'news')
             ->push($news->title);
 
-        $meta_title = $news->title;
-
-        return view($this->view, compact('comments', 'meta_title', 'news'));
+        return view($this->view, [
+            'news' => $news,
+            'comments' => $news->commentsPublished()->with('user')->orderBy('created_at')->get(),
+            'metaTitle' => $news->title,
+        ]);
     }
 
     public function year($year)
     {
         $validator = \Validator::make(
-            compact('year'),
+            ['year' => $year],
             ['year' => 'date_format:Y']
         );
 

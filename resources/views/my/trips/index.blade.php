@@ -6,15 +6,18 @@
     {{ trans('my.trips') }}
     <span class="text-base text-muted whitespace-no-wrap">{{ ViewHelper::number($models->total()) }}</span>
   </h3>
-  <a class="btn btn-success my-1 mr-1" href="{{ path('MyTrips@create') }}">
+  <a class="btn btn-success my-1 mr-1" href="{{ path([App\Http\Controllers\MyTrips::class, 'create']) }}">
     {{ trans('acp.trips.create') }}
   </a>
   @if (optional(Auth::user())->login)
-    <a class="btn btn-default my-1 mr-1" href="{{ path('UserTravelTrips@index', \Auth::user()->login) }}">
+    <a
+      class="btn btn-default my-1 mr-1"
+      href="{{ path([App\Http\Controllers\UserTravelTrips::class, 'index'], Auth::user()->login) }}"
+    >
       Просмотреть
     </a>
   @endif
-  <a class="btn btn-default my-1" href="{{ path('Docs@page', 'trips') }}">
+  <a class="btn btn-default my-1" href="{{ path([App\Http\Controllers\Docs::class, 'page'], 'trips') }}">
     @svg (question-circle)
   </a>
 </div>
@@ -35,10 +38,10 @@
     </thead>
     <tbody>
     @foreach ($models as $model)
-      <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($self, $model) }}">
+      <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
         <td class="md:text-right"><span class="sm:hidden">#</span>{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
         {{--
-        <td><a href="{{ path("$self@show", $model) }}">{{ $model->title }}</a></td>
+        <td><a href="{{ path([$controller, 'show'], $model) }}">{{ $model->title }}</a></td>
         --}}
         <td>{{ $model->title }}</td>
         <td>
@@ -70,7 +73,7 @@
             {{ ViewHelper::number($model->comments_count) }}
           @endif
         </td>
-        <td><a href="{{ UrlHelper::edit($self, $model) }}">@svg (pencil)</a></td>
+        <td><a href="{{ UrlHelper::edit($controller, $model) }}">@svg (pencil)</a></td>
       </tr>
     @endforeach
     </tbody>
@@ -79,6 +82,6 @@
   @include('tpl.paginator', ['paginator' => $models])
 @else
   <p>Хронология ваших поездок на данный момент пуста.</p>
-  <p>Самое время <a href="{{ path('MyTrips@create') }}">добавить первую</a>.</p>
+  <p>Самое время <a href="{{ path([App\Http\Controllers\MyTrips::class, 'create']) }}">добавить первую</a>.</p>
 @endif
 @endsection

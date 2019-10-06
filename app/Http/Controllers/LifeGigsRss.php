@@ -15,15 +15,15 @@ class LifeGigsRss extends Controller
         $items = Gig::where('status', Gig::STATUS_PUBLISHED)
             ->where('meta_image', '<>', '')
             ->take(50)
-            ->orderBy('date', 'desc')
+            ->orderByDesc('date')
             ->get()
             ->map(function (Gig $gig) {
                 $link = url($gig->www());
-                $cover = '<p><a href="'.$link.'?from=rss-image"><img src="'.$gig->meta_image.'" alt=""></a></p>';
+                $cover = '<p><a href="' . $link . '?from=rss-image"><img src="' . $gig->meta_image . '" alt=""></a></p>';
 
                 return [
                     'title' => htmlspecialchars($gig->metaTitle()),
-                    'link' => $link.'?from=rss-title',
+                    'link' => $link . '?from=rss-title',
                     'guid' => $link,
                     'description' => "<p>{$gig->metaDescription()}</p>{$cover}",
                     'pubDate' => $gig->date->toRfc2822String(),
@@ -31,7 +31,7 @@ class LifeGigsRss extends Controller
             });
 
         return response()
-            ->view('life.feed-rss', compact('items', 'meta'))
+            ->view('life.feed-rss', ['items' => $items, 'meta' => $meta])
             ->header('Content-Type', 'application/xml');
     }
 }

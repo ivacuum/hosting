@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Http\Controllers\Life;
 use App\Traits\HasLocalizedTitle;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\Finder\Finder;
@@ -146,11 +147,11 @@ class Gig extends Model
 
     public function www(): string
     {
-        return path('Life@page', $this->slug);
+        return path([Life::class, 'page'], $this->slug);
     }
 
     public function wwwLocale(string $locale = ''): string
     {
-        return path_locale('Life@page', $this->slug, false, $locale);
+        return path_locale([Life::class, 'page'], $this->slug, false, $locale);
     }
 }

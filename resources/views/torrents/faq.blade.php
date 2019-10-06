@@ -37,13 +37,13 @@
       <li>qBittorrent</li>
       <li>Deluge</li>
       <li>
-        <a class="link" href="{{ path('Files@download', 151) }}">Transmission</a>
+        <a class="link" href="{{ path([App\Http\Controllers\Files::class, 'download'], 151) }}">Transmission</a>
         <span title="macOS">
           @svg (apple)
         </span>
       </li>
       <li>
-        <a class="link" href="{{ path('Files@download', 150) }}">uTorrent</a>
+        <a class="link" href="{{ path([App\Http\Controllers\Files::class, 'download'], 150) }}">uTorrent</a>
         <span title="Windows">
           @svg (windows)
         </span>
@@ -64,7 +64,7 @@
       Как добавить раздачу?
     @endslot
 
-    <div class="mb-1">Для добавления предусмотрена <a class="link" href="{{ path('Torrents@create') }}">отдельная страница</a>, доступная только зарегистрированным пользователям. В качестве ввода принимается три типа значений:</div>
+    <div class="mb-1">Для добавления предусмотрена <a class="link" href="{{ path([App\Http\Controllers\Torrents::class, 'create']) }}">отдельная страница</a>, доступная только зарегистрированным пользователям. В качестве ввода принимается три типа значений:</div>
     <ol>
       <li>Ссылка на раздачу на рутрекере вида <code>http://rutracker.org/forum/<wbr>viewtopic.php?t=4031882</code>. Также поддерживаются адреса rutracker.cr, rutracker.net, rutracker.nl и maintracker.org</li>
       <li>Инфо-хэш раздачи вида <code>9B5D85FFC234737E7D7C<wbr>246FECB6BB1EC5E8F0B9</code></li>
@@ -131,7 +131,7 @@
   <feedback-form
     email="{{ Auth::user()->email ?? '' }}"
     title="Magnets FAQ"
-    action="{{ path('Issues@store') }}"
+    action="{{ path([App\Http\Controllers\Issues::class, 'store']) }}"
     hide-title
   ></feedback-form>
 </div>

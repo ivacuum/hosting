@@ -25,7 +25,7 @@ class PhotoTest extends TestCase
 
     public function testCity()
     {
-        /* @var Photo $photo */
+        /** @var Photo $photo */
         $photo = factory(Photo::class)->state('trip')->create();
 
         $this->get(action('Photos@city', $photo->rel->city->slug))
@@ -40,7 +40,7 @@ class PhotoTest extends TestCase
 
     public function testCountry()
     {
-        /* @var Photo $photo */
+        /** @var Photo $photo */
         $photo = factory(Photo::class)->state('trip')->create();
 
         $this->get(action('Photos@country', $photo->rel->city->country->slug))
@@ -69,7 +69,7 @@ class PhotoTest extends TestCase
 
     public function testTag()
     {
-        /* @var Photo $photo */
+        /** @var Photo $photo */
         $photo = factory(Photo::class)->states('tag', 'trip')->create();
 
         $this->get(action('Photos@tag', $photo->tags->first()->id))
@@ -86,7 +86,7 @@ class PhotoTest extends TestCase
 
     public function testTrip()
     {
-        /* @var Photo $photo */
+        /** @var Photo $photo */
         $photo = factory(Photo::class)->states('trip')->create();
 
         $this->get(action('Photos@trip', $photo->rel->id))

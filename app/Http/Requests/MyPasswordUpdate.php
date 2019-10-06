@@ -11,7 +11,7 @@ class MyPasswordUpdate extends FormRequest
 
     public function rules(): array
     {
-        /* @var \App\User $user */
+        /** @var \App\User $user */
         $user = $this->user();
         $hasPassword = !empty($user->password);
 

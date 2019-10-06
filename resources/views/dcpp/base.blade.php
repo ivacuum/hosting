@@ -1,6 +1,6 @@
 @extends('base', [
-  'body_classes' => '',
-  'navbar_classes' => '',
+  'bodyClasses' => '',
+  'navbarClasses' => '',
 ])
 
 @push('head')
@@ -57,11 +57,11 @@
 @endsection
 
 @section('header_user')
-@if (empty($no_language_selector))
+@if (empty($noLanguageSelector))
   @ru
-    <a class="px-2 py-4 text-gray-600 hover:text-gray-900 whitespace-no-wrap" href="{{ url("en/{$request_uri}") }}" lang="en">In English</a>
+    <a class="px-2 py-4 text-gray-600 hover:text-gray-900 whitespace-no-wrap" href="{{ url("en/{$requestUri}") }}" lang="en">In English</a>
   @en
-    <a class="px-2 py-4 text-gray-600 hover:text-gray-900 whitespace-no-wrap" href="{{ url($request_uri) }}" lang="ru">По-русски</a>
+    <a class="px-2 py-4 text-gray-600 hover:text-gray-900 whitespace-no-wrap" href="{{ url($requestUri) }}" lang="ru">По-русски</a>
   @endru
 @else
   <div class="w-20"></div>
@@ -69,7 +69,7 @@
 @endsection
 
 @section('content_footer')
-@if (empty($no_footer_banner))
+@if (empty($noFooterBanner))
   <div class="my-4">
     @include('tpl.google-horizontal')
   </div>

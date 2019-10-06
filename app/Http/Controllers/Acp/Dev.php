@@ -14,7 +14,7 @@ class Dev extends BaseController
     {
         $cookie->queue('debugbar', true, 60);
 
-        return redirect(path("{$this->class}@index"))
+        return redirect(path([$this->controller, 'index']))
             ->with('message', 'Debugbar включен на час');
     }
 
@@ -28,7 +28,7 @@ class Dev extends BaseController
         $lines = collect();
 
         $country = [];
-        $bots = $connection = $ip = $request_method = $request_uri = null;
+        $bots = $connection = $ip = $requestMethod = $requestUri = null;
 
         if (\Str::contains($q, 'bots=no')) {
             $bots = false;
@@ -59,13 +59,13 @@ class Dev extends BaseController
 
         if (\Str::contains($q, 'request_method=')) {
             if (preg_match("/request_method=([^ ]+)/", $q, $match)) {
-                $request_method = strtoupper($match[1]);
+                $requestMethod = strtoupper($match[1]);
             }
         }
 
         if (\Str::contains($q, 'request_uri=')) {
             if (preg_match("/request_uri=([^ ]+)/", $q, $match)) {
-                $request_uri = $match[1];
+                $requestUri = $match[1];
             }
         }
 
@@ -133,8 +133,8 @@ class Dev extends BaseController
                     }
                 }
 
-                if ($request_method) {
-                    if ($request_method === $json->request_method) {
+                if ($requestMethod) {
+                    if ($requestMethod === $json->request_method) {
                         $found = true;
                         $proper &= true;
                     } else {
@@ -142,8 +142,8 @@ class Dev extends BaseController
                     }
                 }
 
-                if ($request_uri) {
-                    if ($request_uri === $json->request_uri) {
+                if ($requestUri) {
+                    if ($requestUri === $json->request_uri) {
                         $found = true;
                         $proper &= true;
                     } else {
@@ -161,7 +161,10 @@ class Dev extends BaseController
             fclose($handle);
         }
 
-        return view($this->view, compact('lines', 'q'));
+        return view($this->view, [
+            'q' => $q,
+            'lines' => $lines,
+        ]);
     }
 
     public function svg()
@@ -174,6 +177,6 @@ class Dev extends BaseController
             $icons[] = basename($icon, '.svg');
         }
 
-        return view($this->view, compact('icons'));
+        return view($this->view, ['icons' => $icons]);
     }
 }

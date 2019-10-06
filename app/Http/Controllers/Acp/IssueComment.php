@@ -9,7 +9,7 @@ class IssueComment extends Controller
 {
     public function __invoke(int $id): array
     {
-        /* @var Model $model */
+        /** @var Model $model */
         $model = $this->getModel($id);
 
         if (!$model->canBeCommented()) {
@@ -21,7 +21,7 @@ class IssueComment extends Controller
 
         $text = request('text');
 
-        /* @var Comment $comment */
+        /** @var Comment $comment */
         $comment = $model->comments()->create([
             'html' => $text,
             'status' => Comment::STATUS_PUBLISHED,

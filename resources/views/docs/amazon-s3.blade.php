@@ -1,5 +1,5 @@
 @extends('docs.base', [
-  'meta_title' => 'Amazon S3',
+  'metaTitle' => 'Amazon S3',
 
   'breadcrumbs' => [
     ['title' => 'Документация', 'url' => 'docs'],

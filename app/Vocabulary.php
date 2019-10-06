@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Http\Controllers\JapaneseWanikaniVocabulary;
 use App\Traits\BurnsAndResurrects;
 use App\Traits\UserBurnableScope;
 use Illuminate\Database\Eloquent\Model;
@@ -84,6 +85,6 @@ class Vocabulary extends Model
 
     public function www(): string
     {
-        return path('JapaneseWanikaniVocabulary@show', $this->character);
+        return path([JapaneseWanikaniVocabulary::class, 'show'], $this->character);
     }
 }

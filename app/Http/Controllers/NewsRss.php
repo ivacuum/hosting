@@ -15,14 +15,14 @@ class NewsRss extends Controller
         $items = News::where('status', News::STATUS_PUBLISHED)
             ->where('locale', \App::getLocale())
             ->take(20)
-            ->orderBy('id', 'desc')
+            ->orderByDesc('id')
             ->get()
             ->map(function (News $news) {
                 $link = url($news->www());
 
                 return [
                     'title' => $news->title,
-                    'link' => $link.'?from=rss-title',
+                    'link' => $link . '?from=rss-title',
                     'guid' => $link,
                     'description' => $news->html,
                     'pubDate' => $news->created_at->toRfc2822String(),
@@ -30,7 +30,7 @@ class NewsRss extends Controller
             });
 
         return response()
-            ->view('life.feed-rss', compact('items', 'meta'))
+            ->view('life.feed-rss', ['items' => $items, 'meta' => $meta])
             ->header('Content-Type', 'application/xml');
     }
 }

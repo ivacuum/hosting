@@ -1,7 +1,7 @@
 <div class="-mt-2 mb-6 mobile-wide js-shortcuts-item" id="{{ $pic }}">
   <div class="max-w-1000px mx-auto text-center">
     <div class="pb-3/4 relative">
-      @if ($is_crawler)
+      @if ($isCrawler)
         <img
           src="{{ ViewHelper::pic2x($slug ?? $trip->slug, $pic) }}"
           alt="{{ isset($trip) ? $trip->imgAltText() : '' }}"
@@ -17,7 +17,7 @@
         <div class="absolute top-0 right-0">
           <a
             class="flex items-center justify-center p-2 text-white svg-shadow"
-            href="{{ path('Photos@map', ['photo' => $slug ?? $trip->slug.'/'.$pic]) }}"
+            href="{{ path([App\Http\Controllers\Photos::class, 'map'], ['photo' => $slug ?? $trip->slug.'/'.$pic]) }}"
           >
             @svg (map-marker)
           </a>

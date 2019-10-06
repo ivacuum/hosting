@@ -1,10 +1,11 @@
 <?php namespace App\Http\Controllers;
 
 use App\DcppHub;
+use App\Utilities\ViewHelper;
 
 class DcppHubs extends Controller
 {
-    public function index()
+    public function index(ViewHelper $viewHelper)
     {
         $hubs = DcppHub::where('status', DcppHub::STATUS_PUBLISHED)
             ->orderBy('title')
@@ -13,7 +14,7 @@ class DcppHubs extends Controller
         return view('dcpp.hubs', [
             'hubs' => $hubs,
             'page' => 'hubs',
-            'meta_title' => \ViewHelper::metaTitle('', 'dcpp.hubs'),
+            'metaTitle' => $viewHelper->metaTitle('dcpp.hubs'),
         ]);
     }
 

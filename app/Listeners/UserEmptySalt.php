@@ -6,7 +6,7 @@ class UserEmptySalt
 {
     public function handle(Login $event)
     {
-        /* @var \App\User $user */
+        /** @var \App\User $user */
         $user = $event->user;
 
         $user->salt = '';

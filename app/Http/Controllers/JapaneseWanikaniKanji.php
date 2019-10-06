@@ -70,7 +70,7 @@ class JapaneseWanikaniKanji extends Controller
     public function show(string $character)
     {
         if (!request()->wantsJson()) {
-            return view('japanese.wanikani.vue', ['meta_replace' => ['kanji' => $character]]);
+            return view('japanese.wanikani.vue', ['metaReplace' => ['kanji' => $character]]);
         }
 
         $kanji = Kanji::where('character', $character)

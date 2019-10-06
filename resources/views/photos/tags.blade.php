@@ -10,7 +10,7 @@
       @if ($initial !== $currentInitial)
         <span class="absolute font-bold uppercase -ml-6">{{ $currentInitial }}</span>
       @endif
-      <a class="link" href="{{ path('Photos@tag', $tag) }}">#{{ $tag->title }}</a>
+      <a class="link" href="{{ path([App\Http\Controllers\Photos::class, 'tag'], $tag) }}">#{{ $tag->title }}</a>
       <span class="text-xs text-muted">{{ $tag->photos_published_count }}</span>
     </div>
     <?php $initial = $currentInitial ?>

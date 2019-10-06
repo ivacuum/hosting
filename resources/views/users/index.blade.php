@@ -16,11 +16,16 @@
       <tr>
         <td class="md:text-right">{{ $user->id }}</td>
         <td class="text-center">
-          <a href="{{ path("$self@show", $user) }}">
+          <a href="{{ path([App\Http\Controllers\Users::class, 'show'], $user) }}">
             @include('tpl.avatar', ['size' => 50])
           </a>
         </td>
-        <td><a class="link" href="{{ path("$self@show", $user) }}">{{ $user->publicName() }}</a></td>
+        <td>
+          <a
+            class="link"
+            href="{{ path([App\Http\Controllers\Users::class, 'show'], $user) }}"
+          >{{ $user->publicName() }}</a>
+        </td>
         <td>{{ ViewHelper::dateShort($user->created_at) }}</td>
       </tr>
     @endforeach

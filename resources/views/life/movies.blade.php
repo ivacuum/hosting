@@ -1,5 +1,5 @@
 @extends('life.base', [
-  'meta_title' => 'Любимые фильмы и сериалы',
+  'metaTitle' => 'Любимые фильмы и сериалы',
 
   'breadcrumbs' => [
     ['title' => 'Заметки', 'url' => 'life'],

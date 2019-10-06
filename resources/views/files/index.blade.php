@@ -17,7 +17,7 @@
       <tr>
         <td class="md:text-right">{{ $model->id }}</td>
         <td>
-          <a href="{{ path("$self@download", $model) }}">
+          <a href="{{ path([App\Http\Controllers\Files::class, 'download'], $model) }}">
             {{ $model->title }}
           </a>
         </td>

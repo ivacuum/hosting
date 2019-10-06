@@ -1,8 +1,8 @@
 @extends('base', [
-  'body_classes' => '',
-  'navbar_classes' => '',
-  'no_language_selector' => $locale === 'ru',
-  'content_container_classes' => 'antialiased hanging-puntuation-first lg:text-lg',
+  'bodyClasses' => '',
+  'navbarClasses' => '',
+  'noLanguageSelector' => $locale === 'ru',
+  'contentContainerClasses' => 'antialiased hanging-puntuation-first lg:text-lg',
 ])
 
 @section('bottom-tabbar')
@@ -12,7 +12,7 @@
 <section class="bg-light pt-4 pb-12">
   <div class="container lg:max-w-3xl">
     <div class="text-center mb-4">
-      <a href="{{ path('Torrents@index') }}">
+      <a href="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}">
         <img class="w-16 h-16" src="https://ivacuum.org/i/t/images/logo_arrows.png" alt="">
       </a>
     </div>
@@ -20,7 +20,7 @@
     <p><strong>torrent.ivacuum.ru</strong> &mdash; наглядный сервис для обмена файлами, открывшийся <span class="whitespace-no-wrap">5 июля</span> 2010 года в локальной сети Билайн города Калуга. Трекер довольно быстро набрал основную массу пользователей и стал местом общения нескольких тысяч калужан. <span class="whitespace-no-wrap">1 января 2017</span> года он потерял пристанище в локальной сети и переместился в интернет. Вместе с тем была закрыта регистрация новых пользователей в пользу перехода на новый торрент-трекер на основе магнет-ссылок, открывшийся <span class="whitespace-no-wrap">5 января</span> 2017 года.</p>
 
     <div>
-      <a class="btn btn-primary text-lg px-4 py-2" href="{{ path('Torrents@index') }}">
+      <a class="btn btn-primary text-lg px-4 py-2" href="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}">
         <span class="mr-1">
           @svg (sign-in)
         </span>
@@ -36,7 +36,7 @@
     <p>Трекер доступен через интернет для всех желающих. Локальная сеть более не обязательна для подключения. Калуга тоже больше не ограничение — можно заходить из любой точки мира.</p>
 
     <div>
-      <a class="btn btn-primary text-lg px-4 py-2" href="{{ path('Torrents@index') }}">
+      <a class="btn btn-primary text-lg px-4 py-2" href="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}">
         <span class="mr-1">
           @svg (sign-in)
         </span>
@@ -113,7 +113,7 @@
     <h3>Какие еще есть полезные ресурсы помимо трекера?</h3>
     <p>Ознакомиться с актуальным списком можно на отдельной странице.</p>
     <div class="mt-4">
-      <a class="btn btn-secondary" href="{{ path('Home@index') }}">
+      <a class="btn btn-secondary" href="{{ path([App\Http\Controllers\Home::class, 'index']) }}">
         <span class="mr-1">
           @svg (sign-in)
         </span>

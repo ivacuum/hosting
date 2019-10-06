@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Http\Controllers\Life;
 use App\Traits\HasLocalizedTitle;
 use App\Traits\HasTripsMetaDescription;
 use Illuminate\Database\Eloquent\Model;
@@ -106,6 +107,6 @@ class City extends Model
 
     public function www(): string
     {
-        return path('Life@page', $this->slug);
+        return path([Life::class, 'page'], $this->slug);
     }
 }

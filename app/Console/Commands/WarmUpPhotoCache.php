@@ -14,7 +14,7 @@ class WarmUpPhotoCache extends Command
         $i = 0;
 
         foreach ($this->models() as $model) {
-            /* @var Photo $model */
+            /** @var Photo $model */
             $promises = [
                 $http->getAsync($model->originalUrl()),
                 $http->getAsync($model->mobileUrl()),

@@ -10,7 +10,10 @@ class UserTravelTrips extends UserTravel
         $to = request('to');
         $from = request('from');
 
-        $validator = \Validator::make(compact('from', 'to'), [
+        $validator = \Validator::make([
+            'to' => $to,
+            'from' => $from,
+        ], [
             'to' => 'nullable|date',
             'from' => 'nullable|date'
         ]);
@@ -35,7 +38,7 @@ class UserTravelTrips extends UserTravel
 
         \Breadcrumbs::push(trans('menu.life'));
 
-        return view('user-travel.index', compact('trips'));
+        return view('user-travel.index', ['trips' => $trips]);
     }
 
     public function show(string $login, string $slug)
@@ -57,13 +60,14 @@ class UserTravelTrips extends UserTravel
 
         event(new \App\Events\Stats\TripViewed($trip->id));
 
-        $timeline = $trip->cityTimeline();
+        $nextTrips = $trip->next()->get();
 
-        $next_trips = $trip->next()->get();
-        $previous_trips = $trip->previous($next_trips->count())->get()->reverse();
-
-        $comments = $trip->commentsPublished()->with('user')->orderBy('id')->get();
-
-        return view('user-travel.show', compact('comments', 'next_trips', 'previous_trips', 'timeline', 'trip'));
+        return view('user-travel.show', [
+            'trip' => $trip,
+            'comments' => $trip->commentsPublished()->with('user')->orderBy('id')->get(),
+            'timeline' => $trip->cityTimeline(),
+            'nextTrips' => $nextTrips,
+            'previousTrips' => $trip->previous($nextTrips->count())->get()->reverse(),
+        ]);
     }
 }

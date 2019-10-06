@@ -60,7 +60,7 @@ export default {
     <form-text name="meta_image" v-model="model.meta_image"/>
 
     <div class="mb-4" v-if="resource && resource.meta_image">
-      <img class="max-w-full h-auto rounded" :src="resource.meta_image">
+      <img class="max-w-full h-auto rounded" :src="resource.meta_image" alt="">
     </div>
 
     <sticky-bottom-buttons v-bind="{ isEditing, saving }" @apply="apply" @stay="storeAndAddAnother"/>

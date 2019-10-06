@@ -11,15 +11,14 @@ class MyProfileTest extends TestCase
 
     public function testEdit()
     {
-        $this->be($user = factory(User::class)->create());
-
-        $this->get(action('MyProfile@edit'))
+        $this->be(factory(User::class)->create())
+            ->get(action('MyProfile@edit'))
             ->assertStatus(200);
     }
 
     public function testUpdateEmail()
     {
-        /* @var User $user */
+        /** @var User $user */
         $this->be($user = factory(User::class)->create());
 
         $email = "__{$user->email}";
@@ -39,10 +38,10 @@ class MyProfileTest extends TestCase
 
     public function testUpdateLogin()
     {
-        /* @var User $user */
+        /** @var User $user */
         $this->be($user = factory(User::class)->create());
 
-        $login = $user->login.$user->login;
+        $login = $user->login . $user->login;
 
         $this->expectsEvents(App\Events\Stats\MyProfileChanged::class);
 

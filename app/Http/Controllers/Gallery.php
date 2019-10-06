@@ -10,16 +10,16 @@ class Gallery extends Controller
         $images = Image::where('user_id', request()->user()->id)
             ->orderBy('id', 'desc')
             ->paginate(25)
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
-        return view($this->view, compact('images'));
+        return view($this->view, ['images' => $images]);
     }
 
     public function preview(Image $image)
     {
         event(new \App\Events\Stats\GalleryImagePreviewed($image->id));
 
-        return view($this->view, compact('image'));
+        return view($this->view, ['image' => $image]);
     }
 
     public function store(GalleryStore $request)
@@ -49,7 +49,7 @@ class Gallery extends Controller
     {
         event(new \App\Events\Stats\GalleryImageViewed($image->id));
 
-        return view($this->view, compact('image'));
+        return view($this->view, ['image' => $image]);
     }
 
     public function upload()

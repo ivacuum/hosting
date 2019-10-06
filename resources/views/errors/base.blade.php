@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>{{ $meta_title ?? '' }}</title>
+<title>{{ $metaTitle ?? '' }}</title>
 <style>
 body {
   margin: 0;
@@ -58,7 +58,7 @@ a:focus {
     <div class="title">
       @yield('content')
       <br><br>
-      <a href="{{ path('Home@index') }}">
+      <a href="{{ path([App\Http\Controllers\Home::class, 'index']) }}">
         @svg (home)
       </a>
     </div>

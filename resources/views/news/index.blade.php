@@ -8,7 +8,7 @@
 <div class="flex flex-wrap items-center antialiased mb-6">
   <h1 class="h2 mb-1 mr-4">{{ trans('news.index') }}</h1>
   @if (Auth::check())
-    <form class="mr-4" action="{{ path('Subscriptions@update') }}" method="post">
+    <form class="mr-4" action="{{ path([App\Http\Controllers\Subscriptions::class, 'update']) }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}
       <button class="btn btn-default text-sm py-1 small-caps svg-flex svg-label">
         @svg (mail)
@@ -19,12 +19,18 @@
       @csrf
     </form>
   @else
-    <a class="btn btn-default text-sm py-1 svg-flex svg-label small-caps mr-4" href="{{ path('Subscriptions@edit', ['news' => 1]) }}">
+    <a
+      class="btn btn-default text-sm py-1 svg-flex svg-label small-caps mr-4"
+      href="{{ path([App\Http\Controllers\Subscriptions::class, 'edit'], ['news' => 1]) }}"
+    >
       @svg (mail)
       {{ trans('mail.subscribe') }}
     </a>
   @endif
-  <a class="text-lg svg-flex svg-label small-caps" href="{{ path('NewsRss@index') }}">
+  <a
+    class="text-lg svg-flex svg-label small-caps"
+    href="{{ path([App\Http\Controllers\NewsRss::class, 'index']) }}"
+  >
     @svg (rss-square)
     rss
   </a>

@@ -15,9 +15,9 @@ class Photos extends Controller
         $photos = Photo::published()
             ->orderBy('id', 'desc')
             ->paginate(24)
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
-        return view($this->view, compact('photos'));
+        return view($this->view, ['photos' => $photos]);
     }
 
     public function cities()
@@ -30,10 +30,10 @@ class Photos extends Controller
             })
             ->sortBy(City::titleField());
 
-        return view($this->view, compact('cities'));
+        return view($this->view, ['cities' => $cities]);
     }
 
-    public function city($slug)
+    public function city(string $slug)
     {
         $city = \CityHelper::findBySlugOrFail($slug);
 
@@ -48,16 +48,18 @@ class Photos extends Controller
 
         \Breadcrumbs::push($city->title);
 
-        $meta_title = $city->title;
-
-        return view($this->view, compact('city', 'meta_title', 'photos'));
+        return view($this->view, [
+            'city' => $city,
+            'photos' => $photos,
+            'metaTitle' => $city->title,
+        ]);
     }
 
     public function countries()
     {
-        $countries = Country::allWithPublishedTrips(1);
-
-        return view($this->view, compact('countries'));
+        return view($this->view, [
+            'countries' => Country::allWithPublishedTrips(1),
+        ]);
     }
 
     public function country($slug)
@@ -75,9 +77,11 @@ class Photos extends Controller
 
         \Breadcrumbs::push($country->title);
 
-        $meta_title = $country->title;
-
-        return view($this->view, compact('country', 'meta_title', 'photos'));
+        return view($this->view, [
+            'photos' => $photos,
+            'country' => $country,
+            'metaTitle' => $country->title,
+        ]);
     }
 
     public function faq()
@@ -102,7 +106,7 @@ class Photos extends Controller
                 ->first()
             : null;
 
-        return view($this->view, compact('photo'));
+        return view($this->view, ['photo' => $photo]);
     }
 
     public function show(Photo $photo)
@@ -112,73 +116,77 @@ class Photos extends Controller
         $photo->load('rel', 'tags');
         $photo->rel->loadCityAndCountry();
 
-        $tag_id = request('tag_id');
-        $city_id = request('city_id');
-        $trip_id = request('trip_id');
-        $country_id = request('country_id');
+        $tagId = request('tag_id');
+        $cityId = request('city_id');
+        $tripId = request('trip_id');
+        $countryId = request('country_id');
 
         $next = Photo::where('id', '>', $photo->id)->published();
         $prev = Photo::where('id', '<', $photo->id)->published()->orderBy('id', 'desc');
 
-        if ($tag_id) {
+        if ($tagId) {
             // Просмотр в пределах одного тэга
-            $next = $next->whereHas('tags', function ($query) use ($tag_id) {
-                $query->where('tag_id', $tag_id);
+            $next = $next->whereHas('tags', function ($query) use ($tagId) {
+                $query->where('tag_id', $tagId);
             });
 
-            $prev = $prev->whereHas('tags', function ($query) use ($tag_id) {
-                $query->where('tag_id', $tag_id);
+            $prev = $prev->whereHas('tags', function ($query) use ($tagId) {
+                $query->where('tag_id', $tagId);
             });
-        } elseif ($city_id) {
+        } elseif ($cityId) {
             // В пределах города
-            abort_unless($city_id == $photo->rel->city->id, 404);
+            abort_unless($cityId == $photo->rel->city->id, 404);
 
-            $ids = Trip::idsByCity($city_id);
+            $ids = Trip::idsByCity($cityId);
 
             $next = $next->forTrips($ids);
             $prev = $prev->forTrips($ids);
-        } elseif ($trip_id) {
+        } elseif ($tripId) {
             // В пределах поездки
-            abort_unless($trip_id == $photo->rel_id, 404);
+            abort_unless($tripId == $photo->rel_id, 404);
 
-            $next = $next->forTrip($trip_id);
-            $prev = $prev->forTrip($trip_id);
-        } elseif ($country_id) {
+            $next = $next->forTrip($tripId);
+            $prev = $prev->forTrip($tripId);
+        } elseif ($countryId) {
             // В пределах страны
-            abort_unless($country_id == $photo->rel->city->country->id, 404);
+            abort_unless($countryId == $photo->rel->city->country->id, 404);
 
-            $ids = Trip::idsByCountry($country_id);
+            $ids = Trip::idsByCountry($countryId);
 
             $next = $next->forTrips($ids);
             $prev = $prev->forTrips($ids);
         }
 
-        $next = $next->first();
-        $prev = $prev->first();
-
         event(new \App\Events\Stats\PhotoViewed($photo->id));
 
-        if ($tag_id) {
-            $tag = Tag::findOrFail($tag_id);
+        if ($tagId) {
+            $tag = Tag::findOrFail($tagId);
 
             \Breadcrumbs::push(trans('photos.tags'), 'photos/tags')
-                ->push($tag->breadcrumb(), "photos/tags/{$tag_id}");
-        } elseif ($city_id) {
+                ->push($tag->breadcrumb(), "photos/tags/{$tagId}");
+        } elseif ($cityId) {
             \Breadcrumbs::push(trans('photos.cities'), 'photos/cities')
                 ->push($photo->rel->city->breadcrumb(), "photos/cities/{$photo->rel->city->slug}");
-        } elseif ($trip_id) {
+        } elseif ($tripId) {
             \Breadcrumbs::push(trans('photos.trips'), 'photos/trips')
-                ->push($photo->rel->breadcrumb(), "photos/trips/{$trip_id}");
-        } elseif ($country_id) {
+                ->push($photo->rel->breadcrumb(), "photos/trips/{$tripId}");
+        } elseif ($countryId) {
             \Breadcrumbs::push(trans('photos.countries'), 'photos/countries')
                 ->push($photo->rel->city->country->breadcrumb(), "photos/countries/{$photo->rel->city->country->slug}");
         }
 
         \Breadcrumbs::push(trans('photos.show'));
 
-        $meta_title = "{$photo->rel->title}, {$photo->rel->period} {$photo->rel->year}";
-
-        return view($this->view, compact('city_id', 'country_id', 'meta_title', 'next', 'photo', 'prev', 'tag_id', 'trip_id'));
+        return view($this->view, [
+            'next' => $next->first(),
+            'prev' => $prev->first(),
+            'photo' => $photo,
+            'tagId' => $tagId,
+            'cityId' => $cityId,
+            'tripId' => $tripId,
+            'countryId' => $countryId,
+            'metaTitle' => "{$photo->rel->title}, {$photo->rel->period} {$photo->rel->year}",
+        ]);
     }
 
     public function tag(Tag $tag)
@@ -193,9 +201,11 @@ class Photos extends Controller
 
         event(new \App\Events\Stats\TagViewed($tag->id));
 
-        $meta_title = "#{$tag->title} · ".\ViewHelper::plural('photos', sizeof($tag->photos));
-
-        return view($this->view, compact('meta_title', 'photos', 'tag'));
+        return view($this->view, [
+            'tag' => $tag,
+            'photos' => $photos,
+            'metaTitle' => "#{$tag->title} · ".\ViewHelper::plural('photos', sizeof($tag->photos)),
+        ]);
     }
 
     public function tags()
@@ -203,7 +213,7 @@ class Photos extends Controller
         \Breadcrumbs::push(trans('photos.tags'));
 
         // Тэги с фотками
-        $tags_ids = \DB::table('taggable')
+        $tagIds = \DB::table('taggable')
             ->select('tag_id')
             ->where('rel_type', 'Photo')
             ->distinct()
@@ -211,11 +221,11 @@ class Photos extends Controller
             ->pluck('tag_id');
 
         $tags = Tag::withCount('photosPublished')
-            ->whereIn('id', $tags_ids)
+            ->whereIn('id', $tagIds)
             ->orderBy(Tag::titleField())
             ->get();
 
-        return view($this->view, compact('tags'));
+        return view($this->view, ['tags' => $tags]);
     }
 
     public function trip(Trip $trip)
@@ -229,14 +239,17 @@ class Photos extends Controller
 
         \Breadcrumbs::push($trip->title);
 
-        return view($this->view, compact('photos', 'trip'));
+        return view($this->view, [
+            'trip' => $trip,
+            'photos' => $photos,
+        ]);
     }
 
     public function trips()
     {
-        $trips = Trip::tripswithCover();
-
-        return view($this->view, compact('trips'));
+        return view($this->view, [
+            'trips' => Trip::tripswithCover(),
+        ]);
     }
 
     protected function appendBreadcrumbs(): void

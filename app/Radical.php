@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Http\Controllers\JapaneseWanikaniRadicals;
 use App\Traits\BurnsAndResurrects;
 use App\Traits\UserBurnableScope;
 use Illuminate\Database\Eloquent\Model;
@@ -60,6 +61,6 @@ class Radical extends Model
 
     public function www(): string
     {
-        return path('JapaneseWanikaniRadicals@show', $this->meaning);
+        return path([JapaneseWanikaniRadicals::class, 'show'], $this->meaning);
     }
 }

@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Http\Controllers\JapaneseWanikaniKanji;
 use App\Traits\BurnsAndResurrects;
 use App\Traits\UserBurnableScope;
 use Illuminate\Database\Eloquent\Model;
@@ -89,6 +90,6 @@ class Kanji extends Model
 
     public function www(): string
     {
-        return path('JapaneseWanikaniKanji@show', $this->character);
+        return path([JapaneseWanikaniKanji::class, 'show'], $this->character);
     }
 }

@@ -1,11 +1,11 @@
 @extends('dcpp.software', [
-  'software_title' => trans('dcpp.airdc'),
+  'softwareTitle' => trans('dcpp.airdc'),
   'software' => [
     ['version' => '3.41', 'id' => 156, 'size' => 48108816, 'dl_suffix' => ''],
     ['version' => '2.09', 'id' => 142, 'size' => 6915716, 'dl_suffix' => ''],
     ['version' => '2.07', 'id' => 131, 'dl_suffix' => ''],
   ],
-  'software_screenshots' => [
+  'softwareScreenshots' => [
     [
       'full' => 'https://img.ivacuum.ru/g/120207/1_nE5CZz1ute.png',
       'thumb' => 'https://img.ivacuum.ru/g/120207/s/1_nE5CZz1ute.png',
@@ -20,7 +20,7 @@
       'thumb' => 'https://img.ivacuum.ru/g/120207/s/1_rGS8EGZEp0.jpg',
     ],
   ],
-  'developer_site' => 'http://airdcpp.net/',
+  'developerSite' => 'http://airdcpp.net/',
 ])
 
 @section('about_software')

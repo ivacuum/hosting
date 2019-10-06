@@ -89,7 +89,6 @@ return [
 
         'CityHelper' => App\Facades\CityHelper::class,
         'ViewHelper' => App\Facades\ViewHelper::class,
-        'CacheHelper' => App\Facades\CacheHelper::class,
         'CountryHelper' => App\Facades\CountryHelper::class,
         'TorrentCategoryHelper' => App\Facades\TorrentCategoryHelper::class,
 

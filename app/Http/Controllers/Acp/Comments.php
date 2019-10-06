@@ -9,32 +9,36 @@ class Comments extends Controller
     public function index()
     {
         $status = request('status');
-        $news_id = request('news_id');
-        $trip_id = request('trip_id');
-        $user_id = request('user_id');
-        $torrent_id = request('torrent_id');
+        $newsId = request('news_id');
+        $tripId = request('trip_id');
+        $userId = request('user_id');
+        $torrentId = request('torrent_id');
 
         $models = Model::with('user')
             ->orderBy('id', 'desc')
             ->when(null !== $status, function (Builder $query) use ($status) {
                 return $query->where('status', $status);
             })
-            ->when($news_id, function (Builder $query) use ($news_id) {
-                return $query->where('rel_id', $news_id)->where('rel_type', 'News');
+            ->when($newsId, function (Builder $query) use ($newsId) {
+                return $query->where('rel_id', $newsId)->where('rel_type', 'News');
             })
-            ->when($trip_id, function (Builder $query) use ($trip_id) {
-                return $query->where('rel_id', $trip_id)->where('rel_type', 'Trip');
+            ->when($tripId, function (Builder $query) use ($tripId) {
+                return $query->where('rel_id', $tripId)->where('rel_type', 'Trip');
             })
-            ->when($torrent_id, function (Builder $query) use ($torrent_id) {
-                return $query->where('rel_id', $torrent_id)->where('rel_type', 'Torrent');
+            ->when($torrentId, function (Builder $query) use ($torrentId) {
+                return $query->where('rel_id', $torrentId)->where('rel_type', 'Torrent');
             })
-            ->when($user_id, function (Builder $query) use ($user_id) {
-                return $query->where('user_id', $user_id);
+            ->when($userId, function (Builder $query) use ($userId) {
+                return $query->where('user_id', $userId);
             })
             ->paginate(20)
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
-        return view($this->view, compact('models', 'status', 'user_id'));
+        return view($this->view, [
+            'models' => $models,
+            'status' => $status,
+            'user_id' => $userId,
+        ]);
     }
 
     protected function rules($model = null)

@@ -1,5 +1,7 @@
 <?php namespace App;
 
+use App\Http\Controllers\Torrents;
+use App\Http\Controllers\Trips;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Ivacuum\Generic\Traits\OriginalWithCast;
@@ -117,11 +119,11 @@ class Comment extends Model
     {
         switch ($this->rel_type) {
             case 'News':
-                return path('News@show', $this->rel_id) . $this->anchor();
+                return path([\App\Http\Controllers\News::class, 'show'], $this->rel_id) . $this->anchor();
             case 'Torrent':
-                return path('Torrents@show', $this->rel_id) . $this->anchor();
+                return path([Torrents::class, 'show'], $this->rel_id) . $this->anchor();
             case 'Trip':
-                return path('Trips@show', [$this->rel_id, 'anchor' => $this->anchor()]);
+                return path([Trips::class, 'show'], [$this->rel_id, 'anchor' => $this->anchor()]);
         }
 
         return '';

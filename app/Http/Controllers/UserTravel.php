@@ -4,10 +4,10 @@ use App\User;
 
 class UserTravel extends Controller
 {
-    /* @var \App\User $traveler */
+    /** @var \App\User $traveler */
     protected $traveler;
 
-    protected function alwaysCallBefore(string $login, ...$args)
+    protected function alwaysCallBefore(string $login)
     {
         $this->traveler = User::where('login', $login)->firstOrFail();
 

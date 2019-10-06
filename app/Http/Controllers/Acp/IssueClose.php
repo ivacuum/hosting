@@ -7,7 +7,7 @@ class IssueClose extends Controller
 {
     public function __invoke(int $id): array
     {
-        /* @var Model $model */
+        /** @var Model $model */
         $model = $this->getModel($id);
 
         if (!$model->canBeClosed()) {

@@ -12,7 +12,7 @@ class ChatTest extends TestCase
 
     public function testChatPostAsUser()
     {
-        /* @var User $user */
+        /** @var User $user */
         $this->be($user = factory(User::class)->create());
 
         $this->expectsEvents([

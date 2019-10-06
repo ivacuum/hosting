@@ -2,12 +2,12 @@
 
 trait LocalizedMail
 {
-    protected $original_locale;
+    protected $originalLocale;
 
     public function __destruct()
     {
-        if ($this->original_locale) {
-            \App::setLocale($this->original_locale);
+        if ($this->originalLocale) {
+            \App::setLocale($this->originalLocale);
         }
     }
 
@@ -16,7 +16,7 @@ trait LocalizedMail
         $prev = \App::getLocale();
 
         if ($prev !== $new) {
-            $this->original_locale = $prev;
+            $this->originalLocale = $prev;
 
             \App::setLocale($new);
         }

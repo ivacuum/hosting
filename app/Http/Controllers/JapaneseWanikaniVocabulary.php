@@ -41,7 +41,7 @@ class JapaneseWanikaniVocabulary extends Controller
     public function show(string $characters)
     {
         if (!request()->wantsJson()) {
-            return view('japanese.wanikani.vue', ['meta_replace' => ['vocab' => $characters]]);
+            return view('japanese.wanikani.vue', ['metaReplace' => ['vocab' => $characters]]);
         }
 
         $vocabulary = Vocabulary::where('character', $characters)

@@ -7,28 +7,28 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Radicals extends Controller
 {
-    protected $sort_dir = 'asc';
-    protected $sort_key = 'level';
-    protected $sortable_keys = ['level', 'meaning', 'kanjis_count'];
-    protected $show_with_count = ['kanjis'];
+    protected $sortDir = 'asc';
+    protected $sortKey = 'level';
+    protected $sortableKeys = ['level', 'meaning', 'kanjis_count'];
+    protected $showWithCount = ['kanjis'];
 
     public function index()
     {
         $q = request('q');
-        $kanji_id = request('kanji_id');
-        $kanjis_count = request('kanjis_count');
+        $kanjiId = request('kanji_id');
+        $kanjisCount = request('kanjis_count');
 
         [$sortKey, $sortDir] = $this->getSortParams();
 
         $models = Model::withCount('kanjis')
             ->orderBy($sortKey, $sortDir)
-            ->when($kanji_id, function (Builder $query) use ($kanji_id) {
-                return $query->whereHas('kanjis', function (Builder $query) use ($kanji_id) {
-                    $query->where('kanji_id', $kanji_id);
+            ->when($kanjiId, function (Builder $query) use ($kanjiId) {
+                return $query->whereHas('kanjis', function (Builder $query) use ($kanjiId) {
+                    $query->where('kanji_id', $kanjiId);
                 });
             })
-            ->when(null !== $kanjis_count, function (Builder $query) use ($kanjis_count) {
-                return $kanjis_count
+            ->when(null !== $kanjisCount, function (Builder $query) use ($kanjisCount) {
+                return $kanjisCount
                     ? $query->has('kanjis')
                     : $query->doesntHave('kanjis');
             })
@@ -39,9 +39,9 @@ class Radicals extends Controller
                 return $query->where('meaning', 'LIKE', "%{$q}%");
             })
             ->paginate()
-            ->withPath(path("{$this->class}@index"));
+            ->withPath(path([$this->controller, 'index']));
 
-        return view($this->view, compact('models'));
+        return view($this->view, ['models' => $models]);
     }
 
     protected function requestDataForModel()
