@@ -2,7 +2,7 @@
 
 return [
 
-    // local, ftp, sftp, s3, rackspace
+    // local, ftp, sftp, s3
     'default' => env('FILESYSTEM_DRIVER', 'local'),
 
     // for both local filesystem and remote cloud

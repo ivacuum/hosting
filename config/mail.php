@@ -2,7 +2,7 @@
 
 return [
 
-    // smtp, sendmail, mailgun, mandrill, ses, sparkpost, postmark, log, array
+    // smtp, sendmail, mailgun, ses, postmark, log, array
     'driver'     => env('MAIL_DRIVER', 'smtp'),
     'host'       => env('MAIL_HOST', 'localhost'),
     'port'       => env('MAIL_PORT', 25),
