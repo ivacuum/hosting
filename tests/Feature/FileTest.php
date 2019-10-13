@@ -1,7 +1,6 @@
 <?php namespace Tests\Feature;
 
 use App\File;
-use App\Http\Controllers\Files;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -11,7 +10,7 @@ class FileTest extends TestCase
 
     public function testIndex()
     {
-        $this->get(action([Files::class, 'index']))
+        $this->get('files')
             ->assertStatus(200);
     }
 
@@ -21,7 +20,7 @@ class FileTest extends TestCase
         $file = factory(File::class)->create();
         $downloads = $file->downloads;
 
-        $this->get(action([Files::class, 'download'], $file))
+        $this->get("files/{$file->id}/dl")
             ->assertRedirect($file->downloadPath());
 
         $file->refresh();

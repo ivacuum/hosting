@@ -1,8 +1,5 @@
 <?php namespace Tests\Feature;
 
-use App\Http\Controllers\UserTravelCities;
-use App\Http\Controllers\UserTravelCountries;
-use App\Http\Controllers\UserTravelTrips;
 use App\Trip;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -16,62 +13,62 @@ class UserTravelTest extends TestCase
 
     public function testCitiesIndex()
     {
-        /** @var User $user */
-        $user = factory(User::class)->create(['login' => self::LOGIN]);
+        $user = $this->user();
         $user->trips()->save(factory(Trip::class)->state('city')->make());
 
-        $this->get(action([UserTravelCities::class, 'index'], self::LOGIN))
+        $this->get('@' . self::LOGIN . '/travel/cities')
             ->assertStatus(200);
     }
 
     public function testCitiesShow()
     {
-        /** @var User $user */
         /** @var Trip $trip */
-        $user = factory(User::class)->create(['login' => self::LOGIN]);
+        $user = $this->user();
         $trip = $user->trips()->save(factory(Trip::class)->state('city')->make());
 
-        $this->get(action([UserTravelCities::class, 'show'], [self::LOGIN, $trip->city->slug]))
+        $this->get('@' . self::LOGIN . "/travel/cities/{$trip->city->slug}")
             ->assertStatus(200);
     }
 
     public function testCountriesIndex()
     {
-        /** @var User $user */
-        $user = factory(User::class)->create(['login' => self::LOGIN]);
+        $user = $this->user();
         $user->trips()->save(factory(Trip::class)->state('city')->make());
 
-        $this->get(action([UserTravelCountries::class, 'index'], self::LOGIN))
+        $this->get('@' . self::LOGIN . '/travel/countries')
             ->assertStatus(200);
     }
 
     public function testCountriesShow()
     {
-        /** @var User $user */
         /** @var Trip $trip */
-        $user = factory(User::class)->create(['login' => self::LOGIN]);
+        $user = $this->user();
         $trip = $user->trips()->save(factory(Trip::class)->state('city')->make());
 
-        $this->get(action([UserTravelCountries::class, 'show'], [self::LOGIN, $trip->city->country->slug]))
+        $this->get('@' . self::LOGIN . "/travel/countries/{$trip->city->country->slug}")
             ->assertStatus(200);
     }
 
     public function testTripsIndex()
     {
-        factory(User::class)->create(['login' => self::LOGIN]);
+        $this->user();
 
-        $this->get(action([UserTravelTrips::class, 'index'], self::LOGIN))
+        $this->get('@' . self::LOGIN . '/travel')
             ->assertStatus(200);
     }
 
     public function testTripsShow()
     {
-        /** @var User $user */
         /** @var Trip $trip */
-        $user = factory(User::class)->create(['login' => self::LOGIN]);
+        $user = $this->user();
         $trip = $user->trips()->save(factory(Trip::class)->state('city')->make());
 
-        $this->get(action([UserTravelTrips::class, 'show'], [self::LOGIN, $trip->slug]))
+        $this->get('@' . self::LOGIN . "/travel/{$trip->slug}")
             ->assertStatus(200);
+    }
+
+    private function user(): User
+    {
+        return factory(User::class)->create(['login' => self::LOGIN]);
     }
 }

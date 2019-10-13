@@ -1,6 +1,5 @@
 <?php namespace Tests\Feature;
 
-use App\Http\Controllers\MySettings;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -12,7 +11,7 @@ class MySettingsTest extends TestCase
     public function testEdit()
     {
         $this->be(factory(User::class)->create())
-            ->get(action([MySettings::class, 'edit']))
+            ->get('my/settings')
             ->assertStatus(200);
     }
 
@@ -30,7 +29,7 @@ class MySettingsTest extends TestCase
 
         $this->expectsEvents($events);
 
-        $this->put(action([MySettings::class, 'update']), [$field => $new])
+        $this->put('my/settings', [$field => $new])
             ->assertStatus(302);
 
         $user->refresh();

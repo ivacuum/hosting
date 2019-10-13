@@ -1,6 +1,5 @@
 <?php namespace Tests\Feature;
 
-use App\Http\Controllers\MyPassword;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -12,7 +11,7 @@ class MyPasswordTest extends TestCase
     public function testEdit()
     {
         $this->be($user = factory(User::class)->create())
-            ->get(action([MyPassword::class, 'edit']))
+            ->get('my/password')
             ->assertStatus(200);
     }
 
@@ -25,7 +24,7 @@ class MyPasswordTest extends TestCase
 
         $this->expectsEvents(\App\Events\Stats\MyPasswordChanged::class);
 
-        $this->put(action([MyPassword::class, 'update']), ['new_password' => $newPassword])
+        $this->put('my/password', ['new_password' => $newPassword])
             ->assertStatus(302);
 
         $user->refresh();
@@ -43,7 +42,7 @@ class MyPasswordTest extends TestCase
 
         $this->expectsEvents(\App\Events\Stats\MyPasswordChanged::class);
 
-        $this->put(action([MyPassword::class, 'update']), ['password' => $password, 'new_password' => $newPassword])
+        $this->put('my/password', ['password' => $password, 'new_password' => $newPassword])
             ->assertStatus(302);
 
         $user->refresh();

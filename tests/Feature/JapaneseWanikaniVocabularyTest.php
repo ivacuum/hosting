@@ -1,6 +1,5 @@
 <?php namespace Tests\Feature;
 
-use App\Http\Controllers\JapaneseWanikaniVocabulary;
 use App\User;
 use App\Vocabulary;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -16,7 +15,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
 
         $vocab = $this->vocabulary();
 
-        $this->delete(action([JapaneseWanikaniVocabulary::class, 'destroy'], $vocab))
+        $this->delete("japanese/wanikani/vocabulary/{$vocab->id}")
             ->assertNoContent();
 
         $this->assertEquals($user->id, $vocab->burnable->user_id);
@@ -24,7 +23,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
 
     public function testIndex()
     {
-        $this->get(action([JapaneseWanikaniVocabulary::class, 'index']))
+        $this->get('japanese/wanikani/vocabulary')
             ->assertStatus(200)
             ->assertViewIs('japanese.wanikani.vue');
     }
@@ -34,7 +33,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
         $level = 60;
         $vocab = $this->vocabulary(['level' => $level]);
 
-        $json = $this->getJson(action([JapaneseWanikaniVocabulary::class, 'index']))
+        $json = $this->getJson('japanese/wanikani/vocabulary')
             ->assertStatus(200)
             ->json("data.{$level}");
 
@@ -45,7 +44,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
     {
         $vocab = $this->vocabulary();
 
-        $this->get($vocab->www())
+        $this->get("japanese/wanikani/vocabulary/{$vocab->character}")
             ->assertStatus(200)
             ->assertViewIs('japanese.wanikani.vue');
     }
@@ -54,7 +53,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
     {
         $vocab = $this->vocabulary();
 
-        $this->getJson($vocab->www())
+        $this->getJson("japanese/wanikani/vocabulary/{$vocab->character}")
             ->assertStatus(200)
             ->assertJson(['data' => ['id' => $vocab->id]]);
     }
@@ -66,7 +65,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
         $vocab = $this->vocabulary();
         $vocab->burn($user->id);
 
-        $this->put(action([JapaneseWanikaniVocabulary::class, 'update'], $vocab))
+        $this->put("japanese/wanikani/vocabulary/{$vocab->id}")
             ->assertNoContent();
 
         $this->assertNull($vocab->burnable);

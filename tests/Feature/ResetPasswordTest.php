@@ -1,7 +1,5 @@
 <?php namespace Tests\Feature;
 
-use App\Http\Controllers\Auth\ResetPassword;
-use App\Http\Controllers\Home;
 use App\User;
 use Illuminate\Auth\Passwords\PasswordBroker;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -13,7 +11,7 @@ class ResetPasswordTest extends TestCase
 
     public function testFormGuest()
     {
-        $this->get(action([ResetPassword::class, 'index'], ['token']))
+        $this->get('auth/password/reset/token')
             ->assertStatus(200);
 
         $this->assertGuest();
@@ -22,7 +20,7 @@ class ResetPasswordTest extends TestCase
     public function testFormUser()
     {
         $this->be(factory(User::class)->state('id')->make())
-            ->get(action([ResetPassword::class, 'index'], ['token']))
+            ->get('auth/password/reset/token')
             ->assertStatus(200);
 
         $this->assertAuthenticated();
@@ -36,14 +34,14 @@ class ResetPasswordTest extends TestCase
         $broker = app(PasswordBroker::class);
         $token = $broker->createToken($user);
 
-        $this->from(action([ResetPassword::class, 'index'], [$token]))
-            ->post(action([ResetPassword::class, 'reset']), [
+        $this->from("auth/password/reset/{$token}")
+            ->post('auth/password/reset', [
                 'email' => $user->email,
                 'token' => $token,
                 'password' => 'secret42',
             ])
             ->assertSessionHasNoErrors()
-            ->assertRedirect(action([Home::class, 'index']));
+            ->assertRedirect('/');
 
         $this->assertAuthenticated();
     }
@@ -56,14 +54,14 @@ class ResetPasswordTest extends TestCase
         $broker = app(PasswordBroker::class);
         $token = $broker->createToken($user);
 
-        $this->from(action([ResetPassword::class, 'index'], [$token]))
-            ->post(action([ResetPassword::class, 'reset']), [
+        $this->from("auth/password/reset/{$token}")
+            ->post('auth/password/reset', [
                 'email' => $user->email,
                 'token' => $token,
                 'password' => 'secret42',
             ])
             ->assertSessionHasNoErrors()
-            ->assertRedirect(action([Home::class, 'index']));
+            ->assertRedirect('/');
 
         $this->assertAuthenticated();
     }

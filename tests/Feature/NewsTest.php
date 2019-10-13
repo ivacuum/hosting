@@ -12,17 +12,18 @@ class NewsTest extends TestCase
     {
         factory(News::class)->create();
 
-        $this->get(action([\App\Http\Controllers\News::class, 'index']))
+        $this->get('news')
             ->assertStatus(200);
     }
 
     public function testShow()
     {
+        /** @var News $news */
         $news = factory(News::class)->state('user')->create();
 
         $this->expectsEvents(\App\Events\Stats\NewsViewed::class);
 
-        $this->get(action([\App\Http\Controllers\News::class, 'show'], $news))
+        $this->get("news/{$news->id}")
             ->assertStatus(200);
     }
 
@@ -34,26 +35,23 @@ class NewsTest extends TestCase
     {
         $this->get($url)
             ->assertStatus(301)
-            ->assertRedirect(action([\App\Http\Controllers\News::class, 'index']));
+            ->assertRedirect('news');
     }
 
     public function testRedirectToNewsLocale()
     {
         $locale = 'en';
-
         $news = factory(News::class)->state('user')->create(['locale' => $locale]);
 
-        $this->get(action([\App\Http\Controllers\News::class, 'show'], $news))
+        $this->get("news/{$news->id}")
             ->assertStatus(301)
-            ->assertRedirect($locale . path([\App\Http\Controllers\News::class, 'show'], $news));
+            ->assertRedirect("{$locale}/news/{$news->id}");
     }
 
     public function oldUrls()
     {
-        return [
-            ['/news/2010/01'],
-            ['/news/2010/01/01'],
-            ['/news/2010/01/01/slug'],
-        ];
+        yield ['news/2010/01'];
+        yield ['news/2010/01/01'];
+        yield ['news/2010/01/01/slug'];
     }
 }

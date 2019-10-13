@@ -1,14 +1,12 @@
 <?php namespace Tests\Feature;
 
-use App\Http\Controllers\MyPassword;
-use App\Http\Controllers\WellKnownChangePasswordController;
 use Tests\TestCase;
 
 class WellKnownChangePasswordTest extends TestCase
 {
     public function testRedirect()
     {
-        $this->get(action('\\' . WellKnownChangePasswordController::class))
-            ->assertRedirect(action([MyPassword::class, 'edit']));
+        $this->get('.well-known/change-password')
+            ->assertRedirect('my/password');
     }
 }

@@ -1,6 +1,5 @@
 <?php namespace Tests\Feature;
 
-use App\Http\Controllers\Gallery;
 use App\Image;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -13,23 +12,19 @@ class GalleryTest extends TestCase
 
     public function testIndex()
     {
-        /** @var User $user */
-        $this->be($user = factory(User::class)->create());
-
+        $this->be($user = $this->user());
         $user->images()->save(factory(Image::class)->make());
 
-        $this->get(action([Gallery::class, 'index']))
+        $this->get('gallery')
             ->assertStatus(200);
     }
 
     public function testPreview()
     {
-        /** @var User $user */
-        $user = factory(User::class)->create();
-
+        $user = $this->user();
         $image = $user->images()->save(factory(Image::class)->make());
 
-        $this->get(action([Gallery::class, 'preview'], $image))
+        $this->get("gallery/preview/{$image->id}")
             ->assertStatus(200);
     }
 
@@ -39,12 +34,10 @@ class GalleryTest extends TestCase
 
         $file = UploadedFile::fake()->image('screenshot.png');
 
-        /** @var User $user */
-        $this->be($user = factory(User::class)->create());
-
         $this->expectsEvents(\App\Events\Stats\GalleryImageUploaded::class);
 
-        $id = $this->postJson(action([Gallery::class, 'upload']), ['file' => $file])
+        $id = $this->be($user = $this->user())
+            ->postJson('gallery/upload', ['file' => $file])
             ->assertStatus(200)
             ->assertJson(['status' => 'OK'])
             ->json('id');
@@ -58,19 +51,22 @@ class GalleryTest extends TestCase
 
     public function testUploadPage()
     {
-        $this->be(factory(User::class)->create())
-            ->get(action([Gallery::class, 'upload']))
+        $this->be($this->user())
+            ->get('gallery/upload')
             ->assertStatus(200);
     }
 
     public function testView()
     {
-        /** @var User $user */
-        $user = factory(User::class)->create();
-
+        $user = $this->user();
         $image = $user->images()->save(factory(Image::class)->make());
 
-        $this->get(action([Gallery::class, 'view'], $image))
+        $this->get("gallery/view/{$image->id}")
             ->assertStatus(200);
+    }
+
+    private function user(): User
+    {
+        return factory(User::class)->create();
     }
 }

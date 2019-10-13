@@ -2,7 +2,6 @@
 
 use App\Comment;
 use App\Events\CommentPublished;
-use App\Http\Controllers\AjaxComment;
 use App\Mail\CommentConfirm;
 use App\News;
 use App\User;
@@ -17,16 +16,14 @@ class CommentsTest extends TestCase
     {
         \Mail::fake();
 
-        /** @var User $user */
         /** @var News $news */
-        $user = factory(User::class)->create();
+        $user = $this->user();
         $news = factory(News::class)->create(['user_id' => $user->id]);
-        $email = 'guest+'.random_int(10000, 99999).'@example.com';
+        $email = 'guest+' . random_int(10000, 99999) . '@example.com';
 
         $this->expectsEvents(\App\Events\Stats\UserRegisteredAuto::class);
 
-        $this->postJson(
-            action([AjaxComment::class, 'store'], ['type' => 'news', 'id' => $news->id]), [
+        $this->postJson("ajax/comment/news/{$news->id}", [
                 'text' => 'some text from the guest',
                 'email' => $email,
             ])
@@ -38,29 +35,29 @@ class CommentsTest extends TestCase
         $comment = Comment::orderByDesc('id')->first();
         $comment->user->activate();
 
-        $this->be($comment->user);
-
         $this->expectsEvents(CommentPublished::class);
 
-        $this->get(action([\App\Http\Controllers\CommentConfirm::class, 'update'], $comment))
+        $this->be($comment->user)
+            ->get("comments/{$comment->id}/confirm")
             ->assertRedirect($comment->www());
     }
 
     public function testCommentPostAsUser()
     {
-        /** @var User $user */
-        $this->be($user = factory(User::class)->create());
+        $this->be($user = $this->user());
 
         /** @var News $news */
         $news = factory(News::class)->create(['user_id' => $user->id]);
 
         $this->expectsEvents(CommentPublished::class);
 
-        $this->postJson(
-            action([AjaxComment::class, 'store'], ['type' => 'news', 'id' => $news->id]), [
-                'text' => 'some text from the user is here',
-            ])
+        $this->postJson("ajax/comment/news/{$news->id}", ['text' => 'some text from the user is here'])
             ->assertStatus(201)
             ->assertJsonStructure(['data']);
+    }
+
+    private function user(): User
+    {
+        return factory(User::class)->create();
     }
 }

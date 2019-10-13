@@ -1,6 +1,5 @@
 <?php namespace Tests\Feature;
 
-use App\Http\Controllers\JapaneseWanikaniRadicals;
 use App\Radical;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -16,7 +15,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
 
         $radical = $this->radical();
 
-        $this->delete(action([JapaneseWanikaniRadicals::class, 'destroy'], $radical))
+        $this->delete("japanese/wanikani/radicals/{$radical->id}")
             ->assertNoContent();
 
         $this->assertEquals($user->id, $radical->burnable->user_id);
@@ -24,7 +23,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
 
     public function testIndex()
     {
-        $this->get(action([JapaneseWanikaniRadicals::class, 'index']))
+        $this->get('japanese/wanikani/radicals')
             ->assertStatus(200)
             ->assertViewIs('japanese.wanikani.vue');
     }
@@ -34,7 +33,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
         $level = 60;
         $radical = $this->radical(['level' => $level]);
 
-        $json = $this->getJson(action([JapaneseWanikaniRadicals::class, 'index']))
+        $json = $this->getJson('japanese/wanikani/radicals')
             ->assertStatus(200)
             ->json("data.{$level}");
 
@@ -45,7 +44,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
     {
         $radical = $this->radical();
 
-        $this->get($radical->www())
+        $this->get("japanese/wanikani/radicals/{$radical->meaning}")
             ->assertStatus(200)
             ->assertViewIs('japanese.wanikani.vue');
     }
@@ -54,7 +53,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
     {
         $radical = $this->radical();
 
-        $this->getJson($radical->www())
+        $this->getJson("japanese/wanikani/radicals/{$radical->meaning}")
             ->assertStatus(200)
             ->assertJson(['data' => ['id' => $radical->id]]);
     }
@@ -66,7 +65,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
         $radical = $this->radical();
         $radical->burn($user->id);
 
-        $this->put(action([JapaneseWanikaniRadicals::class, 'update'], $radical))
+        $this->put("japanese/wanikani/radicals/{$radical->id}")
             ->assertNoContent();
 
         $this->assertNull($radical->burnable);

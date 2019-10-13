@@ -1,7 +1,6 @@
 <?php namespace Tests\Feature;
 
 use App\Gig;
-use App\Http\Controllers\Life;
 use App\Trip;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -14,7 +13,7 @@ class LifeTest extends TestCase
     {
         factory(Trip::class)->state('city')->create();
 
-        $this->get(action([Life::class, 'calendar']))
+        $this->get('life/calendar')
             ->assertStatus(200);
     }
 
@@ -22,7 +21,7 @@ class LifeTest extends TestCase
     {
         factory(Trip::class)->state('city')->create();
 
-        $this->get(action([Life::class, 'cities']))
+        $this->get('life/cities')
             ->assertStatus(200);
     }
 
@@ -31,7 +30,7 @@ class LifeTest extends TestCase
         /** @var Trip $trip */
         $trip = factory(Trip::class)->state('city')->create();
 
-        $this->get($trip->city->www())
+        $this->get("life/{$trip->city->slug}")
             ->assertStatus(200);
     }
 
@@ -39,7 +38,7 @@ class LifeTest extends TestCase
     {
         factory(Trip::class)->state('city')->create();
 
-        $this->get(action([Life::class, 'countries']))
+        $this->get('life/countries')
             ->assertStatus(200);
     }
 
@@ -48,7 +47,7 @@ class LifeTest extends TestCase
         /** @var Trip $trip */
         $trip = factory(Trip::class)->state('city')->create();
 
-        $this->get($trip->city->country->www())
+        $this->get("life/countries/{$trip->city->country->slug}")
             ->assertStatus(200);
     }
 
@@ -56,7 +55,7 @@ class LifeTest extends TestCase
     {
         factory(Gig::class)->state('city')->create();
 
-        $this->get(action([Life::class, 'gigs']))
+        $this->get('life/gigs')
             ->assertStatus(200);
     }
 
@@ -66,7 +65,7 @@ class LifeTest extends TestCase
         $gig = Gig::where('status', Gig::STATUS_PUBLISHED)->first();
 
         if (null !== $gig) {
-            $this->get($gig->www())
+            $this->get("life/{$gig->slug}")
                 ->assertStatus(200);
 
             return;
@@ -76,7 +75,7 @@ class LifeTest extends TestCase
 
         $gig->createStoryFile();
 
-        $this->get($gig->www())
+        $this->get("life/{$gig->slug}")
             ->assertStatus(200);
 
         $gig->deleteStoryFile();
@@ -86,7 +85,7 @@ class LifeTest extends TestCase
     {
         factory(Trip::class)->state('city')->create();
 
-        $this->get(action([Life::class, 'index']))
+        $this->get('life')
             ->assertStatus(200);
     }
 
@@ -107,7 +106,7 @@ class LifeTest extends TestCase
             ->first();
 
         if (null !== $trip) {
-            $this->get($trip->www())
+            $this->get("life/{$trip->slug}")
                 ->assertStatus(200);
 
             return;
@@ -117,7 +116,7 @@ class LifeTest extends TestCase
 
         $trip->createStoryFile();
 
-        $this->get($trip->www())
+        $this->get("life/{$trip->slug}")
             ->assertStatus(200);
 
         $trip->deleteStoryFile();
@@ -125,16 +124,14 @@ class LifeTest extends TestCase
 
     public function pages()
     {
-        return [
-            ['/life/books'],
-            ['/life/chillout'],
-            ['/life/favorite-posts'],
-            ['/life/english'],
-            ['/life/german'],
-            ['/life/laundry'],
-            ['/life/movies'],
-            ['/life/podcasts'],
-            ['/life/using-in-travels'],
-        ];
+        yield ['life/books'];
+        yield ['life/chillout'];
+        yield ['life/favorite-posts'];
+        yield ['life/english'];
+        yield ['life/german'];
+        yield ['life/laundry'];
+        yield ['life/movies'];
+        yield ['life/podcasts'];
+        yield ['life/using-in-travels'];
     }
 }

@@ -1,7 +1,5 @@
 <?php namespace Tests\Feature;
 
-use App\Http\Controllers\Auth\SignIn;
-use App\Http\Controllers\Home;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -12,8 +10,8 @@ class SignOutTest extends TestCase
 
     public function testGuest()
     {
-        $this->get(action([SignIn::class, 'logout']))
-            ->assertRedirect(action([SignIn::class, 'index']));
+        $this->get('auth/logout')
+            ->assertRedirect('auth/login');
 
         $this->assertGuest();
     }
@@ -21,8 +19,8 @@ class SignOutTest extends TestCase
     public function testUser()
     {
         $this->be(factory(User::class)->create())
-            ->get(action([SignIn::class, 'logout']))
-            ->assertRedirect(action([Home::class, 'index']));
+            ->get('auth/logout')
+            ->assertRedirect('/');
 
         $this->assertGuest();
     }

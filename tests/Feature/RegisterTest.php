@@ -1,7 +1,5 @@
 <?php namespace Tests\Feature;
 
-use App\Http\Controllers\Auth\NewAccount;
-use App\Http\Controllers\Home;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -12,7 +10,7 @@ class RegisterTest extends TestCase
 
     public function testFormGuest()
     {
-        $this->get(action([NewAccount::class, 'index']))
+        $this->get('auth/register')
             ->assertStatus(200);
 
         $this->assertGuest();
@@ -21,20 +19,20 @@ class RegisterTest extends TestCase
     public function testFormUser()
     {
         $this->be(factory(User::class)->make())
-            ->get(action([NewAccount::class, 'index']))
-            ->assertRedirect(action([Home::class, 'index']));
+            ->get('auth/register')
+            ->assertRedirect('/');
 
         $this->assertAuthenticated();
     }
 
     public function testSubmitGuest()
     {
-        $this->from(action([NewAccount::class, 'index']))
-            ->post(action([NewAccount::class, 'register']), [
+        $this->from('auth/register')
+            ->post('auth/register', [
                 'email' => 'phpunit@example.com',
                 'password' => 'secret42',
             ])
-            ->assertRedirect(action([Home::class, 'index']));
+            ->assertRedirect('/');
 
         $this->assertAuthenticated();
     }

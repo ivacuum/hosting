@@ -1,6 +1,5 @@
 <?php namespace Tests\Feature;
 
-use App\Http\Controllers\MyProfile;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -12,7 +11,7 @@ class MyProfileTest extends TestCase
     public function testEdit()
     {
         $this->be(factory(User::class)->create())
-            ->get(action([MyProfile::class, 'edit']))
+            ->get('my/profile')
             ->assertStatus(200);
     }
 
@@ -25,7 +24,7 @@ class MyProfileTest extends TestCase
 
         $this->expectsEvents(\App\Events\Stats\MyProfileChanged::class);
 
-        $this->put(action([MyProfile::class, 'update']), [
+        $this->put('my/profile', [
             'email' => $email,
             'username' => $user->login,
         ])
@@ -45,7 +44,7 @@ class MyProfileTest extends TestCase
 
         $this->expectsEvents(\App\Events\Stats\MyProfileChanged::class);
 
-        $this->put(action([MyProfile::class, 'update']), [
+        $this->put('my/profile', [
             'email' => $user->email,
             'username' => $login,
         ])

@@ -1,7 +1,6 @@
 <?php namespace Tests\Feature;
 
 use App\Events\Stats;
-use App\Http\Controllers\BeaconController;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -21,7 +20,7 @@ class BeaconTest extends TestCase
             'event' => class_basename($event),
         ]]);
 
-        $this->post(action('\\' . BeaconController::class), $payload)
+        $this->post('ajax/beacon', $payload)
             ->assertNoContent();
     }
 
@@ -40,7 +39,7 @@ class BeaconTest extends TestCase
         })->toArray());
 
         \Event::fakeFor(function () use ($event, $ids, $payload) {
-            $this->post(action('\\' . BeaconController::class), $payload)
+            $this->post('ajax/beacon', $payload)
                 ->assertNoContent();
 
             \Event::assertDispatched($event, function ($e) use ($ids) {

@@ -1,6 +1,5 @@
 <?php namespace Tests\Feature;
 
-use App\Http\Controllers\Coupons;
 use App\Mail\FirstvdsPromocode;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -15,7 +14,7 @@ class CouponTest extends TestCase
 
         \Mail::fake();
 
-        $this->post(action([Coupons::class, 'firstvdsPost']), ['email' => $email])
+        $this->post('promocodes-coupons/firstvds', ['email' => $email])
             ->assertStatus(302);
 
         \Mail::assertQueued(FirstvdsPromocode::class, function (FirstvdsPromocode $mail) use ($email) {
@@ -35,14 +34,12 @@ class CouponTest extends TestCase
 
     public function pages()
     {
-        return [
-            ['/promocodes-coupons'],
-            ['/promocodes-coupons/airbnb'],
-            ['/promocodes-coupons/booking'],
-            ['/promocodes-coupons/digitalocean'],
-            ['/promocodes-coupons/drimsim'],
-            ['/promocodes-coupons/firstvds'],
-            ['/promocodes-coupons/timeweb'],
-        ];
+        yield ['promocodes-coupons'];
+        yield ['promocodes-coupons/airbnb'];
+        yield ['promocodes-coupons/booking'];
+        yield ['promocodes-coupons/digitalocean'];
+        yield ['promocodes-coupons/drimsim'];
+        yield ['promocodes-coupons/firstvds'];
+        yield ['promocodes-coupons/timeweb'];
     }
 }

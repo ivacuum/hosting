@@ -17,10 +17,8 @@ class RssTest extends TestCase
 
     public function feeds()
     {
-        return [
-            ['/life/gigs/rss'],
-            ['/life/rss'],
-            ['/news/rss'],
-        ];
+        yield ['life/gigs/rss'];
+        yield ['life/rss'];
+        yield ['news/rss'];
     }
 }

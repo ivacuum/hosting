@@ -1,6 +1,5 @@
 <?php namespace Tests\Feature;
 
-use App\Http\Controllers\MyTrips;
 use App\Trip;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -13,7 +12,7 @@ class MyTripsTest extends TestCase
     public function testCreate()
     {
         $this->be(factory(User::class)->state('id')->make())
-            ->get(action([MyTrips::class, 'create']))
+            ->get('my/trips/create')
             ->assertStatus(200);
     }
 
@@ -25,8 +24,8 @@ class MyTripsTest extends TestCase
         /** @var Trip $trip */
         $trip = factory(Trip::class)->create(['user_id' => $user->id]);
 
-        $this->delete(action([MyTrips::class, 'destroy'], $trip))
-            ->assertRedirect(action([MyTrips::class, 'index']));
+        $this->delete("my/trips/{$trip->id}")
+            ->assertRedirect('my/trips');
 
         $this->assertDatabaseMissing($trip->getTable(), ['id' => $trip->id]);
     }
@@ -39,7 +38,7 @@ class MyTripsTest extends TestCase
         /** @var Trip $trip */
         $trip = factory(Trip::class)->create(['user_id' => $user->id]);
 
-        $this->get(action([MyTrips::class, 'edit'], $trip))
+        $this->get("my/trips/{$trip->id}/edit")
             ->assertStatus(200);
     }
 
@@ -50,7 +49,7 @@ class MyTripsTest extends TestCase
 
         factory(Trip::class)->create(['user_id' => $user->id]);
 
-        $this->get(action([MyTrips::class, 'index']))
+        $this->get('my/trips')
             ->assertStatus(200);
     }
 
@@ -63,8 +62,8 @@ class MyTripsTest extends TestCase
         $trip = factory(Trip::class)->state('city')->make();
 
         $this->be($user)
-            ->post(action([MyTrips::class, 'store'], $trip), $trip->attributesToArray())
-            ->assertRedirect(action([MyTrips::class, 'index']));
+            ->post('my/trips', $trip->attributesToArray())
+            ->assertRedirect('my/trips');
 
         $tripSaved = Trip::where('city_id', $trip->city_id)->first();
 
@@ -90,8 +89,8 @@ class MyTripsTest extends TestCase
         ];
 
         $this->be($user)
-            ->put(action([MyTrips::class, 'update'], $trip), array_merge($trip->attributesToArray(), $data))
-            ->assertRedirect(action([MyTrips::class, 'index']));
+            ->put("my/trips/{$trip->id}", array_merge($trip->attributesToArray(), $data))
+            ->assertRedirect('my/trips');
 
         $trip->refresh();
 

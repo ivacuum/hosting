@@ -1,6 +1,5 @@
 <?php namespace Tests\Feature;
 
-use App\Http\Controllers\JapaneseWanikaniKanji;
 use App\Kanji;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -16,7 +15,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
 
         $kanji = $this->kanji();
 
-        $this->delete(action([JapaneseWanikaniKanji::class, 'destroy'], $kanji))
+        $this->delete("japanese/wanikani/kanji/{$kanji->id}")
             ->assertNoContent();
 
         $this->assertEquals($user->id, $kanji->burnable->user_id);
@@ -24,7 +23,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
 
     public function testIndex()
     {
-        $this->get(action([JapaneseWanikaniKanji::class, 'index']))
+        $this->get('japanese/wanikani/kanji')
             ->assertStatus(200)
             ->assertViewIs('japanese.wanikani.vue');
     }
@@ -34,7 +33,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
         $level = 60;
         $kanji = $this->kanji(['level' => $level]);
 
-        $json = $this->getJson(action([JapaneseWanikaniKanji::class, 'index']))
+        $json = $this->getJson('japanese/wanikani/kanji')
             ->assertStatus(200)
             ->json("data.{$level}");
 
@@ -45,7 +44,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
     {
         $kanji = $this->kanji();
 
-        $this->get($kanji->www())
+        $this->get("japanese/wanikani/kanji/{$kanji->character}")
             ->assertStatus(200)
             ->assertViewIs('japanese.wanikani.vue');
     }
@@ -54,7 +53,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
     {
         $kanji = $this->kanji();
 
-        $this->getJson($kanji->www())
+        $this->getJson("japanese/wanikani/kanji/{$kanji->character}")
             ->assertStatus(200)
             ->assertJson(['data' => ['id' => $kanji->id]]);
     }
@@ -66,7 +65,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
         $kanji = $this->kanji();
         $kanji->burn($user->id);
 
-        $this->put(action([JapaneseWanikaniKanji::class, 'update'], $kanji))
+        $this->put("japanese/wanikani/kanji/{$kanji->id}")
             ->assertNoContent();
 
         $this->assertNull($kanji->burnable);

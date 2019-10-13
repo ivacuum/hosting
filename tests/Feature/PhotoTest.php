@@ -1,6 +1,5 @@
 <?php namespace Tests\Feature;
 
-use App\Http\Controllers\Photos;
 use App\Photo;
 use App\Trip;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -14,13 +13,13 @@ class PhotoTest extends TestCase
     {
         factory(Photo::class)->state('trip')->create();
 
-        $this->get(action([Photos::class, 'index']))
+        $this->get('photos')
             ->assertStatus(200);
     }
 
     public function testCities()
     {
-        $this->get(action([Photos::class, 'cities']))
+        $this->get('photos/cities')
             ->assertStatus(200);
     }
 
@@ -29,13 +28,13 @@ class PhotoTest extends TestCase
         /** @var Photo $photo */
         $photo = factory(Photo::class)->state('trip')->create();
 
-        $this->get(action([Photos::class, 'city'], $photo->rel->city->slug))
+        $this->get("photos/cities/{$photo->rel->city->slug}")
             ->assertStatus(200);
     }
 
     public function testCountries()
     {
-        $this->get(action([Photos::class, 'countries']))
+        $this->get('photos/countries')
             ->assertStatus(200);
     }
 
@@ -44,19 +43,19 @@ class PhotoTest extends TestCase
         /** @var Photo $photo */
         $photo = factory(Photo::class)->state('trip')->create();
 
-        $this->get(action([Photos::class, 'country'], $photo->rel->city->country->slug))
+        $this->get("photos/countries/{$photo->rel->city->country->slug}")
             ->assertStatus(200);
     }
 
     public function testFaq()
     {
-        $this->get(action([Photos::class, 'faq']))
+        $this->get('photos/faq')
             ->assertStatus(200);
     }
 
     public function testMap()
     {
-        $this->get(action([Photos::class, 'map']))
+        $this->get('photos/map')
             ->assertStatus(200);
     }
 
@@ -64,7 +63,7 @@ class PhotoTest extends TestCase
     {
         factory(Photo::class)->states('tag', 'trip')->create();
 
-        $this->get(action([Photos::class, 'tags']))
+        $this->get('photos/tags')
             ->assertStatus(200);
     }
 
@@ -73,7 +72,7 @@ class PhotoTest extends TestCase
         /** @var Photo $photo */
         $photo = factory(Photo::class)->states('tag', 'trip')->create();
 
-        $this->get(action([Photos::class, 'tag'], $photo->tags->first()->id))
+        $this->get("photos/tags/{$photo->tags[0]->id}")
             ->assertStatus(200);
     }
 
@@ -81,7 +80,7 @@ class PhotoTest extends TestCase
     {
         factory(Trip::class)->states('city', 'meta_image')->create();
 
-        $this->get(action([Photos::class, 'trips']))
+        $this->get('photos/trips')
             ->assertStatus(200);
     }
 
@@ -90,7 +89,7 @@ class PhotoTest extends TestCase
         /** @var Photo $photo */
         $photo = factory(Photo::class)->states('trip')->create();
 
-        $this->get(action([Photos::class, 'trip'], $photo->rel->id))
+        $this->get("photos/trips/{$photo->rel->id}")
             ->assertStatus(200);
     }
 }
