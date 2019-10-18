@@ -98,7 +98,7 @@ class TorrentTest extends TestCase
         $user = factory(User::class)->create();
         $rtoId = 1234567890;
 
-        $this->instance(Rto::class, \Mockery::mock(Rto::class, function (MockInterface $mock) use ($rtoId) {
+        $this->mock(Rto::class, function (MockInterface $mock) use ($rtoId) {
             $mock->shouldReceive('findTopicId')->andReturnNull();
             $mock->shouldReceive('torrentData')->andReturn([
                 'body' => 'body',
@@ -111,7 +111,7 @@ class TorrentTest extends TestCase
                 'info_hash' => 'info_hash',
                 'tor_status' => Torrent::RTO_STATUS_OK,
             ]);
-        }));
+        });
 
         $response = $this->be($user)
             ->post('torrents', ['input' => $rtoId, 'category_id' => 2]);
