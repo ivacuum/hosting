@@ -1,6 +1,6 @@
 @if (!empty($breadcrumbs))
   <div class="breadcrumbs text-xs py-2 border-b border-gray-200 leading-snug">
-    <nav class="container" {{ sizeof($breadcrumbs) > 1 ? 'itemscope itemtype="http://schema.org/BreadcrumbList"' : '' }}>
+    <nav class="container" {!! sizeof($breadcrumbs) > 1 ? 'itemscope itemtype="http://schema.org/BreadcrumbList"' : '' !!}>
       <span class="{{ !Str::startsWith($self, 'Acp\\') ? 'hidden sm:inline' : '' }}">
         <a href="{{ $localeUri ?: '/' }}">
           @svg (home)
