@@ -9,7 +9,12 @@
         class="block relative w-full pb-3/4"
         href="{{ path([App\Http\Controllers\Photos::class, 'show'], [$photo, $city->getForeignKey() => $city]) }}"
       >
-        <img class="absolute top-0 left-0 w-full object-cover" src="{{ $photo->thumbnailUrl() }}" alt="">
+        <img
+          class="absolute top-0 left-0 w-full object-cover js-lazy"
+          src="https://life.ivacuum.org/0.gif"
+          data-src="{{ $photo->thumbnailUrl() }}"
+          alt=""
+        >
       </a>
     </div>
   @endforeach
