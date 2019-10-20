@@ -144,7 +144,8 @@ class Life extends Controller
                 return $model->year;
             });
 
-        \Breadcrumbs::push($country->title, "life/countries/{$country->slug}");
+        \Breadcrumbs::push(trans('menu.countries'), "life/countries")
+            ->push($country->title, "life/countries/{$country->slug}");
 
         event(new \App\Events\Stats\CountryViewed($country->id));
 
