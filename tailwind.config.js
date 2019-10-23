@@ -47,6 +47,7 @@ module.exports = {
       md: '768px',
       lg: '992px',
       xl: '1200px',
+      dark: { raw: '(prefers-color-scheme: dark)' },
     },
     container: {
       center: true,
