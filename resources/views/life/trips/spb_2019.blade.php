@@ -36,28 +36,83 @@ IMG_0134.jpeg
 @endru
 IMG_0135.jpeg
 
+@ru
+  <p>Ночной Питер.</p>
+@endru
 IMG_0136.jpeg
 IMG_0137.jpeg
-IMG_0139.jpeg
-IMG_0148.jpeg
 IMG_0149.jpeg
 IMG_0151.jpeg
+
+@ru
+  <p>Начинается август, а на развод мостов уже можно брать шапку и пуховик.</p>
+@endru
+IMG_0139.jpeg
+IMG_0148.jpeg
+
+@ru
+  <p>Вечерние фасады.</p>
+@endru
 IMG_0159.jpeg
 IMG_0161.jpeg
+
+@ru
+  <p>Вечерний мост.</p>
+@endru
 IMG_0162.jpeg
+
+@ru
+  <p>Карта <s>метро</s> общественных туалетов.</p>
+@endru
 IMG_0166.jpeg
+
+@ru
+  <p>Легкий ужин менсиканской кухней после концерта Раммштайна.</p>
+@endru
 IMG_0894.jpeg
+
+@ru
+  <p>Финляндский вокзал.</p>
+@endru
 IMG_0897.jpeg
+
+@ru
+  <p>На поезд Ласточка билет легко и быстро купить в терминале.</p>
+@endru
 IMG_0899.jpeg
-IMG_0942.jpeg
+
+@ru
+  <p>Интересная находка караоке-бар Поизон. Все песни в каталоге иностранные.</p>
+@endru
 IMG_0945.jpeg
+
+@ru
+  <p>Исполнители в полной мере могут почувствовать себя на сцене среди единомышленников.</p>
+@endru
+IMG_0942.jpeg
+
+@ru
+  <p>Канал.</p>
+@endru
 IMG_0948.jpeg
-IMG_0951.jpeg
+
+@ru
+  <p><s>Зефирка</s> Ротонда.</p>
+@endru
 IMG_0952.jpeg
+IMG_0951.jpeg
+
+@ru
+  <p>Интересный номер дома.</p>
+@endru
+IMG_0958.jpeg
+
+@ru
+  <p>Впервые за неделю небо не абсолютно облачное.</p>
+@endru
 IMG_0953.jpeg
 IMG_0955.jpeg
 IMG_0957.jpeg
-IMG_0958.jpeg
 IMG_0959.jpeg
 IMG_0960.jpeg
 @endsection
