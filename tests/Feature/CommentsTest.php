@@ -32,6 +32,7 @@ class CommentsTest extends TestCase
 
         \Mail::assertQueued(CommentConfirmMail::class);
 
+        /** @var Comment $comment */
         $comment = Comment::orderByDesc('id')->first();
         $comment->user->activate();
 

@@ -169,10 +169,10 @@ class User extends Authenticatable implements HasLocalePreference
         return $this->login ?: $this->email;
     }
 
-    public function findByEmailOrCreate(array $data): self
+    public static function findByEmailOrCreate(array $data): self
     {
         /** @var self $user */
-        $user = $this->where('email', $data['email'])->first();
+        $user = self::where('email', $data['email'])->first();
 
         if (null !== $user) {
             return $user;
@@ -182,7 +182,7 @@ class User extends Authenticatable implements HasLocalePreference
             throw new \InvalidArgumentException('Данная электронная почта недоступна, укажите другую');
         }
 
-        return $this->registerAutomatically($data);
+        return self::registerAutomatically($data);
     }
 
     public function isAdmin(): bool
@@ -245,11 +245,11 @@ class User extends Authenticatable implements HasLocalePreference
         return $this->login ?: "user #{$this->id}";
     }
 
-    public function registerAutomatically(array $data): self
+    public static function registerAutomatically(array $data): self
     {
         event(new \App\Events\Stats\UserRegisteredAuto);
 
-        return $this->create($data);
+        return self::create($data);
     }
 
     public function sendPasswordResetNotification($token): void

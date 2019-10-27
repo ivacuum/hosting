@@ -90,9 +90,13 @@ class Subscriptions extends Controller
 
         if (null !== $value = request('gigs')) {
             $user->notify_gigs = $value ? User::NOTIFY_MAIL : User::NOTIFY_NO;
-        } elseif (null !== $value = request('news')) {
+        }
+
+        if (null !== $value = request('news')) {
             $user->notify_news = $value ? User::NOTIFY_MAIL : User::NOTIFY_NO;
-        } elseif (null !== $value = request('trips')) {
+        }
+
+        if (null !== $value = request('trips')) {
             $user->notify_trips = $value ? User::NOTIFY_MAIL : User::NOTIFY_NO;
         }
 
