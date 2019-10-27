@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Domain;
+<?php namespace App\Domain;
 
 use App\Trip;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;

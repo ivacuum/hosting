@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Console\Commands;
+<?php namespace App\Console\Commands;
 
 use App\Domain\MetricsAggregator;
 use App\Domain\MetricsParser;

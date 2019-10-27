@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Services\Vk;
+<?php namespace App\Services\Vk;
 
 use Illuminate\Support\Carbon;
 

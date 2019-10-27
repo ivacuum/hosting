@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Domain;
+<?php namespace App\Domain;
 
 use Carbon\Carbon;
 
