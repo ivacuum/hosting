@@ -3,7 +3,7 @@
 use App\Torrent;
 use Illuminate\Notifications\Notification;
 
-class TorrentNotFoundDeleted extends Notification
+class TorrentUpdatedNotification extends Notification
 {
     public $torrent;
 
@@ -22,7 +22,8 @@ class TorrentNotFoundDeleted extends Notification
         return [
             'id' => $this->torrent->id,
             'title' => $this->torrent->title,
-            'rto_id' => $this->torrent->rto_id,
+            'info_hash' => $this->torrent->info_hash,
+            'announcer' => $this->torrent->announcer,
         ];
     }
 }

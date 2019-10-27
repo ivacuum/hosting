@@ -1,12 +1,20 @@
+<?php
+/**
+ * @var \App\News $news
+ * @var string $newsLink
+ * @var string $mySettingsLink
+ */
+?>
+
 @component('mail::message')
 
-{{ trans('mail.news_published', ['title' => $model->title]) }}
+{{ trans('mail.news_published', ['title' => $news->title]) }}
 
-@component('mail::button', ['url' => $email->signedLink($model->www())])
+@component('mail::button', ['url' => $newsLink])
 {{ trans('mail.read') }}
 @endcomponent
 
-@component('mail::button', ['color' => 'light', 'url' => $email->signedLink(path('MySettings@edit'))])
+@component('mail::button', ['color' => 'light', 'url' => $mySettingsLink])
 {{ trans('mail.settings') }}
 @endcomponent
 

@@ -2,7 +2,7 @@
 
 use App\Comment;
 use App\Issue as Model;
-use App\Notifications\IssueCommented;
+use App\Notifications\IssueCommentedNotification;
 use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class IssueComment extends Controller
@@ -28,7 +28,7 @@ class IssueComment extends Controller
             'user_id' => request()->user()->id,
         ]);
 
-        \Notification::send($model->user, new IssueCommented($model, $comment));
+        \Notification::send($model->user, new IssueCommentedNotification($model, $comment));
 
         $comment->setRelation('user', request()->user());
 

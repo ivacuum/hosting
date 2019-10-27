@@ -2,7 +2,7 @@
 
 use App\Comment;
 use App\Events\CommentPublished;
-use App\Mail\CommentConfirm;
+use App\Mail\CommentConfirmMail;
 use App\News;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -30,7 +30,7 @@ class CommentsTest extends TestCase
             ->assertStatus(201)
             ->assertJsonStructure(['data']);
 
-        \Mail::assertQueued(CommentConfirm::class);
+        \Mail::assertQueued(CommentConfirmMail::class);
 
         $comment = Comment::orderByDesc('id')->first();
         $comment->user->activate();

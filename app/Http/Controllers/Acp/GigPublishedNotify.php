@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Gig as Model;
-use App\Notifications\GigPublished;
+use App\Notifications\GigPublishedNotification;
 use App\User;
 use Ivacuum\Generic\Controllers\Acp\Controller;
 
@@ -23,7 +23,7 @@ class GigPublishedNotify extends Controller
             ->where('status', User::STATUS_ACTIVE)
             ->get();
 
-        \Notification::send($users, new GigPublished($model));
+        \Notification::send($users, new GigPublishedNotification($model));
 
         return [
             'status' => 'OK',

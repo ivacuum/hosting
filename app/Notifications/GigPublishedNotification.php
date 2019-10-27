@@ -1,20 +1,20 @@
 <?php namespace App\Notifications;
 
-use App\Mail\TripPublished as Mailable;
-use App\Trip as Model;
+use App\Gig;
+use App\Mail\GigPublishedMail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 
-class TripPublished extends Notification implements ShouldQueue
+class GigPublishedNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    public $model;
+    public $gig;
 
-    public function __construct(Model $model)
+    public function __construct(Gig $gig)
     {
-        $this->model = $model;
+        $this->gig = $gig;
     }
 
     public function via($notifiable)
@@ -24,7 +24,7 @@ class TripPublished extends Notification implements ShouldQueue
 
     public function toMail($notifiable)
     {
-        return (new Mailable($this->model, $notifiable))
-            ->to($notifiable->email);
+        return (new GigPublishedMail($this->gig, $notifiable))
+            ->to($notifiable);
     }
 }

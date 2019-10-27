@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\Mail\FirstvdsPromocode;
+use App\Mail\FirstvdsPromocodeMail;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -17,7 +17,7 @@ class CouponTest extends TestCase
         $this->post('promocodes-coupons/firstvds', ['email' => $email])
             ->assertStatus(302);
 
-        \Mail::assertQueued(FirstvdsPromocode::class, function (FirstvdsPromocode $mail) use ($email) {
+        \Mail::assertQueued(FirstvdsPromocodeMail::class, function (FirstvdsPromocodeMail $mail) use ($email) {
             return $mail->hasTo($email);
         });
     }

@@ -1,6 +1,6 @@
 {{-- Комментарий к раздаче --}}
 <strong>{{ $notification->data['comment']['user']['name'] }}</strong>
-<span class="text-muted">{{ trans("notifications.{$classBasename}") }}</span>
+<span class="text-muted">{{ trans("notifications.{$basename}") }}</span>
 <a class="link" href="{{ path([App\Http\Controllers\Torrents::class, 'show'], $notification->data['id']) }}#comment-{{ $notification->data['comment']['id'] }}">{{ Str::limit($notification->data['title'], 100) }}</a>
 <time
   class="text-muted"

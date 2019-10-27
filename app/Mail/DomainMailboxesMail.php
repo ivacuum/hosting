@@ -3,7 +3,7 @@
 use App\Domain;
 use Illuminate\Mail\Mailable;
 
-class DomainMailboxes extends Mailable
+class DomainMailboxesMail extends Mailable
 {
     public $domain;
     public $mailboxes;

@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Mail\SubscriptionConfirm;
+use App\Mail\SubscriptionConfirmMail;
 use App\Rules\Email;
 use App\User;
 use Illuminate\Contracts\Encryption\DecryptException;
@@ -74,7 +74,10 @@ class Subscriptions extends Controller
             }
         }
 
-        \Mail::to($user->email)->queue(new SubscriptionConfirm($user, array_keys(array_filter(request(['gigs', 'news', 'trips'])))));
+        $selectedTopics = array_keys(array_filter(request(['gigs', 'news', 'trips'])));
+
+        \Mail::to($user)
+            ->send(new SubscriptionConfirmMail($user, $selectedTopics));
 
         return redirect(path([self::class, 'edit']))
             ->with('message', 'Теперь необходимо подтвердить подписку по ссылке в письме, которое мы вам отправили.');

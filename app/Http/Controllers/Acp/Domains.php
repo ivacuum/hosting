@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Domain as Model;
-use App\Mail\DomainMailboxes;
+use App\Mail\DomainMailboxesMail;
 use App\Rules\Email;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Controllers\Acp\Controller;
@@ -96,7 +96,7 @@ class Domains extends Controller
             }
         }
 
-        \Mail::to($sendTo)->queue(new DomainMailboxes($model, $mailboxes));
+        \Mail::to($sendTo)->send(new DomainMailboxesMail($model, $mailboxes));
 
         return redirect(path([self::class, 'mailboxes'], $model))
             ->with('message', "Данные высланы на почту {$sendTo}");

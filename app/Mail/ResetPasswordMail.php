@@ -1,8 +1,9 @@
 <?php namespace App\Mail;
 
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 
-class ResetPassword extends Mailable
+class ResetPasswordMail extends Mailable implements ShouldQueue
 {
     public $token;
 

@@ -1,25 +1,30 @@
+<?php
+/**
+ * @var \App\Gig $gig
+ * @var string $gigLink
+ * @var string $mySettingsLink
+ */
+?>
+
 @component('mail::message')
 
-# {{ $model->metaTitle() }}
+# {{ $gig->metaTitle() }}
 
 {{ trans('mail.gig_published') }}
 
-{{ $model->metaDescription() }}
+{{ $gig->metaDescription() }}
 
-@if ($model->meta_image)
-<a href="{{ $email->signedLink($model->wwwLocale($user->locale)) }}">
-  ![{{ $model->title }}]({{ $model->meta_image }})
+@if ($gig->meta_image)
+<a href="{{ $gigLink }}">
+  ![{{ $gig->title }}]({{ $gig->meta_image }})
 </a>
 @endif
 
-@component('mail::button', ['url' => $email->signedLink($model->wwwLocale($user->locale))])
+@component('mail::button', ['url' => $gigLink])
 {{ trans('mail.read') }}
 @endcomponent
 
-@component('mail::button', [
-  'color' => 'light',
-  'url' => $email->signedLink(path_locale([App\Http\Controllers\MySettings::class, 'edit'], [], false, $user->locale)),
-])
+@component('mail::button', ['color' => 'light', 'url' => $mySettingsLink])
 {{ trans('mail.settings') }}
 @endcomponent
 

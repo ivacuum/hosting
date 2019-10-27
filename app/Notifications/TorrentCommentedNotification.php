@@ -4,7 +4,7 @@ use App\Comment;
 use App\Torrent;
 use Illuminate\Notifications\Notification;
 
-class TorrentCommented extends Notification
+class TorrentCommentedNotification extends Notification
 {
     public $comment;
     public $torrent;
@@ -17,7 +17,9 @@ class TorrentCommented extends Notification
 
     public function via($notifiable)
     {
-        return $notifiable->id !== $this->comment->user_id ? ['database'] : [];
+        return $notifiable->id !== $this->comment->user_id
+            ? ['database']
+            : [];
     }
 
     public function toArray($notifiable)

@@ -1,7 +1,7 @@
 <?php namespace App\Console\Commands;
 
-use App\Notifications\TorrentNotFoundDeleted;
-use App\Notifications\TorrentUpdated;
+use App\Notifications\TorrentNotFoundDeletedNotification;
+use App\Notifications\TorrentUpdatedNotification;
 use App\Services\Rto;
 use App\Torrent;
 use App\User;
@@ -31,7 +31,7 @@ class RtoUpdate extends Command
                     event(new \App\Events\Stats\TorrentNotFoundDeleted);
 
                     $user = $torrent->user_id !== 1 ? User::find(1) : $torrent->user;
-                    $user->notify(new TorrentNotFoundDeleted($torrent));
+                    $user->notify(new TorrentNotFoundDeletedNotification($torrent));
 
                     continue;
                 }
@@ -45,7 +45,7 @@ class RtoUpdate extends Command
                     event(new \App\Events\Stats\TorrentDuplicateDeleted);
 
                     $user = $torrent->user_id !== 1 ? User::find(1) : $torrent->user;
-                    $user->notify(new TorrentNotFoundDeleted($torrent));
+                    $user->notify(new TorrentNotFoundDeletedNotification($torrent));
 
                     continue;
                 }
@@ -73,7 +73,7 @@ class RtoUpdate extends Command
                     $this->info("Раздача {$id} обновлена");
 
                     event(new \App\Events\Stats\TorrentUpdated);
-                    $torrent->user->notify(new TorrentUpdated($torrent));
+                    $torrent->user->notify(new TorrentUpdatedNotification($torrent));
 
                     // Ограничение количества запросов в секунду
                     sleep(1);

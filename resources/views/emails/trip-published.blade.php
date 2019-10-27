@@ -1,25 +1,30 @@
+<?php
+/**
+ * @var \App\Trip $trip
+ * @var string $tripLink
+ * @var string $mySettingsLink
+ */
+?>
+
 @component('mail::message')
 
-# {{ $model->metaTitle() }}
+# {{ $trip->metaTitle() }}
 
 {{ trans('mail.trip_published') }}
 
-{{ $model->metaDescription() }}
+{{ $trip->metaDescription() }}
 
-@if ($model->meta_image)
-<a href="{{ $email->signedLink($model->wwwLocale(null, $user->locale)) }}">
-  ![{{ $model->title }}]({{ $model->metaImage(500, 375) }})
+@if ($trip->meta_image)
+<a href="{{ $tripLink }}">
+  ![{{ $trip->title }}]({{ $trip->metaImage(500, 375) }})
 </a>
 @endif
 
-@component('mail::button', ['url' => $email->signedLink($model->wwwLocale(null, $user->locale))])
+@component('mail::button', ['url' => $tripLink])
 {{ trans('mail.read') }}
 @endcomponent
 
-@component('mail::button', [
-  'color' => 'light',
-  'url' => $email->signedLink(path_locale([App\Http\Controllers\MySettings::class, 'edit'], [], false, $user->locale)),
-])
+@component('mail::button', ['color' => 'light', 'url' => $mySettingsLink])
 {{ trans('mail.settings') }}
 @endcomponent
 

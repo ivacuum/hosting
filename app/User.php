@@ -1,7 +1,8 @@
 <?php namespace App;
 
 use App\Http\Controllers\Users;
-use App\Mail\ResetPassword;
+use App\Mail\ResetPasswordMail;
+use Illuminate\Contracts\Translation\HasLocalePreference;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\UploadedFile;
@@ -43,7 +44,7 @@ use Illuminate\Notifications\Notifiable;
  *
  * @mixin \Eloquent
  */
-class User extends Authenticatable
+class User extends Authenticatable implements HasLocalePreference
 {
     use Notifiable;
 
@@ -99,6 +100,12 @@ class User extends Authenticatable
     public function news()
     {
         return $this->hasMany(News::class);
+    }
+
+    public function notifications()
+    {
+        return $this->morphMany(Notification::class, 'notifiable')
+            ->orderByDesc('created_at');
     }
 
     public function torrents()
@@ -228,6 +235,11 @@ class User extends Authenticatable
         return $hasUnread;
     }
 
+    public function preferredLocale(): ?string
+    {
+        return $this->locale;
+    }
+
     public function publicName(): string
     {
         return $this->login ?: "user #{$this->id}";
@@ -242,7 +254,7 @@ class User extends Authenticatable
 
     public function sendPasswordResetNotification($token): void
     {
-        \Mail::to($this)->queue(new ResetPassword($token));
+        \Mail::to($this)->send(new ResetPasswordMail($token));
     }
 
     public function uploadAvatar(UploadedFile $file): string

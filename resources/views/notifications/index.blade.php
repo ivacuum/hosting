@@ -5,16 +5,16 @@
 @if (sizeof($notifications))
   <?php /** @var App\Notification $notification */ ?>
   @foreach ($notifications as $notification)
-    <?php $classBasename = Str::snake(class_basename($notification->type)) ?>
+    <?php $basename = $notification->basename() ?>
     <div class="border-gray-200 py-4 {{ !$loop->last ? 'border-b' : '' }}">
       <div class="table-cell pr-4 svg-muted-blue text-xl">
-        @if ($classBasename === 'torrent_updated')
+        @if ($basename === 'torrent_updated')
           @svg (magnet)
-        @elseif ($classBasename === 'torrent_not_found_deleted')
+        @elseif ($basename === 'torrent_not_found_deleted')
           @svg (trash-o)
-        @elseif ($classBasename === 'trip_published')
+        @elseif ($basename === 'trip_published')
           @svg (plane)
-        @elseif (Str::endsWith($classBasename, '_commented'))
+        @elseif (Str::endsWith($basename, '_commented'))
           @svg (comment-o)
         @else
           @svg (bullhorn)
@@ -26,7 +26,7 @@
             @svg (circle)
           </span>
         @endif
-        @include("notifications.$classBasename")
+        @include("notifications.$basename")
       </div>
     </div>
   @endforeach

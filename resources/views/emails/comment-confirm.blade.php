@@ -1,3 +1,11 @@
+<?php
+/**
+ * @var \App\Comment $comment
+ * @var \App\Email $email
+ * @var string $confirmLink
+ */
+?>
+
 @component('mail::message')
 
 @ru
@@ -6,11 +14,15 @@
   Comment was sent with this email address. We want to be sure it was really you, so in order to publish the comment on **vacuum.name** we ask you to follow the link below.
 @endru
 
-@component('mail::button', ['url' => $email->signedLink(path('CommentConfirm@update', $model))])
+@component('mail::button', ['url' => $confirmLink])
 @ru Опубликовать комментарий @en Publish the comment @endru
 @endcomponent
 
-{{ trans('comments.pending_tip') }}
+@ru
+  Хотите, чтобы комментарии публиковались автоматически? Выполните вход под своей учетной записью перед их написанием.
+@en
+  Want comments to be published automatically? Sign in before posting.
+@endru
 
 @ru
   Комментарий оставил кто-то другой, указав вашу почту? Сообщите нам об этом.

@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Mail\FirstvdsPromocode;
+use App\Mail\FirstvdsPromocodeMail;
 use App\Rules\Email;
 
 class Coupons extends Controller
@@ -39,7 +39,9 @@ class Coupons extends Controller
     {
         request()->validate(['email' => Email::rules()]);
 
-        \Mail::to(request('email'))->queue(new FirstvdsPromocode);
+        \Mail::to(request('email'))
+            ->locale(\App::getLocale())
+            ->send(new FirstvdsPromocodeMail);
 
         return back()->with('message', trans('coupons.promocode_sent'));
     }

@@ -1,6 +1,6 @@
 <?php namespace App\Jobs;
 
-use App\Notifications\TripPublished;
+use App\Notifications\TripPublishedNotification;
 use App\Trip;
 use App\User;
 use Illuminate\Bus\Queueable;
@@ -26,6 +26,6 @@ class NotifyTripSubscribers implements ShouldQueue
             ->where('status', User::STATUS_ACTIVE)
             ->get();
 
-        \Notification::send($users, new TripPublished($this->trip));
+        \Notification::send($users, new TripPublishedNotification($this->trip));
     }
 }

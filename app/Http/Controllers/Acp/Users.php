@@ -54,7 +54,7 @@ class Users extends Controller
         ];
 
         \Mail::send('emails.users.credentials', $vars, function ($mail) use ($model, $vars) {
-            $mail->to($model->email)->subject("Доступ к {$vars['route']}");
+            $mail->to($model)->subject("Доступ к {$vars['route']}");
         });
 
         session()->flash('message', "Данные высланы на почту {$model->email}");

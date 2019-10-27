@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\News as Model;
-use App\Notifications\NewsPublished;
+use App\Notifications\NewsPublishedNotification;
 use App\User;
 use Illuminate\Database\Eloquent\Builder;
 use Ivacuum\Generic\Controllers\Acp\Controller;
@@ -46,7 +46,7 @@ class News extends Controller
             ->where('locale', $model->locale)
             ->get();
 
-        \Notification::send($users, new NewsPublished($model));
+        \Notification::send($users, new NewsPublishedNotification($model));
 
         return back()->with('message', 'Уведомления разосланы пользователям: '.sizeof($users));
     }

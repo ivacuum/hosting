@@ -1,3 +1,10 @@
+<?php
+/**
+ * @var array $subscriptions
+ * @var string $confirmLink
+ */
+?>
+
 @component('mail::message')
 
 @ru
@@ -13,7 +20,7 @@
   - {{ trans("my.notify_{$subscription}") }}
 @endforeach
 
-@component('mail::button', ['url' => $email->signedLink(path('Subscriptions@confirm', ['hash' => $hash]))])
+@component('mail::button', ['url' => $confirmLink])
 @ru Подтвердить подписку @en Confirm subscription @endru
 @endcomponent
 

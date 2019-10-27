@@ -1,30 +1,33 @@
 <?php namespace App\Notifications;
 
 use App\Comment;
-use App\News;
+use App\Trip;
 use Illuminate\Notifications\Notification;
 
-class NewsCommented extends Notification
+class TripCommentedNotification extends Notification
 {
+    public $trip;
     public $comment;
-    public $news;
 
-    public function __construct(News $news, Comment $comment)
+    public function __construct(Trip $trip, Comment $comment)
     {
-        $this->news = $news;
+        $this->trip = $trip;
         $this->comment = $comment;
     }
 
     public function via($notifiable)
     {
-        return $notifiable->id !== $this->comment->user_id ? ['database'] : [];
+        return $notifiable->id !== $this->comment->user_id
+            ? ['database']
+            : [];
     }
 
     public function toArray($notifiable)
     {
         return [
-            'id' => $this->news->id,
-            'title' => $this->news->title,
+            'id' => $this->trip->id,
+            'slug' => $this->trip->slug,
+            'title' => "{$this->trip->title} · {$this->trip->localizedDate()}",
             'comment' => [
                 'id' => $this->comment->id,
                 'html' => $this->comment->html,

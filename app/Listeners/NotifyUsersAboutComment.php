@@ -1,9 +1,9 @@
 <?php namespace App\Listeners;
 
 use App\Events\CommentPublished;
-use App\Notifications\NewsCommented;
-use App\Notifications\TorrentCommented;
-use App\Notifications\TripCommented;
+use App\Notifications\NewsCommentedNotification;
+use App\Notifications\TorrentCommentedNotification;
+use App\Notifications\TripCommentedNotification;
 
 class NotifyUsersAboutComment
 {
@@ -18,15 +18,15 @@ class NotifyUsersAboutComment
         if ($type === 'News') {
             event(new \App\Events\Stats\NewsCommented);
 
-            \Notification::send($users, new NewsCommented($model, $comment));
+            \Notification::send($users, new NewsCommentedNotification($model, $comment));
         } elseif ($type === 'Torrent') {
             event(new \App\Events\Stats\TorrentCommented);
 
-            \Notification::send($users, new TorrentCommented($model, $comment));
+            \Notification::send($users, new TorrentCommentedNotification($model, $comment));
         } elseif ($type === 'Trip') {
             event(new \App\Events\Stats\TripCommented);
 
-            \Notification::send($users, new TripCommented($model, $comment));
+            \Notification::send($users, new TripCommentedNotification($model, $comment));
         }
     }
 }

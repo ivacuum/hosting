@@ -2,15 +2,15 @@
 
 use App\Comment as Model;
 use App\Events\CommentPublished;
-use App\Mail\CommentConfirm;
+use App\Mail\CommentConfirmMail;
 
 class CommentObserver
 {
     public function created(Model $model)
     {
         if ($model->status === Model::STATUS_PENDING) {
-            \Mail::to($model->user->email)
-                ->queue(new CommentConfirm($model));
+            \Mail::to($model->user)
+                ->send(new CommentConfirmMail($model));
         }
 
         event(new \App\Events\Stats\CommentAdded);
