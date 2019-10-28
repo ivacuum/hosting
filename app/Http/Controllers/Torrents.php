@@ -182,7 +182,7 @@ class Torrents extends Controller
 
     public function vueShow(Torrent $torrent)
     {
-        if (!request()->ajax()) {
+        if (!request()->expectsJson()) {
             return view('magnets-spa');
         }
 

@@ -91,7 +91,7 @@ class Photos extends Controller
 
     public function map()
     {
-        if (request()->ajax()) {
+        if (request()->expectsJson()) {
             $tripId = request('trip_id');
 
             return $this->pointsForMap($tripId);

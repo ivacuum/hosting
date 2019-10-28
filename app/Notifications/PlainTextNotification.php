@@ -2,11 +2,11 @@
 
 use Illuminate\Notifications\Notification;
 
-class PlainText extends Notification
+class PlainTextNotification extends Notification
 {
     public $text;
 
-    public function __construct($text)
+    public function __construct(string $text)
     {
         $this->text = $text;
     }

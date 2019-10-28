@@ -9,16 +9,6 @@ class AcpTest extends TestCase
         $this->be(\App\User::find(1));
     }
 
-    public function testPageArtists()
-    {
-        $this->get('/acp/artists')->assertStatus(200);
-    }
-
-    public function testPageArtistsCreate()
-    {
-        $this->get('/acp/artists/create')->assertStatus(200);
-    }
-
     public function testPageCities()
     {
         $this->get('/acp/cities')->assertStatus(200);

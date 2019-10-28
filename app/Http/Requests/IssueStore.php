@@ -13,10 +13,10 @@ class IssueStore extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => $this->ajax() ? '' : 'required',
+            'name' => $this->expectsJson() ? '' : 'required',
             'text' => ['required', 'string', 'max:1000'],
             'email' => Email::rules(),
-            'title' => $this->ajax() ? '' : 'required',
+            'title' => $this->expectsJson() ? '' : 'required',
         ];
     }
 
