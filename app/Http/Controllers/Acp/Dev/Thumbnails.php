@@ -20,7 +20,7 @@ class Thumbnails extends BaseController
             ->with('message', 'Папка очищена');
     }
 
-    public function thumbnailsPost()
+    public function store()
     {
         $file = request()->file('file');
 

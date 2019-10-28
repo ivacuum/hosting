@@ -1,179 +1,185 @@
 <?php
 
-Route::get('/', 'Home@index');
+use App\Http\Controllers;
 
-Route::get('auth/login', 'Auth\SignIn@index')->middleware('guest');
-Route::post('auth/login', 'Auth\SignIn@login')->middleware('guest');
-Route::get('auth/logout', 'Auth\SignIn@logout')->middleware('auth');
+Route::get('/', [Controllers\Home::class, 'index']);
 
-Route::get('auth/register', 'Auth\NewAccount@index')->middleware('guest');
-Route::post('auth/register', 'Auth\NewAccount@register')->middleware('guest');
-Route::get('auth/register/confirm/{token}', 'Auth\NewAccount@confirm')->middleware('guest');
+Route::get('about', Controllers\AboutController::class);
 
-Route::get('auth/password/remind', 'Auth\ForgotPassword@index')->middleware('guest');
-Route::post('auth/password/remind', 'Auth\ForgotPassword@sendResetLink');
+Route::get('auth/login', [Controllers\Auth\SignIn::class, 'index'])->middleware('guest');
+Route::post('auth/login', [Controllers\Auth\SignIn::class, 'login'])->middleware('guest');
+Route::get('auth/logout', [Controllers\Auth\SignIn::class, 'logout'])->middleware('auth');
 
-Route::get('auth/password/reset/{token}', 'Auth\ResetPassword@index');
-Route::post('auth/password/reset', 'Auth\ResetPassword@reset');
+Route::get('auth/register', [Controllers\Auth\NewAccount::class, 'index'])->middleware('guest');
+Route::post('auth/register', [Controllers\Auth\NewAccount::class, 'register'])->middleware('guest');
+Route::get('auth/register/confirm/{token}', [Controllers\Auth\NewAccount::class, 'confirm'])->middleware('guest');
+
+Route::get('auth/password/remind', [Controllers\Auth\ForgotPassword::class, 'index'])->middleware('guest');
+Route::post('auth/password/remind', [Controllers\Auth\ForgotPassword::class, 'sendResetLink']);
+
+Route::get('auth/password/reset/{token}', [Controllers\Auth\ResetPassword::class, 'index']);
+Route::post('auth/password/reset', [Controllers\Auth\ResetPassword::class, 'reset']);
 
 // OAuth
-Route::get('auth/facebook', 'Auth\Facebook@index');
-Route::get('auth/facebook/callback', 'Auth\Facebook@callback');
-Route::get('auth/google', 'Auth\Google@index');
-Route::get('auth/google/callback', 'Auth\Google@callback');
-Route::get('auth/vk', 'Auth\Vk@index');
-Route::get('auth/vk/callback', 'Auth\Vk@callback');
+Route::get('auth/facebook', [Controllers\Auth\Facebook::class, 'index']);
+Route::get('auth/facebook/callback', [Controllers\Auth\Facebook::class, 'callback']);
+Route::get('auth/google', [Controllers\Auth\Google::class, 'index']);
+Route::get('auth/google/callback', [Controllers\Auth\Google::class, 'callback']);
+Route::get('auth/vk', [Controllers\Auth\Vk::class, 'index']);
+Route::get('auth/vk/callback', [Controllers\Auth\Vk::class, 'callback']);
 
-Route::get('ajax/chat', 'AjaxChat@index')->middleware('auth');
-Route::post('ajax/chat', 'AjaxChat@store')->middleware('auth');
-Route::post('ajax/comment/{type}/{id}', 'AjaxComment@store');
+Route::get('ajax/chat', [Controllers\AjaxChat::class, 'index'])->middleware('auth');
+Route::post('ajax/chat', [Controllers\AjaxChat::class, 'store'])->middleware('auth');
+Route::post('ajax/comment/{type}/{id}', [Controllers\AjaxComment::class, 'store']);
 
-Route::get('comments/{comment}/confirm', 'CommentConfirm@update')->middleware('auth', 'can:confirm,comment');
+Route::get('comments/{comment}/confirm', [Controllers\CommentConfirm::class, 'update'])->middleware('auth', 'can:confirm,comment');
 
-Route::get('contact', 'Issues@create');
-Route::post('contact', 'Issues@store');
+Route::get('contact', [Controllers\Issues::class, 'create']);
+Route::post('contact', [Controllers\Issues::class, 'store']);
 
-Route::get('dc', 'Dcpp@index');
-Route::get('dc/hubs', 'DcppHubs@index');
-Route::post('dc/hubs/{hub}/click', 'DcppHubClick@store');
-Route::get('dc/{slug}', 'Dcpp@page');
+Route::get('dc', [Controllers\Dcpp::class, 'index']);
+Route::get('dc/hubs', [Controllers\DcppHubs::class, 'index']);
+Route::post('dc/hubs/{hub}/click', [Controllers\DcppHubClick::class, 'store']);
+Route::get('dc/{slug}', [Controllers\Dcpp::class, 'page']);
 
-Route::get('docs', 'Docs@index');
-Route::get('docs/{slug}', 'Docs@page');
+Route::get('docs', [Controllers\Docs::class, 'index']);
+Route::get('docs/{slug}', [Controllers\Docs::class, 'page']);
 
-Route::get('files', 'Files@index');
-Route::get('files/{file}/dl', 'Files@download');
+Route::get('files', [Controllers\Files::class, 'index']);
+Route::get('files/{file}/dl', [Controllers\Files::class, 'download']);
 
-Route::get('gallery', 'Gallery@index')->middleware('auth');
-Route::get('gallery/preview/{image}', 'Gallery@preview');
-Route::get('gallery/view/{image}', 'Gallery@view');
-Route::get('gallery/upload', 'Gallery@upload')->middleware('auth');
-Route::post('gallery/upload', 'Gallery@store')->middleware('auth');
+Route::get('gallery', [Controllers\Gallery::class, 'index'])->middleware('auth');
+Route::get('gallery/preview/{image}', [Controllers\Gallery::class, 'preview']);
+Route::get('gallery/view/{image}', [Controllers\Gallery::class, 'view']);
+Route::get('gallery/upload', [Controllers\Gallery::class, 'upload'])->middleware('auth');
+Route::post('gallery/upload', [Controllers\Gallery::class, 'store'])->middleware('auth');
 
-Route::get('japanese', 'Japanese@index');
-Route::get('japanese/hiragana-katakana', 'JapaneseHiraganaKatakana@index');
-Route::get('japanese/wanikani', 'JapaneseWanikani@index');
-Route::get('japanese/wanikani/kanji', 'JapaneseWanikaniKanji@index');
-Route::get('japanese/wanikani/kanji/{character}', 'JapaneseWanikaniKanji@show');
-Route::put('japanese/wanikani/kanji/{kanji}', 'JapaneseWanikaniKanji@update')->middleware('auth');
-Route::delete('japanese/wanikani/kanji/{kanji}', 'JapaneseWanikaniKanji@destroy')->middleware('auth');
-Route::get('japanese/wanikani/level', 'JapaneseWanikaniLevel@index');
-Route::get('japanese/wanikani/level/{level}', 'JapaneseWanikaniLevel@show');
-Route::get('japanese/wanikani/radicals', 'JapaneseWanikaniRadicals@index');
-Route::get('japanese/wanikani/radicals/{meaning}', 'JapaneseWanikaniRadicals@show');
-Route::put('japanese/wanikani/radicals/{radical}', 'JapaneseWanikaniRadicals@update')->middleware('auth');
-Route::delete('japanese/wanikani/radicals/{radical}', 'JapaneseWanikaniRadicals@destroy')->middleware('auth');
-Route::post('japanese/wanikani/search', 'JapaneseWanikaniSearch@index');
-Route::get('japanese/wanikani/vocabulary', 'JapaneseWanikaniVocabulary@index');
-Route::get('japanese/wanikani/vocabulary/{characters}', 'JapaneseWanikaniVocabulary@show');
-Route::put('japanese/wanikani/vocabulary/{vocabulary}', 'JapaneseWanikaniVocabulary@update')->middleware('auth');
-Route::delete('japanese/wanikani/vocabulary/{vocabulary}', 'JapaneseWanikaniVocabulary@destroy')->middleware('auth');
+Route::get('japanese', [Controllers\Japanese::class, 'index']);
+Route::get('japanese/hiragana-katakana', [Controllers\JapaneseHiraganaKatakana::class, 'index']);
+Route::get('japanese/wanikani', [Controllers\JapaneseWanikani::class, 'index']);
+Route::get('japanese/wanikani/kanji', [Controllers\JapaneseWanikaniKanji::class, 'index']);
+Route::get('japanese/wanikani/kanji/{character}', [Controllers\JapaneseWanikaniKanji::class, 'show']);
+Route::put('japanese/wanikani/kanji/{kanji}', [Controllers\JapaneseWanikaniKanji::class, 'update'])->middleware('auth');
+Route::delete('japanese/wanikani/kanji/{kanji}', [Controllers\JapaneseWanikaniKanji::class, 'destroy'])->middleware('auth');
+Route::get('japanese/wanikani/level', [Controllers\JapaneseWanikaniLevel::class, 'index']);
+Route::get('japanese/wanikani/level/{level}', [Controllers\JapaneseWanikaniLevel::class, 'show']);
+Route::get('japanese/wanikani/radicals', [Controllers\JapaneseWanikaniRadicals::class, 'index']);
+Route::get('japanese/wanikani/radicals/{meaning}', [Controllers\JapaneseWanikaniRadicals::class, 'show']);
+Route::put('japanese/wanikani/radicals/{radical}', [Controllers\JapaneseWanikaniRadicals::class, 'update'])->middleware('auth');
+Route::delete('japanese/wanikani/radicals/{radical}', [Controllers\JapaneseWanikaniRadicals::class, 'destroy'])->middleware('auth');
+Route::post('japanese/wanikani/search', [Controllers\JapaneseWanikaniSearch::class, 'index']);
+Route::get('japanese/wanikani/vocabulary', [Controllers\JapaneseWanikaniVocabulary::class, 'index']);
+Route::get('japanese/wanikani/vocabulary/{characters}', [Controllers\JapaneseWanikaniVocabulary::class, 'show']);
+Route::put('japanese/wanikani/vocabulary/{vocabulary}', [Controllers\JapaneseWanikaniVocabulary::class, 'update'])->middleware('auth');
+Route::delete('japanese/wanikani/vocabulary/{vocabulary}', [Controllers\JapaneseWanikaniVocabulary::class, 'destroy'])->middleware('auth');
 
-Route::post('js/typo', 'JsTypo');
+Route::post('js/typo', Controllers\JsTypo::class);
 
-Route::get('life', 'Life@index');
-Route::get('life/calendar', 'Life@calendar');
-Route::get('life/cities', 'Life@cities');
-Route::get('life/countries', 'Life@countries');
-Route::get('life/countries/{slug}', 'Life@country');
-Route::get('life/gigs', 'Life@gigs');
-Route::get('life/gigs/rss', 'LifeGigsRss@index');
-Route::get('life/rss', 'LifeTripsRss@index');
-Route::get('life/{slug}', 'Life@page');
+Route::get('life', [Controllers\Life::class, 'index']);
+Route::get('life/calendar', [Controllers\Life::class, 'calendar']);
+Route::get('life/cities', [Controllers\Life::class, 'cities']);
+Route::get('life/countries', [Controllers\Life::class, 'countries']);
+Route::get('life/countries/{slug}', [Controllers\Life::class, 'country']);
+Route::get('life/gigs', [Controllers\Life::class, 'gigs']);
+Route::get('life/gigs/rss', [Controllers\LifeGigsRss::class, 'index']);
+Route::get('life/rss', [Controllers\LifeTripsRss::class, 'index']);
+Route::get('life/{slug}', [Controllers\Life::class, 'page']);
 
-Route::get('magnets', 'Torrents@vue');
-Route::get('magnets/add', 'Torrents@vue');
-Route::get('magnets/comments', 'Torrents@vue');
-Route::get('magnets/faq', 'Torrents@vue');
-Route::get('magnets/my', 'Torrents@vue');
-Route::get('magnets/{torrent}', 'Torrents@vueShow');
+Route::get('magnets', [Controllers\Torrents::class, 'vue']);
+Route::get('magnets/add', [Controllers\Torrents::class, 'vue']);
+Route::get('magnets/comments', [Controllers\Torrents::class, 'vue']);
+Route::get('magnets/faq', [Controllers\Torrents::class, 'vue']);
+Route::get('magnets/my', [Controllers\Torrents::class, 'vue']);
+Route::get('magnets/{torrent}', [Controllers\Torrents::class, 'vueShow']);
 
-Route::get('mail/click/{timestamp}/{id}', 'Mail@click')->name('mail.click');
-Route::get('mail/report/{timestamp}/{id}', 'Mail@report')->middleware('auth');
-Route::get('mail/view/{timestamp}/{id}', 'Mail@view');
+Route::get('mail/click/{timestamp}/{id}', [Controllers\Mail::class, 'click'])->name('mail.click');
+Route::get('mail/report/{timestamp}/{id}', [Controllers\Mail::class, 'report'])->middleware('auth');
+Route::get('mail/view/{timestamp}/{id}', [Controllers\Mail::class, 'view']);
 
-Route::get('my', 'My@index')->middleware('auth');
-Route::put('my/avatar', 'MyAvatar@update')->middleware('auth');
-Route::delete('my/avatar', 'MyAvatar@destroy')->middleware('auth');
-Route::get('my/password', 'MyPassword@edit')->middleware('auth');
-Route::put('my/password', 'MyPassword@update')->middleware('auth');
-Route::get('my/profile', 'MyProfile@edit')->middleware('auth');
-Route::put('my/profile', 'MyProfile@update')->middleware('auth');
-Route::get('my/settings', 'MySettings@edit')->middleware('auth');
-Route::put('my/settings', 'MySettings@update')->middleware('auth');
+Route::get('my', [Controllers\My::class, 'index'])->middleware('auth');
+Route::put('my/avatar', [Controllers\MyAvatar::class, 'update'])->middleware('auth');
+Route::delete('my/avatar', [Controllers\MyAvatar::class, 'destroy'])->middleware('auth');
+Route::get('my/password', [Controllers\MyPassword::class, 'edit'])->middleware('auth');
+Route::put('my/password', [Controllers\MyPassword::class, 'update'])->middleware('auth');
+Route::get('my/profile', [Controllers\MyProfile::class, 'edit'])->middleware('auth');
+Route::put('my/profile', [Controllers\MyProfile::class, 'update'])->middleware('auth');
+Route::get('my/settings', [Controllers\MySettings::class, 'edit'])->middleware('auth');
+Route::put('my/settings', [Controllers\MySettings::class, 'update'])->middleware('auth');
 
-Route::get('my/trips', 'MyTrips@index')->middleware('auth');
-Route::post('my/trips', 'MyTrips@store')->middleware('auth');
-Route::get('my/trips/create', 'MyTrips@create')->middleware('auth');
-Route::put('my/trips/{trip}', 'MyTrips@update')->middleware('auth', 'can:user-update,trip');
-Route::delete('my/trips/{trip}', 'MyTrips@destroy')->middleware('auth', 'can:user-delete,trip');
-Route::get('my/trips/{trip}/edit', 'MyTrips@edit')->middleware('auth', 'can:user-update,trip');
+Route::get('my/trips', [Controllers\MyTrips::class, 'index'])->middleware('auth');
+Route::post('my/trips', [Controllers\MyTrips::class, 'store'])->middleware('auth');
+Route::get('my/trips/create', [Controllers\MyTrips::class, 'create'])->middleware('auth');
+Route::put('my/trips/{trip}', [Controllers\MyTrips::class, 'update'])->middleware('auth', 'can:user-update,trip');
+Route::delete('my/trips/{trip}', [Controllers\MyTrips::class, 'destroy'])->middleware('auth', 'can:user-delete,trip');
+Route::get('my/trips/{trip}/edit', [Controllers\MyTrips::class, 'edit'])->middleware('auth', 'can:user-update,trip');
 
-Route::get('news', 'News@index');
-Route::get('news/rss', 'NewsRss@index');
-Route::get('news/{id}', 'News@show');
-Route::get('news/{year}/{month}', 'News@bc');
-Route::get('news/{year}/{month}/{day}', 'News@bc');
-Route::get('news/{year}/{month}/{day}/{slug}', 'News@bc');
+Route::get('news', [Controllers\News::class, 'index']);
+Route::get('news/rss', [Controllers\NewsRss::class, 'index']);
+Route::get('news/{id}', [Controllers\News::class, 'show']);
+Route::get('news/{year}/{month}', [Controllers\News::class, 'bc']);
+Route::get('news/{year}/{month}/{day}', [Controllers\News::class, 'bc']);
+Route::get('news/{year}/{month}/{day}/{slug}', [Controllers\News::class, 'bc']);
 
-Route::get('notifications', 'Notifications@index')->middleware('auth');
+Route::get('notifications', [Controllers\Notifications::class, 'index'])->middleware('auth');
 
-Route::get('parser/vk/{page?}/{date?}', 'ParserVk@index')->where('date', '\d{4}-\d{2}-\d{2}');
-Route::post('parser/vk', 'ParserVk@indexPost');
+Route::get('parser/vk/{page?}/{date?}', [Controllers\ParserVk::class, 'index'])->where('date', '\d{4}-\d{2}-\d{2}');
+Route::post('parser/vk', [Controllers\ParserVk::class, 'indexPost']);
 
-Route::get('photos', 'Photos@index');
-Route::get('photos/cities', 'Photos@cities');
-Route::get('photos/cities/{slug}', 'Photos@city');
-Route::get('photos/countries', 'Photos@countries');
-Route::get('photos/countries/{slug}', 'Photos@country');
-Route::get('photos/faq', 'Photos@faq');
-Route::get('photos/map', 'Photos@map');
-Route::get('photos/tags', 'Photos@tags');
-Route::get('photos/tags/{tag}', 'Photos@tag');
-Route::get('photos/trips', 'Photos@trips');
-Route::get('photos/trips/{trip}', 'Photos@trip');
-Route::get('photos/{photo}', 'Photos@show');
+Route::get('photos', [Controllers\Photos::class, 'index']);
+Route::get('photos/cities', [Controllers\Photos::class, 'cities']);
+Route::get('photos/cities/{slug}', [Controllers\Photos::class, 'city']);
+Route::get('photos/countries', [Controllers\Photos::class, 'countries']);
+Route::get('photos/countries/{slug}', [Controllers\Photos::class, 'country']);
+Route::get('photos/faq', [Controllers\Photos::class, 'faq']);
+Route::get('photos/map', [Controllers\Photos::class, 'map']);
+Route::get('photos/tags', [Controllers\Photos::class, 'tags']);
+Route::get('photos/tags/{tag}', [Controllers\Photos::class, 'tag']);
+Route::get('photos/trips', [Controllers\Photos::class, 'trips']);
+Route::get('photos/trips/{trip}', [Controllers\Photos::class, 'trip']);
+Route::get('photos/{photo}', [Controllers\Photos::class, 'show']);
 
-Route::get('promocodes-coupons', 'Coupons@index');
-Route::get('promocodes-coupons/airbnb', 'Coupons@airbnb');
-Route::get('promocodes-coupons/booking', 'Coupons@booking');
-Route::get('promocodes-coupons/digitalocean', 'Coupons@digitalocean');
-Route::get('promocodes-coupons/drimsim', 'Coupons@drimsim');
-Route::get('promocodes-coupons/firstvds', 'Coupons@firstvds');
-Route::post('promocodes-coupons/firstvds', 'Coupons@firstvdsPost');
-Route::get('promocodes-coupons/timeweb', 'Coupons@timeweb');
+Route::get('promocodes-coupons', [Controllers\Coupons::class, 'index']);
+Route::get('promocodes-coupons/airbnb', [Controllers\Coupons::class, 'airbnb']);
+Route::get('promocodes-coupons/booking', [Controllers\Coupons::class, 'booking']);
+Route::get('promocodes-coupons/digitalocean', [Controllers\Coupons::class, 'digitalocean']);
+Route::get('promocodes-coupons/drimsim', [Controllers\Coupons::class, 'drimsim']);
+Route::get('promocodes-coupons/firstvds', [Controllers\Coupons::class, 'firstvds']);
+Route::post('promocodes-coupons/firstvds', [Controllers\Coupons::class, 'firstvdsPost']);
+Route::get('promocodes-coupons/timeweb', [Controllers\Coupons::class, 'timeweb']);
 
-Route::get('retracker', 'Retracker@index');
-Route::get('retracker/dev', 'Retracker@dev');
-Route::get('retracker/usage', 'Retracker@usage');
+Route::get('retracker', [Controllers\Retracker::class, 'index']);
+Route::get('retracker/dev', [Controllers\Retracker::class, 'dev']);
+Route::get('retracker/usage', [Controllers\Retracker::class, 'usage']);
 
-Route::get('stickers', 'Stickers@index');
+Route::get('stickers', [Controllers\Stickers::class, 'index']);
 
-Route::get('subscriptions', 'Subscriptions@edit');
-Route::post('subscriptions', 'Subscriptions@store');
-Route::put('subscriptions', 'Subscriptions@update')->middleware('auth');
-Route::get('subscriptions/confirm', 'Subscriptions@confirm')->middleware('auth');
+Route::get('subscriptions', [Controllers\Subscriptions::class, 'edit']);
+Route::post('subscriptions', [Controllers\Subscriptions::class, 'store']);
+Route::put('subscriptions', [Controllers\Subscriptions::class, 'update'])->middleware('auth');
+Route::get('subscriptions/confirm', [Controllers\Subscriptions::class, 'confirm'])->middleware('auth');
 
-Route::get('torrent', 'TorrentPromo@index');
+Route::get('torrent', [Controllers\TorrentPromo::class, 'index']);
 
-Route::get('torrents', 'Torrents@index');
-Route::post('torrents', 'Torrents@store')->middleware('auth');
-Route::get('torrents/add', 'Torrents@create')->middleware('auth');
-Route::get('torrents/comments', 'Torrents@comments');
-Route::get('torrents/faq', 'Torrents@faq');
-Route::get('torrents/my', 'Torrents@my')->middleware('auth');
-Route::get('torrents/{torrent}', 'Torrents@show');
-Route::post('torrents/{torrent}/magnet', 'Torrents@magnet');
+Route::get('torrents', [Controllers\Torrents::class, 'index']);
+Route::post('torrents', [Controllers\Torrents::class, 'store'])->middleware('auth');
+Route::get('torrents/add', [Controllers\Torrents::class, 'create'])->middleware('auth');
+Route::get('torrents/comments', [Controllers\Torrents::class, 'comments']);
+Route::get('torrents/faq', [Controllers\Torrents::class, 'faq']);
+Route::get('torrents/my', [Controllers\Torrents::class, 'my'])->middleware('auth');
+Route::get('torrents/{torrent}', [Controllers\Torrents::class, 'show']);
+Route::post('torrents/{torrent}/magnet', [Controllers\Torrents::class, 'magnet']);
 
-Route::get('trips/{trip}', 'Trips@show');
+Route::get('trips/{trip}', [Controllers\Trips::class, 'show']);
 
-Route::get('users', 'Users@index');
-Route::get('users/{id}', 'Users@show');
+Route::get('users', [Controllers\Users::class, 'index']);
+Route::get('users/{id}', [Controllers\Users::class, 'show']);
 
-Route::get('@{login}', 'UserHome@index');
-Route::get('@{login}/travel', 'UserTravelTrips@index');
-Route::get('@{login}/travel/cities', 'UserTravelCities@index');
-Route::get('@{login}/travel/cities/{slug}', 'UserTravelCities@show');
-Route::get('@{login}/travel/countries', 'UserTravelCountries@index');
-Route::get('@{login}/travel/countries/{slug}', 'UserTravelCountries@show');
-Route::get('@{login}/travel/{slug}', 'UserTravelTrips@show');
+Route::get('@{login}', [Controllers\UserHome::class, 'index']);
+Route::get('@{login}/travel', [Controllers\UserTravelTrips::class, 'index']);
+Route::get('@{login}/travel/cities', [Controllers\UserTravelCities::class, 'index']);
+Route::get('@{login}/travel/cities/{slug}', [Controllers\UserTravelCities::class, 'show']);
+Route::get('@{login}/travel/countries', [Controllers\UserTravelCountries::class, 'index']);
+Route::get('@{login}/travel/countries/{slug}', [Controllers\UserTravelCountries::class, 'show']);
+Route::get('@{login}/travel/{slug}', [Controllers\UserTravelTrips::class, 'show']);
+
+Route::get('.well-known/change-password', Controllers\WellKnownChangePasswordController::class);
