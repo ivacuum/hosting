@@ -6,6 +6,6 @@ class WellKnownChangePasswordController extends Controller
     {
         event(new \App\Events\Stats\WellKnownChangePassword);
 
-        return redirect(path('MyPassword@edit'), 301);
+        return redirect(path([MyPassword::class, 'edit']), 301);
     }
 }

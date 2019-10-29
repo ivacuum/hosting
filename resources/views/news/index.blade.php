@@ -1,7 +1,7 @@
 @extends('base')
 
 @push('head')
-<link rel="alternate" type="application/rss+xml" title="{{ trans('news.index') }}" href="{{ url(path('NewsRss@index')) }}">
+<link rel="alternate" type="application/rss+xml" title="{{ trans('news.index') }}" href="{{ url(path([App\Http\Controllers\NewsRss::class, 'index'])) }}">
 @endpush
 
 @section('content')

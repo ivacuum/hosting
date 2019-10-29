@@ -3,7 +3,7 @@
 ])
 
 @push('head')
-<link rel="alternate" type="application/rss+xml" title="{{ trans('menu.gigs') }}" href="{{ url(path('LifeGigsRss@index')) }}">
+<link rel="alternate" type="application/rss+xml" title="{{ trans('menu.gigs') }}" href="{{ url(path([App\Http\Controllers\LifeGigsRss::class, 'index'])) }}">
 @endpush
 
 @section('content')

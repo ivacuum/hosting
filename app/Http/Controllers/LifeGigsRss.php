@@ -8,7 +8,7 @@ class LifeGigsRss extends Controller
     {
         $meta = [
             'title' => trans('menu.gigs'),
-            'link' => url(path('Life@gigs')),
+            'link' => url(path([Life::class, 'gigs'])),
             'description' => trans('life.gigs.rss.description'),
         ];
 
