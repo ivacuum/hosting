@@ -4,8 +4,6 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 
 class RouteServiceProvider extends ServiceProvider
 {
-    protected $namespace = 'App\Http\Controllers';
-
     public function boot()
     {
         \Route::pattern('id', '\d+');
@@ -19,7 +17,6 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/simple.php'));
 
         \Route::middleware(['web', 'auth', 'admin'])
-            ->namespace($this->namespace)
             ->prefix('acp')
             ->group(base_path('routes/acp.php'));
 

@@ -58,7 +58,7 @@ a:focus {
     <div class="title">
       @yield('content')
       <br><br>
-      <a href="{{ path([App\Http\Controllers\Home::class, 'index']) }}">
+      <a href="{{ path(App\Http\Controllers\HomeController::class) }}">
         @svg (home)
       </a>
     </div>

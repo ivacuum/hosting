@@ -2,7 +2,7 @@
 
 use App\Http\Controllers;
 
-Route::get('/', [Controllers\Home::class, 'index']);
+Route::get('/', Controllers\HomeController::class);
 
 Route::get('about', Controllers\AboutController::class);
 

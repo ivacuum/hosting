@@ -2,7 +2,7 @@
   <div class="container">
     <div class="flex flex-wrap justify-between items-center w-full">
       @section('brand')
-        <a class="site-brand font-bold text-lg text-blue-700 flex items-center hover:text-orange-600 md:mr-3 h-12 text-center" href="{{ path([App\Http\Controllers\Home::class, 'index']) }}">vacuum<br>kaluga</a>
+        <a class="site-brand font-bold text-lg text-blue-700 flex items-center hover:text-orange-600 md:mr-3 h-12 text-center" href="{{ path(App\Http\Controllers\HomeController::class) }}">vacuum<br>kaluga</a>
       @show
       <button class="md:hidden px-4 py-3 text-2xl text-gray-600 hover:text-gray-900 js-collapse" data-target="#header_menu">
         @svg (three-bars)

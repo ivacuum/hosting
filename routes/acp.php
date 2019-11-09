@@ -5,21 +5,21 @@ use Ivacuum\Generic\Utilities\RouteHelper;
 
 Route::get('/', [Acp\Home::class, 'index']);
 
-RouteHelper::crud('Acp\Artists');
+RouteHelper::crud(Acp\Artists::class);
 
-RouteHelper::withoutCreate('Acp\ChatMessages');
+RouteHelper::withoutCreate(Acp\ChatMessages::class);
 Route::post('chat-messages/batch', [Acp\ChatMessages::class, 'batch']);
 
-RouteHelper::crud('Acp\Cities');
+RouteHelper::crud(Acp\Cities::class);
 Route::get('cities/geodata', [Acp\Cities::class, 'geodata']);
 
-RouteHelper::crud('Acp\Clients');
+RouteHelper::crud(Acp\Clients::class);
 
-RouteHelper::withoutCreate('Acp\Comments');
+RouteHelper::withoutCreate(Acp\Comments::class);
 
-RouteHelper::crud('Acp\Countries');
+RouteHelper::crud(Acp\Countries::class);
 
-RouteHelper::crud('Acp\DcppHubs');
+RouteHelper::crud(Acp\DcppHubs::class);
 
 Route::get('dev', [Acp\Dev::class, 'index']);
 Route::get('dev/debugbar', [Acp\Dev::class, 'debugbar']);
@@ -31,7 +31,7 @@ Route::get('dev/thumbnails', [Acp\Dev\Thumbnails::class, 'index']);
 Route::post('dev/thumbnails', [Acp\Dev\Thumbnails::class, 'store']);
 Route::get('dev/thumbnails/clean', [Acp\Dev\Thumbnails::class, 'clean']);
 
-RouteHelper::crud('Acp\Domains', null, 'slug');
+RouteHelper::crud(Acp\Domains::class, null, 'slug');
 Route::post('domains/batch', [Acp\Domains::class, 'batch']);
 Route::get('domains/{slug}/dkim-secret-key', [Acp\Domains::class, 'dkimSecretKey']);
 Route::get('domains/{slug}/mail', [Acp\Domains::class, 'mailboxes']);
@@ -47,60 +47,60 @@ Route::get('domains/{slug}/yandex-pdd-status', [Acp\Domains::class, 'yandexPddSt
 Route::post('domains/{slug}/yandex-ns', [Acp\Domains::class, 'setYandexNs']);
 Route::get('domains/{slug}/whois', [Acp\Domains::class, 'whois']);
 
-RouteHelper::withoutCreateAndEdit('Acp\ExternalIdentities');
+RouteHelper::withoutCreateAndEdit(Acp\ExternalIdentities::class);
 
-RouteHelper::crud('Acp\Files');
+RouteHelper::crud(Acp\Files::class);
 
-RouteHelper::crud('Acp\Gigs');
-Route::post('gigs/{id}/notify', 'Acp\GigPublishedNotify');
+RouteHelper::crud(Acp\Gigs::class);
+Route::post('gigs/{id}/notify', Acp\GigPublishedNotify::class);
 
-RouteHelper::withoutCreateAndEdit('Acp\Images');
+RouteHelper::withoutCreateAndEdit(Acp\Images::class);
 Route::post('images/batch', [Acp\Images::class, 'batch']);
 Route::get('images/{id}/view', [Acp\Images::class, 'view']);
 
-RouteHelper::withoutCreateAndEdit('Acp\Issues');
+RouteHelper::withoutCreateAndEdit(Acp\Issues::class);
 Route::post('issues/batch', [Acp\Issues::class, 'batch']);
-Route::post('issues/{id}/close', 'Acp\IssueClose');
-Route::post('issues/{id}/comment', 'Acp\IssueComment');
-Route::post('issues/{id}/open', 'Acp\IssueOpen');
+Route::post('issues/{id}/close', Acp\IssueClose::class);
+Route::post('issues/{id}/comment', Acp\IssueComment::class);
+Route::post('issues/{id}/open', Acp\IssueOpen::class);
 
-RouteHelper::withoutCreate('Acp\Kanjis');
+RouteHelper::withoutCreate(Acp\Kanjis::class);
 
 Route::get('metrics', [Acp\Metrics::class, 'index']);
 Route::get('metrics/{event}', [Acp\Metrics::class, 'show']);
 
-RouteHelper::crud('Acp\News');
+RouteHelper::crud(Acp\News::class);
 Route::post('news/{id}/notify', [Acp\News::class, 'notify']);
 
-RouteHelper::withoutCreateAndEdit('Acp\Notifications', null, 'uuid');
+RouteHelper::withoutCreateAndEdit(Acp\Notifications::class, null, 'uuid');
 
-RouteHelper::crud('Acp\Pages');
-Route::post('pages/batch', 'Acp\Pages@batch');
-Route::post('pages/move', 'Acp\Pages@move');
-Route::get('pages/tree', 'Acp\Pages@tree');
+RouteHelper::crud(Acp\Pages::class);
+Route::post('pages/batch', [Acp\Pages::class, 'batch']);
+Route::post('pages/move', [Acp\Pages::class, 'move']);
+Route::get('pages/tree', [Acp\Pages::class, 'tree']);
 
-RouteHelper::crud('Acp\Photos');
+RouteHelper::crud(Acp\Photos::class);
 
-RouteHelper::withoutCreate('Acp\Radicals');
+RouteHelper::withoutCreate(Acp\Radicals::class);
 
-RouteHelper::crud('Acp\Servers');
-Route::get('servers/{id}/ftp', 'Acp\Servers\Ftp@index');
-Route::post('servers/{id}/ftp/file', 'Acp\Servers\Ftp@filePost');
-Route::post('servers/{id}/ftp/dir', 'Acp\Servers\Ftp@dirPost');
-Route::get('servers/{id}/ftp/source', 'Acp\Servers\Ftp@source');
-Route::post('servers/{id}/ftp/source', 'Acp\Servers\Ftp@sourcePost');
-Route::post('servers/{id}/ftp/upload', 'Acp\Servers\Ftp@uploadPost');
+RouteHelper::crud(Acp\Servers::class);
+Route::get('servers/{id}/ftp', [Acp\Servers\Ftp::class, 'index']);
+Route::post('servers/{id}/ftp/file', [Acp\Servers\Ftp::class, 'filePost']);
+Route::post('servers/{id}/ftp/dir', [Acp\Servers\Ftp::class, 'dirPost']);
+Route::get('servers/{id}/ftp/source', [Acp\Servers\Ftp::class, 'source']);
+Route::post('servers/{id}/ftp/source', [Acp\Servers\Ftp::class, 'sourcePost']);
+Route::post('servers/{id}/ftp/upload', [Acp\Servers\Ftp::class, 'uploadPost']);
 
-RouteHelper::crud('Acp\Tags');
+RouteHelper::crud(Acp\Tags::class);
 
-RouteHelper::withoutCreate('Acp\Torrents');
+RouteHelper::withoutCreate(Acp\Torrents::class);
 Route::get('torrents/{id}/updateRto', [Acp\Torrents::class, 'updateRto']);
 
-RouteHelper::crud('Acp\Trips');
-Route::post('trips/{id}/notify', 'Acp\TripPublishedNotify');
+RouteHelper::crud(Acp\Trips::class);
+Route::post('trips/{id}/notify', Acp\TripPublishedNotify::class);
 
-RouteHelper::crud('Acp\Users');
+RouteHelper::crud(Acp\Users::class);
 
-RouteHelper::withoutCreate('Acp\Vocabularies');
+RouteHelper::withoutCreate(Acp\Vocabularies::class);
 
-RouteHelper::crud('Acp\YandexUsers');
+RouteHelper::crud(Acp\YandexUsers::class);

@@ -113,7 +113,7 @@
     <h3>Какие еще есть полезные ресурсы помимо трекера?</h3>
     <p>Ознакомиться с актуальным списком можно на отдельной странице.</p>
     <div class="mt-4">
-      <a class="btn btn-secondary" href="{{ path([App\Http\Controllers\Home::class, 'index']) }}">
+      <a class="btn btn-secondary" href="{{ path(App\Http\Controllers\HomeController::class) }}">
         <span class="mr-1">
           @svg (sign-in)
         </span>
