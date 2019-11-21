@@ -27,6 +27,7 @@
         class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
         type="password"
         name="password"
+        minlength="8"
         autocomplete="new-password"
         placeholder="{{ trans('auth.password') }}"
       >

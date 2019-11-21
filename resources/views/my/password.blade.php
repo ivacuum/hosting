@@ -30,6 +30,7 @@
         class="form-control {{ $errors->has('new_password') ? 'is-invalid' : '' }}"
         type="password"
         name="new_password"
+        minlength="8"
         autocomplete="new-password"
       >
       <div class="invalid-feedback">{{ $errors->first('new_password') }}</div>
