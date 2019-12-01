@@ -4,9 +4,11 @@
 /public/build
 /public/images
 /public/mix-manifest.json
+/public/vendor
 /vendor
 /_ide_helper.php
 /.phpstorm.meta.php
+/auth.json
 .DS_Store
 .env
 .phpunit.result.cache
