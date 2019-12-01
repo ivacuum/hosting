@@ -10,6 +10,7 @@
     "irazasyed/telegram-bot-sdk": "^2.0",
     "ivacuum/generic": "^8.0",
     "laravel/framework": "^6.0",
+    "laravel/nova": "^2.0",
     "laravel/scout": "^7.0",
     "laravel/socialite": "^4.0",
     "league/flysystem-sftp": "^1.0",
@@ -55,7 +56,8 @@
       "@php artisan package:discover --ansi"
     ],
     "post-update-cmd": [
-      "php artisan ide-helper:generate"
+      "@php artisan ide-helper:generate",
+      "@php artisan nova:publish"
     ]
   },
   "extra": {
@@ -70,5 +72,11 @@
     "preferred-install": "dist",
     "sort-packages": true,
     "optimize-autoloader": true
-  }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://nova.laravel.com"
+    }
+  ]
 }

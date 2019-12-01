@@ -54,6 +54,9 @@ fi
 
 ln -s $UPLOADS_DIR $RELEASE_DIR/public/uploads
 
+# Логин и пароль должны быть переданы от билдера
+composer config http-basic.nova.laravel.com "${NOVA_USERNAME}" "${NOVA_PASSWORD}"
+
 # Установка зависимостей
 cd $RELEASE_DIR
 composer install --no-dev --no-interaction --optimize-autoloader
@@ -71,6 +74,7 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+php artisan nova:publish
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
