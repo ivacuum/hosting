@@ -59,7 +59,7 @@ class User extends Authenticatable implements HasLocalePreference
 
     protected $guarded = ['created_at', 'updated_at'];
     protected $hidden = ['password', 'salt', 'remember_token'];
-    protected $dates = ['last_login_at'];
+    protected $dates = ['last_login_at', 'password_changed_at'];
     protected $perPage = 50;
 
     protected $casts = [
