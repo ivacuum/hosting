@@ -37,7 +37,9 @@ class ExternalHttpRequest extends Model
         'response_size' => 'int',
         'total_time_us' => 'int',
         'redirect_count' => 'int',
+        'request_headers' => 'array',
         'redirect_time_us' => 'int',
+        'response_headers' => 'array',
     ];
 
     // Methods

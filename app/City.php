@@ -49,6 +49,12 @@ class City extends Model
         return $this->belongsTo(Country::class);
     }
 
+    public function gigs()
+    {
+        return $this->hasMany(Gig::class)
+            ->orderBy('date');
+    }
+
     public function trips()
     {
         return $this->hasMany(Trip::class)

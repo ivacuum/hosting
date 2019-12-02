@@ -18,6 +18,13 @@ class Artist extends Model
 {
     protected $guarded = ['created_at', 'updated_at'];
 
+    // Relations
+    public function gigs()
+    {
+        return $this->hasMany(Gig::class)
+            ->orderByDesc('date');
+    }
+
     public function breadcrumb(): string
     {
         return $this->title;
