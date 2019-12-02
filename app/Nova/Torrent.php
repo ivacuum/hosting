@@ -15,6 +15,21 @@ class Torrent extends Resource
         'title',
     ];
 
+    public function actions(Request $request)
+    {
+        return [
+            app(Actions\UpdateTorrentFromRtoAction::class),
+        ];
+    }
+
+    public function cards(Request $request)
+    {
+        return [
+            new Metrics\TorrentClicksMetric,
+            new Metrics\TorrentViewsMetric,
+        ];
+    }
+
     public function fields(Request $request)
     {
         return [
@@ -37,6 +52,13 @@ class Torrent extends Resource
             Fields\DateTime::make('Updated At')->onlyOnDetail(),
 
             Fields\MorphMany::make('Comments'),
+        ];
+    }
+
+    public function filters(Request $request)
+    {
+        return [
+            new Filters\TorrentStatusFilter,
         ];
     }
 }
