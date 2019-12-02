@@ -35,6 +35,7 @@ class AuthServiceProvider extends ServiceProvider
         App\ChatMessage::class => WithoutCreate::class,
         App\Notification::class => WithoutCreateAndEdit::class,
         App\ExternalIdentity::class => WithoutCreateAndEdit::class,
+        App\ExternalHttpRequest::class => WithoutCreateAndEdit::class,
     ];
 
     public function boot()
