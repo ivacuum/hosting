@@ -4,7 +4,7 @@
 ])
 
 @push('head')
-@if (App::environment() === 'production')
+@if (App::isProduction())
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 @endif
 @endpush

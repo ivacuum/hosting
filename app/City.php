@@ -52,7 +52,7 @@ class City extends Model
     public function trips()
     {
         return $this->hasMany(Trip::class)
-            ->orderBy('date_start', 'asc');
+            ->orderBy('date_start');
     }
 
     // Methods

@@ -1,4 +1,4 @@
-@if (App::environment() === 'production')
+@if (App::isProduction())
   <div class="overflow-hidden h-90px mobile-wide">
     <ins
       class="adsbygoogle block"

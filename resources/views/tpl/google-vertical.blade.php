@@ -1,4 +1,4 @@
-@if (App::environment() === 'production')
+@if (App::isProduction())
   <ins
     class="adsbygoogle block mobile-wide"
     data-ad-client="ca-pub-7802683087624570"
