@@ -5,11 +5,12 @@ namespace App\Nova\Metrics;
 use App\Events\Stats\TorrentMagnetClicked;
 use App\Metric;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Metrics\Value;
+use Laravel\Nova\Metrics\Trend;
 
-class TorrentClicksMetric extends Value
+class TorrentClicksTrend extends Trend
 {
-    public $name = 'Magnet Clicks';
+    public $name = 'Torrent Clicks';
+    public $width = '1/2';
 
     public function calculate(NovaRequest $request)
     {
@@ -17,20 +18,16 @@ class TorrentClicksMetric extends Value
             ->newQuery()
             ->where('event', class_basename(TorrentMagnetClicked::class));
 
-        return $this->sum($request, $query, 'count', 'date');
+        return $this->sumByDays($request, $query, 'count', 'date')
+            ->showLatestValue();
     }
 
     public function ranges()
     {
         return [
-            7 => '7 Days',
             30 => '30 Days',
             60 => '60 Days',
-            365 => '365 Days',
-            'TODAY' => 'Today',
-            'MTD' => 'Month To Date',
-            'QTD' => 'Quarter To Date',
-            'YTD' => 'Year To Date',
+            90 => '90 Days',
         ];
     }
 }
