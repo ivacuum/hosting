@@ -37,7 +37,7 @@ class User extends Resource
             Fields\DateTime::make('Created At')->exceptOnForms(),
             Fields\DateTime::make('Updated At')->onlyOnDetail(),
             Fields\DateTime::make('Last Login At')->exceptOnForms(),
-            Fields\DateTime::make('Password Changed At')->exceptOnForms(),
+            Fields\DateTime::make('Password Changed At')->onlyOnDetail(),
 
             Fields\HasMany::make('Chat Messages', 'chatMessages'),
             Fields\HasMany::make('Comments'),
