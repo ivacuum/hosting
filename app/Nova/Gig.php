@@ -15,11 +15,11 @@ class Gig extends Resource
         'title_en',
         'title_ru',
     ];
+    protected static $defaultOrderBy = ['date' => 'desc'];
 
     public function fields(Request $request)
     {
         return [
-            Fields\ID::make()->sortable(),
             Fields\BelongsTo::make('Artist')->hideFromIndex(),
             Fields\BelongsTo::make('City')->hideFromIndex(),
             Fields\Text::make('Title')->onlyOnIndex(),

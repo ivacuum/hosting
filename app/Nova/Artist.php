@@ -14,15 +14,15 @@ class Artist extends Resource
         'id',
         'title',
     ];
+    public static $defaultOrderBy = ['title' => 'asc'];
 
     public function fields(Request $request)
     {
         return [
-            Fields\ID::make()->sortable(),
             Fields\HasMany::make('Gigs'),
-            Fields\Text::make('Title')->rules('max:255'),
+            Fields\Text::make('Title')->rules('max:255')->sortable(),
             Fields\Text::make('Slug')->rules('max:255'),
-            Fields\DateTime::make('Created At')->exceptOnForms(),
+            Fields\DateTime::make('Created At')->onlyOnDetail(),
             Fields\DateTime::make('Updated At')->onlyOnDetail(),
         ];
     }

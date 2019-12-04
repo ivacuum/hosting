@@ -19,7 +19,6 @@ class Tag extends Resource
     public function fields(Request $request)
     {
         return [
-            Fields\ID::make()->sortable(),
             Fields\Text::make('Title')->onlyOnIndex(),
             Fields\Text::make('Title RU')->rules('max:255')->hideFromIndex(),
             Fields\Text::make('Title EN')->rules('max:255')->hideFromIndex(),

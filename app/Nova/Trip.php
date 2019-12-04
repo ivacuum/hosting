@@ -15,11 +15,11 @@ class Trip extends Resource
         'title_en',
         'title_ru',
     ];
+    protected static $defaultOrderBy = ['date_start' => 'desc'];
 
     public function fields(Request $request)
     {
         return [
-            Fields\ID::make()->sortable(),
             Fields\BelongsTo::make('User')->hideFromIndex(),
             Fields\BelongsTo::make('City')->hideFromIndex(),
             Fields\Text::make('Title')->onlyOnIndex(),

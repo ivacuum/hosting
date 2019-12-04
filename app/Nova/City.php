@@ -15,11 +15,11 @@ class City extends Resource
         'title_en',
         'title_ru',
     ];
+    protected static $defaultOrderBy = ['title_ru' => 'asc'];
 
     public function fields(Request $request)
     {
         return [
-            Fields\ID::make()->sortable(),
             Fields\BelongsTo::make('Country'),
             Fields\Text::make('Title')->onlyOnIndex(),
             Fields\Text::make('Title RU')->rules('max:255')->hideFromIndex(),

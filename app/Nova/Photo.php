@@ -18,7 +18,6 @@ class Photo extends Resource
     public function fields(Request $request)
     {
         return [
-            Fields\ID::make()->sortable(),
             Fields\Text::make('Slug')->exceptOnForms(),
             Fields\Text::make('Lat'),
             Fields\Text::make('Lon'),

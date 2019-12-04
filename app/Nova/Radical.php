@@ -14,11 +14,11 @@ class Radical extends Resource
         'id',
         'meaning',
     ];
+    protected static $defaultOrderBy = ['level' => 'asc'];
 
     public function fields(Request $request)
     {
         return [
-            Fields\ID::make()->sortable(),
             Fields\Number::make('Level')->sortable(),
             Fields\Text::make('Character'),
             Fields\Text::make('Meaning', function (\App\Radical $radical) {
