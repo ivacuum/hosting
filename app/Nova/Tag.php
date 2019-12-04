@@ -15,6 +15,7 @@ class Tag extends Resource
         'title_en',
         'title_ru',
     ];
+    protected static $defaultOrderBy = ['title_ru' => 'asc'];
 
     public function fields(Request $request)
     {
