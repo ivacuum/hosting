@@ -39,7 +39,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        Ivacuum\Generic\Providers\LocaleServiceProvider::class,
+        App\Providers\LocaleServiceProvider::class,
 
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,

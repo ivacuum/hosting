@@ -10,11 +10,6 @@ use Laravel\Nova\NovaApplicationServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
-    public function boot()
-    {
-        parent::boot();
-    }
-
     protected function routes()
     {
         Nova::routes()
@@ -54,9 +49,5 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [];
-    }
-
-    public function register()
-    {
     }
 }
