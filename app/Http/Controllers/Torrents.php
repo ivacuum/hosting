@@ -157,20 +157,20 @@ class Torrents extends Controller
                 ->withErrors(['input' => $data ?: 'Ввод не распознан, попробуйте другую ссылку или хэш']);
         }
 
-        $torrent = Torrent::create([
-            'html' => $data['body'],
-            'size' => $data['size'],
-            'title' => $data['title'],
-            'rto_id' => $data['rto_id'],
-            'clicks' => 0,
-            'status' => Torrent::STATUS_PUBLISHED,
-            'user_id' => request()->user()->id,
-            'info_hash' => $data['info_hash'],
-            'announcer' => $data['announcer'],
-            'category_id' => $categoryId,
-            'registered_at' => now(),
-            'related_query' => '',
-        ]);
+        $torrent = new Torrent;
+        $torrent->html = $data['body'];
+        $torrent->size = $data['size'];
+        $torrent->title = $data['title'];
+        $torrent->clicks = 0;
+        $torrent->rto_id = $data['rto_id'];
+        $torrent->status = Torrent::STATUS_PUBLISHED;
+        $torrent->user_id = request()->user()->id;
+        $torrent->info_hash = $data['info_hash'];
+        $torrent->announcer = $data['announcer'];
+        $torrent->category_id = $categoryId;
+        $torrent->registered_at = now();
+        $torrent->related_query = '';
+        $torrent->save();
 
         return redirect($torrent->www());
     }

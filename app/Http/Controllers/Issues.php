@@ -48,15 +48,15 @@ class Issues extends Controller
             throw new IssueLimitExceededException;
         }
 
-        Issue::create([
-            'name' => $name,
-            'page' => $this->pathFromUrl($request->session()->previousUrl(), $request->server->get('LARAVEL_LOCALE') ?? ''),
-            'text' => $text,
-            'email' => $email,
-            'title' => $title,
-            'status' => Issue::STATUS_OPEN,
-            'user_id' => $user->id,
-        ]);
+        $issue = new Issue;
+        $issue->name = $name;
+        $issue->page = $this->pathFromUrl($request->session()->previousUrl(), $request->server->get('LARAVEL_LOCALE') ?? '');
+        $issue->text = $text;
+        $issue->email = $email;
+        $issue->title = $title;
+        $issue->status = Issue::STATUS_OPEN;
+        $issue->user_id = $user->id;
+        $issue->save();
 
         return response('', 201);
     }

@@ -26,24 +26,24 @@ class LogExternalHttpRequest
             }
         }
 
-        ExternalHttpRequest::create([
-            'host' => $event->host,
-            'path' => $event->path,
-            'query' => $event->query,
-            'method' => $event->method,
-            'scheme' => $event->scheme,
-            'http_code' => $event->httpCode,
-            'http_version' => $event->httpVersion,
-            'redirect_url' => $event->redirectUrl,
-            'request_body' => $event->requestBody,
-            'service_name' => $event->serviceName,
-            'response_body' => $event->responseBody,
-            'response_size' => $event->responseSize,
-            'total_time_us' => $event->totalTimeUs,
-            'redirect_count' => $event->redirectCount,
-            'request_headers' => $event->requestHeaders,
-            'redirect_time_us' => $event->redirectTimeUs,
-            'response_headers' => $event->responseHeaders,
-        ]);
+        $model = new ExternalHttpRequest;
+        $model->host = $event->host;
+        $model->path = $event->path;
+        $model->query = $event->query;
+        $model->method = $event->method;
+        $model->scheme = $event->scheme;
+        $model->http_code = $event->httpCode;
+        $model->http_version = $event->httpVersion;
+        $model->redirect_url = $event->redirectUrl;
+        $model->request_body = $event->requestBody;
+        $model->service_name = $event->serviceName;
+        $model->response_body = $event->responseBody;
+        $model->response_size = $event->responseSize;
+        $model->total_time_us = $event->totalTimeUs;
+        $model->redirect_count = $event->redirectCount;
+        $model->request_headers = $event->requestHeaders;
+        $model->redirect_time_us = $event->redirectTimeUs;
+        $model->response_headers = $event->responseHeaders;
+        $model->save();
     }
 }
