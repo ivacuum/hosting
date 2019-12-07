@@ -4,7 +4,9 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
+/** @mixin \App\Trip */
 class Trip extends Resource
 {
     public static $group = 'Life';
@@ -17,6 +19,20 @@ class Trip extends Resource
     ];
     protected static $defaultOrderBy = ['date_start' => 'desc'];
 
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        return $query->withCount('photos');
+    }
+
+    public function actions(Request $request)
+    {
+        return [
+            (new Actions\TripHideAction)->showOnTableRow(),
+            (new Actions\TripMakeInactiveAction)->showOnTableRow(),
+            (new Actions\TripPublishAction)->showOnTableRow(),
+        ];
+    }
+
     public function fields(Request $request)
     {
         return [
@@ -25,23 +41,33 @@ class Trip extends Resource
             Fields\Text::make('Title')->onlyOnIndex(),
             Fields\Text::make('Title RU')->rules('max:255')->hideFromIndex(),
             Fields\Text::make('Title EN')->rules('max:255')->hideFromIndex(),
-            Fields\Text::make('Date', function (\App\Trip $trip) {
-                return $trip->localizedDate();
-            })->asHtml(),
-            Fields\Text::make('Slug')->rules('max:255'),
-            Fields\Date::make('Date Start')->onlyOnForms(),
-            Fields\Date::make('Date End')->onlyOnForms(),
             Fields\Select::make('Status')->options([
                 \App\Trip::STATUS_HIDDEN => 'Hidden',
                 \App\Trip::STATUS_INACTIVE => 'Inactive',
                 \App\Trip::STATUS_PUBLISHED => 'Published',
-            ])->displayUsingLabels(),
+            ])->displayUsingLabels()->hideFromIndex(),
+            Fields\Text::make('', function () {
+                return view('nova.trip-status', ['trip' => $this])->render();
+            })->onlyOnIndex()->textAlign('center')->asHtml(),
+            Fields\Text::make('Date', function () {
+                return $this->localizedDate();
+            })->asHtml(),
+            Fields\Text::make('Slug', function () {
+                return '<a class="no-underline dim text-primary" href="/life/' . $this->slug . '">' . $this->slug . '</a>';
+            })->rules('max:255')->asHtml(),
+            Fields\Date::make('Date Start')->onlyOnForms(),
+            Fields\Date::make('Date End')->onlyOnForms(),
             Fields\Text::make('Meta Title RU')->rules('max:255')->hideFromIndex(),
             Fields\Text::make('Meta Title EN')->rules('max:255')->hideFromIndex(),
             Fields\Text::make('Meta Description RU')->rules('max:255')->hideFromIndex(),
             Fields\Text::make('Meta Description EN')->rules('max:255')->hideFromIndex(),
             Fields\Text::make('Meta Image')->rules('max:255')->hideFromIndex(),
-            Fields\Number::make('Views')->exceptOnForms(),
+            Fields\Number::make('Views', function () {
+                return $this->views ?: '';
+            })->exceptOnForms()->textAlign('right'),
+            Fields\Number::make('Pics', function () {
+                return $this->photos_count ?: '';
+            })->onlyOnIndex()->textAlign('right'),
             Fields\DateTime::make('Created At')->onlyOnDetail(),
             Fields\DateTime::make('Updated At')->onlyOnDetail(),
         ];

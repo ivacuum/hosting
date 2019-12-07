@@ -202,7 +202,7 @@ class TripStatsCalculator
 
             $this->calendar[$ymd][] = [
                 'flag' => $trip->city->country->flagUrl(),
-                'slug' => $trip->status === Trip::STATUS_PUBLISHED ? $trip->slug : '',
+                'slug' => $trip->isPublished() ? $trip->slug : '',
                 'title' => $trip->title,
             ];
         }

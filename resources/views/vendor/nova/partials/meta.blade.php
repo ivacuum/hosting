@@ -11,5 +11,6 @@
 .table td {
   font-weight: 400;
   height: 2.8125rem;
+  min-width: auto;
 }
 </style>

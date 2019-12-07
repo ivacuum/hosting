@@ -239,7 +239,7 @@ class Photos extends Controller
 
     public function trip(Trip $trip)
     {
-        abort_unless($trip->status === Trip::STATUS_PUBLISHED, 404);
+        abort_unless($trip->isPublished(), 404);
 
         $photos = Photo::forTrip($trip->id)
             ->published()

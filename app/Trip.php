@@ -228,6 +228,26 @@ class Trip extends Model
         return "{$this->city->country->emoji} {$this->title}, {$this->city->country->title}, {$this->timelinePeriod(true)}.";
     }
 
+    public function isHidden(): bool
+    {
+        return $this->status === self::STATUS_HIDDEN;
+    }
+
+    public function isInactive(): bool
+    {
+        return $this->status === self::STATUS_INACTIVE;
+    }
+
+    public function isNotPublished(): bool
+    {
+        return !$this->isPublished();
+    }
+
+    public function isPublished(): bool
+    {
+        return $this->status === self::STATUS_PUBLISHED;
+    }
+
     public function loadCity(): void
     {
         if (!$this->relationLoaded('city')) {
@@ -375,8 +395,8 @@ class Trip extends Model
             })
             ->visible()
             ->get(['id', 'city_id', 'status'])
-            ->each(function ($trip) use (&$tripsByCities) {
-                if ($trip->status === static::STATUS_PUBLISHED) {
+            ->each(function (self $trip) use (&$tripsByCities) {
+                if ($trip->isPublished()) {
                     @$tripsByCities[$trip->city_id]['published'] += 1;
                 }
 

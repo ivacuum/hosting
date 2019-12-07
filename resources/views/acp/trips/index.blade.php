@@ -1,3 +1,7 @@
+<?php
+/** @var \App\Trip $model */
+?>
+
 @extends('acp.list')
 
 @section('heading-after-search')
@@ -47,11 +51,11 @@
         </a>
       </td>
       <td>
-        @if ($model->status === App\Trip::STATUS_HIDDEN)
+        @if ($model->isHidden())
           <span class="tooltipped tooltipped-n" aria-label="Заметка скрыта">
             @svg (eye-slash)
           </span>
-        @elseif ($model->status === App\Trip::STATUS_INACTIVE)
+        @elseif ($model->isInactive())
           <span class="tooltipped tooltipped-n" aria-label="Заметка пишется">
             @svg (pencil)
           </span>

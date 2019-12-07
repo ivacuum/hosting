@@ -13,7 +13,7 @@ class TripPublishedNotify extends Controller
         /** @var Model $model */
         $model = $this->getModel($id);
 
-        if ($model->status !== Model::STATUS_PUBLISHED) {
+        if ($model->isNotPublished()) {
             return [
                 'status' => 'error',
                 'message' => 'Для рассылки уведомлений поездка должна быть опубликована',

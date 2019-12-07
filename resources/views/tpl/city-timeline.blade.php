@@ -1,3 +1,7 @@
+<?php
+/** @var \App\Trip $row */
+?>
+
 @if (isset($timeline) && sizeof($timeline->flatten()) > 1)
   <div class="overflow-hidden mb-4">
     <div class="whitespace-no-wrap pb-8 -mb-8 overflow-x-auto">
@@ -9,7 +13,7 @@
               <div class="text-xs">
                 @if ($row->id === $trip->id)
                   <mark>{{ $row->timelinePeriod() }}</mark>
-                @elseif ($row->status === App\Trip::STATUS_PUBLISHED)
+                @elseif ($row->isPublished())
                   <a class="link" href="{{ $row->www() }}">{{ $row->timelinePeriod() }}</a>
                 @else
                   {{ $row->timelinePeriod() }}
