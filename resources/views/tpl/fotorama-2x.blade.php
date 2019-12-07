@@ -15,8 +15,7 @@ $alt = $isCrawler && isset($trip) ? $trip->imgAltText() : '';
           <img
             class="absolute left-0 w-full h-full object-cover {{ $loop->first ? 'sm:rounded-t' : '' }} {{ $loop->last ? 'sm:rounded-b' : '' }} js-lazy"
             src="https://life.ivacuum.org/0.gif"
-            data-src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"
-            data-src2x="{{ ViewHelper::pic2x($slug ?? $trip->slug, $pic) }}"
+            data-srcset="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }} 1000w, {{ ViewHelper::pic2x($slug ?? $trip->slug, $pic) }} 2000w"
             alt=""
           >
           <div class="absolute top-0 right-0">

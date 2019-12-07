@@ -101,11 +101,9 @@ class Application {
 
   static lazyLoadImages() {
     const offset = 1000
-    const breakpoint = 1200
 
     const $w = $(window)
     const $body = $(document.body)
-    const width = $w.width()
     let $images
 
     function performLazyLoad() {
@@ -121,8 +119,7 @@ class Application {
           e.removeClass('js-lazy')
 
           if (type === 'image') {
-            const src = width > breakpoint ? (e.data('src2x') || e.data('src')) : e.data('src')
-            e.attr('src', src)
+            e.attr('srcset', e.data('srcset'))
           }
 
           return false

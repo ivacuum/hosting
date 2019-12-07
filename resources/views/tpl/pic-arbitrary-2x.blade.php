@@ -4,7 +4,7 @@
       <img
         class="absolute left-0 w-full h-full object-cover sm:rounded js-lazy"
         src="https://life.ivacuum.org/0.gif"
-        data-src="{{ ViewHelper::pic2x($slug ?? $trip->slug, $pic) }}"
+        data-srcset="{{ ViewHelper::pic2x($slug ?? $trip->slug, $pic) }} {{ $w }}w"
         alt=""
       >
     </div>

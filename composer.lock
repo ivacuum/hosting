@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e7a96e546fe5fada6ba23b617c10621",
+    "content-hash": "1ab69f934c34fcc000edd08f9572270d",
     "packages": [
         {
             "name": "beyondcode/laravel-websockets",
@@ -1228,16 +1228,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "9.0.0",
+            "version": "10.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "95afadffc8b1c73a994e00206400008927a15cf9"
+                "reference": "d5bb87a13eef9b2500a389d71d604abc7f13b53a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/95afadffc8b1c73a994e00206400008927a15cf9",
-                "reference": "95afadffc8b1c73a994e00206400008927a15cf9",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/d5bb87a13eef9b2500a389d71d604abc7f13b53a",
+                "reference": "d5bb87a13eef9b2500a389d71d604abc7f13b53a",
                 "shasum": ""
             },
             "require": {
@@ -1289,7 +1289,7 @@
                     "email": "vacuum@ivacuum.ru"
                 }
             ],
-            "time": "2019-12-04T03:55:09+00:00"
+            "time": "2019-12-07T06:43:37+00:00"
         },
         {
             "name": "laravel/framework",

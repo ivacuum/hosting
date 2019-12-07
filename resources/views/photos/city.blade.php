@@ -1,3 +1,7 @@
+<?php
+/** @var \App\Photo $photo */
+?>
+
 @extends('photos.base')
 
 @section('content')
@@ -12,7 +16,7 @@
         <img
           class="absolute top-0 left-0 w-full object-cover js-lazy"
           src="https://life.ivacuum.org/0.gif"
-          data-src="{{ $photo->thumbnailUrl() }}"
+          data-srcset="{{ $photo->thumbnailUrl() }} 500w"
           alt=""
         >
       </a>

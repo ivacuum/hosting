@@ -126,7 +126,7 @@
           <img
             class="absolute w-full h-full object-cover brightness-3/4 group-hover:brightness-full js-lazy"
             src="https://life.ivacuum.org/0.gif"
-            data-src="{{ $trip->metaImage(500, 375) }}"
+            data-srcset="{{ $trip->metaImage(500, 375) }} 500w"
             alt=""
           >
         </div>

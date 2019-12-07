@@ -3,7 +3,7 @@
     <img
       class="absolute w-full h-full object-cover sm:rounded js-lazy"
       src="https://life.ivacuum.org/0.gif"
-      data-src="{{ $pic }}"
+      data-srcset="{{ $pic }} {{ $w }}w"
       alt=""
     >
   </div>
