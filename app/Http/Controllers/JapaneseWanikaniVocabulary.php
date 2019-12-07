@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Builder;
 
 class JapaneseWanikaniVocabulary extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('breadcrumbs:japanese.index,japanese');
+        $this->middleware('breadcrumbs:japanese.wanikani,japanese/wanikani');
+        $this->middleware('breadcrumbs:japanese.browsing');
+    }
+
     public function index()
     {
         if (!request()->wantsJson()) {
@@ -56,12 +63,5 @@ class JapaneseWanikaniVocabulary extends Controller
         $vocabulary->resurrect(auth()->id());
 
         return response()->noContent();
-    }
-
-    protected function appendBreadcrumbs(): void
-    {
-        $this->middleware('breadcrumbs:japanese.index,japanese');
-        $this->middleware('breadcrumbs:japanese.wanikani,japanese/wanikani');
-        $this->middleware('breadcrumbs:japanese.browsing');
     }
 }

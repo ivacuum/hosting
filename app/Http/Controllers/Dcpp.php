@@ -4,6 +4,11 @@ use App\Utilities\ViewHelper;
 
 class Dcpp extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('breadcrumbs:dcpp.index,dc');
+    }
+
     public function index()
     {
         \Breadcrumbs::pop();
@@ -24,10 +29,5 @@ class Dcpp extends Controller
             'metaTitle' => $viewHelper->metaTitle($view),
             'metaDescription' => $viewHelper->metaDescription($view),
         ]);
-    }
-
-    protected function appendBreadcrumbs(): void
-    {
-        $this->middleware('breadcrumbs:dcpp.index,dc');
     }
 }

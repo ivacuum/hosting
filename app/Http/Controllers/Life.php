@@ -10,6 +10,15 @@ use Illuminate\Http\Request;
 
 class Life extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('breadcrumbs:menu.life,life');
+        $this->middleware('breadcrumbs:life.calendar,life/calendar')->only('calendar');
+        $this->middleware('breadcrumbs:menu.cities,life/cities')->only('cities');
+        $this->middleware('breadcrumbs:menu.countries,life/countries')->only('countries', 'country');
+        $this->middleware('breadcrumbs:menu.gigs,life/gigs')->only('gigs');
+    }
+
     public function index()
     {
         $to = request('to');
@@ -236,15 +245,6 @@ class Life extends Controller
             'nextTrips' => $nextTrips,
             'previousTrips' => $trip->previous($nextTrips->count())->get()->reverse(),
         ]);
-    }
-
-    protected function appendBreadcrumbs(): void
-    {
-        $this->middleware('breadcrumbs:menu.life,life');
-        $this->middleware('breadcrumbs:life.calendar,life/calendar')->only('calendar');
-        $this->middleware('breadcrumbs:menu.cities,life/cities')->only('cities');
-        $this->middleware('breadcrumbs:menu.countries,life/countries')->only('countries', 'country');
-        $this->middleware('breadcrumbs:menu.gigs,life/gigs')->only('gigs');
     }
 
     protected function getGig(string $slug): ?Gig

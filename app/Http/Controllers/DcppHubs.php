@@ -5,6 +5,12 @@ use App\Utilities\ViewHelper;
 
 class DcppHubs extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('breadcrumbs:dcpp.index,dc');
+        $this->middleware('breadcrumbs:dcpp.hubs');
+    }
+
     public function index(ViewHelper $viewHelper)
     {
         $hubs = DcppHub::where('status', DcppHub::STATUS_PUBLISHED)
@@ -16,11 +22,5 @@ class DcppHubs extends Controller
             'page' => 'hubs',
             'metaTitle' => $viewHelper->metaTitle('dcpp.hubs'),
         ]);
-    }
-
-    protected function appendBreadcrumbs(): void
-    {
-        $this->middleware('breadcrumbs:dcpp.index,dc');
-        $this->middleware('breadcrumbs:dcpp.hubs');
     }
 }

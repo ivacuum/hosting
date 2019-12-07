@@ -192,13 +192,4 @@ class Torrents extends Controller
 
         return new \App\Http\Resources\Torrent($torrent);
     }
-
-    protected function appendBreadcrumbs(): void
-    {
-        $this->middleware('breadcrumbs:torrents.index,torrents');
-        $this->middleware('breadcrumbs:torrents.create')->only('create');
-        $this->middleware('breadcrumbs:torrents.comments')->only('comments');
-        $this->middleware('breadcrumbs:torrents.faq')->only('faq');
-        $this->middleware('breadcrumbs:torrents.my')->only('my');
-    }
 }

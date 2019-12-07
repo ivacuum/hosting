@@ -5,6 +5,14 @@ use App\Image;
 
 class Gallery extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('breadcrumbs:gallery.index,gallery');
+        $this->middleware('breadcrumbs:gallery.preview')->only('preview');
+        $this->middleware('breadcrumbs:gallery.view')->only('view');
+        $this->middleware('breadcrumbs:gallery.upload')->only('upload');
+    }
+
     public function index()
     {
         $images = Image::where('user_id', request()->user()->id)
@@ -55,13 +63,5 @@ class Gallery extends Controller
     public function upload()
     {
         return view($this->view);
-    }
-
-    protected function appendBreadcrumbs(): void
-    {
-        $this->middleware('breadcrumbs:gallery.index,gallery');
-        $this->middleware('breadcrumbs:gallery.preview')->only('preview');
-        $this->middleware('breadcrumbs:gallery.view')->only('view');
-        $this->middleware('breadcrumbs:gallery.upload')->only('upload');
     }
 }

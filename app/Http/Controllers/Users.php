@@ -4,6 +4,11 @@ use App\User;
 
 class Users extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('breadcrumbs:users.index,users');
+    }
+
     public function index()
     {
         $users = User::active()->orderBy('id')
@@ -24,10 +29,5 @@ class Users extends Controller
         \Breadcrumbs::push($user->publicName());
 
         return view($this->view, ['user' => $user]);
-    }
-
-    protected function appendBreadcrumbs(): void
-    {
-        $this->middleware('breadcrumbs:users.index,users');
     }
 }

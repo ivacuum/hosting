@@ -10,6 +10,17 @@ use Carbon\CarbonInterval;
 
 class Photos extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('breadcrumbs:photos.index,photos');
+        $this->middleware('breadcrumbs:photos.cities,photos/cities')->only('cities', 'city');
+        $this->middleware('breadcrumbs:photos.countries,photos/countries')->only('countries', 'country');
+        $this->middleware('breadcrumbs:photos.faq,photos/faq')->only('faq');
+        $this->middleware('breadcrumbs:photos.map,photos/map')->only('map');
+        $this->middleware('breadcrumbs:photos.tags,photos/tags')->only('tags');
+        $this->middleware('breadcrumbs:photos.trips,photos/trips')->only('trip', 'trips');
+    }
+
     public function index()
     {
         $photos = Photo::published()
@@ -248,16 +259,6 @@ class Photos extends Controller
         return view($this->view, [
             'trips' => Trip::tripswithCover(),
         ]);
-    }
-
-    protected function appendBreadcrumbs(): void
-    {
-        $this->middleware('breadcrumbs:photos.index,photos');
-        $this->middleware('breadcrumbs:photos.cities,photos/cities')->only('cities', 'city');
-        $this->middleware('breadcrumbs:photos.countries,photos/countries')->only('countries', 'country');
-        $this->middleware('breadcrumbs:photos.faq,photos/faq')->only('faq');
-        $this->middleware('breadcrumbs:photos.map,photos/map')->only('map');
-        $this->middleware('breadcrumbs:photos.trips,photos/trips')->only('trip', 'trips');
     }
 
     protected function pointsForMap($tripId)
