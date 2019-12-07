@@ -21,7 +21,8 @@ class Trip extends Resource
 
     public static function indexQuery(NovaRequest $request, $query)
     {
-        return $query->withCount('photos');
+        return $query->withCount('photos')
+            ->where('user_id', 1);
     }
 
     public function actions(Request $request)
