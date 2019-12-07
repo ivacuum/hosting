@@ -28,6 +28,11 @@
       >
         {{ trans('acp.index') }}
       </a>
+      <a
+        class="dropdown-item-tw"
+        href="/nova">
+        Nova
+      </a>
     @endif
     <a class="dropdown-item-tw" href="{{ path([App\Http\Controllers\MyProfile::class, 'edit']) }}">
       {{ trans('my.index') }}
