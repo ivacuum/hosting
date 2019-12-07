@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Nova\Filters;
+<?php namespace App\Nova\Filters;
 
 use App\Torrent;
 use Illuminate\Http\Request;

@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Nova\Actions;
+<?php namespace App\Nova\Actions;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;

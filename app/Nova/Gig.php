@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Nova;
+<?php namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields;

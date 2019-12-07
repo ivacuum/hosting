@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Nova\Metrics;
+<?php namespace App\Nova\Metrics;
 
 use App\Events\Stats\TorrentMagnetClicked;
 use App\Metric;

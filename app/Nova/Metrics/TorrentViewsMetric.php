@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Nova\Metrics;
+<?php namespace App\Nova\Metrics;
 
 use App\Events\Stats\TorrentViewed;
 use App\Metric;
