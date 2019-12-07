@@ -8,5 +8,8 @@
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
-.table td { height: 2.8125rem; }
+.table td {
+  font-weight: 400;
+  height: 2.8125rem;
+}
 </style>
