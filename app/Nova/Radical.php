@@ -5,7 +5,7 @@ use Laravel\Nova\Fields;
 
 class Radical extends Resource
 {
-    public static $group = 'Japanese';
+    public static $group = '🇯🇵 Japanese';
     public static $model = \App\Radical::class;
     public static $title = 'character';
     public static $search = [

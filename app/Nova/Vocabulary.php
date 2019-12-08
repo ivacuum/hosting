@@ -5,7 +5,7 @@ use Laravel\Nova\Fields;
 
 class Vocabulary extends Resource
 {
-    public static $group = 'Japanese';
+    public static $group = '🇯🇵 Japanese';
     public static $model = \App\Vocabulary::class;
     public static $title = 'character';
     public static $search = [

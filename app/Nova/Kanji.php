@@ -5,7 +5,7 @@ use Laravel\Nova\Fields;
 
 class Kanji extends Resource
 {
-    public static $group = 'Japanese';
+    public static $group = '🇯🇵 Japanese';
     public static $model = \App\Kanji::class;
     public static $title = 'character';
     public static $search = [
