@@ -16,7 +16,8 @@ class Torrent extends Resource
     public function actions(Request $request)
     {
         return [
-            app(Actions\UpdateTorrentFromRtoAction::class),
+            app(Actions\TorrentRefreshAction::class)->showOnTableRow(),
+            app(Actions\TorrentReplaceAction::class)->showOnTableRow(),
         ];
     }
 

@@ -2,6 +2,9 @@
 
 use App\Comment;
 use App\Services\Rto;
+use App\Services\RtoTopicData;
+use App\Services\RtoTopicHtmlResponse;
+use App\Services\RtoTorrentData;
 use App\Torrent;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -99,18 +102,12 @@ class TorrentTest extends TestCase
         $rtoId = 1234567890;
 
         $this->mock(Rto::class, function (MockInterface $mock) use ($rtoId) {
-            $mock->shouldReceive('findTopicId')->andReturnNull();
-            $mock->shouldReceive('torrentData')->andReturn([
-                'body' => 'body',
-                'size' => 1,
-                'title' => 'title',
-                'magnet' => 'magnet',
-                'rto_id' => $rtoId,
-                'reg_time' => now()->toDateTimeString(),
-                'announcer' => 'announcer',
-                'info_hash' => 'info_hash',
-                'tor_status' => Torrent::RTO_STATUS_OK,
-            ]);
+            $response = new RtoTopicHtmlResponse('<div class="post_body">body<fieldset class="attach"><span class="attach_link"><a href="magnet:?xt=urn:btih:info_hash&tr=announcer"></a></span></fieldset></fieldset>');
+            $topicData = new RtoTopicData($rtoId, 'title', 'info_hash', now(), RtoTopicData::STATUS_APPROVED, 1, 1, 1, 1, now());
+            $torrentData = new RtoTorrentData($topicData, $response);
+
+            $mock->shouldReceive('findTopicId')->andReturn($rtoId);
+            $mock->shouldReceive('torrentData')->andReturn($torrentData);
         });
 
         $response = $this->be($user)

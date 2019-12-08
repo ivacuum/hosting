@@ -1,8 +1,6 @@
 <?php namespace App\Services;
 
 use App\Http\GuzzleClientFactory;
-use App\Torrent;
-use Symfony\Component\DomCrawler\Crawler;
 
 class Rto
 {
@@ -11,22 +9,21 @@ class Rto
     // Зеркала: rutracker.org, rutracker.cr, xn--e1aaowadjh.org, dostup.website/https://rutracker.org
     const SITE_ENDPOINT = 'https://rutracker.nl/forum/';
 
-    protected $client;
+    private $client;
 
-    public function __construct()
+    public function __construct(GuzzleClientFactory $clientFactory)
     {
-        $this->client = (new GuzzleClientFactory)
-            ->timeout(5)
+        $this->client = $clientFactory->timeout(5)
             ->createForService('rto');
     }
 
-    public function findTopicId($input)
+    public function findTopicId($input): ?int
     {
-        $topicId = 0;
-
         if (is_numeric($input)) {
-            $topicId = (int) $input;
-        } elseif (\Str::startsWith($input, 'http')) {
+            return $input;
+        }
+
+        if (\Str::startsWith($input, 'http')) {
             if (\Str::contains($input, ['://rutracker.org', '://rutracker.cr', '://rutracker.net', '://rutracker.nl', '://maintracker.org'])) {
                 $url = parse_url($input);
 
@@ -40,134 +37,69 @@ class Rto
                     return null;
                 }
 
-                $topicId = (int) $args['t'];
-            }
-        } elseif (strlen($input) === 40) {
-            $topicId = $this->topicIdByHash($input);
-
-            if (null === $topicId) {
-                return null;
+                return $args['t'];
             }
         }
 
-        if (!$topicId) {
-            return null;
+        if (strlen($input) === 40) {
+            return $this->topicIdByHash($input);
         }
 
-        return $topicId;
+        return null;
     }
 
-    public function torrentData($input)
+    public function torrentData($input): ?RtoTorrentData
     {
         if (null === $topicId = $this->findTopicId($input)) {
             return null;
         }
 
-        return $this->parseTopicData($topicId);
+        return new RtoTorrentData(
+            $this->topicDataById($topicId),
+            $this->parseTopicBody($topicId)
+        );
     }
 
-    public function parseAnnouncerLink($link)
+    public function parseTopicBody(int $topicId): RtoTopicHtmlResponse
     {
-        parse_str($link, $args);
+        $response = $this->client->get(self::SITE_ENDPOINT . "viewtopic.php?t={$topicId}");
 
-        return (object) [
-            'title' => $args['dn'] ?? '',
-            'announcer' => $args['tr'] ?? '',
-        ];
+        return new RtoTopicHtmlResponse((string) $response->getBody());
     }
 
-    public function parseBodyHtml($body)
+    public function topicDataById(int $id)
     {
-        $body = preg_replace('/<fieldset class="attach">(.*?)<\/fieldset>/s', '', $body);
+        $response = $this->topicDataByIds([$id])
+            ->getTopic($id);
 
-        $crawler = new Crawler($body);
-
-        return trim($crawler->filter('.post_body')->html());
-    }
-
-    public function parseMagnetLink($body)
-    {
-        $crawler = new Crawler($body);
-
-        if (sizeof($link = $crawler->filter('.attach_link a')) === 0) {
-            return null;
+        if (null === $response) {
+            throw new RtoTopicNotFoundException;
         }
 
-        return $link->attr('href');
-    }
-
-    public function parseTopicBody($topicId)
-    {
-        $response = $this->client->get(static::SITE_ENDPOINT . "viewtopic.php?t={$topicId}");
-
-        $body = (string) $response->getBody();
-        $magnet = $this->parseMagnetLink($body);
-
-        if (null === $magnet) {
-            return 'Магнет-ссылка не найдена в раздаче, попробуйте другую ссылку';
+        if ($response->isDuplicate()) {
+            throw new RtoTopicDuplicateException;
         }
 
-        $link = $this->parseAnnouncerLink($magnet);
-
-        return [
-            'body' => $this->parseBodyHtml($body),
-            'magnet' => $magnet,
-            'announcer' => $link->announcer,
-        ];
+        return $response;
     }
 
-    public function parseTopicData($topicId)
+    public function topicDataByIds(array $ids): RtoGetTorTopicDataResponse
     {
-        $json = $this->topicDataById($topicId);
-
-        if (null === $json) {
-            return 'Раздача не найдена, попробуйте другую ссылку';
-        }
-
-        if ($json->tor_status === Torrent::RTO_STATUS_DUPLICATE) {
-            return 'Раздача закрыта как повторная, попробуйте другую ссылку';
-        }
-
-        if (!is_array($topicBodyData = $this->parseTopicBody($topicId))) {
-            return $topicBodyData;
-        }
-
-        return array_merge([
-            'size' => $json->size,
-            'title' => str_replace(Torrent::TITLE_REPLACE_FROM, Torrent::TITLE_REPLACE_TO, $json->topic_title),
-            'rto_id' => $topicId,
-            'reg_time' => $json->reg_time,
-            'info_hash' => $json->info_hash,
-            'tor_status' => $json->tor_status,
-        ], $topicBodyData);
-    }
-
-    public function topicDataById($id)
-    {
-        return $this->topicDataByIds($id)->{$id};
-    }
-
-    public function topicDataByIds($ids)
-    {
-        $params = [
+        $response = $this->client->get(self::API_ENDPOINT . 'get_tor_topic_data', ['query' => [
             'by' => 'topic_id',
-            'val' => $ids,
-        ];
+            'val' => implode(',', $ids),
+        ]]);
 
-        $response = $this->client->get(static::API_ENDPOINT . 'get_tor_topic_data', ['query' => $params]);
-
-        return json_decode($response->getBody())->result;
+        return new RtoGetTorTopicDataResponse($response);
     }
 
-    public function topicIdByHash($hash)
+    public function topicIdByHash(string $hash): ?int
     {
-        $params = [
+        $response = $this->client->get(self::API_ENDPOINT . 'get_topic_id', ['query' => [
             'by' => 'hash',
             'val' => $hash,
-        ];
+        ]]);
 
-        $response = $this->client->get(static::API_ENDPOINT . 'get_topic_id', ['query' => $params]);
-
-        return json_decode($response->getBody())->result->{$hash};
+        return json_decode((string) $response->getBody())->result->{$hash};
     }
 }

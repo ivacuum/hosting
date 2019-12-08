@@ -44,19 +44,6 @@ class Torrent extends Model
     const STATUS_PUBLISHED = 1;
     const STATUS_DELETED = 2;
 
-    const RTO_STATUS_0 = 1; // не проверено
-    const RTO_STATUS_1 = 1; // закрыто
-    const RTO_STATUS_OK = 2; // проверено
-    const RTO_STATUS_3 = 3; // недооформлено
-    const RTO_STATUS_4 = 4; // не оформлено
-    const RTO_STATUS_DUPLICATE = 5; // повтор
-    const RTO_STATUS_6 = 6; // закрыто правообладателем
-    const RTO_STATUS_7 = 7; // поглощено
-    const RTO_STATUS_8 = 8; // сомнительно
-    const RTO_STATUS_9 = 9; // проверяется
-    const RTO_STATUS_10 = 10; // временная
-    const RTO_STATUS_PREMODERATION = 11; // премодерация
-
     const LIST_COLUMNS = [
         'id',
         'category_id',
@@ -69,9 +56,6 @@ class Torrent extends Model
         'views',
         'registered_at',
     ];
-
-    const TITLE_REPLACE_FROM = [' )', ' ,', 'HD (1080p)'];
-    const TITLE_REPLACE_TO = [')', ',', 'HD 1080p'];
 
     protected $casts = [
         'size' => 'int',
@@ -143,9 +127,24 @@ class Torrent extends Model
         event(new \App\Events\Stats\TorrentMagnetClicked);
     }
 
+    public function isNotPublished(): bool
+    {
+        return !$this->isPublished();
+    }
+
+    public function isPublished(): bool
+    {
+        return $this->status === self::STATUS_PUBLISHED;
+    }
+
     public function magnet(): string
     {
         return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode(\Str::limit($this->title, 100, ''));
+    }
+
+    public function novaLink(): string
+    {
+        return url(config('nova.path') . "/resources/torrents/{$this->id}");
     }
 
     public function relatedIds(): array

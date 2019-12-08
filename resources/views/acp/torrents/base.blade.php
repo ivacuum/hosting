@@ -7,7 +7,4 @@
     <div class="text-xs text-muted">{{ $model->user->email }}</div>
   @endif
 @endcomponent
-@component('tpl.list-group-item', ['href' => path([$controller, 'updateRto'], $model)])
-  {{ trans("$tpl.update_rto") }}
-@endcomponent
 @endsection

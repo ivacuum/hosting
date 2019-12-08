@@ -94,7 +94,6 @@ Route::post('servers/{id}/ftp/upload', [Acp\Servers\Ftp::class, 'uploadPost']);
 RouteHelper::crud(Acp\Tags::class);
 
 RouteHelper::withoutCreate(Acp\Torrents::class);
-Route::get('torrents/{id}/updateRto', [Acp\Torrents::class, 'updateRto']);
 
 RouteHelper::crud(Acp\Trips::class);
 Route::post('trips/{id}/notify', Acp\TripPublishedNotify::class);

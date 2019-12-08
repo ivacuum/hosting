@@ -7,67 +7,62 @@ use App\Torrent;
 use App\User;
 use Illuminate\Support\Collection;
 use Ivacuum\Generic\Commands\Command;
+use Ivacuum\Generic\Services\Telegram;
 
 class RtoUpdate extends Command
 {
     protected $signature = 'app:rto-update';
     protected $description = 'Update torrent releases info from rto';
 
-    public function handle(Rto $rto)
+    public function handle(Rto $rto, Telegram $telegram)
     {
-        Torrent::published()->orderBy('id', 'desc')->chunk(100, function (Collection $torrents) use ($rto) {
-            $ids = implode(',', $torrents->pluck('rto_id')->all());
+        Torrent::published()->orderByDesc('id')->chunk(100, function (Collection $torrents) use ($rto, $telegram) {
+            $ids = $torrents->pluck('rto_id')->all();
 
-            foreach ($rto->topicDataByIds($ids) as $id => $json) {
+            foreach ($rto->topicDataByIds($ids)->getTopics() as $id => $response) {
                 /** @var Torrent $torrent */
                 $torrent = $torrents->where('rto_id', $id)->first();
 
                 // Раздача не найдена
-                if (null === $json) {
+                if (null === $response) {
                     $torrent->softDelete();
 
                     $this->info("Раздача {$id} не найдена и удалена: {$torrent->title}");
 
                     event(new \App\Events\Stats\TorrentNotFoundDeleted);
 
-                    $user = $torrent->user_id !== 1 ? User::find(1) : $torrent->user;
-                    $user->notify(new TorrentNotFoundDeletedNotification($torrent));
+                    $telegram->notifyAdmin("🧲️ Раздача не найдена и удалена\n\n{$torrent->title}\n{$torrent->externalLink()}\n\n{$torrent->novaLink()}");
 
                     continue;
                 }
 
                 // Раздача закрыта как повтор
-                if ($json->tor_status == Torrent::RTO_STATUS_DUPLICATE) {
+                if ($response->isDuplicate()) {
                     $torrent->softDelete();
 
                     $this->info("Раздача {$id} закрыта как повторная и удалена");
 
                     event(new \App\Events\Stats\TorrentDuplicateDeleted);
 
-                    $user = $torrent->user_id !== 1 ? User::find(1) : $torrent->user;
-                    $user->notify(new TorrentNotFoundDeletedNotification($torrent));
+                    $telegram->notifyAdmin("🧲️ Раздача закрыта как повторная и удалена\n\n{$torrent->title}\n{$torrent->externalLink()}\n\n{$torrent->novaLink()}");
 
                     continue;
                 }
 
                 // Ждем завершения модерации
-                if ($json->tor_status == Torrent::RTO_STATUS_PREMODERATION) {
+                if ($response->isPremoderation()) {
                     continue;
                 }
 
-                $torrent->title = str_replace(Torrent::TITLE_REPLACE_FROM, Torrent::TITLE_REPLACE_TO, $json->topic_title);
+                $torrent->size = $response->getSize();
+                $torrent->title = $response->getTitle();
 
-                if ($json->info_hash !== $torrent->info_hash) {
-                    $torrent->size = $json->size;
-                    $torrent->info_hash = $json->info_hash;
+                if ($response->getInfoHash() !== $torrent->info_hash) {
+                    $topicData = $rto->parseTopicBody($id);
+
+                    $torrent->html = $topicData->getBody();
+                    $torrent->announcer = $topicData->getAnnouncer();
                     $torrent->registered_at = now();
-
-                    if (!is_array($topicData = $rto->parseTopicBody($id))) {
-                        throw new \Exception("Проблема обновления раздачи {$id} [parseTopicBody]");
-                    }
-
-                    $torrent->html = $topicData['body'];
-                    $torrent->announcer = $topicData['announcer'];
 
                     // Раздача обновлена
                     $this->info("Раздача {$id} обновлена");
@@ -79,6 +74,7 @@ class RtoUpdate extends Command
                     sleep(1);
                 }
 
+                $torrent->info_hash = $response->getInfoHash();
                 $torrent->save();
             }
         });

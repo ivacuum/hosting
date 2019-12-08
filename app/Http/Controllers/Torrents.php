@@ -5,6 +5,9 @@ use App\Http\Resources\TorrentCollection;
 use App\Rules\TorrentCategoryId;
 use App\SearchSynonym;
 use App\Services\Rto;
+use App\Services\RtoMagnetNotFoundException;
+use App\Services\RtoTopicDuplicateException;
+use App\Services\RtoTopicNotFoundException;
 use App\Torrent;
 use Foolz\SphinxQL\SphinxQL;
 use Illuminate\Database\Eloquent\Builder;
@@ -151,22 +154,34 @@ class Torrents extends Controller
             }
         }
 
-        if (!is_array($data = $rto->torrentData($input))) {
+        try {
+            $data = $rto->torrentData($input);
+        } catch (\Throwable $e) {
+            $message = 'Ввод не распознан, попробуйте другую ссылку или хэш';
+
+            if ($e instanceof RtoMagnetNotFoundException) {
+                $message = 'Магнет-ссылка не найдена в раздаче, попробуйте другую ссылку';
+            } elseif ($e instanceof RtoTopicDuplicateException) {
+                $message = 'Раздача закрыта как повторная, попробуйте другую ссылку';
+            } elseif ($e instanceof RtoTopicNotFoundException) {
+                $message = 'Раздача не найдена, попробуйте другую ссылку';
+            }
+
             return back()
                 ->withInput()
-                ->withErrors(['input' => $data ?: 'Ввод не распознан, попробуйте другую ссылку или хэш']);
+                ->withErrors(['input' => $message]);
         }
 
         $torrent = new Torrent;
-        $torrent->html = $data['body'];
-        $torrent->size = $data['size'];
-        $torrent->title = $data['title'];
+        $torrent->html = $data->getBody();
+        $torrent->size = $data->getSize();
+        $torrent->title = $data->getTitle();
         $torrent->clicks = 0;
-        $torrent->rto_id = $data['rto_id'];
+        $torrent->rto_id = $data->getId();
         $torrent->status = Torrent::STATUS_PUBLISHED;
         $torrent->user_id = request()->user()->id;
-        $torrent->info_hash = $data['info_hash'];
-        $torrent->announcer = $data['announcer'];
+        $torrent->info_hash = $data->getInfoHash();
+        $torrent->announcer = $data->getAnnouncer();
         $torrent->category_id = $categoryId;
         $torrent->registered_at = now();
         $torrent->related_query = '';

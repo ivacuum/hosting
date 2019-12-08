@@ -42,31 +42,6 @@ class Torrents extends Controller
         ]);
     }
 
-    public function updateRto($id, Rto $rto)
-    {
-        /** @var Model $model */
-        $model = $this->getModel($id);
-
-        if (!is_array($data = $rto->torrentData($model->rto_id))) {
-            return back()->with('message', 'Не удалось обновить информацию о раздаче');
-        }
-
-        $regTime = Carbon::createFromTimestamp($data['reg_time']);
-        $registeredAt = $regTime->gt($model->registered_at) ? now() : $model->registered_at;
-
-        $model->update([
-            'html' => $data['body'],
-            'size' => $data['size'],
-            'title' => $data['title'],
-            'info_hash' => $data['info_hash'],
-            'announcer' => $data['announcer'],
-            'registered_at' => $registeredAt,
-        ]);
-
-        return redirect(path([self::class, 'show'], $model))
-            ->with('message', 'Раздача обновлена');
-    }
-
     /**
      * @param  Model|null $model
      * @return array
