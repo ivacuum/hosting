@@ -1,8 +1,10 @@
 <?php namespace App\Nova;
 
+use App\Rules\TorrentCategoryId;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields;
 
+/** @mixin \App\Torrent */
 class Torrent extends Resource
 {
     public static $group = 'Resources';
@@ -31,12 +33,18 @@ class Torrent extends Resource
 
     public function fields(Request $request)
     {
+        $rtoIdRules = [
+            'required',
+            'unique:torrents,rto_id,{{resourceId}}',
+        ];
+
         return [
             Fields\ID::make()->sortable(),
             Fields\BelongsTo::make('User')->hideFromIndex(),
-            Fields\Number::make('RTO ID')->hideFromIndex(),
-            Fields\Text::make('Title', function (\App\Torrent $torrent) {
-                return $torrent->shortTitle();
+            Fields\Number::make('RTO ID')->rules($rtoIdRules)->hideFromIndex(),
+            Fields\Select::make('Category', 'category_id')->options(\TorrentCategoryHelper::novaList())->rules(TorrentCategoryId::rules())->displayUsingLabels()->hideFromIndex(),
+            Fields\Text::make('Title', function () {
+                return $this->shortTitle();
             })->rules('max:255')->asHtml(),
             Fields\Select::make('Status')->options([
                 \App\Torrent::STATUS_HIDDEN => 'Hidden',
@@ -44,11 +52,18 @@ class Torrent extends Resource
                 \App\Torrent::STATUS_DELETED => 'Deleted',
             ])->displayUsingLabels(),
             Fields\Text::make('Related Query')->hideFromIndex(),
-            Fields\Number::make('Clicks')->sortable()->exceptOnForms(),
-            Fields\Number::make('Views')->sortable()->exceptOnForms(),
+            Fields\Number::make('Clicks')->displayUsing(function () {
+                return $this->clicks ?: '';
+            })->sortable()->exceptOnForms(),
+            Fields\Number::make('Views')->displayUsing(function () {
+                return $this->views ?: '';
+            })->sortable()->exceptOnForms(),
             Fields\DateTime::make('Created At')->onlyOnDetail(),
             Fields\DateTime::make('Registered At')->onlyOnDetail(),
             Fields\DateTime::make('Updated At')->onlyOnDetail(),
+            Fields\Text::make('External Link', function () {
+                return '<a class="no-underline dim text-primary" href="' . $this->externalLink() . '" rel="noreferrer">' . $this->externalLink() . '</a>';
+            })->onlyOnDetail()->asHtml(),
 
             Fields\MorphMany::make('Comments'),
         ];

@@ -173,6 +173,21 @@ class TorrentCategoryHelper
             });
     }
 
+    public function novaList()
+    {
+        return collect($this->categories)
+            ->reject(function ($item, $key) {
+                return !self::canPost($key);
+            })->mapWithKeys(function ($item, $key) {
+                return [
+                    $key => [
+                        'label' => $item['title'],
+                        'group' => $item['parent'],
+                    ],
+                ];
+            });
+    }
+
     public function selfAndDescendantsIds($id)
     {
         $children = $this->children($id);
