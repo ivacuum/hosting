@@ -3,7 +3,15 @@
 ?>
 
 @if ($trip->isHidden())
-  @svg (eye-slash)
+  <span title="Заметка скрыта">
+    @svg (eye-slash)
+  </span>
 @elseif ($trip->isInactive())
-  @svg (pencil)
+  <span title="Заметка пишется">
+    @svg (pencil)
+  </span>
+@elseif (!$trip->meta_image)
+  <span title="Недостает обложки">
+    @svg (picture-o)
+  </span>
 @endif
