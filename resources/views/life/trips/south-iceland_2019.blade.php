@@ -2,410 +2,448 @@
 
 @section('content')
 @ru
-  <p>Каждый автобусный тур начинается с забора участников из отелей по всему Рейкьявику. В моем случае — с пешего пути до ближайшего отеля. Около часа ночи лег спать после прилета и заселения, а в семь утра уже в тур до половины десятого вечера.</p>
+  <p>Каждый автобусный тур начинается с забора участников из отелей по всему Рейкьявику. В моем случае — с пешего пути до ближайшего отеля. Поздний прилет и заселение позволили лечь спать лишь около часа ночи, а в семь утра уже отправление в тур до половины десятого вечера.</p>
 @endru
-IMG_3101.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3101.jpg'])
 
 @ru
   <p>Подобные маленькие автобусы осуществляют трансфер до главного места встречи, где уже поджидает основной автобус. Большим турам большой автобус, приватным турам — маленький вроде этого. В больших автобусах отдельный гид, в маленьких рассказ ведет водитель с гарнитурой.</p>
 @endru
-IMG_3102.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3102.jpg'])
 
 @ru
   <p>Когда пейзажи за окном меняются каждые пять минут, то снимать хочется постоянно.</p>
 @endru
-IMG_3104.jpeg
-IMG_3108.jpeg
-IMG_3113.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3104.jpg',
+  'IMG_3108.jpg',
+  'IMG_3113.jpg',
+]])
 
 @ru
   <p>Автобусы 99% времени ходят по шоссе. Полоса чаще всего одна в каждую сторону. Максимальная скорость ограничена 90 км/ч для любого транспорта.</p>
 @endru
-IMG_3116.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3116.jpg'])
 
 @ru
   <p>Путь продолжается.</p>
 @endru
-IMG_3117.jpeg
-IMG_3130.jpeg
-IMG_3135.jpeg
-IMG_3138.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3117.jpg',
+  'IMG_3130.jpg',
+  'IMG_3135.jpg',
+  'IMG_3138.jpg',
+]])
 
 @ru
   <p>Лошадки.</p>
 @en
   <p>Horses.</p>
 @endru
-IMG_3139.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3139.jpg'])
 
 @ru
   <p>Первая остановка на легкий завтрак.</p>
 @endru
-IMG_3140.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3140.jpg'])
 
 @ru
-  <p>Сегодня тур на большом автобусе. Повезло перед покупкой туров найти промокод, который сбил чуть ли не треть цены. В итоге все туры взял у одной компании. Что забавно — промокод действовал до начала лета (20 июня). При этом уже три недели держалась рекордная хорошая и солнечная погода, что легко заметить по синему небу на снимках.</p>
+  <p>Сегодня тур на большом автобусе. Повезло перед покупкой туров найти промокод, который сбил чуть ли не треть цены. В итоге все туры оказалось выгоднее взять у одной компании. Что забавно — промокод действовал до начала лета (20 июня). При этом уже три недели держалась рекордная хорошая и солнечная погода, что легко заметить по синему небу на снимках.</p>
 @endru
-IMG_3141.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3141.jpg'])
 
 @ru
   <p>Пока попутчики заправляются, есть возможность осмотреться.</p>
 @endru
-IMG_3143.jpeg
-IMG_3144.jpeg
-IMG_3147.jpeg
-IMG_3148.jpeg
-IMG_3149.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3143.jpg',
+  'IMG_3144.jpg',
+  'IMG_3147.jpg',
+  'IMG_3148.jpg',
+  'IMG_3149.jpg',
+]])
 
 @ru
-  <p>Уже виден вулкан Эйяфьядлайёкюдль.</p>
+  <p>Уже виден вулкан Эйяфьядлайёкюдль. Гиды научили с легкостью выговаривать его название, поскольку оно состоит из трех отдельных слов: эйя (остров), фьядла (гора) и йёкюдль (ледник).</p>
 @endru
-IMG_3146.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3146.jpg'])
 
 @ru
-  <p>Следующий рывок до водопада. Новый пейзажи.</p>
+  <p>Следующий рывок до водопада. Новый пейзажи за окном. Всю дорогу в автобусе бесплатный вай-фай.</p>
 @endru
-IMG_3154.jpeg
-IMG_3162.jpeg
-IMG_3169.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3154.jpg',
+  'IMG_3162.jpg',
+  'IMG_3169.jpg',
+]])
 
 @ru
   <p>Имеет значение с какой стороны автобуса занять место. Нет гарантии, что на обратном пути солнце не будет светить прямо в глаз.</p>
 @endru
-IMG_3168.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3168.jpg'])
 
 @ru
   <p>Остановка у водопада. В среднем остановки минут на 45.</p>
 @endru
-IMG_3173.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3173.jpg'])
 
 @ru
   <p>Палатка — самый доступный способ жилья в Исландии.</p>
 @endru
-IMG_3170.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3170.jpg'])
 
 @ru
   <p>Рядом и поесть за столом можно.</p>
 @endru
-IMG_3172.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3172.jpg'])
 
 @ru
   <p>Дронам здесь не рады.</p>
 @endru
-IMG_3176.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3176.jpg'])
 
 @ru
   <p>Водопад и окрестности.</p>
 @endru
-IMG_3178.jpeg
-IMG_3181.jpeg
-IMG_3182.jpeg
-IMG_3186.jpeg
-IMG_3187.jpeg
-IMG_3189.jpeg
-IMG_3191.jpeg
-IMG_3192.jpeg
-IMG_3195.jpeg
-IMG_3196.jpeg
-IMG_3199.jpeg
-IMG_3202.jpeg
-IMG_3205.jpeg
-IMG_3207.jpeg
-IMG_3211.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3178.jpg',
+  'IMG_3181.jpg',
+  'IMG_3182.jpg',
+  'IMG_3186.jpg',
+  'IMG_3187.jpg',
+  'IMG_3189.jpg',
+  'IMG_3191.jpg',
+  'IMG_3192.jpg',
+  'IMG_3195.jpg',
+  'IMG_3196.jpg',
+  'IMG_3199.jpg',
+  'IMG_3202.jpg',
+  'IMG_3205.jpg',
+  'IMG_3207.jpg',
+  'IMG_3211.jpg',
+]])
 
 @ru
   <p>Повсеместно встречающиеся заросли люпина. Он активно захватывает территорию острова и меняет пустынные пейзажи на фиолетовые.</p>
 @endru
-IMG_3212.jpeg
-IMG_3220.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3212.jpg',
+  'IMG_3220.jpg',
+]])
 
 @ru
   <p>На прокатном автомобиле постоянно соблазн остановиться возле дороги для фотографий.</p>
 @endru
-IMG_3222.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3222.jpg'])
 
 @ru
   <p>Пейзажи до следующей остановки.</p>
 @endru
-IMG_3224.jpeg
-IMG_3235.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3224.jpg',
+  'IMG_3235.jpg',
+]])
 
 @ru
   <p>Короткая остановка осмотреться.</p>
 @endru
-IMG_3244.jpeg
-IMG_3245.jpeg
-IMG_3247.jpeg
-IMG_3258.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3244.jpg',
+  'IMG_3245.jpg',
+  'IMG_3247.jpg',
+  'IMG_3258.jpg',
+]])
 
 @ru
   <p>На неполноприводных автомобилях по бездорожью ни-ни.</p>
 @endru
-IMG_3249.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3249.jpg'])
 
 @ru
   <p>Стенд о важности наличия дороги через всю страну, об опасениях разрыва кольцевой дороги природными катаклизмами, что придется крюк в обратную сторону делать, и о сложностях строительства моста через реку.</p>
 @endru
-IMG_3250.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3250.jpg'])
 
 @ru
   <p>Стенд про извержение и потоп 1996 года.</p>
 @endru
-IMG_3262.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3262.jpg'])
 
 @ru
   <p>Как потоп смыл мост.</p>
 @endru
-IMG_3254.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3254.jpg'])
 
 @ru
   <p>Реконструкция моста.</p>
 @endru
-IMG_3252.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3252.jpg'])
 
 @ru
-  <p>Частота извержений и потопов. Давненько новых не было. Можно новое ожидать.</p>
+  <p>Частота извержений и потопов. Давненько новых не было — можно в любой момент ожидать.</p>
 @endru
-IMG_3261.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3261.jpg'])
 
 @ru
   <p>Название экскурсии.</p>
 @endru
-IMG_3266.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3266.jpg'])
 
 @ru
   <p>Перерыв на обед.</p>
 @endru
-IMG_3267.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3267.jpg'])
 
 @ru
   <p>Йогурт продается сразу с ложкой.</p>
 @endru
-IMG_3271.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3271.jpg'])
 
 @ru
-  <p>Заправка. Самостоятельная оплата картой.</p>
+  <p>Самостоятельная заправка. Самостоятельная оплата картой.</p>
 @endru
-IMG_3272.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3272.jpg'])
 
 @ru
   <p>Дороги.</p>
 @en
   <p>Roads.</p>
 @endru
-IMG_3274.jpeg
-IMG_3277.jpeg
-IMG_3278.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3274.jpg',
+  'IMG_3277.jpg',
+  'IMG_3278.jpg',
+]])
 
 @ru
   <p>Снова люпин.</p>
 @endru
-IMG_3280.jpeg
-IMG_3282.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3280.jpg',
+  'IMG_3282.jpg',
+]])
 
 @ru
   <p>Горы и ледники снаружи.</p>
 @endru
-IMG_3283.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3283.jpg'])
 
 @ru
   <p>Горы и ледники из автобуса.</p>
 @endru
-IMG_3284.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3284.jpg'])
 
 @ru
   <p>Пейзажи на пути к лагуне.</p>
 @endru
-IMG_3290.jpeg
-IMG_3291.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3290.jpg',
+  'IMG_3291.jpg',
+]])
 
 @ru
-  <p>Возможность заправиться электричеством.</p>
+  <p>Возможность зарядиться электричеством.</p>
 @endru
-IMG_3294.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3294.jpg'])
 
 @ru
-  <p>Дронам и тут не рады.</p>
+  <p>Дронам и здесь не рады.</p>
 @endru
-IMG_3298.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3298.jpg'])
 
 @ru
   <p>Ледяная лагуна. Льдины уплывают и таят.</p>
 @endru
 <youtube title="Glacier Lagoon Jökulsárlón, Iceland, June 2019" v="RPvey547YhY"></youtube>
-IMG_3300.jpeg
-IMG_3301.jpeg
-IMG_3302.jpeg
-IMG_3303.jpeg
-IMG_3309.jpeg
-IMG_3310.jpeg
-IMG_3312.jpeg
-IMG_3313.jpeg
-IMG_3314.jpeg
-IMG_3319.jpeg
-IMG_3320.jpeg
-IMG_3323.jpeg
-IMG_3324.jpeg
-IMG_3325.jpeg
-IMG_3326.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3300.jpg',
+  'IMG_3301.jpg',
+  'IMG_3302.jpg',
+  'IMG_3303.jpg',
+  'IMG_3309.jpg',
+  'IMG_3310.jpg',
+  'IMG_3312.jpg',
+  'IMG_3313.jpg',
+  'IMG_3314.jpg',
+  'IMG_3319.jpg',
+  'IMG_3320.jpg',
+  'IMG_3323.jpg',
+  'IMG_3324.jpg',
+  'IMG_3325.jpg',
+  'IMG_3326.jpg',
+]])
 
 @ru
   <p>Уточки.</p>
 @en
   <p>Ducks.</p>
 @endru
-IMG_3305.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3305.jpg'])
 
 @ru
   <p>Спасательный круг.</p>
 @endru
-IMG_3308.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3308.jpg'])
 
 @ru
   <p>На машине не переезжать.</p>
 @endru
-IMG_3328.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3328.jpg'])
 
 @ru
   <p>Возможность прокатиться по лагуне на лодках.</p>
 @endru
-IMG_3329.jpeg
-IMG_3331.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3329.jpg',
+  'IMG_3331.jpg',
+]])
 
 @ru
   <p>Погода весьма переменчива, но с голубым небом выходят фантастические краски.</p>
 @endru
-IMG_3332.jpeg
-IMG_3334.jpeg
-IMG_3335.jpeg
-IMG_3336.jpeg
-IMG_3337.jpeg
-IMG_3338.jpeg
-IMG_3339.jpeg
-IMG_3341.jpeg
-IMG_3342.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3332.jpg',
+  'IMG_3334.jpg',
+  'IMG_3335.jpg',
+  'IMG_3336.jpg',
+  'IMG_3337.jpg',
+  'IMG_3338.jpg',
+  'IMG_3339.jpg',
+  'IMG_3341.jpg',
+  'IMG_3342.jpg',
+]])
 
 @ru
   <p>Стоит обернуться, как тут пустыня.</p>
 @endru
-IMG_3343.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3343.jpg'])
 
 @ru
   <p>Автомобиль и колеса самое то для местного бездорожья.</p>
 @endru
-IMG_3344.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3344.jpg'])
 
 @ru
   <p>Вулканический песок.</p>
 @endru
-IMG_3346.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3346.jpg'])
 
 @ru
   <p>Подножье ледника.</p>
 @endru
-IMG_3350.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3350.jpg'])
 
 @ru
-  <p>Лагуна была самой дальней точкой тура на юге Исландии. Теперь путь назад с заездом на водопад. Суммарно в этот день было проехано около 700 км.</p>
+  <p>Лагуна была самой дальней точкой тура на юге Исландии. Теперь путь назад с заездом на водопад. Суммарно в этот день автобус преодолел около 700 км.</p>
 @endru
-IMG_3354.jpeg
-IMG_3364.jpeg
-IMG_3370.jpeg
-IMG_3371.jpeg
-IMG_3376.jpeg
-IMG_3384.jpeg
-IMG_3388.jpeg
-IMG_3395.jpeg
-IMG_3396.jpeg
-IMG_3399.jpeg
-IMG_3412.jpeg
-IMG_3419.jpeg
-IMG_3421.jpeg
-IMG_3424.jpeg
-IMG_3431.jpeg
-IMG_3432.jpeg
-IMG_3447.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3354.jpg',
+  'IMG_3364.jpg',
+  'IMG_3370.jpg',
+  'IMG_3371.jpg',
+  'IMG_3376.jpg',
+  'IMG_3384.jpg',
+  'IMG_3388.jpg',
+  'IMG_3395.jpg',
+  'IMG_3396.jpg',
+  'IMG_3399.jpg',
+  'IMG_3412.jpg',
+  'IMG_3419.jpg',
+  'IMG_3421.jpg',
+  'IMG_3424.jpg',
+  'IMG_3431.jpg',
+  'IMG_3432.jpg',
+  'IMG_3447.jpg',
+]])
 
 @ru
-  <p>Удивительно, но соевое молоко марки альпро вдвое дешевле, чем в России.</p>
+  <p>Удивительно, но соевое молоко марки альпро вдвое дешевле, чем в России. Цены пополам для российских.</p>
 @endru
-IMG_3449.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3449.jpg'])
 
 @ru
   <p>Гигантские красные яблоки.</p>
 @endru
-IMG_3451.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3451.jpg'])
 
 @ru
   <p>Для сравнения справа яблоки типичного размера.</p>
 @endru
-IMG_3453.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3453.jpg'])
 
 @ru
   <p>Остановка на ужин в городе Вик.</p>
 @endru
-IMG_3460.jpeg
-IMG_3455.jpeg
-IMG_3457.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3460.jpg',
+  'IMG_3455.jpg',
+  'IMG_3457.jpg',
+]])
 
 @ru
   <p>Заправка.</p>
 @en
   <p>Gas station.</p>
 @endru
-IMG_3461.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3461.jpg'])
 
 @ru
   <p>Умывальники на улице.</p>
 @endru
-IMG_3463.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3463.jpg'])
 
 @ru
   <p>Проход на пляж.</p>
 @endru
-IMG_3465.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3465.jpg'])
 
 @ru
   <p>Небольшой рывок до водопада.</p>
 @endru
-IMG_3467.jpeg
-IMG_3468.jpeg
-IMG_3473.jpeg
-IMG_3474.jpeg
-IMG_3477.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3467.jpg',
+  'IMG_3468.jpg',
+  'IMG_3473.jpg',
+  'IMG_3474.jpg',
+  'IMG_3477.jpg',
+]])
 
 @ru
   <p>Прошаренные люди уже вооружились дождевиками, чтобы сходить за водопад.</p>
 @endru
-IMG_3479.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3479.jpg'])
 
 @ru
   <p>Осмотримся.</p>
 @endru
-IMG_3482.jpeg
-IMG_3483.jpeg
-IMG_3485.jpeg
-IMG_3488.jpeg
-IMG_3491.jpeg
-IMG_3492.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3482.jpg',
+  'IMG_3483.jpg',
+  'IMG_3485.jpg',
+  'IMG_3488.jpg',
+  'IMG_3491.jpg',
+  'IMG_3492.jpg',
+]])
 
 @ru
   <p>Подойдем поближе.</p>
 @endru
-IMG_3494.jpeg
-IMG_3498.jpeg
-IMG_3497.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3494.jpg',
+  'IMG_3498.jpg',
+  'IMG_3497.jpg',
+]])
 
 @ru
   <p>Отчетливо видны зашедшие за водопад люди в разноцветных дождевиках.</p>
 @endru
 <youtube title="Seljalandsfoss Waterfall, Iceland, June 2019" v="-L0mlFzaNdE"></youtube>
-IMG_3496.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3496.jpg'])
 
 @ru
   <p>Вечер, Рейкьявик. Тур с длинными переездами хорош тем, что в дороге полно отрезков, чтобы поспать. Конечно, пропускаются пейзажи, но их тут все все равно не объять.</p>
 @endru
-IMG_3502.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3502.jpg'])
 
 @ru
   <p>Уже после первого дня количество увиденного подталкивало к мысли, что даже одним днем можно в Исландию прилетать. Эдакий бюджетный вариант взглянуть на страну.</p>
