@@ -56,8 +56,6 @@ class Trip extends Resource
             })->rules('max:255')->asHtml(),
             Fields\DateTime::make('Date Start')->onlyOnForms(),
             Fields\DateTime::make('Date End')->onlyOnForms(),
-            Fields\Text::make('Meta Title RU')->rules('max:255')->hideFromIndex(),
-            Fields\Text::make('Meta Title EN')->rules('max:255')->hideFromIndex(),
             Fields\Text::make('Meta Description RU')->rules('max:255')->hideFromIndex(),
             Fields\Text::make('Meta Description EN')->rules('max:255')->hideFromIndex(),
             Fields\Text::make('Meta Image')->rules('max:255')->hideFromIndex(),
