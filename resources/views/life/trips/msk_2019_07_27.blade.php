@@ -6,7 +6,7 @@
 @en
   <p>Metro.</p>
 @endru
-IMG_0014.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0014.jpg'])
 
 @ru
   <p>Проба в деле камеры нового телефона. Снимать хочется все, чтобы понять на что она способа. Фотографии зачастую получаются настолько яркие, что разумно их затемнять.</p>
@@ -17,215 +17,223 @@ IMG_0014.jpeg
 @en
   <p>Streets.</p>
 @endru
-IMG_0015.jpeg
-IMG_0016.jpeg
-IMG_0018.jpeg
-IMG_0035.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_0015.jpg',
+  'IMG_0016.jpg',
+  'IMG_0018.jpg',
+  'IMG_0035.jpg',
+]])
 
 @ru
   <p>Отлично выбрал день приезда в день митингов. Тверская временно перекрыта.</p>
 @endru
-IMG_0020.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0020.jpg'])
 
 @ru
   <p>Фонтан.</p>
 @endru
-IMG_0023.jpeg
-IMG_0024.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_0023.jpg',
+  'IMG_0024.jpg',
+]])
 
 @ru
   <p>Купол.</p>
 @endru
-IMG_0029.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0029.jpg'])
 
 @ru
   <p>Длинная скамейка.</p>
 @endru
-IMG_0031.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0031.jpg'])
 
 @ru
   <p>Летняя веранда.</p>
 @endru
-IMG_0032.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0032.jpg'])
 
 @ru
   <p>Между первым и вторым этажем козырек, защищающий от всего падающего.</p>
 @endru
-IMG_0033.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0033.jpg'])
 
 @ru
   <p>Переулок.</p>
 @endru
-IMG_0034.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0034.jpg'])
 
 @ru
   <p>Клумба с цветами.</p>
 @endru
-IMG_0037.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0037.jpg'])
 
 @ru
   <p>Вход на станцию метро Смоленская.</p>
 @endru
-IMG_0039.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0039.jpg'])
 
 @ru
   <p>Таблички ночных маршрутов общественного транспорта в метро.</p>
 @endru
-IMG_0040.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0040.jpg'])
 
 @ru
   <p>Даже слабоосвещенные места теперь поддаются захвату.</p>
 @endru
-IMG_0042.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0042.jpg'])
 
 @ru
   <p>Раньше бы такой кадр не удался.</p>
 @endru
-IMG_0043.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0043.jpg'])
 
 @ru
   <p>А в таких потемках даже не стал бы пробовать снимать. Но сегодня успех. Хм, стоит посетить все увиденные города, чтобы поснимать их в темное время суток?</p>
 @endru
-IMG_0044.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0044.jpg'])
 
 @ru
   <p>Цветы.</p>
 @endru
-IMG_0045.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0045.jpg'])
 
 @ru
   <p>Арка.</p>
 @endru
-IMG_0048.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0048.jpg'])
 
 @ru
   <p>Фонтаны.</p>
 @endru
-IMG_0049.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0049.jpg'])
 
 @ru
   <p>Далекий обелиск.</p>
 @endru
-IMG_0051.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0051.jpg'])
 
 @ru
   <p>Близкий обелиск.</p>
 @endru
-IMG_0052.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0052.jpg'])
 
 @ru
   <p>Сочно освещенное место на фоне мрачных туч.</p>
 @endru
-IMG_0054.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0054.jpg'])
 
 @ru
   <p>Закат на набережной за пробой городского велопроката.</p>
 @endru
-IMG_0056.jpeg
-IMG_0057.jpeg
-IMG_0060.jpeg
-IMG_0063.jpeg
-IMG_0064.jpeg
-IMG_0067.jpeg
-IMG_0069.jpeg
-IMG_0070.jpeg
-IMG_0072.jpeg
-IMG_0073.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_0056.jpg',
+  'IMG_0057.jpg',
+  'IMG_0060.jpg',
+  'IMG_0063.jpg',
+  'IMG_0064.jpg',
+  'IMG_0067.jpg',
+  'IMG_0069.jpg',
+  'IMG_0070.jpg',
+  'IMG_0072.jpg',
+  'IMG_0073.jpg',
+]])
 
 @ru
   <p>Как надежнее всего увидеться с занятыми людьми в столице? Во время обеда. Еще и отличная возможность бизнес-центры в разных частых города посмотреть.</p>
 @endru
-IMG_0077.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0077.jpg'])
 
 @ru
   <p>Внутренности и территория.</p>
 @endru
-IMG_0079.jpeg
-IMG_0080.jpeg
-IMG_0082.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_0079.jpg',
+  'IMG_0080.jpg',
+  'IMG_0082.jpg',
+]])
 
 @ru
   <p>Присесть можно по всему периметру.</p>
 @endru
-IMG_0081.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0081.jpg'])
 
 @ru
   <p>Начало зоны для курения.</p>
 @endru
-IMG_0083.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0083.jpg'])
 
 @ru
   <p>Чехлы для мокрых зонтов.</p>
 @endru
-IMG_0084.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0084.jpg'])
 
 @ru
   <p>Станция метро Румянцево.</p>
 @endru
-IMG_0075.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0075.jpg'])
 
 @ru
   <p>Лифт в метро пока еще редкость.</p>
 @endru
-IMG_0085.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0085.jpg'])
 
 @ru
   <p>Станции линий метро.</p>
 @endru
-IMG_0086.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0086.jpg'])
 
 @ru
   <p>Красная ветка метро.</p>
 @endru
-IMG_0087.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0087.jpg'])
 
 @ru
   <p>Возможность облокотиться, зарядиться и подержаться в вагоне метро.</p>
 @endru
-IMG_0088.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0088.jpg'])
 
 @ru
   <p>В новых составах экраны с навигацией вместо наклеек.</p>
 @endru
-IMG_0089.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0089.jpg'])
 
 @ru
   <p>В туалет в метро можно попасть по транспортной карте Тройка. Само существование туалет уже удивляет.</p>
 @endru
-IMG_0092.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0092.jpg'])
 
 @ru
   <p>Томатология.</p>
 @endru
-IMG_0093.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0093.jpg'])
 
 @ru
   <p>Аллея.</p>
 @endru
-IMG_0094.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0094.jpg'])
 
 @ru
   <p>Деревья теряют плоды.</p>
 @endru
-IMG_0095.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0095.jpg'])
 
 @ru
   <p>Сквер у дома.</p>
 @endru
-IMG_0096.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0096.jpg'])
 
 @ru
   <p>Фонтан.</p>
 @endru
-IMG_0097.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0097.jpg'])
 
 @ru
   <p>Ночная украшенная улица.</p>
 @endru
-IMG_0112.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0112.jpg'])
 
 @ru
   <p>Новый день, новый бизнес-центр, новая встреча, новый обед. Ням.</p>
 @endru
-IMG_0115.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0115.jpg'])
 @endsection
