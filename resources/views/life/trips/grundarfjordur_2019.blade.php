@@ -2,335 +2,367 @@
 
 @section('content')
 @ru
-  <p>Новый день — новый тур. В этот раз маленький автобус, гидом является водитель. За счет маленькой группы и более маневренного транспорта маршрут содержит дополнительные точки в отличие от такового на большом автобусе.</p>
+  <p>Новый день — новый тур. В этот раз маленький автобус, гидом является водитель. За счет маленькой группы и более маневренного транспорта маршрут содержит дополнительные точки в отличие от похожего тура на большом автобусе.</p>
 @endru
 
 @ru
   <p>Выезд из Рейкьявика на север.</p>
 @endru
-IMG_3520.jpeg
-IMG_3521.jpeg
-IMG_3525.jpeg
-IMG_3529.jpeg
-IMG_3531.jpeg
-IMG_3532.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3520.jpg',
+  'IMG_3521.jpg',
+  'IMG_3525.jpg',
+  'IMG_3529.jpg',
+  'IMG_3531.jpg',
+  'IMG_3532.jpg',
+]])
 
 @ru
   <p>Остановка на завтрак. Парковка грузовиков.</p>
 @endru
-IMG_3534.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3534.jpg'])
 
 @ru
   <p>Заправка.</p>
 @endru
-IMG_3536.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3536.jpg'])
 
 @ru
   <p>Прогулка по городу.</p>
 @endru
-IMG_3538.jpeg
-IMG_3540.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3538.jpg',
+  'IMG_3540.jpg',
+]])
 
 @ru
   <p>Островки безопасности на пешеходном переходе.</p>
 @endru
-IMG_3542.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3542.jpg'])
 
 @ru
   <p>Автобусная остановка.</p>
 @endru
-IMG_3544.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3544.jpg'])
 
 @ru
   <p>Лошадки.</p>
 @en
   <p>Horses.</p>
 @endru
-IMG_3551.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3551.jpg'])
 
 @ru
   <p>По всему острову наблюдается обилие заборов. Возможно, они для овец, лошадей и прочих животных, чтобы те на дорогу не выходили.</p>
 @endru
-IMG_3552.jpeg
-IMG_3554.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3552.jpg',
+  'IMG_3554.jpg',
+]])
 
 @ru
   <p>Дорога из автобуса.</p>
 @endru
-IMG_3558.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3558.jpg'])
 
 @ru
   <p>Дорога снаружи.</p>
 @endru
-IMG_3562.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3562.jpg'])
 
 @ru
   <p>Место для пикника.</p>
 @endru
-IMG_3568.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3568.jpg'])
 
 @ru
   <p>Остановка посмотреть небольшой водопад. Осмотримся.</p>
 @endru
-IMG_3566.jpeg
-IMG_3570.jpeg
-IMG_3572.jpeg
-IMG_3573.jpeg
-IMG_3575.jpeg
-IMG_3578.jpeg
-IMG_3579.jpeg
-IMG_3582.jpeg
-IMG_3583.jpeg
-IMG_3586.jpeg
-IMG_3588.jpeg
-IMG_3590.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3566.jpg',
+  'IMG_3570.jpg',
+  'IMG_3572.jpg',
+  'IMG_3573.jpg',
+  'IMG_3575.jpg',
+  'IMG_3578.jpg',
+  'IMG_3579.jpg',
+  'IMG_3582.jpg',
+  'IMG_3583.jpg',
+  'IMG_3586.jpg',
+  'IMG_3588.jpg',
+  'IMG_3590.jpg',
+]])
 
 @ru
   <p>Водителя зовут Боги. Он даже знал как его имя переводится с русского.</p>
 @endru
-IMG_3600.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3600.jpg'])
 
 @ru
   <p>На пути к Грюндарфьодюру.</p>
 @endru
-IMG_3604.jpeg
-IMG_3606.jpeg
-IMG_3610.jpeg
-IMG_3615.jpeg
-IMG_3616.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3604.jpg',
+  'IMG_3606.jpg',
+  'IMG_3610.jpg',
+  'IMG_3615.jpg',
+  'IMG_3616.jpg',
+]])
 
 @ru
   <p>Прибыли в Грюндарфьодюр. Есть время осмотреться. Город, окруженный горами.</p>
 @endru
-IMG_3624.jpeg
-IMG_3625.jpeg
-IMG_3628.jpeg
-IMG_3629.jpeg
-IMG_3631.jpeg
-IMG_3632.jpeg
-IMG_3633.jpeg
-IMG_3634.jpeg
-IMG_3644.jpeg
-IMG_3645.jpeg
-IMG_3646.jpeg
-IMG_3648.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3624.jpg',
+  'IMG_3625.jpg',
+  'IMG_3628.jpg',
+  'IMG_3629.jpg',
+  'IMG_3631.jpg',
+  'IMG_3632.jpg',
+  'IMG_3633.jpg',
+  'IMG_3634.jpg',
+  'IMG_3644.jpg',
+  'IMG_3645.jpg',
+  'IMG_3646.jpg',
+  'IMG_3648.jpg',
+]])
 
 @ru
   <p>Скамейка.</p>
 @endru
-IMG_3635.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3635.jpg'])
 
 @ru
   <p>Чайки столпились у корабля.</p>
 @endru
-IMG_3639.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3639.jpg'])
 
 @ru
   <p>Виды рыб, птиц и прочих животных города.</p>
 @endru
-IMG_3642.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3642.jpg'])
 
 @ru
   <p>Пожарный гидрант.</p>
 @endru
-IMG_3647.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3647.jpg'])
 
 @ru
   <p>Перекус в заведении, где в соседней комнате небольшая библиотека. Часть книг можно взять совершенно свободно.</p>
 @endru
-IMG_3621.jpeg
-IMG_3623.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3621.jpg',
+  'IMG_3623.jpg',
+]])
 
 @ru
   <p>Следующая остановка у водопада в живописном окружении.</p>
 @endru
-IMG_3649.jpeg
-IMG_3651.jpeg
-IMG_3652.jpeg
-IMG_3654.jpeg
-IMG_3655.jpeg
-IMG_3657.jpeg
-IMG_3658.jpeg
-IMG_3660.jpeg
-IMG_3661.jpeg
-IMG_3664.jpeg
-IMG_3671.jpeg
-IMG_3680.jpeg
-IMG_3681.jpeg
-IMG_3682.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3649.jpg',
+  'IMG_3651.jpg',
+  'IMG_3652.jpg',
+  'IMG_3654.jpg',
+  'IMG_3655.jpg',
+  'IMG_3657.jpg',
+  'IMG_3658.jpg',
+  'IMG_3660.jpg',
+  'IMG_3661.jpg',
+  'IMG_3664.jpg',
+  'IMG_3671.jpg',
+  'IMG_3680.jpg',
+  'IMG_3681.jpg',
+  'IMG_3682.jpg',
+]])
 
 @ru
   <p>Дронам по-прежнему не рады.</p>
 @endru
-IMG_3665.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3665.jpg'])
 
 @ru
   <p>Гора с открыток.</p>
 @endru
-IMG_3676.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3676.jpg'])
 
 @ru
   <p>Нескончаемые заборы.</p>
 @endru
-IMG_3677.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3677.jpg'])
 
 @ru
   <p>Прокатная контора делится наблюдением.</p>
 @endru
-IMG_3684.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3684.jpg'])
 
 @ru
   <p>И вновь рывок к следующей природной точке.</p>
 @endru
-IMG_3690.jpeg
-IMG_3687.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3690.jpg',
+  'IMG_3687.jpg',
+]])
 
 @ru
   <p>Вышка.</p>
 @endru
-IMG_3693.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3693.jpg'])
 
 @ru
   <p>Глыбы — поля застывшей лавы.</p>
 @endru
-IMG_3695.jpeg
-IMG_3699.jpeg
-IMG_3702.jpeg
-IMG_3708.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3695.jpg',
+  'IMG_3699.jpg',
+  'IMG_3702.jpg',
+  'IMG_3708.jpg',
+]])
 
 @ru
   <p>Исландцев беспокоит, что этот ледник стремительно тает.</p>
 @endru
-IMG_3710.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3710.jpg'])
 
 @ru
   <p>Место для пикника для среди застывшей лавы.</p>
 @endru
-IMG_3712.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3712.jpg'])
 
 @ru
   <p>Это все вокруг застывшая лава.</p>
 @endru
-IMG_3713.jpeg
-IMG_3715.jpeg
-IMG_3716.jpeg
-IMG_3718.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3713.jpg',
+  'IMG_3715.jpg',
+  'IMG_3716.jpg',
+  'IMG_3718.jpg',
+]])
 
 @ru
   <p>Людей заинтересовала щель в скале.</p>
 @endru
-IMG_3719.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3719.jpg'])
 
 @ru
   <p>Вулканический песок на пляже. Даже галька.</p>
 @endru
-IMG_3720.jpeg
-IMG_3726.jpeg
-IMG_3729.jpeg
-IMG_3734.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3720.jpg',
+  'IMG_3726.jpg',
+  'IMG_3729.jpg',
+  'IMG_3734.jpg',
+]])
 
 @ru
   <p>Лужа.</p>
 @endru
-IMG_3722.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3722.jpg'])
 
 @ru
   <p>Осмотримся.</p>
 @endru
-IMG_3735.jpeg
-IMG_3737.jpeg
-IMG_3738.jpeg
-IMG_3740.jpeg
-IMG_3742.jpeg
-IMG_3743.jpeg
-IMG_3744.jpeg
-IMG_3748.jpeg
-IMG_3750.jpeg
-IMG_3755.jpeg
-IMG_3757.jpeg
-IMG_3758.jpeg
-IMG_3763.jpeg
-IMG_3766.jpeg
-IMG_3768.jpeg
-IMG_3773.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3735.jpg',
+  'IMG_3737.jpg',
+  'IMG_3738.jpg',
+  'IMG_3740.jpg',
+  'IMG_3742.jpg',
+  'IMG_3743.jpg',
+  'IMG_3744.jpg',
+  'IMG_3748.jpg',
+  'IMG_3750.jpg',
+  'IMG_3755.jpg',
+  'IMG_3757.jpg',
+  'IMG_3758.jpg',
+  'IMG_3763.jpg',
+  'IMG_3766.jpg',
+  'IMG_3768.jpg',
+  'IMG_3773.jpg',
+]])
 
 @ru
   <p>Вовремя на ледник посмотрели — облака прилетели закрывать обзор.</p>
 @endru
-IMG_3762.jpeg
-IMG_3771.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3762.jpg',
+  'IMG_3771.jpg',
+]])
 
 @ru
   <p>Остановка в деревне Арнарстапи на ужин.</p>
 @endru
 <youtube title="Arnarstapi, Iceland, June 2019" v="Msqf2ckMHhI"></youtube>
-IMG_3835.jpeg
-IMG_3776.jpeg
-IMG_3777.jpeg
-IMG_3780.jpeg
-IMG_3781.jpeg
-IMG_3785.jpeg
-IMG_3786.jpeg
-IMG_3788.jpeg
-IMG_3790.jpeg
-IMG_3794.jpeg
-IMG_3795.jpeg
-IMG_3796.jpeg
-IMG_3801.jpeg
-IMG_3810.jpeg
-IMG_3814.jpeg
-IMG_3819.jpeg
-IMG_3822.jpeg
-IMG_3825.jpeg
-IMG_3826.jpeg
-IMG_3828.jpeg
-IMG_3829.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3835.jpg',
+  'IMG_3776.jpg',
+  'IMG_3777.jpg',
+  'IMG_3780.jpg',
+  'IMG_3781.jpg',
+  'IMG_3785.jpg',
+  'IMG_3786.jpg',
+  'IMG_3788.jpg',
+  'IMG_3790.jpg',
+  'IMG_3794.jpg',
+  'IMG_3795.jpg',
+  'IMG_3796.jpg',
+  'IMG_3801.jpg',
+  'IMG_3810.jpg',
+  'IMG_3814.jpg',
+  'IMG_3819.jpg',
+  'IMG_3822.jpg',
+  'IMG_3825.jpg',
+  'IMG_3826.jpg',
+  'IMG_3828.jpg',
+  'IMG_3829.jpg',
+]])
 
 @ru
   <p>Туалет?</p>
 @endru
-IMG_3797.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3797.jpg'])
 
 @ru
   <p>Чайки.</p>
 @endru
-IMG_3806.jpeg
-IMG_3808.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3806.jpg',
+  'IMG_3808.jpg',
+]])
 
 @ru
   <p>Указатель.</p>
 @endru
-IMG_3817.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3817.jpg'])
 
 @ru
   <p>Дорога.</p>
 @en
   <p>Road.</p>
 @endru
-IMG_3836.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3836.jpg'])
 
 @ru
   <p>Наша немногочисленная группа. Интересно, что много американцев, а гид называет единицы в метрической системе.</p>
 @endru
-IMG_3842.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3842.jpg'])
 
 @ru
   <p>Последняя остановка тура на пляже перед отправлением домой.</p>
 @endru
-IMG_3844.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3844.jpg'])
 
 @ru
   <p>Последний красочный снимок на сегодня.</p>
 @endru
-IMG_3847.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3847.jpg'])
 
 @ru
   <p>Последний снимок пейзажа за окном.</p>
 @endru
-IMG_3853.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3853.jpg'])
 
 @ru
-  <p>В России попадалось как дети убирали упавшие на пол конфеты обратно в контейнеры. И вот в Исландии несколько конфет валяется на полу и неизвестно сколько из них вернули к остальным продаваемым.</p>
+  <p>В России попадалось как дети убирали упавшие на пол конфеты обратно в контейнеры. И вот в Исландии несколько конфет валяется на полу и неизвестно сколько из них уже вернули к остальным продаваемым.</p>
 @endru
-IMG_3858.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3858.jpg'])
 @endsection
