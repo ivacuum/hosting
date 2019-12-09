@@ -4,115 +4,125 @@
 @ru
   <p>Сапсаны обновляют. Составы уже не те, что довелось опробовать несколькими годами ранее. Весьма много пассажиров-иностранцев.</p>
 @endru
-IMG_0125.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0125.jpg'])
 
 @ru
   <p>Пейзаж за окном.</p>
 @endru
-IMG_0128.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0128.jpg'])
 
 @ru
   <p>Первым делом просмотр спектакля Франкенштейн с Бенедиктом Камбербетчем среди актеров. Показывали в оригинале на английском с русскими субтитрами.</p>
 @endru
-IMG_0131.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0131.jpg'])
 
 @ru
   <p>На входе охрана и рамки. Вопрос не в ресторан ли я? Нет, в кино. Далее гардероб и касса, где электронный билет меняют на бумажный. Поинтересовались норм ли, что на полчаса опоздал? Норм, лучше хоть что-то посмотреть. Далее отдельный человек проводит к залу. Далее отдельный человек проводит по залу к месту. В распоряжении диван со столицом. Вот так место!</p>
 @endru
-IMG_0130.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0130.jpg'])
 
 @ru
   <p>Аллея.</p>
 @endru
-IMG_0133.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0133.jpg'])
 
 @ru
   <p>Эскалатор в метро.</p>
 @endru
-IMG_0134.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0134.jpg'])
 
 @ru
   <p>Хитро упрятанная в коридоре стиралка. Напротив дежурят гладильная доска и утюг на все квартиры.</p>
 @endru
-IMG_0135.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0135.jpg'])
 
 @ru
   <p>Ночной Питер.</p>
 @endru
-IMG_0136.jpeg
-IMG_0137.jpeg
-IMG_0149.jpeg
-IMG_0151.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_0136.jpg',
+  'IMG_0137.jpg',
+  'IMG_0149.jpg',
+  'IMG_0151.jpg',
+]])
 
 @ru
   <p>Начинается август, а на развод мостов уже можно брать шапку и пуховик.</p>
 @endru
-IMG_0139.jpeg
-IMG_0148.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_0139.jpg',
+  'IMG_0148.jpg',
+]])
 
 @ru
   <p>Вечерние фасады.</p>
 @endru
-IMG_0159.jpeg
-IMG_0161.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_0159.jpg',
+  'IMG_0161.jpg',
+]])
 
 @ru
   <p>Вечерний мост.</p>
 @endru
-IMG_0162.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0162.jpg'])
 
 @ru
   <p>Карта <s>метро</s> общественных туалетов.</p>
 @endru
-IMG_0166.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0166.jpg'])
 
 @ru
   <p>Легкий ужин менсиканской кухней после концерта Раммштайна.</p>
 @endru
-IMG_0894.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0894.jpg'])
 
 @ru
   <p>Финляндский вокзал.</p>
 @endru
-IMG_0897.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0897.jpg'])
 
 @ru
   <p>На поезд Ласточка билет легко и быстро купить в терминале.</p>
 @endru
-IMG_0899.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0899.jpg'])
 
 @ru
   <p>Интересная находка караоке-бар Поизон. Все песни в каталоге иностранные.</p>
 @endru
-IMG_0945.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0945.jpg'])
 
 @ru
   <p>Исполнители в полной мере могут почувствовать себя на сцене среди единомышленников.</p>
 @endru
-IMG_0942.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0942.jpg'])
 
 @ru
   <p>Канал.</p>
 @endru
-IMG_0948.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0948.jpg'])
 
 @ru
   <p><s>Зефирка</s> Ротонда.</p>
 @endru
-IMG_0952.jpeg
-IMG_0951.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_0952.jpg',
+  'IMG_0951.jpg',
+]])
 
 @ru
   <p>Интересный номер дома.</p>
 @endru
-IMG_0958.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0958.jpg'])
 
 @ru
   <p>Впервые за неделю небо не абсолютно облачное.</p>
 @endru
-IMG_0953.jpeg
-IMG_0955.jpeg
-IMG_0957.jpeg
-IMG_0959.jpeg
-IMG_0960.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_0953.jpg',
+  'IMG_0955.jpg',
+  'IMG_0957.jpg',
+  'IMG_0959.jpg',
+  'IMG_0960.jpg',
+]])
 @endsection
