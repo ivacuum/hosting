@@ -8,12 +8,12 @@
 @ru
   <p>Отсутствие привязки билета аэроэкспресса к определенному аэропорту Москвы и покупка билетов на несколько месяцев вперед привели к тому, что по пути в столицу перепроверяю в какой аэропорт сегодня нужно ехать.</p>
 @endru
-IMG_4277.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4277.jpg'])
 
 @ru
   <p>Вылет на закате. В прошлый раз была задержка около двух часов, в этот раз по расписанию.</p>
 @endru
-IMG_4278.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4278.jpg'])
 
 @ru
   <p>В этот раз пограничник спрашивал почему первый Шенген в моем паспорте аннулирован. Официальная версия — потому что поездку <a class="link" href="prague.2015.03">отменил</a>.</p>
@@ -22,370 +22,388 @@ IMG_4278.jpeg
 @ru
   <p>В этот раз удалось запечатлеть как корейский банкомат вместе выдает карту и чек операции.</p>
 @endru
-IMG_4283.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4283.jpg'])
 
 @ru
   <p>Платформы автобусов с тридцать шестой по сорок первую и описание маршрутов автобусов, которые от них отходят.</p>
 @endru
-IMG_4285.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4285.jpg'])
 
 @ru
   <p>В этот раз нужен автобус номер 4100. Он доставит прямиком в Сувон, где уже вечером ожидается концерт Сая. По совместительству, в этот же день у меня день рождения. Цена билета на автобус около 8 евро.</p>
 @endru
-IMG_4287.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4287.jpg'])
 
 @ru
   <p>Автобусные платформы в аэропорту.</p>
 @endru
-IMG_4288.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4288.jpg'])
 
 @ru
   <p>Просторных и кожаных сидений всего три в ряду. До отправления пристегиваемся.</p>
 @endru
-IMG_4291.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4291.jpg'])
 
 @ru
   <p>Перед носом рекламка.</p>
 @endru
-IMG_4293.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4293.jpg'])
 
 @ru
   <p>В прошлый раз автобус из аэропорта вез в Сеул около двух часов. Карты Гугла настраивали провести в пути в этот раз не меньше времени. Но хоть Сувон и подальше находится, по факту удалось добраться всего за час. Отсюда же можно уехать обратно, но лишь до восьми вечера, когда уходит последний автобус в аэропорт.</p>
 @endru
-IMG_4294.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4294.jpg'])
 
 @ru
   <p>Путь к заселению. Вдоль дороги реклама.</p>
 @endru
-IMG_4296.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4296.jpg'])
 
 @ru
   <p>Напольная навигация.</p>
 @endru
-IMG_4298.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4298.jpg'])
 
 @ru
   <p>Разноцветные ступеньки.</p>
 @endru
-IMG_4299.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4299.jpg'])
 
 @ru
   <p>Район кучи магазинчиков и бизнесов. За ним апаты — армия жилых многоэтажек.</p>
 @endru
-IMG_4304.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4304.jpg'])
 
 @ru
   <p>Поднос в Макдональдсе хвастается тем, что он из переработанного пластика.</p>
 @endru
-IMG_4329.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4329.jpg'])
 
 @ru
   <p>Автобусная остановка.</p>
 @endru
-IMG_4330.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4330.jpg'])
 
 @ru
   <p>Описание каждой остановки каждого маршрута автобуса, на ней останавливающегося.</p>
 @endru
-IMG_4332.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4332.jpg'])
 
 @ru
   <p>Надземный переход.</p>
 @endru
-IMG_4338.jpeg
-IMG_4337.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_4338.jpg',
+  'IMG_4337.jpg',
+]])
 
 @ru
   <p>Он же позволяет сделать высотные снимки дорог.</p>
 @endru
-IMG_4333.jpeg
-IMG_4336.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_4333.jpg',
+  'IMG_4336.jpg',
+]])
 
 @ru
   <p>Места для прогулок.</p>
 @en
   <p>Places for a walk.</p>
 @endru
-IMG_4341.jpeg
-IMG_4342.jpeg
-IMG_4345.jpeg
-IMG_4353.jpeg
-IMG_4363.jpeg
-IMG_4366.jpeg
-IMG_4379.jpeg
-IMG_4380.jpeg
-IMG_4384.jpeg
-IMG_4385.jpeg
-IMG_4386.jpeg
-IMG_4387.jpeg
-IMG_4413.jpeg
-IMG_4418.jpeg
-IMG_4426.jpeg
-IMG_4433.jpeg
-IMG_4434.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_4341.jpg',
+  'IMG_4342.jpg',
+  'IMG_4345.jpg',
+  'IMG_4353.jpg',
+  'IMG_4363.jpg',
+  'IMG_4366.jpg',
+  'IMG_4379.jpg',
+  'IMG_4380.jpg',
+  'IMG_4384.jpg',
+  'IMG_4385.jpg',
+  'IMG_4386.jpg',
+  'IMG_4387.jpg',
+  'IMG_4413.jpg',
+  'IMG_4418.jpg',
+  'IMG_4426.jpg',
+  'IMG_4433.jpg',
+  'IMG_4434.jpg',
+]])
 
 @ru
   <p>Указатель туалета. Привязанный воздушный шар.</p>
 @endru
-IMG_4343.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4343.jpg'])
 
 @ru
   <p>Корейский флаг.</p>
 @endru
-IMG_4347.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4347.jpg'])
 
 @ru
   <p>Воздушные змеи.</p>
 @endru
-IMG_4348.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4348.jpg'])
 
 @ru
   <p>Еще указатель туалета.</p>
 @endru
-IMG_4354.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4354.jpg'])
 
 @ru
   <p>Разноцветное дорожное покрытие.</p>
 @endru
-IMG_4356.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4356.jpg'])
 
 @ru
   <p>Панорамы.</p>
 @en
   <p>Panoramas.</p>
 @endru
-IMG_4358.jpeg
-IMG_4367.jpeg
-IMG_4369.jpeg
-IMG_4429.jpeg
-IMG_4430.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_4358.jpg',
+  'IMG_4367.jpg',
+  'IMG_4369.jpg',
+  'IMG_4429.jpg',
+  'IMG_4430.jpg',
+]])
 
 @ru
   <p>Армия солнечных панелей в школе.</p>
 @endru
-IMG_4359.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4359.jpg'])
 
 @ru
   <p>Мусоровоз Вольво.</p>
 @en
   <p>Volvo dumper.</p>
 @endru
-IMG_4361.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4361.jpg'])
 
 @ru
   <p>Большой брат.</p>
 @endru
-IMG_4372.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4372.jpg'])
 
 @ru
   <p>Музыкальные ступеньки.</p>
 @endru
-IMG_4382.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4382.jpg'])
 
 @ru
   <p>Пожарный гидрант в безопасности.</p>
 @endru
-IMG_4388.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4388.jpg'])
 
 @ru
   <p>Рынок.</p>
 @endru
-IMG_4389.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4389.jpg'])
 
 @ru
   <p>Полный багажник конфет.</p>
 @endru
-IMG_4391.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4391.jpg'])
 
 @ru
   <p>Круговое движение.</p>
 @endru
-IMG_4393.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4393.jpg'])
 
 @ru
   <p>Информационная растяжка.</p>
 @endru
-IMG_4396.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4396.jpg'])
 
 @ru
   <p>Скамейки с цветами и зеленью.</p>
 @endru
-IMG_4400.jpeg
-IMG_4401.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_4400.jpg',
+  'IMG_4401.jpg',
+]])
 
 @ru
   <p>Направленные потоки воздуха кондиционера.</p>
 @endru
-IMG_4402.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4402.jpg'])
 
 @ru
   <p>Летом в Корее жарко и влажно. Думал как емко и ясно передать это состояние нахождения в таких погодных условиях. Лучшая аналогия — постоянный подъем в гору. Но что если в такую погоду еще и правда подниматься в гору? Тогда обливалово потом.</p>
 @endru
-IMG_4404.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4404.jpg'])
 
 @ru
   <p>Зато просмотром панорам награждают.</p>
 @endru
-IMG_4405.jpeg
-IMG_4410.jpeg
-IMG_4411.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_4405.jpg',
+  'IMG_4410.jpg',
+  'IMG_4411.jpg',
+]])
 
 @ru
   <p>Верхушки ограждений как традиционные крыши.</p>
 @endru
-IMG_4407.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4407.jpg'])
 
 @ru
   <p>Вот одна, чтобы далеко не ходить за сравнением.</p>
 @endru
-IMG_4376.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4376.jpg'])
 
 @ru
   <p>Арка.</p>
 @endru
-IMG_4409.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4409.jpg'])
 
 @ru
   <p>Статуя четко в прорези, если встать прямо позади.</p>
 @endru
-IMG_4412.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4412.jpg'])
 
 @ru
   <p>Улицы.</p>
 @endru
-IMG_4397.jpeg
-IMG_4419.jpeg
-IMG_4420.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_4397.jpg',
+  'IMG_4419.jpg',
+  'IMG_4420.jpg',
+]])
 
 @ru
   <p>Похоже, что магазин сушит вещи прямо напротив входа.</p>
 @endru
-IMG_4423.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4423.jpg'])
 
 @ru
   <p>Цветы вдоль тротуара.</p>
 @endru
-IMG_4425.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4425.jpg'])
 
 @ru
   <p>Кроксы отлично зарекомендовали себя в поездке, только без носков не удалось их носить, иначе натирали ноги. Главным образом, они были нужны на <a class="link" href="psy.2019">водном концерте</a>, где другой обуви бы не поздоровилось. В них даже прыгать удобно оказалось.</p>
 @endru
-IMG_4427.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4427.jpg'])
 
 @ru
   <p>Написано город Сувон.</p>
 @endru
-IMG_4432.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4432.jpg'])
 
 @ru
   <p>Вот и доказательство на табло автобусной остановки. Около остановки привлекло здание, которое оказалось больницей. Рядом с ним пациенты с капельницами неспеша прогуливались прямо по улице.</p>
 @endru
-IMG_4451.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4451.jpg'])
 
 @ru
   <p>Снова бабушкино покрытие тротуара, как в <a class="link" href="daejeon.2019">Тэджоне</a>.</p>
 @endru
-IMG_4435.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4435.jpg'])
 
 @ru
   <p>Сходка гигантских муравьев.</p>
 @endru
-IMG_4436.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4436.jpg'])
 
 @ru
   <p>Подъем наверх, украшенный цветами по периметру.</p>
 @endru
-IMG_4438.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4438.jpg'])
 
 @ru
   <p>Спасительный зонтик на перекрестке. Это для тех, кто своим от жары не защищается.</p>
 @endru
-IMG_4439.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4439.jpg'])
 
 @ru
   <p>Люк.</p>
 @endru
-IMG_4442.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4442.jpg'])
 
 @ru
   <p>Заправка.</p>
 @en
   <p>Gas station.</p>
 @endru
-IMG_4446.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4446.jpg'])
 
 @ru
   <p>Слева настройки бойлера, справа выключатели света.</p>
 @endru
-IMG_4448.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4448.jpg'])
 
 @ru
   <p>Прачечная с самообслуживанием.</p>
 @endru
-IMG_4449.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4449.jpg'])
 
 @ru
   <p>Немыслимое количество остановок автобуса, следующего по маршруту 66.</p>
 @endru
-IMG_4455.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4455.jpg'])
 
 @ru
   <p>Разыскивается пчел. Бззз.</p>
 @endru
-IMG_4456.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4456.jpg'])
 
 @ru
   <p>Скамейки с прорезями.</p>
 @endru
-IMG_4461.jpeg
-IMG_4465.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_4461.jpg',
+  'IMG_4465.jpg',
+]])
 
 @ru
   <p>Железнодорожная станция. Знак & горит на здании снаружи.</p>
 @endru
-IMG_4463.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4463.jpg'])
 
 @ru
   <p>Лента для багажа в подземке. Ставим и забираем наверху.</p>
 @endru
-IMG_4466.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4466.jpg'])
 
 @ru
   <p>Или внизу.</p>
 @endru
-IMG_4469.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4469.jpg'])
 
 @ru
   <p>Считаем сколько сожгли калорий в пешем пути.</p>
 @endru
-IMG_4471.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4471.jpg'])
 
 @ru
   <p>Одиночные сиденья в заведении фастфуда Лотерия напоминают школу. Есть кармашек для вещей.</p>
 @endru
-IMG_4473.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4473.jpg'])
 
 @ru
   <p>Робот в аэропорту высыпается перед следующей сменой.</p>
 @endru
-IMG_4474.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4474.jpg'])
 
 @ru
   <p>Макет самолета корейских авиалиний. Удивительно, что они с Аэрофлотом летают ежедневно из Москвы в Сеул и обратно с разницей меньше чем в полчаса, но цена при этом у корейцев примерно на 50% выше. Отталкивают от выбора в их пользу.</p>
 @endru
-IMG_4476.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4476.jpg'])
 
 @ru
   <p>Таксофон.</p>
 @endru
-IMG_4478.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4478.jpg'])
 
 @ru
   <p>Зеленая зона в аэропорту Инчхон. Пытался найти те самые удобные лежаки, которыми воспользовался во время <a class="link" href="incheon.2017">ожидания пересадки в 2017 году</a>, но так их и не нашел. Видимо, они в другом терминале.</p>
 @endru
-IMG_4479.jpeg
-IMG_4481.jpeg
-IMG_4483.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_4479.jpg',
+  'IMG_4481.jpg',
+  'IMG_4483.jpg',
+]])
 
 @ru
   <p>На обратной рейсе рядом со мной сидела миниатюрная девушка азиатской внешности. Бортпроводники Аэрофлота постоянно обращались к ней на английском, хотя она все время отвечала на русском.</p>
