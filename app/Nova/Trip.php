@@ -54,8 +54,8 @@ class Trip extends Resource
             Fields\Text::make('Slug', function () {
                 return '<a class="no-underline dim text-primary" href="/life/' . $this->slug . '">' . $this->slug . '</a>';
             })->rules('max:255')->asHtml(),
-            Fields\Date::make('Date Start')->onlyOnForms(),
-            Fields\Date::make('Date End')->onlyOnForms(),
+            Fields\DateTime::make('Date Start')->onlyOnForms(),
+            Fields\DateTime::make('Date End')->onlyOnForms(),
             Fields\Text::make('Meta Title RU')->rules('max:255')->hideFromIndex(),
             Fields\Text::make('Meta Title EN')->rules('max:255')->hideFromIndex(),
             Fields\Text::make('Meta Description RU')->rules('max:255')->hideFromIndex(),
