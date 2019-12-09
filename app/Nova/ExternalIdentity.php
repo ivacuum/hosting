@@ -16,7 +16,7 @@ class ExternalIdentity extends Resource
     {
         return [
             Fields\ID::make()->sortable(),
-            Fields\BelongsTo::make('User'),
+            Fields\BelongsTo::make('User')->searchable(),
             Fields\Text::make('Provider'),
             Fields\Text::make('UID'),
             Fields\Text::make('Email'),

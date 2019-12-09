@@ -16,7 +16,7 @@ class ChatMessage extends Resource
     {
         return [
             Fields\ID::make()->sortable(),
-            Fields\BelongsTo::make('User'),
+            Fields\BelongsTo::make('User')->searchable(),
             Fields\Text::make('IP')->onlyOnDetail(),
             Fields\Select::make('Status')->options([
                 \App\ChatMessage::STATUS_HIDDEN => 'Hidden',

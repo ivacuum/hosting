@@ -35,7 +35,7 @@ class Trip extends Resource
     public function fields(Request $request)
     {
         return [
-            Fields\BelongsTo::make('User')->hideFromIndex(),
+            Fields\BelongsTo::make('User')->searchable()->hideFromIndex(),
             Fields\BelongsTo::make('City')->hideFromIndex(),
             Fields\Text::make('Title')->onlyOnIndex(),
             Fields\Text::make('Title RU')->rules('max:255')->hideFromIndex(),

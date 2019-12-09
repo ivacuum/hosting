@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields;
 
+/** @mixin \App\Image */
 class Image extends Resource
 {
     public static $group = 'Resources';
@@ -17,14 +18,14 @@ class Image extends Resource
     {
         return [
             Fields\ID::make()->sortable(),
-            Fields\BelongsTo::make('User'),
-            Fields\Image::make('Image', function (\App\Image $image) {
-                return $image->thumbnailUrl();
+            Fields\BelongsTo::make('User')->searchable(),
+            Fields\Image::make('Image', function () {
+                return $this->thumbnailUrl();
             })->thumbnail(function ($image) {
                 return $image;
             }),
-            Fields\Number::make('Size', function (\App\Image $image) {
-                return \ViewHelper::size($image->size);
+            Fields\Number::make('Size', function () {
+                return \ViewHelper::size($this->size);
             })->exceptOnForms()->asHtml(),
             Fields\Number::make('Views')->exceptOnForms(),
             Fields\DateTime::make('Created At')->exceptOnForms(),

@@ -40,7 +40,7 @@ class Torrent extends Resource
 
         return [
             Fields\ID::make()->sortable(),
-            Fields\BelongsTo::make('User')->hideFromIndex(),
+            Fields\BelongsTo::make('User')->searchable()->hideFromIndex(),
             Fields\Number::make('RTO ID')->rules($rtoIdRules)->hideFromIndex(),
             Fields\Select::make('Category', 'category_id')->options(\TorrentCategoryHelper::novaList())->rules(TorrentCategoryId::rules())->displayUsingLabels()->hideFromIndex(),
             Fields\Text::make('Title', function () {

@@ -14,7 +14,7 @@ class Email extends Resource
     {
         return [
             Fields\ID::make()->sortable(),
-            Fields\BelongsTo::make('User')->hideFromIndex(),
+            Fields\BelongsTo::make('User')->searchable()->hideFromIndex(),
             Fields\MorphTo::make('Rel')->hideFromIndex(),
             Fields\Text::make('To'),
             Fields\Text::make('Template'),

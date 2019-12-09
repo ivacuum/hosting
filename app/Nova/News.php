@@ -17,7 +17,7 @@ class News extends Resource
     {
         return [
             Fields\ID::make()->sortable(),
-            Fields\BelongsTo::make('User')->hideFromIndex(),
+            Fields\BelongsTo::make('User')->searchable()->hideFromIndex(),
             Fields\Text::make('Title')->rules('max:255'),
             Fields\Boolean::make('Published', 'status'),
             Fields\Select::make('Locale')->options([

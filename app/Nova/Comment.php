@@ -16,7 +16,7 @@ class Comment extends Resource
     {
         return [
             Fields\ID::make()->sortable(),
-            Fields\BelongsTo::make('User'),
+            Fields\BelongsTo::make('User')->searchable(),
             Fields\Select::make('Status')->options([
                 \App\Comment::STATUS_HIDDEN => 'Hidden',
                 \App\Comment::STATUS_PUBLISHED => 'Published',

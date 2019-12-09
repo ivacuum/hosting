@@ -16,7 +16,7 @@ class Issue extends Resource
     {
         return [
             Fields\ID::make()->sortable(),
-            Fields\BelongsTo::make('User'),
+            Fields\BelongsTo::make('User')->searchable(),
             Fields\Text::make('Name')->exceptOnForms(),
             Fields\Text::make('Email')->exceptOnForms(),
             Fields\Text::make('Title')->exceptOnForms(),
