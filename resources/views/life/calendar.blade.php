@@ -71,22 +71,30 @@
     </div>
     <div class="mr-6">
       <div class="font-bold text-right">@ru Города @en Cities @endru</div>
-      @foreach ($cities as $year => $count)
+      @foreach ($daysInTrips as $year => $null)
         <div class="text-right">
-          {{ $count }}
-          @if (isset($newCities[$year]))
-            (+{{ $newCities[$year] }})
+          @if (isset($cities[$year]))
+              {{ $cities[$year] }}
+              @if (isset($newCities[$year]))
+                (+{{ $newCities[$year] }})
+              @endif
+          @else
+            &nbsp;
           @endif
         </div>
       @endforeach
     </div>
     <div>
       <div class="font-bold text-right">@ru Страны @en Countries @endru</div>
-      @foreach ($countries as $year => $count)
+      @foreach ($daysInTrips as $year => $null)
         <div class="text-right">
-          {{ $count }}
-          @if (isset($newCountries[$year]))
-            (+{{ $newCountries[$year] }})
+          @if (isset($countries[$year]))
+            {{ $countries[$year] }}
+            @if (isset($newCountries[$year]))
+              (+{{ $newCountries[$year] }})
+            @endif
+          @else
+            &nbsp;
           @endif
         </div>
       @endforeach
