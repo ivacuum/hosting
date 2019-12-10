@@ -12,7 +12,7 @@ class GigPublishedNotify extends Controller
         /** @var Model $model */
         $model = $this->getModel($id);
 
-        if ($model->status !== Model::STATUS_PUBLISHED) {
+        if ($model->isNotPublished()) {
             return [
                 'status' => 'error',
                 'message' => 'Для рассылки уведомлений концерт должен быть опубликован',

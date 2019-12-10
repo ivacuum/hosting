@@ -112,6 +112,21 @@ class Gig extends Model
         return $this->date->formatLocalized(trans('life.date.day_month_year'));
     }
 
+    public function isHidden(): bool
+    {
+        return $this->status === self::STATUS_HIDDEN;
+    }
+
+    public function isNotPublished(): bool
+    {
+        return !$this->isPublished();
+    }
+
+    public function isPublished(): bool
+    {
+        return $this->status === self::STATUS_PUBLISHED;
+    }
+
     public function metaDescription(): string
     {
         return $this->meta_description;

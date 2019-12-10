@@ -56,13 +56,13 @@ class Trip extends Resource
             })->rules('max:255')->asHtml(),
             Fields\DateTime::make('Date Start')->onlyOnForms(),
             Fields\DateTime::make('Date End')->onlyOnForms(),
+            Fields\Text::make('Meta Image')->rules('max:255')->hideFromIndex(),
             Fields\Text::make('Meta Description RU')->rules('max:255')->hideFromIndex(),
             Fields\Text::make('Meta Description EN')->rules('max:255')->hideFromIndex(),
-            Fields\Text::make('Meta Image')->rules('max:255')->hideFromIndex(),
-            Fields\Number::make('Views', function () {
+            Fields\Number::make('Views')->sortable()->displayUsing(function () {
                 return $this->views ?: '';
             })->exceptOnForms()->textAlign('right'),
-            Fields\Number::make('Pics', function () {
+            Fields\Number::make('Pic', 'photos_count')->sortable()->displayUsing(function () {
                 return $this->photos_count ?: '';
             })->onlyOnIndex()->textAlign('right'),
             Fields\DateTime::make('Created At')->onlyOnDetail(),

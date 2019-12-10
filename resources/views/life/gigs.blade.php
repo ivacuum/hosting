@@ -1,3 +1,7 @@
+<?php
+/** @var \App\Gig $gig */
+?>
+
 @extends('life.base', [
   'metaTitle' => trans('life.gigs_intro_title'),
 ])
@@ -41,7 +45,7 @@
     <div class="w-full">
     @foreach ($rows as $gig)
       <div class="{{ !$loop->last ? 'mb-2' : '' }}">
-        @if ($gig->status === App\Gig::STATUS_PUBLISHED)
+        @if ($gig->isPublished())
           <a class="link mr-1" href="{{ $gig->www() }}">{{ $gig->artist->title }}</a>
         @else
           <span class="mr-1">{{ $gig->artist->title }}</span>

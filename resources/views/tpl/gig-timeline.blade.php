@@ -1,3 +1,7 @@
+<?php
+/** @var \App\Gig $row */
+?>
+
 @if (sizeof($timeline) > 1)
   <div class="overflow-hidden mb-4">
     <div class="whitespace-no-wrap pb-8 -mb-8 overflow-x-auto">
@@ -9,7 +13,7 @@
               <div class="text-xs">
                 @if ($row->id === $gig->id)
                   <mark>{{ $row->shortDate() }}</mark>
-                @elseif ($row->status === App\Gig::STATUS_PUBLISHED)
+                @elseif ($row->isPublished())
                   <a class="link" href="{{ $row->www() }}">{{ $row->shortDate() }}</a>
                 @else
                   {{ $row->shortDate() }}
