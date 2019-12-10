@@ -393,6 +393,8 @@
 
 @ru
   <p>Таксофон.</p>
+@en
+  <p>Payphone.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4478.jpg'])
 
