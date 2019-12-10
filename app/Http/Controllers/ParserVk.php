@@ -3,8 +3,8 @@
 use App\CacheKey;
 use App\Http\GuzzleClientFactory;
 use App\Services\Vk;
+use Carbon\CarbonImmutable;
 use Carbon\CarbonInterval;
-use Illuminate\Support\Carbon;
 
 class ParserVk extends Controller
 {
@@ -27,7 +27,7 @@ class ParserVk extends Controller
         $this->token = $token = request('token', config('services.vk.access_token'));
         $own = request('own');
         $date = false === $date ? '-1 day' : $date;
-        $date = Carbon::parse($date);
+        $date = CarbonImmutable::parse($date);
         $token = $token === config('services.vk.access_token') ? null : $token;
 
         $count = 100;
@@ -35,10 +35,10 @@ class ParserVk extends Controller
         $parsed = false;
         $posts = collect();
 
-        $dateStart = Carbon::parse($date)->startOfDay()->timestamp;
-        $dateEnd = Carbon::parse($date)->endOfDay()->timestamp;
-        $previous = Carbon::parse($date)->subDay();
-        $next = now()->startOfDay()->gt($date) ? Carbon::parse($date)->addDay() : null;
+        $dateStart = CarbonImmutable::parse($date)->startOfDay()->timestamp;
+        $dateEnd = CarbonImmutable::parse($date)->endOfDay()->timestamp;
+        $previous = CarbonImmutable::parse($date)->subDay();
+        $next = now()->startOfDay()->gt($date) ? CarbonImmutable::parse($date)->addDay() : null;
 
         while (false === $parsed) {
             $json = $this->getPosts($count, $offset);
@@ -77,7 +77,7 @@ class ParserVk extends Controller
                 }
 
                 if ($post->date < $dateStart) {
-                    $previous = Carbon::createFromTimestamp($post->date);
+                    $previous = CarbonImmutable::createFromTimestamp($post->date);
                     $parsed = true;
                     break 2;
                 }

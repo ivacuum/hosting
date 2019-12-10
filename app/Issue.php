@@ -14,8 +14,8 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  * @property string $title
  * @property string $text
  * @property string $page
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Carbon\CarbonImmutable $created_at
+ * @property \Carbon\CarbonImmutable $updated_at
  *
  * @property \Illuminate\Database\Eloquent\Collection|\App\Comment[] $comments
  * @property \App\User $user

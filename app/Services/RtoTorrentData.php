@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Carbon;
+use Carbon\CarbonImmutable;
 
 class RtoTorrentData
 {
@@ -35,7 +35,7 @@ class RtoTorrentData
         return $this->meta->getInfoHash();
     }
 
-    public function getRegisteredAt(): Carbon
+    public function getRegisteredAt(): CarbonImmutable
     {
         return $this->meta->getRegisteredAt();
     }

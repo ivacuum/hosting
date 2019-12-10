@@ -1,8 +1,8 @@
 <?php namespace App;
 
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Carbon;
 
 /**
  * Новости
@@ -14,8 +14,8 @@ use Illuminate\Support\Carbon;
  * @property string $locale
  * @property int $status
  * @property int $views
- * @property Carbon $created_at
- * @property Carbon $updated_at
+ * @property \Carbon\CarbonImmutable $created_at
+ * @property \Carbon\CarbonImmutable $updated_at
  *
  * @property \Illuminate\Support\Collection|Comment[] $comments
  * @property \Illuminate\Support\Collection|Comment[] $commentsPublished
@@ -85,7 +85,7 @@ class News extends Model
     // Static methods
     public static function interval(int $year, ?int $month = null, ?int $day = null): array
     {
-        $start = Carbon::createFromDate($year, $month, $day);
+        $start = CarbonImmutable::createFromDate($year, $month, $day);
         $end = $start->copy();
 
         if (null !== $day) {

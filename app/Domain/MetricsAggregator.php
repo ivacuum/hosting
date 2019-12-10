@@ -1,6 +1,6 @@
 <?php namespace App\Domain;
 
-use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 
 class MetricsAggregator
 {
@@ -28,7 +28,7 @@ class MetricsAggregator
     {
         $this->pingDatabase();
 
-        $now = Carbon::now();
+        $now = CarbonImmutable::now();
         $sql = '';
 
         foreach ($this->metrics as $event => $count) {

@@ -23,8 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $redirect_count
  * @property int $redirect_time_us
  * @property string $redirect_url
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Carbon\CarbonImmutable $created_at
+ * @property \Carbon\CarbonImmutable $updated_at
  *
  * @mixin \Eloquent
  */

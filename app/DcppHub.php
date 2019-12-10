@@ -11,9 +11,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $port
  * @property int $status
  * @property int $clicks
- * @property \Illuminate\Support\Carbon $queried_at
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Carbon\CarbonImmutable $queried_at
+ * @property \Carbon\CarbonImmutable $created_at
+ * @property \Carbon\CarbonImmutable $updated_at
  */
 class DcppHub extends Model
 {

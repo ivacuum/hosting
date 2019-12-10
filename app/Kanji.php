@@ -16,8 +16,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $kunyomi
  * @property string $important_reading
  * @property string $nanori
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Carbon\CarbonImmutable $created_at
+ * @property \Carbon\CarbonImmutable $updated_at
  *
  * @property \App\Burnable $burnable
  * @property \Illuminate\Database\Eloquent\Collection|\App\Burnable[] $burnables

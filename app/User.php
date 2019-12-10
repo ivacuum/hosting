@@ -27,10 +27,10 @@ use Illuminate\Notifications\Notifiable;
  * @property string $ip
  * @property string $activation_token
  * @property string $remember_token
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
- * @property \Illuminate\Support\Carbon $last_login_at
- * @property \Illuminate\Support\Carbon $password_changed_at
+ * @property \Carbon\CarbonImmutable $created_at
+ * @property \Carbon\CarbonImmutable $updated_at
+ * @property \Carbon\CarbonImmutable $last_login_at
+ * @property \Carbon\CarbonImmutable $password_changed_at
  *
  * @property \Illuminate\Database\Eloquent\Collection|\App\ChatMessage[] $chatMessages
  * @property \Illuminate\Database\Eloquent\Collection|\App\Comment[] $comments

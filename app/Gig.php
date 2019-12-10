@@ -14,7 +14,7 @@ use Symfony\Component\Finder\Finder;
  * @property string $title_ru
  * @property string $title_en
  * @property string $slug
- * @property \Illuminate\Support\Carbon $date
+ * @property \Carbon\CarbonImmutable $date
  * @property int $status
  * @property string $meta_title_ru
  * @property string $meta_title_en
@@ -22,8 +22,8 @@ use Symfony\Component\Finder\Finder;
  * @property string $meta_description_en
  * @property string $meta_image
  * @property int $views
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Carbon\CarbonImmutable $created_at
+ * @property \Carbon\CarbonImmutable $updated_at
  *
  * @property \App\Artist $artist
  * @property \App\City $city

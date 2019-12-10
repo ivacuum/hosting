@@ -9,8 +9,8 @@ use Illuminate\Support\Collection;
  * @property int $id
  * @property string $title
  * @property string $slug
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Carbon\CarbonImmutable $created_at
+ * @property \Carbon\CarbonImmutable $updated_at
  *
  * @mixin \Eloquent
  */

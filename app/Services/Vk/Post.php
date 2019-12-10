@@ -1,6 +1,6 @@
 <?php namespace App\Services\Vk;
 
-use Illuminate\Support\Carbon;
+use Carbon\CarbonImmutable;
 
 class Post
 {
@@ -24,7 +24,7 @@ class Post
         bool $isAd = false
     ) {
         $this->id = $id;
-        $this->date = Carbon::createFromTimestamp($timestamp);
+        $this->date = CarbonImmutable::createFromTimestamp($timestamp);
         $this->isAd = $isAd;
         $this->likes = $likes;
         $this->canLike = $canLike;

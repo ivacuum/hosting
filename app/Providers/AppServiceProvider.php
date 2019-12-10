@@ -1,7 +1,9 @@
 <?php namespace App\Providers;
 
 use App;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         \Blade::withoutDoubleEncoding();
+        Date::use(CarbonImmutable::class);
 
         Relation::morphMap([
             'Gig' => App\Gig::class,

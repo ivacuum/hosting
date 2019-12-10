@@ -24,9 +24,9 @@ use Laravel\Scout\Searchable;
  * @property int $status
  * @property int $clicks
  * @property int $views
- * @property \Illuminate\Support\Carbon $registered_at
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Carbon\CarbonImmutable $registered_at
+ * @property \Carbon\CarbonImmutable $created_at
+ * @property \Carbon\CarbonImmutable $updated_at
  *
  * @property \Illuminate\Database\Eloquent\Collection|\App\Comment[] $comments
  * @property \Illuminate\Database\Eloquent\Collection|\App\Comment[] $commentsPublished

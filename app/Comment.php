@@ -16,8 +16,8 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  * @property string $rel_type
  * @property int $status
  * @property string $html
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Carbon\CarbonImmutable $created_at
+ * @property \Carbon\CarbonImmutable $updated_at
  *
  * @property \App\News|\App\Torrent|\App\Trip $rel
  * @property \App\User $user

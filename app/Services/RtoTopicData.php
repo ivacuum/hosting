@@ -1,6 +1,6 @@
 <?php namespace App\Services;
 
-use Illuminate\Support\Carbon;
+use Carbon\CarbonImmutable;
 
 class RtoTopicData
 {
@@ -26,13 +26,13 @@ class RtoTopicData
         int $id,
         string $title,
         string $infoHash,
-        Carbon $registeredAt,
+        CarbonImmutable $registeredAt,
         int $status,
         int $size,
         int $forumId,
         int $posterId,
         int $seeders,
-        Carbon $seederLastSeenAt
+        CarbonImmutable $seederLastSeenAt
     ) {
         $this->id = $id;
         $this->size = $size;
@@ -52,13 +52,13 @@ class RtoTopicData
             $id,
             $json->topic_title,
             $json->info_hash,
-            Carbon::parse($json->reg_time, 'Europe/Moscow'),
+            CarbonImmutable::parse($json->reg_time, 'Europe/Moscow'),
             $json->tor_status,
             $json->size,
             $json->forum_id,
             $json->poster_id,
             $json->seeders,
-            Carbon::parse($json->seeder_last_seen, 'Europe/Moscow')
+            CarbonImmutable::parse($json->seeder_last_seen, 'Europe/Moscow')
         );
     }
 
@@ -72,7 +72,7 @@ class RtoTopicData
         return $this->infoHash;
     }
 
-    public function getRegisteredAt(): Carbon
+    public function getRegisteredAt(): CarbonImmutable
     {
         return $this->registeredAt;
     }

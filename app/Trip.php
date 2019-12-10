@@ -19,8 +19,8 @@ use Symfony\Component\Finder\Finder;
  * @property string $title_ru
  * @property string $title_en
  * @property string $slug
- * @property \Illuminate\Support\Carbon $date_start
- * @property \Illuminate\Support\Carbon $date_end
+ * @property \Carbon\CarbonImmutable $date_start
+ * @property \Carbon\CarbonImmutable $date_end
  * @property int $status
  * @property string $markdown
  * @property string $html
@@ -30,8 +30,8 @@ use Symfony\Component\Finder\Finder;
  * @property string $meta_description_en
  * @property string $meta_image
  * @property int $views
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Carbon\CarbonImmutable $created_at
+ * @property \Carbon\CarbonImmutable $updated_at
  *
  * @property \App\City $city
  * @property \Illuminate\Support\Collection|\App\Comment[] $comments

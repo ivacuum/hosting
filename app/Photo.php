@@ -17,8 +17,8 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property string  $lon
  * @property int $status
  * @property int $views
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Carbon\CarbonImmutable $created_at
+ * @property \Carbon\CarbonImmutable $updated_at
  *
  * @property \App\Trip $rel
  * @property \Illuminate\Database\Eloquent\Collection|\App\Tag[] $tags

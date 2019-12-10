@@ -3,7 +3,7 @@
 use App\Domain\MetricsAggregator;
 use App\Events\Stats\TripViewed;
 use App\Events\Stats\UserAvatarUploaded;
-use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -29,13 +29,13 @@ class MetricsAggregatorTest extends TestCase
         ], $aggregator->data());
 
         $this->assertDatabaseHas('metrics', [
-            'date' => Carbon::now()->toDateString(),
+            'date' => CarbonImmutable::now()->toDateString(),
             'event' => $metric1,
             'count' => 2,
         ]);
 
         $this->assertDatabaseHas('metrics', [
-            'date' => Carbon::now()->toDateString(),
+            'date' => CarbonImmutable::now()->toDateString(),
             'event' => $metric2,
             'count' => 1,
         ]);

@@ -1,8 +1,8 @@
 <?php namespace App\Domain;
 
 use App\Trip;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 class TripStatsCalculator
@@ -68,12 +68,12 @@ class TripStatsCalculator
             });
     }
 
-    public function firstDate(): Carbon
+    public function firstDate(): CarbonImmutable
     {
         return $this->firstDate;
     }
 
-    public function lastDate(): Carbon
+    public function lastDate(): CarbonImmutable
     {
         return $this->lastDate;
     }
@@ -173,10 +173,10 @@ class TripStatsCalculator
 
     private function pushTripDays(Trip $trip): void
     {
-        $tripEndedAt = (clone $trip->date_end)->startOfDay();
-        $tripStartedAt = (clone $trip->date_start)->startOfDay();
+        $date = $trip->date_start->startOfDay();
+        $tripEndedAt = $trip->date_end->startOfDay();
 
-        for ($date = $tripStartedAt; $date->lte($tripEndedAt); $date->addDay()) {
+        do {
             $year = $date->year;
             $monthDay = "{$date->month}-{$date->day}";
 
@@ -185,15 +185,17 @@ class TripStatsCalculator
             }
 
             $this->days[$year][$monthDay] = true;
-        }
+
+            $date = $date->addDay();
+        } while ($date->lte($tripEndedAt));
     }
 
     private function pushTripToCalendar(Trip $trip): void
     {
-        $tripEndedAt = (clone $trip->date_end)->startOfDay();
-        $tripStartedAt = (clone $trip->date_start)->startOfDay();
+        $date = $trip->date_start->startOfDay();
+        $tripEndedAt = $trip->date_end->startOfDay();
 
-        for ($date = $tripStartedAt; $date->lte($tripEndedAt); $date->addDay()) {
+        do {
             $ymd = "{$date->year}-{$date->month}-{$date->day}";
 
             if (!isset($this->calendar[$ymd])) {
@@ -205,20 +207,22 @@ class TripStatsCalculator
                 'slug' => $trip->isPublished() ? $trip->slug : '',
                 'title' => $trip->title,
             ];
-        }
+
+            $date = $date->addDay();
+        } while ($date->lte($tripEndedAt));
     }
 
     private function saveFirstDate(Trip $trip): void
     {
         $this->firstDate = $this->firstDate === null
-            ? clone $trip->date_start
+            ? $trip->date_start
             : $this->firstDate;
     }
 
     private function saveLastDate(Trip $trip): void
     {
         $this->lastDate = $this->lastDate === null || $trip->date_end->gt($this->lastDate)
-            ? clone $trip->date_end
+            ? $trip->date_end
             : $this->lastDate;
     }
 }

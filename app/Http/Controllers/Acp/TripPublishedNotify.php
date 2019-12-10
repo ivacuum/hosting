@@ -3,7 +3,7 @@
 use App\Http\Requests\Acp\TripPublishedNotifyRequest;
 use App\Jobs\NotifyTripSubscribers;
 use App\Trip as Model;
-use Illuminate\Support\Carbon;
+use Carbon\CarbonImmutable;
 use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class TripPublishedNotify extends Controller
@@ -21,7 +21,7 @@ class TripPublishedNotify extends Controller
         }
 
         NotifyTripSubscribers::dispatch($model)
-            ->delay(Carbon::parse($request->input('date')));
+            ->delay(CarbonImmutable::parse($request->input('date')));
 
         return [
             'status' => 'OK',

@@ -1,10 +1,10 @@
 <?php namespace App;
 
 use App\Events\DomainWhoisUpdated;
+use Carbon\CarbonImmutable;
 use GuzzleHttp\Client as HttpClient;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Carbon;
 
 /**
  * Домен
@@ -36,11 +36,11 @@ use Illuminate\Support\Carbon;
  * @property string $db_pma
  * @property string $db_host
  * @property string $db_user
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
- * @property \Illuminate\Support\Carbon $registered_at
- * @property \Illuminate\Support\Carbon $paid_till
- * @property \Illuminate\Support\Carbon $queried_at
+ * @property \Carbon\CarbonImmutable $created_at
+ * @property \Carbon\CarbonImmutable $updated_at
+ * @property \Carbon\CarbonImmutable $registered_at
+ * @property \Carbon\CarbonImmutable $paid_till
+ * @property \Carbon\CarbonImmutable $queried_at
  *
  * @property YandexUser $yandexUser
  *
@@ -378,8 +378,8 @@ class Domain extends Model
             return [];
         }
 
-        $data['registered_at'] = Carbon::parse($data['registered_at']);
-        $data['paid_till'] = Carbon::parse($data['paid_till']);
+        $data['registered_at'] = CarbonImmutable::parse($data['registered_at']);
+        $data['paid_till'] = CarbonImmutable::parse($data['paid_till']);
         $data['queried_at'] = now();
         $data['raw'] = $query->getRaw();
 

@@ -15,8 +15,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $meaning
  * @property string  $kana
  * @property string  $sentences
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Carbon\CarbonImmutable $created_at
+ * @property \Carbon\CarbonImmutable $updated_at
  *
  * @property \App\Burnable $burnable
  *

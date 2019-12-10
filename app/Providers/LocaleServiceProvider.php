@@ -1,7 +1,7 @@
 <?php namespace App\Providers;
 
+use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\ServiceProvider;
 
 class LocaleServiceProvider extends ServiceProvider
@@ -13,7 +13,7 @@ class LocaleServiceProvider extends ServiceProvider
 
         setlocale(LC_ALL, config("cfg.locales.{$locale}.posix"));
         setlocale(LC_NUMERIC, 'C');
-        Carbon::setLocale($locale);
+        CarbonImmutable::setLocale($locale);
 
         if ($locale !== $defaultLocale) {
             $this->app->setLocale($locale);

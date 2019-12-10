@@ -13,8 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $ftp_root
  * @property string $ftp_user
  * @property string $ftp_pass
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Carbon\CarbonImmutable $created_at
+ * @property \Carbon\CarbonImmutable $updated_at
  *
  * @mixin \Eloquent
  */

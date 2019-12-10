@@ -13,8 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $character
  * @property string $meaning
  * @property string $image
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Carbon\CarbonImmutable $created_at
+ * @property \Carbon\CarbonImmutable $updated_at
  *
  * @property \App\Burnable $burnable
  * @property \Illuminate\Database\Eloquent\Collection|\App\Kanji[] $kanjis
