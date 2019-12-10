@@ -51,7 +51,7 @@ class Trip extends Resource
             Fields\Text::make('Date', function () {
                 return $this->localizedDate();
             })->asHtml(),
-            Fields\Text::make('Slug', function () {
+            Fields\Text::make('Slug')->displayUsing(function () {
                 return '<a class="no-underline dim text-primary" href="/life/' . $this->slug . '">' . $this->slug . '</a>';
             })->rules('max:255')->asHtml(),
             Fields\DateTime::make('Date Start')->onlyOnForms(),

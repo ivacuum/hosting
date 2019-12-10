@@ -27,10 +27,11 @@ class Gig extends Resource
             })->onlyOnIndex()->textAlign('center')->asHtml(),
             Fields\Text::make('Title RU')->rules('max:255')->hideFromIndex(),
             Fields\Text::make('Title EN')->rules('max:255')->hideFromIndex(),
-            Fields\Text::make('Date', function () {
+            Fields\Text::make('Date')->displayUsing(function () {
                 return $this->fullDate();
-            })->asHtml(),
-            Fields\Text::make('Slug', function () {
+            })->exceptOnForms()->asHtml(),
+            Fields\Date::make('Date')->onlyOnForms(),
+            Fields\Text::make('Slug')->displayUsing(function () {
                 return '<a class="no-underline dim text-primary" href="/life/' . $this->slug . '">' . $this->slug . '</a>';
             })->rules('max:255')->asHtml(),
             Fields\Select::make('Status')->options([
