@@ -2,7 +2,7 @@
 
 use Ivacuum\Generic\Http\FormRequest;
 
-class ChatStore extends FormRequest
+class ChatStoreRequest extends FormRequest
 {
     public function authorize(): bool
     {

@@ -5,7 +5,7 @@ use App\Trip;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Http\FormRequest;
 
-class TripUpdate extends FormRequest
+class TripUpdateRequest extends FormRequest
 {
     public function authorize(): bool
     {

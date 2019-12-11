@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests\TripStore;
-use App\Http\Requests\TripUpdate;
+use App\Http\Requests\TripStoreRequestRequest;
+use App\Http\Requests\TripUpdateRequest;
 use App\Trip;
 
 class MyTrips extends Controller
@@ -35,7 +35,7 @@ class MyTrips extends Controller
         return view('my.trips.edit', ['model' => $trip]);
     }
 
-    public function store(TripStore $request)
+    public function store(TripStoreRequestRequest $request)
     {
         /** @var \App\User $user */
         $user = $request->user();
@@ -58,7 +58,7 @@ class MyTrips extends Controller
         return $this->redirectAfterStore($trip);
     }
 
-    public function update(Trip $trip, TripUpdate $request)
+    public function update(Trip $trip, TripUpdateRequest $request)
     {
         $city = \CityHelper::findByIdOrFail($request->input('city_id'));
 

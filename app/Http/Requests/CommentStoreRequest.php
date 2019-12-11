@@ -3,7 +3,7 @@
 use App\Rules\Email;
 use Ivacuum\Generic\Http\FormRequest;
 
-class IssueStore extends FormRequest
+class CommentStoreRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -12,11 +12,13 @@ class IssueStore extends FormRequest
 
     public function rules(): array
     {
+        $isGuest = null === $this->user();
+
         return [
-            'name' => $this->expectsJson() ? '' : 'required',
-            'text' => ['required', 'string', 'max:1000'],
-            'email' => Email::rules(),
-            'title' => $this->expectsJson() ? '' : 'required',
+            'id' => 'integer|min:1',
+            'text' => 'required|max:1000',
+            'type' => 'in:news,torrent,trip',
+            'email' => $isGuest ? Email::rules() : '',
         ];
     }
 

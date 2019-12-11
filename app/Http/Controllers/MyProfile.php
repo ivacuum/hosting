@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests\MyProfileUpdate;
+use App\Http\Requests\MyProfileUpdateRequest;
 
 class MyProfile extends Controller
 {
@@ -9,7 +9,7 @@ class MyProfile extends Controller
         return view('my.profile');
     }
 
-    public function update(MyProfileUpdate $request)
+    public function update(MyProfileUpdateRequest $request)
     {
         $user = $request->userModel();
         $user->email = $request->email();

@@ -4,7 +4,7 @@ use App\Rules\Email;
 use App\Rules\Username;
 use Illuminate\Validation\Rule;
 
-class MyProfileUpdate extends AbstractRequest
+class MyProfileUpdateRequest extends AbstractRequest
 {
     public function authorize(): bool
     {

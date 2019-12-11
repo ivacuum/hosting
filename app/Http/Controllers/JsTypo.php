@@ -1,11 +1,11 @@
 <?php namespace App\Http\Controllers;
 
 use App\Events\TypoReceived;
-use App\Http\Requests\TypoStore;
+use App\Http\Requests\TypoStoreRequest;
 
 class JsTypo extends Controller
 {
-    public function __invoke(TypoStore $request)
+    public function __invoke(TypoStoreRequest $request)
     {
         $page = $request->session()->previousUrl();
         $selection = $request->input('selection');

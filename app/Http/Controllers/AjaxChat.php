@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\ChatMessage;
-use App\Http\Requests\ChatStore;
+use App\Http\Requests\ChatStoreRequest;
 use App\Http\Resources\ChatMessage as ChatMessageResource;
 
 class AjaxChat extends Controller
@@ -19,7 +19,7 @@ class AjaxChat extends Controller
         );
     }
 
-    public function store(ChatStore $request)
+    public function store(ChatStoreRequest $request)
     {
         $chatMessage = new ChatMessage([
             'ip' => $request->ip(),

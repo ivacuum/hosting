@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests\MyAvatarUpdate;
+use App\Http\Requests\MyAvatarUpdateRequest;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -16,7 +16,7 @@ class MyAvatar extends Controller
         return response()->noContent();
     }
 
-    public function update(MyAvatarUpdate $request)
+    public function update(MyAvatarUpdateRequest $request)
     {
         /** @var User $user */
         $user = $request->user();

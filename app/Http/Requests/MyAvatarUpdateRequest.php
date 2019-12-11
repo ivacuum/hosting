@@ -2,7 +2,7 @@
 
 use Ivacuum\Generic\Http\FormRequest;
 
-class MyAvatarUpdate extends FormRequest
+class MyAvatarUpdateRequest extends FormRequest
 {
     public function authorize(): bool
     {

@@ -3,7 +3,7 @@
 use Ivacuum\Generic\Http\FormRequest;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
-class GalleryStore extends FormRequest
+class GalleryStoreRequest extends FormRequest
 {
     public function authorize(): bool
     {

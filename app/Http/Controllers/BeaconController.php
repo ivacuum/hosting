@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Events\Stats;
-use App\Http\Requests\BeaconStore;
+use App\Http\Requests\BeaconStoreRequest;
 
 class BeaconController extends Controller
 {
@@ -14,7 +14,7 @@ class BeaconController extends Controller
         Stats\KatakanaAnswerRevealed::class,
     ];
 
-    public function __invoke(BeaconStore $request)
+    public function __invoke(BeaconStoreRequest $request)
     {
         $metrics = $this->metrics();
 

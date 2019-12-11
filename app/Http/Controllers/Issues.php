@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Exceptions\IssueLimitExceededException;
-use App\Http\Requests\IssueStore;
+use App\Http\Requests\IssueStoreRequest;
 use App\Issue;
 use App\Limits\IssuesTodayLimit;
 use App\User;
@@ -14,7 +14,7 @@ class Issues extends Controller
         return view($this->view);
     }
 
-    public function store(IssuesTodayLimit $limits, IssueStore $request)
+    public function store(IssuesTodayLimit $limits, IssueStoreRequest $request)
     {
         if (!$request->expectsJson()) {
             return redirect(path(HomeController::class));
