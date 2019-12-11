@@ -32,11 +32,7 @@ class Gallery extends Controller
 
     public function store(GalleryStore $request)
     {
-        $file = $request->file('file');
-
-        if (null === $file || !$file->isValid()) {
-            throw new \Exception('Необходимо предоставить хотя бы один файл');
-        }
+        $file = $request->getFile();
 
         $image = Image::createFromFile($file, $request->user()->id);
         $image->siteThumbnail($file);

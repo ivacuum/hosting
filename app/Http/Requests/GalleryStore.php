@@ -1,12 +1,24 @@
 <?php namespace App\Http\Requests;
 
 use Ivacuum\Generic\Http\FormRequest;
+use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
 class GalleryStore extends FormRequest
 {
     public function authorize(): bool
     {
         return true;
+    }
+
+    public function getFile()
+    {
+        $file = $this->file('file');
+
+        if (null === $file || !$file->isValid()) {
+            throw new UnprocessableEntityHttpException('Необходимо предоставить хотя бы один файл');
+        }
+
+        return $file;
     }
 
     public function rules(): array
