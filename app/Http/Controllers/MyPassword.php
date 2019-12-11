@@ -15,15 +15,13 @@ class MyPassword extends Controller
 
     public function update(MyPasswordUpdate $request, Hasher $hash)
     {
-        /** @var \App\User $user */
-        $user = $request->user();
-        $hasPassword = !empty($user->password);
+        $user = $request->userModel();
 
-        if ($hasPassword && !$hash->check($request->input('password'), $user->password)) {
+        if ($request->userHasPassword() && $request->isPasswordInvalid($hash)) {
             return back()->withErrors(['password' => 'Неверно введен текущий пароль']);
         }
 
-        $user->password = $request->input('new_password');
+        $user->password = $request->newPassword();
         $user->save();
 
         event(new \App\Events\Stats\MyPasswordChanged);

@@ -3,19 +3,22 @@
 use App\Rules\Email;
 use App\Rules\Username;
 use Illuminate\Validation\Rule;
-use Ivacuum\Generic\Http\FormRequest;
 
-class MyProfileUpdate extends FormRequest
+class MyProfileUpdate extends AbstractRequest
 {
     public function authorize(): bool
     {
         return true;
     }
 
+    public function email()
+    {
+        return $this->input('email');
+    }
+
     public function rules(): array
     {
-        /** @var \App\User $user */
-        $user = $this->user();
+        $user = $this->userModel();
 
         return [
             'email' => array_merge(
@@ -27,5 +30,10 @@ class MyProfileUpdate extends FormRequest
                 [Rule::unique('users', 'login')->ignore($user->id)]
             ),
         ];
+    }
+
+    public function username()
+    {
+        return $this->input('username');
     }
 }
