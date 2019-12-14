@@ -18,16 +18,17 @@ class MyProfileTest extends TestCase
     public function testUpdateEmail()
     {
         /** @var User $user */
-        $this->be($user = factory(User::class)->create());
+        $user = factory(User::class)->create();
 
         $email = "__{$user->email}";
 
         $this->expectsEvents(\App\Events\Stats\MyProfileChanged::class);
 
-        $this->put('my/profile', [
-            'email' => $email,
-            'username' => $user->login,
-        ])
+        $this->be($user)
+            ->put('my/profile', [
+                'email' => $email,
+                'username' => $user->login,
+            ])
             ->assertStatus(302);
 
         $user->refresh();
@@ -38,16 +39,17 @@ class MyProfileTest extends TestCase
     public function testUpdateLogin()
     {
         /** @var User $user */
-        $this->be($user = factory(User::class)->create());
+        $user = factory(User::class)->create();
 
         $login = $user->login . $user->login;
 
         $this->expectsEvents(\App\Events\Stats\MyProfileChanged::class);
 
-        $this->put('my/profile', [
-            'email' => $user->email,
-            'username' => $login,
-        ])
+        $this->be($user)
+            ->put('my/profile', [
+                'email' => $user->email,
+                'username' => $login,
+            ])
             ->assertStatus(302);
 
         $user->refresh();
