@@ -77,11 +77,11 @@ class KanjiSeeder extends Seeder
 
     protected function attachRadicals(App\Kanji $kanji, array $meanings): void
     {
-        $kanji->radicals()->sync(App\Radical::whereIn('meaning', $meanings)->get(['id'])->pluck('id')->all());
+        $kanji->radicals()->sync(App\Radical::whereIn('meaning', $meanings)->get(['id'])->modelKeys());
     }
 
     protected function attachSimilarKanji(App\Kanji $kanji, array $characters): void
     {
-        $kanji->similar()->sync(App\Kanji::whereIn('character', $characters)->get(['id'])->pluck('id')->all());
+        $kanji->similar()->sync(App\Kanji::whereIn('character', $characters)->get(['id'])->modelKeys());
     }
 }

@@ -25,7 +25,8 @@ class MyPasswordTest extends TestCase
         $this->expectsEvents(\App\Events\Stats\MyPasswordChanged::class);
 
         $this->put('my/password', ['new_password' => $newPassword])
-            ->assertStatus(302);
+            ->assertStatus(302)
+            ->assertSessionHasNoErrors();
 
         $user->refresh();
 
@@ -43,7 +44,8 @@ class MyPasswordTest extends TestCase
         $this->expectsEvents(\App\Events\Stats\MyPasswordChanged::class);
 
         $this->put('my/password', ['password' => $password, 'new_password' => $newPassword])
-            ->assertStatus(302);
+            ->assertStatus(302)
+            ->assertSessionHasNoErrors();
 
         $user->refresh();
 

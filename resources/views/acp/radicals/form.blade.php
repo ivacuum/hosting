@@ -8,7 +8,7 @@
 
 <div class="mb-4">
   <label class="font-bold">Есть в кандзи</label>
-  <?php $kanjis = $model->kanjis->pluck('id')->all() ?>
+  <?php $kanjis = $model->kanjis->modelKeys() ?>
   @foreach (App\Kanji::orderBy('level')->orderBy('meaning')->get(['id', 'character', 'meaning']) as $row)
     <label class="flex items-center">
       <input

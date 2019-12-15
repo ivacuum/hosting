@@ -3,7 +3,7 @@
 /** @var Illuminate\Database\Eloquent\Factory $factory */
 
 $factory->define(App\Artist::class, function (Faker\Generator $faker) {
-    $title = $faker->word;
+    $title = $faker->lexify('??????????');
 
     return [
         'slug' => Str::slug($title),

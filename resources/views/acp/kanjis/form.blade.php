@@ -10,7 +10,7 @@
 
 <div class="mb-4">
   <label class="font-bold">Состоит из ключей</label>
-  <?php $radicals = $model->radicals->pluck('id')->all() ?>
+  <?php $radicals = $model->radicals->modelKeys() ?>
   @foreach (App\Radical::orderBy('level')->orderBy('meaning')->get(['id', 'character', 'meaning']) as $row)
     <label class="flex items-center">
       <input

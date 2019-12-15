@@ -37,7 +37,7 @@ class IssuesTest extends TestCase
         $this->from('/')
             ->postJson('contact', [
                 'name' => 'name',
-                'text' => 'some text from the guest',
+                'text' => 'some text from the user',
                 'email' => $user->email,
                 'title' => 'title',
             ])

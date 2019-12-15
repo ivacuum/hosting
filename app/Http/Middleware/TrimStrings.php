@@ -5,8 +5,8 @@ use Illuminate\Foundation\Http\Middleware\TrimStrings as BaseTrimmer;
 class TrimStrings extends BaseTrimmer
 {
     protected $except = [
-        'password',
         'new_password',
+        'password',
         'password_confirmation',
     ];
 }

@@ -21,9 +21,8 @@ class CommentsTest extends TestCase
         $news = factory(News::class)->create(['user_id' => $user->id]);
         $email = 'guest+' . random_int(10000, 99999) . '@example.com';
 
-        $this->expectsEvents(\App\Events\Stats\UserRegisteredAuto::class);
-
-        $this->postJson("ajax/comment/news/{$news->id}", [
+        $this->expectsEvents(\App\Events\Stats\UserRegisteredAuto::class)
+            ->postJson("ajax/comment/news/{$news->id}", [
                 'text' => 'some text from the guest',
                 'email' => $email,
             ])
@@ -50,9 +49,8 @@ class CommentsTest extends TestCase
         /** @var News $news */
         $news = factory(News::class)->create(['user_id' => $user->id]);
 
-        $this->expectsEvents(CommentPublished::class);
-
-        $this->postJson("ajax/comment/news/{$news->id}", ['text' => 'some text from the user is here'])
+        $this->expectsEvents(CommentPublished::class)
+            ->postJson("ajax/comment/news/{$news->id}", ['text' => 'some text from the user is here'])
             ->assertStatus(201)
             ->assertJsonStructure(['data']);
     }

@@ -3,7 +3,7 @@
 /** @var Illuminate\Database\Eloquent\Factory $factory */
 
 $factory->define(App\File::class, function (Faker\Generator $faker) {
-    $title = $faker->word;
+    $title = $faker->lexify('??????????');
 
     return [
         'size' => $faker->numberBetween(1000, 1000000),
