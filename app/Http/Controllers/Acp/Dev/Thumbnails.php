@@ -34,7 +34,7 @@ class Thumbnails extends BaseController
             ->convert($file->getRealPath());
 
         $pathinfo = pathinfo($file->getClientOriginalName());
-        $filename = $pathinfo['filename'].'.'.strtolower($pathinfo['extension']);
+        $filename = $pathinfo['filename'] . '.' . str_replace('jpeg', 'jpg', strtolower($pathinfo['extension']));
 
         rename($image->getRealPath(), public_path("uploads/temp/{$filename}"));
 
