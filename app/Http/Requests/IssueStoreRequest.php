@@ -7,7 +7,7 @@ class IssueStoreRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        return $this->expectsJson();
     }
 
     public function email()

@@ -16,10 +16,6 @@ class Issues extends Controller
 
     public function store(IssuesTodayLimit $limits, IssueStoreRequest $request)
     {
-        if (!$request->expectsJson()) {
-            return redirect(path(HomeController::class));
-        }
-
         /** @var User $user */
         $user = $request->user();
         $email = $request->email();
