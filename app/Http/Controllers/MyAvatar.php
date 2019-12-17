@@ -18,15 +18,8 @@ class MyAvatar extends Controller
 
     public function update(MyAvatarUpdateRequest $request)
     {
-        /** @var User $user */
-        $user = $request->user();
-        $file = $request->file('file');
-
-        if (null === $file || !$file->isValid()) {
-            throw new \Exception('Необходимо предоставить хотя бы один файл');
-        }
-
-        $avatar = $user->uploadAvatar($file);
+        $avatar = $request->userModel()
+            ->uploadAvatar($request->avatar());
 
         event(new \App\Events\Stats\UserAvatarUploaded);
 

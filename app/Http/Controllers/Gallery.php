@@ -32,7 +32,7 @@ class Gallery extends Controller
 
     public function store(GalleryStoreRequest $request)
     {
-        $file = $request->getFile();
+        $file = $request->image();
 
         $image = Image::createFromFile($file, $request->user()->id);
         $image->siteThumbnail($file);

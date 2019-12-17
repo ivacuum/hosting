@@ -10,6 +10,28 @@ class IssueStoreRequest extends FormRequest
         return true;
     }
 
+    public function email()
+    {
+        return $this->input('email');
+    }
+
+    public function name()
+    {
+        return $this->input('name');
+    }
+
+    public function pathFromUrl(): string
+    {
+        $locale = $this->server->get('LARAVEL_LOCALE') ?? '';
+        $parsed = parse_url($this->session()->previousUrl());
+
+        $path = $parsed['path'] ?? '';
+        $query = isset($parsed['query']) ? "?{$parsed['query']}" : '';
+        $localeUri = $locale ? "/{$locale}" : '';
+
+        return $localeUri . $path . $query;
+    }
+
     public function rules(): array
     {
         return [
@@ -27,5 +49,15 @@ class IssueStoreRequest extends FormRequest
         }
 
         return $data;
+    }
+
+    public function text()
+    {
+        return $this->input('text');
+    }
+
+    public function title()
+    {
+        return $this->input('title');
     }
 }

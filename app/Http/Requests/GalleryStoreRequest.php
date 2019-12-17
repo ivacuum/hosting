@@ -10,7 +10,7 @@ class GalleryStoreRequest extends FormRequest
         return true;
     }
 
-    public function getFile()
+    public function image()
     {
         $file = $this->file('file');
 

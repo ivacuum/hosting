@@ -20,13 +20,9 @@ class Issues extends Controller
             return redirect(path(HomeController::class));
         }
 
-        $name = $request->input('name');
-        $text = $request->input('text');
-        $email = $request->input('email');
-        $title = $request->input('title');
-
         /** @var User $user */
         $user = $request->user();
+        $email = $request->email();
         $isGuest = null === $user;
 
         if ($isGuest) {
@@ -49,26 +45,15 @@ class Issues extends Controller
         }
 
         $issue = new Issue;
-        $issue->name = $name;
-        $issue->page = $this->pathFromUrl($request->session()->previousUrl(), $request->server->get('LARAVEL_LOCALE') ?? '');
-        $issue->text = $text;
+        $issue->name = $request->name();
+        $issue->page = $request->pathFromUrl();
+        $issue->text = $request->text();
         $issue->email = $email;
-        $issue->title = $title;
+        $issue->title = $request->title();
         $issue->status = Issue::STATUS_OPEN;
         $issue->user_id = $user->id;
         $issue->save();
 
         return response('', 201);
-    }
-
-    protected function pathFromUrl(string $url, string $locale): string
-    {
-        $parsed = parse_url($url);
-
-        $path = $parsed['path'] ?? '';
-        $query = isset($parsed['query']) ? "?{$parsed['query']}" : '';
-        $localeUri = $locale ? "/{$locale}" : '';
-
-        return $localeUri.$path.$query;
     }
 }
