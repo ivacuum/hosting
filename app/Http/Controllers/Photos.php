@@ -3,9 +3,11 @@
 use App\CacheKey;
 use App\City;
 use App\Country;
+use App\Http\Requests\PhotosMapRequest;
 use App\Photo;
 use App\Tag;
 use App\Trip;
+use App\Utilities\CountryHelper;
 use Carbon\CarbonInterval;
 
 class Photos extends Controller
@@ -73,9 +75,9 @@ class Photos extends Controller
         ]);
     }
 
-    public function country($slug)
+    public function country(string $slug, CountryHelper $countryHelper)
     {
-        $country = \CountryHelper::findBySlugOrFail($slug);
+        $country = $countryHelper->findBySlugOrFail($slug);
 
         $ids = Trip::idsByCountry($country->id);
 
@@ -100,15 +102,13 @@ class Photos extends Controller
         return view($this->view);
     }
 
-    public function map()
+    public function map(PhotosMapRequest $request)
     {
-        if (request()->expectsJson()) {
-            $tripId = request('trip_id');
-
-            return $this->pointsForMap($tripId);
+        if ($request->expectsJson()) {
+            return $this->pointsForMap($request->tripId());
         }
 
-        $photoSlug = request('photo');
+        $photoSlug = $request->photoSlug();
 
         $photo = $photoSlug
             ? Photo::query()

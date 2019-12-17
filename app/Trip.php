@@ -426,9 +426,9 @@ class Trip extends Model
     {
         $ids = \Cache::rememberForever(CacheKey::TRIPS_PUBLISHED_BY_CITY, function () {
             $trips = static::published()->get(['id', 'city_id']);
-
             $result = [];
 
+            /** @var self $trip */
             foreach ($trips as $trip) {
                 $result[$trip->city_id][] = $trip->id;
             }
@@ -453,6 +453,7 @@ class Trip extends Model
 
             $result = [];
 
+            /** @var self $trip */
             foreach ($trips as $trip) {
                 $result[$trip->city->country_id][] = $trip->id;
             }
