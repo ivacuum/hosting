@@ -19,18 +19,22 @@ class TorrentTest extends TestCase
     {
         $categoryId = 2;
 
-        factory(Torrent::class)->create(['category_id' => $categoryId]);
+        /** @var Torrent $torrent */
+        $torrent = factory(Torrent::class)->create(['category_id' => $categoryId]);
 
         $this->get("torrents?category_id={$categoryId}")
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($torrent->title);
     }
 
     public function testComments()
     {
-        factory(Comment::class)->state('torrent')->create();
+        /** @var Comment $comment */
+        $comment = factory(Comment::class)->state('torrent')->create();
 
         $this->get('torrents/comments')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($comment->html);
     }
 
     public function testCreate()
@@ -50,10 +54,12 @@ class TorrentTest extends TestCase
 
     public function testIndex()
     {
-        factory(Torrent::class)->create();
+        /** @var Torrent $torrent */
+        $torrent = factory(Torrent::class)->create();
 
         $this->get('torrents')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($torrent->title);
     }
 
     public function estMagnetClick()
@@ -62,14 +68,13 @@ class TorrentTest extends TestCase
 
     public function testMy()
     {
-        /** @var User $user */
-        $user = factory(User::class)->create();
+        /** @var Torrent $torrent */
+        $torrent = factory(Torrent::class)->create();
 
-        factory(Torrent::class)->create(['user_id' => $user->id]);
-
-        $this->be($user)
+        $this->be($torrent->user)
             ->get('torrents/my')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($torrent->title);
     }
 
     public function testPromo()
@@ -80,10 +85,12 @@ class TorrentTest extends TestCase
 
     public function testSearch()
     {
-        factory(Torrent::class)->create(['title' => 'title _2017_ something else']);
+        /** @var Torrent $torrent */
+        $torrent = factory(Torrent::class)->create(['title' => 'title _2017_ something else']);
 
         $this->get('torrents?q=_2017_')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($torrent->title);
     }
 
     public function testShow()
@@ -92,7 +99,8 @@ class TorrentTest extends TestCase
         $torrent = factory(Torrent::class)->create();
 
         $this->get("torrents/{$torrent->id}")
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($torrent->title);
     }
 
     public function testStore()
@@ -100,6 +108,7 @@ class TorrentTest extends TestCase
         /** @var User $user */
         $user = factory(User::class)->create();
         $rtoId = 1234567890;
+        $categoryId = 2;
 
         $this->mock(Rto::class, function (MockInterface $mock) use ($rtoId) {
             $response = new RtoTopicHtmlResponse('<div class="post_body">body<fieldset class="attach"><span class="attach_link"><a href="magnet:?xt=urn:btih:info_hash&tr=announcer"></a></span></fieldset></fieldset>');
@@ -111,13 +120,14 @@ class TorrentTest extends TestCase
         });
 
         $response = $this->be($user)
-            ->post('torrents', ['input' => $rtoId, 'category_id' => 2]);
+            ->post('torrents', ['input' => $rtoId, 'category_id' => $categoryId]);
 
         $torrent = $user->torrents[0];
 
         $response->assertRedirect($torrent->www());
 
         $this->assertEquals($rtoId, $torrent->rto_id);
+        $this->assertEquals($categoryId, $torrent->category_id);
     }
 
     public function estStoreDuplicate()
