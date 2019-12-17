@@ -7,6 +7,7 @@ use App\Http\Requests\PhotosMapRequest;
 use App\Photo;
 use App\Tag;
 use App\Trip;
+use App\Utilities\CityHelper;
 use App\Utilities\CountryHelper;
 use Carbon\CarbonInterval;
 
@@ -33,12 +34,12 @@ class Photos extends Controller
         return view($this->view, ['photos' => $photos]);
     }
 
-    public function cities()
+    public function cities(CityHelper $cityHelper)
     {
         $trips = Trip::tripsByCities(1);
 
-        $cities = \CityHelper::cachedById()
-            ->filter(function ($city) use (&$trips) {
+        $cities = $cityHelper->cachedById()
+            ->filter(function (City $city) use (&$trips) {
                 return $trips[$city->id]['published'] ?? 0;
             })
             ->sortBy(City::titleField());
@@ -46,9 +47,10 @@ class Photos extends Controller
         return view($this->view, ['cities' => $cities]);
     }
 
-    public function city(string $slug)
+    public function city(string $slug, CityHelper $cityHelper)
     {
-        $city = \CityHelper::findBySlugOrFail($slug);
+        /** @var City $city */
+        $city = $cityHelper->findBySlugOrFail($slug);
 
         $ids = Trip::idsByCity($city->id);
 
@@ -77,6 +79,7 @@ class Photos extends Controller
 
     public function country(string $slug, CountryHelper $countryHelper)
     {
+        /** @var Country $country */
         $country = $countryHelper->findBySlugOrFail($slug);
 
         $ids = Trip::idsByCountry($country->id);
@@ -215,7 +218,7 @@ class Photos extends Controller
         return view($this->view, [
             'tag' => $tag,
             'photos' => $photos,
-            'metaTitle' => "#{$tag->title} · ".\ViewHelper::plural('photos', sizeof($tag->photos)),
+            'metaTitle' => "#{$tag->title} · " . \ViewHelper::plural('photos', sizeof($tag->photos)),
         ]);
     }
 
@@ -280,6 +283,7 @@ class Photos extends Controller
                 'features' => [],
             ];
 
+            /** @var Photo $photo */
             foreach ($photos as $i => $photo) {
                 $basename = basename($photo->slug);
 
