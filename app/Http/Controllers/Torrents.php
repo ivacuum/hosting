@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Http\Requests\TorrentStoreRequest;
 use App\Http\Resources\TorrentCollection;
-use App\Rules\TorrentCategoryId;
 use App\SearchSynonym;
 use App\Services\Rto;
 use App\Services\RtoMagnetNotFoundException;
@@ -132,17 +132,11 @@ class Torrents extends Controller
         ]);
     }
 
-    public function store(Rto $rto)
+    public function store(TorrentStoreRequest $request, Rto $rto)
     {
-        $input = request('input');
-        $categoryId = request('category_id');
+        $topicId = $request->topicId($rto);
 
-        request()->validate([
-            'input' => 'required',
-            'category_id' => TorrentCategoryId::rules(),
-        ]);
-
-        if (($topicId = $rto->findTopicId($input)) > 0) {
+        if ($topicId > 0) {
             $torrent = Torrent::where('rto_id', $topicId)->first();
 
             if (null !== $torrent) {
@@ -155,7 +149,7 @@ class Torrents extends Controller
         }
 
         try {
-            $data = $rto->torrentData($input);
+            $data = $rto->torrentData($topicId);
         } catch (\Throwable $e) {
             $message = 'Ввод не распознан, попробуйте другую ссылку или хэш';
 
@@ -182,7 +176,7 @@ class Torrents extends Controller
         $torrent->user_id = request()->user()->id;
         $torrent->info_hash = $data->getInfoHash();
         $torrent->announcer = $data->getAnnouncer();
-        $torrent->category_id = $categoryId;
+        $torrent->category_id = $request->categoryId();
         $torrent->registered_at = now();
         $torrent->related_query = '';
         $torrent->save();
