@@ -7,8 +7,7 @@ class JsTypo extends Controller
 {
     public function __invoke(TypoStoreRequest $request)
     {
-        $page = $request->session()->previousUrl();
-        $selection = $request->input('selection');
+        $page = $request->page();
 
         if (!$page) {
             return response()->json([
@@ -17,7 +16,7 @@ class JsTypo extends Controller
             ], 422);
         }
 
-        event(new TypoReceived($selection, $page));
+        event(new TypoReceived($request->selection(), $page));
 
         return response()->json([
             'status' => 'OK',

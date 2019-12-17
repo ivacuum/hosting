@@ -9,6 +9,11 @@ class TypoStoreRequest extends FormRequest
         return true;
     }
 
+    public function page()
+    {
+        return $this->session()->previousUrl();
+    }
+
     public function rules(): array
     {
         return [
@@ -19,5 +24,10 @@ class TypoStoreRequest extends FormRequest
                 'max:200',
             ],
         ];
+    }
+
+    public function selection()
+    {
+        return $this->input('selection');
     }
 }
