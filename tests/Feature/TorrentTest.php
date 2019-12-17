@@ -7,6 +7,7 @@ use App\Services\RtoTopicHtmlResponse;
 use App\Services\RtoTorrentData;
 use App\Torrent;
 use App\User;
+use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Mockery\MockInterface;
 use Tests\TestCase;
@@ -112,7 +113,7 @@ class TorrentTest extends TestCase
 
         $this->mock(Rto::class, function (MockInterface $mock) use ($rtoId) {
             $response = new RtoTopicHtmlResponse('<div class="post_body">body<fieldset class="attach"><span class="attach_link"><a href="magnet:?xt=urn:btih:info_hash&tr=announcer"></a></span></fieldset></fieldset>');
-            $topicData = new RtoTopicData($rtoId, 'title', 'info_hash', now(), RtoTopicData::STATUS_APPROVED, 1, 1, 1, 1, now());
+            $topicData = new RtoTopicData($rtoId, 'title', 'info_hash', CarbonImmutable::now(), RtoTopicData::STATUS_APPROVED, 1, 1, 1, 1, CarbonImmutable::now());
             $torrentData = new RtoTorrentData($topicData, $response);
 
             $mock->shouldReceive('findTopicId')->andReturn($rtoId);
