@@ -275,7 +275,7 @@ class Photos extends Controller
                 ->forTrip($tripId)
                 ->published()
                 ->onMap()
-                ->orderBy('id', 'asc')
+                ->orderBy('id')
                 ->get();
 
             $collection = [
