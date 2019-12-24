@@ -30,7 +30,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Kanji extends Model
 {
-    use BurnsAndResurrects, UserBurnableScope;
+    use BurnsAndResurrects;
+    use UserBurnableScope;
 
     protected $fillable = ['level']; // Чтобы не бросало исключение
     protected $perPage = 50;

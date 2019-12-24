@@ -8,7 +8,8 @@ use Laravel\Nova\Fields;
 
 class TripHideAction extends Action
 {
-    use InteractsWithQueue, Queueable;
+    use InteractsWithQueue;
+    use Queueable;
 
     public $name = 'Hide';
     public $withoutConfirmation = true;

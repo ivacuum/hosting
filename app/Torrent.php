@@ -36,7 +36,8 @@ use Laravel\Scout\Searchable;
  */
 class Torrent extends Model
 {
-    use Searchable, SoftDeleteTrait;
+    use Searchable;
+    use SoftDeleteTrait;
 
     const SEARCH_INDEX = 'vac_torrents_v1';
 
@@ -211,7 +212,7 @@ class Torrent extends Model
             фантастика|
             фэнтези|
             юмор|
-            
+
             # Страны
             австралия|
             великобритания|
@@ -226,7 +227,7 @@ class Torrent extends Model
             сша|
             франция|
             япония|
-            
+
             # Режиссеры
             дэвид\ финчер|
             гай\ ричи|

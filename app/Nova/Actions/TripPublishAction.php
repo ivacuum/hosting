@@ -8,7 +8,8 @@ use Laravel\Nova\Fields;
 
 class TripPublishAction extends Action
 {
-    use InteractsWithQueue, Queueable;
+    use InteractsWithQueue;
+    use Queueable;
 
     public $name = 'Publish';
     public $withoutConfirmation = true;

@@ -1,5 +1,5 @@
 @if (!$model->exists)
-  {!! Form::select('trip_id')->required()->classes(['js-append-formdata'])->values(App\Trip::forInputSelect())->html() !!}
+  {!! Form::select('trip_id')->required()->classes(['js-append-formdata'])->values(App\TripFactory::forInputSelect())->html() !!}
 
   <div class="mb-4">
     <label class="font-bold">{{ trans('acp.photos.index') }}</label>

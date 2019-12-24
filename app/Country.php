@@ -30,8 +30,8 @@ use Illuminate\Support\Collection;
  */
 class Country extends Model
 {
-    use HasLocalizedTitle,
-        HasTripsMetaDescription;
+    use HasLocalizedTitle;
+    use HasTripsMetaDescription;
 
     protected $guarded = ['created_at', 'updated_at'];
 
@@ -55,7 +55,7 @@ class Country extends Model
     // Methods
     public static function allWithCitiesAndTrips(int $userId = 0)
     {
-        $trips = Trip::tripsByCities($userId);
+        $trips = TripFactory::tripsByCities($userId);
 
         $cities = \CityHelper::cachedById()
             ->filter(function (City $city) use (&$trips) {
@@ -84,7 +84,7 @@ class Country extends Model
 
     public static function allWithPublishedTrips(int $userId = 0)
     {
-        $trips = Trip::tripsByCities($userId);
+        $trips = TripFactory::tripsByCities($userId);
 
         $cities = \CityHelper::cachedById()
             ->filter(function (City $city) use (&$trips) {

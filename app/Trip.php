@@ -3,12 +3,9 @@
 use App\Http\Controllers\Life;
 use App\Http\Controllers\UserTravelTrips;
 use App\Traits\HasLocalizedTitle;
-use Carbon\CarbonInterval;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Ivacuum\Generic\Utilities\TextImagesParser;
-use Symfony\Component\Finder\Finder;
 
 /**
  * Поездка
@@ -40,6 +37,11 @@ use Symfony\Component\Finder\Finder;
  * @property \Illuminate\Database\Eloquent\Collection|\App\Email[] $emails
  * @property \Illuminate\Database\Eloquent\Collection|\App\Photo[] $photos
  * @property \App\User $user
+ *
+ * @method static Builder next()
+ * @method static Builder previous(int $nextTrips)
+ * @method static Builder published()
+ * @method static Builder visible()
  *
  * @property-read int $comments_count
  * @property-read string $meta_title
@@ -124,7 +126,7 @@ class Trip extends Model
             ->take(2);
     }
 
-    public function scopePrevious(Builder $query, $nextTrips = 2)
+    public function scopePrevious(Builder $query, int $nextTrips = 2)
     {
         // Всего 4 места под ссылки помимо текущей поездки
         // prev prev current next next
@@ -216,11 +218,6 @@ class Trip extends Model
         $tpl = str_replace('.', '/', $this->template());
 
         return unlink(base_path("resources/views/{$tpl}.blade.php"));
-    }
-
-    public static function forInputSelect()
-    {
-        return static::orderBy('date_start', 'desc')->get(['id', 'slug'])->pluck('slug', 'id');
     }
 
     public function imgAltText(): string
@@ -370,102 +367,6 @@ class Trip extends Model
         return $this->user_id === 1
             ? path_locale([Life::class, 'page'], $this->slug, false, $locale) . $anchor
             : path_locale([UserTravelTrips::class, 'show'], [$this->user->login, $this->slug], false, $locale) . $anchor;
-    }
-
-    /**
-     * @return \Symfony\Component\Finder\Finder|\Symfony\Component\Finder\SplFileInfo[]
-     */
-    public static function templatesIterator()
-    {
-        return Finder::create()
-            ->files()
-            ->in(base_path('resources/views/life/trips'))
-            ->name('*.blade.php')
-            ->notName('base.blade.php')
-            ->sortByName();
-    }
-
-    public static function tripsByCities(int $userId = 0)
-    {
-        $tripsByCities = [];
-
-        static::query()
-            ->when($userId > 0, function (Builder $query) use ($userId) {
-                return $query->where('user_id', $userId);
-            })
-            ->visible()
-            ->get(['id', 'city_id', 'status'])
-            ->each(function (self $trip) use (&$tripsByCities) {
-                if ($trip->isPublished()) {
-                    @$tripsByCities[$trip->city_id]['published'] += 1;
-                }
-
-                @$tripsByCities[$trip->city_id]['total'] += 1;
-            });
-
-        return collect($tripsByCities);
-    }
-
-    public static function tripsWithCover(?int $count = null)
-    {
-        return \Cache::remember(CacheKey::TRIPS_PUBLISHED_WITH_COVER, CarbonInterval::day(), function () {
-            // Не нужно ограничение по пользователю, так как meta_image есть только у user_id=1
-            return static::query()
-                ->published()
-                ->where('meta_image', '<>', '')
-                ->orderBy('date_start', 'desc')
-                ->get();
-        })->when($count > 0, function (Collection $trips) use ($count) {
-            return $trips->count() > $count
-                ? $trips->random($count)
-                : $trips;
-        });
-    }
-
-    public static function idsByCity(?int $id = null)
-    {
-        $ids = \Cache::rememberForever(CacheKey::TRIPS_PUBLISHED_BY_CITY, function () {
-            $trips = static::published()->get(['id', 'city_id']);
-            $result = [];
-
-            /** @var self $trip */
-            foreach ($trips as $trip) {
-                $result[$trip->city_id][] = $trip->id;
-            }
-
-            return $result;
-        });
-
-        if ($id && !empty($ids[$id])) {
-            return $ids[$id];
-        }
-
-        return $ids;
-    }
-
-    public static function idsByCountry(?int $id = null)
-    {
-        $ids = \Cache::rememberForever(CacheKey::TRIPS_PUBLISHED_BY_COUNTRY, function () {
-            $trips = static::query()
-                ->published()
-                ->with('city:id,country_id')
-                ->get(['id', 'city_id']);
-
-            $result = [];
-
-            /** @var self $trip */
-            foreach ($trips as $trip) {
-                $result[$trip->city->country_id][] = $trip->id;
-            }
-
-            return $result;
-        });
-
-        if ($id && !empty($ids[$id])) {
-            return $ids[$id];
-        }
-
-        return $ids;
     }
 
     protected function monthName(int $month): string

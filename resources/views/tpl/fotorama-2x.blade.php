@@ -1,5 +1,8 @@
 <?php
-/** @var bool $isCrawler */
+/**
+ * @var bool $isCrawler
+ * @var \App\Trip $trip
+ */
 $alt = $isCrawler && isset($trip) ? $trip->imgAltText() : '';
 ?>
 <div class="-mt-2 mb-6 mobile-wide">

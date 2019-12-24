@@ -23,7 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Radical extends Model
 {
-    use BurnsAndResurrects, UserBurnableScope;
+    use BurnsAndResurrects;
+    use UserBurnableScope;
 
     protected $fillable = ['level']; // Чтобы не бросало исключение
     protected $perPage = 50;

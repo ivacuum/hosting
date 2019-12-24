@@ -5,6 +5,7 @@ use App\Country;
 use App\Domain\TripStatsCalculator;
 use App\Gig;
 use App\Trip;
+use App\TripFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,7 @@ class Life extends Controller
             'from' => $from,
         ], [
             'to' => 'nullable|date',
-            'from' => 'nullable|date'
+            'from' => 'nullable|date',
         ]);
 
         abort_unless($validator->passes(), 404);
@@ -45,7 +46,7 @@ class Life extends Controller
             })
             ->orderBy('date_start', $from || $to ? 'asc' : 'desc')
             ->get()
-            ->groupBy(function ($model) {
+            ->groupBy(function (Trip $model) {
                 return $model->year;
             });
 
@@ -84,7 +85,7 @@ class Life extends Controller
 
     public function cities()
     {
-        $trips = Trip::tripsByCities(1);
+        $trips = TripFactory::tripsByCities(1);
 
         $cities = \CityHelper::cachedById()
             ->filter(function (City $city) use (&$trips) {

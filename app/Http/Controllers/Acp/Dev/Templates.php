@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Acp\Dev;
 
 use App\Trip;
+use App\TripFactory;
 use Ivacuum\Generic\Controllers\Acp\BaseController;
 
 class Templates extends BaseController
@@ -18,7 +19,7 @@ class Templates extends BaseController
             $total->{$lang} = 0;
         }
 
-        foreach (Trip::templatesIterator() as $template) {
+        foreach (TripFactory::templatesIterator() as $template) {
             if (!preg_match("/{$filter}/", $template->getBasename('.blade.php'))) {
                 continue;
             }

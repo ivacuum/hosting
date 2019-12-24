@@ -9,7 +9,8 @@ use Laravel\Nova\Fields;
 
 class TorrentReplaceAction extends Action
 {
-    use InteractsWithQueue, Queueable;
+    use InteractsWithQueue;
+    use Queueable;
 
     public $name = 'Replace';
 

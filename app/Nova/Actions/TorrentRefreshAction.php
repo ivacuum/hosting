@@ -9,7 +9,8 @@ use Laravel\Nova\Fields;
 
 class TorrentRefreshAction extends Action
 {
-    use InteractsWithQueue, Queueable;
+    use InteractsWithQueue;
+    use Queueable;
 
     public $name = 'Refresh';
 

@@ -8,7 +8,8 @@ use Laravel\Nova\Fields;
 
 class TripMakeInactiveAction extends Action
 {
-    use InteractsWithQueue, Queueable;
+    use InteractsWithQueue;
+    use Queueable;
 
     public $name = 'Make Inactive';
     public $withoutConfirmation = true;

@@ -26,7 +26,8 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  */
 class Comment extends Model
 {
-    use OriginalWithCast, RecordsActivity;
+    use OriginalWithCast;
+    use RecordsActivity;
 
     const STATUS_HIDDEN = 0;
     const STATUS_PUBLISHED = 1;

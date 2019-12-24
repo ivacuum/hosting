@@ -32,8 +32,8 @@ use Illuminate\Support\Collection;
  */
 class City extends Model
 {
-    use HasLocalizedTitle,
-        HasTripsMetaDescription;
+    use HasLocalizedTitle;
+    use HasTripsMetaDescription;
 
     protected $guarded = ['created_at', 'updated_at'];
     protected $perPage = 50;

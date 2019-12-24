@@ -7,6 +7,7 @@ use App\Http\Requests\PhotosMapRequest;
 use App\Photo;
 use App\Tag;
 use App\Trip;
+use App\TripFactory;
 use App\Utilities\CityHelper;
 use App\Utilities\CountryHelper;
 use Carbon\CarbonInterval;
@@ -36,7 +37,7 @@ class Photos extends Controller
 
     public function cities(CityHelper $cityHelper)
     {
-        $trips = Trip::tripsByCities(1);
+        $trips = TripFactory::tripsByCities(1);
 
         $cities = $cityHelper->cachedById()
             ->filter(function (City $city) use (&$trips) {
@@ -52,7 +53,7 @@ class Photos extends Controller
         /** @var City $city */
         $city = $cityHelper->findBySlugOrFail($slug);
 
-        $ids = Trip::idsByCity($city->id);
+        $ids = TripFactory::idsByCity($city->id);
 
         abort_if(empty($ids), 404);
 
@@ -82,7 +83,7 @@ class Photos extends Controller
         /** @var Country $country */
         $country = $countryHelper->findBySlugOrFail($slug);
 
-        $ids = Trip::idsByCountry($country->id);
+        $ids = TripFactory::idsByCountry($country->id);
 
         abort_if(empty($ids), 404);
 
@@ -151,7 +152,7 @@ class Photos extends Controller
             // В пределах города
             abort_unless($cityId == $photo->rel->city->id, 404);
 
-            $ids = Trip::idsByCity($cityId);
+            $ids = TripFactory::idsByCity($cityId);
 
             $next = $next->forTrips($ids);
             $prev = $prev->forTrips($ids);
@@ -165,7 +166,7 @@ class Photos extends Controller
             // В пределах страны
             abort_unless($countryId == $photo->rel->city->country->id, 404);
 
-            $ids = Trip::idsByCountry($countryId);
+            $ids = TripFactory::idsByCountry($countryId);
 
             $next = $next->forTrips($ids);
             $prev = $prev->forTrips($ids);
@@ -260,7 +261,7 @@ class Photos extends Controller
     public function trips()
     {
         return view($this->view, [
-            'trips' => Trip::tripswithCover(),
+            'trips' => TripFactory::tripswithCover(),
         ]);
     }
 

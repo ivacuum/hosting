@@ -2,12 +2,13 @@
 
 use App\City;
 use App\Trip;
+use App\TripFactory;
 
 class UserTravelCities extends UserTravel
 {
     public function index(string $login)
     {
-        $trips = Trip::tripsByCities($this->traveler->id);
+        $trips = TripFactory::tripsByCities($this->traveler->id);
 
         $cities = \CityHelper::cachedById()
             ->filter(function (City $city) use (&$trips) {

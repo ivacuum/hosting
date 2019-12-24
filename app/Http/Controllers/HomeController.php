@@ -1,11 +1,11 @@
 <?php namespace App\Http\Controllers;
 
-use App\Trip;
+use App\TripFactory;
 
 class HomeController extends Controller
 {
     public function __invoke()
     {
-        return view('index', ['trips' => Trip::tripsWithCover(6)]);
+        return view('index', ['trips' => TripFactory::tripsWithCover(6)]);
     }
 }

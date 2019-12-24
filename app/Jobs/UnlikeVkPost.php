@@ -9,7 +9,10 @@ use Illuminate\Foundation\Bus\Dispatchable;
 
 class UnlikeVkPost implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     protected $post;
 
