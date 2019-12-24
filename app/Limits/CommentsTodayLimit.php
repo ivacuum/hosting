@@ -15,7 +15,7 @@ class CommentsTodayLimit
 
         $last = Activity::where('user_id', $userId)
             ->where('type', 'Comment.created')
-            ->orderBy('id', 'desc')
+            ->orderByDesc('id')
             ->first(['created_at']);
 
         if (null === $last) {

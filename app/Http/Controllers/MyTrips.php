@@ -11,7 +11,7 @@ class MyTrips extends Controller
         $models = Trip::with('user')
             ->withCount('comments', 'photos')
             ->where('user_id', request()->user()->id)
-            ->orderBy('date_start', 'desc')
+            ->orderByDesc('date_start')
             ->paginate(50, Trip::COLUMNS_LIST)
             ->withPath(path([self::class, 'index']));
 
@@ -42,7 +42,6 @@ class MyTrips extends Controller
         $city = \CityHelper::findByIdOrFail($request->input('city_id'));
 
         $trip = new Trip;
-
         $trip->slug = $request->input('slug');
         $trip->status = $request->input('status');
         $trip->city_id = $city->id;
@@ -52,7 +51,6 @@ class MyTrips extends Controller
         $trip->title_ru = $city->title_ru;
         $trip->date_end = $request->input('date_end');
         $trip->date_start = $request->input('date_start');
-
         $trip->save();
 
         return $this->redirectAfterStore($trip);

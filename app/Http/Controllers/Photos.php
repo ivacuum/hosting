@@ -28,7 +28,7 @@ class Photos extends Controller
     public function index()
     {
         $photos = Photo::published()
-            ->orderBy('id', 'desc')
+            ->orderByDesc('id')
             ->paginate(24)
             ->withPath(path([self::class, 'index']));
 
@@ -59,7 +59,7 @@ class Photos extends Controller
 
         $photos = Photo::forTrips($ids)
             ->published()
-            ->orderBy('id', 'desc')
+            ->orderByDesc('id')
             ->get();
 
         \Breadcrumbs::push($city->title);
@@ -89,7 +89,7 @@ class Photos extends Controller
 
         $photos = Photo::forTrips($ids)
             ->published()
-            ->orderBy('id', 'desc')
+            ->orderByDesc('id')
             ->get();
 
         \Breadcrumbs::push($country->title);
@@ -137,7 +137,7 @@ class Photos extends Controller
         $countryId = request('country_id');
 
         $next = Photo::where('id', '>', $photo->id)->published();
-        $prev = Photo::where('id', '<', $photo->id)->published()->orderBy('id', 'desc');
+        $prev = Photo::where('id', '<', $photo->id)->published()->orderByDesc('id');
 
         if ($tagId) {
             // Просмотр в пределах одного тэга
@@ -208,7 +208,7 @@ class Photos extends Controller
     {
         $photos = Photo::forTag($tag->id)
             ->published()
-            ->orderBy('id', 'desc')
+            ->orderByDesc('id')
             ->get();
 
         \Breadcrumbs::push(trans('photos.tags'), 'photos/tags')
@@ -247,7 +247,7 @@ class Photos extends Controller
 
         $photos = Photo::forTrip($trip->id)
             ->published()
-            ->orderBy('id', 'desc')
+            ->orderByDesc('id')
             ->get();
 
         \Breadcrumbs::push($trip->title);

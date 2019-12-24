@@ -15,7 +15,7 @@ class Comments extends Controller
         $torrentId = request('torrent_id');
 
         $models = Model::with('user')
-            ->orderBy('id', 'desc')
+            ->orderByDesc('id')
             ->when(null !== $status, function (Builder $query) use ($status) {
                 return $query->where('status', $status);
             })

@@ -44,7 +44,7 @@ class Torrents extends Controller
         }
 
         $torrents = $torrents->published()
-            ->orderBy('registered_at', 'desc')
+            ->orderByDesc('registered_at')
             ->when(!$q && null !== $category, function (Builder $query) use ($categoryId) {
                 $ids = \TorrentCategoryHelper::selfAndDescendantsIds($categoryId);
 
@@ -79,7 +79,7 @@ class Torrents extends Controller
         $comments = Comment::with('rel', 'user')
             ->byType('Torrent')
             ->published()
-            ->orderBy('created_at', 'desc')
+            ->orderByDesc('created_at')
             ->take(50)
             ->get();
 
@@ -112,7 +112,7 @@ class Torrents extends Controller
             ->where('user_id', $user->id)
             ->where('status', Torrent::STATUS_PUBLISHED)
             ->withCount('commentsPublished AS comments')
-            ->orderBy('registered_at', 'desc')
+            ->orderByDesc('registered_at')
             ->simplePaginate(null, ['id'])
             ->withPath(path([self::class, 'my']));
 

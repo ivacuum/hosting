@@ -11,7 +11,7 @@ class AjaxChat extends Controller
         return ChatMessageResource::collection(
             ChatMessage::with('user')
                 ->where('status', ChatMessage::STATUS_PUBLISHED)
-                ->orderBy('id', 'desc')
+                ->orderByDesc('id')
                 ->take(20)
                 ->get()
                 ->reverse()
@@ -21,14 +21,12 @@ class AjaxChat extends Controller
 
     public function store(ChatStoreRequest $request)
     {
-        $chatMessage = new ChatMessage([
-            'ip' => $request->ip(),
-            'text' => $request->input('text'),
-            'status' => ChatMessage::STATUS_PUBLISHED,
-            'user_id' => $request->user()->id,
-        ]);
-
-        $chatMessage->setRelation('user', $request->user());
+        $chatMessage = new ChatMessage;
+        $chatMessage->ip = $request->ip();
+        $chatMessage->text = $request->text();
+        $chatMessage->status = ChatMessage::STATUS_PUBLISHED;
+        $chatMessage->user_id = $request->userModel()->id;
+        $chatMessage->setRelation('user', $request->userModel());
         $chatMessage->save();
 
         $chatResource = new ChatMessageResource($chatMessage);

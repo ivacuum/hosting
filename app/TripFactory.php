@@ -99,7 +99,7 @@ class TripFactory
             return Trip::query()
                 ->published()
                 ->where('meta_image', '<>', '')
-                ->orderBy('date_start', 'desc')
+                ->orderByDesc('date_start')
                 ->get();
         })->when($count > 0, function (Collection $trips) use ($count) {
             return $trips->count() > $count

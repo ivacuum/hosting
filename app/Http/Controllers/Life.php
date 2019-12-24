@@ -9,7 +9,6 @@ use App\Http\Requests\LifeIndexRequest;
 use App\Trip;
 use App\TripFactory;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 
 class Life extends Controller
 {
@@ -174,7 +173,7 @@ class Life extends Controller
     public function gigs()
     {
         $gigs = Gig::with('artist')
-            ->orderBy('date', 'desc')
+            ->orderByDesc('date')
             ->get()
             ->groupBy(function ($model) {
                 return $model->date->year;

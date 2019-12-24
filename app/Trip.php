@@ -138,7 +138,7 @@ class Trip extends Model
             ->where('date_start', '<=', $this->date_start)
             ->where('status', static::STATUS_PUBLISHED)
             ->where('id', '<>', $this->id)
-            ->orderBy('date_start', 'desc')
+            ->orderByDesc('date_start')
             ->take($take);
     }
 

@@ -68,4 +68,9 @@ class File extends Model
 
         event(new \App\Events\Stats\FileDownloadClicked);
     }
+
+    public function isPublished(): bool
+    {
+        return $this->status === self::STATUS_PUBLISHED;
+    }
 }

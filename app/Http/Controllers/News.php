@@ -14,7 +14,7 @@ class News extends Controller
             ->when($year || $month || $day, function (Builder $query) use ($year, $month, $day) {
                 return $query->whereBetween('created_at', Model::interval($year, $month, $day));
             })
-            ->orderBy('created_at', 'desc')
+            ->orderByDesc('created_at')
             ->paginate()
             ->withPath(path([self::class, 'index']));
 

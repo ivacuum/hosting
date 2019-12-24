@@ -9,7 +9,7 @@ class Files extends Controller
         \Breadcrumbs::push(trans('menu.files'));
 
         $models = File::published()
-            ->orderBy('id', 'desc')
+            ->orderByDesc('id')
             ->paginate()
             ->withPath(path([self::class, 'index']));
 
@@ -18,7 +18,7 @@ class Files extends Controller
 
     public function download(File $file)
     {
-        abort_unless($file->status === File::STATUS_PUBLISHED, 404);
+        abort_unless($file->isPublished(), 404);
 
         $file->incrementDownloads();
 

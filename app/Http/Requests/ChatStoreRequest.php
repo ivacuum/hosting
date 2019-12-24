@@ -1,8 +1,6 @@
 <?php namespace App\Http\Requests;
 
-use Ivacuum\Generic\Http\FormRequest;
-
-class ChatStoreRequest extends FormRequest
+class ChatStoreRequest extends AbstractRequest
 {
     public function authorize(): bool
     {
@@ -14,5 +12,10 @@ class ChatStoreRequest extends FormRequest
         return [
             'text' => ['required', 'string', 'max:1000'],
         ];
+    }
+
+    public function text()
+    {
+        return $this->input('text');
     }
 }
