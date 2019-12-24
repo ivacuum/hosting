@@ -20,8 +20,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Server extends Model
 {
-    protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $hidden = ['ftp_pass'];
+    protected $guarded = ['created_at', 'updated_at', 'goto'];
 
     // Methods
     public function breadcrumb()

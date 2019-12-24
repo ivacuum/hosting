@@ -26,12 +26,11 @@ class Radical extends Model
     use BurnsAndResurrects;
     use UserBurnableScope;
 
-    protected $fillable = ['level']; // Чтобы не бросало исключение
-    protected $perPage = 50;
-
     protected $casts = [
         'level' => 'int',
     ];
+    protected $perPage = 50;
+    protected $fillable = ['level']; // Чтобы не бросало исключение
 
     // Relations
     public function burnable()

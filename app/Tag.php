@@ -26,12 +26,11 @@ class Tag extends Model
 {
     use HasLocalizedTitle;
 
-    protected $guarded = ['created_at', 'updated_at', 'goto'];
-    protected $perPage = 50;
-
     protected $casts = [
         'views' => 'int',
     ];
+    protected $guarded = ['created_at', 'updated_at', 'goto'];
+    protected $perPage = 50;
 
     // Relations
     public function news()

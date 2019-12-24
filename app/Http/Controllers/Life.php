@@ -4,6 +4,8 @@ use App\City;
 use App\Country;
 use App\Domain\TripStatsCalculator;
 use App\Gig;
+use App\Http\Requests\LifeCalendarRequest;
+use App\Http\Requests\LifeIndexRequest;
 use App\Trip;
 use App\TripFactory;
 use Illuminate\Database\Eloquent\Builder;
@@ -20,20 +22,10 @@ class Life extends Controller
         $this->middleware('breadcrumbs:menu.gigs,life/gigs')->only('gigs');
     }
 
-    public function index()
+    public function index(LifeIndexRequest $request)
     {
-        $to = request('to');
-        $from = request('from');
-
-        $validator = \Validator::make([
-            'to' => $to,
-            'from' => $from,
-        ], [
-            'to' => 'nullable|date',
-            'from' => 'nullable|date',
-        ]);
-
-        abort_unless($validator->passes(), 404);
+        $to = $request->to();
+        $from = $request->from();
 
         $trips = Trip::withCount('photos')
             ->where('user_id', 1)
@@ -53,16 +45,12 @@ class Life extends Controller
         return view($this->view, ['trips' => $trips]);
     }
 
-    public function calendar(Request $request)
+    public function calendar(LifeCalendarRequest $request)
     {
-        /** @var \App\User $user */
-        $user = $request->user();
-        $includeOnlyVisible = $user === null || !$user->isAdmin();
-
         $trips = Trip::query()
             ->where('user_id', 1)
             ->where('city_id', '<>', 1)
-            ->when($includeOnlyVisible, function (Builder $query) {
+            ->when($request->includeOnlyVisibleTrips(), function (Builder $query) {
                 $query->visible();
             })
             ->orderBy('date_start')
