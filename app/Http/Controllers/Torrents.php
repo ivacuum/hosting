@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Http\Requests\TorrentsIndexRequest;
 use App\Http\Requests\TorrentStoreRequest;
 use App\Http\Resources\TorrentCollection;
 use App\SearchSynonym;
@@ -15,13 +16,12 @@ use Illuminate\Support\HtmlString;
 
 class Torrents extends Controller
 {
-    public function index()
+    public function index(TorrentsIndexRequest $request)
     {
-        $q = request('q');
-        $q = mb_strlen($q) > 1 ? $q : null;
+        $q = $request->searchQuery();
         $category = null;
-        $fulltext = request('fulltext');
-        $categoryId = request('category_id');
+        $fulltext = $request->isFulltextSearch();
+        $categoryId = $request->categoryId();
 
         abort_if($categoryId && null === $category = \TorrentCategoryHelper::find($categoryId), 404);
 
@@ -32,7 +32,7 @@ class Torrents extends Controller
                 $builder = $builder->match($fulltext ? '*' : 'title', SearchSynonym::addSynonymsToQuery($q), true);
 
                 if ($categoryId) {
-                    $builder = $builder->where('category_id', '=', (int) $categoryId);
+                    $builder = $builder->where('category_id', '=', $categoryId);
                 }
 
                 return $builder->execute();
@@ -55,7 +55,7 @@ class Torrents extends Controller
             ->simplePaginate(25, Torrent::LIST_COLUMNS)
             ->withPath(path([self::class, 'index']));
 
-        if (request()->wantsJson()) {
+        if ($request->wantsJson()) {
             return new TorrentCollection($torrents);
         }
 
