@@ -17,7 +17,7 @@ class TorrentsIndexRequest extends AbstractRequest
         return $this->input('fulltext', false);
     }
 
-    public function searchQuery()
+    public function searchQuery(): ?string
     {
         $q = $this->input('q');
 
