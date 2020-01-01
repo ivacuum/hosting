@@ -21,10 +21,10 @@ $factory->define(App\Trip::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->state(App\Trip::class, 'city', function () {
-    return ['city_id' => factory(App\City::class)->state('country')];
-});
+$factory->state(App\Trip::class, 'city', fn () => [
+    'city_id' => factory(App\City::class)->state('country'),
+]);
 
-$factory->state(App\Trip::class, 'meta_image', function (Faker\Generator $faker) {
-    return ['meta_image' => "test/IMG_{$faker->numberBetween(1000, 9999)}.jpg"];
-});
+$factory->state(App\Trip::class, 'meta_image', fn (Faker\Generator $faker) => [
+    'meta_image' => "test/IMG_{$faker->numberBetween(1000, 9999)}.jpg",
+]);

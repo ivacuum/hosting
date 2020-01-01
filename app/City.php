@@ -80,13 +80,11 @@ class City extends Model
 
         return static::orderBy($titleField)
             ->get(['id', 'slug', $titleField])
-            ->map(function (City $item) use ($titleField) {
-                return [
-                    'key' => $item->id,
-                    'slug' => $item->slug,
-                    'value' => $item->{$titleField},
-                ];
-            });
+            ->map(fn (self $city) => [
+                'key' => $city->id,
+                'slug' => $city->slug,
+                'value' => $city->{$titleField},
+            ]);
     }
 
     public function initial(): string

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Country;
+use App\Trip;
 
 class UserTravelCountries extends UserTravel
 {
@@ -22,9 +23,7 @@ class UserTravelCountries extends UserTravel
             ->withCount('photos')
             ->visible()
             ->get()
-            ->groupBy(function ($model) {
-                return $model->year;
-            });
+            ->groupBy(fn (Trip $model) => $model->year);
 
         \Breadcrumbs::push(trans('menu.life'), "@{$login}/travel");
         \Breadcrumbs::push(trans('menu.countries'), "@{$login}/travel/countries");

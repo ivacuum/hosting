@@ -44,9 +44,9 @@ class BeaconController extends Controller
 
     protected function metrics()
     {
-        return collect(self::METRICS)->mapWithKeys(function ($metric) {
-            return [class_basename($metric) => $metric];
-        })->toArray();
+        return collect(self::METRICS)
+            ->mapWithKeys(fn ($metric) => [class_basename($metric) => $metric])
+            ->toArray();
     }
 
     protected function processNewsViewedEvent($event)

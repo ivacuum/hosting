@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields;
 
+/** @mixin \App\Vocabulary */
 class Vocabulary extends Resource
 {
     public static $group = '🇯🇵 Japanese';
@@ -19,9 +20,7 @@ class Vocabulary extends Resource
         return [
             Fields\Number::make('Level')->sortable(),
             Fields\Text::make('Character'),
-            Fields\Text::make('Meaning', function (\App\Vocabulary $vocab) {
-                return implode('<br>', explode(', ', $vocab->meaning));
-            })->asHtml(),
+            Fields\Text::make('Meaning', fn () => implode('<br>', explode(', ', $this->meaning)))->asHtml(),
             Fields\Text::make('Kana'),
             Fields\DateTime::make('Created At')->onlyOnDetail(),
             Fields\DateTime::make('Updated At')->onlyOnDetail(),

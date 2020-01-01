@@ -3,7 +3,7 @@
 
   'softwareTitle' => trans('dcpp.kalugadc'),
   'software' => [
-    ['version' => '', 'id' => 12, 'size' => 1861500, 'dl_suffix' => ''],
+    ['version' => '', 'id' => 12, 'size' => 1_861_500, 'dl_suffix' => ''],
   ],
 ])
 

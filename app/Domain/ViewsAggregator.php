@@ -4,7 +4,7 @@ class ViewsAggregator
 {
     use PingsDatabase;
 
-    private $views = [];
+    private array $views = [];
 
     public function data(): array
     {

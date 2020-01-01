@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields;
 
+/** @mixin \App\Kanji */
 class Kanji extends Resource
 {
     public static $group = '🇯🇵 Japanese';
@@ -19,9 +20,7 @@ class Kanji extends Resource
         return [
             Fields\Number::make('Level')->sortable(),
             Fields\Text::make('Character'),
-            Fields\Text::make('Meaning', function (\App\Kanji $kanji) {
-                return implode('<br>', explode(', ', $kanji->meaning));
-            })->asHtml(),
+            Fields\Text::make('Meaning', fn () => implode('<br>', explode(', ', $this->meaning)))->asHtml(),
             Fields\Text::make('Onyomi')->hideFromIndex(),
             Fields\Text::make('Kunyomi')->hideFromIndex(),
             Fields\Select::make('Important Reading')->options([

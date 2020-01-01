@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields;
 
+/** @mixin \App\Notification */
 class Notification extends Resource
 {
     public static $group = 'Site';
@@ -15,9 +16,7 @@ class Notification extends Resource
         return [
             Fields\ID::make()->hideFromIndex(),
             Fields\MorphTo::make('Notifiable'),
-            Fields\Text::make('Type', function (\App\Notification $notification) {
-                return $notification->basename();
-            }),
+            Fields\Text::make('Type', fn () => $this->basename()),
             Fields\KeyValue::make('Data'),
             Fields\DateTime::make('Created At')->exceptOnForms(),
             Fields\DateTime::make('Read At')->exceptOnForms(),

@@ -19,9 +19,7 @@ class News extends Controller
 
         $models = Model::withCount('comments')
             ->orderBy($sortKey, $sortDir)
-            ->when($userId, function (Builder $query) use ($userId) {
-                return $query->where('user_id', $userId);
-            })
+            ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->where('locale', \App::getLocale())
             ->paginate(20)
             ->withPath(path([self::class, 'index']));

@@ -9,7 +9,6 @@ class ExternalHttpRequest extends Resource
     public static $model = \App\ExternalHttpRequest::class;
     public static $title = 'id';
     public static $search = [];
-    public static $globallySearchable = false;
 
     public function fields(Request $request)
     {

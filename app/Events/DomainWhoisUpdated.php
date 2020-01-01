@@ -12,7 +12,7 @@ class DomainWhoisUpdated extends Event
 
     public function __construct(Domain $domain, $data)
     {
-        $this->data   = $data;
+        $this->data = $data;
         $this->domain = $domain;
     }
 }

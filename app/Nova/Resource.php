@@ -4,6 +4,7 @@ use Laravel\Nova\Resource as NovaResource;
 
 abstract class Resource extends NovaResource
 {
+    public static $globallySearchable = false;
     protected static $defaultOrderBy;
 
     protected static function applyOrderings($query, array $orderings)

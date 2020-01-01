@@ -54,9 +54,7 @@ class ParserVk extends Controller
             $portion = sizeof($json);
 
             if ($own) {
-                $json = collect($json)->reject(function ($post) {
-                    return !empty($post->copy_history);
-                });
+                $json = collect($json)->reject(fn ($post) => !empty($post->copy_history));
             }
 
             $json = collect($json)->reject(function ($post) {

@@ -1,15 +1,16 @@
 <?php namespace App\Mail;
 
 use App\Comment;
+use App\Email;
 use App\Http\Controllers\CommentConfirm;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 
 class CommentConfirmMail extends Mailable implements ShouldQueue
 {
-    public $email;
-    public $comment;
-    public $confirmLink;
+    public Email $email;
+    public Comment $comment;
+    public string $confirmLink;
 
     public function __construct(Comment $comment)
     {

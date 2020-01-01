@@ -18,15 +18,9 @@ class Vocabularies extends Controller
         [$sortKey, $sortDir] = $this->getSortParams();
 
         $models = Model::orderBy($sortKey, $sortDir)
-            ->when($sortKey === 'level', function (Builder $query) {
-                return $query->orderBy('meaning');
-            })
-            ->when(null !== $sentences, function (Builder $query) use ($sentences) {
-                return $query->where('sentences', $sentences ? '<>' : '=', '');
-            })
-            ->when($q, function (Builder $query) use ($q) {
-                return $query->where('meaning', 'LIKE', "%{$q}%");
-            })
+            ->when($sortKey === 'level', fn (Builder $query) => $query->orderBy('meaning'))
+            ->when(null !== $sentences, fn (Builder $query) => $query->where('sentences', $sentences ? '<>' : '=', ''))
+            ->when($q, fn (Builder $query) => $query->where('meaning', 'LIKE', "%{$q}%"))
             ->paginate()
             ->withPath(path([self::class, 'index']));
 

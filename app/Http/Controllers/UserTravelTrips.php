@@ -24,17 +24,11 @@ class UserTravelTrips extends UserTravel
             ->withCount('photos')
             ->where('user_id', $this->traveler->id)
             ->visible()
-            ->when($from, function (Builder $query) use ($from) {
-                return $query->where('date_start', '>=', $from);
-            })
-            ->when($to, function (Builder $query) use ($to) {
-                return $query->where('date_start', '<=', $to);
-            })
+            ->when($from, fn (Builder $query) => $query->where('date_start', '>=', $from))
+            ->when($to, fn (Builder $query) => $query->where('date_start', '<=', $to))
             ->orderBy('date_start', $from || $to ? 'asc' : 'desc')
             ->get(Trip::COLUMNS_LIST)
-            ->groupBy(function ($model) {
-                return $model->year;
-            });
+            ->groupBy(fn (Trip $model) => $model->year);
 
         \Breadcrumbs::push(trans('menu.life'));
 

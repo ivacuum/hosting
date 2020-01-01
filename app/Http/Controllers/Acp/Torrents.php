@@ -21,15 +21,9 @@ class Torrents extends Controller
         $models = Model::with('user')
             ->withCount('comments')
             ->orderBy($sortKey, $sortDir)
-            ->when(null !== $status, function (Builder $query) use ($status) {
-                return $query->where('status', $status);
-            })
-            ->when($userId, function (Builder $query) use ($userId) {
-                return $query->where('user_id', $userId);
-            })
-            ->when($q, function (Builder $query) use ($q) {
-                return $query->where('title', 'LIKE', "%{$q}%");
-            })
+            ->when(null !== $status, fn (Builder $query) => $query->where('status', $status))
+            ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
+            ->when($q, fn (Builder $query) => $query->where('title', 'LIKE', "%{$q}%"))
             ->paginate()
             ->withPath(path([self::class, 'index']));
 

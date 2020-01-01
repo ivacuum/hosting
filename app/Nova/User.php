@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields;
 
+/** @mixin \App\User */
 class User extends Resource
 {
     public static $group = 'Site';

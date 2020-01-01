@@ -70,9 +70,7 @@ class Country extends Model
         $countries = $cities->groupBy('country_id');
 
         return \CountryHelper::cachedById()
-            ->filter(function (Country $country) use ($countries) {
-                return isset($countries[$country->id]);
-            })
+            ->filter(fn (Country $country) => isset($countries[$country->id]))
             ->each(function (Country $country) use ($countries) {
                 $country->setRelation('cities', $countries[$country->id]);
 
@@ -97,9 +95,7 @@ class Country extends Model
         $countries = $cities->groupBy('country_id');
 
         return \CountryHelper::cachedById()
-            ->filter(function (Country $country) use ($countries) {
-                return isset($countries[$country->id]);
-            })
+            ->filter(fn (Country $country) => isset($countries[$country->id]))
             ->each(function (Country $country) use ($countries) {
                 $country->trips_count = $countries[$country->id]->sum->trips_count;
             })
@@ -340,12 +336,10 @@ class Country extends Model
 
         return static::orderBy($titleField)
             ->get(['id', $titleField])
-            ->map(function (Country $item) use ($titleField) {
-                return [
-                    'key' => $item->id,
-                    'value' => $item->{$titleField},
-                ];
-            });
+            ->map(fn (self $country) => [
+                'key' => $country->id,
+                'value' => $country->{$titleField},
+            ]);
     }
 
     public function initial(): string

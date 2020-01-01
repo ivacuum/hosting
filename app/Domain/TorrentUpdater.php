@@ -5,7 +5,7 @@ use App\Torrent;
 
 class TorrentUpdater
 {
-    private $rto;
+    private Rto $rto;
 
     public function __construct(Rto $rto)
     {
@@ -35,6 +35,5 @@ class TorrentUpdater
         $torrent->title = $data->getTitle();
         $torrent->info_hash = $data->getInfoHash();
         $torrent->save();
-
     }
 }

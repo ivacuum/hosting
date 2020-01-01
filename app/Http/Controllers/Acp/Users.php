@@ -19,9 +19,7 @@ class Users extends Controller
         [$sortKey, $sortDir] = $this->getSortParams();
 
         $models = Model::withCount(['comments', 'images', 'torrents', 'trips'])
-            ->when(null !== $avatar, function (Builder $query) use ($avatar) {
-                return $query->where('avatar', $avatar ? '<>' : '=', '');
-            })
+            ->when(null !== $avatar, fn (Builder $query) => $query->where('avatar', $avatar ? '<>' : '=', ''))
             ->when($lastLoginAt === 'week', function (Builder $query) {
                 return $query->where('last_login_at', '>', now()->subWeek()->toDateTimeString());
             })

@@ -31,20 +31,16 @@ class BeaconTest extends TestCase
      */
     public function testViewCounters(string $event, array $ids)
     {
-        $payload = $this->payload(collect($ids)->map(function ($id) use ($event) {
-            return [
-                'id' => $id,
-                'event' => class_basename($event),
-            ];
-        })->toArray());
+        $payload = $this->payload(collect($ids)->map(fn ($id) => [
+            'id' => $id,
+            'event' => class_basename($event),
+        ])->toArray());
 
         \Event::fakeFor(function () use ($event, $ids, $payload) {
             $this->post('ajax/beacon', $payload)
                 ->assertNoContent();
 
-            \Event::assertDispatched($event, function ($e) use ($ids) {
-                return in_array($e->id, $ids, true);
-            });
+            \Event::assertDispatched($event, fn ($e) => in_array($e->id, $ids, true));
         });
     }
 

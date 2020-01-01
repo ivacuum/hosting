@@ -1,8 +1,8 @@
 @extends('dcpp.software', [
   'softwareTitle' => trans('dcpp.apexdc'),
   'software' => [
-    ['version' => '1.6.4', 'id' => 154, 'size' => 23018257, 'dl_suffix' => ''],
-    ['version' => '1.4.3', 'id' => 141, 'size' => 12395187, 'dl_suffix' => ''],
+    ['version' => '1.6.4', 'id' => 154, 'size' => 23_018_257, 'dl_suffix' => ''],
+    ['version' => '1.4.3', 'id' => 141, 'size' => 12_395_187, 'dl_suffix' => ''],
     ['version' => '1.4.2', 'id' => 137, 'dl_suffix' => ''],
   ],
   'developerSite' => 'http://www.apexdc.net/',
@@ -14,13 +14,13 @@
     <span class="mr-1">
       @svg (windows)
     </span>
-    {{ trans('dcpp.download') }} 32-Bit &middot; {{ ViewHelper::size(23018257) }}
+    {{ trans('dcpp.download') }} 32-Bit &middot; {{ ViewHelper::size(23_018_257) }}
   </a>
   <a class="btn btn-success my-1 mr-2 text-lg px-4 py-2" href="{{ path([App\Http\Controllers\Files::class, 'download'], 155) }}">
     <span class="mr-1">
       @svg (windows)
     </span>
-    {{ trans('dcpp.download') }} 64-Bit &middot; {{ ViewHelper::size(24717370) }}
+    {{ trans('dcpp.download') }} 64-Bit &middot; {{ ViewHelper::size(24_717_370) }}
   </a>
 </div>
 @endsection

@@ -16,21 +16,11 @@ class Comments extends Controller
 
         $models = Model::with('user')
             ->orderByDesc('id')
-            ->when(null !== $status, function (Builder $query) use ($status) {
-                return $query->where('status', $status);
-            })
-            ->when($newsId, function (Builder $query) use ($newsId) {
-                return $query->where('rel_id', $newsId)->where('rel_type', 'News');
-            })
-            ->when($tripId, function (Builder $query) use ($tripId) {
-                return $query->where('rel_id', $tripId)->where('rel_type', 'Trip');
-            })
-            ->when($torrentId, function (Builder $query) use ($torrentId) {
-                return $query->where('rel_id', $torrentId)->where('rel_type', 'Torrent');
-            })
-            ->when($userId, function (Builder $query) use ($userId) {
-                return $query->where('user_id', $userId);
-            })
+            ->when(null !== $status, fn (Builder $query) => $query->where('status', $status))
+            ->when($newsId, fn (Builder $query) => $query->where('rel_id', $newsId)->where('rel_type', 'News'))
+            ->when($tripId, fn (Builder $query) => $query->where('rel_id', $tripId)->where('rel_type', 'Trip'))
+            ->when($torrentId, fn (Builder $query) => $query->where('rel_id', $torrentId)->where('rel_type', 'Torrent'))
+            ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->paginate(20)
             ->withPath(path([self::class, 'index']));
 

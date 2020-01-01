@@ -17,6 +17,6 @@ $factory->define(App\Gig::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->state(App\Gig::class, 'city', function () {
-    return ['city_id' => factory(App\City::class)->state('country')];
-});
+$factory->state(App\Gig::class, 'city', fn () => [
+    'city_id' => factory(App\City::class)->state('country'),
+]);

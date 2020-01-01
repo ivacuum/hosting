@@ -7,9 +7,7 @@ trait UserBurnableScope
     public function scopeUserBurnable(Builder $query, ?int $userId)
     {
         return $query->when($userId, function (Builder $query) use ($userId) {
-            return $query->with(['burnable' => function ($query) use ($userId) {
-                return $query->where('user_id', $userId);
-            }]);
+            return $query->with(['burnable' => fn ($query) => $query->where('user_id', $userId)]);
         });
     }
 }

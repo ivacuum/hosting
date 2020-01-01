@@ -23,9 +23,7 @@ class Kanjis extends Controller
         $models = Model::query()
             ->withCount('radicals', 'similar')
             ->orderBy($sortKey, $sortDir)
-            ->when($sortKey === 'level', function (Builder $query) {
-                return $query->orderBy('meaning');
-            })
+            ->when($sortKey === 'level', fn (Builder $query) => $query->orderBy('meaning'))
             ->when($radicalId, function (Builder $query) use ($radicalId) {
                 return $query->whereHas('radicals', function (Builder $query) use ($radicalId) {
                     $query->where('radical_id', $radicalId);
@@ -41,9 +39,7 @@ class Kanjis extends Controller
                     ? $query->has('similar')
                     : $query->doesntHave('similar');
             })
-            ->when($q, function (Builder $query) use ($q) {
-                return $query->where('meaning', 'LIKE', "%{$q}%");
-            })
+            ->when($q, fn (Builder $query) => $query->where('meaning', 'LIKE', "%{$q}%"))
             ->paginate()
             ->withPath(path([self::class, 'index']));
 
@@ -95,9 +91,7 @@ class Kanjis extends Controller
         $ids = $model->similar->pluck('id')->push($model->id);
 
         $model->similar->each(function (Model $item) use ($ids) {
-            $item->similar()->sync($ids->filter(function ($id) use ($item) {
-                return $item->id !== $id;
-            }));
+            $item->similar()->sync($ids->filter(fn ($id) => $item->id !== $id));
         });
 
         $detached = Model::find($result['detached']);

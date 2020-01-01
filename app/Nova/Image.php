@@ -19,14 +19,8 @@ class Image extends Resource
         return [
             Fields\ID::make()->sortable(),
             Fields\BelongsTo::make('User')->searchable(),
-            Fields\Image::make('Image', function () {
-                return $this->thumbnailUrl();
-            })->thumbnail(function ($image) {
-                return $image;
-            }),
-            Fields\Number::make('Size', function () {
-                return \ViewHelper::size($this->size);
-            })->exceptOnForms()->asHtml(),
+            Fields\Image::make('Image', fn () => $this->thumbnailUrl())->thumbnail(fn ($image) => $image),
+            Fields\Number::make('Size', fn () => \ViewHelper::size($this->size))->exceptOnForms()->asHtml(),
             Fields\Number::make('Views')->exceptOnForms(),
             Fields\DateTime::make('Created At')->exceptOnForms(),
             Fields\DateTime::make('Updated At')->onlyOnDetail(),

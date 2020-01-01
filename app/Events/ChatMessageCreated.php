@@ -4,13 +4,13 @@ use App\ChatMessage;
 use Illuminate\Queue\SerializesModels;
 
 /**
- * Комментарий опубликован
+ * Написано сообщение в чате
  */
 class ChatMessageCreated extends Event
 {
     use SerializesModels;
 
-    public $chatMessage;
+    public ChatMessage $chatMessage;
 
     public function __construct(ChatMessage $chatMessage)
     {

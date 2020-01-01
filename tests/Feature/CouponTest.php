@@ -17,9 +17,7 @@ class CouponTest extends TestCase
         $this->post('promocodes-coupons/firstvds', ['email' => $email])
             ->assertStatus(302);
 
-        \Mail::assertQueued(FirstvdsPromocodeMail::class, function (FirstvdsPromocodeMail $mail) use ($email) {
-            return $mail->hasTo($email);
-        });
+        \Mail::assertQueued(FirstvdsPromocodeMail::class, fn (FirstvdsPromocodeMail $mail) => $mail->hasTo($email));
     }
 
     /**

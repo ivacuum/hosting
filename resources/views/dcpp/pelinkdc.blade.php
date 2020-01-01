@@ -1,7 +1,7 @@
 @extends('dcpp.software', [
   'softwareTitle' => trans('dcpp.pelinkdc'),
   'software' => [
-    ['version' => '5.95', 'id' => 78, 'size' => 24999117, 'dl_suffix' => ''],
+    ['version' => '5.95', 'id' => 78, 'size' => 24_999_117, 'dl_suffix' => ''],
     ['version' => '5.84', 'id' => 65, 'dl_suffix' => ''],
   ],
 ])

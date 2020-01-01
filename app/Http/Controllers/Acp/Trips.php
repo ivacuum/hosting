@@ -25,20 +25,14 @@ class Trips extends Controller
 
         $models = Model::with('user')
             ->withCount('comments', 'photos')
-            ->when($cityId, function (Builder $query) use ($cityId) {
-                return $query->where('city_id', $cityId);
-            })
+            ->when($cityId, fn (Builder $query) => $query->where('city_id', $cityId))
             ->when($countryId, function (Builder $query) use ($countryId) {
                 return $query->whereHas('city.country', function (Builder $query) use ($countryId) {
                     $query->where('country_id', $countryId);
                 });
             })
-            ->when($userId, function (Builder $query) use ($userId) {
-                return $query->where('user_id', $userId);
-            })
-            ->unless(null === $status, function (Builder $query) use ($status) {
-                return $query->where('status', $status);
-            })
+            ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
+            ->unless(null === $status, fn (Builder $query) => $query->where('status', $status))
             ->when($q, function (Builder $query) use ($q) {
                 return $query->where('id', $q)
                     ->orWhere(Model::titleField(), 'LIKE', "%{$q}%")
@@ -59,7 +53,7 @@ class Trips extends Controller
     protected function newModelDefaults($model)
     {
         /** @var Model $model */
-        $model->slug = 'city.'.now()->year;
+        $model->slug = 'city.' . now()->year;
         $model->status = Model::STATUS_HIDDEN;
         $model->date_end = now()->startOfDay();
         $model->date_start = now()->startOfDay();

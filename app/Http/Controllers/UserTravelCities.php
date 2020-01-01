@@ -35,9 +35,7 @@ class UserTravelCities extends UserTravel
             ->withCount('photos')
             ->visible()
             ->get()
-            ->groupBy(function ($model) {
-                return $model->year;
-            });
+            ->groupBy(fn (Trip $model) => $model->year);
 
         $publishedTrips = $trips->where('status', Trip::STATUS_PUBLISHED);
 

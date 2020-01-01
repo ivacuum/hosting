@@ -51,11 +51,9 @@ class ViewHelper extends BaseViewHelper
         $trans = trans($file);
 
         return array_combine(
-            array_map(function ($key) use ($file) {
-                return "{$file}.{$key}";
-            }, array_keys($trans)),
+            array_map(fn ($key) => "{$file}.{$key}", array_keys($trans)),
             $vueI18nFormatter
-                ? array_map(function ($value) { return preg_replace('/:(\w+)/', '{$1}', $value); }, array_values($trans))
+                ? array_map(fn ($value) => preg_replace('/:(\w+)/', '{$1}', $value), array_values($trans))
                 : array_values($trans)
         );
     }

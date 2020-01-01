@@ -32,9 +32,7 @@ class JapaneseWanikaniRadicals extends Controller
                     $query->where('kanji_id', $kanjiId);
                 });
             })
-            ->when($level >= 1 && $level <= 60, function (Builder $query) use ($level) {
-                return $query->where('level', $level);
-            })
+            ->when($level >= 1 && $level <= 60, fn (Builder $query) => $query->where('level', $level))
             ->get(['id', 'level', 'character', 'meaning', 'image']);
 
         return new RadicalCollection($radicals);

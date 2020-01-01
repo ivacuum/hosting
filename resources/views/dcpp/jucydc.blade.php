@@ -21,7 +21,7 @@
   >
     {{ trans('dcpp.download') }} 32bit
     &middot;
-    {{ ViewHelper::size(36586416) }}
+    {{ ViewHelper::size(36_586_416) }}
   </a>
   <a
     class="btn btn-success my-1 text-lg px-4 py-2"
@@ -29,7 +29,7 @@
   >
     {{ trans('dcpp.download') }} 64bit
     &middot;
-    {{ ViewHelper::size(36562647) }}
+    {{ ViewHelper::size(36_562_647) }}
   </a>
 </div>
 
@@ -41,7 +41,7 @@
   >
     {{ trans('dcpp.download') }} 32bit
     &middot;
-    {{ ViewHelper::size(36756573) }}
+    {{ ViewHelper::size(36_756_573) }}
   </a>
   <a
     class="btn btn-success my-1 text-lg px-4 py-2"
@@ -49,7 +49,7 @@
   >
     {{ trans('dcpp.download') }} 64bit
     &middot;
-    {{ ViewHelper::size(36924947) }}
+    {{ ViewHelper::size(36_924_947) }}
   </a>
 </div>
 
@@ -61,7 +61,7 @@
   >
     {{ trans('dcpp.download') }} 32bit
     &middot;
-    {{ ViewHelper::size(36626671) }}
+    {{ ViewHelper::size(36_626_671) }}
   </a>
   <a
     class="btn btn-success my-1 text-lg px-4 py-2"
@@ -69,7 +69,7 @@
   >
     {{ trans('dcpp.download') }} 64bit
     &middot;
-    {{ ViewHelper::size(36508412) }}
+    {{ ViewHelper::size(36_508_412) }}
   </a>
 </div>
 

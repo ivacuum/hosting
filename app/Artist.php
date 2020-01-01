@@ -39,12 +39,10 @@ class Artist extends Model
     {
         return static::orderBy('title')
             ->get(['id', 'title', 'slug'])
-            ->map(function (Artist $item) {
-                return [
-                    'key' => $item->id,
-                    'slug' => $item->slug,
-                    'value' => $item->title,
-                ];
-            });
+            ->map(fn (self $artist) => [
+                'key' => $artist->id,
+                'slug' => $artist->slug,
+                'value' => $artist->title,
+            ]);
     }
 }

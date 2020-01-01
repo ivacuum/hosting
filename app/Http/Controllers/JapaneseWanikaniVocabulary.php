@@ -27,12 +27,8 @@ class JapaneseWanikaniVocabulary extends Controller
         $vocabulary = Vocabulary::orderBy('level')
             ->orderBy('meaning')
             ->userBurnable($userId)
-            ->when($kanji, function (Builder $query) use ($kanji) {
-                return $query->where('character', 'LIKE', "%{$kanji}%");
-            })
-            ->when($level >= 1 && $level <= 60, function (Builder $query) use ($level) {
-                return $query->where('level', $level);
-            })
+            ->when($kanji, fn (Builder $query) => $query->where('character', 'LIKE', "%{$kanji}%"))
+            ->when($level >= 1 && $level <= 60, fn (Builder $query) => $query->where('level', $level))
             ->get(['id', 'level', 'character', 'kana', 'meaning']);
 
         return new VocabularyCollection($vocabulary);

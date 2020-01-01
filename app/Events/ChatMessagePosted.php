@@ -5,7 +5,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 
 class ChatMessagePosted extends Event implements ShouldBroadcastNow
 {
-    public $message;
+    public array $message;
 
     public function __construct(array $message)
     {

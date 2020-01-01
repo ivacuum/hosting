@@ -2,10 +2,8 @@
 
 /** @var Illuminate\Database\Eloquent\Factory $factory */
 
-$factory->define(App\Client::class, function (Faker\Generator $faker) {
-    return [
-        'name' => $faker->name,
-        'text' => '',
-        'email' => $faker->safeEmail,
-    ];
-});
+$factory->define(App\Client::class, fn (Faker\Generator $faker) => [
+    'name' => $faker->name,
+    'text' => '',
+    'email' => $faker->safeEmail,
+]);

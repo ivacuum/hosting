@@ -32,12 +32,8 @@ class Radicals extends Controller
                     ? $query->has('kanjis')
                     : $query->doesntHave('kanjis');
             })
-            ->when($sortKey === 'level', function (Builder $query) {
-                return $query->orderBy('meaning');
-            })
-            ->when($q, function (Builder $query) use ($q) {
-                return $query->where('meaning', 'LIKE', "%{$q}%");
-            })
+            ->when($sortKey === 'level', fn (Builder $query) => $query->orderBy('meaning'))
+            ->when($q, fn (Builder $query) => $query->where('meaning', 'LIKE', "%{$q}%"))
             ->paginate()
             ->withPath(path([self::class, 'index']));
 
@@ -57,9 +53,7 @@ class Radicals extends Controller
 
             $data['kanjis'] = array_merge(
                 $ids,
-                array_map(function ($val) {
-                    return $val + 0;
-                }, $data['kanjis'] ?? [])
+                array_map(fn ($val) => $val + 0, $data['kanjis'] ?? [])
             );
 
             request()->merge($data);

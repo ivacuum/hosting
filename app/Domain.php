@@ -279,9 +279,7 @@ class Domain extends Model
             throw new \Exception("Api error: {$json->error}");
         }
 
-        usort($json->accounts, function ($a, $b) {
-            return strnatcmp($a->login, $b->login);
-        });
+        usort($json->accounts, fn ($a, $b) => strnatcmp($a->login, $b->login));
 
         return $json;
     }

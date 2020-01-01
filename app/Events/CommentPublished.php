@@ -12,7 +12,7 @@ class CommentPublished extends Event
 {
     use SerializesModels;
 
-    public $comment;
+    public Comment $comment;
 
     public function __construct(Comment $comment)
     {

@@ -1,8 +1,8 @@
 @extends('dcpp.software', [
   'softwareTitle' => trans('dcpp.airdc'),
   'software' => [
-    ['version' => '3.41', 'id' => 156, 'size' => 48108816, 'dl_suffix' => ''],
-    ['version' => '2.09', 'id' => 142, 'size' => 6915716, 'dl_suffix' => ''],
+    ['version' => '3.41', 'id' => 156, 'size' => 48_108_816, 'dl_suffix' => ''],
+    ['version' => '2.09', 'id' => 142, 'size' => 6_915_716, 'dl_suffix' => ''],
     ['version' => '2.07', 'id' => 131, 'dl_suffix' => ''],
   ],
   'softwareScreenshots' => [

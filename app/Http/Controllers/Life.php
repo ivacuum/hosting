@@ -29,17 +29,11 @@ class Life extends Controller
         $trips = Trip::withCount('photos')
             ->where('user_id', 1)
             ->visible()
-            ->when($from, function (Builder $query) use ($from) {
-                return $query->where('date_start', '>=', $from);
-            })
-            ->when($to, function (Builder $query) use ($to) {
-                return $query->where('date_start', '<=', $to);
-            })
+            ->when($from, fn (Builder $query) => $query->where('date_start', '>=', $from))
+            ->when($to, fn (Builder $query) => $query->where('date_start', '<=', $to))
             ->orderBy('date_start', $from || $to ? 'asc' : 'desc')
             ->get()
-            ->groupBy(function (Trip $model) {
-                return $model->year;
-            });
+            ->groupBy(fn (Trip $model) => $model->year);
 
         return view($this->view, ['trips' => $trips]);
     }
@@ -49,9 +43,7 @@ class Life extends Controller
         $trips = Trip::query()
             ->where('user_id', 1)
             ->where('city_id', '<>', 1)
-            ->when($request->includeOnlyVisibleTrips(), function (Builder $query) {
-                $query->visible();
-            })
+            ->when($request->includeOnlyVisibleTrips(), fn (Builder $query) => $query->visible())
             ->orderBy('date_start')
             ->get();
 
@@ -94,9 +86,7 @@ class Life extends Controller
             ->withCount('photos')
             ->visible()
             ->get()
-            ->groupBy(function ($model) {
-                return $model->year;
-            });
+            ->groupBy(fn (Trip $model) => $model->year);
 
         $publishedTrips = $trips->where('status', Trip::STATUS_PUBLISHED);
 
@@ -137,9 +127,7 @@ class Life extends Controller
             ->withCount('photos')
             ->visible()
             ->get()
-            ->groupBy(function ($model) {
-                return $model->year;
-            });
+            ->groupBy(fn (Trip $model) => $model->year);
 
         \Breadcrumbs::push(trans('menu.countries'), "life/countries")
             ->push($country->title, "life/countries/{$country->slug}");
@@ -175,9 +163,7 @@ class Life extends Controller
         $gigs = Gig::with('artist')
             ->orderByDesc('date')
             ->get()
-            ->groupBy(function ($model) {
-                return $model->date->year;
-            });
+            ->groupBy(fn (Gig $model) => $model->date->year);
 
         return view($this->view, ['gigs' => $gigs]);
     }

@@ -25,9 +25,9 @@ class ParseWanikani extends Command
                 $json = $api->radicals($level);
 
                 foreach ($json->requested_information as $radical) {
-                    $radical->image = $radical->image ?? '';
+                    $radical->image ??= '';
                     $radical->meaning = str_replace('-', ' ', $radical->meaning);
-                    $radical->character = $radical->character ?? '';
+                    $radical->character ??= '';
 
                     $data[$radical->meaning] = $radical;
                 }
@@ -77,10 +77,10 @@ class ParseWanikani extends Command
                 $json = $api->kanji($level);
 
                 foreach ($json->requested_information as $kanji) {
-                    $kanji->onyomi = $kanji->onyomi ?? '';
+                    $kanji->onyomi ??= '';
                     $kanji->onyomi = $kanji->onyomi === 'None' ? '' : $kanji->onyomi;
-                    $kanji->nanori = $kanji->nanori ?? '';
-                    $kanji->kunyomi = $kanji->kunyomi ?? '';
+                    $kanji->nanori ??= '';
+                    $kanji->kunyomi ??= '';
                     $kanji->kunyomi = $kanji->kunyomi === 'None' ? '' : $kanji->kunyomi;
 
                     $data[$kanji->character] = $kanji;

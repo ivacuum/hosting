@@ -6,7 +6,7 @@ class MetricsAggregator
 {
     use PingsDatabase;
 
-    private $metrics = [];
+    private array $metrics = [];
 
     public function data(): array
     {

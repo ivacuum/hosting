@@ -45,26 +45,16 @@ class Trip extends Resource
                 \App\Trip::STATUS_INACTIVE => 'Inactive',
                 \App\Trip::STATUS_PUBLISHED => 'Published',
             ])->displayUsingLabels()->hideFromIndex(),
-            Fields\Text::make('', function () {
-                return view('nova.trip-status', ['trip' => $this])->render();
-            })->onlyOnIndex()->textAlign('center')->asHtml(),
-            Fields\Text::make('Date', function () {
-                return $this->localizedDate();
-            })->asHtml(),
-            Fields\Text::make('Slug')->displayUsing(function () {
-                return '<a class="no-underline dim text-primary" href="/life/' . $this->slug . '">' . $this->slug . '</a>';
-            })->rules('max:255')->asHtml(),
+            Fields\Text::make('', fn () => view('nova.trip-status', ['trip' => $this])->render())->onlyOnIndex()->textAlign('center')->asHtml(),
+            Fields\Text::make('Date', fn () => $this->localizedDate())->asHtml(),
+            Fields\Text::make('Slug')->displayUsing(fn () => '<a class="no-underline dim text-primary" href="/life/' . $this->slug . '">' . $this->slug . '</a>')->rules('max:255')->asHtml(),
             Fields\DateTime::make('Date Start')->onlyOnForms(),
             Fields\DateTime::make('Date End')->rules('after_or_equal:date_start')->onlyOnForms(),
             Fields\Text::make('Meta Image')->rules('max:255')->hideFromIndex(),
             Fields\Text::make('Meta Description RU')->rules('max:255')->hideFromIndex(),
             Fields\Text::make('Meta Description EN')->rules('max:255')->hideFromIndex(),
-            Fields\Number::make('Views')->sortable()->displayUsing(function () {
-                return $this->views ?: '';
-            })->exceptOnForms()->textAlign('right'),
-            Fields\Number::make('Pic', 'photos_count')->sortable()->displayUsing(function () {
-                return $this->photos_count ?: '';
-            })->onlyOnIndex()->textAlign('right'),
+            Fields\Number::make('Views')->sortable()->displayUsing(fn () => $this->views ?: '')->exceptOnForms()->textAlign('right'),
+            Fields\Number::make('Pic', 'photos_count')->sortable()->displayUsing(fn () => $this->photos_count ?: '')->onlyOnIndex()->textAlign('right'),
             Fields\DateTime::make('Created At')->onlyOnDetail(),
             Fields\DateTime::make('Updated At')->onlyOnDetail(),
         ];

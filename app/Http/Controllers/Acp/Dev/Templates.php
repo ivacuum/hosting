@@ -26,9 +26,11 @@ class Templates extends BaseController
 
             $contents = $template->getContents();
 
-            $i18n = collect($langs)->keys()->flip()->map(function ($value, $key) use ($contents, $total) {
-                return substr_count($contents, "@{$key}\n");
-            })->all();
+            $i18n = collect($langs)
+                ->keys()
+                ->flip()
+                ->map(fn ($value, $key) => substr_count($contents, "@{$key}\n"))
+                ->all();
 
             if ($hideFinished === 1 && $i18n['ru'] === $i18n['en']) {
                 continue;

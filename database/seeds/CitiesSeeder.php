@@ -71,9 +71,7 @@ class CitiesSeeder extends Seeder
     public function run()
     {
         foreach (self::CITIES_BY_COUNTRY as $country => $cities) {
-            $cityModels = array_map(function ($city) {
-                return factory(App\City::class)->make($city);
-            }, $cities);
+            $cityModels = array_map(fn ($city) => factory(App\City::class)->make($city), $cities);
 
             App\Country::query()
                 ->where('slug', $country)

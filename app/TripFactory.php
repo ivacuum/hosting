@@ -76,9 +76,7 @@ class TripFactory
         $tripsByCities = [];
 
         Trip::query()
-            ->when($userId > 0, function (Builder $query) use ($userId) {
-                return $query->where('user_id', $userId);
-            })
+            ->when($userId > 0, fn (Builder $query) => $query->where('user_id', $userId))
             ->visible()
             ->get(['id', 'city_id', 'status'])
             ->each(function (Trip $trip) use (&$tripsByCities) {

@@ -6,7 +6,7 @@ $factory->define(App\File::class, function (Faker\Generator $faker) {
     $title = $faker->lexify('??????????');
 
     return [
-        'size' => $faker->numberBetween(1000, 1000000),
+        'size' => $faker->numberBetween(1000, 1_000_000),
         'slug' => Str::slug($title),
         'title' => $title,
         'folder' => $faker->word,

@@ -1,6 +1,6 @@
 <?php namespace App\Events;
 
-use App\Issue as Model;
+use App\Issue;
 use Illuminate\Queue\SerializesModels;
 
 /**
@@ -12,9 +12,9 @@ class IssueCreated extends Event
 {
     use SerializesModels;
 
-    public $model;
+    public Issue $model;
 
-    public function __construct(Model $model)
+    public function __construct(Issue $model)
     {
         $this->model = $model;
     }

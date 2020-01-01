@@ -24,9 +24,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function gate()
     {
-        Gate::define('viewNova', function (User $user) {
-            return $user->isRoot();
-        });
+        Gate::define('viewNova', fn (User $user) => $user->isRoot());
     }
 
     protected function cards()

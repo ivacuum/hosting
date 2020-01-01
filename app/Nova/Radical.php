@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields;
 
+/** @mixin \App\Radical */
 class Radical extends Resource
 {
     public static $group = '🇯🇵 Japanese';
@@ -19,9 +20,7 @@ class Radical extends Resource
         return [
             Fields\Number::make('Level')->sortable(),
             Fields\Text::make('Character'),
-            Fields\Text::make('Meaning', function (\App\Radical $radical) {
-                return implode('<br>', explode(', ', $radical->meaning));
-            })->asHtml(),
+            Fields\Text::make('Meaning', fn () => implode('<br>', explode(', ', $this->meaning)))->asHtml(),
             Fields\Text::make('Image'),
             Fields\DateTime::make('Created At')->onlyOnDetail(),
             Fields\DateTime::make('Updated At')->onlyOnDetail(),

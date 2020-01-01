@@ -41,9 +41,7 @@ class JapaneseWanikaniKanji extends Controller
                     $query->where('similar_id', $similarId);
                 });
             })
-            ->when($level >= 1 && $level <= 60, function (Builder $query) use ($level) {
-                return $query->where('level', $level);
-            })
+            ->when($level >= 1 && $level <= 60, fn (Builder $query) => $query->where('level', $level))
             ->when($vocabularyId, function (Builder $query) use (&$characters, $vocabularyId) {
                 $vocabulary = Vocabulary::findOrFail($vocabularyId);
                 $characters = $vocabulary->splitKanjiCharacters();

@@ -12,12 +12,8 @@ class VocabularyCollection extends ResourceCollection
     {
         return [
             'data' => $this->collection
-                ->map(function ($item) use ($request) {
-                    return $item->toArray($request);
-                })
-                ->when($this->shouldGroupByLevel($request), function ($collection) {
-                    return $collection->groupBy('level');
-                })
+                ->map(fn ($item) => $item->toArray($request))
+                ->when($this->shouldGroupByLevel($request), fn ($collection) => $collection->groupBy('level'))
         ];
     }
 

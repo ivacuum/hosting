@@ -133,9 +133,7 @@ class TorrentCategoryHelper
 
     public function canPostIds()
     {
-        return array_keys(array_filter($this->categories, function ($id) {
-            return $this->canPost($id);
-        }, ARRAY_FILTER_USE_KEY));
+        return array_keys(array_filter($this->categories, fn ($id) => $this->canPost($id), ARRAY_FILTER_USE_KEY));
     }
 
     public function children($id)
@@ -176,16 +174,13 @@ class TorrentCategoryHelper
     public function novaList()
     {
         return collect($this->categories)
-            ->reject(function ($item, $key) {
-                return !self::canPost($key);
-            })->mapWithKeys(function ($item, $key) {
-                return [
-                    $key => [
-                        'label' => $item['title'],
-                        'group' => $item['parent'],
-                    ],
-                ];
-            });
+            ->reject(fn ($item, $key) => !self::canPost($key))
+            ->mapWithKeys(fn ($item, $key) => [
+                $key => [
+                    'label' => $item['title'],
+                    'group' => $item['parent'],
+                ],
+            ]);
     }
 
     public function selfAndDescendantsIds($id)
@@ -205,9 +200,7 @@ class TorrentCategoryHelper
             $this->initTree();
         }
 
-        return collect(array_filter($this->tree, function ($value) use ($parentId) {
-            return $value['parent'] === $parentId;
-        }));
+        return collect(array_filter($this->tree, fn ($value) => $value['parent'] === $parentId));
     }
 
     protected function initTree()

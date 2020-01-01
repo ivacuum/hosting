@@ -18,12 +18,8 @@ class Issues extends Controller
 
         $models = Model::with('user')
             ->withCount('comments')
-            ->when($userId, function (Builder $query) use ($userId) {
-                return $query->where('user_id', $userId);
-            })
-            ->unless(null === $status, function (Builder $query) use ($status) {
-                return $query->where('status', $status);
-            })
+            ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
+            ->unless(null === $status, fn (Builder $query) => $query->where('status', $status))
             ->orderBy($sortKey, $sortDir)
             ->paginate(50)
             ->withPath(path([self::class, 'index']));

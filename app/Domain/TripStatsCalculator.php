@@ -45,27 +45,21 @@ class TripStatsCalculator
     {
         return $this->cities
             ->reverse()
-            ->map(function (Collection $cities) {
-                return $cities->unique()->count();
-            });
+            ->map(fn (Collection $cities) => $cities->unique()->count());
     }
 
     public function countriesByYearsCount(): Collection
     {
         return $this->countries
             ->reverse()
-            ->map(function (Collection $countries) {
-                return $countries->unique()->count();
-            });
+            ->map(fn (Collection $countries) => $countries->unique()->count());
     }
 
     public function daysInTrips(): Collection
     {
         return $this->days
             ->reverse()
-            ->map(function ($trips) {
-                return sizeof($trips);
-            });
+            ->map(fn ($trips) => sizeof($trips));
     }
 
     public function firstDate(): CarbonImmutable
@@ -80,16 +74,12 @@ class TripStatsCalculator
 
     public function newCitiesByYearsCount(): Collection
     {
-        return $this->newCities->map(function (Collection $cities) {
-            return $cities->count();
-        });
+        return $this->newCities->map(fn (Collection $cities) => $cities->count());
     }
 
     public function newCountriesByYearsCount(): Collection
     {
-        return $this->newCountries->map(function (Collection $countries) {
-            return $countries->count();
-        });
+        return $this->newCountries->map(fn (Collection $countries) => $countries->count());
     }
 
     private function calculate(): void
