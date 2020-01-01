@@ -87,7 +87,7 @@ class Trips extends Controller
             'city_id' => 'required|integer|min:1',
             'title_ru' => null === $model ? '' : 'required',
             'title_en' => null === $model ? '' : 'required',
-            'date_end' => 'required|date',
+            'date_end' => 'required|date|after_or_equal:date_start',
             'date_start' => 'required|date',
         ];
     }

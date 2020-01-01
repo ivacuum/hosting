@@ -55,7 +55,7 @@ class Trip extends Resource
                 return '<a class="no-underline dim text-primary" href="/life/' . $this->slug . '">' . $this->slug . '</a>';
             })->rules('max:255')->asHtml(),
             Fields\DateTime::make('Date Start')->onlyOnForms(),
-            Fields\DateTime::make('Date End')->onlyOnForms(),
+            Fields\DateTime::make('Date End')->rules('after_or_equal:date_start')->onlyOnForms(),
             Fields\Text::make('Meta Image')->rules('max:255')->hideFromIndex(),
             Fields\Text::make('Meta Description RU')->rules('max:255')->hideFromIndex(),
             Fields\Text::make('Meta Description EN')->rules('max:255')->hideFromIndex(),
