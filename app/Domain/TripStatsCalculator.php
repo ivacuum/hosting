@@ -91,8 +91,10 @@ class TripStatsCalculator
             $this->saveFirstDate($trip);
 
             $this->pushTripDays($trip);
-            $this->pushTripCities($trip);
-            $this->pushTripCountries($trip);
+            $this->pushTripCity($trip->date_start->year, $trip->city_id);
+            $this->pushTripCity($trip->date_end->year, $trip->city_id);
+            $this->pushTripCountry($trip->date_start->year, $trip->city->country_id);
+            $this->pushTripCountry($trip->date_end->year, $trip->city->country_id);
             $this->pushTripToCalendar($trip);
         }
     }
@@ -133,11 +135,8 @@ class TripStatsCalculator
         $this->newCountries[$year][] = $countryId;
     }
 
-    private function pushTripCities(Trip $trip): void
+    private function pushTripCity(int $year, int $cityId): void
     {
-        $year = $trip->date_start->year;
-        $cityId = $trip->city_id;
-
         if (!isset($this->visitedCities[$cityId])) {
             $this->pushNewCity($cityId, $year);
         }
@@ -147,11 +146,8 @@ class TripStatsCalculator
         $this->visitedCities[$cityId] = true;
     }
 
-    private function pushTripCountries(Trip $trip): void
+    private function pushTripCountry(int $year, int $countryId): void
     {
-        $year = $trip->date_start->year;
-        $countryId = $trip->city->country_id;
-
         if (!isset($this->visitedCountries[$countryId])) {
             $this->pushNewCountry($countryId, $year);
         }
