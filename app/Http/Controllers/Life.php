@@ -57,8 +57,11 @@ class Life extends Controller
             'countries' => $stats->countriesByYearsCount(),
             'firstDate' => $stats->firstDate(),
             'newCities' => $stats->newCitiesByYearsCount(),
+            'cityVisits' => $stats->cityVisits(),
             'daysInTrips' => $stats->daysInTrips(),
+            'daysInCities' => $stats->daysInCities(),
             'newCountries' => $stats->newCountriesByYearsCount(),
+            'daysInCountries' => $stats->daysInCountries(),
         ]);
     }
 

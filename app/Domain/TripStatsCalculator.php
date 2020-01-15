@@ -7,24 +7,22 @@ use Illuminate\Support\Collection;
 
 class TripStatsCalculator
 {
-    private $days;
     private $cities;
     private $lastDate;
     private $calendar;
     private $countries;
     private $newCities;
     private $firstDate;
+    private $cityVisits;
+    private $daysInTrips;
+    private $daysInCities;
     private $newCountries;
     private $visitedCities;
+    private $daysInCountries;
     private $visitedCountries;
-
-    /** @var EloquentCollection|Trip[] */
-    private $trips;
 
     public function __construct(EloquentCollection $trips)
     {
-        $this->days = collect();
-        $this->trips = $trips;
         $this->cities = collect();
         $this->calendar = collect();
         $this->countries = collect();
@@ -33,7 +31,13 @@ class TripStatsCalculator
         $this->visitedCities = collect();
         $this->visitedCountries = collect();
 
-        $this->calculate();
+        $this->daysInTrips = collect();
+        $this->daysInCities = collect();
+        $this->daysInCountries = collect();
+
+        $this->calculate($trips);
+
+        $this->cityVisits = $trips->mapToDictionary(fn (Trip $trip) => [$trip->city_id => $trip->id]);
     }
 
     public function calendar(): Collection
@@ -48,6 +52,11 @@ class TripStatsCalculator
             ->map(fn (Collection $cities) => $cities->unique()->count());
     }
 
+    public function cityVisits(): Collection
+    {
+        return $this->cityVisits;
+    }
+
     public function countriesByYearsCount(): Collection
     {
         return $this->countries
@@ -55,9 +64,25 @@ class TripStatsCalculator
             ->map(fn (Collection $countries) => $countries->unique()->count());
     }
 
+    public function daysInCities(): Collection
+    {
+        return $this->daysInCities
+            ->map(function ($years) {
+                return $years->reverse()->map(fn ($days) => sizeof($days));
+            });
+    }
+
+    public function daysInCountries(): Collection
+    {
+        return $this->daysInCountries
+            ->map(function ($years) {
+                return $years->reverse()->map(fn ($days) => sizeof($days));
+            });
+    }
+
     public function daysInTrips(): Collection
     {
-        return $this->days
+        return $this->daysInTrips
             ->reverse()
             ->map(fn ($trips) => sizeof($trips));
     }
@@ -82,9 +107,10 @@ class TripStatsCalculator
         return $this->newCountries->map(fn (Collection $countries) => $countries->count());
     }
 
-    private function calculate(): void
+    private function calculate(EloquentCollection $trips): void
     {
-        foreach ($this->trips as $trip) {
+        /** @var Trip $trip */
+        foreach ($trips as $trip) {
             $trip->loadCityAndCountry();
 
             $this->saveLastDate($trip);
@@ -166,11 +192,29 @@ class TripStatsCalculator
             $year = $date->year;
             $monthDay = "{$date->month}-{$date->day}";
 
-            if (!isset($this->days[$year])) {
-                $this->days[$year] = collect();
+            if (!isset($this->daysInTrips[$year])) {
+                $this->daysInTrips[$year] = collect();
             }
 
-            $this->days[$year][$monthDay] = true;
+            if (!isset($this->daysInCities[$trip->city_id])) {
+                $this->daysInCities[$trip->city_id] = collect();
+            }
+
+            if (!isset($this->daysInCities[$trip->city_id][$year])) {
+                $this->daysInCities[$trip->city_id][$year] = collect();
+            }
+
+            if (!isset($this->daysInCountries[$trip->city->country_id])) {
+                $this->daysInCountries[$trip->city->country_id] = collect();
+            }
+
+            if (!isset($this->daysInCountries[$trip->city->country_id][$year])) {
+                $this->daysInCountries[$trip->city->country_id][$year] = collect();
+            }
+
+            $this->daysInTrips[$year][$monthDay] = true;
+            $this->daysInCities[$trip->city_id][$year][$monthDay] = true;
+            $this->daysInCountries[$trip->city->country_id][$year][$monthDay] = true;
 
             $date = $date->addDay();
         } while ($date->lte($tripEndedAt));
