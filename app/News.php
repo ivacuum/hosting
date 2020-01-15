@@ -3,6 +3,7 @@
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use League\CommonMark\CommonMarkConverter;
 
 /**
  * Новости
@@ -68,7 +69,7 @@ class News extends Model
     public function setMarkdownAttribute($value)
     {
         $this->attributes['markdown'] = $value;
-        $this->attributes['html'] = \Parsedown::instance()->text($value);
+        $this->attributes['html'] = (new CommonMarkConverter)->convertToHtml($value);
     }
 
     // Methods

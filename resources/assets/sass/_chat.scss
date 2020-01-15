@@ -2,6 +2,8 @@
   height: 25vh;
   background: #efefef;
   border: $border-width solid $input-border-color;
+
+  p { margin-bottom: 0; }
 }
 
 .chat-bg { background: #efefef; }

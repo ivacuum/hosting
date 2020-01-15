@@ -6,6 +6,7 @@ use App\Traits\HasLocalizedTitle;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Ivacuum\Generic\Utilities\TextImagesParser;
+use League\CommonMark\CommonMarkConverter;
 
 /**
  * Поездка
@@ -181,8 +182,12 @@ class Trip extends Model
     {
         $this->attributes['markdown'] = $value;
 
-        $this->attributes['html'] = \Parsedown::instance()
-            ->text((new TextImagesParser)->parse($value));
+        $converter = new CommonMarkConverter([
+            'max_nesting_level' => 15,
+            'allow_unsafe_links' => false,
+        ]);
+
+        $this->attributes['html'] = $converter->convertToHtml((new TextImagesParser)->parse($value));
     }
 
     public function setSlugAttribute(string $value): void

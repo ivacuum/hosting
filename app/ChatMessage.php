@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use League\CommonMark\CommonMarkConverter;
 
 /**
  * Сообщение в чате
@@ -39,14 +40,15 @@ class ChatMessage extends Model
     // Attributes
     public function setTextAttribute($value)
     {
-        $this->attributes['text'] = $this->attributes['html'] = htmlspecialchars($value);
+        $this->attributes['text'] = htmlspecialchars($value);
 
-        // Можно включить после добавления в Parsedown безопасного режима
-        /*
-        $this->attributes['html'] = \Parsedown::instance()
-            ->setMarkupEscaped(true)
-            ->text($value);
-        */
+        $converter = new CommonMarkConverter([
+            'html_input' => 'escape',
+            'max_nesting_level' => 15,
+            'allow_unsafe_links' => false,
+        ]);
+
+        $this->attributes['html'] = $converter->convertToHtml($value);
     }
 
     // Methods

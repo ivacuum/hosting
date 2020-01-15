@@ -13,6 +13,7 @@
     "laravel/nova": "^2.0",
     "laravel/scout": "^7.0",
     "laravel/socialite": "^4.0",
+    "league/commonmark": "^1.0",
     "league/flysystem-sftp": "^1.0",
     "predis/predis": "^1.1",
     "pusher/pusher-php-server": "^4.0",
