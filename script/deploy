@@ -14,9 +14,7 @@ tar -xf deploy.tar && rm deploy.tar
 RELEASE_DIR=$(pwd)
 ROOT_DIR=$(dirname "$RELEASE_DIR")/..
 LIVE_DIR=$ROOT_DIR/live
-STORAGE_DIR=$ROOT_DIR/storage
 UPLOADS_DIR=$ROOT_DIR/uploads
-VIEWS_DIR=$STORAGE_DIR/framework/views
 
 if [ ! -f $ROOT_DIR/.env ]; then
   echo "Can't find .env configuration file"
@@ -35,15 +33,6 @@ fi
 
 # Файл настроек
 ln -s $ROOT_DIR/.env $RELEASE_DIR/.env
-
-# Общее хранилище
-if [ -d $STORAGE_DIR ]; then
-  rm -rf $RELEASE_DIR/storage
-else
-  mv $RELEASE_DIR/storage $STORAGE_DIR
-fi
-
-ln -s $STORAGE_DIR $RELEASE_DIR/storage
 
 # Общая папка для загрузок
 if [ -d $UPLOADS_DIR ]; then
@@ -86,7 +75,3 @@ php artisan queue:restart
 # На память остается всего 3 релиза
 cd $ROOT_DIR/releases
 rm -rf $(ls -t | tail -n +4)
-
-# Чистка storage/framework/views
-touch $VIEWS_DIR/.gitignore
-find $VIEWS_DIR -mtime +1d -delete
