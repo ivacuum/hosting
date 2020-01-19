@@ -21,16 +21,6 @@ if [ ! -f $ROOT_DIR/.env ]; then
   exit 1
 fi
 
-# Копия проекта
-# git clone --depth=1 -b master git@bitbucket.org:ivacuum/hosting.git $RELEASE_DIR
-
-# if [ $? -ne 0 ]; then
-#   echo "Cloning was not successful"
-#   exit 1
-# fi
-
-# rm -rf $RELEASE_DIR/.git
-
 # Файл настроек
 ln -s $ROOT_DIR/.env $RELEASE_DIR/.env
 
