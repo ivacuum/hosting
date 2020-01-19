@@ -7,9 +7,6 @@ export NODE_ENV=production
 
 cd "$(dirname "$0")/.."
 
-echo "==> Ant php linting..."
-ant
-
 echo "==> Installing front-end dependencies..."
 echo "==> yarn..."
 export NODE_ENV=dev
