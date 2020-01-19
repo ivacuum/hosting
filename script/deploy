@@ -14,7 +14,7 @@ tar -xf deploy.tar && rm deploy.tar
 RELEASE_DIR=$(pwd)
 ROOT_DIR=$(dirname "$RELEASE_DIR")/..
 LIVE_DIR=$ROOT_DIR/live
-UPLOADS_DIR=$ROOT_DIR/uploads
+UPLOADS_DIR=$ROOT_DIR/shared/uploads
 
 if [ ! -f $ROOT_DIR/.env ]; then
   echo "Can't find .env configuration file"
