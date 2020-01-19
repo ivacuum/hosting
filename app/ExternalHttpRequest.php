@@ -31,6 +31,7 @@ use Illuminate\Database\Eloquent\Model;
 class ExternalHttpRequest extends Model
 {
     protected $guarded = ['created_at', 'updated_at'];
+    protected $dateFormat = 'Y-m-d H:i:s.u';
 
     protected $casts = [
         'http_code' => 'int',

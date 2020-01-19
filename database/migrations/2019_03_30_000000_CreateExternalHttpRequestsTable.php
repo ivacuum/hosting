@@ -26,7 +26,7 @@ class CreateExternalHttpRequestsTable extends Migration
             $table->unsignedInteger('redirect_count');
             $table->unsignedBigInteger('redirect_time_us');
             $table->string('redirect_url');
-            $table->timestamps();
+            $table->timestamps(6);
         });
     }
 
