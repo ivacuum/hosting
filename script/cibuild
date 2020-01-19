@@ -11,7 +11,7 @@ echo "==> Installing front-end dependencies..."
 echo "==> yarn..."
 export NODE_ENV=dev
 # --ignore-platform для freebsd, так как пакет default-gateway выдает ошибку
-yarn install --ignore-platform
+yarn --ignore-platform
 export NODE_ENV=production
 
 echo "==> yarn run production..."
@@ -23,4 +23,4 @@ yarn run production
 # vendor/bin/phpunit --exclude-group pages
 
 # Архив для быстрого деплоя
-tar --exclude deploy.tar --exclude .git --exclude node_modules --exclude resources/assets --exclude tests -cf deploy.tar .
+tar --exclude deploy.tar --exclude .git --exclude node_modules --exclude resources/assets --exclude tests --exclude vendor -cf deploy.tar .
