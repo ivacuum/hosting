@@ -11,7 +11,7 @@ echo "==> yarn..."
 yarn --ignore-platform
 
 echo "==> yarn run production..."
-NODE_ENV=production yarn run production
+yarn run production
 
 # composer global require "hirak/prestissimo:^0.3"
 # composer global update
