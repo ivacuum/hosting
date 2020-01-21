@@ -2,7 +2,6 @@ export default class Shortcuts {
   static bind() {
     const NEXT_PAGE_SELECTOR = '#next_page'
     const PREV_PAGE_SELECTOR = '#prev_page'
-    const SCROLL_ANIMATION_SPEED = 0
 
     Mousetrap.bind(['ctrl+left', 'alt+left'], () => {
       $(document).trigger('shortcuts.to_prev_page')

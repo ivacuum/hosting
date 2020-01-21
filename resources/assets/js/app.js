@@ -168,7 +168,7 @@ class Application {
   }
 
   onPjaxSend() {
-    $(document).on('pjax:send', e => this.pjax.onSend(e))
+    $(document).on('pjax:send', (e) => this.pjax.onSend(e))
   }
 }
 
