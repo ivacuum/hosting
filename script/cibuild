@@ -3,19 +3,15 @@
 # Выход в случае ошибки
 set -e
 
-export NODE_ENV=production
-
 cd "$(dirname "$0")/.."
 
 echo "==> Installing front-end dependencies..."
 echo "==> yarn..."
-export NODE_ENV=dev
 # --ignore-platform для freebsd, так как пакет default-gateway выдает ошибку
 yarn --ignore-platform
-export NODE_ENV=production
 
 echo "==> yarn run production..."
-yarn run production
+NODE_ENV=production yarn run production
 
 # composer global require "hirak/prestissimo:^0.3"
 # composer global update
