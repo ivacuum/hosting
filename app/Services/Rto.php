@@ -7,7 +7,7 @@ class Rto
     const API_ENDPOINT = 'http://api.rutracker.org/v1/';
 
     // Зеркала: rutracker.org, rutracker.cr, xn--e1aaowadjh.org, dostup.website/https://rutracker.org
-    const SITE_ENDPOINT = 'https://rutracker.nl/forum/';
+    const SITE_ENDPOINT = 'https://rutracker.org/forum/';
 
     private $client;
 
@@ -28,7 +28,7 @@ class Rto
         }
 
         if (\Str::startsWith($input, 'http')) {
-            if (\Str::contains($input, ['://rutracker.org', '://rutracker.cr', '://rutracker.net', '://rutracker.nl', '://maintracker.org'])) {
+            if (\Str::contains($input, ['://rutracker.org', '://rutracker.net', '://rutracker.nl'])) {
                 $url = parse_url($input);
 
                 if (!isset($url['query'])) {
@@ -66,7 +66,9 @@ class Rto
 
     public function parseTopicBody(int $topicId): RtoTopicHtmlResponse
     {
-        $response = $this->client->get(self::SITE_ENDPOINT . "viewtopic.php?t={$topicId}");
+        $response = $this->client->get(self::SITE_ENDPOINT . "viewtopic.php?t={$topicId}", [
+            'proxy' => env('RTO_PROXY'),
+        ]);
 
         return new RtoTopicHtmlResponse((string) $response->getBody());
     }
