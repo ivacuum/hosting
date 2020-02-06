@@ -5,8 +5,6 @@ use App\Http\GuzzleClientFactory;
 class Rto
 {
     const API_ENDPOINT = 'http://api.rutracker.org/v1/';
-
-    // Зеркала: rutracker.org, rutracker.cr, xn--e1aaowadjh.org, dostup.website/https://rutracker.org
     const SITE_ENDPOINT = 'https://rutracker.org/forum/';
 
     private $client;
