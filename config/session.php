@@ -18,7 +18,7 @@ return [
     'secure' => env('SESSION_SECURE_COOKIE', false),
     'http_only' => true,
 
-    // lax, strict
-    'same_site' => null,
+    // lax, strict, none
+    'same_site' => 'lax',
 
 ];
