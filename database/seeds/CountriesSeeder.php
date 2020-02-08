@@ -1,5 +1,6 @@
 <?php
 
+use App\Factory\CountryFactory;
 use Illuminate\Database\Seeder;
 
 class CountriesSeeder extends Seeder
@@ -24,8 +25,13 @@ class CountriesSeeder extends Seeder
 
     public function run()
     {
-        foreach (self::COUNTRIES as $country) {
-            factory(App\Country::class)->create($country);
+        foreach (self::COUNTRIES as $attributes) {
+            $country = CountryFactory::new()->make();
+            $country->slug = $attributes['slug'];
+            $country->emoji = $attributes['emoji'];
+            $country->title_en = $attributes['title_en'];
+            $country->title_ru = $attributes['title_ru'];
+            $country->save();
         }
     }
 }

@@ -12,7 +12,7 @@ class UserFactory
     private $status;
     private $password;
 
-    public function create(): User
+    public function create()
     {
         $model = $this->make();
         $model->save();
@@ -28,7 +28,7 @@ class UserFactory
         return $factory;
     }
 
-    public function make(): User
+    public function make()
     {
         $model = new User;
         $model->email = $this->faker->safeEmail;

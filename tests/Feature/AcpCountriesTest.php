@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\Country;
+use App\Factory\CountryFactory;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -24,16 +24,16 @@ class AcpCountriesTest extends TestCase
 
     public function testEdit()
     {
-        $city = $this->createCountry();
+        $country = CountryFactory::new()->create();
 
-        $this->getJson("acp/countries/{$city->id}/edit")
+        $this->getJson("acp/countries/{$country->id}/edit")
             ->assertOk()
-            ->assertJson(['model' => ['id' => $city->id]]);
+            ->assertJson(['model' => ['id' => $country->id]]);
     }
 
     public function testIndex()
     {
-        $this->createCountry();
+        CountryFactory::new()->create();
 
         $this->getJson('acp/countries')
             ->assertOk();
@@ -41,7 +41,7 @@ class AcpCountriesTest extends TestCase
 
     public function testShow()
     {
-        $countries = $this->createCountry();
+        $countries = CountryFactory::new()->create();
 
         $this->getJson("acp/countries/{$countries->id}")
             ->assertOk()
@@ -50,7 +50,7 @@ class AcpCountriesTest extends TestCase
 
     public function testStore()
     {
-        $this->postJson('acp/countries', factory(Country::class)->make()->toArray())
+        $this->postJson('acp/countries', CountryFactory::new()->make()->toArray())
             ->assertCreated()
             ->assertLocation('acp/countries');
     }
@@ -64,15 +64,10 @@ class AcpCountriesTest extends TestCase
 
     public function testUpdate()
     {
-        $country = $this->createCountry();
+        $country = CountryFactory::new()->create();
 
-        $this->putJson("acp/countries/{$country->id}", factory(Country::class)->make()->toArray())
+        $this->putJson("acp/countries/{$country->id}", CountryFactory::new()->make()->toArray())
             ->assertOk()
             ->assertJson(['status' => 'OK']);
-    }
-
-    private function createCountry(): Country
-    {
-        return factory(Country::class)->create();
     }
 }
