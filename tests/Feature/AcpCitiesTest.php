@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\City;
+use App\Factory\CityFactory;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -24,7 +24,7 @@ class AcpCitiesTest extends TestCase
 
     public function testEdit()
     {
-        $city = $this->createCity();
+        $city = CityFactory::new()->withCountry()->create();;
 
         $this->getJson("acp/cities/{$city->id}/edit")
             ->assertOk()
@@ -33,7 +33,7 @@ class AcpCitiesTest extends TestCase
 
     public function testIndex()
     {
-        $this->createCity();
+        CityFactory::new()->withCountry()->create();
 
         $this->getJson('acp/cities')
             ->assertOk();
@@ -41,7 +41,7 @@ class AcpCitiesTest extends TestCase
 
     public function testShow()
     {
-        $city = $this->createCity();
+        $city = CityFactory::new()->withCountry()->create();
 
         $this->getJson("acp/cities/{$city->id}")
             ->assertOk()
@@ -50,7 +50,7 @@ class AcpCitiesTest extends TestCase
 
     public function testStore()
     {
-        $this->postJson('acp/cities', factory(City::class)->state('country')->make()->toArray())
+        $this->postJson('acp/cities', CityFactory::new()->withCountry()->make()->toArray())
             ->assertCreated()
             ->assertLocation('acp/cities');
     }
@@ -64,15 +64,10 @@ class AcpCitiesTest extends TestCase
 
     public function testUpdate()
     {
-        $city = $this->createCity();
+        $city = CityFactory::new()->withCountry()->create();
 
-        $this->putJson("acp/cities/{$city->id}", factory(City::class)->state('country')->make()->toArray())
+        $this->putJson("acp/cities/{$city->id}", CityFactory::new()->withCountry()->make()->toArray())
             ->assertOk()
             ->assertJson(['status' => 'OK']);
-    }
-
-    private function createCity(): City
-    {
-        return factory(City::class)->state('country')->create();
     }
 }
