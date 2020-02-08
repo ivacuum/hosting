@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\User;
+use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -18,7 +18,7 @@ class RegisterTest extends TestCase
 
     public function testFormUser()
     {
-        $this->be(factory(User::class)->make())
+        $this->be(UserFactory::new()->make())
             ->get('auth/register')
             ->assertRedirect('/');
 

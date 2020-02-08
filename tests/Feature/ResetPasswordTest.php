@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\User;
+use App\Factory\UserFactory;
 use Illuminate\Auth\Passwords\PasswordBroker;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -19,7 +19,7 @@ class ResetPasswordTest extends TestCase
 
     public function testFormUser()
     {
-        $this->be(factory(User::class)->state('id')->make())
+        $this->be(UserFactory::new()->withId(1)->make())
             ->get('auth/password/reset/token')
             ->assertStatus(200);
 
@@ -28,9 +28,7 @@ class ResetPasswordTest extends TestCase
 
     public function testSubmitGuest()
     {
-        /** @var User $user */
-        $user = factory(User::class)->create();
-
+        $user = UserFactory::new()->create();
         $broker = app(PasswordBroker::class);
         $token = $broker->createToken($user);
 
@@ -48,8 +46,7 @@ class ResetPasswordTest extends TestCase
 
     public function testSubmitUser()
     {
-        /** @var User $user */
-        $this->be($user = factory(User::class)->create());
+        $this->be($user = UserFactory::new()->create());
 
         $broker = app(PasswordBroker::class);
         $token = $broker->createToken($user);

@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\User;
+use App\Factory\UserFactory;
 use App\Vocabulary;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -11,7 +11,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
 
     public function testBurn()
     {
-        $this->be($user = $this->user());
+        $this->be($user = UserFactory::new()->create());
 
         $vocab = $this->vocabulary();
 
@@ -60,7 +60,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
 
     public function testResurrect()
     {
-        $this->be($user = $this->user());
+        $this->be($user = UserFactory::new()->create());
 
         $vocab = $this->vocabulary();
         $vocab->burn($user->id);
@@ -74,10 +74,5 @@ class JapaneseWanikaniVocabularyTest extends TestCase
     private function vocabulary(array $attributes = []): Vocabulary
     {
         return factory(Vocabulary::class)->create($attributes);
-    }
-
-    private function user(): User
-    {
-        return factory(User::class)->create();
     }
 }

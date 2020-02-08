@@ -1,21 +1,22 @@
 <?php
 
+use App\Factory\UserFactory;
 use Illuminate\Database\Seeder;
 
 class UsersSeeder extends Seeder
 {
     public function run()
     {
-        factory(App\User::class)->create([
-            'email' => 'root@example.com',
-            'login' => 'root',
-            'password' => 'top-secret',
-        ]);
+        $user = UserFactory::new()->make();
+        $user->email = 'root@example.com';
+        $user->login = 'root';
+        $user->password = 'top-secret';
+        $user->save();
 
-        factory(App\User::class)->create([
-            'email' => 'guest@example.com',
-            'login' => 'guest',
-            'password' => 'top-secret',
-        ]);
+        $user = UserFactory::new()->make();
+        $user->email = 'guest@example.com';
+        $user->login = 'guest';
+        $user->password = 'top-secret';
+        $user->save();
     }
 }

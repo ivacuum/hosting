@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\User;
+use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -18,7 +18,7 @@ class SignOutTest extends TestCase
 
     public function testUser()
     {
-        $this->be(factory(User::class)->create())
+        $this->be(UserFactory::new()->create())
             ->get('auth/logout')
             ->assertRedirect('/');
 

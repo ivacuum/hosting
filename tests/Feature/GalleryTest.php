@@ -1,7 +1,7 @@
 <?php namespace Tests\Feature;
 
+use App\Factory\UserFactory;
 use App\Image;
-use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
@@ -65,8 +65,8 @@ class GalleryTest extends TestCase
             ->assertStatus(200);
     }
 
-    private function user(): User
+    private function user()
     {
-        return factory(User::class)->create();
+        return UserFactory::new()->create();
     }
 }

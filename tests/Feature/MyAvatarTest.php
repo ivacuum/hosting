@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\User;
+use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
@@ -15,8 +15,7 @@ class MyAvatarTest extends TestCase
 
         $file = UploadedFile::fake()->image('avatar.jpg');
 
-        /** @var User $user */
-        $this->be($user = factory(User::class)->create());
+        $this->be($user = UserFactory::new()->create());
 
         $this->expectsEvents(\App\Events\Stats\UserAvatarUploaded::class);
 
@@ -53,8 +52,7 @@ class MyAvatarTest extends TestCase
 
         $file = UploadedFile::fake()->image('avatar.jpg');
 
-        /** @var User $user */
-        $this->be($user = factory(User::class)->create());
+        $this->be($user = UserFactory::new()->create());
 
         $this->expectsEvents(\App\Events\Stats\UserAvatarUploaded::class);
 

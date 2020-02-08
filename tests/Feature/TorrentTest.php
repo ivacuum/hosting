@@ -1,12 +1,12 @@
 <?php namespace Tests\Feature;
 
 use App\Comment;
+use App\Factory\UserFactory;
 use App\Services\Rto;
 use App\Services\RtoTopicData;
 use App\Services\RtoTopicHtmlResponse;
 use App\Services\RtoTorrentData;
 use App\Torrent;
-use App\User;
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Mockery\MockInterface;
@@ -40,7 +40,7 @@ class TorrentTest extends TestCase
 
     public function testCreate()
     {
-        $user = factory(User::class)->state('id')->make();
+        $user = UserFactory::new()->withId(1)->make();
 
         $this->be($user)
             ->get('torrents/add')
@@ -106,8 +106,7 @@ class TorrentTest extends TestCase
 
     public function testStore()
     {
-        /** @var User $user */
-        $user = factory(User::class)->create();
+        $user = UserFactory::new()->create();
         $rtoId = 1234567890;
         $categoryId = 2;
 

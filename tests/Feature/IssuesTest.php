@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\User;
+use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -29,12 +29,9 @@ class IssuesTest extends TestCase
 
     public function testPostIssueAsUser()
     {
-        /** @var User $user */
-        $this->be($user = factory(User::class)->create());
-
-        $this->expectsEvents(\App\Events\Stats\IssueAdded::class);
-
-        $this->from('/')
+        $this->be($user = UserFactory::new()->create())
+            ->expectsEvents(\App\Events\Stats\IssueAdded::class)
+            ->from('/')
             ->postJson('contact', [
                 'name' => 'name',
                 'text' => 'some text from the user',

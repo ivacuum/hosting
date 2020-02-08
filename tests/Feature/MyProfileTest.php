@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\User;
+use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -10,21 +10,18 @@ class MyProfileTest extends TestCase
 
     public function testEdit()
     {
-        $this->be(factory(User::class)->create())
+        $this->be(UserFactory::new()->create())
             ->get('my/profile')
             ->assertStatus(200);
     }
 
     public function testUpdateEmail()
     {
-        /** @var User $user */
-        $user = factory(User::class)->create();
-
+        $user = UserFactory::new()->create();
         $email = "__{$user->email}";
 
-        $this->expectsEvents(\App\Events\Stats\MyProfileChanged::class);
-
         $this->be($user)
+            ->expectsEvents(\App\Events\Stats\MyProfileChanged::class)
             ->put('my/profile', [
                 'email' => $email,
                 'username' => $user->login,
@@ -38,14 +35,11 @@ class MyProfileTest extends TestCase
 
     public function testUpdateLogin()
     {
-        /** @var User $user */
-        $user = factory(User::class)->create();
-
+        $user = UserFactory::new()->create();
         $login = $user->login . $user->login;
 
-        $this->expectsEvents(\App\Events\Stats\MyProfileChanged::class);
-
         $this->be($user)
+            ->expectsEvents(\App\Events\Stats\MyProfileChanged::class)
             ->put('my/profile', [
                 'email' => $user->email,
                 'username' => $login,

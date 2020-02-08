@@ -1,7 +1,7 @@
 <?php namespace Tests\Feature;
 
+use App\Factory\UserFactory;
 use App\Radical;
-use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -11,7 +11,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
 
     public function testBurn()
     {
-        $this->be($user = $this->user());
+        $this->be($user = UserFactory::new()->create());
 
         $radical = $this->radical();
 
@@ -60,7 +60,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
 
     public function testResurrect()
     {
-        $this->be($user = $this->user());
+        $this->be($user = UserFactory::new()->create());
 
         $radical = $this->radical();
         $radical->burn($user->id);
@@ -74,10 +74,5 @@ class JapaneseWanikaniRadicalTest extends TestCase
     private function radical(array $attributes = []): Radical
     {
         return factory(Radical::class)->create($attributes);
-    }
-
-    private function user(): User
-    {
-        return factory(User::class)->create();
     }
 }

@@ -1,7 +1,7 @@
 <?php namespace Tests\Feature;
 
+use App\Factory\UserFactory;
 use App\Kanji;
-use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -11,7 +11,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
 
     public function testBurn()
     {
-        $this->be($user = $this->user());
+        $this->be($user = UserFactory::new()->create());
 
         $kanji = $this->kanji();
 
@@ -60,7 +60,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
 
     public function testResurrect()
     {
-        $this->be($user = $this->user());
+        $this->be($user = UserFactory::new()->create());
 
         $kanji = $this->kanji();
         $kanji->burn($user->id);
@@ -74,10 +74,5 @@ class JapaneseWanikaniKanjiTest extends TestCase
     private function kanji(array $attributes = []): Kanji
     {
         return factory(Kanji::class)->create($attributes);
-    }
-
-    private function user(): User
-    {
-        return factory(User::class)->create();
     }
 }

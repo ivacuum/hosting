@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\User;
+use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -10,7 +10,7 @@ class MyTest extends TestCase
 
     public function testIndex()
     {
-        $this->be(factory(User::class)->state('id')->make())
+        $this->be(UserFactory::new()->withId(1)->make())
             ->get('my')
             ->assertStatus(200);
     }

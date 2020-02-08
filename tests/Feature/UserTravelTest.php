@@ -1,7 +1,7 @@
 <?php namespace Tests\Feature;
 
+use App\Factory\UserFactory;
 use App\Trip;
-use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -67,8 +67,8 @@ class UserTravelTest extends TestCase
             ->assertStatus(200);
     }
 
-    private function user(): User
+    private function user()
     {
-        return factory(User::class)->create(['login' => self::LOGIN]);
+        return UserFactory::new()->withLogin(self::LOGIN)->create();
     }
 }

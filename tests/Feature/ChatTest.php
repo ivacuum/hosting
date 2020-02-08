@@ -2,7 +2,7 @@
 
 use App\Events\ChatMessageCreated;
 use App\Events\ChatMessagePosted;
-use App\User;
+use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -12,8 +12,7 @@ class ChatTest extends TestCase
 
     public function testChatPostAsUser()
     {
-        /** @var User $user */
-        $this->be($user = factory(User::class)->create());
+        $this->be($user = UserFactory::new()->create());
 
         $this->expectsEvents([
             ChatMessagePosted::class,

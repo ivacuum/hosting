@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Factory\UserFactory;
 use App\Notifications\PlainTextNotification;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -24,8 +25,7 @@ class AcpNotificationsTest extends TestCase
 
     public function testShow()
     {
-        /** @var User $user */
-        $user = factory(User::class)->create();
+        $user = UserFactory::new()->create();
 
         \Notification::send($user, new PlainTextNotification('text'));
 

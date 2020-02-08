@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\User;
+use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -10,7 +10,7 @@ class MyPasswordTest extends TestCase
 
     public function testEdit()
     {
-        $this->be($user = factory(User::class)->create())
+        $this->be($user = UserFactory::new()->create())
             ->get('my/password')
             ->assertStatus(200);
     }
@@ -19,12 +19,9 @@ class MyPasswordTest extends TestCase
     {
         $newPassword = 'top-secret ';
 
-        /** @var User $user */
-        $this->be($user = factory(User::class)->create());
-
-        $this->expectsEvents(\App\Events\Stats\MyPasswordChanged::class);
-
-        $this->put('my/password', ['new_password' => $newPassword])
+        $this->be($user = UserFactory::new()->create())
+            ->expectsEvents(\App\Events\Stats\MyPasswordChanged::class)
+            ->put('my/password', ['new_password' => $newPassword])
             ->assertStatus(302)
             ->assertSessionHasNoErrors();
 
@@ -38,12 +35,9 @@ class MyPasswordTest extends TestCase
         $password = 'top-secret';
         $newPassword = 'password ';
 
-        /** @var User $user */
-        $this->be($user = factory(User::class)->create(['password' => $password]));
-
-        $this->expectsEvents(\App\Events\Stats\MyPasswordChanged::class);
-
-        $this->put('my/password', ['password' => $password, 'new_password' => $newPassword])
+        $this->be($user = UserFactory::new()->withPassword($password)->create())
+            ->expectsEvents(\App\Events\Stats\MyPasswordChanged::class)
+            ->put('my/password', ['password' => $password, 'new_password' => $newPassword])
             ->assertStatus(302)
             ->assertSessionHasNoErrors();
 

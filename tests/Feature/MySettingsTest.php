@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Factory\UserFactory;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -10,7 +11,7 @@ class MySettingsTest extends TestCase
 
     public function testEdit()
     {
-        $this->be(factory(User::class)->create())
+        $this->be(UserFactory::new()->create())
             ->get('my/settings')
             ->assertStatus(200);
     }
@@ -24,12 +25,13 @@ class MySettingsTest extends TestCase
      */
     public function testUpdate($old, $new, string $field, array $events)
     {
-        /** @var User $user */
-        $this->be($user = factory(User::class)->create([$field => $old]));
+        $user = UserFactory::new()->make();
+        $user->$field = $old;
+        $user->save();
 
-        $this->expectsEvents($events);
-
-        $this->put('my/settings', [$field => $new])
+        $this->be($user)
+            ->expectsEvents($events)
+            ->put('my/settings', [$field => $new])
             ->assertStatus(302);
 
         $user->refresh();

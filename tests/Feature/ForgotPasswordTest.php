@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\User;
+use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -18,7 +18,7 @@ class ForgotPasswordTest extends TestCase
 
     public function testFormUser()
     {
-        $this->be(factory(User::class)->make())
+        $this->be(UserFactory::new()->make())
             ->get('auth/password/remind')
             ->assertSessionHasNoErrors()
             ->assertRedirect('/');
@@ -28,8 +28,7 @@ class ForgotPasswordTest extends TestCase
 
     public function testSubmitGuest()
     {
-        /** @var User $user */
-        $user = factory(User::class)->create();
+        $user = UserFactory::new()->create();
 
         $this->from('auth/password/remind')
             ->post('auth/password/remind', ['email' => $user->email])

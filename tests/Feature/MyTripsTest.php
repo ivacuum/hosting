@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Factory\UserFactory;
 use App\Trip;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -11,15 +12,14 @@ class MyTripsTest extends TestCase
 
     public function testCreate()
     {
-        $this->be(factory(User::class)->state('id')->make())
+        $this->be(UserFactory::new()->withId(1)->make())
             ->get('my/trips/create')
             ->assertStatus(200);
     }
 
     public function testDestroy()
     {
-        /** @var User $user */
-        $this->be($user = factory(User::class)->create());
+        $this->be($user = UserFactory::new()->create());
 
         /** @var Trip $trip */
         $trip = factory(Trip::class)->create(['user_id' => $user->id]);
@@ -32,8 +32,7 @@ class MyTripsTest extends TestCase
 
     public function testEdit()
     {
-        /** @var User $user */
-        $this->be($user = factory(User::class)->create());
+        $this->be($user = UserFactory::new()->create());
 
         /** @var Trip $trip */
         $trip = factory(Trip::class)->create(['user_id' => $user->id]);
@@ -44,8 +43,7 @@ class MyTripsTest extends TestCase
 
     public function testIndex()
     {
-        /** @var User $user */
-        $this->be($user = factory(User::class)->create());
+        $this->be($user = UserFactory::new()->create());
 
         factory(Trip::class)->create(['user_id' => $user->id]);
 
@@ -55,8 +53,7 @@ class MyTripsTest extends TestCase
 
     public function testStore()
     {
-        /** @var User $user */
-        $user = factory(User::class)->create();
+        $user = UserFactory::new()->create();
 
         /** @var Trip $trip */
         $trip = factory(Trip::class)->state('city')->make();
@@ -73,8 +70,7 @@ class MyTripsTest extends TestCase
 
     public function testUpdate()
     {
-        /** @var User $user */
-        $user = factory(User::class)->create();
+        $user = UserFactory::new()->create();
 
         /** @var Trip $trip */
         $trip = factory(Trip::class)->state('city')->create(['user_id' => $user->id]);

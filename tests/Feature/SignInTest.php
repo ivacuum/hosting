@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\User;
+use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -18,7 +18,7 @@ class SignInTest extends TestCase
 
     public function testFormUser()
     {
-        $this->be(factory(User::class)->make())
+        $this->be(UserFactory::new()->make())
             ->get('auth/login')
             ->assertSessionHasNoErrors()
             ->assertRedirect('/');
@@ -28,7 +28,7 @@ class SignInTest extends TestCase
 
     public function testSubmitGuest()
     {
-        $user = factory(User::class)->create(['password' => 'secret42']);
+        $user = UserFactory::new()->withPassword('secret42')->create();
 
         $this->from('auth/login')
             ->post('auth/login', [
