@@ -45,7 +45,6 @@ return [
         'port'   => env('SPHINX_PORT', 9306),
         'socket' => env('SPHINX_SOCKET', ''),
     ],
-    'socketio_host' => env('SOCKETIO_HOST'),
     'telegram' => [
         'admin_id' => env('TELEGRAM_ADMIN_ID'),
     ],

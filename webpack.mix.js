@@ -47,8 +47,7 @@ mix.js('resources/assets/js/app.js', 'public/assets')
   .copy('node_modules/axios/dist/axios.min.js', 'public/assets/axios.js')
   .copy('node_modules/vac-gfe/js/empty.map', 'public/assets/axios.min.map')
 
-  .copy('node_modules/socket.io-client/dist/socket.io.js', 'public/assets/socket.io.js')
-  .copy('node_modules/vac-gfe/js/empty.map', 'public/assets/socket.io.js.map')
+  .copy('node_modules/pusher-js/dist/web/pusher.min.js', 'public/assets/pusher.js')
 
   .copy('node_modules/popper.js/dist/umd/popper.min.js', 'public/assets/popper.js')
   .copy('node_modules/vac-gfe/js/empty.map', 'public/assets/popper.min.js.map')

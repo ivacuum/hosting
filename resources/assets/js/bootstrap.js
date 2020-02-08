@@ -1,10 +1,20 @@
 import 'vac-gfe/js/laravel-axios'
-import 'vac-gfe/js/laravel-echo'
 
-import FeedbackForm from './components/FeedbackForm.vue'
-import Youtube from './components/Youtube.vue'
-
+import Echo from 'laravel-echo'
 import decimal from './decimal'
+import Youtube from './components/Youtube.vue'
+import FeedbackForm from './components/FeedbackForm.vue'
+
+if (typeof Pusher !== 'undefined') {
+  window.Echo = new Echo({
+    key: window.AppOptions.pusherKey,
+    wsHost: window.AppOptions.pusherWsHost,
+    wsPort: window.AppOptions.pusherWsPort,
+    wssPort: window.AppOptions.pusherWsPort,
+    broadcaster: 'pusher',
+    disableStats: true,
+  })
+}
 
 Vue.config.productionTip = false
 
