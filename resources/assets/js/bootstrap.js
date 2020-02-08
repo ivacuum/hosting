@@ -13,6 +13,7 @@ if (typeof Pusher !== 'undefined') {
     wssPort: window.AppOptions.pusherWsPort,
     broadcaster: 'pusher',
     disableStats: true,
+    enabledTransports: ['ws', 'wss'],
   })
 }
 
