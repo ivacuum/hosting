@@ -3,7 +3,7 @@ $notie-color-neutral: rgba($white, .95);
 $notie-color-overlay: rgba($black, .4);
 $notie-border-bottom-color: rgba($black, .2);
 
-@import "~notie/src/notie";
+@import "../../node_modules/notie/src/notie";
 
 .notie-textbox {
   padding: 1rem;
