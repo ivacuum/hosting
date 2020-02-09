@@ -19,4 +19,4 @@ yarn run production
 # vendor/bin/phpunit --exclude-group pages
 
 # Архив для быстрого деплоя
-tar --exclude ^deploy.tar --exclude ^.git --exclude ^node_modules --exclude ^resources/assets --exclude ^resources/css --exclude ^tests -cf deploy.tar .
+tar --exclude ^deploy.tar --exclude ^.git --exclude ^node_modules --exclude ^resources/assets --exclude ^resources/css --exclude ^tests --exclude ^vendor -cf deploy.tar .
