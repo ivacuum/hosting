@@ -1,10 +1,8 @@
 <?php namespace App\Console\Commands;
 
-use App\Notifications\TorrentNotFoundDeletedNotification;
 use App\Notifications\TorrentUpdatedNotification;
 use App\Services\Rto;
 use App\Torrent;
-use App\User;
 use Illuminate\Support\Collection;
 use Ivacuum\Generic\Commands\Command;
 use Ivacuum\Generic\Services\Telegram;

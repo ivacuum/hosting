@@ -24,6 +24,7 @@ use Illuminate\Notifications\Notifiable;
  * @property int $notify_news
  * @property int $notify_trips
  * @property string $avatar
+ * @property int $telegram_id
  * @property string $ip
  * @property string $activation_token
  * @property string $remember_token
