@@ -17,11 +17,11 @@ class Artist extends Resource
     public function fields(Request $request)
     {
         return [
-            Fields\HasMany::make('Gigs'),
             Fields\Text::make('Title')->rules('max:255')->sortable(),
             Fields\Text::make('Slug')->rules('max:255'),
             Fields\DateTime::make('Created At')->onlyOnDetail(),
             Fields\DateTime::make('Updated At')->onlyOnDetail(),
+            Fields\HasMany::make('Gigs'),
         ];
     }
 }
