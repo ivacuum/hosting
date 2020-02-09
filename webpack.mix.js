@@ -2,7 +2,7 @@ const mix = require('laravel-mix')
 
 const purgecss = require('@fullhuman/postcss-purgecss')({
   content: [
-    './resources/assets/**/*.vue',
+    './resources/js/**/*.vue',
     './resources/views/**/*.blade.php',
   ],
 
