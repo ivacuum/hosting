@@ -10,8 +10,8 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
   defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
 })
 
-mix.js('resources/assets/js/app.js', 'public/assets')
-  .sass('resources/assets/sass/app.scss', 'public/assets')
+mix.js('resources/js/app.js', 'public/assets')
+  .sass('resources/sass/app.scss', 'public/assets')
   .postCss('resources/css/tailwind.css', 'public/assets', [
     require('autoprefixer'),
     require('tailwindcss'),
@@ -20,8 +20,8 @@ mix.js('resources/assets/js/app.js', 'public/assets')
       : []
   ])
 
-  .copy('resources/assets/js/pwa/service-worker.js', 'public/assets')
-  .copy('resources/assets/js/pwa/service-worker-installer.js', 'public/assets')
+  .copy('resources/js/pwa/service-worker.js', 'public/assets')
+  .copy('resources/js/pwa/service-worker-installer.js', 'public/assets')
 
   .copy('node_modules/intersection-observer/intersection-observer.js', 'public/assets/intersection-observer.js')
   .copy('node_modules/promise-polyfill/promise.min.js', 'public/assets/polyfills.js')

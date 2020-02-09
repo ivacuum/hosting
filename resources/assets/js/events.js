@@ -15,6 +15,9 @@ export default class EventHandlers {
 
     // Навигация по заметкам с помощью горячих клавиш
     document.querySelectorAll('.js-trip-shortcuts p').forEach(el => el.classList.add('js-shortcuts-item'))
+
+    // Промотка к предыдущему абзацу
+    // TODO: document.querySelector(document.location.hash).scrollIntoView()
   }
 
   static shareClick(e) {
