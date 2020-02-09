@@ -15,51 +15,44 @@
   </p>
 @endru
 --}}
-<div class="md:flex md:-mx-4">
-  <div class="mb-4 md:w-7/12 md:px-4">
-    @include('tpl.setlist-title')
-    <ol>
-      <li>Das weisse Licht</li>
-      <li>Gott ist ein Popstar</li>
-      <li>Träumst Du</li>
-      <li>Mein Schatz</li>
-      <li>Der neue Gott</li>
-      <li>Bis der Spiegel zerbricht</li>
-      <li>Als wärs das letzte Mal</li>
-      <li>Sandmann</li>
-      <li>Gekreuzigt</li>
-      <li>Jetzt oder nie</li>
-      <li>
-        Sex hat keine Macht
-        <span class="text-sm text-muted">(Acoustic)</span>
-      </li>
-      <li>Jede Reise hat ein Ende</li>
-      <li>Mein Herz</li>
-      <li>Niemand</li>
-      <li>Mitten ins Herz</li>
-      <li>Aus meiner Haut</li>
-      <li>Kleinstadtboy</li>
-      <li>
-        Fieber
-        <span class="text-sm text-muted">(Acoustic)</span>
-      </li>
-      <li>
-        Das letzte Streichholz
-        <span class="text-sm text-muted">(Acoustic)</span>
-      </li>
-      <li>Давай, давай работай</li>
-      <li>Labyrinth</li>
-      <li>Augen auf!</li>
-      <li>Alles aus Liebe</li>
-      <li>Auf Kurs</li>
-    </ol>
-  </div>
-  <div class="md:w-5/12 md:px-4">
-    <div class="mb-6 text-center mobile-wide">
-      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/oomph.2017.03.26.jpg">
-    </div>
-  </div>
-</div>
+
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/oomph.2017.03.26.jpg'])
+  <ol>
+    <li>Das weisse Licht</li>
+    <li>Gott ist ein Popstar</li>
+    <li>Träumst Du</li>
+    <li>Mein Schatz</li>
+    <li>Der neue Gott</li>
+    <li>Bis der Spiegel zerbricht</li>
+    <li>Als wärs das letzte Mal</li>
+    <li>Sandmann</li>
+    <li>Gekreuzigt</li>
+    <li>Jetzt oder nie</li>
+    <li>
+      Sex hat keine Macht
+      <span class="text-sm text-muted">(Acoustic)</span>
+    </li>
+    <li>Jede Reise hat ein Ende</li>
+    <li>Mein Herz</li>
+    <li>Niemand</li>
+    <li>Mitten ins Herz</li>
+    <li>Aus meiner Haut</li>
+    <li>Kleinstadtboy</li>
+    <li>
+      Fieber
+      <span class="text-sm text-muted">(Acoustic)</span>
+    </li>
+    <li>
+      Das letzte Streichholz
+      <span class="text-sm text-muted">(Acoustic)</span>
+    </li>
+    <li>Давай, давай работай</li>
+    <li>Labyrinth</li>
+    <li>Augen auf!</li>
+    <li>Alles aus Liebe</li>
+    <li>Auf Kurs</li>
+  </ol>
+@endcomponent
 
 @ru
   <p>Видеозапись выступления.</p>

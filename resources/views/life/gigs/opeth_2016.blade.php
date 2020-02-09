@@ -61,32 +61,25 @@ Highlights
   <p><a class="link" href="rammstein.2016.07">Раммштайн в Берлине</a> был дешевле, чем в Москве. В случае с Опет скорее всего концерт в Москве тоже был бы дороже такового в Брюсселе.</p>
 @endru
 
-<div class="md:flex md:-mx-4">
-  <div class="mb-4 md:w-7/12 md:px-4">
-    @ru
-      <p>Песен сыграли мало — сказывается их средняя продолжительность в десять минут. Зато охватили большинство выпущенных альбомов в рамках одного выступления.</p>
-    @endru
-    @include('tpl.setlist-title')
-    <ol>
-      <li>Sorceress</li>
-      <li>Ghost of Perdition</li>
-      <li>Demon of the Fall</li>
-      <li>The Wilde Flowers</li>
-      <li>Face of Melinda</li>
-      <li>In My Time of Need</li>
-      <li>Cusp of Eternity</li>
-      <li>The Drapery Falls</li>
-      <li>Heir Apparent</li>
-      <li>The Grand Conjuration</li>
-      <li>Deliverance</li>
-    </ol>
-  </div>
-  <div class="md:w-5/12 md:px-4">
-    <div class="mb-6 text-center mobile-wide">
-      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/opeth.2016.11.17.jpg">
-    </div>
-  </div>
-</div>
+@ru
+  <p>Песен сыграли мало — сказывается их средняя продолжительность в десять минут. Зато охватили большинство выпущенных альбомов в рамках одного выступления.</p>
+@endru
+
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/opeth.2016.11.17.jpg'])
+  <ol>
+    <li>Sorceress</li>
+    <li>Ghost of Perdition</li>
+    <li>Demon of the Fall</li>
+    <li>The Wilde Flowers</li>
+    <li>Face of Melinda</li>
+    <li>In My Time of Need</li>
+    <li>Cusp of Eternity</li>
+    <li>The Drapery Falls</li>
+    <li>Heir Apparent</li>
+    <li>The Grand Conjuration</li>
+    <li>Deliverance</li>
+  </ol>
+@endcomponent
 
 @ru
   <p>Фотография из Фейсбука группы по завершении концерта.</p>

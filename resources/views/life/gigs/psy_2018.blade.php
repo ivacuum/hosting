@@ -263,160 +263,153 @@
   'IMG_6199.jpg',
 ]])
 
-<div class="md:flex md:-mx-4">
-  <div class="mb-4 md:w-7/12 md:px-4">
-    @ru
-      <div class="mb-1">Что было исполнено. На каждую песню можно нажать и посмотреть видео. Сердечком отмечен самый смак.</div>
-    @en
-      <div class="mb-1">Setlist. Each song is a link to its video. The most spectacular are marked with a heart.</div>
-    @endru
-    <h5 class="mb-1">@ru Сет @en Set @endru 1</h5>
-    <ol class="list-inside pl-0">
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=e5VriO_mdv8">챔피언</a>
-        <span class="text-sm text-muted">Champion</span>
-        <span class="text-red-600">@svg (heart)</span>
-      </li>
-      <li><a class="link" href="https://www.youtube.com/watch?v=OcRA6dwfdW4">I LUV IT</a></li>
-      <li><a class="link" href="https://www.youtube.com/watch?v=ztZnqo0IJA4">I Remember You</a></li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=vVmkMz0OwfM">내 눈에는</a>
-        <span class="text-sm text-muted">In My Eyes</span>
-      </li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=KOW6APjojWw">나 이런 사람이야</a>
-        <span class="text-sm text-muted">I'm a Guy Like This</span>
-        <span class="text-red-600">@svg (heart)</span>
-      </li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=_HVIq803T2U">새</a>
-        <span class="text-sm text-muted">Bird</span>
-      </li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=ddyyKt_hr2Q">오늘밤 새</a>
-        <span class="text-sm text-muted">All Night Long</span>
-        <span class="text-red-600">@svg (heart)</span>
-      </li>
-    </ol>
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2018.12.23.jpg', 'includeTitle' => false])
+  @ru
+    <div class="mb-1">Что было исполнено. На каждую песню можно нажать и посмотреть видео. Сердечком отмечен самый смак.</div>
+  @en
+    <div class="mb-1">Setlist. Each song is a link to its video. The most spectacular are marked with a heart.</div>
+  @endru
+  <h5 class="mb-1">@ru Сет @en Set @endru 1</h5>
+  <ol class="list-inside pl-0">
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=e5VriO_mdv8">챔피언</a>
+      <span class="text-sm text-muted">Champion</span>
+      <span class="text-red-600">@svg (heart)</span>
+    </li>
+    <li><a class="link" href="https://www.youtube.com/watch?v=OcRA6dwfdW4">I LUV IT</a></li>
+    <li><a class="link" href="https://www.youtube.com/watch?v=ztZnqo0IJA4">I Remember You</a></li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=vVmkMz0OwfM">내 눈에는</a>
+      <span class="text-sm text-muted">In My Eyes</span>
+    </li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=KOW6APjojWw">나 이런 사람이야</a>
+      <span class="text-sm text-muted">I'm a Guy Like This</span>
+      <span class="text-red-600">@svg (heart)</span>
+    </li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=_HVIq803T2U">새</a>
+      <span class="text-sm text-muted">Bird</span>
+    </li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=ddyyKt_hr2Q">오늘밤 새</a>
+      <span class="text-sm text-muted">All Night Long</span>
+      <span class="text-red-600">@svg (heart)</span>
+    </li>
+  </ol>
 
-    <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 2</h5>
-    <ol class="list-inside pl-0" start="8">
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=vjpYGfYCnqI">We are the One</a>
-        <span class="text-red-600">@svg (heart)</span>
-      </li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=MauVE6F3nMo">나팔바지</a>
-        <span class="text-sm text-muted">Napal Baji</span>
-        <span class="text-red-600">@svg (heart)</span>
-      </li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=5TT4qvedULU">끝</a>
-        <span class="text-sm text-muted">The End</span>
-        <span class="text-red-600">@svg (heart)</span>
-      </li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=N59H7TgwC24">DADDY</a>
-        <span class="text-red-600">@svg (heart)</span>
-      </li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=j5yKlTTDxPY">흔들어 주세요</a>
-        <span class="text-sm text-muted">Shake It</span>
-      </li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=gxavJwXQc0M">어땠을까 (feat. 헤이즈)</a>
-        <span class="text-sm text-muted">What Would Have Been</span>
-      </li>
-    </ol>
+  <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 2</h5>
+  <ol class="list-inside pl-0" start="8">
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=vjpYGfYCnqI">We are the One</a>
+      <span class="text-red-600">@svg (heart)</span>
+    </li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=MauVE6F3nMo">나팔바지</a>
+      <span class="text-sm text-muted">Napal Baji</span>
+      <span class="text-red-600">@svg (heart)</span>
+    </li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=5TT4qvedULU">끝</a>
+      <span class="text-sm text-muted">The End</span>
+      <span class="text-red-600">@svg (heart)</span>
+    </li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=N59H7TgwC24">DADDY</a>
+      <span class="text-red-600">@svg (heart)</span>
+    </li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=j5yKlTTDxPY">흔들어 주세요</a>
+      <span class="text-sm text-muted">Shake It</span>
+    </li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=gxavJwXQc0M">어땠을까 (feat. 헤이즈)</a>
+      <span class="text-sm text-muted">What Would Have Been</span>
+    </li>
+  </ol>
 
-    <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 3</h5>
-    <ol class="list-inside pl-0" start="14">
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=4tnCBnhEGX4">Right Now</a>
-        <span class="text-red-600">@svg (heart)</span>
-      </li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=4tnCBnhEGX4&t=272">GENTLEMAN</a>
-        <span class="text-red-600">@svg (heart)</span>
-      </li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=E21OCvoJKJQ">아버지</a>
-        <span class="text-sm text-muted">Father</span>
-        <span class="text-red-600">@svg (heart)</span>
-      </li>
-      <li><a class="link" href="https://www.youtube.com/watch?v=WUB9kZMSMFw">New Face</a></li>
-      <li><a class="link" href="https://www.youtube.com/watch?v=XIH5tFK9eU8">Dream</a></li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=8GksPfIR9uA">강남스타일</a>
-        <span class="text-sm text-muted">Gangnam Style</span>
-      </li>
-    </ol>
+  <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 3</h5>
+  <ol class="list-inside pl-0" start="14">
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=4tnCBnhEGX4">Right Now</a>
+      <span class="text-red-600">@svg (heart)</span>
+    </li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=4tnCBnhEGX4&t=272">GENTLEMAN</a>
+      <span class="text-red-600">@svg (heart)</span>
+    </li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=E21OCvoJKJQ">아버지</a>
+      <span class="text-sm text-muted">Father</span>
+      <span class="text-red-600">@svg (heart)</span>
+    </li>
+    <li><a class="link" href="https://www.youtube.com/watch?v=WUB9kZMSMFw">New Face</a></li>
+    <li><a class="link" href="https://www.youtube.com/watch?v=XIH5tFK9eU8">Dream</a></li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=8GksPfIR9uA">강남스타일</a>
+      <span class="text-sm text-muted">Gangnam Style</span>
+    </li>
+  </ol>
 
-    <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 4</h5>
-    <ol class="list-inside pl-0" start="20">
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=dptfI1Nfe5M">낙원</a>
-        <span class="text-sm text-muted">Paradise</span>
-      </li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=JwgVC1YKMs4">걱정말아요 그대</a>
-        <span class="text-sm text-muted">Don't Worry</span>
-        <span class="text-red-600">@svg (heart)</span>
-      </li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=bzj_NOpg1vQ">연예인</a>
-        <span class="text-sm text-muted">Entertainer</span>
-        <span class="text-red-600">@svg (heart)</span>
-      </li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=MWqBXsNYrgM">에술이야</a>
-        <span class="text-sm text-muted">It's Art</span>
-        <span class="text-red-600">@svg (heart)</span>
-      </li>
-    </ol>
+  <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 4</h5>
+  <ol class="list-inside pl-0" start="20">
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=dptfI1Nfe5M">낙원</a>
+      <span class="text-sm text-muted">Paradise</span>
+    </li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=JwgVC1YKMs4">걱정말아요 그대</a>
+      <span class="text-sm text-muted">Don't Worry</span>
+      <span class="text-red-600">@svg (heart)</span>
+    </li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=bzj_NOpg1vQ">연예인</a>
+      <span class="text-sm text-muted">Entertainer</span>
+      <span class="text-red-600">@svg (heart)</span>
+    </li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=MWqBXsNYrgM">에술이야</a>
+      <span class="text-sm text-muted">It's Art</span>
+      <span class="text-red-600">@svg (heart)</span>
+    </li>
+  </ol>
 
-    <h5 class="mt-4 mb-1"><a class="link" href="https://www.youtube.com/watch?v=vwEn2rh4RUw">Encore 1</a></h5>
-    <ol class="list-inside pl-0" start="24">
-      <li><a class="link" href="https://www.youtube.com/watch?v=PsTLjzWw0pQ">Dance medley</a></li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=qqj1OIpDAgY">기댈곳</a>
-        <span class="text-sm text-muted">Refuge</span>
-      </li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=dG0uq27J77Q">Rock medley</a>
-        <span class="text-red-600">@svg (heart)</span>
-      </li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=8YL4NvSleAc">마지막 장면</a>
-        <span class="text-sm text-muted">Last Scene</span>
-        <span class="text-red-600">@svg (heart)</span>
-      </li>
-    </ol>
+  <h5 class="mt-4 mb-1"><a class="link" href="https://www.youtube.com/watch?v=vwEn2rh4RUw">Encore 1</a></h5>
+  <ol class="list-inside pl-0" start="24">
+    <li><a class="link" href="https://www.youtube.com/watch?v=PsTLjzWw0pQ">Dance medley</a></li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=qqj1OIpDAgY">기댈곳</a>
+      <span class="text-sm text-muted">Refuge</span>
+    </li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=dG0uq27J77Q">Rock medley</a>
+      <span class="text-red-600">@svg (heart)</span>
+    </li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=8YL4NvSleAc">마지막 장면</a>
+      <span class="text-sm text-muted">Last Scene</span>
+      <span class="text-red-600">@svg (heart)</span>
+    </li>
+  </ol>
 
-    <h5 class="mt-4 mb-1">Encore 2</h5>
-    <ol class="list-inside pl-0" start="28">
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=RwX6OxhcvYM">챔피언</a>
-        <span class="text-sm text-muted">Champion</span>
-        <span class="text-red-600">@svg (heart)</span>
-      </li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=qeCAoacwaIk">강남스타일</a>
-        <span class="text-sm text-muted">Gangnam Style</span>
-        <span class="text-red-600">@svg (heart)</span>
-      </li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=nz6bswnz9KM">언젠가는</a>
-        <span class="text-sm text-muted">Someday</span>
-      </li>
-    </ol>
-  </div>
-  <div class="md:w-5/12 md:px-4">
-    <div class="mb-6 text-center mobile-wide">
-      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/psy.2018.12.23.jpg">
-    </div>
-  </div>
-</div>
+  <h5 class="mt-4 mb-1">Encore 2</h5>
+  <ol class="list-inside pl-0" start="28">
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=RwX6OxhcvYM">챔피언</a>
+      <span class="text-sm text-muted">Champion</span>
+      <span class="text-red-600">@svg (heart)</span>
+    </li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=qeCAoacwaIk">강남스타일</a>
+      <span class="text-sm text-muted">Gangnam Style</span>
+      <span class="text-red-600">@svg (heart)</span>
+    </li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=nz6bswnz9KM">언젠가는</a>
+      <span class="text-sm text-muted">Someday</span>
+    </li>
+  </ol>
+@endcomponent
 
 @ru
   <p>После сетов 1, 2 и 3 были приглашенные местные звезды, которые исполняли 3–4 песни. Где-то в районе четвертого сета Сай сказал волшебную фразу энкор (на бис). Далее мы ее повторяли практически после каждой песни. <a class="link" href="https://youtu.be/vwEn2rh4RUw?t=77">Пример</a>. И он выходил петь и танцевать еще и еще. Даже после тридцатой повторяли — и он снова вышел. Говорил минуту-другую что-то непонятное и совсем ушел.</p>

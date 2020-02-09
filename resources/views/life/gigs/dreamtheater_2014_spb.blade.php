@@ -65,36 +65,28 @@
   <p>Такой дорогой билет окупил себя сполна. Играла группа 3 часа с 15-минутным перерывом. Опять новая программа выступления, подготовиться за последнюю неделю удалось лишь к восьми песням из восемнадцати — дико много слов. Активность публики была достаточно низкая, но и концерт был крайне сложный — трындец как непросто махать в такт музыке, когда ее ритм постоянно меняется! И лучше быть в первом ряду, чтобы не видеть пассивность позади.</p>
 @endru
 
-<div class="md:flex md:-mx-4">
-  <div class="mb-4 md:w-7/12 md:px-4">
-    @include('tpl.setlist-title')
-    <ol>
-      <li>The Enemy Inside</li>
-      <li>The Shattered Fortress</li>
-      <li>On the Backs of Angels</li>
-      <li>The Looking Glass</li>
-      <li>Trial of Tears</li>
-      <li>Enigma Machine</li>
-      <li>Along for the Ride</li>
-      <li>Breaking All Illusions</li>
-      <li>The Mirror</li>
-      <li>Lie</li>
-      <li>Lifting Shadows Off a Dream</li>
-      <li>Scarred</li>
-      <li>Space-Dye Vest</li>
-      <li>Illumination Theory</li>
-      <li>Overture 1928</li>
-      <li>Strange Déjà Vu</li>
-      <li>The Dance of Eternity</li>
-      <li>Finally Free</li>
-    </ol>
-  </div>
-  <div class="md:w-5/12 md:px-4">
-    <div class="mb-6 text-center mobile-wide">
-      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/dreamtheater.2014.02.26.jpg">
-    </div>
-  </div>
-</div>
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/dreamtheater.2014.02.26.jpg'])
+  <ol>
+    <li>The Enemy Inside</li>
+    <li>The Shattered Fortress</li>
+    <li>On the Backs of Angels</li>
+    <li>The Looking Glass</li>
+    <li>Trial of Tears</li>
+    <li>Enigma Machine</li>
+    <li>Along for the Ride</li>
+    <li>Breaking All Illusions</li>
+    <li>The Mirror</li>
+    <li>Lie</li>
+    <li>Lifting Shadows Off a Dream</li>
+    <li>Scarred</li>
+    <li>Space-Dye Vest</li>
+    <li>Illumination Theory</li>
+    <li>Overture 1928</li>
+    <li>Strange Déjà Vu</li>
+    <li>The Dance of Eternity</li>
+    <li>Finally Free</li>
+  </ol>
+@endcomponent
 
 @ru
   <p>Видеозапись выступления.</p>

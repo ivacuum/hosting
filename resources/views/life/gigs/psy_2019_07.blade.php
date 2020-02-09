@@ -63,67 +63,60 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4322.jpg'])
 
-<div class="md:flex md:-mx-4">
-  <div class="mb-4 md:w-7/12 md:px-4">
-    @ru
-      <div class="mb-1">Примерный сет-лист.</div>
-    @en
-      <div class="mb-1">Setlist.</div>
-    @endru
-    <h5 class="mb-1">@ru Сет @en Set @endru 1</h5>
-    <ol class="list-inside pl-0">
-      <li>챔피언 <span class="text-sm text-muted">Champion</span></li>
-      <li>연예인 <span class="text-sm text-muted">Entertainer</span></li>
-      <li>내 눈에는 <span class="text-sm text-muted">In My Eyes</span></li>
-      <li>흔들어 주세요 <span class="text-sm text-muted">Shake It</span></li>
-      <li>I LUV IT</li>
-      <li>어땠을까 <span class="text-sm text-muted">What Would Have Been</span></li>
-      <li>오늘밤 새 <span class="text-sm text-muted">All Night Long</span></li>
-    </ol>
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2019.07.13.jpg', 'includeTitle' => false])
+  @ru
+    <div class="mb-1">Примерный сет-лист.</div>
+  @en
+    <div class="mb-1">Setlist.</div>
+  @endru
+  <h5 class="mb-1">@ru Сет @en Set @endru 1</h5>
+  <ol class="list-inside pl-0">
+    <li>챔피언 <span class="text-sm text-muted">Champion</span></li>
+    <li>연예인 <span class="text-sm text-muted">Entertainer</span></li>
+    <li>내 눈에는 <span class="text-sm text-muted">In My Eyes</span></li>
+    <li>흔들어 주세요 <span class="text-sm text-muted">Shake It</span></li>
+    <li>I LUV IT</li>
+    <li>어땠을까 <span class="text-sm text-muted">What Would Have Been</span></li>
+    <li>오늘밤 새 <span class="text-sm text-muted">All Night Long</span></li>
+  </ol>
 
-    <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 2</h5>
-    <ol class="list-inside pl-0" start="8">
-      <li>Right Now</li>
-      <li>GENTLEMAN</li>
-      <li>아버지 <span class="text-sm text-muted">Father</span></li>
-      <li>새 <span class="text-sm text-muted">Bird</span></li>
-      <li>나팔바지 <span class="text-sm text-muted">Napal Baji</span></li>
-      <li>DADDY</li>
-    </ol>
+  <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 2</h5>
+  <ol class="list-inside pl-0" start="8">
+    <li>Right Now</li>
+    <li>GENTLEMAN</li>
+    <li>아버지 <span class="text-sm text-muted">Father</span></li>
+    <li>새 <span class="text-sm text-muted">Bird</span></li>
+    <li>나팔바지 <span class="text-sm text-muted">Napal Baji</span></li>
+    <li>DADDY</li>
+  </ol>
 
-    <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 3</h5>
-    <ol class="list-inside pl-0" start="14">
-      <li>New Face</li>
-      <li>Dream</li>
-      <li>나 이런 사람이야 <span class="text-sm text-muted">I'm a Guy Like This</span></li>
-      <li>강남스타일 <span class="text-sm text-muted">Gangnam Style</span></li>
-      <li>낙원 <span class="text-sm text-muted">Paradise</span></li>
-      <li>We are the One</li>
-    </ol>
+  <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 3</h5>
+  <ol class="list-inside pl-0" start="14">
+    <li>New Face</li>
+    <li>Dream</li>
+    <li>나 이런 사람이야 <span class="text-sm text-muted">I'm a Guy Like This</span></li>
+    <li>강남스타일 <span class="text-sm text-muted">Gangnam Style</span></li>
+    <li>낙원 <span class="text-sm text-muted">Paradise</span></li>
+    <li>We are the One</li>
+  </ol>
 
-    <h5 class="mt-4 mb-1">Encore 1</h5>
-    <ol class="list-inside pl-0" start="20">
-      <li>Dance medley</li>
-      <li>기댈곳 <span class="text-sm text-muted">Refuge</span></li>
-      <li>Rock medley</li>
-      <li>언젠가는 <span class="text-sm text-muted">Someday</span></li>
-    </ol>
+  <h5 class="mt-4 mb-1">Encore 1</h5>
+  <ol class="list-inside pl-0" start="20">
+    <li>Dance medley</li>
+    <li>기댈곳 <span class="text-sm text-muted">Refuge</span></li>
+    <li>Rock medley</li>
+    <li>언젠가는 <span class="text-sm text-muted">Someday</span></li>
+  </ol>
 
-    <h5 class="mt-4 mb-1">Encore 2</h5>
-    <ol class="list-inside pl-0" start="24">
-      <li>에술이야 <span class="text-sm text-muted">It's Art</span></li>
-      <li>마지막 장면 <span class="text-sm text-muted">Last Scene</span></li>
-      <li>챔피언 <span class="text-sm text-muted">Champion</span></li>
-      <li>연예인 <span class="text-sm text-muted">Entertainer</span></li>
-      <li>Celeb</li>
-    </ol>
-  </div>
-  <div class="md:w-5/12 md:px-4">
-    <div class="mb-6 text-center mobile-wide">
-      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/psy.2019.07.13.jpg" alt="">
-    </div>
-  </div>
-</div>
+  <h5 class="mt-4 mb-1">Encore 2</h5>
+  <ol class="list-inside pl-0" start="24">
+    <li>에술이야 <span class="text-sm text-muted">It's Art</span></li>
+    <li>마지막 장면 <span class="text-sm text-muted">Last Scene</span></li>
+    <li>챔피언 <span class="text-sm text-muted">Champion</span></li>
+    <li>연예인 <span class="text-sm text-muted">Entertainer</span></li>
+    <li>Celeb</li>
+  </ol>
+@endcomponent
 
 @ru
   <p>Поливалово было настолько мощным, что на второй песне уже промок до нитки. Хорошо, что телефон не стал брать с собой. Во время обливаний главное было не смотреть вверх, иначе вода попадала прямо в глаза, что заставляло их закрывать. Лучше было смотреть строго прямо или чуть ниже, чтобы вода безобидно стекала по лицу.</p>

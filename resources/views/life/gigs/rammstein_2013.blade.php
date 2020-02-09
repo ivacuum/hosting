@@ -7,36 +7,29 @@
   <p>С самого начала фестиваля была предпринята попытка дождаться Раммштайна в первых рядах, пока выступают другие группы. Но уже через несколько часов стало ясно, что там настоящее выживание, а не наслаждение музыкой. Солнце палило так, что регулярно приходилось выливать на себя холодную воду, которую время от времени подносили организаторы. В какой-то момент осознав, что я давно уже не смотрю на сцену, а лишь пытаюсь не потерять занятое впереди место, решил перелезть через ограждение и вернуться ближе к центру поля. До Раммштайна все равно оставалось еще около семи часов! В итоге даже удалось поспать в поле. Проснулся, когда Кипелов пел «Я свободен».</p>
   <p>Еще одно практичное наблюдение: во время концерта лучше перемещаться, а не стоять в давке. Ноги очень благодарны движениям. В итоге даже к концу дня чувствуешь, что сил еще полно и мог бы еще прыгать и прыгать.</p>
 @endru
-<div class="md:flex md:-mx-4">
-  <div class="mb-4 md:w-7/12 md:px-4">
-    @include('tpl.setlist-title')
-    <ol>
-      <li>Ich tu dir weh</li>
-      <li>Wollt ihr das Bett in Flammen sehen?</li>
-      <li>Keine Lust</li>
-      <li>Sehnsucht</li>
-      <li>Asche zu Asche</li>
-      <li>Feuer frei!</li>
-      <li>Mein Teil</li>
-      <li>Ohne dich</li>
-      <li>Wiener Blut</li>
-      <li>Du riechst so gut</li>
-      <li>Benzin</li>
-      <li>Links 2-3-4</li>
-      <li>Du hast</li>
-      <li>Bück dich</li>
-      <li>Ich will</li>
-      <li>Mein Herz brennt</li>
-      <li>Sonne</li>
-      <li>Pussy</li>
-    </ol>
-  </div>
-  <div class="md:w-5/12 md:px-4">
-    <div class="mb-6 text-center mobile-wide">
-      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/rammstein.2013.06.08.jpg">
-    </div>
-  </div>
-</div>
+
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/rammstein.2013.06.08.jpg'])
+  <ol>
+    <li>Ich tu dir weh</li>
+    <li>Wollt ihr das Bett in Flammen sehen?</li>
+    <li>Keine Lust</li>
+    <li>Sehnsucht</li>
+    <li>Asche zu Asche</li>
+    <li>Feuer frei!</li>
+    <li>Mein Teil</li>
+    <li>Ohne dich</li>
+    <li>Wiener Blut</li>
+    <li>Du riechst so gut</li>
+    <li>Benzin</li>
+    <li>Links 2-3-4</li>
+    <li>Du hast</li>
+    <li>Bück dich</li>
+    <li>Ich will</li>
+    <li>Mein Herz brennt</li>
+    <li>Sonne</li>
+    <li>Pussy</li>
+  </ol>
+@endcomponent
 
 @ru
   <p>Видеозапись концерта.</p>

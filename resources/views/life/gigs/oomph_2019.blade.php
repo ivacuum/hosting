@@ -21,39 +21,31 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8867.jpg'])
 
-<div class="md:flex md:-mx-4">
-  <div class="mb-4 md:w-7/12 md:px-4">
-    @include('tpl.setlist-title')
-    <ol>
-      <li>TRRR - FCKN - HTLR</li>
-      <li>Labyrinth</li>
-      <li>Träumst Du</li>
-      <li>Jetzt oder nie</li>
-      <li>Der neue Gott</li>
-      <li>Mein Herz</li>
-      <li>Das weisse Licht</li>
-      <li>Tausend Mann und ein Befehl</li>
-      <li>Niemand</li>
-      <li>Kein Liebeslied</li>
-      <li>Auf Kurs</li>
-      <li>Fieber</li>
-      <li>Das letzte Streichholz</li>
-      <li>Gott ist ein Popstar</li>
-      <li>Gekreuzigt</li>
-      <li>Alles aus Liebe</li>
-      <li>Im Namen des Vaters</li>
-      <li>Jede Reise hat ein Ende</li>
-      <li>Kleinstadtboy</li>
-      <li>Sandmann</li>
-      <li>Augen auf!</li>
-      <li>Mein Schatz</li>
-      <li>Als wärs das letzte Mal</li>
-    </ol>
-  </div>
-  <div class="md:w-5/12 md:px-4">
-    <div class="mb-6 text-center mobile-wide">
-      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/oomph.2019.03.23.jpg" alt="">
-    </div>
-  </div>
-</div>
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/oomph.2019.03.23.jpg'])
+  <ol>
+    <li>TRRR - FCKN - HTLR</li>
+    <li>Labyrinth</li>
+    <li>Träumst Du</li>
+    <li>Jetzt oder nie</li>
+    <li>Der neue Gott</li>
+    <li>Mein Herz</li>
+    <li>Das weisse Licht</li>
+    <li>Tausend Mann und ein Befehl</li>
+    <li>Niemand</li>
+    <li>Kein Liebeslied</li>
+    <li>Auf Kurs</li>
+    <li>Fieber</li>
+    <li>Das letzte Streichholz</li>
+    <li>Gott ist ein Popstar</li>
+    <li>Gekreuzigt</li>
+    <li>Alles aus Liebe</li>
+    <li>Im Namen des Vaters</li>
+    <li>Jede Reise hat ein Ende</li>
+    <li>Kleinstadtboy</li>
+    <li>Sandmann</li>
+    <li>Augen auf!</li>
+    <li>Mein Schatz</li>
+    <li>Als wärs das letzte Mal</li>
+  </ol>
+@endcomponent
 @endsection

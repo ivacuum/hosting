@@ -7,36 +7,29 @@
   <p>Вспоминал как была заполнена площадка <a class="link" href="metallica.2008">семь лет назад</a> во время их шоу, боялся повторения тех адовых условий и духоты. По большому счету они повторились, но самому теперь перенести их было гораздо проще — семь лет подготовки на других концертах дали о себе знать.</p>
   <p>Отличная затея начать шоу с заводной песни Fuel. Побольше бы групп делало ставку на активное начало. В целом сет очень понравился, особенно King Nothing и Turn the Page. Вяло зашли зашли The Frayed Ends of Sanity и Nothing Else Matters.</p>
 @endru
-<div class="md:flex md:-mx-4">
-  <div class="mb-4 md:w-7/12 md:px-4">
-    @include('tpl.setlist-title')
-    <ol>
-      <li>Fuel</li>
-      <li>For Whom the Bell Tolls</li>
-      <li>Blackened</li>
-      <li>King Nothing</li>
-      <li>Disposable Heroes</li>
-      <li>The Day That Never Comes</li>
-      <li>The Memory Remains</li>
-      <li>The Unforgiven</li>
-      <li>Sad But True</li>
-      <li>Turn the Page</li>
-      <li>The Frayed Ends of Sanity</li>
-      <li>One</li>
-      <li>Master of Puppets</li>
-      <li>Fade to Black</li>
-      <li>Seek and Destroy</li>
-      <li>Whiskey in the Jar</li>
-      <li>Nothing Else Matters</li>
-      <li>Enter Sandman</li>
-    </ol>
-  </div>
-  <div class="md:w-5/12 md:px-4">
-    <div class="mb-6 text-center mobile-wide">
-      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/metallica.2015.08.25.jpg">
-    </div>
-  </div>
-</div>
+
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/metallica.2015.08.25.jpg'])
+  <ol>
+    <li>Fuel</li>
+    <li>For Whom the Bell Tolls</li>
+    <li>Blackened</li>
+    <li>King Nothing</li>
+    <li>Disposable Heroes</li>
+    <li>The Day That Never Comes</li>
+    <li>The Memory Remains</li>
+    <li>The Unforgiven</li>
+    <li>Sad But True</li>
+    <li>Turn the Page</li>
+    <li>The Frayed Ends of Sanity</li>
+    <li>One</li>
+    <li>Master of Puppets</li>
+    <li>Fade to Black</li>
+    <li>Seek and Destroy</li>
+    <li>Whiskey in the Jar</li>
+    <li>Nothing Else Matters</li>
+    <li>Enter Sandman</li>
+  </ol>
+@endcomponent
 
 @ru
   <p>Каково оно было в фан-зоне:</p>

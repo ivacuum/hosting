@@ -22,41 +22,33 @@
   <p>Были некоторые изменения в шоу относительны <a class="link" href="rammstein.2016.06">Москвы</a>. Белый костюм на 1-й песне, на Америке мощнейшее конфетти и прочие мелочи.</p>
 @endru
 
-<div class="md:flex md:-mx-4">
-  <div class="mb-4 md:w-7/12 md:px-4">
-    @include('tpl.setlist-title')
-    <ol>
-      <li>Ramm 4</li>
-      <li>Reise, Reise</li>
-      <li>Hallelujah</li>
-      <li>Zerstören</li>
-      <li>Keine Lust</li>
-      <li>Feuer frei!</li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=P5PIs7Gf6CU&t=35">Seemann</a>
-        @svg (heart)
-      </li>
-      <li>Ich tu dir weh</li>
-      <li>Du riechst so gut</li>
-      <li>Mein Herz brennt</li>
-      <li>Links 2-3-4</li>
-      <li>Ich will</li>
-      <li>Du hast</li>
-      <li>Stripped</li>
-      <li>Sonne</li>
-      <li>
-        <a class="link" href="https://www.youtube.com/watch?v=M4e_QtzBPmY&t=177">Amerika</a>
-        @svg (heart)
-      </li>
-      <li>Engel</li>
-    </ol>
-  </div>
-  <div class="md:w-5/12 md:px-4">
-    <div class="mb-6 text-center mobile-wide">
-      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/rammstein.2016.07.09.jpg">
-    </div>
-  </div>
-</div>
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/rammstein.2016.07.09.jpg'])
+  <ol>
+    <li>Ramm 4</li>
+    <li>Reise, Reise</li>
+    <li>Hallelujah</li>
+    <li>Zerstören</li>
+    <li>Keine Lust</li>
+    <li>Feuer frei!</li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=P5PIs7Gf6CU&t=35">Seemann</a>
+      @svg (heart)
+    </li>
+    <li>Ich tu dir weh</li>
+    <li>Du riechst so gut</li>
+    <li>Mein Herz brennt</li>
+    <li>Links 2-3-4</li>
+    <li>Ich will</li>
+    <li>Du hast</li>
+    <li>Stripped</li>
+    <li>Sonne</li>
+    <li>
+      <a class="link" href="https://www.youtube.com/watch?v=M4e_QtzBPmY&t=177">Amerika</a>
+      @svg (heart)
+    </li>
+    <li>Engel</li>
+  </ol>
+@endcomponent
 
 @ru
   <p>Вот что значит распроданы все билеты.</p>

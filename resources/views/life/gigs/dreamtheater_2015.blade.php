@@ -8,31 +8,24 @@
   <p>Укрепилось впечатление, что музыкантам Москва нравится больше Питера по их активности на соответствующих шоу и вниманию к публике.</p>
   <p>Интересно составлен сет — по одной песне с каждого выпущенного альбома с 1989 по 2013 годы. Молодцы, что вернули в программу As I Am и Panic Attack — их нехватало с <a class="link" href="dreamtheater.2009">2009 года</a>.</p>
 @endru
-<div class="md:flex md:-mx-4">
-  <div class="mb-4 md:w-7/12 md:px-4">
-    @include('tpl.setlist-title')
-    <ol>
-      <li>Afterlife</li>
-      <li>Metropolis Pt. 1: The Miracle and the Sleeper</li>
-      <li>Caught in a Web</li>
-      <li>A Change of Seasons: II Innocence</li>
-      <li>Burning My Soul</li>
-      <li>The Spirit Carries On</li>
-      <li>About to Crash</li>
-      <li>As I Am</li>
-      <li>Panic Attack</li>
-      <li>Constant Motion</li>
-      <li>Wither</li>
-      <li>Bridges in the Sky</li>
-      <li>Behind the Veil</li>
-    </ol>
-  </div>
-  <div class="md:w-5/12 md:px-4">
-    <div class="mb-6 text-center mobile-wide">
-      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/dreamtheater.2015.07.03.jpg">
-    </div>
-  </div>
-</div>
+
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/dreamtheater.2015.07.03.jpg'])
+  <ol>
+    <li>Afterlife</li>
+    <li>Metropolis Pt. 1: The Miracle and the Sleeper</li>
+    <li>Caught in a Web</li>
+    <li>A Change of Seasons: II Innocence</li>
+    <li>Burning My Soul</li>
+    <li>The Spirit Carries On</li>
+    <li>About to Crash</li>
+    <li>As I Am</li>
+    <li>Panic Attack</li>
+    <li>Constant Motion</li>
+    <li>Wither</li>
+    <li>Bridges in the Sky</li>
+    <li>Behind the Veil</li>
+  </ol>
+@endcomponent
 
 @ru
   <p>Несколько фото с концерта.</p>

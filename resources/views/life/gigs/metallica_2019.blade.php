@@ -83,36 +83,28 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4595.jpg'])
 
-<div class="md:flex md:-mx-4">
-  <div class="mb-4 md:w-7/12 md:px-4">
-    @include('tpl.setlist-title')
-    <ol>
-      <li>Hardwired</li>
-      <li>The Memory Remains</li>
-      <li>The Four Horsemen</li>
-      <li>Harvester of Sorrow</li>
-      <li>The Unforgiven</li>
-      <li>Now That We're Dead</li>
-      <li>Moth into Flame</li>
-      <li>Sad But True</li>
-      <li>Halo on Fire</li>
-      <li>Frantic</li>
-      <li>One</li>
-      <li>Master of Puppets</li>
-      <li>For Whom the Bell Tolls</li>
-      <li>Creeping Death</li>
-      <li>Seek and Destroy</li>
-      <li>Spit out the Bone</li>
-      <li>Nothing Else Matters</li>
-      <li>Enter Sandman</li>
-    </ol>
-  </div>
-  <div class="md:w-5/12 md:px-4">
-    <div class="mb-6 text-center mobile-wide">
-      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/metallica.2019.07.21.jpg" alt="">
-    </div>
-  </div>
-</div>
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/metallica.2019.07.21.jpg'])
+  <ol>
+    <li>Hardwired</li>
+    <li>The Memory Remains</li>
+    <li>The Four Horsemen</li>
+    <li>Harvester of Sorrow</li>
+    <li>The Unforgiven</li>
+    <li>Now That We're Dead</li>
+    <li>Moth into Flame</li>
+    <li>Sad But True</li>
+    <li>Halo on Fire</li>
+    <li>Frantic</li>
+    <li>One</li>
+    <li>Master of Puppets</li>
+    <li>For Whom the Bell Tolls</li>
+    <li>Creeping Death</li>
+    <li>Seek and Destroy</li>
+    <li>Spit out the Bone</li>
+    <li>Nothing Else Matters</li>
+    <li>Enter Sandman</li>
+  </ol>
+@endcomponent
 
 @ru
   <p>Музыканты по-прежнему бодры. Играли почти два с половиной часа, время пролетело незаметно. Песен много, паузы либо короткие, либо заполнялись общением с публикой.</p>

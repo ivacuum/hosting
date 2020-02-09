@@ -10,40 +10,32 @@
   <p>За полночь удалось добраться до Крестовского острова. В ближайшей палатке было куплено три полулитровых бутылки воды, так как других не было. Две из них было выпито залпом. Фух, выжил.</p>
 @endru
 
-<div class="md:flex md:-mx-4">
-  <div class="mb-4 md:w-7/12 md:px-4">
-    @include('tpl.setlist-title')
-    <ol>
-      <li>
-        <a class="link" href="https://vk.com/video_ext.php?oid=169906990&id=162953982&hash=598cee4929696e81&hd=1">
-          Creeping Death
-        </a>
-      </li>
-      <li>For Whom the Bell Tolls</li>
-      <li>Ride the Lightning</li>
-      <li>Harvester of Sorrow <span class="text-sm text-muted">(followed by Kirk's solo incl. The Sails of Charon)</span></li>
-      <li>The Unforgiven <span class="text-sm text-muted">(w/ acoustic The Call of Ktulu intro)</span></li>
-      <li>Leper Messiah</li>
-      <li>...And Justice for All</li>
-      <li>No Remorse</li>
-      <li>Fade to Black</li>
-      <li>Master of Puppets</li>
-      <li>Whiplash</li>
-      <li>Nothing Else Matters</li>
-      <li>Sad But True</li>
-      <li>One</li>
-      <li>Enter Sandman</li>
-      <li>Last Caress <span class="text-sm text-muted">(Misfits cover)</span></li>
-      <li>Motorbreath</li>
-      <li>Seek &amp; Destroy <span class="text-sm text-muted">(w/ Let There Be Rock outro)</span></li>
-    </ol>
-  </div>
-  <div class="md:w-5/12 md:px-4">
-    <div class="mb-6 text-center mobile-wide">
-      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/metallica.2008.07.18.jpg">
-    </div>
-  </div>
-</div>
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/metallica.2008.07.18.jpg'])
+  <ol>
+    <li>
+      <a class="link" href="https://vk.com/video_ext.php?oid=169906990&id=162953982&hash=598cee4929696e81&hd=1">
+        Creeping Death
+      </a>
+    </li>
+    <li>For Whom the Bell Tolls</li>
+    <li>Ride the Lightning</li>
+    <li>Harvester of Sorrow <span class="text-sm text-muted">(followed by Kirk's solo incl. The Sails of Charon)</span></li>
+    <li>The Unforgiven <span class="text-sm text-muted">(w/ acoustic The Call of Ktulu intro)</span></li>
+    <li>Leper Messiah</li>
+    <li>...And Justice for All</li>
+    <li>No Remorse</li>
+    <li>Fade to Black</li>
+    <li>Master of Puppets</li>
+    <li>Whiplash</li>
+    <li>Nothing Else Matters</li>
+    <li>Sad But True</li>
+    <li>One</li>
+    <li>Enter Sandman</li>
+    <li>Last Caress <span class="text-sm text-muted">(Misfits cover)</span></li>
+    <li>Motorbreath</li>
+    <li>Seek &amp; Destroy <span class="text-sm text-muted">(w/ Let There Be Rock outro)</span></li>
+  </ol>
+@endcomponent
 
 @ru
   <p>Видеозаписи концерта.</p>

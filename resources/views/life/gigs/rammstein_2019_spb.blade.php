@@ -15,40 +15,33 @@
   </p>
   --}}
 @endru
-<div class="md:flex md:-mx-4">
-  <div class="mb-4 md:w-7/12 md:px-4">
-    @include('tpl.setlist-title')
-    <ol>
-      <li>Was ich liebe</li>
-      <li>Links 2-3-4</li>
-      <li>Tattoo</li>
-      <li>Sehnsucht</li>
-      <li>Zeig dich</li>
-      <li>Mein Herz brennt</li>
-      <li>Puppe</li>
-      <li>Heirate mich</li>
-      <li>Diamant</li>
-      <li>Deutschland (RMX by Richard Z. Kruspe)</li>
-      <li>Deutschland</li>
-      <li>Radio</li>
-      <li>Mein Teil</li>
-      <li>Du hast</li>
-      <li>Sonne</li>
-      <li>Ohne dich</li>
-      <li>Engel</li>
-      <li>Ausländer</li>
-      <li>Du riechst so gut</li>
-      <li>Pussy</li>
-      <li>Rammstein</li>
-      <li>Ich will</li>
-    </ol>
-  </div>
-  <div class="md:w-5/12 md:px-4">
-    <div class="mb-6 text-center mobile-wide">
-      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/rammstein.2019.08.02.jpg">
-    </div>
-  </div>
-</div>
+
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/rammstein.2019.08.02.jpg'])
+  <ol>
+    <li>Was ich liebe</li>
+    <li>Links 2-3-4</li>
+    <li>Tattoo</li>
+    <li>Sehnsucht</li>
+    <li>Zeig dich</li>
+    <li>Mein Herz brennt</li>
+    <li>Puppe</li>
+    <li>Heirate mich</li>
+    <li>Diamant</li>
+    <li>Deutschland (RMX by Richard Z. Kruspe)</li>
+    <li>Deutschland</li>
+    <li>Radio</li>
+    <li>Mein Teil</li>
+    <li>Du hast</li>
+    <li>Sonne</li>
+    <li>Ohne dich</li>
+    <li>Engel</li>
+    <li>Ausländer</li>
+    <li>Du riechst so gut</li>
+    <li>Pussy</li>
+    <li>Rammstein</li>
+    <li>Ich will</li>
+  </ol>
+@endcomponent
 
 @ru
   <p>Видеозапись концерта.</p>

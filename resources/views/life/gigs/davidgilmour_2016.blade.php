@@ -10,41 +10,34 @@
   <p>Билет прислали курьерской службой прямиком из Германии за 25 евро — какая трата денег клиентов в век электронных билетов! Незачет ticketmaster.de, незачет. Тем более с билета только сканером код считали при входе, а сам он остался в абсолютно первозданном виде. Еще меня долго беспокоил нюанс, что транслитерация моего имени на русской банковской карте отличается от таковой в загранпаспорте: Sergey и Sergei. И в билете было не так, как в документе, который я предъявлял. Но это никакой роли не сыграло — пустили.</p>
   <p>Предполагалось, что этот концерт станет первым посещенным заграницей, но потом в график вписался <a class="link" href="rammstein.2016.07">Раммштайн</a> на неделю раньше в той же Германии.</p>
 @endru
-<div class="md:flex md:-mx-4">
-  <div class="mb-4 md:w-7/12 md:px-4">
-    @include('tpl.setlist-title')
-    <ol>
-      <li>5 A.M.</li>
-      <li>Rattle That Lock</li>
-      <li>Faces of Stone</li>
-      <li>What Do You Want From Me</li>
-      <li>The Blue</li>
-      <li>The Great Gig in the Sky</li>
-      <li>A Boat Lies Waiting</li>
-      <li>Wish You Were Here</li>
-      <li>Money</li>
-      <li>In Any Tongue</li>
-      <li>High Hopes</li>
-      <li>One of These Days</li>
-      <li>Shine On You Crazy Diamond (Parts I-V)</li>
-      <li>Fat Old Sun</li>
-      <li>Coming Back to Life</li>
-      <li>On an Island</li>
-      <li>The Girl in the Yellow Dress</li>
-      <li>Today</li>
-      <li>Sorrow</li>
-      <li>Run Like Hell</li>
-      <li>Time</li>
-      <li>Breathe (Reprise)</li>
-      <li>Comfortably Numb</li>
-    </ol>
-  </div>
-  <div class="md:w-5/12 md:px-4">
-    <div class="mb-6 text-center mobile-wide">
-      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/davidgilmour.2016.07.18.png">
-    </div>
-  </div>
-</div>
+
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/davidgilmour.2016.07.18.png'])
+  <ol>
+    <li>5 A.M.</li>
+    <li>Rattle That Lock</li>
+    <li>Faces of Stone</li>
+    <li>What Do You Want From Me</li>
+    <li>The Blue</li>
+    <li>The Great Gig in the Sky</li>
+    <li>A Boat Lies Waiting</li>
+    <li>Wish You Were Here</li>
+    <li>Money</li>
+    <li>In Any Tongue</li>
+    <li>High Hopes</li>
+    <li>One of These Days</li>
+    <li>Shine On You Crazy Diamond (Parts I-V)</li>
+    <li>Fat Old Sun</li>
+    <li>Coming Back to Life</li>
+    <li>On an Island</li>
+    <li>The Girl in the Yellow Dress</li>
+    <li>Today</li>
+    <li>Sorrow</li>
+    <li>Run Like Hell</li>
+    <li>Time</li>
+    <li>Breathe (Reprise)</li>
+    <li>Comfortably Numb</li>
+  </ol>
+@endcomponent
 
 @ru
   <p>В качестве эксперимента положил мобильник в карман с включенным диктофоном. Таким образом, я обзавелся записью на память сразу по окончании концерта. Качество вышло очень даже достойное, но диктофоном все же лучше не пользоваться — он выравнивает громкость в зависимости от шума окружения. Стоит бас-гитаре замолчать, так диктофон подкручивает громкость, и наоборот. Куда уместнее будет приложение, которое пишет звук как есть.</p>

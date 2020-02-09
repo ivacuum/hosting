@@ -9,36 +9,29 @@
 @ru
   <p>В сетлисте можно заметить, что три песни повторяются. Niemand должна была стать последней в сете, но из-за технических заминок три песни пришлось сыграть заново. До этого в <a class="link" href="oomph.2012">2012 году</a> дважды исполнялась Augen auf.</p>
 @endru
-<div class="sm:flex sm:-mx-4">
-  <div class="mb-4 sm:w-1/2 md:w-7/12 px-4">
-    @include('tpl.setlist-title')
-    <ol>
-      <li>Gekreuzigt</li>
-      <li>Sandmann</li>
-      <li>Träumst Du</li>
-      <li>Labyrinth</li>
-      <li>Jede Reise hat ein Ende</li>
-      <li>Auf Kurs</li>
-      <li>Als wärs das letzte Mal</li>
-      <li>Unter diesem Mond</li>
-      <li>Das weisse Licht</li>
-      <li>Der neue Gott</li>
-      <li>Alles aus Liebe</li>
-      <li>Jetzt oder nie</li>
-      <li>Gott ist ein Popstar</li>
-      <li>Augen auf!</li>
-      <li>Niemand</li>
-      <li>Auf Kurs</li>
-      <li>Unter diesem Mond</li>
-      <li>Labyrinth</li>
-    </ol>
-  </div>
-  <div class="sm:w-1/2 md:w-5/12 sm:px-4">
-    <div class="mb-6 text-center mobile-wide">
-      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/oomph.2018.09.14.jpg">
-    </div>
-  </div>
-</div>
+
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/oomph.2018.09.14.jpg'])
+  <ol>
+    <li>Gekreuzigt</li>
+    <li>Sandmann</li>
+    <li>Träumst Du</li>
+    <li>Labyrinth</li>
+    <li>Jede Reise hat ein Ende</li>
+    <li>Auf Kurs</li>
+    <li>Als wärs das letzte Mal</li>
+    <li>Unter diesem Mond</li>
+    <li>Das weisse Licht</li>
+    <li>Der neue Gott</li>
+    <li>Alles aus Liebe</li>
+    <li>Jetzt oder nie</li>
+    <li>Gott ist ein Popstar</li>
+    <li>Augen auf!</li>
+    <li>Niemand</li>
+    <li>Auf Kurs</li>
+    <li>Unter diesem Mond</li>
+    <li>Labyrinth</li>
+  </ol>
+@endcomponent
 
 @ru
   <p>Видеозапись выступления.</p>

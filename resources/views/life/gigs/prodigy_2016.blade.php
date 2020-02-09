@@ -11,38 +11,30 @@
   <p>Стоило ли идти? Разок определенно интересно увидеть каков он этот рейв. Если бы цена билета была не 4&thinsp;400 ₽, а вдвое меньше, то можно было бы однозначно всем рекомендовать сходить. Публика очень активная.</p>
 @endru
 
-<div class="md:flex md:-mx-4">
-  <div class="mb-4 md:w-7/12 md:px-4">
-    @include('tpl.setlist-title')
-    <ol>
-      <li>Breathe</li>
-      <li>Nasty</li>
-      <li>Omen</li>
-      <li>Wild Frontier</li>
-      <li>Firestarter</li>
-      <li>Roadblox</li>
-      <li>Rok-Weiler</li>
-      <li>The Day Is My Enemy</li>
-      <li>Voodoo People</li>
-      <li>Get Your Fight On</li>
-      <li>Run With the Wolves</li>
-      <li>Invaders Must Die</li>
-      <li>Poison</li>
-      <li>Everybody in the Place</li>
-      <li>Diesel Power</li>
-      <li>Smack My Bitch Up</li>
-      <li>Their Law</li>
-      <li>No Good (Start the Dance)</li>
-      <li>Wall of Death</li>
-      <li>Take Me to the Hospital</li>
-    </ol>
-  </div>
-  <div class="md:w-5/12 md:px-4">
-    <div class="mb-6 text-center mobile-wide">
-      <img class="sm:rounded" src="https://life.ivacuum.org/gigs/prodigy.2016.11.09.jpg">
-    </div>
-  </div>
-</div>
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/prodigy.2016.11.09.jpg'])
+  <ol>
+    <li>Breathe</li>
+    <li>Nasty</li>
+    <li>Omen</li>
+    <li>Wild Frontier</li>
+    <li>Firestarter</li>
+    <li>Roadblox</li>
+    <li>Rok-Weiler</li>
+    <li>The Day Is My Enemy</li>
+    <li>Voodoo People</li>
+    <li>Get Your Fight On</li>
+    <li>Run With the Wolves</li>
+    <li>Invaders Must Die</li>
+    <li>Poison</li>
+    <li>Everybody in the Place</li>
+    <li>Diesel Power</li>
+    <li>Smack My Bitch Up</li>
+    <li>Their Law</li>
+    <li>No Good (Start the Dance)</li>
+    <li>Wall of Death</li>
+    <li>Take Me to the Hospital</li>
+  </ol>
+@endcomponent
 
 @ru
   <p>Видеозапись концерта. На 54:12 разглядел свой затылок.</p>
