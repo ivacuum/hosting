@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false"
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+         backupGlobals="false"
          backupStaticAttributes="false"
          bootstrap="vendor/autoload.php"
          colors="true"
@@ -18,6 +20,9 @@
       <directory suffix=".php">./app</directory>
     </whitelist>
   </filter>
+  <listeners>
+    <listener class="NunoMaduro\Collision\Adapters\Phpunit\Listener"></listener>
+  </listeners>
   <php>
     <server name="APP_ENV" value="testing"/>
     <server name="BCRYPT_ROUNDS" value="4"/>
