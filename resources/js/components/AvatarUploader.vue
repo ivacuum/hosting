@@ -1,7 +1,13 @@
 <template>
 <div>
-  <div class="mb-4" v-if="avatar">
-    <img class="avatar-100 rounded-full" :src="avatar">
+  <div class="flex items-center mb-4" v-if="avatar">
+    <img class="avatar-100 mr-6 rounded-full" :src="avatar" alt="">
+    <div>
+      <button class="btn btn-default" @click="deleteAvatar">{{ $t('DELETE_AVATAR') }}</button>
+    </div>
+  </div>
+  <div class="mb-4" v-else>
+    <slot/>
   </div>
   <div class="mb-4" v-if="errors.file && errors.file.length">
     <div v-for="error in errors.file">
@@ -28,7 +34,7 @@
 
 <script>
 export default {
-  props: ['action', 'currentAvatar'],
+  props: ['currentAvatar', 'deleteAction', 'updateAction'],
 
   data() {
     return {
@@ -44,11 +50,13 @@ export default {
         LOADING: 'Loading...',
         HELP_TEXT: 'Avatar would be saved automatically after selection is made',
         CHOOSE_FILE: 'Choose file...',
+        DELETE_AVATAR: 'Delete avatar',
       },
       ru: {
         LOADING: 'Идет загрузка...',
         HELP_TEXT: 'Аватар сохраняется автоматически после выбора',
         CHOOSE_FILE: 'Выберите файл...',
+        DELETE_AVATAR: 'Удалить аватар',
       },
     },
   },
@@ -58,6 +66,24 @@ export default {
   },
 
   methods: {
+    deleteAvatar() {
+      this.errors = []
+      this.uploading = true
+
+      axios
+        .delete(this.deleteAction)
+        .then(() => {
+          this.avatar = ''
+          this.uploading = false
+        })
+        .catch((error) => {
+          if (error.response && error.response.status === 422) {
+            this.errors = error.response.data.errors
+            this.uploading = false
+          }
+        })
+    },
+
     upload(file) {
       this.errors = []
       this.uploading = true
@@ -68,7 +94,7 @@ export default {
       form.append('_method', 'put')
 
       axios
-        .post(this.action, form)
+        .post(this.updateAction, form)
         .then((response) => {
           this.avatar = response.data.avatar
           this.uploading = false

@@ -45,8 +45,14 @@
 
   <h3 class="mt-12">{{ trans('my.avatar') }}</h3>
   <avatar-uploader
-    action="{{ path([App\Http\Controllers\MyAvatar::class, 'update']) }}"
+    delete-action="{{ path([App\Http\Controllers\MyAvatar::class, 'destroy']) }}"
+    update-action="{{ path([App\Http\Controllers\MyAvatar::class, 'update']) }}"
     current-avatar="{{ Auth::user()->avatarUrl() }}"
-  ></avatar-uploader>
+  >
+    @include('tpl.svg-avatar', [
+      'bg' => ViewHelper::avatarBg(Auth::user()->id),
+      'text' => Auth::user()->avatarName(),
+    ])
+  </avatar-uploader>
 </div>
 @endsection

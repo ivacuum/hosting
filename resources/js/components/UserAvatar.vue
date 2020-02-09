@@ -11,7 +11,7 @@ export default {
     },
     svgClasses: {
       type: [Array, Object, String],
-      default: 'svg-avatar',
+      default: 'w-12 h-12',
     },
   },
 }
