@@ -18,7 +18,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
         $this->delete("japanese/wanikani/radicals/{$radical->id}")
             ->assertNoContent();
 
-        $this->assertEquals($user->id, $radical->burnable->user_id);
+        $this->assertSame($user->id, $radical->burnable->user_id);
     }
 
     public function testIndex()
