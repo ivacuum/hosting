@@ -7,7 +7,7 @@
   ]
 ])
 
-<?php $freebsdVersion = '12.0' ?>
+<?php $freebsdVersion = '12.1' ?>
 
 @section('content')
 <h2>Сниппеты для выполнения различных задач на ОС FreeBSD</h2>
