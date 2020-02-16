@@ -7,7 +7,7 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
   ],
 
   // Include any special characters you're using in this regular expression
-  defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+  defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
 })
 
 mix.js('resources/js/app.js', 'public/assets')
@@ -17,7 +17,7 @@ mix.js('resources/js/app.js', 'public/assets')
     require('tailwindcss'),
     ...process.env.NODE_ENV === 'production'
       ? [purgecss]
-      : []
+      : [],
   ])
 
   .copy('resources/js/pwa/service-worker.js', 'public/assets')
@@ -29,7 +29,7 @@ mix.js('resources/js/app.js', 'public/assets')
   .copy('node_modules/mousetrap/mousetrap.min.js', 'public/assets/mousetrap.js')
 
   .copy('node_modules/jquery/dist/jquery.min.js', 'public/assets/jquery.js')
-  .copy('node_modules/vac-gfe/vendor/jquery.pjax.js', 'public/assets/jquery.pjax.js')
+  .copy('resources/js/vendor/jquery.pjax.js', 'public/assets/jquery.pjax.js')
   .copy('node_modules/jquery.scrollto/jquery.scrollTo.min.js', 'public/assets/jquery.scrollto.js')
 
   .copy('node_modules/autosize/dist/autosize.min.js', 'public/assets/autosize.js')
@@ -37,7 +37,7 @@ mix.js('resources/js/app.js', 'public/assets')
   .copy('node_modules/notie/dist/notie.min.js', 'public/assets/notie.js')
 
   .copy('node_modules/bootstrap/dist/js/bootstrap.min.js', 'public/assets/bootstrap.js')
-  .copy('node_modules/vac-gfe/js/empty.map', 'public/assets/bootstrap.min.js.map')
+  .copy('resources/js/empty.map', 'public/assets/bootstrap.min.js.map')
 
   .copy('node_modules/vue/dist/vue.min.js', 'public/assets/vue.js')
   .copy('node_modules/vue-i18n/dist/vue-i18n.min.js', 'public/assets/vue-i18n.js')
@@ -45,12 +45,12 @@ mix.js('resources/js/app.js', 'public/assets')
   .copy('node_modules/vuex/dist/vuex.min.js', 'public/assets/vuex.js')
 
   .copy('node_modules/axios/dist/axios.min.js', 'public/assets/axios.js')
-  .copy('node_modules/vac-gfe/js/empty.map', 'public/assets/axios.min.map')
+  .copy('resources/js/empty.map', 'public/assets/axios.min.map')
 
   .copy('node_modules/pusher-js/dist/web/pusher.min.js', 'public/assets/pusher.js')
 
   .copy('node_modules/popper.js/dist/umd/popper.min.js', 'public/assets/popper.js')
-  .copy('node_modules/vac-gfe/js/empty.map', 'public/assets/popper.min.js.map')
+  .copy('resources/js/empty.map', 'public/assets/popper.min.js.map')
 
   .sourceMaps(false, false)
   .version()
@@ -61,20 +61,6 @@ mix.js('resources/js/app.js', 'public/assets')
   })
 
   .webpackConfig({
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          include: /node_modules\/vac-gfe/,
-          use: [
-            {
-              loader: 'babel-loader',
-              options: Config.babel(),
-            },
-          ],
-        },
-      ],
-    },
     output: {
       chunkFilename: 'assets/chunk-[name].js?id=[chunkhash]',
     },

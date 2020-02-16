@@ -1,0 +1,33 @@
+.form-control-feedback-password {
+  pointer-events: auto;
+  cursor: pointer;
+  color: #aaa;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  display: block;
+  @include size(38px);
+  line-height: 38px;
+  text-align: center;
+
+  &:hover { color: #888; }
+}
+
+.form-help {
+  color: $text-muted;
+  font-size: $small-font-size;
+  margin-top: .25rem;
+}
+
+.input-required:after {
+  content: '*';
+  color: $input-required-color;
+  padding-left: $input-required-padding-left;
+}
+
+.textarea-autosized { resize: none; }
+.textarea-borderless-focus:focus {
+  border-color: transparent;
+  box-shadow: none;
+}

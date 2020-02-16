@@ -1,0 +1,5 @@
+.is-desktop .dropdown-hover .dropdown-menu { margin-top: 0; }
+
+.is-desktop .dropdown-hover:hover > .dropdown-menu {
+  @include media-breakpoint-up(md) { display: block; }
+}

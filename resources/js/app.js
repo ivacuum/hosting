@@ -1,19 +1,19 @@
 import './bootstrap'
 
 import throttle from 'lodash/throttle'
-import Map from 'vac-gfe/js/yandex-map'
-import Pjax from 'vac-gfe/js/pjax'
-import YandexMetrika from 'vac-gfe/js/yandex-metrika'
+import Map from './yandex-map'
+import Pjax from './pjax'
+import YandexMetrika from './yandex-metrika'
 
 import NewsViewsObserver from './news-views-observer'
 import TorrentsViewsObserver from './torrents-views-observer'
 
-import 'vac-gfe/js/jquery.batch-form'
-import 'vac-gfe/js/jquery.bottom-tabbar'
-import 'vac-gfe/js/jquery.dblclick-edit'
-import 'vac-gfe/js/jquery.entity-action'
-import 'vac-gfe/js/jquery.password-eye'
-import 'vac-gfe/js/jquery.select-all'
+import './jquery.batch-form'
+import './jquery.bottom-tabbar'
+import './jquery.dblclick-edit'
+import './jquery.entity-action'
+import './jquery.password-eye'
+import './jquery.select-all'
 
 import Beacon from './beacon'
 import EventHandlers from './events'

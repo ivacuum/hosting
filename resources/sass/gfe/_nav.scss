@@ -1,0 +1,68 @@
+.nav-border {
+  border-bottom: $nav-border-width solid $nav-border-color;
+
+  .nav-link {
+    border-bottom: $nav-border-width solid transparent;
+
+    @include media-breakpoint-up(md) { margin-bottom: -$nav-border-width; }
+
+    &:hover { border-bottom-color: $nav-hover-border-color; }
+    &.active { border-bottom-color: $nav-active-border-color; }
+  }
+}
+
+.nav-link-tabs {
+  @include media-breakpoint-down(sm) { flex-wrap: nowrap; }
+
+  .nav-link {
+    margin-right: 1.125rem;
+    padding: .5rem 0;
+
+    &:last-child { margin-right: 0; }
+
+    &:hover {
+      color: darken(theme-color('primary'), 15%);
+      background-color: transparent;
+    }
+
+    &.active {
+      color: $black;
+      cursor: default;
+    }
+  }
+}
+
+.nav-link-tabs-fader {
+  @include media-breakpoint-down(sm) {
+    position: relative;
+
+    &:after {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 1.125rem;
+      height: 100%;
+      top: 0;
+      right: 0;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
+      z-index: 10;
+      pointer-events: none;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .nav-scroll-container {
+    overflow: hidden;
+
+    .nav-link:last-child { padding-right: .5rem; }
+  }
+
+  .nav-scroll {
+    white-space: nowrap;
+    padding-bottom: 2rem;
+    margin-bottom: -2rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; // momentum
+  }
+}

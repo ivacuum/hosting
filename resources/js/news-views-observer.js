@@ -1,4 +1,4 @@
-import io from 'vac-gfe/js/intersection-observer'
+import io from './intersection-observer'
 
 export default function () {
   return io('.js-news-views-observer', {

@@ -1,0 +1,10 @@
+.navbar-border {
+  border-bottom: $navbar-border-width solid $navbar-border-color;
+
+  @include media-breakpoint-up(md) {
+    .active {
+      border-bottom: $navbar-border-width solid $navbar-active-border-color;
+      margin-bottom: -$navbar-border-width;
+    }
+  }
+}
