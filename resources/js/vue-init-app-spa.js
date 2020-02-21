@@ -2,6 +2,7 @@ import App from './components/App.vue'
 import svg from './svg-icons'
 import store from './store/store'
 import router from './router'
+import '../sass/empty.scss' // Иначе в laravel-mix 4 не загружаются стили из компонентов vue
 
 /**
  * @namespace window.i18nData
