@@ -7,7 +7,7 @@ import '../sass/empty.scss' // Иначе в laravel-mix 4 не загружаю
 /**
  * @namespace window.i18nData
  */
-export default function initVueAcpSpa(selector, locale = 'ru') {
+export default function initVueAppSpa(selector, locale = 'ru') {
   if (document.querySelector(selector)) {
     return new Vue({
       el: selector,
