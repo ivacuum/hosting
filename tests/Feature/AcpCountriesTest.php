@@ -1,7 +1,7 @@
 <?php namespace Tests\Feature;
 
 use App\Factory\CountryFactory;
-use App\User;
+use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -13,7 +13,7 @@ class AcpCountriesTest extends TestCase
     {
         parent::setUp();
 
-        $this->be(User::find(1));
+        $this->be(UserFactory::new()->admin()->make());
     }
 
     public function testCreate()

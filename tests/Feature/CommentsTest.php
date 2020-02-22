@@ -2,9 +2,8 @@
 
 use App\Comment;
 use App\Events\CommentPublished;
-use App\Factory\UserFactory;
+use App\Factory\NewsFactory;
 use App\Mail\CommentConfirmMail;
-use App\News;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -16,9 +15,7 @@ class CommentsTest extends TestCase
     {
         \Mail::fake();
 
-        /** @var News $news */
-        $user = UserFactory::new()->create();
-        $news = factory(News::class)->create(['user_id' => $user->id]);
+        $news = NewsFactory::new()->create();
         $email = 'guest+' . random_int(10000, 99999) . '@example.com';
 
         $this->expectsEvents(\App\Events\Stats\UserRegisteredAuto::class)
@@ -44,12 +41,10 @@ class CommentsTest extends TestCase
 
     public function testCommentPostAsUser()
     {
-        $this->be($user = UserFactory::new()->create());
+        $news = NewsFactory::new()->create();
 
-        /** @var News $news */
-        $news = factory(News::class)->create(['user_id' => $user->id]);
-
-        $this->expectsEvents(CommentPublished::class)
+        $this->be($news->user)
+            ->expectsEvents(CommentPublished::class)
             ->postJson("ajax/comment/news/{$news->id}", ['text' => 'some text from the user is here'])
             ->assertStatus(201)
             ->assertJsonStructure(['data']);

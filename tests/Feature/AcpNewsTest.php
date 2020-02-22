@@ -1,7 +1,7 @@
 <?php namespace Tests\Feature;
 
-use App\News;
-use App\User;
+use App\Factory\NewsFactory;
+use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -13,7 +13,7 @@ class AcpNewsTest extends TestCase
     {
         parent::setUp();
 
-        $this->be(User::find(1));
+        $this->be(UserFactory::new()->admin()->make());
     }
 
     public function testCreate()
@@ -24,7 +24,7 @@ class AcpNewsTest extends TestCase
 
     public function testEdit()
     {
-        $news = $this->createNews();
+        $news = NewsFactory::new()->create();
 
         $this->getJson("acp/news/{$news->id}/edit")
             ->assertOk()
@@ -33,7 +33,7 @@ class AcpNewsTest extends TestCase
 
     public function testIndex()
     {
-        $this->createNews();
+        NewsFactory::new()->create();
 
         $this->getJson('acp/news')
             ->assertOk();
@@ -41,7 +41,7 @@ class AcpNewsTest extends TestCase
 
     public function testShow()
     {
-        $news = $this->createNews();
+        $news = NewsFactory::new()->create();
 
         $this->getJson("acp/news/{$news->id}")
             ->assertOk()
@@ -50,22 +50,17 @@ class AcpNewsTest extends TestCase
 
     public function testStore()
     {
-        $this->postJson('acp/news', factory(News::class)->state('user')->make()->toArray())
+        $this->postJson('acp/news', NewsFactory::new()->make()->toArray())
             ->assertCreated()
             ->assertLocation('acp/news');
     }
 
     public function testUpdate()
     {
-        $news = $this->createNews();
+        $news = NewsFactory::new()->create();
 
-        $this->putJson("acp/news/{$news->id}", factory(News::class)->state('user')->make()->toArray())
+        $this->putJson("acp/news/{$news->id}", NewsFactory::new()->make()->toArray())
             ->assertOk()
             ->assertJson(['status' => 'OK']);
-    }
-
-    private function createNews(): News
-    {
-        return factory(News::class)->state('user')->create();
     }
 }

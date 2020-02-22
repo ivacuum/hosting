@@ -11,6 +11,7 @@ use League\CommonMark\CommonMarkConverter;
  * @property int $id
  * @property int $user_id
  * @property string $title
+ * @property string $markdown
  * @property string $html
  * @property string $locale
  * @property int $status

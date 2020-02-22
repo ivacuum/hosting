@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\Comment;
+use App\Factory\CommentFactory;
 use App\Factory\UserFactory;
 use App\Notifications\NewsCommentedNotification;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -12,8 +12,7 @@ class NotificationTest extends TestCase
 
     public function testNewsCommentedNotificationInList()
     {
-        /** @var Comment $comment */
-        $comment = factory(Comment::class)->state('news')->create();
+        $comment = CommentFactory::new()->withNews()->create();
         $notifiable = UserFactory::new()->create();
 
         \Notification::send($notifiable, new NewsCommentedNotification($comment->rel, $comment));

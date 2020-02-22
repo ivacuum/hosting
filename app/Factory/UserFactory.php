@@ -12,6 +12,11 @@ class UserFactory
     private $status;
     private $password;
 
+    public function admin()
+    {
+        return $this->withId(1);
+    }
+
     public function create()
     {
         $model = $this->make();

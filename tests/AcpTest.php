@@ -1,12 +1,14 @@
 <?php namespace Tests;
 
+use App\Factory\UserFactory;
+
 class AcpTest extends TestCase
 {
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->be(\App\User::find(1));
+        $this->be(UserFactory::new()->admin()->make());
     }
 
     public function testPageClients()

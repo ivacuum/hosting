@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\News;
+use App\Factory\NewsFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -10,7 +10,7 @@ class NewsTest extends TestCase
 
     public function testIndex()
     {
-        factory(News::class)->create();
+        NewsFactory::new()->create();
 
         $this->get('news')
             ->assertStatus(200);
@@ -18,12 +18,10 @@ class NewsTest extends TestCase
 
     public function testShow()
     {
-        /** @var News $news */
-        $news = factory(News::class)->state('user')->create();
+        $news = NewsFactory::new()->create();
 
-        $this->expectsEvents(\App\Events\Stats\NewsViewed::class);
-
-        $this->get("news/{$news->id}")
+        $this->expectsEvents(\App\Events\Stats\NewsViewed::class)
+            ->get("news/{$news->id}")
             ->assertStatus(200);
     }
 
@@ -40,12 +38,11 @@ class NewsTest extends TestCase
 
     public function testRedirectToNewsLocale()
     {
-        $locale = 'en';
-        $news = factory(News::class)->state('user')->create(['locale' => $locale]);
+        $news = NewsFactory::new()->withLocale('en')->create();
 
         $this->get("news/{$news->id}")
             ->assertStatus(301)
-            ->assertRedirect("{$locale}/news/{$news->id}");
+            ->assertRedirect("en/news/{$news->id}");
     }
 
     public function oldUrls()

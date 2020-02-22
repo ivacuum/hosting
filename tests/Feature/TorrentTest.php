@@ -1,12 +1,12 @@
 <?php namespace Tests\Feature;
 
-use App\Comment;
+use App\Factory\CommentFactory;
+use App\Factory\TorrentFactory;
 use App\Factory\UserFactory;
 use App\Services\Rto;
 use App\Services\RtoTopicData;
 use App\Services\RtoTopicHtmlResponse;
 use App\Services\RtoTorrentData;
-use App\Torrent;
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Mockery\MockInterface;
@@ -19,9 +19,7 @@ class TorrentTest extends TestCase
     public function testCategoryFilter()
     {
         $categoryId = 2;
-
-        /** @var Torrent $torrent */
-        $torrent = factory(Torrent::class)->create(['category_id' => $categoryId]);
+        $torrent = TorrentFactory::new()->withCategoryId($categoryId)->create();
 
         $this->get("torrents?category_id={$categoryId}")
             ->assertStatus(200)
@@ -30,8 +28,7 @@ class TorrentTest extends TestCase
 
     public function testComments()
     {
-        /** @var Comment $comment */
-        $comment = factory(Comment::class)->state('torrent')->create();
+        $comment = CommentFactory::new()->withTorrent()->create();
 
         $this->get('torrents/comments')
             ->assertStatus(200)
@@ -55,8 +52,7 @@ class TorrentTest extends TestCase
 
     public function testIndex()
     {
-        /** @var Torrent $torrent */
-        $torrent = factory(Torrent::class)->create();
+        $torrent = TorrentFactory::new()->create();
 
         $this->get('torrents')
             ->assertStatus(200)
@@ -69,8 +65,7 @@ class TorrentTest extends TestCase
 
     public function testMy()
     {
-        /** @var Torrent $torrent */
-        $torrent = factory(Torrent::class)->create();
+        $torrent = TorrentFactory::new()->create();
 
         $this->be($torrent->user)
             ->get('torrents/my')
@@ -86,8 +81,7 @@ class TorrentTest extends TestCase
 
     public function testSearch()
     {
-        /** @var Torrent $torrent */
-        $torrent = factory(Torrent::class)->create(['title' => 'title _2017_ something else']);
+        $torrent = TorrentFactory::new()->withTitle('title _2017_ something else')->create();
 
         $this->get('torrents?q=_2017_')
             ->assertStatus(200)
@@ -96,8 +90,7 @@ class TorrentTest extends TestCase
 
     public function testShow()
     {
-        /** @var Torrent $torrent */
-        $torrent = factory(Torrent::class)->create();
+        $torrent = TorrentFactory::new()->create();
 
         $this->get("torrents/{$torrent->id}")
             ->assertStatus(200)
