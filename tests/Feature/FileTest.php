@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\File;
+use App\Factory\FileFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -16,8 +16,7 @@ class FileTest extends TestCase
 
     public function testDownload()
     {
-        /** @var File $file */
-        $file = factory(File::class)->create();
+        $file = FileFactory::new()->create();
         $downloads = $file->downloads;
 
         $this->get("files/{$file->id}/dl")
