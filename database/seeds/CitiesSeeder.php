@@ -1,5 +1,6 @@
 <?php
 
+use App\Factory\CityFactory;
 use Illuminate\Database\Seeder;
 
 class CitiesSeeder extends Seeder
@@ -63,6 +64,11 @@ class CitiesSeeder extends Seeder
             ['slug' => 'amsterdam', 'title_ru' => 'Амстердам', 'title_en' => 'Amsterdam'],
             ['slug' => 'rotterdam', 'title_ru' => 'Роттердам', 'title_en' => 'Rotterdam'],
         ],
+        'south-korea' => [
+            ['slug' => 'busan', 'title_ru' => 'Пусан', 'title_en' => 'Busan'],
+            ['slug' => 'daejeon', 'title_ru' => 'Тэджон', 'title_en' => 'Daejeon'],
+            ['slug' => 'seoul', 'title_ru' => 'Сеул', 'title_en' => 'Seoul'],
+        ],
         'spain' => [
             ['slug' => 'barcelona', 'title_ru' => 'Барселона', 'title_en' => 'Barcelona'],
         ],
@@ -70,11 +76,18 @@ class CitiesSeeder extends Seeder
 
     public function run()
     {
-        foreach (self::CITIES_BY_COUNTRY as $country => $cities) {
-            $cityModels = array_map(fn ($city) => factory(App\City::class)->make($city), $cities);
+        foreach (self::CITIES_BY_COUNTRY as $countrySlug => $cities) {
+            $cityModels = array_map(function (array $data) {
+                $city = CityFactory::new()->make();
+                $city->slug = $data['slug'];
+                $city->title_en = $data['title_en'];
+                $city->title_ru = $data['title_ru'];
+
+                return $city;
+            }, $cities);
 
             App\Country::query()
-                ->where('slug', $country)
+                ->where('slug', $countrySlug)
                 ->first()
                 ->cities()
                 ->saveMany($cityModels);
