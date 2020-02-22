@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\DcppHub;
+use App\Factory\DcppHubFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -10,16 +10,16 @@ class DcppTest extends TestCase
 
     public function testHublist()
     {
-        factory(DcppHub::class)->create();
+        $hub = DcppHubFactory::new()->create();
 
         $this->get('dc/hubs')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($hub->externalLink());
     }
 
     public function testHubClick()
     {
-        /** @var DcppHub $hub */
-        $hub = factory(DcppHub::class)->create();
+        $hub = DcppHubFactory::new()->create();
         $clicks = $hub->clicks;
 
         $this->post("dc/hubs/{$hub->id}/click")

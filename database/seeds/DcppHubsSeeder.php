@@ -1,11 +1,16 @@
 <?php
 
+use App\Factory\DcppHubFactory;
 use Illuminate\Database\Seeder;
 
 class DcppHubsSeeder extends Seeder
 {
+    private const COUNT = 3;
+
     public function run()
     {
-        factory(App\DcppHub::class, 3)->create();
+        for ($i = 0; $i < self::COUNT; $i++) {
+            DcppHubFactory::new()->create();
+        }
     }
 }
