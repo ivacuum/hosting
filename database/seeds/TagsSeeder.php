@@ -1,5 +1,6 @@
 <?php
 
+use App\Factory\TagFactory;
 use Illuminate\Database\Seeder;
 
 class TagsSeeder extends Seeder
@@ -15,7 +16,10 @@ class TagsSeeder extends Seeder
     public function run()
     {
         foreach (self::TAGS as $tag) {
-            factory(App\Tag::class)->create($tag);
+            $model = TagFactory::new()->make();
+            $model->title_en = $tag['title_en'];
+            $model->title_ru = $tag['title_ru'];
+            $model->save();
         }
     }
 }

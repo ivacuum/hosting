@@ -1,8 +1,7 @@
 <?php namespace Tests\Feature;
 
 use App\Factory\GigFactory;
-use App\Gig;
-use App\Trip;
+use App\Factory\TripFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -12,7 +11,7 @@ class LifeTest extends TestCase
 
     public function testCalendar()
     {
-        factory(Trip::class)->state('city')->create();
+        TripFactory::new()->create();
 
         $this->get('life/calendar')
             ->assertStatus(200);
@@ -20,36 +19,38 @@ class LifeTest extends TestCase
 
     public function testCities()
     {
-        factory(Trip::class)->state('city')->create();
+        $trip = TripFactory::new()->create();
 
         $this->get('life/cities')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($trip->city->title);
     }
 
     public function testCity()
     {
-        /** @var Trip $trip */
-        $trip = factory(Trip::class)->state('city')->create();
+        $trip = TripFactory::new()->create();
 
         $this->get("life/{$trip->city->slug}")
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($trip->city->title);
     }
 
     public function testCountries()
     {
-        factory(Trip::class)->state('city')->create();
+        $trip = TripFactory::new()->create();
 
         $this->get('life/countries')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($trip->city->country->title);
     }
 
     public function testCountry()
     {
-        /** @var Trip $trip */
-        $trip = factory(Trip::class)->state('city')->create();
+        $trip = TripFactory::new()->create();
 
         $this->get("life/countries/{$trip->city->country->slug}")
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($trip->city->country->title);
     }
 
     public function testGigs()
@@ -74,10 +75,11 @@ class LifeTest extends TestCase
 
     public function testIndex()
     {
-        factory(Trip::class)->state('city')->create();
+        $trip = TripFactory::new()->create();
 
         $this->get('life')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($trip->title);
     }
 
     /**
@@ -91,20 +93,7 @@ class LifeTest extends TestCase
 
     public function testTrip()
     {
-        /** @var Trip $trip */
-        $trip = Trip::where('user_id', 1)
-            ->where('status', Trip::STATUS_PUBLISHED)
-            ->first();
-
-        if (null !== $trip) {
-            $this->get("life/{$trip->slug}")
-                ->assertStatus(200);
-
-            return;
-        }
-
-        $trip = factory(Trip::class)->state('city')->create();
-
+        $trip = TripFactory::new()->create();
         $trip->createStoryFile();
 
         $this->get("life/{$trip->slug}")

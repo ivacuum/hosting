@@ -1,5 +1,6 @@
 <?php
 
+use App\Factory\TripFactory;
 use Illuminate\Database\Seeder;
 
 class TripsSeeder extends Seeder
@@ -16,12 +17,11 @@ class TripsSeeder extends Seeder
                 continue;
             }
 
-            factory(App\Trip::class)->create([
-                'slug' => $slug,
-                'city_id' => $city->id,
-                'title_en' => $city->title_en,
-                'title_ru' => $city->title_ru,
-            ]);
+            $trip = TripFactory::new()->withCityId($city->id)->make();
+            $trip->slug = $slug;
+            $trip->title_en = $city->title_en;
+            $trip->title_ru = $city->title_ru;
+            $trip->save();
         }
     }
 }

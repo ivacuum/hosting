@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\Trip;
+use App\Factory\TripFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -16,7 +16,7 @@ class HomeTest extends TestCase
 
     public function testIndexWithTrips()
     {
-        factory(Trip::class)->states('city', 'meta_image')->create();
+        TripFactory::new()->metaImage()->create();
 
         $this->get('/')
             ->assertStatus(200);

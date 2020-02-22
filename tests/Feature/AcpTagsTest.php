@@ -1,7 +1,7 @@
 <?php namespace Tests\Feature;
 
+use App\Factory\TagFactory;
 use App\Factory\UserFactory;
-use App\Tag;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -24,7 +24,7 @@ class AcpTagsTest extends TestCase
 
     public function testEdit()
     {
-        $tag = $this->createTag();
+        $tag = TagFactory::new()->create();
 
         $this->getJson("acp/tags/{$tag->id}/edit")
             ->assertOk()
@@ -33,7 +33,7 @@ class AcpTagsTest extends TestCase
 
     public function testIndex()
     {
-        $this->createTag();
+        TagFactory::new()->create();
 
         $this->getJson('acp/tags')
             ->assertOk();
@@ -41,7 +41,7 @@ class AcpTagsTest extends TestCase
 
     public function testShow()
     {
-        $tag = $this->createTag();
+        $tag = TagFactory::new()->create();
 
         $this->getJson("acp/tags/{$tag->id}")
             ->assertOk()
@@ -50,7 +50,7 @@ class AcpTagsTest extends TestCase
 
     public function testStore()
     {
-        $this->postJson('acp/tags', factory(Tag::class)->make()->toArray())
+        $this->postJson('acp/tags', TagFactory::new()->make()->toArray())
             ->assertCreated()
             ->assertLocation('acp/tags');
     }
@@ -64,15 +64,10 @@ class AcpTagsTest extends TestCase
 
     public function testUpdate()
     {
-        $tag = $this->createTag();
+        $tag = TagFactory::new()->create();
 
-        $this->putJson("acp/tags/{$tag->id}", factory(Tag::class)->make()->toArray())
+        $this->putJson("acp/tags/{$tag->id}", TagFactory::new()->make()->toArray())
             ->assertOk()
             ->assertJson(['status' => 'OK']);
-    }
-
-    private function createTag(): Tag
-    {
-        return factory(Tag::class)->create();
     }
 }

@@ -1,6 +1,7 @@
 <?php namespace Tests\Unit;
 
 use App\Domain\ViewsAggregator;
+use App\Factory\TripFactory;
 use App\Trip;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -11,8 +12,7 @@ class ViewsAggregatorTest extends TestCase
 
     public function testExportTripViews()
     {
-        /** @var Trip $trip */
-        $trip = factory(Trip::class)->create();
+        $trip = TripFactory::new()->create();
 
         $aggregator = new ViewsAggregator;
         $aggregator->push($trip->getTable(), $trip->id);

@@ -1,8 +1,8 @@
 <?php namespace Tests\Feature;
 
+use App\Factory\TripFactory;
 use App\Factory\UserFactory;
 use App\Trip;
-use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -21,8 +21,7 @@ class MyTripsTest extends TestCase
     {
         $this->be($user = UserFactory::new()->create());
 
-        /** @var Trip $trip */
-        $trip = factory(Trip::class)->create(['user_id' => $user->id]);
+        $trip = TripFactory::new()->withUserId($user->id)->create();
 
         $this->delete("my/trips/{$trip->id}")
             ->assertRedirect('my/trips');
@@ -34,8 +33,7 @@ class MyTripsTest extends TestCase
     {
         $this->be($user = UserFactory::new()->create());
 
-        /** @var Trip $trip */
-        $trip = factory(Trip::class)->create(['user_id' => $user->id]);
+        $trip = TripFactory::new()->withUserId($user->id)->create();
 
         $this->get("my/trips/{$trip->id}/edit")
             ->assertStatus(200);
@@ -45,7 +43,7 @@ class MyTripsTest extends TestCase
     {
         $this->be($user = UserFactory::new()->create());
 
-        factory(Trip::class)->create(['user_id' => $user->id]);
+        TripFactory::new()->withUserId($user->id)->create();
 
         $this->get('my/trips')
             ->assertStatus(200);
@@ -53,10 +51,8 @@ class MyTripsTest extends TestCase
 
     public function testStore()
     {
+        $trip = TripFactory::new()->make();
         $user = UserFactory::new()->create();
-
-        /** @var Trip $trip */
-        $trip = factory(Trip::class)->state('city')->make();
 
         $this->be($user)
             ->post('my/trips', $trip->attributesToArray())
@@ -71,9 +67,7 @@ class MyTripsTest extends TestCase
     public function testUpdate()
     {
         $user = UserFactory::new()->create();
-
-        /** @var Trip $trip */
-        $trip = factory(Trip::class)->state('city')->create(['user_id' => $user->id]);
+        $trip = TripFactory::new()->withUserId($user->id)->create();
 
         $data = [
             'slug' => '_new-slug_',

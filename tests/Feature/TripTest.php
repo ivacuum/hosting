@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\Trip;
+use App\Factory\TripFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -10,8 +10,7 @@ class TripTest extends TestCase
 
     public function testShow()
     {
-        /** @var Trip $trip */
-        $trip = factory(Trip::class)->create();
+        $trip = TripFactory::new()->create();
 
         $this->get("trips/{$trip->id}")
             ->assertRedirect($trip->www());
@@ -19,8 +18,7 @@ class TripTest extends TestCase
 
     public function testShowWithAnchor()
     {
-        /** @var Trip $trip */
-        $trip = factory(Trip::class)->create();
+        $trip = TripFactory::new()->create();
         $anchor = '#anchor';
 
         $this->get("trips/{$trip->id}?anchor=" . urlencode($anchor))

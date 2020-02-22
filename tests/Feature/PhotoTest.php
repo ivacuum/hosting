@@ -1,7 +1,7 @@
 <?php namespace Tests\Feature;
 
-use App\Photo;
-use App\Trip;
+use App\Factory\PhotoFactory;
+use App\Factory\TripFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -11,7 +11,7 @@ class PhotoTest extends TestCase
 
     public function testIndex()
     {
-        factory(Photo::class)->state('trip')->create();
+        PhotoFactory::new()->withTrip()->create();
 
         $this->get('photos')
             ->assertStatus(200);
@@ -19,32 +19,38 @@ class PhotoTest extends TestCase
 
     public function testCities()
     {
+        $photo = PhotoFactory::new()->withTrip()->create();
+
         $this->get('photos/cities')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($photo->rel->city->title);
     }
 
     public function testCity()
     {
-        /** @var Photo $photo */
-        $photo = factory(Photo::class)->state('trip')->create();
+        $photo = PhotoFactory::new()->withTrip()->create();
 
         $this->get("photos/cities/{$photo->rel->city->slug}")
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($photo->rel->city->title);
     }
 
     public function testCountries()
     {
+        $photo = PhotoFactory::new()->withTrip()->create();
+
         $this->get('photos/countries')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($photo->rel->city->country->title);
     }
 
     public function testCountry()
     {
-        /** @var Photo $photo */
-        $photo = factory(Photo::class)->state('trip')->create();
+        $photo = PhotoFactory::new()->withTrip()->create();
 
         $this->get("photos/countries/{$photo->rel->city->country->slug}")
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($photo->rel->city->country->title);
     }
 
     public function testFaq()
@@ -61,35 +67,43 @@ class PhotoTest extends TestCase
 
     public function testTags()
     {
-        factory(Photo::class)->states('tag', 'trip')->create();
+        $photo = PhotoFactory::new()
+            ->withTag()
+            ->withTrip()
+            ->create();
 
         $this->get('photos/tags')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($photo->tags[0]->title);
     }
 
     public function testTag()
     {
-        /** @var Photo $photo */
-        $photo = factory(Photo::class)->states('tag', 'trip')->create();
+        $photo = PhotoFactory::new()
+            ->withTag()
+            ->withTrip()
+            ->create();
 
         $this->get("photos/tags/{$photo->tags[0]->id}")
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($photo->tags[0]->title);
     }
 
     public function testTrips()
     {
-        factory(Trip::class)->states('city', 'meta_image')->create();
+        $trip = TripFactory::new()->metaImage()->create();
 
         $this->get('photos/trips')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($trip->title);
     }
 
     public function testTrip()
     {
-        /** @var Photo $photo */
-        $photo = factory(Photo::class)->states('trip')->create();
+        $photo = PhotoFactory::new()->withTrip()->create();
 
         $this->get("photos/trips/{$photo->rel->id}")
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($photo->rel->title);
     }
 }

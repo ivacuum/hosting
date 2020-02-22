@@ -80,14 +80,14 @@ class Photo extends Model
     public function scopeForTrip(Builder $query, $id = null)
     {
         return $query->unless(null === $id, function (Builder $query) use ($id) {
-            return $query->where('rel_id', $id)->where('rel_type', 'Trip');
+            return $query->where('rel_id', $id)->where('rel_type', (new Trip)->getMorphClass());
         });
     }
 
     public function scopeForTrips(Builder $query, array $ids = [])
     {
         return $query->unless(empty($ids), function (Builder $query) use ($ids) {
-            return $query->whereIn('rel_id', $ids)->where('rel_type', 'Trip');
+            return $query->whereIn('rel_id', $ids)->where('rel_type', (new Trip)->getMorphClass());
         });
     }
 

@@ -213,16 +213,12 @@ class Trip extends Model
 
     public function createStoryFile(): bool
     {
-        $tpl = str_replace('.', '/', $this->template());
-
-        return touch(base_path("resources/views/{$tpl}.blade.php"));
+        return touch(base_path("resources/views/{$this->templatePath()}.blade.php"));
     }
 
     public function deleteStoryFile(): bool
     {
-        $tpl = str_replace('.', '/', $this->template());
-
-        return unlink(base_path("resources/views/{$tpl}.blade.php"));
+        return unlink(base_path("resources/views/{$this->templatePath()}.blade.php"));
     }
 
     public function imgAltText(): string
@@ -353,6 +349,11 @@ class Trip extends Model
     public function template(): string
     {
         return 'life.trips.' . str_replace('.', '_', $this->slug);
+    }
+
+    public function templatePath(): string
+    {
+        return str_replace('.', '/', $this->template());
     }
 
     public function timelinePeriod(bool $year = false): string

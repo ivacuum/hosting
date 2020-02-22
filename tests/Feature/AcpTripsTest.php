@@ -1,7 +1,7 @@
 <?php namespace Tests\Feature;
 
+use App\Factory\TripFactory;
 use App\Factory\UserFactory;
-use App\Trip;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -24,7 +24,7 @@ class AcpTripsTest extends TestCase
 
     public function testEdit()
     {
-        $trip = $this->createTrip();
+        $trip = TripFactory::new()->create();
 
         $this->getJson("acp/trips/{$trip->id}/edit")
             ->assertOk()
@@ -33,7 +33,7 @@ class AcpTripsTest extends TestCase
 
     public function testIndex()
     {
-        $this->createTrip();
+        TripFactory::new()->create();
 
         $this->getJson('acp/trips')
             ->assertOk();
@@ -41,7 +41,7 @@ class AcpTripsTest extends TestCase
 
     public function testShow()
     {
-        $trip = $this->createTrip();
+        $trip = TripFactory::new()->create();
 
         $this->getJson("acp/trips/{$trip->id}")
             ->assertOk()
@@ -50,7 +50,7 @@ class AcpTripsTest extends TestCase
 
     public function testStore()
     {
-        $this->postJson('acp/trips', factory(Trip::class)->state('city')->make()->toArray())
+        $this->postJson('acp/trips', TripFactory::new()->make()->toArray())
             ->assertCreated()
             ->assertLocation('acp/trips');
     }
@@ -64,15 +64,10 @@ class AcpTripsTest extends TestCase
 
     public function testUpdate()
     {
-        $trip = $this->createTrip();
+        $trip = TripFactory::new()->create();
 
-        $this->putJson("acp/trips/{$trip->id}", factory(Trip::class)->state('city')->make()->toArray())
+        $this->putJson("acp/trips/{$trip->id}", TripFactory::new()->make()->toArray())
             ->assertOk()
             ->assertJson(['status' => 'OK']);
-    }
-
-    private function createTrip(): Trip
-    {
-        return factory(Trip::class)->state('city')->create();
     }
 }

@@ -69,15 +69,14 @@ class Templates extends BaseController
 
         $slug = str_replace('_', '.', $template);
 
+        /** @var Trip $trip */
         $trip = Trip::inRandomOrder()->first();
         $trip->slug = $slug;
         $trip->meta_title_en = $slug;
         $trip->meta_title_ru = $slug;
 
         if (request('images')) {
-            $tpl = str_replace('.', '/', $trip->template());
-            $path = base_path("resources/views/{$tpl}.blade.php");
-
+            $path = base_path("resources/views/{$trip->templatePath()}.blade.php");
             $content = \File::get($path);
 
             $lines = explode("\n", $content);
