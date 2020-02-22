@@ -1,5 +1,6 @@
 <?php
 
+use App\Factory\DomainFactory;
 use Illuminate\Database\Seeder;
 
 class DomainsSeeder extends Seeder
@@ -21,10 +22,10 @@ class DomainsSeeder extends Seeder
         $clientIds = App\Client::get(['id'])->pluck('id');
 
         foreach (self::DOMAINS as $domain) {
-            factory(App\Domain::class)->create([
-                'domain' => $domain,
-                'client_id' => $clientIds->random(),
-            ]);
+            DomainFactory::new()
+                ->withClientId($clientIds->random())
+                ->withDomain($domain)
+                ->create();
         }
     }
 }
