@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature;
 
-use App\Artist;
+use App\Factory\ArtistFactory;
 use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -24,7 +24,7 @@ class AcpArtistsTest extends TestCase
 
     public function testEdit()
     {
-        $artist = $this->createArtist();
+        $artist = ArtistFactory::new()->create();
 
         $this->getJson("acp/artists/{$artist->id}/edit")
             ->assertOk()
@@ -33,7 +33,7 @@ class AcpArtistsTest extends TestCase
 
     public function testIndex()
     {
-        $this->createArtist();
+        ArtistFactory::new()->create();
 
         $this->getJson('acp/artists')
             ->assertOk();
@@ -41,7 +41,7 @@ class AcpArtistsTest extends TestCase
 
     public function testShow()
     {
-        $artist = $this->createArtist();
+        $artist = ArtistFactory::new()->create();
 
         $this->getJson("acp/artists/{$artist->id}")
             ->assertOk()
@@ -50,7 +50,7 @@ class AcpArtistsTest extends TestCase
 
     public function testStore()
     {
-        $this->postJson('acp/artists', factory(Artist::class)->make()->toArray())
+        $this->postJson('acp/artists', ArtistFactory::new()->make()->toArray())
             ->assertCreated()
             ->assertLocation('acp/artists');
     }
@@ -64,15 +64,10 @@ class AcpArtistsTest extends TestCase
 
     public function testUpdate()
     {
-        $artist = $this->createArtist();
+        $artist = ArtistFactory::new()->create();
 
-        $this->putJson("acp/artists/{$artist->id}", factory(Artist::class)->make()->toArray())
+        $this->putJson("acp/artists/{$artist->id}", ArtistFactory::new()->make()->toArray())
             ->assertOk()
             ->assertJson(['status' => 'OK']);
-    }
-
-    private function createArtist(): Artist
-    {
-        return factory(Artist::class)->create();
     }
 }

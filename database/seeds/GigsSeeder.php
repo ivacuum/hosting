@@ -1,12 +1,13 @@
 <?php
 
+use App\Factory\GigFactory;
 use Illuminate\Database\Seeder;
 
 class GigsSeeder extends Seeder
 {
     public function run()
     {
-        $cityIds = App\City::get(['id'])->pluck('id');
+        $cityIds = App\City::pluck('id');
 
         // Для каждого шаблона нужно создать концерт
         foreach (App\Gig::templatesIterator() as $template) {
@@ -17,13 +18,15 @@ class GigsSeeder extends Seeder
                 continue;
             }
 
-            factory(App\Gig::class)->create([
-                'slug' => $slug,
-                'city_id' => $cityIds->random(),
-                'title_en' => $artist->title,
-                'title_ru' => $artist->title,
-                'artist_id' => $artist->id,
-            ]);
+            $gig = GigFactory::new()
+                ->withArtistId($artist->id)
+                ->withCityId($cityIds->random())
+                ->make();
+
+            $gig->slug = $slug;
+            $gig->title_en = $artist->title;
+            $gig->title_ru = $artist->title;
+            $gig->save();
         }
     }
 }

@@ -1,7 +1,7 @@
 <?php namespace Tests\Feature;
 
+use App\Factory\GigFactory;
 use App\Factory\UserFactory;
-use App\Gig;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -24,7 +24,7 @@ class AcpGigsTest extends TestCase
 
     public function testEdit()
     {
-        $gig = $this->createGig();
+        $gig = GigFactory::new()->create();
 
         $this->getJson("acp/gigs/{$gig->id}/edit")
             ->assertOk()
@@ -33,7 +33,7 @@ class AcpGigsTest extends TestCase
 
     public function testIndex()
     {
-        $this->createGig();
+        GigFactory::new()->create();
 
         $this->getJson('acp/gigs')
             ->assertOk();
@@ -41,7 +41,7 @@ class AcpGigsTest extends TestCase
 
     public function testShow()
     {
-        $gig = $this->createGig();
+        $gig = GigFactory::new()->create();
 
         $this->getJson("acp/gigs/{$gig->id}")
             ->assertOk()
@@ -50,7 +50,7 @@ class AcpGigsTest extends TestCase
 
     public function testStore()
     {
-        $this->postJson('acp/gigs', factory(Gig::class)->state('city')->make()->toArray())
+        $this->postJson('acp/gigs', GigFactory::new()->make()->toArray())
             ->assertCreated()
             ->assertLocation('acp/gigs');
     }
@@ -64,15 +64,10 @@ class AcpGigsTest extends TestCase
 
     public function testUpdate()
     {
-        $gig = $this->createGig();
+        $gig = GigFactory::new()->create();
 
-        $this->putJson("acp/gigs/{$gig->id}", factory(Gig::class)->state('city')->make()->toArray())
+        $this->putJson("acp/gigs/{$gig->id}", GigFactory::new()->make()->toArray())
             ->assertOk()
             ->assertJson(['status' => 'OK']);
-    }
-
-    private function createGig(): Gig
-    {
-        return factory(Gig::class)->state('city')->create();
     }
 }

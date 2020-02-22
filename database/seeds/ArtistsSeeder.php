@@ -1,5 +1,6 @@
 <?php
 
+use App\Factory\ArtistFactory;
 use Illuminate\Database\Seeder;
 
 class ArtistsSeeder extends Seeder
@@ -22,7 +23,10 @@ class ArtistsSeeder extends Seeder
     public function run()
     {
         foreach (self::ARTISTS as $artist) {
-            factory(App\Artist::class)->create($artist);
+            $model = ArtistFactory::new()->make();
+            $model->slug = $artist['slug'];
+            $model->title = $artist['title'];
+            $model->save();
         }
     }
 }

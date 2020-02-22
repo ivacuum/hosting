@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Factory\GigFactory;
 use App\Gig;
 use App\Trip;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -53,26 +54,16 @@ class LifeTest extends TestCase
 
     public function testGigs()
     {
-        factory(Gig::class)->state('city')->create();
+        $gig = GigFactory::new()->create();
 
         $this->get('life/gigs')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertSee($gig->artist->title);
     }
 
     public function testGig()
     {
-        /** @var Gig $gig */
-        $gig = Gig::where('status', Gig::STATUS_PUBLISHED)->first();
-
-        if (null !== $gig) {
-            $this->get("life/{$gig->slug}")
-                ->assertStatus(200);
-
-            return;
-        }
-
-        $gig = factory(Gig::class)->state('city')->create();
-
+        $gig = GigFactory::new()->create();
         $gig->createStoryFile();
 
         $this->get("life/{$gig->slug}")
