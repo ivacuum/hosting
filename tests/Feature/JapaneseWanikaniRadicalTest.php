@@ -1,7 +1,7 @@
 <?php namespace Tests\Feature;
 
+use App\Factory\RadicalFactory;
 use App\Factory\UserFactory;
-use App\Radical;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -13,7 +13,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
     {
         $this->be($user = UserFactory::new()->create());
 
-        $radical = $this->radical();
+        $radical = RadicalFactory::new()->create();
 
         $this->delete("japanese/wanikani/radicals/{$radical->id}")
             ->assertNoContent();
@@ -31,7 +31,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
     public function testIndexJson()
     {
         $level = 60;
-        $radical = $this->radical(['level' => $level]);
+        $radical = RadicalFactory::new()->withLevel($level)->create();
 
         $json = $this->getJson('japanese/wanikani/radicals')
             ->assertStatus(200)
@@ -42,7 +42,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
 
     public function testShow()
     {
-        $radical = $this->radical();
+        $radical = RadicalFactory::new()->create();
 
         $this->get("japanese/wanikani/radicals/{$radical->meaning}")
             ->assertStatus(200)
@@ -51,7 +51,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
 
     public function testShowJson()
     {
-        $radical = $this->radical();
+        $radical = RadicalFactory::new()->create();
 
         $this->getJson("japanese/wanikani/radicals/{$radical->meaning}")
             ->assertStatus(200)
@@ -62,17 +62,12 @@ class JapaneseWanikaniRadicalTest extends TestCase
     {
         $this->be($user = UserFactory::new()->create());
 
-        $radical = $this->radical();
+        $radical = RadicalFactory::new()->create();
         $radical->burn($user->id);
 
         $this->put("japanese/wanikani/radicals/{$radical->id}")
             ->assertNoContent();
 
         $this->assertNull($radical->burnable);
-    }
-
-    private function radical(array $attributes = []): Radical
-    {
-        return factory(Radical::class)->create($attributes);
     }
 }

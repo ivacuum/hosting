@@ -1,5 +1,6 @@
 <?php
 
+use App\Factory\RadicalFactory;
 use Illuminate\Database\Seeder;
 
 class RadicalSeeder extends Seeder
@@ -36,7 +37,11 @@ class RadicalSeeder extends Seeder
     public function run()
     {
         foreach (self::RADICALS as $radical) {
-            factory(App\Radical::class)->create($radical);
+            $model = RadicalFactory::new()->make();
+            $model->level = $radical['level'];
+            $model->meaning = $radical['meaning'];
+            $model->character = $radical['character'];
+            $model->save();
         }
     }
 }
