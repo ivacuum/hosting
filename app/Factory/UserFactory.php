@@ -31,18 +31,11 @@ class UserFactory
     public function make()
     {
         $model = new User;
+        $model->id = $this->id;
         $model->email = $this->faker->safeEmail;
-        $model->login = '';
+        $model->login = $this->login ?? '';
         $model->locale = 'ru';
         $model->status = $this->status ?? User::STATUS_ACTIVE;
-
-        if ($this->id) {
-            $model->id = $this->id;
-        }
-
-        if ($this->login) {
-            $model->login = $this->login;
-        }
 
         if ($this->password) {
             $model->password = $this->password;
