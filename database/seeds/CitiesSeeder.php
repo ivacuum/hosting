@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 
 class CitiesSeeder extends Seeder
 {
-    const CITIES_BY_COUNTRY = [
+    private const CITIES_BY_COUNTRY = [
         'russia' => [
             ['slug' => 'kaluga', 'title_ru' => 'Калуга', 'title_en' => 'Kaluga'],
             ['slug' => 'msk', 'title_ru' => 'Москва', 'title_en' => 'Moscow'],

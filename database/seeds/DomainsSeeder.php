@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 class DomainsSeeder extends Seeder
 {
     // Подборка разных доменных зон для тестирования запросов whois
-    const DOMAINS = [
+    private const DOMAINS = [
         'ivacuum.ru',
         'ivacuum.org',
         'vacuum.name',

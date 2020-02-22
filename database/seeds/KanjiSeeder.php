@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class KanjiSeeder extends Seeder
 {
-    const KANJI = [
+    private const KANJI = [
         [
             'level' => 1,
             'nanori' => 'かず',

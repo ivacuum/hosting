@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 
 class ArtistsSeeder extends Seeder
 {
-    const ARTISTS = [
+    private const ARTISTS = [
         ['slug' => 'davidgilmour', 'title' => 'David Gilmour'],
         ['slug' => 'dreamtheater', 'title' => 'Dream Theater'],
         ['slug' => 'giaa', 'title' => 'God is an Astronaut'],

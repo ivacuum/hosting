@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 
 class CountriesSeeder extends Seeder
 {
-    const COUNTRIES = [
+    private const COUNTRIES = [
         ['slug' => 'russia', 'title_ru' => 'Россия', 'title_en' => 'Russia', 'emoji' => '🇷🇺'],
         ['slug' => 'austria', 'title_ru' => 'Австрия', 'title_en' => 'Austria', 'emoji' => '🇦🇹'],
         ['slug' => 'belarus', 'title_ru' => 'Беларусь', 'title_en' => 'Belarus', 'emoji' => '🇧🇾'],

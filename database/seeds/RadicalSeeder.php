@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 
 class RadicalSeeder extends Seeder
 {
-    const RADICALS = [
+    private const RADICALS = [
         [
             'level' => 1,
             'meaning' => 'ground',

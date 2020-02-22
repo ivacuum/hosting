@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 
 class VocabularySeeder extends Seeder
 {
-    const VOCABULARY = [
+    private const VOCABULARY = [
         [
             'kana' => 'ひとつ',
             'level' => 1,

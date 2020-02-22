@@ -1,13 +1,16 @@
 <?php
 
+use App\Factory\ClientFactory;
 use Illuminate\Database\Seeder;
 
 class ClientsSeeder extends Seeder
 {
-    const COUNT = 3;
+    private const COUNT = 3;
 
     public function run()
     {
-        factory(App\Client::class, self::COUNT)->create();
+        for ($i = 0; $i < self::COUNT; $i++) {
+            ClientFactory::new()->create();
+        }
     }
 }
