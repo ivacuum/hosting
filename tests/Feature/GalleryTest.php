@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Factory\ImageFactory;
 use App\Factory\UserFactory;
 use App\Image;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -12,17 +13,16 @@ class GalleryTest extends TestCase
 
     public function testIndex()
     {
-        $this->be($user = $this->user());
-        $user->images()->save(factory(Image::class)->make());
+        $image = ImageFactory::new()->create();
 
-        $this->get('gallery')
+        $this->be($image->user)
+            ->get('gallery')
             ->assertStatus(200);
     }
 
     public function testPreview()
     {
-        $user = $this->user();
-        $image = $user->images()->save(factory(Image::class)->make());
+        $image = ImageFactory::new()->create();
 
         $this->get("gallery/preview/{$image->id}")
             ->assertStatus(200);
@@ -33,10 +33,11 @@ class GalleryTest extends TestCase
         \Storage::fake('gallery');
 
         $file = UploadedFile::fake()->image('screenshot.png');
+        $user = UserFactory::new()->create();
 
         $this->expectsEvents(\App\Events\Stats\GalleryImageUploaded::class);
 
-        $id = $this->be($user = $this->user())
+        $id = $this->be($user)
             ->postJson('gallery/upload', ['file' => $file])
             ->assertStatus(200)
             ->assertJson(['status' => 'OK'])
@@ -51,22 +52,16 @@ class GalleryTest extends TestCase
 
     public function testUploadPage()
     {
-        $this->be($this->user())
+        $this->be(UserFactory::new()->create())
             ->get('gallery/upload')
             ->assertStatus(200);
     }
 
     public function testView()
     {
-        $user = $this->user();
-        $image = $user->images()->save(factory(Image::class)->make());
+        $image = ImageFactory::new()->create();
 
         $this->get("gallery/view/{$image->id}")
             ->assertStatus(200);
-    }
-
-    private function user()
-    {
-        return UserFactory::new()->create();
     }
 }

@@ -1,6 +1,6 @@
 <?php
 /** @var string $showDatetime */
-$showTime = Illuminate\Support\Carbon::parse($showDatetime);
+$showTime = \Carbon\CarbonImmutable::parse($showDatetime);
 $diff = now()->diff($showTime);
 $diffInDays = $diff->invert ? -1 * $diff->days : $diff->days;
 ?>

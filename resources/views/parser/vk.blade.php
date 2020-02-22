@@ -1,6 +1,6 @@
 <?php
 /** @var string $vkpage */
-/** @var Illuminate\Support\Carbon $date */
+/** @var \Carbon\CarbonImmutable $date */
 ?>
 
 @extends('base', [

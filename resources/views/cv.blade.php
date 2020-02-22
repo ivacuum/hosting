@@ -125,7 +125,7 @@ body {
       <h3 class="my-caption h5 mt-6 uppercase">@ru Личная информация @en Personal info @endru</h3>
       <div class="flex justify-between">
         <div>@ru Возраст @en Age @endru</div>
-        <div>{{ Illuminate\Support\Carbon::createFromDate(1989, 7, 13)->diffForHumans(null, true) }} @ru @en old @endru</div>
+        <div>{{ \Carbon\CarbonImmutable::createFromDate(1989, 7, 13)->diffForHumans(null, true) }} @ru @en old @endru</div>
       </div>
       <div class="flex justify-between">
         <div>@ru Гражданство @en Nationality @endru</div>
