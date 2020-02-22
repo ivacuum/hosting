@@ -1,7 +1,7 @@
 <?php namespace Tests\Feature;
 
+use App\Factory\KanjiFactory;
 use App\Factory\UserFactory;
-use App\Kanji;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -13,7 +13,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
     {
         $this->be($user = UserFactory::new()->create());
 
-        $kanji = $this->kanji();
+        $kanji = KanjiFactory::new()->create();
 
         $this->delete("japanese/wanikani/kanji/{$kanji->id}")
             ->assertNoContent();
@@ -31,7 +31,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
     public function testIndexJson()
     {
         $level = 60;
-        $kanji = $this->kanji(['level' => $level]);
+        $kanji = KanjiFactory::new()->withLevel($level)->create();
 
         $json = $this->getJson('japanese/wanikani/kanji')
             ->assertStatus(200)
@@ -42,7 +42,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
 
     public function testShow()
     {
-        $kanji = $this->kanji();
+        $kanji = KanjiFactory::new()->create();
 
         $this->get("japanese/wanikani/kanji/{$kanji->character}")
             ->assertStatus(200)
@@ -51,7 +51,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
 
     public function testShowJson()
     {
-        $kanji = $this->kanji();
+        $kanji = KanjiFactory::new()->create();
 
         $this->getJson("japanese/wanikani/kanji/{$kanji->character}")
             ->assertStatus(200)
@@ -62,17 +62,12 @@ class JapaneseWanikaniKanjiTest extends TestCase
     {
         $this->be($user = UserFactory::new()->create());
 
-        $kanji = $this->kanji();
+        $kanji = KanjiFactory::new()->create();
         $kanji->burn($user->id);
 
         $this->put("japanese/wanikani/kanji/{$kanji->id}")
             ->assertNoContent();
 
         $this->assertNull($kanji->burnable);
-    }
-
-    private function kanji(array $attributes = []): Kanji
-    {
-        return factory(Kanji::class)->create($attributes);
     }
 }

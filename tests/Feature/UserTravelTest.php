@@ -48,7 +48,7 @@ class UserTravelTest extends TestCase
 
         $this->get('@' . self::LOGIN . "/travel/countries/{$trip->city->country->slug}")
             ->assertStatus(200)
-            ->assertSee($trip->city->country->title);
+            ->assertSee(e($trip->city->country->title));
     }
 
     public function testTripsIndex()

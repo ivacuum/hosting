@@ -1,5 +1,8 @@
 <?php
 
+use App\Factory\KanjiFactory;
+use App\Kanji;
+use App\Radical;
 use Illuminate\Database\Seeder;
 
 class KanjiSeeder extends Seeder
@@ -53,9 +56,16 @@ class KanjiSeeder extends Seeder
 
     public function run()
     {
-        foreach (self::KANJI as $kanji) {
-            /** @var App\Kanji $kanji */
-            $kanji = factory(App\Kanji::class)->create($kanji->toArray());
+        foreach (self::KANJI as $data) {
+            $kanji = KanjiFactory::new()->make();
+            $kanji->level = $data['level'];
+            $kanji->nanori = $data['nanori'] ?? '';
+            $kanji->onyomi = $data['onyomi'];
+            $kanji->kunyomi = $data['kunyomi'];
+            $kanji->meaning = $data['meaning'];
+            $kanji->character = $data['character'];
+            $kanji->important_reading = $data['important_reading'];
+            $kanji->save();
 
             switch ($kanji->character) {
                 case '一':
@@ -75,13 +85,13 @@ class KanjiSeeder extends Seeder
         }
     }
 
-    protected function attachRadicals(App\Kanji $kanji, array $meanings): void
+    protected function attachRadicals(Kanji $kanji, array $meanings): void
     {
-        $kanji->radicals()->sync(App\Radical::whereIn('meaning', $meanings)->get(['id'])->modelKeys());
+        $kanji->radicals()->sync(Radical::whereIn('meaning', $meanings)->get(['id'])->modelKeys());
     }
 
-    protected function attachSimilarKanji(App\Kanji $kanji, array $characters): void
+    protected function attachSimilarKanji(Kanji $kanji, array $characters): void
     {
-        $kanji->similar()->sync(App\Kanji::whereIn('character', $characters)->get(['id'])->modelKeys());
+        $kanji->similar()->sync(Kanji::whereIn('character', $characters)->get(['id'])->modelKeys());
     }
 }

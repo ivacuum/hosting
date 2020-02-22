@@ -1,7 +1,7 @@
 <?php namespace Tests\Feature;
 
+use App\Factory\KanjiFactory;
 use App\Factory\RadicalFactory;
-use App\Kanji;
 use App\Vocabulary;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -24,8 +24,7 @@ class JapaneseWanikaniSearchTest extends TestCase
 
     public function testSearchForKanji()
     {
-        /** @var Kanji $kanji */
-        $kanji = factory(Kanji::class)->create();
+        $kanji = KanjiFactory::new()->create();
         $q = $kanji->meaning;
 
         $json = $this->post("japanese/wanikani/search?q={$q}")
