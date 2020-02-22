@@ -1,5 +1,6 @@
 <?php
 
+use App\Factory\VocabularyFactory;
 use Illuminate\Database\Seeder;
 
 class VocabularySeeder extends Seeder
@@ -45,8 +46,15 @@ class VocabularySeeder extends Seeder
 
     public function run()
     {
-        foreach (self::VOCABULARY as $vocab) {
-            factory(App\Vocabulary::class)->create($vocab);
+        foreach (self::VOCABULARY as $data) {
+            $vocab = VocabularyFactory::new()->make();
+            $vocab->kana = $data['kana'];
+            $vocab->level = $data['level'];
+            $vocab->wk_id = $data['wk_id'];
+            $vocab->meaning = $data['meaning'];
+            $vocab->character = $data['character'];
+            $vocab->sentences = $data['sentences'];
+            $vocab->save();
         }
     }
 }

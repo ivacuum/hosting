@@ -11,11 +11,10 @@ class JapaneseWanikaniRadicalTest extends TestCase
 
     public function testBurn()
     {
-        $this->be($user = UserFactory::new()->create());
-
         $radical = RadicalFactory::new()->create();
 
-        $this->delete("japanese/wanikani/radicals/{$radical->id}")
+        $this->be($user = UserFactory::new()->create())
+            ->delete("japanese/wanikani/radicals/{$radical->id}")
             ->assertNoContent();
 
         $this->assertSame($user->id, $radical->burnable->user_id);

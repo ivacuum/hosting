@@ -1,7 +1,7 @@
 <?php namespace Tests\Feature;
 
 use App\Factory\UserFactory;
-use App\Vocabulary;
+use App\Factory\VocabularyFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -11,11 +11,10 @@ class JapaneseWanikaniVocabularyTest extends TestCase
 
     public function testBurn()
     {
-        $this->be($user = UserFactory::new()->create());
+        $vocab = VocabularyFactory::new()->create();
 
-        $vocab = $this->vocabulary();
-
-        $this->delete("japanese/wanikani/vocabulary/{$vocab->id}")
+        $this->be($user = UserFactory::new()->create())
+            ->delete("japanese/wanikani/vocabulary/{$vocab->id}")
             ->assertNoContent();
 
         $this->assertEquals($user->id, $vocab->burnable->user_id);
@@ -31,7 +30,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
     public function testIndexJson()
     {
         $level = 60;
-        $vocab = $this->vocabulary(['level' => $level]);
+        $vocab = VocabularyFactory::new()->withLevel($level)->create();
 
         $json = $this->getJson('japanese/wanikani/vocabulary')
             ->assertStatus(200)
@@ -42,7 +41,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
 
     public function testShow()
     {
-        $vocab = $this->vocabulary();
+        $vocab = VocabularyFactory::new()->create();
 
         $this->get("japanese/wanikani/vocabulary/{$vocab->character}")
             ->assertStatus(200)
@@ -51,7 +50,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
 
     public function testShowJson()
     {
-        $vocab = $this->vocabulary();
+        $vocab = VocabularyFactory::new()->create();
 
         $this->getJson("japanese/wanikani/vocabulary/{$vocab->character}")
             ->assertStatus(200)
@@ -62,17 +61,12 @@ class JapaneseWanikaniVocabularyTest extends TestCase
     {
         $this->be($user = UserFactory::new()->create());
 
-        $vocab = $this->vocabulary();
+        $vocab = VocabularyFactory::new()->create();
         $vocab->burn($user->id);
 
         $this->put("japanese/wanikani/vocabulary/{$vocab->id}")
             ->assertNoContent();
 
         $this->assertNull($vocab->burnable);
-    }
-
-    private function vocabulary(array $attributes = []): Vocabulary
-    {
-        return factory(Vocabulary::class)->create($attributes);
     }
 }

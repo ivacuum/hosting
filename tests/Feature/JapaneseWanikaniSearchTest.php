@@ -2,7 +2,7 @@
 
 use App\Factory\KanjiFactory;
 use App\Factory\RadicalFactory;
-use App\Vocabulary;
+use App\Factory\VocabularyFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -36,8 +36,7 @@ class JapaneseWanikaniSearchTest extends TestCase
 
     public function testSearchForVocabulary()
     {
-        /** @var Vocabulary $vocab */
-        $vocab = factory(Vocabulary::class)->create();
+        $vocab = VocabularyFactory::new()->create();
         $q = $vocab->meaning;
 
         $json = $this->post("japanese/wanikani/search?q={$q}")

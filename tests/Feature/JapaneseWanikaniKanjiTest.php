@@ -11,11 +11,10 @@ class JapaneseWanikaniKanjiTest extends TestCase
 
     public function testBurn()
     {
-        $this->be($user = UserFactory::new()->create());
-
         $kanji = KanjiFactory::new()->create();
 
-        $this->delete("japanese/wanikani/kanji/{$kanji->id}")
+        $this->be($user = UserFactory::new()->create())
+            ->delete("japanese/wanikani/kanji/{$kanji->id}")
             ->assertNoContent();
 
         $this->assertEquals($user->id, $kanji->burnable->user_id);
