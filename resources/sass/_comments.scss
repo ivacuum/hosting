@@ -1,6 +1,11 @@
 .comment-avatar-size {
-  @include size(40px);
-  @include media-breakpoint-up(md) { @include size(64px); }
+  width: 40px;
+  height: 40px;
+
+  @include media-breakpoint-up(md) {
+    width: 64px;
+    height: 64px;
+  }
 }
 
 .comment-body { padding: .0625rem 0 .1875rem 0; }

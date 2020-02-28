@@ -2,7 +2,8 @@
   display: inline-block;
   vertical-align: -.125em;
   fill: currentColor;
-  @include size(1em);
+  width: 1em;
+  height: 1em;
 
   // Иконки отличных от 1х1 пропорций
   // Отсчет относительно 16px

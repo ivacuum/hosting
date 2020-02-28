@@ -23,5 +23,6 @@
   left: 0;
   margin: 0 auto;
   right: 0;
-  @include size(4px);
+  width: 4px;
+  height: 4px;
 }
