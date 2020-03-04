@@ -16,6 +16,8 @@
   @include('tpl.kp_movies', [
     'movies' => [
       ['title' => "Достать ножи\nKnives Out", 'id' => 1188529],
+      ['title' => "Джентльмены\nThe Gentlemen", 'id' => 1143242],
+      ['title' => "Ирландец\nThe Irishman", 'id' => 462305],
     ]
   ])
 </div>
