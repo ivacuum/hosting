@@ -158,4 +158,10 @@
 @endru
 <youtube title="PSY 2019 Summer Swag, Daejeon, Set 1, Set 2, Set 3" v="kAyvn15zdr8"></youtube>
 <youtube title="PSY 2019 Summer Swag, Daejeon, Encore 1, Encore 2" v="pdQViEcdl7c"></youtube>
+
+<h3 class="mt-12">@ru Бонусные материалы @en Bonus materials @endru</h3>
+<ul>
+  <li><a class="link" href="https://youtu.be/H0UJ0UaooAs?t=1843">@ru Лав камера @en Love camera @endru</a></li>
+  <li><a class="link" href="https://www.instagram.com/p/B10Rg-5BAxa/">@ru Минутная нарезка о концерте в Инчхоне @en Incheon 1-minute compilation @endru</a></li>
+</ul>
 @endsection
