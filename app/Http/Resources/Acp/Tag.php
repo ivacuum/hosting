@@ -1,11 +1,9 @@
 <?php namespace App\Http\Resources\Acp;
 
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-/**
- * @mixin \App\Tag
- */
-class Tag extends Resource
+/** @mixin \App\Tag */
+class Tag extends JsonResource
 {
     public function toArray($request)
     {

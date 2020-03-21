@@ -135,7 +135,6 @@ class Domain extends Model
      * @param string $type
      * @param array $input
      * @return string
-     * @throws \Exception
      */
     public function addNsRecord($type, array $input)
     {
@@ -224,7 +223,6 @@ class Domain extends Model
      * @param string $type
      * @param array $input
      * @return string
-     * @throws \Exception
      */
     public function editNsRecord($id, $type, array $input)
     {
@@ -352,7 +350,7 @@ class Domain extends Model
 
         try {
             $response = $client->get("http://{$domain}/robots.txt");
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return $e->getMessage();
         }
 

@@ -1,11 +1,9 @@
 <?php namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-/**
- * @mixin \App\Radical
- */
-class Radical extends Resource
+/** @mixin \App\Radical */
+class Radical extends JsonResource
 {
     public function toArray($request)
     {

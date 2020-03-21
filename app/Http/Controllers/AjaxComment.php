@@ -65,7 +65,6 @@ class AjaxComment extends Controller
      * @param string $type
      * @param int $id
      * @return \App\News|\App\Torrent|\App\Trip
-     * @throws \Exception
      */
     protected function notifiableModel(string $type, int $id)
     {

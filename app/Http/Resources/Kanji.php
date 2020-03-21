@@ -1,11 +1,9 @@
 <?php namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-/**
- * @mixin \App\Kanji
- */
-class Kanji extends Resource
+/** @mixin \App\Kanji */
+class Kanji extends JsonResource
 {
     public function toArray($request)
     {

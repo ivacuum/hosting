@@ -1,11 +1,9 @@
 <?php namespace App\Http\Resources\Acp;
 
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-/**
- * @mixin \App\Trip
- */
-class Trip extends Resource
+/** @mixin \App\Trip */
+class Trip extends JsonResource
 {
     public function toArray($request)
     {

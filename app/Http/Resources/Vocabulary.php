@@ -1,11 +1,9 @@
 <?php namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-/**
- * @mixin \App\Vocabulary
- */
-class Vocabulary extends Resource
+/** @mixin \App\Vocabulary */
+class Vocabulary extends JsonResource
 {
     public function toArray($request)
     {
