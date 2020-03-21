@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var \App\User $user
+ */
+?>
+
 @extends('base')
 
 @section('content')

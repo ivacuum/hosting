@@ -47,7 +47,6 @@ use League\CommonMark\CommonMarkConverter;
  * @property-read int $comments_count
  * @property-read string $meta_title
  * @property-read string $meta_description
- * @property-read string $period
  * @property int $photos_count
  * @property-read string $title
  * @property-read int $year
@@ -162,15 +161,6 @@ class Trip extends Model
     public function getMetaTitleAttribute(): string
     {
         return $this->{'meta_title_' . \App::getLocale()};
-    }
-
-    public function getPeriodAttribute(): string
-    {
-        if ($this->date_start->month === $this->date_end->month) {
-            return $this->monthName($this->date_start->month);
-        }
-
-        return $this->monthName($this->date_start->month) . '–' . $this->monthName($this->date_end->month);
     }
 
     public function getYearAttribute(): int
@@ -344,6 +334,15 @@ class Trip extends Model
         }
 
         return "{$this->title} · {$this->localizedDate()}{$suffix}";
+    }
+
+    public function period(): string
+    {
+        if ($this->date_start->month === $this->date_end->month) {
+            return $this->monthName($this->date_start->month);
+        }
+
+        return $this->monthName($this->date_start->month) . '–' . $this->monthName($this->date_end->month);
     }
 
     public function template(): string

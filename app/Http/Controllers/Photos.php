@@ -195,7 +195,7 @@ class Photos extends Controller
             'cityId' => $cityId,
             'tripId' => $tripId,
             'countryId' => $countryId,
-            'metaTitle' => "{$photo->rel->title}, {$photo->rel->period} {$photo->rel->year}",
+            'metaTitle' => "{$photo->rel->title}, {$photo->rel->period()} {$photo->rel->year}",
         ]);
     }
 
@@ -291,7 +291,7 @@ class Photos extends Controller
                         'coordinates' => [$photo->lat, $photo->lon],
                     ],
                     'properties' => [
-                        'balloonContent' => sprintf('<div><a href="%s#%s">%s, %s %s<br><img class="mt-1 image-200 object-cover rounded" src="%s" alt=""></a></div>', $photo->rel->www(), $basename, $photo->rel->title, $photo->rel->period, $photo->rel->year, $photo->thumbnailUrl()),
+                        'balloonContent' => sprintf('<div><a href="%s#%s">%s, %s %s<br><img class="mt-1 image-200 object-cover rounded" src="%s" alt=""></a></div>', $photo->rel->www(), $basename, $photo->rel->title, $photo->rel->period(), $photo->rel->year, $photo->thumbnailUrl()),
                         'clusterCaption' => $basename,
                     ],
                 ];

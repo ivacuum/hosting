@@ -1,3 +1,10 @@
+<?php
+/**
+ * @var \App\Tag $tag
+ * @var \App\Photo[] $photos
+ */
+?>
+
 @extends('photos.base')
 
 @section('content')

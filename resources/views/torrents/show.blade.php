@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var \App\Torrent $torrent
+ */
+?>
+
 @extends('torrents.base')
 
 @section('torrent-download-button')

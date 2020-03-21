@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var \App\Photo $photo
+ */
+?>
+
 @extends('photos.base')
 
 @push('js')
@@ -56,7 +62,7 @@ Mousetrap.bind('right', () => {
 
     <div class="flex flex-wrap md:flex-col mt-1 md:mt-4">
       <div class="mr-2 md:mr-0 text-muted">{{ trans('photos.date') }}</div>
-      <div>{{ $photo->rel->period }} {{ $photo->rel->year }}</div>
+      <div>{{ $photo->rel->period() }} {{ $photo->rel->year }}</div>
     </div>
 
     <div class="mt-4">

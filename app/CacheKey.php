@@ -21,14 +21,7 @@ class CacheKey
 
     const VK_WALL_GET = 'vk.wall.get.{key}';
 
-    /**
-     * Динамическое название ключа для кэша
-     *
-     * @param  string $cacheEntry
-     * @param  string $replace
-     * @return string
-     */
-    public static function key($cacheEntry, $replace)
+    public static function key(string $cacheEntry, string $replace): string
     {
         return str_replace('{key}', $replace, $cacheEntry);
     }

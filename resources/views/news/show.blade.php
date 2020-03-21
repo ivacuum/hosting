@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var \App\News $news
+ */
+?>
+
 @extends('base', [
   'noLanguageSelector' => true,
 ])
