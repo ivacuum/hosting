@@ -19,7 +19,7 @@ class CommentObserver
     public function saving(Model $model)
     {
         if ($model->isDirty('status')) {
-            $was = $model->getOriginalWithCast('status');
+            $was = $model->getOriginal('status');
 
             if ($was === Model::STATUS_PENDING && $model->status === Model::STATUS_PUBLISHED) {
                 $model->created_at = now();
@@ -30,7 +30,7 @@ class CommentObserver
     public function saved(Model $model)
     {
         if ($model->isDirty('status')) {
-            if (in_array($model->getOriginalWithCast('status'), [null, Model::STATUS_PENDING], true) &&
+            if (in_array($model->getOriginal('status'), [null, Model::STATUS_PENDING], true) &&
                 $model->status === Model::STATUS_PUBLISHED) {
                 event(new CommentPublished($model));
             }
