@@ -20,7 +20,7 @@
     "jquery": "3.4.1",
     "jquery.scrollto": "2.1.2",
     "laravel-echo": "1.6.1",
-    "laravel-mix": "5.0.1",
+    "laravel-mix": "5.0.4",
     "lodash": "4.17.15",
     "mousetrap": "1.6.5",
     "notie": "4.3.1",
