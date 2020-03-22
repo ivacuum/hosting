@@ -7,6 +7,13 @@
   <p></p>
 @endru
 
+@ru
+  <p>Коллаж официальных фотографий концерта. С помощью свайпа влево можно посмотреть его полностью.</p>
+@en
+  <p>Official concert photos collage. Swipe left to see it entirely.</p>
+@endru
+@include('tpl.pic-collage', ['pic' => 'collage.jpg', 'w' => 5400, 'h' => 540])
+
 @component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2019.12.20.jpg'])
   <h5 class="mb-1">@ru Сет @en Set @endru 1</h5>
   <ol class="list-inside pl-0">
