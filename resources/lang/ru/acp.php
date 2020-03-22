@@ -49,6 +49,7 @@ return [
     'dev.debugbar' => 'Отладка на час',
     'dev.templates.index' => 'Шаблоны поездок',
     'dev.thumbnails.index' => 'Миниатюры',
+    'dev.gig-templates.index' => 'Шаблоны концертов',
 
     'domains.add' => 'Добавить домен',
     'domains.edit' => 'Редактирование',

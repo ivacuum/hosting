@@ -12,6 +12,12 @@
           {{ trans('acp.dev.templates.index') }}
         </a>
         <a
+          class="nav-link {{ 0 === strpos($view, 'acp.dev.gig-templates') ? 'active' : '' }}"
+          href="{{ path([App\Http\Controllers\Acp\Dev\GigTemplates::class, 'index']) }}"
+        >
+          {{ trans('acp.dev.gig-templates.index') }}
+        </a>
+        <a
           class="nav-link {{ 0 === strpos($view, 'acp.dev.thumbnails') ? 'active' : '' }}"
           href="{{ path([App\Http\Controllers\Acp\Dev\Thumbnails::class, 'index']) }}"
         >

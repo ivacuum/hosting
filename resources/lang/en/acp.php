@@ -47,8 +47,9 @@ return [
     'dev.logs' => 'Logs',
     'dev.index' => 'Dev',
     'dev.debugbar' => 'Deburbar for an hour',
-    'dev.templates.index' => 'Trips templates',
+    'dev.templates.index' => 'Trip templates',
     'dev.thumbnails.index' => 'Thumbnails',
+    'dev.gig-templates.index' => 'Gig templates',
 
     'domains.add' => 'Create domain',
     'domains.edit' => 'Edit',

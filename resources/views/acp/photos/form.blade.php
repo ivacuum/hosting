@@ -1,5 +1,6 @@
 @if (!$model->exists)
-  {!! Form::select('trip_id')->required()->classes(['js-append-formdata'])->values(App\TripFactory::forInputSelect())->html() !!}
+  {!! Form::select('trip_id')->classes(['js-append-formdata'])->values(App\TripFactory::forInputSelect())->html() !!}
+  {!! Form::select('gig_id')->classes(['js-append-formdata'])->values(App\GigFactory::forInputSelect())->html() !!}
 
   <div class="mb-4">
     <label class="font-bold">{{ trans('acp.photos.index') }}</label>
@@ -14,7 +15,13 @@
     <label class="font-bold">{{ trans('acp.tags.index') }}</label>
     @foreach (App\Tag::orderBy(App\Tag::titleField())->get() as $tag)
       <label class="flex items-center">
-        <input class="mr-2 {{ $errors->has('tags') ? 'is-invalid' : '' }}" type="checkbox" name="tags[]" value="{{ $tag->id }}" {{ in_array($tag->id, (array) old('tags', !empty($model) ? $model->tags->modelKeys() : null)) ? 'checked' : '' }}>
+        <input
+          class="mr-2 {{ $errors->has('tags') ? 'is-invalid' : '' }}"
+          type="checkbox"
+          name="tags[]"
+          value="{{ $tag->id }}"
+          {{ in_array($tag->id, (array) old('tags', !empty($model) ? $model->tags->modelKeys() : null)) ? 'checked' : '' }}
+        >
         {{ $tag->title }}
       </label>
     @endforeach

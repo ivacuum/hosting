@@ -10,6 +10,7 @@ return [
     'author' => 'Author',
     'clicks' => 'Clicks',
     'filter' => 'Filter',
+    'gig_id' => 'Gig',
     'status' => 'Status',
     'city_id' => 'City',
     'trip_id' => 'Trip',

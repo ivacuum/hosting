@@ -25,6 +25,8 @@ Route::get('dev', [Acp\Dev::class, 'index']);
 Route::get('dev/debugbar', [Acp\Dev::class, 'debugbar']);
 Route::get('dev/logs', [Acp\Dev::class, 'logs']);
 Route::get('dev/svg', [Acp\Dev::class, 'svg']);
+Route::get('dev/gig-templates', [Acp\Dev\GigTemplates::class, 'index']);
+Route::get('dev/gig-templates/{template}', [Acp\Dev\GigTemplates::class, 'show']);
 Route::get('dev/templates', [Acp\Dev\Templates::class, 'index']);
 Route::get('dev/templates/{template}', [Acp\Dev\Templates::class, 'show']);
 Route::get('dev/thumbnails', [Acp\Dev\Thumbnails::class, 'index']);

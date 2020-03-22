@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Acp;
 
+use App\Gig;
 use App\Photo as Model;
 use App\Trip;
 use Ivacuum\Generic\Controllers\Acp\Controller;
@@ -32,7 +33,7 @@ class Photos extends Controller
     }
 
     /**
-     * @param  Model $model
+     * @param Model $model
      * @return array
      */
     protected function redirectAfterStore($model)
@@ -43,9 +44,12 @@ class Photos extends Controller
     protected function storeModel()
     {
         $model = null;
+        $gigId = request('gig_id');
         $tripId = request('trip_id');
 
-        if ($tripId) {
+        if ($gigId) {
+            $model = Gig::findOrFail($gigId);
+        } elseif ($tripId) {
             $model = Trip::findOrFail($tripId);
         }
 
@@ -70,9 +74,13 @@ class Photos extends Controller
         $extension = str_replace('jpeg', 'jpg', strtolower($pathinfo['extension']));
         $filename = "{$pathinfo['filename']}.{$extension}";
 
-        \Storage::disk('photos')->putFileAs($model->slug, $image, $filename);
+        $folder = $model instanceof Gig
+            ? "gigs/{$model->slug}"
+            : $model->slug;
 
-        $photo = $model->photos()->create([
+        \Storage::disk('photos')->putFileAs($folder, $image, $filename);
+
+        return $model->photos()->create([
             'lat' => $coords['lat'] ?? '',
             'lon' => $coords['lon'] ?? '',
             'slug' => "{$model->slug}/{$filename}",
@@ -80,8 +88,6 @@ class Photos extends Controller
             'status' => Model::STATUS_HIDDEN,
             'user_id' => request()->user()->id,
         ]);
-
-        return $photo;
     }
 
     protected function updateModel($model)

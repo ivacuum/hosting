@@ -68,6 +68,11 @@ class Gig extends Model
         return $this->morphMany(Email::class, 'rel');
     }
 
+    public function photos()
+    {
+        return $this->morphMany(Photo::class, 'rel');
+    }
+
     // Attributes
     public function getMetaDescriptionAttribute()
     {

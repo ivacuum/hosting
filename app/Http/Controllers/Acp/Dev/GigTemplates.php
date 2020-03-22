@@ -1,10 +1,9 @@
 <?php namespace App\Http\Controllers\Acp\Dev;
 
-use App\Trip;
-use App\TripFactory;
+use App\Gig;
 use Ivacuum\Generic\Controllers\Acp\BaseController;
 
-class Templates extends BaseController
+class GigTemplates extends BaseController
 {
     public function index()
     {
@@ -19,7 +18,7 @@ class Templates extends BaseController
             $total->{$lang} = 0;
         }
 
-        foreach (TripFactory::templatesIterator() as $template) {
+        foreach (Gig::templatesIterator() as $template) {
             if (!preg_match("/{$filter}/", $template->getBasename('.blade.php'))) {
                 continue;
             }
@@ -29,7 +28,7 @@ class Templates extends BaseController
             $i18n = collect($langs)
                 ->keys()
                 ->flip()
-                ->map(fn ($value, $key) => substr_count($contents, "@{$key}\n"))
+                ->map(fn($value, $key) => substr_count($contents, "@{$key}\n"))
                 ->all();
 
             if ($hideFinished === 1 && $i18n['ru'] === $i18n['en']) {
@@ -54,7 +53,7 @@ class Templates extends BaseController
             ]);
         }
 
-        return view($this->view, [
+        return view('acp.dev.templates.index', [
             'total' => $total,
             'templates' => $templates,
         ]);
@@ -69,14 +68,14 @@ class Templates extends BaseController
 
         $slug = str_replace('_', '.', $template);
 
-        /** @var Trip $trip */
-        $trip = Trip::inRandomOrder()->first();
-        $trip->slug = $slug;
-        $trip->meta_title_en = $slug;
-        $trip->meta_title_ru = $slug;
+        /** @var Gig $gig */
+        $gig = Gig::inRandomOrder()->first();
+        $gig->slug = $slug;
+        $gig->meta_title_en = $slug;
+        $gig->meta_title_ru = $slug;
 
         if (request('images')) {
-            $path = base_path("resources/views/{$trip->templatePath()}.blade.php");
+            $path = base_path("resources/views/{$gig->templatePath()}.blade.php");
             $content = \File::get($path);
 
             $lines = explode("\n", $content);
@@ -109,10 +108,12 @@ class Templates extends BaseController
             \File::put($path, implode("\n", $result));
         }
 
-        return view($this->view, [
-            'trip' => $trip,
-            'folder' => 'trips',
+        return view('acp.dev.templates.show', [
+            'gig' => $gig,
+            'slug' => "gigs/$slug",
+            'folder' => 'gigs',
             'template' => $template,
+            'timeline' => [],
         ]);
     }
 }
