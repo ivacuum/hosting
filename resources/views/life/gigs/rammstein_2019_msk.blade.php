@@ -7,7 +7,7 @@
     @include('tpl.gig-countdown', ['showDatetime' => '2019-07-29 19:00:00'])
   </div>
   --}}
-  <p>Новый тур группы Rammstein. Шестнадцатое выступление по счету в России. В этот раз концерт в поддержку нового студийного альбома под названием Rammstein, выпущенного 17 мая. Место проведения концерта: большая спортивная арена Лужники.</p>
+  <p>Новый тур группы Раммштайн. Шестнадцатое выступление по счету в России. В этот раз концерт в поддержку нового студийного альбома под названием Rammstein, выпущенного 17 мая. Место проведения концерта: большая спортивная арена Лужники.</p>
   {{-- Смена стадиона --}}
   {{--
   <p>
@@ -102,4 +102,9 @@
   <p>Video of the show.</p>
 @endru
 <youtube title="Rammstein 2019, Luzhniki Stadium, Moscow, Russia" v="hYFAxa5lDMo"></youtube>
+
+<h3 class="mt-12">@ru Бонусные материалы @en Bonus materials @endru</h3>
+<ul>
+  <li><a class="link" href="https://www.instagram.com/p/B0jg1buAmi2/">@ru Видео из инстаграма Тилля @en Video from Till's Instagram @endru</a></li>
+</ul>
 @endsection
