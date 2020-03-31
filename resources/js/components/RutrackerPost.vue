@@ -105,6 +105,18 @@ export default {
       this.renderLinks()
     },
 
+    makeFastpicFullviewLink($item) {
+      const title = $item.attr('title')
+
+      if (-1 !== title.search(/fastpic\.ru\/thumb/)) {
+        const $link = $item.parent('.postLink')
+        const linkHref = $link.attr('href')
+
+        $link.attr('href', linkHref.replace(/\/view\//, '/fullview/'))
+        $link.attr('rel', 'noreferrer')
+      }
+    },
+
     renderLinks() {
       $('.postLink', '.rutracker-post').each((index, item) => {
         let href = $(item).attr('href')
@@ -126,7 +138,9 @@ export default {
         let src = this.getOriginalSrc($item)
         let cls = $item.attr('class')
 
-        let $img = $(`<img src="${src}" class="${cls}" alt="pic">`)
+        this.makeFastpicFullviewLink($item)
+
+        let $img = $(`<img src="${src}" class="${cls}" alt="pic" referrerpolicy="no-referrer">`)
 
         if ($item.hasClass('postImgAligned')) {
           $img.on('click', (e) => {
