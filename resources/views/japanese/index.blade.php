@@ -10,9 +10,9 @@
 
 @section('content')
 <h1 class="h2">{{ trans('japanese.index') }}</h1>
-<div class="md:flex md:-mx-4 mt-6">
-  <div class="flex md:w-1/2 md:px-4">
-    <div class="flex-1 border overflow-hidden rounded">
+<div class="grid md:grid-cols-2 gap-8 mt-6">
+  <div class="flex">
+    <div class="border overflow-hidden rounded">
       <div class="bg-green-600 px-5 py-3 text-white">
         <h2 class="h4 mb-0">@ru Собственные ресурсы @en Own services @endru</h2>
       </div>
@@ -33,8 +33,8 @@
       </div>
     </div>
   </div>
-  <div class="flex md:w-1/2 md:px-4">
-    <div class="flex-1 border overflow-hidden rounded mt-4 md:mt-0">
+  <div class="flex">
+    <div class="border overflow-hidden rounded">
       <div class="bg-gray-800 px-5 py-3 text-white">
         <h2 class="h4 mb-0">@ru Внешние полезные ресурсы @en External resources @endru</h2>
       </div>

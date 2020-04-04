@@ -11,8 +11,8 @@
 <h1 class="h2">Любимые посты</h1>
 <p>Сборка ссылок на различные понравившиеся страницы в интернете.</p>
 
-<div class="md:flex md:-mx-4">
-  <div class="md:flex-1 md:px-4">
+<div class="grid md:grid-cols-2 gap-12">
+  <div>
     <h3>Интересное</h3>
     <ul>
       <li><a class="link" href="https://ru.wikipedia.org/wiki/Визовые_требования_для_граждан_России" rel="nofollow">Визовые требования для граждан России</a></li>
@@ -43,7 +43,7 @@
       <li><a class="link" href="http://urixblog.com/" rel="nofollow">Стереопары</a></li>
     </ul>
   </div>
-  <div class="md:flex-1 md:px-4 mt-12 md:mt-0">
+  <div>
     <h3>Подборки по странам</h3>
     <ul>
       <li><a class="link" href="https://varlamov.ru/1224669.html" rel="nofollow">Американское воскресенье</a></li>

@@ -50,8 +50,8 @@
         Main features of StrongDC++
       @endru
     </h3>
-    <div class="md:flex md:flex-wrap md:-mx-4">
-      <div class="md:w-1/2 lg:w-1/3 md:px-4">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div>
         <h5>
           @ru
             Сегментационная закачка файла
@@ -60,12 +60,12 @@
           @endru
         </h5>
         @ru
-          <p>Загружаемый вами файл автоматически разделяется на много маленьких сегментов и качается одновременно сразу с нескольких пользователей. Благодаря этому скорость закачки файла получается выше, а автоматическая проверка файла после закачки гарантирует то, что файл не будет поврежден.</p>
+          <div>Загружаемый вами файл автоматически разделяется на много маленьких сегментов и качается одновременно сразу с нескольких пользователей. Благодаря этому скорость закачки файла получается выше, а автоматическая проверка файла после закачки гарантирует то, что файл не будет поврежден.</div>
         @en
-          <p>Files are divided to many parts and they are downloaded from many users in parallel. Checksum guarantees combined parts are identical to an original file.</p>
+          <div>Files are divided to many parts and they are downloaded from many users in parallel. Checksum guarantees combined parts are identical to an original file.</div>
         @endru
       </div>
-      <div class="md:w-1/2 lg:w-1/3 md:px-4">
+      <div>
         <h5>
           @ru
             Частичное расшаривание файла
@@ -74,12 +74,12 @@
           @endru
         </h5>
         @ru
-          <p>Если закачиваемый вами файл качают другие пользователи, то они будут выступать для вас источником недостающих данных, как и вы для них. То есть закачанные сегменты файлов будут расшариваться автоматически для улучшения обмена во всей сети DC++.</p>
+          <div>Если закачиваемый вами файл качают другие пользователи, то они будут выступать для вас источником недостающих данных, как и вы для них. То есть закачанные сегменты файлов будут расшариваться автоматически для улучшения обмена во всей сети DC++.</div>
         @en
-          <p>You start sharing segments you've downloaded right away. So as other users. Better speed for everyone.</p>
+          <div>You start sharing segments you've downloaded right away. So as other users. Better speed for everyone.</div>
         @endru
       </div>
-      <div class="md:w-1/2 lg:w-1/3 md:px-4">
+      <div>
         <h5>
           @ru
             Персональная настройка
@@ -88,12 +88,12 @@
           @endru
         </h5>
         @ru
-          <p>Вы можете настроить звуковые оповещения, всплывающие окна, смайлики в чатах и многое другое на свое усмотрение. Это позволяет сделать работу со StrongDC++ максимально удобной.</p>
+          <div>Вы можете настроить звуковые оповещения, всплывающие окна, смайлики в чатах и многое другое на свое усмотрение. Это позволяет сделать работу со StrongDC++ максимально удобной.</div>
         @en
-          <p>You have lots of options to fine-tune: sound notifications, popup windows, smilies, etc.</p>
+          <div>You have lots of options to fine-tune: sound notifications, popup windows, smilies, etc.</div>
         @endru
       </div>
-      <div class="md:w-1/2 lg:w-1/3 md:px-4">
+      <div>
         <h5>
           @ru
             Отключение медленных соединений
@@ -102,12 +102,12 @@
           @endru
         </h5>
         @ru
-          <p>StrongDC++ автоматически отключает те соединения, где скорость обмена наименьшая, чтобы освободить слоты для других пользователей.</p>
+          <div>StrongDC++ автоматически отключает те соединения, где скорость обмена наименьшая, чтобы освободить слоты для других пользователей.</div>
         @en
-          <p>It frees slots for high-speed exchange.</p>
+          <div>It frees slots for high-speed exchange.</div>
         @endru
       </div>
-      <div class="md:w-1/2 lg:w-1/3 md:px-4">
+      <div>
         <h5>
           @ru
             Ограничение на загрузку и отдачу
@@ -116,9 +116,9 @@
           @endru
         </h5>
         @ru
-          <p>Вы можете установить с какой скоростью будет производиться загрузка и отдача файлов с вашего компьютера. Это позволяет снизить нагрузку на жесткий диск и сеть.</p>
+          <div>Вы можете установить с какой скоростью будет производиться загрузка и отдача файлов с вашего компьютера. Это позволяет снизить нагрузку на жесткий диск и сеть.</div>
         @en
-          <p>Control your network and hard drive utilization.</p>
+          <div>Control your network and hard drive utilization.</div>
         @endru
       </div>
     </div>

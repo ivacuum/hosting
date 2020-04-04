@@ -7,8 +7,8 @@
 @endpush
 
 @section('content')
-<div class="sm:flex sm:-mx-4">
-  <section class="sm:w-2/3 md:w-1/2 sm:px-4 pt-0">
+<div class="grid md:grid-cols-2 gap-8">
+  <section class="pt-0">
     <div class="flex flex-wrap items-center mb-1">
       <h1 class="text-3xl mb-1 mr-4">{{ trans('life.trips') }}</h1>
       @if (Auth::check())
@@ -42,7 +42,7 @@
 
     @include('tpl.trips_by_years')
   </section>
-  <section class="sm:w-1/3 md:w-1/2 sm:px-4 sm:pt-0">
+  <section class="md:pt-0">
     <h2 class="text-3xl">{{ trans('life.favorites') }}</h2>
     @ru
       <div class="mb-2"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'chillout') }}">Chillout</a></div>

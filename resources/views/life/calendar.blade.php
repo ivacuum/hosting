@@ -15,7 +15,7 @@
   @en
     <p>Trips by days. Several flags in one cell means there were multiple cities visited during that day: moving from one place to another or just one-day trips. Each flag is a link to the story about the trip if the story is published.</p>
   @endru
-  <div class="calendar-grid text-2xs md:text-sm text-center">
+  <div class="grid text-2xs md:text-sm text-center" style="grid-template-columns: max-content repeat(31, 1fr);">
     <?php /** @var int $year */ ?>
     @foreach (range($lastDate->year, $firstDate->year, -1) as $year)
       <div class="font-bold text-right mt-4 pr-2 bg-gray-200">{{ $year }}</div>

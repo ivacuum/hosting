@@ -213,7 +213,7 @@ class Trip extends Model
 
     public function imgAltText(): string
     {
-        return "{$this->city->country->emoji} {$this->title}, {$this->city->country->title}, {$this->timelinePeriod(true)}.";
+        return "{$this->city->country->emoji} {$this->title}, {$this->city->country->title}, {$this->timelinePeriodWithYear()}.";
     }
 
     public function isHidden(): bool
@@ -355,9 +355,14 @@ class Trip extends Model
         return str_replace('.', '/', $this->template());
     }
 
-    public function timelinePeriod(bool $year = false): string
+    public function timelinePeriod(): string
     {
-        return $this->monthName($this->date_start->month) . ($year ? " {$this->date_start->year}" : '');
+        return $this->monthName($this->date_start->month);
+    }
+
+    public function timelinePeriodWithYear(): string
+    {
+        return $this->monthName($this->date_start->month) . " {$this->date_start->year}";
     }
 
     public function www(?string $anchor = null): string

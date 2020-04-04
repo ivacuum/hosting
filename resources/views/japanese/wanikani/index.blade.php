@@ -2,8 +2,8 @@
 
 @section('content')
 <h1 class="h2">{{ trans('japanese.wanikani') }}</h1>
-<div class="md:flex md:-mx-4 text-center mb-2">
-  <div class="md:w-1/3 md:px-4 mb-2">
+<div class="grid md:grid-cols-3 gap-6 text-center mb-4">
+  <div>
     <div class="bg-radical rounded">
       <a
         class="block ja-shadow-light py-6 text-white hover:text-gray-200"
@@ -14,7 +14,7 @@
       </a>
     </div>
   </div>
-  <div class="md:w-1/3 md:px-4 mb-2">
+  <div>
     <div class="bg-kanji rounded">
       <a
         class="block ja-shadow-light py-6 text-white hover:text-gray-200"
@@ -25,7 +25,7 @@
       </a>
     </div>
   </div>
-  <div class="md:w-1/3 md:px-4 mb-2">
+  <div>
     <div class="bg-vocab rounded">
       <a
         class="block ja-shadow-light py-6 text-white hover:text-gray-200"

@@ -4,7 +4,7 @@
     <div :key="stage" style="min-height: 420px;">
       <div v-show="stage === 'pick'">
         <p>{{ $t('PICKER_TEXT') }}</p>
-        <div class="items-center text-center border-l border-gray-200" style="display: grid; grid-template-columns: repeat(16, max-content);">
+        <div class="grid items-center text-center border-l border-gray-200 overflow-x-scroll" style="grid-template-columns: repeat(16, max-content);">
           <template v-for="(cells, i) in elements">
             <template v-for="(cell, j) in cells">
               <div class="border-r border-gray-200 cursor-pointer px-2 pt-2 pb-1" :class="{ 'border-t': i === 0 }" @click="clickOnColumn(j)">

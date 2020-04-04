@@ -1,8 +1,8 @@
 @extends('dcpp.base')
 
 @section('content')
-<div class="antialiased hanging-puntuation-first lg:text-lg md:flex md:-mx-4">
-  <div class="md:w-1/4 md:px-4">
+<div class="antialiased hanging-puntuation-first lg:text-lg grid md:grid-cols-4 gap-8">
+  <div class="md:col-span-1">
     <h1>{{ trans('dcpp.index') }}</h1>
     <div class="h3 text-gray-500">{{ trans('dcpp.clients') }}</div>
     <div class="flex flex-col w-full">
@@ -50,13 +50,13 @@
       >{{ trans('dcpp.strongdc') }}</a>
     </div>
   </div>
-  <div class="md:w-3/4 md:px-4">
+  <div class="md:col-span-3">
     @ru
-      <h2 class="mt-12 md:mt-0">Что такое пиринговая сеть?</h2>
+      <h2 class="md:mt-0">Что такое пиринговая сеть?</h2>
       <p><strong>Пиринговая сеть</strong> (Peer-to-peеr или P2P) — это обмен файлами между пользователями сети. Все пользователи подключаются к единому серверу, где происходит аккумуляция списков файлов у пользователей, потом эти файлы уже напрямую скачиваются между двумя пользователями сети.</p>
       <p>Говоря проще, вы сможете «увидеть» и скачать файлы, открытые для доступа другим абонентом сети, а также, открыв доступ к своим файлам, позволить скачать их у вас.</p>
     @en
-      <h2 class="mt-12 md:mt-0">What is P2P network?</h2>
+      <h2 class="md:mt-0">What is P2P network?</h2>
       <p>A peer-to-peer network allows users to share files with other users. All users connect to a special computer called a hub that routes search requests/results and facilitates clients to connect to each other. All file transfers are being made directly between clients, not through the hub.</p>
     @endru
 
