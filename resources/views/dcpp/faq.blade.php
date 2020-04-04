@@ -5,19 +5,19 @@
 @section('content')
 <h1>Решение проблем с DC++</h1>
 
-@component('accordion')
-@slot('title')
-  Если при входе на хаб вам пишется: Turn On your tags!!
-@endslot
+<x-accordion>
+  <x-slot name="title">
+    Если при входе на хаб вам пишется: Turn On your tags!!
+  </x-slot>
 
-<p>Вам нужно включить Эмуляцию DC++ для данного хаба.</p>
-<div class="mb-1">Для этого:</div>
-<ol>
-  <li>Откройте вкладку «<strong>Любимые хабы</strong>»</li>
-  <li>Выберите свойства хаба</li>
-  <li>Поставьте там галочку напротив пункта «<strong>Эмуляция DC++</strong>» (Emulate DC++)</li>
-</ol>
-@endcomponent
+  <p>Вам нужно включить Эмуляцию DC++ для данного хаба.</p>
+  <div class="mb-1">Для этого:</div>
+  <ol>
+    <li>Откройте вкладку «<strong>Любимые хабы</strong>»</li>
+    <li>Выберите свойства хаба</li>
+    <li>Поставьте там галочку напротив пункта «<strong>Эмуляция DC++</strong>» (Emulate DC++)</li>
+  </ol>
+</x-accordion>
 
 @component('accordion')
 @slot('title')
