@@ -4,17 +4,21 @@
     <div :key="stage" style="min-height: 420px;">
       <div v-show="stage === 'pick'">
         <p>{{ $t('PICKER_TEXT') }}</p>
-        <div class="grid items-center text-center border-l border-gray-200 overflow-x-scroll" style="grid-template-columns: repeat(16, max-content);">
+        <div class="grid items-center text-center border-gray-200 overflow-x-scroll" style="grid-template-columns: repeat(16, max-content);">
           <template v-for="(cells, i) in elements">
             <template v-for="(cell, j) in cells">
-              <div class="border-r border-gray-200 cursor-pointer px-2 pt-2 pb-1" :class="{ 'border-t': i === 0 }" @click="clickOnColumn(j)">
+              <div
+                class="border-r border-gray-200 cursor-pointer px-2 pt-2 pb-1"
+                :class="{ 'border-t': i === 0, 'border-l': j === 0 }"
+                @click="clickOnColumn(j)"
+              >
                 <div class="text-2xl font-bold ja-character">{{ cell[syllabaryIndex] ? cell[syllabaryIndex] : '&nbsp;' }}</div>
                 <div class="text-muted">{{ cell[answerIndex] ? cell[answerIndex] : '&nbsp;' }}</div>
               </div>
             </template>
           </template>
           <template v-for="i in elements[0].length">
-            <div class="border-r border-b border-gray-200">
+            <div class="border-r border-b border-gray-200" :class="{ 'border-l': i === 1 }">
               <label class="block cursor-pointer py-2">
                 <input
                   :id="`column_${i - 1}`"
@@ -27,13 +31,13 @@
             </div>
           </template>
         </div>
-        <div class="flex flex-wrap mt-2">
-          <button class="btn btn-primary mb-2 mr-2" :disabled="this.picked.length < 2" @click="practice">{{ $t('PRACTICE') }}</button>
-          <button class="btn btn-default mb-2 mr-2" @click="checkAll">{{ $t('CHECK_ALL') }}</button>
-          <button class="btn btn-default mb-2 mr-2" @click="uncheckAll">{{ $t('UNCHECK_ALL') }}</button>
+        <div class="grid grid-cols-2 lg:block gap-2 mt-2">
+          <button class="btn btn-primary" :disabled="this.picked.length < 2" @click="practice">{{ $t('PRACTICE') }}</button>
           <transition name="fade-fast" mode="out-in">
-            <button class="btn btn-default mb-2" @click="switchSyllabary" :key="syllabaryLabel">{{ syllabaryLabel }}</button>
+            <button class="btn btn-default" @click="switchSyllabary" :key="syllabaryLabel">{{ syllabaryLabel }}</button>
           </transition>
+          <button class="btn btn-default" @click="checkAll">{{ $t('CHECK_ALL') }}</button>
+          <button class="btn btn-default" @click="uncheckAll">{{ $t('UNCHECK_ALL') }}</button>
         </div>
       </div>
       <div class="max-w-600px" v-show="stage === 'practice'">
