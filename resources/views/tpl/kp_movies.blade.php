@@ -1,9 +1,19 @@
-<div class="flex flex-wrap mobile-wide">
+<div
+  class="grid gap-1 mobile-wide overflow-x-scroll"
+  style="grid-template-columns: repeat({{ sizeof($movies) }}, max-content); grid-template-rows: 350px;"
+>
   @foreach ($movies as $movie)
-    <a class="w-1/2 sm:w-1/3 md:w-1/4 xl:w-1/5 screenshot-link tooltipped tooltipped-n pr-1 pb-1"
-       aria-label="{{ $movie['title'] ?? '' }}"
-       href="https://www.kinopoisk.ru/film/{{ $movie['id'] }}/">
-      <img class="screenshot" src="https://st.kp.yandex.net/images/film_big/{{ $movie['id'] }}.jpg" alt="">
+    <a
+      class="screenshot-link tooltipped tooltipped-n"
+      aria-label="{{ $movie['title'] ?? '' }}"
+      href="https://www.kinopoisk.ru/film/{{ $movie['id'] }}/"
+    >
+      <img
+        class="screenshot"
+        src="https://st.kp.yandex.net/images/film_big/{{ $movie['id'] }}.jpg"
+        alt=""
+        style="height: 350px;"
+      >
     </a>
   @endforeach
 </div>

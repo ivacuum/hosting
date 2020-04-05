@@ -2,18 +2,16 @@
 
 @section('content')
 @if (sizeof($images))
-  <div class="flex flex-wrap text-center">
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 items-end text-center mb-8">
     @foreach ($images as $image)
-      <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 self-end mb-6">
-        <div class="mb-4">
-          <a class="screenshot-link" href="{{ path([$controller, 'view'], $image) }}">
-            <img class="inline-block screenshot" src="{{ $image->thumbnailUrl() }}" alt="">
-          </a>
-        </div>
-        <span class="text-muted whitespace-no-wrap">
+      <div>
+        <a class="screenshot-link" href="{{ path([$controller, 'view'], $image) }}">
+          <img class="inline-block screenshot" src="{{ $image->thumbnailUrl() }}" alt="">
+        </a>
+        <div class="text-muted whitespace-no-wrap mt-4">
           @svg (eye)
           {{ ViewHelper::number($image->views) }}
-        </span>
+        </div>
       </div>
     @endforeach
   </div>
