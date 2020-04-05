@@ -5,10 +5,10 @@
 @extends('photos.base')
 
 @section('content')
-<div class="flex flex-wrap mobile-wide">
+<div class="grid md:grid-cols-2 lg:grid-cols-3 mobile-wide">
   @foreach ($trips as $trip)
     <?php $trip->loadCityAndCountry(); ?>
-    <div class="w-full sm:w-1/2 lg:w-1/3 mx-auto sm:mx-0 relative">
+    <div class="relative">
       <a class="block group" href="{{ $trip->www() }}">
         <div class="relative pb-3/4">
           <img

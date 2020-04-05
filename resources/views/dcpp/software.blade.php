@@ -82,9 +82,9 @@
     <section class="border-b border-gray-200 my-0 py-12">
       <div class="container">
         <h2 class="mb-6">{{ trans('dcpp.links') }}</h2>
-        <div class="md:flex md:-mx-4">
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
           @if (sizeof($software) > 1)
-            <div class="md:w-1/2 lg:w-5/12 xl:w-1/3 md:px-4">
+            <div>
               <h4>{{ trans('dcpp.earlier_versions') }}</h4>
               <ul>
                 @foreach ($software as $soft)
@@ -95,7 +95,7 @@
             </div>
           @endif
           @if (!empty($developerSite))
-            <div class="md:w-1/2 lg:w-5/12 xl:w-1/3 md:px-4">
+            <div>
               <h4>{{ trans('dcpp.pages') }}</h4>
               <ul>
                 <li>
@@ -114,8 +114,8 @@
 
   <section class="bg-light my-0 py-12">
     <div class="container">
-      <div class="md:flex md:-mx-4">
-        <div class="md:w-1/2 md:px-4">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
           <div class="h3">{{ trans('issues.create') }}</div>
           @ru
             <p>Поделитесь своими знаниями или задайте вопрос. Мы постараемся обработать информацию и дополнить эту страницу новыми материалами.</p>
@@ -129,7 +129,7 @@
             hide-title
           ></feedback-form>
         </div>
-        <div class="md:w-1/2 lg:w-1/3 xl:w-1/4 md:px-4 mt-4 md:mt-0">
+        <div class="lg:w-2/3 xl:w-1/2">
           @include('tpl.google-vertical')
         </div>
       </div>

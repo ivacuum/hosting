@@ -56,8 +56,8 @@ body {
 </head>
 <body class="lg:pt-4 lg:pb-8">
 <div class="mx-auto max-w-4xl wrapper bg-white p-4 sm:p-6 lg:p-8">
-  <div class="md:flex md:-mx-4">
-    <div class="md:w-2/3 md:px-4 mb-6 sm:mb-0">
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="md:col-span-2">
       <div class="sm:flex mb-6">
         <div class="mb-2 sm:mb-0">
           <img class="my-picture bg-white mr-4 p-1 w-32 h-32 max-w-none" src="https://life.ivacuum.org/me.jpg" alt="">
@@ -72,8 +72,8 @@ body {
           @endru
         </div>
       </div>
-      <div class="md:flex md:-mx-4">
-        <div class="md:w-1/2 md:px-4 mb-6">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
           <h3 class="my-caption h5 text-teal-600 uppercase">@ru Образование @en Education @endru</h3>
           <div class="font-bold">@ru Высшее, МГТУ им. Баумана @en Bauman Moscow State Technical University @endru</div>
           <div>
@@ -91,7 +91,7 @@ body {
             <span class="text-xs text-muted">2011</span>
           </div>
         </div>
-        <div class="md:w-1/2 md:px-4">
+        <div>
           <h3 class="my-caption h5 uppercase">@ru Опыт работы @en Experience @endru</h3>
           <div>@ru 01.12.2014 — по настоящее время @en Dec 2014 — Present @endru</div>
           <div>@ru ООО Гала Маркетинг @en OOO Gala Marketing @endru</div>
@@ -107,7 +107,7 @@ body {
         </div>
       </div>
     </div>
-    <div class="md:w-1/3 md:px-4">
+    <div>
       <h3 class="my-caption h5 uppercase">@ru Контактная информация @en Contacts @endru</h3>
       <div class="flex justify-between">
         <div>@ru Телефон @en Phone @endru</div>

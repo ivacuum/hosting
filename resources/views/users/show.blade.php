@@ -7,8 +7,8 @@
 @extends('base')
 
 @section('content')
-<div class="md:flex md:-mx-4">
-  <div class="md:w-1/3 md:px-4">
+<div class="md:w-1/3">
+  <div>
     <div class="text-center">
       @include('tpl.avatar')
       <h1 class="h3 mt-2">{{ $user->publicName() }}</h1>

@@ -10,8 +10,8 @@ export default {
 </script>
 
 <template>
-<div class="lg:flex lg:-mx-4">
-  <div class="lg:w-1/2 lg:px-4">
+<div class="grid lg:grid-cols-2 gap-8">
+  <div>
     <form method="post">
       <div class="mb-4">
         <select required class="custom-select" v-model="categoryId">
@@ -29,7 +29,7 @@ export default {
       </button>
     </form>
   </div>
-  <div class="lg:w-1/2 lg:px-4 mt-6 lg:mt-0">
+  <div>
     <div>Нашли что-то интересное на рутрекере? Поделитесь своей находкой со всеми! Достаточно выбрать подходящую рубрику и вставить ссылку на раздачу. Далее сайт все сделает автоматически — вам даже не нужно скачивать, хэшировать или поддерживать раздачу. Так просто еще никогда не было!</div>
   </div>
 </div>

@@ -11,8 +11,8 @@ export default {
 
 <template>
 <div v-if="resource">
-  <div class="lg:flex lg:-mx-4">
-    <div class="lg:w-1/4 lg:px-4">
+  <div class="grid lg:grid-cols-4 gap-8">
+    <div>
       <div class="flex flex-col w-full">
         <router-link
           class="border-l-2 border-transparent px-3 py-2"
@@ -54,7 +54,7 @@ export default {
         </a>
       </div>
     </div>
-    <div class="lg:w-3/4 lg:px-4">
+    <div class="lg:col-span-3">
       <slot name="header">
         <h2 class="mt-4 lg:mt-0 break-words">
           <a href="back" @click.prevent="$router.go(-1)" v-html="$root.svg.chevron_left"></a>

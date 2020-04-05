@@ -1,8 +1,8 @@
 @extends('base')
 
 @section('content_header')
-<div class="lg:flex lg:-mx-4">
-  <div class="lg:w-2/12 lg:px-4">
+<div class="grid lg:grid-cols-6 gap-8">
+  <div>
     <div class="flex flex-col w-full">
       @if (Auth::user()->isAdmin())
         @component('tpl.list-group-item', [
@@ -52,7 +52,7 @@
       @endcomponent
     </div>
   </div>
-  <div class="lg:w-10/12 lg:px-4 mt-4 lg:mt-0">
+  <div class="lg:col-span-5">
 @endsection
 
 @section('content_footer')

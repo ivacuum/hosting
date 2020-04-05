@@ -32,8 +32,8 @@
         Main features of FlyLinkDC++
       @endru
     </h3>
-    <div class="md:flex md:-mx-4">
-      <div class="md:flex-1 md:px-4">
+    <div class="grid md:grid-cols-2 md:gap-8">
+      <div>
         <ul>
           @ru
             <li>Увеличена скорость закачки распространенных файлов</li>
@@ -51,7 +51,7 @@
           @endru
         </ul>
       </div>
-      <div class="md:flex-1 md:px-4">
+      <div>
         <ul>
           @ru
             <li>Фильтрация по IP-адресу, чтобы качать только из бесплатной локальной сети</li>

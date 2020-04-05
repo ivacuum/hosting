@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="antialiased hanging-puntuation-first lg:text-lg grid md:grid-cols-4 gap-8">
-  <div class="md:col-span-1">
+  <div>
     <h1>{{ trans('dcpp.index') }}</h1>
     <div class="h3 text-gray-500">{{ trans('dcpp.clients') }}</div>
     <div class="flex flex-col w-full">

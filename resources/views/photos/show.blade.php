@@ -19,8 +19,8 @@ Mousetrap.bind('right', () => {
 @endpush
 
 @section('content')
-<div class="lg:flex lg:-mx-4 -mt-2">
-  <div class="lg:w-5/6 lg:px-4 mb-4">
+<div class="grid lg:grid-cols-6 gap-6 -mt-2">
+  <div class="lg:col-span-5">
     <div class="mobile-wide relative text-center">
       @if (null !== $next)
         <a
@@ -51,7 +51,7 @@ Mousetrap.bind('right', () => {
       </div>
     </div>
   </div>
-  <div class="lg:w-1/6 lg:px-4">
+  <div>
     <div class="flex flex-wrap md:flex-col">
       <div class="mr-2 md:mr-0 text-muted">{{ trans('photos.story') }}</div>
       <a class="flex flex-wrap items-center link-parent" href="{{ $photo->rel->www() }}#{{ basename($photo->slug) }}">

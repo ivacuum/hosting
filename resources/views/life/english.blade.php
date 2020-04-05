@@ -201,8 +201,8 @@ $irregularVerbs = [
   </li>
 </ol>
 
-<div class="md:flex md:-mx-4 mt-12">
-  <div class="md:w-1/2 md:px-4">
+<div class="grid md:grid-cols-2 gap-8 mt-12">
+  <div>
     <p><b>The</b> is also used before:</p>
     <ol>
       <li class="mb-4">
@@ -243,7 +243,7 @@ $irregularVerbs = [
       </li>
     </ol>
   </div>
-  <div class="md:w-1/2 md:px-4">
+  <div>
     <p><b>The</b> is omitted before:</p>
     <ol>
       <li class="mb-4">
