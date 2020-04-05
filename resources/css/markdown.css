@@ -1,0 +1,13 @@
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+    margin-top: 2rem;
+}
+
+.markdown-responsive-image {
+  max-width: 100%;
+  max-height: 90vh;
+  height: auto;
+}
