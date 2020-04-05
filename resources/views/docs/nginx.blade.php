@@ -10,9 +10,8 @@
 @section('content')
 <h2>Nginx</h2>
 
-<div class="js-shortcuts-item">
-<pre class="terminal">
-<span class="terminal-comment"># Проксирование файлов с S3</span>
+<x-terminal-pre>
+<span class="text-muted"># Проксирование файлов с S3</span>
 proxy_cache_path /tmp/nginx-s3-cache levels=1:2 keys_zone=s3_cache:10m inactive=168h max_size=250m;
 
 location / {
@@ -22,7 +21,7 @@ location / {
 location @s3 {
   proxy_http_version     1.1;
   proxy_set_header       Connection "";
-  proxy_set_header       Host '«bucket».s3-eu-west-1.amazonaws.com';
+  proxy_set_header       Host '<span class="bg-green-300 font-bold">bucket</span>.s3-eu-west-1.amazonaws.com';
   proxy_set_header       Authorization '';
   proxy_hide_header      x-amz-id-2;
   proxy_hide_header      x-amz-request-id;
@@ -37,8 +36,7 @@ location @s3 {
   add_header           X-Cached $upstream_cache_status;
   expires              30d;
 
-  proxy_pass           https://«bucket».s3-eu-west-1.amazonaws.com;
+  proxy_pass           https://<span class="bg-green-300 font-bold">bucket</span>.s3-eu-west-1.amazonaws.com;
 }
-</pre>
-</div>
+</x-terminal-pre>
 @endsection

@@ -10,24 +10,22 @@
 @section('content')
 <h2>Amazon S3</h2>
 
-<div class="js-shortcuts-item">
-<pre class="terminal">
-<span class="terminal-comment"># Политика свободного чтения</span>
+<x-terminal-pre>
+<span class="text-muted"># Политика свободного чтения</span>
 {
-	"Version": "2008-10-17",
-	"Id": "Policy1420183272983",
-	"Statement": [
-		{
-			"Sid": "Stmt1420183261977",
-			"Effect": "Allow",
-			"Principal": {
-				"AWS": "*"
-			},
-			"Action": "s3:GetObject",
-			"Resource": "arn:aws:s3:::«bucket»/*"
-		}
-	]
+  "Version": "2008-10-17",
+  "Id": "Policy1420183272983",
+  "Statement": [
+    {
+      "Sid": "Stmt1420183261977",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::«bucket»/*"
+    }
+  ]
 }
-</pre>
-</div>
+</x-terminal-pre>
 @endsection

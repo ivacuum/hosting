@@ -12,117 +12,125 @@
 @section('content')
 <h2>Сниппеты для выполнения различных задач на ОС FreeBSD</h2>
 
-<div class="js-shortcuts-item">
-<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
-<span class="terminal-comment"># Обновление ОС</span>
-<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=freebsd-update">freebsd-update</a> fetch install</span>
-<span class="terminal-command">freebsd-update upgrade -r {{ $freebsdVersion }}-RELEASE</span>
-<span class="terminal-command">freebsd-update install</span>
-<span class="terminal-command">shutdown -r now</span>
-<span class="terminal-command">freebsd-update install</span>
+<div class="grid gap-8">
+  <x-terminal>
+    <div class="grid gap-6">
+      <div>
+        <div class="text-muted"># Обновление ОС</div>
+        <div class="prepend-dollar"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=freebsd-update">freebsd-update</a> fetch install</div>
+        <div class="prepend-dollar">freebsd-update upgrade -r {{ $freebsdVersion }}-RELEASE</div>
+        <div class="prepend-dollar">freebsd-update install</div>
+        <div class="prepend-dollar">shutdown -r now</div>
+        <div class="prepend-dollar">freebsd-update install</div>
+      </div>
 
-<span class="terminal-comment"># После больших обновлений вроде 10.0 => 11.0 добавляется две команды</span>
-<span class="terminal-command">portmaster -Raf</span>
-<span class="terminal-command">freebsd-update install</span>
-</pre>
+      <div>
+        <div class="text-muted"># После больших обновлений вроде 10.0 => 11.0 добавляется две команды</div>
+        <div class="prepend-dollar">portmaster -Raf</div>
+        <div class="prepend-dollar">freebsd-update install</div>
+      </div>
+    </div>
+  </x-terminal>
+
+  <x-terminal>
+    <div class="text-muted"># Чистка портов</div>
+    <div class="prepend-dollar"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=pkg">pkg</a> clean</div>
+  </x-terminal>
+
+  <x-terminal>
+    <div class="text-muted"># Исходники ядра</div>
+    <div class="prepend-dollar"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=fetch">fetch</a> https://mirror.yandex.ru/freebsd/releases/amd64/{{ $freebsdVersion }}-RELEASE/src.txz</div>
+    <div class="prepend-dollar"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=tar">tar</a> -C / -xzf src.txz</div>
+  </x-terminal>
+
+  <x-terminal>
+    <div class="text-muted"># Генерация зашифрованного пароля</div>
+    <div class="prepend-dollar"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=openssl">openssl</a> passwd -1</div>
+  </x-terminal>
+
+  <x-terminal>
+    <div class="text-muted"># Билд ядра</div>
+    <div class="prepend-dollar">cd /usr/src</div>
+    <div class="prepend-dollar">make buildkernel KERNCONF=HOSTING</div>
+    <div class="prepend-dollar">make installkernel KERNCONF=HOSTING</div>
+  </x-terminal>
+
+  <x-terminal>
+    <div class="text-muted"># Первоначальная подготовка портов</div>
+    <div class="prepend-dollar"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=portsnap">portsnap</a> fetch extract</div>
+  </x-terminal>
+
+  <x-terminal>
+    <div class="text-muted"># Очистка очереди exim</div>
+    <div class="prepend-dollar">exim -bp | exiqgrep -i | xargs exim -Mrm</div>
+  </x-terminal>
+
+  <x-terminal>
+    <div class="text-muted"># Установка модулей npm для jenkins</div>
+    <div class="prepend-dollar">npm install --global gulp-cli</div>
+  </x-terminal>
+
+  <x-terminal>
+    <div class="grid gap-6">
+      <div class="text-muted"># Утилиты</div>
+
+      <div>
+        <div class="text-muted"># Активные файлы</div>
+        <div class="prepend-dollar"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=fstat">fstat</a></div>
+      </div>
+
+      <div>
+        <div class="text-muted"># Статистика по дискам</div>
+        <div class="prepend-dollar"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=gstat">gstat</a></div>
+      </div>
+
+      <div>
+        <div class="text-muted"># Состояние ввода-вывода</div>
+        <div class="prepend-dollar"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=iostat">iostat</a></div>
+      </div>
+
+      <div>
+        <div class="text-muted"># Состояние сети</div>
+        <div class="prepend-dollar"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=netstat">netstat</a></div>
+      </div>
+
+      <div>
+        <div class="text-muted"># Системная статистика</div>
+        <div class="prepend-dollar"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=systat">systat</a> [-ifstat | -iostat | -netstat | -tcp | -vmstat] [<em>refresh interval in seconds</em>]</div>
+      </div>
+
+      <div>
+        <div class="text-muted"># Состояние виртуальной памяти</div>
+        <div class="prepend-dollar"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=vmstat">vmstat</a> [-iz] [<em>wait</em>]</div>
+      </div>
+    </div>
+  </x-terminal>
+
+  <x-terminal>
+    <div class="grid gap-6">
+      <div>
+        <div class="text-muted"># Файл подкачки на 1024 МБ</div>
+        <div class="prepend-dollar">dd if=/dev/zero of=/root/swap1 bs=1m count=1024</div>
+        <div class="prepend-dollar">chmod 0600 /root/swap1</div>
+      </div>
+
+      <div>
+        <div class="text-muted"># Добавление записи в /etc/fstab</div>
+        <div>md99 none swap sw,file=/root/swap1 0 0</div>
+      </div>
+
+      <div>
+        <div class="text-muted"># Активация файла подкачки без перезагрузки</div>
+        <div class="prepend-dollar">swapon -aq</div>
+      </div>
+    </div>
+  </x-terminal>
+
+  <x-terminal>
+    <div class="text-muted"># Обновление jenkins без обновления openjdk</div>
+    <div class="prepend-dollar">portmaster -bdg -x openjdk8 devel/jenkins-lts</div>
+  </x-terminal>
 </div>
-
-<section class="js-shortcuts-item">
-<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
-<span class="terminal-comment"># Чистка портов</span>
-<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=pkg">pkg</a> clean</span>
-</pre>
-</section>
-
-<section class="js-shortcuts-item">
-<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap break-words">
-<span class="terminal-comment"># Исходники ядра</span>
-<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=fetch">fetch</a> https://mirror.yandex.ru/freebsd/releases/amd64/{{ $freebsdVersion }}-RELEASE/src.txz</span>
-<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=tar">tar</a> -C / -xzf src.txz</span>
-</pre>
-</section>
-
-<section class="js-shortcuts-item">
-<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
-<span class="terminal-comment"># Генерация зашифрованного пароля</span>
-<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=openssl">openssl</a> passwd -1</span>
-</pre>
-</section>
-
-<section class="js-shortcuts-item">
-<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
-<span class="terminal-comment"># Билд ядра</span>
-<span class="terminal-command">cd /usr/src</span>
-<span class="terminal-command">make buildkernel KERNCONF=HOSTING</span>
-<span class="terminal-command">make installkernel KERNCONF=HOSTING</span>
-</pre>
-</section>
-
-<section class="js-shortcuts-item">
-<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
-<span class="terminal-comment"># Первоначальная подготовка портов</span>
-<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=portsnap">portsnap</a> fetch extract</span>
-</pre>
-</section>
-
-<section class="js-shortcuts-item">
-<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
-<span class="terminal-comment"># Очистка очереди exim</span>
-<span class="terminal-command">exim -bp | exiqgrep -i | xargs exim -Mrm</span>
-</pre>
-</section>
-
-<section class="js-shortcuts-item">
-<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
-<span class="terminal-comment"># Установка модулей npm для jenkins</span>
-<span class="terminal-command">npm install --global gulp-cli</span>
-</pre>
-</section>
-
-<section class="js-shortcuts-item">
-<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
-<span class="terminal-comment"># Утилиты</span>
-
-<span class="terminal-comment"># Активные файлы</span>
-<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=fstat">fstat</a></span>
-
-<span class="terminal-comment"># Статистика по дискам</span>
-<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=gstat">gstat</a></span>
-
-<span class="terminal-comment"># Состояние ввода-вывода</span>
-<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=iostat">iostat</a></span>
-
-<span class="terminal-comment"># Состояние сети</span>
-<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=netstat">netstat</a></span>
-
-<span class="terminal-comment"># Системная статистика</span>
-<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=systat">systat</a> [-ifstat | -iostat | -netstat | -tcp | -vmstat] [<em>refresh interval in seconds</em>]</span>
-
-<span class="terminal-comment"># Состояние виртуальной памяти</span>
-<span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=vmstat">vmstat</a> [-iz] [<em>wait</em>]</span>
-</pre>
-</section>
-
-<section class="js-shortcuts-item">
-<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
-<span class="terminal-comment"># Файл подкачки на 1024 МБ</span>
-<span class="terminal-command">dd if=/dev/zero of=/root/swap1 bs=1m count=1024</span>
-<span class="terminal-command">chmod 0600 /root/swap1</span>
-
-<span class="terminal-comment"># Добавление записи в /etc/fstab</span>
-<span>md99 none swap sw,file=/root/swap1 0 0</span>
-
-<span class="terminal-comment"># Активация файла подкачки без перезагрузки</span>
-<span class="terminal-command">swapon -aq</span>
-</pre>
-</section>
-
-<section class="js-shortcuts-item">
-<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
-<span class="terminal-comment"># Обновление jenkins без обновления openjdk</span>
-<span class="terminal-command">portmaster -bdg -x openjdk8 devel/jenkins-lts</span>
-</pre>
-</section>
 
 <div class="mt-6">Больше полезностей на <a class="link" href="https://www.cyberciti.biz/faq/category/freebsd/" rel="nofollow">cyberciti.biz</a>.</div>
 @endsection

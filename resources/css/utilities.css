@@ -20,6 +20,8 @@
   }
 }
 
+.prepend-dollar::before { content: '$ '; }
+
 .small-caps { font-variant: small-caps; }
 
 .top-2 {
