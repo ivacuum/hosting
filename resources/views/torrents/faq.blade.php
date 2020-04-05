@@ -66,9 +66,9 @@
 
     <div class="mb-1">Для добавления предусмотрена <a class="link" href="{{ path([App\Http\Controllers\Torrents::class, 'create']) }}">отдельная страница</a>, доступная только зарегистрированным пользователям. В качестве ввода принимается три типа значений:</div>
     <ol>
-      <li>Ссылка на раздачу на рутрекере вида <code>http://rutracker.org/forum/<wbr>viewtopic.php?t=4031882</code>. Также поддерживаются адреса rutracker.cr, rutracker.net, rutracker.nl и maintracker.org</li>
-      <li>Инфо-хэш раздачи вида <code>9B5D85FFC234737E7D7C<wbr>246FECB6BB1EC5E8F0B9</code></li>
-      <li>Номер темы на рутрекере вида <code>4031882</code></li>
+      <li>Ссылка на раздачу на рутрекере вида <span class="font-mono text-green-600 text-sm">http://rutracker.org/forum/<wbr>viewtopic.php?t=4031882</span>. Также поддерживаются адреса rutracker.cr, rutracker.net, rutracker.nl и maintracker.org</li>
+      <li>Инфо-хэш раздачи вида <span class="font-mono text-green-600 text-sm">9B5D85FFC234737E7D7C<wbr>246FECB6BB1EC5E8F0B9</span></li>
+      <li>Номер темы на рутрекере вида <span class="font-mono text-green-600 text-sm">4031882</span></li>
     </ol>
   @endcomponent
 
@@ -77,7 +77,7 @@
       Какую учетную запись использовать для входа?
     @endslot
 
-    <div>Ту, что заводили на сайте <code>ivacuum.ru</code>. Если вы хоть раз загружали картинки в галерею, то у вас есть эта учетка. От прежнего трекера <code>t.ivacuum.ru</code> учетные записи, к сожалению, не подходят. Если вам нужна помощь, чтобы найти свою учетку, созданные многие годы назад (во времена провайдера Спарк, например), то напишите мне в личку в <a class="link" href="https://vk.com/ivacuum">ВК</a> — постараемся ее найти.</div>
+    <div>Ту, что заводили на сайте <span class="font-bold">ivacuum.ru</span>. Если вы хоть раз загружали картинки в галерею, то у вас есть эта учетка. От прежнего трекера <span class="font-bold">t.ivacuum.ru</span> учетные записи, к сожалению, не подходят. Если вам нужна помощь, чтобы найти свою учетку, созданные многие годы назад (во времена провайдера Спарк, например), то напишите мне в личку в <a class="link" href="https://vk.com/ivacuum">ВК</a> — постараемся ее найти.</div>
   @endcomponent
 
   @component('accordion')

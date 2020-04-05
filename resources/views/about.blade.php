@@ -10,12 +10,12 @@
 
     <p>Работу <a href="/parser/vk" class="link">парсера ВК</a> обеспечивает библиотека <a href="http://guzzle.readthedocs.org/" class="link">Guzzle</a>. Также в том разделе доступны следующие горячие клавиши:</p>
     <ul>
-      <li><kbd>j</kbd> — следующая запись</li>
-      <li><kbd>k</kbd> — предыдущая запись</li>
-      <li><kbd>h</kbd> — первая запись на странице</li>
-      <li><kbd>l</kbd> — последняя запись на странице</li>
-      <li><kbd>ctrl &rarr;</kbd> и <kbd>alt &rarr;</kbd> — следующая страница</li>
-      <li><kbd>ctrl &larr;</kbd> и <kbd>alt &larr;</kbd> — предыдущая страница</li>
+      <li><x-kbd>j</x-kbd> — следующая запись</li>
+      <li><x-kbd>k</x-kbd> — предыдущая запись</li>
+      <li><x-kbd>h</x-kbd> — первая запись на странице</li>
+      <li><x-kbd>l</x-kbd> — последняя запись на странице</li>
+      <li><x-kbd>ctrl &rarr;</x-kbd> и <x-kbd>alt &rarr;</x-kbd> — следующая страница</li>
+      <li><x-kbd>ctrl &larr;</x-kbd> и <x-kbd>alt &larr;</x-kbd> — предыдущая страница</li>
     </ul>
   @en
     <h2>About</h2>

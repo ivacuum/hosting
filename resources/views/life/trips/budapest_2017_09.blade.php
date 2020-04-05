@@ -23,14 +23,14 @@
 
 @ru
   <p>Временной план. В среднем на общественном транспорте нужно выдвигаться за шесть часов до вылета из любого аэропорта Москвы.</p>
-  <div><kbd class="text-sm">04:40</kbd> выезд из Калуги</div>
-  <div><s class="text-red-600"><kbd class="text-sm">07:18</kbd> <span class="text-black">прибытие на Киевский вокзал</span></s></div>
-  <div><kbd class="text-sm">08:50</kbd> прибытие на Киевский вокзал</div>
-  <div><kbd class="text-sm">09:00</kbd> аэроэкспресс</div>
-  <div><kbd class="text-sm">09:37</kbd> прибытие во Внуково</div>
-  <div><kbd class="text-sm">09:50</kbd> окончание реги</div>
-  <div><kbd class="text-sm">10:15</kbd> окончание посадки</div>
-  <div class="mb-4"><kbd class="text-sm">10:30</kbd> вылет</div>
+  <div><x-clock>04:40</x-clock> выезд из Калуги</div>
+  <div><s class="text-red-600"><x-clock>07:18</x-clock> <span class="text-black">прибытие на Киевский вокзал</span></s></div>
+  <div><x-clock>08:50</x-clock> прибытие на Киевский вокзал</div>
+  <div><x-clock>09:00</x-clock> аэроэкспресс</div>
+  <div><x-clock>09:37</x-clock> прибытие во Внуково</div>
+  <div><x-clock>09:50</x-clock> окончание реги</div>
+  <div><x-clock>10:15</x-clock> окончание посадки</div>
+  <div class="mb-4"><x-clock>10:30</x-clock> вылет</div>
 @endru
 
 @ru
