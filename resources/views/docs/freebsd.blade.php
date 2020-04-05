@@ -13,7 +13,7 @@
 <h2>Сниппеты для выполнения различных задач на ОС FreeBSD</h2>
 
 <div class="js-shortcuts-item">
-<pre class="terminal">
+<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
 <span class="terminal-comment"># Обновление ОС</span>
 <span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=freebsd-update">freebsd-update</a> fetch install</span>
 <span class="terminal-command">freebsd-update upgrade -r {{ $freebsdVersion }}-RELEASE</span>
@@ -27,60 +27,60 @@
 </pre>
 </div>
 
-<div class="js-shortcuts-item">
-<pre>
+<section class="js-shortcuts-item">
+<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
 <span class="terminal-comment"># Чистка портов</span>
 <span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=pkg">pkg</a> clean</span>
 </pre>
-</div>
+</section>
 
-<div class="js-shortcuts-item">
-<pre>
+<section class="js-shortcuts-item">
+<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap break-words">
 <span class="terminal-comment"># Исходники ядра</span>
 <span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=fetch">fetch</a> https://mirror.yandex.ru/freebsd/releases/amd64/{{ $freebsdVersion }}-RELEASE/src.txz</span>
 <span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=tar">tar</a> -C / -xzf src.txz</span>
 </pre>
-</div>
+</section>
 
-<div class="js-shortcuts-item">
-<pre>
+<section class="js-shortcuts-item">
+<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
 <span class="terminal-comment"># Генерация зашифрованного пароля</span>
 <span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=openssl">openssl</a> passwd -1</span>
 </pre>
-</div>
+</section>
 
-<div class="js-shortcuts-item">
-<pre>
+<section class="js-shortcuts-item">
+<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
 <span class="terminal-comment"># Билд ядра</span>
 <span class="terminal-command">cd /usr/src</span>
 <span class="terminal-command">make buildkernel KERNCONF=HOSTING</span>
 <span class="terminal-command">make installkernel KERNCONF=HOSTING</span>
 </pre>
-</div>
+</section>
 
-<div class="js-shortcuts-item">
-<pre>
+<section class="js-shortcuts-item">
+<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
 <span class="terminal-comment"># Первоначальная подготовка портов</span>
 <span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=portsnap">portsnap</a> fetch extract</span>
 </pre>
-</div>
+</section>
 
-<div class="js-shortcuts-item">
-<pre>
+<section class="js-shortcuts-item">
+<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
 <span class="terminal-comment"># Очистка очереди exim</span>
 <span class="terminal-command">exim -bp | exiqgrep -i | xargs exim -Mrm</span>
 </pre>
-</div>
+</section>
 
-<div class="js-shortcuts-item">
-<pre>
+<section class="js-shortcuts-item">
+<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
 <span class="terminal-comment"># Установка модулей npm для jenkins</span>
 <span class="terminal-command">npm install --global gulp-cli</span>
 </pre>
-</div>
+</section>
 
-<div class="js-shortcuts-item">
-<pre>
+<section class="js-shortcuts-item">
+<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
 <span class="terminal-comment"># Утилиты</span>
 
 <span class="terminal-comment"># Активные файлы</span>
@@ -101,10 +101,10 @@
 <span class="terminal-comment"># Состояние виртуальной памяти</span>
 <span class="terminal-command"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=vmstat">vmstat</a> [-iz] [<em>wait</em>]</span>
 </pre>
-</div>
+</section>
 
-<div class="js-shortcuts-item">
-<pre>
+<section class="js-shortcuts-item">
+<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
 <span class="terminal-comment"># Файл подкачки на 1024 МБ</span>
 <span class="terminal-command">dd if=/dev/zero of=/root/swap1 bs=1m count=1024</span>
 <span class="terminal-command">chmod 0600 /root/swap1</span>
@@ -115,14 +115,14 @@
 <span class="terminal-comment"># Активация файла подкачки без перезагрузки</span>
 <span class="terminal-command">swapon -aq</span>
 </pre>
-</div>
+</section>
 
-<div class="js-shortcuts-item">
-<pre>
+<section class="js-shortcuts-item">
+<pre class="terminal bg-gray-100 border rounded px-4 py-2 whitespace-pre-wrap">
 <span class="terminal-comment"># Обновление jenkins без обновления openjdk</span>
 <span class="terminal-command">portmaster -bdg -x openjdk8 devel/jenkins-lts</span>
 </pre>
-</div>
+</section>
 
-<div>Больше полезностей на <a class="link" href="https://www.cyberciti.biz/faq/category/freebsd/" rel="nofollow">cyberciti.biz</a>.</div>
+<div class="mt-6">Больше полезностей на <a class="link" href="https://www.cyberciti.biz/faq/category/freebsd/" rel="nofollow">cyberciti.biz</a>.</div>
 @endsection
