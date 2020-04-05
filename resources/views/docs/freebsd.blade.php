@@ -29,6 +29,13 @@
         <div class="prepend-dollar">portmaster -Raf</div>
         <div class="prepend-dollar">freebsd-update install</div>
       </div>
+
+      <div>
+        <div class="text-muted"># Обновление портов</div>
+        <div class="prepend-dollar">portsnap fetch update</div>
+        <div class="prepend-dollar">synth status</div>
+        <div class="prepend-dollar">synth system-upgrade</div>
+      </div>
     </div>
   </x-terminal>
 
