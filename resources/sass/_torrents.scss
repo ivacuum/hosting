@@ -183,12 +183,12 @@
 .torrent-brackets { font-weight: normal; }
 .torrent-icon {
   .svg-icon { @include media-breakpoint-up(md) { font-size: 1.5rem; } }
+  .svg-icon-collection-play { color: #ca8e3f; }
   .svg-icon-file-text-o { color: $gray-light; }
   .svg-icon-film { color: #428bca; }
   .svg-icon-gamepad { color: #a94442; }
   .svg-icon-music { color: #960ed7; }
   .svg-icon-smile-o { color: #3c763d; }
-  .svg-icon-tv { color: #ca8e3f; }
 }
 .torrent-title { font-weight: bold; }
 
