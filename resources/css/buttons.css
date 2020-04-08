@@ -19,50 +19,50 @@
 
 .btn-default {
   background: #fff linear-gradient(180deg, #fff, #ebebeb) repeat-x;
-  @apply border border-gray-300 text-gray-900;
+  @apply border border-grey-300 text-grey-900;
 }
 
 .btn-default:hover {
   background: #ececec -webkit-gradient(linear, left top, left bottom, from(#efefef), to(#ececec)) repeat-x;
-  @apply border-gray-400 text-gray-900;
+  @apply border-grey-400 text-grey-900;
 }
 
 .btn-important {
-  @apply bg-orange-500 border border-transparent text-white;
+  @apply bg-orangeish-500 border border-transparent text-white;
 }
 
 .btn-important:hover {
-  @apply bg-orange-600 text-white;
+  @apply bg-orangeish-600 text-white;
 }
 
 .btn-outline-primary {
-  @apply bg-transparent border border-blue-700 text-blue-700;
+  @apply bg-transparent border border-blueish-700 text-blueish-700;
 }
 
 .btn-outline-primary:hover {
-  @apply bg-blue-700 text-white;
+  @apply bg-blueish-700 text-white;
 }
 
 .btn-primary {
-  @apply bg-blue-700 border border-transparent text-white;
+  @apply bg-blueish-700 border border-transparent text-white;
 }
 
 .btn-primary:hover {
-  @apply bg-blue-800 text-white;
+  @apply bg-blueish-800 text-white;
 }
 
 .btn-success {
-  @apply bg-green-600 border border-transparent text-white;
+  @apply bg-greenish-600 border border-transparent text-white;
 }
 
 .btn-success:hover {
-  @apply bg-green-700 text-white;
+  @apply bg-greenish-700 text-white;
 }
 
 .btn-secondary {
-  @apply bg-gray-600 border border-transparent text-white;
+  @apply bg-grey-600 border border-transparent text-white;
 }
 
 .btn-secondary:hover {
-  @apply bg-gray-700 text-white;
+  @apply bg-grey-700 text-white;
 }

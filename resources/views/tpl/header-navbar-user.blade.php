@@ -1,5 +1,5 @@
 <a
-  class="border-b-2 border-transparent -mb-2px px-2 py-3 text-2xl text-gray-600 hover:text-gray-900 relative tooltipped tooltipped-s {{ $controller === App\Http\Controllers\Notifications::class ? 'border-blue-500 text-gray-900' : '' }}"
+  class="border-b-2 border-transparent -mb-2px px-2 py-3 text-2xl text-grey-600 hover:text-grey-900 relative tooltipped tooltipped-s {{ $controller === App\Http\Controllers\Notifications::class ? 'border-blueish-500 text-grey-900' : '' }}"
   href="{{ path([App\Http\Controllers\Notifications::class, 'index']) }}"
   aria-label="{{ trans('notifications.index') }}"
 >
@@ -9,7 +9,7 @@
 </a>
 <div class="dropdown dropdown-hover flex items-center">
   <a
-    class="flex items-center px-2 py-1 text-gray-600 hover:text-gray-900 dropdown-toggle"
+    class="flex items-center px-2 py-1 text-grey-600 hover:text-grey-900 dropdown-toggle"
     href="#"
     data-toggle="dropdown"
   >

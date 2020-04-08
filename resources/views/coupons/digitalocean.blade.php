@@ -17,19 +17,19 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="bg-green-600 text-white p-1 text-xs font-bold rounded">DO10</span> / <span class="bg-green-600 text-white p-1 text-xs font-bold rounded">DROPLET10</span></td>
+        <td><span class="bg-greenish-600 text-white p-1 text-xs font-bold rounded">DO10</span> / <span class="bg-greenish-600 text-white p-1 text-xs font-bold rounded">DROPLET10</span></td>
         <td>@ru $10 для новых пользователей @en $10 credit for new users @endru</td>
       </tr>
       <tr>
-        <td><span class="bg-green-600 text-white p-1 text-xs font-bold rounded">BITNAMI</span></td>
+        <td><span class="bg-greenish-600 text-white p-1 text-xs font-bold rounded">BITNAMI</span></td>
         <td>@ru $10 на счет при регистрации @en $10 off for a new account @endru</td>
       </tr>
       <tr>
-        <td><span class="bg-green-600 text-white p-1 text-xs font-bold rounded">ACTIVATE10</span></td>
+        <td><span class="bg-greenish-600 text-white p-1 text-xs font-bold rounded">ACTIVATE10</span></td>
         <td>@ru $10 на счет для нынешних клиентов @en $10 credit for existing customers @endru</td>
       </tr>
       <tr>
-        <td><span class="bg-green-600 text-white p-1 text-xs font-bold rounded">LOWENDBOX</span> / <span class="bg-green-600 text-white p-1 text-xs font-bold rounded">DOPRODUCT</span></td>
+        <td><span class="bg-greenish-600 text-white p-1 text-xs font-bold rounded">LOWENDBOX</span> / <span class="bg-greenish-600 text-white p-1 text-xs font-bold rounded">DOPRODUCT</span></td>
         <td>@ru $15 на счет @en $15 DigitalOcean credits @endru</td>
       </tr>
     </tbody>

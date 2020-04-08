@@ -61,7 +61,7 @@
         <td class="md:text-right text-muted whitespace-no-wrap">{{ ViewHelper::size($model->size) }}</td>
         <td class="md:text-right whitespace-no-wrap">
           @if ($model->views > 3000)
-            <span class="flex bg-green-600 text-white px-2 text-xs font-bold rounded">{{ ViewHelper::number($model->views) }}</span>
+            <span class="flex bg-greenish-600 text-white px-2 text-xs font-bold rounded">{{ ViewHelper::number($model->views) }}</span>
           @else
             {{ ViewHelper::number($model->views) }}
           @endif

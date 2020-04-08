@@ -53,7 +53,7 @@
       @if ($fulltext)
         <div class="mb-6">
           <a class="btn btn-default" href="{{ UrlHelper::filter(['fulltext' => null]) }}">
-            <span class="text-red-600">
+            <span class="text-redish-600">
               @svg (times)
             </span>
             Искать только в заголовках

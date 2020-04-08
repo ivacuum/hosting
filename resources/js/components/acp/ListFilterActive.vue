@@ -60,7 +60,7 @@ export default {
     active-class="noop-active"
   >
     {{ filter }}: {{ $route.query[filter] }}
-    <span class="text-red-600" v-html="$root.svg.times"></span>
+    <span class="text-redish-600" v-html="$root.svg.times"></span>
   </router-link>
 </div>
 </template>

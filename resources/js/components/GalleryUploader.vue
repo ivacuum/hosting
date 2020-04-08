@@ -2,7 +2,7 @@
 <div>
   <div class="mb-4" v-if="errors.file && errors.file.length">
     <div v-for="error in errors.file">
-      <div class="text-red-600">{{ error }}</div>
+      <div class="text-redish-600">{{ error }}</div>
     </div>
   </div>
   <div v-if="!uploading">

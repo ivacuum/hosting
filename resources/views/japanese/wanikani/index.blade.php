@@ -6,7 +6,7 @@
   <div>
     <div class="bg-radical rounded">
       <a
-        class="block ja-shadow-light py-6 text-white hover:text-gray-200"
+        class="block ja-shadow-light py-6 text-white hover:text-grey-200"
         href="{{ path([App\Http\Controllers\JapaneseWanikaniRadicals::class, 'index']) }}"
       >
         <span class="block text-4xl">部首</span>
@@ -17,7 +17,7 @@
   <div>
     <div class="bg-kanji rounded">
       <a
-        class="block ja-shadow-light py-6 text-white hover:text-gray-200"
+        class="block ja-shadow-light py-6 text-white hover:text-grey-200"
         href="{{ path([App\Http\Controllers\JapaneseWanikaniKanji::class, 'index']) }}"
       >
         <span class="block text-4xl">漢字</span>
@@ -28,7 +28,7 @@
   <div>
     <div class="bg-vocab rounded">
       <a
-        class="block ja-shadow-light py-6 text-white hover:text-gray-200"
+        class="block ja-shadow-light py-6 text-white hover:text-grey-200"
         href="{{ path([App\Http\Controllers\JapaneseWanikaniVocabulary::class, 'index']) }}"
       >
         <span class="block text-4xl">単語</span>
@@ -47,7 +47,7 @@
 <div class="flex flex-wrap items-center">
   @foreach (range(1, 60) as $level)
     <a
-      class="flex bg-gray-600 hover:bg-gray-700 text-white hover:text-gray-100 px-2 text-lg font-bold rounded ja-shadow-light mr-2 mb-2"
+      class="flex bg-grey-600 hover:bg-grey-700 text-white hover:text-grey-100 px-2 text-lg font-bold rounded ja-shadow-light mr-2 mb-2"
       href="{{ path([App\Http\Controllers\JapaneseWanikaniLevel::class, 'show'], $level) }}"
     >
       {{ $level }}

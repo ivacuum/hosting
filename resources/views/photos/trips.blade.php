@@ -22,7 +22,7 @@
           <div class="flex flex-wrap items-center text-lg">
             <img class="flag-24 mr-1 svg-shadow" src="{{ $trip->city->country->flagUrl() }}" alt="">
             <span class="leading-none mr-1">{{ $trip->title }}</span>
-            <span class="leading-tight self-end text-gray-300 text-xs">{{ $trip->timelinePeriodWithYear() }}</span>
+            <span class="leading-tight self-end text-grey-300 text-xs">{{ $trip->timelinePeriodWithYear() }}</span>
           </div>
           @if ($trip->metaDescription())
             <div class="leading-tight mt-1 text-xs md:text-2sm">{{ $trip->metaDescription() }}</div>

@@ -91,7 +91,7 @@ export default {
 
     <exercise n="12">
       <template slot="title">Put the verbs in brackets into Present Simple or Present Continuous.</template>
-      <p class="text-green-600">Chris is asking Kim about her holiday arrangements.</p>
+      <p class="text-greenish-600">Chris is asking Kim about her holiday arrangements.</p>
       <ol class="spacious">
         <li>Where <type1 answer="are" answered/> you <type1 answer="going" answered/> ? <em>(go)</em></li>
         <li>How <type1 answer="are"/> you <type1 answer="getting"/> there? <em>(get)</em></li>

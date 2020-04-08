@@ -38,7 +38,7 @@
       <td>
         @if ($line->request_time != 0)
           @if ($line->request_time > 2)
-            <span class="text-red-600">{{ $line->request_time }}</span>
+            <span class="text-redish-600">{{ $line->request_time }}</span>
           @else
             {{ $line->request_time }}
           @endif

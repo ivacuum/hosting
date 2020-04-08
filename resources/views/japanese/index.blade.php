@@ -13,7 +13,7 @@
 <div class="grid md:grid-cols-2 gap-8 mt-6">
   <div class="flex">
     <div class="border overflow-hidden rounded">
-      <div class="bg-green-600 px-5 py-3 text-white">
+      <div class="bg-greenish-600 px-5 py-3 text-white">
         <h2 class="h4 mb-0">@ru Собственные ресурсы @en Own services @endru</h2>
       </div>
       <div class="px-5 py-4">
@@ -35,7 +35,7 @@
   </div>
   <div class="flex">
     <div class="border overflow-hidden rounded">
-      <div class="bg-gray-800 px-5 py-3 text-white">
+      <div class="bg-grey-800 px-5 py-3 text-white">
         <h2 class="h4 mb-0">@ru Внешние полезные ресурсы @en External resources @endru</h2>
       </div>
       <div class="px-5 py-4">

@@ -27,16 +27,16 @@
           </span>
         @endif
         @if ($model->text)
-          <span class="bg-gray-600 text-white p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="есть заметки">...</span>
+          <span class="bg-grey-600 text-white p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="есть заметки">...</span>
         @endif
         @if (!$model->domain_control)
-          <span class="bg-teal-600 text-white p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="не в нашей панели">?</span>
+          <span class="bg-tealish-600 text-white p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="не в нашей панели">?</span>
         @endif
         @if ($model->domain_control and $model->isExpired())
-          <span class="bg-red-600 text-white p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="просрочена оплата">$</span>
+          <span class="bg-redish-600 text-white p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="просрочена оплата">$</span>
         @endif
         @if ($model->domain_control and $model->isExpiringSoon())
-          <span class="bg-orange-400 p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="подходит срок оплаты">$</span>
+          <span class="bg-orangeish-400 p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="подходит срок оплаты">$</span>
         @endif
       </td>
       <td class="text-muted">
@@ -77,19 +77,19 @@
 
 <div>
   <span class="whitespace-no-wrap mr-2">
-    <span class="bg-gray-600 text-white p-1 text-xs font-bold rounded mr-1">...</span>
+    <span class="bg-grey-600 text-white p-1 text-xs font-bold rounded mr-1">...</span>
     есть заметки
   </span>
   <span class="whitespace-no-wrap mr-2">
-    <span class="bg-teal-600 text-white py-1 px-2 text-xs font-bold rounded mr-1">?</span>
+    <span class="bg-tealish-600 text-white py-1 px-2 text-xs font-bold rounded mr-1">?</span>
     не в нашей панели
   </span>
   <span class="whitespace-no-wrap mr-2">
-    <span class="bg-red-600 text-white py-1 px-2 text-xs font-bold rounded mr-1">$</span>
+    <span class="bg-redish-600 text-white py-1 px-2 text-xs font-bold rounded mr-1">$</span>
     просрочена оплата
   </span>
   <span class="whitespace-no-wrap mr-2">
-    <span class="bg-orange-400 py-1 px-2 text-xs font-bold rounded mr-1">$</span>
+    <span class="bg-orangeish-400 py-1 px-2 text-xs font-bold rounded mr-1">$</span>
     подходит срок оплаты
   </span>
 </div>

@@ -9,5 +9,5 @@
     <script>(adsbygoogle = window.adsbygoogle || []).push({})</script>
   </div>
 @elseif (App::isLocal())
-  <div class="overflow-hidden w-full h-90px bg-teal-600 text-white flex justify-center items-center sm:rounded">google-horizontal</div>
+  <div class="overflow-hidden w-full h-90px bg-tealish-600 text-white flex justify-center items-center sm:rounded">google-horizontal</div>
 @endif

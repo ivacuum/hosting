@@ -77,14 +77,14 @@ export default {
 <div v-if="resource">
   <div>
     <div v-if="status === 1">
-      <span class="text-red-600" v-html="$root.svg.issue_opened"></span>
+      <span class="text-redish-600" v-html="$root.svg.issue_opened"></span>
       Открыто
       <button class="btn btn-default text-sm py-1" type="button" @click="close">
         Закрыть
       </button>
     </div>
     <div v-if="status === 2">
-      <span class="text-green-600" v-html="$root.svg.check"></span>
+      <span class="text-greenish-600" v-html="$root.svg.check"></span>
       Закрыто
       <button class="btn btn-default text-sm py-1" type="button" @click="open">
         Открыть

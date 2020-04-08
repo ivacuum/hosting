@@ -34,11 +34,11 @@
     @foreach ($mailboxes->accounts as $account)
       <li>
         @if ($account->enabled == 'no')
-          <span class="text-red-600"><s>{{ $account->login }}</s></span>
+          <span class="text-redish-600"><s>{{ $account->login }}</s></span>
         @elseif ($account->ready == 'yes')
-          <span class="text-green-600">{{ $account->login }}</span>
+          <span class="text-greenish-600">{{ $account->login }}</span>
         @else
-          <span class="text-orange-400">{{ $account->login }}</span>
+          <span class="text-orangeish-400">{{ $account->login }}</span>
         @endif
         @if ($account->fio)
           &mdash;
@@ -57,14 +57,14 @@
   </ul>
   <div>
     <span class="mr-4">
-      <span class="bg-green-600 text-white p-1 text-xs font-bold rounded px-2 mr-1">&nbsp;</span>
+      <span class="bg-greenish-600 text-white p-1 text-xs font-bold rounded px-2 mr-1">&nbsp;</span>
       активен
     </span>
     <span class="mr-4">
-      <span class="bg-orange-400 p-1 text-xs font-bold rounded px-2 mr-1">&nbsp;</span>
+      <span class="bg-orangeish-400 p-1 text-xs font-bold rounded px-2 mr-1">&nbsp;</span>
       неактивен
     </span>
-    <span class="bg-red-600 text-white p-1 text-xs font-bold rounded px-2 mr-1">&nbsp;</span>
+    <span class="bg-redish-600 text-white p-1 text-xs font-bold rounded px-2 mr-1">&nbsp;</span>
     отключен
   </div>
 @endif

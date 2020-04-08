@@ -51,7 +51,7 @@ export default {
 <div>
   <div class="items-center flex flex-wrap h1">
     <router-link
-      class="bg-gray-700 hover:bg-gray-800 ja-shadow-light mr-2 px-4 py-1 rounded text-white hover:text-white"
+      class="bg-grey-700 hover:bg-grey-800 ja-shadow-light mr-2 px-4 py-1 rounded text-white hover:text-white"
       :to="{ name: 'wk.level', params: { level: radical.level }}"
     >{{ radical.level }}</router-link>
     <div class="bg-radical text-white mr-4 px-2 py-1 rounded">

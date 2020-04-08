@@ -20,7 +20,7 @@
         </p>
         <div class="flex flex-wrap items-center" v-if="Object.keys(filteredElements).length > 1">
           <template v-for="(collection, lvl) in filteredElements">
-            <a class="flex bg-gray-600 hover:bg-gray-700 text-white hover:text-gray-100 px-2 text-base font-bold rounded ja-shadow-light mr-1 mb-1" :href="`#level-${lvl}`">
+            <a class="flex bg-grey-600 hover:bg-grey-700 text-white hover:text-grey-100 px-2 text-base font-bold rounded ja-shadow-light mr-1 mb-1" :href="`#level-${lvl}`">
               {{ lvl }}
             </a>
           </template>
@@ -58,7 +58,7 @@
                v-for="row in collection"
           >
             <router-link
-              class="block ja-big ja-character ja-shadow pt-1 pb-2 text-white hover:text-gray-200"
+              class="block ja-big ja-character ja-shadow pt-1 pb-2 text-white hover:text-grey-200"
               :to="{ name: 'wk.kanji', params: { character: row.character }}"
             >{{ row.character }}</router-link>
             <div class="kanji-reading ja-shadow-light">{{ row.reading }}</div>

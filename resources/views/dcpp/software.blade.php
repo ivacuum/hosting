@@ -42,7 +42,7 @@
   </div>
 
   @if (!empty($softwareScreenshots))
-    <section class="bg-gray-800 my-0 py-12 text-gray-200">
+    <section class="bg-grey-800 my-0 py-12 text-grey-200">
       <div class="container">
         <h2 class="mb-6">{{ trans('dcpp.screenshots') }}</h2>
         <p>
@@ -56,7 +56,7 @@
     </section>
   @endif
 
-  <section class="bg-light border-t border-b border-gray-200 my-0 py-12">
+  <section class="bg-light border-t border-b border-grey-200 my-0 py-12">
     <div class="container">
       <h2>{{ trans('dcpp.hubs') }}</h2>
       @ru
@@ -79,7 +79,7 @@
   @yield('software_features')
 
   @if (sizeof($software) > 1 || !empty($developerSite))
-    <section class="border-b border-gray-200 my-0 py-12">
+    <section class="border-b border-grey-200 my-0 py-12">
       <div class="container">
         <h2 class="mb-6">{{ trans('dcpp.links') }}</h2>
         <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">

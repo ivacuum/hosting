@@ -64,7 +64,7 @@ body {
         </div>
         <div>
           <h1 class="my-name h3 uppercase">@ru Сергей Панков @en Sergey Pankov @endru</h1>
-          <h2 class="text-teal-700 h4">@ru Веб-программист (Laravel PHP, Vue.js) @en Laravel PHP + Vue.js Developer @endru</h2>
+          <h2 class="text-tealish-700 h4">@ru Веб-программист (Laravel PHP, Vue.js) @en Laravel PHP + Vue.js Developer @endru</h2>
           @ru
             <div>Заинтересован в создании полезных людям веб-сервисов. Веб-технологиями увлекаюсь с 2003 года. С кодом моих проектов можно ознакомиться на <a href="https://github.com/ivacuum" rel="nofollow">Гитхабе</a>. Только удаленная работа.</div>
           @en
@@ -74,7 +74,7 @@ body {
       </div>
       <div class="grid md:grid-cols-2 gap-8">
         <div>
-          <h3 class="my-caption h5 text-teal-600 uppercase">@ru Образование @en Education @endru</h3>
+          <h3 class="my-caption h5 text-tealish-600 uppercase">@ru Образование @en Education @endru</h3>
           <div class="font-bold">@ru Высшее, МГТУ им. Баумана @en Bauman Moscow State Technical University @endru</div>
           <div>
             @ru Инженер-программист @en IT Engineer's degree @endru
@@ -174,14 +174,14 @@ body {
   @endru
 
   <div class="my-caption h3 mt-12 uppercase">@ru Навыки @en Skills @endru</div>
-  <div class="text-teal-600 h5">@ru Операционные системы @en Operating systems @endru</div>
+  <div class="text-tealish-600 h5">@ru Операционные системы @en Operating systems @endru</div>
   @ru
     <p>Опыт использования <strong>Windows</strong> и <strong>macOS</strong>, настраивал серверы под управлением <strong>Linux</strong> и <strong>FreeBSD</strong>. Повседневно использую <strong>macOS</strong>.</p>
   @en
     <p>Experienced in <strong>Windows</strong> and <strong>macOS</strong>, set up servers running <strong>Linux</strong> and <strong>FreeBSD</strong>. I use <strong>macOS</strong> on a daily basis.</p>
   @endru
 
-  <div class="text-teal-600 h5 mt-6">@ru Языки программирования @en Programming languages @endru</div>
+  <div class="text-tealish-600 h5 mt-6">@ru Языки программирования @en Programming languages @endru</div>
   <ul>
     <li class="mb-2">
       <strong>PHP</strong>
@@ -209,10 +209,10 @@ body {
     </li>
   </ul>
 
-  <div class="text-teal-600 h5 mt-6">@ru Прочие языки @en Other languages @endru</div>
+  <div class="text-tealish-600 h5 mt-6">@ru Прочие языки @en Other languages @endru</div>
   <p>HTML, CSS, SASS.</p>
 
-  <div class="text-teal-600 h5 mt-6">@ru Технологии и софт @en Technology and Software @endru</div>
+  <div class="text-tealish-600 h5 mt-6">@ru Технологии и софт @en Technology and Software @endru</div>
   <ul>
     <li class="mb-2">
       <strong>Ansible</strong>
@@ -298,7 +298,7 @@ body {
     </li>
   </ul>
 
-  <div class="text-teal-600 h5 mt-6">@ru Иностранные языки @en Foreign languages @endru</div>
+  <div class="text-tealish-600 h5 mt-6">@ru Иностранные языки @en Foreign languages @endru</div>
   <ul>
     @ru
     @en
@@ -321,7 +321,7 @@ body {
     </li>
   </ul>
 
-  <div class="text-teal-600 h5 mt-6">@ru Работа с API @en APIs usage @endru</div>
+  <div class="text-tealish-600 h5 mt-6">@ru Работа с API @en APIs usage @endru</div>
   @ru
     <p>Вход через соцсети: Facebook, GitHub, Google, Instagram, OK, Twitter, VK, Яндекс.</p>
   @en
@@ -363,11 +363,11 @@ body {
   <div class="mb-1">@ru Легенда: @en Legend: @endru</div>
 
   <div class="mb-1">
-    <span class="text-orange-400">@svg (star)</span>
+    <span class="text-orangeish-400">@svg (star)</span>
     @ru любимый проект @en favorite project @endru
   </div>
   <div class="mb-1">
-    <span class="text-green-600">@svg (primitive-dot)</span>
+    <span class="text-greenish-600">@svg (primitive-dot)</span>
     @ru проект жив и здоров @en project is up and running @endru
   </div>
   <div class="mb-1">
@@ -382,8 +382,8 @@ body {
   <div class="h4 portfolio-year">@ru В настоящее время @en Present @endru</div>
   <div>
     <div class="h5">
-      <span class="text-orange-400">@svg (star)</span>
-      <span class="text-green-600">@svg (primitive-dot)</span>
+      <span class="text-orangeish-400">@svg (star)</span>
+      <span class="text-muted">@svg (primitive-dot)</span>
       <a href="https://kupislona.ru/" rel="nofollow">kupislona.ru</a>
     </div>
     <div class="my-2 svg-muted text-muted">
@@ -512,8 +512,8 @@ body {
     </ul>
 
     <div class="h5 mt-6">
-      <span class="text-orange-400">@svg (star)</span>
-      <span class="text-green-600">@svg (primitive-dot)</span>
+      <span class="text-orangeish-400">@svg (star)</span>
+      <span class="text-greenish-600">@svg (primitive-dot)</span>
       <a href="/">vacuum.name</a>
       <a href="https://github.com/ivacuum/hosting" rel="nofollow">@svg (github)</a>
     </div>
@@ -531,7 +531,7 @@ body {
   <div class="h4 portfolio-year">2014</div>
   <div>
     <div class="h5">
-      <span class="text-green-600">@svg (primitive-dot)</span>
+      <span class="text-greenish-600">@svg (primitive-dot)</span>
       <a href="http://www.veloman.org/" rel="nofollow">veloman.org</a>
     </div>
     @ru
@@ -581,7 +581,7 @@ body {
   <div class="h4 portfolio-year">2011</div>
   <div>
     <div class="h5">
-      <span class="text-green-600">@svg (primitive-dot)</span>
+      <span class="text-greenish-600">@svg (primitive-dot)</span>
       <a href="https://korden.org" rel="nofollow">korden.org</a>
     </div>
     @ru
@@ -592,7 +592,7 @@ body {
   <div class="h4 portfolio-year">2010</div>
   <div>
     <div class="h5">
-      <span class="text-green-600">@svg (primitive-dot)</span>
+      <span class="text-greenish-600">@svg (primitive-dot)</span>
       BTT
       <a href="https://github.com/ivacuum/btt" rel="nofollow">@svg (github)</a>
     </div>
@@ -601,7 +601,7 @@ body {
     @endru
 
     <div class="h5 mt-6">
-      <span class="text-green-600">@svg (primitive-dot)</span>
+      <span class="text-greenish-600">@svg (primitive-dot)</span>
       <a href="/retracker">BTRT</a>
       <a href="https://github.com/ivacuum/btrt" rel="nofollow">@svg (github)</a>
     </div>
@@ -610,7 +610,7 @@ body {
     @endru
 
     <div class="h5 mt-6">
-      <span class="text-green-600">@svg (primitive-dot)</span>
+      <span class="text-greenish-600">@svg (primitive-dot)</span>
       <a href="http://t.ivacuum.ru/">torrent.ivacuum.ru</a>
       <a href="https://github.com/ivacuum/t.ivacuum.ru" rel="nofollow">@svg (github)</a>
     </div>
@@ -640,7 +640,7 @@ body {
     @endru
 
     <div class="h5 mt-6">
-      <span class="text-green-600">@svg (primitive-dot)</span>
+      <span class="text-greenish-600">@svg (primitive-dot)</span>
       <a href="https://img.ivacuum.ru/stats">img.ivacuum.ru</a>
       <a href="https://github.com/ivacuum/imageviewer" rel="nofollow">@svg (github)</a>
     </div>
@@ -649,7 +649,7 @@ body {
     @endru
 
     <div class="h5 mt-6">
-      <span class="text-green-600">@svg (primitive-dot)</span>
+      <span class="text-greenish-600">@svg (primitive-dot)</span>
       <a href="/gallery">up.ivacuum.ru</a>
     </div>
     @ru
@@ -683,7 +683,7 @@ body {
     @endru
 
     <div class="h5 mt-6">
-      <span class="text-green-600">@svg (primitive-dot)</span>
+      <span class="text-greenish-600">@svg (primitive-dot)</span>
       <a href="/dc">dc.ivacuum.ru</a>
     </div>
     @ru
@@ -691,7 +691,7 @@ body {
     @endru
 
     <div class="h5 mt-6">
-      <span class="text-green-600">@svg (primitive-dot)</span>
+      <span class="text-greenish-600">@svg (primitive-dot)</span>
       <a href="/files">dl.ivacuum.ru</a>
     </div>
     @ru
@@ -725,7 +725,7 @@ body {
   <div class="h4 portfolio-year">2003</div>
   <div>
     <div class="h5">
-      <span class="text-green-600">@svg (primitive-dot)</span>
+      <span class="text-greenish-600">@svg (primitive-dot)</span>
       <a href="/">ivacuum.ru</a>
       <a href="https://github.com/ivacuum/hosting" rel="nofollow">@svg (github)</a>
     </div>

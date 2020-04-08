@@ -4,11 +4,11 @@
     <div :key="stage" style="min-height: 420px;">
       <div v-show="stage === 'pick'">
         <p>{{ $t('PICKER_TEXT') }}</p>
-        <div class="grid items-center text-center border-gray-200 overflow-x-scroll" style="grid-template-columns: repeat(16, max-content);">
+        <div class="grid items-center text-center border-grey-200 overflow-x-scroll" style="grid-template-columns: repeat(16, max-content);">
           <template v-for="(cells, i) in elements">
             <template v-for="(cell, j) in cells">
               <div
-                class="border-r border-gray-200 cursor-pointer px-2 pt-2 pb-1"
+                class="border-r border-grey-200 cursor-pointer px-2 pt-2 pb-1"
                 :class="{ 'border-t': i === 0, 'border-l': j === 0 }"
                 @click="clickOnColumn(j)"
               >
@@ -18,7 +18,7 @@
             </template>
           </template>
           <template v-for="i in elements[0].length">
-            <div class="border-r border-b border-gray-200" :class="{ 'border-l': i === 1 }">
+            <div class="border-r border-b border-grey-200" :class="{ 'border-l': i === 1 }">
               <label class="block cursor-pointer py-2">
                 <input
                   :id="`column_${i - 1}`"

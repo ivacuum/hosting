@@ -6,7 +6,7 @@
   <?php /** @var App\Notification $notification */ ?>
   @foreach ($notifications as $notification)
     <?php $basename = $notification->basename() ?>
-    <div class="border-gray-200 py-4 {{ !$loop->last ? 'border-b' : '' }}">
+    <div class="border-grey-200 py-4 {{ !$loop->last ? 'border-b' : '' }}">
       <div class="table-cell pr-4 svg-muted-blue text-xl">
         @if ($basename === 'torrent_updated')
           @svg (magnet)

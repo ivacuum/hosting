@@ -41,7 +41,7 @@
 </form>
 
 <span hidden id="page_active_icon">
-  <span class="text-green-600" title="Отображается">
+  <span class="text-greenish-600" title="Отображается">
     @svg (eye)
   </span>
 </span>

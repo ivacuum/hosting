@@ -82,7 +82,7 @@ export default {
         <div class="h3">Результаты поиска по запросу «{{ $route.query.q }}»</div>
         <div class="mb-6" v-if="$route.query.fulltext">
           <router-link class="btn btn-default" active-class="noop-active" :to="searchUrl($route.query.q)">
-            <span class="text-red-600" v-html="$root.svg.times"></span>
+            <span class="text-redish-600" v-html="$root.svg.times"></span>
             Искать только в заголовках
           </router-link>
         </div>

@@ -18,7 +18,7 @@
     @if (is_array($element))
       @foreach ($element as $page => $url)
         @if ($page == $paginator->currentPage())
-          <div class="bg-blue-600 rounded text-white px-3 py-1">{{ $page }}</div>
+          <div class="bg-blueish-600 rounded text-white px-3 py-1">{{ $page }}</div>
         @else
           <a class="px-3 py-1 js-pjax" href="{{ $url }}">{{ $page }}</a>
         @endif

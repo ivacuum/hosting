@@ -274,7 +274,7 @@
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=e5VriO_mdv8">챔피언</a>
       <span class="text-sm text-muted">Champion</span>
-      <span class="text-red-600">@svg (heart)</span>
+      <span class="text-redish-600">@svg (heart)</span>
     </li>
     <li><a class="link" href="https://www.youtube.com/watch?v=OcRA6dwfdW4">I LUV IT</a></li>
     <li><a class="link" href="https://www.youtube.com/watch?v=ztZnqo0IJA4">I Remember You</a></li>
@@ -285,7 +285,7 @@
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=KOW6APjojWw">나 이런 사람이야</a>
       <span class="text-sm text-muted">I'm a Guy Like This</span>
-      <span class="text-red-600">@svg (heart)</span>
+      <span class="text-redish-600">@svg (heart)</span>
     </li>
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=_HVIq803T2U">새</a>
@@ -294,7 +294,7 @@
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=ddyyKt_hr2Q">오늘밤 새</a>
       <span class="text-sm text-muted">All Night Long</span>
-      <span class="text-red-600">@svg (heart)</span>
+      <span class="text-redish-600">@svg (heart)</span>
     </li>
   </ol>
 
@@ -302,21 +302,21 @@
   <ol class="list-inside pl-0" start="8">
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=vjpYGfYCnqI">We are the One</a>
-      <span class="text-red-600">@svg (heart)</span>
+      <span class="text-redish-600">@svg (heart)</span>
     </li>
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=MauVE6F3nMo">나팔바지</a>
       <span class="text-sm text-muted">Napal Baji</span>
-      <span class="text-red-600">@svg (heart)</span>
+      <span class="text-redish-600">@svg (heart)</span>
     </li>
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=5TT4qvedULU">끝</a>
       <span class="text-sm text-muted">The End</span>
-      <span class="text-red-600">@svg (heart)</span>
+      <span class="text-redish-600">@svg (heart)</span>
     </li>
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=N59H7TgwC24">DADDY</a>
-      <span class="text-red-600">@svg (heart)</span>
+      <span class="text-redish-600">@svg (heart)</span>
     </li>
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=j5yKlTTDxPY">흔들어 주세요</a>
@@ -332,16 +332,16 @@
   <ol class="list-inside pl-0" start="14">
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=4tnCBnhEGX4">Right Now</a>
-      <span class="text-red-600">@svg (heart)</span>
+      <span class="text-redish-600">@svg (heart)</span>
     </li>
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=4tnCBnhEGX4&t=272">GENTLEMAN</a>
-      <span class="text-red-600">@svg (heart)</span>
+      <span class="text-redish-600">@svg (heart)</span>
     </li>
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=E21OCvoJKJQ">아버지</a>
       <span class="text-sm text-muted">Father</span>
-      <span class="text-red-600">@svg (heart)</span>
+      <span class="text-redish-600">@svg (heart)</span>
     </li>
     <li><a class="link" href="https://www.youtube.com/watch?v=WUB9kZMSMFw">New Face</a></li>
     <li><a class="link" href="https://www.youtube.com/watch?v=XIH5tFK9eU8">Dream</a></li>
@@ -360,17 +360,17 @@
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=JwgVC1YKMs4">걱정말아요 그대</a>
       <span class="text-sm text-muted">Don't Worry</span>
-      <span class="text-red-600">@svg (heart)</span>
+      <span class="text-redish-600">@svg (heart)</span>
     </li>
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=bzj_NOpg1vQ">연예인</a>
       <span class="text-sm text-muted">Entertainer</span>
-      <span class="text-red-600">@svg (heart)</span>
+      <span class="text-redish-600">@svg (heart)</span>
     </li>
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=MWqBXsNYrgM">에술이야</a>
       <span class="text-sm text-muted">It's Art</span>
-      <span class="text-red-600">@svg (heart)</span>
+      <span class="text-redish-600">@svg (heart)</span>
     </li>
   </ol>
 
@@ -383,12 +383,12 @@
     </li>
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=dG0uq27J77Q">Rock medley</a>
-      <span class="text-red-600">@svg (heart)</span>
+      <span class="text-redish-600">@svg (heart)</span>
     </li>
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=8YL4NvSleAc">마지막 장면</a>
       <span class="text-sm text-muted">Last Scene</span>
-      <span class="text-red-600">@svg (heart)</span>
+      <span class="text-redish-600">@svg (heart)</span>
     </li>
   </ol>
 
@@ -397,12 +397,12 @@
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=RwX6OxhcvYM">챔피언</a>
       <span class="text-sm text-muted">Champion</span>
-      <span class="text-red-600">@svg (heart)</span>
+      <span class="text-redish-600">@svg (heart)</span>
     </li>
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=qeCAoacwaIk">강남스타일</a>
       <span class="text-sm text-muted">Gangnam Style</span>
-      <span class="text-red-600">@svg (heart)</span>
+      <span class="text-redish-600">@svg (heart)</span>
     </li>
     <li>
       <a class="link" href="https://www.youtube.com/watch?v=nz6bswnz9KM">언젠가는</a>

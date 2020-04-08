@@ -20,7 +20,7 @@
         </p>
         <div class="flex flex-wrap items-center" v-if="Object.keys(filteredElements).length > 1">
           <template v-for="(collection, lvl) in filteredElements">
-            <a class="flex bg-gray-600 hover:bg-gray-700 text-white hover:text-gray-100 px-2 text-base font-bold rounded ja-shadow-light mr-1 mb-1" :href="`#level-${lvl}`">
+            <a class="flex bg-grey-600 hover:bg-grey-700 text-white hover:text-grey-100 px-2 text-base font-bold rounded ja-shadow-light mr-1 mb-1" :href="`#level-${lvl}`">
               {{ lvl }}
             </a>
           </template>
@@ -55,7 +55,7 @@
           <template v-for="row in collection">
             <div>
               <router-link
-                class="bg-vocab inline-block text-4xl ja-character ja-shadow-light px-2 py-1 rounded whitespace-no-wrap text-white hover:text-gray-200"
+                class="bg-vocab inline-block text-4xl ja-character ja-shadow-light px-2 py-1 rounded whitespace-no-wrap text-white hover:text-grey-200"
                 :class="{ 'bg-burned': row.burned }"
                 :to="{ name: 'wk.vocabulary', params: { characters: row.character }}"
               >{{ row.character }}</router-link>
@@ -80,7 +80,7 @@
               :id="`meaning-${row.id}`"
             >{{ row.meaning }}</div>
             <a
-              class="mb-6 md:mb-0 md:px-2 md:py-1 text-red-600"
+              class="mb-6 md:mb-0 md:px-2 md:py-1 text-redish-600"
               :class="{ invisible: row.burned || guest || (!labels && !revealed.includes(row.id)) }"
               href="#"
               @click.prevent="burn(lvl, row.id)"

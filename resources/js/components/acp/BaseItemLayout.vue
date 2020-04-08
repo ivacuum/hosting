@@ -18,7 +18,7 @@ export default {
           class="border-l-2 border-transparent px-3 py-2"
           :to="resource.show_url"
           v-if="resource.show_url"
-          active-class="border-orange-600 text-black hover:text-black"
+          active-class="border-orangeish-600 text-black hover:text-black"
           exact
         >
           {{ $t(`${extra.i18n_index}.show`) }}
@@ -27,7 +27,7 @@ export default {
           class="border-l-2 border-transparent px-3 py-2"
           :to="resource.edit_url"
           v-if="resource.edit_url"
-          active-class="border-orange-600 text-black hover:text-black"
+          active-class="border-orangeish-600 text-black hover:text-black"
         >
           {{ $t(`${extra.i18n_index}.edit`) }}
         </router-link>
@@ -36,7 +36,7 @@ export default {
           :to="relation.path"
           v-for="relation in extra.relations"
           :key="relation.i18n_index"
-          active-class="border-orange-600 text-black hover:text-black"
+          active-class="border-orangeish-600 text-black hover:text-black"
         >
           {{ $t(`${relation.i18n_index}.index`) }}
           <span class="text-muted text-xs whitespace-no-wrap">{{ relation.count | decimal }}</span>

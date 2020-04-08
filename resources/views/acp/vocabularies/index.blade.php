@@ -34,7 +34,7 @@
       <td>{{ $model->level }}</td>
       <td class="whitespace-no-wrap">
         <a
-          class="bg-vocab block font-bold pb-1 px-2 rounded text-center text-white hover:text-gray-200"
+          class="bg-vocab block font-bold pb-1 px-2 rounded text-center text-white hover:text-grey-200"
           href="{{ path([$controller, 'show'], $model) }}"
         >
           <span class="inline-block text-4xl ja-character ja-shadow">{{ $model->character }}</span>

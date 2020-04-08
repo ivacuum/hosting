@@ -1,7 +1,7 @@
 .dropdown-item-tw {
-  @apply flex text-gray-900 px-6 py-1 whitespace-no-wrap w-full;
+  @apply flex text-grey-900 px-6 py-1 whitespace-no-wrap w-full;
 }
 
 .dropdown-item-tw:hover {
-  @apply bg-gray-100 text-gray-900;
+  @apply bg-grey-100 text-grey-900;
 }

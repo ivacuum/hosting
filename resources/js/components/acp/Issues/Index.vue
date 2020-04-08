@@ -48,13 +48,13 @@ export default {
         </td>
         <td>
           <span
-            class="text-red-600 tooltipped tooltipped-n"
+            class="text-redish-600 tooltipped tooltipped-n"
             aria-label="Открыто"
             v-html="$root.svg.issue_opened"
             v-if="resource.status === 1"
           ></span>
           <span
-            class="text-green-600 tooltipped tooltipped-n"
+            class="text-greenish-600 tooltipped tooltipped-n"
             aria-label="Закрыто"
             v-html="$root.svg.check"
             v-if="resource.status === 2"

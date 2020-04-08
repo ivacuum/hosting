@@ -2,7 +2,7 @@
 <div>
   <div class="chat-container antialiased rounded overflow-y-auto py-1 pr-3 pl-2 text-sm">
     <div v-for="(messagesForDate, date) in messagesGroupedByDate">
-      <div class="sticky top-0 text-gray-500 text-xs my-1 text-center">
+      <div class="sticky top-0 text-grey-500 text-xs my-1 text-center">
         <div class="chat-bg inline-block mx-auto p-1 rounded">{{ date }}</div>
       </div>
       <div class="flex mt-2" v-for="(message, index) in messagesForDate">
@@ -22,7 +22,7 @@
           <div class="leading-none" :style="{ color: message.user.color }" v-if="!sameUser[date][index]">{{ message.user.public_name }}</div>
           <div class="break-words" v-html="message.html"></div>
         </div>
-        <div class="flex-shrink-0 text-xs text-gray-500 text-right w-12" :title="message.date">{{ message.time }}</div>
+        <div class="flex-shrink-0 text-xs text-grey-500 text-right w-12" :title="message.date">{{ message.time }}</div>
       </div>
     </div>
     <!--

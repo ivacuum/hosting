@@ -20,7 +20,7 @@
   </div>
   <div class="my-4" v-if="Object.keys(elements).length">
     <router-link
-      class="items-center bg-radical border-radical flex justify-between px-2 sm:px-4 py-2 text-white hover:text-gray-200"
+      class="items-center bg-radical border-radical flex justify-between px-2 sm:px-4 py-2 text-white hover:text-grey-200"
       :to="{ name: 'wk.radical', params: { meaning: row.meaning }}"
       @click.native="reset"
       v-for="row in elements.radicals"
@@ -34,7 +34,7 @@
     </router-link>
 
     <router-link
-      class="items-center bg-kanji border-kanji flex justify-between px-2 sm:px-4 py-2 text-white hover:text-gray-200"
+      class="items-center bg-kanji border-kanji flex justify-between px-2 sm:px-4 py-2 text-white hover:text-grey-200"
       :to="{ name: 'wk.kanji', params: { character: row.character }}"
       @click.native="reset"
       v-for="row in elements.kanji"
@@ -48,7 +48,7 @@
     </router-link>
 
     <router-link
-      class="items-center bg-vocab border-vocab flex justify-between px-2 sm:px-4 py-2 text-white hover:text-gray-200"
+      class="items-center bg-vocab border-vocab flex justify-between px-2 sm:px-4 py-2 text-white hover:text-grey-200"
       :to="{ name: 'wk.vocabulary', params: { characters: row.character }}"
       @click.native="reset"
       v-for="row in elements.vocabulary"

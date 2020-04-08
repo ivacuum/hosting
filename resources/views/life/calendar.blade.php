@@ -18,13 +18,13 @@
   <div class="grid overflow-x-scroll text-2xs md:text-sm text-center" style="grid-template-columns: max-content repeat(31, minmax(18px, 1fr));">
     <?php /** @var int $year */ ?>
     @foreach (range($lastDate->year, $firstDate->year, -1) as $year)
-      <div class="font-bold text-right mt-4 pr-2 bg-gray-200">{{ $year }}</div>
+      <div class="font-bold text-right mt-4 pr-2 bg-grey-200">{{ $year }}</div>
       @foreach (range(1, 31) as $day)
-        <div class="mt-4 bg-gray-200">{{ $day }}</div>
+        <div class="mt-4 bg-grey-200">{{ $day }}</div>
       @endforeach
       <?php /** @var int $month */ ?>
       @foreach (range($year === $lastDate->year ? $lastDate->month : 12, 1, -1) as $month)
-        <div class="text-right pr-2 border-r border-gray-200">{{ trans("months.{$month}") }}</div>
+        <div class="text-right pr-2 border-r border-grey-200">{{ trans("months.{$month}") }}</div>
         <?php /** @var int $day */ ?>
         @foreach (range(1, 31) as $day)
           <?php $date = "{$year}-{$month}-{$day}" ?>
