@@ -75,6 +75,10 @@ Route::delete('japanese/wanikani/vocabulary/{vocabulary}', [Controllers\Japanese
 
 Route::post('js/typo', Controllers\JsTypo::class);
 
+Route::get('korean', Controllers\KoreanController::class);
+Route::get('korean/psy', Controllers\KoreanPsyController::class);
+Route::get('korean/psy/{song}', Controllers\KoreanPsySongController::class);
+
 Route::get('life', [Controllers\Life::class, 'index']);
 Route::get('life/calendar', [Controllers\Life::class, 'calendar']);
 Route::get('life/cities', [Controllers\Life::class, 'cities']);
