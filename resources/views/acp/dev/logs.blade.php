@@ -4,7 +4,7 @@
 <div class="flex flex-wrap items-center mb-2">
   <h3 class="mb-1 mr-4">Логи</h3>
   <form>
-    <input name="q" class="form-control" placeholder="Поиск..." value="{{ $q ?? '' }}">
+    <input name="q" class="form-control" enterkeyhint="search" placeholder="Поиск..." value="{{ $q ?? '' }}">
   </form>
 </div>
 <table class="text-xs table-stats table-adaptive">

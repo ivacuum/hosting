@@ -33,7 +33,7 @@
   </div>
   <form class="mt-1 mb-4" @submit.prevent="post">
     <div class="flex w-full">
-      <input class="form-control rounded-r-none" placeholder="Сообщение в чат..." v-model="message">
+      <input class="form-control rounded-r-none" enterkeyhint="send" placeholder="Сообщение в чат..." v-model="message">
       <button class="btn btn-default -ml-px rounded-l-none" :disabled="message.length <= 0">Отправить</button>
     </div>
   </form>

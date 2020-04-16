@@ -8,6 +8,7 @@
         class="form-control rounded-r-none js-search-input"
         name="q"
         value="{{ request('q') }}"
+        enterkeyhint="search"
         placeholder="{{ trans('torrents.search') }}"
         autocapitalize="none"
       >
