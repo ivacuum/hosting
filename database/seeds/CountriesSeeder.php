@@ -20,6 +20,7 @@ class CountriesSeeder extends Seeder
         ['slug' => 'japan', 'title_ru' => 'Япония', 'title_en' => 'Japan', 'emoji' => '🇯🇵'],
         ['slug' => 'malaysia', 'title_ru' => 'Малайзия', 'title_en' => 'Malaysia', 'emoji' => '🇲🇾'],
         ['slug' => 'netherlands', 'title_ru' => 'Нидерланды', 'title_en' => 'Netherlands', 'emoji' => '🇳🇱'],
+        ['slug' => 'south-korea', 'title_ru' => 'Южная Корея', 'title_en' => 'South Korea', 'emoji' => '🇰🇷'],
         ['slug' => 'spain', 'title_ru' => 'Испания', 'title_en' => 'Spain', 'emoji' => '🇪🇸'],
     ];
 
