@@ -2,6 +2,10 @@
 
 @section('content')
 <x-korean-cyrillization>
+  <x-slot name="info">
+    <youtube title="All Night Stand 2015" v="54rF9Kff6Yk"></youtube>
+  </x-slot>
+
   내게 있을 땐 옆에 있는 게
   그게 그렇게
   소중함을 소중한지 잊는다
