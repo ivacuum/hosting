@@ -10,12 +10,13 @@ class Vocabulary extends JsonResource
         return [
             'id' => $this->id,
             'kana' => $this->kana,
-            'audio' => $this->audioMp3(),
             'level' => $this->level,
             'burned' => $this->relationLoaded('burnable') ? null !== $this->burnable : false,
             'meaning' => $this->meaning,
             'character' => $this->character,
             'sentences' => $this->sentences,
+            'male_audio' => $this->maleAudioMp3(),
+            'female_audio' => $this->femaleAudioMp3(),
         ];
     }
 }

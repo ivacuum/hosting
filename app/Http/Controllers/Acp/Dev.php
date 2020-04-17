@@ -173,7 +173,7 @@ class Dev extends BaseController
 
         $icons = [];
 
-        foreach (glob(base_path('resources/svg/*.svg')) as $icon) {
+        foreach (glob(resource_path('svg/*.svg')) as $icon) {
             $icons[] = basename($icon, '.svg');
         }
 

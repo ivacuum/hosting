@@ -51,20 +51,20 @@
             >{{ toggleBurnedText }}</button>
           </div>
         </div>
-        <div class="font-bold radicals-grid text-center text-white" is="transition-group" name="grid">
+        <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-px font-bold text-center text-white" is="transition-group" name="grid">
           <div
-            class="bg-radical pb-2 rounded"
+            class="bg-radical rounded"
             :class="{ 'labels-hidden': !labels, 'bg-burned': row.burned }"
             :key="row.id"
             v-for="row in collection"
           >
-            <router-link class="block pt-1 text-white hover:text-grey-200" :to="{ name: 'wk.radical', params: { meaning: row.meaning }}">
-              <div class="py-2" v-if="row.image">
-                <img class="inline ja-character ja-image-shadow h-16" :src="row.image" alt="">
+            <router-link class="block py-2 text-white hover:text-grey-200" :to="{ name: 'wk.radical', params: { meaning: row.meaning }}">
+              <div v-if="row.image">
+                <div class="text-6xl leading-none ja-image-shadow ja-svg" v-html="row.image"></div>
               </div>
-              <div class="ja-big ja-character ja-shadow pb-2" v-else>{{ row.character }}</div>
+              <div class="text-6xl leading-none ja-shadow" v-else>{{ row.character }}</div>
             </router-link>
-            <div class="font-bold ja-shadow-light radical-meaning capitalize">{{ row.meaning }}</div>
+            <div class="font-bold ja-shadow-light radical-meaning capitalize pb-2">{{ row.meaning }}</div>
           </div>
         </div>
       </template>

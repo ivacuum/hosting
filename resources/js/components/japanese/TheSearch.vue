@@ -27,9 +27,9 @@
       :key="row.id"
     >
       <div class="flex-shrink-0" v-if="row.image">
-        <img class="ja-character ja-image-shadow h-12" :src="row.image" alt="">
+        <div class="text-4xl leading-none ja-image-shadow ja-svg" v-html="row.image"></div>
       </div>
-      <div class="text-4xl flex-shrink-0 font-bold ja-character ja-shadow pb-1 whitespace-no-wrap" v-else>{{ row.character }}</div>
+      <div class="text-4xl flex-shrink-0 font-bold leading-none ja-shadow pb-1 whitespace-no-wrap" v-else>{{ row.character }}</div>
       <div class="flex-grow ja-shadow-light text-xs capitalize text-right">{{ row.meaning }}</div>
     </router-link>
 
@@ -40,7 +40,7 @@
       v-for="row in elements.kanji"
       :key="row.id"
     >
-      <div class="text-4xl flex-shrink-0 font-bold ja-character ja-shadow pb-1 whitespace-no-wrap">{{ row.character }}</div>
+      <div class="text-4xl flex-shrink-0 font-bold leading-none ja-shadow pb-1 whitespace-no-wrap">{{ row.character }}</div>
       <div class="flex-grow text-right">
         <div class="font-bold ja-shadow-light">{{ row.reading }}</div>
         <div class="ja-shadow-light text-xs capitalize">{{ row.meaning }}</div>
@@ -54,7 +54,7 @@
       v-for="row in elements.vocabulary"
       :key="row.id"
     >
-      <div class="text-4xl flex-shrink-0 font-bold ja-character ja-shadow pb-1 whitespace-no-wrap">{{ row.character }}</div>
+      <div class="text-4xl flex-shrink-0 font-bold leading-none ja-shadow pb-1 whitespace-no-wrap">{{ row.character }}</div>
       <div class="flex-grow text-right">
         <div class="font-bold ja-shadow-light">{{ row.kana }}</div>
         <div class="ja-shadow-light text-xs capitalize">{{ row.meaning }}</div>

@@ -75,7 +75,7 @@ class GigTemplates extends BaseController
         $gig->meta_title_ru = $slug;
 
         if (request('images')) {
-            $path = base_path("resources/views/{$gig->templatePath()}.blade.php");
+            $path = resource_path("views/{$gig->templatePath()}.blade.php");
             $content = \File::get($path);
 
             $lines = explode("\n", $content);

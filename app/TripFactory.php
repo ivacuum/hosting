@@ -65,7 +65,7 @@ class TripFactory
     {
         return Finder::create()
             ->files()
-            ->in(base_path('resources/views/life/trips'))
+            ->in(resource_path('views/life/trips'))
             ->name('*.blade.php')
             ->notName('base.blade.php')
             ->sortByName();

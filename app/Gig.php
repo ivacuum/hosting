@@ -100,12 +100,12 @@ class Gig extends Model
 
     public function createStoryFile(): bool
     {
-        return touch(base_path("resources/views/{$this->templatePath()}.blade.php"));
+        return touch(resource_path("views/{$this->templatePath()}.blade.php"));
     }
 
     public function deleteStoryFile(): bool
     {
-        return unlink(base_path("resources/views/{$this->templatePath()}.blade.php"));
+        return unlink(resource_path("views/{$this->templatePath()}.blade.php"));
     }
 
     public function fullDate(): string
@@ -160,7 +160,7 @@ class Gig extends Model
     {
         return Finder::create()
             ->files()
-            ->in(base_path('resources/views/life/gigs'))
+            ->in(resource_path('views/life/gigs'))
             ->name('*.blade.php')
             ->notName('base.blade.php')
             ->sortByName();

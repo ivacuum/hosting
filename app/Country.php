@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
 /**
- * Страна
- *
  * @property int $id
  * @property string $title_ru
  * @property string $title_en

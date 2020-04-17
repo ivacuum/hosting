@@ -6,9 +6,8 @@ use App\Traits\UserBurnableScope;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Ключ
- *
  * @property int $id
+ * @property int $wk_id
  * @property int $level
  * @property string $character
  * @property string $meaning
@@ -57,6 +56,13 @@ class Radical extends Model
     public function externalLink(): string
     {
         return "https://www.wanikani.com/radicals/{$this->meaning}";
+    }
+
+    public function svgContent(): string
+    {
+        return $this->character
+            ? ''
+            : file_get_contents(resource_path("svg/wk/{$this->meaning}.svg"));
     }
 
     public function www(): string

@@ -6,9 +6,8 @@ use App\Traits\UserBurnableScope;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Иероглиф
- *
  * @property int $id
+ * @property int $wk_id
  * @property int $level
  * @property string $character
  * @property string $meaning

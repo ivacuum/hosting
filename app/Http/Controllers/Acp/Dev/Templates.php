@@ -76,7 +76,7 @@ class Templates extends BaseController
         $trip->meta_title_ru = $slug;
 
         if (request('images')) {
-            $path = base_path("resources/views/{$trip->templatePath()}.blade.php");
+            $path = resource_path("views/{$trip->templatePath()}.blade.php");
             $content = \File::get($path);
 
             $lines = explode("\n", $content);

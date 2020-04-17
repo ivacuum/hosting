@@ -3,7 +3,7 @@
   &.bg-radical,
   &.bg-vocab {
     background: linear-gradient(to bottom, #555, #484848);
-    box-shadow: 0 10px 10px rgba($black, .4) inset;
+    box-shadow: 0 10px 10px rgba(#000, .4) inset;
   }
 }
 
@@ -26,21 +26,23 @@
   border-bottom: 1px solid #8800cc;
 }
 
-.ja-big { font-size: 72px; }
-.ja-character { line-height: 1; }
-.ja-image-shadow { filter: drop-shadow(0 2px 0 rgba($black, .3)); }
-.ja-shadow { text-shadow: 0 2px 0 rgba($black, .3); }
-.ja-shadow-light { text-shadow: 0 1px 0 rgba($black, .3); }
+.ja-image-shadow { filter: drop-shadow(0 2px 0 rgba(#000, .3)); }
+.ja-shadow { text-shadow: 0 2px 0 rgba(#000, .3); }
+.ja-shadow-light { text-shadow: 0 1px 0 rgba(#000, .3); }
 
-.kanji-grid,
-.radicals-grid {
-  display: grid;
-  grid-gap: 1px;
-  grid-template-columns: repeat(3, 1fr);
+.ja-svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: square;
+  stroke-miterlimit: 2;
+  stroke-width: 68px;
+}
 
-  @include media-breakpoint-up(md) { grid-template-columns: repeat(6, 1fr); }
-  @include media-breakpoint-up(lg) { grid-template-columns: repeat(7, 1fr); }
-  @include media-breakpoint-up(xl) { grid-template-columns: repeat(8, 1fr); }
+.svg-radical {
+  display: inline-block;
+  vertical-align: -.125em;
+  width: 1em;
+  height: 1em;
 }
 
 .vocab-grid {

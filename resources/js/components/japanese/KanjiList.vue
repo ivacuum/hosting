@@ -51,14 +51,14 @@
             >{{ toggleBurnedText }}</button>
           </div>
         </div>
-        <div class="font-bold kanji-grid text-center text-white" is="transition-group" name="grid">
+        <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-px font-bold text-center text-white" is="transition-group" name="grid">
           <div class="bg-kanji pb-2 rounded"
                :class="{ 'labels-hidden': !labels, 'bg-burned': row.burned }"
                :key="row.id"
                v-for="row in collection"
           >
             <router-link
-              class="block ja-big ja-character ja-shadow pt-1 pb-2 text-white hover:text-grey-200"
+              class="block text-6xl leading-none ja-shadow py-2 text-white hover:text-grey-200"
               :to="{ name: 'wk.kanji', params: { character: row.character }}"
             >{{ row.character }}</router-link>
             <div class="kanji-reading ja-shadow-light">{{ row.reading }}</div>

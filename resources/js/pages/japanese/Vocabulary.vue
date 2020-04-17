@@ -61,9 +61,13 @@ export default {
   <div class="items-center flex flex-wrap">
     <span class="text-muted">{{ $t('japanese.reading') }}</span>
     <span class="text-xl">【{{ vocab.kana }}】</span>
-    <div v-if="vocab.audio">
-      <button class="btn btn-default text-sm py-1" @click="$refs.audio.play()">Play</button>
-      <audio ref="audio" :src="vocab.audio"></audio>
+    <div class="mr-1" v-if="vocab.male_audio">
+      <button class="btn btn-default text-sm py-1" @click="$refs.male_audio.play()">Male</button>
+      <audio ref="male_audio" :src="vocab.male_audio"></audio>
+    </div>
+    <div v-if="vocab.female_audio">
+      <button class="btn btn-default text-sm py-1" @click="$refs.female_audio.play()">Female</button>
+      <audio ref="female_audio" :src="vocab.female_audio"></audio>
     </div>
   </div>
 

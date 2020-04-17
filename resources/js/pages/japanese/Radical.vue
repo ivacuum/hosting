@@ -49,14 +49,16 @@ export default {
 
 <template>
 <div>
-  <div class="items-center flex flex-wrap h1">
+  <div class="items-center flex flex-wrap text-3xl">
     <router-link
-      class="bg-grey-700 hover:bg-grey-800 ja-shadow-light mr-2 px-4 py-1 rounded text-white hover:text-white"
+      class="bg-grey-700 hover:bg-grey-800 font-medium ja-shadow-light mr-2 px-3 rounded text-white hover:text-white"
       :to="{ name: 'wk.level', params: { level: radical.level }}"
     >{{ radical.level }}</router-link>
-    <div class="bg-radical text-white mr-4 px-2 py-1 rounded">
-      <span class="ja-character ja-shadow-light" v-if="radical.character">{{ radical.character }}</span>
-      <img class="block ja-character ja-image-shadow h-10" :src="radical.image" alt="" v-else>
+    <div class="bg-radical text-white mr-3 px-2 rounded">
+      <span class="font-bold ja-shadow-light" v-if="radical.character">{{ radical.character }}</span>
+      <div v-else>
+        <div class="ja-image-shadow ja-svg text-3xl" v-html="radical.image"></div>
+      </div>
     </div>
     <div class="capitalize">{{ radical.meaning }}</div>
   </div>

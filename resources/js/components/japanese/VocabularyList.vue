@@ -55,7 +55,7 @@
           <template v-for="row in collection">
             <div>
               <router-link
-                class="bg-vocab inline-block text-4xl ja-character ja-shadow-light px-2 py-1 rounded whitespace-no-wrap text-white hover:text-grey-200"
+                class="bg-vocab inline-block text-4xl leading-none ja-shadow-light px-2 py-1 rounded whitespace-no-wrap text-white hover:text-grey-200"
                 :class="{ 'bg-burned': row.burned }"
                 :to="{ name: 'wk.vocabulary', params: { characters: row.character }}"
               >{{ row.character }}</router-link>
@@ -71,7 +71,7 @@
               :class="{ invisible: !labels && !revealed.includes(row.id), 'mt-4 md:mt-0': labels }"
               :id="`kana-${row.id}`"
             >
-              <div class="ja-character whitespace-no-wrap" v-for="kana in row.kana.split(', ')">
+              <div class="leading-none whitespace-no-wrap" v-for="kana in row.kana.split(', ')">
                 【{{ kana }}】
               </div>
             </div>

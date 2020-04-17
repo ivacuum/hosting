@@ -77,7 +77,7 @@ class Radicals extends Controller
     }
 
     /**
-     * @param  Model $model
+     * @param Model $model
      */
     protected function updateModel($model)
     {

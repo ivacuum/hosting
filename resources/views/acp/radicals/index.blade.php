@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var \App\Radical $model
+ */
+?>
+
 @extends('acp.list', [
   'searchForm' => true,
 ])
@@ -40,9 +46,9 @@
           href="{{ path([$controller, 'show'], $model) }}"
         >
           @if ($model->character)
-            <span class="inline-block ja-big ja-character ja-shadow">{{ $model->character }}</span>
+            <span class="inline-block text-6xl leading-none ja-shadow">{{ $model->character }}</span>
           @else
-            <img class="ja-character ja-image-shadow mt-1 h-16" src="{{ $model->image }}" alt="">
+            <span class="text-6xl leading-none ja-image-shadow ja-svg">@svg (wk/$model->meaning)</span>
           @endif
         </a>
       </td>

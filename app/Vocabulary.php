@@ -1,20 +1,17 @@
 <?php namespace App;
 
-use App\Http\Controllers\JapaneseWanikaniVocabulary;
-use App\Traits\BurnsAndResurrects;
-use App\Traits\UserBurnableScope;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Словарное слово
- *
  * @property int $id
  * @property int $wk_id
  * @property int $level
- * @property string  $character
- * @property string  $meaning
- * @property string  $kana
- * @property string  $sentences
+ * @property string $character
+ * @property string $meaning
+ * @property string $kana
+ * @property string $sentences
+ * @property int $female_audio_id
+ * @property int $male_audio_id
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  *
@@ -24,8 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Vocabulary extends Model
 {
-    use BurnsAndResurrects;
-    use UserBurnableScope;
+    use Traits\BurnsAndResurrects;
+    use Traits\UserBurnableScope;
 
     protected $fillable = ['sentences'];
     protected $perPage = 50;
@@ -47,13 +44,6 @@ class Vocabulary extends Model
     }
 
     // Methods
-    public function audioMp3(): string
-    {
-        return $this->wk_id
-            ? "https://cdn.wanikani.com/subjects/audio/{$this->wk_id}-{$this->character}.mp3"
-            : '';
-    }
-
     public function breadcrumb(): string
     {
         return "{$this->character}";
@@ -62,6 +52,20 @@ class Vocabulary extends Model
     public function externalLink(): string
     {
         return "https://www.wanikani.com/vocabulary/{$this->character}";
+    }
+
+    public function femaleAudioMp3(): string
+    {
+        return $this->female_audio_id && $this->wk_id
+            ? "https://cdn.wanikani.com/audios/{$this->female_audio_id}-subject-{$this->wk_id}.mp3"
+            : '';
+    }
+
+    public function maleAudioMp3(): string
+    {
+        return $this->male_audio_id && $this->wk_id
+            ? "https://cdn.wanikani.com/audios/{$this->male_audio_id}-subject-{$this->wk_id}.mp3"
+            : '';
     }
 
     public function onlyKanjiCharacters(): string
@@ -86,6 +90,6 @@ class Vocabulary extends Model
 
     public function www(): string
     {
-        return path([JapaneseWanikaniVocabulary::class, 'show'], $this->character);
+        return path([Http\Controllers\JapaneseWanikaniVocabulary::class, 'show'], $this->character);
     }
 }

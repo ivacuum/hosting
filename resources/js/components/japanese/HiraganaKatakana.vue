@@ -12,7 +12,7 @@
                 :class="{ 'border-t': i === 0, 'border-l': j === 0 }"
                 @click="clickOnColumn(j)"
               >
-                <div class="text-2xl font-bold ja-character">{{ cell[syllabaryIndex] ? cell[syllabaryIndex] : '&nbsp;' }}</div>
+                <div class="text-2xl font-bold leading-none">{{ cell[syllabaryIndex] ? cell[syllabaryIndex] : '&nbsp;' }}</div>
                 <div class="text-muted">{{ cell[answerIndex] ? cell[answerIndex] : '&nbsp;' }}</div>
               </div>
             </template>

@@ -9,7 +9,7 @@ class Radical extends JsonResource
     {
         return [
             'id' => $this->id,
-            'image' => $this->image,
+            'image' => $this->svgContent(),
             'level' => $this->level,
             'burned' => $this->relationLoaded('burnable') ? null !== $this->burnable : false,
             'meaning' => $this->meaning,

@@ -33,7 +33,7 @@ class KoreanPsyController extends Controller
     {
         return Finder::create()
             ->files()
-            ->in(base_path('resources/views/korean/psy'))
+            ->in(resource_path('views/korean/psy'))
             ->name('*.blade.php')
             ->notName('base.blade.php')
             ->sortByName();

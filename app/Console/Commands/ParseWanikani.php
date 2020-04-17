@@ -2,184 +2,88 @@
 
 use App\Kanji;
 use App\Radical;
-use App\Services\Wanikani;
+use App\Services\Wanikani\WanikaniClient;
 use App\Vocabulary;
 use Ivacuum\Generic\Commands\Command;
 
 class ParseWanikani extends Command
 {
-    protected $signature = 'app:parse-wanikani {type=radicals} {min_level=1} {max_level=1} {timeout=1}';
+    protected $signature = 'app:parse-wanikani {min_level=1} {max_level=1} {sleep=1}';
     protected $description = 'Parse radicals, kanji or vocabulary from wanikani.com';
 
-    public function handle(Wanikani $api)
+    public function handle(WanikaniClient $api)
     {
-        $type = $this->argument('type');
-        $timeout = (int) $this->argument('timeout');
+        $sleep = (int) $this->argument('sleep');
         $minLevel = max(1, min(60, $this->argument('min_level')));
-        $maxLevel = max(1, min(60, $this->argument('max_level')));
+        $maxLevel = max($minLevel, min(60, $this->argument('max_level')));
 
-        $data = [];
+        foreach (range($minLevel, $maxLevel) as $level) {
+            $this->info("Запрос {$level} уровня");
 
-        if ($type === 'radicals') {
-            foreach (range($minLevel, $maxLevel) as $level) {
-                $json = $api->radicals($level);
+            $response = $api->subjects($level);
 
-                foreach ($json->requested_information as $radical) {
-                    $radical->image ??= '';
-                    $radical->meaning = str_replace('-', ' ', $radical->meaning);
-                    $radical->character ??= '';
+            foreach ($response->getRadicals() as $radical) {
+                $model = Radical::firstWhere('wk_id', $radical->getId())
+                    ?? Radical::firstWhere('meaning', $radical->getMeaning())
+                    ?? new Radical;
 
-                    $data[$radical->meaning] = $radical;
-                }
+                $model->wk_id = $radical->getId();
+                $model->level = $radical->getLevel();
+                $model->meaning = $radical->getMeaning();
+                $model->character = $radical->getCharacter();
+                $model->save();
 
-                $this->info("Запрос {$level} уровня {$type}");
+                if ($radical->getFoundInKanji()->isNotEmpty()) {
+                    $ids = Kanji::query()
+                        ->whereIn('wk_id', $radical->getFoundInKanji())
+                        ->pluck('id');
 
-                if ($level > $minLevel && $level < $maxLevel) {
-                    sleep($timeout);
-                }
-            }
-
-            foreach (Radical::whereIn('meaning', array_keys($data))->get(['id', 'level', 'character', 'meaning', 'image']) as $radical) {
-                /** @var Radical $radical */
-                $row = $data[$radical->meaning];
-
-                $radical->timestamps = false;
-                $radical->image = $row->image;
-                $radical->level = $row->level;
-                $radical->meaning = $row->meaning;
-                $radical->character = $row->character;
-
-                if ($radical->isDirty()) {
-                    $this->info("Updated Radical: {$radical->meaning}");
-
-                    foreach ($radical->getDirty() as $field => $value) {
-                        $this->info("{$field}: {$radical->getOriginal($field)} => {$value}");
-                    }
-                }
-
-                $radical->save();
-
-                unset($data[$radical->meaning]);
-            }
-
-            foreach ($data as $radical) {
-                Radical::forceCreate([
-                    'image' => $radical->image,
-                    'level' => $radical->level,
-                    'meaning' => $radical->meaning,
-                    'character' => $radical->character,
-                ]);
-
-                $this->info("New Radical: {$radical->meaning}");
-            }
-        } elseif ($type === 'kanji') {
-            foreach (range($minLevel, $maxLevel) as $level) {
-                $json = $api->kanji($level);
-
-                foreach ($json->requested_information as $kanji) {
-                    $kanji->onyomi ??= '';
-                    $kanji->onyomi = $kanji->onyomi === 'None' ? '' : $kanji->onyomi;
-                    $kanji->nanori ??= '';
-                    $kanji->kunyomi ??= '';
-                    $kanji->kunyomi = $kanji->kunyomi === 'None' ? '' : $kanji->kunyomi;
-
-                    $data[$kanji->character] = $kanji;
-                }
-
-                $this->info("Запрос {$level} уровня {$type}");
-
-                if ($level > $minLevel && $level < $maxLevel) {
-                    sleep($timeout);
+                    $model->kanjis()->sync($ids);
                 }
             }
 
-            foreach (Kanji::whereIn('character', array_keys($data))->get(['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading', 'nanori']) as $kanji) {
-                /** @var Kanji $kanji */
-                $row = $data[$kanji->character];
+            foreach ($response->getKanjis() as $kanji) {
+                $model = Kanji::firstWhere('wk_id', $kanji->getId())
+                    ?? Kanji::firstWhere('character', $kanji->getCharacter())
+                    ?? new Kanji;
 
-                $kanji->timestamps = false;
-                $kanji->level = $row->level;
-                $kanji->nanori = $row->nanori;
-                $kanji->onyomi = $row->onyomi;
-                $kanji->meaning = $row->meaning;
-                $kanji->kunyomi = $row->kunyomi;
-                $kanji->character = $row->character;
-                $kanji->important_reading = $row->important_reading;
+                $model->level = $kanji->getLevel();
+                $model->wk_id = $kanji->getId();
+                $model->nanori = $kanji->getNanori()->implode(', ');
+                $model->onyomi = $kanji->getOnyomi()->implode(', ');
+                $model->kunyomi = $kanji->getKunyomi()->implode(', ');
+                $model->meaning = mb_strtolower($kanji->getMeanings()->implode(', '));
+                $model->character = $kanji->getCharacter();
+                $model->important_reading = $kanji->getImportantReading();
+                $model->save();
 
-                if ($kanji->isDirty()) {
-                    $this->info("Updated Kanji: {$kanji->character}");
+                if ($kanji->getSimilarKanji()->isNotEmpty()) {
+                    $ids = Kanji::query()
+                        ->whereIn('wk_id', $kanji->getSimilarKanji())
+                        ->pluck('id');
 
-                    foreach ($kanji->getDirty() as $field => $value) {
-                        $this->info("{$field}: {$kanji->getOriginal($field)} => {$value}");
-                    }
-                }
-
-                $kanji->save();
-
-                unset($data[$kanji->character]);
-            }
-
-            foreach ($data as $kanji) {
-                Kanji::forceCreate([
-                    'level' => $kanji->level,
-                    'nanori' => $kanji->nanori,
-                    'onyomi' => $kanji->onyomi,
-                    'meaning' => $kanji->meaning,
-                    'kunyomi' => $kanji->kunyomi,
-                    'character' => $kanji->character,
-                    'important_reading' => $kanji->important_reading,
-                ]);
-
-                $this->info("New Kanji: {$kanji->character}");
-            }
-        } elseif ($type === 'vocabulary') {
-            foreach (range($minLevel, $maxLevel) as $level) {
-                $json = $api->vocabulary($level);
-
-                foreach ($json->requested_information as $vocab) {
-                    $data[$vocab->character] = $vocab;
-                }
-
-                $this->info("Запрос {$level} уровня {$type}");
-
-                if ($level > $minLevel && $level < $maxLevel) {
-                    sleep($timeout);
+                    $model->similar()->sync($ids);
                 }
             }
 
-            foreach (Vocabulary::whereIn('character', array_keys($data))->get(['id', 'level', 'character', 'meaning', 'kana']) as $vocab) {
-                /** @var Vocabulary $vocab */
-                $row = $data[$vocab->character];
+            foreach ($response->getVocabularies() as $vocab) {
+                $model = Vocabulary::firstWhere('wk_id', $vocab->getId())
+                    ?? Vocabulary::firstWhere('character', $vocab->getCharacters())
+                    ?? new Vocabulary;
 
-                $vocab->timestamps = false;
-                $vocab->kana = $row->kana;
-                $vocab->level = $row->level;
-                $vocab->meaning = $row->meaning;
-                $vocab->character = $row->character;
-
-                if ($vocab->isDirty()) {
-                    $this->info("Updated Vocabulary: {$vocab->character}");
-
-                    foreach ($vocab->getDirty() as $field => $value) {
-                        $this->info("{$field}: {$vocab->getOriginal($field)} => {$value}");
-                    }
-                }
-
-                $vocab->save();
-
-                unset($data[$vocab->character]);
+                $model->kana = mb_strtolower($vocab->getReadings()->implode(', '));
+                $model->level = $vocab->getLevel();
+                $model->wk_id = $vocab->getId();
+                $model->meaning = mb_strtolower($vocab->getMeanings()->implode(', '));
+                $model->character = $vocab->getCharacters();
+                $model->sentences = $vocab->getSentences()->implode("\n\n");
+                $model->male_audio_id = $vocab->getMaleAudioId();
+                $model->female_audio_id = $vocab->getFemaleAudioId();
+                $model->save();
             }
 
-            foreach ($data as $vocab) {
-                Vocabulary::forceCreate([
-                    'kana' => $vocab->kana,
-                    'level' => $vocab->level,
-                    'meaning' => $vocab->meaning,
-                    'character' => $vocab->character,
-                    'sentences' => '',
-                ]);
-
-                $this->info("New Vocabulary: {$vocab->character}");
+            if ($level > $minLevel && $level < $maxLevel) {
+                sleep($sleep);
             }
         }
     }
