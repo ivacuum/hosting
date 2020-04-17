@@ -9,6 +9,7 @@ class CreateWanikaniTables extends Migration
     {
         Schema::create('radicals', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('wk_id')->default(0);
             $table->unsignedTinyInteger('level')->default(0);
             $table->string('character');
             $table->string('meaning');
@@ -18,6 +19,7 @@ class CreateWanikaniTables extends Migration
 
         Schema::create('kanjis', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('wk_id')->default(0);
             $table->unsignedTinyInteger('level')->default(0);
             $table->string('character');
             $table->string('meaning');
@@ -36,6 +38,8 @@ class CreateWanikaniTables extends Migration
             $table->string('meaning');
             $table->string('kana');
             $table->text('sentences');
+            $table->unsignedInteger('female_audio_id')->default(0);
+            $table->unsignedInteger('male_audio_id')->default(0);
             $table->timestamps();
         });
     }
