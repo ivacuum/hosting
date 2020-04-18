@@ -27,6 +27,7 @@ class ParseWanikani extends Command
                     ?? Radical::firstWhere('meaning', $radical->getMeaning())
                     ?? new Radical;
 
+                $model->image = '';
                 $model->wk_id = $radical->getId();
                 $model->level = $radical->getLevel();
                 $model->meaning = $radical->getMeaning();
