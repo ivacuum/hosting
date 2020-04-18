@@ -1942,16 +1942,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.66",
+            "version": "1.0.67",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "021569195e15f8209b1c4bebb78bd66aa4f08c21"
+                "reference": "5b1f36c75c4bdde981294c2a0ebdb437ee6f275e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/021569195e15f8209b1c4bebb78bd66aa4f08c21",
-                "reference": "021569195e15f8209b1c4bebb78bd66aa4f08c21",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/5b1f36c75c4bdde981294c2a0ebdb437ee6f275e",
+                "reference": "5b1f36c75c4bdde981294c2a0ebdb437ee6f275e",
                 "shasum": ""
             },
             "require": {
@@ -2022,13 +2022,7 @@
                 "sftp",
                 "storage"
             ],
-            "funding": [
-                {
-                    "url": "https://offset.earth/frankdejonge",
-                    "type": "other"
-                }
-            ],
-            "time": "2020-03-17T18:58:12+00:00"
+            "time": "2020-04-16T13:21:26+00:00"
         },
         {
             "name": "league/flysystem-sftp",
@@ -6037,16 +6031,16 @@
     "packages-dev": [
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "v3.3.1",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "67ced7c6a7451b8bb079d92a57d75f1111f3342d"
+                "reference": "95c31aab33689cd4572d27038186886f4bfa63ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/67ced7c6a7451b8bb079d92a57d75f1111f3342d",
-                "reference": "67ced7c6a7451b8bb079d92a57d75f1111f3342d",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/95c31aab33689cd4572d27038186886f4bfa63ae",
+                "reference": "95c31aab33689cd4572d27038186886f4bfa63ae",
                 "shasum": ""
             },
             "require": {
@@ -6101,7 +6095,7 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2020-04-16T09:09:05+00:00"
+            "time": "2020-04-16T20:19:40+00:00"
         },
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -8922,16 +8916,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.5.4",
+            "version": "3.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "dceec07328401de6211037abbb18bda423677e26"
+                "reference": "73e2e7f57d958e7228fce50dc0c61f58f017f9f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/dceec07328401de6211037abbb18bda423677e26",
-                "reference": "dceec07328401de6211037abbb18bda423677e26",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/73e2e7f57d958e7228fce50dc0c61f58f017f9f6",
+                "reference": "73e2e7f57d958e7228fce50dc0c61f58f017f9f6",
                 "shasum": ""
             },
             "require": {
@@ -8969,7 +8963,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-01-30T22:20:29+00:00"
+            "time": "2020-04-17T01:09:41+00:00"
         },
         {
             "name": "symfony/debug",
