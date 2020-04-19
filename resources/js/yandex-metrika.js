@@ -39,22 +39,6 @@ export default class {
     return params
   }
 
-  goal(name) {
-    if (!this.metrika) {
-      return
-    }
-
-    this.metrika.reachGoal(name)
-  }
-
-  pjaxHit() {
-    if (!this.metrika) {
-      return
-    }
-
-    this.metrika.hit(window.location.href, { params: { pjax: 1 } })
-  }
-
   userParams(params) {
     if (!this.metrika) {
       return

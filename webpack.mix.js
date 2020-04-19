@@ -29,7 +29,6 @@ mix.js('resources/js/app.js', 'public/assets')
   .copy('node_modules/mousetrap/mousetrap.min.js', 'public/assets/mousetrap.js')
 
   .copy('node_modules/jquery/dist/jquery.min.js', 'public/assets/jquery.js')
-  .copy('resources/js/vendor/jquery.pjax.js', 'public/assets/jquery.pjax.js')
   .copy('node_modules/jquery.scrollto/jquery.scrollTo.min.js', 'public/assets/jquery.scrollto.js')
 
   .copy('node_modules/autosize/dist/autosize.min.js', 'public/assets/autosize.js')
@@ -51,6 +50,9 @@ mix.js('resources/js/app.js', 'public/assets')
 
   .copy('node_modules/popper.js/dist/umd/popper.min.js', 'public/assets/popper.js')
   .copy('resources/js/empty.map', 'public/assets/popper.min.js.map')
+
+  .copy('node_modules/livewire-vue/dist/livewire-vue.js', 'public/assets')
+  .copy('resources/js/empty.map', 'public/assets/livewire-vue.js.map')
 
   .sourceMaps(false, false)
   .version()

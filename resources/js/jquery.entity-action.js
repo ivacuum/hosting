@@ -26,10 +26,7 @@ $(document).on('click', '.js-entity-action', function jsEntityAction(e) {
   })
     .done((data) => {
       if (data.status === 'OK') {
-        $.pjax({
-          url: data.redirect,
-          container: App.pjax.container,
-        })
+        document.location.href = data.redirect
       } else {
         // App.addFlashNotification(data.message || 'Что-то пошло не так', 'danger')
         alert(data.message || 'Что-то пошло не так')

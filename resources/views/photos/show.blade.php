@@ -24,14 +24,14 @@ Mousetrap.bind('right', () => {
     <div class="mobile-wide relative text-center">
       @if (null !== $next)
         <a
-          class="absolute top-0 w-1/2 h-full z-10 left-0 js-pjax js-pjax-no-dim"
+          class="absolute top-0 w-1/2 h-full z-10 left-0"
           id="prev_page"
           href="{{ path([App\Http\Controllers\Photos::class, 'show'], [$next->id, 'city_id' => $cityId, 'country_id' => $countryId, 'tag_id' => $tagId, 'trip_id' => $tripId]) }}"
         >&nbsp;</a>
       @endif
       @if (null !== $prev)
         <a
-          class="absolute top-0 w-1/2 h-full z-10 left-1/2 js-pjax js-pjax-no-dim"
+          class="absolute top-0 w-1/2 h-full z-10 left-1/2"
           id="next_page"
           href="{{ path([App\Http\Controllers\Photos::class, 'show'], [$prev->id, 'city_id' => $cityId, 'country_id' => $countryId, 'tag_id' => $tagId, 'trip_id' => $tripId]) }}"
         >&nbsp;</a>

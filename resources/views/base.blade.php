@@ -1,17 +1,13 @@
 <?php
 /** @var string $locale */
 ?>
-@if (!Request::pjax())
 <!DOCTYPE html>
 <html class="h-full overflow-y-scroll" lang="{{ $locale }}">
 <head>
   <meta charset="utf-8">
-@endif
   <title>{{ $metaTitle ?? ViewHelper::metaTitle($view, $metaReplace ?? []) }}</title>
-@if (!Request::pjax())
   <link rel="dns-prefetch" href="https://life.ivacuum.org">
   <link rel="dns-prefetch" href="https://ivacuum.org">
-  <meta http-equiv="x-pjax-version" content="2">
   <meta name="format-detection" content="telephone=no">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="keywords" content="{{ $metaKeywords ?? ViewHelper::metaKeywords($view, $metaReplace ?? []) }}">
@@ -137,11 +133,9 @@
   </div>
   <div class="{{ $contentContainerClasses ?? 'container mt-4' }} {{ $contentContainerExtraClasses ?? '' }}" id="{{ $contentContainerId ?? 'pjax_container' }}">
 
-@endif
 @yield('content_header')
 @yield('content')
 @yield('content_footer')
-@if (!Request::pjax())
 
   </div>
 </div>
@@ -217,7 +211,6 @@ window.AppOptions = JSON.parse('<?= json_encode([
 <script src="{{ mix('/assets/polyfills.js') }}"></script>
 <script src="{{ mix('/assets/intersection-observer.js') }}"></script>
 <script src="{{ mix('/assets/jquery.js') }}"></script>
-<script src="{{ mix('/assets/jquery.pjax.js') }}"></script>
 <script src="{{ mix('/assets/jquery.scrollto.js') }}"></script>
 <script src="{{ mix('/assets/autosize.js') }}"></script>
 <script src="{{ mix('/assets/notie.js') }}"></script>
@@ -233,6 +226,9 @@ window.AppOptions = JSON.parse('<?= json_encode([
 @endif
 <script src="{{ mix('/assets/mousetrap.js') }}"></script>
 @stack('js_vendor')
+@if ($locale !== 'ru')
+<script>window.livewire_app_url = '/{{ $locale }}'</script>
+@endif
 <script src="{{ mix('/assets/app.js') }}"></script>
 @stack('js')
 @section('counters')
@@ -240,4 +236,3 @@ window.AppOptions = JSON.parse('<?= json_encode([
 @show
 </body>
 </html>
-@endif

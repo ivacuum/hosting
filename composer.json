@@ -16,6 +16,7 @@
     "laravel/socialite": "^4.0",
     "league/commonmark": "^1.0",
     "league/flysystem-sftp": "^1.0",
+    "livewire/livewire": "^1.0",
     "predis/predis": "^1.1",
     "pusher/pusher-php-server": "^4.0",
     "stevebauman/purify": "^3.0",
@@ -57,7 +58,8 @@
     ],
     "post-autoload-dump": [
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-      "@php artisan package:discover --ansi"
+      "@php artisan package:discover --ansi",
+      "@php artisan vendor:publish --force --tag=livewire:assets --ansi"
     ],
     "post-update-cmd": [
       "@php artisan ide-helper:generate",

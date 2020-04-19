@@ -2,7 +2,6 @@ import './bootstrap'
 
 import throttle from 'lodash/throttle'
 import Map from './yandex-map'
-import Pjax from './pjax'
 import YandexMetrika from './yandex-metrika'
 
 import NewsViewsObserver from './news-views-observer'
@@ -43,15 +42,12 @@ class Application {
     this.locale = this.options.locale
     this.map = new Map(this.locale)
     this.metrika = new YandexMetrika(this.options.yandexMetrikaId)
-    this.pjax = new Pjax()
     this.vue = null
 
     this.csrfToken()
-    this.onPjaxComplete()
-    this.onPjaxSend()
+    this.initOnReady()
 
     $(() => {
-      this.initOnReadyAndPjax()
       this.constructor.lazyLoadImages()
 
       EventHandlers.bind()
@@ -149,28 +145,9 @@ class Application {
     initLazyLoad()
   }
 
-  initOnReadyAndPjax() {
+  initOnReady() {
     this.initVue()
     this.constructor.autosizeTextareas()
-  }
-
-  onPjaxComplete() {
-    $(document).on('pjax:complete', () => {
-      $('.js-flash-notification .alert').alert('close')
-
-      this.metrika.pjaxHit()
-      this.pjax.onComplete()
-
-      this.initOnReadyAndPjax(true)
-
-      // Нужно вызывать после this.initVue(), иначе
-      // перестает работать метод offset() на картинках
-      $(document.body).trigger('reset.js-lazy')
-    })
-  }
-
-  onPjaxSend() {
-    $(document).on('pjax:send', (e) => this.pjax.onSend(e))
   }
 }
 

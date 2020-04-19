@@ -71,11 +71,7 @@ export default class Shortcuts {
 
       if (!url) return false
 
-      if (link.matches('.js-pjax')) {
-        $.pjax({ url, container: '#pjax_container' })
-      } else {
-        document.location.href = url
-      }
+      document.location.href = url
 
       return true
     })

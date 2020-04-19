@@ -17,10 +17,7 @@ export default class YandexDns {
         .post($form.data('action'), $('input, select', $form).serialize())
         .then((response) => {
           if (response.data === 'ok') {
-            $.pjax({
-              url: document.location.href,
-              container: App.pjax.container,
-            })
+            document.location.reload()
           } else {
             notie.alert({ text: response.data })
           }
@@ -54,10 +51,7 @@ export default class YandexDns {
             .post($(this).data('action'), { record_id: id, _method: 'DELETE' })
             .then((response) => {
               if (response.data === 'ok') {
-                $.pjax({
-                  url: document.location.href,
-                  container: App.pjax.container,
-                })
+                document.location.reload()
               } else {
                 notie.alert({ text: response.data })
               }
@@ -88,10 +82,7 @@ export default class YandexDns {
         .post($(this).data('action'), $('input', $form).serialize())
         .then((response) => {
           if (response.data === 'ok') {
-            $.pjax({
-              url: document.location.href,
-              container: App.pjax.container,
-            })
+            document.location.reload()
           } else {
             notie.alert({ text: response.data })
           }

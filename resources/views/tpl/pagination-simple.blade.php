@@ -1,7 +1,7 @@
 <nav class="flex items-center justify-between w-full">
   @if (!$paginator->onFirstPage())
     <a
-      class="btn btn-default js-pjax"
+      class="btn btn-default"
       href="{{ $paginator->previousPageUrl() }}"
       id="prev_page"
       rel="prev"
@@ -14,7 +14,7 @@
 
   @if ($paginator->hasMorePages())
     <a
-      class="btn btn-default js-pjax"
+      class="btn btn-default"
       href="{{ $paginator->nextPageUrl() }}"
       id="next_page"
       rel="next"

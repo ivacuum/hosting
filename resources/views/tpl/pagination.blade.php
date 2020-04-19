@@ -1,7 +1,7 @@
 <nav class="hidden md:flex flex-wrap items-center justify-center">
   @if (!$paginator->onFirstPage())
     <a
-      class="px-3 py-1 js-pjax"
+      class="px-3 py-1"
       href="{{ $paginator->previousPageUrl() }}"
       id="prev_page"
       rel="prev"
@@ -20,7 +20,7 @@
         @if ($page == $paginator->currentPage())
           <div class="bg-blueish-600 rounded text-white px-3 py-1">{{ $page }}</div>
         @else
-          <a class="px-3 py-1 js-pjax" href="{{ $url }}">{{ $page }}</a>
+          <a class="px-3 py-1" href="{{ $url }}">{{ $page }}</a>
         @endif
       @endforeach
     @endif
@@ -28,7 +28,7 @@
 
   @if ($paginator->hasMorePages())
     <a
-      class="px-3 py-1 js-pjax"
+      class="px-3 py-1"
       href="{{ $paginator->nextPageUrl() }}"
       id="next_page"
       rel="next"

@@ -9,6 +9,7 @@ Disallow: /files
 Disallow: /gallery
 Disallow: /internal
 Disallow: /japanese/wanikani
+Disallow: /livewire
 Disallow: /my
 Disallow: /parser
 Disallow: /photos
@@ -31,6 +32,7 @@ Disallow: /en/life/english
 Disallow: /en/life/german
 Disallow: /en/life/podcasts
 Disallow: /en/life/using-in-travels
+Disallow: /en/livewire
 Disallow: /en/my
 Disallow: /en/parser
 Disallow: /en/photos
