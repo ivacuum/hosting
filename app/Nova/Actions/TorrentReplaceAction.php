@@ -24,7 +24,7 @@ class TorrentReplaceAction extends Action
     public function fields()
     {
         return [
-            Fields\Number::make('RTO ID')->required(),
+            Fields\Number::make('RTO ID'),
         ];
     }
 
@@ -32,7 +32,7 @@ class TorrentReplaceAction extends Action
     {
         /** @var \App\Torrent $model */
         foreach ($models as $model) {
-            $model->rto_id = $fields->get('rto_id');
+            $model->rto_id = $fields->get('rto_id') ?: $model->rto_id;
 
             $this->torrentUpdater->update($model);
         }
