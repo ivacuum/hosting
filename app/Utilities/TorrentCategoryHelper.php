@@ -155,22 +155,6 @@ class TorrentCategoryHelper
         return isset($this->categories[$id]) ? $this->categories[$id] : null;
     }
 
-    public function list($underscores = false)
-    {
-        return collect($this->categories)
-            ->when($underscores, function ($collection) {
-                return $collection->map(function ($category) {
-                    if (!isset($category['icon'])) {
-                        return $category;
-                    }
-
-                    $category['icon'] = str_replace('-', '_', $category['icon']);
-
-                    return $category;
-                });
-            });
-    }
-
     public function novaList()
     {
         return collect($this->categories)

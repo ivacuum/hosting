@@ -3,7 +3,6 @@
 use App\Comment;
 use App\Http\Requests\TorrentsIndexRequest;
 use App\Http\Requests\TorrentStoreRequest;
-use App\Http\Resources\TorrentCollection;
 use App\SearchSynonym;
 use App\Services\Rto;
 use App\Services\RtoMagnetNotFoundException;
@@ -54,10 +53,6 @@ class Torrents extends Controller
             })
             ->simplePaginate(25, Torrent::LIST_COLUMNS)
             ->withPath(path([self::class, 'index']));
-
-        if ($request->wantsJson()) {
-            return new TorrentCollection($torrents);
-        }
 
         return view($this->view, [
             'q' => $q,
@@ -182,23 +177,5 @@ class Torrents extends Controller
         $torrent->save();
 
         return redirect($torrent->www());
-    }
-
-    public function vue()
-    {
-        return view('magnets-spa');
-    }
-
-    public function vueShow(Torrent $torrent)
-    {
-        if (!request()->expectsJson()) {
-            return view('magnets-spa');
-        }
-
-        event(new \App\Events\Stats\TorrentViewed($torrent->id));
-
-        $torrent->setRelation('comments', $torrent->commentsPublished()->with('user')->orderBy('created_at')->get());
-
-        return new \App\Http\Resources\Torrent($torrent);
     }
 }

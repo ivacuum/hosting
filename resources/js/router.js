@@ -51,40 +51,6 @@ const router = new VueRouter({
         },
       ]
     },
-    {
-      path: `${locale}/magnets`,
-      component: () => import(/* webpackChunkName: "magnets" */'./pages/magnets/Layout.vue'),
-      children: [
-        {
-          name: 'magnets',
-          // Полный путь, чтобы при поиске к пути не добавлялся слэш в конце
-          path: `${locale}/magnets`,
-          component: () => import(/* webpackChunkName: "magnets" */'./pages/magnets/MagnetList.vue'),
-        },
-        {
-          path: 'add',
-          component: () => import(/* webpackChunkName: "magnets" */'./pages/magnets/MagnetAdd.vue'),
-        },
-        {
-          path: 'comments',
-          component: () => import(/* webpackChunkName: "magnets" */'./pages/magnets/MagnetComments.vue'),
-        },
-        {
-          path: 'faq',
-          component: () => import(/* webpackChunkName: "magnets" */'./pages/magnets/MagnetFaq.vue'),
-        },
-        {
-          path: 'my',
-          component: () => import(/* webpackChunkName: "magnets" */'./pages/magnets/MagnetMy.vue'),
-        },
-        {
-          name: 'magnet',
-          path: ':id(\\d+)',
-          props: (route) => ({ level: Number(route.params.id) }),
-          component: () => import(/* webpackChunkName: "magnets" */'./pages/magnets/MagnetItem.vue'),
-        }
-      ]
-    }
   ],
 })
 

@@ -9,7 +9,6 @@ Vue.config.productionTip = false
 
 Vue.filter('decimal', decimal)
 
-// TODO: delete magnets
 Vue.component('avatar-uploader', () => import(/* webpackChunkName: "my" */'./components/AvatarUploader.vue'))
 Vue.component('chat', () => import(/* webpackChunkName: "magnets" */'./components/Chat.vue'))
 Vue.component('feedback-form', FeedbackForm)
