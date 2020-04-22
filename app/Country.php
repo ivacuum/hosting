@@ -1,8 +1,5 @@
 <?php namespace App;
 
-use App\Http\Controllers\Life;
-use App\Traits\HasLocalizedTitle;
-use App\Traits\HasTripsMetaDescription;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
@@ -28,8 +25,8 @@ use Illuminate\Support\Collection;
  */
 class Country extends Model
 {
-    use HasLocalizedTitle;
-    use HasTripsMetaDescription;
+    use Traits\HasLocalizedTitle;
+    use Traits\HasTripsMetaDescription;
 
     protected $guarded = ['created_at', 'updated_at'];
 
@@ -352,6 +349,6 @@ class Country extends Model
 
     public function www(): string
     {
-        return path([Life::class, 'country'], $this->slug);
+        return path([Http\Controllers\Life::class, 'country'], $this->slug);
     }
 }

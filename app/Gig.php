@@ -1,13 +1,9 @@
 <?php namespace App;
 
-use App\Http\Controllers\Life;
-use App\Traits\HasLocalizedTitle;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\Finder\Finder;
 
 /**
- * Концерт
- *
  * @property int $id
  * @property int $city_id
  * @property int $artist_id
@@ -37,7 +33,7 @@ use Symfony\Component\Finder\Finder;
  */
 class Gig extends Model
 {
-    use HasLocalizedTitle;
+    use Traits\HasLocalizedTitle;
 
     const STATUS_HIDDEN = 0;
     const STATUS_PUBLISHED = 1;
@@ -168,11 +164,11 @@ class Gig extends Model
 
     public function www(): string
     {
-        return path([Life::class, 'page'], $this->slug);
+        return path([Http\Controllers\Life::class, 'page'], $this->slug);
     }
 
     public function wwwLocale(string $locale = ''): string
     {
-        return path_locale([Life::class, 'page'], $this->slug, false, $locale);
+        return path_locale([Http\Controllers\Life::class, 'page'], $this->slug, false, $locale);
     }
 }

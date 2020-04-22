@@ -1,14 +1,9 @@
 <?php namespace App;
 
-use App\Http\Controllers\Life;
-use App\Traits\HasLocalizedTitle;
-use App\Traits\HasTripsMetaDescription;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
 /**
- * Город
- *
  * @property int $id
  * @property int $country_id
  * @property string $title_ru
@@ -32,8 +27,8 @@ use Illuminate\Support\Collection;
  */
 class City extends Model
 {
-    use HasLocalizedTitle;
-    use HasTripsMetaDescription;
+    use Traits\HasLocalizedTitle;
+    use Traits\HasTripsMetaDescription;
 
     protected $guarded = ['created_at', 'updated_at'];
     protected $perPage = 50;
@@ -111,6 +106,6 @@ class City extends Model
 
     public function www(): string
     {
-        return path([Life::class, 'page'], $this->slug);
+        return path([Http\Controllers\Life::class, 'page'], $this->slug);
     }
 }

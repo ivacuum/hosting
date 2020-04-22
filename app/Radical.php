@@ -1,8 +1,5 @@
 <?php namespace App;
 
-use App\Http\Controllers\JapaneseWanikaniRadicals;
-use App\Traits\BurnsAndResurrects;
-use App\Traits\UserBurnableScope;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -22,8 +19,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Radical extends Model
 {
-    use BurnsAndResurrects;
-    use UserBurnableScope;
+    use Traits\BurnsAndResurrects;
+    use Traits\UserBurnableScope;
 
     protected $casts = [
         'level' => 'int',
@@ -67,6 +64,6 @@ class Radical extends Model
 
     public function www(): string
     {
-        return path([JapaneseWanikaniRadicals::class, 'show'], $this->meaning);
+        return path([Http\Controllers\JapaneseWanikaniRadicals::class, 'show'], $this->meaning);
     }
 }

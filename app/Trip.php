@@ -1,16 +1,11 @@
 <?php namespace App;
 
-use App\Http\Controllers\Life;
-use App\Http\Controllers\UserTravelTrips;
-use App\Traits\HasLocalizedTitle;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Ivacuum\Generic\Utilities\TextImagesParser;
 use League\CommonMark\CommonMarkConverter;
 
 /**
- * Поездка
- *
  * @property int $id
  * @property int $city_id
  * @property int $user_id
@@ -55,7 +50,7 @@ use League\CommonMark\CommonMarkConverter;
  */
 class Trip extends Model
 {
-    use HasLocalizedTitle;
+    use Traits\HasLocalizedTitle;
 
     const STATUS_INACTIVE = 0;
     const STATUS_PUBLISHED = 1;
@@ -368,15 +363,15 @@ class Trip extends Model
     public function www(?string $anchor = null): string
     {
         return $this->user_id === 1
-            ? path([Life::class, 'page'], $this->slug) . $anchor
-            : path([UserTravelTrips::class, 'show'], [$this->user->login, $this->slug]) . $anchor;
+            ? path([Http\Controllers\Life::class, 'page'], $this->slug) . $anchor
+            : path([Http\Controllers\UserTravelTrips::class, 'show'], [$this->user->login, $this->slug]) . $anchor;
     }
 
     public function wwwLocale(?string $anchor = null, string $locale = ''): string
     {
         return $this->user_id === 1
-            ? path_locale([Life::class, 'page'], $this->slug, false, $locale) . $anchor
-            : path_locale([UserTravelTrips::class, 'show'], [$this->user->login, $this->slug], false, $locale) . $anchor;
+            ? path_locale([Http\Controllers\Life::class, 'page'], $this->slug, false, $locale) . $anchor
+            : path_locale([Http\Controllers\UserTravelTrips::class, 'show'], [$this->user->login, $this->slug], false, $locale) . $anchor;
     }
 
     protected function monthName(int $month): string

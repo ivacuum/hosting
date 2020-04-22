@@ -1,8 +1,5 @@
 <?php namespace App;
 
-use App\Http\Controllers\JapaneseWanikaniKanji;
-use App\Traits\BurnsAndResurrects;
-use App\Traits\UserBurnableScope;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -29,8 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Kanji extends Model
 {
-    use BurnsAndResurrects;
-    use UserBurnableScope;
+    use Traits\BurnsAndResurrects;
+    use Traits\UserBurnableScope;
 
     protected $fillable = ['level']; // Чтобы не бросало исключение
     protected $perPage = 50;
@@ -90,6 +87,6 @@ class Kanji extends Model
 
     public function www(): string
     {
-        return path([JapaneseWanikaniKanji::class, 'show'], $this->character);
+        return path([Http\Controllers\JapaneseWanikaniKanji::class, 'show'], $this->character);
     }
 }

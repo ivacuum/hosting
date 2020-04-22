@@ -1,11 +1,8 @@
 <?php namespace App;
 
-use App\Traits\HasLocalizedTitle;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Тэг
- *
  * @property int $id
  * @property string $title_ru
  * @property string $title_en
@@ -24,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Tag extends Model
 {
-    use HasLocalizedTitle;
+    use Traits\HasLocalizedTitle;
 
     protected $casts = [
         'views' => 'int',
