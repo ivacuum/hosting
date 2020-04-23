@@ -27,12 +27,12 @@ class Tags extends Controller
     }
 
     /**
-     * @param  Model|null $model
+     * @param Model|null $model
      * @return array
      */
     protected function rules($model = null)
     {
-        $rules = [
+        return [
             'title_ru' => [
                 'required',
                 Rule::unique('tags', 'title_ru')->ignore($model->id ?? null),
@@ -42,7 +42,5 @@ class Tags extends Controller
                 Rule::unique('tags', 'title_en')->ignore($model->id ?? null),
             ],
         ];
-
-        return $rules;
     }
 }

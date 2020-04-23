@@ -9,8 +9,6 @@ use Ivacuum\Generic\Traits\SoftDeleteTrait;
 use Laravel\Scout\Searchable;
 
 /**
- * Торрент
- *
  * @property int $id
  * @property int $user_id
  * @property int $category_id

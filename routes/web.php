@@ -89,13 +89,6 @@ Route::get('life/gigs/rss', [Controllers\LifeGigsRss::class, 'index']);
 Route::get('life/rss', [Controllers\LifeTripsRss::class, 'index']);
 Route::get('life/{slug}', [Controllers\Life::class, 'page']);
 
-Route::get('magnets', [Controllers\Torrents::class, 'vue']);
-Route::get('magnets/add', [Controllers\Torrents::class, 'vue']);
-Route::get('magnets/comments', [Controllers\Torrents::class, 'vue']);
-Route::get('magnets/faq', [Controllers\Torrents::class, 'vue']);
-Route::get('magnets/my', [Controllers\Torrents::class, 'vue']);
-Route::get('magnets/{torrent}', [Controllers\Torrents::class, 'vueShow']);
-
 Route::get('mail/click/{timestamp}/{id}', [Controllers\Mail::class, 'click'])->name('mail.click');
 Route::get('mail/report/{timestamp}/{id}', [Controllers\Mail::class, 'report'])->middleware('auth');
 Route::get('mail/view/{timestamp}/{id}', [Controllers\Mail::class, 'view']);
