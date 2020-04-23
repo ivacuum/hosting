@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Services\HiraganaRomanizer;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -61,6 +62,11 @@ class Vocabulary extends Model
             : '';
     }
 
+    public function firstKana(): string
+    {
+        return explode(', ', $this->kana)[0];
+    }
+
     public function maleAudioMp3(): string
     {
         return $this->male_audio_id && $this->wk_id
@@ -86,6 +92,11 @@ class Vocabulary extends Model
         }
 
         return $result;
+    }
+
+    public function toRomaji(): string
+    {
+        return (new HiraganaRomanizer)->romanize($this->firstKana());
     }
 
     public function www(): string
