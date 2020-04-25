@@ -72,6 +72,7 @@ Route::get('japanese/wanikani/vocabulary', [Controllers\JapaneseWanikaniVocabula
 Route::get('japanese/wanikani/vocabulary/{characters}', [Controllers\JapaneseWanikaniVocabulary::class, 'show']);
 Route::put('japanese/wanikani/vocabulary/{vocabulary}', [Controllers\JapaneseWanikaniVocabulary::class, 'update'])->middleware('auth');
 Route::delete('japanese/wanikani/vocabulary/{vocabulary}', [Controllers\JapaneseWanikaniVocabulary::class, 'destroy'])->middleware('auth');
+Route::get('japanese/words-trainer', Controllers\JapaneseWordsTrainerController::class);
 
 Route::post('js/typo', Controllers\JsTypo::class);
 

@@ -108,9 +108,10 @@ class SitemapBuild extends BaseSitemapBuild
         $this->page([
             'japanese',
             'japanese/hiragana-katakana',
+            'japanese/words-trainer',
 
             'en/japanese/hiragana-katakana',
-            'en/japanese/hiragana-katakana',
+            'en/japanese/words-trainer',
         ], ['0.5', '0.6', '0.7']);
     }
 

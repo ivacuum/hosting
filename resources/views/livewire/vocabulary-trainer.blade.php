@@ -19,14 +19,15 @@
       <input
         tabindex="1"
         autocapitalize="none"
-        placeholder="Ответ"
+        placeholder="{{ trans('japanese.answer') }}"
+        enterkeyhint="enter"
         class="form-input text-center"
         wire:model.lazy="answer"
       >
     </form>
     <div class="flex items-center justify-between mt-2">
-      <div><button class="btn btn-default" wire:click="next">Пропустить</button></div>
-      <div class="text-muted">{{ $answered > 0 ? "Отвечено: {$answered}" : '' }}</div>
+      <div><button class="btn btn-default" wire:click="next">{{ trans('japanese.skip') }}</button></div>
+      <div class="text-muted">{{ $answered > 0 ? trans('japanese.answered', ['x' => $answered]) : '' }}</div>
     </div>
   </div>
   <div>

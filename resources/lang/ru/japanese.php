@@ -1,11 +1,14 @@
 <?php
 
 return [
+    'skip' => 'Пропустить',
     'index' => 'Японский язык',
     'kanji' => 'Кандзи',
     'level' => 'Уровень :level',
+    'answer' => 'Ответ',
     'levels' => 'Уровни',
     'reading' => 'Чтение',
+    'answered' => 'Отвечено: :x',
     'browsing' => 'Обзор',
     'radicals' => 'Ключи',
     'readings' => 'Варианты чтения',
@@ -15,7 +18,11 @@ return [
     'sentences' => 'Примеры предложений',
     'burn-kanji' => 'Сжечь кандзи',
     'vocabulary' => 'Словарные слова',
+    'hide-labels' => 'Подписывать при наведении',
+    'show-labels' => 'Показать подписи',
     'burn-radical' => 'Сжечь ключ',
+    'words-trainer' => 'Тренажер по набору слов хираганой',
     'burn-vocabulary' => 'Сжечь слово',
     'hiragana-katakana' => 'Хирагана и катакана',
+    'hiragana-katakana-trainer' => 'Тренажер хираганы и катаканы',
 ];

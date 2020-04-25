@@ -17,19 +17,43 @@
         <h2 class="h4 mb-0">@ru Собственные ресурсы @en Own services @endru</h2>
       </div>
       <div class="px-5 py-4">
-        @ru
-          <h3 class="h4"><a class="link" href="{{ path([App\Http\Controllers\JapaneseHiraganaKatakana::class, 'index']) }}">Тренажер хираганы и катаканы</a></h3>
-          <div>Быстрое освоение японских слоговых азбук столбик за столбиком.</div>
+        <h3 class="h4">
+          <a class="link" href="{{ path([App\Http\Controllers\JapaneseHiraganaKatakana::class, 'index']) }}">
+            {{ trans('japanese.hiragana-katakana-trainer') }}
+          </a>
+        </h3>
+        <div>
+          @ru
+            Быстрое освоение японских слоговых азбук столбик за столбиком.
+          @en
+            Learn Japanese syllabaries column by column the fast way.
+          @endru
+        </div>
+        <h3 class="h4 mt-6">
+          <a class="link" href="{{ path(App\Http\Controllers\JapaneseWordsTrainerController::class) }}">
+            {{ trans('japanese.words-trainer') }}
+          </a>
+        </h3>
+        <div>
+          @ru
+            Следующий уровень освоения азбуки — теперь на реальных словах.
+          @en
+            Next level syllabary practice. With real vocabulary.
+          @endru
+        </div>
 
-          <h3 class="h4 mt-6"><a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikani::class, 'index']) }}">{{ trans('japanese.wanikani') }}</a></h3>
-          <div>Набор ключей, иероглифов и словарных слов для изучения и повторения. Данные и вдохновение взяты с сайта <a class="link" href="https://www.wanikani.com/">wanikani.com</a> и приправлены дополнительными функциями для улучшения процесса обучения.</div>
-        @en
-          <h3 class="h4"><a class="link" href="{{ path([App\Http\Controllers\JapaneseHiraganaKatakana::class, 'index']) }}">Hiragana & Katakana trainer</a></h3>
-          <div>Learn Japanese syllabaries column by column the fast way.</div>
-
-          <h3 class="h4 mt-6"><a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikani::class, 'index']) }}">{{ trans('japanese.wanikani') }}</a></h3>
-          <div>Set of radicals, kanji and vocabulary to study and review. Data and inspiration from <a class="link" href="https://www.wanikani.com/">wanikani.com</a> with features added to make learning and review process more effective.</div>
-        @endru
+        <h3 class="h4 mt-6">
+          <a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikani::class, 'index']) }}">
+            {{ trans('japanese.wanikani') }}
+          </a>
+        </h3>
+        <div>
+          @ru
+            Набор ключей, иероглифов и словарных слов для изучения и повторения. Данные и вдохновение взяты с сайта <a class="link" href="https://www.wanikani.com/">wanikani.com</a> и приправлены дополнительными функциями для улучшения процесса обучения.
+          @en
+            Set of radicals, kanji and vocabulary to study and review. Data and inspiration from <a class="link" href="https://www.wanikani.com/">wanikani.com</a> with features added to make learning and review process more effective.
+          @endru
+        </div>
       </div>
     </div>
   </div>
@@ -39,12 +63,14 @@
         <h2 class="h4 mb-0">@ru Внешние полезные ресурсы @en External resources @endru</h2>
       </div>
       <div class="px-5 py-4">
-        @ru
-          <div class="mb-1">Все на английском, так как на нем материалов доступно в разы больше, чем на родном.</div>
-        @en
-          <div class="mb-1">Helpful resources for self-learning students:</div>
-        @endru
-        <ul>
+        <div>
+          @ru
+            Все на английском, так как на нем материалов доступно в разы больше, чем на родном.
+          @en
+            Helpful resources for self-learning students:
+          @endru
+        </div>
+        <ul class="mt-1">
           <li>
             <a class="link" href="http://jisho.org/">jisho.org</a>
             @ru
@@ -121,27 +147,27 @@
     <p>У кандзи может быть несколько чтений: китайского происхождения и японского. Если в слове присутствует хирагана「生きる」, то чтение почти наверняка будет японское. Если слово состоит только из иероглифов「公用」(без символов азбуки хираганы), то чтение с большой вероятностью будет китайское. Почему с вероятностью? Потому что бывают исключения. И чтение каждого типа не обязательно одно — бывает и по три!</p>
     <p>Знать кандзи — не обязательно значит знать слово. Слово может состоять из нескольких кандзи. Или чтение может отличаться между одинаковыми на вид кандзи и словом.「生」в качестве кандзи значит «жизнь» и читается「せい」. Этот же символ「生」в качестве словарного слова значит «свежий» и читается「なま」. Да, запоминать нужно много всего.</p>
     <p>Нафига две азбуки и еще и иероглифы? Компенсируют отсутствие пробела, подсказывают границы слов. Рассмотрим на примере предложения: «Сколько нам нужно автобусов?».</p>
-    <ol>
+    <ol class="space-y-2">
       <li>
         <div class="text-xl">ばすはなんだいいりますか。</div>
         <div>Все хираганой. Как минимум нужно знать слова, грамматику и контекст, чтобы понять смысл.</div>
       </li>
-      <li class="mt-2">
+      <li>
         <div class="text-xl">バスはなんだいいりますか。</div>
         <div>Добавим катакану. Стал виден заимствованный автобус «басу». Неплохо для начала.</div>
       </li>
-      <li class="mt-2">
+      <li>
         <div class="text-xl">バスは何台いりますか。</div>
         <div>Добавим иероглифы. Проявился вопрос «сколько штук».</div>
       </li>
-      <li class="mt-2">
-        <div class="inline-flex text-xl">
-          <span class="mr-2">バス</span>
-          <span class="mr-2">は</span>
-          <span class="mr-2">何台</span>
-          <span class="mr-2">いり</span>
-          <span class="mr-2">ます</span>
-          か。
+      <li>
+        <div class="inline-flex text-xl space-x-2">
+          <span>バス</span>
+          <span>は</span>
+          <span>何台</span>
+          <span>いり</span>
+          <span>ます</span>
+          <span>か。</span>
         </div>
         <div>В идеале хотелось бы так, но нет. Может решатся когда-нибудь упростить письменность, как корейцы.</div>
       </li>

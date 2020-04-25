@@ -1,11 +1,14 @@
 <?php
 
 return [
+    'skip' => 'Skip',
     'index' => 'Japanese language',
     'kanji' => 'Kanji',
     'level' => 'Level :level',
+    'answer' => 'Answer',
     'levels' => 'Levels',
     'reading' => 'Reading',
+    'answered' => 'Answered: :x',
     'browsing' => 'Browsing',
     'radicals' => 'Radicals',
     'readings' => 'Readings',
@@ -15,7 +18,11 @@ return [
     'sentences' => 'Example sentences',
     'burn-kanji' => 'Burn this kanji',
     'vocabulary' => 'Vocabulary',
+    'hide-labels' => 'Show labels on hover',
+    'show-labels' => 'Always show labels',
     'burn-radical' => 'Burn this key',
+    'words-trainer' => 'Hiragana words trainer',
     'burn-vocabulary' => 'Burn this vocabulary',
     'hiragana-katakana' => 'Hiragana and Katakana',
+    'hiragana-katakana-trainer' => 'Hiragana & Katakana trainer',
 ];

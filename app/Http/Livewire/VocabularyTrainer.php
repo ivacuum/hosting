@@ -3,23 +3,31 @@
 use App\Vocabulary;
 use Livewire\Component;
 
-class VocabularyPractice extends Component
+class VocabularyTrainer extends Component
 {
     const MAX_HISTORY = 5;
 
     /** @var Vocabulary */
     public $vocab;
 
-    /** @var \Illuminate\Support\Collection */
-    public $history = [];
-
-    public $answer = '';
-    public $reveal = false;
-    public $answered = 0;
+    public int $answered = 0;
+    public bool $reveal = false;
+    public array $history = [];
+    public string $answer = '';
 
     public function check()
     {
-        if (in_array(trim($this->answer), [$this->vocab->toRomaji(), $this->vocab->kana, $this->vocab->character])) {
+        $answer = trim(mb_strtolower($this->answer));
+
+        if ($answer === $this->vocab->toRomaji()) {
+            event(new \App\Events\Stats\VocabularyAnsweredRomaji);
+        } elseif ($answer === $this->vocab->kana) {
+            event(new \App\Events\Stats\VocabularyAnsweredHiragana);
+        } elseif ($answer === $this->vocab->character) {
+            event(new \App\Events\Stats\VocabularyAnsweredKanji);
+        }
+
+        if (in_array($answer, [$this->vocab->toRomaji(), $this->vocab->kana, $this->vocab->character])) {
             $this->answer = '';
             $this->reveal = false;
             $this->answered++;
@@ -35,16 +43,16 @@ class VocabularyPractice extends Component
     public function mount()
     {
         $this->pickRandomVocab();
+
+        event(new \App\Events\Stats\VocabularyMounted);
     }
 
     public function next()
     {
+        $this->pushHistory();
         $this->pickRandomVocab();
-    }
 
-    public function render()
-    {
-        return view('livewire.vocabulary-practice');
+        event(new \App\Events\Stats\VocabularySkipped);
     }
 
     private function pickRandomVocab()
