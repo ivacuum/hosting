@@ -30,6 +30,8 @@ return [
     'japanese-wanikani-vocabulary.show' => ':vocab',
     'japanese-wanikani-vocabulary.index' => 'Vocabulary',
 
+    'japanese-words-trainer' => 'Hiragana words trainer',
+
     'korean' => 'Korean language',
 
     'retracker.dev' => 'About retracker development',

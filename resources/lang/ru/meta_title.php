@@ -42,6 +42,8 @@ return [
     'japanese-wanikani-vocabulary.show' => ':vocab',
     'japanese-wanikani-vocabulary.index' => 'Словарные слова',
 
+    'japanese-words-trainer' => 'Тренажер по набору слов хираганой',
+
     'korean' => 'Корейский язык',
     'korean-psy' => 'Кириллизация песен PSY',
     'korean-psy-all-night-long' => 'Кириллизация песни PSY — All Night Long',
