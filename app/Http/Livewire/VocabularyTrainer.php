@@ -49,6 +49,8 @@ class VocabularyTrainer extends Component
 
     public function next()
     {
+        $this->answer = '';
+        $this->reveal = false;
         $this->pushHistory();
         $this->pickRandomVocab();
 
