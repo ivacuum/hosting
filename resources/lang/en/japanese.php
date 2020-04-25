@@ -5,7 +5,7 @@ return [
     'index' => 'Japanese language',
     'kanji' => 'Kanji',
     'level' => 'Level :level',
-    'answer' => 'Answer',
+    'answer' => 'Your answer',
     'levels' => 'Levels',
     'reading' => 'Reading',
     'answered' => 'Answered: :x',

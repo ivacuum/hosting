@@ -19,9 +19,13 @@
       <input
         tabindex="1"
         autocapitalize="none"
+        autocomplete="off"
+        autocorrect="off"
+        spellcheck="false"
         placeholder="{{ trans('japanese.answer') }}"
         enterkeyhint="enter"
-        class="form-input text-center"
+        class="form-input text-center {{ $reveal ? 'animate-incorrect-answer' : '' }}"
+        wire:dirty.class.remove="animate-incorrect-answer"
         wire:model.lazy="answer"
       >
     </form>

@@ -38,6 +38,8 @@ class VocabularyTrainer extends Component
         }
 
         $this->reveal = true;
+
+        event(new \App\Events\Stats\VocabularyAnswerRevealed);
     }
 
     public function mount()

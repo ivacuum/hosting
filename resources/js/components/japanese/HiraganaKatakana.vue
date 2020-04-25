@@ -51,6 +51,10 @@
             <input
               class="form-control text-center"
               autocapitalize="none"
+              autocomplete="off"
+              autocorrect="off"
+              spellcheck="false"
+              enterkeyhint="enter"
               placeholder="kana"
               :autofocus="focus"
               :value="input"

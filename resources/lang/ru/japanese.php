@@ -5,7 +5,7 @@ return [
     'index' => 'Японский язык',
     'kanji' => 'Кандзи',
     'level' => 'Уровень :level',
-    'answer' => 'Ответ',
+    'answer' => 'Ваш ответ',
     'levels' => 'Уровни',
     'reading' => 'Чтение',
     'answered' => 'Отвечено: :x',
