@@ -94,6 +94,7 @@
 @component('tpl.menu-dropdown', [
   'isActive' => in_array($controller, [
     App\Http\Controllers\Acp\Metrics::class,
+    App\Http\Controllers\Acp\Issues::class,
     App\Http\Controllers\Acp\Users::class,
     App\Http\Controllers\Acp\ExternalIdentities::class,
     App\Http\Controllers\Acp\Pages::class,
@@ -105,6 +106,7 @@
   @endslot
 
   <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/metrics">{{ trans('acp.metrics.index') }}</a>
+  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/issues">{{ trans('acp.issues.index') }}</a>
   <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/users">{{ trans('acp.users.index') }}</a>
   <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/external-identities">{{ trans('acp.external-identities.index') }}</a>
   <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/notifications">{{ trans('acp.notifications.index') }}</a>

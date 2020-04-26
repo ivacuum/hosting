@@ -76,4 +76,14 @@ class Issue extends Model
     {
         return $this->status === static::STATUS_CLOSED;
     }
+
+    public function isClosed(): bool
+    {
+        return $this->status === self::STATUS_CLOSED;
+    }
+
+    public function isNotClosed(): bool
+    {
+        return !$this->isClosed();
+    }
 }

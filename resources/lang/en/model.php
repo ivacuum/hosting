@@ -21,6 +21,7 @@ return [
     'artist_id' => 'Artist',
     'client_id' => 'Client',
     'country_id' => 'Country',
+    'created_at' => 'Created at',
     'q_placeholder' => 'Search...',
     'yandex_user_id' => 'Yandex API User',
 
