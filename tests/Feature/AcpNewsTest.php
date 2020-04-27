@@ -26,16 +26,15 @@ class AcpNewsTest extends TestCase
     {
         $news = NewsFactory::new()->create();
 
-        $this->getJson("acp/news/{$news->id}/edit")
-            ->assertOk()
-            ->assertJson(['model' => ['id' => $news->id]]);
+        $this->get("acp/news/{$news->id}/edit")
+            ->assertOk();
     }
 
     public function testIndex()
     {
         NewsFactory::new()->create();
 
-        $this->getJson('acp/news')
+        $this->get('acp/news')
             ->assertOk();
     }
 
@@ -43,24 +42,21 @@ class AcpNewsTest extends TestCase
     {
         $news = NewsFactory::new()->create();
 
-        $this->getJson("acp/news/{$news->id}")
-            ->assertOk()
-            ->assertJson(['data' => ['id' => $news->id]]);
+        $this->get("acp/news/{$news->id}")
+            ->assertOk();
     }
 
     public function testStore()
     {
-        $this->postJson('acp/news', NewsFactory::new()->make()->toArray())
-            ->assertCreated()
-            ->assertLocation('acp/news');
+        $this->post('acp/news', NewsFactory::new()->make()->toArray())
+            ->assertRedirect('acp/news');
     }
 
     public function testUpdate()
     {
         $news = NewsFactory::new()->create();
 
-        $this->putJson("acp/news/{$news->id}", NewsFactory::new()->make()->toArray())
-            ->assertOk()
-            ->assertJson(['status' => 'OK']);
+        $this->put("acp/news/{$news->id}", NewsFactory::new()->make()->toArray())
+            ->assertRedirect('acp/news');
     }
 }

@@ -26,9 +26,8 @@ class AcpArtistsTest extends TestCase
     {
         $artist = ArtistFactory::new()->create();
 
-        $this->getJson("acp/artists/{$artist->id}/edit")
-            ->assertOk()
-            ->assertJson(['model' => ['id' => $artist->id]]);
+        $this->get("acp/artists/{$artist->id}/edit")
+            ->assertOk();
     }
 
     public function testIndex()
@@ -43,24 +42,21 @@ class AcpArtistsTest extends TestCase
     {
         $artist = ArtistFactory::new()->create();
 
-        $this->getJson("acp/artists/{$artist->id}")
-            ->assertOk()
-            ->assertJson(['data' => ['id' => $artist->id]]);
+        $this->get("acp/artists/{$artist->id}")
+            ->assertOk();
     }
 
     public function testStore()
     {
-        $this->postJson('acp/artists', ArtistFactory::new()->make()->toArray())
-            ->assertCreated()
-            ->assertLocation('acp/artists');
+        $this->post('acp/artists', ArtistFactory::new()->make()->toArray())
+            ->assertRedirect('acp/artists');
     }
 
     public function testUpdate()
     {
         $artist = ArtistFactory::new()->create();
 
-        $this->putJson("acp/artists/{$artist->id}", ArtistFactory::new()->make()->toArray())
-            ->assertOk()
-            ->assertJson(['status' => 'OK']);
+        $this->put("acp/artists/{$artist->id}", ArtistFactory::new()->make()->toArray())
+            ->assertRedirect('acp/artists');
     }
 }

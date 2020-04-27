@@ -26,16 +26,15 @@ class AcpTagsTest extends TestCase
     {
         $tag = TagFactory::new()->create();
 
-        $this->getJson("acp/tags/{$tag->id}/edit")
-            ->assertOk()
-            ->assertJson(['model' => ['id' => $tag->id]]);
+        $this->get("acp/tags/{$tag->id}/edit")
+            ->assertOk();
     }
 
     public function testIndex()
     {
         TagFactory::new()->create();
 
-        $this->getJson('acp/tags')
+        $this->get('acp/tags')
             ->assertOk();
     }
 
@@ -43,31 +42,21 @@ class AcpTagsTest extends TestCase
     {
         $tag = TagFactory::new()->create();
 
-        $this->getJson("acp/tags/{$tag->id}")
-            ->assertOk()
-            ->assertJson(['data' => ['id' => $tag->id]]);
+        $this->get("acp/tags/{$tag->id}")
+            ->assertOk();
     }
 
     public function testStore()
     {
-        $this->postJson('acp/tags', TagFactory::new()->make()->toArray())
-            ->assertCreated()
-            ->assertLocation('acp/tags');
-    }
-
-    public function testVue()
-    {
-        $this->get('acp/tags')
-            ->assertOk()
-            ->assertViewIs('acp.index');
+        $this->post('acp/tags', TagFactory::new()->make()->toArray())
+            ->assertRedirect('acp/tags');
     }
 
     public function testUpdate()
     {
         $tag = TagFactory::new()->create();
 
-        $this->putJson("acp/tags/{$tag->id}", TagFactory::new()->make()->toArray())
-            ->assertOk()
-            ->assertJson(['status' => 'OK']);
+        $this->put("acp/tags/{$tag->id}", TagFactory::new()->make()->toArray())
+            ->assertRedirect('acp/tags');
     }
 }
