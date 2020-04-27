@@ -55,13 +55,6 @@ class AcpArtistsTest extends TestCase
             ->assertLocation('acp/artists');
     }
 
-    public function testVue()
-    {
-        $this->get('acp/artists')
-            ->assertOk()
-            ->assertViewIs('acp.index');
-    }
-
     public function testUpdate()
     {
         $artist = ArtistFactory::new()->create();

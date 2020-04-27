@@ -6,19 +6,20 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Artists extends Controller
 {
-    protected $apiOnly = true;
-
     public function index()
     {
-        $models = Model::orderBy('title')
+        $models = Model::query()
+            ->orderBy('title')
             ->paginate(500)
             ->withPath(path([self::class, 'index']));
 
-        return $this->modelResourceCollection($models);
+        return view($this->view, [
+            'models' => $models,
+        ]);
     }
 
     /**
-     * @param  Model|null $model
+     * @param Model|null $model
      * @return array
      */
     protected function rules($model = null)

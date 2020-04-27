@@ -4,8 +4,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
 /**
- * Артист
- *
  * @property int $id
  * @property string $title
  * @property string $slug
