@@ -33,7 +33,7 @@
         @endif
       </div>
       <div class="comment-body whitespace-pre-line">{!! $comment->html !!}</div>
-      <div class="small text-muted">{{ $comment->fullDate() }}</div>
+      <div class="text-xs text-muted">{{ $comment->fullDate() }}</div>
     </div>
   </div>
 @endforeach

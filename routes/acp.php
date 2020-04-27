@@ -62,9 +62,9 @@ Route::get('images/{id}/view', [Acp\Images::class, 'view']);
 
 RouteHelper::withoutCreateAndEdit(Acp\Issues::class);
 Route::post('issues/batch', [Acp\Issues::class, 'batch']);
-Route::post('issues/{id}/close', Acp\IssueClose::class);
-Route::post('issues/{id}/comment', Acp\IssueComment::class);
-Route::post('issues/{id}/open', Acp\IssueOpen::class);
+Route::post('issues/{issue}/close', Acp\IssueCloseController::class);
+Route::post('issues/{issue}/comment', Acp\IssueCommentController::class);
+Route::post('issues/{issue}/open', Acp\IssueOpenController::class);
 
 RouteHelper::withoutCreate(Acp\Kanjis::class);
 

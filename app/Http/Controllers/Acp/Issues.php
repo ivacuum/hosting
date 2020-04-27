@@ -6,8 +6,9 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Issues extends Controller
 {
-    protected $apiOnly = true;
     protected $showWith = ['comments.user'];
+    protected $sortableKeys = ['id', 'comments_count'];
+    protected $showWithCount = ['comments'];
 
     public function index()
     {
@@ -16,7 +17,7 @@ class Issues extends Controller
 
         [$sortKey, $sortDir] = $this->getSortParams();
 
-        $models = Model::with('user')
+        $models = Model::query()
             ->withCount('comments')
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->unless(null === $status, fn (Builder $query) => $query->where('status', $status))
@@ -24,7 +25,9 @@ class Issues extends Controller
             ->paginate(50)
             ->withPath(path([self::class, 'index']));
 
-        return $this->modelResourceCollection($models);
+        return view($this->view, [
+            'models' => $models,
+        ]);
     }
 
     public function batch()

@@ -56,15 +56,6 @@ export default new VueRouter({
           ],
         },
 
-        { path: 'issues', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Issues/Index.vue') },
-        {
-          path: 'issues/:id',
-          component: () => import(/* webpackChunkName: "acp" */'./components/acp/DefaultItemLayout.vue'),
-          children: [
-            { path: '/', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Issues/Show.vue') },
-          ],
-        },
-
         { path: 'tags', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Tags/Index.vue') },
         { path: 'tags/create', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Tags/Form.vue') },
         {
