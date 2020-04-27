@@ -6,32 +6,12 @@ export default {
     return {
       locale,
       lifeMenu: ['cities', 'countries', 'trips', 'gigs', 'artists', 'tags', 'photos'],
-      siteMenu: ['metrics', 'issues', 'users', 'external-identities', 'notifications', 'pages'],
-      hostingMenu: ['clients', 'domains', 'servers', 'yandex-users'],
-      japaneseMenu: ['kanjis', 'radicals', 'vocabularies'],
-      resourcesMenu: ['chat-messages', 'comments', 'dcpp-hubs', 'files', 'news', 'images', 'torrents'],
     }
   },
 
   computed: {
-    hostingMenuActive() {
-      return this.hostingMenu.some((el) => this.$route.path.startsWith(`${this.locale}/acp/${el}`))
-    },
-
-    japaneseMenuActive() {
-      return this.japaneseMenu.some((el) => this.$route.path.startsWith(`${this.locale}/acp/${el}`))
-    },
-
     lifeMenuActive() {
       return this.lifeMenu.some((el) => this.$route.path.startsWith(`${this.locale}/acp/${el}`))
-    },
-
-    resourcesMenuActive() {
-      return this.resourcesMenu.some((el) => this.$route.path.startsWith(`${this.locale}/acp/${el}`))
-    },
-
-    siteMenuActive() {
-      return this.siteMenu.some((el) => this.$route.path.startsWith(`${this.locale}/acp/${el}`))
     },
   }
 }
@@ -66,86 +46,6 @@ export default {
               class="dropdown-item-tw"
               :to="`${locale}/acp/${section}`"
               v-for="section in lifeMenu"
-              :key="section"
-            >
-              {{ $t(`${section}.index`)}}
-            </router-link>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a
-            class="block md:border-b-2 md:border-transparent md:-mb-2px px-0 md:px-2 py-3 md:py-4 text-grey-600 hover:text-grey-900 outline-none dropdown-toggle"
-            :class="{ 'md:border-blueish-500 text-grey-900': hostingMenuActive }"
-            href="#"
-            data-toggle="dropdown"
-          >
-            {{ $t('menu.hosting') }}
-          </a>
-          <div class="dropdown-menu leading-normal">
-            <router-link
-              class="dropdown-item-tw"
-              :to="`${locale}/acp/${section}`"
-              v-for="section in hostingMenu"
-              :key="section"
-            >
-              {{ $t(`${section}.index`)}}
-            </router-link>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a
-            class="block md:border-b-2 md:border-transparent md:-mb-2px px-0 md:px-2 py-3 md:py-4 text-grey-600 hover:text-grey-900 outline-none dropdown-toggle"
-            :class="{ 'md:border-blueish-500 text-grey-900': resourcesMenuActive }"
-            href="#"
-            data-toggle="dropdown"
-          >
-            {{ $t('menu.resources') }}
-          </a>
-          <div class="dropdown-menu leading-normal">
-            <router-link
-              class="dropdown-item-tw"
-              :to="`${locale}/acp/${section}`"
-              v-for="section in resourcesMenu"
-              :key="section"
-            >
-              {{ $t(`${section}.index`)}}
-            </router-link>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a
-            class="block md:border-b-2 md:border-transparent md:-mb-2px px-0 md:px-2 py-3 md:py-4 text-grey-600 hover:text-grey-900 outline-none dropdown-toggle"
-            :class="{ 'md:border-blueish-500 text-grey-900': japaneseMenuActive }"
-            href="#"
-            data-toggle="dropdown"
-          >
-            {{ $t('menu.japanese') }}
-          </a>
-          <div class="dropdown-menu leading-normal">
-            <router-link
-              class="dropdown-item-tw"
-              :to="`${locale}/acp/${section}`"
-              v-for="section in japaneseMenu"
-              :key="section"
-            >
-              {{ $t(`${section}.index`)}}
-            </router-link>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a
-            class="block md:border-b-2 md:border-transparent md:-mb-2px px-0 md:px-2 py-3 md:py-4 text-grey-600 hover:text-grey-900 outline-none dropdown-toggle"
-            :class="{ 'md:border-blueish-500 text-grey-900': siteMenuActive }"
-            href="#"
-            data-toggle="dropdown"
-          >
-            {{ $t('menu.site') }}
-          </a>
-          <div class="dropdown-menu leading-normal">
-            <router-link
-              class="dropdown-item-tw"
-              :to="`${locale}/acp/${section}`"
-              v-for="section in siteMenu"
               :key="section"
             >
               {{ $t(`${section}.index`)}}
