@@ -24,7 +24,7 @@
         <div class="flex mt-2">
           <div class="mr-2 text-center">
             <a
-              class="btn bg-vk text-xl rounded-full text-white hover:text-white"
+              class="btn bg-vk-600 text-xl rounded-full text-white hover:bg-vk-700 hover:text-white"
               href="{{ path([App\Http\Controllers\Auth\Vk::class, 'index'], ['goto' => "{$localeUri}/{$requestUri}#comment-add"]) }}"
             >
               @svg (vk)
@@ -33,7 +33,7 @@
           </div>
           <div class="mr-2 text-center">
             <a
-              class="btn bg-facebook text-xl rounded-full text-white hover:text-white"
+              class="btn bg-facebook-600 text-xl rounded-full text-white hover:bg-facebook-700 hover:text-white"
               href="{{ path([App\Http\Controllers\Auth\Facebook::class, 'index'], ['goto' => "{$localeUri}/{$requestUri}#comment-add"]) }}"
             >
               @svg (facebook)
@@ -42,7 +42,7 @@
           </div>
           <div class="mr-2 text-center">
             <a
-              class="btn bg-google text-xl rounded-full text-white hover:text-white"
+              class="btn bg-google-600 text-xl rounded-full text-white hover:bg-google-700 hover:text-white"
               href="{{ path([App\Http\Controllers\Auth\Google::class, 'index'], ['goto' => "{$localeUri}/{$requestUri}#comment-add"]) }}"
             >
               @svg (google)

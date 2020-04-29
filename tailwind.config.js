@@ -1,6 +1,6 @@
 module.exports = {
   theme: {
-    customForms: theme => ({
+    customForms: (theme) => ({
       default: {
         input: {
           borderColor: theme('colors.gray.300'),
@@ -85,6 +85,48 @@ module.exports = {
           800: '#285e61',
           900: '#234e52',
         },
+
+        // Socials
+        facebook: {
+          600: 'hsl(227, 50%, 38%)',
+          700: 'hsl(227, 50%, 28%)',
+        },
+        github: {
+          600: 'hsl(0, 0%, 20%)',
+          700: 'hsl(0, 0%, 10%)',
+        },
+        google: {
+          600: 'hsl(5, 68%, 53%)',
+          700: 'hsl(5, 68%, 43%)',
+        },
+        odnoklassniki: {
+          600: 'hsl(25, 88%, 56%)',
+          700: 'hsl(25, 88%, 46%)',
+        },
+        telegram: {
+          600: 'hsl(200, 66%, 48%)',
+          700: 'hsl(200, 66%, 38%)',
+        },
+        twitter: {
+          600: 'hsl(202, 90%, 57%)',
+          700: 'hsl(202, 90%, 47%)',
+        },
+        viber: {
+          600: 'hsl(274, 48%, 46%)',
+          700: 'hsl(274, 48%, 36%)',
+        },
+        vk: {
+          600: 'hsl(211, 30%, 46%)',
+          700: 'hsl(211, 30%, 36%)',
+        },
+        whatsapp: {
+          600: 'hsl(114, 44%, 50%)',
+          700: 'hsl(114, 44%, 40%)',
+        },
+        yandex: {
+          600: 'hsl(0, 100%, 50%)',
+          700: 'hsl(0, 100%, 40%)',
+        },
       },
       flex: {
         'h-full': '1 0 auto',
@@ -131,6 +173,7 @@ module.exports = {
     textDecoration: ['responsive', 'hover', 'focus', 'group-hover'],
   },
   plugins: [
+    // eslint-disable-next-line global-require
     require('@tailwindcss/ui'),
   ],
 }
