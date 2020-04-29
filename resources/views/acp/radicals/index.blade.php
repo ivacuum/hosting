@@ -54,11 +54,9 @@
       </td>
       <td>{{ $model->meaning }}</td>
       <td class="md:text-right whitespace-no-wrap">
-        @if ($model->kanjis_count > 0)
-          <a href="{{ path([App\Http\Controllers\Acp\Kanjis::class, 'index'], [$model->getForeignKey() => $model]) }}">
-            {{ ViewHelper::number($model->kanjis_count) }}
-          </a>
-        @endif
+        <a href="{{ path([App\Http\Controllers\Acp\Kanjis::class, 'index'], [$model->getForeignKey() => $model]) }}">
+          {{ ViewHelper::number($model->kanjis_count) ?: '' }}
+        </a>
       </td>
     </tr>
   @endforeach

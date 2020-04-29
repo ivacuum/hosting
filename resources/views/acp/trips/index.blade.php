@@ -68,14 +68,10 @@
         </a>
       </td>
       <td class="md:text-right whitespace-no-wrap">
-        @if ($model->views > 0)
-          {{ ViewHelper::number($model->views) }}
-        @endif
+        {{ ViewHelper::number($model->views) ?: '' }}
       </td>
       <td class="md:text-right whitespace-no-wrap">
-        @if ($model->comments_count > 0)
-          {{ ViewHelper::number($model->comments_count) }}
-        @endif
+        {{ ViewHelper::number($model->comments_count) ?: '' }}
       </td>
       <td>
         @if ($model->meta_image)
@@ -87,11 +83,9 @@
         @endif
       </td>
       <td class="md:text-right whitespace-no-wrap">
-        @if ($model->photos_count > 0)
-          <a href="{{ path([App\Http\Controllers\Acp\Photos::class, 'index'], [$model->getForeignKey() => $model]) }}">
-            {{ ViewHelper::number($model->photos_count) }}
-          </a>
-        @endif
+        <a href="{{ path([App\Http\Controllers\Acp\Photos::class, 'index'], [$model->getForeignKey() => $model]) }}">
+          {{ ViewHelper::number($model->photos_count) ?: '' }}
+        </a>
       </td>
       <td class="md:text-right">
         @if ($model->user_id === 1)

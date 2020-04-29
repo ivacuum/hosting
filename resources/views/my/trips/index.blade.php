@@ -68,14 +68,10 @@
           @endif
         </td>
         <td class="md:text-right whitespace-no-wrap">
-          @if ($model->views > 0)
-            {{ ViewHelper::number($model->views) }}
-          @endif
+          {{ ViewHelper::number($model->views) ?: '' }}
         </td>
         <td class="md:text-right whitespace-no-wrap">
-          @if ($model->comments_count > 0)
-            {{ ViewHelper::number($model->comments_count) }}
-          @endif
+          {{ ViewHelper::number($model->comments_count) ?: '' }}
         </td>
         <td><a href="{{ UrlHelper::edit($controller, $model) }}">@svg (pencil)</a></td>
       </tr>

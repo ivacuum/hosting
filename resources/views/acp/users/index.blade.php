@@ -76,32 +76,24 @@
         @endif
       </td>
       <td class="md:text-right whitespace-no-wrap">
-        @if ($model->comments_count > 0)
-          <a href="{{ path([App\Http\Controllers\Acp\Comments::class, 'index'], [$model->getForeignKey() => $model]) }}">
-            {{ ViewHelper::number($model->comments_count) }}
-          </a>
-        @endif
+        <a href="{{ path([App\Http\Controllers\Acp\Comments::class, 'index'], [$model->getForeignKey() => $model]) }}">
+          {{ ViewHelper::number($model->comments_count) ?: '' }}
+        </a>
       </td>
       <td class="md:text-right whitespace-no-wrap">
-        @if ($model->images_count > 0)
-          <a href="{{ path([App\Http\Controllers\Acp\Images::class, 'index'], [$model->getForeignKey() => $model]) }}">
-            {{ ViewHelper::number($model->images_count) }}
-          </a>
-        @endif
+        <a href="{{ path([App\Http\Controllers\Acp\Images::class, 'index'], [$model->getForeignKey() => $model]) }}">
+          {{ ViewHelper::number($model->images_count) ?: '' }}
+        </a>
       </td>
       <td class="md:text-right whitespace-no-wrap">
-        @if ($model->torrents_count > 0)
-          <a href="{{ path([App\Http\Controllers\Acp\Torrents::class, 'index'], [$model->getForeignKey() => $model]) }}">
-            {{ ViewHelper::number($model->torrents_count) }}
-          </a>
-        @endif
+        <a href="{{ path([App\Http\Controllers\Acp\Torrents::class, 'index'], [$model->getForeignKey() => $model]) }}">
+          {{ ViewHelper::number($model->torrents_count) ?: '' }}
+        </a>
       </td>
       <td class="md:text-right whitespace-no-wrap">
-        @if ($model->trips_count > 0)
-          <a href="{{ path([App\Http\Controllers\Acp\Trips::class, 'index'], [$model->getForeignKey() => $model]) }}">
-            {{ ViewHelper::number($model->trips_count) }}
-          </a>
-        @endif
+        <a href="{{ path([App\Http\Controllers\Acp\Trips::class, 'index'], [$model->getForeignKey() => $model]) }}">
+          {{ ViewHelper::number($model->trips_count) ?: '' }}
+        </a>
       </td>
       <td>{{ ViewHelper::dateShort($model->created_at) }}</td>
       <td>{{ ViewHelper::dateShort($model->last_login_at) }}</td>

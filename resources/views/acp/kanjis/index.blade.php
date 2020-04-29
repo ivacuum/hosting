@@ -51,18 +51,14 @@
       </td>
       <td class="whitespace-pre-line">{{ implode("\n", explode(', ', $model->meaning)) }}</td>
       <td class="md:text-right whitespace-no-wrap">
-        @if ($model->radicals_count > 0)
-          <a href="{{ path([App\Http\Controllers\Acp\Radicals::class, 'index'], [$model->getForeignKey() => $model]) }}">
-            {{ ViewHelper::number($model->radicals_count) }}
-          </a>
-        @endif
+        <a href="{{ path([App\Http\Controllers\Acp\Radicals::class, 'index'], [$model->getForeignKey() => $model]) }}">
+          {{ ViewHelper::number($model->radicals_count) ?: '' }}
+        </a>
       </td>
       <td class="md:text-right whitespace-no-wrap">
-        @if ($model->similar_count > 0)
-          <a href="{{ path([$controller, 'index'], [$model->getForeignKey() => $model]) }}">
-            {{ ViewHelper::number($model->similar_count) }}
-          </a>
-        @endif
+        <a href="{{ path([$controller, 'index'], [$model->getForeignKey() => $model]) }}">
+          {{ ViewHelper::number($model->similar_count) ?: '' }}
+        </a>
       </td>
       <th>
         <a href="{{ $model->externalLink() }}" rel="noreferrer">

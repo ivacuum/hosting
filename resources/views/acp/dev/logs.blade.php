@@ -44,11 +44,7 @@
           @endif
         @endif
       </td>
-      <td>
-        @if ($line->body_bytes_sent > 0)
-          {{ ViewHelper::size($line->body_bytes_sent) }}
-        @endif
-      </td>
+      <td>{{ ViewHelper::size($line->body_bytes_sent) ?: '' }}</td>
       <td>
         <span title="{{ $line->referer }}">
           {{ Str::limit(str_replace(['http://www.', 'https://www.', 'http://', 'https://'], '', $line->referer), 35) }}

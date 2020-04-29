@@ -57,9 +57,7 @@
         <div>{{ $model->lon }}</div>
       </td>
       <td class="md:text-right whitespace-no-wrap">
-        @if ($model->views > 0)
-          {{ ViewHelper::number($model->views) }}
-        @endif
+        {{ ViewHelper::number($model->views) ?: '' }}
       </td>
       <td>
         <div class="desktop-hidden">

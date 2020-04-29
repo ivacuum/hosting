@@ -46,21 +46,15 @@
         </a>
       </td>
       <td class="md:text-right whitespace-no-wrap">
-        @if ($model->views > 0)
-          {{ ViewHelper::number($model->views) }}
-        @endif
+        {{ ViewHelper::number($model->views) ?: '' }}
       </td>
       <td class="md:text-right whitespace-no-wrap">
-        @if ($model->comments_count > 0)
-          <a href="{{ path([App\Http\Controllers\Acp\Comments::class, 'index'], [$model->getForeignKey() => $model]) }}">
-            {{ ViewHelper::number($model->comments_count) }}
-          </a>
-        @endif
+        <a href="{{ path([App\Http\Controllers\Acp\Comments::class, 'index'], [$model->getForeignKey() => $model]) }}">
+          {{ ViewHelper::number($model->comments_count) ?: '' }}
+        </a>
       </td>
       <td class="md:text-right whitespace-no-wrap">
-        @if ($model->clicks > 0)
-          {{ ViewHelper::number($model->clicks) }}
-        @endif
+        {{ ViewHelper::number($model->clicks) ?: '' }}
       </td>
       <td>
         @if ($model->status === App\Torrent::STATUS_HIDDEN)
