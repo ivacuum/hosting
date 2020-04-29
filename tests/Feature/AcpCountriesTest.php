@@ -26,48 +26,39 @@ class AcpCountriesTest extends TestCase
     {
         $country = CountryFactory::new()->create();
 
-        $this->getJson("acp/countries/{$country->id}/edit")
+        $this->get("acp/countries/{$country->id}/edit")
             ->assertOk()
-            ->assertJson(['model' => ['id' => $country->id]]);
+            ->assertSee($country->title);
     }
 
     public function testIndex()
     {
         CountryFactory::new()->create();
 
-        $this->getJson('acp/countries')
+        $this->get('acp/countries')
             ->assertOk();
     }
 
     public function testShow()
     {
-        $countries = CountryFactory::new()->create();
+        $country = CountryFactory::new()->create();
 
-        $this->getJson("acp/countries/{$countries->id}")
+        $this->get("acp/countries/{$country->id}")
             ->assertOk()
-            ->assertJson(['data' => ['id' => $countries->id]]);
+            ->assertSee($country->title);
     }
 
     public function testStore()
     {
-        $this->postJson('acp/countries', CountryFactory::new()->make()->toArray())
-            ->assertCreated()
-            ->assertLocation('acp/countries');
-    }
-
-    public function testVue()
-    {
-        $this->get('acp/countries')
-            ->assertOk()
-            ->assertViewIs('acp.index');
+        $this->post('acp/countries', CountryFactory::new()->make()->toArray())
+            ->assertRedirect('acp/countries');
     }
 
     public function testUpdate()
     {
         $country = CountryFactory::new()->create();
 
-        $this->putJson("acp/countries/{$country->id}", CountryFactory::new()->make()->toArray())
-            ->assertOk()
-            ->assertJson(['status' => 'OK']);
+        $this->put("acp/countries/{$country->id}", CountryFactory::new()->make()->toArray())
+            ->assertRedirect('acp/countries');
     }
 }

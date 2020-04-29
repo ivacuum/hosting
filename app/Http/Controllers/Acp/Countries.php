@@ -6,7 +6,6 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Countries extends Controller
 {
-    protected $apiOnly = true;
     protected $sortDir = 'asc';
     protected $sortKey = 'title';
     protected $sortableKeys = ['title', 'cities_count', 'trips_count', 'views'];
@@ -23,11 +22,13 @@ class Countries extends Controller
             ->paginate(500)
             ->withPath(path([self::class, 'index']));
 
-        return $this->modelResourceCollection($models);
+        return view($this->view, [
+            'models' => $models,
+        ]);
     }
 
     /**
-     * @param  Model|null $model
+     * @param Model|null $model
      * @return array
      */
     protected function rules($model = null)

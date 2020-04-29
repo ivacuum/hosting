@@ -12,17 +12,6 @@ export default new VueRouter({
         { path: '/', name: 'acp', component: () => import(/* webpackChunkName: "acp" */'./components/acp/AcpDashboard.vue') },
         { path: 'quiz', component: () => import(/* webpackChunkName: "trainers" */'./components/trainer/Quiz.vue') },
 
-        { path: 'countries', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Countries/Index.vue') },
-        { path: 'countries/create', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Countries/Form.vue') },
-        {
-          path: 'countries/:id',
-          component: () => import(/* webpackChunkName: "acp" */'./components/acp/DefaultItemLayout.vue'),
-          children: [
-            { path: '/', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Countries/Show.vue') },
-            { path: 'edit', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Countries/Form.vue') },
-          ],
-        },
-
         { path: 'gigs', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Gigs/Index.vue') },
         { path: 'gigs/create', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Gigs/Form.vue') },
         {
