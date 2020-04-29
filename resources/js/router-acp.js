@@ -44,17 +44,6 @@ export default new VueRouter({
             { path: 'edit', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Gigs/Form.vue') },
           ],
         },
-
-        { path: 'trips', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Trips/Index.vue') },
-        { path: 'trips/create', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Trips/Form.vue') },
-        {
-          path: 'trips/:id',
-          component: () => import(/* webpackChunkName: "acp" */'./components/acp/Trips/Layout.vue'),
-          children: [
-            { path: '/', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Trips/Show.vue') },
-            { path: 'edit', component: () => import(/* webpackChunkName: "acp" */'./components/acp/Trips/Form.vue') },
-          ],
-        },
       ],
     },
   ],
