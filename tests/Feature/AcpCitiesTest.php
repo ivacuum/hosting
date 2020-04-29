@@ -26,16 +26,16 @@ class AcpCitiesTest extends TestCase
     {
         $city = CityFactory::new()->withCountry()->create();;
 
-        $this->getJson("acp/cities/{$city->id}/edit")
+        $this->get("acp/cities/{$city->id}/edit")
             ->assertOk()
-            ->assertJson(['model' => ['id' => $city->id]]);
+            ->assertSee($city->title);
     }
 
     public function testIndex()
     {
         CityFactory::new()->withCountry()->create();
 
-        $this->getJson('acp/cities')
+        $this->get('acp/cities')
             ->assertOk();
     }
 
@@ -43,31 +43,22 @@ class AcpCitiesTest extends TestCase
     {
         $city = CityFactory::new()->withCountry()->create();
 
-        $this->getJson("acp/cities/{$city->id}")
+        $this->get("acp/cities/{$city->id}")
             ->assertOk()
-            ->assertJson(['data' => ['id' => $city->id]]);
+            ->assertSee($city->title);
     }
 
     public function testStore()
     {
-        $this->postJson('acp/cities', CityFactory::new()->withCountry()->make()->toArray())
-            ->assertCreated()
-            ->assertLocation('acp/cities');
-    }
-
-    public function testVue()
-    {
-        $this->get('acp/cities')
-            ->assertOk()
-            ->assertViewIs('acp.index');
+        $this->post('acp/cities', CityFactory::new()->withCountry()->make()->toArray())
+            ->assertRedirect('acp/cities');
     }
 
     public function testUpdate()
     {
         $city = CityFactory::new()->withCountry()->create();
 
-        $this->putJson("acp/cities/{$city->id}", CityFactory::new()->withCountry()->make()->toArray())
-            ->assertOk()
-            ->assertJson(['status' => 'OK']);
+        $this->put("acp/cities/{$city->id}", CityFactory::new()->withCountry()->make()->toArray())
+            ->assertRedirect('acp/cities');
     }
 }

@@ -325,18 +325,6 @@ class Country extends Model
         return static::orderBy($titleField)->get(['id', $titleField])->pluck($titleField, 'id');
     }
 
-    public static function forInputSelectJs(): Collection
-    {
-        $titleField = static::titleField();
-
-        return static::orderBy($titleField)
-            ->get(['id', $titleField])
-            ->map(fn (self $country) => [
-                'key' => $country->id,
-                'value' => $country->{$titleField},
-            ]);
-    }
-
     public function initial(): string
     {
         return mb_substr($this->title, 0, 1);
@@ -350,5 +338,10 @@ class Country extends Model
     public function www(): string
     {
         return path([Http\Controllers\Life::class, 'country'], $this->slug);
+    }
+
+    public function wwwAcp(): string
+    {
+        return path([Http\Controllers\Acp\Countries::class, 'show'], $this);
     }
 }

@@ -34,7 +34,7 @@ class AcpArtistsTest extends TestCase
     {
         ArtistFactory::new()->create();
 
-        $this->getJson('acp/artists')
+        $this->get('acp/artists')
             ->assertOk();
     }
 

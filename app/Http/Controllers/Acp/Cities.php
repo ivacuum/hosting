@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\City as Model;
-use App\Country;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Controllers\Acp\Controller;
@@ -9,7 +8,6 @@ use Ivacuum\Generic\Services\GoogleGeocoder;
 
 class Cities extends Controller
 {
-    protected $apiOnly = true;
     protected $sortDir = 'asc';
     protected $sortKey = 'title';
     protected $sortableKeys = ['title', 'trips_count', 'views'];
@@ -32,7 +30,9 @@ class Cities extends Controller
             ->paginate()
             ->withPath(path([self::class, 'index']));
 
-        return $this->modelResourceCollection($models);
+        return view($this->view, [
+            'models' => $models,
+        ]);
     }
 
     public function geodata(GoogleGeocoder $geocoder)
@@ -48,13 +48,8 @@ class Cities extends Controller
         ];
     }
 
-    protected function appendToCreateAndEditResponse($model): array
-    {
-        return ['countries' => Country::forInputSelectJs()];
-    }
-
     /**
-     * @param  Model|null $model
+     * @param Model|null $model
      * @return array
      */
     protected function rules($model = null)

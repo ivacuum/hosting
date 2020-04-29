@@ -108,4 +108,14 @@ class City extends Model
     {
         return path([Http\Controllers\Life::class, 'page'], $this->slug);
     }
+
+    public function wwwAcp(): string
+    {
+        return path([Http\Controllers\Acp\Cities::class, 'show'], $this);
+    }
+
+    public function wwwAcpPhotos(): string
+    {
+        return path([Http\Controllers\Acp\Photos::class, 'index'], [$this->getForeignKey() => $this]);
+    }
 }
