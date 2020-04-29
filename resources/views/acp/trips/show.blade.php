@@ -12,7 +12,7 @@
     <img class="max-w-full h-auto rounded" src="{{ $model->metaImage() }}" alt="">
   </div>
 @endif
-<form class="mt-4" action="{{ path([$controller, 'notify'], $model) }}" method="post">
+<form class="mt-4" action="{{ path(App\Http\Controllers\Acp\TripPublishedNotify::class, $model) }}" method="post">
   @csrf
   <button class="btn btn-default">{{ trans("$tpl.notify") }}</button>
 </form>

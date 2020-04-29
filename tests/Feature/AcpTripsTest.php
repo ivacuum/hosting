@@ -26,16 +26,15 @@ class AcpTripsTest extends TestCase
     {
         $trip = TripFactory::new()->create();
 
-        $this->getJson("acp/trips/{$trip->id}/edit")
-            ->assertOk()
-            ->assertJson(['model' => ['id' => $trip->id]]);
+        $this->get("acp/trips/{$trip->id}/edit")
+            ->assertOk();
     }
 
     public function testIndex()
     {
         TripFactory::new()->create();
 
-        $this->getJson('acp/trips')
+        $this->get('acp/trips')
             ->assertOk();
     }
 
@@ -43,31 +42,21 @@ class AcpTripsTest extends TestCase
     {
         $trip = TripFactory::new()->create();
 
-        $this->getJson("acp/trips/{$trip->id}")
-            ->assertOk()
-            ->assertJson(['data' => ['id' => $trip->id]]);
+        $this->get("acp/trips/{$trip->id}")
+            ->assertOk();
     }
 
     public function testStore()
     {
-        $this->postJson('acp/trips', TripFactory::new()->make()->toArray())
-            ->assertCreated()
-            ->assertLocation('acp/trips');
-    }
-
-    public function testVue()
-    {
-        $this->get('acp/trips')
-            ->assertOk()
-            ->assertViewIs('acp.index');
+        $this->post('acp/trips', TripFactory::new()->make()->toArray())
+            ->assertRedirect('acp/trips');
     }
 
     public function testUpdate()
     {
         $trip = TripFactory::new()->create();
 
-        $this->putJson("acp/trips/{$trip->id}", TripFactory::new()->make()->toArray())
-            ->assertOk()
-            ->assertJson(['status' => 'OK']);
+        $this->put("acp/trips/{$trip->id}", TripFactory::new()->make()->toArray())
+            ->assertRedirect('acp/trips');
     }
 }

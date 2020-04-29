@@ -8,7 +8,6 @@ use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Trips extends Controller
 {
-    protected $apiOnly = true;
     protected $sortKey = 'date_start';
     protected $sortableKeys = ['date_start', 'views', 'comments_count', 'photos_count'];
     protected $showWithCount = ['comments', 'photos'];
@@ -42,12 +41,9 @@ class Trips extends Controller
             ->paginate(50)
             ->withPath(path([self::class, 'index']));
 
-        return $this->modelResourceCollection($models);
-    }
-
-    protected function appendToCreateAndEditResponse($model): array
-    {
-        return ['cities' => City::forInputSelectJs()];
+        return view($this->view, [
+            'models' => $models,
+        ]);
     }
 
     protected function newModelDefaults($model)
@@ -62,7 +58,7 @@ class Trips extends Controller
     }
 
     /**
-     * @param  Model|null $model
+     * @param Model|null $model
      * @return array
      */
     protected function rules($model = null)

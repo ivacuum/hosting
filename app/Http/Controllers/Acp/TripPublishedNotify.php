@@ -2,26 +2,22 @@
 
 use App\Http\Requests\Acp\TripPublishedNotifyRequest;
 use App\Jobs\NotifyTripSubscribers;
-use App\Trip as Model;
-use Carbon\CarbonImmutable;
+use App\Trip;
 use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class TripPublishedNotify extends Controller
 {
-    public function __invoke(int $id, TripPublishedNotifyRequest $request): array
+    public function __invoke(Trip $trip, TripPublishedNotifyRequest $request)
     {
-        /** @var Model $model */
-        $model = $this->getModel($id);
-
-        if ($model->isNotPublished()) {
+        if ($trip->isNotPublished()) {
             return [
                 'status' => 'error',
                 'message' => 'Для рассылки уведомлений поездка должна быть опубликована',
             ];
         }
 
-        NotifyTripSubscribers::dispatch($model)
-            ->delay(CarbonImmutable::parse($request->input('date')));
+        NotifyTripSubscribers::dispatch($trip)
+            ->delay($request->date());
 
         return [
             'status' => 'OK',
@@ -31,6 +27,6 @@ class TripPublishedNotify extends Controller
 
     protected function getModelName(): string
     {
-        return Model::class;
+        return Trip::class;
     }
 }

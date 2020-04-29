@@ -98,7 +98,7 @@ RouteHelper::crud(Acp\Tags::class);
 RouteHelper::withoutCreate(Acp\Torrents::class);
 
 RouteHelper::crud(Acp\Trips::class);
-Route::post('trips/{id}/notify', Acp\TripPublishedNotify::class);
+Route::post('trips/{trip}/notify', Acp\TripPublishedNotify::class);
 
 RouteHelper::crud(Acp\Users::class);
 
