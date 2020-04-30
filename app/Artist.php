@@ -32,15 +32,4 @@ class Artist extends Model
     {
         return static::orderBy('title')->get(['id', 'title'])->pluck('title', 'id');
     }
-
-    public static function forInputSelectJs(): Collection
-    {
-        return static::orderBy('title')
-            ->get(['id', 'title', 'slug'])
-            ->map(fn (self $artist) => [
-                'key' => $artist->id,
-                'slug' => $artist->slug,
-                'value' => $artist->title,
-            ]);
-    }
 }

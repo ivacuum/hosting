@@ -17,7 +17,7 @@ export default function initVueAppSpa(selector, locale = 'ru') {
         silentTranslationWarn: true,
       }),
       store,
-      render: h => h(App),
+      render: (h) => h(App),
       router,
 
       data() {

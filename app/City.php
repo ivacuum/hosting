@@ -69,19 +69,6 @@ class City extends Model
         return static::orderBy($titleField)->get(['id', $titleField])->pluck($titleField, 'id');
     }
 
-    public static function forInputSelectJs(): Collection
-    {
-        $titleField = static::titleField();
-
-        return static::orderBy($titleField)
-            ->get(['id', 'slug', $titleField])
-            ->map(fn (self $city) => [
-                'key' => $city->id,
-                'slug' => $city->slug,
-                'value' => $city->{$titleField},
-            ]);
-    }
-
     public function initial(): string
     {
         return mb_substr($this->title, 0, 1);

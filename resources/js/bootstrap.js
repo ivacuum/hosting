@@ -1,13 +1,10 @@
 import './laravel-axios'
 import './laravel-echo'
 
-import decimal from './decimal'
 import Youtube from './components/Youtube.vue'
 import FeedbackForm from './components/FeedbackForm.vue'
 
 Vue.config.productionTip = false
-
-Vue.filter('decimal', decimal)
 
 Vue.component('avatar-uploader', () => import(/* webpackChunkName: "my" */'./components/AvatarUploader.vue'))
 Vue.component('chat', () => import(/* webpackChunkName: "magnets" */'./components/Chat.vue'))

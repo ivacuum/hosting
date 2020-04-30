@@ -26,16 +26,16 @@ class AcpGigsTest extends TestCase
     {
         $gig = GigFactory::new()->create();
 
-        $this->getJson("acp/gigs/{$gig->id}/edit")
+        $this->get("acp/gigs/{$gig->id}/edit")
             ->assertOk()
-            ->assertJson(['model' => ['id' => $gig->id]]);
+            ->assertSee($gig->title);
     }
 
     public function testIndex()
     {
         GigFactory::new()->create();
 
-        $this->getJson('acp/gigs')
+        $this->get('acp/gigs')
             ->assertOk();
     }
 
@@ -43,31 +43,22 @@ class AcpGigsTest extends TestCase
     {
         $gig = GigFactory::new()->create();
 
-        $this->getJson("acp/gigs/{$gig->id}")
+        $this->get("acp/gigs/{$gig->id}")
             ->assertOk()
-            ->assertJson(['data' => ['id' => $gig->id]]);
+            ->assertSee($gig->title);
     }
 
     public function testStore()
     {
-        $this->postJson('acp/gigs', GigFactory::new()->make()->toArray())
-            ->assertCreated()
-            ->assertLocation('acp/gigs');
-    }
-
-    public function testVue()
-    {
-        $this->get('acp/gigs')
-            ->assertOk()
-            ->assertViewIs('acp.index');
+        $this->post('acp/gigs', GigFactory::new()->make()->toArray())
+            ->assertRedirect('acp/gigs');
     }
 
     public function testUpdate()
     {
         $gig = GigFactory::new()->create();
 
-        $this->putJson("acp/gigs/{$gig->id}", GigFactory::new()->make()->toArray())
-            ->assertOk()
-            ->assertJson(['status' => 'OK']);
+        $this->put("acp/gigs/{$gig->id}", GigFactory::new()->make()->toArray())
+            ->assertRedirect('acp/gigs');
     }
 }

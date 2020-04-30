@@ -1,14 +1,11 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Artist;
-use App\City;
 use App\Gig as Model;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class Gigs extends Controller
 {
-    protected $apiOnly = true;
     protected $sortKey = 'date';
     protected $sortableKeys = ['date', 'views'];
 
@@ -20,29 +17,23 @@ class Gigs extends Controller
             ->paginate(500)
             ->withPath(path([self::class, 'index']));
 
-        return $this->modelResourceCollection($models);
-    }
-
-    protected function appendToCreateAndEditResponse($model): array
-    {
-        return [
-            'cities' => City::forInputSelectJs(),
-            'artists' => Artist::forInputSelectJs(),
-        ];
+        return view($this->view, [
+            'models' => $models,
+        ]);
     }
 
     protected function newModelDefaults($model)
     {
         /** @var Model $model */
         $model->date = now()->startOfDay();
-        $model->slug = 'artist.'.now()->year;
+        $model->slug = 'artist.' . now()->year;
         $model->status = Model::STATUS_HIDDEN;
 
         return $model;
     }
 
     /**
-     * @param  Model|null $model
+     * @param Model|null $model
      * @return array
      */
     protected function rules($model = null)
