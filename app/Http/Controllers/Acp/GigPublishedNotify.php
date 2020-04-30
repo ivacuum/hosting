@@ -1,18 +1,15 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Gig as Model;
+use App\Gig;
 use App\Notifications\GigPublishedNotification;
 use App\User;
 use Ivacuum\Generic\Controllers\Acp\Controller;
 
 class GigPublishedNotify extends Controller
 {
-    public function __invoke(int $id): array
+    public function __invoke(Gig $gig)
     {
-        /** @var Model $model */
-        $model = $this->getModel($id);
-
-        if ($model->isNotPublished()) {
+        if ($gig->isNotPublished()) {
             return [
                 'status' => 'error',
                 'message' => 'Для рассылки уведомлений концерт должен быть опубликован',
@@ -23,7 +20,7 @@ class GigPublishedNotify extends Controller
             ->where('status', User::STATUS_ACTIVE)
             ->get();
 
-        \Notification::send($users, new GigPublishedNotification($model));
+        \Notification::send($users, new GigPublishedNotification($gig));
 
         return [
             'status' => 'OK',
@@ -33,6 +30,6 @@ class GigPublishedNotify extends Controller
 
     protected function getModelName(): string
     {
-        return Model::class;
+        return Gig::class;
     }
 }
