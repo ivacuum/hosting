@@ -10,6 +10,7 @@ class JapaneseHiraganaKatakanaTest extends TestCase
     public function testIndex()
     {
         $this->get('japanese/hiragana-katakana')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertHasCustomTitle();
     }
 }

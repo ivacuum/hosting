@@ -76,7 +76,8 @@ class TorrentTest extends TestCase
     public function testPromo()
     {
         $this->get('torrent')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertHasCustomTitle();
     }
 
     public function testSearch()

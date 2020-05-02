@@ -1,7 +1,8 @@
-@extends('base')
+@extends('japanese.base')
+@include('livewire')
 
 @section('content')
-@livewire('vocabulary-trainer')
+@livewire(App\Http\Livewire\VocabularyTrainer::class)
 
 <div class="max-w-lg mt-12">
   <h1 class="h2">{{ trans('japanese.words-trainer') }}</h1>
@@ -22,12 +23,3 @@
   </div>
 </div>
 @endsection
-
-@push('head')
-@livewireStyles
-@endpush
-
-@push('js_vendor')
-@livewireScripts
-<script src="{{ mix('/assets/livewire-vue.js') }}"></script>
-@endpush

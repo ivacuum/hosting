@@ -5,6 +5,8 @@ use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Testing\Assert;
+use Illuminate\Testing\TestResponse;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -70,5 +72,16 @@ class AppServiceProvider extends ServiceProvider
         App\Vocabulary::observe(App\Observers\VocabularyObserver::class);
         App\YandexUser::observe(App\Observers\YandexUserObserver::class);
         App\ChatMessage::observe(App\Observers\ChatMessageObserver::class);
+
+        $this->testMacros();
+    }
+
+    private function testMacros()
+    {
+        TestResponse::macro('assertHasCustomTitle', function () {
+            Assert::assertStringNotContainsString('<title>' . config('cfg.sitename') . '</title>', $this->getContent());
+
+            return $this;
+        });
     }
 }

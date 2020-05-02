@@ -10,6 +10,7 @@ class JapaneseWordsTrainerTest extends TestCase
     public function testIndex()
     {
         $this->get('japanese/words-trainer')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertHasCustomTitle();
     }
 }

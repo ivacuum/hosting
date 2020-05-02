@@ -1,8 +1,4 @@
-<?php
-/**
- * @var \App\Vocabulary $vocab
- */
-?>
+<?php /** @var \App\Vocabulary $vocab */ ?>
 
 <div class="grid lg:grid-cols-2 gap-4">
   <div>
@@ -30,7 +26,31 @@
       >
     </form>
     <div class="flex items-center justify-between mt-2">
-      <div><button class="btn btn-default" wire:click="next">{{ trans('japanese.skip') }}</button></div>
+      <div class="flex items-center">
+        <button class="btn btn-default mr-2" wire:click="next">{{ trans('japanese.skip') }}</button>
+        @if ($vocab->male_audio_id)
+          <div class="mr-2">
+            <button
+              class="btn bg-blue-200 hover:bg-blue-300"
+              onclick="document.querySelector('#male_audio').play()"
+            >
+              @svg (volume-up-full)
+            </button>
+            <audio id="male_audio" src="{{ $vocab->maleAudioMp3() }}"></audio>
+          </div>
+        @endif
+        @if ($vocab->female_audio_id)
+          <div>
+            <button
+              class="btn bg-red-200 hover:bg-red-300"
+              onclick="document.querySelector('#female_audio').play()"
+            >
+              @svg (volume-up-full)
+            </button>
+            <audio id="female_audio" src="{{ $vocab->femaleAudioMp3() }}"></audio>
+          </div>
+        @endif
+      </div>
       <div class="text-muted">{{ $answered > 0 ? trans('japanese.answered', ['x' => $answered]) : '' }}</div>
     </div>
   </div>

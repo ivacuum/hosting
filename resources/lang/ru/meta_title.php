@@ -24,17 +24,14 @@ return [
     'dcpp.shakespeer' => 'Скачать ShakesPeer 0.9.2 для macOS',
     'dcpp.strongdc_install' => 'Инструкция по установке и настройке StrongDC++',
 
-    'home.index' => 'Сергей Панков · vacuum.kaluga',
+    'home' => 'Сергей Панков · vacuum.kaluga',
+
+    'japanese' => 'Японский язык',
 
     'japanese-hiragana-katakana.index' => 'Тренажер хираганы и катаканы онлайн, трейнер японских азбук',
 
-    'japanese-wanikani.index' => 'WaniKani V · Японский язык',
-
     'japanese-wanikani-kanji.show' => ':kanji',
     'japanese-wanikani-kanji.index' => 'Кандзи',
-
-    'japanese-wanikani-level.show' => 'Уровень :level',
-    'japanese-wanikani-level.index' => 'Уровни',
 
     'japanese-wanikani-radicals.show' => ':radical',
     'japanese-wanikani-radicals.index' => 'Ключи',
@@ -76,7 +73,12 @@ return [
     'korean-psy-white-night' => 'Кириллизация песни PSY — White Night',
 
     'retracker.dev' => 'О разработке ретрекера',
+    'retracker.index' => 'Что такое ретрекер и как его использовать · retracker.local',
     'retracker.usage' => 'Как использовать ретрекер',
 
     'torrent-promo.index' => 'Торрент-трекер в локальной сети Билайн-Калуга',
+
+    'wanikani' => 'WaniKani V · Японский язык',
+    'wanikani-level' => 'Уровень :level',
+    'wanikani-levels' => 'Уровни',
 ];

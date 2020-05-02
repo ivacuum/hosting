@@ -14,7 +14,8 @@ class LifeTest extends TestCase
         TripFactory::new()->create();
 
         $this->get('life/calendar')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertHasCustomTitle();
     }
 
     public function testCities()
@@ -23,7 +24,8 @@ class LifeTest extends TestCase
 
         $this->get('life/cities')
             ->assertStatus(200)
-            ->assertSee($trip->city->title);
+            ->assertSee($trip->city->title)
+            ->assertHasCustomTitle();
     }
 
     public function testCity()
@@ -32,7 +34,8 @@ class LifeTest extends TestCase
 
         $this->get("life/{$trip->city->slug}")
             ->assertStatus(200)
-            ->assertSee($trip->city->title);
+            ->assertSee($trip->city->title)
+            ->assertHasCustomTitle();
     }
 
     public function testCountries()
@@ -41,7 +44,8 @@ class LifeTest extends TestCase
 
         $this->get('life/countries')
             ->assertStatus(200)
-            ->assertSee($trip->city->country->title);
+            ->assertSee($trip->city->country->title)
+            ->assertHasCustomTitle();
     }
 
     public function testCountry()
@@ -50,7 +54,8 @@ class LifeTest extends TestCase
 
         $this->get("life/countries/{$trip->city->country->slug}")
             ->assertStatus(200)
-            ->assertSee($trip->city->country->title);
+            ->assertSee($trip->city->country->title)
+            ->assertHasCustomTitle();
     }
 
     public function testGigs()
@@ -59,7 +64,8 @@ class LifeTest extends TestCase
 
         $this->get('life/gigs')
             ->assertStatus(200)
-            ->assertSee($gig->artist->title);
+            ->assertSee($gig->artist->title)
+            ->assertHasCustomTitle();
     }
 
     public function testGig()
@@ -68,7 +74,8 @@ class LifeTest extends TestCase
         $gig->createStoryFile();
 
         $this->get("life/{$gig->slug}")
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertHasCustomTitle();
 
         $gig->deleteStoryFile();
     }
@@ -79,7 +86,8 @@ class LifeTest extends TestCase
 
         $this->get('life')
             ->assertStatus(200)
-            ->assertSee($trip->title);
+            ->assertSee($trip->title)
+            ->assertHasCustomTitle();
     }
 
     /**
@@ -88,7 +96,9 @@ class LifeTest extends TestCase
      */
     public function testPages(string $url)
     {
-        $this->get($url)->assertStatus(200);
+        $this->get($url)
+            ->assertStatus(200)
+            ->assertHasCustomTitle();
     }
 
     public function testTrip()
@@ -97,7 +107,8 @@ class LifeTest extends TestCase
         $trip->createStoryFile();
 
         $this->get("life/{$trip->slug}")
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertHasCustomTitle();
 
         $trip->deleteStoryFile();
     }

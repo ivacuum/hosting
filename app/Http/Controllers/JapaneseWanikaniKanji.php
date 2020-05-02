@@ -1,10 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Resources\Kanji as KanjiResource;
-use App\Http\Resources\KanjiCollection;
 use App\Kanji;
-use App\Vocabulary;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 
 class JapaneseWanikaniKanji extends Controller
 {
@@ -12,83 +9,34 @@ class JapaneseWanikaniKanji extends Controller
     {
         $this->middleware('breadcrumbs:japanese.index,japanese');
         $this->middleware('breadcrumbs:japanese.wanikani,japanese/wanikani');
-        $this->middleware('breadcrumbs:japanese.browsing');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        if (!request()->wantsJson()) {
-            return view('japanese.wanikani.vue');
-        }
+        $from = max(1, min(60, $request->input('from', 1)));
+        $to = min(60, $from + 9);
 
-        $level = request('level');
-        $userId = auth()->id();
-        $characters = [];
-        $radicalId = request('radical_id');
-        $similarId = request('similar_id');
-        $vocabularyId = request('vocabulary_id');
+        \Breadcrumbs::push(trans('japanese.kanji'));
 
-        $kanji = Kanji::orderBy('level')
-            ->orderBy('meaning')
-            ->userBurnable($userId)
-            ->when($radicalId, function (Builder $query) use ($radicalId) {
-                return $query->whereHas('radicals', function (Builder $query) use ($radicalId) {
-                    $query->where('radical_id', $radicalId);
-                });
-            })
-            ->when($similarId, function (Builder $query) use ($similarId) {
-                return $query->whereHas('similar', function (Builder $query) use ($similarId) {
-                    $query->where('similar_id', $similarId);
-                });
-            })
-            ->when($level >= 1 && $level <= 60, fn (Builder $query) => $query->where('level', $level))
-            ->when($vocabularyId, function (Builder $query) use (&$characters, $vocabularyId) {
-                $vocabulary = Vocabulary::findOrFail($vocabularyId);
-                $characters = $vocabulary->splitKanjiCharacters();
-
-                return $query->whereIn('character', $characters);
-            })
-            ->get(['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading'])
-            ->when($vocabularyId, function ($collection) use ($characters) {
-                // Сортировка кандзи в порядке использования в словарном слове
-                return $collection->map(function (Kanji $item) use ($characters) {
-                    $item->sort = 0;
-
-                    foreach ($characters as $i => $character) {
-                        $item->sort = $character === $item->character ? $i * 10 : $item->sort;
-                    }
-
-                    return $item;
-                })->sortBy('sort')->values();
-            });
-
-        return new KanjiCollection($kanji);
-    }
-
-    public function destroy(Kanji $kanji)
-    {
-        $kanji->burn(auth()->id());
-
-        return response()->noContent();
+        return view('japanese.wanikani.kanjis', [
+            'to' => $to,
+            'from' => $from,
+        ]);
     }
 
     public function show(string $character)
     {
-        if (!request()->wantsJson()) {
-            return view('japanese.wanikani.vue', ['metaReplace' => ['kanji' => $character]]);
-        }
-
+        /** @var Kanji $kanji */
         $kanji = Kanji::where('character', $character)
             ->userBurnable(auth()->id())
             ->firstOrFail();
 
-        return new KanjiResource($kanji);
-    }
+        \Breadcrumbs::push(trans('japanese.level', ['level' => $kanji->level]), "japanese/wanikani/level/{$kanji->level}");
+        \Breadcrumbs::push($kanji->character);
 
-    public function update(Kanji $kanji)
-    {
-        $kanji->resurrect(auth()->id());
-
-        return response()->noContent();
+        return view('japanese.wanikani.kanji', [
+            'kanji' => $kanji,
+            'metaReplace' => ['kanji' => $kanji->character],
+        ]);
     }
 }

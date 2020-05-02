@@ -139,6 +139,7 @@ module.exports = {
   variants: {
     textColor: ['responsive', 'hover', 'focus', 'group-hover'],
     textDecoration: ['responsive', 'hover', 'focus', 'group-hover'],
+    visibility: ['responsive', 'group-hover'],
   },
   plugins: [
     // eslint-disable-next-line global-require

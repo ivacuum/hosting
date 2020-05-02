@@ -10,6 +10,7 @@ class KoreanPsyTest extends TestCase
     public function testIndex()
     {
         $this->get('korean/psy')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertHasCustomTitle();
     }
 }

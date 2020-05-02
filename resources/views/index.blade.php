@@ -100,7 +100,7 @@
     @endru
   </div>
   <div>
-    <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Japanese::class, 'index']) }}">
+    <a class="flex items-center mb-2 link-parent" href="{{ path(App\Http\Controllers\JapaneseController::class) }}">
       <img class="w-8 h-6 mr-2 svg-shadow" src="https://ivacuum.org/i/flags/svg/jp.svg" alt="">
       <h2 class="text-2xl mb-0"><span class="link">{{ trans('japanese.index') }}</span></h2>
     </a>

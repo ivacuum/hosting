@@ -12,17 +12,14 @@ return [
     'dcpp.greylinkdc' => 'Download GreyLinkDC++ 0.49',
     'dcpp.shakespeer' => 'Download ShakesPeer 0.9.2 for macOS',
 
-    'home.index' => 'Sergey Pankov · vacuum.kaluga',
+    'home' => 'Sergey Pankov · vacuum.kaluga',
+
+    'japanese' => 'Japanese language',
 
     'japanese-hiragana-katakana.index' => 'Hiragana & Katakana Trainer. Practice Japanese Syllabaries Online',
 
-    'japanese-wanikani.index' => 'WaniKani V · Japanese',
-
     'japanese-wanikani-kanji.show' => 'Kanji :kanji',
     'japanese-wanikani-kanji.index' => 'Kanji',
-
-    'japanese-wanikani-level.show' => 'Level :level',
-    'japanese-wanikani-level.index' => 'Levels',
 
     'japanese-wanikani-radicals.show' => ':radical',
     'japanese-wanikani-radicals.index' => 'Radicals',
@@ -34,6 +31,11 @@ return [
 
     'korean' => 'Korean language',
 
+    'retracker.index' => 'What retracker is and how to use it · retracker.local',
     'retracker.dev' => 'About retracker development',
     'retracker.usage' => 'How to use retracker',
+
+    'wanikani' => 'WaniKani V · Japanese',
+    'wanikani-level' => 'Level :level',
+    'wanikani-levels' => 'Levels',
 ];

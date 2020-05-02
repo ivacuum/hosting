@@ -42,13 +42,13 @@
       <td>{{ $model->level }}</td>
       <td>
         <a
-          class="bg-radical block font-bold pb-1 px-2 rounded text-center text-white hover:text-grey-200"
+          class="bg-radical block font-bold pb-1 px-2 rounded leading-none text-6xl text-center text-white hover:text-grey-200"
           href="{{ path([$controller, 'show'], $model) }}"
         >
           @if ($model->character)
-            <span class="inline-block text-6xl leading-none ja-shadow">{{ $model->character }}</span>
+            <span class="inline-block ja-shadow">{{ $model->character }}</span>
           @else
-            <span class="text-6xl leading-none ja-image-shadow ja-svg">@svg (wk/$model->meaning)</span>
+            <span class="ja-image-shadow ja-svg">@svg (wk/$model->meaning)</span>
           @endif
         </a>
       </td>

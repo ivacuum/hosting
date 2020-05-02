@@ -11,7 +11,8 @@ class HomeTest extends TestCase
     public function testIndex()
     {
         $this->get('/')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertHasCustomTitle();
     }
 
     public function testIndexWithTrips()
@@ -31,6 +32,7 @@ class HomeTest extends TestCase
     public function testCv()
     {
         $this->get('cv')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertHasCustomTitle();
     }
 }

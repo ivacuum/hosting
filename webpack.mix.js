@@ -40,8 +40,6 @@ mix.js('resources/js/app.js', 'public/assets')
 
   .copy('node_modules/vue/dist/vue.min.js', 'public/assets/vue.js')
   .copy('node_modules/vue-i18n/dist/vue-i18n.min.js', 'public/assets/vue-i18n.js')
-  .copy('node_modules/vue-router/dist/vue-router.min.js', 'public/assets/vue-router.js')
-  .copy('node_modules/vuex/dist/vuex.min.js', 'public/assets/vuex.js')
 
   .copy('node_modules/axios/dist/axios.min.js', 'public/assets/axios.js')
   .copy('resources/js/empty.map', 'public/assets/axios.min.map')

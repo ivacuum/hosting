@@ -68,7 +68,7 @@
         </div>
       @endru
       <div class="mb-2">
-        <a class="link" href="{{ path([App\Http\Controllers\Japanese::class, 'index']) }}">{{ trans('life.japanese') }}</a>
+        <a class="link" href="{{ path(App\Http\Controllers\JapaneseController::class) }}">{{ trans('life.japanese') }}</a>
       </div>
     </nav>
   </section>

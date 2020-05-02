@@ -1,9 +1,8 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Resources\Vocabulary as VocabularyResource;
-use App\Http\Resources\VocabularyCollection;
 use App\Vocabulary;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 
 class JapaneseWanikaniVocabulary extends Controller
 {
@@ -11,53 +10,34 @@ class JapaneseWanikaniVocabulary extends Controller
     {
         $this->middleware('breadcrumbs:japanese.index,japanese');
         $this->middleware('breadcrumbs:japanese.wanikani,japanese/wanikani');
-        $this->middleware('breadcrumbs:japanese.browsing');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        if (!request()->wantsJson()) {
-            return view('japanese.wanikani.vue');
-        }
+        $from = max(1, min(60, $request->input('from', 1)));
+        $to = min(60, $from + 4);
 
-        $kanji = request('kanji');
-        $level = request('level');
-        $userId = auth()->id();
+        \Breadcrumbs::push(trans('japanese.vocabulary'));
 
-        $vocabulary = Vocabulary::orderBy('level')
-            ->orderBy('meaning')
-            ->userBurnable($userId)
-            ->when($kanji, fn (Builder $query) => $query->where('character', 'LIKE', "%{$kanji}%"))
-            ->when($level >= 1 && $level <= 60, fn (Builder $query) => $query->where('level', $level))
-            ->get(['id', 'level', 'character', 'kana', 'meaning']);
-
-        return new VocabularyCollection($vocabulary);
-    }
-
-    public function destroy(Vocabulary $vocabulary)
-    {
-        $vocabulary->burn(auth()->id());
-
-        return response()->noContent();
+        return view('japanese.wanikani.vocabularies', [
+            'to' => $to,
+            'from' => $from,
+        ]);
     }
 
     public function show(string $characters)
     {
-        if (!request()->wantsJson()) {
-            return view('japanese.wanikani.vue', ['metaReplace' => ['vocab' => $characters]]);
-        }
-
-        $vocabulary = Vocabulary::where('character', $characters)
+        /** @var Vocabulary $vocab */
+        $vocab = Vocabulary::where('character', $characters)
             ->userBurnable(auth()->id())
             ->firstOrFail();
 
-        return new VocabularyResource($vocabulary);
-    }
+        \Breadcrumbs::push(trans('japanese.level', ['level' => $vocab->level]), "japanese/wanikani/level/{$vocab->level}");
+        \Breadcrumbs::push($vocab->character);
 
-    public function update(Vocabulary $vocabulary)
-    {
-        $vocabulary->resurrect(auth()->id());
-
-        return response()->noContent();
+        return view('japanese.wanikani.vocabulary', [
+            'vocab' => $vocab,
+            'metaReplace' => ['vocab' => $vocab->character],
+        ]);
     }
 }

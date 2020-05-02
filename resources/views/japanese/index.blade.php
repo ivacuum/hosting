@@ -43,7 +43,7 @@
         </div>
 
         <h3 class="h4 mt-6">
-          <a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikani::class, 'index']) }}">
+          <a class="link" href="{{ path(App\Http\Controllers\WanikaniController::class) }}">
             {{ trans('japanese.wanikani') }}
           </a>
         </h3>

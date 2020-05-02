@@ -1,9 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Resources\Radical as RadicalResource;
-use App\Http\Resources\RadicalCollection;
 use App\Radical;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 
 class JapaneseWanikaniRadicals extends Controller
 {
@@ -11,57 +9,34 @@ class JapaneseWanikaniRadicals extends Controller
     {
         $this->middleware('breadcrumbs:japanese.index,japanese');
         $this->middleware('breadcrumbs:japanese.wanikani,japanese/wanikani');
-        $this->middleware('breadcrumbs:japanese.browsing');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        if (!request()->wantsJson()) {
-            return view('japanese.wanikani.vue');
-        }
+        $from = max(1, min(60, $request->input('from', 1)));
+        $to = min(60, $from + 9);
 
-        $level = request('level');
-        $userId = auth()->id();
-        $kanjiId = request('kanji_id');
+        \Breadcrumbs::push(trans('japanese.radicals'));
 
-        $radicals = Radical::orderBy('level')
-            ->orderBy('meaning')
-            ->userBurnable($userId)
-            ->when($kanjiId, function (Builder $query) use ($kanjiId) {
-                return $query->whereHas('kanjis', function (Builder $query) use ($kanjiId) {
-                    $query->where('kanji_id', $kanjiId);
-                });
-            })
-            ->when($level >= 1 && $level <= 60, fn (Builder $query) => $query->where('level', $level))
-            ->get(['id', 'level', 'character', 'meaning', 'image']);
-
-        return new RadicalCollection($radicals);
-    }
-
-    public function destroy(Radical $radical)
-    {
-        $radical->burn(auth()->id());
-
-        return response()->noContent();
+        return view('japanese.wanikani.radicals', [
+            'to' => $to,
+            'from' => $from,
+        ]);
     }
 
     public function show(string $meaning)
     {
-        if (!request()->wantsJson()) {
-            return view('japanese.wanikani.vue', ['metaReplace' => ['radical' => $meaning]]);
-        }
-
+        /** @var Radical $radical */
         $radical = Radical::where('meaning', $meaning)
             ->userBurnable(auth()->id())
             ->firstOrFail();
 
-        return new RadicalResource($radical);
-    }
+        \Breadcrumbs::push(trans('japanese.level', ['level' => $radical->level]), "japanese/wanikani/level/{$radical->level}");
+        \Breadcrumbs::push($radical->meaning);
 
-    public function update(Radical $radical)
-    {
-        $radical->resurrect(auth()->id());
-
-        return response()->noContent();
+        return view('japanese.wanikani.radical', [
+            'radical' => $radical,
+            'metaReplace' => ['radical' => $radical->meaning],
+        ]);
     }
 }

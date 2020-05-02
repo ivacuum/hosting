@@ -54,24 +54,17 @@ Route::get('gallery/view/{image}', [Controllers\Gallery::class, 'view']);
 Route::get('gallery/upload', [Controllers\Gallery::class, 'upload'])->middleware('auth');
 Route::post('gallery/upload', [Controllers\Gallery::class, 'store'])->middleware('auth');
 
-Route::get('japanese', [Controllers\Japanese::class, 'index']);
+Route::get('japanese', Controllers\JapaneseController::class);
 Route::get('japanese/hiragana-katakana', [Controllers\JapaneseHiraganaKatakana::class, 'index']);
-Route::get('japanese/wanikani', [Controllers\JapaneseWanikani::class, 'index']);
+Route::get('japanese/wanikani', Controllers\WanikaniController::class);
 Route::get('japanese/wanikani/kanji', [Controllers\JapaneseWanikaniKanji::class, 'index']);
 Route::get('japanese/wanikani/kanji/{character}', [Controllers\JapaneseWanikaniKanji::class, 'show']);
-Route::put('japanese/wanikani/kanji/{kanji}', [Controllers\JapaneseWanikaniKanji::class, 'update'])->middleware('auth');
-Route::delete('japanese/wanikani/kanji/{kanji}', [Controllers\JapaneseWanikaniKanji::class, 'destroy'])->middleware('auth');
-Route::get('japanese/wanikani/level', [Controllers\JapaneseWanikaniLevel::class, 'index']);
-Route::get('japanese/wanikani/level/{level}', [Controllers\JapaneseWanikaniLevel::class, 'show']);
+Route::get('japanese/wanikani/level', Controllers\WanikaniLevelsController::class);
+Route::get('japanese/wanikani/level/{level}', Controllers\WanikaniLevelController::class);
 Route::get('japanese/wanikani/radicals', [Controllers\JapaneseWanikaniRadicals::class, 'index']);
 Route::get('japanese/wanikani/radicals/{meaning}', [Controllers\JapaneseWanikaniRadicals::class, 'show']);
-Route::put('japanese/wanikani/radicals/{radical}', [Controllers\JapaneseWanikaniRadicals::class, 'update'])->middleware('auth');
-Route::delete('japanese/wanikani/radicals/{radical}', [Controllers\JapaneseWanikaniRadicals::class, 'destroy'])->middleware('auth');
-Route::post('japanese/wanikani/search', [Controllers\JapaneseWanikaniSearch::class, 'index']);
 Route::get('japanese/wanikani/vocabulary', [Controllers\JapaneseWanikaniVocabulary::class, 'index']);
 Route::get('japanese/wanikani/vocabulary/{characters}', [Controllers\JapaneseWanikaniVocabulary::class, 'show']);
-Route::put('japanese/wanikani/vocabulary/{vocabulary}', [Controllers\JapaneseWanikaniVocabulary::class, 'update'])->middleware('auth');
-Route::delete('japanese/wanikani/vocabulary/{vocabulary}', [Controllers\JapaneseWanikaniVocabulary::class, 'destroy'])->middleware('auth');
 Route::get('japanese/words-trainer', Controllers\JapaneseWordsTrainerController::class);
 
 Route::post('js/typo', Controllers\JsTypo::class);

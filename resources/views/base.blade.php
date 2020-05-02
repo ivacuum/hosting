@@ -202,8 +202,6 @@ window.AppOptions = JSON.parse('<?= json_encode([
 <script src="{{ mix('/assets/bootstrap.js') }}"></script>
 <script src="{{ mix('/assets/vue.js') }}"></script>
 <script src="{{ mix('/assets/vue-i18n.js') }}"></script>
-<script src="{{ mix('/assets/vue-router.js') }}"></script>
-<script src="{{ mix('/assets/vuex.js') }}"></script>
 <script src="{{ mix('/assets/axios.js') }}"></script>
 @if (!empty($websockets))
   <script src="{{ mix('/assets/pusher.js') }}"></script>

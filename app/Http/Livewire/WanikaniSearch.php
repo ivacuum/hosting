@@ -1,0 +1,47 @@
+<?php namespace App\Http\Livewire;
+
+use App\Kanji;
+use App\Radical;
+use App\Vocabulary;
+use Livewire\Component;
+
+class WanikaniSearch extends Component
+{
+    public $kanjis = [];
+    public $radicals = [];
+    public $vocabularies = [];
+    public ?int $count;
+    public string $q = '';
+
+    public function clear()
+    {
+        $this->reset();
+        $this->resetValidation();
+    }
+
+    public function search()
+    {
+        $this->validate([
+            'q' => ['required', 'string', 'min:3'],
+        ], [
+            'min' => trans('japanese.short-query'),
+        ]);
+
+        $this->radicals = Radical::where('meaning', 'LIKE', "%{$this->q}%")
+            ->orderBy('level')
+            ->orderBy('meaning')
+            ->get(['id', 'level', 'character', 'meaning', 'image']);
+
+        $this->kanjis = Kanji::where('meaning', 'LIKE', "%{$this->q}%")
+            ->orderBy('level')
+            ->orderBy('meaning')
+            ->get(['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading']);
+
+        $this->vocabularies = Vocabulary::where('meaning', 'LIKE', "%{$this->q}%")
+            ->orderBy('level')
+            ->orderBy('meaning')
+            ->get(['id', 'level', 'character', 'kana', 'meaning']);
+
+        $this->count = $this->radicals->count() + $this->kanjis->count() + $this->vocabularies->count();
+    }
+}

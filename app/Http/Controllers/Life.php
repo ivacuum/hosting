@@ -174,7 +174,7 @@ class Life extends Controller
     public function page($page)
     {
         if ($page === 'japanese') {
-            return redirect(path([Japanese::class, 'index']), 301);
+            return redirect(path(JapaneseController::class), 301);
         }
 
         $tpl = 'life.' . str_replace('.', '_', $page);

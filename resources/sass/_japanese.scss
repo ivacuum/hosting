@@ -1,10 +1,6 @@
 .bg-burned {
-  &.bg-kanji,
-  &.bg-radical,
-  &.bg-vocab {
-    background: linear-gradient(to bottom, #555, #484848);
-    box-shadow: 0 10px 10px rgba(#000, .4) inset;
-  }
+  background: linear-gradient(to bottom, #555, #484848);
+  box-shadow: 0 10px 10px rgba(#000, .4) inset;
 }
 
 .bg-kanji { background: linear-gradient(to bottom, #f0a, #dd0093); }
@@ -46,15 +42,7 @@
 }
 
 .vocab-grid {
-  display: grid;
-  align-items: center;
-
-  @include media-breakpoint-down(sm) {
-    .invisible { display: none; }
-  }
-
   @include media-breakpoint-up(md) {
-    grid-row-gap: .125rem;
-    grid-template-columns: max-content max-content max-content auto max-content;
+    grid-template-columns: max-content 2rem max-content auto max-content;
   }
 }

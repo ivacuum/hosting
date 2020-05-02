@@ -19,7 +19,6 @@ import EventHandlers from './events'
 import PhotosMap from './photos-map'
 import Shortcuts from './shortcuts'
 import YandexDns from './yandex-dns'
-import initVueAppSpa from './vue-init-app-spa'
 import initVueComponents from './vue-init-components'
 
 /**
@@ -91,7 +90,6 @@ class Application {
   */
 
   initVue() {
-    initVueAppSpa('#vue_app', this.options.locale)
     initVueComponents('#pjax_container', this.options.locale)
   }
 

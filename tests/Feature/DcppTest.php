@@ -14,7 +14,8 @@ class DcppTest extends TestCase
 
         $this->get('dc/hubs')
             ->assertStatus(200)
-            ->assertSee($hub->externalLink());
+            ->assertSee($hub->externalLink())
+            ->assertHasCustomTitle();
     }
 
     public function testHubClick()
@@ -37,7 +38,8 @@ class DcppTest extends TestCase
     public function testPages(string $url)
     {
         $this->get($url)
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertHasCustomTitle();
     }
 
     public function pages()
