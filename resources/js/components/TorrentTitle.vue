@@ -22,43 +22,43 @@ export default {
   methods: {
     // Выделение тегов и текста в скобках
     divideTitleTags() {
-      let rgx_test_lead_tags  = /^\s*(\(|\[|\{)/                    // скобка в начале
-      let rgx_1st_lead_tags   = /^\s*(\(.+?\)|\[.+?\]|\{.+?\})\s*/  // m[1] = '(tag1, tag2)'
-      let rgx_crop_tags       = /[\(\)\[\]\{\}]/g                   // (tag1, tag2) -> tag1, tag2
-      let rgx_split_tags      = /\s*[~,\|\/\\]\s*/                  //  tag1, tag2  -> [tag1, tag2]
-      let rgx_cleanup_delims  = /([~,\|\/\\])([~,\|\/\\])+/g        //  ,/~~~       -> ,
-      let rgx_test_empty_tag  = /[0-9a-zA-Zа-яА-ЯёЁ]/
-      let rgx_clean_tag_chars = /"<>/g
-      let rgx_cut_leftovers   = /^[^0-9a-zA-Zа-яА-ЯёЁ&\(\[\{]+/     // возможные остатки разделителей в начале названия
+      let rgxCropTags = /[\(\)\[\]\{\}]/g // (tag1, tag2) -> tag1, tag2
+      let rgxSplitTags = /\s*[~,\|\/\\]\s*/ //  tag1, tag2  -> [tag1, tag2]
+      let rgxCutLeftovers = /^[^0-9a-zA-Zа-яА-ЯёЁ&\(\[\{]+/ // возможные остатки разделителей в начале названия
+      let rgxTestEmptyTag = /[0-9a-zA-Zа-яА-ЯёЁ]/
+      let rgxTestLeadTags = /^\s*(\(|\[|\{)/ // скобка в начале
+      let rgxCleanTagChars = /"<>/g
+      let rgxCleanupDelims = /([~,\|\/\\])([~,\|\/\\])+/g //  ,/~~~       -> ,
+      let rgxFirstLeadTags = /^\s*(\(.+?\)|\[.+?\]|\{.+?\})\s*/ // m[1] = '(tag1, tag2)'
 
       let title = this.title
-      let tags_group, tags_apart
+      let tagsGroup, tagsApart
 
-      if (rgx_test_lead_tags.test(title)) {
-        title = title.replace(rgx_cleanup_delims, '$1')
+      if (rgxTestLeadTags.test(title)) {
+        title = title.replace(rgxCleanupDelims, '$1')
 
         let m
-        while (m = title.match(rgx_1st_lead_tags)) {
+        while (m = title.match(rgxFirstLeadTags)) {
           // удаляем тег из названия
           title = title.replace(m[0], '')
-          title = title.replace(rgx_cut_leftovers, '')
+          title = title.replace(rgxCutLeftovers, '')
 
           // откат, если от названия ничего не осталось
-          if ($.trim(title) == '') {
+          if ($.trim(title) === '') {
             title = this.title
             break
           }
 
-          tags_group = m[1].replace(rgx_crop_tags, '')
-          tags_group = tags_group.replace(rgx_clean_tag_chars, ' ')
-          tags_apart = this.fixTagExceptions($.trim(tags_group))
-          tags_apart = tags_apart.split(rgx_split_tags)
-          tags_apart = $.grep(tags_apart, function (tag) {
-            return rgx_test_empty_tag.test(tag)
+          tagsGroup = m[1].replace(rgxCropTags, '')
+          tagsGroup = tagsGroup.replace(rgxCleanTagChars, ' ')
+          tagsApart = this.fixTagExceptions($.trim(tagsGroup))
+          tagsApart = tagsApart.split(rgxSplitTags)
+          tagsApart = $.grep(tagsApart, function (tag) {
+            return rgxTestEmptyTag.test(tag)
           })
         }
 
-        this.html = title.replace(rgx_cut_leftovers, '')
+        this.html = title.replace(rgxCutLeftovers, '')
       }
     },
 
