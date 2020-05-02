@@ -1,6 +1,4 @@
-@extends('life.base', [
-  'metaTitle' => trans('menu.cities'),
-])
+@extends('life.base')
 
 @section('content')
 <h1 class="text-3xl">
@@ -15,7 +13,7 @@
 </nav>
 
 <div class="cities-columns">
-  <?php $initial = $currentInitial = false ?>
+  <?php $initial = $currentInitial = null ?>
   <?php /** @var App\City $city */ ?>
   @foreach ($cities as $city)
     <?php $currentInitial = $city->initial() ?>

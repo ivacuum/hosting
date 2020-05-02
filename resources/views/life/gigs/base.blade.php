@@ -1,8 +1,4 @@
-@extends('life.base', [
-  'metaTitle' => $gig->metaTitle(),
-  'metaDescription' => $gig->metaDescription(),
-  'metaImage' => $gig->meta_image,
-])
+@extends('life.base')
 
 @section('content_header')
 @parent

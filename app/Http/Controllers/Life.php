@@ -35,7 +35,10 @@ class Life extends Controller
             ->get()
             ->groupBy(fn (Trip $model) => $model->year);
 
-        return view($this->view, ['trips' => $trips]);
+        return view($this->view, [
+            'trips' => $trips,
+            'metaTitle' => trans('menu.life'),
+        ]);
     }
 
     public function calendar(LifeCalendarRequest $request)
@@ -79,7 +82,10 @@ class Life extends Controller
             })
             ->sortBy(City::titleField());
 
-        return view($this->view, ['cities' => $cities]);
+        return view($this->view, [
+            'cities' => $cities,
+            'metaTitle' => trans('menu.cities'),
+        ]);
     }
 
     public function city(City $city)
@@ -111,6 +117,8 @@ class Life extends Controller
         return view('life.city', [
             'city' => $city,
             'trips' => $trips,
+            'metaTitle' => $city->metaTitle(),
+            'metaDescription' => $city->metaDescription($trips),
         ]);
     }
 
@@ -118,6 +126,7 @@ class Life extends Controller
     {
         return view($this->view, [
             'countries' => Country::allWithCitiesAndTrips(1),
+            'metaTitle' => trans('menu.countries'),
         ]);
     }
 
@@ -140,6 +149,8 @@ class Life extends Controller
         return view($this->view, [
             'trips' => $trips,
             'country' => $country,
+            'metaTitle' => $country->metaTitle(),
+            'metaDescription' => $country->metaDescription($trips),
         ]);
     }
 
@@ -158,6 +169,9 @@ class Life extends Controller
             'gig' => $gig,
             'slug' => "gigs/{$gig->slug}", // Для собственных фотографий в тексте истории
             'timeline' => $gig->artistTimeline(),
+            'metaImage' => $gig->meta_image,
+            'metaTitle' => $gig->metaTitle(),
+            'metaDescription' => $gig->metaDescription(),
         ]);
     }
 
@@ -168,7 +182,10 @@ class Life extends Controller
             ->get()
             ->groupBy(fn (Gig $model) => $model->date->year);
 
-        return view($this->view, ['gigs' => $gigs]);
+        return view($this->view, [
+            'gigs' => $gigs,
+            'metaTitle' => trans('life.gigs_intro_title'),
+        ]);
     }
 
     public function page($page)
@@ -219,8 +236,11 @@ class Life extends Controller
             'trip' => $trip,
             'comments' => $trip->commentsPublished()->with('user')->orderBy('created_at')->get(),
             'timeline' => $trip->cityTimeline(),
+            'metaImage' => $trip->metaImage(),
+            'metaTitle' => $trip->metaTitle(),
             'nextTrips' => $nextTrips,
             'previousTrips' => $trip->previous($nextTrips->count())->get()->reverse(),
+            'metaDescription' => $trip->metaDescription(),
         ]);
     }
 

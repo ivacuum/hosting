@@ -1,4 +1,4 @@
-@extends("life.{$folder}.{$template}")
+@extends($extends)
 
 @section('content_header')
 <div class="antialiased hanging-puntuation-first lg:text-lg">

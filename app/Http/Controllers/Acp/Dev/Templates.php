@@ -60,20 +60,17 @@ class Templates extends BaseController
         ]);
     }
 
-    public function show($template)
+    public function show(string $template)
     {
         // Внутренние ссылки на шаблоны
         $template = str_replace('.', '_', $template);
-
-        \Breadcrumbs::push($template);
-
         $slug = str_replace('_', '.', $template);
+
+        \Breadcrumbs::push($slug);
 
         /** @var Trip $trip */
         $trip = Trip::inRandomOrder()->first();
         $trip->slug = $slug;
-        $trip->meta_title_en = $slug;
-        $trip->meta_title_ru = $slug;
 
         if (request('images')) {
             $path = resource_path("views/{$trip->templatePath()}.blade.php");
@@ -111,8 +108,8 @@ class Templates extends BaseController
 
         return view($this->view, [
             'trip' => $trip,
-            'folder' => 'trips',
-            'template' => $template,
+            'extends' => "life.trips.{$template}",
+            'metaTitle' => $slug,
         ]);
     }
 }

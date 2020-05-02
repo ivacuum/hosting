@@ -2,7 +2,6 @@
 
 export default class EventHandlers {
   static bind() {
-    $(document).on('click', '.js-aviasales', this.aviasalesClick)
     $(document).on('click', '.js-city-map-click', this.cityMapClick)
     $(document).on('click', '.js-collapse', this.collapse)
     $(document).on('click', '.js-dcpp-clients-show', this.dcppClientsShowClick)
@@ -28,19 +27,6 @@ export default class EventHandlers {
 
       navigator.share({ url })
     }
-  }
-
-  /**
-   * Форма поиска авиабилетов по клику
-   */
-  static aviasalesClick() {
-    $(this).contents().unwrap()
-
-    const s = document.createElement('script')
-    s.type = 'text/javascript'
-    s.src = 'https://www.travelpayouts.com/widgets/044c854e39d539701be0fa773757da42.js?v=443'
-    s.defer = true
-    document.getElementById('aviasales_container').appendChild(s)
   }
 
   /**

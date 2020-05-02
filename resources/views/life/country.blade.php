@@ -1,7 +1,4 @@
-@extends('life.base', [
-  'metaTitle' => $country->metaTitle(),
-  'metaDescription' => $country->metaDescription($trips),
-])
+@extends('life.base')
 
 @section('content')
 <div class="flex flex-wrap items-center mb-2">

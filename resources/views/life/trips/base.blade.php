@@ -1,8 +1,4 @@
-@extends('life.base', [
-  'metaTitle' => $trip->metaTitle(),
-  'metaImage' => $trip->metaImage(),
-  'metaDescription' => $trip->metaDescription(),
-])
+@extends('life.base')
 
 @section('content_header')
 @parent

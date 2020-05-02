@@ -1,7 +1,4 @@
-@extends('life.base', [
-  'metaTitle' => $city->metaTitle(),
-  'metaDescription' => $city->metaDescription($trips),
-])
+@extends('life.base')
 
 @section('content')
 <div id="trip_city_map" class="mb-4 hidden mobile-wide h-1/2-screen"></div>
@@ -11,9 +8,4 @@
   @include('tpl.city-map-button')
 </div>
 @include('tpl.trips_by_years')
-{{--
-@if ($city->iata)
-  @include('tpl.tickets_calendar', ['origin' => 'MOW', 'destination' => $city->iata])
-@endif
---}}
 @endsection

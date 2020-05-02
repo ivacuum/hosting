@@ -1,6 +1,4 @@
-@extends('life.base', [
-  'metaTitle' => trans('menu.countries'),
-])
+@extends('life.base')
 
 @section('content')
 <h1 class="text-3xl">

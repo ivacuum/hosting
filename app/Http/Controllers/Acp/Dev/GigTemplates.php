@@ -59,20 +59,16 @@ class GigTemplates extends BaseController
         ]);
     }
 
-    public function show($template)
+    public function show(string $template)
     {
         // Внутренние ссылки на шаблоны
         $template = str_replace('.', '_', $template);
-
-        \Breadcrumbs::push($template);
-
         $slug = str_replace('_', '.', $template);
+        \Breadcrumbs::push($slug);
 
         /** @var Gig $gig */
         $gig = Gig::inRandomOrder()->first();
         $gig->slug = $slug;
-        $gig->meta_title_en = $slug;
-        $gig->meta_title_ru = $slug;
 
         if (request('images')) {
             $path = resource_path("views/{$gig->templatePath()}.blade.php");
@@ -111,9 +107,9 @@ class GigTemplates extends BaseController
         return view('acp.dev.templates.show', [
             'gig' => $gig,
             'slug' => "gigs/$slug",
-            'folder' => 'gigs',
-            'template' => $template,
+            'extends' => "life.gigs.{$template}",
             'timeline' => [],
+            'metaTitle' => $slug,
         ]);
     }
 }

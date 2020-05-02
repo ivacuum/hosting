@@ -15,17 +15,3 @@
 @section('content_footer')
 </div>
 @endsection
-
-{{--
-@section('footer')
-@parent
-<span class="whitespace-no-wrap">
-  Поделиться:
-  <div class="yashare-auto-init inline-block" data-yashareL10n="ru" data-yashareType="big" data-yashareQuickServices="vkontakte,facebook,twitter,gplus" data-yashareTheme="counter"></div>
-</span>
-@endsection
-
-@push('js')
-<script src="https://yastatic.net/share/share.js"></script>
-@endpush
---}}

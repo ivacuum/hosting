@@ -2,9 +2,7 @@
 /** @var \App\Gig $gig */
 ?>
 
-@extends('life.base', [
-  'metaTitle' => trans('life.gigs_intro_title'),
-])
+@extends('life.base')
 
 @push('head')
 <link rel="alternate" type="application/rss+xml" title="{{ trans('menu.gigs') }}" href="{{ url(path([App\Http\Controllers\LifeGigsRss::class, 'index'])) }}">
