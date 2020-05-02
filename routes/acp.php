@@ -76,11 +76,6 @@ Route::post('news/{id}/notify', [Acp\News::class, 'notify']);
 
 RouteHelper::withoutCreateAndEdit(Acp\Notifications::class, null, 'uuid');
 
-RouteHelper::crud(Acp\Pages::class);
-Route::post('pages/batch', [Acp\Pages::class, 'batch']);
-Route::post('pages/move', [Acp\Pages::class, 'move']);
-Route::get('pages/tree', [Acp\Pages::class, 'tree']);
-
 RouteHelper::crud(Acp\Photos::class);
 
 RouteHelper::withoutCreate(Acp\Radicals::class);

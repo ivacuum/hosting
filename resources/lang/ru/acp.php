@@ -101,12 +101,6 @@ return [
     'notifications.show' => 'Уведомление',
     'notifications.index' => 'Уведомления',
 
-    'pages.add' => 'Добавить страницу',
-    'pages.edit' => 'Редактирование',
-    'pages.show' => 'Страница',
-    'pages.index' => 'Страницы',
-    'pages.create' => 'Новая страница',
-
     'photos.add' => 'Добавить фото',
     'photos.edit' => 'Редактирование',
     'photos.show' => 'Фотография',

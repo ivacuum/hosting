@@ -100,12 +100,6 @@ return [
     'notifications.show' => 'Notification',
     'notifications.index' => 'Notifications',
 
-    'pages.add' => 'Create page',
-    'pages.edit' => 'Edit',
-    'pages.show' => 'Page',
-    'pages.index' => 'Pages',
-    'pages.create' => 'New page',
-
     'photos.add' => 'Create photo',
     'photos.edit' => 'Edit photo',
     'photos.show' => 'Photo',

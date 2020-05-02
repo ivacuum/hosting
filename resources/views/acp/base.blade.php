@@ -97,7 +97,6 @@
     App\Http\Controllers\Acp\Issues::class,
     App\Http\Controllers\Acp\Users::class,
     App\Http\Controllers\Acp\ExternalIdentities::class,
-    App\Http\Controllers\Acp\Pages::class,
     App\Http\Controllers\Acp\Notifications::class,
   ])
 ])
@@ -110,7 +109,6 @@
   <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/users">{{ trans('acp.users.index') }}</a>
   <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/external-identities">{{ trans('acp.external-identities.index') }}</a>
   <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/notifications">{{ trans('acp.notifications.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/pages">{{ trans('acp.pages.index') }}</a>
 @endcomponent
 @component('tpl.menu-item', [
   'href' => "{$localeUri}/acp/dev/templates",

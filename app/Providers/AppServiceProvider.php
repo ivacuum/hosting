@@ -33,7 +33,6 @@ class AppServiceProvider extends ServiceProvider
             'City' => App\City::class,
             'File' => App\File::class,
             'News' => App\News::class,
-            'Page' => App\Page::class,
             'Trip' => App\Trip::class,
             'User' => App\User::class,
             'Image' => App\Image::class,
