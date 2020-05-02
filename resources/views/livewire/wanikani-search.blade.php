@@ -13,7 +13,7 @@
         <h3 class="mb-2 md:mb-0 mr-4 pt-1">{{ trans('japanese.results', ['results' => $count]) }}</h3>
         <button class="btn btn-default mb-2 md:mb-0" wire:click="clear">{{ trans('japanese.clear') }}</button>
       </div>
-    @elseif ($count === 0)
+    @elseif ($q && $errors->isEmpty())
       <div class="bg-yellow-300 px-2 py-1 rounded">{{ trans('japanese.no-matches') }}</div>
     @endif
     <div class="hidden md:block">&nbsp;</div>

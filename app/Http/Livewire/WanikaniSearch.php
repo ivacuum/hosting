@@ -10,7 +10,7 @@ class WanikaniSearch extends Component
     public $kanjis = [];
     public $radicals = [];
     public $vocabularies = [];
-    public ?int $count;
+    public int $count = 0;
     public string $q = '';
 
     public function clear()
