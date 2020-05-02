@@ -1,5 +1,4 @@
 import './laravel-axios'
-import './laravel-echo'
 
 import AvatarUploader from './components/AvatarUploader'
 import ImagesUploader from './components/ImagesUploader'
@@ -9,7 +8,6 @@ import FeedbackForm from './components/FeedbackForm.vue'
 Vue.config.productionTip = false
 
 Vue.component('avatar-uploader', AvatarUploader)
-Vue.component('chat', () => import(/* webpackChunkName: "magnets" */'./components/Chat.vue'))
 Vue.component('feedback-form', FeedbackForm)
 Vue.component('gallery-uploader', () => import(/* webpackChunkName: "gallery" */'./components/GalleryUploader.vue'))
 Vue.component('hiragana-katakana', () => import(/* webpackChunkName: "japanese" */'./components/japanese/HiraganaKatakana.vue'))

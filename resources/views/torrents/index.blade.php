@@ -1,6 +1,5 @@
-@extends('torrents.base', [
-  'websockets' => Auth::check() && empty(request()->query()),
-])
+@extends('torrents.base')
+@include('livewire')
 
 @section('content')
 <div class="flex">
@@ -42,7 +41,7 @@
   </aside>
   <div class="flex-grow" v-cloak>
     @if (Auth::check() && empty(request()->query()))
-      <chat></chat>
+      @livewire(App\Http\Livewire\Chat::class)
     @endif
     @if ($q)
       @ru

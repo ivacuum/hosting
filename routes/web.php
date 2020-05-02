@@ -28,8 +28,6 @@ Route::get('auth/google/callback', [Controllers\Auth\Google::class, 'callback'])
 Route::get('auth/vk', [Controllers\Auth\Vk::class, 'index']);
 Route::get('auth/vk/callback', [Controllers\Auth\Vk::class, 'callback']);
 
-Route::get('ajax/chat', [Controllers\AjaxChat::class, 'index'])->middleware('auth');
-Route::post('ajax/chat', [Controllers\AjaxChat::class, 'store'])->middleware('auth');
 Route::post('ajax/comment/{type}/{id}', [Controllers\AjaxComment::class, 'store']);
 
 Route::get('comments/{comment}/confirm', [Controllers\CommentConfirm::class, 'update'])->middleware('auth', 'can:confirm,comment');

@@ -26,9 +26,6 @@ import initVueComponents from './vue-init-components'
  * @property {string} locale
  * @property {boolean} loggedIn
  * @property {string} csrfToken
- * @property {string} pusherKey
- * @property {string} pusherWsHost
- * @property {int} pusherWsPort
  * @property {number} yandexMetrikaId
  */
 

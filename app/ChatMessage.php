@@ -4,8 +4,6 @@ use Illuminate\Database\Eloquent\Model;
 use League\CommonMark\CommonMarkConverter;
 
 /**
- * Сообщение в чате
- *
  * @property int $id
  * @property int $user_id
  * @property int $status

@@ -185,10 +185,6 @@ window.AppOptions = JSON.parse('<?= json_encode([
   'locale' => $locale,
   'loggedIn' => Auth::check(),
   'csrfToken' => csrf_token(),
-  'pusherKey' => config('broadcasting.connections.pusher.key'),
-  'pusherScheme' => config('broadcasting.connections.pusher.options.scheme'),
-  'pusherWsHost' => config('broadcasting.connections.pusher.options.host'),
-  'pusherWsPort' => config('broadcasting.connections.pusher.options.port'),
   'yandexMetrikaId' => 5266444,
 ], JSON_HEX_APOS) ?>')
 </script>
@@ -203,9 +199,6 @@ window.AppOptions = JSON.parse('<?= json_encode([
 <script src="{{ mix('/assets/vue.js') }}"></script>
 <script src="{{ mix('/assets/vue-i18n.js') }}"></script>
 <script src="{{ mix('/assets/axios.js') }}"></script>
-@if (!empty($websockets))
-  <script src="{{ mix('/assets/pusher.js') }}"></script>
-@endif
 <script src="{{ mix('/assets/mousetrap.js') }}"></script>
 @stack('js_vendor')
 @if ($locale !== 'ru')
