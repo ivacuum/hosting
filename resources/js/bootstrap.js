@@ -13,7 +13,6 @@ Vue.component('gallery-uploader', () => import(/* webpackChunkName: "gallery" */
 Vue.component('hiragana-katakana', () => import(/* webpackChunkName: "japanese" */'./components/japanese/HiraganaKatakana.vue'))
 Vue.component('images-uploader', ImagesUploader)
 Vue.component('rutracker-post', () => import(/* webpackChunkName: "magnets" */'./components/RutrackerPost.vue'))
-Vue.component('torrent-title', () => import(/* webpackChunkName: "magnets" */'./components/TorrentTitle.vue'))
 Vue.component('youtube', Youtube)
 
 notie.setOptions({ overlayOpacity: 1 })

@@ -82,7 +82,13 @@
             @svg ($icon)
           </div>
           <a class="flex-grow mb-2 md:mb-0 md:mr-4 visited" href="{{ $torrent->www() }}">
-            <torrent-title title="{{ $torrent->title }}" hide_brackets="{{ Auth::check() && Auth::user()->torrent_short_title ? 1 : '' }}"></torrent-title>
+            @if (optional(Auth::user())->torrent_short_title)
+              <div>{{ $torrent->shortTitle() }}</div>
+            @else
+              <div class="font-bold">
+                <x-magnet-title>{{ $torrent->title }}</x-magnet-title>
+              </div>
+            @endif
           </a>
           <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center md:text-left whitespace-no-wrap js-magnet"
              href="{{ $torrent->magnet() }}"

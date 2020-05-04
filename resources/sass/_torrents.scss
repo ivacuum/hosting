@@ -177,10 +177,6 @@
   }
 }
 
-.hide-brackets .torrent-brackets { display: none; }
-.torrent-title.hide-brackets { font-weight: normal; }
-
-.torrent-brackets { font-weight: normal; }
 .torrent-icon {
   .svg-icon-collection-play { color: #ca8e3f; }
   .svg-icon-file-text-o { color: $gray-light; }
@@ -189,7 +185,6 @@
   .svg-icon-music { color: #960ed7; }
   .svg-icon-smile-o { color: #3c763d; }
 }
-.torrent-title { font-weight: bold; }
 
 // Список раздач
 .torrents-list-container {

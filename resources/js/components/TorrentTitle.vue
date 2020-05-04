@@ -1,5 +1,5 @@
 <template>
-  <span class="torrent-title" :class="{ 'hide-brackets': hide_brackets }" v-html="html"></span>
+  <span class="font-bold" :class="{ 'hide-brackets': hide_brackets }" v-html="html"></span>
 </template>
 
 <script>
@@ -68,7 +68,7 @@ export default {
     },
 
     highlightTextInBrackets() {
-      this.html = this.html.replace(/(\(.+?\)|\[.+?\]|\{.+?\})/g, '<span class="torrent-brackets">$1</span>')
+      this.html = this.html.replace(/(\(.+?\)|\[.+?\]|\{.+?\})/g, '<span class="font-normal">$1</span>')
     }
   }
 }
