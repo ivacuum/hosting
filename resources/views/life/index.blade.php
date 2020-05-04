@@ -12,16 +12,16 @@
       @if (Auth::check())
         <form class="mr-4" action="{{ path([App\Http\Controllers\Subscriptions::class, 'update']) }}" method="post">
           {{ ViewHelper::inputHiddenMail() }}
-          <button class="btn btn-default text-sm py-1 small-caps svg-flex svg-label">
+          <button class="btn btn-default leading-none text-sm small-caps svg-flex svg-label">
             @svg (mail)
-            {{ trans(Auth::user()->notify_trips ? 'mail.unsubscribe' : 'mail.subscribe') }}
+            {{ Auth::user()->notify_trips ? trans('mail.unsubscribe') : trans('mail.subscribe') }}
           </button>
           <input type="hidden" name="trips" value="{{ Auth::user()->notify_trips ? 0 : 1 }}">
           @method('put')
           @csrf
         </form>
       @else
-        <a class="btn btn-default text-sm py-1 svg-flex svg-label small-caps mr-4" href="{{ path([App\Http\Controllers\Subscriptions::class, 'edit'], ['trips' => 1]) }}">
+        <a class="btn btn-default leading-none text-sm svg-flex svg-label small-caps mr-4" href="{{ path([App\Http\Controllers\Subscriptions::class, 'edit'], ['trips' => 1]) }}">
           @svg (mail)
           {{ trans('mail.subscribe') }}
         </a>
@@ -42,30 +42,32 @@
   </section>
   <section class="md:pt-0">
     <h2 class="text-3xl">{{ trans('life.favorites') }}</h2>
-    @ru
-      <div class="mb-2"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'chillout') }}">Chillout</a></div>
-      <div class="mb-2"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'books') }}">Книги</a></div>
-    @endru
-    <div class="mb-2"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'gigs') }}">{{ trans('menu.gigs') }}</a></div>
-    @ru
-      <div class="mb-2"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'favorite-posts') }}">Любимые посты</a></div>
-      <div class="mb-2"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'podcasts') }}">Подкасты</a></div>
-      <div class="mb-2"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'laundry') }}">Условные обозначения стирки</a></div>
-      <div class="mb-2"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'movies') }}">Фильмы и сериалы</a></div>
-      <div class="mb-2"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'using-in-travels') }}">Чем пользуюсь в путешествиях</a></div>
-    @endru
+    <nav class="space-y-2">
+      @ru
+        <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'chillout') }}">Chillout</a></div>
+        <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'books') }}">Книги</a></div>
+      @endru
+      <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'gigs') }}">{{ trans('menu.gigs') }}</a></div>
+      @ru
+        <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'favorite-posts') }}">Любимые посты</a></div>
+        <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'podcasts') }}">Подкасты</a></div>
+        <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'laundry') }}">Условные обозначения стирки</a></div>
+        <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'movies') }}">Фильмы и сериалы</a></div>
+        <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'using-in-travels') }}">Чем пользуюсь в путешествиях</a></div>
+      @endru
+    </nav>
 
     <h2 class="text-3xl mt-12">{{ trans('life.languages') }}</h2>
-    <nav>
-      <div class="mb-2">
+    <nav class="space-y-2">
+      <div>
         <a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'english') }}">{{ trans('life.english') }}</a>
       </div>
       @ru
-        <div class="mb-2">
+        <div>
           <a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'german') }}">{{ trans('life.german') }}</a>
         </div>
       @endru
-      <div class="mb-2">
+      <div>
         <a class="link" href="{{ path(App\Http\Controllers\JapaneseController::class) }}">{{ trans('life.japanese') }}</a>
       </div>
     </nav>

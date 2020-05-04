@@ -1,6 +1,4 @@
-<?php
-/** @var App\Trip $trip */
-?>
+<?php /** @var App\Trip $trip */ ?>
 
 @extends('base')
 
@@ -112,11 +110,11 @@
   </div>
 </div>
 
-@ru
-  <h3 class="text-2xl"><a class="link" href="/life">Истории о путешествиях</a></h3>
-@en
-  <h3 class="text-2xl"><a class="link" href="/en/life">Travel stories</a></h3>
-@endru
+<h3 class="text-2xl">
+  <a class="link" href="{{ path([App\Http\Controllers\Life::class, 'index']) }}">
+    @ru Истории о путешествиях @en Travel stories @endru
+  </a>
+</h3>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 mobile-wide">
   @foreach ($trips as $trip)

@@ -43,27 +43,28 @@
 
     <div class="mb-4">
       <input
-        autofocus
         required
-        class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
+        class="form-input"
+        tabindex="1"
         name="email"
         value="{{ old('email') }}"
         autocomplete="email"
         placeholder="{{ trans('auth.email_or_login') }}"
       >
-      <div class="invalid-feedback">{{ $errors->first('email') }}</div>
+      <x-invalid-feedback field="email"/>
     </div>
 
     <div class="mb-4 relative">
       <input
         required
-        class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
+        class="form-input"
+        tabindex="2"
         type="password"
         name="password"
         autocomplete="current-password"
         placeholder="{{ trans('auth.password') }}"
       >
-      <span class="form-control-feedback-password js-password-eye">
+      <span class="form-input-feedback-password js-password-eye">
         <span class="js-password-eye-show" title="{{ trans('auth.show_password') }}">
           @svg (eye)
         </span>
@@ -71,13 +72,13 @@
           @svg (eye-slash)
         </span>
       </span>
-      <div class="invalid-feedback">{{ $errors->first('password') }}</div>
+      <x-invalid-feedback field="password"/>
     </div>
 
     <div class="flex items-center justify-between">
       <div>
         <label class="flex items-center">
-          <input class="mr-2" type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}>
+          <input class="form-checkbox mr-2" tabindex="3" type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}>
           {{ trans('auth.dont_remember') }}
         </label>
       </div>
@@ -90,7 +91,7 @@
     </div>
 
     <div class="mt-4 text-center">
-      <button class="btn btn-primary text-lg px-4 py-2 w-40">
+      <button class="btn btn-primary text-lg py-2 w-40">
         {{ trans('auth.signin') }}
       </button>
       <div class="mt-6">

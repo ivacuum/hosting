@@ -59,7 +59,7 @@
   </div>
   <div class="flex">
     <div class="border overflow-hidden rounded">
-      <div class="bg-grey-800 px-5 py-3 text-white">
+      <div class="bg-gray-600 px-5 py-3 text-white">
         <h2 class="h4 mb-0">@ru Внешние полезные ресурсы @en External resources @endru</h2>
       </div>
       <div class="px-5 py-4">

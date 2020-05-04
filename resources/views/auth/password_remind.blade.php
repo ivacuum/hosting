@@ -11,14 +11,14 @@
       <input
         autofocus
         required
-        class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
+        class="form-input"
         type="email"
         name="email"
         value="{{ old('email') }}"
         autocomplete="email"
         placeholder="{{ trans('auth.email') }}"
       >
-      <div class="invalid-feedback">{{ $errors->first('email') }}</div>
+      <x-invalid-feedback field="email"/>
     </div>
 
     <button class="btn btn-primary text-lg px-4 py-2">

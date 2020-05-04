@@ -20,7 +20,7 @@
     <form class="max-w-500px" wire:submit.prevent="search">
       <div class="flex w-full">
         <input
-          class="form-control rounded-r-none js-search-input"
+          class="form-input rounded-r-none js-search-input"
           enterkeyhint="search"
           placeholder="{{ trans('torrents.search') }}"
           autocapitalize="none"

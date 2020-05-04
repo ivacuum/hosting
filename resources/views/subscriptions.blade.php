@@ -12,21 +12,19 @@
     <div class="mb-4">
       <input
         required
-        class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
+        class="form-input"
         type="email"
         name="email"
         value="{{ old('email') }}"
         placeholder="{{ trans('model.email') }}"
       >
-      @if ($errors->has('email'))
-        <div class="invalid-feedback">{{ $errors->first('email') }}</div>
-      @endif
+      <x-invalid-feedback field="email"/>
     </div>
 
     <input type="hidden" name="gigs" value="{{ App\User::NOTIFY_NO }}">
     <label class="flex items-center">
       <input
-        class="mr-2 {{ $errors->has('gigs') ? 'is-invalid' : '' }}"
+        class="form-checkbox mr-2"
         type="checkbox"
         name="gigs"
         value="{{ App\User::NOTIFY_MAIL }}"
@@ -34,14 +32,11 @@
       >
       {{ trans('my.notify_gigs') }}
     </label>
-    @if ($errors->has('gigs'))
-      <div class="invalid-feedback block mb-2">{{ $errors->first('gigs') }}</div>
-    @endif
 
     <input type="hidden" name="news" value="{{ App\User::NOTIFY_NO }}">
     <label class="flex items-center">
       <input
-        class="mr-2 {{ $errors->has('news') ? 'is-invalid' : '' }}"
+        class="form-checkbox mr-2"
         type="checkbox"
         name="news"
         value="{{ App\User::NOTIFY_MAIL }}"
@@ -49,15 +44,12 @@
       >
       {{ trans('my.notify_news') }}
     </label>
-    @if ($errors->has('news'))
-      <div class="invalid-feedback block mb-2">{{ $errors->first('news') }}</div>
-    @endif
 
     <div class="mb-4">
       <input type="hidden" name="trips" value="{{ App\User::NOTIFY_NO }}">
       <label class="flex items-center">
         <input
-          class="mr-2 {{ $errors->has('trips') ? 'is-invalid' : '' }}"
+          class="form-checkbox mr-2"
           type="checkbox"
           name="trips"
           value="{{ App\User::NOTIFY_MAIL }}"
@@ -65,9 +57,6 @@
         >
         {{ trans('my.notify_trips') }}
       </label>
-      @if ($errors->has('trips'))
-        <div class="invalid-feedback block mb-2">{{ $errors->first('trips') }}</div>
-      @endif
     </div>
 
     <button class="btn btn-primary capitalize">

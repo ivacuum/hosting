@@ -133,21 +133,21 @@ export default {
 
   <div class="mb-4" v-if="!hideName">
     <div class="form-label-group">
-      <input required class="form-control" v-model="localName" :placeholder="$t('NAME_LABEL')">
+      <input required class="form-input" v-model="localName" :placeholder="$t('NAME_LABEL')">
       <label>{{ $t('NAME_LABEL') }}</label>
     </div>
   </div>
 
   <div class="mb-4">
     <div class="form-label-group">
-      <input required class="form-control" type="email" v-model="localEmail" :placeholder="$t('EMAIL_LABEL')">
+      <input required class="form-input" type="email" v-model="localEmail" :placeholder="$t('EMAIL_LABEL')">
       <label>{{ $t('EMAIL_LABEL') }}</label>
     </div>
   </div>
 
   <div class="mb-4" v-if="!hideTitle">
     <div class="form-label-group">
-      <input required class="form-control" v-model="localTitle" :placeholder="$t('TITLE_LABEL')">
+      <input required class="form-input" v-model="localTitle" :placeholder="$t('TITLE_LABEL')">
       <label>{{ $t('TITLE_LABEL') }}</label>
     </div>
   </div>
@@ -156,8 +156,8 @@ export default {
     <label class="font-bold">{{ textareaLabel }}</label>
     <textarea
       required
-      class="form-control"
-      :class="{ 'textarea-autosized js-autosize-textarea': !isMobile }"
+      class="form-textarea"
+      :class="{ 'resize-none js-autosize-textarea': !isMobile }"
       name="text"
       :rows="!isMobile ? 2 : 4"
       maxlength="1000"
@@ -165,7 +165,7 @@ export default {
     ></textarea>
   </div>
 
-  <button class="btn btn-primary text-lg px-4 py-2" :disabled="!filled">
+  <button class="btn btn-primary text-lg px-4 py-2 disabled:opacity-50" :disabled="!filled">
     {{ submitText }}
   </button>
 </form>

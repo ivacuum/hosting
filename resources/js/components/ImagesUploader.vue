@@ -1,17 +1,14 @@
 <template>
   <div>
     <div v-if="!uploading">
-      <div class="custom-file">
-        <input
-          class="custom-file-input"
-          accept="image/jpeg,image/png"
-          type="file"
-          name="files[]"
-          multiple
-          @change="uploadFiles($event.currentTarget.files)"
-        >
-        <label class="custom-file-label">Выберите файлы...</label>
-      </div>
+      <input
+        class="block w-full"
+        accept="image/jpeg,image/png"
+        type="file"
+        name="files[]"
+        multiple
+        @change="uploadFiles($event.currentTarget.files)"
+      >
     </div>
     <div v-else>
       Идет загрузка... {{ uploaded }} из {{ total }}

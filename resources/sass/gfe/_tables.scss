@@ -39,6 +39,8 @@
     vertical-align: middle;
   }
 
+  th { text-align: start; }
+
   tbody tr:nth-child(2n) { background-color: #f6f6f6; }
 
   thead,

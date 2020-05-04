@@ -80,7 +80,7 @@ export default {
     lang="en"
     :data-uid="id"
     :disabled="success"
-    class="form-control-underline"
+    class="form-input-underline"
     :class="{ 'is-valid': success }"
     :size="Math.max(7, answer.length)"
     autocapitalize="off"
@@ -94,7 +94,7 @@ export default {
 </template>
 
 <style lang="scss">
-.form-control-underline {
+.form-input-underline {
   border-top: 0;
   border-right: 0;
   /*border-bottom: 1px solid #000;*/

@@ -87,7 +87,8 @@
     </li>
   </ol>
   <p>
-    <a class="btn btn-secondary" href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'strongdc') }}">
+    <a class="link" href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'strongdc') }}">
+      &larr;
       <span class="sm:hidden">Вернуться к StrongDC++</span>
       <span class="hidden sm:inline">Вернуться на страницу клиента StrongDC++</span>
     </a>

@@ -1,5 +1,5 @@
 <a
-  class="border-b-2 border-transparent -mb-2px px-2 py-3 text-2xl text-grey-600 hover:text-grey-900 relative tooltipped tooltipped-s {{ $controller === App\Http\Controllers\Notifications::class ? 'border-blueish-500 text-grey-900' : '' }}"
+  class="border-b-2 border-transparent -mb-2px px-2 py-3 text-2xl text-grey-600 hover:text-grey-900 leading-none relative tooltipped tooltipped-s {{ $controller === App\Http\Controllers\Notifications::class ? 'border-blueish-500 text-grey-900' : '' }}"
   href="{{ path([App\Http\Controllers\Notifications::class, 'index']) }}"
   aria-label="{{ trans('notifications.index') }}"
 >
@@ -15,7 +15,7 @@
   >
     @include('tpl.avatar', ['user' => Auth::user(), 'classes' => 'w-8 h-8'])
   </a>
-  <div class="dropdown-menu dropdown-menu-right leading-normal">
+  <div class="dropdown-menu dropdown-menu-right">
     <div class="dropdown-header">
       {{ trans('auth.signed_in_as') }}
       <span class="font-bold">{{ Auth::user()->displayName() }}</span>

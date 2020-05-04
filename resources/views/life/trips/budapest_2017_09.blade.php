@@ -24,7 +24,7 @@
 @ru
   <p>Временной план. В среднем на общественном транспорте нужно выдвигаться за шесть часов до вылета из любого аэропорта Москвы.</p>
   <div><x-clock>04:40</x-clock> выезд из Калуги</div>
-  <div><s class="text-redish-600"><x-clock>07:18</x-clock> <span class="text-black">прибытие на Киевский вокзал</span></s></div>
+  <div><s class="text-red-600"><x-clock>07:18</x-clock> <span class="text-black">прибытие на Киевский вокзал</span></s></div>
   <div><x-clock>08:50</x-clock> прибытие на Киевский вокзал</div>
   <div><x-clock>09:00</x-clock> аэроэкспресс</div>
   <div><x-clock>09:37</x-clock> прибытие во Внуково</div>

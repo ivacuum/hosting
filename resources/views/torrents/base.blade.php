@@ -5,7 +5,7 @@
   <form class="flex mb-2 lg:mb-0" action="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}">
     <div class="flex w-full">
       <input
-        class="form-control rounded-r-none js-search-input"
+        class="form-input rounded-r-none js-search-input"
         name="q"
         value="{{ request('q') }}"
         enterkeyhint="search"

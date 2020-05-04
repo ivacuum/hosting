@@ -14,7 +14,7 @@
   @foreach (App\Radical::orderBy('level')->orderBy('meaning')->get(['id', 'character', 'meaning']) as $row)
     <label class="flex items-center">
       <input
-        class="mr-2"
+        class="form-checkbox mr-2"
         type="checkbox"
         name="radicals[]"
         value="{{ $row->id }}"

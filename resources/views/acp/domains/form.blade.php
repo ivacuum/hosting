@@ -33,58 +33,58 @@
 <div class="mb-4">
   <label>CMS</label>
   <div class="flex items-center w-full">
-    <input class="form-control" type="text" name="cms_user" placeholder="admin" value="{{ old('cms_user', @$model->cms_user) }}">
+    <input class="form-input" type="text" name="cms_user" placeholder="admin" value="{{ old('cms_user', @$model->cms_user) }}">
     <div class="mx-2">:</div>
-    <input class="form-control" type="password" name="cms_pass" placeholder="password">
+    <input class="form-input" type="password" name="cms_pass" placeholder="password">
     <div class="mx-2">@</div>
-    <input class="form-control" type="text" name="cms_url" placeholder="http://example.com/acp/" value="{{ old('cms_url', @$model->cms_url) }}">
+    <input class="form-input" type="text" name="cms_url" placeholder="http://example.com/acp/" value="{{ old('cms_url', @$model->cms_url) }}">
   </div>
 </div>
 
 <div class="mb-4">
   <label>Название CMS</label>
-  <input class="form-control" type="text" name="cms_type" placeholder="korden.cms" value="{{ old('cms_type', @$model->cms_type) }}">
+  <input class="form-input" type="text" name="cms_type" placeholder="korden.cms" value="{{ old('cms_type', @$model->cms_type) }}">
 </div>
 
 <div class="mb-4">
   <label>Версия CMS</label>
-  <input class="form-control" type="text" name="cms_version" placeholder="3.5" value="{{ old('cms_version', @$model->cms_version) }}">
+  <input class="form-input" type="text" name="cms_version" placeholder="3.5" value="{{ old('cms_version', @$model->cms_version) }}">
 </div>
 
 <div class="mb-4">
   <label>FTP</label>
   <div class="flex items-center w-full">
-    <input class="form-control" type="text" name="ftp_user" placeholder="user" value="{{ old('ftp_user', @$model->ftp_user) }}">
+    <input class="form-input" type="text" name="ftp_user" placeholder="user" value="{{ old('ftp_user', @$model->ftp_user) }}">
     <div class="mx-2">:</div>
-    <input class="form-control" type="password" name="ftp_pass" placeholder="password">
+    <input class="form-input" type="password" name="ftp_pass" placeholder="password">
     <div class="mx-2">@</div>
-    <input class="form-control" type="text" name="ftp_host" placeholder="ftp://example.com/" value="{{ old('ftp_host', @$model->ftp_host) }}">
+    <input class="form-input" type="text" name="ftp_host" placeholder="ftp://example.com/" value="{{ old('ftp_host', @$model->ftp_host) }}">
   </div>
 </div>
 
 <div class="mb-4">
   <label>SSH</label>
   <div class="flex items-center w-full">
-    <input class="form-control" type="text" name="ssh_user" placeholder="user" value="{{ old('ssh_user', @$model->ssh_user) }}">
+    <input class="form-input" type="text" name="ssh_user" placeholder="user" value="{{ old('ssh_user', @$model->ssh_user) }}">
     <div class="mx-2">:</div>
-    <input class="form-control" type="password" name="ssh_pass" placeholder="password">
+    <input class="form-input" type="password" name="ssh_pass" placeholder="password">
     <div class="mx-2">@</div>
-    <input class="form-control" type="text" name="ssh_host" placeholder="ssh://example.com/" value="{{ old('ssh_host', @$model->ssh_host) }}">
+    <input class="form-input" type="text" name="ssh_host" placeholder="ssh://example.com/" value="{{ old('ssh_host', @$model->ssh_host) }}">
   </div>
 </div>
 
 <div class="mb-4">
   <label>БД</label>
   <div class="flex items-center w-full">
-    <input class="form-control" type="text" name="db_user" placeholder="user" value="{{ old('db_user', @$model->db_user) }}">
+    <input class="form-input" type="text" name="db_user" placeholder="user" value="{{ old('db_user', @$model->db_user) }}">
     <div class="mx-2">:</div>
-    <input class="form-control" type="password" name="db_pass" placeholder="password">
+    <input class="form-input" type="password" name="db_pass" placeholder="password">
     <div class="mx-2">@</div>
-    <input class="form-control" type="text" name="db_host" placeholder="localhost" value="{{ old('db_host', @$model->db_host) }}">
+    <input class="form-input" type="text" name="db_host" placeholder="localhost" value="{{ old('db_host', @$model->db_host) }}">
   </div>
 </div>
 
 <div class="mb-4">
   <label>phpMyAdmin</label>
-  <input class="form-control" type="text" name="db_pma" placeholder="http://pma.example.com/" value="{{ old('db_pma', @$model->db_pma) }}">
+  <input class="form-input" type="text" name="db_pma" placeholder="http://pma.example.com/" value="{{ old('db_pma', @$model->db_pma) }}">
 </div>

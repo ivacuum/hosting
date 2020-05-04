@@ -1,6 +1,6 @@
 <div class="mb-4">
   <label class="font-bold input-required">Рубрика</label>
-  <select required class="custom-select {{ $errors->has('category_id') ? 'is-invalid' : '' }}" name="category_id">
+  <select required class="form-select" name="category_id">
     <option value="0">Выберите рубрику...</option>
     @foreach (TorrentCategoryHelper::tree() as $id => $category)
       <option value="{{ $id }}" {{ $id == old('category_id', @$model->category_id) ? 'selected' : '' }} {{ TorrentCategoryHelper::canPost($id) ? '' : 'disabled' }}>
@@ -15,7 +15,7 @@
       @endif
     @endforeach
   </select>
-  <div class="invalid-feedback">{{ $errors->first('category_id') }}</div>
+  <x-invalid-feedback field="category_id"/>
 </div>
 
 {!! Form::text('rto_id')->required()->html() !!}

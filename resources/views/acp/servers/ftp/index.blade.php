@@ -50,7 +50,7 @@
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
     <div class="flex w-full">
-      <input class="form-control mr-1 {{ $errors->has('file') ? 'is-invalid' : '' }}" name="file" value="{{ old('file') }}">
+      <input class="form-input mr-1" name="file" value="{{ old('file') }}">
       <button class="btn btn-default whitespace-no-wrap">
         Создать файл
       </button>
@@ -64,7 +64,7 @@
     @csrf
 
     <div class="flex w-full">
-      <input class="form-control mr-1 {{ $errors->has('dir') ? 'is-invalid' : '' }}" name="dir" value="{{ old('dir') }}">
+      <input class="form-input mr-1" name="dir" value="{{ old('dir') }}">
       <button class="btn btn-default whitespace-no-wrap">
         Создать папку
       </button>
@@ -78,7 +78,7 @@
     @csrf
 
     <div class="flex items-center w-full">
-      <input class="mr-1 {{ $errors->has('file') ? 'is-invalid' : '' }}" type="file" name="file">
+      <input class="mr-1" type="file" name="file">
       <button class="btn btn-default">
         Загрузить файл
       </button>

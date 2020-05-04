@@ -22,7 +22,7 @@
               <label class="block cursor-pointer py-2">
                 <input
                   :id="`column_${i - 1}`"
-                  class="cursor-pointer"
+                  class="form-checkbox cursor-pointer"
                   type="checkbox"
                   :value="i - 1"
                   v-model="checkedColumns"
@@ -32,7 +32,7 @@
           </template>
         </div>
         <div class="grid grid-cols-2 lg:block gap-2 mt-2">
-          <button class="btn btn-primary" :disabled="this.picked.length < 2" @click="practice">{{ $t('PRACTICE') }}</button>
+          <button class="btn btn-primary disabled:opacity-50" :disabled="this.picked.length < 2" @click="practice">{{ $t('PRACTICE') }}</button>
           <transition name="fade-fast" mode="out-in">
             <button class="btn btn-default" @click="switchSyllabary" :key="syllabaryLabel">{{ syllabaryLabel }}</button>
           </transition>
@@ -49,7 +49,7 @@
           </div>
           <div>
             <input
-              class="form-control text-center"
+              class="form-input text-center"
               autocapitalize="none"
               autocomplete="off"
               autocorrect="off"

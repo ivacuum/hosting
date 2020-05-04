@@ -50,7 +50,7 @@
     <div class="my-2">
       <textarea
         required
-        class="form-control"
+        class="form-textarea"
         rows="4"
         placeholder="Текст ответа..."
         name="text"

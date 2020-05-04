@@ -4,7 +4,7 @@
 <div class="flex flex-wrap items-center mb-2">
   <h3 class="mb-1 mr-4">Логи</h3>
   <form>
-    <input name="q" class="form-control" enterkeyhint="search" placeholder="Поиск..." value="{{ $q ?? '' }}">
+    <input name="q" class="form-input" enterkeyhint="search" placeholder="Поиск..." value="{{ $q ?? '' }}">
   </form>
 </div>
 <table class="text-xs table-stats table-adaptive">
@@ -38,7 +38,7 @@
       <td>
         @if ($line->request_time != 0)
           @if ($line->request_time > 2)
-            <span class="text-redish-600">{{ $line->request_time }}</span>
+            <span class="text-red-600">{{ $line->request_time }}</span>
           @else
             {{ $line->request_time }}
           @endif

@@ -42,7 +42,7 @@
   </div>
 
   @if (!empty($softwareScreenshots))
-    <section class="bg-grey-800 my-0 py-12 text-grey-200">
+    <section class="bg-gray-700 my-0 py-12 text-grey-200">
       <div class="container">
         <h2 class="mb-6">{{ trans('dcpp.screenshots') }}</h2>
         <p>
@@ -65,7 +65,7 @@
         <p>Looking for a place to connect to download and share files?</p>
       @endru
       <p>
-        <a class="btn btn-important" href="{{ path([App\Http\Controllers\DcppHubs::class, 'index']) }}">
+        <a class="btn border border-transparent bg-orange-400 text-white hover:bg-orange-500 hover:text-white" href="{{ path([App\Http\Controllers\DcppHubs::class, 'index']) }}">
           @ru
             Список популярных DC++ хабов
           @en

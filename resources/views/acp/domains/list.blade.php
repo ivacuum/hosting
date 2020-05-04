@@ -1,7 +1,7 @@
 <table class="table-stats table-adaptive">
   <thead>
     <tr>
-      <th><input type="checkbox" class="js-select-all" data-selector=".domains-checkbox"></th>
+      <th><input type="checkbox" class="form-checkbox js-select-all" data-selector=".domains-checkbox"></th>
       <th>Домен</th>
       <th>Оплачен до</th>
       <th>Сервер</th>
@@ -13,7 +13,7 @@
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
       <td>
-        <input class="domains-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}">
+        <input class="form-checkbox domains-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}">
       </td>
       <td>
         <a class="mr-1" href="http://{{ $model->domain }}/" target="_blank">
@@ -30,13 +30,13 @@
           <span class="bg-grey-600 text-white p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="есть заметки">...</span>
         @endif
         @if (!$model->domain_control)
-          <span class="bg-tealish-600 text-white p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="не в нашей панели">?</span>
+          <span class="bg-teal-600 text-white p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="не в нашей панели">?</span>
         @endif
         @if ($model->domain_control and $model->isExpired())
-          <span class="bg-redish-600 text-white p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="просрочена оплата">$</span>
+          <span class="bg-red-600 text-white p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="просрочена оплата">$</span>
         @endif
         @if ($model->domain_control and $model->isExpiringSoon())
-          <span class="bg-orangeish-400 p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="подходит срок оплаты">$</span>
+          <span class="bg-orange-400 p-1 text-xs font-bold rounded tooltipped tooltipped-n" aria-label="подходит срок оплаты">$</span>
         @endif
       </td>
       <td class="text-muted">
@@ -59,7 +59,7 @@
 <div class="my-4">
   <form class="flex flex-wrap js-batch-form" data-url="/acp/domains/batch" data-selector=".domains-checkbox">
     <div class="mr-1">
-      <select required class="custom-select" name="action">
+      <select required class="form-select" name="action">
         <option value="">Выберите действие...</option>
         @if ($filter == 'trashed')
           <option value="restore">Восстановить</option>
@@ -81,15 +81,15 @@
     есть заметки
   </span>
   <span class="whitespace-no-wrap mr-2">
-    <span class="bg-tealish-600 text-white py-1 px-2 text-xs font-bold rounded mr-1">?</span>
+    <span class="bg-teal-600 text-white py-1 px-2 text-xs font-bold rounded mr-1">?</span>
     не в нашей панели
   </span>
   <span class="whitespace-no-wrap mr-2">
-    <span class="bg-redish-600 text-white py-1 px-2 text-xs font-bold rounded mr-1">$</span>
+    <span class="bg-red-600 text-white py-1 px-2 text-xs font-bold rounded mr-1">$</span>
     просрочена оплата
   </span>
   <span class="whitespace-no-wrap mr-2">
-    <span class="bg-orangeish-400 py-1 px-2 text-xs font-bold rounded mr-1">$</span>
+    <span class="bg-orange-400 py-1 px-2 text-xs font-bold rounded mr-1">$</span>
     подходит срок оплаты
   </span>
 </div>

@@ -8,7 +8,7 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
     <tr>
-      <th><input type="checkbox" class="js-select-all" data-selector=".models-checkbox"></th>
+      <th><input type="checkbox" class="form-checkbox js-select-all" data-selector=".models-checkbox"></th>
       <th class="md:text-right whitespace-no-wrap">
         @include('acp.tpl.sortable-header', ['key' => 'id'])
       </th>
@@ -24,7 +24,7 @@
   <tbody>
     @foreach ($models as $model)
       <tr>
-        <td><input class="models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
+        <td><input class="form-checkbox models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
         <td class="md:text-right">{{ $model->id }}</td>
         <td>
           <a href="{{ path([$controller, 'show'], $model) }}">
@@ -55,7 +55,7 @@
         </td>
         <td class="md:text-right whitespace-no-wrap">
           <a href="{{ path([App\Http\Controllers\Acp\Comments::class, 'index'], [$model->getForeignKey() => $model]) }}">
-            {{ ViewHelper::number($model->comments_count) }}
+            {{ ViewHelper::number($model->comments_count) ?: '' }}
           </a>
         </td>
         <td>{{ ViewHelper::dateShort($model->created_at) }}</td>

@@ -2,21 +2,19 @@
 <div>
   <div class="mb-4" v-if="errors.file && errors.file.length">
     <div v-for="error in errors.file">
-      <div class="text-redish-600">{{ error }}</div>
+      <div class="text-red-600">{{ error }}</div>
     </div>
   </div>
   <div v-if="!uploading">
-    <div class="custom-file max-w-400px">
-      <input
-        class="custom-file-input"
-        accept="image/gif,image/jpeg,image/png"
-        type="file"
-        name="files[]"
-        multiple
-        :max="max"
-        @change="uploadFiles($event.currentTarget.files)">
-      <label class="custom-file-label">{{ $t('CHOOSE_FILES') }}</label>
-    </div>
+    <input
+      class="block w-full"
+      accept="image/gif,image/jpeg,image/png"
+      type="file"
+      name="files[]"
+      multiple
+      :max="max"
+      @change="uploadFiles($event.currentTarget.files)"
+    >
     <div class="form-help">{{ $t('HELP_TEXT') }}</div>
   </div>
   <div v-else>
@@ -29,9 +27,9 @@
       <div class="lg:w-4/6">
         <div>
           <div>Ссылка:</div>
-          <textarea class="form-control select-all" :rows="total" v-html="links"></textarea>
+          <textarea class="form-textarea select-all" :rows="total" v-html="links"></textarea>
           <div class="mt-2">Полная картинка:</div>
-          <input class="form-control select-all" :value="linksInTag">
+          <input class="form-input select-all" :value="linksInTag">
         </div>
       </div>
       <h3 class="mt-12">Индивидуальные ссылки</h3>
@@ -43,9 +41,9 @@
         </div>
         <div class="lg:col-span-3">
           <div>Ссылка:</div>
-          <input class="form-control select-all" :value="file.original">
+          <input class="form-input select-all" :value="file.original">
           <div class="mt-2">Полная картинка:</div>
-          <input class="form-control select-all" :value="`[img]${file.original}[/img]`">
+          <input class="form-input select-all" :value="`[img]${file.original}[/img]`">
         </div>
         <div class="lg:col-span-2"></div>
       </template>

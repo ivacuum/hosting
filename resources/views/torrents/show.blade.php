@@ -41,7 +41,7 @@
   <a class="btn btn-success svg-flex svg-label js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ path([App\Http\Controllers\Torrents::class, 'magnet'], $torrent) }}">
     @svg (magnet)
     {{ trans('torrents.download') }}
-    <span class="mx-2">&middot;</span>
+    <span class="mx-1">&middot;</span>
     {{ ViewHelper::size($torrent->size) }}
   </a>
 </div>
@@ -50,7 +50,7 @@
   <div class="mt-4">
     @foreach ($tags as $tag)
       <a
-        class="btn btn-outline-primary mb-1 py-1 text-sm lowercase"
+        class="border border-blueish-700 rounded mb-1 px-2 py-1 text-sm text-blueish-700 lowercase hover:bg-blueish-700 hover:text-white"
         href="{{ path([App\Http\Controllers\Torrents::class, 'index'], ['q' => mb_strtolower($tag)]) }}"
       >#{{ $tag }}</a>
     @endforeach
@@ -79,7 +79,7 @@
          data-action="{{ path([App\Http\Controllers\Torrents::class, 'magnet'], $row) }}"
       >
         @svg (magnet)
-        <span class="js-magnet-counter">{{ $row->clicks > 0 ? $row->clicks : '' }}</span>
+        <span class="js-magnet-counter">{{ $row->clicks ?: '' }}</span>
       </a>
       <div class="flex-shrink-0 text-center md:text-left whitespace-no-wrap torrents-list-size">{{ ViewHelper::size($row->size) }}</div>
     </div>

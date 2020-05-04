@@ -3,7 +3,7 @@ $(document).on('click', '.js-password-eye', function jsPasswordEye(e) {
   e.preventDefault()
 
   const state = this.dataset.state || 'password'
-  const $input = $(this).siblings('.form-control')
+  const $input = $(this).siblings('.form-input')
 
   if (state === 'password') {
     $input.attr('type', 'text')

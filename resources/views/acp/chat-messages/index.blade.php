@@ -15,7 +15,7 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
   <tr>
-    <th><input type="checkbox" class="js-select-all" data-selector=".models-checkbox"></th>
+    <th><input type="checkbox" class="form-checkbox js-select-all" data-selector=".models-checkbox"></th>
     <th class="md:text-right">ID</th>
     <th>Автор</th>
     <th>Текст</th>
@@ -26,7 +26,7 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
-      <td><input class="models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
+      <td><input class="form-checkbox models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
       <td class="md:text-right">
         <a href="{{ path([$controller, 'show'], $model) }}">
           {{ $model->id }}

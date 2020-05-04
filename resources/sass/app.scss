@@ -3,10 +3,7 @@
 @import "~bootstrap/scss/variables";
 @import "variables-dependent";
 @import "~bootstrap/scss/mixins";
-@import "~bootstrap/scss/forms";
-@import "~bootstrap/scss/transitions";
 @import "~bootstrap/scss/dropdown";
-@import "~bootstrap/scss/custom-forms";
 @import "~bootstrap/scss/nav";
 @import "~bootstrap/scss/alert";
 
@@ -26,7 +23,6 @@
 @import "base";
 
 @import "animations";
-@import "avatars";
 @import "bottom-tabbar";
 @import "breadcrumbs";
 @import "chat";

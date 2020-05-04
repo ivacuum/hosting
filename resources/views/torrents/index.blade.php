@@ -52,7 +52,7 @@
       @if ($fulltext)
         <div class="mb-6">
           <a class="btn btn-default" href="{{ UrlHelper::filter(['fulltext' => null]) }}">
-            <span class="text-redish-600">
+            <span class="text-red-600">
               @svg (times)
             </span>
             Искать только в заголовках
@@ -90,7 +90,7 @@
              data-action="{{ path([App\Http\Controllers\Torrents::class, 'magnet'], $torrent) }}"
           >
             @svg (magnet)
-            <span class="js-magnet-counter">{{ $torrent->clicks > 0 ? $torrent->clicks : '' }}</span>
+            <span class="js-magnet-counter">{{ $torrent->clicks ?: '' }}</span>
           </a>
           <div class="flex-shrink-0 text-center md:text-left whitespace-no-wrap torrents-list-size">{{ ViewHelper::size($torrent->size) }}</div>
         </div>

@@ -14,12 +14,12 @@
         <label class="font-bold">{{ trans('my.old_password') }}</label>
         <input
           required
-          class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
+          class="form-input"
           type="password"
           name="password"
           autocomplete="current-password"
         >
-        <div class="invalid-feedback">{{ $errors->first('password') }}</div>
+        <x-invalid-feedback field="password"/>
       </div>
     @endif
 
@@ -27,18 +27,20 @@
       <label class="font-bold">{{ trans('my.new_password') }}</label>
       <input
         required
-        class="form-control {{ $errors->has('new_password') ? 'is-invalid' : '' }}"
+        class="form-input"
         type="password"
         name="new_password"
         minlength="8"
         autocomplete="new-password"
       >
-      <div class="invalid-feedback">{{ $errors->first('new_password') }}</div>
-      @ru
-        <div class="form-help">Не менее 8 символов</div>
-      @en
-        <div class="form-help">Minimum length is 8 characters</div>
-      @endru
+      <x-invalid-feedback field="new_password"/>
+      <div class="form-help">
+        @ru
+          Не менее 8 символов
+        @en
+          Minimum length is 8 characters
+        @endru
+      </div>
     </div>
 
     <button class="btn btn-primary">

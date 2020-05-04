@@ -36,7 +36,7 @@
     <form class="mt-1 mb-4" wire:submit.prevent="post">
       <div class="flex w-full">
         <input
-          class="form-control rounded-r-none"
+          class="form-input rounded-r-none"
           enterkeyhint="send"
           placeholder="Сообщение в чат..."
           wire:model.lazy="text"

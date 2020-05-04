@@ -93,7 +93,7 @@
 </div>
 @ru
   <a
-    class="hidden md:block btn btn-success text-sm ml-2 py-2"
+    class="hidden md:block btn btn-success leading-tight text-sm ml-2"
     href="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}"
   >
     {{ trans('torrents.index') }}
@@ -105,13 +105,13 @@
 @if (empty($noLanguageSelector))
   @ru
     <a
-      class="px-2 py-4 text-grey-600 hover:text-grey-900 whitespace-no-wrap"
+      class="px-2 py-3 text-grey-600 hover:text-grey-900 whitespace-no-wrap"
       href="{{ url("en/{$requestUri}") }}"
       lang="en"
     >In English</a>
   @en
     <a
-      class="px-2 py-4 text-grey-600 hover:text-grey-900 whitespace-no-wrap"
+      class="px-2 py-3 text-grey-600 hover:text-grey-900 whitespace-no-wrap"
       href="{{ url($requestUri) }}"
       lang="ru"
     >По-русски</a>

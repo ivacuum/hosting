@@ -157,8 +157,8 @@ $irregularVerbs = [
   <div>— No, miss, they must be lost. There was <b>a</b> teacher here yesterday asking <b>the</b> same question.</div>
 </blockquote>
 
-<ol class="mt-12">
-  <li class="mb-4">
+<ol class="mt-12 space-y-4">
+  <li>
     <b>A/An</b> is used with <b>singular countable</b> nouns when we talk about things <b>in general</b>.
     <blockquote class="mt-2 text-muted">
       <div><b>An</b> aeroplane is faster than <b>a</b> train.</div>
@@ -167,26 +167,26 @@ $irregularVerbs = [
       <div>(Which greengrocer? Greengrocers in general.)</div>
     </blockquote>
   </li>
-  <li class="mb-4">
+  <li>
     We often use <b>a/an</b> after the verbs <b>to be</b> and <b>to have</b>.
     <blockquote class="mt-2 text-muted">
       <div>He <b>is</b> a photographer. He <b>has got</b> a camera.</div>
     </blockquote>
   </li>
-  <li class="mb-4">
+  <li>
     We do not use <b>a/an</b> with <b>uncountable</b> or <b>plural</b> nouns. We can use <b>some</b> instead.
     <blockquote class="mt-2 text-muted">
       <div>Would you like <b>some</b> tea? Yes, please! And I'd like <b>some</b> biscuits.</div>
     </blockquote>
   </li>
-  <li class="mb-4">
+  <li>
     <b>The</b> is used before <b>singular</b> and <b>plural</b> nouns, both <b>countable</b> and <b>uncountable</b> when we are talking about something <b>specific</b> or when the noun is mentioned <b>for a second time</b>.
     <blockquote class="mt-2 text-muted">
       <div><b>The</b> boy who has just left is my cousin. (Which boy? Not any boy. The specific boy, the boy who has just left.)</div>
       <div class="mt-4">There is a cat on the sofa. <b>The</b> cat is sleeping. ("The cat" is mentioned for a second time.)</div>
     </blockquote>
   </li>
-  <li class="mb-4">
+  <li>
     We use <b>the</b> with the words <b>cinema, theatre, radio, country(side), seaside, beach, etc</b>.
     <blockquote class="mt-2 text-muted">
       <div>We go to <b>the beach</b> every Sunday.</div>
@@ -204,32 +204,32 @@ $irregularVerbs = [
 <div class="grid md:grid-cols-2 gap-8 mt-12">
   <div>
     <p><b>The</b> is also used before:</p>
-    <ol>
-      <li class="mb-4">
+    <ol class="space-y-4">
+      <li>
         nouns which are unique.
         <blockquote class="mt-2 text-muted">
           Haven't you been to <b>the Acropolis</b> yet?
         </blockquote>
       </li>
-      <li class="mb-4">
+      <li>
         names of cinemas (the Odeon), hotels (the Hilton), theatres (the Rex), museums (the Prado), newspapers (the Times), ships (the Queen Mary).
       </li>
-      <li class="mb-4">
+      <li>
         names of rivers (the Thames), seas (the Black Sea), groups of islands/states (the Bahamas, the USA), mountain ranges (the Alps), deserts (the Gobi desert), oceans (the Pacific) and names with ... of (The Tower of London).
       </li>
-      <li class="mb-4">
+      <li>
         musical instruments.
         <blockquote class="mt-2 text-muted">
           Can you play the guitar?
         </blockquote>
       </li>
-      <li class="mb-4">
+      <li>
         names of people / families / nationalities in the plural.
         <blockquote class="mt-2 text-muted">
           the Smiths, the English, the Dutch etc.
         </blockquote>
       </li>
-      <li class="mb-4">
+      <li>
         titles without proper names.
         <blockquote class="mt-2 text-muted">
           the Queen, the President
@@ -245,14 +245,14 @@ $irregularVerbs = [
   </div>
   <div>
     <p><b>The</b> is omitted before:</p>
-    <ol>
-      <li class="mb-4">
+    <ol class="space-y-4">
+      <li>
         proper nouns.
         <blockquote class="mt-2 text-muted">
           <b>Paula</b> comes from <b>Canada</b>.
         </blockquote>
       </li>
-      <li class="mb-4">
+      <li>
         names of sports, activities, colours, substances and meals.
         <blockquote class="mt-2 text-muted">
           <div>He plays <b>tennis</b> well.</div>
@@ -261,28 +261,28 @@ $irregularVerbs = [
           <div><b>Lunch</b> is ready.</div>
         </blockquote>
       </li>
-      <li class="mb-4">
+      <li>
         names of countries (England), cities (London), streets (Bond Street), parks (Hyde Park), mountains (Everest), islands (Cyprus), lakes (Lake Michigan), continents (Europe).
       </li>
-      <li class="mb-4">
+      <li>
         the possessive case or possessive adj.
         <blockquote class="mt-2 text-muted">
           This isn't <b>your</b> coat, it's <b>Kate's</b>.
         </blockquote>
       </li>
-      <li class="mb-4">
+      <li>
         the words "home" and "Father/Mother" when we talk about our own home/parents.
         <blockquote class="mt-2 text-muted">
           <b>Father</b> isn't at <b>home</b>.
         </blockquote>
       </li>
-      <li class="mb-4">
+      <li>
         titles with proper names.
         <blockquote class="mt-2 text-muted">
           Queen Elizabeth, President Kennedy
         </blockquote>
       </li>
-      <li class="mb-4">
+      <li>
         bed, school, church, hospital, prison, when they are used for the reason they exist.
         <blockquote class="mt-2 text-muted">
           <div>John was sent to <b>prison</b>.</div>

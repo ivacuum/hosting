@@ -1,4 +1,4 @@
-.form-control-feedback-password {
+.form-input-feedback-password {
   pointer-events: auto;
   cursor: pointer;
   color: #aaa;
@@ -25,10 +25,4 @@
   content: '*';
   color: $input-required-color;
   padding-left: $input-required-padding-left;
-}
-
-.textarea-autosized { resize: none; }
-.textarea-borderless-focus:focus {
-  border-color: transparent;
-  box-shadow: none;
 }

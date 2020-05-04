@@ -9,9 +9,9 @@
   </div>
   <div class="lg:col-span-7 xl:col-span-3">
     <div>Ссылка:</div>
-    <input class="form-control select-all" value="{{ $image->originalUrl() }}">
+    <input class="form-input select-all" value="{{ $image->originalUrl() }}">
     <div class="mt-2">Полная картинка:</div>
-    <input class="form-control select-all" value="[img]{{ $image->originalUrl() }}[/img]">
+    <input class="form-input select-all" value="[img]{{ $image->originalUrl() }}[/img]">
     {{-- TODO: thumb --}}
   </div>
 </div>

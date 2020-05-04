@@ -21,10 +21,8 @@
 
     <div>
       <a class="btn btn-primary text-lg px-4 py-2" href="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}">
-        <span class="mr-1">
-          @svg (sign-in)
-        </span>
         Перейти на трекер
+        @svg (angle-right)
       </a>
     </div>
   </div>
@@ -37,10 +35,8 @@
 
     <div>
       <a class="btn btn-primary text-lg px-4 py-2" href="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}">
-        <span class="mr-1">
-          @svg (sign-in)
-        </span>
         Перейти на трекер
+        @svg (angle-right)
       </a>
     </div>
   </div>
@@ -53,55 +49,53 @@
 
     <div>
       <a class="btn btn-default text-lg px-4 py-2" href="http://t.ivacuum.ru/">
-        <span class="mr-1">
-          @svg (sign-in)
-        </span>
         Перейти на <span class="hidden md:inline">старый трекер</span> t.ivacuum.ru
+        @svg (angle-right)
       </a>
     </div>
   </div>
 </section>
 
-<section class="bg-grey-800 py-12 text-grey-200">
+<section class="bg-gray-700 py-20 text-gray-300">
   <div class="container lg:max-w-3xl">
-    <h3 class="mb-6">Ключевые особенности трекера t.ivacuum.ru</h3>
+    <h3 class="text-gray-200 mb-6">Ключевые особенности трекера t.ivacuum.ru</h3>
     <div class="grid md:grid-cols-2 row-gap-8 col-gap-12">
       <div>
-        <h5 class="text-grey-500">Обсуждение раздач</h5>
+        <h5 class="text-gray-400">Обсуждение раздач</h5>
         <div>Трекер построен на основе форума, следовательно, можно не только скачивать раздачи, но и комментировать их и читать отзывы других посетителей.</div>
       </div>
       <div>
-        <h5 class="text-grey-500">Отсутствие рейтинга</h5>
+        <h5 class="text-gray-400">Отсутствие рейтинга</h5>
         <div>Рейтинг &mdash; не повод отказывать себе в просмотре интересного материала! Скачивайте любое количество информации!</div>
       </div>
       <div>
-        <h5 class="text-grey-500">Скорость обмена</h5>
+        <h5 class="text-gray-400">Скорость обмена</h5>
         <div>Абоненты Билайн-Калуга &mdash; счастливые обладатели возможности обмениваться информацией на скорости до 100 мбит в секунду!</div>
       </div>
       <div>
-        <h5 class="text-grey-500">Быстродействие</h5>
+        <h5 class="text-gray-400">Быстродействие</h5>
         <div>Узкие места трекера были оптимизированы для достижения максимального быстродействия и низкого времени отклика.</div>
       </div>
       <div>
-        <h5 class="text-grey-500">Опытная команда</h5>
+        <h5 class="text-gray-400">Опытная команда</h5>
         <div>Администраторы знакомы с технологией BitTorrent и возможностями трекера уже много лет и всегда готовы прийти вам на помощь.</div>
       </div>
       <div>
-        <h5 class="text-grey-500">Поиск</h5>
+        <h5 class="text-gray-400">Поиск</h5>
         <div>Умная система поиска найдет раздачи даже по одному символу! А также предложит подсказки по мере ввода запроса!</div>
       </div>
       <div>
-        <h5 class="text-grey-500">Информеры</h5>
+        <h5 class="text-gray-400">Информеры</h5>
         <div>Всегда будьте в курсе прогноза погоды, курса валют и новых раздач. Всё самое необходимое &mdash; на главной странице трекера.</div>
       </div>
       {{--
       <div>
-        <h5 class="text-grey-500">Ленты</h5>
+        <h5 class="text-gray-400">Ленты</h5>
         <div>Читайте новости, гороскоп и истории с развлекательных сайтов не выходя с трекера!</div>
       </div>
       --}}
       <div>
-        <h5 class="text-grey-500">Графики</h5>
+        <h5 class="text-gray-400">Графики</h5>
         <div>Вы можете окунуться в историю развития трекера, посмотрев на рост графиков статистики: скорости обмена, посещамости, притока пользователей, раздач, сообщений и трафика.</div>
       </div>
     </div>
@@ -113,11 +107,9 @@
     <h3>Какие еще есть полезные ресурсы помимо трекера?</h3>
     <p>Ознакомиться с актуальным списком можно на отдельной странице.</p>
     <div class="mt-4">
-      <a class="btn btn-secondary" href="{{ path(App\Http\Controllers\HomeController::class) }}">
-        <span class="mr-1">
-          @svg (sign-in)
-        </span>
+      <a class="btn btn-default" href="{{ path(App\Http\Controllers\HomeController::class) }}">
         Список ресурсов
+        @svg (angle-right)
       </a>
     </div>
   </div>

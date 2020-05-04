@@ -16,7 +16,7 @@
     @foreach (App\Tag::orderBy(App\Tag::titleField())->get() as $tag)
       <label class="flex items-center">
         <input
-          class="mr-2 {{ $errors->has('tags') ? 'is-invalid' : '' }}"
+          class="form-checkbox mr-2"
           type="checkbox"
           name="tags[]"
           value="{{ $tag->id }}"
@@ -25,8 +25,6 @@
         {{ $tag->title }}
       </label>
     @endforeach
-    @if ($errors->has('tags'))
-      <div class="invalid-feedback block">{{ $errors->first('tags') }}</div>
-    @endif
+    <x-invalid-feedback field="tags"/>
   </div>
 @endif

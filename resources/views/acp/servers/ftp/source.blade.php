@@ -26,7 +26,7 @@
 
   <div class="mb-4">
     <textarea
-      class="form-control text-sm font-mono textarea-autosized js-autosize-textarea"
+      class="form-textarea text-sm font-mono resize-none js-autosize-textarea"
       name="source"
       rows="2"
     >{{ $source }}</textarea>

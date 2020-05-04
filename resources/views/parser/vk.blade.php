@@ -32,7 +32,7 @@
   </div>
   <div class="hidden sm:flex items-center">
     <span class="hidden md:block">Топ 10</span>
-    <input class="form-control mx-2 w-32" name="slug" value="{{ $vkpage }}" autocapitalize="none">
+    <input class="form-input mx-2 w-32" name="slug" value="{{ $vkpage }}" autocapitalize="none">
     за {{ $date->formatLocalized('%e %B') }}
     @if ($date->year !== now()->year)
       {{ $date->year }}

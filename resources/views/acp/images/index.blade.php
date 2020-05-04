@@ -25,7 +25,7 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
     <tr>
-      <th><input type="checkbox" class="js-select-all" data-selector=".models-checkbox"></th>
+      <th><input type="checkbox" class="form-checkbox js-select-all" data-selector=".models-checkbox"></th>
       <th class="md:text-right whitespace-no-wrap">
         @include('acp.tpl.sortable-header', ['key' => 'id'])
       </th>
@@ -46,7 +46,7 @@
   <tbody>
     @foreach ($models as $model)
       <tr id="image_{{ $model->id }}">
-        <td><input class="models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
+        <td><input class="form-checkbox models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
         <td class="md:text-right">{{ $model->id }}</td>
         <td class="md:text-right">
           <a href="{{ UrlHelper::filter(['user_id' => $model->user_id]) }}">

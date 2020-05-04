@@ -13,7 +13,7 @@
       <div class="font-bold">{{ trans('my.theme') }}</div>
       <label class="flex items-center">
         <input
-          class="mr-2 {{ $errors->has('theme') ? 'is-invalid' : '' }}"
+          class="form-radio mr-2"
           type="radio"
           name="theme"
           value="{{ App\User::THEME_LIGHT }}"
@@ -23,7 +23,7 @@
       </label>
       <label class="flex items-center">
         <input
-          class="mr-2 {{ $errors->has('theme') ? 'is-invalid' : '' }}"
+          class="form-radio mr-2"
           type="radio"
           name="theme"
           value="{{ App\User::THEME_DARK }}"
@@ -31,9 +31,7 @@
         >
         {{ trans('my.theme_dark') }}
       </label>
-      @if ($errors->has('theme'))
-        <div class="invalid-feedback block">{{ $errors->first('theme') }}</div>
-      @endif
+      <x-invalid-feedback field="theme"/>
     </div>
 
     <div class="font-bold">{{ trans('torrents.index') }}</div>
@@ -41,7 +39,7 @@
       <input type="hidden" name="torrent_short_title" value="0">
       <label class="flex items-center">
         <input
-          class="mr-2 {{ $errors->has('torrent_short_title') ? 'is-invalid' : '' }}"
+          class="form-checkbox mr-2"
           type="checkbox"
           name="torrent_short_title"
           value="1"
@@ -49,9 +47,7 @@
         >
         {{ trans('my.torrent_short_title') }}
       </label>
-      @if ($errors->has('torrent_short_title'))
-        <div class="invalid-feedback block">{{ $errors->first('torrent_short_title') }}</div>
-      @endif
+      <x-invalid-feedback field="torrent_short_title"/>
       @ru
         <div class="form-help">Из названий раздач будут скрыты данные в скобках, например, Deus Ex <s>[RePack] [RUS] (2007)</s>.</div>
       @endru
@@ -62,7 +58,7 @@
       @foreach (Arr::sort(array_keys(config('cfg.locales'))) as $loc)
         <label class="flex items-center">
           <input
-            class="mr-2 {{ $errors->has('locale') ? 'is-invalid' : '' }}"
+            class="form-radio mr-2"
             type="radio"
             name="locale"
             value="{{ $loc }}"
@@ -71,16 +67,14 @@
           {{ trans("locale.{$loc}") }}
         </label>
       @endforeach
-      @if ($errors->has('locale'))
-        <div class="invalid-feedback block">{{ $errors->first('locale') }}</div>
-      @endif
+      <x-invalid-feedback field="locale"/>
     </div>
 
     <div class="font-bold">{{ trans('my.mail_subscriptions') }}</div>
     <input type="hidden" name="notify_gigs" value="{{ App\User::NOTIFY_NO }}">
     <label class="flex items-center">
       <input
-        class="mr-2 {{ $errors->has('notify_gigs') ? 'is-invalid' : '' }}"
+        class="form-checkbox mr-2"
         type="checkbox"
         name="notify_gigs"
         value="{{ App\User::NOTIFY_MAIL }}"
@@ -88,14 +82,11 @@
       >
       {{ trans('my.notify_gigs') }}
     </label>
-    @if ($errors->has('notify_gigs'))
-      <div class="invalid-feedback block mb-2">{{ $errors->first('notify_gigs') }}</div>
-    @endif
 
     <input type="hidden" name="notify_news" value="{{ App\User::NOTIFY_NO }}">
     <label class="flex items-center">
       <input
-        class="mr-2 {{ $errors->has('notify_news') ? 'is-invalid' : '' }}"
+        class="form-checkbox mr-2"
         type="checkbox"
         name="notify_news"
         value="{{ App\User::NOTIFY_MAIL }}"
@@ -103,15 +94,12 @@
       >
       {{ trans('my.notify_news') }}
     </label>
-    @if ($errors->has('notify_news'))
-      <div class="invalid-feedback block mb-2">{{ $errors->first('notify_news') }}</div>
-    @endif
 
     <div class="mb-4">
       <input type="hidden" name="notify_trips" value="{{ App\User::NOTIFY_NO }}">
       <label class="flex items-center">
         <input
-          class="mr-2 {{ $errors->has('notify_trips') ? 'is-invalid' : '' }}"
+          class="form-checkbox mr-2"
           type="checkbox"
           name="notify_trips"
           value="{{ App\User::NOTIFY_MAIL }}"
@@ -119,9 +107,6 @@
         >
         {{ trans('my.notify_trips') }}
       </label>
-      @if ($errors->has('notify_trips'))
-        <div class="invalid-feedback block mb-2">{{ $errors->first('notify_trips') }}</div>
-      @endif
     </div>
 
     <button class="btn btn-primary">

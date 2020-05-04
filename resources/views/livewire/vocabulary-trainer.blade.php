@@ -21,7 +21,7 @@
         placeholder="{{ trans('japanese.answer') }}"
         enterkeyhint="enter"
         class="form-input text-center {{ $reveal ? 'animate-incorrect-answer' : '' }}"
-        wire:dirty.class.remove="animate-incorrect-answer"
+        {{ $reveal ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
         wire:model.lazy="answer"
       >
     </form>

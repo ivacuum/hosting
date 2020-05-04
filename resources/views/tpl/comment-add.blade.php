@@ -60,24 +60,24 @@
         <div class="mb-2">
           <input
             required
-            class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
+            class="form-input"
             type="email"
             name="email"
             value="{{ old('email') }}"
             placeholder="{{ trans('model.email') }}"
           >
-          <div class="invalid-feedback">{{ $errors->first('email') }}</div>
+          <x-invalid-feedback field="email"/>
         </div>
       @endif
       <textarea
         required
-        class="form-control {{ !$isMobile ? 'textarea-autosized js-autosize-textarea' : '' }} {{ $errors->has('text') ? 'is-invalid' : '' }}"
+        class="form-textarea {{ !$isMobile ? 'resize-none js-autosize-textarea' : '' }}"
         name="text"
         placeholder="{{ trans('comments.placeholder') }}"
         rows="{{ !$isMobile ? 1 : 4 }}"
         maxlength="1000"
       >{{ old('text') }}</textarea>
-      <div class="invalid-feedback">{{ $errors->first('text') }}</div>
+      <x-invalid-feedback field="text"/>
       <button class="btn btn-primary mt-2">
         {{ trans('comments.send') }}
       </button>
