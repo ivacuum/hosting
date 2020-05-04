@@ -261,5 +261,6 @@
   @en
     <li><a class="link" href="https://www.instagram.com/p/Byq1jIRlSvP/">A song titled Sonne</a> from somewhere in Dresden</li>
   @endru
+  <li><a class="link" href="https://www.youtube.com/watch?v=JgGuRKgvWQ4">@ru Таймлапс сбора сцены @en Stage set-up time-lapse @endru</a></li>
 </ul>
 @endsection
