@@ -3,7 +3,7 @@
 use App\Factory\GigFactory;
 use Illuminate\Database\Seeder;
 
-class GigsSeeder extends Seeder
+class GigSeeder extends Seeder
 {
     public function run()
     {

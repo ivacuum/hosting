@@ -16,6 +16,7 @@ return [
     'status' => 'Состояние',
     'city_id' => 'Город',
     'trip_id' => 'Поездка',
+    'user_id' => 'Пользователь',
     'alias_id' => 'Алиас',
     'markdown' => 'Markdown',
     'title_en' => 'Название EN',
@@ -55,6 +56,7 @@ return [
     'domain.domain' => 'Домен',
 
     'external-identity.provider' => 'Провайдер',
+    'external-identity.updated_at' => 'Вход',
 
     'file.folder' => 'Папка',
     'file.extension' => 'Расширение',

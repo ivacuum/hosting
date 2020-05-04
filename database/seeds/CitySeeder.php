@@ -3,7 +3,7 @@
 use App\Factory\CityFactory;
 use Illuminate\Database\Seeder;
 
-class CitiesSeeder extends Seeder
+class CitySeeder extends Seeder
 {
     private const CITIES_BY_COUNTRY = [
         'russia' => [
@@ -12,6 +12,9 @@ class CitiesSeeder extends Seeder
             ['slug' => 'spb', 'title_ru' => 'Санкт-Петербург', 'title_en' => 'Saint Petersburg'],
             ['slug' => 'yakutsk', 'title_ru' => 'Якутск', 'title_en' => 'Yakutsk'],
             ['slug' => 'samara', 'title_ru' => 'Самара', 'title_en' => 'Samara'],
+        ],
+        'argentina' => [
+            ['slug' => 'buenos-aires', 'title_ru' => 'Буэнос-Айрес', 'title_en' => 'Buenos Aires'],
         ],
         'austria' => [
             ['slug' => 'vienna', 'title_ru' => 'Вена', 'title_en' => 'Vienna'],

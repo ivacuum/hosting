@@ -7,18 +7,21 @@ class DatabaseSeeder extends Seeder
 	public function run()
 	{
 	    $this->call([
-            UsersSeeder::class,
-            ClientsSeeder::class,
-            DomainsSeeder::class,
+            UserSeeder::class,
+            ExternalIdentitySeeder::class,
+            ClientSeeder::class,
+            DomainSeeder::class,
 
-            CountriesSeeder::class,
-            CitiesSeeder::class,
-            TripsSeeder::class,
-            ArtistsSeeder::class,
-            GigsSeeder::class,
+            CountrySeeder::class,
+            CitySeeder::class,
+            TripSeeder::class,
+            ArtistSeeder::class,
+            GigSeeder::class,
 
-            DcppHubsSeeder::class,
-            TagsSeeder::class,
+            ChatMessageSeeder::class,
+            DcppHubSeeder::class,
+            IssueSeeder::class,
+            TagSeeder::class,
             NewsSeeder::class,
 
             RadicalSeeder::class,

@@ -3,10 +3,11 @@
 use App\Factory\CountryFactory;
 use Illuminate\Database\Seeder;
 
-class CountriesSeeder extends Seeder
+class CountrySeeder extends Seeder
 {
     private const COUNTRIES = [
         ['slug' => 'russia', 'title_ru' => 'Россия', 'title_en' => 'Russia', 'emoji' => '🇷🇺'],
+        ['slug' => 'argentina', 'title_ru' => 'Аргентина', 'title_en' => 'Argentina', 'emoji' => '🇦🇷'],
         ['slug' => 'austria', 'title_ru' => 'Австрия', 'title_en' => 'Austria', 'emoji' => '🇦🇹'],
         ['slug' => 'belarus', 'title_ru' => 'Беларусь', 'title_en' => 'Belarus', 'emoji' => '🇧🇾'],
         ['slug' => 'belgium', 'title_ru' => 'Бельгия', 'title_en' => 'Belgium', 'emoji' => '🇧🇪'],

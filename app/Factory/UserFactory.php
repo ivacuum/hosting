@@ -8,8 +8,10 @@ class UserFactory
     use WithFaker;
 
     private $id;
-    private $login;
-    private $status;
+    private $email;
+    private $login = '';
+    private $locale = 'ru';
+    private $status = User::STATUS_ACTIVE;
     private $password;
 
     public function admin()
@@ -37,10 +39,10 @@ class UserFactory
     {
         $model = new User;
         $model->id = $this->id;
-        $model->email = $this->faker->safeEmail;
-        $model->login = $this->login ?? '';
-        $model->locale = 'ru';
-        $model->status = $this->status ?? User::STATUS_ACTIVE;
+        $model->email = $this->email ?? $this->faker->safeEmail;
+        $model->login = $this->login;
+        $model->locale = $this->locale;
+        $model->status = $this->status;
 
         if ($this->password) {
             $model->password = $this->password;
@@ -54,6 +56,14 @@ class UserFactory
         return tap(new self, function (self $factory) {
             $factory->setUpFaker();
         });
+    }
+
+    public function withEmail(string $email)
+    {
+        $factory = clone $this;
+        $factory->email = $email;
+
+        return $factory;
     }
 
     public function withId(int $id)

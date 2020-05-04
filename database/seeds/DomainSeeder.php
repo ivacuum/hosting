@@ -3,7 +3,7 @@
 use App\Factory\DomainFactory;
 use Illuminate\Database\Seeder;
 
-class DomainsSeeder extends Seeder
+class DomainSeeder extends Seeder
 {
     // Подборка разных доменных зон для тестирования запросов whois
     private const DOMAINS = [

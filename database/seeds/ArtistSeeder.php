@@ -3,7 +3,7 @@
 use App\Factory\ArtistFactory;
 use Illuminate\Database\Seeder;
 
-class ArtistsSeeder extends Seeder
+class ArtistSeeder extends Seeder
 {
     private const ARTISTS = [
         ['slug' => 'davidgilmour', 'title' => 'David Gilmour'],

@@ -14,6 +14,7 @@ return [
     'status' => 'Status',
     'city_id' => 'City',
     'trip_id' => 'Trip',
+    'user_id' => 'User',
     'alias_id' => 'Alias',
     'markdown' => 'Markdown',
     'title_en' => 'Title',
@@ -53,6 +54,7 @@ return [
     'domain.domain' => 'Domain',
 
     'external-identity.provider' => 'Provider',
+    'external-identity.updated_at' => 'Last login',
 
     'file.folder' => 'Folder',
     'file.extension' => 'Extension',

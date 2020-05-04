@@ -22,8 +22,8 @@ class CityFactory
         $title = "{$this->faker->city} {$this->faker->randomDigit}";
 
         $model = new City;
-        $model->lat = (string) $this->faker->latitude;
-        $model->lon = (string) $this->faker->longitude;
+        $model->lat = (string) $this->faker->optional(0.8, '')->latitude;
+        $model->lon = $model->lat ? (string) $this->faker->longitude : '';
         $model->iata = '';
         $model->slug = \Str::slug($title);
         $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);

@@ -1,12 +1,17 @@
 <?php namespace App\Factory;
 
 use App\Comment;
+use App\Issue;
 use App\News;
 use Illuminate\Foundation\Testing\WithFaker;
 
 class CommentFactory
 {
     use WithFaker;
+
+    private $relId;
+    private $userId;
+    private $relType;
 
     private $newsFactory;
     private $torrentFactory;
@@ -24,9 +29,9 @@ class CommentFactory
         $model = new Comment;
         $model->html = $this->faker->text;
         $model->status = Comment::STATUS_PUBLISHED;
-        $model->rel_id = 0;
-        $model->user_id = UserFactory::new()->create()->id;
-        $model->rel_type = (new News)->getMorphClass();
+        $model->rel_id = $this->relId ?? 0;
+        $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
+        $model->rel_type = $this->relType ?? (new News)->getMorphClass();
 
         if ($this->newsFactory instanceof NewsFactory) {
             $news = $this->newsFactory->create();
@@ -52,6 +57,15 @@ class CommentFactory
         });
     }
 
+    public function withIssueId(int $issueId)
+    {
+        $factory = clone $this;
+        $factory->relId = $issueId;
+        $factory->relType = (new Issue)->getMorphClass();
+
+        return $factory;
+    }
+
     public function withNews(NewsFactory $newsFactory = null)
     {
         $factory = clone $this;
@@ -64,6 +78,14 @@ class CommentFactory
     {
         $factory = clone $this;
         $factory->torrentFactory = $torrentFactory ?? TorrentFactory::new();
+
+        return $factory;
+    }
+
+    public function withUserId(int $userId)
+    {
+        $factory = clone $this;
+        $factory->userId = $userId;
 
         return $factory;
     }

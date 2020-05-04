@@ -3,7 +3,7 @@
 use App\Factory\TagFactory;
 use Illuminate\Database\Seeder;
 
-class TagsSeeder extends Seeder
+class TagSeeder extends Seeder
 {
     private const TAGS = [
         ['title_ru' => 'закат', 'title_en' => 'sunset'],

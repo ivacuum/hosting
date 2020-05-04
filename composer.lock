@@ -1006,16 +1006,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "11.3.0",
+            "version": "11.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "1406682ded9c787446cf24afffaf6a8a9fbb54e9"
+                "reference": "65a18a83758f813a00a4229236421c2f81cff568"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/1406682ded9c787446cf24afffaf6a8a9fbb54e9",
-                "reference": "1406682ded9c787446cf24afffaf6a8a9fbb54e9",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/65a18a83758f813a00a4229236421c2f81cff568",
+                "reference": "65a18a83758f813a00a4229236421c2f81cff568",
                 "shasum": ""
             },
             "require": {
@@ -1067,7 +1067,7 @@
                     "email": "vacuum@ivacuum.ru"
                 }
             ],
-            "time": "2020-05-04T00:35:26+00:00"
+            "time": "2020-05-04T14:27:23+00:00"
         },
         {
             "name": "laravel-notification-channels/telegram",
