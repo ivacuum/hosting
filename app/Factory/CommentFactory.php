@@ -3,6 +3,7 @@
 use App\Comment;
 use App\Issue;
 use App\News;
+use App\Torrent;
 use Illuminate\Foundation\Testing\WithFaker;
 
 class CommentFactory
@@ -78,6 +79,15 @@ class CommentFactory
     {
         $factory = clone $this;
         $factory->torrentFactory = $torrentFactory ?? TorrentFactory::new();
+
+        return $factory;
+    }
+
+    public function withTorrentId(int $torrentId)
+    {
+        $factory = clone $this;
+        $factory->relId = $torrentId;
+        $factory->relType = (new Torrent)->getMorphClass();
 
         return $factory;
     }
