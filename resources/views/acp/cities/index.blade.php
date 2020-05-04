@@ -12,7 +12,7 @@
     <x-th key="iata"/>
     <x-th-numeric-sortable key="trips_count"/>
     <x-th-numeric-sortable key="views">@svg (eye)</x-th-numeric-sortable>
-    <th></th>
+    <th>@svg (map-marker)</th>
   </tr>
   </thead>
   <tbody>
@@ -34,9 +34,9 @@
       <td class="md:text-right whitespace-no-wrap">
         {{ ViewHelper::number($model->views) ?: '' }}
       </td>
-      <td class="tooltipped tooltipped-n" aria-label="Геолокация задана">
-        @if ($model->isOnMap())
-          @svg (map-marker)
+      <td class="tooltipped tooltipped-n text-red-600" aria-label="Геолокация не задана">
+        @if ($model->isNotOnMap())
+          @svg (issue-opened)
         @endif
       </td>
     </tr>

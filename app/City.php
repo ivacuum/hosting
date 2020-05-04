@@ -74,9 +74,15 @@ class City extends Model
         return mb_substr($this->title, 0, 1);
     }
 
+    public function isNotOnMap(): bool
+    {
+        return !$this->isOnMap();
+    }
+
     public function isOnMap(): bool
     {
-        return $this->lat && $this->lon;
+        return $this->lat
+            && $this->lon;
     }
 
     public function loadCountry(): void
