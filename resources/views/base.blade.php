@@ -37,7 +37,7 @@
 
 @section('bottom-tabbar')
 <header class="bottom-tabbar-container fixed bottom-0 left-0 right-0 flex items-center justify-center md:hidden revealed js-bottom-tabbar-reveal">
-  <nav class="flex justify-between text-center mx-1 w-full">
+  <nav class="flex justify-between leading-none text-center mx-1 w-full">
     <a
       class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ $controller === App\Http\Controllers\HomeController::class ? 'active' : '' }}"
       href="{{ path(App\Http\Controllers\HomeController::class) }}"
@@ -48,16 +48,16 @@
       <div class="text-2xs sm:text-sm mt-1 sm:mt-0 sm:ml-2">{{ trans('menu.home') }}</div>
     </a>
     <a
-      class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ $controller === App\Http\Controllers\Life::class ? 'active' : '' }}"
+      class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 {{ $controller === App\Http\Controllers\Life::class ? 'active' : '' }}"
       href="{{ path([App\Http\Controllers\Life::class, 'index']) }}"
     >
       <div>
-        @svg (file-text-o)
+        @svg (file-richtext)
       </div>
       <div class="text-2xs sm:text-sm mt-1 sm:mt-0 sm:ml-2">{{ trans('menu.life') }}</div>
     </a>
     <a
-      class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ $controller === App\Http\Controllers\Photos::class ? 'active' : '' }}"
+      class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 {{ $controller === App\Http\Controllers\Photos::class ? 'active' : '' }}"
       href="{{ path([App\Http\Controllers\Photos::class, 'trips']) }}"
     >
       <div>
@@ -67,7 +67,7 @@
     </a>
     @if (Auth::check())
       <a
-        class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ Str::startsWith(request()->path(), 'my/') ? 'active' : '' }}"
+        class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 {{ Str::startsWith(request()->path(), 'my/') ? 'active' : '' }}"
         href="{{ path([App\Http\Controllers\MyProfile::class, 'edit']) }}"
       >
         <div>
@@ -77,7 +77,7 @@
       </a>
     @else
       <a
-        class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ $controller === App\Http\Controllers\Auth\SignIn::class ? 'active' : '' }}"
+        class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 {{ $controller === App\Http\Controllers\Auth\SignIn::class ? 'active' : '' }}"
         href="{{ path([App\Http\Controllers\Auth\SignIn::class, 'index']) }}"
       >
         <div>

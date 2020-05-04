@@ -42,9 +42,9 @@
           </a>
         @endif
       </td>
-      <td class="md:text-right">
+      <td class="md:text-right leading-none text-xl">
         <a href="{{ path([App\Http\Controllers\Acp\Dev\GigTemplates::class, 'show'], str_replace('.', '_', $model->slug)) }}">
-          @svg (file-text-o)
+          @svg (file-richtext)
         </a>
       </td>
     </tr>

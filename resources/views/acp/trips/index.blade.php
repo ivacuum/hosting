@@ -77,10 +77,10 @@
           {{ ViewHelper::number($model->photos_count) ?: '' }}
         </a>
       </td>
-      <td class="md:text-right">
+      <td class="md:text-right leading-none text-xl">
         @if ($model->user_id === 1)
           <a href="{{ path([App\Http\Controllers\Acp\Dev\Templates::class, 'show'], str_replace('.', '_', $model->slug)) }}">
-            @svg (file-text-o)
+            @svg (file-richtext)
           </a>
         @else
           <a href="{{ path([App\Http\Controllers\Acp\Users::class, 'show'], $model->user_id) }}">#{{ $model->user_id }}</a>
