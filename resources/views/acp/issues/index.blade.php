@@ -7,16 +7,12 @@
   <thead>
     <tr>
       <th><input type="checkbox" class="form-checkbox js-select-all" data-selector=".models-checkbox"></th>
-      <th class="md:text-right whitespace-no-wrap">
-        @include('acp.tpl.sortable-header', ['key' => 'id'])
-      </th>
-      <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'title') }}</th>
+      <x-th-numeric-sortable key="id"/>
+      <x-th key="title"/>
       <th></th>
-      <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'author') }}</th>
-      <th class="md:text-right whitespace-no-wrap">
-        @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
-      </th>
-      <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'created_at') }}</th>
+      <x-th key="author"/>
+      <x-th-numeric-sortable key="comments_count">@svg (comment-o)</x-th-numeric-sortable>
+      <x-th key="created_at"/>
     </tr>
   </thead>
   <tbody>
