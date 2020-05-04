@@ -1,6 +1,4 @@
-<?php
-/** @var App\Image $model */
-?>
+<?php /** @var App\Image $model */ ?>
 
 @extends('acp.list')
 

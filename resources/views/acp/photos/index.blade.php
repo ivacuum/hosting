@@ -16,16 +16,12 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
   <tr>
-    <th class="md:text-right whitespace-no-wrap">
-      @include('acp.tpl.sortable-header', ['key' => 'id'])
-    </th>
+    <x-th-numeric-sortable key="id"/>
     <th>Фото</th>
     <th>URL</th>
     <th>Тэги</th>
     <th>@svg (map-marker)</th>
-    <th class="md:text-right whitespace-no-wrap">
-      @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
-    </th>
+    <x-th-numeric-sortable key="views">@svg (eye)</x-th-numeric-sortable>
     <th></th>
   </tr>
   </thead>

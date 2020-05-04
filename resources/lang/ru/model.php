@@ -80,6 +80,7 @@ return [
     'news.html' => 'HTML',
     'news.title' => 'Заголовок',
     'news.status' => 'Состояние',
+    'news.created_at' => 'Создана',
 
     'radical.level' => 'Уровень',
     'radical.meaning' => 'Значение',

@@ -1,6 +1,4 @@
-<?php
-/** @var \App\Artist $model */
-?>
+<?php /** @var \App\Artist $model */ ?>
 
 @extends('acp.list')
 
@@ -8,8 +6,8 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'title') }}</th>
-    <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'slug') }}</th>
+    <x-th key="title"/>
+    <x-th key="slug"/>
   </tr>
   </thead>
   <tbody>

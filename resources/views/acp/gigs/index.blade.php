@@ -1,6 +1,4 @@
-<?php
-/** @var \App\Gig $model */
-?>
+<?php /** @var \App\Gig $model */ ?>
 
 @extends('acp.list')
 
@@ -9,17 +7,13 @@
   <thead>
   <tr>
     <th class="md:text-right">#</th>
-    <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'title') }}</th>
+    <x-th key="title"/>
     <th></th>
-    <th>
-      @include('acp.tpl.sortable-header', ['key' => 'date'])
-    </th>
-    <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'slug') }}</th>
-    <th class="md:text-right whitespace-no-wrap">
-      @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
-    </th>
+    <x-th-sortable key="date"/>
+    <x-th key="slug"/>
+    <x-th-numeric-sortable key="views">@svg (eye)</x-th-numeric-sortable>
     <th>@svg (paperclip)</th>
-    <th class="md:text-right"></th>
+    <th></th>
   </tr>
   </thead>
   <tbody>

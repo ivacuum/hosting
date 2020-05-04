@@ -1,21 +1,17 @@
+<?php /** @var \App\News $model */ ?>
+
 @extends('acp.list')
 
 @section('content-list')
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="md:text-right whitespace-no-wrap">
-      @include('acp.tpl.sortable-header', ['key' => 'id'])
-    </th>
-    <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'title') }}</th>
+    <x-th-numeric-sortable key="id"/>
+    <x-th key="title"/>
     <th></th>
-    <th class="md:text-right whitespace-no-wrap">
-      @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
-    </th>
-    <th class="md:text-right whitespace-no-wrap">
-      @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
-    </th>
-    <th>Дата</th>
+    <x-th-numeric-sortable key="views">@svg (eye)</x-th-numeric-sortable>
+    <x-th-numeric-sortable key="comments_count">@svg (comment-o)</x-th-numeric-sortable>
+    <x-th key="created_at"/>
   </tr>
   </thead>
   <tbody>
@@ -28,7 +24,7 @@
         </a>
       </td>
       <td>
-        @if ($model->status === App\News::STATUS_HIDDEN)
+        @if ($model->isHidden())
           <span class="tooltipped tooltipped-n" aria-label="Новость скрыта">
             @svg (eye-slash)
           </span>

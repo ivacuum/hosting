@@ -79,6 +79,11 @@ class News extends Model
         return $this->title;
     }
 
+    public function isHidden(): bool
+    {
+        return $this->status === self::STATUS_HIDDEN;
+    }
+
     public function www(?string $anchor = null): string
     {
         return path([\App\Http\Controllers\News::class, 'show'], $this->id).$anchor;

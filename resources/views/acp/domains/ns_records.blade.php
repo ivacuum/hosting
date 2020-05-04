@@ -1,6 +1,4 @@
-<?php
-/** @var App\Domain $model */
-?>
+<?php /** @var App\Domain $model */ ?>
 
 @extends("$tpl.base")
 

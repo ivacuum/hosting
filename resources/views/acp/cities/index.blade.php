@@ -1,6 +1,4 @@
-<?php
-/** @var \App\City $model */
-?>
+<?php /** @var \App\City $model */ ?>
 
 @extends('acp.list')
 
@@ -9,17 +7,11 @@
   <thead>
   <tr>
     <th></th>
-    <th>
-      @include('acp.tpl.sortable-header', ['key' => 'title'])
-    </th>
-    <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'slug') }}</th>
-    <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'iata') }}</th>
-    <th class="md:text-right whitespace-no-wrap">
-      @include('acp.tpl.sortable-header', ['key' => 'trips_count'])
-    </th>
-    <th class="md:text-right whitespace-no-wrap">
-      @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
-    </th>
+    <x-th-sortable key="title"/>
+    <x-th key="slug"/>
+    <x-th key="iata"/>
+    <x-th-numeric-sortable key="trips_count"/>
+    <x-th-numeric-sortable key="views">@svg (eye)</x-th-numeric-sortable>
     <th></th>
   </tr>
   </thead>

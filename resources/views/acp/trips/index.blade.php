@@ -1,6 +1,4 @@
-<?php
-/** @var \App\Trip $model */
-?>
+<?php /** @var \App\Trip $model */ ?>
 
 @extends('acp.list')
 
@@ -22,23 +20,15 @@
   <thead>
   <tr>
     <th class="md:text-right">#</th>
-    <th>Название</th>
+    <x-th key="title"/>
     <th></th>
-    <th>
-      @include('acp.tpl.sortable-header', ['key' => 'date_start'])
-    </th>
-    <th>URL</th>
-    <th class="md:text-right whitespace-no-wrap">
-      @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
-    </th>
-    <th class="md:text-right whitespace-no-wrap">
-      @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
-    </th>
+    <x-th-sortable key="date_start"/>
+    <x-th key="slug"></x-th>
+    <x-th-numeric-sortable key="views">@svg (eye)</x-th-numeric-sortable>
+    <x-th-numeric-sortable key="comments_count">@svg (comment-o)</x-th-numeric-sortable>
     <th>@svg (paperclip)</th>
-    <th class="md:text-right whitespace-no-wrap">
-      @include('acp.tpl.sortable-header', ['key' => 'photos_count', 'svg' => 'picture-o'])
-    </th>
-    <th class="md:text-right"></th>
+    <x-th-numeric-sortable key="photos_count">@svg (picture-o)</x-th-numeric-sortable>
+    <th></th>
   </tr>
   </thead>
   <tbody>

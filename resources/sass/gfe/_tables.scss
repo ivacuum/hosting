@@ -23,14 +23,6 @@
   border-collapse: collapse;
   border: $border-width solid $table-border-color;
 
-  .border-right,
-  .border-bottom,
-  .border-left,
-  .border-top {
-    border-color: $border-color;
-    border-width: $border-width;
-  }
-
   tr + tr { border-top: $border-width solid $table-border-color; }
 
   td,
@@ -38,8 +30,6 @@
     padding: .35rem .5rem;
     vertical-align: middle;
   }
-
-  th { text-align: start; }
 
   tbody tr:nth-child(2n) { background-color: #f6f6f6; }
 

@@ -1,6 +1,4 @@
-<?php
-/** @var \App\Trip $model */
-?>
+<?php /** @var \App\Trip $model */ ?>
 
 @extends('my.base')
 

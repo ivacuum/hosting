@@ -1,6 +1,4 @@
-<?php
-/** @var $model */
-?>
+<?php /** @var $model */ ?>
 <?php Form::model($model); ?>
 
 {{ ViewHelper::inputHiddenMail() }}

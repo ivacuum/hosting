@@ -1,6 +1,4 @@
-<?php
-/** @var App\Radical $model */
-?>
+<?php /** @var App\Radical $model */ ?>
 
 @include('tpl.form_errors')
 

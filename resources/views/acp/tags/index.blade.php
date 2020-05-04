@@ -1,6 +1,4 @@
-<?php
-/** @var \App\Tag $model */
-?>
+<?php /** @var \App\Tag $model */ ?>
 
 @extends('acp.list')
 
@@ -8,15 +6,9 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th>
-      @include('acp.tpl.sortable-header', ['key' => 'title'])
-    </th>
-    <th class="md:text-right">
-      @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
-    </th>
-    <th class="md:text-right">
-      @include('acp.tpl.sortable-header', ['key' => 'photos_count', 'svg' => 'picture-o'])
-    </th>
+    <x-th-sortable key="title"/>
+    <x-th-numeric-sortable key="views">@svg (eye)</x-th-numeric-sortable>
+    <x-th-numeric-sortable key="photos_count">@svg (picture-o)</x-th-numeric-sortable>
   </tr>
   </thead>
   <tbody>

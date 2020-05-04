@@ -1,6 +1,4 @@
-<?php
-/** @var App\Kanji $model */
-?>
+<?php /** @var App\Kanji $model */ ?>
 
 @include('tpl.form_errors')
 
