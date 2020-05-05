@@ -12,7 +12,7 @@
   <div class="whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'calendar']) }}">{{ trans('life.by_days') }}</a></div>
 </nav>
 
-<div class="cities-columns">
+<div class="column-width-48">
   <?php $initial = $currentInitial = null ?>
   <?php /** @var App\City $city */ ?>
   @foreach ($cities as $city)

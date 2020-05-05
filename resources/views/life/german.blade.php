@@ -13,7 +13,7 @@
 
 @ru
   <h3>Алфавит и произношение</h3>
-  <div class="cities-columns">
+  <div class="column-width-48">
     <div class="city-entry pb-2">A <span class="text-muted">[a:]</span></div>
     <div class="city-entry pb-2">B <span class="text-muted">[be:]</span></div>
     <div class="city-entry pb-2">C <span class="text-muted">[tse:]</span> ц, к, ч</div>
@@ -47,7 +47,7 @@
   </div>
 
   <h3 class="mt-6">Дифтонги</h3>
-  <div class="cities-columns">
+  <div class="column-width-48">
     <div class="city-entry pb-2">ai, ei <span class="text-muted">[ай]</span></div>
     <div class="city-entry pb-2">ie <span class="text-muted">[и:]</span></div>
     <div class="city-entry pb-2">ig <span class="text-muted">[ихь]</span></div>

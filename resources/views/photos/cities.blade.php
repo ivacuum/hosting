@@ -1,7 +1,7 @@
 @extends('photos.base')
 
 @section('content')
-<div class="cities-columns">
+<div class="column-width-48">
   <?php $initial = $currentInitial = false ?>
   <?php /** @var App\City $city */ ?>
   @foreach ($cities as $city)
