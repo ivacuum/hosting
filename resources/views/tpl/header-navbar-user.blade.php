@@ -7,20 +7,22 @@
     @svg (bell)
   </span>
 </a>
-<div class="dropdown dropdown-hover flex items-center">
-  <a
-    class="flex items-center px-2 py-1 text-grey-600 hover:text-grey-900 dropdown-toggle"
-    href="#"
-    data-toggle="dropdown"
-  >
+
+<details class="self-center relative details-reset details-overlay text-grey-600 hover:text-grey-900">
+  <summary class="p-2">
     @include('tpl.avatar', ['user' => Auth::user(), 'classes' => 'w-8 h-8'])
-  </a>
-  <div class="dropdown-menu dropdown-menu-right">
-    <div class="dropdown-header">
+    @svg (angle-down)
+  </summary>
+  <details-menu
+    role="menu"
+    class="absolute top-full right-0 z-50 py-2 bg-white mt-1 border border-gray-300 rounded shadow-md"
+    style="min-width: 10rem;"
+  >
+    <div class="py-2 px-6 text-sm text-gray-600 whitespace-no-wrap">
       {{ trans('auth.signed_in_as') }}
       <span class="font-bold">{{ Auth::user()->displayName() }}</span>
     </div>
-    <div class="dropdown-divider"></div>
+    <div class="h-0 my-2 overflow-hidden border-t border-gray-100"></div>
     @if (Auth::user()->isAdmin())
       <a
         class="dropdown-item-tw"
@@ -37,9 +39,9 @@
     <a class="dropdown-item-tw" href="{{ path([App\Http\Controllers\MyProfile::class, 'edit']) }}">
       {{ trans('my.index') }}
     </a>
-    <div class="dropdown-divider"></div>
+    <div class="h-0 my-2 overflow-hidden border-t border-gray-100"></div>
     <a class="dropdown-item-tw" href="{{ path([App\Http\Controllers\Auth\SignIn::class, 'logout']) }}">
       {{ trans('auth.logout') }}
     </a>
-  </div>
-</div>
+  </details-menu>
+</details>
