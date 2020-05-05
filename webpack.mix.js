@@ -23,7 +23,7 @@ mix.js('resources/js/app.js', 'public/assets')
   .copy('resources/js/pwa/service-worker.js', 'public/assets')
   .copy('resources/js/pwa/service-worker-installer.js', 'public/assets')
 
-  .copy('node_modules/intersection-observer/intersection-observer.js', 'public/assets/intersection-observer.js')
+  .combine(['node_modules/intersection-observer/intersection-observer.js'], 'public/assets/intersection-observer.js')
   .copy('node_modules/promise-polyfill/dist/polyfill.min.js', 'public/assets/polyfills.js')
 
   .copy('node_modules/mousetrap/mousetrap.min.js', 'public/assets/mousetrap.js')
@@ -54,7 +54,7 @@ mix.js('resources/js/app.js', 'public/assets')
   .copy('node_modules/livewire-vue/dist/livewire-vue.js', 'public/assets')
   .copy('resources/js/empty.map', 'public/assets/livewire-vue.js.map')
 
-  .copy('node_modules/@github/details-menu-element/dist/index.umd.js', 'public/assets/details-menu-element.js')
+  .combine(['node_modules/@github/details-menu-element/dist/index.umd.js'], 'public/assets/details-menu-element.js')
 
   .sourceMaps(false, false)
   .version()
