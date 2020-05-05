@@ -761,6 +761,11 @@
     postcss "7.0.27"
     purgecss "^2.1.2"
 
+"@github/details-menu-element@1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@github/details-menu-element/-/details-menu-element-1.0.8.tgz#bb9b3175862582e1e28f56dd87a199c34e78ca57"
+  integrity sha512-zwVrfKtDZ3bAe4GLoxHnt/NJ6npg2veieRqHeuwv6wtumvOYf+nSVMvpaMfCeHTEARJwpfwfHI9/lcp+RXtjRg==
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"

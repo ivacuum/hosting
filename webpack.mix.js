@@ -40,6 +40,7 @@ mix.js('resources/js/app.js', 'public/assets')
     'node_modules/bootstrap/js/dist/alert.js',
     'node_modules/bootstrap/js/dist/dropdown.js',
   ], 'public/assets/bootstrap.js')
+  .copy('resources/js/empty.map', 'public/assets/dropdown.js.map')
 
   .copy('node_modules/vue/dist/vue.min.js', 'public/assets/vue.js')
   .copy('node_modules/vue-i18n/dist/vue-i18n.min.js', 'public/assets/vue-i18n.js')
@@ -52,6 +53,8 @@ mix.js('resources/js/app.js', 'public/assets')
 
   .copy('node_modules/livewire-vue/dist/livewire-vue.js', 'public/assets')
   .copy('resources/js/empty.map', 'public/assets/livewire-vue.js.map')
+
+  .copy('node_modules/@github/details-menu-element/dist/index.umd.js', 'public/assets/details-menu-element.js')
 
   .sourceMaps(false, false)
   .version()
