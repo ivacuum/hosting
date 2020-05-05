@@ -11,7 +11,6 @@ mix.js('resources/js/app.js', 'public/assets')
   .copy('resources/js/pwa/service-worker-installer.js', 'public/assets')
 
   .combine(['node_modules/intersection-observer/intersection-observer.js'], 'public/assets/intersection-observer.js')
-  .copy('node_modules/promise-polyfill/dist/polyfill.min.js', 'public/assets/polyfills.js')
 
   .copy('node_modules/mousetrap/mousetrap.min.js', 'public/assets/mousetrap.js')
 
