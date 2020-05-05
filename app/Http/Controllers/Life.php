@@ -141,8 +141,7 @@ class Life extends Controller
             ->get()
             ->groupBy(fn (Trip $model) => $model->year);
 
-        \Breadcrumbs::push(trans('menu.countries'), "life/countries")
-            ->push($country->title, "life/countries/{$country->slug}");
+        \Breadcrumbs::push($country->title, "life/countries/{$country->slug}");
 
         event(new \App\Events\Stats\CountryViewed($country->id));
 
