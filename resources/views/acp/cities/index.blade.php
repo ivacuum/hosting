@@ -27,7 +27,7 @@
       <td><a href="{{ $model->www() }}">{{ $model->slug }}</a></td>
       <td class="text-muted">{{ $model->iata }}</td>
       <td class="md:text-right whitespace-no-wrap">
-        <a href="{{ $model->wwwAcpPhotos() }}">
+        <a href="{{ $model->wwwAcpTrips() }}">
           {{ ViewHelper::number($model->trips_count) ?: '' }}
         </a>
       </td>

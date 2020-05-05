@@ -111,4 +111,9 @@ class City extends Model
     {
         return path([Http\Controllers\Acp\Photos::class, 'index'], [$this->getForeignKey() => $this]);
     }
+
+    public function wwwAcpTrips(): string
+    {
+        return path([Http\Controllers\Acp\Trips::class, 'index'], [$this->getForeignKey() => $this]);
+    }
 }
