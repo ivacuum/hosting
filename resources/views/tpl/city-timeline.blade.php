@@ -1,6 +1,4 @@
-<?php
-/** @var \App\Trip $row */
-?>
+<?php /** @var \App\Trip $row */ ?>
 
 @if (isset($timeline) && sizeof($timeline->flatten()) > 1)
   <div class="overflow-hidden mb-4">

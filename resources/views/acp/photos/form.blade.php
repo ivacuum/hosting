@@ -23,7 +23,7 @@
             value="{{ $tag->id }}"
             {{ in_array($tag->id, (array) old('tags', !empty($model) ? $model->tags->modelKeys() : null)) ? 'checked' : '' }}
           >
-          <span class="leading-4">{{ $tag->title }}</span>
+          <span class="leading-none">{{ $tag->title }}</span>
         </label>
       @endforeach
     </div>

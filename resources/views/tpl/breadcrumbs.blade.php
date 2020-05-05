@@ -1,11 +1,13 @@
 @if (!empty($breadcrumbs))
   <div class="breadcrumbs text-xs py-2 border-b border-grey-200 leading-snug">
-    <nav class="container" {!! sizeof($breadcrumbs) > 1 ? 'itemscope itemtype="http://schema.org/BreadcrumbList"' : '' !!}>
-      <span class="{{ !Str::startsWith($self, 'Acp\\') ? 'hidden sm:inline' : '' }}">
+    <nav class="container flex flex-wrap items-center" {!! sizeof($breadcrumbs) > 1 ? 'itemscope itemtype="http://schema.org/BreadcrumbList"' : '' !!}>
+      <span class="{{ !Str::startsWith($self, 'Acp\\') ? 'hidden sm:flex' : '' }}">
         <a href="{{ $localeUri ?: '/' }}">
           @svg (home)
         </a>
-        @svg (angle-right)
+        <span class="mx-px px-px">
+          @svg (angle-right)
+        </span>
       </span>
       @foreach ($breadcrumbs as $row)
         @if (!$loop->last)
@@ -15,7 +17,9 @@
               <meta itemprop="position" content="{{ $loop->iteration }}">
             </a>
           </span>
+        <span class="mx-px px-px">
           @svg (angle-right)
+        </span>
         @else
           {{ $row['title'] }}
         @endif

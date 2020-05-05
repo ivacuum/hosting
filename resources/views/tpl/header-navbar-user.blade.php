@@ -10,8 +10,10 @@
 
 <details class="self-center relative details-reset details-overlay text-grey-600 hover:text-grey-900">
   <summary class="p-2">
-    @include('tpl.avatar', ['user' => Auth::user(), 'classes' => 'w-8 h-8'])
-    @svg (angle-down)
+    <div class="flex items-center">
+      @include('tpl.avatar', ['user' => Auth::user(), 'classes' => 'w-8 h-8'])
+      @svg (angle-down)
+    </div>
   </summary>
   <details-menu
     role="menu"
