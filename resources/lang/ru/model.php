@@ -69,6 +69,9 @@ return [
     'gig.meta_description_en' => 'Meta description EN',
     'gig.meta_description_ru' => 'Meta description',
 
+    'image.slug' => 'Изображение',
+    'image.user_id' => 'Автор',
+
     'issue.title' => 'Тема',
     'issue.created_at' => 'Создано',
 

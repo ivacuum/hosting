@@ -7,13 +7,19 @@
   <div class="flex mb-2 mr-2">
     <a class="btn btn-default rounded-r-none {{ !$year ? 'active' : '' }}" href="{{ UrlHelper::filter(['year' => null]) }}">Все</a>
     @foreach (range(date('Y'), 2009) as $value)
-      <a class="btn btn-default -ml-px {{ $loop->last ? 'rounded-l-none rounded-r' : 'rounded-none' }} {{ $year == $value ? 'active' : '' }}" href="{{ UrlHelper::filter(['year' => $value]) }}">{{ substr($value, 2) }}</a>
+      <a
+        class="btn btn-default -ml-px {{ $loop->last ? 'rounded-l-none rounded-r' : 'rounded-none' }} {{ $year == $value ? 'active' : '' }}"
+        href="{{ UrlHelper::filter(['year' => $value]) }}"
+      >{{ substr($value, 2) }}</a>
     @endforeach
   </div>
   <div class="flex mb-2">
     <a class="btn btn-default rounded-r-none {{ !$touch ? 'active' : '' }}" href="{{ UrlHelper::filter(['touch' => null]) }}">Все</a>
     @foreach (range(1, date('Y') - 2009) as $value)
-      <a class="btn btn-default -ml-px {{ $loop->last ? 'rounded-l-none rounded-r' : 'rounded-none' }} {{ $touch == $value ? 'active' : '' }}" href="{{ UrlHelper::filter(['touch' => $value]) }}">{{ $value }}</a>
+      <a
+        class="btn btn-default -ml-px {{ $loop->last ? 'rounded-l-none rounded-r' : 'rounded-none' }} {{ $touch == $value ? 'active' : '' }}"
+        href="{{ UrlHelper::filter(['touch' => $value]) }}"
+      >{{ $value }}</a>
     @endforeach
   </div>
 </div>
@@ -24,20 +30,12 @@
   <thead>
     <tr>
       <th><input type="checkbox" class="form-checkbox js-select-all" data-selector=".models-checkbox"></th>
-      <th class="md:text-right whitespace-no-wrap">
-        @include('acp.tpl.sortable-header', ['key' => 'id'])
-      </th>
-      <th class="md:text-right whitespace-no-wrap">Автор</th>
-      <th class="text-center">Изображение</th>
-      <th class="md:text-right whitespace-no-wrap">
-        @include('acp.tpl.sortable-header', ['key' => 'size'])
-      </th>
-      <th class="md:text-right whitespace-no-wrap">
-        @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
-      </th>
-      <th>
-        @include('acp.tpl.sortable-header', ['key' => 'updated_at', 'svg' => 'eye-slash'])
-      </th>
+      <x-th-numeric-sortable key="id"/>
+      <x-th key="user_id"/>
+      <x-th key="slug"/>
+      <x-th-numeric-sortable key="size"/>
+      <x-th-numeric-sortable key="views">@svg (eye)</x-th-numeric-sortable>
+      <x-th-numeric-sortable key="updated_at">@svg (eye-slash)</x-th-numeric-sortable>
       <th></th>
     </tr>
   </thead>
