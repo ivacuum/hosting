@@ -33,7 +33,7 @@
     </nav>
     @guest
       @ru
-        <div class="alert alert-info mr-6 mt-6 p-2 text-xs">
+        <div class="mt-6 mr-6 p-2 text-xs text-teal-800 bg-teal-200 bg-opacity-50 border border-teal-200 rounded">
           <a class="link" href="{{ path([App\Http\Controllers\Auth\SignIn::class, 'index'], ['goto' => path([App\Http\Controllers\Torrents::class, 'index'])]) }}">Пользователям</a> доступны чат и добавление раздач
         </div>
       @endru
@@ -104,12 +104,12 @@
 
       @include('tpl.paginator', ['paginator' => $torrents, 'cloak' => true])
     @else
-      <p class="alert alert-warning">
+      <div class="mb-4 py-3 px-5 text-yellow-800 bg-yellow-300 bg-opacity-25 text-opacity-75 border border-yellow-200 rounded">
         Подходящих раздач не найдено.
         @if (!$fulltext)
           Можно расширить область поиска с помощью кнопки выше.
         @endif
-      </p>
+      </div>
 
       @if ($q)
         <details>

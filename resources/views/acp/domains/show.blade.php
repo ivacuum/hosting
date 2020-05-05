@@ -14,15 +14,15 @@
 @endif
 
 @if ($model->isExpired())
-  <div class="alert alert-danger">
+  <x-alert-danger>
     Подошел срок оплаты домена — {{ $model->paid_till->addMonth()->formatLocalized('%e %B') }} ({{ $model->paid_till->addMonth()->diffForHumans() }}) он совсем пропадет
-  </div>
+  </x-alert-danger>
 @endif
 
 @if ($model->isExpiringSoon())
-  <div class="alert alert-warning">
+  <x-alert-warning>
     {{ $model->paid_till->formatLocalized('%e %B') }} ({{ $model->paid_till->diffForHumans() }}) подходит срок оплаты домена
-  </div>
+  </x-alert-warning>
 @endif
 
 <table class="table-stats">

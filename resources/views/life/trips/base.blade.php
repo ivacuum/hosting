@@ -29,7 +29,7 @@
 
 @if (Auth::check())
   @if (!Auth::user()->notify_trips)
-    <div class="alert alert-info mt-6">
+    <div class="mt-6 py-3 px-5 text-teal-800 bg-teal-200 bg-opacity-50 border border-teal-200 rounded">
       <div class="mb-2">{{ trans('life.newsletter.description') }}</div>
       <form action="{{ path([App\Http\Controllers\Subscriptions::class, 'update']) }}" method="post">
         {{ ViewHelper::inputHiddenMail() }}
@@ -44,7 +44,7 @@
     </div>
   @endif
 @else
-  <div class="alert alert-info mt-6">
+  <div class="mt-6 py-3 px-5 text-teal-800 bg-teal-200 bg-opacity-50 border border-teal-200 rounded">
     <div class="mb-2">{{ trans('life.newsletter.description') }}</div>
     <div class="flex">
       <a

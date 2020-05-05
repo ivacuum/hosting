@@ -19,16 +19,6 @@ export default class EventHandlers {
     // TODO: document.querySelector(document.location.hash).scrollIntoView()
   }
 
-  static shareClick(e) {
-    if (navigator.share) {
-      e.preventDefault()
-
-      const url = this.getAttribute('href') || ''
-
-      navigator.share({ url })
-    }
-  }
-
   /**
    * Карта снимков одной поездки
    *
@@ -136,6 +126,16 @@ export default class EventHandlers {
       const counter = this.querySelector('.js-magnet-counter')
 
       counter.textContent = String(Number(counter.textContent) + 1)
+    }
+  }
+
+  static shareClick(e) {
+    if (navigator.share) {
+      e.preventDefault()
+
+      const url = this.getAttribute('href') || ''
+
+      navigator.share({ url })
     }
   }
 

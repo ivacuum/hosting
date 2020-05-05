@@ -96,39 +96,23 @@
   @show
   <div class="js-flash-notification">
     @if ($firstTimeVisit && !Auth::check() && $locale !== $localePreffered && empty($noLanguageSelector) && !$isCrawler)
-      <div class="alert alert-warning my-0 px-0 rounded-none">
-        <div class="container flex">
-          <div class="mr-auto">
-            @ru
-              Hey, looks like you might find useful the <a class="link" href="{{ url("en/{$requestUri}") }}">English version</a> of this page
-            @en
-              Похоже, что вам может пригодиться версия этой страницы <a class="link" href="{{ url($requestUri) }}">на русском языке</a>
-            @endru
-          </div>
-          <div>
-            <button type="button" class="border-0 bg-transparent appearance-none cursor-pointer leading-none text-xl p-0 opacity-50 hover:opacity-75 hover:no-underline" data-dismiss="alert">&times;</button>
-          </div>
-        </div>
-      </div>
+      <x-alert-warning-dismissable>
+        @ru
+          Hey, looks like you might find useful the <a class="link" href="{{ url("en/{$requestUri}") }}">English version</a> of this page
+        @en
+          Похоже, что вам может пригодиться версия этой страницы <a class="link" href="{{ url($requestUri) }}">на русском языке</a>
+        @endru
+      </x-alert-warning-dismissable>
     @endif
     @if (Session::has('message'))
-      <div class="alert alert-info my-0 px-0 rounded-none">
-        <div class="container flex">
-          <div class="mr-auto">
-            {{ Session::get('message') }}
-          </div>
-          <div>
-            <button type="button" class="border-0 bg-transparent appearance-none cursor-pointer leading-none text-xl p-0 opacity-50 hover:opacity-75 hover:no-underline" data-dismiss="alert">&times;</button>
-          </div>
-        </div>
-      </div>
+      <x-alert-info-dismissable>
+        {{ Session::get('message') }}
+      </x-alert-info-dismissable>
     @endif
     @if ($errors->has('mail'))
-      <div class="alert alert-info my-0 px-0 rounded-none">
-        <div class="container">
-          {{ $errors->first('mail') }}
-        </div>
-      </div>
+      <x-alert-info>
+        {{ $errors->first('mail') }}
+      </x-alert-info>
     @endif
   </div>
   <div class="{{ $contentContainerClasses ?? 'container mt-4' }} {{ $contentContainerExtraClasses ?? '' }}" id="{{ $contentContainerId ?? 'pjax_container' }}">
@@ -194,7 +178,6 @@ window.AppOptions = JSON.parse('<?= json_encode([
 <script src="{{ mix('/assets/jquery.scrollto.js') }}"></script>
 <script src="{{ mix('/assets/autosize.js') }}"></script>
 <script src="{{ mix('/assets/notie.js') }}"></script>
-<script src="{{ mix('/assets/bootstrap.js') }}"></script>
 <script src="{{ mix('/assets/vue.js') }}"></script>
 <script src="{{ mix('/assets/vue-i18n.js') }}"></script>
 <script src="{{ mix('/assets/axios.js') }}"></script>

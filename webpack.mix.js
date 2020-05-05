@@ -22,12 +22,6 @@ mix.js('resources/js/app.js', 'public/assets')
 
   .copy('node_modules/notie/dist/notie.min.js', 'public/assets/notie.js')
 
-  .combine([
-    'node_modules/bootstrap/js/dist/util.js',
-    'node_modules/bootstrap/js/dist/alert.js',
-  ], 'public/assets/bootstrap.js')
-  .copy('resources/js/empty.map', 'public/assets/alert.js.map')
-
   .copy('node_modules/vue/dist/vue.min.js', 'public/assets/vue.js')
   .copy('node_modules/vue-i18n/dist/vue-i18n.min.js', 'public/assets/vue-i18n.js')
 

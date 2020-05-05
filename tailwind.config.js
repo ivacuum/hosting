@@ -177,11 +177,9 @@ module.exports = {
     visibility: ['responsive', 'group-hover'],
   },
   corePlugins: {
-    backgroundOpacity: false,
     borderOpacity: false,
     divideOpacity: false,
     placeholderOpacity: false,
-    textOpacity: false,
   },
   plugins: [
     // eslint-disable-next-line global-require

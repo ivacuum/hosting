@@ -161,8 +161,8 @@
     </button>
   </form>
 @elseif ($model->yandex_user_id)
-  <div class="alert alert-warning">
+  <x-alert-warning>
     ДНС-записи не найдены.
-  </div>
+  </x-alert-warning>
 @endif
 @endsection

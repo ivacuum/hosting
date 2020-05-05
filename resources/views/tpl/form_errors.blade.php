@@ -1,9 +1,9 @@
 @if (sizeof($errors))
-  <div class="alert alert-danger">
+  <x-alert-danger>
     <ul>
       @foreach ($errors->all() as $error)
         <li>{{ $error }}</li>
       @endforeach
     </ul>
-  </div>
+  </x-alert-danger>
 @endif

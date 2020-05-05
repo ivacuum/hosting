@@ -94,7 +94,7 @@
   </span>
 </div>
 {{--
-  <div class="alert alert-warning">
+  <x-alert-warning>
     По заданному критерию не найдено ни одного домена.
-  </div>
+  </x-alert-warning>
 --}}
