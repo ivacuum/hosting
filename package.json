@@ -18,7 +18,7 @@
     "axios": "0.19.2",
     "bootstrap": "4.4.1",
     "intersection-observer": "0.7.0",
-    "jquery": "3.5.0",
+    "jquery": "3.5.1",
     "jquery.scrollto": "2.1.2",
     "laravel-mix": "5.0.4",
     "livewire-vue": "0.2.0",
