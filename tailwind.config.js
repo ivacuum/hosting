@@ -1,5 +1,8 @@
 module.exports = {
-  purge: false,
+  purge: [
+    './resources/js/**/*.vue',
+    './resources/views/**/*.blade.php',
+  ],
   theme: {
     customForms: (theme) => ({
       default: {

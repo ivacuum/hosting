@@ -1,23 +1,10 @@
 const mix = require('laravel-mix')
 
-const purgecss = require('@fullhuman/postcss-purgecss')({
-  content: [
-    './resources/js/**/*.vue',
-    './resources/views/**/*.blade.php',
-  ],
-
-  // Include any special characters you're using in this regular expression
-  defaultExtractor: (content) => content.match(/[\w-/.:]+(?<!:)/g) || [],
-})
-
 mix.js('resources/js/app.js', 'public/assets')
   .sass('resources/sass/app.scss', 'public/assets')
   .postCss('resources/css/tailwind.css', 'public/assets', [
-    require('autoprefixer'),
     require('tailwindcss'),
-    ...process.env.NODE_ENV === 'production'
-      ? [purgecss]
-      : [],
+    require('autoprefixer'),
   ])
 
   .copy('resources/js/pwa/service-worker.js', 'public/assets')
