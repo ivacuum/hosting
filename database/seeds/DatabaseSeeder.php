@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             TripSeeder::class,
             ArtistSeeder::class,
             GigSeeder::class,
+            PhotoSeeder::class,
 
             ChatMessageSeeder::class,
             DcppHubSeeder::class,

@@ -14,6 +14,14 @@ class TorrentFactory
 
     private $commentFactory;
 
+    public function advancedTitle()
+    {
+        $factory = clone $this;
+        $factory->title = $this->faker->words(3, true) . ' (' . $this->faker->words(2, true) . ') [2020, RUS]';
+
+        return $factory;
+    }
+
     public function create()
     {
         $model = $this->make();
@@ -44,7 +52,7 @@ class TorrentFactory
         $model = new Torrent;
         $model->html = '<p>HTML</p>';
         $model->size = $this->faker->numberBetween(1000, 100_000_000_000);
-        $model->title = $this->title ?? $this->faker->words(3, true) . ' (' . $this->faker->words(2, true) . ') [2020, RUS]';
+        $model->title = $this->title ?? $this->faker->words(3, true);
         $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
         $model->clicks = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
         $model->rto_id = $this->faker->numberBetween(1_000_000, 5_000_000);

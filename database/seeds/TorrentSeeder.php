@@ -10,7 +10,7 @@ class TorrentSeeder extends Seeder
             ->withEmail('magnet@example.com')
             ->create();
 
-        $factory = App\Factory\TorrentFactory::new()->withUserId($user->id);
+        $factory = App\Factory\TorrentFactory::new()->advancedTitle()->withUserId($user->id);
         $factory->create();
         $factory->create();
         $factory->create();

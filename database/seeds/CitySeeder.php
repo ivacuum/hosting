@@ -71,6 +71,7 @@ class CitySeeder extends Seeder
             ['slug' => 'busan', 'title_ru' => 'Пусан', 'title_en' => 'Busan'],
             ['slug' => 'daejeon', 'title_ru' => 'Тэджон', 'title_en' => 'Daejeon'],
             ['slug' => 'seoul', 'title_ru' => 'Сеул', 'title_en' => 'Seoul'],
+            ['slug' => 'suwon', 'title_ru' => 'Сувон', 'title_en' => 'Suwon'],
         ],
         'spain' => [
             ['slug' => 'barcelona', 'title_ru' => 'Барселона', 'title_en' => 'Barcelona'],

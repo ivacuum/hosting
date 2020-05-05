@@ -7,6 +7,9 @@ class TagFactory
 {
     use WithFaker;
 
+    private $titleEn;
+    private $titleRu;
+
     public function create()
     {
         $model = $this->make();
@@ -21,8 +24,8 @@ class TagFactory
 
         $model = new Tag;
         $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
-        $model->title_en = $title;
-        $model->title_ru = $title;
+        $model->title_en = $this->titleEn ?? $title;
+        $model->title_ru = $this->titleRu ?? $title;
 
         return $model;
     }
@@ -32,5 +35,14 @@ class TagFactory
         return tap(new self, function (self $factory) {
             $factory->setUpFaker();
         });
+    }
+
+    public function withTitle(string $titleRu, string $titleEn)
+    {
+        $factory = clone $this;
+        $factory->titleEn = $titleEn;
+        $factory->titleRu = $titleRu;
+
+        return $factory;
     }
 }
