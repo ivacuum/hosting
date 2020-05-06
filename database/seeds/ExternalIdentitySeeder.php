@@ -7,7 +7,8 @@ class ExternalIdentitySeeder extends Seeder
     public function run()
     {
         $user = App\Factory\UserFactory::new()
-            ->withEmail('external-identity@example.com')
+            ->withEmail('social@example.com')
+            ->withLogin('social')
             ->create();
 
         $factory = App\Factory\ExternalIdentityFactory::new()

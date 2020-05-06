@@ -8,6 +8,7 @@ class ChatMessageSeeder extends Seeder
     {
         $user = App\Factory\UserFactory::new()
             ->withEmail('chat@example.com')
+            ->withLogin('chat')
             ->create();
 
         $factory = App\Factory\ChatMessageFactory::new()->withUserId($user->id);

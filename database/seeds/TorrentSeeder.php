@@ -8,15 +8,16 @@ class TorrentSeeder extends Seeder
     {
         $user = App\Factory\UserFactory::new()
             ->withEmail('magnet@example.com')
+            ->withLogin('magnet')
             ->create();
 
-        $factory = App\Factory\TorrentFactory::new()->advancedTitle()->withUserId($user->id);
-        $factory->create();
-        $factory->create();
-        $factory->create();
-        $factory->create();
-        $factory->withComment()->create();
-        $factory->hidden()->create();
-        $factory->deleted()->create();
+        $factory = App\Factory\TorrentFactory::new()->withUserId($user->id);
+        $factory->advancedTitle()->create();
+        $factory->advancedTitle()->create();
+        $factory->advancedTitle()->create();
+        $factory->advancedTitle()->create();
+        $factory->advancedTitle()->withComment()->create();
+        $factory->advancedTitle()->hidden()->create();
+        $factory->advancedTitle()->deleted()->create();
     }
 }
