@@ -27,22 +27,22 @@
     <div class="h-0 my-2 overflow-hidden border-t border-gray-100"></div>
     @if (Auth::user()->isAdmin())
       <a
-        class="dropdown-item-tw"
+        class="dropdown-item"
         href="{{ App::isLocal() ? path([App\Http\Controllers\Acp\Dev\Templates::class, 'index']) : path([App\Http\Controllers\Acp\Trips::class, 'index'], ['user_id' => 1]) }}"
       >
         {{ trans('acp.index') }}
       </a>
       <a
-        class="dropdown-item-tw"
+        class="dropdown-item"
         href="/nova">
         Nova
       </a>
     @endif
-    <a class="dropdown-item-tw" href="{{ path([App\Http\Controllers\MyProfile::class, 'edit']) }}">
+    <a class="dropdown-item" href="{{ path([App\Http\Controllers\MyProfile::class, 'edit']) }}">
       {{ trans('my.index') }}
     </a>
     <div class="h-0 my-2 overflow-hidden border-t border-gray-100"></div>
-    <a class="dropdown-item-tw" href="{{ path([App\Http\Controllers\Auth\SignIn::class, 'logout']) }}">
+    <a class="dropdown-item" href="{{ path([App\Http\Controllers\Auth\SignIn::class, 'logout']) }}">
       {{ trans('auth.logout') }}
     </a>
   </details-menu>

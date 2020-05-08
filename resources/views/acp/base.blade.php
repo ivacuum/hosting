@@ -28,13 +28,13 @@
     {{ trans('menu.life') }}
   @endslot
 
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/cities">{{ trans('acp.cities.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/countries">{{ trans('acp.countries.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/trips">{{ trans('acp.trips.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/gigs">{{ trans('acp.gigs.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/artists">{{ trans('acp.artists.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/tags">{{ trans('acp.tags.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/photos">{{ trans('acp.photos.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/cities">{{ trans('acp.cities.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/countries">{{ trans('acp.countries.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/trips">{{ trans('acp.trips.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/gigs">{{ trans('acp.gigs.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/artists">{{ trans('acp.artists.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/tags">{{ trans('acp.tags.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/photos">{{ trans('acp.photos.index') }}</a>
 @endcomponent
 @component('tpl.menu-dropdown', [
   'isActive' => in_array($controller, [
@@ -48,10 +48,10 @@
     {{ trans('menu.hosting') }}
   @endslot
 
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/clients">{{ trans('acp.clients.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/domains">{{ trans('acp.domains.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/servers">{{ trans('acp.servers.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/yandex-users">{{ trans('acp.yandex-users.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/clients">{{ trans('acp.clients.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/domains">{{ trans('acp.domains.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/servers">{{ trans('acp.servers.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/yandex-users">{{ trans('acp.yandex-users.index') }}</a>
 @endcomponent
 @component('tpl.menu-dropdown', [
   'isActive' => in_array($controller, [
@@ -68,13 +68,13 @@
     {{ trans('menu.resources') }}
   @endslot
 
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/chat-messages">{{ trans('acp.chat-messages.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/comments">{{ trans('acp.comments.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/dcpp-hubs">{{ trans('acp.dcpp-hubs.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/files">{{ trans('acp.files.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/news">{{ trans('acp.news.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/images">{{ trans('acp.images.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/torrents">{{ trans('acp.torrents.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/chat-messages">{{ trans('acp.chat-messages.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/comments">{{ trans('acp.comments.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/dcpp-hubs">{{ trans('acp.dcpp-hubs.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/files">{{ trans('acp.files.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/news">{{ trans('acp.news.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/images">{{ trans('acp.images.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/torrents">{{ trans('acp.torrents.index') }}</a>
 @endcomponent
 @component('tpl.menu-dropdown', [
   'isActive' => in_array($controller, [
@@ -87,9 +87,9 @@
     日本語
   @endslot
 
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/kanjis">{{ trans('acp.kanjis.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/radicals">{{ trans('acp.radicals.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/vocabularies">{{ trans('acp.vocabularies.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/kanjis">{{ trans('acp.kanjis.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/radicals">{{ trans('acp.radicals.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/vocabularies">{{ trans('acp.vocabularies.index') }}</a>
 @endcomponent
 @component('tpl.menu-dropdown', [
   'isActive' => in_array($controller, [
@@ -104,11 +104,11 @@
     {{ trans('menu.site') }}
   @endslot
 
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/metrics">{{ trans('acp.metrics.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/issues">{{ trans('acp.issues.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/users">{{ trans('acp.users.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/external-identities">{{ trans('acp.external-identities.index') }}</a>
-  <a class="dropdown-item-tw" href="{{ $localeUri }}/acp/notifications">{{ trans('acp.notifications.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/metrics">{{ trans('acp.metrics.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/issues">{{ trans('acp.issues.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/users">{{ trans('acp.users.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/external-identities">{{ trans('acp.external-identities.index') }}</a>
+  <a class="dropdown-item" href="{{ $localeUri }}/acp/notifications">{{ trans('acp.notifications.index') }}</a>
 @endcomponent
 @component('tpl.menu-item', [
   'href' => "{$localeUri}/acp/dev/templates",

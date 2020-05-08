@@ -48,54 +48,54 @@
     @endslot
 
     <a
-      class="dropdown-item-tw"
+      class="dropdown-item"
       href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'airdc') }}"
       role="menuitem"
     >{{ trans('dcpp.airdc') }}</a>
     <a
-      class="dropdown-item-tw"
+      class="dropdown-item"
       href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'apexdc') }}"
       role="menuitem"
     >{{ trans('dcpp.apexdc') }}</a>
     <a
-      class="dropdown-item-tw"
+      class="dropdown-item"
       href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'dcpp') }}"
       role="menuitem"
     >{{ trans('dcpp.dcpp') }}</a>
     <a
-      class="dropdown-item-tw"
+      class="dropdown-item"
       href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'flylinkdc') }}"
       role="menuitem"
     >{{ trans('dcpp.flylinkdc') }}</a>
     <a
-      class="dropdown-item-tw"
+      class="dropdown-item"
       href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'greylinkdc') }}"
       role="menuitem"
     >{{ trans('dcpp.greylinkdc') }}</a>
     <a
-      class="dropdown-item-tw"
+      class="dropdown-item"
       href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'jucydc') }}"
       role="menuitem"
     >{{ trans('dcpp.jucydc') }}</a>
     @ru
       <a
-        class="dropdown-item-tw"
+        class="dropdown-item"
         href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'kalugadc') }}"
         role="menuitem"
       >{{ trans('dcpp.kalugadc') }}</a>
     @endru
     <a
-      class="dropdown-item-tw"
+      class="dropdown-item"
       href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'pelinkdc') }}"
       role="menuitem"
     >{{ trans('dcpp.pelinkdc') }}</a>
     <a
-      class="dropdown-item-tw"
+      class="dropdown-item"
       href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'shakespeer') }}"
       role="menuitem"
     >{{ trans('dcpp.shakespeer') }}</a>
     <a
-      class="dropdown-item-tw"
+      class="dropdown-item"
       href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'strongdc') }}"
       role="menuitem"
     >{{ trans('dcpp.strongdc') }}</a>
