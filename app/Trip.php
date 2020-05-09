@@ -26,13 +26,13 @@ use League\CommonMark\CommonMarkConverter;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  *
- * @property \App\City $city
- * @property \Illuminate\Support\Collection|\App\Comment[] $comments
- * @property \Illuminate\Support\Collection|\App\Comment[] $commentsPublished
- * @property \App\Country $country
- * @property \Illuminate\Database\Eloquent\Collection|\App\Email[] $emails
- * @property \Illuminate\Database\Eloquent\Collection|\App\Photo[] $photos
- * @property \App\User $user
+ * @property City $city
+ * @property \Illuminate\Support\Collection|Comment[] $comments
+ * @property \Illuminate\Support\Collection|Comment[] $commentsPublished
+ * @property Country $country
+ * @property \Illuminate\Database\Eloquent\Collection|Email[] $emails
+ * @property \Illuminate\Database\Eloquent\Collection|Photo[] $photos
+ * @property User $user
  *
  * @method static Builder next()
  * @method static Builder previous(int $nextTrips)

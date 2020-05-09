@@ -13,7 +13,7 @@ use League\CommonMark\CommonMarkConverter;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  *
- * @property \App\User $user
+ * @property User $user
  *
  * @mixin \Eloquent
  */

@@ -11,23 +11,26 @@ class Users extends Controller
 
     public function index()
     {
-        $users = User::active()->orderBy('id')
+        $users = User::query()
+            ->active()
+            ->orderBy('id')
             ->simplePaginate()
             ->withPath(path([self::class, 'index']));
 
-        return view($this->view, ['users' => $users]);
+        return view('users.index', ['users' => $users]);
     }
 
     public function show(int $id)
     {
         /** @var User $user */
-        $user = User::withCount(['comments', 'images', 'torrents'])
+        $user = User::query()
+            ->withCount(['comments', 'images', 'torrents'])
             ->findOrFail($id);
 
-        abort_unless($user->status === User::STATUS_ACTIVE, 404);
+        abort_unless($user->isActive(), 404);
 
         \Breadcrumbs::push($user->publicName());
 
-        return view($this->view, ['user' => $user]);
+        return view('users.show', ['user' => $user]);
     }
 }

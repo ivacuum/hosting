@@ -1,3 +1,5 @@
+<?php /** @var \App\User $model */ ?>
+
 @extends('acp.list', [
   'searchForm' => true,
 ])
@@ -58,7 +60,7 @@
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
       <td class="md:text-right">{{ $model->id }}</td>
       <td>
-        <a href="{{ path([$controller, 'show'], $model) }}">
+        <a href="{{ $model->wwwAcp() }}">
           {{ $model->email }}
         </a>
         @if ($model->login)
@@ -71,7 +73,7 @@
       </td>
       @endif
       <td>
-        @if ($model->status === App\User::STATUS_ACTIVE)
+        @if ($model->isActive())
           Да
         @endif
       </td>

@@ -1,7 +1,5 @@
 <?php namespace App;
 
-use App\Http\Controllers\Users;
-use App\Mail\ResetPasswordMail;
 use Illuminate\Contracts\Translation\HasLocalePreference;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,8 +7,6 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
 
 /**
- * Пользователь
- *
  * @property int $id
  * @property string $email
  * @property string $login
@@ -33,15 +29,19 @@ use Illuminate\Notifications\Notifiable;
  * @property \Carbon\CarbonImmutable $last_login_at
  * @property \Carbon\CarbonImmutable $password_changed_at
  *
- * @property \Illuminate\Database\Eloquent\Collection|\App\ChatMessage[] $chatMessages
- * @property \Illuminate\Database\Eloquent\Collection|\App\Comment[] $comments
- * @property \Illuminate\Database\Eloquent\Collection|\App\Email[] $emails
- * @property \Illuminate\Database\Eloquent\Collection|\App\ExternalIdentity[] $externalIdentities
- * @property \Illuminate\Database\Eloquent\Collection|\App\Image[] $images
- * @property \Illuminate\Database\Eloquent\Collection|\App\News[] $news
- * @property \Illuminate\Database\Eloquent\Collection|\App\Notification[] $notifications
- * @property \Illuminate\Database\Eloquent\Collection|\App\Torrent[] $torrents
- * @property \Illuminate\Database\Eloquent\Collection|\App\Trip[] $trips
+ * @property \Illuminate\Database\Eloquent\Collection|ChatMessage[] $chatMessages
+ * @property \Illuminate\Database\Eloquent\Collection|Comment[] $comments
+ * @property \Illuminate\Database\Eloquent\Collection|Email[] $emails
+ * @property \Illuminate\Database\Eloquent\Collection|ExternalIdentity[] $externalIdentities
+ * @property \Illuminate\Database\Eloquent\Collection|Image[] $images
+ * @property \Illuminate\Database\Eloquent\Collection|News[] $news
+ * @property \Illuminate\Database\Eloquent\Collection|Notification[] $notifications
+ * @property \Illuminate\Database\Eloquent\Collection|Torrent[] $torrents
+ * @property \Illuminate\Database\Eloquent\Collection|Trip[] $trips
+ *
+ * @property-read int $comments_count
+ * @property-read int $images_count
+ * @property-read int $torrents_count
  *
  * @mixin \Eloquent
  */
@@ -128,7 +128,7 @@ class User extends Authenticatable implements HasLocalePreference
     // Scopes
     public function scopeActive(Builder $query)
     {
-        return $query->where('status', static::STATUS_ACTIVE);
+        return $query->where('status', self::STATUS_ACTIVE);
     }
 
     public function scopeForAnnouncement(Builder $query)
@@ -139,8 +139,8 @@ class User extends Authenticatable implements HasLocalePreference
     // Methods
     public function activate(): bool
     {
-        if ($this->status === static::STATUS_INACTIVE) {
-            $this->status = static::STATUS_ACTIVE;
+        if ($this->status === self::STATUS_INACTIVE) {
+            $this->status = self::STATUS_ACTIVE;
             $this->activation_token = '';
             $this->save();
 
@@ -184,6 +184,11 @@ class User extends Authenticatable implements HasLocalePreference
         }
 
         return self::registerAutomatically($data);
+    }
+
+    public function isActive(): bool
+    {
+        return $this->status === self::STATUS_ACTIVE;
     }
 
     public function isAdmin(): bool
@@ -255,7 +260,7 @@ class User extends Authenticatable implements HasLocalePreference
 
     public function sendPasswordResetNotification($token): void
     {
-        \Mail::to($this)->send(new ResetPasswordMail($token));
+        \Mail::to($this)->send(new Mail\ResetPasswordMail($token));
     }
 
     public function uploadAvatar(UploadedFile $file): string
@@ -272,6 +277,11 @@ class User extends Authenticatable implements HasLocalePreference
 
     public function www(): string
     {
-        return path([Users::class, 'show'], $this->id);
+        return path([Http\Controllers\Users::class, 'show'], $this);
+    }
+
+    public function wwwAcp(): string
+    {
+        return path([Http\Controllers\Acp\Users::class, 'show'], $this);
     }
 }

@@ -1,8 +1,4 @@
-<?php
-/**
- * @var \App\User $user
- */
-?>
+<?php /** @var \App\User $user */ ?>
 
 @extends('base')
 
