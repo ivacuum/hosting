@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  *
- * @property \App\Burnable $burnable
+ * @property Burnable $burnable
  *
  * @mixin \Eloquent
  */

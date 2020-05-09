@@ -13,8 +13,8 @@ use Illuminate\Support\Collection;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  *
- * @property \Illuminate\Database\Eloquent\Collection|\App\City[] $cities
- * @property \Illuminate\Database\Eloquent\Collection|\App\Trip[] $trips
+ * @property \Illuminate\Database\Eloquent\Collection|City[] $cities
+ * @property \Illuminate\Database\Eloquent\Collection|Trip[] $trips
  *
  * @property-read int $cities_count
  * @property-read string $title
@@ -102,218 +102,9 @@ class Country extends Model
         return "{$this->emoji} {$this->title}";
     }
 
-    public function flagCode(): string
-    {
-        switch ($this->slug) {
-            case 'afghanistan':
-                return 'af';
-            case 'albania':
-                return 'al';
-            case 'andorra':
-                return 'ad';
-            case 'argentina':
-                return 'ar';
-            case 'armenia':
-                return 'am';
-            case 'australia':
-                return 'au';
-            case 'austria':
-                return 'at';
-            case 'azerbaijan':
-                return 'az';
-            case 'belarus':
-                return 'by';
-            case 'belgium':
-                return 'be';
-            case 'brazil':
-                return 'br';
-            case 'bulgaria':
-                return 'bg';
-            case 'cambodia':
-                return 'kh';
-            case 'canada':
-                return 'ca';
-            case 'chile':
-                return 'cl';
-            case 'china':
-                return 'cn';
-            case 'colombia':
-                return 'co';
-            case 'croatia':
-                return 'hr';
-            case 'cuba':
-                return 'cu';
-            case 'cyprus':
-                return 'cy';
-            case 'czech-republic':
-            case 'czechia':
-                return 'cz';
-            case 'denmark':
-                return 'dk';
-            case 'ecuador':
-                return 'ec';
-            case 'egypt':
-                return 'eg';
-            case 'estonia':
-                return 'ee';
-            case 'finland':
-                return 'fi';
-            case 'france':
-                return 'fr';
-            case 'georgia':
-                return 'ge';
-            case 'germany':
-                return 'de';
-            case 'greece':
-                return 'gr';
-            case 'greenland':
-                return 'gl';
-            case 'hungary':
-                return 'hu';
-            case 'iceland':
-                return 'is';
-            case 'india':
-                return 'in';
-            case 'indonesia':
-                return 'id';
-            case 'iran':
-                return 'ir';
-            case 'iraq':
-                return 'iq';
-            case 'ireland':
-                return 'ie';
-            case 'israel':
-                return 'il';
-            case 'italy':
-                return 'it';
-            case 'jamaica':
-                return 'jm';
-            case 'japan':
-                return 'jp';
-            case 'jordan':
-                return 'jo';
-            case 'kazakhstan':
-                return 'kz';
-            case 'latvia':
-                return 'lv';
-            case 'liechtenstein':
-                return 'li';
-            case 'lithuania':
-                return 'lt';
-            case 'luxembourg':
-                return 'lu';
-            case 'macedonia':
-                return 'mk';
-            case 'magadascar':
-                return 'mg';
-            case 'malaysia':
-                return 'my';
-            case 'maldives':
-                return 'mv';
-            case 'malta':
-                return 'mt';
-            case 'mexico':
-                return 'mx';
-            case 'moldova':
-                return 'md';
-            case 'monaco':
-                return 'mc';
-            case 'mongolia':
-                return 'mn';
-            case 'montenegro':
-                return 'me';
-            case 'morocco':
-                return 'ma';
-            case 'nepal':
-                return 'np';
-            case 'netherlands':
-                return 'nl';
-            case 'new-zealand':
-                return 'nz';
-            case 'norway':
-                return 'no';
-            case 'oman':
-                return 'om';
-            case 'pakistan':
-                return 'pk';
-            case 'panama':
-                return 'pa';
-            case 'paraguay':
-                return 'py';
-            case 'peru':
-                return 'pe';
-            case 'philippines':
-                return 'ph';
-            case 'poland':
-                return 'pl';
-            case 'portugal':
-                return 'pt';
-            case 'qatar':
-                return 'qa';
-            case 'romania':
-                return 'ro';
-            case 'russia':
-                return 'ru';
-            case 'seychelles':
-                return 'sc';
-            case 'singapore':
-                return 'sg';
-            case 'slovakia':
-                return 'sk';
-            case 'slovenia':
-                return 'si';
-            case 'south-africa':
-                return 'za';
-            case 'south-korea':
-                return 'kr';
-            case 'spain':
-                return 'es';
-            case 'sri-lanka':
-                return 'lk';
-            case 'sudan':
-                return 'sd';
-            case 'sweden':
-                return 'se';
-            case 'switzerland':
-                return 'ch';
-            case 'taiwan':
-                return 'tw';
-            case 'tajikistan':
-                return 'tj';
-            case 'thailand':
-                return 'th';
-            case 'tunisia':
-                return 'tn';
-            case 'turkey':
-                return 'tr';
-            case 'uae':
-                return 'ae';
-            case 'ukraine':
-                return 'ua';
-            case 'united-kingdom':
-                return 'gb';
-            case 'usa':
-                return 'us';
-            case 'uzbekistan':
-                return 'uz';
-            case 'venezuela':
-                return 've';
-            case 'vietnam':
-                return 'vn';
-            case 'yemen':
-                return 'ye';
-            case 'zambia':
-                return 'zm';
-            case 'zimbabwe':
-                return 'zw';
-        }
-
-        return '';
-    }
-
     public function flagUrl(): string
     {
-        return ($code = $this->flagCode())
+        return ($code = FlagCode::fromSlug($this->slug))
             ? "https://ivacuum.org/i/flags/svg/{$code}.svg"
             : "https://life.ivacuum.org/0.gif";
     }
@@ -322,7 +113,7 @@ class Country extends Model
     {
         $titleField = static::titleField();
 
-        return static::orderBy($titleField)->get(['id', $titleField])->pluck($titleField, 'id');
+        return static::orderBy($titleField)->pluck($titleField, 'id');
     }
 
     public function initial(): string

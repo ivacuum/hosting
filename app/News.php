@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 use League\CommonMark\CommonMarkConverter;
 
 /**
- * Новости
- *
  * @property int $id
  * @property int $user_id
  * @property string $title
@@ -86,7 +84,7 @@ class News extends Model
 
     public function www(?string $anchor = null): string
     {
-        return path([\App\Http\Controllers\News::class, 'show'], $this->id).$anchor;
+        return path([Http\Controllers\News::class, 'show'], $this->id) . $anchor;
     }
 
     // Static methods

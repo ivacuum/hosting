@@ -3,15 +3,13 @@
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Учетка на Яндексе
- *
  * @property int $id
  * @property string $account
  * @property string $token
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  *
- * @property \Illuminate\Database\Eloquent\Collection|\App\Domain[] $domains
+ * @property \Illuminate\Database\Eloquent\Collection|Domain[] $domains
  *
  * @mixin \Eloquent
  */

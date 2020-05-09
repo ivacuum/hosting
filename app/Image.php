@@ -6,8 +6,6 @@ use Ivacuum\Generic\Services\ImageConverter;
 use Ivacuum\Generic\Traits\RecordsActivity;
 
 /**
- * Изображение в галерее
- *
  * @property int $id
  * @property int $user_id
  * @property string $slug
@@ -136,7 +134,7 @@ class Image extends Model
         ]);
     }
 
-    protected function convert($source, $width, $height)
+    private function convert($source, $width, $height)
     {
         return (new ImageConverter)
             ->autoOrient()
@@ -146,7 +144,7 @@ class Image extends Model
             ->convert($source);
     }
 
-    protected function convertSmallSource($source)
+    private function convertSmallSource($source)
     {
         return (new ImageConverter)
             ->autoOrient()
@@ -154,7 +152,7 @@ class Image extends Model
             ->convert($source);
     }
 
-    protected function gifFirstFrame($source, $width, $height)
+    private function gifFirstFrame($source, $width, $height)
     {
         return (new ImageConverter)
             ->firstFrame()

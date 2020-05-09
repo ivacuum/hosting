@@ -4,8 +4,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Файлы для скачивания
- *
  * @property int $id
  * @property string $folder
  * @property string $title

@@ -1,14 +1,11 @@
 <?php namespace App;
 
-use App\Events\DomainWhoisUpdated;
 use Carbon\CarbonImmutable;
 use GuzzleHttp\Client as HttpClient;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Домен
- *
  * @property int $id
  * @property int $alias_id
  * @property int $client_id
@@ -509,7 +506,7 @@ class Domain extends Model
 //            unset($data['paid_till']);
 //        }
 
-        event(new DomainWhoisUpdated($this, $data));
+        event(new Events\DomainWhoisUpdated($this, $data));
 
         $this->update($data);
 

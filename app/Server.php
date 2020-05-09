@@ -3,8 +3,6 @@
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Сервер
- *
  * @property int $id
  * @property string $title
  * @property string $host

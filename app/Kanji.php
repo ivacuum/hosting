@@ -15,10 +15,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  *
- * @property \App\Burnable $burnable
- * @property \Illuminate\Database\Eloquent\Collection|\App\Burnable[] $burnables
- * @property \Illuminate\Database\Eloquent\Collection|\App\Radical[] $radicals
- * @property \Illuminate\Database\Eloquent\Collection|\App\Kanji[] $similar
+ * @property Burnable $burnable
+ * @property \Illuminate\Database\Eloquent\Collection|Burnable[] $burnables
+ * @property \Illuminate\Database\Eloquent\Collection|Radical[] $radicals
+ * @property \Illuminate\Database\Eloquent\Collection|Kanji[] $similar
  *
  * @property int $sort
  *

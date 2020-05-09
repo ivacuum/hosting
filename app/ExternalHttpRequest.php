@@ -3,8 +3,6 @@
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Запрос к внешнему сервису
- *
  * @property int $id
  * @property string $service_name
  * @property string $method

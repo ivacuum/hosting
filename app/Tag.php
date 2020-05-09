@@ -10,9 +10,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  *
- * @property \Illuminate\Support\Collection|\App\News[] $news
- * @property \Illuminate\Support\Collection|\App\Photo[] $photos
- * @property \Illuminate\Support\Collection|\App\Photo[] $photosPublished
+ * @property \Illuminate\Support\Collection|News[] $news
+ * @property \Illuminate\Support\Collection|Photo[] $photos
+ * @property \Illuminate\Support\Collection|Photo[] $photosPublished
  *
  * @property-read int $photos_count
  * @property-read string $title

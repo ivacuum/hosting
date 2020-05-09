@@ -3,8 +3,6 @@
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Клиент
- *
  * @property int $id
  * @property string $name
  * @property string $email
@@ -12,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  *
- * @property \Illuminate\Database\Eloquent\Collection|\App\Domain[] $domains
+ * @property \Illuminate\Database\Eloquent\Collection|Domain[] $domains
  *
  * @mixin \Eloquent
  */

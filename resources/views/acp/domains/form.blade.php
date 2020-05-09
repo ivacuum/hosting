@@ -2,11 +2,11 @@
 
 {!! Form::text('domain')->required()->placeholder('example.com')->html() !!}
 
-{!! Form::select('alias_id')->values(App\Domain::orderBy('domain')->get(['id', 'domain'])->pluck('domain', 'id'))->html() !!}
+{!! Form::select('alias_id')->values(App\Domain::orderBy('domain')->pluck('domain', 'id'))->html() !!}
 
-{!! Form::select('client_id')->values(App\Client::all(['id', 'name'])->pluck('name', 'id'))->html() !!}
+{!! Form::select('client_id')->values(App\Client::pluck('name', 'id'))->html() !!}
 
-{!! Form::select('yandex_user_id')->values(App\YandexUser::all(['id', 'account'])->pluck('account', 'id'))->html() !!}
+{!! Form::select('yandex_user_id')->values(App\YandexUser::pluck('account', 'id'))->html() !!}
 
 {!! Form::checkbox('status')
   ->label('')

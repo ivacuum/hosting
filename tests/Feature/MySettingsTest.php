@@ -36,7 +36,7 @@ class MySettingsTest extends TestCase
 
         $user->refresh();
 
-        $this->assertEquals($new, $user->{$field});
+        $this->assertSame($new, $user->{$field});
     }
 
     public function dataToChange()

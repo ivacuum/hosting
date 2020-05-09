@@ -27,7 +27,8 @@ class Photos extends Controller
 
     public function index()
     {
-        $photos = Photo::published()
+        $photos = Photo::query()
+            ->published()
             ->orderByDesc('id')
             ->paginate(24)
             ->withPath(path([self::class, 'index']));
@@ -222,10 +223,8 @@ class Photos extends Controller
     {
         // Тэги с фотками
         $tagIds = \DB::table('taggable')
-            ->select('tag_id')
             ->where('rel_type', 'Photo')
             ->distinct()
-            ->get()
             ->pluck('tag_id');
 
         $tags = Tag::withCount('photosPublished')
@@ -240,7 +239,8 @@ class Photos extends Controller
     {
         abort_unless($trip->isPublished(), 404);
 
-        $photos = Photo::forTrip($trip->id)
+        $photos = Photo::query()
+            ->forTrip($trip->id)
             ->published()
             ->orderByDesc('id')
             ->get();

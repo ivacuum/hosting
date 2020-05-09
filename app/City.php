@@ -16,8 +16,8 @@ use Illuminate\Support\Collection;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  *
- * @property \App\Country $country
- * @property \App\Trip $trips
+ * @property Country $country
+ * @property Trip $trips
  *
  * @property-read string $title
  * @property int $trips_count
@@ -66,7 +66,7 @@ class City extends Model
     {
         $titleField = static::titleField();
 
-        return static::orderBy($titleField)->get(['id', $titleField])->pluck($titleField, 'id');
+        return static::orderBy($titleField)->pluck($titleField, 'id');
     }
 
     public function initial(): string

@@ -1,6 +1,5 @@
 <?php namespace App;
 
-use App\Http\Controllers\Torrents;
 use Carbon\CarbonInterval;
 use Foolz\SphinxQL\SphinxQL;
 use Illuminate\Database\Eloquent\Builder;
@@ -26,8 +25,8 @@ use Laravel\Scout\Searchable;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  *
- * @property \Illuminate\Database\Eloquent\Collection|\App\Comment[] $comments
- * @property \Illuminate\Database\Eloquent\Collection|\App\Comment[] $commentsPublished
+ * @property \Illuminate\Database\Eloquent\Collection|Comment[] $comments
+ * @property \Illuminate\Database\Eloquent\Collection|Comment[] $commentsPublished
  * @property \App\User $user
  *
  * @mixin \Eloquent
@@ -250,7 +249,7 @@ class Torrent extends Model
 
     public function www(?string $anchor = null): string
     {
-        return path([Torrents::class, 'show'], $this->id) . $anchor;
+        return path([Http\Controllers\Torrents::class, 'show'], $this->id) . $anchor;
     }
 
     // Static methods
@@ -260,7 +259,6 @@ class Torrent extends Model
             return static::selectRaw('category_id, COUNT(*) AS total')
                 ->where('status', static::STATUS_PUBLISHED)
                 ->groupBy('category_id')
-                ->get()
                 ->pluck('total', 'category_id');
         });
     }

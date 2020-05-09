@@ -4,8 +4,6 @@ use Illuminate\Database\Eloquent\Model;
 use Ivacuum\Generic\Traits\RecordsActivity;
 
 /**
- * Обращение пользователя
- *
  * @property int $id
  * @property int $user_id
  * @property int $status
@@ -17,8 +15,8 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  *
- * @property \Illuminate\Database\Eloquent\Collection|\App\Comment[] $comments
- * @property \App\User $user
+ * @property \Illuminate\Database\Eloquent\Collection|Comment[] $comments
+ * @property User $user
  *
  * @property-read int $comments_count
  *

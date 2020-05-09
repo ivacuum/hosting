@@ -1,28 +1,25 @@
 <?php namespace App;
 
-use App\Http\Controllers\Photos;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 /**
- * Фотография
- *
  * @property int $id
  * @property int $user_id
  * @property int $rel_id
- * @property string  $rel_type
- * @property string  $slug
- * @property string  $lat
- * @property string  $lon
+ * @property string $rel_type
+ * @property string $slug
+ * @property string $lat
+ * @property string $lon
  * @property int $status
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  *
- * @property \App\Trip $rel
- * @property \Illuminate\Database\Eloquent\Collection|\App\Tag[] $tags
- * @property \App\User $user
+ * @property Trip $rel
+ * @property \Illuminate\Database\Eloquent\Collection|Tag[] $tags
+ * @property User $user
  *
  * @mixin \Eloquent
  */
@@ -61,34 +58,26 @@ class Photo extends Model
     // Scopes
     public function scopeApplyFilter(Builder $query, $filter = null)
     {
-        return $query->when($filter === 'no-geo', function (Builder $query) {
-            return $query->where('lat', '')->where('lon', '');
-        })->when($filter === 'no-tags', function (Builder $query) {
-            return $query->doesntHave('tags');
-        });
+        return $query
+            ->when($filter === 'no-geo', fn (Builder $query) => $query->where('lat', '')->where('lon', ''))
+            ->when($filter === 'no-tags', fn (Builder $query) => $query->doesntHave('tags'));
     }
 
     public function scopeForTag(Builder $query, $id = null)
     {
-        return $query->unless(null === $id, function (Builder $query) use ($id) {
-            return $query->whereHas('tags', function (Builder $query) use ($id) {
-                $query->where('tag_id', $id);
-            });
-        });
+        return $query->unless(null === $id,
+            fn (Builder $query) => $query->whereHas('tags',
+                fn (Builder $query) => $query->where('tag_id', $id)));
     }
 
     public function scopeForTrip(Builder $query, $id = null)
     {
-        return $query->unless(null === $id, function (Builder $query) use ($id) {
-            return $query->where('rel_id', $id)->where('rel_type', (new Trip)->getMorphClass());
-        });
+        return $query->unless(null === $id, fn (Builder $query) => $query->where('rel_id', $id)->where('rel_type', (new Trip)->getMorphClass()));
     }
 
     public function scopeForTrips(Builder $query, array $ids = [])
     {
-        return $query->unless(empty($ids), function (Builder $query) use ($ids) {
-            return $query->whereIn('rel_id', $ids)->where('rel_type', (new Trip)->getMorphClass());
-        });
+        return $query->unless(empty($ids), fn (Builder $query) => $query->whereIn('rel_id', $ids)->where('rel_type', (new Trip)->getMorphClass()));
     }
 
     public function scopeOnMap(Builder $query)
@@ -152,6 +141,6 @@ class Photo extends Model
 
     public function www(): string
     {
-        return path([Photos::class, 'show'], $this->id);
+        return path([Http\Controllers\Photos::class, 'show'], $this->id);
     }
 }

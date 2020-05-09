@@ -19,7 +19,7 @@ class DomainSeeder extends Seeder
 
     public function run()
     {
-        $clientIds = App\Client::get(['id'])->pluck('id');
+        $clientIds = App\Client::pluck('id');
 
         foreach (self::DOMAINS as $domain) {
             DomainFactory::new()

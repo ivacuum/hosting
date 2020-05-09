@@ -1,14 +1,10 @@
 <?php namespace App;
 
-use App\Http\Controllers\Torrents;
-use App\Http\Controllers\Trips;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Ivacuum\Generic\Traits\RecordsActivity;
 
 /**
- * Комментарий
- *
  * @property int $id
  * @property int $user_id
  * @property int $rel_id
@@ -18,8 +14,8 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  *
- * @property \App\News|\App\Torrent|\App\Trip $rel
- * @property \App\User $user
+ * @property News|Torrent|Trip $rel
+ * @property User $user
  *
  * @mixin \Eloquent
  */
@@ -116,11 +112,11 @@ class Comment extends Model
     {
         switch ($this->rel_type) {
             case 'News':
-                return path([\App\Http\Controllers\News::class, 'show'], $this->rel_id) . $this->anchor();
+                return path([Http\Controllers\News::class, 'show'], $this->rel_id) . $this->anchor();
             case 'Torrent':
-                return path([Torrents::class, 'show'], $this->rel_id) . $this->anchor();
+                return path([Http\Controllers\Torrents::class, 'show'], $this->rel_id) . $this->anchor();
             case 'Trip':
-                return path([Trips::class, 'show'], [$this->rel_id, 'anchor' => $this->anchor()]);
+                return path([Http\Controllers\Trips::class, 'show'], [$this->rel_id, 'anchor' => $this->anchor()]);
         }
 
         return '';

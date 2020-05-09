@@ -3,8 +3,6 @@
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * DC++ хаб
- *
  * @property int $id
  * @property string $title
  * @property string $address
@@ -63,6 +61,6 @@ class DcppHub extends Model
         $this->increment('clicks');
         $this->timestamps = true;
 
-        event(new \App\Events\Stats\DcppHubClicked);
+        event(new Events\Stats\DcppHubClicked);
     }
 }

@@ -21,9 +21,9 @@ use Symfony\Component\Finder\Finder;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  *
- * @property \App\Artist $artist
- * @property \App\City $city
- * @property \Illuminate\Database\Eloquent\Collection|\App\Email[] $emails
+ * @property Artist $artist
+ * @property City $city
+ * @property \Illuminate\Database\Eloquent\Collection|Email[] $emails
  *
  * @property-read string $title
  * @property-read string $meta_title
