@@ -10,8 +10,7 @@ class Files extends Controller
 
         $models = File::published()
             ->orderByDesc('id')
-            ->paginate()
-            ->withPath(path([self::class, 'index']));
+            ->paginate();
 
         return view($this->view, ['models' => $models]);
     }

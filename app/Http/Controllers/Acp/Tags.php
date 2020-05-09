@@ -19,8 +19,7 @@ class Tags extends Controller
 
         $models = Model::withCount('photos')
             ->orderBy($sortKey, $sortDir)
-            ->paginate(500)
-            ->withPath(path([self::class, 'index']));
+            ->paginate(500);
 
         return view($this->view, [
             'models' => $models,

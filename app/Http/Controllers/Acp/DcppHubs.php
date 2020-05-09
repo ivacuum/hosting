@@ -13,7 +13,7 @@ class DcppHubs extends Controller
     }
 
     /**
-     * @param  Model|null $model
+     * @param Model|null $model
      * @return array
      */
     protected function rules($model = null)

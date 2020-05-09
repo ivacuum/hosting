@@ -34,8 +34,7 @@ class Users extends Controller
                 return $query->where('email', 'LIKE', "%{$q}%");
             })
             ->orderBy($sortKey, $sortDir)
-            ->paginate()
-            ->withPath(path([self::class, 'index']));
+            ->paginate();
 
         return view($this->view, [
             'avatar' => $avatar,
@@ -59,7 +58,7 @@ class Users extends Controller
     }
 
     /**
-     * @param  Model|null $model
+     * @param Model|null $model
      * @return array
      */
     protected function rules($model = null)

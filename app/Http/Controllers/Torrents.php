@@ -51,8 +51,7 @@ class Torrents extends Controller
 
                 return $query->whereIn('category_id', $ids);
             })
-            ->simplePaginate(25, Torrent::LIST_COLUMNS)
-            ->withPath(path([self::class, 'index']));
+            ->simplePaginate(25, Torrent::LIST_COLUMNS);
 
         return view($this->view, [
             'q' => $q,
@@ -108,8 +107,7 @@ class Torrents extends Controller
             ->where('status', Torrent::STATUS_PUBLISHED)
             ->withCount('commentsPublished AS comments')
             ->orderByDesc('registered_at')
-            ->simplePaginate(null, ['id'])
-            ->withPath(path([self::class, 'my']));
+            ->simplePaginate(null, ['id']);
 
         return view($this->view, ['torrents' => $torrents]);
     }

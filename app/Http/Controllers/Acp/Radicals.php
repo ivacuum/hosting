@@ -34,8 +34,7 @@ class Radicals extends Controller
             })
             ->when($sortKey === 'level', fn (Builder $query) => $query->orderBy('meaning'))
             ->when($q, fn (Builder $query) => $query->where('meaning', 'LIKE', "%{$q}%"))
-            ->paginate()
-            ->withPath(path([self::class, 'index']));
+            ->paginate();
 
         return view($this->view, ['models' => $models]);
     }

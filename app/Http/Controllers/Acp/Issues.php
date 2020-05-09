@@ -22,8 +22,7 @@ class Issues extends Controller
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->unless(null === $status, fn (Builder $query) => $query->where('status', $status))
             ->orderBy($sortKey, $sortDir)
-            ->paginate(50)
-            ->withPath(path([self::class, 'index']));
+            ->paginate(50);
 
         return view($this->view, [
             'models' => $models,

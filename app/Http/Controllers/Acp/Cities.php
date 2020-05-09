@@ -27,8 +27,7 @@ class Cities extends Controller
             ->withCount('trips')
             ->orderBy($sortKey, $sortDir)
             ->when($countryId, fn (Builder $query) => $query->where('country_id', $countryId))
-            ->paginate()
-            ->withPath(path([self::class, 'index']));
+            ->paginate();
 
         return view($this->view, [
             'models' => $models,

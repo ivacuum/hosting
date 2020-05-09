@@ -15,8 +15,7 @@ class News extends Controller
                 return $query->whereBetween('created_at', Model::interval($year, $month, $day));
             })
             ->orderByDesc('created_at')
-            ->paginate()
-            ->withPath(path([self::class, 'index']));
+            ->paginate();
 
         \Breadcrumbs::push(trans('news.index'), 'news');
 

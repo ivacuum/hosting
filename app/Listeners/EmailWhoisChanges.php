@@ -25,8 +25,8 @@ class EmailWhoisChanges
     /**
      * Проверка изменения данных домена (ip, mx, ns, etc.)
      *
-     * @param  \App\Domain $domain
-     * @param  array   $new
+     * @param \App\Domain $domain
+     * @param array $new
      * @return array
      */
     protected function checkForChanges(Domain $domain, array $new): array
@@ -57,14 +57,14 @@ class EmailWhoisChanges
         if ($new['registered_at']->diffInDays($domain->registered_at) > 300) {
             $diff['registered_at'] = [
                 'from' => (string) $domain->registered_at,
-                'to'   => (string) $new['registered_at']
+                'to' => (string) $new['registered_at'],
             ];
         }
 
         if (isset($new['paid_till']) && $new['paid_till']->diffInHours($domain->paid_till) > 24) {
             $diff['paid_till'] = [
                 'from' => (string) $domain->paid_till,
-                'to'   => (string) $new['paid_till'],
+                'to' => (string) $new['paid_till'],
             ];
         }
 

@@ -59,8 +59,7 @@ class Domains extends Controller
         }
 
         $models = $models->orderBy($sort)
-            ->paginate()
-            ->withPath(path([self::class, 'index']));
+            ->paginate();
 
         return view($this->view, [
             'q' => $q,
@@ -124,31 +123,31 @@ class Domains extends Controller
 
                 Model::whereIn('id', $ids)->update(['status' => 1]);
 
-            break;
+                break;
             case 'deactivate':
 
                 Model::whereIn('id', $ids)->update(['status' => 0]);
 
-            break;
+                break;
             case 'delete':
 
                 Model::destroy($ids);
 
-            break;
+                break;
             case 'force_delete':
 
                 $params['filter'] = 'trashed';
 
                 Model::whereIn('id', $ids)->onlyTrashed()->forceDelete();
 
-            break;
+                break;
             case 'restore':
 
                 $params['filter'] = 'trashed';
 
                 Model::whereIn('id', $ids)->onlyTrashed()->restore();
 
-            break;
+                break;
         }
 
         return ['redirect' => path([self::class, 'index'], $params)];
@@ -275,7 +274,7 @@ class Domains extends Controller
     /**
      * Служебный метод для автодополнения кода
      *
-     * @param  string  $domain
+     * @param string $domain
      * @return Model
      */
     protected function getModel($domain)
@@ -287,7 +286,7 @@ class Domains extends Controller
     }
 
     /**
-     * @param  Model|null $model
+     * @param Model|null $model
      * @return array
      */
     protected function rules($model = null)

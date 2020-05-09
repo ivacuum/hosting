@@ -3,6 +3,7 @@
 use App;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Testing\Assert;
@@ -72,7 +73,16 @@ class AppServiceProvider extends ServiceProvider
         App\YandexUser::observe(App\Observers\YandexUserObserver::class);
         App\ChatMessage::observe(App\Observers\ChatMessageObserver::class);
 
+        $this->paginatorCurrentPath();
         $this->testMacros();
+    }
+
+    private function paginatorCurrentPath()
+    {
+        $locale = $this->app['request']->server->get('LARAVEL_LOCALE');
+        $localeUri = $locale ? "/{$locale}" : '';
+
+        Paginator::currentPathResolver(fn () => $localeUri . $this->app['request']->getBaseUrl() . $this->app['request']->getPathInfo());
     }
 
     private function testMacros()

@@ -10,8 +10,7 @@ class Artists extends Controller
     {
         $models = Model::query()
             ->orderBy('title')
-            ->paginate(500)
-            ->withPath(path([self::class, 'index']));
+            ->paginate(500);
 
         return view($this->view, [
             'models' => $models,

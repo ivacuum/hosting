@@ -13,14 +13,13 @@ class Files extends Controller
         [$sortKey, $sortDir] = $this->getSortParams();
 
         $models = Model::orderBy($sortKey, $sortDir)
-            ->paginate()
-            ->withPath(path([self::class, 'index']));
+            ->paginate();
 
         return view($this->view, ['models' => $models]);
     }
 
     /**
-     * @param  Model|null $model
+     * @param Model|null $model
      * @return array
      */
     protected function rules($model = null)

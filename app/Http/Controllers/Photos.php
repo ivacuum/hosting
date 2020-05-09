@@ -30,8 +30,7 @@ class Photos extends Controller
         $photos = Photo::query()
             ->published()
             ->orderByDesc('id')
-            ->paginate(24)
-            ->withPath(path([self::class, 'index']));
+            ->paginate(24);
 
         return view($this->view, ['photos' => $photos]);
     }

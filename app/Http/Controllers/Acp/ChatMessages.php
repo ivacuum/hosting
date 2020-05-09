@@ -15,8 +15,7 @@ class ChatMessages extends Controller
             ->orderByDesc('id')
             ->unless(null === $status, fn (Builder $query) => $query->where('status', $status))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
-            ->paginate()
-            ->withPath(path([self::class, 'index']));
+            ->paginate();
 
         return view($this->view, [
             'models' => $models,

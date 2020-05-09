@@ -12,8 +12,7 @@ class YandexUsers extends Controller
     public function index()
     {
         $models = Model::orderBy('account')
-            ->paginate()
-            ->withPath(path([self::class, 'index']));
+            ->paginate();
 
         return view($this->view, ['models' => $models]);
     }
@@ -39,7 +38,7 @@ class YandexUsers extends Controller
     }
 
     /**
-     * @param  Model|null $model
+     * @param Model|null $model
      * @return array
      */
     protected function rules($model = null)
@@ -71,7 +70,7 @@ class YandexUsers extends Controller
     }
 
     /**
-     * @param  Model $model
+     * @param Model $model
      */
     protected function updateModel($model)
     {

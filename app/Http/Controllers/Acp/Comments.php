@@ -27,8 +27,7 @@ class Comments extends Controller
             ->when($tripId, fn (Builder $query) => $query->where('rel_id', $tripId)->where('rel_type', (new Trip)->getMorphClass()))
             ->when($torrentId, fn (Builder $query) => $query->where('rel_id', $torrentId)->where('rel_type', (new Torrent)->getMorphClass()))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
-            ->paginate(20)
-            ->withPath(path([self::class, 'index']));
+            ->paginate(20);
 
         return view($this->view, [
             'models' => $models,

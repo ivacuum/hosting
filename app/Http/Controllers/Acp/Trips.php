@@ -38,8 +38,7 @@ class Trips extends Controller
                     ->orWhere('slug', 'LIKE', "%{$q}%");
             })
             ->orderBy($sortKey, $sortDir)
-            ->paginate(50)
-            ->withPath(path([self::class, 'index']));
+            ->paginate(50);
 
         return view($this->view, [
             'models' => $models,

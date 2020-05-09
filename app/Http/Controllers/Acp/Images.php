@@ -25,8 +25,7 @@ class Images extends Controller
                 $query->where('views', '<', 3000)
                     ->where('user_id', '<>', 1);
             })
-            ->paginate(111)
-            ->withPath(path([self::class, 'index']));
+            ->paginate(111);
 
         return view($this->view, [
             'type' => $type,

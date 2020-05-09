@@ -14,8 +14,7 @@ class Gigs extends Controller
         [$sortKey, $sortDir] = $this->getSortParams();
 
         $models = Model::orderBy($sortKey, $sortDir)
-            ->paginate(500)
-            ->withPath(path([self::class, 'index']));
+            ->paginate(500);
 
         return view($this->view, [
             'models' => $models,

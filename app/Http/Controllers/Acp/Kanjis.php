@@ -40,8 +40,7 @@ class Kanjis extends Controller
                     : $query->doesntHave('similar');
             })
             ->when($q, fn (Builder $query) => $query->where('meaning', 'LIKE', "%{$q}%"))
-            ->paginate()
-            ->withPath(path([self::class, 'index']));
+            ->paginate();
 
         return view($this->view, ['models' => $models]);
     }
@@ -78,7 +77,7 @@ class Kanjis extends Controller
     }
 
     /**
-     * @param  Model $model
+     * @param Model $model
      */
     protected function updateModel($model)
     {

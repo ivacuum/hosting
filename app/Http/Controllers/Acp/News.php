@@ -21,8 +21,7 @@ class News extends Controller
             ->orderBy($sortKey, $sortDir)
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->where('locale', \App::getLocale())
-            ->paginate(20)
-            ->withPath(path([self::class, 'index']));
+            ->paginate(20);
 
         return view($this->view, [
             'models' => $models,

@@ -21,8 +21,7 @@ class Vocabularies extends Controller
             ->when($sortKey === 'level', fn (Builder $query) => $query->orderBy('meaning'))
             ->when(null !== $sentences, fn (Builder $query) => $query->where('sentences', $sentences ? '<>' : '=', ''))
             ->when($q, fn (Builder $query) => $query->where('meaning', 'LIKE', "%{$q}%"))
-            ->paginate()
-            ->withPath(path([self::class, 'index']));
+            ->paginate();
 
         return view($this->view, ['models' => $models]);
     }

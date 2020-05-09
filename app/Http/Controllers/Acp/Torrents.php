@@ -24,8 +24,7 @@ class Torrents extends Controller
             ->when(null !== $status, fn (Builder $query) => $query->where('status', $status))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->when($q, fn (Builder $query) => $query->where('title', 'LIKE', "%{$q}%"))
-            ->paginate()
-            ->withPath(path([self::class, 'index']));
+            ->paginate();
 
         return view($this->view, [
             'models' => $models,
@@ -35,7 +34,7 @@ class Torrents extends Controller
     }
 
     /**
-     * @param  Model|null $model
+     * @param Model|null $model
      * @return array
      */
     protected function rules($model = null)

@@ -14,8 +14,7 @@ class Users extends Controller
         $users = User::query()
             ->active()
             ->orderBy('id')
-            ->simplePaginate()
-            ->withPath(path([self::class, 'index']));
+            ->simplePaginate(2);
 
         return view('users.index', ['users' => $users]);
     }
