@@ -20,12 +20,8 @@ class Users extends Controller
 
         $models = Model::withCount(['comments', 'images', 'torrents', 'trips'])
             ->when(null !== $avatar, fn (Builder $query) => $query->where('avatar', $avatar ? '<>' : '=', ''))
-            ->when($lastLoginAt === 'week', function (Builder $query) {
-                return $query->where('last_login_at', '>', now()->subWeek()->toDateTimeString());
-            })
-            ->when($lastLoginAt === 'month', function (Builder $query) {
-                return $query->where('last_login_at', '>', now()->subMonth()->toDateTimeString());
-            })
+            ->when($lastLoginAt === 'week', fn (Builder $query) => $query->where('last_login_at', '>', now()->subWeek()->toDateTimeString()))
+            ->when($lastLoginAt === 'month', fn (Builder $query) => $query->where('last_login_at', '>', now()->subMonth()->toDateTimeString()))
             ->when($q, function (Builder $query) use ($q) {
                 if (is_numeric($q)) {
                     return $query->where('id', $q);

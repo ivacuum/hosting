@@ -67,17 +67,13 @@ class TripStatsCalculator
     public function daysInCities(): Collection
     {
         return $this->daysInCities
-            ->map(function ($years) {
-                return $years->reverse()->map(fn ($days) => sizeof($days));
-            });
+            ->map(fn ($years) => $years->reverse()->map(fn ($days) => sizeof($days)));
     }
 
     public function daysInCountries(): Collection
     {
         return $this->daysInCountries
-            ->map(function ($years) {
-                return $years->reverse()->map(fn ($days) => sizeof($days));
-            });
+            ->map(fn ($years) => $years->reverse()->map(fn ($days) => sizeof($days)));
     }
 
     public function daysInTrips(): Collection

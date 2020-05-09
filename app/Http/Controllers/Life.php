@@ -73,9 +73,7 @@ class Life extends Controller
         $trips = TripFactory::tripsByCities(1);
 
         $cities = \CityHelper::cachedById()
-            ->filter(function (City $city) use (&$trips) {
-                return isset($trips[$city->id]);
-            })
+            ->filter(fn (City $city) => isset($trips[$city->id]))
             ->each(function (City $city) use (&$trips) {
                 $city->trips_count = $trips[$city->id]['total'] ?? 0;
                 $city->trips_published_count = $trips[$city->id]['published'] ?? 0;

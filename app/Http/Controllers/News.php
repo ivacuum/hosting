@@ -11,9 +11,7 @@ class News extends Controller
             ->withCount('commentsPublished AS comments_count')
             ->published()
             ->where('locale', \App::getLocale())
-            ->when($year || $month || $day, function (Builder $query) use ($year, $month, $day) {
-                return $query->whereBetween('created_at', Model::interval($year, $month, $day));
-            })
+            ->when($year || $month || $day, fn (Builder $query) => $query->whereBetween('created_at', Model::interval($year, $month, $day)))
             ->orderByDesc('created_at')
             ->paginate();
 

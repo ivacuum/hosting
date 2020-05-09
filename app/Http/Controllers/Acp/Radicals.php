@@ -22,16 +22,13 @@ class Radicals extends Controller
 
         $models = Model::withCount('kanjis')
             ->orderBy($sortKey, $sortDir)
-            ->when($kanjiId, function (Builder $query) use ($kanjiId) {
-                return $query->whereHas('kanjis', function (Builder $query) use ($kanjiId) {
-                    $query->where('kanji_id', $kanjiId);
-                });
-            })
-            ->when(null !== $kanjisCount, function (Builder $query) use ($kanjisCount) {
-                return $kanjisCount
+            ->when($kanjiId,
+                fn (Builder $query) => $query->whereHas('kanjis',
+                    fn (Builder $query) => $query->where('kanji_id', $kanjiId)))
+            ->when(null !== $kanjisCount,
+                fn (Builder $query) => $kanjisCount
                     ? $query->has('kanjis')
-                    : $query->doesntHave('kanjis');
-            })
+                    : $query->doesntHave('kanjis'))
             ->when($sortKey === 'level', fn (Builder $query) => $query->orderBy('meaning'))
             ->when($q, fn (Builder $query) => $query->where('meaning', 'LIKE', "%{$q}%"))
             ->paginate();

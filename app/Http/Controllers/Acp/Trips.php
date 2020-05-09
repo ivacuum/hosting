@@ -25,18 +25,15 @@ class Trips extends Controller
         $models = Model::with('user')
             ->withCount('comments', 'photos')
             ->when($cityId, fn (Builder $query) => $query->where('city_id', $cityId))
-            ->when($countryId, function (Builder $query) use ($countryId) {
-                return $query->whereHas('city.country', function (Builder $query) use ($countryId) {
-                    $query->where('country_id', $countryId);
-                });
-            })
+            ->when($countryId,
+                fn (Builder $query) => $query->whereHas('city.country',
+                    fn (Builder $query) => $query->where('country_id', $countryId)))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->unless(null === $status, fn (Builder $query) => $query->where('status', $status))
-            ->when($q, function (Builder $query) use ($q) {
-                return $query->where('id', $q)
+            ->when($q,
+                fn (Builder $query) => $query->where('id', $q)
                     ->orWhere(Model::titleField(), 'LIKE', "%{$q}%")
-                    ->orWhere('slug', 'LIKE', "%{$q}%");
-            })
+                    ->orWhere('slug', 'LIKE', "%{$q}%"))
             ->orderBy($sortKey, $sortDir)
             ->paginate(50);
 
