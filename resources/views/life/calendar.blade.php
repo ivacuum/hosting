@@ -36,8 +36,8 @@
                     <img class="block flag-16 svg-shadow" src="{{ $trip['flag'] }}" alt="">
                   </a>
                 @else
-                  <div class="pb-1">
-                    <img class="block flag-16 svg-shadow" src="{{ $trip['flag'] }}" alt="">
+                  <div class="pb-1 tooltipped tooltipped-n" aria-label="{{ $trip['title'] }}">
+                    <img class="block opacity-50 flag-16 svg-shadow" src="{{ $trip['flag'] }}" alt="">
                   </div>
                 @endif
               @endforeach
