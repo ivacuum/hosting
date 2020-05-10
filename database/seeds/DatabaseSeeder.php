@@ -4,9 +4,10 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-	public function run()
-	{
-	    $this->call([
+    public function run()
+    {
+        $this->call([
+            App\Seeder\UploadsPruner::class,
             App\Seeder\UserSeeder::class,
             App\Seeder\ExternalIdentitySeeder::class,
             App\Seeder\ClientSeeder::class,
@@ -30,5 +31,5 @@ class DatabaseSeeder extends Seeder
             App\Seeder\KanjiSeeder::class,
             App\Seeder\VocabularySeeder::class,
         ]);
-	}
+    }
 }
