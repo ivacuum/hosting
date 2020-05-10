@@ -2,6 +2,7 @@
 
 use App\City;
 use App\Factory\TripFactory;
+use App\Trip;
 use Illuminate\Database\Seeder;
 
 class TripSeeder extends Seeder
@@ -25,6 +26,15 @@ class TripSeeder extends Seeder
             $trip->meta_image = $this->metaImage($slug);
             $trip->save();
         }
+
+        /** @var Trip $trip */
+        $trip = Trip::where('status', Trip::STATUS_PUBLISHED)->orderByDesc('date_start')->first();
+        $trip->status = Trip::STATUS_INACTIVE;
+        $trip->save();
+
+        $trip = Trip::where('status', Trip::STATUS_PUBLISHED)->orderByDesc('date_start')->first();
+        $trip->status = Trip::STATUS_HIDDEN;
+        $trip->save();
     }
 
     private function metaImage(string $slug): string
