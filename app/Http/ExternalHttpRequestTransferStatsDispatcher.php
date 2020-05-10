@@ -34,11 +34,11 @@ class ExternalHttpRequestTransferStatsDispatcher
             json_encode($response->getHeaders(), JSON_UNESCAPED_UNICODE),
             (string) $response->getBody(),
             $this->responseSize($stats),
-            $stats->getHandlerStat('total_time_us') ?? $stats->getHandlerStat('total_time') * 100000,
+            $stats->getHandlerStat('total_time_us') ?? $stats->getHandlerStat('total_time') * 100_000,
             $response->getStatusCode(),
             $stats->getHandlerStat('http_version') ?? '',
             $stats->getHandlerStat('redirect_count'),
-            $stats->getHandlerStat('redirect_time_us') ?? $stats->getHandlerStat('redirect_time') * 100000,
+            $stats->getHandlerStat('redirect_time_us') ?? $stats->getHandlerStat('redirect_time') * 100_000,
             $stats->getHandlerStat('redirect_url') ?? ''
         ));
     }

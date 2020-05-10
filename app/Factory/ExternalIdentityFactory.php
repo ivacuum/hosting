@@ -48,7 +48,7 @@ class ExternalIdentityFactory
     public function make()
     {
         $model = new ExternalIdentity;
-        $model->uid = $this->faker->numberBetween(10000, 999999999999);
+        $model->uid = $this->faker->numberBetween(10000, 999_999_999_999);
         $model->email = $this->email ?? $this->faker->optional(0.6, '')->safeEmail;
         $model->user_id = $this->userId;
         $model->provider = $this->provider ?? $this->faker->randomElement(self::PROVIDERS);
