@@ -46,8 +46,8 @@ class GalleryTest extends TestCase
         /** @var Image $image */
         $image = Image::findOrFail($id);
 
-        \Storage::disk('gallery')->assertExists("{$image->splitted_date}/{$image->slug}");
-        \Storage::disk('gallery')->assertExists("{$image->splitted_date}/t/{$image->slug}");
+        \Storage::disk('gallery')->assertExists("{$image->splittedDate()}/{$image->slug}");
+        \Storage::disk('gallery')->assertExists("{$image->splittedDate()}/t/{$image->slug}");
     }
 
     public function testUploadPage()

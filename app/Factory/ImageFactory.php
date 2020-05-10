@@ -8,6 +8,8 @@ class ImageFactory
 {
     use WithFaker;
 
+    private $userId;
+
     public function create()
     {
         $model = $this->make();
@@ -23,7 +25,7 @@ class ImageFactory
         $model->date = CarbonImmutable::instance($this->faker->dateTimeBetween('-4 years'))->format('ymd');
         $model->size = $this->faker->numberBetween(1000, 1_000_000);
         $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
-        $model->user_id = UserFactory::new()->create()->id;
+        $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
 
         return $model;
     }
@@ -33,5 +35,13 @@ class ImageFactory
         return tap(new self, function (self $factory) {
             $factory->setUpFaker();
         });
+    }
+
+    public function withUserId(int $userId)
+    {
+        $factory = clone $this;
+        $factory->userId = $userId;
+
+        return $factory;
     }
 }

@@ -19,21 +19,21 @@ class Gallery extends Controller
             ->orderByDesc('id')
             ->paginate(25);
 
-        return view($this->view, ['images' => $images]);
+        return view('gallery.index', ['images' => $images]);
     }
 
     public function preview(Image $image)
     {
         event(new \App\Events\Stats\GalleryImagePreviewed($image->id));
 
-        return view($this->view, ['image' => $image]);
+        return view('gallery.preview', ['image' => $image]);
     }
 
     public function store(GalleryStoreRequest $request)
     {
         $file = $request->image();
 
-        $image = Image::createFromFile($file, $request->user()->id);
+        $image = Image::newFromFile($file, $request->user()->id);
         $image->siteThumbnail($file);
         $image->upload($file);
         $image->save();
@@ -52,11 +52,11 @@ class Gallery extends Controller
     {
         event(new \App\Events\Stats\GalleryImageViewed($image->id));
 
-        return view($this->view, ['image' => $image]);
+        return view('gallery.view', ['image' => $image]);
     }
 
     public function upload()
     {
-        return view($this->view);
+        return view('gallery.upload');
     }
 }

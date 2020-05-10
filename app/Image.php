@@ -17,8 +17,6 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  *
  * @property User $user
  *
- * @property-read string $splitted_date
- *
  * @mixin \Eloquent
  */
 class Image extends Model
@@ -40,12 +38,6 @@ class Image extends Model
         return $this->belongsTo(User::class);
     }
 
-    // Attributes
-    public function getSplittedDateAttribute(): string
-    {
-        return implode('/', str_split($this->date, 2));
-    }
-
     // Methods
     public function breadcrumb(): string
     {
@@ -55,24 +47,36 @@ class Image extends Model
     public function deleteFiles()
     {
         return \Storage::disk('gallery')->delete([
-            "{$this->splitted_date}/s/{$this->slug}",
-            "{$this->splitted_date}/t/{$this->slug}",
-            "{$this->splitted_date}/{$this->slug}",
+            "{$this->splittedDate()}/s/{$this->slug}",
+            "{$this->splittedDate()}/t/{$this->slug}",
+            "{$this->splittedDate()}/{$this->slug}",
         ]);
+    }
+
+    public static function newFromFile(UploadedFile $file, $userId)
+    {
+        $model = new self;
+        $model->date = date('ymd');
+        $model->size = 0;
+        $model->slug = sprintf('%s_%s.%s', $userId, \Str::random(10), strtolower($file->getClientOriginalExtension()));
+        $model->views = 0;
+        $model->user_id = $userId;
+
+        return $model;
     }
 
     public function originalUrl(): string
     {
         return \App::isProduction()
             ? "https://img.ivacuum.ru/g/{$this->date}/{$this->slug}"
-            : url("/uploads/gallery/{$this->splitted_date}/{$this->slug}");
+            : url("/uploads/gallery/{$this->splittedDate()}/{$this->slug}");
     }
 
     public function originalSecretUrl(): string
     {
         return \App::isProduction()
-            ? "https://ivacuum.org/g/{$this->splitted_date}/{$this->slug}"
-            : "/uploads/gallery/{$this->splitted_date}/{$this->slug}";
+            ? "https://ivacuum.org/g/{$this->splittedDate()}/{$this->slug}"
+            : "/uploads/gallery/{$this->splittedDate()}/{$this->slug}";
     }
 
     public function resize(UploadedFile $file, $newWidth, $newHeight)
@@ -97,21 +101,26 @@ class Image extends Model
     {
         $thumbnail = $this->resize($file, 150, 150);
 
-        return \Storage::disk('gallery')->putFileAs("{$this->splitted_date}/t", $thumbnail, $this->slug);
+        return \Storage::disk('gallery')->putFileAs("{$this->splittedDate()}/t", $thumbnail, $this->slug);
+    }
+
+    public function splittedDate(): string
+    {
+        return implode('/', str_split($this->date, 2));
     }
 
     public function thumbnailUrl(): string
     {
         return \App::isProduction()
             ? "https://img.ivacuum.ru/g/{$this->date}/t/{$this->slug}"
-            : "/uploads/gallery/{$this->splitted_date}/t/{$this->slug}";
+            : "/uploads/gallery/{$this->splittedDate()}/t/{$this->slug}";
     }
 
     public function thumbnailSecretUrl(): string
     {
         return \App::isProduction()
-            ? "https://ivacuum.org/g/{$this->splitted_date}/t/{$this->slug}"
-            : "/uploads/gallery/{$this->splitted_date}/t/{$this->slug}";
+            ? "https://ivacuum.org/g/{$this->splittedDate()}/t/{$this->slug}"
+            : "/uploads/gallery/{$this->splittedDate()}/t/{$this->slug}";
     }
 
     public function upload(UploadedFile $file)
@@ -120,18 +129,7 @@ class Image extends Model
 
         $this->size = $newFile->getSize();
 
-        return \Storage::disk('gallery')->putFileAs($this->splitted_date, $newFile, $this->slug);
-    }
-
-    public static function createFromFile(UploadedFile $file, $userId)
-    {
-        return new static([
-            'slug' => sprintf('%s_%s.%s', $userId, \Str::random(10), strtolower($file->getClientOriginalExtension())),
-            'date' => date('ymd'),
-            'size' => 0,
-            'views' => 0,
-            'user_id' => $userId,
-        ]);
+        return \Storage::disk('gallery')->putFileAs($this->splittedDate(), $newFile, $this->slug);
     }
 
     private function convert($source, $width, $height)
