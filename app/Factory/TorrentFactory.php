@@ -17,7 +17,7 @@ class TorrentFactory
     public function advancedTitle()
     {
         $factory = clone $this;
-        $factory->title = $this->faker->words(3, true) . ' (' . $this->faker->words(2, true) . ') [2020, RUS]';
+        $factory->title = $this->faker->words(random_int(5, 15), true) . ' (' . $this->faker->words(2, true) . ') [' . random_int(2000, 2020) . ', RUS]';
 
         return $factory;
     }
