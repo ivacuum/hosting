@@ -2,6 +2,7 @@
 
 use App\City;
 use App\Factory\TripFactory;
+use App\Factory\UserFactory;
 use App\Trip;
 use Illuminate\Database\Seeder;
 
@@ -35,6 +36,19 @@ class TripSeeder extends Seeder
         $trip = Trip::where('status', Trip::STATUS_PUBLISHED)->orderByDesc('date_start')->first();
         $trip->status = Trip::STATUS_HIDDEN;
         $trip->save();
+
+        $user = UserFactory::new()
+            ->withEmail('trip@example.com')
+            ->withLogin('trip')
+            ->create();
+
+        /** @var City $randomCity */
+        $randomCity = City::inRandomOrder()->first();
+
+        TripFactory::new()
+            ->withCityId($randomCity->id)
+            ->withUserId($user->id)
+            ->create();
     }
 
     private function metaImage(string $slug): string
