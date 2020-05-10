@@ -19,3 +19,12 @@
 .group:hover .group-hover\:brightness-full {
   filter: brightness(1);
 }
+
+.column-width-48 { column-width: 12rem; }
+
+.city-entry {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.trip-cover-info { text-shadow: 1px 1px 0 rgba(0, 0, 0, .8); }

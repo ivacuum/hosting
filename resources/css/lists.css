@@ -1,0 +1,11 @@
+.list-dialog {
+  position: relative;
+  list-style: none;
+  padding-left: 1.5rem;
+}
+
+.list-dialog li:before {
+  content: '—';
+  position: absolute;
+  left: 0;
+}

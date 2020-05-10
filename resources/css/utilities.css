@@ -10,6 +10,8 @@
   hanging-punctuation: first;
 }
 
+.hide-empty:empty { display: none; }
+
 .mobile-wide {
   @apply -mx-4;
 }

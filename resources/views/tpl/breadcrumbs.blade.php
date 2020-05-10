@@ -1,11 +1,11 @@
 @if (!empty($breadcrumbs))
-  <div class="breadcrumbs text-xs py-2 border-b border-grey-200 leading-snug">
+  <div class="text-xs py-2 border-b border-grey-200 leading-snug" style="background-color: #fafafa;">
     <nav class="container flex flex-wrap items-center" {!! sizeof($breadcrumbs) > 1 ? 'itemscope itemtype="http://schema.org/BreadcrumbList"' : '' !!}>
       <span class="{{ !Str::startsWith($self, 'Acp\\') ? 'hidden sm:flex' : '' }}">
         <a href="{{ $localeUri ?: '/' }}">
           @svg (home)
         </a>
-        <span class="mx-px px-px">
+        <span class="mx-px px-px text-gray-500">
           @svg (angle-right)
         </span>
       </span>
@@ -17,7 +17,7 @@
               <meta itemprop="position" content="{{ $loop->iteration }}">
             </a>
           </span>
-        <span class="mx-px px-px">
+        <span class="mx-px px-px text-gray-500">
           @svg (angle-right)
         </span>
         @else

@@ -2,12 +2,16 @@
 @import "variables.css";
 @import "base.css";
 @import "~tailwindcss/components.css";
+@import "animations.css";
 @import "banners.css";
 @import "buttons.css";
+/*@import "counters.css";*/
 @import "details.css";
 @import "dropdown.css";
 @import "life.css";
+@import "lists.css";
 @import "markdown.css";
 @import "notie.css";
+@import "youtube.css";
 @import "~tailwindcss/utilities.css";
 @import "utilities.css";

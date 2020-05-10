@@ -1,5 +1,5 @@
 $navbar-default-bg: #f8f8f8;
-// $navbar-default-bg: rgba($white, .95);
+// $navbar-default-bg: rgba(#fff, .95);
 // apple from #f9f9f9 to #f2f2f2
 
 .body-with-bottom-tabbar {
@@ -13,7 +13,7 @@ $navbar-default-bg: #f8f8f8;
   z-index: $zindex-fixed;
   background: $navbar-default-bg linear-gradient(to bottom, lighten($navbar-default-bg, 10%) 0%, $navbar-default-bg 100%) repeat-x;
   border-top: 1px solid $gray-300;
-  box-shadow: inset 0 1px 0 rgba($white, .15), 0 1px 5px rgba($black, .075);
+  box-shadow: inset 0 1px 0 rgba(#fff, .15), 0 1px 5px rgba(#000, .075);
   transform: translateY(100%) translateZ(0);
   transition: 200ms ease-out;
   will-change: transform;
@@ -23,7 +23,7 @@ $navbar-default-bg: #f8f8f8;
 
 .bottom-tab {
   color: $gray-light;
-  text-shadow: 0 1px 0 rgba($white, .25);
+  text-shadow: 0 1px 0 rgba(#fff, .25);
 
   &:hover,
   &:focus,
