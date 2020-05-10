@@ -1,5 +1,6 @@
-<?php
+<?php namespace App\Seeder;
 
+use App\City;
 use App\Factory\TripFactory;
 use Illuminate\Database\Seeder;
 
@@ -8,12 +9,12 @@ class TripSeeder extends Seeder
     public function run()
     {
         // Для каждого шаблона нужно создать поездку
-        foreach (App\TripFactory::templatesIterator() as $template) {
+        foreach (\App\TripFactory::templatesIterator() as $template) {
             $slug = str_replace('_', '.', $template->getBasename('.blade.php'));
-            $citySlug = Str::before($slug, '.');
+            $citySlug = \Str::before($slug, '.');
 
-            /** @var App\City $city */
-            if (null === $city = App\City::where('slug', $citySlug)->first()) {
+            /** @var City $city */
+            if (null === $city = City::where('slug', $citySlug)->first()) {
                 continue;
             }
 

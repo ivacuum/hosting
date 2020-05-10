@@ -7,28 +7,28 @@ class DatabaseSeeder extends Seeder
 	public function run()
 	{
 	    $this->call([
-            UserSeeder::class,
-            ExternalIdentitySeeder::class,
-            ClientSeeder::class,
-            DomainSeeder::class,
+            App\Seeder\UserSeeder::class,
+            App\Seeder\ExternalIdentitySeeder::class,
+            App\Seeder\ClientSeeder::class,
+            App\Seeder\DomainSeeder::class,
 
-            CountrySeeder::class,
-            CitySeeder::class,
-            TripSeeder::class,
-            ArtistSeeder::class,
-            GigSeeder::class,
-            PhotoSeeder::class,
+            App\Seeder\CountrySeeder::class,
+            App\Seeder\CitySeeder::class,
+            App\Seeder\TripSeeder::class,
+            App\Seeder\ArtistSeeder::class,
+            App\Seeder\GigSeeder::class,
+            App\Seeder\PhotoSeeder::class,
 
-            ChatMessageSeeder::class,
-            DcppHubSeeder::class,
-            IssueSeeder::class,
-            TagSeeder::class,
-            TorrentSeeder::class,
-            NewsSeeder::class,
+            App\Seeder\ChatMessageSeeder::class,
+            App\Seeder\DcppHubSeeder::class,
+            App\Seeder\IssueSeeder::class,
+            App\Seeder\TagSeeder::class,
+            App\Seeder\TorrentSeeder::class,
+            App\Seeder\NewsSeeder::class,
 
-            RadicalSeeder::class,
-            KanjiSeeder::class,
-            VocabularySeeder::class,
+            App\Seeder\RadicalSeeder::class,
+            App\Seeder\KanjiSeeder::class,
+            App\Seeder\VocabularySeeder::class,
         ]);
 	}
 }

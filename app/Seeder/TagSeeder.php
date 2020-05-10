@@ -1,4 +1,4 @@
-<?php
+<?php namespace App\Seeder;
 
 use App\Factory\TagFactory;
 use Illuminate\Database\Seeder;

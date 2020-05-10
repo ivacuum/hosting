@@ -1,4 +1,4 @@
-<?php
+<?php namespace App\Seeder;
 
 use App\Factory\RadicalFactory;
 use Illuminate\Database\Seeder;

@@ -1,5 +1,6 @@
-<?php
+<?php namespace App\Seeder;
 
+use App\Country;
 use App\Factory\CityFactory;
 use Illuminate\Database\Seeder;
 
@@ -90,7 +91,7 @@ class CitySeeder extends Seeder
                 return $city;
             }, $cities);
 
-            App\Country::query()
+            Country::query()
                 ->where('slug', $countrySlug)
                 ->first()
                 ->cities()

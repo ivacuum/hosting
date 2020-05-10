@@ -1,5 +1,8 @@
-<?php
+<?php namespace App\Seeder;
 
+use App\Factory\PhotoFactory;
+use App\Factory\TagFactory;
+use App\Trip;
 use Illuminate\Database\Seeder;
 
 class PhotoSeeder extends Seeder
@@ -12,10 +15,10 @@ class PhotoSeeder extends Seeder
 
     private function seedMoscow()
     {
-        /** @var \App\Trip $trip */
-        $trip = App\Trip::where('slug', 'msk.2019.09.29')->firstOrFail();
+        /** @var Trip $trip */
+        $trip = Trip::where('slug', 'msk.2019.09.29')->firstOrFail();
 
-        $factory = App\Factory\PhotoFactory::new()->withTripId($trip->id);
+        $factory = PhotoFactory::new()->withTripId($trip->id);
         $factory->withSlug('msk.2019.09.29/IMG_1345.jpg')->create();
         $factory->withSlug('msk.2019.09.29/IMG_1346.jpg')->create();
         $factory->hidden()->withSlug('msk.2019.09.29/IMG_1347.jpg')->create();
@@ -23,15 +26,15 @@ class PhotoSeeder extends Seeder
 
     public function seedSuwon()
     {
-        /** @var \App\Trip $trip */
-        $trip = App\Trip::where('slug', 'suwon.2019')->firstOrFail();
+        /** @var Trip $trip */
+        $trip = Trip::where('slug', 'suwon.2019')->firstOrFail();
 
-        $factory = App\Factory\PhotoFactory::new()->withTripId($trip->id);
+        $factory = PhotoFactory::new()->withTripId($trip->id);
         $factory->withSlug('suwon.2019/IMG_4277.jpg')->create();
         $factory->withSlug('suwon.2019/IMG_4278.jpg')->create();
         $factory->withSlug('suwon.2019/IMG_4283.jpg')->create();
         $factory->withSlug('suwon.2019/IMG_4285.jpg')->create();
-        $factory->withSlug('suwon.2019/IMG_4287.jpg')->withTag(App\Factory\TagFactory::new()->withTitle('местная надпись', 'local writing'))->create();
+        $factory->withSlug('suwon.2019/IMG_4287.jpg')->withTag(TagFactory::new()->withTitle('местная надпись', 'local writing'))->create();
         $factory->withSlug('suwon.2019/IMG_4288.jpg')->create();
         $factory->withSlug('suwon.2019/IMG_4291.jpg')->create();
         $factory->withSlug('suwon.2019/IMG_4293.jpg')->create();

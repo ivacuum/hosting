@@ -1,17 +1,19 @@
-<?php
+<?php namespace App\Seeder;
 
+use App\Factory\ExternalIdentityFactory;
+use App\Factory\UserFactory;
 use Illuminate\Database\Seeder;
 
 class ExternalIdentitySeeder extends Seeder
 {
     public function run()
     {
-        $user = App\Factory\UserFactory::new()
+        $user = UserFactory::new()
             ->withEmail('social@example.com')
             ->withLogin('social')
             ->create();
 
-        $factory = App\Factory\ExternalIdentityFactory::new()
+        $factory = ExternalIdentityFactory::new()
             ->withEmail($user->email)
             ->withUserId($user->id);
 

@@ -1,4 +1,4 @@
-<?php
+<?php namespace App\Seeder;
 
 use App\Factory\VocabularyFactory;
 use Illuminate\Database\Seeder;

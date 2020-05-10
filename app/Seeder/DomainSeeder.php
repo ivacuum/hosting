@@ -1,5 +1,6 @@
-<?php
+<?php namespace App\Seeder;
 
+use App\Client;
 use App\Factory\DomainFactory;
 use Illuminate\Database\Seeder;
 
@@ -19,7 +20,7 @@ class DomainSeeder extends Seeder
 
     public function run()
     {
-        $clientIds = App\Client::pluck('id');
+        $clientIds = Client::pluck('id');
 
         foreach (self::DOMAINS as $domain) {
             DomainFactory::new()

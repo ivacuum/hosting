@@ -1,17 +1,19 @@
-<?php
+<?php namespace App\Seeder;
 
+use App\Factory\TorrentFactory;
+use App\Factory\UserFactory;
 use Illuminate\Database\Seeder;
 
 class TorrentSeeder extends Seeder
 {
     public function run()
     {
-        $user = App\Factory\UserFactory::new()
+        $user = UserFactory::new()
             ->withEmail('magnet@example.com')
             ->withLogin('magnet')
             ->create();
 
-        $factory = App\Factory\TorrentFactory::new()->withUserId($user->id);
+        $factory = TorrentFactory::new()->withUserId($user->id);
         $factory->advancedTitle()->create();
         $factory->advancedTitle()->create();
         $factory->advancedTitle()->create();

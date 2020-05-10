@@ -1,6 +1,7 @@
-<?php
+<?php namespace App\Seeder;
 
 use App\Factory\NewsFactory;
+use App\Factory\UserFactory;
 use Illuminate\Database\Seeder;
 
 class NewsSeeder extends Seeder
@@ -9,11 +10,14 @@ class NewsSeeder extends Seeder
 
     public function run()
     {
-        $userIds = App\User::pluck('id');
+        $user = UserFactory::new()
+            ->withEmail('news@example.com')
+            ->withLogin('news')
+            ->create();
 
         for ($i = 0; $i < self::COUNT; $i++) {
             NewsFactory::new()
-                ->withUserId($userIds->random())
+                ->withUserId($user->id)
                 ->create();
         }
     }
