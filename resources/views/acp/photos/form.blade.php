@@ -17,13 +17,13 @@
       @foreach (App\Tag::orderBy(App\Tag::titleField())->get() as $tag)
         <label class="flex items-center">
           <input
-            class="form-checkbox mr-2 my-1"
+            class="form-checkbox mr-2"
             type="checkbox"
             name="tags[]"
             value="{{ $tag->id }}"
             {{ in_array($tag->id, (array) old('tags', !empty($model) ? $model->tags->modelKeys() : null)) ? 'checked' : '' }}
           >
-          <span class="leading-none">{{ $tag->title }}</span>
+          {{ $tag->title }}
         </label>
       @endforeach
     </div>

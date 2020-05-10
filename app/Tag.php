@@ -55,4 +55,9 @@ class Tag extends Model
     {
         return mb_substr($this->title, 0, 1);
     }
+
+    public function wwwAcp(): string
+    {
+        return path([Http\Controllers\Acp\Tags::class, 'show'], $this);
+    }
 }

@@ -1,3 +1,5 @@
+<?php /** @var \App\Photo $model */ ?>
+
 @extends('acp.list')
 
 @section('heading-after-search')
@@ -17,10 +19,10 @@
   <thead>
   <tr>
     <x-th-numeric-sortable key="id"/>
-    <th>Фото</th>
-    <th>URL</th>
-    <th>Тэги</th>
-    <th>@svg (map-marker)</th>
+    <x-th key="photo"/>
+    <x-th key="slug"/>
+    <x-th key="tags"/>
+    <x-th>@svg (map-marker)</x-th>
     <x-th-numeric-sortable key="views">@svg (eye)</x-th-numeric-sortable>
     <th></th>
   </tr>
@@ -34,7 +36,11 @@
       </td>
       <td class="text-center">
         <a class="inline-block screenshot-link" href="{{ path([$controller, 'show'], $model) }}">
-          <img class="border border-hover image-100 object-cover" src="{{ request('size') == 2000 ? $model->originalUrl() : (request('size') == 1000 ? $model->mobileUrl() : $model->thumbnailUrl()) }}" alt="">
+          <img
+            class="border border-hover image-100 object-cover"
+            src="{{ request('size') == 2000 ? $model->originalUrl() : (request('size') == 1000 ? $model->mobileUrl() : $model->thumbnailUrl()) }}"
+            alt=""
+          >
         </a>
       </td>
       <td>
@@ -43,12 +49,10 @@
       </td>
       <td>
         @foreach ($model->tags as $tag)
-          <div>
-            <a href="{{ path([App\Http\Controllers\Acp\Tags::class, 'show'], $tag) }}">#{{ $tag->title }}</a>
-          </div>
+          <a class="block" href="{{ $tag->wwwAcp() }}">#{{ $tag->title }}</a>
         @endforeach
       </td>
-      <td>
+      <td class="text-gray-400">
         <div>{{ $model->lat }}</div>
         <div>{{ $model->lon }}</div>
       </td>

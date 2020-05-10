@@ -1,6 +1,0 @@
-@mixin retina-media-query {
-  // Autoprefixer takes care of vendor prefixes
-  @media only screen and (min-resolution: 2dppx) {
-    @content;
-  }
-}

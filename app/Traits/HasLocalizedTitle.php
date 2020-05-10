@@ -9,6 +9,6 @@ trait HasLocalizedTitle
 
     public static function titleField(): string
     {
-        return 'title_'.\App::getLocale();
+        return 'title_' . \App::getLocale();
     }
 }
