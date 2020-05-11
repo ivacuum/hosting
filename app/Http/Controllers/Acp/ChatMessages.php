@@ -2,19 +2,19 @@
 
 use App\ChatMessage as Model;
 use Illuminate\Database\Eloquent\Builder;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class ChatMessages extends Controller
+class ChatMessages extends AbstractController
 {
     public function index()
     {
         $status = request('status');
         $userId = request('user_id');
 
-        $models = Model::with('user')
-            ->orderByDesc('id')
+        $models = Model::query()
+            ->with('user')
             ->unless(null === $status, fn (Builder $query) => $query->where('status', $status))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
+            ->orderByDesc('id')
             ->paginate();
 
         return view($this->view, [

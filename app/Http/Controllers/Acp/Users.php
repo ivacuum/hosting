@@ -3,9 +3,8 @@
 use App\User as Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Users extends Controller
+class Users extends AbstractController
 {
     protected $sortableKeys = ['id', 'last_login_at', 'comments_count', 'images_count', 'torrents_count', 'trips_count'];
     protected $showWithCount = ['chatMessages', 'comments', 'externalIdentities', 'images', 'torrents', 'trips'];
@@ -16,9 +15,8 @@ class Users extends Controller
         $avatar = request('avatar');
         $lastLoginAt = request('last_login_at');
 
-        [$sortKey, $sortDir] = $this->getSortParams();
-
-        $models = Model::withCount(['comments', 'images', 'torrents', 'trips'])
+        $models = Model::query()
+            ->withCount(['comments', 'images', 'torrents', 'trips'])
             ->when(null !== $avatar, fn (Builder $query) => $query->where('avatar', $avatar ? '<>' : '=', ''))
             ->when($lastLoginAt === 'week', fn (Builder $query) => $query->where('last_login_at', '>', now()->subWeek()->toDateTimeString()))
             ->when($lastLoginAt === 'month', fn (Builder $query) => $query->where('last_login_at', '>', now()->subMonth()->toDateTimeString()))
@@ -29,7 +27,7 @@ class Users extends Controller
 
                 return $query->where('email', 'LIKE', "%{$q}%");
             })
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy($this->getSortKey(), $this->getSortDir())
             ->paginate();
 
         return view($this->view, [

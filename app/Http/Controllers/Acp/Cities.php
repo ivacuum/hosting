@@ -3,10 +3,8 @@
 use App\City as Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
-use Ivacuum\Generic\Controllers\Acp\Controller;
-use Ivacuum\Generic\Services\GoogleGeocoder;
 
-class Cities extends Controller
+class Cities extends AbstractController
 {
     protected $sortDir = 'asc';
     protected $sortKey = 'title';
@@ -18,33 +16,14 @@ class Cities extends Controller
     {
         $countryId = request('country_id');
 
-        [$sortKey, $sortDir] = $this->getSortParams();
-
-        $sortKey = $sortKey === 'title' ? Model::titleField() : $sortKey;
-
         $models = Model::query()
             ->with('country')
             ->withCount('trips')
-            ->orderBy($sortKey, $sortDir)
             ->when($countryId, fn (Builder $query) => $query->where('country_id', $countryId))
+            ->orderBy($this->getSortKey(), $this->getSortDir())
             ->paginate();
 
-        return view($this->view, [
-            'models' => $models,
-        ]);
-    }
-
-    public function geodata(GoogleGeocoder $geocoder)
-    {
-        $q = request('q');
-
-        $geo = $geocoder->geocode($q)[0];
-
-        return [
-            'lat' => $geo['lat'],
-            'lon' => $geo['lon'],
-            'address' => $geo['address'],
-        ];
+        return view($this->view, ['models' => $models]);
     }
 
     /**

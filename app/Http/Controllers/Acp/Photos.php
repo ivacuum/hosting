@@ -3,11 +3,10 @@
 use App\Gig;
 use App\Photo as Model;
 use App\Trip;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 use Ivacuum\Generic\Services\ImageConverter;
 use Ivacuum\Generic\Utilities\ExifHelper;
 
-class Photos extends Controller
+class Photos extends AbstractController
 {
     protected $sortableKeys = ['id', 'views'];
 
@@ -16,13 +15,12 @@ class Photos extends Controller
         $filter = request('filter');
         $onPage = request('on_page');
 
-        [$sortKey, $sortDir] = $this->getSortParams();
-
-        $models = Model::with('tags')
+        $models = Model::query()
+            ->with('tags')
             ->forTrip(request('trip_id'))
             ->applyFilter($filter)
             ->forTag(request('tag_id'))
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy($this->getSortKey(), $this->getSortDir())
             ->paginate($onPage);
 
         return view($this->view, [

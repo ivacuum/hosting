@@ -3,9 +3,8 @@
 use App\Gig;
 use App\Notifications\GigPublishedNotification;
 use App\User;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class GigPublishedNotify extends Controller
+class GigPublishedNotify extends AbstractController
 {
     public function __invoke(Gig $gig)
     {

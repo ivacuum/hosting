@@ -2,9 +2,8 @@
 
 use App\Issue as Model;
 use Illuminate\Database\Eloquent\Builder;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Issues extends Controller
+class Issues extends AbstractController
 {
     protected $showWith = ['comments.user'];
     protected $sortableKeys = ['id', 'comments_count'];
@@ -15,18 +14,14 @@ class Issues extends Controller
         $status = request('status');
         $userId = request('user_id');
 
-        [$sortKey, $sortDir] = $this->getSortParams();
-
         $models = Model::query()
             ->withCount('comments')
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->unless(null === $status, fn (Builder $query) => $query->where('status', $status))
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy($this->getSortKey(), $this->getSortDir())
             ->paginate(50);
 
-        return view($this->view, [
-            'models' => $models,
-        ]);
+        return view($this->view, ['models' => $models]);
     }
 
     public function batch()

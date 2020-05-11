@@ -15,7 +15,6 @@ return [
     'cities.show' => 'Город',
     'cities.index' => 'Города',
     'cities.create' => 'Новый город',
-    'cities.fill_geodata' => 'Заполнить геоданные',
 
     'clients.add' => 'Добавить клиента',
     'clients.edit' => 'Редактирование',

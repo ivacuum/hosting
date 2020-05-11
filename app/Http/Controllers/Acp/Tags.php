@@ -2,9 +2,8 @@
 
 use App\Tag as Model;
 use Illuminate\Validation\Rule;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Tags extends Controller
+class Tags extends AbstractController
 {
     protected $sortDir = 'asc';
     protected $sortKey = 'title';
@@ -13,17 +12,12 @@ class Tags extends Controller
 
     public function index()
     {
-        [$sortKey, $sortDir] = $this->getSortParams();
-
-        $sortKey = $sortKey === 'title' ? Model::titleField() : $sortKey;
-
-        $models = Model::withCount('photos')
-            ->orderBy($sortKey, $sortDir)
+        $models = Model::query()
+            ->withCount('photos')
+            ->orderBy($this->getSortKey(), $this->getSortDir())
             ->paginate(500);
 
-        return view($this->view, [
-            'models' => $models,
-        ]);
+        return view($this->view, ['models' => $models]);
     }
 
     /**

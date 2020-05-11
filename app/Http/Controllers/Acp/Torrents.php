@@ -3,9 +3,8 @@
 use App\Torrent as Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Torrents extends Controller
+class Torrents extends AbstractController
 {
     protected $sortableKeys = ['id', 'views', 'comments_count', 'clicks'];
     protected $showWithCount = ['comments'];
@@ -16,14 +15,13 @@ class Torrents extends Controller
         $status = request('status');
         $userId = request('user_id');
 
-        [$sortKey, $sortDir] = $this->getSortParams();
-
-        $models = Model::with('user')
+        $models = Model::query()
+            ->with('user')
             ->withCount('comments')
-            ->orderBy($sortKey, $sortDir)
             ->when(null !== $status, fn (Builder $query) => $query->where('status', $status))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->when($q, fn (Builder $query) => $query->where('title', 'LIKE', "%{$q}%"))
+            ->orderBy($this->getSortKey(), $this->getSortDir())
             ->paginate();
 
         return view($this->view, [

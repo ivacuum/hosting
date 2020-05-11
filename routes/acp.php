@@ -11,7 +11,6 @@ RouteHelper::withoutCreate(Acp\ChatMessages::class);
 Route::post('chat-messages/batch', [Acp\ChatMessages::class, 'batch']);
 
 RouteHelper::crud(Acp\Cities::class);
-Route::get('cities/geodata', [Acp\Cities::class, 'geodata']);
 
 RouteHelper::crud(Acp\Clients::class);
 

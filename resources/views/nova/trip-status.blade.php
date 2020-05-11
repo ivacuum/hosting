@@ -1,6 +1,4 @@
-<?php
-/** @var \App\Trip $trip */
-?>
+<?php /** @var \App\Trip $trip */ ?>
 
 @if ($trip->isHidden())
   <span title="Заметка скрыта">

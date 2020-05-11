@@ -3,9 +3,8 @@
 use App\Http\Requests\Acp\TripPublishedNotifyRequest;
 use App\Jobs\NotifyTripSubscribers;
 use App\Trip;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class TripPublishedNotify extends Controller
+class TripPublishedNotify extends AbstractController
 {
     public function __invoke(Trip $trip, TripPublishedNotifyRequest $request)
     {

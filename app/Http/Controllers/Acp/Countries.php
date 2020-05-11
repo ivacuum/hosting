@@ -2,9 +2,8 @@
 
 use App\Country as Model;
 use Illuminate\Validation\Rule;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Countries extends Controller
+class Countries extends AbstractController
 {
     protected $sortDir = 'asc';
     protected $sortKey = 'title';
@@ -13,17 +12,12 @@ class Countries extends Controller
 
     public function index()
     {
-        [$sortKey, $sortDir] = $this->getSortParams();
-
-        $sortKey = $sortKey === 'title' ? Model::titleField() : $sortKey;
-
-        $models = Model::withCount(['cities', 'trips'])
-            ->orderBy($sortKey, $sortDir)
+        $models = Model::query()
+            ->withCount(['cities', 'trips'])
+            ->orderBy($this->getSortKey(), $this->getSortDir())
             ->paginate(500);
 
-        return view($this->view, [
-            'models' => $models,
-        ]);
+        return view($this->view, ['models' => $models]);
     }
 
     /**

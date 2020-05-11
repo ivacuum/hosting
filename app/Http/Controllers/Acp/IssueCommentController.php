@@ -3,9 +3,8 @@
 use App\Comment;
 use App\Issue;
 use App\Notifications\IssueCommentedNotification;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class IssueCommentController extends Controller
+class IssueCommentController extends AbstractController
 {
     public function __invoke(Issue $issue)
     {

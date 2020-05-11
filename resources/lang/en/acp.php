@@ -15,7 +15,6 @@ return [
     'cities.show' => 'City',
     'cities.index' => 'Cities',
     'cities.create' => 'New city',
-    'cities.fill_geodata' => 'Fill geodata',
 
     'clients.add' => 'Create client',
     'clients.edit' => 'Edit',

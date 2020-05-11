@@ -2,23 +2,19 @@
 
 use App\Gig as Model;
 use Illuminate\Validation\Rule;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Gigs extends Controller
+class Gigs extends AbstractController
 {
     protected $sortKey = 'date';
     protected $sortableKeys = ['date', 'views'];
 
     public function index()
     {
-        [$sortKey, $sortDir] = $this->getSortParams();
-
-        $models = Model::orderBy($sortKey, $sortDir)
+        $models = Model::query()
+            ->orderBy($this->getSortKey(), $this->getSortDir())
             ->paginate(500);
 
-        return view($this->view, [
-            'models' => $models,
-        ]);
+        return view($this->view, ['models' => $models]);
     }
 
     protected function newModelDefaults($model)

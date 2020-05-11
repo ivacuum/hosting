@@ -2,9 +2,8 @@
 
 use App\Image as Model;
 use Illuminate\Database\Eloquent\Builder;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Images extends Controller
+class Images extends AbstractController
 {
     protected $sortableKeys = ['id', 'size', 'views', 'updated_at'];
 
@@ -15,13 +14,12 @@ class Images extends Controller
         $touch = request('touch');
         $userId = request('user_id');
 
-        [$sortKey, $sortDir] = $this->getSortParams();
-
-        $models = Model::orderBy($sortKey, $sortDir)
+        $models = Model::query()
             ->when($year, fn (Builder $query) => $query->whereYear('created_at', $year))
             ->when($touch, fn (Builder $query) => $query->whereYear('updated_at', now()->subYears($touch)->year))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->when(\App::isProduction(), fn (Builder $query) => $query->where('views', '<', 3000)->where('user_id', '<>', 1))
+            ->orderBy($this->getSortKey(), $this->getSortDir())
             ->paginate(111);
 
         return view($this->view, [

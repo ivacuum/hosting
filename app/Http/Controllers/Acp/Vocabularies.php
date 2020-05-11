@@ -2,9 +2,8 @@
 
 use App\Vocabulary as Model;
 use Illuminate\Database\Eloquent\Builder;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Vocabularies extends Controller
+class Vocabularies extends AbstractController
 {
     protected $sortDir = 'asc';
     protected $sortKey = 'level';
@@ -15,12 +14,13 @@ class Vocabularies extends Controller
         $q = request('q');
         $sentences = request('sentences');
 
-        [$sortKey, $sortDir] = $this->getSortParams();
+        $sortKey = $this->getSortKey();
 
-        $models = Model::orderBy($sortKey, $sortDir)
-            ->when($sortKey === 'level', fn (Builder $query) => $query->orderBy('meaning'))
+        $models = Model::query()
             ->when(null !== $sentences, fn (Builder $query) => $query->where('sentences', $sentences ? '<>' : '=', ''))
             ->when($q, fn (Builder $query) => $query->where('meaning', 'LIKE', "%{$q}%"))
+            ->orderBy($sortKey, $this->getSortDir())
+            ->when($sortKey === 'level', fn (Builder $query) => $query->orderBy('meaning'))
             ->paginate();
 
         return view($this->view, ['models' => $models]);

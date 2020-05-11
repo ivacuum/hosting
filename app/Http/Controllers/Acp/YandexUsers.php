@@ -3,15 +3,15 @@
 use App\Domain;
 use App\YandexUser as Model;
 use Illuminate\Validation\Rule;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class YandexUsers extends Controller
+class YandexUsers extends AbstractController
 {
     protected $showWithCount = ['domains'];
 
     public function index()
     {
-        $models = Model::orderBy('account')
+        $models = Model::query()
+            ->orderBy('account')
             ->paginate();
 
         return view($this->view, ['models' => $models]);
@@ -54,7 +54,10 @@ class YandexUsers extends Controller
 
     protected function storeModel()
     {
-        $model = Model::create($this->requestDataForModel());
+        $model = new Model;
+        $model->token = request('token');
+        $model->account = request('account');
+        $model->save();
 
         // Newly specified user domains
         foreach (request('domains', []) as $id => $one) {

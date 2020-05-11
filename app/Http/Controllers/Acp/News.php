@@ -4,9 +4,8 @@ use App\News as Model;
 use App\Notifications\NewsPublishedNotification;
 use App\User;
 use Illuminate\Database\Eloquent\Builder;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class News extends Controller
+class News extends AbstractController
 {
     protected $sortableKeys = ['id', 'views', 'comments_count'];
     protected $showWithCount = ['comments'];
@@ -15,12 +14,11 @@ class News extends Controller
     {
         $userId = request('user_id');
 
-        [$sortKey, $sortDir] = $this->getSortParams();
-
-        $models = Model::withCount('comments')
-            ->orderBy($sortKey, $sortDir)
+        $models = Model::query()
+            ->withCount('comments')
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->where('locale', \App::getLocale())
+            ->orderBy($this->getSortKey(), $this->getSortDir())
             ->paginate(20);
 
         return view($this->view, [

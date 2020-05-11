@@ -4,9 +4,8 @@ use App\Domain as Model;
 use App\Mail\DomainMailboxesMail;
 use App\Rules\Email;
 use Illuminate\Validation\Rule;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Domains extends Controller
+class Domains extends AbstractController
 {
     const DEFAULT_ORDER_BY = 'domain';
 

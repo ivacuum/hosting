@@ -2,9 +2,8 @@
 
 use App\Artist as Model;
 use Illuminate\Validation\Rule;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Artists extends Controller
+class Artists extends AbstractController
 {
     public function index()
     {
@@ -12,9 +11,7 @@ class Artists extends Controller
             ->orderBy('title')
             ->paginate(500);
 
-        return view($this->view, [
-            'models' => $models,
-        ]);
+        return view($this->view, ['models' => $models]);
     }
 
     /**

@@ -4,9 +4,8 @@ use App\City;
 use App\Trip as Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Trips extends Controller
+class Trips extends AbstractController
 {
     protected $sortKey = 'date_start';
     protected $sortableKeys = ['date_start', 'views', 'comments_count', 'photos_count'];
@@ -20,8 +19,6 @@ class Trips extends Controller
         $userId = request('user_id');
         $countryId = request('country_id');
 
-        [$sortKey, $sortDir] = $this->getSortParams();
-
         $models = Model::with('user')
             ->withCount('comments', 'photos')
             ->when($cityId, fn (Builder $query) => $query->where('city_id', $cityId))
@@ -34,12 +31,10 @@ class Trips extends Controller
                 fn (Builder $query) => $query->where('id', $q)
                     ->orWhere(Model::titleField(), 'LIKE', "%{$q}%")
                     ->orWhere('slug', 'LIKE', "%{$q}%"))
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy($this->getSortKey(), $this->getSortDir())
             ->paginate(50);
 
-        return view($this->view, [
-            'models' => $models,
-        ]);
+        return view($this->view, ['models' => $models]);
     }
 
     protected function newModelDefaults($model)

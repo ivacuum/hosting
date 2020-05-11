@@ -2,17 +2,15 @@
 
 use App\File as Model;
 use Illuminate\Validation\Rule;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Files extends Controller
+class Files extends AbstractController
 {
     protected $sortableKeys = ['id', 'size', 'downloads'];
 
     public function index()
     {
-        [$sortKey, $sortDir] = $this->getSortParams();
-
-        $models = Model::orderBy($sortKey, $sortDir)
+        $models = Model::query()
+            ->orderBy($this->getSortKey(), $this->getSortDir())
             ->paginate();
 
         return view($this->view, ['models' => $models]);

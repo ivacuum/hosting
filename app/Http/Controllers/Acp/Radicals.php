@@ -3,9 +3,8 @@
 use App\Kanji;
 use App\Radical as Model;
 use Illuminate\Database\Eloquent\Builder;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class Radicals extends Controller
+class Radicals extends AbstractController
 {
     protected $sortDir = 'asc';
     protected $sortKey = 'level';
@@ -18,10 +17,9 @@ class Radicals extends Controller
         $kanjiId = request('kanji_id');
         $kanjisCount = request('kanjis_count');
 
-        [$sortKey, $sortDir] = $this->getSortParams();
+        $sortKey = $this->getSortKey();
 
         $models = Model::withCount('kanjis')
-            ->orderBy($sortKey, $sortDir)
             ->when($kanjiId,
                 fn (Builder $query) => $query->whereHas('kanjis',
                     fn (Builder $query) => $query->where('kanji_id', $kanjiId)))
@@ -29,8 +27,9 @@ class Radicals extends Controller
                 fn (Builder $query) => $kanjisCount
                     ? $query->has('kanjis')
                     : $query->doesntHave('kanjis'))
-            ->when($sortKey === 'level', fn (Builder $query) => $query->orderBy('meaning'))
             ->when($q, fn (Builder $query) => $query->where('meaning', 'LIKE', "%{$q}%"))
+            ->orderBy($sortKey, $this->getSortDir())
+            ->when($sortKey === 'level', fn (Builder $query) => $query->orderBy('meaning'))
             ->paginate();
 
         return view($this->view, ['models' => $models]);

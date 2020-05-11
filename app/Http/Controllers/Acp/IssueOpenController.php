@@ -1,9 +1,8 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Issue;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class IssueOpenController extends Controller
+class IssueOpenController extends AbstractController
 {
     public function __invoke(Issue $issue)
     {

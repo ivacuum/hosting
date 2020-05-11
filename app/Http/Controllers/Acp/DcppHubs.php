@@ -1,9 +1,8 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\DcppHub as Model;
-use Ivacuum\Generic\Controllers\Acp\Controller;
 
-class DcppHubs extends Controller
+class DcppHubs extends AbstractController
 {
     public function index()
     {

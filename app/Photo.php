@@ -124,7 +124,7 @@ class Photo extends Model
 
     public function newSlugPrefix(string $newPrefix): void
     {
-        [$prefix, $filename] = explode('/', $this->slug);
+        [, $filename] = explode('/', $this->slug);
 
         $this->slug = "{$newPrefix}/{$filename}";
     }

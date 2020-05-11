@@ -91,11 +91,14 @@ class Domain extends Model
     }
 
     // Scopes
-    public function scopeYandexReady(Builder $query, $userId = 0)
+    public function scopeYandexReady(Builder $query, int $userId = null)
     {
-        return $query->where('status', 1)
-            ->whereIn('yandex_user_id', [0, $userId])
+        $query->where('status', 1)
             ->orderBy('domain');
+
+        return $userId === null
+            ? $query->where('yandex_user_id', 0)
+            : $query->whereIn('yandex_user_id', [0, $userId]);
     }
 
     public function scopeWhoisReady(Builder $query)
