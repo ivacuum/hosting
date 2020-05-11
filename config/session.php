@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     // file, cookie, database, apc, memcached, redis, dynamodb, array
     'driver' => env('SESSION_DRIVER', 'file'),
     'lifetime' => env('SESSION_LIFETIME', 120),
@@ -20,5 +19,4 @@ return [
 
     // lax, strict, none, null
     'same_site' => 'lax',
-
 ];

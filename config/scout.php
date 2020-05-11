@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'driver' => env('SCOUT_DRIVER', 'algolia'),
     'prefix' => env('SCOUT_PREFIX', ''),
     'queue' => env('SCOUT_QUEUE', false),
@@ -17,5 +16,4 @@ return [
         'id' => env('ALGOLIA_APP_ID', ''),
         'secret' => env('ALGOLIA_SECRET', ''),
     ],
-
 ];

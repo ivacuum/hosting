@@ -7,7 +7,6 @@ use Laravel\Nova\Http\Middleware\BootTools;
 use Laravel\Nova\Http\Middleware\DispatchServingNovaEvent;
 
 return [
-
     'name' => env('NOVA_APP_NAME', env('APP_NAME')),
     'url' => env('APP_URL', '/'),
     'path' => '/nova',
@@ -28,5 +27,4 @@ return [
     'actions' => [
         'resource' => ActionResource::class,
     ],
-
 ];

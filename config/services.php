@@ -1,17 +1,16 @@
 <?php
 
 return [
-
     'facebook' => [
-        'client_id'     => env('FACEBOOK_CLIENT_ID'),
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
-        'redirect'      => env('FACEBOOK_REDIRECT'),
+        'redirect' => env('FACEBOOK_REDIRECT'),
     ],
 
     'google' => [
-        'client_id'     => env('GOOGLE_CLIENT_ID'),
+        'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect'      => env('GOOGLE_REDIRECT'),
+        'redirect' => env('GOOGLE_REDIRECT'),
     ],
 
     'telegram-bot-api' => [
@@ -19,10 +18,9 @@ return [
     ],
 
     'vk' => [
-        'access_token'  => env('VK_ACCESS_TOKEN'),
-        'client_id'     => env('VK_CLIENT_ID'),
+        'access_token' => env('VK_ACCESS_TOKEN'),
+        'client_id' => env('VK_CLIENT_ID'),
         'client_secret' => env('VK_CLIENT_SECRET'),
-        'redirect'      => env('VK_REDIRECT'),
+        'redirect' => env('VK_REDIRECT'),
     ],
-
 ];

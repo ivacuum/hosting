@@ -4,7 +4,6 @@ use Laravel\Telescope\Watchers;
 use Laravel\Telescope\Http\Middleware\Authorize;
 
 return [
-
     'enabled' => env('TELESCOPE_ENABLED', true),
     'domain' => env('TELESCOPE_DOMAIN', null),
     'path' => env('TELESCOPE_PATH', 'telescope'),

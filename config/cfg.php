@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'avatar_bg' => [
         '#f44336',
         '#e91e63',
@@ -41,8 +40,8 @@ return [
     'metrics_address' => env('METRICS_ADDRESS'),
     'sitename' => 'vacuum.kaluga',
     'sphinx' => [
-        'host'   => env('SPHINX_HOST', 'localhost'),
-        'port'   => env('SPHINX_PORT', 9306),
+        'host' => env('SPHINX_HOST', 'localhost'),
+        'port' => env('SPHINX_PORT', 9306),
         'socket' => env('SPHINX_SOCKET', ''),
     ],
     'telegram' => [
@@ -58,5 +57,4 @@ return [
     'firstvds_link' => 'https://firstvds.ru/?from=149161',
     'firstvds_promocode' => '648149161',
     'timeweb_link' => '?i=19980',
-
 ];

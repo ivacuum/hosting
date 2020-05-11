@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
@@ -36,5 +35,4 @@ return [
             'expire' => 60, // min
         ],
     ],
-
 ];

@@ -1,9 +1,9 @@
 <?php
 
 return [
-
     // apc, array, database, file, memcached, redis, dynamodb
     'default' => env('CACHE_DRIVER', 'file'),
+    'prefix' => env('CACHE_PREFIX', 'hosting'),
 
     'stores' => [
 
@@ -52,7 +52,4 @@ return [
         ],
 
     ],
-
-    'prefix' => env('CACHE_PREFIX', 'hosting'),
-
 ];

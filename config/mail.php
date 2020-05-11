@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'default' => env('MAIL_MAILER', 'smtp'),
 
     'mailers' => [
@@ -43,5 +42,4 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
-
 ];
