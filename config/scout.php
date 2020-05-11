@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'driver' => env('SCOUT_DRIVER', 'algolia'),
-    'prefix' => env('SCOUT_PREFIX', ''),
+    'driver' => env('SCOUT_DRIVER', 'sphinx'),
+    'prefix' => env('SCOUT_PREFIX', 'vac_'),
     'queue' => env('SCOUT_QUEUE', false),
 
     'chunk' => [
