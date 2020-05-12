@@ -94,6 +94,11 @@ class Vocabulary extends Model
         return $result;
     }
 
+    public function toKatakana(): string
+    {
+        return mb_convert_kana($this->firstKana(), 'C');
+    }
+
     public function toRomaji(): string
     {
         return (new HiraganaRomanizer)->romanize($this->firstKana());

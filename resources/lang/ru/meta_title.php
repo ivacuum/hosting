@@ -39,7 +39,7 @@ return [
     'japanese-wanikani-vocabulary.show' => ':vocab',
     'japanese-wanikani-vocabulary.index' => 'Словарные слова',
 
-    'japanese-words-trainer' => 'Тренажер по набору слов хираганой',
+    'japanese-words-trainer' => 'Тренажер по набору слов хираганой и катаканой',
 
     'korean' => 'Корейский язык',
     'korean-psy' => 'Кириллизация песен PSY',

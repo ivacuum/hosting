@@ -27,7 +27,7 @@ return [
     'japanese-wanikani-vocabulary.show' => ':vocab',
     'japanese-wanikani-vocabulary.index' => 'Vocabulary',
 
-    'japanese-words-trainer' => 'Hiragana words trainer',
+    'japanese-words-trainer' => 'Hiragana & Katakana words trainer',
 
     'korean' => 'Korean language',
 
