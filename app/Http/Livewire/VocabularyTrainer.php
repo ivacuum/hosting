@@ -126,7 +126,7 @@ class VocabularyTrainer extends Component
 
     private function endLevel(): int
     {
-        return $this->level * 10;
+        return min(60, $this->level * 10);
     }
 
     private function pickRandomVocab()
@@ -150,6 +150,6 @@ class VocabularyTrainer extends Component
 
     private function startLevel(): int
     {
-        return $this->level * 10 - 9;
+        return max(1, $this->level * 10 - 9);
     }
 }
