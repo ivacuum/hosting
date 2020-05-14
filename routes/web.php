@@ -160,6 +160,9 @@ Route::post('torrents/{torrent}/magnet', [Controllers\Torrents::class, 'magnet']
 
 Route::get('trips/{trip}', [Controllers\Trips::class, 'show']);
 
+Route::get('up', [Controllers\UploadController::class, 'index']);
+Route::post('up', [Controllers\UploadController::class, 'store']);
+
 Route::get('users', [Controllers\Users::class, 'index']);
 Route::get('users/{id}', [Controllers\Users::class, 'show']);
 
