@@ -8,6 +8,7 @@ class UploadsPruner extends Seeder
     {
         $this->pruneAvatars();
         $this->pruneGallery();
+        $this->pruneTemp();
     }
 
     private function pruneAvatars()
@@ -24,5 +25,16 @@ class UploadsPruner extends Seeder
         foreach ($storage->allDirectories() as $dir) {
             $storage->deleteDirectory($dir);
         }
+    }
+
+    private function pruneTemp()
+    {
+        $storage = \Storage::disk('temp');
+
+        $files = collect($storage->allFiles())
+            ->filter(fn ($file) => $file !== '.gitignore')
+            ->all();
+
+        $storage->delete($files);
     }
 }
