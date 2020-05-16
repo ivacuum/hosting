@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'home.index' => 'Personal website of Sergey Pankov also known as vacuum. Useful resources and notes.',
+    'home' => 'Personal website of Sergey Pankov also known as vacuum. Useful resources and notes.',
 
     'japanese-hiragana-katakana.index' => 'Learn Japanese syllabaries online column by column. We will make you recognize and type symbols fast.',
 
