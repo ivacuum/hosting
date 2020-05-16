@@ -4,40 +4,42 @@
 @section('content')
 <div class="flex">
   <aside class="hidden lg:block flex-shrink-0 antialiased torrent-categories w-56">
-    <nav>
-      @foreach ($tree as $id => $category)
-        <h4 class="{{ $loop->first ? '' : 'mt-6' }} whitespace-no-wrap">
-          @if (!empty($categoryId) && $id == $categoryId)
-            <mark>{{ $category['title'] }}</mark>
-          @else
-            <a class="visited" href="{{ path([$controller, 'index'], ['category_id' => $id]) }}">{{ $category['title'] }}</a>
+    <div class="lg:sticky lg:top-4">
+      <nav>
+        @foreach ($tree as $id => $category)
+          <h4 class="{{ $loop->first ? '' : 'mt-6' }} whitespace-no-wrap">
+            @if (!empty($categoryId) && $id == $categoryId)
+              <mark>{{ $category['title'] }}</mark>
+            @else
+              <a class="visited" href="{{ path([$controller, 'index'], ['category_id' => $id]) }}">{{ $category['title'] }}</a>
+            @endif
+          </h4>
+          @if (!empty($category['children']))
+            @foreach ($category['children'] as $id => $child)
+              @continue (empty($stats[$id]))
+              <div class="whitespace-no-wrap">
+                @if (!empty($categoryId) && $id == $categoryId)
+                  <mark>{{ $child['title'] }}</mark>
+                @else
+                  <a
+                    class="visited"
+                    href="{{ path([App\Http\Controllers\Torrents::class, 'index'], ['category_id' => $id]) }}"
+                  >{{ $child['title'] }}</a>
+                @endif
+                <span class="text-muted text-xs">{{ $stats[$id] }}</span>
+              </div>
+            @endforeach
           @endif
-        </h4>
-        @if (!empty($category['children']))
-          @foreach ($category['children'] as $id => $child)
-            @continue (empty($stats[$id]))
-            <div class="whitespace-no-wrap">
-              @if (!empty($categoryId) && $id == $categoryId)
-                <mark>{{ $child['title'] }}</mark>
-              @else
-                <a
-                  class="visited"
-                  href="{{ path([App\Http\Controllers\Torrents::class, 'index'], ['category_id' => $id]) }}"
-                >{{ $child['title'] }}</a>
-              @endif
-              <span class="text-muted text-xs">{{ $stats[$id] }}</span>
-            </div>
-          @endforeach
-        @endif
-      @endforeach
-    </nav>
-    @guest
-      @ru
-        <div class="mt-6 mr-6 p-2 text-xs text-teal-800 bg-teal-200 bg-opacity-50 border border-teal-200 rounded">
-          <a class="link" href="{{ path([App\Http\Controllers\Auth\SignIn::class, 'index'], ['goto' => path([App\Http\Controllers\Torrents::class, 'index'])]) }}">Пользователям</a> доступны чат и добавление раздач
-        </div>
-      @endru
-    @endguest
+        @endforeach
+      </nav>
+      @guest
+        @ru
+          <div class="mt-6 mr-6 p-2 text-xs text-teal-800 bg-teal-200 bg-opacity-50 border border-teal-200 rounded">
+            <a class="link" href="{{ path([App\Http\Controllers\Auth\SignIn::class, 'index'], ['goto' => path([App\Http\Controllers\Torrents::class, 'index'])]) }}">Пользователям</a> доступны чат и добавление раздач
+          </div>
+        @endru
+      @endguest
+    </div>
   </aside>
   <div class="flex-grow" v-cloak>
     @if (Auth::check() && empty(request()->query()))

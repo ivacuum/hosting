@@ -6,7 +6,7 @@
   </div>
   @isset ($info)
   <div>
-    <div class="sm:sticky top-4">
+    <div class="sm:sticky sm:top-4">
       <p>Материалы:</p>
       {{ $info }}
     </div>
