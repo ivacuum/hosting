@@ -6,8 +6,10 @@
   </div>
   @isset ($info)
   <div>
-    <p>Материалы:</p>
-    {{ $info }}
+    <div class="sm:sticky top-4">
+      <p>Материалы:</p>
+      {{ $info }}
+    </div>
   </div>
   @endisset
 </div>

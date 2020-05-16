@@ -1,4 +1,4 @@
-@extends('life.base', [
+@extends('korean.base', [
   'noLanguageSelector' => true,
 ])
 
