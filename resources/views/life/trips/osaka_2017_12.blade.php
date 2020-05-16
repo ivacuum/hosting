@@ -327,7 +327,7 @@
 @ru
   <p>Монорельс в аэропорт Итами, обслуживающий только перелеты внутри страны.</p>
 @endru
-<youtube title="Osaka Monorail to Itami Airport, December 2017" v="MnUuylfjw7c"></youtube>
+<livewire:youtube title="Osaka Monorail to Itami Airport, December 2017" v="MnUuylfjw7c"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_5152.jpg'])
 
 @ru

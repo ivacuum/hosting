@@ -37,5 +37,5 @@
 @ru
   <p>Видеозапись выступления.</p>
 @endru
-<youtube title="Dream Theater 2015, Moscow, Russia" v="w0ZYxUeKsu8"></youtube>
+<livewire:youtube title="Dream Theater 2015, Moscow, Russia" v="w0ZYxUeKsu8"/>
 @endsection

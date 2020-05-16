@@ -59,5 +59,5 @@
 @en
   <p>Short footage from the show.</p>
 @endru
-<youtube title="Steve Vai 2014, Kaluga, Russia" v="OkpMqrPtY7M"></youtube>
+<livewire:youtube title="Steve Vai 2014, Kaluga, Russia" v="OkpMqrPtY7M"/>
 @endsection

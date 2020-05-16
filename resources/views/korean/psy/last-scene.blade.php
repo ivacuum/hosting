@@ -3,9 +3,9 @@
 @section('content')
 <x-korean-cyrillization>
   <x-slot name="info">
-    <youtube title="마지막 장면 (Last Scene) ft. Lee Sungkyoung" v="RSkbZ5q1jhc"></youtube>
-    <youtube title="181223 PSY (싸이) — Last Scene (마지막 장면), All Night Stand (올나잇스탠드), Live 2018-12-23" v="z1q6Lgi2Bxo"></youtube>
-    <youtube title="191222 PSY (싸이) — Last Scene (마지막 장면), All Night Stand (올나잇스탠드), Live 2019-12-22" v="DMP3nPT8v6E"></youtube>
+    <livewire:youtube title="마지막 장면 (Last Scene) ft. Lee Sungkyoung" v="RSkbZ5q1jhc"/>
+    <livewire:youtube title="181223 PSY (싸이) — Last Scene (마지막 장면), All Night Stand (올나잇스탠드), Live 2018-12-23" v="z1q6Lgi2Bxo"/>
+    <livewire:youtube title="191222 PSY (싸이) — Last Scene (마지막 장면), All Night Stand (올나잇스탠드), Live 2019-12-22" v="DMP3nPT8v6E"/>
   </x-slot>
 
   너를 위해 부르는 내 마지막 노래

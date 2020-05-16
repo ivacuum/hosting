@@ -36,7 +36,7 @@
 @en
   <p>What it was like to be in the fan-zone:</p>
 @endru
-<youtube title="King Nothing + Disposable Heroes" v="WkVGeBGM5yc"></youtube>
+<livewire:youtube title="King Nothing + Disposable Heroes" v="WkVGeBGM5yc"/>
 
 @ru
   <p>Вообще у <a class="link" href="https://www.youtube.com/channel/UCGp2uNPZCeUTH1BynWSnSUQ/search?query=metallica+2015">этого товарища</a> отличные атмосферные видео вышли. У <a class="link" href="https://www.youtube.com/watch?v=EmCVvp3KbjQ">Sad But True</a>, например, крутое начало — прямо как в 2008 году.</p>
@@ -49,5 +49,5 @@
 @ru
   <p>Видеозапись концерта.</p>
 @endru
-<youtube title="Metallica 2015, St. Petersburg, Russia" v="-VQMs8zQRj8"></youtube>
+<livewire:youtube title="Metallica 2015, St. Petersburg, Russia" v="-VQMs8zQRj8"/>
 @endsection

@@ -3,7 +3,7 @@
 @section('content')
 <x-korean-cyrillization>
   <x-slot name="info">
-    <youtube title="최호섭 - 세월이 가면 (1988年)" v="lN_GJnQP03Y"></youtube>
+    <livewire:youtube title="최호섭 - 세월이 가면 (1988年)" v="lN_GJnQP03Y"/>
   </x-slot>
 
   그대 나를 위해 웃음을 보여도

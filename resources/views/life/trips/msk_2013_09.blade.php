@@ -42,15 +42,15 @@
 
 @ru
   <p>В определенный момент у переводчика возникли трудности с объяснением сложных оборотов речи Охлобыстина, это можно увидеть в видео ниже.</p>
-  <youtube title="Презентация" v="FP28g9HijzQ"></youtube>
+  <livewire:youtube title="Презентация" v="FP28g9HijzQ"/>
 @en
   <p>It was difficult for the translator to explain host's question to the band's members at some point. It can be seen in the video below.</p>
-  <youtube title="Presentation" v="FP28g9HijzQ"></youtube>
+  <livewire:youtube title="Presentation" v="FP28g9HijzQ"/>
 @endru
 
 @ru
-  <youtube title="Песня One из фильма" v="tbFZO1V5hrE"></youtube>
+  <livewire:youtube title="Песня One из фильма" v="tbFZO1V5hrE"/>
 @en
-  <youtube title="Song 'One' from the movie" v="tbFZO1V5hrE"></youtube>
+  <livewire:youtube title="Song 'One' from the movie" v="tbFZO1V5hrE"/>
 @endru
 @endsection

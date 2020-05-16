@@ -38,5 +38,5 @@
 @en
   <p>Video of the show.</p>
 @endru
-<youtube title="Oomph 2018, Moscow, Russia" v="Nv-LLFJYvOI"></youtube>
+<livewire:youtube title="Oomph 2018, Moscow, Russia" v="Nv-LLFJYvOI"/>
 @endsection

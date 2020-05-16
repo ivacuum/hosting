@@ -40,7 +40,7 @@
 @ru
   <p>На видео можно оценить звук. Классно толпа шуметь начинает. Может показаться, что звук дерьмово записался, но нет — звук именно такой и был на концерте. Соло-гитару совершенно не было слышно. Отчетливее всего был голос, но все равно желательно было знать тексты песен.</p>
 @endru
-<youtube title="Metallica as heard outside of Luzhniki stadium, Moscow, July 2019" v="E-qYcJSnMBE"></youtube>
+<livewire:youtube title="Metallica as heard outside of Luzhniki stadium, Moscow, July 2019" v="E-qYcJSnMBE"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_4570.jpg'])
 
 @ru
@@ -123,16 +123,16 @@
 @en
   <p>Official videos.</p>
 @endru
-<youtube title="Metallica: Rob & Kirk's Doodle (Moscow, Russia - July 21, 2019)" v="WD8R781c98Y"></youtube>
-<youtube title="Metallica: Nothing Else Matters (Moscow, Russia - July 21, 2019)" v="OMguFafuqrg"></youtube>
-<youtube title="Metallica: Sad But True (Moscow, Russia - July 21, 2019)" v="xROxlIu__Fs"></youtube>
-<youtube title="Metallica: Harvester of Sorrow (Moscow, Russia - July 21, 2019)" v="NAEeK-OM7Mc"></youtube>
+<livewire:youtube title="Metallica: Rob & Kirk's Doodle (Moscow, Russia - July 21, 2019)" v="WD8R781c98Y"/>
+<livewire:youtube title="Metallica: Nothing Else Matters (Moscow, Russia - July 21, 2019)" v="OMguFafuqrg"/>
+<livewire:youtube title="Metallica: Sad But True (Moscow, Russia - July 21, 2019)" v="xROxlIu__Fs"/>
+<livewire:youtube title="Metallica: Harvester of Sorrow (Moscow, Russia - July 21, 2019)" v="NAEeK-OM7Mc"/>
 
 @ru
   <p>Неофициальные видео, зато полные.</p>
 @en
   <p>Unofficial full videos.</p>
 @endru
-<youtube title="Metallica 2019, Moscow, Russia, Ver. 1" v="SyYpJyHZkN0"></youtube>
-<youtube title="Metallica 2019, Moscow, Russia, Ver. 2" v="CdnVl01ofzc"></youtube>
+<livewire:youtube title="Metallica 2019, Moscow, Russia, Ver. 1" v="SyYpJyHZkN0"/>
+<livewire:youtube title="Metallica 2019, Moscow, Russia, Ver. 2" v="CdnVl01ofzc"/>
 @endsection

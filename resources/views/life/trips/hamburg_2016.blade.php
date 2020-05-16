@@ -65,7 +65,7 @@
 @en
   <p>Park in the living area.</p>
 @endru
-<youtube title="Hamburg street, July 2016" v="pUyNgQVl_H0"></youtube>
+<livewire:youtube title="Hamburg street, July 2016" v="pUyNgQVl_H0"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_0809.jpg'])
 
 @ru
@@ -91,7 +91,7 @@
 @en
   <p>One of the intersections on video.</p>
 @endru
-<youtube title="Hamburg street, July 2016" v="v6E6t12z0dU"></youtube>
+<livewire:youtube title="Hamburg street, July 2016" v="v6E6t12z0dU"/>
 
 @ru
   <p>Поезда.</p>

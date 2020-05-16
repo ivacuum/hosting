@@ -350,21 +350,21 @@
   <p>Напоследок несколько видео. Наслаждение смотреть 60 кадров в секунду.</p>
   <p>Как выглядит улица в центре.</p>
 @endru
-<youtube title="Barcelona street, May 2016" v="bh5oaJbD_z8"></youtube>
+<livewire:youtube title="Barcelona street, May 2016" v="bh5oaJbD_z8"/>
 
 @ru
   <p>Аттракцион #1 в Порте Авентура неподалеку от Барселоны.</p>
 @en
   <p>Attraction #1 in Port Aventura not so far away from Barcelona.</p>
 @endru
-<youtube title="Port Aventura boats, June 2016" v="DqKHyp8IWyc"></youtube>
+<livewire:youtube title="Port Aventura boats, June 2016" v="DqKHyp8IWyc"/>
 
 @ru
   <p>Аттракцион #2.</p>
 @en
   <p>Attraction #2.</p>
 @endru
-<youtube title="Port Aventura splash, June 2016" v="UAXCpzBtnYM"></youtube>
+<livewire:youtube title="Port Aventura splash, June 2016" v="UAXCpzBtnYM"/>
 
 @ru
   <p>Видишь сову? Нет? А она есть.</p>

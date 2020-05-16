@@ -3,8 +3,8 @@
 @section('content')
 <x-korean-cyrillization>
   <x-slot name="info">
-    <youtube title="PSY - DADDY(feat. CL of 2NE1) M/V" v="FrG4TEcSuRg"></youtube>
-    <youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="2269"></youtube>
+    <livewire:youtube title="PSY - DADDY(feat. CL of 2NE1) M/V" v="FrG4TEcSuRg"/>
+    <livewire:youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="2269"/>
   </x-slot>
 
   I feel nice you look nice

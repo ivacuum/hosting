@@ -3,7 +3,7 @@
 @section('content')
 <x-korean-cyrillization>
   <x-slot name="info">
-    <youtube title="PSY - RIGHT NOW M/V" v="UmHdefsaL6I" start="42"></youtube>
+    <livewire:youtube title="PSY - RIGHT NOW M/V" v="UmHdefsaL6I" start="42"/>
   </x-slot>
 
   OH~매우 공격적인 음악 뭐야

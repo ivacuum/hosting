@@ -3,7 +3,7 @@
 @section('content')
 <x-korean-cyrillization>
   <x-slot name="info">
-    <youtube title="PSY - 나팔바지(NAPAL BAJI) M/V" v="tF27TNC_4pc"></youtube>
+    <livewire:youtube title="PSY - 나팔바지(NAPAL BAJI) M/V" v="tF27TNC_4pc"/>
   </x-slot>
 
   분위기 살려 어머 사람 살려

@@ -35,5 +35,5 @@
 @ru
   <p>Видеозапись выступления.</p>
 @endru
-<youtube title="Oomph 2013, Moscow, Russia" v="RsLFgW-wsP0"></youtube>
+<livewire:youtube title="Oomph 2013, Moscow, Russia" v="RsLFgW-wsP0"/>
 @endsection

@@ -204,7 +204,7 @@
 @en
   <p>Kamo river.</p>
 @endru
-<youtube title="Kyoto Bridge, April 2017" v="Bar7HkxaYuc"></youtube>
+<livewire:youtube title="Kyoto Bridge, April 2017" v="Bar7HkxaYuc"/>
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_5505.jpg',
   'IMG_5528.jpg',
@@ -347,7 +347,7 @@
 @en
   <p>Railway station.</p>
 @endru
-<youtube title="Kyoto Bridge, Railway Station, April 2017" v="_8gvomz8uxY"></youtube>
+<livewire:youtube title="Kyoto Bridge, Railway Station, April 2017" v="_8gvomz8uxY"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_5561.jpg'])
 
 @ru

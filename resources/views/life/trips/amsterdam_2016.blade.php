@@ -273,7 +273,7 @@
 @ru
   <p>Бушует ветер. Порой листва собирается в плотную стену выше человеческого роста.</p>
 @endru
-<youtube v="mg3SP3ZvT_g" title="Windy Amsterdam, November 2016"></youtube>
+<livewire:youtube v="mg3SP3ZvT_g" title="Windy Amsterdam, November 2016"/>
 
 @ru
   <p>Высокие — налево, низкие — направо.</p>
@@ -351,7 +351,7 @@
 @en
   <p>Hello there.</p>
 @endru
-<youtube v="wnITdKkzTvg" title="Amsterdam Park, November 2016"></youtube>
+<livewire:youtube v="wnITdKkzTvg" title="Amsterdam Park, November 2016"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_2559.jpg'])
 
 @ru

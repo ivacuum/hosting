@@ -258,7 +258,7 @@
 @ru
   <p>На пешеходных переходах велосипедисты не только не спешиваются, но и не особо снижают скорость. У них приоритет в движении, как и у пешеходов.</p>
 @endru
-<youtube title="Drivers Give a Way to Cyclists, Japan, April 2019" v="E3Lr-ImbL2M"></youtube>
+<livewire:youtube title="Drivers Give a Way to Cyclists, Japan, April 2019" v="E3Lr-ImbL2M"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_9525.jpg'])
 
 @ru

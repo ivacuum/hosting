@@ -106,8 +106,8 @@
 @ru
   <p>Парк. В нем попалась очень забавная пара черепашек, представленная на видео ниже.</p>
 @endru
-<youtube title="Milan Turtles #1, September 2017" v="_hgdMwIKPYc"></youtube>
-<youtube title="Milan Turtles #2, September 2017" v="HJYn1RL64sk"></youtube>
+<livewire:youtube title="Milan Turtles #1, September 2017" v="_hgdMwIKPYc"/>
+<livewire:youtube title="Milan Turtles #2, September 2017" v="HJYn1RL64sk"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_3892.jpg'])
 
 @ru

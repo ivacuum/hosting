@@ -3,7 +3,7 @@
 @section('content')
 <x-korean-cyrillization>
   <x-slot name="info">
-    <youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="397"></youtube>
+    <livewire:youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="397"/>
   </x-slot>
 
   나이 먹었으니

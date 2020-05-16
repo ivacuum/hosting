@@ -59,7 +59,7 @@
 @ru
   <p>Видео последней песни. Время примерно 4:40 утра, часть зала уже разошлась.</p>
 @endru
-<youtube title="191220 PSY (싸이) — It's Art (예술이야) Encore, All Night Stand (올나잇스탠드), Live 2019-12-20" v="mb8W1cExAP8"></youtube>
+<livewire:youtube title="191220 PSY (싸이) — It's Art (예술이야) Encore, All Night Stand (올나잇스탠드), Live 2019-12-20" v="mb8W1cExAP8"/>
 
 @component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2019.12.20.jpg'])
   <h5 class="mb-1">@ru Сет @en Set @endru 1</h5>

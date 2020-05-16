@@ -55,7 +55,7 @@
 ">7:43</a>, <a class="link" href="https://youtu.be/cJgK1T3uzBU?t=525
 ">8:45</a> и <a class="link" href="https://youtu.be/cJgK1T3uzBU?t=2830">47:10</a> — прыгает весь стадион, включая трибуны! Где еще такое увидишь?!</p>
 @endru
-<youtube title="PSY Live @ Korea Univ. IPSELENTI 2018" v="cJgK1T3uzBU"></youtube>
+<livewire:youtube title="PSY Live @ Korea Univ. IPSELENTI 2018" v="cJgK1T3uzBU"/>
 
 <h3 class="mt-12">@ru Анонс и покупка билета @en Announcement and ticket purchase @endru</h3>
 
@@ -453,50 +453,50 @@
 @ru
   <p>Впервые записал на концерте пачку собственных видосов. Было пофиг на качество и стабилизацию — самому было интересно какой выйдет результат. Вдруг на память что достойное останется. Плюс актуально было записывать спокойные и неизвестные песни, все равно подпевать не мог. Записал в итоге десять видосов, из которых выделил бы всего один: 29-й трек из сета, где на экране сам себя заснял. Но смотреть лучше всего равно ту версию, что по ссылке в сете, так как она с нормальной стабилизацией и лучшим качеством.</p>
 @endru
-<youtube title="Gangnam Style (강남스타일)" v="i5klAF-1Qww"></youtube>
+<livewire:youtube title="Gangnam Style (강남스타일)" v="i5klAF-1Qww"/>
 
 @ru
   <p>Движущаяся дополнительная сцена.</p>
 @en
   <p>Moving second scene.</p>
 @endru
-<youtube title="GENTLEMAN (젠틀맨)" v="Nvf6nYJDf5k"></youtube>
+<livewire:youtube title="GENTLEMAN (젠틀맨)" v="Nvf6nYJDf5k"/>
 
 @ru
   <p>Активные песни.</p>
 @en
   <p>Energetic songs.</p>
 @endru
-<youtube title="We are the one" v="V_BchYEfUAY"></youtube>
-<youtube title="Napal Baji (나발바지)" v="i9qPaUptbmc"></youtube>
-<youtube title="DADDY" v="FkYjKUTRhpA"></youtube>
-<youtube title="Rock Medley (락 메들리)" v="PMaZCOVfejc"></youtube>
+<livewire:youtube title="We are the one" v="V_BchYEfUAY"/>
+<livewire:youtube title="Napal Baji (나발바지)" v="i9qPaUptbmc"/>
+<livewire:youtube title="DADDY" v="FkYjKUTRhpA"/>
+<livewire:youtube title="Rock Medley (락 메들리)" v="PMaZCOVfejc"/>
 
 @ru
   <p>Рок-аранжировка хип-хоп песни.</p>
 @endru
-<youtube title="The End (끝)" v="wqoHYT6z2Uw"></youtube>
+<livewire:youtube title="The End (끝)" v="wqoHYT6z2Uw"/>
 
 @ru
   <p>Медляки.</p>
 @en
   <p>Slow songs.</p>
 @endru
-<youtube title="Place to Lean On / Refuge (기댈곳)" v="AAMGCLkW-yc"></youtube>
-<youtube title="Last Scene (마지막 장면)" v="z1q6Lgi2Bxo"></youtube>
-<youtube title="What would have been (어땠을까)" v="_aGExr31Zn4"></youtube>
+<livewire:youtube title="Place to Lean On / Refuge (기댈곳)" v="AAMGCLkW-yc"/>
+<livewire:youtube title="Last Scene (마지막 장면)" v="z1q6Lgi2Bxo"/>
+<livewire:youtube title="What would have been (어땠을까)" v="_aGExr31Zn4"/>
 
 @ru
   <p>Полет.</p>
 @en
   <p>Fly.</p>
 @endru
-<youtube title="Paradise (낙원)" v="H4lo6V-Bt60"></youtube>
+<livewire:youtube title="Paradise (낙원)" v="H4lo6V-Bt60"/>
 
 @ru
   <p>Полет завершился, а люди поют. Песня бородатых времен, плюс еще и кавер.</p>
 @endru
-<youtube title="Don't Worry (걱정말아요 그대)" v="OaXl57L2rTc"></youtube>
+<livewire:youtube title="Don't Worry (걱정말아요 그대)" v="OaXl57L2rTc"/>
 
 <h3 class="mt-12">@ru Бонусные материалы @en Bonus materials @endru</h3>
 @ru
@@ -504,7 +504,7 @@
     <li>Песня It's Art <a class="link" href="https://www.youtube.com/watch?v=1cKc1rkZwf8">в официальном клипе</a> из нарезки выступлений разных лет и <a class="link" href="https://www.youtube.com/watch?v=C3v2z75AizY&t=119">вживую</a>; на ней же <a class="link" href="https://www.youtube.com/watch?v=9g0WukEo0U0">трибуны ходят ходуном</a></li>
     <li>Полет на песне <a class="link" href="https://www.youtube.com/watch?v=DyW04ui2Sf0">Paradise</a>. Публике забавно предложили зачитать весьма быстрый рэп</li>
     <li>Продолжение полета на <a class="link" href="https://www.youtube.com/watch?v=hdAmWEemJmw">Don't Worry</a></li>
-    <li>Лазерное шоу в полной красе с трибун, <a class="link" href="https://youtu.be/dm0bi47c6cY?t=246">пример 1</a>, <a class="link" href="https://youtu.be/rC6ss1D2ogU?t=257">пример 2</a></li>
+    <li>Лазерное шоу в полной красе с трибун: <a class="link" href="https://youtu.be/dm0bi47c6cY?t=246">пример 1</a>, <a class="link" href="https://youtu.be/rC6ss1D2ogU?t=257">пример 2</a></li>
   </ul>
 @endru
 @endsection

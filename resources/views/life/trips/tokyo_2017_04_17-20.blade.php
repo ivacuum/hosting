@@ -282,7 +282,7 @@
 @en
   <p>An interesting thing to lift the weights up the stairs.</p>
 @endru
-<youtube title="Tokyo Stairs Helper, April 2017" v="m0wfg_86-vM"></youtube>
+<livewire:youtube title="Tokyo Stairs Helper, April 2017" v="m0wfg_86-vM"/>
 
 @ru
   <p>Реклама выставки Марвел.</p>
@@ -320,8 +320,8 @@
 @en
   <p>Sceneries as seen while cycling. <a class="link" href="https://www.endomondo.com/users/6097438/workouts/908025569">Track of the ride</a>. The most pleasant thing after Europe is lack of dirty graffiti on buildings.</p>
 @endru
-<youtube title="Tokyo Cycling, April 2017" v="j4kscRTpkr0"></youtube>
-<youtube title="Tokyo Cycling 2, April 2017" v="M-Ar1Wc0lxg"></youtube>
+<livewire:youtube title="Tokyo Cycling, April 2017" v="j4kscRTpkr0"/>
+<livewire:youtube title="Tokyo Cycling 2, April 2017" v="M-Ar1Wc0lxg"/>
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8523.jpg',
   'IMG_8524.jpg',
@@ -371,7 +371,7 @@
 @en
   <p>At some point, two traffic guards have appeared and closed the sidewalk and part of the road for one minute to make sure the truck can get to the construction site.</p>
 @endru
-<youtube title="Tokyo Traffic Guard, April 2017" v="S0mBz_2F8B8"></youtube>
+<livewire:youtube title="Tokyo Traffic Guard, April 2017" v="S0mBz_2F8B8"/>
 
 @ru
   <p>Жилой район.</p>
@@ -399,7 +399,7 @@
 @en
   <p>Golf practice.</p>
 @endru
-<youtube title="Tokyo Golf Practice, April 2017" v="A4k0hIFcDd4"></youtube>
+<livewire:youtube title="Tokyo Golf Practice, April 2017" v="A4k0hIFcDd4"/>
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8556.jpg',
   'IMG_8570.jpg',
@@ -493,7 +493,7 @@
 @en
   <p>Really, who needs a footbridge? Very few people want to use it.</p>
 @endru
-<youtube title="Tokyo, Who Needs Footbridge, April 2017" v="m5y5PNHKwLQ"></youtube>
+<livewire:youtube title="Tokyo, Who Needs Footbridge, April 2017" v="m5y5PNHKwLQ"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_8653.jpg'])
 
 @ru
@@ -557,7 +557,7 @@
 @en
   <p>Tokyo in the evening.</p>
 @endru
-<youtube title="Tokyo Mori Tower Observation, April 2017" v="31PYr4ACvB0"></youtube>
+<livewire:youtube title="Tokyo Mori Tower Observation, April 2017" v="31PYr4ACvB0"/>
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_8669.jpg',
   'IMG_8670.jpg',

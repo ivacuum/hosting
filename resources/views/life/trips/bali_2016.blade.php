@@ -148,7 +148,7 @@
 @en
   <p>Sunset.</p>
 @endru
-<youtube v="2xUnV3yLl9Q" title="Bali Sea, December 2016"></youtube>
+<livewire:youtube v="2xUnV3yLl9Q" title="Bali Sea, December 2016"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_2796.jpg'])
 
 @ru
@@ -358,9 +358,9 @@
 @en
   <p>Bonus videos.</p>
 @endru
-<youtube v="dftzWN4at2Q" title="Bali Crabs, December 2016"></youtube>
-<youtube v="52QBBWT_yBc" title="Bali Fog, December 2016"></youtube>
-<youtube v="qS2dpzOIOSQ" title="Too hot for rain, December 2016"></youtube>
+<livewire:youtube v="dftzWN4at2Q" title="Bali Crabs, December 2016"/>
+<livewire:youtube v="52QBBWT_yBc" title="Bali Fog, December 2016"/>
+<livewire:youtube v="qS2dpzOIOSQ" title="Too hot for rain, December 2016"/>
 
 @ru
   <p>Еще бонус. Пограничник по прибытии на Бали смотрит иммиграционную карту:</p>

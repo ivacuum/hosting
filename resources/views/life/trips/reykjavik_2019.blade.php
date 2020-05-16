@@ -425,6 +425,6 @@
 @ru
   <p>Самолет прилетел. Подают рукав.</p>
 @endru
-<youtube title="Plane is getting ready to unboard its passengers, Iceland, June 2019" v="kMRNnErZULY"></youtube>
+<livewire:youtube title="Plane is getting ready to unboard its passengers, Iceland, June 2019" v="kMRNnErZULY"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_4192.jpg'])
 @endsection

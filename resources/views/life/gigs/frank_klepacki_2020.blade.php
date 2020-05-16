@@ -38,5 +38,5 @@
 @en
   <p>Official video of the MAGFest 2019 show.</p>
 @endru
-<youtube title="Frank Klepacki & The Tiberian Sons LIVE: OFFICIAL Multi-cam Full Show from MAGFest 2019" v="i-ArbE0bEQQ"></youtube>
+<livewire:youtube title="Frank Klepacki & The Tiberian Sons LIVE: OFFICIAL Multi-cam Full Show from MAGFest 2019" v="i-ArbE0bEQQ"/>
 @endsection

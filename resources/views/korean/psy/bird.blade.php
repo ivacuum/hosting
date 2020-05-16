@@ -3,8 +3,8 @@
 @section('content')
 <x-korean-cyrillization>
   <x-slot name="info">
-    <youtube title="PSY - 새(BIRD) M/V" v="2pB0zurYJAc"></youtube>
-    <youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="1293"></youtube>
+    <livewire:youtube title="PSY - 새(BIRD) M/V" v="2pB0zurYJAc"/>
+    <livewire:youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="1293"/>
   </x-slot>
 
   당신 너무나 이쁜 당신 항상 난 당신을 향해 행진

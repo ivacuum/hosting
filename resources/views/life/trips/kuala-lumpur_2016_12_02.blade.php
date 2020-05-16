@@ -145,7 +145,7 @@
 @en
   <p>Streets.</p>
 @endru
-<youtube v="a4ehGZmRAcg" title="Kuala Lumpur street, December 2016"></youtube>
+<livewire:youtube v="a4ehGZmRAcg" title="Kuala Lumpur street, December 2016"/>
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2632.jpg',
   'IMG_2635.jpg',

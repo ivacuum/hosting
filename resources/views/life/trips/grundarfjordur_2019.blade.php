@@ -291,7 +291,7 @@
 @ru
   <p>Остановка в деревне Арнарстапи на ужин.</p>
 @endru
-<youtube title="Arnarstapi, Iceland, June 2019" v="Msqf2ckMHhI"></youtube>
+<livewire:youtube title="Arnarstapi, Iceland, June 2019" v="Msqf2ckMHhI"/>
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3835.jpg',
   'IMG_3776.jpg',

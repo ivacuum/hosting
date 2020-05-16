@@ -353,7 +353,7 @@
 @ru
   <p>Пассажиропоток на центральной станции Нагои.</p>
 @endru
-<youtube title="Nagoya Station, Japan, May 2019" v="AOq7cGttWDU"></youtube>
+<livewire:youtube title="Nagoya Station, Japan, May 2019" v="AOq7cGttWDU"/>
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_0191.jpg',
   'IMG_0192.jpg',

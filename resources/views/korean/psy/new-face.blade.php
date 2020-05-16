@@ -3,8 +3,8 @@
 @section('content')
 <x-korean-cyrillization>
   <x-slot name="info">
-    <youtube title="PSY - ‘New Face’ M/V" v="OwJPPaEyqhI"></youtube>
-    <youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="1027"></youtube>
+    <livewire:youtube title="PSY - ‘New Face’ M/V" v="OwJPPaEyqhI"/>
+    <livewire:youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="1027"/>
   </x-slot>
 
   어딜 쳐다보는 거냐고

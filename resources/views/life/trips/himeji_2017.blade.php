@@ -6,7 +6,7 @@
 @en
   <p>The best way to get around Japan is by shinkansen—high speed train. If you don't want to be out of money in no time, you should consider buying an unlimited travel card for a fixed period of 7, 14 or 21 consecutive days. One high-distance round-trip most likely would be cheaper with it than regular ticket.</p>
 @endru
-<youtube title="Shinkansen Arrival, April 2017" v="yeWyf65NxpI"></youtube>
+<livewire:youtube title="Shinkansen Arrival, April 2017" v="yeWyf65NxpI"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_4102.jpg'])
 
 @ru

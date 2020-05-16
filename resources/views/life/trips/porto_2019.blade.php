@@ -127,7 +127,7 @@
 @ru
   <p>Чайки делят территорию.</p>
 @endru
-<youtube title="Seagulls in Park of Porto, Portugal, May 2019" v="hCfTs96qX_c"></youtube>
+<livewire:youtube title="Seagulls in Park of Porto, Portugal, May 2019" v="hCfTs96qX_c"/>
 
 @ru
   <p>Думал, что хотя бы это знакомое слово правильно прочитаю с португальского, но нет.</p>

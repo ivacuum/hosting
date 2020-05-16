@@ -24,5 +24,5 @@
 @ru
   <p>Видеозапись выступления.</p>
 @endru
-<youtube title="Opeth 2017, Moscow, Russia" v="URhBcvRpt14"></youtube>
+<livewire:youtube title="Opeth 2017, Moscow, Russia" v="URhBcvRpt14"/>
 @endsection

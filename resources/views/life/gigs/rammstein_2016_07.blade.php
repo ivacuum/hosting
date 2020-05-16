@@ -73,5 +73,5 @@
 @en
   <p>Video of the show.</p>
 @endru
-<youtube title="Rammstein 2016, Waldbühne, Berlin, Germany" v="rTsskqnjaIw"></youtube>
+<livewire:youtube title="Rammstein 2016, Waldbühne, Berlin, Germany" v="rTsskqnjaIw"/>
 @endsection

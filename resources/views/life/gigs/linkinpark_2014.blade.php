@@ -47,6 +47,6 @@
 @ru
   <p>Видеозаписи с концерта:</p>
 @endru
-<youtube title="Linkin Park 2014, Moscow, Russia" v="rLB0aIGS0zE"></youtube>
-<youtube title="Linkin Park — Faint (Pillows Flashmob)" v="NdIBg8zHRFI"></youtube>
+<livewire:youtube title="Linkin Park 2014, Moscow, Russia" v="rLB0aIGS0zE"/>
+<livewire:youtube title="Linkin Park — Faint (Pillows Flashmob)" v="NdIBg8zHRFI"/>
 @endsection

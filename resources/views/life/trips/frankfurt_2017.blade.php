@@ -8,8 +8,8 @@
 @ru
   <p>Дорога без ограничений скорости — это когда едешь 170 км/с, а тебя резво опережают слева.</p>
 @endru
-<youtube title="Germany Autobahn #3, July 2017" v="5sGo7R2KHYo"></youtube>
-<youtube title="Germany Autobahn #4, July 2017" v="4EwN_xXV9oI"></youtube>
+<livewire:youtube title="Germany Autobahn #3, July 2017" v="5sGo7R2KHYo"/>
+<livewire:youtube title="Germany Autobahn #4, July 2017" v="4EwN_xXV9oI"/>
 
 @ru
   <p>По необъяснимой причине Гугл повел из Дрездена во Франкфурт по пробкам в деревнях на юго-западе, а не по широкому автобану.</p>
@@ -84,7 +84,7 @@
 @ru
   <p>Автоматическая чистка крышки унитаза в туалете на заправке.</p>
 @endru
-<youtube title="Germany Gas Station Toilet, July 2017" v="0BZmyDOdbcQ"></youtube>
+<livewire:youtube title="Germany Gas Station Toilet, July 2017" v="0BZmyDOdbcQ"/>
 
 @ru
   <p>Неподалеку от заправки место для отдыха. Особенно популярно у дальнобойщиков.</p>

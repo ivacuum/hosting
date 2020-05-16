@@ -43,5 +43,5 @@
 @en
   <p>Fan-zone experience.</p>
 @endru
-<youtube title="Linkin Park 2015, Moscow, Russia" v="x8i-KQowLZA"></youtube>
+<livewire:youtube title="Linkin Park 2015, Moscow, Russia" v="x8i-KQowLZA"/>
 @endsection

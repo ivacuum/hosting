@@ -50,7 +50,7 @@
 @ru
   <p>На противоположной стороне бассейн с водой попрохладнее. В самом его центре джакузи с сеансами по расписанию, вокруг джакузи водоворот.</p>
 @endru
-<youtube title="Circular Pool in Budapest, Hungary, June 2019" v="Tg9Z3vEMnc0"></youtube>
+<livewire:youtube title="Circular Pool in Budapest, Hungary, June 2019" v="Tg9Z3vEMnc0"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_2941.jpg'])
 
 @ru

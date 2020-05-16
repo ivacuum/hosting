@@ -252,7 +252,7 @@
 @en
   <p>Video of the show.</p>
 @endru
-<youtube title="Rammstein 2019, Saint Petersburg, Russia" v="5XRMVf9YyKI"></youtube>
+<livewire:youtube title="Rammstein 2019, Saint Petersburg, Russia" v="5XRMVf9YyKI"/>
 
 <h3 class="mt-12">@ru Бонусные материалы @en Bonus materials @endru</h3>
 <ul>

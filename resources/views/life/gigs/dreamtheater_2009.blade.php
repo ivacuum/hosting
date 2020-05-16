@@ -31,5 +31,5 @@
 @ru
   <p>Видеозапись выступления.</p>
 @endru
-<youtube title="Dream Theater 2009, Moscow, Russia" v="eDqIfvtmalM"></youtube>
+<livewire:youtube title="Dream Theater 2009, Moscow, Russia" v="eDqIfvtmalM"/>
 @endsection

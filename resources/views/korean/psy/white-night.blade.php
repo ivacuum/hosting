@@ -3,7 +3,7 @@
 @section('content')
 <x-korean-cyrillization>
   <x-slot name="info">
-    <youtube title="PSY x Heize - '우리의 밤은 하얗다' (White Night) Official Audio" v="MllMdzj3uvo"></youtube>
+    <livewire:youtube title="PSY x Heize - '우리의 밤은 하얗다' (White Night) Official Audio" v="MllMdzj3uvo"/>
   </x-slot>
 
   우리의 하얀 밤이 가끔 정말 꿈인 것 같아서

@@ -32,7 +32,7 @@
 @en
   <p>Metro has only two lines. It operates 24/7, thanks to its driverless nature. Lights interestingly interchange with emergency exit signs in the video below.</p>
 @endru
-<youtube title="Copenhagen Metro Front Row View" v="ssEFdyfSJGs"></youtube>
+<livewire:youtube title="Copenhagen Metro Front Row View" v="ssEFdyfSJGs"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_0588.jpg'])
 
 @ru
@@ -1078,7 +1078,7 @@
 @en
   <p>There is a nice place for a walk and sports near this station. Lucky for me it was going to sunset.</p>
 @endru
-<youtube title="Copenhagen Øresund Embankment" v="wwU1r74TJw8"></youtube>
+<livewire:youtube title="Copenhagen Øresund Embankment" v="wwU1r74TJw8"/>
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_1023.jpg',
   'IMG_1026.jpg',

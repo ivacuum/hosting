@@ -99,7 +99,7 @@
 @ru
   <p>Сразу приходит впечатление, что отправился в поход.</p>
 @endru
-<youtube title="Helsinki Railroad, October 2016" v="9m8GqENFUnA"></youtube>
+<livewire:youtube title="Helsinki Railroad, October 2016" v="9m8GqENFUnA"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_1720.jpg'])
 
 @ru
@@ -142,7 +142,7 @@
 @ru
   <p>Живность в воде.</p>
 @endru
-<youtube title="Helsinki Park, October 2016" v="-HysOT4rKk4"></youtube>
+<livewire:youtube title="Helsinki Park, October 2016" v="-HysOT4rKk4"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_1761.jpg'])
 
 @ru
@@ -158,7 +158,7 @@
 @ru
   <p>Еще один мост — через железную дорогу.</p>
 @endru
-<youtube title="Helsinki Pedestrian Bridge, October 2016" v="4ZNVmOUhfNY"></youtube>
+<livewire:youtube title="Helsinki Pedestrian Bridge, October 2016" v="4ZNVmOUhfNY"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_1783.jpg'])
 
 @ru

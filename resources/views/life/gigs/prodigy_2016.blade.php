@@ -41,5 +41,5 @@
 @en
   <p>Video of the show. Saw back of my head on 54:12.</p>
 @endru
-<youtube title="The Prodigy 2016, Moscow, Russia" v="HND1SuZMseY"></youtube>
+<livewire:youtube title="The Prodigy 2016, Moscow, Russia" v="HND1SuZMseY"/>
 @endsection

@@ -101,7 +101,7 @@
 @en
   <p>Video of the show.</p>
 @endru
-<youtube title="Rammstein 2019, Luzhniki Stadium, Moscow, Russia" v="hYFAxa5lDMo"></youtube>
+<livewire:youtube title="Rammstein 2019, Luzhniki Stadium, Moscow, Russia" v="hYFAxa5lDMo"/>
 
 <h3 class="mt-12">@ru Бонусные материалы @en Bonus materials @endru</h3>
 <ul>

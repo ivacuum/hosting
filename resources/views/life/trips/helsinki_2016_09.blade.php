@@ -285,7 +285,7 @@
 @ru
   <p>Вид с вышеупомянутого моста.</p>
 @endru
-<youtube title="Helsinki Bridge, September 2016" v="R1YN5sdsq_c"></youtube>
+<livewire:youtube title="Helsinki Bridge, September 2016" v="R1YN5sdsq_c"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_1477.jpg'])
 
 @ru

@@ -157,7 +157,7 @@
 @ru
   <p>В котором обитают утки и лебеди.</p>
 @endru
-<youtube title="Düsseldorf park, July 2016" v="9zR1JGJTLJ4"></youtube>
+<livewire:youtube title="Düsseldorf park, July 2016" v="9zR1JGJTLJ4"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_1034.jpg'])
 
 @ru

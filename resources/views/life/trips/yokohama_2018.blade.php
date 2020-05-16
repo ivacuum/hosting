@@ -136,7 +136,7 @@
 @ru
   <p>Плоский водопад, около которого купаются вороны.</p>
 @endru
-<youtube title="Yokohama Ravens, May 2018" v="3Q8x-YRPElg"></youtube>
+<livewire:youtube title="Yokohama Ravens, May 2018" v="3Q8x-YRPElg"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_0308.jpg'])
 
 @ru

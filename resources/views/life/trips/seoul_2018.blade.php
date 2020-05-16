@@ -645,7 +645,7 @@
 @ru
   <p>Вид из вагона метро. В режиме съемки HDR делается как минимум три снимка, которые потом склеиваются. Между снимками какая-то доля секунды да проходит — именно этим объясняется почему дорожный знак в окне виден не целиком.</p>
 @endru
-<youtube title="Seoul Metro Ride at Sunset, December 2018" v="tGlIHEesmWw"></youtube>
+<livewire:youtube title="Seoul Metro Ride at Sunset, December 2018" v="tGlIHEesmWw"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_6470.jpg'])
 
 @ru

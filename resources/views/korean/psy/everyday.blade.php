@@ -3,7 +3,7 @@
 @section('content')
 <x-korean-cyrillization>
   <x-slot name="info">
-    <youtube title="Summer Swag 2018" v="xqusJtwPC2k"></youtube>
+    <livewire:youtube title="Summer Swag 2018" v="xqusJtwPC2k"/>
   </x-slot>
 
   우리는 이미 오늘을 미리

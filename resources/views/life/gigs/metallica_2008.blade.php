@@ -40,6 +40,6 @@
 @ru
   <p>Видеозаписи концерта.</p>
 @endru
-<youtube title="Metallica 2008, Saint Petersburg, Russia" v="s3l5cyVLrTs"></youtube>
-<youtube title="Metallica — Nothing Else Matters" v="J1pyT7G5dhY"></youtube>
+<livewire:youtube title="Metallica 2008, Saint Petersburg, Russia" v="s3l5cyVLrTs"/>
+<livewire:youtube title="Metallica — Nothing Else Matters" v="J1pyT7G5dhY"/>
 @endsection

@@ -195,7 +195,7 @@
 @en
   <p>Pier.</p>
 @endru
-<youtube title="Helsinki Embankment, October 2016" v="JMtH89DsHEw"></youtube>
+<livewire:youtube title="Helsinki Embankment, October 2016" v="JMtH89DsHEw"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_2119.jpg'])
 
 @ru

@@ -331,7 +331,7 @@
 @en
   <p>Danube river.</p>
 @endru
-<youtube title="Budapest River, January 2017" v="N3IkMR5eurA"></youtube>
+<livewire:youtube title="Budapest River, January 2017" v="N3IkMR5eurA"/>
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3235.jpg',
   'IMG_3316.jpg',

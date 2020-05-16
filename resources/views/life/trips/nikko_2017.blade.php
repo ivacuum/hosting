@@ -13,7 +13,7 @@
 @en
   <p>Express from Matsumoto to Nagano.</p>
 @endru
-<youtube title="Nagano Train, April 2017" v="sp1NyMHw39Y"></youtube>
+<livewire:youtube title="Nagano Train, April 2017" v="sp1NyMHw39Y"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_7934.jpg'])
 
 @ru
@@ -277,7 +277,7 @@
 @en
   <p>Looks like I have a flair for finding interesting places while wandering. Sign on the way back said it's kind of an abyss.</p>
 @endru
-<youtube title="Nikko Abyss, April 2017" v="mNwzCvQDQ1w"></youtube>
+<livewire:youtube title="Nikko Abyss, April 2017" v="mNwzCvQDQ1w"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_8134.jpg'])
 
 @ru

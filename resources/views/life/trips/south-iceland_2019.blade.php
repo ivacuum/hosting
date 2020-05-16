@@ -254,7 +254,7 @@
 @ru
   <p>Ледяная лагуна. Льдины уплывают и таят.</p>
 @endru
-<youtube title="Glacier Lagoon Jökulsárlón, Iceland, June 2019" v="RPvey547YhY"></youtube>
+<livewire:youtube title="Glacier Lagoon Jökulsárlón, Iceland, June 2019" v="RPvey547YhY"/>
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_3300.jpg',
   'IMG_3301.jpg',
@@ -437,7 +437,7 @@
 @ru
   <p>Отчетливо видны зашедшие за водопад люди в разноцветных дождевиках.</p>
 @endru
-<youtube title="Seljalandsfoss Waterfall, Iceland, June 2019" v="-L0mlFzaNdE"></youtube>
+<livewire:youtube title="Seljalandsfoss Waterfall, Iceland, June 2019" v="-L0mlFzaNdE"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_3496.jpg'])
 
 @ru

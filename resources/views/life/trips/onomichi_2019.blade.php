@@ -193,6 +193,6 @@
 @ru
   <p>Платформа. На этой станции останавливаются не все шинкансены, поэтому впервые с 2017 года удалось заснять один из экспрессов, проносящихся мимо за считанные секунды.</p>
 @endru
-<youtube title="Shinkansen Passing Mihara Station, Japan, April 2019" v="gtTEneP041c"></youtube>
+<livewire:youtube title="Shinkansen Passing Mihara Station, Japan, April 2019" v="gtTEneP041c"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_9703.jpg'])
 @endsection

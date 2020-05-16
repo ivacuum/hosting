@@ -21,7 +21,7 @@
 @en
   <p>Let's go.</p>
 @endru
-<youtube title="Straight Shinkansen Track, April 2019" v="P3_fJmaKEKg"></youtube>
+<livewire:youtube title="Straight Shinkansen Track, April 2019" v="P3_fJmaKEKg"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_9110.jpg'])
 
 @ru

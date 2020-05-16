@@ -35,5 +35,5 @@
 @ru
   <p>Видеозапись концерта.</p>
 @endru
-<youtube title="Rammstein 2010, St. Petersburg, Russia" v="KbUoLxHqM8M"></youtube>
+<livewire:youtube title="Rammstein 2010, St. Petersburg, Russia" v="KbUoLxHqM8M"/>
 @endsection

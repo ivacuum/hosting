@@ -6,7 +6,7 @@
 @en
   <p>On the way from Takayama to Matsumoto by bus.</p>
 @endru
-<youtube title="Matsumoto Bus, April 2017" v="neekGArH7pU"></youtube>
+<livewire:youtube title="Matsumoto Bus, April 2017" v="neekGArH7pU"/>
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_7744.jpg',
   'IMG_7746.jpg',
@@ -31,7 +31,7 @@
 @en
   <p>There are many tunnels on the way. They make your ears really feel the pressure difference while in any fast train—not only shinkansen.</p>
 @endru
-<youtube title="Matsumoto Bus in Tunnel, April 2017" v="87rCmd8QWuk"></youtube>
+<livewire:youtube title="Matsumoto Bus in Tunnel, April 2017" v="87rCmd8QWuk"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_7793.jpg'])
 
 @ru

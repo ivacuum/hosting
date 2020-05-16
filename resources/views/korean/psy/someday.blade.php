@@ -3,7 +3,7 @@
 @section('content')
 <x-korean-cyrillization>
   <x-slot name="info">
-    <youtube title="Original" v="qoY_ilaIhx0"></youtube>
+    <livewire:youtube title="Original" v="qoY_ilaIhx0"/>
   </x-slot>
 
   젊은 날엔 젊음을 모르고

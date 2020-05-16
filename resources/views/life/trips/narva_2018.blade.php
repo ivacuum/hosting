@@ -40,7 +40,7 @@
 @en
   <p>Embankment.</p>
 @endru
-<youtube title="Narva Embankment, May 2018" v="KX8hLxL3D3U"></youtube>
+<livewire:youtube title="Narva Embankment, May 2018" v="KX8hLxL3D3U"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_4300.jpg'])
 
 @ru

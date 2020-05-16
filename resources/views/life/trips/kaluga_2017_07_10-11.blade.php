@@ -82,5 +82,5 @@
 @ru
   <p>Шоколад не выдержал парилки в салоне, поэтому превратился в жидкий.</p>
 @endru
-<youtube title="Hot Chocolate" v="ThNnFs0DG9g"></youtube>
+<livewire:youtube title="Hot Chocolate" v="ThNnFs0DG9g"/>
 @endsection

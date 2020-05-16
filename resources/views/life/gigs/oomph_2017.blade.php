@@ -57,5 +57,5 @@
 @ru
   <p>Видеозапись выступления.</p>
 @endru
-<youtube title="Oomph 2017, Moscow, Russia" v="Apm0ySyi7mA"></youtube>
+<livewire:youtube title="Oomph 2017, Moscow, Russia" v="Apm0ySyi7mA"/>
 @endsection

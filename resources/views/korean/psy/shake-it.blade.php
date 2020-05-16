@@ -3,8 +3,8 @@
 @section('content')
 <x-korean-cyrillization>
   <x-slot name="info">
-    <youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="2777"></youtube>
-    <youtube title="PSY - SHAKE IT (흔들어주세요) @ Seoul Plaza Live Concert" v="k7yGwXb77PA"></youtube>
+    <livewire:youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="2777"/>
+    <livewire:youtube title="PSY - SHAKE IT (흔들어주세요) @ Seoul Plaza Live Concert" v="k7yGwXb77PA"/>
   </x-slot>
 
   사랑하는사람떠나고

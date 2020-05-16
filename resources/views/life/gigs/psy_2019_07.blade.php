@@ -10,7 +10,7 @@
 @ru
   <p>Что из себя представляет водное шоу? Есть прекрасный клип, который появился прямо в день концерта. Четыре часа за четыре минуты — быстрее и нагляднее не объяснишь.</p>
 @endru
-<youtube title="Summer Swag Show" v="xqusJtwPC2k"></youtube>
+<livewire:youtube title="Summer Swag Show" v="xqusJtwPC2k"/>
 
 @ru
   <p>Типов билетов всего два: стоячие и сидячие. Стоимость стоячих мест поближе к сцене составляла <span class="whitespace-no-wrap">132&thinsp;000</span> корейских вон, подальше — за <span class="whitespace-no-wrap">121&thinsp;000</span> вон. Те же две цены для сидячих мест на трибунах по центру и по краям. Курс корейской воны относительно российского рубля с зимы упал на 15% — хорошая скидка вышла.</p>
@@ -151,13 +151,13 @@
 @ru
   <p>Чей-то влог о концерте в Сувоне. В нем краткая сводка о шоу.</p>
 @endru
-<youtube title="VLOG" v="n3_k7fc1MYw"></youtube>
+<livewire:youtube title="VLOG" v="n3_k7fc1MYw"/>
 
 @ru
   <p>Впервые в интернете нашлась полная видеозапись концерта. Еще и летнего. Ни вода, ни пять часов продолжительности не помешали оператору все запечатлеть. Правда, записал он последний концерта тура — в Тэджоне. Из Сувона сложно найти что-то нагляднее, чем упомянутый выше влог.</p>
 @endru
-<youtube title="PSY 2019 Summer Swag, Daejeon, Set 1, Set 2, Set 3" v="kAyvn15zdr8"></youtube>
-<youtube title="PSY 2019 Summer Swag, Daejeon, Encore 1, Encore 2" v="pdQViEcdl7c"></youtube>
+<livewire:youtube title="PSY 2019 Summer Swag, Daejeon, Set 1, Set 2, Set 3" v="kAyvn15zdr8"/>
+<livewire:youtube title="PSY 2019 Summer Swag, Daejeon, Encore 1, Encore 2" v="pdQViEcdl7c"/>
 
 <h3 class="mt-12">@ru Бонусные материалы @en Bonus materials @endru</h3>
 <ul>

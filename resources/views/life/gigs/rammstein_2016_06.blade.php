@@ -43,5 +43,5 @@
   <p>Звуки взрывов были крайне мощными и громкими. Уже и позабылось как было на прошлых концертах.</p>
   <p>Новый свет фантастический. Нужен ракурс видео по центру, чтобы всю задуманную красоту оценить.</p>
 @endru
-<youtube title="Rammstein 2016, Maxidrom, Moscow, Russia" v="ateEiEHKBWE"></youtube>
+<livewire:youtube title="Rammstein 2016, Maxidrom, Moscow, Russia" v="ateEiEHKBWE"/>
 @endsection

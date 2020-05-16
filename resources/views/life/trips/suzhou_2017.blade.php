@@ -73,7 +73,7 @@
 @ru
   <p>Университетский кампус. Реально по масштабам целый городок, еще и в центре Сучжоу расположен. В этом довольно тихом месте особенно заметно насколько бесшумны электроскутеры. Их можно разве что услышать по шуму соприкосновения колес с поверхностью при движении. Эти скутеры еще и чуть ли не дешевле велосипедов у нас на родине.</p>
 @endru
-<youtube title="Suzhou University Campus and Silent Electric Scooters, December 2017" v="Ehq197Q9rDQ"></youtube>
+<livewire:youtube title="Suzhou University Campus and Silent Electric Scooters, December 2017" v="Ehq197Q9rDQ"/>
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_4617.jpg',
   'IMG_4618.jpg',
@@ -201,7 +201,7 @@
 @ru
   <p>Перекресток. Ниже видео с перекрестка в другом районе Сучжоу, после просмотра которого невольно задаешься вопросом: «Как они там вообще выживают с таким движением?»</p>
 @endru
-<youtube title="Suzhou Chaotic Intersection, December 2017" v="nIMAnCFnI0Y"></youtube>
+<livewire:youtube title="Suzhou Chaotic Intersection, December 2017" v="nIMAnCFnI0Y"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_4693.jpg'])
 
 @ru

@@ -4,8 +4,8 @@
 @ru
   <p>Дорога в Роттердам в непогоду и на закате дня. Под фильм Залечь на дно в Брюгге, дабы сравнить увиденное.</p>
 @endru
-<youtube title="Rotterdam Road #1, July 2017" v="l0F0SjZL0LM"></youtube>
-<youtube title="Rotterdam Road #2, July 2017" v="iNxYdSwig6E"></youtube>
+<livewire:youtube title="Rotterdam Road #1, July 2017" v="l0F0SjZL0LM"/>
+<livewire:youtube title="Rotterdam Road #2, July 2017" v="iNxYdSwig6E"/>
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_2450.jpg',
   'IMG_2452.jpg',

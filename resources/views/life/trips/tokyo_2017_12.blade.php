@@ -248,7 +248,7 @@
 @ru
   <p>Хотя посмотреть от лица машиниста тоже классно, да.</p>
 @endru
-<youtube title="Tokyo Yamanote Line POV, December 2017" v="zGXFQlyyulo"></youtube>
+<livewire:youtube title="Tokyo Yamanote Line POV, December 2017" v="zGXFQlyyulo"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_5446.jpg'])
 
 @ru

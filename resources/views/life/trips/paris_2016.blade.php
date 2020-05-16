@@ -342,7 +342,7 @@
 @en
   <p>Park.</p>
 @endru
-<youtube title="Paris, Parc Clichy-Batignolles — Martin Luther King, September 2016" v="teU3i_W24R4"></youtube>
+<livewire:youtube title="Paris, Parc Clichy-Batignolles — Martin Luther King, September 2016" v="teU3i_W24R4"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_1655.jpg'])
 
 @ru
@@ -386,7 +386,7 @@
 @ru
   <p>Сена на прощание.</p>
 @endru
-<youtube title="Paris Sunset, September 2016" v="txS910rrMQs"></youtube>
+<livewire:youtube title="Paris Sunset, September 2016" v="txS910rrMQs"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_1594.jpg'])
 
 @ru

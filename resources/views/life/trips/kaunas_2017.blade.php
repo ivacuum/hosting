@@ -10,7 +10,7 @@
 @en
   <p>Landing in Kaunas airport.</p>
 @endru
-<youtube title="Landing in Kaunas" v="cC1J1EKUHDo"></youtube>
+<livewire:youtube title="Landing in Kaunas" v="cC1J1EKUHDo"/>
 @include('tpl.pic-2x', ['pic' => 'IMG_1223.jpg'])
 
 @ru
