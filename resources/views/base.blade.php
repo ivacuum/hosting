@@ -98,9 +98,9 @@
     @if ($firstTimeVisit && !Auth::check() && $locale !== $localePreffered && empty($noLanguageSelector) && !$isCrawler)
       <x-alert-warning-dismissable>
         @ru
-          Hey, looks like you might find useful the <a class="link" href="{{ url("en/{$requestUri}") }}">English version</a> of this page
+          As your browser speaks English, would you like to see the <a class="link" href="{{ url("en/{$requestUri}") }}">English version</a> of this page?
         @en
-          Похоже, что вам может пригодиться версия этой страницы <a class="link" href="{{ url($requestUri) }}">на русском языке</a>
+          Так как ваш браузер на русском языке, предлагаем вам <a class="link" href="{{ url($requestUri) }}">русскую версию</a> этой страницы
         @endru
       </x-alert-warning-dismissable>
     @endif
