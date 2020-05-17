@@ -9,11 +9,11 @@ class TelegramChatMessage extends TelegramNotifier
     {
         $model = $event->chatMessage;
 
-        if ($model->user->isRoot()) {
+        if ($model->user->isRoot() || \App::runningInConsole()) {
             return;
         }
 
-        $text = "💬 Сообщение в чат от {$model->user->publicName()}\n".htmlspecialchars_decode($model->text, ENT_QUOTES);
+        $text = "💬 Сообщение в чат от {$model->user->publicName()}\n" . htmlspecialchars_decode($model->text, ENT_QUOTES);
 
         $this->telegram->notifyAdmin($text);
     }

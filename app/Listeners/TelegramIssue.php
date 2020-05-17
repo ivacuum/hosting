@@ -9,7 +9,11 @@ class TelegramIssue extends TelegramNotifier
     {
         $model = $event->model;
 
-        $text = "💡 Обратная связь {$model->id} от {$model->email}\n{$model->title}\n".url($model->page)."\n\n".htmlspecialchars_decode($model->text, ENT_QUOTES);
+        if (\App::runningInConsole()) {
+            return;
+        }
+
+        $text = "💡 Обратная связь {$model->id} от {$model->email}\n{$model->title}\n" . url($model->page) . "\n\n" . htmlspecialchars_decode($model->text, ENT_QUOTES);
 
         $this->telegram->notifyAdmin($text);
     }
