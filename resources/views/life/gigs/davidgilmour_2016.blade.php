@@ -79,4 +79,9 @@
     @ru Смотреть концерт на сайте vk.com @en Watch the concert on vk.com @endru
   </a>
 </p>
+
+@ru
+  <p>В мае 2020 года стала доступна профессиональная запись концерта, снятого в Помпеях за несколько дней до Висбадена.</p>
+@endru
+<livewire:youtube title="David Gilmour - Live At Pompeii (Full Concert)" v="NAmOdxZKWjY"/>
 @endsection
