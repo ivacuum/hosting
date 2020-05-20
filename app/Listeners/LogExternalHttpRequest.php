@@ -33,6 +33,7 @@ class LogExternalHttpRequest
         $model->method = $event->method;
         $model->scheme = $event->scheme;
         $model->http_code = $event->httpCode;
+        $model->created_at = now()->subMicroseconds($event->totalTimeUs);
         $model->http_version = $event->httpVersion;
         $model->redirect_url = $event->redirectUrl;
         $model->request_body = $event->requestBody;

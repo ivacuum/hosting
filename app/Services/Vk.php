@@ -10,9 +10,9 @@ class Vk
     protected $version = '5.69';
     protected $accessToken = '';
 
-    public function __construct()
+    public function __construct(GuzzleClientFactory $clientFactory)
     {
-        $this->client = (new GuzzleClientFactory)
+        $this->client = $clientFactory
             ->baseUri(static::API_ENDPOINT)
             ->createForService('vk');
     }

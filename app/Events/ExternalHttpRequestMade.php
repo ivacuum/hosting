@@ -3,23 +3,23 @@
 // Сделан запрос к внешнему сервису
 class ExternalHttpRequestMade extends Event
 {
+    public int $httpCode;
+    public int $totalTimeUs;
+    public int $responseSize;
+    public int $redirectCount;
+    public int $redirectTimeUs;
+    public array $requestHeaders;
+    public array $responseHeaders;
     public string $host;
     public string $path;
     public string $query;
     public string $method;
     public string $scheme;
-    public int $httpCode;
     public string $httpVersion;
     public string $redirectUrl;
     public string $requestBody;
     public string $serviceName;
-    public int $totalTimeUs;
     public string $responseBody;
-    public int $responseSize;
-    public int $redirectCount;
-    public int $redirectTimeUs;
-    public string $requestHeaders;
-    public string $responseHeaders;
 
     public function __construct(
         string $serviceName,
@@ -28,9 +28,9 @@ class ExternalHttpRequestMade extends Event
         string $host,
         string $path,
         string $query,
-        string $requestHeaders,
+        array $requestHeaders,
         string $requestBody,
-        string $responseHeaders,
+        array $responseHeaders,
         string $responseBody,
         int $responseSize,
         int $totalTimeUs,

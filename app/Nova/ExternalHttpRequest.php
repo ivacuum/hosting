@@ -14,9 +14,9 @@ class ExternalHttpRequest extends Resource
     {
         return [
             Fields\ID::make()->sortable(),
-            Fields\Text::make('Service Name'),
+            Fields\Text::make('Service Name')->hideFromIndex(),
             Fields\Text::make('Method'),
-            Fields\Text::make('Scheme'),
+            Fields\Text::make('Scheme')->hideFromIndex(),
             Fields\Text::make('Host'),
             Fields\Text::make('Path'),
             Fields\Text::make('Query')->hideFromIndex(),

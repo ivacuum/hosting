@@ -13,9 +13,9 @@ class ParserVk extends Controller
     protected $version = '5.69';
     protected $vkpage;
 
-    public function __construct()
+    public function __construct(GuzzleClientFactory $clientFactory)
     {
-        $this->client = (new GuzzleClientFactory)
+        $this->client = $clientFactory
             ->baseUri(Vk::API_ENDPOINT)
             ->timeout(10)
             ->createForService('vk.parser');
