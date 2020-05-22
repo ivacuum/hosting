@@ -12,7 +12,6 @@
 
   <input
     class="block w-full"
-    accept="image/gif,image/jpeg,image/png"
     type="file"
     name="files[]"
     multiple
