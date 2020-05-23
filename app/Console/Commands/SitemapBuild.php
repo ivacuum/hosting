@@ -24,6 +24,7 @@ class SitemapBuild extends BaseSitemapBuild
         $this->appendDcppPages();
         $this->appendGigs();
         $this->appendJapanesePages();
+        $this->appendKoreanPages();
         $this->appendLifePages();
         $this->appendNews();
         $this->appendTrips();
@@ -113,6 +114,38 @@ class SitemapBuild extends BaseSitemapBuild
             'en/japanese/hiragana-katakana',
             'en/japanese/words-trainer',
         ], ['0.5', '0.6', '0.7']);
+    }
+
+    protected function appendKoreanPages()
+    {
+        $this->page([
+            'korean/psy/all-night-long',
+            'korean/psy/as-time-goes-by',
+            'korean/psy/daddy',
+            'korean/psy/dont-worry-my-dear',
+            'korean/psy/dream',
+            'korean/psy/entertainer',
+            'korean/psy/everyday',
+            'korean/psy/father',
+            'korean/psy/gangnam-style',
+            'korean/psy/gentleman',
+            'korean/psy/i-am-a-guy-like-this',
+            'korean/psy/i-luv-it',
+            'korean/psy/in-my-eyes',
+            'korean/psy/its-art',
+            'korean/psy/last-scene',
+            'korean/psy/napal-baji',
+            'korean/psy/new-face',
+            'korean/psy/paradise',
+            'korean/psy/place-to-lean-on',
+            'korean/psy/right-now',
+            'korean/psy/shake-it',
+            'korean/psy/someday',
+            'korean/psy/the-end',
+            'korean/psy/we-are-the-one',
+            'korean/psy/what-would-have-been',
+            'korean/psy/white-night',
+        ], ['0.4']);
     }
 
     protected function appendLifePages()
