@@ -28,7 +28,11 @@ class AppServiceProvider extends ServiceProvider
             $httpClient = (new App\Http\GuzzleClientFactory)
                 ->createForService('telegram');
 
-            return new Api(config('telegram.bot_token'), config('telegram.async_requests'), new GuzzleHttpClient($httpClient));
+            return new Api(
+                config('telegram.bot_token'),
+                config('telegram.async_requests'),
+                new GuzzleHttpClient($httpClient)
+            );
         });
     }
 
