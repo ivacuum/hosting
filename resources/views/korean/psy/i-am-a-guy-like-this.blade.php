@@ -2,6 +2,10 @@
 
 @section('content')
 <x-korean-cyrillization>
+  <x-slot name="info">
+    <livewire:youtube title="PSY - I'm a guy like this, 싸이 - 나 이런 사람이야 @ PSY concert 'Happening'" v="tIYPOKY2UG0"/>
+  </x-slot>
+
   마이크 싸가지 테스트 원,투,원,투
   니네 내가 누군지 모르나 본데
   나 이런 사람이야
