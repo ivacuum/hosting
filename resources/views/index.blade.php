@@ -10,11 +10,11 @@
     vacuum kaluga
   </span>
 </h1>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-6 mb-12 md:mb-6">
   @ru
     <div class="hidden md:block">
       <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}">
-        <img class="mr-2 w-8 h-8" src="https://ivacuum.org/i/services/magnet.png" alt="">
+        <div class="leading-none text-3xl mr-2">🧲</div>
         <h2 class="text-2xl mb-0"><span class="link">{{ trans('torrents.index') }}</span></h2>
       </a>
       <div>Сервис для скачивания файлов у многочисленных пользователей сети интернет без регистрации и рейтинга.</div>
@@ -23,7 +23,7 @@
   @endru
   <div>
     <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Life::class, 'index']) }}">
-      <img class="hidden md:block mr-2 w-8 h-8" src="https://ivacuum.org/i/services/hosting.png" alt="">
+      <div class="leading-none text-3xl mr-2">📝</div>
       <h2 class="text-2xl mb-0"><span class="link">{{ trans('menu.life') }}</span></h2>
     </a>
     @ru
@@ -40,17 +40,16 @@
       </a>
       <div>Хроника развития сайта с 2004 года.</div>
     </div>
+    {{--
     <div class="hidden md:block">
       <a class="flex items-center mb-2 link-parent" href="https://kupislona.ru/">
-        <img class="hidden md:block mr-2 w-8 h-8" src="https://ivacuum.org/i/services/kupislona.png" alt="">
         <h2 class="text-2xl mb-0"><span class="link">KupiSlona.ru</span></h2>
       </a>
       <div>Доска бесплатных объявлений России. Место встречи продавцов и покупателей.</div>
       {{--<div class="text-muted">Дата запуска: 7 декабря 2015 г.</div>--}}
-    </div>
+    {{--</div>--}}
     <div class="hidden md:block">
       <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Gallery::class, 'index']) }}">
-        <img class="mr-2 w-8 h-8" src="https://ivacuum.org/i/services/gallery.png" alt="">
         <h2 class="text-2xl mb-0"><span class="link">{{ trans('gallery.index') }}</span></h2>
       </a>
       <div>Хранилище изображений для последующей публикации в интернете.</div>
@@ -59,7 +58,6 @@
   @endru
   <div class="hidden md:block">
     <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Dcpp::class, 'index']) }}">
-      <img class="mr-2 w-8 h-8" src="https://ivacuum.org/i/services/dcpp.png" alt="">
       <h2 class="text-2xl mb-0"><span class="link">ArtFly.DC++</span></h2>
     </a>
     @ru
@@ -72,7 +70,6 @@
   @ru
     <div class="hidden md:block">
       <a class="flex items-center mb-2 link-parent" href="http://t.ivacuum.ru">
-        <img class="mr-2 w-8 h-8" src="https://ivacuum.org/i/services/torrent.png" alt="">
         <h2 class="text-2xl mb-0"><span class="link">{{ trans('torrents.index') }}</span></h2>
       </a>
       <div>Исторический форум сервиса для обмена файлами внутри локальной сети Билайн.</div>
@@ -88,6 +85,7 @@
   @endru
   <div>
     <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Coupons::class, 'index']) }}">
+      <div class="leading-none text-3xl mr-2">🎁</div>
       <h2 class="text-2xl mb-0"><span class="link">{{ trans('menu.coupons') }}</span></h2>
     </a>
     @ru
@@ -99,7 +97,7 @@
   </div>
   <div>
     <a class="flex items-center mb-2 link-parent" href="{{ path(App\Http\Controllers\JapaneseController::class) }}">
-      <img class="w-8 h-6 mr-2 svg-shadow" src="https://ivacuum.org/i/flags/svg/jp.svg" alt="">
+      <div class="leading-none text-3xl mr-2">🇯🇵</div>
       <h2 class="text-2xl mb-0"><span class="link">{{ trans('japanese.index') }}</span></h2>
     </a>
     @ru
