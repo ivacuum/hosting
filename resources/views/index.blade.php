@@ -106,6 +106,19 @@
       <div>Hiragana & Katakana trainer. Set of radicals, kanji and vocabulary to learn and review.</div>
     @endru
   </div>
+  @ru
+    <div>
+      <a class="flex items-center mb-2 link-parent" href="{{ path(App\Http\Controllers\KoreanController::class) }}">
+        <div class="leading-none text-3xl mr-2">🇰🇷</div>
+        <h2 class="text-2xl mb-0"><span class="link">{{ trans('korean.index') }}</span></h2>
+      </a>
+      @ru
+        <div>Тренажер для запоминания корейского алфавита. Кириллизация песен Сая.</div>
+      @en
+        <div>Hangul trainer. PSY song lyrics.</div>
+      @endru
+    </div>
+  @endru
 </div>
 
 <h3 class="text-2xl">
