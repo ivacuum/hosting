@@ -119,6 +119,8 @@ class SitemapBuild extends BaseSitemapBuild
     protected function appendKoreanPages()
     {
         $this->page([
+            'korean',
+            'korean/psy',
             'korean/psy/all-night-long',
             'korean/psy/as-time-goes-by',
             'korean/psy/daddy',
