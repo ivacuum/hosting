@@ -1,5 +1,6 @@
 <?php namespace App\Observers;
 
+use App\Events\TorrentAddedAnonymously;
 use App\Torrent as Model;
 
 class TorrentObserver
@@ -7,6 +8,10 @@ class TorrentObserver
     public function created(Model $model)
     {
         event(new \App\Events\Stats\TorrentAdded);
+
+        if ($model->isAnonymous()) {
+            event(new TorrentAddedAnonymously($model));
+        }
     }
 
     public function deleting(Model $model)

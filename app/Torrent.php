@@ -125,6 +125,11 @@ class Torrent extends Model
         event(new \App\Events\Stats\TorrentMagnetClicked);
     }
 
+    public function isAnonymous(): bool
+    {
+        return $this->user_id === config('cfg.torrent_anonymous_releaser');
+    }
+
     public function isNotPublished(): bool
     {
         return !$this->isPublished();

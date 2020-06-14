@@ -12,6 +12,7 @@ class EventServiceProvider extends ServiceProvider
         Events\DomainWhoisUpdated::class => [Listeners\EmailWhoisChanges::class],
         Events\ExternalHttpRequestMade::class => [Listeners\LogExternalHttpRequest::class],
         Events\IssueCreated::class => [Listeners\TelegramIssue::class],
+        Events\TorrentAddedAnonymously::class => [Listeners\TelegramAnonymousTorrent::class],
         Events\TypoReceived::class => [Listeners\TelegramTypo::class],
 
         'Illuminate\Auth\Events\Login' => [

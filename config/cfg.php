@@ -47,6 +47,7 @@ return [
     'telegram' => [
         'admin_id' => env('TELEGRAM_ADMIN_ID'),
     ],
+    'torrent_anonymous_releaser' => env('TORRENT_ANONYMOUS_RELEASER', 3),
     'wanikani_api_key' => env('WANIKANI_API_KEY'),
 
     // Купоны

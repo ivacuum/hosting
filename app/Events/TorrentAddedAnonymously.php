@@ -1,15 +1,15 @@
 <?php namespace App\Events;
 
-use App\Issue;
+use App\Torrent;
 use Illuminate\Queue\SerializesModels;
 
-class IssueCreated extends Event
+class TorrentAddedAnonymously extends Event
 {
     use SerializesModels;
 
-    public Issue $model;
+    public Torrent $model;
 
-    public function __construct(Issue $model)
+    public function __construct(Torrent $model)
     {
         $this->model = $model;
     }

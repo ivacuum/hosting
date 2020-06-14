@@ -18,5 +18,10 @@ class UserSeeder extends Seeder
         $user->login = 'guest';
         $user->password = 'top-secret';
         $user->save();
+
+        $user = UserFactory::new()->make();
+        $user->email = 'torrents@example.com';
+        $user->login = 'torrents';
+        $user->save();
     }
 }

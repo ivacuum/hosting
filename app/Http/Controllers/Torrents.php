@@ -131,6 +131,7 @@ class Torrents extends Controller
         $topicId = $request->topicId($rto);
 
         if ($topicId > 0) {
+            /** @var Torrent $torrent */
             $torrent = Torrent::where('rto_id', $topicId)->first();
 
             if (null !== $torrent) {
@@ -160,6 +161,12 @@ class Torrents extends Controller
                 ->withErrors(['input' => $message]);
         }
 
+        $user = $request->userModel();
+
+        if ($user === null) {
+            event(new \App\Events\Stats\TorrentAddedAnonymously);
+        }
+
         $torrent = new Torrent;
         $torrent->html = $data->getBody();
         $torrent->size = $data->getSize();
@@ -167,7 +174,7 @@ class Torrents extends Controller
         $torrent->clicks = 0;
         $torrent->rto_id = $data->getId();
         $torrent->status = Torrent::STATUS_PUBLISHED;
-        $torrent->user_id = request()->user()->id;
+        $torrent->user_id = $user->id ?? config('cfg.torrent_anonymous_releaser');
         $torrent->info_hash = $data->getInfoHash();
         $torrent->announcer = $data->getAnnouncer();
         $torrent->category_id = $request->categoryId();

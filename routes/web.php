@@ -150,8 +150,8 @@ Route::get('subscriptions/confirm', [Controllers\Subscriptions::class, 'confirm'
 Route::get('torrent', [Controllers\TorrentPromo::class, 'index']);
 
 Route::get('torrents', [Controllers\Torrents::class, 'index']);
-Route::post('torrents', [Controllers\Torrents::class, 'store'])->middleware('auth');
-Route::get('torrents/add', [Controllers\Torrents::class, 'create'])->middleware('auth');
+Route::post('torrents', [Controllers\Torrents::class, 'store']);
+Route::get('torrents/add', [Controllers\Torrents::class, 'create']);
 Route::get('torrents/comments', [Controllers\Torrents::class, 'comments']);
 Route::get('torrents/faq', [Controllers\Torrents::class, 'faq']);
 Route::get('torrents/my', [Controllers\Torrents::class, 'my'])->middleware('auth');

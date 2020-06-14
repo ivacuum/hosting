@@ -2,9 +2,8 @@
 
 use App\Rules\TorrentCategoryId;
 use App\Services\Rto;
-use Ivacuum\Generic\Http\FormRequest;
 
-class TorrentStoreRequest extends FormRequest
+class TorrentStoreRequest extends AbstractRequest
 {
     public function authorize(): bool
     {

@@ -46,6 +46,7 @@
     }
   },
   "scripts": {
+    "fresh": "@php artisan migrate:fresh --seed --ansi",
     "phpcs": "phpcs --standard=PSR12",
     "post-root-package-install": [
       "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -61,7 +62,9 @@
     "post-update-cmd": [
       "@php artisan ide-helper:generate",
       "@php artisan nova:publish"
-    ]
+    ],
+    "queue": "@php artisan queue:work --stop-when-empty --ansi",
+    "test": "vendor/bin/phpunit --colors=always"
   },
   "extra": {
     "laravel": {
