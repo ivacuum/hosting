@@ -51,23 +51,25 @@
       @en
         <div class="h3">Search results for «{{ $q }}»</div>
       @endru
-      @if ($fulltext)
-        <div class="mb-6">
+      <div class="mb-6">
+        @if ($fulltext)
           <a class="btn btn-default" href="{{ UrlHelper::filter(['fulltext' => null]) }}">
             <span class="text-red-600">
               @svg (times)
             </span>
             Искать только в заголовках
           </a>
-        </div>
-      @else
-        <div class="mb-6">
+        @else
           <a class="btn btn-default" href="{{ UrlHelper::filter(['fulltext' => 1]) }}">
             @svg (search)
             Искать в описаниях раздач
           </a>
-        </div>
-      @endif
+        @endif
+        <a class="btn btn-primary" href="{{ App\Torrent::externalSearchLink($q) }}">
+          Искать на рутрекере
+          @svg (external-link)
+        </a>
+      </div>
     @endif
     <?php $lastDate = null ?>
     @if (sizeof($torrents))
@@ -112,64 +114,95 @@
           Можно расширить область поиска с помощью кнопки выше.
         @endif
       </div>
+    @endif
+    @if ($q)
+      <details class="mt-4">
+        <summary>Как пользоваться поиском?</summary>
+        <div class="mt-2 mb-1">Поиск по раздачам учитывает морфологию русского языка, поэтому «комедия» найдется даже при запросе «комедии». Ниже приведены примеры запросов для понимания особенностей поиска:</div>
+        <ul class="text-muted mb-4">
+          <li>
+            <a href="{{ UrlHelper::filter(['q' => 'драма']) }}">драма</a>
+            — кинематограф соответствующей тематики
+          </li>
+          <li>
+            <a href="{{ UrlHelper::filter(['q' => 'фантастика 2017']) }}">фантастика 2017</a>
+            — поиск по теме за 2017 год, порядок слов значения не имеет
+          </li>
+          <li>
+            <a href="{{ UrlHelper::filter(['q' => 'россия']) }}">россия</a>
+            — раздачи российского происхождения
+          </li>
+          <li>
+            <a href="{{ UrlHelper::filter(['q' => '1080p']) }}">1080p</a>
+            — Full HD качество
+          </li>
+          <li>
+            <a href="{{ UrlHelper::filter(['q' => 'original']) }}">original</a>
+            — только с оригинальной озвучкой
+          </li>
+          <li>
+            <a href="{{ UrlHelper::filter(['q' => 'dub']) }}">dub</a>
+            — дубляж
+          </li>
+          <li>
+            <a href="{{ UrlHelper::filter(['q' => 'sub']) }}">sub</a>
+            — с субтитрами
+          </li>
+          <li>
+            <a href="{{ UrlHelper::filter(['q' => 'мост 3 сезон']) }}">мост 3 сезон</a>
+            — поиск отдельного сезона сериала
+          </li>
+        </ul>
+        <div class="mb-1">Изначально поиск выполняется только по заголовкам раздач. Но его область можно расширить и до их описаний с помощью клика по соответствующей кнопке перед результатами поиска. Это позволяет находить фильмы по актерам, отдельные игры в раздачах антологий и т.п. Примеры:</div>
+        <ul class="text-muted mb-4">
+          <li>
+            <a href="{{ UrlHelper::filter(['q' => 'мэтт дэймон', 'fulltext' => 1]) }}">мэтт дэймон</a>
+            — кино с актером
+          </li>
+          <li>
+            <a href="{{ UrlHelper::filter(['q' => 'кубок огня', 'fulltext' => 1]) }}">кубок огня</a>
+            — отдельная часть Гарри Поттера в антологии
+          </li>
+          <li>
+            <a href="{{ UrlHelper::filter(['q' => 'nfs underground', 'fulltext' => 1]) }}">nfs underground</a>
+            — отдельная часть игры в антологии
+          </li>
+        </ul>
+        <p>Как можно было заметить из примеров, порядок слов в запросе не имеет значения. Поэтому, поиск найдет сериал «мир дикого запада» даже при запросе «мир запада» или «запада дикого».</p>
+        <p>Однако, поиск не умеет переводить слова, поэтому «office» может не найтись по запросу «офис». Тоже самое касается и пары запросов «фифа» и «fifa». В связи с этим рекомендуется пробовать разные варианты написания.</p>
+      </details>
 
-      @if ($q)
-        <details>
-          <summary>Как пользоваться поиском?</summary>
-          <div class="mt-2 mb-1">Поиск по раздачам учитывает морфологию русского языка, поэтому «комедия» найдется даже при запросе «комедии». Ниже приведены примеры запросов для понимания особенностей поиска:</div>
-          <ul class="text-muted mb-4">
-            <li>
-              <a href="{{ UrlHelper::filter(['q' => 'драма']) }}">драма</a>
-              — кинематограф соответствующей тематики
-            </li>
-            <li>
-              <a href="{{ UrlHelper::filter(['q' => 'фантастика 2017']) }}">фантастика 2017</a>
-              — поиск по теме за 2017 год, порядок слов значения не имеет
-            </li>
-            <li>
-              <a href="{{ UrlHelper::filter(['q' => 'россия']) }}">россия</a>
-              — раздачи российского происхождения
-            </li>
-            <li>
-              <a href="{{ UrlHelper::filter(['q' => '1080p']) }}">1080p</a>
-              — Full HD качество
-            </li>
-            <li>
-              <a href="{{ UrlHelper::filter(['q' => 'original']) }}">original</a>
-              — только с оригинальной озвучкой
-            </li>
-            <li>
-              <a href="{{ UrlHelper::filter(['q' => 'dub']) }}">dub</a>
-              — дубляж
-            </li>
-            <li>
-              <a href="{{ UrlHelper::filter(['q' => 'sub']) }}">sub</a>
-              — с субтитрами
-            </li>
-            <li>
-              <a href="{{ UrlHelper::filter(['q' => 'мост 3 сезон']) }}">мост 3 сезон</a>
-              — поиск отдельного сезона сериала
-            </li>
-          </ul>
-          <div class="mb-1">Изначально поиск выполняется только по заголовкам раздач. Но его область можно расширить и до их описаний с помощью клика по соответствующей кнопке перед результатами поиска. Это позволяет находить фильмы по актерам, отдельные игры в раздачах антологий и т.п. Примеры:</div>
-          <ul class="text-muted mb-4">
-            <li>
-              <a href="{{ UrlHelper::filter(['q' => 'мэтт дэймон', 'fulltext' => 1]) }}">мэтт дэймон</a>
-              — кино с актером
-            </li>
-            <li>
-              <a href="{{ UrlHelper::filter(['q' => 'кубок огня', 'fulltext' => 1]) }}">кубок огня</a>
-              — отдельная часть Гарри Поттера в антологии
-            </li>
-            <li>
-              <a href="{{ UrlHelper::filter(['q' => 'nfs underground', 'fulltext' => 1]) }}">nfs underground</a>
-              — отдельная часть игры в антологии
-            </li>
-          </ul>
-          <p>Как можно было заметить из примеров, порядок слов в запросе не имеет значения. Поэтому, поиск найдет сериал «мир дикого запада» даже при запросе «мир запада» или «запада дикого».</p>
-          <p>Однако, поиск не умеет переводить слова, поэтому «office» может не найтись по запросу «офис». Тоже самое касается и пары запросов «фифа» и «fifa». В связи с этим рекомендуется пробовать разные варианты написания.</p>
-        </details>
-      @endif
+      <details class="mt-4">
+        <summary>Не нашли искомую раздачу? Оставьте нам запрос</summary>
+        <div class="mt-2 mb-6">Мы можем помочь с поиском. Расскажите как можно подробнее что вы ищете. Мы постараемся добавить раздачу в течение суток, однако вы можете самостоятельно продолжить поиск по <a class="link" href="{{ App\Torrent::externalSearchLink($q) }}">рутрекеру</a> и затем <a class="link" href="/torrents/add">поделиться находкой</a> с остальными пользователями.</div>
+
+        <form action="{{ path(App\Http\Controllers\TorrentRequestReleaseController::class) }}" method="post">
+          {{ ViewHelper::inputHiddenMail() }}
+          @csrf
+
+          <div class="mb-4">
+            <label class="font-bold">Поисковый запрос</label>
+            <input
+              required
+              class="form-input"
+              name="query"
+              value="{{ old('query', $q) }}"
+            >
+            <x-invalid-feedback field="query"/>
+          </div>
+
+          <div class="mb-4">
+            <label class="font-bold">Комментарий</label>
+            <textarea
+              class="form-textarea"
+              rows="4"
+              name="comment"
+            ></textarea>
+          </div>
+
+          <button class="btn btn-primary">Отправить запрос</button>
+        </form>
+      </details>
     @endif
   </div>
 </div>

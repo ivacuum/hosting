@@ -103,6 +103,11 @@ class Torrent extends Model
         return "https://rutracker.nl/forum/viewtopic.php?t={$this->rto_id}";
     }
 
+    public static function externalSearchLink(string $query): string
+    {
+        return "https://rutracker.org/forum/tracker.php?nm=" . rawurlencode($query);
+    }
+
     public function fullDate(): string
     {
         $format = $this->registered_at->year == date('Y') ? '%e %B' : '%e %B %Y';

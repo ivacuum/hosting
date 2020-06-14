@@ -82,6 +82,17 @@ class TorrentTest extends TestCase
             ->assertHasCustomTitle();
     }
 
+    public function testRequestRelease()
+    {
+        \Queue::fake();
+
+        $this
+            ->from('torrents')
+            ->post('torrents/request', ['query' => 'query'])
+            ->assertRedirect('torrents')
+            ->assertSessionHasNoErrors();
+    }
+
     public function testSearch()
     {
         $torrent = TorrentFactory::new()->withTitle('title _2017_ something else')->create();

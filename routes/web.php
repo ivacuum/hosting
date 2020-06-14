@@ -155,6 +155,7 @@ Route::get('torrents/add', [Controllers\Torrents::class, 'create']);
 Route::get('torrents/comments', [Controllers\Torrents::class, 'comments']);
 Route::get('torrents/faq', [Controllers\Torrents::class, 'faq']);
 Route::get('torrents/my', [Controllers\Torrents::class, 'my'])->middleware('auth');
+Route::post('torrents/request', Controllers\TorrentRequestReleaseController::class);
 Route::get('torrents/{torrent}', [Controllers\Torrents::class, 'show']);
 Route::post('torrents/{torrent}/magnet', [Controllers\Torrents::class, 'magnet']);
 
