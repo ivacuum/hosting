@@ -19,9 +19,4 @@ class CreateIssuesTable extends Migration
             $table->timestamps();
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('issues');
-    }
 }

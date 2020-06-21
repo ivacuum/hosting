@@ -17,9 +17,4 @@ class CreateChatMessagesTable extends Migration
             $table->timestamps();
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('chat_messages');
-    }
 }

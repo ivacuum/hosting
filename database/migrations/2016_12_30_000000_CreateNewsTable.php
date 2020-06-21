@@ -17,9 +17,4 @@ class CreateNewsTable extends Migration
             $table->timestamps();
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('news');
-    }
 }

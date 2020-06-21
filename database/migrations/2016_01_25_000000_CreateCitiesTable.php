@@ -16,9 +16,4 @@ class CreateCitiesTable extends Migration
             $table->timestamps();
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('cities');
-    }
 }

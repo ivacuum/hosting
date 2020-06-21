@@ -29,9 +29,4 @@ class CreateExternalHttpRequestsTable extends Migration
             $table->timestamps(6);
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('external_http_requests');
-    }
 }

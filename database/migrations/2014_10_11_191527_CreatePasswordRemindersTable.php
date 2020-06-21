@@ -13,9 +13,4 @@ class CreatePasswordRemindersTable extends Migration
             $table->timestamp('created_at')->nullable();
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('password_resets');
-    }
 }

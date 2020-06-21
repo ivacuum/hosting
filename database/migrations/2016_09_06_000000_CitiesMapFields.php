@@ -12,11 +12,4 @@ class CitiesMapFields extends Migration
             $table->string('lon', 12)->after('lat')->default('');
         });
     }
-
-    public function down()
-    {
-        Schema::table('cities', function (Blueprint $table) {
-            $table->dropColumn(['lat', 'lon']);
-        });
-    }
 }

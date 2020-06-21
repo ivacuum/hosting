@@ -21,9 +21,4 @@ class CreateTripsTable extends Migration
             $table->timestamps();
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('trips');
-    }
 }

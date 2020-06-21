@@ -11,11 +11,4 @@ class TorrentStatusField extends Migration
             $table->unsignedTinyInteger('status')->after('announcer')->default(1);
         });
     }
-
-    public function down()
-    {
-        Schema::table('torrents', function (Blueprint $table) {
-            $table->dropColumn('status');
-        });
-    }
 }

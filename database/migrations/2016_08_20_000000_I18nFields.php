@@ -21,19 +21,4 @@ class I18nFields extends Migration
             $table->string('meta_description_en')->after('meta_description_ru')->default('');
         });
     }
-
-    public function down()
-    {
-        Schema::table('cities', function (Blueprint $table) {
-            $table->dropColumn('title_en');
-        });
-
-        Schema::table('countries', function (Blueprint $table) {
-            $table->dropColumn('title_en');
-        });
-
-        Schema::table('trips', function (Blueprint $table) {
-            $table->dropColumn(['title_en', 'meta_title_en', 'meta_description_en']);
-        });
-    }
 }

@@ -43,11 +43,4 @@ class CreateWanikaniTables extends Migration
             $table->timestamps();
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('radicals');
-        Schema::dropIfExists('kanjis');
-        Schema::dropIfExists('vocabularies');
-    }
 }

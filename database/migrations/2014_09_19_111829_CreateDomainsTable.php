@@ -24,9 +24,4 @@ class CreateDomainsTable extends Migration
             $table->timestamps();
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('domains');
-    }
 }

@@ -15,9 +15,4 @@ class CreateMetricsTable extends Migration
             $table->primary(['date', 'event']);
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('metrics');
-    }
 }

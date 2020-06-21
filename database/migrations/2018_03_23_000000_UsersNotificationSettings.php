@@ -13,11 +13,4 @@ class UsersNotificationSettings extends Migration
             $table->unsignedTinyInteger('notify_trips')->default(0)->after('notify_news');
         });
     }
-
-    public function down()
-    {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['notify_gigs', 'notify_news', 'notify_trips']);
-        });
-    }
 }

@@ -11,11 +11,4 @@ class TripsUserIdField extends Migration
             $table->unsignedInteger('user_id')->default(0)->after('id');
         });
     }
-
-    public function down()
-    {
-        Schema::table('trips', function (Blueprint $table) {
-            $table->dropColumn('user_id');
-        });
-    }
 }

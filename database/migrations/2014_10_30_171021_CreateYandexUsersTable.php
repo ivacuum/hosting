@@ -18,13 +18,4 @@ class CreateYandexUsersTable extends Migration
             $table->integer('yandex_user_id')->unsigned()->default(0)->index();
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('yandex_users');
-
-        Schema::table('domains', function (Blueprint $table) {
-            $table->dropColumn('yandex_user_id');
-        });
-    }
 }

@@ -11,11 +11,4 @@ class DomainAlias extends Migration
             $table->integer('alias_id')->unsigned()->default(0);
         });
     }
-
-    public function down()
-    {
-        Schema::table('domains', function (Blueprint $table) {
-            $table->dropColumn('alias_id');
-        });
-    }
 }

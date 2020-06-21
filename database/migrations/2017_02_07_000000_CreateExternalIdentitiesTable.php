@@ -16,9 +16,4 @@ class CreateExternalIdentitiesTable extends Migration
             $table->timestamps();
 		});
 	}
-
-	public function down()
-	{
-        Schema::dropIfExists('external_identities');
-	}
 }

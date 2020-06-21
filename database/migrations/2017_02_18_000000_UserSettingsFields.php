@@ -12,11 +12,4 @@ class UserSettingsFields extends Migration
             $table->unsignedTinyInteger('torrent_short_title')->after('theme')->default(0);
         });
     }
-
-    public function down()
-    {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['theme', 'torrent_short_title']);
-        });
-    }
 }

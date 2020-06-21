@@ -11,11 +11,4 @@ class EmailsLocaleField extends Migration
             $table->string('locale', 10)->after('template');
         });
     }
-
-    public function down()
-    {
-        Schema::table('emails', function (Blueprint $table) {
-            $table->dropColumn('locale');
-        });
-    }
 }

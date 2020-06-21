@@ -11,11 +11,4 @@ class DomainOrphan extends Migration
             $table->integer('orphan')->unsigned()->default(0);
         });
     }
-
-    public function down()
-    {
-        Schema::table('domains', function (Blueprint $table) {
-            $table->dropColumn('orphan');
-        });
-    }
 }

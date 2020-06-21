@@ -11,11 +11,4 @@ class NewsMarkdownField extends Migration
             $table->text('markdown')->after('title');
         });
     }
-
-    public function down()
-    {
-        Schema::table('news', function (Blueprint $table) {
-            $table->dropColumn('markdown');
-        });
-    }
 }

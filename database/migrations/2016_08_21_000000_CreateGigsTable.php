@@ -24,9 +24,4 @@ class CreateGigsTable extends Migration
             $table->timestamps();
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('gigs');
-    }
 }

@@ -18,9 +18,4 @@ class CreateDcppHubsTable extends Migration
             $table->timestamps();
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('dcpp_hubs');
-    }
 }

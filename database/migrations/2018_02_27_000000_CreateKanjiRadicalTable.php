@@ -12,9 +12,4 @@ class CreateKanjiRadicalTable extends Migration
             $table->integer('kanji_id')->unsigned()->index();
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('kanji_radical');
-    }
 }

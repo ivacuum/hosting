@@ -19,9 +19,4 @@ class CreateServersTable extends Migration
             $table->timestamps();
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('servers');
-    }
 }

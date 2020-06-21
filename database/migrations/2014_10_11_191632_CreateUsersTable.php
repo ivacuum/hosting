@@ -22,9 +22,4 @@ class CreateUsersTable extends Migration
             $table->timestamp('password_changed_at')->nullable();
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('users');
-    }
 }

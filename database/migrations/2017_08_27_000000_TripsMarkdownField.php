@@ -12,11 +12,4 @@ class TripsMarkdownField extends Migration
             $table->text('html')->after('markdown');
         });
     }
-
-    public function down()
-    {
-        Schema::table('trips', function (Blueprint $table) {
-            $table->dropColumn(['markdown', 'html']);
-        });
-    }
 }

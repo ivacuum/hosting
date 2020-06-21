@@ -15,9 +15,4 @@ class CreateCommentsTable extends Migration
             $table->timestamps();
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('comments');
-    }
 }

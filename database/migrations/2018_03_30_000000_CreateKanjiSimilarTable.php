@@ -14,9 +14,4 @@ class CreateKanjiSimilarTable extends Migration
             $table->primary(['kanji_id', 'similar_id']);
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('kanji_similar');
-    }
 }

@@ -22,9 +22,4 @@ class CreateTorrentsTable extends Migration
             $table->timestamps();
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('torrents');
-    }
 }

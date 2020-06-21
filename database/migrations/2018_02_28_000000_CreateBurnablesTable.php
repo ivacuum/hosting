@@ -15,9 +15,4 @@ class CreateBurnablesTable extends Migration
             $table->primary(['user_id', 'rel_type', 'rel_id']);
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('burnables');
-    }
 }

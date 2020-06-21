@@ -26,28 +26,4 @@ class DomainCredentials extends Migration
             $table->string('db_pass')->default('');
         });
     }
-
-    public function down()
-    {
-        Schema::table('domains', function (Blueprint $table) {
-            $table->dropColumn([
-                'text',
-                'cms_type',
-                'cms_version',
-                'cms_url',
-                'cms_user',
-                'cms_pass',
-                'ftp_host',
-                'ftp_user',
-                'ftp_pass',
-                'ssh_host',
-                'ssh_user',
-                'ssh_pass',
-                'db_pma',
-                'db_host',
-                'db_user',
-                'db_pass'
-            ]);
-        });
-    }
 }

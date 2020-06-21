@@ -11,11 +11,4 @@ class UserAvatarField extends Migration
             $table->string('avatar')->after('torrent_short_title')->default('');
         });
     }
-
-    public function down()
-    {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('avatar');
-        });
-    }
 }

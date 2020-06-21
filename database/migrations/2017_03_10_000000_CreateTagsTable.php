@@ -23,10 +23,4 @@ class CreateTagsTable extends Migration
             $table->primary(['tag_id', 'rel_id', 'rel_type']);
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('taggable');
-        Schema::dropIfExists('tags');
-    }
 }

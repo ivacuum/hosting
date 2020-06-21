@@ -11,11 +11,4 @@ class UsersLocaleField extends Migration
             $table->string('locale', 10)->default('ru')->after('status');
         });
     }
-
-    public function down()
-    {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('locale');
-        });
-    }
 }

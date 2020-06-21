@@ -11,11 +11,4 @@ class PhotoStatusField extends Migration
             $table->unsignedTinyInteger('status')->after('lon')->default(1);
         });
     }
-
-    public function down()
-    {
-        Schema::table('photos', function (Blueprint $table) {
-            $table->dropColumn('status');
-        });
-    }
 }

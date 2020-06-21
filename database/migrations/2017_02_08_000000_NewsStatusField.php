@@ -11,11 +11,4 @@ class NewsStatusField extends Migration
             $table->unsignedTinyInteger('status')->after('html')->default(0);
         });
     }
-
-    public function down()
-    {
-        Schema::table('news', function (Blueprint $table) {
-            $table->dropColumn('status');
-        });
-    }
 }

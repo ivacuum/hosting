@@ -11,11 +11,4 @@ class CommentStatusField extends Migration
             $table->unsignedTinyInteger('status')->after('rel_type')->default(App\Comment::STATUS_PUBLISHED);
         });
     }
-
-    public function down()
-    {
-        Schema::table('comments', function (Blueprint $table) {
-            $table->dropColumn('status');
-        });
-    }
 }
