@@ -42,7 +42,7 @@
       <td>{{ $model->level }}</td>
       <td>
         <a
-          class="bg-radical block font-bold pb-1 px-2 rounded leading-none text-6xl text-center text-white hover:text-grey-200"
+          class="bg-radical block pb-1 px-2 rounded leading-none text-6xl text-center text-white hover:text-grey-200"
           href="{{ path([$controller, 'show'], $model) }}"
         >
           @if ($model->character)

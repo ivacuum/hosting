@@ -30,7 +30,7 @@
         @endif
       </div>
     </div>
-    <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-px font-bold text-center text-white">
+    <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-px text-center text-white">
       @foreach ($kanjis as $kanji)
         <div class="group rounded {{ $kanji->burnable === null ? 'bg-kanji' : 'bg-burned' }}">
           <a

@@ -43,7 +43,7 @@
       </td>
       <td>
         <a
-          class="bg-kanji block font-bold pb-1 px-2 rounded text-center text-white hover:text-grey-200"
+          class="bg-kanji block pb-1 px-2 rounded text-center text-white hover:text-grey-200"
           href="{{ path([$controller, 'show'], $model) }}"
         >
           <span class="inline-block text-6xl leading-none ja-shadow">{{ $model->character }}</span>

@@ -26,7 +26,7 @@
         @endif
       </div>
     </div>
-    <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-px font-bold text-center text-white">
+    <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-px text-center text-white">
       @foreach ($radicals as $radical)
         <div class="group rounded {{ $radical->burnable === null ? 'bg-radical' : 'bg-burned' }}">
           <a class="block text-6xl leading-none py-2 text-white hover:text-grey-200" href="{{ $radical->www() }}">
