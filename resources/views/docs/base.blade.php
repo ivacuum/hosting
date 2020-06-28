@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content_header')
-<div class="antialiased hanging-puntuation-first lg:text-lg">
+<div class="antialiased hanging-puntuation-first">
 @endsection
 
 @section('content_footer')
