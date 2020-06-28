@@ -116,19 +116,19 @@
   <x-terminal>
     <div class="grid gap-6">
       <div>
-        <div class="text-muted"># Файл подкачки на 1024 МБ</div>
-        <div class="prepend-dollar">dd if=/dev/zero of=/root/swap1 bs=1m count=1024</div>
-        <div class="prepend-dollar">chmod 0600 /root/swap1</div>
+        <div class="text-muted"># Создание файла подкачки на 2048 МБ</div>
+        <div class="prepend-dollar">dd if=/dev/zero of=/usr/swap0 bs=1m count=2048</div>
+        <div class="prepend-dollar">chmod 0600 /usr/swap0</div>
       </div>
 
       <div>
-        <div class="text-muted"># Добавление записи в /etc/fstab</div>
-        <div>md99 none swap sw,file=/root/swap1 0 0</div>
+        <div class="text-muted"># Добавление записи в /etc/fstab для использования при следующей загрузке системы</div>
+        <div>md99 none swap sw,file=/usr/swap0,late 0 0</div>
       </div>
 
       <div>
         <div class="text-muted"># Активация файла подкачки без перезагрузки</div>
-        <div class="prepend-dollar">swapon -aq</div>
+        <div class="prepend-dollar">swapon -aL</div>
       </div>
     </div>
   </x-terminal>
