@@ -57,6 +57,24 @@ module.exports = {
         },
       },
     }),
+    fontFamily: {
+      sans: [
+        'ui-rounded',
+        'system-ui',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        '"Noto Sans"',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+        '"Noto Color Emoji"',
+      ],
+    },
     extend: {
       colors: {
         current: 'currentColor',
