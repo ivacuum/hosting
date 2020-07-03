@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             App\Seeder\TorrentSeeder::class,
             App\Seeder\NewsSeeder::class,
             App\Seeder\ImageSeeder::class,
+            App\Seeder\FavoriteMovieSeeder::class,
 
             App\Seeder\RadicalSeeder::class,
             App\Seeder\KanjiSeeder::class,

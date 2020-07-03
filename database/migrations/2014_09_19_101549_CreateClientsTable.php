@@ -184,6 +184,16 @@ class CreateClientsTable extends Migration
             $table->timestamp('failed_at')->useCurrent();
         });
 
+        Schema::create('favorite_movies', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('kp_id');
+            $table->unsignedSmallInteger('year');
+            $table->unsignedTinyInteger('is_tv_series')->default(0);
+            $table->string('title_ru');
+            $table->string('title_en');
+            $table->timestamps();
+        });
+
         Schema::create('files', function (Blueprint $table) {
             $table->increments('id');
             $table->string('folder');
