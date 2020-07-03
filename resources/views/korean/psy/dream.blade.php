@@ -4,6 +4,7 @@
 <x-korean-cyrillization>
   <x-slot name="info">
     <livewire:youtube title="All Night Stand 2015" v="54rF9Kff6Yk"/>
+    <livewire:youtube title="190824 싸이 흠뻑쇼 2019 대전 (막공) - 정규공연 Full Ver." v="kAyvn15zdr8" start="7838"/>
   </x-slot>
 
   내게 있을 땐 옆에 있는 게

@@ -5,6 +5,7 @@
   <x-slot name="info">
     <livewire:youtube title="PSY - ‘I LUV IT’ M/V" v="Xvjnoagk6GU"/>
     <livewire:youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="179"/>
+    <livewire:youtube title="190824 싸이 흠뻑쇼 2019 대전 (막공) - 정규공연 Full Ver." v="kAyvn15zdr8" start="1756"/>
   </x-slot>
 
   내 나이 사십 babe

@@ -4,6 +4,7 @@
 <x-korean-cyrillization>
   <x-slot name="info">
     <livewire:youtube title="PSY - I'm a guy like this, 싸이 - 나 이런 사람이야 @ PSY concert 'Happening'" v="tIYPOKY2UG0"/>
+    <livewire:youtube title="190824 싸이 흠뻑쇼 2019 대전 (막공) - 정규공연 Full Ver." v="kAyvn15zdr8" start="8065"/>
   </x-slot>
 
   마이크 싸가지 테스트 원,투,원,투
