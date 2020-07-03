@@ -18,7 +18,7 @@ class VocabularySeeder extends Seeder
         ], [
             'kana' => 'いちがつ',
             'level' => 2,
-            'wk_id' => 2545,
+            'wk_id' => 2544,
             'meaning' => 'january',
             'character' => '一月',
             'sentences' => '',
@@ -27,7 +27,7 @@ class VocabularySeeder extends Seeder
         ], [
             'kana' => 'にがつ',
             'level' => 2,
-            'wk_id' => 2544,
+            'wk_id' => 2545,
             'meaning' => 'february',
             'character' => '二月',
             'sentences' => '',
