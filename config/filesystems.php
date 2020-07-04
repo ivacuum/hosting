@@ -46,18 +46,6 @@ return [
             'visibility' => 'public',
         ],
 
-        'ftp' => [
-            'driver' => 'ftp',
-            'host' => env('FTP_HOST'),
-            'port' => 21,
-            'username' => env('FTP_USERNAME'),
-            'password' => env('FTP_PASSWORD'),
-            'root' => env('FTP_ROOT'),
-            'passive' => true,
-            'ssl' => false,
-            'timeout' => 10,
-        ],
-
         'photos' => [
             'driver' => 'sftp',
             'host' => env('PHOTOS_HOST'),
