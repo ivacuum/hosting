@@ -137,6 +137,12 @@
     <div class="text-muted"># Обновление jenkins без обновления openjdk</div>
     <div class="prepend-dollar">portmaster -bdg -x openjdk8 devel/jenkins-lts</div>
   </x-terminal>
+
+  <x-terminal>
+    <div class="text-muted"># Смена оболочки по умолчанию</div>
+    <div class="prepend-dollar">chsh -s /bin/bash</div>
+    <div class="prepend-dollar">sudo chsh -s /bin/bash username</div>
+  </x-terminal>
 </div>
 
 <div class="mt-6">Больше полезностей на <a class="link" href="https://www.cyberciti.biz/faq/category/freebsd/" rel="nofollow">cyberciti.biz</a>.</div>
