@@ -9,7 +9,11 @@ class TorrentsIndexRequest extends AbstractRequest
 
     public function categoryId(): ?int
     {
-        return $this->input('category_id');
+        $categoryId = $this->input('category_id');
+
+        return is_numeric($categoryId)
+            ? $categoryId
+            : null;
     }
 
     public function isFulltextSearch(): bool
