@@ -252,5 +252,314 @@ class FavoriteMovieSeeder extends Seeder
         $movie->title_en = '3 Idiots';
         $movie->title_ru = 'Три идиота';
         $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2010;
+        $movie->kp_id = 581145;
+        $movie->title_en = 'Exporting Raymond';
+        $movie->title_ru = 'Экспорт Рэймонда';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2010;
+        $movie->kp_id = 447301;
+        $movie->title_en = 'Inception';
+        $movie->title_ru = 'Начало';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2010;
+        $movie->kp_id = 502838;
+        $movie->title_en = 'Sherlock';
+        $movie->title_ru = 'Шерлок';
+        $movie->is_tv_series = 1;
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2010;
+        $movie->kp_id = 497882;
+        $movie->title_en = 'Zero II';
+        $movie->title_ru = 'Зеро 2';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2011;
+        $movie->kp_id = 655800;
+        $movie->title_en = 'Black Mirror';
+        $movie->title_ru = 'Черное зеркало';
+        $movie->is_tv_series = 1;
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2011;
+        $movie->kp_id = 574497;
+        $movie->title_en = 'Bron/Broen';
+        $movie->title_ru = 'Мост';
+        $movie->is_tv_series = 1;
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2011;
+        $movie->kp_id = 574688;
+        $movie->title_en = 'Homeland';
+        $movie->title_ru = 'Родина';
+        $movie->is_tv_series = 1;
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2011;
+        $movie->kp_id = 535341;
+        $movie->title_en = 'Intouchables';
+        $movie->title_ru = '1+1';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2011;
+        $movie->kp_id = 472362;
+        $movie->title_en = 'Mission: Impossible - Ghost Protocol';
+        $movie->title_ru = 'Миссия невыполнима: Протокол Фантом';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2011;
+        $movie->kp_id = 571335;
+        $movie->title_en = 'Shameless';
+        $movie->title_ru = 'Бесстыдники';
+        $movie->is_tv_series = 1;
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2011;
+        $movie->kp_id = 557806;
+        $movie->title_en = 'Suits';
+        $movie->title_ru = 'Форс-мажоры';
+        $movie->is_tv_series = 1;
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2011;
+        $movie->kp_id = 484474;
+        $movie->title_en = 'The Guard';
+        $movie->title_ru = 'Однажды в Ирландии';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2012;
+        $movie->kp_id = 760829;
+        $movie->title_en = 'Coherence';
+        $movie->title_ru = 'Связь';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2013;
+        $movie->kp_id = 260162;
+        $movie->title_en = 'Dallas Buyers Club';
+        $movie->title_ru = 'Далласский клуб покупателей';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2013;
+        $movie->kp_id = 577488;
+        $movie->title_en = 'Her';
+        $movie->title_ru = 'Она';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2013;
+        $movie->kp_id = 581937;
+        $movie->title_en = 'House of Cards';
+        $movie->title_ru = 'Карточный домик';
+        $movie->is_tv_series = 1;
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2013;
+        $movie->kp_id = 772017;
+        $movie->title_en = 'Mandariinid';
+        $movie->title_ru = 'Мандарины';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2013;
+        $movie->kp_id = 725190;
+        $movie->title_en = 'Whiplash';
+        $movie->title_ru = 'Одержимость';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2014;
+        $movie->kp_id = 722827;
+        $movie->title_en = 'Birdman';
+        $movie->title_ru = 'Бёрдмэн';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2014;
+        $movie->kp_id = 505851;
+        $movie->title_en = 'Edge of Tomorrow';
+        $movie->title_ru = 'Грань будущего';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2014;
+        $movie->kp_id = 767379;
+        $movie->title_en = 'Fargo';
+        $movie->title_ru = 'Фарго';
+        $movie->is_tv_series = 1;
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2014;
+        $movie->kp_id = 692861;
+        $movie->title_en = 'Gone Girl';
+        $movie->title_ru = 'Исчезнувшая';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2014;
+        $movie->kp_id = 258687;
+        $movie->title_en = 'Interstellar';
+        $movie->title_ru = 'Интерстеллар';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2014;
+        $movie->kp_id = 775727;
+        $movie->title_en = 'Relatos salvajes';
+        $movie->title_ru = 'Дикие истории';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2014;
+        $movie->kp_id = 723959;
+        $movie->title_en = 'Silicon Valley';
+        $movie->title_ru = 'Кремниевая долина';
+        $movie->is_tv_series = 1;
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2014;
+        $movie->kp_id = 681831;
+        $movie->title_en = 'True Detective';
+        $movie->title_ru = 'Настоящий детектив';
+        $movie->is_tv_series = 1;
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2014;
+        $movie->kp_id = 462682;
+        $movie->title_en = 'Wolf of Wall Street';
+        $movie->title_ru = 'Волк с Уолл-стрит';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2015;
+        $movie->kp_id = 645118;
+        $movie->title_en = 'Inside Out';
+        $movie->title_ru = 'Головоломка';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2015;
+        $movie->kp_id = 749540;
+        $movie->title_en = 'Kingsman: The Secret Service';
+        $movie->title_ru = 'Kingsman: Секретная служба';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2015;
+        $movie->kp_id = 821565;
+        $movie->title_en = 'Narcos';
+        $movie->title_ru = 'Нарко';
+        $movie->is_tv_series = 1;
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2016;
+        $movie->kp_id = 778218;
+        $movie->title_en = 'Hardcore Henry';
+        $movie->title_ru = 'Хардкор';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2016;
+        $movie->kp_id = 462649;
+        $movie->title_en = 'The Night Manager';
+        $movie->title_ru = 'Ночной администратор';
+        $movie->is_tv_series = 1;
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2016;
+        $movie->kp_id = 195523;
+        $movie->title_en = 'Westworld';
+        $movie->title_ru = 'Мир Дикого Запада';
+        $movie->is_tv_series = 1;
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2017;
+        $movie->kp_id = 582358;
+        $movie->title_en = '13 Reasons Why';
+        $movie->title_ru = '13 причин почему';
+        $movie->is_tv_series = 1;
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2017;
+        $movie->kp_id = 837552;
+        $movie->title_en = 'American Made';
+        $movie->title_ru = 'Сделано в Америке';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2017;
+        $movie->kp_id = 848297;
+        $movie->title_en = 'Sneaky Pete';
+        $movie->title_ru = 'Подлый Пит';
+        $movie->is_tv_series = 1;
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2017;
+        $movie->kp_id = 1008113;
+        $movie->title_en = 'Taeksi unjeonsa';
+        $movie->title_ru = 'Таксист';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2017;
+        $movie->kp_id = 828242;
+        $movie->title_en = 'The Disaster Artist';
+        $movie->title_ru = 'Горе-творец';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2018;
+        $movie->kp_id = 1176115;
+        $movie->title_en = 'Bodyguard';
+        $movie->title_ru = 'Телохранитель';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2019;
+        $movie->kp_id = 1188529;
+        $movie->title_en = 'Knives Out';
+        $movie->title_ru = 'Достать ножи';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2019;
+        $movie->kp_id = 1143242;
+        $movie->title_en = 'The Gentlemen';
+        $movie->title_ru = 'Джентльмены';
+        $movie->save();
+
+        $movie = new FavoriteMovie;
+        $movie->year = 2019;
+        $movie->kp_id = 462305;
+        $movie->title_en = 'The Irishman';
+        $movie->title_ru = 'Ирландец';
+        $movie->save();
     }
 }
