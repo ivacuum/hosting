@@ -47,7 +47,8 @@ export default {
       const title = $item.attr('title')
 
       if (-1 !== title.search(/fastpic\.ru\/thumb/)) {
-        return this.getOriginalFastpicSrc($item.parent('.postLink').attr('href'))
+        return ''
+        // return this.getOriginalFastpicSrc($item.parent('.postLink').attr('href'))
       } else if (-1 !== title.search(/\.imageban\.ru\/out\//)) {
         return this.getOriginalImagebanSrc($item.parent('.postLink').attr('href'))
       } else if (-1 !== title.search(/\.radikal\.ru/)) {
