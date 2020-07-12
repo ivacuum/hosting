@@ -9,7 +9,7 @@ class MoviesController extends Controller
         return view('life.movies', [
             'moviesByYears' => FavoriteMovie::query()
                 ->orderByDesc('year')
-                ->orderByDesc('title_en')
+                ->orderBy('title_en')
                 ->get()
                 ->groupBy('year'),
         ]);
