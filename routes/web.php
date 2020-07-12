@@ -78,6 +78,7 @@ Route::get('life/countries', [Controllers\Life::class, 'countries']);
 Route::get('life/countries/{slug}', [Controllers\Life::class, 'country']);
 Route::get('life/gigs', [Controllers\Life::class, 'gigs']);
 Route::get('life/gigs/rss', [Controllers\LifeGigsRss::class, 'index']);
+Route::get('life/movies', Controllers\MoviesController::class);
 Route::get('life/rss', [Controllers\LifeTripsRss::class, 'index']);
 Route::get('life/{slug}', [Controllers\Life::class, 'page']);
 

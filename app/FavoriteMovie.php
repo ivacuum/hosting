@@ -30,4 +30,14 @@ class FavoriteMovie extends Model
     {
         return $this->title_ru;
     }
+
+    public function cover(): string
+    {
+        return "https://st.kp.yandex.net/images/film_big/{$this->kp_id}.jpg";
+    }
+
+    public function externalLink(): string
+    {
+        return "https://www.kinopoisk.ru/film/{$this->kp_id}/";
+    }
 }
