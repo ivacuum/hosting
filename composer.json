@@ -33,9 +33,6 @@
     "phpunit/phpunit": "^9.0"
   },
   "autoload": {
-    "classmap": [
-      "database/seeds"
-    ],
     "psr-4": {
       "App\\": "app/"
     }
@@ -46,7 +43,7 @@
     }
   },
   "scripts": {
-    "fresh": "@php artisan migrate:fresh --seed --ansi",
+    "fresh": "@php artisan migrate:fresh --seed --seeder='App\\Seeder\\DatabaseSeeder' --ansi",
     "phpcs": "phpcs --standard=PSR12",
     "post-root-package-install": [
       "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
