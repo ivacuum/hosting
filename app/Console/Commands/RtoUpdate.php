@@ -52,14 +52,14 @@ class RtoUpdate extends Command
                     continue;
                 }
 
-                $torrent->size = $response->getSize();
-                $torrent->title = $response->getTitle();
+                $torrent->size = $response->size;
+                $torrent->title = $response->title;
 
-                if ($response->getInfoHash() !== $torrent->info_hash) {
+                if ($response->infoHash !== $torrent->info_hash) {
                     $topicData = $rto->parseTopicBody($id);
 
-                    $torrent->html = $topicData->getBody();
-                    $torrent->announcer = $topicData->getAnnouncer();
+                    $torrent->html = $topicData->body;
+                    $torrent->announcer = $topicData->announcer;
                     $torrent->registered_at = now();
 
                     // Раздача обновлена
@@ -72,7 +72,7 @@ class RtoUpdate extends Command
                     sleep(1);
                 }
 
-                $torrent->info_hash = $response->getInfoHash();
+                $torrent->info_hash = $response->infoHash;
                 $torrent->save();
             }
         });

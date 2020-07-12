@@ -168,15 +168,15 @@ class Torrents extends Controller
         }
 
         $torrent = new Torrent;
-        $torrent->html = $data->getBody();
-        $torrent->size = $data->getSize();
-        $torrent->title = $data->getTitle();
+        $torrent->html = $data->body;
+        $torrent->size = $data->size;
+        $torrent->title = $data->title;
         $torrent->clicks = 0;
-        $torrent->rto_id = $data->getId();
+        $torrent->rto_id = $data->id;
         $torrent->status = Torrent::STATUS_PUBLISHED;
         $torrent->user_id = $user->id ?? config('cfg.torrent_anonymous_releaser');
-        $torrent->info_hash = $data->getInfoHash();
-        $torrent->announcer = $data->getAnnouncer();
+        $torrent->info_hash = $data->infoHash;
+        $torrent->announcer = $data->announcer;
         $torrent->category_id = $request->categoryId();
         $torrent->registered_at = now();
         $torrent->related_query = '';

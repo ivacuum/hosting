@@ -4,23 +4,13 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class RtoTopicHtmlResponse
 {
-    private $body;
-    private $announcer;
+    public string $body;
+    public string $announcer;
 
     public function __construct(string $html)
     {
         $this->body = $this->parseBodyHtml($html);
         $this->announcer = $this->parseAnnouncerLink($this->parseMagnetLink($html));
-    }
-
-    public function getAnnouncer(): string
-    {
-        return $this->announcer;
-    }
-
-    public function getBody(): string
-    {
-        return $this->body;
     }
 
     private function parseAnnouncerLink(string $magnetLink): string

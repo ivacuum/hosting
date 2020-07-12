@@ -1,6 +1,7 @@
 <?php namespace App\Services;
 
 use Carbon\CarbonImmutable;
+use Carbon\CarbonInterface;
 
 class RtoTopicData
 {
@@ -11,28 +12,28 @@ class RtoTopicData
     const TITLE_REPLACE_FROM = [' )', ' ,', 'HD (1080p)'];
     const TITLE_REPLACE_TO = [')', ',', 'HD 1080p'];
 
-    private $id;
-    private $size;
-    private $title;
-    private $status;
-    private $forumId;
-    private $seeders;
-    private $infoHash;
-    private $posterId;
-    private $registeredAt;
-    private $seederLastSeenAt;
+    public int $id;
+    public int $size;
+    public int $status;
+    public int $forumId;
+    public int $seeders;
+    public int $posterId;
+    public string $title;
+    public string $infoHash;
+    public CarbonInterface $registeredAt;
+    public CarbonInterface $seederLastSeenAt;
 
     public function __construct(
         int $id,
         string $title,
         string $infoHash,
-        CarbonImmutable $registeredAt,
+        CarbonInterface $registeredAt,
         int $status,
         int $size,
         int $forumId,
         int $posterId,
         int $seeders,
-        CarbonImmutable $seederLastSeenAt
+        CarbonInterface $seederLastSeenAt
     ) {
         $this->id = $id;
         $this->size = $size;
@@ -50,7 +51,7 @@ class RtoTopicData
     {
         return new self(
             $id,
-            $json->topic_title,
+            str_replace(self::TITLE_REPLACE_FROM, self::TITLE_REPLACE_TO, $json->topic_title),
             $json->info_hash,
             CarbonImmutable::parse($json->reg_time, 'Europe/Moscow'),
             $json->tor_status,
@@ -62,43 +63,28 @@ class RtoTopicData
         );
     }
 
-    public function getId(): int
-    {
-        return $this->id;
-    }
-
-    public function getInfoHash(): string
-    {
-        return $this->infoHash;
-    }
-
-    public function getRegisteredAt(): CarbonImmutable
-    {
-        return $this->registeredAt;
-    }
-
-    public function getSize(): int
-    {
-        return $this->size;
-    }
-
-    public function getStatus(): int
-    {
-        return $this->status;
-    }
-
-    public function getTitle(): string
-    {
-        return str_replace(self::TITLE_REPLACE_FROM, self::TITLE_REPLACE_TO, $this->title);
-    }
-
     public function isDuplicate(): bool
     {
-        return $this->getStatus() === self::STATUS_DUPLICATE;
+        return $this->status === self::STATUS_DUPLICATE;
     }
 
     public function isPremoderation(): bool
     {
-        return $this->getStatus() === self::STATUS_PREMODERATION;
+        return $this->status === self::STATUS_PREMODERATION;
+    }
+
+    public function toJson()
+    {
+        return [
+            'size' => $this->size,
+            'seeders' => $this->seeders,
+            'forum_id' => $this->forumId,
+            'reg_time' => $this->registeredAt->getTimestamp(),
+            'info_hash' => $this->infoHash,
+            'poster_id' => $this->posterId,
+            'tor_status' => $this->status,
+            'topic_title' => $this->title,
+            'seeder_last_seen' => $this->seederLastSeenAt->getTimestamp(),
+        ];
     }
 }

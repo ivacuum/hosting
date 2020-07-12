@@ -1,52 +1,21 @@
-<?php
-
-namespace App\Services;
-
-use Carbon\CarbonImmutable;
+<?php namespace App\Services;
 
 class RtoTorrentData
 {
-    private $body;
-    private $meta;
+    public int $id;
+    public int $size;
+    public string $body;
+    public string $title;
+    public string $infoHash;
+    public string $announcer;
 
     public function __construct(RtoTopicData $meta, RtoTopicHtmlResponse $body)
     {
-        $this->meta = $meta;
-        $this->body = $body;
-    }
-
-    public function getAnnouncer(): string
-    {
-        return $this->body->getAnnouncer();
-    }
-
-    public function getId(): int
-    {
-        return $this->meta->getId();
-    }
-
-    public function getBody(): string
-    {
-        return $this->body->getBody();
-    }
-
-    public function getInfoHash(): string
-    {
-        return $this->meta->getInfoHash();
-    }
-
-    public function getRegisteredAt(): CarbonImmutable
-    {
-        return $this->meta->getRegisteredAt();
-    }
-
-    public function getSize(): int
-    {
-        return $this->meta->getSize();
-    }
-
-    public function getTitle(): string
-    {
-        return $this->meta->getTitle();
+        $this->id = $meta->id;
+        $this->body = $body->body;
+        $this->size = $meta->size;
+        $this->title = $meta->title;
+        $this->infoHash = $meta->infoHash;
+        $this->announcer = $body->announcer;
     }
 }

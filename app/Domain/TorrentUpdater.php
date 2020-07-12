@@ -20,20 +20,20 @@ class TorrentUpdater
             $torrent->status = $torrent::STATUS_PUBLISHED;
         }
 
-        if ($torrent->info_hash !== $data->getInfoHash()) {
+        if ($torrent->info_hash !== $data->infoHash) {
             $response = $this->rto->parseTopicBody($torrent->rto_id);
 
-            $torrent->html = $response->getBody();
-            $torrent->announcer = $response->getAnnouncer();
+            $torrent->html = $response->body;
+            $torrent->announcer = $response->announcer;
         }
 
-        if ($data->getRegisteredAt()->gt($torrent->registered_at)) {
+        if ($data->registeredAt->gt($torrent->registered_at)) {
             $torrent->registered_at = now();
         }
 
-        $torrent->size = $data->getSize();
-        $torrent->title = $data->getTitle();
-        $torrent->info_hash = $data->getInfoHash();
+        $torrent->size = $data->size;
+        $torrent->title = $data->title;
+        $torrent->info_hash = $data->infoHash;
         $torrent->save();
     }
 }

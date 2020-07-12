@@ -3,6 +3,7 @@
 use App\Factory\CommentFactory;
 use App\Factory\TorrentFactory;
 use App\Factory\UserFactory;
+use App\Http\GuzzleClientFactory;
 use App\Services\Rto;
 use App\Services\RtoTopicData;
 use App\Services\RtoTopicHtmlResponse;
@@ -10,6 +11,7 @@ use App\Services\RtoTorrentData;
 use App\Torrent;
 use App\User;
 use Carbon\CarbonImmutable;
+use GuzzleHttp\Psr7\Response;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Mockery\MockInterface;
 use Tests\TestCase;
@@ -140,28 +142,31 @@ class TorrentTest extends TestCase
 
     public function testStoreAsUser()
     {
+        $stub = TorrentFactory::new()->make();
         $user = UserFactory::new()->create();
-        $rtoId = 1234567890;
-        $categoryId = 2;
 
-        $this->mock(Rto::class, function (MockInterface $mock) use ($rtoId) {
-            $response = new RtoTopicHtmlResponse('<div class="post_body">body<fieldset class="attach"><span class="attach_link"><a href="magnet:?xt=urn:btih:info_hash&tr=announcer"></a></span></fieldset></fieldset>');
-            $topicData = new RtoTopicData($rtoId, 'title', 'info_hash', CarbonImmutable::now(), RtoTopicData::STATUS_APPROVED, 1, 1, 1, 1, CarbonImmutable::now());
-            $torrentData = new RtoTorrentData($topicData, $response);
+        $httpClientFactory = (new GuzzleClientFactory)->forTest([
+            new Response(200, [], json_encode([
+                'result' => [
+                    $stub->rto_id => (new RtoTopicData($stub->rto_id, $stub->title, $stub->info_hash, $stub->registered_at, RtoTopicData::STATUS_APPROVED, $stub->size, 3, 4, 5, now()))->toJson(),
+                ],
+            ])),
+            new Response(200, [],
+                '<div class="post_body">body<fieldset class="attach"><span class="attach_link"><a href="magnet:?xt=urn:btih:' . $stub->info_hash . '&tr=' . urlencode($stub->announcer) . '"></a></span></fieldset></fieldset>'),
+        ]);
 
-            $mock->shouldReceive('findTopicId')->andReturn($rtoId);
-            $mock->shouldReceive('torrentData')->andReturn($torrentData);
-        });
+        $this->swap(Rto::class, new Rto($httpClientFactory));
 
         $response = $this->be($user)
-            ->post('torrents', ['input' => $rtoId, 'category_id' => $categoryId]);
+            ->post('torrents', ['input' => $stub->rto_id, 'category_id' => $stub->category_id])
+            ->assertSessionHasNoErrors();
 
         $torrent = $user->torrents[0];
 
         $response->assertRedirect($torrent->www());
 
-        $this->assertEquals($rtoId, $torrent->rto_id);
-        $this->assertEquals($categoryId, $torrent->category_id);
+        $this->assertEquals($stub->rto_id, $torrent->rto_id);
+        $this->assertEquals($stub->category_id, $torrent->category_id);
     }
 
     public function estStoreDuplicate()

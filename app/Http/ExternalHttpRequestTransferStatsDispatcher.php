@@ -37,7 +37,7 @@ class ExternalHttpRequestTransferStatsDispatcher
             $stats->getHandlerStat('total_time_us') ?? $stats->getHandlerStat('total_time') * 1_000_000,
             $response->getStatusCode(),
             $stats->getHandlerStat('http_version') ?? '',
-            $stats->getHandlerStat('redirect_count'),
+            $stats->getHandlerStat('redirect_count') ?? 0,
             $stats->getHandlerStat('redirect_time_us') ?? $stats->getHandlerStat('redirect_time') * 1_000_000,
             $stats->getHandlerStat('redirect_url') ?? ''
         ));
@@ -48,7 +48,7 @@ class ExternalHttpRequestTransferStatsDispatcher
         $responseSize = $stats->getHandlerStat('download_content_length');
 
         if ($responseSize >= 0) {
-            return $responseSize;
+            return $responseSize ?? 0;
         }
 
         return mb_strlen((string) $stats->getResponse()->getBody());
