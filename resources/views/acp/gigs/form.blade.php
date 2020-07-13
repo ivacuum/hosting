@@ -1,3 +1,5 @@
+<?php /** @var \App\Gig $model */ ?>
+
 @include('tpl.form_errors')
 
 {!! Form::select('artist_id')->required()->values(App\Artist::forInputSelect())->html() !!}
@@ -20,7 +22,7 @@
 
 @if ($model->meta_image)
   <div class="mb-4">
-    <img class="max-w-full h-auto rounded" src="{{ $model->metaImage() }}" alt="">
+    <img class="max-w-full h-auto rounded" src="{{ $model->meta_image }}" alt="">
   </div>
 @endif
 
