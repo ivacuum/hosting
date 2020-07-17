@@ -7,31 +7,43 @@
 
 @ru
   <p>Вход в метро.</p>
+@en
+  <p>Metro entrance.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3844.jpg'])
 
 @ru
   <p>Схема станции.</p>
+@en
+  <p>Station layout.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3855.jpg'])
 
 @ru
   <p>Станция на красной ветке.</p>
+@en
+  <p>Red line station.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3843.jpg'])
 
 @ru
   <p>Станция на зеленой ветке.</p>
+@en
+  <p>Green line station.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3898.jpg'])
 
 @ru
   <p>Аэрофлот немало рекламируется заграницей.</p>
+@en
+  <p>Aeroflot is being extensively advertised outside of Russia.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3893.jpg'])
 
 @ru
   <p>Почтовые ящики.</p>
+@en
+  <p>Postboxes.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3845.jpg'])
 
@@ -78,6 +90,8 @@
 
 @ru
   <p>Остановка трамвая.</p>
+@en
+  <p>Tram stop.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3860.jpg'])
 
