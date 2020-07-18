@@ -112,6 +112,11 @@ class Photo extends Model
         return explode('/', $this->slug)[0];
     }
 
+    public function isGig(): bool
+    {
+        return $this->rel_type === (new Gig)->getMorphClass();
+    }
+
     public function isOnMap(): bool
     {
         return $this->lat && $this->lon;
@@ -131,12 +136,16 @@ class Photo extends Model
 
     public function originalUrl(): string
     {
-        return "https://life.ivacuum.org/{$this->slug}";
+        return $this->isGig()
+            ? "https://life.ivacuum.org/gigs/{$this->slug}"
+            : "https://life.ivacuum.org/{$this->slug}";
     }
 
     public function thumbnailUrl(): string
     {
-        return "https://life.ivacuum.org/-/500x375/{$this->slug}";
+        return $this->isGig()
+            ? "https://life.ivacuum.org/-/500x375/gigs/{$this->slug}"
+            : "https://life.ivacuum.org/-/500x375/{$this->slug}";
     }
 
     public function www(): string
