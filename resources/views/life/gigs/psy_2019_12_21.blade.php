@@ -33,7 +33,7 @@
     <li>어땠을까 <span class="text-sm text-muted">What Would Have Been</span></li>
     <li>DADDY</li>
     <li>나 이런 사람이야 <span class="text-sm text-muted">I'm a Guy Like This</span></li>
-    <li>White Nights</li>
+    <li>White Night</li>
   </ol>
 
   <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 3</h5>
