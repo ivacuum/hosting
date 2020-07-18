@@ -32,6 +32,11 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_4450.jpg'])
 
 @ru
+  <p>Концерт начался с представления нового сингла <a class="link" href="https://www.youtube.com/watch?v=MllMdzj3uvo">White Night</a>. Люди уже подпевали, хотя песня появилась всего парой дней ранее. Затем традиционные правила поведения на концерте и церемония открытия шоу. Удалось даже найти <a class="link" href="https://www.youtube.com/watch?v=G2h28WQTnf8">трек</a>, под который проводилась церемония открытия.</p>
+@endru
+<livewire:youtube title="[4K] 191220 싸이 PSY - 오프닝, I LUV IT 2019 싸이 올나잇스탠드 광끼의 갓싸이 by veneto" v="Q45pvgd0_Fs"/>
+
+@ru
   <p>Поздравление с наступающим Рождеством.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4451.jpg'])
@@ -64,7 +69,7 @@
 @component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2019.12.20.jpg'])
   <h5 class="mb-1">@ru Сет @en Set @endru 1</h5>
   <ol class="list-inside pl-0">
-    <li>I LUV IT</li>
+    <li><a class="link" href="https://www.youtube.com/watch?v=Q45pvgd0_Fs&t=595">I LUV IT</a></li>
     <li>오늘밤 새 <span class="text-sm text-muted">All Night Long</span></li>
     <li>끝 <span class="text-sm text-muted">The End</span></li>
     <li>내 눈에는 <span class="text-sm text-muted">In My Eyes</span></li>
@@ -80,7 +85,7 @@
     <li>어땠을까 <span class="text-sm text-muted">What Would Have Been</span></li>
     <li>DADDY</li>
     <li>나 이런 사람이야 <span class="text-sm text-muted">I'm a Guy Like This</span></li>
-    <li>White Nights</li>
+    <li>White Night</li>
   </ol>
 
   <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 3</h5>
@@ -97,7 +102,7 @@
     <li>We are the One</li>
     <li>연예인 <span class="text-sm text-muted">Entertainer</span></li>
     <li>Sigh</li>
-    <li>에술이야 <span class="text-sm text-muted">It's Art</span></li>
+    <li><a class="link" href="https://www.youtube.com/watch?v=aIkXxFt8_dw">에술이야</a> <span class="text-sm text-muted">It's Art</span></li>
   </ol>
 
   <h5 class="mt-4 mb-1">Encore 1</h5>
@@ -122,7 +127,7 @@
   <h5 class="mt-4 mb-1">Encore 2</h5>
   <ol class="list-inside pl-0" start="38">
     <li>챔피언 <span class="text-sm text-muted">Champion</span></li>
-    <li>연예인 <span class="text-sm text-muted">Entertainer</span></li>
+    <li><a class="link" href="https://www.youtube.com/watch?v=SuAwlBDyBc0">연예인</a> <span class="text-sm text-muted">Entertainer</span></li>
     <li>강남스타일 <span class="text-sm text-muted">Gangnam Style</span></li>
     <li>언젠가는 <span class="text-sm text-muted">Someday</span></li>
     <li>에술이야 <span class="text-sm text-muted">It's Art</span></li>
@@ -146,7 +151,7 @@
 @endru
 
 @ru
-  <p>В первую ночь не была задействована диско-шар-голова. Освещение было на песне It's Art было на манер 2018 года. Нашлось видео с прекрасным ракурсом.</p>
+  <p>В первую ночь не была задействована диско-шар-голова. Освещение на песне It's Art было на манер 2018 года. Нашлось видео с прекрасным ракурсом.</p>
 @endru
 <livewire:youtube title="[4K] 191220 싸이 PSY - 예술이야 2019 싸이 올나잇스탠드 광끼의 갓싸이 by veneto" v="aIkXxFt8_dw"/>
 
