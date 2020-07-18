@@ -65,7 +65,7 @@
 
 @component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2019.07.13.jpg', 'includeTitle' => false])
   @ru
-    <div class="mb-1">Примерный сет-лист.</div>
+    <div class="mb-1">Примерный сетлист.</div>
   @en
     <div class="mb-1">Setlist.</div>
   @endru
