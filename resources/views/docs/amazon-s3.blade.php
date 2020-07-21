@@ -9,21 +9,20 @@
 
 @section('content')
 <h2>Amazon S3</h2>
+<p><a class="link" href="https://awspolicygen.s3.amazonaws.com/policygen.html">Официальный генератор политик доступа</a>.</p>
 
 <x-terminal-pre>
 <span class="text-muted"># Политика свободного чтения</span>
 {
-  "Version": "2008-10-17",
-  "Id": "Policy1420183272983",
+  "Version": "2012-10-17",
+  "Id": "<span class="bg-green-300 font-bold">Readable Policy Name</span>",
   "Statement": [
     {
       "Sid": "Stmt1420183261977",
       "Effect": "Allow",
-      "Principal": {
-        "AWS": "*"
-      },
+      "Principal": "*",
       "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::«bucket»/*"
+      "Resource": "arn:aws:s3:::<span class="bg-green-300 font-bold">bucket</span>/*"
     }
   ]
 }
