@@ -11,6 +11,7 @@
 <h2>Nginx</h2>
 
 <x-terminal-pre>
+@verbatim
 <span class="text-muted"># Проксирование файлов с S3</span>
 proxy_cache_path /tmp/nginx-s3-cache levels=1:2 keys_zone=s3_cache:10m inactive=168h max_size=250m;
 
@@ -38,5 +39,6 @@ location @s3 {
 
   proxy_pass           https://<span class="bg-green-300 font-bold">bucket</span>.s3-eu-west-1.amazonaws.com;
 }
+@endverbatim
 </x-terminal-pre>
 @endsection
