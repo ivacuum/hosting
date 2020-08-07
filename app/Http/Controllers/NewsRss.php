@@ -21,7 +21,7 @@ class NewsRss extends Controller
                 $link = url($news->www());
 
                 return [
-                    'title' => $news->title,
+                    'title' => htmlspecialchars($news->title),
                     'link' => $link . '?from=rss-title',
                     'guid' => $link,
                     'description' => $news->html,

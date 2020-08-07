@@ -14,11 +14,10 @@ class Life extends Controller
 {
     public function __construct()
     {
-        $this->middleware('breadcrumbs:menu.life,life');
         $this->middleware('breadcrumbs:life.calendar,life/calendar')->only('calendar');
-        $this->middleware('breadcrumbs:menu.cities,life/cities')->only('cities');
-        $this->middleware('breadcrumbs:menu.countries,life/countries')->only('countries', 'country');
-        $this->middleware('breadcrumbs:menu.gigs,life/gigs')->only('gigs');
+        $this->middleware('breadcrumbs:Города,life/cities')->only('cities');
+        $this->middleware('breadcrumbs:Страны,life/countries')->only('countries', 'country');
+        $this->middleware('breadcrumbs:Концерты,life/gigs')->only('gigs');
     }
 
     public function index(LifeIndexRequest $request)
@@ -37,7 +36,7 @@ class Life extends Controller
 
         return view($this->view, [
             'trips' => $trips,
-            'metaTitle' => trans('menu.life'),
+            'metaTitle' => __('Заметки'),
         ]);
     }
 
@@ -82,7 +81,7 @@ class Life extends Controller
 
         return view($this->view, [
             'cities' => $cities,
-            'metaTitle' => trans('menu.cities'),
+            'metaTitle' => __('Города'),
         ]);
     }
 
@@ -108,7 +107,7 @@ class Life extends Controller
 
         $city->loadCountry();
 
-        \Breadcrumbs::push(trans('menu.countries'), "life/countries")
+        \Breadcrumbs::push(__('Страны'), "life/countries")
             ->push($city->country->title, "life/countries/{$city->country->slug}")
             ->push($city->title);
 
@@ -124,7 +123,7 @@ class Life extends Controller
     {
         return view($this->view, [
             'countries' => Country::allWithCitiesAndTrips(1),
-            'metaTitle' => trans('menu.countries'),
+            'metaTitle' => __('Страны'),
         ]);
     }
 
@@ -157,7 +156,7 @@ class Life extends Controller
 
         abort_unless(view()->exists($tpl), 404);
 
-        \Breadcrumbs::push(trans('menu.gigs'), 'life/gigs')
+        \Breadcrumbs::push(__('Концерты'), 'life/gigs')
             ->push($gig->title);
 
         event(new \App\Events\Stats\GigViewed($gig->id));
@@ -185,7 +184,7 @@ class Life extends Controller
         ]);
     }
 
-    public function page($page)
+    public function page(string $page)
     {
         if ($page === 'japanese') {
             return redirect(path(JapaneseController::class), 301);
@@ -201,7 +200,7 @@ class Life extends Controller
             return $this->trip($trip);
         }
 
-        if (null !== $city = \CityHelper::findBySlug($page)) {
+        if ($city = \CityHelper::findBySlug($page)) {
             return $this->city($city);
         }
 
@@ -220,7 +219,7 @@ class Life extends Controller
 
         $trip->loadCityAndCountry();
 
-        \Breadcrumbs::push(trans('menu.countries'), "life/countries")
+        \Breadcrumbs::push(__('Страны'), "life/countries")
             ->push($trip->city->country->title, "life/countries/{$trip->city->country->slug}")
             ->push($trip->city->title, "life/{$trip->city->slug}")
             ->push($trip->localizedDate());

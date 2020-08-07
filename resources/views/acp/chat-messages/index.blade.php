@@ -1,3 +1,5 @@
+<?php /** @var \App\ChatMessage $model */ ?>
+
 @extends('acp.list')
 
 @section('heading-after-search')
@@ -28,20 +30,20 @@
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
       <td><input class="form-checkbox models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
       <td class="md:text-right">
-        <a href="{{ path([$controller, 'show'], $model) }}">
+        <a href="{{ $model->wwwAcp() }}">
           {{ $model->id }}
         </a>
       </td>
       <td>
-        @if (null !== $model->user)
-          <a href="{{ path([App\Http\Controllers\Acp\Users::class, 'show'], $model->user_id) }}">
+        @if ($model->user)
+          <a href="{{ $model->wwwAcpUser() }}">
             {{ $model->user->displayName() }}
           </a>
         @endif
       </td>
       <td>{{ $model->text }}</td>
       <td>
-        @if ($model->status === App\ChatMessage::STATUS_HIDDEN)
+        @if ($model->isHidden())
           <span class="tooltipped tooltipped-n" aria-label="Сообщение скрыто">
             @svg (eye-slash)
           </span>

@@ -13,7 +13,7 @@
             'href' => path([App\Http\Controllers\Life::class, 'index']),
             'isActive' => $controller === App\Http\Controllers\Life::class,
           ])
-            {{ trans('menu.life') }}
+            {{ __('Заметки') }}
           @endcomponent
           @component('tpl.menu-item', [
             'href' => path([App\Http\Controllers\News::class, 'index']),

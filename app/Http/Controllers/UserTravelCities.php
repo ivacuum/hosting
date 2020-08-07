@@ -18,8 +18,8 @@ class UserTravelCities extends UserTravel
             })
             ->sortBy(City::titleField());
 
-        \Breadcrumbs::push(trans('menu.life'), "@{$login}/travel");
-        \Breadcrumbs::push(trans('menu.cities'));
+        \Breadcrumbs::push(__('Заметки'), "@{$login}/travel");
+        \Breadcrumbs::push(__('Города'));
 
         return view('user-travel.cities', ['cities' => $cities]);
     }
@@ -48,8 +48,8 @@ class UserTravelCities extends UserTravel
 
         $city->loadCountry();
 
-        \Breadcrumbs::push(trans('menu.life'), "@{$login}/travel");
-        \Breadcrumbs::push(trans('menu.countries'), "@{$login}/travel/countries");
+        \Breadcrumbs::push(__('Заметки'), "@{$login}/travel");
+        \Breadcrumbs::push(__('Страны'), "@{$login}/travel/countries");
         \Breadcrumbs::push($city->country->title, "@{$login}/travel/countries/{$city->country->slug}");
         \Breadcrumbs::push($city->title);
 

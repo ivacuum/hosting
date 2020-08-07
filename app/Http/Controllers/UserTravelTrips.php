@@ -30,7 +30,7 @@ class UserTravelTrips extends UserTravel
             ->get(Trip::COLUMNS_LIST)
             ->groupBy(fn (Trip $model) => $model->year);
 
-        \Breadcrumbs::push(trans('menu.life'));
+        \Breadcrumbs::push(__('Заметки'));
 
         return view('user-travel.index', ['trips' => $trips]);
     }
@@ -46,8 +46,8 @@ class UserTravelTrips extends UserTravel
 
         $trip->loadCityAndCountry();
 
-        \Breadcrumbs::push(trans('menu.life'), "@{$login}/travel")
-            ->push(trans('menu.countries'), "@{$login}/travel/countries")
+        \Breadcrumbs::push(__('Заметки'), "@{$login}/travel")
+            ->push(__('Страны'), "@{$login}/travel/countries")
             ->push($trip->city->country->title, "@{$login}/travel/countries/{$trip->city->country->slug}")
             ->push($trip->city->title, "@{$login}/travel/cities/{$trip->city->slug}")
             ->push($trip->localizedDate());

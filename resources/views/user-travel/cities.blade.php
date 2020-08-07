@@ -1,5 +1,5 @@
 @extends('user-travel.base', [
-  'metaTitle' => trans('menu.cities'),
+  'metaTitle' => __('Города'),
 ])
 
 @section('content')

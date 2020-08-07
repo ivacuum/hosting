@@ -2,12 +2,12 @@
 
 use App\Trip;
 
-class LifeTripsRss extends Controller
+class TripsRssController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         $meta = [
-            'title' => trans('menu.life'),
+            'title' => __('Заметки'),
             'link' => url(path([Life::class, 'index'])),
             'description' => trans('life.trips.rss.description'),
         ];

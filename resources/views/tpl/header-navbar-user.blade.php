@@ -3,7 +3,7 @@
   href="{{ path([App\Http\Controllers\Notifications::class, 'index']) }}"
   aria-label="{{ __('Уведомления') }}"
 >
-  <span class="{{ null !== Auth::user()->unreadNotifications()->first() ? 'has-unread-label' : '' }}">
+  <span class="{{ Auth::user()->unreadNotifications()->first() ? 'has-unread-label' : '' }}">
     @svg (bell)
   </span>
 </a>

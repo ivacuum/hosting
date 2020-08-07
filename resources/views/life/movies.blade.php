@@ -1,13 +1,6 @@
 <?php /** @var \App\FavoriteMovie $movie */ ?>
 
-@extends('life.base', [
-  'metaTitle' => 'Любимые фильмы и сериалы',
-
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Любимые фильмы и сериалы'],
-  ]
-])
+@extends('life.base')
 
 @section('content')
 <h1 class="h2">Фильмы и сериалы, достойные многократного просмотра</h1>

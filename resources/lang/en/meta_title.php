@@ -31,6 +31,8 @@ return [
 
     'korean' => 'Korean language',
 
+    'movies' => __('Любимые фильмы и сериалы'),
+
     'retracker.index' => 'What retracker is and how to use it · retracker.local',
     'retracker.dev' => 'About retracker development',
     'retracker.usage' => 'How to use retracker',

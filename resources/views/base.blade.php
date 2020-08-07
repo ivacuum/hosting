@@ -55,7 +55,7 @@
       <div>
         @svg (file-richtext)
       </div>
-      <div class="text-2xs sm:text-sm mt-1 sm:mt-0 sm:ml-2">{{ trans('menu.life') }}</div>
+      <div class="text-2xs sm:text-sm mt-1 sm:mt-0 sm:ml-2">{{ __('Заметки') }}</div>
     </a>
     <a
       class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 {{ $controller === App\Http\Controllers\Photos::class ? 'active' : '' }}"

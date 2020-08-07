@@ -54,4 +54,19 @@ class ChatMessage extends Model
     {
         return "#{$this->id}";
     }
+
+    public function isHidden(): bool
+    {
+        return $this->status === self::STATUS_HIDDEN;
+    }
+
+    public function wwwAcp(): string
+    {
+        return path([Http\Controllers\Acp\ChatMessages::class, 'show'], $this);
+    }
+
+    public function wwwAcpUser(): string
+    {
+        return path([Http\Controllers\Acp\Users::class, 'show'], $this->user_id);
+    }
 }

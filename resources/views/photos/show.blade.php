@@ -90,10 +90,10 @@ Mousetrap.bind('right', () => {
     @endif
   </div>
 </div>
-@if (null !== $prev)
+@if ($prev)
   <img hidden src="{{ $prev->originalUrl() }}" alt="">
 @endif
-@if (null !== $next)
+@if ($next)
   <img hidden src="{{ $next->originalUrl() }}" alt="">
 @endif
 @endsection

@@ -24,7 +24,7 @@
   <div>
     <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Life::class, 'index']) }}">
       <div class="leading-none text-3xl mr-2">📝</div>
-      <h2 class="text-2xl mb-0"><span class="link">{{ trans('menu.life') }}</span></h2>
+      <h2 class="text-2xl mb-0"><span class="link">{{ __('Заметки') }}</span></h2>
     </a>
     @ru
       <div>Мои заметки о жизни: поездки по городам России и мира, посещенные концерты, понравившиеся фильмы и книги.</div>

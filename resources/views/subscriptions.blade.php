@@ -93,7 +93,7 @@
     </a>
     <a
       class="text-lg svg-flex svg-label small-caps"
-      href="{{ path([App\Http\Controllers\LifeTripsRss::class, 'index']) }}"
+      href="{{ path(App\Http\Controllers\TripsRssController::class) }}"
     >
       @svg (rss-square)
       {{ mb_strtolower(trans('my.notify_trips')) }}

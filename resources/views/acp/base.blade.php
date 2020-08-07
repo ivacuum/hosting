@@ -25,7 +25,7 @@
   ]),
 ])
   @slot('title')
-    {{ trans('menu.life') }}
+    {{ __('Заметки') }}
   @endslot
 
   <a class="dropdown-item" href="{{ $localeUri }}/acp/cities">{{ trans('acp.cities.index') }}</a>

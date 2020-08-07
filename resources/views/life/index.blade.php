@@ -1,7 +1,7 @@
 @extends('life.base')
 
 @push('head')
-<link rel="alternate" type="application/rss+xml" title="{{ trans('menu.life') }}" href="{{ url(path([App\Http\Controllers\LifeTripsRss::class, 'index'])) }}">
+<link rel="alternate" type="application/rss+xml" title="{{ __('Заметки') }}" href="{{ url(path(App\Http\Controllers\TripsRssController::class)) }}">
 @endpush
 
 @section('content')
@@ -26,7 +26,7 @@
           {{ trans('mail.subscribe') }}
         </a>
       @endif
-      <a class="svg-flex svg-label small-caps" href="{{ path([App\Http\Controllers\LifeTripsRss::class, 'index']) }}">
+      <a class="svg-flex svg-label small-caps" href="{{ path(App\Http\Controllers\TripsRssController::class) }}">
         @svg (rss-square)
         rss
       </a>
@@ -47,7 +47,7 @@
         <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'chillout') }}">Chillout</a></div>
         <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'books') }}">Книги</a></div>
       @endru
-      <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'gigs') }}">{{ trans('menu.gigs') }}</a></div>
+      <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'gigs') }}">{{ __('Концерты') }}</a></div>
       @ru
         <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'favorite-posts') }}">Любимые посты</a></div>
         <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'podcasts') }}">Подкасты</a></div>

@@ -71,16 +71,18 @@ Route::get('korean', Ctrl\KoreanController::class);
 Route::get('korean/psy', Ctrl\KoreanPsyController::class);
 Route::get('korean/psy/{song}', Ctrl\KoreanPsySongController::class);
 
-Route::get('life', [Ctrl\Life::class, 'index']);
-Route::get('life/calendar', [Ctrl\Life::class, 'calendar']);
-Route::get('life/cities', [Ctrl\Life::class, 'cities']);
-Route::get('life/countries', [Ctrl\Life::class, 'countries']);
-Route::get('life/countries/{slug}', [Ctrl\Life::class, 'country']);
-Route::get('life/gigs', [Ctrl\Life::class, 'gigs']);
-Route::get('life/gigs/rss', [Ctrl\LifeGigsRss::class, 'index']);
-Route::get('life/movies', Ctrl\MoviesController::class);
-Route::get('life/rss', [Ctrl\LifeTripsRss::class, 'index']);
-Route::get('life/{slug}', [Ctrl\Life::class, 'page']);
+Route::middleware('breadcrumbs:Заметки,life')->group(function () {
+    Route::get('life', [Ctrl\Life::class, 'index']);
+    Route::get('life/calendar', [Ctrl\Life::class, 'calendar']);
+    Route::get('life/cities', [Ctrl\Life::class, 'cities']);
+    Route::get('life/countries', [Ctrl\Life::class, 'countries']);
+    Route::get('life/countries/{slug}', [Ctrl\Life::class, 'country']);
+    Route::get('life/gigs', [Ctrl\Life::class, 'gigs']);
+    Route::get('life/gigs/rss', [Ctrl\LifeGigsRss::class, 'index']);
+    Route::get('life/movies', Ctrl\MoviesController::class)->middleware('breadcrumbs:Любимые фильмы и сериалы,life/movies');
+    Route::get('life/rss', Ctrl\TripsRssController::class);
+    Route::get('life/{slug}', [Ctrl\Life::class, 'page']);
+});
 
 Route::get('mail/click/{timestamp}/{id}', [Ctrl\Mail::class, 'click'])->name('mail.click');
 Route::get('mail/report/{timestamp}/{id}', [Ctrl\Mail::class, 'report'])->middleware('auth');

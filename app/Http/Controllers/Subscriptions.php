@@ -40,7 +40,7 @@ class Subscriptions extends Controller
 
     public function edit()
     {
-        if (null !== request()->user()) {
+        if (request()->user()) {
             return redirect(path([MySettings::class, 'edit']));
         }
 

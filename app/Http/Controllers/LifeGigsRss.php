@@ -7,7 +7,7 @@ class LifeGigsRss extends Controller
     public function index()
     {
         $meta = [
-            'title' => trans('menu.gigs'),
+            'title' => __('Концерты'),
             'link' => url(path([Life::class, 'gigs'])),
             'description' => trans('life.gigs.rss.description'),
         ];
