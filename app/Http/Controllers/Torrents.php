@@ -114,7 +114,7 @@ class Torrents extends Controller
 
     public function show(Torrent $torrent)
     {
-        \Breadcrumbs::push(trans('torrents.index'), 'torrents');
+        \Breadcrumbs::push(trans('Торренты'), 'torrents');
         \Breadcrumbs::push($torrent->shortTitle());
 
         event(new \App\Events\Stats\TorrentViewed($torrent->id));

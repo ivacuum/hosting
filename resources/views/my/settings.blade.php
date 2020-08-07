@@ -34,7 +34,7 @@
       <x-invalid-feedback field="theme"/>
     </div>
 
-    <div class="font-bold">{{ trans('torrents.index') }}</div>
+    <div class="font-bold">{{ __('Торренты') }}</div>
     <div class="mb-4">
       <input type="hidden" name="torrent_short_title" value="0">
       <label class="flex items-center">

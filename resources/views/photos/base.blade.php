@@ -9,37 +9,37 @@
           class="nav-link {{ $view === 'photos.index' ? 'active' : '' }}"
           href="{{ path([App\Http\Controllers\Photos::class, 'index']) }}"
         >
-          {{ trans('photos.new') }}
+          {{ __('Новые фото') }}
         </a>
         <a
           class="nav-link {{ in_array($view, ['photos.trip', 'photos.trips']) ? 'active' : '' }}"
           href="{{ path([App\Http\Controllers\Photos::class, 'trips']) }}">
-          {{ trans('photos.trips') }}
+          {{ __('Поездки') }}
         </a>
         <a
           class="nav-link {{ in_array($view, ['photos.tag', 'photos.tags']) ? 'active' : '' }}"
           href="{{ path([App\Http\Controllers\Photos::class, 'tags']) }}">
-          {{ trans('photos.tags') }}
+          {{ __('Тэги') }}
         </a>
         <a
           class="nav-link {{ $view === 'photos.map' ? 'active' : '' }}"
           href="{{ path([App\Http\Controllers\Photos::class, 'map']) }}">
-          {{ trans('photos.map') }}
+          {{ __('Карта') }}
         </a>
         <a
           class="nav-link {{ in_array($view, ['photos.cities', 'photos.city']) ? 'active' : '' }}"
           href="{{ path([App\Http\Controllers\Photos::class, 'cities']) }}">
-          {{ trans('photos.cities') }}
+          {{ __('Города') }}
         </a>
         <a
           class="nav-link {{ in_array($view, ['photos.countries', 'photos.country']) ? 'active' : '' }}"
           href="{{ path([App\Http\Controllers\Photos::class, 'countries']) }}">
-          {{ trans('photos.countries') }}
+          {{ __('Страны') }}
         </a>
         <a
           class="nav-link {{ $view === 'photos.faq' ? 'active' : '' }}"
           href="{{ path([App\Http\Controllers\Photos::class, 'faq']) }}">
-          {{ trans('photos.faq') }}
+          {{ __('Помощь') }}
         </a>
       </nav>
     </div>

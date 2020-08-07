@@ -7,9 +7,9 @@ class NewsRss extends Controller
     public function index()
     {
         $meta = [
-            'title' => trans('news.index'),
+            'title' => __('Новости'),
             'link' => url(path([\App\Http\Controllers\News::class, 'index'])),
-            'description' => trans('news.index'),
+            'description' => __('Новости'),
         ];
 
         $items = News::where('status', News::STATUS_PUBLISHED)

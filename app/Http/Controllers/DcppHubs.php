@@ -8,7 +8,7 @@ class DcppHubs extends Controller
     public function __construct()
     {
         $this->middleware('breadcrumbs:dcpp.index,dc');
-        $this->middleware('breadcrumbs:dcpp.hubs');
+        $this->middleware('breadcrumbs:Хабы');
     }
 
     public function index(ViewHelper $viewHelper)

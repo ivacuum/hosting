@@ -23,7 +23,7 @@ class CommentConfirmMail extends Mailable implements ShouldQueue
 
     public function build()
     {
-        return $this->subject(trans('comments.pending_title'))
+        return $this->subject(__('Подтверждение публикации комментария'))
             ->markdown('emails.comment-confirm')
             ->with('locale', $this->locale);
     }

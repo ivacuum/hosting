@@ -113,9 +113,9 @@ class Torrent extends Model
         $format = $this->registered_at->year == date('Y') ? '%e %B' : '%e %B %Y';
 
         if ($this->registered_at->isToday()) {
-            return trans('torrents.today') . ", " . $this->registered_at->formatLocalized($format);
+            return __('Сегодня') . ", " . $this->registered_at->formatLocalized($format);
         } elseif ($this->registered_at->isYesterday()) {
-            return trans('torrents.yesterday') . ", " . $this->registered_at->formatLocalized($format);
+            return __('Вчера') . ", " . $this->registered_at->formatLocalized($format);
         }
 
         return $this->registered_at->formatLocalized($format);

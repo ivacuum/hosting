@@ -4,7 +4,7 @@ class KoreanController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('breadcrumbs:korean.index');
+        $this->middleware('breadcrumbs:Корейский язык');
     }
 
     public function __invoke()

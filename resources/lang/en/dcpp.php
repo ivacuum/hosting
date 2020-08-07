@@ -2,12 +2,10 @@
 
 return [
     'for' => 'For',
-    'hubs' => 'Hubs',
     'index' => 'About DC++',
     'links' => 'Links',
     'pages' => 'Pages',
     'clients' => 'Client software',
-    'download' => 'Download',
     'dc_clients' => 'DC++ client software',
     'screenshots' => 'Screenshots',
     'about_software' => 'About',

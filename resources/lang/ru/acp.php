@@ -100,11 +100,11 @@ return [
     'notifications.show' => 'Уведомление',
     'notifications.index' => 'Уведомления',
 
-    'photos.add' => 'Добавить фото',
+    'photos.add' => 'Добавить фотку',
     'photos.edit' => 'Редактирование',
-    'photos.show' => 'Фотография',
-    'photos.index' => 'Фотографии',
-    'photos.create' => 'Новое фото',
+    'photos.show' => 'Фотка',
+    'photos.index' => 'Фотки',
+    'photos.create' => 'Новая фотка',
 
     'radicals.edit' => 'Редактирование',
     'radicals.show' => 'Ключ',

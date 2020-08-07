@@ -19,7 +19,7 @@
             'href' => path([App\Http\Controllers\News::class, 'index']),
             'isActive' => $controller === App\Http\Controllers\News::class,
           ])
-            {{ trans('news.index') }}
+            {{ __('Новости') }}
           @endcomponent
           @if (!$isCrawler)
             @ru
@@ -35,7 +35,7 @@
             'href' => path([App\Http\Controllers\Photos::class, 'trips']),
             'isActive' => $controller === App\Http\Controllers\Photos::class,
           ])
-            {{ trans('photos.index') }}
+            {{ __('Фотки') }}
           @endcomponent
         @show
       </nav>

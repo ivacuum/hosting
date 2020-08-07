@@ -22,7 +22,7 @@
         <input
           class="form-input rounded-r-none js-search-input"
           enterkeyhint="search"
-          placeholder="{{ trans('torrents.search') }}"
+          placeholder="{{ __('Поиск...') }}"
           autocapitalize="none"
           wire:model.lazy="q"
         >

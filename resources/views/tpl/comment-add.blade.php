@@ -73,13 +73,13 @@
         required
         class="form-textarea {{ !$isMobile ? 'resize-none js-autosize-textarea' : '' }}"
         name="text"
-        placeholder="{{ trans('comments.placeholder') }}"
+        placeholder="{{ __('Оставьте комментарий...') }}"
         rows="{{ !$isMobile ? 1 : 4 }}"
         maxlength="1000"
       >{{ old('text') }}</textarea>
       <x-invalid-feedback field="text"/>
       <button class="btn btn-primary mt-2">
-        {{ trans('comments.send') }}
+        {{ __('Отправить') }}
       </button>
     </form>
   </div>

@@ -15,7 +15,7 @@
     <div class="hidden md:block">
       <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}">
         <div class="leading-none text-3xl mr-2">🧲</div>
-        <h2 class="text-2xl mb-0"><span class="link">{{ trans('torrents.index') }}</span></h2>
+        <h2 class="text-2xl mb-0"><span class="link">{{ __('Торренты') }}</span></h2>
       </a>
       <div>Сервис для скачивания файлов у многочисленных пользователей сети интернет без регистрации и рейтинга.</div>
       {{--<div class="text-muted">Дата запуска: 5 января 2017 г.</div>--}}
@@ -36,7 +36,7 @@
   @ru
     <div class="md:hidden">
       <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\News::class, 'index']) }}">
-        <h2 class="text-2xl mb-0"><span class="link">{{ trans('news.index') }}</span></h2>
+        <h2 class="text-2xl mb-0"><span class="link">{{ __('Новости') }}</span></h2>
       </a>
       <div>Хроника развития сайта с 2004 года.</div>
     </div>
@@ -70,7 +70,7 @@
   @ru
     <div class="hidden md:block">
       <a class="flex items-center mb-2 link-parent" href="http://t.ivacuum.ru">
-        <h2 class="text-2xl mb-0"><span class="link">{{ trans('torrents.index') }}</span></h2>
+        <h2 class="text-2xl mb-0"><span class="link">{{ __('Торренты') }}</span></h2>
       </a>
       <div>Исторический форум сервиса для обмена файлами внутри локальной сети Билайн.</div>
       {{--<p class="text-muted">Дата запуска: 5 июля 2010 г.</p>--}}
@@ -110,7 +110,7 @@
     <div>
       <a class="flex items-center mb-2 link-parent" href="{{ path(App\Http\Controllers\KoreanController::class) }}">
         <div class="leading-none text-3xl mr-2">🇰🇷</div>
-        <h2 class="text-2xl mb-0"><span class="link">{{ trans('korean.index') }}</span></h2>
+        <h2 class="text-2xl mb-0"><span class="link">{{ __('Корейский язык') }}</span></h2>
       </a>
       @ru
         <div>Тренажер для запоминания корейского алфавита. Кириллизация песен Сая.</div>

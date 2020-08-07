@@ -26,7 +26,7 @@
 @endru
 
 <div class="mt-12 max-w-600px">
-  <div class="h3 mt-12">{{ trans('issues.create') }}</div>
+  <div class="h3 mt-12">{{ __('Обратная связь') }}</div>
   @ru
     <p>Поделитесь своим опытом использования тренажера или задайте вопрос. Мы постараемся обработать информацию и сделать тренажер еще лучше. <span class="whitespace-no-wrap" lang="ja">ありがとうございます。</span></p>
   @en

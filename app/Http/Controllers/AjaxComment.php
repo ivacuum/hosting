@@ -83,10 +83,10 @@ class AjaxComment extends Controller
     {
         if (method_exists($model, 'www')) {
             return $comment === null
-                ? redirect($model->www())->with('message', trans('comments.pending'))
+                ? redirect($model->www())->with('message', __('Комментарий ожидает активации. Мы отправили вам ссылку на электронную почту.'))
                 : redirect($model->www($comment->anchor()));
         }
 
-        return back()->with('message', trans($comment === null ? 'comments.pending' : 'comments.posted'));
+        return back()->with('message', __($comment === null ? 'Комментарий ожидает активации. Мы отправили вам ссылку на электронную почту.' : 'Комментарий опубликован'));
     }
 }

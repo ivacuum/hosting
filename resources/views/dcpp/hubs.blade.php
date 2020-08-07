@@ -28,7 +28,7 @@
       <p>Usually, it is just enough to click a link to connect to a hub. However, if it didn't work for you, you can manually copy-paste the address into your DC++ client.</p>
     @endru
 
-    <div class="h3 mt-12">{{ trans('issues.create') }}</div>
+    <div class="h3 mt-12">{{ __('Обратная связь') }}</div>
     @ru
       <p>Знаете хаб, достойный добавления в список? Пришлите его нам, чтобы мы пополнили страницу.</p>
     @en

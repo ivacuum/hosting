@@ -19,13 +19,13 @@
   <span class="mr-1">
     @svg (windows)
   </span>
-  {{ trans('dcpp.download') }} 32-Bit &middot; {{ ViewHelper::size(8_046_097) }}
+  {{ __('Скачать') }} 32-Bit &middot; {{ ViewHelper::size(8_046_097) }}
 </a>
 <a class="btn btn-success my-1 mr-2 text-lg px-4 py-2" href="{{ path([App\Http\Controllers\Files::class, 'download'], 134) }}">
   <span class="mr-1">
     @svg (windows)
   </span>
-  {{ trans('dcpp.download') }} 64-Bit &middot; {{ ViewHelper::size(16_138_442) }}
+  {{ __('Скачать') }} 64-Bit &middot; {{ ViewHelper::size(16_138_442) }}
 </a>
 @endsection
 

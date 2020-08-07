@@ -12,7 +12,7 @@
     <span class="mr-1">
       @svg (magnet)
     </span>
-    {{ trans('torrents.download') }}
+    {{ __('Скачать') }}
     <span class="mx-1">&middot;</span>
     {{ ViewHelper::size($torrent->size) }}
   </a>
@@ -35,12 +35,12 @@
     @svg (magnet)
     {{ ViewHelper::number($torrent->clicks) }}
   </span>
-  <a class="svg-flex svg-muted tooltipped tooltipped-n" href="{{ $torrent->externalLink() }}" aria-label="{{ trans('torrents.source') }}">
+  <a class="svg-flex svg-muted tooltipped tooltipped-n" href="{{ $torrent->externalLink() }}" aria-label="{{ __('Первоисточник') }}">
     @svg (external-link)
   </a>
   <a class="btn btn-success svg-flex svg-label js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ path([App\Http\Controllers\Torrents::class, 'magnet'], $torrent) }}">
     @svg (magnet)
-    {{ trans('torrents.download') }}
+    {{ __('Скачать') }}
     <span class="mx-1">&middot;</span>
     {{ ViewHelper::size($torrent->size) }}
   </a>
@@ -59,7 +59,7 @@
 
 @if (optional($relatedTorrents = $torrent->relatedTorrents())->count())
   <div class="h3 mt-12">
-    {{ trans('torrents.related') }}
+    {{ __('Связанные раздачи') }}
     <span class="text-base text-muted">{{ $relatedTorrents->count() }}</span>
   </div>
   <?php /** @var \App\Torrent $row */ ?>
@@ -81,7 +81,7 @@
       </a>
       <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center md:text-left whitespace-no-wrap js-magnet"
          href="{{ $row->magnet() }}"
-         title="{{ trans('torrents.download') }}"
+         title="{{ __('Скачать') }}"
          data-action="{{ path([App\Http\Controllers\Torrents::class, 'magnet'], $row) }}"
       >
         @svg (magnet)

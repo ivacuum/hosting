@@ -81,9 +81,9 @@ class Comment extends Model
             : '%e&nbsp;%B&nbsp;%Y, %H:%M';
 
         if ($this->created_at->isToday()) {
-            return trans('torrents.today') . ", " . $this->created_at->formatLocalized($format);
+            return __('Сегодня') . ", " . $this->created_at->formatLocalized($format);
         } elseif ($this->created_at->isYesterday()) {
-            return trans('torrents.yesterday') . ", " . $this->created_at->formatLocalized($format);
+            return __('Вчера') . ", " . $this->created_at->formatLocalized($format);
         }
 
         return $this->created_at->formatLocalized($format);

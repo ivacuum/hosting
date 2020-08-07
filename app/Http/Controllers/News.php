@@ -15,7 +15,7 @@ class News extends Controller
             ->orderByDesc('created_at')
             ->paginate();
 
-        \Breadcrumbs::push(trans('news.index'), 'news');
+        \Breadcrumbs::push(__('Новости'), 'news');
 
         return view('news.index', ['news' => $news]);
     }
@@ -65,7 +65,7 @@ class News extends Controller
 
         event(new \App\Events\Stats\NewsViewed($news->id));
 
-        \Breadcrumbs::push(trans('news.index'), 'news')
+        \Breadcrumbs::push(__('Новости'), 'news')
             ->push($news->title);
 
         return view($this->view, [

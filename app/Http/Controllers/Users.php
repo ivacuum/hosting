@@ -6,7 +6,7 @@ class Users extends Controller
 {
     public function __construct()
     {
-        $this->middleware('breadcrumbs:users.index,users');
+        $this->middleware('breadcrumbs:Пользователи,users');
     }
 
     public function index()

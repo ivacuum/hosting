@@ -4,8 +4,8 @@ class KoreanPsySongController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('breadcrumbs:korean.index,korean');
-        $this->middleware('breadcrumbs:korean.psy,korean/psy');
+        $this->middleware('breadcrumbs:Корейский язык,korean');
+        $this->middleware('breadcrumbs:Кириллизация песен PSY,korean/psy');
     }
 
     public function __invoke(string $song)

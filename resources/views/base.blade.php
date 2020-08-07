@@ -64,7 +64,7 @@
       <div>
         @svg (picture-o)
       </div>
-      <div class="text-2xs sm:text-sm mt-1 sm:mt-0 sm:ml-2">{{ trans('photos.index') }}</div>
+      <div class="text-2xs sm:text-sm mt-1 sm:mt-0 sm:ml-2">{{ __('Фотки') }}</div>
     </a>
     @if (Auth::check())
       <a
@@ -155,7 +155,7 @@
           @endif
           <div>
             <a href="{{ path([App\Http\Controllers\Issues::class, 'create']) }}">
-              {{ trans('issues.create') }}
+              {{ __('Обратная связь') }}
             </a>
           </div>
         @show

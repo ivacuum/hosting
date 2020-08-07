@@ -16,13 +16,13 @@ class Photos extends Controller
 {
     public function __construct()
     {
-        $this->middleware('breadcrumbs:photos.index,photos');
-        $this->middleware('breadcrumbs:photos.cities,photos/cities')->only('cities', 'city');
-        $this->middleware('breadcrumbs:photos.countries,photos/countries')->only('countries', 'country');
-        $this->middleware('breadcrumbs:photos.faq,photos/faq')->only('faq');
-        $this->middleware('breadcrumbs:photos.map,photos/map')->only('map');
-        $this->middleware('breadcrumbs:photos.tags,photos/tags')->only('tags');
-        $this->middleware('breadcrumbs:photos.trips,photos/trips')->only('trip', 'trips');
+        $this->middleware('breadcrumbs:Фотки,photos');
+        $this->middleware('breadcrumbs:Города,photos/cities')->only('cities', 'city');
+        $this->middleware('breadcrumbs:Страны,photos/countries')->only('countries', 'country');
+        $this->middleware('breadcrumbs:Помощь,photos/faq')->only('faq');
+        $this->middleware('breadcrumbs:Карта,photos/map')->only('map');
+        $this->middleware('breadcrumbs:Тэги,photos/tags')->only('tags');
+        $this->middleware('breadcrumbs:Поездки,photos/trips')->only('trip', 'trips');
     }
 
     public function index()
@@ -172,20 +172,20 @@ class Photos extends Controller
         if ($tagId) {
             $tag = Tag::findOrFail($tagId);
 
-            \Breadcrumbs::push(trans('photos.tags'), 'photos/tags')
+            \Breadcrumbs::push(__('Тэги'), 'photos/tags')
                 ->push($tag->breadcrumb(), "photos/tags/{$tagId}");
         } elseif ($cityId) {
-            \Breadcrumbs::push(trans('photos.cities'), 'photos/cities')
+            \Breadcrumbs::push(__('Города'), 'photos/cities')
                 ->push($photo->rel->city->breadcrumb(), "photos/cities/{$photo->rel->city->slug}");
         } elseif ($tripId) {
-            \Breadcrumbs::push(trans('photos.trips'), 'photos/trips')
+            \Breadcrumbs::push(__('Поездки'), 'photos/trips')
                 ->push($photo->rel->breadcrumb(), "photos/trips/{$tripId}");
         } elseif ($countryId) {
-            \Breadcrumbs::push(trans('photos.countries'), 'photos/countries')
+            \Breadcrumbs::push(__('Страны'), 'photos/countries')
                 ->push($photo->rel->city->country->breadcrumb(), "photos/countries/{$photo->rel->city->country->slug}");
         }
 
-        \Breadcrumbs::push(trans('photos.show'));
+        \Breadcrumbs::push(__('Просмотр фотографии'));
 
         return view($this->view, [
             'next' => $next->first(),
@@ -206,7 +206,7 @@ class Photos extends Controller
             ->orderByDesc('id')
             ->get();
 
-        \Breadcrumbs::push(trans('photos.tags'), 'photos/tags')
+        \Breadcrumbs::push(__('Тэги'), 'photos/tags')
             ->push($tag->breadcrumb());
 
         event(new \App\Events\Stats\TagViewed($tag->id));

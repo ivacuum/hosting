@@ -1,5 +1,5 @@
 {{-- Раздача обновлена --}}
-{{ trans("notifications.{$basename}") }}
+{{ trans("ui.notifications.{$basename}") }}
 <a class="link" href="{{ path([App\Http\Controllers\Torrents::class, 'show'], $notification->data['id']) }}">{{ Str::limit($notification->data['title'], 100) }}</a>
 <time
   class="text-muted"
@@ -12,6 +12,6 @@
     href="{{ ViewHelper::magnet($notification->data['info_hash'], $notification->data['announcer'], $notification->data['title']) }}"
     data-action="{{ path([App\Http\Controllers\Torrents::class, 'magnet'], $notification->data['id']) }}"
   >
-    {{ trans('torrents.download') }}
+    {{ __('Скачать') }}
   </a>
 </div>

@@ -1,6 +1,8 @@
 <?php
 /**
  * @var \App\Photo $photo
+ * @var \App\Photo $next
+ * @var \App\Photo $prev
  */
 ?>
 
@@ -22,14 +24,14 @@ Mousetrap.bind('right', () => {
 <div class="grid lg:grid-cols-6 gap-6 -mt-2">
   <div class="lg:col-span-5">
     <div class="mobile-wide relative text-center">
-      @if (null !== $next)
+      @if ($next)
         <a
           class="absolute top-0 w-1/2 h-full z-10 left-0"
           id="prev_page"
           href="{{ path([App\Http\Controllers\Photos::class, 'show'], [$next->id, 'city_id' => $cityId, 'country_id' => $countryId, 'tag_id' => $tagId, 'trip_id' => $tripId]) }}"
         >&nbsp;</a>
       @endif
-      @if (null !== $prev)
+      @if ($prev)
         <a
           class="absolute top-0 w-1/2 h-full z-10 left-1/2"
           id="next_page"
@@ -37,12 +39,12 @@ Mousetrap.bind('right', () => {
         >&nbsp;</a>
       @endif
       <div class="inline-block relative">
-        @if (null !== $next)
+        @if ($next)
           <div class="absolute top-1/2 left-0 text-base md:text-2xl leading-none text-white svg-shadow -mt-2 md:-mt-3 pl-1">
             @svg (chevron-left)
           </div>
         @endif
-        @if (null !== $prev)
+        @if ($prev)
           <div class="absolute top-1/2 right-0 text-base md:text-2xl leading-none text-white photo-overlay-arrowt -mt-2 md:-mt-3 pr-1">
             @svg (chevron-right)
           </div>
@@ -53,7 +55,7 @@ Mousetrap.bind('right', () => {
   </div>
   <div>
     <div class="flex flex-wrap md:flex-col">
-      <div class="mr-2 md:mr-0 text-muted">{{ trans('photos.story') }}</div>
+      <div class="mr-2 md:mr-0 text-muted">{{ __('История') }}</div>
       <a class="flex flex-wrap items-center link-parent" href="{{ $photo->rel->www() }}#{{ basename($photo->slug) }}">
         <img class="flag-16 svg-shadow mr-1" src="{{ $photo->rel->city->country->flagUrl() }}" alt="">
         <span class="link">{{ $photo->rel->title }}</span>
@@ -61,13 +63,13 @@ Mousetrap.bind('right', () => {
     </div>
 
     <div class="flex flex-wrap md:flex-col mt-1 md:mt-4">
-      <div class="mr-2 md:mr-0 text-muted">{{ trans('photos.date') }}</div>
+      <div class="mr-2 md:mr-0 text-muted">{{ __('Дата снимка') }}</div>
       <div>{{ $photo->rel->period() }} {{ $photo->rel->year }}</div>
     </div>
 
     <div class="mt-4">
       <div class="text-muted">
-        {{ trans('photos.geotags') }}
+        {{ __('Геотэги') }}
         @if ($photo->isOnMap())
           <a href="{{ path([App\Http\Controllers\Photos::class, 'map'], ['lat' => $photo->lat, 'lon' => $photo->lon, 'zoom' => 16]) }}">@svg (map-marker)</a>
         @endif
@@ -78,7 +80,7 @@ Mousetrap.bind('right', () => {
 
     @if (sizeof($photo->tags))
       <div class="mt-4">
-        <div class="text-muted">{{ trans('photos.tags') }}</div>
+        <div class="text-muted">{{ __('Тэги') }}</div>
         @foreach ($photo->tags as $tag)
           <div>
             <a class="link" href="{{ path([App\Http\Controllers\Photos::class, 'tag'], $tag) }}">#{{ $tag->title }}</a>

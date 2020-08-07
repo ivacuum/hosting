@@ -19,7 +19,7 @@
     class="btn btn-success my-1 mr-2 text-lg px-4 py-2"
     href="{{ path([App\Http\Controllers\Files::class, 'download'], 49) }}"
   >
-    {{ trans('dcpp.download') }} 32bit
+    {{ __('Скачать') }} 32bit
     &middot;
     {{ ViewHelper::size(36_586_416) }}
   </a>
@@ -27,7 +27,7 @@
     class="btn btn-success my-1 text-lg px-4 py-2"
     href="{{ path([App\Http\Controllers\Files::class, 'download'], 50) }}"
   >
-    {{ trans('dcpp.download') }} 64bit
+    {{ __('Скачать') }} 64bit
     &middot;
     {{ ViewHelper::size(36_562_647) }}
   </a>
@@ -39,7 +39,7 @@
     class="btn btn-success my-1 mr-2 text-lg px-4 py-2"
     href="{{ path([App\Http\Controllers\Files::class, 'download'], 74) }}"
   >
-    {{ trans('dcpp.download') }} 32bit
+    {{ __('Скачать') }} 32bit
     &middot;
     {{ ViewHelper::size(36_756_573) }}
   </a>
@@ -47,7 +47,7 @@
     class="btn btn-success my-1 text-lg px-4 py-2"
     href="{{ path([App\Http\Controllers\Files::class, 'download'], 148) }}"
   >
-    {{ trans('dcpp.download') }} 64bit
+    {{ __('Скачать') }} 64bit
     &middot;
     {{ ViewHelper::size(36_924_947) }}
   </a>
@@ -59,7 +59,7 @@
     class="btn btn-success my-1 mr-2 text-lg px-4 py-2"
     href="{{ path([App\Http\Controllers\Files::class, 'download'], 51) }}"
   >
-    {{ trans('dcpp.download') }} 32bit
+    {{ __('Скачать') }} 32bit
     &middot;
     {{ ViewHelper::size(36_626_671) }}
   </a>
@@ -67,7 +67,7 @@
     class="btn btn-success my-1 text-lg px-4 py-2"
     href="{{ path([App\Http\Controllers\Files::class, 'download'], 147) }}"
   >
-    {{ trans('dcpp.download') }} 64bit
+    {{ __('Скачать') }} 64bit
     &middot;
     {{ ViewHelper::size(36_508_412) }}
   </a>

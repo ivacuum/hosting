@@ -42,7 +42,7 @@
         'href' => path([App\Http\Controllers\Notifications::class, 'index']),
         'classes' => 'md:hidden',
       ])
-        {{ trans('notifications.index') }}
+        {{ __('Уведомления') }}
       @endcomponent
       @component('tpl.list-group-item', [
         'href' => path([App\Http\Controllers\Auth\SignIn::class, 'logout']),

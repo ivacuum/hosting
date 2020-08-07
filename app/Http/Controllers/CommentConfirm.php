@@ -8,7 +8,7 @@ class CommentConfirm extends Controller
     {
         if ($comment->status !== Comment::STATUS_PENDING) {
             return redirect($comment->rel->www())
-                ->with('message', trans('comments.already_confirmed'));
+                ->with('message', __('Комментарий уже активирован.'));
         }
 
         $comment->status = Comment::STATUS_PUBLISHED;

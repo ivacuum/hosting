@@ -31,7 +31,7 @@
   'href' => path([App\Http\Controllers\Dcpp::class, 'page'], 'hubs'),
   'isActive' => $page === 'hubs',
 ])
-  {{ trans('dcpp.hubs') }}
+  {{ __('Хабы') }}
 @endcomponent
 <div class="flex md:hidden">
   @component('tpl.menu-item', [
@@ -106,7 +106,7 @@
     class="hidden md:block btn btn-success leading-tight text-sm ml-2"
     href="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}"
   >
-    {{ trans('torrents.index') }}
+    {{ __('Торренты') }}
   </a>
 @endru
 @endsection
