@@ -14,17 +14,6 @@ use Carbon\CarbonInterval;
 
 class Photos extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('breadcrumbs:Фотки,photos');
-        $this->middleware('breadcrumbs:Города,photos/cities')->only('cities', 'city');
-        $this->middleware('breadcrumbs:Страны,photos/countries')->only('countries', 'country');
-        $this->middleware('breadcrumbs:Помощь,photos/faq')->only('faq');
-        $this->middleware('breadcrumbs:Карта,photos/map')->only('map');
-        $this->middleware('breadcrumbs:Тэги,photos/tags')->only('tags');
-        $this->middleware('breadcrumbs:Поездки,photos/trips')->only('trip', 'trips');
-    }
-
     public function index()
     {
         $photos = Photo::query()
@@ -32,7 +21,7 @@ class Photos extends Controller
             ->orderByDesc('id')
             ->paginate(24);
 
-        return view($this->view, ['photos' => $photos]);
+        return view('photos.index', ['photos' => $photos]);
     }
 
     public function cities(CityHelper $cityHelper)
@@ -45,7 +34,7 @@ class Photos extends Controller
             })
             ->sortBy(City::titleField());
 
-        return view($this->view, ['cities' => $cities]);
+        return view('photos.cities', ['cities' => $cities]);
     }
 
     public function city(string $slug, CityHelper $cityHelper)
@@ -64,7 +53,7 @@ class Photos extends Controller
 
         \Breadcrumbs::push($city->title);
 
-        return view($this->view, [
+        return view('photos.city', [
             'city' => $city,
             'photos' => $photos,
             'metaTitle' => $city->title,
@@ -73,7 +62,7 @@ class Photos extends Controller
 
     public function countries()
     {
-        return view($this->view, [
+        return view('photos.countries', [
             'countries' => Country::allWithPublishedTrips(1),
         ]);
     }
@@ -94,7 +83,7 @@ class Photos extends Controller
 
         \Breadcrumbs::push($country->title);
 
-        return view($this->view, [
+        return view('photos.country', [
             'photos' => $photos,
             'country' => $country,
             'metaTitle' => $country->title,
@@ -103,7 +92,7 @@ class Photos extends Controller
 
     public function faq()
     {
-        return view($this->view);
+        return view('photos.faq');
     }
 
     public function map(PhotosMapRequest $request)
@@ -121,12 +110,12 @@ class Photos extends Controller
                 ->first()
             : null;
 
-        return view($this->view, ['photo' => $photo]);
+        return view('photos.map', ['photo' => $photo]);
     }
 
     public function show(Photo $photo)
     {
-        abort_unless($photo->status === Photo::STATUS_PUBLISHED, 404);
+        abort_unless($photo->isPublished(), 404);
 
         $photo->load('rel', 'tags');
         $photo->rel->loadCityAndCountry();
@@ -187,7 +176,7 @@ class Photos extends Controller
 
         \Breadcrumbs::push(__('Просмотр фотографии'));
 
-        return view($this->view, [
+        return view('photos.show', [
             'next' => $next->first(),
             'prev' => $prev->first(),
             'photo' => $photo,
@@ -206,12 +195,11 @@ class Photos extends Controller
             ->orderByDesc('id')
             ->get();
 
-        \Breadcrumbs::push(__('Тэги'), 'photos/tags')
-            ->push($tag->breadcrumb());
+        \Breadcrumbs::push($tag->breadcrumb());
 
         event(new \App\Events\Stats\TagViewed($tag->id));
 
-        return view($this->view, [
+        return view('photos.tag', [
             'tag' => $tag,
             'photos' => $photos,
             'metaTitle' => "#{$tag->title} · " . \ViewHelper::plural('photos', sizeof($tag->photos)),
@@ -231,7 +219,7 @@ class Photos extends Controller
             ->orderBy(Tag::titleField())
             ->get();
 
-        return view($this->view, ['tags' => $tags]);
+        return view('photos.tags', ['tags' => $tags]);
     }
 
     public function trip(Trip $trip)
@@ -244,9 +232,9 @@ class Photos extends Controller
             ->orderByDesc('id')
             ->get();
 
-        \Breadcrumbs::push($trip->title);
+        \Breadcrumbs::push($trip->breadcrumb());
 
-        return view($this->view, [
+        return view('photos.trip', [
             'trip' => $trip,
             'photos' => $photos,
         ]);
@@ -254,7 +242,7 @@ class Photos extends Controller
 
     public function trips()
     {
-        return view($this->view, [
+        return view('photos.trips', [
             'trips' => TripFactory::tripswithCover(),
         ]);
     }

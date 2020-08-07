@@ -119,7 +119,13 @@ class Photo extends Model
 
     public function isOnMap(): bool
     {
-        return $this->lat && $this->lon;
+        return $this->lat
+            && $this->lon;
+    }
+
+    public function isPublished(): bool
+    {
+        return $this->status === self::STATUS_PUBLISHED;
     }
 
     public function mobileUrl(): string
