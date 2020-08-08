@@ -67,9 +67,12 @@ Route::get('japanese/words-trainer', Ctrl\JapaneseWordsTrainerController::class)
 
 Route::post('js/typo', Ctrl\JsTypo::class);
 
-Route::get('korean', Ctrl\KoreanController::class);
-Route::get('korean/psy', Ctrl\KoreanPsyController::class);
-Route::get('korean/psy/{song}', Ctrl\KoreanPsySongController::class);
+Route::middleware('breadcrumbs:Корейский язык,korean')->group(function () {
+    Route::get('korean', Ctrl\KoreanController::class);
+    Route::get('korean/hangul', Ctrl\KoreanHangulController::class)->middleware('breadcrumbs:Хангыль');
+    Route::get('korean/psy', Ctrl\KoreanPsyController::class)->middleware('breadcrumbs:Кириллизация песен PSY');
+    Route::get('korean/psy/{song}', Ctrl\KoreanPsySongController::class)->middleware('breadcrumbs:Кириллизация песен PSY,korean/psy');
+});
 
 Route::middleware('breadcrumbs:Заметки,life')->group(function () {
     Route::get('life', [Ctrl\Life::class, 'index']);

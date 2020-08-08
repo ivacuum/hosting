@@ -4,12 +4,6 @@ use Symfony\Component\Finder\Finder;
 
 class KoreanPsyController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('breadcrumbs:Корейский язык,korean');
-        $this->middleware('breadcrumbs:Кириллизация песен PSY');
-    }
-
     public function __invoke()
     {
         $songs = [];
