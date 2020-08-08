@@ -4,7 +4,7 @@
 
 @section('content')
 <h1 class="h2">
-  {{ __('Посещенные города') }}
+  @lang('Посещенные города')
   <span class="text-base text-muted">{{ sizeof($cities) }}</span>
 </h1>
 <nav class="flex flex-wrap text-sm mb-4">

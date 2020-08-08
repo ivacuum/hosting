@@ -15,7 +15,7 @@
     <div class="hidden md:block">
       <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}">
         <div class="leading-none text-3xl mr-2">🧲</div>
-        <h2 class="text-2xl mb-0"><span class="link">{{ __('Торренты') }}</span></h2>
+        <h2 class="text-2xl mb-0"><span class="link">@lang('Торренты')</span></h2>
       </a>
       <div>Сервис для скачивания файлов у многочисленных пользователей сети интернет без регистрации и рейтинга.</div>
       {{--<div class="text-muted">Дата запуска: 5 января 2017 г.</div>--}}
@@ -24,7 +24,7 @@
   <div>
     <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Life::class, 'index']) }}">
       <div class="leading-none text-3xl mr-2">📝</div>
-      <h2 class="text-2xl mb-0"><span class="link">{{ __('Заметки') }}</span></h2>
+      <h2 class="text-2xl mb-0"><span class="link">@lang('Заметки')</span></h2>
     </a>
     @ru
       <div>Мои заметки о жизни: поездки по городам России и мира, посещенные концерты, понравившиеся фильмы и книги.</div>
@@ -36,7 +36,7 @@
   @ru
     <div class="md:hidden">
       <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\NewsController::class, 'index']) }}">
-        <h2 class="text-2xl mb-0"><span class="link">{{ __('Новости') }}</span></h2>
+        <h2 class="text-2xl mb-0"><span class="link">@lang('Новости')</span></h2>
       </a>
       <div>Хроника развития сайта с 2004 года.</div>
     </div>
@@ -70,14 +70,14 @@
   @ru
     <div class="hidden md:block">
       <a class="flex items-center mb-2 link-parent" href="http://t.ivacuum.ru">
-        <h2 class="text-2xl mb-0"><span class="link">{{ __('Торренты') }}</span></h2>
+        <h2 class="text-2xl mb-0"><span class="link">@lang('Торренты')</span></h2>
       </a>
       <div>Исторический форум сервиса для обмена файлами внутри локальной сети Билайн.</div>
       {{--<p class="text-muted">Дата запуска: 5 июля 2010 г.</p>--}}
     </div>
     <div>
       <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\ParserVk::class, 'index']) }}">
-        <h2 class="text-2xl mb-0"><span class="link">{{ __('Парсер ВК') }}</span></h2>
+        <h2 class="text-2xl mb-0"><span class="link">@lang('Парсер ВК')</span></h2>
       </a>
       <div>Ежедневная подборка десяти лучших постов выбранных страниц и групп ВК.</div>
       {{--<div class="text-muted">Дата запуска: 2 октября 2014 г.</div>--}}
@@ -86,7 +86,7 @@
   <div>
     <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Coupons::class, 'index']) }}">
       <div class="leading-none text-3xl mr-2">🎁</div>
-      <h2 class="text-2xl mb-0"><span class="link">{{ __('Промокоды и купоны') }}</span></h2>
+      <h2 class="text-2xl mb-0"><span class="link">@lang('Промокоды и купоны')</span></h2>
     </a>
     @ru
       <div>Коллекция способов сэкономить на услугах известных сервисов.</div>
@@ -98,7 +98,7 @@
   <div>
     <a class="flex items-center mb-2 link-parent" href="{{ path(App\Http\Controllers\Japanese::class) }}">
       <div class="leading-none text-3xl mr-2">🇯🇵</div>
-      <h2 class="text-2xl mb-0"><span class="link">{{ __('Японский язык') }}</span></h2>
+      <h2 class="text-2xl mb-0"><span class="link">@lang('Японский язык')</span></h2>
     </a>
     @ru
       <div>Тренажер для запоминания слоговых азбук. Набор ключей, кандзи и словарных слов для самостоятельного изучения и повторения.</div>
@@ -110,7 +110,7 @@
     <div>
       <a class="flex items-center mb-2 link-parent" href="{{ path(App\Http\Controllers\Korean::class) }}">
         <div class="leading-none text-3xl mr-2">🇰🇷</div>
-        <h2 class="text-2xl mb-0"><span class="link">{{ __('Корейский язык') }}</span></h2>
+        <h2 class="text-2xl mb-0"><span class="link">@lang('Корейский язык')</span></h2>
       </a>
       @ru
         <div>Тренажер для запоминания корейского алфавита. Кириллизация песен Сая.</div>

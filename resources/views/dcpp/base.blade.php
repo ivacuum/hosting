@@ -17,7 +17,7 @@
   'href' => path([App\Http\Controllers\Dcpp::class, 'index']),
   'isActive' => $page === 'index',
 ])
-  {{ __('О DC++') }}
+  @lang('О DC++')
 @endcomponent
 @ru
   @component('tpl.menu-item', [
@@ -31,7 +31,7 @@
   'href' => path([App\Http\Controllers\Dcpp::class, 'page'], 'hubs'),
   'isActive' => $page === 'hubs',
 ])
-  {{ __('Хабы') }}
+  @lang('Хабы')
 @endcomponent
 <div class="flex md:hidden">
   @component('tpl.menu-item', [
@@ -106,7 +106,7 @@
     class="hidden md:block btn btn-success leading-tight text-sm ml-2"
     href="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}"
   >
-    {{ __('Торренты') }}
+    @lang('Торренты')
   </a>
 @endru
 @endsection

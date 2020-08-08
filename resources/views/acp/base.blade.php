@@ -25,7 +25,7 @@
   ]),
 ])
   @slot('title')
-    {{ __('Заметки') }}
+    @lang('Заметки')
   @endslot
 
   <a class="dropdown-item" href="{{ $localeUri }}/acp/cities">{{ trans('acp.cities.index') }}</a>
@@ -45,7 +45,7 @@
   ]),
 ])
   @slot('title')
-    {{ __('Хостинг') }}
+    @lang('Хостинг')
   @endslot
 
   <a class="dropdown-item" href="{{ $localeUri }}/acp/clients">{{ trans('acp.clients.index') }}</a>
@@ -65,7 +65,7 @@
   ])
 ])
   @slot('title')
-    {{ __('Ресурсы') }}
+    @lang('Ресурсы')
   @endslot
 
   <a class="dropdown-item" href="{{ $localeUri }}/acp/chat-messages">{{ trans('acp.chat-messages.index') }}</a>
@@ -101,7 +101,7 @@
   ])
 ])
   @slot('title')
-    {{ __('Сайт') }}
+    @lang('Сайт')
   @endslot
 
   <a class="dropdown-item" href="{{ $localeUri }}/acp/metrics">{{ trans('acp.metrics.index') }}</a>

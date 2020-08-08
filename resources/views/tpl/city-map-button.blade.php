@@ -7,6 +7,6 @@
     data-lon="{{ $city->lon }}"
   >
     @svg (map-marker)
-    {{ __('На карте') }}
+    @lang('На карте')
   </button>
 @endif

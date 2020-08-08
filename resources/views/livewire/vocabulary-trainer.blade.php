@@ -109,7 +109,7 @@
   </div>
   <div>
     <details class="border text-sm rounded overflow-hidden" {{ $openSettings ? 'open' : '' }}>
-      <summary class="border-b bg-gray-100 text-gray-500 hover:text-gray-700 px-5 py-2" itemprop="name">{{ trans('japanese.settings') }}: <span class="lowercase">{{ $hiragana ? trans('japanese.hiragana') : trans('japanese.katakana') }}, {{ __('Уровни') }} {{ $level * 10 - 9 }}–{{ $level * 10 }}</span></summary>
+      <summary class="border-b bg-gray-100 text-gray-500 hover:text-gray-700 px-5 py-2" itemprop="name">{{ trans('japanese.settings') }}: <span class="lowercase">{{ $hiragana ? trans('japanese.hiragana') : trans('japanese.katakana') }}, @lang('Уровни') {{ $level * 10 - 9 }}–{{ $level * 10 }}</span></summary>
       <div class="px-5 py-3 text-sm">
         <div class="h5">{{ trans('japanese.syllabary') }}</div>
         <div class="text-gray-500 mb-2">{{ trans('japanese.settings.syllabary_help') }}</div>
@@ -128,7 +128,7 @@
           >{{ trans('japanese.katakana') }}</button>
         </div>
 
-        <div class="h5 mt-6">{{ __('Уровни') }} {{ $level * 10 - 9 }}–{{ $level * 10 }}</div>
+        <div class="h5 mt-6">@lang('Уровни') {{ $level * 10 - 9 }}–{{ $level * 10 }}</div>
         <div class="text-gray-500 mb-2">{{ trans('japanese.settings.levels_help') }}</div>
         <div class="flex">
           <button

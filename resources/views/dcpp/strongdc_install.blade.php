@@ -24,13 +24,13 @@
           <span class="mr-1">
             @svg (windows)
           </span>
-          {{ __('Скачать') }} 32-Bit &middot; {{ ViewHelper::size(8_046_097) }}
+          @lang('Скачать') 32-Bit &middot; {{ ViewHelper::size(8_046_097) }}
         </a>
         <a class="btn btn-success my-1" href="{{ path([App\Http\Controllers\Files::class, 'download'], 134) }}">
           <span class="mr-1">
             @svg (windows)
           </span>
-          {{ __('Скачать') }} 64-Bit &middot; {{ ViewHelper::size(16_138_442) }}
+          @lang('Скачать') 64-Bit &middot; {{ ViewHelper::size(16_138_442) }}
         </a>
       </p>
     </li>

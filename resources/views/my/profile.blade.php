@@ -39,11 +39,11 @@
     </div>
 
     <button class="btn btn-primary">
-      {{ __('Сохранить изменения') }}
+      @lang('Сохранить изменения')
     </button>
   </form>
 
-  <h3 class="mt-12">{{ __('Аватар') }}</h3>
+  <h3 class="mt-12">@lang('Аватар')</h3>
   <avatar-uploader
     delete-action="{{ path([App\Http\Controllers\MyAvatar::class, 'destroy']) }}"
     update-action="{{ path([App\Http\Controllers\MyAvatar::class, 'update']) }}"

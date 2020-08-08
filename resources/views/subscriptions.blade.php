@@ -30,7 +30,7 @@
         value="{{ App\User::NOTIFY_MAIL }}"
         {{ old('gigs', request('gigs')) ? 'checked' : '' }}
       >
-      {{ __('Концерты') }}
+      @lang('Концерты')
     </label>
 
     <input type="hidden" name="news" value="{{ App\User::NOTIFY_NO }}">
@@ -42,7 +42,7 @@
         value="{{ App\User::NOTIFY_MAIL }}"
         {{ old('news', request('news')) ? 'checked' : '' }}
       >
-      {{ __('Новости сайта') }}
+      @lang('Новости сайта')
     </label>
 
     <div class="mb-4">
@@ -55,7 +55,7 @@
           value="{{ App\User::NOTIFY_MAIL }}"
           {{ old('trips', request('trips')) ? 'checked' : '' }}
         >
-        {{ __('Путешествия') }}
+        @lang('Путешествия')
       </label>
     </div>
 
@@ -84,21 +84,21 @@
       href="{{ path(App\Http\Controllers\GigsRss::class) }}"
     >
       @svg (rss-square)
-      {{ __('Концерты') }}
+      @lang('Концерты')
     </a>
     <a
       class="text-lg svg-flex svg-label lowercase small-caps mr-4"
       href="{{ path(App\Http\Controllers\NewsRss::class) }}"
     >
       @svg (rss-square)
-      {{ __('Новости сайта') }}
+      @lang('Новости сайта')
     </a>
     <a
       class="text-lg svg-flex svg-label lowercase small-caps"
       href="{{ path(App\Http\Controllers\TripsRss::class) }}"
     >
       @svg (rss-square)
-      {{ __('Путешествия') }}
+      @lang('Путешествия')
     </a>
   </div>
 </div>

@@ -1,12 +1,12 @@
-<?php \Breadcrumbs::push(trans('life.german')); ?>
+<?php \Breadcrumbs::push(__('Немецкий')); ?>
 
 @extends('life.base', [
-  'metaTitle' => trans('life.german'),
+  'metaTitle' => __('Немецкий'),
   'noLanguageSelector' => $locale === 'ru',
 ])
 
 @section('content')
-<h3>{{ trans('life.german') }}</h3>
+<h3>@lang('Немецкий')</h3>
 @ru
   <p class="mb-12">Конспект информации, освоенной во время изучения языка.</p>
 @endru

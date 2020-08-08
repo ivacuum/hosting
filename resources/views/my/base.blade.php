@@ -24,25 +24,25 @@
         'href' => path([App\Http\Controllers\MyPassword::class, 'edit']),
         'isActive' => $controller === App\Http\Controllers\MyPassword::class,
       ])
-        {{ __('Пароль') }}
+        @lang('Пароль')
       @endcomponent
       @component('tpl.list-group-item', [
         'href' => path([App\Http\Controllers\MySettings::class, 'edit']),
         'isActive' => $controller === App\Http\Controllers\MySettings::class,
       ])
-        {{ __('Настройки') }}
+        @lang('Настройки')
       @endcomponent
       @component('tpl.list-group-item', [
         'href' => path([App\Http\Controllers\MyTrips::class, 'index']),
         'isActive' => $controller === App\Http\Controllers\MyTrips::class,
       ])
-        {{ __('Поездки') }}
+        @lang('Поездки')
       @endcomponent
       @component('tpl.list-group-item', [
         'href' => path([App\Http\Controllers\Notifications::class, 'index']),
         'classes' => 'md:hidden',
       ])
-        {{ __('Уведомления') }}
+        @lang('Уведомления')
       @endcomponent
       @component('tpl.list-group-item', [
         'href' => path([App\Http\Controllers\Auth\SignIn::class, 'logout']),

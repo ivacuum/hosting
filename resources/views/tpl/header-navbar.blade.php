@@ -13,13 +13,13 @@
             'href' => path([App\Http\Controllers\Life::class, 'index']),
             'isActive' => $controller === App\Http\Controllers\Life::class || \Str::of($requestUri)->startsWith('life/'),
           ])
-            {{ __('Заметки') }}
+            @lang('Заметки')
           @endcomponent
           @component('tpl.menu-item', [
             'href' => path([App\Http\Controllers\NewsController::class, 'index']),
             'isActive' => $controller === App\Http\Controllers\NewsController::class,
           ])
-            {{ __('Новости') }}
+            @lang('Новости')
           @endcomponent
           @if (!$isCrawler)
             @ru
@@ -27,7 +27,7 @@
                 'href' => path([App\Http\Controllers\Torrents::class, 'index']),
                 'isActive' => $controller === App\Http\Controllers\Torrents::class,
               ])
-                {{ __('Торренты') }}
+                @lang('Торренты')
               @endcomponent
             @endru
           @endif
@@ -35,7 +35,7 @@
             'href' => path([App\Http\Controllers\Photos::class, 'trips']),
             'isActive' => $controller === App\Http\Controllers\Photos::class,
           ])
-            {{ __('Фотки') }}
+            @lang('Фотки')
           @endcomponent
         @show
       </nav>

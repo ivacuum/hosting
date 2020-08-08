@@ -6,10 +6,6 @@ return [
     'by_year' => 'by year',
     'by_country' => 'by country',
 
-    'german' => 'German',
-    'english' => 'English',
-    'japanese' => 'Japanese',
-
     'date.day_month' => '%B&nbsp;%e', // April 21
     'date.day_day_month' => '%3$s&nbsp;%d–%d', // December 11–23
     'date.day_month_year' => '%B&nbsp;%e,&nbsp;%Y', // June 1, 2016

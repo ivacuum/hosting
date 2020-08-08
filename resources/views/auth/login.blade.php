@@ -62,7 +62,7 @@
         type="password"
         name="password"
         autocomplete="current-password"
-        placeholder="{{ __('Пароль') }}"
+        placeholder="@lang('Пароль')"
       >
       <span class="form-input-feedback-password js-password-eye">
         <span class="js-password-eye-show" title="{{ trans('auth.show_password') }}">

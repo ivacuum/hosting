@@ -7,7 +7,7 @@
 <div class="antialiased hanging-puntuation-first lg:text-lg">
   <section class="my-0 pt-6">
     <div class="container">
-      <h1 class="mb-6">{{ __('Скачать') }} {{ $softwareTitle }} {{ $software[0]['version'] }}</h1>
+      <h1 class="mb-6">@lang('Скачать') {{ $softwareTitle }} {{ $software[0]['version'] }}</h1>
       @section('download_latest')
         <div>
           <a class="btn btn-success my-1 text-lg px-4 py-2" href="{{ path([App\Http\Controllers\Files::class, 'download'], $software[0]['id']) }}">
@@ -15,7 +15,7 @@
             <span class="mr-1">
               @svg ($icon)
             </span>
-            {{ __('Скачать') }}{{ $software[0]['dl_suffix'] }}
+            @lang('Скачать'){{ $software[0]['dl_suffix'] }}
             @if (!empty($software[0]['size']))
               &middot;
               {{ ViewHelper::size($software[0]['size']) }}
@@ -58,7 +58,7 @@
 
   <section class="bg-light border-t border-b border-grey-200 my-0 py-12">
     <div class="container">
-      <h2>{{ __('Хабы') }}</h2>
+      <h2>@lang('Хабы')</h2>
       @ru
         <p>Ищите куда подключиться для обмена файлами? Ознакомьтесь с нашими рекомендациями.</p>
       @en
@@ -89,7 +89,7 @@
               <ul>
                 @foreach ($software as $soft)
                   @continue ($loop->index === 0)
-                  <li><a class="link" href="{{ path([App\Http\Controllers\Files::class, 'download'], $soft['id']) }}">{{ __('Скачать') }} {{ $softwareTitle }} {{ $soft['version'] }}{{ $soft['dl_suffix'] }}</a></li>
+                  <li><a class="link" href="{{ path([App\Http\Controllers\Files::class, 'download'], $soft['id']) }}">@lang('Скачать') {{ $softwareTitle }} {{ $soft['version'] }}{{ $soft['dl_suffix'] }}</a></li>
                 @endforeach
               </ul>
             </div>
@@ -116,7 +116,7 @@
     <div class="container">
       <div class="grid md:grid-cols-2 gap-8">
         <div>
-          <div class="h3">{{ __('Обратная связь') }}</div>
+          <div class="h3">@lang('Обратная связь')</div>
           @ru
             <p>Поделитесь своими знаниями или задайте вопрос. Мы постараемся обработать информацию и дополнить эту страницу новыми материалами.</p>
           @en

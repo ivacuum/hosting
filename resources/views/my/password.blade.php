@@ -1,7 +1,7 @@
 @extends('my.base')
 
 @section('content')
-<h3 class="mb-4">{{ __('Пароль') }}</h3>
+<h3 class="mb-4">@lang('Пароль')</h3>
 
 <div class="max-w-500px">
   <form action="{{ path([App\Http\Controllers\MyPassword::class, 'update']) }}" method="post">
@@ -11,7 +11,7 @@
 
     @if ($hasPassword)
       <div class="mb-4">
-        <label class="font-bold">{{ __('Текущий пароль') }}</label>
+        <label class="font-bold">@lang('Текущий пароль')</label>
         <input
           required
           class="form-input"
@@ -24,7 +24,7 @@
     @endif
 
     <div class="mb-4">
-      <label class="font-bold">{{ __('Новый пароль') }}</label>
+      <label class="font-bold">@lang('Новый пароль')</label>
       <input
         required
         class="form-input"
@@ -44,7 +44,7 @@
     </div>
 
     <button class="btn btn-primary">
-      {{ __('Сохранить изменения') }}
+      @lang('Сохранить изменения')
     </button>
   </form>
 </div>

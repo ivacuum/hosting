@@ -11,14 +11,14 @@
     @if ($from > 5)
       <a href="{{ path([App\Http\Controllers\JapaneseWanikaniVocabulary::class, 'index'], ['from' => $from - 5]) }}">
         @svg (chevron-left)
-        {{ __('Уровень :level', ['level' => max(1, $from - 5) . '–' . min(60, $from - 1)]) }}
+        @lang('Уровень :level', ['level' => max(1, $from - 5) . '–' . min(60, $from - 1)])
       </a>
     @endif
   </div>
   <div>
     @if ($to < 56)
       <a href="{{ path([App\Http\Controllers\JapaneseWanikaniVocabulary::class, 'index'], ['from' => $to + 1]) }}">
-        {{ __('Уровень :level', ['level' => min(60, $to + 1) . '–' . min(60, $to + 5)]) }}
+        @lang('Уровень :level', ['level' => min(60, $to + 1) . '–' . min(60, $to + 5)])
         @svg (chevron-right)
       </a>
     @endif

@@ -1,7 +1,7 @@
-<?php \Breadcrumbs::push(trans('life.english')); ?>
+<?php \Breadcrumbs::push(__('Английский')); ?>
 
 @extends('life.base', [
-  'metaTitle' => trans('life.english'),
+  'metaTitle' => __('Английский'),
 ])
 
 {{--
@@ -9,7 +9,7 @@ https://english.stackexchange.com/questions/51209/translate-into-vs-translate-to
 --}}
 
 @section('content')
-<h1>{{ trans('life.english') }}</h1>
+<h1>@lang('Английский')</h1>
 @ru
   <p class="mb-12">Конспект информации, освоенной во время изучения языка.</p>
 @endru

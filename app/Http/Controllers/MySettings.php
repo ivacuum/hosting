@@ -6,7 +6,7 @@ class MySettings extends Controller
 {
     public function edit()
     {
-        return view('my.settings');
+        return view('my.settings', ['user' => auth()->user()]);
     }
 
     public function update(MySettingsUpdateRequest $request)

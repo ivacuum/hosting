@@ -1,7 +1,9 @@
+<?php /** @var App\User $user */ ?>
+
 @extends('my.base')
 
 @section('content')
-<h3 class="mb-4">{{ __('Настройки') }}</h3>
+<h3 class="mb-4">@lang('Настройки')</h3>
 
 <div>
   <form action="{{ path([App\Http\Controllers\MySettings::class, 'update']) }}" method="post">
@@ -17,7 +19,7 @@
           type="radio"
           name="theme"
           value="{{ App\User::THEME_LIGHT }}"
-          {{ old('theme', Auth::user()->theme) == App\User::THEME_LIGHT ? 'checked' : '' }}
+          {{ old('theme', $user->theme) == App\User::THEME_LIGHT ? 'checked' : '' }}
         >
         @lang('Светлая (стандартная)')
       </label>
@@ -27,14 +29,14 @@
           type="radio"
           name="theme"
           value="{{ App\User::THEME_DARK }}"
-          {{ old('theme', Auth::user()->theme) == App\User::THEME_DARK ? 'checked' : '' }}
+          {{ old('theme', $user->theme) == App\User::THEME_DARK ? 'checked' : '' }}
         >
         @lang('Темная')
       </label>
       <x-invalid-feedback field="theme"/>
     </div>
 
-    <div class="font-bold">{{ __('Торренты') }}</div>
+    <div class="font-bold">@lang('Торренты')</div>
     <div class="mb-4">
       <input type="hidden" name="torrent_short_title" value="0">
       <label class="flex items-center">
@@ -43,9 +45,9 @@
           type="checkbox"
           name="torrent_short_title"
           value="1"
-          {{ old('torrent_short_title', Auth::user()->torrent_short_title) ? 'checked' : '' }}
+          {{ old('torrent_short_title', $user->torrent_short_title) ? 'checked' : '' }}
         >
-        {{ __('Короткие названия раздач') }}
+        @lang('Короткие названия раздач')
       </label>
       <x-invalid-feedback field="torrent_short_title"/>
       @ru
@@ -62,7 +64,7 @@
             type="radio"
             name="locale"
             value="{{ $loc }}"
-            {{ old('locale', Auth::user()->locale ?: config('app.locale')) === $loc ? 'checked' : '' }}
+            {{ old('locale', $user->locale ?: config('app.locale')) === $loc ? 'checked' : '' }}
           >
           {{ trans("locale.{$loc}") }}
         </label>
@@ -78,9 +80,9 @@
         type="checkbox"
         name="notify_gigs"
         value="{{ App\User::NOTIFY_MAIL }}"
-        {{ old('notify_gigs', Auth::user()->notify_gigs) ? 'checked' : '' }}
+        {{ old('notify_gigs', $user->notify_gigs) ? 'checked' : '' }}
       >
-      {{ __('Концерты') }}
+      @lang('Концерты')
     </label>
 
     <input type="hidden" name="notify_news" value="{{ App\User::NOTIFY_NO }}">
@@ -90,9 +92,9 @@
         type="checkbox"
         name="notify_news"
         value="{{ App\User::NOTIFY_MAIL }}"
-        {{ old('notify_news', Auth::user()->notify_news) ? 'checked' : '' }}
+        {{ old('notify_news', $user->notify_news) ? 'checked' : '' }}
       >
-      {{ __('Новости сайта') }}
+      @lang('Новости сайта')
     </label>
 
     <div class="mb-4">
@@ -103,14 +105,14 @@
           type="checkbox"
           name="notify_trips"
           value="{{ App\User::NOTIFY_MAIL }}"
-          {{ old('notify_trips', Auth::user()->notify_trips) ? 'checked' : '' }}
+          {{ old('notify_trips', $user->notify_trips) ? 'checked' : '' }}
         >
-        {{ __('Путешествия') }}
+        @lang('Путешествия')
       </label>
     </div>
 
     <button class="btn btn-primary">
-      {{ __('Сохранить изменения') }}
+      @lang('Сохранить изменения')
     </button>
   </form>
 </div>

@@ -11,6 +11,6 @@
 </div>
 <div>
   <a class="btn btn-primary text-sm py-1" href="{{ (new App\Torrent(['rto_id' => $notification->data['rto_id']]))->externalLink() }}">
-    {{ __('Первоисточник') }}
+    @lang('Первоисточник')
   </a>
 </div>

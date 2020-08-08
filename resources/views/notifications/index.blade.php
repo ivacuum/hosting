@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<h2>{{ __('Уведомления') }}</h2>
+<h2>@lang('Уведомления')</h2>
 @if (sizeof($notifications))
   <?php /** @var App\Notification $notification */ ?>
   @foreach ($notifications as $notification)

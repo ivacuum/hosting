@@ -5,12 +5,12 @@
 @extends('life.base')
 
 @push('head')
-<link rel="alternate" type="application/rss+xml" title="{{ __('Концерты') }}" href="{{ url(path(App\Http\Controllers\GigsRss::class)) }}">
+<link rel="alternate" type="application/rss+xml" title="@lang('Концерты')" href="{{ url(path(App\Http\Controllers\GigsRss::class)) }}">
 @endpush
 
 @section('content')
 <div class="flex flex-wrap items-center mb-2">
-  <h1 class="h2 mb-1 mr-4">{{ __('Посещенные и ожидаемые концерты') }}</h1>
+  <h1 class="h2 mb-1 mr-4">@lang('Посещенные и ожидаемые концерты')</h1>
   @if (Auth::check())
     <form class="mr-4" action="{{ path([App\Http\Controllers\Subscriptions::class, 'update']) }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}

@@ -29,7 +29,7 @@
         name="password"
         minlength="8"
         autocomplete="new-password"
-        placeholder="{{ __('Пароль') }}"
+        placeholder="@lang('Пароль')"
       >
       <x-invalid-feedback field="password"/>
     </div>

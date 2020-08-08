@@ -6,10 +6,6 @@ return [
     'by_year' => 'по годам',
     'by_country' => 'по странам',
 
-    'german' => 'Немецкий',
-    'english' => 'Английский',
-    'japanese' => 'Японский',
-
     'date.day_month' => '%e&nbsp;%B', // 21 апреля
     'date.day_day_month' => '%d–%d&nbsp;%s', // 11–23 декабря
     'date.day_month_year' => '%e&nbsp;%B&nbsp;%Y', // 1 июня 2016

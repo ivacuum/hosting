@@ -55,7 +55,7 @@ Mousetrap.bind('right', () => {
   </div>
   <div>
     <div class="flex flex-wrap md:flex-col">
-      <div class="mr-2 md:mr-0 text-muted">{{ __('История') }}</div>
+      <div class="mr-2 md:mr-0 text-muted">@lang('История')</div>
       <a class="flex flex-wrap items-center link-parent" href="{{ $photo->rel->www() }}#{{ basename($photo->slug) }}">
         <img class="flag-16 svg-shadow mr-1" src="{{ $photo->rel->city->country->flagUrl() }}" alt="">
         <span class="link">{{ $photo->rel->title }}</span>
@@ -63,13 +63,13 @@ Mousetrap.bind('right', () => {
     </div>
 
     <div class="flex flex-wrap md:flex-col mt-1 md:mt-4">
-      <div class="mr-2 md:mr-0 text-muted">{{ __('Дата снимка') }}</div>
+      <div class="mr-2 md:mr-0 text-muted">@lang('Дата снимка')</div>
       <div>{{ $photo->rel->period() }} {{ $photo->rel->year }}</div>
     </div>
 
     <div class="mt-4">
       <div class="text-muted">
-        {{ __('Геотэги') }}
+        @lang('Геотэги')
         @if ($photo->isOnMap())
           <a href="{{ path([App\Http\Controllers\Photos::class, 'map'], ['lat' => $photo->lat, 'lon' => $photo->lon, 'zoom' => 16]) }}">@svg (map-marker)</a>
         @endif
@@ -80,7 +80,7 @@ Mousetrap.bind('right', () => {
 
     @if (sizeof($photo->tags))
       <div class="mt-4">
-        <div class="text-muted">{{ __('Тэги') }}</div>
+        <div class="text-muted">@lang('Тэги')</div>
         @foreach ($photo->tags as $tag)
           <div>
             <a class="link" href="{{ path([App\Http\Controllers\Photos::class, 'tag'], $tag) }}">#{{ $tag->title }}</a>

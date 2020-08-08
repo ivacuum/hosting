@@ -1,7 +1,7 @@
 @extends('japanese.wanikani.base')
 
 @section('content')
-<h1 class="h2">{{ __('Уровни') }}</h1>
+<h1 class="h2">@lang('Уровни')</h1>
 <div class="flex flex-wrap items-center">
   @foreach (range(1, 60) as $level)
     <a

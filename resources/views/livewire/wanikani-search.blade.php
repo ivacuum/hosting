@@ -22,7 +22,7 @@
         <input
           class="form-input rounded-r-none js-search-input"
           enterkeyhint="search"
-          placeholder="{{ __('Поиск...') }}"
+          placeholder="@lang('Поиск...')"
           autocapitalize="none"
           wire:model.lazy="q"
         >

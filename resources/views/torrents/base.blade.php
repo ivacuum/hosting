@@ -9,7 +9,7 @@
         name="q"
         value="{{ request('q') }}"
         enterkeyhint="search"
-        placeholder="{{ __('Поиск...') }}"
+        placeholder="@lang('Поиск...')"
         autocapitalize="none"
       >
       <button class="btn btn-default -ml-px rounded-l-none">
@@ -23,20 +23,20 @@
       <div class="nav-scroll">
         <nav class="nav nav-link-tabs">
           <a class="nav-link {{ $view === 'torrents.index' ? 'active' : '' }}" href="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}">
-            {{ __('Новые раздачи') }}
+            @lang('Новые раздачи')
           </a>
           <a class="nav-link {{ $view === 'torrents.create' ? 'active' : '' }}" href="{{ path([App\Http\Controllers\Torrents::class, 'create']) }}">
-            {{ __('Добавить раздачу') }}
+            @lang('Добавить раздачу')
           </a>
           <a class="nav-link {{ $view === 'torrents.faq' ? 'active' : '' }}" href="{{ path([App\Http\Controllers\Torrents::class, 'faq']) }}">
-            {{ __('Помощь') }}
+            @lang('Помощь')
           </a>
           <a class="nav-link {{ $view === 'torrents.comments' ? 'active' : '' }}" href="{{ path([App\Http\Controllers\Torrents::class, 'comments']) }}">
-            {{ __('Комментарии') }}
+            @lang('Комментарии')
           </a>
           @if (Auth::check())
             <a class="nav-link {{ $view === 'torrents.my' ? 'active' : '' }}" href="{{ path([App\Http\Controllers\Torrents::class, 'my']) }}">
-              {{ __('Мои раздачи') }}
+              @lang('Мои раздачи')
             </a>
           @endif
         </nav>

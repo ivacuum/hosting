@@ -1,14 +1,14 @@
 @extends('life.base')
 
 @push('head')
-<link rel="alternate" type="application/rss+xml" title="{{ __('Заметки') }}" href="{{ url(path(App\Http\Controllers\TripsRss::class)) }}">
+<link rel="alternate" type="application/rss+xml" title="@lang('Заметки')" href="{{ url(path(App\Http\Controllers\TripsRss::class)) }}">
 @endpush
 
 @section('content')
 <div class="grid md:grid-cols-2 gap-8">
   <section class="pt-0">
     <div class="flex flex-wrap items-center mb-1">
-      <h1 class="text-3xl mb-1 mr-4">{{ __('Поездки') }}</h1>
+      <h1 class="text-3xl mb-1 mr-4">@lang('Поездки')</h1>
       @if (Auth::check())
         <form class="mr-4" action="{{ path([App\Http\Controllers\Subscriptions::class, 'update']) }}" method="post">
           {{ ViewHelper::inputHiddenMail() }}
@@ -41,13 +41,13 @@
     @include('tpl.trips_by_years')
   </section>
   <section class="md:pt-0">
-    <h2 class="text-3xl">{{ __('Избранное') }}</h2>
+    <h2 class="text-3xl">@lang('Избранное')</h2>
     <nav class="space-y-2">
       @ru
         <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'chillout') }}">Chillout</a></div>
         <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'books') }}">Книги</a></div>
       @endru
-      <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'gigs') }}">{{ __('Концерты') }}</a></div>
+      <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'gigs') }}">@lang('Концерты')</a></div>
       @ru
         <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'favorite-posts') }}">Любимые посты</a></div>
         <div><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'podcasts') }}">Подкасты</a></div>
@@ -57,18 +57,18 @@
       @endru
     </nav>
 
-    <h2 class="text-3xl mt-12">{{ __('Языки') }}</h2>
+    <h2 class="text-3xl mt-12">@lang('Языки')</h2>
     <nav class="space-y-2">
       <div>
-        <a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'english') }}">{{ trans('life.english') }}</a>
+        <a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'english') }}">@lang('Английский')</a>
       </div>
       @ru
         <div>
-          <a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'german') }}">{{ trans('life.german') }}</a>
+          <a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], 'german') }}">@lang('Немецкий')</a>
         </div>
       @endru
       <div>
-        <a class="link" href="{{ path(App\Http\Controllers\Japanese::class) }}">{{ trans('life.japanese') }}</a>
+        <a class="link" href="{{ path(App\Http\Controllers\Japanese::class) }}">@lang('Японский')</a>
       </div>
     </nav>
   </section>

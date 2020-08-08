@@ -3,7 +3,7 @@
 @section('content')
 @if (optional($relatedTorrents = $model->relatedTorrents())->count())
   <h4>
-    {{ __('Связанные раздачи') }}
+    @lang('Связанные раздачи')
     <span class="text-base text-muted">{{ $relatedTorrents->count() }}</span>
   </h4>
   <ol>

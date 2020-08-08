@@ -1,5 +1,5 @@
 <div class="h3 mt-12">
-  {{ __('Обсуждение') }}
+  @lang('Обсуждение')
   <span class="text-base text-muted">{{ sizeof($comments) }}</span>
 </div>
 <a id="comments"></a>

@@ -17,7 +17,7 @@
   'href' => path([App\Http\Controllers\UserTravelTrips::class, 'index'], $traveler->login),
   'isActive' => Str::startsWith($self, 'UserTravel'),
 ])
-  {{ __('Заметки') }}
+  @lang('Заметки')
 @endcomponent
 @endsection
 
