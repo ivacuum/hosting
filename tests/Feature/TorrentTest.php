@@ -183,7 +183,7 @@ class TorrentTest extends TestCase
                 ],
             ])),
             new Response(200, [],
-                '<div class="post_body">body<fieldset class="attach"><span class="attach_link"><a href="magnet:?xt=urn:btih:' . $stub->info_hash . '&tr=' . urlencode($stub->announcer) . '"></a></span></fieldset></fieldset>'),
+                '<div class="post_body">body<fieldset class="attach"><span class="attach_link"><a class="magnet-link" href="magnet:?xt=urn:btih:' . $stub->info_hash . '&tr=' . urlencode($stub->announcer) . '"></a></span></fieldset></fieldset>'),
         ]);
     }
 }
