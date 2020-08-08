@@ -10,7 +10,7 @@
 <div class="flex items-center justify-between mt-4">
   <div>
     @if ($level > 1)
-      <a href="{{ path(App\Http\Controllers\WanikaniLevelController::class, $level - 1) }}">
+      <a href="{{ path(App\Http\Controllers\WanikaniLevel::class, $level - 1) }}">
         @svg (chevron-left)
         {{ __('Уровень :level', ['level' => $level - 1]) }}
       </a>
@@ -18,7 +18,7 @@
   </div>
   <div>
     @if ($level < 60)
-      <a href="{{ path(App\Http\Controllers\WanikaniLevelController::class, $level + 1) }}">
+      <a href="{{ path(App\Http\Controllers\WanikaniLevel::class, $level + 1) }}">
         {{ __('Уровень :level', ['level' => $level + 1]) }}
         @svg (chevron-right)
       </a>

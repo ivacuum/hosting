@@ -9,7 +9,7 @@
   <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'index']) }}">{{ trans('life.by_year') }}</a></div>
   <div class="mr-3 whitespace-no-wrap"><mark>{{ trans('life.by_country') }}</mark></div>
   <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'cities']) }}">{{ trans('life.by_city') }}</a></div>
-  <div class="whitespace-no-wrap"><a class="link" href="{{ path(App\Http\Controllers\CalendarController::class) }}">{{ trans('life.by_days') }}</a></div>
+  <div class="whitespace-no-wrap"><a class="link" href="{{ path(App\Http\Controllers\Calendar::class) }}">{{ trans('life.by_days') }}</a></div>
 </nav>
 
 @if ($countries->count())

@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-class WanikaniController extends Controller
+class Wanikani extends Controller
 {
     public function __invoke()
     {

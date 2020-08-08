@@ -4,7 +4,7 @@ use App\Http\Requests\TorrentRequestReleaseRequest;
 use App\Torrent;
 use Ivacuum\Generic\Services\Telegram;
 
-class TorrentRequestReleaseController extends Controller
+class TorrentRequestRelease extends Controller
 {
     public function __invoke(TorrentRequestReleaseRequest $request, Telegram $telegram)
     {

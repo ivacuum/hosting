@@ -2,7 +2,7 @@
 
 use App\Gig;
 
-class GigsRssController extends Controller
+class GigsRss extends Controller
 {
     public function __invoke()
     {

@@ -176,7 +176,7 @@
         <summary>Не нашли искомую раздачу? Оставьте нам запрос</summary>
         <div class="mt-2 mb-6">Мы можем помочь с поиском. Расскажите как можно подробнее что вы ищете. Мы постараемся добавить раздачу в течение суток, однако вы можете самостоятельно продолжить поиск по <a class="link" href="{{ App\Torrent::externalSearchLink($q) }}">рутрекеру</a> и затем <a class="link" href="/torrents/add">поделиться находкой</a> с остальными пользователями.</div>
 
-        <form action="{{ path(App\Http\Controllers\TorrentRequestReleaseController::class) }}" method="post">
+        <form action="{{ path(App\Http\Controllers\TorrentRequestRelease::class) }}" method="post">
           {{ ViewHelper::inputHiddenMail() }}
           @csrf
 

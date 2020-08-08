@@ -3,7 +3,7 @@
 use App\Domain\TripStatsCalculator;
 use App\Http\Requests\LifeCalendarRequest;
 
-class CalendarController extends Controller
+class Calendar extends Controller
 {
     public function __invoke(LifeCalendarRequest $request)
     {

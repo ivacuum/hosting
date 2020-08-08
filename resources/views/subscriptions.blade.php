@@ -81,21 +81,21 @@
   <div class="flex items-center flex-wrap">
     <a
       class="text-lg svg-flex svg-label lowercase small-caps mr-4"
-      href="{{ path(App\Http\Controllers\GigsRssController::class) }}"
+      href="{{ path(App\Http\Controllers\GigsRss::class) }}"
     >
       @svg (rss-square)
       {{ __('Концерты') }}
     </a>
     <a
       class="text-lg svg-flex svg-label lowercase small-caps mr-4"
-      href="{{ path(App\Http\Controllers\NewsRssController::class) }}"
+      href="{{ path(App\Http\Controllers\NewsRss::class) }}"
     >
       @svg (rss-square)
       {{ __('Новости сайта') }}
     </a>
     <a
       class="text-lg svg-flex svg-label lowercase small-caps"
-      href="{{ path(App\Http\Controllers\TripsRssController::class) }}"
+      href="{{ path(App\Http\Controllers\TripsRss::class) }}"
     >
       @svg (rss-square)
       {{ __('Путешествия') }}

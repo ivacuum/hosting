@@ -6,7 +6,7 @@
 <div class="items-center flex flex-wrap h1">
   <a
     class="bg-gray-600 hover:bg-gray-700 ja-shadow-light mr-2 px-4 py-1 rounded text-white hover:text-white"
-    href="{{ path(App\Http\Controllers\WanikaniLevelController::class, $radical->level) }}"
+    href="{{ path(App\Http\Controllers\WanikaniLevel::class, $radical->level) }}"
   >{{ $radical->level }}</a>
   <div class="bg-radical text-white mr-4 px-2 py-1 rounded">
     @if ($radical->character)

@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-class WanikaniLevelController extends Controller
+class WanikaniLevel extends Controller
 {
     public function __invoke(int $level)
     {

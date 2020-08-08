@@ -2,7 +2,7 @@
 
 use App\News;
 
-class NewsRssController extends Controller
+class NewsRss extends Controller
 {
     public function __invoke()
     {

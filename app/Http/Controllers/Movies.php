@@ -2,7 +2,7 @@
 
 use App\FavoriteMovie;
 
-class MoviesController extends Controller
+class Movies extends Controller
 {
     public function __invoke()
     {

@@ -4,7 +4,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Ivacuum\Generic\Services\ImageConverter;
 
-class ResizeImageController extends Controller
+class ResizeImage extends Controller
 {
     protected $whitelist = [
         'https://life.ivacuum.ru/',

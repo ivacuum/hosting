@@ -96,7 +96,7 @@
     @endru
   </div>
   <div>
-    <a class="flex items-center mb-2 link-parent" href="{{ path(App\Http\Controllers\JapaneseController::class) }}">
+    <a class="flex items-center mb-2 link-parent" href="{{ path(App\Http\Controllers\Japanese::class) }}">
       <div class="leading-none text-3xl mr-2">🇯🇵</div>
       <h2 class="text-2xl mb-0"><span class="link">{{ __('Японский язык') }}</span></h2>
     </a>
@@ -108,7 +108,7 @@
   </div>
   @ru
     <div>
-      <a class="flex items-center mb-2 link-parent" href="{{ path(App\Http\Controllers\KoreanController::class) }}">
+      <a class="flex items-center mb-2 link-parent" href="{{ path(App\Http\Controllers\Korean::class) }}">
         <div class="leading-none text-3xl mr-2">🇰🇷</div>
         <h2 class="text-2xl mb-0"><span class="link">{{ __('Корейский язык') }}</span></h2>
       </a>

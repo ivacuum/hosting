@@ -150,7 +150,7 @@ class Life extends Controller
     public function page(string $page)
     {
         if ($page === 'japanese') {
-            return redirect(path(JapaneseController::class), 301);
+            return redirect(path(Japanese::class), 301);
         }
 
         $tpl = 'life.' . str_replace('.', '_', $page);

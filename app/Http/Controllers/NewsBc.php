@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-class NewsBcController extends Controller
+class NewsBc extends Controller
 {
     public function __invoke()
     {

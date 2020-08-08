@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-class CvController extends Controller
+class Cv extends Controller
 {
     public function __invoke()
     {

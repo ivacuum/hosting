@@ -4,7 +4,7 @@ use App\Http\Controllers as Ctrl;
 
 Route::get('/', Ctrl\HomeController::class);
 
-Route::get('about', Ctrl\AboutController::class);
+Route::get('about', Ctrl\About::class);
 
 Route::get('auth/login', [Ctrl\Auth\SignIn::class, 'index'])->middleware('guest');
 Route::post('auth/login', [Ctrl\Auth\SignIn::class, 'login'])->middleware('guest');
@@ -55,46 +55,46 @@ Route::get('gallery/upload', [Ctrl\Gallery::class, 'upload'])->middleware('auth'
 Route::post('gallery/upload', [Ctrl\Gallery::class, 'store'])->middleware('auth');
 
 Route::middleware('nav:Японский язык,japanese')->group(function () {
-    Route::get('japanese', Ctrl\JapaneseController::class);
+    Route::get('japanese', Ctrl\Japanese::class);
     Route::get('japanese/hiragana-katakana', [Ctrl\JapaneseHiraganaKatakana::class, 'index'])->middleware('nav:Хирагана и катакана');
 
     Route::middleware('nav:WaniKani V,japanese/wanikani')->group(function () {
-        Route::get('japanese/wanikani', Ctrl\WanikaniController::class);
+        Route::get('japanese/wanikani', Ctrl\Wanikani::class);
         Route::get('japanese/wanikani/kanji', [Ctrl\JapaneseWanikaniKanji::class, 'index'])->middleware('nav:japanese.kanji');
         Route::get('japanese/wanikani/kanji/{character}', [Ctrl\JapaneseWanikaniKanji::class, 'show']);
-        Route::get('japanese/wanikani/level', Ctrl\WanikaniLevelsController::class)->middleware('nav:Уровни');
-        Route::get('japanese/wanikani/level/{level}', Ctrl\WanikaniLevelController::class);
+        Route::get('japanese/wanikani/level', Ctrl\WanikaniLevels::class)->middleware('nav:Уровни');
+        Route::get('japanese/wanikani/level/{level}', Ctrl\WanikaniLevel::class);
         Route::get('japanese/wanikani/radicals', [Ctrl\JapaneseWanikaniRadicals::class, 'index'])->middleware('nav:japanese.radicals');
         Route::get('japanese/wanikani/radicals/{meaning}', [Ctrl\JapaneseWanikaniRadicals::class, 'show']);
         Route::get('japanese/wanikani/vocabulary', [Ctrl\JapaneseWanikaniVocabulary::class, 'index'])->middleware('nav:japanese.vocabulary');
         Route::get('japanese/wanikani/vocabulary/{characters}', [Ctrl\JapaneseWanikaniVocabulary::class, 'show']);
     });
 
-    Route::get('japanese/words-trainer', Ctrl\JapaneseWordsTrainerController::class)->middleware('nav:Тренажер по набору слов хираганой и катаканой');
+    Route::get('japanese/words-trainer', Ctrl\JapaneseWordsTrainer::class)->middleware('nav:Тренажер по набору слов хираганой и катаканой');
 });
 
 Route::post('js/typo', Ctrl\JsTypo::class);
 
 Route::middleware('nav:Корейский язык,korean')->group(function () {
-    Route::get('korean', Ctrl\KoreanController::class);
-    Route::get('korean/hangul', Ctrl\KoreanHangulController::class)->middleware('nav:Хангыль');
+    Route::get('korean', Ctrl\Korean::class);
+    Route::get('korean/hangul', Ctrl\KoreanHangul::class)->middleware('nav:Хангыль');
 
     Route::middleware('nav:Кириллизация песен PSY,korean/psy')->group(function () {
-        Route::get('korean/psy', Ctrl\KoreanPsyController::class);
-        Route::get('korean/psy/{song}', Ctrl\KoreanPsySongController::class);
+        Route::get('korean/psy', Ctrl\KoreanPsy::class);
+        Route::get('korean/psy/{song}', Ctrl\KoreanPsySong::class);
     });
 });
 
 Route::middleware('nav:Заметки,life')->group(function () {
     Route::get('life', [Ctrl\Life::class, 'index']);
-    Route::get('life/calendar', Ctrl\CalendarController::class)->middleware('nav:Календарь поездок');
+    Route::get('life/calendar', Ctrl\Calendar::class)->middleware('nav:Календарь поездок');
     Route::get('life/cities', [Ctrl\Life::class, 'cities'])->middleware('nav:Города');
     Route::get('life/countries', [Ctrl\Life::class, 'countries'])->middleware('nav:Страны');
     Route::get('life/countries/{slug}', [Ctrl\Life::class, 'country'])->middleware('nav:Страны,life/countries');
     Route::get('life/gigs', [Ctrl\Life::class, 'gigs'])->middleware('nav:Концерты');
-    Route::get('life/gigs/rss', Ctrl\GigsRssController::class);
-    Route::get('life/movies', Ctrl\MoviesController::class)->middleware('nav:Любимые фильмы и сериалы');
-    Route::get('life/rss', Ctrl\TripsRssController::class);
+    Route::get('life/gigs/rss', Ctrl\GigsRss::class);
+    Route::get('life/movies', Ctrl\Movies::class)->middleware('nav:Любимые фильмы и сериалы');
+    Route::get('life/rss', Ctrl\TripsRss::class);
     Route::get('life/{slug}', [Ctrl\Life::class, 'page']);
 });
 
@@ -120,11 +120,11 @@ Route::delete('my/trips/{trip}', [Ctrl\MyTrips::class, 'destroy'])->middleware('
 Route::get('my/trips/{trip}/edit', [Ctrl\MyTrips::class, 'edit'])->middleware('auth', 'can:user-update,trip');
 
 Route::get('news', [Ctrl\NewsController::class, 'index'])->middleware('nav:Новости,news');
-Route::get('news/rss', Ctrl\NewsRssController::class);
+Route::get('news/rss', Ctrl\NewsRss::class);
 Route::get('news/{id}', [Ctrl\NewsController::class, 'show'])->middleware('nav:Новости,news');
-Route::get('news/{year}/{month}', Ctrl\NewsBcController::class);
-Route::get('news/{year}/{month}/{day}', Ctrl\NewsBcController::class);
-Route::get('news/{year}/{month}/{day}/{slug}', Ctrl\NewsBcController::class);
+Route::get('news/{year}/{month}', Ctrl\NewsBc::class);
+Route::get('news/{year}/{month}/{day}', Ctrl\NewsBc::class);
+Route::get('news/{year}/{month}/{day}/{slug}', Ctrl\NewsBc::class);
 
 Route::get('notifications', [Ctrl\Notifications::class, 'index'])->middleware('auth');
 
@@ -188,14 +188,14 @@ Route::get('torrents/add', [Ctrl\Torrents::class, 'create']);
 Route::get('torrents/comments', [Ctrl\Torrents::class, 'comments']);
 Route::get('torrents/faq', [Ctrl\Torrents::class, 'faq']);
 Route::get('torrents/my', [Ctrl\Torrents::class, 'my'])->middleware('auth');
-Route::post('torrents/request', Ctrl\TorrentRequestReleaseController::class);
+Route::post('torrents/request', Ctrl\TorrentRequestRelease::class);
 Route::get('torrents/{torrent}', [Ctrl\Torrents::class, 'show'])->middleware('nav:Торренты,torrents');
 Route::post('torrents/{torrent}/magnet', [Ctrl\Torrents::class, 'magnet']);
 
 Route::get('trips/{trip}', [Ctrl\Trips::class, 'show']);
 
-Route::get('up', [Ctrl\UploadController::class, 'index']);
-Route::post('up', [Ctrl\UploadController::class, 'store']);
+Route::get('up', [Ctrl\Upload::class, 'index']);
+Route::post('up', [Ctrl\Upload::class, 'store']);
 
 Route::middleware('nav:Пользователи,users')->group(function () {
     Route::get('users', [Ctrl\Users::class, 'index']);
@@ -210,4 +210,4 @@ Route::get('@{login}/travel/countries', [Ctrl\UserTravelCountries::class, 'index
 Route::get('@{login}/travel/countries/{slug}', [Ctrl\UserTravelCountries::class, 'show']);
 Route::get('@{login}/travel/{slug}', [Ctrl\UserTravelTrips::class, 'show']);
 
-Route::get('.well-known/change-password', Ctrl\WellKnownChangePasswordController::class);
+Route::get('.well-known/change-password', Ctrl\WellKnownChangePassword::class);

@@ -2,7 +2,7 @@
 
 use Ivacuum\Generic\Services\Telegram;
 
-class UploadController extends Controller
+class Upload extends Controller
 {
     public function index()
     {

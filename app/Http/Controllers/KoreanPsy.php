@@ -2,7 +2,7 @@
 
 use Symfony\Component\Finder\Finder;
 
-class KoreanPsyController extends Controller
+class KoreanPsy extends Controller
 {
     public function __invoke()
     {
@@ -12,7 +12,7 @@ class KoreanPsyController extends Controller
             $tpl = $template->getBasename('.blade.php');
 
             $songs[] = [
-                'link' => path(KoreanPsySongController::class, $tpl),
+                'link' => path(KoreanPsySong::class, $tpl),
                 'title' => \Str::of($tpl)->replace('-', ' ')->title(),
             ];
         }

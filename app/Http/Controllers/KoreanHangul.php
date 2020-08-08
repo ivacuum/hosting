@@ -1,9 +1,9 @@
 <?php namespace App\Http\Controllers;
 
-class JapaneseController extends Controller
+class KoreanHangul extends Controller
 {
     public function __invoke()
     {
-        return view('japanese.index');
+        return view('korean.hangul');
     }
 }

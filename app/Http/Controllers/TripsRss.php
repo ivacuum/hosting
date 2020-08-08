@@ -2,7 +2,7 @@
 
 use App\Trip;
 
-class TripsRssController extends Controller
+class TripsRss extends Controller
 {
     public function __invoke()
     {

@@ -13,7 +13,7 @@
 @endru
 
 @ru
-  <p>Все свои наработки представил в разделе <a class="link" href="{{ path(App\Http\Controllers\KoreanPsyController::class) }}">кириллизация песен PSY</a>. Вряд ли раздел ожидает дальнейшее пополнение, но лишь время покажет.</p>
+  <p>Все свои наработки представил в разделе <a class="link" href="{{ path(App\Http\Controllers\KoreanPsy::class) }}">кириллизация песен PSY</a>. Вряд ли раздел ожидает дальнейшее пополнение, но лишь время покажет.</p>
 @endru
 
 @ru

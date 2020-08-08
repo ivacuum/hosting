@@ -30,7 +30,7 @@
           @endru
         </div>
         <h3 class="h4 mt-6">
-          <a class="link" href="{{ path(App\Http\Controllers\JapaneseWordsTrainerController::class) }}">
+          <a class="link" href="{{ path(App\Http\Controllers\JapaneseWordsTrainer::class) }}">
             {{ __('Тренажер по набору слов хираганой и катаканой') }}
           </a>
         </h3>
@@ -43,7 +43,7 @@
         </div>
 
         <h3 class="h4 mt-6">
-          <a class="link" href="{{ path(App\Http\Controllers\WanikaniController::class) }}">
+          <a class="link" href="{{ path(App\Http\Controllers\Wanikani::class) }}">
             {{ __('WaniKani V') }}
           </a>
         </h3>
