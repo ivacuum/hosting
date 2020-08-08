@@ -12,8 +12,6 @@ return [
     'username' => 'Username',
     'password' => 'Password',
     'settings' => 'Settings',
-    'theme_dark' => 'Dark',
-    'theme_light' => 'Light (default)',
     'edit_profile' => 'Edit profile',
     'old_password' => 'Old password',
     'new_password' => 'New password',

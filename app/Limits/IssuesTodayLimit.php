@@ -13,6 +13,7 @@ class IssuesTodayLimit
             return false;
         }
 
+        /** @var Activity $last */
         $last = Activity::where('user_id', $userId)
             ->where('type', 'Issue.created')
             ->orderByDesc('id')

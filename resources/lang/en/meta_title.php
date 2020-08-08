@@ -19,7 +19,7 @@ return [
 
     'japanese' => __('Японский язык'),
 
-    'japanese-hiragana-katakana.index' => 'Hiragana & Katakana Trainer. Practice Japanese Syllabaries Online',
+    'japanese-hiragana-katakana' => 'Hiragana & Katakana Trainer. Practice Japanese Syllabaries Online',
 
     'japanese-wanikani-kanji.show' => 'Kanji :kanji',
     'japanese-wanikani-kanji.index' => 'Kanji',

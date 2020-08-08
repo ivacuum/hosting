@@ -173,9 +173,7 @@ class User extends Authenticatable implements HasLocalePreference
     public static function findByEmailOrCreate(array $data): self
     {
         /** @var self $user */
-        $user = self::where('email', $data['email'])->first();
-
-        if (null !== $user) {
+        if ($user = self::where('email', $data['email'])->first()) {
             return $user;
         }
 

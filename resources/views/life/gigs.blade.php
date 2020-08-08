@@ -10,7 +10,7 @@
 
 @section('content')
 <div class="flex flex-wrap items-center mb-2">
-  <h1 class="h2 mb-1 mr-4">{{ trans('life.gigs_intro_title') }}</h1>
+  <h1 class="h2 mb-1 mr-4">{{ __('Посещенные и ожидаемые концерты') }}</h1>
   @if (Auth::check())
     <form class="mr-4" action="{{ path([App\Http\Controllers\Subscriptions::class, 'update']) }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}
@@ -33,7 +33,11 @@
     rss
   </a>
 </div>
-<p>{{ trans('life.gigs_intro_text') }}</p>
+@ru
+  <p>Началось все с установки по концерту в год, но в 2014 что-то пошло не так...</p>
+@en
+  <p>It's all started with a simple plan of visiting one show per year, but something went wrong in 2014...</p>
+@endru
 
 @foreach ($gigs as $year => $rows)
   <div class="flex {{ !$loop->last ? 'mb-2' : '' }}">

@@ -2,7 +2,7 @@
 
 class JapaneseHiraganaKatakana extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         return view('japanese.hiragana-katakana');
     }

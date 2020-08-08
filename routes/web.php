@@ -56,7 +56,7 @@ Route::post('gallery/upload', [Ctrl\Gallery::class, 'store'])->middleware('auth'
 
 Route::middleware('nav:Японский язык,japanese')->group(function () {
     Route::get('japanese', Ctrl\Japanese::class);
-    Route::get('japanese/hiragana-katakana', [Ctrl\JapaneseHiraganaKatakana::class, 'index'])->middleware('nav:Хирагана и катакана');
+    Route::get('japanese/hiragana-katakana', Ctrl\JapaneseHiraganaKatakana::class)->middleware('nav:Хирагана и катакана');
 
     Route::middleware('nav:WaniKani V,japanese/wanikani')->group(function () {
         Route::get('japanese/wanikani', Ctrl\Wanikani::class);

@@ -12,8 +12,6 @@ return [
     'username' => 'Логин',
     'password' => 'Пароль',
     'settings' => 'Настройки',
-    'theme_dark' => 'Темная',
-    'theme_light' => 'Светлая (стандартная)',
     'edit_profile' => 'Редактировать профиль',
     'old_password' => 'Текущий пароль',
     'new_password' => 'Новый пароль',

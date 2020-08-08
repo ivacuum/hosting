@@ -9,9 +9,6 @@ return [
     'feedback.placeholder' => 'Write a message...',
     */
 
-    'gigs_intro_text' => "It's all started with a simple plan of visiting one show per year, but something went wrong in 2014...",
-    'gigs_intro_title' => 'Attended and incoming concerts',
-
     'by_city' => 'by city',
     'by_days' => 'calendar',
     'by_year' => 'by year',

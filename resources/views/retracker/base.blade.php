@@ -13,19 +13,19 @@
   'href' => path([App\Http\Controllers\Retracker::class, 'index']),
   'isActive' => $view === 'retracker.index',
 ])
-  {{ trans('retracker.index') }}
+  {{ __('Ретрекер') }}
 @endcomponent
 @component('tpl.menu-item', [
   'href' => path([App\Http\Controllers\Retracker::class, 'usage']),
   'isActive' => $view === 'retracker.usage',
 ])
-  {{ trans('retracker.usage') }}
+  {{ __('Как использовать') }}
 @endcomponent
 @component('tpl.menu-item', [
   'href' => path([App\Http\Controllers\Retracker::class, 'dev']),
   'isActive' => $view === 'retracker.dev',
 ])
-  {{ trans('retracker.dev') }}
+  {{ __('О разработке') }}
 @endcomponent
 @endsection
 

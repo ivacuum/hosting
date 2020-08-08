@@ -143,7 +143,7 @@ class Life extends Controller
 
         return view('life.gigs', [
             'gigs' => $gigs,
-            'metaTitle' => trans('life.gigs_intro_title'),
+            'metaTitle' => __('Посещенные и ожидаемые концерты'),
         ]);
     }
 

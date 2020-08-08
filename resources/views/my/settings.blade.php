@@ -10,7 +10,7 @@
     @csrf
 
     <div class="mb-4">
-      <div class="font-bold">{{ trans('my.theme') }}</div>
+      <div class="font-bold">@lang('Тема оформления')</div>
       <label class="flex items-center">
         <input
           class="form-radio mr-2"
@@ -19,7 +19,7 @@
           value="{{ App\User::THEME_LIGHT }}"
           {{ old('theme', Auth::user()->theme) == App\User::THEME_LIGHT ? 'checked' : '' }}
         >
-        {{ trans('my.theme_light') }}
+        @lang('Светлая (стандартная)')
       </label>
       <label class="flex items-center">
         <input
@@ -29,7 +29,7 @@
           value="{{ App\User::THEME_DARK }}"
           {{ old('theme', Auth::user()->theme) == App\User::THEME_DARK ? 'checked' : '' }}
         >
-        {{ trans('my.theme_dark') }}
+        @lang('Темная')
       </label>
       <x-invalid-feedback field="theme"/>
     </div>

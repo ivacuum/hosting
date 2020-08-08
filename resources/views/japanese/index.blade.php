@@ -18,7 +18,7 @@
       </div>
       <div class="px-5 py-4">
         <h3 class="h4">
-          <a class="link" href="{{ path([App\Http\Controllers\JapaneseHiraganaKatakana::class, 'index']) }}">
+          <a class="link" href="{{ path(App\Http\Controllers\JapaneseHiraganaKatakana::class) }}">
             {{ trans('japanese.hiragana-katakana-trainer') }}
           </a>
         </h3>
@@ -127,7 +127,7 @@
 <section>
   <div class="h2">@ru Азбуки @en Syllabaries @endru</div>
   @ru
-    <p>Без азбук ничего не прочитать. Катакана в основном для заимствованных слов, хирагана — для всего остального. Запомнить азбуки проще всего с помощью <a class="link" href="{{ path([App\Http\Controllers\JapaneseHiraganaKatakana::class, 'index']) }}">тренажера</a>. Практикуя столбик за столбиком, можно за считанные дни добиться автоматизма чтения слогов.</p>
+    <p>Без азбук ничего не прочитать. Катакана в основном для заимствованных слов, хирагана — для всего остального. Запомнить азбуки проще всего с помощью <a class="link" href="{{ path(App\Http\Controllers\JapaneseHiraganaKatakana::class) }}">тренажера</a>. Практикуя столбик за столбиком, можно за считанные дни добиться автоматизма чтения слогов.</p>
   @endru
 </section>
 

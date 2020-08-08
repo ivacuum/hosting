@@ -3,13 +3,13 @@
     <span class="text-red-700">
       @svg (play)
     </span>
-    <a class="pseudo" wire:click.prevent="expand">{{ trans('youtube.open-video', ['title' => $title]) }}</a>
+    <a class="pseudo" wire:click.prevent="expand">{{ __('Открыть видео :title', ['title' => $title]) }}</a>
   @else
     <div>
       <span class="text-red-700">
         @svg (times)
       </span>
-      <a class="pseudo" wire:click.prevent="shrink">{{ trans('youtube.close-video', ['title' => $title]) }}</a>
+      <a class="pseudo" wire:click.prevent="shrink">{{ __('Закрыть видео :title', ['title' => $title]) }}</a>
     </div>
     <div class="mt-2 mb-6 mobile-wide relative" style="padding-bottom: 56.25%">
       <iframe

@@ -9,7 +9,7 @@
   <div class="grid gap-4">
     <div>
       @ru
-        После <a class="link" href="{{ path([App\Http\Controllers\JapaneseHiraganaKatakana::class, 'index']) }}">разучивания азбук</a> самое время попробовать набирать целые слова. На примере слова <span class="font-bold">суши</span> <span lang="ja">寿司</span> ответ можно дать следующими способами:
+        После <a class="link" href="{{ path(App\Http\Controllers\JapaneseHiraganaKatakana::class) }}">разучивания азбук</a> самое время попробовать набирать целые слова. На примере слова <span class="font-bold">суши</span> <span lang="ja">寿司</span> ответ можно дать следующими способами:
         <ul>
           <li><span class="font-medium text-gray-500">латиницей</span> — <span class="font-bold" lang="en">sushi</span></li>
           <li><span class="font-medium text-gray-500">хираганой</span> — <span class="font-bold" lang="ja">すし</span></li>
