@@ -63,7 +63,7 @@ class Torrents extends Controller
 
     public function create()
     {
-        return view($this->view);
+        return view('torrents.create');
     }
 
     public function comments()

@@ -11,15 +11,14 @@ class Issues extends Controller
 {
     public function create()
     {
-        return view($this->view);
+        return view('issues.create');
     }
 
     public function store(IssuesTodayLimit $limits, IssueStoreRequest $request)
     {
-        /** @var User $user */
-        $user = $request->user();
+        $user = $request->userModel();
         $email = $request->email();
-        $isGuest = null === $user;
+        $isGuest = $request->isGuest();
 
         if ($isGuest) {
             $user = (new User)->findByEmailOrCreate([

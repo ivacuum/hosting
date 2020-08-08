@@ -4,7 +4,7 @@ class Docs extends Controller
 {
     public function index()
     {
-        return view($this->view);
+        return view('docs.index');
     }
 
     public function page($page)

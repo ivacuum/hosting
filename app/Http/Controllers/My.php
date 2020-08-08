@@ -4,6 +4,6 @@ class My extends Controller
 {
     public function index()
     {
-        return view($this->view);
+        return view('my.index');
     }
 }

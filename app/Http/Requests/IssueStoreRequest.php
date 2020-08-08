@@ -1,9 +1,8 @@
 <?php namespace App\Http\Requests;
 
 use App\Rules\Email;
-use Ivacuum\Generic\Http\FormRequest;
 
-class IssueStoreRequest extends FormRequest
+class IssueStoreRequest extends AbstractRequest
 {
     public function authorize(): bool
     {

@@ -16,11 +16,9 @@ class AjaxComment extends Controller
     public function store(string $type, int $id, CommentsTodayLimit $limits, CommentStoreRequest $request)
     {
         $text = $request->input('text');
+        $user = $request->userModel();
         $email = $request->input('email');
-
-        /** @var User $user */
-        $user = $request->user();
-        $isGuest = null === $user;
+        $isGuest = $request->isGuest();
 
         if ($isGuest) {
             $user = (new User)->findByEmailOrCreate([
@@ -43,13 +41,10 @@ class AjaxComment extends Controller
             throw new CommentLimitExceededException;
         }
 
-        /** @var Comment $comment */
-        $comment = new Comment([
-            'html' => $text,
-            'status' => $isGuest ? Comment::STATUS_PENDING : Comment::STATUS_PUBLISHED,
-            'user_id' => $user->id,
-        ]);
-
+        $comment = new Comment;
+        $comment->html = $text;
+        $comment->status = $isGuest ? Comment::STATUS_PENDING : Comment::STATUS_PUBLISHED;
+        $comment->user_id = $user->id;
         $comment->setRelation('user', $user);
 
         $model->comments()->save($comment);

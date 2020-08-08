@@ -80,7 +80,7 @@ class Subscriptions extends Controller
             ->send(new SubscriptionConfirmMail($user, $selectedTopics));
 
         return redirect(path([self::class, 'edit']))
-            ->with('message', 'Теперь необходимо подтвердить подписку по ссылке в письме, которое мы вам отправили.');
+            ->with('message', __('Теперь необходимо подтвердить подписку по ссылке в письме, которое мы вам отправили.'));
     }
 
     public function update()

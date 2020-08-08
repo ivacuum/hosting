@@ -5,6 +5,11 @@ use Ivacuum\Generic\Http\FormRequest;
 
 abstract class AbstractRequest extends FormRequest
 {
+    public function isGuest(): bool
+    {
+        return $this->user() === null;
+    }
+
     public function userModel(): ?User
     {
         return $this->user();

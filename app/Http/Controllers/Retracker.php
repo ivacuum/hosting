@@ -4,16 +4,16 @@ class Retracker extends Controller
 {
     public function index()
     {
-        return view($this->view);
+        return view('retracker.index');
     }
 
     public function dev()
     {
-        return view($this->view);
+        return view('retracker.dev');
     }
 
     public function usage()
     {
-        return view($this->view);
+        return view('retracker.usage');
     }
 }
