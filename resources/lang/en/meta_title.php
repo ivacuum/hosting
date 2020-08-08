@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'calendar' => __('Календарь поездок'),
+
     'dcpp.hubs' => 'Popular DC++ Hubs',
     'dcpp.dcpp' => 'Download DC++ 0.782',
     'dcpp.airdc' => 'Download AirDC++ 3.41',
@@ -14,7 +16,7 @@ return [
 
     'home' => 'Sergey Pankov · vacuum.kaluga',
 
-    'japanese' => 'Japanese language',
+    'japanese' => __('Японский язык'),
 
     'japanese-hiragana-katakana.index' => 'Hiragana & Katakana Trainer. Practice Japanese Syllabaries Online',
 

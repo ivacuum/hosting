@@ -3,7 +3,6 @@
 return [
     'skip' => 'Skip',
     'clear' => 'Clear',
-    'index' => 'Japanese language',
     'kanji' => 'Kanji',
     'level' => 'Level :level',
     'answer' => 'Your answer',
@@ -20,7 +19,6 @@ return [
     'radicals' => 'Radicals',
     'readings' => 'Readings',
     'settings' => 'Settings',
-    'wanikani' => 'WaniKani V',
     'by-levels' => 'By Levels',
     'resurrect' => 'Restore',
     'sentences' => 'Example sentences',

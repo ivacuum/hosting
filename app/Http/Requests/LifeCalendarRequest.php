@@ -1,5 +1,8 @@
 <?php namespace App\Http\Requests;
 
+use App\Trip;
+use Illuminate\Database\Eloquent\Builder;
+
 class LifeCalendarRequest extends AbstractRequest
 {
     public function authorize(): bool
@@ -18,5 +21,15 @@ class LifeCalendarRequest extends AbstractRequest
     public function rules(): array
     {
         return [];
+    }
+
+    public function trips()
+    {
+        return Trip::query()
+            ->where('user_id', 1)
+            ->where('city_id', '<>', 1)
+            ->when($this->includeOnlyVisibleTrips(), fn (Builder $query) => $query->visible())
+            ->orderBy('date_start')
+            ->get();
     }
 }

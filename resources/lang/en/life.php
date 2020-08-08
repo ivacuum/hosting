@@ -19,7 +19,6 @@ return [
 
     'on_map' => 'on the map',
 
-    'calendar' => 'Calendar of trips',
     'visited_cities' => 'Visited cities',
     'visited_countries' => 'Visited countries',
 

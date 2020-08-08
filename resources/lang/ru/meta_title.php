@@ -26,8 +26,6 @@ return [
 
     'home' => 'Сергей Панков · vacuum.kaluga',
 
-    'japanese' => 'Японский язык',
-
     'japanese-hiragana-katakana.index' => 'Тренажер хираганы и катаканы онлайн, трейнер японских азбук',
 
     'japanese-wanikani-kanji.show' => ':kanji',

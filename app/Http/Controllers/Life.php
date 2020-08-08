@@ -2,9 +2,7 @@
 
 use App\City;
 use App\Country;
-use App\Domain\TripStatsCalculator;
 use App\Gig;
-use App\Http\Requests\LifeCalendarRequest;
 use App\Http\Requests\LifeIndexRequest;
 use App\Trip;
 use App\TripFactory;
@@ -12,14 +10,6 @@ use Illuminate\Database\Eloquent\Builder;
 
 class Life extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('breadcrumbs:life.calendar,life/calendar')->only('calendar');
-        $this->middleware('breadcrumbs:Города,life/cities')->only('cities');
-        $this->middleware('breadcrumbs:Страны,life/countries')->only('countries', 'country');
-        $this->middleware('breadcrumbs:Концерты,life/gigs')->only('gigs');
-    }
-
     public function index(LifeIndexRequest $request)
     {
         $to = $request->to();
@@ -37,33 +27,6 @@ class Life extends Controller
         return view($this->view, [
             'trips' => $trips,
             'metaTitle' => __('Заметки'),
-        ]);
-    }
-
-    public function calendar(LifeCalendarRequest $request)
-    {
-        $trips = Trip::query()
-            ->where('user_id', 1)
-            ->where('city_id', '<>', 1)
-            ->when($request->includeOnlyVisibleTrips(), fn (Builder $query) => $query->visible())
-            ->orderBy('date_start')
-            ->get();
-
-        $stats = new TripStatsCalculator($trips);
-
-        return view($this->view, [
-            'trips' => $trips,
-            'cities' => $stats->citiesByYearsCount(),
-            'calendar' => $stats->calendar(),
-            'lastDate' => $stats->lastDate(),
-            'countries' => $stats->countriesByYearsCount(),
-            'firstDate' => $stats->firstDate(),
-            'newCities' => $stats->newCitiesByYearsCount(),
-            'cityVisits' => $stats->cityVisits(),
-            'daysInTrips' => $stats->daysInTrips(),
-            'daysInCities' => $stats->daysInCities(),
-            'newCountries' => $stats->newCountriesByYearsCount(),
-            'daysInCountries' => $stats->daysInCountries(),
         ]);
     }
 

@@ -35,7 +35,7 @@
       <div class="mr-3 whitespace-no-wrap"><mark>{{ trans('life.by_year') }}</mark></div>
       <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'countries']) }}">{{ trans('life.by_country') }}</a></div>
       <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'cities']) }}">{{ trans('life.by_city') }}</a></div>
-      <div class="whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'calendar']) }}">{{ trans('life.by_days') }}</a></div>
+      <div class="whitespace-no-wrap"><a class="link" href="{{ path(App\Http\Controllers\CalendarController::class) }}">{{ trans('life.by_days') }}</a></div>
     </nav>
 
     @include('tpl.trips_by_years')

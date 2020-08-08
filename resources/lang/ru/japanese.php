@@ -3,7 +3,6 @@
 return [
     'skip' => 'Пропустить',
     'clear' => 'Очистить',
-    'index' => 'Японский язык',
     'kanji' => 'Кандзи',
     'level' => 'Уровень :level',
     'answer' => 'Ваш ответ',
@@ -20,7 +19,6 @@ return [
     'radicals' => 'Ключи',
     'readings' => 'Варианты чтения',
     'settings' => 'Настройки',
-    'wanikani' => 'WaniKani V',
     'by-levels' => 'По уровням',
     'resurrect' => 'Восстановить',
     'sentences' => 'Примеры предложений',

@@ -98,7 +98,7 @@
   <div>
     <a class="flex items-center mb-2 link-parent" href="{{ path(App\Http\Controllers\JapaneseController::class) }}">
       <div class="leading-none text-3xl mr-2">🇯🇵</div>
-      <h2 class="text-2xl mb-0"><span class="link">{{ trans('japanese.index') }}</span></h2>
+      <h2 class="text-2xl mb-0"><span class="link">{{ __('Японский язык') }}</span></h2>
     </a>
     @ru
       <div>Тренажер для запоминания слоговых азбук. Набор ключей, кандзи и словарных слов для самостоятельного изучения и повторения.</div>

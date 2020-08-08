@@ -11,7 +11,7 @@
         @section('global_menu')
           @component('tpl.menu-item', [
             'href' => path([App\Http\Controllers\Life::class, 'index']),
-            'isActive' => $controller === App\Http\Controllers\Life::class,
+            'isActive' => $controller === App\Http\Controllers\Life::class || \Str::of($requestUri)->startsWith('life/'),
           ])
             {{ __('Заметки') }}
           @endcomponent

@@ -1,7 +1,7 @@
 @extends('japanese.wanikani.base')
 
 @section('content')
-<h1 class="h2">{{ trans('japanese.wanikani') }}</h1>
+<h1 class="h2">{{ __('WaniKani V') }}</h1>
 <div class="grid md:grid-cols-3 gap-2 md:gap-4 text-center mb-4">
   <div>
     <div class="bg-radical rounded">

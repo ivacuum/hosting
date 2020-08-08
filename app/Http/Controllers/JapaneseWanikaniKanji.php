@@ -5,12 +5,6 @@ use Illuminate\Http\Request;
 
 class JapaneseWanikaniKanji extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('breadcrumbs:japanese.index,japanese');
-        $this->middleware('breadcrumbs:japanese.wanikani,japanese/wanikani');
-    }
-
     public function index(Request $request)
     {
         $from = max(1, min(60, $request->input('from', 1)));

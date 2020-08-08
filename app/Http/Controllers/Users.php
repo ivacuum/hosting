@@ -4,17 +4,12 @@ use App\User;
 
 class Users extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('breadcrumbs:Пользователи,users');
-    }
-
     public function index()
     {
         $users = User::query()
             ->active()
             ->orderBy('id')
-            ->simplePaginate(2);
+            ->simplePaginate();
 
         return view('users.index', ['users' => $users]);
     }

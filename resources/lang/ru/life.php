@@ -19,7 +19,6 @@ return [
 
     'on_map' => 'на карте',
 
-    'calendar' => 'Календарь поездок',
     'visited_cities' => 'Посещенные города',
     'visited_countries' => 'Посещенные страны',
 

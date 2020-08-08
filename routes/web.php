@@ -52,37 +52,46 @@ Route::get('gallery/view/{image}', [Ctrl\Gallery::class, 'view']);
 Route::get('gallery/upload', [Ctrl\Gallery::class, 'upload'])->middleware('auth');
 Route::post('gallery/upload', [Ctrl\Gallery::class, 'store'])->middleware('auth');
 
-Route::get('japanese', Ctrl\JapaneseController::class);
-Route::get('japanese/hiragana-katakana', [Ctrl\JapaneseHiraganaKatakana::class, 'index']);
-Route::get('japanese/wanikani', Ctrl\WanikaniController::class);
-Route::get('japanese/wanikani/kanji', [Ctrl\JapaneseWanikaniKanji::class, 'index']);
-Route::get('japanese/wanikani/kanji/{character}', [Ctrl\JapaneseWanikaniKanji::class, 'show']);
-Route::get('japanese/wanikani/level', Ctrl\WanikaniLevelsController::class);
-Route::get('japanese/wanikani/level/{level}', Ctrl\WanikaniLevelController::class);
-Route::get('japanese/wanikani/radicals', [Ctrl\JapaneseWanikaniRadicals::class, 'index']);
-Route::get('japanese/wanikani/radicals/{meaning}', [Ctrl\JapaneseWanikaniRadicals::class, 'show']);
-Route::get('japanese/wanikani/vocabulary', [Ctrl\JapaneseWanikaniVocabulary::class, 'index']);
-Route::get('japanese/wanikani/vocabulary/{characters}', [Ctrl\JapaneseWanikaniVocabulary::class, 'show']);
-Route::get('japanese/words-trainer', Ctrl\JapaneseWordsTrainerController::class);
+Route::middleware('breadcrumbs:Японский язык,japanese')->group(function () {
+    Route::get('japanese', Ctrl\JapaneseController::class);
+    Route::get('japanese/hiragana-katakana', [Ctrl\JapaneseHiraganaKatakana::class, 'index']);
+
+    Route::middleware('breadcrumbs:WaniKani V,japanese/wanikani')->group(function () {
+        Route::get('japanese/wanikani', Ctrl\WanikaniController::class);
+        Route::get('japanese/wanikani/kanji', [Ctrl\JapaneseWanikaniKanji::class, 'index']);
+        Route::get('japanese/wanikani/kanji/{character}', [Ctrl\JapaneseWanikaniKanji::class, 'show']);
+        Route::get('japanese/wanikani/level', Ctrl\WanikaniLevelsController::class)->middleware('breadcrumbs:japanese.levels');
+        Route::get('japanese/wanikani/level/{level}', Ctrl\WanikaniLevelController::class);
+        Route::get('japanese/wanikani/radicals', [Ctrl\JapaneseWanikaniRadicals::class, 'index']);
+        Route::get('japanese/wanikani/radicals/{meaning}', [Ctrl\JapaneseWanikaniRadicals::class, 'show']);
+        Route::get('japanese/wanikani/vocabulary', [Ctrl\JapaneseWanikaniVocabulary::class, 'index']);
+        Route::get('japanese/wanikani/vocabulary/{characters}', [Ctrl\JapaneseWanikaniVocabulary::class, 'show']);
+    });
+
+    Route::get('japanese/words-trainer', Ctrl\JapaneseWordsTrainerController::class);
+});
 
 Route::post('js/typo', Ctrl\JsTypo::class);
 
 Route::middleware('breadcrumbs:Корейский язык,korean')->group(function () {
     Route::get('korean', Ctrl\KoreanController::class);
     Route::get('korean/hangul', Ctrl\KoreanHangulController::class)->middleware('breadcrumbs:Хангыль');
-    Route::get('korean/psy', Ctrl\KoreanPsyController::class)->middleware('breadcrumbs:Кириллизация песен PSY');
-    Route::get('korean/psy/{song}', Ctrl\KoreanPsySongController::class)->middleware('breadcrumbs:Кириллизация песен PSY,korean/psy');
+
+    Route::middleware('breadcrumbs:Кириллизация песен PSY,korean/psy')->group(function () {
+        Route::get('korean/psy', Ctrl\KoreanPsyController::class);
+        Route::get('korean/psy/{song}', Ctrl\KoreanPsySongController::class);
+    });
 });
 
 Route::middleware('breadcrumbs:Заметки,life')->group(function () {
     Route::get('life', [Ctrl\Life::class, 'index']);
-    Route::get('life/calendar', [Ctrl\Life::class, 'calendar']);
-    Route::get('life/cities', [Ctrl\Life::class, 'cities']);
-    Route::get('life/countries', [Ctrl\Life::class, 'countries']);
-    Route::get('life/countries/{slug}', [Ctrl\Life::class, 'country']);
-    Route::get('life/gigs', [Ctrl\Life::class, 'gigs']);
+    Route::get('life/calendar', Ctrl\CalendarController::class)->middleware('breadcrumbs:Календарь поездок');
+    Route::get('life/cities', [Ctrl\Life::class, 'cities'])->middleware('breadcrumbs:Города');
+    Route::get('life/countries', [Ctrl\Life::class, 'countries'])->middleware('breadcrumbs:Страны');
+    Route::get('life/countries/{slug}', [Ctrl\Life::class, 'country'])->middleware('breadcrumbs:Страны,life/countries');
+    Route::get('life/gigs', [Ctrl\Life::class, 'gigs'])->middleware('breadcrumbs:Концерты');
     Route::get('life/gigs/rss', Ctrl\GigsRssController::class);
-    Route::get('life/movies', Ctrl\MoviesController::class)->middleware('breadcrumbs:Любимые фильмы и сериалы,life/movies');
+    Route::get('life/movies', Ctrl\MoviesController::class)->middleware('breadcrumbs:Любимые фильмы и сериалы');
     Route::get('life/rss', Ctrl\TripsRssController::class);
     Route::get('life/{slug}', [Ctrl\Life::class, 'page']);
 });
@@ -186,8 +195,10 @@ Route::get('trips/{trip}', [Ctrl\Trips::class, 'show']);
 Route::get('up', [Ctrl\UploadController::class, 'index']);
 Route::post('up', [Ctrl\UploadController::class, 'store']);
 
-Route::get('users', [Ctrl\Users::class, 'index']);
-Route::get('users/{id}', [Ctrl\Users::class, 'show']);
+Route::middleware('breadcrumbs:Пользователи,users')->group(function () {
+    Route::get('users', [Ctrl\Users::class, 'index']);
+    Route::get('users/{id}', [Ctrl\Users::class, 'show']);
+});
 
 Route::get('@{login}', [Ctrl\UserHome::class, 'index']);
 Route::get('@{login}/travel', [Ctrl\UserTravelTrips::class, 'index']);

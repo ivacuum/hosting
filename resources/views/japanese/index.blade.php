@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-<h1 class="h2">{{ trans('japanese.index') }}</h1>
+<h1 class="h2">{{ __('Японский язык') }}</h1>
 <div class="grid md:grid-cols-2 gap-8 mt-6">
   <div class="flex">
     <div class="border overflow-hidden rounded">
@@ -44,7 +44,7 @@
 
         <h3 class="h4 mt-6">
           <a class="link" href="{{ path(App\Http\Controllers\WanikaniController::class) }}">
-            {{ trans('japanese.wanikani') }}
+            {{ __('WaniKani V') }}
           </a>
         </h3>
         <div>
