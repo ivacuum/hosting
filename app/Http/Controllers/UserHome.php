@@ -2,8 +2,8 @@
 
 class UserHome extends Controller
 {
-    public function index($login)
+    public function index(string $login)
     {
-        return redirect("@{$login}/travel");
+        return redirect(path([UserTravelTrips::class, 'index'], $login));
     }
 }
