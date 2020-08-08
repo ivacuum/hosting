@@ -4,7 +4,7 @@ class JapaneseHiraganaKatakana extends Controller
 {
     public function __construct()
     {
-        $this->middleware('breadcrumbs:japanese.hiragana-katakana');
+        $this->middleware('nav:japanese.hiragana-katakana');
     }
 
     public function index()

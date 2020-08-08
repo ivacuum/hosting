@@ -6,7 +6,7 @@ class Dcpp extends Controller
 {
     public function __construct()
     {
-        $this->middleware('breadcrumbs:dcpp.index,dc');
+        $this->middleware('nav:dcpp.index,dc');
     }
 
     public function index()

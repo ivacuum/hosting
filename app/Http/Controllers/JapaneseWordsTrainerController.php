@@ -4,7 +4,7 @@ class JapaneseWordsTrainerController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('breadcrumbs:japanese.words-trainer');
+        $this->middleware('nav:japanese.words-trainer');
     }
 
     public function __invoke()

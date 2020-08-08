@@ -29,12 +29,12 @@ class Kernel extends HttpKernel
 
     protected $routeMiddleware = [
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        'nav' => \Ivacuum\Generic\Middleware\Breadcrumbs::class,
         'auth' => \Ivacuum\Generic\Middleware\Auth::class,
         'admin' => Middleware\Admin::class,
         'guest' => Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'breadcrumbs' => \Ivacuum\Generic\Middleware\Breadcrumbs::class,
     ];
 }

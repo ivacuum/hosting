@@ -7,13 +7,13 @@ class Coupons extends Controller
 {
     public function __construct()
     {
-        $this->middleware('breadcrumbs:coupons.index,promocodes-coupons');
-        $this->middleware('breadcrumbs:coupons.airbnb')->only('airbnb');
-        $this->middleware('breadcrumbs:coupons.booking')->only('booking');
-        $this->middleware('breadcrumbs:coupons.digitalocean')->only('digitalocean');
-        $this->middleware('breadcrumbs:coupons.drimsim')->only('drimsim');
-        $this->middleware('breadcrumbs:coupons.firstvds')->only('firstvds');
-        $this->middleware('breadcrumbs:coupons.timeweb')->only('timeweb');
+        $this->middleware('nav:coupons.index,promocodes-coupons');
+        $this->middleware('nav:coupons.airbnb')->only('airbnb');
+        $this->middleware('nav:coupons.booking')->only('booking');
+        $this->middleware('nav:coupons.digitalocean')->only('digitalocean');
+        $this->middleware('nav:coupons.drimsim')->only('drimsim');
+        $this->middleware('nav:coupons.firstvds')->only('firstvds');
+        $this->middleware('nav:coupons.timeweb')->only('timeweb');
     }
 
     public function index()

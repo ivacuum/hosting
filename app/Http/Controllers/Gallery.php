@@ -7,10 +7,10 @@ class Gallery extends Controller
 {
     public function __construct()
     {
-        $this->middleware('breadcrumbs:gallery.index,gallery');
-        $this->middleware('breadcrumbs:gallery.preview')->only('preview');
-        $this->middleware('breadcrumbs:gallery.view')->only('view');
-        $this->middleware('breadcrumbs:gallery.upload')->only('upload');
+        $this->middleware('nav:gallery.index,gallery');
+        $this->middleware('nav:gallery.preview')->only('preview');
+        $this->middleware('nav:gallery.view')->only('view');
+        $this->middleware('nav:gallery.upload')->only('upload');
     }
 
     public function index()
