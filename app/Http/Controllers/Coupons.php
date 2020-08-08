@@ -18,32 +18,32 @@ class Coupons extends Controller
 
     public function index()
     {
-        return view($this->view);
+        return view('coupons.index');
     }
 
     public function airbnb()
     {
-        return view($this->view, ['metaTitle' => $this->getServiceMetaTitle('airbnb')]);
+        return view('coupons.airbnb', ['metaTitle' => $this->getServiceMetaTitle('airbnb')]);
     }
 
     public function booking()
     {
-        return view($this->view, ['metaTitle' => $this->getServiceMetaTitle('booking')]);
+        return view('coupons.booking', ['metaTitle' => $this->getServiceMetaTitle('booking')]);
     }
 
     public function digitalocean()
     {
-        return view($this->view, ['metaTitle' => $this->getServiceMetaTitle('do')]);
+        return view('coupons.digitalocean', ['metaTitle' => $this->getServiceMetaTitle('do')]);
     }
 
     public function drimsim()
     {
-        return view($this->view, ['metaTitle' => $this->getServiceMetaTitle('drimsim')]);
+        return view('coupons.drimsim', ['metaTitle' => $this->getServiceMetaTitle('drimsim')]);
     }
 
     public function firstvds()
     {
-        return view($this->view);
+        return view('coupons.firstvds');
     }
 
     public function firstvdsPost()
@@ -59,7 +59,7 @@ class Coupons extends Controller
 
     public function timeweb()
     {
-        return view($this->view, ['metaTitle' => $this->getServiceMetaTitle('timeweb')]);
+        return view('coupons.timeweb', ['metaTitle' => $this->getServiceMetaTitle('timeweb')]);
     }
 
     protected function getServiceMetaTitle(string $service): string

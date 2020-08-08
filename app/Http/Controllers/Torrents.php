@@ -18,11 +18,9 @@ class Torrents extends Controller
     public function index(TorrentsIndexRequest $request)
     {
         $q = $request->searchQuery();
-        $category = null;
+        $category = $request->category();
         $fulltext = $request->isFulltextSearch();
         $categoryId = $request->categoryId();
-
-        abort_if($categoryId && null === $category = \TorrentCategoryHelper::find($categoryId), 404);
 
         $torrents = Torrent::query();
 
@@ -44,7 +42,7 @@ class Torrents extends Controller
 
         $torrents = $torrents->published()
             ->orderByDesc('registered_at')
-            ->when(!$q && null !== $category, function (Builder $query) use ($categoryId) {
+            ->when(!$q && $category, function (Builder $query) use ($categoryId) {
                 $ids = \TorrentCategoryHelper::selfAndDescendantsIds($categoryId);
 
                 event(new \App\Events\Stats\TorrentFilteredByCategory);
@@ -53,7 +51,7 @@ class Torrents extends Controller
             })
             ->simplePaginate(25, Torrent::LIST_COLUMNS);
 
-        return view($this->view, [
+        return view('torrents.index', [
             'q' => $q,
             'tree' => \TorrentCategoryHelper::tree(),
             'stats' => Torrent::statsByCategories(),
@@ -77,14 +75,14 @@ class Torrents extends Controller
             ->take(50)
             ->get();
 
-        return view($this->view, ['comments' => $comments]);
+        return view('torrents.comments', ['comments' => $comments]);
     }
 
     public function faq()
     {
         event(new \App\Events\Stats\TorrentFaqViewed);
 
-        return view($this->view);
+        return view('torrents.faq');
     }
 
     public function magnet(Torrent $torrent)
@@ -109,17 +107,16 @@ class Torrents extends Controller
             ->orderByDesc('registered_at')
             ->simplePaginate(null, ['id']);
 
-        return view($this->view, ['torrents' => $torrents]);
+        return view('torrents.my', ['torrents' => $torrents]);
     }
 
     public function show(Torrent $torrent)
     {
-        \Breadcrumbs::push(trans('Торренты'), 'torrents');
         \Breadcrumbs::push($torrent->shortTitle());
 
         event(new \App\Events\Stats\TorrentViewed($torrent->id));
 
-        return view($this->view, [
+        return view('torrents.show', [
             'torrent' => $torrent,
             'comments' => $torrent->commentsPublished()->with('user')->orderBy('created_at')->get(),
             'metaTitle' => $torrent->title,

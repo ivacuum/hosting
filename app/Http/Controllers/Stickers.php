@@ -4,6 +4,6 @@ class Stickers extends Controller
 {
     public function index()
     {
-        return view($this->view);
+        return view('stickers.index');
     }
 }

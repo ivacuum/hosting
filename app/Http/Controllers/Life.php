@@ -24,7 +24,7 @@ class Life extends Controller
             ->get()
             ->groupBy(fn (Trip $model) => $model->year);
 
-        return view($this->view, [
+        return view('life.index', [
             'trips' => $trips,
             'metaTitle' => __('Заметки'),
         ]);
@@ -42,7 +42,7 @@ class Life extends Controller
             })
             ->sortBy(City::titleField());
 
-        return view($this->view, [
+        return view('life.cities', [
             'cities' => $cities,
             'metaTitle' => __('Города'),
         ]);
@@ -84,7 +84,7 @@ class Life extends Controller
 
     public function countries()
     {
-        return view($this->view, [
+        return view('life.countries', [
             'countries' => Country::allWithCitiesAndTrips(1),
             'metaTitle' => __('Страны'),
         ]);
@@ -105,7 +105,7 @@ class Life extends Controller
 
         event(new \App\Events\Stats\CountryViewed($country->id));
 
-        return view($this->view, [
+        return view('life.country', [
             'trips' => $trips,
             'country' => $country,
             'metaTitle' => $country->metaTitle(),
@@ -141,7 +141,7 @@ class Life extends Controller
             ->get()
             ->groupBy(fn (Gig $model) => $model->date->year);
 
-        return view($this->view, [
+        return view('life.gigs', [
             'gigs' => $gigs,
             'metaTitle' => trans('life.gigs_intro_title'),
         ]);

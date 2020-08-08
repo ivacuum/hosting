@@ -13,7 +13,7 @@ class Dcpp extends Controller
     {
         \Breadcrumbs::pop();
 
-        return view($this->view, ['page' => 'index']);
+        return view('dcpp.index', ['page' => 'index']);
     }
 
     public function page(string $page, ViewHelper $viewHelper)

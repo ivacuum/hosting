@@ -7,6 +7,15 @@ class TorrentsIndexRequest extends AbstractRequest
         return true;
     }
 
+    public function category()
+    {
+        if (!$this->categoryId()) {
+            return null;
+        }
+
+        return \TorrentCategoryHelper::find($this->categoryId());
+    }
+
     public function categoryId(): ?int
     {
         $categoryId = $this->input('category_id');

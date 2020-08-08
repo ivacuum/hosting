@@ -142,7 +142,7 @@ class TorrentCategoryHelper
             $this->initTree();
         }
 
-        return isset($this->tree[$id]['children']) ? $this->tree[$id]['children'] : [];
+        return $this->tree[$id]['children'] ?? [];
     }
 
     public function exists($id)
@@ -152,7 +152,7 @@ class TorrentCategoryHelper
 
     public function find($id)
     {
-        return isset($this->categories[$id]) ? $this->categories[$id] : null;
+        return $this->categories[$id] ?? null;
     }
 
     public function novaList()

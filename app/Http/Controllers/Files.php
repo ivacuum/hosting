@@ -12,7 +12,7 @@ class Files extends Controller
             ->orderByDesc('id')
             ->paginate();
 
-        return view($this->view, ['models' => $models]);
+        return view('files.index', ['models' => $models]);
     }
 
     public function download(File $file)

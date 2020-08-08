@@ -187,7 +187,7 @@ Route::get('torrents/comments', [Ctrl\Torrents::class, 'comments']);
 Route::get('torrents/faq', [Ctrl\Torrents::class, 'faq']);
 Route::get('torrents/my', [Ctrl\Torrents::class, 'my'])->middleware('auth');
 Route::post('torrents/request', Ctrl\TorrentRequestReleaseController::class);
-Route::get('torrents/{torrent}', [Ctrl\Torrents::class, 'show']);
+Route::get('torrents/{torrent}', [Ctrl\Torrents::class, 'show'])->middleware('breadcrumbs:Торренты,torrents');
 Route::post('torrents/{torrent}/magnet', [Ctrl\Torrents::class, 'magnet']);
 
 Route::get('trips/{trip}', [Ctrl\Trips::class, 'show']);
