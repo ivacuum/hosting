@@ -77,18 +77,22 @@ class Photos extends AbstractController
 
         \Storage::disk('photos')->putFileAs($folder, $image, $filename);
 
-        return $model->photos()->create([
-            'lat' => $coords['lat'] ?? '',
-            'lon' => $coords['lon'] ?? '',
-            'slug' => "{$model->slug}/{$filename}",
-            'views' => 0,
-            'status' => Model::STATUS_HIDDEN,
-            'user_id' => request()->user()->id,
-        ]);
+        /** @var \App\Photo $photo */
+        $photo = $model->photos()->make();
+        $photo->lat = $coords['lat'] ?? '';
+        $photo->lon = $coords['lon'] ?? '';
+        $photo->slug = "{$model->slug}/{$filename}";
+        $photo->views = 0;
+        $photo->status = Model::STATUS_HIDDEN;
+        $photo->user_id = request()->user()->id;
+        $photo->save();
+
+        return $photo;
     }
 
     protected function updateModel($model)
     {
+        /** @var Model $model */
         $model->tags()->sync(request('tags', []));
     }
 }

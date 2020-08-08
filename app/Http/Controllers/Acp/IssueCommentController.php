@@ -15,11 +15,11 @@ class IssueCommentController extends AbstractController
         $text = request('text');
 
         /** @var Comment $comment */
-        $comment = $issue->comments()->create([
-            'html' => $text,
-            'status' => Comment::STATUS_PUBLISHED,
-            'user_id' => request()->user()->id,
-        ]);
+        $comment = $issue->comments()->make();
+        $comment->html = $text;
+        $comment->status = Comment::STATUS_PUBLISHED;
+        $comment->user_id = request()->user()->id;
+        $comment->save();
 
         \Notification::send($issue->user, new IssueCommentedNotification($issue, $comment));
 
