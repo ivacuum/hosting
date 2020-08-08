@@ -7,11 +7,7 @@
   @lang('Посещенные страны')
   <span class="text-base text-muted">{{ sizeof($countries) }}</span>
 </h1>
-<nav class="flex flex-wrap text-sm mb-4">
-  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\UserTravelTrips::class, 'index'], $traveler->login) }}">{{ trans('life.by_year') }}</a></div>
-  <div class="mr-3 whitespace-no-wrap"><mark>{{ trans('life.by_country') }}</mark></div>
-  <div class="whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\UserTravelCities::class, 'index'], $traveler->login) }}">{{ trans('life.by_city') }}</a></div>
-</nav>
+<x-user-trips-subnav/>
 
 @if ($countries->count())
   <ol class="pl-8">

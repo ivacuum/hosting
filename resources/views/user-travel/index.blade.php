@@ -14,11 +14,7 @@
       </a>
     @endif
   </div>
-  <nav class="flex flex-wrap text-sm mb-4">
-    <div class="mr-3 whitespace-no-wrap"><mark>{{ trans('life.by_year') }}</mark></div>
-    <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\UserTravelCountries::class, 'index'], $traveler->login) }}">{{ trans('life.by_country') }}</a></div>
-    <div class="whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\UserTravelCities::class, 'index'], $traveler->login) }}">{{ trans('life.by_city') }}</a></div>
-  </nav>
+  <x-user-trips-subnav/>
 
   @include('tpl.trips_by_years')
 </section>

@@ -7,11 +7,7 @@
   @lang('Посещенные города')
   <span class="text-base text-muted">{{ sizeof($cities) }}</span>
 </h1>
-<nav class="flex flex-wrap text-sm mb-4">
-  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\UserTravelTrips::class, 'index'], $traveler->login) }}">{{ trans('life.by_year') }}</a></div>
-  <div class="mr-3 whitespace-no-wrap"><a class="link" href="{{ path([App\Http\Controllers\UserTravelCountries::class, 'index'], $traveler->login) }}">{{ trans('life.by_country') }}</a></div>
-  <div class="whitespace-no-wrap"><mark>{{ trans('life.by_city') }}</mark></div>
-</nav>
+<x-user-trips-subnav/>
 
 <div class="column-width-48">
   <?php $initial = $currentInitial = false ?>
