@@ -4,11 +4,6 @@ use App\Utilities\ViewHelper;
 
 class Dcpp extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('nav:dcpp.index,dc');
-    }
-
     public function index()
     {
         \Breadcrumbs::pop();
@@ -22,7 +17,7 @@ class Dcpp extends Controller
 
         abort_unless(view()->exists($view), 404);
 
-        \Breadcrumbs::push(trans("dcpp.{$page}"));
+        \Breadcrumbs::push(__("dcpp.{$page}"));
 
         return view($view, [
             'page' => $page,

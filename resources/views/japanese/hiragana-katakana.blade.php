@@ -1,7 +1,7 @@
 @extends('japanese.base')
 
 @section('content')
-<h1 class="h2">{{ trans('japanese.hiragana-katakana') }}</h1>
+<h1 class="h2">{{ __('Хирагана и катакана') }}</h1>
 <hiragana-katakana></hiragana-katakana>
 
 <div class="mt-12 max-w-600px">

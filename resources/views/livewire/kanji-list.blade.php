@@ -5,7 +5,7 @@
     <div class="sm:flex items-center justify-between mt-6 mb-1">
       <h3>
         @if ($range)
-          <span>{{ trans('japanese.level', ['level' => $level]) }}</span>
+          <span>{{ __('Уровень :level', ['level' => $level]) }}</span>
         @else
           <span>{{ $similarId ? trans('japanese.similar-kanji') : trans('japanese.kanji') }}</span>
         @endif

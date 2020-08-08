@@ -27,7 +27,7 @@
                 'href' => path([App\Http\Controllers\Torrents::class, 'index']),
                 'isActive' => $controller === App\Http\Controllers\Torrents::class,
               ])
-                {{ trans('menu.torrents') }}
+                {{ __('Торренты') }}
               @endcomponent
             @endru
           @endif

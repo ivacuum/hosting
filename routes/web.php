@@ -30,20 +30,22 @@ Route::get('auth/vk/callback', [Ctrl\Auth\Vk::class, 'callback']);
 
 Route::post('ajax/comment/{type}/{id}', [Ctrl\AjaxComment::class, 'store']);
 
-Route::get('comments/{comment}/confirm', [Ctrl\CommentConfirm::class, 'update'])->middleware('auth', 'can:confirm,comment');
+Route::get('comments/{comment}/confirm', Ctrl\CommentConfirm::class)->middleware('auth', 'can:confirm,comment');
 
 Route::get('contact', [Ctrl\Issues::class, 'create']);
 Route::post('contact', [Ctrl\Issues::class, 'store']);
 
-Route::get('dc', [Ctrl\Dcpp::class, 'index']);
-Route::get('dc/hubs', [Ctrl\DcppHubs::class, 'index']);
-Route::post('dc/hubs/{hub}/click', [Ctrl\DcppHubClick::class, 'store']);
-Route::get('dc/{slug}', [Ctrl\Dcpp::class, 'page']);
+Route::middleware('nav:О DC++,dc')->group(function () {
+    Route::get('dc', [Ctrl\Dcpp::class, 'index']);
+    Route::get('dc/hubs', Ctrl\DcppHubs::class)->middleware('nav:Хабы');
+    Route::post('dc/hubs/{hub}/click', Ctrl\DcppHubClick::class);
+    Route::get('dc/{slug}', [Ctrl\Dcpp::class, 'page']);
+});
 
 Route::get('docs', [Ctrl\Docs::class, 'index']);
 Route::get('docs/{slug}', [Ctrl\Docs::class, 'page']);
 
-Route::get('files', [Ctrl\Files::class, 'index']);
+Route::get('files', [Ctrl\Files::class, 'index'])->middleware('nav:Файлы');
 Route::get('files/{file}/dl', [Ctrl\Files::class, 'download']);
 
 Route::get('gallery', [Ctrl\Gallery::class, 'index'])->middleware('auth');
@@ -54,21 +56,21 @@ Route::post('gallery/upload', [Ctrl\Gallery::class, 'store'])->middleware('auth'
 
 Route::middleware('nav:Японский язык,japanese')->group(function () {
     Route::get('japanese', Ctrl\JapaneseController::class);
-    Route::get('japanese/hiragana-katakana', [Ctrl\JapaneseHiraganaKatakana::class, 'index']);
+    Route::get('japanese/hiragana-katakana', [Ctrl\JapaneseHiraganaKatakana::class, 'index'])->middleware('nav:Хирагана и катакана');
 
     Route::middleware('nav:WaniKani V,japanese/wanikani')->group(function () {
         Route::get('japanese/wanikani', Ctrl\WanikaniController::class);
-        Route::get('japanese/wanikani/kanji', [Ctrl\JapaneseWanikaniKanji::class, 'index']);
+        Route::get('japanese/wanikani/kanji', [Ctrl\JapaneseWanikaniKanji::class, 'index'])->middleware('nav:japanese.kanji');
         Route::get('japanese/wanikani/kanji/{character}', [Ctrl\JapaneseWanikaniKanji::class, 'show']);
-        Route::get('japanese/wanikani/level', Ctrl\WanikaniLevelsController::class)->middleware('nav:japanese.levels');
+        Route::get('japanese/wanikani/level', Ctrl\WanikaniLevelsController::class)->middleware('nav:Уровни');
         Route::get('japanese/wanikani/level/{level}', Ctrl\WanikaniLevelController::class);
-        Route::get('japanese/wanikani/radicals', [Ctrl\JapaneseWanikaniRadicals::class, 'index']);
+        Route::get('japanese/wanikani/radicals', [Ctrl\JapaneseWanikaniRadicals::class, 'index'])->middleware('nav:japanese.radicals');
         Route::get('japanese/wanikani/radicals/{meaning}', [Ctrl\JapaneseWanikaniRadicals::class, 'show']);
-        Route::get('japanese/wanikani/vocabulary', [Ctrl\JapaneseWanikaniVocabulary::class, 'index']);
+        Route::get('japanese/wanikani/vocabulary', [Ctrl\JapaneseWanikaniVocabulary::class, 'index'])->middleware('nav:japanese.vocabulary');
         Route::get('japanese/wanikani/vocabulary/{characters}', [Ctrl\JapaneseWanikaniVocabulary::class, 'show']);
     });
 
-    Route::get('japanese/words-trainer', Ctrl\JapaneseWordsTrainerController::class);
+    Route::get('japanese/words-trainer', Ctrl\JapaneseWordsTrainerController::class)->middleware('nav:Тренажер по набору слов хираганой и катаканой');
 });
 
 Route::post('js/typo', Ctrl\JsTypo::class);
@@ -178,7 +180,7 @@ Route::post('subscriptions', [Ctrl\Subscriptions::class, 'store']);
 Route::put('subscriptions', [Ctrl\Subscriptions::class, 'update'])->middleware('auth');
 Route::get('subscriptions/confirm', [Ctrl\Subscriptions::class, 'confirm'])->middleware('auth');
 
-Route::get('torrent', [Ctrl\TorrentPromo::class, 'index']);
+Route::get('torrent', Ctrl\TorrentPromo::class);
 
 Route::get('torrents', [Ctrl\Torrents::class, 'index']);
 Route::post('torrents', [Ctrl\Torrents::class, 'store']);

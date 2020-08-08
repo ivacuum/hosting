@@ -6,6 +6,7 @@ return [
     'dcpp.hubs' => 'Popular DC++ Hubs',
     'dcpp.dcpp' => 'Download DC++ 0.782',
     'dcpp.airdc' => 'Download AirDC++ 3.41',
+    'dcpp.index' => __('О DC++'),
     'dcpp.apexdc' => 'Download ApexDC++ 1.6.4',
     'dcpp.jucydc' => 'Download Jucy DC++ 0.85 for Windows, Linux and macOS',
     'dcpp.pelinkdc' => 'Download PeLinkDC++ 5.95',
@@ -29,9 +30,10 @@ return [
     'japanese-wanikani-vocabulary.show' => ':vocab',
     'japanese-wanikani-vocabulary.index' => 'Vocabulary',
 
-    'japanese-words-trainer' => 'Hiragana & Katakana words trainer',
+    'japanese-words-trainer' => __('Тренажер по набору слов хираганой и катаканой'),
 
-    'korean' => 'Korean language',
+    'korean' => __('Корейский язык'),
+    'korean-psy' => __('Кириллизация песен PSY'),
 
     'movies' => __('Любимые фильмы и сериалы'),
 
@@ -40,6 +42,6 @@ return [
     'retracker.usage' => 'How to use retracker',
 
     'wanikani' => 'WaniKani V · Japanese',
-    'wanikani-level' => 'Level :level',
-    'wanikani-levels' => 'Levels',
+    'wanikani-level' => __('Уровень :level'),
+    'wanikani-levels' => __('Уровни'),
 ];

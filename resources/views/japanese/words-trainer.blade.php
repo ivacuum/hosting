@@ -5,7 +5,7 @@
 @livewire(App\Http\Livewire\VocabularyTrainer::class)
 
 <div class="max-w-lg mt-12">
-  <h1 class="h2">{{ trans('japanese.words-trainer') }}</h1>
+  <h1 class="h2">{{ __('Тренажер по набору слов хираганой и катаканой') }}</h1>
   <div class="grid gap-4">
     <div>
       @ru

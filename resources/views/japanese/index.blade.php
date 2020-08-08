@@ -31,7 +31,7 @@
         </div>
         <h3 class="h4 mt-6">
           <a class="link" href="{{ path(App\Http\Controllers\JapaneseWordsTrainerController::class) }}">
-            {{ trans('japanese.words-trainer') }}
+            {{ __('Тренажер по набору слов хираганой и катаканой') }}
           </a>
         </h3>
         <div>

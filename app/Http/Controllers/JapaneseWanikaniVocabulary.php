@@ -11,8 +11,6 @@ class JapaneseWanikaniVocabulary extends Controller
         $from = max(1, min(60, $request->input('from', 1)));
         $to = min(60, $from + 4);
 
-        \Breadcrumbs::push(trans('japanese.vocabulary'));
-
         return view('japanese.wanikani.vocabularies', [
             'to' => $to,
             'from' => $from,
@@ -26,7 +24,7 @@ class JapaneseWanikaniVocabulary extends Controller
             ->userBurnable(auth()->id())
             ->firstOrFail();
 
-        \Breadcrumbs::push(trans('japanese.level', ['level' => $vocab->level]), "japanese/wanikani/level/{$vocab->level}");
+        \Breadcrumbs::push(__('Уровень :level', ['level' => $vocab->level]), "japanese/wanikani/level/{$vocab->level}");
         \Breadcrumbs::push($vocab->character);
 
         return view('japanese.wanikani.vocabulary', [

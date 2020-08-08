@@ -89,6 +89,16 @@ class Comment extends Model
         return $this->created_at->formatLocalized($format);
     }
 
+    public function isNotPending(): bool
+    {
+        return !$this->isPending();
+    }
+
+    public function isPending(): bool
+    {
+        return $this->status === self::STATUS_PENDING;
+    }
+
     public function usersForNotification($model)
     {
         return static::with('user')

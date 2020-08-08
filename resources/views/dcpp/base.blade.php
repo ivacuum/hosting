@@ -17,7 +17,7 @@
   'href' => path([App\Http\Controllers\Dcpp::class, 'index']),
   'isActive' => $page === 'index',
 ])
-  {{ trans('dcpp.index') }}
+  {{ __('О DC++') }}
 @endcomponent
 @ru
   @component('tpl.menu-item', [

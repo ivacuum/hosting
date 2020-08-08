@@ -77,7 +77,7 @@
     </div>
     <div>
       <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\ParserVk::class, 'index']) }}">
-        <h2 class="text-2xl mb-0"><span class="link">{{ trans('menu.parser_vk') }}</span></h2>
+        <h2 class="text-2xl mb-0"><span class="link">{{ __('Парсер ВК') }}</span></h2>
       </a>
       <div>Ежедневная подборка десяти лучших постов выбранных страниц и групп ВК.</div>
       {{--<div class="text-muted">Дата запуска: 2 октября 2014 г.</div>--}}
@@ -86,7 +86,7 @@
   <div>
     <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Coupons::class, 'index']) }}">
       <div class="leading-none text-3xl mr-2">🎁</div>
-      <h2 class="text-2xl mb-0"><span class="link">{{ trans('menu.coupons') }}</span></h2>
+      <h2 class="text-2xl mb-0"><span class="link">{{ __('Промокоды и купоны') }}</span></h2>
     </a>
     @ru
       <div>Коллекция способов сэкономить на услугах известных сервисов.</div>

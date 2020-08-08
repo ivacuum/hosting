@@ -4,7 +4,7 @@ use App\DcppHub;
 
 class DcppHubClick extends Controller
 {
-    public function store(DcppHub $hub)
+    public function __invoke(DcppHub $hub)
     {
         $hub->incrementClicks();
 

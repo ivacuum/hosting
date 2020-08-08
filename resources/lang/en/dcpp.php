@@ -2,7 +2,6 @@
 
 return [
     'for' => 'For',
-    'index' => 'About DC++',
     'links' => 'Links',
     'pages' => 'Pages',
     'clients' => 'Client software',

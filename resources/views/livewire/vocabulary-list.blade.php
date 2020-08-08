@@ -3,7 +3,7 @@
 <div>
   <div class="sm:flex items-center justify-between mt-6 mb-1">
     <h3>
-      <span>{{ $range ? trans('japanese.level', ['level' => $level]) : trans('japanese.vocabulary') }}</span>
+      <span>{{ $range ? __('Уровень :level', ['level' => $level]) : trans('japanese.vocabulary') }}</span>
       <span class="text-base text-muted">{{ $vocabularies->count() }}</span>
     </h3>
     <div>

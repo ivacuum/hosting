@@ -4,9 +4,9 @@ use App\Comment;
 
 class CommentConfirm extends Controller
 {
-    public function update(Comment $comment)
+    public function __invoke(Comment $comment)
     {
-        if ($comment->status !== Comment::STATUS_PENDING) {
+        if ($comment->isNotPending()) {
             return redirect($comment->rel->www())
                 ->with('message', __('Комментарий уже активирован.'));
         }

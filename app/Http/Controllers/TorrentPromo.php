@@ -2,7 +2,7 @@
 
 class TorrentPromo extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         event(new \App\Events\Stats\TorrentPromoViewed);
 

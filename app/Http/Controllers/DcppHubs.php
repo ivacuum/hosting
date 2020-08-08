@@ -5,13 +5,7 @@ use App\Utilities\ViewHelper;
 
 class DcppHubs extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('nav:dcpp.index,dc');
-        $this->middleware('nav:Хабы');
-    }
-
-    public function index(ViewHelper $viewHelper)
+    public function __invoke(ViewHelper $viewHelper)
     {
         $hubs = DcppHub::where('status', DcppHub::STATUS_PUBLISHED)
             ->orderBy('title')

@@ -65,7 +65,7 @@
         <p>Looking for a place to connect to download and share files?</p>
       @endru
       <p>
-        <a class="btn border border-transparent bg-orange-400 text-white hover:bg-orange-500 hover:text-white" href="{{ path([App\Http\Controllers\DcppHubs::class, 'index']) }}">
+        <a class="btn border border-transparent bg-orange-400 text-white hover:bg-orange-500 hover:text-white" href="{{ path(App\Http\Controllers\DcppHubs::class) }}">
           @ru
             Список популярных DC++ хабов
           @en

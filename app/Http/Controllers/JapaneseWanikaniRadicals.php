@@ -10,8 +10,6 @@ class JapaneseWanikaniRadicals extends Controller
         $from = max(1, min(60, $request->input('from', 1)));
         $to = min(60, $from + 9);
 
-        \Breadcrumbs::push(trans('japanese.radicals'));
-
         return view('japanese.wanikani.radicals', [
             'to' => $to,
             'from' => $from,
@@ -25,7 +23,7 @@ class JapaneseWanikaniRadicals extends Controller
             ->userBurnable(auth()->id())
             ->firstOrFail();
 
-        \Breadcrumbs::push(trans('japanese.level', ['level' => $radical->level]), "japanese/wanikani/level/{$radical->level}");
+        \Breadcrumbs::push(__('Уровень :level', ['level' => $radical->level]), "japanese/wanikani/level/{$radical->level}");
         \Breadcrumbs::push($radical->meaning);
 
         return view('japanese.wanikani.radical', [

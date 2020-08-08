@@ -45,7 +45,7 @@
   ]),
 ])
   @slot('title')
-    {{ trans('menu.hosting') }}
+    {{ __('Хостинг') }}
   @endslot
 
   <a class="dropdown-item" href="{{ $localeUri }}/acp/clients">{{ trans('acp.clients.index') }}</a>
@@ -65,7 +65,7 @@
   ])
 ])
   @slot('title')
-    {{ trans('menu.resources') }}
+    {{ __('Ресурсы') }}
   @endslot
 
   <a class="dropdown-item" href="{{ $localeUri }}/acp/chat-messages">{{ trans('acp.chat-messages.index') }}</a>
@@ -101,7 +101,7 @@
   ])
 ])
   @slot('title')
-    {{ trans('menu.site') }}
+    {{ __('Сайт') }}
   @endslot
 
   <a class="dropdown-item" href="{{ $localeUri }}/acp/metrics">{{ trans('acp.metrics.index') }}</a>
