@@ -1,7 +1,7 @@
 @extends('my.base')
 
 @section('content')
-<h3 class="mb-4">{{ trans('my.settings') }}</h3>
+<h3 class="mb-4">{{ __('Настройки') }}</h3>
 
 <div>
   <form action="{{ path([App\Http\Controllers\MySettings::class, 'update']) }}" method="post">
@@ -45,7 +45,7 @@
           value="1"
           {{ old('torrent_short_title', Auth::user()->torrent_short_title) ? 'checked' : '' }}
         >
-        {{ trans('my.torrent_short_title') }}
+        {{ __('Короткие названия раздач') }}
       </label>
       <x-invalid-feedback field="torrent_short_title"/>
       @ru
@@ -110,7 +110,7 @@
     </div>
 
     <button class="btn btn-primary">
-      {{ trans('my.save') }}
+      {{ __('Сохранить изменения') }}
     </button>
   </form>
 </div>

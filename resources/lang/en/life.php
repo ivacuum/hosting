@@ -1,27 +1,10 @@
 <?php
 
 return [
-    /*
-    'feedback.help' => 'Leave your contact information if you want to get a reply',
-    'feedback.leave' => 'Leave a feedback',
-    'feedback.submit' => 'Submit',
-    'feedback.heading' => 'Feedback',
-    'feedback.placeholder' => 'Write a message...',
-    */
-
     'by_city' => 'by city',
     'by_days' => 'calendar',
     'by_year' => 'by year',
     'by_country' => 'by country',
-
-    'on_map' => 'on the map',
-
-    'visited_cities' => 'Visited cities',
-    'visited_countries' => 'Visited countries',
-
-    'trips' => 'Trips',
-    'favorites' => 'Favorites',
-    'languages' => 'Languages',
 
     'german' => 'German',
     'english' => 'English',

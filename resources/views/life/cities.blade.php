@@ -2,7 +2,7 @@
 
 @section('content')
 <h1 class="text-3xl">
-  {{ trans('life.visited_cities') }}
+  {{ __('Посещенные города') }}
   <span class="text-base text-muted">{{ sizeof($cities) }}</span>
 </h1>
 <nav class="flex flex-wrap text-sm mb-4">

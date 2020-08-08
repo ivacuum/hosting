@@ -1,27 +1,10 @@
 <?php
 
 return [
-    /*
-    'feedback.help' => 'Если хотите получить ответ, то укажите как с вами связаться',
-    'feedback.leave' => 'Оставить отзыв',
-    'feedback.submit' => 'Отправить',
-    'feedback.heading' => 'Отзыв',
-    'feedback.placeholder' => 'Текст сообщения...',
-    */
-
     'by_city' => 'по городам',
     'by_days' => 'календарь',
     'by_year' => 'по годам',
     'by_country' => 'по странам',
-
-    'on_map' => 'на карте',
-
-    'visited_cities' => 'Посещенные города',
-    'visited_countries' => 'Посещенные страны',
-
-    'trips' => 'Поездки',
-    'favorites' => 'Избранное',
-    'languages' => 'Языки',
 
     'german' => 'Немецкий',
     'english' => 'Английский',

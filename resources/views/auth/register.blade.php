@@ -29,7 +29,7 @@
         name="password"
         minlength="8"
         autocomplete="new-password"
-        placeholder="{{ trans('auth.password') }}"
+        placeholder="{{ __('Пароль') }}"
       >
       <x-invalid-feedback field="password"/>
     </div>
