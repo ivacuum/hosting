@@ -79,14 +79,14 @@
   <div class="flex items-center flex-wrap">
     <a
       class="text-lg svg-flex svg-label small-caps mr-4"
-      href="{{ path([App\Http\Controllers\LifeGigsRss::class, 'index']) }}"
+      href="{{ path(App\Http\Controllers\GigsRssController::class) }}"
     >
       @svg (rss-square)
       {{ mb_strtolower(trans('my.notify_gigs')) }}
     </a>
     <a
       class="text-lg svg-flex svg-label small-caps mr-4"
-      href="{{ path([App\Http\Controllers\NewsRss::class, 'index']) }}"
+      href="{{ path(App\Http\Controllers\NewsRssController::class) }}"
     >
       @svg (rss-square)
       {{ mb_strtolower(trans('my.notify_news')) }}

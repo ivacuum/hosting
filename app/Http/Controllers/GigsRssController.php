@@ -2,9 +2,9 @@
 
 use App\Gig;
 
-class LifeGigsRss extends Controller
+class GigsRssController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         $meta = [
             'title' => __('Концерты'),

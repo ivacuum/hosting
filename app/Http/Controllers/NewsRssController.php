@@ -2,9 +2,9 @@
 
 use App\News;
 
-class NewsRss extends Controller
+class NewsRssController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         $meta = [
             'title' => __('Новости'),
@@ -12,7 +12,8 @@ class NewsRss extends Controller
             'description' => __('Новости'),
         ];
 
-        $items = News::where('status', News::STATUS_PUBLISHED)
+        $items = News::query()
+            ->where('status', News::STATUS_PUBLISHED)
             ->where('locale', \App::getLocale())
             ->take(20)
             ->orderByDesc('id')

@@ -1,7 +1,7 @@
 @extends('base')
 
 @push('head')
-<link rel="alternate" type="application/rss+xml" title="{{ __('Новости') }}" href="{{ url(path([App\Http\Controllers\NewsRss::class, 'index'])) }}">
+<link rel="alternate" type="application/rss+xml" title="{{ __('Новости') }}" href="{{ url(path(App\Http\Controllers\NewsRssController::class)) }}">
 @endpush
 
 @section('content')
@@ -29,7 +29,7 @@
   @endif
   <a
     class="text-lg svg-flex svg-label small-caps"
-    href="{{ path([App\Http\Controllers\NewsRss::class, 'index']) }}"
+    href="{{ path(App\Http\Controllers\NewsRssController::class) }}"
   >
     @svg (rss-square)
     rss

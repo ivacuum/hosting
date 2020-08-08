@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\NewsShowRequest;
 use App\News as Model;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -15,88 +16,31 @@ class News extends Controller
             ->orderByDesc('created_at')
             ->paginate();
 
-        \Breadcrumbs::push(__('Новости'), 'news');
-
         return view('news.index', ['news' => $news]);
     }
 
-    public function bc()
+    public function show(NewsShowRequest $request)
     {
-        return redirect(path([self::class, 'index']), 301);
-    }
-
-    public function day($year, $month, $day)
-    {
-        $validator = \Validator::make(
-            ['date' => "{$year}-{$month}-{$day}"],
-            ['date' => 'date_format:Y-m-d']
-        );
-
-        abort_unless($validator->passes(), 404);
-
-        return $this->index($year, $month, $day);
-    }
-
-    public function month($year, $month)
-    {
-        $validator = \Validator::make(
-            ['date' => "{$year}-{$month}"],
-            ['date' => 'date_format:Y-m']
-        );
-
-        abort_unless($validator->passes(), 404);
-
-        return $this->index($year, $month);
-    }
-
-    public function show(int $id)
-    {
-        $news = Model::find($id);
-
-        if (null === $news) {
+        if ($request->shouldRedirectToIndex()) {
             return redirect(path([self::class, 'index']), 301);
         }
 
-        abort_unless($news->status === Model::STATUS_PUBLISHED, 404);
+        $news = $request->news();
 
-        if ($url = $this->redirectUrlToOriginLocale($news)) {
+        abort_unless($news->isPublished(), 404);
+
+        if ($url = $request->redirectUrlToOriginLocale()) {
             return redirect($url, 301);
         }
 
         event(new \App\Events\Stats\NewsViewed($news->id));
 
-        \Breadcrumbs::push(__('Новости'), 'news')
-            ->push($news->title);
+        \Breadcrumbs::push($news->breadcrumb());
 
-        return view($this->view, [
+        return view('news.show', [
             'news' => $news,
             'comments' => $news->commentsPublished()->with('user')->orderBy('created_at')->get(),
             'metaTitle' => $news->title,
         ]);
-    }
-
-    public function year($year)
-    {
-        $validator = \Validator::make(
-            ['year' => $year],
-            ['year' => 'date_format:Y']
-        );
-
-        abort_unless($validator->passes(), 404);
-
-        return $this->index($year);
-    }
-
-    protected function redirectUrlToOriginLocale(Model $news): string
-    {
-        $locale = \App::getLocale();
-
-        if ($locale === $news->locale) {
-            return '';
-        }
-
-        return $news->locale === 'ru'
-            ? request()->path()
-            : "/{$news->locale}/".request()->path();
     }
 }

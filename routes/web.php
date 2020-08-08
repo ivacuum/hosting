@@ -78,7 +78,7 @@ Route::middleware('breadcrumbs:Заметки,life')->group(function () {
     Route::get('life/countries', [Ctrl\Life::class, 'countries']);
     Route::get('life/countries/{slug}', [Ctrl\Life::class, 'country']);
     Route::get('life/gigs', [Ctrl\Life::class, 'gigs']);
-    Route::get('life/gigs/rss', [Ctrl\LifeGigsRss::class, 'index']);
+    Route::get('life/gigs/rss', Ctrl\GigsRssController::class);
     Route::get('life/movies', Ctrl\MoviesController::class)->middleware('breadcrumbs:Любимые фильмы и сериалы,life/movies');
     Route::get('life/rss', Ctrl\TripsRssController::class);
     Route::get('life/{slug}', [Ctrl\Life::class, 'page']);
@@ -105,12 +105,12 @@ Route::put('my/trips/{trip}', [Ctrl\MyTrips::class, 'update'])->middleware('auth
 Route::delete('my/trips/{trip}', [Ctrl\MyTrips::class, 'destroy'])->middleware('auth', 'can:user-delete,trip');
 Route::get('my/trips/{trip}/edit', [Ctrl\MyTrips::class, 'edit'])->middleware('auth', 'can:user-update,trip');
 
-Route::get('news', [Ctrl\News::class, 'index']);
-Route::get('news/rss', [Ctrl\NewsRss::class, 'index']);
-Route::get('news/{id}', [Ctrl\News::class, 'show']);
-Route::get('news/{year}/{month}', [Ctrl\News::class, 'bc']);
-Route::get('news/{year}/{month}/{day}', [Ctrl\News::class, 'bc']);
-Route::get('news/{year}/{month}/{day}/{slug}', [Ctrl\News::class, 'bc']);
+Route::get('news', [Ctrl\News::class, 'index'])->middleware('breadcrumbs:Новости,news');
+Route::get('news/rss', Ctrl\NewsRssController::class);
+Route::get('news/{id}', [Ctrl\News::class, 'show'])->middleware('breadcrumbs:Новости,news');
+Route::get('news/{year}/{month}', Ctrl\NewsBcController::class);
+Route::get('news/{year}/{month}/{day}', Ctrl\NewsBcController::class);
+Route::get('news/{year}/{month}/{day}/{slug}', Ctrl\NewsBcController::class);
 
 Route::get('notifications', [Ctrl\Notifications::class, 'index'])->middleware('auth');
 
@@ -137,7 +137,6 @@ Route::middleware('breadcrumbs:Фотки,photos')->group(function () {
         Route::get('photos/tags', [Ctrl\Photos::class, 'tags']);
         Route::get('photos/tags/{tag}', [Ctrl\Photos::class, 'tag']);
     });
-
 
     Route::middleware('breadcrumbs:Поездки,photos/trips')->group(function () {
         Route::get('photos/trips', [Ctrl\Photos::class, 'trips']);

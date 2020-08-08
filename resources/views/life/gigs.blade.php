@@ -5,7 +5,7 @@
 @extends('life.base')
 
 @push('head')
-<link rel="alternate" type="application/rss+xml" title="{{ __('Концерты') }}" href="{{ url(path([App\Http\Controllers\LifeGigsRss::class, 'index'])) }}">
+<link rel="alternate" type="application/rss+xml" title="{{ __('Концерты') }}" href="{{ url(path(App\Http\Controllers\GigsRssController::class)) }}">
 @endpush
 
 @section('content')
@@ -28,7 +28,7 @@
       {{ trans('mail.subscribe') }}
     </a>
   @endif
-  <a class="svg-flex svg-label small-caps" href="{{ path([App\Http\Controllers\LifeGigsRss::class, 'index']) }}">
+  <a class="svg-flex svg-label small-caps" href="{{ path(App\Http\Controllers\GigsRssController::class) }}">
     @svg (rss-square)
     rss
   </a>

@@ -82,6 +82,16 @@ class News extends Model
         return $this->status === self::STATUS_HIDDEN;
     }
 
+    public function isPublished(): bool
+    {
+        return $this->status === self::STATUS_PUBLISHED;
+    }
+
+    public function isRussian(): bool
+    {
+        return $this->locale === 'ru';
+    }
+
     public function www(?string $anchor = null): string
     {
         return path([Http\Controllers\News::class, 'show'], $this->id) . $anchor;
@@ -91,16 +101,15 @@ class News extends Model
     public static function interval(int $year, ?int $month = null, ?int $day = null): array
     {
         $start = CarbonImmutable::createFromDate($year, $month, $day);
-        $end = $start->copy();
 
         if (null !== $day) {
-            return [$start->startOfDay(), $end->endOfDay()];
+            return [$start->startOfDay(), $start->endOfDay()];
         }
 
         if (null !== $month) {
-            return [$start->startOfMonth(), $end->endOfMonth()];
+            return [$start->startOfMonth(), $start->endOfMonth()];
         }
 
-        return [$start->startOfYear(), $end->endOfYear()];
+        return [$start->startOfYear(), $start->endOfYear()];
     }
 }
