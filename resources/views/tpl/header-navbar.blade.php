@@ -16,8 +16,8 @@
             {{ __('Заметки') }}
           @endcomponent
           @component('tpl.menu-item', [
-            'href' => path([App\Http\Controllers\News::class, 'index']),
-            'isActive' => $controller === App\Http\Controllers\News::class,
+            'href' => path([App\Http\Controllers\NewsController::class, 'index']),
+            'isActive' => $controller === App\Http\Controllers\NewsController::class,
           ])
             {{ __('Новости') }}
           @endcomponent

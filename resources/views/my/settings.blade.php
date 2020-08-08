@@ -80,7 +80,7 @@
         value="{{ App\User::NOTIFY_MAIL }}"
         {{ old('notify_gigs', Auth::user()->notify_gigs) ? 'checked' : '' }}
       >
-      {{ trans('my.notify_gigs') }}
+      {{ __('Концерты') }}
     </label>
 
     <input type="hidden" name="notify_news" value="{{ App\User::NOTIFY_NO }}">
@@ -92,7 +92,7 @@
         value="{{ App\User::NOTIFY_MAIL }}"
         {{ old('notify_news', Auth::user()->notify_news) ? 'checked' : '' }}
       >
-      {{ trans('my.notify_news') }}
+      {{ __('Новости сайта') }}
     </label>
 
     <div class="mb-4">
@@ -105,7 +105,7 @@
           value="{{ App\User::NOTIFY_MAIL }}"
           {{ old('notify_trips', Auth::user()->notify_trips) ? 'checked' : '' }}
         >
-        {{ trans('my.notify_trips') }}
+        {{ __('Путешествия') }}
       </label>
     </div>
 

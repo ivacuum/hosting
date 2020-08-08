@@ -8,7 +8,7 @@ class NewsRssController extends Controller
     {
         $meta = [
             'title' => __('Новости'),
-            'link' => url(path([\App\Http\Controllers\News::class, 'index'])),
+            'link' => url(path([NewsController::class, 'index'])),
             'description' => __('Новости'),
         ];
 

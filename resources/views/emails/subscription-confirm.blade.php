@@ -17,7 +17,7 @@
   Selected notifications:
 @endru
 @foreach ($subscriptions as $subscription)
-  - {{ trans("my.notify_{$subscription}") }}
+  - {{ $subscription }}
 @endforeach
 
 @component('mail::button', ['url' => $confirmLink])

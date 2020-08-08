@@ -112,7 +112,7 @@ class Comment extends Model
     {
         switch ($this->rel_type) {
             case 'News':
-                return path([Http\Controllers\News::class, 'show'], $this->rel_id) . $this->anchor();
+                return path([Http\Controllers\NewsController::class, 'show'], $this->rel_id) . $this->anchor();
             case 'Torrent':
                 return path([Http\Controllers\Torrents::class, 'show'], $this->rel_id) . $this->anchor();
             case 'Trip':

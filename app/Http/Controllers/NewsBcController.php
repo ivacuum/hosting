@@ -4,6 +4,6 @@ class NewsBcController extends Controller
 {
     public function __invoke()
     {
-        return redirect(path([News::class, 'index']), 301);
+        return redirect(path([NewsController::class, 'index']), 301);
     }
 }

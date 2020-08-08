@@ -35,7 +35,7 @@
   </div>
   @ru
     <div class="md:hidden">
-      <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\News::class, 'index']) }}">
+      <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\NewsController::class, 'index']) }}">
         <h2 class="text-2xl mb-0"><span class="link">{{ __('Новости') }}</span></h2>
       </a>
       <div>Хроника развития сайта с 2004 года.</div>

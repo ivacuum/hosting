@@ -105,9 +105,9 @@ Route::put('my/trips/{trip}', [Ctrl\MyTrips::class, 'update'])->middleware('auth
 Route::delete('my/trips/{trip}', [Ctrl\MyTrips::class, 'destroy'])->middleware('auth', 'can:user-delete,trip');
 Route::get('my/trips/{trip}/edit', [Ctrl\MyTrips::class, 'edit'])->middleware('auth', 'can:user-update,trip');
 
-Route::get('news', [Ctrl\News::class, 'index'])->middleware('breadcrumbs:Новости,news');
+Route::get('news', [Ctrl\NewsController::class, 'index'])->middleware('breadcrumbs:Новости,news');
 Route::get('news/rss', Ctrl\NewsRssController::class);
-Route::get('news/{id}', [Ctrl\News::class, 'show'])->middleware('breadcrumbs:Новости,news');
+Route::get('news/{id}', [Ctrl\NewsController::class, 'show'])->middleware('breadcrumbs:Новости,news');
 Route::get('news/{year}/{month}', Ctrl\NewsBcController::class);
 Route::get('news/{year}/{month}/{day}', Ctrl\NewsBcController::class);
 Route::get('news/{year}/{month}/{day}/{slug}', Ctrl\NewsBcController::class);

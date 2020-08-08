@@ -7,17 +7,28 @@ use Illuminate\Mail\Mailable;
 
 class SubscriptionConfirmMail extends Mailable implements ShouldQueue
 {
+    use RecordsEmail;
+
     public $hash;
     public $user;
-    public $email;
     public $confirmLink;
     public $subscriptions;
 
     public function __construct(User $user, array $subscriptions)
     {
         $this->user = $user;
-        $this->email = $this->email($user);
-        $this->subscriptions = $subscriptions;
+        $this->email = $this->email($user->emails(), $user);
+        $this->subscriptions = collect($subscriptions)
+            ->map(function ($subscription) {
+                switch ($subscription) {
+                    case 'gigs': return __('Концерты');
+                    case 'news': return __('Новости сайта');
+                    case 'trips': return __('Путешествия');
+                }
+
+                return '';
+            })
+            ->all();
 
         $hash = \Crypt::encryptString(implode(',', $subscriptions));
 
@@ -28,18 +39,8 @@ class SubscriptionConfirmMail extends Mailable implements ShouldQueue
 
     public function build()
     {
-        return $this->subject(trans('mail.subscription_pending_title'))
+        return $this->subject(__('Подтверждение подписки'))
             ->markdown('emails.subscription-confirm')
             ->with('locale', $this->locale);
-    }
-
-    public function email(User $user)
-    {
-        return $user->emails()->create([
-            'to' => $user->email,
-            'locale' => $user->locale,
-            'user_id' => $user->id,
-            'template' => class_basename(static::class),
-        ]);
     }
 }

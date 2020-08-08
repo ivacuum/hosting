@@ -74,8 +74,8 @@ Mousetrap.bind('right', () => {
           <a href="{{ path([App\Http\Controllers\Photos::class, 'map'], ['lat' => $photo->lat, 'lon' => $photo->lon, 'zoom' => 16]) }}">@svg (map-marker)</a>
         @endif
       </div>
-      <div><a class="link" href="{{ path([App\Http\Controllers\Photos::class, 'city'], $photo->rel->city->slug) }}">#{{ mb_strtolower($photo->rel->city->title) }}</a></div>
-      <div><a class="link" href="{{ path([App\Http\Controllers\Photos::class, 'country'], $photo->rel->city->country->slug) }}">#{{ mb_strtolower($photo->rel->city->country->title) }}</a></div>
+      <div><a class="link lowercase" href="{{ path([App\Http\Controllers\Photos::class, 'city'], $photo->rel->city->slug) }}">#{{ $photo->rel->city->title }}</a></div>
+      <div><a class="link lowercase" href="{{ path([App\Http\Controllers\Photos::class, 'country'], $photo->rel->city->country->slug) }}">#{{ $photo->rel->city->country->title }}</a></div>
     </div>
 
     @if (sizeof($photo->tags))

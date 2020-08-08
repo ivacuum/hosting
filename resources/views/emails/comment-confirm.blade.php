@@ -1,6 +1,5 @@
 <?php
 /**
- * @var \App\Comment $comment
  * @var \App\Email $email
  * @var string $confirmLink
  */

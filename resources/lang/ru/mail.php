@@ -12,5 +12,4 @@ return [
     'issue_commented' => 'Обратная связь: :title',
     'gig_published_title' => 'Заметка о концерте: :title',
     'trip_published_title' => 'Заметка о поездке: :title',
-    'subscription_pending_title' => 'Подтверждение подписки',
 ];

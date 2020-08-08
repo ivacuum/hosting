@@ -8,9 +8,10 @@ use Illuminate\Mail\Mailable;
 
 class NewsPublishedMail extends Mailable implements ShouldQueue
 {
+    use RecordsEmail;
+
     public $news;
     public $user;
-    public $email;
     public $newsLink;
     public $mySettingsLink;
 
@@ -18,7 +19,7 @@ class NewsPublishedMail extends Mailable implements ShouldQueue
     {
         $this->news = $news;
         $this->user = $user;
-        $this->email = $this->email($news, $user);
+        $this->email = $this->email($news->emails(), $user);
         $this->newsLink = $this->email->signedLink($news->www());
         $this->mySettingsLink = $this->email->signedLink(path_locale([MySettings::class, 'edit'], [], false, $user->locale));
     }
@@ -28,15 +29,5 @@ class NewsPublishedMail extends Mailable implements ShouldQueue
         return $this->subject($this->news->title)
             ->markdown('emails.news-published')
             ->with('locale', $this->locale);
-    }
-
-    public function email(News $news, User $user)
-    {
-        return $news->emails()->create([
-            'to' => $user->email,
-            'locale' => $user->locale,
-            'user_id' => $user->id,
-            'template' => class_basename(static::class),
-        ]);
     }
 }

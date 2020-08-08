@@ -30,7 +30,7 @@
         value="{{ App\User::NOTIFY_MAIL }}"
         {{ old('gigs', request('gigs')) ? 'checked' : '' }}
       >
-      {{ trans('my.notify_gigs') }}
+      {{ __('Концерты') }}
     </label>
 
     <input type="hidden" name="news" value="{{ App\User::NOTIFY_NO }}">
@@ -42,7 +42,7 @@
         value="{{ App\User::NOTIFY_MAIL }}"
         {{ old('news', request('news')) ? 'checked' : '' }}
       >
-      {{ trans('my.notify_news') }}
+      {{ __('Новости сайта') }}
     </label>
 
     <div class="mb-4">
@@ -55,7 +55,7 @@
           value="{{ App\User::NOTIFY_MAIL }}"
           {{ old('trips', request('trips')) ? 'checked' : '' }}
         >
-        {{ trans('my.notify_trips') }}
+        {{ __('Путешествия') }}
       </label>
     </div>
 
@@ -66,37 +66,39 @@
     @csrf
   </form>
   @ru
-    <p><a class="link" href="{{ path([App\Http\Controllers\Life::class, 'gigs']) }}">Истории о концертах</a> появляются всего несколько раз в год — по числу посещенных шоу. Количество <a class="link" href="{{ path([App\Http\Controllers\Life::class, 'index']) }}">заметок о путешествиях</a> может доходить и до 50 в год, то есть в среднем это одна публикация в неделю. Иногда бывают пики до трех публикаций в неделю после насыщенных поездок. <a class="link" href="{{ path([App\Http\Controllers\News::class, 'index']) }}">Новости сайта</a> в среднем публикуются раз в месяц с историей обновлений за прошедший период. Иногда в новостях публикуются материалы о полезных сервисах и разные мысли.</p>
+    <p><a class="link" href="/life/gigs">Истории о концертах</a> появляются всего несколько раз в год — по числу посещенных шоу. Количество <a class="link" href="/life">заметок о путешествиях</a> может доходить и до 50 в год, то есть в среднем это одна публикация в неделю. Иногда бывают пики до трех публикаций в неделю после насыщенных поездок. <a class="link" href="/news">Новости сайта</a> в среднем публикуются раз в месяц с историей обновлений за прошедший период. Иногда в новостях публикуются материалы о полезных сервисах и разные мысли.</p>
     <p>После отправки формы вы получите письмо со ссылкой на подтверждение желания получать письма-уведомления. В дальнейшем каждая рассылка будет содержать ссылку на управление настройками подписки — отписаться можно будет буквально в несколько кликов.</p>
   @endru
 
   <h3 class="mt-12">RSS</h3>
-  @ru
-    <div class="mb-1">В качестве альтернативы все перечисленные уведомления можно получать через RSS.</div>
-  @en
-    <div class="mb-1">As an alternative you can subscribe to RSS feeds.</div>
-  @endru
+  <div class="mb-1">
+    @ru
+      В качестве альтернативы все перечисленные уведомления можно получать через RSS.
+    @en
+      As an alternative you can subscribe to RSS feeds.
+    @endru
+  </div>
   <div class="flex items-center flex-wrap">
     <a
-      class="text-lg svg-flex svg-label small-caps mr-4"
+      class="text-lg svg-flex svg-label lowercase small-caps mr-4"
       href="{{ path(App\Http\Controllers\GigsRssController::class) }}"
     >
       @svg (rss-square)
-      {{ mb_strtolower(trans('my.notify_gigs')) }}
+      {{ __('Концерты') }}
     </a>
     <a
-      class="text-lg svg-flex svg-label small-caps mr-4"
+      class="text-lg svg-flex svg-label lowercase small-caps mr-4"
       href="{{ path(App\Http\Controllers\NewsRssController::class) }}"
     >
       @svg (rss-square)
-      {{ mb_strtolower(trans('my.notify_news')) }}
+      {{ __('Новости сайта') }}
     </a>
     <a
-      class="text-lg svg-flex svg-label small-caps"
+      class="text-lg svg-flex svg-label lowercase small-caps"
       href="{{ path(App\Http\Controllers\TripsRssController::class) }}"
     >
       @svg (rss-square)
-      {{ mb_strtolower(trans('my.notify_trips')) }}
+      {{ __('Путешествия') }}
     </a>
   </div>
 </div>

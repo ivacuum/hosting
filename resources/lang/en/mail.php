@@ -12,5 +12,4 @@ return [
     'issue_commented' => 'Feedback: :title',
     'gig_published_title' => 'New gig note: :title',
     'trip_published_title' => 'New trip note: :title',
-    'subscription_pending_title' => 'Subscription confirmation',
 ];

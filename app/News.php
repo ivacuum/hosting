@@ -94,7 +94,7 @@ class News extends Model
 
     public function www(?string $anchor = null): string
     {
-        return path([Http\Controllers\News::class, 'show'], $this->id) . $anchor;
+        return path([Http\Controllers\NewsController::class, 'show'], $this->id) . $anchor;
     }
 
     // Static methods

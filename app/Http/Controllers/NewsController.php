@@ -1,18 +1,18 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\NewsShowRequest;
-use App\News as Model;
+use App\News;
 use Illuminate\Database\Eloquent\Builder;
 
-class News extends Controller
+class NewsController extends Controller
 {
     public function index($year = null, $month = null, $day = null)
     {
-        $news = Model::with('user')
+        $news = News::with('user')
             ->withCount('commentsPublished AS comments_count')
             ->published()
             ->where('locale', \App::getLocale())
-            ->when($year || $month || $day, fn (Builder $query) => $query->whereBetween('created_at', Model::interval($year, $month, $day)))
+            ->when($year || $month || $day, fn (Builder $query) => $query->whereBetween('created_at', News::interval($year, $month, $day)))
             ->orderByDesc('created_at')
             ->paginate();
 
