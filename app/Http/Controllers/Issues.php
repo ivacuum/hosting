@@ -9,12 +9,7 @@ use Ivacuum\Generic\Exceptions\FloodException;
 
 class Issues extends Controller
 {
-    public function create()
-    {
-        return view('issues.create');
-    }
-
-    public function store(IssuesTodayLimit $limits, IssueStoreRequest $request)
+    public function __invoke(IssuesTodayLimit $limits, IssueStoreRequest $request)
     {
         $user = $request->userModel();
         $email = $request->email();

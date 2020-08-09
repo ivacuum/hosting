@@ -3,41 +3,41 @@
 @section('content')
 <div class="mx-auto max-w-sm">
   <div class="text-center mb-4">
-    <h3>{{ trans('auth.signin_title') }}</h3>
+    <h3>@lang('auth.signin_title')</h3>
 
     <div class="flex justify-center my-4">
       <div class="mr-2">
         <a
           class="btn bg-vk-600 text-xl rounded-full text-white hover:bg-vk-700 hover:text-white"
-          href="{{ path([App\Http\Controllers\Auth\Vk::class, 'index']) }}"
+          href="@lng/auth/vk"
         >
           @svg (vk)
         </a>
-        <div class="mt-1 text-xs text-muted">{{ trans('auth.vk') }}</div>
+        <div class="mt-1 text-xs text-muted">@lang('auth.vk')</div>
       </div>
       <div class="mr-2">
         <a
           class="btn bg-facebook-600 text-xl rounded-full text-white hover:bg-facebook-700 hover:text-white"
-          href="{{ path([App\Http\Controllers\Auth\Facebook::class, 'index']) }}"
+          href="@lng/auth/facebook"
         >
           @svg (facebook)
         </a>
-        <div class="mt-1 text-xs text-muted">{{ trans('auth.facebook') }}</div>
+        <div class="mt-1 text-xs text-muted">@lang('auth.facebook')</div>
       </div>
       <div>
         <a
           class="btn bg-google-600 text-xl rounded-full text-white hover:bg-google-700 hover:text-white"
-          href="{{ path([App\Http\Controllers\Auth\Google::class, 'index']) }}"
+          href="@lng/auth/google"
         >
           @svg (google)
         </a>
-        <div class="mt-1 text-xs text-muted">{{ trans('auth.google') }}</div>
+        <div class="mt-1 text-xs text-muted">@lang('auth.google')</div>
       </div>
     </div>
-    <div>{{ trans('auth.or') }}</div>
+    <div>@lang('auth.or')</div>
   </div>
 
-  <form action="{{ path([App\Http\Controllers\Auth\SignIn::class, 'login']) }}" method="post">
+  <form action="@lng/auth/login" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 
@@ -49,7 +49,7 @@
         name="email"
         value="{{ old('email') }}"
         autocomplete="email"
-        placeholder="{{ trans('auth.email_or_login') }}"
+        placeholder="@lang('auth.email_or_login')"
       >
       <x-invalid-feedback field="email"/>
     </div>
@@ -65,10 +65,10 @@
         placeholder="@lang('Пароль')"
       >
       <span class="form-input-feedback-password js-password-eye">
-        <span class="js-password-eye-show" title="{{ trans('auth.show_password') }}">
+        <span class="js-password-eye-show" title="@lang('auth.show_password')">
           @svg (eye)
         </span>
-        <span hidden class="js-password-eye-hide" title="{{ trans('auth.hide_password') }}">
+        <span hidden class="js-password-eye-hide" title="@lang('auth.hide_password')">
           @svg (eye-slash)
         </span>
       </span>
@@ -79,26 +79,26 @@
       <div>
         <label class="flex items-center">
           <input class="form-checkbox mr-2" tabindex="3" type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}>
-          {{ trans('auth.dont_remember') }}
+          @lang('auth.dont_remember')
         </label>
       </div>
       <div>
         <a
           class="link"
           href="{{ path([App\Http\Controllers\Auth\ForgotPassword::class, 'index']) }}"
-        >{{ trans('auth.forgot_password') }}</a>
+        >@lang('auth.forgot_password')</a>
       </div>
     </div>
 
     <div class="mt-4 text-center">
       <button class="btn btn-primary text-lg py-2 w-40">
-        {{ trans('auth.signin') }}
+        @lang('auth.signin')
       </button>
       <div class="mt-6">
         <a
           class="link"
-          href="{{ path([App\Http\Controllers\Auth\NewAccount::class, 'index']) }}"
-        >{{ trans('auth.new_account') }}</a>
+          href="@lng/auth/register"
+        >@lang('auth.new_account')</a>
       </div>
     </div>
   </form>

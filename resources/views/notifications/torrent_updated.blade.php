@@ -1,5 +1,5 @@
 {{-- Раздача обновлена --}}
-{{ trans("ui.notifications.{$basename}") }}
+@lang("ui.notifications.{$basename}")
 <a class="link" href="{{ path([App\Http\Controllers\Torrents::class, 'show'], $notification->data['id']) }}">{{ Str::limit($notification->data['title'], 100) }}</a>
 <time
   class="text-muted"

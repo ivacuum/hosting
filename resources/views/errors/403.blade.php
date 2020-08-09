@@ -1,5 +1,5 @@
-@extends('errors.base', ['metaTitle' => trans('errors.403')])
+@extends('errors.base', ['metaTitle' => __('errors.403')])
 
 @section('content')
-403<br>{{ trans('errors.403.text') }}
+403<br>@lang('errors.403.text')
 @endsection

@@ -14,97 +14,97 @@
 
 @section('global_menu')
 @component('tpl.menu-item', [
-  'href' => path([App\Http\Controllers\Dcpp::class, 'index']),
-  'isActive' => $page === 'index',
+  'href' => to('dc'),
+  'isActive' => $routeUri === 'dc',
 ])
   @lang('О DC++')
 @endcomponent
 @ru
   @component('tpl.menu-item', [
-    'href' => path([App\Http\Controllers\Dcpp::class, 'page'], 'faq'),
-    'isActive' => $page === 'faq',
+    'href' => to('dc/faq'),
+    'isActive' => $routeUri === 'dc/faq',
   ])
-    {{ trans('dcpp.faq') }}
+    @lang('dcpp.faq')
   @endcomponent
 @endru
 @component('tpl.menu-item', [
-  'href' => path([App\Http\Controllers\Dcpp::class, 'page'], 'hubs'),
-  'isActive' => $page === 'hubs',
+  'href' => to('dc/hubs'),
+  'isActive' => $routeUri === 'dc/hubs',
 ])
   @lang('Хабы')
 @endcomponent
 <div class="flex md:hidden">
   @component('tpl.menu-item', [
-    'href' => path([App\Http\Controllers\Dcpp::class, 'page'], 'clients'),
-    'isActive' => $page === 'clients',
+    'href' => to('dc/clients'),
+    'isActive' => $routeUri === 'dc/clients',
   ])
-    {{ trans('dcpp.dc_clients') }}
+    @lang('Клиенты DC++')
   @endcomponent
 </div>
 <div class="hidden md:flex">
   @component('tpl.menu-dropdown')
     @slot('title')
-      {{ trans('dcpp.clients') }}
+      @lang('Клиенты')
     @endslot
 
     <a
       class="dropdown-item"
-      href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'airdc') }}"
+      href="@lng/dc/airdc"
       role="menuitem"
-    >{{ trans('dcpp.airdc') }}</a>
+    >@lang('dcpp.airdc')</a>
     <a
       class="dropdown-item"
-      href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'apexdc') }}"
+      href="@lng/dc/apexdc"
       role="menuitem"
-    >{{ trans('dcpp.apexdc') }}</a>
+    >@lang('dcpp.apexdc')</a>
     <a
       class="dropdown-item"
-      href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'dcpp') }}"
+      href="@lng/dc/dcpp"
       role="menuitem"
-    >{{ trans('dcpp.dcpp') }}</a>
+    >@lang('dcpp.dcpp')</a>
     <a
       class="dropdown-item"
-      href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'flylinkdc') }}"
+      href="@lng/dc/flylinkdc"
       role="menuitem"
-    >{{ trans('dcpp.flylinkdc') }}</a>
+    >@lang('dcpp.flylinkdc')</a>
     <a
       class="dropdown-item"
-      href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'greylinkdc') }}"
+      href="@lng/dc/greylinkdc"
       role="menuitem"
-    >{{ trans('dcpp.greylinkdc') }}</a>
+    >@lang('dcpp.greylinkdc')</a>
     <a
       class="dropdown-item"
-      href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'jucydc') }}"
+      href="@lng/dc/jucydc"
       role="menuitem"
-    >{{ trans('dcpp.jucydc') }}</a>
+    >@lang('dcpp.jucydc')</a>
     @ru
       <a
         class="dropdown-item"
-        href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'kalugadc') }}"
+        href="@lng/dc/kalugadc"
         role="menuitem"
-      >{{ trans('dcpp.kalugadc') }}</a>
+      >@lang('dcpp.kalugadc')</a>
     @endru
     <a
       class="dropdown-item"
-      href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'pelinkdc') }}"
+      href="@lng/dc/pelinkdc"
       role="menuitem"
-    >{{ trans('dcpp.pelinkdc') }}</a>
+    >@lang('dcpp.pelinkdc')</a>
     <a
       class="dropdown-item"
-      href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'shakespeer') }}"
+      href="@lng/dc/shakespeer"
       role="menuitem"
-    >{{ trans('dcpp.shakespeer') }}</a>
+    >@lang('dcpp.shakespeer')</a>
     <a
       class="dropdown-item"
-      href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'strongdc') }}"
+      href="@lng/dc/strongdc"
       role="menuitem"
-    >{{ trans('dcpp.strongdc') }}</a>
+    >@lang('dcpp.strongdc')</a>
   @endcomponent
 </div>
 @ru
   <a
     class="hidden md:block btn btn-success leading-tight text-sm ml-2"
-    href="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}"
+    href="@lng/torrents"
   >
     @lang('Торренты')
   </a>
@@ -116,13 +116,13 @@
   @ru
     <a
       class="px-2 py-3 text-grey-600 hover:text-grey-900 whitespace-no-wrap"
-      href="{{ url("en/{$requestUri}") }}"
+      href="/en/{{ $requestUri }}"
       lang="en"
     >In English</a>
   @en
     <a
       class="px-2 py-3 text-grey-600 hover:text-grey-900 whitespace-no-wrap"
-      href="{{ url($requestUri) }}"
+      href="/{{ $requestUri }}"
       lang="ru"
     >По-русски</a>
   @endru

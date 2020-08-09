@@ -9,12 +9,12 @@
 <dropdown-menu slot="menu" width="200" direction="rtl">
     <ul class="list-reset">
         <li>
-          <a href="{{ path(App\Http\Controllers\HomeController::class) }}" class="block no-underline text-90 hover:bg-30 p-3">
+          <a href="{{ to('/') }}" class="block no-underline text-90 hover:bg-30 p-3">
             @lang('Home')
           </a>
         </li>
         <li>
-          <a href="{{ path([App\Http\Controllers\Acp\Home::class, 'index']) }}" class="block no-underline text-90 hover:bg-30 p-3">
+          <a href="{{ to('acp') }}" class="block no-underline text-90 hover:bg-30 p-3">
             ACP
           </a>
         </li>

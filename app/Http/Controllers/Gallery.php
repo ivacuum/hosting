@@ -5,14 +5,6 @@ use App\Image;
 
 class Gallery extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('nav:gallery.index,gallery');
-        $this->middleware('nav:gallery.preview')->only('preview');
-        $this->middleware('nav:gallery.view')->only('view');
-        $this->middleware('nav:gallery.upload')->only('upload');
-    }
-
     public function index()
     {
         $images = Image::where('user_id', request()->user()->id)
@@ -53,10 +45,5 @@ class Gallery extends Controller
         event(new \App\Events\Stats\GalleryImageViewed($image->id));
 
         return view('gallery.view', ['image' => $image]);
-    }
-
-    public function upload()
-    {
-        return view('gallery.upload');
     }
 }

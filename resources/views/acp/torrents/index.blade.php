@@ -21,7 +21,7 @@
     <th class="md:text-right whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
-    <th>{{ trans('model.author') }}</th>
+    <th>@lang('model.author')</th>
     <th class="md:text-right whitespace-no-wrap">
       @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
     </th>
@@ -32,7 +32,7 @@
       @include('acp.tpl.sortable-header', ['key' => 'clicks', 'svg' => 'magnet'])
     </th>
     <th></th>
-    <th>{{ trans('model.title') }}</th>
+    <th>@lang('model.title')</th>
     <th></th>
   </tr>
   </thead>

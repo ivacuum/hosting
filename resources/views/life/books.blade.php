@@ -1,14 +1,7 @@
-@extends('life.base', [
-  'metaTitle' => 'Понравившиеся книги',
-
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Понравившиеся книги'],
-  ]
-])
+@extends('life.base')
 
 @section('content')
-<h1 class="h2">Понравившиеся книги</h1>
+<h1 class="h2">@lang('Понравившиеся книги')</h1>
 
 <div class="flex mb-2">
   <div>

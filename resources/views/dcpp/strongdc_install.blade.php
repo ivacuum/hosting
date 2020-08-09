@@ -18,15 +18,15 @@
   <h2>Установка</h2>
   <ol>
     <li>
-      <p>Скачайте программу-клиент <a class="link" href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'strongdc') }}">StrongDC++</a>.</p>
+      <p>Скачайте программу-клиент <a class="link" href="@lng/dc/strongdc">StrongDC++</a>.</p>
       <p>
-        <a class="btn btn-success my-1 mr-2" href="{{ path([App\Http\Controllers\Files::class, 'download'], 132) }}">
+        <a class="btn btn-success my-1 mr-2" href="@lng/files/132/dl">
           <span class="mr-1">
             @svg (windows)
           </span>
           @lang('Скачать') 32-Bit &middot; {{ ViewHelper::size(8_046_097) }}
         </a>
-        <a class="btn btn-success my-1" href="{{ path([App\Http\Controllers\Files::class, 'download'], 134) }}">
+        <a class="btn btn-success my-1" href="@lng/files/134/dl">
           <span class="mr-1">
             @svg (windows)
           </span>
@@ -87,7 +87,7 @@
     </li>
   </ol>
   <p>
-    <a class="link" href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'strongdc') }}">
+    <a class="link" href="@lng/dc/strongdc">
       &larr;
       <span class="sm:hidden">Вернуться к StrongDC++</span>
       <span class="hidden sm:inline">Вернуться на страницу клиента StrongDC++</span>

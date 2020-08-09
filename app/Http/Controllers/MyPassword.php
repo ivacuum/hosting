@@ -26,6 +26,6 @@ class MyPassword extends Controller
 
         event(new \App\Events\Stats\MyPasswordChanged);
 
-        return back()->with('message', trans('my.saved'));
+        return back()->with('message', __('Изменения сохранены'));
     }
 }

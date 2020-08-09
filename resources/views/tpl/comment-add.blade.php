@@ -25,34 +25,34 @@
           <div class="mr-2 text-center">
             <a
               class="btn bg-vk-600 text-xl rounded-full text-white hover:bg-vk-700 hover:text-white"
-              href="{{ path([App\Http\Controllers\Auth\Vk::class, 'index'], ['goto' => "{$localeUri}/{$requestUri}#comment-add"]) }}"
+              href="{{ path([App\Http\Controllers\Auth\Vk::class, 'index'], ['goto' => to("{$requestUri}#comment-add")]) }}"
             >
               @svg (vk)
             </a>
-            <div class="mt-1 text-xs text-muted">{{ trans('auth.vk') }}</div>
+            <div class="mt-1 text-xs text-muted">@lang('auth.vk')</div>
           </div>
           <div class="mr-2 text-center">
             <a
               class="btn bg-facebook-600 text-xl rounded-full text-white hover:bg-facebook-700 hover:text-white"
-              href="{{ path([App\Http\Controllers\Auth\Facebook::class, 'index'], ['goto' => "{$localeUri}/{$requestUri}#comment-add"]) }}"
+              href="{{ path([App\Http\Controllers\Auth\Facebook::class, 'index'], ['goto' => to("{$requestUri}#comment-add")]) }}"
             >
               @svg (facebook)
             </a>
-            <div class="mt-1 text-xs text-muted">{{ trans('auth.facebook') }}</div>
+            <div class="mt-1 text-xs text-muted">@lang('auth.facebook')</div>
           </div>
           <div class="mr-2 text-center">
             <a
               class="btn bg-google-600 text-xl rounded-full text-white hover:bg-google-700 hover:text-white"
-              href="{{ path([App\Http\Controllers\Auth\Google::class, 'index'], ['goto' => "{$localeUri}/{$requestUri}#comment-add"]) }}"
+              href="{{ path([App\Http\Controllers\Auth\Google::class, 'index'], ['goto' => to("{$requestUri}#comment-add")]) }}"
             >
               @svg (google)
             </a>
-            <div class="mt-1 text-xs text-muted">{{ trans('auth.google') }}</div>
+            <div class="mt-1 text-xs text-muted">@lang('auth.google')</div>
           </div>
         </div>
       </div>
     @endif
-    <form action="{{ path([App\Http\Controllers\AjaxComment::class, 'store'], $params) }}" method="post">
+    <form action="{{ to('ajax/comment/{type}/{id}', $params) }}" method="post">
       {{ ViewHelper::inputHiddenMail() }}
       @csrf
 
@@ -64,7 +64,7 @@
             type="email"
             name="email"
             value="{{ old('email') }}"
-            placeholder="{{ trans('model.email') }}"
+            placeholder="@lang('model.email')"
           >
           <x-invalid-feedback field="email"/>
         </div>

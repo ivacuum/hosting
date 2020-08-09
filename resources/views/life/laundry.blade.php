@@ -1,11 +1,4 @@
-@extends('life.base', [
-  'metaTitle' => 'Условные обозначения стирки',
-
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Условные обозначения стирки'],
-  ]
-])
+@extends('life.base')
 
 {{-- http://www.flaticon.com/packs/laundry-and-washing --}}
 

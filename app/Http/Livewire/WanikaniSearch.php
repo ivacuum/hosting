@@ -24,7 +24,7 @@ class WanikaniSearch extends Component
         $this->validate([
             'q' => ['required', 'string', 'min:3'],
         ], [
-            'min' => trans('japanese.short-query'),
+            'min' => __('japanese.short-query'),
         ]);
 
         $this->radicals = Radical::where('meaning', 'LIKE', "%{$this->q}%")

@@ -41,8 +41,8 @@
       <div>
         <a
           class="btn btn-default block"
-          href="{{ path([App\Http\Controllers\MyProfile::class, 'edit']) }}"
-        >{{ trans('my.edit_profile') }}</a>
+          href="@lng/my/profile"
+        >@lang('Редактировать профиль')</a>
       </div>
     @endif
   </div>

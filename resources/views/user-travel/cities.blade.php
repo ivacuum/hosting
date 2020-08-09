@@ -1,6 +1,4 @@
-@extends('user-travel.base', [
-  'metaTitle' => __('Города'),
-])
+@extends('user-travel.base')
 
 @section('content')
 <h1 class="h2">
@@ -19,7 +17,7 @@
         <span class="absolute font-bold uppercase -ml-6">{{ $currentInitial }}</span>
       @endif
       @if ($city->trips_published_count)
-        <a class="link" href="{{ path([App\Http\Controllers\UserTravelCities::class, 'show'], [$traveler->login, $city->slug]) }}">{{ $city->title }}</a>
+        <a class="link" href="{{ to('@{login}/travel/cities/{city}', [$traveler->login, $city->slug]) }}">{{ $city->title }}</a>
       @else
         {{ $city->title }}
       @endif

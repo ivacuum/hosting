@@ -22,7 +22,7 @@
       </div>
       <div class="table-cell align-top">
         @if ($notification->unread())
-          <span class="svg-unread mr-1 tooltipped tooltipped-n" aria-label="{{ trans('ui.notifications.unread') }}">
+          <span class="svg-unread mr-1 tooltipped tooltipped-n" aria-label="@lang('ui.notifications.unread')">
             @svg (circle)
           </span>
         @endif
@@ -31,6 +31,6 @@
     </div>
   @endforeach
 @else
-  <p>{{ trans('ui.notifications.zero') }}</p>
+  <p>@lang('ui.notifications.zero')</p>
 @endif
 @endsection

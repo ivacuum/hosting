@@ -7,7 +7,7 @@
     <div>
       <a
         class="block relative w-full pb-3/4"
-        href="{{ path([App\Http\Controllers\Photos::class, 'show'], [$photo, $trip->getForeignKey() => $trip]) }}"
+        href="{{ to('photos/{photo}', [$photo, $trip->getForeignKey() => $trip]) }}"
       >
         <img class="absolute top-0 left-0 w-full object-cover" src="{{ $photo->thumbnailUrl() }}" alt="">
       </a>

@@ -1,5 +1,5 @@
 @extends('dcpp.software', [
-  'softwareTitle' => trans('dcpp.flylinkdc'),
+  'softwareTitle' => __('dcpp.flylinkdc'),
   'software' => [
     ['version' => 'r504', 'id' => 153, 'size' => 14_172_792, 'dl_suffix' => ''],
     ['version' => 'r500', 'id' => 140, 'size' => 17_611_794, 'dl_suffix' => ''],
@@ -9,7 +9,7 @@
 
 @section('about_software')
 @ru
-  <p><strong>FlyLinkDC++</strong> — свободный и открытый клиент сети DC++. Основан на <a class="link" href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'strongdc') }}">StrongDC++</a>. Русский язык входит в стандартный комплект поставки. Инсталлятор включает в себя как 32-битную версию, так и 64.</p>
+  <p><strong>FlyLinkDC++</strong> — свободный и открытый клиент сети DC++. Основан на <a class="link" href="@lng/dc/strongdc">StrongDC++</a>. Русский язык входит в стандартный комплект поставки. Инсталлятор включает в себя как 32-битную версию, так и 64.</p>
 
   <h3 class="mt-12">Установка и настройка</h3>
   <p>После установки клиента вам необходимо будет указать ваш ник:</p>
@@ -18,7 +18,7 @@
   <p><img class="max-w-full h-auto" src="https://img.ivacuum.ru/g/110320/1_aVZjr1LGHI.png" width="633" height="443" alt=""></p>
   <p>После этих настроек перезапустите программу и пользуйтесь <strong>FlyLinkDC++</strong> с удовольствием!</p>
 @en
-  <p><strong>FlyLinkDC++</strong> is a free and open-source DC++ client software. It is based on <a class="link" href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'strongdc') }}">StrongDC++</a>. Installer has both 32-bit and 64-bit versions of the client in it.</p>
+  <p><strong>FlyLinkDC++</strong> is a free and open-source DC++ client software. It is based on <a class="link" href="@lng/dc/strongdc">StrongDC++</a>. Installer has both 32-bit and 64-bit versions of the client in it.</p>
 @endru
 @endsection
 

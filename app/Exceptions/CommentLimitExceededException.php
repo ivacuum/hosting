@@ -6,6 +6,6 @@ class CommentLimitExceededException extends LimitExceededException
 {
     protected function message()
     {
-        return trans('limits.comment');
+        return __('limits.comment');
     }
 }

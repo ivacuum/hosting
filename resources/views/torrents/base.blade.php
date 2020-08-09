@@ -2,7 +2,7 @@
 
 @section('content_header')
 <div class="lg:flex flex-row-reverse items-center justify-between -mt-1 lg:-mt-2 mb-4">
-  <form class="flex mb-2 lg:mb-0" action="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}">
+  <form class="flex mb-2 lg:mb-0" action="@lng/torrents">
     <div class="flex w-full">
       <input
         class="form-input rounded-r-none js-search-input"
@@ -22,20 +22,35 @@
     <div class="nav-scroll-container">
       <div class="nav-scroll">
         <nav class="nav nav-link-tabs">
-          <a class="nav-link {{ $view === 'torrents.index' ? 'active' : '' }}" href="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}">
+          <a
+            class="nav-link {{ $routeUri === 'torrents' ? 'active' : '' }}"
+            href="@lng/torrents"
+          >
             @lang('Новые раздачи')
           </a>
-          <a class="nav-link {{ $view === 'torrents.create' ? 'active' : '' }}" href="{{ path([App\Http\Controllers\Torrents::class, 'create']) }}">
+          <a
+            class="nav-link {{ $routeUri === 'torrents/add' ? 'active' : '' }}"
+            href="@lng/torrents/add"
+          >
             @lang('Добавить раздачу')
           </a>
-          <a class="nav-link {{ $view === 'torrents.faq' ? 'active' : '' }}" href="{{ path([App\Http\Controllers\Torrents::class, 'faq']) }}">
+          <a
+            class="nav-link {{ $routeUri === 'torrents/faq' ? 'active' : '' }}"
+            href="@lng/torrents/faq"
+          >
             @lang('Помощь')
           </a>
-          <a class="nav-link {{ $view === 'torrents.comments' ? 'active' : '' }}" href="{{ path([App\Http\Controllers\Torrents::class, 'comments']) }}">
+          <a
+            class="nav-link {{ $routeUri === 'torrents/comments' ? 'active' : '' }}"
+            href="@lng/torrents/comments"
+          >
             @lang('Комментарии')
           </a>
           @if (Auth::check())
-            <a class="nav-link {{ $view === 'torrents.my' ? 'active' : '' }}" href="{{ path([App\Http\Controllers\Torrents::class, 'my']) }}">
+            <a
+              class="nav-link {{ $routeUri === 'torrents/my' ? 'active' : '' }}"
+              href="@lng/torrents/my"
+            >
               @lang('Мои раздачи')
             </a>
           @endif

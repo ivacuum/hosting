@@ -40,6 +40,6 @@
   @en
     <p>You haven't released anything yet.</p>
   @endru
-  <p><a class="btn btn-default" href="{{ path([App\Http\Controllers\Torrents::class, 'create']) }}">@lang('Добавить раздачу')</a></p>
+  <p><a class="btn btn-default" href="@lng/torrents/add">@lang('Добавить раздачу')</a></p>
 @endif
 @endsection

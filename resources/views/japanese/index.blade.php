@@ -18,8 +18,8 @@
       </div>
       <div class="px-5 py-4">
         <h3 class="h4">
-          <a class="link" href="{{ path(App\Http\Controllers\JapaneseHiraganaKatakana::class) }}">
-            {{ trans('japanese.hiragana-katakana-trainer') }}
+          <a class="link" href="@lng/japanese/hiragana-katakana">
+            @lang('japanese.hiragana-katakana-trainer')
           </a>
         </h3>
         <div>
@@ -30,7 +30,7 @@
           @endru
         </div>
         <h3 class="h4 mt-6">
-          <a class="link" href="{{ path(App\Http\Controllers\JapaneseWordsTrainer::class) }}">
+          <a class="link" href="@lng/japanese/words-trainer">
             @lang('Тренажер по набору слов хираганой и катаканой')
           </a>
         </h3>
@@ -43,7 +43,7 @@
         </div>
 
         <h3 class="h4 mt-6">
-          <a class="link" href="{{ path(App\Http\Controllers\Wanikani::class) }}">
+          <a class="link" href="@lng/japanese/wanikani">
             @lang('WaniKani V')
           </a>
         </h3>
@@ -127,7 +127,7 @@
 <section>
   <div class="h2">@ru Азбуки @en Syllabaries @endru</div>
   @ru
-    <p>Без азбук ничего не прочитать. Катакана в основном для заимствованных слов, хирагана — для всего остального. Запомнить азбуки проще всего с помощью <a class="link" href="{{ path(App\Http\Controllers\JapaneseHiraganaKatakana::class) }}">тренажера</a>. Практикуя столбик за столбиком, можно за считанные дни добиться автоматизма чтения слогов.</p>
+    <p>Без азбук ничего не прочитать. Катакана в основном для заимствованных слов, хирагана — для всего остального. Запомнить азбуки проще всего с помощью <a class="link" href="@lng/japanese/hiragana-katakana">тренажера</a>. Практикуя столбик за столбиком, можно за считанные дни добиться автоматизма чтения слогов.</p>
   @endru
 </section>
 

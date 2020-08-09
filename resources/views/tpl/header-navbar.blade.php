@@ -2,7 +2,7 @@
   <div class="container">
     <div class="flex flex-wrap justify-between items-center w-full">
       @section('brand')
-        <a class="site-brand font-bold text-lg text-blueish-700 flex items-center leading-none hover:text-orangeish-600 md:mr-3 h-12 text-center" href="{{ path(App\Http\Controllers\HomeController::class) }}">vacuum<br>kaluga</a>
+        <a class="site-brand font-bold text-lg text-blueish-700 flex items-center leading-none hover:text-orangeish-600 md:mr-3 h-12 text-center" href="{{ to('/') }}">vacuum<br>kaluga</a>
       @show
       <button class="md:hidden px-4 py-3 text-2xl text-grey-600 hover:text-grey-900 leading-none js-collapse" data-target="#header_menu">
         @svg (three-bars)
@@ -10,30 +10,30 @@
       <nav id="header_menu" class="flex md:flex flex-col md:flex-row order-4 md:order-3 md:mr-auto md:items-center whitespace-no-wrap md:whitespace-normal w-full md:w-auto hidden">
         @section('global_menu')
           @component('tpl.menu-item', [
-            'href' => path([App\Http\Controllers\Life::class, 'index']),
-            'isActive' => $controller === App\Http\Controllers\Life::class || \Str::of($requestUri)->startsWith('life/'),
+            'href' => to('life'),
+            'isActive' => Str::of($routeUri)->is(['life', 'life/*']),
           ])
             @lang('Заметки')
           @endcomponent
           @component('tpl.menu-item', [
-            'href' => path([App\Http\Controllers\NewsController::class, 'index']),
-            'isActive' => $controller === App\Http\Controllers\NewsController::class,
+            'href' => to('news'),
+            'isActive' => Str::of($routeUri)->is(['news', 'news/*']),
           ])
             @lang('Новости')
           @endcomponent
           @if (!$isCrawler)
             @ru
               @component('tpl.menu-item', [
-                'href' => path([App\Http\Controllers\Torrents::class, 'index']),
-                'isActive' => $controller === App\Http\Controllers\Torrents::class,
+                'href' => to('torrents'),
+                'isActive' => Str::of($routeUri)->is(['torrents', 'torrents/*']),
               ])
                 @lang('Торренты')
               @endcomponent
             @endru
           @endif
           @component('tpl.menu-item', [
-            'href' => path([App\Http\Controllers\Photos::class, 'trips']),
-            'isActive' => $controller === App\Http\Controllers\Photos::class,
+            'href' => to('photos/trips'),
+            'isActive' => Str::of($routeUri)->is(['photos', 'photos/*']),
           ])
             @lang('Фотки')
           @endcomponent
@@ -46,8 +46,8 @@
           @else
             <a
               class="px-2 py-3 text-grey-600 hover:text-grey-900"
-              href="{{ path([App\Http\Controllers\Auth\SignIn::class, 'index']) }}"
-            >{{ trans('auth.signin') }}</a>
+              href="@lng/auth/login"
+            >@lang('auth.signin')</a>
           @endif
         @show
       </nav>

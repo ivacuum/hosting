@@ -3,7 +3,7 @@
   {!! Form::select('gig_id')->classes(['js-append-formdata'])->values(App\GigFactory::forInputSelect())->html() !!}
 
   <div class="mb-4">
-    <label class="font-bold">{{ trans('acp.photos.index') }}</label>
+    <label class="font-bold">@lang('acp.photos.index')</label>
     <images-uploader action="{{ path([$controller, 'store']) }}" append=".js-append-formdata"></images-uploader>
   </div>
 @else
@@ -12,7 +12,7 @@
   </div>
 
   <div class="mb-4">
-    <label class="font-bold">{{ trans('acp.tags.index') }}</label>
+    <label class="font-bold">@lang('acp.tags.index')</label>
     <div class="column-width-48">
       @foreach (App\Tag::orderBy(App\Tag::titleField())->get() as $tag)
         <label class="flex items-center">

@@ -7,10 +7,10 @@
     <div class="bg-radical rounded">
       <a
         class="block ja-shadow-light py-6 text-white hover:text-grey-200"
-        href="{{ path([App\Http\Controllers\JapaneseWanikaniRadicals::class, 'index']) }}"
+        href="@lng/japanese/wanikani/radicals"
       >
         <span class="block text-4xl">部首</span>
-        {{ trans('japanese.radicals') }}
+        @lang('japanese.radicals')
       </a>
     </div>
   </div>
@@ -18,10 +18,10 @@
     <div class="bg-kanji rounded">
       <a
         class="block ja-shadow-light py-6 text-white hover:text-grey-200"
-        href="{{ path([App\Http\Controllers\JapaneseWanikaniKanji::class, 'index']) }}"
+        href="@lng/japanese/wanikani/kanji"
       >
         <span class="block text-4xl">漢字</span>
-        {{ trans('japanese.kanji') }}
+        @lang('japanese.kanji')
       </a>
     </div>
   </div>
@@ -29,10 +29,10 @@
     <div class="bg-vocab rounded">
       <a
         class="block ja-shadow-light py-6 text-white hover:text-grey-200"
-        href="{{ path([App\Http\Controllers\JapaneseWanikaniVocabulary::class, 'index']) }}"
+        href="@lng/japanese/wanikani/vocabulary"
       >
         <span class="block text-4xl">単語</span>
-        {{ trans('japanese.vocabulary') }}
+        @lang('japanese.vocabulary')
       </a>
     </div>
   </div>
@@ -43,12 +43,12 @@
   <p>Вся информация по ключам, кандзи и словарным словам представлена только на английском языке, как и на WaniKani. Без изменений, чтобы не возникало путаницы. Этот сервис — дополнение, а не полноценная замена.</p>
 @endru
 
-<h3 class="mt-6">{{ trans('japanese.by-levels') }}</h3>
+<h3 class="mt-6">@lang('japanese.by-levels')</h3>
 <div class="flex flex-wrap items-center">
   @foreach (range(1, 60) as $level)
     <a
       class="flex bg-grey-600 hover:bg-grey-700 text-white hover:text-grey-100 px-2 text-lg font-bold rounded ja-shadow-light mr-2 mb-2"
-      href="{{ path(App\Http\Controllers\WanikaniLevel::class, $level) }}"
+      href="{{ to('japanese/wanikani/level/{level}', $level) }}"
     >
       {{ $level }}
     </a>

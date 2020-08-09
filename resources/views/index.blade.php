@@ -10,10 +10,11 @@
     vacuum kaluga
   </span>
 </h1>
+
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-6 mb-12 md:mb-6">
   @ru
     <div class="hidden md:block">
-      <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Torrents::class, 'index']) }}">
+      <a class="flex items-center mb-2 link-parent" href="@lng/torrents">
         <div class="leading-none text-3xl mr-2">🧲</div>
         <h2 class="text-2xl mb-0"><span class="link">@lang('Торренты')</span></h2>
       </a>
@@ -22,7 +23,7 @@
     </div>
   @endru
   <div>
-    <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Life::class, 'index']) }}">
+    <a class="flex items-center mb-2 link-parent" href="@lng/life">
       <div class="leading-none text-3xl mr-2">📝</div>
       <h2 class="text-2xl mb-0"><span class="link">@lang('Заметки')</span></h2>
     </a>
@@ -35,7 +36,7 @@
   </div>
   @ru
     <div class="md:hidden">
-      <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\NewsController::class, 'index']) }}">
+      <a class="flex items-center mb-2 link-parent" href="@lng/news">
         <h2 class="text-2xl mb-0"><span class="link">@lang('Новости')</span></h2>
       </a>
       <div>Хроника развития сайта с 2004 года.</div>
@@ -49,15 +50,15 @@
       {{--<div class="text-muted">Дата запуска: 7 декабря 2015 г.</div>--}}
     {{--</div>--}}
     <div class="hidden md:block">
-      <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Gallery::class, 'index']) }}">
-        <h2 class="text-2xl mb-0"><span class="link">{{ trans('gallery.index') }}</span></h2>
+      <a class="flex items-center mb-2 link-parent" href="@lng/gallery">
+        <h2 class="text-2xl mb-0"><span class="link">@lang('Галерея')</span></h2>
       </a>
       <div>Хранилище изображений для последующей публикации в интернете.</div>
       {{--<p class="text-muted">Дата запуска: 8 февраля 2009 г.</p>--}}
     </div>
   @endru
   <div class="hidden md:block">
-    <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Dcpp::class, 'index']) }}">
+    <a class="flex items-center mb-2 link-parent" href="@lng/dc">
       <h2 class="text-2xl mb-0"><span class="link">ArtFly.DC++</span></h2>
     </a>
     @ru
@@ -76,7 +77,7 @@
       {{--<p class="text-muted">Дата запуска: 5 июля 2010 г.</p>--}}
     </div>
     <div>
-      <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\ParserVk::class, 'index']) }}">
+      <a class="flex items-center mb-2 link-parent" href="@lng/parser/vk">
         <h2 class="text-2xl mb-0"><span class="link">@lang('Парсер ВК')</span></h2>
       </a>
       <div>Ежедневная подборка десяти лучших постов выбранных страниц и групп ВК.</div>
@@ -84,7 +85,7 @@
     </div>
   @endru
   <div>
-    <a class="flex items-center mb-2 link-parent" href="{{ path([App\Http\Controllers\Coupons::class, 'index']) }}">
+    <a class="flex items-center mb-2 link-parent" href="@lng/promocodes-coupons">
       <div class="leading-none text-3xl mr-2">🎁</div>
       <h2 class="text-2xl mb-0"><span class="link">@lang('Промокоды и купоны')</span></h2>
     </a>
@@ -96,7 +97,7 @@
     @endru
   </div>
   <div>
-    <a class="flex items-center mb-2 link-parent" href="{{ path(App\Http\Controllers\Japanese::class) }}">
+    <a class="flex items-center mb-2 link-parent" href="@lng/japanese">
       <div class="leading-none text-3xl mr-2">🇯🇵</div>
       <h2 class="text-2xl mb-0"><span class="link">@lang('Японский язык')</span></h2>
     </a>
@@ -108,7 +109,7 @@
   </div>
   @ru
     <div>
-      <a class="flex items-center mb-2 link-parent" href="{{ path(App\Http\Controllers\Korean::class) }}">
+      <a class="flex items-center mb-2 link-parent" href="@lng/korean">
         <div class="leading-none text-3xl mr-2">🇰🇷</div>
         <h2 class="text-2xl mb-0"><span class="link">@lang('Корейский язык')</span></h2>
       </a>
@@ -122,7 +123,7 @@
 </div>
 
 <h3 class="text-2xl">
-  <a class="link" href="{{ path([App\Http\Controllers\Life::class, 'index']) }}">
+  <a class="link" href="@lng/life">
     @ru Истории о путешествиях @en Travel stories @endru
   </a>
 </h3>

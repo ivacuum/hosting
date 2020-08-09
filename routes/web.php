@@ -4,7 +4,7 @@ use App\Http\Controllers as Ctrl;
 
 Route::get('/', Ctrl\HomeController::class);
 
-Route::get('about', Ctrl\About::class);
+Route::view('about', 'about');
 
 Route::get('auth/login', [Ctrl\Auth\SignIn::class, 'index'])->middleware('guest');
 Route::post('auth/login', [Ctrl\Auth\SignIn::class, 'login'])->middleware('guest');
@@ -32,37 +32,57 @@ Route::post('ajax/comment/{type}/{id}', [Ctrl\AjaxComment::class, 'store']);
 
 Route::get('comments/{comment}/confirm', Ctrl\CommentConfirm::class)->middleware('auth', 'can:confirm,comment');
 
-Route::get('contact', [Ctrl\Issues::class, 'create']);
-Route::post('contact', [Ctrl\Issues::class, 'store']);
+Route::view('contact', 'issues.create');
+Route::post('contact', Ctrl\Issues::class);
 
 Route::middleware('nav:О DC++,dc')->group(function () {
-    Route::get('dc', [Ctrl\Dcpp::class, 'index']);
+    Route::view('dc', 'dcpp.index')->withoutMiddleware('nav:О DC++,dc');
+    Route::view('dc/airdc', 'dcpp.airdc')->middleware('nav:dcpp.airdc');
+    Route::view('dc/apexdc', 'dcpp.apexdc')->middleware('nav:dcpp.apexdc');
+    Route::view('dc/clients', 'dcpp.clients')->middleware('nav:Клиенты');
+    Route::view('dc/dcpp', 'dcpp.dcpp')->middleware('nav:dcpp.dcpp');
+    Route::view('dc/faq', 'dcpp.faq')->middleware('nav:Вопросы и ответы');
+    Route::view('dc/flylinkdc', 'dcpp.flylinkdc')->middleware('nav:dcpp.flylinkdc');
+    Route::view('dc/greylinkdc', 'dcpp.greylinkdc')->middleware('nav:dcpp.greylinkdc');
     Route::get('dc/hubs', Ctrl\DcppHubs::class)->middleware('nav:Хабы');
     Route::post('dc/hubs/{hub}/click', Ctrl\DcppHubClick::class);
-    Route::get('dc/{slug}', [Ctrl\Dcpp::class, 'page']);
+    Route::view('dc/jucydc', 'dcpp.jucydc')->middleware('nav:dcpp.jucydc');
+    Route::view('dc/kalugadc', 'dcpp.kalugadc')->middleware('nav:dcpp.kalugadc');
+    Route::view('dc/pelinkdc', 'dcpp.pelinkdc')->middleware('nav:dcpp.pelinkdc');
+    Route::view('dc/rus_setup', 'dcpp.rus_setup')->middleware('nav:dcpp.rus_setup');
+    Route::view('dc/shakespeer', 'dcpp.shakespeer')->middleware('nav:dcpp.shakespeer');
+    Route::view('dc/strongdc', 'dcpp.strongdc')->middleware('nav:dcpp.strongdc');
+    Route::view('dc/strongdc_install', 'dcpp.strongdc_install')->middleware('nav:dcpp.strongdc_install');
 });
 
-Route::get('docs', [Ctrl\Docs::class, 'index']);
-Route::get('docs/{slug}', [Ctrl\Docs::class, 'page']);
+Route::middleware('nav:Документация,docs')->group(function () {
+    Route::view('docs', 'docs.index');
+    Route::view('docs/amazon-s3', 'docs.amazon-s3')->middleware('nav:Amazon S3');
+    Route::view('docs/freebsd', 'docs.freebsd')->middleware('nav:FreeBSD');
+    Route::view('docs/nginx', 'docs.nginx')->middleware('nav:Nginx');
+    Route::view('docs/trips', 'docs.trips')->middleware('nav:Поездки');
+});
 
 Route::get('files', [Ctrl\Files::class, 'index'])->middleware('nav:Файлы');
 Route::get('files/{file}/dl', [Ctrl\Files::class, 'download']);
 
-Route::get('gallery', [Ctrl\Gallery::class, 'index'])->middleware('auth');
-Route::get('gallery/preview/{image}', [Ctrl\Gallery::class, 'preview']);
-Route::get('gallery/view/{image}', [Ctrl\Gallery::class, 'view']);
-Route::get('gallery/upload', [Ctrl\Gallery::class, 'upload'])->middleware('auth');
-Route::post('gallery/upload', [Ctrl\Gallery::class, 'store'])->middleware('auth');
+Route::middleware('nav:Галерея,gallery')->group(function () {
+    Route::get('gallery', [Ctrl\Gallery::class, 'index'])->middleware('auth');
+    Route::get('gallery/preview/{image}', [Ctrl\Gallery::class, 'preview'])->middleware('nav:Просмотр миниатюры');
+    Route::view('gallery/upload', 'gallery.upload')->middleware('auth')->middleware('nav:Загрузка изображений');
+    Route::post('gallery/upload', [Ctrl\Gallery::class, 'store'])->middleware('auth');
+    Route::get('gallery/view/{image}', [Ctrl\Gallery::class, 'view'])->middleware('nav:Просмотр изображения');
+});
 
 Route::middleware('nav:Японский язык,japanese')->group(function () {
-    Route::get('japanese', Ctrl\Japanese::class);
-    Route::get('japanese/hiragana-katakana', Ctrl\JapaneseHiraganaKatakana::class)->middleware('nav:Хирагана и катакана');
+    Route::view('japanese', 'japanese.index');
+    Route::view('japanese/hiragana-katakana', 'japanese.hiragana-katakana')->middleware('nav:Хирагана и катакана');
 
     Route::middleware('nav:WaniKani V,japanese/wanikani')->group(function () {
-        Route::get('japanese/wanikani', Ctrl\Wanikani::class);
+        Route::view('japanese/wanikani', 'japanese.wanikani.index');
         Route::get('japanese/wanikani/kanji', [Ctrl\JapaneseWanikaniKanji::class, 'index'])->middleware('nav:japanese.kanji');
         Route::get('japanese/wanikani/kanji/{character}', [Ctrl\JapaneseWanikaniKanji::class, 'show']);
-        Route::get('japanese/wanikani/level', Ctrl\WanikaniLevels::class)->middleware('nav:Уровни');
+        Route::view('japanese/wanikani/level', 'japanese.wanikani.levels')->middleware('nav:Уровни');
         Route::get('japanese/wanikani/level/{level}', Ctrl\WanikaniLevel::class);
         Route::get('japanese/wanikani/radicals', [Ctrl\JapaneseWanikaniRadicals::class, 'index'])->middleware('nav:japanese.radicals');
         Route::get('japanese/wanikani/radicals/{meaning}', [Ctrl\JapaneseWanikaniRadicals::class, 'show']);
@@ -70,14 +90,14 @@ Route::middleware('nav:Японский язык,japanese')->group(function () {
         Route::get('japanese/wanikani/vocabulary/{characters}', [Ctrl\JapaneseWanikaniVocabulary::class, 'show']);
     });
 
-    Route::get('japanese/words-trainer', Ctrl\JapaneseWordsTrainer::class)->middleware('nav:Тренажер по набору слов хираганой и катаканой');
+    Route::view('japanese/words-trainer', 'japanese.words-trainer')->middleware('nav:Тренажер по набору слов хираганой и катаканой');
 });
 
 Route::post('js/typo', Ctrl\JsTypo::class);
 
 Route::middleware('nav:Корейский язык,korean')->group(function () {
-    Route::get('korean', Ctrl\Korean::class);
-    Route::get('korean/hangul', Ctrl\KoreanHangul::class)->middleware('nav:Хангыль');
+    Route::view('korean', 'korean.index');
+    Route::view('korean/hangul', 'korean.hangul')->middleware('nav:Хангыль');
 
     Route::middleware('nav:Кириллизация песен PSY,korean/psy')->group(function () {
         Route::get('korean/psy', Ctrl\KoreanPsy::class);
@@ -87,14 +107,22 @@ Route::middleware('nav:Корейский язык,korean')->group(function () {
 
 Route::middleware('nav:Заметки,life')->group(function () {
     Route::get('life', [Ctrl\Life::class, 'index']);
+    Route::view('life/books', 'life.books')->middleware('nav:Понравившиеся книги');
     Route::get('life/calendar', Ctrl\Calendar::class)->middleware('nav:Календарь поездок');
+    Route::view('life/chillout', 'life.chillout')->middleware('nav:Chillout');
     Route::get('life/cities', [Ctrl\Life::class, 'cities'])->middleware('nav:Города');
     Route::get('life/countries', [Ctrl\Life::class, 'countries'])->middleware('nav:Страны');
     Route::get('life/countries/{slug}', [Ctrl\Life::class, 'country'])->middleware('nav:Страны,life/countries');
+    Route::view('life/english', 'life.english')->middleware('nav:Английский');
+    Route::view('life/favorite-posts', 'life.favorite-posts')->middleware('nav:Любимые посты');
+    Route::view('life/german', 'life.german')->middleware('nav:Немецкий');
     Route::get('life/gigs', [Ctrl\Life::class, 'gigs'])->middleware('nav:Концерты');
     Route::get('life/gigs/rss', Ctrl\GigsRss::class);
+    Route::view('life/laundry', 'life.laundry')->middleware('nav:Условные обозначения стирки');
     Route::get('life/movies', Ctrl\Movies::class)->middleware('nav:Любимые фильмы и сериалы');
+    Route::view('life/podcasts', 'life.podcasts')->middleware('nav:Подкасты');
     Route::get('life/rss', Ctrl\TripsRss::class);
+    Route::view('life/using-in-travels', 'life.using-in-travels')->middleware('nav:Чем пользуюсь в путешествиях');
     Route::get('life/{slug}', [Ctrl\Life::class, 'page']);
 });
 
@@ -102,7 +130,7 @@ Route::get('mail/click/{timestamp}/{id}', [Ctrl\Mail::class, 'click'])->name('ma
 Route::get('mail/report/{timestamp}/{id}', [Ctrl\Mail::class, 'report'])->middleware('auth');
 Route::get('mail/view/{timestamp}/{id}', [Ctrl\Mail::class, 'view']);
 
-Route::get('my', [Ctrl\My::class, 'index'])->middleware('auth');
+Route::view('my', 'my.index')->middleware('auth');
 Route::put('my/avatar', [Ctrl\MyAvatar::class, 'update'])->middleware('auth');
 Route::delete('my/avatar', [Ctrl\MyAvatar::class, 'destroy'])->middleware('auth');
 Route::get('my/password', [Ctrl\MyPassword::class, 'edit'])->middleware('auth');
@@ -144,7 +172,7 @@ Route::middleware('nav:Фотки,photos')->group(function () {
         Route::get('photos/countries/{slug}', [Ctrl\Photos::class, 'country']);
     });
 
-    Route::get('photos/faq', [Ctrl\Photos::class, 'faq'])->middleware('nav:Помощь,photos/faq');
+    Route::view('photos/faq', 'photos.faq')->middleware('nav:Помощь,photos/faq');
     Route::get('photos/map', [Ctrl\Photos::class, 'map'])->middleware('nav:Карта,photos/map');
 
     Route::middleware('nav:Тэги,photos/tags')->group(function () {
@@ -160,20 +188,22 @@ Route::middleware('nav:Фотки,photos')->group(function () {
     Route::get('photos/{photo}', [Ctrl\Photos::class, 'show']);
 });
 
-Route::get('promocodes-coupons', [Ctrl\Coupons::class, 'index']);
-Route::get('promocodes-coupons/airbnb', [Ctrl\Coupons::class, 'airbnb']);
-Route::get('promocodes-coupons/booking', [Ctrl\Coupons::class, 'booking']);
-Route::get('promocodes-coupons/digitalocean', [Ctrl\Coupons::class, 'digitalocean']);
-Route::get('promocodes-coupons/drimsim', [Ctrl\Coupons::class, 'drimsim']);
-Route::get('promocodes-coupons/firstvds', [Ctrl\Coupons::class, 'firstvds']);
-Route::post('promocodes-coupons/firstvds', [Ctrl\Coupons::class, 'firstvdsPost']);
-Route::get('promocodes-coupons/timeweb', [Ctrl\Coupons::class, 'timeweb']);
+Route::middleware('nav:coupons.index,promocodes-coupons')->group(function () {
+    Route::view('promocodes-coupons', 'coupons.index');
+    Route::get('promocodes-coupons/airbnb', [Ctrl\Coupons::class, 'airbnb'])->middleware('nav:coupons.airbnb');
+    Route::get('promocodes-coupons/booking', [Ctrl\Coupons::class, 'booking'])->middleware('nav:coupons.booking');
+    Route::get('promocodes-coupons/digitalocean', [Ctrl\Coupons::class, 'digitalocean'])->middleware('nav:coupons.digitalocean');
+    Route::get('promocodes-coupons/drimsim', [Ctrl\Coupons::class, 'drimsim'])->middleware('nav:coupons.drimsim');
+    Route::view('promocodes-coupons/firstvds', 'coupons.firstvds')->middleware('nav:coupons.firstvds');
+    Route::post('promocodes-coupons/firstvds', [Ctrl\Coupons::class, 'firstvds']);
+    Route::get('promocodes-coupons/timeweb', [Ctrl\Coupons::class, 'timeweb'])->middleware('nav:coupons.timeweb');
+});
 
-Route::get('retracker', [Ctrl\Retracker::class, 'index']);
-Route::get('retracker/dev', [Ctrl\Retracker::class, 'dev']);
-Route::get('retracker/usage', [Ctrl\Retracker::class, 'usage']);
+Route::view('retracker', 'retracker.index');
+Route::view('retracker/dev', 'retracker.dev');
+Route::view('retracker/usage', 'retracker.usage');
 
-Route::get('stickers', [Ctrl\Stickers::class, 'index']);
+Route::view('stickers', 'stickers.index');
 
 Route::get('subscriptions', [Ctrl\Subscriptions::class, 'edit']);
 Route::post('subscriptions', [Ctrl\Subscriptions::class, 'store']);
@@ -184,7 +214,7 @@ Route::get('torrent', Ctrl\TorrentPromo::class);
 
 Route::get('torrents', [Ctrl\Torrents::class, 'index']);
 Route::post('torrents', [Ctrl\Torrents::class, 'store']);
-Route::get('torrents/add', [Ctrl\Torrents::class, 'create']);
+Route::view('torrents/add', 'torrents.create');
 Route::get('torrents/comments', [Ctrl\Torrents::class, 'comments']);
 Route::get('torrents/faq', [Ctrl\Torrents::class, 'faq']);
 Route::get('torrents/my', [Ctrl\Torrents::class, 'my'])->middleware('auth');
@@ -194,8 +224,8 @@ Route::post('torrents/{torrent}/magnet', [Ctrl\Torrents::class, 'magnet']);
 
 Route::get('trips/{trip}', [Ctrl\Trips::class, 'show']);
 
-Route::get('up', [Ctrl\Upload::class, 'index']);
-Route::post('up', [Ctrl\Upload::class, 'store']);
+Route::view('up', 'upload');
+Route::post('up', Ctrl\Upload::class);
 
 Route::middleware('nav:Пользователи,users')->group(function () {
     Route::get('users', [Ctrl\Users::class, 'index']);

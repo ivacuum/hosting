@@ -11,7 +11,7 @@
   <feedback-form
     name="{{ optional(Auth::user())->login }}"
     email="{{ optional(Auth::user())->email }}"
-    action="{{ path([App\Http\Controllers\Issues::class, 'store']) }}"
+    action="@lng/contact"
   ></feedback-form>
 </div>
 @endsection

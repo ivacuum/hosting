@@ -28,14 +28,14 @@ Mousetrap.bind('right', () => {
         <a
           class="absolute top-0 w-1/2 h-full z-10 left-0"
           id="prev_page"
-          href="{{ path([App\Http\Controllers\Photos::class, 'show'], [$next->id, 'city_id' => $cityId, 'country_id' => $countryId, 'tag_id' => $tagId, 'trip_id' => $tripId]) }}"
+          href="{{ to('photos/{photo}', [$next->id, 'city_id' => $cityId, 'country_id' => $countryId, 'tag_id' => $tagId, 'trip_id' => $tripId]) }}"
         >&nbsp;</a>
       @endif
       @if ($prev)
         <a
           class="absolute top-0 w-1/2 h-full z-10 left-1/2"
           id="next_page"
-          href="{{ path([App\Http\Controllers\Photos::class, 'show'], [$prev->id, 'city_id' => $cityId, 'country_id' => $countryId, 'tag_id' => $tagId, 'trip_id' => $tripId]) }}"
+          href="{{ to('photos/{photo}', [$prev->id, 'city_id' => $cityId, 'country_id' => $countryId, 'tag_id' => $tagId, 'trip_id' => $tripId]) }}"
         >&nbsp;</a>
       @endif
       <div class="inline-block relative">
@@ -71,11 +71,11 @@ Mousetrap.bind('right', () => {
       <div class="text-muted">
         @lang('Геотэги')
         @if ($photo->isOnMap())
-          <a href="{{ path([App\Http\Controllers\Photos::class, 'map'], ['lat' => $photo->lat, 'lon' => $photo->lon, 'zoom' => 16]) }}">@svg (map-marker)</a>
+          <a href="{{ to('photos/map', ['lat' => $photo->lat, 'lon' => $photo->lon, 'zoom' => 16]) }}">@svg (map-marker)</a>
         @endif
       </div>
-      <div><a class="link lowercase" href="{{ path([App\Http\Controllers\Photos::class, 'city'], $photo->rel->city->slug) }}">#{{ $photo->rel->city->title }}</a></div>
-      <div><a class="link lowercase" href="{{ path([App\Http\Controllers\Photos::class, 'country'], $photo->rel->city->country->slug) }}">#{{ $photo->rel->city->country->title }}</a></div>
+      <div><a class="link lowercase" href="{{ to('photos/cities/{city}', $photo->rel->city->slug) }}">#{{ $photo->rel->city->title }}</a></div>
+      <div><a class="link lowercase" href="{{ to('photos/countries/{country}', $photo->rel->city->country->slug) }}">#{{ $photo->rel->city->country->title }}</a></div>
     </div>
 
     @if (sizeof($photo->tags))
@@ -83,7 +83,7 @@ Mousetrap.bind('right', () => {
         <div class="text-muted">@lang('Тэги')</div>
         @foreach ($photo->tags as $tag)
           <div>
-            <a class="link" href="{{ path([App\Http\Controllers\Photos::class, 'tag'], $tag) }}">#{{ $tag->title }}</a>
+            <a class="link" href="{{ $tag->www() }}">#{{ $tag->title }}</a>
           </div>
         @endforeach
       </div>

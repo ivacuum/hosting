@@ -11,7 +11,7 @@
             @if (!empty($categoryId) && $id == $categoryId)
               <mark>{{ $category['title'] }}</mark>
             @else
-              <a class="visited" href="{{ path([$controller, 'index'], ['category_id' => $id]) }}">{{ $category['title'] }}</a>
+              <a class="visited" href="{{ to('torrents', ['category_id' => $id]) }}">{{ $category['title'] }}</a>
             @endif
           </h4>
           @if (!empty($category['children']))
@@ -23,7 +23,7 @@
                 @else
                   <a
                     class="visited"
-                    href="{{ path([App\Http\Controllers\Torrents::class, 'index'], ['category_id' => $id]) }}"
+                    href="{{ to('torrents', ['category_id' => $id]) }}"
                   >{{ $child['title'] }}</a>
                 @endif
                 <span class="text-muted text-xs">{{ $stats[$id] }}</span>
@@ -97,7 +97,7 @@
           <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center md:text-left whitespace-no-wrap js-magnet"
              href="{{ $torrent->magnet() }}"
              title="@lang('Скачать')"
-             data-action="{{ path([App\Http\Controllers\Torrents::class, 'magnet'], $torrent) }}"
+             data-action="{{ to('torrents/{torrent}/magnet', $torrent) }}"
           >
             @svg (magnet)
             <span class="js-magnet-counter">{{ $torrent->clicks ?: '' }}</span>
@@ -176,7 +176,7 @@
         <summary>Не нашли искомую раздачу? Оставьте нам запрос</summary>
         <div class="mt-2 mb-6">Мы можем помочь с поиском. Расскажите как можно подробнее что вы ищете. Мы постараемся добавить раздачу в течение суток, однако вы можете самостоятельно продолжить поиск по <a class="link" href="{{ App\Torrent::externalSearchLink($q) }}">рутрекеру</a> и затем <a class="link" href="/torrents/add">поделиться находкой</a> с остальными пользователями.</div>
 
-        <form action="{{ path(App\Http\Controllers\TorrentRequestRelease::class) }}" method="post">
+        <form action="@lng/torrents/request" method="post">
           {{ ViewHelper::inputHiddenMail() }}
           @csrf
 

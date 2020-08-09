@@ -1,5 +1,5 @@
 {{-- Опубликована заметка о поездке --}}
-{{ trans("ui.notifications.{$basename}") }}
+@lang("ui.notifications.{$basename}")
 <a
   class="link"
   href="{{ path([App\Http\Controllers\Life::class, 'page'], $notification->data['slug']) }}"

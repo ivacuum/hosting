@@ -1,7 +1,7 @@
 @extends('japanese.wanikani.base')
 
 @section('content')
-<h1 class="h2">{{ trans('japanese.vocabulary') }}</h1>
+<h1 class="h2">@lang('japanese.vocabulary')</h1>
 @foreach (range($from, $to) as $level)
   @livewire(App\Http\Livewire\VocabularyList::class, ['level' => $level, 'range' => true])
 @endforeach

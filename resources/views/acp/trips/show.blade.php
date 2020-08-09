@@ -14,7 +14,7 @@
 @endif
 <form class="mt-4" action="{{ path(App\Http\Controllers\Acp\TripPublishedNotify::class, $model) }}" method="post">
   @csrf
-  <button class="btn btn-default">{{ trans("$tpl.notify") }}</button>
+  <button class="btn btn-default">@lang("$tpl.notify")</button>
 </form>
 @parent
 @endsection

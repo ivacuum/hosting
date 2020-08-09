@@ -31,12 +31,12 @@
 @if (Auth::check())
   @if (!Auth::user()->notify_trips)
     <div class="mt-6 py-3 px-5 text-teal-800 bg-teal-200 bg-opacity-50 border border-teal-200 rounded">
-      <div class="mb-2">{{ trans('life.newsletter.description') }}</div>
-      <form action="{{ path([App\Http\Controllers\Subscriptions::class, 'update']) }}" method="post">
+      <div class="mb-2">@lang('life.newsletter.description')</div>
+      <form action="@lng/subscriptions" method="post">
         {{ ViewHelper::inputHiddenMail() }}
         <button class="btn btn-default text-sm py-1 small-caps svg-flex svg-label">
           @svg (mail)
-          {{ trans('mail.subscribe') }}
+          @lang('mail.subscribe')
         </button>
         <input type="hidden" name="trips" value="1">
         @method('put')
@@ -46,14 +46,14 @@
   @endif
 @else
   <div class="mt-6 py-3 px-5 text-teal-800 bg-teal-200 bg-opacity-50 border border-teal-200 rounded">
-    <div class="mb-2">{{ trans('life.newsletter.description') }}</div>
+    <div class="mb-2">@lang('life.newsletter.description')</div>
     <div class="flex">
       <a
         class="btn btn-default text-sm py-1 svg-flex svg-label small-caps mr-4"
-        href="{{ path([App\Http\Controllers\Subscriptions::class, 'edit'], ['trips' => 1]) }}"
+        href="@lng/subscriptions?trips=1"
       >
         @svg (mail)
-        {{ trans('mail.subscribe') }}
+        @lang('mail.subscribe')
       </a>
     </div>
   </div>

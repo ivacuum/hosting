@@ -14,7 +14,7 @@ class ResetPasswordMail extends Mailable implements ShouldQueue
 
     public function build()
     {
-        return $this->subject(trans('auth.password_remind_title'))
+        return $this->subject(__('auth.password_remind_title'))
             ->markdown('emails.auth.reset-password');
     }
 }

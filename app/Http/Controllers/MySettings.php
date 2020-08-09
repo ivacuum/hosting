@@ -17,6 +17,6 @@ class MySettings extends Controller
 
         event(new \App\Events\Stats\MySettingsChanged);
 
-        return back()->with('message', trans('my.saved'));
+        return back()->with('message', __('Изменения сохранены'));
     }
 }

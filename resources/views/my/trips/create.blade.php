@@ -1,13 +1,13 @@
 @extends('my.base')
 
 @section('content')
-<h3>{{ trans('acp.trips.create') }}</h3>
+<h3>@lang('acp.trips.create')</h3>
 
-<form action="{{ path([App\Http\Controllers\MyTrips::class, 'store']) }}" method="post">
+<form action="@lng/my/trips" method="post">
 
   @include('my.trips.form')
 
-  <button class="btn btn-primary">{{ trans('acp.trips.add') }}</button>
+  <button class="btn btn-primary">@lang('acp.trips.add')</button>
 
 </form>
 @endsection

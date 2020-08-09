@@ -2,15 +2,15 @@
 
 @section('content')
 <div class="max-w-500px">
-  <h3 class="mb-4">{{ trans('my.profile') }}</h3>
-  <p><a class="btn btn-default" href="{{ Auth::user()->www() }}">{{ trans('my.go_to_profile') }} @svg (angle-right)</a></p>
-  <form action="{{ path([App\Http\Controllers\MyProfile::class, 'update']) }}" method="post">
+  <h3 class="mb-4">@lang('Профиль')</h3>
+  <p><a class="btn btn-default" href="{{ Auth::user()->www() }}">@lang('Просмотреть профиль') @svg (angle-right)</a></p>
+  <form action="@lng/my/profile" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @method('put')
     @csrf
 
     <div class="mb-4">
-      <label class="font-bold">{{ trans('my.username') }}</label>
+      <label class="font-bold">@lang('Логин')</label>
       <input
         class="form-input"
         name="username"
@@ -27,7 +27,7 @@
     </div>
 
     <div class="mb-4">
-      <label class="font-bold">{{ trans('auth.email') }}</label>
+      <label class="font-bold">@lang('auth.email')</label>
       <input
         required
         class="form-input"
@@ -45,8 +45,8 @@
 
   <h3 class="mt-12">@lang('Аватар')</h3>
   <avatar-uploader
-    delete-action="{{ path([App\Http\Controllers\MyAvatar::class, 'destroy']) }}"
-    update-action="{{ path([App\Http\Controllers\MyAvatar::class, 'update']) }}"
+    delete-action="@lng/my/avatar"
+    update-action="@lng/my/avatar"
     current-avatar="{{ Auth::user()->avatarUrl() }}"
   >
     @include('tpl.svg-avatar', [

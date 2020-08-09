@@ -13,8 +13,6 @@ class DcppHubs extends Controller
 
         return view('dcpp.hubs', [
             'hubs' => $hubs,
-            'page' => 'hubs',
-            'metaTitle' => $viewHelper->metaTitle('dcpp.hubs'),
         ]);
     }
 }

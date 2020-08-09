@@ -8,14 +8,14 @@
 
 @component('mail::message')
 
-{{ trans('mail.news_published', ['title' => $news->title]) }}
+@lang('mail.news_published', ['title' => $news->title])
 
 @component('mail::button', ['url' => $newsLink])
-{{ trans('mail.read') }}
+@lang('mail.read')
 @endcomponent
 
 @component('mail::button', ['color' => 'light', 'url' => $mySettingsLink])
-{{ trans('mail.settings') }}
+@lang('mail.settings')
 @endcomponent
 
 @include('vendor.mail.html.hit')

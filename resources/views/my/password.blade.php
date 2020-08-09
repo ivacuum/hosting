@@ -4,7 +4,7 @@
 <h3 class="mb-4">@lang('Пароль')</h3>
 
 <div class="max-w-500px">
-  <form action="{{ path([App\Http\Controllers\MyPassword::class, 'update']) }}" method="post">
+  <form action="@lng/my/password" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @method('put')
     @csrf
@@ -50,7 +50,7 @@
 </div>
 
 @if ($hasPassword)
-  <h3 class="mt-12">{{ trans('auth.forgot_password') }}</h3>
+  <h3 class="mt-12">@lang('auth.forgot_password')</h3>
   <form action="{{ path([App\Http\Controllers\Auth\ForgotPassword::class, 'sendResetLink']) }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
@@ -62,7 +62,7 @@
     @endru
 
     <button class="btn btn-default">
-      {{ trans('auth.password_remind') }}
+      @lang('auth.password_remind')
     </button>
 
     <input type="hidden" name="email" value="{{ Auth::user()->email }}">

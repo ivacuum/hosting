@@ -5,9 +5,9 @@
   @method('put')
   @include('my.trips.form')
 
-  <button class="btn btn-primary">{{ trans('acp.save') }}</button>
+  <button class="btn btn-primary">@lang('acp.save')</button>
   <button name="_save" class="btn btn-default">
-    {{ trans('acp.apply') }}
+    @lang('acp.apply')
   </button>
 </form>
 @endsection

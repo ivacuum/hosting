@@ -61,11 +61,6 @@ class Torrents extends Controller
         ]);
     }
 
-    public function create()
-    {
-        return view('torrents.create');
-    }
-
     public function comments()
     {
         $comments = Comment::with('rel', 'user')

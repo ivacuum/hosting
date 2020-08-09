@@ -1,18 +1,18 @@
 @extends('base')
 
 @push('head')
-<link rel="alternate" type="application/rss+xml" title="@lang('Новости')" href="{{ url(path(App\Http\Controllers\NewsRss::class)) }}">
+<link rel="alternate" type="application/rss+xml" title="@lang('Новости')" href="{{ url(to('news/rss')) }}">
 @endpush
 
 @section('content')
 <div class="flex flex-wrap items-center antialiased mb-6">
   <h1 class="h2 mb-1 mr-4">@lang('Новости')</h1>
   @if (Auth::check())
-    <form class="mr-4" action="{{ path([App\Http\Controllers\Subscriptions::class, 'update']) }}" method="post">
+    <form class="mr-4" action="@lng/subscriptions" method="post">
       {{ ViewHelper::inputHiddenMail() }}
       <button class="btn btn-default text-sm py-1 small-caps svg-flex svg-label">
         @svg (mail)
-        {{ trans(Auth::user()->notify_news ? 'mail.unsubscribe' : 'mail.subscribe') }}
+        @lang(Auth::user()->notify_news ? 'mail.unsubscribe' : 'mail.subscribe')
       </button>
       <input type="hidden" name="news" value="{{ Auth::user()->notify_news ? 0 : 1 }}">
       @method('put')
@@ -21,15 +21,15 @@
   @else
     <a
       class="btn btn-default text-sm py-1 svg-flex svg-label small-caps mr-4"
-      href="{{ path([App\Http\Controllers\Subscriptions::class, 'edit'], ['news' => 1]) }}"
+      href="@lng/subscriptions?news=1"
     >
       @svg (mail)
-      {{ trans('mail.subscribe') }}
+      @lang('mail.subscribe')
     </a>
   @endif
   <a
     class="text-lg svg-flex svg-label small-caps"
-    href="{{ path(App\Http\Controllers\NewsRss::class) }}"
+    href="@lng/news/rss"
   >
     @svg (rss-square)
     rss

@@ -12,7 +12,7 @@
       @endif
       <a
         class="link"
-        href="{{ path([App\Http\Controllers\Photos::class, 'country'], $country->slug) }}"
+        href="{{ to('photos/countries/{country}', $country->slug) }}"
       >{{ $country->title }}</a>
     </div>
     <?php $initial = $currentInitial ?>

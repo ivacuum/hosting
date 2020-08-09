@@ -9,7 +9,7 @@
     <span class="text-base text-muted whitespace-no-wrap">{{ ViewHelper::number($models->total()) }}</span>
   </h3>
   <a class="btn btn-success my-1 mr-1" href="{{ path([App\Http\Controllers\MyTrips::class, 'create']) }}">
-    {{ trans('acp.trips.create') }}
+    @lang('acp.trips.create')
   </a>
   @if (optional(Auth::user())->login)
     <a
@@ -19,7 +19,7 @@
       Просмотреть
     </a>
   @endif
-  <a class="btn btn-default my-1" href="{{ path([App\Http\Controllers\Docs::class, 'page'], 'trips') }}">
+  <a class="btn btn-default my-1" href="@lng/docs/trips">
     @svg (question-circle)
   </a>
 </div>

@@ -4,12 +4,7 @@ use Ivacuum\Generic\Services\Telegram;
 
 class Upload extends Controller
 {
-    public function index()
-    {
-        return view('upload');
-    }
-
-    public function store(Telegram $telegram)
+    public function __invoke(Telegram $telegram)
     {
         $files = request()->file('files');
 

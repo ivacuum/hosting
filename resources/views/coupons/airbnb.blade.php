@@ -18,13 +18,7 @@
     <tbody>
       <tr>
         <td>ALSACE2015</td>
-        <td>
-          @ru
-            <a class="link" href="/life/hamburg.2016">Гамбург</a>
-          @en
-            <a class="link" href="/en/life/hamburg.2016">Hamburg</a>
-          @endru
-        </td>
+        <td><a class="link" href="@lng/life/hamburg.2016">@ru Гамбург @en Hamburg @endru</a></td>
       </tr>
       <tr>
         <td>AMSTERDAM2015</td>
@@ -32,33 +26,15 @@
       </tr>
       <tr>
         <td>ANDALOUSIE2015</td>
-        <td>
-          @ru
-            <a class="link" href="/life/amsterdam.2016">Амстердам</a>
-          @en
-            <a class="link" href="/en/life/amsterdam.2016">Amsterdam</a>
-          @endru
-        </td>
+        <td><a class="link" href="@lng/life/amsterdam.2016">@ru Амстердам @en Amsterdam @endru</a></td>
       </tr>
       <tr>
         <td>BALI2015</td>
-        <td>
-          @ru
-            <a class="link" href="/life/bali.2016">Бали</a>
-          @en
-            <a class="link" href="/en/life/bali.2016">Bali</a>
-          @endru
-        </td>
+        <td><a class="link" href="@lng/life/bali.2016">@ru Бали @en Bali @endru</a></td>
       </tr>
       <tr>
         <td>BARCELONE2015</td>
-        <td>
-          @ru
-            <a class="link" href="/life/barcelona.2016">Барселона</a>
-          @en
-            <a class="link" href="/en/life/barcelona.2016">Barcelona</a>
-          @endru
-        </td>
+        <td><a class="link" href="@lng/life/barcelona.2016">@ru Барселона @en Barcelona @endru</a></td>
       </tr>
       <tr>
         <td>BELGIQUE2015</td>
@@ -66,13 +42,7 @@
       </tr>
       <tr>
         <td>BERLIN2015</td>
-        <td>
-          @ru
-            <a class="link" href="/life/berlin.2016">Берлин</a>
-          @en
-            <a class="link" href="/en/life/berlin.2016">Berlin</a>
-          @endru
-        </td>
+        <td><a class="link" href="@lng/life/berlin.2016">@ru Берлин @en Berlin @endru</a></td>
       </tr>
       <tr>
         <td>BOURGOGNE2015</td>
@@ -88,23 +58,11 @@
       </tr>
       <tr>
         <td>COPENHAGUE2015</td>
-        <td>
-          @ru
-            <a class="link" href="/life/copenhagen.2017">Копенгаген</a>
-          @en
-            <a class="link" href="/en/life/copenhagen.2017">Copenhagen</a>
-          @endru
-        </td>
+        <td><a class="link" href="@lng/life/copenhagen.2017">@ru Копенгаген @en Copenhagen @endru</a></td>
       </tr>
       <tr>
         <td>CROATIE2015</td>
-        <td>
-          @ru
-            <a class="link" href="/life/budapest.2017.01">Будапешт</a>
-          @en
-            <a class="link" href="/en/life/budapest.2017.01">Budapest</a>
-          @endru
-        </td>
+        <td><a class="link" href="@lng/life/budapest.2017.01">@ru Будапешт @en Budapest @endru</a></td>
       </tr>
       <tr>
         <td>DUBLIN2015</td>
@@ -112,13 +70,7 @@
       </tr>
       <tr>
         <td>ECOSSE2015</td>
-        <td>
-          @ru
-            <a class="link" href="/life/cologne.2016">Кельн</a>
-          @en
-            <a class="link" href="/en/life/cologne.2016">Cologne</a>
-          @endru
-        </td>
+        <td><a class="link" href="@lng/life/cologne.2016">@ru Кельн @en Cologne @endru</a></td>
       </tr>
       <tr>
         <td>ESPAGNE2015</td>
@@ -182,23 +134,11 @@
       </tr>
       <tr>
         <td>MOSCOU2015</td>
-        <td>
-          @ru
-            <a class="link" href="/life/msk.2016.06">Москва</a>
-          @en
-            <a class="link" href="/en/life/msk.2016.06">Moscow</a>
-          @endru
-        </td>
+        <td><a class="link" href="@lng/life/msk.2016.06">@ru Москва @en Moscow @endru</a></td>
       </tr>
       <tr>
         <td>NORVEGE2015</td>
-        <td>
-          @ru
-            <a class="link" href="/life/krasnodar.2016">Краснодар</a>
-          @en
-            <a class="link" href="/en/life/krasnodar.2016">Krasnodar</a>
-          @endru
-        </td>
+        <td><a class="link" href="@lng/life/krasnodar.2016">@ru Краснодар @en Krasnodar @endru</a></td>
       </tr>
       <tr>
         <td>NYC2015</td>
@@ -210,13 +150,7 @@
       </tr>
       <tr>
         <td>POLOGNE2015</td>
-        <td>
-          @ru
-            <a class="link" href="/life/spb.2016.03">Санкт-Петербург</a>
-          @en
-            <a class="link" href="/en/life/spb.2016.03">Saint Petersburg</a>
-          @endru
-        </td>
+        <td><a class="link" href="@lng/life/spb.2016.03">@ru Санкт-Петербург @en Saint Petersburg @endru</a></td>
       </tr>
       <tr>
         <td>PORTUGAL2015</td>
@@ -224,13 +158,7 @@
       </tr>
       <tr>
         <td>PRAGUE2015</td>
-        <td>
-          @ru
-            <a class="link" href="/life/prague.2016">Прага</a>
-          @en
-            <a class="link" href="/en/life/prague.2016">Prague</a>
-          @endru
-        </td>
+        <td><a class="link" href="@lng/life/prague.2016">@ru Прага @en Prague @endru</a></td>
       </tr>
       <tr>
         <td>ROME2015</td>
@@ -238,13 +166,7 @@
       </tr>
       <tr>
         <td>SARDAIGNE2015</td>
-        <td>
-          @ru
-            <a class="link" href="/life/wiesbaden.2016">Висбаден</a>
-          @en
-            <a class="link" href="/en/life/wiesbaden.2016">Wiesbaden</a>
-          @endru
-        </td>
+        <td><a class="link" href="@lng/life/wiesbaden.2016">@ru Висбаден @en Wiesbaden @endru</a></td>
       </tr>
       <tr>
         <td>SICILE2015</td>
@@ -252,13 +174,7 @@
       </tr>
       <tr>
         <td>STOCKHOLM2015</td>
-        <td>
-          @ru
-            <a class="link" href="/life/stockholm.2016">Стокгольм</a>
-          @en
-            <a class="link" href="/en/life/stockholm.2016">Stockholm</a>
-          @endru
-        </td>
+        <td><a class="link" href="@lng/life/stockholm.2016">@ru Стокгольм @en Stockholm @endru</a></td>
       </tr>
       <tr>
         <td>SF2015</td>
@@ -270,13 +186,7 @@
       </tr>
       <tr>
         <td>VIENNE2015</td>
-        <td>
-          @ru
-            <a class="link" href="/life/vienna.2017">Вена</a>
-          @en
-            <a class="link" href="/en/life/vienna.2017">Vienna</a>
-          @endru
-        </td>
+        <td><a class="link" href="@lng/life/vienna.2017">@ru Вена @en Vienna @endru</a></td>
       </tr>
     </tbody>
   </table>
@@ -346,7 +256,7 @@
     <feedback-form
       email="{{ Auth::user()->email ?? '' }}"
       title="Airbnb"
-      action="{{ path([App\Http\Controllers\Issues::class, 'store']) }}"
+      action="@lng/contact"
       hide-title
     ></feedback-form>
   </section>

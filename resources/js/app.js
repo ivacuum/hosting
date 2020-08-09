@@ -59,14 +59,14 @@ class Application {
   }
 
   static conditionalInit() {
-    const { view } = document.body.dataset
+    const { route } = document.body.dataset
 
-    if (view === 'news.index') {
+    if (route === 'news') {
       const observer = NewsViewsObserver()
       observer.observe()
-    } else if (view === 'photos.map') {
+    } else if (route === 'photos/map') {
       PhotosMap.load()
-    } else if (view === 'torrents.index') {
+    } else if (route === 'torrents') {
       const observer = TorrentsViewsObserver()
       observer.observe()
     }

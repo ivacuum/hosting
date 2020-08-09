@@ -28,7 +28,7 @@ class TripPublishedMail extends Mailable implements ShouldQueue
 
     public function build()
     {
-        return $this->subject(trans('mail.trip_published_title', ['title' => $this->trip->title]))
+        return $this->subject(__('mail.trip_published_title', ['title' => $this->trip->title]))
             ->markdown('emails.trip-published')
             ->with('locale', $this->locale);
     }

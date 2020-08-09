@@ -9,7 +9,7 @@ class GigsRss extends Controller
         $meta = [
             'title' => __('Концерты'),
             'link' => url(path([Life::class, 'gigs'])),
-            'description' => trans('life.gigs.rss.description'),
+            'description' => __('life.gigs.rss.description'),
         ];
 
         $items = Gig::where('status', Gig::STATUS_PUBLISHED)

@@ -1,14 +1,7 @@
-@extends('docs.base', [
-  'metaTitle' => 'Nginx',
-
-  'breadcrumbs' => [
-    ['title' => 'Документация', 'url' => 'docs'],
-    ['title' => 'Nginx'],
-  ]
-])
+@extends('docs.base')
 
 @section('content')
-<h2>Nginx</h2>
+<h2>@lang('Nginx')</h2>
 
 <x-terminal-pre>
 @verbatim

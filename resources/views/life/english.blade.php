@@ -1,8 +1,4 @@
-<?php \Breadcrumbs::push(__('Английский')); ?>
-
-@extends('life.base', [
-  'metaTitle' => __('Английский'),
-])
+@extends('life.base')
 
 {{--
 https://english.stackexchange.com/questions/51209/translate-into-vs-translate-to

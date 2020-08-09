@@ -1,14 +1,7 @@
-@extends('docs.base', [
-  'metaTitle' => 'Amazon S3',
-
-  'breadcrumbs' => [
-    ['title' => 'Документация', 'url' => 'docs'],
-    ['title' => 'Amazon S3'],
-  ]
-])
+@extends('docs.base')
 
 @section('content')
-<h2>Amazon S3</h2>
+<h2>@lang('Amazon S3')</h2>
 <p><a class="link" href="https://awspolicygen.s3.amazonaws.com/policygen.html">Официальный генератор политик доступа</a>.</p>
 
 <x-terminal-pre>

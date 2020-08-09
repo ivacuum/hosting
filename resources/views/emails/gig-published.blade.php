@@ -10,7 +10,7 @@
 
 # {{ $gig->metaTitle() }}
 
-{{ trans('mail.gig_published') }}
+@lang('mail.gig_published')
 
 {{ $gig->metaDescription() }}
 
@@ -21,11 +21,11 @@
 @endif
 
 @component('mail::button', ['url' => $gigLink])
-{{ trans('mail.read') }}
+@lang('mail.read')
 @endcomponent
 
 @component('mail::button', ['color' => 'light', 'url' => $mySettingsLink])
-{{ trans('mail.settings') }}
+@lang('mail.settings')
 @endcomponent
 
 @include('vendor.mail.html.hit')

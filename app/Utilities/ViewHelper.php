@@ -48,7 +48,7 @@ class ViewHelper extends BaseViewHelper
 
     public function prependTransKeysForJson(string $file, bool $vueI18nFormatter = false): array
     {
-        $trans = trans($file);
+        $trans = __($file);
 
         return array_combine(
             array_map(fn ($key) => "{$file}.{$key}", array_keys($trans)),

@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<h1>{{ trans('coupons.index') }}</h1>
+<h1>@lang('coupons.index')</h1>
 @ru
   <p>Простые способы сэкономить на услугах нижеприведенных сервисов.</p>
 @en
@@ -9,24 +9,24 @@
 @endru
 
 <div class="antialiased hanging-puntuation-first lg:text-lg">
-  <h3 class="mt-6">{{ trans('coupons.hosting') }}</h3>
+  <h3 class="mt-6">@lang('coupons.hosting')</h3>
   <ul>
-    <li class="mb-1"><a class="link" href="{{ path([App\Http\Controllers\Coupons::class, 'digitalocean']) }}">{{ trans('coupons.digitalocean') }}</a></li>
-    <li class="mb-1"><a class="link" href="{{ path([App\Http\Controllers\Coupons::class, 'firstvds']) }}">{{ trans('coupons.firstvds') }}</a></li>
+    <li><a class="link" href="@lng/promocodes-coupons/digitalocean">@lang('coupons.digitalocean')</a></li>
+    <li><a class="link" href="@lng/promocodes-coupons/firstvds">@lang('coupons.firstvds')</a></li>
     @ru
-      <li class="mb-1"><a class="link" href="{{ path([App\Http\Controllers\Coupons::class, 'timeweb']) }}">{{ trans('coupons.timeweb') }}</a></li>
+      <li><a class="link" href="@lng/promocodes-coupons/timeweb">@lang('coupons.timeweb')</a></li>
     @endru
   </ul>
 
-  <h3 class="mt-6">{{ trans('coupons.accomodation') }}</h3>
+  <h3 class="mt-6">@lang('coupons.accomodation')</h3>
   <ul>
-    <li class="mb-1"><a class="link" href="{{ path([App\Http\Controllers\Coupons::class, 'airbnb']) }}">{{ trans('coupons.airbnb') }}</a></li>
-    <li class="mb-1"><a class="link" href="{{ path([App\Http\Controllers\Coupons::class, 'booking']) }}">{{ trans('coupons.booking') }}</a></li>
+    <li><a class="link" href="@lng/promocodes-coupons/airbnb">@lang('coupons.airbnb')</a></li>
+    <li><a class="link" href="@lng/promocodes-coupons/booking">@lang('coupons.booking')</a></li>
   </ul>
 
-  <h3 class="mt-6">{{ trans('coupons.simcards') }}</h3>
+  <h3 class="mt-6">@lang('coupons.simcards')</h3>
   <ul>
-    <li class="mb-1"><a class="link" href="{{ path([App\Http\Controllers\Coupons::class, 'drimsim']) }}">{{ trans('coupons.drimsim') }}</a></li>
+    <li><a class="link" href="@lng/promocodes-coupons/drimsim">@lang('coupons.drimsim')</a></li>
   </ul>
 </div>
 @endsection

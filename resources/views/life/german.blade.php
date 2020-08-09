@@ -1,7 +1,4 @@
-<?php \Breadcrumbs::push(__('Немецкий')); ?>
-
 @extends('life.base', [
-  'metaTitle' => __('Немецкий'),
   'noLanguageSelector' => $locale === 'ru',
 ])
 

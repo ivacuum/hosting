@@ -10,7 +10,7 @@
 
 # {{ $trip->metaTitle() }}
 
-{{ trans('mail.trip_published') }}
+@lang('mail.trip_published')
 
 {{ $trip->metaDescription() }}
 
@@ -21,11 +21,11 @@
 @endif
 
 @component('mail::button', ['url' => $tripLink])
-{{ trans('mail.read') }}
+@lang('mail.read')
 @endcomponent
 
 @component('mail::button', ['color' => 'light', 'url' => $mySettingsLink])
-{{ trans('mail.settings') }}
+@lang('mail.settings')
 @endcomponent
 
 @include('vendor.mail.html.hit')

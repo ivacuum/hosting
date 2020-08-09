@@ -6,10 +6,10 @@
 @ru
   <h1>Инструкция по русификации</h1>
   <p>
-    <a class="btn btn-primary my-1 mr-2" href="{{ path([App\Http\Controllers\Files::class, 'download'], 157) }}">
+    <a class="btn btn-primary my-1 mr-2" href="@lng/files/157/dl">
       Русификатор ApexDC++ &middot; {{ ViewHelper::size(21464) }}
     </a>
-    <a class="btn btn-primary my-1" href="{{ path([App\Http\Controllers\Files::class, 'download'], 28) }}">
+    <a class="btn btn-primary my-1" href="@lng/files/28/dl">
       Русификатор GreyLinkDC++ &middot; {{ ViewHelper::size(108876) }}
     </a>
   </p>

@@ -2,7 +2,7 @@
 
 @section('content')
 <gallery-uploader
-  action="{{ path([App\Http\Controllers\Gallery::class, 'store']) }}"
+  action="@lng/gallery/upload"
   max="10"
 ></gallery-uploader>
 @endsection

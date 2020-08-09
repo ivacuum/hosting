@@ -1,6 +1,11 @@
-@extends('user-travel.base', [
-  'metaTitle' => __('Страны'),
-])
+<?php
+/**
+ * @var \App\User $traveler
+ * @var \App\Country $country
+ */
+?>
+
+@extends('user-travel.base')
 
 @section('content')
 <h1 class="h2">
@@ -15,13 +20,13 @@
       @continue ($country->trips_count === 0)
       <li class="{{ !$loop->last ? 'mb-2' : '' }}">
         @if ($country->trips_published_count)
-          <a class="link" href="{{ path([App\Http\Controllers\UserTravelCountries::class, 'show'], [$traveler->login, $country->slug]) }}"><strong>{{ $country->title }}</strong></a>:
+          <a class="link" href="{{ to('@{login}/travel/countries/{country}', [$traveler->login, $country->slug]) }}"><strong>{{ $country->title }}</strong></a>:
         @else
           <strong>{{ $country->title }}</strong>:
         @endif
         @foreach ($country->cities as $city)
           @if ($city->trips_published_count)
-            <a class="link" href="{{ path([App\Http\Controllers\UserTravelCities::class, 'show'], [$traveler->login, $city->slug]) }}">{{ $city->title }}</a>{{ !$loop->last ? ',' : '' }}
+            <a class="link" href="{{ to('@{login}/travel/cities/{city}', [$traveler->login, $city->slug]) }}">{{ $city->title }}</a>{{ !$loop->last ? ',' : '' }}
           @else
             {{ $city->title }}{{ !$loop->last ? ',' : '' }}
           @endif

@@ -6,41 +6,41 @@
     <div class="nav-scroll">
       <nav class="nav nav-link-tabs">
         <a
-          class="nav-link {{ 0 === strpos($view, 'acp.dev.templates') ? 'active' : '' }}"
-          href="{{ path([App\Http\Controllers\Acp\Dev\Templates::class, 'index']) }}"
+          class="nav-link {{ $routeUri === 'acp/dev/templates' ? 'active' : '' }}"
+          href="@lng/acp/dev/templates"
         >
-          {{ trans('acp.dev.templates.index') }}
+          @lang('acp.dev.templates.index')
         </a>
         <a
-          class="nav-link {{ 0 === strpos($view, 'acp.dev.gig-templates') ? 'active' : '' }}"
-          href="{{ path([App\Http\Controllers\Acp\Dev\GigTemplates::class, 'index']) }}"
+          class="nav-link {{ $routeUri === 'acp/dev/gig-templates' ? 'active' : '' }}"
+          href="@lng/acp/dev/gig-templates"
         >
-          {{ trans('acp.dev.gig-templates.index') }}
+          @lang('acp.dev.gig-templates.index')
         </a>
         <a
-          class="nav-link {{ 0 === strpos($view, 'acp.dev.thumbnails') ? 'active' : '' }}"
-          href="{{ path([App\Http\Controllers\Acp\Dev\Thumbnails::class, 'index']) }}"
+          class="nav-link {{ $routeUri === 'acp/dev/thumbnails' ? 'active' : '' }}"
+          href="@lng/acp/dev/thumbnails"
         >
-          {{ trans('acp.dev.thumbnails.index') }}
+          @lang('acp.dev.thumbnails.index')
         </a>
         <a
-          class="nav-link {{ Str::startsWith($view, 'acp.dev.logs') ? 'active' : '' }}"
-          href="{{ path([App\Http\Controllers\Acp\Dev::class, 'logs']) }}"
+          class="nav-link {{ $routeUri === 'acp/dev/logs' ? 'active' : '' }}"
+          href="@lng/acp/dev/logs"
         >
-          {{ trans('acp.dev.logs') }}
+          @lang('acp.dev.logs')
         </a>
         <a
-          class="nav-link {{ 0 === strpos($view, 'acp.dev.svg') ? 'active' : '' }}"
-          href="{{ path([App\Http\Controllers\Acp\Dev::class, 'svg']) }}"
+          class="nav-link {{ $routeUri === 'acp/dev/svg' ? 'active' : '' }}"
+          href="@lng/acp/dev/svg"
         >
-          {{ trans('acp.dev.svg') }}
+          @lang('acp.dev.svg')
         </a>
         @if (App::isLocal() && !Request::cookie('debugbar', false))
           <a
             class="nav-link"
             href="{{ path([App\Http\Controllers\Acp\Dev::class, 'debugbar']) }}"
           >
-            {{ trans('acp.dev.debugbar') }}
+            @lang('acp.dev.debugbar')
           </a>
         @endif
       </nav>

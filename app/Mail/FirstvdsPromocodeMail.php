@@ -7,7 +7,7 @@ class FirstvdsPromocodeMail extends Mailable implements ShouldQueue
 {
     public function build()
     {
-        return $this->subject(trans('coupons.firstvds.subject'))
+        return $this->subject(__('coupons.firstvds.subject'))
             ->markdown('emails.coupons.firstvds')
             ->with('locale', $this->locale);
     }

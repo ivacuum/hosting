@@ -6,7 +6,7 @@
       id="prev_page"
       rel="prev"
     >
-      {{ trans('pagination.previous') }}
+      @lang('pagination.previous')
     </a>
   @endif
 
@@ -19,7 +19,7 @@
       id="next_page"
       rel="next"
     >
-      {{ trans('pagination.next') }}
+      @lang('pagination.next')
     </a>
   @endif
 </nav>

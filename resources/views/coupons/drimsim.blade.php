@@ -35,7 +35,7 @@
     <feedback-form
       email="{{ Auth::user()->email ?? '' }}"
       title="Drimsim"
-      action="{{ path([App\Http\Controllers\Issues::class, 'store']) }}"
+      action="@lng/contact"
       hide-title
     ></feedback-form>
   </section>

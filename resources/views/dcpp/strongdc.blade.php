@@ -1,5 +1,5 @@
 @extends('dcpp.software', [
-  'softwareTitle' => trans('dcpp.strongdc'),
+  'softwareTitle' => __('dcpp.strongdc'),
   'software' => [
     ['version' => '2.42', 'id' => 132, 'dl_suffix' => ''],
     ['version' => '2.41', 'id' => 98, 'dl_suffix' => ' 32bit'],
@@ -15,13 +15,13 @@
 ])
 
 @section('download_latest')
-<a class="btn btn-success my-1 mr-2 text-lg px-4 py-2" href="{{ path([App\Http\Controllers\Files::class, 'download'], 132) }}">
+<a class="btn btn-success my-1 mr-2 text-lg px-4 py-2" href="@lng/files/132/dl">
   <span class="mr-1">
     @svg (windows)
   </span>
   @lang('Скачать') 32-Bit &middot; {{ ViewHelper::size(8_046_097) }}
 </a>
-<a class="btn btn-success my-1 mr-2 text-lg px-4 py-2" href="{{ path([App\Http\Controllers\Files::class, 'download'], 134) }}">
+<a class="btn btn-success my-1 mr-2 text-lg px-4 py-2" href="@lng/files/134/dl">
   <span class="mr-1">
     @svg (windows)
   </span>
@@ -33,10 +33,10 @@
 @ru
   <p><strong>StrongDC++</strong> — это мощный клиент, позволяющий работать в P2P сети и обмениваться любыми файлами и приложениями. При помощи StrongDC++ вы сможете качать файлы от пользователей, находящихся в каком-то одном регионе или городе, фильмы, которые были выпущены только в какой-то одной стране. Или загрузить только файлы маленького размера, которые вы вряд ли сможете найти обычной поисковой машиной.</p>
   <div class="mt-6">
-    <a class="btn btn-default" href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'strongdc_install') }}">Инструкция по установке</a>
+    <a class="btn btn-default" href="@lng/dc/strongdc_install">Инструкция по установке</a>
   </div>
 @en
-  <p><strong>StrongDC++</strong> is a powerful client for sharing files in Direct Connect network by using NMDC and ADC protocols. It is a modification of an <a class="link" href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'dcpp') }}">original DC++ client</a> and it brings many new features. Sadly, last release was a while ago, but it's still a very good client to share some files. Right after installation you would need to type your name and select folders to share and you are good to go.</p>
+  <p><strong>StrongDC++</strong> is a powerful client for sharing files in Direct Connect network by using NMDC and ADC protocols. It is a modification of an <a class="link" href="@lng/dc/dcpp">original DC++ client</a> and it brings many new features. Sadly, last release was a while ago, but it's still a very good client to share some files. Right after installation you would need to type your name and select folders to share and you are good to go.</p>
 @endru
 @endsection
 

@@ -14,10 +14,8 @@ class UserTravel extends Controller
         \Breadcrumbs::push("@{$this->traveler->login}", "@{$this->traveler->login}");
     }
 
-    protected function appendViewSharedVars(): void
+    protected function appendCustomVars(): void
     {
-        parent::appendViewSharedVars();
-
         view()->share(['traveler' => $this->traveler]);
     }
 }

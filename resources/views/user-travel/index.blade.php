@@ -1,6 +1,4 @@
-@extends('user-travel.base', [
-  'metaTitle' => __('Заметки'),
-])
+@extends('user-travel.base')
 
 @section('content')
 <section class="pt-0">
@@ -9,8 +7,8 @@
       @lang('Поездки')
     </h1>
     @if ($traveler->id == optional(auth()->user())->id)
-      <a class="btn btn-success text-sm py-1" href="{{ path([App\Http\Controllers\MyTrips::class, 'create']) }}">
-        {{ trans('acp.trips.create') }}
+      <a class="btn btn-success text-sm py-1" href="@lng/my/trips/create">
+        @lang('acp.trips.create')
       </a>
     @endif
   </div>

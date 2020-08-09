@@ -6,6 +6,6 @@ class IssueLimitExceededException extends LimitExceededException
 {
     protected function message()
     {
-        return trans('limits.issue');
+        return __('limits.issue');
     }
 }

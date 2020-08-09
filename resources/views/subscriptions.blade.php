@@ -1,12 +1,12 @@
 @extends('base')
 
 @section('content')
-<h1 class="text-2xl">{{ trans('my.mail_subscriptions') }}</h1>
+<h1 class="text-2xl">@lang('Уведомления на почту о новых публикациях')</h1>
 <div class="antialiased hanging-puntuation-first lg:text-lg">
   @ru
     <p>Хотите узнавать о новых историях о путешествиях, отчетах о посещенных концертах и новостях сайта сразу после их публикации? Тогда подпишитесь на уведомления с помощью формы ниже.</p>
   @endru
-  <form class="max-w-400px mb-6" action="{{ path([App\Http\Controllers\Subscriptions::class, 'store']) }}" method="post">
+  <form class="max-w-400px mb-6" action="@lng/subscriptions" method="post">
     {{ ViewHelper::inputHiddenMail() }}
 
     <div class="mb-4">
@@ -16,7 +16,7 @@
         type="email"
         name="email"
         value="{{ old('email') }}"
-        placeholder="{{ trans('model.email') }}"
+        placeholder="@lang('model.email')"
       >
       <x-invalid-feedback field="email"/>
     </div>
@@ -60,7 +60,7 @@
     </div>
 
     <button class="btn btn-primary capitalize">
-      {{ trans('mail.subscribe') }}
+      @lang('mail.subscribe')
     </button>
 
     @csrf
@@ -81,21 +81,21 @@
   <div class="flex items-center flex-wrap">
     <a
       class="text-lg svg-flex svg-label lowercase small-caps mr-4"
-      href="{{ path(App\Http\Controllers\GigsRss::class) }}"
+      href="@lng/life/gigs/rss"
     >
       @svg (rss-square)
       @lang('Концерты')
     </a>
     <a
       class="text-lg svg-flex svg-label lowercase small-caps mr-4"
-      href="{{ path(App\Http\Controllers\NewsRss::class) }}"
+      href="@lng/news/rss"
     >
       @svg (rss-square)
       @lang('Новости сайта')
     </a>
     <a
       class="text-lg svg-flex svg-label lowercase small-caps"
-      href="{{ path(App\Http\Controllers\TripsRss::class) }}"
+      href="@lng/life/rss"
     >
       @svg (rss-square)
       @lang('Путешествия')

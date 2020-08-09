@@ -8,7 +8,7 @@
 
 @section('torrent-download-button')
 <div class="mr-4 text-center">
-  <a class="btn btn-success js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ path([App\Http\Controllers\Torrents::class, 'magnet'], $torrent) }}">
+  <a class="btn btn-success js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ to('torrents/{torrent}/magnet', $torrent) }}">
     <span class="mr-1">
       @svg (magnet)
     </span>
@@ -23,22 +23,22 @@
 <rutracker-post>{!! $torrent->html !!}</rutracker-post>
 
 <div class="svg-labels text-muted">
-  <span class="svg-flex svg-label svg-muted tooltipped tooltipped-n" aria-label="{{ trans('model.torrent.updated_at') }}">
+  <span class="svg-flex svg-label svg-muted tooltipped tooltipped-n" aria-label="@lang('model.torrent.updated_at')">
     @svg (calendar-o)
     {{ ViewHelper::dateShort($torrent->registered_at) }}
   </span>
-  <span class="svg-flex svg-label svg-muted tooltipped tooltipped-n" aria-label="{{ trans('model.torrent.views') }}">
+  <span class="svg-flex svg-label svg-muted tooltipped tooltipped-n" aria-label="@lang('model.torrent.views')">
     @svg (eye)
     {{ ViewHelper::number($torrent->views) }}
   </span>
-  <span class="svg-flex svg-label svg-muted tooltipped tooltipped-n" aria-label="{{ trans('model.torrent.clicks') }}">
+  <span class="svg-flex svg-label svg-muted tooltipped tooltipped-n" aria-label="@lang('model.torrent.clicks')">
     @svg (magnet)
     {{ ViewHelper::number($torrent->clicks) }}
   </span>
   <a class="svg-flex svg-muted tooltipped tooltipped-n" href="{{ $torrent->externalLink() }}" aria-label="@lang('Первоисточник')">
     @svg (external-link)
   </a>
-  <a class="btn btn-success svg-flex svg-label js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ path([App\Http\Controllers\Torrents::class, 'magnet'], $torrent) }}">
+  <a class="btn btn-success svg-flex svg-label js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ to('torrents/{torrent}/magnet', $torrent) }}">
     @svg (magnet)
     @lang('Скачать')
     <span class="mx-1">&middot;</span>
@@ -51,7 +51,7 @@
     @foreach ($tags as $tag)
       <a
         class="border border-blueish-700 rounded mb-1 px-2 py-1 text-sm text-blueish-700 lowercase hover:bg-blueish-700 hover:text-white"
-        href="{{ path([App\Http\Controllers\Torrents::class, 'index'], ['q' => mb_strtolower($tag)]) }}"
+        href="{{ to('torrents', ['q' => mb_strtolower($tag)]) }}"
       >#{{ $tag }}</a>
     @endforeach
   </div>
@@ -82,7 +82,7 @@
       <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center md:text-left whitespace-no-wrap js-magnet"
          href="{{ $row->magnet() }}"
          title="@lang('Скачать')"
-         data-action="{{ path([App\Http\Controllers\Torrents::class, 'magnet'], $row) }}"
+         data-action="{{ to('torrents/{torrent}/magnet', $row) }}"
       >
         @svg (magnet)
         <span class="js-magnet-counter">{{ $row->clicks ?: '' }}</span>

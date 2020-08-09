@@ -14,107 +14,107 @@
 
 @section('global_menu')
 @component('tpl.menu-dropdown', [
-  'isActive' => in_array($controller, [
-    App\Http\Controllers\Acp\Cities::class,
-    App\Http\Controllers\Acp\Countries::class,
-    App\Http\Controllers\Acp\Trips::class,
-    App\Http\Controllers\Acp\Gigs::class,
-    App\Http\Controllers\Acp\Artists::class,
-    App\Http\Controllers\Acp\Tags::class,
-    App\Http\Controllers\Acp\Photos::class,
+  'isActive' => Str::of($routeUri)->is([
+    'acp/cities*',
+    'acp/countries*',
+    'acp/trips*',
+    'acp/gigs*',
+    'acp/artists*',
+    'acp/tags*',
+    'acp/photos*',
   ]),
 ])
   @slot('title')
     @lang('Заметки')
   @endslot
 
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/cities">{{ trans('acp.cities.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/countries">{{ trans('acp.countries.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/trips">{{ trans('acp.trips.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/gigs">{{ trans('acp.gigs.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/artists">{{ trans('acp.artists.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/tags">{{ trans('acp.tags.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/photos">{{ trans('acp.photos.index') }}</a>
+  <a class="dropdown-item" href="@lng/acp/cities">@lang('acp.cities.index')</a>
+  <a class="dropdown-item" href="@lng/acp/countries">@lang('acp.countries.index')</a>
+  <a class="dropdown-item" href="@lng/acp/trips">@lang('acp.trips.index')</a>
+  <a class="dropdown-item" href="@lng/acp/gigs">@lang('acp.gigs.index')</a>
+  <a class="dropdown-item" href="@lng/acp/artists">@lang('acp.artists.index')</a>
+  <a class="dropdown-item" href="@lng/acp/tags">@lang('acp.tags.index')</a>
+  <a class="dropdown-item" href="@lng/acp/photos">@lang('acp.photos.index')</a>
 @endcomponent
 @component('tpl.menu-dropdown', [
-  'isActive' => in_array($controller, [
-    App\Http\Controllers\Acp\Clients::class,
-    App\Http\Controllers\Acp\Domains::class,
-    App\Http\Controllers\Acp\Servers::class,
-    App\Http\Controllers\Acp\YandexUsers::class,
+  'isActive' => Str::of($routeUri)->is([
+    'acp/clients*',
+    'acp/domains*',
+    'acp/servers*',
+    'acp/yandex-users*',
   ]),
 ])
   @slot('title')
     @lang('Хостинг')
   @endslot
 
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/clients">{{ trans('acp.clients.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/domains">{{ trans('acp.domains.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/servers">{{ trans('acp.servers.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/yandex-users">{{ trans('acp.yandex-users.index') }}</a>
+  <a class="dropdown-item" href="@lng/acp/clients">@lang('acp.clients.index')</a>
+  <a class="dropdown-item" href="@lng/acp/domains">@lang('acp.domains.index')</a>
+  <a class="dropdown-item" href="@lng/acp/servers">@lang('acp.servers.index')</a>
+  <a class="dropdown-item" href="@lng/acp/yandex-users">@lang('acp.yandex-users.index')</a>
 @endcomponent
 @component('tpl.menu-dropdown', [
-  'isActive' => in_array($controller, [
-    App\Http\Controllers\Acp\ChatMessages::class,
-    App\Http\Controllers\Acp\Comments::class,
-    App\Http\Controllers\Acp\DcppHubs::class,
-    App\Http\Controllers\Acp\Torrents::class,
-    App\Http\Controllers\Acp\Files::class,
-    App\Http\Controllers\Acp\News::class,
-    App\Http\Controllers\Acp\Images::class,
-  ])
+  'isActive' => Str::of($routeUri)->is([
+    'acp/chat-messages*',
+    'acp/comments*',
+    'acp/dcpp-hubs*',
+    'acp/torrents*',
+    'acp/files*',
+    'acp/news*',
+    'acp/images*',
+  ]),
 ])
   @slot('title')
     @lang('Ресурсы')
   @endslot
 
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/chat-messages">{{ trans('acp.chat-messages.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/comments">{{ trans('acp.comments.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/dcpp-hubs">{{ trans('acp.dcpp-hubs.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/files">{{ trans('acp.files.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/news">{{ trans('acp.news.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/images">{{ trans('acp.images.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/torrents">{{ trans('acp.torrents.index') }}</a>
+  <a class="dropdown-item" href="@lng/acp/chat-messages">@lang('acp.chat-messages.index')</a>
+  <a class="dropdown-item" href="@lng/acp/comments">@lang('acp.comments.index')</a>
+  <a class="dropdown-item" href="@lng/acp/dcpp-hubs">@lang('acp.dcpp-hubs.index')</a>
+  <a class="dropdown-item" href="@lng/acp/files">@lang('acp.files.index')</a>
+  <a class="dropdown-item" href="@lng/acp/news">@lang('acp.news.index')</a>
+  <a class="dropdown-item" href="@lng/acp/images">@lang('acp.images.index')</a>
+  <a class="dropdown-item" href="@lng/acp/torrents">@lang('acp.torrents.index')</a>
 @endcomponent
 @component('tpl.menu-dropdown', [
-  'isActive' => in_array($controller, [
-    App\Http\Controllers\Acp\Kanjis::class,
-    App\Http\Controllers\Acp\Radicals::class,
-    App\Http\Controllers\Acp\Vocabularies::class,
-  ])
+  'isActive' => Str::of($routeUri)->is([
+    'acp/kanjis*',
+    'acp/radicals*',
+    'acp/vocabularies*',
+  ]),
 ])
   @slot('title')
     日本語
   @endslot
 
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/kanjis">{{ trans('acp.kanjis.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/radicals">{{ trans('acp.radicals.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/vocabularies">{{ trans('acp.vocabularies.index') }}</a>
+  <a class="dropdown-item" href="@lng/acp/kanjis">@lang('acp.kanjis.index')</a>
+  <a class="dropdown-item" href="@lng/acp/radicals">@lang('acp.radicals.index')</a>
+  <a class="dropdown-item" href="@lng/acp/vocabularies">@lang('acp.vocabularies.index')</a>
 @endcomponent
 @component('tpl.menu-dropdown', [
-  'isActive' => in_array($controller, [
-    App\Http\Controllers\Acp\Metrics::class,
-    App\Http\Controllers\Acp\Issues::class,
-    App\Http\Controllers\Acp\Users::class,
-    App\Http\Controllers\Acp\ExternalIdentities::class,
-    App\Http\Controllers\Acp\Notifications::class,
-  ])
+  'isActive' => Str::of($routeUri)->is([
+    'acp/metrics*',
+    'acp/issues*',
+    'acp/users*',
+    'acp/external-identities*',
+    'acp/notifications*',
+  ]),
 ])
   @slot('title')
     @lang('Сайт')
   @endslot
 
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/metrics">{{ trans('acp.metrics.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/issues">{{ trans('acp.issues.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/users">{{ trans('acp.users.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/external-identities">{{ trans('acp.external-identities.index') }}</a>
-  <a class="dropdown-item" href="{{ $localeUri }}/acp/notifications">{{ trans('acp.notifications.index') }}</a>
+  <a class="dropdown-item" href="@lng/acp/metrics">@lang('acp.metrics.index')</a>
+  <a class="dropdown-item" href="@lng/acp/issues">@lang('acp.issues.index')</a>
+  <a class="dropdown-item" href="@lng/acp/users">@lang('acp.users.index')</a>
+  <a class="dropdown-item" href="@lng/acp/external-identities">@lang('acp.external-identities.index')</a>
+  <a class="dropdown-item" href="@lng/acp/notifications">@lang('acp.notifications.index')</a>
 @endcomponent
 @component('tpl.menu-item', [
-  'href' => "{$localeUri}/acp/dev/templates",
-  'isActive' => Str::startsWith($self, 'Acp\Dev'),
+  'href' => to('acp/dev/templates'),
+  'isActive' => Str::of($routeUri)->is(['acp/dev', 'acp/dev/*']),
 ])
-  {{ trans('acp.dev.index') }}
+  @lang('acp.dev.index')
 @endcomponent
 @endsection
 

@@ -1,21 +1,19 @@
-@extends('docs.base', [
-  'metaTitle' => 'Документация',
-])
+@extends('docs.base')
 
 @section('content')
-<div class="h2">Документация</div>
+<div class="h2">@lang('Документация')</div>
 <p>Подборка различных инструкций.</p>
 
 <section class="pt-8">
-  <div class="h3">Справка</div>
-  <div><a class="link" href="/docs/trips">Поездки</a></div>
+  <div class="h3">@lang('Справка')</div>
+  <div><a class="link" href="@lng/docs/trips">@lang('Поездки')</a></div>
 </section>
 
 <section class="pt-12">
-  <div class="h3">Хостинг</div>
-  <div><a class="link" href="/docs/amazon-s3">Amazon S3</a></div>
-  <div><a class="link" href="/docs/freebsd">FreeBSD</a></div>
-  <div><a class="link" href="/docs/nginx">Nginx</a></div>
+  <div class="h3">@lang('Хостинг')</div>
+  <div><a class="link" href="@lng/docs/amazon-s3">@lang('Amazon S3')</a></div>
+  <div><a class="link" href="@lng/docs/freebsd">@lang('FreeBSD')</a></div>
+  <div><a class="link" href="@lng/docs/nginx">@lang('Nginx')</a></div>
 </section>
 
 <section class="pt-12">

@@ -1,11 +1,4 @@
-@extends('docs.base', [
-  'metaTitle' => 'FreeBSD · Сниппеты для выполнения различных задач',
-
-  'breadcrumbs' => [
-    ['title' => 'Документация', 'url' => 'docs'],
-    ['title' => 'FreeBSD'],
-  ]
-])
+@extends('docs.base')
 
 <?php $freebsdVersion = '12.1' ?>
 

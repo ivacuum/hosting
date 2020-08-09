@@ -1,3 +1,5 @@
+<?php /** @var App\User $traveler */ ?>
+
 @extends('base')
 
 @push('head')
@@ -14,8 +16,8 @@
 
 @section('global_menu')
 @component('tpl.menu-item', [
-  'href' => path([App\Http\Controllers\UserTravelTrips::class, 'index'], $traveler->login),
-  'isActive' => Str::startsWith($self, 'UserTravel'),
+  'href' => to('@{login}/travel', $traveler->login),
+  'isActive' => Str::of($routeUri)->is(['@{login}/travel', '@{login}/travel/*']),
 ])
   @lang('Заметки')
 @endcomponent

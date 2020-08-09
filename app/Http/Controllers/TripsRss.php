@@ -9,7 +9,7 @@ class TripsRss extends Controller
         $meta = [
             'title' => __('Заметки'),
             'link' => url(path([Life::class, 'index'])),
-            'description' => trans('life.trips.rss.description'),
+            'description' => __('life.trips.rss.description'),
         ];
 
         $items = Trip::where('user_id', 1)

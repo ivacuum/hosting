@@ -3,14 +3,14 @@
 @section('content')
 <div class="grid lg:grid-cols-2 gap-8">
   <div>
-    <form action="{{ path([App\Http\Controllers\Torrents::class, 'store']) }}" method="post">
+    <form action="@lng/torrents" method="post">
       {{ ViewHelper::inputHiddenMail() }}
       @csrf
 
-      @include("$tpl.form")
+      @include('torrents.form')
 
       <button class="btn btn-primary">
-        {{ trans("$tpl.create") }}
+        @lang('Добавить раздачу')
       </button>
     </form>
   </div>

@@ -13,7 +13,7 @@
 </div>
 
 <div class="items-center flex flex-wrap">
-  <span class="text-muted">{{ trans('japanese.reading') }}</span>
+  <span class="text-muted">@lang('japanese.reading')</span>
   <span class="text-xl">【{{ $vocab->kana }}】</span>
   @if ($vocab->male_audio_id)
     <div class="mr-1">
@@ -43,7 +43,7 @@
 
 @if ($vocab->sentences)
   <div class="mt-12">
-    <h3 class="mt-0">{{ trans('japanese.sentences') }}</h3>
+    <h3 class="mt-0">@lang('japanese.sentences')</h3>
     <div class="text-xl whitespace-pre-line">{{ $vocab->sentences }}</div>
   </div>
 @endif

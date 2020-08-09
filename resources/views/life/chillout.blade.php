@@ -1,14 +1,7 @@
-@extends('life.base', [
-  'metaTitle' => 'Chillout',
-
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Chillout'],
-  ]
-])
+@extends('life.base')
 
 @section('content')
-<h1 class="h2">Chillout</h1>
+<h1 class="h2">@lang('Chillout')</h1>
 <p>Спокойная музыка для фона.</p>
 
 <ul>

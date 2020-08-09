@@ -1,5 +1,5 @@
 @extends('acp.list', [
-  'metaTitle' => $filter ? trans("meta_title.acp.domains.{$filter}") : trans('meta_title.acp.domains.default'),
+  'metaTitle' => $filter ? __("meta_title.acp.domains.{$filter}") : __('meta_title.acp.domains.default'),
   'searchForm' => true,
 ])
 

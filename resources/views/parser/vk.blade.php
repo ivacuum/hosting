@@ -12,19 +12,19 @@
   <div class="nav-scroll-container">
     <div class="nav-scroll">
       <nav class="nav nav-link-tabs">
-        <a class="nav-link {{ $vkpage == 'pn6' ? 'active' : '' }}" href="{{ path([App\Http\Controllers\ParserVk::class, 'index'], ['page' => 'pn6']) }}">#6</a>
-        <a class="nav-link {{ $vkpage == 'overhear' ? 'active' : '' }}" href="{{ path([App\Http\Controllers\ParserVk::class, 'index'], ['page' => 'overhear']) }}">Подслушано</a>
-        <a class="nav-link {{ $vkpage == 'pikabu' ? 'active' : '' }}" href="{{ path([App\Http\Controllers\ParserVk::class, 'index'], ['page' => 'pikabu']) }}">Пикабу</a>
+        <a class="nav-link {{ $vkpage == 'pn6' ? 'active' : '' }}" href="@lng/parser/vk/pn6">#6</a>
+        <a class="nav-link {{ $vkpage == 'overhear' ? 'active' : '' }}" href="@lng/parser/vk/overhear">Подслушано</a>
+        <a class="nav-link {{ $vkpage == 'pikabu' ? 'active' : '' }}" href="@lng/parser/vk/pikabu">Пикабу</a>
       </nav>
     </div>
   </div>
 </div>
 
-<form class="flex items-center justify-between my-4" action="{{ path([App\Http\Controllers\ParserVk::class, 'indexPost']) }}" method="post">
+<form class="flex items-center justify-between my-4" action="@lng/parser/vk" method="post">
   @csrf
   <div>
     @if (!empty($next))
-      <a href="{{ path([App\Http\Controllers\ParserVk::class, 'index'], ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}" id="prev_page">
+      <a href="{{ to('parser/vk/{page?}/{date?}', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}" id="prev_page">
         @svg (chevron-left)
         {{ $next->formatLocalized('%e %B') }}
       </a>
@@ -40,7 +40,7 @@
   </div>
   <div>
     @if (!empty($previous))
-      <a href="{{ path([App\Http\Controllers\ParserVk::class, 'index'], ['page' => $vkpage, 'date' => $previous->toDateString(), 'own' => $own, 'token' => $token]) }}" id="next_page">
+      <a href="{{ to('parser/vk/{page?}/{date?}', ['page' => $vkpage, 'date' => $previous->toDateString(), 'own' => $own, 'token' => $token]) }}" id="next_page">
         {{ $previous->formatLocalized('%e %B') }}
         @svg (chevron-right)
       </a>
@@ -176,7 +176,7 @@
 <div class="flex items-center justify-between">
   @if (!empty($next))
     <div>
-      <a href="{{ path([App\Http\Controllers\ParserVk::class, 'index'], ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}">
+      <a href="{{ to('parser/vk/{page?}/{date?}', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}">
         @svg (chevron-left)
         {{ $next->formatLocalized('%e %B') }}
       </a>
@@ -184,7 +184,7 @@
   @endif
   @if (!empty($previous))
     <div>
-      <a href="{{ path([App\Http\Controllers\ParserVk::class, 'index'], ['page' => $vkpage, 'date' => $previous->toDateString(), 'own' => $own, 'token' => $token]) }}">
+      <a href="{{ to('parser/vk/{page?}/{date?}', ['page' => $vkpage, 'date' => $previous->toDateString(), 'own' => $own, 'token' => $token]) }}">
         {{ $previous->formatLocalized('%e %B') }}
         @svg (chevron-right)
       </a>

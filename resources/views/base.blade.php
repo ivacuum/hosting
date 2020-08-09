@@ -5,14 +5,14 @@
 <html class="h-full overflow-y-scroll" lang="{{ $locale }}">
 <head>
   <meta charset="utf-8">
-  <title>{{ $metaTitle ?? ViewHelper::metaTitle($view, $metaReplace ?? []) }}</title>
+  <title>{{ $metaTitle ?? ViewHelper::metaTitle($routeUri, $metaReplace ?? []) }}</title>
   <link rel="dns-prefetch" href="https://life.ivacuum.org">
   <link rel="dns-prefetch" href="https://ivacuum.org">
   <link rel="dns-prefetch" href="https://mc.yandex.ru">
   <meta name="format-detection" content="telephone=no">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="keywords" content="{{ $metaKeywords ?? ViewHelper::metaKeywords($view, $metaReplace ?? []) }}">
-  <meta name="description" content="{{ $metaDescription ?? ViewHelper::metaDescription($view, $metaReplace ?? []) }}">
+  <meta name="keywords" content="{{ $metaKeywords ?? ViewHelper::metaKeywords($routeUri, $metaReplace ?? []) }}">
+  <meta name="description" content="{{ $metaDescription ?? ViewHelper::metaDescription($routeUri, $metaReplace ?? []) }}">
   <meta name="theme-color" content="#e7e7e7">
   <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
   <link rel="icon" href="/apple-touch-icon.png">
@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="{{ mix('/assets/tailwind.css') }}">
   @stack('head')
 </head>
-<body class="flex flex-col font-tabular-nums min-h-full {{ $bodyClasses ?? 'body-with-bottom-tabbar' }} {{ optional(Auth::user())->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ $cssClasses }}" data-self="{{ $self }}" data-view="{{ $view }}">
+<body class="flex flex-col font-tabular-nums min-h-full {{ $bodyClasses ?? 'body-with-bottom-tabbar' }} {{ optional(Auth::user())->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ $cssClasses }}" data-route="{{ $routeUri }}">
 @section('body')
 @section('header-navbar')
   @include('tpl.header-navbar')
@@ -40,8 +40,8 @@
 <header class="bottom-tabbar-container fixed bottom-0 left-0 right-0 flex items-center justify-center md:hidden revealed js-bottom-tabbar-reveal">
   <nav class="flex justify-between leading-none text-center mx-1 w-full">
     <a
-      class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ $controller === App\Http\Controllers\HomeController::class ? 'active' : '' }}"
-      href="{{ path(App\Http\Controllers\HomeController::class) }}"
+      class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ $routeUri === '/' ? 'active' : '' }}"
+      href="{{ to('/') }}"
     >
       <div>
         @svg (home)
@@ -49,8 +49,8 @@
       <div class="text-2xs sm:text-sm mt-1 sm:mt-0 sm:ml-2">@lang('Главная')</div>
     </a>
     <a
-      class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 {{ $controller === App\Http\Controllers\Life::class ? 'active' : '' }}"
-      href="{{ path([App\Http\Controllers\Life::class, 'index']) }}"
+      class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 {{ Str::of($routeUri)->is(['life', 'life/*']) ? 'active' : '' }}"
+      href="@lng/life"
     >
       <div>
         @svg (file-richtext)
@@ -58,8 +58,8 @@
       <div class="text-2xs sm:text-sm mt-1 sm:mt-0 sm:ml-2">@lang('Заметки')</div>
     </a>
     <a
-      class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 {{ $controller === App\Http\Controllers\Photos::class ? 'active' : '' }}"
-      href="{{ path([App\Http\Controllers\Photos::class, 'trips']) }}"
+      class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 {{ Str::of($routeUri)->is(['photos', 'photos/*']) ? 'active' : '' }}"
+      href="@lng/photos/trips"
     >
       <div>
         @svg (picture-o)
@@ -68,23 +68,23 @@
     </a>
     @if (Auth::check())
       <a
-        class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 {{ Str::startsWith(request()->path(), 'my/') ? 'active' : '' }}"
-        href="{{ path([App\Http\Controllers\MyProfile::class, 'edit']) }}"
+        class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 {{ Str::of($routeUri)->is(['my', 'my/*']) ? 'active' : '' }}"
+        href="@lng/my/profile"
       >
         <div>
           @svg (user-circle-o)
         </div>
-        <div class="text-2xs sm:text-sm mt-1 sm:mt-0 sm:ml-2">{{ trans('my.profile') }}</div>
+        <div class="text-2xs sm:text-sm mt-1 sm:mt-0 sm:ml-2">@lang('Профиль')</div>
       </a>
     @else
       <a
-        class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 {{ $controller === App\Http\Controllers\Auth\SignIn::class ? 'active' : '' }}"
-        href="{{ path([App\Http\Controllers\Auth\SignIn::class, 'index']) }}"
+        class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 {{ $routeUri === 'auth/login' ? 'active' : '' }}"
+        href="@lng/auth/login"
       >
         <div>
           @svg (sign-in)
         </div>
-        <div class="text-2xs sm:text-sm mt-1 sm:mt-0 sm:ml-2">{{ trans('auth.signin') }}</div>
+        <div class="text-2xs sm:text-sm mt-1 sm:mt-0 sm:ml-2">@lang('auth.signin')</div>
       </a>
     @endif
   </nav>
@@ -154,7 +154,7 @@
             </div>
           @endif
           <div>
-            <a href="{{ path([App\Http\Controllers\Issues::class, 'create']) }}">
+            <a href="@lng/contact">
               @lang('Обратная связь')
             </a>
           </div>

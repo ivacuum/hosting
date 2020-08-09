@@ -1,8 +1,8 @@
 @if (!empty($breadcrumbs))
   <div class="text-xs py-2 border-b border-grey-200 leading-snug" style="background-color: #fafafa;">
     <nav class="container flex flex-wrap items-center" {!! sizeof($breadcrumbs) > 1 ? 'itemscope itemtype="http://schema.org/BreadcrumbList"' : '' !!}>
-      <span class="{{ !Str::startsWith($self, 'Acp\\') ? 'hidden sm:flex' : '' }}">
-        <a href="{{ $localeUri ?: '/' }}">
+      <span class="hidden sm:flex">
+        <a href="{{ to('/') }}">
           @svg (home)
         </a>
         <span class="mx-px px-px text-gray-500">
@@ -12,7 +12,7 @@
       @foreach ($breadcrumbs as $row)
         @if (!$loop->last)
           <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
-            <a href="{{ $localeUri }}/{{ $row['url'] }}" itemprop="item">
+            <a href="@lng/{{ $row['url'] }}" itemprop="item">
               <span itemprop="name">{{ $row['title'] }}</span>
               <meta itemprop="position" content="{{ $loop->iteration }}">
             </a>
@@ -21,7 +21,7 @@
           @svg (angle-right)
         </span>
         @else
-          {{ $row['title'] }}
+          <span>{{ $row['title'] }}</span>
         @endif
       @endforeach
     </nav>

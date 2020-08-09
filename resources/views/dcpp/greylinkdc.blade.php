@@ -1,18 +1,18 @@
 @extends('dcpp.software', [
-  'softwareTitle' => trans('dcpp.greylinkdc'),
+  'softwareTitle' => __('dcpp.greylinkdc'),
   'software' => [
     ['version' => '0.49', 'id' => 145, 'dl_suffix' => ''],
   ],
 ])
 
 @section('download_latest')
-<a class="btn btn-success my-1 mr-2 text-lg px-4 py-2" href="{{ path([App\Http\Controllers\Files::class, 'download'], 145) }}">
+<a class="btn btn-success my-1 mr-2 text-lg px-4 py-2" href="@lng/files/145/dl">
   <span class="mr-1">
     @svg (windows)
   </span>
   @lang('Скачать') 32-Bit &middot; {{ ViewHelper::size(3_006_464) }}
 </a>
-<a class="btn btn-success my-1 mr-2 text-lg px-4 py-2" href="{{ path([App\Http\Controllers\Files::class, 'download'], 146) }}">
+<a class="btn btn-success my-1 mr-2 text-lg px-4 py-2" href="@lng/files/146/dl">
   <span class="mr-1">
     @svg (windows)
   </span>
@@ -24,10 +24,10 @@
 @ru
   <p><strong>GreyLinkDC++</strong> — очень удобная в использовании программа для файлообменных сетей DC++. В программу уже внесен список хабов с множеством высокоскоростных пользователей и выполнена настройка приоритетов, поэтому пользоваться можно сразу после установки. Вам остается лишь указать логин и папки для скачивания и раздачи. Если английский язык не ваш конек, то мы приготовили для вас русификатор и инструкцию по переключению языка.</p>
   <div class="mt-6">
-    <a class="btn btn-primary my-1 mr-2" href="{{ path([App\Http\Controllers\Files::class, 'download'], 28) }}">
+    <a class="btn btn-primary my-1 mr-2" href="@lng/files/28/dl">
       Скачать русификатор &middot; {{ ViewHelper::size(108876) }}
     </a>
-    <a class="btn btn-default my-1" href="{{ path([App\Http\Controllers\Dcpp::class, 'page'], 'rus_setup') }}">Инструкция по русификации</a>
+    <a class="btn btn-default my-1" href="@lng/dc/rus_setup">Инструкция по русификации</a>
   </div>
 @en
   <p><strong>GreyLinkDC++</strong> is a stable and optimized DC++ client software. It is provided with a list of hubs with lots of high-speed users, so you can use it pretty much right away. The only thing you are left to do is to type your name and select folders to share.</p>

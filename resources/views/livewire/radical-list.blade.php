@@ -4,24 +4,24 @@
   @if ($radicals->count())
     <div class="sm:flex items-center justify-between mt-6 mb-1">
       <h3>
-        <span>{{ $range ? __('Уровень :level', ['level' => $level]) : trans('japanese.radicals') }}</span>
+        <span>{{ $range ? __('Уровень :level', ['level' => $level]) : __('japanese.radicals') }}</span>
         <span class="text-base text-muted">{{ $radicals->count() }}</span>
       </h3>
       <div>
         <button
           class="btn btn-default leading-none"
           wire:click="$toggle('showLabels')"
-        >{{ $showLabels ? trans('japanese.hide-labels') : trans('japanese.show-labels') }}</button>
+        >{{ $showLabels ? __('japanese.hide-labels') : __('japanese.show-labels') }}</button>
         @if (!$flat)
           <button
             class="btn btn-default leading-none"
             wire:click="shuffle"
-          >{{ trans('japanese.shuffle') }}</button>
+          >@lang('japanese.shuffle')</button>
           @auth
             <button
               class="btn btn-default leading-none"
               wire:click="$toggle('showBurned')"
-            >{{ $showBurned ? trans('japanese.hide-burned') : trans('japanese.show-burned') }}</button>
+            >{{ $showBurned ? __('japanese.hide-burned') : __('japanese.show-burned') }}</button>
           @endauth
         @endif
       </div>

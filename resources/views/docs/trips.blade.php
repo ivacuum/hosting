@@ -1,14 +1,7 @@
-@extends('docs.base', [
-  'metaTitle' => 'Поездки · Документация',
-
-  'breadcrumbs' => [
-    ['title' => 'Документация', 'url' => 'docs'],
-    ['title' => 'Поездки'],
-  ]
-])
+@extends('docs.base')
 
 @section('content')
-<h2 class="mb-4">Поездки</h2>
+<h2 class="mb-4">@lang('Поездки')</h2>
 
 @component('accordion')
 @slot('title')
@@ -31,7 +24,7 @@
 Как добавить поездку в хронологию?
 @endslot
 
-<div>В личном кабинете есть <a class="link" href="/my/trips">специальный раздел</a> для управления поездками. Непосредственно <a class="link" href="/my/trips/create">страница добавления поездки</a>.</div>
+<div>В личном кабинете есть <a class="link" href="@lng/my/trips">специальный раздел</a> для управления поездками. Непосредственно <a class="link" href="@lng/my/trips/create">страница добавления поездки</a>.</div>
 @endcomponent
 
 @component('accordion')
@@ -96,8 +89,8 @@
 @if (optional(Auth::user())->login)
   <div>Ссылка на вашу хронологию поездок: <a class="link" href="{{ action([App\Http\Controllers\UserTravelTrips::class, 'index'], Auth::user()->login) }}"></a></div>
 @else
-  <p>Сначала укажите свой логин <a class="link" href="/my/profile">в профиле</a>.</p>
-  <div>После этого на сайте у вас будет целый раздел вида <span class="font-bold">vacuum.name/@login/travel</span>. На него будет вести кнопка «Просмотреть» на странице <a class="link" href="/my/trips">управления поездками</a>.</div>
+  <p>Сначала укажите свой логин <a class="link" href="@lng/my/profile">в профиле</a>.</p>
+  <div>После этого на сайте у вас будет целый раздел вида <span class="font-bold">vacuum.name/@login/travel</span>. На него будет вести кнопка «Просмотреть» на странице <a class="link" href="@lng/my/trips">управления поездками</a>.</div>
 @endif
 @endcomponent
 
@@ -106,6 +99,6 @@
 Есть пожелания по улучшению сервиса. Кому писать?
 @endslot
 
-<div>Для обратной связи есть <a class="link" href="{{ path([App\Http\Controllers\Issues::class, 'create']) }}">специальная форма</a>.</div>
+<div>Для обратной связи есть <a class="link" href="@lng/contact">специальная форма</a>.</div>
 @endcomponent
 @endsection

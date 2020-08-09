@@ -11,7 +11,7 @@
     <div>
       <a
         class="block relative w-full pb-3/4"
-        href="{{ path([App\Http\Controllers\Photos::class, 'show'], [$photo, $country->getForeignKey() => $country]) }}"
+        href="{{ to('photos/{photo}', [$photo, $country->getForeignKey() => $country]) }}"
       >
         <img
           class="absolute top-0 left-0 w-full object-cover js-lazy"

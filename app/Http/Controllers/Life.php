@@ -26,7 +26,6 @@ class Life extends Controller
 
         return view('life.index', [
             'trips' => $trips,
-            'metaTitle' => __('Заметки'),
         ]);
     }
 
@@ -44,7 +43,6 @@ class Life extends Controller
 
         return view('life.cities', [
             'cities' => $cities,
-            'metaTitle' => __('Города'),
         ]);
     }
 
@@ -86,7 +84,6 @@ class Life extends Controller
     {
         return view('life.countries', [
             'countries' => Country::allWithCitiesAndTrips(1),
-            'metaTitle' => __('Страны'),
         ]);
     }
 
@@ -143,14 +140,13 @@ class Life extends Controller
 
         return view('life.gigs', [
             'gigs' => $gigs,
-            'metaTitle' => __('Посещенные и ожидаемые концерты'),
         ]);
     }
 
     public function page(string $page)
     {
         if ($page === 'japanese') {
-            return redirect(path(Japanese::class), 301);
+            return redirect(to('japanese'), 301);
         }
 
         $tpl = 'life.' . str_replace('.', '_', $page);

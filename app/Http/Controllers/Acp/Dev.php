@@ -169,7 +169,7 @@ class Dev extends BaseController
 
     public function svg()
     {
-        \Breadcrumbs::push(trans($this->view));
+        \Breadcrumbs::push(__($this->view));
 
         $icons = [];
 

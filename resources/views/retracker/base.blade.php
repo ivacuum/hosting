@@ -10,20 +10,20 @@
 
 @section('global_menu')
 @component('tpl.menu-item', [
-  'href' => path([App\Http\Controllers\Retracker::class, 'index']),
-  'isActive' => $view === 'retracker.index',
+  'href' => to('retracker'),
+  'isActive' => $routeUri === 'retracker',
 ])
   @lang('Ретрекер')
 @endcomponent
 @component('tpl.menu-item', [
-  'href' => path([App\Http\Controllers\Retracker::class, 'usage']),
-  'isActive' => $view === 'retracker.usage',
+  'href' => to('retracker/usage'),
+  'isActive' => $routeUri === 'retracker/usage',
 ])
   @lang('Как использовать')
 @endcomponent
 @component('tpl.menu-item', [
-  'href' => path([App\Http\Controllers\Retracker::class, 'dev']),
-  'isActive' => $view === 'retracker.dev',
+  'href' => to('retracker/dev'),
+  'isActive' => $routeUri === 'retracker/dev',
 ])
   @lang('О разработке')
 @endcomponent

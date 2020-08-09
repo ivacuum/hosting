@@ -1,14 +1,7 @@
-@extends('life.base', [
-  'metaTitle' => 'Подкасты',
-
-  'breadcrumbs' => [
-    ['title' => 'Заметки', 'url' => 'life'],
-    ['title' => 'Подкасты'],
-  ]
-])
+@extends('life.base')
 
 @section('content')
-<h1 class="h2">Подкасты</h1>
+<h1 class="h2">@lang('Подкасты')</h1>
 <p>Ссылки на любимые передачи и их отдельные выпуски.</p>
 
 <section>
@@ -17,15 +10,15 @@
   <div class="mb-1">Любимые выпуски:</div>
   <ul>
     <li>
-      <a class="link" href="http://brand.podfm.ru/1270/">Twitter</a>
+      <a class="link" href="https://brand.podfm.ru/1270/">Twitter</a>
       <span class="text-xs text-muted">#243</span>
     </li>
     <li>
-      <a class="link" href="http://brand.podfm.ru/782/">Туполев</a>
+      <a class="link" href="https://brand.podfm.ru/782/">Туполев</a>
       <span class="text-xs text-muted">#204</span>
     </li>
     <li>
-      <a class="link" href="http://brand.podfm.ru/102/">FedEx</a>
+      <a class="link" href="https://brand.podfm.ru/102/">FedEx</a>
       <span class="text-xs text-muted">#102</span>
     </li>
   </ul>

@@ -7,7 +7,7 @@
         @if ($range)
           <span>@lang('Уровень :level', ['level' => $level])</span>
         @else
-          <span>{{ $similarId ? trans('japanese.similar-kanji') : trans('japanese.kanji') }}</span>
+          <span>{{ $similarId ? __('japanese.similar-kanji') : __('japanese.kanji') }}</span>
         @endif
         <span class="text-base text-muted">{{ $kanjis->count() }}</span>
       </h3>
@@ -15,17 +15,17 @@
         <button
           class="btn btn-default leading-none"
           wire:click="$toggle('showLabels')"
-        >{{ $showLabels ? trans('japanese.hide-labels') : trans('japanese.show-labels') }}</button>
+        >{{ $showLabels ? __('japanese.hide-labels') : __('japanese.show-labels') }}</button>
         @if (!$flat)
           <button
             class="btn btn-default leading-none"
             wire:click="shuffle"
-          >{{ trans('japanese.shuffle') }}</button>
+          >@lang('japanese.shuffle')</button>
           @auth
             <button
               class="btn btn-default leading-none"
               wire:click="$toggle('showBurned')"
-            >{{ $showBurned ? trans('japanese.hide-burned') : trans('japanese.show-burned') }}</button>
+            >{{ $showBurned ? __('japanese.hide-burned') : __('japanese.show-burned') }}</button>
           @endauth
         @endif
       </div>

@@ -7,16 +7,16 @@
       <div class="nav-scroll">
         <nav class="nav nav-link-tabs">
           <a
-            class="nav-link {{ $view === 'gallery.index' ? 'active' : '' }}"
-            href="{{ path([App\Http\Controllers\Gallery::class, 'index']) }}"
+            class="nav-link {{ $routeUri === 'gallery' ? 'active' : '' }}"
+            href="@lng/gallery"
           >
-            {{ trans('gallery.my') }}
+            @lang('Мои изображения')
           </a>
           <a
-            class="nav-link {{ $view === 'gallery.upload' ? 'active' : '' }}"
-            href="{{ path([App\Http\Controllers\Gallery::class, 'upload']) }}"
+            class="nav-link {{ $routeUri === 'gallery/upload' ? 'active' : '' }}"
+            href="@lng/gallery/upload"
           >
-            {{ trans('gallery.upload') }}
+            @lang('Загрузка изображений')
           </a>
         </nav>
       </div>

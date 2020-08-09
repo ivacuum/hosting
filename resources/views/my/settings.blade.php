@@ -6,7 +6,7 @@
 <h3 class="mb-4">@lang('Настройки')</h3>
 
 <div>
-  <form action="{{ path([App\Http\Controllers\MySettings::class, 'update']) }}" method="post">
+  <form action="@lng/my/settings" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @method('put')
     @csrf
@@ -56,7 +56,7 @@
     </div>
 
     <div class="mb-4">
-      <div class="font-bold">{{ trans('my.locale') }}</div>
+      <div class="font-bold">@lang('Язык уведомлений')</div>
       @foreach (Arr::sort(array_keys(config('cfg.locales'))) as $loc)
         <label class="flex items-center">
           <input
@@ -66,13 +66,13 @@
             value="{{ $loc }}"
             {{ old('locale', $user->locale ?: config('app.locale')) === $loc ? 'checked' : '' }}
           >
-          {{ trans("locale.{$loc}") }}
+          @lang("locale.{$loc}")
         </label>
       @endforeach
       <x-invalid-feedback field="locale"/>
     </div>
 
-    <div class="font-bold">{{ trans('my.mail_subscriptions') }}</div>
+    <div class="font-bold">@lang('Уведомления на почту о новых публикациях')</div>
     <input type="hidden" name="notify_gigs" value="{{ App\User::NOTIFY_NO }}">
     <label class="flex items-center">
       <input

@@ -7,48 +7,48 @@
       @if (Auth::user()->isAdmin())
         @component('tpl.list-group-item', [
           'href' => App::isLocal()
-            ? path([App\Http\Controllers\Acp\Dev\Templates::class, 'index'])
-            : path([App\Http\Controllers\Acp\Trips::class, 'index'], ['user_id' => 1]),
+            ? to('acp/dev/templates')
+            : to('acp/trips', ['user_id' => 1]),
           'classes' => 'md:hidden',
         ])
-          {{ trans('acp.index') }}
+          @lang('acp.index')
         @endcomponent
       @endif
       @component('tpl.list-group-item', [
-        'href' => path([App\Http\Controllers\MyProfile::class, 'edit']),
-        'isActive' => $controller === App\Http\Controllers\MyProfile::class,
+        'href' => to('my/profile'),
+        'isActive' => $routeUri === 'my/profile',
       ])
-        {{ trans('my.profile') }}
+        @lang('Профиль')
       @endcomponent
       @component('tpl.list-group-item', [
-        'href' => path([App\Http\Controllers\MyPassword::class, 'edit']),
-        'isActive' => $controller === App\Http\Controllers\MyPassword::class,
+        'href' => to('my/password'),
+        'isActive' => $routeUri === 'my/password',
       ])
         @lang('Пароль')
       @endcomponent
       @component('tpl.list-group-item', [
-        'href' => path([App\Http\Controllers\MySettings::class, 'edit']),
-        'isActive' => $controller === App\Http\Controllers\MySettings::class,
+        'href' => to('my/settings'),
+        'isActive' => $routeUri === 'my/settings',
       ])
         @lang('Настройки')
       @endcomponent
       @component('tpl.list-group-item', [
-        'href' => path([App\Http\Controllers\MyTrips::class, 'index']),
-        'isActive' => $controller === App\Http\Controllers\MyTrips::class,
+        'href' => to('my/trips'),
+        'isActive' => $routeUri === 'my/trips',
       ])
         @lang('Поездки')
       @endcomponent
       @component('tpl.list-group-item', [
-        'href' => path([App\Http\Controllers\Notifications::class, 'index']),
+        'href' => to('notifications'),
         'classes' => 'md:hidden',
       ])
         @lang('Уведомления')
       @endcomponent
       @component('tpl.list-group-item', [
-        'href' => path([App\Http\Controllers\Auth\SignIn::class, 'logout']),
+        'href' => to('auth/logout'),
         'classes' => 'md:hidden',
       ])
-        {{ trans('auth.logout') }}
+        @lang('auth.logout')
       @endcomponent
     </div>
   </div>

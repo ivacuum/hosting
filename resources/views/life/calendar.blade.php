@@ -19,7 +19,7 @@
       @endforeach
       <?php /** @var int $month */ ?>
       @foreach (range($year === $lastDate->year ? $lastDate->month : 12, 1, -1) as $month)
-        <div class="text-right pr-2 border-r border-grey-200">{{ trans("months.{$month}") }}</div>
+        <div class="text-right pr-2 border-r border-grey-200">@lang("months.{$month}")</div>
         <?php /** @var int $day */ ?>
         @foreach (range(1, 31) as $day)
           <?php $date = "{$year}-{$month}-{$day}" ?>

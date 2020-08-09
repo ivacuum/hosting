@@ -9,7 +9,7 @@ Route::view('500', 'errors.500');
 Route::view('503', 'errors.503');
 
 Route::post('ajax/beacon', Controllers\Beacon::class);
-Route::get('cv', Controllers\Cv::class);
+Route::view('cv', 'cv');
 
 Route::post('internal/ci-build-notifier', Ivacuum\Generic\Controllers\CiBuildNotifyController::class);
 Route::post('internal/telegram/webhook', Ivacuum\Generic\Controllers\TelegramWebhookController::class);

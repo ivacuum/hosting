@@ -1,5 +1,5 @@
 @extends('dcpp.software', [
-  'softwareTitle' => trans('dcpp.dcpp'),
+  'softwareTitle' => __('dcpp.dcpp'),
   'software' => [
     ['version' => '0.782', 'id' => 143, 'size' => 22_703_161, 'dl_suffix' => ''],
     ['version' => '0.770', 'id' => 110, 'dl_suffix' => ''],

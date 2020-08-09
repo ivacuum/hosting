@@ -11,7 +11,7 @@ class KoreanPsySong extends Controller
         if (view()->exists($tpl)) {
             return view($tpl, [
                 'song' => $song,
-                'metaTitle' => \ViewHelper::metaTitle("korean-psy-{$song}"),
+                'metaTitle' => \ViewHelper::metaTitle("korean/psy/{$song}"),
             ]);
         }
     }

@@ -90,11 +90,6 @@ class Photos extends Controller
         ]);
     }
 
-    public function faq()
-    {
-        return view('photos.faq');
-    }
-
     public function map(PhotosMapRequest $request)
     {
         if ($request->expectsJson()) {

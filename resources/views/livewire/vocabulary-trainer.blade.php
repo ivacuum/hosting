@@ -19,7 +19,7 @@
           <button
             class="text-gray-500 tooltipped tooltipped-s"
             type="button"
-            aria-label="{{ trans('japanese.reveal-answer') }}"
+            aria-label="@lang('japanese.reveal-answer')"
             wire:click="check"
           >@svg (question)</button>
         @endif
@@ -33,7 +33,7 @@
         autocomplete="off"
         autocorrect="off"
         spellcheck="false"
-        placeholder="{{ trans('japanese.answer') }}"
+        placeholder="@lang('japanese.answer')"
         enterkeyhint="enter"
         class="form-input text-center {{ $reveal ? 'animate-incorrect-answer' : '' }}"
         {{ $reveal ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
@@ -46,7 +46,7 @@
         class="btn btn-default px-0 text-sm sm:text-base"
         type="button"
         wire:click="skip"
-      >{{ trans('japanese.skip') }}</button>
+      >@lang('japanese.skip')</button>
       @if ($vocab->male_audio_id)
         <div>
           <button
@@ -76,19 +76,19 @@
     <div class="grid grid-cols-3 gap-2 mt-4">
       @if ($answered > 0)
         <div>
-          <div class="text-sm small-caps text-green-500">{{ trans('japanese.answered') }}</div>
+          <div class="text-sm small-caps text-green-500">@lang('japanese.answered')</div>
           <div class="text-2xl">{{ $answered }}</div>
         </div>
       @endif
       @if ($skipped > 0)
         <div>
-          <div class="text-sm small-caps text-gray-500">{{ trans('japanese.skipped') }}</div>
+          <div class="text-sm small-caps text-gray-500">@lang('japanese.skipped')</div>
           <div class="text-2xl">{{ $skipped }}</div>
         </div>
       @endif
       @if ($revealed > 0)
         <div>
-          <div class="text-sm small-caps text-yellow-500">{{ trans('japanese.answers_revealed') }}</div>
+          <div class="text-sm small-caps text-yellow-500">@lang('japanese.answers_revealed')</div>
           <div class="text-2xl">{{ $revealed }}</div>
         </div>
       @endif
@@ -109,40 +109,40 @@
   </div>
   <div>
     <details class="border text-sm rounded overflow-hidden" {{ $openSettings ? 'open' : '' }}>
-      <summary class="border-b bg-gray-100 text-gray-500 hover:text-gray-700 px-5 py-2" itemprop="name">{{ trans('japanese.settings') }}: <span class="lowercase">{{ $hiragana ? trans('japanese.hiragana') : trans('japanese.katakana') }}, @lang('Уровни') {{ $level * 10 - 9 }}–{{ $level * 10 }}</span></summary>
+      <summary class="border-b bg-gray-100 text-gray-500 hover:text-gray-700 px-5 py-2" itemprop="name">@lang('japanese.settings'): <span class="lowercase">{{ $hiragana ? __('japanese.hiragana') : __('japanese.katakana') }}, @lang('Уровни') {{ $level * 10 - 9 }}–{{ $level * 10 }}</span></summary>
       <div class="px-5 py-3 text-sm">
-        <div class="h5">{{ trans('japanese.syllabary') }}</div>
-        <div class="text-gray-500 mb-2">{{ trans('japanese.settings.syllabary_help') }}</div>
+        <div class="h5">@lang('japanese.syllabary')</div>
+        <div class="text-gray-500 mb-2">@lang('japanese.settings.syllabary_help')</div>
         <div>
           <button
             class="btn btn-default disabled:opacity-50"
             type="button"
             wire:click="switchToHiragana"
             {{ $hiragana ? 'disabled' : '' }}
-          >{{ trans('japanese.hiragana') }}</button>
+          >@lang('japanese.hiragana')</button>
           <button
             class="btn btn-default disabled:opacity-50"
             type="button"
             wire:click="switchToKatakana"
             {{ $hiragana ? '' : 'disabled' }}
-          >{{ trans('japanese.katakana') }}</button>
+          >@lang('japanese.katakana')</button>
         </div>
 
         <div class="h5 mt-6">@lang('Уровни') {{ $level * 10 - 9 }}–{{ $level * 10 }}</div>
-        <div class="text-gray-500 mb-2">{{ trans('japanese.settings.levels_help') }}</div>
+        <div class="text-gray-500 mb-2">@lang('japanese.settings.levels_help')</div>
         <div class="flex">
           <button
             class="btn btn-default mr-1 disabled:opacity-50"
             type="button"
             wire:click="decreaseLevel"
             {{ $level < 2 ? 'disabled' : '' }}
-          >{{ trans('japanese.decrease') }}</button>
+          >@lang('japanese.decrease')</button>
           <button
             class="btn btn-default disabled:opacity-50"
             type="button"
             wire:click="increaseLevel"
             {{ $level > 5 ? 'disabled' : '' }}
-          >{{ trans('japanese.increase') }}</button>
+          >@lang('japanese.increase')</button>
         </div>
       </div>
     </details>

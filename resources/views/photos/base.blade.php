@@ -6,39 +6,39 @@
     <div class="nav-scroll">
       <nav class="nav nav-link-tabs">
         <a
-          class="nav-link {{ $view === 'photos.index' ? 'active' : '' }}"
-          href="{{ path([App\Http\Controllers\Photos::class, 'index']) }}"
+          class="nav-link {{ $routeUri === 'photos' ? 'active' : '' }}"
+          href="@lng/photos"
         >
           @lang('Новые фото')
         </a>
         <a
-          class="nav-link {{ in_array($view, ['photos.trip', 'photos.trips']) ? 'active' : '' }}"
-          href="{{ path([App\Http\Controllers\Photos::class, 'trips']) }}">
+          class="nav-link {{ Str::of($routeUri)->is(['photos/trips', 'photos/trips/*']) ? 'active' : '' }}"
+          href="@lng/photos/trips">
           @lang('Поездки')
         </a>
         <a
-          class="nav-link {{ in_array($view, ['photos.tag', 'photos.tags']) ? 'active' : '' }}"
-          href="{{ path([App\Http\Controllers\Photos::class, 'tags']) }}">
+          class="nav-link {{ Str::of($routeUri)->is(['photos/tags', 'photos/tags/*']) ? 'active' : '' }}"
+          href="@lng/photos/tags">
           @lang('Тэги')
         </a>
         <a
-          class="nav-link {{ $view === 'photos.map' ? 'active' : '' }}"
-          href="{{ path([App\Http\Controllers\Photos::class, 'map']) }}">
+          class="nav-link {{ $routeUri === 'photos/map' ? 'active' : '' }}"
+          href="@lng/photos/map">
           @lang('Карта')
         </a>
         <a
-          class="nav-link {{ in_array($view, ['photos.cities', 'photos.city']) ? 'active' : '' }}"
-          href="{{ path([App\Http\Controllers\Photos::class, 'cities']) }}">
+          class="nav-link {{ Str::of($routeUri)->is(['photos/cities', 'photos/cities/*']) ? 'active' : '' }}"
+          href="@lng/photos/cities">
           @lang('Города')
         </a>
         <a
-          class="nav-link {{ in_array($view, ['photos.countries', 'photos.country']) ? 'active' : '' }}"
-          href="{{ path([App\Http\Controllers\Photos::class, 'countries']) }}">
+          class="nav-link {{ Str::of($routeUri)->is(['photos/countries', 'photos/countries/*']) ? 'active' : '' }}"
+          href="@lng/photos/countries">
           @lang('Страны')
         </a>
         <a
-          class="nav-link {{ $view === 'photos.faq' ? 'active' : '' }}"
-          href="{{ path([App\Http\Controllers\Photos::class, 'faq']) }}">
+          class="nav-link {{ $routeUri === 'photos/faq' ? 'active' : '' }}"
+          href="@lng/photos/faq">
           @lang('Помощь')
         </a>
       </nav>

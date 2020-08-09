@@ -28,7 +28,7 @@
 
   <section class="my-0 py-12">
     <div class="container">
-      <h2>{{ trans('dcpp.about_software') }}</h2>
+      <h2>@lang('dcpp.about_software')</h2>
       @yield('about_software')
     </div>
   </section>
@@ -44,7 +44,7 @@
   @if (!empty($softwareScreenshots))
     <section class="bg-gray-700 my-0 py-12 text-grey-200">
       <div class="container">
-        <h2 class="mb-6">{{ trans('dcpp.screenshots') }}</h2>
+        <h2 class="mb-6">@lang('Скриншоты')</h2>
         <p>
           @foreach ($softwareScreenshots as $screenshot)
             <a href="{{ $screenshot['full'] }}">
@@ -60,12 +60,12 @@
     <div class="container">
       <h2>@lang('Хабы')</h2>
       @ru
-        <p>Ищите куда подключиться для обмена файлами? Ознакомьтесь с нашими рекомендациями.</p>
+        <p>Ищете куда подключиться для обмена файлами? Ознакомьтесь с нашими рекомендациями.</p>
       @en
         <p>Looking for a place to connect to download and share files?</p>
       @endru
       <p>
-        <a class="btn border border-transparent bg-orange-400 text-white hover:bg-orange-500 hover:text-white" href="{{ path(App\Http\Controllers\DcppHubs::class) }}">
+        <a class="btn border border-transparent bg-orange-400 text-white hover:bg-orange-500 hover:text-white" href="@lng/dc/hubs">
           @ru
             Список популярных DC++ хабов
           @en
@@ -81,11 +81,11 @@
   @if (sizeof($software) > 1 || !empty($developerSite))
     <section class="border-b border-grey-200 my-0 py-12">
       <div class="container">
-        <h2 class="mb-6">{{ trans('dcpp.links') }}</h2>
+        <h2 class="mb-6">@lang('dcpp.links')</h2>
         <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
           @if (sizeof($software) > 1)
             <div>
-              <h4>{{ trans('dcpp.earlier_versions') }}</h4>
+              <h4>@lang('dcpp.earlier_versions')</h4>
               <ul>
                 @foreach ($software as $soft)
                   @continue ($loop->index === 0)
@@ -96,10 +96,10 @@
           @endif
           @if (!empty($developerSite))
             <div>
-              <h4>{{ trans('dcpp.pages') }}</h4>
+              <h4>@lang('dcpp.pages')</h4>
               <ul>
                 <li>
-                  <a class="link" href="{{ $developerSite }}">{{ trans('dcpp.developer_site') }}</a>
+                  <a class="link" href="{{ $developerSite }}">@lang('dcpp.developer_site')</a>
                   <span class="text-muted">
                     @svg (external-link)
                   </span>
@@ -125,7 +125,7 @@
           <feedback-form
             email="{{ Auth::user()->email ?? '' }}"
             title="DC++ Client"
-            action="{{ path([App\Http\Controllers\Issues::class, 'store']) }}"
+            action="@lng/contact"
             hide-title
           ></feedback-form>
         </div>

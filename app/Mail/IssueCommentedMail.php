@@ -25,7 +25,7 @@ class IssueCommentedMail extends Mailable implements ShouldQueue
 
     public function build()
     {
-        return $this->subject(trans('mail.issue_commented', ['title' => $this->issue->title]))
+        return $this->subject(__('mail.issue_commented', ['title' => $this->issue->title]))
             ->markdown('emails.issue-commented')
             ->with('locale', $this->locale);
     }

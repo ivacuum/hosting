@@ -1,18 +1,15 @@
-@extends('base', [
-  'metaKeywords' => 'firstvds, first, vds, 1vds, фёствдс, фест вдс, вдс, промо, код, промокод, скидка, купон',
-  'metaDescription' => 'Скидка 25% на любой тариф для новых пользователей FirstVDS.',
-])
+@extends('base')
 
 @section('content')
 <div class="max-w-600px">
   <img src="https://ivacuum.org/i/services/firstvds.png" width="135" height="72" onclick="location.href='https://firstvds.ru/?from=149161'" alt="">
-  <h1 class="mt-6">{{ trans('coupons.firstvds.subject') }}</h1>
+  <h1 class="mt-6">@lang('coupons.firstvds.subject')</h1>
   @ru
     <p>Укажите вашу электронную почту, и мы пришлем вам код для получения скидки 25% на первый заказ.</p>
   @en
     <p>Type your e-mail and we will send you a promo code for 25% discount to your first order on any FirstVDS plan.</p>
   @endru
-  <form action="{{ path([App\Http\Controllers\Coupons::class, 'firstvdsPost']) }}" method="post">
+  <form action="@lng/promocodes-coupons/firstvds" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 
@@ -24,9 +21,9 @@
           type="email"
           name="email"
           autocomplete="email"
-          placeholder="{{ trans('coupons.your_email') }}"
+          placeholder="@lang('coupons.your_email')"
         >
-        <button class="btn btn-primary -ml-px rounded-l-none whitespace-no-wrap">{{ trans('coupons.get_promocode') }}</button>
+        <button class="btn btn-primary -ml-px rounded-l-none whitespace-no-wrap">@lang('coupons.get_promocode')</button>
       </div>
       <x-invalid-feedback field="email"/>
     </div>

@@ -1,3 +1,5 @@
+<?php /** @var \App\File $file */ ?>
+
 @extends('base')
 
 @section('content')
@@ -13,17 +15,17 @@
     </tr>
     </thead>
     <tbody>
-    @foreach ($models as $model)
+    @foreach ($models as $file)
       <tr>
-        <td class="md:text-right">{{ $model->id }}</td>
+        <td class="md:text-right">{{ $file->id }}</td>
         <td>
-          <a href="{{ path([App\Http\Controllers\Files::class, 'download'], $model) }}">
-            {{ $model->title }}
+          <a href="{{ to('files/{file}/dl', $file) }}">
+            {{ $file->title }}
           </a>
         </td>
-        <td class="md:text-right text-muted whitespace-no-wrap">{{ ViewHelper::size($model->size) }}</td>
-        <td class="md:text-right whitespace-no-wrap">{{ ViewHelper::number($model->downloads) }}</td>
-        <td>{{ ViewHelper::dateShort($model->created_at) }}</td>
+        <td class="md:text-right text-muted whitespace-no-wrap">{{ ViewHelper::size($file->size) }}</td>
+        <td class="md:text-right whitespace-no-wrap">{{ ViewHelper::number($file->downloads) }}</td>
+        <td>{{ ViewHelper::dateShort($file->created_at) }}</td>
       </tr>
     @endforeach
     </tbody>

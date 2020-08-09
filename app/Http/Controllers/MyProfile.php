@@ -18,6 +18,6 @@ class MyProfile extends Controller
 
         event(new \App\Events\Stats\MyProfileChanged);
 
-        return back()->with('message', trans('my.saved'));
+        return back()->with('message', __('Изменения сохранены'));
     }
 }

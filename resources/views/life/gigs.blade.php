@@ -5,30 +5,30 @@
 @extends('life.base')
 
 @push('head')
-<link rel="alternate" type="application/rss+xml" title="@lang('Концерты')" href="{{ url(path(App\Http\Controllers\GigsRss::class)) }}">
+<link rel="alternate" type="application/rss+xml" title="@lang('Концерты')" href="{{ url(to('life/gigs/rss')) }}">
 @endpush
 
 @section('content')
 <div class="flex flex-wrap items-center mb-2">
   <h1 class="h2 mb-1 mr-4">@lang('Посещенные и ожидаемые концерты')</h1>
   @if (Auth::check())
-    <form class="mr-4" action="{{ path([App\Http\Controllers\Subscriptions::class, 'update']) }}" method="post">
+    <form class="mr-4" action="@lng/subscriptions" method="post">
       {{ ViewHelper::inputHiddenMail() }}
       <button class="btn btn-default text-sm py-1 small-caps svg-flex svg-label">
         @svg (mail)
-        {{ trans(Auth::user()->notify_gigs ? 'mail.unsubscribe' : 'mail.subscribe') }}
+        @lang(Auth::user()->notify_gigs ? 'mail.unsubscribe' : 'mail.subscribe')
       </button>
       <input type="hidden" name="gigs" value="{{ Auth::user()->notify_gigs ? 0 : 1 }}">
       @method('put')
       @csrf
     </form>
   @else
-    <a class="btn btn-default text-sm py-1 svg-flex svg-label small-caps mr-4" href="{{ path([App\Http\Controllers\Subscriptions::class, 'edit'], ['gigs' => 1]) }}">
+    <a class="btn btn-default text-sm py-1 svg-flex svg-label small-caps mr-4" href="@lng/subscriptions?gigs=1">
       @svg (mail)
-      {{ trans('mail.subscribe') }}
+      @lang('mail.subscribe')
     </a>
   @endif
-  <a class="svg-flex svg-label small-caps" href="{{ path(App\Http\Controllers\GigsRss::class) }}">
+  <a class="svg-flex svg-label small-caps" href="@lng/life/gigs/rss">
     @svg (rss-square)
     rss
   </a>

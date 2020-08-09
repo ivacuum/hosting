@@ -24,7 +24,7 @@ class GigPublishedMail extends Mailable implements ShouldQueue
 
     public function build()
     {
-        return $this->subject(trans('mail.gig_published_title', ['title' => $this->gig->title]))
+        return $this->subject(__('mail.gig_published_title', ['title' => $this->gig->title]))
             ->markdown('emails.gig-published')
             ->with('locale', $this->locale);
     }

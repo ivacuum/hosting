@@ -2,5 +2,5 @@
   <button
     class="btn btn-default"
     wire:click="toggleBurned"
-  >{{ $burned ? trans('japanese.resurrect') : trans('japanese.burn-vocabulary') }}</button>
+  >{{ $burned ? __('japanese.resurrect') : __('japanese.burn-vocabulary') }}</button>
 </div>

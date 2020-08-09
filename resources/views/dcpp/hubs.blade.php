@@ -1,7 +1,7 @@
 @extends('dcpp.base')
 
 @section('content')
-<h1>{{ trans('meta_title.dcpp.hubs') }}</h1>
+<h1>@lang('Популярные DC++ хабы')</h1>
 <div class="grid md:grid-cols-2 gap-8">
   <div>
     @ru
@@ -37,7 +37,7 @@
     <feedback-form
       email="{{ Auth::user()->email ?? '' }}"
       title="DC++ Hubs"
-      action="{{ path([App\Http\Controllers\Issues::class, 'store']) }}"
+      action="@lng/contact"
       hide-name
       hide-title
     ></feedback-form>
