@@ -3,6 +3,8 @@
 return [
     '/' => 'Sergey Pankov · vacuum.kaluga',
 
+    'contact' => __('Обратная связь'),
+
     'dc' => __('О DC++'),
     'dc/airdc' => 'Download AirDC++ 3.41',
     'dc/apexdc' => 'Download ApexDC++ 1.6.4',
@@ -58,6 +60,8 @@ return [
     'korean' => __('Корейский язык'),
     'korean/psy' => __('Кириллизация песен PSY'),
 
+    'news' => __('Новости'),
+
     'photos' => __('Фотки'),
     'photos/cities' => __('Города'),
     'photos/countries' => __('Страны'),
@@ -66,9 +70,16 @@ return [
     'photos/tags' => __('Тэги'),
     'photos/trips' => __('Поездки'),
 
+    'promocodes-coupons/firstvds' => __('Промокод на 25% скидку на FirstVDS'),
+
     'retracker' => 'What retracker is and how to use it · retracker.local',
     'retracker/dev' => 'About retracker development',
     'retracker/usage' => 'How to use retracker',
+
+    'torrents' => __('Торренты'),
+    'torrents/add' => __('Добавить раздачу'),
+    'torrents/comments' => __('Комментарии'),
+    'torrents/faq' => __('Помощь'),
 
     '@{login}/travel' => __('Заметки'),
     '@{login}/travel/cities' => __('Посещенные города'),
