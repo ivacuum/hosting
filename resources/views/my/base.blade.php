@@ -34,7 +34,7 @@
       @endcomponent
       @component('tpl.list-group-item', [
         'href' => to('my/trips'),
-        'isActive' => $routeUri === 'my/trips',
+        'isActive' => Str::of($routeUri)->is(['my/trips', 'my/trips/*']),
       ])
         @lang('Поездки')
       @endcomponent
