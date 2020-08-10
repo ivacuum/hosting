@@ -130,22 +130,24 @@ Route::get('mail/click/{timestamp}/{id}', [Ctrl\Mail::class, 'click'])->name('ma
 Route::get('mail/report/{timestamp}/{id}', [Ctrl\Mail::class, 'report'])->middleware('auth');
 Route::get('mail/view/{timestamp}/{id}', [Ctrl\Mail::class, 'view']);
 
-Route::view('my', 'my.index')->middleware('auth');
-Route::put('my/avatar', [Ctrl\MyAvatar::class, 'update'])->middleware('auth');
-Route::delete('my/avatar', [Ctrl\MyAvatar::class, 'destroy'])->middleware('auth');
-Route::get('my/password', [Ctrl\MyPassword::class, 'edit'])->middleware('auth');
-Route::put('my/password', [Ctrl\MyPassword::class, 'update'])->middleware('auth');
-Route::get('my/profile', [Ctrl\MyProfile::class, 'edit'])->middleware('auth');
-Route::put('my/profile', [Ctrl\MyProfile::class, 'update'])->middleware('auth');
-Route::get('my/settings', [Ctrl\MySettings::class, 'edit'])->middleware('auth');
-Route::put('my/settings', [Ctrl\MySettings::class, 'update'])->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::view('my', 'my.index');
+    Route::put('my/avatar', [Ctrl\MyAvatar::class, 'update']);
+    Route::delete('my/avatar', [Ctrl\MyAvatar::class, 'destroy']);
+    Route::get('my/password', [Ctrl\MyPassword::class, 'edit']);
+    Route::put('my/password', [Ctrl\MyPassword::class, 'update']);
+    Route::get('my/profile', [Ctrl\MyProfile::class, 'edit']);
+    Route::put('my/profile', [Ctrl\MyProfile::class, 'update']);
+    Route::get('my/settings', [Ctrl\MySettings::class, 'edit']);
+    Route::put('my/settings', [Ctrl\MySettings::class, 'update']);
 
-Route::get('my/trips', [Ctrl\MyTrips::class, 'index'])->middleware('auth');
-Route::post('my/trips', [Ctrl\MyTrips::class, 'store'])->middleware('auth');
-Route::get('my/trips/create', [Ctrl\MyTrips::class, 'create'])->middleware('auth');
-Route::put('my/trips/{trip}', [Ctrl\MyTrips::class, 'update'])->middleware('auth', 'can:user-update,trip');
-Route::delete('my/trips/{trip}', [Ctrl\MyTrips::class, 'destroy'])->middleware('auth', 'can:user-delete,trip');
-Route::get('my/trips/{trip}/edit', [Ctrl\MyTrips::class, 'edit'])->middleware('auth', 'can:user-update,trip');
+    Route::get('my/trips', [Ctrl\MyTrips::class, 'index']);
+    Route::post('my/trips', [Ctrl\MyTrips::class, 'store']);
+    Route::get('my/trips/create', [Ctrl\MyTrips::class, 'create']);
+    Route::put('my/trips/{trip}', [Ctrl\MyTrips::class, 'update'])->middleware('can:user-update,trip');
+    Route::delete('my/trips/{trip}', [Ctrl\MyTrips::class, 'destroy'])->middleware('can:user-delete,trip');
+    Route::get('my/trips/{trip}/edit', [Ctrl\MyTrips::class, 'edit'])->middleware('can:user-update,trip');
+});
 
 Route::get('news', [Ctrl\NewsController::class, 'index'])->middleware('nav:Новости,news');
 Route::get('news/rss', Ctrl\NewsRss::class);
