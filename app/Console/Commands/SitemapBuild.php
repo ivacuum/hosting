@@ -98,6 +98,7 @@ class SitemapBuild extends BaseSitemapBuild
 
     protected function appendGigs()
     {
+        /** @var Gig $model */
         foreach ($this->gigModels() as $model) {
             $this->page("life/{$model->slug}", '0.7');
             $this->page("en/life/{$model->slug}", '0.7');
@@ -178,6 +179,7 @@ class SitemapBuild extends BaseSitemapBuild
     {
         $this->page('news', '0.2');
 
+        /** @var News $model */
         foreach ($this->newsModels() as $model) {
             $prefix = $model->locale === 'ru' ? '' : "{$model->locale}/";
 
@@ -187,6 +189,7 @@ class SitemapBuild extends BaseSitemapBuild
 
     protected function appendTrips()
     {
+        /** @var Trip $model */
         foreach ($this->tripModels() as $model) {
             $this->page("life/{$model->slug}", '0.7');
             $this->page("en/life/{$model->slug}", '0.7');
