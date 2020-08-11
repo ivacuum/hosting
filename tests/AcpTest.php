@@ -11,6 +11,11 @@ class AcpTest extends TestCase
         $this->be(UserFactory::new()->admin()->make());
     }
 
+    public function testRoot()
+    {
+        $this->get('acp')->assertStatus(200);
+    }
+
     public function testPageClients()
     {
         $this->get('acp/clients')->assertStatus(200);
