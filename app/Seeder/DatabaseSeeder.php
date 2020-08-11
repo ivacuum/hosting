@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             ChatMessageSeeder::class,
             DcppHubSeeder::class,
             IssueSeeder::class,
+            FileSeeder::class,
             TagSeeder::class,
             TorrentSeeder::class,
             NewsSeeder::class,
