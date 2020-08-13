@@ -33,7 +33,7 @@
         autocomplete="off"
         autocorrect="off"
         spellcheck="false"
-        placeholder="@lang('japanese.answer')"
+        placeholder="@lang('Ваш ответ')"
         enterkeyhint="enter"
         class="form-input text-center {{ $reveal ? 'animate-incorrect-answer' : '' }}"
         {{ $reveal ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
@@ -46,7 +46,7 @@
         class="btn btn-default px-0 text-sm sm:text-base"
         type="button"
         wire:click="skip"
-      >@lang('japanese.skip')</button>
+      >@lang('Пропустить')</button>
       @if ($vocab->male_audio_id)
         <div>
           <button
@@ -88,7 +88,7 @@
       @endif
       @if ($revealed > 0)
         <div>
-          <div class="text-sm small-caps text-yellow-500">@lang('japanese.answers_revealed')</div>
+          <div class="text-sm small-caps text-yellow-500">@lang('Подсказано')</div>
           <div class="text-2xl">{{ $revealed }}</div>
         </div>
       @endif
@@ -109,9 +109,9 @@
   </div>
   <div>
     <details class="border text-sm rounded overflow-hidden" {{ $openSettings ? 'open' : '' }}>
-      <summary class="border-b bg-gray-100 text-gray-500 hover:text-gray-700 px-5 py-2" itemprop="name">@lang('japanese.settings'): <span class="lowercase">{{ $hiragana ? __('japanese.hiragana') : __('japanese.katakana') }}, @lang('Уровни') {{ $level * 10 - 9 }}–{{ $level * 10 }}</span></summary>
+      <summary class="border-b bg-gray-100 text-gray-500 hover:text-gray-700 px-5 py-2" itemprop="name">@lang('Настройки'): <span class="lowercase">{{ $hiragana ? __('Хирагана') : __('Катакана') }}, @lang('Уровни') {{ $level * 10 - 9 }}–{{ $level * 10 }}</span></summary>
       <div class="px-5 py-3 text-sm">
-        <div class="h5">@lang('japanese.syllabary')</div>
+        <div class="h5">@lang('Азбука')</div>
         <div class="text-gray-500 mb-2">@lang('japanese.settings.syllabary_help')</div>
         <div>
           <button
@@ -119,13 +119,13 @@
             type="button"
             wire:click="switchToHiragana"
             {{ $hiragana ? 'disabled' : '' }}
-          >@lang('japanese.hiragana')</button>
+          >@lang('Хирагана')</button>
           <button
             class="btn btn-default disabled:opacity-50"
             type="button"
             wire:click="switchToKatakana"
             {{ $hiragana ? '' : 'disabled' }}
-          >@lang('japanese.katakana')</button>
+          >@lang('Катакана')</button>
         </div>
 
         <div class="h5 mt-6">@lang('Уровни') {{ $level * 10 - 9 }}–{{ $level * 10 }}</div>
@@ -136,13 +136,13 @@
             type="button"
             wire:click="decreaseLevel"
             {{ $level < 2 ? 'disabled' : '' }}
-          >@lang('japanese.decrease')</button>
+          >@lang('Уменьшить')</button>
           <button
             class="btn btn-default disabled:opacity-50"
             type="button"
             wire:click="increaseLevel"
             {{ $level > 5 ? 'disabled' : '' }}
-          >@lang('japanese.increase')</button>
+          >@lang('Увеличить')</button>
         </div>
       </div>
     </details>

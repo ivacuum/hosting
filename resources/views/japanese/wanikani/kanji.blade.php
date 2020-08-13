@@ -12,7 +12,7 @@
   <div class="capitalize">{{ $kanji->meaning }}</div>
 </div>
 
-<h3 class="mt-6">@lang('japanese.readings')</h3>
+<h3 class="mt-6">@lang('Варианты чтения')</h3>
 <div class="mb-6">
   @if ($kanji->onyomi)
     <span class="text-muted">On'yomi</span>

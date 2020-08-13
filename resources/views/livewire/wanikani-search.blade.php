@@ -11,7 +11,7 @@
     @if ($count > 0)
       <div class="flex flex-wrap">
         <h3 class="mb-2 md:mb-0 mr-4 pt-1">@lang('japanese.results', ['results' => $count])</h3>
-        <button class="btn btn-default mb-2 md:mb-0" wire:click="clear">@lang('japanese.clear')</button>
+        <button class="btn btn-default mb-2 md:mb-0" wire:click="clear">@lang('Очистить')</button>
       </div>
     @elseif ($q && $errors->isEmpty())
       <div class="bg-yellow-300 px-2 py-1 rounded">@lang('japanese.no-matches')</div>
