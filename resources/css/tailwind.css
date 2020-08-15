@@ -2,6 +2,7 @@
 @import "variables.css";
 @import "base.css";
 @import "~tailwindcss/components.css";
+@import "anchors.pcss";
 @import "animations.css";
 @import "banners.css";
 @import "buttons.css";
