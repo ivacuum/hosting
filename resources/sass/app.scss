@@ -5,13 +5,10 @@
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/nav";
 
-@import 'gfe/buttons';
-@import 'gfe/forms';
 @import 'gfe/nav';
-@import 'gfe/navbar';
 @import 'gfe/tables';
 
-.is-desktop {
+@media (hover: hover) {
   @import 'gfe/tooltips';
 }
 

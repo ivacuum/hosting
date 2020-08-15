@@ -6,9 +6,9 @@
   z-index: 1000000;
   display: none;
   padding: 5px 8px;
-  font: normal normal 11px/1.5 $font-family-sans-serif;
+  font: normal normal 11px/1.5 ui-rounded, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   -webkit-font-smoothing: subpixel-antialiased;
-  color: $tooltip-text-color;
+  color: var(--tooltip-text-color);
   text-align: center;
   text-decoration: none;
   text-shadow: none;
@@ -18,7 +18,7 @@
   white-space: pre;
   pointer-events: none;
   content: attr(aria-label);
-  background: $tooltip-background-color;
+  background: var(--tooltip-background-color);
   border-radius: 3px;
   opacity: 0;
 }
@@ -30,7 +30,7 @@
   display: none;
   width: 0;
   height: 0;
-  color: $tooltip-background-color;
+  color: var(--tooltip-background-color);
   pointer-events: none;
   content: '';
   border: 5px solid transparent;
@@ -52,10 +52,10 @@
     display: inline-block;
     text-decoration: none;
     animation-name: tooltip-appear;
-    animation-duration: $tooltip-duration;
+    animation-duration: var(--tooltip-duration);
     animation-fill-mode: forwards;
     animation-timing-function: ease-in;
-    animation-delay: $tooltip-delay;
+    animation-delay: var(--tooltip-delay);
   }
 }
 
@@ -64,8 +64,7 @@
 .tooltipped-no-delay:focus {
   &::before,
   &::after {
-    opacity: 1;
-    animation: none;
+    animation-delay: 0s;
   }
 }
 
@@ -92,7 +91,7 @@
     right: 50%;
     bottom: -5px;
     margin-right: -5px;
-    border-bottom-color: $tooltip-background-color;
+    border-bottom-color: var(--tooltip-background-color);
   }
 }
 
@@ -123,7 +122,7 @@
     right: 50%;
     bottom: auto;
     margin-right: -5px;
-    border-top-color: $tooltip-background-color;
+    border-top-color: var(--tooltip-background-color);
   }
 }
 
@@ -159,7 +158,7 @@
     bottom: 50%;
     left: -5px;
     margin-top: -5px;
-    border-left-color: $tooltip-background-color;
+    border-left-color: var(--tooltip-background-color);
   }
 }
 
@@ -177,7 +176,7 @@
     right: -5px;
     bottom: 50%;
     margin-top: -5px;
-    border-right-color: $tooltip-background-color;
+    border-right-color: var(--tooltip-background-color);
   }
 }
 
@@ -189,9 +188,8 @@
 .tooltipped-multiline {
   &::after {
     width: max-content;
-    max-width: $tooltip-max-width;
-    word-break: break-all;
-    word-wrap: normal;
+    max-width: var(--tooltip-max-width);
+    word-wrap: break-word;
     white-space: pre-line;
     border-collapse: separate;
   }
@@ -222,12 +220,5 @@
     &::after {
       display: table-cell;
     }
-  }
-}
-
-@media only screen and (min-resolution: 2dppx) {
-  .tooltipped-w::after {
-    // weird bug on retina
-    margin-right: 4.5px;
   }
 }

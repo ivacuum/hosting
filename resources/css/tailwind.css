@@ -6,9 +6,10 @@
 @import "animations.pcss";
 @import "banners.pcss";
 @import "buttons.pcss";
-/*@import "counters.css";*/
+/*@import "counters.pcss";*/
 @import "details.pcss";
 @import "dropdown.pcss";
+@import "forms.pcss";
 @import "life.pcss";
 @import "lists.pcss";
 @import "markdown.pcss";

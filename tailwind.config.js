@@ -60,6 +60,7 @@ module.exports = {
     extend: {
       colors: {
         current: 'currentColor',
+        muted: '#6c757d',
         light: 'hsla(210, 16.7%, 97.6%)',
         'aa-100': 'hsla(0, 100%, 0%, 0.03)',
         blueish: {
