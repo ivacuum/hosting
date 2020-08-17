@@ -5,6 +5,7 @@
 @import "anchors.pcss";
 @import "animations.pcss";
 @import "banners.pcss";
+@import "bottom-tabbar.pcss";
 @import "buttons.pcss";
 @import "chat.pcss";
 /*@import "counters.pcss";*/
@@ -20,5 +21,7 @@
 @import "notie.pcss";
 @import "svg.pcss";
 @import "tables.pcss";
+@import "tooltips.pcss";
+@import "torrents.pcss";
 @import "~tailwindcss/utilities.css";
 @import "utilities.pcss";

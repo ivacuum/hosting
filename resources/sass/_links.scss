@@ -1,5 +1,3 @@
-a[href^="http"]:empty::before { content: attr(href); }
-
 // После достаточной поддержки браузерами можно будет
 // отказаться от border-bottom в ссылках в пользу [text-]underline
 
