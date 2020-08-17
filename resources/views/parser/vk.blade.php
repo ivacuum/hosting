@@ -8,16 +8,15 @@
 ])
 
 @section('content')
-<div class="nav-link-tabs-fader nav-border -mt-4">
-  <div class="nav-scroll-container">
-    <div class="nav-scroll">
-      <nav class="nav nav-link-tabs">
-        <a class="nav-link {{ $vkpage == 'pn6' ? 'active' : '' }}" href="@lng/parser/vk/pn6">#6</a>
-        <a class="nav-link {{ $vkpage == 'overhear' ? 'active' : '' }}" href="@lng/parser/vk/overhear">Подслушано</a>
-        <a class="nav-link {{ $vkpage == 'pikabu' ? 'active' : '' }}" href="@lng/parser/vk/pikabu">Пикабу</a>
-      </nav>
-    </div>
-  </div>
+<div class="-mt-4">
+  <x-nav-link-tabs>
+    <x-nav-link-to href="{{ to('parser/vk/pikabu') }}" is-active="{{ $vkpage == 'pikabu' }}">
+      Пикабу
+    </x-nav-link-to>
+    <x-nav-link-to href="{{ to('parser/vk/overhear') }}" is-active="{{ $vkpage == 'overhear' }}">
+      Подслушано
+    </x-nav-link-to>
+  </x-nav-link-tabs>
 </div>
 
 <form class="flex items-center justify-between my-4" action="@lng/parser/vk" method="post">

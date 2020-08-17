@@ -21,7 +21,7 @@ class ParserVk extends Controller
             ->createForService('vk.parser');
     }
 
-    public function index($vkpage = 'pn6', $date = false)
+    public function index($vkpage = 'pikabu', $date = false)
     {
         $this->vkpage = $vkpage;
         $this->token = $token = request('token', config('services.vk.access_token'));

@@ -21,9 +21,9 @@
 
 .table-stats {
   border-collapse: collapse;
-  border: $border-width solid $table-border-color;
+  border: 1px solid $table-border-color;
 
-  tr + tr { border-top: $border-width solid $table-border-color; }
+  tr + tr { border-top: 1px solid $table-border-color; }
 
   td,
   th {
@@ -40,7 +40,7 @@
   }
 
   thead {
-    border-bottom: $border-width solid $table-border-color;
+    border-bottom: 1px solid $table-border-color;
     font-weight: bold;
 
     @include media-breakpoint-up(md) {
@@ -58,13 +58,13 @@
           left: 0;
           bottom: 0;
           width: 100%;
-          border-bottom: $border-width solid $table-border-color;
+          border-bottom: 1px solid $table-border-color;
         }
       }
     }
   }
 
-  tfoot { border-top: $border-width solid $table-border-color; }
+  tfoot { border-top: 1px solid $table-border-color; }
 }
 
 .table-stats-align-top {

@@ -2,7 +2,7 @@
 
 <div>
   <div wire:poll.60s>
-    <div class="chat-container antialiased rounded overflow-y-auto py-1 pr-3 pl-2 text-sm">
+    <div class="chat-container antialiased rounded overflow-y-auto py-1 pr-3 pl-2 text-sm border border-gray-300">
       @foreach ($rows->groupBy(fn (App\ChatMessage $chatMessage) => $chatMessage->created_at->toDateString()) as $date => $messages)
         <div>
           <div class="sticky top-0 text-grey-500 text-xs my-1 text-center">

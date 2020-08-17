@@ -6,33 +6,33 @@ a[href^="http"]:empty::before { content: attr(href); }
 .link,
 .pseudo {
   border-bottom: 1px solid; // underline migration
-  border-color: $link-border-color; // underline migration
-  color: $link-color;
+  border-color: var(--link-border-color); // underline migration
+  color: var(--link-color);
   cursor: pointer;
   outline: 0;
-  // text-decoration-color: $link-border-color;
-  // text-underline-offset: $link-underline-offset;
+  // text-decoration-color: var(--link-border-color);
+  // text-underline-offset: var(--link-underline-offset);
 
   &:hover,
   &:focus,
   &.active,
   .link-parent:hover & {
-    border-color: $link-hover-border-color !important; // underline migration
-    color: $link-hover-color !important;
-    // text-decoration-color: $link-hover-border-color !important;
+    border-color: var(--link-hover-border-color) !important; // underline migration
+    color: var(--link-hover-color) !important;
+    // text-decoration-color: var(--link-hover-border-color) !important;
 
-    .svg-icon { fill: $link-hover-color !important; }
+    .svg-icon { fill: var(--link-hover-color) !important; }
   }
 
   &.active { border: none; } // underline migration
 
   &:visited,
   .link-parent:visited & {
-    border-color: $link-visited-border-color; // underline migration
-    color: $link-visited-color;
-    // text-decoration-color: $link-visited-border-color;
+    border-color: var(--link-visited-border-color); // underline migration
+    color: var(--link-visited-color);
+    // text-decoration-color: var(--link-visited-border-color);
 
-    .svg-icon { fill: $link-visited-color; }
+    .svg-icon { fill: var(--link-visited-color); }
   }
 }
 
@@ -62,18 +62,18 @@ a[href^="http"]:empty::before { content: attr(href); }
 .visited {
   &:hover,
   &:focus {
-    border-color: $link-hover-border-color !important; // underline migration
-    color: $link-hover-color !important;
-    // text-decoration-color: $link-hover-border-color !important;
+    border-color: var(--link-hover-border-color) !important; // underline migration
+    color: var(--link-hover-color) !important;
+    // text-decoration-color: var(--link-hover-border-color) !important;
 
-    .svg-icon { fill: $link-hover-color !important; }
+    .svg-icon { fill: var(--link-hover-color) !important; }
   }
 
   &:visited {
-    border-color: $link-visited-border-color; // underline migration
-    color: $link-visited-color;
-    // text-decoration-color: $link-visited-border-color;
+    border-color: var(--link-visited-border-color); // underline migration
+    color: var(--link-visited-color);
+    // text-decoration-color: var(--link-visited-border-color);
 
-    .svg-icon { fill: $link-visited-color; }
+    .svg-icon { fill: var(--link-visited-color); }
   }
 }

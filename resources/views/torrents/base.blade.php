@@ -18,45 +18,24 @@
     </div>
   </form>
   @yield('torrent-download-button')
-  <div class="nav-link-tabs-fader nav-border">
-    <div class="nav-scroll-container">
-      <div class="nav-scroll">
-        <nav class="nav nav-link-tabs">
-          <a
-            class="nav-link {{ $routeUri === 'torrents' ? 'active' : '' }}"
-            href="@lng/torrents"
-          >
-            @lang('Новые раздачи')
-          </a>
-          <a
-            class="nav-link {{ $routeUri === 'torrents/add' ? 'active' : '' }}"
-            href="@lng/torrents/add"
-          >
-            @lang('Добавить раздачу')
-          </a>
-          <a
-            class="nav-link {{ $routeUri === 'torrents/faq' ? 'active' : '' }}"
-            href="@lng/torrents/faq"
-          >
-            @lang('Помощь')
-          </a>
-          <a
-            class="nav-link {{ $routeUri === 'torrents/comments' ? 'active' : '' }}"
-            href="@lng/torrents/comments"
-          >
-            @lang('Комментарии')
-          </a>
-          @if (Auth::check())
-            <a
-              class="nav-link {{ $routeUri === 'torrents/my' ? 'active' : '' }}"
-              href="@lng/torrents/my"
-            >
-              @lang('Мои раздачи')
-            </a>
-          @endif
-        </nav>
-      </div>
-    </div>
-  </div>
+  <x-nav-link-tabs>
+    <x-nav-link-to href="{{ to('torrents') }}" is-active="{{ $routeUri === 'torrents' }}">
+      @lang('Новые раздачи')
+    </x-nav-link-to>
+    <x-nav-link-to href="{{ to('torrents/add') }}" is-active="{{ $routeUri === 'torrents/add' }}">
+      @lang('Добавить раздачу')
+    </x-nav-link-to>
+    <x-nav-link-to href="{{ to('torrents/faq') }}" is-active="{{ $routeUri === 'torrents/faq' }}">
+      @lang('Помощь')
+    </x-nav-link-to>
+    <x-nav-link-to href="{{ to('torrents/comments') }}" is-active="{{ $routeUri === 'torrents/comments' }}">
+      @lang('Комментарии')
+    </x-nav-link-to>
+    @auth
+      <x-nav-link-to href="{{ to('torrents/my') }}" is-active="{{ $routeUri === 'torrents/my' }}">
+        @lang('Мои раздачи')
+      </x-nav-link-to>
+    @endauth
+  </x-nav-link-tabs>
 </div>
 @endsection

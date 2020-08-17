@@ -1,26 +1,16 @@
 @extends('base')
 
 @section('content_header')
-@if (Auth::check())
-  <div class="nav-link-tabs-fader nav-border -mt-4 mb-6">
-    <div class="nav-scroll-container">
-      <div class="nav-scroll">
-        <nav class="nav nav-link-tabs">
-          <a
-            class="nav-link {{ $routeUri === 'gallery' ? 'active' : '' }}"
-            href="@lng/gallery"
-          >
-            @lang('Мои изображения')
-          </a>
-          <a
-            class="nav-link {{ $routeUri === 'gallery/upload' ? 'active' : '' }}"
-            href="@lng/gallery/upload"
-          >
-            @lang('Загрузка изображений')
-          </a>
-        </nav>
-      </div>
-    </div>
+@auth
+  <div class="-mt-4 mb-6">
+    <x-nav-link-tabs>
+      <x-nav-link-to href="{{ to('gallery') }}" is-active="{{ $routeUri === 'gallery' }}">
+        @lang('Мои изображения')
+      </x-nav-link-to>
+      <x-nav-link-to href="{{ to('gallery/upload') }}" is-active="{{ $routeUri === 'gallery/upload' }}">
+        @lang('Загрузка изображений')
+      </x-nav-link-to>
+    </x-nav-link-tabs>
   </div>
-@endif
+@endauth
 @endsection

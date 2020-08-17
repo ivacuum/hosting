@@ -3,9 +3,9 @@ $navbar-default-bg: #f8f8f8;
 // apple from #f9f9f9 to #f2f2f2
 
 .body-with-bottom-tabbar {
-  padding-bottom: $bottom-tabbar-height;
+  padding-bottom: var(--bottom-tabbar-height);
 
-  @include media-breakpoint-up(sm) { padding-bottom: $bottom-tabbar-sm-height; }
+  @include media-breakpoint-up(sm) { padding-bottom: var(--bottom-tabbar-sm-height); }
   @include media-breakpoint-up(md) { padding-bottom: 0; }
 }
 
@@ -22,7 +22,7 @@ $navbar-default-bg: #f8f8f8;
 }
 
 .bottom-tab {
-  color: $gray-light;
+  color: var(--gray-light);
   text-shadow: 0 1px 0 rgba(#fff, .25);
 
   &:hover,

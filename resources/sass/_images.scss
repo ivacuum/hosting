@@ -19,4 +19,4 @@
 }
 
 .border-hover:hover,
-.screenshot-link .screenshot:hover { border-color: $link-hover-border-color !important; }
+.screenshot-link .screenshot:hover { border-color: var(--link-hover-border-color) !important; }

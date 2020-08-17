@@ -13,7 +13,7 @@ $notie-border-bottom-color: rgba(#000, .2);
   backdrop-filter: blur(10px);
 
   &:not(.notie-alert) {
-    color: $text-muted;
+    color: var(--text-muted);
     background-color: $notie-color-neutral;
     border-bottom: 1px solid $notie-border-bottom-color;
   }

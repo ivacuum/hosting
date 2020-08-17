@@ -157,29 +157,29 @@
 
   .postLink {
     text-decoration: underline;
-    text-decoration-color: $link-border-color;
-    text-underline-offset: $link-underline-offset;
-    color: $link-color;
+    text-decoration-color: var(--link-border-color);
+    text-underline-offset: var(--link-underline-offset);
+    color: var(--link-color);
     cursor: pointer;
     outline: 0;
 
     &:hover,
     &:focus,
     &.active {
-      color: $link-hover-color !important;
-      text-decoration-color: $link-hover-border-color !important;
+      color: var(--link-hover-color) !important;
+      text-decoration-color: var(--link-hover-border-color) !important;
     }
 
     &:visited {
-      color: $link-visited-color;
-      text-decoration-color: $link-visited-border-color;
+      color: var(--link-visited-color);
+      text-decoration-color: var(--link-visited-border-color);
     }
   }
 }
 
 .torrent-icon {
   .svg-icon-collection-play { color: #ca8e3f; }
-  .svg-icon-file-text-o { color: $gray-light; }
+  .svg-icon-file-text-o { color: #858585; }
   .svg-icon-film { color: #428bca; }
   .svg-icon-gamepad { color: #a94442; }
   .svg-icon-music { color: #960ed7; }

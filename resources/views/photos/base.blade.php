@@ -1,48 +1,41 @@
 @extends('base')
 
 @section('content_header')
-<div class="nav-link-tabs-fader nav-border -mt-4 mb-4">
-  <div class="nav-scroll-container">
-    <div class="nav-scroll">
-      <nav class="nav nav-link-tabs">
-        <a
-          class="nav-link {{ $routeUri === 'photos' ? 'active' : '' }}"
-          href="@lng/photos"
-        >
-          @lang('Новые фото')
-        </a>
-        <a
-          class="nav-link {{ Str::of($routeUri)->is(['photos/trips', 'photos/trips/*']) ? 'active' : '' }}"
-          href="@lng/photos/trips">
-          @lang('Поездки')
-        </a>
-        <a
-          class="nav-link {{ Str::of($routeUri)->is(['photos/tags', 'photos/tags/*']) ? 'active' : '' }}"
-          href="@lng/photos/tags">
-          @lang('Тэги')
-        </a>
-        <a
-          class="nav-link {{ $routeUri === 'photos/map' ? 'active' : '' }}"
-          href="@lng/photos/map">
-          @lang('Карта')
-        </a>
-        <a
-          class="nav-link {{ Str::of($routeUri)->is(['photos/cities', 'photos/cities/*']) ? 'active' : '' }}"
-          href="@lng/photos/cities">
-          @lang('Города')
-        </a>
-        <a
-          class="nav-link {{ Str::of($routeUri)->is(['photos/countries', 'photos/countries/*']) ? 'active' : '' }}"
-          href="@lng/photos/countries">
-          @lang('Страны')
-        </a>
-        <a
-          class="nav-link {{ $routeUri === 'photos/faq' ? 'active' : '' }}"
-          href="@lng/photos/faq">
-          @lang('Помощь')
-        </a>
-      </nav>
-    </div>
-  </div>
+<div class="-mt-2 mb-4">
+  <x-nav-link-tabs>
+    <x-nav-link-to href="{{ to('photos') }}" is-active="{{ $routeUri === 'photos' }}">
+      @lang('Новые фото')
+    </x-nav-link-to>
+    <x-nav-link-to
+      href="{{ to('photos/trips') }}"
+      is-active="{{ Str::of($routeUri)->is(['photos/trips', 'photos/trips/*']) }}"
+    >
+      @lang('Поездки')
+    </x-nav-link-to>
+    <x-nav-link-to
+      href="{{ to('photos/tags') }}"
+      is-active="{{ Str::of($routeUri)->is(['photos/tags', 'photos/tags/*']) }}"
+    >
+      @lang('Тэги')
+    </x-nav-link-to>
+    <x-nav-link-to href="{{ to('photos/map') }}" is-active="{{ $routeUri === 'photos/map' }}">
+      @lang('Карта')
+    </x-nav-link-to>
+    <x-nav-link-to
+      href="{{ to('photos/cities') }}"
+      is-active="{{ Str::of($routeUri)->is(['photos/cities', 'photos/cities/*']) }}"
+    >
+      @lang('Города')
+    </x-nav-link-to>
+    <x-nav-link-to
+      href="{{ to('photos/countries') }}"
+      is-active="{{ Str::of($routeUri)->is(['photos/countries', 'photos/countries/*']) }}"
+    >
+      @lang('Страны')
+    </x-nav-link-to>
+    <x-nav-link-to href="{{ to('photos/faq') }}" is-active="{{ $routeUri === 'photos/faq' }}">
+      @lang('Помощь')
+    </x-nav-link-to>
+  </x-nav-link-tabs>
 </div>
 @endsection

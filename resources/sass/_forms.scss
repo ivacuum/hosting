@@ -1,15 +1,9 @@
-$input-padding-top: 1.25rem;
-$input-padding-bottom: .25rem;
-$height-inner: ($font-size-base * $input-btn-line-height) + $input-padding-top + $input-padding-bottom;
-$height-inner-sm: ($font-size-sm * $input-btn-line-height-sm) + $input-padding-top + $input-padding-bottom;
-$height-inner-lg: ($font-size-lg * $input-btn-line-height-lg) + $input-padding-top + $input-padding-bottom;
-
 .form-label-group {
   position: relative;
 
   .form-input:not(:placeholder-shown):not(.placeholder-shown) {
-    padding-top: $input-padding-top;
-    padding-bottom: $input-padding-bottom;
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
 
     & ~ label {
       padding-top: .25rem;

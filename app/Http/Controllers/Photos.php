@@ -51,7 +51,7 @@ class Photos extends Controller
             ->orderByDesc('id')
             ->get();
 
-        \Breadcrumbs::push($city->title);
+        \Breadcrumbs::push($city->breadcrumb());
 
         return view('photos.city', [
             'city' => $city,
@@ -81,7 +81,7 @@ class Photos extends Controller
             ->orderByDesc('id')
             ->get();
 
-        \Breadcrumbs::push($country->title);
+        \Breadcrumbs::push($country->breadcrumb());
 
         return view('photos.country', [
             'photos' => $photos,
