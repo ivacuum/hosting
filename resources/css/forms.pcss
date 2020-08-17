@@ -11,8 +11,10 @@
   height: 38px;
   line-height: 38px;
   text-align: center;
+}
 
-  &:hover { color: #888; }
+.form-input-feedback-password:hover {
+  color: #888;
 }
 
 .form-help {
@@ -23,4 +25,46 @@
   content: '*';
   color: #9f1006;
   padding-left: .3125rem;
+}
+
+.form-label-group {
+  position: relative;
+}
+
+.form-label-group .form-input:not(:placeholder-shown):not(.placeholder-shown) {
+  padding-top: 1.25rem;
+  padding-bottom: .25rem;
+}
+
+.form-label-group .form-input:not(:placeholder-shown):not(.placeholder-shown) ~ label {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  font-size: .75rem;
+  color: #686f76;
+}
+
+.form-label-group > input,
+.form-label-group > label {
+  padding: .75rem;
+}
+
+.form-label-group > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  line-height: 1.5;
+  text-align: left;
+  color: #a9acb0;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  font-weight: normal;
+  transition: all .1s ease-in-out;
+  pointer-events: none;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
 }

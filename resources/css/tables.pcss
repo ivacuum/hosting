@@ -1,0 +1,86 @@
+@media (max-width: 767.98px) {
+  .table-adaptive,
+  .table-adaptive thead,
+  .table-adaptive tbody,
+  .table-adaptive tfoot,
+  .table-adaptive tr,
+  .table-adaptive td,
+  .table-adaptive th {
+    display: block;
+  }
+
+  .table-adaptive tr {
+    padding: .5rem 0;
+  }
+
+  .table-adaptive td,
+  .table-adaptive th {
+    text-align: center;
+  }
+
+  .table-adaptive td:empty,
+  .table-adaptive th:empty {
+    display: none;
+  }
+}
+
+.table-stats {
+  border-collapse: collapse;
+  border: 1px solid var(--table-border-color);
+}
+
+.table-stats tr + tr {
+  border-top: 1px solid var(--table-border-color);
+}
+
+.table-stats td,
+.table-stats th {
+  padding: .35rem .5rem;
+  vertical-align: middle;
+}
+
+.table-stats tbody tr:nth-child(2n) {
+  background-color: #f6f6f6;
+}
+
+.table-stats thead,
+.table-stats tfoot,
+.table-stats .thead {
+  background: #ededed linear-gradient(#fbfbfb, #ededed) repeat-x;
+}
+
+.table-stats thead {
+  border-bottom: 1px solid var(--table-border-color);
+  font-weight: bold;
+}
+
+@screen md {
+  .table-stats thead {
+    border-bottom: none;
+  }
+
+  .table-stats thead th {
+    position: sticky;
+    top: -1px;
+    z-index: 1;
+    background: #ededed linear-gradient(#fbfbfb, #ededed) repeat-x;
+  }
+
+  .table-stats thead th:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-bottom: 1px solid var(--table-border-color);
+  }
+}
+
+.table-stats tfoot {
+  border-top: 1px solid var(--table-border-color);
+}
+
+.table-stats-align-top td,
+.table-stats-align-top th {
+  vertical-align: top;
+}

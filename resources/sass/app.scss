@@ -3,14 +3,11 @@
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 
-@import 'gfe/tables';
-
 @media (hover: hover) {
   @import 'gfe/tooltips';
 }
 
 @import "bottom-tabbar";
-@import "forms";
 @import "links";
 @import "notie";
 @import "torrents";

@@ -19,5 +19,6 @@
 @import "markdown.pcss";
 @import "notie.pcss";
 @import "svg.pcss";
+@import "tables.pcss";
 @import "~tailwindcss/utilities.css";
 @import "utilities.pcss";
