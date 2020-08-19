@@ -25,7 +25,7 @@
       @endif
     </div>
   </div>
-  <div class="grid items-center text-xl text-center md:text-left vocab-grid col-gap-2 row-gap-1">
+  <div class="grid items-center text-xl text-center md:text-left vocab-grid gap-x-2 gap-y-1">
     @foreach ($vocabularies as $vocab)
       <div>
         <a

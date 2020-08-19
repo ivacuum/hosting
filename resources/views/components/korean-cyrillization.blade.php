@@ -1,4 +1,4 @@
-<div class="grid sm:grid-cols-2 col-gap-6 row-gap-12 lg:text-xl antialiased">
+<div class="grid sm:grid-cols-2 gap-x-6 gap-y-12 lg:text-xl antialiased">
   <div class="grid gap-4">
     <x-lyrics>
       {{ $slot }}

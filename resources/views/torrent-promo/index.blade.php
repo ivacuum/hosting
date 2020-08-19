@@ -59,7 +59,7 @@
 <section class="bg-gray-700 py-20 text-gray-300">
   <div class="container lg:max-w-3xl">
     <h3 class="text-gray-200 mb-6">Ключевые особенности трекера t.ivacuum.ru</h3>
-    <div class="grid md:grid-cols-2 row-gap-8 col-gap-12">
+    <div class="grid md:grid-cols-2 gap-x-12 gap-y-8">
       <div>
         <h5 class="text-gray-400">Обсуждение раздач</h5>
         <div>Трекер построен на основе форума, следовательно, можно не только скачивать раздачи, но и комментировать их и читать отзывы других посетителей.</div>
