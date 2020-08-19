@@ -35,7 +35,7 @@
       @guest
         @ru
           <div class="mt-6 mr-6 p-2 text-xs text-teal-800 bg-teal-200 bg-opacity-50 border border-teal-200 rounded">
-            <a class="link" href="{{ path([App\Http\Controllers\Auth\SignIn::class, 'index'], ['goto' => path([App\Http\Controllers\Torrents::class, 'index'])]) }}">Пользователям</a> доступны чат и добавление раздач
+            <a class="link" href="{{ path([App\Http\Controllers\Auth\SignIn::class, 'index'], ['goto' => path([App\Http\Controllers\Torrents::class, 'index'])]) }}">Пользователям</a> доступен чат
           </div>
         @endru
       @endguest
