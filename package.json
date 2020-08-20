@@ -27,7 +27,7 @@
     "notie": "4.3.1",
     "sass": "^1.26.0",
     "sass-loader": "^8.0.2",
-    "tailwindcss": "1.7.1",
+    "tailwindcss": "1.7.2",
     "vue": "2.6.11",
     "vue-i18n": "7.8.0",
     "vue-template-compiler": "2.6.11"
