@@ -29,7 +29,7 @@
     @foreach ($vocabularies as $vocab)
       <div>
         <a
-          class="inline-block text-4xl leading-tight ja-shadow-light px-2 rounded whitespace-no-wrap text-white hover:text-grey-200 {{ $vocab->burnable === null ? 'bg-vocab' : 'bg-burned' }}"
+          class="inline-block text-4xl leading-tight ja-shadow-light px-2 rounded whitespace-no-wrap text-white hover:text-grey-200 {{ auth()->id() && $vocab->burnable ? 'bg-burned' : 'bg-vocab' }}"
           href="{{ $vocab->www() }}"
         >{{ $vocab->character }}</a>
       </div>
@@ -54,7 +54,7 @@
           href="#"
           wire:click.prevent="burn({{ $vocab->id }})"
         >
-          <span class="{{ $vocab->burnable === null ? 'text-red-600 hover:text-red-800' : 'text-gray-600 hover:text-gray-800' }}">
+          <span class="{{ auth()->id() && $vocab->burnable ? 'text-gray-600 hover:text-gray-800' : 'text-red-600 hover:text-red-800' }}">
             @svg (flame)
           </span>
         </a>

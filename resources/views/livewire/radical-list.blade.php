@@ -28,7 +28,7 @@
     </div>
     <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-px text-center text-white">
       @foreach ($radicals as $radical)
-        <div class="group rounded {{ $radical->burnable === null ? 'bg-radical' : 'bg-burned' }}">
+        <div class="group rounded {{ auth()->id() && $radical->burnable ? 'bg-burned' : 'bg-radical' }}">
           <a class="block text-6xl leading-none py-2 text-white hover:text-grey-200" href="{{ $radical->www() }}">
             @if ($radical->character)
               <div class="ja-shadow">
