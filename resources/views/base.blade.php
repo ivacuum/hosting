@@ -182,7 +182,7 @@ window.AppOptions = JSON.parse('<?= json_encode([
 <script src="{{ mix('/assets/vue-i18n.js') }}"></script>
 <script src="{{ mix('/assets/axios.js') }}"></script>
 <script src="{{ mix('/assets/mousetrap.js') }}"></script>
-<script src="{{ mix('/assets/details-menu-element.js') }}"></script>
+<script type="module" src="{{ mix('/assets/details-menu-element.js') }}"></script>
 @stack('js_vendor')
 @if ($locale !== 'ru')
 <script>window.livewire_app_url = '/{{ $locale }}'</script>

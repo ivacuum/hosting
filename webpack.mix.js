@@ -30,7 +30,7 @@ mix.js('resources/js/app.js', 'public/assets')
   .copy('node_modules/livewire-vue/dist/livewire-vue.js', 'public/assets')
   .copy('resources/js/empty.map', 'public/assets/livewire-vue.js.map')
 
-  .combine(['node_modules/@github/details-menu-element/dist/index.umd.js'], 'public/assets/details-menu-element.js')
+  .combine(['node_modules/@github/details-menu-element/dist/index.js'], 'public/assets/details-menu-element.js')
 
   .sourceMaps(false, false)
   .version()
