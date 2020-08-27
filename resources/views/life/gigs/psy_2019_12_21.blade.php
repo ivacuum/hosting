@@ -189,5 +189,4 @@
 <livewire:youtube title="191221~22 Guest 3 MFBTY Full ver. 싸이 올나잇 스탠드 2019" v="XL-y3gEld40"/>
 <livewire:youtube title="191221~22 광끼의 갓싸이 4부 Full ver. 싸이 올나잇 스탠드 2019" v="uuBuQA7z-pU"/>
 <livewire:youtube title="191221~22 광끼의 갓싸이 - 앵콜 Full ver. 싸이 올나잇 스탠드 2019" v="X7NVGSgJVwU"/>
-
 @endsection
