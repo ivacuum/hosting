@@ -1,7 +1,7 @@
 import './laravel-axios'
 
-import AvatarUploader from './components/AvatarUploader'
-import ImagesUploader from './components/ImagesUploader'
+import AvatarUploader from './components/AvatarUploader.vue'
+import ImagesUploader from './components/ImagesUploader.vue'
 import FeedbackForm from './components/FeedbackForm.vue'
 
 Vue.config.productionTip = false
