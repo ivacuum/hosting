@@ -2,7 +2,7 @@ const mix = require('laravel-mix')
 
 mix.js('resources/js/app.js', 'public/assets')
   .sass('resources/sass/app.scss', 'public/assets')
-  .postCss('resources/css/tailwind.css', 'public/assets', [
+  .postCss('resources/css/tailwind.pcss', 'public/assets', [
     require('tailwindcss'),
     require('autoprefixer'),
   ])
