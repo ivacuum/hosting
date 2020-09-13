@@ -11,7 +11,8 @@ class Rto
 
     public function __construct(GuzzleClientFactory $clientFactory)
     {
-        $this->client = $clientFactory->timeout(5)
+        $this->client = $clientFactory
+            ->timeout(15)
             ->createForService('rto');
     }
 
