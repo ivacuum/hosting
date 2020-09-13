@@ -13,6 +13,7 @@ class Rto
     {
         $this->client = $clientFactory
             ->timeout(15)
+            ->forceIp6ForProd()
             ->createForService('rto');
     }
 

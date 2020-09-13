@@ -8,6 +8,7 @@ class GuzzleClientFactory
 {
     private $baseUri;
     private $timeout;
+    private $forceIp6;
     private $handlerStack;
 
     public function baseUri(string $baseUri): self
@@ -33,7 +34,18 @@ class GuzzleClientFactory
             $config['timeout'] = $this->timeout;
         }
 
+        if ($this->forceIp6) {
+            $config['force_ip_resolve'] = 'v6';
+        }
+
         return new Client($config);
+    }
+
+    public function forceIp6ForProd()
+    {
+        $this->forceIp6 = \App::isProduction();
+
+        return $this;
     }
 
     public function forTest(array $responses)
