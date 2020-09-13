@@ -2,6 +2,10 @@
 
 @section('content')
 <x-korean-cyrillization>
+  <x-slot name="info">
+    <livewire:youtube title="181223 싸이 콘서트 올나잇 스탠드 2018 걱정말아요그대(Don't Worry)" v="JwgVC1YKMs4"/>
+  </x-slot>
+
   그대여 아무 걱정 하지 말아요
   우리 함께 노래 합시다
   그대 아픈 기억들 모두 그대여
