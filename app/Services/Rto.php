@@ -13,7 +13,6 @@ class Rto
     {
         $this->client = $clientFactory
             ->timeout(\App::runningInConsole() ? 60 : 15)
-            ->forceIp6ForProd()
             ->createForService('rto');
     }
 
@@ -68,6 +67,9 @@ class Rto
     {
         $response = $this->client->get(self::SITE_ENDPOINT . "viewtopic.php?t={$topicId}", [
             'proxy' => env('RTO_PROXY'),
+            'force_ip_resolve' => \App::isProduction()
+                ? 'v6'
+                : null,
         ]);
 
         return new RtoTopicHtmlResponse((string) $response->getBody());
@@ -91,20 +93,30 @@ class Rto
 
     public function topicDataByIds(array $ids): RtoGetTorTopicDataResponse
     {
-        $response = $this->client->get(self::API_ENDPOINT . 'get_tor_topic_data', ['query' => [
-            'by' => 'topic_id',
-            'val' => implode(',', $ids),
-        ]]);
+        $response = $this->client->get(self::API_ENDPOINT . 'get_tor_topic_data', [
+            'query' => [
+                'by' => 'topic_id',
+                'val' => implode(',', $ids),
+            ],
+            'force_ip_resolve' => \App::isProduction()
+                ? 'v4'
+                : null,
+        ]);
 
         return new RtoGetTorTopicDataResponse($response);
     }
 
     public function topicIdByHash(string $hash): ?int
     {
-        $response = $this->client->get(self::API_ENDPOINT . 'get_topic_id', ['query' => [
-            'by' => 'hash',
-            'val' => $hash,
-        ]]);
+        $response = $this->client->get(self::API_ENDPOINT . 'get_topic_id', [
+            'query' => [
+                'by' => 'hash',
+                'val' => $hash,
+            ],
+            'force_ip_resolve' => \App::isProduction()
+                ? 'v4'
+                : null,
+        ]);
 
         return json_decode((string) $response->getBody())->result->{$hash};
     }
