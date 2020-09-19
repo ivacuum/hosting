@@ -12,7 +12,7 @@ class Rto
     public function __construct(GuzzleClientFactory $clientFactory)
     {
         $this->client = $clientFactory
-            ->timeout(15)
+            ->timeout(\App::runningInConsole() ? 60 : 15)
             ->forceIp6ForProd()
             ->createForService('rto');
     }
