@@ -130,6 +130,14 @@ module.exports = {
           600: 'hsla(0, 100%, 50%)',
           700: 'hsla(0, 100%, 40%)',
         },
+        // $blue: #337ab7;
+        // $orange: #fd7e14;
+        // $flame: #e05b2f;
+        // $forest: #1fb27e;
+        // $sunny: #f2f281;
+        // $cerulean: #3c75c2;
+        // $mahogany: #7040ad;
+        // $sky: #89d2f6;
       },
       flex: {
         'h-full': '1 0 auto',
