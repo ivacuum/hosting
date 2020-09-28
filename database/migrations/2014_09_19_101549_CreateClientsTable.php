@@ -360,7 +360,7 @@ class CreateClientsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id')->default(0);
             $table->unsignedInteger('category_id')->default(0);
-            $table->unsignedInteger('rto_id')->default(0);
+            $table->unsignedInteger('rto_id')->default(0)->unique();
             $table->string('title', 300);
             $table->mediumText('html');
             $table->string('related_query');
