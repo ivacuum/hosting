@@ -1,3 +1,5 @@
+<?php /** @var \App\DcppHub $model */ ?>
+
 @extends('acp.list')
 
 @section('content-list')
@@ -7,6 +9,7 @@
     <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'title') }}</th>
     <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'address') }}</th>
     <th class="md:text-right whitespace-no-wrap">{{ ViewHelper::modelFieldTrans($modelTpl, 'clicks') }}</th>
+    <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'is_online') }}</th>
   </tr>
   </thead>
   <tbody>
@@ -19,6 +22,17 @@
       </td>
       <td>{{ $model->externalLink() }}</td>
       <td class="md:text-right whitespace-no-wrap">{{ ViewHelper::number($model->clicks) }}</td>
+      <td>
+        @if ($model->is_online)
+          <span class="text-green-600">
+            @svg (check)
+          </span>
+        @else
+          <span class="text-red-600">
+            @svg (issue-opened)
+          </span>
+        @endif
+      </td>
     </tr>
   @endforeach
   </tbody>

@@ -90,6 +90,7 @@ class CreateClientsTable extends Migration
             $table->string('address');
             $table->unsignedSmallInteger('port')->default(411);
             $table->unsignedTinyInteger('status')->default(0);
+            $table->unsignedTinyInteger('is_online')->default(1);
             $table->unsignedInteger('clicks')->default(0);
             $table->timestamp('queried_at')->nullable();
             $table->timestamps();

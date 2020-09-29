@@ -54,6 +54,10 @@ class Kernel extends ConsoleKernel
             ->cron('0 */3 * * *')
             ->appendOutputTo($cronOutput);
 
+        $schedule->command(Commands\PingDcppHubs::class)
+            ->cron('25 15 * * *')
+            ->appendOutputTo($cronOutput);
+
 //        $schedule->command(Commands\VkLikesAdd::class, ['pn6'])
 //            ->cron('5,25,45 * * * *')
 //            ->appendOutputTo($cronOutput);

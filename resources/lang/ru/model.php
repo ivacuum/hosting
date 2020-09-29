@@ -53,6 +53,7 @@ return [
     'dcpp-hub.port' => 'Порт',
     'dcpp-hub.status' => 'Состояние',
     'dcpp-hub.address' => 'Адрес',
+    'dcpp-hub.is_online' => 'Онлайн',
 
     'domain.text' => 'Заметки',
     'domain.domain' => 'Домен',

@@ -51,6 +51,7 @@ return [
     'dcpp-hub.port' => 'Port',
     'dcpp-hub.status' => 'Status',
     'dcpp-hub.address' => 'Address',
+    'dcpp-hub.is_online' => 'Is Online',
 
     'domain.text' => 'Notes',
     'domain.domain' => 'Domain',
