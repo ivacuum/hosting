@@ -6,10 +6,14 @@ use App\Jobs\FetchTorrentMetaJob;
 use App\Services\Rto;
 use App\Services\RtoTopicData;
 use GuzzleHttp\Psr7\Response;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Ivacuum\Generic\Services\Telegram;
+use Tests\TestCase;
 
-class FetchTorrentMetaJobTest extends \Tests\TestCase
+class FetchTorrentMetaJobTest extends TestCase
 {
+    use DatabaseTransactions;
+
     public function testBodyFetchQueued()
     {
         \Bus::fake();
