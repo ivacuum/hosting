@@ -3,20 +3,10 @@
 use App\Notifications\TripPublishedNotification;
 use App\Trip;
 use App\User;
-use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\Dispatchable;
 
-class NotifyTripSubscribers implements ShouldQueue
+class NotifyTripSubscribers extends AbstractJob
 {
-    use Dispatchable;
-    use InteractsWithQueue;
-    use Queueable;
-    use SerializesModels;
-
-    protected $trip;
+    private Trip $trip;
 
     public function __construct(Trip $trip)
     {

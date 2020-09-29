@@ -1,19 +1,9 @@
 <?php namespace App\Jobs;
 
 use App\Services\Vk;
-use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\Dispatchable;
 
-class LikeVkPost implements ShouldQueue
+class LikeVkPost extends AbstractJob
 {
-    use Dispatchable;
-    use InteractsWithQueue;
-    use Queueable;
-    use SerializesModels;
-
     protected $post;
 
     public function __construct(Vk\Post $post)
