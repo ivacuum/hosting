@@ -123,37 +123,25 @@ class TripStatsCalculator
 
     private function pushCity(int $cityId, int $year): void
     {
-        if (!isset($this->cities[$year])) {
-            $this->cities[$year] = collect();
-        }
-
+        $this->cities[$year] ??= collect();
         $this->cities[$year][] = $cityId;
     }
 
     private function pushCountry(int $countryId, int $year): void
     {
-        if (!isset($this->countries[$year])) {
-            $this->countries[$year] = collect();
-        }
-
+        $this->countries[$year] ??= collect();
         $this->countries[$year][] = $countryId;
     }
 
     private function pushNewCity(int $cityId, int $year): void
     {
-        if (!isset($this->newCities[$year])) {
-            $this->newCities[$year] = collect();
-        }
-
+        $this->newCities[$year] ??= collect();
         $this->newCities[$year][] = $cityId;
     }
 
     private function pushNewCountry(int $countryId, int $year): void
     {
-        if (!isset($this->newCountries[$year])) {
-            $this->newCountries[$year] = collect();
-        }
-
+        $this->newCountries[$year] ??= collect();
         $this->newCountries[$year][] = $countryId;
     }
 
@@ -188,28 +176,13 @@ class TripStatsCalculator
             $year = $date->year;
             $monthDay = "{$date->month}-{$date->day}";
 
-            if (!isset($this->daysInTrips[$year])) {
-                $this->daysInTrips[$year] = collect();
-            }
-
-            if (!isset($this->daysInCities[$trip->city_id])) {
-                $this->daysInCities[$trip->city_id] = collect();
-            }
-
-            if (!isset($this->daysInCities[$trip->city_id][$year])) {
-                $this->daysInCities[$trip->city_id][$year] = collect();
-            }
-
-            if (!isset($this->daysInCountries[$trip->city->country_id])) {
-                $this->daysInCountries[$trip->city->country_id] = collect();
-            }
-
-            if (!isset($this->daysInCountries[$trip->city->country_id][$year])) {
-                $this->daysInCountries[$trip->city->country_id][$year] = collect();
-            }
-
+            $this->daysInTrips[$year] ??= collect();
             $this->daysInTrips[$year][$monthDay] = true;
+            $this->daysInCities[$trip->city_id] ??= collect();
+            $this->daysInCities[$trip->city_id][$year] ??= collect();
             $this->daysInCities[$trip->city_id][$year][$monthDay] = true;
+            $this->daysInCountries[$trip->city->country_id] ??= collect();
+            $this->daysInCountries[$trip->city->country_id][$year] ??= collect();
             $this->daysInCountries[$trip->city->country_id][$year][$monthDay] = true;
 
             $date = $date->addDay();
@@ -224,10 +197,7 @@ class TripStatsCalculator
         do {
             $ymd = "{$date->year}-{$date->month}-{$date->day}";
 
-            if (!isset($this->calendar[$ymd])) {
-                $this->calendar[$ymd] = collect();
-            }
-
+            $this->calendar[$ymd] ??= collect();
             $this->calendar[$ymd][] = [
                 'flag' => $trip->city->country->flagUrl(),
                 'slug' => $trip->isPublished() ? $trip->slug : '',
