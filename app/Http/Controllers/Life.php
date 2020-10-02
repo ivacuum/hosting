@@ -12,6 +12,10 @@ class Life extends Controller
 {
     public function index(LifeIndexRequest $request)
     {
+        if ($request->shouldRedirectInstagrammer()) {
+            return $request->redirectInstagrammer();
+        }
+
         $to = $request->to();
         $from = $request->from();
 

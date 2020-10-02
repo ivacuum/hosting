@@ -329,6 +329,16 @@ class CreateClientsTable extends Migration
             $table->timestamps();
         });
 
+        Schema::create('referrer_redirects', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('from');
+            $table->string('to');
+            $table->dateTime('starts_at');
+            $table->dateTime('expires_at');
+            $table->unsignedInteger('clicks')->default(0);
+            $table->timestamps();
+        });
+
         Schema::create('servers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
