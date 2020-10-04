@@ -6,7 +6,7 @@
       @foreach ($rows->groupBy(fn (App\ChatMessage $chatMessage) => $chatMessage->created_at->toDateString()) as $date => $messages)
         <div>
           <div class="sticky top-0 text-grey-500 text-xs my-1 text-center">
-            <div class="chat-bg inline-block mx-auto p-1 rounded">{{ $date }}</div>
+            <div class="chat-bg inline-block mx-auto p-1 rounded">{{ Carbon\CarbonImmutable::parse($date)->formatLocalized('%e %B') }}</div>
           </div>
           <?php $lastUserId = null ?>
           @foreach ($messages as $message)
