@@ -18,7 +18,7 @@ class ParserVk extends Controller
         $this->client = $clientFactory
             ->baseUri(Vk::API_ENDPOINT)
             ->timeout(10)
-            ->createForService('vk.parser');
+            ->create();
     }
 
     public function index($vkpage = 'pikabu', $date = false)
@@ -119,6 +119,10 @@ class ParserVk extends Controller
             }
 
             $offset += $count;
+
+            if ($offset > 2500) {
+                break;
+            }
         }
 
         return view('parser.vk', [

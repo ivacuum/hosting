@@ -6,9 +6,11 @@ use GuzzleHttp\HandlerStack;
 
 class GuzzleClientFactory
 {
+    private $log = false;
     private $baseUri;
     private $timeout;
     private $forceIp6;
+    private $serviceName;
     private $handlerStack;
 
     public function baseUri(string $baseUri): self
@@ -18,9 +20,11 @@ class GuzzleClientFactory
         return $this;
     }
 
-    public function createForService(string $serviceName): Client
+    public function create(): Client
     {
-        $config['on_stats'] = new ExternalHttpRequestTransferStatsDispatcher($serviceName);
+        if ($this->log) {
+            $config['on_stats'] = new ExternalHttpRequestTransferStatsDispatcher($this->serviceName);
+        }
 
         if ($this->baseUri) {
             $config['base_uri'] = $this->baseUri;
@@ -38,7 +42,7 @@ class GuzzleClientFactory
             $config['force_ip_resolve'] = 'v6';
         }
 
-        return new Client($config);
+        return new Client($config ?? []);
     }
 
     public function forceIp6ForProd()
@@ -58,6 +62,14 @@ class GuzzleClientFactory
     public function timeout(int $timeout): self
     {
         $this->timeout = $timeout;
+
+        return $this;
+    }
+
+    public function withLog(string $serviceName): self
+    {
+        $this->log = true;
+        $this->serviceName = $serviceName;
 
         return $this;
     }

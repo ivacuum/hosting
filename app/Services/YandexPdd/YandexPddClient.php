@@ -11,7 +11,8 @@ class YandexPddClient
         $this->client = $clientFactory
             ->baseUri('https://pddimp.yandex.ru/api2/')
             ->timeout(10)
-            ->createForService('yandex-pdd');
+            ->withLog('yandex-pdd')
+            ->create();
     }
 
     public function dkimStatus(string $pddToken, string $domain, bool $askSecretKey = false)

@@ -27,7 +27,8 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind('Telegram\Bot\Api', function () {
             $httpClient = (new App\Http\GuzzleClientFactory)
-                ->createForService('telegram');
+                ->withLog('telegram')
+                ->create();
 
             return new Api(
                 config('telegram.bot_token'),

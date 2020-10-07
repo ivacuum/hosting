@@ -14,7 +14,8 @@ class WanikaniClient
         $this->client = $clientFactory
             ->baseUri('https://api.wanikani.com/v2/')
             ->timeout(10)
-            ->createForService('wanikani');
+            ->withLog('wanikani')
+            ->create();
     }
 
     public function subject(int $id)

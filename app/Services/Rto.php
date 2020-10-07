@@ -13,7 +13,8 @@ class Rto
     {
         $this->client = $clientFactory
             ->timeout(\App::runningInConsole() ? 60 : 15)
-            ->createForService('rto');
+            ->withLog('rto')
+            ->create();
     }
 
     public function findTopicId($input): ?int

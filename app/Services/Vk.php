@@ -14,7 +14,8 @@ class Vk
     {
         $this->client = $clientFactory
             ->baseUri(static::API_ENDPOINT)
-            ->createForService('vk');
+            ->withLog('vk')
+            ->create();
     }
 
     public function accessToken(string $accessToken): self
