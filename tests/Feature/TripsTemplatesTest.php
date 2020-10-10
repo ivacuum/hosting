@@ -6,6 +6,7 @@ use Tests\TestCase;
 
 class TripsTemplatesTest extends TestCase
 {
+    /** @slowThreshold 10000 */
     public function testTripsTemplates()
     {
         $this->be(UserFactory::new()->admin()->make());

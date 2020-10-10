@@ -2,11 +2,8 @@
 
 class GuestPagesTest extends TestCase
 {
-    /**
-     * @dataProvider guestPages200
-     * @param string $url
-     */
-    public function testGuestPages200($url)
+    /** @dataProvider guestPages200 */
+    public function testGuestPages200(string $url)
     {
         $this->get($url)->assertStatus(200);
     }

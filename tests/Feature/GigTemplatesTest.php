@@ -6,7 +6,7 @@ use Tests\TestCase;
 
 class GigTemplatesTest extends TestCase
 {
-    public function testTripsTemplates()
+    public function testGigsTemplates()
     {
         $this->be(UserFactory::new()->admin()->make());
 
