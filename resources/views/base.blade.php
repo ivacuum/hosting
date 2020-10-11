@@ -173,7 +173,6 @@ window.AppOptions = JSON.parse('<?= json_encode([
   'yandexMetrikaId' => 5266444,
 ], JSON_HEX_APOS) ?>')
 </script>
-<script src="{{ mix('/assets/intersection-observer.js') }}"></script>
 <script src="{{ mix('/assets/jquery.js') }}"></script>
 <script src="{{ mix('/assets/jquery.scrollto.js') }}"></script>
 <script src="{{ mix('/assets/autosize.js') }}"></script>

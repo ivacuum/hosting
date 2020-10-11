@@ -10,8 +10,6 @@ mix.js('resources/js/app.js', 'public/assets')
   .copy('resources/js/pwa/service-worker.js', 'public/assets')
   .copy('resources/js/pwa/service-worker-installer.js', 'public/assets')
 
-  .combine(['node_modules/intersection-observer/intersection-observer.js'], 'public/assets/intersection-observer.js')
-
   .copy('node_modules/mousetrap/mousetrap.min.js', 'public/assets/mousetrap.js')
 
   .copy('node_modules/jquery/dist/jquery.min.js', 'public/assets/jquery.js')
