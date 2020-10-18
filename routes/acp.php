@@ -92,6 +92,7 @@ RouteHelper::crud(Acp\Tags::class);
 RouteHelper::withoutCreate(Acp\Torrents::class);
 
 RouteHelper::crud(Acp\Trips::class);
+Route::get('trips/{trip}/instagram-cover', Acp\TripInstagramCoverController::class);
 Route::post('trips/{trip}/notify', Acp\TripPublishedNotify::class);
 
 RouteHelper::crud(Acp\Users::class);

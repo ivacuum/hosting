@@ -29,6 +29,7 @@
     <th>@svg (paperclip)</th>
     <x-th-numeric-sortable key="photos_count">@svg (picture-o)</x-th-numeric-sortable>
     <th></th>
+    <th></th>
   </tr>
   </thead>
   <tbody>
@@ -76,6 +77,16 @@
         <a href="{{ path([App\Http\Controllers\Acp\Photos::class, 'index'], [$model->getForeignKey() => $model]) }}">
           {{ ViewHelper::number($model->photos_count) ?: '' }}
         </a>
+      </td>
+      <td>
+        @if ($model->meta_image)
+          <a
+            class="leading-none text-xl"
+            href="{{ path(App\Http\Controllers\Acp\TripInstagramCoverController::class, $model->id) }}"
+          >
+            @svg (instagram)
+          </a>
+        @endif
       </td>
       <td class="md:text-right">
         @if ($model->user_id === 1)
