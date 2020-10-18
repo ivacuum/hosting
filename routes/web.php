@@ -205,7 +205,7 @@ Route::view('retracker', 'retracker.index');
 Route::view('retracker/dev', 'retracker.dev');
 Route::view('retracker/usage', 'retracker.usage');
 
-Route::view('stickers', 'stickers.index');
+Route::view('stickers', 'stickers');
 
 Route::get('subscriptions', [Ctrl\Subscriptions::class, 'edit']);
 Route::post('subscriptions', [Ctrl\Subscriptions::class, 'store']);
