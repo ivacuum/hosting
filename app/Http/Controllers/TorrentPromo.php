@@ -6,6 +6,6 @@ class TorrentPromo extends Controller
     {
         event(new \App\Events\Stats\TorrentPromoViewed);
 
-        return view('torrent-promo.index');
+        return view('torrent-promo');
     }
 }
