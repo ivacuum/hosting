@@ -97,6 +97,8 @@ class LifeTest extends TestCase
     {
         $redirect = ReferrerRedirectFactory::new()->create();
 
+        $this->expectsEvents(\App\Events\Stats\InstagrammerRedirected::class);
+
         $this->from('https://instagram.com/')
             ->get('life')
             ->assertRedirect($redirect->to);
