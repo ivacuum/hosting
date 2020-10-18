@@ -159,6 +159,11 @@
 <livewire:youtube title="PSY 2019 Summer Swag, Daejeon, Set 1, Set 2, Set 3" v="kAyvn15zdr8"/>
 <livewire:youtube title="PSY 2019 Summer Swag, Daejeon, Encore 1, Encore 2" v="pdQViEcdl7c"/>
 
+@ru
+  <p>В конце сентября 2020 года по корейскому телевидению показали часовую нарезку лучших моментов летних концертов 2017–2019 годов. Посмотреть можно было только из Кореи, причем впн в этом деле не помог. Добрые люди позднее загрузили запись на ютуб.</p>
+@endru
+<livewire:youtube title="PSY SUMMER SWAG 2017, 2018, 2019" v="CTuhqKy6CLc" start="236"/>
+
 <h3 class="mt-12">@ru Бонусные материалы @en Bonus materials @endru</h3>
 <ul>
   <li><a class="link" href="https://youtu.be/H0UJ0UaooAs?t=1843">@ru Лав камера @en Love camera @endru</a></li>
