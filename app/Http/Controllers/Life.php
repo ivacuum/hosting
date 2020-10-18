@@ -33,7 +33,7 @@ class Life extends Controller
             ->orderByDesc('date')
             ->get();
 
-        $models = $trips->merge($gigs)
+        $models = collect([...$trips, ...$gigs])
             ->sortByDesc(fn ($model) => $model->date())
             ->groupBy(fn ($model) => $model->year);
 
