@@ -4,6 +4,6 @@ class GigFactory
 {
     public static function forInputSelect()
     {
-        return Gig::orderByDesc('date')->pluck('slug', 'id');
+        return Gig::orderBy('slug')->pluck('slug', 'id');
     }
 }
