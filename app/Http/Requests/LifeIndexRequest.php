@@ -20,6 +20,8 @@ class LifeIndexRequest extends AbstractRequest
         $redirect->clicks++;
         $redirect->save();
 
+        event(new \App\Events\Stats\InstagrammerRedirected);
+
         return redirect($redirect->to);
     }
 
