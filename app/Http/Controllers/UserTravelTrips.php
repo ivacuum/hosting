@@ -32,7 +32,7 @@ class UserTravelTrips extends UserTravel
 
         \Breadcrumbs::push(__('Заметки'));
 
-        return view('user-travel.index', ['trips' => $trips]);
+        return view('user-travel.index', ['modelsByYears' => $trips]);
     }
 
     public function show(string $login, string $slug)

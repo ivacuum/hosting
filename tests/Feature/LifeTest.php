@@ -83,11 +83,13 @@ class LifeTest extends TestCase
 
     public function testIndex()
     {
+        $gig = GigFactory::new()->create();
         $trip = TripFactory::new()->create();
 
         $this->get('life')
             ->assertStatus(200)
             ->assertSee($trip->title)
+            ->assertSee($gig->artist->title)
             ->assertHasCustomTitle();
     }
 

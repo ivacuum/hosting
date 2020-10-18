@@ -1,6 +1,8 @@
+<?php /** @var App\Country $country */ ?>
+
 @extends('user-travel.base', [
   'metaTitle' => $country->title,
-  'metaDescription' => $country->metaDescription($trips),
+  'metaDescription' => $country->metaDescription($modelsByYears),
 ])
 
 @section('content')

@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\Finder\Finder;
 
@@ -25,9 +26,10 @@ use Symfony\Component\Finder\Finder;
  * @property City $city
  * @property \Illuminate\Database\Eloquent\Collection|Email[] $emails
  *
- * @property-read string $title
  * @property-read string $meta_title
  * @property-read string $meta_description
+ * @property-read string $title
+ * @property-read int $year
  *
  * @mixin \Eloquent
  */
@@ -80,6 +82,11 @@ class Gig extends Model
         return $this->{'meta_title_' . \App::getLocale()};
     }
 
+    public function getYearAttribute(): int
+    {
+        return $this->date->year;
+    }
+
     // Methods
     public function artistTimeline()
     {
@@ -97,6 +104,11 @@ class Gig extends Model
     public function createStoryFile(): bool
     {
         return touch(resource_path("views/{$this->templatePath()}.blade.php"));
+    }
+
+    public function date(): CarbonInterface
+    {
+        return $this->date;
     }
 
     public function deleteStoryFile(): bool

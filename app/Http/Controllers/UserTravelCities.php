@@ -55,7 +55,7 @@ class UserTravelCities extends UserTravel
 
         return view('user-travel.city', [
             'city' => $city,
-            'trips' => $trips,
+            'modelsByYears' => $trips,
         ]);
     }
 }

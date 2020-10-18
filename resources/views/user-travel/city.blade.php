@@ -1,6 +1,8 @@
+<?php /** @var App\City $city */ ?>
+
 @extends('user-travel.base', [
   'metaTitle' => $city->title,
-  'metaDescription' => $city->metaDescription($trips),
+  'metaDescription' => $city->metaDescription($modelsByYears),
 ])
 
 @section('content')

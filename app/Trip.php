@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Ivacuum\Generic\Utilities\TextImagesParser;
@@ -199,6 +200,11 @@ class Trip extends Model
     public function createStoryFile(): bool
     {
         return touch(resource_path("views/{$this->templatePath()}.blade.php"));
+    }
+
+    public function date(): CarbonInterface
+    {
+        return $this->date_start;
     }
 
     public function deleteStoryFile(): bool

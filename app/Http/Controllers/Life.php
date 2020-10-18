@@ -25,11 +25,20 @@ class Life extends Controller
             ->when($from, fn (Builder $query) => $query->where('date_start', '>=', $from))
             ->when($to, fn (Builder $query) => $query->where('date_start', '<=', $to))
             ->orderBy('date_start', $from || $to ? 'asc' : 'desc')
-            ->get()
-            ->groupBy(fn (Trip $model) => $model->year);
+            ->get();
+
+        $gigs = Gig::with('artist')
+            ->when($from, fn (Builder $query) => $query->where('date', '>=', $from))
+            ->when($to, fn (Builder $query) => $query->where('date', '<=', $to))
+            ->orderByDesc('date')
+            ->get();
+
+        $models = $trips->merge($gigs)
+            ->sortByDesc(fn ($model) => $model->date())
+            ->groupBy(fn ($model) => $model->year);
 
         return view('life.index', [
-            'trips' => $trips,
+            'modelsByYears' => $models,
         ]);
     }
 
@@ -78,8 +87,8 @@ class Life extends Controller
 
         return view('life.city', [
             'city' => $city,
-            'trips' => $trips,
             'metaTitle' => $city->metaTitle(),
+            'modelsByYears' => $trips,
             'metaDescription' => $city->metaDescription($trips),
         ]);
     }
@@ -107,9 +116,9 @@ class Life extends Controller
         event(new \App\Events\Stats\CountryViewed($country->id));
 
         return view('life.country', [
-            'trips' => $trips,
             'country' => $country,
             'metaTitle' => $country->metaTitle(),
+            'modelsByYears' => $trips,
             'metaDescription' => $country->metaDescription($trips),
         ]);
     }

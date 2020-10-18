@@ -33,8 +33,8 @@ class UserTravelCountries extends UserTravel
         event(new \App\Events\Stats\CountryViewed($country->id));
 
         return view('user-travel.country', [
-            'trips' => $trips,
             'country' => $country,
+            'modelsByYears' => $trips,
         ]);
     }
 }
