@@ -31,15 +31,15 @@ class Kernel extends ConsoleKernel
 //            ->appendOutputTo($cronOutput);
 
         $schedule->command(\Ivacuum\Generic\Commands\NotificationsPurge::class)
-            ->cron('0 2,14 * * *')
+            ->cron('35 2,14 * * *')
             ->appendOutputTo($cronOutput);
 
         $schedule->command(\Ivacuum\Generic\Commands\PasswordRemindersPurge::class)
-            ->cron('0 5 * * *')
+            ->cron('25 1 * * *')
             ->appendOutputTo($cronOutput);
 
         $schedule->command(Commands\ExternalHttpRequestsPurge::class)
-            ->cron('0 5 * * *')
+            ->cron('15 1 * * *')
             ->appendOutputTo($cronOutput);
 
         $schedule->command(Commands\SitemapBuild::class)
@@ -47,11 +47,11 @@ class Kernel extends ConsoleKernel
             ->appendOutputTo($cronOutput);
 
         $schedule->command(Commands\WarmUpPhotoCache::class)
-            ->cron('0 5 * * *')
+            ->cron('40 5 * * *')
             ->appendOutputTo($cronOutput);
 
         $schedule->command(Commands\RtoUpdate::class)
-            ->cron('0 */3 * * *')
+            ->cron('20 */3 * * *')
             ->appendOutputTo($cronOutput);
 
         $schedule->command(Commands\PingDcppHubs::class)
