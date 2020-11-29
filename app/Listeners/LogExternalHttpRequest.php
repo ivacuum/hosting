@@ -1,7 +1,7 @@
 <?php namespace App\Listeners;
 
-use App\Events\ExternalHttpRequestMade;
 use App\ExternalHttpRequest;
+use Ivacuum\Generic\Events\ExternalHttpRequestMade;
 
 class LogExternalHttpRequest
 {

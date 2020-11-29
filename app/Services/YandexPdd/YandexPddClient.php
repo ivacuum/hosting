@@ -1,6 +1,6 @@
 <?php namespace App\Services\YandexPdd;
 
-use App\Http\GuzzleClientFactory;
+use Ivacuum\Generic\Http\GuzzleClientFactory;
 
 class YandexPddClient
 {

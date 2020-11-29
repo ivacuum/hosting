@@ -1,10 +1,10 @@
 <?php namespace App\Http\Controllers;
 
 use App\CacheKey;
-use App\Http\GuzzleClientFactory;
 use App\Services\Vk;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterval;
+use Ivacuum\Generic\Http\GuzzleClientFactory;
 
 class ParserVk extends Controller
 {

@@ -1,12 +1,12 @@
 <?php namespace Tests\Job;
 
 use App\Factory\TorrentFactory;
-use App\Http\GuzzleClientFactory;
 use App\Jobs\FetchTorrentMetaJob;
 use App\Services\Rto;
 use App\Services\RtoTopicData;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Ivacuum\Generic\Http\GuzzleClientFactory;
 use Ivacuum\Generic\Services\Telegram;
 use Tests\TestCase;
 

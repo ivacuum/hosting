@@ -1,6 +1,6 @@
 <?php namespace App\Services;
 
-use App\Http\GuzzleClientFactory;
+use Ivacuum\Generic\Http\GuzzleClientFactory;
 
 class Rto
 {

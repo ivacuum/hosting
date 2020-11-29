@@ -3,13 +3,13 @@
 use App\Factory\CommentFactory;
 use App\Factory\TorrentFactory;
 use App\Factory\UserFactory;
-use App\Http\GuzzleClientFactory;
 use App\Services\Rto;
 use App\Services\RtoTopicData;
 use App\Torrent;
 use App\User;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Ivacuum\Generic\Http\GuzzleClientFactory;
 use Tests\TestCase;
 
 class TorrentTest extends TestCase

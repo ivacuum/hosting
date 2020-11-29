@@ -9,8 +9,6 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Testing\Assert;
 use Illuminate\Testing\TestResponse;
 use Illuminate\View\View;
-use Telegram\Bot\Api;
-use Telegram\Bot\HttpClients\GuzzleHttpClient;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,18 +22,6 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->isLocal()) {
             $this->app->register(TelescopeServiceProvider::class);
         }
-
-        $this->app->bind('Telegram\Bot\Api', function () {
-            $httpClient = (new App\Http\GuzzleClientFactory)
-                ->withLog('telegram')
-                ->create();
-
-            return new Api(
-                config('telegram.bot_token'),
-                config('telegram.async_requests'),
-                new GuzzleHttpClient($httpClient)
-            );
-        });
     }
 
     public function boot()

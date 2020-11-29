@@ -1,11 +1,11 @@
 <?php namespace Tests\Job;
 
 use App\Factory\TorrentFactory;
-use App\Http\GuzzleClientFactory;
 use App\Jobs\FetchTorrentBodyJob;
 use App\Services\Rto;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Ivacuum\Generic\Http\GuzzleClientFactory;
 use Tests\TestCase;
 
 class FetchTorrentBodyJobTest extends TestCase

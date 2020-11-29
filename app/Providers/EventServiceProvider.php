@@ -10,7 +10,6 @@ class EventServiceProvider extends ServiceProvider
         Events\ChatMessageCreated::class => [Listeners\TelegramChatMessage::class],
         Events\CommentPublished::class => [Listeners\NotifyUsersAboutComment::class],
         Events\DomainWhoisUpdated::class => [Listeners\EmailWhoisChanges::class],
-        Events\ExternalHttpRequestMade::class => [Listeners\LogExternalHttpRequest::class],
         Events\IssueCreated::class => [Listeners\TelegramIssue::class],
         Events\TorrentAddedAnonymously::class => [Listeners\TelegramAnonymousTorrent::class],
         Events\TypoReceived::class => [Listeners\TelegramTypo::class],
@@ -22,6 +21,10 @@ class EventServiceProvider extends ServiceProvider
 
         'Illuminate\Foundation\Events\LocaleUpdated' => [
             'Ivacuum\Generic\Listeners\SetLocale',
+        ],
+
+        'Ivacuum\Generic\Events\ExternalHttpRequestMade' => [
+            Listeners\LogExternalHttpRequest::class,
         ],
 
         'Ivacuum\Generic\Events\LimitExceeded' => [
