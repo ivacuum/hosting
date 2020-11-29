@@ -4477,10 +4477,10 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-livewire-vue@0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/livewire-vue/-/livewire-vue-0.2.0.tgz#16fbbc00141be6baac8f1aae2aa3074b94605103"
-  integrity sha512-IYwQXfcC8iIfUYLVOaOfF6U7JeLpbslEVbBiAFgRFs7fR1cSjdUNMXBU2Rgg8eDUw6CloExG07ERHQdt8LMC4A==
+livewire-vue@0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/livewire-vue/-/livewire-vue-0.3.1.tgz#897655acb292fecaf6cac5291623bffcb8d31ce4"
+  integrity sha512-R04O2zq86goM0Hw2MztDxK1cEVb196wCiGr3fFF6j4CTA2ocox1bLB4sF7qzyu+mnXmNSy1Wo3CZoY5BJNpl4w==
 
 load-json-file@^2.0.0:
   version "2.0.0"

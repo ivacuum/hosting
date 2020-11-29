@@ -41,6 +41,6 @@ class Chat extends Component
             ->reverse()
             ->values();
 
-        return parent::render();
+        return view('livewire.chat');
     }
 }

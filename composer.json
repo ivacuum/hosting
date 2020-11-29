@@ -14,7 +14,7 @@
     "laravel/socialite": "^5.0",
     "league/commonmark": "^1.0",
     "league/flysystem-sftp": "^1.0",
-    "livewire/livewire": "^1.0",
+    "livewire/livewire": "^2.0",
     "predis/predis": "^1.1",
     "stevebauman/purify": "^3.0",
     "symfony/css-selector": "^5.0",

@@ -68,7 +68,7 @@
   scrollChatDown()
 
   document.addEventListener('livewire:load', function () {
-    window.livewire.hook('afterDomUpdate', function () {
+    window.Livewire.hook('message.processed', function () {
       if (isScrolledDown(getChatContainer())) {
         scrollChatDown()
       }
