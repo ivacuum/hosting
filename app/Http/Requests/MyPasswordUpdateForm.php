@@ -2,7 +2,7 @@
 
 use Illuminate\Contracts\Hashing\Hasher;
 
-class MyPasswordUpdateForm extends AbstractRequest
+class MyPasswordUpdateForm extends AbstractForm
 {
     public function authorize(): bool
     {

@@ -2,7 +2,7 @@
 
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
-class MyAvatarUpdateForm extends AbstractRequest
+class MyAvatarUpdateForm extends AbstractForm
 {
     public function authorize(): bool
     {

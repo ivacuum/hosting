@@ -3,7 +3,7 @@
 use App\Rules\TorrentCategoryId;
 use App\Services\Rto;
 
-class TorrentStoreForm extends AbstractRequest
+class TorrentStoreForm extends AbstractForm
 {
     public function authorize(): bool
     {
