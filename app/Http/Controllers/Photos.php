@@ -3,7 +3,7 @@
 use App\CacheKey;
 use App\City;
 use App\Country;
-use App\Http\Requests\PhotosMapRequest;
+use App\Http\Requests\PhotosMapForm;
 use App\Photo;
 use App\Tag;
 use App\Trip;
@@ -90,7 +90,7 @@ class Photos extends Controller
         ]);
     }
 
-    public function map(PhotosMapRequest $request)
+    public function map(PhotosMapForm $request)
     {
         if ($request->expectsJson()) {
             return $this->pointsForMap($request->tripId());

@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\Comment;
-use App\Http\Requests\TorrentsIndexRequest;
-use App\Http\Requests\TorrentStoreRequest;
+use App\Http\Requests\TorrentsIndexForm;
+use App\Http\Requests\TorrentStoreForm;
 use App\SearchSynonym;
 use App\Services\Rto;
 use App\Services\RtoMagnetNotFoundException;
@@ -15,7 +15,7 @@ use Illuminate\Support\HtmlString;
 
 class Torrents extends Controller
 {
-    public function index(TorrentsIndexRequest $request)
+    public function index(TorrentsIndexForm $request)
     {
         $q = $request->searchQuery();
         $category = $request->category();
@@ -118,7 +118,7 @@ class Torrents extends Controller
         ]);
     }
 
-    public function store(TorrentStoreRequest $request, Rto $rto)
+    public function store(TorrentStoreForm $request, Rto $rto)
     {
         $topicId = $request->topicId($rto);
 

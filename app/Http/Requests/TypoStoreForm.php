@@ -2,7 +2,7 @@
 
 use Ivacuum\Generic\Http\FormRequest;
 
-class TypoStoreRequest extends FormRequest
+class TypoStoreForm extends FormRequest
 {
     public function authorize(): bool
     {

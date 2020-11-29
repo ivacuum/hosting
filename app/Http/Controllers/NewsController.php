@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests\NewsShowRequest;
+use App\Http\Requests\NewsShowForm;
 use App\News;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -19,7 +19,7 @@ class NewsController extends Controller
         return view('news.index', ['news' => $news]);
     }
 
-    public function show(NewsShowRequest $request)
+    public function show(NewsShowForm $request)
     {
         if ($request->shouldRedirectToIndex()) {
             return redirect(path([self::class, 'index']), 301);

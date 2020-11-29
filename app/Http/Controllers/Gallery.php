@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests\GalleryStoreRequest;
+use App\Http\Requests\GalleryStoreForm;
 use App\Image;
 
 class Gallery extends Controller
@@ -21,7 +21,7 @@ class Gallery extends Controller
         return view('gallery.preview', ['image' => $image]);
     }
 
-    public function store(GalleryStoreRequest $request)
+    public function store(GalleryStoreForm $request)
     {
         $file = $request->image();
 

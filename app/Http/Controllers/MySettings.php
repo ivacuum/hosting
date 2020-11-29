@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests\MySettingsUpdateRequest;
+use App\Http\Requests\MySettingsUpdateForm;
 
 class MySettings extends Controller
 {
@@ -9,7 +9,7 @@ class MySettings extends Controller
         return view('my.settings', ['user' => auth()->user()]);
     }
 
-    public function update(MySettingsUpdateRequest $request)
+    public function update(MySettingsUpdateForm $request)
     {
         /** @var \App\User $user */
         $user = $request->user();

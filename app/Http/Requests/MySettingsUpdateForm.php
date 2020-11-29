@@ -4,7 +4,7 @@ use App\User;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Http\FormRequest;
 
-class MySettingsUpdateRequest extends FormRequest
+class MySettingsUpdateForm extends FormRequest
 {
     public function authorize(): bool
     {

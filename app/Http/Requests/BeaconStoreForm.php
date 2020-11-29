@@ -2,7 +2,7 @@
 
 use Ivacuum\Generic\Http\FormRequest;
 
-class BeaconStoreRequest extends FormRequest
+class BeaconStoreForm extends FormRequest
 {
     public function authorize(): bool
     {

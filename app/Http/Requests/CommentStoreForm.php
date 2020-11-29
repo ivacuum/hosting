@@ -2,7 +2,7 @@
 
 use App\Rules\Email;
 
-class CommentStoreRequest extends AbstractRequest
+class CommentStoreForm extends AbstractRequest
 {
     public function authorize(): bool
     {

@@ -2,7 +2,7 @@
 
 use App\Comment;
 use App\Exceptions\CommentLimitExceededException;
-use App\Http\Requests\CommentStoreRequest;
+use App\Http\Requests\CommentStoreForm;
 use App\Http\Resources\Comment as CommentResource;
 use App\Limits\CommentsTodayLimit;
 use App\News;
@@ -13,7 +13,7 @@ use Ivacuum\Generic\Exceptions\FloodException;
 
 class AjaxComment extends Controller
 {
-    public function store(string $type, int $id, CommentsTodayLimit $limits, CommentStoreRequest $request)
+    public function store(string $type, int $id, CommentsTodayLimit $limits, CommentStoreForm $request)
     {
         $text = $request->input('text');
         $user = $request->userModel();

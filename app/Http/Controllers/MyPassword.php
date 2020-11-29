@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests\MyPasswordUpdateRequest;
+use App\Http\Requests\MyPasswordUpdateForm;
 use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class MyPassword extends Controller
         ]);
     }
 
-    public function update(MyPasswordUpdateRequest $request, Hasher $hash)
+    public function update(MyPasswordUpdateForm $request, Hasher $hash)
     {
         $user = $request->userModel();
 

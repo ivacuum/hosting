@@ -3,7 +3,7 @@
 use App\Rules\Email;
 use Ivacuum\Generic\Http\FormRequest;
 
-class PhotosMapRequest extends FormRequest
+class PhotosMapForm extends FormRequest
 {
     public function authorize(): bool
     {

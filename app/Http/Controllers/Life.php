@@ -3,14 +3,14 @@
 use App\City;
 use App\Country;
 use App\Gig;
-use App\Http\Requests\LifeIndexRequest;
+use App\Http\Requests\LifeIndexForm;
 use App\Trip;
 use App\TripFactory;
 use Illuminate\Database\Eloquent\Builder;
 
 class Life extends Controller
 {
-    public function index(LifeIndexRequest $request)
+    public function index(LifeIndexForm $request)
     {
         if ($request->shouldRedirectInstagrammer()) {
             return $request->redirectInstagrammer();

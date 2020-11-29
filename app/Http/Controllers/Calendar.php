@@ -1,11 +1,11 @@
 <?php namespace App\Http\Controllers;
 
 use App\Domain\TripStatsCalculator;
-use App\Http\Requests\LifeCalendarRequest;
+use App\Http\Requests\LifeCalendarForm;
 
 class Calendar extends Controller
 {
-    public function __invoke(LifeCalendarRequest $request)
+    public function __invoke(LifeCalendarForm $request)
     {
         $trips = $request->trips();
         $stats = new TripStatsCalculator($trips);

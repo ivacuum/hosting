@@ -2,7 +2,7 @@
 
 use App\News;
 
-class NewsShowRequest extends AbstractRequest
+class NewsShowForm extends AbstractRequest
 {
     private $news;
 

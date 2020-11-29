@@ -1,16 +1,15 @@
 <?php namespace App\Http\Requests;
 
-use Ivacuum\Generic\Http\FormRequest;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
-class GalleryStoreRequest extends FormRequest
+class MyAvatarUpdateForm extends AbstractRequest
 {
     public function authorize(): bool
     {
         return true;
     }
 
-    public function image()
+    public function avatar()
     {
         $file = $this->file('file');
 
@@ -26,8 +25,8 @@ class GalleryStoreRequest extends FormRequest
         return [
             'file' => [
                 'required',
-                'mimetypes:image/gif,image/jpeg,image/png',
-                'max:6144',
+                'mimetypes:image/jpeg,image/png',
+                'max:3072',
             ],
         ];
     }

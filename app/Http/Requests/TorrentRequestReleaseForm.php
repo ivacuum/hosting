@@ -1,6 +1,6 @@
 <?php namespace App\Http\Requests;
 
-class TorrentRequestReleaseRequest extends AbstractRequest
+class TorrentRequestReleaseForm extends AbstractRequest
 {
     public function authorize(): bool
     {

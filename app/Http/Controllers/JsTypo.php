@@ -1,11 +1,11 @@
 <?php namespace App\Http\Controllers;
 
 use App\Events\TypoReceived;
-use App\Http\Requests\TypoStoreRequest;
+use App\Http\Requests\TypoStoreForm;
 
 class JsTypo extends Controller
 {
-    public function __invoke(TypoStoreRequest $request)
+    public function __invoke(TypoStoreForm $request)
     {
         $page = $request->page();
 

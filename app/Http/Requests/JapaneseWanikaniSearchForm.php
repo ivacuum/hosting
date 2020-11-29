@@ -2,7 +2,7 @@
 
 use Ivacuum\Generic\Http\FormRequest;
 
-class JapaneseWanikaniSearchRequest extends FormRequest
+class JapaneseWanikaniSearchForm extends FormRequest
 {
     public function authorize(): bool
     {

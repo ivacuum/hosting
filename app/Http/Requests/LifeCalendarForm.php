@@ -3,7 +3,7 @@
 use App\Trip;
 use Illuminate\Database\Eloquent\Builder;
 
-class LifeCalendarRequest extends AbstractRequest
+class LifeCalendarForm extends AbstractRequest
 {
     public function authorize(): bool
     {

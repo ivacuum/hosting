@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Exceptions\IssueLimitExceededException;
-use App\Http\Requests\IssueStoreRequest;
+use App\Http\Requests\IssueStoreForm;
 use App\Issue;
 use App\Limits\IssuesTodayLimit;
 use App\User;
@@ -9,7 +9,7 @@ use Ivacuum\Generic\Exceptions\FloodException;
 
 class Issues extends Controller
 {
-    public function __invoke(IssuesTodayLimit $limits, IssueStoreRequest $request)
+    public function __invoke(IssuesTodayLimit $limits, IssueStoreForm $request)
     {
         $user = $request->userModel();
         $email = $request->email();

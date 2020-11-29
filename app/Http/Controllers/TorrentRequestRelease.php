@@ -1,12 +1,12 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests\TorrentRequestReleaseRequest;
+use App\Http\Requests\TorrentRequestReleaseForm;
 use App\Torrent;
 use Ivacuum\Generic\Services\Telegram;
 
 class TorrentRequestRelease extends Controller
 {
-    public function __invoke(TorrentRequestReleaseRequest $request, Telegram $telegram)
+    public function __invoke(TorrentRequestReleaseForm $request, Telegram $telegram)
     {
         $link = Torrent::externalSearchLink($request->q());
         $user = $request->userModel()->email ?? 'anonymous';

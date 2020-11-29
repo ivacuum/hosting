@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests\MyAvatarUpdateRequest;
+use App\Http\Requests\MyAvatarUpdateForm;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -16,7 +16,7 @@ class MyAvatar extends Controller
         return response()->noContent();
     }
 
-    public function update(MyAvatarUpdateRequest $request)
+    public function update(MyAvatarUpdateForm $request)
     {
         $avatar = $request->userModel()
             ->uploadAvatar($request->avatar());

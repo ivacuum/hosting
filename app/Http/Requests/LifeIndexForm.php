@@ -2,7 +2,7 @@
 
 use App\ReferrerRedirect;
 
-class LifeIndexRequest extends AbstractRequest
+class LifeIndexForm extends AbstractRequest
 {
     public function authorize(): bool
     {
