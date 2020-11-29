@@ -3,7 +3,7 @@
   "description": "",
   "license": "MIT",
   "require": {
-    "php": "^7.4|^8.0",
+    "php": "^7.4||^8.0",
     "foolz/sphinxql-query-builder": "1.1.1",
     "guzzlehttp/guzzle": "^7.0",
     "irazasyed/telegram-bot-sdk": "^3.0",
