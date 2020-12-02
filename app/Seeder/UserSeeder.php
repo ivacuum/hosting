@@ -7,21 +7,21 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        $user = UserFactory::new()->make();
-        $user->email = 'root@example.com';
-        $user->login = 'root';
-        $user->password = 'top-secret';
-        $user->save();
+        UserFactory::new()
+            ->withEmail('root@example.com')
+            ->withLogin('root')
+            ->withPassword('top-secret')
+            ->create();
 
-        $user = UserFactory::new()->make();
-        $user->email = 'guest@example.com';
-        $user->login = 'guest';
-        $user->password = 'top-secret';
-        $user->save();
+        UserFactory::new()
+            ->withEmail('guest@example.com')
+            ->withLogin('guest')
+            ->withPassword('top-secret')
+            ->create();
 
-        $user = UserFactory::new()->make();
-        $user->email = 'torrents@example.com';
-        $user->login = 'torrents';
-        $user->save();
+        UserFactory::new()
+            ->withEmail('torrents@example.com')
+            ->withLogin('torrents')
+            ->create();
     }
 }
