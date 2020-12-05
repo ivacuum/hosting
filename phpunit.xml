@@ -15,9 +15,12 @@
       <directory suffix=".php">./app</directory>
     </include>
   </coverage>
+  <!--
+  Можно будет включить, когда johnkary/phpunit-speedtrap станет совместим с phpunit 9.5+
   <listeners>
     <listener class="JohnKary\PHPUnit\Listener\SpeedTrapListener"/>
   </listeners>
+  -->
   <testsuites>
     <testsuite name="Application Test Suite">
       <directory>./tests/</directory>
