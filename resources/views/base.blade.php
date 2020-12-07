@@ -153,11 +153,18 @@
               @endru
             </div>
           @endif
-          <div>
+          <div class="mr-3">
             <a href="@lng/contact">
               @lang('Обратная связь')
             </a>
           </div>
+          @ru
+            <div>
+              <a href="@lng/privacy-policy">
+                @lang('Конфиденциальность')
+              </a>
+            </div>
+          @endru
         @show
       </nav>
     @show
