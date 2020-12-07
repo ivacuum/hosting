@@ -190,6 +190,8 @@ Route::middleware('nav:Фотки,photos')->group(function () {
     Route::get('photos/{photo}', [Ctrl\Photos::class, 'show']);
 });
 
+Route::view('privacy-policy', 'privacy-policy');
+
 Route::middleware('nav:coupons.index,promocodes-coupons')->group(function () {
     Route::view('promocodes-coupons', 'coupons.index');
     Route::get('promocodes-coupons/airbnb', [Ctrl\Coupons::class, 'airbnb'])->middleware('nav:coupons.airbnb');
