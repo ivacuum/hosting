@@ -51,9 +51,7 @@ jobs:
         run: sudo apt-get install graphicsmagick
 
       - name: Start sphinxsearch
-        run: |
-          locale -a
-          sudo /etc/init.d/sphinxsearch start
+        run: sudo /etc/init.d/sphinxsearch start
 
       # sudo systemctl status sphinxsearch.service
       - name: Prepare Laravel Application

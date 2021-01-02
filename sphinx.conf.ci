@@ -18,7 +18,6 @@ searchd
   preopen_indexes        = 1
   unlink_old             = 1
   binlog_path            =
-  collation_server       = utf8_unicode_ci
   collation_libc_locale  = en_US.UTF-8
 }
 
