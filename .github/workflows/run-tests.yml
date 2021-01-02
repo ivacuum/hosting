@@ -53,6 +53,9 @@ jobs:
       - name: Start sphinxsearch
         run: sudo /etc/init.d/sphinxsearch start
 
+      - name: debug
+        run: sudo searchd --status
+
       # sudo systemctl status sphinxsearch.service
       - name: Prepare Laravel Application
         run: |
