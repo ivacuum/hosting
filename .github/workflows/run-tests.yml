@@ -38,8 +38,8 @@ jobs:
           # {"http-basic":{"example.com":{"username":"login","password":"key"}}}
           COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
 
-      - name: Install graphicsmagick and sphinxsearch
-        run: sudo apt-get install graphicsmagick sphinxsearch
+      - name: Install graphicsmagick
+        run: sudo apt-get install graphicsmagick
 
       - name: Prepare Laravel Application
         run: |
