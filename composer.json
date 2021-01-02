@@ -29,7 +29,8 @@
     "laravel/telescope": "^4.0",
     "mockery/mockery": "^1.0",
     "nunomaduro/collision": "^5.0",
-    "phpunit/phpunit": "^9.0"
+    "phpunit/phpunit": "^9.0",
+    "rector/rector": "^0.9.3"
   },
   "autoload": {
     "psr-4": {
@@ -59,6 +60,7 @@
       "@php artisan ide-helper:generate",
       "@php artisan nova:publish"
     ],
+    "rector": "vendor/bin/rector process app tests --dry-run",
     "queue": "@php artisan queue:work --stop-when-empty --ansi",
     "test": "vendor/bin/phpunit --colors=always"
   },
