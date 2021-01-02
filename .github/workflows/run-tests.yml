@@ -68,5 +68,13 @@ jobs:
           php artisan key:generate
           composer fresh
 
+      - name: Debug
+        run: |
+          ls -l /var/lib/sphinxsearch/data
+          cat /var/log/sphinxsearch/sphinx.log
+
       - name: Run PHPUnit
         run: ./vendor/bin/phpunit
+
+      - name: Debug
+        run: cat /var/log/sphinxsearch/sphinx.query.log
