@@ -108,9 +108,11 @@ class TorrentTest extends TestCase
         \Queue::assertPushed(SendTelegramMessageJob::class);
     }
 
-    public function estSearch()
+    public function testSearch()
     {
-        $torrent = TorrentFactory::new()->withTitle('title 20172017 something else')->create();
+        $torrent = TorrentFactory::new()
+            ->withTitle('title 20172017 something else')
+            ->create();
 
         $this->get('torrents?q=20172017')
             ->assertStatus(200)
