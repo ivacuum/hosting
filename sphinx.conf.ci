@@ -1,0 +1,48 @@
+indexer
+{
+  mem_limit = 128M
+  max_iops  = 40
+}
+
+searchd
+{
+  listen                 = /tmp/sphinx.sock:mysql41
+  log                    = /var/log/sphinxsearch/sphinx.log
+  query_log              = /var/log/sphinxsearch/sphinx.query.log
+  query_log_format       = sphinxql
+  read_timeout           = 5
+  max_children           = 30
+  pid_file               = /var/run/sphinxsearch/searchd.pid
+  seamless_rotate        = 1
+  preopen_indexes        = 1
+  unlink_old             = 1
+  binlog_path            =
+  collation_server       = utf8mb4_unicode_ci
+  collation_libc_locale  = ru_RU.UTF-8
+}
+
+# Торренты
+index vac_torrents_v1
+{
+  type = rt
+
+  docinfo              = extern
+  morphology           = stem_enru
+  min_word_len         = 1
+  charset_table        = 0..9, A..Z->a..z, _, a..z, U+410..U+42F->U+430..U+44F, U+401->U+435, U+451->U+435, U+430..U+44F
+  min_prefix_len       = 2
+  index_exact_words    = 1
+  expand_keywords      = 0
+  min_infix_len        = 0
+  phrase_boundary      = :, ., $
+  phrase_boundary_step = 1
+
+  dict = keywords
+  html_strip = 1
+
+  rt_field = title
+  rt_field = text
+  rt_attr_uint = category_id
+
+  path = /var/lib/sphinxsearch/data/vac_torrents_v1
+}
