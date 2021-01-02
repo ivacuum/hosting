@@ -10,6 +10,7 @@ use App\User;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Ivacuum\Generic\Http\GuzzleClientFactory;
+use Ivacuum\Generic\Jobs\SendTelegramMessageJob;
 use Tests\TestCase;
 
 class TorrentTest extends TestCase
@@ -98,6 +99,8 @@ class TorrentTest extends TestCase
             ->post('torrents/request', ['query' => 'query'])
             ->assertRedirect('torrents')
             ->assertSessionHasNoErrors();
+
+        \Queue::assertPushed(SendTelegramMessageJob::class);
     }
 
     public function estSearch()
