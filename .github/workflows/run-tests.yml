@@ -41,6 +41,9 @@ jobs:
       - name: Install graphicsmagick
         run: sudo apt-get install graphicsmagick
 
+      - name: Start sphinxsearch
+        run: sudo systemctl start sphinxsearch.service
+
       - name: Prepare Laravel Application
         run: |
           cp .env.ci .env
