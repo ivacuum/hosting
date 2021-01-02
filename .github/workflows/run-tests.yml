@@ -43,9 +43,9 @@ jobs:
 
       - name: Start sphinxsearch
         run: |
+          sudo cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
           sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
           cat /etc/default/sphinxsearch
-          sudo cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
           sudo systemctl start sphinxsearch.service
           sudo systemctl status sphinxsearch.service
           sudo searchd --status
