@@ -42,11 +42,11 @@ jobs:
         run: sudo apt-get install graphicsmagick
 
       - name: Start sphinxsearch
+        # sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
         run: |
           sudo echo "START=yes\n" > /etc/default/sphinxsearch
           sudo cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
           cat /etc/sphinxsearch/sphinx.conf
-#          sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
           cat /etc/default/sphinxsearch
           sudo systemctl start sphinxsearch.service
           sudo systemctl status sphinxsearch.service
