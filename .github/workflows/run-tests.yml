@@ -47,10 +47,10 @@ jobs:
           sudo cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
           sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
           sudo service sphinxsearch start
+          sudo systemctl
           cat /etc/default/sphinxsearch
           cat /etc/init.d/sphinxsearch
           sudo systemctl status sphinxsearch.service
-          ls -l /etc/default
           sudo searchd --status
 
       - name: Prepare Laravel Application
