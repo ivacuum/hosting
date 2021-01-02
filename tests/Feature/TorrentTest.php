@@ -100,6 +100,12 @@ class TorrentTest extends TestCase
             ->assertRedirect('torrents')
             ->assertSessionHasNoErrors();
 
+        dump(
+            \Sphinx::helper()->showTables()->execute(),
+            \Sphinx::helper()->showIndexStatus('vac_torrents_v1')->execute(),
+            \Sphinx::create()->select('id')->from('vac_torrents_v1')->match('title', 'rus')->execute()
+        );
+
         \Queue::assertPushed(SendTelegramMessageJob::class);
     }
 
