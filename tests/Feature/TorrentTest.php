@@ -102,9 +102,9 @@ class TorrentTest extends TestCase
 
     public function testSearch()
     {
-        $torrent = TorrentFactory::new()->withTitle('title _2017_ something else')->create();
+        $torrent = TorrentFactory::new()->withTitle('title 20172017 something else')->create();
 
-        $this->get('torrents?q=_2017_')
+        $this->get('torrents?q=20172017')
             ->assertStatus(200)
             ->assertSee($torrent->title);
     }
