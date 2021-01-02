@@ -21,6 +21,13 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, fileinfo
           coverage: none
 
+      - name: Setup sphinxsearch
+        # sudo echo "START=yes\n" > /etc/default/sphinxsearch
+        # sudo searchd --status
+        run: |
+          sudo cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
+          sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
+
       - name: Create database
         run: |
           sudo systemctl start mysql.service
@@ -42,16 +49,12 @@ jobs:
         run: sudo apt-get install graphicsmagick
 
       - name: Start sphinxsearch
-        # sudo echo "START=yes\n" > /etc/default/sphinxsearch
         run: |
-          sudo cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
-          sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
+          cat /usr/share/doc/sphinxsearch/README.Debian
           sudo service sphinxsearch start
-          sudo systemctl
           cat /etc/default/sphinxsearch
           cat /etc/init.d/sphinxsearch
           sudo systemctl status sphinxsearch.service
-          sudo searchd --status
 
       - name: Prepare Laravel Application
         run: |
