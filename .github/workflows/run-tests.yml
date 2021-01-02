@@ -44,6 +44,11 @@ jobs:
       - name: Start sphinxsearch
         run: sudo systemctl start sphinxsearch.service
 
+      - name: debug
+        run: |
+          whereis gm
+          cat /etc/sphinxsearch/sphinx.conf
+
       - name: Prepare Laravel Application
         run: |
           cp .env.ci .env
