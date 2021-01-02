@@ -50,7 +50,7 @@ jobs:
 
       - name: Start sphinxsearch
         run: |
-          cat /usr/share/doc/sphinxsearch/README.Debian
+          locale -a
           sudo /etc/init.d/sphinxsearch start
           cat /etc/default/sphinxsearch
           cat /etc/init.d/sphinxsearch
