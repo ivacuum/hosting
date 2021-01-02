@@ -19,7 +19,7 @@ searchd
   unlink_old             = 1
   binlog_path            =
   collation_server       = utf8_unicode_ci
-  collation_libc_locale  = ru_RU.UTF-8
+  collation_libc_locale  = en_US.UTF-8
 }
 
 # Торренты

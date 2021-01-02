@@ -24,6 +24,8 @@ jobs:
       - name: Setup sphinxsearch
         # sudo echo "START=yes\n" > /etc/default/sphinxsearch
         # sudo searchd --status
+        # cat /etc/default/sphinxsearch
+        # cat /etc/init.d/sphinxsearch
         run: |
           sudo cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
           sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
@@ -52,10 +54,8 @@ jobs:
         run: |
           locale -a
           sudo /etc/init.d/sphinxsearch start
-          cat /etc/default/sphinxsearch
-          cat /etc/init.d/sphinxsearch
-          sudo systemctl status sphinxsearch.service
 
+      # sudo systemctl status sphinxsearch.service
       - name: Prepare Laravel Application
         run: |
           cp .env.ci .env
