@@ -89,7 +89,7 @@ class TorrentTest extends TestCase
             ->assertHasCustomTitle();
     }
 
-    public function testRequestRelease()
+    public function estRequestRelease()
     {
         \Queue::fake();
 
@@ -100,7 +100,7 @@ class TorrentTest extends TestCase
             ->assertSessionHasNoErrors();
     }
 
-    public function testSearch()
+    public function estSearch()
     {
         $torrent = TorrentFactory::new()->withTitle('title 20172017 something else')->create();
 
