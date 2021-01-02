@@ -12,16 +12,15 @@ class CiBuildNotifyTest extends TestCase
     {
         \Queue::fake();
 
-        $response = $this
+        $this
             ->post('internal/ci-build-notifier', [
                 'name' => 'project',
                 'build' => [
                     'number' => 222,
                     'status' => 'failed',
                 ],
-            ]);
-
-        dump($response);
+            ])
+            ->assertOk();
 
         \Queue::assertPushed(SendTelegramMessageJob::class);
     }
