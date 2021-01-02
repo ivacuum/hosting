@@ -68,16 +68,5 @@ jobs:
           php artisan key:generate
           composer fresh
 
-      - name: Debug
-        run: |
-          ls -l /var/lib/sphinxsearch/data
-          ls -l /var/log/sphinxsearch
-          sudo cat /var/log/sphinxsearch/searchd.log
-          sudo searchd --status
-          mysql -S /tmp/sphinx.sock "SELECT * FROM vac_torrents_v1 WHERE MATCH('RUS'); SHOW META;"
-
       - name: Run PHPUnit
         run: ./vendor/bin/phpunit
-
-      - name: Debug
-        run: sudo cat /var/log/sphinxsearch/query.log
