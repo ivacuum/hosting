@@ -51,8 +51,8 @@ jobs:
           cat /etc/default/sphinxsearch
           sudo systemctl start sphinxsearch.service
           sudo systemctl status sphinxsearch.service
-          sudo searchd --status
           cat /etc/default/mysql
+          sudo searchd --status
 
       - name: Prepare Laravel Application
         run: |
