@@ -43,15 +43,14 @@ jobs:
 
       - name: Start sphinxsearch
         # sudo echo "START=yes\n" > /etc/default/sphinxsearch
+        # sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
         run: |
-          sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
           sudo cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
-          sudo systemctl enable sphinxsearch.service
+          sudo service sphinxsearch start
           cat /etc/default/sphinxsearch
-          sudo systemctl start sphinxsearch.service
+          cat /etc/init.d/sphinxsearch
           sudo systemctl status sphinxsearch.service
           ls -l /etc/default
-          dpkg -L mysql-server
           sudo searchd --status
 
       - name: Prepare Laravel Application
