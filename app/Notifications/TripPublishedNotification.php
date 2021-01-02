@@ -17,7 +17,7 @@ class TripPublishedNotification extends Notification implements ShouldQueue
         $this->trip = $trip;
     }
 
-    public function via($notifiable)
+    public function via()
     {
         return ['mail'];
     }

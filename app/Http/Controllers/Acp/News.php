@@ -60,8 +60,6 @@ class News extends AbstractController
         $data['locale'] = \App::getLocale();
         $data['user_id'] = request()->user()->id;
 
-        $model = Model::create($data);
-
-        return $model;
+        return Model::create($data);
     }
 }

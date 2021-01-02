@@ -22,7 +22,7 @@ class TorrentCommentedNotification extends Notification
             : [];
     }
 
-    public function toArray($notifiable)
+    public function toArray()
     {
         return [
             'id' => $this->torrent->id,

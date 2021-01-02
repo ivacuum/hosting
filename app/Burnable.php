@@ -15,7 +15,7 @@ class Burnable extends Model
 {
     public $incrementing = false;
 
-    protected $primaryKey = null;
+    protected $primaryKey;
     protected $fillable = ['user_id'];
     protected $perPage = 50;
 

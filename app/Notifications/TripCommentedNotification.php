@@ -22,7 +22,7 @@ class TripCommentedNotification extends Notification
             : [];
     }
 
-    public function toArray($notifiable)
+    public function toArray()
     {
         return [
             'id' => $this->trip->id,

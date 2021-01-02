@@ -17,7 +17,7 @@ class NewsPublishedNotification extends Notification implements ShouldQueue
         $this->news = $news;
     }
 
-    public function via($notifiable)
+    public function via()
     {
         return ['mail'];
     }

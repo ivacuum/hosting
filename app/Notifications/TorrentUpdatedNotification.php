@@ -23,7 +23,7 @@ class TorrentUpdatedNotification extends Notification
             : ['database'];
     }
 
-    public function toArray($notifiable)
+    public function toArray()
     {
         return [
             'id' => $this->torrent->id,

@@ -11,12 +11,12 @@ class PlainTextNotification extends Notification
         $this->text = $text;
     }
 
-    public function via($notifiable)
+    public function via()
     {
         return ['database'];
     }
 
-    public function toArray($notifiable)
+    public function toArray()
     {
         return [
             'text' => $this->text,

@@ -17,7 +17,7 @@ class GigPublishedNotification extends Notification implements ShouldQueue
         $this->gig = $gig;
     }
 
-    public function via($notifiable)
+    public function via()
     {
         return ['mail'];
     }

@@ -12,12 +12,12 @@ class TorrentNotFoundDeletedNotification extends Notification
         $this->torrent = $torrent;
     }
 
-    public function via($notifiable)
+    public function via()
     {
         return ['database'];
     }
 
-    public function toArray($notifiable)
+    public function toArray()
     {
         return [
             'id' => $this->torrent->id,

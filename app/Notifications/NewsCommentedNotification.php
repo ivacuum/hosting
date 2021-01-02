@@ -22,7 +22,7 @@ class NewsCommentedNotification extends Notification
             : [];
     }
 
-    public function toArray($notifiable)
+    public function toArray()
     {
         return [
             'id' => $this->news->id,

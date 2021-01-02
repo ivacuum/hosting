@@ -20,7 +20,7 @@ class IssueCommentedNotification extends Notification implements ShouldQueue
         $this->comment = $comment;
     }
 
-    public function via($notifiable)
+    public function via()
     {
         return ['mail'];
     }
