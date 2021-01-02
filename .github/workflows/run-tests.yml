@@ -47,6 +47,15 @@ jobs:
           # {"http-basic":{"example.com":{"username":"login","password":"key"}}}
           COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
 
+      - name: Cache yarn dependencies
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: yarn-${{ hashFiles('yarn.lock') }}
+
+      - name: Yarn
+        run: yarn && yarn dev
+
       - name: Install graphicsmagick
         run: sudo apt-get install graphicsmagick
 
