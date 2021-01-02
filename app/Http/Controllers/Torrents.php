@@ -35,10 +35,6 @@ class Torrents extends Controller
                 return $builder->execute();
             })->raw();
 
-            if (\App::runningUnitTests()) {
-                dump($ids);
-            }
-
             event(new \App\Events\Stats\TorrentSearched);
 
             $torrents = $torrents->whereIn('id', \Arr::pluck($ids, 'id'));
