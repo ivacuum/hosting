@@ -71,7 +71,7 @@ class Vk
     {
         $params = array_merge($this->params(), $params);
 
-        if (0 === strpos($page, '-')) {
+        if (str_starts_with($page, '-')) {
             $params['owner_id'] = $page;
         } else {
             $params['domain'] = $page;
@@ -86,7 +86,7 @@ class Vk
     {
         $params = array_merge($this->params(), $params);
 
-        if (0 === strpos($page, '-')) {
+        if (str_starts_with($page, '-')) {
             $params['owner_id'] = $page;
         } else {
             $params['domain'] = $page;

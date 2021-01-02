@@ -131,12 +131,8 @@ class Domain extends Model
 
     /**
      * Добавление днс-записей через API Яндекса
-     *
-     * @param string $type
-     * @param array $input
-     * @return string
      */
-    public function addNsRecord($type, array $input)
+    public function addNsRecord(string $type, array $input)
     {
         if (!$this->yandex_user_id) {
             throw new \Exception('Домен не связан с учеткой в Яндексе');
@@ -218,13 +214,8 @@ class Domain extends Model
 
     /**
      * Редактирование днс-записей через API Яндекса
-     *
-     * @param int $id
-     * @param string $type
-     * @param array $input
-     * @return string
      */
-    public function editNsRecord($id, $type, array $input)
+    public function editNsRecord(int $id, string $type, array $input)
     {
         if (!$this->yandex_user_id) {
             throw new \Exception('Домен не связан с учеткой в Яндексе');
@@ -385,7 +376,7 @@ class Domain extends Model
     public function isExpired()
     {
         return $this->paid_till->year > 1970
-            && ($this->paid_till->isPast() || false !== strpos($this->ns, 'expired.reg.ru'));
+            && ($this->paid_till->isPast() || str_contains($this->ns, 'expired.reg.ru'));
     }
 
     public function isExpiringSoon()
@@ -397,7 +388,7 @@ class Domain extends Model
     {
         $domain = $domain ?: $this->domain;
 
-        return 0 === strpos($domain, 'xn--');
+        return str_starts_with($domain, 'xn--');
     }
 
     public function setServerNsRecords($server)
