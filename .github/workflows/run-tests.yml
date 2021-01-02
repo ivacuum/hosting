@@ -46,8 +46,8 @@ jobs:
 
       - name: debug
         run: |
-          whereis gm
-          cat /etc/sphinxsearch/sphinx.conf
+          dpkg -L sphinxsearch
+          ls -l /etc
 
       - name: Prepare Laravel Application
         run: |
