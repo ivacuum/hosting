@@ -47,7 +47,7 @@ jobs:
       - name: debug
         run: |
           dpkg -L sphinxsearch
-          ls -l /etc
+          cat /etc/sphinxsearch/sphinx.conf.dist
 
       - name: Prepare Laravel Application
         run: |
