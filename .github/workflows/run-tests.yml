@@ -72,6 +72,7 @@ jobs:
         run: |
           ls -l /var/lib/sphinxsearch/data
           sudo cat /var/log/sphinxsearch/sphinx.log
+          mysql -S /tmp/sphinx.sock "SELECT * FROM vac_torrents_v1 WHERE MATCH('RUS'); SHOW META;"
 
       - name: Run PHPUnit
         run: ./vendor/bin/phpunit
