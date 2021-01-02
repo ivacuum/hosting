@@ -6,6 +6,7 @@
     <div class="flex w-full">
       <input
         class="form-input rounded-r-none js-search-input"
+        type="search"
         name="q"
         value="{{ request('q') }}"
         enterkeyhint="search"

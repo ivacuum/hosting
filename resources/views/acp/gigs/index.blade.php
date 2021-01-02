@@ -30,7 +30,7 @@
       </td>
       <td>{{ $model->fullDate() }}</td>
       <td><a href="{{ $model->www() }}">{{ $model->slug }}</a></td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         {{ ViewHelper::number($model->views) ?: '' }}
       </td>
       <td>

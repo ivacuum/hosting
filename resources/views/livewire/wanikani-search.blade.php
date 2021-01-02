@@ -21,6 +21,7 @@
       <div class="flex w-full">
         <input
           class="form-input rounded-r-none js-search-input"
+          type="search"
           enterkeyhint="search"
           placeholder="@lang('Поиск...')"
           autocapitalize="none"
@@ -49,7 +50,7 @@
               <div class="text-4xl leading-none ja-image-shadow ja-svg">@svg (wk/$radical->meaning)</div>
             </div>
           @else
-            <div class="text-4xl flex-shrink-0 leading-none ja-shadow pb-1 whitespace-no-wrap">{{ $radical->character }}</div>
+            <div class="text-4xl flex-shrink-0 leading-none ja-shadow pb-1 whitespace-nowrap">{{ $radical->character }}</div>
           @endif
           <div class="flex-grow ja-shadow-light text-xs capitalize text-right">{{ $radical->meaning }}</div>
         </a>
@@ -59,7 +60,7 @@
           class="flex items-center bg-kanji border-kanji justify-between px-2 sm:px-4 py-2 text-white hover:text-grey-200"
           href="{{ $kanji->www() }}"
         >
-          <div class="text-4xl flex-shrink-0 leading-none ja-shadow pb-1 whitespace-no-wrap">{{ $kanji->character }}</div>
+          <div class="text-4xl flex-shrink-0 leading-none ja-shadow pb-1 whitespace-nowrap">{{ $kanji->character }}</div>
           <div class="flex-grow text-right">
             <div class="font-bold ja-shadow-light">{{ $kanji->importantReading() }}</div>
             <div class="ja-shadow-light text-xs capitalize">{{ $kanji->meaning }}</div>
@@ -71,7 +72,7 @@
           class="flex items-center bg-vocab border-vocab justify-between px-2 sm:px-4 py-2 text-white hover:text-grey-200"
           href="{{ $vocab->www() }}"
         >
-          <div class="text-4xl flex-shrink-0 leading-none ja-shadow pb-1 whitespace-no-wrap">{{ $vocab->character }}</div>
+          <div class="text-4xl flex-shrink-0 leading-none ja-shadow pb-1 whitespace-nowrap">{{ $vocab->character }}</div>
           <div class="flex-grow text-right">
             <div class="font-bold ja-shadow-light">{{ $vocab->kana }}</div>
             <div class="ja-shadow-light text-xs capitalize">{{ $vocab->meaning }}</div>

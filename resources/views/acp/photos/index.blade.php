@@ -56,7 +56,7 @@
         <div>{{ $model->lat }}</div>
         <div>{{ $model->lon }}</div>
       </td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         {{ ViewHelper::number($model->views) ?: '' }}
       </td>
       <td>

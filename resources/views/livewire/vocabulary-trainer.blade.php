@@ -5,11 +5,11 @@
     <div class="text-center">
       <div>
         <a
-          class="bg-vocab inline-block text-5xl leading-tight ja-shadow-light px-2 rounded whitespace-no-wrap text-white hover:text-grey-200"
+          class="bg-vocab inline-block text-5xl leading-tight ja-shadow-light px-2 rounded whitespace-nowrap text-white hover:text-grey-200"
           href="{{ $vocab->www() }}"
         >{{ $vocab->character }}</a>
       </div>
-      <div class="text-3xl text-gray-600 whitespace-no-wrap">
+      <div class="text-3xl text-gray-600 whitespace-nowrap">
         【{{ $hiragana ? $vocab->firstKana() : $vocab->toKatakana() }}】
       </div>
       <div class="text-2xl">
@@ -28,6 +28,7 @@
 
     <form class="mt-2" wire:submit.prevent="check">
       <input
+        type="text"
         tabindex="1"
         autocapitalize="none"
         autocomplete="off"
@@ -99,7 +100,7 @@
       @foreach ($history as $entry)
         <div class="inline-flex items-center">
           <a
-            class="bg-vocab inline-block text-2xl leading-tight ja-shadow-light px-2 rounded whitespace-no-wrap text-white hover:text-grey-200 mr-2"
+            class="bg-vocab inline-block text-2xl leading-tight ja-shadow-light px-2 rounded whitespace-nowrap text-white hover:text-grey-200 mr-2"
             href="{{ $entry['www'] }}"
           >{{ $entry['character'] }}</a>
           <span class="leading-tight">{{ $entry['meaning'] }}</span>

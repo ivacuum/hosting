@@ -6,7 +6,7 @@
 <div class="flex flex-wrap items-center">
   <h3 class="my-1 mr-3">
     @lang('Поездки')
-    <span class="text-base text-muted whitespace-no-wrap">{{ ViewHelper::number($models->total()) }}</span>
+    <span class="text-base text-muted whitespace-nowrap">{{ ViewHelper::number($models->total()) }}</span>
   </h3>
   <a class="btn btn-success my-1 mr-1" href="{{ path([App\Http\Controllers\MyTrips::class, 'create']) }}">
     @lang('acp.trips.create')
@@ -33,8 +33,8 @@
       <th></th>
       <th class="md:text-left">Дата начала</th>
       <th class="md:text-left">{{ ViewHelper::modelFieldTrans('trip', 'slug') }}</th>
-      <th class="md:text-right whitespace-no-wrap">@svg (eye)</th>
-      <th class="md:text-right whitespace-no-wrap">@svg (comment-o)</th>
+      <th class="md:text-right whitespace-nowrap">@svg (eye)</th>
+      <th class="md:text-right whitespace-nowrap">@svg (comment-o)</th>
       <th></th>
     </tr>
     </thead>
@@ -65,10 +65,10 @@
             {{ $model->slug }}
           @endif
         </td>
-        <td class="md:text-right whitespace-no-wrap">
+        <td class="md:text-right whitespace-nowrap">
           {{ ViewHelper::number($model->views) ?: '' }}
         </td>
-        <td class="md:text-right whitespace-no-wrap">
+        <td class="md:text-right whitespace-nowrap">
           {{ ViewHelper::number($model->comments_count) ?: '' }}
         </td>
         <td><a href="{{ UrlHelper::edit($controller, $model) }}">@svg (pencil)</a></td>

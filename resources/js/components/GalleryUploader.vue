@@ -27,9 +27,9 @@
       <div class="lg:w-4/6">
         <div>
           <div>Ссылка:</div>
-          <textarea class="form-textarea select-all" :rows="total" v-html="links"></textarea>
+          <textarea class="form-input select-all" :rows="total" v-html="links"></textarea>
           <div class="mt-2">Полная картинка:</div>
-          <input class="form-input select-all" :value="linksInTag">
+          <input class="form-input select-all" type="text" :value="linksInTag">
         </div>
       </div>
       <h3 class="mt-12">Индивидуальные ссылки</h3>
@@ -37,13 +37,13 @@
     <div class="grid lg:grid-cols-6 gap-8 mt-4">
       <template v-for="file in files">
         <div class="text-center">
-          <img class="inline-block screenshot" :src="file.thumbnail">
+          <img class="inline-block screenshot" :src="file.thumbnail" alt="">
         </div>
         <div class="lg:col-span-3">
           <div>Ссылка:</div>
-          <input class="form-input select-all" :value="file.original">
+          <input class="form-input select-all" type="text" :value="file.original">
           <div class="mt-2">Полная картинка:</div>
-          <input class="form-input select-all" :value="`[img]${file.original}[/img]`">
+          <input class="form-input select-all" type="text" :value="`[img]${file.original}[/img]`">
         </div>
         <div class="lg:col-span-2"></div>
       </template>

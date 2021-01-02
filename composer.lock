@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5031e5cef0517822d428223541545596",
+    "content-hash": "16185816f481bf166c886cdcdedeaf0a",
     "packages": [
         {
             "name": "brick/math",
@@ -1198,16 +1198,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "13.2.0",
+            "version": "14.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "1e79fa29216ef6b8668c97a6fdfe255c8ee2aa4b"
+                "reference": "ea9be36e9ac4c2f58ac0c7b00fcb418bf2bd0325"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/1e79fa29216ef6b8668c97a6fdfe255c8ee2aa4b",
-                "reference": "1e79fa29216ef6b8668c97a6fdfe255c8ee2aa4b",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/ea9be36e9ac4c2f58ac0c7b00fcb418bf2bd0325",
+                "reference": "ea9be36e9ac4c2f58ac0c7b00fcb418bf2bd0325",
                 "shasum": ""
             },
             "require": {
@@ -1261,9 +1261,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ivacuum/generic/issues",
-                "source": "https://github.com/ivacuum/generic/tree/13.2.0"
+                "source": "https://github.com/ivacuum/generic/tree/14.0.0"
             },
-            "time": "2021-01-02T16:43:40+00:00"
+            "time": "2021-01-02T20:21:00+00:00"
         },
         {
             "name": "laravel-notification-channels/telegram",

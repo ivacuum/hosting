@@ -16,6 +16,7 @@
 
     <form class="mt-2" wire:submit.prevent="check">
       <input
+        type="text"
         tabindex="1"
         autocapitalize="none"
         autocomplete="off"

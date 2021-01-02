@@ -16,9 +16,9 @@
             @else
               <span class="mr-1">{{ $model->title }}</span>
             @endif
-            <span class="text-xs text-muted mr-2 whitespace-no-wrap">{{ $model->localizedDateWithoutYear() }}</span>
+            <span class="text-xs text-muted mr-2 whitespace-nowrap">{{ $model->localizedDateWithoutYear() }}</span>
             @if ($model->isPublished() && $model->photos_count)
-              <span class="text-xs text-muted whitespace-no-wrap">
+              <span class="text-xs text-muted whitespace-nowrap">
                 @svg (picture-o)
                 {{ $model->photos_count }}
               </span>

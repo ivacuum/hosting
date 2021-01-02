@@ -61,7 +61,7 @@ export default {
     <exercise n="🇯🇵">
       <template slot="title">Using the framework "XY," translate the following sentences into Japanese.</template>
       <div class="my-4">Mr. Takeda is a teacher.</div>
-      <textarea class="form-textarea"></textarea>
+      <textarea class="form-input"></textarea>
     </exercise>
 
     <div style="padding-top: 100vh;"></div>

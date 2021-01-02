@@ -1,7 +1,7 @@
 <table class="table-stats table-adaptive">
   <thead>
     <tr>
-      <th><input type="checkbox" class="form-checkbox js-select-all" data-selector=".domains-checkbox"></th>
+      <th><input class="border-gray-300 js-select-all" type="checkbox" data-selector=".domains-checkbox"></th>
       <th>Домен</th>
       <th>Оплачен до</th>
       <th>Сервер</th>
@@ -13,7 +13,7 @@
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
       <td>
-        <input class="form-checkbox domains-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}">
+        <input class="border-gray-300 domains-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}">
       </td>
       <td>
         <a class="mr-1" href="http://{{ $model->domain }}/" target="_blank">
@@ -59,7 +59,7 @@
 <div class="my-4">
   <form class="flex flex-wrap js-batch-form" data-url="/acp/domains/batch" data-selector=".domains-checkbox">
     <div class="mr-1">
-      <select required class="form-select" name="action">
+      <select required class="form-input" name="action">
         <option value="">Выберите действие...</option>
         @if ($filter == 'trashed')
           <option value="restore">Восстановить</option>
@@ -76,19 +76,19 @@
 </div>
 
 <div>
-  <span class="whitespace-no-wrap mr-2">
+  <span class="whitespace-nowrap mr-2">
     <span class="bg-grey-600 text-white p-1 text-xs font-bold rounded mr-1">...</span>
     есть заметки
   </span>
-  <span class="whitespace-no-wrap mr-2">
+  <span class="whitespace-nowrap mr-2">
     <span class="bg-teal-600 text-white py-1 px-2 text-xs font-bold rounded mr-1">?</span>
     не в нашей панели
   </span>
-  <span class="whitespace-no-wrap mr-2">
+  <span class="whitespace-nowrap mr-2">
     <span class="bg-red-600 text-white py-1 px-2 text-xs font-bold rounded mr-1">$</span>
     просрочена оплата
   </span>
-  <span class="whitespace-no-wrap mr-2">
+  <span class="whitespace-nowrap mr-2">
     <span class="bg-orange-400 py-1 px-2 text-xs font-bold rounded mr-1">$</span>
     подходит срок оплаты
   </span>

@@ -10,7 +10,7 @@
         <a class="screenshot-link" href="@lng/gallery/view/{{ $image->id }}">
           <img class="inline-block screenshot" src="{{ $image->thumbnailUrl() }}" alt="">
         </a>
-        <div class="text-muted whitespace-no-wrap mt-4">
+        <div class="text-muted whitespace-nowrap mt-4">
           @svg (eye)
           {{ ViewHelper::number($image->views) }}
         </div>

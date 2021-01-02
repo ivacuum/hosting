@@ -22,7 +22,7 @@
               <label class="block cursor-pointer py-2">
                 <input
                   :id="`column_${i - 1}`"
-                  class="form-checkbox cursor-pointer"
+                  class="border-gray-300 cursor-pointer"
                   type="checkbox"
                   :value="i - 1"
                   v-model="checkedColumns"
@@ -50,6 +50,7 @@
           <div>
             <input
               class="form-input text-center"
+              type="text"
               autocapitalize="none"
               autocomplete="off"
               autocorrect="off"

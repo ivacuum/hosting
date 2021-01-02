@@ -137,14 +137,14 @@
           @if (empty($noLanguageSelector))
             <div class="mr-3">
               @ru
-                <a class="flex flex-wrap items-center whitespace-no-wrap" href="{{ url("en/{$requestUri}") }}" lang="en">
+                <a class="flex flex-wrap items-center whitespace-nowrap" href="{{ url("en/{$requestUri}") }}" lang="en">
                   <div class="mr-1">
                     @svg (flag/en)
                   </div>
                   <div>In English</div>
                 </a>
               @en
-                <a class="flex flex-wrap items-center whitespace-no-wrap" href="{{ url($requestUri) }}" lang="ru">
+                <a class="flex flex-wrap items-center whitespace-nowrap" href="{{ url($requestUri) }}" lang="ru">
                   <div class="mr-1">
                     @svg (flag/ru)
                   </div>

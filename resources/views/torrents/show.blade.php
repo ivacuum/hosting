@@ -65,7 +65,7 @@
   <?php /** @var \App\Torrent $row */ ?>
   @foreach ($relatedTorrents as $row)
     <?php $category = TorrentCategoryHelper::find($row->category_id) ?>
-    <div class="flex flex-wrap md:flex-no-wrap justify-center md:justify-start torrents-list-container antialiased js-torrents-views-observer" data-id="{{ $row->id }}">
+    <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start torrents-list-container antialiased js-torrents-views-observer" data-id="{{ $row->id }}">
       <div class="flex-shrink-0 w-8 torrent-icon order-1 md:order-none mr-1 md:text-2xl" title="{{ $category['title'] }}">
         <?php $icon = $category['icon'] ?? 'file-text-o' ?>
         @svg ($icon)
@@ -79,7 +79,7 @@
           </div>
         @endif
       </a>
-      <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center md:text-left whitespace-no-wrap js-magnet"
+      <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center md:text-left whitespace-nowrap js-magnet"
          href="{{ $row->magnet() }}"
          title="@lang('Скачать')"
          data-action="{{ to('torrents/{torrent}/magnet', $row) }}"
@@ -87,7 +87,7 @@
         @svg (magnet)
         <span class="js-magnet-counter">{{ $row->clicks ?: '' }}</span>
       </a>
-      <div class="flex-shrink-0 text-center md:text-left whitespace-no-wrap torrents-list-size">{{ ViewHelper::size($row->size) }}</div>
+      <div class="flex-shrink-0 text-center md:text-left whitespace-nowrap torrents-list-size">{{ ViewHelper::size($row->size) }}</div>
     </div>
   @endforeach
 @endif

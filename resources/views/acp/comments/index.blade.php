@@ -43,7 +43,7 @@
         <div class="whitespace-pre-line">{{ $model->html }}</div>
         <div class="text-xs text-muted">{{ $model->rel_type }} #{{ $model->rel_id }}</div>
       </td>
-      <td class="whitespace-no-wrap">{{ ViewHelper::dateShort($model->created_at) }}</td>
+      <td class="whitespace-nowrap">{{ ViewHelper::dateShort($model->created_at) }}</td>
       <td>
         @if ($model->status === App\Comment::STATUS_PUBLISHED)
           <a href="{{ $model->www() }}">

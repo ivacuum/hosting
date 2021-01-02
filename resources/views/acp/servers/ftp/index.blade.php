@@ -50,8 +50,8 @@
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
     <div class="flex w-full">
-      <input class="form-input mr-1" name="file" value="{{ old('file') }}">
-      <button class="btn btn-default whitespace-no-wrap">
+      <input class="form-input mr-1" type="text" name="file" value="{{ old('file') }}">
+      <button class="btn btn-default whitespace-nowrap">
         Создать файл
       </button>
     </div>
@@ -64,8 +64,8 @@
     @csrf
 
     <div class="flex w-full">
-      <input class="form-input mr-1" name="dir" value="{{ old('dir') }}">
-      <button class="btn btn-default whitespace-no-wrap">
+      <input class="form-input mr-1" type="text" name="dir" value="{{ old('dir') }}">
+      <button class="btn btn-default whitespace-nowrap">
         Создать папку
       </button>
     </div>

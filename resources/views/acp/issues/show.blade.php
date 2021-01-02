@@ -48,7 +48,7 @@
     <div class="my-2">
       <textarea
         required
-        class="form-textarea"
+        class="form-input"
         rows="4"
         placeholder="Текст ответа..."
         name="text"

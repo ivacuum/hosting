@@ -15,7 +15,7 @@
       <div class="font-bold">@lang('Тема оформления')</div>
       <label class="flex items-center">
         <input
-          class="form-radio mr-2"
+          class="border-gray-300 mr-2"
           type="radio"
           name="theme"
           value="{{ App\User::THEME_LIGHT }}"
@@ -25,7 +25,7 @@
       </label>
       <label class="flex items-center">
         <input
-          class="form-radio mr-2"
+          class="border-gray-300 mr-2"
           type="radio"
           name="theme"
           value="{{ App\User::THEME_DARK }}"
@@ -41,7 +41,7 @@
       <input type="hidden" name="torrent_short_title" value="0">
       <label class="flex items-center">
         <input
-          class="form-checkbox mr-2"
+          class="border-gray-300 mr-2"
           type="checkbox"
           name="torrent_short_title"
           value="1"
@@ -60,7 +60,7 @@
       @foreach (Arr::sort(array_keys(config('cfg.locales'))) as $loc)
         <label class="flex items-center">
           <input
-            class="form-radio mr-2"
+            class="border-gray-300 mr-2"
             type="radio"
             name="locale"
             value="{{ $loc }}"
@@ -76,7 +76,7 @@
     <input type="hidden" name="notify_gigs" value="{{ App\User::NOTIFY_NO }}">
     <label class="flex items-center">
       <input
-        class="form-checkbox mr-2"
+        class="border-gray-300 mr-2"
         type="checkbox"
         name="notify_gigs"
         value="{{ App\User::NOTIFY_MAIL }}"
@@ -88,7 +88,7 @@
     <input type="hidden" name="notify_news" value="{{ App\User::NOTIFY_NO }}">
     <label class="flex items-center">
       <input
-        class="form-checkbox mr-2"
+        class="border-gray-300 mr-2"
         type="checkbox"
         name="notify_news"
         value="{{ App\User::NOTIFY_MAIL }}"
@@ -101,7 +101,7 @@
       <input type="hidden" name="notify_trips" value="{{ App\User::NOTIFY_NO }}">
       <label class="flex items-center">
         <input
-          class="form-checkbox mr-2"
+          class="border-gray-300 mr-2"
           type="checkbox"
           name="notify_trips"
           value="{{ App\User::NOTIFY_MAIL }}"

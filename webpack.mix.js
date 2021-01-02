@@ -1,10 +1,11 @@
 const mix = require('laravel-mix')
 
-mix.js('resources/js/app.js', 'public/assets')
+mix.js('resources/js/app.js', 'public/assets').vue()
   .sass('resources/sass/app.scss', 'public/assets')
   .postCss('resources/css/tailwind.pcss', 'public/assets', [
-    require('tailwindcss'),
+    require('postcss-import'),
     require('autoprefixer'),
+    require('tailwindcss'),
   ])
 
   .copy('resources/js/pwa/service-worker.js', 'public/assets')
@@ -38,8 +39,4 @@ mix.js('resources/js/app.js', 'public/assets')
     processCssUrls: false,
   })
 
-  .webpackConfig({
-    output: {
-      chunkFilename: 'assets/chunk-[name].js?id=[chunkhash]',
-    },
-  })
+  .webpackConfig(require('./webpack.config'))

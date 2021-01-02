@@ -1,62 +1,11 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   purge: [
     './resources/js/**/*.vue',
     './resources/views/**/*.blade.php',
   ],
   theme: {
-    customForms: (theme) => ({
-      default: {
-        checkbox: {
-          borderColor: theme('colors.gray.300'),
-        },
-        input: {
-          borderColor: theme('colors.gray.300'),
-          borderRadius: theme('borderRadius.default'),
-          boxShadow: 'inset 0 1px 1px rgba(0, 0, 0, 0.075)',
-          display: 'block',
-          color: theme('colors.gray.700'),
-          paddingTop: '0.375rem',
-          paddingBottom: '0.375rem',
-          width: '100%',
-          '&::placeholder': {
-            color: theme('colors.gray.400'),
-          },
-          '&:focus': {
-            borderColor: 'hsla(208, 57%, 71%)',
-            boxShadow: 'inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 0.2rem rgba(51, 122, 183, 0.25)',
-          },
-        },
-        radio: {
-          borderColor: theme('colors.gray.300'),
-        },
-        select: {
-          borderColor: theme('colors.gray.300'),
-          boxShadow: 'inset 0 1px 1px rgba(0, 0, 0, 0.075)',
-          color: theme('colors.gray.700'),
-          display: 'block',
-          paddingTop: '0.375rem',
-          paddingBottom: '0.375rem',
-          width: '100%',
-          '&:focus': {
-            borderColor: 'hsla(208, 57%, 71%)',
-            boxShadow: 'inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 0.2rem rgba(51, 122, 183, 0.25)',
-          },
-        },
-        textarea: {
-          borderColor: theme('colors.gray.300'),
-          boxShadow: 'inset 0 1px 1px rgba(0, 0, 0, 0.075)',
-          color: theme('colors.gray.700'),
-          display: 'block',
-          paddingTop: '0.375rem',
-          paddingBottom: '0.375rem',
-          width: '100%',
-          '&:focus': {
-            borderColor: 'hsla(208, 57%, 71%)',
-            boxShadow: 'inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 0.2rem rgba(51, 122, 183, 0.25)',
-          },
-        },
-      },
-    }),
     extend: {
       colors: {
         current: 'currentColor',
@@ -88,6 +37,7 @@ module.exports = {
           500: '#ed8936',
           600: '#dd6b20',
         },
+        teal: colors.teal,
 
         // Socials
         facebook: {
@@ -208,8 +158,7 @@ module.exports = {
     placeholderOpacity: false,
   },
   plugins: [
-    // eslint-disable-next-line global-require
-    require('@tailwindcss/ui'),
-    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
+    // require('@tailwindcss/typography'),
   ],
 }

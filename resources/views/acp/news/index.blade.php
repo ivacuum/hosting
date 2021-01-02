@@ -30,10 +30,10 @@
           </span>
         @endif
       </td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         {{ ViewHelper::number($model->views) ?: '' }}
       </td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         <a href="{{ path([App\Http\Controllers\Acp\Comments::class, 'index'], [$model->getForeignKey() => $model]) }}">
           {{ ViewHelper::number($model->comments_count) ?: '' }}
         </a>

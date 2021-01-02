@@ -37,6 +37,7 @@
       <div class="flex w-full">
         <input
           class="form-input rounded-r-none"
+          type="text"
           enterkeyhint="send"
           placeholder="Сообщение в чат..."
           wire:model.lazy="text"

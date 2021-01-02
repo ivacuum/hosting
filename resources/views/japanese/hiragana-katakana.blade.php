@@ -28,9 +28,9 @@
 <div class="mt-12 max-w-600px">
   <div class="h3 mt-12">@lang('Обратная связь')</div>
   @ru
-    <p>Поделитесь своим опытом использования тренажера или задайте вопрос. Мы постараемся обработать информацию и сделать тренажер еще лучше. <span class="whitespace-no-wrap" lang="ja">ありがとうございます。</span></p>
+    <p>Поделитесь своим опытом использования тренажера или задайте вопрос. Мы постараемся обработать информацию и сделать тренажер еще лучше. <span class="whitespace-nowrap" lang="ja">ありがとうございます。</span></p>
   @en
-    <p>Use the form below to ask a question or share your thoughts. We will use your feedback to make the trainer better. There are certainly things to improve. <span class="whitespace-no-wrap" lang="ja">ありがとうございます。</span></p>
+    <p>Use the form below to ask a question or share your thoughts. We will use your feedback to make the trainer better. There are certainly things to improve. <span class="whitespace-nowrap" lang="ja">ありがとうございます。</span></p>
   @endru
   <feedback-form
     email="{{ Auth::user()->email ?? '' }}"

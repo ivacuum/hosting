@@ -1,6 +1,6 @@
 <div class="mb-4">
   <label class="font-bold input-required">Рубрика</label>
-  <select required class="form-select" name="category_id">
+  <select required class="form-input" name="category_id">
     <option value="0">Выберите рубрику...</option>
     @foreach (TorrentCategoryHelper::tree() as $id => $category)
       <option value="{{ $id }}" {{ $id == old('category_id', @$model->category_id) ? 'selected' : '' }} {{ TorrentCategoryHelper::canPost($id) ? '' : 'disabled' }}>

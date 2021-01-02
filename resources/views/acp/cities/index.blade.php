@@ -26,12 +26,12 @@
       <td><a href="{{ $model->wwwAcp() }}">{{ $model->title }}</a></td>
       <td><a href="{{ $model->www() }}">{{ $model->slug }}</a></td>
       <td class="text-muted">{{ $model->iata }}</td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         <a href="{{ $model->wwwAcpTrips() }}">
           {{ ViewHelper::number($model->trips_count) ?: '' }}
         </a>
       </td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         {{ ViewHelper::number($model->views) ?: '' }}
       </td>
       <td class="tooltipped tooltipped-n text-red-600" aria-label="Геолокация не задана">

@@ -28,7 +28,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_9467.jpg'])
 
 @ru
-  <p><span class="whitespace-no-wrap">400 ¥</span> за разовый вход в сад и <span class="whitespace-no-wrap">2050 ¥</span> безлимит на год.</p>
+  <p><span class="whitespace-nowrap">400 ¥</span> за разовый вход в сад и <span class="whitespace-nowrap">2050 ¥</span> безлимит на год.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9470.jpg'])
 

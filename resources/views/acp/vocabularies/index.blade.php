@@ -18,11 +18,11 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
   <tr>
-    <th class="whitespace-no-wrap">
+    <th class="whitespace-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'level', 'order' => 'asc'])
     </th>
-    <th class="whitespace-no-wrap">{{ ViewHelper::modelFieldTrans($modelTpl, 'character') }}</th>
-    <th class="whitespace-no-wrap">
+    <th class="whitespace-nowrap">{{ ViewHelper::modelFieldTrans($modelTpl, 'character') }}</th>
+    <th class="whitespace-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'meaning', 'order' => 'asc'])
     </th>
     <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'sentences') }}</th>
@@ -32,7 +32,7 @@
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
       <td>{{ $model->level }}</td>
-      <td class="whitespace-no-wrap">
+      <td class="whitespace-nowrap">
         <a
           class="bg-vocab block pb-1 px-2 rounded text-center text-white hover:text-grey-200"
           href="{{ path([$controller, 'show'], $model) }}"

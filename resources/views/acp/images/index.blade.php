@@ -29,7 +29,7 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
     <tr>
-      <th><input type="checkbox" class="form-checkbox js-select-all" data-selector=".models-checkbox"></th>
+      <th><input class="border-gray-300 js-select-all" type="checkbox" data-selector=".models-checkbox"></th>
       <x-th-numeric-sortable key="id"/>
       <x-th key="user_id"/>
       <x-th key="slug"/>
@@ -42,7 +42,7 @@
   <tbody>
     @foreach ($models as $model)
       <tr id="image_{{ $model->id }}">
-        <td><input class="form-checkbox models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
+        <td><input class="border-gray-300 models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
         <td class="md:text-right">{{ $model->id }}</td>
         <td class="md:text-right">
           <a href="{{ UrlHelper::filter(['user_id' => $model->user_id]) }}">
@@ -54,8 +54,8 @@
             <img class="inline-block screenshot" src="{{ $model->thumbnailSecretUrl() }}" alt="">
           </a>
         </td>
-        <td class="md:text-right text-muted whitespace-no-wrap">{{ ViewHelper::size($model->size) }}</td>
-        <td class="md:text-right whitespace-no-wrap">
+        <td class="md:text-right text-muted whitespace-nowrap">{{ ViewHelper::size($model->size) }}</td>
+        <td class="md:text-right whitespace-nowrap">
           @if ($model->views > 3000)
             <span class="flex bg-greenish-600 text-white px-2 text-xs font-bold rounded">{{ ViewHelper::number($model->views) }}</span>
           @else

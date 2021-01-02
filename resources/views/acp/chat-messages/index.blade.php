@@ -17,7 +17,7 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
   <tr>
-    <th><input type="checkbox" class="form-checkbox js-select-all" data-selector=".models-checkbox"></th>
+    <th><input class="border-gray-300 js-select-all" type="checkbox" data-selector=".models-checkbox"></th>
     <th class="md:text-right">ID</th>
     <th>Автор</th>
     <th>Текст</th>
@@ -28,7 +28,7 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
-      <td><input class="form-checkbox models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
+      <td><input class="border-gray-300 models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
       <td class="md:text-right">
         <a href="{{ $model->wwwAcp() }}">
           {{ $model->id }}
@@ -49,7 +49,7 @@
           </span>
         @endif
       </td>
-      <td class="whitespace-no-wrap">{{ ViewHelper::dateShort($model->created_at) }}</td>
+      <td class="whitespace-nowrap">{{ ViewHelper::dateShort($model->created_at) }}</td>
     </tr>
   @endforeach
   </tbody>

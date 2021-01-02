@@ -18,17 +18,17 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="md:text-right whitespace-no-wrap">
+    <th class="md:text-right whitespace-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'id'])
     </th>
     <th>@lang('model.author')</th>
-    <th class="md:text-right whitespace-no-wrap">
+    <th class="md:text-right whitespace-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
     </th>
-    <th class="md:text-right whitespace-no-wrap">
+    <th class="md:text-right whitespace-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
     </th>
-    <th class="md:text-right whitespace-no-wrap">
+    <th class="md:text-right whitespace-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'clicks', 'svg' => 'magnet'])
     </th>
     <th></th>
@@ -45,15 +45,15 @@
           {{ $model->user->displayName() }}
         </a>
       </td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         {{ ViewHelper::number($model->views) ?: '' }}
       </td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         <a href="{{ path([App\Http\Controllers\Acp\Comments::class, 'index'], [$model->getForeignKey() => $model]) }}">
           {{ ViewHelper::number($model->comments_count) ?: '' }}
         </a>
       </td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         {{ ViewHelper::number($model->clicks) ?: '' }}
       </td>
       <td>

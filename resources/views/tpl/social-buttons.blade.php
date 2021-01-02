@@ -1,4 +1,4 @@
-<div class="flex flex-wrap sm:flex-no-wrap {{ $class ?? '' }}">
+<div class="flex flex-wrap sm:flex-nowrap {{ $class ?? '' }}">
   <a
     class="btn bg-telegram-600 text-xl py-1 rounded-none text-white hover:bg-telegram-700 hover:text-white w-20"
     href="https://t.me/share/url?url={{ rawurlencode($url) }}"

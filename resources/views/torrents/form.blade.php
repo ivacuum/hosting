@@ -1,5 +1,5 @@
 <div class="mb-4">
-  <select required class="form-select" name="category_id">
+  <select required class="form-input" name="category_id">
     <option value="">Выберите рубрику...</option>
     @foreach (TorrentCategoryHelper::tree() as $id => $category)
       <option value="{{ $id }}" {{ $id == old('category_id', @$model->category_id) ? 'selected' : '' }} {{ !empty($category['children']) ? 'disabled' : '' }}>
@@ -20,6 +20,7 @@
 <div class="mb-4">
   <input
     required
+    type="text"
     class="form-input"
     name="input"
     value="{{ old('input') }}"
