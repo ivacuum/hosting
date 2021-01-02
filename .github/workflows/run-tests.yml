@@ -43,7 +43,7 @@ jobs:
 
       - name: Start sphinxsearch
         run: |
-          cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
+          sudo cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
           sudo systemctl start sphinxsearch.service
 
       - name: Prepare Laravel Application
