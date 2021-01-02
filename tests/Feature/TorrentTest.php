@@ -90,7 +90,7 @@ class TorrentTest extends TestCase
             ->assertHasCustomTitle();
     }
 
-    public function estRequestRelease()
+    public function testRequestRelease()
     {
         \Queue::fake();
 
