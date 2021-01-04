@@ -23,7 +23,7 @@
           autocomplete="email"
           placeholder="@lang('coupons.your_email')"
         >
-        <button class="btn btn-primary -ml-px rounded-l-none whitespace-no-wrap">@lang('coupons.get_promocode')</button>
+        <button class="btn btn-primary -ml-px rounded-l-none whitespace-nowrap">@lang('coupons.get_promocode')</button>
       </div>
       <x-invalid-feedback field="email"/>
     </div>

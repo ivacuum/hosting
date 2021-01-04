@@ -13,7 +13,7 @@
 <livewire:youtube title="Summer Swag Show" v="xqusJtwPC2k"/>
 
 @ru
-  <p>Типов билетов всего два: стоячие и сидячие. Стоимость стоячих мест поближе к сцене составляла <span class="whitespace-no-wrap">132&thinsp;000</span> корейских вон, подальше — за <span class="whitespace-no-wrap">121&thinsp;000</span> вон. Те же две цены для сидячих мест на трибунах по центру и по краям. Курс корейской воны относительно российского рубля с зимы упал на 15% — хорошая скидка вышла.</p>
+  <p>Типов билетов всего два: стоячие и сидячие. Стоимость стоячих мест поближе к сцене составляла <span class="whitespace-nowrap">132&thinsp;000</span> корейских вон, подальше — за <span class="whitespace-nowrap">121&thinsp;000</span> вон. Те же две цены для сидячих мест на трибунах по центру и по краям. Курс корейской воны относительно российского рубля с зимы упал на 15% — хорошая скидка вышла.</p>
 @endru
 
 @ru
@@ -27,7 +27,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_4309.jpg'])
 
 @ru
-  <p>Лавки с мерчем. Удивительно, но стилизованные кроксы тут всего <span class="whitespace-no-wrap">38 евро</span> или <span class="whitespace-no-wrap">2800 ₽</span>. Это дешевле, чем довелось купить в Москве на той же неделе. Футболка всего <span class="whitespace-no-wrap">1050 ₽</span> или <span class="whitespace-no-wrap">14 евро</span>.</p>
+  <p>Лавки с мерчем. Удивительно, но стилизованные кроксы тут всего <span class="whitespace-nowrap">38 евро</span> или <span class="whitespace-nowrap">2800 ₽</span>. Это дешевле, чем довелось купить в Москве на той же неделе. Футболка всего <span class="whitespace-nowrap">1050 ₽</span> или <span class="whitespace-nowrap">14 евро</span>.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4311.jpg'])
 

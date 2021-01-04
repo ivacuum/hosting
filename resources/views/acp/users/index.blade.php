@@ -37,16 +37,16 @@
       <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'avatar') }}</th>
     @endif
     <th>Активен</th>
-    <th class="md:text-right whitespace-no-wrap">
+    <th class="md:text-right whitespace-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
     </th>
-    <th class="md:text-right whitespace-no-wrap">
+    <th class="md:text-right whitespace-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'images_count', 'svg' => 'picture-o'])
     </th>
-    <th class="md:text-right whitespace-no-wrap">
+    <th class="md:text-right whitespace-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'torrents_count', 'svg' => 'magnet'])
     </th>
-    <th class="md:text-right whitespace-no-wrap">
+    <th class="md:text-right whitespace-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'trips_count', 'svg' => 'plane'])
     </th>
     <th>Дата реги</th>
@@ -77,22 +77,22 @@
           Да
         @endif
       </td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         <a href="{{ path([App\Http\Controllers\Acp\Comments::class, 'index'], [$model->getForeignKey() => $model]) }}">
           {{ ViewHelper::number($model->comments_count) ?: '' }}
         </a>
       </td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         <a href="{{ path([App\Http\Controllers\Acp\Images::class, 'index'], [$model->getForeignKey() => $model]) }}">
           {{ ViewHelper::number($model->images_count) ?: '' }}
         </a>
       </td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         <a href="{{ path([App\Http\Controllers\Acp\Torrents::class, 'index'], [$model->getForeignKey() => $model]) }}">
           {{ ViewHelper::number($model->torrents_count) ?: '' }}
         </a>
       </td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         <a href="{{ path([App\Http\Controllers\Acp\Trips::class, 'index'], [$model->getForeignKey() => $model]) }}">
           {{ ViewHelper::number($model->trips_count) ?: '' }}
         </a>

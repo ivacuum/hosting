@@ -7,7 +7,7 @@
     <div class="lg:sticky lg:top-4">
       <nav>
         @foreach ($tree as $id => $category)
-          <h4 class="{{ $loop->first ? '' : 'mt-6' }} whitespace-no-wrap">
+          <h4 class="{{ $loop->first ? '' : 'mt-6' }} whitespace-nowrap">
             @if (!empty($categoryId) && $id == $categoryId)
               <mark>{{ $category['title'] }}</mark>
             @else
@@ -17,7 +17,7 @@
           @if (!empty($category['children']))
             @foreach ($category['children'] as $id => $child)
               @continue (empty($stats[$id]))
-              <div class="whitespace-no-wrap">
+              <div class="whitespace-nowrap">
                 @if (!empty($categoryId) && $id == $categoryId)
                   <mark>{{ $child['title'] }}</mark>
                 @else
@@ -80,7 +80,7 @@
           <?php $lastDate = $torrent->registered_at ?>
         @endif
         <?php $category = TorrentCategoryHelper::find($torrent->category_id) ?>
-        <div class="flex flex-wrap md:flex-no-wrap justify-center md:justify-start torrents-list-container antialiased js-torrents-views-observer" data-id="{{ $torrent->id }}">
+        <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start torrents-list-container antialiased js-torrents-views-observer" data-id="{{ $torrent->id }}">
           <div class="flex-shrink-0 w-8 torrent-icon order-1 md:order-none mr-1 md:text-2xl" title="{{ $category['title'] }}">
             <?php $icon = $category['icon'] ?? 'file-text-o' ?>
             @svg ($icon)
@@ -94,7 +94,7 @@
               </div>
             @endif
           </a>
-          <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center md:text-left whitespace-no-wrap js-magnet"
+          <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center md:text-left whitespace-nowrap js-magnet"
              href="{{ $torrent->magnet() }}"
              title="@lang('Скачать')"
              data-action="{{ to('torrents/{torrent}/magnet', $torrent) }}"
@@ -102,7 +102,7 @@
             @svg (magnet)
             <span class="js-magnet-counter">{{ $torrent->clicks ?: '' }}</span>
           </a>
-          <div class="flex-shrink-0 text-center md:text-left whitespace-no-wrap torrents-list-size">{{ ViewHelper::size($torrent->size) }}</div>
+          <div class="flex-shrink-0 text-center md:text-left whitespace-nowrap torrents-list-size">{{ ViewHelper::size($torrent->size) }}</div>
         </div>
       @endforeach
 
@@ -185,6 +185,7 @@
             <input
               required
               class="form-input"
+              type="text"
               name="query"
               value="{{ old('query', $q) }}"
             >
@@ -194,7 +195,7 @@
           <div class="mb-4">
             <label class="font-bold">Комментарий</label>
             <textarea
-              class="form-textarea"
+              class="form-input"
               rows="4"
               name="comment"
             ></textarea>

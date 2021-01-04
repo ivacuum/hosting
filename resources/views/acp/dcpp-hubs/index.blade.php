@@ -8,7 +8,7 @@
   <tr>
     <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'title') }}</th>
     <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'address') }}</th>
-    <th class="md:text-right whitespace-no-wrap">{{ ViewHelper::modelFieldTrans($modelTpl, 'clicks') }}</th>
+    <th class="md:text-right whitespace-nowrap">{{ ViewHelper::modelFieldTrans($modelTpl, 'clicks') }}</th>
     <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'is_online') }}</th>
   </tr>
   </thead>
@@ -21,7 +21,7 @@
         </a>
       </td>
       <td>{{ $model->externalLink() }}</td>
-      <td class="md:text-right whitespace-no-wrap">{{ ViewHelper::number($model->clicks) }}</td>
+      <td class="md:text-right whitespace-nowrap">{{ ViewHelper::number($model->clicks) }}</td>
       <td>
         @if ($model->is_online)
           <span class="text-green-600">

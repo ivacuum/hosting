@@ -24,7 +24,7 @@
     <input type="hidden" name="gigs" value="{{ App\User::NOTIFY_NO }}">
     <label class="flex items-center">
       <input
-        class="form-checkbox mr-2"
+        class="border-gray-300 mr-2"
         type="checkbox"
         name="gigs"
         value="{{ App\User::NOTIFY_MAIL }}"
@@ -36,7 +36,7 @@
     <input type="hidden" name="news" value="{{ App\User::NOTIFY_NO }}">
     <label class="flex items-center">
       <input
-        class="form-checkbox mr-2"
+        class="border-gray-300 mr-2"
         type="checkbox"
         name="news"
         value="{{ App\User::NOTIFY_MAIL }}"
@@ -49,7 +49,7 @@
       <input type="hidden" name="trips" value="{{ App\User::NOTIFY_NO }}">
       <label class="flex items-center">
         <input
-          class="form-checkbox mr-2"
+          class="border-gray-300 mr-2"
           type="checkbox"
           name="trips"
           value="{{ App\User::NOTIFY_MAIL }}"

@@ -20,17 +20,17 @@
       <td><img class="block flag-16 svg-shadow" src="{{ $model->flagUrl() }}" alt=""></td>
       <td><a href="{{ $model->wwwAcp() }}">{{ $model->title }}</a></td>
       <td><a href="{{ $model->www() }}">{{ $model->slug }}</a></td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         <a href="{{ $model->wwwAcpCities() }}">
           {{ ViewHelper::number($model->cities_count) ?: '' }}
         </a>
       </td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         <a href="{{ $model->wwwAcpTrips() }}">
           {{ ViewHelper::number($model->trips_count) ?: '' }}
         </a>
       </td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         {{ ViewHelper::number($model->views) ?: '' }}
       </td>
     </tr>

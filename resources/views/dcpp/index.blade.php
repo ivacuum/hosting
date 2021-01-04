@@ -60,7 +60,7 @@
         <li><strong>Быстро</strong>: клиенты соединяются напрямую, за счет чего достигается скорость, большая, чем при работе через сетевое окружение или FTP.</li>
         <li><strong>Надежно</strong>: проверка контрольной суммы файла гарантирует, что файл не «побился» при скачивании.</li>
         <li><strong>Экономно</strong>: абсолютно бесплатный доступ к терабайтам разнообразнейших данных.</li>
-        <li><strong>Универсально</strong>: клиенты на любой вкус с различными возможностями и под любую ОС: от <span class="whitespace-no-wrap">@svg (windows) Windows</span> до <span class="whitespace-no-wrap">@svg (apple) macOS</span>.</li>
+        <li><strong>Универсально</strong>: клиенты на любой вкус с различными возможностями и под любую ОС: от <span class="whitespace-nowrap">@svg (windows) Windows</span> до <span class="whitespace-nowrap">@svg (apple) macOS</span>.</li>
       </ul>
     @en
       <h2 class="mt-12">Using DC++ is</h2>

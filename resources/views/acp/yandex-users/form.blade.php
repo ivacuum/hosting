@@ -6,7 +6,7 @@
   @foreach ($domains as $domain)
     <label class="flex items-center">
       <input
-        class="form-checkbox mr-2"
+        class="border-gray-300 mr-2"
         type="checkbox"
         name="domains[{{ $domain->id }}]"
         value="1"

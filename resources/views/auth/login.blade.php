@@ -45,6 +45,7 @@
       <input
         required
         class="form-input"
+        type="text"
         tabindex="1"
         name="email"
         value="{{ old('email') }}"
@@ -78,7 +79,7 @@
     <div class="flex items-center justify-between">
       <div>
         <label class="flex items-center">
-          <input class="form-checkbox mr-2" tabindex="3" type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}>
+          <input class="border-gray-300 mr-2" tabindex="3" type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}>
           @lang('auth.dont_remember')
         </label>
       </div>

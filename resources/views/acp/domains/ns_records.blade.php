@@ -39,10 +39,10 @@
     </thead>
     <tr class="ns-record-container" data-action="{{ path([$controller, 'addNsRecord'], $model) }}">
       <td>
-        <input class="form-input text-right" name="subdomain" value="@">
+        <input class="form-input text-right" type="text" name="subdomain" value="@">
       </td>
       <td>
-        <select class="form-select" name="type">
+        <select class="form-input" name="type">
           <option value="A" selected>A</option>
           <option value="CNAME">CNAME</option>
           <option value="AAAA">AAAA</option>
@@ -53,10 +53,10 @@
         </select>
       </td>
       <td>
-        <input class="form-input" name="content">
-        <input class="form-input mt-1" name="priority" placeholder="priority [MX, SRV]">
-        <input class="form-input mt-1" name="port" placeholder="port [SRV]">
-        <input class="form-input mt-1" name="weight" placeholder="weight [SRV]">
+        <input class="form-input" type="text" name="content">
+        <input class="form-input mt-1" type="text" name="priority" placeholder="priority [MX, SRV]">
+        <input class="form-input mt-1" type="text" name="port" placeholder="port [SRV]">
+        <input class="form-input mt-1" type="text" name="weight" placeholder="weight [SRV]">
       </td>
       <td>
         <a class="btn btn-default js-ns-record-add" href="#">добавить</a>
@@ -69,7 +69,7 @@
             {{ $record->subdomain }}
           </div>
           <div hidden class="edit">
-            <input class="form-input text-right" name="subdomain" value="{{ $record->subdomain }}">
+            <input class="form-input text-right" type="text" name="subdomain" value="{{ $record->subdomain }}">
           </div>
         </td>
         <td class="text-center">
@@ -97,19 +97,19 @@
             @endif
           </div>
           <div hidden class="edit">
-            <input class="form-input" name="content" value="{{ $record->content }}" {{ $record->type == 'SOA' ? 'readonly' : '' }}>
+            <input class="form-input" type="text" name="content" value="{{ $record->content }}" {{ $record->type == 'SOA' ? 'readonly' : '' }}>
             @if ($record->priority > 0)
-              <input class="form-input mt-1" name="priority" value="{{ $record->priority }}" placeholder="priority">
+              <input class="form-input mt-1" type="text" name="priority" value="{{ $record->priority }}" placeholder="priority">
             @endif
             @if ($record->type == 'SRV')
-              <input class="form-input mt-1" name="port" value="{{ $record->port }}" placeholder="port">
-              <input class="form-input mt-1" name="weight" value="{{ $record->weight }}" placeholder="weight">
+              <input class="form-input mt-1" type="text" name="port" value="{{ $record->port }}" placeholder="port">
+              <input class="form-input mt-1" type="text" name="weight" value="{{ $record->weight }}" placeholder="weight">
             @endif
             @if ($record->type == 'SOA')
-              <input class="form-input mt-1" name="retry" value="{{ $record->retry }}" placeholder="retry">
-              <input class="form-input mt-1" name="refresh" value="{{ $record->refresh }}" placeholder="refresh">
-              <input class="form-input mt-1" name="expire" value="{{ $record->expire }}" placeholder="expire">
-              <input class="form-input mt-1" name="ttl" value="{{ $record->ttl }}" placeholder="ttl">
+              <input class="form-input mt-1" type="text" name="retry" value="{{ $record->retry }}" placeholder="retry">
+              <input class="form-input mt-1" type="text" name="refresh" value="{{ $record->refresh }}" placeholder="refresh">
+              <input class="form-input mt-1" type="text" name="expire" value="{{ $record->expire }}" placeholder="expire">
+              <input class="form-input mt-1" type="text" name="ttl" value="{{ $record->ttl }}" placeholder="ttl">
             @endif
             <input type="hidden" name="record_id" value="{{ $record->record_id }}">
             @method('put')
@@ -145,7 +145,7 @@
   <form class="flex flex-wrap mt-4" action="{{ path([$controller, 'setServerNsRecords'], $model) }}" method="post">
     @csrf
     <div class="mr-1">
-      <select class="form-select" name="server">
+      <select class="form-input" name="server">
         <option value="">-----</option>
         <option>srv1.korden.net</option>
         <option>srv2.korden.net</option>

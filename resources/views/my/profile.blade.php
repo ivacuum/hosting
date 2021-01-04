@@ -13,6 +13,7 @@
       <label class="font-bold">@lang('Логин')</label>
       <input
         class="form-input"
+        type="text"
         name="username"
         value="{{ old('username', Auth::user()->login) }}"
       >

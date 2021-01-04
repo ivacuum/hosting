@@ -29,7 +29,7 @@
     @foreach ($vocabularies as $vocab)
       <div>
         <a
-          class="inline-block text-4xl leading-tight ja-shadow-light px-2 rounded whitespace-no-wrap text-white hover:text-grey-200 {{ auth()->id() && $vocab->burnable ? 'bg-burned' : 'bg-vocab' }}"
+          class="inline-block text-4xl leading-tight ja-shadow-light px-2 rounded whitespace-nowrap text-white hover:text-grey-200 {{ auth()->id() && $vocab->burnable ? 'bg-burned' : 'bg-vocab' }}"
           href="{{ $vocab->www() }}"
         >{{ $vocab->character }}</a>
       </div>
@@ -40,7 +40,7 @@
       >？</a>
       <div class="text-muted">
         @foreach (explode(', ', $vocab->kana) as $kana)
-          <div class="leading-none whitespace-no-wrap {{ $showLabels || @$visible[$vocab->id] ? '' : 'invisible hidden md:block' }}">
+          <div class="leading-none whitespace-nowrap {{ $showLabels || @$visible[$vocab->id] ? '' : 'invisible hidden md:block' }}">
             【{{ $kana }}】
           </div>
         @endforeach

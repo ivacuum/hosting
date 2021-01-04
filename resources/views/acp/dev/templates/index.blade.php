@@ -21,9 +21,9 @@
   <tfoot>
     <tr>
       <td><strong>Итого: {{ sizeof($templates) }}</strong></td>
-      <td class="md:text-right whitespace-no-wrap">{{ ViewHelper::number($total->pics) }}</td>
+      <td class="md:text-right whitespace-nowrap">{{ ViewHelper::number($total->pics) }}</td>
       @foreach (config('cfg.locales') as $key => $value)
-        <td class="md:text-right whitespace-no-wrap">{{ ViewHelper::number($total->{$key}) }}</td>
+        <td class="md:text-right whitespace-nowrap">{{ ViewHelper::number($total->{$key}) }}</td>
       @endforeach
     </tr>
   </tfoot>

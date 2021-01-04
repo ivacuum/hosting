@@ -6,7 +6,7 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
     <tr>
-      <th><input type="checkbox" class="form-checkbox js-select-all" data-selector=".models-checkbox"></th>
+      <th><input class="border-gray-300 js-select-all" type="checkbox" data-selector=".models-checkbox"></th>
       <x-th-numeric-sortable key="id"/>
       <x-th key="title"/>
       <th></th>
@@ -18,7 +18,7 @@
   <tbody>
     @foreach ($models as $model)
       <tr>
-        <td><input class="form-checkbox models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
+        <td><input class="border-gray-300 models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
         <td class="md:text-right">{{ $model->id }}</td>
         <td>
           <a href="{{ path([$controller, 'show'], $model) }}">
@@ -47,7 +47,7 @@
             <div class="text-xs text-muted">{{ $model->name }}</div>
           </a>
         </td>
-        <td class="md:text-right whitespace-no-wrap">
+        <td class="md:text-right whitespace-nowrap">
           <a href="{{ path([App\Http\Controllers\Acp\Comments::class, 'index'], [$model->getForeignKey() => $model]) }}">
             {{ ViewHelper::number($model->comments_count) ?: '' }}
           </a>

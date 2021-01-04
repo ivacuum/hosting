@@ -7,7 +7,7 @@
       <button class="md:hidden px-4 py-3 text-2xl text-grey-600 hover:text-grey-900 leading-none js-collapse" data-target="#header_menu">
         @svg (three-bars)
       </button>
-      <nav id="header_menu" class="flex md:flex flex-col md:flex-row order-4 md:order-3 md:mr-auto md:items-center whitespace-no-wrap md:whitespace-normal w-full md:w-auto hidden">
+      <nav id="header_menu" class="flex md:flex flex-col md:flex-row order-4 md:order-3 md:mr-auto md:items-center whitespace-nowrap md:whitespace-normal w-full md:w-auto hidden">
         @section('global_menu')
           @component('tpl.menu-item', [
             'href' => to('life'),

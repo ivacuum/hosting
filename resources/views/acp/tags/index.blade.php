@@ -19,10 +19,10 @@
           {{ $model->title }}
         </a>
       </td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         {{ ViewHelper::number($model->views) ?: '' }}
       </td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         <a href="{{ path([App\Http\Controllers\Acp\Photos::class, 'index'], [$model->getForeignKey() => $model]) }}">
           {{ ViewHelper::number($model->photos_count) ?: '' }}
         </a>

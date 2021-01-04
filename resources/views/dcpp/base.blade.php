@@ -115,13 +115,13 @@
 @if (empty($noLanguageSelector))
   @ru
     <a
-      class="px-2 py-3 text-grey-600 hover:text-grey-900 whitespace-no-wrap"
+      class="px-2 py-3 text-grey-600 hover:text-grey-900 whitespace-nowrap"
       href="/en/{{ $requestUri }}"
       lang="en"
     >In English</a>
   @en
     <a
-      class="px-2 py-3 text-grey-600 hover:text-grey-900 whitespace-no-wrap"
+      class="px-2 py-3 text-grey-600 hover:text-grey-900 whitespace-nowrap"
       href="/{{ $requestUri }}"
       lang="ru"
     >По-русски</a>

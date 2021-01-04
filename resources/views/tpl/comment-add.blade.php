@@ -71,7 +71,7 @@
       @endif
       <textarea
         required
-        class="form-textarea {{ !$isMobile ? 'resize-none js-autosize-textarea' : '' }}"
+        class="form-input {{ !$isMobile ? 'resize-none js-autosize-textarea' : '' }}"
         name="text"
         placeholder="@lang('Оставьте комментарий...')"
         rows="{{ !$isMobile ? 1 : 4 }}"

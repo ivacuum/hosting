@@ -1,4 +1,4 @@
-<th class="md:text-right whitespace-no-wrap">
+<th class="md:text-right whitespace-nowrap">
   <a href="{{ UrlHelper::sort($key, $order ?? 'desc') }}">
     {{ $slot->isEmpty() ? ViewHelper::modelFieldTrans($modelTpl, $key) : $slot }}
     @if ($sortKey === $key)

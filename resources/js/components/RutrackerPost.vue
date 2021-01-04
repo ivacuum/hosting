@@ -1,5 +1,5 @@
 <template>
-  <div class="rutracker-post clearfix">
+  <div class="rutracker-post flow-root">
     <slot/>
   </div>
 </template>
@@ -179,8 +179,8 @@ export default {
               .animate({ opacity: 1 }, 700)
           })
 
-          $body.append($foldBtn).addClass('clearfix inited')
-          $body.parent().addClass('clearfix')
+          $body.append($foldBtn).addClass('flow-root inited')
+          $body.parent().addClass('flow-root')
         }
 
         if (e.shiftKey) {

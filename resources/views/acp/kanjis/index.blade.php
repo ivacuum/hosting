@@ -18,17 +18,17 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
   <tr>
-    <th class="whitespace-no-wrap">
+    <th class="whitespace-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'level', 'order' => 'asc'])
     </th>
     <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'character') }}</th>
-    <th class="whitespace-no-wrap">
+    <th class="whitespace-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'meaning', 'order' => 'asc'])
     </th>
-    <th class="md:text-right whitespace-no-wrap">
+    <th class="md:text-right whitespace-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'radicals_count'])
     </th>
-    <th class="md:text-right whitespace-no-wrap">
+    <th class="md:text-right whitespace-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'similar_count'])
     </th>
     <th></th>
@@ -50,12 +50,12 @@
         </a>
       </td>
       <td class="whitespace-pre-line">{{ implode("\n", explode(', ', $model->meaning)) }}</td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         <a href="{{ path([App\Http\Controllers\Acp\Radicals::class, 'index'], [$model->getForeignKey() => $model]) }}">
           {{ ViewHelper::number($model->radicals_count) ?: '' }}
         </a>
       </td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         <a href="{{ path([$controller, 'index'], [$model->getForeignKey() => $model]) }}">
           {{ ViewHelper::number($model->similar_count) ?: '' }}
         </a>

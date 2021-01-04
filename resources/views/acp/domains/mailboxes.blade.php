@@ -8,7 +8,7 @@
   <div class="mb-4">
     <label>Ящик</label>
     <div class="flex items-center w-full">
-      <input class="form-input" name="logins">
+      <input class="form-input" type="text" name="logins">
       <div class="ml-2">{{ "@{$model->domain}" }}</div>
     </div>
     <x-invalid-feedback field="logins"/>

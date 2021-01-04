@@ -24,14 +24,14 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
   <tr>
-    <th class="whitespace-no-wrap">
+    <th class="whitespace-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'level', 'order' => 'asc'])
     </th>
     <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'character') }}</th>
-    <th class="whitespace-no-wrap">
+    <th class="whitespace-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'meaning', 'order' => 'asc'])
     </th>
-    <th class="md:text-right whitespace-no-wrap">
+    <th class="md:text-right whitespace-nowrap">
       @include('acp.tpl.sortable-header', ['key' => 'kanjis_count'])
     </th>
   </tr>
@@ -53,7 +53,7 @@
         </a>
       </td>
       <td>{{ $model->meaning }}</td>
-      <td class="md:text-right whitespace-no-wrap">
+      <td class="md:text-right whitespace-nowrap">
         <a href="{{ path([App\Http\Controllers\Acp\Kanjis::class, 'index'], [$model->getForeignKey() => $model]) }}">
           {{ ViewHelper::number($model->kanjis_count) ?: '' }}
         </a>

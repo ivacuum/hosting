@@ -23,8 +23,8 @@
             {{ $file->title }}
           </a>
         </td>
-        <td class="md:text-right text-muted whitespace-no-wrap">{{ ViewHelper::size($file->size) }}</td>
-        <td class="md:text-right whitespace-no-wrap">{{ ViewHelper::number($file->downloads) }}</td>
+        <td class="md:text-right text-muted whitespace-nowrap">{{ ViewHelper::size($file->size) }}</td>
+        <td class="md:text-right whitespace-nowrap">{{ ViewHelper::number($file->downloads) }}</td>
         <td>{{ ViewHelper::dateShort($file->created_at) }}</td>
       </tr>
     @endforeach

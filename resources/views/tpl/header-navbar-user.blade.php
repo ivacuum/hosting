@@ -20,7 +20,7 @@
     class="absolute top-full right-0 z-50 py-2 bg-white mt-1 border border-gray-300 rounded shadow-md"
     style="min-width: 10rem;"
   >
-    <div class="py-2 px-6 text-sm text-gray-600 whitespace-no-wrap">
+    <div class="py-2 px-6 text-sm text-gray-600 whitespace-nowrap">
       @lang('auth.signed_in_as')
       <span class="font-bold">{{ Auth::user()->displayName() }}</span>
     </div>

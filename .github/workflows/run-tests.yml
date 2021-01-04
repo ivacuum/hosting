@@ -1,6 +1,6 @@
 name: phpunit
 
-on: [ push, pull_request ]
+on: [ push ]
 
 jobs:
   phpunit:
@@ -54,7 +54,7 @@ jobs:
           key: yarn-${{ hashFiles('yarn.lock') }}
 
       - name: Yarn
-        run: yarn && yarn dev
+        run: yarn --ignore-platform && yarn dev
 
       - name: Install graphicsmagick
         run: sudo apt-get install graphicsmagick

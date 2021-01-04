@@ -133,7 +133,7 @@ export default {
 
   <div class="mb-4" v-if="!hideName">
     <div class="form-label-group">
-      <input required class="form-input" v-model="localName" :placeholder="$t('NAME_LABEL')">
+      <input required class="form-input" type="text" v-model="localName" :placeholder="$t('NAME_LABEL')">
       <label>{{ $t('NAME_LABEL') }}</label>
     </div>
   </div>
@@ -147,7 +147,7 @@ export default {
 
   <div class="mb-4" v-if="!hideTitle">
     <div class="form-label-group">
-      <input required class="form-input" v-model="localTitle" :placeholder="$t('TITLE_LABEL')">
+      <input required class="form-input" type="text" v-model="localTitle" :placeholder="$t('TITLE_LABEL')">
       <label>{{ $t('TITLE_LABEL') }}</label>
     </div>
   </div>
@@ -156,7 +156,7 @@ export default {
     <label class="font-bold">{{ textareaLabel }}</label>
     <textarea
       required
-      class="form-textarea"
+      class="form-input"
       :class="{ 'resize-none js-autosize-textarea': !isMobile }"
       name="text"
       :rows="!isMobile ? 2 : 4"
