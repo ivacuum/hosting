@@ -1202,16 +1202,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "15.0.0",
+            "version": "15.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "58c3a9fc411a7eba28a29698a8a6febe22c6d84c"
+                "reference": "90a884b4bd170838086bbe6c63e2b44b5cdd30d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/58c3a9fc411a7eba28a29698a8a6febe22c6d84c",
-                "reference": "58c3a9fc411a7eba28a29698a8a6febe22c6d84c",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/90a884b4bd170838086bbe6c63e2b44b5cdd30d5",
+                "reference": "90a884b4bd170838086bbe6c63e2b44b5cdd30d5",
                 "shasum": ""
             },
             "require": {
@@ -1265,9 +1265,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ivacuum/generic/issues",
-                "source": "https://github.com/ivacuum/generic/tree/15.0.0"
+                "source": "https://github.com/ivacuum/generic/tree/15.0.1"
             },
-            "time": "2021-01-07T03:00:59+00:00"
+            "time": "2021-01-07T09:45:22+00:00"
         },
         {
             "name": "laravel-notification-channels/telegram",
