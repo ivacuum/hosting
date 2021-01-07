@@ -78,21 +78,6 @@
 @endcomponent
 @component('tpl.menu-dropdown', [
   'isActive' => Str::of($routeUri)->is([
-    'acp/kanjis*',
-    'acp/radicals*',
-    'acp/vocabularies*',
-  ]),
-])
-  @slot('title')
-    日本語
-  @endslot
-
-  <a class="dropdown-item" href="@lng/acp/kanjis">@lang('acp.kanjis.index')</a>
-  <a class="dropdown-item" href="@lng/acp/radicals">@lang('acp.radicals.index')</a>
-  <a class="dropdown-item" href="@lng/acp/vocabularies">@lang('acp.vocabularies.index')</a>
-@endcomponent
-@component('tpl.menu-dropdown', [
-  'isActive' => Str::of($routeUri)->is([
     'acp/metrics*',
     'acp/issues*',
     'acp/users*',

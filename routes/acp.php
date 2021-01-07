@@ -65,8 +65,6 @@ Route::post('issues/{issue}/close', Acp\IssueCloseController::class);
 Route::post('issues/{issue}/comment', Acp\IssueCommentController::class);
 Route::post('issues/{issue}/open', Acp\IssueOpenController::class);
 
-RouteHelper::withoutCreate(Acp\Kanjis::class);
-
 Route::get('metrics', [Acp\Metrics::class, 'index']);
 Route::get('metrics/{event}', [Acp\Metrics::class, 'show']);
 
@@ -76,8 +74,6 @@ Route::post('news/{id}/notify', [Acp\News::class, 'notify']);
 RouteHelper::withoutCreateAndEdit(Acp\Notifications::class, null, 'uuid');
 
 RouteHelper::crud(Acp\Photos::class);
-
-RouteHelper::withoutCreate(Acp\Radicals::class);
 
 RouteHelper::crud(Acp\Servers::class);
 Route::get('servers/{id}/ftp', [Acp\Servers\Ftp::class, 'index']);
@@ -96,7 +92,5 @@ Route::get('trips/{trip}/instagram-cover', Acp\TripInstagramCoverController::cla
 Route::post('trips/{trip}/notify', Acp\TripPublishedNotify::class);
 
 RouteHelper::crud(Acp\Users::class);
-
-RouteHelper::withoutCreate(Acp\Vocabularies::class);
 
 RouteHelper::crud(Acp\YandexUsers::class);
