@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "df8b0dc8c0c033e7323eea0a0018349f",
+    "content-hash": "747e35fa88ac437d87cefa0af6efa605",
     "packages": [
         {
             "name": "brick/math",
@@ -843,34 +843,39 @@
         },
         {
             "name": "foolz/sphinxql-query-builder",
-            "version": "1.1.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/FoolCode/SphinxQL-Query-Builder.git",
-                "reference": "dd8fc0370fb30919447056563c8c66ea0ff74075"
+                "url": "https://github.com/ivacuum/SphinxQL-Query-Builder.git",
+                "reference": "c1c807c19ab39ec335281b2086e1256f511cd9b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FoolCode/SphinxQL-Query-Builder/zipball/dd8fc0370fb30919447056563c8c66ea0ff74075",
-                "reference": "dd8fc0370fb30919447056563c8c66ea0ff74075",
+                "url": "https://api.github.com/repos/ivacuum/SphinxQL-Query-Builder/zipball/c1c807c19ab39ec335281b2086e1256f511cd9b4",
+                "reference": "c1c807c19ab39ec335281b2086e1256f511cd9b4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": "^5.6 || ^7.0 || ^8.0"
             },
             "replace": {
                 "foolz/sphinxql": "self.version"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.4.*"
+                "phpunit/phpunit": "^5.7 || 6.3.*"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Foolz\\SphinxQL\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Foolz\\SphinxQL\\Tests\\": "tests/SphinxQL"
+                }
+            },
             "license": [
                 "Apache-2.0"
             ],
@@ -883,20 +888,19 @@
             "description": "A PHP query builder for SphinxQL. Uses MySQLi to connect to the Sphinx server.",
             "homepage": "http://www.foolz.us",
             "keywords": [
+                "SQL",
                 "database",
                 "query builder",
                 "search",
                 "sphinx",
-                "sphinxql",
-                "sql"
+                "sphinxql"
             ],
             "support": {
                 "email": "support@foolz.us",
                 "irc": "irc://irc.irchighway.net/fooldriver",
-                "issues": "https://github.com/FoolCode/SphinxQL-Query-Builder/issues",
-                "source": "https://github.com/FoolCode/SphinxQL-Query-Builder/tree/master"
+                "source": "https://github.com/ivacuum/SphinxQL-Query-Builder/tree/master"
             },
-            "time": "2016-12-15T13:51:59+00:00"
+            "time": "2021-01-07T02:48:43+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -1198,16 +1202,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "14.0.0",
+            "version": "15.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "ea9be36e9ac4c2f58ac0c7b00fcb418bf2bd0325"
+                "reference": "58c3a9fc411a7eba28a29698a8a6febe22c6d84c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/ea9be36e9ac4c2f58ac0c7b00fcb418bf2bd0325",
-                "reference": "ea9be36e9ac4c2f58ac0c7b00fcb418bf2bd0325",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/58c3a9fc411a7eba28a29698a8a6febe22c6d84c",
+                "reference": "58c3a9fc411a7eba28a29698a8a6febe22c6d84c",
                 "shasum": ""
             },
             "require": {
@@ -1261,9 +1265,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ivacuum/generic/issues",
-                "source": "https://github.com/ivacuum/generic/tree/14.0.0"
+                "source": "https://github.com/ivacuum/generic/tree/15.0.0"
             },
-            "time": "2021-01-02T20:21:00+00:00"
+            "time": "2021-01-07T03:00:59+00:00"
         },
         {
             "name": "laravel-notification-channels/telegram",
@@ -1728,16 +1732,16 @@
         },
         {
             "name": "laravel/ui",
-            "version": "v3.1.0",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ui.git",
-                "reference": "444072cb2f8baaa15172c5cde2bd30d188c3b7e7"
+                "reference": "a1f82c6283c8373ea1958b8a27c3d5c98cade351"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/444072cb2f8baaa15172c5cde2bd30d188c3b7e7",
-                "reference": "444072cb2f8baaa15172c5cde2bd30d188c3b7e7",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/a1f82c6283c8373ea1958b8a27c3d5c98cade351",
+                "reference": "a1f82c6283c8373ea1958b8a27c3d5c98cade351",
                 "shasum": ""
             },
             "require": {
@@ -1780,9 +1784,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/ui/issues",
-                "source": "https://github.com/laravel/ui/tree/v3.1.0"
+                "source": "https://github.com/laravel/ui/tree/v3.2.0"
             },
-            "time": "2020-11-03T19:51:21+00:00"
+            "time": "2021-01-06T19:20:22+00:00"
         },
         {
             "name": "league/commonmark",
@@ -9882,9 +9886,18 @@
             "time": "2020-07-12T23:59:07+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "foolz/sphinxql-query-builder",
+            "version": "9999999-dev",
+            "alias": "2.1.0",
+            "alias_normalized": "2.1.0.0"
+        }
+    ],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "foolz/sphinxql-query-builder": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
