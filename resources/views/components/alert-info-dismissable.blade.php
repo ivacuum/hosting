@@ -3,10 +3,10 @@
     <div class="mr-auto">
       {{ $slot }}
     </div>
-    <div class="leading-none">
+    <div>
       <button
         type="button"
-        class="appearance-none text-2xl opacity-50 hover:opacity-75"
+        class="appearance-none leading-none text-2xl opacity-50 hover:opacity-75"
         onclick="this.closest('.js-alert-dismiss').remove()"
       >&times;</button>
     </div>
