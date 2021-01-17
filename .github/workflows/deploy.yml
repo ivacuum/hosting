@@ -30,7 +30,7 @@ jobs:
 
       - name: Archive
         run: |
-          tar --exclude --exclude ./.git \
+          tar --exclude ./.git \
             --exclude ./.github \
             --exclude ./ansible \
             --exclude ./node_modules \
