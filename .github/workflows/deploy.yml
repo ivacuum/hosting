@@ -40,4 +40,4 @@ jobs:
             --exclude ^vendor \
             -cf deploy.tar .
 
-      - run: echo "{{ github.run_id }}-{{ github.run_number }}; {{ github.workspace }}/deploy.tar"
+      - run: echo "${{ github.run_id }}-${{ github.run_number }}; ${{ github.workspace }}/deploy.tar"
