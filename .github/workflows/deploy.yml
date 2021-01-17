@@ -44,7 +44,8 @@ jobs:
         uses: dawidd6/action-ansible-playbook@3c534b3ba0bcbbee2b13fb45226f71acbaca2a76
         with:
           key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
-          playbook: ansible/vacuum.name.yml
+          playbook: vacuum.name.yml
+          directory: ansible
           options: |
-            -i ansible/hosts.ini
+            -i hosts.ini
             -e workspace=${{ github.workspace }}
