@@ -2,7 +2,7 @@
 
 use App\Trip;
 use Carbon\CarbonImmutable;
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Database\Eloquent;
 use Illuminate\Support\Collection;
 
 class TripStatsCalculator
@@ -21,7 +21,7 @@ class TripStatsCalculator
     private $daysInCountries;
     private $visitedCountries;
 
-    public function __construct(EloquentCollection $trips)
+    public function __construct(Eloquent\Collection $trips)
     {
         $this->cities = collect();
         $this->calendar = collect();
@@ -103,7 +103,7 @@ class TripStatsCalculator
         return $this->newCountries->map(fn (Collection $countries) => $countries->count());
     }
 
-    private function calculate(EloquentCollection $trips): void
+    private function calculate(Eloquent\Collection $trips): void
     {
         /** @var Trip $trip */
         foreach ($trips as $trip) {

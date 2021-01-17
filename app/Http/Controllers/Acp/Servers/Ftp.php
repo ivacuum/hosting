@@ -2,8 +2,8 @@
 
 use App\Server;
 use Ivacuum\Generic\Controllers\Acp\BaseController;
+use League\Flysystem\Adapter;
 use League\Flysystem\Filesystem;
-use League\Flysystem\Adapter\Ftp as FtpAdapter;
 
 class Ftp extends BaseController
 {
@@ -144,7 +144,7 @@ class Ftp extends BaseController
 
     protected function initFs(Server $server)
     {
-        $this->fs = new Filesystem(new FtpAdapter([
+        $this->fs = new Filesystem(new Adapter\Ftp([
             'ssl' => false,
             'host' => $server->ftp_host ?: $server->host,
             'port' => 21,

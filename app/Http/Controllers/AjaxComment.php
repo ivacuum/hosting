@@ -3,7 +3,7 @@
 use App\Comment;
 use App\Exceptions\CommentLimitExceededException;
 use App\Http\Requests\CommentStoreForm;
-use App\Http\Resources\Comment as CommentResource;
+use App\Http\Resources;
 use App\Limits\CommentsTodayLimit;
 use App\News;
 use App\Torrent;
@@ -50,7 +50,7 @@ class AjaxComment extends Controller
         $model->comments()->save($comment);
 
         if ($request->expectsJson()) {
-            return new CommentResource($comment);
+            return new Resources\Comment($comment);
         }
 
         return $this->redirectToComment($model, $isGuest ? null : $comment);
@@ -64,11 +64,11 @@ class AjaxComment extends Controller
     protected function notifiableModel(string $type, int $id)
     {
         if ($type === 'news') {
-            return News::published()->findOrFail($id);
+            return News::query()->published()->findOrFail($id);
         } elseif ($type === 'trip') {
-            return Trip::published()->findOrFail($id);
+            return Trip::query()->published()->findOrFail($id);
         } elseif ($type === 'torrent') {
-            return Torrent::published()->findOrFail($id);
+            return Torrent::query()->published()->findOrFail($id);
         }
 
         throw new \Exception('Не выбран объект для комментирования');
