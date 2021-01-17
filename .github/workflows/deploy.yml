@@ -47,4 +47,4 @@ jobs:
           playbook: ansible/vacuum.name.yml
           options: |
             -i ansible/hosts.ini
-            -e deploy_tar_path=${{ github.workspace }}/deploy.tar
+            -e workspace=${{ github.workspace }}
