@@ -1,0 +1,50 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/checkout@v2
+        with:
+          path: ansible
+          ssh-key: ${{ secrets.ANSIBLE_PRIVATE_KEY }}
+          repository: ivacuum/ansible
+
+      - name: Cache yarn dependencies
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: yarn-${{ hashFiles('yarn.lock') }}
+
+      - run: yarn --ignore-platform
+      - run: yarn prod
+
+      - name: Archive
+        run: |
+          tar --exclude ./.git \
+            --exclude ./.github \
+            --exclude ./ansible \
+            --exclude ./node_modules \
+            --exclude ./resources/css \
+            --exclude ./resources/js \
+            --exclude ./resources/sass \
+            --exclude ./tests \
+            --exclude ./vendor \
+            -cf deploy.tar .
+
+      - name: ansible
+        uses: dawidd6/action-ansible-playbook@3c534b3ba0bcbbee2b13fb45226f71acbaca2a76
+        with:
+          key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+          playbook: vacuum.name.yml
+          directory: ansible
+          options: |
+            -e workspace=${{ github.workspace }}

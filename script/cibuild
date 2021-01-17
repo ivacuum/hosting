@@ -13,11 +13,6 @@ yarn --ignore-platform
 echo "==> yarn run production..."
 yarn run production
 
-# composer global require "hirak/prestissimo:^0.3"
-# composer global update
-# composer install --no-interaction
-# vendor/bin/phpunit --exclude-group pages
-
 # Архив для быстрого деплоя
 tar --exclude ^deploy.tar \
   --exclude ^.git \
