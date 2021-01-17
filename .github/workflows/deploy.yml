@@ -29,7 +29,17 @@ jobs:
       - run: yarn prod
 
       - name: Archive
-        run: tar --exclude ^deploy.tar --exclude ^.git --exclude ^ansible --exclude ^node_modules --exclude ^resources/css --exclude ^resources/js --exclude ^resources/sass --exclude ^tests --exclude ^vendor -cf deploy.tar .
+        run: |
+          tar --exclude=^deploy.tar \
+            --exclude=^.git \
+            --exclude=^ansible \
+            --exclude=^node_modules \
+            --exclude=^resources/css \
+            --exclude=^resources/js \
+            --exclude=^resources/sass \
+            --exclude=^tests \
+            --exclude=^vendor \
+            -cf deploy.tar .
 
       - name: ansible
         uses: dawidd6/action-ansible-playbook@3c534b3ba0bcbbee2b13fb45226f71acbaca2a76
