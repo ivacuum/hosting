@@ -30,15 +30,15 @@ jobs:
 
       - name: Archive
         run: |
-          tar --exclude=^deploy.tar \
-            --exclude=^.git \
-            --exclude=^ansible \
-            --exclude=^node_modules \
-            --exclude=^resources/css \
-            --exclude=^resources/js \
-            --exclude=^resources/sass \
-            --exclude=^tests \
-            --exclude=^vendor \
+          tar --exclude ./deploy.tar \
+            --exclude ./.git \
+            --exclude ./ansible \
+            --exclude ./node_modules \
+            --exclude ./resources/css \
+            --exclude ./resources/js \
+            --exclude ./resources/sass \
+            --exclude ./tests \
+            --exclude ./vendor \
             -cf deploy.tar .
 
       - name: ansible
