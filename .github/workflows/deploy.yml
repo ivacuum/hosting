@@ -24,20 +24,19 @@ jobs:
           path: node_modules
           key: yarn-${{ hashFiles('yarn.lock') }}
 
-      - name: Yarn
-        run: yarn --ignore-platform && yarn prod
-
-      - run: ls
+      - run: yarn --ignore-platform
+      - run: yarn prod
 
       - name: Archive
-        run: |
-          tar --exclude ^deploy.tar \
-            --exclude ^.git \
-            --exclude ^ansible \
-            --exclude ^node_modules \
-            --exclude ^resources/css \
-            --exclude ^resources/js \
-            --exclude ^resources/sass \
-            --exclude ^tests \
-            --exclude ^vendor \
-            -cf deploy.tar .
+        run: tar --exclude ^deploy.tar
+          --exclude ^.git \
+          --exclude ^ansible \
+          --exclude ^node_modules \
+          --exclude ^resources/css \
+          --exclude ^resources/js \
+          --exclude ^resources/sass \
+          --exclude ^tests \
+          --exclude ^vendor \
+          -cf deploy.tar .
+
+      - run: echo "{{ github.run_id }}-{{ github.run_number }}; {{ github.workspace }}/deploy.tar"
