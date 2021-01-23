@@ -143,6 +143,7 @@ ij_php_space_before_method_call_parentheses = false
 ij_php_space_before_method_left_brace = true
 ij_php_space_before_method_parentheses = false
 ij_php_space_before_quest = true
+ij_php_space_before_short_closure_left_parenthesis = true
 ij_php_space_before_switch_left_brace = true
 ij_php_space_before_switch_parentheses = true
 ij_php_space_before_try_left_brace = true
