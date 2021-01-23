@@ -3,7 +3,7 @@
   "description": "",
   "license": "MIT",
   "require": {
-    "php": ">=7.4",
+    "php": ">=8.0",
     "foolz/sphinxql-query-builder": "dev-master as 2.1.0",
     "guzzlehttp/guzzle": "^7.0",
     "ivacuum/generic": "^15.0",
