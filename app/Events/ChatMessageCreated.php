@@ -10,10 +10,7 @@ class ChatMessageCreated extends Event
 {
     use SerializesModels;
 
-    public ChatMessage $chatMessage;
-
-    public function __construct(ChatMessage $chatMessage)
+    public function __construct(public ChatMessage $chatMessage)
     {
-        $this->chatMessage = $chatMessage;
     }
 }

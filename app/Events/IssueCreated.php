@@ -7,10 +7,7 @@ class IssueCreated extends Event
 {
     use SerializesModels;
 
-    public Issue $model;
-
-    public function __construct(Issue $model)
+    public function __construct(public Issue $model)
     {
-        $this->model = $model;
     }
 }

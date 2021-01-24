@@ -8,12 +8,7 @@
  */
 class TypoReceived extends Event
 {
-    public string $page;
-    public string $selection;
-
-    public function __construct(string $selection, string $page)
+    public function __construct(public string $selection, public string $page)
     {
-        $this->page = $page;
-        $this->selection = $selection;
     }
 }

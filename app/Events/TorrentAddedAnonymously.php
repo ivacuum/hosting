@@ -7,10 +7,7 @@ class TorrentAddedAnonymously extends Event
 {
     use SerializesModels;
 
-    public Torrent $model;
-
-    public function __construct(Torrent $model)
+    public function __construct(public Torrent $model)
     {
-        $this->model = $model;
     }
 }
