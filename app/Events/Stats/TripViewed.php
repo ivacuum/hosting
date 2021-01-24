@@ -4,11 +4,9 @@ use App\Events\Event;
 
 class TripViewed extends Event
 {
-    public $id;
     public $table = 'trips';
 
-    public function __construct($id)
+    public function __construct(public int $id)
     {
-        $this->id = $id;
     }
 }

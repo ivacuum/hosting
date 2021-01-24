@@ -4,11 +4,9 @@ use App\Events\Event;
 
 class GigViewed extends Event
 {
-    public $id;
     public $table = 'gigs';
 
-    public function __construct($id)
+    public function __construct(public int $id)
     {
-        $this->id = $id;
     }
 }
