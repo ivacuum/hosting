@@ -131,7 +131,8 @@ class TorrentTest extends TestCase
 
         $response = $this->post('torrents', ['input' => $stub->rto_id, 'category_id' => $stub->category_id]);
 
-        $user = User::findOrFail(config('cfg.torrent_anonymous_releaser'));
+        $user = User::find(config('cfg.torrent_anonymous_releaser'))
+            ?? UserFactory::new()->withId(config('cfg.torrent_anonymous_releaser'))->create();
 
         /** @var Torrent $torrent */
         $torrent = $user->torrents()->latest('id')->first();

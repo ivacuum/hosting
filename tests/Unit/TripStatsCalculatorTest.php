@@ -1,5 +1,6 @@
 <?php namespace Tests\Unit;
 
+use App\City;
 use App\Domain\TripStatsCalculator;
 use App\Factory\TripFactory;
 use Carbon\CarbonImmutable;
@@ -13,9 +14,9 @@ class TripStatsCalculatorTest extends TestCase
 
     public function testCityVisits()
     {
-        $trip1 = TripFactory::new()->withCityId(1)->create();
-        $trip2 = TripFactory::new()->withCityId(2)->create();
-        $trip3 = TripFactory::new()->withCityId(1)->create();
+        $trip1 = TripFactory::new()->create();
+        $trip2 = TripFactory::new()->create();
+        $trip3 = TripFactory::new()->withCityId($trip1->city_id)->create();
 
         $trips = new Collection([$trip1, $trip2, $trip3]);
         $stats = new TripStatsCalculator($trips);
@@ -28,15 +29,15 @@ class TripStatsCalculatorTest extends TestCase
 
     public function testDaysInTrips()
     {
-        $trip1 = TripFactory::new()->withCityId(1)->make();
+        $trip1 = TripFactory::new()->make();
         $trip1->date_end = CarbonImmutable::parse('2015-02-01');
         $trip1->date_start = CarbonImmutable::parse('2015-01-01');
 
-        $trip2 = TripFactory::new()->withCityId(2)->make();
+        $trip2 = TripFactory::new()->make();
         $trip2->date_end = CarbonImmutable::parse('2015-02-01');
         $trip2->date_start = CarbonImmutable::parse('2015-01-28');
 
-        $trip3 = TripFactory::new()->withCityId(2)->make();
+        $trip3 = TripFactory::new()->withCityId($trip2->city_id)->make();
         $trip3->date_end = CarbonImmutable::parse('2017-01-01 01:00:00');
         $trip3->date_start = CarbonImmutable::parse('2016-12-31 21:00:00');
 

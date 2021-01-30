@@ -69,4 +69,4 @@ jobs:
           composer fresh
 
       - name: Run PHPUnit
-        run: ./vendor/bin/phpunit
+        run: composer test

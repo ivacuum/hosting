@@ -23,6 +23,7 @@
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.0",
     "barryvdh/laravel-ide-helper": "^2.1",
+    "brianium/paratest": "^6.1",
     "facade/ignition": "^2.0",
     "fakerphp/faker": "^1.10",
     "johnkary/phpunit-speedtrap": "^3.2",
@@ -61,7 +62,8 @@
     ],
     "rector": "vendor/bin/rector process app tests --dry-run",
     "queue": "@php artisan queue:work --stop-when-empty --ansi",
-    "test": "vendor/bin/phpunit --colors=always"
+    "test": "@php artisan test --parallel",
+    "test-linear": "vendor/bin/phpunit --colors=always"
   },
   "extra": {
     "laravel": {
