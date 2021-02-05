@@ -1,6 +1,6 @@
 @extends('docs.base')
 
-<?php $freebsdVersion = '12.1' ?>
+<?php $freebsdVersion = '12.2' ?>
 
 @section('content')
 <h2>Сниппеты для выполнения различных задач на ОС FreeBSD</h2>
