@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="{{ mix('/assets/tailwind.css') }}">
   @stack('head')
 </head>
-<body class="flex flex-col font-tabular-nums min-h-full {{ $bodyClasses ?? 'body-with-bottom-tabbar' }} {{ optional(Auth::user())->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ $cssClasses }}" data-route="{{ $routeUri }}">
+<body class="flex flex-col font-tabular-nums min-h-full {{ $bodyClasses ?? 'body-with-bottom-tabbar' }} {{ Auth::user()?->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ $cssClasses }}" data-route="{{ $routeUri }}">
 @section('body')
 @section('header-navbar')
   @include('tpl.header-navbar')

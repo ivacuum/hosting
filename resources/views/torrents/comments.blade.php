@@ -31,7 +31,7 @@
           <em>deleted user</em>
         @endif
         <span class="mx-2 text-muted">&middot;</span>
-        @if (optional($comment->rel)->status === App\Torrent::STATUS_PUBLISHED)
+        @if ($comment->rel?->status === App\Torrent::STATUS_PUBLISHED)
           <a href="{{ $comment->rel->www() }}#comment-{{ $comment->id }}">{{ Str::limit($comment->rel->title, 50) }}</a>
         @else
           <em class="text-muted">раздача удалена</em>

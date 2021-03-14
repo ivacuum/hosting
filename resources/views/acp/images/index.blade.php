@@ -63,7 +63,7 @@
           @endif
         </td>
         <td>
-          @if (optional($model->updated_at)->diffInMonths() > 6)
+          @if ($model->updated_at?->diffInMonths() > 6)
             {{ $model->updated_at->diffForHumans(null, true) }}
           @endif
         </td>

@@ -8,7 +8,7 @@
   <img class="flag-24 svg-shadow mr-2" src="{{ $trip->city->country->flagUrl() }}" alt="">
   <h1 class="h2 mb-1 mr-2">{{ $trip->title }}</h1>
   @include('tpl.city-map-button', ['city' => $trip->city])
-  @if (optional(auth()->user())->isRoot())
+  @if (Auth::user()?->isRoot())
     <a class="btn btn-default text-sm py-1" href="{{ UrlHelper::edit(App\Http\Controllers\Acp\Trips::class, $trip) }}">
       @svg (pencil)
     </a>
