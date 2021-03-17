@@ -116,13 +116,13 @@
       </x-alert-info>
     @endif
   </div>
-  <div class="{{ $contentContainerClasses ?? 'container mt-4' }} {{ $contentContainerExtraClasses ?? '' }}" id="{{ $contentContainerId ?? 'pjax_container' }}">
+  <main class="{{ $contentContainerClasses ?? 'container mt-4' }} {{ $contentContainerExtraClasses ?? '' }}" id="{{ $contentContainerId ?? 'pjax_container' }}">
 
 @yield('content_header')
 @yield('content')
 @yield('content_footer')
 
-  </div>
+  </main>
 </div>
 
 @section('footer_container')
