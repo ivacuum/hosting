@@ -15,7 +15,7 @@ class RtoGetTorTopicDataResponse
 
         $this->topics = collect($collection)
             ->map(function ($object, $key) {
-                return $object !== null
+                return $object !== null && is_object($object)
                     ? RtoTopicData::fromJson($key, $object)
                     : null;
             });
