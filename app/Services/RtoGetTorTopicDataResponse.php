@@ -14,8 +14,11 @@ class RtoGetTorTopicDataResponse
         $collection = $json->result;
 
         $this->topics = collect($collection)
+            // Почему-то стали попадаться элементы вида "hash" => topic_id
+            // Отфильтровываем их
+            ->reject(fn ($object) => is_integer($object))
             ->map(function ($object, $key) {
-                return $object !== null && is_object($object)
+                return $object !== null
                     ? RtoTopicData::fromJson($key, $object)
                     : null;
             });
