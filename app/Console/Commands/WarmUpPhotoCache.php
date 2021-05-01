@@ -21,7 +21,7 @@ class WarmUpPhotoCache extends Command
                 $http->getAsync($model->thumbnailUrl()),
             ];
 
-            \GuzzleHttp\Promise\unwrap($promises);
+            \GuzzleHttp\Promise\Utils::unwrap($promises);
 
             $i++;
 
