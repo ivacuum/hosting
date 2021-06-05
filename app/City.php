@@ -17,7 +17,7 @@ use Illuminate\Support\Collection;
  * @property \Carbon\CarbonImmutable $updated_at
  *
  * @property Country $country
- * @property Trip $trips
+ * @property Trip[] $trips
  *
  * @property-read string $title
  * @property int $trips_count
