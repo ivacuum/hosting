@@ -41,6 +41,7 @@ class Photos extends Controller
     {
         /** @var City $city */
         $city = $cityHelper->findBySlugOrFail($slug);
+        $city->loadCountry();
 
         $ids = TripFactory::idsByCity($city->id);
 
