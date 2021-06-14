@@ -11,8 +11,7 @@ class MySettings extends Controller
 
     public function update(MySettingsUpdateForm $request)
     {
-        /** @var \App\User $user */
-        $user = $request->user();
+        $user = $request->userModel();
         $user->update($request->validated());
 
         event(new \App\Events\Stats\MySettingsChanged);

@@ -6,7 +6,7 @@
     <h1 class="h2 mr-4">
       @lang('Поездки')
     </h1>
-    @if ($traveler->id == Auth::user()?->id)
+    @if ($traveler->id == Auth::id())
       <a class="btn btn-success text-sm py-1" href="@lng/my/trips/create">
         @lang('acp.trips.create')
       </a>

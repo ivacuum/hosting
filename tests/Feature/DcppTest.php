@@ -28,7 +28,7 @@ class DcppTest extends TestCase
 
         $hub->refresh();
 
-        $this->assertEquals($clicks + 1, $hub->clicks);
+        $this->assertSame($clicks + 1, $hub->clicks);
     }
 
     /**

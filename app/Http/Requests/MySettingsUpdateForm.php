@@ -2,9 +2,8 @@
 
 use App\User;
 use Illuminate\Validation\Rule;
-use Ivacuum\Generic\Http\FormRequest;
 
-class MySettingsUpdateForm extends FormRequest
+class MySettingsUpdateForm extends AbstractForm
 {
     public function authorize(): bool
     {
