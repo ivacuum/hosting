@@ -2,6 +2,7 @@
 
 use App;
 use Carbon\CarbonImmutable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Date;
@@ -29,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
         \Blade::withoutDoubleEncoding();
         \Blade::directive('lng', fn () => '<?php echo $localeUri ?>');
         Date::use(CarbonImmutable::class);
+
+        Model::preventLazyLoading(!app()->isProduction());
 
         Relation::morphMap([
             'Gig' => App\Gig::class,
