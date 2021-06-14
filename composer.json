@@ -5,6 +5,7 @@
   "require": {
     "php": ">=8.0",
     "foolz/sphinxql-query-builder": "dev-master as 2.1.0",
+    "grimzy/laravel-mysql-spatial": "^4.0",
     "guzzlehttp/guzzle": "^7.0",
     "ivacuum/generic": "^15.0",
     "laravel-notification-channels/telegram": "^0.5",
@@ -16,7 +17,7 @@
     "league/flysystem-sftp": "^1.0",
     "livewire/livewire": "^2.0",
     "predis/predis": "^1.1",
-    "stevebauman/purify": "^3.0",
+    "stevebauman/purify": "^4.0",
     "symfony/css-selector": "^5.0",
     "symfony/dom-crawler": "^5.0"
   },
@@ -26,7 +27,7 @@
     "brianium/paratest": "^6.1",
     "facade/ignition": "^2.0",
     "fakerphp/faker": "^1.10",
-    "johnkary/phpunit-speedtrap": "^3.2",
+    "johnkary/phpunit-speedtrap": "^4.0",
     "laravel/telescope": "^4.0",
     "mockery/mockery": "^1.0",
     "nunomaduro/collision": "^5.0",
@@ -63,12 +64,14 @@
     "rector": "vendor/bin/rector process app tests --dry-run",
     "queue": "@php artisan queue:work --stop-when-empty --ansi",
     "test": "@php artisan test --parallel",
-    "test-linear": "vendor/bin/phpunit --colors=always"
+    "test-linear": "vendor/bin/phpunit --colors=always",
+    "test-recreate-db": "@php artisan test --parallel --recreate-databases"
   },
   "extra": {
     "laravel": {
       "dont-discover": [
         "barryvdh/laravel-debugbar",
+        "grimzy/laravel-mysql-spatial",
         "laravel/telescope"
       ]
     }
