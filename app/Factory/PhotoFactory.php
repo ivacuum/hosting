@@ -2,6 +2,7 @@
 
 use App\Photo;
 use App\Trip;
+use Grimzy\LaravelMysqlSpatial\Types\Point;
 use Illuminate\Foundation\Testing\WithFaker;
 
 class PhotoFactory
@@ -40,6 +41,9 @@ class PhotoFactory
         $model->lat = (string) $this->faker->optional(0.9, '')->latitude;
         $model->lon = $model->lat ? (string) $this->faker->longitude : '';
         $model->slug = $this->slug ?? "test/IMG_{$this->faker->numberBetween(1000, 9999)}.jpg";
+        $model->point = $model->lat
+            ? new Point($model->lat, $model->lon, 4326)
+            : null;
         $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
         $model->rel_id = $this->relId;
         $model->status = $this->status;

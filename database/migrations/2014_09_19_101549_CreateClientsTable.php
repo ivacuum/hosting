@@ -315,6 +315,7 @@ class CreateClientsTable extends Migration
             $table->string('slug');
             $table->char('lat', 12);
             $table->char('lon', 12);
+            $table->point('point', 4326)->nullable();
             $table->unsignedTinyInteger('status')->default(1);
             $table->unsignedInteger('views')->default(0);
             $table->timestamps();

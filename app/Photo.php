@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property string $slug
  * @property string $lat
  * @property string $lon
+ * @property Cast\PointCast $point
  * @property int $status
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at
@@ -32,6 +33,7 @@ class Photo extends Model
     protected $perPage = 50;
 
     protected $casts = [
+        'point' => Cast\PointCast::class,
         'views' => 'int',
         'rel_id' => 'int',
         'status' => 'int',
