@@ -2,8 +2,8 @@
 
 class CacheKey
 {
-    const CITIES_BY_ID = 'cities.id';
-    const CITIES_BY_SLUG = 'cities.slug';
+    const CITIES_BY_ID = 'cities.id.v2';
+    const CITIES_BY_SLUG = 'cities.slug.v2';
 
     const COUNTRIES_BY_ID = 'countries.id';
     const COUNTRIES_BY_SLUG = 'countries.slug';

@@ -16,6 +16,7 @@ class CityHelper extends ModelCacheHelper
         'iata',
         'lat',
         'lon',
+        'point',
     ];
 
     public function __construct(Model $model)
