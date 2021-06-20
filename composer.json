@@ -4,7 +4,7 @@
   "license": "MIT",
   "require": {
     "php": ">=8.0",
-    "foolz/sphinxql-query-builder": "dev-master as 2.1.0",
+    "foolz/sphinxql-query-builder": "^3.0",
     "grimzy/laravel-mysql-spatial": "^4.0",
     "guzzlehttp/guzzle": "^7.0",
     "ivacuum/generic": "^15.0",
@@ -85,10 +85,6 @@
     {
       "type": "composer",
       "url": "https://nova.laravel.com"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/ivacuum/SphinxQL-Query-Builder"
     }
   ]
 }
