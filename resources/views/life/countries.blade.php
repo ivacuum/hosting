@@ -1,7 +1,7 @@
 @extends('life.base')
 
 @section('content')
-<h1 class="text-3xl">
+<h1 class="text-3xl tracking-tight">
   @lang('Посещенные страны')
   <span class="text-base text-muted">{{ sizeof($countries) }}</span>
 </h1>

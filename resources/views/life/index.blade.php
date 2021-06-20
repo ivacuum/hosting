@@ -8,7 +8,7 @@
 <div class="grid md:grid-cols-2 gap-8">
   <section class="pt-0">
     <div class="flex flex-wrap items-center mb-1">
-      <h1 class="text-3xl mb-1 mr-4">@lang('Поездки')</h1>
+      <h1 class="text-3xl tracking-tight mb-1 mr-4">@lang('Поездки')</h1>
       @if (Auth::check())
         <form class="mr-4" action="@lng/subscriptions" method="post">
           {{ ViewHelper::inputHiddenMail() }}
@@ -36,7 +36,7 @@
     @include('tpl.trips_by_years')
   </section>
   <section class="md:pt-0">
-    <h2 class="text-3xl">@lang('Избранное')</h2>
+    <h2 class="text-3xl tracking-tight">@lang('Избранное')</h2>
     <nav class="space-y-2">
       @ru
         <div><a class="link" href="@lng/life/chillout">Chillout</a></div>
@@ -52,7 +52,7 @@
       @endru
     </nav>
 
-    <h2 class="text-3xl mt-12">@lang('Языки')</h2>
+    <h2 class="text-3xl tracking-tight mt-12">@lang('Языки')</h2>
     <nav class="space-y-2">
       <div><a class="link" href="@lng/life/english">@lang('Английский')</a></div>
       @ru

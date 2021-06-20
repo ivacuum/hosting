@@ -5,13 +5,13 @@ https://english.stackexchange.com/questions/51209/translate-into-vs-translate-to
 --}}
 
 @section('content')
-<h1>@lang('Английский')</h1>
+<h1 class="tracking-tight">@lang('Английский')</h1>
 @ru
   <p class="mb-12">Конспект информации, освоенной во время изучения языка.</p>
 @endru
 
 <a id="irregular-verbs"></a>
-<h2>@ru Неправильные глаголы @en Irregular Verbs @endru</h2>
+<h2 class="tracking-tight">@ru Неправильные глаголы @en Irregular Verbs @endru</h2>
 <?php
 $irregularVerbs = [
   ['be', 'was', 'been'],
@@ -147,7 +147,7 @@ $irregularVerbs = [
 </table>
 
 <a id="articles"></a>
-<h2>@ru Артикли @en Articles @endru</h2>
+<h2 class="tracking-tight">@ru Артикли @en Articles @endru</h2>
 <blockquote>
   <div>— Johnny, do you know where <b>the</b> Pyramids are?</div>
   <div>— No, miss, they must be lost. There was <b>a</b> teacher here yesterday asking <b>the</b> same question.</div>

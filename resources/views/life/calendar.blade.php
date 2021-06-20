@@ -1,7 +1,7 @@
 @extends('life.base')
 
 @section('content')
-<h1 class="text-3xl">@lang('Календарь поездок')</h1>
+<h1 class="text-3xl tracking-tight">@lang('Календарь поездок')</h1>
 <x-trips-subnav/>
 
 @if ($firstDate !== null && $lastDate !== null)

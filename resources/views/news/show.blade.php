@@ -11,7 +11,7 @@
 @section('content')
 <article itemscope itemtype="http://schema.org/BlogPosting">
   <header>
-    <h1 class="text-2xl" itemprop="headline">{{ $news->title }}</h1>
+    <h1 class="text-2xl tracking-tight" itemprop="headline">{{ $news->title }}</h1>
     <link href="{{ $news->www() }}" itemprop="url">
     <div class="svg-labels svg-muted text-muted text-sm mb-4">
       <span class="svg-flex svg-label">
