@@ -1405,16 +1405,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "15.0.1",
+            "version": "15.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "90a884b4bd170838086bbe6c63e2b44b5cdd30d5"
+                "reference": "d5385ade15a016cc99e5dfe410880480c44f99a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/90a884b4bd170838086bbe6c63e2b44b5cdd30d5",
-                "reference": "90a884b4bd170838086bbe6c63e2b44b5cdd30d5",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/d5385ade15a016cc99e5dfe410880480c44f99a3",
+                "reference": "d5385ade15a016cc99e5dfe410880480c44f99a3",
                 "shasum": ""
             },
             "require": {
@@ -1468,9 +1468,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ivacuum/generic/issues",
-                "source": "https://github.com/ivacuum/generic/tree/15.0.1"
+                "source": "https://github.com/ivacuum/generic/tree/15.0.2"
             },
-            "time": "2021-01-07T09:45:22+00:00"
+            "time": "2021-06-26T13:38:10+00:00"
         },
         {
             "name": "jmikola/geojson",
