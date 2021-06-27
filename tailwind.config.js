@@ -35,6 +35,7 @@ module.exports = {
           800: 'hsla(208, 18%, 28%)',
           900: 'hsla(208, 22%, 16%)',
         },
+        orange: colors.orange,
         orangeish: {
           500: '#ed8936',
           600: '#dd6b20',
