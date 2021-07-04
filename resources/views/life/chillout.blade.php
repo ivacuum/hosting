@@ -1,7 +1,7 @@
 @extends('life.base')
 
 @section('content')
-<h1 class="h2 tracking-tight">@lang('Chillout')</h1>
+<h1 class="h2">@lang('Chillout')</h1>
 <p>Спокойная музыка для фона.</p>
 
 <ul>

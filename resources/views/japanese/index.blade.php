@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-<h1 class="h2 tracking-tight">@lang('Японский язык')</h1>
+<h1 class="h2">@lang('Японский язык')</h1>
 <div class="grid md:grid-cols-2 gap-8 mt-6">
   <div class="flex">
     <div class="border overflow-hidden rounded">
@@ -125,14 +125,14 @@
 @endru
 
 <section>
-  <div class="h2 tracking-tight">@ru Азбуки @en Syllabaries @endru</div>
+  <div class="h2">@ru Азбуки @en Syllabaries @endru</div>
   @ru
     <p>Без азбук ничего не прочитать. Катакана в основном для заимствованных слов, хирагана — для всего остального. Запомнить азбуки проще всего с помощью <a class="link" href="@lng/japanese/hiragana-katakana">тренажера</a>. Практикуя столбик за столбиком, можно за считанные дни добиться автоматизма чтения слогов.</p>
   @endru
 </section>
 
 <section>
-  <div class="h2 tracking-tight">@ru Ключи (радикалы) @en Radicals @endru</div>
+  <div class="h2">@ru Ключи (радикалы) @en Radicals @endru</div>
   @ru
     <p>Это составные блоки иероглифов. Они здорово помогают их распознавать.</p>
     <p>Возьмем, например, иероглиф неба <a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikaniKanji::class, 'show'], '空') }}">空</a>. Он состоит из следующих ключей: <a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikaniRadicals::class, 'show'], 'construction') }}">工</a>, <a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikaniRadicals::class, 'show'], 'legs') }}">儿</a> и <a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikaniRadicals::class, 'show'], 'helmet') }}">宀</a>.</p>
@@ -141,7 +141,7 @@
 </section>
 
 <section>
-  <div class="h2 tracking-tight">@ru Кандзи (иероглифы) @en Kanji @endru</div>
+  <div class="h2">@ru Кандзи (иероглифы) @en Kanji @endru</div>
   @ru
     <p>Иероглифы состоят из ключей, коих официально <a class="link" href="https://en.wikipedia.org/wiki/List_of_kanji_radicals_by_stroke_count">214 штук</a>. Приятный бонус в том, что ключи одни и те же как для японского, так и для китайского. И иероглифы общие. Чтение только разное.</p>
     <p>У кандзи может быть несколько чтений: китайского происхождения и японского. Если в слове присутствует хирагана「生きる」, то чтение почти наверняка будет японское. Если слово состоит только из иероглифов「公用」(без символов азбуки хираганы), то чтение с большой вероятностью будет китайское. Почему с вероятностью? Потому что бывают исключения. И чтение каждого типа не обязательно одно — бывает и по три!</p>

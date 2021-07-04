@@ -28,7 +28,7 @@
 
   <section class="my-0 py-12">
     <div class="container">
-      <h2>@lang('dcpp.about_software')</h2>
+      <h2 class="tracking-tight">@lang('dcpp.about_software')</h2>
       @yield('about_software')
     </div>
   </section>
@@ -44,7 +44,7 @@
   @if (!empty($softwareScreenshots))
     <section class="bg-gray-700 my-0 py-12 text-grey-200">
       <div class="container">
-        <h2 class="mb-6">@lang('Скриншоты')</h2>
+        <h2 class="tracking-tight mb-6">@lang('Скриншоты')</h2>
         <p>
           @foreach ($softwareScreenshots as $screenshot)
             <a href="{{ $screenshot['full'] }}">
@@ -58,7 +58,7 @@
 
   <section class="bg-light border-t border-b border-grey-200 my-0 py-12">
     <div class="container">
-      <h2>@lang('Хабы')</h2>
+      <h2 class="tracking-tight">@lang('Хабы')</h2>
       @ru
         <p>Ищете куда подключиться для обмена файлами? Ознакомьтесь с нашими рекомендациями.</p>
       @en
@@ -81,7 +81,7 @@
   @if (sizeof($software) > 1 || !empty($developerSite))
     <section class="border-b border-grey-200 my-0 py-12">
       <div class="container">
-        <h2 class="mb-6">@lang('dcpp.links')</h2>
+        <h2 class="tracking-tight mb-6">@lang('dcpp.links')</h2>
         <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
           @if (sizeof($software) > 1)
             <div>

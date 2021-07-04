@@ -1,7 +1,7 @@
 @extends('life.base')
 
 @section('content')
-<h1 class="h2 tracking-tight">@lang('Подкасты')</h1>
+<h1 class="h2">@lang('Подкасты')</h1>
 <p>Ссылки на любимые передачи и их отдельные выпуски.</p>
 
 <section>

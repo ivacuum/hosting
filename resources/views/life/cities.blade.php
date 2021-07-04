@@ -1,8 +1,8 @@
 @extends('life.base')
 
 @section('content')
-<h1 class="text-3xl tracking-tight">
-  @lang('Посещенные города')
+<h1 class="text-3xl">
+  <span class="tracking-tight">@lang('Посещенные города')</span>
   <span class="text-base text-muted">{{ sizeof($cities) }}</span>
 </h1>
 <x-trips-subnav/>

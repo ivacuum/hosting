@@ -1,7 +1,7 @@
 @extends('life.base')
 
 @section('content')
-<h1 class="h2 tracking-tight">@lang('Любимые посты')</h1>
+<h1 class="h2">@lang('Любимые посты')</h1>
 <p>Сборка ссылок на различные понравившиеся страницы в интернете.</p>
 
 <div class="grid md:grid-cols-2 gap-12">

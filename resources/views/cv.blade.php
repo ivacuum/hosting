@@ -108,7 +108,7 @@ body {
       </div>
     </div>
     <div>
-      <h3 class="my-caption h5 uppercase">@ru Контактная информация @en Contacts @endru</h3>
+      <h3 class="my-caption tracking-tight h5 uppercase">@ru Контактная информация @en Contacts @endru</h3>
       <div class="flex justify-between">
         <div>@ru Телефон @en Phone @endru</div>
         <div><a href="tel:+79105141181">+7 910 514-1181</a></div>

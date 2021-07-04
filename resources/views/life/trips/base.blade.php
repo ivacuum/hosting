@@ -6,7 +6,7 @@
 @include('tpl.city-timeline')
 <div class="flex flex-wrap items-center mb-2">
   <img class="flag-24 svg-shadow mr-2" src="{{ $trip->city->country->flagUrl() }}" alt="">
-  <h1 class="h2 tracking-tight mb-1 mr-2">{{ $trip->title }}</h1>
+  <h1 class="h2 mb-1 mr-2">{{ $trip->title }}</h1>
   @include('tpl.city-map-button', ['city' => $trip->city])
   @if (Auth::user()?->isRoot())
     <a class="btn btn-default text-sm py-1" href="{{ UrlHelper::edit(App\Http\Controllers\Acp\Trips::class, $trip) }}">

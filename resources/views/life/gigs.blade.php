@@ -10,7 +10,7 @@
 
 @section('content')
 <div class="flex flex-wrap items-center mb-2">
-  <h1 class="h2 tracking-tight mb-1 mr-4">@lang('Посещенные и ожидаемые концерты')</h1>
+  <h1 class="h2 mb-1 mr-4">@lang('Посещенные и ожидаемые концерты')</h1>
   @if (Auth::check())
     <form class="mr-4" action="@lng/subscriptions" method="post">
       {{ ViewHelper::inputHiddenMail() }}
