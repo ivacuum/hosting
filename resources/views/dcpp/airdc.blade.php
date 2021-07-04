@@ -20,7 +20,7 @@
       'thumb' => 'https://img.ivacuum.ru/g/120207/s/1_rGS8EGZEp0.jpg',
     ],
   ],
-  'developerSite' => 'http://airdcpp.net/',
+  'developerSite' => 'https://airdcpp.net/',
 ])
 
 @section('about_software')

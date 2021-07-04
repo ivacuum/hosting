@@ -146,7 +146,7 @@ body {
 
       <h3 class="my-caption h5 mt-6 uppercase">@ru В сети @en Online @endru</h3>
       <div class="flex flex-col">
-        <a href="https://github.com/ivacuum" rel="nofollow">Github</a>
+        <a href="https://github.com/ivacuum" rel="nofollow">GitHub</a>
         {{--<a href="skype:knifevacuum?call" rel="nofollow">Skype</a>--}}
         <a href="https://t.me/vacuum" rel="nofollow">Telegram</a>
         <a href="https://vk.com/ivacuum" rel="nofollow">VK</a>

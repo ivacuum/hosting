@@ -9,7 +9,7 @@ trait BurnsAndResurrects
     {
         try {
             return $this->burnable()->create(['user_id' => $userId]);
-        } catch (QueryException $e) {
+        } catch (QueryException) {
             return null;
         }
     }
