@@ -51,6 +51,10 @@ class WhoisQuery
         }
 
         foreach ($ips as $row) {
+            if (!is_array($row)) {
+                continue;
+            }
+
             switch ($row['type']) {
                 case 'A':
                     $ipv4[] = $row['ip'];

@@ -78,7 +78,7 @@
         </td>
         <td>
           <div class="presentation">
-            {{ Str::limit($record->content, 35) }}
+            {{ Str::limit($record->content ?? $record->target, 35) }}
             @if ($record->type == 'CNAME' && $model->isIdn($record->content))
               <br><span class="text-muted">{{ idn_to_utf8($record->content, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46) }}</span>
             @endif
@@ -97,7 +97,7 @@
             @endif
           </div>
           <div hidden class="edit">
-            <input class="form-input" type="text" name="content" value="{{ $record->content }}" {{ $record->type == 'SOA' ? 'readonly' : '' }}>
+            <input class="form-input" type="text" name="content" value="{{ $record->content ?? $record->target }}" {{ $record->type == 'SOA' ? 'readonly' : '' }}>
             @if ($record->priority > 0)
               <input class="form-input mt-1" type="text" name="priority" value="{{ $record->priority }}" placeholder="priority">
             @endif
