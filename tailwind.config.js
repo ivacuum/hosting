@@ -118,26 +118,6 @@ module.exports = {
         '2xs': '0.6875rem',
         '2sm': '0.8125rem',
       },
-      height: {
-        '1/2-screen': '50vh',
-      },
-      inset: {
-        '1/2': '50%',
-      },
-      maxWidth: {
-        none: 'none',
-        '400px': '400px',
-        '500px': '500px',
-        '600px': '600px',
-        '700px': '700px',
-        '1000px': '1000px',
-      },
-      padding: {
-        '3/4': '75%',
-      },
-      spacing: {
-        '2px': '2px',
-      },
     },
     screens: {
       sm: '576px',
