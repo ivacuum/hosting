@@ -40,9 +40,9 @@
           <button class="btn btn-default" @click="uncheckAll">{{ $t('UNCHECK_ALL') }}</button>
         </div>
       </div>
-      <div class="max-w-600px" v-show="stage === 'practice'">
+      <div class="max-w-[600px]" v-show="stage === 'practice'">
         <p>{{ $t('PRACTICE_TEXT') }}</p>
-        <div class="mx-auto max-w-400px">
+        <div class="mx-auto max-w-[400px]">
           <div class="text-center py-2 md:py-12">
             <div class="text-5xl font-bold" @click="revealAnswer">{{ question }}</div>
             <div class="text-muted" :class="{ invisible: !answerVisible }">{{ answer }}</div>

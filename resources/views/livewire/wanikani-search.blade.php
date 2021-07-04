@@ -17,7 +17,7 @@
       <div class="bg-yellow-300 px-2 py-1 rounded">@lang('japanese.no-matches')</div>
     @endif
     <div class="hidden md:block">&nbsp;</div>
-    <form class="max-w-500px" wire:submit.prevent="search">
+    <form class="max-w-[500px]" wire:submit.prevent="search">
       <div class="flex w-full">
         <input
           class="form-input rounded-r-none js-search-input"

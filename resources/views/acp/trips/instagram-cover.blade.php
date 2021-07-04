@@ -12,7 +12,7 @@
 <div style="max-width: 1080px; max-height: 1920px;">
   <div class="relative">
     <a class="block" href="{{ $trip->www() }}">
-      <div class="relative pb-3/4">
+      <div class="relative pb-[75%]">
         <img
           class="absolute w-full h-full object-cover bg-gray-700 brightness-3/4"
           src="{{ ViewHelper::pic2x($trip->slug, $trip->meta_image) }}"

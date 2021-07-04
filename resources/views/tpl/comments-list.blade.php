@@ -24,7 +24,7 @@
         <div class="comment-avatar-size"></div>
       @endif
     </aside>
-    <div class="break-words max-w-700px w-full">
+    <div class="break-words max-w-[700px] w-full">
       <div>
         @if ($comment->user)
           <a href="{{ $comment->user->www() }}">{{ $comment->user->publicName() }}</a>

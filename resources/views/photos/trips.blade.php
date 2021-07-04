@@ -10,7 +10,7 @@
     <?php $trip->loadCityAndCountry(); ?>
     <div class="relative">
       <a class="block group" href="{{ $trip->www() }}">
-        <div class="relative pb-3/4">
+        <div class="relative pb-[75%]">
           <img
             class="absolute w-full h-full object-cover bg-gray-700 brightness-3/4 group-hover:brightness-full js-lazy"
             src="https://life.ivacuum.org/0.gif"

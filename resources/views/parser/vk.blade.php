@@ -48,7 +48,7 @@
 </form>
 
 @if (!sizeof($posts))
-  <div class="mb-4 py-3 px-5 text-yellow-800 bg-yellow-300 bg-opacity-25 text-opacity-75 border border-yellow-200 rounded">
+  <div class="mb-4 py-3 px-5 text-yellow-800/75 bg-yellow-300/25 border border-yellow-200 rounded">
     Нет записей за {{ $date->formatLocalized('%e %B %Y') }}.
   </div>
 @endif

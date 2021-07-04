@@ -1,7 +1,7 @@
 @extends('my.base')
 
 @section('content')
-<div class="max-w-500px">
+<div class="max-w-[500px]">
   <h3 class="mb-4">@lang('Профиль')</h3>
   <p><a class="btn btn-default" href="{{ Auth::user()->www() }}">@lang('Просмотреть профиль') @svg (angle-right)</a></p>
   <form action="@lng/my/profile" method="post">

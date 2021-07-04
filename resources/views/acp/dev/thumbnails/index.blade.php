@@ -2,7 +2,7 @@
 
 @section('content')
 <h2>Создание миниатюр</h2>
-<div class="max-w-500px">
+<div class="max-w-[500px]">
   <images-uploader action="/acp/dev/thumbnails"></images-uploader>
 </div>
 

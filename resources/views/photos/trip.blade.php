@@ -6,7 +6,7 @@
   @foreach ($photos as $photo)
     <div>
       <a
-        class="block relative w-full pb-3/4"
+        class="block relative w-full pb-[75%]"
         href="{{ to('photos/{photo}', [$photo, $trip->getForeignKey() => $trip]) }}"
       >
         <img class="absolute top-0 left-0 w-full object-cover" src="{{ $photo->thumbnailUrl() }}" alt="">

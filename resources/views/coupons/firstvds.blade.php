@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<div class="max-w-600px">
+<div class="max-w-[600px]">
   <img src="https://ivacuum.org/i/services/firstvds.png" width="135" height="72" onclick="location.href='https://firstvds.ru/?from=149161'" alt="">
   <h1 class="mt-6">@lang('coupons.firstvds.subject')</h1>
   @ru
@@ -13,7 +13,7 @@
     {{ ViewHelper::inputHiddenMail() }}
     @csrf
 
-    <div class="max-w-500px">
+    <div class="max-w-[500px]">
       <div class="flex w-full">
         <input
           required

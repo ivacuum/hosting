@@ -13,7 +13,7 @@
       </div>
     </aside>
   @endif
-  <div class="break-words max-w-700px w-full">
+  <div class="break-words max-w-[700px] w-full">
     @if (!Auth::check())
       <div class="mb-4">
         @ru

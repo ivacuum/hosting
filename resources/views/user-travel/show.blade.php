@@ -28,9 +28,9 @@
   @endif
 </div>
 <time datetime="{{ $trip->date_start->toDateString() }}"></time>
-<div id="trip_city_map" class="mb-4 hidden mobile-wide h-1/2-screen"></div>
+<div id="trip_city_map" class="mb-4 hidden mobile-wide h-[50vh]"></div>
 
-<article class="max-w-1000px js-trip-shortcuts">
+<article class="max-w-[1000px] js-trip-shortcuts">
 @endsection
 
 @section('content')

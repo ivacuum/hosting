@@ -4,7 +4,7 @@
 
 @section('content')
 <h1>{{ $metaTitle }}</h1>
-<div class="max-w-600px">
+<div class="max-w-[600px]">
   <p>Хостинг-провайдер Таймвеб регулярно проводит акции для привлечения новых клиентов. Со всеми спецпредложениями всегда можно ознакомиться на их официальном сайте.</p>
   <a class="btn btn-primary" href="https://timeweb.com/ru/services/bonuses/{{ config('cfg.timeweb_link') }}">Ознакомиться со всеми акциями</a>
   <div class="form-help">После клика вы будете перемещены на сайт timeweb.com</div>

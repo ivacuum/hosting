@@ -2,7 +2,7 @@
   <div class="container">
     <div class="flex flex-wrap justify-between items-stretch w-full">
       @section('brand')
-        <a class="site-brand font-bold text-lg text-blueish-700 flex items-center leading-none hover:text-orangeish-600 md:mr-3 text-center pb-2px" href="{{ to('/') }}">vacuum<br>kaluga</a>
+        <a class="site-brand font-bold text-lg text-blueish-700 flex items-center leading-none hover:text-orangeish-600 md:mr-3 text-center pb-[2px]" href="{{ to('/') }}">vacuum<br>kaluga</a>
       @show
       <button class="md:hidden px-4 py-3 text-2xl text-grey-600 hover:text-grey-900 leading-none js-collapse" data-target="#header_menu">
         @svg (three-bars)

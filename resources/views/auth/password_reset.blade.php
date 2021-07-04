@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<div class="mx-auto max-w-400px">
+<div class="mx-auto max-w-[400px]">
   <h3 class="mb-4">@lang('auth.password_reset_title')</h3>
   <form action="{{ path([App\Http\Controllers\Auth\ResetPassword::class, 'reset']) }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}

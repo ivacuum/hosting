@@ -3,7 +3,7 @@
 @section('content')
 <h3 class="mb-4">@lang('Пароль')</h3>
 
-<div class="max-w-500px">
+<div class="max-w-[500px]">
   <form action="@lng/my/password" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @method('put')

@@ -8,7 +8,7 @@
   <span class="tracking-tight">{{ $gig->title }}</span>
   <span class="text-base text-muted"><time datetime="{{ $gig->date->toDateString() }}">{{ $gig->fullDate() }}</time></span>
 </h1>
-<div class="max-w-1000px js-trip-shortcuts">
+<div class="max-w-[1000px] js-trip-shortcuts">
 @endsection
 
 @section('content_footer')

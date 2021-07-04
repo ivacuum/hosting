@@ -6,7 +6,7 @@
   datetime="{{ $notification->created_at->toDateString() }}"
   title="{{ $notification->created_at->toAtomString() }}"
 >{{ $notification->created_at->diffForHumans() }}</time>
-<div class="my-2 py-3 px-5 text-yellow-800 bg-yellow-300 bg-opacity-25 text-opacity-75 border border-yellow-200 rounded">
+<div class="my-2 py-3 px-5 text-yellow-800/75 bg-yellow-300/25 border border-yellow-200 rounded">
   @lang("ui.notifications.{$basename}_help")
 </div>
 <div>

@@ -2,7 +2,7 @@
 
 @section('content_header')
 <div class="antialiased hanging-puntuation-first lg:text-lg">
-  <div class="max-w-1000px js-trip-shortcuts">
+  <div class="max-w-[1000px] js-trip-shortcuts">
 @endsection
 
 @section('content_footer')

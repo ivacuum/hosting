@@ -10,7 +10,7 @@
   @foreach ($photos as $photo)
     <div>
       <a
-        class="block relative w-full pb-3/4"
+        class="block relative w-full pb-[75%]"
         href="{{ to('photos/{photo}', [$photo, $city->getForeignKey() => $city]) }}"
       >
         <img

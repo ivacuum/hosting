@@ -15,9 +15,9 @@
   @endif
 </div>
 <time datetime="{{ $trip->date_start->toDateString() }}"></time>
-<div id="trip_city_map" class="mb-4 hidden mobile-wide h-1/2-screen"></div>
+<div id="trip_city_map" class="mb-4 hidden mobile-wide h-[50vh]"></div>
 
-<article class="max-w-1000px js-trip-shortcuts">
+<article class="max-w-[1000px] js-trip-shortcuts">
 @endsection
 
 @section('content_footer')
@@ -30,7 +30,7 @@
 
 @if (Auth::check())
   @if (!Auth::user()->notify_trips)
-    <div class="mt-6 py-3 px-5 text-teal-800 bg-teal-200 bg-opacity-50 border border-teal-200 rounded">
+    <div class="mt-6 py-3 px-5 text-teal-800 bg-teal-200/50 border border-teal-200/50 rounded">
       <div class="mb-2">@lang('life.newsletter.description')</div>
       <form action="@lng/subscriptions" method="post">
         {{ ViewHelper::inputHiddenMail() }}
@@ -45,7 +45,7 @@
     </div>
   @endif
 @else
-  <div class="mt-6 py-3 px-5 text-teal-800 bg-teal-200 bg-opacity-50 border border-teal-200 rounded">
+  <div class="mt-6 py-3 px-5 text-teal-800 bg-teal-200/50 border border-teal-200/50 rounded">
     <div class="mb-2">@lang('life.newsletter.description')</div>
     <div class="flex">
       <a
