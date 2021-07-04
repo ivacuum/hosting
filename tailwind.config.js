@@ -150,17 +150,6 @@ module.exports = {
       padding: '1rem',
     },
   },
-  variants: {
-    opacity: ['responsive', 'hover', 'focus', 'disabled'],
-    textColor: ['responsive', 'hover', 'focus', 'group-hover'],
-    textDecoration: ['responsive', 'hover', 'focus', 'group-hover'],
-    visibility: ['responsive', 'group-hover'],
-  },
-  corePlugins: {
-    borderOpacity: false,
-    divideOpacity: false,
-    placeholderOpacity: false,
-  },
   plugins: [
     require('@tailwindcss/forms'),
     // require('@tailwindcss/typography'),
