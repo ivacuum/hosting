@@ -5,6 +5,7 @@ module.exports = {
   purge: [
     './resources/js/**/*.js',
     './resources/js/**/*.vue',
+    './resources/svg/*.svg',
     './resources/views/**/*.blade.php',
   ],
   theme: {
