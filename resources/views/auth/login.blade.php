@@ -8,7 +8,7 @@
     <div class="flex justify-center my-4">
       <div class="mr-2">
         <a
-          class="btn bg-vk-600 text-xl rounded-full text-white hover:bg-vk-700 hover:text-white"
+          class="btn bg-vk-600 inline-flex justify-center items-center w-12 h-12 text-xl rounded-full text-white hover:bg-vk-700 hover:text-white"
           href="@lng/auth/vk"
         >
           @svg (vk)
@@ -17,7 +17,7 @@
       </div>
       <div class="mr-2">
         <a
-          class="btn bg-facebook-600 text-xl rounded-full text-white hover:bg-facebook-700 hover:text-white"
+          class="btn bg-facebook-600 inline-flex justify-center items-center w-12 h-12 text-xl rounded-full text-white hover:bg-facebook-700 hover:text-white"
           href="@lng/auth/facebook"
         >
           @svg (facebook)
@@ -26,7 +26,7 @@
       </div>
       <div>
         <a
-          class="btn bg-google-600 text-xl rounded-full text-white hover:bg-google-700 hover:text-white"
+          class="btn bg-google-600 inline-flex justify-center items-center w-12 h-12 text-xl rounded-full text-white hover:bg-google-700 hover:text-white"
           href="@lng/auth/google"
         >
           @svg (google)
@@ -34,7 +34,16 @@
         <div class="mt-1 text-xs text-muted">@lang('auth.google')</div>
       </div>
     </div>
-    <div>@lang('auth.or')</div>
+    <div class="relative">
+      <div class="absolute inset-0 flex items-center" aria-hidden="true">
+        <div class="w-full border-t border-gray-300"></div>
+      </div>
+      <div class="relative flex justify-center">
+        <span class="px-2 bg-white">
+          @lang('auth.or')
+        </span>
+      </div>
+    </div>
   </div>
 
   <form action="@lng/auth/login" method="post">
