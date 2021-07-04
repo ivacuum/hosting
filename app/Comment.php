@@ -76,7 +76,7 @@ class Comment extends Model
 
     public function fullDate(): string
     {
-        $format = $this->created_at->year == date('Y')
+        $format = $this->created_at->isSameYear()
             ? '%e&nbsp;%B, %H:%M'
             : '%e&nbsp;%B&nbsp;%Y, %H:%M';
 
@@ -86,7 +86,7 @@ class Comment extends Model
             return __('Вчера') . ", " . $this->created_at->formatLocalized($format);
         }
 
-        return $this->created_at->formatLocalized($format);
+        return $this->created_at->calendar(formats: ['sameElse' => 'LLL']);
     }
 
     public function isNotPending(): bool

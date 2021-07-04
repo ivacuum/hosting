@@ -110,7 +110,7 @@ class Torrent extends Model
 
     public function fullDate(): string
     {
-        $format = $this->registered_at->year == date('Y') ? '%e %B' : '%e %B %Y';
+        $format = $this->registered_at->isSameYear() ? '%e %B' : '%e %B %Y';
 
         if ($this->registered_at->isToday()) {
             return __('Сегодня') . ", " . $this->registered_at->formatLocalized($format);
