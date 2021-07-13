@@ -61,6 +61,7 @@ class MetricsUdpServer extends Command
 
             // Ctrl+C
             Process::signal(SIGINT, function () {
+                $this->info('Получен сигнал SIGINT');
                 $this->stop();
             });
         });
@@ -71,7 +72,7 @@ class MetricsUdpServer extends Command
         });
 
         $this->server->on('workerstop', function () {
-            $this->started = false;
+            $this->info('WorkerStop');
         });
 
         Timer::tick(60000, [$this, 'cron']);

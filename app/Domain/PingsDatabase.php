@@ -6,11 +6,11 @@ trait PingsDatabase
     {
         try {
             \DB::statement('DO 1');
-        } catch (\PDOException $e) {
+        } catch (\PDOException) {
             reconnect:
             try {
                 \DB::reconnect();
-            } catch (\PDOException $e) {
+            } catch (\PDOException) {
                 sleep(5);
                 goto reconnect;
             }
