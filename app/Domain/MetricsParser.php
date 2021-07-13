@@ -13,7 +13,7 @@ class MetricsParser
 
             $metricsAggregator->push($event);
 
-            if (\Str::endsWith($event, 'Viewed') && !empty($payload['data'])) {
+            if (str_ends_with($event, 'Viewed') && !empty($payload['data'])) {
                 $id = intval($payload['data']['id'] ?? 0);
                 $table = $payload['data']['table'] ?? null;
 

@@ -13,18 +13,13 @@ class MetricsUdpServer extends Command
     protected $signature = 'app:metrics-udp-server {host=127.0.0.1} {port=2720}';
     protected $description = 'Metrics daemon';
 
-    private $server;
-    private $started = false;
-    private $acceptedConnections = 0;
+    private int $acceptedConnections = 0;
+    private bool $started = false;
+    private Server $server;
 
-    /** @var \App\Domain\MetricsParser */
-    private $metricsParser;
-
-    /** @var \App\Domain\ViewsAggregator */
-    private $viewsAggregator;
-
-    /** @var \App\Domain\MetricsAggregator */
-    private $metricsAggregator;
+    private MetricsParser $metricsParser;
+    private ViewsAggregator $viewsAggregator;
+    private MetricsAggregator $metricsAggregator;
 
     public function __destruct()
     {
@@ -50,7 +45,7 @@ class MetricsUdpServer extends Command
 
     public function listeners()
     {
-        $this->server->on('packet', function (/** @noinspection PhpUnusedParameterInspection */ Server $server, $input) {
+        $this->server->on('packet', function (Server $server, $input) {
             $this->acceptedConnections++;
 
             $this->metricsParser->parsePayload(
