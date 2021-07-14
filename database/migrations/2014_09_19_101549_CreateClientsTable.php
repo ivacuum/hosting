@@ -153,7 +153,7 @@ class CreateClientsTable extends Migration
             $table->string('scheme');
             $table->string('host');
             $table->string('path');
-            $table->string('query', 1000);
+            $table->string('query', 2000);
             $table->text('request_headers');
             $table->text('request_body');
             $table->text('response_headers');
