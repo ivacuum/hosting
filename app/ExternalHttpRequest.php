@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Illuminate\Database\Eloquent\MassPrunable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -28,6 +29,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ExternalHttpRequest extends Model
 {
+    use MassPrunable;
+
     protected $guarded = ['created_at', 'updated_at'];
     protected $dateFormat = 'Y-m-d H:i:s.u';
 
@@ -45,6 +48,12 @@ class ExternalHttpRequest extends Model
     public function breadcrumb()
     {
         return "#{$this->id}";
+    }
+
+    public function prunable()
+    {
+        return self::query()
+            ->where('created_at', '<', now()->subWeeks(2));
     }
 
     protected function asJson($value)

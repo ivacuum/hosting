@@ -30,16 +30,21 @@ class Kernel extends ConsoleKernel
 //            ->cron('0 0 * * *')
 //            ->appendOutputTo($cronOutput);
 
+        $schedule
+            ->command('model:prune', [
+                '--model' => [
+                    \App\ExternalHttpRequest::class,
+                ],
+            ])
+            ->cron('35 2,14 * * *')
+            ->appendOutputTo($cronOutput);
+
         $schedule->command(\Ivacuum\Generic\Commands\NotificationsPurge::class)
             ->cron('35 2,14 * * *')
             ->appendOutputTo($cronOutput);
 
         $schedule->command(\Ivacuum\Generic\Commands\PasswordRemindersPurge::class)
             ->cron('25 1 * * *')
-            ->appendOutputTo($cronOutput);
-
-        $schedule->command(Commands\ExternalHttpRequestsPurge::class)
-            ->cron('15 1 * * *')
             ->appendOutputTo($cronOutput);
 
         $schedule->command(Commands\SitemapBuild::class)
@@ -71,7 +76,7 @@ class Kernel extends ConsoleKernel
 
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }
