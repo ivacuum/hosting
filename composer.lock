@@ -7858,16 +7858,16 @@
         },
         {
             "name": "laravel/telescope",
-            "version": "v4.5.1",
+            "version": "v4.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/telescope.git",
-                "reference": "77373b6dccfc0c4372f1a09c9064cbe7b6d1bf76"
+                "reference": "67bc1819a3f9b6cd3bac3c1fae506dcd7a8d8a48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/telescope/zipball/77373b6dccfc0c4372f1a09c9064cbe7b6d1bf76",
-                "reference": "77373b6dccfc0c4372f1a09c9064cbe7b6d1bf76",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/67bc1819a3f9b6cd3bac3c1fae506dcd7a8d8a48",
+                "reference": "67bc1819a3f9b6cd3bac3c1fae506dcd7a8d8a48",
                 "shasum": ""
             },
             "require": {
@@ -7916,9 +7916,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/telescope/issues",
-                "source": "https://github.com/laravel/telescope/tree/v4.5.1"
+                "source": "https://github.com/laravel/telescope/tree/v4.6.0"
             },
-            "time": "2021-06-22T15:36:07+00:00"
+            "time": "2021-07-13T14:59:41+00:00"
         },
         {
             "name": "maximebf/debugbar",
