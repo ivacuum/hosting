@@ -6,9 +6,11 @@
 <head>
   <meta charset="utf-8">
   <title>{{ $metaTitle ?? ViewHelper::metaTitle($routeUri, $metaReplace ?? []) }}</title>
-  <link rel="dns-prefetch" href="https://life.ivacuum.org">
-  <link rel="dns-prefetch" href="https://ivacuum.org">
-  <link rel="dns-prefetch" href="https://mc.yandex.ru">
+  @production
+    <link rel="dns-prefetch" href="https://life.ivacuum.org">
+    <link rel="dns-prefetch" href="https://ivacuum.org">
+    <link rel="dns-prefetch" href="https://mc.yandex.ru">
+  @endproduction
   <meta name="format-detection" content="telephone=no">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="keywords" content="{{ $metaKeywords ?? ViewHelper::metaKeywords($routeUri, $metaReplace ?? []) }}">
