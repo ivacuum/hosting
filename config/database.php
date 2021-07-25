@@ -23,7 +23,7 @@ return [
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
+            'collation' => 'utf8mb4_0900_ai_ci',
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,
@@ -31,23 +31,6 @@ return [
             'options' => [
                 \PDO::ATTR_EMULATE_PREPARES => true,
             ],
-        ],
-
-        'remote_mysql' => [
-            'driver' => 'mysql',
-            'url' => env('DATABASE_URL_REMOTE'),
-            'host' => env('DB_HOST_REMOTE', 'localhost'),
-            'port' => env('DB_PORT_REMOTE', '3306'),
-            'database' => env('DB_DATABASE_REMOTE', 'forge'),
-            'username' => env('DB_USERNAME_REMOTE', 'forge'),
-            'password' => env('DB_PASSWORD_REMOTE', ''),
-            'unix_socket' => env('DB_SOCKET_REMOTE', ''),
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix' => '',
-            'prefix_indexes' => true,
-            'strict' => false,
-            'engine' => null,
         ],
     ],
 
