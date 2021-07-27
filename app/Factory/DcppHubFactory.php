@@ -1,6 +1,7 @@
 <?php namespace App\Factory;
 
 use App\DcppHub;
+use App\Domain\DcppHubStatus;
 use Illuminate\Foundation\Testing\WithFaker;
 
 class DcppHubFactory
@@ -21,7 +22,7 @@ class DcppHubFactory
         $model->port = 411;
         $model->title = $this->faker->words(3, true);
         $model->clicks = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
-        $model->status = DcppHub::STATUS_PUBLISHED;
+        $model->status = DcppHubStatus::PUBLISHED;
         $model->address = $this->faker->domainName;
 
         return $model;

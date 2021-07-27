@@ -16,10 +16,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class DcppHub extends Model
 {
-    const STATUS_HIDDEN = 0;
-    const STATUS_PUBLISHED = 1;
-    const STATUS_DELETED = 2;
-
     protected $dates = ['queried_at'];
     protected $guarded = ['created_at', 'updated_at'];
 
@@ -52,7 +48,7 @@ class DcppHub extends Model
     {
         try {
             $handle = fsockopen($this->address, $this->port, $errno, $errstr, 5);
-        } catch (\Throwable $e) {
+        } catch (\Throwable) {
             return false;
         }
 

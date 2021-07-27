@@ -11,6 +11,7 @@
     @endru
 
     <ol class="mb-4">
+      <?php /** @var \App\DcppHub $hub */ ?>
       @foreach ($hubs as $hub)
         <li>
           <a

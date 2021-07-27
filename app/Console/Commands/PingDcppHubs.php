@@ -1,6 +1,7 @@
 <?php namespace App\Console\Commands;
 
 use App\DcppHub;
+use App\Domain\DcppHubStatus;
 use App\Jobs\PingDcppHubJob;
 use Ivacuum\Generic\Commands\Command;
 
@@ -12,7 +13,7 @@ class PingDcppHubs extends Command
     public function handle()
     {
         DcppHub::query()
-            ->where('status', DcppHub::STATUS_PUBLISHED)
+            ->where('status', DcppHubStatus::PUBLISHED)
             ->each(function (DcppHub $hub) {
                 dispatch(new PingDcppHubJob($hub));
             });
