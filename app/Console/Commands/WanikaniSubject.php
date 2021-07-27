@@ -12,6 +12,6 @@ class WanikaniSubject extends Command
     {
         $response = $api->subject($this->argument('id'));
 
-        dump($response->getJson(), $response->getSubject());
+        dump($response->json, $response->subject);
     }
 }

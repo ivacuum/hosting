@@ -20,13 +20,12 @@ class SubscriptionConfirmMail extends Mailable implements ShouldQueue
         $this->email = $this->email($user->emails(), $user);
         $this->subscriptions = collect($subscriptions)
             ->map(function ($subscription) {
-                switch ($subscription) {
-                    case 'gigs': return __('Концерты');
-                    case 'news': return __('Новости сайта');
-                    case 'trips': return __('Путешествия');
-                }
-
-                return '';
+                return match ($subscription) {
+                    'gigs' => __('Концерты'),
+                    'news' => __('Новости сайта'),
+                    'trips' => __('Путешествия'),
+                    default => '',
+                };
             })
             ->all();
 

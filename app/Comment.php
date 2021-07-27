@@ -120,15 +120,11 @@ class Comment extends Model
 
     public function www(): string
     {
-        switch ($this->rel_type) {
-            case 'News':
-                return path([Http\Controllers\NewsController::class, 'show'], $this->rel_id) . $this->anchor();
-            case 'Torrent':
-                return path([Http\Controllers\Torrents::class, 'show'], $this->rel_id) . $this->anchor();
-            case 'Trip':
-                return path([Http\Controllers\Trips::class, 'show'], [$this->rel_id, 'anchor' => $this->anchor()]);
-        }
-
-        return '';
+        return match ($this->rel_type) {
+            'News' => path([Http\Controllers\NewsController::class, 'show'], $this->rel_id) . $this->anchor(),
+            'Torrent' => path([Http\Controllers\Torrents::class, 'show'], $this->rel_id) . $this->anchor(),
+            'Trip' => path([Http\Controllers\Trips::class, 'show'], [$this->rel_id, 'anchor' => $this->anchor()]),
+            default => '',
+        };
     }
 }

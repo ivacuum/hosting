@@ -30,7 +30,6 @@ class Issues extends AbstractController
         $action = request('action');
 
         $models = Model::find($ids);
-        $message = '';
         $affected = 0;
 
         foreach ($models as $model) {
@@ -52,11 +51,11 @@ class Issues extends AbstractController
             }
         }
 
-        switch ($action) {
-            case 'open': $message = "Открыто обращений: {$affected}"; break;
-            case 'close': $message = "Закрыто обращений: {$affected}"; break;
-            case 'delete': $message = "Удалено записей: {$affected}"; break;
-        }
+        $message = match ($action) {
+            'open' => "Открыто обращений: {$affected}",
+            'close' => "Закрыто обращений: {$affected}",
+            'delete' => "Удалено записей: {$affected}",
+        };
 
         return [
             'status' => 'OK',

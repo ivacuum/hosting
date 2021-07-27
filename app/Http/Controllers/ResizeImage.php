@@ -68,10 +68,10 @@ class ResizeImage extends Controller
 
     protected function mimeByExtension($ext)
     {
-        switch ($ext) {
-            case 'jpg': $type = 'image/jpeg'; break;
-            case 'png': $type = 'image/png'; break;
-        }
+        $type = match ($ext) {
+            'jpg' => 'image/jpeg',
+            'png' => 'image/png',
+        };
 
         return $type ?? 'image';
     }

@@ -21,31 +21,18 @@ class Domains extends AbstractController
             $sort = static::DEFAULT_ORDER_BY;
         }
 
-        switch ($filter) {
-            case 'external':
-                $models = Model::where('status', 1)
-                    ->whereDomainControl(0);
-                break;
-            case 'inactive':
-                $models = Model::where('status', 0);
-                break;
-            case 'no-ns':
-                $models = Model::where('status', 1)
-                    ->whereNs('');
-                break;
-            case 'no-server':
-                $models = Model::where('status', 1)
-                    ->whereIpv4('');
-                break;
-            case 'orphan':
-                $models = Model::whereOrphan(1);
-                break;
-            case 'trashed':
-                $models = Model::onlyTrashed();
-                break;
-            default:
-                $models = Model::where('status', 1);
-        }
+        $models = match ($filter) {
+            'external' => Model::where('status', 1)
+                ->whereDomainControl(0),
+            'inactive' => Model::where('status', 0),
+            'no-ns' => Model::where('status', 1)
+                ->whereNs(''),
+            'no-server' => Model::where('status', 1)
+                ->whereIpv4(''),
+            'orphan' => Model::whereOrphan(1),
+            'trashed' => Model::onlyTrashed(),
+            default => Model::where('status', 1),
+        };
 
         if ($q) {
             $models = $models->where('domain', 'LIKE', "%{$q}%");

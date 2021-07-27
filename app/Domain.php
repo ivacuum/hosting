@@ -509,35 +509,20 @@ class Domain extends Model
 
     public function whatServerIpv4()
     {
-        switch ($this->ipv4) {
-            case '62.109.0.61':
-                return 'srv1.korden.net';
-            case '188.120.229.204':
-                return 'srv2.korden.net';
-            case '62.109.4.161':
-                return 'srv3.korden.net';
-            case '62.109.6.149':
-                return 'srv4.korden.net';
-            case '94.250.254.141':
-                return 'srv5.korden.net';
-
-            case '93.81.237.72':
-                return 'srv2.ivacuum.ru';
-
-            case '77.221.130.18':
-                return 'srv018.infobox.ru';
-            case '77.221.130.22':
-                return 'srv022.infobox.ru';
-            case '77.221.130.25':
-                return 'srv025.infobox.ru';
-            case '77.221.130.41':
-                return 'srv041.infobox.ru';
-
-            case '77.222.56.62':
-                return 'vh213.sweb.ru';
-        }
-
-        return str_replace(' ', '<br>', $this->ipv4);
+        return match ($this->ipv4) {
+            '62.109.0.61' => 'srv1.korden.net',
+            '188.120.229.204' => 'srv2.korden.net',
+            '62.109.4.161' => 'srv3.korden.net',
+            '62.109.6.149' => 'srv4.korden.net',
+            '94.250.254.141' => 'srv5.korden.net',
+            '93.81.237.72' => 'srv2.ivacuum.ru',
+            '77.221.130.18' => 'srv018.infobox.ru',
+            '77.221.130.22' => 'srv022.infobox.ru',
+            '77.221.130.25' => 'srv025.infobox.ru',
+            '77.221.130.41' => 'srv041.infobox.ru',
+            '77.222.56.62' => 'vh213.sweb.ru',
+            default => str_replace(' ', '<br>', $this->ipv4),
+        };
     }
 
     public function firstNsServer()
