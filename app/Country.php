@@ -44,7 +44,7 @@ class Country extends Model
     public function trips()
     {
         return $this->hasManyThrough(Trip::class, City::class)
-            ->orderBy('date_start', 'asc');
+            ->orderBy('date_start');
     }
 
     // Methods

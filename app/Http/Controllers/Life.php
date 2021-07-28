@@ -180,7 +180,7 @@ class Life extends Controller
             return $this->gig($gig);
         }
 
-        return abort(404);
+        abort(404);
     }
 
     public function trip(Trip $trip)

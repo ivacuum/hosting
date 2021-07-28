@@ -20,7 +20,7 @@ class TagFactory
 
     public function make()
     {
-        $title = "{$this->faker->word} {$this->faker->randomDigit}";
+        $title = "{$this->faker->word} {$this->faker->randomDigit()}";
 
         $model = new Tag;
         $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);

@@ -24,7 +24,7 @@ class KanjiFactory
         $model->nanori = '';
         $model->onyomi = $this->faker->word;
         $model->meaning = $this->faker->words(2, true);
-        $model->character = $this->faker->unique()->word;
+        $model->character = $this->faker->unique()->word();
         $model->kunyomi = $this->faker->word;
         $model->important_reading = $this->faker->randomElement(['onyomi', 'kunyomi']);
 

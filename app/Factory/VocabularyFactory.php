@@ -24,7 +24,7 @@ class VocabularyFactory
         $model->kana = $this->faker->word;
         $model->level = $this->level ?? $this->faker->numberBetween(1, 60);
         $model->meaning = $this->faker->words(2, true);
-        $model->character = $this->faker->unique()->word;
+        $model->character = $this->faker->unique()->word();
         $model->sentences = $this->faker->sentence;
 
         return $model;

@@ -47,8 +47,8 @@ class EmailWhoisChanges
 
         if (isset($new['ns']) && $new['ns'] && $new['ns'] != $domain->ns) {
             // Workaround dns1.yandex.ru to dns1.yandex.net and vice versa
-            if (false === strpos($new['ns'], 'dns1.yandex.') ||
-                false === strpos($domain->ns, 'dns1.yandex.')
+            if (!str_contains($new['ns'], 'dns1.yandex.') ||
+                !str_contains($domain->ns, 'dns1.yandex.')
             ) {
                 $diff['ns'] = ['from' => $domain->ns, 'to' => $new['ns']];
             }

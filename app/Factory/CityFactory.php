@@ -20,7 +20,7 @@ class CityFactory
 
     public function make()
     {
-        $title = "{$this->faker->city} {$this->faker->randomDigit}";
+        $title = "{$this->faker->city} {$this->faker->randomDigit()}";
 
         $model = new City;
         $model->lat = (string) $this->faker->latitude;

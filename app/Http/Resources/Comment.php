@@ -13,7 +13,7 @@ class Comment extends JsonResource
             'user_id' => $this->user_id,
             'posted_at' => $this->fullDate(),
 
-            'user' => $this->whenLoaded('user', new User($this->user), null),
+            'user' => $this->whenLoaded('user', new User($this->user)),
         ];
     }
 }

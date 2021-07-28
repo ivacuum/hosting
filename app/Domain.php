@@ -373,18 +373,21 @@ class Domain extends Model
         return $data;
     }
 
-    public function isExpired()
+    public function isExpired(): bool
     {
-        return $this->paid_till->year > 1970
+        return $this->paid_till
+            && $this->paid_till->year > 1970
             && ($this->paid_till->isPast() || str_contains($this->ns, 'expired.reg.ru'));
     }
 
-    public function isExpiringSoon()
+    public function isExpiringSoon(): bool
     {
-        return $this->paid_till->isFuture() && $this->paid_till->diffInDays() < 30;
+        return $this->paid_till
+            && $this->paid_till->isFuture()
+            && $this->paid_till->diffInDays() < 30;
     }
 
-    public function isIdn($domain = '')
+    public function isIdn($domain = ''): bool
     {
         $domain = $domain ?: $this->domain;
 

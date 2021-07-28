@@ -14,5 +14,7 @@ class KoreanPsySong extends Controller
                 'metaTitle' => \ViewHelper::metaTitle("korean/psy/{$song}"),
             ]);
         }
+
+        abort(404);
     }
 }

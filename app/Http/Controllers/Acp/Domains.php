@@ -260,13 +260,13 @@ class Domains extends AbstractController
     /**
      * Служебный метод для автодополнения кода
      *
-     * @param string $domain
+     * @param string $id
      * @return Model
      */
-    protected function getModel($domain)
+    protected function getModel($id)
     {
         /** @var Model $model */
-        $model = parent::getModel($domain);
+        $model = parent::getModel($id);
 
         return $model;
     }

@@ -10,7 +10,6 @@ class TorrentStatusFilter extends Filter
 
     public function apply(Request $request, $query, $value)
     {
-        /** @var \Illuminate\Database\Eloquent\Builder $query */
         return $query->where('status', $value);
     }
 

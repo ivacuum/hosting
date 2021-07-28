@@ -17,7 +17,7 @@ class CountryFactory
 
     public function make()
     {
-        $title = "{$this->faker->country} {$this->faker->randomDigit}";
+        $title = "{$this->faker->country} {$this->faker->randomDigit()}";
 
         $model = new Country;
         $model->slug = \Str::slug($title);

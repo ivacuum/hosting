@@ -12,7 +12,7 @@ class ChatMessage extends JsonResource
             'date' => $this->created_at->toDateString(),
             'time' => $this->created_at->format('H:i'),
             'html' => $this->html,
-            'user' => $this->whenLoaded('user', new User($this->user), null),
+            'user' => $this->whenLoaded('user', new User($this->user)),
         ];
     }
 }

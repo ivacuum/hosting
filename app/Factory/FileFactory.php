@@ -32,7 +32,7 @@ class FileFactory
         $model->title = $title;
         $model->folder = $this->faker->word;
         $model->status = $this->status;
-        $model->extension = $this->faker->fileExtension;
+        $model->extension = $this->faker->fileExtension();
         $model->downloads = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
 
         return $model;

@@ -154,8 +154,6 @@ class Dev extends BaseController
                 if ($found && $proper) {
                     $lines->push($json);
                 }
-
-                continue;
             }
 
             fclose($handle);
