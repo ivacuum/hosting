@@ -72,7 +72,7 @@
         </div>
         <ul class="mt-1">
           <li>
-            <a class="link" href="http://jisho.org/">jisho.org</a>
+            <a class="link" href="https://jisho.org/">jisho.org</a>
             @ru
               — словарь
             @en
@@ -88,7 +88,7 @@
             @endru
           </li>
           <li>
-            <a class="link" href="http://www.kanjidamage.com/">kanjidamage.com</a>
+            <a class="link" href="https://www.kanjidamage.com/">kanjidamage.com</a>
             @ru
               — все о кандзи
             @en

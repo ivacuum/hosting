@@ -4,7 +4,7 @@
     ['version' => 'r504', 'id' => 153, 'size' => 14_172_792, 'dl_suffix' => ''],
     ['version' => 'r500', 'id' => 140, 'size' => 17_611_794, 'dl_suffix' => ''],
   ],
-  'developerSite' => 'http://www.flylinkdc.ru/',
+  'developerSite' => 'https://www.flylinkdc.ru/',
 ])
 
 @section('about_software')

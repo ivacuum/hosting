@@ -12,7 +12,7 @@
 ]])
 
 @ru
-  <p>Одной из целей поездки была проба гитары <a class="link" href="http://www.sterlingbymusicman.com/jp-guitars/jp100d-series">Sterling by Music Man JP100D</a>. В России вообще всего один <a class="link" href="http://grandm.ru/">официальный дилер компании Music Man</a>, у него и можно пощупать инструменты. Правда, с ростом курса валют он поднял цены на гитары в два раза, так что они резко стали дорогим удовольствием.</p>
+  <p>Одной из целей поездки была проба гитары <a class="link" href="https://www.sterlingbymusicman.com/jp-guitars/jp100d-series">Sterling by Music Man JP100D</a>. В России вообще всего один <a class="link" href="http://grandm.ru/">официальный дилер компании Music Man</a>, у него и можно пощупать инструменты. Правда, с ростом курса валют он поднял цены на гитары в два раза, так что они резко стали дорогим удовольствием.</p>
 @endru
 @include('tpl.pic-arbitrary', ['pic' => 'IMG_1308.jpg', 'w' => 640, 'h' => 640])
 

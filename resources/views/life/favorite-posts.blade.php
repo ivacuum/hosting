@@ -31,9 +31,9 @@
     </ul>
     <h3 class="tracking-tight mt-12">Пополняемое</h3>
     <ul>
-      <li><a class="link" href="http://www.geoguessr.com/" rel="nofollow">Игра на знание панорам улиц и дорог городов мира</a></li>
+      <li><a class="link" href="https://www.geoguessr.com/" rel="nofollow">Игра на знание панорам улиц и дорог городов мира</a></li>
       <li><a class="link" href="https://www.google.com/maps/views/streetview?gl=us" rel="nofollow">Просмотр улиц на картах Гугла</a></li>
-      <li><a class="link" href="http://urixblog.com/" rel="nofollow">Стереопары</a></li>
+      <li><a class="link" href="https://urixblog.com/" rel="nofollow">Стереопары</a></li>
     </ul>
   </div>
   <div>

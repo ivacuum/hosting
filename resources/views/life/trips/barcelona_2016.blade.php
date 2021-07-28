@@ -219,7 +219,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_0234.jpg'])
 
 @ru
-  <p>Малоизвестный у нас <a class="link" href="http://tema.livejournal.com/1755711.html" rel="nofollow">знак парикмахерской</a>.</p>
+  <p>Малоизвестный у нас <a class="link" href="https://tema.livejournal.com/1755711.html" rel="nofollow">знак парикмахерской</a>.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0323.jpg'])
 

@@ -204,9 +204,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_0643.jpg'])
 
 @ru
-  <p><a class="link" href="http://www.carrier.com/container-refrigeration/en/worldwide/products/Container-Units/PrimeLINE/">Система охлаждения</a> для контейнеров. Не спрашивайте как нашлась эта ссылка.</p>
+  <p><a class="link" href="https://www.carrier.com/container-refrigeration/en/worldwide/products/Container-Units/PrimeLINE/">Система охлаждения</a> для контейнеров. Не спрашивайте как нашлась эта ссылка.</p>
 @en
-  <p><a class="link" href="http://www.carrier.com/container-refrigeration/en/worldwide/products/Container-Units/PrimeLINE/">The cooling system</a> of the container. Don't ask me how that link was found.</p>
+  <p><a class="link" href="https://www.carrier.com/container-refrigeration/en/worldwide/products/Container-Units/PrimeLINE/">The cooling system</a> of the container. Don't ask me how that link was found.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0647.jpg'])
 

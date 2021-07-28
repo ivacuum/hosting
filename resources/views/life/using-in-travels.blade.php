@@ -33,7 +33,7 @@
 <section class="pt-12">
   <h3>Навигация в городах</h3>
   <div>
-    <a class="link" href="http://wikitravel.org" rel="nofollow">wikitravel.org</a>
+    <a class="link" href="https://wikitravel.org" rel="nofollow">wikitravel.org</a>
     — как добраться до выбранного города, на что обратить внимание и многое другое
   </div>
 </section>
@@ -45,7 +45,7 @@
     — преимущественно отправление из России
   </div>
   <div>
-    <a class="link" href="http://travelfree.info/" rel="nofollow">travelfree.info</a>
+    <a class="link" href="https://travelfree.info/" rel="nofollow">travelfree.info</a>
     — предложения по всему миру
   </div>
 </section>

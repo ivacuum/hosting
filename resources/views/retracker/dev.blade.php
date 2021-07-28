@@ -4,7 +4,7 @@
 <section class="pt-4 pb-12">
   <div class="container lg:max-w-3xl">
     <h3>Общие сведения</h3>
-    <div>Ретрекер написан на языке <a class="link" href="http://www.perl.org/">Perl</a> с использованием следующих модулей:</div>
+    <div>Ретрекер написан на языке <a class="link" href="https://www.perl.org/">Perl</a> с использованием следующих модулей:</div>
     <ul class="mt-1 mb-4">
       <li><a class="link" href="https://metacpan.org/module/Digest::SHA1">Digest::SHA1</a> — позволяет создать уникальные идентификаторы пиров;</li>
       <li><a class="link" href="https://metacpan.org/module/EV">EV</a> — предоставляет интерфейс для регистрации обработчиков различных событий (срабатывание таймера, получение сигнала, появление доступных для чтения данных в сокете);</li>

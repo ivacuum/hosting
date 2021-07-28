@@ -25,7 +25,7 @@
     </a>
   </div>
   <div>
-    <a class="link" href="http://www.phptherightway.com/" rel="nofollow">
+    <a class="link" href="https://phptherightway.com/" rel="nofollow">
       PHP: The Right Way
       @svg (external-link)
     </a>

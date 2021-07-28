@@ -98,11 +98,11 @@ body {
           <div>@ru Технический директор @en CTO @endru</div>
 
           <div class="mt-6">@ru 18.11.2013 — 11.03.2014 @en Nov 2013 — Mar 2014 @endru</div>
-          <div><a href="http://www.smart-media.ru/" rel="nofollow">@ru ООО МедиаКонтент @en OOO MediaContent @endru</a></div>
+          <div><a href="https://www.smart-media.ru/" rel="nofollow">@ru ООО МедиаКонтент @en OOO MediaContent @endru</a></div>
           <div>@ru Ведущий разработчик (тимлид) @en Lead Developer (Team Lead) @endru</div>
 
           <div class="mt-6">@ru 10.09.2007 &mdash; 31.05.2013 @en Sep 2007 — May 2013 @endru</div>
-          <div><a href="http://www.korden.ru/" rel="nofollow">@ru ООО Корден @en OOO Korden @endru</a></div>
+          <div><a href="https://www.korden.ru/" rel="nofollow">@ru ООО Корден @en OOO Korden @endru</a></div>
           <div>@ru Веб-программист @en PHP Developer @endru</div>
         </div>
       </div>

@@ -8,7 +8,7 @@
 
     <p>Код проекта расположен в хранилище <a class="link" href="https://github.com/ivacuum/hosting">GitHub</a>. После отправки изменений в репозиторий запускается сборка сайта сервисом интеграции <a class="link" href="https://jenkins.io/">Jenkins</a> с полученными обновлениями. После успешной сборки запускается новая версия сайта, при этом не происходит простоя в работе последнего.</p>
 
-    <p>Работу <a href="/parser/vk" class="link">парсера ВК</a> обеспечивает библиотека <a href="http://guzzle.readthedocs.org/" class="link">Guzzle</a>. Также в том разделе доступны следующие горячие клавиши:</p>
+    <p>Работу <a href="/parser/vk" class="link">парсера ВК</a> обеспечивает библиотека <a href="https://guzzle.readthedocs.org/" class="link">Guzzle</a>. Также в том разделе доступны следующие горячие клавиши:</p>
     <ul>
       <li><x-kbd>j</x-kbd> — следующая запись</li>
       <li><x-kbd>k</x-kbd> — предыдущая запись</li>

@@ -10,7 +10,7 @@
       'thumb' => 'https://img.ivacuum.ru/g/091002/s/1_9Xb39T30l4.gif',
     ],
   ],
-  'developerSite' => 'http://dcplusplus.sourceforge.net/',
+  'developerSite' => 'https://dcplusplus.sourceforge.io/',
 ])
 
 @section('about_software')

@@ -5,7 +5,7 @@
     ['version' => '1.4.3', 'id' => 141, 'size' => 12_395_187, 'dl_suffix' => ''],
     ['version' => '1.4.2', 'id' => 137, 'dl_suffix' => ''],
   ],
-  'developerSite' => 'http://www.apexdc.net/',
+  'developerSite' => 'https://www.apexdc.net/',
 ])
 
 @section('download_latest')
