@@ -37,7 +37,7 @@
     <div class="mx-2">:</div>
     <input class="form-input" type="password" name="cms_pass" placeholder="password">
     <div class="mx-2">@</div>
-    <input class="form-input" type="text" name="cms_url" placeholder="http://example.com/acp/" value="{{ old('cms_url', @$model->cms_url) }}">
+    <input class="form-input" type="text" name="cms_url" placeholder="https://example.com/acp/" value="{{ old('cms_url', @$model->cms_url) }}">
   </div>
 </div>
 

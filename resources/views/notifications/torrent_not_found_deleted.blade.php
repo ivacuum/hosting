@@ -1,6 +1,6 @@
 {{-- Раздача удалена на сайте-первоисточнике --}}
 @lang("ui.notifications.{$basename}")
-<a class="link" href="{{ (new App\Torrent(['rto_id' => $notification->data['rto_id']]))->externalLink() }}">{{ Str::limit($notification->data['title'], 100) }}</a>
+<a class="link" href="{{ (new App\Torrent(['rto_id' => $notification->data['rto_id']]))->externalLink() }}">{{ Str::limit($notification->data['title'], 101) }}</a>
 <time
   class="text-muted"
   datetime="{{ $notification->created_at->toDateString() }}"

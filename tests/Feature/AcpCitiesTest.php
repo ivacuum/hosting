@@ -24,7 +24,7 @@ class AcpCitiesTest extends TestCase
 
     public function testEdit()
     {
-        $city = CityFactory::new()->withCountry()->create();;
+        $city = CityFactory::new()->withCountry()->create();
 
         $this->get("acp/cities/{$city->id}/edit")
             ->assertOk()

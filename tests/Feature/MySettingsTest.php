@@ -23,7 +23,7 @@ class MySettingsTest extends TestCase
      * @param string $field
      * @param array $events
      */
-    public function testUpdate($old, $new, string $field, array $events)
+    public function testUpdate(mixed $old, mixed $new, string $field, array $events)
     {
         $user = UserFactory::new()->make();
         $user->$field = $old;

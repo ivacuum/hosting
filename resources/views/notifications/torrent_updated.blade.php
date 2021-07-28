@@ -1,6 +1,6 @@
 {{-- Раздача обновлена --}}
 @lang("ui.notifications.{$basename}")
-<a class="link" href="{{ path([App\Http\Controllers\Torrents::class, 'show'], $notification->data['id']) }}">{{ Str::limit($notification->data['title'], 100) }}</a>
+<a class="link" href="{{ path([App\Http\Controllers\Torrents::class, 'show'], $notification->data['id']) }}">{{ Str::limit($notification->data['title'], 101) }}</a>
 <time
   class="text-muted"
   datetime="{{ $notification->created_at->toDateString() }}"

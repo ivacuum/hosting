@@ -25,7 +25,7 @@ if (is_array($locales) && in_array($locale, array_keys($locales)) && $locale !==
     $requestUri = substr_replace($request->getRequestUri(), '', 1, strlen($locale));
 
     // //news => /news
-    $requestUri = strpos($requestUri, '//') === 0
+    $requestUri = str_starts_with($requestUri, '//')
         ? substr_replace($requestUri, '', 0, 1)
         : $requestUri;
 

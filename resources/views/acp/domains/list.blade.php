@@ -10,6 +10,7 @@
     </tr>
   </thead>
   <tbody>
+  <?php /** @var \App\Domain $model */ ?>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
       <td>
@@ -41,7 +42,7 @@
       </td>
       <td class="text-muted">
         <span class="tooltipped tooltipped-n" aria-label="{{ $model->paid_till }}">
-          {{ $model->paid_till->toDateString() }}
+          {{ $model->paid_till?->toDateString() }}
         </span>
       </td>
       <td>{!! $model->whatServerIpv4() !!}</td>

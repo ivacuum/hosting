@@ -5,7 +5,7 @@ use Laravel\Telescope\Http\Middleware\Authorize;
 
 return [
     'enabled' => env('TELESCOPE_ENABLED', true),
-    'domain' => env('TELESCOPE_DOMAIN', null),
+    'domain' => env('TELESCOPE_DOMAIN'),
     'path' => env('TELESCOPE_PATH', 'telescope'),
     'driver' => env('TELESCOPE_DRIVER', 'database'),
 

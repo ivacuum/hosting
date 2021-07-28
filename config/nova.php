@@ -10,8 +10,8 @@ return [
     'name' => env('NOVA_APP_NAME', env('APP_NAME')),
     'url' => env('APP_URL', '/'),
     'path' => '/nova',
-    'guard' => env('NOVA_GUARD', null),
-    'passwords' => env('NOVA_PASSWORDS', null),
+    'guard' => env('NOVA_GUARD'),
+    'passwords' => env('NOVA_PASSWORDS'),
 
     'middleware' => [
         'web',

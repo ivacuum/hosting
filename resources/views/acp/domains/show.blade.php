@@ -1,3 +1,5 @@
+<?php /** @var \App\Domain $model */ ?>
+
 @extends('acp.show', [
   'metaTitle' => $model->domain,
 ])
@@ -15,7 +17,7 @@
 
 @if ($model->isExpired())
   <x-alert-danger>
-    Подошел срок оплаты домена — {{ $model->paid_till->addMonth()->formatLocalized('%e %B') }} ({{ $model->paid_till->addMonth()->diffForHumans() }}) он совсем пропадет
+    Подошел срок оплаты домена — {{ $model->paid_till?->addMonth()->formatLocalized('%e %B') }} ({{ $model->paid_till?->addMonth()->diffForHumans() }}) он совсем пропадет
   </x-alert-danger>
 @endif
 
