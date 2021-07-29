@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClientsTable extends Migration
+return new class extends Migration
 {
     public function up()
     {
@@ -452,4 +452,4 @@ class CreateClientsTable extends Migration
             $table->timestamps();
         });
     }
-}
+};
