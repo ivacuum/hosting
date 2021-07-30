@@ -14,7 +14,7 @@
           @svg (trash-o)
         @elseif ($basename === 'trip_published')
           @svg (plane)
-        @elseif (Str::endsWith($basename, '_commented'))
+        @elseif (str_ends_with($basename, '_commented'))
           @svg (comment-o)
         @else
           @svg (bullhorn)
