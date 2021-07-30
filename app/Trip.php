@@ -311,7 +311,7 @@ class Trip extends Model
             return '';
         }
 
-        if (\Str::startsWith($this->meta_image, 'http')) {
+        if (str_starts_with($this->meta_image, 'http')) {
             return $this->meta_image;
         }
 

@@ -27,7 +27,7 @@ class Rto
             return null;
         }
 
-        if (\Str::startsWith($input, 'http')) {
+        if (str_starts_with($input, 'http')) {
             if (\Str::contains($input, ['://rutracker.org', '://rutracker.net', '://rutracker.nl'])) {
                 $url = parse_url($input);
 

@@ -58,7 +58,7 @@ class ResizeImage extends Controller
     protected function isWhitelisted($uri)
     {
         foreach ($this->whitelist as $site) {
-            if (\Str::startsWith($uri, $site)) {
+            if (str_starts_with($uri, $site)) {
                 return true;
             }
         }
