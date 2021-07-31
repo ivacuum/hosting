@@ -7,7 +7,7 @@
     "foolz/sphinxql-query-builder": "^3.0",
     "grimzy/laravel-mysql-spatial": "^4.0",
     "guzzlehttp/guzzle": "^7.0",
-    "ivacuum/generic": "^15.0",
+    "ivacuum/generic": "^16.0",
     "laravel-notification-channels/telegram": "^0.5",
     "laravel/framework": "^8.0",
     "laravel/nova": "^3.0",

@@ -220,7 +220,7 @@ class Photos extends Controller
 
     public function trip(Trip $trip)
     {
-        abort_unless($trip->isPublished(), 404);
+        abort_unless($trip->status->isPublished(), 404);
 
         $photos = Photo::query()
             ->forTrip($trip->id)

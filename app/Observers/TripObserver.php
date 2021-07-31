@@ -44,7 +44,7 @@ class TripObserver
             return;
         }
 
-        $status = $model->isPublished()
+        $status = $model->status->isPublished()
             ? Photo::STATUS_PUBLISHED
             : Photo::STATUS_HIDDEN;
 

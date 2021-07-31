@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Domain\TripStatus;
 use App\Trip;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -41,7 +42,7 @@ class UserTravelTrips extends UserTravel
         $trip = Trip::withCount('photos')
             ->where('user_id', $this->traveler->id)
             ->where('slug', $slug)
-            ->where('status', Trip::STATUS_PUBLISHED)
+            ->where('status', TripStatus::PUBLISHED)
             ->firstOrFail();
 
         $trip->loadCityAndCountry();

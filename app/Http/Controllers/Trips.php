@@ -7,7 +7,7 @@ class Trips extends Controller
 {
     public function show(Trip $trip, Request $request)
     {
-        abort_unless($trip->isPublished(), 404);
+        abort_unless($trip->status->isPublished(), 404);
 
         return redirect($trip->www($request->input('anchor')));
     }

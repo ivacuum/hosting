@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e0804cdec8843a2bfb35a928832b26c",
+    "content-hash": "3408fe1f252922ec32e2cc4873cae024",
     "packages": [
         {
             "name": "brick/math",
@@ -1410,21 +1410,21 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "15.1.0",
+            "version": "16.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "2b25f9e40a34ee3740b483bcf3e401093d7ef901"
+                "reference": "00f4336908d7f99947c6a4f96da174d86fd63940"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/2b25f9e40a34ee3740b483bcf3e401093d7ef901",
-                "reference": "2b25f9e40a34ee3740b483bcf3e401093d7ef901",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/00f4336908d7f99947c6a4f96da174d86fd63940",
+                "reference": "00f4336908d7f99947c6a4f96da174d86fd63940",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "^7.0||^8.0",
-                "php": ">=7.4"
+                "php": ">=8.0"
             },
             "type": "library",
             "extra": {
@@ -1474,9 +1474,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ivacuum/generic/issues",
-                "source": "https://github.com/ivacuum/generic/tree/15.1.0"
+                "source": "https://github.com/ivacuum/generic/tree/16.0.0"
             },
-            "time": "2021-07-31T09:47:16+00:00"
+            "time": "2021-07-31T12:36:19+00:00"
         },
         {
             "name": "jmikola/geojson",

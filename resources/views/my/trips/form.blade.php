@@ -15,11 +15,7 @@
 {!! Form::text('date_start')->required()->default(date('Y-m-d'))->html() !!}
 {!! Form::text('date_end')->required()->default(date('Y-m-d'))->html() !!}
 
-{!! Form::radio('status')->required()->values([
-  App\Trip::STATUS_HIDDEN => 'Скрыта',
-  App\Trip::STATUS_INACTIVE => 'Неактивна',
-  App\Trip::STATUS_PUBLISHED => 'Опубликована',
-])->html() !!}
+{!! Form::radio('status')->required()->values(App\Domain\TripStatus::cases())->html() !!}
 
 {!! Form::textarea('markdown')->wide()->html() !!}
 

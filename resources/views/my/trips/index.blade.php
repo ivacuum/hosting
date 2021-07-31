@@ -47,11 +47,11 @@
         --}}
         <td>{{ $model->title }}</td>
         <td>
-          @if ($model->isHidden())
+          @if ($model->status->isHidden())
             <span class="tooltipped tooltipped-n" aria-label="Заметка скрыта">
               @svg (eye-slash)
             </span>
-          @elseif ($model->isInactive())
+          @elseif ($model->status->isInactive())
             <span class="tooltipped tooltipped-n" aria-label="Заметка пишется">
               @svg (pencil)
             </span>
@@ -59,7 +59,7 @@
         </td>
         <td>{{ $model->localizedDate() }}</td>
         <td>
-          @if ($model->isPublished())
+          @if ($model->status->isPublished())
             <a href="{{ $model->www() }}">{{ $model->slug }}</a>
           @else
             {{ $model->slug }}

@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Domain\TripStatus;
 use App\Trip;
 
 class TripsRss extends Controller
@@ -13,7 +14,7 @@ class TripsRss extends Controller
         ];
 
         $items = Trip::where('user_id', 1)
-            ->where('status', Trip::STATUS_PUBLISHED)
+            ->where('status', TripStatus::PUBLISHED)
             ->where('meta_image', '<>', '')
             ->take(50)
             ->orderByDesc('date_start')

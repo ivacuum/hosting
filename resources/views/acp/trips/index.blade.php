@@ -8,9 +8,9 @@
   'values' => [
     'Все' => null,
     '---' => null,
-    'Опубликованные' => App\Trip::STATUS_PUBLISHED,
-    'Пишутся' => App\Trip::STATUS_INACTIVE,
-    'Скрытые' => App\Trip::STATUS_HIDDEN,
+    'Опубликованные' => App\Domain\TripStatus::PUBLISHED,
+    'Пишутся' => App\Domain\TripStatus::INACTIVE,
+    'Скрытые' => App\Domain\TripStatus::HIDDEN,
   ]
 ])
 @endsection
@@ -42,11 +42,11 @@
         </a>
       </td>
       <td>
-        @if ($model->isHidden())
+        @if ($model->status->isHidden())
           <span class="tooltipped tooltipped-n" aria-label="Заметка скрыта">
             @svg (eye-slash)
           </span>
-        @elseif ($model->isInactive())
+        @elseif ($model->status->isInactive())
           <span class="tooltipped tooltipped-n" aria-label="Заметка пишется">
             @svg (pencil)
           </span>

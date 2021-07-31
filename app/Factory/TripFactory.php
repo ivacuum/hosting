@@ -1,5 +1,6 @@
 <?php namespace App\Factory;
 
+use App\Domain\TripStatus;
 use App\Trip;
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -8,6 +9,7 @@ class TripFactory
 {
     use WithFaker;
 
+    private $status = TripStatus::PUBLISHED;
     private $cityId;
     private $userId;
     private $metaImage;
@@ -31,7 +33,7 @@ class TripFactory
         $model->html = '';
         $model->slug = \Str::slug($title);
         $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
-        $model->status = Trip::STATUS_PUBLISHED;
+        $model->status = $this->status;
         $model->city_id = $this->cityId ?? CityFactory::new()->withCountry()->create()->id;
         $model->user_id = $this->userId ?? 1;
         $model->date_end = $dateEnd;

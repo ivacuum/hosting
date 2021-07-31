@@ -1,7 +1,7 @@
 <?php namespace App\Http\Requests;
 
+use App\Domain\TripStatus;
 use App\Rules\TripSlug;
-use App\Trip;
 use Illuminate\Validation\Rule;
 use Ivacuum\Generic\Http\FormRequest;
 
@@ -31,9 +31,9 @@ class TripUpdateForm extends FormRequest
             'status' => [
                 'required',
                 Rule::in([
-                    Trip::STATUS_HIDDEN,
-                    Trip::STATUS_INACTIVE,
-                    Trip::STATUS_PUBLISHED,
+                    TripStatus::HIDDEN,
+                    TripStatus::INACTIVE,
+                    TripStatus::PUBLISHED,
                 ])
             ],
             'city_id' => 'required|integer|min:1',

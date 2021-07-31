@@ -80,7 +80,7 @@ class TripFactory
             ->visible()
             ->get(['id', 'city_id', 'status'])
             ->each(function (Trip $trip) use (&$tripsByCities) {
-                if ($trip->isPublished()) {
+                if ($trip->status->isPublished()) {
                     @$tripsByCities[$trip->city_id]['published'] += 1;
                 }
 

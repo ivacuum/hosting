@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\City;
+use App\Domain\TripStatus;
 use App\Trip;
 use App\TripFactory;
 
@@ -35,7 +36,7 @@ class UserTravelCities extends UserTravel
             ->get()
             ->groupBy(fn (Trip $model) => $model->year);
 
-        $publishedTrips = $trips->where('status', Trip::STATUS_PUBLISHED);
+        $publishedTrips = $trips->where('status', TripStatus::PUBLISHED);
 
         event(new \App\Events\Stats\CityViewed($city->id));
 

@@ -11,7 +11,7 @@
               <div class="text-xs">
                 @if ($row->id === $trip->id)
                   <mark>{{ $row->timelinePeriod() }}</mark>
-                @elseif ($row->isPublished())
+                @elseif ($row->status->isPublished())
                   <a class="link" href="{{ $row->www() }}">{{ $row->timelinePeriod() }}</a>
                 @else
                   {{ $row->timelinePeriod() }}

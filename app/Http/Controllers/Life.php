@@ -2,6 +2,7 @@
 
 use App\City;
 use App\Country;
+use App\Domain\TripStatus;
 use App\Gig;
 use App\Http\Requests\LifeIndexForm;
 use App\Trip;
@@ -68,7 +69,7 @@ class Life extends Controller
             ->get()
             ->groupBy(fn (Trip $model) => $model->year);
 
-        $publishedTrips = $trips->where('status', Trip::STATUS_PUBLISHED);
+        $publishedTrips = $trips->where('status', TripStatus::PUBLISHED);
 
         event(new \App\Events\Stats\CityViewed($city->id));
 
@@ -226,7 +227,7 @@ class Life extends Controller
         $trip = Trip::where('user_id', 1)
             ->withCount('photos')
             ->where('slug', $slug)
-            ->where('status', Trip::STATUS_PUBLISHED)
+            ->where('status', TripStatus::PUBLISHED)
             ->first();
 
         return $trip;

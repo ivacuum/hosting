@@ -2,6 +2,7 @@
 
 use App\City;
 use App\Country;
+use App\Domain\TripStatus;
 use App\Gig;
 use App\News;
 use App\Trip;
@@ -219,7 +220,7 @@ class SitemapBuild extends BaseSitemapBuild
         return Trip::query()
             ->select(['id', 'user_id', 'slug'])
             ->where('user_id', 1)
-            ->where('status', Trip::STATUS_PUBLISHED)
+            ->where('status', TripStatus::PUBLISHED)
             ->orderBy('id')
             ->lazy();
     }

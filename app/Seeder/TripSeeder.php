@@ -1,6 +1,7 @@
 <?php namespace App\Seeder;
 
 use App\City;
+use App\Domain\TripStatus;
 use App\Factory\TripFactory;
 use App\Factory\UserFactory;
 use App\Trip;
@@ -29,12 +30,12 @@ class TripSeeder extends Seeder
         }
 
         /** @var Trip $trip */
-        $trip = Trip::where('status', Trip::STATUS_PUBLISHED)->orderByDesc('date_start')->first();
-        $trip->status = Trip::STATUS_INACTIVE;
+        $trip = Trip::where('status', TripStatus::PUBLISHED)->orderByDesc('date_start')->first();
+        $trip->status = TripStatus::INACTIVE;
         $trip->save();
 
-        $trip = Trip::where('status', Trip::STATUS_PUBLISHED)->orderByDesc('date_start')->first();
-        $trip->status = Trip::STATUS_HIDDEN;
+        $trip = Trip::where('status', TripStatus::PUBLISHED)->orderByDesc('date_start')->first();
+        $trip->status = TripStatus::HIDDEN;
         $trip->save();
 
         $user = UserFactory::new()

@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Domain\TripStatus;
 use App\Factory\TripFactory;
 use App\Factory\UserFactory;
 use App\Http\Livewire\Acp\TripForm;
@@ -68,13 +69,13 @@ class AcpTripsTest extends TestCase
         $trip = TripFactory::new()->create();
 
         \Livewire::test(TripForm::class, ['modelId' => $trip->id])
-            ->set('status', $trip::STATUS_HIDDEN)
+            ->set('status', TripStatus::HIDDEN)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/trips');
 
         $trip->refresh();
 
-        $this->assertTrue($trip->isHidden());
+        $this->assertTrue($trip->status->isHidden());
     }
 }

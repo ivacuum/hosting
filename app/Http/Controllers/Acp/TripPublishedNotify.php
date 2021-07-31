@@ -8,7 +8,7 @@ class TripPublishedNotify extends AbstractController
 {
     public function __invoke(Trip $trip, TripPublishedNotifyRequest $request)
     {
-        if ($trip->isNotPublished()) {
+        if (!$trip->status->isPublished()) {
             return [
                 'status' => 'error',
                 'message' => 'Для рассылки уведомлений поездка должна быть опубликована',

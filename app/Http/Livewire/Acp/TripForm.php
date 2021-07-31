@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Acp;
 
 use App\City;
+use App\Domain\TripStatus;
 use App\Trip;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
@@ -33,7 +34,7 @@ class TripForm extends Component
 
             $this->slug = $trip->slug;
             $this->cityId = $trip->city_id;
-            $this->status = $trip->status;
+            $this->status = $trip->status->jsonSerialize();
             $this->dateEnd = $trip->date_end->toDateTimeString();
             $this->titleEn = $trip->title_en;
             $this->titleRu = $trip->title_ru;
@@ -44,7 +45,7 @@ class TripForm extends Component
             $this->metaDescriptionRu = $trip->meta_description_ru;
         } else {
             $this->slug = 'city.' . now()->year;
-            $this->status = Trip::STATUS_HIDDEN;
+            $this->status = TripStatus::HIDDEN;
             $this->dateEnd = now()->startOfDay()->toDateTimeString();
             $this->dateStart = now()->startOfDay()->toDateTimeString();
         }
@@ -122,7 +123,7 @@ class TripForm extends Component
     private function fillModel(Trip $trip)
     {
         $trip->slug = $this->slug;
-        $trip->status = $this->status;
+        $trip->status = new TripStatus($this->status);
         $trip->city_id = $this->cityId;
         $trip->date_end = $this->dateEnd;
         $trip->date_start = $this->dateStart;

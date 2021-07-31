@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Domain\TripStatus;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -15,7 +16,7 @@ use League\CommonMark\CommonMarkConverter;
  * @property string $slug
  * @property \Carbon\CarbonImmutable $date_start
  * @property \Carbon\CarbonImmutable $date_end
- * @property int $status
+ * @property Domain\TripStatus $status
  * @property string $markdown
  * @property string $html
  * @property string $meta_title_ru
@@ -53,10 +54,6 @@ class Trip extends Model
 {
     use Traits\HasLocalizedTitle;
 
-    const STATUS_INACTIVE = 0;
-    const STATUS_PUBLISHED = 1;
-    const STATUS_HIDDEN = 2;
-
     const COLUMNS_LIST = [
         'id',
         'user_id',
@@ -70,12 +67,16 @@ class Trip extends Model
         'views',
     ];
 
+    protected $attributes = [
+        'status' => TripStatus::INACTIVE,
+    ];
+
     protected $guarded = ['id', 'html', 'views', 'created_at', 'updated_at'];
     protected $dates = ['date_start', 'date_end'];
 
     protected $casts = [
         'views' => 'int',
-        'status' => 'int',
+        'status' => Cast\StatusCast::class,
         'city_id' => 'int',
         'user_id' => 'int',
     ];
@@ -116,7 +117,7 @@ class Trip extends Model
     {
         return $query->where('user_id', $this->user_id)
             ->where('date_start', '>=', $this->date_start)
-            ->where('status', static::STATUS_PUBLISHED)
+            ->where('status', TripStatus::PUBLISHED)
             ->where('id', '<>', $this->id)
             ->orderBy('date_start')
             ->take(2);
@@ -132,7 +133,7 @@ class Trip extends Model
 
         return $query->where('user_id', $this->user_id)
             ->where('date_start', '<=', $this->date_start)
-            ->where('status', static::STATUS_PUBLISHED)
+            ->where('status', TripStatus::PUBLISHED)
             ->where('id', '<>', $this->id)
             ->orderByDesc('date_start')
             ->take($take);
@@ -140,12 +141,12 @@ class Trip extends Model
 
     public function scopePublished(Builder $query)
     {
-        return $query->where('status', static::STATUS_PUBLISHED);
+        return $query->where('status', TripStatus::PUBLISHED);
     }
 
     public function scopeVisible(Builder $query)
     {
-        return $query->where('status', '!=', static::STATUS_HIDDEN);
+        return $query->where('status', '!=', TripStatus::HIDDEN);
     }
 
     // Attributes
@@ -191,7 +192,7 @@ class Trip extends Model
     {
         return $this->where('user_id', $this->user_id)
             ->where('city_id', $this->city_id)
-            ->where('status', '<>', static::STATUS_HIDDEN)
+            ->where('status', '<>', TripStatus::HIDDEN)
             ->orderBy('date_start')
             ->get()
             ->groupBy('year');
@@ -215,26 +216,6 @@ class Trip extends Model
     public function imgAltText(): string
     {
         return "{$this->city->country->emoji} {$this->title}, {$this->city->country->title}, {$this->timelinePeriodWithYear()}.";
-    }
-
-    public function isHidden(): bool
-    {
-        return $this->status === self::STATUS_HIDDEN;
-    }
-
-    public function isInactive(): bool
-    {
-        return $this->status === self::STATUS_INACTIVE;
-    }
-
-    public function isNotPublished(): bool
-    {
-        return !$this->isPublished();
-    }
-
-    public function isPublished(): bool
-    {
-        return $this->status === self::STATUS_PUBLISHED;
     }
 
     public function loadCity(): void

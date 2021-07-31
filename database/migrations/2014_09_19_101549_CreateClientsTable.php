@@ -396,7 +396,7 @@ return new class extends Migration
             $table->string('slug')->default('');
             $table->timestamp('date_start')->nullable();
             $table->timestamp('date_end')->nullable();
-            $table->unsignedTinyInteger('status')->default(App\Trip::STATUS_INACTIVE);
+            $table->unsignedTinyInteger('status')->default(App\Domain\TripStatus::INACTIVE);
             $table->text('markdown');
             $table->text('html');
             $table->string('meta_title_ru')->default('');
