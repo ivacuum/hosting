@@ -11,7 +11,7 @@
     "laravel-notification-channels/telegram": "^0.5",
     "laravel/framework": "^8.0",
     "laravel/nova": "^3.0",
-    "laravel/scout": "^8.0",
+    "laravel/scout": "^9.0",
     "laravel/socialite": "^5.0",
     "league/commonmark": "^1.0",
     "league/flysystem-sftp": "^1.0",
