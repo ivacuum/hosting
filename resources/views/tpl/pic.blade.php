@@ -10,7 +10,7 @@
       @if ($isCrawler)
         <img
           src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"
-          alt="{{ $trip?->imgAltText() }}"
+          alt="{{ isset($trip) ? $trip->imgAltText() : '' }}"
         >
       @else
         <img

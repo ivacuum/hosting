@@ -3,7 +3,7 @@
  * @var bool $isCrawler
  * @var \App\Trip $trip
  */
-$alt = $isCrawler ? $trip?->imgAltText() : '';
+$alt = $isCrawler && isset($trip) ? $trip->imgAltText() : '';
 ?>
 <div class="-mt-2 mb-6 mobile-wide">
   <div class="max-w-[1000px] mx-auto text-center">
