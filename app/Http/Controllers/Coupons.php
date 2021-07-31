@@ -43,12 +43,9 @@ class Coupons extends Controller
 
     protected function getServiceMetaTitle(string $service): string
     {
-        $month = intval(date('m'));
-        $year = date('Y');
-
         return __("coupons.{$service}.title", [
-            'month' => __("months.$month"),
-            'year' => $year,
+            'month' => now()->isoFormat('MMMM'),
+            'year' => now()->year,
         ]);
     }
 }

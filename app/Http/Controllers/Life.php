@@ -35,8 +35,8 @@ class Life extends Controller
             ->get();
 
         $models = collect([...$trips, ...$gigs])
-            ->sortByDesc(fn ($model) => $model->date())
-            ->groupBy(fn ($model) => $model->year);
+            ->sortByDesc(fn (Gig|Trip $model) => $model->date())
+            ->groupBy(fn (Gig|Trip $model) => $model->year);
 
         return view('life.index', [
             'modelsByYears' => $models,

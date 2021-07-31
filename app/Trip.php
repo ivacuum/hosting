@@ -320,11 +320,11 @@ class Trip extends Model
 
     public function period(): string
     {
-        if ($this->date_start->month === $this->date_end->month) {
-            return $this->monthName($this->date_start->month);
+        if ($this->date_start->isSameMonth($this->date_end)) {
+            return $this->date_start->isoFormat('MMMM');
         }
 
-        return $this->monthName($this->date_start->month) . '–' . $this->monthName($this->date_end->month);
+        return $this->date_start->isoFormat('MMMM') . '–' . $this->date_end->isoFormat('MMMM');
     }
 
     public function template(): string
@@ -339,12 +339,12 @@ class Trip extends Model
 
     public function timelinePeriod(): string
     {
-        return $this->monthName($this->date_start->month);
+        return $this->date_start->isoFormat('MMMM');
     }
 
     public function timelinePeriodWithYear(): string
     {
-        return $this->monthName($this->date_start->month) . " {$this->date_start->year}";
+        return $this->date_start->isoFormat('MMMM YYYY');
     }
 
     public function www(?string $anchor = null): string
@@ -359,11 +359,5 @@ class Trip extends Model
         return $this->user_id === 1
             ? path_locale([Http\Controllers\Life::class, 'page'], $this->slug, false, $locale) . $anchor
             : path_locale([Http\Controllers\UserTravelTrips::class, 'show'], [$this->user->login, $this->slug], false, $locale) . $anchor;
-    }
-
-    protected function monthName(int $month): string
-    {
-        // Собственный перевод, так как нужен именительный падеж в русском языке
-        return __("months.{$month}");
     }
 }
