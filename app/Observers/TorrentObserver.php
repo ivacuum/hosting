@@ -23,7 +23,7 @@ class TorrentObserver
 
     public function saving(Model $model)
     {
-        if ($model->isDirty('title') && 0 === mb_strpos($model->title, '[ATV')) {
+        if ($model->isDirty('title') && str_starts_with($model->title, '[ATV')) {
             $model->title = preg_replace('/^\[ATV ?3\] /', '', $model->title);
         }
     }

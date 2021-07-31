@@ -60,7 +60,7 @@ class ParserVk extends Controller
             $json = collect($json)->reject(function ($post) {
                 if (isset($post->attachments)) {
                     foreach ($post->attachments as $attach) {
-                        if ($attach->type === 'link' && false !== mb_strpos($attach->link->url, 'vk.com/@')) {
+                        if ($attach->type === 'link' && str_contains($attach->link->url, 'vk.com/@')) {
                             return true;
                         }
                     }
