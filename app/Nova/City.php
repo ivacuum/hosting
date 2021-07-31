@@ -30,7 +30,6 @@ class City extends Resource
             Fields\DateTime::make('Updated At')->onlyOnDetail(),
 
             Fields\HasMany::make('Gigs'),
-            Fields\HasMany::make('Trips'),
         ];
     }
 }
