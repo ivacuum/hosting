@@ -123,8 +123,7 @@ class Torrents extends Controller
         $topicId = $request->topicId($rto);
 
         if ($topicId > 0) {
-            /** @var Torrent $torrent */
-            $torrent = Torrent::where('rto_id', $topicId)->first();
+            $torrent = Torrent::firstWhere('rto_id', $topicId);
 
             if ($torrent) {
                 event(new \App\Events\Stats\TorrentDuplicateFound);
