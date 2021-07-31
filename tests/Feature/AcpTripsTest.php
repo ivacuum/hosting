@@ -2,6 +2,7 @@
 
 use App\Factory\TripFactory;
 use App\Factory\UserFactory;
+use App\Http\Livewire\Acp\TripForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -19,7 +20,8 @@ class AcpTripsTest extends TestCase
     public function testCreate()
     {
         $this->get('acp/trips/create')
-            ->assertOk();
+            ->assertOk()
+            ->assertSeeLivewire(TripForm::class);
     }
 
     public function testEdit()
@@ -27,7 +29,8 @@ class AcpTripsTest extends TestCase
         $trip = TripFactory::new()->create();
 
         $this->get("acp/trips/{$trip->id}/edit")
-            ->assertOk();
+            ->assertOk()
+            ->assertSeeLivewire(TripForm::class);
     }
 
     public function testIndex()
@@ -48,15 +51,30 @@ class AcpTripsTest extends TestCase
 
     public function testStore()
     {
-        $this->post('acp/trips', TripFactory::new()->make()->toArray())
-            ->assertRedirect('acp/trips');
+        $trip = TripFactory::new()->make();
+
+        \Livewire::test(TripForm::class)
+            ->set('cityId', $trip->city_id)
+            ->call('submit')
+            ->assertHasNoErrors()
+            ->assertRedirect('/acp/trips');
+
+        $this->get('acp/trips')
+            ->assertSee($trip->city->title);
     }
 
     public function testUpdate()
     {
         $trip = TripFactory::new()->create();
 
-        $this->put("acp/trips/{$trip->id}", TripFactory::new()->make()->toArray())
-            ->assertRedirect('acp/trips');
+        \Livewire::test(TripForm::class, ['modelId' => $trip->id])
+            ->set('status', $trip::STATUS_HIDDEN)
+            ->call('submit')
+            ->assertHasNoErrors()
+            ->assertRedirect('/acp/trips');
+
+        $trip->refresh();
+
+        $this->assertTrue($trip->isHidden());
     }
 }

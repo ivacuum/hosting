@@ -1,3 +1,4 @@
+@once
 @push('head')
 @livewireStyles
 @endpush
@@ -6,3 +7,4 @@
 @livewireScripts
 <script src="{{ mix('/assets/livewire-vue.js') }}"></script>
 @endpush
+@endonce
