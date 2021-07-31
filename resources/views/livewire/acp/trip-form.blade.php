@@ -12,7 +12,6 @@
 
   {{ LivewireForm::text('date_start')->required()->html() }}
   {{ LivewireForm::text('date_end')->required()->html() }}
-  {{ LivewireForm::text('date_end')->required()->html() }}
 
   {{ LivewireForm::radio('status')->required()->values([
     App\Trip::STATUS_HIDDEN => 'Скрыта',
