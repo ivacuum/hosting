@@ -1,4 +1,8 @@
 export default function initVueComponents(selector, locale = 'ru') {
+  if (window.Vue === undefined) {
+    return null
+  }
+
   if (document.querySelector(selector)) {
     return new Vue({
       el: selector,
