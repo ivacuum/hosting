@@ -7,12 +7,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $title
  * @property string $address
  * @property int $port
- * @property int $status
+ * @property Domain\DcppHubStatus $status
  * @property int $is_online
  * @property int $clicks
  * @property \Carbon\CarbonImmutable $queried_at
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
+ *
+ * @mixin \Eloquent
  */
 class DcppHub extends Model
 {
@@ -21,7 +23,7 @@ class DcppHub extends Model
 
     protected $casts = [
         'port' => 'int',
-        'status' => 'int',
+        'status' => Cast\StatusCast::class,
         'clicks' => 'int',
     ];
 

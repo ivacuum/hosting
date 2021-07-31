@@ -1,26 +1,14 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\DcppHub as Model;
+use Ivacuum\Generic\Controllers\Acp\UsesLivewire;
 
-class DcppHubs extends AbstractController
+class DcppHubs extends AbstractController implements UsesLivewire
 {
     public function index()
     {
         $models = Model::orderBy('title')->get();
 
         return view($this->view, ['models' => $models]);
-    }
-
-    /**
-     * @param Model|null $model
-     * @return array
-     */
-    protected function rules($model = null)
-    {
-        return [
-            'port' => 'required|integer|min:1|max:65535',
-            'title' => 'required',
-            'address' => 'required',
-        ];
     }
 }

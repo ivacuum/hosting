@@ -1,6 +1,6 @@
 <?php namespace App\Domain;
 
-class DcppHubStatus
+class DcppHubStatus implements \JsonSerializable
 {
     const HIDDEN = 0;
     const PUBLISHED = 1;
@@ -26,5 +26,15 @@ class DcppHubStatus
             self::PUBLISHED => __('Опубликован'),
             self::DELETED => __('Удален'),
         };
+    }
+
+    public function isHidden(): bool
+    {
+        return $this->status === self::HIDDEN;
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->status;
     }
 }
