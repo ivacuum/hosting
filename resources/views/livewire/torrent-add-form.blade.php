@@ -1,12 +1,31 @@
 <form class="grid grid-cols-1 gap-4" wire:submit.prevent="submit">
   <div>
-    <input
-      required
-      type="text"
-      class="form-input"
-      wire:model="input"
-      placeholder="Ссылка или инфо-хэш"
-    >
+    <div class="relative">
+      <input
+        required
+        type="text"
+        class="form-input pr-10"
+        wire:model="input"
+        placeholder="Ссылка или инфо-хэш"
+      >
+      <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+        <div wire:loading.delay>
+          <svg
+            class="animate-spin h-5 w-5 text-gray-600"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </div>
     <x-invalid-feedback field="input"/>
     <div class="form-help">
       Ссылка вида <span class="font-medium text-green-600">https://rutracker.org/forum/<wbr>viewtopic.php?t=4031882</span><br>или инфо-хэш вида
@@ -41,7 +60,7 @@
 
     @if ($categoryId)
       <div>
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" wire:loading.attr="disabled">
           @lang('Добавить раздачу')
         </button>
       </div>

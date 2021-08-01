@@ -37,7 +37,17 @@ class TorrentAddForm extends Component
         }
 
         $rto = app()->make(Rto::class);
-        $data = $rto->torrentData($this->topicId);
+
+        try {
+            $data = $rto->torrentData($this->topicId);
+        } catch (\Throwable $e) {
+            $this->addError('input', 'Возникли сложности с подключением к рутрекеру. Пожалуйста, повторите попытку');
+
+            report($e);
+
+            return null;
+        }
+
         $userId = auth()->id();
 
         if ($userId === null) {
