@@ -258,6 +258,11 @@ class Torrent extends Model
         return path([Http\Controllers\Torrents::class, 'show'], $this->id) . $anchor;
     }
 
+    public function wwwAcp(): string
+    {
+        return path([Http\Controllers\Acp\Torrents::class, 'show'], $this);
+    }
+
     // Static methods
     public static function statsByCategories()
     {

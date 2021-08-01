@@ -1,7 +1,11 @@
+<?php /** @var \App\Torrent $model */ ?>
+
 @extends('acp.show')
+@include('livewire')
 
 @section('content')
-@if (optional($relatedTorrents = $model->relatedTorrents())->count())
+<?php $relatedTorrents = $model->relatedTorrents() ?>
+@if ($relatedTorrents?->count())
   <h4>
     @lang('Связанные раздачи')
     <span class="text-base text-muted">{{ $relatedTorrents->count() }}</span>
@@ -12,5 +16,17 @@
     @endforeach
   </ol>
 @endif
+
+<div class="border sh2adow sm:rounded-lg">
+  <div class="px-4 py-5 sm:p-6">
+    <h4 class="h4">
+      Заменить раздачу после удаления
+    </h4>
+    <div class="text-sm text-gray-500">
+      <p>В конце топика модератор обычно оставляет ссылку на новую раздачу.</p>
+    </div>
+    @livewire(App\Http\Livewire\TorrentReplaceForm::class, ['modelId' => $model->id])
+  </div>
+</div>
 @parent
 @endsection
