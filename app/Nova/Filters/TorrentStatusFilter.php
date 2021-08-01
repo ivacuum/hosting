@@ -1,6 +1,6 @@
 <?php namespace App\Nova\Filters;
 
-use App\Torrent;
+use App\Domain\TorrentStatus;
 use Illuminate\Http\Request;
 use Laravel\Nova\Filters\Filter;
 
@@ -16,8 +16,8 @@ class TorrentStatusFilter extends Filter
     public function options(Request $request)
     {
         return [
-            'Hidden' => Torrent::STATUS_HIDDEN,
-            'Deleted' => Torrent::STATUS_DELETED,
+            'Hidden' => TorrentStatus::HIDDEN,
+            'Deleted' => TorrentStatus::DELETED,
         ];
     }
 }

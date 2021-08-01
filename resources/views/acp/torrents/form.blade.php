@@ -20,10 +20,6 @@
 
 {!! Form::text('rto_id')->required()->html() !!}
 
-{!! Form::radio('status')->required()->values([
-  App\Torrent::STATUS_HIDDEN => 'Скрыт',
-  App\Torrent::STATUS_PUBLISHED => 'Опубликован',
-  App\Torrent::STATUS_DELETED => 'Удален',
-])->html() !!}
+{!! Form::radio('status')->required()->values(App\Domain\TorrentStatus::cases())->html() !!}
 
 {!! Form::text('related_query')->html() !!}

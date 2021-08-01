@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Domain\TorrentStatus;
 use App\Http\Requests\TorrentsIndexForm;
 use App\SearchSynonym;
 use App\Torrent;
@@ -91,7 +92,7 @@ class Torrents extends Controller
 
         $torrents = Torrent::select(Torrent::LIST_COLUMNS)
             ->where('user_id', $user->id)
-            ->where('status', Torrent::STATUS_PUBLISHED)
+            ->where('status', TorrentStatus::PUBLISHED)
             ->withCount('commentsPublished AS comments')
             ->orderByDesc('registered_at')
             ->simplePaginate(null, ['id']);

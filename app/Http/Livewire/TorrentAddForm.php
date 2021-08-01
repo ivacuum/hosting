@@ -1,5 +1,6 @@
 <?php namespace App\Http\Livewire;
 
+use App\Domain\TorrentStatus;
 use App\Rules\TorrentCategoryId;
 use App\Services\Rto;
 use App\Services\RtoMagnetNotFoundException;
@@ -49,7 +50,7 @@ class TorrentAddForm extends Component
         $torrent->title = $data->title;
         $torrent->clicks = 0;
         $torrent->rto_id = $data->id;
-        $torrent->status = Torrent::STATUS_PUBLISHED;
+        $torrent->status = TorrentStatus::PUBLISHED;
         $torrent->user_id = $userId ?? config('cfg.torrent_anonymous_releaser');
         $torrent->info_hash = $data->infoHash;
         $torrent->announcer = $data->announcer;

@@ -8,8 +8,8 @@
   'values' => [
     'Все' => null,
     '---' => null,
-    'Скрытые' => App\Torrent::STATUS_HIDDEN,
-    'Удаленные' => App\Torrent::STATUS_DELETED,
+    'Скрытые' => App\Domain\TorrentStatus::HIDDEN,
+    'Удаленные' => App\Domain\TorrentStatus::DELETED,
   ]
 ])
 @endsection
@@ -57,11 +57,11 @@
         {{ ViewHelper::number($model->clicks) ?: '' }}
       </td>
       <td>
-        @if ($model->status === App\Torrent::STATUS_HIDDEN)
+        @if ($model->status === App\Domain\TorrentStatus::HIDDEN)
           <span class="tooltipped tooltipped-n" aria-label="Раздача скрыта">
             @svg (eye-slash)
           </span>
-        @elseif ($model->status === App\Torrent::STATUS_DELETED)
+        @elseif ($model->status === App\Domain\TorrentStatus::DELETED)
           <span class="tooltipped tooltipped-n" aria-label="Раздача удалена">
             @svg (trash-o)
           </span>

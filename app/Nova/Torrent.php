@@ -43,11 +43,7 @@ class Torrent extends Resource
             Fields\Number::make('RTO ID')->rules($rtoIdRules)->hideFromIndex(),
             Fields\Select::make('Category', 'category_id')->options(\TorrentCategoryHelper::novaList())->rules(TorrentCategoryId::rules())->displayUsingLabels()->hideFromIndex(),
             Fields\Text::make('Title', fn () => $this->shortTitle())->rules('max:255')->asHtml(),
-            Fields\Select::make('Status')->options([
-                \App\Torrent::STATUS_HIDDEN => 'Hidden',
-                \App\Torrent::STATUS_PUBLISHED => 'Published',
-                \App\Torrent::STATUS_DELETED => 'Deleted',
-            ])->displayUsingLabels(),
+            Fields\Select::make('Status')->options(\App\Domain\TorrentStatus::cases())->displayUsingLabels(),
             Fields\Text::make('Related Query')->hideFromIndex(),
             Fields\Text::make('Size', fn () => \ViewHelper::size($this->size))->onlyOnDetail()->asHtml(),
             Fields\Number::make('Views')->displayUsing(fn () => $this->views ?: '')->sortable()->exceptOnForms(),

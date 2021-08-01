@@ -36,11 +36,7 @@ class Torrent extends Model
     use Searchable;
     use SoftDeleteTrait;
 
-    const SEARCH_INDEX = 'vac_torrents_v1';
-
-    const STATUS_HIDDEN = 0;
-    const STATUS_PUBLISHED = 1;
-    const STATUS_DELETED = 2;
+    const STATUS_DELETED = Domain\TorrentStatus::DELETED;
 
     const LIST_COLUMNS = [
         'id',
@@ -89,7 +85,7 @@ class Torrent extends Model
     // Scopes
     public function scopePublished(Builder $query)
     {
-        return $query->where('status', static::STATUS_PUBLISHED);
+        return $query->where('status', Domain\TorrentStatus::PUBLISHED);
     }
 
     // Methods
@@ -142,7 +138,7 @@ class Torrent extends Model
 
     public function isPublished(): bool
     {
-        return $this->status === self::STATUS_PUBLISHED;
+        return $this->status === Domain\TorrentStatus::PUBLISHED;
     }
 
     public function magnet(): string
@@ -180,7 +176,7 @@ class Torrent extends Model
 
     public function searchableAs()
     {
-        return static::SEARCH_INDEX;
+        return 'vac_torrents_v1';
     }
 
     // Заголовок без скобок
@@ -191,7 +187,7 @@ class Torrent extends Model
 
     public function shouldBeSearchable()
     {
-        return $this->status === static::STATUS_PUBLISHED;
+        return $this->isPublished();
     }
 
     public function titleTags(): array
@@ -269,7 +265,7 @@ class Torrent extends Model
             CacheKey::TORRENTS_STATS_BY_CATEGORIES,
             CarbonInterval::minutes(15),
             fn () => static::selectRaw('category_id, COUNT(*) AS total')
-                ->where('status', static::STATUS_PUBLISHED)
+                ->where('status', Domain\TorrentStatus::PUBLISHED)
                 ->groupBy('category_id')
                 ->pluck('total', 'category_id')
         );

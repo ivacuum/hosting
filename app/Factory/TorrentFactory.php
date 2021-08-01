@@ -1,5 +1,6 @@
 <?php namespace App\Factory;
 
+use App\Domain\TorrentStatus;
 use App\Torrent;
 use Illuminate\Foundation\Testing\WithFaker;
 
@@ -8,7 +9,7 @@ class TorrentFactory
     use WithFaker;
 
     private $title;
-    private $status;
+    private $status = TorrentStatus::PUBLISHED;
     private $userId;
     private $categoryId;
 
@@ -39,12 +40,12 @@ class TorrentFactory
 
     public function deleted()
     {
-        return $this->withStatus(Torrent::STATUS_DELETED);
+        return $this->withStatus(TorrentStatus::DELETED);
     }
 
     public function hidden()
     {
-        return $this->withStatus(Torrent::STATUS_HIDDEN);
+        return $this->withStatus(TorrentStatus::HIDDEN);
     }
 
     public function make()
@@ -56,9 +57,9 @@ class TorrentFactory
         $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
         $model->clicks = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
         $model->rto_id = $this->faker->numberBetween(1_000_000, 5_000_000);
-        $model->status = $this->status ?? Torrent::STATUS_PUBLISHED;
+        $model->status = $this->status;
         $model->info_hash = $this->faker->regexify('[A-F0-9]{40}');
-        $model->announcer = 'http://example.com';
+        $model->announcer = 'https://example.com';
         $model->registered_at = $this->faker->dateTimeBetween('-4 years');
         $model->related_query = '';
 
