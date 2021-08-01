@@ -24,7 +24,7 @@
       @lang('Новые раздачи')
     </x-nav-link-to>
     <x-nav-link-to href="{{ to('torrents/add') }}" is-active="{{ $routeUri === 'torrents/add' }}">
-      @lang('Добавить раздачу')
+      @lang('Добавить раздачу (меню)')
     </x-nav-link-to>
     <x-nav-link-to href="{{ to('torrents/faq') }}" is-active="{{ $routeUri === 'torrents/faq' }}">
       @lang('Помощь')
