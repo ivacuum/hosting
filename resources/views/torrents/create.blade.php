@@ -1,18 +1,10 @@
 @extends('torrents.base')
+@include('livewire')
 
 @section('content')
 <div class="grid lg:grid-cols-2 gap-8">
   <div>
-    <form action="@lng/torrents" method="post">
-      {{ ViewHelper::inputHiddenMail() }}
-      @csrf
-
-      @include('torrents.form')
-
-      <button class="btn btn-primary">
-        @lang('Добавить раздачу')
-      </button>
-    </form>
+    @livewire(App\Http\Livewire\TorrentAddForm::class)
   </div>
   <div>
     @ru

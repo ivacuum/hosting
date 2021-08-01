@@ -3,6 +3,7 @@
 use App\Factory\CommentFactory;
 use App\Factory\TorrentFactory;
 use App\Factory\UserFactory;
+use App\Http\Livewire\TorrentAddForm;
 use App\Services\Rto;
 use App\Services\RtoTopicData;
 use App\Torrent;
@@ -23,7 +24,7 @@ class TorrentTest extends TestCase
         $torrent = TorrentFactory::new()->withCategoryId($categoryId)->create();
 
         $this->get("torrents?category_id={$categoryId}")
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($torrent->title);
     }
 
@@ -32,7 +33,7 @@ class TorrentTest extends TestCase
         $comment = CommentFactory::new()->withTorrent()->create();
 
         $this->get('torrents/comments')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($comment->html);
     }
 
@@ -42,13 +43,14 @@ class TorrentTest extends TestCase
 
         $this->be($user)
             ->get('torrents/add')
-            ->assertStatus(200);
+            ->assertOk()
+            ->assertSeeLivewire(TorrentAddForm::class);
     }
 
     public function testFaq()
     {
         $this->get('torrents/faq')
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     public function testIndex()
@@ -56,8 +58,22 @@ class TorrentTest extends TestCase
         $torrent = TorrentFactory::new()->create();
 
         $this->get('torrents')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($torrent->title);
+    }
+
+    public function testLivewireState()
+    {
+        $stub = TorrentFactory::new()->make();
+
+        $this->swap(Rto::class, new Rto($this->httpClientFactory($stub)));
+
+        \Livewire::test(TorrentAddForm::class)
+            ->set('input', $stub->rto_id)
+            ->assertSet('size', $stub->size)
+            ->assertSet('title', $stub->title)
+            ->assertSet('topicId', $stub->rto_id)
+            ->set('categoryId', $stub->category_id);
     }
 
     public function testMagnetClick()
@@ -79,14 +95,14 @@ class TorrentTest extends TestCase
 
         $this->be($torrent->user)
             ->get('torrents/my')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($torrent->title);
     }
 
     public function testPromo()
     {
         $this->get('torrent')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertHasCustomTitle();
     }
 
@@ -110,7 +126,7 @@ class TorrentTest extends TestCase
             ->create();
 
         $this->get('torrents?q=20172017')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($torrent->title);
     }
 
@@ -119,7 +135,7 @@ class TorrentTest extends TestCase
         $torrent = TorrentFactory::new()->create();
 
         $this->get("torrents/{$torrent->id}")
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($torrent->title);
     }
 
@@ -129,7 +145,13 @@ class TorrentTest extends TestCase
 
         $this->swap(Rto::class, new Rto($this->httpClientFactory($stub)));
 
-        $response = $this->post('torrents', ['input' => $stub->rto_id, 'category_id' => $stub->category_id]);
+        $this->expectsEvents(\App\Events\Stats\TorrentAddedAnonymously::class);
+
+        $livewire = \Livewire::test(TorrentAddForm::class)
+            ->set('input', $stub->rto_id)
+            ->set('categoryId', $stub->category_id)
+            ->call('submit')
+            ->assertHasNoErrors();
 
         $user = User::find(config('cfg.torrent_anonymous_releaser'))
             ?? UserFactory::new()->withId(config('cfg.torrent_anonymous_releaser'))->create();
@@ -137,10 +159,10 @@ class TorrentTest extends TestCase
         /** @var Torrent $torrent */
         $torrent = $user->torrents()->latest('id')->first();
 
-        $response->assertRedirect($torrent->www());
+        $livewire->assertRedirect($torrent->www());
 
-        $this->assertEquals($stub->rto_id, $torrent->rto_id);
-        $this->assertEquals($stub->category_id, $torrent->category_id);
+        $this->assertSame($stub->rto_id, $torrent->rto_id);
+        $this->assertSame($stub->category_id, $torrent->category_id);
     }
 
     public function testStoreAsUser()
@@ -150,16 +172,21 @@ class TorrentTest extends TestCase
 
         $this->swap(Rto::class, new Rto($this->httpClientFactory($stub)));
 
-        $response = $this->be($user)
-            ->post('torrents', ['input' => $stub->rto_id, 'category_id' => $stub->category_id])
-            ->assertSessionHasNoErrors();
+        $this->be($user)
+            ->expectsEvents(\App\Events\Stats\TorrentAdded::class);
+
+        $livewire = \Livewire::test(TorrentAddForm::class)
+            ->set('input', $stub->rto_id)
+            ->set('categoryId', $stub->category_id)
+            ->call('submit')
+            ->assertHasNoErrors();
 
         $torrent = $user->torrents[0];
 
-        $response->assertRedirect($torrent->www());
+        $livewire->assertRedirect($torrent->www());
 
-        $this->assertEquals($stub->rto_id, $torrent->rto_id);
-        $this->assertEquals($stub->category_id, $torrent->category_id);
+        $this->assertSame($stub->rto_id, $torrent->rto_id);
+        $this->assertSame($stub->category_id, $torrent->category_id);
     }
 
     public function testStoreDuplicate()
@@ -170,12 +197,11 @@ class TorrentTest extends TestCase
         $this->swap(Rto::class, new Rto($this->httpClientFactory($torrent)));
 
         $this->be($user)
-            ->from('torrent/add')
-            ->expectsEvents(\App\Events\Stats\TorrentDuplicateFound::class)
-            ->post('torrents', ['input' => $torrent->rto_id, 'category_id' => $torrent->category_id])
-            ->assertSessionHasNoErrors()
-            ->assertSessionHas('message')
-            ->assertRedirect('torrent/add');
+            ->expectsEvents(\App\Events\Stats\TorrentDuplicateFound::class);
+
+        \Livewire::test(TorrentAddForm::class)
+            ->set('input', $torrent->externalLink())
+            ->assertHasErrors('input');
 
         $this->assertCount(0, $user->torrents);
     }
@@ -183,6 +209,11 @@ class TorrentTest extends TestCase
     private function httpClientFactory(Torrent $stub)
     {
         return (new GuzzleClientFactory)->forTest([
+            new Response(200, [], json_encode([
+                'result' => [
+                    $stub->rto_id => (new RtoTopicData($stub->rto_id, $stub->title, $stub->info_hash, $stub->registered_at, RtoTopicData::STATUS_APPROVED, $stub->size, 3, 4, 5, now()))->toJson(),
+                ],
+            ])),
             new Response(200, [], json_encode([
                 'result' => [
                     $stub->rto_id => (new RtoTopicData($stub->rto_id, $stub->title, $stub->info_hash, $stub->registered_at, RtoTopicData::STATUS_APPROVED, $stub->size, 3, 4, 5, now()))->toJson(),

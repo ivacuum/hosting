@@ -217,7 +217,6 @@ Route::get('subscriptions/confirm', [Ctrl\Subscriptions::class, 'confirm'])->mid
 Route::get('torrent', Ctrl\TorrentPromo::class);
 
 Route::get('torrents', [Ctrl\Torrents::class, 'index']);
-Route::post('torrents', [Ctrl\Torrents::class, 'store']);
 Route::view('torrents/add', 'torrents.create');
 Route::get('torrents/comments', [Ctrl\Torrents::class, 'comments']);
 Route::get('torrents/faq', [Ctrl\Torrents::class, 'faq']);

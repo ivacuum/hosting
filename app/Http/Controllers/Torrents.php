@@ -2,16 +2,10 @@
 
 use App\Comment;
 use App\Http\Requests\TorrentsIndexForm;
-use App\Http\Requests\TorrentStoreForm;
 use App\SearchSynonym;
-use App\Services\Rto;
-use App\Services\RtoMagnetNotFoundException;
-use App\Services\RtoTopicDuplicateException;
-use App\Services\RtoTopicNotFoundException;
 use App\Torrent;
 use Foolz\SphinxQL\SphinxQL;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\HtmlString;
 
 class Torrents extends Controller
 {
@@ -116,63 +110,5 @@ class Torrents extends Controller
             'comments' => $torrent->commentsPublished()->with('user')->orderBy('created_at')->get(),
             'metaTitle' => $torrent->title,
         ]);
-    }
-
-    public function store(TorrentStoreForm $request, Rto $rto)
-    {
-        $topicId = $request->topicId($rto);
-
-        if ($topicId > 0) {
-            $torrent = Torrent::firstWhere('rto_id', $topicId);
-
-            if ($torrent) {
-                event(new \App\Events\Stats\TorrentDuplicateFound);
-
-                return back()
-                    ->withInput()
-                    ->with('message', new HtmlString('Данная раздача уже <a class="link" href="' . $torrent->www() . '">присутствует на сайте</a>. Попробуйте добавить другую.'));
-            }
-        }
-
-        try {
-            $data = $rto->torrentData($topicId);
-        } catch (\Throwable $e) {
-            $message = 'Ввод не распознан, попробуйте другую ссылку или хэш';
-
-            if ($e instanceof RtoMagnetNotFoundException) {
-                $message = 'Магнет-ссылка не найдена в раздаче, попробуйте другую ссылку';
-            } elseif ($e instanceof RtoTopicDuplicateException) {
-                $message = 'Раздача закрыта как повторная, попробуйте другую ссылку';
-            } elseif ($e instanceof RtoTopicNotFoundException) {
-                $message = 'Раздача не найдена, попробуйте другую ссылку';
-            }
-
-            return back()
-                ->withInput()
-                ->withErrors(['input' => $message]);
-        }
-
-        $user = $request->userModel();
-
-        if ($user === null) {
-            event(new \App\Events\Stats\TorrentAddedAnonymously);
-        }
-
-        $torrent = new Torrent;
-        $torrent->html = $data->body;
-        $torrent->size = $data->size;
-        $torrent->title = $data->title;
-        $torrent->clicks = 0;
-        $torrent->rto_id = $data->id;
-        $torrent->status = Torrent::STATUS_PUBLISHED;
-        $torrent->user_id = $user->id ?? config('cfg.torrent_anonymous_releaser');
-        $torrent->info_hash = $data->infoHash;
-        $torrent->announcer = $data->announcer;
-        $torrent->category_id = $request->categoryId();
-        $torrent->registered_at = now();
-        $torrent->related_query = '';
-        $torrent->save();
-
-        return redirect($torrent->www());
     }
 }
