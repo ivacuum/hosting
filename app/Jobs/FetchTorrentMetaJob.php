@@ -29,7 +29,7 @@ class FetchTorrentMetaJob extends AbstractJob
 
                 event(new \App\Events\Stats\TorrentNotFoundDeleted);
 
-                $telegram->notifyAdmin("🧲️ Раздача не найдена и удалена\n\n{$torrent->title}\n{$torrent->externalLink()}\n\n{$torrent->novaLink()}");
+                $telegram->notifyAdmin("🧲️ Раздача не найдена и удалена\n\n{$torrent->title}\n{$torrent->externalLink()}\n\n{$torrent->wwwAcp()}");
 
                 continue;
             }
@@ -40,7 +40,7 @@ class FetchTorrentMetaJob extends AbstractJob
 
                 event(new \App\Events\Stats\TorrentDuplicateDeleted);
 
-                $telegram->notifyAdmin("🧲️ Раздача закрыта как повторная и удалена\n\n{$torrent->title}\n{$torrent->externalLink()}\n\n{$torrent->novaLink()}");
+                $telegram->notifyAdmin("🧲️ Раздача закрыта как повторная и удалена\n\n{$torrent->title}\n{$torrent->externalLink()}\n\n{$torrent->wwwAcp()}");
 
                 continue;
             }

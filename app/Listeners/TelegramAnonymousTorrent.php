@@ -13,6 +13,6 @@ class TelegramAnonymousTorrent extends TelegramNotifier
 
         $model = $event->model;
 
-        $this->telegram->notifyAdmin("🧲️ Раздача добавлена анонимно\n\n{$model->title}\n{$model->www()}\n\n{$model->novaLink()}");
+        $this->telegram->notifyAdmin("🧲️ Раздача добавлена анонимно\n\n{$model->title}\n{$model->www()}\n\n{$model->wwwAcp()}");
     }
 }
