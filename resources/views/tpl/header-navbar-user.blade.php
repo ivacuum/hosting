@@ -32,11 +32,6 @@
       >
         @lang('acp.index')
       </a>
-      <a
-        class="dropdown-item"
-        href="/nova">
-        Nova
-      </a>
     @endif
     <a class="dropdown-item" href="@lng/my/profile">
       @lang('Аккаунт')

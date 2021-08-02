@@ -155,18 +155,6 @@ class TorrentCategoryHelper
         return $this->categories[$id] ?? null;
     }
 
-    public function novaList()
-    {
-        return collect($this->categories)
-            ->reject(fn ($item, $key) => !self::canPost($key))
-            ->mapWithKeys(fn ($item, $key) => [
-                $key => [
-                    'label' => $item['title'],
-                    'group' => $item['parent'],
-                ],
-            ]);
-    }
-
     public function selfAndDescendantsIds($id)
     {
         $children = $this->children($id);

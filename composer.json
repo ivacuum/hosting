@@ -10,9 +10,9 @@
     "ivacuum/generic": "^16.0",
     "laravel-notification-channels/telegram": "^0.5",
     "laravel/framework": "^8.0",
-    "laravel/nova": "^3.0",
     "laravel/scout": "^9.0",
     "laravel/socialite": "^5.0",
+    "laravel/ui": "^3.0",
     "league/commonmark": "^1.0",
     "league/flysystem-sftp": "^1.0",
     "livewire/livewire": "^2.0",
@@ -58,8 +58,7 @@
       "@php artisan vendor:publish --force --tag=livewire:assets --ansi"
     ],
     "post-update-cmd": [
-      "@php artisan ide-helper:generate",
-      "@php artisan nova:publish"
+      "@php artisan ide-helper:generate"
     ],
     "rector": "vendor/bin/rector process app tests --dry-run",
     "queue": "@php artisan queue:work --stop-when-empty --ansi",
@@ -80,11 +79,5 @@
     "preferred-install": "dist",
     "sort-packages": true,
     "optimize-autoloader": true
-  },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://nova.laravel.com"
-    }
-  ]
+  }
 }

@@ -146,11 +146,6 @@ class Torrent extends Model
         return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode(\Str::limit($this->title, 100, ''));
     }
 
-    public function novaLink(): string
-    {
-        return url(config('nova.path') . "/resources/torrents/{$this->id}");
-    }
-
     public function relatedIds(): array
     {
         if (!$this->related_query) {
