@@ -18,13 +18,6 @@ class AppServiceProvider extends ServiceProvider
         App\Utilities\CountryHelper::class => App\Utilities\CountryHelper::class,
     ];
 
-    public function register()
-    {
-        if ($this->app->isLocal()) {
-            $this->app->register(TelescopeServiceProvider::class);
-        }
-    }
-
     public function boot()
     {
         \Blade::withoutDoubleEncoding();
