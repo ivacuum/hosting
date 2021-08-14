@@ -17,7 +17,7 @@
       @foreach (App\Tag::orderBy(App\Tag::titleField())->get() as $tag)
         <label class="flex items-center">
           <input
-            class="border-gray-300 mr-2"
+            class="border-gray-300 rounded mr-2"
             type="checkbox"
             name="tags[]"
             value="{{ $tag->id }}"
