@@ -13,7 +13,7 @@
     "not ie <= 100"
   ],
   "dependencies": {
-    "@github/details-menu-element": "1.0.10",
+    "@github/details-menu-element": "1.0.11",
     "@tailwindcss/forms": "0.3.3",
     "@tailwindcss/typography": "0.4.1",
     "autosize": "5.0.1",
