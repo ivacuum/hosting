@@ -3,6 +3,7 @@
 use App\Gig;
 use App\Photo as Model;
 use App\Trip;
+use Grimzy\LaravelMysqlSpatial\Types\Point;
 use Ivacuum\Generic\Services\ImageConverter;
 use Ivacuum\Generic\Utilities\ExifHelper;
 
@@ -58,7 +59,7 @@ class Photos extends AbstractController
 
         try {
             $coords = ExifHelper::latLon(exif_read_data($file->getRealPath()));
-        } catch (\Throwable $e) {
+        } catch (\Throwable) {
             $coords = ['lat' => null, 'lon' => null];
         }
 
@@ -82,6 +83,9 @@ class Photos extends AbstractController
         $photo->lat = $coords['lat'] ?? '';
         $photo->lon = $coords['lon'] ?? '';
         $photo->slug = "{$model->slug}/{$filename}";
+        $photo->point = $photo->lat
+            ? new Point($photo->lat, $photo->lon, 4326)
+            : null;
         $photo->views = 0;
         $photo->status = Model::STATUS_HIDDEN;
         $photo->user_id = request()->user()->id;
