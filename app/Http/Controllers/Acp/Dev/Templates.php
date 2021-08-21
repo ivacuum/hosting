@@ -44,7 +44,7 @@ class Templates extends BaseController
                 $total->{$lang} += $i18n[$lang];
             }
 
-            $pics = preg_match_all('/\.jpg/', $contents);
+            $pics = preg_match_all('/\.jpe?g/', $contents);
             $total->pics += $pics;
 
             $templates->push((object) [
