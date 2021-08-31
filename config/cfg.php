@@ -45,11 +45,11 @@ return [
         'socket' => env('SPHINX_SOCKET', ''),
     ],
     'telegram' => [
-        'admin_id' => env('TELEGRAM_ADMIN_ID'),
+        'admin_id' => env('TELEGRAM_ADMIN_ID', 0),
         'bot_token' => env('TELEGRAM_BOT_TOKEN', 'YOUR-BOT-TOKEN'),
     ],
     'torrent_anonymous_releaser' => env('TORRENT_ANONYMOUS_RELEASER', 3),
-    'wanikani_api_key' => env('WANIKANI_API_KEY'),
+    'wanikani_api_key' => env('WANIKANI_API_KEY', ''),
 
     // Купоны
     'airbnb_link' => 'c/spankov1?s=8',
