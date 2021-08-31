@@ -6,13 +6,8 @@ use Illuminate\Notifications\Notification;
 
 class NewsCommentedNotification extends Notification
 {
-    public $news;
-    public $comment;
-
-    public function __construct(News $news, Comment $comment)
+    public function __construct(public News $news, public Comment $comment)
     {
-        $this->news = $news;
-        $this->comment = $comment;
     }
 
     public function via($notifiable)

@@ -1,18 +1,17 @@
 <?php namespace App\Services\YandexPdd;
 
-use Ivacuum\Generic\Http\GuzzleClientFactory;
+use Illuminate\Http\Client\Factory;
+use Illuminate\Http\Client\PendingRequest;
 
 class YandexPddClient
 {
-    private $client;
+    private PendingRequest $http;
 
-    public function __construct(GuzzleClientFactory $clientFactory)
+    public function __construct(Factory $http)
     {
-        $this->client = $clientFactory
-            ->baseUri('https://pddimp.yandex.ru/api2/')
-            ->timeout(10)
-            ->withLog('yandex-pdd')
-            ->create();
+        $this->http = $http
+            ->baseUrl('https://pddimp.yandex.ru/api2/')
+            ->timeout(10);
     }
 
     public function dkimStatus(string $pddToken, string $domain, bool $askSecretKey = false)
@@ -24,15 +23,8 @@ class YandexPddClient
 
     private function send(string $pddToken, RequestInterface $request)
     {
-        return $this->client->request(
-            $request->httpMethod(),
-            $request->endpoint(),
-            [
-                'headers' => ['PddToken' => $pddToken],
-                'query' => $request->httpMethod() === 'GET'
-                    ? $request->jsonSerialize()
-                    : [],
-            ]
-        );
+        return $this->http
+            ->withHeaders(['PddToken' => $pddToken])
+            ->get($request->endpoint(), $request->jsonSerialize());
     }
 }

@@ -6,11 +6,8 @@ use App\User;
 
 class NotifyTripSubscribers extends AbstractJob
 {
-    private Trip $trip;
-
-    public function __construct(Trip $trip)
+    public function __construct(private Trip $trip)
     {
-        $this->trip = $trip;
     }
 
     public function handle()

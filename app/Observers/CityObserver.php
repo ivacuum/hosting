@@ -4,11 +4,8 @@ use App\Utilities\CacheHelper;
 
 class CityObserver
 {
-    private $cache;
-
-    public function __construct(CacheHelper $cache)
+    public function __construct(private CacheHelper $cache)
     {
-        $this->cache = $cache;
     }
 
     public function deleted()

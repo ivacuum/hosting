@@ -10,11 +10,8 @@ class GigPublishedNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    public $gig;
-
-    public function __construct(Gig $gig)
+    public function __construct(public Gig $gig)
     {
-        $this->gig = $gig;
     }
 
     public function via()

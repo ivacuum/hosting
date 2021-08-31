@@ -5,11 +5,8 @@ use App\Torrent;
 
 class TorrentUpdater
 {
-    private Rto $rto;
-
-    public function __construct(Rto $rto)
+    public function __construct(private Rto $rto)
     {
-        $this->rto = $rto;
     }
 
     public function update(Torrent $torrent)

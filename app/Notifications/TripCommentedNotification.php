@@ -6,13 +6,8 @@ use Illuminate\Notifications\Notification;
 
 class TripCommentedNotification extends Notification
 {
-    public $trip;
-    public $comment;
-
-    public function __construct(Trip $trip, Comment $comment)
+    public function __construct(public Trip $trip, public Comment $comment)
     {
-        $this->trip = $trip;
-        $this->comment = $comment;
     }
 
     public function via($notifiable)

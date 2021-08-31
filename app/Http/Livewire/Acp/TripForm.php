@@ -69,12 +69,8 @@ class TripForm extends Component
                     ->ignore($this->modelId),
             ],
             'cityId' => 'required|integer|min:1',
-            'titleEn' => $this->modelId
-                ? 'required'
-                : '',
-            'titleRu' => $this->modelId
-                ? 'required'
-                : '',
+            'titleEn' => Rule::when($this->modelId, 'required'),
+            'titleRu' => Rule::when($this->modelId, 'required'),
             'dateEnd' => 'required|date|after_or_equal:dateStart',
             'dateStart' => 'required|date',
         ];

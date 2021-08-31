@@ -23,7 +23,7 @@ class EventServiceProvider extends ServiceProvider
             'Ivacuum\Generic\Listeners\SetLocale',
         ],
 
-        'Ivacuum\Generic\Events\ExternalHttpRequestMade' => [
+        'Illuminate\Http\Client\Events\ResponseReceived' => [
             Listeners\LogExternalHttpRequest::class,
         ],
 

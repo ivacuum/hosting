@@ -1,20 +1,18 @@
 <?php namespace App\Services;
 
-use Ivacuum\Generic\Http\GuzzleClientFactory;
+use Illuminate\Http\Client\Factory;
+use Illuminate\Http\Client\PendingRequest;
 
 class Rto
 {
-    const API_ENDPOINT = 'http://api.rutracker.org/v1/';
-    const SITE_ENDPOINT = 'https://rutracker.org/forum/';
+    private const API_ENDPOINT = 'http://api.rutracker.org/v1/';
+    private const SITE_ENDPOINT = 'https://rutracker.org/forum/';
 
-    private $client;
+    private PendingRequest $http;
 
-    public function __construct(GuzzleClientFactory $clientFactory)
+    public function __construct(Factory $http)
     {
-        $this->client = $clientFactory
-            ->timeout(\App::runningInConsole() ? 60 : 15)
-            ->withLog('rto')
-            ->create();
+        $this->http = $http->timeout(\App::runningInConsole() ? 60 : 15);
     }
 
     public function findTopicId($input): ?int
@@ -66,14 +64,16 @@ class Rto
 
     public function parseTopicBody(int $topicId): RtoTopicHtmlResponse
     {
-        $response = $this->client->get(self::SITE_ENDPOINT . "viewtopic.php?t={$topicId}", [
-            'proxy' => env('RTO_PROXY'),
-            'force_ip_resolve' => \App::isProduction()
-                ? 'v6'
-                : null,
-        ]);
+        $response = $this->http
+            ->withOptions([
+                'proxy' => env('RTO_PROXY'),
+                'force_ip_resolve' => \App::isProduction()
+                    ? 'v6'
+                    : null,
+            ])
+            ->get(self::SITE_ENDPOINT . "viewtopic.php?t={$topicId}");
 
-        return new RtoTopicHtmlResponse((string) $response->getBody());
+        return new RtoTopicHtmlResponse($response->body());
     }
 
     public function topicDataById(int $id)
@@ -94,31 +94,33 @@ class Rto
 
     public function topicDataByIds(array $ids): RtoGetTorTopicDataResponse
     {
-        $response = $this->client->get(self::API_ENDPOINT . 'get_tor_topic_data', [
-            'query' => [
+        $response = $this->http
+            ->withOptions([
+                'force_ip_resolve' => \App::isProduction()
+                    ? 'v4'
+                    : null,
+            ])
+            ->get(self::API_ENDPOINT . 'get_tor_topic_data', [
                 'by' => 'topic_id',
                 'val' => implode(',', $ids),
-            ],
-            'force_ip_resolve' => \App::isProduction()
-                ? 'v4'
-                : null,
-        ]);
+            ]);
 
         return new RtoGetTorTopicDataResponse($response);
     }
 
     public function topicIdByHash(string $hash): ?int
     {
-        $response = $this->client->get(self::API_ENDPOINT . 'get_topic_id', [
-            'query' => [
+        $response = $this->http
+            ->withOptions([
+                'force_ip_resolve' => \App::isProduction()
+                    ? 'v4'
+                    : null,
+            ])
+            ->get(self::API_ENDPOINT . 'get_topic_id', [
                 'by' => 'hash',
                 'val' => $hash,
-            ],
-            'force_ip_resolve' => \App::isProduction()
-                ? 'v4'
-                : null,
-        ]);
+            ]);
 
-        return json_decode((string) $response->getBody())->result->{$hash};
+        return $response->object()->result->{$hash};
     }
 }

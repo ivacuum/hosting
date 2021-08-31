@@ -4,13 +4,11 @@ use App\Factory\CommentFactory;
 use App\Factory\TorrentFactory;
 use App\Factory\UserFactory;
 use App\Http\Livewire\TorrentAddForm;
-use App\Services\Rto;
 use App\Services\RtoTopicData;
 use App\Torrent;
 use App\User;
-use GuzzleHttp\Psr7\Response;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Ivacuum\Generic\Http\GuzzleClientFactory;
+use Illuminate\Http\Client\Factory;
 use Ivacuum\Generic\Jobs\SendTelegramMessageJob;
 use Tests\TestCase;
 
@@ -66,7 +64,7 @@ class TorrentTest extends TestCase
     {
         $stub = TorrentFactory::new()->make();
 
-        $this->swap(Rto::class, new Rto($this->httpClientFactory($stub)));
+        $this->fakeHttpRequests($stub);
 
         \Livewire::test(TorrentAddForm::class)
             ->set('input', $stub->rto_id)
@@ -143,7 +141,7 @@ class TorrentTest extends TestCase
     {
         $stub = TorrentFactory::new()->make();
 
-        $this->swap(Rto::class, new Rto($this->httpClientFactory($stub)));
+        $this->fakeHttpRequests($stub);
 
         $this->expectsEvents(\App\Events\Stats\TorrentAddedAnonymously::class);
 
@@ -170,7 +168,7 @@ class TorrentTest extends TestCase
         $stub = TorrentFactory::new()->make();
         $user = UserFactory::new()->create();
 
-        $this->swap(Rto::class, new Rto($this->httpClientFactory($stub)));
+        $this->fakeHttpRequests($stub);
 
         $this->be($user)
             ->expectsEvents(\App\Events\Stats\TorrentAdded::class);
@@ -194,7 +192,7 @@ class TorrentTest extends TestCase
         $torrent = TorrentFactory::new()->create();
         $user = UserFactory::new()->create();
 
-        $this->swap(Rto::class, new Rto($this->httpClientFactory($torrent)));
+        $this->fakeHttpRequests($torrent);
 
         $this->be($user)
             ->expectsEvents(\App\Events\Stats\TorrentDuplicateFound::class);
@@ -206,21 +204,26 @@ class TorrentTest extends TestCase
         $this->assertCount(0, $user->torrents);
     }
 
-    private function httpClientFactory(Torrent $stub)
+    private function fakeHttpRequests(Torrent $stub)
     {
-        return (new GuzzleClientFactory)->forTest([
-            new Response(200, [], json_encode([
+        $this->swap(Factory::class, \Http::fake([
+            "api.rutracker.org/v1/get_tor_topic_data?by=topic_id&val={$stub->rto_id}" => \Http::response([
                 'result' => [
-                    $stub->rto_id => (new RtoTopicData($stub->rto_id, $stub->title, $stub->info_hash, $stub->registered_at, RtoTopicData::STATUS_APPROVED, $stub->size, 3, 4, 5, now()))->toJson(),
+                    $stub->rto_id => [
+                        'size' => $stub->size,
+                        'seeders' => 5,
+                        'forum_id' => 3,
+                        'reg_time' => $stub->registered_at->getTimestamp(),
+                        'info_hash' => $stub->info_hash,
+                        'poster_id' => 4,
+                        'tor_status' => RtoTopicData::STATUS_APPROVED,
+                        'topic_title' => $stub->title,
+                        'seeder_last_seen' => now()->getTimestamp(),
+                    ],
                 ],
-            ])),
-            new Response(200, [], json_encode([
-                'result' => [
-                    $stub->rto_id => (new RtoTopicData($stub->rto_id, $stub->title, $stub->info_hash, $stub->registered_at, RtoTopicData::STATUS_APPROVED, $stub->size, 3, 4, 5, now()))->toJson(),
-                ],
-            ])),
-            new Response(200, [],
-                '<div class="post_body">body<fieldset class="attach"><span class="attach_link"><a class="magnet-link" href="magnet:?xt=urn:btih:' . $stub->info_hash . '&tr=' . urlencode($stub->announcer) . '"></a></span></fieldset></div>'),
-        ]);
+            ]),
+            "rutracker.org/forum/viewtopic.php?t={$stub->rto_id}" => \Http::response('<div class="post_body">body<fieldset class="attach"><span class="attach_link"><a class="magnet-link" href="magnet:?xt=urn:btih:' . $stub->info_hash . '&tr=' . urlencode($stub->announcer) . '"></a></span></fieldset></div>'),
+            '*' => \Http::response(),
+        ]));
     }
 }

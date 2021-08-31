@@ -3,9 +3,7 @@
 use App\Factory\TorrentFactory;
 use App\Jobs\FetchTorrentBodyJob;
 use App\Services\Rto;
-use GuzzleHttp\Psr7\Response;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Ivacuum\Generic\Http\GuzzleClientFactory;
 use Tests\TestCase;
 
 class FetchTorrentBodyJobTest extends TestCase
@@ -18,12 +16,13 @@ class FetchTorrentBodyJobTest extends TestCase
         $announcer = 'announcer';
         $torrent = TorrentFactory::new()->create();
 
-        $httpClientFactory = (new GuzzleClientFactory)->forTest([
-            new Response(200, [],
-                '<div class="post_body">' . $body . '<fieldset class="attach"><span class="attach_link"><a class="magnet-link" href="magnet:?xt=urn:btih:info_hash&tr=' . urlencode($announcer) . '"></a></span></fieldset></div>'),
+        $http = \Http::fake([
+            "rutracker.org/forum/viewtopic.php?t={$torrent->rto_id}" =>
+                \Http::response('<div class="post_body">' . $body . '<fieldset class="attach"><span class="attach_link"><a class="magnet-link" href="magnet:?xt=urn:btih:info_hash&tr=' . urlencode($announcer) . '"></a></span></fieldset></div>'),
+            '*' => \Http::response(),
         ]);
 
-        $rto = new Rto($httpClientFactory);
+        $rto = new Rto($http);
 
         $job = new FetchTorrentBodyJob($torrent->rto_id);
         $job->handle($rto);

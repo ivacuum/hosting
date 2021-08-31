@@ -10,13 +10,11 @@ class GigPublishedMail extends Mailable implements ShouldQueue
 {
     use RecordsEmail;
 
-    public $gig;
     public $gigLink;
     public $mySettingsLink;
 
-    public function __construct(Gig $gig, User $user)
+    public function __construct(public Gig $gig, User $user)
     {
-        $this->gig = $gig;
         $this->email = $this->email($gig->emails(), $user);
         $this->gigLink = $this->email->signedLink($gig->wwwLocale($user->locale));
         $this->mySettingsLink = $this->email->signedLink(path_locale([MySettings::class, 'edit'], [], false, $user->locale));

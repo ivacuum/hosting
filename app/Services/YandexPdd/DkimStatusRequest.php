@@ -2,13 +2,8 @@
 
 class DkimStatusRequest implements RequestInterface
 {
-    private bool $askSecretKey;
-    private string $domain;
-
-    public function __construct(string $domain, bool $askSecretKey)
+    public function __construct(private string $domain, private bool $askSecretKey)
     {
-        $this->domain = $domain;
-        $this->askSecretKey = $askSecretKey;
     }
 
     public function endpoint(): string

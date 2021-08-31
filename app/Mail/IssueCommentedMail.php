@@ -1,7 +1,6 @@
 <?php namespace App\Mail;
 
 use App\Comment;
-use App\Email;
 use App\Issue;
 use App\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -11,16 +10,9 @@ class IssueCommentedMail extends Mailable implements ShouldQueue
 {
     use RecordsEmail;
 
-    public $user;
-    public $issue;
-    public $comment;
-
-    public function __construct(Issue $issue, Comment $comment, User $user)
+    public function __construct(public Issue $issue, public Comment $comment, public User $user)
     {
-        $this->user = $user;
         $this->email = $this->email($issue->emails(), $user);
-        $this->issue = $issue;
-        $this->comment = $comment;
     }
 
     public function build()

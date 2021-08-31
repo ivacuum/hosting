@@ -5,11 +5,8 @@ use Illuminate\Notifications\Notification;
 
 class TorrentNotFoundDeletedNotification extends Notification
 {
-    public $torrent;
-
-    public function __construct(Torrent $torrent)
+    public function __construct(public Torrent $torrent)
     {
-        $this->torrent = $torrent;
     }
 
     public function via()

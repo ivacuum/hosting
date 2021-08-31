@@ -10,13 +10,11 @@ class SubscriptionConfirmMail extends Mailable implements ShouldQueue
     use RecordsEmail;
 
     public $hash;
-    public $user;
     public $confirmLink;
     public $subscriptions;
 
-    public function __construct(User $user, array $subscriptions)
+    public function __construct(public User $user, array $subscriptions)
     {
-        $this->user = $user;
         $this->email = $this->email($user->emails(), $user);
         $this->subscriptions = collect($subscriptions)
             ->map(function ($subscription) {

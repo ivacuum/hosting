@@ -4,36 +4,17 @@ use Illuminate\Support\Collection;
 
 class VocabularyEntity
 {
-    private int $id;
-    private int $level;
-    private int $maleAudioId;
-    private int $femaleAudioId;
-    private string $characters;
-    private Collection $meanings;
-    private Collection $readings;
-    private Collection $sentences;
-    private Collection $partsOfSpeech;
-
     public function __construct(
-        int $id,
-        int $level,
-        string $characters,
-        Collection $meanings,
-        Collection $readings,
-        Collection $sentences,
-        int $maleAudioId,
-        int $femaleAudioId,
-        Collection $partsOfSpeech
+        public int $id,
+        public int $level,
+        public string $characters,
+        public Collection $meanings,
+        public Collection $readings,
+        private Collection $sentences,
+        public int $maleAudioId,
+        public int $femaleAudioId,
+        private Collection $partsOfSpeech
     ) {
-        $this->id = $id;
-        $this->level = $level;
-        $this->meanings = $meanings;
-        $this->readings = $readings;
-        $this->sentences = $sentences;
-        $this->characters = $characters;
-        $this->maleAudioId = $maleAudioId;
-        $this->femaleAudioId = $femaleAudioId;
-        $this->partsOfSpeech = $partsOfSpeech;
     }
 
     public static function fromJson(int $id, object $json)
@@ -53,41 +34,6 @@ class VocabularyEntity
             (int) \Str::of($femaleAudioUrl)->after('/audios/')->before('-subject')->__toString(),
             collect($json->parts_of_speech),
         );
-    }
-
-    public function getCharacters()
-    {
-        return $this->characters;
-    }
-
-    public function getFemaleAudioId()
-    {
-        return $this->femaleAudioId;
-    }
-
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    public function getLevel()
-    {
-        return $this->level;
-    }
-
-    public function getMaleAudioId()
-    {
-        return $this->maleAudioId;
-    }
-
-    public function getMeanings()
-    {
-        return $this->meanings;
-    }
-
-    public function getReadings()
-    {
-        return $this->readings;
     }
 
     public function getSentences()

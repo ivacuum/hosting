@@ -12,39 +12,18 @@ class RtoTopicData
     const TITLE_REPLACE_FROM = [' )', ' ,', 'HD (1080p)'];
     const TITLE_REPLACE_TO = [')', ',', 'HD 1080p'];
 
-    public int $id;
-    public int $size;
-    public int $status;
-    public int $forumId;
-    public int $seeders;
-    public int $posterId;
-    public string $title;
-    public string $infoHash;
-    public CarbonInterface $registeredAt;
-    public CarbonInterface $seederLastSeenAt;
-
     public function __construct(
-        int $id,
-        string $title,
-        string $infoHash,
-        CarbonInterface $registeredAt,
-        int $status,
-        int $size,
-        int $forumId,
-        int $posterId,
-        int $seeders,
-        CarbonInterface $seederLastSeenAt
+        public int $id,
+        public string $title,
+        public string $infoHash,
+        public CarbonInterface $registeredAt,
+        public int $status,
+        public int $size,
+        public int $forumId,
+        public int $posterId,
+        public int $seeders,
+        public CarbonInterface $seederLastSeenAt
     ) {
-        $this->id = $id;
-        $this->size = $size;
-        $this->title = $title;
-        $this->status = $status;
-        $this->forumId = $forumId;
-        $this->seeders = $seeders;
-        $this->infoHash = $infoHash;
-        $this->posterId = $posterId;
-        $this->registeredAt = $registeredAt;
-        $this->seederLastSeenAt = $seederLastSeenAt;
     }
 
     public static function fromJson(int $id, $json): self

@@ -5,11 +5,8 @@ use Illuminate\Contracts\Auth\Guard;
 
 class Admin
 {
-    protected $auth;
-
-    public function __construct(Guard $auth)
+    public function __construct(protected Guard $auth)
     {
-        $this->auth = $auth;
     }
 
     public function handle($request, Closure $next)

@@ -23,20 +23,20 @@ class ParseWanikani extends Command
             $response = $api->subjects($level);
 
             foreach ($response->getRadicals() as $radical) {
-                $model = Radical::firstWhere('wk_id', $radical->getId())
-                    ?? Radical::firstWhere('meaning', $radical->getMeaning())
+                $model = Radical::firstWhere('wk_id', $radical->id)
+                    ?? Radical::firstWhere('meaning', $radical->meaning)
                     ?? new Radical;
 
                 $model->image = '';
-                $model->wk_id = $radical->getId();
-                $model->level = $radical->getLevel();
-                $model->meaning = $radical->getMeaning();
-                $model->character = $radical->getCharacter();
+                $model->wk_id = $radical->id;
+                $model->level = $radical->level;
+                $model->meaning = mb_strtolower($radical->meaning);
+                $model->character = $radical->character;
                 $model->save();
 
-                if ($radical->getFoundInKanji()->isNotEmpty()) {
+                if ($radical->foundInKanji->isNotEmpty()) {
                     $ids = Kanji::query()
-                        ->whereIn('wk_id', $radical->getFoundInKanji())
+                        ->whereIn('wk_id', $radical->foundInKanji)
                         ->pluck('id');
 
                     $model->kanjis()->sync($ids);
@@ -44,23 +44,23 @@ class ParseWanikani extends Command
             }
 
             foreach ($response->getKanjis() as $kanji) {
-                $model = Kanji::firstWhere('wk_id', $kanji->getId())
-                    ?? Kanji::firstWhere('character', $kanji->getCharacter())
+                $model = Kanji::firstWhere('wk_id', $kanji->id)
+                    ?? Kanji::firstWhere('character', $kanji->character)
                     ?? new Kanji;
 
-                $model->level = $kanji->getLevel();
-                $model->wk_id = $kanji->getId();
+                $model->level = $kanji->level;
+                $model->wk_id = $kanji->id;
                 $model->nanori = $kanji->getNanori()->implode(', ');
                 $model->onyomi = $kanji->getOnyomi()->implode(', ');
                 $model->kunyomi = $kanji->getKunyomi()->implode(', ');
-                $model->meaning = mb_strtolower($kanji->getMeanings()->implode(', '));
-                $model->character = $kanji->getCharacter();
+                $model->meaning = mb_strtolower($kanji->meanings->implode(', '));
+                $model->character = $kanji->character;
                 $model->important_reading = $kanji->getImportantReading();
                 $model->save();
 
-                if ($kanji->getSimilarKanji()->isNotEmpty()) {
+                if ($kanji->similarKanji->isNotEmpty()) {
                     $ids = Kanji::query()
-                        ->whereIn('wk_id', $kanji->getSimilarKanji())
+                        ->whereIn('wk_id', $kanji->similarKanji)
                         ->pluck('id');
 
                     $model->similar()->sync($ids);
@@ -68,18 +68,18 @@ class ParseWanikani extends Command
             }
 
             foreach ($response->getVocabularies() as $vocab) {
-                $model = Vocabulary::firstWhere('wk_id', $vocab->getId())
-                    ?? Vocabulary::firstWhere('character', $vocab->getCharacters())
+                $model = Vocabulary::firstWhere('wk_id', $vocab->id)
+                    ?? Vocabulary::firstWhere('character', $vocab->characters)
                     ?? new Vocabulary;
 
-                $model->kana = mb_strtolower($vocab->getReadings()->implode(', '));
-                $model->level = $vocab->getLevel();
-                $model->wk_id = $vocab->getId();
-                $model->meaning = mb_strtolower($vocab->getMeanings()->implode(', '));
-                $model->character = $vocab->getCharacters();
+                $model->kana = mb_strtolower($vocab->readings->implode(', '));
+                $model->level = $vocab->level;
+                $model->wk_id = $vocab->id;
+                $model->meaning = mb_strtolower($vocab->meanings->implode(', '));
+                $model->character = $vocab->characters;
                 $model->sentences = $vocab->getSentences()->implode("\n\n");
-                $model->male_audio_id = $vocab->getMaleAudioId();
-                $model->female_audio_id = $vocab->getFemaleAudioId();
+                $model->male_audio_id = $vocab->maleAudioId;
+                $model->female_audio_id = $vocab->femaleAudioId;
                 $model->save();
             }
 

@@ -1,15 +1,15 @@
 <?php namespace App\Services\Wanikani;
 
-use Psr\Http\Message\ResponseInterface;
+use Illuminate\Http\Client\Response;
 
 class SubjectResponse
 {
     public $json;
     public KanjiEntity|RadicalEntity|VocabularyEntity $subject;
 
-    public function __construct(ResponseInterface $response)
+    public function __construct(Response $response)
     {
-        $this->json = $json = json_decode((string) $response->getBody());
+        $this->json = $json = $response->object();
 
         $this->subject = match ($json->object) {
             'radical' => RadicalEntity::fromJson($json->id, $json->data),

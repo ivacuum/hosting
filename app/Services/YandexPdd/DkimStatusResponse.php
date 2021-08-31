@@ -1,26 +1,16 @@
 <?php namespace App\Services\YandexPdd;
 
-use Psr\Http\Message\ResponseInterface;
+use Illuminate\Http\Client\Response;
 
 class DkimStatusResponse
 {
-    private $json;
-    private string $secretKey;
+    public $json;
+    public string $secretKey;
 
-    public function __construct(ResponseInterface $response)
+    public function __construct(Response $response)
     {
-        $this->json = $json = json_decode((string) $response->getBody());
+        $this->json = $json = $response->object();
 
         $this->secretKey = $json->dkim->secretkey;
-    }
-
-    public function getJson()
-    {
-        return $this->json;
-    }
-
-    public function getSecretKey()
-    {
-        return $this->secretKey;
     }
 }

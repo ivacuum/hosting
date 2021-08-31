@@ -5,11 +5,8 @@ use Illuminate\Cache\Repository;
 
 class CacheHelper
 {
-    protected $cache;
-
-    public function __construct(Repository $cache)
+    public function __construct(protected Repository $cache)
     {
-        $this->cache = $cache;
     }
 
     public function forgetCities()

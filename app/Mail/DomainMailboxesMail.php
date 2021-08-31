@@ -5,13 +5,8 @@ use Illuminate\Mail\Mailable;
 
 class DomainMailboxesMail extends Mailable
 {
-    public $domain;
-    public $mailboxes;
-
-    public function __construct(Domain $domain, array $mailboxes)
+    public function __construct(public Domain $domain, public array $mailboxes)
     {
-        $this->domain = $domain;
-        $this->mailboxes = $mailboxes;
     }
 
     public function build()

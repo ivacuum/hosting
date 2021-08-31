@@ -2,11 +2,8 @@
 
 class SubjectsRequest implements RequestInterface
 {
-    private int $level;
-
-    public function __construct(int $level)
+    public function __construct(private int $level)
     {
-        $this->level = $level;
     }
 
     public function endpoint(): string

@@ -5,11 +5,8 @@ use Illuminate\Mail\Mailable;
 
 class ResetPasswordMail extends Mailable implements ShouldQueue
 {
-    public $token;
-
-    public function __construct($token)
+    public function __construct(public string $token)
     {
-        $this->token = $token;
     }
 
     public function build()

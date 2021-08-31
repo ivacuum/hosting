@@ -1,13 +1,11 @@
 <?php namespace Tests\Job;
 
 use App\Factory\TorrentFactory;
+use App\Jobs\FetchTorrentBodyJob;
 use App\Jobs\FetchTorrentMetaJob;
-use App\Services\Rto;
 use App\Services\RtoTopicData;
-use GuzzleHttp\Psr7\Response;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Ivacuum\Generic\Http\GuzzleClientFactory;
-use Ivacuum\Generic\Services\Telegram;
+use Illuminate\Http\Client\Factory;
 use Tests\TestCase;
 
 class FetchTorrentMetaJobTest extends TestCase
@@ -34,16 +32,16 @@ class FetchTorrentMetaJobTest extends TestCase
             now()
         );
 
-        $rto = new Rto($this->httpClientFactory($topicData));
-        $telegram = \Mockery::mock(Telegram::class);
-        $telegram->shouldReceive('notifyAdmin');
+        $this->swap(Factory::class, $this->fakeHttpClient($topicData));
 
         $job = new FetchTorrentMetaJob($torrent->rto_id);
-        $job->handle($rto, $telegram);
+        $this->app->call([$job, 'handle']);
 
         $torrent->refresh();
 
         $this->assertSame($infoHash, $torrent->info_hash);
+
+        \Bus::assertDispatched(FetchTorrentBodyJob::class);
     }
 
     public function testDuplicateDeleted()
@@ -63,14 +61,12 @@ class FetchTorrentMetaJobTest extends TestCase
             now()
         );
 
-        $rto = new Rto($this->httpClientFactory($topicData));
-        $telegram = \Mockery::mock(Telegram::class);
-        $telegram->shouldReceive('notifyAdmin');
+        $this->swap(Factory::class, $this->fakeHttpClient($topicData));
 
         $this->expectsEvents(\App\Events\Stats\TorrentDuplicateDeleted::class);
 
         $job = new FetchTorrentMetaJob($torrent->rto_id);
-        $job->handle($rto, $telegram);
+        $this->app->call([$job, 'handle']);
 
         $torrent->refresh();
 
@@ -96,11 +92,10 @@ class FetchTorrentMetaJobTest extends TestCase
             now()
         );
 
-        $rto = new Rto($this->httpClientFactory($topicData));
-        $telegram = \Mockery::mock(Telegram::class);
+        $this->swap(Factory::class, $this->fakeHttpClient($topicData));
 
         $job = new FetchTorrentMetaJob($torrent->rto_id);
-        $job->handle($rto, $telegram);
+        $this->app->call([$job, 'handle']);
 
         $torrent->refresh();
 
@@ -112,22 +107,19 @@ class FetchTorrentMetaJobTest extends TestCase
     {
         $torrent = TorrentFactory::new()->create();
 
-        $httpClientFactory = (new GuzzleClientFactory)->forTest([
-            new Response(200, [], json_encode([
+        $this->swap(Factory::class, \Http::fake([
+            "api.rutracker.org/v1/get_tor_topic_data?by=topic_id&val={$torrent->rto_id}" => \Http::response([
                 'result' => [
                     $torrent->rto_id => null,
                 ],
-            ])),
-        ]);
-
-        $rto = new Rto($httpClientFactory);
-        $telegram = \Mockery::mock(Telegram::class);
-        $telegram->shouldReceive('notifyAdmin');
+            ]),
+            '*' => \Http::response(),
+        ]));
 
         $this->expectsEvents(\App\Events\Stats\TorrentNotFoundDeleted::class);
 
         $job = new FetchTorrentMetaJob($torrent->rto_id);
-        $job->handle($rto, $telegram);
+        $this->app->call([$job, 'handle']);
 
         $torrent->refresh();
 
@@ -154,12 +146,10 @@ class FetchTorrentMetaJobTest extends TestCase
             now()
         );
 
-        $rto = new Rto($this->httpClientFactory($topicData));
-        $telegram = \Mockery::mock(Telegram::class);
-        $telegram->shouldReceive('notifyAdmin');
+        $this->swap(Factory::class, $this->fakeHttpClient($topicData));
 
         $job = new FetchTorrentMetaJob($torrent->rto_id);
-        $job->handle($rto, $telegram);
+        $this->app->call([$job, 'handle']);
 
         $torrent->refresh();
 
@@ -167,14 +157,15 @@ class FetchTorrentMetaJobTest extends TestCase
         $this->assertSame($title, $torrent->title);
     }
 
-    private function httpClientFactory(RtoTopicData $topicData)
+    private function fakeHttpClient(RtoTopicData $topicData)
     {
-        return (new GuzzleClientFactory)->forTest([
-            new Response(200, [], json_encode([
+        return \Http::fake([
+            "api.rutracker.org/v1/get_tor_topic_data?by=topic_id&val={$topicData->id}" => \Http::response([
                 'result' => [
                     $topicData->id => $topicData->toJson(),
                 ],
-            ])),
+            ]),
+            '*' => \Http::response(),
         ]);
     }
 }

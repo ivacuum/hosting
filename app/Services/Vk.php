@@ -1,21 +1,21 @@
 <?php namespace App\Services;
 
-use Ivacuum\Generic\Http\GuzzleClientFactory;
+use Illuminate\Http\Client\Factory;
+use Illuminate\Http\Client\PendingRequest;
 
 class Vk
 {
     const API_ENDPOINT = 'https://api.vk.com/method/';
 
-    protected $client;
+    protected PendingRequest $http;
     protected $version = '5.69';
     protected $accessToken = '';
 
-    public function __construct(GuzzleClientFactory $clientFactory)
+    public function __construct(Factory $http)
     {
-        $this->client = $clientFactory
-            ->baseUri(static::API_ENDPOINT)
-            ->withLog('vk')
-            ->create();
+        $this->http = $http
+            ->baseUrl(self::API_ENDPOINT)
+            ->timeout(10);
     }
 
     public function accessToken(string $accessToken): self
@@ -36,9 +36,9 @@ class Vk
     {
         $params = array_merge($this->params(), ['code' => $code]);
 
-        $response = $this->client->get('execute', ['query' => $params]);
+        $response = $this->http->get('execute', $params);
 
-        return json_decode($response->getBody());
+        return $response->object();
     }
 
     public function likePost(Vk\Post $post)
@@ -49,9 +49,9 @@ class Vk
             'owner_id' => $post->ownerId(),
         ]);
 
-        $response = $this->client->get('likes.add', ['query' => $params]);
+        $response = $this->http->get('likes.add', $params);
 
-        return json_decode($response->getBody());
+        return $response->object();
     }
 
     public function unlikePost(Vk\Post $post)
@@ -62,9 +62,9 @@ class Vk
             'owner_id' => $post->ownerId(),
         ]);
 
-        $response = $this->client->get('likes.delete', ['query' => $params]);
+        $response = $this->http->get('likes.delete', $params);
 
-        return json_decode($response->getBody());
+        return $response->object();
     }
 
     public function wallGet($page, array $params = [])
@@ -77,9 +77,9 @@ class Vk
             $params['domain'] = $page;
         }
 
-        $response = $this->client->get('wall.get', ['query' => $params]);
+        $response = $this->http->get('wall.get', $params);
 
-        return json_decode($response->getBody());
+        return $response->object();
     }
 
     public function wallSearch($page, array $params = [])
@@ -92,9 +92,9 @@ class Vk
             $params['domain'] = $page;
         }
 
-        $response = $this->client->get('wall.search', ['query' => $params]);
+        $response = $this->http->get('wall.search', $params);
 
-        return json_decode($response->getBody());
+        return $response->object();
     }
 
     protected function params(): array

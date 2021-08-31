@@ -6,13 +6,8 @@ use Illuminate\Notifications\Notification;
 
 class TorrentCommentedNotification extends Notification
 {
-    public $comment;
-    public $torrent;
-
-    public function __construct(Torrent $torrent, Comment $comment)
+    public function __construct(public Torrent $torrent, public Comment $comment)
     {
-        $this->torrent = $torrent;
-        $this->comment = $comment;
     }
 
     public function via($notifiable)

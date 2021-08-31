@@ -1,15 +1,15 @@
 <?php namespace App\Services\Wanikani;
 
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Collection;
-use Psr\Http\Message\ResponseInterface;
 
 class SubjectsResponse
 {
     private Collection $subjects;
 
-    public function __construct(ResponseInterface $response)
+    public function __construct(Response $response)
     {
-        $json = json_decode((string) $response->getBody());
+        $json = $response->object();
 
         $this->subjects = collect($json->data)
             ->map(function ($object) {

@@ -10,15 +10,11 @@ class NewsPublishedMail extends Mailable implements ShouldQueue
 {
     use RecordsEmail;
 
-    public $news;
-    public $user;
     public $newsLink;
     public $mySettingsLink;
 
-    public function __construct(News $news, User $user)
+    public function __construct(public News $news, public User $user)
     {
-        $this->news = $news;
-        $this->user = $user;
         $this->email = $this->email($news->emails(), $user);
         $this->newsLink = $this->email->signedLink($news->www());
         $this->mySettingsLink = $this->email->signedLink(path_locale([MySettings::class, 'edit'], [], false, $user->locale));

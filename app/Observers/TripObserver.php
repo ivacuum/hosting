@@ -6,11 +6,8 @@ use App\Utilities\CacheHelper;
 
 class TripObserver
 {
-    private $cache;
-
-    public function __construct(CacheHelper $cache)
+    public function __construct(private CacheHelper $cache)
     {
-        $this->cache = $cache;
     }
 
     public function deleting(Model $model)

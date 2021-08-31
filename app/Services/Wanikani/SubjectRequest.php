@@ -2,11 +2,8 @@
 
 class SubjectRequest implements RequestInterface
 {
-    private int $id;
-
-    public function __construct(int $id)
+    public function __construct(private int $id)
     {
-        $this->id = $id;
     }
 
     public function endpoint(): string

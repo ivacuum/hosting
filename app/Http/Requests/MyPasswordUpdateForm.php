@@ -1,6 +1,7 @@
 <?php namespace App\Http\Requests;
 
 use Illuminate\Contracts\Hashing\Hasher;
+use Illuminate\Validation\Rule;
 
 class MyPasswordUpdateForm extends AbstractForm
 {
@@ -22,7 +23,7 @@ class MyPasswordUpdateForm extends AbstractForm
     public function rules(): array
     {
         return [
-            'password' => $this->userHasPassword() ? 'required' : '',
+            'password' => Rule::when($this->userHasPassword(), 'required'),
             'new_password' => 'required|string|min:8',
         ];
     }

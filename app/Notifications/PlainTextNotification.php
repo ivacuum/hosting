@@ -4,11 +4,8 @@ use Illuminate\Notifications\Notification;
 
 class PlainTextNotification extends Notification
 {
-    public $text;
-
-    public function __construct(string $text)
+    public function __construct(public string $text)
     {
-        $this->text = $text;
     }
 
     public function via()

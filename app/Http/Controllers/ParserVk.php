@@ -4,26 +4,26 @@ use App\CacheKey;
 use App\Services\Vk;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterval;
-use Ivacuum\Generic\Http\GuzzleClientFactory;
+use Illuminate\Http\Client\Factory;
+use Illuminate\Http\Client\PendingRequest;
 
 class ParserVk extends Controller
 {
-    protected $client;
+    protected PendingRequest $http;
     protected $token;
     protected $version = '5.69';
-    protected $vkpage;
+    protected $vkPage;
 
-    public function __construct(GuzzleClientFactory $clientFactory)
+    public function __construct(Factory $http)
     {
-        $this->client = $clientFactory
-            ->baseUri(Vk::API_ENDPOINT)
-            ->timeout(10)
-            ->create();
+        $this->http = $http
+            ->baseUrl(Vk::API_ENDPOINT)
+            ->timeout(10);
     }
 
-    public function index($vkpage = 'pikabu', $date = false)
+    public function index(string $vkPage = 'pikabu', $date = false)
     {
-        $this->vkpage = $vkpage;
+        $this->vkPage = $vkPage;
         $this->token = $token = request('token', config('services.vk.access_token'));
         $own = request('own');
         $date = false === $date ? '-1 day' : $date;
@@ -131,7 +131,7 @@ class ParserVk extends Controller
             'next' => $next,
             'token' => $token,
             'posts' => $posts->sortByDesc('views')->take(10),
-            'vkpage' => $vkpage,
+            'vkpage' => $vkPage,
             'previous' => $previous,
         ]);
     }
@@ -143,7 +143,7 @@ class ParserVk extends Controller
 
     protected function getPosts($count = 100, $offset = 0)
     {
-        $cacheEntry = CacheKey::key(CacheKey::VK_WALL_GET, "{$this->vkpage}_{$count}_{$offset}");
+        $cacheEntry = CacheKey::key(CacheKey::VK_WALL_GET, "{$this->vkPage}_{$count}_{$offset}");
 
         $params = [
             'v' => $this->version,
@@ -153,10 +153,10 @@ class ParserVk extends Controller
             'access_token' => $this->token,
         ];
 
-        if (is_numeric($this->vkpage)) {
-            $params['owner_id'] = $this->vkpage;
+        if (is_numeric($this->vkPage)) {
+            $params['owner_id'] = $this->vkPage;
         } else {
-            $params['domain'] = $this->vkpage;
+            $params['domain'] = $this->vkPage;
         }
 
         return \Cache::remember($cacheEntry, CarbonInterval::minutes(15 + intval($offset / 100)), function () use ($params) {
@@ -164,11 +164,11 @@ class ParserVk extends Controller
                 sleep(1);
             }
 
-            $response = $this->client->get('wall.get', ['query' => $params]);
+            $response = $this->http->get('wall.get', $params);
 
             event(new \App\Events\Stats\ParserVkWallGet);
 
-            return json_decode($response->getBody());
+            return $response->object();
         });
     }
 

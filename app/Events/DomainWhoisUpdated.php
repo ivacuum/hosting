@@ -7,10 +7,7 @@ class DomainWhoisUpdated extends Event
 {
     use SerializesModels;
 
-    public $data;
-
-    public function __construct(public Domain $domain, $data)
+    public function __construct(public Domain $domain, public $data)
     {
-        $this->data = $data;
     }
 }

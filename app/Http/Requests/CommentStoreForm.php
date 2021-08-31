@@ -1,6 +1,7 @@
 <?php namespace App\Http\Requests;
 
 use App\Rules\Email;
+use Illuminate\Validation\Rule;
 
 class CommentStoreForm extends AbstractForm
 {
@@ -15,7 +16,7 @@ class CommentStoreForm extends AbstractForm
             'id' => 'integer|min:1',
             'text' => 'required|max:1000',
             'type' => 'in:news,torrent,trip',
-            'email' => $this->isGuest() ? Email::rules() : '',
+            'email' => Rule::when($this->isGuest(), Email::rules()),
         ];
     }
 

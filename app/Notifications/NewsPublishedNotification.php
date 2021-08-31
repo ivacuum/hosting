@@ -10,11 +10,8 @@ class NewsPublishedNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    public $news;
-
-    public function __construct(News $news)
+    public function __construct(public News $news)
     {
-        $this->news = $news;
     }
 
     public function via()

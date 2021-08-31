@@ -8,11 +8,8 @@ class FetchTorrentBodyJob extends AbstractJob
 {
     public $delay = 5;
 
-    private int $rtoId;
-
-    public function __construct(int $rtoId)
+    public function __construct(private int $rtoId)
     {
-        $this->rtoId = $rtoId;
     }
 
     public function handle(Rto $rto)

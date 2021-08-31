@@ -6,11 +6,8 @@ use Illuminate\Contracts\Mail\Mailer;
 
 class EmailWhoisChanges
 {
-    protected $mailer;
-
-    public function __construct(Mailer $mailer)
+    public function __construct(private Mailer $mailer)
     {
-        $this->mailer = $mailer;
     }
 
     public function handle(DomainWhoisUpdated $event)

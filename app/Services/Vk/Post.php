@@ -4,33 +4,19 @@ use Carbon\CarbonImmutable;
 
 class Post
 {
-    private $id;
     private $date;
-    private $isAd;
-    private $likes;
-    private $canLike;
-    private $ownerId;
-    private $isPinned;
-    private $isUserLiked;
 
     public function __construct(
-        int $id,
-        int $ownerId,
+        private int $id,
+        private int $ownerId,
         int $timestamp,
-        int $likes,
-        bool $canLike,
-        bool $isUserLiked,
-        bool $isPinned = false,
-        bool $isAd = false
+        private int $likes,
+        private bool $canLike,
+        private bool $isUserLiked,
+        private bool $isPinned = false,
+        private bool $isAd = false
     ) {
-        $this->id = $id;
         $this->date = CarbonImmutable::createFromTimestamp($timestamp);
-        $this->isAd = $isAd;
-        $this->likes = $likes;
-        $this->canLike = $canLike;
-        $this->ownerId = $ownerId;
-        $this->isPinned = $isPinned;
-        $this->isUserLiked = $isUserLiked;
     }
 
     public function canLike(): bool

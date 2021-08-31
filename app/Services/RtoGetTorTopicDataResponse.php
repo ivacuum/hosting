@@ -1,15 +1,15 @@
 <?php namespace App\Services;
 
-use Psr\Http\Message\ResponseInterface;
+use Illuminate\Http\Client\Response;
 
 class RtoGetTorTopicDataResponse
 {
     /** @var \Illuminate\Support\Collection|\App\Services\RtoTopicData[] */
     private $topics;
 
-    public function __construct(ResponseInterface $response)
+    public function __construct(Response $response)
     {
-        $json = $this->responseAsJson($response);
+        $json = $response->object();
 
         $collection = $json->result;
 
@@ -22,11 +22,6 @@ class RtoGetTorTopicDataResponse
                     ? RtoTopicData::fromJson($key, $object)
                     : null;
             });
-    }
-
-    protected function responseAsJson(ResponseInterface $response, bool $asArray = false)
-    {
-        return json_decode((string) $response->getBody(), $asArray);
     }
 
     public function getTopic(int $id): ?RtoTopicData

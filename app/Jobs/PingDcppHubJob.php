@@ -4,11 +4,8 @@ use App\DcppHub;
 
 class PingDcppHubJob extends AbstractJob
 {
-    private DcppHub $hub;
-
-    public function __construct(DcppHub $hub)
+    public function __construct(private DcppHub $hub)
     {
-        $this->hub = $hub;
     }
 
     public function handle()

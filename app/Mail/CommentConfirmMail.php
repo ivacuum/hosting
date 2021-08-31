@@ -9,13 +9,11 @@ class CommentConfirmMail extends Mailable implements ShouldQueue
 {
     use RecordsEmail;
 
-    public Comment $comment;
     public string $confirmLink;
 
-    public function __construct(Comment $comment)
+    public function __construct(public Comment $comment)
     {
         $this->email = $this->email($comment->emails(), $comment->user);
-        $this->comment = $comment;
         $this->confirmLink = $this->email->signedLink(
             path_locale(CommentConfirm::class, $comment, false, $comment->user->locale)
         );

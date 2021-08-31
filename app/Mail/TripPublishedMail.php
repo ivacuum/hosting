@@ -10,13 +10,11 @@ class TripPublishedMail extends Mailable implements ShouldQueue
 {
     use RecordsEmail;
 
-    public $trip;
     public $tripLink;
     public $mySettingsLink;
 
-    public function __construct(Trip $trip, User $user)
+    public function __construct(public Trip $trip, User $user)
     {
-        $this->trip = $trip;
         $this->email = $this->email($trip->emails(), $user);
         $this->tripLink = $this->email->signedLink($trip->wwwLocale($user->locale));
         $this->mySettingsLink = $this->email->signedLink(path_locale([MySettings::class, 'edit'], [], false, $user->locale));

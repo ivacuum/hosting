@@ -1,21 +1,20 @@
 <?php namespace App\Services\Wanikani;
 
-use Ivacuum\Generic\Http\GuzzleClientFactory;
+use Illuminate\Http\Client\Factory;
+use Illuminate\Http\Client\PendingRequest;
 
 class WanikaniClient
 {
-    private $apiKey;
-    private $client;
+    private string $apiKey;
+    private PendingRequest $http;
 
-    public function __construct(GuzzleClientFactory $clientFactory)
+    public function __construct(Factory $http)
     {
         $this->apiKey = config('cfg.wanikani_api_key');
 
-        $this->client = $clientFactory
-            ->baseUri('https://api.wanikani.com/v2/')
-            ->timeout(10)
-            ->withLog('wanikani')
-            ->create();
+        $this->http = $http
+            ->baseUrl('https://api.wanikani.com/v2/')
+            ->timeout(10);
     }
 
     public function subject(int $id)
@@ -34,16 +33,9 @@ class WanikaniClient
 
     private function send(RequestInterface $request)
     {
-        return $this->client->request(
-            $request->httpMethod(),
-            $request->endpoint(),
-            [
-                'headers' => [
-                    'Authorization' => "Bearer {$this->apiKey}",
-                    'Wanikani-Revision' => '20170710',
-                ],
-                'query' => $request->jsonSerialize(),
-            ]
-        );
+        return $this->http
+            ->withToken($this->apiKey)
+            ->withHeaders(['Wanikani-Revision' => '20170710'])
+            ->get($request->endpoint(), $request->jsonSerialize());
     }
 }

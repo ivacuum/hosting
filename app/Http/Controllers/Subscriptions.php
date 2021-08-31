@@ -4,6 +4,7 @@ use App\Mail\SubscriptionConfirmMail;
 use App\Rules\Email;
 use App\User;
 use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Validation\Rule;
 
 class Subscriptions extends Controller
 {
@@ -57,7 +58,7 @@ class Subscriptions extends Controller
         request()->validate([
             'gigs' => 'in:0,1',
             'news' => 'in:0,1',
-            'email' => $isGuest ? Email::rules() : '',
+            'email' => Rule::when($isGuest, Email::rules()),
             'trips' => 'in:0,1',
         ]);
 

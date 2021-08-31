@@ -9,11 +9,8 @@ use NotificationChannels\Telegram\TelegramMessage;
 
 class TorrentUpdatedNotification extends Notification
 {
-    public $torrent;
-
-    public function __construct(Torrent $torrent)
+    public function __construct(public Torrent $torrent)
     {
-        $this->torrent = $torrent;
     }
 
     public function via(User $notifiable)

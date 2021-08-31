@@ -1,6 +1,7 @@
 <?php namespace App\Http\Requests;
 
 use App\Rules\Email;
+use Illuminate\Validation\Rule;
 
 class IssueStoreForm extends AbstractForm
 {
@@ -34,10 +35,10 @@ class IssueStoreForm extends AbstractForm
     public function rules(): array
     {
         return [
-            'name' => $this->expectsJson() ? '' : 'required',
+            'name' => Rule::when(!$this->expectsJson(), 'required'),
             'text' => ['required', 'string', 'max:1000'],
             'email' => Email::rules(),
-            'title' => $this->expectsJson() ? '' : 'required',
+            'title' => Rule::when(!$this->expectsJson(), 'required'),
         ];
     }
 
