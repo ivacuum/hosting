@@ -126,8 +126,8 @@ class Photos extends Controller
 
         if ($tagId) {
             // Просмотр в пределах одного тэга
-            $next = $next->whereHas('tags', fn ($query) => $query->where('tag_id', $tagId));
-            $prev = $prev->whereHas('tags', fn ($query) => $query->where('tag_id', $tagId));
+            $next = $next->whereRelation('tags', 'tag_id', $tagId);
+            $prev = $prev->whereRelation('tags', 'tag_id', $tagId);
         } elseif ($cityId) {
             // В пределах города
             abort_unless($cityId == $photo->rel->city->id, 404);

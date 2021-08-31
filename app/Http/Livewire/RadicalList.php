@@ -24,11 +24,7 @@ class RadicalList extends Component
             ->orderBy('level')
             ->orderBy('meaning')
             ->userBurnable(auth()->id())
-            ->when($kanjiId,
-                fn (Builder $query) => $query->whereHas('kanjis',
-                    fn (Builder $query) => $query->where('kanji_id', $kanjiId)
-                )
-            )
+            ->when($kanjiId, fn (Builder $query) => $query->whereRelation('kanjis', 'kanji_id', $kanjiId))
             ->when($level, fn (Builder $query) => $query->where('level', $level))
             ->get(['id', 'level', 'character', 'meaning', 'image']);
     }

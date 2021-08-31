@@ -21,9 +21,7 @@ class Trips extends AbstractController implements UsesLivewire
         $models = Trip::with('user')
             ->withCount('comments', 'photos')
             ->when($cityId, fn (Builder $query) => $query->where('city_id', $cityId))
-            ->when($countryId,
-                fn (Builder $query) => $query->whereHas('city.country',
-                    fn (Builder $query) => $query->where('country_id', $countryId)))
+            ->when($countryId, fn (Builder $query) => $query->whereRelation('city.country', 'country_id', $countryId))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->unless(null === $status, fn (Builder $query) => $query->where('status', $status))
             ->when($q,

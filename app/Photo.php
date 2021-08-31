@@ -22,6 +22,13 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property \Illuminate\Database\Eloquent\Collection|Tag[] $tags
  * @property User $user
  *
+ * @method static Builder applyFilter($filter)
+ * @method static Builder forTag($id)
+ * @method static Builder forTrip($id)
+ * @method static Builder forTrips($ids)
+ * @method static Builder onMap()
+ * @method static Builder published()
+ *
  * @mixin \Eloquent
  */
 class Photo extends Model
@@ -67,9 +74,7 @@ class Photo extends Model
 
     public function scopeForTag(Builder $query, $id = null)
     {
-        return $query->unless(null === $id,
-            fn (Builder $query) => $query->whereHas('tags',
-                fn (Builder $query) => $query->where('tag_id', $id)));
+        return $query->unless(null === $id, fn (Builder $query) => $query->whereRelation('tags', 'tag_id', $id));
     }
 
     public function scopeForTrip(Builder $query, $id = null)

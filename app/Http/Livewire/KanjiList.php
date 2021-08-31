@@ -28,16 +28,8 @@ class KanjiList extends Component
             ->orderBy('level')
             ->orderBy('meaning')
             ->userBurnable(auth()->id())
-            ->when($radicalId,
-                fn (Builder $query) => $query->whereHas('radicals',
-                    fn (Builder $query) => $query->where('radical_id', $radicalId)
-                )
-            )
-            ->when($similarId,
-                fn (Builder $query) => $query->whereHas('similar',
-                    fn (Builder $query) => $query->where('similar_id', $similarId)
-                )
-            )
+            ->when($radicalId, fn (Builder $query) => $query->whereRelation('radicals', 'radical_id', $radicalId))
+            ->when($similarId, fn (Builder $query) => $query->whereRelation('similar', 'similar_id', $similarId))
             ->when($level, fn (Builder $query) => $query->where('level', $level))
             ->when($vocabularyId, function (Builder $query) use (&$characters, $vocabularyId) {
                 $vocab = Vocabulary::findOrFail($vocabularyId);
