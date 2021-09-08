@@ -103,8 +103,8 @@ class Comment extends Model
     {
         return static::with('user')
             ->distinct()
-            ->where('rel_id', $model->id)
             ->where('rel_type', class_basename($model))
+            ->where('rel_id', $model->id)
             ->get(['user_id'])
             // Автор новости, заметки, раздачи
             ->push([

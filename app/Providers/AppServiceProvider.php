@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
 
         Model::preventLazyLoading(!app()->isProduction());
 
-        Relation::morphMap([
+        Relation::enforceMorphMap([
             'Gig' => App\Gig::class,
             'Tag' => App\Tag::class,
             'City' => App\City::class,

@@ -206,7 +206,7 @@ class Photos extends Controller
     {
         // Тэги с фотками
         $tagIds = \DB::table('taggable')
-            ->where('rel_type', 'Photo')
+            ->where('rel_type', (new Photo)->getMorphClass())
             ->distinct()
             ->pluck('tag_id');
 

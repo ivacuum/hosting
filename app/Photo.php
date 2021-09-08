@@ -79,12 +79,21 @@ class Photo extends Model
 
     public function scopeForTrip(Builder $query, $id = null)
     {
-        return $query->unless(null === $id, fn (Builder $query) => $query->where('rel_id', $id)->where('rel_type', (new Trip)->getMorphClass()));
+        $type = (new Trip)->getMorphClass();
+
+        return $query->unless(
+            null === $id,
+            fn (Builder $query) => $query->where('rel_type', $type)->where('rel_id', $id));
     }
 
     public function scopeForTrips(Builder $query, array $ids = [])
     {
-        return $query->unless(empty($ids), fn (Builder $query) => $query->whereIn('rel_id', $ids)->where('rel_type', (new Trip)->getMorphClass()));
+        $type = (new Trip)->getMorphClass();
+
+        return $query->unless(
+            empty($ids),
+            fn (Builder $query) => $query->where('rel_type', $type)->whereIn('rel_id', $ids)
+        );
     }
 
     public function scopeOnMap(Builder $query)
