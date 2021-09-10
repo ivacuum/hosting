@@ -1,5 +1,6 @@
 <?php namespace App\Services;
 
+use GuzzleHttp\RequestOptions;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\PendingRequest;
 
@@ -66,8 +67,8 @@ class Rto
     {
         $response = $this->http
             ->withOptions([
-                'proxy' => env('RTO_PROXY'),
-                'force_ip_resolve' => \App::isProduction()
+                RequestOptions::PROXY => env('RTO_PROXY'),
+                RequestOptions::FORCE_IP_RESOLVE => \App::isProduction()
                     ? 'v6'
                     : null,
             ])
@@ -81,7 +82,7 @@ class Rto
         $response = $this->topicDataByIds([$id])
             ->getTopic($id);
 
-        if (null === $response) {
+        if ($response === null) {
             throw new RtoTopicNotFoundException;
         }
 
@@ -96,7 +97,7 @@ class Rto
     {
         $response = $this->http
             ->withOptions([
-                'force_ip_resolve' => \App::isProduction()
+                RequestOptions::FORCE_IP_RESOLVE => \App::isProduction()
                     ? 'v4'
                     : null,
             ])
@@ -112,7 +113,7 @@ class Rto
     {
         $response = $this->http
             ->withOptions([
-                'force_ip_resolve' => \App::isProduction()
+                RequestOptions::FORCE_IP_RESOLVE => \App::isProduction()
                     ? 'v4'
                     : null,
             ])
