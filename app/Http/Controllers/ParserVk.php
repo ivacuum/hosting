@@ -11,7 +11,7 @@ class ParserVk extends Controller
 {
     protected PendingRequest $http;
     protected $token;
-    protected $version = '5.69';
+    protected $version = '5.131';
     protected $vkPage;
 
     public function __construct(Factory $http)

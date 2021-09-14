@@ -8,7 +8,7 @@ class Vk
     const API_ENDPOINT = 'https://api.vk.com/method/';
 
     protected PendingRequest $http;
-    protected $version = '5.69';
+    protected $version = '5.131';
     protected $accessToken = '';
 
     public function __construct(Factory $http)
