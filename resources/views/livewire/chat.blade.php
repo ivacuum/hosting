@@ -22,7 +22,7 @@
                 @if ($lastUserId !== $message->user_id)
                   <div class="leading-none" style="color: {{ ViewHelper::avatarBg($message->user_id) }}">{{ $message->user->publicName() }}</div>
                 @endif
-                <div class="break-words">{!! $message->html !!}</div>
+                <div class="break-words chat-message">{!! $message->html !!}</div>
               </div>
               <div class="flex-shrink-0 text-xs text-grey-500 text-right w-12" title="{{ $message->created_at->toDateString() }}">
                 {{ $message->created_at->format('H:i') }}
