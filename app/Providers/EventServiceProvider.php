@@ -23,6 +23,10 @@ class EventServiceProvider extends ServiceProvider
             'Ivacuum\Generic\Listeners\SetLocale',
         ],
 
+        'Illuminate\Http\Client\Events\ConnectionFailed' => [
+            Listeners\LogHttpConnectionFailed::class,
+        ],
+
         'Illuminate\Http\Client\Events\ResponseReceived' => [
             Listeners\LogExternalHttpRequest::class,
         ],
