@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: [ '8.0', '8.1' ]
+        php: [ '8.0' ]
 
     name: PHP ${{ matrix.php }}
 
@@ -20,10 +20,6 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, bcmath, intl, gd, exif, iconv, fileinfo
           coverage: none
-
-      - name: Mimic PHP 8.0
-        run: composer config platform.php 8.0.999
-        if: matrix.php > 8
 
       - name: Setup sphinxsearch
         # sudo echo "START=yes\n" > /etc/default/sphinxsearch
@@ -73,5 +69,4 @@ jobs:
           composer fresh
 
       - name: Run PHPUnit
-        continue-on-error: ${{ matrix.php > 8 }}
         run: composer test
