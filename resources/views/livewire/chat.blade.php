@@ -10,7 +10,7 @@
           </div>
           <?php $lastUserId = null ?>
           @foreach ($messages as $message)
-            <div class="flex mt-2" wire:key="{{ $message->id }}">
+            <div class="flex {{ $lastUserId !== $message->user_id ? 'mt-2' : '' }}" wire:key="{{ $message->id }}">
               <div class="flex-shrink-0 w-10">
                 @if ($lastUserId !== $message->user_id)
                   <div>
@@ -20,11 +20,17 @@
               </div>
               <div class="flex-grow">
                 @if ($lastUserId !== $message->user_id)
-                  <div class="leading-none" style="color: {{ ViewHelper::avatarBg($message->user_id) }}">{{ $message->user->publicName() }}</div>
+                  <div
+                    class="leading-none"
+                    style="color: {{ ViewHelper::avatarBg($message->user_id) }}"
+                  >{{ $message->user->publicName() }}</div>
                 @endif
                 <div class="break-words chat-message">{!! $message->html !!}</div>
               </div>
-              <div class="flex-shrink-0 text-xs text-grey-500 text-right w-12" title="{{ $message->created_at->toDateString() }}">
+              <div
+                class="flex-shrink-0 text-xs text-grey-500 text-right w-12"
+                title="{{ $message->created_at->toDateString() }}"
+              >
                 {{ $message->created_at->format('H:i') }}
               </div>
             </div>
@@ -45,36 +51,36 @@
         <button class="btn btn-default -ml-px rounded-l-none">Отправить</button>
       </div>
       @error('text')
-        <div class="text-red-600">{{ $message }}</div>
+      <div class="text-red-600">{{ $message }}</div>
       @enderror
     </form>
   </div>
 </div>
 
 @push('js')
-<script>
-(function () {
-  function getChatContainer() {
-    return document.querySelector('.chat-container')
-  }
-
-  function isScrolledDown(el) {
-    return el.scrollHeight - el.scrollTop - el.clientHeight < 35
-  }
-
-  function scrollChatDown() {
-    getChatContainer().scroll(0, 9999999)
-  }
-
-  scrollChatDown()
-
-  document.addEventListener('livewire:load', function () {
-    window.Livewire.hook('message.processed', function () {
-      if (isScrolledDown(getChatContainer())) {
-        scrollChatDown()
+  <script>
+    (function () {
+      function getChatContainer() {
+        return document.querySelector('.chat-container')
       }
-    })
-  })
-})()
-</script>
+
+      function isScrolledDown(el) {
+        return el.scrollHeight - el.scrollTop - el.clientHeight < 35
+      }
+
+      function scrollChatDown() {
+        getChatContainer().scroll(0, 9999999)
+      }
+
+      scrollChatDown()
+
+      document.addEventListener('livewire:load', function () {
+        window.Livewire.hook('message.processed', function () {
+          if (isScrolledDown(getChatContainer())) {
+            scrollChatDown()
+          }
+        })
+      })
+    })()
+  </script>
 @endpush
