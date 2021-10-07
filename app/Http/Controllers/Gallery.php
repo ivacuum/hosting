@@ -7,7 +7,8 @@ class Gallery extends Controller
 {
     public function index()
     {
-        $images = Image::where('user_id', request()->user()->id)
+        $images = Image::query()
+            ->whereBelongsTo(request()->user())
             ->orderByDesc('id')
             ->paginate(25);
 

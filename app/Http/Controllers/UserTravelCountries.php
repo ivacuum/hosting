@@ -20,7 +20,7 @@ class UserTravelCountries extends UserTravel
         /** @var Country $country */
         $country = Country::where('slug', $slug)->firstOrFail();
         $trips = $country->trips()
-            ->where('user_id', $this->traveler->id)
+            ->whereBelongsTo($this->traveler)
             ->withCount('photos')
             ->visible()
             ->get()

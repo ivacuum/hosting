@@ -16,14 +16,14 @@ class UserTravelTrips extends UserTravel
             'from' => $from,
         ], [
             'to' => 'nullable|date',
-            'from' => 'nullable|date'
+            'from' => 'nullable|date',
         ]);
 
         abort_unless($validator->passes(), 404);
 
         $trips = Trip::with('user')
             ->withCount('photos')
-            ->where('user_id', $this->traveler->id)
+            ->whereBelongsTo($this->traveler)
             ->visible()
             ->when($from, fn (Builder $query) => $query->where('date_start', '>=', $from))
             ->when($to, fn (Builder $query) => $query->where('date_start', '<=', $to))
@@ -40,7 +40,7 @@ class UserTravelTrips extends UserTravel
     {
         /** @var Trip $trip */
         $trip = Trip::withCount('photos')
-            ->where('user_id', $this->traveler->id)
+            ->whereBelongsTo($this->traveler)
             ->where('slug', $slug)
             ->where('status', TripStatus::PUBLISHED)
             ->firstOrFail();

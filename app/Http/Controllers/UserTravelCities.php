@@ -27,10 +27,11 @@ class UserTravelCities extends UserTravel
 
     public function show(string $login, string $slug)
     {
+        /** @var City $city */
         $city = \CityHelper::findBySlugOrFail($slug);
 
         $trips = $city->trips()
-            ->where('user_id', $this->traveler->id)
+            ->whereBelongsTo($this->traveler)
             ->withCount('photos')
             ->visible()
             ->get()

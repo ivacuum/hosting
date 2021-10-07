@@ -10,7 +10,7 @@ class MyTrips extends Controller
     {
         $models = Trip::with('user')
             ->withCount('comments', 'photos')
-            ->where('user_id', request()->user()->id)
+            ->whereBelongsTo(request()->user())
             ->orderByDesc('date_start')
             ->paginate(50, Trip::COLUMNS_LIST);
 

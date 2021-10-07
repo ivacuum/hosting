@@ -90,8 +90,9 @@ class Torrents extends Controller
     {
         $user = request()->user();
 
-        $torrents = Torrent::select(Torrent::LIST_COLUMNS)
-            ->where('user_id', $user->id)
+        $torrents = Torrent::query()
+            ->select(Torrent::LIST_COLUMNS)
+            ->whereBelongsTo($user)
             ->where('status', TorrentStatus::PUBLISHED)
             ->withCount('commentsPublished AS comments')
             ->orderByDesc('registered_at')

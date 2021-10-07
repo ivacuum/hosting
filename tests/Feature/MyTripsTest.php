@@ -58,7 +58,7 @@ class MyTripsTest extends TestCase
             ->post('my/trips', $trip->attributesToArray())
             ->assertRedirect('my/trips');
 
-        $tripSaved = Trip::where('city_id', $trip->city_id)->first();
+        $tripSaved = Trip::whereBelongsTo($trip->city)->first();
 
         $this->assertEquals($trip->city->title_en, $tripSaved->title_en);
         $this->assertEquals($trip->city->title_ru, $tripSaved->title_ru);
