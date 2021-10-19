@@ -33,6 +33,11 @@ class TorrentReplaceForm extends Component
         } catch (\Throwable $e) {
             $this->addError('input', $e->getMessage());
 
+            // Connection reset by peer
+            if (str_starts_with($e->getMessage(), 'cURL error 35:')) {
+                return null;
+            }
+
             report($e);
 
             return null;
