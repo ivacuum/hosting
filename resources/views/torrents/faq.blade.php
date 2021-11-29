@@ -34,18 +34,16 @@
     <p>По клику на иконку @svg (magnet) в списке раздач, либо на кнопку «Скачать» на странице раздачи. Качать можно без регистрации. Ваш торрент-клиент должен поддерживать магнет-ссылки.</p>
     <div class="mb-1">Рекомендуемые клиенты:</div>
     <ul>
-      <li>qBittorrent</li>
-      <li>Deluge</li>
+      <li>
+        <a class="link" href="@lng/files/158/dl">qBittorrent</a>
+        <span title="Windows">
+          @svg (Windows)
+        </span>
+      </li>
       <li>
         <a class="link" href="@lng/files/151/dl">Transmission</a>
         <span title="macOS">
           @svg (apple)
-        </span>
-      </li>
-      <li>
-        <a class="link" href="@lng/files/150/dl">uTorrent</a>
-        <span title="Windows">
-          @svg (windows)
         </span>
       </li>
     </ul>
