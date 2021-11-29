@@ -37,7 +37,7 @@
       <li>
         <a class="link" href="@lng/files/158/dl">qBittorrent</a>
         <span title="Windows">
-          @svg (Windows)
+          @svg (windows)
         </span>
       </li>
       <li>
