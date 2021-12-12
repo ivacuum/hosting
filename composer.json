@@ -10,6 +10,7 @@
     "guzzlehttp/guzzle": "^7.0",
     "ivacuum/generic": "^16.0",
     "laravel-notification-channels/telegram": "^0.7",
+    "laravel/fortify": "^1.8",
     "laravel/framework": "^8.0",
     "laravel/scout": "^9.0",
     "laravel/socialite": "^5.0",
@@ -79,6 +80,9 @@
   "config": {
     "preferred-install": "dist",
     "sort-packages": true,
-    "optimize-autoloader": true
+    "optimize-autoloader": true,
+    "platform": {
+      "php": "8.0"
+    }
   }
 }
