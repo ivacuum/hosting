@@ -7,7 +7,7 @@ Route::get('/', Ctrl\HomeController::class);
 Route::view('about', 'about');
 
 Route::get('auth/login', [Ctrl\Auth\SignIn::class, 'index'])->middleware('guest');
-Route::post('auth/login', [Ctrl\Auth\SignIn::class, 'login'])->middleware('guest');
+Route::post('auth/login', [Ctrl\Auth\SignIn::class, 'login'])->middleware(['guest', 'throttle:login']);
 Route::get('auth/logout', [Ctrl\Auth\SignIn::class, 'logout'])->middleware('auth');
 
 Route::get('auth/register', [Ctrl\Auth\NewAccount::class, 'index'])->middleware('guest');
