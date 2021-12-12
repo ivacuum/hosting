@@ -2,6 +2,8 @@
 
 return [
     'default' => env('LOG_CHANNEL', 'stack'),
+    // update or check
+    'deprecations' => env('LOG_DEPRECATIONS_CHANNEL', 'null'),
 
     'channels' => [
         'stack' => [
@@ -51,6 +53,10 @@ return [
         'null' => [
             'driver' => 'monolog',
             'handler' => \Monolog\Handler\NullHandler::class,
+        ],
+
+        'emergency' => [
+            'path' => storage_path('logs/laravel.log'),
         ],
     ],
 ];
