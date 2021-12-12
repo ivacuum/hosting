@@ -96,7 +96,8 @@ class ParseWanikaniTest extends TestCase
                         'id' => 452,
                         'object' => 'kanji',
                         'url' => 'https://api.wanikani.com/v2/subjects/452',
-                    ],                    [
+                    ],
+                    [
                         'data' => [
                             'amalgamation_subject_ids' => [1, 2, 3],
                             'auxiliary_meanings' => [],
@@ -106,7 +107,7 @@ class ParseWanikaniTest extends TestCase
                                 [
                                     'en' => 'English',
                                     'ja' => 'ますか',
-                                ]
+                                ],
                             ],
                             'created_at' => '2012-02-27T18:08:16.000000Z',
                             'document_url' => 'https://www.wanikani.com/kanji/%E5%8A%9B',
@@ -203,7 +204,7 @@ class ParseWanikaniTest extends TestCase
         $this->assertSame('power-power, strength-strength', $vocab->meaning);
         $this->assertSame('ちから', $vocab->kana);
         $this->assertSame("ますか\nEnglish", $vocab->sentences);
-        $this->assertSame('27982', $vocab->female_audio_id);
-        $this->assertSame('3162', $vocab->male_audio_id);
+        $this->assertSame(27982, $vocab->female_audio_id);
+        $this->assertSame(3162, $vocab->male_audio_id);
     }
 }

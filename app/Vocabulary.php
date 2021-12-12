@@ -31,6 +31,8 @@ class Vocabulary extends Model
     protected $casts = [
         'level' => 'int',
         'wk_id' => 'int',
+        'male_audio_id' => 'int',
+        'female_audio_id' => 'int',
     ];
 
     // Relations
