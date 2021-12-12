@@ -29,7 +29,7 @@ class LogExternalHttpRequest
         $model->host = $uri->getHost();
         $model->path = $uri->getPath();
         $model->query = $uri->getQuery();
-        $model->method = $request->toPsrRequest()->getMethod();
+        $model->method = $request->method();
         $model->scheme = $uri->getScheme();
         $model->http_code = $response->status();
         $model->created_at = now()->subMicroseconds($totalTimeUs);
@@ -41,9 +41,9 @@ class LogExternalHttpRequest
         $model->response_size = $this->responseSize($response);
         $model->total_time_us = $totalTimeUs;
         $model->redirect_count = $stats['redirect_count'] ?? 0;
-        $model->request_headers = $request->toPsrRequest()->getHeaders();
+        $model->request_headers = $request->headers();
         $model->redirect_time_us = $stats['redirect_time_us'] ?? (($stats['redirect_time'] ?? 0) * 1_000_000);
-        $model->response_headers = $response->toPsrResponse()->getHeaders();
+        $model->response_headers = $response->headers();
         $model->save();
     }
 
