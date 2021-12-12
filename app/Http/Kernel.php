@@ -23,7 +23,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
-            'throttle:60,1',
+            'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
@@ -35,7 +35,7 @@ class Kernel extends HttpKernel
         'admin' => Middleware\Admin::class,
         'guest' => Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
-        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
     ];
 }
