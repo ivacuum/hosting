@@ -54,7 +54,7 @@ class YandexPddClientTest extends TestCase
         ]));
 
         $yandex = $this->app->make(YandexPddClient::class);
-        $response = $yandex->emails('token', 'kaluga.aero');
+        $response = $yandex->emails('token', 'example.com');
 
         $this->assertTrue($response->successful);
     }
