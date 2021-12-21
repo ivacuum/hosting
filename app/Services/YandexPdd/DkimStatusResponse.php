@@ -5,11 +5,13 @@ use Illuminate\Http\Client\Response;
 
 class DkimStatusResponse
 {
+    public bool $successful;
     public string $secretKey;
 
     public function __construct(Response $response)
     {
         $this->secretKey = $response->json('dkim.secretkey');
+        $this->successful = $response->json('success') === 'ok';
     }
 
     public static function fakeSuccess(string $domain)

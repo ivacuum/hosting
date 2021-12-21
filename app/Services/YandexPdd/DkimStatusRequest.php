@@ -1,6 +1,8 @@
 <?php namespace App\Services\YandexPdd;
 
-class DkimStatusRequest implements RequestInterface
+use App\Http\HttpRequest;
+
+class DkimStatusRequest implements HttpRequest
 {
     public function __construct(private string $domain, private bool $askSecretKey)
     {
@@ -9,11 +11,6 @@ class DkimStatusRequest implements RequestInterface
     public function endpoint(): string
     {
         return 'admin/dkim/status';
-    }
-
-    public function httpMethod(): string
-    {
-        return 'GET';
     }
 
     public function jsonSerialize()

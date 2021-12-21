@@ -1,17 +1,15 @@
 <?php namespace App\Services\YandexPdd;
 
+use App\Http\HttpPost;
+use App\Http\HttpRequest;
 use Illuminate\Http\Client\Factory;
-use Illuminate\Http\Client\PendingRequest;
 
 class YandexPddClient
 {
-    private PendingRequest $http;
+    private const API_URL = 'https://pddimp.yandex.ru/api2/';
 
-    public function __construct(Factory $http)
+    public function __construct(private Factory $http)
     {
-        $this->http = $http
-            ->baseUrl('https://pddimp.yandex.ru/api2/')
-            ->timeout(10);
     }
 
     public function dkimStatus(string $pddToken, string $domain, bool $askSecretKey = false)
@@ -21,10 +19,40 @@ class YandexPddClient
         return new DkimStatusResponse($this->send($pddToken, $request));
     }
 
-    private function send(string $pddToken, RequestInterface $request)
+    public function domains(string $pddToken, int $page = 1)
     {
-        return $this->http
-            ->withHeaders(['PddToken' => $pddToken])
-            ->get($request->endpoint(), $request->jsonSerialize());
+        $request = new DomainsRequest($page);
+
+        return new DomainsResponse($this->send($pddToken, $request));
+    }
+
+    public function emails(string $pddToken, string $domain)
+    {
+        $request = new EmailsRequest($domain);
+
+        return new EmailsResponse($this->send($pddToken, $request));
+    }
+
+    public function setEmailPassword(string $pddToken, string $domain, string $email, string $password)
+    {
+        $request = new EmailEditRequest($domain, $email, $password);
+
+        return new EmailEditResponse($this->send($pddToken, $request));
+    }
+
+    private function send(string $pddToken, HttpRequest $request)
+    {
+        $http = $this->http
+            ->baseUrl(self::API_URL)
+            ->timeout(10)
+            ->withHeaders(['PddToken' => $pddToken]);
+
+        if ($request instanceof HttpPost) {
+            return $http
+                ->bodyFormat('query')
+                ->post($request->endpoint(), $request->jsonSerialize());
+        }
+
+        return $http->get($request->endpoint(), $request->jsonSerialize());
     }
 }
