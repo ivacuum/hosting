@@ -27,7 +27,7 @@
         <div class="text-muted"># Обновление портов</div>
         <div class="prepend-dollar">portsnap fetch update</div>
         <div class="prepend-dollar">synth status</div>
-        <div class="prepend-dollar">synth system-upgrade</div>
+        <div class="prepend-dollar">synth upgrade-system</div>
       </div>
     </div>
   </x-terminal>
