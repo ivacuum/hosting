@@ -19,7 +19,7 @@
 
       <div>
         <div class="text-muted"># После больших обновлений вроде 10.0 => 11.0 добавляется две команды</div>
-        <div class="prepend-dollar">portmaster -Raf</div>
+        <div class="prepend-dollar">synth upgrade-system</div>
         <div class="prepend-dollar">freebsd-update install</div>
       </div>
 
