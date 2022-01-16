@@ -14,7 +14,7 @@ class TripsRss extends Controller
         ];
 
         $items = Trip::where('user_id', 1)
-            ->where('status', TripStatus::PUBLISHED)
+            ->where('status', TripStatus::Published)
             ->where('meta_image', '<>', '')
             ->take(50)
             ->orderByDesc('date_start')

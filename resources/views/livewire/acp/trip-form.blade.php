@@ -13,7 +13,7 @@
   {{ LivewireForm::text('date_start')->required()->html() }}
   {{ LivewireForm::text('date_end')->required()->html() }}
 
-  {{ LivewireForm::radio('status')->required()->values(App\Domain\TripStatus::cases())->html() }}
+  {{ LivewireForm::radio('status')->required()->values(App\Domain\TripStatus::labels())->html() }}
 
   {{ LivewireForm::text('meta_description_ru')->html() }}
   {{ LivewireForm::text('meta_description_en')->html() }}

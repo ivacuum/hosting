@@ -37,7 +37,7 @@ class UserTravelCities extends UserTravel
             ->get()
             ->groupBy(fn (Trip $model) => $model->year);
 
-        $publishedTrips = $trips->where('status', TripStatus::PUBLISHED);
+        $publishedTrips = $trips->where('status', TripStatus::Published);
 
         event(new \App\Events\Stats\CityViewed($city->id));
 

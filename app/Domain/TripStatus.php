@@ -1,55 +1,39 @@
 <?php namespace App\Domain;
 
-class TripStatus implements \JsonSerializable
+enum TripStatus: int
 {
-    const INACTIVE = 0;
-    const PUBLISHED = 1;
-    const HIDDEN = 2;
+    case Inactive = 0;
+    case Published = 1;
+    case Hidden = 2;
 
-    public function __construct(private int $status)
+    public function i18n(): string
     {
-    }
-
-    public static function cases(): array
-    {
-        return [
-            self::INACTIVE => (new self(self::INACTIVE))->i18n(),
-            self::PUBLISHED => (new self(self::PUBLISHED))->i18n(),
-            self::HIDDEN => (new self(self::HIDDEN))->i18n(),
-        ];
-    }
-
-    public function i18n()
-    {
-        return match ($this->status) {
-            self::INACTIVE => __('Неактивна'),
-            self::PUBLISHED => __('Опубликована'),
-            self::HIDDEN => __('Скрыта'),
+        return match ($this) {
+            self::Inactive => __('Неактивна'),
+            self::Published => __('Опубликована'),
+            self::Hidden => __('Скрыта'),
         };
     }
 
     public function isHidden(): bool
     {
-        return $this->status === self::HIDDEN;
+        return $this === self::Hidden;
     }
 
     public function isInactive(): bool
     {
-        return $this->status === self::INACTIVE;
+        return $this === self::Inactive;
     }
 
     public function isPublished(): bool
     {
-        return $this->status === self::PUBLISHED;
+        return $this === self::Published;
     }
 
-    public function jsonSerialize()
+    public static function labels(): array
     {
-        return $this->status;
-    }
-
-    public function __toString(): string
-    {
-        return $this->status;
+        return collect(self::cases())
+            ->mapWithKeys(fn (self $case) => [$case->value => $case->i18n()])
+            ->all();
     }
 }

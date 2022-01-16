@@ -42,7 +42,7 @@ class UserTravelTrips extends UserTravel
         $trip = Trip::withCount('photos')
             ->whereBelongsTo($this->traveler)
             ->where('slug', $slug)
-            ->where('status', TripStatus::PUBLISHED)
+            ->where('status', TripStatus::Published)
             ->firstOrFail();
 
         $trip->loadCityAndCountry();

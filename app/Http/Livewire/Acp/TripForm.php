@@ -5,6 +5,7 @@ use App\Domain\TripStatus;
 use App\Trip;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Enum;
 use Livewire\Component;
 
 class TripForm extends Component
@@ -32,7 +33,7 @@ class TripForm extends Component
 
             $this->slug = $trip->slug;
             $this->cityId = $trip->city_id;
-            $this->status = $trip->status->jsonSerialize();
+            $this->status = $trip->status->value;
             $this->dateEnd = $trip->date_end->toDateTimeString();
             $this->titleEn = $trip->title_en;
             $this->titleRu = $trip->title_ru;
@@ -43,7 +44,7 @@ class TripForm extends Component
             $this->metaDescriptionRu = $trip->meta_description_ru;
         } else {
             $this->slug = 'city.' . now()->year;
-            $this->status = TripStatus::HIDDEN;
+            $this->status = TripStatus::Hidden->value;
             $this->dateEnd = now()->startOfDay()->toDateTimeString();
             $this->dateStart = now()->startOfDay()->toDateTimeString();
         }
@@ -69,6 +70,7 @@ class TripForm extends Component
                     ->ignore($this->modelId),
             ],
             'cityId' => 'required|integer|min:1',
+            'status' => new Enum(TripStatus::class),
             'titleEn' => Rule::when($this->modelId, 'required'),
             'titleRu' => Rule::when($this->modelId, 'required'),
             'dateEnd' => 'required|date|after_or_equal:dateStart',
@@ -117,7 +119,7 @@ class TripForm extends Component
     private function fillModel(Trip $trip)
     {
         $trip->slug = $this->slug;
-        $trip->status = new TripStatus($this->status);
+        $trip->status = TripStatus::from($this->status);
         $trip->city_id = $this->cityId;
         $trip->date_end = $this->dateEnd;
         $trip->date_start = $this->dateStart;

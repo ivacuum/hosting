@@ -220,7 +220,7 @@ class SitemapBuild extends BaseSitemapBuild
         return Trip::query()
             ->select(['id', 'user_id', 'slug'])
             ->where('user_id', 1)
-            ->where('status', TripStatus::PUBLISHED)
+            ->where('status', TripStatus::Published)
             ->orderBy('id')
             ->lazy();
     }

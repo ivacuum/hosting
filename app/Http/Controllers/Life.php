@@ -69,7 +69,7 @@ class Life extends Controller
             ->get()
             ->groupBy(fn (Trip $model) => $model->year);
 
-        $publishedTrips = $trips->where('status', TripStatus::PUBLISHED);
+        $publishedTrips = $trips->where('status', TripStatus::Published);
 
         event(new \App\Events\Stats\CityViewed($city->id));
 
@@ -227,7 +227,7 @@ class Life extends Controller
         $trip = Trip::where('user_id', 1)
             ->withCount('photos')
             ->where('slug', $slug)
-            ->where('status', TripStatus::PUBLISHED)
+            ->where('status', TripStatus::Published)
             ->first();
 
         return $trip;

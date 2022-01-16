@@ -30,12 +30,16 @@ class TripSeeder extends Seeder
         }
 
         /** @var Trip $trip */
-        $trip = Trip::where('status', TripStatus::PUBLISHED)->orderByDesc('date_start')->first();
-        $trip->status = TripStatus::INACTIVE;
+        $trip = Trip::where('status', TripStatus::Published)
+            ->orderByDesc('date_start')
+            ->first();
+        $trip->status = TripStatus::Inactive;
         $trip->save();
 
-        $trip = Trip::where('status', TripStatus::PUBLISHED)->orderByDesc('date_start')->first();
-        $trip->status = TripStatus::HIDDEN;
+        $trip = Trip::where('status', TripStatus::Published)
+            ->orderByDesc('date_start')
+            ->first();
+        $trip->status = TripStatus::Hidden;
         $trip->save();
 
         $user = UserFactory::new()

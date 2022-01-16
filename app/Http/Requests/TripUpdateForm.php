@@ -3,6 +3,7 @@
 use App\Domain\TripStatus;
 use App\Rules\TripSlug;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Enum;
 use Ivacuum\Generic\Http\FormRequest;
 
 class TripUpdateForm extends FormRequest
@@ -30,11 +31,7 @@ class TripUpdateForm extends FormRequest
             ],
             'status' => [
                 'required',
-                Rule::in([
-                    TripStatus::HIDDEN,
-                    TripStatus::INACTIVE,
-                    TripStatus::PUBLISHED,
-                ])
+                new Enum(TripStatus::class),
             ],
             'city_id' => 'required|integer|min:1',
             'markdown' => '',

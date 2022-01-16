@@ -15,7 +15,7 @@
 {!! Form::text('date_start')->required()->default(date('Y-m-d'))->html() !!}
 {!! Form::text('date_end')->required()->default(date('Y-m-d'))->html() !!}
 
-{!! Form::radio('status')->required()->values(App\Domain\TripStatus::cases())->html() !!}
+{!! Form::radio('status')->required()->values(App\Domain\TripStatus::labels())->html() !!}
 
 {!! Form::textarea('markdown')->wide()->html() !!}
 

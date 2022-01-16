@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Acp;
 
+use App\Domain\TripStatus;
 use App\Trip;
 use Illuminate\Database\Eloquent\Builder;
 use Ivacuum\Generic\Controllers\Acp\UsesLivewire;
@@ -23,7 +24,7 @@ class Trips extends AbstractController implements UsesLivewire
             ->when($cityId, fn (Builder $query) => $query->where('city_id', $cityId))
             ->when($countryId, fn (Builder $query) => $query->whereRelation('city.country', 'country_id', $countryId))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
-            ->unless(null === $status, fn (Builder $query) => $query->where('status', $status))
+            ->unless(null === $status, fn (Builder $query) => $query->where('status', TripStatus::from($status)))
             ->when($q,
                 fn (Builder $query) => $query->where('id', $q)
                     ->orWhere(Trip::titleField(), 'LIKE', "%{$q}%")

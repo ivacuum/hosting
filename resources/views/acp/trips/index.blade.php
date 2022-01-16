@@ -8,9 +8,9 @@
   'values' => [
     'Все' => null,
     '---' => null,
-    'Опубликованные' => App\Domain\TripStatus::PUBLISHED,
-    'Пишутся' => App\Domain\TripStatus::INACTIVE,
-    'Скрытые' => App\Domain\TripStatus::HIDDEN,
+    'Опубликованные' => App\Domain\TripStatus::Published->value,
+    'Пишутся' => App\Domain\TripStatus::Inactive->value,
+    'Скрытые' => App\Domain\TripStatus::Hidden->value,
   ]
 ])
 @endsection

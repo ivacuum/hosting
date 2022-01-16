@@ -6,13 +6,6 @@ enum DcppHubStatus: int
     case Published = 1;
     case Deleted = 2;
 
-    public static function labels(): array
-    {
-        return collect(self::cases())
-            ->mapWithKeys(fn (self $case) => [$case->value => $case->i18n()])
-            ->all();
-    }
-
     public function i18n(): string
     {
         return match ($this) {
@@ -20,5 +13,12 @@ enum DcppHubStatus: int
             self::Published => __('Опубликован'),
             self::Deleted => __('Удален'),
         };
+    }
+
+    public static function labels(): array
+    {
+        return collect(self::cases())
+            ->mapWithKeys(fn (self $case) => [$case->value => $case->i18n()])
+            ->all();
     }
 }

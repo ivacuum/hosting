@@ -69,7 +69,7 @@ class AcpTripsTest extends TestCase
         $trip = TripFactory::new()->create();
 
         \Livewire::test(TripForm::class, ['modelId' => $trip->id])
-            ->set('status', TripStatus::HIDDEN)
+            ->set('status', TripStatus::Hidden->value)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/trips');

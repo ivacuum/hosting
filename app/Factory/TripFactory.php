@@ -9,7 +9,7 @@ class TripFactory
 {
     use WithFaker;
 
-    private $status = TripStatus::PUBLISHED;
+    private $status = TripStatus::Published;
     private $cityId;
     private $userId;
     private $metaImage;

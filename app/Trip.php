@@ -68,7 +68,7 @@ class Trip extends Model
     ];
 
     protected $attributes = [
-        'status' => TripStatus::INACTIVE,
+        'status' => TripStatus::Inactive,
     ];
 
     protected $guarded = ['id', 'html', 'views', 'created_at', 'updated_at'];
@@ -76,7 +76,7 @@ class Trip extends Model
 
     protected $casts = [
         'views' => 'int',
-        'status' => Cast\StatusCast::class,
+        'status' => Domain\TripStatus::class,
         'city_id' => 'int',
         'user_id' => 'int',
     ];
@@ -117,7 +117,7 @@ class Trip extends Model
     {
         return $query->where('user_id', $this->user_id)
             ->where('date_start', '>=', $this->date_start)
-            ->where('status', TripStatus::PUBLISHED)
+            ->where('status', TripStatus::Published)
             ->where('id', '<>', $this->id)
             ->orderBy('date_start')
             ->take(2);
@@ -133,7 +133,7 @@ class Trip extends Model
 
         return $query->where('user_id', $this->user_id)
             ->where('date_start', '<=', $this->date_start)
-            ->where('status', TripStatus::PUBLISHED)
+            ->where('status', TripStatus::Published)
             ->where('id', '<>', $this->id)
             ->orderByDesc('date_start')
             ->take($take);
@@ -141,12 +141,12 @@ class Trip extends Model
 
     public function scopePublished(Builder $query)
     {
-        return $query->where('status', TripStatus::PUBLISHED);
+        return $query->where('status', TripStatus::Published);
     }
 
     public function scopeVisible(Builder $query)
     {
-        return $query->where('status', '!=', TripStatus::HIDDEN);
+        return $query->where('status', '!=', TripStatus::Hidden);
     }
 
     // Attributes
@@ -192,7 +192,7 @@ class Trip extends Model
     {
         return $this->where('user_id', $this->user_id)
             ->where('city_id', $this->city_id)
-            ->where('status', '<>', TripStatus::HIDDEN)
+            ->where('status', '<>', TripStatus::Hidden)
             ->orderBy('date_start')
             ->get()
             ->groupBy('year');
