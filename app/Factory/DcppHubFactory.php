@@ -22,7 +22,7 @@ class DcppHubFactory
         $model->port = 411;
         $model->title = $this->faker->words(3, true);
         $model->clicks = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
-        $model->status = DcppHubStatus::PUBLISHED;
+        $model->status = DcppHubStatus::Published;
         $model->address = $this->faker->domainName;
 
         return $model;

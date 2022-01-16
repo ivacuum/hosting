@@ -10,7 +10,7 @@ class DcppHubForm extends Component
     use AuthorizesRequests;
 
     public int $port = 411;
-    public int $status = DcppHubStatus::PUBLISHED;
+    public int $status = 1;
     public ?int $modelId = null;
     public string $title = '';
     public string $address = '';
@@ -23,7 +23,7 @@ class DcppHubForm extends Component
 
             $this->port = $hub->port;
             $this->title = $hub->title;
-            $this->status = $hub->status->jsonSerialize();
+            $this->status = $hub->status->value;
             $this->address = $hub->address;
         }
 
@@ -59,7 +59,7 @@ class DcppHubForm extends Component
     {
         $hub->port = $this->port;
         $hub->title = $this->title;
-        $hub->status = $this->status;
+        $hub->status = DcppHubStatus::from($this->status);
         $hub->address = $this->address;
     }
 

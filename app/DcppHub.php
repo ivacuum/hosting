@@ -23,7 +23,7 @@ class DcppHub extends Model
 
     protected $casts = [
         'port' => 'int',
-        'status' => Cast\StatusCast::class,
+        'status' => Domain\DcppHubStatus::class,
         'clicks' => 'int',
     ];
 

@@ -13,7 +13,7 @@ class PingDcppHubs extends Command
     public function handle()
     {
         DcppHub::query()
-            ->where('status', DcppHubStatus::PUBLISHED)
+            ->where('status', DcppHubStatus::Published)
             ->each(function (DcppHub $hub) {
                 dispatch(new PingDcppHubJob($hub));
             });

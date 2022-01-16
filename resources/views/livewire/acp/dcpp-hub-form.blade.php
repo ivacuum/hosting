@@ -5,7 +5,7 @@
   {{ LivewireForm::text('address')->required()->html() }}
   {{ LivewireForm::text('port')->required()->html() }}
 
-  {{ LivewireForm::radio('status')->required()->values(App\Domain\DcppHubStatus::cases())->html() }}
+  {{ LivewireForm::radio('status')->required()->values(App\Domain\DcppHubStatus::labels())->html() }}
 
   <div class="sticky-bottom-buttons">
     <button type="submit" class="btn btn-primary">

@@ -1,12 +1,9 @@
 <?php namespace Tests\Feature;
 
 use App\Domain\DcppHubStatus;
-use App\Domain\TripStatus;
 use App\Factory\DcppHubFactory;
-use App\Factory\TripFactory;
 use App\Factory\UserFactory;
 use App\Http\Livewire\Acp\DcppHubForm;
-use App\Http\Livewire\Acp\TripForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -73,13 +70,13 @@ class AcpDcppHubsTest extends TestCase
         $hub = DcppHubFactory::new()->create();
 
         \Livewire::test(DcppHubForm::class, ['modelId' => $hub->id])
-            ->set('status', DcppHubStatus::HIDDEN)
+            ->set('status', DcppHubStatus::Hidden->value)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/dcpp-hubs');
 
         $hub->refresh();
 
-        $this->assertTrue($hub->status->isHidden());
+        $this->assertSame(DcppHubStatus::Hidden, $hub->status);
     }
 }

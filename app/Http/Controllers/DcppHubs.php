@@ -8,7 +8,7 @@ class DcppHubs extends Controller
 {
     public function __invoke(ViewHelper $viewHelper)
     {
-        $hubs = DcppHub::where('status', DcppHubStatus::PUBLISHED)
+        $hubs = DcppHub::where('status', DcppHubStatus::Published)
             ->orderBy('title')
             ->get();
 
