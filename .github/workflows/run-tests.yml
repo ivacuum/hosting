@@ -56,8 +56,8 @@ jobs:
       - run: yarn --ignore-platform
       - run: yarn prod
 
-      - name: Install graphicsmagick
-        run: sudo apt-get install graphicsmagick
+      #- name: Install graphicsmagick
+      #  run: sudo apt-get install graphicsmagick
 
       - name: Start sphinxsearch
         run: sudo /etc/init.d/sphinxsearch start
