@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public function up()
     {
         Schema::create('activities', function (Blueprint $table) {
@@ -396,7 +395,7 @@ return new class extends Migration
             $table->string('slug')->default('');
             $table->timestamp('date_start')->nullable();
             $table->timestamp('date_end')->nullable();
-            $table->unsignedTinyInteger('status')->default(App\Domain\TripStatus::INACTIVE);
+            $table->unsignedTinyInteger('status')->default(App\Domain\TripStatus::Inactive->value);
             $table->text('markdown');
             $table->text('html');
             $table->string('meta_title_ru')->default('');
