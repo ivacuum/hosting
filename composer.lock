@@ -1181,16 +1181,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "17.0.0",
+            "version": "17.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "c2edf7ed7ffdef77616145b6bede192e251ebb8e"
+                "reference": "5a4a1b9ce38383ca22219f08a78f9dba05c30b1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/c2edf7ed7ffdef77616145b6bede192e251ebb8e",
-                "reference": "c2edf7ed7ffdef77616145b6bede192e251ebb8e",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/5a4a1b9ce38383ca22219f08a78f9dba05c30b1f",
+                "reference": "5a4a1b9ce38383ca22219f08a78f9dba05c30b1f",
                 "shasum": ""
             },
             "require": {
@@ -1245,9 +1245,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ivacuum/generic/issues",
-                "source": "https://github.com/ivacuum/generic/tree/17.0.0"
+                "source": "https://github.com/ivacuum/generic/tree/17.0.1"
             },
-            "time": "2022-01-17T01:53:43+00:00"
+            "time": "2022-01-17T13:20:17+00:00"
         },
         {
             "name": "jmikola/geojson",
@@ -2582,16 +2582,16 @@
         },
         {
             "name": "paragonie/constant_time_encoding",
-            "version": "v2.4.0",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/constant_time_encoding.git",
-                "reference": "f34c2b11eb9d2c9318e13540a1dbc2a3afbd939c"
+                "reference": "9229e15f2e6ba772f0c55dd6986c563b937170a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/f34c2b11eb9d2c9318e13540a1dbc2a3afbd939c",
-                "reference": "f34c2b11eb9d2c9318e13540a1dbc2a3afbd939c",
+                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/9229e15f2e6ba772f0c55dd6986c563b937170a8",
+                "reference": "9229e15f2e6ba772f0c55dd6986c563b937170a8",
                 "shasum": ""
             },
             "require": {
@@ -2645,7 +2645,7 @@
                 "issues": "https://github.com/paragonie/constant_time_encoding/issues",
                 "source": "https://github.com/paragonie/constant_time_encoding"
             },
-            "time": "2020-12-06T15:14:20+00:00"
+            "time": "2022-01-17T05:32:27+00:00"
         },
         {
             "name": "phpoption/phpoption",

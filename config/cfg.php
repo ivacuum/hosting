@@ -20,7 +20,7 @@ return [
     ],
     'autoregister_suffixes_blacklist' => ['@ivacuum.org', '@ivacuum.ru', '@vacuum.name'],
     'cron_output' => env('CRON_OUTPUT', '/dev/null'),
-    'gm_bin' => env('GM_BIN', '/usr/bin/env gm'),
+    'gm_bin' => env('GM_BIN', '/usr/bin/env gm convert'),
     'limits' => [
         'issue' => [
             'ip' => 100,
