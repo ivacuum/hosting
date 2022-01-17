@@ -14,7 +14,7 @@ class TorrentUpdater
         $data = $this->rto->topicDataById($torrent->rto_id);
 
         if ($torrent->isNotPublished()) {
-            $torrent->status = TorrentStatus::PUBLISHED;
+            $torrent->status = TorrentStatus::Published;
         }
 
         if ($torrent->info_hash !== $data->infoHash) {

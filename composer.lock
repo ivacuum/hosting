@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea0d106fb0fceca9b706e6069ce541f6",
+    "content-hash": "5bd73fbc9512dd3bc51343ba149afad8",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1181,21 +1181,21 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "16.0.3",
+            "version": "17.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "cca3c82a90db2f5c8f8a0228a6c29d238b6027ff"
+                "reference": "c2edf7ed7ffdef77616145b6bede192e251ebb8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/cca3c82a90db2f5c8f8a0228a6c29d238b6027ff",
-                "reference": "cca3c82a90db2f5c8f8a0228a6c29d238b6027ff",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/c2edf7ed7ffdef77616145b6bede192e251ebb8e",
+                "reference": "c2edf7ed7ffdef77616145b6bede192e251ebb8e",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "^7.0||^8.0",
-                "php": ">=8.0"
+                "laravel/framework": "^8.0",
+                "php": ">=8.1"
             },
             "type": "library",
             "extra": {
@@ -1245,9 +1245,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ivacuum/generic/issues",
-                "source": "https://github.com/ivacuum/generic/tree/16.0.3"
+                "source": "https://github.com/ivacuum/generic/tree/17.0.0"
             },
-            "time": "2021-09-14T16:04:14+00:00"
+            "time": "2022-01-17T01:53:43+00:00"
         },
         {
             "name": "jmikola/geojson",

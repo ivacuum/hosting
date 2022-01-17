@@ -93,7 +93,7 @@ class Torrents extends Controller
         $torrents = Torrent::query()
             ->select(Torrent::LIST_COLUMNS)
             ->whereBelongsTo($user)
-            ->where('status', TorrentStatus::PUBLISHED)
+            ->where('status', TorrentStatus::Published)
             ->withCount('commentsPublished AS comments')
             ->orderByDesc('registered_at')
             ->simplePaginate(null, ['id']);

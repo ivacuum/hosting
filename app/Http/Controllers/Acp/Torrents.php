@@ -1,8 +1,10 @@
 <?php namespace App\Http\Controllers\Acp;
 
+use App\Domain\TorrentStatus;
 use App\Torrent as Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Enum;
 
 class Torrents extends AbstractController
 {
@@ -18,7 +20,7 @@ class Torrents extends AbstractController
         $models = Model::query()
             ->with('user')
             ->withCount('comments')
-            ->when(null !== $status, fn (Builder $query) => $query->where('status', $status))
+            ->when(null !== $status, fn (Builder $query) => $query->where('status', TorrentStatus::from($status)))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->when($q, fn (Builder $query) => $query->where('title', 'LIKE', "%{$q}%"))
             ->orderBy($this->getSortKey(), $this->getSortDir())
@@ -42,6 +44,7 @@ class Torrents extends AbstractController
                 'required',
                 Rule::unique('torrents', 'rto_id')->ignore($model->id ?? null),
             ],
+            'status' => new Enum(TorrentStatus::class),
             'category_id' => 'required|integer|min:1',
         ];
     }

@@ -1,5 +1,6 @@
 <?php namespace App\Jobs;
 
+use App\Domain\TorrentStatus;
 use App\Services\Rto;
 use App\Torrent;
 use Ivacuum\Generic\Services\Telegram;
@@ -25,7 +26,8 @@ class FetchTorrentMetaJob extends AbstractJob
 
             // Раздача не найдена
             if ($response === null) {
-                $torrent->softDelete();
+                $torrent->status = TorrentStatus::Deleted;
+                $torrent->save();
 
                 event(new \App\Events\Stats\TorrentNotFoundDeleted);
 
@@ -36,7 +38,8 @@ class FetchTorrentMetaJob extends AbstractJob
 
             // Раздача закрыта как повтор
             if ($response->isDuplicate()) {
-                $torrent->softDelete();
+                $torrent->status = TorrentStatus::Deleted;
+                $torrent->save();
 
                 event(new \App\Events\Stats\TorrentDuplicateDeleted);
 

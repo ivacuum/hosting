@@ -9,7 +9,7 @@ class TorrentFactory
     use WithFaker;
 
     private $title;
-    private $status = TorrentStatus::PUBLISHED;
+    private $status = TorrentStatus::Published;
     private $userId;
     private $categoryId;
 
@@ -40,12 +40,12 @@ class TorrentFactory
 
     public function deleted()
     {
-        return $this->withStatus(TorrentStatus::DELETED);
+        return $this->withStatus(TorrentStatus::Deleted);
     }
 
     public function hidden()
     {
-        return $this->withStatus(TorrentStatus::HIDDEN);
+        return $this->withStatus(TorrentStatus::Hidden);
     }
 
     public function make()
@@ -92,7 +92,7 @@ class TorrentFactory
         return $factory;
     }
 
-    public function withStatus(int $status)
+    public function withStatus(TorrentStatus $status)
     {
         $factory = clone $this;
         $factory->status = $status;

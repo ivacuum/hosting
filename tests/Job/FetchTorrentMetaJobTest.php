@@ -1,5 +1,6 @@
 <?php namespace Tests\Job;
 
+use App\Domain\TorrentStatus;
 use App\Factory\TorrentFactory;
 use App\Jobs\FetchTorrentBodyJob;
 use App\Jobs\FetchTorrentMetaJob;
@@ -70,7 +71,7 @@ class FetchTorrentMetaJobTest extends TestCase
 
         $torrent->refresh();
 
-        $this->assertTrue($torrent->trashed());
+        $this->assertSame(TorrentStatus::Deleted, $torrent->status);
     }
 
     public function testMetaUpdated()
@@ -123,7 +124,7 @@ class FetchTorrentMetaJobTest extends TestCase
 
         $torrent->refresh();
 
-        $this->assertTrue($torrent->trashed());
+        $this->assertSame(TorrentStatus::Deleted, $torrent->status);
     }
 
     public function testPremoderationLeavesTorrentMetaUntouched()

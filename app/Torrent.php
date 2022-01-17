@@ -4,7 +4,6 @@ use Carbon\CarbonInterval;
 use Foolz\SphinxQL\SphinxQL;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Ivacuum\Generic\Traits\SoftDeleteTrait;
 use Laravel\Scout\Searchable;
 
 /**
@@ -18,7 +17,7 @@ use Laravel\Scout\Searchable;
  * @property int $size
  * @property string $info_hash
  * @property string $announcer
- * @property int $status
+ * @property Domain\TorrentStatus $status
  * @property int $clicks
  * @property int $views
  * @property \Carbon\CarbonImmutable $registered_at
@@ -34,9 +33,6 @@ use Laravel\Scout\Searchable;
 class Torrent extends Model
 {
     use Searchable;
-    use SoftDeleteTrait;
-
-    const STATUS_DELETED = Domain\TorrentStatus::DELETED;
 
     const LIST_COLUMNS = [
         'id',
@@ -56,7 +52,7 @@ class Torrent extends Model
         'views' => 'int',
         'clicks' => 'int',
         'rto_id' => 'int',
-        'status' => 'int',
+        'status' => Domain\TorrentStatus::class,
         'user_id' => 'int',
         'category_id' => 'int',
     ];
@@ -85,7 +81,7 @@ class Torrent extends Model
     // Scopes
     public function scopePublished(Builder $query)
     {
-        return $query->where('status', Domain\TorrentStatus::PUBLISHED);
+        return $query->where('status', Domain\TorrentStatus::Published);
     }
 
     // Methods
@@ -138,7 +134,7 @@ class Torrent extends Model
 
     public function isPublished(): bool
     {
-        return $this->status === Domain\TorrentStatus::PUBLISHED;
+        return $this->status === Domain\TorrentStatus::Published;
     }
 
     public function magnet(): string
@@ -265,7 +261,7 @@ class Torrent extends Model
             CacheKey::TORRENTS_STATS_BY_CATEGORIES,
             CarbonInterval::minutes(15),
             fn () => static::selectRaw('category_id, COUNT(*) AS total')
-                ->where('status', Domain\TorrentStatus::PUBLISHED)
+                ->where('status', Domain\TorrentStatus::Published)
                 ->groupBy('category_id')
                 ->pluck('total', 'category_id')
         );
