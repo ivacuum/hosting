@@ -56,6 +56,9 @@ jobs:
       - run: yarn --ignore-platform
       - run: yarn prod
 
+      - run: whereis convert
+      - run: /usr/bin/env convert -help
+
       #- name: Install graphicsmagick
       #  run: sudo apt-get install graphicsmagick
 
