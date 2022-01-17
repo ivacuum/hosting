@@ -19,6 +19,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, bcmath, intl, gd, exif, iconv, fileinfo, swoole
+          ini-values: error_reporting=E_ALL
           coverage: none
 
       - name: Setup sphinxsearch
@@ -42,7 +43,7 @@ jobs:
           key: composer-${{ hashFiles('composer.lock') }}
 
       - name: Run composer install
-        run: composer install -n --prefer-dist
+        run: composer install --prefer-dist --no-interaction --no-progress
         env:
           # {"http-basic":{"example.com":{"username":"login","password":"key"}}}
           COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
