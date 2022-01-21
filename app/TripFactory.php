@@ -26,8 +26,8 @@ class TripFactory
             return $result;
         });
 
-        if ($id && !empty($ids[$id])) {
-            return $ids[$id];
+        if ($id) {
+            return $ids[$id] ?? [];
         }
 
         return $ids;
@@ -51,8 +51,8 @@ class TripFactory
             return $result;
         });
 
-        if ($id && !empty($ids[$id])) {
-            return $ids[$id];
+        if ($id) {
+            return $ids[$id] ?? [];
         }
 
         return $ids;

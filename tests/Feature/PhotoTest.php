@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Factory\CityFactory;
 use App\Factory\PhotoFactory;
 use App\Factory\TripFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -35,6 +36,14 @@ class PhotoTest extends TestCase
             ->assertSee($photo->rel->city->title);
     }
 
+    public function testCityWithoutTrips()
+    {
+        $city = CityFactory::new()->withCountry()->create();
+
+        $this->get("photos/cities/{$city->slug}")
+            ->assertNotFound();
+    }
+
     public function testCountries()
     {
         $photo = PhotoFactory::new()->withTrip()->create();
@@ -51,6 +60,14 @@ class PhotoTest extends TestCase
         $this->get("photos/countries/{$photo->rel->city->country->slug}")
             ->assertStatus(200)
             ->assertSee($photo->rel->city->country->title);
+    }
+
+    public function testCountryWithoutTrips()
+    {
+        $city = CityFactory::new()->withCountry()->create();
+
+        $this->get("photos/countries/{$city->country->slug}")
+            ->assertNotFound();
     }
 
     public function testFaq()
