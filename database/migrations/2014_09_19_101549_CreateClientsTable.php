@@ -412,6 +412,8 @@ return new class extends Migration {
             $table->string('email')->unique();
             $table->string('login')->default('');
             $table->string('password')->default('');
+            $table->text('two_factor_secret')->nullable();
+            $table->text('two_factor_recovery_codes')->nullable();
             $table->string('salt', 5)->default('');
             $table->unsignedTinyInteger('status')->default(0);
             $table->string('locale', 10)->default('ru');
