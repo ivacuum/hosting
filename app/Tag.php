@@ -42,7 +42,7 @@ class Tag extends Model
 
     public function photosPublished()
     {
-        return $this->photos()->where('status', Photo::STATUS_PUBLISHED);
+        return $this->photos()->where('status', Domain\PhotoStatus::Published);
     }
 
     // Methods

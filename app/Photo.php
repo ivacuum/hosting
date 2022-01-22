@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property string $lat
  * @property string $lon
  * @property Cast\PointCast $point
- * @property int $status
+ * @property Domain\PhotoStatus $status
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
@@ -33,9 +33,6 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  */
 class Photo extends Model
 {
-    const STATUS_HIDDEN = 0;
-    const STATUS_PUBLISHED = 1;
-
     protected $guarded = ['rel_id', 'rel_type', 'created_at', 'updated_at', 'goto'];
     protected $perPage = 50;
 
@@ -43,7 +40,7 @@ class Photo extends Model
         'point' => Cast\PointCast::class,
         'views' => 'int',
         'rel_id' => 'int',
-        'status' => 'int',
+        'status' => Domain\PhotoStatus::class,
         'user_id' => 'int',
     ];
 
@@ -104,7 +101,7 @@ class Photo extends Model
 
     public function scopePublished(Builder $query)
     {
-        return $query->where('status', static::STATUS_PUBLISHED);
+        return $query->where('status', Domain\PhotoStatus::Published);
     }
 
     // Methods
@@ -141,7 +138,7 @@ class Photo extends Model
 
     public function isPublished(): bool
     {
-        return $this->status === self::STATUS_PUBLISHED;
+        return $this->status === Domain\PhotoStatus::Published;
     }
 
     public function mobileUrl(): string

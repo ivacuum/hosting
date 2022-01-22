@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Acp;
 
+use App\Domain\PhotoStatus;
 use App\Gig;
 use App\Photo as Model;
 use App\Trip;
@@ -87,7 +88,7 @@ class Photos extends AbstractController
             ? new Point($photo->lat, $photo->lon, 4326)
             : null;
         $photo->views = 0;
-        $photo->status = Model::STATUS_HIDDEN;
+        $photo->status = PhotoStatus::Hidden;
         $photo->user_id = request()->user()->id;
         $photo->save();
 

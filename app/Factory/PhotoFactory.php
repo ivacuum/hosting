@@ -1,5 +1,6 @@
 <?php namespace App\Factory;
 
+use App\Domain\PhotoStatus;
 use App\Photo;
 use App\Trip;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
@@ -11,8 +12,8 @@ class PhotoFactory
 
     private $slug;
     private $relId;
-    private $status = Photo::STATUS_PUBLISHED;
     private $relType;
+    private PhotoStatus $status = PhotoStatus::Published;
 
     private $tagFactory;
     private $tripFactory;
@@ -31,7 +32,7 @@ class PhotoFactory
 
     public function hidden()
     {
-        return $this->withStatus(Photo::STATUS_HIDDEN);
+        return $this->withStatus(PhotoStatus::Hidden);
     }
 
     public function make()
@@ -75,7 +76,7 @@ class PhotoFactory
         return $factory;
     }
 
-    public function withStatus(int $status)
+    public function withStatus(PhotoStatus $status)
     {
         $factory = clone $this;
         $factory->status = $status;

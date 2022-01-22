@@ -1,6 +1,6 @@
 <?php namespace App\Observers;
 
-use App\Photo;
+use App\Domain\PhotoStatus;
 use App\Trip as Model;
 use App\Utilities\CacheHelper;
 
@@ -42,8 +42,8 @@ class TripObserver
         }
 
         $status = $model->status->isPublished()
-            ? Photo::STATUS_PUBLISHED
-            : Photo::STATUS_HIDDEN;
+            ? PhotoStatus::Published
+            : PhotoStatus::Hidden;
 
         foreach ($model->photos as $photo) {
             $photo->status = $status;
