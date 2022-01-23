@@ -20,7 +20,7 @@
   </div>
 </section>
 
-<section class="bg-light border-t border-b border-grey-200 py-12">
+<section class="bg-light dark:bg-slate-800 border-t border-b border-grey-200 dark:border-slate-700 py-12">
   <div class="container lg:max-w-3xl">
     <h3>Зачем он нужен?</h3>
     <ul>
@@ -37,14 +37,14 @@
     <p><a class="btn btn-primary my-1" href="@lng/files/123/dl">Файл настроек для Windows</a> <a class="btn btn-primary my-1" href="@lng/files/124/dl">Файл настроек для Linux</a></p>
     <p>Пользователям ОС Windows достаточно сохранить и запустить файл настроек от имени администратора.</p>
     <p>Пользователям ОС семейства Linux необходимо либо запустить файл настроек от имени администратора, либо набрать в терминале следующие команды:</p>
-    <pre class="mb-4 text-sm bg-light border p-2 rounded whitespace-pre-wrap">wget https://ivacuum.org/d/rt/retracker.local.sh
+    <pre class="mb-4 text-sm bg-light dark:bg-slate-800 border dark:border-slate-700 p-2 rounded whitespace-pre-wrap">wget https://ivacuum.org/d/rt/retracker.local.sh
 chmod +x ./retracker.local.sh
 sudo ./retracker.local.sh</pre>
     <div>После завершения настройки необходимо подождать около 15 минут, либо перезапустить торрент-клиент.</div>
   </div>
 </section>
 
-<section class="bg-light border-t border-grey-200 py-12">
+<section class="bg-light dark:bg-slate-800 border-t border-grey-200 dark:border-slate-700 py-12">
   <div class="container lg:max-w-3xl">
     <h3>Как понять, что ретрекер заработал?</h3>
     <p>Статус трекера «retracker.local» в вашем торрент-клиент на вкладке «Трекеры» (Trackers) должен измениться на «работает» (working) как на картинке ниже:</p>

@@ -1,4 +1,4 @@
-<div class="-mx-4 sm:mx-0 box-shadow-b shadow-gray-100">
+<div class="-mx-4 sm:mx-0 shadow-box-b shadow-gray-100 dark:shadow-slate-700">
   <nav class="flex flex-wrap mx-4 sm:mx-0">
     {{ $slot }}
   </nav>

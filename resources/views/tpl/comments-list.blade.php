@@ -5,7 +5,7 @@
 <a id="comments"></a>
 @foreach ($comments as $comment)
   <a id="comment-{{ $comment->id }}"></a>
-  <div class="flex py-4 w-full border-b border-grey-200">
+  <div class="flex py-4 w-full border-b border-grey-200 dark:border-slate-700">
     <aside class="mr-4 md:mr-6">
       @if ($comment->user)
         <div class="comment-avatar-size mt-1">

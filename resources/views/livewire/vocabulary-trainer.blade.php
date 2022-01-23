@@ -9,7 +9,7 @@
           href="{{ $vocab->www() }}"
         >{{ $vocab->character }}</a>
       </div>
-      <div class="text-3xl text-gray-600 whitespace-nowrap">
+      <div class="text-3xl text-gray-600 dark:text-slate-400 whitespace-nowrap">
         【{{ $hiragana ? $vocab->firstKana() : $vocab->toKatakana() }}】
       </div>
       <div class="text-2xl">
@@ -17,7 +17,7 @@
           <span class="text-green-600">{{ $vocab->toRomaji() }}</span>
         @else
           <button
-            class="text-gray-500 tooltipped tooltipped-s"
+            class="text-gray-500 dark:text-slate-400 tooltipped tooltipped-s"
             type="button"
             aria-label="@lang('japanese.reveal-answer')"
             wire:click="check"
@@ -109,8 +109,8 @@
     </div>
   </div>
   <div>
-    <details class="border text-sm rounded overflow-hidden" {{ $openSettings ? 'open' : '' }}>
-      <summary class="border-b bg-gray-100 text-gray-500 hover:text-gray-700 px-5 py-2" itemprop="name">@lang('Настройки'): <span class="lowercase">{{ $hiragana ? __('Хирагана') : __('Катакана') }}, @lang('Уровни') {{ $level * 10 - 9 }}–{{ $level * 10 }}</span></summary>
+    <details class="border dark:border-slate-700 text-sm rounded overflow-hidden" {{ $openSettings ? 'open' : '' }}>
+      <summary class="border-b dark:border-slate-700 bg-gray-100 dark:bg-slate-800 text-gray-500 dark:text-slate-400 hover:text-gray-700 hover:dark:text-slate-200 px-5 py-2" itemprop="name">@lang('Настройки'): <span class="lowercase">{{ $hiragana ? __('Хирагана') : __('Катакана') }}, @lang('Уровни') {{ $level * 10 - 9 }}–{{ $level * 10 }}</span></summary>
       <div class="px-5 py-3 text-sm">
         <div class="h5">@lang('Азбука')</div>
         <div class="text-gray-500 mb-2">@lang('japanese.settings.syllabary_help')</div>

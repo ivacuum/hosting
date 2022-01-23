@@ -1,76 +1,93 @@
 <template>
-<div>
-  <transition appear name="fade" mode="out-in">
-    <div :key="stage" style="min-height: 420px;">
-      <div v-show="stage === 'pick'">
-        <p>{{ $t('PICKER_TEXT') }}</p>
-        <div class="grid items-center text-center border-grey-200 overflow-x-scroll" style="grid-template-columns: repeat(16, max-content);">
-          <template v-for="(cells, i) in elements">
-            <template v-for="(cell, j) in cells">
-              <div
-                class="border-r border-grey-200 cursor-pointer px-2 pt-2 pb-1"
-                :class="{ 'border-t': i === 0, 'border-l': j === 0 }"
-                @click="clickOnColumn(j)"
-              >
-                <div class="text-2xl font-bold leading-none">{{ cell[syllabaryIndex] ? cell[syllabaryIndex] : '&nbsp;' }}</div>
-                <div class="text-muted">{{ cell[answerIndex] ? cell[answerIndex] : '&nbsp;' }}</div>
+  <div>
+    <transition appear name="fade" mode="out-in">
+      <div :key="stage" style="min-height: 420px;">
+        <div v-show="stage === 'pick'">
+          <p>{{ $t('PICKER_TEXT') }}</p>
+          <div
+            class="grid items-center text-center border-grey-200 dark:border-slate-700 overflow-x-scroll"
+            style="grid-template-columns: repeat(16, max-content);"
+          >
+            <template v-for="(cells, i) in elements">
+              <template v-for="(cell, j) in cells">
+                <div
+                  class="border-r border-grey-200 dark:border-slate-700 cursor-pointer px-2 pt-2 pb-1"
+                  :class="{ 'border-t': i === 0, 'border-l': j === 0 }"
+                  @click="clickOnColumn(j)"
+                >
+                  <div class="text-2xl font-bold leading-none">{{ cell[syllabaryIndex] ? cell[syllabaryIndex] : '&nbsp;' }}</div>
+                  <div class="text-muted">{{ cell[answerIndex] ? cell[answerIndex] : '&nbsp;' }}</div>
+                </div>
+              </template>
+            </template>
+            <template v-for="i in elements[0].length">
+              <div class="border-r border-b border-grey-200 dark:border-slate-700" :class="{ 'border-l': i === 1 }">
+                <label class="block cursor-pointer py-2">
+                  <input
+                    :id="`column_${i - 1}`"
+                    class="border-gray-300 cursor-pointer"
+                    type="checkbox"
+                    :value="i - 1"
+                    v-model="checkedColumns"
+                    @change="pickElements"
+                  >
+                </label>
               </div>
             </template>
-          </template>
-          <template v-for="i in elements[0].length">
-            <div class="border-r border-b border-grey-200" :class="{ 'border-l': i === 1 }">
-              <label class="block cursor-pointer py-2">
-                <input
-                  :id="`column_${i - 1}`"
-                  class="border-gray-300 cursor-pointer"
-                  type="checkbox"
-                  :value="i - 1"
-                  v-model="checkedColumns"
-                  @change="pickElements">
-              </label>
+          </div>
+          <div class="grid grid-cols-2 lg:block gap-2 mt-2">
+            <button
+              class="btn btn-primary disabled:opacity-50"
+              :disabled="this.picked.length < 2"
+              @click="practice"
+            >{{ $t('PRACTICE') }}
+            </button>
+            <transition name="fade-fast" mode="out-in">
+              <button
+                class="btn btn-default"
+                @click="switchSyllabary"
+                :key="syllabaryLabel"
+              >{{ syllabaryLabel }}
+              </button>
+            </transition>
+            <button class="btn btn-default" @click="checkAll">{{ $t('CHECK_ALL') }}</button>
+            <button class="btn btn-default" @click="uncheckAll">{{ $t('UNCHECK_ALL') }}</button>
+          </div>
+        </div>
+        <div class="max-w-[600px]" v-show="stage === 'practice'">
+          <p>{{ $t('PRACTICE_TEXT') }}</p>
+          <div class="mx-auto max-w-[400px]">
+            <div class="text-center py-2 md:py-12">
+              <div class="text-5xl font-bold" @click="revealAnswer">{{ question }}</div>
+              <div class="text-muted dark:text-slate-400" :class="{ invisible: !answerVisible }">{{ answer }}</div>
             </div>
-          </template>
-        </div>
-        <div class="grid grid-cols-2 lg:block gap-2 mt-2">
-          <button class="btn btn-primary disabled:opacity-50" :disabled="this.picked.length < 2" @click="practice">{{ $t('PRACTICE') }}</button>
-          <transition name="fade-fast" mode="out-in">
-            <button class="btn btn-default" @click="switchSyllabary" :key="syllabaryLabel">{{ syllabaryLabel }}</button>
-          </transition>
-          <button class="btn btn-default" @click="checkAll">{{ $t('CHECK_ALL') }}</button>
-          <button class="btn btn-default" @click="uncheckAll">{{ $t('UNCHECK_ALL') }}</button>
-        </div>
-      </div>
-      <div class="max-w-[600px]" v-show="stage === 'practice'">
-        <p>{{ $t('PRACTICE_TEXT') }}</p>
-        <div class="mx-auto max-w-[400px]">
-          <div class="text-center py-2 md:py-12">
-            <div class="text-5xl font-bold" @click="revealAnswer">{{ question }}</div>
-            <div class="text-muted" :class="{ invisible: !answerVisible }">{{ answer }}</div>
-          </div>
-          <div>
-            <input
-              class="form-input text-center"
-              type="text"
-              autocapitalize="none"
-              autocomplete="off"
-              autocorrect="off"
-              spellcheck="false"
-              enterkeyhint="enter"
-              placeholder="kana"
-              :autofocus="focus"
-              :value="input"
-              @input="checkInput($event.target.value, $event)"
-              @keydown.space.prevent="revealAnswer">
-          </div>
-          <div class="flex items-center justify-between mt-2">
-            <div><button class="btn btn-default" @click="pick">{{ $t('BACK_TO_PICKER') }}</button></div>
-            <div class="text-muted" v-if="answered > 0">{{ $t('ANSWERED', { answered }) }}</div>
+            <div>
+              <input
+                class="form-input text-center"
+                type="text"
+                autocapitalize="none"
+                autocomplete="off"
+                autocorrect="off"
+                spellcheck="false"
+                enterkeyhint="enter"
+                placeholder="kana"
+                :autofocus="focus"
+                :value="input"
+                @input="checkInput($event.target.value, $event)"
+                @keydown.space.prevent="revealAnswer"
+              >
+            </div>
+            <div class="flex items-center justify-between mt-2">
+              <div>
+                <button class="btn btn-default" @click="pick">{{ $t('BACK_TO_PICKER') }}</button>
+              </div>
+              <div class="text-muted" v-if="answered > 0">{{ $t('ANSWERED', {answered}) }}</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </transition>
-</div>
+    </transition>
+  </div>
 </template>
 
 <script>
@@ -272,7 +289,7 @@ export default {
 
     pick() {
       this.stage = 'pick'
-      $.scrollTo(document.body, 300, { axis: 'y' })
+      $.scrollTo(document.body, 300, {axis: 'y'})
     },
 
     pickElements() {
@@ -303,7 +320,7 @@ export default {
       this.answered = 0
       this.beacon('Started')
       this.nextQuestion()
-      $.scrollTo(document.body, 300, { axis: 'y' })
+      $.scrollTo(document.body, 300, {axis: 'y'})
     },
 
     revealAnswer() {

@@ -28,10 +28,10 @@
 <div class="h4 mt-6">@ru Поделиться ссылкой @en Share @endru</div>
 @include('tpl.social-buttons', ['title' => $trip->metaTitle(), 'url' => Request::url()])
 
-@if (Auth::check())
-  @if (!Auth::user()->notify_trips)
-    <div class="mt-6 py-3 px-5 text-teal-800 bg-teal-200/50 border border-teal-200/50 rounded">
-      <div class="mb-2">@lang('life.newsletter.description')</div>
+<div class="mt-6 py-3 px-5 text-teal-800 dark:text-teal-400 bg-teal-200/50 dark:bg-teal-400/25 border border-teal-200/50 rounded">
+  <div class="mb-2">@lang('life.newsletter.description')</div>
+  @if (Auth::check())
+    @if (!Auth::user()->notify_trips)
       <form action="@lng/subscriptions" method="post">
         {{ ViewHelper::inputHiddenMail() }}
         <button class="btn btn-default text-sm py-1 small-caps svg-flex svg-label">
@@ -42,11 +42,8 @@
         @method('put')
         @csrf
       </form>
-    </div>
-  @endif
-@else
-  <div class="mt-6 py-3 px-5 text-teal-800 bg-teal-200/50 border border-teal-200/50 rounded">
-    <div class="mb-2">@lang('life.newsletter.description')</div>
+    @endif
+  @else
     <div class="flex">
       <a
         class="btn btn-default text-sm py-1 svg-flex svg-label small-caps mr-4"
@@ -56,8 +53,8 @@
         @lang('mail.subscribe')
       </a>
     </div>
-  </div>
-@endif
+  @endif
+</div>
 @parent
 
 @if (isset($comments))

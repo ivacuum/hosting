@@ -1,7 +1,7 @@
 @extends('japanese.base')
 
 @section('content_header')
-<div class="antialiased hanging-puntuation-first lg:text-lg">
+<div class="antialiased hanging-punctuation-first lg:text-lg">
 @endsection
 
 @section('content_footer')
@@ -12,7 +12,7 @@
 <h1 class="h2">@lang('Японский язык')</h1>
 <div class="grid md:grid-cols-2 gap-8 mt-6">
   <div class="flex">
-    <div class="border overflow-hidden rounded">
+    <div class="border dark:border-slate-700 overflow-hidden rounded">
       <div class="bg-greenish-600 px-5 py-3 text-white">
         <h2 class="h4 mb-0">@ru Собственные ресурсы @en Own services @endru</h2>
       </div>
@@ -58,7 +58,7 @@
     </div>
   </div>
   <div class="flex">
-    <div class="border overflow-hidden rounded">
+    <div class="border dark:border-slate-700 overflow-hidden rounded">
       <div class="bg-gray-600 px-5 py-3 text-white">
         <h2 class="h4 mb-0">@ru Внешние полезные ресурсы @en External resources @endru</h2>
       </div>

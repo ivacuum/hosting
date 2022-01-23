@@ -9,6 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        'box-b': 'inset 0 -2px 0 var(--tw-shadow-color)',
+      },
       colors: {
         current: 'currentColor',
         muted: '#6c757d',

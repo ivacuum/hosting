@@ -28,13 +28,13 @@
     @lang('Заметки')
   @endslot
 
-  <a class="dropdown-item" href="@lng/acp/cities">@lang('acp.cities.index')</a>
-  <a class="dropdown-item" href="@lng/acp/countries">@lang('acp.countries.index')</a>
-  <a class="dropdown-item" href="@lng/acp/trips">@lang('acp.trips.index')</a>
-  <a class="dropdown-item" href="@lng/acp/gigs">@lang('acp.gigs.index')</a>
-  <a class="dropdown-item" href="@lng/acp/artists">@lang('acp.artists.index')</a>
-  <a class="dropdown-item" href="@lng/acp/tags">@lang('acp.tags.index')</a>
-  <a class="dropdown-item" href="@lng/acp/photos">@lang('acp.photos.index')</a>
+  <x-dropdown-item href="/acp/cities">@lang('acp.cities.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/countries">@lang('acp.countries.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/trips">@lang('acp.trips.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/gigs">@lang('acp.gigs.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/artists">@lang('acp.artists.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/tags">@lang('acp.tags.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/photos">@lang('acp.photos.index')</x-dropdown-item>
 @endcomponent
 @component('tpl.menu-dropdown', [
   'isActive' => Str::of($routeUri)->is([
@@ -48,10 +48,10 @@
     @lang('Хостинг')
   @endslot
 
-  <a class="dropdown-item" href="@lng/acp/clients">@lang('acp.clients.index')</a>
-  <a class="dropdown-item" href="@lng/acp/domains">@lang('acp.domains.index')</a>
-  <a class="dropdown-item" href="@lng/acp/servers">@lang('acp.servers.index')</a>
-  <a class="dropdown-item" href="@lng/acp/yandex-users">@lang('acp.yandex-users.index')</a>
+  <x-dropdown-item href="/acp/clients">@lang('acp.clients.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/domains">@lang('acp.domains.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/servers">@lang('acp.servers.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/yandex-users">@lang('acp.yandex-users.index')</x-dropdown-item>
 @endcomponent
 @component('tpl.menu-dropdown', [
   'isActive' => Str::of($routeUri)->is([
@@ -68,13 +68,13 @@
     @lang('Ресурсы')
   @endslot
 
-  <a class="dropdown-item" href="@lng/acp/chat-messages">@lang('acp.chat-messages.index')</a>
-  <a class="dropdown-item" href="@lng/acp/comments">@lang('acp.comments.index')</a>
-  <a class="dropdown-item" href="@lng/acp/dcpp-hubs">@lang('acp.dcpp-hubs.index')</a>
-  <a class="dropdown-item" href="@lng/acp/files">@lang('acp.files.index')</a>
-  <a class="dropdown-item" href="@lng/acp/news">@lang('acp.news.index')</a>
-  <a class="dropdown-item" href="@lng/acp/images">@lang('acp.images.index')</a>
-  <a class="dropdown-item" href="@lng/acp/torrents">@lang('acp.torrents.index')</a>
+  <x-dropdown-item href="/acp/chat-messages">@lang('acp.chat-messages.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/comments">@lang('acp.comments.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/dcpp-hubs">@lang('acp.dcpp-hubs.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/files">@lang('acp.files.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/news">@lang('acp.news.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/images">@lang('acp.images.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/torrents">@lang('acp.torrents.index')</x-dropdown-item>
 @endcomponent
 @component('tpl.menu-dropdown', [
   'isActive' => Str::of($routeUri)->is([
@@ -89,11 +89,11 @@
     @lang('Сайт')
   @endslot
 
-  <a class="dropdown-item" href="@lng/acp/metrics">@lang('acp.metrics.index')</a>
-  <a class="dropdown-item" href="@lng/acp/issues">@lang('acp.issues.index')</a>
-  <a class="dropdown-item" href="@lng/acp/users">@lang('acp.users.index')</a>
-  <a class="dropdown-item" href="@lng/acp/external-identities">@lang('acp.external-identities.index')</a>
-  <a class="dropdown-item" href="@lng/acp/notifications">@lang('acp.notifications.index')</a>
+  <x-dropdown-item href="/acp/metrics">@lang('acp.metrics.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/issues">@lang('acp.issues.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/users">@lang('acp.users.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/external-identities">@lang('acp.external-identities.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/notifications">@lang('acp.notifications.index')</x-dropdown-item>
 @endcomponent
 @component('tpl.menu-item', [
   'href' => to('acp/dev/templates'),

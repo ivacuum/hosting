@@ -47,58 +47,18 @@
       @lang('Клиенты')
     @endslot
 
-    <a
-      class="dropdown-item"
-      href="@lng/dc/airdc"
-      role="menuitem"
-    >@lang('dcpp.airdc')</a>
-    <a
-      class="dropdown-item"
-      href="@lng/dc/apexdc"
-      role="menuitem"
-    >@lang('dcpp.apexdc')</a>
-    <a
-      class="dropdown-item"
-      href="@lng/dc/dcpp"
-      role="menuitem"
-    >@lang('dcpp.dcpp')</a>
-    <a
-      class="dropdown-item"
-      href="@lng/dc/flylinkdc"
-      role="menuitem"
-    >@lang('dcpp.flylinkdc')</a>
-    <a
-      class="dropdown-item"
-      href="@lng/dc/greylinkdc"
-      role="menuitem"
-    >@lang('dcpp.greylinkdc')</a>
-    <a
-      class="dropdown-item"
-      href="@lng/dc/jucydc"
-      role="menuitem"
-    >@lang('dcpp.jucydc')</a>
+    <x-dropdown-item href="/dc/airdc">@lang('dcpp.airdc')</x-dropdown-item>
+    <x-dropdown-item href="/dc/apexdc">@lang('dcpp.apexdc')</x-dropdown-item>
+    <x-dropdown-item href="/dc/dcpp">@lang('dcpp.dcpp')</x-dropdown-item>
+    <x-dropdown-item href="/dc/flylinkdc">@lang('dcpp.flylinkdc')</x-dropdown-item>
+    <x-dropdown-item href="/dc/greylinkdc">@lang('dcpp.greylinkdc')</x-dropdown-item>
+    <x-dropdown-item href="/dc/jucydc">@lang('dcpp.jucydc')</x-dropdown-item>
     @ru
-      <a
-        class="dropdown-item"
-        href="@lng/dc/kalugadc"
-        role="menuitem"
-      >@lang('dcpp.kalugadc')</a>
+      <x-dropdown-item href="/dc/kalugadc">@lang('dcpp.kalugadc')</x-dropdown-item>
     @endru
-    <a
-      class="dropdown-item"
-      href="@lng/dc/pelinkdc"
-      role="menuitem"
-    >@lang('dcpp.pelinkdc')</a>
-    <a
-      class="dropdown-item"
-      href="@lng/dc/shakespeer"
-      role="menuitem"
-    >@lang('dcpp.shakespeer')</a>
-    <a
-      class="dropdown-item"
-      href="@lng/dc/strongdc"
-      role="menuitem"
-    >@lang('dcpp.strongdc')</a>
+    <x-dropdown-item href="/dc/pelinkdc">@lang('dcpp.pelinkdc')</x-dropdown-item>
+    <x-dropdown-item href="/dc/shakespeer" >@lang('dcpp.shakespeer')</x-dropdown-item>
+    <x-dropdown-item href="/dc/strongdc" >@lang('dcpp.strongdc')</x-dropdown-item>
   @endcomponent
 </div>
 @ru

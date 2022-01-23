@@ -93,12 +93,12 @@ class AppServiceProvider extends ServiceProvider
                 $request = request();
                 $locale = $request->server->get('LARAVEL_LOCALE');
                 $browserEnv = new \Ivacuum\Generic\Utilities\EnvironmentForCss($request->userAgent());
-                $prefferedLocale = $request->getPreferredLanguage(array_keys(config('cfg.locales')));
+                $preferredLocale = $request->getPreferredLanguage(array_keys(config('cfg.locales')));
 
                 $data = [
                     'locale' => $locale ?: config('app.locale'),
                     'localeUri' => $locale ? "/{$locale}" : '',
-                    'localePreffered' => $prefferedLocale,
+                    'localePreferred' => $preferredLocale,
 
                     'goto' => $request->input('goto'),
                     'isMobile' => $browserEnv->isMobile(),

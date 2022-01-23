@@ -8,7 +8,7 @@
   <p>Easy ways to get discounts for the services below.</p>
 @endru
 
-<div class="antialiased hanging-puntuation-first lg:text-lg">
+<div class="antialiased hanging-punctuation-first lg:text-lg">
   <h3 class="mt-6">@lang('coupons.hosting')</h3>
   <ul>
     <li><a class="link" href="@lng/promocodes-coupons/digitalocean">@lang('coupons.digitalocean')</a></li>

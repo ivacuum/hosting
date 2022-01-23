@@ -32,7 +32,7 @@
       </span>
     </div>
   </header>
-  <div class="antialiased hanging-puntuation-first lg:text-lg markdown-body break-words" itemprop="articleBody">{!! $news->html !!}</div>
+  <div class="antialiased hanging-punctuation-first lg:text-lg markdown-body break-words" itemprop="articleBody">{!! $news->html !!}</div>
 </article>
 
 @include('tpl.comments-list')

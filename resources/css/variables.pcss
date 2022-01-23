@@ -1,8 +1,13 @@
 :root {
+  color-scheme: light;
+
+  --bottom-tabbar-bg: #f8f8f8 linear-gradient(to bottom, white 0%, #f8f8f8 100%) repeat-x;
   --bottom-tabbar-height: 48px;
   --bottom-tabbar-sm-height: 44px;
 
   --gray-light: #858585;
+
+  --form-input-label-color-without-placeholder: #686f76;
 
   --link-color: #337ab7;
   --link-decoration: none;
@@ -14,9 +19,15 @@
   --link-visited-color: #660e7a;
   --link-visited-border-color: rgba(102, 14, 122, .3);
 
+  --logo-shadow: #ddd 2px 2px 2px;
+
   --mark-bg: #fcf8e3;
 
+  --sticky-bottom-buttons-bg: rgba(255, 255, 255, .9);
+
   --table-border-color: #dee2e6;
+  --table-even-bg-color: #f6f6f6;
+  --table-header-bg: #ededed linear-gradient(#fbfbfb, #ededed) repeat-x;
 
   --text-muted: #6c757d;
 
@@ -25,4 +36,29 @@
   --tooltip-text-color: #fff;
   --tooltip-delay: .4s;
   --tooltip-duration: .1s;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --bottom-tabbar-bg: theme('colors.slate[800]') repeat-x;
+
+    --form-input-label-color-without-placeholder: theme('colors.slate[400]');
+
+    --link-color: #00aeff;
+    --link-border-color: theme('colors.sky[700]');
+    --link-hover-color: #91e4ff;
+    --link-hover-border-color: theme('colors.sky[300]');
+    --link-visited-color: #82c5ff;
+    --link-visited-border-color: theme('colors.sky[400]');
+
+    --logo-shadow: theme('colors.slate[900]') 2px 2px 2px;
+
+    --sticky-bottom-buttons-bg: theme('colors.slate[900]');
+
+    --table-border-color: theme('colors.slate[700]');
+    --table-even-bg-color: theme('colors.slate[800]');
+    --table-header-bg: theme('colors.slate[800]') linear-gradient(theme('colors.slate[700]'), theme('colors.slate[800]')) repeat-x;
+  }
 }

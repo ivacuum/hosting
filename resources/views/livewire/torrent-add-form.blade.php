@@ -34,7 +34,7 @@
   </div>
 
   @if ($topicId)
-    <div class="block w-full border-2 border-gray-300 border-dashed rounded-lg p-4 bg-gray-50">
+    <div class="block w-full border-2 border-gray-300 dark:border-slate-700 border-dashed rounded-lg p-4 bg-gray-50 dark:bg-slate-800">
       <div class="font-bold">{{ $title }}</div>
       <div class="text-gray-500 mt-1">{{ ViewHelper::size($size) }}</div>
     </div>

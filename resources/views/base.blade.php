@@ -32,14 +32,14 @@
   <link rel="stylesheet" href="{{ mix('/assets/tailwind.css') }}">
   @stack('head')
 </head>
-<body class="flex flex-col tabular-nums min-h-full {{ $bodyClasses ?? 'body-with-bottom-tabbar' }} {{ Auth::user()?->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ $cssClasses }}" data-route="{{ $routeUri }}">
+<body class="flex flex-col tabular-nums min-h-full dark:bg-slate-900 dark:text-slate-400 {{ $bodyClasses ?? 'body-with-bottom-tabbar' }} {{ Auth::user()?->theme === App\User::THEME_DARK ? 'theme-dark' : '' }} {{ $cssClasses }}" data-route="{{ $routeUri }}">
 @section('body')
 @section('header-navbar')
   @include('tpl.header-navbar')
 @show
 
 @section('bottom-tabbar')
-<header class="bottom-tabbar-container fixed bottom-0 left-0 right-0 flex items-center justify-center md:hidden revealed js-bottom-tabbar-reveal">
+<header class="bottom-tabbar-container border-t border-[#dee2e6] dark:border-slate-700 fixed bottom-0 left-0 right-0 flex items-center justify-center md:hidden revealed js-bottom-tabbar-reveal">
   <nav class="flex justify-between leading-none text-center mx-1 w-full">
     <a
       class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ $routeUri === '/' ? 'active' : '' }}"
@@ -98,7 +98,7 @@
     @include('tpl.breadcrumbs', ['breadcrumbs' => $breadcrumbs ?? Breadcrumbs::get()])
   @show
   <div class="js-flash-notification">
-    @if ($firstTimeVisit && !Auth::check() && $locale !== $localePreffered && empty($noLanguageSelector) && !$isCrawler && !in_array($locale, request()->getLanguages()))
+    @if ($firstTimeVisit && !Auth::check() && $locale !== $localePreferred && empty($noLanguageSelector) && !$isCrawler && !in_array($locale, request()->getLanguages()))
       <x-alert-warning-dismissable>
         @ru
           As your browser speaks English, would you like to see the <a class="link" href="{{ url("en/{$requestUri}") }}">English version</a> of this page?
@@ -128,7 +128,7 @@
 </div>
 
 @section('footer_container')
-<footer class="footer mt-6 py-3 text-2sm">
+<footer class="footer bg-[#fafafa] dark:bg-slate-800 border-t border-[#dee2e6] dark:border-slate-700 mt-6 py-3 text-2sm">
   <div class="container">
     @section('footer')
       <nav class="flex flex-wrap">

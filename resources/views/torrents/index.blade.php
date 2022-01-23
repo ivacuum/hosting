@@ -80,7 +80,7 @@
           <?php $lastDate = $torrent->registered_at ?>
         @endif
         <?php $category = TorrentCategoryHelper::find($torrent->category_id) ?>
-        <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start torrents-list-container antialiased js-torrents-views-observer" data-id="{{ $torrent->id }}">
+        <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start torrents-list-container antialiased hover:dark:bg-slate-800 js-torrents-views-observer" data-id="{{ $torrent->id }}">
           <div class="flex-shrink-0 w-8 torrent-icon order-1 md:order-none mr-1 md:text-2xl" title="{{ $category['title'] }}">
             <?php $icon = $category['icon'] ?? 'file-text-o' ?>
             @svg ($icon)
@@ -108,7 +108,7 @@
 
       @include('tpl.paginator', ['paginator' => $torrents, 'cloak' => true])
     @else
-      <div class="mb-4 py-3 px-5 text-yellow-800/75 bg-yellow-300/25 border border-yellow-200 rounded">
+      <div class="mb-4 py-3 px-5 text-yellow-800/75 dark:text-yellow-400/75 bg-yellow-300/25 dark:bg-yellow-400/25 border border-yellow-200 dark:border-yellow-300/25 rounded">
         Подходящих раздач не найдено.
         @if (!$fulltext)
           Можно расширить область поиска с помощью кнопки выше.

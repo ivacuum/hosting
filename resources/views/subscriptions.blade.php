@@ -2,7 +2,7 @@
 
 @section('content')
 <h1 class="text-2xl">@lang('Уведомления на почту о новых публикациях')</h1>
-<div class="antialiased hanging-puntuation-first lg:text-lg">
+<div class="antialiased hanging-punctuation-first lg:text-lg">
   @ru
     <p>Хотите узнавать о новых историях о путешествиях, отчетах о посещенных концертах и новостях сайта сразу после их публикации? Тогда подпишитесь на уведомления с помощью формы ниже.</p>
   @endru

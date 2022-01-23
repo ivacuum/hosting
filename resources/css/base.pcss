@@ -8,11 +8,13 @@ a:hover {
   text-decoration: var(--link-hover-decoration);
 }
 
-a[href^="http"]:empty::before { content: attr(href); }
+a[href^="http"]:empty::before {
+  content: attr(href);
+}
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  @apply font-medium leading-tight mb-2;
+  @apply font-medium leading-tight mb-2 dark:text-white;
 }
 
 h1, .h1 {
@@ -39,8 +41,13 @@ h5, .h5 {
   @apply tracking-tight;
 }
 
-details summary { cursor: pointer; }
-summary:focus { outline: none; }
+details summary {
+  cursor: pointer;
+}
+
+summary:focus {
+  outline: none;
+}
 
 mark, .mark {
   background-color: var(--mark-bg);
@@ -70,8 +77,6 @@ section {
 }
 
 .footer {
-  background-color: #fafafa;
-  border-top: 1px solid #dee2e6;
   color: var(--gray-light);
   min-height: 44px;
 }
@@ -91,4 +96,6 @@ section {
   border-radius: 4px;
 }
 
-.site-brand { text-shadow: #ddd 2px 2px 2px; }
+.site-brand {
+  text-shadow: var(--logo-shadow);
+}

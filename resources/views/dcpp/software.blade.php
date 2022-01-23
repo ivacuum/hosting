@@ -4,7 +4,7 @@
 ])
 
 @section('content')
-<div class="antialiased hanging-puntuation-first lg:text-lg">
+<div class="antialiased hanging-punctuation-first lg:text-lg">
   <section class="my-0 pt-6">
     <div class="container">
       <h1 class="mb-6">@lang('Скачать') {{ $softwareTitle }} {{ $software[0]['version'] }}</h1>
@@ -56,7 +56,7 @@
     </section>
   @endif
 
-  <section class="bg-light border-t border-b border-grey-200 my-0 py-12">
+  <section class="bg-light dark:bg-slate-800 border-t border-b border-grey-200 dark:border-slate-700 my-0 py-12">
     <div class="container">
       <h2 class="tracking-tight">@lang('Хабы')</h2>
       @ru
@@ -79,7 +79,7 @@
   @yield('software_features')
 
   @if (sizeof($software) > 1 || !empty($developerSite))
-    <section class="border-b border-grey-200 my-0 py-12">
+    <section class="border-b border-grey-200 dark:border-slate-700 my-0 py-12">
       <div class="container">
         <h2 class="tracking-tight mb-6">@lang('dcpp.links')</h2>
         <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
@@ -112,7 +112,7 @@
     </section>
   @endif
 
-  <section class="bg-light my-0 py-12">
+  <section class="bg-light dark:bg-slate-800 my-0 py-12">
     <div class="container">
       <div class="grid md:grid-cols-2 gap-8">
         <div>

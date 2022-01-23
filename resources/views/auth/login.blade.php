@@ -36,10 +36,10 @@
     </div>
     <div class="relative">
       <div class="absolute inset-0 flex items-center" aria-hidden="true">
-        <div class="w-full border-t border-gray-300"></div>
+        <div class="w-full border-t border-gray-300 dark:border-slate-700"></div>
       </div>
       <div class="relative flex justify-center">
-        <span class="px-2 bg-white">
+        <span class="px-2 bg-white dark:bg-slate-900">
           @lang('auth.or')
         </span>
       </div>

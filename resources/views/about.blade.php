@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<div class="antialiased hanging-puntuation-first lg:text-lg">
+<div class="antialiased hanging-punctuation-first lg:text-lg">
   @ru
     <h2>О проекте</h2>
     <p>Этот сайт — результат пробы фреймворка <a class="link" href="https://laravel.com/">Laravel</a>. Первое время в основе была версия 4.2, сейчас — {{ implode('.', array_slice(explode('.', App::version()), 0, 2)) }}.</p>

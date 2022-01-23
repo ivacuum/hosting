@@ -68,7 +68,7 @@
             </div>
           </header>
           <div class="{{ !$loop->last ? 'mb-12' : '' }}">
-            <div class="hidden sm:block antialiased hanging-puntuation-first lg:text-lg markdown-body break-words js-news-views-observer" itemprop="articleBody" data-id="{{ $model->id }}">{!! $model->html !!}</div>
+            <div class="hidden sm:block antialiased hanging-punctuation-first lg:text-lg markdown-body break-words js-news-views-observer" itemprop="articleBody" data-id="{{ $model->id }}">{!! $model->html !!}</div>
           </div>
         </article>
       @endforeach

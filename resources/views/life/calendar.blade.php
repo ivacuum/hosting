@@ -13,18 +13,18 @@
   <div class="grid overflow-x-scroll text-2xs md:text-sm text-center" style="grid-template-columns: max-content repeat(31, minmax(18px, 1fr));">
     <?php /** @var int $year */ ?>
     @foreach (range($lastDate->year, $firstDate->year, -1) as $year)
-      <div id="year-{{ $year }}" class="font-bold text-right mt-4 pr-2 bg-grey-200">{{ $year }}</div>
+      <div id="year-{{ $year }}" class="font-bold text-right mt-4 pr-2 bg-grey-200 dark:bg-slate-800">{{ $year }}</div>
       @foreach (range(1, 31) as $day)
-        <div class="mt-4 bg-grey-200">{{ $day }}</div>
+        <div class="mt-4 bg-grey-200 dark:bg-slate-800">{{ $day }}</div>
       @endforeach
       <?php /** @var int $month */ ?>
       @foreach (range($year === $lastDate->year ? $lastDate->month : 12, 1, -1) as $month)
-        <div class="text-right pr-2 border-r border-grey-200">{{ now()->startOfMonth()->setMonth($month)->isoFormat('MMMM') }}</div>
+        <div class="text-right pr-2 border-r border-grey-200 dark:border-slate-800">{{ now()->startOfMonth()->setMonth($month)->isoFormat('MMMM') }}</div>
         <?php /** @var int $day */ ?>
         @foreach (range(1, 31) as $day)
           <?php $date = "{$year}-{$month}-{$day}" ?>
           @if (isset($calendar[$date]))
-            <div class="bg-light flex flex-col items-center justify-start pt-1 shadow-inner">
+            <div class="bg-light dark:bg-slate-800 flex flex-col items-center justify-start pt-1 shadow-inner">
               @foreach ($calendar[$date] as $trip)
                 @if ($trip['slug'])
                   <a class="block pb-1 tooltipped tooltipped-n" href="{{ $trip['slug'] }}" aria-label="{{ $trip['title'] }}">

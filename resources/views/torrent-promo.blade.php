@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-<section class="bg-light pt-4 pb-12">
+<section class="bg-light dark:bg-slate-800 pt-4 pb-12">
   <div class="container lg:max-w-3xl">
     <div class="text-center mb-4">
       <a href="@lng/torrents">
@@ -28,7 +28,7 @@
   </div>
 </section>
 
-<section class="border-t border-b border-grey-200 py-12">
+<section class="border-t border-b border-grey-200 dark:border-slate-700 py-12">
   <div class="container lg:max-w-3xl">
     <h2 class="h3">Я подключен к ТТК (Спарку), Ростелекому, МТС, Макснету, ДомНету. Можно ли воспользоваться вашим трекером? Нужна ли локальная сеть для доступа к ресурсам?</h2>
     <p>Трекер доступен через интернет для всех желающих. Локальная сеть более не обязательна для подключения. Калуга тоже больше не ограничение — можно заходить из любой точки мира.</p>
@@ -42,7 +42,7 @@
   </div>
 </section>
 
-<section class="bg-light py-12">
+<section class="bg-light dark:bg-slate-800 py-12">
   <div class="container lg:max-w-3xl">
     <h3>Доступен ли еще тот старый трекер 2010 года?</h3>
     <p>Да, он все еще доступен. Нынче он больше похож на форум, так как вместе с открытием нового трекера в начале 2017 года на <strong>t.ivacuum.ru</strong> была закрыта регистрация новых пользователей. Если у вас нет учетки или она была удалена за неактивностью, то вам будет доступно для чтения всего несколько разделов.</p>

@@ -1,4 +1,4 @@
-<header class="bg-light box-shadow-b shadow-grey-200 {{ $navbarClasses ?? 'hidden md:flex' }}">
+<header class="bg-light dark:bg-slate-800 shadow-box-b shadow-grey-200 dark:shadow-slate-700 {{ $navbarClasses ?? 'hidden md:flex' }}">
   <div class="container">
     <div class="flex flex-wrap justify-between items-stretch w-full">
       @section('brand')
@@ -45,7 +45,7 @@
             @include('tpl.header-navbar-user')
           @else
             <a
-              class="px-2 py-3 text-grey-600 hover:text-grey-900"
+              class="px-2 py-3 text-grey-600 dark:text-slate-400 hover:text-grey-900 hover:dark:text-slate-200"
               href="@lng/auth/login"
             >@lang('auth.signin')</a>
           @endif

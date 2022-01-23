@@ -40,13 +40,13 @@
 }
 
 .table-stats tbody tr:nth-child(2n) {
-  background-color: #f6f6f6;
+  background-color: var(--table-even-bg-color);
 }
 
 .table-stats thead,
 .table-stats tfoot,
 .table-stats .thead {
-  background: #ededed linear-gradient(#fbfbfb, #ededed) repeat-x;
+  background: var(--table-header-bg);
 }
 
 .table-stats thead {
@@ -63,7 +63,7 @@
     position: sticky;
     top: -1px;
     z-index: 1;
-    background: #ededed linear-gradient(#fbfbfb, #ededed) repeat-x;
+    background: var(--table-header-bg);
   }
 
   .table-stats thead th:after {
