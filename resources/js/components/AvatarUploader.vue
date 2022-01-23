@@ -1,33 +1,33 @@
 <template>
-<div>
-  <div class="flex items-center mb-4" v-if="avatar">
-    <img class="w-24 h-24 mr-6 rounded-full" :src="avatar" alt="">
-    <div>
-      <button class="btn btn-default" @click="deleteAvatar">{{ $t('DELETE_AVATAR') }}</button>
+  <div>
+    <div class="flex items-center mb-4" v-if="avatar">
+      <img class="w-24 h-24 mr-6 rounded-full" :src="avatar" alt="">
+      <div>
+        <button class="btn btn-default" @click="deleteAvatar">{{ $t('DELETE_AVATAR') }}</button>
+      </div>
+    </div>
+    <div class="mb-4" v-else>
+      <slot/>
+    </div>
+    <div class="mb-4" v-if="errors.file && errors.file.length">
+      <div v-for="error in errors.file">
+        <div class="text-red-600">{{ error }}</div>
+      </div>
+    </div>
+    <div v-if="!uploading">
+      <input
+        class="block text-muted w-full file:px-4 file:py-1 file:rounded file:border-0 file:bg-blueish-700 file:text-white hover:file:bg-blueish-800"
+        accept="image/jpeg,image/png"
+        type="file"
+        name="file"
+        @change="upload($event.currentTarget.files[0])"
+      >
+      <div class="form-help">{{ $t('HELP_TEXT') }}</div>
+    </div>
+    <div v-else>
+      {{ $t('LOADING') }}
     </div>
   </div>
-  <div class="mb-4" v-else>
-    <slot/>
-  </div>
-  <div class="mb-4" v-if="errors.file && errors.file.length">
-    <div v-for="error in errors.file">
-      <div class="text-red-600">{{ error }}</div>
-    </div>
-  </div>
-  <div v-if="!uploading">
-    <input
-      class="block w-full"
-      accept="image/jpeg,image/png"
-      type="file"
-      name="file"
-      @change="upload($event.currentTarget.files[0])"
-    >
-    <div class="form-help">{{ $t('HELP_TEXT') }}</div>
-  </div>
-  <div v-else>
-    {{ $t('LOADING') }}
-  </div>
-</div>
 </template>
 
 <script>

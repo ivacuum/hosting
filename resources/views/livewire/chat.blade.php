@@ -18,7 +18,7 @@
                   </div>
                 @endif
               </div>
-              <div class="flex-grow">
+              <div class="grow">
                 @if ($lastUserId !== $message->user_id)
                   <div
                     class="leading-none"

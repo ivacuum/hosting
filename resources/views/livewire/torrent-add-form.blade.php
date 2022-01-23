@@ -28,8 +28,8 @@
     </div>
     <x-invalid-feedback field="input"/>
     <div class="form-help">
-      Ссылка вида <span class="font-medium text-green-600">https://rutracker.org/forum/<wbr>viewtopic.php?t=4031882</span><br>или инфо-хэш вида
-      <span class="font-medium text-green-600">9B5D85FFC234737E7D7C<wbr>246FECB6BB1EC5E8F0B9</span>
+      Ссылка вида <span class="font-medium text-emerald-600">https://rutracker.org/forum/<wbr>viewtopic.php?t=4031882</span><br>или инфо-хэш вида
+      <span class="font-medium text-emerald-600">9B5D85FFC234737E7D7C<wbr>246FECB6BB1EC5E8F0B9</span>
     </div>
   </div>
 

@@ -52,7 +52,7 @@
           @else
             <div class="text-4xl flex-shrink-0 leading-none ja-shadow pb-1 whitespace-nowrap">{{ $radical->character }}</div>
           @endif
-          <div class="flex-grow ja-shadow-light text-xs capitalize text-right">{{ $radical->meaning }}</div>
+          <div class="grow ja-shadow-light text-xs capitalize text-right">{{ $radical->meaning }}</div>
         </a>
       @endforeach
       @foreach ($kanjis as $kanji)
@@ -61,7 +61,7 @@
           href="{{ $kanji->www() }}"
         >
           <div class="text-4xl flex-shrink-0 leading-none ja-shadow pb-1 whitespace-nowrap">{{ $kanji->character }}</div>
-          <div class="flex-grow text-right">
+          <div class="grow text-right">
             <div class="font-bold ja-shadow-light">{{ $kanji->importantReading() }}</div>
             <div class="ja-shadow-light text-xs capitalize">{{ $kanji->meaning }}</div>
           </div>
@@ -73,7 +73,7 @@
           href="{{ $vocab->www() }}"
         >
           <div class="text-4xl flex-shrink-0 leading-none ja-shadow pb-1 whitespace-nowrap">{{ $vocab->character }}</div>
-          <div class="flex-grow text-right">
+          <div class="grow text-right">
             <div class="font-bold ja-shadow-light">{{ $vocab->kana }}</div>
             <div class="ja-shadow-light text-xs capitalize">{{ $vocab->meaning }}</div>
           </div>

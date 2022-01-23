@@ -70,7 +70,7 @@
         <?php $icon = $category['icon'] ?? 'file-text-o' ?>
         @svg ($icon)
       </div>
-      <a class="flex-grow mb-2 md:mb-0 md:mr-4 visited" href="{{ $row->www() }}">
+      <a class="grow mb-2 md:mb-0 md:mr-4 visited" href="{{ $row->www() }}">
         @if (optional(Auth::user())->torrent_short_title)
           <div>{{ $row->shortTitle() }}</div>
         @else

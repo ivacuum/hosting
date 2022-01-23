@@ -41,7 +41,7 @@
       @endguest
     </div>
   </aside>
-  <div class="flex-grow" v-cloak>
+  <div class="grow" v-cloak>
     @if (Auth::check() && empty(request()->query()))
       @livewire(App\Http\Livewire\Chat::class)
     @endif
@@ -85,7 +85,7 @@
             <?php $icon = $category['icon'] ?? 'file-text-o' ?>
             @svg ($icon)
           </div>
-          <a class="flex-grow mb-2 md:mb-0 md:mr-4 visited" href="{{ $torrent->www() }}">
+          <a class="grow mb-2 md:mb-0 md:mr-4 visited" href="{{ $torrent->www() }}">
             @if (Auth::user()?->torrent_short_title)
               <div>{{ $torrent->shortTitle() }}</div>
             @else
