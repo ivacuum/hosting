@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Comment;
+use App\Domain\CommentStatus;
 use App\Issue;
 use App\Notifications\IssueCommentedNotification;
 
@@ -17,7 +18,7 @@ class IssueCommentController extends AbstractController
         /** @var Comment $comment */
         $comment = $issue->comments()->make();
         $comment->html = $text;
-        $comment->status = Comment::STATUS_PUBLISHED;
+        $comment->status = CommentStatus::Published;
         $comment->user_id = request()->user()->id;
         $comment->save();
 

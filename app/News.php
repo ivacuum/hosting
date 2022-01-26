@@ -45,7 +45,7 @@ class News extends Model
 
     public function commentsPublished()
     {
-        return $this->comments()->where('status', Comment::STATUS_PUBLISHED);
+        return $this->comments()->where('status', Domain\CommentStatus::Published);
     }
 
     public function emails()

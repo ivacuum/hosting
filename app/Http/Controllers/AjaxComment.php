@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Domain\CommentStatus;
 use App\Exceptions\CommentLimitExceededException;
 use App\Http\Requests\CommentStoreForm;
 use App\Http\Resources;
@@ -43,7 +44,9 @@ class AjaxComment extends Controller
 
         $comment = new Comment;
         $comment->html = $text;
-        $comment->status = $isGuest ? Comment::STATUS_PENDING : Comment::STATUS_PUBLISHED;
+        $comment->status = $isGuest
+            ? CommentStatus::Pending
+            : CommentStatus::Published;
         $comment->user_id = $user->id;
         $comment->setRelation('user', $user);
 

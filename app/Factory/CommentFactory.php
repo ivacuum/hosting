@@ -1,6 +1,7 @@
 <?php namespace App\Factory;
 
 use App\Comment;
+use App\Domain\CommentStatus;
 use App\Issue;
 use App\News;
 use App\Torrent;
@@ -29,7 +30,7 @@ class CommentFactory
     {
         $model = new Comment;
         $model->html = $this->faker->text;
-        $model->status = Comment::STATUS_PUBLISHED;
+        $model->status = CommentStatus::Published;
         $model->rel_id = $this->relId ?? 0;
         $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
         $model->rel_type = $this->relType ?? (new News)->getMorphClass();

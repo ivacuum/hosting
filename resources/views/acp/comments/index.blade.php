@@ -1,3 +1,5 @@
+<?php /** @var \App\Comment $model */ ?>
+
 @extends('acp.list')
 
 @section('heading-after-search')
@@ -6,9 +8,9 @@
   'values' => [
     'Все' => null,
     '---' => null,
-    'Скрытые' => App\Comment::STATUS_HIDDEN,
-    'На активации' => App\Comment::STATUS_PENDING,
-    'Опубликованные' => App\Comment::STATUS_PUBLISHED,
+    'Скрытые' => App\Domain\CommentStatus::Hidden->value,
+    'На активации' => App\Domain\CommentStatus::Pending->value,
+    'Опубликованные' => App\Domain\CommentStatus::Published->value,
   ]
 ])
 @endsection
@@ -45,15 +47,15 @@
       </td>
       <td class="whitespace-nowrap">{{ ViewHelper::dateShort($model->created_at) }}</td>
       <td>
-        @if ($model->status === App\Comment::STATUS_PUBLISHED)
+        @if ($model->status->isPublished())
           <a href="{{ $model->www() }}">
             @svg (external-link)
           </a>
-        @elseif ($model->status === App\Comment::STATUS_HIDDEN)
+        @elseif ($model->status->isHidden())
           <span class="text-muted tooltipped tooltipped-n" aria-label="Комментарий скрыт">
             @svg (eye-slash)
           </span>
-        @elseif ($model->status === App\Comment::STATUS_PENDING)
+        @elseif ($model->status->isPending())
           <span class="text-muted tooltipped tooltipped-n" aria-label="Ожидает активации">
             @svg (unverified)
           </span>

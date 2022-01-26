@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Domain\CommentStatus;
 
 class CommentConfirm extends Controller
 {
@@ -11,7 +12,7 @@ class CommentConfirm extends Controller
                 ->with('message', __('Комментарий уже активирован.'));
         }
 
-        $comment->status = Comment::STATUS_PUBLISHED;
+        $comment->status = CommentStatus::Published;
         $comment->save();
 
         return redirect($comment->rel->www($comment->anchor()));

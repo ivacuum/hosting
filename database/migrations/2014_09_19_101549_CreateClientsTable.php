@@ -69,7 +69,7 @@ return new class extends Migration {
             $table->increments('id');
             $table->unsignedInteger('user_id')->default(0);
             $table->morphs('rel');
-            $table->unsignedTinyInteger('status')->default(App\Comment::STATUS_PUBLISHED);
+            $table->unsignedTinyInteger('status')->default(App\Domain\CommentStatus::Published);
             $table->text('html');
             $table->timestamps();
         });

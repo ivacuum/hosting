@@ -9,7 +9,7 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  * @property int $user_id
  * @property int $rel_id
  * @property string $rel_type
- * @property int $status
+ * @property Domain\CommentStatus $status
  * @property string $html
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
@@ -23,16 +23,12 @@ class Comment extends Model
 {
     use RecordsActivity;
 
-    const STATUS_HIDDEN = 0;
-    const STATUS_PUBLISHED = 1;
-    const STATUS_PENDING = 2;
-
     protected $guarded = ['rel_id', 'rel_type', 'created_at', 'updated_at', 'goto'];
     protected $perPage = 20;
 
     protected $casts = [
         'rel_id' => 'int',
-        'status' => 'int',
+        'status' => Domain\CommentStatus::class,
         'user_id' => 'int',
     ];
 
@@ -60,7 +56,7 @@ class Comment extends Model
 
     public function scopePublished(Builder $query)
     {
-        return $query->where('status', static::STATUS_PUBLISHED);
+        return $query->where('status', Domain\CommentStatus::Published);
     }
 
     // Methods
@@ -96,7 +92,7 @@ class Comment extends Model
 
     public function isPending(): bool
     {
-        return $this->status === self::STATUS_PENDING;
+        return $this->status->isPending();
     }
 
     public function usersForNotification($model)
