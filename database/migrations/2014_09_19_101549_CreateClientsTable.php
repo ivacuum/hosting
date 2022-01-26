@@ -417,7 +417,6 @@ return new class extends Migration {
             $table->string('salt', 5)->default('');
             $table->unsignedTinyInteger('status')->default(0);
             $table->string('locale', 10)->default('ru');
-            $table->unsignedTinyInteger('theme')->default(0);
             $table->unsignedTinyInteger('torrent_short_title')->default(0);
             $table->unsignedTinyInteger('notify_gigs')->default(0);
             $table->unsignedTinyInteger('notify_news')->default(0);

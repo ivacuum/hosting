@@ -1,7 +1,6 @@
 <?php namespace Tests\Feature;
 
 use App\Factory\UserFactory;
-use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -42,14 +41,6 @@ class MySettingsTest extends TestCase
     public function dataToChange()
     {
         return [
-            'Switch theme' => [
-                'old' => User::THEME_LIGHT,
-                'new' => User::THEME_DARK,
-                'field' => 'theme',
-                'events' => [
-                    \App\Events\Stats\MySettingsChanged::class,
-                ],
-            ],
             'Change locale' => [
                 'old' => 'ru',
                 'new' => 'en',

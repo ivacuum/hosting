@@ -14,7 +14,6 @@ use Illuminate\Notifications\Notifiable;
  * @property string $salt
  * @property int $status
  * @property string $locale
- * @property int $theme
  * @property int $torrent_short_title
  * @property int $notify_gigs
  * @property int $notify_news
@@ -64,7 +63,6 @@ class User extends Authenticatable implements HasLocalePreference
     protected $perPage = 50;
 
     protected $casts = [
-        'theme' => 'int',
         'status' => 'int',
         'notify_gigs' => 'int',
         'notify_news' => 'int',

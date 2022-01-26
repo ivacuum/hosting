@@ -11,31 +11,6 @@
     @method('put')
     @csrf
 
-    <div class="mb-4">
-      <div class="font-bold">@lang('Тема оформления')</div>
-      <label class="flex items-center">
-        <input
-          class="border-gray-300 mr-2"
-          type="radio"
-          name="theme"
-          value="{{ App\User::THEME_LIGHT }}"
-          {{ old('theme', $user->theme) == App\User::THEME_LIGHT ? 'checked' : '' }}
-        >
-        @lang('Светлая (стандартная)')
-      </label>
-      <label class="flex items-center">
-        <input
-          class="border-gray-300 mr-2"
-          type="radio"
-          name="theme"
-          value="{{ App\User::THEME_DARK }}"
-          {{ old('theme', $user->theme) == App\User::THEME_DARK ? 'checked' : '' }}
-        >
-        @lang('Темная')
-      </label>
-      <x-invalid-feedback field="theme"/>
-    </div>
-
     <div class="font-bold">@lang('Торренты')</div>
     <div class="mb-4">
       <input type="hidden" name="torrent_short_title" value="0">
