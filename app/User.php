@@ -51,9 +51,6 @@ class User extends Authenticatable implements HasLocalePreference
     const STATUS_INACTIVE = 0;
     const STATUS_ACTIVE = 1;
 
-    const THEME_LIGHT = 0;
-    const THEME_DARK = 1;
-
     const NOTIFY_NO = 0;
     const NOTIFY_MAIL = 1;
 
