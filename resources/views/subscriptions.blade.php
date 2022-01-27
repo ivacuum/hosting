@@ -21,38 +21,38 @@
       <x-invalid-feedback field="email"/>
     </div>
 
-    <input type="hidden" name="gigs" value="{{ App\User::NOTIFY_NO }}">
+    <input type="hidden" name="gigs" value="{{ App\Domain\NotificationDeliveryMethod::Disabled->value }}">
     <label class="flex items-center">
       <input
         class="border-gray-300 mr-2"
         type="checkbox"
         name="gigs"
-        value="{{ App\User::NOTIFY_MAIL }}"
+        value="{{ App\Domain\NotificationDeliveryMethod::Mail->value }}"
         {{ old('gigs', request('gigs')) ? 'checked' : '' }}
       >
       @lang('Концерты')
     </label>
 
-    <input type="hidden" name="news" value="{{ App\User::NOTIFY_NO }}">
+    <input type="hidden" name="news" value="{{ App\Domain\NotificationDeliveryMethod::Disabled->value }}">
     <label class="flex items-center">
       <input
         class="border-gray-300 mr-2"
         type="checkbox"
         name="news"
-        value="{{ App\User::NOTIFY_MAIL }}"
+        value="{{ App\Domain\NotificationDeliveryMethod::Mail->value }}"
         {{ old('news', request('news')) ? 'checked' : '' }}
       >
       @lang('Новости сайта')
     </label>
 
     <div class="mb-4">
-      <input type="hidden" name="trips" value="{{ App\User::NOTIFY_NO }}">
+      <input type="hidden" name="trips" value="{{ App\Domain\NotificationDeliveryMethod::Disabled->value }}">
       <label class="flex items-center">
         <input
           class="border-gray-300 mr-2"
           type="checkbox"
           name="trips"
-          value="{{ App\User::NOTIFY_MAIL }}"
+          value="{{ App\Domain\NotificationDeliveryMethod::Mail->value }}"
           {{ old('trips', request('trips')) ? 'checked' : '' }}
         >
         @lang('Путешествия')

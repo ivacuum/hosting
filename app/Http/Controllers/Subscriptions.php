@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Domain\NotificationDeliveryMethod;
 use App\Mail\SubscriptionConfirmMail;
 use App\Rules\Email;
 use App\User;
@@ -22,15 +23,15 @@ class Subscriptions extends Controller
         }
 
         if (isset($subscriptions['gigs'])) {
-            $user->notify_gigs = User::NOTIFY_MAIL;
+            $user->notify_gigs = NotificationDeliveryMethod::Mail;
         }
 
         if (isset($subscriptions['news'])) {
-            $user->notify_news = User::NOTIFY_MAIL;
+            $user->notify_news = NotificationDeliveryMethod::Mail;
         }
 
         if (isset($subscriptions['trips'])) {
-            $user->notify_trips = User::NOTIFY_MAIL;
+            $user->notify_trips = NotificationDeliveryMethod::Mail;
         }
 
         $user->save();
@@ -90,15 +91,21 @@ class Subscriptions extends Controller
         $user = request()->user();
 
         if (null !== $value = request('gigs')) {
-            $user->notify_gigs = $value ? User::NOTIFY_MAIL : User::NOTIFY_NO;
+            $user->notify_gigs = $value
+                ? NotificationDeliveryMethod::Mail
+                : NotificationDeliveryMethod::Disabled;
         }
 
         if (null !== $value = request('news')) {
-            $user->notify_news = $value ? User::NOTIFY_MAIL : User::NOTIFY_NO;
+            $user->notify_news = $value
+                ? NotificationDeliveryMethod::Mail
+                : NotificationDeliveryMethod::Disabled;
         }
 
         if (null !== $value = request('trips')) {
-            $user->notify_trips = $value ? User::NOTIFY_MAIL : User::NOTIFY_NO;
+            $user->notify_trips = $value
+                ? NotificationDeliveryMethod::Mail
+                : NotificationDeliveryMethod::Disabled;
         }
 
         $user->save();

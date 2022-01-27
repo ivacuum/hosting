@@ -12,7 +12,12 @@ class MySettings extends Controller
     public function update(MySettingsUpdateForm $request)
     {
         $user = $request->userModel();
-        $user->update($request->validated());
+        $user->locale = $request->locale();
+        $user->notify_gigs = $request->notifyGigs();
+        $user->notify_news = $request->notifyNews();
+        $user->notify_trips = $request->notifyTrips();
+        $user->torrent_short_title = $request->torrentShortTitle();
+        $user->save();
 
         event(new \App\Events\Stats\MySettingsChanged);
 

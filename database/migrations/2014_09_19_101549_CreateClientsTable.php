@@ -69,7 +69,7 @@ return new class extends Migration {
             $table->increments('id');
             $table->unsignedInteger('user_id')->default(0);
             $table->morphs('rel');
-            $table->unsignedTinyInteger('status')->default(App\Domain\CommentStatus::Published);
+            $table->unsignedTinyInteger('status')->default(App\Domain\CommentStatus::Published->value);
             $table->text('html');
             $table->timestamps();
         });
@@ -416,11 +416,11 @@ return new class extends Migration {
             $table->text('two_factor_recovery_codes')->nullable();
             $table->string('salt', 5)->default('');
             $table->unsignedTinyInteger('status')->default(0);
-            $table->string('locale', 10)->default('ru');
+            $table->string('locale', 10)->default(App\Domain\Locale::Rus->value);
             $table->unsignedTinyInteger('torrent_short_title')->default(0);
-            $table->unsignedTinyInteger('notify_gigs')->default(0);
-            $table->unsignedTinyInteger('notify_news')->default(0);
-            $table->unsignedTinyInteger('notify_trips')->default(0);
+            $table->unsignedTinyInteger('notify_gigs')->default(App\Domain\NotificationDeliveryMethod::Disabled->value);
+            $table->unsignedTinyInteger('notify_news')->default(App\Domain\NotificationDeliveryMethod::Disabled->value);
+            $table->unsignedTinyInteger('notify_trips')->default(App\Domain\NotificationDeliveryMethod::Disabled->value);
             $table->string('avatar')->default('');
             $table->unsignedInteger('telegram_id')->nullable();
             $table->ipAddress('ip')->default('');

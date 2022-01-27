@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Domain\NotificationDeliveryMethod;
 use App\Factory\UserFactory;
 use App\Mail\SubscriptionConfirmMail;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -19,9 +20,9 @@ class SubscriptionsTest extends TestCase
             ->assertRedirect('my/settings')
             ->assertSessionHas('message');
 
-        $this->assertEquals(1, $user->notify_gigs);
-        $this->assertEquals(1, $user->notify_news);
-        $this->assertEquals(1, $user->notify_trips);
+        $this->assertSame(NotificationDeliveryMethod::Mail, $user->notify_gigs);
+        $this->assertSame(NotificationDeliveryMethod::Mail, $user->notify_news);
+        $this->assertSame(NotificationDeliveryMethod::Mail, $user->notify_trips);
     }
 
     public function testEditAsGuest()
@@ -65,10 +66,10 @@ class SubscriptionsTest extends TestCase
         $this->be(UserFactory::new()->create())
             ->doesntExpectEvents(\App\Events\Stats\UserRegisteredAutoWhenSubscribing::class)
             ->post('subscriptions', [
-                'gigs' => 1,
-                'news' => 1,
+                'gigs' => NotificationDeliveryMethod::Mail->value,
+                'news' => NotificationDeliveryMethod::Mail->value,
                 'email' => $email,
-                'trips' => 1,
+                'trips' => NotificationDeliveryMethod::Mail->value,
             ])
             ->assertRedirect('subscriptions')
             ->assertSessionHas('message');
@@ -83,15 +84,15 @@ class SubscriptionsTest extends TestCase
         $this->be($user)
             ->from('life')
             ->put('subscriptions', [
-                'gigs' => 1,
-                'news' => 1,
-                'trips' => 1,
+                'gigs' => NotificationDeliveryMethod::Mail->value,
+                'news' => NotificationDeliveryMethod::Mail->value,
+                'trips' => NotificationDeliveryMethod::Mail->value,
             ])
             ->assertRedirect('life')
             ->assertSessionHas('message');
 
-        $this->assertEquals(1, $user->notify_gigs);
-        $this->assertEquals(1, $user->notify_news);
-        $this->assertEquals(1, $user->notify_trips);
+        $this->assertSame(NotificationDeliveryMethod::Mail, $user->notify_gigs);
+        $this->assertSame(NotificationDeliveryMethod::Mail, $user->notify_news);
+        $this->assertSame(NotificationDeliveryMethod::Mail, $user->notify_trips);
     }
 }

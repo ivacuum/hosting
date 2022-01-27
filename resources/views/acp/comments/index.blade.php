@@ -35,7 +35,7 @@
         </a>
       </td>
       <td>
-        @if ($model->user !== null)
+        @if ($model->user)
           <a href="{{ path([App\Http\Controllers\Acp\Users::class, 'show'], $model->user_id) }}">
             {{ $model->user->displayName() }}
           </a>

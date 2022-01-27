@@ -34,8 +34,8 @@ return [
         ],
     ],
     'locales' => [
-        'ru' => ['posix' => 'ru_RU.UTF-8'],
-        'en' => ['posix' => 'en_US.UTF-8'],
+        App\Domain\Locale::Rus->value => ['posix' => 'ru_RU.UTF-8'],
+        App\Domain\Locale::Eng->value => ['posix' => 'en_US.UTF-8'],
     ],
     'metrics_address' => env('METRICS_ADDRESS'),
     'sitename' => 'vacuum.kaluga',

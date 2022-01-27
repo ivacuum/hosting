@@ -1,5 +1,7 @@
 <?php namespace Tests\Feature;
 
+use App\Domain\Locale;
+use App\Domain\NotificationDeliveryMethod;
 use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -15,102 +17,149 @@ class MySettingsTest extends TestCase
             ->assertStatus(200);
     }
 
-    /**
-     * @dataProvider dataToChange
-     * @param mixed $old
-     * @param mixed $new
-     * @param string $field
-     * @param array $events
-     */
-    public function testUpdate(mixed $old, mixed $new, string $field, array $events)
+    public function testUpdateLocale()
     {
         $user = UserFactory::new()->make();
-        $user->$field = $old;
+        $user->locale = Locale::Eng->value;
         $user->save();
 
         $this->be($user)
-            ->expectsEvents($events)
-            ->put('my/settings', [$field => $new])
+            ->expectsEvents(\App\Events\Stats\MySettingsChanged::class,)
+            ->put('my/settings', ['locale' => Locale::Eng->value])
             ->assertStatus(302);
 
         $user->refresh();
 
-        $this->assertSame($new, $user->{$field});
+        $this->assertSame(Locale::Eng->value, $user->locale);
     }
 
-    public function dataToChange()
+    public function testUpdateNotifyGigsToDisabled()
     {
-        return [
-            'Change locale' => [
-                'old' => 'ru',
-                'new' => 'en',
-                'field' => 'locale',
-                'events' => [
-                    \App\Events\Stats\MySettingsChanged::class,
-                ],
-            ],
-            'Subscribe to gig notifications' => [
-                'old' => 0,
-                'new' => 1,
-                'field' => 'notify_gigs',
-                'events' => [
-                    \App\Events\Stats\GigsSubscribed::class,
-                    \App\Events\Stats\MySettingsChanged::class,
-                ],
-            ],
-            'Unsubscribe from gigs notifications' => [
-                'old' => 1,
-                'new' => 0,
-                'field' => 'notify_gigs',
-                'events' => [
-                    \App\Events\Stats\GigsUnsubscribed::class,
-                    \App\Events\Stats\MySettingsChanged::class,
-                ],
-            ],
-            'Subscribe to news notifications' => [
-                'old' => 0,
-                'new' => 1,
-                'field' => 'notify_news',
-                'events' => [
-                    \App\Events\Stats\NewsSubscribed::class,
-                    \App\Events\Stats\MySettingsChanged::class,
-                ],
-            ],
-            'Unsubscribe from news notifications' => [
-                'old' => 1,
-                'new' => 0,
-                'field' => 'notify_news',
-                'events' => [
-                    \App\Events\Stats\NewsUnsubscribed::class,
-                    \App\Events\Stats\MySettingsChanged::class,
-                ],
-            ],
-            'Subscribe to trip notifications' => [
-                'old' => 0,
-                'new' => 1,
-                'field' => 'notify_trips',
-                'events' => [
-                    \App\Events\Stats\TripsSubscribed::class,
-                    \App\Events\Stats\MySettingsChanged::class,
-                ],
-            ],
-            'Unsubscribe from trip notifications' => [
-                'old' => 1,
-                'new' => 0,
-                'field' => 'notify_trips',
-                'events' => [
-                    \App\Events\Stats\TripsUnsubscribed::class,
-                    \App\Events\Stats\MySettingsChanged::class,
-                ],
-            ],
-            'Shorten release titles' => [
-                'old' => 0,
-                'new' => 1,
-                'field' => 'torrent_short_title',
-                'events' => [
-                    \App\Events\Stats\MySettingsChanged::class,
-                ],
-            ],
-        ];
+        $user = UserFactory::new()->make();
+        $user->notify_gigs = NotificationDeliveryMethod::Mail;
+        $user->save();
+
+        $this->be($user)
+            ->expectsEvents([
+                \App\Events\Stats\GigsUnsubscribed::class,
+                \App\Events\Stats\MySettingsChanged::class,
+            ])
+            ->put('my/settings', ['notify_gigs' => NotificationDeliveryMethod::Disabled->value])
+            ->assertStatus(302);
+
+        $user->refresh();
+
+        $this->assertSame(NotificationDeliveryMethod::Disabled, $user->notify_gigs);
+    }
+
+    public function testUpdateNotifyGigsToMail()
+    {
+        $user = UserFactory::new()->make();
+        $user->notify_gigs = NotificationDeliveryMethod::Disabled;
+        $user->save();
+
+        $this->be($user)
+            ->expectsEvents([
+                \App\Events\Stats\GigsSubscribed::class,
+                \App\Events\Stats\MySettingsChanged::class,
+            ])
+            ->put('my/settings', ['notify_gigs' => NotificationDeliveryMethod::Mail->value])
+            ->assertStatus(302);
+
+        $user->refresh();
+
+        $this->assertSame(NotificationDeliveryMethod::Mail, $user->notify_gigs);
+    }
+
+    public function testUpdateNotifyNewsToDisabled()
+    {
+        $user = UserFactory::new()->make();
+        $user->notify_news = NotificationDeliveryMethod::Mail;
+        $user->save();
+
+        $this->be($user)
+            ->expectsEvents([
+                \App\Events\Stats\NewsUnsubscribed::class,
+                \App\Events\Stats\MySettingsChanged::class,
+            ])
+            ->put('my/settings', ['notify_news' => NotificationDeliveryMethod::Disabled->value])
+            ->assertStatus(302);
+
+        $user->refresh();
+
+        $this->assertSame(NotificationDeliveryMethod::Disabled, $user->notify_news);
+    }
+
+    public function testUpdateNotifyNewsToMail()
+    {
+        $user = UserFactory::new()->make();
+        $user->notify_news = NotificationDeliveryMethod::Disabled;
+        $user->save();
+
+        $this->be($user)
+            ->expectsEvents([
+                \App\Events\Stats\NewsSubscribed::class,
+                \App\Events\Stats\MySettingsChanged::class,
+            ])
+            ->put('my/settings', ['notify_news' => NotificationDeliveryMethod::Mail->value])
+            ->assertStatus(302);
+
+        $user->refresh();
+
+        $this->assertSame(NotificationDeliveryMethod::Mail, $user->notify_news);
+    }
+
+    public function testUpdateNotifyTripsToDisabled()
+    {
+        $user = UserFactory::new()->make();
+        $user->notify_trips = NotificationDeliveryMethod::Mail;
+        $user->save();
+
+        $this->be($user)
+            ->expectsEvents([
+                \App\Events\Stats\TripsUnsubscribed::class,
+                \App\Events\Stats\MySettingsChanged::class,
+            ])
+            ->put('my/settings', ['notify_trips' => NotificationDeliveryMethod::Disabled->value])
+            ->assertStatus(302);
+
+        $user->refresh();
+
+        $this->assertSame(NotificationDeliveryMethod::Disabled, $user->notify_trips);
+    }
+
+    public function testUpdateNotifyTripsToMail()
+    {
+        $user = UserFactory::new()->make();
+        $user->notify_trips = NotificationDeliveryMethod::Disabled;
+        $user->save();
+
+        $this->be($user)
+            ->expectsEvents([
+                \App\Events\Stats\TripsSubscribed::class,
+                \App\Events\Stats\MySettingsChanged::class,
+            ])
+            ->put('my/settings', ['notify_trips' => NotificationDeliveryMethod::Mail->value])
+            ->assertStatus(302);
+
+        $user->refresh();
+
+        $this->assertSame(NotificationDeliveryMethod::Mail, $user->notify_trips);
+    }
+
+    public function testUpdateTorrentShortTitle()
+    {
+        $user = UserFactory::new()->make();
+        $user->torrent_short_title = 0;
+        $user->save();
+
+        $this->be($user)
+            ->expectsEvents(\App\Events\Stats\MySettingsChanged::class)
+            ->put('my/settings', ['torrent_short_title' => 1])
+            ->assertStatus(302);
+
+        $user->refresh();
+
+        $this->assertSame(1, $user->torrent_short_title);
     }
 }

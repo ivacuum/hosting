@@ -55,25 +55,25 @@ class UserObserver
         }
 
         if ($model->isDirty('notify_gigs')) {
-            if ($model->notify_gigs === Model::NOTIFY_MAIL) {
+            if ($model->notify_gigs->isEnabled()) {
                 event(new Stats\GigsSubscribed);
-            } elseif ($model->notify_gigs === Model::NOTIFY_NO) {
+            } elseif ($model->notify_gigs->isDisabled()) {
                 event(new Stats\GigsUnsubscribed);
             }
         }
 
         if ($model->isDirty('notify_news')) {
-            if ($model->notify_news === Model::NOTIFY_MAIL) {
+            if ($model->notify_news->isEnabled()) {
                 event(new Stats\NewsSubscribed);
-            } elseif ($model->notify_news === Model::NOTIFY_NO) {
+            } elseif ($model->notify_news->isDisabled()) {
                 event(new Stats\NewsUnsubscribed);
             }
         }
 
         if ($model->isDirty('notify_trips')) {
-            if ($model->notify_trips === Model::NOTIFY_MAIL) {
+            if ($model->notify_trips->isEnabled()) {
                 event(new Stats\TripsSubscribed);
-            } elseif ($model->notify_trips === Model::NOTIFY_NO) {
+            } elseif ($model->notify_trips->isDisabled()) {
                 event(new Stats\TripsUnsubscribed);
             }
         }

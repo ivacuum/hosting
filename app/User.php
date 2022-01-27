@@ -15,9 +15,9 @@ use Illuminate\Notifications\Notifiable;
  * @property int $status
  * @property string $locale
  * @property int $torrent_short_title
- * @property int $notify_gigs
- * @property int $notify_news
- * @property int $notify_trips
+ * @property Domain\NotificationDeliveryMethod $notify_gigs
+ * @property Domain\NotificationDeliveryMethod $notify_news
+ * @property Domain\NotificationDeliveryMethod $notify_trips
  * @property string $avatar
  * @property int $telegram_id
  * @property string $ip
@@ -51,9 +51,6 @@ class User extends Authenticatable implements HasLocalePreference
     const STATUS_INACTIVE = 0;
     const STATUS_ACTIVE = 1;
 
-    const NOTIFY_NO = 0;
-    const NOTIFY_MAIL = 1;
-
     protected $guarded = ['created_at', 'updated_at'];
     protected $hidden = ['password', 'salt', 'remember_token'];
     protected $dates = ['last_login_at', 'password_changed_at'];
@@ -61,9 +58,9 @@ class User extends Authenticatable implements HasLocalePreference
 
     protected $casts = [
         'status' => 'int',
-        'notify_gigs' => 'int',
-        'notify_news' => 'int',
-        'notify_trips' => 'int',
+        'notify_gigs' => Domain\NotificationDeliveryMethod::class,
+        'notify_news' => Domain\NotificationDeliveryMethod::class,
+        'notify_trips' => Domain\NotificationDeliveryMethod::class,
         'torrent_short_title' => 'int',
     ];
 
