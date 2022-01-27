@@ -20,7 +20,7 @@ class FetchTorrentMetaJob extends AbstractJob
             ->whereIn('rto_id', $this->rtoIds)
             ->get();
 
-        foreach ($rto->topicDataByIds($this->rtoIds)->getTopics() as $id => $response) {
+        foreach ($rto->topicDataByIds($this->rtoIds)->topics as $id => $response) {
             /** @var Torrent $torrent */
             $torrent = $torrents->firstWhere('rto_id', $id);
 

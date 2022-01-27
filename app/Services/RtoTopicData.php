@@ -26,19 +26,19 @@ class RtoTopicData
     ) {
     }
 
-    public static function fromJson(int $id, $json): self
+    public static function fromArray(int $id, array $payload): self
     {
         return new self(
             $id,
-            str_replace(self::TITLE_REPLACE_FROM, self::TITLE_REPLACE_TO, $json->topic_title),
-            $json->info_hash,
-            CarbonImmutable::parse($json->reg_time, 'Europe/Moscow'),
-            $json->tor_status,
-            $json->size,
-            $json->forum_id,
-            $json->poster_id,
-            $json->seeders,
-            CarbonImmutable::parse($json->seeder_last_seen, 'Europe/Moscow')
+            str_replace(self::TITLE_REPLACE_FROM, self::TITLE_REPLACE_TO, $payload['topic_title']),
+            $payload['info_hash'],
+            CarbonImmutable::parse($payload['reg_time'], 'Europe/Moscow'),
+            $payload['tor_status'],
+            $payload['size'],
+            $payload['forum_id'],
+            $payload['poster_id'],
+            $payload['seeders'],
+            CarbonImmutable::parse($payload['seeder_last_seen'], 'Europe/Moscow')
         );
     }
 
