@@ -1,5 +1,6 @@
 <?php namespace App\Factory;
 
+use App\Domain\IssueStatus;
 use App\Issue;
 use Illuminate\Foundation\Testing\WithFaker;
 
@@ -14,15 +15,15 @@ class IssueFactory
         '/en/japanese',
     ];
 
-    private $status = Issue::STATUS_OPEN;
     private $userId;
+    private IssueStatus $status = IssueStatus::Open;
 
     private $userFactory;
     private $commentFactory;
 
     public function closed()
     {
-        return $this->withStatus(Issue::STATUS_CLOSED);
+        return $this->withStatus(IssueStatus::Closed);
     }
 
     public function create()
@@ -73,7 +74,7 @@ class IssueFactory
         return $factory;
     }
 
-    public function withStatus(int $status)
+    public function withStatus(IssueStatus $status)
     {
         $factory = clone $this;
         $factory->status = $status;

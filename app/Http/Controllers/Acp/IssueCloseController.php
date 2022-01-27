@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Acp;
 
+use App\Domain\IssueStatus;
 use App\Issue;
 
 class IssueCloseController extends AbstractController
@@ -10,7 +11,7 @@ class IssueCloseController extends AbstractController
             return back()->withErrors(['text' => 'Обращение не может быть закрыто']);
         }
 
-        $issue->status = Issue::STATUS_CLOSED;
+        $issue->status = IssueStatus::Closed;
         $issue->save();
 
         return back();

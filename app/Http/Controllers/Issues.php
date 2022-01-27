@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Domain\IssueStatus;
 use App\Exceptions\IssueLimitExceededException;
 use App\Http\Requests\IssueStoreForm;
 use App\Issue;
@@ -40,7 +41,7 @@ class Issues extends Controller
         $issue->text = $request->text();
         $issue->email = $email;
         $issue->title = $request->title();
-        $issue->status = Issue::STATUS_OPEN;
+        $issue->status = IssueStatus::Open;
         $issue->user_id = $user->id;
         $issue->save();
 

@@ -6,7 +6,7 @@ use Ivacuum\Generic\Traits\RecordsActivity;
 /**
  * @property int $id
  * @property int $user_id
- * @property int $status
+ * @property Domain\IssueStatus $status
  * @property string $name
  * @property string $email
  * @property string $title
@@ -26,15 +26,11 @@ class Issue extends Model
 {
     use RecordsActivity;
 
-    const STATUS_PENDING = 0;
-    const STATUS_OPEN = 1;
-    const STATUS_CLOSED = 2;
-
     protected $guarded = ['created_at', 'updated_at'];
     protected $perPage = 50;
 
     protected $casts = [
-        'status' => 'int',
+        'status' => Domain\IssueStatus::class,
         'user_id' => 'int',
     ];
 
@@ -62,22 +58,22 @@ class Issue extends Model
 
     public function canBeClosed(): bool
     {
-        return $this->status === static::STATUS_OPEN;
+        return $this->status === Domain\IssueStatus::Open;
     }
 
     public function canBeCommented(): bool
     {
-        return $this->status === static::STATUS_OPEN;
+        return $this->status === Domain\IssueStatus::Open;
     }
 
     public function canBeOpened(): bool
     {
-        return $this->status === static::STATUS_CLOSED;
+        return $this->status === Domain\IssueStatus::Closed;
     }
 
     public function isClosed(): bool
     {
-        return $this->status === self::STATUS_CLOSED;
+        return $this->status === Domain\IssueStatus::Closed;
     }
 
     public function isNotClosed(): bool

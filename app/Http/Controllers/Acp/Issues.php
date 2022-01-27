@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Acp;
 
+use App\Domain\IssueStatus;
 use App\Issue as Model;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -17,7 +18,7 @@ class Issues extends AbstractController
         $models = Model::query()
             ->withCount('comments')
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
-            ->unless(null === $status, fn (Builder $query) => $query->where('status', $status))
+            ->unless(null === $status, fn (Builder $query) => $query->where('status', IssueStatus::from($status)))
             ->orderBy($this->getSortKey(), $this->getSortDir())
             ->paginate(50);
 
@@ -35,7 +36,7 @@ class Issues extends AbstractController
         foreach ($models as $model) {
             /** @var Model $model */
             if ($action === 'close' && $model->canBeClosed()) {
-                $model->status = Model::STATUS_CLOSED;
+                $model->status = IssueStatus::Closed;
                 $model->save();
 
                 $affected++;
@@ -44,7 +45,7 @@ class Issues extends AbstractController
                     $affected++;
                 }
             } elseif ($action === 'open' && $model->canBeOpened()) {
-                $model->status = Model::STATUS_OPEN;
+                $model->status = IssueStatus::Open;
                 $model->save();
 
                 $affected++;
