@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Acp;
 
+use App\Domain\NotificationDeliveryMethod;
 use App\Gig;
 use App\Notifications\GigPublishedNotification;
 use App\User;
@@ -15,7 +16,7 @@ class GigPublishedNotify extends AbstractController
             ];
         }
 
-        $users = User::where('notify_gigs', 1)
+        $users = User::where('notify_gigs', NotificationDeliveryMethod::Mail)
             ->where('status', User::STATUS_ACTIVE)
             ->get();
 
@@ -23,7 +24,7 @@ class GigPublishedNotify extends AbstractController
 
         return [
             'status' => 'OK',
-            'message' => 'Уведомления разосланы пользователям: '.sizeof($users),
+            'message' => 'Уведомления разосланы пользователям: ' . sizeof($users),
         ];
     }
 

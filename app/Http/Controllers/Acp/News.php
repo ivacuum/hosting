@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Acp;
 
+use App\Domain\NotificationDeliveryMethod;
 use App\News as Model;
 use App\Notifications\NewsPublishedNotification;
 use App\User;
@@ -36,14 +37,14 @@ class News extends AbstractController
             return back()->with('message', 'Для рассылки уведомлений новость должна быть опубликована');
         }
 
-        $users = User::where('notify_news', 1)
+        $users = User::where('notify_news', NotificationDeliveryMethod::Mail)
             ->where('status', User::STATUS_ACTIVE)
             ->where('locale', $model->locale)
             ->get();
 
         \Notification::send($users, new NewsPublishedNotification($model));
 
-        return back()->with('message', 'Уведомления разосланы пользователям: '.sizeof($users));
+        return back()->with('message', 'Уведомления разосланы пользователям: ' . sizeof($users));
     }
 
     protected function rules($model = null)

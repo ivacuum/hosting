@@ -1,9 +1,12 @@
 <?php namespace App\Jobs;
 
 use App\DcppHub;
+use Illuminate\Queue\SerializesModels;
 
 class PingDcppHubJob extends AbstractJob
 {
+    use SerializesModels;
+
     public function __construct(private DcppHub $hub)
     {
     }

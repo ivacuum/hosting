@@ -16,7 +16,7 @@
             @svg (mail)
             {{ Auth::user()->notify_trips ? __('mail.unsubscribe') : __('mail.subscribe') }}
           </button>
-          <input type="hidden" name="trips" value="{{ Auth::user()->notify_trips ? 0 : 1 }}">
+          <input type="hidden" name="trips" value="{{ Auth::user()->notify_trips ? App\Domain\NotificationDeliveryMethod::Disabled->value : App\Domain\NotificationDeliveryMethod::Mail->value }}">
           @method('put')
           @csrf
         </form>

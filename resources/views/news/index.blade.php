@@ -14,7 +14,7 @@
         @svg (mail)
         @lang(Auth::user()->notify_news ? 'mail.unsubscribe' : 'mail.subscribe')
       </button>
-      <input type="hidden" name="news" value="{{ Auth::user()->notify_news ? 0 : 1 }}">
+      <input type="hidden" name="news" value="{{ Auth::user()->notify_news ? App\Domain\NotificationDeliveryMethod::Disabled->value : App\Domain\NotificationDeliveryMethod::Mail->value }}">
       @method('put')
       @csrf
     </form>
