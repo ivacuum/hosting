@@ -6,6 +6,9 @@ Route::get('/', Ctrl\HomeController::class);
 
 Route::view('about', 'about');
 
+// Route::get('auth/2fa-challenge', [])->middleware('guest');
+// Route::post('auth/2fa-challenge', [])->middleware(['guest', 'throttle:2fa']);
+
 Route::get('auth/login', [Ctrl\Auth\SignIn::class, 'index'])->middleware('guest');
 Route::post('auth/login', [Ctrl\Auth\SignIn::class, 'login'])->middleware(['guest', 'throttle:login']);
 Route::get('auth/logout', [Ctrl\Auth\SignIn::class, 'logout'])->middleware('auth');
@@ -132,6 +135,11 @@ Route::get('mail/view/{timestamp}/{id}', [Ctrl\Mail::class, 'view']);
 
 Route::middleware('auth')->group(function () {
     Route::view('my', 'my.index');
+    // Route::post('my/2fa', []);
+    // Route::delete('my/2fa', []);
+    // Route::get('my/2fa-qr', []);
+    // Route::get('my/2fa-recovery-codes', []);
+    // Route::post('my/2fa-recovery-codes', []);
     Route::put('my/avatar', [Ctrl\MyAvatar::class, 'update']);
     Route::delete('my/avatar', [Ctrl\MyAvatar::class, 'destroy']);
     Route::get('my/password', [Ctrl\MyPassword::class, 'edit']);
