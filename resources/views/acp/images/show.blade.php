@@ -1,3 +1,5 @@
+<?php /** @var \App\Image $model */ ?>
+
 @extends('acp.show')
 
 @section('content')

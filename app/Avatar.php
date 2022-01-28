@@ -15,13 +15,6 @@ class Avatar
         return \Storage::disk('avatars')->delete($filename);
     }
 
-    public function originalUrl($filename): string
-    {
-        return \App::isProduction()
-            ? "https://ivacuum.org/avatars/{$filename}"
-            : \Storage::disk('avatars')->url($filename);
-    }
-
     public function resize(UploadedFile $file): UploadedFile
     {
         return (new ImageConverter)
@@ -38,5 +31,10 @@ class Avatar
         \Storage::disk('avatars')->putFileAs('', $this->resize($file), $filename);
 
         return $filename;
+    }
+
+    public function url($filename): string
+    {
+        return \Storage::disk('avatars')->url($filename);
     }
 }
