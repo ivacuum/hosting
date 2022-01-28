@@ -25,24 +25,28 @@ return [
         'avatars' => [
             'driver' => 'local',
             'root' => env('AVATARS_ROOT', public_path('uploads/avatars')),
+            'url' => env('AVATARS_URL', '/uploads/avatars'),
             'visibility' => 'public',
         ],
 
         'gallery' => [
             'driver' => 'local',
             'root' => env('GALLERY_ROOT', public_path('uploads/gallery')),
+            'url' => env('GALLERY_URL', '/uploads/gallery'),
             'visibility' => 'public',
         ],
 
         'files' => [
             'driver' => 'local',
             'root' => env('FILES_ROOT', public_path('uploads/files')),
+            'url' => env('FILES_URL', '/uploads/files'),
             'visibility' => 'public',
         ],
 
         'temp' => [
             'driver' => 'local',
             'root' => public_path('uploads/temp'),
+            'url' => '/uploads/temp',
             'visibility' => 'public',
         ],
 
@@ -53,6 +57,7 @@ return [
             'root' => env('PHOTOS_ROOT'),
             'username' => env('PHOTOS_USERNAME'),
             'password' => env('PHOTOS_PASSWORD'),
+            'url' => env('PHOTOS_URL', '/uploads/photos'),
         ],
 
         's3' => [

@@ -81,10 +81,12 @@
   "Корейский язык": "Korean language",
   "Обратная связь": "Contact",
   "Текущий пароль": "Current password",
+  "Удалить аватар": "Delete avatar",
   "Уровень :level": "Level :level",
   "Варианты чтения": "Readings",
   "Мои изображения": "My images",
   "Добавить раздачу": "Add a release",
+  "Идет загрузка...": "Uploading...",
   "Как использовать": "Usage",
   "Язык уведомлений": "Notifications language",
   "Календарь поездок": "Calendar of trips",
@@ -119,5 +121,6 @@
   "Подтверждение публикации комментария": "Comment posting confirmation",
   "Уведомления на почту о новых публикациях": "Mail notifications about new posts",
   "Тренажер по набору слов хираганой и катаканой": "Hiragana & Katakana words trainer",
+  "Аватар сохраняется автоматически после выбора файла": "Avatar will be saved automatically after file selection is made",
   "Комментарий ожидает активации. Мы отправили вам ссылку на электронную почту.": "Comment activation pending. We have e-mailed you a link."
 }

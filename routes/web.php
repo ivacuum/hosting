@@ -140,8 +140,6 @@ Route::middleware('auth')->group(function () {
     // Route::get('my/2fa-qr', []);
     // Route::get('my/2fa-recovery-codes', []);
     // Route::post('my/2fa-recovery-codes', []);
-    Route::put('my/avatar', [Ctrl\MyAvatar::class, 'update']);
-    Route::delete('my/avatar', [Ctrl\MyAvatar::class, 'destroy']);
     Route::get('my/password', [Ctrl\MyPassword::class, 'edit']);
     Route::put('my/password', [Ctrl\MyPassword::class, 'update']);
     Route::get('my/profile', [Ctrl\MyProfile::class, 'edit']);

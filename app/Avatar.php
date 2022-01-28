@@ -5,15 +5,12 @@ use Ivacuum\Generic\Services\ImageConverter;
 
 class Avatar
 {
-    const WIDTH = 200;
-    const HEIGHT = 200;
-    const FILTER = 'triangle';
-    const QUALITY = 75;
+    private const WIDTH = 200;
+    private const HEIGHT = 200;
+    private const FILTER = 'triangle';
+    private const QUALITY = 75;
 
-    protected $file;
-    protected $extension;
-
-    public function delete($filename)
+    public function delete($filename): bool
     {
         return \Storage::disk('avatars')->delete($filename);
     }
@@ -22,10 +19,10 @@ class Avatar
     {
         return \App::isProduction()
             ? "https://ivacuum.org/avatars/{$filename}"
-            : "/uploads/avatars/{$filename}";
+            : \Storage::disk('avatars')->url($filename);
     }
 
-    public function resize(UploadedFile $file)
+    public function resize(UploadedFile $file): UploadedFile
     {
         return (new ImageConverter)
             ->crop(static::WIDTH, static::HEIGHT)
@@ -34,7 +31,7 @@ class Avatar
             ->convert($file->getRealPath());
     }
 
-    public function upload(UploadedFile $file, $userId)
+    public function upload(UploadedFile $file, $userId): string
     {
         $filename = sprintf('%s_%s.%s', $userId, \Str::random(6), strtolower($file->getClientOriginalExtension()));
 

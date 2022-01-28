@@ -1,11 +1,12 @@
-<?php namespace Tests\Feature;
+<?php namespace Tests\Livewire;
 
 use App\Factory\UserFactory;
+use App\Http\Livewire\AvatarManager;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
-class MyAvatarTest extends TestCase
+class AvatarManagerTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -14,14 +15,13 @@ class MyAvatarTest extends TestCase
         \Storage::fake('avatars');
 
         $file = UploadedFile::fake()->image('avatar.jpg');
-
-        $this->be($user = UserFactory::new()->create());
+        $user = UserFactory::new()->create();
 
         $this->expectsEvents(\App\Events\Stats\UserAvatarUploaded::class);
 
-        $this->putJson('my/avatar', ['file' => $file])
-            ->assertStatus(200)
-            ->assertJson(['status' => 'OK']);
+        $livewire = \Livewire::actingAs($user)
+            ->test(AvatarManager::class)
+            ->set('image', $file);
 
         $user->refresh();
 
@@ -33,9 +33,7 @@ class MyAvatarTest extends TestCase
 
         $file = UploadedFile::fake()->image('new-avatar.jpg');
 
-        $this->putJson('my/avatar', ['file' => $file])
-            ->assertStatus(200)
-            ->assertJson(['status' => 'OK']);
+        $livewire->set('image', $file);
 
         $user->refresh();
 
@@ -51,14 +49,13 @@ class MyAvatarTest extends TestCase
         \Storage::fake('avatars');
 
         $file = UploadedFile::fake()->image('avatar.jpg');
-
-        $this->be($user = UserFactory::new()->create());
+        $user = UserFactory::new()->create();
 
         $this->expectsEvents(\App\Events\Stats\UserAvatarUploaded::class);
 
-        $this->putJson('my/avatar', ['file' => $file])
-            ->assertStatus(200)
-            ->assertJson(['status' => 'OK']);
+        $livewire = \Livewire::actingAs($user)
+            ->test(AvatarManager::class)
+            ->set('image', $file);
 
         $user->refresh();
 
@@ -68,8 +65,7 @@ class MyAvatarTest extends TestCase
 
         \Storage::disk('avatars')->assertExists($avatar);
 
-        $this->deleteJson('my/avatar')
-            ->assertNoContent();
+        $livewire->call('deleteAvatar');
 
         $user->refresh();
 

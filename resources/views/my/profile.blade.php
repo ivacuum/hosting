@@ -1,4 +1,5 @@
 @extends('my.base')
+@include('livewire')
 
 @section('content')
 <div class="max-w-[500px]">
@@ -45,16 +46,6 @@
   </form>
 
   <h3 class="mt-12">@lang('Аватар')</h3>
-  <avatar-uploader
-    delete-action="@lng/my/avatar"
-    update-action="@lng/my/avatar"
-    current-avatar="{{ Auth::user()->avatarUrl() }}"
-  >
-    @include('tpl.svg-avatar', [
-      'bg' => ViewHelper::avatarBg(Auth::user()->id),
-      'text' => Auth::user()->avatarName(),
-      'classes' => 'w-24 h-24',
-    ])
-  </avatar-uploader>
+  @livewire(App\Http\Livewire\AvatarManager::class)
 </div>
 @endsection
