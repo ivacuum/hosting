@@ -73,7 +73,6 @@ Route::middleware('nav:Галерея,gallery')->group(function () {
     Route::get('gallery', [Ctrl\Gallery::class, 'index'])->middleware('auth');
     Route::get('gallery/preview/{image}', [Ctrl\Gallery::class, 'preview'])->middleware('nav:Просмотр миниатюры');
     Route::view('gallery/upload', 'gallery.upload')->middleware('auth')->middleware('nav:Загрузка изображений');
-    Route::post('gallery/upload', [Ctrl\Gallery::class, 'store'])->middleware('auth');
     Route::get('gallery/view/{image}', [Ctrl\Gallery::class, 'view'])->middleware('nav:Просмотр изображения');
 });
 

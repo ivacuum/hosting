@@ -122,5 +122,6 @@
   "Уведомления на почту о новых публикациях": "Mail notifications about new posts",
   "Тренажер по набору слов хираганой и катаканой": "Hiragana & Katakana words trainer",
   "Аватар сохраняется автоматически после выбора файла": "Avatar will be saved automatically after file selection is made",
-  "Комментарий ожидает активации. Мы отправили вам ссылку на электронную почту.": "Comment activation pending. We have e-mailed you a link."
+  "Комментарий ожидает активации. Мы отправили вам ссылку на электронную почту.": "Comment activation pending. We have e-mailed you a link.",
+  "Файлы можно выбрать в появившемся окне или перетащить прямо на элемент выбора": "You can select files in pop-up window or drag&drop them on the form element"
 }

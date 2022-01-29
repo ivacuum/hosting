@@ -34,6 +34,7 @@ class AvatarManager extends Component
         return [
             'image' => [
                 'required',
+                'image',
                 'mimetypes:image/jpeg,image/png',
                 'max:3072',
             ],

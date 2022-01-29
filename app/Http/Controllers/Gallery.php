@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests\GalleryStoreForm;
 use App\Image;
 
 class Gallery extends Controller
@@ -20,25 +19,6 @@ class Gallery extends Controller
         event(new \App\Events\Stats\GalleryImagePreviewed($image->id));
 
         return view('gallery.preview', ['image' => $image]);
-    }
-
-    public function store(GalleryStoreForm $request)
-    {
-        $file = $request->image();
-
-        $image = Image::newFromFile($file, $request->user()->id);
-        $image->siteThumbnail($file);
-        $image->upload($file);
-        $image->save();
-
-        event(new \App\Events\Stats\GalleryImageUploaded);
-
-        return [
-            'id' => $image->id,
-            'status' => 'OK',
-            'original' => $image->originalUrl(),
-            'thumbnail' => $image->thumbnailUrl(),
-        ];
     }
 
     public function view(Image $image)

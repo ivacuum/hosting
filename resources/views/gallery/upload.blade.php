@@ -1,8 +1,6 @@
 @extends('gallery.base')
+@include('livewire')
 
 @section('content')
-<gallery-uploader
-  action="@lng/gallery/upload"
-  max="10"
-></gallery-uploader>
+@livewire(App\Http\Livewire\GalleryUploader::class)
 @endsection
