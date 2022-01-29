@@ -15,7 +15,7 @@ class Files extends Controller
 
     public function download(File $file)
     {
-        abort_unless($file->isPublished(), 404);
+        abort_unless($file->status->isPublished(), 404);
 
         $file->incrementDownloads();
 

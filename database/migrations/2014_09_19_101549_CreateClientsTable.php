@@ -202,7 +202,7 @@ return new class extends Migration {
             $table->string('slug');
             $table->unsignedBigInteger('size')->default(0);
             $table->string('extension', 25);
-            $table->unsignedTinyInteger('status')->default(App\File::STATUS_HIDDEN);
+            $table->unsignedTinyInteger('status')->default(App\Domain\FileStatus::Hidden->value);
             $table->unsignedInteger('downloads')->default(0);
             $table->timestamps();
         });

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $slug
  * @property int $size
  * @property string $extension
- * @property int $status
+ * @property Domain\FileStatus $status
  * @property int $downloads
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
@@ -19,22 +19,19 @@ use Illuminate\Database\Eloquent\Model;
  */
 class File extends Model
 {
-    const STATUS_HIDDEN = 0;
-    const STATUS_PUBLISHED = 1;
-
     protected $guarded = ['created_at', 'updated_at', 'goto', 'file'];
     protected $perPage = 50;
 
     protected $casts = [
         'size' => 'int',
-        'status' => 'int',
+        'status' => Domain\FileStatus::class,
         'downloads' => 'int',
     ];
 
     // Scopes
     public function scopePublished(Builder $query)
     {
-        return $query->where('status', static::STATUS_PUBLISHED);
+        return $query->where('status', Domain\FileStatus::Published);
     }
 
     // Methods
@@ -50,7 +47,11 @@ class File extends Model
 
     public function downloadPath()
     {
-        return "https://ivacuum.org/d/" . ($this->folder ? "{$this->folder}/" : '') . "{$this->basename()}";
+        $folder = $this->folder
+            ? "{$this->folder}/"
+            : '';
+
+        return \Storage::disk('files')->url($folder . $this->basename());
     }
 
     public function headerBasename()
@@ -65,10 +66,5 @@ class File extends Model
         $this->timestamps = true;
 
         event(new \App\Events\Stats\FileDownloadClicked);
-    }
-
-    public function isPublished(): bool
-    {
-        return $this->status === self::STATUS_PUBLISHED;
     }
 }

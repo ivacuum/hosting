@@ -1,3 +1,5 @@
+<?php /** @var \App\File $model */ ?>
+
 @extends('acp.list')
 
 @section('content-list')
@@ -27,7 +29,7 @@
         </a>
       </td>
       <td>
-        @if ($model->status === App\File::STATUS_HIDDEN)
+        @if ($model->status->isHidden())
           <span class="tooltipped tooltipped-n" aria-label="Файл скрыт">
             @svg (eye-slash)
           </span>

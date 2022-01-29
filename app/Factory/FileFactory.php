@@ -1,5 +1,6 @@
 <?php namespace App\Factory;
 
+use App\Domain\FileStatus;
 use App\File;
 use Illuminate\Foundation\Testing\WithFaker;
 
@@ -7,7 +8,7 @@ class FileFactory
 {
     use WithFaker;
 
-    private $status = File::STATUS_PUBLISHED;
+    private FileStatus $status = FileStatus::Published;
 
     public function create()
     {
@@ -19,7 +20,7 @@ class FileFactory
 
     public function hidden()
     {
-        return $this->withStatus(File::STATUS_HIDDEN);
+        return $this->withStatus(FileStatus::Hidden);
     }
 
     public function make()
@@ -45,7 +46,7 @@ class FileFactory
         });
     }
 
-    public function withStatus(int $status)
+    public function withStatus(FileStatus $status)
     {
         $factory = clone $this;
         $factory->status = $status;

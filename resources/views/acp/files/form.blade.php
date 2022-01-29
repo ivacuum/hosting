@@ -4,10 +4,7 @@
 {!! Form::text('slug')->required()->html() !!}
 {!! Form::text('folder')->html() !!}
 
-{!! Form::radio('status')->required()->values([
-  App\File::STATUS_HIDDEN => 'Скрыт',
-  App\File::STATUS_PUBLISHED => 'Опубликован',
-])->html() !!}
+{!! Form::radio('status')->required()->values(App\Domain\FileStatus::labels())->html() !!}
 
 <div class="mb-4">
   <label class="font-bold">{{ ViewHelper::modelFieldTrans('file', 'file') }}</label>
