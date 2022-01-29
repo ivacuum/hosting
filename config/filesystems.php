@@ -36,6 +36,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'gallery-raw' => [
+            'driver' => 'local',
+            'root' => env('GALLERY_ROOT', public_path('uploads/gallery')),
+            'url' => env('GALLERY_RAW_URL', '/uploads/gallery'),
+            'visibility' => 'public',
+        ],
+
         'files' => [
             'driver' => 'local',
             'root' => env('FILES_ROOT', public_path('uploads/files')),

@@ -67,23 +67,23 @@ class Image extends Model
 
     public function originalUrl(): string
     {
-        return \App::isProduction()
-            ? "https://img.ivacuum.ru/g/{$this->date}/{$this->slug}"
-            : url("/uploads/gallery/{$this->splittedDate()}/{$this->slug}");
+        $date = \App::isProduction()
+            ? $this->date
+            : $this->splittedDate();
+
+        return \Storage::disk('gallery')->url("{$date}/{$this->slug}");
     }
 
     public function originalSecretUrl(): string
     {
-        return \App::isProduction()
-            ? "https://ivacuum.org/g/{$this->splittedDate()}/{$this->slug}"
-            : "/uploads/gallery/{$this->splittedDate()}/{$this->slug}";
+        return \Storage::disk('gallery-raw')->url("{$this->splittedDate()}/{$this->slug}");
     }
 
     public function resize(UploadedFile $file, $newWidth, $newHeight)
     {
         $source = $file->getRealPath();
 
-        list($width, $height, $type) = getimagesize($source);
+        [$width, $height, $type] = getimagesize($source);
 
         // Даже маленькие исходники пересохраняем, чтобы повернуть их и почистить профили (exif, icc)
         if ($width <= $newWidth && $height <= $newHeight) {
@@ -111,16 +111,16 @@ class Image extends Model
 
     public function thumbnailUrl(): string
     {
-        return \App::isProduction()
-            ? "https://img.ivacuum.ru/g/{$this->date}/t/{$this->slug}"
-            : "/uploads/gallery/{$this->splittedDate()}/t/{$this->slug}";
+        $date = \App::isProduction()
+            ? $this->date
+            : $this->splittedDate();
+
+        return \Storage::disk('gallery')->url("{$date}/t/{$this->slug}");
     }
 
     public function thumbnailSecretUrl(): string
     {
-        return \App::isProduction()
-            ? "https://ivacuum.org/g/{$this->splittedDate()}/t/{$this->slug}"
-            : "/uploads/gallery/{$this->splittedDate()}/t/{$this->slug}";
+        return \Storage::disk('gallery-raw')->url("{$this->splittedDate()}/t/{$this->slug}");
     }
 
     public function upload(UploadedFile $file)
