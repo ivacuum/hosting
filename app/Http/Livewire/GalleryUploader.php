@@ -8,7 +8,7 @@ class GalleryUploader extends Component
 {
     use WithFileUploads;
 
-    /** @var \Livewire\TemporaryUploadedFile */
+    /** @var \Livewire\TemporaryUploadedFile[] */
     public $files;
     public array $links;
     public string $randomId;

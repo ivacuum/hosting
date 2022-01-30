@@ -2,16 +2,16 @@
 
 use App\User;
 use Livewire\Component;
+use Livewire\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 
 class AvatarManager extends Component
 {
     use WithFileUploads;
 
-    /** @var \Livewire\TemporaryUploadedFile */
-    public $image;
     public string $avatar;
     public string $randomId;
+    public TemporaryUploadedFile|string|null $image = null;
 
     public function deleteAvatar()
     {

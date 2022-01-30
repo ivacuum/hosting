@@ -1,3 +1,5 @@
+<?php /** @var \App\Http\Livewire\GalleryUploader $this */ ?>
+
 <div>
   @include('tpl.form_errors')
   <div wire:loading.remove.delay wire:target="files">
