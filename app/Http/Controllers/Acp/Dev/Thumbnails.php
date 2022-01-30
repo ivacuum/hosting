@@ -12,9 +12,13 @@ class Thumbnails extends BaseController
 
     public function clean()
     {
-        foreach (glob(public_path('uploads/temp/*')) as $filename) {
-            unlink($filename);
-        }
+        $storage = \Storage::disk('temp');
+
+        $files = collect($storage->allFiles())
+            ->filter(fn ($file) => $file !== '.gitignore')
+            ->all();
+
+        $storage->delete($files);
 
         return redirect(path([self::class, 'index']))
             ->with('message', 'Папка очищена');
@@ -29,6 +33,7 @@ class Thumbnails extends BaseController
         }
 
         $image = (new ImageConverter)
+            ->autoOrient()
             ->resize(2000, 2000)
             ->quality(75)
             ->convert($file->getRealPath());

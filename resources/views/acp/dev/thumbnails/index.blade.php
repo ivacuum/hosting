@@ -1,10 +1,9 @@
 @extends('acp.dev.base')
+@include('livewire')
 
 @section('content')
 <h2>Создание миниатюр</h2>
-<div class="max-w-[500px]">
-  <images-uploader action="/acp/dev/thumbnails"></images-uploader>
-</div>
+@livewire(App\Http\Livewire\ThumbnailMaker::class)
 
 <a class="btn btn-default mt-6" href="{{ path([$controller, 'clean']) }}">Почистить папку с загруженными файлами</a>
 @endsection
