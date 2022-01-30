@@ -58,10 +58,10 @@ return [
         ],
 
         'photos' => [
-            'driver' => 'sftp',
+            'driver' => env('PHOTOS_DRIVER', 'sftp'),
             'host' => env('PHOTOS_HOST'),
             'port' => env('PHOTOS_PORT'),
-            'root' => env('PHOTOS_ROOT'),
+            'root' => env('PHOTOS_ROOT', public_path('uploads/photos')),
             'username' => env('PHOTOS_USERNAME'),
             'password' => env('PHOTOS_PASSWORD'),
             'url' => env('PHOTOS_URL', '/uploads/photos'),
