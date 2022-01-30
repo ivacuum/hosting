@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Domain\NewsStatus;
 use App\News;
 
 class NewsRss extends Controller
@@ -13,7 +14,7 @@ class NewsRss extends Controller
         ];
 
         $items = News::query()
-            ->where('status', News::STATUS_PUBLISHED)
+            ->where('status', NewsStatus::Published)
             ->where('locale', \App::getLocale())
             ->take(20)
             ->orderByDesc('id')

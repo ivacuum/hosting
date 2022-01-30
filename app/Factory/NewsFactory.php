@@ -1,5 +1,6 @@
 <?php namespace App\Factory;
 
+use App\Domain\NewsStatus;
 use App\News;
 use Illuminate\Foundation\Testing\WithFaker;
 
@@ -9,6 +10,7 @@ class NewsFactory
 
     private $locale = 'ru';
     private $userId;
+    private NewsStatus $status = NewsStatus::Published;
 
     public function create()
     {
@@ -24,7 +26,7 @@ class NewsFactory
         $model->title = $this->faker->words(3, true);
         $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
         $model->locale = $this->locale;
-        $model->status = News::STATUS_PUBLISHED;
+        $model->status = $this->status;
         $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
         $model->markdown = $this->faker->text;
 

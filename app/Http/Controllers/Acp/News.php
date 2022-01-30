@@ -33,7 +33,7 @@ class News extends AbstractController
         /** @var Model $model */
         $model = $this->getModel($id);
 
-        if ($model->status !== Model::STATUS_PUBLISHED) {
+        if (!$model->status->isPublished()) {
             return back()->with('message', 'Для рассылки уведомлений новость должна быть опубликована');
         }
 

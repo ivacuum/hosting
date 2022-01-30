@@ -12,7 +12,7 @@ use League\CommonMark\CommonMarkConverter;
  * @property string $markdown
  * @property string $html
  * @property string $locale
- * @property int $status
+ * @property Domain\NewsStatus $status
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
@@ -26,14 +26,11 @@ use League\CommonMark\CommonMarkConverter;
  */
 class News extends Model
 {
-    const STATUS_HIDDEN = 0;
-    const STATUS_PUBLISHED = 1;
-
     protected $guarded = ['created_at', 'updated_at', 'goto'];
 
     protected $casts = [
         'views' => 'int',
-        'status' => 'int',
+        'status' => Domain\NewsStatus::class,
         'user_id' => 'int',
     ];
 
@@ -61,7 +58,7 @@ class News extends Model
     // Scopes
     public function scopePublished(Builder $query)
     {
-        return $query->where('status', static::STATUS_PUBLISHED);
+        return $query->where('status', Domain\NewsStatus::Published);
     }
 
     // Attributes
@@ -77,19 +74,9 @@ class News extends Model
         return $this->title;
     }
 
-    public function isHidden(): bool
-    {
-        return $this->status === self::STATUS_HIDDEN;
-    }
-
-    public function isPublished(): bool
-    {
-        return $this->status === self::STATUS_PUBLISHED;
-    }
-
     public function isRussian(): bool
     {
-        return $this->locale === 'ru';
+        return $this->locale === Domain\Locale::Rus->value;
     }
 
     public function www(?string $anchor = null): string

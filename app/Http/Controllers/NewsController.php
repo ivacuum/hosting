@@ -27,7 +27,7 @@ class NewsController extends Controller
 
         $news = $request->news();
 
-        abort_unless($news->isPublished(), 404);
+        abort_unless($news->status->isPublished(), 404);
 
         if ($url = $request->redirectUrlToOriginLocale()) {
             return redirect($url, 301);

@@ -13,7 +13,7 @@ class NewsShowForm extends AbstractForm
 
     public function ensureNewsIsPublished()
     {
-        abort_unless($this->news()->isPublished(), 404);
+        abort_unless($this->news()->status->isPublished(), 404);
     }
 
     public function news(): ?News
