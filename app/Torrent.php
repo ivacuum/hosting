@@ -92,7 +92,7 @@ class Torrent extends Model
 
     public function externalLink(): string
     {
-        return "https://rutracker.nl/forum/viewtopic.php?t={$this->rto_id}";
+        return "https://rutracker.org/forum/viewtopic.php?t={$this->rto_id}";
     }
 
     public static function externalSearchLink(string $query): string

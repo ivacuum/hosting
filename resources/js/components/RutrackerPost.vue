@@ -28,11 +28,11 @@ export default {
   methods: {
     convertThumbSrcToOriginal(thumb) {
       return thumb.replace(
-          /http(s?):\/\/i(\d+)\.imageban\.ru\/thumbs\/(\d+)\.(\d+)\.(\d+)\/(\w+)\.(\w+)/,
-          'http$1://i$2.imageban.ru/out/$3/$4/$5/$6.$7'
+        /http(s?):\/\/i(\d+)\.imageban\.ru\/thumbs\/(\d+)\.(\d+)\.(\d+)\/(\w+)\.(\w+)/,
+        'http$1://i$2.imageban.ru/out/$3/$4/$5/$6.$7'
       ).replace(
-          /http(s?):\/\/img(\d+)\.lostpic\.net\/(\d+)\/(\d+)\/(\d+)\/(\w+)\.th\.(\w+)/,
-          'http$1://img$2.lostpic.net/$3/$4/$5/$6.$7'
+        /http(s?):\/\/img(\d+)\.lostpic\.net\/(\d+)\/(\d+)\/(\d+)\/(\w+)\.th\.(\w+)/,
+        'http$1://img$2.lostpic.net/$3/$4/$5/$6.$7'
       )/*.replace(
           /https?:\/\/s(\d+)\.radikal\.ru\/i(\d+)\/(\d+)\/([a-z\d]+)\/([a-z\d]+)t\.([a-z]+)/,
           'https://s$1.radikal.ru/i$2/$3/$4/$5.$6'
@@ -62,8 +62,8 @@ export default {
       }
 
       const src = path.replace(
-          /https?:\/\/fastpic\.ru\/view\/(\d+)\/(\d+)\/(\w+)\/((?:\w+)(\w{2}))\.(\w+)\.html/,
-          'https://i$1.fastpic.ru/big/$2/$3/$5/$4.$6?noht=1'
+        /https?:\/\/fastpic\.ru\/view\/(\d+)\/(\d+)\/(\w+)\/((?:\w+)(\w{2}))\.(\w+)\.html/,
+        'https://i$1.fastpic.ru/big/$2/$3/$5/$4.$6?noht=1'
       )
 
       return src !== path ? src : ''
@@ -122,7 +122,7 @@ export default {
       $('.postLink', '.rutracker-post').each((index, item) => {
         let href = $(item).attr('href')
         if (!this.absoluteLinkRegexp.test(href)) {
-          $(item).attr('href', `https://rutracker.nl/forum/${href}`)
+          $(item).attr('href', `https://rutracker.org/forum/${href}`)
         }
       })
     },
@@ -175,8 +175,8 @@ export default {
 
             $head
               .click()
-              .animate({ opacity: .1 }, 500)
-              .animate({ opacity: 1 }, 700)
+              .animate({opacity: .1}, 500)
+              .animate({opacity: 1}, 700)
           })
 
           $body.append($foldBtn).addClass('flow-root inited')
