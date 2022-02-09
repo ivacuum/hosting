@@ -103,6 +103,8 @@ class Torrents extends Controller
 
     public function show(Torrent $torrent)
     {
+        abort_if($torrent->isNotPublished(), 404);
+
         \Breadcrumbs::push($torrent->shortTitle());
 
         event(new \App\Events\Stats\TorrentViewed($torrent->id));
