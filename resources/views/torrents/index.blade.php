@@ -96,7 +96,7 @@
           </a>
           <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center md:text-left whitespace-nowrap js-magnet"
              href="{{ $torrent->magnet() }}"
-             title="@lang('Скачать')"
+             title="@lang('Магнет')"
              data-action="{{ to('torrents/{torrent}/magnet', $torrent) }}"
           >
             @svg (magnet)

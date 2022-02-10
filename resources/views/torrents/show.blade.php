@@ -12,7 +12,7 @@
     <span class="mr-1">
       @svg (magnet)
     </span>
-    @lang('Скачать')
+    @lang('Магнет')
     <span class="mx-1">&middot;</span>
     {{ ViewHelper::size($torrent->size) }}
   </a>
@@ -40,7 +40,7 @@
   </a>
   <a class="btn btn-success svg-flex svg-label js-magnet" href="{{ $torrent->magnet() }}" data-action="{{ to('torrents/{torrent}/magnet', $torrent) }}">
     @svg (magnet)
-    @lang('Скачать')
+    @lang('Магнет')
     <span class="mx-1">&middot;</span>
     {{ ViewHelper::size($torrent->size) }}
   </a>
@@ -81,7 +81,7 @@
       </a>
       <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center md:text-left whitespace-nowrap js-magnet"
          href="{{ $row->magnet() }}"
-         title="@lang('Скачать')"
+         title="@lang('Магнет')"
          data-action="{{ to('torrents/{torrent}/magnet', $row) }}"
       >
         @svg (magnet)

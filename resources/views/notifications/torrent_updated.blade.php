@@ -12,6 +12,6 @@
     href="{{ ViewHelper::magnet($notification->data['info_hash'], $notification->data['announcer'], $notification->data['title']) }}"
     data-action="{{ path([App\Http\Controllers\Torrents::class, 'magnet'], $notification->data['id']) }}"
   >
-    @lang('Скачать')
+    @lang('Магнет')
   </a>
 </div>

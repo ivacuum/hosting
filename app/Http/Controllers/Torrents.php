@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Domain\Locale;
 use App\Domain\TorrentStatus;
 use App\Http\Requests\TorrentsIndexForm;
 use App\SearchSynonym;
@@ -103,6 +104,7 @@ class Torrents extends Controller
 
     public function show(Torrent $torrent)
     {
+        abort_if(\App::getLocale() === Locale::Eng->value, 404);
         abort_if($torrent->isNotPublished(), 404);
 
         \Breadcrumbs::push($torrent->shortTitle());
