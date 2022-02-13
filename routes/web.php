@@ -58,6 +58,8 @@ Route::middleware('nav:О DC++,dc')->group(function () {
     Route::view('dc/strongdc_install', 'dcpp.strongdc_install')->middleware('nav:dcpp.strongdc_install');
 });
 
+Route::view('dev/json-formatter', 'dev.json-formatter');
+
 Route::middleware('nav:Документация,docs')->group(function () {
     Route::view('docs', 'docs.index');
     Route::view('docs/amazon-s3', 'docs.amazon-s3')->middleware('nav:Amazon S3');
