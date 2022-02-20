@@ -91,6 +91,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7964.jpg'])
 
+<a id="kaki"></a>
 @ru
   <p>Хурма тоже <a class="link" href="prague.2015.12#kaki">каки</a>, как и в <a class="link" href="countries/czech-republic">Чехии</a>.</p>
 @endru
