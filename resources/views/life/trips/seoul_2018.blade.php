@@ -400,6 +400,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_6260.jpg'])
 
+<a id="lift"></a>
 @ru
   <p>Экспресс доставка и прием с девятого этажа.</p>
 @endru
