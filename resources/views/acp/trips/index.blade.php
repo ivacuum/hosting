@@ -74,9 +74,15 @@
         @endif
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ path([App\Http\Controllers\Acp\Photos::class, 'index'], [$model->getForeignKey() => $model]) }}">
-          {{ ViewHelper::number($model->photos_count) ?: '' }}
-        </a>
+        @if($model->status->isInactive() && $model->photos_count === 0)
+          <a href="{{ path([App\Http\Controllers\Acp\Photos::class, 'create'], ['trip_id' => $model]) }}">
+            @svg(plus)
+          </a>
+        @else
+          <a href="{{ path([App\Http\Controllers\Acp\Photos::class, 'index'], [$model->getForeignKey() => $model]) }}">
+            {{ ViewHelper::number($model->photos_count) ?: '' }}
+          </a>
+        @endif
       </td>
       <td>
         @if ($model->meta_image)
