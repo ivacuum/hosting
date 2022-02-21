@@ -11,7 +11,7 @@
     @method('put')
     @csrf
 
-    <div class="font-bold">@lang('Торренты')</div>
+    <div class="font-bold">@lang('Магнеты')</div>
     <div class="mb-4">
       <input type="hidden" name="torrent_short_title" value="0">
       <label class="flex items-center">

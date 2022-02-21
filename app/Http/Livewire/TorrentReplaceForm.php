@@ -1,8 +1,8 @@
 <?php namespace App\Http\Livewire;
 
 use App\Domain\TorrentUpdater;
+use App\Magnet;
 use App\Services\Rto;
-use App\Torrent;
 use Livewire\Component;
 
 class TorrentReplaceForm extends Component
@@ -24,12 +24,12 @@ class TorrentReplaceForm extends Component
     {
         $this->validate();
 
-        $torrent = Torrent::findOrFail($this->modelId);
-        $torrent->rto_id = $this->input;
+        $magnet = Magnet::findOrFail($this->modelId);
+        $magnet->rto_id = $this->input;
 
         try {
             $action = app()->make(TorrentUpdater::class);
-            $action->update($torrent);
+            $action->update($magnet);
         } catch (\Throwable $e) {
             $this->addError('input', $e->getMessage());
 
@@ -43,7 +43,7 @@ class TorrentReplaceForm extends Component
             return null;
         }
 
-        return redirect($torrent->wwwAcp());
+        return redirect($magnet->wwwAcp());
     }
 
     public function updatedInput()

@@ -30,10 +30,10 @@
           <td class="pl-1 mb-2">{{ ViewHelper::plural('photos', $user->images_count) }}</td>
         </tr>
       @endif
-      @if ($user->torrents_count)
+      @if ($user->magnets_count)
         <tr>
           <td class="text-muted text-right pr-1">Раздачи</td>
-          <td class="pl-1 mb-2">{{ ViewHelper::number($user->torrents_count) }}</td>
+          <td class="pl-1 mb-2">{{ ViewHelper::number($user->magnets_count) }}</td>
         </tr>
       @endif
     </table>

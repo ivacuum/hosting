@@ -1,12 +1,12 @@
 <?php namespace App\Notifications;
 
 use App\Comment;
-use App\Torrent;
+use App\Magnet;
 use Illuminate\Notifications\Notification;
 
 class TorrentCommentedNotification extends Notification
 {
-    public function __construct(public Torrent $torrent, public Comment $comment)
+    public function __construct(public Magnet $magnet, public Comment $comment)
     {
     }
 
@@ -20,8 +20,8 @@ class TorrentCommentedNotification extends Notification
     public function toArray()
     {
         return [
-            'id' => $this->torrent->id,
-            'title' => $this->torrent->shortTitle(),
+            'id' => $this->magnet->id,
+            'title' => $this->magnet->shortTitle(),
             'comment' => [
                 'id' => $this->comment->id,
                 'html' => $this->comment->html,

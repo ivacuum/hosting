@@ -60,6 +60,11 @@ return [
     'korean' => __('Корейский язык'),
     'korean/psy' => __('Кириллизация песен PSY'),
 
+    'magnets' => __('Магнеты'),
+    'magnets/add' => __('Добавить раздачу'),
+    'magnets/comments' => __('Комментарии'),
+    'magnets/faq' => __('Помощь'),
+
     'news' => __('Новости'),
 
     'photos' => __('Фотки'),
@@ -75,11 +80,6 @@ return [
     'retracker' => 'What retracker is and how to use it · retracker.local',
     'retracker/dev' => 'About retracker development',
     'retracker/usage' => 'How to use retracker',
-
-    'torrents' => __('Торренты'),
-    'torrents/add' => __('Добавить раздачу'),
-    'torrents/comments' => __('Комментарии'),
-    'torrents/faq' => __('Помощь'),
 
     '@{login}/travel' => __('Заметки'),
     '@{login}/travel/cities' => __('Посещенные города'),

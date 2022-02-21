@@ -6,8 +6,8 @@ use App\Exceptions\CommentLimitExceededException;
 use App\Http\Requests\CommentStoreForm;
 use App\Http\Resources;
 use App\Limits\CommentsTodayLimit;
+use App\Magnet;
 use App\News;
-use App\Torrent;
 use App\Trip;
 use App\User;
 use Ivacuum\Generic\Exceptions\FloodException;
@@ -62,7 +62,7 @@ class AjaxComment extends Controller
     /**
      * @param string $type
      * @param int $id
-     * @return \App\News|\App\Torrent|\App\Trip
+     * @return \App\News|\App\Magnet|\App\Trip
      */
     protected function notifiableModel(string $type, int $id)
     {
@@ -71,7 +71,7 @@ class AjaxComment extends Controller
         } elseif ($type === 'trip') {
             return Trip::query()->published()->findOrFail($id);
         } elseif ($type === 'torrent') {
-            return Torrent::query()->published()->findOrFail($id);
+            return Magnet::query()->published()->findOrFail($id);
         }
 
         throw new \Exception('Не выбран объект для комментирования');

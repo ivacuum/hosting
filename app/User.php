@@ -33,14 +33,14 @@ use Illuminate\Notifications\Notifiable;
  * @property \Illuminate\Database\Eloquent\Collection|Email[] $emails
  * @property \Illuminate\Database\Eloquent\Collection|ExternalIdentity[] $externalIdentities
  * @property \Illuminate\Database\Eloquent\Collection|Image[] $images
+ * @property \Illuminate\Database\Eloquent\Collection|Magnet[] $magnets
  * @property \Illuminate\Database\Eloquent\Collection|News[] $news
  * @property \Illuminate\Database\Eloquent\Collection|Notification[] $notifications
- * @property \Illuminate\Database\Eloquent\Collection|Torrent[] $torrents
  * @property \Illuminate\Database\Eloquent\Collection|Trip[] $trips
  *
  * @property-read int $comments_count
  * @property-read int $images_count
- * @property-read int $torrents_count
+ * @property-read int $magnets_count
  *
  * @mixin \Eloquent
  */
@@ -90,6 +90,11 @@ class User extends Authenticatable implements HasLocalePreference
         return $this->hasMany(Image::class);
     }
 
+    public function magnets()
+    {
+        return $this->hasMany(Magnet::class);
+    }
+
     public function news()
     {
         return $this->hasMany(News::class);
@@ -99,11 +104,6 @@ class User extends Authenticatable implements HasLocalePreference
     {
         return $this->morphMany(Notification::class, 'notifiable')
             ->orderByDesc('created_at');
-    }
-
-    public function torrents()
-    {
-        return $this->hasMany(Torrent::class);
     }
 
     public function trips()

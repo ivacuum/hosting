@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             IssueSeeder::class,
             FileSeeder::class,
             TagSeeder::class,
-            TorrentSeeder::class,
+            MagnetSeeder::class,
             NewsSeeder::class,
             ImageSeeder::class,
             FavoriteMovieSeeder::class,

@@ -1,6 +1,6 @@
 <?php /** @var \App\Comment $comment */ ?>
 
-@extends('torrents.base')
+@extends('magnets.base')
 
 @section('content')
 <h3>Последние комментарии</h3>
@@ -31,7 +31,7 @@
           <em>deleted user</em>
         @endif
         <span class="mx-2 text-muted">&middot;</span>
-        @if ($comment->rel?->status === App\Domain\TorrentStatus::Published)
+        @if ($comment->rel?->status === App\Domain\MagnetStatus::Published)
           <a href="{{ $comment->rel->www() }}#comment-{{ $comment->id }}">{{ Str::limit($comment->rel->title, 50) }}</a>
         @else
           <em class="text-muted">раздача удалена</em>

@@ -20,8 +20,8 @@ class UserSeeder extends Seeder
             ->create();
 
         UserFactory::new()
-            ->withEmail('torrents@example.com')
-            ->withLogin('torrents')
+            ->withEmail('magnets@example.com')
+            ->withLogin('magnets')
             ->create();
     }
 }

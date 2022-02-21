@@ -14,9 +14,9 @@
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-6 mb-12 md:mb-6">
   @ru
     <div class="hidden md:block">
-      <a class="flex items-center mb-2 link-parent" href="@lng/torrents">
+      <a class="flex items-center mb-2 link-parent" href="@lng/magnets">
         <div class="leading-none text-3xl mr-2">🧲</div>
-        <h2 class="text-2xl mb-0"><span class="link">@lang('Торренты')</span></h2>
+        <h2 class="text-2xl mb-0"><span class="link">@lang('Магнеты')</span></h2>
       </a>
       <div>Сервис для скачивания файлов у многочисленных пользователей сети интернет без регистрации и рейтинга.</div>
       {{--<div class="text-muted">Дата запуска: 5 января 2017 г.</div>--}}

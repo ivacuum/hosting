@@ -6,8 +6,8 @@ use Illuminate\Validation\Rule;
 
 class Users extends AbstractController
 {
-    protected $sortableKeys = ['id', 'last_login_at', 'comments_count', 'images_count', 'torrents_count', 'trips_count'];
-    protected $showWithCount = ['chatMessages', 'comments', 'externalIdentities', 'images', 'torrents', 'trips'];
+    protected $sortableKeys = ['id', 'last_login_at', 'comments_count', 'images_count', 'magnets_count', 'trips_count'];
+    protected $showWithCount = ['chatMessages', 'comments', 'externalIdentities', 'images', 'magnets', 'trips'];
 
     public function index()
     {
@@ -16,7 +16,7 @@ class Users extends AbstractController
         $lastLoginAt = request('last_login_at');
 
         $models = Model::query()
-            ->withCount(['comments', 'images', 'torrents', 'trips'])
+            ->withCount(['comments', 'images', 'magnets', 'trips'])
             ->when(null !== $avatar, fn (Builder $query) => $query->where('avatar', $avatar ? '<>' : '=', ''))
             ->when($lastLoginAt === 'week', fn (Builder $query) => $query->where('last_login_at', '>', now()->subWeek()->toDateTimeString()))
             ->when($lastLoginAt === 'month', fn (Builder $query) => $query->where('last_login_at', '>', now()->subMonth()->toDateTimeString()))

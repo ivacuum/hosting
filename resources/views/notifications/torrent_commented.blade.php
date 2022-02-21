@@ -1,7 +1,7 @@
 {{-- Комментарий к раздаче --}}
 <strong>{{ $notification->data['comment']['user']['name'] }}</strong>
 <span class="text-muted">@lang("ui.notifications.{$basename}")</span>
-<a class="link" href="{{ path([App\Http\Controllers\Torrents::class, 'show'], $notification->data['id']) }}#comment-{{ $notification->data['comment']['id'] }}">{{ Str::limit($notification->data['title'], 101) }}</a>
+<a class="link" href="{{ path([App\Http\Controllers\MagnetsController::class, 'show'], $notification->data['id']) }}#comment-{{ $notification->data['comment']['id'] }}">{{ Str::limit($notification->data['title'], 101) }}</a>
 <time
   class="text-muted"
   datetime="{{ $notification->created_at->toDateString() }}"

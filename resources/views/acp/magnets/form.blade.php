@@ -20,6 +20,6 @@
 
 {!! Form::text('rto_id')->required()->html() !!}
 
-{!! Form::radio('status')->required()->values(App\Domain\TorrentStatus::labels())->html() !!}
+{!! Form::radio('status')->required()->values(App\Domain\MagnetStatus::labels())->html() !!}
 
 {!! Form::text('related_query')->html() !!}

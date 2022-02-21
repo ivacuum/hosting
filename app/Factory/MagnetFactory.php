@@ -1,15 +1,15 @@
 <?php namespace App\Factory;
 
-use App\Domain\TorrentStatus;
-use App\Torrent;
+use App\Domain\MagnetStatus;
+use App\Magnet;
 use Illuminate\Foundation\Testing\WithFaker;
 
-class TorrentFactory
+class MagnetFactory
 {
     use WithFaker;
 
     private $title;
-    private $status = TorrentStatus::Published;
+    private $status = MagnetStatus::Published;
     private $userId;
     private $categoryId;
 
@@ -30,7 +30,7 @@ class TorrentFactory
 
         if ($this->commentFactory instanceof CommentFactory) {
             $this->commentFactory
-                ->withTorrentId($model->id)
+                ->withMagnetId($model->id)
                 ->withUserId($model->user_id)
                 ->create();
         }
@@ -40,17 +40,17 @@ class TorrentFactory
 
     public function deleted()
     {
-        return $this->withStatus(TorrentStatus::Deleted);
+        return $this->withStatus(MagnetStatus::Deleted);
     }
 
     public function hidden()
     {
-        return $this->withStatus(TorrentStatus::Hidden);
+        return $this->withStatus(MagnetStatus::Hidden);
     }
 
     public function make()
     {
-        $model = new Torrent;
+        $model = new Magnet;
         $model->html = '<p>HTML</p>';
         $model->size = $this->faker->numberBetween(1000, 100_000_000_000);
         $model->title = $this->title ?? $this->faker->words(3, true);
@@ -92,7 +92,7 @@ class TorrentFactory
         return $factory;
     }
 
-    public function withStatus(TorrentStatus $status)
+    public function withStatus(MagnetStatus $status)
     {
         $factory = clone $this;
         $factory->status = $status;

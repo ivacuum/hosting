@@ -24,10 +24,10 @@
           @if (!$isCrawler)
             @ru
               @component('tpl.menu-item', [
-                'href' => to('torrents'),
-                'isActive' => Str::of($routeUri)->is(['torrents', 'torrents/*']),
+                'href' => to('magnets'),
+                'isActive' => Str::of($routeUri)->is(['magnets', 'magnets/*']),
               ])
-                @lang('Торренты')
+                @lang('Магнеты')
               @endcomponent
             @endru
           @endif

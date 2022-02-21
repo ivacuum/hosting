@@ -1,12 +1,12 @@
 <?php namespace App\Http\Livewire;
 
-use App\Domain\TorrentStatus;
+use App\Domain\MagnetStatus;
+use App\Magnet;
 use App\Rules\TorrentCategoryId;
 use App\Services\Rto;
 use App\Services\RtoMagnetNotFoundException;
 use App\Services\RtoTopicDuplicateException;
 use App\Services\RtoTopicNotFoundException;
-use App\Torrent;
 use Livewire\Component;
 
 class TorrentAddForm extends Component
@@ -59,22 +59,22 @@ class TorrentAddForm extends Component
             event(new \App\Events\Stats\TorrentAddedAnonymously);
         }
 
-        $torrent = new Torrent;
-        $torrent->html = $data->body;
-        $torrent->size = $data->size;
-        $torrent->title = $data->title;
-        $torrent->clicks = 0;
-        $torrent->rto_id = $data->id;
-        $torrent->status = TorrentStatus::Published;
-        $torrent->user_id = $userId ?? config('cfg.torrent_anonymous_releaser');
-        $torrent->info_hash = $data->infoHash;
-        $torrent->announcer = $data->announcer;
-        $torrent->category_id = $this->categoryId;
-        $torrent->registered_at = now();
-        $torrent->related_query = '';
-        $torrent->save();
+        $magnet = new Magnet;
+        $magnet->html = $data->body;
+        $magnet->size = $data->size;
+        $magnet->title = $data->title;
+        $magnet->clicks = 0;
+        $magnet->rto_id = $data->id;
+        $magnet->status = MagnetStatus::Published;
+        $magnet->user_id = $userId ?? config('cfg.torrent_anonymous_releaser');
+        $magnet->info_hash = $data->infoHash;
+        $magnet->announcer = $data->announcer;
+        $magnet->category_id = $this->categoryId;
+        $magnet->registered_at = now();
+        $magnet->related_query = '';
+        $magnet->save();
 
-        return redirect($torrent->www());
+        return redirect($magnet->www());
     }
 
     public function updatedInput()
@@ -97,9 +97,9 @@ class TorrentAddForm extends Component
 
             $topicData = $rto->topicDataById($topicId);
 
-            $torrent = Torrent::firstWhere('rto_id', $topicId);
+            $magnet = Magnet::firstWhere('rto_id', $topicId);
 
-            if ($torrent) {
+            if ($magnet) {
                 event(new \App\Events\Stats\TorrentDuplicateFound);
 
                 $this->addError('input', 'Данная раздача уже присутствует на сайте. Попробуйте добавить другую.');

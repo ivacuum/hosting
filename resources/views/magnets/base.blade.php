@@ -2,7 +2,7 @@
 
 @section('content_header')
 <div class="lg:flex flex-row-reverse items-center justify-between -mt-1 lg:-mt-2 mb-4">
-  <form class="flex mb-2 lg:mb-0" action="@lng/torrents">
+  <form class="flex mb-2 lg:mb-0" action="@lng/magnets">
     <div class="flex w-full">
       <input
         class="form-input rounded-r-none js-search-input"
@@ -20,20 +20,20 @@
   </form>
   @yield('torrent-download-button')
   <x-nav-link-tabs>
-    <x-nav-link-to href="{{ to('torrents') }}" is-active="{{ $routeUri === 'torrents' }}">
+    <x-nav-link-to href="{{ to('magnets') }}" is-active="{{ $routeUri === 'magnets' }}">
       @lang('Новые раздачи')
     </x-nav-link-to>
-    <x-nav-link-to href="{{ to('torrents/add') }}" is-active="{{ $routeUri === 'torrents/add' }}">
+    <x-nav-link-to href="{{ to('magnets/add') }}" is-active="{{ $routeUri === 'magnets/add' }}">
       @lang('Добавить раздачу (меню)')
     </x-nav-link-to>
-    <x-nav-link-to href="{{ to('torrents/faq') }}" is-active="{{ $routeUri === 'torrents/faq' }}">
+    <x-nav-link-to href="{{ to('magnets/faq') }}" is-active="{{ $routeUri === 'magnets/faq' }}">
       @lang('Помощь')
     </x-nav-link-to>
-    <x-nav-link-to href="{{ to('torrents/comments') }}" is-active="{{ $routeUri === 'torrents/comments' }}">
+    <x-nav-link-to href="{{ to('magnets/comments') }}" is-active="{{ $routeUri === 'magnets/comments' }}">
       @lang('Комментарии')
     </x-nav-link-to>
     @auth
-      <x-nav-link-to href="{{ to('torrents/my') }}" is-active="{{ $routeUri === 'torrents/my' }}">
+      <x-nav-link-to href="{{ to('magnets/my') }}" is-active="{{ $routeUri === 'magnets/my' }}">
         @lang('Мои раздачи')
       </x-nav-link-to>
     @endauth

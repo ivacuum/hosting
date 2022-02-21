@@ -17,7 +17,7 @@ use Laravel\Scout\Searchable;
  * @property int $size
  * @property string $info_hash
  * @property string $announcer
- * @property Domain\TorrentStatus $status
+ * @property Domain\MagnetStatus $status
  * @property int $clicks
  * @property int $views
  * @property \Carbon\CarbonImmutable $registered_at
@@ -30,9 +30,11 @@ use Laravel\Scout\Searchable;
  *
  * @mixin \Eloquent
  */
-class Torrent extends Model
+class Magnet extends Model
 {
     use Searchable;
+
+    protected $table = 'torrents';
 
     const LIST_COLUMNS = [
         'id',
@@ -52,7 +54,7 @@ class Torrent extends Model
         'views' => 'int',
         'clicks' => 'int',
         'rto_id' => 'int',
-        'status' => Domain\TorrentStatus::class,
+        'status' => Domain\MagnetStatus::class,
         'user_id' => 'int',
         'category_id' => 'int',
     ];
@@ -81,7 +83,7 @@ class Torrent extends Model
     // Scopes
     public function scopePublished(Builder $query)
     {
-        return $query->where('status', Domain\TorrentStatus::Published);
+        return $query->where('status', Domain\MagnetStatus::Published);
     }
 
     // Methods
@@ -134,7 +136,7 @@ class Torrent extends Model
 
     public function isPublished(): bool
     {
-        return $this->status === Domain\TorrentStatus::Published;
+        return $this->status === Domain\MagnetStatus::Published;
     }
 
     public function magnet(): string
@@ -246,12 +248,12 @@ class Torrent extends Model
 
     public function www(?string $anchor = null): string
     {
-        return path([Http\Controllers\Torrents::class, 'show'], $this->id) . $anchor;
+        return path([Http\Controllers\MagnetsController::class, 'show'], $this->id) . $anchor;
     }
 
     public function wwwAcp(): string
     {
-        return path([Http\Controllers\Acp\Torrents::class, 'show'], $this);
+        return path([Http\Controllers\Acp\Magnets::class, 'show'], $this);
     }
 
     // Static methods
@@ -261,7 +263,7 @@ class Torrent extends Model
             CacheKey::TORRENTS_STATS_BY_CATEGORIES,
             CarbonInterval::minutes(15),
             fn () => static::selectRaw('category_id, COUNT(*) AS total')
-                ->where('status', Domain\TorrentStatus::Published)
+                ->where('status', Domain\MagnetStatus::Published)
                 ->groupBy('category_id')
                 ->pluck('total', 'category_id')
         );

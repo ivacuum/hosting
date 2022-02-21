@@ -1,11 +1,11 @@
 <?php namespace App\Notifications;
 
-use App\Torrent;
+use App\Magnet;
 use Illuminate\Notifications\Notification;
 
 class TorrentNotFoundDeletedNotification extends Notification
 {
-    public function __construct(public Torrent $torrent)
+    public function __construct(public Magnet $magnet)
     {
     }
 
@@ -17,9 +17,9 @@ class TorrentNotFoundDeletedNotification extends Notification
     public function toArray()
     {
         return [
-            'id' => $this->torrent->id,
-            'title' => $this->torrent->title,
-            'rto_id' => $this->torrent->rto_id,
+            'id' => $this->magnet->id,
+            'title' => $this->magnet->title,
+            'rto_id' => $this->magnet->rto_id,
         ];
     }
 }

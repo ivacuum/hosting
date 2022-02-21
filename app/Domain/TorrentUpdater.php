@@ -1,7 +1,7 @@
 <?php namespace App\Domain;
 
+use App\Magnet;
 use App\Services\Rto;
-use App\Torrent;
 
 class TorrentUpdater
 {
@@ -9,28 +9,28 @@ class TorrentUpdater
     {
     }
 
-    public function update(Torrent $torrent)
+    public function update(Magnet $magnet)
     {
-        $data = $this->rto->topicDataById($torrent->rto_id);
+        $data = $this->rto->topicDataById($magnet->rto_id);
 
-        if ($torrent->isNotPublished()) {
-            $torrent->status = TorrentStatus::Published;
+        if ($magnet->isNotPublished()) {
+            $magnet->status = MagnetStatus::Published;
         }
 
-        if ($torrent->info_hash !== $data->infoHash) {
-            $response = $this->rto->parseTopicBody($torrent->rto_id);
+        if ($magnet->info_hash !== $data->infoHash) {
+            $response = $this->rto->parseTopicBody($magnet->rto_id);
 
-            $torrent->html = $response->body;
-            $torrent->announcer = $response->announcer;
+            $magnet->html = $response->body;
+            $magnet->announcer = $response->announcer;
         }
 
-        if ($data->registeredAt->gt($torrent->registered_at)) {
-            $torrent->registered_at = now();
+        if ($data->registeredAt->gt($magnet->registered_at)) {
+            $magnet->registered_at = now();
         }
 
-        $torrent->size = $data->size;
-        $torrent->title = $data->title;
-        $torrent->info_hash = $data->infoHash;
-        $torrent->save();
+        $magnet->size = $data->size;
+        $magnet->title = $data->title;
+        $magnet->info_hash = $data->infoHash;
+        $magnet->save();
     }
 }

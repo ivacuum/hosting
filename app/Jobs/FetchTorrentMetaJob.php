@@ -1,8 +1,8 @@
 <?php namespace App\Jobs;
 
-use App\Domain\TorrentStatus;
+use App\Domain\MagnetStatus;
+use App\Magnet;
 use App\Services\Rto;
-use App\Torrent;
 use Ivacuum\Generic\Services\Telegram;
 
 class FetchTorrentMetaJob extends AbstractJob
@@ -16,34 +16,34 @@ class FetchTorrentMetaJob extends AbstractJob
 
     public function handle(Rto $rto, Telegram $telegram)
     {
-        $torrents = Torrent::query()
+        $magnets = Magnet::query()
             ->whereIn('rto_id', $this->rtoIds)
             ->get();
 
         foreach ($rto->topicDataByIds($this->rtoIds)->topics as $id => $response) {
-            /** @var Torrent $torrent */
-            $torrent = $torrents->firstWhere('rto_id', $id);
+            /** @var Magnet $magnet */
+            $magnet = $magnets->firstWhere('rto_id', $id);
 
             // Раздача не найдена
             if ($response === null) {
-                $torrent->status = TorrentStatus::Deleted;
-                $torrent->save();
+                $magnet->status = MagnetStatus::Deleted;
+                $magnet->save();
 
                 event(new \App\Events\Stats\TorrentNotFoundDeleted);
 
-                $telegram->notifyAdmin("🧲️ Раздача не найдена и удалена\n\n{$torrent->title}\n{$torrent->externalLink()}\n\n" . url($torrent->wwwAcp()));
+                $telegram->notifyAdmin("🧲️ Раздача не найдена и удалена\n\n{$magnet->title}\n{$magnet->externalLink()}\n\n" . url($magnet->wwwAcp()));
 
                 continue;
             }
 
             // Раздача закрыта как повтор
             if ($response->isDuplicate()) {
-                $torrent->status = TorrentStatus::Deleted;
-                $torrent->save();
+                $magnet->status = MagnetStatus::Deleted;
+                $magnet->save();
 
                 event(new \App\Events\Stats\TorrentDuplicateDeleted);
 
-                $telegram->notifyAdmin("🧲️ Раздача закрыта как повторная и удалена\n\n{$torrent->title}\n{$torrent->externalLink()}\n\n" . url($torrent->wwwAcp()));
+                $telegram->notifyAdmin("🧲️ Раздача закрыта как повторная и удалена\n\n{$magnet->title}\n{$magnet->externalLink()}\n\n" . url($magnet->wwwAcp()));
 
                 continue;
             }
@@ -53,15 +53,15 @@ class FetchTorrentMetaJob extends AbstractJob
                 continue;
             }
 
-            $torrent->size = $response->size;
-            $torrent->title = $response->title;
+            $magnet->size = $response->size;
+            $magnet->title = $response->title;
 
-            if ($response->infoHash !== $torrent->info_hash) {
-                dispatch(new FetchTorrentBodyJob($torrent->rto_id));
+            if ($response->infoHash !== $magnet->info_hash) {
+                dispatch(new FetchTorrentBodyJob($magnet->rto_id));
             }
 
-            $torrent->info_hash = $response->infoHash;
-            $torrent->save();
+            $magnet->info_hash = $response->infoHash;
+            $magnet->save();
         }
     }
 }

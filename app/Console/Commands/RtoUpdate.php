@@ -1,7 +1,7 @@
 <?php namespace App\Console\Commands;
 
 use App\Jobs\FetchTorrentMetaJob;
-use App\Torrent;
+use App\Magnet;
 use Illuminate\Support\Collection;
 use Ivacuum\Generic\Commands\Command;
 
@@ -12,11 +12,11 @@ class RtoUpdate extends Command
 
     public function handle()
     {
-        Torrent::published()
+        Magnet::published()
             ->select(['id', 'rto_id'])
             ->orderByDesc('id')
-            ->chunk(100, function (Collection $torrents) {
-                $rtoIds = $torrents->pluck('rto_id')->all();
+            ->chunk(100, function (Collection $magnets) {
+                $rtoIds = $magnets->pluck('rto_id')->all();
 
                 dispatch(new FetchTorrentMetaJob(...$rtoIds));
             });

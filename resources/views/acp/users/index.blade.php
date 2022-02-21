@@ -88,8 +88,8 @@
         </a>
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ path([App\Http\Controllers\Acp\Torrents::class, 'index'], [$model->getForeignKey() => $model]) }}">
-          {{ ViewHelper::number($model->torrents_count) ?: '' }}
+        <a href="{{ path([App\Http\Controllers\Acp\Magnets::class, 'index'], [$model->getForeignKey() => $model]) }}">
+          {{ ViewHelper::number($model->magnets_count) ?: '' }}
         </a>
       </td>
       <td class="md:text-right whitespace-nowrap">

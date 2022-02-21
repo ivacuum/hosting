@@ -59,14 +59,14 @@ class Application {
   }
 
   static conditionalInit() {
-    const { route } = document.body.dataset
+    const {route} = document.body.dataset
 
     if (route === 'news') {
       const observer = NewsViewsObserver()
       observer.observe()
     } else if (route === 'photos/map') {
       PhotosMap.load()
-    } else if (route === 'torrents') {
+    } else if (route === 'magnets') {
       const observer = TorrentsViewsObserver()
       observer.observe()
     }
@@ -74,7 +74,7 @@ class Application {
 
   csrfToken() {
     $.ajaxSetup({
-      headers: { 'X-CSRF-TOKEN': this.options.csrfToken },
+      headers: {'X-CSRF-TOKEN': this.options.csrfToken},
     })
   }
 

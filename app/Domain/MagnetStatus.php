@@ -1,6 +1,6 @@
 <?php namespace App\Domain;
 
-enum TorrentStatus: int
+enum MagnetStatus: int
 {
     case Hidden = 0;
     case Published = 1;

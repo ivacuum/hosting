@@ -1,10 +1,10 @@
 <?php namespace App\Seeder;
 
-use App\Factory\TorrentFactory;
+use App\Factory\MagnetFactory;
 use App\Factory\UserFactory;
 use Illuminate\Database\Seeder;
 
-class TorrentSeeder extends Seeder
+class MagnetSeeder extends Seeder
 {
     public function run()
     {
@@ -13,7 +13,7 @@ class TorrentSeeder extends Seeder
             ->withLogin('magnet')
             ->create();
 
-        $factory = TorrentFactory::new()->withUserId($user->id);
+        $factory = MagnetFactory::new()->withUserId($user->id);
         $factory->advancedTitle()->create();
         $factory->advancedTitle()->create();
         $factory->advancedTitle()->create();

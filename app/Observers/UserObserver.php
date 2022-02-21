@@ -24,8 +24,8 @@ class UserObserver
             $model->comments->each->delete();
             $model->externalIdentities->each->delete();
             $model->images->each->delete();
+            $model->magnets->each->delete();
             $model->news->each->delete();
-            $model->torrents->each->delete();
             $model->trips->each->delete();
         });
     }

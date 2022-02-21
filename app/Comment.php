@@ -14,7 +14,7 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  *
- * @property News|Torrent|Trip $rel
+ * @property News|Magnet|Trip $rel
  * @property User $user
  *
  * @mixin \Eloquent
@@ -118,7 +118,7 @@ class Comment extends Model
     {
         return match ($this->rel_type) {
             'News' => path([Http\Controllers\NewsController::class, 'show'], $this->rel_id) . $this->anchor(),
-            'Torrent' => path([Http\Controllers\Torrents::class, 'show'], $this->rel_id) . $this->anchor(),
+            'Torrent' => path([Http\Controllers\MagnetsController::class, 'show'], $this->rel_id) . $this->anchor(),
             'Trip' => path([Http\Controllers\Trips::class, 'show'], [$this->rel_id, 'anchor' => $this->anchor()]),
             default => '',
         };

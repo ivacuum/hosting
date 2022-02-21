@@ -65,6 +65,8 @@ Route::post('issues/{issue}/close', Acp\IssueCloseController::class);
 Route::post('issues/{issue}/comment', Acp\IssueCommentController::class);
 Route::post('issues/{issue}/open', Acp\IssueOpenController::class);
 
+RouteHelper::withoutCreate(Acp\Magnets::class);
+
 Route::get('metrics', [Acp\Metrics::class, 'index']);
 Route::get('metrics/{event}', [Acp\Metrics::class, 'show']);
 
@@ -84,8 +86,6 @@ Route::post('servers/{id}/ftp/source', [Acp\Servers\Ftp::class, 'sourcePost']);
 Route::post('servers/{id}/ftp/upload', [Acp\Servers\Ftp::class, 'uploadPost']);
 
 RouteHelper::crud(Acp\Tags::class);
-
-RouteHelper::withoutCreate(Acp\Torrents::class);
 
 RouteHelper::crud(Acp\Trips::class);
 Route::get('trips/{trip}/instagram-cover', Acp\TripInstagramCoverController::class);

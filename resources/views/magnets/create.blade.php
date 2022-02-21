@@ -1,4 +1,4 @@
-@extends('torrents.base')
+@extends('magnets.base')
 @include('livewire')
 
 @section('content')

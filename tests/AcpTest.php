@@ -56,6 +56,11 @@ class AcpTest extends TestCase
         $this->get('acp/images')->assertStatus(200);
     }
 
+    public function testPageMagnets()
+    {
+        $this->get('acp/magnets')->assertStatus(200);
+    }
+
     public function testPageMetrics()
     {
         $this->get('acp/metrics')->assertStatus(200);
@@ -79,11 +84,6 @@ class AcpTest extends TestCase
     public function testPageServersCreate()
     {
         $this->get('acp/servers/create')->assertStatus(200);
-    }
-
-    public function testPageTorrents()
-    {
-        $this->get('acp/torrents')->assertStatus(200);
     }
 
     public function testPageUsers()

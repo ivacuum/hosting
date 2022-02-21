@@ -87,6 +87,14 @@ return [
     'kanjis.show' => 'Kanji',
     'kanjis.index' => 'Kanji',
 
+    'magnets.add' => 'Create magnet',
+    'magnets.edit' => 'Edit',
+    'magnets.show' => 'Magnet',
+    'magnets.user' => 'Author',
+    'magnets.index' => 'Magnets',
+    'magnets.create' => 'New magnet',
+    'magnets.update_rto' => 'Update from rutracker',
+
     'metrics.index' => 'Metrics',
 
     'news.add' => 'Create news',
@@ -120,14 +128,6 @@ return [
     'tags.show' => 'Tag',
     'tags.index' => 'Tags',
     'tags.create' => 'New tag',
-
-    'torrents.add' => 'Create torrent',
-    'torrents.edit' => 'Edit',
-    'torrents.show' => 'Torrent',
-    'torrents.user' => 'Author',
-    'torrents.index' => 'Torrents',
-    'torrents.create' => 'New torrent',
-    'torrents.update_rto' => 'Update from rutracker',
 
     'trips.add' => 'Create trip',
     'trips.edit' => 'Edit',

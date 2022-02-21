@@ -64,9 +64,9 @@
 @ru
   <a
     class="hidden md:block btn btn-success leading-tight text-sm ml-2"
-    href="@lng/torrents"
+    href="@lng/magnets"
   >
-    @lang('Торренты')
+    @lang('Магнеты')
   </a>
 @endru
 @endsection

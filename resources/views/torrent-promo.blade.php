@@ -12,7 +12,7 @@
 <section class="bg-light dark:bg-slate-800 pt-4 pb-12">
   <div class="container lg:max-w-3xl">
     <div class="text-center mb-4">
-      <a href="@lng/torrents">
+      <a href="@lng/magnets">
         <img class="w-16 h-16" src="https://ivacuum.org/i/t/images/logo_arrows.png" alt="">
       </a>
     </div>
@@ -20,7 +20,7 @@
     <p><strong>torrent.ivacuum.ru</strong> &mdash; наглядный сервис для обмена файлами, открывшийся <span class="whitespace-nowrap">5 июля</span> 2010 года в локальной сети Билайн города Калуга. Трекер довольно быстро набрал основную массу пользователей и стал местом общения нескольких тысяч калужан. <span class="whitespace-nowrap">1 января 2017</span> года он потерял пристанище в локальной сети и переместился в интернет. Вместе с тем была закрыта регистрация новых пользователей в пользу перехода на новый торрент-трекер на основе магнет-ссылок, открывшийся <span class="whitespace-nowrap">5 января</span> 2017 года.</p>
 
     <div>
-      <a class="btn btn-primary text-lg px-4 py-2" href="@lng/torrents">
+      <a class="btn btn-primary text-lg px-4 py-2" href="@lng/magnets">
         Перейти на трекер
         @svg (angle-right)
       </a>
@@ -34,7 +34,7 @@
     <p>Трекер доступен через интернет для всех желающих. Локальная сеть более не обязательна для подключения. Калуга тоже больше не ограничение — можно заходить из любой точки мира.</p>
 
     <div>
-      <a class="btn btn-primary text-lg px-4 py-2" href="@lng/torrents">
+      <a class="btn btn-primary text-lg px-4 py-2" href="@lng/magnets">
         Перейти на трекер
         @svg (angle-right)
       </a>

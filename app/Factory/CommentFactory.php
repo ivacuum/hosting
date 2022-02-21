@@ -3,8 +3,8 @@
 use App\Comment;
 use App\Domain\CommentStatus;
 use App\Issue;
+use App\Magnet;
 use App\News;
-use App\Torrent;
 use Illuminate\Foundation\Testing\WithFaker;
 
 class CommentFactory
@@ -16,7 +16,7 @@ class CommentFactory
     private $relType;
 
     private $newsFactory;
-    private $torrentFactory;
+    private $magnetFactory;
 
     public function create()
     {
@@ -42,11 +42,11 @@ class CommentFactory
             $model->rel_type = $news->getMorphClass();
         }
 
-        if ($this->torrentFactory instanceof TorrentFactory) {
-            $torrent = $this->torrentFactory->create();
+        if ($this->magnetFactory instanceof MagnetFactory) {
+            $magnet = $this->magnetFactory->create();
 
-            $model->rel_id = $torrent->id;
-            $model->rel_type = $torrent->getMorphClass();
+            $model->rel_id = $magnet->id;
+            $model->rel_type = $magnet->getMorphClass();
         }
 
         return $model;
@@ -68,27 +68,27 @@ class CommentFactory
         return $factory;
     }
 
+    public function withMagnet(MagnetFactory $magnetFactory = null)
+    {
+        $factory = clone $this;
+        $factory->magnetFactory = $magnetFactory ?? MagnetFactory::new();
+
+        return $factory;
+    }
+
+    public function withMagnetId(int $magnetId)
+    {
+        $factory = clone $this;
+        $factory->relId = $magnetId;
+        $factory->relType = (new Magnet)->getMorphClass();
+
+        return $factory;
+    }
+
     public function withNews(NewsFactory $newsFactory = null)
     {
         $factory = clone $this;
         $factory->newsFactory = $newsFactory ?? NewsFactory::new();
-
-        return $factory;
-    }
-
-    public function withTorrent(TorrentFactory $torrentFactory = null)
-    {
-        $factory = clone $this;
-        $factory->torrentFactory = $torrentFactory ?? TorrentFactory::new();
-
-        return $factory;
-    }
-
-    public function withTorrentId(int $torrentId)
-    {
-        $factory = clone $this;
-        $factory->relId = $torrentId;
-        $factory->relType = (new Torrent)->getMorphClass();
 
         return $factory;
     }

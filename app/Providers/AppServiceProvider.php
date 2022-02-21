@@ -45,7 +45,7 @@ class AppServiceProvider extends ServiceProvider
             'Comment' => App\Comment::class,
             'Country' => App\Country::class,
             'Radical' => App\Radical::class,
-            'Torrent' => App\Torrent::class,
+            'Torrent' => App\Magnet::class,
             'Vocabulary' => App\Vocabulary::class,
             'YandexUser' => App\YandexUser::class,
             'ChatMessage' => App\ChatMessage::class,
@@ -63,10 +63,10 @@ class AppServiceProvider extends ServiceProvider
         App\Kanji::observe(App\Observers\KanjiObserver::class);
         App\Photo::observe(App\Observers\PhotoObserver::class);
         App\Domain::observe(App\Observers\DomainObserver::class);
+        App\Magnet::observe(App\Observers\MagnetObserver::class);
         App\Comment::observe(App\Observers\CommentObserver::class);
         App\Country::observe(App\Observers\CountryObserver::class);
         App\Radical::observe(App\Observers\RadicalObserver::class);
-        App\Torrent::observe(App\Observers\TorrentObserver::class);
         App\Vocabulary::observe(App\Observers\VocabularyObserver::class);
         App\YandexUser::observe(App\Observers\YandexUserObserver::class);
         App\ChatMessage::observe(App\Observers\ChatMessageObserver::class);

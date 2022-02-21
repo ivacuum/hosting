@@ -18,7 +18,7 @@ class Users extends Controller
     {
         /** @var User $user */
         $user = User::query()
-            ->withCount(['comments', 'images', 'torrents'])
+            ->withCount(['comments', 'images', 'magnets'])
             ->findOrFail($id);
 
         abort_unless($user->isActive(), 404);

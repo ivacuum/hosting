@@ -130,6 +130,15 @@ Route::middleware('nav:Заметки,life')->group(function () {
     Route::get('life/{slug}', [Ctrl\Life::class, 'page']);
 });
 
+Route::get('magnets', [Ctrl\MagnetsController::class, 'index']);
+Route::view('magnets/add', 'magnets.create');
+Route::get('magnets/comments', [Ctrl\MagnetsController::class, 'comments']);
+Route::get('magnets/faq', [Ctrl\MagnetsController::class, 'faq']);
+Route::get('magnets/my', [Ctrl\MagnetsController::class, 'my'])->middleware('auth');
+Route::post('magnets/request', Ctrl\TorrentRequestRelease::class);
+Route::get('magnets/{magnet}', [Ctrl\MagnetsController::class, 'show'])->middleware('nav:Магнеты,magnets');
+Route::post('magnets/{magnet}/magnet', [Ctrl\MagnetsController::class, 'magnet']);
+
 Route::get('mail/click/{timestamp}/{id}', [Ctrl\Mail::class, 'click'])->name('mail.click');
 Route::get('mail/report/{timestamp}/{id}', [Ctrl\Mail::class, 'report'])->middleware('auth');
 Route::get('mail/view/{timestamp}/{id}', [Ctrl\Mail::class, 'view']);
@@ -222,15 +231,6 @@ Route::put('subscriptions', [Ctrl\Subscriptions::class, 'update'])->middleware('
 Route::get('subscriptions/confirm', [Ctrl\Subscriptions::class, 'confirm'])->middleware('auth');
 
 Route::get('torrent', Ctrl\TorrentPromo::class);
-
-Route::get('torrents', [Ctrl\Torrents::class, 'index']);
-Route::view('torrents/add', 'torrents.create');
-Route::get('torrents/comments', [Ctrl\Torrents::class, 'comments']);
-Route::get('torrents/faq', [Ctrl\Torrents::class, 'faq']);
-Route::get('torrents/my', [Ctrl\Torrents::class, 'my'])->middleware('auth');
-Route::post('torrents/request', Ctrl\TorrentRequestRelease::class);
-Route::get('torrents/{torrent}', [Ctrl\Torrents::class, 'show'])->middleware('nav:Торренты,torrents');
-Route::post('torrents/{torrent}/magnet', [Ctrl\Torrents::class, 'magnet']);
 
 Route::get('trips/{trip}', [Ctrl\Trips::class, 'show']);
 

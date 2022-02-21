@@ -1,7 +1,7 @@
 <?php namespace App\Notifications;
 
-use App\Http\Controllers\Torrents;
-use App\Torrent;
+use App\Http\Controllers\MagnetsController;
+use App\Magnet;
 use App\User;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\Telegram\TelegramChannel;
@@ -9,7 +9,7 @@ use NotificationChannels\Telegram\TelegramMessage;
 
 class TorrentUpdatedNotification extends Notification
 {
-    public function __construct(public Torrent $torrent)
+    public function __construct(public Magnet $magnet)
     {
     }
 
@@ -23,19 +23,19 @@ class TorrentUpdatedNotification extends Notification
     public function toArray()
     {
         return [
-            'id' => $this->torrent->id,
-            'title' => $this->torrent->title,
-            'info_hash' => $this->torrent->info_hash,
-            'announcer' => $this->torrent->announcer,
+            'id' => $this->magnet->id,
+            'title' => $this->magnet->title,
+            'info_hash' => $this->magnet->info_hash,
+            'announcer' => $this->magnet->announcer,
         ];
     }
 
     public function toTelegram(User $notifiable)
     {
-        $url = action([Torrents::class, 'show'], $this->torrent->id);
+        $url = action([MagnetsController::class, 'show'], $this->magnet->id);
 
         return TelegramMessage::create()
             ->to($notifiable->telegram_id)
-            ->content("Обновлена раздача *{$this->torrent->title}*\n\n{$url}");
+            ->content("Обновлена раздача *{$this->magnet->title}*\n\n{$url}");
     }
 }

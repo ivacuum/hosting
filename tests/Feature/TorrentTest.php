@@ -1,11 +1,11 @@
 <?php namespace Tests\Feature;
 
 use App\Factory\CommentFactory;
-use App\Factory\TorrentFactory;
+use App\Factory\MagnetFactory;
 use App\Factory\UserFactory;
 use App\Http\Livewire\TorrentAddForm;
+use App\Magnet;
 use App\Services\RtoTopicData;
-use App\Torrent;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\Client\Factory;
@@ -19,18 +19,18 @@ class TorrentTest extends TestCase
     public function testCategoryFilter()
     {
         $categoryId = 2;
-        $torrent = TorrentFactory::new()->withCategoryId($categoryId)->create();
+        $magnet = MagnetFactory::new()->withCategoryId($categoryId)->create();
 
-        $this->get("torrents?category_id={$categoryId}")
+        $this->get("magnets?category_id={$categoryId}")
             ->assertOk()
-            ->assertSee($torrent->title);
+            ->assertSee($magnet->title);
     }
 
     public function testComments()
     {
-        $comment = CommentFactory::new()->withTorrent()->create();
+        $comment = CommentFactory::new()->withMagnet()->create();
 
-        $this->get('torrents/comments')
+        $this->get('magnets/comments')
             ->assertOk()
             ->assertSee($comment->html);
     }
@@ -40,29 +40,29 @@ class TorrentTest extends TestCase
         $user = UserFactory::new()->withId(1)->make();
 
         $this->be($user)
-            ->get('torrents/add')
+            ->get('magnets/add')
             ->assertOk()
             ->assertSeeLivewire(TorrentAddForm::class);
     }
 
     public function testFaq()
     {
-        $this->get('torrents/faq')
+        $this->get('magnets/faq')
             ->assertOk();
     }
 
     public function testIndex()
     {
-        $torrent = TorrentFactory::new()->create();
+        $magnet = MagnetFactory::new()->create();
 
-        $this->get('torrents')
+        $this->get('magnets')
             ->assertOk()
-            ->assertSee($torrent->title);
+            ->assertSee($magnet->title);
     }
 
     public function testLivewireState()
     {
-        $stub = TorrentFactory::new()->make();
+        $stub = MagnetFactory::new()->make();
 
         $this->fakeHttpRequests($stub);
 
@@ -76,25 +76,25 @@ class TorrentTest extends TestCase
 
     public function testMagnetClick()
     {
-        $torrent = TorrentFactory::new()->create();
-        $clicks = $torrent->clicks;
+        $magnet = MagnetFactory::new()->create();
+        $clicks = $magnet->clicks;
 
-        $this->post("torrents/{$torrent->id}/magnet")
+        $this->post("magnets/{$magnet->id}/magnet")
             ->assertNoContent();
 
-        $torrent->refresh();
+        $magnet->refresh();
 
-        $this->assertSame($clicks + 1, $torrent->clicks);
+        $this->assertSame($clicks + 1, $magnet->clicks);
     }
 
     public function testMy()
     {
-        $torrent = TorrentFactory::new()->create();
+        $magnet = MagnetFactory::new()->create();
 
-        $this->be($torrent->user)
-            ->get('torrents/my')
+        $this->be($magnet->user)
+            ->get('magnets/my')
             ->assertOk()
-            ->assertSee($torrent->title);
+            ->assertSee($magnet->title);
     }
 
     public function testPromo()
@@ -109,9 +109,9 @@ class TorrentTest extends TestCase
         \Queue::fake();
 
         $this
-            ->from('torrents')
-            ->post('torrents/request', ['query' => 'query'])
-            ->assertRedirect('torrents')
+            ->from('magnets')
+            ->post('magnets/request', ['query' => 'query'])
+            ->assertRedirect('magnets')
             ->assertSessionHasNoErrors();
 
         \Queue::assertPushed(SendTelegramMessageJob::class);
@@ -119,27 +119,27 @@ class TorrentTest extends TestCase
 
     public function testSearch()
     {
-        $torrent = TorrentFactory::new()
+        $magnet = MagnetFactory::new()
             ->withTitle('title 20172017 something else')
             ->create();
 
-        $this->get('torrents?q=20172017')
+        $this->get('magnets?q=20172017')
             ->assertOk()
-            ->assertSee($torrent->title);
+            ->assertSee($magnet->title);
     }
 
     public function testShow()
     {
-        $torrent = TorrentFactory::new()->create();
+        $magnet = MagnetFactory::new()->create();
 
-        $this->get("torrents/{$torrent->id}")
+        $this->get("magnets/{$magnet->id}")
             ->assertOk()
-            ->assertSee($torrent->title);
+            ->assertSee($magnet->title);
     }
 
     public function testStoreAsAnonymous()
     {
-        $stub = TorrentFactory::new()->make();
+        $stub = MagnetFactory::new()->make();
 
         $this->fakeHttpRequests($stub);
 
@@ -154,18 +154,18 @@ class TorrentTest extends TestCase
         $user = User::find(config('cfg.torrent_anonymous_releaser'))
             ?? UserFactory::new()->withId(config('cfg.torrent_anonymous_releaser'))->create();
 
-        /** @var Torrent $torrent */
-        $torrent = $user->torrents()->latest('id')->first();
+        /** @var Magnet $magnet */
+        $magnet = $user->magnets()->latest('id')->first();
 
-        $livewire->assertRedirect($torrent->www());
+        $livewire->assertRedirect($magnet->www());
 
-        $this->assertSame($stub->rto_id, $torrent->rto_id);
-        $this->assertSame($stub->category_id, $torrent->category_id);
+        $this->assertSame($stub->rto_id, $magnet->rto_id);
+        $this->assertSame($stub->category_id, $magnet->category_id);
     }
 
     public function testStoreAsUser()
     {
-        $stub = TorrentFactory::new()->make();
+        $stub = MagnetFactory::new()->make();
         $user = UserFactory::new()->create();
 
         $this->fakeHttpRequests($stub);
@@ -179,32 +179,32 @@ class TorrentTest extends TestCase
             ->call('submit')
             ->assertHasNoErrors();
 
-        $torrent = $user->torrents[0];
+        $magnet = $user->magnets[0];
 
-        $livewire->assertRedirect($torrent->www());
+        $livewire->assertRedirect($magnet->www());
 
-        $this->assertSame($stub->rto_id, $torrent->rto_id);
-        $this->assertSame($stub->category_id, $torrent->category_id);
+        $this->assertSame($stub->rto_id, $magnet->rto_id);
+        $this->assertSame($stub->category_id, $magnet->category_id);
     }
 
     public function testStoreDuplicate()
     {
-        $torrent = TorrentFactory::new()->create();
+        $magnet = MagnetFactory::new()->create();
         $user = UserFactory::new()->create();
 
-        $this->fakeHttpRequests($torrent);
+        $this->fakeHttpRequests($magnet);
 
         $this->be($user)
             ->expectsEvents(\App\Events\Stats\TorrentDuplicateFound::class);
 
         \Livewire::test(TorrentAddForm::class)
-            ->set('input', $torrent->externalLink())
+            ->set('input', $magnet->externalLink())
             ->assertHasErrors('input');
 
-        $this->assertCount(0, $user->torrents);
+        $this->assertCount(0, $user->magnets);
     }
 
-    private function fakeHttpRequests(Torrent $stub)
+    private function fakeHttpRequests(Magnet $stub)
     {
         $this->swap(Factory::class, \Http::fake([
             "api.rutracker.org/v1/get_tor_topic_data?by=topic_id&val={$stub->rto_id}" => \Http::response([

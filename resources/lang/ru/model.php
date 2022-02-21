@@ -85,6 +85,16 @@ return [
     'kanji.similar_kanji' => 'Похожие кандзи',
     'kanji.radicals_count' => 'Ключи',
 
+    'magnet.views' => 'Просмотры',
+    'magnet.clicks' => 'Клики по магнету',
+    'magnet.rto_id' => 'RTO ID',
+    'magnet.status' => 'Состояние',
+    'magnet.comments' => 'Комментарии',
+    'magnet.announcer' => 'Анонсер',
+    'magnet.info_hash' => 'Инфо-хэш',
+    'magnet.updated_at' => 'Обновлена',
+    'magnet.related_query' => 'Запрос похожих раздач',
+
     'news.html' => 'HTML',
     'news.title' => 'Заголовок',
     'news.status' => 'Состояние',
@@ -100,16 +110,6 @@ return [
     'server.text' => 'Заметки',
 
     'tag.title' => 'Тэг',
-
-    'torrent.views' => 'Просмотры',
-    'torrent.clicks' => 'Клики по магнету',
-    'torrent.rto_id' => 'RTO ID',
-    'torrent.status' => 'Состояние',
-    'torrent.comments' => 'Комментарии',
-    'torrent.announcer' => 'Анонсер',
-    'torrent.info_hash' => 'Инфо-хэш',
-    'torrent.updated_at' => 'Обновлена',
-    'torrent.related_query' => 'Запрос похожих раздач',
 
     'trip.status' => 'Состояние',
     'trip.markdown' => 'Текст',

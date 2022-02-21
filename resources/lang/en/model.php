@@ -77,6 +77,16 @@ return [
     'kanji.similar_kanji' => 'Similar kanji',
     'kanji.radicals_count' => 'Radicals',
 
+    'magnet.views' => 'Views',
+    'magnet.clicks' => 'Magnet clicked',
+    'magnet.rto_id' => 'RTO ID',
+    'magnet.status' => 'Status',
+    'magnet.comments' => 'Comments',
+    'magnet.announcer' => 'Announcer',
+    'magnet.info_hash' => 'Info-hash',
+    'magnet.updated_at' => 'Updated on',
+    'magnet.related_query' => 'Related query',
+
     'news.html' => 'HTML',
     'news.status' => 'Status',
 
@@ -89,16 +99,6 @@ return [
     'server.text' => 'Notes',
 
     'tag.title' => 'Tag',
-
-    'torrent.views' => 'Views',
-    'torrent.clicks' => 'Magnet clicked',
-    'torrent.rto_id' => 'RTO ID',
-    'torrent.status' => 'Status',
-    'torrent.comments' => 'Comments',
-    'torrent.announcer' => 'Announcer',
-    'torrent.info_hash' => 'Info-hash',
-    'torrent.updated_at' => 'Updated on',
-    'torrent.related_query' => 'Related query',
 
     'trip.status' => 'Status',
     'trip.markdown' => 'Text',

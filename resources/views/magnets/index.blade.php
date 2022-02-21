@@ -1,4 +1,4 @@
-@extends('torrents.base')
+@extends('magnets.base')
 @include('livewire')
 
 @section('content')
@@ -11,7 +11,7 @@
             @if (!empty($categoryId) && $id == $categoryId)
               <mark>{{ $category['title'] }}</mark>
             @else
-              <a class="visited" href="{{ to('torrents', ['category_id' => $id]) }}">{{ $category['title'] }}</a>
+              <a class="visited" href="{{ to('magnets', ['category_id' => $id]) }}">{{ $category['title'] }}</a>
             @endif
           </h4>
           @if (!empty($category['children']))
@@ -23,7 +23,7 @@
                 @else
                   <a
                     class="visited"
-                    href="{{ to('torrents', ['category_id' => $id]) }}"
+                    href="{{ to('magnets', ['category_id' => $id]) }}"
                   >{{ $child['title'] }}</a>
                 @endif
                 <span class="text-muted text-xs">{{ $stats[$id] }}</span>
@@ -35,7 +35,7 @@
       @guest
         @ru
           <div class="mt-6 mr-6 p-2 text-xs text-teal-800 dark:text-teal-400/75 bg-teal-200/50 dark:bg-teal-400/25 border border-teal-200/50 rounded">
-            <a class="link" href="{{ path([App\Http\Controllers\Auth\SignIn::class, 'index'], ['goto' => path([App\Http\Controllers\Torrents::class, 'index'])]) }}">Пользователям</a> доступен чат
+            <a class="link" href="{{ path([App\Http\Controllers\Auth\SignIn::class, 'index'], ['goto' => path([App\Http\Controllers\MagnetsController::class, 'index'])]) }}">Пользователям</a> доступен чат
           </div>
         @endru
       @endguest
@@ -65,48 +65,48 @@
             Искать в описаниях раздач
           </a>
         @endif
-        <a class="btn btn-primary" href="{{ App\Torrent::externalSearchLink($q) }}">
+        <a class="btn btn-primary" href="{{ App\Magnet::externalSearchLink($q) }}">
           Искать на рутрекере
           @svg (external-link)
         </a>
       </div>
     @endif
     <?php $lastDate = null ?>
-    @if (sizeof($torrents))
-      <?php /** @var App\Torrent $torrent */ ?>
-      @foreach ($torrents as $torrent)
-        @if (null === $lastDate || !$torrent->registered_at->isSameDay($lastDate))
-          <h6 class="{{ $loop->first ? 'mt-0' : 'mt-6' }}">{{ $torrent->fullDate() }}</h6>
-          <?php $lastDate = $torrent->registered_at ?>
+    @if (sizeof($magnets))
+      <?php /** @var App\Magnet $magnet */ ?>
+      @foreach ($magnets as $magnet)
+        @if (null === $lastDate || !$magnet->registered_at->isSameDay($lastDate))
+          <h6 class="{{ $loop->first ? 'mt-0' : 'mt-6' }}">{{ $magnet->fullDate() }}</h6>
+          <?php $lastDate = $magnet->registered_at ?>
         @endif
-        <?php $category = TorrentCategoryHelper::find($torrent->category_id) ?>
-        <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start torrents-list-container antialiased hover:dark:bg-slate-800 js-torrents-views-observer" data-id="{{ $torrent->id }}">
+        <?php $category = TorrentCategoryHelper::find($magnet->category_id) ?>
+        <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start torrents-list-container antialiased hover:dark:bg-slate-800 js-torrents-views-observer" data-id="{{ $magnet->id }}">
           <div class="flex-shrink-0 w-8 torrent-icon order-1 md:order-none mr-1 md:text-2xl" title="{{ $category['title'] }}">
             <?php $icon = $category['icon'] ?? 'file-text-o' ?>
             @svg ($icon)
           </div>
-          <a class="grow mb-2 md:mb-0 md:mr-4 visited" href="{{ $torrent->www() }}">
+          <a class="grow mb-2 md:mb-0 md:mr-4 visited" href="{{ $magnet->www() }}">
             @if (Auth::user()?->torrent_short_title)
-              <div>{{ $torrent->shortTitle() }}</div>
+              <div>{{ $magnet->shortTitle() }}</div>
             @else
               <div class="font-bold">
-                <x-magnet-title>{{ $torrent->title }}</x-magnet-title>
+                <x-magnet-title>{{ $magnet->title }}</x-magnet-title>
               </div>
             @endif
           </a>
           <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center md:text-left whitespace-nowrap js-magnet"
-             href="{{ $torrent->magnet() }}"
+             href="{{ $magnet->magnet() }}"
              title="@lang('Магнет')"
-             data-action="{{ to('torrents/{torrent}/magnet', $torrent) }}"
+             data-action="{{ to('magnets/{magnet}/magnet', $magnet) }}"
           >
             @svg (magnet)
-            <span class="js-magnet-counter">{{ $torrent->clicks ?: '' }}</span>
+            <span class="js-magnet-counter">{{ $magnet->clicks ?: '' }}</span>
           </a>
-          <div class="flex-shrink-0 text-center md:text-left whitespace-nowrap torrents-list-size">{{ ViewHelper::size($torrent->size) }}</div>
+          <div class="flex-shrink-0 text-center md:text-left whitespace-nowrap torrents-list-size">{{ ViewHelper::size($magnet->size) }}</div>
         </div>
       @endforeach
 
-      @include('tpl.paginator', ['paginator' => $torrents, 'cloak' => true])
+      @include('tpl.paginator', ['paginator' => $magnets, 'cloak' => true])
     @else
       <div class="mb-4 py-3 px-5 text-yellow-800/75 dark:text-yellow-400/75 bg-yellow-300/25 dark:bg-yellow-400/25 border border-yellow-200 dark:border-yellow-300/25 rounded">
         Подходящих раздач не найдено.
@@ -174,9 +174,9 @@
 
       <details class="mt-4">
         <summary>Не нашли искомую раздачу? Оставьте нам запрос</summary>
-        <div class="mt-2 mb-6">Мы можем помочь с поиском. Расскажите как можно подробнее что вы ищете. Мы постараемся добавить раздачу в течение суток, однако вы можете самостоятельно продолжить поиск по <a class="link" href="{{ App\Torrent::externalSearchLink($q) }}">рутрекеру</a> и затем <a class="link" href="/torrents/add">поделиться находкой</a> с остальными пользователями.</div>
+        <div class="mt-2 mb-6">Мы можем помочь с поиском. Расскажите как можно подробнее что вы ищете. Мы постараемся добавить раздачу в течение суток, однако вы можете самостоятельно продолжить поиск по <a class="link" href="{{ App\Magnet::externalSearchLink($q) }}">рутрекеру</a> и затем <a class="link" href="/magnets/add">поделиться находкой</a> с остальными пользователями.</div>
 
-        <form action="@lng/torrents/request" method="post">
+        <form action="@lng/magnets/request" method="post">
           {{ ViewHelper::inputHiddenMail() }}
           @csrf
 

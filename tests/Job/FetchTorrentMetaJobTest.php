@@ -1,7 +1,7 @@
 <?php namespace Tests\Job;
 
-use App\Domain\TorrentStatus;
-use App\Factory\TorrentFactory;
+use App\Domain\MagnetStatus;
+use App\Factory\MagnetFactory;
 use App\Jobs\FetchTorrentBodyJob;
 use App\Jobs\FetchTorrentMetaJob;
 use App\Services\RtoTopicData;
@@ -18,15 +18,15 @@ class FetchTorrentMetaJobTest extends TestCase
         \Bus::fake();
 
         $infoHash = 'updated-info-hash';
-        $torrent = TorrentFactory::new()->create();
+        $magnet = MagnetFactory::new()->create();
 
         $topicData = new RtoTopicData(
-            $torrent->rto_id,
-            $torrent->title,
+            $magnet->rto_id,
+            $magnet->title,
             $infoHash,
-            $torrent->registered_at,
+            $magnet->registered_at,
             RtoTopicData::STATUS_APPROVED,
-            $torrent->size,
+            $magnet->size,
             3,
             4,
             5,
@@ -35,27 +35,27 @@ class FetchTorrentMetaJobTest extends TestCase
 
         $this->swap(Factory::class, $this->fakeHttpClient($topicData));
 
-        $job = new FetchTorrentMetaJob($torrent->rto_id);
+        $job = new FetchTorrentMetaJob($magnet->rto_id);
         $this->app->call([$job, 'handle']);
 
-        $torrent->refresh();
+        $magnet->refresh();
 
-        $this->assertSame($infoHash, $torrent->info_hash);
+        $this->assertSame($infoHash, $magnet->info_hash);
 
         \Bus::assertDispatched(FetchTorrentBodyJob::class);
     }
 
     public function testDuplicateDeleted()
     {
-        $torrent = TorrentFactory::new()->create();
+        $magnet = MagnetFactory::new()->create();
 
         $topicData = new RtoTopicData(
-            $torrent->rto_id,
-            $torrent->title,
-            $torrent->info_hash,
-            $torrent->registered_at,
+            $magnet->rto_id,
+            $magnet->title,
+            $magnet->info_hash,
+            $magnet->registered_at,
             RtoTopicData::STATUS_DUPLICATE,
-            $torrent->size,
+            $magnet->size,
             3,
             4,
             5,
@@ -66,25 +66,25 @@ class FetchTorrentMetaJobTest extends TestCase
 
         $this->expectsEvents(\App\Events\Stats\TorrentDuplicateDeleted::class);
 
-        $job = new FetchTorrentMetaJob($torrent->rto_id);
+        $job = new FetchTorrentMetaJob($magnet->rto_id);
         $this->app->call([$job, 'handle']);
 
-        $torrent->refresh();
+        $magnet->refresh();
 
-        $this->assertSame(TorrentStatus::Deleted, $torrent->status);
+        $this->assertSame(MagnetStatus::Deleted, $magnet->status);
     }
 
     public function testMetaUpdated()
     {
         $size = 1234567890;
         $title = 'TITLE';
-        $torrent = TorrentFactory::new()->create();
+        $magnet = MagnetFactory::new()->create();
 
         $topicData = new RtoTopicData(
-            $torrent->rto_id,
+            $magnet->rto_id,
             $title,
-            $torrent->info_hash,
-            $torrent->registered_at,
+            $magnet->info_hash,
+            $magnet->registered_at,
             RtoTopicData::STATUS_APPROVED,
             $size,
             3,
@@ -95,23 +95,23 @@ class FetchTorrentMetaJobTest extends TestCase
 
         $this->swap(Factory::class, $this->fakeHttpClient($topicData));
 
-        $job = new FetchTorrentMetaJob($torrent->rto_id);
+        $job = new FetchTorrentMetaJob($magnet->rto_id);
         $this->app->call([$job, 'handle']);
 
-        $torrent->refresh();
+        $magnet->refresh();
 
-        $this->assertSame($size, $torrent->size);
-        $this->assertSame($title, $torrent->title);
+        $this->assertSame($size, $magnet->size);
+        $this->assertSame($title, $magnet->title);
     }
 
     public function testNotFoundAndDeleted()
     {
-        $torrent = TorrentFactory::new()->create();
+        $magnet = MagnetFactory::new()->create();
 
         $this->swap(Factory::class, \Http::fake([
-            "api.rutracker.org/v1/get_tor_topic_data?by=topic_id&val={$torrent->rto_id}" => \Http::response([
+            "api.rutracker.org/v1/get_tor_topic_data?by=topic_id&val={$magnet->rto_id}" => \Http::response([
                 'result' => [
-                    $torrent->rto_id => null,
+                    $magnet->rto_id => null,
                 ],
             ]),
             '*' => \Http::response(),
@@ -119,26 +119,26 @@ class FetchTorrentMetaJobTest extends TestCase
 
         $this->expectsEvents(\App\Events\Stats\TorrentNotFoundDeleted::class);
 
-        $job = new FetchTorrentMetaJob($torrent->rto_id);
+        $job = new FetchTorrentMetaJob($magnet->rto_id);
         $this->app->call([$job, 'handle']);
 
-        $torrent->refresh();
+        $magnet->refresh();
 
-        $this->assertSame(TorrentStatus::Deleted, $torrent->status);
+        $this->assertSame(MagnetStatus::Deleted, $magnet->status);
     }
 
     public function testPremoderationLeavesTorrentMetaUntouched()
     {
-        $torrent = TorrentFactory::new()->create();
+        $magnet = MagnetFactory::new()->create();
 
-        $size = $torrent->size;
-        $title = $torrent->title;
+        $size = $magnet->size;
+        $title = $magnet->title;
 
         $topicData = new RtoTopicData(
-            $torrent->rto_id,
+            $magnet->rto_id,
             'NEW TITLE',
-            $torrent->info_hash,
-            $torrent->registered_at,
+            $magnet->info_hash,
+            $magnet->registered_at,
             RtoTopicData::STATUS_PREMODERATION,
             1234567890,
             3,
@@ -149,13 +149,13 @@ class FetchTorrentMetaJobTest extends TestCase
 
         $this->swap(Factory::class, $this->fakeHttpClient($topicData));
 
-        $job = new FetchTorrentMetaJob($torrent->rto_id);
+        $job = new FetchTorrentMetaJob($magnet->rto_id);
         $this->app->call([$job, 'handle']);
 
-        $torrent->refresh();
+        $magnet->refresh();
 
-        $this->assertSame($size, $torrent->size);
-        $this->assertSame($title, $torrent->title);
+        $this->assertSame($size, $magnet->size);
+        $this->assertSame($title, $magnet->title);
     }
 
     private function fakeHttpClient(RtoTopicData $topicData)

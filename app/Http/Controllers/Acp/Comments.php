@@ -2,8 +2,8 @@
 
 use App\Comment as Model;
 use App\Issue;
+use App\Magnet;
 use App\News;
-use App\Torrent;
 use App\Trip;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -16,7 +16,7 @@ class Comments extends AbstractController
         $tripId = request('trip_id');
         $userId = request('user_id');
         $issueId = request('issue_id');
-        $torrentId = request('torrent_id');
+        $magnetId = request('magnet_id');
 
         $models = Model::query()
             ->with('user')
@@ -24,7 +24,7 @@ class Comments extends AbstractController
             ->when($issueId, fn (Builder $query) => $query->where('rel_type', (new Issue)->getMorphClass())->where('rel_id', $issueId))
             ->when($newsId, fn (Builder $query) => $query->where('rel_type', (new News)->getMorphClass())->where('rel_id', $newsId))
             ->when($tripId, fn (Builder $query) => $query->where('rel_type', (new Trip)->getMorphClass())->where('rel_id', $tripId))
-            ->when($torrentId, fn (Builder $query) => $query->where('rel_type', (new Torrent)->getMorphClass())->where('rel_id', $torrentId))
+            ->when($magnetId, fn (Builder $query) => $query->where('rel_type', (new Magnet)->getMorphClass())->where('rel_id', $magnetId))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->orderByDesc('id')
             ->paginate(20);

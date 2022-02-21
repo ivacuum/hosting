@@ -1,6 +1,6 @@
 <?php namespace App\Seeder;
 
-use App\Torrent;
+use App\Magnet;
 use Illuminate\Database\Seeder;
 
 class UploadsPruner extends Seeder
@@ -31,7 +31,7 @@ class UploadsPruner extends Seeder
 
     private function pruneSearchIndex()
     {
-        Torrent::removeAllFromSearch();
+        Magnet::removeAllFromSearch();
     }
 
     private function pruneTemp()

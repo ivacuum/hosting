@@ -1,8 +1,8 @@
 <?php namespace App\Jobs;
 
+use App\Magnet;
 use App\Notifications\TorrentUpdatedNotification;
 use App\Services\Rto;
-use App\Torrent;
 
 class FetchTorrentBodyJob extends AbstractJob
 {
@@ -14,17 +14,17 @@ class FetchTorrentBodyJob extends AbstractJob
 
     public function handle(Rto $rto)
     {
-        $torrent = Torrent::firstWhere('rto_id', $this->rtoId);
+        $magnet = Magnet::firstWhere('rto_id', $this->rtoId);
 
-        $topicData = $rto->parseTopicBody($torrent->rto_id);
+        $topicData = $rto->parseTopicBody($magnet->rto_id);
 
-        $torrent->html = $topicData->body;
-        $torrent->announcer = $topicData->announcer;
-        $torrent->registered_at = now();
-        $torrent->save();
+        $magnet->html = $topicData->body;
+        $magnet->announcer = $topicData->announcer;
+        $magnet->registered_at = now();
+        $magnet->save();
 
         event(new \App\Events\Stats\TorrentUpdated);
 
-        $torrent->user->notify(new TorrentUpdatedNotification($torrent));
+        $magnet->user->notify(new TorrentUpdatedNotification($magnet));
     }
 }

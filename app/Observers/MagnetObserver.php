@@ -1,9 +1,9 @@
 <?php namespace App\Observers;
 
 use App\Events\TorrentAddedAnonymously;
-use App\Torrent as Model;
+use App\Magnet as Model;
 
-class TorrentObserver
+class MagnetObserver
 {
     public function created(Model $model)
     {

@@ -58,7 +58,7 @@
     'acp/chat-messages*',
     'acp/comments*',
     'acp/dcpp-hubs*',
-    'acp/torrents*',
+    'acp/magnets*',
     'acp/files*',
     'acp/news*',
     'acp/images*',
@@ -74,7 +74,7 @@
   <x-dropdown-item href="/acp/files">@lang('acp.files.index')</x-dropdown-item>
   <x-dropdown-item href="/acp/news">@lang('acp.news.index')</x-dropdown-item>
   <x-dropdown-item href="/acp/images">@lang('acp.images.index')</x-dropdown-item>
-  <x-dropdown-item href="/acp/torrents">@lang('acp.torrents.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/magnets">@lang('acp.magnets.index')</x-dropdown-item>
 @endcomponent
 @component('tpl.menu-dropdown', [
   'isActive' => Str::of($routeUri)->is([
