@@ -14,14 +14,4 @@ class JsonFormatter extends Component
             return 'Specified json is invalid. Please correct it.';
         }
     }
-
-    public function rules()
-    {
-        return [
-            'json' => [
-                'required',
-                'json',
-            ],
-        ];
-    }
 }
