@@ -4,7 +4,6 @@ use App\Http\Controllers\MagnetsController;
 use App\Magnet;
 use App\User;
 use Illuminate\Notifications\Notification;
-use NotificationChannels\Telegram\TelegramChannel;
 use NotificationChannels\Telegram\TelegramMessage;
 
 class TorrentUpdatedNotification extends Notification
@@ -16,7 +15,7 @@ class TorrentUpdatedNotification extends Notification
     public function via(User $notifiable)
     {
         return $notifiable->telegram_id
-            ? [TelegramChannel::class]
+            ? ['telegram']
             : ['database'];
     }
 
