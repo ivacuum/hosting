@@ -5,7 +5,6 @@ use App\Kanji;
 use App\Radical;
 use App\Vocabulary;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Http\Client\Factory;
 use Tests\TestCase;
 
 class ParseWanikaniTest extends TestCase
@@ -14,7 +13,7 @@ class ParseWanikaniTest extends TestCase
 
     public function testOk()
     {
-        $this->swap(Factory::class, \Http::fake([
+        \Http::fake([
             'api.wanikani.com/v2/subjects?hidden=false&levels=1' => \Http::response([
                 'data' => [
                     [
@@ -178,7 +177,7 @@ class ParseWanikaniTest extends TestCase
                 'url' => 'https://api.wanikani.com/v2/subjects',
             ]),
             '*' => \Http::response(),
-        ]));
+        ]);
 
         $this->artisan(ParseWanikani::class);
 

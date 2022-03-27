@@ -6,7 +6,6 @@ use App\Jobs\FetchTorrentBodyJob;
 use App\Jobs\FetchTorrentMetaJob;
 use App\Services\RtoTopicData;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Http\Client\Factory;
 use Tests\TestCase;
 
 class FetchTorrentMetaJobTest extends TestCase
@@ -33,7 +32,7 @@ class FetchTorrentMetaJobTest extends TestCase
             now()
         );
 
-        $this->swap(Factory::class, $this->fakeHttpClient($topicData));
+        $this->fakeHttpClient($topicData);
 
         $job = new FetchTorrentMetaJob($magnet->rto_id);
         $this->app->call([$job, 'handle']);
@@ -62,7 +61,7 @@ class FetchTorrentMetaJobTest extends TestCase
             now()
         );
 
-        $this->swap(Factory::class, $this->fakeHttpClient($topicData));
+        $this->fakeHttpClient($topicData);
 
         $this->expectsEvents(\App\Events\Stats\TorrentDuplicateDeleted::class);
 
@@ -93,7 +92,7 @@ class FetchTorrentMetaJobTest extends TestCase
             now()
         );
 
-        $this->swap(Factory::class, $this->fakeHttpClient($topicData));
+        $this->fakeHttpClient($topicData);
 
         $job = new FetchTorrentMetaJob($magnet->rto_id);
         $this->app->call([$job, 'handle']);
@@ -108,14 +107,14 @@ class FetchTorrentMetaJobTest extends TestCase
     {
         $magnet = MagnetFactory::new()->create();
 
-        $this->swap(Factory::class, \Http::fake([
+        \Http::fake([
             "api.rutracker.org/v1/get_tor_topic_data?by=topic_id&val={$magnet->rto_id}" => \Http::response([
                 'result' => [
                     $magnet->rto_id => null,
                 ],
             ]),
             '*' => \Http::response(),
-        ]));
+        ]);
 
         $this->expectsEvents(\App\Events\Stats\TorrentNotFoundDeleted::class);
 
@@ -147,7 +146,7 @@ class FetchTorrentMetaJobTest extends TestCase
             now()
         );
 
-        $this->swap(Factory::class, $this->fakeHttpClient($topicData));
+        $this->fakeHttpClient($topicData);
 
         $job = new FetchTorrentMetaJob($magnet->rto_id);
         $this->app->call([$job, 'handle']);
@@ -160,7 +159,7 @@ class FetchTorrentMetaJobTest extends TestCase
 
     private function fakeHttpClient(RtoTopicData $topicData)
     {
-        return \Http::fake([
+        \Http::fake([
             "api.rutracker.org/v1/get_tor_topic_data?by=topic_id&val={$topicData->id}" => \Http::response([
                 'result' => [
                     $topicData->id => $topicData->toJson(),

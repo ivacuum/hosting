@@ -16,16 +16,18 @@ class DkimStatusResponse
 
     public static function fakeSuccess(string $domain)
     {
-        return Factory::response([
-            'dkim' => [
-                'enabled' => 'yes',
-                'txtrecord' => 'txt',
-                'nsready' => 'yes',
-                'mailready' => 'yes',
-                'secretkey' => '-----BEGIN RSA PRIVATE KEY-----',
-            ],
-            'domain' => $domain,
-            'success' => 'ok',
-        ]);
+        return [
+            'https://pddimp.yandex.ru/api2/admin/dkim/status*' => Factory::response([
+                'dkim' => [
+                    'enabled' => 'yes',
+                    'txtrecord' => 'txt',
+                    'nsready' => 'yes',
+                    'mailready' => 'yes',
+                    'secretkey' => '-----BEGIN RSA PRIVATE KEY-----',
+                ],
+                'domain' => $domain,
+                'success' => 'ok',
+            ]),
+        ];
     }
 }

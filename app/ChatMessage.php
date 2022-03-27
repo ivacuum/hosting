@@ -46,7 +46,7 @@ class ChatMessage extends Model
             'allow_unsafe_links' => false,
         ]);
 
-        $this->attributes['html'] = $converter->convertToHtml($value);
+        $this->attributes['html'] = $converter->convert($value)->getContent();
     }
 
     // Methods

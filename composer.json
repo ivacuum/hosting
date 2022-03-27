@@ -6,17 +6,17 @@
     "php": ">=8.1",
     "ext-swoole": "*",
     "foolz/sphinxql-query-builder": "^3.0",
-    "grimzy/laravel-mysql-spatial": "^4.0",
+    "grimzy/laravel-mysql-spatial": "dev-l9-compatibility",
     "guzzlehttp/guzzle": "^7.0",
-    "ivacuum/generic": "^17.0",
+    "ivacuum/generic": "^18.0",
     "laravel-notification-channels/telegram": "^2.0",
     "laravel/fortify": "^1.8",
-    "laravel/framework": "^8.0",
+    "laravel/framework": "^9.0",
     "laravel/scout": "^9.0",
     "laravel/socialite": "^5.0",
     "laravel/ui": "^3.0",
-    "league/commonmark": "^1.0",
-    "league/flysystem-sftp": "^1.0",
+    "league/commonmark": "^2.2",
+    "league/flysystem-sftp-v3": "^3.0",
     "livewire/livewire": "^2.0",
     "predis/predis": "^1.1",
     "stevebauman/purify": "^4.0",
@@ -27,12 +27,12 @@
     "barryvdh/laravel-debugbar": "^3.0",
     "barryvdh/laravel-ide-helper": "^2.1",
     "brianium/paratest": "^6.1",
-    "facade/ignition": "^2.0",
     "fakerphp/faker": "^1.10",
     "johnkary/phpunit-speedtrap": "^4.0",
     "mockery/mockery": "^1.0",
-    "nunomaduro/collision": "^5.0",
-    "phpunit/phpunit": "^9.0"
+    "nunomaduro/collision": "^6.1",
+    "phpunit/phpunit": "^9.0",
+    "spatie/laravel-ignition": "^1.0"
   },
   "autoload": {
     "psr-4": {
@@ -44,6 +44,12 @@
       "Tests\\": "tests/"
     }
   },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/laravel-shift/laravel-mysql-spatial.git"
+    }
+  ],
   "scripts": {
     "fresh": "@php artisan migrate:fresh --seed --seeder='App\\Seeder\\DatabaseSeeder' --ansi",
     "outdated-direct": "composer outdated --direct",

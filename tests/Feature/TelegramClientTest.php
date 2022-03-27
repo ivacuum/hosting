@@ -1,6 +1,5 @@
 <?php namespace Tests\Feature;
 
-use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\Request;
 use Ivacuum\Generic\Telegram\TelegramClient;
 use Tests\TestCase;
@@ -9,7 +8,7 @@ class TelegramClientTest extends TestCase
 {
     public function testSendMessage()
     {
-        $this->swap(Factory::class, \Http::fake());
+        \Http::fake();
 
         config(['cfg.telegram.bot_token' => '1234:token']);
 

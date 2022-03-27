@@ -16,25 +16,27 @@ class EmailEditResponse
 
     public static function fakeSuccess(string $domain, string $email)
     {
-        return Factory::response([
-            'domain' => $domain,
-            'login' => $email,
-            'uid' => 1,
-            'success' => 'ok',
-            'account' => [
-                'aliases' => [],
-                'enabled' => 'yes',
-                'hintq' => 'Секретный вопрос',
-                'uid' => 1,
-                'birth_date' => null,
-                'ready' => 'yes',
+        return [
+            'https://pddimp.yandex.ru/api2/admin/email/edit*' => Factory::response([
+                'domain' => $domain,
                 'login' => $email,
-                'sex' => null,
-                'fio' => 'Фамилия Имя',
-                'fname' => 'Имя',
-                'maillist' => 'no',
-                'iname' => 'Фамилия',
-            ],
-        ]);
+                'uid' => 1,
+                'success' => 'ok',
+                'account' => [
+                    'aliases' => [],
+                    'enabled' => 'yes',
+                    'hintq' => 'Секретный вопрос',
+                    'uid' => 1,
+                    'birth_date' => null,
+                    'ready' => 'yes',
+                    'login' => $email,
+                    'sex' => null,
+                    'fio' => 'Фамилия Имя',
+                    'fname' => 'Имя',
+                    'maillist' => 'no',
+                    'iname' => 'Фамилия',
+                ],
+            ]),
+        ];
     }
 }

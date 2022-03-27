@@ -65,7 +65,7 @@ class News extends Model
     public function setMarkdownAttribute($value)
     {
         $this->attributes['markdown'] = $value;
-        $this->attributes['html'] = (new CommonMarkConverter)->convertToHtml($value);
+        $this->attributes['html'] = (new CommonMarkConverter)->convert($value)->getContent();
     }
 
     // Methods

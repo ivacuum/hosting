@@ -174,7 +174,7 @@ class Trip extends Model
             'allow_unsafe_links' => false,
         ]);
 
-        $this->attributes['html'] = $converter->convertToHtml((new TextImagesParser)->parse($value));
+        $this->attributes['html'] = $converter->convert((new TextImagesParser)->parse($value))->getContent();
     }
 
     public function setSlugAttribute(string $value): void
