@@ -36,9 +36,17 @@ class NewsTest extends TestCase
             ->assertRedirect('news');
     }
 
+    public function testHidden()
+    {
+        $news = NewsFactory::new()->hidden()->create();
+
+        $this->get("news/{$news->id}")
+            ->assertNotFound();
+    }
+
     public function testRedirectToNewsLocale()
     {
-        $news = NewsFactory::new()->withLocale('en')->create();
+        $news = NewsFactory::new()->english()->create();
 
         $this->get("news/{$news->id}")
             ->assertStatus(301)
