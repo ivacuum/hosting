@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Domain\UserStatus;
 use Illuminate\Contracts\Translation\HasLocalePreference;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -120,7 +121,7 @@ class User extends Authenticatable implements HasLocalePreference
     // Scopes
     public function scopeActive(Builder $query)
     {
-        return $query->where('status', self::STATUS_ACTIVE);
+        return $query->where('status', UserStatus::Active);
     }
 
     public function scopeForAnnouncement(Builder $query)
@@ -131,8 +132,8 @@ class User extends Authenticatable implements HasLocalePreference
     // Methods
     public function activate(): bool
     {
-        if ($this->status === self::STATUS_INACTIVE) {
-            $this->status = self::STATUS_ACTIVE;
+        if ($this->status === UserStatus::Inactive->value) {
+            $this->status = UserStatus::Active->value;
             $this->activation_token = '';
             $this->save();
 
@@ -164,7 +165,7 @@ class User extends Authenticatable implements HasLocalePreference
 
     public function isActive(): bool
     {
-        return $this->status === self::STATUS_ACTIVE;
+        return $this->status === UserStatus::Active->value;
     }
 
     public function isAdmin(): bool

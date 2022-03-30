@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Domain\NotificationDeliveryMethod;
+use App\Domain\UserStatus;
 use App\News as Model;
 use App\Notifications\NewsPublishedNotification;
 use App\User;
@@ -38,7 +39,7 @@ class News extends AbstractController
         }
 
         $users = User::where('notify_news', NotificationDeliveryMethod::Mail)
-            ->where('status', User::STATUS_ACTIVE)
+            ->where('status', UserStatus::Active)
             ->where('locale', $model->locale)
             ->get();
 

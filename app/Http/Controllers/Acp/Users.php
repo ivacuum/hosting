@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Acp;
 
+use App\Domain\UserStatus;
 use App\User as Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
@@ -96,7 +97,7 @@ class Users extends AbstractController
         $mailCredentials = request('mail_credentials');
 
         $model->email = request('email');
-        $model->status = request('status', Model::STATUS_INACTIVE);
+        $model->status = request('status', UserStatus::Inactive->value);
 
         if ($password) {
             $model->password = $password;

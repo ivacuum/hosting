@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Domain\NotificationDeliveryMethod;
+use App\Domain\UserStatus;
 use App\Gig;
 use App\Notifications\GigPublishedNotification;
 use App\User;
@@ -17,7 +18,7 @@ class GigPublishedNotify extends AbstractController
         }
 
         $users = User::where('notify_gigs', NotificationDeliveryMethod::Mail)
-            ->where('status', User::STATUS_ACTIVE)
+            ->where('status', UserStatus::Active)
             ->get();
 
         \Notification::send($users, new GigPublishedNotification($gig));

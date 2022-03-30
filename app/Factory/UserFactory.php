@@ -1,5 +1,7 @@
 <?php namespace App\Factory;
 
+use App\Domain\Locale;
+use App\Domain\UserStatus;
 use App\User;
 use Illuminate\Foundation\Testing\WithFaker;
 
@@ -10,9 +12,9 @@ class UserFactory
     private $id;
     private $email;
     private $login = '';
-    private $locale = 'ru';
-    private $status = User::STATUS_ACTIVE;
     private $password;
+    private Locale $locale = Locale::Rus;
+    private UserStatus $status = UserStatus::Active;
 
     public function admin()
     {
@@ -29,10 +31,7 @@ class UserFactory
 
     public function inactive()
     {
-        $factory = clone $this;
-        $factory->status = User::STATUS_INACTIVE;
-
-        return $factory;
+        return $this->withStatus(UserStatus::Inactive);
     }
 
     public function make()
@@ -41,8 +40,8 @@ class UserFactory
         $model->id = $this->id;
         $model->email = $this->email ?? $this->faker->safeEmail;
         $model->login = $this->login;
-        $model->locale = $this->locale;
-        $model->status = $this->status;
+        $model->locale = $this->locale->value;
+        $model->status = $this->status->value;
 
         if ($this->password) {
             $model->password = $this->password;
@@ -86,6 +85,14 @@ class UserFactory
     {
         $factory = clone $this;
         $factory->password = $password;
+
+        return $factory;
+    }
+
+    public function withStatus(UserStatus $status)
+    {
+        $factory = clone $this;
+        $factory->status = $status;
 
         return $factory;
     }
