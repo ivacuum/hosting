@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Action\FindUserByEmailOrCreateAction;
 use App\Comment;
 use App\Domain\CommentStatus;
 use App\Exceptions\CommentLimitExceededException;
@@ -9,12 +10,11 @@ use App\Limits\CommentsTodayLimit;
 use App\Magnet;
 use App\News;
 use App\Trip;
-use App\User;
 use Ivacuum\Generic\Exceptions\FloodException;
 
 class AjaxComment extends Controller
 {
-    public function store(string $type, int $id, CommentsTodayLimit $limits, CommentStoreForm $request)
+    public function store(string $type, int $id, CommentsTodayLimit $limits, CommentStoreForm $request, FindUserByEmailOrCreateAction $findUserByEmailOrCreate)
     {
         $text = $request->input('text');
         $user = $request->userModel();
@@ -22,10 +22,7 @@ class AjaxComment extends Controller
         $isGuest = $request->isGuest();
 
         if ($isGuest) {
-            $user = (new User)->findByEmailOrCreate([
-                'email' => $email,
-                'status' => User::STATUS_INACTIVE,
-            ]);
+            $user = $findUserByEmailOrCreate->execute($email);
 
             if ($user->wasRecentlyCreated) {
                 event(new \App\Events\Stats\UserRegisteredAutoWhenCommentAdded);

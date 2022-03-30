@@ -1,26 +1,23 @@
 <?php namespace App\Http\Controllers;
 
+use App\Action\FindUserByEmailOrCreateAction;
 use App\Domain\IssueStatus;
 use App\Exceptions\IssueLimitExceededException;
 use App\Http\Requests\IssueStoreForm;
 use App\Issue;
 use App\Limits\IssuesTodayLimit;
-use App\User;
 use Ivacuum\Generic\Exceptions\FloodException;
 
 class Issues extends Controller
 {
-    public function __invoke(IssuesTodayLimit $limits, IssueStoreForm $request)
+    public function __invoke(IssuesTodayLimit $limits, IssueStoreForm $request, FindUserByEmailOrCreateAction $findUserByEmailOrCreate)
     {
         $user = $request->userModel();
         $email = $request->email();
         $isGuest = $request->isGuest();
 
         if ($isGuest) {
-            $user = (new User)->findByEmailOrCreate([
-                'email' => $email,
-                'status' => User::STATUS_INACTIVE,
-            ]);
+            $user = $findUserByEmailOrCreate->execute($email);
 
             if ($user->wasRecentlyCreated) {
                 event(new \App\Events\Stats\UserRegisteredAutoWhenIssueAdded);

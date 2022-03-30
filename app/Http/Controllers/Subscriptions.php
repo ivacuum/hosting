@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Action\FindUserByEmailOrCreateAction;
 use App\Domain\NotificationDeliveryMethod;
 use App\Mail\SubscriptionConfirmMail;
 use App\Rules\Email;
@@ -49,7 +50,7 @@ class Subscriptions extends Controller
         return view('subscriptions');
     }
 
-    public function store()
+    public function store(FindUserByEmailOrCreateAction $findUserByEmailOrCreate)
     {
         /** @var User $user */
         $user = request()->user();
@@ -64,10 +65,7 @@ class Subscriptions extends Controller
         ]);
 
         if ($isGuest) {
-            $user = (new User)->findByEmailOrCreate([
-                'email' => $email,
-                'status' => User::STATUS_INACTIVE,
-            ]);
+            $user = $findUserByEmailOrCreate->execute($email);
 
             if ($user->wasRecentlyCreated) {
                 event(new \App\Events\Stats\UserRegisteredAutoWhenSubscribing);
