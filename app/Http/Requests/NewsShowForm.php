@@ -30,13 +30,13 @@ class NewsShowForm extends AbstractForm
         $news = $this->news();
         $locale = \App::getLocale();
 
-        if ($locale === $news->locale) {
+        if ($locale === $news->locale->value) {
             return '';
         }
 
-        return $news->isRussian()
+        return $news->locale->isRussian()
             ? $this->path()
-            : "/{$news->locale}/{$this->path()}";
+            : "/{$news->locale->value}/{$this->path()}";
     }
 
     public function rules(): array

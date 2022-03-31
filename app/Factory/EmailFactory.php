@@ -1,6 +1,7 @@
 <?php namespace App\Factory;
 
 use App\Comment;
+use App\Domain\Locale;
 use App\Email;
 use Illuminate\Foundation\Testing\WithFaker;
 
@@ -25,7 +26,7 @@ class EmailFactory
         $model = new Email;
         $model->to = $this->faker->safeEmail;
         $model->clicks = 0;
-        $model->locale = 'ru';
+        $model->locale = Locale::Rus->value;
         $model->rel_id = $this->relationId;
         $model->user_id = UserFactory::new()->create()->id;
         $model->rel_type = $this->relationType;

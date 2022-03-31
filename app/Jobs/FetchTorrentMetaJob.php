@@ -37,7 +37,7 @@ class FetchTorrentMetaJob extends AbstractJob
             }
 
             // Раздача закрыта как повтор
-            if ($response->isDuplicate()) {
+            if ($response->status->isDuplicate()) {
                 $magnet->status = MagnetStatus::Deleted;
                 $magnet->save();
 
@@ -49,7 +49,7 @@ class FetchTorrentMetaJob extends AbstractJob
             }
 
             // Ждем завершения модерации
-            if ($response->isPremoderation()) {
+            if ($response->status->isPremoderation()) {
                 continue;
             }
 

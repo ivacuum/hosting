@@ -24,7 +24,7 @@
               </span>
             @endif
           @elseif ($model instanceof App\Gig)
-            @if ($model->isPublished())
+            @if ($model->status->isPublished())
               <a class="link mr-1" href="{{ $model->www() }}">{{ $model->artist->title }}</a>
             @else
               <span class="mr-1">{{ $model->artist->title }}</span>

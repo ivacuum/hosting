@@ -1,11 +1,11 @@
 <?php namespace Tests\Feature;
 
+use App\Domain\RtoTopicStatus;
 use App\Factory\CommentFactory;
 use App\Factory\MagnetFactory;
 use App\Factory\UserFactory;
 use App\Http\Livewire\TorrentAddForm;
 use App\Magnet;
-use App\Services\RtoTopicData;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Ivacuum\Generic\Jobs\SendTelegramMessageJob;
@@ -215,7 +215,7 @@ class TorrentTest extends TestCase
                         'reg_time' => $stub->registered_at->getTimestamp(),
                         'info_hash' => $stub->info_hash,
                         'poster_id' => 4,
-                        'tor_status' => RtoTopicData::STATUS_APPROVED,
+                        'tor_status' => RtoTopicStatus::Approved->value,
                         'topic_title' => $stub->title,
                         'seeder_last_seen' => now()->getTimestamp(),
                     ],

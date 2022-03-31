@@ -7,6 +7,7 @@ class Kernel extends HttpKernel
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         Middleware\TrimStrings::class,
+        Middleware\SetLocale::class,
     ];
 
     protected $middlewareGroups = [

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Livewire;
 
 use App\ChatMessage;
+use App\Domain\ChatMessageStatus;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Livewire\Component;
@@ -23,7 +24,7 @@ class Chat extends Component
         $chatMessage = new ChatMessage;
         $chatMessage->ip = $request->ip();
         $chatMessage->text = $this->text;
-        $chatMessage->status = ChatMessage::STATUS_PUBLISHED;
+        $chatMessage->status = ChatMessageStatus::Published;
         $chatMessage->user_id = $request->user()->id;
         $chatMessage->save();
 
@@ -34,7 +35,7 @@ class Chat extends Component
     {
         $this->rows = ChatMessage::query()
             ->with('user')
-            ->where('status', ChatMessage::STATUS_PUBLISHED)
+            ->where('status', ChatMessageStatus::Published)
             ->orderByDesc('id')
             ->take(20)
             ->get()

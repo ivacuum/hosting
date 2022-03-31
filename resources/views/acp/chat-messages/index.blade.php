@@ -8,7 +8,7 @@
   'values' => [
     'Все' => null,
     '---' => null,
-    'Скрытые' => App\ChatMessage::STATUS_HIDDEN,
+    'Скрытые' => App\Domain\ChatMessageStatus::Hidden->value,
   ]
 ])
 @endsection
@@ -43,7 +43,7 @@
       </td>
       <td>{{ $model->text }}</td>
       <td>
-        @if ($model->isHidden())
+        @if ($model->status->isHidden())
           <span class="tooltipped tooltipped-n" aria-label="Сообщение скрыто">
             @svg (eye-slash)
           </span>

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\ChatMessage as Model;
+use App\Domain\ChatMessageStatus;
 use Illuminate\Database\Eloquent\Builder;
 
 class ChatMessages extends AbstractController
@@ -36,10 +37,10 @@ class ChatMessages extends AbstractController
             if ($action === 'delete') {
                 $model->delete();
             } elseif ($action === 'hide') {
-                $model->status = Model::STATUS_HIDDEN;
+                $model->status = ChatMessageStatus::Hidden;
                 $model->save();
             } elseif ($action === 'publish') {
-                $model->status = Model::STATUS_PUBLISHED;
+                $model->status = ChatMessageStatus::Published;
                 $model->save();
             }
         }

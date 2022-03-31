@@ -2,6 +2,7 @@
 
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use League\CommonMark\CommonMarkConverter;
 
@@ -11,7 +12,7 @@ use League\CommonMark\CommonMarkConverter;
  * @property string $title
  * @property string $markdown
  * @property string $html
- * @property string $locale
+ * @property Domain\Locale $locale
  * @property Domain\NewsStatus $status
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at
@@ -30,6 +31,7 @@ class News extends Model
 
     protected $casts = [
         'views' => 'int',
+        'locale' => Domain\Locale::class,
         'status' => Domain\NewsStatus::class,
         'user_id' => 'int',
     ];
@@ -62,21 +64,20 @@ class News extends Model
     }
 
     // Attributes
-    public function setMarkdownAttribute($value)
+    public function markdown(): Attribute
     {
-        $this->attributes['markdown'] = $value;
-        $this->attributes['html'] = (new CommonMarkConverter)->convert($value)->getContent();
+        return new Attribute(
+            set: fn ($value) => [
+                'markdown' => $value,
+                'html' => (new CommonMarkConverter)->convert($value)->getContent(),
+            ],
+        );
     }
 
     // Methods
     public function breadcrumb(): string
     {
         return $this->title;
-    }
-
-    public function isRussian(): bool
-    {
-        return $this->locale === Domain\Locale::Rus->value;
     }
 
     public function www(?string $anchor = null): string

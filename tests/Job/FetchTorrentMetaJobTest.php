@@ -1,6 +1,7 @@
 <?php namespace Tests\Job;
 
 use App\Domain\MagnetStatus;
+use App\Domain\RtoTopicStatus;
 use App\Factory\MagnetFactory;
 use App\Jobs\FetchTorrentBodyJob;
 use App\Jobs\FetchTorrentMetaJob;
@@ -24,7 +25,7 @@ class FetchTorrentMetaJobTest extends TestCase
             $magnet->title,
             $infoHash,
             $magnet->registered_at,
-            RtoTopicData::STATUS_APPROVED,
+            RtoTopicStatus::Approved,
             $magnet->size,
             3,
             4,
@@ -53,7 +54,7 @@ class FetchTorrentMetaJobTest extends TestCase
             $magnet->title,
             $magnet->info_hash,
             $magnet->registered_at,
-            RtoTopicData::STATUS_DUPLICATE,
+            RtoTopicStatus::Duplicate,
             $magnet->size,
             3,
             4,
@@ -84,7 +85,7 @@ class FetchTorrentMetaJobTest extends TestCase
             $title,
             $magnet->info_hash,
             $magnet->registered_at,
-            RtoTopicData::STATUS_APPROVED,
+            RtoTopicStatus::Approved,
             $size,
             3,
             4,
@@ -138,7 +139,7 @@ class FetchTorrentMetaJobTest extends TestCase
             'NEW TITLE',
             $magnet->info_hash,
             $magnet->registered_at,
-            RtoTopicData::STATUS_PREMODERATION,
+            RtoTopicStatus::Premoderation,
             1234567890,
             3,
             4,

@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Acp;
 
+use App\Domain\GigStatus;
 use App\Gig as Model;
 use Illuminate\Validation\Rule;
 
@@ -22,7 +23,7 @@ class Gigs extends AbstractController
         /** @var Model $model */
         $model->date = now()->startOfDay();
         $model->slug = 'artist.' . now()->year;
-        $model->status = Model::STATUS_HIDDEN;
+        $model->status = GigStatus::Hidden;
 
         return $model;
     }

@@ -47,7 +47,7 @@
     <div class="w-full">
     @foreach ($rows as $gig)
       <div class="{{ !$loop->last ? 'mb-2' : '' }}">
-        @if ($gig->isPublished())
+        @if ($gig->status->isPublished())
           <a class="link mr-1" href="{{ $gig->www() }}">{{ $gig->artist->title }}</a>
         @else
           <span class="mr-1">{{ $gig->artist->title }}</span>

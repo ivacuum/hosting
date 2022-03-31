@@ -38,7 +38,7 @@ class NewsFactory
         $model = new News;
         $model->title = $this->title ?? $this->faker->words(3, true);
         $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
-        $model->locale = $this->locale->value;
+        $model->locale = $this->locale;
         $model->status = $this->status;
         $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
         $model->markdown = $this->markdown ?? $this->faker->text;

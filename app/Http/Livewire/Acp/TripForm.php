@@ -119,7 +119,7 @@ class TripForm extends Component
     private function fillModel(Trip $trip)
     {
         $trip->slug = $this->slug;
-        $trip->status = TripStatus::from($this->status);
+        $trip->status = $this->status;
         $trip->city_id = $this->cityId;
         $trip->date_end = $this->dateEnd;
         $trip->date_start = $this->dateStart;

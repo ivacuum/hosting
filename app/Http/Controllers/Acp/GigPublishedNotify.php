@@ -10,7 +10,7 @@ class GigPublishedNotify extends AbstractController
 {
     public function __invoke(Gig $gig)
     {
-        if ($gig->isNotPublished()) {
+        if (!$gig->status->isPublished()) {
             return [
                 'status' => 'error',
                 'message' => 'Для рассылки уведомлений концерт должен быть опубликован',

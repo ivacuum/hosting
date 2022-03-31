@@ -87,7 +87,7 @@ class Rto
             throw new RtoTopicNotFoundException;
         }
 
-        if ($response->isDuplicate()) {
+        if ($response->status->isDuplicate()) {
             throw new RtoTopicDuplicateException;
         }
 

@@ -225,7 +225,7 @@ return new class extends Migration {
             $table->string('title_en')->default('');
             $table->string('slug')->default('');
             $table->timestamp('date')->nullable();
-            $table->tinyInteger('status')->unsigned()->default(App\Gig::STATUS_HIDDEN);
+            $table->tinyInteger('status')->unsigned()->default(App\Domain\GigStatus::Hidden->value);
             $table->string('meta_title_ru')->default('');
             $table->string('meta_title_en')->default('');
             $table->string('meta_description_ru')->default('');

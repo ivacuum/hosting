@@ -1,7 +1,9 @@
 <?php namespace Tests\Feature;
 
+use App\Domain\Locale;
 use App\Factory\NewsFactory;
 use App\Factory\UserFactory;
+use App\News;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -48,8 +50,31 @@ class AcpNewsTest extends TestCase
 
     public function testStore()
     {
-        $this->post('acp/news', NewsFactory::new()->make()->toArray())
+        $news = NewsFactory::new()
+            ->withTitle('Store Russian Post Like It Is Done In ACP')
+            ->make();
+
+        $this->post('acp/news', $news->toArray())
             ->assertRedirect('acp/news');
+
+        $model = News::firstWhere(['title' => $news->title]);
+
+        $this->assertSame(Locale::Rus, $model->locale);
+    }
+
+    public function testStoreEnglish()
+    {
+        $news = NewsFactory::new()
+            ->withTitle('Store English Post Like It Is Done In ACP')
+            ->make();
+
+        $this->withServerVariables(['LARAVEL_LOCALE' => 'en'])
+            ->post('acp/news', $news->toArray())
+            ->assertRedirect('acp/news');
+
+        $model = News::firstWhere(['title' => $news->title]);
+
+        $this->assertSame(Locale::Eng, $model->locale);
     }
 
     public function testUpdate()

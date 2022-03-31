@@ -1,12 +1,13 @@
 <?php namespace App;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use League\CommonMark\CommonMarkConverter;
 
 /**
  * @property int $id
  * @property int $user_id
- * @property int $status
+ * @property Domain\ChatMessageStatus $status
  * @property string $text
  * @property string $html
  * @property string $ip
@@ -19,13 +20,10 @@ use League\CommonMark\CommonMarkConverter;
  */
 class ChatMessage extends Model
 {
-    const STATUS_HIDDEN = 0;
-    const STATUS_PUBLISHED = 1;
-
     protected $guarded = ['html', 'created_at', 'updated_at', 'goto'];
 
     protected $casts = [
-        'status' => 'int',
+        'status' => Domain\ChatMessageStatus::class,
         'user_id' => 'int',
     ];
 
@@ -36,28 +34,28 @@ class ChatMessage extends Model
     }
 
     // Attributes
-    public function setTextAttribute($value)
+    public function text(): Attribute
     {
-        $this->attributes['text'] = htmlspecialchars($value);
+        return new Attribute(
+            set: function ($value) {
+                $converter = new CommonMarkConverter([
+                    'html_input' => 'escape',
+                    'max_nesting_level' => 15,
+                    'allow_unsafe_links' => false,
+                ]);
 
-        $converter = new CommonMarkConverter([
-            'html_input' => 'escape',
-            'max_nesting_level' => 15,
-            'allow_unsafe_links' => false,
-        ]);
-
-        $this->attributes['html'] = $converter->convert($value)->getContent();
+                return [
+                    'text' => htmlspecialchars($value),
+                    'html' => $converter->convert($value)->getContent(),
+                ];
+            }
+        );
     }
 
     // Methods
     public function breadcrumb()
     {
         return "#{$this->id}";
-    }
-
-    public function isHidden(): bool
-    {
-        return $this->status === self::STATUS_HIDDEN;
     }
 
     public function wwwAcp(): string

@@ -2,6 +2,7 @@
 
 use App\City;
 use App\Country;
+use App\Domain\GigStatus;
 use App\Domain\TripStatus;
 use App\Gig;
 use App\News;
@@ -182,7 +183,7 @@ class SitemapBuild extends BaseSitemapBuild
 
         /** @var News $model */
         foreach ($this->newsModels() as $model) {
-            $prefix = $model->locale === 'ru' ? '' : "{$model->locale}/";
+            $prefix = $model->locale->isRussian() ? '' : "{$model->locale->value}/";
 
             $this->page("{$prefix}news/{$model->id}", '0.2');
         }
@@ -201,7 +202,7 @@ class SitemapBuild extends BaseSitemapBuild
     {
         return Gig::query()
             ->select(['id', 'slug'])
-            ->where('status', Gig::STATUS_PUBLISHED)
+            ->where('status', GigStatus::Published)
             ->orderBy('id')
             ->lazy();
     }

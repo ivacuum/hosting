@@ -1,6 +1,7 @@
 <?php namespace App\Factory;
 
 use App\ChatMessage;
+use App\Domain\ChatMessageStatus;
 use Illuminate\Foundation\Testing\WithFaker;
 
 class ChatMessageFactory
@@ -8,7 +9,7 @@ class ChatMessageFactory
     use WithFaker;
 
     private $userId;
-    private $status = ChatMessage::STATUS_PUBLISHED;
+    private ChatMessageStatus $status = ChatMessageStatus::Published;
 
     private $userFactory;
 
@@ -22,7 +23,7 @@ class ChatMessageFactory
 
     public function hidden()
     {
-        return $this->withStatus(ChatMessage::STATUS_HIDDEN);
+        return $this->withStatus(ChatMessageStatus::Hidden);
     }
 
     public function make()
@@ -47,7 +48,7 @@ class ChatMessageFactory
         });
     }
 
-    public function withStatus(int $status)
+    public function withStatus(ChatMessageStatus $status)
     {
         $factory = clone $this;
         $factory->status = $status;

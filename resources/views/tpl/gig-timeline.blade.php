@@ -13,7 +13,7 @@
               <div class="text-xs">
                 @if ($row->id === $gig->id)
                   <mark>{{ $row->shortDate() }}</mark>
-                @elseif ($row->isPublished())
+                @elseif ($row->status->isPublished())
                   <a class="link" href="{{ $row->www() }}">{{ $row->shortDate() }}</a>
                 @else
                   {{ $row->shortDate() }}

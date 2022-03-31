@@ -22,7 +22,7 @@
       <td class="md:text-right">{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
       <td><a href="{{ $model->wwwAcp() }}">{{ $model->title }}</a></td>
       <td>
-        @if ($model->isHidden())
+        @if ($model->status->isHidden())
           <span class="tooltipped tooltipped-n" aria-label="Заметка пишется">
             @svg (pencil)
           </span>

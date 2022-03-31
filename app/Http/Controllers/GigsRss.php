@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Domain\GigStatus;
 use App\Gig;
 
 class GigsRss extends Controller
@@ -12,7 +13,7 @@ class GigsRss extends Controller
             'description' => __('life.gigs.rss.description'),
         ];
 
-        $items = Gig::where('status', Gig::STATUS_PUBLISHED)
+        $items = Gig::where('status', GigStatus::Published)
             ->where('meta_image', '<>', '')
             ->take(50)
             ->orderByDesc('date')

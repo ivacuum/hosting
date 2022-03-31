@@ -1,12 +1,10 @@
-<?php namespace App\Providers;
+<?php namespace App\Http\Middleware;
 
 use Carbon\CarbonImmutable;
-use Illuminate\Http\Request;
-use Illuminate\Support\ServiceProvider;
 
-class LocaleServiceProvider extends ServiceProvider
+class SetLocale
 {
-    public function boot(Request $request)
+    public function handle($request, \Closure $next)
     {
         $defaultLocale = config('app.locale');
         $locale = $request->server->get('LARAVEL_LOCALE') ?? $defaultLocale;
@@ -16,7 +14,9 @@ class LocaleServiceProvider extends ServiceProvider
         CarbonImmutable::setLocale($locale);
 
         if ($locale !== $defaultLocale) {
-            $this->app->setLocale($locale);
+            app()->setLocale($locale);
         }
+
+        return $next($request);
     }
 }

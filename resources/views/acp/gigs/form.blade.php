@@ -10,10 +10,7 @@
 {!! Form::text('slug')->required()->html() !!}
 {!! Form::text('date')->required()->default(date('Y-m-d'))->html() !!}
 
-{!! Form::radio('status')->required()->values([
-  App\Gig::STATUS_HIDDEN => 'Скрыт',
-  App\Gig::STATUS_PUBLISHED => 'Опубликован',
-])->html() !!}
+{!! Form::radio('status')->required()->values(App\Domain\GigStatus::labels())->html() !!}
 
 {!! Form::text('meta_description_ru')->html() !!}
 {!! Form::text('meta_description_en')->html() !!}

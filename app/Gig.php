@@ -12,7 +12,7 @@ use Symfony\Component\Finder\Finder;
  * @property string $title_en
  * @property string $slug
  * @property \Carbon\CarbonImmutable $date
- * @property int $status
+ * @property Domain\GigStatus $status
  * @property string $meta_title_ru
  * @property string $meta_title_en
  * @property string $meta_description_ru
@@ -37,15 +37,12 @@ class Gig extends Model
 {
     use Traits\HasLocalizedTitle;
 
-    const STATUS_HIDDEN = 0;
-    const STATUS_PUBLISHED = 1;
-
     protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $dates = ['date'];
 
     protected $casts = [
         'views' => 'int',
-        'status' => 'int',
+        'status' => Domain\GigStatus::class,
         'city_id' => 'int',
         'artist_id' => 'int',
     ];
@@ -119,21 +116,6 @@ class Gig extends Model
     public function fullDate(): string
     {
         return $this->date->formatLocalized(__('life.date.day_month_year'));
-    }
-
-    public function isHidden(): bool
-    {
-        return $this->status === self::STATUS_HIDDEN;
-    }
-
-    public function isNotPublished(): bool
-    {
-        return !$this->isPublished();
-    }
-
-    public function isPublished(): bool
-    {
-        return $this->status === self::STATUS_PUBLISHED;
     }
 
     public function metaDescription(): string

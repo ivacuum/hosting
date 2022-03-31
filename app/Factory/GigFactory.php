@@ -1,6 +1,6 @@
 <?php namespace App\Factory;
 
-use App\Artist;
+use App\Domain\GigStatus;
 use App\Gig;
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -11,6 +11,7 @@ class GigFactory
 
     private $cityId;
     private $artistId;
+    private GigStatus $status = GigStatus::Published;
 
     public function create()
     {
@@ -28,10 +29,10 @@ class GigFactory
         $model->date = CarbonImmutable::instance($this->faker->dateTimeBetween('-4 years'))->startOfDay();
         $model->slug = \Str::slug($title);
         $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
-        $model->status = Gig::STATUS_PUBLISHED;
+        $model->status = $this->status;
+        $model->city_id = $this->cityId ?? CityFactory::new()->create()->id;
         $model->title_en = $title;
         $model->title_ru = $title;
-        $model->city_id = $this->cityId ?? CityFactory::new()->create()->id;
         $model->artist_id = $this->artistId ?? ArtistFactory::new()->create()->id;
 
         return $model;
