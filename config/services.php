@@ -13,6 +13,10 @@ return [
         'redirect' => env('GOOGLE_REDIRECT'),
     ],
 
+    'rto' => [
+        'proxy' => env('RTO_PROXY'),
+    ],
+
     'telegram-bot-api' => [
         'token' => env('TELEGRAM_BOT_TOKEN'),
     ],
