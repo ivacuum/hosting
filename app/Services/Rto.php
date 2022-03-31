@@ -98,6 +98,7 @@ class Rto
     {
         $response = $this->http
             ->withOptions([
+                RequestOptions::PROXY => env('RTO_PROXY'),
                 RequestOptions::FORCE_IP_RESOLVE => \App::isProduction()
                     ? 'v4'
                     : null,
@@ -114,6 +115,7 @@ class Rto
     {
         $response = $this->http
             ->withOptions([
+                RequestOptions::PROXY => env('RTO_PROXY'),
                 RequestOptions::FORCE_IP_RESOLVE => \App::isProduction()
                     ? 'v4'
                     : null,
