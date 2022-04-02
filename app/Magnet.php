@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Action\FormatMagnetDateAction;
 use Carbon\CarbonInterval;
 use Foolz\SphinxQL\SphinxQL;
 use Illuminate\Database\Eloquent\Builder;
@@ -104,15 +105,8 @@ class Magnet extends Model
 
     public function fullDate(): string
     {
-        $format = $this->registered_at->isSameYear() ? '%e %B' : '%e %B %Y';
-
-        if ($this->registered_at->isToday()) {
-            return __('Сегодня') . ", " . $this->registered_at->formatLocalized($format);
-        } elseif ($this->registered_at->isYesterday()) {
-            return __('Вчера') . ", " . $this->registered_at->formatLocalized($format);
-        }
-
-        return $this->registered_at->formatLocalized($format);
+        return resolve(FormatMagnetDateAction::class)
+            ->execute($this->registered_at);
     }
 
     public function incrementClicks(): void

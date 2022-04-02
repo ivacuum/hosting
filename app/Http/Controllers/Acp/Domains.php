@@ -265,10 +265,7 @@ class Domains extends AbstractController
      */
     protected function getModel($id)
     {
-        /** @var Model $model */
-        $model = parent::getModel($id);
-
-        return $model;
+        return value(parent::getModel($id));
     }
 
     /**

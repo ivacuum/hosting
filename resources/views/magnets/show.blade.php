@@ -57,7 +57,7 @@
   </div>
 @endif
 
-@if (optional($relatedTorrents = $magnet->relatedTorrents())->count())
+@if ($relatedTorrents = $magnet->relatedTorrents()?->count())
   <div class="h3 mt-12">
     @lang('Связанные раздачи')
     <span class="text-base text-muted">{{ $relatedTorrents->count() }}</span>
@@ -71,7 +71,7 @@
         @svg ($icon)
       </div>
       <a class="grow mb-2 md:mb-0 md:mr-4 visited" href="{{ $row->www() }}">
-        @if (optional(Auth::user())->torrent_short_title)
+        @if (Auth::user()?->torrent_short_title)
           <div>{{ $row->shortTitle() }}</div>
         @else
           <div class="font-bold">

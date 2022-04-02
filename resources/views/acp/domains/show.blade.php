@@ -17,13 +17,13 @@
 
 @if ($model->isExpired())
   <x-alert-danger>
-    Подошел срок оплаты домена — {{ $model->paid_till?->addMonth()->formatLocalized('%e %B') }} ({{ $model->paid_till?->addMonth()->diffForHumans() }}) он совсем пропадет
+    Подошел срок оплаты домена — {{ $model->paid_till?->addMonth()->isoFormat('D MMMM') }} ({{ $model->paid_till?->addMonth()->diffForHumans() }}) он совсем пропадет
   </x-alert-danger>
 @endif
 
 @if ($model->isExpiringSoon())
   <x-alert-warning>
-    {{ $model->paid_till->formatLocalized('%e %B') }} ({{ $model->paid_till->diffForHumans() }}) подходит срок оплаты домена
+    {{ $model->paid_till->isoFormat('D MMMM') }} ({{ $model->paid_till->diffForHumans() }}) подходит срок оплаты домена
   </x-alert-warning>
 @endif
 

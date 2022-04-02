@@ -215,21 +215,15 @@ class Life extends Controller
 
     protected function getGig(string $slug): ?Gig
     {
-        /** @var Gig $gig */
-        $gig = Gig::where('slug', $slug)->first();
-
-        return $gig;
+        return Gig::firstWhere('slug', $slug);
     }
 
     protected function getTrip(string $slug): ?Trip
     {
-        /** @var Trip $trip */
-        $trip = Trip::where('user_id', 1)
+        return Trip::where('user_id', 1)
             ->withCount('photos')
             ->where('slug', $slug)
             ->where('status', TripStatus::Published)
             ->first();
-
-        return $trip;
     }
 }

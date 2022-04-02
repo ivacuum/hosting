@@ -1,5 +1,7 @@
 <?php namespace App;
 
+use App\Action\FormatTripPeriodAction;
+use App\Action\FormatTripPeriodWithYearAction;
 use App\Domain\TripStatus;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Builder;
@@ -233,52 +235,14 @@ class Trip extends Model
 
     public function localizedDate(): string
     {
-        if ($this->date_end->isSameDay($this->date_start)) {
-            return trim($this->date_start->formatLocalized(__('life.date.day_month_year')));
-        }
-
-        if ($this->date_start->month !== $this->date_end->month) {
-            return sprintf(
-                __('life.date.day_month_day_month_year'),
-                $this->date_start->day,
-                $this->date_start->formatLocalized('%B'),
-                $this->date_end->day,
-                $this->date_end->formatLocalized('%B'),
-                $this->date_end->formatLocalized('%Y')
-            );
-        }
-
-        return sprintf(
-            __('life.date.day_day_month_year'),
-            $this->date_start->day,
-            $this->date_end->day,
-            $this->date_start->formatLocalized('%B'),
-            $this->date_start->formatLocalized('%Y')
-        );
+        return resolve(FormatTripPeriodWithYearAction::class)
+            ->execute($this->date_start, $this->date_end);
     }
 
     public function localizedDateWithoutYear(): string
     {
-        if ($this->date_end->isSameDay($this->date_start)) {
-            return trim($this->date_start->formatLocalized(__('life.date.day_month')));
-        }
-
-        if ($this->date_start->month !== $this->date_end->month) {
-            return sprintf(
-                __('life.date.day_month_day_month'),
-                $this->date_start->day,
-                $this->date_start->formatLocalized('%B'),
-                $this->date_end->day,
-                $this->date_end->formatLocalized('%B')
-            );
-        }
-
-        return sprintf(
-            __('life.date.day_day_month'),
-            $this->date_start->day,
-            $this->date_end->day,
-            $this->date_start->formatLocalized('%B')
-        );
+        return resolve(FormatTripPeriodAction::class)
+            ->execute($this->date_start, $this->date_end);
     }
 
     public function metaDescription(): string

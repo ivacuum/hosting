@@ -11,7 +11,7 @@
   <a class="btn btn-success my-1 mr-1" href="{{ path([App\Http\Controllers\MyTrips::class, 'create']) }}">
     @lang('acp.trips.create')
   </a>
-  @if (optional(Auth::user())->login)
+  @if (Auth::user()?->login)
     <a
       class="btn btn-default my-1 mr-1"
       href="{{ path([App\Http\Controllers\UserTravelTrips::class, 'index'], Auth::user()->login) }}"

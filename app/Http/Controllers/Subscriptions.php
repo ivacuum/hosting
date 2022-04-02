@@ -18,7 +18,7 @@ class Subscriptions extends Controller
 
         try {
             $subscriptions = array_flip(explode(',', \Crypt::decryptString($hash)));
-        } catch (DecryptException $e) {
+        } catch (DecryptException) {
             return redirect(path([MySettings::class, 'edit']))
                 ->with('message', 'Запрос не найден. Измените настройки уведомлений вручную на этой странице.');
         }

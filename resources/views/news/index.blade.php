@@ -1,3 +1,5 @@
+<?php /** @var \App\News $model */ ?>
+
 @extends('base')
 
 @push('head')
@@ -46,10 +48,10 @@
               <span class="svg-flex svg-label">
                 @svg (calendar-o)
                 <time itemprop="datePublished" datetime="{{ $model->created_at->toDateString() }}">
-                  {{ $model->created_at->formatLocalized('%e %B %Y') }}
+                  {{ $model->created_at->isoFormat('LL') }}
                 </time>
               </span>
-              @if (optional($model->user)->login)
+              @if ($model->user?->login)
                 <span class="svg-flex svg-label">
                   @svg (pencil)
                   {{ $model->user->login }}

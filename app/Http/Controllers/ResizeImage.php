@@ -36,7 +36,6 @@ class ResizeImage extends Controller
             ]);
         } catch (ClientException $e) {
             abort($e->getCode());
-            exit;
         }
 
         $code = $response->getStatusCode();

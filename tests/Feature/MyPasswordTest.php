@@ -10,7 +10,7 @@ class MyPasswordTest extends TestCase
 
     public function testEdit()
     {
-        $this->be($user = UserFactory::new()->create())
+        $this->be(UserFactory::new()->create())
             ->get('my/password')
             ->assertStatus(200);
     }

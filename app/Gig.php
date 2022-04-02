@@ -115,7 +115,7 @@ class Gig extends Model
 
     public function fullDate(): string
     {
-        return $this->date->formatLocalized(__('life.date.day_month_year'));
+        return $this->date->isoFormat(__('life.date.day_month_year'));
     }
 
     public function metaDescription(): string
@@ -130,7 +130,7 @@ class Gig extends Model
 
     public function shortDate(): string
     {
-        return $this->date->formatLocalized(__('life.date.day_month'));
+        return $this->date->isoFormat(__('life.date.day_month'));
     }
 
     public function template(): string

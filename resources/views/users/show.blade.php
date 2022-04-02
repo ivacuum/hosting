@@ -37,7 +37,7 @@
         </tr>
       @endif
     </table>
-    @if (optional(Auth::user())->id === $user->id)
+    @if (Auth::user()?->id === $user->id)
       <div>
         <a
           class="btn btn-default block"

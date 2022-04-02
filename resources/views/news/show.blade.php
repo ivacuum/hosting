@@ -17,7 +17,7 @@
       <span class="svg-flex svg-label">
         @svg (calendar-o)
         <time itemprop="datePublished" datetime="{{ $news->created_at->toDateString() }}">
-          {{ $news->created_at->formatLocalized('%e %B %Y') }}
+          {{ $news->created_at->isoFormat('LL') }}
         </time>
       </span>
       @if ($news->user->login)

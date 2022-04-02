@@ -8,7 +8,7 @@ use Livewire\Component;
 class TorrentReplaceForm extends Component
 {
     public int $modelId;
-    public string $input = '';
+    public ?string $input = null;
 
     public function mount(int $modelId)
     {

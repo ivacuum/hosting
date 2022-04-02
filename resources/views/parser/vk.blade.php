@@ -4,7 +4,7 @@
 ?>
 
 @extends('base', [
-  'metaTitle' => "Топ 10 vk.com/{$vkpage} за " . $date->formatLocalized('%e %B'),
+  'metaTitle' => "Топ 10 vk.com/{$vkpage} за " . $date->isoFormat('D MMMM'),
 ])
 
 @section('content')
@@ -25,14 +25,14 @@
     @if (!empty($next))
       <a href="{{ to('parser/vk/{page?}/{date?}', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}" id="prev_page">
         @svg (chevron-left)
-        {{ $next->formatLocalized('%e %B') }}
+        {{ $next->isoFormat('D MMMM') }}
       </a>
     @endif
   </div>
   <div class="hidden sm:flex items-center">
     <span class="hidden md:block">Топ 10</span>
     <input class="form-input mx-2 w-32" type="text" name="slug" value="{{ $vkpage }}" autocapitalize="none">
-    за {{ $date->formatLocalized('%e %B') }}
+    за {{ $date->isoFormat('D MMMM') }}
     @if ($date->year !== now()->year)
       {{ $date->year }}
     @endif
@@ -40,7 +40,7 @@
   <div>
     @if (!empty($previous))
       <a href="{{ to('parser/vk/{page?}/{date?}', ['page' => $vkpage, 'date' => $previous->toDateString(), 'own' => $own, 'token' => $token]) }}" id="next_page">
-        {{ $previous->formatLocalized('%e %B') }}
+        {{ $previous->isoFormat('D MMMM') }}
         @svg (chevron-right)
       </a>
     @endif
@@ -49,7 +49,7 @@
 
 @if (!sizeof($posts))
   <div class="mb-4 py-3 px-5 text-yellow-800/75 bg-yellow-300/25 border border-yellow-200 rounded">
-    Нет записей за {{ $date->formatLocalized('%e %B %Y') }}.
+    Нет записей за {{ $date->isoFormat('D MMMM YYYY') }}.
   </div>
 @endif
 
@@ -177,14 +177,14 @@
     <div>
       <a href="{{ to('parser/vk/{page?}/{date?}', ['page' => $vkpage, 'date' => $next->toDateString(), 'own' => $own, 'token' => $token]) }}">
         @svg (chevron-left)
-        {{ $next->formatLocalized('%e %B') }}
+        {{ $next->isoFormat('D MMMM') }}
       </a>
     </div>
   @endif
   @if (!empty($previous))
     <div>
       <a href="{{ to('parser/vk/{page?}/{date?}', ['page' => $vkpage, 'date' => $previous->toDateString(), 'own' => $own, 'token' => $token]) }}">
-        {{ $previous->formatLocalized('%e %B') }}
+        {{ $previous->isoFormat('D MMMM') }}
         @svg (chevron-right)
       </a>
     </div>

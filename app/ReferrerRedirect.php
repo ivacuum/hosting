@@ -37,16 +37,15 @@ class ReferrerRedirect extends Model
         return $this->to;
     }
 
-    public static function findFirstActive()
+    public static function findFirstActive(): ?self
     {
-        /** @var self $model */
         $model = self::query()
             ->where('starts_at', '<=', now()->toDateTimeString())
             ->where('expires_at', '>=', now()->toDateTimeString())
             ->orderBy('starts_at')
             ->first();
 
-        return $model;
+        return value($model);
     }
 
     public function www(): string

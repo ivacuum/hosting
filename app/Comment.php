@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Action\FormatCommentDateAction;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Ivacuum\Generic\Traits\RecordsActivity;
@@ -72,27 +73,8 @@ class Comment extends Model
 
     public function fullDate(): string
     {
-        $format = $this->created_at->isSameYear()
-            ? '%e&nbsp;%B, %H:%M'
-            : '%e&nbsp;%B&nbsp;%Y, %H:%M';
-
-        if ($this->created_at->isToday()) {
-            return __('Сегодня') . ", " . $this->created_at->formatLocalized($format);
-        } elseif ($this->created_at->isYesterday()) {
-            return __('Вчера') . ", " . $this->created_at->formatLocalized($format);
-        }
-
-        return $this->created_at->calendar(formats: ['sameElse' => 'LLL']);
-    }
-
-    public function isNotPending(): bool
-    {
-        return !$this->isPending();
-    }
-
-    public function isPending(): bool
-    {
-        return $this->status->isPending();
+        return resolve(FormatCommentDateAction::class)
+            ->execute($this->created_at);
     }
 
     public function usersForNotification($model)

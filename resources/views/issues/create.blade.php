@@ -9,8 +9,8 @@
     <p>Use the form below to ask a question, leave a feedback, or tell us how to make the site better.</p>
   @endru
   <feedback-form
-    name="{{ optional(Auth::user())->login }}"
-    email="{{ optional(Auth::user())->email }}"
+    name="{{ Auth::user()?->login }}"
+    email="{{ Auth::user()?->email }}"
     action="@lng/contact"
   ></feedback-form>
 </div>

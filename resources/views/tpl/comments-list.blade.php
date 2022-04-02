@@ -1,3 +1,5 @@
+<?php /** @var \App\Comment $comment */ ?>
+
 <div class="h3 mt-12">
   @lang('Обсуждение')
   <span class="text-base text-muted">{{ sizeof($comments) }}</span>

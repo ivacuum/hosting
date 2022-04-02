@@ -7,7 +7,7 @@ class CommentConfirm extends Controller
 {
     public function __invoke(Comment $comment)
     {
-        if ($comment->isNotPending()) {
+        if (!$comment->status->isPending()) {
             return redirect($comment->rel->www())
                 ->with('message', __('Комментарий уже активирован.'));
         }

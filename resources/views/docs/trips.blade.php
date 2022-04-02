@@ -86,7 +86,7 @@
 Как показать друзьям где я был?
 @endslot
 
-@if (optional(Auth::user())->login)
+@if (Auth::user()?->login)
   <div>Ссылка на вашу хронологию поездок: <a class="link" href="{{ action([App\Http\Controllers\UserTravelTrips::class, 'index'], Auth::user()->login) }}"></a></div>
 @else
   <p>Сначала укажите свой логин <a class="link" href="@lng/my/profile">в профиле</a>.</p>
