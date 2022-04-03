@@ -66,7 +66,7 @@ class Rto
     public function parseTopicBody(int $topicId): RtoTopicHtmlResponse
     {
         $response = $this->http
-            ->retry(5, 500)
+            ->retry(5, 5000)
             ->withOptions([
                 RequestOptions::PROXY => config('services.rto.proxy'),
                 RequestOptions::FORCE_IP_RESOLVE => \App::isProduction()
