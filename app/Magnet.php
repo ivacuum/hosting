@@ -1,8 +1,8 @@
 <?php namespace App;
 
+use App\Action\FindRelatedMagnetsAction;
 use App\Action\FormatMagnetDateAction;
 use Carbon\CarbonInterval;
-use Foolz\SphinxQL\SphinxQL;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
@@ -140,14 +140,8 @@ class Magnet extends Model
 
     public function relatedIds(): array
     {
-        if (!$this->related_query) {
-            return [];
-        }
-
-        return array_filter(\Arr::pluck($this->search($this->related_query, function (SphinxQL $builder) {
-            return $builder->match('title', $this->related_query, true)
-                ->execute();
-        })->raw(), 'id'), fn ($item) => intval($item) !== $this->id);
+        return resolve(FindRelatedMagnetsAction::class)
+            ->execute($this);
     }
 
     public function relatedTorrents()

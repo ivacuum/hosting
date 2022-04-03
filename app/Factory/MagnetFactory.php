@@ -12,6 +12,7 @@ class MagnetFactory
     private $status = MagnetStatus::Published;
     private $userId;
     private $categoryId;
+    private $relatedQuery = '';
 
     private $commentFactory;
 
@@ -61,7 +62,7 @@ class MagnetFactory
         $model->info_hash = $this->faker->regexify('[A-F0-9]{40}');
         $model->announcer = 'https://example.com';
         $model->registered_at = $this->faker->dateTimeBetween('-4 years');
-        $model->related_query = '';
+        $model->related_query = $this->relatedQuery;
 
         $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
         $model->category_id = $this->categoryId ?? $this->faker->randomElement([2, 3, 4, 5, 7, 8, 9, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]);
@@ -88,6 +89,14 @@ class MagnetFactory
     {
         $factory = clone $this;
         $factory->commentFactory = $commentFactory ?? CommentFactory::new();
+
+        return $factory;
+    }
+
+    public function withRelatedQuery(string $relatedQuery)
+    {
+        $factory = clone $this;
+        $factory->relatedQuery = $relatedQuery;
 
         return $factory;
     }

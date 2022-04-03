@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\Action\FindRelatedMagnetsAction;
 use App\Domain\RtoTopicStatus;
 use App\Factory\CommentFactory;
 use App\Factory\MagnetFactory;
@@ -9,6 +10,7 @@ use App\Magnet;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Ivacuum\Generic\Jobs\SendTelegramMessageJob;
+use Mockery\MockInterface;
 use Tests\TestCase;
 
 class TorrentTest extends TestCase
@@ -134,6 +136,21 @@ class TorrentTest extends TestCase
         $this->get("magnets/{$magnet->id}")
             ->assertOk()
             ->assertSee($magnet->title);
+    }
+
+    public function testShowWithRelated()
+    {
+        $magnet = MagnetFactory::new()->create();
+        $related = MagnetFactory::new()->create();
+
+        $this->mock(FindRelatedMagnetsAction::class, function (MockInterface $mock) use ($related) {
+            $mock->shouldReceive('execute')->once()->andReturn([$related->id]);
+        });
+
+        $this->get("magnets/{$magnet->id}")
+            ->assertOk()
+            ->assertSee($magnet->title)
+            ->assertSee($related->title);
     }
 
     public function testStoreAsAnonymous()
