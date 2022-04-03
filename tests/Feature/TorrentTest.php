@@ -138,6 +138,22 @@ class TorrentTest extends TestCase
             ->assertSee($magnet->title);
     }
 
+    public function testShowDeleted()
+    {
+        $magnet = MagnetFactory::new()->deleted()->create();
+
+        $this->get("magnets/{$magnet->id}")
+            ->assertNotFound();
+    }
+
+    public function testShowHidden()
+    {
+        $magnet = MagnetFactory::new()->hidden()->create();
+
+        $this->get("magnets/{$magnet->id}")
+            ->assertNotFound();
+    }
+
     public function testShowWithRelated()
     {
         $magnet = MagnetFactory::new()->create();
