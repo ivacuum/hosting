@@ -105,7 +105,7 @@ class MagnetsController extends Controller
     public function show(Magnet $magnet)
     {
         abort_if(\App::getLocale() === Locale::Eng->value, 404);
-        abort_if($magnet->isNotPublished(), 404);
+        abort_if($magnet->status !== MagnetStatus::Published, 404);
 
         \Breadcrumbs::push($magnet->shortTitle());
 

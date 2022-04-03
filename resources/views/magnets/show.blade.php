@@ -64,10 +64,9 @@
   </div>
   <?php /** @var \App\Magnet $row */ ?>
   @foreach ($relatedTorrents as $row)
-    <?php $category = TorrentCategoryHelper::find($row->category_id) ?>
     <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start torrents-list-container antialiased js-torrents-views-observer" data-id="{{ $row->id }}">
-      <div class="flex-shrink-0 w-8 torrent-icon order-1 md:order-none mr-1 md:text-2xl" title="{{ $category['title'] }}">
-        <?php $icon = $category['icon'] ?? 'file-text-o' ?>
+      <div class="flex-shrink-0 w-8 torrent-icon order-1 md:order-none mr-1 md:text-2xl" title="{{ $row->category_id->title() }}">
+        <?php $icon = $row->category_id->icon() ?>
         @svg ($icon)
       </div>
       <a class="grow mb-2 md:mb-0 md:mr-4 visited" href="{{ $row->www() }}">

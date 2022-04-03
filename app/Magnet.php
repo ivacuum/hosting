@@ -10,7 +10,7 @@ use Laravel\Scout\Searchable;
 /**
  * @property int $id
  * @property int $user_id
- * @property int $category_id
+ * @property Domain\MagnetCategory $category_id
  * @property int $rto_id
  * @property string $title
  * @property string $html
@@ -57,7 +57,7 @@ class Magnet extends Model
         'rto_id' => 'int',
         'status' => Domain\MagnetStatus::class,
         'user_id' => 'int',
-        'category_id' => 'int',
+        'category_id' => Domain\MagnetCategory::class,
     ];
 
     protected $guarded = ['created_at', 'updated_at', 'goto'];
@@ -123,16 +123,6 @@ class Magnet extends Model
         return $this->user_id === config('cfg.torrent_anonymous_releaser');
     }
 
-    public function isNotPublished(): bool
-    {
-        return !$this->isPublished();
-    }
-
-    public function isPublished(): bool
-    {
-        return $this->status === Domain\MagnetStatus::Published;
-    }
-
     public function magnet(): string
     {
         return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode(\Str::limit($this->title, 100, ''));
@@ -168,7 +158,7 @@ class Magnet extends Model
 
     public function shouldBeSearchable()
     {
-        return $this->isPublished();
+        return $this->status === Domain\MagnetStatus::Published;
     }
 
     public function titleTags(): array
@@ -230,7 +220,7 @@ class Magnet extends Model
             'id' => $this->id,
             'text' => strip_tags($this->html),
             'title' => $this->title,
-            'category_id' => $this->category_id,
+            'category_id' => $this->category_id->value,
         ];
     }
 

@@ -72,7 +72,7 @@ class TorrentTest extends TestCase
             ->assertSet('size', $stub->size)
             ->assertSet('title', $stub->title)
             ->assertSet('topicId', $stub->rto_id)
-            ->set('categoryId', $stub->category_id);
+            ->set('categoryId', $stub->category_id->value);
     }
 
     public function testMagnetClick()
@@ -179,7 +179,7 @@ class TorrentTest extends TestCase
 
         $livewire = \Livewire::test(TorrentAddForm::class)
             ->set('input', $stub->rto_id)
-            ->set('categoryId', $stub->category_id)
+            ->set('categoryId', $stub->category_id->value)
             ->call('submit')
             ->assertHasNoErrors();
 
@@ -207,7 +207,7 @@ class TorrentTest extends TestCase
 
         $livewire = \Livewire::test(TorrentAddForm::class)
             ->set('input', $stub->rto_id)
-            ->set('categoryId', $stub->category_id)
+            ->set('categoryId', $stub->category_id->value)
             ->call('submit')
             ->assertHasNoErrors();
 

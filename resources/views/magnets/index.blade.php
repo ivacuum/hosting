@@ -79,10 +79,9 @@
           <h6 class="{{ $loop->first ? 'mt-0' : 'mt-6' }}">{{ $magnet->fullDate() }}</h6>
           <?php $lastDate = $magnet->registered_at ?>
         @endif
-        <?php $category = TorrentCategoryHelper::find($magnet->category_id) ?>
         <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start torrents-list-container antialiased hover:dark:bg-slate-800 js-torrents-views-observer" data-id="{{ $magnet->id }}">
-          <div class="flex-shrink-0 w-8 torrent-icon order-1 md:order-none mr-1 md:text-2xl" title="{{ $category['title'] }}">
-            <?php $icon = $category['icon'] ?? 'file-text-o' ?>
+          <div class="flex-shrink-0 w-8 torrent-icon order-1 md:order-none mr-1 md:text-2xl" title="{{ $magnet->category_id->title() }}">
+            <?php $icon = $magnet->category_id->icon() ?>
             @svg ($icon)
           </div>
           <a class="grow mb-2 md:mb-0 md:mr-4 visited" href="{{ $magnet->www() }}">

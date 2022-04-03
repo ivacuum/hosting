@@ -13,7 +13,7 @@ class TorrentUpdater
     {
         $data = $this->rto->topicDataById($magnet->rto_id);
 
-        if ($magnet->isNotPublished()) {
+        if ($magnet->status !== MagnetStatus::Published) {
             $magnet->status = MagnetStatus::Published;
         }
 
