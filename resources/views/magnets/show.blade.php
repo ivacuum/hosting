@@ -57,7 +57,7 @@
   </div>
 @endif
 
-@if ($relatedTorrents = $magnet->relatedTorrents()?->count())
+@if (($relatedTorrents = $magnet->relatedTorrents())?->count())
   <div class="h3 mt-12">
     @lang('Связанные раздачи')
     <span class="text-base text-muted">{{ $relatedTorrents->count() }}</span>
