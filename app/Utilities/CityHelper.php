@@ -1,7 +1,7 @@
 <?php namespace App\Utilities;
 
-use App\CacheKey;
 use App\City as Model;
+use App\Domain\CacheKey;
 use Ivacuum\Generic\Utilities\ModelCacheHelper;
 
 class CityHelper extends ModelCacheHelper
@@ -27,11 +27,11 @@ class CityHelper extends ModelCacheHelper
 
     public function cachedByIdKey(): string
     {
-        return CacheKey::CITIES_BY_ID;
+        return CacheKey::CitiesById->value;
     }
 
     public function cachedBySlugKey(): string
     {
-        return CacheKey::CITIES_BY_SLUG;
+        return CacheKey::CitiesBySlug->value;
     }
 }

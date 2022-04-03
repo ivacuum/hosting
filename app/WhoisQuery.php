@@ -1,7 +1,6 @@
 <?php namespace App;
 
 use Cache;
-use Carbon\CarbonInterval;
 use File;
 
 class WhoisQuery
@@ -99,25 +98,28 @@ class WhoisQuery
             return "Domainname isn't valid!";
         }
 
-        $cacheEntry = CacheKey::key(CacheKey::DOMAINS_WHOIS, "{$this->subdomain}.{$this->tlds}");
+        $cacheEntry = Domain\CacheKey::DomainsWhois->key("{$this->subdomain}.{$this->tlds}");
         $whoisServer = $this->servers[$this->tlds][0];
 
         if (!$whoisServer) {
             return "No whois server for this tld in list!";
         }
 
-        return $this->data = Cache::remember($cacheEntry, CarbonInterval::minutes(15), function () use ($whoisServer) {
-            if (preg_match("/^https?:\/\//i", $whoisServer)) {
-                $string = $this->curlRequest($whoisServer);
-            } else {
-                $string = $this->socketRequest($whoisServer);
-            }
+        return $this->data = Cache::remember(
+            $cacheEntry,
+            Domain\CacheKey::DomainsWhois->ttl(),
+            function () use ($whoisServer) {
+                if (preg_match("/^https?:\/\//i", $whoisServer)) {
+                    $string = $this->curlRequest($whoisServer);
+                } else {
+                    $string = $this->socketRequest($whoisServer);
+                }
 
-            $encoding = mb_detect_encoding($string, "UTF-8, ISO-8859-1, ISO-8859-15", true);
-            $utf8 = mb_convert_encoding($string, "UTF-8", $encoding);
+                $encoding = mb_detect_encoding($string, "UTF-8, ISO-8859-1, ISO-8859-15", true);
+                $utf8 = mb_convert_encoding($string, "UTF-8", $encoding);
 
-            return htmlspecialchars($utf8, ENT_COMPAT, "UTF-8", true);
-        });
+                return htmlspecialchars($utf8, ENT_COMPAT, "UTF-8", true);
+            });
     }
 
     public function parse()
@@ -129,7 +131,7 @@ class WhoisQuery
                 continue;
             }
 
-            list($var, $value) = explode(':', $line, 2);
+            [$var, $value] = explode(':', $line, 2);
             $var = strtolower(trim($var));
             $value = trim($value);
 
@@ -236,7 +238,7 @@ class WhoisQuery
 
     protected function fillSubdomainAndTld($domain)
     {
-        list($this->subdomain, $this->tlds) = explode('.', $domain, 2);
+        [$this->subdomain, $this->tlds] = explode('.', $domain, 2);
 
         if (!isset($this->servers[$this->tlds][0]) && strpos($this->tlds, '.')) {
             $this->fillSubdomainAndTld($this->tlds);

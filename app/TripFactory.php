@@ -14,7 +14,7 @@ class TripFactory
 
     public static function idsByCity(?int $id = null)
     {
-        $ids = \Cache::rememberForever(CacheKey::TRIPS_PUBLISHED_BY_CITY, function () {
+        $ids = \Cache::rememberForever(Domain\CacheKey::TripsPublishedByCity->value, function () {
             $trips = Trip::published()->get(['id', 'city_id']);
             $result = [];
 
@@ -35,7 +35,7 @@ class TripFactory
 
     public static function idsByCountry(?int $id = null)
     {
-        $ids = \Cache::rememberForever(CacheKey::TRIPS_PUBLISHED_BY_COUNTRY, function () {
+        $ids = \Cache::rememberForever(Domain\CacheKey::TripsPublishedByCountry->value, function () {
             $trips = Trip::query()
                 ->published()
                 ->with('city:id,country_id')
@@ -92,7 +92,7 @@ class TripFactory
 
     public static function tripsWithCover(?int $count = null)
     {
-        return \Cache::remember(CacheKey::TRIPS_PUBLISHED_WITH_COVER, CarbonInterval::day(), function () {
+        return \Cache::remember(Domain\CacheKey::TripsPublishedWithCover->value, CarbonInterval::day(), function () {
             // Не нужно ограничение по пользователю, так как meta_image есть только у user_id=1
             return Trip::query()
                 ->published()

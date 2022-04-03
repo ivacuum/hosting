@@ -1,8 +1,9 @@
 <?php namespace App\Http\Controllers;
 
-use App\CacheKey;
 use App\City;
 use App\Country;
+use App\Domain\CacheKey;
+use App\Domain\PhotoPoint;
 use App\Domain\PhotoStatus;
 use App\Http\Requests\PhotosMapForm;
 use App\Photo;
@@ -247,7 +248,7 @@ class Photos extends Controller
     protected function pointsForMap($tripId)
     {
         // Кэширование отключено при фильтре по поездке
-        $cacheEntry = $tripId ? CacheKey::PHOTOS_POINTS_FOR_TRIP : CacheKey::PHOTOS_POINTS;
+        $cacheEntry = $tripId ? CacheKey::PhotosPointsForTrip->value : CacheKey::PhotosPoints->value;
         $minutes = $tripId ? 0 : 30;
 
         return \Cache::remember($cacheEntry, CarbonInterval::minutes($minutes), function () use ($tripId) {
@@ -264,29 +265,10 @@ class Photos extends Controller
             ];
 
             /** @var Photo $photo */
-            foreach ($photos as $i => $photo) {
-                $basename = basename($photo->slug);
+            foreach ($photos as $photo) {
+                $point = new PhotoPoint($photo);
 
-                $collection['features'][] = [
-                    'type' => 'Feature',
-                    'id' => $i,
-                    'geometry' => [
-                        'type' => 'Point',
-                        'coordinates' => [$photo->lat, $photo->lon],
-                    ],
-                    'properties' => [
-                        'balloonContent' => sprintf(
-                            '<div><a href="%s#%s">%s, %s %s<br><img class="mt-1 image-200 object-cover rounded" src="%s" alt=""></a></div>',
-                            $photo->rel->www(),
-                            $basename,
-                            $photo->rel->title,
-                            $photo->rel->period(),
-                            $photo->rel->year,
-                            $photo->thumbnailUrl()
-                        ),
-                        'clusterCaption' => $basename,
-                    ],
-                ];
+                $collection['features'][] = $point->jsonSerialize();
             }
 
             return $collection;

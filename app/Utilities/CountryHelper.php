@@ -1,7 +1,7 @@
 <?php namespace App\Utilities;
 
-use App\CacheKey;
 use App\Country as Model;
+use App\Domain\CacheKey;
 use Ivacuum\Generic\Utilities\ModelCacheHelper;
 
 class CountryHelper extends ModelCacheHelper
@@ -23,11 +23,11 @@ class CountryHelper extends ModelCacheHelper
 
     public function cachedByIdKey(): string
     {
-        return CacheKey::COUNTRIES_BY_ID;
+        return CacheKey::CountriesById->value;
     }
 
     public function cachedBySlugKey(): string
     {
-        return CacheKey::COUNTRIES_BY_SLUG;
+        return CacheKey::CountriesBySlug->value;
     }
 }

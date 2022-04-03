@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Action\CountMagnetsByCategoriesAction;
 use App\Comment;
 use App\Domain\Locale;
 use App\Domain\MagnetStatus;
@@ -50,7 +51,7 @@ class MagnetsController extends Controller
         return view('magnets.index', [
             'q' => $q,
             'tree' => \TorrentCategoryHelper::tree(),
-            'stats' => Magnet::statsByCategories(),
+            'stats' => resolve(CountMagnetsByCategoriesAction::class)->execute(),
             'magnets' => $magnets,
             'fulltext' => $fulltext,
             'categoryId' => $categoryId,

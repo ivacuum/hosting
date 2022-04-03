@@ -1,8 +1,8 @@
 <?php namespace App;
 
 use App\Action\FindRelatedMagnetsAction;
+use App\Action\FindTagsInMagnetTitleAction;
 use App\Action\FormatMagnetDateAction;
-use Carbon\CarbonInterval;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
@@ -163,55 +163,8 @@ class Magnet extends Model
 
     public function titleTags(): array
     {
-        if (preg_match_all('/биография|
-            боевик|
-            вестерн|
-            военный|
-            детектив|
-            драма|
-            история|
-            киберпанк|
-            комедия|
-            криминал|
-            мелодрама|
-            музыка|
-            мюзикл|
-            приключения|
-            семейный|
-            спорт|
-            триллер|
-            ужасы|
-            фантастика|
-            фэнтези|
-            юмор|
-
-            # Страны
-            австралия|
-            великобритания|
-            германия|
-            канада|
-            китай|
-            испания|
-            индия|
-            ирландия|
-            италия|
-            россия|
-            сша|
-            франция|
-            япония|
-
-            # Режиссеры
-            дэвид\ финчер|
-            гай\ ричи|
-            кристофер\ нолан|
-            ридли\ скотт|
-            стивен\ спилберг|
-            19\d{2}|
-            20\d{2}/iux', $this->title, $matches)) {
-            return $matches[0];
-        }
-
-        return [];
+        return resolve(FindTagsInMagnetTitleAction::class)
+            ->execute($this->title);
     }
 
     public function toSearchableArray()
@@ -232,18 +185,5 @@ class Magnet extends Model
     public function wwwAcp(): string
     {
         return path([Http\Controllers\Acp\Magnets::class, 'show'], $this);
-    }
-
-    // Static methods
-    public static function statsByCategories()
-    {
-        return \Cache::remember(
-            CacheKey::TORRENTS_STATS_BY_CATEGORIES,
-            CarbonInterval::minutes(15),
-            fn () => static::selectRaw('category_id, COUNT(*) AS total')
-                ->where('status', Domain\MagnetStatus::Published)
-                ->groupBy('category_id')
-                ->pluck('total', 'category_id')
-        );
     }
 }

@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\CacheKey;
+use App\Domain\CacheKey;
 use App\Services\Vk;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterval;
@@ -143,7 +143,7 @@ class ParserVk extends Controller
 
     protected function getPosts($count = 100, $offset = 0)
     {
-        $cacheEntry = CacheKey::key(CacheKey::VK_WALL_GET, "{$this->vkPage}_{$count}_{$offset}");
+        $cacheEntry = CacheKey::VkWallGet->key("{$this->vkPage}_{$count}_{$offset}");
 
         $params = [
             'v' => $this->version,

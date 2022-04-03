@@ -1,6 +1,6 @@
 <?php namespace App\Utilities;
 
-use App\CacheKey;
+use App\Domain\CacheKey;
 use Illuminate\Cache\Repository;
 
 class CacheHelper
@@ -12,25 +12,25 @@ class CacheHelper
     public function forgetCities()
     {
         $this->cache->deleteMultiple([
-            CacheKey::CITIES_BY_ID,
-            CacheKey::CITIES_BY_SLUG,
+            CacheKey::CitiesById->value,
+            CacheKey::CitiesBySlug->value,
         ]);
     }
 
     public function forgetCountries()
     {
         $this->cache->deleteMultiple([
-            CacheKey::COUNTRIES_BY_ID,
-            CacheKey::COUNTRIES_BY_SLUG,
+            CacheKey::CountriesById->value,
+            CacheKey::CountriesBySlug->value,
         ]);
     }
 
     public function forgetTrips()
     {
         $this->cache->deleteMultiple([
-            CacheKey::TRIPS_PUBLISHED_BY_COUNTRY,
-            CacheKey::TRIPS_PUBLISHED_BY_CITY,
-            CacheKey::TRIPS_PUBLISHED_WITH_COVER,
+            CacheKey::TripsPublishedByCountry->value,
+            CacheKey::TripsPublishedByCity->value,
+            CacheKey::TripsPublishedWithCover->value,
         ]);
     }
 }
