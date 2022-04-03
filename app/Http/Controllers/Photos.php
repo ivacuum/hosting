@@ -1,9 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use App\Action\CachePhotoPointsAction;
 use App\City;
 use App\Country;
-use App\Domain\CacheKey;
-use App\Domain\PhotoPoint;
 use App\Domain\PhotoStatus;
 use App\Http\Requests\PhotosMapForm;
 use App\Photo;
@@ -12,7 +11,6 @@ use App\Trip;
 use App\TripFactory;
 use App\Utilities\CityHelper;
 use App\Utilities\CountryHelper;
-use Carbon\CarbonInterval;
 
 class Photos extends Controller
 {
@@ -245,33 +243,9 @@ class Photos extends Controller
         ]);
     }
 
-    protected function pointsForMap($tripId)
+    protected function pointsForMap(?int $tripId)
     {
-        // Кэширование отключено при фильтре по поездке
-        $cacheEntry = $tripId ? CacheKey::PhotosPointsForTrip->value : CacheKey::PhotosPoints->value;
-        $minutes = $tripId ? 0 : 30;
-
-        return \Cache::remember($cacheEntry, CarbonInterval::minutes($minutes), function () use ($tripId) {
-            $photos = Photo::with('rel')
-                ->forTrip($tripId)
-                ->published()
-                ->onMap()
-                ->orderBy('id')
-                ->get();
-
-            $collection = [
-                'type' => 'FeatureCollection',
-                'features' => [],
-            ];
-
-            /** @var Photo $photo */
-            foreach ($photos as $photo) {
-                $point = new PhotoPoint($photo);
-
-                $collection['features'][] = $point->jsonSerialize();
-            }
-
-            return $collection;
-        });
+        return resolve(CachePhotoPointsAction::class)
+            ->execute($tripId);
     }
 }

@@ -1,8 +1,8 @@
-<?php namespace App\Domain;
+<?php namespace App\Http\Response;
 
 use App\Photo;
 
-class PhotoPoint implements \JsonSerializable
+class PhotoPointResponse implements \JsonSerializable
 {
     public function __construct(private Photo $photo)
     {

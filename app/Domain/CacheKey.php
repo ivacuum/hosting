@@ -31,8 +31,12 @@ enum CacheKey: string
     public function ttl()
     {
         return match ($this) {
+            self::PhotosPointsForTrip => CarbonInterval::minutes(0),
+
             self::DomainsWhois,
             self::TorrentsStatsByCategories => CarbonInterval::minutes(15),
+
+            self::PhotosPoints => CarbonInterval::minutes(30),
         };
     }
 }
