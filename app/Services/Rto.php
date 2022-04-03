@@ -69,7 +69,7 @@ class Rto
             ->retry(5, 5000)
             ->withOptions([
                 RequestOptions::PROXY => config('services.rto.proxy'),
-                RequestOptions::FORCE_IP_RESOLVE => \App::isProduction()
+                RequestOptions::FORCE_IP_RESOLVE => \App::isProduction() && !config('services.rto.proxy')
                     ? 'v6'
                     : null,
             ])
