@@ -1,11 +1,17 @@
 <?php namespace App\Listeners;
 
+use App\Action\FilterOutCredentialsAction;
+use App\Domain\ExternalService;
 use App\ExternalHttpRequest;
 use Illuminate\Http\Client\Events\ResponseReceived;
 use Illuminate\Http\Client\Response;
 
 class LogExternalHttpRequest
 {
+    public function __construct(private FilterOutCredentialsAction $filterOutCredentials)
+    {
+    }
+
     public function handle(ResponseReceived $event)
     {
         if (\App::runningInConsole()) {
@@ -44,6 +50,9 @@ class LogExternalHttpRequest
         $model->request_headers = $request->headers();
         $model->redirect_time_us = $stats['redirect_time_us'] ?? (($stats['redirect_time'] ?? 0) * 1_000_000);
         $model->response_headers = $response->headers();
+
+        $this->filterOutCredentials->execute($model);
+
         $model->save();
     }
 
@@ -72,15 +81,16 @@ class LogExternalHttpRequest
         return mb_strlen($response->body());
     }
 
-    private function serviceName(string $host): string
+    private function serviceName(string $host): ExternalService
     {
         return match ($host) {
-            'api.vk.com' => 'vk',
-            'api.telegram.org' => 'telegram',
-            'api.wanikani.com' => 'wanikani',
-            'pddimp.yandex.ru' => 'yandex',
-            'api.rutracker.org', 'rutracker.org' => 'rto',
-            default => '',
+            'api.vk.com' => ExternalService::Vk,
+            'api.telegram.org' => ExternalService::Telegram,
+            'api.wanikani.com' => ExternalService::Wanikani,
+            'pddimp.yandex.ru' => ExternalService::Yandex,
+
+            'api.rutracker.org',
+            'rutracker.org' => ExternalService::Rutracker,
         };
     }
 }

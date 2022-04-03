@@ -1,19 +1,20 @@
 <?php namespace App;
 
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\MassPrunable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
- * @property string $service_name
+ * @property Domain\ExternalService $service_name
  * @property string $method
  * @property string $scheme
  * @property string $host
  * @property string $path
  * @property string $query
- * @property string $request_headers
+ * @property array $request_headers
  * @property string $request_body
- * @property string $response_headers
+ * @property array $response_headers
  * @property string $response_body
  * @property int $response_size
  * @property int $total_time_us
@@ -36,10 +37,11 @@ class ExternalHttpRequest extends Model
 
     protected $casts = [
         'http_code' => 'int',
+        'service_name' => Domain\ExternalService::class,
         'response_size' => 'int',
         'total_time_us' => 'int',
         'redirect_count' => 'int',
-        'request_headers' => 'array',
+        'request_headers' => AsArrayObject::class,
         'redirect_time_us' => 'int',
         'response_headers' => 'array',
     ];

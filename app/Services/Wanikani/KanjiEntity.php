@@ -15,44 +15,43 @@ class KanjiEntity
     ) {
     }
 
-    public static function fromJson(int $id, object $json): self
+    public static function fromArray(int $id, array $json): self
     {
         return new self(
             $id,
-            $json->level,
-            $json->characters,
-            collect($json->meanings)->pluck('meaning'),
-            collect($json->readings),
-            collect($json->component_subject_ids),
-            collect($json->visually_similar_subject_ids)
+            $json['level'],
+            $json['characters'],
+            collect($json['meanings'])->pluck('meaning'),
+            collect($json['readings']),
+            collect($json['component_subject_ids']),
+            collect($json['visually_similar_subject_ids'])
         );
     }
 
     public function getImportantReading()
     {
         return $this->readings
-            ->first(fn ($reading) => $reading->primary)
-            ->type;
+            ->first(fn ($reading) => $reading['primary'])['type'];
     }
 
     public function getKunyomi()
     {
         return $this->readings
-            ->filter(fn ($reading) => $reading->type === 'kunyomi')
-            ->map(fn ($reading) => $reading->reading);
+            ->filter(fn ($reading) => $reading['type'] === 'kunyomi')
+            ->map(fn ($reading) => $reading['reading']);
     }
 
     public function getNanori()
     {
         return $this->readings
-            ->filter(fn ($reading) => $reading->type === 'nanori')
-            ->map(fn ($reading) => $reading->reading);
+            ->filter(fn ($reading) => $reading['type'] === 'nanori')
+            ->map(fn ($reading) => $reading['reading']);
     }
 
     public function getOnyomi()
     {
         return $this->readings
-            ->filter(fn ($reading) => $reading->type === 'onyomi')
-            ->map(fn ($reading) => $reading->reading);
+            ->filter(fn ($reading) => $reading['type'] === 'onyomi')
+            ->map(fn ($reading) => $reading['reading']);
     }
 }

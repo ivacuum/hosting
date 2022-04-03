@@ -10,6 +10,8 @@ class PhotoFactory
 {
     use WithFaker;
 
+    private $lat;
+    private $lon;
     private $slug;
     private $relId;
     private $relType;
@@ -39,8 +41,8 @@ class PhotoFactory
     {
         $model = new Photo;
 
-        $model->lat = (string) $this->faker->optional(0.9, '')->latitude;
-        $model->lon = $model->lat ? (string) $this->faker->longitude : '';
+        $model->lat = $this->lat ?? (string) $this->faker->optional(0.9, '')->latitude;
+        $model->lon = $this->lon ?? ($model->lat ? (string) $this->faker->longitude : '');
         $model->slug = $this->slug ?? "test/IMG_{$this->faker->numberBetween(1000, 9999)}.jpg";
         $model->point = $model->lat
             ? new Point($model->lat, $model->lon, 4326)
@@ -66,6 +68,15 @@ class PhotoFactory
         return tap(new self, function (self $factory) {
             $factory->setUpFaker();
         });
+    }
+
+    public function withPoint(string $lat, string $lon)
+    {
+        $factory = clone $this;
+        $factory->lat = $lat;
+        $factory->lon = $lon;
+
+        return $factory;
     }
 
     public function withSlug(string $slug)

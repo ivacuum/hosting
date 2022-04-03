@@ -14,19 +14,18 @@ class RadicalEntity
     ) {
     }
 
-    public static function fromJson(int $id, object $json)
+    public static function fromArray(int $id, array $json)
     {
-        $svgUrl = collect($json->character_images)
-            ->first(fn ($image) => $image->content_type === 'image/svg+xml' && !$image->metadata->inline_styles)
-            ->url ?? '';
+        $svgUrl = collect($json['character_images'])
+                ->first(fn ($image) => $image['content_type'] === 'image/svg+xml' && !$image['metadata']['inline_styles'])['url'] ?? '';
 
         return new self(
             $id,
-            $json->level,
-            $json->characters ?? '',
+            $json['level'],
+            $json['characters'] ?? '',
             $svgUrl,
-            collect($json->meanings)->first()->meaning,
-            collect($json->amalgamation_subject_ids)
+            collect($json['meanings'])->first()['meaning'],
+            collect($json['amalgamation_subject_ids'])
         );
     }
 }

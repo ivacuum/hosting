@@ -9,15 +9,12 @@ class SubjectsResponse
 
     public function __construct(Response $response)
     {
-        $json = $response->object();
-
-        $this->subjects = collect($json->data)
+        $this->subjects = $response->collect('data')
             ->map(function ($object) {
-                return match ($object->object) {
-                    'radical' => RadicalEntity::fromJson($object->id, $object->data),
-                    'kanji' => KanjiEntity::fromJson($object->id, $object->data),
-                    'vocabulary' => VocabularyEntity::fromJson($object->id, $object->data),
-                    default => throw new \InvalidArgumentException("Unexpected object [{$object->object}]."),
+                return match ($object['object']) {
+                    'radical' => RadicalEntity::fromArray($object['id'], $object['data']),
+                    'kanji' => KanjiEntity::fromArray($object['id'], $object['data']),
+                    'vocabulary' => VocabularyEntity::fromArray($object['id'], $object['data']),
                 };
             });
     }

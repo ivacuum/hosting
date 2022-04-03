@@ -1,11 +1,14 @@
 <?php namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\Client\Request;
 use Ivacuum\Generic\Telegram\TelegramClient;
 use Tests\TestCase;
 
 class TelegramClientTest extends TestCase
 {
+    use DatabaseTransactions;
+
     public function testSendMessage()
     {
         \Http::fake();

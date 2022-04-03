@@ -109,7 +109,10 @@ class PhotoTest extends TestCase
 
     public function testMapPointsOfOneTrips()
     {
-        $photo = PhotoFactory::new()->withTrip()->create();
+        $photo = PhotoFactory::new()
+            ->withPoint(5, 15)
+            ->withTrip()
+            ->create();
 
         $this->getJson("photos/map?trip_id={$photo->rel_id}")
             ->assertOk()
@@ -117,8 +120,8 @@ class PhotoTest extends TestCase
             ->assertJsonPath('features.0.type', 'Feature')
             ->assertJsonPath('features.0.id', $photo->id)
             ->assertJsonPath('features.0.geometry.type', 'Point')
-            ->assertJsonPath('features.0.geometry.coordinates.0', $photo->lat)
-            ->assertJsonPath('features.0.geometry.coordinates.1', $photo->lon)
+            ->assertJsonPath('features.0.geometry.coordinates.0', '5')
+            ->assertJsonPath('features.0.geometry.coordinates.1', '15')
             ->assertJsonPath('features.0.properties.clusterCaption', basename($photo->slug));
     }
 

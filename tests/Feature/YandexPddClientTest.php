@@ -5,11 +5,14 @@ use App\Services\YandexPdd\DomainsResponse;
 use App\Services\YandexPdd\EmailEditResponse;
 use App\Services\YandexPdd\EmailsResponse;
 use App\Services\YandexPdd\YandexPddClient;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\Client\Request;
 use Tests\TestCase;
 
 class YandexPddClientTest extends TestCase
 {
+    use DatabaseTransactions;
+
     public function testDkimStatus()
     {
         \Http::fake([
