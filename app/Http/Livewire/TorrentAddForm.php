@@ -43,6 +43,11 @@ class TorrentAddForm extends Component
         } catch (\Throwable $e) {
             $this->addError('input', 'Возникли сложности с подключением к рутрекеру. Пожалуйста, повторите попытку');
 
+            // Failed to connect() to host or proxy.
+            if (str_starts_with($e->getMessage(), 'cURL error 7:')) {
+                return null;
+            }
+
             // Connection reset by peer
             if (str_starts_with($e->getMessage(), 'cURL error 35:')) {
                 return null;
