@@ -9,6 +9,7 @@ class FilterOutCredentialsAction
     {
         match ($model->service_name) {
             ExternalService::Telegram => $this->telegram($model),
+            ExternalService::Vk => $this->vk($model),
             ExternalService::Wanikani => $this->wanikani($model),
             ExternalService::Yandex => $this->yandex($model),
             default => null,
@@ -18,6 +19,13 @@ class FilterOutCredentialsAction
     private function telegram(ExternalHttpRequest $model)
     {
         $model->path = preg_replace('#^/bot\d+:.*/(.*)#', '/botXXX/$1', $model->path);
+    }
+
+    private function vk(ExternalHttpRequest $model)
+    {
+        $token = config('services.vk.access_token');
+
+        $model->query = str_replace("access_token={$token}", 'access_token=XXX', $model->query);
     }
 
     private function wanikani(ExternalHttpRequest $model)
