@@ -31,7 +31,7 @@ Route::get('auth/google/callback', [Ctrl\Auth\Google::class, 'callback']);
 Route::get('auth/vk', [Ctrl\Auth\Vk::class, 'index']);
 Route::get('auth/vk/callback', [Ctrl\Auth\Vk::class, 'callback']);
 
-Route::post('ajax/comment/{type}/{id}', [Ctrl\AjaxComment::class, 'store']);
+Route::post('ajax/comment/{commentable}/{id}', [Ctrl\AjaxComment::class, 'store']);
 
 Route::get('comments/{comment}/confirm', Ctrl\CommentConfirm::class)->middleware('auth', 'can:confirm,comment');
 

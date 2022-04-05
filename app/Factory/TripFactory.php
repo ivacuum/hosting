@@ -14,6 +14,8 @@ class TripFactory
     private $userId;
     private $metaImage;
 
+    private $userFactory;
+
     public function create()
     {
         $model = $this->make();
@@ -35,13 +37,18 @@ class TripFactory
         $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
         $model->status = $this->status;
         $model->city_id = $this->cityId ?? CityFactory::new()->withCountry()->create()->id;
-        $model->user_id = $this->userId ?? 1;
         $model->date_end = $dateEnd;
         $model->markdown = '';
         $model->title_ru = $title;
         $model->title_en = $title;
         $model->date_start = $dateStart;
         $model->meta_image = $this->metaImage ?? '';
+
+        if ($this->userFactory instanceof UserFactory && !$this->userId) {
+            $model->user_id = $this->userFactory->create()->id;
+        } else {
+            $model->user_id = $this->userId ?? 1;
+        }
 
         return $model;
     }
@@ -70,6 +77,14 @@ class TripFactory
     {
         $factory = clone $this;
         $factory->metaImage = $metaImage;
+
+        return $factory;
+    }
+
+    public function withUser(UserFactory $userFactory = null)
+    {
+        $factory = clone $this;
+        $factory->userFactory = $userFactory ?? UserFactory::new();
 
         return $factory;
     }

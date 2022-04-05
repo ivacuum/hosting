@@ -59,6 +59,6 @@
 
 @if (isset($comments))
   @include('tpl.comments-list')
-  @include('tpl.comment-add', ['params' => ['trip', $trip->id]])
+  @include('tpl.comment-add', ['params' => [App\Domain\Commentable::Trip->value, $trip->id]])
 @endif
 @endsection

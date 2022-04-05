@@ -92,5 +92,5 @@
 @endif
 
 @include('tpl.comments-list')
-@include('tpl.comment-add', ['params' => ['torrent', $magnet->id]])
+@include('tpl.comment-add', ['params' => [App\Domain\Commentable::Magnet->value, $magnet->id]])
 @endsection

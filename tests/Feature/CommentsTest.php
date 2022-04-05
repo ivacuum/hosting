@@ -2,7 +2,9 @@
 
 use App\Comment;
 use App\Events\CommentPublished;
+use App\Factory\MagnetFactory;
 use App\Factory\NewsFactory;
+use App\Factory\TripFactory;
 use App\Mail\CommentConfirmMail;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -11,7 +13,7 @@ class CommentsTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testCommentPostAsGuest()
+    public function testCommentNewsAsGuest()
     {
         \Mail::fake();
 
@@ -23,7 +25,7 @@ class CommentsTest extends TestCase
                 'text' => 'some text from the guest',
                 'email' => $email,
             ])
-            ->assertStatus(201)
+            ->assertCreated()
             ->assertJsonStructure(['data']);
 
         \Mail::assertQueued(CommentConfirmMail::class);
@@ -39,14 +41,36 @@ class CommentsTest extends TestCase
             ->assertRedirect($comment->www());
     }
 
-    public function testCommentPostAsUser()
+    public function testCommentMagnetAsUser()
+    {
+        $magnet = MagnetFactory::new()->create();
+
+        $this->be($magnet->user)
+            ->expectsEvents(CommentPublished::class)
+            ->postJson("ajax/comment/magnet/{$magnet->id}", ['text' => 'some text from the user is here'])
+            ->assertCreated()
+            ->assertJsonStructure(['data']);
+    }
+
+    public function testCommentNewsAsUser()
     {
         $news = NewsFactory::new()->create();
 
         $this->be($news->user)
             ->expectsEvents(CommentPublished::class)
             ->postJson("ajax/comment/news/{$news->id}", ['text' => 'some text from the user is here'])
-            ->assertStatus(201)
+            ->assertCreated()
+            ->assertJsonStructure(['data']);
+    }
+
+    public function testCommentTripAsUser()
+    {
+        $trip = TripFactory::new()->withUser()->create();
+
+        $this->be($trip->user)
+            ->expectsEvents(CommentPublished::class)
+            ->postJson("ajax/comment/trip/{$trip->id}", ['text' => 'some text from the user is here'])
+            ->assertCreated()
             ->assertJsonStructure(['data']);
     }
 }

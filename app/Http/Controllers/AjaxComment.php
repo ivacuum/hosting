@@ -2,6 +2,7 @@
 
 use App\Action\FindUserByEmailOrCreateAction;
 use App\Comment;
+use App\Domain\Commentable;
 use App\Domain\CommentStatus;
 use App\Exceptions\CommentLimitExceededException;
 use App\Http\Requests\CommentStoreForm;
@@ -14,7 +15,7 @@ use Ivacuum\Generic\Exceptions\FloodException;
 
 class AjaxComment extends Controller
 {
-    public function store(string $type, int $id, CommentsTodayLimit $limits, CommentStoreForm $request, FindUserByEmailOrCreateAction $findUserByEmailOrCreate)
+    public function store(Commentable $commentable, int $id, CommentsTodayLimit $limits, CommentStoreForm $request, FindUserByEmailOrCreateAction $findUserByEmailOrCreate)
     {
         $text = $request->input('text');
         $user = $request->userModel();
@@ -31,7 +32,7 @@ class AjaxComment extends Controller
             }
         }
 
-        $model = $this->notifiableModel($type, $id);
+        $model = $this->notifiableModel($commentable, $id);
 
         if ($limits->flood($user->id)) {
             throw new FloodException;
@@ -56,25 +57,16 @@ class AjaxComment extends Controller
         return $this->redirectToComment($model, $isGuest ? null : $comment);
     }
 
-    /**
-     * @param string $type
-     * @param int $id
-     * @return \App\News|\App\Magnet|\App\Trip
-     */
-    protected function notifiableModel(string $type, int $id)
+    protected function notifiableModel(Commentable $commentable, int $id): Magnet|News|Trip
     {
-        if ($type === 'news') {
-            return News::query()->published()->findOrFail($id);
-        } elseif ($type === 'trip') {
-            return Trip::query()->published()->findOrFail($id);
-        } elseif ($type === 'torrent') {
-            return Magnet::query()->published()->findOrFail($id);
-        }
-
-        throw new \Exception('Не выбран объект для комментирования');
+        return match ($commentable) {
+            Commentable::Magnet => Magnet::query()->published()->findOrFail($id),
+            Commentable::News => News::query()->published()->findOrFail($id),
+            Commentable::Trip => Trip::query()->published()->findOrFail($id),
+        };
     }
 
-    protected function redirectToComment($model, ?Comment $comment)
+    protected function redirectToComment(Magnet|News|Trip $model, ?Comment $comment)
     {
         if (method_exists($model, 'www')) {
             return $comment === null

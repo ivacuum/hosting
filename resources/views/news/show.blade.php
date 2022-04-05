@@ -36,5 +36,5 @@
 </article>
 
 @include('tpl.comments-list')
-@include('tpl.comment-add', ['params' => ['news', $news->id]])
+@include('tpl.comment-add', ['params' => [App\Domain\Commentable::News->value, $news->id]])
 @endsection
