@@ -10,52 +10,6 @@ class TripFactory
         return Trip::orderByDesc('date_start')->pluck('slug', 'id');
     }
 
-    public static function idsByCity(?int $id = null)
-    {
-        $ids = \Cache::rememberForever(Domain\CacheKey::TripsPublishedByCity->value, function () {
-            $trips = Trip::published()->get(['id', 'city_id']);
-            $result = [];
-
-            /** @var Trip $trip */
-            foreach ($trips as $trip) {
-                $result[$trip->city_id][] = $trip->id;
-            }
-
-            return $result;
-        });
-
-        if ($id) {
-            return $ids[$id] ?? [];
-        }
-
-        return $ids;
-    }
-
-    public static function idsByCountry(?int $id = null)
-    {
-        $ids = \Cache::rememberForever(Domain\CacheKey::TripsPublishedByCountry->value, function () {
-            $trips = Trip::query()
-                ->published()
-                ->with('city:id,country_id')
-                ->get(['id', 'city_id']);
-
-            $result = [];
-
-            /** @var Trip $trip */
-            foreach ($trips as $trip) {
-                $result[$trip->city->country_id][] = $trip->id;
-            }
-
-            return $result;
-        });
-
-        if ($id) {
-            return $ids[$id] ?? [];
-        }
-
-        return $ids;
-    }
-
     /**
      * @return \Symfony\Component\Finder\Finder|\Symfony\Component\Finder\SplFileInfo[]
      */

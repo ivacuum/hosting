@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\Action\GetPhotoPointsAction;
+use App\Action\GetTripsPublishedByCityAction;
+use App\Action\GetTripsPublishedByCountryAction;
 use App\Action\GetTripsPublishedWithCoverAction;
 use App\City;
 use App\Country;
@@ -38,13 +40,13 @@ class Photos extends Controller
         return view('photos.cities', ['cities' => $cities]);
     }
 
-    public function city(string $slug, CityHelper $cityHelper)
+    public function city(string $slug, CityHelper $cityHelper, GetTripsPublishedByCityAction $getTripsPublishedByCity)
     {
         /** @var City $city */
         $city = $cityHelper->findBySlugOrFail($slug);
         $city->loadCountry();
 
-        $ids = TripFactory::idsByCity($city->id);
+        $ids = $getTripsPublishedByCity->execute($city->id);
 
         abort_if(empty($ids), 404);
 
@@ -69,12 +71,12 @@ class Photos extends Controller
         ]);
     }
 
-    public function country(string $slug, CountryHelper $countryHelper)
+    public function country(string $slug, CountryHelper $countryHelper, GetTripsPublishedByCountryAction $getTripsPublishedByCountry)
     {
         /** @var Country $country */
         $country = $countryHelper->findBySlugOrFail($slug);
 
-        $ids = TripFactory::idsByCountry($country->id);
+        $ids = $getTripsPublishedByCountry->execute($country->id);
 
         abort_if(empty($ids), 404);
 
@@ -110,7 +112,7 @@ class Photos extends Controller
         return view('photos.map', ['photo' => $photo]);
     }
 
-    public function show(Photo $photo)
+    public function show(Photo $photo, GetTripsPublishedByCityAction $getTripsPublishedByCity, GetTripsPublishedByCountryAction $getTripsPublishedByCountry)
     {
         abort_unless($photo->isPublished(), 404);
 
@@ -133,7 +135,7 @@ class Photos extends Controller
             // В пределах города
             abort_unless($cityId == $photo->rel->city->id, 404);
 
-            $ids = TripFactory::idsByCity($cityId);
+            $ids = $getTripsPublishedByCity->execute($cityId);
 
             $next = $next->forTrips($ids);
             $prev = $prev->forTrips($ids);
@@ -147,7 +149,7 @@ class Photos extends Controller
             // В пределах страны
             abort_unless($countryId == $photo->rel->city->country->id, 404);
 
-            $ids = TripFactory::idsByCountry($countryId);
+            $ids = $getTripsPublishedByCountry->execute($countryId);
 
             $next = $next->forTrips($ids);
             $prev = $prev->forTrips($ids);

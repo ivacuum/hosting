@@ -39,6 +39,9 @@ enum CacheKey: string
             self::PhotosPoints => CarbonInterval::minutes(30),
 
             self::TripsPublishedWithCover => CarbonInterval::week(),
+
+            self::TripsPublishedByCity,
+            self::TripsPublishedByCountry => CarbonInterval::year(),
         };
     }
 }
