@@ -3,18 +3,19 @@
 return [
     'enabled' => env('DEBUGBAR_ENABLED'),
     'except' => [
+        'horizon*',
         'telescope*',
     ],
 
     'storage' => [
         'enabled' => true,
-        'driver' => 'file', // redis, file, pdo, custom
+        'driver' => 'redis', // redis, file, pdo, custom
         'path' => storage_path('debugbar'), // For file driver
         'connection' => null,   // Leave null for default connection (Redis/PDO)
         'provider' => '' // Instance of StorageInterface for custom driver
     ],
 
-    'include_vendors' => false,
+    'include_vendors' => true,
 
     'capture_ajax' => true,
     'add_ajax_timing' => false,
@@ -37,12 +38,12 @@ return [
         'symfony_request' => true,  // Only one can be enabled..
         'mail' => false, // Catch mail messages
         'laravel' => false, // Laravel version and environment
-        'events' => false, // All events fired
+        'events' => true, // All events fired
         'default_request' => false, // Regular or special Symfony request logger
         'logs' => false, // Add the latest log messages
         'files' => false, // Show the included files
         'config' => false, // Display config settings
-        'cache' => false, // Display cache events
+        'cache' => true, // Display cache events
         'models' => true,
     ],
 
