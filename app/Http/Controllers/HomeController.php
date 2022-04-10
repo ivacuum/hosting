@@ -1,11 +1,11 @@
 <?php namespace App\Http\Controllers;
 
-use App\TripFactory;
+use App\Action\GetTripsPublishedWithCoverAction;
 
 class HomeController extends Controller
 {
-    public function __invoke()
+    public function __invoke(GetTripsPublishedWithCoverAction $getTripsPublishedWithCover)
     {
-        return view('index', ['trips' => TripFactory::tripsWithCover(6)]);
+        return view('index', ['trips' => $getTripsPublishedWithCover->execute(6)]);
     }
 }

@@ -37,6 +37,8 @@ enum CacheKey: string
             self::TorrentsStatsByCategories => CarbonInterval::minutes(15),
 
             self::PhotosPoints => CarbonInterval::minutes(30),
+
+            self::TripsPublishedWithCover => CarbonInterval::week(),
         };
     }
 }

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Action\CachePhotoPointsAction;
+use App\Action\GetTripsPublishedWithCoverAction;
 use App\City;
 use App\Country;
 use App\Domain\PhotoStatus;
@@ -236,10 +237,10 @@ class Photos extends Controller
         ]);
     }
 
-    public function trips()
+    public function trips(GetTripsPublishedWithCoverAction $getTripsPublishedWithCover)
     {
         return view('photos.trips', [
-            'trips' => TripFactory::tripswithCover(),
+            'trips' => $getTripsPublishedWithCover->execute(),
         ]);
     }
 

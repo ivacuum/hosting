@@ -1,8 +1,6 @@
 <?php namespace App;
 
-use Carbon\CarbonInterval;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 use Symfony\Component\Finder\Finder;
 
 class TripFactory
@@ -88,21 +86,5 @@ class TripFactory
             });
 
         return collect($tripsByCities);
-    }
-
-    public static function tripsWithCover(?int $count = null)
-    {
-        return \Cache::remember(Domain\CacheKey::TripsPublishedWithCover->value, CarbonInterval::day(), function () {
-            // Не нужно ограничение по пользователю, так как meta_image есть только у user_id=1
-            return Trip::query()
-                ->published()
-                ->where('meta_image', '<>', '')
-                ->orderByDesc('date_start')
-                ->get();
-        })->when($count > 0, function (Collection $trips) use ($count) {
-            return $trips->count() > $count
-                ? $trips->random($count)
-                : $trips;
-        });
     }
 }
