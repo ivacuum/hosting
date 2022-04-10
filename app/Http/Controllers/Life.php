@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Action\GetMyVisibleGigsAction;
+use App\Action\GetMyVisibleTripsAction;
 use App\City;
 use App\Country;
 use App\Domain\TripStatus;
@@ -7,11 +9,10 @@ use App\Gig;
 use App\Http\Requests\LifeIndexForm;
 use App\Trip;
 use App\TripFactory;
-use Illuminate\Database\Eloquent\Builder;
 
 class Life extends Controller
 {
-    public function index(LifeIndexForm $request)
+    public function index(LifeIndexForm $request, GetMyVisibleTripsAction $getMyVisibleTrips, GetMyVisibleGigsAction $getMyVisibleGigs)
     {
         if ($request->shouldRedirectInstagrammer()) {
             return $request->redirectInstagrammer();
@@ -20,19 +21,8 @@ class Life extends Controller
         $to = $request->to();
         $from = $request->from();
 
-        $trips = Trip::withCount('photos')
-            ->where('user_id', 1)
-            ->visible()
-            ->when($from, fn (Builder $query) => $query->where('date_start', '>=', $from))
-            ->when($to, fn (Builder $query) => $query->where('date_start', '<=', $to))
-            ->orderBy('date_start', $from || $to ? 'asc' : 'desc')
-            ->get();
-
-        $gigs = Gig::with('artist')
-            ->when($from, fn (Builder $query) => $query->where('date', '>=', $from))
-            ->when($to, fn (Builder $query) => $query->where('date', '<=', $to))
-            ->orderByDesc('date')
-            ->get();
+        $trips = $getMyVisibleTrips->execute($from, $to);
+        $gigs = $getMyVisibleGigs->execute($from, $to);
 
         $models = collect([...$trips, ...$gigs])
             ->sortByDesc(fn (Gig|Trip $model) => $model->date())

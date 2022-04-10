@@ -25,9 +25,17 @@ class CacheHelper
         ]);
     }
 
+    public function forgetGigs()
+    {
+        $this->cache->deleteMultiple([
+            CacheKey::MyVisibleGigs->value,
+        ]);
+    }
+
     public function forgetTrips()
     {
         $this->cache->deleteMultiple([
+            CacheKey::MyVisibleTrips->value,
             CacheKey::TripsPublishedByCountry->value,
             CacheKey::TripsPublishedByCity->value,
             CacheKey::TripsPublishedWithCover->value,

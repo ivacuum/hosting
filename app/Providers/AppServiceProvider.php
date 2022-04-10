@@ -52,6 +52,7 @@ class AppServiceProvider extends ServiceProvider
             'ExternalIdentity' => App\ExternalIdentity::class,
         ]);
 
+        App\Gig::observe(App\Observers\GigObserver::class);
         App\Tag::observe(App\Observers\TagObserver::class);
         App\City::observe(App\Observers\CityObserver::class);
         App\News::observe(App\Observers\NewsObserver::class);
@@ -62,6 +63,7 @@ class AppServiceProvider extends ServiceProvider
         App\Issue::observe(App\Observers\IssueObserver::class);
         App\Kanji::observe(App\Observers\KanjiObserver::class);
         App\Photo::observe(App\Observers\PhotoObserver::class);
+        App\Artist::observe(App\Observers\ArtistObserver::class);
         App\Domain::observe(App\Observers\DomainObserver::class);
         App\Magnet::observe(App\Observers\MagnetObserver::class);
         App\Comment::observe(App\Observers\CommentObserver::class);

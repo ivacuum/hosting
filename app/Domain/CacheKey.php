@@ -12,6 +12,9 @@ enum CacheKey: string
 
     case DomainsWhois = 'domains.whois.{key}';
 
+    case MyVisibleGigs = 'my.gigs.visible';
+    case MyVisibleTrips = 'my.trips.visible';
+
     case PhotosPoints = 'photos.points.all';
     case PhotosPointsForTrip = 'photos.points.trip'; // Отключено
 
@@ -38,6 +41,8 @@ enum CacheKey: string
 
             self::PhotosPoints => CarbonInterval::minutes(30),
 
+            self::MyVisibleGigs,
+            self::MyVisibleTrips,
             self::TripsPublishedWithCover => CarbonInterval::week(),
 
             self::TripsPublishedByCity,
