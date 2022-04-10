@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Action\CachePhotoPointsAction;
+use App\Action\GetPhotoPointsAction;
 use App\Action\GetTripsPublishedWithCoverAction;
 use App\City;
 use App\Country;
@@ -92,10 +92,10 @@ class Photos extends Controller
         ]);
     }
 
-    public function map(PhotosMapForm $request)
+    public function map(PhotosMapForm $request, GetPhotoPointsAction $getPhotoPoints)
     {
         if ($request->expectsJson()) {
-            return $this->pointsForMap($request->tripId());
+            return $getPhotoPoints->execute($request->tripId());
         }
 
         $photoSlug = $request->photoSlug();
@@ -242,11 +242,5 @@ class Photos extends Controller
         return view('photos.trips', [
             'trips' => $getTripsPublishedWithCover->execute(),
         ]);
-    }
-
-    protected function pointsForMap(?int $tripId)
-    {
-        return resolve(CachePhotoPointsAction::class)
-            ->execute($tripId);
     }
 }

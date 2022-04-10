@@ -5,7 +5,7 @@ use App\Http\Response\PhotoPointCollectionResponse;
 use App\Photo;
 use Illuminate\Cache\Repository;
 
-class CachePhotoPointsAction
+class GetPhotoPointsAction
 {
     public function __construct(private Repository $cache)
     {
@@ -13,11 +13,11 @@ class CachePhotoPointsAction
 
     public function execute(?int $tripId): array
     {
-        $cacheEntry = $tripId
+        $key = $tripId
             ? CacheKey::PhotosPointsForTrip
             : CacheKey::PhotosPoints;
 
-        return $this->cache->remember($cacheEntry->value, $cacheEntry->ttl(), function () use ($tripId) {
+        return $this->cache->remember($key->value, $key->ttl(), function () use ($tripId) {
             $photos = Photo::query()
                 ->with('rel')
                 ->forTrip($tripId)
