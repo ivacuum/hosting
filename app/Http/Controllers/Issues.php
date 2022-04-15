@@ -10,14 +10,16 @@ use Ivacuum\Generic\Exceptions\FloodException;
 
 class Issues extends Controller
 {
-    public function __invoke(IssuesTodayLimit $limits, IssueStoreForm $request, FindUserByEmailOrCreateAction $findUserByEmailOrCreate)
-    {
-        $user = $request->userModel();
-        $email = $request->email();
+    public function __invoke(
+        IssuesTodayLimit $limits,
+        IssueStoreForm $request,
+        FindUserByEmailOrCreateAction $findUserByEmailOrCreate
+    ) {
+        $user = $request->user;
         $isGuest = $request->isGuest();
 
         if ($isGuest) {
-            $user = $findUserByEmailOrCreate->execute($email);
+            $user = $findUserByEmailOrCreate->execute($request->email);
 
             if ($user->wasRecentlyCreated) {
                 event(new \App\Events\Stats\UserRegisteredAutoWhenIssueAdded);
@@ -33,15 +35,15 @@ class Issues extends Controller
         }
 
         $issue = new Issue;
-        $issue->name = $request->name();
+        $issue->name = $request->name;
         $issue->page = $request->pathFromUrl();
-        $issue->text = $request->text();
-        $issue->email = $email;
-        $issue->title = $request->title();
+        $issue->text = $request->text;
+        $issue->email = $request->email;
+        $issue->title = $request->title;
         $issue->status = IssueStatus::Open;
         $issue->user_id = $user->id;
         $issue->save();
 
-        return response('', 201);
+        return response(status: 201);
     }
 }

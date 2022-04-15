@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Domain\BeaconEvent;
 use App\Events\Stats;
 use App\Http\Requests\BeaconStoreForm;
 
@@ -18,23 +19,17 @@ class Beacon extends Controller
     {
         $metrics = $this->metrics();
 
-        foreach ($request->input('events') as $entry) {
-            if (!isset($entry['event'])) {
+        foreach ($request->events as $event) {
+            if (isset($metrics[$event->event])) {
+                event(new $metrics[$event->event]);
                 continue;
             }
 
-            $event = $entry['event'];
-
-            if (isset($metrics[$event])) {
-                event(new $metrics[$event]);
-                continue;
-            }
-
-            $method = "process{$event}Event";
-
-            if (method_exists($this, $method)) {
-                $this->{$method}($entry);
-            }
+            match ($event->event) {
+                class_basename(Stats\NewsViewed::class) => $this->processNewsViewedEvent($event),
+                class_basename(Stats\TorrentViewed::class) => $this->processTorrentViewedEvent($event),
+                default => null,
+            };
         }
 
         return response()
@@ -49,13 +44,13 @@ class Beacon extends Controller
             ->toArray();
     }
 
-    protected function processNewsViewedEvent($event)
+    protected function processNewsViewedEvent(BeaconEvent $event)
     {
-        event(new Stats\NewsViewed($event['id']));
+        event(new Stats\NewsViewed($event->id));
     }
 
-    protected function processTorrentViewedEvent($event)
+    protected function processTorrentViewedEvent(BeaconEvent $event)
     {
-        event(new Stats\TorrentViewed($event['id']));
+        event(new Stats\TorrentViewed($event->id));
     }
 }

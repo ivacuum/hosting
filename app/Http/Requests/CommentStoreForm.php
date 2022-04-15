@@ -1,10 +1,15 @@
 <?php namespace App\Http\Requests;
 
 use App\Rules\Email;
+use App\User;
 use Illuminate\Validation\Rule;
 
 class CommentStoreForm extends AbstractForm
 {
+    public ?User $user;
+    public readonly string $text;
+    public readonly ?string $email;
+
     public function authorize(): bool
     {
         return true;
@@ -13,19 +18,15 @@ class CommentStoreForm extends AbstractForm
     public function rules(): array
     {
         return [
-            'id' => 'integer|min:1',
             'text' => 'required|max:1000',
-            'type' => 'in:news,torrent,trip',
             'email' => Rule::when($this->isGuest(), Email::rules()),
         ];
     }
 
-    public function sanitize(array $data): array
+    protected function passedValidation()
     {
-        if (isset($data['text']) && $data['text']) {
-            $data['text'] = e($data['text']);
-        }
-
-        return $data;
+        $this->text = e($this->input('text'));
+        $this->user = $this->user();
+        $this->email = $this->input('email');
     }
 }

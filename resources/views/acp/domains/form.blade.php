@@ -1,32 +1,32 @@
 @include('tpl.form_errors')
 
-{!! Form::text('domain')->required()->placeholder('example.com')->html() !!}
+{{ Form::text('domain')->required()->placeholder('example.com')->html() }}
 
-{!! Form::select('alias_id')->values(App\Domain::orderBy('domain')->pluck('domain', 'id'))->html() !!}
+{{ Form::select('alias_id')->values(App\Domain::orderBy('domain')->pluck('domain', 'id'))->html() }}
 
-{!! Form::select('client_id')->values(App\Client::pluck('name', 'id'))->html() !!}
+{{ Form::select('client_id')->values(App\Client::pluck('name', 'id'))->html() }}
 
-{!! Form::select('yandex_user_id')->values(App\YandexUser::pluck('account', 'id'))->html() !!}
+{{ Form::select('yandex_user_id')->values(App\YandexUser::pluck('account', 'id'))->html() }}
 
-{!! Form::checkbox('status')
+{{ Form::checkbox('status')
   ->label('')
   ->default(0)
   ->values([1 => 'Мониторинг домена'])
-  ->html() !!}
+  ->html() }}
 
-{!! Form::checkbox('domain_control')
+{{ Form::checkbox('domain_control')
   ->label('')
   ->default(0)
   ->values([1 => 'Домен в нашей панели reg.ru'])
-  ->html() !!}
+  ->html() }}
 
-{!! Form::checkbox('orphan')
+{{ Form::checkbox('orphan')
   ->label('')
   ->default(0)
   ->values([1 => 'Домен на продажу'])
-  ->html() !!}
+  ->html() }}
 
-{!! Form::textarea('text')->wide()->html() !!}
+{{ Form::textarea('text')->wide()->html() }}
 
 <h3 class="mt-12 mb-4">Реквизиты доступа к сайту</h3>
 

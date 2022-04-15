@@ -1,23 +1,20 @@
 <?php namespace App\Http\Requests;
 
 use App\Rules\Email;
+use App\User;
 use Illuminate\Validation\Rule;
 
 class IssueStoreForm extends AbstractForm
 {
+    public ?User $user;
+    public readonly string $text;
+    public readonly string $email;
+    public readonly string $title;
+    public readonly ?string $name;
+
     public function authorize(): bool
     {
         return $this->expectsJson();
-    }
-
-    public function email()
-    {
-        return $this->input('email');
-    }
-
-    public function name()
-    {
-        return $this->input('name');
     }
 
     public function pathFromUrl(): string
@@ -42,22 +39,12 @@ class IssueStoreForm extends AbstractForm
         ];
     }
 
-    public function sanitize(array $data): array
+    protected function passedValidation()
     {
-        if (isset($data['text']) && $data['text']) {
-            $data['text'] = e($data['text']);
-        }
-
-        return $data;
-    }
-
-    public function text()
-    {
-        return $this->input('text');
-    }
-
-    public function title()
-    {
-        return $this->input('title');
+        $this->name = $this->input('name');
+        $this->text = $this->input('text');
+        $this->user = $this->user();
+        $this->email = $this->input('email');
+        $this->title = $this->input('title');
     }
 }

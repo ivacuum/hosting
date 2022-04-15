@@ -15,15 +15,18 @@ use Ivacuum\Generic\Exceptions\FloodException;
 
 class AjaxComment extends Controller
 {
-    public function store(Commentable $commentable, int $id, CommentsTodayLimit $limits, CommentStoreForm $request, FindUserByEmailOrCreateAction $findUserByEmailOrCreate)
-    {
-        $text = $request->input('text');
-        $user = $request->userModel();
-        $email = $request->input('email');
+    public function store(
+        Commentable $commentable,
+        int $id,
+        CommentsTodayLimit $limits,
+        CommentStoreForm $request,
+        FindUserByEmailOrCreateAction $findUserByEmailOrCreate
+    ) {
+        $user = $request->user;
         $isGuest = $request->isGuest();
 
         if ($isGuest) {
-            $user = $findUserByEmailOrCreate->execute($email);
+            $user = $findUserByEmailOrCreate->execute($request->email);
 
             if ($user->wasRecentlyCreated) {
                 event(new \App\Events\Stats\UserRegisteredAutoWhenCommentAdded);
@@ -41,7 +44,7 @@ class AjaxComment extends Controller
         }
 
         $comment = new Comment;
-        $comment->html = $text;
+        $comment->html = $request->text;
         $comment->status = $isGuest
             ? CommentStatus::Pending
             : CommentStatus::Published;

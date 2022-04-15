@@ -58,7 +58,7 @@
     <tr>
       <td class="text-right font-bold">Яндекс</td>
       <td>
-        <a href="{{ path([App\Http\Controllers\Acp\YandexUsers::class, 'show'], $model->yandexUser->id) }}">
+        <a href="{{ path([App\Http\Controllers\Acp\YandexUsers::class, 'show'], $model->yandexUser) }}">
           {{ $model->yandexUser->account }}
         </a>
       </td>

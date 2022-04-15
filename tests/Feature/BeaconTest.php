@@ -8,6 +8,18 @@ class BeaconTest extends TestCase
 {
     use DatabaseTransactions;
 
+    public function testEmptyEvent()
+    {
+        $this->post('ajax/beacon', $this->payload([['event' => '']]))
+            ->assertSessionHasErrors('events.*.event');
+    }
+
+    public function testInvalidPayload()
+    {
+        $this->post('ajax/beacon', $this->payload(['bogus' => 'is real']))
+            ->assertSessionHasErrors('events.*.event');
+    }
+
     /**
      * @dataProvider simpleEvents
      * @param string $event
@@ -16,9 +28,11 @@ class BeaconTest extends TestCase
     {
         $this->expectsEvents($event);
 
-        $payload = $this->payload([[
-            'event' => class_basename($event),
-        ]]);
+        $payload = $this->payload([
+            [
+                'event' => class_basename($event),
+            ],
+        ]);
 
         $this->post('ajax/beacon', $payload)
             ->assertNoContent();
@@ -44,6 +58,12 @@ class BeaconTest extends TestCase
         });
     }
 
+    public function testUnknownEvent()
+    {
+        $this->post('ajax/beacon', $this->payload([['event' => 'unknown thing']]))
+            ->assertNoContent();
+    }
+
     public function simpleEvents()
     {
         return [
@@ -58,13 +78,15 @@ class BeaconTest extends TestCase
 
     public function viewCounters()
     {
-        return [[
+        yield [
             'event' => Stats\NewsViewed::class,
             'ids' => [5, 15],
-        ], [
+        ];
+
+        yield [
             'event' => Stats\TorrentViewed::class,
             'ids' => [1],
-        ]];
+        ];
     }
 
     private function payload(array $data): array

@@ -13,6 +13,22 @@ class CommentsTest extends TestCase
 {
     use DatabaseTransactions;
 
+    public function testCommentEscape()
+    {
+        $news = NewsFactory::new()->create();
+
+        $this->be($news->user)
+            ->expectsEvents(CommentPublished::class)
+            ->postJson("ajax/comment/news/{$news->id}", ['text' => 'some text from the user is here " & \' <>'])
+            ->assertCreated()
+            ->assertJsonStructure(['data']);
+
+        $comment = $news->comments->first();
+
+        // Ранние комментарии в html, а новые экранируем
+        $this->assertSame('some text from the user is here &quot; &amp; &#039; &lt;&gt;', $comment->html);
+    }
+
     public function testCommentNewsAsGuest()
     {
         \Mail::fake();

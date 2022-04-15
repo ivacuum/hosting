@@ -1,8 +1,8 @@
 @include('tpl.form_errors')
 
-{!! Form::text('title')->required()->html() !!}
-{!! Form::text('host')->required()->placeholder('srv1.example.com')->html() !!}
-{!! Form::textarea('text')->wide()->html() !!}
+{{ Form::text('title')->required()->html() }}
+{{ Form::text('host')->required()->placeholder('srv1.example.com')->html() }}
+{{ Form::textarea('text')->wide()->html() }}
 
 <div class="mb-4">
   <label class="font-bold">FTP</label>

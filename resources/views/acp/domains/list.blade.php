@@ -48,7 +48,7 @@
       <td>{!! $model->whatServerIpv4() !!}</td>
       <td>{{ $model->firstNsServer() }}</td>
       <td>
-        @if (!$model->isExpired() && ($model->cms_url || ($model->alias_id and $model->alias->cms_url)))
+        @if (!$model->isExpired() && ($model->cms_url || ($model->alias_id && $model->alias->cms_url)))
           @include('acp.domains.cms_login', ['cmsButtonClass' => 'btn btn-default text-sm py-1'])
         @endif
       </td>

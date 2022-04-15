@@ -1,9 +1,13 @@
 <?php namespace App\Http\Requests;
 
+use App\Domain\BeaconEvent;
 use Ivacuum\Generic\Http\FormRequest;
 
 class BeaconStoreForm extends FormRequest
 {
+    /** @var array<int, BeaconEvent> */
+    public readonly array $events;
+
     public function authorize(): bool
     {
         return true;
@@ -17,12 +21,15 @@ class BeaconStoreForm extends FormRequest
         ];
     }
 
-    public function sanitize(array $data): array
+    protected function passedValidation()
     {
-        if (!empty($data['events'])) {
-            $data['events'] = json_decode($data['events'], true);
-        }
+        $this->events = collect($this->input('events'))
+            ->map(fn ($payload) => BeaconEvent::fromArray($payload))
+            ->all();
+    }
 
-        return $data;
+    protected function prepareForValidation()
+    {
+        $this['events'] = json_decode($this->input('events'), true);
     }
 }
