@@ -2,13 +2,13 @@
 
 use App\Action\GetMyVisibleGigsAction;
 use App\Action\GetMyVisibleTripsAction;
+use App\Action\GetTripCountByCitiesAction;
 use App\City;
 use App\Country;
 use App\Domain\TripStatus;
 use App\Gig;
 use App\Http\Requests\LifeIndexForm;
 use App\Trip;
-use App\TripFactory;
 
 class Life extends Controller
 {
@@ -33,15 +33,15 @@ class Life extends Controller
         ]);
     }
 
-    public function cities()
+    public function cities(GetTripCountByCitiesAction $getTripCountByCities)
     {
-        $trips = TripFactory::tripsByCities(1);
+        $tripCount = $getTripCountByCities->execute(1);
 
         $cities = \CityHelper::cachedById()
-            ->filter(fn (City $city) => isset($trips[$city->id]))
-            ->each(function (City $city) use (&$trips) {
-                $city->trips_count = $trips[$city->id]['total'] ?? 0;
-                $city->trips_published_count = $trips[$city->id]['published'] ?? 0;
+            ->filter(fn (City $city) => isset($tripCount[$city->id]))
+            ->each(function (City $city) use (&$tripCount) {
+                $city->trips_count = $tripCount[$city->id]['total'] ?? 0;
+                $city->trips_published_count = $tripCount[$city->id]['published'] ?? 0;
             })
             ->sortBy(City::titleField());
 

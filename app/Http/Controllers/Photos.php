@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Action\GetPhotoPointsAction;
+use App\Action\GetTripCountByCitiesAction;
 use App\Action\GetTripsPublishedByCityAction;
 use App\Action\GetTripsPublishedByCountryAction;
 use App\Action\GetTripsPublishedWithCoverAction;
@@ -11,7 +12,6 @@ use App\Http\Requests\PhotosMapForm;
 use App\Photo;
 use App\Tag;
 use App\Trip;
-use App\TripFactory;
 use App\Utilities\CityHelper;
 use App\Utilities\CountryHelper;
 
@@ -27,14 +27,12 @@ class Photos extends Controller
         return view('photos.index', ['photos' => $photos]);
     }
 
-    public function cities(CityHelper $cityHelper)
+    public function cities(CityHelper $cityHelper, GetTripCountByCitiesAction $getTripCountByCities)
     {
-        $trips = TripFactory::tripsByCities(1);
+        $tripCount = $getTripCountByCities->execute(1);
 
         $cities = $cityHelper->cachedById()
-            ->filter(function (City $city) use (&$trips) {
-                return $trips[$city->id]['published'] ?? 0;
-            })
+            ->filter(fn (City $city) => $tripCount[$city->id]['published'] ?? 0)
             ->sortBy(City::titleField());
 
         return view('photos.cities', ['cities' => $cities]);

@@ -1,21 +1,21 @@
 <?php namespace App\Http\Controllers;
 
+use App\Action\GetTripCountByCitiesAction;
 use App\City;
 use App\Domain\TripStatus;
 use App\Trip;
-use App\TripFactory;
 
 class UserTravelCities extends UserTravel
 {
-    public function index(string $login)
+    public function index(string $login, GetTripCountByCitiesAction $getTripCountByCities)
     {
-        $trips = TripFactory::tripsByCities($this->traveler->id);
+        $tripCount = $getTripCountByCities->execute($this->traveler->id);
 
         $cities = \CityHelper::cachedById()
-            ->filter(fn (City $city) => isset($trips[$city->id]))
-            ->each(function (City $city) use (&$trips) {
-                $city->trips_count = $trips[$city->id]['total'] ?? 0;
-                $city->trips_published_count = $trips[$city->id]['published'] ?? 0;
+            ->filter(fn (City $city) => isset($tripCount[$city->id]))
+            ->each(function (City $city) use (&$tripCount) {
+                $city->trips_count = $tripCount[$city->id]['total'] ?? 0;
+                $city->trips_published_count = $tripCount[$city->id]['published'] ?? 0;
             })
             ->sortBy(City::titleField());
 

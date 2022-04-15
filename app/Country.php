@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Action\GetTripCountByCitiesAction;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -49,13 +50,13 @@ class Country extends Model
     // Methods
     public static function allWithCitiesAndTrips(int $userId = 0)
     {
-        $trips = TripFactory::tripsByCities($userId);
+        $tripCount = resolve(GetTripCountByCitiesAction::class)->execute($userId);
 
         $cities = \CityHelper::cachedById()
-            ->filter(fn (City $city) => isset($trips[$city->id]))
-            ->each(function (City $city) use (&$trips) {
-                $city->trips_count = $trips[$city->id]['total'] ?? 0;
-                $city->trips_published_count = $trips[$city->id]['published'] ?? 0;
+            ->filter(fn (City $city) => isset($tripCount[$city->id]))
+            ->each(function (City $city) use (&$tripCount) {
+                $city->trips_count = $tripCount[$city->id]['total'] ?? 0;
+                $city->trips_published_count = $tripCount[$city->id]['published'] ?? 0;
             })
             ->sortBy(Trip::titleField());
 
@@ -74,12 +75,12 @@ class Country extends Model
 
     public static function allWithPublishedTrips(int $userId = 0)
     {
-        $trips = TripFactory::tripsByCities($userId);
+        $tripCount = resolve(GetTripCountByCitiesAction::class)->execute($userId);
 
         $cities = \CityHelper::cachedById()
-            ->filter(fn (City $city) => isset($trips[$city->id]['published']))
-            ->each(function (City $city) use (&$trips) {
-                $city->trips_count = $trips[$city->id]['published'] ?? 0;
+            ->filter(fn (City $city) => isset($tripCount[$city->id]['published']))
+            ->each(function (City $city) use (&$tripCount) {
+                $city->trips_count = $tripCount[$city->id]['published'] ?? 0;
             });
 
         $countries = $cities->groupBy('country_id');
