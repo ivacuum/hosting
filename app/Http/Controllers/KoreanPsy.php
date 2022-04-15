@@ -13,16 +13,13 @@ class KoreanPsy extends Controller
 
             $songs[] = [
                 'link' => path(KoreanPsySong::class, $tpl),
-                'title' => \Str::of($tpl)->replace('-', ' ')->title(),
+                'title' => str($tpl)->replace('-', ' ')->title(),
             ];
         }
 
         return view('korean.psy', ['songs' => $songs]);
     }
 
-    /**
-     * @return \Symfony\Component\Finder\Finder|\Symfony\Component\Finder\SplFileInfo[]
-     */
     private function songsIterator()
     {
         return Finder::create()

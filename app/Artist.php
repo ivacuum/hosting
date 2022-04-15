@@ -1,7 +1,6 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Collection;
 
 /**
  * @property int $id
@@ -26,10 +25,5 @@ class Artist extends Model
     public function breadcrumb(): string
     {
         return $this->title;
-    }
-
-    public static function forInputSelect(): Collection
-    {
-        return static::orderBy('title')->pluck('title', 'id');
     }
 }

@@ -2,7 +2,6 @@
 
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Model;
-use Symfony\Component\Finder\Finder;
 
 /**
  * @property int $id
@@ -141,19 +140,6 @@ class Gig extends Model
     public function templatePath(): string
     {
         return str_replace('.', '/', $this->template());
-    }
-
-    /**
-     * @return \Symfony\Component\Finder\Finder|\Symfony\Component\Finder\SplFileInfo[]
-     */
-    public static function templatesIterator()
-    {
-        return Finder::create()
-            ->files()
-            ->in(resource_path('views/life/gigs'))
-            ->name('*.blade.php')
-            ->notName('base.blade.php')
-            ->sortByName();
     }
 
     public function www(): string

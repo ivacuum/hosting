@@ -2,8 +2,8 @@
 
 @include('tpl.form_errors')
 
-{!! Form::select('artist_id')->required()->values(App\Artist::forInputSelect())->html() !!}
-{!! Form::select('city_id')->required()->values(App\City::forInputSelect())->html() !!}
+{!! Form::select('artist_id')->required()->values(resolve(App\Action\ListArtistsForInputSelectAction::class)->execute())->html() !!}
+{!! Form::select('city_id')->required()->values(resolve(App\Action\ListCitiesForInputSelectAction::class)->execute())->html() !!}
 
 {!! Form::text('title_ru')->required()->html() !!}
 {!! Form::text('title_en')->required()->html() !!}

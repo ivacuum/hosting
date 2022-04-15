@@ -1,12 +1,12 @@
 <?php namespace App\Http\Controllers\Acp\Dev;
 
+use App\Action\FindTripTemplatesAction;
 use App\Trip;
-use App\TripFactory;
 use Ivacuum\Generic\Controllers\Acp\BaseController;
 
 class Templates extends BaseController
 {
-    public function index()
+    public function index(FindTripTemplatesAction $findTripTemplates)
     {
         $filter = request('filter');
         $hideFinished = (int) request('hide_finished', 0);
@@ -19,7 +19,7 @@ class Templates extends BaseController
             $total->{$lang} = 0;
         }
 
-        foreach (TripFactory::templatesIterator() as $template) {
+        foreach ($findTripTemplates->execute() as $template) {
             if (!preg_match("/{$filter}/", $template->getBasename('.blade.php'))) {
                 continue;
             }

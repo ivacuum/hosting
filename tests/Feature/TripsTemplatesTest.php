@@ -1,7 +1,7 @@
 <?php namespace Tests\Feature;
 
+use App\Action\FindTripTemplatesAction;
 use App\Factory\UserFactory;
-use App\TripFactory;
 use Tests\TestCase;
 
 class TripsTemplatesTest extends TestCase
@@ -11,7 +11,7 @@ class TripsTemplatesTest extends TestCase
     {
         $this->be(UserFactory::new()->admin()->make());
 
-        foreach (TripFactory::templatesIterator() as $template) {
+        foreach (resolve(FindTripTemplatesAction::class)->execute() as $template) {
             $this->get("acp/dev/templates/{$template->getBasename('.blade.php')}")
                 ->assertStatus(200);
         }

@@ -1,7 +1,6 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Collection;
 
 /**
  * @property int $id
@@ -62,13 +61,6 @@ class City extends Model
     public function breadcrumb(): string
     {
         return "{$this->country->emoji} {$this->title}";
-    }
-
-    public static function forInputSelect(): Collection
-    {
-        $titleField = static::titleField();
-
-        return static::orderBy($titleField)->pluck($titleField, 'id');
     }
 
     public function initial(): string

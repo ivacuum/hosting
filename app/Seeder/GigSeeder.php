@@ -1,24 +1,27 @@
 <?php namespace App\Seeder;
 
+use App\Action\FindGigTemplatesAction;
 use App\Artist;
 use App\City;
 use App\Factory\GigFactory;
-use App\Gig;
 use Illuminate\Database\Seeder;
 
 class GigSeeder extends Seeder
 {
+    public function __construct(private FindGigTemplatesAction $findGigTemplates)
+    {
+    }
+
     public function run()
     {
         $cityIds = City::pluck('id');
 
         // Для каждого шаблона нужно создать концерт
-        foreach (Gig::templatesIterator() as $template) {
+        foreach ($this->findGigTemplates->execute() as $template) {
             $slug = str_replace('_', '.', $template->getBasename('.blade.php'));
-            $artistSlug = \Str::before($slug, '.');
+            $artistSlug = str($slug)->before('.');
 
-            /** @var Artist $artist */
-            if (null === $artist = Artist::where('slug', $artistSlug)->first()) {
+            if (null === $artist = Artist::firstWhere('slug', $artistSlug)) {
                 continue;
             }
 

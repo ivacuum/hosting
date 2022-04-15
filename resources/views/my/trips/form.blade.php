@@ -8,7 +8,7 @@
   {!! Form::text('title_en')->required()->html() !!}
 @endif
 
-{!! Form::select('city_id')->required()->values(App\City::forInputSelect())->html() !!}
+{!! Form::select('city_id')->required()->values(resolve(App\Action\ListCitiesForInputSelectAction::class)->execute())->html() !!}
 
 {!! Form::text('slug')->required()->placeholder('kaliningrad.2015')->html() !!}
 

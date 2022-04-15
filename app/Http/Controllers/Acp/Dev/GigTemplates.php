@@ -1,11 +1,12 @@
 <?php namespace App\Http\Controllers\Acp\Dev;
 
+use App\Action\FindGigTemplatesAction;
 use App\Gig;
 use Ivacuum\Generic\Controllers\Acp\BaseController;
 
 class GigTemplates extends BaseController
 {
-    public function index()
+    public function index(FindGigTemplatesAction $findGigTemplates)
     {
         $filter = request('filter');
         $hideFinished = (int) request('hide_finished', 0);
@@ -18,7 +19,7 @@ class GigTemplates extends BaseController
             $total->{$lang} = 0;
         }
 
-        foreach (Gig::templatesIterator() as $template) {
+        foreach ($findGigTemplates->execute() as $template) {
             if (!preg_match("/{$filter}/", $template->getBasename('.blade.php'))) {
                 continue;
             }
@@ -28,7 +29,7 @@ class GigTemplates extends BaseController
             $i18n = collect($langs)
                 ->keys()
                 ->flip()
-                ->map(fn($value, $key) => substr_count($contents, "@{$key}\n"))
+                ->map(fn ($value, $key) => substr_count($contents, "@{$key}\n"))
                 ->all();
 
             if ($hideFinished === 1 && $i18n['ru'] === $i18n['en']) {

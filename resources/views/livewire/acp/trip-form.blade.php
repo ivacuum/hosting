@@ -6,7 +6,7 @@
     {{ LivewireForm::text('title_en')->required()->html() }}
   @endif
 
-  {{ LivewireForm::select('city_id')->required()->values(App\City::forInputSelect())->html() }}
+  {{ LivewireForm::select('city_id')->required()->values(resolve(App\Action\ListCitiesForInputSelectAction::class)->execute())->html() }}
 
   {{ LivewireForm::text('slug')->required()->html() }}
 

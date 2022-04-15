@@ -1,6 +1,6 @@
 @include('tpl.form_errors')
 
-{!! Form::select('country_id')->required()->values(App\Country::forInputSelect())->html() !!}
+{!! Form::select('country_id')->required()->values(resolve(App\Action\ListCountriesForInputSelectAction::class)->execute())->html() !!}
 
 {!! Form::text('title_ru')->required()->html() !!}
 {!! Form::text('title_en')->required()->html() !!}

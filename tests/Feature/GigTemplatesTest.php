@@ -1,7 +1,7 @@
 <?php namespace Tests\Feature;
 
+use App\Action\FindGigTemplatesAction;
 use App\Factory\UserFactory;
-use App\Gig;
 use Tests\TestCase;
 
 class GigTemplatesTest extends TestCase
@@ -10,7 +10,7 @@ class GigTemplatesTest extends TestCase
     {
         $this->be(UserFactory::new()->admin()->make());
 
-        foreach (Gig::templatesIterator() as $template) {
+        foreach (resolve(FindGigTemplatesAction::class)->execute() as $template) {
             $this->get("acp/dev/gig-templates/{$template->getBasename('.blade.php')}")
                 ->assertStatus(200);
         }

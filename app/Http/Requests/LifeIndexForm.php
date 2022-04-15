@@ -35,7 +35,7 @@ class LifeIndexForm extends AbstractForm
 
     public function shouldRedirectInstagrammer()
     {
-        if (!\Str::of($this->header('Referer'))->contains('instagram.com/')) {
+        if (!str($this->header('Referer'))->contains('instagram.com/')) {
             return false;
         }
 

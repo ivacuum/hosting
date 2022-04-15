@@ -6,7 +6,7 @@ class KoreanPsySong extends Controller
     {
         $tpl = "korean.psy.{$song}";
 
-        \Breadcrumbs::push(\Str::of($song)->replace('-', ' ')->title());
+        \Breadcrumbs::push(str($song)->replace('-', ' ')->title());
 
         if (view()->exists($tpl)) {
             return view($tpl, [

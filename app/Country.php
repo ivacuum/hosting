@@ -1,7 +1,6 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Collection;
 
 /**
  * @property int $id
@@ -103,13 +102,6 @@ class Country extends Model
         return ($code = FlagCode::fromSlug($this->slug))
             ? "https://ivacuum.org/i/flags/svg/{$code}.svg"
             : "https://life.ivacuum.org/0.gif";
-    }
-
-    public static function forInputSelect(): Collection
-    {
-        $titleField = static::titleField();
-
-        return static::orderBy($titleField)->pluck($titleField, 'id');
     }
 
     public function initial(): string
