@@ -9,7 +9,7 @@
 ])
 
 @section('content')
-<article itemscope itemtype="http://schema.org/BlogPosting">
+<article itemscope itemtype="https://schema.org/BlogPosting">
   <header>
     <h1 class="text-2xl tracking-tight" itemprop="headline">{{ $news->title }}</h1>
     <link href="{{ $news->www() }}" itemprop="url">

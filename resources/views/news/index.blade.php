@@ -41,7 +41,7 @@
   <div class="md:w-2/3">
     <div>
       @foreach ($news as $model)
-        <article itemscope itemtype="http://schema.org/BlogPosting">
+        <article itemscope itemtype="https://schema.org/BlogPosting">
           <header>
             <h3 itemprop="headline"><a class="link tracking-tight" href="{{ $model->www() }}" itemprop="url">{{ $model->title }}</a></h3>
             <div class="svg-labels svg-muted text-muted text-sm mb-4">
