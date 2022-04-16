@@ -10,7 +10,7 @@ class WanikaniLevelTest extends TestCase
     public function testOk()
     {
         $this->get('japanese/wanikani/level/1')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertHasCustomTitle();
     }
 }

@@ -11,7 +11,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
     public function testIndex()
     {
         $this->get('japanese/wanikani/vocabulary')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertHasCustomTitle();
     }
 
@@ -20,7 +20,7 @@ class JapaneseWanikaniVocabularyTest extends TestCase
         $vocab = VocabularyFactory::new()->create();
 
         $this->get("japanese/wanikani/vocabulary/{$vocab->character}")
-            ->assertStatus(200)
+            ->assertOk()
             ->assertViewHas(['vocab' => $vocab])
             ->assertSee($vocab->character)
             ->assertHasCustomTitle();

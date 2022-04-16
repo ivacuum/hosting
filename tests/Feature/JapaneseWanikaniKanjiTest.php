@@ -11,7 +11,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
     public function testIndex()
     {
         $this->get('japanese/wanikani/kanji')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertHasCustomTitle();
     }
 
@@ -20,7 +20,7 @@ class JapaneseWanikaniKanjiTest extends TestCase
         $kanji = KanjiFactory::new()->create();
 
         $this->get("japanese/wanikani/kanji/{$kanji->character}")
-            ->assertStatus(200)
+            ->assertOk()
             ->assertViewHas(['kanji' => $kanji])
             ->assertSee($kanji->character)
             ->assertHasCustomTitle();

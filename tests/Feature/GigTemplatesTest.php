@@ -12,7 +12,7 @@ class GigTemplatesTest extends TestCase
 
         foreach (resolve(FindGigTemplatesAction::class)->execute() as $template) {
             $this->get("acp/dev/gig-templates/{$template->getBasename('.blade.php')}")
-                ->assertStatus(200);
+                ->assertOk();
         }
     }
 }

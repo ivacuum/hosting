@@ -12,25 +12,25 @@ class MyProfileTest extends TestCase
     {
         $this->be(UserFactory::new()->create())
             ->get('my/profile')
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     public function testUpdateEmail()
     {
-        $user = UserFactory::new()->create();
+        $user = UserFactory::new()->withLogin('')->create();
         $email = "__{$user->email}";
 
         $this->be($user)
             ->expectsEvents(\App\Events\Stats\MyProfileChanged::class)
             ->put('my/profile', [
                 'email' => $email,
-                'username' => $user->login,
             ])
             ->assertStatus(302);
 
         $user->refresh();
 
-        $this->assertEquals($email, $user->email);
+        $this->assertSame($email, $user->email);
+        $this->assertSame('', $user->login);
     }
 
     public function testUpdateLogin()
@@ -48,6 +48,6 @@ class MyProfileTest extends TestCase
 
         $user->refresh();
 
-        $this->assertEquals($login, $user->login);
+        $this->assertSame($login, $user->login);
     }
 }

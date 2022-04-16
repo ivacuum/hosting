@@ -8,7 +8,7 @@ class CityFactory
 {
     use WithFaker;
 
-    private $countryFactory;
+    private ?CountryFactory $countryFactory = null;
 
     public function create()
     {
@@ -33,7 +33,7 @@ class CityFactory
         $model->title_ru = $title;
         $model->country_id = 0;
 
-        if ($this->countryFactory instanceof CountryFactory) {
+        if ($this->countryFactory) {
             $model->country_id = $this->countryFactory->create()->id;
         }
 

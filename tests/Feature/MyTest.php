@@ -12,6 +12,6 @@ class MyTest extends TestCase
     {
         $this->be(UserFactory::new()->withId(1)->make())
             ->get('my')
-            ->assertStatus(200);
+            ->assertOk();
     }
 }

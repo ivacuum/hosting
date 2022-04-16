@@ -11,7 +11,7 @@ class RegisterTest extends TestCase
     public function testFormGuest()
     {
         $this->get('auth/register')
-            ->assertStatus(200);
+            ->assertOk();
 
         $this->assertGuest();
     }

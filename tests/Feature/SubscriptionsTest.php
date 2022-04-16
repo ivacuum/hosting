@@ -28,7 +28,7 @@ class SubscriptionsTest extends TestCase
     public function testEditAsGuest()
     {
         $this->get('subscriptions')
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     public function testEditAsUser()

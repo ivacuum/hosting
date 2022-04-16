@@ -12,7 +12,7 @@ class ResetPasswordTest extends TestCase
     public function testFormGuest()
     {
         $this->get('auth/password/reset/token')
-            ->assertStatus(200);
+            ->assertOk();
 
         $this->assertGuest();
     }
@@ -21,7 +21,7 @@ class ResetPasswordTest extends TestCase
     {
         $this->be(UserFactory::new()->withId(1)->make())
             ->get('auth/password/reset/token')
-            ->assertStatus(200);
+            ->assertOk();
 
         $this->assertAuthenticated();
     }

@@ -17,15 +17,15 @@ class PhotoFactory
     private $relType;
     private PhotoStatus $status = PhotoStatus::Published;
 
-    private $tagFactory;
-    private $tripFactory;
+    private ?TagFactory $tagFactory = null;
+    private ?TripFactory $tripFactory = null;
 
     public function create()
     {
         $model = $this->make();
         $model->save();
 
-        if ($this->tagFactory instanceof TagFactory) {
+        if ($this->tagFactory) {
             $model->tags()->attach($this->tagFactory->create()->getKey());
         }
 
@@ -53,7 +53,7 @@ class PhotoFactory
         $model->user_id = 1;
         $model->rel_type = $this->relType;
 
-        if ($this->tripFactory instanceof TripFactory) {
+        if ($this->tripFactory) {
             $trip = $this->tripFactory->create();
 
             $model->rel_id = $trip->id;

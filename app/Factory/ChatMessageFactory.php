@@ -11,7 +11,7 @@ class ChatMessageFactory
     private $userId;
     private ChatMessageStatus $status = ChatMessageStatus::Published;
 
-    private $userFactory;
+    private ?UserFactory $userFactory = null;
 
     public function create()
     {
@@ -34,7 +34,7 @@ class ChatMessageFactory
         $model->status = $this->status;
         $model->user_id = $this->userId;
 
-        if ($this->userFactory instanceof UserFactory && !$model->user_id) {
+        if ($this->userFactory && !$model->user_id) {
             $model->user_id = $this->userFactory->create()->id;
         }
 

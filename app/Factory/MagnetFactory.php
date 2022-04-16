@@ -14,7 +14,7 @@ class MagnetFactory
     private $categoryId;
     private $relatedQuery = '';
 
-    private $commentFactory;
+    private ?CommentFactory $commentFactory = null;
 
     public function advancedTitle()
     {
@@ -29,12 +29,10 @@ class MagnetFactory
         $model = $this->make();
         $model->save();
 
-        if ($this->commentFactory instanceof CommentFactory) {
-            $this->commentFactory
-                ->withMagnetId($model->id)
-                ->withUserId($model->user_id)
-                ->create();
-        }
+        $this->commentFactory
+            ?->withMagnetId($model->id)
+            ->withUserId($model->user_id)
+            ->create();
 
         return $model;
     }

@@ -12,7 +12,7 @@ class MyPasswordTest extends TestCase
     {
         $this->be(UserFactory::new()->create())
             ->get('my/password')
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     public function testSetNewPassword()

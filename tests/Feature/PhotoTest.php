@@ -15,7 +15,7 @@ class PhotoTest extends TestCase
         PhotoFactory::new()->withTrip()->create();
 
         $this->get('photos')
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     public function testCities()
@@ -23,7 +23,7 @@ class PhotoTest extends TestCase
         $photo = PhotoFactory::new()->withTrip()->create();
 
         $this->get('photos/cities')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($photo->rel->city->title);
     }
 
@@ -32,7 +32,7 @@ class PhotoTest extends TestCase
         $photo = PhotoFactory::new()->withTrip()->create();
 
         $this->get("photos/cities/{$photo->rel->city->slug}")
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($photo->rel->city->title);
     }
 
@@ -49,7 +49,7 @@ class PhotoTest extends TestCase
         $photo = PhotoFactory::new()->withTrip()->create();
 
         $this->get('photos/countries')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($photo->rel->city->country->title);
     }
 
@@ -58,7 +58,7 @@ class PhotoTest extends TestCase
         $photo = PhotoFactory::new()->withTrip()->create();
 
         $this->get("photos/countries/{$photo->rel->city->country->slug}")
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($photo->rel->city->country->title);
     }
 
@@ -73,13 +73,13 @@ class PhotoTest extends TestCase
     public function testFaq()
     {
         $this->get('photos/faq')
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     public function testMap()
     {
         $this->get('photos/map')
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     public function testMapPointsOfAllTrips()
@@ -133,7 +133,7 @@ class PhotoTest extends TestCase
             ->create();
 
         $this->get('photos/tags')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($photo->tags[0]->title);
     }
 
@@ -145,7 +145,7 @@ class PhotoTest extends TestCase
             ->create();
 
         $this->get("photos/tags/{$photo->tags[0]->id}")
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($photo->tags[0]->title);
     }
 
@@ -154,7 +154,7 @@ class PhotoTest extends TestCase
         $trip = TripFactory::new()->metaImage()->create();
 
         $this->get('photos/trips')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($trip->title);
     }
 
@@ -163,7 +163,7 @@ class PhotoTest extends TestCase
         $photo = PhotoFactory::new()->withTrip()->create();
 
         $this->get("photos/trips/{$photo->rel->id}")
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($photo->rel->title);
     }
 }

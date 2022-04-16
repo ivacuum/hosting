@@ -14,7 +14,7 @@ class TripFactory
     private $userId;
     private $metaImage;
 
-    private $userFactory;
+    private ?UserFactory $userFactory = null;
 
     public function create()
     {
@@ -44,7 +44,7 @@ class TripFactory
         $model->date_start = $dateStart;
         $model->meta_image = $this->metaImage ?? '';
 
-        if ($this->userFactory instanceof UserFactory && !$this->userId) {
+        if ($this->userFactory && !$this->userId) {
             $model->user_id = $this->userFactory->create()->id;
         } else {
             $model->user_id = $this->userId ?? 1;

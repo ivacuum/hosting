@@ -11,7 +11,7 @@ class FileTest extends TestCase
     public function testIndex()
     {
         $this->get('files')
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     public function testDownload()

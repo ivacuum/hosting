@@ -13,7 +13,7 @@ class DcppTest extends TestCase
         $hub = DcppHubFactory::new()->create();
 
         $this->get('dc/hubs')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($hub->externalLink())
             ->assertHasCustomTitle();
     }
@@ -38,7 +38,7 @@ class DcppTest extends TestCase
     public function testPages(string $url)
     {
         $this->get($url)
-            ->assertStatus(200)
+            ->assertOk()
             ->assertHasCustomTitle();
     }
 

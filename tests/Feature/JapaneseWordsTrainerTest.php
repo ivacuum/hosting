@@ -15,7 +15,7 @@ class JapaneseWordsTrainerTest extends TestCase
             ->create();
 
         $this->get('japanese/words-trainer')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertHasCustomTitle();
     }
 }

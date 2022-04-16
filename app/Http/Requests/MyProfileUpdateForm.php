@@ -2,18 +2,18 @@
 
 use App\Rules\Email;
 use App\Rules\Username;
+use App\User;
 use Illuminate\Validation\Rule;
 
 class MyProfileUpdateForm extends AbstractForm
 {
+    public User $user;
+    public readonly string $email;
+    public readonly string $username;
+
     public function authorize(): bool
     {
         return true;
-    }
-
-    public function email()
-    {
-        return $this->input('email');
     }
 
     public function rules(): array
@@ -23,17 +23,19 @@ class MyProfileUpdateForm extends AbstractForm
         return [
             'email' => [
                 ...Email::rules(),
-                Rule::unique('users')->ignore($user->id),
+                Rule::unique('users')->ignore($user),
             ],
             'username' => [
                 ...Username::rules(),
-                Rule::unique('users', 'login')->ignore($user->id),
+                Rule::unique('users', 'login')->ignore($user),
             ],
         ];
     }
 
-    public function username()
+    protected function passedValidation()
     {
-        return $this->input('username');
+        $this->user = $this->user();
+        $this->email = $this->input('email');
+        $this->username = $this->input('username', '');
     }
 }

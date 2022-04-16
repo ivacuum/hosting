@@ -11,7 +11,7 @@ class HomeTest extends TestCase
     public function testIndex()
     {
         $this->get('/')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertHasCustomTitle();
     }
 
@@ -20,19 +20,19 @@ class HomeTest extends TestCase
         TripFactory::new()->metaImage()->create();
 
         $this->get('/')
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     public function testAbout()
     {
         $this->get('about')
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     public function testCv()
     {
         $this->get('cv')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertHasCustomTitle();
     }
 }

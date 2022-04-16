@@ -11,9 +11,9 @@ class MyProfile extends Controller
 
     public function update(MyProfileUpdateForm $request)
     {
-        $user = $request->userModel();
-        $user->email = $request->email();
-        $user->login = $request->username();
+        $user = $request->user;
+        $user->email = $request->email;
+        $user->login = $request->username;
         $user->save();
 
         event(new \App\Events\Stats\MyProfileChanged);

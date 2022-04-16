@@ -13,7 +13,7 @@ class TripsTemplatesTest extends TestCase
 
         foreach (resolve(FindTripTemplatesAction::class)->execute() as $template) {
             $this->get("acp/dev/templates/{$template->getBasename('.blade.php')}")
-                ->assertStatus(200);
+                ->assertOk();
         }
     }
 }

@@ -13,7 +13,7 @@ class UserTest extends TestCase
         UserFactory::new()->create();
 
         $this->get('users')
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     public function testShow()
@@ -21,7 +21,7 @@ class UserTest extends TestCase
         $user = UserFactory::new()->create();
 
         $this->get("users/{$user->id}")
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     public function testShow404ForInactive()

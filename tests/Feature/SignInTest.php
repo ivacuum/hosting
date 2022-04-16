@@ -11,7 +11,7 @@ class SignInTest extends TestCase
     public function testFormGuest()
     {
         $this->get('auth/login')
-            ->assertStatus(200);
+            ->assertOk();
 
         $this->assertGuest();
     }

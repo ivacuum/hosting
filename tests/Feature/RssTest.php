@@ -11,7 +11,7 @@ class RssTest extends TestCase
     public function testFeeds(string $url)
     {
         $this->get($url)
-            ->assertStatus(200)
+            ->assertOk()
             ->assertHeader('Content-Type', 'application/xml');
     }
 

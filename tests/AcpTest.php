@@ -13,91 +13,76 @@ class AcpTest extends TestCase
 
     public function testRoot()
     {
-        $this->get('acp')->assertStatus(200);
+        $this->get('acp')->assertOk();
     }
 
     public function testPageClients()
     {
-        $this->get('acp/clients')->assertStatus(200);
+        $this->get('acp/clients')->assertOk();
     }
 
     public function testPageClientsCreate()
     {
-        $this->get('acp/clients/create')->assertStatus(200);
+        $this->get('acp/clients/create')->assertOk();
     }
 
     public function testPageComments()
     {
-        $this->get('acp/comments')->assertStatus(200);
+        $this->get('acp/comments')->assertOk();
     }
 
     public function testPageDomains()
     {
-        $this->get('acp/domains')->assertStatus(200);
+        $this->get('acp/domains')->assertOk();
     }
 
     public function testPageDomainsCreate()
     {
-        $this->get('acp/domains/create')->assertStatus(200);
+        $this->get('acp/domains/create')->assertOk();
     }
 
     public function testPageFiles()
     {
-        $this->get('acp/files')->assertStatus(200);
+        $this->get('acp/files')->assertOk();
     }
 
     public function testPageFilesCreate()
     {
-        $this->get('acp/files/create')->assertStatus(200);
+        $this->get('acp/files/create')->assertOk();
     }
 
     public function testPageImages()
     {
-        $this->get('acp/images')->assertStatus(200);
+        $this->get('acp/images')->assertOk();
     }
 
     public function testPageMagnets()
     {
-        $this->get('acp/magnets')->assertStatus(200);
+        $this->get('acp/magnets')->assertOk();
     }
 
     public function testPageMetrics()
     {
-        $this->get('acp/metrics')->assertStatus(200);
-    }
-
-    public function testPagePhotos()
-    {
-        $this->get('acp/photos')->assertStatus(200);
-    }
-
-    public function testPagePhotosCreate()
-    {
-        $this->get('acp/photos/create')->assertStatus(200);
+        $this->get('acp/metrics')->assertOk();
     }
 
     public function testPageServers()
     {
-        $this->get('acp/servers')->assertStatus(200);
+        $this->get('acp/servers')->assertOk();
     }
 
     public function testPageServersCreate()
     {
-        $this->get('acp/servers/create')->assertStatus(200);
-    }
-
-    public function testPageUsers()
-    {
-        $this->get('acp/users')->assertStatus(200);
+        $this->get('acp/servers/create')->assertOk();
     }
 
     public function testPageYandexUsers()
     {
-        $this->get('acp/yandex-users')->assertStatus(200);
+        $this->get('acp/yandex-users')->assertOk();
     }
 
     public function testPageYandexUsersCreate()
     {
-        $this->get('acp/yandex-users/create')->assertStatus(200);
+        $this->get('acp/yandex-users/create')->assertOk();
     }
 }

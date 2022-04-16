@@ -17,7 +17,7 @@ class UserTravelTest extends TestCase
         $this->user()->trips()->save($trip);
 
         $this->get('@' . self::LOGIN . '/travel/cities')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($trip->city->title);
     }
 
@@ -27,7 +27,7 @@ class UserTravelTest extends TestCase
         $this->user()->trips()->save($trip);
 
         $this->get('@' . self::LOGIN . "/travel/cities/{$trip->city->slug}")
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($trip->city->title);
     }
 
@@ -37,7 +37,7 @@ class UserTravelTest extends TestCase
         $this->user()->trips()->save($trip);
 
         $this->get('@' . self::LOGIN . '/travel/countries')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($trip->city->country->title);
     }
 
@@ -47,7 +47,7 @@ class UserTravelTest extends TestCase
         $this->user()->trips()->save($trip);
 
         $this->get('@' . self::LOGIN . "/travel/countries/{$trip->city->country->slug}")
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($trip->city->country->title);
     }
 
@@ -57,7 +57,7 @@ class UserTravelTest extends TestCase
         $this->user()->trips()->save($trip);
 
         $this->get('@' . self::LOGIN . '/travel')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($trip->title);
     }
 
@@ -67,7 +67,7 @@ class UserTravelTest extends TestCase
         $this->user()->trips()->save($trip);
 
         $this->get('@' . self::LOGIN . "/travel/{$trip->slug}")
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($trip->title);
     }
 

@@ -18,8 +18,8 @@ class IssueFactory
     private $userId;
     private IssueStatus $status = IssueStatus::Open;
 
-    private $userFactory;
-    private $commentFactory;
+    private ?UserFactory $userFactory = null;
+    private ?CommentFactory $commentFactory = null;
 
     public function closed()
     {
@@ -31,12 +31,10 @@ class IssueFactory
         $model = $this->make();
         $model->save();
 
-        if ($this->commentFactory instanceof CommentFactory) {
-            $this->commentFactory
-                ->withIssueId($model->id)
-                ->withUserId($model->user_id)
-                ->create();
-        }
+        $this->commentFactory
+            ?->withIssueId($model->id)
+            ->withUserId($model->user_id)
+            ->create();
 
         return $model;
     }
@@ -52,7 +50,7 @@ class IssueFactory
         $model->status = $this->status;
         $model->user_id = $this->userId;
 
-        if ($this->userFactory instanceof UserFactory && !$model->user_id) {
+        if ($this->userFactory && !$model->user_id) {
             $model->user_id = $this->userFactory->withEmail($model->email)->create()->id;
         }
 

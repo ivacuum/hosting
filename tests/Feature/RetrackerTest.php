@@ -10,21 +10,21 @@ class RetrackerTest extends TestCase
     public function testDev()
     {
         $this->get('retracker/dev')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertHasCustomTitle();
     }
 
     public function testIndex()
     {
         $this->get('retracker')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertHasCustomTitle();
     }
 
     public function testUsage()
     {
         $this->get('retracker/usage')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertHasCustomTitle();
     }
 }

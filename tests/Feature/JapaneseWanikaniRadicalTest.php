@@ -1,7 +1,6 @@
 <?php namespace Tests\Feature;
 
 use App\Factory\RadicalFactory;
-use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -12,7 +11,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
     public function testIndex()
     {
         $this->get('japanese/wanikani/radicals')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertHasCustomTitle();
     }
 
@@ -21,7 +20,7 @@ class JapaneseWanikaniRadicalTest extends TestCase
         $radical = RadicalFactory::new()->create();
 
         $this->get("japanese/wanikani/radicals/{$radical->meaning}")
-            ->assertStatus(200)
+            ->assertOk()
             ->assertViewHas('radical', $radical)
             ->assertSee($radical->meaning)
             ->assertHasCustomTitle();

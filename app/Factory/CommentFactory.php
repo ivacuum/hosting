@@ -15,8 +15,8 @@ class CommentFactory
     private $userId;
     private $relType;
 
-    private $newsFactory;
-    private $magnetFactory;
+    private ?NewsFactory $newsFactory = null;
+    private ?MagnetFactory $magnetFactory = null;
 
     public function create()
     {
@@ -35,14 +35,14 @@ class CommentFactory
         $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
         $model->rel_type = $this->relType ?? (new News)->getMorphClass();
 
-        if ($this->newsFactory instanceof NewsFactory) {
+        if ($this->newsFactory) {
             $news = $this->newsFactory->create();
 
             $model->rel_id = $news->id;
             $model->rel_type = $news->getMorphClass();
         }
 
-        if ($this->magnetFactory instanceof MagnetFactory) {
+        if ($this->magnetFactory) {
             $magnet = $this->magnetFactory->create();
 
             $model->rel_id = $magnet->id;

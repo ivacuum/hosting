@@ -20,7 +20,7 @@ class ExternalIdentityFactory
     private $userId;
     private $provider;
 
-    private $userFactory;
+    private ?UserFactory $userFactory = null;
 
     public function create()
     {
@@ -53,7 +53,7 @@ class ExternalIdentityFactory
         $model->user_id = $this->userId;
         $model->provider = $this->provider ?? $this->faker->randomElement(self::PROVIDERS);
 
-        if ($this->userFactory instanceof UserFactory && !$model->user_id) {
+        if ($this->userFactory && !$model->user_id) {
             $model->user_id = $this->userFactory->create()->id;
         }
 

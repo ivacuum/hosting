@@ -27,7 +27,7 @@ class CouponTest extends TestCase
     public function testPages(string $url)
     {
         $this->get($url)
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     public function pages()

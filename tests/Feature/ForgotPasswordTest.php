@@ -11,7 +11,7 @@ class ForgotPasswordTest extends TestCase
     public function testFormGuest()
     {
         $this->get('auth/password/remind')
-            ->assertStatus(200);
+            ->assertOk();
 
         $this->assertGuest();
     }

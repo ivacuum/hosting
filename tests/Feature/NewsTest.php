@@ -13,7 +13,7 @@ class NewsTest extends TestCase
         NewsFactory::new()->create();
 
         $this->get('news')
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     public function testShow()
@@ -22,7 +22,7 @@ class NewsTest extends TestCase
 
         $this->expectsEvents(\App\Events\Stats\NewsViewed::class)
             ->get("news/{$news->id}")
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     /**

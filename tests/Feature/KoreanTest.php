@@ -10,7 +10,7 @@ class KoreanTest extends TestCase
     public function testIndex()
     {
         $this->get('korean')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertHasCustomTitle();
     }
 }

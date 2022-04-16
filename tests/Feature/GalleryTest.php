@@ -15,7 +15,7 @@ class GalleryTest extends TestCase
 
         $this->be($image->user)
             ->get('gallery')
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     public function testPreview()
@@ -23,14 +23,14 @@ class GalleryTest extends TestCase
         $image = ImageFactory::new()->create();
 
         $this->get("gallery/preview/{$image->id}")
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     public function testUploadPage()
     {
         $this->be(UserFactory::new()->create())
             ->get('gallery/upload')
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     public function testView()
@@ -38,6 +38,6 @@ class GalleryTest extends TestCase
         $image = ImageFactory::new()->create();
 
         $this->get("gallery/view/{$image->id}")
-            ->assertStatus(200);
+            ->assertOk();
     }
 }

@@ -14,7 +14,7 @@ class MySettingsTest extends TestCase
     {
         $this->be(UserFactory::new()->create())
             ->get('my/settings')
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     public function testUpdateLocale()

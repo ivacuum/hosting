@@ -19,6 +19,6 @@ class NotificationTest extends TestCase
 
         $this->be($notifiable)
             ->get('notifications')
-            ->assertStatus(200);
+            ->assertOk();
     }
 }

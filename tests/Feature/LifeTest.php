@@ -15,7 +15,7 @@ class LifeTest extends TestCase
         TripFactory::new()->create();
 
         $this->get('life/calendar')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertHasCustomTitle();
     }
 
@@ -24,7 +24,7 @@ class LifeTest extends TestCase
         $trip = TripFactory::new()->create();
 
         $this->get('life/cities')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($trip->city->title)
             ->assertHasCustomTitle();
     }
@@ -34,7 +34,7 @@ class LifeTest extends TestCase
         $trip = TripFactory::new()->create();
 
         $this->get("life/{$trip->city->slug}")
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($trip->city->title)
             ->assertHasCustomTitle();
     }
@@ -44,7 +44,7 @@ class LifeTest extends TestCase
         $trip = TripFactory::new()->create();
 
         $this->get('life/countries')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($trip->city->country->title)
             ->assertHasCustomTitle();
     }
@@ -54,7 +54,7 @@ class LifeTest extends TestCase
         $trip = TripFactory::new()->create();
 
         $this->get("life/countries/{$trip->city->country->slug}")
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($trip->city->country->title)
             ->assertHasCustomTitle();
     }
@@ -64,7 +64,7 @@ class LifeTest extends TestCase
         $gig = GigFactory::new()->create();
 
         $this->get('life/gigs')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($gig->artist->title)
             ->assertHasCustomTitle();
     }
@@ -75,7 +75,7 @@ class LifeTest extends TestCase
         $gig->createStoryFile();
 
         $this->get("life/{$gig->slug}")
-            ->assertStatus(200)
+            ->assertOk()
             ->assertHasCustomTitle();
 
         $gig->deleteStoryFile();
@@ -87,7 +87,7 @@ class LifeTest extends TestCase
         $trip = TripFactory::new()->create();
 
         $this->get('life')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSee($trip->title)
             ->assertSee($gig->artist->title)
             ->assertHasCustomTitle();
@@ -112,7 +112,7 @@ class LifeTest extends TestCase
 
         $this->from('https://instagram.com/')
             ->get('life')
-            ->assertStatus(200);
+            ->assertOk();
     }
 
     /**
@@ -122,7 +122,7 @@ class LifeTest extends TestCase
     public function testPages(string $url)
     {
         $this->get($url)
-            ->assertStatus(200)
+            ->assertOk()
             ->assertHasCustomTitle();
     }
 
@@ -132,7 +132,7 @@ class LifeTest extends TestCase
         $trip->createStoryFile();
 
         $this->get("life/{$trip->slug}")
-            ->assertStatus(200)
+            ->assertOk()
             ->assertHasCustomTitle();
 
         $trip->deleteStoryFile();
