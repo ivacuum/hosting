@@ -8,7 +8,7 @@ Route::view('404', 'errors.404');
 Route::view('500', 'errors.500');
 Route::view('503', 'errors.503');
 
-Route::post('ajax/beacon', Controllers\Beacon::class);
+Route::post('ajax/beacon', Controllers\BeaconController::class);
 Route::view('cv', 'cv');
 
 Route::post('internal/ci-build-notifier', Ivacuum\Generic\Controllers\CiBuildNotifyController::class);
