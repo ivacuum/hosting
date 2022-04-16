@@ -21,14 +21,14 @@ class MyProfileUpdateForm extends AbstractForm
         $user = $this->userModel();
 
         return [
-            'email' => array_merge(
-                Email::rules(),
-                [Rule::unique('users')->ignore($user->id)]
-            ),
-            'username' => array_merge(
-                Username::rules(),
-                [Rule::unique('users', 'login')->ignore($user->id)]
-            ),
+            'email' => [
+                ...Email::rules(),
+                Rule::unique('users')->ignore($user->id),
+            ],
+            'username' => [
+                ...Username::rules(),
+                Rule::unique('users', 'login')->ignore($user->id),
+            ],
         ];
     }
 
