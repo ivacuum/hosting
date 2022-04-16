@@ -3,8 +3,8 @@
 
   <?php LivewireForm::model(new App\Photo); ?>
 
-  {{ LivewireForm::select('trip_id')->values(resolve(App\Action\ListTripsForInputSelectAction::class)->execute())->html() }}
-  {{ LivewireForm::select('gig_id')->values(resolve(App\Action\ListGigsForInputSelectAction::class)->execute())->html() }}
+  {{ LivewireForm::select('trip_id')->values(resolve(App\Action\ListTripsForInputSelectAction::class)->execute()) }}
+  {{ LivewireForm::select('gig_id')->values(resolve(App\Action\ListGigsForInputSelectAction::class)->execute()) }}
 
   @include('tpl.form_errors')
 

@@ -1,8 +1,8 @@
 @include('tpl.form_errors')
 
-{{ Form::text('title_ru')->required()->html() }}
-{{ Form::text('title_en')->required()->html() }}
-{{ Form::text('slug')->required()->html() }}
-{{ Form::text('emoji')->html() }}
+{{ Form::text('title_ru')->required() }}
+{{ Form::text('title_en')->required() }}
+{{ Form::text('slug')->required() }}
+{{ Form::text('emoji') }}
 
 {{ ViewHelper::inputHiddenConcurrencyControl($model->updated_at) }}

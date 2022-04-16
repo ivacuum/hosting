@@ -2,22 +2,22 @@
   <?php LivewireForm::model(new App\Trip); ?>
 
   @if ($modelId)
-    {{ LivewireForm::text('title_ru')->required()->html() }}
-    {{ LivewireForm::text('title_en')->required()->html() }}
+    {{ LivewireForm::text('title_ru')->required() }}
+    {{ LivewireForm::text('title_en')->required() }}
   @endif
 
-  {{ LivewireForm::select('city_id')->required()->values(resolve(App\Action\ListCitiesForInputSelectAction::class)->execute())->html() }}
+  {{ LivewireForm::select('city_id')->required()->values(resolve(App\Action\ListCitiesForInputSelectAction::class)->execute()) }}
 
-  {{ LivewireForm::text('slug')->required()->html() }}
+  {{ LivewireForm::text('slug')->required() }}
 
-  {{ LivewireForm::text('date_start')->required()->html() }}
-  {{ LivewireForm::text('date_end')->required()->html() }}
+  {{ LivewireForm::text('date_start')->required() }}
+  {{ LivewireForm::text('date_end')->required() }}
 
-  {{ LivewireForm::radio('status')->required()->values(App\Domain\TripStatus::labels())->html() }}
+  {{ LivewireForm::radio('status')->required()->values(App\Domain\TripStatus::labels()) }}
 
-  {{ LivewireForm::text('meta_description_ru')->html() }}
-  {{ LivewireForm::text('meta_description_en')->html() }}
-  {{ LivewireForm::text('meta_image')->html() }}
+  {{ LivewireForm::text('meta_description_ru') }}
+  {{ LivewireForm::text('meta_description_en') }}
+  {{ LivewireForm::text('meta_image') }}
 
   @if ($metaImageSrc)
     <div>

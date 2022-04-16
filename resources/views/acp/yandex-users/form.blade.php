@@ -1,5 +1,5 @@
-{{ Form::text('account')->required()->html() }}
-{{ Form::text('token')->required(!$model->token)->html() }}
+{{ Form::text('account')->required() }}
+{{ Form::text('token')->required(!$model->token) }}
 
 <div class="mb-4">
   <label class="font-bold">Домены</label>

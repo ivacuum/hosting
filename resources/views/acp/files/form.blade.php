@@ -1,10 +1,10 @@
 @include('tpl.form_errors')
 
-{{ Form::text('title')->required()->html() }}
-{{ Form::text('slug')->required()->html() }}
-{{ Form::text('folder')->html() }}
+{{ Form::text('title')->required() }}
+{{ Form::text('slug')->required() }}
+{{ Form::text('folder') }}
 
-{{ Form::radio('status')->required()->values(App\Domain\FileStatus::labels())->html() }}
+{{ Form::radio('status')->required()->values(App\Domain\FileStatus::labels()) }}
 
 <div class="mb-4">
   <label class="font-bold">{{ ViewHelper::modelFieldTrans('file', 'file') }}</label>
