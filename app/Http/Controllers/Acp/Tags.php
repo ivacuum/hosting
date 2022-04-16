@@ -29,11 +29,11 @@ class Tags extends AbstractController
         return [
             'title_ru' => [
                 'required',
-                Rule::unique('tags', 'title_ru')->ignore($model->id ?? null),
+                Rule::unique('tags', 'title_ru')->ignore($model),
             ],
             'title_en' => [
                 'required',
-                Rule::unique('tags', 'title_en')->ignore($model->id ?? null),
+                Rule::unique('tags', 'title_en')->ignore($model),
             ],
         ];
     }

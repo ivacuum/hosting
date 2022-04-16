@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\Artist as Model;
-use Illuminate\Validation\Rule;
+use App\Rules\LifeSlug;
 
 class Artists extends AbstractController
 {
@@ -21,16 +21,7 @@ class Artists extends AbstractController
     protected function rules($model = null)
     {
         return [
-            'slug' => [
-                'bail',
-                'required',
-                Rule::unique('artists', 'slug')->ignore($model->id ?? null),
-                Rule::unique('cities', 'slug')->ignore($model->id ?? null),
-                Rule::unique('gigs', 'slug')->ignore($model->id ?? null),
-                Rule::unique('trips', 'slug')
-                    ->where('user_id', 1)
-                    ->ignore($model->id ?? null),
-            ],
+            'slug' => LifeSlug::rules($model),
             'title' => 'required',
         ];
     }

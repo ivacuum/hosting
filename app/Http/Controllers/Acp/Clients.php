@@ -23,7 +23,7 @@ class Clients extends AbstractController
         return [
             'name' => [
                 'required',
-                Rule::unique('clients', 'name')->ignore($model->id ?? null),
+                Rule::unique('clients', 'name')->ignore($model),
             ],
             'email' => 'email',
         ];

@@ -278,7 +278,7 @@ class Domains extends AbstractController
             'domain' => [
                 'required',
                 'min:3',
-                Rule::unique('domains', 'domain')->ignore($model->id ?? null),
+                Rule::unique('domains', 'domain')->ignore($model),
             ],
             'status' => 'boolean',
             'domain_control' => 'boolean',

@@ -42,7 +42,7 @@ class Magnets extends AbstractController
         return [
             'rto_id' => [
                 'required',
-                Rule::unique('torrents', 'rto_id')->ignore($model->id ?? null),
+                Rule::unique('torrents', 'rto_id')->ignore($model),
             ],
             'status' => new Enum(MagnetStatus::class),
             'category_id' => 'required|integer|min:1',

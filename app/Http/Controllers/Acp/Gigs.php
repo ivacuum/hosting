@@ -2,7 +2,7 @@
 
 use App\Domain\GigStatus;
 use App\Gig as Model;
-use Illuminate\Validation\Rule;
+use App\Rules\LifeSlug;
 
 class Gigs extends AbstractController
 {
@@ -35,16 +35,7 @@ class Gigs extends AbstractController
     protected function rules($model = null)
     {
         return [
-            'slug' => [
-                'bail',
-                'required',
-                Rule::unique('artists', 'slug')->ignore($model->id ?? null),
-                Rule::unique('cities', 'slug')->ignore($model->id ?? null),
-                Rule::unique('gigs', 'slug')->ignore($model->id ?? null),
-                Rule::unique('trips', 'slug')
-                    ->where('user_id', 1)
-                    ->ignore($model->id ?? null),
-            ],
+            'slug' => LifeSlug::rules($model),
             'date' => 'required|date',
             'city_id' => 'required|integer|min:1',
             'title_ru' => 'required',

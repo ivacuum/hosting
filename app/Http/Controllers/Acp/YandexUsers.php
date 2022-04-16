@@ -47,7 +47,7 @@ class YandexUsers extends AbstractController
             'token' => 'required',
             'account' => [
                 'required',
-                Rule::unique('yandex_users', 'account')->ignore($model->id ?? null),
+                Rule::unique('yandex_users', 'account')->ignore($model),
             ],
         ];
     }

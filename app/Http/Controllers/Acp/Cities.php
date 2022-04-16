@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers\Acp;
 
 use App\City as Model;
+use App\Rules\LifeSlug;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Validation\Rule;
 
 class Cities extends AbstractController
 {
@@ -33,16 +33,7 @@ class Cities extends AbstractController
     protected function rules($model = null)
     {
         return [
-            'slug' => [
-                'bail',
-                'required',
-                Rule::unique('artists', 'slug')->ignore($model->id ?? null),
-                Rule::unique('cities', 'slug')->ignore($model->id ?? null),
-                Rule::unique('gigs', 'slug')->ignore($model->id ?? null),
-                Rule::unique('trips', 'slug')
-                    ->where('user_id', 1)
-                    ->ignore($model->id ?? null),
-            ],
+            'slug' => LifeSlug::rules($model),
             'title_ru' => 'required',
             'title_en' => 'required',
             'country_id' => 'required|integer|min:1',

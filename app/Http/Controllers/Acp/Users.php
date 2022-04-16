@@ -62,7 +62,7 @@ class Users extends AbstractController
             'email' => [
                 'required',
                 'email',
-                Rule::unique('users', 'email')->ignore($model->id ?? null),
+                Rule::unique('users', 'email')->ignore($model),
             ],
             'status' => 'boolean',
             'password' => Rule::when($model === null, 'required_without:random_password|min:8', 'min:8'),

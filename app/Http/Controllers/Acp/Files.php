@@ -25,7 +25,7 @@ class Files extends AbstractController
         return [
             'slug' => [
                 'required',
-                Rule::unique('files', 'slug')->ignore($model->id ?? null),
+                Rule::unique('files', 'slug')->ignore($model),
             ],
             'file' => [
                 Rule::when(empty($model->exists), 'required'),

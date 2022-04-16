@@ -29,7 +29,7 @@ class Countries extends AbstractController
         return [
             'slug' => [
                 'required',
-                Rule::unique('countries', 'slug')->ignore($model->id ?? null),
+                Rule::unique('countries', 'slug')->ignore($model, 'slug'),
             ],
             'title_ru' => 'required',
             'title_en' => 'required',
