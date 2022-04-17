@@ -1,15 +1,16 @@
-<?php namespace App\Domain;
+<?php namespace App\Action;
 
+use App\Domain\MagnetStatus;
 use App\Magnet;
 use App\Services\Rto;
 
-class TorrentUpdater
+class UpdateMagnetAction
 {
     public function __construct(private Rto $rto)
     {
     }
 
-    public function update(Magnet $magnet)
+    public function execute(Magnet $magnet)
     {
         $data = $this->rto->topicDataById($magnet->rto_id);
 

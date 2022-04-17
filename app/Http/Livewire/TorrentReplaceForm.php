@@ -1,6 +1,6 @@
 <?php namespace App\Http\Livewire;
 
-use App\Domain\TorrentUpdater;
+use App\Action\UpdateMagnetAction;
 use App\Magnet;
 use App\Services\Rto;
 use Livewire\Component;
@@ -20,7 +20,7 @@ class TorrentReplaceForm extends Component
         return ['input' => 'required'];
     }
 
-    public function submit(TorrentUpdater $torrentUpdater)
+    public function submit(UpdateMagnetAction $updateMagnet)
     {
         $this->validate();
 
@@ -28,7 +28,7 @@ class TorrentReplaceForm extends Component
         $magnet->rto_id = $this->input;
 
         try {
-            $torrentUpdater->update($magnet);
+            $updateMagnet->execute($magnet);
         } catch (\Throwable $e) {
             $this->addError('input', $e->getMessage());
 
