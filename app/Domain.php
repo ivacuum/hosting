@@ -111,30 +111,6 @@ class Domain extends Model
     }
 
     // Methods
-    public function addMailbox($login, $password)
-    {
-        if (!$this->yandex_user_id) {
-            throw new \Exception('Домен не связан с учеткой в Яндексе');
-        }
-
-        $client = $this->getYandexPddApiClient();
-
-        $response = $client->post('admin/email/add', [
-            'query' => [
-                'login' => $login,
-                'domain' => $this->domain,
-                'password' => $password,
-            ],
-        ]);
-
-        $json = json_decode($response->getBody());
-
-        return 'ok' !== $json->success ? $json->error : 'ok';
-    }
-
-    /**
-     * Добавление днс-записей через API Яндекса
-     */
     public function addNsRecord(string $type, array $input)
     {
         if (!$this->yandex_user_id) {
@@ -284,19 +260,6 @@ class Domain extends Model
         }
 
         return $json->records;
-    }
-
-    public function getPddStatus()
-    {
-        if (!$this->yandex_user_id) {
-            throw new \Exception('Домен не связан с учеткой в Яндексе');
-        }
-
-        $client = $this->getYandexPddApiClient();
-
-        $response = $client->get("admin/domain/registration_status?domain={$this->domain}");
-
-        return json_decode($response->getBody());
     }
 
     public function getRobotsTxt()

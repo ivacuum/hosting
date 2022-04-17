@@ -56,14 +56,12 @@ class Domains extends AbstractController
         ]);
     }
 
-    public function addMailbox($domain)
+    public function addMailbox(Model $domain, YandexPddClient $yandexPdd)
     {
         request()->validate([
             'logins' => 'required',
             'send_to' => Email::rules(),
         ]);
-
-        $model = $this->getModel($domain);
 
         $logins = request('logins');
         $sendTo = request('send_to');
@@ -72,19 +70,19 @@ class Domains extends AbstractController
         $mailboxes = [];
 
         foreach ($logins as $login) {
-            $password = \Str::random(16);
+            $password = \Str::random(20);
 
-            if ('ok' === $model->addMailbox($login, $password)) {
-                $mailboxes[] = [
-                    'user' => $login,
-                    'pass' => $password,
-                ];
-            }
+            $yandexPdd->emailAdd($domain->yandexUser->token, $domain->domain, $login, $password);
+
+            $mailboxes[] = [
+                'user' => $login,
+                'pass' => $password,
+            ];
         }
 
-        \Mail::to($sendTo)->send(new DomainMailboxesMail($model, $mailboxes));
+        \Mail::to($sendTo)->send(new DomainMailboxesMail($domain, $mailboxes));
 
-        return redirect(path([self::class, 'mailboxes'], $model))
+        return redirect(path([self::class, 'mailboxes'], $domain))
             ->with('message', "Данные высланы на почту {$sendTo}");
     }
 
@@ -240,13 +238,6 @@ class Domains extends AbstractController
             'model' => $model,
             'whois' => trim($model->getWhoisData()),
         ]);
-    }
-
-    public function yandexPddStatus($domain)
-    {
-        $model = $this->getModel($domain);
-
-        dd($model->getPddStatus());
     }
 
     /**

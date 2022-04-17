@@ -26,6 +26,13 @@ class YandexPddClient
         return new DomainsResponse($this->send($pddToken, $request));
     }
 
+    public function emailAdd(string $pddToken, string $domain, string $login, string $password)
+    {
+        $request = new EmailAddRequest($domain, $login, $password);
+
+        return new EmailAddResponse($this->send($pddToken, $request));
+    }
+
     public function emails(string $pddToken, string $domain)
     {
         $request = new EmailsRequest($domain);
@@ -43,13 +50,19 @@ class YandexPddClient
     private function send(string $pddToken, HttpRequest $request)
     {
         if ($request instanceof HttpPost) {
-            return $this->configureClient($pddToken)
+            $response = $this->configureClient($pddToken)
                 ->bodyFormat('query')
                 ->post($request->endpoint(), $request->jsonSerialize());
+        } else {
+            $response = $this->configureClient($pddToken)
+                ->get($request->endpoint(), $request->jsonSerialize());
         }
 
-        return $this->configureClient($pddToken)
-            ->get($request->endpoint(), $request->jsonSerialize());
+        if ($response->json('error')) {
+            throw RequestException::make($response->json('error'));
+        }
+
+        return $response;
     }
 
     private function configureClient(string $pddToken)

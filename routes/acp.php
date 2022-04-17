@@ -43,7 +43,6 @@ Route::delete('domains/{slug}/ns-records', [Acp\Domains::class, 'deleteNsRecord'
 Route::get('domains/{slug}/ns-servers', [Acp\Domains::class, 'nsServers']);
 Route::get('domains/{slug}/robots', [Acp\Domains::class, 'robots']);
 Route::post('domains/{slug}/server-ns', [Acp\Domains::class, 'setServerNsRecords']);
-Route::get('domains/{slug}/yandex-pdd-status', [Acp\Domains::class, 'yandexPddStatus']);
 Route::post('domains/{slug}/yandex-ns', [Acp\Domains::class, 'setYandexNs']);
 Route::get('domains/{slug}/whois', [Acp\Domains::class, 'whois']);
 

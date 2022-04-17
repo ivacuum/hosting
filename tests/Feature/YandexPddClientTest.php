@@ -2,8 +2,10 @@
 
 use App\Services\YandexPdd\DkimStatusResponse;
 use App\Services\YandexPdd\DomainsResponse;
+use App\Services\YandexPdd\EmailAddResponse;
 use App\Services\YandexPdd\EmailEditResponse;
 use App\Services\YandexPdd\EmailsResponse;
+use App\Services\YandexPdd\RequestException;
 use App\Services\YandexPdd\YandexPddClient;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\Client\Request;
@@ -46,6 +48,34 @@ class YandexPddClientTest extends TestCase
         $response = $yandex->domains('token');
 
         $this->assertTrue($response->successful);
+    }
+
+    public function testEmailAdd()
+    {
+        \Http::fake([
+            ...EmailAddResponse::fakeSuccess('example.com', 'me@example.com'),
+            '*' => \Http::response(),
+        ]);
+
+        $yandex = $this->app->make(YandexPddClient::class);
+        $response = $yandex->emailAdd('token', 'example.com', 'me', 'pass');
+
+        $this->assertTrue($response->successful);
+        $this->assertSame('example.com', $response->domain);
+        $this->assertSame('me@example.com', $response->login);
+    }
+
+    public function testEmailAddError()
+    {
+        \Http::fake([
+            ...EmailAddResponse::fakeError(),
+            '*' => \Http::response(),
+        ]);
+
+        $this->expectException(RequestException::class);
+
+        $this->app->make(YandexPddClient::class)
+            ->emailAdd('token', 'example.com', 'me', 'pass');
     }
 
     public function testEmails()
