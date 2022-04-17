@@ -20,7 +20,7 @@ class TorrentReplaceForm extends Component
         return ['input' => 'required'];
     }
 
-    public function submit()
+    public function submit(TorrentUpdater $torrentUpdater)
     {
         $this->validate();
 
@@ -28,8 +28,7 @@ class TorrentReplaceForm extends Component
         $magnet->rto_id = $this->input;
 
         try {
-            $action = app()->make(TorrentUpdater::class);
-            $action->update($magnet);
+            $torrentUpdater->update($magnet);
         } catch (\Throwable $e) {
             $this->addError('input', $e->getMessage());
 

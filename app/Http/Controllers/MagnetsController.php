@@ -114,7 +114,6 @@ class MagnetsController extends Controller
 
         return view('magnets.show', [
             'magnet' => $magnet,
-            'comments' => $magnet->commentsPublished()->with('user')->orderBy('created_at')->get(),
             'metaTitle' => $magnet->title,
         ]);
     }

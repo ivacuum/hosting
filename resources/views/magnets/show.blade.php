@@ -5,6 +5,7 @@
 ?>
 
 @extends('magnets.base')
+@include('livewire')
 
 @section('torrent-download-button')
 <div class="mr-4 text-center">
@@ -91,6 +92,6 @@
   @endforeach
 @endif
 
-@include('tpl.comments-list')
-@include('tpl.comment-add', ['params' => [App\Domain\Commentable::Magnet->value, $magnet->id]])
+@livewire(App\Http\Livewire\Comments::class, ['model' => $magnet])
+@livewire(App\Http\Livewire\CommentAddForm::class, ['model' => $magnet])
 @endsection

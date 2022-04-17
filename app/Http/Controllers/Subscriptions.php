@@ -65,13 +65,11 @@ class Subscriptions extends Controller
         ]);
 
         if ($isGuest) {
-            $user = $findUserByEmailOrCreate->execute($email);
-
-            if ($user->wasRecentlyCreated) {
-                event(new \App\Events\Stats\UserRegisteredAutoWhenSubscribing);
-            } else {
-                event(new \App\Events\Stats\UserFoundByEmailWhenSubscribing);
-            }
+            $user = $findUserByEmailOrCreate->execute(
+                $email,
+                new \App\Events\Stats\UserRegisteredAutoWhenSubscribing,
+                new \App\Events\Stats\UserFoundByEmailWhenSubscribing
+            );
         }
 
         $selectedTopics = array_keys(array_filter(request(['gigs', 'news', 'trips'])));

@@ -10,6 +10,7 @@
   'metaImage' => $trip->metaImage(),
   'metaDescription' => $trip->metaDescription(),
 ])
+@include('livewire')
 
 @section('content_header')
 @parent
@@ -44,7 +45,7 @@
 @parent
 
 @if (isset($comments))
-  @include('tpl.comments-list')
-  @include('tpl.comment-add', ['params' => [App\Domain\Commentable::Trip->value, $trip->id]])
+  @livewire(App\Http\Livewire\Comments::class, ['model' => $trip])
+  @livewire(App\Http\Livewire\CommentAddForm::class, ['model' => $trip])
 @endif
 @endsection

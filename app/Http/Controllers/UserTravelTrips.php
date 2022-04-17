@@ -59,7 +59,7 @@ class UserTravelTrips extends UserTravel
 
         return view('user-travel.show', [
             'trip' => $trip,
-            'comments' => $trip->commentsPublished()->with('user')->orderBy('id')->get(),
+            'comments' => true,
             'timeline' => $trip->cityTimeline(),
             'nextTrips' => $nextTrips,
             'previousTrips' => $trip->previous($nextTrips->count())->get()->reverse(),

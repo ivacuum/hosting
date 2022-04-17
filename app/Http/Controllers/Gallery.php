@@ -21,7 +21,7 @@ class Gallery extends Controller
         return view('gallery.preview', ['image' => $image]);
     }
 
-    public function view(Image $image)
+    public function show(Image $image)
     {
         event(new \App\Events\Stats\GalleryImageViewed($image->id));
 

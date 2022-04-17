@@ -4,9 +4,8 @@
  */
 ?>
 
-@extends('base', [
-  'noLanguageSelector' => true,
-])
+@extends('base')
+@include('livewire')
 
 @section('content')
 <article itemscope itemtype="https://schema.org/BlogPosting">
@@ -35,6 +34,6 @@
   <div class="antialiased hanging-punctuation-first lg:text-lg markdown-body break-words" itemprop="articleBody">{!! $news->html !!}</div>
 </article>
 
-@include('tpl.comments-list')
-@include('tpl.comment-add', ['params' => [App\Domain\Commentable::News->value, $news->id]])
+@livewire(App\Http\Livewire\Comments::class, ['model' => $news])
+@livewire(App\Http\Livewire\CommentAddForm::class, ['model' => $news])
 @endsection

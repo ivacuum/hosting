@@ -15,6 +15,11 @@ enum MagnetStatus: int
         };
     }
 
+    public function isPublished(): bool
+    {
+        return $this === self::Published;
+    }
+
     public static function labels(): array
     {
         return collect(self::cases())

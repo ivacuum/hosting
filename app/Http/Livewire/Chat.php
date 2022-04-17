@@ -17,9 +17,7 @@ class Chat extends Component
             throw new AuthorizationException;
         }
 
-        $this->validate([
-            'text' => ['required', 'string', 'min:1'],
-        ]);
+        $this->validate();
 
         $chatMessage = new ChatMessage;
         $chatMessage->ip = $request->ip();
@@ -43,5 +41,12 @@ class Chat extends Component
             ->values();
 
         return view('livewire.chat');
+    }
+
+    public function rules()
+    {
+        return [
+            'text' => ['required', 'string', 'min:1'],
+        ];
     }
 }

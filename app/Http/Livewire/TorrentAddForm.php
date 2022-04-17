@@ -26,7 +26,7 @@ class TorrentAddForm extends Component
         ];
     }
 
-    public function submit()
+    public function submit(Rto $rto)
     {
         $this->validate();
 
@@ -35,8 +35,6 @@ class TorrentAddForm extends Component
 
             return null;
         }
-
-        $rto = app()->make(Rto::class);
 
         try {
             $data = $rto->torrentData($this->topicId);

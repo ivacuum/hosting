@@ -41,7 +41,7 @@ class Users extends AbstractController
     {
         $vars = [
             'user' => $model,
-            'route' => path([Home::class, 'index'], [], true),
+            'route' => path(HomeController::class, [], true),
             'password' => $password,
         ];
 

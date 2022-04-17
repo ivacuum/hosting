@@ -2,8 +2,8 @@
 
 class EmailHostUnavailableForAutoRegistration extends \InvalidArgumentException
 {
-    public function __construct()
+    public static function make()
     {
-        parent::__construct('Данная электронная почта недоступна, укажите другую');
+        return new static('Данная электронная почта недоступна, укажите другую');
     }
 }

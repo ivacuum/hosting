@@ -19,13 +19,11 @@ class Issues extends Controller
         $isGuest = $request->isGuest();
 
         if ($isGuest) {
-            $user = $findUserByEmailOrCreate->execute($request->email);
-
-            if ($user->wasRecentlyCreated) {
-                event(new \App\Events\Stats\UserRegisteredAutoWhenIssueAdded);
-            } else {
-                event(new \App\Events\Stats\UserFoundByEmailWhenIssueAdded);
-            }
+            $user = $findUserByEmailOrCreate->execute(
+                $request->email,
+                new \App\Events\Stats\UserRegisteredAutoWhenIssueAdded,
+                new \App\Events\Stats\UserFoundByEmailWhenIssueAdded
+            );
         }
 
         if ($limits->flood($user->id)) {

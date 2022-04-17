@@ -3,7 +3,7 @@
 use App\Http\Controllers\Acp;
 use Ivacuum\Generic\Utilities\RouteHelper;
 
-Route::get('/', [Acp\Home::class, 'index']);
+Route::get('/', Acp\HomeController::class);
 
 RouteHelper::crud(Acp\Artists::class);
 

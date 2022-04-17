@@ -193,7 +193,7 @@ class Life extends Controller
 
         return view($tpl, [
             'trip' => $trip,
-            'comments' => $trip->commentsPublished()->with('user')->orderBy('created_at')->get(),
+            'comments' => true,
             'timeline' => $trip->cityTimeline(),
             'metaImage' => $trip->metaImage(),
             'metaTitle' => $trip->metaTitle(),

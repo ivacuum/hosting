@@ -39,8 +39,8 @@ class NewsController extends Controller
 
         return view('news.show', [
             'news' => $news,
-            'comments' => $news->commentsPublished()->with('user')->orderBy('created_at')->get(),
             'metaTitle' => $news->title,
+            'noLanguageSelector' => true,
         ]);
     }
 }
