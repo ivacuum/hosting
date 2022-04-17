@@ -31,7 +31,7 @@
           </div>
         </td>
         <td class="text-center">
-          @if ($model->isClosed())
+          @if ($model->status->isClosed())
             <span class="text-green-600">
               @svg (check)
             </span>

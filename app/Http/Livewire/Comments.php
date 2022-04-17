@@ -1,6 +1,7 @@
 <?php namespace App\Http\Livewire;
 
 use App\Domain\LivewireEvent;
+use App\Issue;
 use App\Magnet;
 use App\News;
 use App\Trip;
@@ -8,7 +9,7 @@ use Livewire\Component;
 
 class Comments extends Component
 {
-    public Magnet|News|Trip $model;
+    public Issue|Magnet|News|Trip $model;
     public $comments;
 
     public function freshComments()

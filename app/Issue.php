@@ -16,6 +16,7 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  * @property \Carbon\CarbonImmutable $updated_at
  *
  * @property \Illuminate\Database\Eloquent\Collection|Comment[] $comments
+ * @property \Illuminate\Database\Eloquent\Collection|Comment[] $commentsPublished
  * @property User $user
  *
  * @property-read int $comments_count
@@ -38,6 +39,11 @@ class Issue extends Model
     public function comments()
     {
         return $this->morphMany(Comment::class, 'rel');
+    }
+
+    public function commentsPublished()
+    {
+        return $this->comments()->where('status', Domain\CommentStatus::Published);
     }
 
     public function emails()
@@ -69,15 +75,5 @@ class Issue extends Model
     public function canBeOpened(): bool
     {
         return $this->status === Domain\IssueStatus::Closed;
-    }
-
-    public function isClosed(): bool
-    {
-        return $this->status === Domain\IssueStatus::Closed;
-    }
-
-    public function isNotClosed(): bool
-    {
-        return !$this->isClosed();
     }
 }

@@ -190,6 +190,11 @@ class Trip extends Model
         return $this->title;
     }
 
+    public function canBeCommented(): bool
+    {
+        return $this->status === Domain\TripStatus::Published;
+    }
+
     public function cityTimeline()
     {
         return $this->where('user_id', $this->user_id)

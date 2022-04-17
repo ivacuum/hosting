@@ -4,12 +4,14 @@ use App\Domain\CommentStatus;
 use App\Domain\LivewireEvent;
 use App\Events\CommentPublished;
 use App\Events\Stats\UserRegisteredAuto;
+use App\Factory\IssueFactory;
 use App\Factory\MagnetFactory;
 use App\Factory\NewsFactory;
 use App\Factory\TripFactory;
 use App\Factory\UserFactory;
 use App\Http\Livewire\CommentAddForm;
 use App\Mail\CommentConfirmMail;
+use App\Notifications\IssueCommentedNotification;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -17,6 +19,27 @@ use Tests\TestCase;
 class CommentAddFormTest extends TestCase
 {
     use DatabaseTransactions;
+
+    public function testCommentIssueAsUser()
+    {
+        \Notification::fake();
+
+        $issue = IssueFactory::new()->withUser()->create();
+        $user = UserFactory::new()->create();
+
+        \Livewire::actingAs($user)
+            ->test(CommentAddForm::class, ['model' => $issue])
+            ->set('text', '<p>Comment issue</p>')
+            ->call('submit');
+
+        \Notification::assertSentTo($issue->user, IssueCommentedNotification::class);
+
+        $comment = $user->comments[0];
+
+        $this->assertCount(1, $user->comments);
+        $this->assertSame(CommentStatus::Published, $comment->status);
+        $this->assertSame('<p>Comment issue</p>', $comment->html);
+    }
 
     public function testCommentMagnetAsUser()
     {

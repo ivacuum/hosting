@@ -80,6 +80,11 @@ class News extends Model
         return $this->title;
     }
 
+    public function canBeCommented(): bool
+    {
+        return $this->status === Domain\NewsStatus::Published;
+    }
+
     public function www(?string $anchor = null): string
     {
         return path([Http\Controllers\NewsController::class, 'show'], $this->id) . $anchor;

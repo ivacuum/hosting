@@ -93,6 +93,11 @@ class Magnet extends Model
         return $this->shortTitle();
     }
 
+    public function canBeCommented(): bool
+    {
+        return $this->status === Domain\MagnetStatus::Published;
+    }
+
     public function externalLink(): string
     {
         return "https://rutracker.org/forum/viewtopic.php?t={$this->rto_id}";

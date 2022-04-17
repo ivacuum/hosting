@@ -14,4 +14,9 @@ enum IssueStatus: int
             self::Closed => __('Закрыто'),
         };
     }
+
+    public function isClosed(): bool
+    {
+        return $this === self::Closed;
+    }
 }

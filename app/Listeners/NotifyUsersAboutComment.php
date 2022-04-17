@@ -1,8 +1,10 @@
 <?php namespace App\Listeners;
 
 use App\Events\CommentPublished;
+use App\Issue;
 use App\Magnet;
 use App\News;
+use App\Notifications\IssueCommentedNotification;
 use App\Notifications\NewsCommentedNotification;
 use App\Notifications\TorrentCommentedNotification;
 use App\Notifications\TripCommentedNotification;
@@ -15,7 +17,9 @@ class NotifyUsersAboutComment
         $model = $event->comment->rel;
         $users = $event->comment->usersForNotification($model);
 
-        if ($model instanceof News) {
+        if ($model instanceof Issue) {
+            \Notification::send($model->user, new IssueCommentedNotification($model, $event->comment));
+        } elseif ($model instanceof News) {
             event(new \App\Events\Stats\NewsCommented);
 
             \Notification::send($users, new NewsCommentedNotification($model, $event->comment));

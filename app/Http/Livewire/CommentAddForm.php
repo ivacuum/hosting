@@ -6,6 +6,7 @@ use App\Action\FindUserByEmailOrCreateAction;
 use App\Comment;
 use App\Domain\CommentStatus;
 use App\Domain\LivewireEvent;
+use App\Issue;
 use App\Limits\CommentsTodayLimit;
 use App\Magnet;
 use App\News;
@@ -18,7 +19,7 @@ class CommentAddForm extends Component
 {
     public string $text = '';
     public string $email = '';
-    public Magnet|News|Trip $model;
+    public Issue|Magnet|News|Trip $model;
 
     public function rules()
     {
@@ -32,7 +33,7 @@ class CommentAddForm extends Component
     {
         $this->validate();
 
-        if (!$this->model->status->isPublished()) {
+        if (!$this->model->canBeCommented()) {
             $this->addError('text', 'Эту страницу нельзя прокомментировать.');
 
             return;
@@ -60,7 +61,7 @@ class CommentAddForm extends Component
         }
 
         $comment = new Comment;
-        $comment->html = e($this->text);
+        $comment->html = $this->escapeText();
         $comment->status = $isGuest
             ? CommentStatus::Pending
             : CommentStatus::Published;
@@ -75,5 +76,14 @@ class CommentAddForm extends Component
         if ($isGuest) {
             session()->flash('message', __('Комментарий ожидает активации. Мы отправили вам ссылку на электронную почту.'));
         }
+    }
+
+    private function escapeText()
+    {
+        if ($this->model instanceof Issue) {
+            return $this->text;
+        }
+
+        return e($this->text);
     }
 }

@@ -1,10 +1,11 @@
 <?php /** @var App\Issue $model */ ?>
 
 @extends('acp.show')
+@include('livewire')
 
 @section('content')
 <div>
-  @if ($model->isClosed())
+  @if ($model->status->isClosed())
     <span class="text-green-600">
       @svg (check)
     </span>
@@ -38,25 +39,12 @@
 <div class="my-4 whitespace-pre-line">{{ $model->text }}</div>
 
 <div>
-  @include('tpl.comments-list', ['comments' => $model->comments])
+  @livewire(App\Http\Livewire\Comments::class, ['model' => $model])
+
+  @if($model->canBeCommented())
+    @livewire(App\Http\Livewire\CommentAddForm::class, ['model' => $model])
+  @endif
 </div>
-
-@if ($model->isNotClosed())
-  <form action="{{ path(App\Http\Controllers\Acp\IssueCommentController::class, $model) }}" method="post">
-    @csrf
-
-    <div class="my-2">
-      <textarea
-        required
-        class="form-input"
-        rows="4"
-        placeholder="Текст ответа..."
-        name="text"
-      ></textarea>
-    </div>
-    <button class="btn btn-primary">Отправить</button>
-  </form>
-@endif
 
 @parent
 @endsection
