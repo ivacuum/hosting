@@ -197,24 +197,6 @@ class Domain extends Model
         return 'ok' !== $json->success ? $json->error : 'ok';
     }
 
-    public function dkimSecretKey()
-    {
-        if (!$this->yandex_user_id) {
-            throw new \Exception('Домен не связан с учеткой в Яндексе');
-        }
-
-        $client = $this->getYandexPddApiClient();
-
-        $response = $client->get("admin/dkim/status?domain={$this->domain}&secretkey=yes");
-        $json = json_decode($response->getBody());
-
-        if ('ok' !== $json->success) {
-            throw new \Exception("Api error: {$json->error}");
-        }
-
-        return $json;
-    }
-
     /**
      * Редактирование днс-записей через API Яндекса
      */
@@ -254,26 +236,6 @@ class Domain extends Model
         $json = json_decode($response->getBody());
 
         return 'ok' !== $json->success ? $json->error : 'ok';
-    }
-
-    public function getMailboxes()
-    {
-        if (!$this->yandex_user_id) {
-            throw new \Exception('Домен не связан с учеткой в Яндексе');
-        }
-
-        $client = $this->getYandexPddApiClient();
-
-        $response = $client->get("admin/email/list?domain={$this->domain}");
-        $json = json_decode($response->getBody());
-
-        if ('ok' !== $json->success) {
-            throw new \Exception("Api error: {$json->error}");
-        }
-
-        usort($json->accounts, fn ($a, $b) => strnatcmp($a->login, $b->login));
-
-        return $json;
     }
 
     /**

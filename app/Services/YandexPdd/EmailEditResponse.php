@@ -6,7 +6,7 @@ use Illuminate\Http\Client\Response;
 class EmailEditResponse
 {
     public $json;
-    public bool $successful;
+    public readonly bool $successful;
 
     public function __construct(Response $response)
     {

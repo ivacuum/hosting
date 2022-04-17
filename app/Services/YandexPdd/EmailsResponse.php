@@ -6,11 +6,20 @@ use Illuminate\Http\Client\Response;
 class EmailsResponse
 {
     public $json;
+    public int $total;
     public bool $successful;
+
+    /** @var \Illuminate\Support\Collection|Account[] */
+    public $accounts;
 
     public function __construct(Response $response)
     {
         $this->json = $response->json();
+        $this->total = $response->json('total');
+        $this->accounts = $response->collect('accounts')
+            ->sortBy('login')
+            ->map(fn ($payload) => Account::fromArray($payload));
+
         $this->successful = $response->json('success') === 'ok';
     }
 

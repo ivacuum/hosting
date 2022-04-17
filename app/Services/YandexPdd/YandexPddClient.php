@@ -42,17 +42,21 @@ class YandexPddClient
 
     private function send(string $pddToken, HttpRequest $request)
     {
-        $http = $this->http
-            ->baseUrl(self::API_URL)
-            ->timeout(10)
-            ->withHeaders(['PddToken' => $pddToken]);
-
         if ($request instanceof HttpPost) {
-            return $http
+            return $this->configureClient($pddToken)
                 ->bodyFormat('query')
                 ->post($request->endpoint(), $request->jsonSerialize());
         }
 
-        return $http->get($request->endpoint(), $request->jsonSerialize());
+        return $this->configureClient($pddToken)
+            ->get($request->endpoint(), $request->jsonSerialize());
+    }
+
+    private function configureClient(string $pddToken)
+    {
+        return $this->http
+            ->baseUrl(self::API_URL)
+            ->timeout(10)
+            ->withHeaders(['PddToken' => $pddToken]);
     }
 }

@@ -3,6 +3,7 @@
 use App\Domain as Model;
 use App\Mail\DomainMailboxesMail;
 use App\Rules\Email;
+use App\Services\YandexPdd\YandexPddClient;
 use Illuminate\Validation\Rule;
 
 class Domains extends AbstractController
@@ -148,13 +149,6 @@ class Domains extends AbstractController
         return $model->deleteNsRecord($id);
     }
 
-    public function dkimSecretKey($domain)
-    {
-        $model = $this->getModel($domain);
-
-        return $model->dkimSecretKey()->dkim->secretkey;
-    }
-
     public function editNsRecord($domain)
     {
         $model = $this->getModel($domain);
@@ -166,15 +160,13 @@ class Domains extends AbstractController
         );
     }
 
-    public function mailboxes($domain)
+    public function mailboxes(Model $domain, YandexPddClient $yandexPdd)
     {
-        $model = $this->getModel($domain);
-
-        $this->breadcrumbsModelSubpage($model);
+        $this->breadcrumbsModelSubpage($domain);
 
         return view($this->view, [
-            'model' => $model,
-            'mailboxes' => $model->getMailboxes(),
+            'model' => $domain,
+            'mailboxes' => $yandexPdd->emails($domain->yandexUser->token, $domain->domain),
         ]);
     }
 

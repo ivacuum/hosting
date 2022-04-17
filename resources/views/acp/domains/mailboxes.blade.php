@@ -1,3 +1,5 @@
+<?php /** @var \App\Services\YandexPdd\EmailsResponse $mailboxes */ ?>
+
 @extends("$tpl.base")
 
 @section('content')
@@ -31,9 +33,9 @@
   <ul>
     @foreach ($mailboxes->accounts as $account)
       <li>
-        @if ($account->enabled == 'no')
+        @if (!$account->enabled)
           <span class="text-red-600"><s>{{ $account->login }}</s></span>
-        @elseif ($account->ready == 'yes')
+        @elseif ($account->ready)
           <span class="text-green-600">{{ $account->login }}</span>
         @else
           <span class="text-orange-400">{{ $account->login }}</span>
@@ -55,14 +57,14 @@
   </ul>
   <div>
     <span class="mr-4">
-      <span class="bg-green-600 text-white p-1 text-xs font-bold rounded px-2 mr-1">&nbsp;</span>
+      <span class="bg-green-600 rounded mr-1 w-5 h-5 inline-block"></span>
       активен
     </span>
     <span class="mr-4">
-      <span class="bg-orange-400 p-1 text-xs font-bold rounded px-2 mr-1">&nbsp;</span>
+      <span class="bg-orange-400 rounded mr-1 w-5 h-5 inline-block"></span>
       неактивен
     </span>
-    <span class="bg-red-600 text-white p-1 text-xs font-bold rounded px-2 mr-1">&nbsp;</span>
+    <span class="bg-red-600 rounded mr-1 w-5 h-5 inline-block"></span>
     отключен
   </div>
 @endif

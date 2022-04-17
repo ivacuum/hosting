@@ -34,8 +34,7 @@ Route::get('dev/thumbnails/clean', [Acp\Dev\Thumbnails::class, 'clean']);
 
 RouteHelper::crud(Acp\Domains::class, null, 'slug');
 Route::post('domains/batch', [Acp\Domains::class, 'batch']);
-Route::get('domains/{slug}/dkim-secret-key', [Acp\Domains::class, 'dkimSecretKey']);
-Route::get('domains/{slug}/mail', [Acp\Domains::class, 'mailboxes']);
+Route::get('domains/{domain}/mail', [Acp\Domains::class, 'mailboxes']);
 Route::post('domains/{slug}/mail', [Acp\Domains::class, 'addMailbox']);
 Route::get('domains/{slug}/ns-records', [Acp\Domains::class, 'nsRecords']);
 Route::post('domains/{slug}/ns-records', [Acp\Domains::class, 'addNsRecord']);

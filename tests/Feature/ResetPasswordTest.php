@@ -29,7 +29,7 @@ class ResetPasswordTest extends TestCase
     public function testSubmitGuest()
     {
         $user = UserFactory::new()->create();
-        $broker = app(PasswordBroker::class);
+        $broker = $this->app->make(PasswordBroker::class);
         $token = $broker->createToken($user);
 
         $this->from("auth/password/reset/{$token}")
@@ -48,7 +48,7 @@ class ResetPasswordTest extends TestCase
     {
         $this->be($user = UserFactory::new()->create());
 
-        $broker = app(PasswordBroker::class);
+        $broker = $this->app->make(PasswordBroker::class);
         $token = $broker->createToken($user);
 
         $this->from("auth/password/reset/{$token}")
