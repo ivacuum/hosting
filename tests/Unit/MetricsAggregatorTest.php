@@ -41,6 +41,16 @@ class MetricsAggregatorTest extends TestCase
         ]);
     }
 
+    public function testNotExist()
+    {
+        $event = 'NotExist';
+
+        $aggregator = new MetricsAggregator;
+        $aggregator->push($event);
+
+        $this->assertEmpty($aggregator->data());
+    }
+
     public function testPush()
     {
         $event1 = class_basename(TripViewed::class);
@@ -53,7 +63,7 @@ class MetricsAggregatorTest extends TestCase
 
         $this->assertEquals([
             $event1 => 2,
-            $event2 => 1
+            $event2 => 1,
         ], $aggregator->data());
     }
 }

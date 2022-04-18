@@ -1,6 +1,7 @@
 <?php namespace Tests\Feature;
 
 use App\Services\YandexPdd\DkimStatusResponse;
+use App\Services\YandexPdd\DnsRecordsResponse;
 use App\Services\YandexPdd\DomainsResponse;
 use App\Services\YandexPdd\EmailAddResponse;
 use App\Services\YandexPdd\EmailEditResponse;
@@ -22,8 +23,8 @@ class YandexPddClientTest extends TestCase
             '*' => \Http::response(),
         ]);
 
-        $yandex = $this->app->make(YandexPddClient::class);
-        $response = $yandex->dkimStatus('token', 'example.com', true);
+        $response = $this->app->make(YandexPddClient::class)
+            ->dkimStatus('token', 'example.com', true);
 
         $this->assertTrue($response->successful);
 
@@ -37,6 +38,20 @@ class YandexPddClientTest extends TestCase
         });
     }
 
+    public function testDnsRecords()
+    {
+        \Http::fake([
+            ...DnsRecordsResponse::fakeSuccess('example.com'),
+            '*' => \Http::response(),
+        ]);
+
+        $response = $this->app->make(YandexPddClient::class)
+            ->dnsRecords('token', 'example.com');
+
+        $this->assertSame('example.com', $response->domain);
+        $this->assertTrue($response->successful);
+    }
+
     public function testDomains()
     {
         \Http::fake([
@@ -44,8 +59,8 @@ class YandexPddClientTest extends TestCase
             '*' => \Http::response(),
         ]);
 
-        $yandex = $this->app->make(YandexPddClient::class);
-        $response = $yandex->domains('token');
+        $response = $this->app->make(YandexPddClient::class)
+            ->domains('token');
 
         $this->assertTrue($response->successful);
     }
@@ -57,8 +72,8 @@ class YandexPddClientTest extends TestCase
             '*' => \Http::response(),
         ]);
 
-        $yandex = $this->app->make(YandexPddClient::class);
-        $response = $yandex->emailAdd('token', 'example.com', 'me', 'pass');
+        $response = $this->app->make(YandexPddClient::class)
+            ->emailAdd('token', 'example.com', 'me', 'pass');
 
         $this->assertTrue($response->successful);
         $this->assertSame('example.com', $response->domain);
@@ -85,8 +100,8 @@ class YandexPddClientTest extends TestCase
             '*' => \Http::response(),
         ]);
 
-        $yandex = $this->app->make(YandexPddClient::class);
-        $response = $yandex->emails('token', 'example.com');
+        $response = $this->app->make(YandexPddClient::class)
+            ->emails('token', 'example.com');
 
         $this->assertTrue($response->successful);
     }
@@ -98,8 +113,8 @@ class YandexPddClientTest extends TestCase
             '*' => \Http::response(),
         ]);
 
-        $yandex = $this->app->make(YandexPddClient::class);
-        $response = $yandex->setEmailPassword('token', 'example.com', 'me@example.com', 'password');
+        $response = $this->app->make(YandexPddClient::class)
+            ->setEmailPassword('token', 'example.com', 'me@example.com', 'password');
 
         $this->assertTrue($response->successful);
     }

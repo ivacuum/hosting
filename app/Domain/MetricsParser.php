@@ -9,7 +9,7 @@ class MetricsParser
                 continue;
             }
 
-            $event = $payload['event'] ?? null;
+            $event = $payload['event'];
 
             $metricsAggregator->push($event);
 

@@ -40,6 +40,13 @@ class YandexPddClient
         return new EmailsResponse($this->send($pddToken, $request));
     }
 
+    public function dnsRecords(string $pddToken, string $domain)
+    {
+        $request = new DnsRecordsRequest($domain);
+
+        return new DnsRecordsResponse($this->send($pddToken, $request));
+    }
+
     public function setEmailPassword(string $pddToken, string $domain, string $email, string $password)
     {
         $request = new EmailEditRequest($domain, $email, $password);

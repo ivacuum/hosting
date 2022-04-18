@@ -17,6 +17,7 @@ class MetricsAggregator
     {
         try {
             new \ReflectionClass("App\Events\Stats\\$event");
+
             return true;
         } catch (\Throwable) {
         }
