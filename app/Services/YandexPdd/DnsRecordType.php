@@ -10,4 +10,22 @@ enum DnsRecordType: string
     case SOA = 'SOA';
     case SRV = 'SRV';
     case TXT = 'TXT';
+
+    public function canBeAdded(): bool
+    {
+        return match ($this) {
+            self::SOA => false,
+            default => true,
+        };
+    }
+
+    public function isCname(): bool
+    {
+        return $this === self::CNAME;
+    }
+
+    public function isSoa(): bool
+    {
+        return $this === self::SOA;
+    }
 }

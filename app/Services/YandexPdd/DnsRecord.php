@@ -13,6 +13,9 @@ class DnsRecord
         public readonly int $ttl,
         public readonly ?int $port,
         public readonly ?int $weight,
+        public readonly ?int $retry,
+        public readonly ?int $refresh,
+        public readonly ?int $expire
     ) {
     }
 
@@ -31,6 +34,9 @@ class DnsRecord
             $payload['ttl'],
             $payload['port'] ?? null,
             $payload['weight'] ?? null,
+            $payload['retry'] ?? null,
+            $payload['refresh'] ?? null,
+            $payload['expire'] ?? null,
         );
     }
 }

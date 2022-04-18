@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Acp;
 
+use App\Domain;
 use App\Domain as Model;
 use App\Mail\DomainMailboxesMail;
 use App\Rules\Email;
@@ -168,17 +169,15 @@ class Domains extends AbstractController
         ]);
     }
 
-    public function nsRecords($domain)
+    public function nsRecords(Domain $domain, YandexPddClient $yandexPdd)
     {
-        $model = $this->getModel($domain);
-
-        $this->breadcrumbsModelSubpage($model);
+        $this->breadcrumbsModelSubpage($domain);
 
         return view($this->view, [
-            'model' => $model,
-            'records' => $model->yandex_user_id
-                ? $model->getNsRecords()
-                : [],
+            'model' => $domain,
+            'records' => $domain->yandex_user_id
+                ? $yandexPdd->dnsRecords($domain->yandexUser->token, $domain->domain)->records
+                : collect(),
         ]);
     }
 

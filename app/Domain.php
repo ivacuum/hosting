@@ -234,34 +234,6 @@ class Domain extends Model
         return $ns;
     }
 
-    public function getNsRecords()
-    {
-        if (!$this->yandex_user_id) {
-            throw new \Exception('Домен не связан с учеткой в Яндексе');
-        }
-
-        $client = $this->getYandexPddApiClient();
-
-        $response = $client->get("admin/dns/list?domain={$this->domain}");
-        $json = json_decode($response->getBody());
-
-        if ('ok' !== $json->success) {
-            throw new \Exception("Api error: {$json->error}");
-        }
-
-        $sort = [];
-        foreach ($json->records as $key => $record) {
-            $sort['type'][$key] = $record->type;
-            $sort['subdomain'][$key] = $record->subdomain;
-        }
-
-        if (!empty($sort)) {
-            array_multisort($sort['type'], SORT_STRING, $sort['subdomain'], SORT_STRING, $json->records);
-        }
-
-        return $json->records;
-    }
-
     public function getRobotsTxt()
     {
         $client = new HttpClient;
