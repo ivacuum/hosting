@@ -8,30 +8,6 @@
 @extends("$tpl.base")
 
 @section('content')
-{{--
-@if ($model->domain_control and ($model->ns != 'dns1.yandex.net dns2.yandex.net' and $model->ns != 'dns1.yandex.ru dns2.yandex.ru'))
-  <form action="{{ path([$controller, 'setYandexNs'], $model) }}" method="post">
-    @csrf
-    <p>
-      <button class="btn btn-default">
-        Установить DNS Яндекса
-      </button>
-    </p>
-  </form>
-@endif
-
-@if (!$model->yandex_user_id)
-  <form action="{{ path([$controller, 'setYandexPdd'], $model) }}" method="post">
-    @csrf
-    <p>
-      <button class="btn btn-default">
-        Подключить Яндекс.Почту для домена
-      </button>
-    </p>
-  </form>
-@endif
---}}
-
 @if(sizeof($records))
   <table class="table-stats">
     <thead>
@@ -161,25 +137,6 @@
       </tr>
     @endforeach
   </table>
-
-  <form class="flex flex-wrap mt-4" action="{{ path([$controller, 'setServerNsRecords'], $model) }}" method="post">
-    @csrf
-    <div class="mr-1">
-      <select class="form-input" name="server">
-        <option value="">-----</option>
-        <option>srv1.korden.net</option>
-        <option>srv2.korden.net</option>
-        <option>srv3.korden.net</option>
-        <option>srv4.korden.net</option>
-        <option value="bsd.korden.net">office.korden.net</option>
-        <option>srv1.ivacuum.ru</option>
-        <option>srv2.ivacuum.ru</option>
-      </select>
-    </div>
-    <button class="btn btn-default">
-      Прописать днс-записи сервера
-    </button>
-  </form>
 @elseif ($model->yandex_user_id)
   <x-alert-warning>
     ДНС-записи не найдены.

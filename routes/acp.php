@@ -35,16 +35,13 @@ Route::get('dev/thumbnails/clean', [Acp\Dev\Thumbnails::class, 'clean']);
 RouteHelper::crud(Acp\Domains::class, null, 'slug');
 Route::post('domains/batch', [Acp\Domains::class, 'batch']);
 Route::get('domains/{domain}/mail', [Acp\Domains::class, 'mailboxes']);
-Route::post('domains/{slug}/mail', [Acp\Domains::class, 'addMailbox']);
+Route::post('domains/{domain}/mail', [Acp\Domains::class, 'addMailbox']);
 Route::get('domains/{domain}/ns-records', [Acp\Domains::class, 'nsRecords']);
-Route::post('domains/{slug}/ns-records', [Acp\Domains::class, 'addNsRecord']);
-Route::put('domains/{slug}/ns-records', [Acp\Domains::class, 'editNsRecord']);
-Route::delete('domains/{slug}/ns-records', [Acp\Domains::class, 'deleteNsRecord']);
-Route::get('domains/{slug}/ns-servers', [Acp\Domains::class, 'nsServers']);
-Route::get('domains/{slug}/robots', [Acp\Domains::class, 'robots']);
-Route::post('domains/{slug}/server-ns', [Acp\Domains::class, 'setServerNsRecords']);
-Route::post('domains/{slug}/yandex-ns', [Acp\Domains::class, 'setYandexNs']);
-Route::get('domains/{slug}/whois', [Acp\Domains::class, 'whois']);
+Route::post('domains/{domain}/ns-records', [Acp\Domains::class, 'addNsRecord']);
+Route::put('domains/{domain}/ns-records', [Acp\Domains::class, 'editNsRecord']);
+Route::delete('domains/{domain}/ns-records', [Acp\Domains::class, 'deleteNsRecord']);
+Route::get('domains/{domain}/robots', [Acp\Domains::class, 'robots']);
+Route::get('domains/{domain}/whois', [Acp\Domains::class, 'whois']);
 
 RouteHelper::withoutCreateAndEdit(Acp\ExternalIdentities::class);
 

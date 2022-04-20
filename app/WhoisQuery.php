@@ -1,8 +1,5 @@
 <?php namespace App;
 
-use Cache;
-use File;
-
 class WhoisQuery
 {
     protected $data;
@@ -11,12 +8,12 @@ class WhoisQuery
     protected $servers;
     protected $subdomain;
 
-    public function __construct($domain)
+    public function __construct(string $domain)
     {
         $this->domain = idn_to_ascii($domain, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
 
         $this->servers = json_decode(
-            File::get(base_path('database/whois_servers.json')),
+            \File::get(base_path('database/whois_servers.json')),
             true
         );
 
@@ -105,7 +102,7 @@ class WhoisQuery
             return "No whois server for this tld in list!";
         }
 
-        return $this->data = Cache::remember(
+        return $this->data = \Cache::remember(
             $cacheEntry,
             Domain\CacheKey::DomainsWhois->ttl(),
             function () use ($whoisServer) {

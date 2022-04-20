@@ -14,7 +14,18 @@ enum DnsRecordType: string
     public function canBeAdded(): bool
     {
         return match ($this) {
+            self::NS,
             self::SOA => false,
+            default => true,
+        };
+    }
+
+    public function canHaveIdnContent(): bool
+    {
+        return match ($this) {
+            self::A,
+            self::AAAA,
+            self::TXT => false,
             default => true,
         };
     }

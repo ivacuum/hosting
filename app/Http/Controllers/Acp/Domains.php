@@ -1,9 +1,11 @@
 <?php namespace App\Http\Controllers\Acp;
 
+use App\Action\FetchRobotsTxtAction;
 use App\Domain;
 use App\Domain as Model;
 use App\Mail\DomainMailboxesMail;
 use App\Rules\Email;
+use App\Services\YandexPdd\DnsRecordType;
 use App\Services\YandexPdd\YandexPddClient;
 use Illuminate\Validation\Rule;
 
@@ -57,7 +59,7 @@ class Domains extends AbstractController
         ]);
     }
 
-    public function addMailbox(Model $domain, YandexPddClient $yandexPdd)
+    public function addMailbox(Domain $domain, YandexPddClient $yandexPdd)
     {
         request()->validate([
             'logins' => 'required',
@@ -87,14 +89,42 @@ class Domains extends AbstractController
             ->with('message', "Данные высланы на почту {$sendTo}");
     }
 
-    public function addNsRecord($domain)
+    public function addNsRecord(Domain $domain, YandexPddClient $yandexPdd)
     {
-        $model = $this->getModel($domain);
+        $type = DnsRecordType::from(request('type'));
 
-        return $model->addNsRecord(
-            request('type'),
-            request(['content', 'subdomain', 'priority', 'port', 'weight'])
-        );
+        $response = match ($type) {
+            DnsRecordType::A,
+            DnsRecordType::AAAA,
+            DnsRecordType::CNAME,
+            DnsRecordType::TXT => $yandexPdd->addDnsRecord(
+                $domain->yandexUser->token,
+                $domain->domain,
+                $type,
+                request('subdomain'),
+                request('content'),
+            ),
+            DnsRecordType::MX => $yandexPdd->addMxDnsRecord(
+                $domain->yandexUser->token,
+                $domain->domain,
+                request('subdomain'),
+                request('content'),
+                request('priority'),
+            ),
+            DnsRecordType::SRV => $yandexPdd->addSrvDnsRecord(
+                $domain->yandexUser->token,
+                $domain->domain,
+                request('subdomain'),
+                request('content'),
+                request('priority'),
+                request('port'),
+                request('weight'),
+            ),
+        };
+
+        return $response->successful
+            ? 'ok'
+            : 'error';
     }
 
     public function batch()
@@ -139,27 +169,57 @@ class Domains extends AbstractController
         return ['redirect' => path([self::class, 'index'], $params)];
     }
 
-    public function deleteNsRecord($domain)
+    public function deleteNsRecord(Domain $domain, YandexPddClient $yandexPdd)
     {
-        $model = $this->getModel($domain);
-
-        $id = request('record_id');
-
-        return $model->deleteNsRecord($id);
+        return $yandexPdd
+            ->deleteDnsRecord($domain->yandexUser->token, $domain->domain, request('record_id'))
+            ->successful
+            ? 'ok'
+            : 'error';
     }
 
-    public function editNsRecord($domain)
+    public function editNsRecord(Domain $domain, YandexPddClient $yandexPdd)
     {
-        $model = $this->getModel($domain);
+        $type = DnsRecordType::from(request('type'));
 
-        return $model->editNsRecord(
-            request('record_id'),
-            request('type'),
-            request(['content', 'subdomain', 'priority', 'port', 'weight', 'retry', 'refresh', 'expire', 'ttl'])
-        );
+        $response = match ($type) {
+            DnsRecordType::A,
+            DnsRecordType::AAAA,
+            DnsRecordType::CNAME,
+            DnsRecordType::TXT => $yandexPdd->editDnsRecord(
+                $domain->yandexUser->token,
+                $domain->domain,
+                request('record_id'),
+                $type,
+                request('subdomain'),
+                request('content'),
+            ),
+            DnsRecordType::MX => $yandexPdd->editMxDnsRecord(
+                $domain->yandexUser->token,
+                $domain->domain,
+                request('record_id'),
+                request('subdomain'),
+                request('content'),
+                request('priority'),
+            ),
+            DnsRecordType::SRV => $yandexPdd->editSrvDnsRecord(
+                $domain->yandexUser->token,
+                $domain->domain,
+                request('record_id'),
+                request('subdomain'),
+                request('content'),
+                request('priority'),
+                request('port'),
+                request('weight'),
+            ),
+        };
+
+        return $response->successful
+            ? 'ok'
+            : 'error';
     }
 
-    public function mailboxes(Model $domain, YandexPddClient $yandexPdd)
+    public function mailboxes(Domain $domain, YandexPddClient $yandexPdd)
     {
         $this->breadcrumbsModelSubpage($domain);
 
@@ -181,61 +241,25 @@ class Domains extends AbstractController
         ]);
     }
 
-    public function nsServers($domain)
+    public function robots(Domain $domain, FetchRobotsTxtAction $fetchRobotsTxt)
     {
-        $model = $this->getModel($domain);
-
-        dd($model->getNsServers());
-    }
-
-    public function robots($domain)
-    {
-        $model = $this->getModel($domain);
-
-        $this->breadcrumbsModelSubpage($model);
+        $this->breadcrumbsModelSubpage($domain);
 
         return view($this->view, [
-            'model' => $model,
-            'robots' => $model->getRobotsTxt(),
+            'model' => $domain,
+            'robots' => $fetchRobotsTxt->execute($domain->domain),
         ]);
     }
 
-    public function setServerNsRecords($domain)
+    public function whois(Domain $domain)
     {
-        $model = $this->getModel($domain);
+        $this->breadcrumbsModelSubpage($domain);
 
-        $server = request('server');
-
-        $model->setServerNsRecords($server);
-
-        return redirect(path([self::class, 'nsRecords'], $model));
-    }
-
-    public function setYandexNs($domain)
-    {
-        $model = $this->getModel($domain);
-
-        $status = $model->setYandexNs();
-
-        $message = 'success' == $status
-            ? 'Днс Яндекса установлены'
-            : 'Не удалось установить днс Яндекса';
-
-        return redirect(path([self::class, 'show'], $model))
-            ->with('message', $message);
-    }
-
-    public function whois($domain)
-    {
-        $model = $this->getModel($domain);
-
-        $this->breadcrumbsModelSubpage($model);
-
-        $model->updateWhois();
+        $domain->updateWhois();
 
         return view($this->view, [
-            'model' => $model,
-            'whois' => trim($model->getWhoisData()),
+            'model' => $domain,
+            'whois' => trim($domain->getWhoisData()),
         ]);
     }
 

@@ -11,6 +11,7 @@ class DnsRecord
         public readonly string $fqdn,
         public readonly ?int $priority,
         public readonly int $ttl,
+        public readonly ?string $target,
         public readonly ?int $port,
         public readonly ?int $weight,
         public readonly ?int $retry,
@@ -32,6 +33,7 @@ class DnsRecord
                 ? null
                 : $payload['priority'],
             $payload['ttl'],
+            $payload['target'] ?? null,
             $payload['port'] ?? null,
             $payload['weight'] ?? null,
             $payload['retry'] ?? null,

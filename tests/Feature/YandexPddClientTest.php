@@ -1,7 +1,12 @@
 <?php namespace Tests\Feature;
 
+use App\Factory\YandexPddDnsRecordFactory;
 use App\Services\YandexPdd\DkimStatusResponse;
+use App\Services\YandexPdd\DnsRecordAddResponse;
+use App\Services\YandexPdd\DnsRecordDeleteResponse;
+use App\Services\YandexPdd\DnsRecordEditResponse;
 use App\Services\YandexPdd\DnsRecordsResponse;
+use App\Services\YandexPdd\DnsRecordType;
 use App\Services\YandexPdd\DomainsResponse;
 use App\Services\YandexPdd\EmailAddResponse;
 use App\Services\YandexPdd\EmailEditResponse;
@@ -36,6 +41,56 @@ class YandexPddClientTest extends TestCase
 
             return true;
         });
+    }
+
+    public function testDnsRecordAdd()
+    {
+        \Http::fake([
+            ...DnsRecordAddResponse::fakeSuccess('example.com', YandexPddDnsRecordFactory::a(5, 'example.com', '127.0.0.2', 'phpunit')),
+            '*' => \Http::response(),
+        ]);
+
+        $response = $this->app->make(YandexPddClient::class)
+            ->addDnsRecord('token', 'example.com', DnsRecordType::A, 'phpunit', '127.0.0.2');
+
+        $this->assertTrue($response->successful);
+        $this->assertSame('example.com', $response->domain);
+        $this->assertSame(DnsRecordType::A, $response->record->type);
+        $this->assertSame(5, $response->record->id);
+        $this->assertSame('127.0.0.2', $response->record->content);
+        $this->assertSame('phpunit', $response->record->subdomain);
+    }
+
+    public function testDnsRecordDelete()
+    {
+        \Http::fake([
+            ...DnsRecordDeleteResponse::fakeSuccess('example.com'),
+            '*' => \Http::response(),
+        ]);
+
+        $response = $this->app->make(YandexPddClient::class)
+            ->deleteDnsRecord('token', 'example.com', 1);
+
+        $this->assertSame('example.com', $response->domain);
+        $this->assertTrue($response->successful);
+    }
+
+    public function testDnsRecordEdit()
+    {
+        \Http::fake([
+            ...DnsRecordEditResponse::fakeSuccess('example.com', YandexPddDnsRecordFactory::a(5, 'example.com', '127.0.0.2', 'phpunit')),
+            '*' => \Http::response(),
+        ]);
+
+        $response = $this->app->make(YandexPddClient::class)
+            ->editDnsRecord('token', 'example.com', 1, DnsRecordType::A, 'phpunit', '127.0.0.2');
+
+        $this->assertTrue($response->successful);
+        $this->assertSame('example.com', $response->domain);
+        $this->assertSame(DnsRecordType::A, $response->record->type);
+        $this->assertSame(5, $response->record->id);
+        $this->assertSame('127.0.0.2', $response->record->content);
+        $this->assertSame('phpunit', $response->record->subdomain);
     }
 
     public function testDnsRecords()
