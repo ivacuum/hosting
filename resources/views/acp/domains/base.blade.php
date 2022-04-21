@@ -21,7 +21,7 @@
     @lang("$tpl.ns_records")
   @endcomponent
 @endif
-@component('tpl.list-group-item', ['href' => "http://{{ $model->domain }}/"])
+@component('tpl.list-group-item', ['href' => "http://{$model->domain}/"])
   {{ $model->domain }}
   @svg (external-link)
 @endcomponent
