@@ -1,28 +1,9 @@
 export default class YandexDns {
   static bind() {
-    this.addRecord()
     this.cancelEditing()
     this.editRecord()
     this.deleteRecord()
     this.saveRecord()
-  }
-
-  static addRecord() {
-    $(document).on('click', '.js-ns-record-add', function addRecordHandler(e) {
-      e.preventDefault()
-
-      const $form = $(this).closest('.ns-record-container')
-
-      axios
-        .post($form.data('action'), $('input, select', $form).serialize())
-        .then((response) => {
-          if (response.data === 'ok') {
-            document.location.reload()
-          } else {
-            notie.alert({ text: response.data })
-          }
-        })
-    })
   }
 
   static cancelEditing() {
@@ -31,8 +12,12 @@ export default class YandexDns {
 
       const form = this.closest('.ns-record-container')
 
-      form.querySelectorAll('.edit').forEach((el) => { el.hidden = true })
-      form.querySelectorAll('.presentation').forEach((el) => { el.hidden = false })
+      form.querySelectorAll('.edit').forEach((el) => {
+        el.hidden = true
+      })
+      form.querySelectorAll('.presentation').forEach((el) => {
+        el.hidden = false
+      })
     })
   }
 
@@ -40,7 +25,7 @@ export default class YandexDns {
     $(document).on('click', '.js-ns-record-delete', function deleteRecordHandler(e) {
       e.preventDefault()
 
-      const { id } = this.dataset
+      const {id} = this.dataset
 
       notie.confirm({
         text: 'Запись будет удалена. Продолжить?',
@@ -48,12 +33,12 @@ export default class YandexDns {
         cancelText: 'Отмена',
         submitCallback: () => {
           axios
-            .post($(this).data('action'), { record_id: id, _method: 'DELETE' })
+            .post($(this).data('action'), {record_id: id, _method: 'DELETE'})
             .then((response) => {
               if (response.data === 'ok') {
                 document.location.reload()
               } else {
-                notie.alert({ text: response.data })
+                notie.alert({text: response.data})
               }
             })
         },
@@ -67,8 +52,12 @@ export default class YandexDns {
 
       const form = this.closest('.ns-record-container')
 
-      form.querySelectorAll('.edit').forEach((el) => { el.hidden = false })
-      form.querySelectorAll('.presentation').forEach((el) => { el.hidden = true })
+      form.querySelectorAll('.edit').forEach((el) => {
+        el.hidden = false
+      })
+      form.querySelectorAll('.presentation').forEach((el) => {
+        el.hidden = true
+      })
     })
   }
 
@@ -84,7 +73,7 @@ export default class YandexDns {
           if (response.data === 'ok') {
             document.location.reload()
           } else {
-            notie.alert({ text: response.data })
+            notie.alert({text: response.data})
           }
         })
     })

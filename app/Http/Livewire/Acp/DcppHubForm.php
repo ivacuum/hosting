@@ -12,20 +12,18 @@ class DcppHubForm extends Component
 
     public int $port = 411;
     public int $status = 1;
-    public ?int $modelId = null;
     public string $title = '';
     public string $address = '';
     public ?string $goto;
+    public ?DcppHub $hub = null;
 
-    public function mount(int $modelId = null)
+    public function mount()
     {
-        if ($modelId) {
-            $hub = DcppHub::findOrFail($modelId);
-
-            $this->port = $hub->port;
-            $this->title = $hub->title;
-            $this->status = $hub->status->value;
-            $this->address = $hub->address;
+        if ($this->hub) {
+            $this->port = $this->hub->port;
+            $this->title = $this->hub->title;
+            $this->status = $this->hub->status->value;
+            $this->address = $this->hub->address;
         }
 
         $this->goto = request('goto');
@@ -45,37 +43,18 @@ class DcppHubForm extends Component
     {
         $this->authorize('create', DcppHub::class);
         $this->validate();
-
-        if ($this->modelId) {
-            $this->update();
-
-            return redirect()->to($this->goto ?? '/acp/dcpp-hubs');
-        }
-
         $this->store();
 
         return redirect()->to($this->goto ?? '/acp/dcpp-hubs');
     }
 
-    private function fillModel(DcppHub $hub)
-    {
-        $hub->port = $this->port;
-        $hub->title = $this->title;
-        $hub->status = $this->status;
-        $hub->address = $this->address;
-    }
-
     private function store()
     {
-        $hub = new DcppHub;
-        $this->fillModel($hub);
-        $hub->save();
-    }
-
-    private function update()
-    {
-        $hub = DcppHub::findOrFail($this->modelId);
-        $this->fillModel($hub);
-        $hub->save();
+        $this->hub ??= new DcppHub;
+        $this->hub->port = $this->port;
+        $this->hub->title = $this->title;
+        $this->hub->status = $this->status;
+        $this->hub->address = $this->address;
+        $this->hub->save();
     }
 }

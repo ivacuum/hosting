@@ -30,6 +30,14 @@ enum DnsRecordType: string
         };
     }
 
+    public static function casesThatCanBeAdded(): array
+    {
+        return collect(self::cases())
+            ->filter(fn (self $self) => $self->canBeAdded())
+            ->mapWithKeys(fn (self $self) => [$self->value => $self->name])
+            ->all();
+    }
+
     public function isCname(): bool
     {
         return $this === self::CNAME;

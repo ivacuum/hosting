@@ -127,6 +127,14 @@ return [
     'vocabulary.character' => 'Словарное слово',
     'vocabulary.sentences' => 'Предложения',
 
+    'yandex-pdd-ns-record.ttl' => 'TTL (в секундах)',
+    'yandex-pdd-ns-record.port' => 'Порт',
+    'yandex-pdd-ns-record.type' => 'Тип',
+    'yandex-pdd-ns-record.weight' => 'Вес',
+    'yandex-pdd-ns-record.content' => 'Значение записи',
+    'yandex-pdd-ns-record.priority' => 'Приоритет',
+    'yandex-pdd-ns-record.subdomain' => 'Хост',
+
     'yandex-user.token' => 'Токен',
     'yandex-user.account' => 'Логин в Яндексе',
 ];

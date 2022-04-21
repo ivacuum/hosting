@@ -69,7 +69,7 @@ class AcpDcppHubsTest extends TestCase
     {
         $hub = DcppHubFactory::new()->create();
 
-        \Livewire::test(DcppHubForm::class, ['modelId' => $hub->id])
+        \Livewire::test(DcppHubForm::class, ['hub' => $hub])
             ->set('status', DcppHubStatus::Hidden->value)
             ->call('submit')
             ->assertHasNoErrors()

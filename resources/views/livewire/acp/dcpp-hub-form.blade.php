@@ -9,7 +9,7 @@
 
   <div class="sticky-bottom-buttons">
     <button type="submit" class="btn btn-primary">
-      @lang($modelId ? 'acp.save' : 'acp.dcpp-hubs.add')
+      @lang($hub ? 'acp.save' : 'acp.dcpp-hubs.add')
     </button>
   </div>
 </form>

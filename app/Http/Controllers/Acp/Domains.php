@@ -89,44 +89,6 @@ class Domains extends AbstractController
             ->with('message', "Данные высланы на почту {$sendTo}");
     }
 
-    public function addNsRecord(Domain $domain, YandexPddClient $yandexPdd)
-    {
-        $type = DnsRecordType::from(request('type'));
-
-        $response = match ($type) {
-            DnsRecordType::A,
-            DnsRecordType::AAAA,
-            DnsRecordType::CNAME,
-            DnsRecordType::TXT => $yandexPdd->addDnsRecord(
-                $domain->yandexUser->token,
-                $domain->domain,
-                $type,
-                request('subdomain'),
-                request('content'),
-            ),
-            DnsRecordType::MX => $yandexPdd->addMxDnsRecord(
-                $domain->yandexUser->token,
-                $domain->domain,
-                request('subdomain'),
-                request('content'),
-                request('priority'),
-            ),
-            DnsRecordType::SRV => $yandexPdd->addSrvDnsRecord(
-                $domain->yandexUser->token,
-                $domain->domain,
-                request('subdomain'),
-                request('content'),
-                request('priority'),
-                request('port'),
-                request('weight'),
-            ),
-        };
-
-        return $response->successful
-            ? 'ok'
-            : 'error';
-    }
-
     public function batch()
     {
         $action = request('action');

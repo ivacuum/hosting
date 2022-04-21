@@ -6,55 +6,32 @@
 ?>
 
 @extends("$tpl.base")
+@include('livewire')
 
 @section('content')
 @if(sizeof($records))
   <table class="table-stats">
     <thead>
-      <tr>
+      <tr class="text-left">
+        <th>Тип</th>
         <th>Хост</th>
-        <th class="text-center">Тип</th>
         <th>Значение записи</th>
         <th></th>
       </tr>
     </thead>
-    <tr class="ns-record-container" data-action="{{ path([$controller, 'addNsRecord'], $model) }}">
-      <td>
-        <input class="form-input text-right" type="text" name="subdomain" value="@">
-      </td>
-      <td>
-        <select class="form-input" name="type">
-          @foreach(App\Services\YandexPdd\DnsRecordType::cases() as $dnsRecordType)
-            @if(!$dnsRecordType->canBeAdded())
-              @continue
-            @endif
-            <option value="{{ $dnsRecordType->value }}">{{ $dnsRecordType->name }}</option>
-          @endforeach
-        </select>
-      </td>
-      <td>
-        <input class="form-input" type="text" name="content">
-        <input class="form-input mt-1" type="text" name="priority" placeholder="priority [MX, SRV]">
-        <input class="form-input mt-1" type="text" name="port" placeholder="port [SRV]">
-        <input class="form-input mt-1" type="text" name="weight" placeholder="weight [SRV]">
-      </td>
-      <td>
-        <a class="btn btn-default js-ns-record-add" href="#">добавить</a>
-      </td>
-    </tr>
     @foreach ($records as $record)
       <tr class="ns-record-container">
         <td>
-          <div class="presentation text-right">
+          {{ $record->type->value }}
+          <input type="hidden" name="type" value="{{ $record->type->value }}">
+        </td>
+        <td>
+          <div class="presentation">
             {{ $record->subdomain }}
           </div>
           <div hidden class="edit">
             <input class="form-input text-right" type="text" name="subdomain" value="{{ $record->subdomain }}">
           </div>
-        </td>
-        <td class="text-center">
-          {{ $record->type->value }}
-          <input type="hidden" name="type" value="{{ $record->type->value }}">
         </td>
         <td>
           <div class="presentation">
@@ -137,6 +114,9 @@
       </tr>
     @endforeach
   </table>
+
+  <h3 class="mt-12">Добавить днс-запись</h3>
+  @livewire(App\Http\Livewire\DnsRecordForm::class, ['domain' => $model])
 @elseif ($model->yandex_user_id)
   <x-alert-warning>
     ДНС-записи не найдены.
