@@ -42,9 +42,4 @@ enum DnsRecordType: string
     {
         return $this === self::CNAME;
     }
-
-    public function isSoa(): bool
-    {
-        return $this === self::SOA;
-    }
 }
