@@ -36,9 +36,9 @@ RouteHelper::crud(Acp\Domains::class, null, 'slug');
 Route::post('domains/batch', [Acp\Domains::class, 'batch']);
 Route::get('domains/{domain}/mail', [Acp\Domains::class, 'mailboxes']);
 Route::post('domains/{domain}/mail', [Acp\Domains::class, 'addMailbox']);
-Route::get('domains/{domain}/ns-records', [Acp\Domains::class, 'nsRecords']);
-Route::put('domains/{domain}/ns-records', [Acp\Domains::class, 'editNsRecord']);
-Route::delete('domains/{domain}/ns-records', [Acp\Domains::class, 'deleteNsRecord']);
+Route::get('domains/{domain}/ns-records', [Acp\YandexPddDnsRecordController::class, 'index']);
+Route::get('domains/{domain}/ns-records/{id}', [Acp\YandexPddDnsRecordController::class, 'edit']);
+Route::delete('domains/{domain}/ns-records/{id}', [Acp\YandexPddDnsRecordController::class, 'destroy']);
 Route::get('domains/{domain}/robots', [Acp\Domains::class, 'robots']);
 Route::get('domains/{domain}/whois', [Acp\Domains::class, 'whois']);
 

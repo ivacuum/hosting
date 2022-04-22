@@ -3,7 +3,6 @@
 use App\DcppHub;
 use App\Domain\DcppHubStatus;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Validation\Rules\Enum;
 use Livewire\Component;
 
 class DcppHubForm extends Component
@@ -11,18 +10,18 @@ class DcppHubForm extends Component
     use AuthorizesRequests;
 
     public int $port = 411;
-    public int $status = 1;
     public string $title = '';
     public string $address = '';
     public ?string $goto;
     public ?DcppHub $hub = null;
+    public DcppHubStatus|int $status = DcppHubStatus::Published;
 
     public function mount()
     {
         if ($this->hub) {
             $this->port = $this->hub->port;
             $this->title = $this->hub->title;
-            $this->status = $this->hub->status->value;
+            $this->status = $this->hub->status;
             $this->address = $this->hub->address;
         }
 
@@ -34,7 +33,6 @@ class DcppHubForm extends Component
         return [
             'port' => 'required|integer|min:1|max:65535',
             'title' => 'required',
-            'status' => new Enum(DcppHubStatus::class),
             'address' => 'required',
         ];
     }
@@ -42,6 +40,7 @@ class DcppHubForm extends Component
     public function submit()
     {
         $this->authorize('create', DcppHub::class);
+        dump($this);
         $this->validate();
         $this->store();
 

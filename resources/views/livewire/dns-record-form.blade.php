@@ -1,7 +1,9 @@
 <form class="grid grid-cols-1 gap-4" wire:submit.prevent="submit">
   <?php LivewireForm::model('yandex-pdd-ns-record') ?>
 
-  {{ LivewireForm::radio('type')->values(App\Services\YandexPdd\DnsRecordType::casesThatCanBeAdded()) }}
+  @if($recordId === null)
+    {{ LivewireForm::radio('type')->values(App\Services\YandexPdd\DnsRecordType::casesThatCanBeAdded()) }}
+  @endif
 
   {{ LivewireForm::text('subdomain') }}
   {{ LivewireForm::text('content') }}

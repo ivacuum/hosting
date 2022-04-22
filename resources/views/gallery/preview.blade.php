@@ -14,7 +14,6 @@
     <input class="form-input select-all" type="text" value="{{ $image->originalUrl() }}">
     <div class="mt-2">Полная картинка:</div>
     <input class="form-input select-all" type="text" value="[img]{{ $image->originalUrl() }}[/img]">
-    {{-- TODO: thumb --}}
   </div>
 </div>
 @endsection

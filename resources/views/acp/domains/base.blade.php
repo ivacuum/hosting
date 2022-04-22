@@ -15,7 +15,7 @@
     @lang("$tpl.mailboxes")
   @endcomponent
   @component('tpl.list-group-item', [
-    'href' => path([$controller, 'nsRecords'], $model),
+    'href' => path([App\Http\Controllers\Acp\YandexPddDnsRecordController::class, 'index'], $model),
     'isActive' => $view === "$tpl.ns_records",
   ])
     @lang("$tpl.ns_records")

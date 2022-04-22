@@ -5,7 +5,6 @@ use App\Domain;
 use App\Domain as Model;
 use App\Mail\DomainMailboxesMail;
 use App\Rules\Email;
-use App\Services\YandexPdd\DnsRecordType;
 use App\Services\YandexPdd\YandexPddClient;
 use Illuminate\Validation\Rule;
 
@@ -131,56 +130,6 @@ class Domains extends AbstractController
         return ['redirect' => path([self::class, 'index'], $params)];
     }
 
-    public function deleteNsRecord(Domain $domain, YandexPddClient $yandexPdd)
-    {
-        return $yandexPdd
-            ->deleteDnsRecord($domain->yandexUser->token, $domain->domain, request('record_id'))
-            ->successful
-            ? 'ok'
-            : 'error';
-    }
-
-    public function editNsRecord(Domain $domain, YandexPddClient $yandexPdd)
-    {
-        $type = DnsRecordType::from(request('type'));
-
-        $response = match ($type) {
-            DnsRecordType::A,
-            DnsRecordType::AAAA,
-            DnsRecordType::CNAME,
-            DnsRecordType::TXT => $yandexPdd->editDnsRecord(
-                $domain->yandexUser->token,
-                $domain->domain,
-                request('record_id'),
-                $type,
-                request('subdomain'),
-                request('content'),
-            ),
-            DnsRecordType::MX => $yandexPdd->editMxDnsRecord(
-                $domain->yandexUser->token,
-                $domain->domain,
-                request('record_id'),
-                request('subdomain'),
-                request('content'),
-                request('priority'),
-            ),
-            DnsRecordType::SRV => $yandexPdd->editSrvDnsRecord(
-                $domain->yandexUser->token,
-                $domain->domain,
-                request('record_id'),
-                request('subdomain'),
-                request('content'),
-                request('priority'),
-                request('port'),
-                request('weight'),
-            ),
-        };
-
-        return $response->successful
-            ? 'ok'
-            : 'error';
-    }
-
     public function mailboxes(Domain $domain, YandexPddClient $yandexPdd)
     {
         $this->breadcrumbsModelSubpage($domain);
@@ -188,18 +137,6 @@ class Domains extends AbstractController
         return view($this->view, [
             'model' => $domain,
             'mailboxes' => $yandexPdd->emails($domain->yandexUser->token, $domain->domain),
-        ]);
-    }
-
-    public function nsRecords(Domain $domain, YandexPddClient $yandexPdd)
-    {
-        $this->breadcrumbsModelSubpage($domain);
-
-        return view($this->view, [
-            'model' => $domain,
-            'records' => $domain->yandex_user_id
-                ? $yandexPdd->dnsRecords($domain->yandexUser->token, $domain->domain)->records
-                : collect(),
         ]);
     }
 

@@ -18,7 +18,6 @@ import Beacon from './beacon'
 import EventHandlers from './events'
 import PhotosMap from './photos-map'
 import Shortcuts from './shortcuts'
-import YandexDns from './yandex-dns'
 import initVueComponents from './vue-init-components'
 
 /**
@@ -47,7 +46,6 @@ class Application {
 
       EventHandlers.bind()
       Shortcuts.bind()
-      YandexDns.bind()
 
       this.constructor.conditionalInit()
       this.beacon.bind()
