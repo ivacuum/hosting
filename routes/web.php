@@ -66,17 +66,13 @@ Route::middleware('nav:Документация,docs')->group(function () {
     Route::view('docs/trips', 'docs.trips')->middleware('nav:Поездки');
 });
 
-Route::controller(Ctrl\Files::class)->group(function () {
-    Route::get('files', 'index')->middleware('nav:Файлы');
-    Route::get('files/{file}/dl', 'download');
-});
+Route::get('files', [Ctrl\Files::class, 'index'])->middleware('nav:Файлы');
+Route::get('files/{file}/dl', [Ctrl\Files::class, 'download']);
 
 Route::middleware('nav:Галерея,gallery')->group(function () {
-    Route::controller(Ctrl\Gallery::class)->group(function () {
-        Route::get('gallery', 'index')->middleware('auth');
-        Route::get('gallery/preview/{image}', 'preview')->middleware('nav:Просмотр миниатюры');
-        Route::get('gallery/view/{image}', 'show')->middleware('nav:Просмотр изображения');
-    });
+    Route::get('gallery', [Ctrl\Gallery::class, 'index'])->middleware('auth');
+    Route::get('gallery/preview/{image}', [Ctrl\Gallery::class, 'preview'])->middleware('nav:Просмотр миниатюры');
+    Route::get('gallery/view/{image}', [Ctrl\Gallery::class, 'show'])->middleware('nav:Просмотр изображения');
 
     Route::view('gallery/upload', 'gallery.upload')->middleware('auth')->middleware('nav:Загрузка изображений');
 });

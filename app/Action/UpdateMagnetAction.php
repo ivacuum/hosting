@@ -10,16 +10,16 @@ class UpdateMagnetAction
     {
     }
 
-    public function execute(Magnet $magnet)
+    public function execute(Magnet $magnet, int $topicId)
     {
-        $data = $this->rto->topicDataById($magnet->rto_id);
+        $data = $this->rto->topicDataById($topicId);
 
         if ($magnet->status !== MagnetStatus::Published) {
             $magnet->status = MagnetStatus::Published;
         }
 
         if ($magnet->info_hash !== $data->infoHash) {
-            $response = $this->rto->parseTopicBody($magnet->rto_id);
+            $response = $this->rto->parseTopicBody($topicId);
 
             $magnet->html = $response->body;
             $magnet->announcer = $response->announcer;
@@ -31,6 +31,7 @@ class UpdateMagnetAction
 
         $magnet->size = $data->size;
         $magnet->title = $data->title;
+        $magnet->rto_id = $data->id;
         $magnet->info_hash = $data->infoHash;
         $magnet->save();
     }

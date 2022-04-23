@@ -7,13 +7,8 @@ use Livewire\Component;
 
 class TorrentReplaceForm extends Component
 {
-    public int $modelId;
+    public Magnet $magnet;
     public ?string $input = null;
-
-    public function mount(int $modelId)
-    {
-        $this->modelId = $modelId;
-    }
 
     public function rules()
     {
@@ -24,11 +19,8 @@ class TorrentReplaceForm extends Component
     {
         $this->validate();
 
-        $magnet = Magnet::findOrFail($this->modelId);
-        $magnet->rto_id = $this->input;
-
         try {
-            $updateMagnet->execute($magnet);
+            $updateMagnet->execute($this->magnet, $this->input);
         } catch (\Throwable $e) {
             $this->addError('input', $e->getMessage());
 
@@ -47,7 +39,7 @@ class TorrentReplaceForm extends Component
             return null;
         }
 
-        return redirect($magnet->wwwAcp());
+        return redirect($this->magnet->wwwAcp());
     }
 
     public function updatedInput()

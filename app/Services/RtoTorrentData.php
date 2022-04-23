@@ -2,12 +2,12 @@
 
 class RtoTorrentData
 {
-    public int $id;
-    public int $size;
-    public string $body;
-    public string $title;
-    public string $infoHash;
-    public string $announcer;
+    public readonly int $id;
+    public readonly int $size;
+    public readonly string $body;
+    public readonly string $title;
+    public readonly string $infoHash;
+    public readonly string $announcer;
 
     public function __construct(RtoTopicData $meta, RtoTopicHtmlResponse $body)
     {
