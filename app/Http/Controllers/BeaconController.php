@@ -4,7 +4,7 @@ use App\Domain\BeaconEvent;
 use App\Events\Stats;
 use App\Http\Requests\BeaconStoreForm;
 
-class BeaconController extends Controller
+class BeaconController
 {
     private const METRICS = [
         Stats\HiraganaAnswered::class,

@@ -18,19 +18,11 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="md:text-right whitespace-nowrap">
-      @include('acp.tpl.sortable-header', ['key' => 'id'])
-    </th>
+    <x-th-numeric-sortable key="id"/>
     <th>@lang('model.author')</th>
-    <th class="md:text-right whitespace-nowrap">
-      @include('acp.tpl.sortable-header', ['key' => 'views', 'svg' => 'eye'])
-    </th>
-    <th class="md:text-right whitespace-nowrap">
-      @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
-    </th>
-    <th class="md:text-right whitespace-nowrap">
-      @include('acp.tpl.sortable-header', ['key' => 'clicks', 'svg' => 'magnet'])
-    </th>
+    <x-th-numeric-sortable key="views">@svg(eye)</x-th-numeric-sortable>
+    <x-th-numeric-sortable key="comments_count">@svg(comment-o)</x-th-numeric-sortable>
+    <x-th-numeric-sortable key="clicks">@svg(magnet)</x-th-numeric-sortable>
     <th></th>
     <th>@lang('model.title')</th>
     <th></th>
@@ -38,7 +30,7 @@
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ Acp::edit($model) }}">
       <td class="md:text-right">{{ $model->id }}</td>
       <td>
         <a href="{{ path([App\Http\Controllers\Acp\Users::class, 'show'], $model->user_id) }}">
@@ -67,7 +59,7 @@
           </span>
         @endif
       </td>
-      <td><a href="{{ path([$controller, 'show'], $model) }}">{{ $model->shortTitle() }}</a></td>
+      <td><a href="{{ Acp::show($model) }}">{{ $model->shortTitle() }}</a></td>
       <td>
         <a href="{{ $model->externalLink() }}">
           @svg (external-link)

@@ -1,6 +1,6 @@
 @extends('acp.show')
 
 @section('content')
-<a href="{{ $model->downloadPath() }}"></a>
+<a href="{{ $model->downloadPath() }}">@lang('Скачать')</a>
 @parent
 @endsection

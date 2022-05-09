@@ -1,12 +1,13 @@
 <?php namespace App;
 
+use App\Domain\ExternalService;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\MassPrunable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
- * @property Domain\ExternalService $service_name
+ * @property ExternalService $service_name
  * @property string $method
  * @property string $scheme
  * @property string $host
@@ -32,12 +33,11 @@ class ExternalHttpRequest extends Model
 {
     use MassPrunable;
 
-    protected $guarded = ['created_at', 'updated_at'];
     protected $dateFormat = 'Y-m-d H:i:s.u';
 
     protected $casts = [
         'http_code' => 'int',
-        'service_name' => Domain\ExternalService::class,
+        'service_name' => ExternalService::class,
         'response_size' => 'int',
         'total_time_us' => 'int',
         'redirect_count' => 'int',

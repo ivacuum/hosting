@@ -16,9 +16,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Client extends Model
 {
-    protected $fillable = ['name', 'email', 'text'];
-    protected $hidden = [];
     protected $perPage = 50;
+
+    protected $attributes = [
+        'text' => '',
+    ];
 
     // Relations
     public function domains()

@@ -5,7 +5,7 @@
  */
 ?>
 
-@extends("$tpl.base")
+@extends("acp.domains.base")
 @include('livewire')
 
 @section('content')

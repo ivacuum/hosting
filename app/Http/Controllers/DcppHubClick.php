@@ -2,7 +2,7 @@
 
 use App\DcppHub;
 
-class DcppHubClick extends Controller
+class DcppHubClick
 {
     public function __invoke(DcppHub $hub)
     {

@@ -27,9 +27,7 @@ use Illuminate\Database\Eloquent\Model;
 class Kanji extends Model
 {
     use Traits\BurnsAndResurrects;
-    use Traits\UserBurnableScope;
 
-    protected $fillable = ['level']; // Чтобы не бросало исключение
     protected $perPage = 50;
 
     protected $casts = [

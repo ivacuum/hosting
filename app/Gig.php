@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Domain\GigStatus;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $title_en
  * @property string $slug
  * @property \Carbon\CarbonImmutable $date
- * @property Domain\GigStatus $status
+ * @property GigStatus $status
  * @property string $meta_title_ru
  * @property string $meta_title_en
  * @property string $meta_description_ru
@@ -36,14 +37,20 @@ class Gig extends Model
 {
     use Traits\HasLocalizedTitle;
 
-    protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $dates = ['date'];
 
     protected $casts = [
         'views' => 'int',
-        'status' => Domain\GigStatus::class,
+        'status' => GigStatus::class,
         'city_id' => 'int',
         'artist_id' => 'int',
+    ];
+
+    protected $attributes = [
+        'status' => GigStatus::Hidden,
+        'meta_image' => '',
+        'meta_description_en' => '',
+        'meta_description_ru' => '',
     ];
 
     // Relations
@@ -125,6 +132,11 @@ class Gig extends Model
     public function metaTitle(): string
     {
         return $this->meta_title ?: "{$this->title} · {$this->fullDate()}";
+    }
+
+    protected function serializeDate(\DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 
     public function shortDate(): string

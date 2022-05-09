@@ -1,51 +1,62 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Domain\MagnetStatus;
-use App\Magnet as Model;
+use App\Action\Acp\ApplyIndexGoodsAction;
+use App\Action\Acp\ResponseToDestroyAction;
+use App\Action\Acp\ResponseToEditAction;
+use App\Action\Acp\ResponseToShowAction;
+use App\Magnet;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\Enum;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Routing\Controller;
 
-class Magnets extends AbstractController
+class Magnets extends Controller
 {
-    protected $sortableKeys = ['id', 'views', 'comments_count', 'clicks'];
-    protected $showWithCount = ['comments'];
+    use AuthorizesRequests;
 
-    public function index()
+    public function __construct()
     {
+        $this->authorizeResource(Magnet::class);
+    }
+
+    public function index(ApplyIndexGoodsAction $applyIndexGoods)
+    {
+        [$sortKey, $sortDir] = $applyIndexGoods->execute(
+            new Magnet,
+            ['id', 'views', 'comments_count', 'clicks'],
+        );
+
         $q = request('q');
         $status = request('status');
         $userId = request('user_id');
 
-        $models = Model::query()
+        $models = Magnet::query()
             ->with('user')
             ->withCount('comments')
-            ->when(null !== $status, fn (Builder $query) => $query->where('status', MagnetStatus::from($status)))
+            ->when(null !== $status, fn (Builder $query) => $query->where('status', $status))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->when($q, fn (Builder $query) => $query->where('title', 'LIKE', "%{$q}%"))
-            ->orderBy($this->getSortKey(), $this->getSortDir())
+            ->orderBy($sortKey, $sortDir)
             ->paginate();
 
-        return view($this->view, [
+        return view('acp.magnets.index', [
             'models' => $models,
             'status' => $status,
             'user_id' => $userId,
         ]);
     }
 
-    /**
-     * @param Model|null $model
-     * @return array
-     */
-    protected function rules($model = null)
+    public function destroy(Magnet $magnet, ResponseToDestroyAction $responseToDestroy)
     {
-        return [
-            'rto_id' => [
-                'required',
-                Rule::unique('torrents', 'rto_id')->ignore($model),
-            ],
-            'status' => new Enum(MagnetStatus::class),
-            'category_id' => 'required|integer|min:1',
-        ];
+        return $responseToDestroy->execute($magnet);
+    }
+
+    public function edit(Magnet $magnet, ResponseToEditAction $responseToEdit)
+    {
+        return $responseToEdit->execute($magnet);
+    }
+
+    public function show(Magnet $magnet, ResponseToShowAction $responseToShow)
+    {
+        return $responseToShow->execute($magnet, ['comments']);
     }
 }

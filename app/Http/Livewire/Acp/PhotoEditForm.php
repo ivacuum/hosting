@@ -1,5 +1,6 @@
 <?php namespace App\Http\Livewire\Acp;
 
+use App\Http\Livewire\WithGoto;
 use App\Photo;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
@@ -9,19 +10,14 @@ class PhotoEditForm extends Component
 {
     use AuthorizesRequests;
     use WithFileUploads;
+    use WithGoto;
 
     public $tags;
-    public $image;
-    public ?int $modelId = null;
-    public ?string $goto;
+    public Photo $photo;
 
-    public function mount(int $modelId)
+    public function mount()
     {
-        $photo = Photo::findOrFail($modelId);
-
-        $this->goto = request('goto');
-        $this->tags = $photo->tags->modelKeys();
-        $this->image = $photo->originalUrl();
+        $this->tags = $this->photo->tags->modelKeys();
     }
 
     public function rules()
@@ -33,13 +29,11 @@ class PhotoEditForm extends Component
 
     public function submit()
     {
-        $this->authorize('update', Photo::class);
+        $this->authorize('update', $this->photo);
         $this->validate();
 
-        $photo = Photo::findOrFail($this->modelId);
+        $this->photo->tags()->sync($this->tags);
 
-        $photo->tags()->sync($this->tags);
-
-        return redirect()->to($this->goto ?? '/acp/trips');
+        return redirect()->to($this->goto ?? to('acp/photos'));
     }
 }

@@ -40,11 +40,8 @@
     </thead>
     <tbody>
     @foreach ($models as $model)
-      <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
+      <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit(App\Http\Controllers\MyTrips::class, $model) }}">
         <td class="md:text-right"><span class="sm:hidden">#</span>{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
-        {{--
-        <td><a href="{{ path([$controller, 'show'], $model) }}">{{ $model->title }}</a></td>
-        --}}
         <td>{{ $model->title }}</td>
         <td>
           @if ($model->status->isHidden())
@@ -71,7 +68,7 @@
         <td class="md:text-right whitespace-nowrap">
           {{ ViewHelper::number($model->comments_count) ?: '' }}
         </td>
-        <td><a href="{{ UrlHelper::edit($controller, $model) }}">@svg (pencil)</a></td>
+        <td><a href="{{ UrlHelper::edit(App\Http\Controllers\MyTrips::class, $model) }}">@svg (pencil)</a></td>
       </tr>
     @endforeach
     </tbody>

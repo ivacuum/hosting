@@ -9,7 +9,7 @@
   <h1 class="h2 mb-1 mr-2">{{ $trip->title }}</h1>
   @include('tpl.city-map-button', ['city' => $trip->city])
   @if (Auth::user()?->isRoot())
-    <a class="btn btn-default text-sm py-1" href="{{ UrlHelper::edit(App\Http\Controllers\Acp\Trips::class, $trip) }}">
+    <a class="btn btn-default text-sm py-1" href="{{ Acp::edit($trip) }}">
       @svg (pencil)
     </a>
   @endif

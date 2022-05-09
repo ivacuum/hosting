@@ -31,7 +31,7 @@ Route::get('auth/google/callback', [Ctrl\Auth\Google::class, 'callback']);
 Route::get('auth/vk', [Ctrl\Auth\Vk::class, 'index']);
 Route::get('auth/vk/callback', [Ctrl\Auth\Vk::class, 'callback']);
 
-Route::get('comments/{comment}/confirm', Ctrl\CommentConfirm::class)->middleware('auth', 'can:confirm,comment');
+Route::get('comments/{comment}/confirm', Ctrl\CommentConfirm::class)->middleware('auth')->can('confirm', 'comment');
 
 Route::view('contact', 'issues.create');
 Route::post('contact', Ctrl\Issues::class);
@@ -159,9 +159,9 @@ Route::middleware('auth')->group(function () {
     Route::get('my/trips', [Ctrl\MyTrips::class, 'index']);
     Route::post('my/trips', [Ctrl\MyTrips::class, 'store']);
     Route::get('my/trips/create', [Ctrl\MyTrips::class, 'create']);
-    Route::put('my/trips/{trip}', [Ctrl\MyTrips::class, 'update'])->middleware('can:user-update,trip');
-    Route::delete('my/trips/{trip}', [Ctrl\MyTrips::class, 'destroy'])->middleware('can:user-delete,trip');
-    Route::get('my/trips/{trip}/edit', [Ctrl\MyTrips::class, 'edit'])->middleware('can:user-update,trip');
+    Route::put('my/trips/{trip}', [Ctrl\MyTrips::class, 'update'])->can('user-update', 'trip');
+    Route::delete('my/trips/{trip}', [Ctrl\MyTrips::class, 'destroy'])->can('user-delete', 'trip');
+    Route::get('my/trips/{trip}/edit', [Ctrl\MyTrips::class, 'edit'])->can('user-update', 'trip');
 });
 
 Route::get('news', [Ctrl\NewsController::class, 'index'])->middleware('nav:Новости,news');
@@ -241,12 +241,12 @@ Route::middleware('nav:Пользователи,users')->group(function () {
     Route::get('users/{id}', [Ctrl\Users::class, 'show']);
 });
 
-Route::get('@{login}', [Ctrl\UserHome::class, 'index']);
-Route::get('@{login}/travel', [Ctrl\UserTravelTrips::class, 'index']);
-Route::get('@{login}/travel/cities', [Ctrl\UserTravelCities::class, 'index']);
-Route::get('@{login}/travel/cities/{slug}', [Ctrl\UserTravelCities::class, 'show']);
-Route::get('@{login}/travel/countries', [Ctrl\UserTravelCountries::class, 'index']);
-Route::get('@{login}/travel/countries/{slug}', [Ctrl\UserTravelCountries::class, 'show']);
-Route::get('@{login}/travel/{slug}', [Ctrl\UserTravelTrips::class, 'show']);
+Route::get('@{traveler:login}', [Ctrl\UserHome::class, 'index']);
+Route::get('@{traveler:login}/travel', [Ctrl\UserTravelTrips::class, 'index']);
+Route::get('@{traveler:login}/travel/cities', [Ctrl\UserTravelCities::class, 'index']);
+Route::get('@{traveler:login}/travel/cities/{slug}', [Ctrl\UserTravelCities::class, 'show']);
+Route::get('@{traveler:login}/travel/countries', [Ctrl\UserTravelCountries::class, 'index']);
+Route::get('@{traveler:login}/travel/countries/{slug}', [Ctrl\UserTravelCountries::class, 'show']);
+Route::get('@{traveler:login}/travel/{slug}', [Ctrl\UserTravelTrips::class, 'show']);
 
 Route::get('.well-known/change-password', Ctrl\WellKnownChangePassword::class);

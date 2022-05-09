@@ -1,59 +1,33 @@
 <?php namespace App\Http\Livewire\Acp;
 
 use App\DcppHub;
-use App\Domain\DcppHubStatus;
+use App\Http\Livewire\WithGoto;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
 class DcppHubForm extends Component
 {
     use AuthorizesRequests;
+    use WithGoto;
 
-    public int $port = 411;
-    public string $title = '';
-    public string $address = '';
-    public ?string $goto;
-    public ?DcppHub $hub = null;
-    public DcppHubStatus|int $status = DcppHubStatus::Published;
-
-    public function mount()
-    {
-        if ($this->hub) {
-            $this->port = $this->hub->port;
-            $this->title = $this->hub->title;
-            $this->status = $this->hub->status;
-            $this->address = $this->hub->address;
-        }
-
-        $this->goto = request('goto');
-    }
+    public DcppHub $dcppHub;
 
     public function rules()
     {
         return [
-            'port' => 'required|integer|min:1|max:65535',
-            'title' => 'required',
-            'address' => 'required',
+            'dcppHub.port' => 'required|integer|min:1|max:65535',
+            'dcppHub.title' => 'required',
+            'dcppHub.status' => 'required',
+            'dcppHub.address' => 'required',
         ];
     }
 
     public function submit()
     {
-        $this->authorize('create', DcppHub::class);
-        dump($this);
+        $this->authorize('create', $this->dcppHub);
         $this->validate();
-        $this->store();
+        $this->dcppHub->save();
 
-        return redirect()->to($this->goto ?? '/acp/dcpp-hubs');
-    }
-
-    private function store()
-    {
-        $this->hub ??= new DcppHub;
-        $this->hub->port = $this->port;
-        $this->hub->title = $this->title;
-        $this->hub->status = $this->status;
-        $this->hub->address = $this->address;
-        $this->hub->save();
+        return redirect()->to($this->goto ?? to('acp/dcpp-hubs'));
     }
 }

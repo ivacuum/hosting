@@ -6,25 +6,19 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="md:text-right">
-      @include('acp.tpl.sortable-header', ['key' => 'id'])
-    </th>
+    <x-th-numeric-sortable key="id"/>
     <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'title') }}</th>
     <th></th>
-    <th class="md:text-right">
-      @include('acp.tpl.sortable-header', ['key' => 'size'])
-    </th>
-    <th class="md:text-right">
-      @include('acp.tpl.sortable-header', ['key' => 'downloads'])
-    </th>
+    <x-th-numeric-sortable key="size"/>
+    <x-th-numeric-sortable key="downloads"/>
   </tr>
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ Acp::edit($model) }}">
       <td class="md:text-right">{{ $model->id }}</td>
       <td>
-        <a href="{{ path([$controller, 'show'], $model) }}">
+        <a href="{{ Acp::show($model) }}">
           {{ $model->title }}
         </a>
       </td>

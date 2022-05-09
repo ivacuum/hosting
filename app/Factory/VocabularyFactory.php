@@ -7,7 +7,9 @@ class VocabularyFactory
 {
     use WithFaker;
 
+    private $kana;
     private $level;
+    private $character;
 
     public function create()
     {
@@ -21,10 +23,10 @@ class VocabularyFactory
     {
         $model = new Vocabulary;
 
-        $model->kana = $this->faker->word;
+        $model->kana = $this->kana ?? $this->faker->word;
         $model->level = $this->level ?? $this->faker->numberBetween(1, 60);
         $model->meaning = $this->faker->words(2, true);
-        $model->character = $this->faker->unique()->word();
+        $model->character = $this->character ?? $this->faker->unique()->word();
         $model->sentences = $this->faker->sentence;
 
         return $model;
@@ -37,10 +39,26 @@ class VocabularyFactory
         });
     }
 
+    public function withCharacter(string $character)
+    {
+        $factory = clone $this;
+        $factory->character = $character;
+
+        return $factory;
+    }
+
     public function withLevel(int $level)
     {
         $factory = clone $this;
         $factory->level = $level;
+
+        return $factory;
+    }
+
+    public function withKana(string $kana)
+    {
+        $factory = clone $this;
+        $factory->kana = $kana;
 
         return $factory;
     }

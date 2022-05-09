@@ -1,6 +1,8 @@
 <?php namespace Tests\Feature;
 
+use App\Domain\UserStatus;
 use App\Factory\UserFactory;
+use App\Http\Livewire\Acp\UserForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -20,7 +22,8 @@ class AcpUsersTest extends TestCase
         $user = UserFactory::new()->create();
 
         $this->get("acp/users/{$user->id}/edit")
-            ->assertOk();
+            ->assertOk()
+            ->assertSeeLivewire(UserForm::class);
     }
 
     public function testIndex()
@@ -43,7 +46,16 @@ class AcpUsersTest extends TestCase
     {
         $user = UserFactory::new()->create();
 
-        $this->put("acp/users/{$user->id}", UserFactory::new()->make()->toArray())
-            ->assertRedirect('acp/users');
+        \Livewire::test(UserForm::class, ['user' => $user])
+            ->set('user.status', UserStatus::Inactive->value)
+            ->set('user.email', 'livewire@example.com')
+            ->call('submit')
+            ->assertHasNoErrors()
+            ->assertRedirect('/acp/users');
+
+        $user->refresh();
+
+        $this->assertSame('livewire@example.com', $user->email);
+        $this->assertSame(UserStatus::Inactive->value, $user->status);
     }
 }

@@ -1,6 +1,7 @@
 <?php namespace App\Action;
 
 use App\Domain\CacheKey;
+use App\Scope\TripPublishedScope;
 use App\Trip;
 use Illuminate\Cache\Repository;
 
@@ -15,7 +16,8 @@ class GetTripsPublishedByCityAction
         $key = CacheKey::TripsPublishedByCity;
 
         $ids = $this->cache->remember($key->value, $key->ttl(), function () {
-            return Trip::published()
+            return Trip::query()
+                ->tap(new TripPublishedScope)
                 ->get(['id', 'city_id'])
                 ->mapToGroups(fn (Trip $trip) => [$trip->city_id => $trip->id])
                 ->toArray();

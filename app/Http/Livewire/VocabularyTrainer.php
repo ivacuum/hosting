@@ -10,6 +10,9 @@ class VocabularyTrainer extends Component
     /** @var Vocabulary */
     public $vocab;
 
+    /** @var array<int, array{www: string, meaning: string, character: string}> */
+    public array $history = [];
+
     public int $level = 1;
     public int $skipped = 0;
     public int $answered = 0;
@@ -17,7 +20,6 @@ class VocabularyTrainer extends Component
     public bool $reveal = false;
     public bool $hiragana = true;
     public bool $openSettings = false;
-    public array $history = [];
     public string $answer = '';
 
     public function check()

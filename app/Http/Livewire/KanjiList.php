@@ -1,6 +1,7 @@
 <?php namespace App\Http\Livewire;
 
 use App\Kanji;
+use App\Scope\UserBurnableScope;
 use App\Vocabulary;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
@@ -27,7 +28,7 @@ class KanjiList extends Component
         $this->kanjis = Kanji::query()
             ->orderBy('level')
             ->orderBy('meaning')
-            ->userBurnable(auth()->id())
+            ->tap(new UserBurnableScope(auth()->id()))
             ->when($radicalId, fn (Builder $query) => $query->whereRelation('radicals', 'radical_id', $radicalId))
             ->when($similarId, fn (Builder $query) => $query->whereRelation('similar', 'similar_id', $similarId))
             ->when($level, fn (Builder $query) => $query->where('level', $level))

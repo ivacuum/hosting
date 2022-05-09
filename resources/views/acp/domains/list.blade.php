@@ -12,7 +12,7 @@
   <tbody>
   <?php /** @var \App\Domain $model */ ?>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ Acp::edit($model) }}">
       <td>
         <input class="border-gray-300 domains-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}">
       </td>
@@ -20,7 +20,7 @@
         <a class="mr-1" href="http://{{ $model->domain }}/" target="_blank">
           @svg (external-link)
         </a>
-        <a href="/acp/domains/{{ $model->domain }}">{{ $model->domain }}</a>
+        <a href="{{ Acp::show($model) }}">{{ $model->domain }}</a>
         @if ($model->alias_id)
           <span class="text-muted">
             алиас

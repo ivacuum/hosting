@@ -1,22 +1,36 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Domain\UserStatus;
-use App\User as Model;
+use App\Action\Acp\ApplyIndexGoodsAction;
+use App\Action\Acp\ResponseToCreateAction;
+use App\Action\Acp\ResponseToDestroyAction;
+use App\Action\Acp\ResponseToEditAction;
+use App\Action\Acp\ResponseToShowAction;
+use App\User;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Routing\Controller;
 
-class Users extends AbstractController
+class Users extends Controller
 {
-    protected $sortableKeys = ['id', 'last_login_at', 'comments_count', 'images_count', 'magnets_count', 'trips_count'];
-    protected $showWithCount = ['chatMessages', 'comments', 'externalIdentities', 'images', 'magnets', 'trips'];
+    use AuthorizesRequests;
 
-    public function index()
+    public function __construct()
     {
+        $this->authorizeResource(User::class);
+    }
+
+    public function index(ApplyIndexGoodsAction $applyIndexGoods)
+    {
+        [$sortKey, $sortDir] = $applyIndexGoods->execute(
+            new User,
+            ['id', 'last_login_at', 'comments_count', 'images_count', 'magnets_count', 'trips_count'],
+        );
+
         $q = request('q');
         $avatar = request('avatar');
         $lastLoginAt = request('last_login_at');
 
-        $models = Model::query()
+        $models = User::query()
             ->withCount(['comments', 'images', 'magnets', 'trips'])
             ->when(null !== $avatar, fn (Builder $query) => $query->where('avatar', $avatar ? '<>' : '=', ''))
             ->when($lastLoginAt === 'week', fn (Builder $query) => $query->where('last_login_at', '>', now()->subWeek()->toDateTimeString()))
@@ -28,85 +42,39 @@ class Users extends AbstractController
 
                 return $query->where('email', 'LIKE', "%{$q}%");
             })
-            ->orderBy($this->getSortKey(), $this->getSortDir())
+            ->orderBy($sortKey, $sortDir)
             ->paginate();
 
-        return view($this->view, [
+        return view('acp.users.index', [
             'avatar' => $avatar,
             'models' => $models,
         ]);
     }
 
-    protected function mailCredentials(Model $model, $password)
+    public function create(User $user, ResponseToCreateAction $responseToCreate)
     {
-        $vars = [
-            'user' => $model,
-            'route' => path(HomeController::class, [], true),
-            'password' => $password,
-        ];
-
-        \Mail::send('emails.users.credentials', $vars, function ($mail) use ($model, $vars) {
-            $mail->to($model)->subject("Доступ к {$vars['route']}");
-        });
-
-        session()->flash('message', "Данные высланы на почту {$model->email}");
+        return $responseToCreate->execute($user);
     }
 
-    /**
-     * @param Model|null $model
-     * @return array
-     */
-    protected function rules($model = null)
+    public function destroy(User $user, ResponseToDestroyAction $responseToDestroy)
     {
-        return [
-            'email' => [
-                'required',
-                'email',
-                Rule::unique('users', 'email')->ignore($model),
-            ],
-            'status' => 'boolean',
-            'password' => Rule::when($model === null, 'required_without:random_password|min:8', 'min:8'),
-        ];
+        return $responseToDestroy->execute($user);
     }
 
-    protected function storeModel()
+    public function edit(User $user, ResponseToEditAction $responseToEdit)
     {
-        $randomPassword = request('random_password');
-        $password = $randomPassword ? \Str::random(16) : request('password');
-
-        $model = new Model;
-        $model->email = request('email');
-        $model->status = request('status', 0);
-        $model->password = $password;
-        $model->save();
-
-        if (request('mail_credentials')) {
-            $this->mailCredentials($model, $password);
-        }
-
-        return $model;
+        return $responseToEdit->execute($user);
     }
 
-    /**
-     * @param Model $model
-     */
-    protected function updateModel($model)
+    public function show(User $user, ResponseToShowAction $responseToShow)
     {
-        $randomPassword = request('random_password');
-        $password = $randomPassword ? \Str::random(16) : request('password');
-        $mailCredentials = request('mail_credentials');
-
-        $model->email = request('email');
-        $model->status = request('status', UserStatus::Inactive->value);
-
-        if ($password) {
-            $model->password = $password;
-        }
-
-        $model->save();
-
-        if ($password && $mailCredentials) {
-            $this->mailCredentials($model, $password);
-        }
+        return $responseToShow->execute($user, [
+            'chatMessages',
+            'comments',
+            'externalIdentities',
+            'images',
+            'magnets',
+            'trips',
+        ]);
     }
 }

@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-class WellKnownChangePassword extends Controller
+class WellKnownChangePassword
 {
     public function __invoke()
     {

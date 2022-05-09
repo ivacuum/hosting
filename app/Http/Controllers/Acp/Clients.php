@@ -1,31 +1,51 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Client as Model;
-use Illuminate\Validation\Rule;
+use App\Action\Acp\ApplyIndexGoodsAction;
+use App\Action\Acp\ResponseToCreateAction;
+use App\Action\Acp\ResponseToDestroyAction;
+use App\Action\Acp\ResponseToEditAction;
+use App\Action\Acp\ResponseToShowAction;
+use App\Client;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Routing\Controller;
 
-class Clients extends AbstractController
+class Clients extends Controller
 {
-    protected $showWithCount = ['domains'];
+    use AuthorizesRequests;
 
-    public function index()
+    public function __construct()
     {
-        $models = Model::paginate();
-
-        return view($this->view, ['models' => $models]);
+        $this->authorizeResource(Client::class);
     }
 
-    /**
-     * @param Model|null $model
-     * @return array
-     */
-    protected function rules($model = null)
+    public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        return [
-            'name' => [
-                'required',
-                Rule::unique('clients', 'name')->ignore($model),
-            ],
-            'email' => 'email',
-        ];
+        [$sortKey, $sortDir] = $applyIndexGoods->execute(new Client);
+
+        $models = Client::query()
+            ->orderBy($sortKey, $sortDir)
+            ->paginate();
+
+        return view('acp.clients.index', ['models' => $models]);
+    }
+
+    public function create(Client $client, ResponseToCreateAction $responseToCreate)
+    {
+        return $responseToCreate->execute($client);
+    }
+
+    public function destroy(Client $client, ResponseToDestroyAction $responseToDestroy)
+    {
+        return $responseToDestroy->execute($client);
+    }
+
+    public function edit(Client $client, ResponseToEditAction $responseToEdit)
+    {
+        return $responseToEdit->execute($client);
+    }
+
+    public function show(Client $client, ResponseToShowAction $responseToShow)
+    {
+        return $responseToShow->execute($client, ['domains']);
     }
 }

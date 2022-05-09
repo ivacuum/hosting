@@ -1,10 +1,10 @@
 <?php namespace App\Http\Controllers;
 
+use App\Scope\UserBurnableScope;
 use App\Vocabulary;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
-class JapaneseWanikaniVocabulary extends Controller
+class JapaneseWanikaniVocabulary
 {
     public function index(Request $request)
     {
@@ -20,8 +20,9 @@ class JapaneseWanikaniVocabulary extends Controller
     public function show(string $characters)
     {
         /** @var Vocabulary $vocab */
-        $vocab = Vocabulary::where('character', $characters)
-            ->userBurnable(auth()->id())
+        $vocab = Vocabulary::query()
+            ->where('character', $characters)
+            ->tap(new UserBurnableScope(auth()->id()))
             ->firstOrFail();
 
         \Breadcrumbs::push(__('Уровень :level', ['level' => $vocab->level]), "japanese/wanikani/level/{$vocab->level}");

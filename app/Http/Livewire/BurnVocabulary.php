@@ -1,5 +1,6 @@
 <?php namespace App\Http\Livewire;
 
+use App\Scope\UserBurnableScope;
 use App\Vocabulary;
 use Livewire\Component;
 
@@ -20,7 +21,7 @@ class BurnVocabulary extends Component
 
         /** @var Vocabulary $vocab */
         $vocab = Vocabulary::query()
-            ->userBurnable($userId)
+            ->tap(new UserBurnableScope($userId))
             ->findOrFail($this->modelId);
 
         if ($vocab->burnable === null) {

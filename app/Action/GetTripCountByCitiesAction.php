@@ -1,5 +1,6 @@
 <?php namespace App\Action;
 
+use App\Scope\TripVisibleScope;
 use App\Trip;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -12,7 +13,7 @@ class GetTripCountByCitiesAction
 
         Trip::query()
             ->when($userId > 0, fn (Builder $query) => $query->where('user_id', $userId))
-            ->visible()
+            ->tap(new TripVisibleScope)
             ->get(['id', 'city_id', 'status'])
             ->each(function (Trip $trip) use (&$tripCount) {
                 if ($trip->status->isPublished()) {

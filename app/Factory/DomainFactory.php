@@ -1,6 +1,7 @@
 <?php namespace App\Factory;
 
 use App\Domain;
+use App\Domain\DomainMonitoring;
 use Illuminate\Foundation\Testing\WithFaker;
 
 class DomainFactory
@@ -9,6 +10,7 @@ class DomainFactory
 
     private $domain;
     private $clientId;
+    private DomainMonitoring $status = DomainMonitoring::Yes;
 
     public function create()
     {
@@ -22,13 +24,16 @@ class DomainFactory
     {
         $model = new Domain;
 
-        $model->text = '';
         $model->domain = $this->domain ?? $this->faker->domainName;
-        $model->status = $this->faker->boolean(85);
-        $model->client_id = $this->clientId ?? 0;
+        $model->status = $this->status;
+        $model->client_id = $this->clientId;
         $model->paid_till = $this->faker->dateTimeBetween('-1 month', '+1 year');
         $model->registered_at = $this->faker->dateTimeBetween('-5 years');
         $model->domain_control = $this->faker->boolean(85);
+
+        if (!$model->client_id) {
+            $model->client_id = ClientFactory::new()->create()->id;
+        }
 
         return $model;
     }
@@ -52,6 +57,14 @@ class DomainFactory
     {
         $factory = clone $this;
         $factory->domain = $domain;
+
+        return $factory;
+    }
+
+    public function withStatus(DomainMonitoring $status)
+    {
+        $factory = clone $this;
+        $factory->status = $status;
 
         return $factory;
     }

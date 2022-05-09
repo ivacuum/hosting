@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Scope\PhotoPublishedScope;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -26,7 +27,6 @@ class Tag extends Model
     protected $casts = [
         'views' => 'int',
     ];
-    protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $perPage = 50;
 
     // Relations
@@ -42,7 +42,7 @@ class Tag extends Model
 
     public function photosPublished()
     {
-        return $this->photos()->where('status', Domain\PhotoStatus::Published);
+        return $this->photos()->tap(new PhotoPublishedScope);
     }
 
     // Methods
@@ -63,6 +63,6 @@ class Tag extends Model
 
     public function wwwAcp(): string
     {
-        return path([Http\Controllers\Acp\Tags::class, 'show'], $this);
+        return to('acp/tags/{tag}', $this);
     }
 }

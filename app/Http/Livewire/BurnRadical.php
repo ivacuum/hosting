@@ -1,6 +1,7 @@
 <?php namespace App\Http\Livewire;
 
 use App\Radical;
+use App\Scope\UserBurnableScope;
 use Livewire\Component;
 
 class BurnRadical extends Component
@@ -20,7 +21,7 @@ class BurnRadical extends Component
 
         /** @var Radical $radical */
         $radical = Radical::query()
-            ->userBurnable($userId)
+            ->tap(new UserBurnableScope($userId))
             ->findOrFail($this->modelId);
 
         if ($radical->burnable === null) {

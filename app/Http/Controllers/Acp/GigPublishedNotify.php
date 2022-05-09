@@ -6,7 +6,7 @@ use App\Gig;
 use App\Notifications\GigPublishedNotification;
 use App\User;
 
-class GigPublishedNotify extends AbstractController
+class GigPublishedNotify
 {
     public function __invoke(Gig $gig)
     {
@@ -27,10 +27,5 @@ class GigPublishedNotify extends AbstractController
             'status' => 'OK',
             'message' => 'Уведомления разосланы пользователям: ' . sizeof($users),
         ];
-    }
-
-    protected function getModelName(): string
-    {
-        return Gig::class;
     }
 }

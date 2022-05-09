@@ -8,7 +8,7 @@ use App\User;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Validation\Rule;
 
-class Subscriptions extends Controller
+class Subscriptions
 {
     public function confirm()
     {

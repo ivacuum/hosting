@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-class TorrentPromo extends Controller
+class TorrentPromo
 {
     public function __invoke()
     {

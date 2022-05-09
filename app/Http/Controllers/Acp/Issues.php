@@ -1,28 +1,41 @@
 <?php namespace App\Http\Controllers\Acp;
 
+use App\Action\Acp\ApplyIndexGoodsAction;
+use App\Action\Acp\ResponseToDestroyAction;
+use App\Action\Acp\ResponseToShowAction;
 use App\Domain\IssueStatus;
-use App\Issue as Model;
+use App\Issue;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Routing\Controller;
 
-class Issues extends AbstractController
+class Issues extends Controller
 {
-    protected $showWith = ['comments.user'];
-    protected $sortableKeys = ['id', 'comments_count'];
-    protected $showWithCount = ['comments'];
+    use AuthorizesRequests;
 
-    public function index()
+    public function __construct()
     {
+        $this->authorizeResource(Issue::class);
+    }
+
+    public function index(ApplyIndexGoodsAction $applyIndexGoods)
+    {
+        [$sortKey, $sortDir] = $applyIndexGoods->execute(
+            new Issue,
+            ['id', 'comments_count'],
+        );
+
         $status = request('status');
         $userId = request('user_id');
 
-        $models = Model::query()
+        $models = Issue::query()
             ->withCount('comments')
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
-            ->unless(null === $status, fn (Builder $query) => $query->where('status', IssueStatus::from($status)))
-            ->orderBy($this->getSortKey(), $this->getSortDir())
+            ->unless(null === $status, fn (Builder $query) => $query->where('status', $status))
+            ->orderBy($sortKey, $sortDir)
             ->paginate(50);
 
-        return view($this->view, ['models' => $models]);
+        return view('acp.issues.index', ['models' => $models]);
     }
 
     public function batch()
@@ -30,11 +43,11 @@ class Issues extends AbstractController
         $ids = request('selected', []);
         $action = request('action');
 
-        $models = Model::find($ids);
+        $models = Issue::find($ids);
         $affected = 0;
 
         foreach ($models as $model) {
-            /** @var Model $model */
+            /** @var Issue $model */
             if ($action === 'close' && $model->canBeClosed()) {
                 $model->status = IssueStatus::Closed;
                 $model->save();
@@ -62,5 +75,17 @@ class Issues extends AbstractController
             'status' => 'OK',
             'message' => $message,
         ];
+    }
+
+    public function destroy(Issue $issue, ResponseToDestroyAction $responseToDestroy)
+    {
+        return $responseToDestroy->execute($issue);
+    }
+
+    public function show(Issue $issue, ResponseToShowAction $responseToShow)
+    {
+        $issue->load('comments.user');
+
+        return $responseToShow->execute($issue, ['comments']);
     }
 }

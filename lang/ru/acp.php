@@ -10,6 +10,10 @@ return [
     'artists.index' => 'Артисты',
     'artists.create' => 'Новый артист',
 
+    'chat-messages.edit' => 'Редактирование',
+    'chat-messages.show' => 'Сообщение',
+    'chat-messages.index' => 'Чат',
+
     'cities.add' => 'Добавить город',
     'cities.edit' => 'Редактирование',
     'cities.show' => 'Город',
@@ -21,10 +25,6 @@ return [
     'clients.show' => 'Клиент',
     'clients.index' => 'Клиенты',
     'clients.create' => 'Новый клиент',
-
-    'chat-messages.edit' => 'Редактирование',
-    'chat-messages.show' => 'Сообщение',
-    'chat-messages.index' => 'Чат',
 
     'comments.edit' => 'Редактирование',
     'comments.show' => 'Комментарий',

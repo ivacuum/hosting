@@ -1,7 +1,9 @@
 <?php namespace Tests\Feature;
 
+use App\Artist;
 use App\Factory\ArtistFactory;
 use App\Factory\UserFactory;
+use App\Http\Livewire\Acp\ArtistForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -19,7 +21,8 @@ class AcpArtistsTest extends TestCase
     public function testCreate()
     {
         $this->get('acp/artists/create')
-            ->assertOk();
+            ->assertOk()
+            ->assertSeeLivewire(ArtistForm::class);
     }
 
     public function testEdit()
@@ -27,7 +30,8 @@ class AcpArtistsTest extends TestCase
         $artist = ArtistFactory::new()->create();
 
         $this->get("acp/artists/{$artist->id}/edit")
-            ->assertOk();
+            ->assertOk()
+            ->assertSeeLivewire(ArtistForm::class);
     }
 
     public function testIndex()
@@ -48,15 +52,31 @@ class AcpArtistsTest extends TestCase
 
     public function testStore()
     {
-        $this->post('acp/artists', ArtistFactory::new()->make()->toArray())
-            ->assertRedirect('acp/artists');
+        $artist = ArtistFactory::new()->make();
+
+        \Livewire::test(ArtistForm::class, ['artist' => new Artist])
+            ->set('artist.title', $artist->title)
+            ->set('artist.slug', $artist->slug)
+            ->call('submit')
+            ->assertHasNoErrors()
+            ->assertRedirect('/acp/artists');
+
+        $this->get('acp/artists')
+            ->assertSee($artist->title);
     }
 
     public function testUpdate()
     {
         $artist = ArtistFactory::new()->create();
 
-        $this->put("acp/artists/{$artist->id}", ArtistFactory::new()->make()->toArray())
-            ->assertRedirect('acp/artists');
+        \Livewire::test(ArtistForm::class, ['artist' => $artist])
+            ->set('artist.title', 'Eyes 👀')
+            ->call('submit')
+            ->assertHasNoErrors()
+            ->assertRedirect('/acp/artists');
+
+        $artist->refresh();
+
+        $this->assertSame('Eyes 👀', $artist->title);
     }
 }

@@ -137,4 +137,6 @@ return [
 
     'yandex-user.token' => 'Токен',
     'yandex-user.account' => 'Логин в Яндексе',
+    'yandex-user.domains' => 'Домены',
+    'yandex-user.domains_count' => 'Домены',
 ];

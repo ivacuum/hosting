@@ -32,7 +32,7 @@
     <tr>
       <td class="text-right font-bold">Алиас</td>
       <td>
-        <a href="{{ path([$controller, 'show'], $model->alias) }}">{{ $model->alias->domain }}</a>
+        <a href="{{ path([App\Http\Controllers\Acp\Domains::class, 'show'], $model->alias) }}">{{ $model->alias->domain }}</a>
       </td>
     </tr>
   @endif
@@ -41,7 +41,7 @@
       <td class="text-right font-bold">Алиасы</td>
       <td>
         @foreach ($model->aliases as $alias)
-          <a href="{{ path([$controller, 'show'], $alias) }}">{{ $alias->domain }}</a>
+          <a href="{{ path([App\Http\Controllers\Acp\Domains::class, 'show'], $alias) }}">{{ $alias->domain }}</a>
         @endforeach
       </td>
     </tr>

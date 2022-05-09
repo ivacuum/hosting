@@ -43,7 +43,7 @@ class DnsRecordForm extends Component
             $this->store($yandexPdd);
         }
 
-        return redirect()->to("/acp/domains/{$this->domain->domain}/ns-records");
+        return redirect()->to(to("acp/domains/{$this->domain->domain}/ns-records"));
     }
 
     private function store(YandexPddClient $yandexPdd)

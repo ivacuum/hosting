@@ -30,13 +30,18 @@ class City extends Model
     use Traits\HasLocalizedTitle;
     use Traits\HasTripsMetaDescription;
 
-    protected $guarded = ['created_at', 'updated_at'];
     protected $perPage = 50;
 
     protected $casts = [
         'point' => Cast\PointCast::class,
         'views' => 'int',
         'country_id' => 'int',
+    ];
+
+    protected $attributes = [
+        'lat' => '',
+        'lon' => '',
+        'iata' => '',
     ];
 
     // Relations

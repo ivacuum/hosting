@@ -1,46 +1,56 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Domain\GigStatus;
-use App\Gig as Model;
-use App\Rules\LifeSlug;
+use App\Action\Acp\ApplyIndexGoodsAction;
+use App\Action\Acp\ResponseToCreateAction;
+use App\Action\Acp\ResponseToDestroyAction;
+use App\Action\Acp\ResponseToEditAction;
+use App\Action\Acp\ResponseToShowAction;
+use App\Gig;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Routing\Controller;
 
-class Gigs extends AbstractController
+class Gigs extends Controller
 {
-    protected $sortKey = 'date';
-    protected $sortableKeys = ['date', 'views'];
+    use AuthorizesRequests;
 
-    public function index()
+    public function __construct()
     {
-        $models = Model::query()
-            ->orderBy($this->getSortKey(), $this->getSortDir())
+        $this->authorizeResource(Gig::class);
+    }
+
+    public function index(ApplyIndexGoodsAction $applyIndexGoods)
+    {
+        [$sortKey, $sortDir] = $applyIndexGoods->execute(
+            new Gig,
+            ['date', 'views'],
+            'desc',
+            'date',
+        );
+
+        $models = Gig::query()
+            ->orderBy($sortKey, $sortDir)
             ->paginate(500);
 
-        return view($this->view, ['models' => $models]);
+        return view('acp.gigs.index', ['models' => $models]);
     }
 
-    protected function newModelDefaults($model)
+    public function create(Gig $gig, ResponseToCreateAction $responseToCreate)
     {
-        /** @var Model $model */
-        $model->date = now()->startOfDay();
-        $model->slug = 'artist.' . now()->year;
-        $model->status = GigStatus::Hidden;
-
-        return $model;
+        return $responseToCreate->execute($gig);
     }
 
-    /**
-     * @param Model|null $model
-     * @return array
-     */
-    protected function rules($model = null)
+    public function destroy(Gig $gig, ResponseToDestroyAction $responseToDestroy)
     {
-        return [
-            'slug' => LifeSlug::rules($model),
-            'date' => 'required|date',
-            'city_id' => 'required|integer|min:1',
-            'title_ru' => 'required',
-            'title_en' => 'required',
-            'artist_id' => 'required|integer|min:1',
-        ];
+        return $responseToDestroy->execute($gig);
+    }
+
+    public function edit(Gig $gig, ResponseToEditAction $responseToEdit)
+    {
+        return $responseToEdit->execute($gig);
+    }
+
+    public function show(Gig $gig, ResponseToShowAction $responseToShow)
+    {
+        return $responseToShow->execute($gig);
     }
 }

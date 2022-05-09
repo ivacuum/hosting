@@ -1,10 +1,12 @@
+<?php /** @var \App\Http\Livewire\Acp\PhotoEditForm $this */ ?>
+
 <form class="grid grid-cols-1 gap-4" wire:submit.prevent="submit">
-  <?php LivewireForm::model(new App\Photo); ?>
+  <?php LivewireForm::model($this->photo); ?>
 
   @include('tpl.form_errors')
 
   <div class="mb-6">
-    <img class="image-fit-viewport mobile-wide sm:rounded max-w-full" src="{{ $image }}" alt="">
+    <img class="image-fit-viewport mobile-wide sm:rounded max-w-full" src="{{ $this->photo->originalUrl() }}" alt="">
   </div>
 
   <div class="mb-4">

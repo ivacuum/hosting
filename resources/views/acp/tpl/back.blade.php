@@ -1,3 +1,3 @@
-<a href="{{ !empty($goto) ? url($goto) : path([$controller, 'index']) }}">
+<a href="{{ !empty($goto) ? url($goto) : Acp::index($model) }}">
   @svg (chevron-left)
 </a>

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Livewire;
 
 use App\Radical;
+use App\Scope\UserBurnableScope;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 
@@ -23,7 +24,7 @@ class RadicalList extends Component
         $this->radicals = Radical::query()
             ->orderBy('level')
             ->orderBy('meaning')
-            ->userBurnable(auth()->id())
+            ->tap(new UserBurnableScope(auth()->id()))
             ->when($kanjiId, fn (Builder $query) => $query->whereRelation('kanjis', 'kanji_id', $kanjiId))
             ->when($level, fn (Builder $query) => $query->where('level', $level))
             ->get(['id', 'level', 'character', 'meaning', 'image']);

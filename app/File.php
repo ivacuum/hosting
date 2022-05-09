@@ -1,6 +1,6 @@
 <?php namespace App;
 
-use Illuminate\Database\Eloquent\Builder;
+use App\Domain\FileStatus;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $slug
  * @property int $size
  * @property string $extension
- * @property Domain\FileStatus $status
+ * @property FileStatus $status
  * @property int $downloads
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
@@ -19,20 +19,19 @@ use Illuminate\Database\Eloquent\Model;
  */
 class File extends Model
 {
-    protected $guarded = ['created_at', 'updated_at', 'goto', 'file'];
     protected $perPage = 50;
 
     protected $casts = [
         'size' => 'int',
-        'status' => Domain\FileStatus::class,
+        'status' => FileStatus::class,
         'downloads' => 'int',
     ];
 
-    // Scopes
-    public function scopePublished(Builder $query)
-    {
-        return $query->where('status', Domain\FileStatus::Published);
-    }
+    protected $attributes = [
+        'folder' => '',
+        'status' => FileStatus::Published,
+        'downloads' => 0,
+    ];
 
     // Methods
     public function basename()

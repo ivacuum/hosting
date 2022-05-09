@@ -34,8 +34,8 @@ class ChatMessageFactory
         $model->status = $this->status;
         $model->user_id = $this->userId;
 
-        if ($this->userFactory && !$model->user_id) {
-            $model->user_id = $this->userFactory->create()->id;
+        if (!$model->user_id) {
+            $model->user_id = ($this->userFactory ?? UserFactory::new())->create()->id;
         }
 
         return $model;

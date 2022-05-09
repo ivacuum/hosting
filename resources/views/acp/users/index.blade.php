@@ -29,38 +29,26 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th class="md:text-right">
-      @include('acp.tpl.sortable-header', ['key' => 'id'])
-    </th>
+    <x-th-numeric-sortable key="id"/>
     <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'email') }}</th>
     @if ($avatar)
       <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'avatar') }}</th>
     @endif
     <th>Активен</th>
-    <th class="md:text-right whitespace-nowrap">
-      @include('acp.tpl.sortable-header', ['key' => 'comments_count', 'svg' => 'comment-o'])
-    </th>
-    <th class="md:text-right whitespace-nowrap">
-      @include('acp.tpl.sortable-header', ['key' => 'images_count', 'svg' => 'picture-o'])
-    </th>
-    <th class="md:text-right whitespace-nowrap">
-      @include('acp.tpl.sortable-header', ['key' => 'torrents_count', 'svg' => 'magnet'])
-    </th>
-    <th class="md:text-right whitespace-nowrap">
-      @include('acp.tpl.sortable-header', ['key' => 'trips_count', 'svg' => 'plane'])
-    </th>
+    <x-th-numeric-sortable key="comments_count">@svg(comment-o)</x-th-numeric-sortable>
+    <x-th-numeric-sortable key="images_count">@svg(picture-o)</x-th-numeric-sortable>
+    <x-th-numeric-sortable key="magnets_count">@svg(magnet)</x-th-numeric-sortable>
+    <x-th-numeric-sortable key="trips_count">@svg(plane)</x-th-numeric-sortable>
     <th>Дата реги</th>
-    <th>
-      @include('acp.tpl.sortable-header', ['key' => 'last_login_at'])
-    </th>
+    <x-th-sortable key="last_login_at"/>
   </tr>
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ Acp::edit($model) }}">
       <td class="md:text-right">{{ $model->id }}</td>
       <td>
-        <a href="{{ $model->wwwAcp() }}">
+        <a href="{{ Acp::show($model) }}">
           {{ $model->email }}
         </a>
         @if ($model->login)

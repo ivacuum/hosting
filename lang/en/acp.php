@@ -10,6 +10,10 @@ return [
     'artists.index' => 'Artists',
     'artists.create' => 'New artist',
 
+    'chat-messages.edit' => 'Edit',
+    'chat-messages.show' => 'Chat message',
+    'chat-messages.index' => 'Chat messages',
+
     'cities.add' => 'Create city',
     'cities.edit' => 'Edit',
     'cities.show' => 'City',
@@ -21,10 +25,6 @@ return [
     'clients.show' => 'Client',
     'clients.index' => 'Clients',
     'clients.create' => 'New client',
-
-    'chat-messages.edit' => 'Edit',
-    'chat-messages.show' => 'Chat message',
-    'chat-messages.index' => 'Chat messages',
 
     'comments.edit' => 'Edit',
     'comments.show' => 'Comment',

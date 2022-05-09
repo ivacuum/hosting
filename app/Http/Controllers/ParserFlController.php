@@ -2,7 +2,7 @@
 
 use GuzzleHttp\Client;
 
-class ParserFlController extends Controller
+class ParserFlController
 {
     public function __invoke(string $login, string $passwd)
     {

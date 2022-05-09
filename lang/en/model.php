@@ -118,4 +118,6 @@ return [
 
     'yandex-user.token' => 'Token',
     'yandex-user.account' => 'Username on Yandex',
+    'yandex-user.domains' => 'Domains',
+    'yandex-user.domains_count' => 'Domains',
 ];

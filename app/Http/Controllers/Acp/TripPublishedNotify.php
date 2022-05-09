@@ -4,7 +4,7 @@ use App\Http\Requests\Acp\TripPublishedNotifyRequest;
 use App\Jobs\NotifyTripSubscribers;
 use App\Trip;
 
-class TripPublishedNotify extends AbstractController
+class TripPublishedNotify
 {
     public function __invoke(Trip $trip, TripPublishedNotifyRequest $request)
     {
@@ -22,10 +22,5 @@ class TripPublishedNotify extends AbstractController
             'status' => 'OK',
             'message' => 'Рассылка уведомлений добавлена в очередь',
         ];
-    }
-
-    protected function getModelName(): string
-    {
-        return Trip::class;
     }
 }

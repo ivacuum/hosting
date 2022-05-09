@@ -38,7 +38,7 @@ class PhotoTest extends TestCase
 
     public function testCityWithoutTrips()
     {
-        $city = CityFactory::new()->withCountry()->create();
+        $city = CityFactory::new()->create();
 
         $this->get("photos/cities/{$city->slug}")
             ->assertNotFound();
@@ -64,7 +64,7 @@ class PhotoTest extends TestCase
 
     public function testCountryWithoutTrips()
     {
-        $city = CityFactory::new()->withCountry()->create();
+        $city = CityFactory::new()->create();
 
         $this->get("photos/countries/{$city->country->slug}")
             ->assertNotFound();

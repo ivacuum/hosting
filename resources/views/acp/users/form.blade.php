@@ -1,6 +1,1 @@
-@include('tpl.form_errors')
-
-{{ Form::text('email')->required() }}
-{{ Form::checkbox('status')
-  ->default(App\Domain\UserStatus::Inactive->value)
-  ->values([App\Domain\UserStatus::Active->value => 'Активен']) }}
+@livewire(App\Http\Livewire\Acp\UserForm::class, ['user' => $model])

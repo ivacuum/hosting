@@ -10,17 +10,21 @@ use App\Country;
 use App\Domain\PhotoStatus;
 use App\Http\Requests\PhotosMapForm;
 use App\Photo;
+use App\Scope\PhotoForTagScope;
+use App\Scope\PhotoForTripScope;
+use App\Scope\PhotoForTripsScope;
+use App\Scope\PhotoPublishedScope;
 use App\Tag;
 use App\Trip;
 use App\Utilities\CityHelper;
 use App\Utilities\CountryHelper;
 
-class Photos extends Controller
+class Photos
 {
     public function index()
     {
         $photos = Photo::query()
-            ->published()
+            ->tap(new PhotoPublishedScope)
             ->orderByDesc('id')
             ->paginate(24);
 
@@ -48,8 +52,9 @@ class Photos extends Controller
 
         abort_if(empty($ids), 404);
 
-        $photos = Photo::forTrips($ids)
-            ->published()
+        $photos = Photo::query()
+            ->tap(new PhotoForTripsScope($ids))
+            ->tap(new PhotoPublishedScope)
             ->orderByDesc('id')
             ->get();
 
@@ -78,8 +83,9 @@ class Photos extends Controller
 
         abort_if(empty($ids), 404);
 
-        $photos = Photo::forTrips($ids)
-            ->published()
+        $photos = Photo::query()
+            ->tap(new PhotoForTripsScope($ids))
+            ->tap(new PhotoPublishedScope)
             ->orderByDesc('id')
             ->get();
 
@@ -122,8 +128,8 @@ class Photos extends Controller
         $tripId = request('trip_id');
         $countryId = request('country_id');
 
-        $next = Photo::where('id', '>', $photo->id)->published();
-        $prev = Photo::where('id', '<', $photo->id)->published()->orderByDesc('id');
+        $next = Photo::where('id', '>', $photo->id)->tap(new PhotoPublishedScope);
+        $prev = Photo::where('id', '<', $photo->id)->tap(new PhotoPublishedScope)->orderByDesc('id');
 
         if ($tagId) {
             // Просмотр в пределах одного тэга
@@ -135,22 +141,22 @@ class Photos extends Controller
 
             $ids = $getTripsPublishedByCity->execute($cityId);
 
-            $next = $next->forTrips($ids);
-            $prev = $prev->forTrips($ids);
+            $next = $next->tap(new PhotoForTripsScope($ids));
+            $prev = $prev->tap(new PhotoForTripsScope($ids));
         } elseif ($tripId) {
             // В пределах поездки
             abort_unless($tripId == $photo->rel_id, 404);
 
-            $next = $next->forTrip($tripId);
-            $prev = $prev->forTrip($tripId);
+            $next = $next->tap(new PhotoForTripScope($tripId));
+            $prev = $prev->tap(new PhotoForTripScope($tripId));
         } elseif ($countryId) {
             // В пределах страны
             abort_unless($countryId == $photo->rel->city->country->id, 404);
 
             $ids = $getTripsPublishedByCountry->execute($countryId);
 
-            $next = $next->forTrips($ids);
-            $prev = $prev->forTrips($ids);
+            $next = $next->tap(new PhotoForTripsScope($ids));
+            $prev = $prev->tap(new PhotoForTripsScope($ids));
         }
 
         event(new \App\Events\Stats\PhotoViewed($photo->id));
@@ -187,8 +193,9 @@ class Photos extends Controller
 
     public function tag(Tag $tag)
     {
-        $photos = Photo::forTag($tag->id)
-            ->published()
+        $photos = Photo::query()
+            ->tap(new PhotoForTagScope($tag->id))
+            ->tap(new PhotoPublishedScope)
             ->orderByDesc('id')
             ->get();
 
@@ -224,8 +231,8 @@ class Photos extends Controller
         abort_unless($trip->status->isPublished(), 404);
 
         $photos = Photo::query()
-            ->forTrip($trip->id)
-            ->published()
+            ->tap(new PhotoForTripScope($trip->id))
+            ->tap(new PhotoPublishedScope)
             ->orderByDesc('id')
             ->get();
 

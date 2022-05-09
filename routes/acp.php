@@ -1,27 +1,26 @@
 <?php
 
 use App\Http\Controllers\Acp;
-use Ivacuum\Generic\Utilities\RouteHelper;
 
 Route::get('/', Acp\HomeController::class);
 
-RouteHelper::crud(Acp\Artists::class);
+Route::resource('artists', Acp\Artists::class)->except(['store', 'update']);
 
-RouteHelper::withoutCreate(Acp\ChatMessages::class);
+Route::resource('chat-messages', Acp\ChatMessages::class)->except(['create', 'store', 'update']);
 Route::post('chat-messages/batch', [Acp\ChatMessages::class, 'batch']);
 
-RouteHelper::crud(Acp\Cities::class);
+Route::resource('cities', Acp\Cities::class)->except(['store', 'update']);
 
-RouteHelper::crud(Acp\Clients::class);
+Route::resource('clients', Acp\Clients::class)->except(['store', 'update']);
 
-RouteHelper::withoutCreate(Acp\Comments::class);
+Route::resource('comments', Acp\Comments::class)->except(['create', 'store', 'update']);
 
-RouteHelper::crud(Acp\Countries::class);
+Route::resource('countries', Acp\Countries::class)->except(['store', 'update']);
 
-RouteHelper::crud(Acp\DcppHubs::class);
+Route::resource('dcpp-hubs', Acp\DcppHubs::class)->except(['store', 'update']);
 
-Route::get('dev', [Acp\Dev::class, 'index']);
-Route::get('dev/debugbar', [Acp\Dev::class, 'debugbar']);
+Route::view('dev', 'acp.dev.index');
+Route::get('dev/debugbar', Acp\Dev\EnableDebugBar::class);
 Route::get('dev/logs', [Acp\Dev::class, 'logs']);
 Route::get('dev/svg', [Acp\Dev::class, 'svg']);
 Route::get('dev/gig-templates', [Acp\Dev\GigTemplates::class, 'index']);
@@ -32,7 +31,8 @@ Route::get('dev/thumbnails', [Acp\Dev\Thumbnails::class, 'index']);
 Route::post('dev/thumbnails', [Acp\Dev\Thumbnails::class, 'store']);
 Route::get('dev/thumbnails/clean', [Acp\Dev\Thumbnails::class, 'clean']);
 
-RouteHelper::crud(Acp\Domains::class, null, 'slug');
+Route::resource('domains', Acp\Domains::class)->except(['store', 'update']);
+
 Route::post('domains/batch', [Acp\Domains::class, 'batch']);
 Route::get('domains/{domain}/mail', [Acp\Domains::class, 'mailboxes']);
 Route::post('domains/{domain}/mail', [Acp\Domains::class, 'addMailbox']);
@@ -42,48 +42,40 @@ Route::delete('domains/{domain}/ns-records/{id}', [Acp\YandexPddDnsRecordControl
 Route::get('domains/{domain}/robots', [Acp\Domains::class, 'robots']);
 Route::get('domains/{domain}/whois', [Acp\Domains::class, 'whois']);
 
-RouteHelper::withoutCreateAndEdit(Acp\ExternalIdentities::class);
+Route::resource('external-identities', Acp\ExternalIdentities::class)->except(['create', 'edit', 'store', 'update']);
 
-RouteHelper::crud(Acp\Files::class);
+Route::resource('files', Acp\Files::class)->except(['store', 'update']);
 
-RouteHelper::crud(Acp\Gigs::class);
+Route::resource('gigs', Acp\Gigs::class)->except(['store', 'update']);
 Route::post('gigs/{gig}/notify', Acp\GigPublishedNotify::class);
 
-RouteHelper::withoutCreateAndEdit(Acp\Images::class);
+Route::resource('images', Acp\Images::class)->except(['create', 'edit', 'store', 'update']);
 Route::post('images/batch', [Acp\Images::class, 'batch']);
 Route::get('images/{id}/view', [Acp\Images::class, 'view']);
 
-RouteHelper::withoutCreateAndEdit(Acp\Issues::class);
+Route::resource('issues', Acp\Issues::class)->except(['create', 'edit', 'store', 'update']);
 Route::post('issues/batch', [Acp\Issues::class, 'batch']);
 Route::post('issues/{issue}/close', Acp\IssueCloseController::class);
 Route::post('issues/{issue}/open', Acp\IssueOpenController::class);
 
-RouteHelper::withoutCreate(Acp\Magnets::class);
+Route::resource('magnets', Acp\Magnets::class)->except(['create', 'store', 'update']);
 
-Route::get('metrics', [Acp\Metrics::class, 'index']);
-Route::get('metrics/{event}', [Acp\Metrics::class, 'show']);
+Route::get('metrics', [Acp\Metrics::class, 'index'])->can('viewAny', 'App\Metric');
+Route::get('metrics/{event}', [Acp\Metrics::class, 'show'])->can('viewAny', 'App\Metric');
 
-RouteHelper::crud(Acp\News::class);
-Route::post('news/{id}/notify', [Acp\News::class, 'notify']);
+Route::resource('news', Acp\NewsController::class)->except(['store', 'update']);
+Route::post('news/{news}/notify', [Acp\NewsController::class, 'notify']);
 
-RouteHelper::withoutCreateAndEdit(Acp\Notifications::class, null, 'uuid');
+Route::resource('notifications', Acp\Notifications::class)->except(['create', 'edit', 'store', 'update']);
 
-RouteHelper::crud(Acp\Photos::class);
+Route::resource('photos', Acp\Photos::class)->except(['store', 'update']);
 
-RouteHelper::crud(Acp\Servers::class);
-Route::get('servers/{id}/ftp', [Acp\Servers\Ftp::class, 'index']);
-Route::post('servers/{id}/ftp/file', [Acp\Servers\Ftp::class, 'filePost']);
-Route::post('servers/{id}/ftp/dir', [Acp\Servers\Ftp::class, 'dirPost']);
-Route::get('servers/{id}/ftp/source', [Acp\Servers\Ftp::class, 'source']);
-Route::post('servers/{id}/ftp/source', [Acp\Servers\Ftp::class, 'sourcePost']);
-Route::post('servers/{id}/ftp/upload', [Acp\Servers\Ftp::class, 'uploadPost']);
+Route::resource('tags', Acp\Tags::class)->except(['store', 'update']);
 
-RouteHelper::crud(Acp\Tags::class);
-
-RouteHelper::crud(Acp\Trips::class);
+Route::resource('trips', Acp\Trips::class)->except(['store', 'update']);
 Route::get('trips/{trip}/instagram-cover', Acp\TripInstagramCoverController::class);
 Route::post('trips/{trip}/notify', Acp\TripPublishedNotify::class);
 
-RouteHelper::crud(Acp\Users::class);
+Route::resource('users', Acp\Users::class)->except(['create', 'store', 'update']);
 
-RouteHelper::crud(Acp\YandexUsers::class);
+Route::resource('yandex-users', Acp\YandexUsers::class)->except(['store', 'update']);

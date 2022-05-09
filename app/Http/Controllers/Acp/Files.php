@@ -1,54 +1,54 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\File as Model;
-use Illuminate\Validation\Rule;
+use App\Action\Acp\ApplyIndexGoodsAction;
+use App\Action\Acp\ResponseToCreateAction;
+use App\Action\Acp\ResponseToDestroyAction;
+use App\Action\Acp\ResponseToEditAction;
+use App\Action\Acp\ResponseToShowAction;
+use App\File;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Routing\Controller;
 
-class Files extends AbstractController
+class Files extends Controller
 {
-    protected $sortableKeys = ['id', 'size', 'downloads'];
+    use AuthorizesRequests;
 
-    public function index()
+    public function __construct()
     {
-        $models = Model::query()
-            ->orderBy($this->getSortKey(), $this->getSortDir())
+        $this->authorizeResource(File::class);
+    }
+
+    public function index(ApplyIndexGoodsAction $applyIndexGoods)
+    {
+        [$sortKey, $sortDir] = $applyIndexGoods->execute(
+            new File,
+            ['id', 'size', 'downloads'],
+        );
+
+        $models = File::query()
+            ->orderBy($sortKey, $sortDir)
             ->paginate();
 
-        return view($this->view, ['models' => $models]);
+        return view('acp.files.index', ['models' => $models]);
     }
 
-    /**
-     * @param Model|null $model
-     * @return array
-     */
-    protected function rules($model = null)
+    public function create(File $file, ResponseToCreateAction $responseToCreate)
     {
-        return [
-            'slug' => [
-                'required',
-                Rule::unique('files', 'slug')->ignore($model),
-            ],
-            'file' => [
-                Rule::when(empty($model->exists), 'required'),
-                'file',
-            ],
-            'title' => 'required',
-        ];
+        return $responseToCreate->execute($file);
     }
 
-    protected function storeModel()
+    public function destroy(File $file, ResponseToDestroyAction $responseToDestroy)
     {
-        $file = request()->file('file');
-        $folder = request('folder');
+        return $responseToDestroy->execute($file);
+    }
 
-        /** @var Model $model */
-        $model = $this->newModel()->fill($this->requestDataForModel());
-        $model->size = $file->getSize();
-        $model->extension = $file->getClientOriginalExtension();
-        $model->downloads = 0;
-        $model->save();
+    public function edit(File $file, ResponseToEditAction $responseToEdit)
+    {
+        return $responseToEdit->execute($file);
+    }
 
-        \Storage::disk('files')->putFileAs($folder, $file, $model->basename());
-
-        return $model;
+    public function show(File $file, ResponseToShowAction $responseToShow)
+    {
+        return $responseToShow->execute($file);
     }
 }

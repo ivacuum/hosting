@@ -1,4 +1,4 @@
-<?php /** @var \App\Vocabulary $vocab */ ?>
+<?php /** @var \App\Http\Livewire\VocabularyTrainer $this */ ?>
 
 <div class="grid lg:grid-cols-2 gap-4">
   <div>
@@ -6,15 +6,15 @@
       <div>
         <a
           class="bg-vocab inline-block text-5xl leading-tight ja-shadow-light px-2 rounded whitespace-nowrap text-white hover:text-grey-200"
-          href="{{ $vocab->www() }}"
-        >{{ $vocab->character }}</a>
+          href="{{ $this->vocab->www() }}"
+        >{{ $this->vocab->character }}</a>
       </div>
       <div class="text-3xl text-gray-600 dark:text-slate-400 whitespace-nowrap">
-        【{{ $hiragana ? $vocab->firstKana() : $vocab->toKatakana() }}】
+        【{{ $this->hiragana ? $this->vocab->firstKana() : $this->vocab->toKatakana() }}】
       </div>
       <div class="text-2xl">
-        @if ($reveal)
-          <span class="text-green-600">{{ $vocab->toRomaji() }}</span>
+        @if ($this->reveal)
+          <span class="text-green-600">{{ $this->vocab->toRomaji() }}</span>
         @else
           <button
             class="text-gray-500 dark:text-slate-400 tooltipped tooltipped-s"
@@ -36,8 +36,8 @@
         spellcheck="false"
         placeholder="@lang('Ваш ответ')"
         enterkeyhint="enter"
-        class="form-input text-center {{ $reveal ? 'animate-incorrect-answer' : '' }}"
-        {{ $reveal ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
+        class="form-input text-center {{ $this->reveal ? 'animate-incorrect-answer' : '' }}"
+        {{ $this->reveal ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
         wire:model.lazy="answer"
       >
     </form>
@@ -48,7 +48,7 @@
         type="button"
         wire:click="skip"
       >@lang('Пропустить')</button>
-      @if ($vocab->male_audio_id)
+      @if ($this->vocab->male_audio_id)
         <div>
           <button
             class="btn border border-blue-300 hover:border-blue-400 bg-blue-200 hover:bg-blue-300 w-full"
@@ -57,10 +57,10 @@
           >
             @svg (volume-up-full)
           </button>
-          <audio id="male_audio" src="{{ $vocab->maleAudioMp3() }}"></audio>
+          <audio id="male_audio" src="{{ $this->vocab->maleAudioMp3() }}"></audio>
         </div>
       @endif
-      @if ($vocab->female_audio_id)
+      @if ($this->vocab->female_audio_id)
         <div>
           <button
             class="btn border border-red-300 hover:border-red-400 bg-red-200 hover:bg-red-300 w-full"
@@ -69,35 +69,35 @@
           >
             @svg (volume-up-full)
           </button>
-          <audio id="female_audio" src="{{ $vocab->femaleAudioMp3() }}"></audio>
+          <audio id="female_audio" src="{{ $this->vocab->femaleAudioMp3() }}"></audio>
         </div>
       @endif
     </div>
 
     <div class="grid grid-cols-3 gap-2 mt-4">
-      @if ($answered > 0)
+      @if ($this->answered > 0)
         <div>
           <div class="text-sm small-caps text-green-500">@lang('japanese.answered')</div>
-          <div class="text-2xl">{{ $answered }}</div>
+          <div class="text-2xl">{{ $this->answered }}</div>
         </div>
       @endif
-      @if ($skipped > 0)
+      @if ($this->skipped > 0)
         <div>
           <div class="text-sm small-caps text-gray-500">@lang('japanese.skipped')</div>
-          <div class="text-2xl">{{ $skipped }}</div>
+          <div class="text-2xl">{{ $this->skipped }}</div>
         </div>
       @endif
-      @if ($revealed > 0)
+      @if ($this->revealed > 0)
         <div>
           <div class="text-sm small-caps text-yellow-500">@lang('Подсказано')</div>
-          <div class="text-2xl">{{ $revealed }}</div>
+          <div class="text-2xl">{{ $this->revealed }}</div>
         </div>
       @endif
     </div>
   </div>
   <div>
     <div class="grid gap-1 items-start">
-      @foreach ($history as $entry)
+      @foreach ($this->history as $entry)
         <div class="inline-flex items-center">
           <a
             class="bg-vocab inline-block text-2xl leading-tight ja-shadow-light px-2 rounded whitespace-nowrap text-white hover:text-grey-200 mr-2"
@@ -109,8 +109,8 @@
     </div>
   </div>
   <div>
-    <details class="border dark:border-slate-700 text-sm rounded overflow-hidden" {{ $openSettings ? 'open' : '' }}>
-      <summary class="border-b dark:border-slate-700 bg-gray-100 dark:bg-slate-800 text-gray-500 dark:text-slate-400 hover:text-gray-700 hover:dark:text-slate-200 px-5 py-2" itemprop="name">@lang('Настройки'): <span class="lowercase">{{ $hiragana ? __('Хирагана') : __('Катакана') }}, @lang('Уровни') {{ $level * 10 - 9 }}–{{ $level * 10 }}</span></summary>
+    <details class="border dark:border-slate-700 text-sm rounded overflow-hidden" {{ $this->openSettings ? 'open' : '' }}>
+      <summary class="border-b dark:border-slate-700 bg-gray-100 dark:bg-slate-800 text-gray-500 dark:text-slate-400 hover:text-gray-700 hover:dark:text-slate-200 px-5 py-2" itemprop="name">@lang('Настройки'): <span class="lowercase">{{ $this->hiragana ? __('Хирагана') : __('Катакана') }}, @lang('Уровни') {{ $this->level * 10 - 9 }}–{{ $this->level * 10 }}</span></summary>
       <div class="px-5 py-3 text-sm">
         <div class="h5">@lang('Азбука')</div>
         <div class="text-gray-500 mb-2">@lang('japanese.settings.syllabary_help')</div>
@@ -119,30 +119,30 @@
             class="btn btn-default disabled:opacity-50"
             type="button"
             wire:click="switchToHiragana"
-            {{ $hiragana ? 'disabled' : '' }}
+            {{ $this->hiragana ? 'disabled' : '' }}
           >@lang('Хирагана')</button>
           <button
             class="btn btn-default disabled:opacity-50"
             type="button"
             wire:click="switchToKatakana"
-            {{ $hiragana ? '' : 'disabled' }}
+            {{ $this->hiragana ? '' : 'disabled' }}
           >@lang('Катакана')</button>
         </div>
 
-        <div class="h5 mt-6">@lang('Уровни') {{ $level * 10 - 9 }}–{{ $level * 10 }}</div>
+        <div class="h5 mt-6">@lang('Уровни') {{ $this->level * 10 - 9 }}–{{ $this->level * 10 }}</div>
         <div class="text-gray-500 mb-2">@lang('japanese.settings.levels_help')</div>
         <div class="flex">
           <button
             class="btn btn-default mr-1 disabled:opacity-50"
             type="button"
             wire:click="decreaseLevel"
-            {{ $level < 2 ? 'disabled' : '' }}
+            {{ $this->level < 2 ? 'disabled' : '' }}
           >@lang('Уменьшить')</button>
           <button
             class="btn btn-default disabled:opacity-50"
             type="button"
             wire:click="increaseLevel"
-            {{ $level > 5 ? 'disabled' : '' }}
+            {{ $this->level > 5 ? 'disabled' : '' }}
           >@lang('Увеличить')</button>
         </div>
       </div>

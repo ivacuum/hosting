@@ -5,20 +5,20 @@
   <thead>
   <tr>
     <th class="md:text-right">#</th>
-    <th>Аккаунт</th>
-    <th class="md:text-right">Доменов</th>
+    <x-th-sortable key="account"/>
+    <x-th-numeric-sortable key="domains_count"/>
   </tr>
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ Acp::edit($model) }}">
       <td class="md:text-right">{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
       <td>
-        <a href="{{ path([$controller, 'show'], $model) }}">
+        <a href="{{ Acp::show($model) }}">
           {{ $model->account }}
         </a>
       </td>
-      <td class="md:text-right">{{ sizeof($model->domains) }}</td>
+      <td class="md:text-right">{{ $model->domains_count }}</td>
     </tr>
   @endforeach
   </tbody>

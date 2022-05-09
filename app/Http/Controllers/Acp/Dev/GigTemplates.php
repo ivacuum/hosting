@@ -2,9 +2,8 @@
 
 use App\Action\FindGigTemplatesAction;
 use App\Gig;
-use Ivacuum\Generic\Controllers\Acp\BaseController;
 
-class GigTemplates extends BaseController
+class GigTemplates
 {
     public function index(FindGigTemplatesAction $findGigTemplates)
     {

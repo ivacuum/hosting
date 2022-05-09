@@ -20,13 +20,11 @@ use Illuminate\Database\Eloquent\Model;
 class Radical extends Model
 {
     use Traits\BurnsAndResurrects;
-    use Traits\UserBurnableScope;
 
     protected $casts = [
         'level' => 'int',
     ];
     protected $perPage = 50;
-    protected $fillable = ['level']; // Чтобы не бросало исключение
 
     // Relations
     public function burnable()

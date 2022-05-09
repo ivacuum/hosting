@@ -1,7 +1,9 @@
 <?php namespace Tests\Feature;
 
+use App\Country;
 use App\Factory\CountryFactory;
 use App\Factory\UserFactory;
+use App\Http\Livewire\Acp\CountryForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -19,7 +21,8 @@ class AcpCountriesTest extends TestCase
     public function testCreate()
     {
         $this->get('acp/countries/create')
-            ->assertOk();
+            ->assertOk()
+            ->assertSeeLivewire(CountryForm::class);
     }
 
     public function testEdit()
@@ -28,7 +31,8 @@ class AcpCountriesTest extends TestCase
 
         $this->get("acp/countries/{$country->id}/edit")
             ->assertOk()
-            ->assertSee($country->title);
+            ->assertSee($country->title)
+            ->assertSeeLivewire(CountryForm::class);
     }
 
     public function testIndex()
@@ -50,15 +54,39 @@ class AcpCountriesTest extends TestCase
 
     public function testStore()
     {
-        $this->post('acp/countries', CountryFactory::new()->make()->toArray())
-            ->assertRedirect('acp/countries');
+        $country = CountryFactory::new()->make();
+
+        \Livewire::test(CountryForm::class, ['country' => new Country])
+            ->set('country.slug', $country->slug)
+            ->set('country.emoji', $country->emoji)
+            ->set('country.title_en', $country->title_en)
+            ->set('country.title_ru', $country->title_ru)
+            ->call('submit')
+            ->assertHasNoErrors()
+            ->assertRedirect('/acp/countries');
+
+        $this->get('acp/countries')
+            ->assertSee($country->title);
     }
 
     public function testUpdate()
     {
         $country = CountryFactory::new()->create();
 
-        $this->put("acp/countries/{$country->id}", CountryFactory::new()->make()->toArray())
-            ->assertRedirect('acp/countries');
+        \Livewire::test(CountryForm::class, ['country' => $country])
+            ->set('country.slug', 'country-slug')
+            ->set('country.emoji', '🌚')
+            ->set('country.title_en', 'title en')
+            ->set('country.title_ru', 'title ru')
+            ->call('submit')
+            ->assertHasNoErrors()
+            ->assertRedirect('/acp/countries');
+
+        $country->refresh();
+
+        $this->assertSame('🌚', $country->emoji);
+        $this->assertSame('title en', $country->title_en);
+        $this->assertSame('title ru', $country->title_ru);
+        $this->assertSame('country-slug', $country->slug);
     }
 }

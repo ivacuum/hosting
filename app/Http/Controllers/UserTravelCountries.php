@@ -1,33 +1,35 @@
 <?php namespace App\Http\Controllers;
 
 use App\Country;
+use App\Scope\TripVisibleScope;
 use App\Trip;
+use App\User;
 
 class UserTravelCountries extends UserTravel
 {
-    public function index(string $login)
+    public function index(User $traveler)
     {
-        \Breadcrumbs::push(__('Заметки'), "@{$login}/travel");
+        \Breadcrumbs::push(__('Заметки'), "@{$traveler->login}/travel");
         \Breadcrumbs::push(__('Страны'));
 
         return view('user-travel.countries', [
-            'countries' => Country::allWithCitiesAndTrips($this->traveler->id),
+            'countries' => Country::allWithCitiesAndTrips($traveler->id),
         ]);
     }
 
-    public function show(string $login, string $slug)
+    public function show(User $traveler, string $slug)
     {
         /** @var Country $country */
         $country = Country::where('slug', $slug)->firstOrFail();
         $trips = $country->trips()
-            ->whereBelongsTo($this->traveler)
+            ->whereBelongsTo($traveler)
             ->withCount('photos')
-            ->visible()
+            ->tap(new TripVisibleScope)
             ->get()
             ->groupBy(fn (Trip $model) => $model->year);
 
-        \Breadcrumbs::push(__('Заметки'), "@{$login}/travel");
-        \Breadcrumbs::push(__('Страны'), "@{$login}/travel/countries");
+        \Breadcrumbs::push(__('Заметки'), "@{$traveler->login}/travel");
+        \Breadcrumbs::push(__('Страны'), "@{$traveler->login}/travel/countries");
         \Breadcrumbs::push($country->title);
 
         event(new \App\Events\Stats\CountryViewed($country->id));

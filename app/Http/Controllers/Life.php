@@ -8,12 +8,18 @@ use App\Country;
 use App\Domain\TripStatus;
 use App\Gig;
 use App\Http\Requests\LifeIndexForm;
+use App\Scope\TripNextScope;
+use App\Scope\TripPreviousScope;
+use App\Scope\TripVisibleScope;
 use App\Trip;
 
-class Life extends Controller
+class Life
 {
-    public function index(LifeIndexForm $request, GetMyVisibleTripsAction $getMyVisibleTrips, GetMyVisibleGigsAction $getMyVisibleGigs)
-    {
+    public function index(
+        LifeIndexForm $request,
+        GetMyVisibleTripsAction $getMyVisibleTrips,
+        GetMyVisibleGigsAction $getMyVisibleGigs
+    ) {
         if ($request->shouldRedirectInstagrammer()) {
             return $request->redirectInstagrammer();
         }
@@ -55,7 +61,7 @@ class Life extends Controller
         $trips = $city->trips()
             ->where('user_id', 1)
             ->withCount('photos')
-            ->visible()
+            ->tap(new TripVisibleScope)
             ->get()
             ->groupBy(fn (Trip $model) => $model->year);
 
@@ -98,7 +104,7 @@ class Life extends Controller
         $trips = $country->trips()
             ->where('user_id', 1)
             ->withCount('photos')
-            ->visible()
+            ->tap(new TripVisibleScope)
             ->get()
             ->groupBy(fn (Trip $model) => $model->year);
 
@@ -189,7 +195,7 @@ class Life extends Controller
 
         event(new \App\Events\Stats\TripViewed($trip->id));
 
-        $nextTrips = $trip->next()->get();
+        $nextTrips = $trip->tap(new TripNextScope($trip))->get();
 
         return view($tpl, [
             'trip' => $trip,
@@ -198,7 +204,9 @@ class Life extends Controller
             'metaImage' => $trip->metaImage(),
             'metaTitle' => $trip->metaTitle(),
             'nextTrips' => $nextTrips,
-            'previousTrips' => $trip->previous($nextTrips->count())->get()->reverse(),
+            'previousTrips' => $trip->tap(new TripPreviousScope($trip, $nextTrips->count()))
+                ->get()
+                ->reverse(),
             'metaDescription' => $trip->metaDescription(),
         ]);
     }

@@ -12,9 +12,9 @@
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ Acp::edit($model) }}">
       <td>
-        <a href="{{ path([$controller, 'show'], $model) }}">
+        <a href="{{ Acp::show($model) }}">
           {{ $model->title }}
         </a>
       </td>

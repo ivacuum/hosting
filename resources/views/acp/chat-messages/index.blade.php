@@ -27,16 +27,16 @@
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ Acp::edit($model) }}">
       <td><input class="border-gray-300 models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
       <td class="md:text-right">
-        <a href="{{ $model->wwwAcp() }}">
+        <a href="{{ Acp::show($model) }}">
           {{ $model->id }}
         </a>
       </td>
       <td>
         @if ($model->user)
-          <a href="{{ $model->wwwAcpUser() }}">
+          <a href="{{ Acp::show($model->user) }}">
             {{ $model->user->displayName() }}
           </a>
         @endif
@@ -56,10 +56,13 @@
 </table>
 
 <div class="mt-4">
-  @include('acp.tpl.batch', ['actions' => [
-    'hide' => 'Скрыть',
-    'publish' => 'Опубликовать',
-    'delete' => 'Удалить',
-  ]])
+  @include('acp.tpl.batch', [
+    'actions' => [
+      'hide' => 'Скрыть',
+      'publish' => 'Опубликовать',
+      'delete' => 'Удалить',
+    ],
+    'url' => path([App\Http\Controllers\Acp\ChatMessages::class, 'batch']),
+  ])
 </div>
 @endsection

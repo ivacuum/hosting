@@ -2,7 +2,7 @@
 
 use Ivacuum\Generic\Services\Telegram;
 
-class Upload extends Controller
+class Upload
 {
     public function __invoke(Telegram $telegram)
     {

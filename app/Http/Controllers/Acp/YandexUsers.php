@@ -1,112 +1,57 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Domain;
-use App\YandexUser as Model;
-use Illuminate\Validation\Rule;
+use App\Action\Acp\ApplyIndexGoodsAction;
+use App\Action\Acp\ResponseToCreateAction;
+use App\Action\Acp\ResponseToDestroyAction;
+use App\Action\Acp\ResponseToEditAction;
+use App\Action\Acp\ResponseToShowAction;
+use App\YandexUser;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Routing\Controller;
 
-class YandexUsers extends AbstractController
+class YandexUsers extends Controller
 {
-    protected $showWithCount = ['domains'];
+    use AuthorizesRequests;
 
-    public function index()
+    public function __construct()
     {
-        $models = Model::query()
-            ->orderBy('account')
+        $this->authorizeResource(YandexUser::class);
+    }
+
+    public function index(ApplyIndexGoodsAction $applyIndexGoods)
+    {
+        [$sortKey, $sortDir] = $applyIndexGoods->execute(
+            new YandexUser,
+            ['account', 'domains_count'],
+            'asc',
+            'account',
+        );
+
+        $models = YandexUser::query()
+            ->withCount('domains')
+            ->orderBy($sortKey, $sortDir)
             ->paginate();
 
-        return view($this->view, ['models' => $models]);
+        return view('acp.yandex-users.index', ['models' => $models]);
     }
 
-    public function create()
+    public function create(YandexUser $yandexUser, ResponseToCreateAction $responseToCreate)
     {
-        $model = $this->createGeneric();
-
-        return view($this->getAcpView(), [
-            'model' => $model,
-            'domains' => Domain::yandexReady()->get(),
-        ]);
+        return $responseToCreate->execute($yandexUser);
     }
 
-    public function edit($id)
+    public function destroy(YandexUser $yandexUser, ResponseToDestroyAction $responseToDestroy)
     {
-        $model = $this->editGeneric($id);
-
-        return view($this->getAcpView(), [
-            'model' => $model,
-            'domains' => Domain::yandexReady($model->id)->get(),
-        ]);
+        return $responseToDestroy->execute($yandexUser);
     }
 
-    /**
-     * @param Model|null $model
-     * @return array
-     */
-    protected function rules($model = null)
+    public function edit(YandexUser $yandexUser, ResponseToEditAction $responseToEdit)
     {
-        return [
-            'token' => 'required',
-            'account' => [
-                'required',
-                Rule::unique('yandex_users', 'account')->ignore($model),
-            ],
-        ];
+        return $responseToEdit->execute($yandexUser);
     }
 
-    protected function storeModel()
+    public function show(YandexUser $yandexUser, ResponseToShowAction $responseToShow)
     {
-        $model = new Model;
-        $model->token = request('token');
-        $model->account = request('account');
-        $model->save();
-
-        // Newly specified user domains
-        foreach (request('domains', []) as $id => $one) {
-            $userDomains[] = $id;
-        }
-
-        if (!empty($userDomains)) {
-            Domain::whereIn('id', $userDomains)
-                ->update(['yandex_user_id' => $model->id]);
-        }
-
-        return $model;
-    }
-
-    /**
-     * @param Model $model
-     */
-    protected function updateModel($model)
-    {
-        $token = request('token');
-
-        $model->account = request('account');
-
-        if ($token) {
-            $model->token = $token;
-        }
-
-        $model->save();
-
-        // Domains w/out yandex user specified
-        foreach ($model->domains as $domain) {
-            if (!request()->input("domains.{$domain->id}")) {
-                $anonDomains[] = $domain->id;
-            }
-        }
-
-        if (!empty($anonDomains)) {
-            Domain::whereIn('id', $anonDomains)
-                ->update(['yandex_user_id' => 0]);
-        }
-
-        // Newly specified user domains
-        foreach (request('domains', []) as $id => $one) {
-            $userDomains[] = $id;
-        }
-
-        if (!empty($userDomains)) {
-            Domain::whereIn('id', $userDomains)
-                ->update(['yandex_user_id' => $model->id]);
-        }
+        return $responseToShow->execute($yandexUser, ['domains']);
     }
 }

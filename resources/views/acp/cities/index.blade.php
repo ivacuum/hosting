@@ -17,13 +17,13 @@
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ Acp::edit($model) }}">
       <td class="tooltipped tooltipped-n" aria-label="{{ $model->country->title }}">
-        <a href="{{ $model->country->wwwAcp() }}">
+        <a href="{{ Acp::show($model->country) }}">
           <img class="block flag-16 svg-shadow" src="{{ $model->country->flagUrl() }}" alt="">
         </a>
       </td>
-      <td><a href="{{ $model->wwwAcp() }}">{{ $model->title }}</a></td>
+      <td><a href="{{ Acp::show($model) }}">{{ $model->title }}</a></td>
       <td><a href="{{ $model->www() }}">{{ $model->slug }}</a></td>
       <td class="text-muted">{{ $model->iata }}</td>
       <td class="md:text-right whitespace-nowrap">

@@ -2,6 +2,7 @@
 
 use App\Jobs\FetchTorrentMetaJob;
 use App\Magnet;
+use App\Scope\MagnetPublishedScope;
 use Illuminate\Support\Collection;
 use Ivacuum\Generic\Commands\Command;
 
@@ -12,7 +13,8 @@ class RtoUpdate extends Command
 
     public function handle()
     {
-        Magnet::published()
+        Magnet::query()
+            ->tap(new MagnetPublishedScope)
             ->select(['id', 'rto_id'])
             ->orderByDesc('id')
             ->chunk(100, function (Collection $magnets) {

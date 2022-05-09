@@ -1,5 +1,6 @@
 <?php namespace App\Providers;
 
+use App\Http\Middleware\AcpNavigation;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -21,8 +22,9 @@ class RouteServiceProvider extends ServiceProvider
         \Route::prefix('')
             ->group(base_path('routes/simple.php'));
 
-        \Route::middleware(['web', 'auth', 'admin'])
+        \Route::middleware(['web', 'auth', 'admin', AcpNavigation::class])
             ->prefix('acp')
+            ->name('acp.')
             ->group(base_path('routes/acp.php'));
 
         \Route::middleware('web')

@@ -41,7 +41,6 @@ class AppServiceProvider extends ServiceProvider
             'Artist' => App\Artist::class,
             'Client' => App\Client::class,
             'Domain' => App\Domain::class,
-            'Server' => App\Server::class,
             'Comment' => App\Comment::class,
             'Country' => App\Country::class,
             'Radical' => App\Radical::class,
@@ -97,7 +96,12 @@ class AppServiceProvider extends ServiceProvider
                 $browserEnv = new \Ivacuum\Generic\Utilities\EnvironmentForCss($request->userAgent());
                 $preferredLocale = $request->getPreferredLanguage(array_keys(config('cfg.locales')));
 
+                $routeData = app(App\Action\ParseRouteDataAction::class)->execute();
+
                 $data = [
+                    'tpl' => $routeData->tpl,
+                    'view' => $routeData->view,
+
                     'locale' => $locale ?: config('app.locale'),
                     'localeUri' => $locale ? "/{$locale}" : '',
                     'localePreferred' => $preferredLocale,

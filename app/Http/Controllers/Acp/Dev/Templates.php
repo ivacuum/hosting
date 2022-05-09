@@ -2,9 +2,8 @@
 
 use App\Action\FindTripTemplatesAction;
 use App\Trip;
-use Ivacuum\Generic\Controllers\Acp\BaseController;
 
-class Templates extends BaseController
+class Templates
 {
     public function index(FindTripTemplatesAction $findTripTemplates)
     {
@@ -54,7 +53,7 @@ class Templates extends BaseController
             ]);
         }
 
-        return view($this->view, [
+        return view('acp.dev.templates.index', [
             'total' => $total,
             'templates' => $templates,
         ]);
@@ -106,7 +105,7 @@ class Templates extends BaseController
             \File::put($path, implode("\n", $result));
         }
 
-        return view($this->view, [
+        return view('acp.dev.templates.show', [
             'trip' => $trip,
             'extends' => "life.trips.{$template}",
             'metaTitle' => $slug,

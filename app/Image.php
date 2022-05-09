@@ -3,7 +3,6 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Ivacuum\Generic\Services\ImageConverter;
-use Ivacuum\Generic\Traits\RecordsActivity;
 
 /**
  * @property int $id
@@ -21,9 +20,6 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  */
 class Image extends Model
 {
-    use RecordsActivity;
-
-    protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $perPage = 50;
 
     protected $casts = [

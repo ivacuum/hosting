@@ -3,7 +3,7 @@
 use App\Domain\TripStatus;
 use App\Trip;
 
-class TripsRss extends Controller
+class TripsRss
 {
     public function __invoke()
     {

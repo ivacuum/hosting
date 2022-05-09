@@ -16,9 +16,9 @@
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ Acp::edit($model) }}">
       <td><img class="block flag-16 svg-shadow" src="{{ $model->flagUrl() }}" alt=""></td>
-      <td><a href="{{ $model->wwwAcp() }}">{{ $model->title }}</a></td>
+      <td><a href="{{ Acp::show($model) }}">{{ $model->title }}</a></td>
       <td><a href="{{ $model->www() }}">{{ $model->slug }}</a></td>
       <td class="md:text-right whitespace-nowrap">
         <a href="{{ $model->wwwAcpCities() }}">

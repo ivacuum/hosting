@@ -8,7 +8,7 @@ use App\Issue;
 use App\Limits\IssuesTodayLimit;
 use Ivacuum\Generic\Exceptions\FloodException;
 
-class Issues extends Controller
+class Issues
 {
     public function __invoke(
         IssuesTodayLimit $limits,

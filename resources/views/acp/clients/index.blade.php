@@ -11,10 +11,10 @@
   </tr>
   </thead>
   @foreach ($models as $model)
-  <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
+  <tr class="js-dblclick-edit" data-dblclick-url="{{ Acp::edit($model) }}">
     <td class="md:text-right">{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
     <td>
-      <a href="{{ path([$controller, 'show'], $model) }}">
+      <a href="{{ Acp::show($model) }}">
         {{ $model->name }}
       </a>
     </td>

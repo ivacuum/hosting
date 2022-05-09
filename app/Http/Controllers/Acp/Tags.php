@@ -1,40 +1,59 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Tag as Model;
-use Illuminate\Validation\Rule;
+use App\Action\Acp\ApplyIndexGoodsAction;
+use App\Action\Acp\ResponseToCreateAction;
+use App\Action\Acp\ResponseToDestroyAction;
+use App\Action\Acp\ResponseToEditAction;
+use App\Action\Acp\ResponseToShowAction;
+use App\Tag;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Routing\Controller;
 
-class Tags extends AbstractController
+class Tags extends Controller
 {
-    protected $sortDir = 'asc';
-    protected $sortKey = 'title';
-    protected $sortableKeys = ['title', 'views', 'photos_count'];
-    protected $showWithCount = ['photos'];
+    use AuthorizesRequests;
 
-    public function index()
+    public function __construct()
     {
-        $models = Model::query()
-            ->withCount('photos')
-            ->orderBy($this->getSortKey(), $this->getSortDir())
-            ->paginate(500);
-
-        return view($this->view, ['models' => $models]);
+        $this->authorizeResource(Tag::class);
     }
 
-    /**
-     * @param Model|null $model
-     * @return array
-     */
-    protected function rules($model = null)
+    public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        return [
-            'title_ru' => [
-                'required',
-                Rule::unique('tags', 'title_ru')->ignore($model),
-            ],
-            'title_en' => [
-                'required',
-                Rule::unique('tags', 'title_en')->ignore($model),
-            ],
-        ];
+        [$sortKey, $sortDir] = $applyIndexGoods->execute(
+            new Tag,
+            ['title', 'views', 'photos_count'],
+            'asc',
+            'title',
+        );
+
+        $models = Tag::query()
+            ->withCount('photos')
+            ->orderBy($sortKey, $sortDir)
+            ->paginate(500);
+
+        return view('acp.tags.index', [
+            'models' => $models,
+        ]);
+    }
+
+    public function create(Tag $tag, ResponseToCreateAction $responseToCreate)
+    {
+        return $responseToCreate->execute($tag);
+    }
+
+    public function destroy(Tag $tag, ResponseToDestroyAction $responseToDestroy)
+    {
+        return $responseToDestroy->execute($tag);
+    }
+
+    public function edit(Tag $tag, ResponseToEditAction $responseToEdit)
+    {
+        return $responseToEdit->execute($tag);
+    }
+
+    public function show(Tag $tag, ResponseToShowAction $responseToShow)
+    {
+        return $responseToShow->execute($tag, ['photos']);
     }
 }

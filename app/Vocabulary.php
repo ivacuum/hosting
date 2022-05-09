@@ -23,9 +23,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vocabulary extends Model
 {
     use Traits\BurnsAndResurrects;
-    use Traits\UserBurnableScope;
 
-    protected $fillable = ['sentences'];
     protected $perPage = 50;
 
     protected $casts = [

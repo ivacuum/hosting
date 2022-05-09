@@ -1,18 +1,33 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use App\Domain\TripStatus;
+use App\Action\Acp\ApplyIndexGoodsAction;
+use App\Action\Acp\ResponseToCreateAction;
+use App\Action\Acp\ResponseToDestroyAction;
+use App\Action\Acp\ResponseToEditAction;
+use App\Action\Acp\ResponseToShowAction;
 use App\Trip;
 use Illuminate\Database\Eloquent\Builder;
-use Ivacuum\Generic\Controllers\Acp\UsesLivewire;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Routing\Controller;
 
-class Trips extends AbstractController implements UsesLivewire
+class Trips extends Controller
 {
-    protected $sortKey = 'date_start';
-    protected $sortableKeys = ['date_start', 'views', 'comments_count', 'photos_count'];
-    protected $showWithCount = ['comments', 'photos'];
+    use AuthorizesRequests;
 
-    public function index()
+    public function __construct()
     {
+        $this->authorizeResource(Trip::class);
+    }
+
+    public function index(ApplyIndexGoodsAction $applyIndexGoods)
+    {
+        [$sortKey, $sortDir] = $applyIndexGoods->execute(
+            new Trip,
+            ['date_start', 'views', 'comments_count', 'photos_count'],
+            'desc',
+            'date_start',
+        );
+
         $q = request('q');
         $status = request('status');
         $cityId = request('city_id');
@@ -24,14 +39,34 @@ class Trips extends AbstractController implements UsesLivewire
             ->when($cityId, fn (Builder $query) => $query->where('city_id', $cityId))
             ->when($countryId, fn (Builder $query) => $query->whereRelation('city.country', 'country_id', $countryId))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
-            ->unless(null === $status, fn (Builder $query) => $query->where('status', TripStatus::from($status)))
+            ->unless(null === $status, fn (Builder $query) => $query->where('status', $status))
             ->when($q,
                 fn (Builder $query) => $query->where('id', $q)
                     ->orWhere(Trip::titleField(), 'LIKE', "%{$q}%")
                     ->orWhere('slug', 'LIKE', "%{$q}%"))
-            ->orderBy($this->getSortKey(), $this->getSortDir())
+            ->orderBy($sortKey, $sortDir)
             ->paginate(50);
 
-        return view($this->view, ['models' => $models]);
+        return view('acp.trips.index', ['models' => $models]);
+    }
+
+    public function create(Trip $trip, ResponseToCreateAction $responseToCreate)
+    {
+        return $responseToCreate->execute($trip);
+    }
+
+    public function destroy(Trip $trip, ResponseToDestroyAction $responseToDestroy)
+    {
+        return $responseToDestroy->execute($trip);
+    }
+
+    public function edit(Trip $trip, ResponseToEditAction $responseToEdit)
+    {
+        return $responseToEdit->execute($trip);
+    }
+
+    public function show(Trip $trip, ResponseToShowAction $responseToShow)
+    {
+        return $responseToShow->execute($trip, ['comments', 'photos']);
     }
 }

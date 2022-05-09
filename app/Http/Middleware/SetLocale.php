@@ -1,10 +1,11 @@
 <?php namespace App\Http\Middleware;
 
 use Carbon\CarbonImmutable;
+use Illuminate\Http\Request;
 
 class SetLocale
 {
-    public function handle($request, \Closure $next)
+    public function handle(Request $request, \Closure $next)
     {
         $defaultLocale = config('app.locale');
         $locale = $request->server->get('LARAVEL_LOCALE') ?? $defaultLocale;

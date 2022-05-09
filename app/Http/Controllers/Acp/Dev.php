@@ -1,23 +1,7 @@
 <?php namespace App\Http\Controllers\Acp;
 
-use Illuminate\Cookie\CookieJar;
-use Ivacuum\Generic\Controllers\Acp\BaseController;
-
-class Dev extends BaseController
+class Dev
 {
-    public function index()
-    {
-        return view($this->view);
-    }
-
-    public function debugbar(CookieJar $cookie)
-    {
-        $cookie->queue('debugbar', true, 60);
-
-        return redirect(path([self::class, 'index']))
-            ->with('message', 'Debugbar включен на час');
-    }
-
     // Для считывания последних строк лога
     // https://gist.github.com/lorenzos/1711e81a9162320fde20
     public function logs()
@@ -159,7 +143,7 @@ class Dev extends BaseController
             fclose($handle);
         }
 
-        return view($this->view, [
+        return view('acp.dev.logs', [
             'q' => $q,
             'lines' => $lines,
         ]);
@@ -167,14 +151,12 @@ class Dev extends BaseController
 
     public function svg()
     {
-        \Breadcrumbs::push(__($this->view));
-
         $icons = [];
 
         foreach (glob(resource_path('svg/*.svg')) as $icon) {
             $icons[] = basename($icon, '.svg');
         }
 
-        return view($this->view, ['icons' => $icons]);
+        return view('acp.dev.svg', ['icons' => $icons]);
     }
 }

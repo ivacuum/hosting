@@ -1,40 +1,56 @@
 <?php namespace App\Http\Controllers\Acp;
 
+use App\Action\Acp\ApplyIndexGoodsAction;
+use App\Action\Acp\ResponseToCreateAction;
+use App\Action\Acp\ResponseToDestroyAction;
+use App\Action\Acp\ResponseToEditAction;
+use App\Action\Acp\ResponseToShowAction;
 use App\Action\FetchRobotsTxtAction;
+use App\Action\GetRawWhoisDataAction;
+use App\Action\GetWhoisDataAction;
 use App\Domain;
-use App\Domain as Model;
+use App\Domain\DomainMonitoring;
+use App\Events\DomainWhoisUpdated;
 use App\Mail\DomainMailboxesMail;
 use App\Rules\Email;
 use App\Services\YandexPdd\YandexPddClient;
-use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Routing\Controller;
 
-class Domains extends AbstractController
+class Domains extends Controller
 {
-    const DEFAULT_ORDER_BY = 'domain';
+    use AuthorizesRequests;
 
-    public function index()
+    public function __construct()
     {
+        $this->authorizeResource(Domain::class);
+    }
+
+    public function index(ApplyIndexGoodsAction $applyIndexGoods)
+    {
+        [$sortKey, $sortDir] = $applyIndexGoods->execute(
+            new Domain,
+            ['domain', 'registered_at', 'paid_till'],
+            'asc',
+            'domain',
+        );
+
         $q = request('q');
-        $sort = request('sort');
         $filter = request('filter');
         $clientId = request('client_id');
         $yandexUserId = request('yandex_user_id');
 
-        if (!in_array($sort, ['domain', 'registered_at', 'paid_till'])) {
-            $sort = static::DEFAULT_ORDER_BY;
-        }
-
         $models = match ($filter) {
-            'external' => Model::where('status', 1)
+            'external' => Domain::where('status', 1)
                 ->whereDomainControl(0),
-            'inactive' => Model::where('status', 0),
-            'no-ns' => Model::where('status', 1)
+            'inactive' => Domain::where('status', DomainMonitoring::No),
+            'no-ns' => Domain::where('status', 1)
                 ->whereNs(''),
-            'no-server' => Model::where('status', 1)
+            'no-server' => Domain::where('status', 1)
                 ->whereIpv4(''),
-            'orphan' => Model::whereOrphan(1),
-            'trashed' => Model::onlyTrashed(),
-            default => Model::where('status', 1),
+            'orphan' => Domain::whereOrphan(1),
+            'trashed' => Domain::onlyTrashed(),
+            default => Domain::where('status', 1),
         };
 
         if ($q) {
@@ -47,12 +63,10 @@ class Domains extends AbstractController
             $models = $models->where('yandex_user_id', $yandexUserId);
         }
 
-        $models = $models->orderBy($sort)
+        $models = $models->orderBy($sortKey, $sortDir)
             ->paginate();
 
-        return view($this->view, [
-            'q' => $q,
-            'sort' => $sort,
+        return view('acp.domains.index', [
             'filter' => $filter,
             'models' => $models,
         ]);
@@ -98,31 +112,31 @@ class Domains extends AbstractController
         switch ($action) {
             case 'activate':
 
-                Model::whereIn('id', $ids)->update(['status' => 1]);
+                Domain::whereIn('id', $ids)->update(['status' => 1]);
 
                 break;
             case 'deactivate':
 
-                Model::whereIn('id', $ids)->update(['status' => 0]);
+                Domain::whereIn('id', $ids)->update(['status' => 0]);
 
                 break;
             case 'delete':
 
-                Model::destroy($ids);
+                Domain::destroy($ids);
 
                 break;
             case 'force_delete':
 
                 $params['filter'] = 'trashed';
 
-                Model::whereIn('id', $ids)->onlyTrashed()->forceDelete();
+                Domain::whereIn('id', $ids)->onlyTrashed()->forceDelete();
 
                 break;
             case 'restore':
 
                 $params['filter'] = 'trashed';
 
-                Model::whereIn('id', $ids)->onlyTrashed()->restore();
+                Domain::whereIn('id', $ids)->onlyTrashed()->restore();
 
                 break;
         }
@@ -132,9 +146,7 @@ class Domains extends AbstractController
 
     public function mailboxes(Domain $domain, YandexPddClient $yandexPdd)
     {
-        $this->breadcrumbsModelSubpage($domain);
-
-        return view($this->view, [
+        return view('acp.domains.mailboxes', [
             'model' => $domain,
             'mailboxes' => $yandexPdd->emails($domain->yandexUser->token, $domain->domain),
         ]);
@@ -142,67 +154,43 @@ class Domains extends AbstractController
 
     public function robots(Domain $domain, FetchRobotsTxtAction $fetchRobotsTxt)
     {
-        $this->breadcrumbsModelSubpage($domain);
-
-        return view($this->view, [
+        return view('acp.domains.robots', [
             'model' => $domain,
             'robots' => $fetchRobotsTxt->execute($domain->domain),
         ]);
     }
 
-    public function whois(Domain $domain)
+    public function whois(Domain $domain, GetWhoisDataAction $getWhoisData, GetRawWhoisDataAction $getRawWhoisData)
     {
-        $this->breadcrumbsModelSubpage($domain);
+        if (null !== $data = $getWhoisData->execute($domain->domain)) {
+            event(new DomainWhoisUpdated($domain, $data));
 
-        $domain->updateWhois();
+            $domain->update($data);
+        }
 
-        return view($this->view, [
+        return view('acp.domains.whois', [
             'model' => $domain,
-            'whois' => trim($domain->getWhoisData()),
+            'whois' => $getRawWhoisData->execute($domain->domain),
         ]);
     }
 
-    /**
-     * Служебный метод для автодополнения кода
-     *
-     * @param string $id
-     * @return Model
-     */
-    protected function getModel($id)
+    public function create(Domain $domain, ResponseToCreateAction $responseToCreate)
     {
-        return value(parent::getModel($id));
+        return $responseToCreate->execute($domain);
     }
 
-    /**
-     * @param Model|null $model
-     * @return array
-     */
-    protected function rules($model = null)
+    public function destroy(Domain $domain, ResponseToDestroyAction $responseToDestroy)
     {
-        return [
-            'domain' => [
-                'required',
-                'min:3',
-                Rule::unique('domains', 'domain')->ignore($model),
-            ],
-            'status' => 'boolean',
-            'domain_control' => 'boolean',
-        ];
+        return $responseToDestroy->execute($domain);
     }
 
-    protected function updateModel($model)
+    public function edit(Domain $domain, ResponseToEditAction $responseToEdit)
     {
-        $input = $this->requestDataForModel();
+        return $responseToEdit->execute($domain);
+    }
 
-        /* Сохранение ранее указанных паролей */
-        $passwords = request(['cms_pass', 'ftp_pass', 'ssh_pass', 'db_pass']);
-
-        foreach ($passwords as $key => $value) {
-            if (!$value) {
-                unset($input[$key]);
-            }
-        }
-
-        $model->update($input);
+    public function show(Domain $domain, ResponseToShowAction $responseToShow)
+    {
+        return $responseToShow->execute($domain);
     }
 }

@@ -1,33 +1,35 @@
-<form class="grid grid-cols-1 gap-4" wire:submit.prevent="submit">
-  <?php LivewireForm::model(new App\Trip); ?>
+<?php /** @var \App\Http\Livewire\Acp\TripForm $this */ ?>
 
-  @if ($modelId)
-    {{ LivewireForm::text('title_ru')->required() }}
-    {{ LivewireForm::text('title_en')->required() }}
+<form class="grid grid-cols-1 gap-4" wire:submit.prevent="submit">
+  <?php $form = LivewireForm::model($this->trip); ?>
+
+  @if($this->trip->exists)
+    {{ $form->text('trip.title_ru')->required() }}
+    {{ $form->text('trip.title_en')->required() }}
   @endif
 
-  {{ LivewireForm::select('city_id')->required()->values(resolve(App\Action\ListCitiesForInputSelectAction::class)->execute()) }}
+  {{ $form->select('trip.city_id')->required()->values($this->cityIds) }}
 
-  {{ LivewireForm::text('slug')->required() }}
+  {{ $form->text('trip.slug')->required() }}
 
-  {{ LivewireForm::text('date_start')->required() }}
-  {{ LivewireForm::text('date_end')->required() }}
+  {{ $form->text('trip.date_start')->required() }}
+  {{ $form->text('trip.date_end')->required() }}
 
-  {{ LivewireForm::radio('status')->required()->values(App\Domain\TripStatus::labels()) }}
+  {{ $form->radio('trip.status')->required()->values(App\Domain\TripStatus::labels()) }}
 
-  {{ LivewireForm::text('meta_description_ru') }}
-  {{ LivewireForm::text('meta_description_en') }}
-  {{ LivewireForm::text('meta_image') }}
+  {{ $form->text('trip.meta_description_ru') }}
+  {{ $form->text('trip.meta_description_en') }}
+  {{ $form->text('trip.meta_image') }}
 
-  @if ($metaImageSrc)
+  @if ($this->trip->metaImage())
     <div>
-      <img class="max-w-full h-auto rounded" src="{{ $metaImageSrc }}" alt="">
+      <img class="max-w-full h-auto rounded" src="{{ $this->trip->metaImage() }}" alt="">
     </div>
   @endif
 
   <div class="sticky-bottom-buttons">
     <button type="submit" class="btn btn-primary">
-      @lang($modelId ? 'acp.save' : 'acp.trips.add')
+      @lang($this->trip->exists ? 'acp.save' : 'acp.trips.add')
     </button>
   </div>
 </form>

@@ -3,14 +3,17 @@
 use App\Action\FindRelatedMagnetsAction;
 use App\Action\FindTagsInMagnetTitleAction;
 use App\Action\FormatMagnetDateAction;
-use Illuminate\Database\Eloquent\Builder;
+use App\Domain\CommentStatus;
+use App\Domain\MagnetCategory;
+use App\Domain\MagnetStatus;
+use App\Scope\MagnetPublishedScope;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 
 /**
  * @property int $id
  * @property int $user_id
- * @property Domain\MagnetCategory $category_id
+ * @property MagnetCategory $category_id
  * @property int $rto_id
  * @property string $title
  * @property string $html
@@ -18,7 +21,7 @@ use Laravel\Scout\Searchable;
  * @property int $size
  * @property string $info_hash
  * @property string $announcer
- * @property Domain\MagnetStatus $status
+ * @property MagnetStatus $status
  * @property int $clicks
  * @property int $views
  * @property \Carbon\CarbonImmutable $registered_at
@@ -55,12 +58,11 @@ class Magnet extends Model
         'views' => 'int',
         'clicks' => 'int',
         'rto_id' => 'int',
-        'status' => Domain\MagnetStatus::class,
+        'status' => MagnetStatus::class,
         'user_id' => 'int',
-        'category_id' => Domain\MagnetCategory::class,
+        'category_id' => MagnetCategory::class,
     ];
 
-    protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $hidden = ['html'];
     protected $dates = ['registered_at'];
     protected $perPage = 50;
@@ -73,18 +75,12 @@ class Magnet extends Model
 
     public function commentsPublished()
     {
-        return $this->comments()->where('status', Domain\CommentStatus::Published);
+        return $this->comments()->where('status', CommentStatus::Published);
     }
 
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    // Scopes
-    public function scopePublished(Builder $query)
-    {
-        return $query->where('status', Domain\MagnetStatus::Published);
     }
 
     // Methods
@@ -95,7 +91,7 @@ class Magnet extends Model
 
     public function canBeCommented(): bool
     {
-        return $this->status === Domain\MagnetStatus::Published;
+        return $this->status === MagnetStatus::Published;
     }
 
     public function externalLink(): string
@@ -146,7 +142,7 @@ class Magnet extends Model
         }
 
         return $this->whereIn('id', $ids)
-            ->published()
+            ->tap(new MagnetPublishedScope)
             ->get(static::LIST_COLUMNS);
     }
 
@@ -163,7 +159,7 @@ class Magnet extends Model
 
     public function shouldBeSearchable()
     {
-        return $this->status === Domain\MagnetStatus::Published;
+        return $this->status === MagnetStatus::Published;
     }
 
     public function titleTags(): array

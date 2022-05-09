@@ -1,5 +1,1 @@
-@include('tpl.form_errors')
-
-{{ Form::text('name')->required() }}
-{{ Form::text('email') }}
-{{ Form::textarea('text')->wide() }}
+@livewire(App\Http\Livewire\Acp\ClientForm::class, ['client' => $model])

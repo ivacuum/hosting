@@ -6,6 +6,7 @@ use App\Domain\GigStatus;
 use App\Domain\TripStatus;
 use App\Gig;
 use App\News;
+use App\Scope\NewsPublishedScope;
 use App\Trip;
 use Ivacuum\Generic\Commands\SitemapBuild as BaseSitemapBuild;
 
@@ -211,7 +212,7 @@ class SitemapBuild extends BaseSitemapBuild
     {
         return News::query()
             ->select(['id', 'locale'])
-            ->published()
+            ->tap(new NewsPublishedScope)
             ->orderBy('id')
             ->lazy();
     }

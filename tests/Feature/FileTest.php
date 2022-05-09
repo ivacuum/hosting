@@ -8,12 +8,6 @@ class FileTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testIndex()
-    {
-        $this->get('files')
-            ->assertOk();
-    }
-
     public function testDownload()
     {
         $file = FileFactory::new()->create();
@@ -25,5 +19,11 @@ class FileTest extends TestCase
         $file->refresh();
 
         $this->assertEquals($downloads + 1, $file->downloads);
+    }
+
+    public function testIndex()
+    {
+        $this->get('files')
+            ->assertOk();
     }
 }

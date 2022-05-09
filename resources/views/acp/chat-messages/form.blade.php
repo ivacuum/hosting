@@ -1,5 +1,1 @@
-@include('tpl.form_errors')
-
-{{ Form::radio('status')->required()->values(App\Domain\ChatMessageStatus::labels()) }}
-
-{{ Form::textarea('text')->required()->wide() }}
+@livewire(App\Http\Livewire\Acp\ChatMessageForm::class, ['chatMessage' => $model])

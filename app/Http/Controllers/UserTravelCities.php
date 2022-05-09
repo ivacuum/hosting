@@ -3,13 +3,15 @@
 use App\Action\GetTripCountByCitiesAction;
 use App\City;
 use App\Domain\TripStatus;
+use App\Scope\TripVisibleScope;
 use App\Trip;
+use App\User;
 
 class UserTravelCities extends UserTravel
 {
-    public function index(string $login, GetTripCountByCitiesAction $getTripCountByCities)
+    public function index(User $traveler, GetTripCountByCitiesAction $getTripCountByCities)
     {
-        $tripCount = $getTripCountByCities->execute($this->traveler->id);
+        $tripCount = $getTripCountByCities->execute($traveler->id);
 
         $cities = \CityHelper::cachedById()
             ->filter(fn (City $city) => isset($tripCount[$city->id]))
@@ -19,21 +21,21 @@ class UserTravelCities extends UserTravel
             })
             ->sortBy(City::titleField());
 
-        \Breadcrumbs::push(__('Заметки'), "@{$login}/travel");
+        \Breadcrumbs::push(__('Заметки'), "@{$traveler->login}/travel");
         \Breadcrumbs::push(__('Города'));
 
         return view('user-travel.cities', ['cities' => $cities]);
     }
 
-    public function show(string $login, string $slug)
+    public function show(User $traveler, string $slug)
     {
         /** @var City $city */
         $city = \CityHelper::findBySlugOrFail($slug);
 
         $trips = $city->trips()
-            ->whereBelongsTo($this->traveler)
+            ->whereBelongsTo($traveler)
             ->withCount('photos')
-            ->visible()
+            ->tap(new TripVisibleScope)
             ->get()
             ->groupBy(fn (Trip $model) => $model->year);
 
@@ -50,9 +52,9 @@ class UserTravelCities extends UserTravel
 
         $city->loadCountry();
 
-        \Breadcrumbs::push(__('Заметки'), "@{$login}/travel");
-        \Breadcrumbs::push(__('Страны'), "@{$login}/travel/countries");
-        \Breadcrumbs::push($city->country->title, "@{$login}/travel/countries/{$city->country->slug}");
+        \Breadcrumbs::push(__('Заметки'), "@{$traveler->login}/travel");
+        \Breadcrumbs::push(__('Страны'), "@{$traveler->login}/travel/countries");
+        \Breadcrumbs::push($city->country->title, "@{$traveler->login}/travel/countries/{$city->country->slug}");
         \Breadcrumbs::push($city->title);
 
         return view('user-travel.city', [

@@ -53,8 +53,10 @@ class ExternalIdentityFactory
         $model->user_id = $this->userId;
         $model->provider = $this->provider ?? $this->faker->randomElement(self::PROVIDERS);
 
-        if ($this->userFactory && !$model->user_id) {
-            $model->user_id = $this->userFactory->create()->id;
+        if (!$model->user_id) {
+            $model->user_id = ($this->userFactory ?? UserFactory::new())
+                ->create()
+                ->id;
         }
 
         return $model;
@@ -93,10 +95,10 @@ class ExternalIdentityFactory
         return $factory;
     }
 
-    public function withUser(UserFactory $userFactory = null)
+    public function withUser(UserFactory $userFactory)
     {
         $factory = clone $this;
-        $factory->userFactory = $userFactory ?? UserFactory::new();
+        $factory->userFactory = $userFactory;
 
         return $factory;
     }

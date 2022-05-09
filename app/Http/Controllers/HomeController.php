@@ -2,7 +2,7 @@
 
 use App\Action\GetTripsPublishedWithCoverAction;
 
-class HomeController extends Controller
+class HomeController
 {
     public function __invoke(GetTripsPublishedWithCoverAction $getTripsPublishedWithCover)
     {

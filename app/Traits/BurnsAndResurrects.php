@@ -8,7 +8,7 @@ trait BurnsAndResurrects
     public function burn(int $userId): ?Burnable
     {
         try {
-            return $this->burnable()->create(['user_id' => $userId]);
+            return value($this->burnable()->create(['user_id' => $userId]));
         } catch (QueryException) {
             return null;
         }

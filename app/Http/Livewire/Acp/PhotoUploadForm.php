@@ -1,5 +1,7 @@
 <?php namespace App\Http\Livewire\Acp;
 
+use App\Action\ListGigsForInputSelectAction;
+use App\Action\ListTripsForInputSelectAction;
 use App\Domain\PhotoStatus;
 use App\Gig;
 use App\Photo;
@@ -12,6 +14,10 @@ use Livewire\Component;
 use Livewire\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 
+/**
+ * @property $gigIds
+ * @property $tripIds
+ */
 class PhotoUploadForm extends Component
 {
     use AuthorizesRequests;
@@ -23,6 +29,16 @@ class PhotoUploadForm extends Component
     public int $uploaded = 0;
     public array $thumbnails = [];
     public TemporaryUploadedFile|string|null $file = null;
+
+    public function getGigIdsProperty(ListGigsForInputSelectAction $listGigsForInputSelect)
+    {
+        return $listGigsForInputSelect->execute();
+    }
+
+    public function getTripIdsProperty(ListTripsForInputSelectAction $listTripsForInputSelect)
+    {
+        return $listTripsForInputSelect->execute();
+    }
 
     public function rules()
     {

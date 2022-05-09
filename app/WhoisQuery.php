@@ -1,5 +1,7 @@
 <?php namespace App;
 
+use App\Domain\CacheKey;
+
 class WhoisQuery
 {
     protected $data;
@@ -95,7 +97,7 @@ class WhoisQuery
             return "Domainname isn't valid!";
         }
 
-        $cacheEntry = Domain\CacheKey::DomainsWhois->key("{$this->subdomain}.{$this->tlds}");
+        $cacheEntry = CacheKey::DomainsWhois->key("{$this->subdomain}.{$this->tlds}");
         $whoisServer = $this->servers[$this->tlds][0];
 
         if (!$whoisServer) {
@@ -104,7 +106,7 @@ class WhoisQuery
 
         return $this->data = \Cache::remember(
             $cacheEntry,
-            Domain\CacheKey::DomainsWhois->ttl(),
+            CacheKey::DomainsWhois->ttl(),
             function () use ($whoisServer) {
                 if (preg_match("/^https?:\/\//i", $whoisServer)) {
                     $string = $this->curlRequest($whoisServer);

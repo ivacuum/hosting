@@ -15,6 +15,11 @@ class NotifyUsersAboutComment
     public function handle(CommentPublished $event)
     {
         $model = $event->comment->rel;
+
+        if ($model === null) {
+            return;
+        }
+
         $users = $event->comment->usersForNotification($model);
 
         if ($model instanceof Issue) {

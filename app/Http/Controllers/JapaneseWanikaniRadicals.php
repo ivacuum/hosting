@@ -1,9 +1,10 @@
 <?php namespace App\Http\Controllers;
 
 use App\Radical;
+use App\Scope\UserBurnableScope;
 use Illuminate\Http\Request;
 
-class JapaneseWanikaniRadicals extends Controller
+class JapaneseWanikaniRadicals
 {
     public function index(Request $request)
     {
@@ -19,8 +20,9 @@ class JapaneseWanikaniRadicals extends Controller
     public function show(string $meaning)
     {
         /** @var Radical $radical */
-        $radical = Radical::where('meaning', $meaning)
-            ->userBurnable(auth()->id())
+        $radical = Radical::query()
+            ->where('meaning', $meaning)
+            ->tap(new UserBurnableScope(auth()->id()))
             ->firstOrFail();
 
         \Breadcrumbs::push(__('Уровень :level', ['level' => $radical->level]), "japanese/wanikani/level/{$radical->level}");

@@ -23,11 +23,11 @@ class MyProfileUpdateForm extends AbstractForm
         return [
             'email' => [
                 ...Email::rules(),
-                Rule::unique('users')->ignore($user),
+                Rule::unique(User::class)->ignore($user),
             ],
             'username' => [
                 ...Username::rules(),
-                Rule::unique('users', 'login')->ignore($user),
+                Rule::unique(User::class, 'login')->ignore($user),
             ],
         ];
     }

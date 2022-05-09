@@ -1,13 +1,14 @@
 <?php namespace App\Http\Controllers;
 
+use App\Scope\UserActiveScope;
 use App\User;
 
-class Users extends Controller
+class Users
 {
     public function index()
     {
         $users = User::query()
-            ->active()
+            ->tap(new UserActiveScope)
             ->orderBy('id')
             ->simplePaginate();
 

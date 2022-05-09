@@ -2,6 +2,7 @@
 
 use App\Factory\PhotoFactory;
 use App\Factory\UserFactory;
+use App\Http\Livewire\Acp\PhotoEditForm;
 use App\Http\Livewire\Acp\PhotoUploadForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -52,7 +53,14 @@ class AcpPhotosTest extends TestCase
     {
         $photo = PhotoFactory::new()->withTag()->withTrip()->create();
 
-        $this->put("acp/photos/{$photo->id}", PhotoFactory::new()->make()->toArray())
-            ->assertRedirect('acp/photos');
+        \Livewire::test(PhotoEditForm::class, ['photo' => $photo])
+            ->set('tags', [])
+            ->call('submit')
+            ->assertHasNoErrors()
+            ->assertRedirect('/acp/photos');
+
+        $photo->refresh();
+
+        $this->assertCount(0, $photo->tags);
     }
 }

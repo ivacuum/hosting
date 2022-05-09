@@ -36,7 +36,7 @@ class TripFactory
         $model->slug = \Str::slug($title);
         $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
         $model->status = $this->status;
-        $model->city_id = $this->cityId ?? CityFactory::new()->withCountry()->create()->id;
+        $model->city_id = $this->cityId ?? CityFactory::new()->create()->id;
         $model->date_end = $dateEnd;
         $model->markdown = '';
         $model->title_ru = $title;

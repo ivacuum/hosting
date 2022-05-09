@@ -28,10 +28,12 @@ class Country extends Model
     use Traits\HasLocalizedTitle;
     use Traits\HasTripsMetaDescription;
 
-    protected $guarded = ['created_at', 'updated_at'];
-
     protected $casts = [
         'views' => 'int',
+    ];
+
+    protected $attributes = [
+        'emoji' => '',
     ];
 
     // Relations

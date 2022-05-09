@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Domain\DcppHubStatus;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -7,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $title
  * @property string $address
  * @property int $port
- * @property Domain\DcppHubStatus $status
+ * @property DcppHubStatus $status
  * @property int $is_online
  * @property int $clicks
  * @property \Carbon\CarbonImmutable $queried_at
@@ -19,12 +20,16 @@ use Illuminate\Database\Eloquent\Model;
 class DcppHub extends Model
 {
     protected $dates = ['queried_at'];
-    protected $guarded = ['created_at', 'updated_at'];
 
     protected $casts = [
         'port' => 'int',
-        'status' => Domain\DcppHubStatus::class,
+        'status' => DcppHubStatus::class,
         'clicks' => 'int',
+    ];
+
+    protected $attributes = [
+        'port' => 411,
+        'status' => DcppHubStatus::Published,
     ];
 
     public function breadcrumb(): string

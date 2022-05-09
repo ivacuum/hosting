@@ -1,10 +1,11 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests\TripStoreFormForm;
+use App\Action\RedirectAfterUpdateAction;
+use App\Http\Requests\TripStoreForm;
 use App\Http\Requests\TripUpdateForm;
 use App\Trip;
 
-class MyTrips extends Controller
+class MyTrips
 {
     public function index()
     {
@@ -34,7 +35,7 @@ class MyTrips extends Controller
         return view('my.trips.edit', ['model' => $trip]);
     }
 
-    public function store(TripStoreFormForm $request)
+    public function store(TripStoreForm $request)
     {
         /** @var \App\User $user */
         $user = $request->user();
@@ -52,10 +53,10 @@ class MyTrips extends Controller
         $trip->date_start = $request->input('date_start');
         $trip->save();
 
-        return $this->redirectAfterStore($trip);
+        return redirect(path([static::class, 'index']));
     }
 
-    public function update(Trip $trip, TripUpdateForm $request)
+    public function update(Trip $trip, TripUpdateForm $request, RedirectAfterUpdateAction $redirectAfterUpdate)
     {
         $city = \CityHelper::findByIdOrFail($request->input('city_id'));
 
@@ -70,6 +71,6 @@ class MyTrips extends Controller
 
         $trip->save();
 
-        return $this->redirectAfterUpdate($trip);
+        return $redirectAfterUpdate->execute($trip);
     }
 }

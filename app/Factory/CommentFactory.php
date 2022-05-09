@@ -14,6 +14,7 @@ class CommentFactory
     private $relId;
     private $userId;
     private $relType;
+    private CommentStatus $status = CommentStatus::Published;
 
     private ?NewsFactory $newsFactory = null;
     private ?MagnetFactory $magnetFactory = null;
@@ -30,7 +31,7 @@ class CommentFactory
     {
         $model = new Comment;
         $model->html = $this->faker->text;
-        $model->status = CommentStatus::Published;
+        $model->status = $this->status;
         $model->rel_id = $this->relId ?? 0;
         $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
         $model->rel_type = $this->relType ?? (new News)->getMorphClass();

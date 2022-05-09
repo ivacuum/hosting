@@ -2,7 +2,7 @@
 
 use App\Trip;
 
-class TripInstagramCoverController extends AbstractController
+class TripInstagramCoverController
 {
     public function __invoke(Trip $trip)
     {
@@ -11,10 +11,5 @@ class TripInstagramCoverController extends AbstractController
         }
 
         return view('acp.trips.instagram-cover', ['trip' => $trip]);
-    }
-
-    protected function getModelName(): string
-    {
-        return Trip::class;
     }
 }

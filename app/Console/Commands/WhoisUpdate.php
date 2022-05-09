@@ -1,6 +1,7 @@
 <?php namespace App\Console\Commands;
 
 use App\Domain;
+use App\Scope\DomainWhoisReadyScope;
 use Ivacuum\Generic\Commands\Command;
 
 class WhoisUpdate extends Command
@@ -10,7 +11,7 @@ class WhoisUpdate extends Command
 
     public function handle()
     {
-        foreach (Domain::whoisReady()->orderBy('paid_till')->get() as $domain) {
+        foreach (Domain::tap(new DomainWhoisReadyScope)->orderBy('paid_till')->get() as $domain) {
             $result = $domain->updateWhois();
 
             if (false === $result) {

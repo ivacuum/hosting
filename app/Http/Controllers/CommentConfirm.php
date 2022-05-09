@@ -3,7 +3,7 @@
 use App\Comment;
 use App\Domain\CommentStatus;
 
-class CommentConfirm extends Controller
+class CommentConfirm
 {
     public function __invoke(Comment $comment)
     {

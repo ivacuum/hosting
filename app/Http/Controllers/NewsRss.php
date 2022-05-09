@@ -3,7 +3,7 @@
 use App\Domain\NewsStatus;
 use App\News;
 
-class NewsRss extends Controller
+class NewsRss
 {
     public function __invoke()
     {

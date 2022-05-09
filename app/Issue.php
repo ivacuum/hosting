@@ -1,12 +1,13 @@
 <?php namespace App;
 
+use App\Domain\CommentStatus;
+use App\Domain\IssueStatus;
 use Illuminate\Database\Eloquent\Model;
-use Ivacuum\Generic\Traits\RecordsActivity;
 
 /**
  * @property int $id
  * @property int $user_id
- * @property Domain\IssueStatus $status
+ * @property IssueStatus $status
  * @property string $name
  * @property string $email
  * @property string $title
@@ -25,13 +26,10 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  */
 class Issue extends Model
 {
-    use RecordsActivity;
-
-    protected $guarded = ['created_at', 'updated_at'];
     protected $perPage = 50;
 
     protected $casts = [
-        'status' => Domain\IssueStatus::class,
+        'status' => IssueStatus::class,
         'user_id' => 'int',
     ];
 
@@ -43,7 +41,7 @@ class Issue extends Model
 
     public function commentsPublished()
     {
-        return $this->comments()->where('status', Domain\CommentStatus::Published);
+        return $this->comments()->where('status', CommentStatus::Published);
     }
 
     public function emails()
@@ -64,16 +62,16 @@ class Issue extends Model
 
     public function canBeClosed(): bool
     {
-        return $this->status === Domain\IssueStatus::Open;
+        return $this->status === IssueStatus::Open;
     }
 
     public function canBeCommented(): bool
     {
-        return $this->status === Domain\IssueStatus::Open;
+        return $this->status === IssueStatus::Open;
     }
 
     public function canBeOpened(): bool
     {
-        return $this->status === Domain\IssueStatus::Closed;
+        return $this->status === IssueStatus::Closed;
     }
 }

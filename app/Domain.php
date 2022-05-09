@@ -1,7 +1,6 @@
 <?php namespace App;
 
-use Carbon\CarbonImmutable;
-use Illuminate\Database\Eloquent\Builder;
+use App\Domain\DomainMonitoring;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -10,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $client_id
  * @property int $yandex_user_id
  * @property string $domain
- * @property int $status
+ * @property DomainMonitoring $status
  * @property int $domain_control
  * @property int $orphan
  * @property string $ipv4
@@ -32,6 +31,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $db_pma
  * @property string $db_host
  * @property string $db_user
+ * @property string $db_pass
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  * @property \Carbon\CarbonImmutable $registered_at
@@ -47,18 +47,27 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Domain extends Model
 {
-    protected $guarded = ['created_at', 'updated_at', 'raw', 'goto'];
     protected $hidden = ['cms_pass', 'ftp_pass', 'ssh_pass', 'db_pass'];
     protected $dates = ['mailed_at', 'queried_at', 'registered_at', 'paid_till'];
     protected $perPage = 50;
 
     protected $casts = [
         'orphan' => 'int',
-        'status' => 'int',
+        'status' => DomainMonitoring::class,
         'alias_id' => 'int',
         'client_id' => 'int',
         'domain_control' => 'int',
         'yandex_user_id' => 'int',
+    ];
+
+    protected $attributes = [
+        'text' => '',
+        'orphan' => 0,
+        'status' => DomainMonitoring::No,
+        'alias_id' => 0,
+        'client_id' => 0,
+        'domain_control' => 0,
+        'yandex_user_id' => 0,
     ];
 
     // Internal
@@ -88,52 +97,15 @@ class Domain extends Model
         return $this->belongsTo(YandexUser::class);
     }
 
-    // Scopes
-    public function scopeYandexReady(Builder $query, int $userId = null)
-    {
-        $query->where('status', 1)
-            ->orderBy('domain');
-
-        return $userId === null
-            ? $query->where('yandex_user_id', 0)
-            : $query->whereIn('yandex_user_id', [0, $userId]);
-    }
-
-    public function scopeWhoisReady(Builder $query)
-    {
-        return $query->where('status', 1)
-            ->where('queried_at', '<', (string) now()->subHours(3));
-    }
-
     // Methods
     public function breadcrumb()
     {
         return $this->domain;
     }
 
-    public function getWhoisData()
+    public function firstNsServer()
     {
-        $query = new WhoisQuery($this->domain);
-
-        return $query->getRaw();
-    }
-
-    public function getWhoisParsedData()
-    {
-        $query = new WhoisQuery($this->domain);
-        $data = array_merge($query->parse(), $query->getDnsRecords());
-
-        // whois failed
-        if (empty($data['registered_at'])) {
-            return [];
-        }
-
-        $data['registered_at'] = CarbonImmutable::parse($data['registered_at']);
-        $data['paid_till'] = CarbonImmutable::parse($data['paid_till']);
-        $data['queried_at'] = now();
-        $data['raw'] = $query->getRaw();
-
-        return $data;
+        return explode(' ', $this->ns)[0];
     }
 
     public function isExpired(): bool
@@ -157,23 +129,6 @@ class Domain extends Model
         return str_starts_with($domain, 'xn--');
     }
 
-    public function updateWhois()
-    {
-        if (empty($data = $this->getWhoisParsedData())) {
-            return false;
-        }
-
-//        if ($this->isExpired()) {
-//            unset($data['paid_till']);
-//        }
-
-        event(new Events\DomainWhoisUpdated($this, $data));
-
-        $this->update($data);
-
-        return true;
-    }
-
     public function whatServerIpv4()
     {
         return match ($this->ipv4) {
@@ -190,10 +145,5 @@ class Domain extends Model
             '77.222.56.62' => 'vh213.sweb.ru',
             default => str_replace(' ', '<br>', $this->ipv4),
         };
-    }
-
-    public function firstNsServer()
-    {
-        return explode(' ', $this->ns)[0];
     }
 }

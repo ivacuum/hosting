@@ -1,13 +1,12 @@
 <?php namespace App\Http\Controllers\Acp\Dev;
 
-use Ivacuum\Generic\Controllers\Acp\BaseController;
 use Ivacuum\Generic\Services\ImageConverter;
 
-class Thumbnails extends BaseController
+class Thumbnails
 {
     public function index()
     {
-        return view($this->view);
+        return view('acp.dev.thumbnails.index');
     }
 
     public function clean()

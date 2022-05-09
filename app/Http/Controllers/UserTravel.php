@@ -7,9 +7,9 @@ class UserTravel extends Controller
     /** @var \App\User $traveler */
     protected $traveler;
 
-    protected function alwaysCallBefore(string $login)
+    protected function alwaysCallBefore(User $traveler)
     {
-        $this->traveler = User::where('login', $login)->firstOrFail();
+        $this->traveler = $traveler;
 
         \Breadcrumbs::push("@{$this->traveler->login}", "@{$this->traveler->login}");
     }

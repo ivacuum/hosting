@@ -1,12 +1,14 @@
 <?php namespace App\Http\Controllers;
 
 use App\File;
+use App\Scope\FilePublishedScope;
 
-class Files extends Controller
+class Files
 {
     public function index()
     {
-        $models = File::published()
+        $models = File::query()
+            ->tap(new FilePublishedScope)
             ->orderByDesc('id')
             ->paginate();
 

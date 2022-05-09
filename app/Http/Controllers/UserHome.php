@@ -1,9 +1,11 @@
 <?php namespace App\Http\Controllers;
 
-class UserHome extends Controller
+use App\User;
+
+class UserHome
 {
-    public function index(string $login)
+    public function index(User $traveler)
     {
-        return redirect(path([UserTravelTrips::class, 'index'], $login));
+        return redirect(path([UserTravelTrips::class, 'index'], $traveler));
     }
 }

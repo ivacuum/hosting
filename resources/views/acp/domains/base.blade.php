@@ -2,14 +2,14 @@
 
 @section('model_menu')
 @component('tpl.list-group-item', [
-  'href' => path([$controller, 'whois'], $model),
+  'href' => path([App\Http\Controllers\Acp\Domains::class, 'whois'], $model),
   'isActive' => $view === "$tpl.whois",
 ])
   @lang("$tpl.whois")
 @endcomponent
 @if ($model->yandex_user_id)
   @component('tpl.list-group-item', [
-    'href' => path([$controller, 'mailboxes'], $model),
+    'href' => path([App\Http\Controllers\Acp\Domains::class, 'mailboxes'], $model),
     'isActive' => $view === "$tpl.mailboxes",
   ])
     @lang("$tpl.mailboxes")
@@ -26,7 +26,7 @@
   @svg (external-link)
 @endcomponent
 @component('tpl.list-group-item', [
-  'href' => path([$controller, 'robots'], $model),
+  'href' => path([App\Http\Controllers\Acp\Domains::class, 'robots'], $model),
   'isActive' => $view === "$tpl.robots",
 ])
   @lang("$tpl.robots")

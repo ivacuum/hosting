@@ -3,6 +3,9 @@
 use App\Domain\CacheKey;
 use App\Http\Response\PhotoPointCollectionResponse;
 use App\Photo;
+use App\Scope\PhotoForTripScope;
+use App\Scope\PhotoOnMapScope;
+use App\Scope\PhotoPublishedScope;
 use Illuminate\Cache\Repository;
 
 class GetPhotoPointsAction
@@ -20,9 +23,9 @@ class GetPhotoPointsAction
         return $this->cache->remember($key->value, $key->ttl(), function () use ($tripId) {
             $photos = Photo::query()
                 ->with('rel')
-                ->forTrip($tripId)
-                ->published()
-                ->onMap()
+                ->tap(new PhotoForTripScope($tripId))
+                ->tap(new PhotoPublishedScope)
+                ->tap(new PhotoOnMapScope)
                 ->orderBy('id')
                 ->get();
 

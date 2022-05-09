@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -15,11 +16,10 @@ use Illuminate\Database\Eloquent\Model;
  */
 class YandexUser extends Model
 {
-    protected $guarded = ['created_at', 'updated_at', 'goto'];
     protected $hidden = ['token'];
 
     // Relations
-    public function domains()
+    public function domains(): HasMany
     {
         return $this->hasMany(Domain::class)
             ->orderBy('domain');

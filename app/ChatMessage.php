@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Domain\ChatMessageStatus;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use League\CommonMark\CommonMarkConverter;
@@ -7,7 +8,7 @@ use League\CommonMark\CommonMarkConverter;
 /**
  * @property int $id
  * @property int $user_id
- * @property Domain\ChatMessageStatus $status
+ * @property ChatMessageStatus $status
  * @property string $text
  * @property string $html
  * @property string $ip
@@ -20,10 +21,8 @@ use League\CommonMark\CommonMarkConverter;
  */
 class ChatMessage extends Model
 {
-    protected $guarded = ['html', 'created_at', 'updated_at', 'goto'];
-
     protected $casts = [
-        'status' => Domain\ChatMessageStatus::class,
+        'status' => ChatMessageStatus::class,
         'user_id' => 'int',
     ];
 

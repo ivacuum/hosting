@@ -1,9 +1,10 @@
 <?php namespace App\Http\Controllers;
 
 use App\Kanji;
+use App\Scope\UserBurnableScope;
 use Illuminate\Http\Request;
 
-class JapaneseWanikaniKanji extends Controller
+class JapaneseWanikaniKanji
 {
     public function index(Request $request)
     {
@@ -19,8 +20,9 @@ class JapaneseWanikaniKanji extends Controller
     public function show(string $character)
     {
         /** @var Kanji $kanji */
-        $kanji = Kanji::where('character', $character)
-            ->userBurnable(auth()->id())
+        $kanji = Kanji::query()
+            ->where('character', $character)
+            ->tap(new UserBurnableScope(auth()->id()))
             ->firstOrFail();
 
         \Breadcrumbs::push(__('Уровень :level', ['level' => $kanji->level]), "japanese/wanikani/level/{$kanji->level}");

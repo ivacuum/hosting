@@ -1,8 +1,8 @@
 <?php namespace App;
 
+use App\Domain\NotificationDeliveryMethod;
 use App\Domain\UserStatus;
 use Illuminate\Contracts\Translation\HasLocalePreference;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
@@ -16,9 +16,9 @@ use Illuminate\Notifications\Notifiable;
  * @property int $status
  * @property string $locale
  * @property int $torrent_short_title
- * @property Domain\NotificationDeliveryMethod $notify_gigs
- * @property Domain\NotificationDeliveryMethod $notify_news
- * @property Domain\NotificationDeliveryMethod $notify_trips
+ * @property NotificationDeliveryMethod $notify_gigs
+ * @property NotificationDeliveryMethod $notify_news
+ * @property NotificationDeliveryMethod $notify_trips
  * @property string $avatar
  * @property int $telegram_id
  * @property string $ip
@@ -59,9 +59,9 @@ class User extends Authenticatable implements HasLocalePreference
 
     protected $casts = [
         'status' => 'int',
-        'notify_gigs' => Domain\NotificationDeliveryMethod::class,
-        'notify_news' => Domain\NotificationDeliveryMethod::class,
-        'notify_trips' => Domain\NotificationDeliveryMethod::class,
+        'notify_gigs' => NotificationDeliveryMethod::class,
+        'notify_news' => NotificationDeliveryMethod::class,
+        'notify_trips' => NotificationDeliveryMethod::class,
         'torrent_short_title' => 'int',
     ];
 
@@ -116,17 +116,6 @@ class User extends Authenticatable implements HasLocalePreference
     public function setPasswordAttribute(string $value): void
     {
         $this->attributes['password'] = $value ? \Hash::make($value) : '';
-    }
-
-    // Scopes
-    public function scopeActive(Builder $query)
-    {
-        return $query->where('status', UserStatus::Active);
-    }
-
-    public function scopeForAnnouncement(Builder $query)
-    {
-        return $query->where('last_login_at', '>', now()->subDays(7));
     }
 
     // Methods

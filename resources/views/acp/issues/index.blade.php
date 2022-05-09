@@ -21,7 +21,7 @@
         <td><input class="border-gray-300 models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
         <td class="md:text-right">{{ $model->id }}</td>
         <td>
-          <a href="{{ path([$controller, 'show'], $model) }}">
+          <a href="{{ Acp::show($model) }}">
             {{ $model->title }}
           </a>
           <div class="text-xs">
@@ -59,8 +59,11 @@
 </table>
 
 <div class="mt-4">
-  @include('acp.tpl.batch', ['actions' => [
-    'delete' => 'Удалить',
-  ]])
+  @include('acp.tpl.batch', [
+    'actions' => [
+      'delete' => 'Удалить',
+    ],
+    'url' => path([App\Http\Controllers\Acp\Issues::class, 'batch']),
+  ])
 </div>
 @endsection

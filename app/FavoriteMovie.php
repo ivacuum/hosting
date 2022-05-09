@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class FavoriteMovie extends Model
 {
-    protected $guarded = ['created_at', 'updated_at'];
     protected $perPage = 50;
 
     protected $casts = [

@@ -2,7 +2,7 @@
 
 use App\Http\Requests\MySettingsUpdateForm;
 
-class MySettings extends Controller
+class MySettings
 {
     public function edit()
     {

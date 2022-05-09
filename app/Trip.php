@@ -2,9 +2,9 @@
 
 use App\Action\FormatTripPeriodAction;
 use App\Action\FormatTripPeriodWithYearAction;
+use App\Domain\CommentStatus;
 use App\Domain\TripStatus;
 use Carbon\CarbonInterface;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Ivacuum\Generic\Utilities\TextImagesParser;
 use League\CommonMark\CommonMarkConverter;
@@ -18,7 +18,7 @@ use League\CommonMark\CommonMarkConverter;
  * @property string $slug
  * @property \Carbon\CarbonImmutable $date_start
  * @property \Carbon\CarbonImmutable $date_end
- * @property Domain\TripStatus $status
+ * @property TripStatus $status
  * @property string $markdown
  * @property string $html
  * @property string $meta_title_ru
@@ -37,11 +37,6 @@ use League\CommonMark\CommonMarkConverter;
  * @property \Illuminate\Database\Eloquent\Collection|Email[] $emails
  * @property \Illuminate\Database\Eloquent\Collection|Photo[] $photos
  * @property User $user
- *
- * @method static Builder next()
- * @method static Builder previous(int $nextTrips)
- * @method static Builder published()
- * @method static Builder visible()
  *
  * @property-read int $comments_count
  * @property-read string $meta_title
@@ -70,15 +65,21 @@ class Trip extends Model
     ];
 
     protected $attributes = [
+        'html' => '',
         'status' => TripStatus::Inactive,
+        'markdown' => '',
+        'meta_image' => '',
+        'meta_title_en' => '',
+        'meta_title_ru' => '',
+        'meta_description_en' => '',
+        'meta_description_ru' => '',
     ];
 
-    protected $guarded = ['id', 'html', 'views', 'created_at', 'updated_at'];
     protected $dates = ['date_start', 'date_end'];
 
     protected $casts = [
         'views' => 'int',
-        'status' => Domain\TripStatus::class,
+        'status' => TripStatus::class,
         'city_id' => 'int',
         'user_id' => 'int',
     ];
@@ -96,7 +97,7 @@ class Trip extends Model
 
     public function commentsPublished()
     {
-        return $this->comments()->where('status', Domain\CommentStatus::Published);
+        return $this->comments()->where('status', CommentStatus::Published);
     }
 
     public function emails()
@@ -112,43 +113,6 @@ class Trip extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    // Scopes
-    public function scopeNext(Builder $query)
-    {
-        return $query->where('user_id', $this->user_id)
-            ->where('date_start', '>=', $this->date_start)
-            ->where('status', TripStatus::Published)
-            ->where('id', '<>', $this->id)
-            ->orderBy('date_start')
-            ->take(2);
-    }
-
-    public function scopePrevious(Builder $query, int $nextTrips = 2)
-    {
-        // Всего 4 места под ссылки помимо текущей поездки
-        // prev prev current next next
-        // При просмотре последней поездки будет
-        // prev prev prev prev current
-        $take = 4 - $nextTrips;
-
-        return $query->where('user_id', $this->user_id)
-            ->where('date_start', '<=', $this->date_start)
-            ->where('status', TripStatus::Published)
-            ->where('id', '<>', $this->id)
-            ->orderByDesc('date_start')
-            ->take($take);
-    }
-
-    public function scopePublished(Builder $query)
-    {
-        return $query->where('status', TripStatus::Published);
-    }
-
-    public function scopeVisible(Builder $query)
-    {
-        return $query->where('status', '!=', TripStatus::Hidden);
     }
 
     // Attributes
@@ -192,7 +156,7 @@ class Trip extends Model
 
     public function canBeCommented(): bool
     {
-        return $this->status === Domain\TripStatus::Published;
+        return $this->status === TripStatus::Published;
     }
 
     public function cityTimeline()
@@ -294,6 +258,11 @@ class Trip extends Model
         }
 
         return $this->date_start->isoFormat('MMMM') . '–' . $this->date_end->isoFormat('MMMM');
+    }
+
+    protected function serializeDate(\DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 
     public function template(): string

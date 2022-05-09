@@ -50,7 +50,7 @@
           </a>
         </td>
         <td class="text-center">
-          <a class="screenshot-link" href="{{ path([$controller, 'show'], $model) }}">
+          <a class="screenshot-link" href="{{ Acp::show($model) }}">
             <img class="inline-block screenshot" src="{{ $model->thumbnailSecretUrl() }}" alt="">
           </a>
         </td>
@@ -69,14 +69,14 @@
         </td>
         <td>
           <div class="flex">
-            <a class="btn btn-default rounded-r-none" href="{{ path([$controller, 'view'], $model) }}">
+            <a class="btn btn-default rounded-r-none" href="{{ path([App\Http\Controllers\Acp\Images::class, 'view'], $model) }}">
               @svg (eye)
             </a>
             <a
               class="btn btn-default rounded-l-none -ml-px js-image-delete"
               data-confirm="{{ $model->views >= 3000 ? 'Запись будет удалена. Продолжить?' : '' }}"
               data-selector="#image_{{ $model->id }}"
-              href="{{ path([$controller, 'destroy'], $model) }}"
+              href="{{ path([App\Http\Controllers\Acp\Images::class, 'destroy'], $model) }}"
             >
               @svg (trash-o)
             </a>
@@ -88,9 +88,12 @@
 </table>
 
 <div class="mt-4">
-  @include('acp.tpl.batch', ['actions' => [
-    'delete' => 'Удалить',
-  ]])
+  @include('acp.tpl.batch', [
+    'actions' => [
+      'delete' => 'Удалить',
+    ],
+    'url' => path([App\Http\Controllers\Acp\Images::class, 'batch']),
+  ])
 </div>
 @endsection
 

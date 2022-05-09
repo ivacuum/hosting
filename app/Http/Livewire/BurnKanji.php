@@ -1,6 +1,7 @@
 <?php namespace App\Http\Livewire;
 
 use App\Kanji;
+use App\Scope\UserBurnableScope;
 use Livewire\Component;
 
 class BurnKanji extends Component
@@ -20,7 +21,7 @@ class BurnKanji extends Component
 
         /** @var Kanji $kanji */
         $kanji = Kanji::query()
-            ->userBurnable($userId)
+            ->tap(new UserBurnableScope($userId))
             ->findOrFail($this->modelId);
 
         if ($kanji->burnable === null) {

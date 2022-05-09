@@ -3,7 +3,7 @@
 use App\Domain\GigStatus;
 use App\Gig;
 
-class GigsRss extends Controller
+class GigsRss
 {
     public function __invoke()
     {

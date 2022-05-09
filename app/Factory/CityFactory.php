@@ -8,6 +8,7 @@ class CityFactory
 {
     use WithFaker;
 
+    private $countryId;
     private ?CountryFactory $countryFactory = null;
 
     public function create()
@@ -31,10 +32,12 @@ class CityFactory
         $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
         $model->title_en = $title;
         $model->title_ru = $title;
-        $model->country_id = 0;
+        $model->country_id = $this->countryId;
 
-        if ($this->countryFactory) {
-            $model->country_id = $this->countryFactory->create()->id;
+        if (!$model->country_id) {
+            $model->country_id = ($this->countryFactory ?? CountryFactory::new())
+                ->create()
+                ->id;
         }
 
         return $model;
@@ -47,10 +50,10 @@ class CityFactory
         });
     }
 
-    public function withCountry(CountryFactory $countryFactory = null)
+    public function withCountry(CountryFactory $countryFactory)
     {
         $factory = clone $this;
-        $factory->countryFactory = $countryFactory ?? CountryFactory::new();
+        $factory->countryFactory = $countryFactory;
 
         return $factory;
     }

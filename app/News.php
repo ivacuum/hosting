@@ -1,7 +1,9 @@
 <?php namespace App;
 
+use App\Domain\CommentStatus;
+use App\Domain\Locale;
+use App\Domain\NewsStatus;
 use Carbon\CarbonImmutable;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use League\CommonMark\CommonMarkConverter;
@@ -12,8 +14,8 @@ use League\CommonMark\CommonMarkConverter;
  * @property string $title
  * @property string $markdown
  * @property string $html
- * @property Domain\Locale $locale
- * @property Domain\NewsStatus $status
+ * @property Locale $locale
+ * @property NewsStatus $status
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
@@ -27,13 +29,16 @@ use League\CommonMark\CommonMarkConverter;
  */
 class News extends Model
 {
-    protected $guarded = ['created_at', 'updated_at', 'goto'];
-
     protected $casts = [
         'views' => 'int',
-        'locale' => Domain\Locale::class,
-        'status' => Domain\NewsStatus::class,
+        'locale' => Locale::class,
+        'status' => NewsStatus::class,
         'user_id' => 'int',
+    ];
+
+    protected $attributes = [
+        'status' => NewsStatus::Hidden,
+        'markdown' => '',
     ];
 
     // Relations
@@ -44,7 +49,7 @@ class News extends Model
 
     public function commentsPublished()
     {
-        return $this->comments()->where('status', Domain\CommentStatus::Published);
+        return $this->comments()->where('status', CommentStatus::Published);
     }
 
     public function emails()
@@ -55,12 +60,6 @@ class News extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    // Scopes
-    public function scopePublished(Builder $query)
-    {
-        return $query->where('status', Domain\NewsStatus::Published);
     }
 
     // Attributes
@@ -82,7 +81,7 @@ class News extends Model
 
     public function canBeCommented(): bool
     {
-        return $this->status === Domain\NewsStatus::Published;
+        return $this->status === NewsStatus::Published;
     }
 
     public function www(?string $anchor = null): string

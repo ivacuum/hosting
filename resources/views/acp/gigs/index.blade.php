@@ -18,9 +18,9 @@
   </thead>
   <tbody>
   @foreach ($models as $model)
-    <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit($controller, $model) }}">
+    <tr class="js-dblclick-edit" data-dblclick-url="{{ Acp::edit($model) }}">
       <td class="md:text-right">{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
-      <td><a href="{{ $model->wwwAcp() }}">{{ $model->title }}</a></td>
+      <td><a href="{{ Acp::show($model) }}">{{ $model->title }}</a></td>
       <td>
         @if ($model->status->isHidden())
           <span class="tooltipped tooltipped-n" aria-label="Заметка пишется">

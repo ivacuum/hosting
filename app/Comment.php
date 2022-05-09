@@ -1,16 +1,15 @@
 <?php namespace App;
 
 use App\Action\FormatCommentDateAction;
-use Illuminate\Database\Eloquent\Builder;
+use App\Domain\CommentStatus;
 use Illuminate\Database\Eloquent\Model;
-use Ivacuum\Generic\Traits\RecordsActivity;
 
 /**
  * @property int $id
  * @property int $user_id
  * @property int $rel_id
  * @property string $rel_type
- * @property Domain\CommentStatus $status
+ * @property CommentStatus $status
  * @property string $html
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
@@ -22,14 +21,11 @@ use Ivacuum\Generic\Traits\RecordsActivity;
  */
 class Comment extends Model
 {
-    use RecordsActivity;
-
-    protected $guarded = ['rel_id', 'rel_type', 'created_at', 'updated_at', 'goto'];
     protected $perPage = 20;
 
     protected $casts = [
         'rel_id' => 'int',
-        'status' => Domain\CommentStatus::class,
+        'status' => CommentStatus::class,
         'user_id' => 'int',
     ];
 
@@ -49,17 +45,6 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    // Scopes
-    public function scopeByType(Builder $query, $type)
-    {
-        return $query->where('rel_type', $type);
-    }
-
-    public function scopePublished(Builder $query)
-    {
-        return $query->where('status', Domain\CommentStatus::Published);
-    }
-
     // Methods
     public function anchor(): string
     {
@@ -77,7 +62,7 @@ class Comment extends Model
             ->execute($this->created_at);
     }
 
-    public function usersForNotification($model)
+    public function usersForNotification(Issue|Magnet|News|Trip $model)
     {
         return static::with('user')
             ->distinct()

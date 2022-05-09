@@ -16,4 +16,11 @@ class TripsTemplatesTest extends TestCase
                 ->assertOk();
         }
     }
+
+    public function testList()
+    {
+        $this->be(UserFactory::new()->admin()->make());
+
+        $this->get('acp/dev/templates')->assertOk();
+    }
 }

@@ -6,11 +6,14 @@ use App\Domain\Locale;
 use App\Domain\MagnetStatus;
 use App\Http\Requests\TorrentsIndexForm;
 use App\Magnet;
+use App\Scope\CommentPublishedScope;
+use App\Scope\CommentRelationScope;
+use App\Scope\MagnetPublishedScope;
 use App\SearchSynonym;
 use Foolz\SphinxQL\SphinxQL;
 use Illuminate\Database\Eloquent\Builder;
 
-class MagnetsController extends Controller
+class MagnetsController
 {
     public function index(TorrentsIndexForm $request)
     {
@@ -37,7 +40,7 @@ class MagnetsController extends Controller
             $magnets = $magnets->whereIn('id', \Arr::pluck($ids, 'id'));
         }
 
-        $magnets = $magnets->published()
+        $magnets = $magnets->tap(new MagnetPublishedScope)
             ->orderByDesc('registered_at')
             ->when(!$q && $category, function (Builder $query) use ($categoryId) {
                 $ids = \TorrentCategoryHelper::selfAndDescendantsIds($categoryId);
@@ -61,8 +64,8 @@ class MagnetsController extends Controller
     public function comments()
     {
         $comments = Comment::with('rel', 'user')
-            ->byType('Torrent')
-            ->published()
+            ->tap(new CommentRelationScope('Torrent'))
+            ->tap(new CommentPublishedScope)
             ->orderByDesc('created_at')
             ->take(50)
             ->get();

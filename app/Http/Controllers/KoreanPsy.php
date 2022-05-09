@@ -2,7 +2,7 @@
 
 use Symfony\Component\Finder\Finder;
 
-class KoreanPsy extends Controller
+class KoreanPsy
 {
     public function __invoke()
     {

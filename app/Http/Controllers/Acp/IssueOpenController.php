@@ -3,7 +3,7 @@
 use App\Domain\IssueStatus;
 use App\Issue;
 
-class IssueOpenController extends AbstractController
+class IssueOpenController
 {
     public function __invoke(Issue $issue)
     {
@@ -15,10 +15,5 @@ class IssueOpenController extends AbstractController
         $issue->save();
 
         return back();
-    }
-
-    protected function getModelName(): string
-    {
-        return Issue::class;
     }
 }

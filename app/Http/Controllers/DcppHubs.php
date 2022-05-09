@@ -4,7 +4,7 @@ use App\DcppHub;
 use App\Domain\DcppHubStatus;
 use App\Utilities\ViewHelper;
 
-class DcppHubs extends Controller
+class DcppHubs
 {
     public function __invoke(ViewHelper $viewHelper)
     {

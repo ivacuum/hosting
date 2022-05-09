@@ -2,6 +2,7 @@
 
 use App\Domain\TripStatus;
 use App\Rules\TripSlug;
+use App\Trip;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
 use Ivacuum\Generic\Http\FormRequest;
@@ -25,7 +26,7 @@ class TripUpdateForm extends FormRequest
                 'bail',
                 'required',
                 new TripSlug,
-                Rule::unique('trips', 'slug')
+                Rule::unique(Trip::class, 'slug')
                     ->where('user_id', $user->id)
                     ->ignore($trip->id ?? null),
             ],

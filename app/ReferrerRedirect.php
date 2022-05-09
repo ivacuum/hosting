@@ -1,6 +1,5 @@
 <?php namespace App;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -18,18 +17,10 @@ use Illuminate\Database\Eloquent\Model;
 class ReferrerRedirect extends Model
 {
     protected $dates = ['starts_at', 'expires_at'];
-    protected $guarded = ['created_at', 'updated_at', 'goto'];
 
     protected $casts = [
         'clicks' => 'int',
     ];
-
-    // Scopes
-    public function scopeActive(Builder $query)
-    {
-        return $query->where('starts_at', '<=', now()->toDateTimeString())
-            ->where('expires_at', '>=', now()->toDateTimeString());
-    }
 
     // Methods
     public function breadcrumb(): string

@@ -1,5 +1,6 @@
 <?php namespace App\Http\Livewire;
 
+use App\Scope\UserBurnableScope;
 use App\Vocabulary;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
@@ -20,7 +21,7 @@ class VocabularyList extends Component
 
         /** @var Vocabulary $vocab */
         $vocab = Vocabulary::query()
-            ->userBurnable($userId)
+            ->tap(new UserBurnableScope($userId))
             ->findOrFail($id);
 
         if ($vocab->burnable === null) {
@@ -38,7 +39,7 @@ class VocabularyList extends Component
         $this->vocabularies = Vocabulary::query()
             ->orderBy('level')
             ->orderBy('meaning')
-            ->userBurnable(auth()->id())
+            ->tap(new UserBurnableScope(auth()->id()))
             ->when($kanji, fn (Builder $query) => $query->where('character', 'LIKE', "%{$kanji}%"))
             ->when($level, fn (Builder $query) => $query->where('level', $level))
             ->get(['id', 'level', 'character', 'kana', 'meaning']);

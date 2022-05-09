@@ -1,7 +1,9 @@
 <?php namespace App\Http\Livewire\Acp;
 
-use App\City;
 use App\Domain\TripStatus;
+use App\Http\Livewire\WithCityIds;
+use App\Http\Livewire\WithGoto;
+use App\Rules\LifeSlug;
 use App\Trip;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
@@ -11,142 +13,64 @@ use Livewire\Component;
 class TripForm extends Component
 {
     use AuthorizesRequests;
+    use WithCityIds;
+    use WithGoto;
 
-    public int $cityId = 0;
-    public int $status;
-    public ?int $modelId = null;
-    public string $slug;
-    public string $dateEnd;
-    public string $titleEn = '';
-    public string $titleRu = '';
-    public string $dateStart;
-    public string $metaImage = '';
-    public string $metaImageSrc = '';
-    public string $metaDescriptionEn = '';
-    public string $metaDescriptionRu = '';
-    public ?string $goto;
+    public Trip $trip;
 
-    public function mount(int $modelId = null)
+    public function mount()
     {
-        if ($modelId) {
-            $trip = Trip::findOrFail($modelId);
-
-            $this->slug = $trip->slug;
-            $this->cityId = $trip->city_id;
-            $this->status = $trip->status->value;
-            $this->dateEnd = $trip->date_end->toDateTimeString();
-            $this->titleEn = $trip->title_en;
-            $this->titleRu = $trip->title_ru;
-            $this->dateStart = $trip->date_start->toDateTimeString();
-            $this->metaImage = $trip->meta_image;
-            $this->metaImageSrc = $trip->metaImage();
-            $this->metaDescriptionEn = $trip->meta_description_en;
-            $this->metaDescriptionRu = $trip->meta_description_ru;
-        } else {
-            $this->slug = 'city.' . now()->year;
-            $this->status = TripStatus::Hidden->value;
-            $this->dateEnd = now()->startOfDay()->toDateTimeString();
-            $this->dateStart = now()->startOfDay()->toDateTimeString();
+        if (!$this->trip->exists) {
+            $this->trip->slug = 'city.' . now()->year;
+            $this->trip->date_end = now()->startOfDay();
+            $this->trip->date_start = now()->startOfDay();
         }
-
-        $this->goto = request('goto');
     }
 
     public function rules()
     {
-        $userId = $this->modelId
-            ? Trip::findOrFail($this->modelId)->user_id
-            : request()->user()->id;
-
         return [
-            'slug' => [
-                'bail',
-                'required',
-                Rule::unique('artists', 'slug'),
-                Rule::unique('cities', 'slug'),
-                Rule::unique('gigs', 'slug'),
-                Rule::unique('trips', 'slug')
-                    ->where('user_id', $userId)
-                    ->ignore($this->modelId),
-            ],
-            'cityId' => 'required|integer|min:1',
-            'status' => new Enum(TripStatus::class),
-            'titleEn' => Rule::when($this->modelId, 'required'),
-            'titleRu' => Rule::when($this->modelId, 'required'),
-            'dateEnd' => 'required|date|after_or_equal:dateStart',
-            'dateStart' => 'required|date',
+            'trip.slug' => LifeSlug::rules($this->trip),
+            'trip.status' => new Enum(TripStatus::class),
+            'trip.city_id' => 'required|integer|min:1',
+            'trip.date_end' => 'required|date|after_or_equal:dateStart',
+            'trip.title_en' => Rule::when($this->trip->exists, 'required'),
+            'trip.title_ru' => Rule::when($this->trip->exists, 'required'),
+            'trip.date_start' => 'required|date',
+            'trip.meta_image' => 'string',
+            'trip.meta_title_en' => 'string',
+            'trip.meta_title_ru' => 'string',
+            'trip.meta_description_en' => 'string',
+            'trip.meta_description_ru' => 'string',
         ];
     }
 
     public function submit()
     {
-        $this->authorize('create', Trip::class);
+        $this->authorize('create', $this->trip);
         $this->validate();
-
-        if ($this->modelId) {
-            $this->update();
-
-            return redirect()->to($this->goto ?? '/acp/trips');
-        }
-
         $this->store();
 
-        return redirect()->to($this->goto ?? '/acp/trips');
+        return redirect()->to($this->goto ?? to('acp/trips'));
     }
 
-    public function updatedCityId()
+    public function updatedTripCityId()
     {
-        if ($this->cityId) {
-            $city = City::findOrFail($this->cityId);
+        $this->trip->load('city');
 
-            $this->slug = "{$city->slug}." . now()->year;
-            $this->titleEn = $city->title_en;
-            $this->titleRu = $city->title_ru;
+        if ($this->trip->city) {
+            $this->trip->slug = "{$this->trip->city->slug}." . now()->year;
+            $this->trip->title_en = $this->trip->city->title_en;
+            $this->trip->title_ru = $this->trip->city->title_ru;
         }
-    }
-
-    public function updatedMetaImage()
-    {
-        if ($this->slug && $this->metaImage) {
-            $trip = new Trip;
-            $trip->slug = $this->slug;
-            $trip->meta_image = $this->metaImage;
-
-            $this->metaImageSrc = $trip->metaImage();
-        }
-    }
-
-    private function fillModel(Trip $trip)
-    {
-        $trip->slug = $this->slug;
-        $trip->status = $this->status;
-        $trip->city_id = $this->cityId;
-        $trip->date_end = $this->dateEnd;
-        $trip->date_start = $this->dateStart;
-        $trip->meta_image = $this->metaImage;
-        $trip->meta_description_en = $this->metaDescriptionEn;
-        $trip->meta_description_ru = $this->metaDescriptionRu;
     }
 
     private function store()
     {
-        $city = City::findOrFail($this->cityId);
+        if (!$this->trip->exists) {
+            $this->trip->user_id = request()->user()->id;
+        }
 
-        $trip = new Trip;
-        $trip->user_id = request()->user()->id;
-        $trip->markdown = '';
-        $trip->title_en = $city->title_en;
-        $trip->title_ru = $city->title_ru;
-        $this->fillModel($trip);
-        $trip->save();
-    }
-
-    private function update()
-    {
-        $trip = Trip::findOrFail($this->modelId);
-        $trip->title_en = $this->titleEn;
-        $trip->title_ru = $this->titleRu;
-        $this->fillModel($trip);
-        $trip->save();
+        $this->trip->save();
     }
 }
