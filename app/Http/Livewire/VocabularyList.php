@@ -1,5 +1,7 @@
 <?php namespace App\Http\Livewire;
 
+use App\Action\BurnAction;
+use App\Action\ResurrectAction;
 use App\Scope\UserBurnableScope;
 use App\Vocabulary;
 use Illuminate\Database\Eloquent\Builder;
@@ -7,6 +9,7 @@ use Livewire\Component;
 
 class VocabularyList extends Component
 {
+    /** @var \Illuminate\Database\Eloquent\Collection|Vocabulary[] */
     public $vocabularies;
     public ?int $level;
     public bool $flat;
@@ -15,7 +18,7 @@ class VocabularyList extends Component
     public bool $showLabels = false;
     public array $visible = [];
 
-    public function burn(int $id)
+    public function burn(int $id, BurnAction $burn, ResurrectAction $resurrect)
     {
         $userId = auth()->id();
 
@@ -25,9 +28,9 @@ class VocabularyList extends Component
             ->findOrFail($id);
 
         if ($vocab->burnable === null) {
-            $vocab->burn($userId);
+            $burn->execute($vocab, $userId);
         } else {
-            $vocab->resurrect($userId);
+            $resurrect->execute($vocab, $userId);
         }
     }
 

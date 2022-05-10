@@ -26,7 +26,7 @@ class BurnVocabularyTest extends TestCase
     {
         $user = UserFactory::new()->create();
         $vocab = VocabularyFactory::new()->create();
-        $vocab->burn($user->id);
+        $vocab->burnable()->create(['user_id' => $user->id]);
 
         \Livewire::actingAs($user)
             ->test(BurnVocabulary::class, ['id' => $vocab->id])

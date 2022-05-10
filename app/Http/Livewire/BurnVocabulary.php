@@ -1,5 +1,7 @@
 <?php namespace App\Http\Livewire;
 
+use App\Action\BurnAction;
+use App\Action\ResurrectAction;
 use App\Scope\UserBurnableScope;
 use App\Vocabulary;
 use Livewire\Component;
@@ -15,7 +17,7 @@ class BurnVocabulary extends Component
         $this->modelId = $id;
     }
 
-    public function toggleBurned()
+    public function toggleBurned(BurnAction $burn, ResurrectAction $resurrect)
     {
         $userId = auth()->id();
 
@@ -25,10 +27,10 @@ class BurnVocabulary extends Component
             ->findOrFail($this->modelId);
 
         if ($vocab->burnable === null) {
-            $vocab->burn($userId);
+            $burn->execute($vocab, $userId);
             $this->burned = true;
         } else {
-            $vocab->resurrect($userId);
+            $resurrect->execute($vocab, $userId);
             $this->burned = false;
         }
     }

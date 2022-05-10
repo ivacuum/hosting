@@ -22,8 +22,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Vocabulary extends Model
 {
-    use Traits\BurnsAndResurrects;
-
     protected $perPage = 50;
 
     protected $casts = [

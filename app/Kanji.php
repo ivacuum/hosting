@@ -26,8 +26,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Kanji extends Model
 {
-    use Traits\BurnsAndResurrects;
-
     protected $perPage = 50;
 
     protected $casts = [

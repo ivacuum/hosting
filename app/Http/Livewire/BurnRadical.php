@@ -1,5 +1,7 @@
 <?php namespace App\Http\Livewire;
 
+use App\Action\BurnAction;
+use App\Action\ResurrectAction;
 use App\Radical;
 use App\Scope\UserBurnableScope;
 use Livewire\Component;
@@ -15,7 +17,7 @@ class BurnRadical extends Component
         $this->modelId = $id;
     }
 
-    public function toggleBurned()
+    public function toggleBurned(BurnAction $burn, ResurrectAction $resurrect)
     {
         $userId = auth()->id();
 
@@ -25,10 +27,10 @@ class BurnRadical extends Component
             ->findOrFail($this->modelId);
 
         if ($radical->burnable === null) {
-            $radical->burn($userId);
+            $burn->execute($radical, $userId);
             $this->burned = true;
         } else {
-            $radical->resurrect($userId);
+            $resurrect->execute($radical, $userId);
             $this->burned = false;
         }
     }

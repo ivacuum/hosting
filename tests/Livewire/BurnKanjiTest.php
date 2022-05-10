@@ -26,7 +26,7 @@ class BurnKanjiTest extends TestCase
     {
         $user = UserFactory::new()->create();
         $kanji = KanjiFactory::new()->create();
-        $kanji->burn($user->id);
+        $kanji->burnable()->create(['user_id' => $user->id]);
 
         \Livewire::actingAs($user)
             ->test(BurnKanji::class, ['id' => $kanji->id])

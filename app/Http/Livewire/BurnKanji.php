@@ -1,5 +1,7 @@
 <?php namespace App\Http\Livewire;
 
+use App\Action\BurnAction;
+use App\Action\ResurrectAction;
 use App\Kanji;
 use App\Scope\UserBurnableScope;
 use Livewire\Component;
@@ -15,7 +17,7 @@ class BurnKanji extends Component
         $this->modelId = $id;
     }
 
-    public function toggleBurned()
+    public function toggleBurned(BurnAction $burn, ResurrectAction $resurrect)
     {
         $userId = auth()->id();
 
@@ -25,10 +27,10 @@ class BurnKanji extends Component
             ->findOrFail($this->modelId);
 
         if ($kanji->burnable === null) {
-            $kanji->burn($userId);
+            $burn->execute($kanji, $userId);
             $this->burned = true;
         } else {
-            $kanji->resurrect($userId);
+            $resurrect->execute($kanji, $userId);
             $this->burned = false;
         }
     }

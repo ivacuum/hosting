@@ -26,7 +26,7 @@ class BurnRadicalTest extends TestCase
     {
         $user = UserFactory::new()->create();
         $radical = RadicalFactory::new()->create();
-        $radical->burn($user->id);
+        $radical->burnable()->create(['user_id' => $user->id]);
 
         \Livewire::actingAs($user)
             ->test(BurnRadical::class, ['id' => $radical->id])

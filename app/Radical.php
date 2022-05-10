@@ -19,12 +19,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Radical extends Model
 {
-    use Traits\BurnsAndResurrects;
+    protected $perPage = 50;
 
     protected $casts = [
         'level' => 'int',
     ];
-    protected $perPage = 50;
 
     // Relations
     public function burnable()
