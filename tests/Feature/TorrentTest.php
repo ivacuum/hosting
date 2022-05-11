@@ -238,7 +238,7 @@ class TorrentTest extends TestCase
 
     private function fakeHttpRequests(Magnet $stub)
     {
-        \Http::fake([
+        \Http::preventStrayRequests()->fake([
             "api.rutracker.org/v1/get_tor_topic_data?by=topic_id&val={$stub->rto_id}" => \Http::response([
                 'result' => [
                     $stub->rto_id => [
@@ -255,7 +255,6 @@ class TorrentTest extends TestCase
                 ],
             ]),
             "rutracker.org/forum/viewtopic.php?t={$stub->rto_id}" => \Http::response('<div class="post_body">body<fieldset class="attach"><span class="attach_link"><a class="magnet-link" href="magnet:?xt=urn:btih:' . $stub->info_hash . '&tr=' . urlencode($stub->announcer) . '"></a></span></fieldset></div>'),
-            '*' => \Http::response(),
         ]);
     }
 }

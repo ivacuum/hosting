@@ -7,9 +7,15 @@ use Livewire\Component;
 
 class WanikaniSearch extends Component
 {
+    /** @var \Illuminate\Database\Eloquent\Collection|Kanji[] */
     public $kanjis = [];
+
+    /** @var \Illuminate\Database\Eloquent\Collection|Radical[] */
     public $radicals = [];
+
+    /** @var \Illuminate\Database\Eloquent\Collection|Vocabulary[] */
     public $vocabularies = [];
+
     public int $count = 0;
     public string $q = '';
 

@@ -13,7 +13,7 @@ class ParseWanikaniTest extends TestCase
 
     public function testOk()
     {
-        \Http::fake([
+        \Http::preventStrayRequests()->fake([
             'api.wanikani.com/v2/subjects?hidden=false&levels=1' => \Http::response([
                 'data' => [
                     [
@@ -176,7 +176,6 @@ class ParseWanikaniTest extends TestCase
                 'total_count' => 9016,
                 'url' => 'https://api.wanikani.com/v2/subjects',
             ]),
-            '*' => \Http::response(),
         ]);
 
         $this->artisan(ParseWanikani::class);

@@ -23,9 +23,8 @@ class YandexPddClientTest extends TestCase
 
     public function testDkimStatus()
     {
-        \Http::fake([
+        \Http::preventStrayRequests()->fake([
             ...DkimStatusResponse::fakeSuccess('example.com'),
-            '*' => \Http::response(),
         ]);
 
         $response = $this->app->make(YandexPddClient::class)
@@ -45,9 +44,8 @@ class YandexPddClientTest extends TestCase
 
     public function testDnsRecordAdd()
     {
-        \Http::fake([
+        \Http::preventStrayRequests()->fake([
             ...DnsRecordAddResponse::fakeSuccess('example.com', YandexPddDnsRecordFactory::a(5, 'example.com', '127.0.0.2', 'phpunit')),
-            '*' => \Http::response(),
         ]);
 
         $response = $this->app->make(YandexPddClient::class)
@@ -63,9 +61,8 @@ class YandexPddClientTest extends TestCase
 
     public function testDnsRecordDelete()
     {
-        \Http::fake([
+        \Http::preventStrayRequests()->fake([
             ...DnsRecordDeleteResponse::fakeSuccess('example.com'),
-            '*' => \Http::response(),
         ]);
 
         $response = $this->app->make(YandexPddClient::class)
@@ -77,9 +74,8 @@ class YandexPddClientTest extends TestCase
 
     public function testDnsRecordEdit()
     {
-        \Http::fake([
+        \Http::preventStrayRequests()->fake([
             ...DnsRecordEditResponse::fakeSuccess('example.com', YandexPddDnsRecordFactory::a(5, 'example.com', '127.0.0.2', 'phpunit')),
-            '*' => \Http::response(),
         ]);
 
         $response = $this->app->make(YandexPddClient::class)
@@ -95,9 +91,8 @@ class YandexPddClientTest extends TestCase
 
     public function testDnsRecords()
     {
-        \Http::fake([
+        \Http::preventStrayRequests()->fake([
             ...DnsRecordsResponse::fakeSuccess('example.com'),
-            '*' => \Http::response(),
         ]);
 
         $response = $this->app->make(YandexPddClient::class)
@@ -109,9 +104,8 @@ class YandexPddClientTest extends TestCase
 
     public function testDomains()
     {
-        \Http::fake([
+        \Http::preventStrayRequests()->fake([
             ...DomainsResponse::fakeSuccess('example.com', ['alias.example.com']),
-            '*' => \Http::response(),
         ]);
 
         $response = $this->app->make(YandexPddClient::class)
@@ -122,9 +116,8 @@ class YandexPddClientTest extends TestCase
 
     public function testEmailAdd()
     {
-        \Http::fake([
+        \Http::preventStrayRequests()->fake([
             ...EmailAddResponse::fakeSuccess('example.com', 'me@example.com'),
-            '*' => \Http::response(),
         ]);
 
         $response = $this->app->make(YandexPddClient::class)
@@ -137,9 +130,8 @@ class YandexPddClientTest extends TestCase
 
     public function testEmailAddError()
     {
-        \Http::fake([
+        \Http::preventStrayRequests()->fake([
             ...EmailAddResponse::fakeError(),
-            '*' => \Http::response(),
         ]);
 
         $this->expectException(RequestException::class);
@@ -150,9 +142,8 @@ class YandexPddClientTest extends TestCase
 
     public function testEmails()
     {
-        \Http::fake([
+        \Http::preventStrayRequests()->fake([
             ...EmailsResponse::fakeSuccess('example.com', 'me@example.com'),
-            '*' => \Http::response(),
         ]);
 
         $response = $this->app->make(YandexPddClient::class)
@@ -163,9 +154,8 @@ class YandexPddClientTest extends TestCase
 
     public function testSetNewEmailPassword()
     {
-        \Http::fake([
+        \Http::preventStrayRequests()->fake([
             ...EmailEditResponse::fakeSuccess('example.com', 'me@example.com'),
-            '*' => \Http::response(),
         ]);
 
         $response = $this->app->make(YandexPddClient::class)

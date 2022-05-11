@@ -12,9 +12,8 @@ class WanikaniClientTest extends TestCase
 
     public function testSubjectKanji()
     {
-        \Http::fake([
+        \Http::preventStrayRequests()->fake([
             ...SubjectResponse::fakeKanji(555),
-            '*' => \Http::response(),
         ]);
 
         $wanikani = $this->app->make(WanikaniClient::class);

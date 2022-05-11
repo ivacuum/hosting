@@ -108,13 +108,13 @@ class FetchTorrentMetaJobTest extends TestCase
     {
         $magnet = MagnetFactory::new()->create();
 
-        \Http::fake([
+        \Http::preventStrayRequests()->fake([
             "api.rutracker.org/v1/get_tor_topic_data?by=topic_id&val={$magnet->rto_id}" => \Http::response([
                 'result' => [
                     $magnet->rto_id => null,
                 ],
             ]),
-            '*' => \Http::response(),
+            'api.telegram.org/*' => \Http::response(),
         ]);
 
         $this->expectsEvents(\App\Events\Stats\TorrentNotFoundDeleted::class);
@@ -160,13 +160,13 @@ class FetchTorrentMetaJobTest extends TestCase
 
     private function fakeHttpClient(RtoTopicData $topicData)
     {
-        \Http::fake([
+        \Http::preventStrayRequests()->fake([
             "api.rutracker.org/v1/get_tor_topic_data?by=topic_id&val={$topicData->id}" => \Http::response([
                 'result' => [
                     $topicData->id => $topicData->toJson(),
                 ],
             ]),
-            '*' => \Http::response(),
+            'api.telegram.org/*' => \Http::response(),
         ]);
     }
 }

@@ -16,10 +16,9 @@ class FetchTorrentBodyJobTest extends TestCase
         $announcer = 'announcer';
         $magnet = MagnetFactory::new()->create();
 
-        $http = \Http::fake([
+        $http = \Http::preventStrayRequests()->fake([
             "rutracker.org/forum/viewtopic.php?t={$magnet->rto_id}" =>
                 \Http::response('<div class="post_body">' . $body . '<fieldset class="attach"><span class="attach_link"><a class="magnet-link" href="magnet:?xt=urn:btih:info_hash&tr=' . urlencode($announcer) . '"></a></span></fieldset></div>'),
-            '*' => \Http::response(),
         ]);
 
         $rto = new Rto($http);

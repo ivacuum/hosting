@@ -1,19 +1,13 @@
-<?php
-/**
- * @var \App\Radical $radical
- * @var \App\Kanji $kanji
- * @var \App\Vocabulary $vocab
- */
-?>
+<?php /** @var \App\Http\Livewire\WanikaniSearch $this */ ?>
 
 <div>
   <div class="items-center md:flex justify-between mb-4 md:mb-0 -mt-2">
-    @if ($count > 0)
+    @if ($this->count > 0)
       <div class="flex flex-wrap">
-        <h3 class="mb-2 md:mb-0 mr-4 pt-1">@lang('japanese.results', ['results' => $count])</h3>
+        <h3 class="mb-2 md:mb-0 mr-4 pt-1">@lang('japanese.results', ['results' => $this->count])</h3>
         <button class="btn btn-default mb-2 md:mb-0" wire:click="clear">@lang('Очистить')</button>
       </div>
-    @elseif ($q && $errors->isEmpty())
+    @elseif ($this->q && $errors->isEmpty())
       <div class="bg-yellow-300 px-2 py-1 rounded">@lang('japanese.no-matches')</div>
     @endif
     <div class="hidden md:block">&nbsp;</div>
@@ -38,9 +32,9 @@
       {{ $message }}
     </div>
   @enderror
-  @if ($count > 0)
+  @if ($this->count > 0)
     <div class="my-4">
-      @foreach ($radicals as $radical)
+      @foreach ($this->radicals as $radical)
         <a
           class="flex items-center bg-radical border-radical justify-between px-2 sm:px-4 py-2 text-white hover:text-grey-200"
           href="{{ $radical->www() }}"
@@ -55,7 +49,7 @@
           <div class="grow ja-shadow-light text-xs capitalize text-right">{{ $radical->meaning }}</div>
         </a>
       @endforeach
-      @foreach ($kanjis as $kanji)
+      @foreach ($this->kanjis as $kanji)
         <a
           class="flex items-center bg-kanji border-kanji justify-between px-2 sm:px-4 py-2 text-white hover:text-grey-200"
           href="{{ $kanji->www() }}"
@@ -67,7 +61,7 @@
           </div>
         </a>
       @endforeach
-      @foreach ($vocabularies as $vocab)
+      @foreach ($this->vocabularies as $vocab)
         <a
           class="flex items-center bg-vocab border-vocab justify-between px-2 sm:px-4 py-2 text-white hover:text-grey-200"
           href="{{ $vocab->www() }}"
