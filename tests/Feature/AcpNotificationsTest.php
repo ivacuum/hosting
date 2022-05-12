@@ -18,6 +18,10 @@ class AcpNotificationsTest extends TestCase
 
     public function testIndex()
     {
+        $user = UserFactory::new()->create();
+
+        \Notification::send($user, new PlainTextNotification('text'));
+
         $this->get('acp/notifications')
             ->assertOk();
     }
