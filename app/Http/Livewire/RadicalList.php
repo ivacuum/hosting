@@ -7,26 +7,24 @@ use Livewire\Component;
 
 class RadicalList extends Component
 {
-    /** @var \Illuminate\Database\Eloquent\Collection */
+    /** @var \Illuminate\Database\Eloquent\Collection|Radical[] */
     public $radicals;
 
-    public ?int $level;
+    public ?int $level = null;
     public bool $flat;
-    public bool $range;
+    public bool $range = false;
     public bool $showBurned = false;
     public bool $showLabels = false;
 
-    public function mount(int $level = null, int $kanjiId = null, bool $range = false)
+    public function mount(int $kanjiId = null)
     {
         $this->flat = $kanjiId !== null;
-        $this->level = $level;
-        $this->range = $range;
         $this->radicals = Radical::query()
-            ->orderBy('level')
-            ->orderBy('meaning')
             ->tap(new UserBurnableScope(auth()->id()))
             ->when($kanjiId, fn (Builder $query) => $query->whereRelation('kanjis', 'kanji_id', $kanjiId))
-            ->when($level, fn (Builder $query) => $query->where('level', $level))
+            ->when($this->level, fn (Builder $query) => $query->where('level', $this->level))
+            ->orderBy('level')
+            ->orderBy('meaning')
             ->get(['id', 'level', 'character', 'meaning', 'image']);
     }
 

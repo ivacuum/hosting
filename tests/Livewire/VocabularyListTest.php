@@ -11,10 +11,11 @@ class VocabularyListTest extends TestCase
 
     public function testLevel()
     {
-        $level = 99;
-        $vocab = VocabularyFactory::new()->withLevel($level)->create();
+        VocabularyFactory::new()->withLevel(99)->create();
 
-        \Livewire::test(VocabularyList::class, ['level' => $level])
+        $vocab = VocabularyFactory::new()->withLevel(99)->create();
+
+        \Livewire::test(VocabularyList::class, ['level' => 99])
             ->assertSee($vocab->character);
     }
 }

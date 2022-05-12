@@ -27,6 +27,9 @@
   </div>
   <div class="grid items-center text-xl text-center md:text-left vocab-grid gap-x-2 gap-y-1">
     @foreach ($this->vocabularies as $vocab)
+      @if(auth()->id() && !$this->showBurned && $vocab->burnable)
+        @continue
+      @endif
       <div>
         <a
           class="inline-block text-4xl leading-tight ja-shadow-light px-2 rounded whitespace-nowrap text-white hover:text-grey-200 {{ auth()->id() && $vocab->burnable ? 'bg-burned' : 'bg-vocab' }}"

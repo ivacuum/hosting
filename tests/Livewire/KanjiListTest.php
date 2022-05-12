@@ -11,10 +11,11 @@ class KanjiListTest extends TestCase
 
     public function testLevel()
     {
-        $level = 99;
-        $kanji = KanjiFactory::new()->withLevel($level)->create();
+        KanjiFactory::new()->withLevel(99)->create();
 
-        \Livewire::test(KanjiList::class, ['level' => $level])
+        $kanji = KanjiFactory::new()->withLevel(99)->create();
+
+        \Livewire::test(KanjiList::class, ['level' => 99])
             ->assertSee($kanji->character);
     }
 }
