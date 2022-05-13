@@ -39,7 +39,7 @@
   @endif
 </div>
 
-@livewire(App\Http\Livewire\KanjiList::class, ['vocabularyId' => $vocab->id])
+@livewire(App\Http\Livewire\KanjiList::class, ['vocabularyWord' => $vocab->character])
 
 @if ($vocab->sentences)
   <div class="mt-12">

@@ -72,26 +72,6 @@ class Vocabulary extends Model
             : '';
     }
 
-    public function onlyKanjiCharacters(): string
-    {
-        return preg_replace('/([ぁ-んァ-ン])/u', '', $this->character);
-    }
-
-    public function splitKanjiCharacters(): array
-    {
-        $str = $this->onlyKanjiCharacters();
-        $len = mb_strlen($str);
-        $result = [];
-
-        while ($len) {
-            $result[] = mb_substr($str, 0, 1);
-            $str = mb_substr($str, 1);
-            $len--;
-        }
-
-        return $result;
-    }
-
     public function toKatakana(): string
     {
         return mb_convert_kana($this->firstKana(), 'C');
