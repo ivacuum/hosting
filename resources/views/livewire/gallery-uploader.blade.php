@@ -17,14 +17,14 @@
     @lang('Идет загрузка...')
   </div>
 
-  @if ($files)
+  @if ($this->files)
     <div class="my-6">
-      @if (sizeof($files) > 1)
+      @if (sizeof($this->files) > 1)
         <h3>Ссылки на все картинки</h3>
         <div class="lg:w-4/6">
           <div>
             <div>Ссылка:</div>
-            <textarea class="form-input select-all" rows="{{ sizeof($files) }}">{{ $this->linksWithoutTags() }}</textarea>
+            <textarea class="form-input select-all" rows="{{ sizeof($this->files) }}">{{ $this->linksWithoutTags() }}</textarea>
             <div class="mt-2">Полная картинка:</div>
             <input class="form-input select-all" type="text" value="{{ $this->linksWithTags() }}">
           </div>
@@ -32,7 +32,7 @@
         <h3 class="mt-12">Индивидуальные ссылки</h3>
       @endif
       <div class="grid lg:grid-cols-6 gap-8 mt-4">
-        @foreach ($links as $link)
+        @foreach ($this->links as $link)
           <div class="text-center">
             <img class="inline-block screenshot" src="{{ $link['thumbnail'] }}" alt="">
           </div>

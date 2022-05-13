@@ -1,3 +1,5 @@
+<?php /** @var \App\Http\Livewire\TorrentAddForm $this */ ?>
+
 <form class="grid grid-cols-1 gap-4" wire:submit.prevent="submit">
   <div>
     <div class="relative">
@@ -33,10 +35,10 @@
     </div>
   </div>
 
-  @if ($topicId)
+  @if ($this->topicId)
     <div class="block w-full border-2 border-gray-300 dark:border-slate-700 border-dashed rounded-lg p-4 bg-gray-50 dark:bg-slate-800">
-      <div class="font-bold">{{ $title }}</div>
-      <div class="text-gray-500 mt-1">{{ ViewHelper::size($size) }}</div>
+      <div class="font-bold">{{ $this->title }}</div>
+      <div class="text-gray-500 mt-1">{{ ViewHelper::size($this->size) }}</div>
     </div>
 
     <div>
@@ -58,7 +60,7 @@
       <x-invalid-feedback field="categoryId"/>
     </div>
 
-    @if ($categoryId)
+    @if ($this->categoryId)
       <div>
         <button class="btn btn-primary" wire:loading.attr="disabled">
           @lang('Добавить раздачу')

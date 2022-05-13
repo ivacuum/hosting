@@ -1,7 +1,9 @@
+<?php /** @var \App\Http\Livewire\AvatarManager $this */ ?>
+
 <div>
-  @if ($avatar)
+  @if ($this->avatar)
     <div class="flex items-center mb-4">
-      <img class="w-24 h-24 mr-6 rounded-full" src="{{ $avatar }}" alt="">
+      <img class="w-24 h-24 mr-6 rounded-full" src="{{ $this->avatar }}" alt="">
       <div>
         <button
           class="btn btn-default"
@@ -24,7 +26,7 @@
       class="block text-muted w-full file:px-4 file:py-1 file:rounded file:border-0 file:bg-blueish-700 file:text-white hover:file:bg-blueish-800"
       accept="image/jpeg,image/png"
       type="file"
-      id="{{ $randomId }}"
+      id="{{ $this->randomId }}"
       wire:model="image"
     >
     <div class="form-help">{{ __('Аватар сохраняется автоматически после выбора файла') }}</div>

@@ -8,6 +8,7 @@ use Livewire\Component;
 
 class Chat extends Component
 {
+    /** @var \Illuminate\Database\Eloquent\Collection|array<string, ChatMessage[]> */
     public $rows;
     public string $text = '';
 

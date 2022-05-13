@@ -9,8 +9,9 @@ use Livewire\Component;
 
 class Comments extends Component
 {
-    public Issue|Magnet|News|Trip $model;
+    /** @var \Illuminate\Database\Eloquent\Collection|\App\Comment[] */
     public $comments;
+    public Issue|Magnet|News|Trip $model;
 
     public function freshComments()
     {

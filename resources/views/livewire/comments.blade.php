@@ -1,11 +1,12 @@
-<?php /** @var \App\Comment[]|\Illuminate\Database\Eloquent\Collection $comments */ ?>
+<?php /** @var \App\Http\Livewire\Comments $this */ ?>
+
 <div>
   <div class="h3 mt-12">
     @lang('Обсуждение')
-    <span class="text-base text-muted">{{ sizeof($comments) }}</span>
+    <span class="text-base text-muted">{{ sizeof($this->comments) }}</span>
   </div>
   <a id="comments"></a>
-  @foreach ($comments as $comment)
+  @foreach ($this->comments as $comment)
     <a id="comment-{{ $comment->id }}"></a>
     <div class="flex py-4 w-full border-b border-grey-200 dark:border-slate-700">
       <aside class="mr-4 md:mr-6">

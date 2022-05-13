@@ -1,3 +1,5 @@
+<?php /** @var \App\Http\Livewire\HangulTrainer $this */ ?>
+
 <div class="grid lg:grid-cols-2 gap-4">
   <div>
     <p>Что будем тренировать?</p>
@@ -11,7 +13,7 @@
     </div>
 
     <div class="text-center">
-      <div class="btn bg-gray-50 border border-gray-100 text-5xl my-6">{{ $jamo }}</div>
+      <div class="btn bg-gray-50 border border-gray-100 text-5xl my-6">{{ $this->jamo }}</div>
     </div>
 
     <form class="mt-2" wire:submit.prevent="check">
@@ -24,8 +26,8 @@
         spellcheck="false"
         placeholder="@lang('Ваш ответ')"
         enterkeyhint="enter"
-        class="form-input text-center {{ $reveal ? 'animate-incorrect-answer' : '' }}"
-        {{ $reveal ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
+        class="form-input text-center {{ $this->reveal ? 'animate-incorrect-answer' : '' }}"
+        {{ $this->reveal ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
         wire:model.lazy="answer"
       >
     </form>

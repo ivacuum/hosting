@@ -1,6 +1,8 @@
+<?php /** @var \App\Http\Livewire\BurnVocabulary $this */ ?>
+
 <div>
   <button
     class="btn btn-default"
     wire:click="toggleBurned"
-  >{{ $burned ? __('japanese.resurrect') : __('japanese.burn-vocabulary') }}</button>
+  >{{ $this->burned ? __('japanese.resurrect') : __('japanese.burn-vocabulary') }}</button>
 </div>

@@ -1,3 +1,5 @@
+<?php /** @var \App\Http\Livewire\CommentAddForm $this */ ?>
+
 <div>
   @if (Session::has('message'))
     <x-alert-info-dismissable>

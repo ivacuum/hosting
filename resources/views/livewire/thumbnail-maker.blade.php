@@ -1,3 +1,5 @@
+<?php /** @var \App\Http\Livewire\ThumbnailMaker $this */ ?>
+
 <div class="grid grid-cols-1 gap-4">
   @include('tpl.form_errors')
   <div>
@@ -5,7 +7,7 @@
       @lang('Фотографии')
     </label>
     <div class="mt-1">
-      @if ($uploaded === $total)
+      @if ($this->uploaded === $this->total)
         <input
           class="block text-muted w-full file:px-4 file:py-1 file:rounded file:border-0 file:bg-blueish-700 file:text-white hover:file:bg-blueish-800"
           accept="image/jpeg,image/png"
@@ -14,15 +16,15 @@
           wire:change="$emit('upload-files', $event.currentTarget.files)"
         >
       @else
-        @lang('Идет загрузка...') {{ $uploaded }} из {{ $total }}
+        @lang('Идет загрузка...') {{ $this->uploaded }} из {{ $this->total }}
       @endif
     </div>
   </div>
 
-  @if (sizeof($thumbnails))
+  @if (sizeof($this->thumbnails))
     <div class="my-4">
       <h3>История загрузки</h3>
-      @foreach ($thumbnails as $thumbnail)
+      @foreach ($this->thumbnails as $thumbnail)
         <div>{{ $thumbnail }} ... ok</div>
       @endforeach
     </div>
