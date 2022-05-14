@@ -3,10 +3,11 @@
 use App\City;
 use App\Country;
 use App\Domain\GigStatus;
-use App\Domain\TripStatus;
 use App\Gig;
 use App\News;
 use App\Scope\NewsPublishedScope;
+use App\Scope\TripOfAdminScope;
+use App\Scope\TripPublishedScope;
 use App\Trip;
 use Ivacuum\Generic\Commands\SitemapBuild as BaseSitemapBuild;
 
@@ -221,8 +222,8 @@ class SitemapBuild extends BaseSitemapBuild
     {
         return Trip::query()
             ->select(['id', 'user_id', 'slug'])
-            ->where('user_id', 1)
-            ->where('status', TripStatus::Published)
+            ->tap(new TripOfAdminScope)
+            ->tap(new TripPublishedScope)
             ->orderBy('id')
             ->lazy();
     }

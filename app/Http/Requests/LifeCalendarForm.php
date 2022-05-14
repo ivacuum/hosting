@@ -1,5 +1,6 @@
 <?php namespace App\Http\Requests;
 
+use App\Scope\TripOfAdminScope;
 use App\Scope\TripVisibleScope;
 use App\Trip;
 use Illuminate\Database\Eloquent\Builder;
@@ -27,7 +28,7 @@ class LifeCalendarForm extends AbstractForm
     public function trips()
     {
         return Trip::query()
-            ->where('user_id', 1)
+            ->tap(new TripOfAdminScope)
             ->where('city_id', '<>', 1)
             ->when($this->includeOnlyVisibleTrips(), fn (Builder $query) => $query->tap(new TripVisibleScope))
             ->orderBy('date_start')

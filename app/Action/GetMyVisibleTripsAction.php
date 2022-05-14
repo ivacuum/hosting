@@ -1,6 +1,7 @@
 <?php namespace App\Action;
 
 use App\Domain\CacheKey;
+use App\Scope\TripOfAdminScope;
 use App\Scope\TripVisibleScope;
 use App\Trip;
 use Illuminate\Cache\Repository;
@@ -31,7 +32,7 @@ class GetMyVisibleTripsAction
     private function findModels(?string $from, ?string $to)
     {
         return Trip::withCount('photos')
-            ->where('user_id', 1)
+            ->tap(new TripOfAdminScope)
             ->tap(new TripVisibleScope)
             ->when($from, fn (Builder $query) => $query->where('date_start', '>=', $from))
             ->when($to, fn (Builder $query) => $query->where('date_start', '<=', $to))

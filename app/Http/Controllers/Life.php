@@ -9,7 +9,9 @@ use App\Domain\TripStatus;
 use App\Gig;
 use App\Http\Requests\LifeIndexForm;
 use App\Scope\TripNextScope;
+use App\Scope\TripOfAdminScope;
 use App\Scope\TripPreviousScope;
+use App\Scope\TripPublishedScope;
 use App\Scope\TripVisibleScope;
 use App\Trip;
 
@@ -59,8 +61,8 @@ class Life
     public function city(City $city)
     {
         $trips = $city->trips()
-            ->where('user_id', 1)
             ->withCount('photos')
+            ->tap(new TripOfAdminScope)
             ->tap(new TripVisibleScope)
             ->get()
             ->groupBy(fn (Trip $model) => $model->year);
@@ -102,8 +104,8 @@ class Life
         $country = \CountryHelper::findBySlugOrFail($slug);
 
         $trips = $country->trips()
-            ->where('user_id', 1)
             ->withCount('photos')
+            ->tap(new TripOfAdminScope)
             ->tap(new TripVisibleScope)
             ->get()
             ->groupBy(fn (Trip $model) => $model->year);
@@ -218,10 +220,10 @@ class Life
 
     protected function getTrip(string $slug): ?Trip
     {
-        return Trip::where('user_id', 1)
-            ->withCount('photos')
+        return Trip::withCount('photos')
             ->where('slug', $slug)
-            ->where('status', TripStatus::Published)
+            ->tap(new TripOfAdminScope)
+            ->tap(new TripPublishedScope)
             ->first();
     }
 }

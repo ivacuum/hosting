@@ -1,6 +1,7 @@
 <?php namespace App\Action;
 
 use App\Domain\CacheKey;
+use App\Scope\TripOfAdminScope;
 use App\Scope\TripPublishedScope;
 use App\Trip;
 use Illuminate\Cache\Repository;
@@ -19,7 +20,7 @@ class GetTripsPublishedWithCoverAction
         return $this->cache->remember($key->value, $key->ttl(), function () {
             return Trip::query()
                 ->tap(new TripPublishedScope)
-                ->where('user_id', 1)
+                ->tap(new TripOfAdminScope)
                 ->where('meta_image', '<>', '')
                 ->orderByDesc('date_start')
                 ->get();
