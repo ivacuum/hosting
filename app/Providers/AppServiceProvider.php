@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Testing\Assert;
 use Illuminate\Testing\TestResponse;
-use Illuminate\View\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -72,7 +71,6 @@ class AppServiceProvider extends ServiceProvider
         App\YandexUser::observe(App\Observers\YandexUserObserver::class);
         App\ChatMessage::observe(App\Observers\ChatMessageObserver::class);
 
-        $this->appendViewSharedVars();
         $this->paginatorCurrentPath();
         $this->testMacros();
     }
@@ -83,44 +81,6 @@ class AppServiceProvider extends ServiceProvider
         $localeUri = $locale ? "/{$locale}" : '';
 
         Paginator::currentPathResolver(fn () => $localeUri . $this->app['request']->getBaseUrl() . $this->app['request']->getPathInfo());
-    }
-
-    private function appendViewSharedVars()
-    {
-        \View::composer('*', static function (View $view) {
-            static $data;
-
-            if ($data === null) {
-                $request = request();
-                $locale = $request->server->get('LARAVEL_LOCALE');
-                $browserEnv = new \Ivacuum\Generic\Utilities\EnvironmentForCss($request->userAgent());
-                $preferredLocale = $request->getPreferredLanguage(array_keys(config('cfg.locales')));
-
-                $routeData = app(App\Action\ParseRouteDataAction::class)->execute();
-
-                $data = [
-                    'tpl' => $routeData->tpl,
-                    'view' => $routeData->view,
-
-                    'locale' => $locale ?: config('app.locale'),
-                    'localeUri' => $locale ? "/{$locale}" : '',
-                    'localePreferred' => $preferredLocale,
-
-                    'goto' => $request->input('goto'),
-                    'isMobile' => $browserEnv->isMobile(),
-                    'routeUri' => $request->route()
-                        ? $request->route()->uri()
-                        : '',
-                    'isCrawler' => $browserEnv->isCrawler(),
-                    'isDesktop' => !$browserEnv->isMobile(),
-                    'cssClasses' => (string) $browserEnv,
-                    'requestUri' => $request->path(),
-                    'firstTimeVisit' => \Session::previousUrl() === null,
-                ];
-            }
-
-            $view->with($data);
-        });
     }
 
     private function testMacros()

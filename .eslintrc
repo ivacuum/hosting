@@ -6,7 +6,6 @@
   "globals": {
     "$": true,
     "App": true,
-    "autosize": true,
     "axios": true,
     "Mousetrap": true,
     "notie": true,
@@ -16,14 +15,20 @@
     "Vuex": true
   },
   "rules": {
-    "no-param-reassign": ["error", {
-      "props": true,
-      "ignorePropertyModificationsFor": [
-        "el",
-        "vm",
-        "state"
-      ]
-    }],
-    "semi": ["error", "never"]
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": [
+          "el",
+          "vm",
+          "state"
+        ]
+      }
+    ],
+    "semi": [
+      "error",
+      "never"
+    ]
   }
 }

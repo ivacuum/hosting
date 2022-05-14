@@ -16,8 +16,6 @@ mix.js('resources/js/app.js', 'public/assets').vue()
   .copy('node_modules/jquery/dist/jquery.min.js', 'public/assets/jquery.js')
   .copy('node_modules/jquery.scrollto/jquery.scrollTo.min.js', 'public/assets/jquery.scrollto.js')
 
-  .copy('node_modules/autosize/dist/autosize.min.js', 'public/assets/autosize.js')
-
   .copy('node_modules/notie/dist/notie.min.js', 'public/assets/notie.js')
 
   .copy('node_modules/vue/dist/vue.min.js', 'public/assets/vue.js')

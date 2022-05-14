@@ -1,3 +1,4 @@
+@php($locale = app()->getLocale())
 <!DOCTYPE html>
 <html lang="{{ $locale }}" prefix="og: http://ogp.me/ns#">
 <head>

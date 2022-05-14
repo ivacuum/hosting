@@ -20,6 +20,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \Ivacuum\Generic\Middleware\SpammerTrap::class,
             \Ivacuum\Generic\Middleware\NoCacheHeaders::class,
+            Middleware\AppendViewSharedVars::class,
         ],
 
         'api' => [

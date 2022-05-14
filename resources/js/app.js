@@ -52,10 +52,6 @@ class Application {
     })
   }
 
-  static autosizeTextareas(selector = '.js-autosize-textarea') {
-    autosize(document.querySelectorAll(selector))
-  }
-
   static conditionalInit() {
     const {route} = document.body.dataset
 
@@ -138,7 +134,6 @@ class Application {
 
   initOnReady() {
     this.initVue()
-    this.constructor.autosizeTextareas()
   }
 }
 

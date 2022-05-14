@@ -124,5 +124,6 @@
   "Тренажер по набору слов хираганой и катаканой": "Hiragana & Katakana words trainer",
   "Аватар сохраняется автоматически после выбора файла": "Avatar will be saved automatically after file selection is made",
   "Комментарий ожидает активации. Мы отправили вам ссылку на электронную почту.": "Comment activation pending. We have e-mailed you a link.",
-  "Файлы можно выбрать в появившемся окне или перетащить прямо на элемент выбора": "You can select files in pop-up window or drag&drop them on the form element"
+  "Файлы можно выбрать в появившемся окне или перетащить прямо на элемент выбора": "You can select files in pop-up window or drag&drop them on the form element",
+  "Для комментирования необходимо ввести электронную почту или войти в один клик через один из социальных сервисов ниже.": "Please type your email or use one-click sign-in through one of the social services below to comment."
 }

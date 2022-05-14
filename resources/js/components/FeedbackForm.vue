@@ -128,45 +128,44 @@ export default {
 </script>
 
 <template>
-<form @submit.prevent="submit">
-  <input hidden type="text" name="mail" value="" v-model="trap">
+  <form @submit.prevent="submit">
+    <input hidden type="text" name="mail" value="" v-model="trap">
 
-  <div class="mb-4" v-if="!hideName">
-    <div class="form-label-group">
-      <input required class="form-input" type="text" v-model="localName" :placeholder="$t('NAME_LABEL')">
-      <label>{{ $t('NAME_LABEL') }}</label>
+    <div class="mb-4" v-if="!hideName">
+      <div class="form-label-group">
+        <input required class="form-input" type="text" v-model="localName" :placeholder="$t('NAME_LABEL')">
+        <label>{{ $t('NAME_LABEL') }}</label>
+      </div>
     </div>
-  </div>
 
-  <div class="mb-4">
-    <div class="form-label-group">
-      <input required class="form-input" type="email" v-model="localEmail" :placeholder="$t('EMAIL_LABEL')">
-      <label>{{ $t('EMAIL_LABEL') }}</label>
+    <div class="mb-4">
+      <div class="form-label-group">
+        <input required class="form-input" type="email" v-model="localEmail" :placeholder="$t('EMAIL_LABEL')">
+        <label>{{ $t('EMAIL_LABEL') }}</label>
+      </div>
     </div>
-  </div>
 
-  <div class="mb-4" v-if="!hideTitle">
-    <div class="form-label-group">
-      <input required class="form-input" type="text" v-model="localTitle" :placeholder="$t('TITLE_LABEL')">
-      <label>{{ $t('TITLE_LABEL') }}</label>
+    <div class="mb-4" v-if="!hideTitle">
+      <div class="form-label-group">
+        <input required class="form-input" type="text" v-model="localTitle" :placeholder="$t('TITLE_LABEL')">
+        <label>{{ $t('TITLE_LABEL') }}</label>
+      </div>
     </div>
-  </div>
 
-  <div class="mb-4">
-    <label class="font-bold">{{ textareaLabel }}</label>
-    <textarea
-      required
-      class="form-input"
-      :class="{ 'resize-none js-autosize-textarea': !isMobile }"
-      name="text"
-      :rows="!isMobile ? 2 : 4"
-      maxlength="1000"
-      v-model="text"
-    ></textarea>
-  </div>
+    <div class="mb-4">
+      <label class="font-bold">{{ textareaLabel }}</label>
+      <textarea
+        required
+        class="form-input"
+        name="text"
+        rows="4"
+        maxlength="1000"
+        v-model="text"
+      ></textarea>
+    </div>
 
-  <button class="btn btn-primary text-lg px-4 py-2 disabled:opacity-50" :disabled="!filled">
-    {{ submitText }}
-  </button>
-</form>
+    <button class="btn btn-primary text-lg px-4 py-2 disabled:opacity-50" :disabled="!filled">
+      {{ submitText }}
+    </button>
+  </form>
 </template>

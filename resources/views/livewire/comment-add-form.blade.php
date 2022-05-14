@@ -24,16 +24,12 @@
     <div class="break-words max-w-[700px] w-full">
       @if (!Auth::check())
         <div class="mb-4">
-          @ru
-            <div>Для комментирования необходимо ввести электронную почту или войти в один клик через один из социальных сервисов ниже.</div>
-          @en
-            <div>Please type your email or use one-click sign-in through one of the social services below to comment.</div>
-          @endru
+          <div>@lang('Для комментирования необходимо ввести электронную почту или войти в один клик через один из социальных сервисов ниже.')</div>
           <div class="flex mt-2">
             <div class="mr-2 text-center">
               <a
                 class="btn bg-vk-600 inline-flex justify-center items-center w-12 h-12 text-xl rounded-full text-white hover:bg-vk-700 hover:text-white"
-                href="{{ path([App\Http\Controllers\Auth\Vk::class, 'index'], ['goto' => to("{$requestUri}#comment-add")]) }}"
+                href="{{ path([App\Http\Controllers\Auth\Vk::class, 'index'], ['goto' => to(request()->path() . "#comment-add")]) }}"
               >
                 @svg (vk)
               </a>
@@ -42,7 +38,7 @@
             <div class="mr-2 text-center">
               <a
                 class="btn bg-facebook-600 inline-flex justify-center items-center w-12 h-12 text-xl rounded-full text-white hover:bg-facebook-700 hover:text-white"
-                href="{{ path([App\Http\Controllers\Auth\Facebook::class, 'index'], ['goto' => to("{$requestUri}#comment-add")]) }}"
+                href="{{ path([App\Http\Controllers\Auth\Facebook::class, 'index'], ['goto' => to(request()->path() . "#comment-add")]) }}"
               >
                 @svg (facebook)
               </a>
@@ -51,7 +47,7 @@
             <div class="mr-2 text-center">
               <a
                 class="btn bg-google-600 inline-flex justify-center items-center w-12 h-12 text-xl rounded-full text-white hover:bg-google-700 hover:text-white"
-                href="{{ path([App\Http\Controllers\Auth\Google::class, 'index'], ['goto' => to("{$requestUri}#comment-add")]) }}"
+                href="{{ path([App\Http\Controllers\Auth\Google::class, 'index'], ['goto' => to(request()->path() . "#comment-add")]) }}"
               >
                 @svg (google)
               </a>
