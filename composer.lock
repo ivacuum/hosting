@@ -1200,16 +1200,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "19.0.0",
+            "version": "19.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "e84cdadf64773014fdd2217eb3952919be874461"
+                "reference": "f723cee5ed1986ce87b67bd45ea142f37d5a1099"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/e84cdadf64773014fdd2217eb3952919be874461",
-                "reference": "e84cdadf64773014fdd2217eb3952919be874461",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/f723cee5ed1986ce87b67bd45ea142f37d5a1099",
+                "reference": "f723cee5ed1986ce87b67bd45ea142f37d5a1099",
                 "shasum": ""
             },
             "require": {
@@ -1263,9 +1263,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ivacuum/generic/issues",
-                "source": "https://github.com/ivacuum/generic/tree/19.0.0"
+                "source": "https://github.com/ivacuum/generic/tree/19.0.1"
             },
-            "time": "2022-05-09T12:34:24+00:00"
+            "time": "2022-05-14T19:07:09+00:00"
         },
         {
             "name": "laravel-notification-channels/telegram",
@@ -1838,16 +1838,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "32a49eb2b38fe5e5c417ab748a45d0beaab97955"
+                "reference": "cb36fee279f7fca01d5d9399ddd1b37e48e2eca1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/32a49eb2b38fe5e5c417ab748a45d0beaab97955",
-                "reference": "32a49eb2b38fe5e5c417ab748a45d0beaab97955",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/cb36fee279f7fca01d5d9399ddd1b37e48e2eca1",
+                "reference": "cb36fee279f7fca01d5d9399ddd1b37e48e2eca1",
                 "shasum": ""
             },
             "require": {
@@ -1940,7 +1940,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-07T22:37:05+00:00"
+            "time": "2022-05-14T15:37:39+00:00"
         },
         {
             "name": "league/config",
