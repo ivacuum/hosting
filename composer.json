@@ -6,7 +6,7 @@
     "php": ">=8.1",
     "ext-swoole": "*",
     "foolz/sphinxql-query-builder": "^3.0",
-    "grimzy/laravel-mysql-spatial": "dev-l9-compatibility",
+    "geo-io/wkb-parser": "^1.0",
     "guzzlehttp/guzzle": "^7.0",
     "ivacuum/generic": "^19.0",
     "laravel-notification-channels/telegram": "^2.0",
@@ -44,12 +44,6 @@
       "Tests\\": "tests/"
     }
   },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/laravel-shift/laravel-mysql-spatial.git"
-    }
-  ],
   "scripts": {
     "fresh": "@php artisan migrate:fresh --seed --seeder='App\\Seeder\\DatabaseSeeder' --ansi",
     "outdated-direct": "composer outdated --direct",

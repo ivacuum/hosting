@@ -1,7 +1,7 @@
 <?php namespace App\Factory;
 
 use App\City;
-use Grimzy\LaravelMysqlSpatial\Types\Point;
+use App\Spatial\Point;
 use Illuminate\Foundation\Testing\WithFaker;
 
 class CityFactory
@@ -28,7 +28,7 @@ class CityFactory
         $model->lon = (string) $this->faker->longitude;
         $model->iata = '';
         $model->slug = \Str::slug($title);
-        $model->point = new Point($model->lat, $model->lon, 4326);
+        $model->point = new Point($model->lat, $model->lon);
         $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
         $model->title_en = $title;
         $model->title_ru = $title;

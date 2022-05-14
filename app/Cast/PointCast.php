@@ -1,7 +1,7 @@
 <?php namespace App\Cast;
 
+use App\Spatial\Point;
 use App\SpatialExpression;
-use Grimzy\LaravelMysqlSpatial\Types\Point;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
 class PointCast implements CastsAttributes
@@ -9,7 +9,7 @@ class PointCast implements CastsAttributes
     public function get($model, string $key, $value, array $attributes)
     {
         if (is_string($value) && strlen($value) >= 13) {
-            return Point::fromWKB($value);
+            return Point::fromWkb($value);
         }
 
         return $value;

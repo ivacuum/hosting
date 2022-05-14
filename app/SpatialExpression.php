@@ -1,6 +1,6 @@
 <?php namespace App;
 
-use Grimzy\LaravelMysqlSpatial\Types\GeometryInterface;
+use App\Spatial\GeometryInterface;
 use Illuminate\Database\Query\Expression;
 
 class SpatialExpression extends Expression
@@ -10,9 +10,9 @@ class SpatialExpression extends Expression
         if (!$this->value instanceof GeometryInterface) {
             throw new \DomainException('Unexpected value type.');
         }
-        
-        $wkt = \DB::connection()->getPdo()->quote($this->value->toWKT());
 
-        return "ST_GeomFromText({$wkt}, {$this->value->getSrid()}, 'axis-order=long-lat')";
+        $wkt = \DB::connection()->getPdo()->quote($this->value->toWkt());
+
+        return "ST_GeomFromText({$wkt}, {$this->value->srid}, 'axis-order=long-lat')";
     }
 }

@@ -5,8 +5,8 @@ use App\Action\ListTripsForInputSelectAction;
 use App\Domain\PhotoStatus;
 use App\Gig;
 use App\Photo;
+use App\Spatial\Point;
 use App\Trip;
-use Grimzy\LaravelMysqlSpatial\Types\Point;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Ivacuum\Generic\Services\ImageConverter;
 use Ivacuum\Generic\Utilities\ExifHelper;
@@ -95,7 +95,7 @@ class PhotoUploadForm extends Component
         $photo->lon = $coords['lon'] ?? '';
         $photo->slug = "{$model->slug}/{$filename}";
         $photo->point = $photo->lat
-            ? new Point($photo->lat, $photo->lon, 4326)
+            ? new Point($photo->lat, $photo->lon)
             : null;
         $photo->views = 0;
         $photo->status = PhotoStatus::Hidden;
