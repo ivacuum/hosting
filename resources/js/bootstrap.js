@@ -9,4 +9,4 @@ if (window.Vue) {
   Vue.component('rutracker-post', () => import(/* webpackChunkName: "magnets" */'./components/RutrackerPost.vue'))
 }
 
-notie.setOptions({overlayOpacity: 1})
+notie.setOptions({ overlayOpacity: 1 })

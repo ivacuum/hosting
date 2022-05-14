@@ -2,8 +2,10 @@ const defaults = {
   rootMargin: '0px',
   threshold: 0,
 
-  callback(el) {},
-  fallback(el) {},
+  callback(el) {
+  },
+  fallback(el) {
+  },
 }
 
 /**

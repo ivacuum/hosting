@@ -2,5 +2,7 @@
 $(document).on(
   'dblclick',
   '.js-dblclick-edit',
-  (e) => { document.location = e.currentTarget.dataset.dblclickUrl },
+  (e) => {
+    document.location = e.currentTarget.dataset.dblclickUrl
+  },
 )

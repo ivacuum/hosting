@@ -119,7 +119,8 @@ export default class {
 
   getYandexLocale(locale) {
     switch (locale) {
-      case 'en': return 'en_US'
+      case 'en':
+        return 'en_US'
     }
 
     return 'ru_RU'

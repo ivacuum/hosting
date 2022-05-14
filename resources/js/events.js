@@ -75,7 +75,9 @@ export default class EventHandlers {
   static dcppClientsShowClick(e) {
     e.preventDefault()
 
-    document.querySelectorAll(this.dataset.target).forEach((el) => { el.hidden = false })
+    document.querySelectorAll(this.dataset.target).forEach((el) => {
+      el.hidden = false
+    })
 
     this.hidden = true
   }

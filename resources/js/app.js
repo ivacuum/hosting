@@ -53,7 +53,7 @@ class Application {
   }
 
   static conditionalInit() {
-    const {route} = document.body.dataset
+    const { route } = document.body.dataset
 
     if (route === 'news') {
       const observer = NewsViewsObserver()
@@ -68,7 +68,7 @@ class Application {
 
   csrfToken() {
     $.ajaxSetup({
-      headers: {'X-CSRF-TOKEN': this.options.csrfToken},
+      headers: { 'X-CSRF-TOKEN': this.options.csrfToken },
     })
   }
 
