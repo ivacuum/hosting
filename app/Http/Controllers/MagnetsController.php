@@ -98,7 +98,7 @@ class MagnetsController
         $magnets = Magnet::query()
             ->select(Magnet::LIST_COLUMNS)
             ->whereBelongsTo($user)
-            ->where('status', MagnetStatus::Published)
+            ->tap(new MagnetPublishedScope)
             ->withCount('commentsPublished AS comments')
             ->orderByDesc('registered_at')
             ->simplePaginate(null, ['id']);

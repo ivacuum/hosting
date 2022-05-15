@@ -11,7 +11,7 @@
       max="10"
       wire:model="files"
     >
-    <div class="form-help">{{ __('Файлы можно выбрать в появившемся окне или перетащить прямо на элемент выбора') }}</div>
+    <div class="form-help">@lang('Файлы можно выбрать в появившемся окне или перетащить прямо на элемент выбора')</div>
   </div>
   <div wire:loading.delay wire:target="files">
     @lang('Идет загрузка...')

@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Action;
+<?php namespace App\Action;
 
 use App\Magnet;
 use Foolz\SphinxQL\SphinxQL;

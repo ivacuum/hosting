@@ -1,8 +1,8 @@
 <?php namespace App\Action;
 
 use App\Domain\CacheKey;
-use App\Domain\MagnetStatus;
 use App\Magnet;
+use App\Scope\MagnetPublishedScope;
 use Illuminate\Cache\Repository;
 
 class CountMagnetsByCategoriesAction
@@ -17,7 +17,7 @@ class CountMagnetsByCategoriesAction
             CacheKey::TorrentsStatsByCategories->value,
             CacheKey::TorrentsStatsByCategories->ttl(),
             fn () => Magnet::selectRaw('category_id, COUNT(*) AS total')
-                ->where('status', MagnetStatus::Published)
+                ->tap(new MagnetPublishedScope)
                 ->groupBy('category_id')
                 ->pluck('total', 'category_id')
         );

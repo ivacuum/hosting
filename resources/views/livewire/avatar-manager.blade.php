@@ -8,7 +8,7 @@
         <button
           class="btn btn-default"
           wire:click="deleteAvatar"
-        >{{ __('Удалить аватар') }}</button>
+        >@lang('Удалить аватар')</button>
       </div>
     </div>
   @else
@@ -29,9 +29,9 @@
       id="{{ $this->randomId }}"
       wire:model="image"
     >
-    <div class="form-help">{{ __('Аватар сохраняется автоматически после выбора файла') }}</div>
+    <div class="form-help">@lang('Аватар сохраняется автоматически после выбора файла')</div>
   </div>
   <div wire:loading.delay wire:target="image">
-    {{ __('Идет загрузка...') }}
+    @lang('Идет загрузка...')
   </div>
 </div>

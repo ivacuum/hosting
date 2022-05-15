@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Livewire;
+<?php namespace App\Http\Livewire;
 
 use App\Action\FindUserByEmailOrCreateAction;
 use App\Comment;
