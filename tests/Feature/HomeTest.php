@@ -8,6 +8,12 @@ class HomeTest extends TestCase
 {
     use DatabaseTransactions;
 
+    public function testHead()
+    {
+        $this->head('/')
+            ->assertOk();
+    }
+
     public function testIndex()
     {
         $this->get('/')
