@@ -1,5 +1,6 @@
 <?php namespace App\Http\Requests;
 
+use App\Scope\TripNotToKalugaScope;
 use App\Scope\TripOfAdminScope;
 use App\Scope\TripVisibleScope;
 use App\Trip;
@@ -29,7 +30,7 @@ class LifeCalendarForm extends AbstractForm
     {
         return Trip::query()
             ->tap(new TripOfAdminScope)
-            ->where('city_id', '<>', 1)
+            ->tap(new TripNotToKalugaScope)
             ->when($this->includeOnlyVisibleTrips(), fn (Builder $query) => $query->tap(new TripVisibleScope))
             ->orderBy('date_start')
             ->get();
