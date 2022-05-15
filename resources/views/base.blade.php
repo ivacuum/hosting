@@ -185,8 +185,6 @@ window.AppOptions = JSON.parse('<?= json_encode([
 <script src="{{ mix('/assets/jquery.js') }}"></script>
 <script src="{{ mix('/assets/jquery.scrollto.js') }}"></script>
 <script src="{{ mix('/assets/notie.js') }}"></script>
-<script src="{{ mix('/assets/vue.js') }}"></script>
-<script src="{{ mix('/assets/vue-i18n.js') }}"></script>
 <script src="{{ mix('/assets/axios.js') }}"></script>
 <script src="{{ mix('/assets/mousetrap.js') }}"></script>
 <script type="module" src="{{ mix('/assets/details-menu-element.js') }}"></script>

@@ -41,7 +41,7 @@
       @endguest
     </div>
   </aside>
-  <div class="grow" v-cloak>
+  <div class="grow">
     @if (Auth::check() && empty(request()->query()))
       @livewire(App\Http\Livewire\Chat::class)
     @endif

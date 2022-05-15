@@ -1,4 +1,5 @@
 @extends('japanese.base')
+@include('vue')
 @include('livewire')
 
 @section('content')

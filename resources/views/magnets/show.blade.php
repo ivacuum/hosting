@@ -5,6 +5,7 @@
 ?>
 
 @extends('magnets.base')
+@include('vue')
 @include('livewire')
 
 @section('torrent-download-button')
