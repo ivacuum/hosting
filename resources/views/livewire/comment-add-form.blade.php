@@ -65,7 +65,7 @@
               required
               class="form-input"
               type="email"
-              wire:model="email"
+              wire:model.lazy="email"
               placeholder="@lang('model.email')"
             >
             <x-invalid-feedback field="email"/>
@@ -77,7 +77,7 @@
           placeholder="@lang('Оставьте комментарий...')"
           rows="4"
           maxlength="1000"
-          wire:model="text"
+          wire:model.lazy="text"
         ></textarea>
         <x-invalid-feedback field="text"/>
         <button class="btn btn-primary mt-2">
