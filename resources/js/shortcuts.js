@@ -15,7 +15,7 @@ export default class Shortcuts {
       const selection = window.getSelection().toString()
 
       if (selection.length > 200) {
-        notie.alert({ type: 'error', text: 'Selection is too long' })
+        alert('Selection is too long')
         return
       }
 
@@ -26,7 +26,7 @@ export default class Shortcuts {
       axios
         .post('/js/typo', { selection })
         .then(({ data }) => {
-          notie.alert({ text: data.message })
+          alert(data.message)
         })
     }, 'keyup')
 

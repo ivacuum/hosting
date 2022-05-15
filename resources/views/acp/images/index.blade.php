@@ -125,11 +125,11 @@ $(document).on('click', '.js-image-delete', function jsImageDelete(e) {
       if (response.data.status === 'OK') {
         document.querySelector($this.data('selector')).hidden = true
       } else {
-        notie.alert({ type: 'error', text: response.data.message })
+        alert(response.data.message)
       }
     })
     .catch((error) => {
-      notie.alert({ type: 'error', text: error.response.data.message, stay: true })
+      alert(error.response.data.message)
     })
 
   return true
