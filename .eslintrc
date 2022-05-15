@@ -6,12 +6,9 @@
   "globals": {
     "$": true,
     "App": true,
-    "axios": true,
     "Mousetrap": true,
     "Vue": true,
-    "VueI18n": true,
-    "VueRouter": true,
-    "Vuex": true
+    "VueI18n": true
   },
   "rules": {
     "no-param-reassign": [

@@ -3,14 +3,18 @@ $(document).on('submit', '.js-batch-form', function jsBatchForm(e) {
   e.preventDefault()
 
   const { selector, url } = e.currentTarget.dataset
-  const $form = $(this)
-  const ids = $(`${selector}:checked`).serialize()
+  const formData = new FormData(this)
 
-  axios
-    .post(url, `${$form.serialize()}&${ids}`)
-    .then(({ data }) => {
-      if (data.redirect) {
-        document.location = data.redirect
-      }
-    })
+  document.querySelectorAll(`${selector}:checked`).forEach((el) => {
+    formData.append('ids[]', el.value)
+  })
+
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'X-CSRF-TOKEN': window['AppOptions'].csrfToken,
+    },
+    body: formData
+  })
+    .then(() => document.location.reload())
 })

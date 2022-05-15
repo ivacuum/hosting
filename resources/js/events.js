@@ -49,9 +49,14 @@ export default class EventHandlers {
           const action = $el.data('action')
 
           if (action) {
-            axios.get(action).then((response) => {
-              manager.add(response.data)
+            fetch(action, {
+              headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+              },
             })
+              .then(response => response.json())
+              .then(json => manager.add(json))
           }
         })
     }
@@ -89,7 +94,12 @@ export default class EventHandlers {
     const { clicked } = this.dataset
 
     if (clicked === undefined) {
-      axios.post(this.dataset.action)
+      fetch(this.dataset.action, {
+        method: 'POST',
+        headers: {
+          'X-CSRF-TOKEN': window['AppOptions'].csrfToken,
+        },
+      })
 
       this.dataset.clicked = '1'
     }
@@ -121,7 +131,12 @@ export default class EventHandlers {
     const { clicked } = this.dataset
 
     if (clicked === undefined) {
-      axios.post(this.dataset.action)
+      fetch(this.dataset.action, {
+        method: 'POST',
+        headers: {
+          'X-CSRF-TOKEN': window['AppOptions'].csrfToken,
+        },
+      })
 
       this.dataset.clicked = '1'
 

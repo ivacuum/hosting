@@ -117,19 +117,19 @@ $(document).on('click', '.js-image-delete', function jsImageDelete(e) {
 
   $this.addClass('disabled')
 
-  axios
-    .post($this.attr('href'), {
-      _method: 'delete'
-    })
-    .then((response) => {
-      if (response.data.status === 'OK') {
+  fetch($this.attr('href'), {
+    method: 'DELETE',
+    headers: {
+      'X-CSRF-TOKEN': window['AppOptions'].csrfToken,
+    },
+  })
+    .then(response => response.json())
+    .then(json => {
+      if (json.status === 'OK') {
         document.querySelector($this.data('selector')).hidden = true
       } else {
-        alert(response.data.message)
+        alert(json.message)
       }
-    })
-    .catch((error) => {
-      alert(error.response.data.message)
     })
 
   return true

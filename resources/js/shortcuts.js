@@ -23,11 +23,18 @@ export default class Shortcuts {
         return
       }
 
-      axios
-        .post('/js/typo', { selection })
-        .then(({ data }) => {
-          alert(data.message)
-        })
+      console.log(JSON.stringify({ selection }))
+
+      fetch('/js/typo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': window['AppOptions'].csrfToken,
+        },
+        body: JSON.stringify({ selection })
+      })
+        .then(response => response.json())
+        .then(json => alert(json.message))
     }, 'keyup')
 
     // Русские буквы

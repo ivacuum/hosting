@@ -19,9 +19,6 @@ mix.js('resources/js/app.js', 'public/assets').vue()
   .copy('node_modules/vue/dist/vue.min.js', 'public/assets/vue.js')
   .copy('node_modules/vue-i18n/dist/vue-i18n.min.js', 'public/assets/vue-i18n.js')
 
-  .copy('node_modules/axios/dist/axios.min.js', 'public/assets/axios.js')
-  .copy('resources/js/empty.map', 'public/assets/axios.min.map')
-
   .copy('node_modules/livewire-vue/dist/livewire-vue.js', 'public/assets')
   .copy('resources/js/empty.map', 'public/assets/livewire-vue.js.map')
 

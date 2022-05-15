@@ -19,11 +19,14 @@ export default class PhotosMap {
 
         App.map.map.geoObjects.add(manager)
 
-        axios
-          .get($el.data('action'))
-          .then((response) => {
-            manager.add(response.data)
-          })
+        fetch($el.data('action'), {
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+          },
+        })
+          .then(response => response.json())
+          .then(json => manager.add(json))
       })
   }
 }

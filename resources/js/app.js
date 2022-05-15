@@ -1,5 +1,3 @@
-import './bootstrap'
-
 import throttle from 'lodash/throttle'
 import Map from './yandex-map'
 import YandexMetrika from './yandex-metrika'

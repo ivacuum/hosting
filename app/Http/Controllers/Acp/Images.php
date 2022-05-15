@@ -65,14 +65,6 @@ class Images extends Controller
         ];
     }
 
-    public function view(Image $image)
-    {
-        $image->views++;
-        $image->save();
-
-        return back();
-    }
-
     public function destroy(Image $image)
     {
         $image->deleteOrFail();
@@ -86,5 +78,13 @@ class Images extends Controller
     public function show(Image $image, ResponseToShowAction $responseToShow)
     {
         return $responseToShow->execute($image);
+    }
+
+    public function view(Image $image)
+    {
+        $image->views++;
+        $image->save();
+
+        return back();
     }
 }

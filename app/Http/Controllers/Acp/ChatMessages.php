@@ -60,7 +60,10 @@ class ChatMessages extends Controller
             }
         }
 
-        return $this->redirectAfterDestroy(new ChatMessage);
+        return [
+            'status' => 'OK',
+            'redirect' => path([static::class, 'index']),
+        ];
     }
 
     public function destroy(ChatMessage $chatMessage, ResponseToDestroyAction $responseToDestroy)
