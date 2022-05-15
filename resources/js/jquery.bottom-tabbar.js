@@ -1,19 +1,19 @@
 import throttle from 'lodash/throttle'
 
 if (window.matchMedia('(max-width: 768px)').matches) {
-  let lastOffset = window.pageYOffset
-  const $tabbar = $('.bottom-tabbar-container')
-  const tabbarHeight = $tabbar.height()
+  let lastOffset = window.scrollY
+  const tabBar = document.querySelector('.bottom-tabbar-container')
+  const tabBarHeight = tabBar.offsetHeight
   const threshold = 77
 
   $(window).on('scroll.js-bottom-tabbar-reveal', throttle(() => {
-    const offset = window.pageYOffset
+    const offset = window.scrollY
     const windowHeight = window.innerHeight
-    const docHeight = $(document).height()
+    const docHeight = document.body.clientHeight
 
     // Домотали до конца
-    if (offset + windowHeight >= docHeight - tabbarHeight) {
-      $tabbar.addClass('revealed')
+    if (offset + windowHeight >= docHeight - tabBarHeight) {
+      tabBar.classList.add('revealed')
       lastOffset = offset
       return
     }
@@ -25,10 +25,10 @@ if (window.matchMedia('(max-width: 768px)').matches) {
 
     if (offset > lastOffset) {
       // Промотали вниз достаточно для скрытия
-      $tabbar.removeClass('revealed')
+      tabBar.classList.remove('revealed')
     } else {
       // Промотали вверх достаточно для показа
-      $tabbar.addClass('revealed')
+      tabBar.classList.add('revealed')
     }
 
     lastOffset = offset
