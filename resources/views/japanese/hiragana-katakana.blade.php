@@ -1,4 +1,5 @@
 @extends('japanese.base')
+@include('livewire')
 
 @section('content')
 <h1 class="h2">@lang('Хирагана и катакана')</h1>
@@ -32,11 +33,9 @@
   @en
     <p>Use the form below to ask a question or share your thoughts. We will use your feedback to make the trainer better. There are certainly things to improve. <span class="whitespace-nowrap" lang="ja">ありがとうございます。</span></p>
   @endru
-  <feedback-form
-    email="{{ Auth::user()->email ?? '' }}"
-    title="Hiragana Katakana Trainer"
-    action="@lng/contact"
-    hide-title
-  ></feedback-form>
+  @livewire(App\Http\Livewire\FeedbackForm::class, [
+    'title' => 'Hiragana Katakana Trainer',
+    'hideTitle' => true,
+  ])
 </div>
 @endsection

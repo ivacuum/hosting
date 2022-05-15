@@ -2,6 +2,7 @@
   'noFooterBanner' => true,
   'contentContainerClasses' => '',
 ])
+@include('livewire')
 
 @section('content')
 <div class="antialiased hanging-punctuation-first lg:text-lg">
@@ -122,12 +123,10 @@
           @en
             <p>Use the form below to ask a question or just to tell us how to make this page better.</p>
           @endru
-          <feedback-form
-            email="{{ Auth::user()->email ?? '' }}"
-            title="DC++ Client"
-            action="@lng/contact"
-            hide-title
-          ></feedback-form>
+          @livewire(App\Http\Livewire\FeedbackForm::class, [
+            'title' => 'DC++ Client',
+            'hideTitle' => true,
+          ])
         </div>
         <div class="lg:w-2/3 xl:w-1/2">
           @include('tpl.google-vertical')

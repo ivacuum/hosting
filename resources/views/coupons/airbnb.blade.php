@@ -1,4 +1,5 @@
 @extends('base')
+@include('livewire')
 
 @section('content')
 <h1 class="tracking-tight">{{ $metaTitle }}</h1>
@@ -253,12 +254,10 @@
     @en
       <p>Use the form below to ask a question or just to tell us how to make this page better. New coupons and ways to cut down the expenses are welcome.</p>
     @endru
-    <feedback-form
-      email="{{ Auth::user()->email ?? '' }}"
-      title="Airbnb"
-      action="@lng/contact"
-      hide-title
-    ></feedback-form>
+    @livewire(App\Http\Livewire\FeedbackForm::class, [
+      'title' => 'Airbnb',
+      'hideTitle' => true,
+    ])
   </section>
 </div>
 @endsection

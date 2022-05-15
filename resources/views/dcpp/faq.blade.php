@@ -1,6 +1,7 @@
 @extends('dcpp.base', [
   'noLanguageSelector' => $locale === 'ru',
 ])
+@include('livewire')
 
 @section('content')
 <h1>Решение проблем с DC++</h1>
@@ -272,11 +273,9 @@
   @en
     <p>Use the form below to ask a question or just to tell us how to make this page better.</p>
   @endru
-  <feedback-form
-    email="{{ Auth::user()->email ?? '' }}"
-    title="DC++ FAQ"
-    action="@lng/contact"
-    hide-title
-  ></feedback-form>
+  @livewire(App\Http\Livewire\FeedbackForm::class, [
+    'title' => 'DC++ FAQ',
+    'hideTitle' => true,
+  ])
 </div>
 @endsection

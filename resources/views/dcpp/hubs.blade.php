@@ -1,4 +1,5 @@
 @extends('dcpp.base')
+@include('livewire')
 
 @section('content')
 <h1>@lang('Популярные DC++ хабы')</h1>
@@ -35,13 +36,11 @@
     @en
       <p>Use the form below to send us new hubs or just to tell how to make this page better.</p>
     @endru
-    <feedback-form
-      email="{{ Auth::user()->email ?? '' }}"
-      title="DC++ Hubs"
-      action="@lng/contact"
-      hide-name
-      hide-title
-    ></feedback-form>
+    @livewire(App\Http\Livewire\FeedbackForm::class, [
+      'title' => 'DC++ Hubs',
+      'hideName' => true,
+      'hideTitle' => true,
+    ])
   </div>
   <div class="lg:w-2/3 xl:w-1/2">
     @include('tpl.google-vertical')

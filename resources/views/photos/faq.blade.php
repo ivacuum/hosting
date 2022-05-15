@@ -1,4 +1,5 @@
 @extends('photos.base')
+@include('livewire')
 
 @section('content')
 <div class="max-w-[600px]">
@@ -44,11 +45,9 @@
   @en
     <p>Use the form below to ask a question or just to tell us how to make this page better.</p>
   @endru
-  <feedback-form
-    email="{{ Auth::user()->email ?? '' }}"
-    title="Photos FAQ"
-    action="@lng/contact"
-    hide-title
-  ></feedback-form>
+  @livewire(App\Http\Livewire\FeedbackForm::class, [
+    'title' => 'Photos FAQ',
+    'hideTitle' => true,
+  ])
 </div>
 @endsection

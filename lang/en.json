@@ -1,5 +1,6 @@
 {
   "Сайт": "Site",
+  "Тема": "Subject",
   "Тэги": "Tags",
   "Хабы": "Hubs",
   "Вчера": "Yesterday",
@@ -37,6 +38,7 @@
   "Скачать": "Download",
   "Хангыль": "Hangul",
   "Хостинг": "Hosting",
+  "Ваше имя": "Your name",
   "Катакана": "Katakana",
   "Концерты": "Gigs",
   "На карте": "On the map",
@@ -86,6 +88,7 @@
   "Уровень :level": "Level :level",
   "Варианты чтения": "Readings",
   "Мои изображения": "My images",
+  "Текст сообщения": "Your message",
   "Добавить раздачу": "Add a release",
   "Идет загрузка...": "Uploading...",
   "Как использовать": "Usage",
@@ -94,10 +97,12 @@
   "Посещенные города": "Visited cities",
   "Посещенные страны": "Visited countries",
   "Связанные раздачи": "Related releases",
+  "Электронная почта": "E-mail",
   "Конфиденциальность": "Privacy Policy",
   "Промокоды и купоны": "Promocodes and coupons",
   "Просмотр миниатюры": "Viewing a thumbnail",
   "Изменения сохранены": "Changes saved",
+  "Отправить сообщение": "Send",
   "Понравившиеся книги": "Books I liked",
   "Примеры предложений": "Example sentences",
   "Просмотр фотографии": "Viewing a photo",
@@ -125,5 +130,6 @@
   "Аватар сохраняется автоматически после выбора файла": "Avatar will be saved automatically after file selection is made",
   "Комментарий ожидает активации. Мы отправили вам ссылку на электронную почту.": "Comment activation pending. We have e-mailed you a link.",
   "Файлы можно выбрать в появившемся окне или перетащить прямо на элемент выбора": "You can select files in pop-up window or drag&drop them on the form element",
+  "Ваше сообщение принято. Мы постараемся отреагировать на него как можно скорее.": "Thanks, we got your message. We will try to respond as soon as possible.",
   "Для комментирования необходимо ввести электронную почту или войти в один клик через один из социальных сервисов ниже.": "Please type your email or use one-click sign-in through one of the social services below to comment."
 }

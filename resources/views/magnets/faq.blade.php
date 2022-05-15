@@ -1,4 +1,5 @@
 @extends('magnets.base')
+@include('livewire')
 
 @section('content')
 <div class="max-w-[700px]">
@@ -126,11 +127,9 @@
   @en
     <p>Use the form below to ask a question or just to tell us how to make this page better.</p>
   @endru
-  <feedback-form
-    email="{{ Auth::user()->email ?? '' }}"
-    title="Magnets FAQ"
-    action="@lng/contact"
-    hide-title
-  ></feedback-form>
+  @livewire(App\Http\Livewire\FeedbackForm::class, [
+    'title' => 'Magnets FAQ',
+    'hideTitle' => true,
+  ])
 </div>
 @endsection

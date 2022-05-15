@@ -1,4 +1,5 @@
 @extends('base')
+@include('livewire')
 
 @section('content')
 <h1 class="h2">@lang('Обратная связь')</h1>
@@ -8,10 +9,6 @@
   @en
     <p>Use the form below to ask a question, leave a feedback, or tell us how to make the site better.</p>
   @endru
-  <feedback-form
-    name="{{ Auth::user()?->login }}"
-    email="{{ Auth::user()?->email }}"
-    action="@lng/contact"
-  ></feedback-form>
+  @livewire(App\Http\Livewire\FeedbackForm::class)
 </div>
 @endsection

@@ -34,7 +34,6 @@ Route::get('auth/vk/callback', [Ctrl\Auth\Vk::class, 'callback']);
 Route::get('comments/{comment}/confirm', Ctrl\CommentConfirm::class)->middleware('auth')->can('confirm', 'comment');
 
 Route::view('contact', 'issues.create');
-Route::post('contact', Ctrl\Issues::class);
 
 Route::middleware('nav:О DC++,dc')->group(function () {
     Route::view('dc', 'dcpp.index')->withoutMiddleware('nav:О DC++,dc');
