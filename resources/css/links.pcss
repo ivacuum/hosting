@@ -1,0 +1,86 @@
+.link,
+.pseudo {
+  color: var(--link-color);
+  cursor: pointer;
+  outline: 0;
+  text-decoration-color: var(--link-border-color);
+  text-underline-offset: var(--link-underline-offset);
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
+}
+
+.link:hover,
+.link:focus,
+.link.active,
+.link-parent:hover .link,
+.pseudo:hover,
+.pseudo:focus,
+.pseudo.active,
+.link-parent:hover .pseudo {
+  color: var(--link-hover-color) !important;
+  text-decoration-color: var(--link-hover-border-color) !important;
+  text-decoration-thickness: 1px;
+}
+
+.link:hover .svg-icon,
+.link:focus .svg-icon,
+.link.active .svg-icon,
+.link-parent:hover .link .svg-icon,
+.pseudo:hover .svg-icon,
+.pseudo:focus .svg-icon,
+.pseudo.active .svg-icon,
+.link-parent:hover .pseudo .svg-icon {
+  fill: var(--link-hover-color) !important;
+}
+
+.link:visited, .link-parent:visited .link,
+.pseudo:visited,
+.link-parent:visited .pseudo {
+  color: var(--link-visited-color);
+  text-decoration-color: var(--link-visited-border-color);
+}
+
+.link:visited .svg-icon,
+.link-parent:visited .link .svg-icon,
+.pseudo:visited .svg-icon,
+.link-parent:visited .pseudo .svg-icon {
+  fill: var(--link-visited-color);
+}
+
+.link,
+.link:hover,
+.link:focus,
+.link:visited,
+.link.active {
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+}
+
+.pseudo,
+.pseudo:hover,
+.pseudo:focus,
+.pseudo:visited,
+.pseudo.active {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+}
+
+.visited:hover,
+.visited:focus {
+  color: var(--link-hover-color) !important;
+  text-decoration-color: var(--link-hover-border-color) !important;
+}
+
+.visited:hover .svg-icon,
+.visited:focus .svg-icon {
+  fill: var(--link-hover-color) !important;
+}
+
+.visited:visited {
+  color: var(--link-visited-color);
+  text-decoration-color: var(--link-visited-border-color);
+}
+
+.visited:visited .svg-icon {
+  fill: var(--link-visited-color);
+}

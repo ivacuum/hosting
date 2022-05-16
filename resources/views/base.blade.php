@@ -28,7 +28,6 @@
     <link rel="alternate" hreflang="en" href="{{ url("en/{$requestUri}") }}">
     <link rel="alternate" hreflang="ru" href="{{ url($requestUri) }}">
   @endif
-  <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">
   <link rel="stylesheet" href="{{ mix('/assets/tailwind.css') }}">
   @stack('head')
 </head>

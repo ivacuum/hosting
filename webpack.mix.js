@@ -1,7 +1,6 @@
 const mix = require('laravel-mix')
 
 mix.js('resources/js/app.js', 'public/assets').vue()
-  .sass('resources/sass/app.scss', 'public/assets')
   .postCss('resources/css/tailwind.pcss', 'public/assets', [
     require('postcss-import'),
     require('autoprefixer'),

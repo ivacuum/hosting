@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <title>{{ $trip->title }}</title>
   <meta name="robots" content="noindex, nofollow">
-  <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">
   <link rel="stylesheet" href="{{ mix('/assets/tailwind.css') }}">
 </head>
 <body>
