@@ -6,9 +6,7 @@ export default class EventHandlers {
     $(document).on('click', '.js-collapse', this.collapse)
     $(document).on('click', '.js-dcpp-clients-show', this.dcppClientsShowClick)
     $(document).on('click', '.js-dcpp-hub', this.dcppHubClick)
-    $(document).on('click', '.js-gif-click', this.gifClick)
     $(document).on('click', '.js-magnet', this.magnetClick)
-    $(document).on('click', '.js-tick-onclick', this.tickOnClick)
 
     $(document).on('click', '.js-share-click', this.shareClick)
 
@@ -106,25 +104,6 @@ export default class EventHandlers {
   }
 
   /**
-   * Проигрывание гифок по клику
-   *
-   * @param e
-   */
-  static gifClick(e) {
-    e.preventDefault()
-
-    const $img = $('img', this)
-    const src = $img.attr('src')
-    const gif = $(this).attr('href')
-
-    if (src !== gif) {
-      $img.data('static', src).attr('src', gif)
-    } else {
-      $img.attr('src', $img.data('static'))
-    }
-  }
-
-  /**
    * Учет статистики кликов по магнету
    */
   static magnetClick() {
@@ -154,11 +133,5 @@ export default class EventHandlers {
 
       navigator.share({ url })
     }
-  }
-
-  static tickOnClick() {
-    const $selector = $(this.dataset.tick)
-
-    $selector.prop('checked', (i, val) => !val)
   }
 }
