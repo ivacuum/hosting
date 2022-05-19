@@ -31,7 +31,7 @@
     @foreach ($templates as $template)
       <tr>
         <td>
-          <a href="{{ path([App\Http\Controllers\Acp\Dev\Templates::class, 'show'], $template->name)}}">
+          <a href="{{ $template->www }}">
             {{ $template->name }}
           </a>
         </td>
