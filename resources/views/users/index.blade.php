@@ -9,8 +9,8 @@
     <tr>
       <th class="md:text-right">ID</th>
       <th></th>
-      <th>Псевдоним</th>
-      <th>Дата регистрации</th>
+      <th>@lang('Псевдоним')</th>
+      <th>@lang('Дата регистрации')</th>
     </tr>
     </thead>
     <tbody>

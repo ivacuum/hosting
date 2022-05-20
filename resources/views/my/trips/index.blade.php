@@ -16,7 +16,7 @@
       class="btn btn-default my-1 mr-1"
       href="{{ path([App\Http\Controllers\UserTravelTrips::class, 'index'], Auth::user()->login) }}"
     >
-      Просмотреть
+      @lang('Просмотреть')
     </a>
   @endif
   <a class="btn btn-default my-1" href="@lng/docs/trips">
@@ -31,7 +31,7 @@
       <th class="md:text-right">#</th>
       <th class="md:text-left">{{ ViewHelper::modelFieldTrans('trip', 'title') }}</th>
       <th></th>
-      <th class="md:text-left">Дата начала</th>
+      <th class="md:text-left">@lang('Дата')</th>
       <th class="md:text-left">{{ ViewHelper::modelFieldTrans('trip', 'slug') }}</th>
       <th class="md:text-right whitespace-nowrap">@svg (eye)</th>
       <th class="md:text-right whitespace-nowrap">@svg (comment-o)</th>
