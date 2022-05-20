@@ -2,6 +2,7 @@
 
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class SetLocale
 {
@@ -18,6 +19,16 @@ class SetLocale
             app()->setLocale($locale);
         }
 
+        $this->paginatorCurrentPath($request);
+
         return $next($request);
+    }
+
+    private function paginatorCurrentPath(Request $request)
+    {
+        $locale = $request->server->get('LARAVEL_LOCALE');
+        $localeUri = $locale ? "/{$locale}" : '';
+
+        Paginator::currentPathResolver(fn () => $localeUri . $request->getBaseUrl() . $request->getPathInfo());
     }
 }
