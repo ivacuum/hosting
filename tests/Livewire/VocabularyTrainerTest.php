@@ -33,7 +33,10 @@ class VocabularyTrainerTest extends TestCase
 
     public function testAnswerRightInKanji()
     {
-        VocabularyFactory::new()->withLevel(1)->create();
+        VocabularyFactory::new()
+            ->withLevel(1)
+            ->withCharacter('東京証券取引所')
+            ->create();
 
         $this->expectsEvents(\App\Events\Stats\VocabularyAnsweredKanji::class);
 
