@@ -27,7 +27,7 @@ class CommentAddForm extends Component
         ];
     }
 
-    public function submit(FindUserByEmailOrCreateAction $findUserByEmailOrCreate, CommentsTodayLimit $limits)
+    public function submit(FindUserByEmailOrCreateAction $findUserByEmailOrCreate, CommentsTodayLimit $limiter)
     {
         $this->validate();
 
@@ -48,11 +48,11 @@ class CommentAddForm extends Component
             );
         }
 
-        if ($limits->flood($user->id)) {
+        if ($limiter->flooded($user->id)) {
             $this->addError('text', __('limits.flood_control'));
 
             return;
-        } elseif ($limits->ipExceeded() || $limits->userExceeded($user->id)) {
+        } elseif ($limiter->tooManyAttempts($user->id)) {
             $this->addError('text', __('limits.comment'));
 
             return;

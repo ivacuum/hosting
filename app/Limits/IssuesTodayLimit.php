@@ -1,11 +1,18 @@
 <?php namespace App\Limits;
 
-use App\Activity;
+use App\Action\LimitRateAction;
+use App\Issue;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
 use Ivacuum\Generic\Events\LimitExceeded;
 
 class IssuesTodayLimit
 {
-    public function flood(int $userId): bool
+    public function __construct(private Request $request, private LimitRateAction $limitRate)
+    {
+    }
+
+    public function flooded(int $userId): bool
     {
         $interval = config('cfg.limits.issue.flood_interval');
 
@@ -13,13 +20,13 @@ class IssuesTodayLimit
             return false;
         }
 
-        /** @var Activity $last */
-        $last = Activity::where('user_id', $userId)
-            ->where('type', 'Issue.created')
+        /** @var Issue $last */
+        $last = Issue::query()
+            ->where('user_id', $userId)
             ->orderByDesc('id')
             ->first(['created_at']);
 
-        if (null === $last) {
+        if ($last === null) {
             return false;
         }
 
@@ -34,40 +41,25 @@ class IssuesTodayLimit
         return false;
     }
 
-    public function ipExceeded(): bool
+    public function tooManyAttempts(int $userId): bool
     {
-        $ip = request()->ip();
-        $limit = config('cfg.limits.issue.ip');
-
-        $count = Activity::where('type', 'Issue.created')
-            ->where('ip', $ip)
-            ->where('created_at', '>', now()->startOfDay())
-            ->count();
-
-        if ($count >= $limit) {
-            event(new LimitExceeded('issue.ip', $ip));
-
-            return true;
-        }
-
-        return false;
+        return $this->ipExceeded()
+            && $this->userExceeded($userId);
     }
 
-    public function userExceeded(int $userId): bool
+    private function ipExceeded(): bool
     {
-        $limit = config('cfg.limits.issue.user');
+        $limit = Limit::perDay(config('cfg.limits.issue.ip'))
+            ->by("issue.ip:{$this->request->ip()}");
 
-        $count = Activity::where('type', 'Issue.created')
-            ->where('user_id', $userId)
-            ->where('created_at', '>', now()->startOfDay())
-            ->count();
+        return $this->limitRate->execute($limit);
+    }
 
-        if ($count >= $limit) {
-            event(new LimitExceeded('issue.user', $userId));
+    private function userExceeded(int $userId): bool
+    {
+        $limit = Limit::perDay(config('cfg.limits.issue.user'))
+            ->by("issue.user:{$userId}");
 
-            return true;
-        }
-
-        return false;
+        return $this->limitRate->execute($limit);
     }
 }

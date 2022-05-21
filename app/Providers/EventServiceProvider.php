@@ -31,10 +31,6 @@ class EventServiceProvider extends ServiceProvider
             Listeners\LogExternalHttpRequest::class,
         ],
 
-        'Ivacuum\Generic\Events\LimitExceeded' => [
-            'Ivacuum\Generic\Listeners\TelegramLimitExceeded',
-        ],
-
         'Ivacuum\Generic\Events\MailReported' => [
             'Ivacuum\Generic\Listeners\TelegramMailReport',
         ],

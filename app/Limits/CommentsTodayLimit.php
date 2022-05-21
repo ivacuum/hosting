@@ -1,11 +1,17 @@
 <?php namespace App\Limits;
 
-use App\Activity;
-use Ivacuum\Generic\Events\LimitExceeded;
+use App\Action\LimitRateAction;
+use App\Comment;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
 
 class CommentsTodayLimit
 {
-    public function flood(int $userId): bool
+    public function __construct(private Request $request, private LimitRateAction $limitRate)
+    {
+    }
+
+    public function flooded(int $userId): bool
     {
         $interval = config('cfg.limits.comment.flood_interval');
 
@@ -13,61 +19,44 @@ class CommentsTodayLimit
             return false;
         }
 
-        /** @var Activity $last */
-        $last = Activity::where('user_id', $userId)
-            ->where('type', 'Comment.created')
+        /** @var Comment $last */
+        $last = Comment::query()
+            ->where('user_id', $userId)
             ->orderByDesc('id')
             ->first(['created_at']);
 
-        if (null === $last) {
+        if ($last === null) {
             return false;
         }
 
         $diff = now()->diffInSeconds($last->created_at);
 
         if ($diff < $interval) {
-            event(new LimitExceeded('comment.flood_interval', $userId));
-
             return true;
         }
 
         return false;
     }
 
-    public function ipExceeded(): bool
+    public function tooManyAttempts(int $userId): bool
     {
-        $ip = request()->ip();
-        $limit = config('cfg.limits.comment.ip');
-
-        $count = Activity::where('type', 'Comment.created')
-            ->where('ip', $ip)
-            ->where('created_at', '>', now()->startOfDay())
-            ->count();
-
-        if ($count >= $limit) {
-            event(new LimitExceeded('comment.ip', $ip));
-
-            return true;
-        }
-
-        return false;
+        return $this->ipExceeded()
+            && $this->userExceeded($userId);
     }
 
-    public function userExceeded(int $userId): bool
+    private function ipExceeded(): bool
     {
-        $limit = config('cfg.limits.comment.user');
+        $limit = Limit::perDay(config('cfg.limits.comment.ip'))
+            ->by("comment.ip:{$this->request->ip()}");
 
-        $count = Activity::where('type', 'Comment.created')
-            ->where('user_id', $userId)
-            ->where('created_at', '>', now()->startOfDay())
-            ->count();
+        return $this->limitRate->execute($limit);
+    }
 
-        if ($count >= $limit) {
-            event(new LimitExceeded('comment.user', $userId));
+    private function userExceeded(int $userId): bool
+    {
+        $limit = Limit::perDay(config('cfg.limits.comment.user'))
+            ->by("comment.user:{$userId}");
 
-            return true;
-        }
-
-        return false;
+        return $this->limitRate->execute($limit);
     }
 }

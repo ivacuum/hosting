@@ -40,7 +40,7 @@ class FeedbackForm extends Component
         ];
     }
 
-    public function submit(FindUserByEmailOrCreateAction $findUserByEmailOrCreate, IssuesTodayLimit $limits)
+    public function submit(FindUserByEmailOrCreateAction $findUserByEmailOrCreate, IssuesTodayLimit $limiter)
     {
         $this->validate();
 
@@ -55,11 +55,11 @@ class FeedbackForm extends Component
             );
         }
 
-        if ($limits->flood($user->id)) {
+        if ($limiter->flooded($user->id)) {
             $this->addError('text', __('limits.flood_control'));
 
             return;
-        } elseif ($limits->ipExceeded() || $limits->userExceeded($user->id)) {
+        } elseif ($limiter->tooManyAttempts($user->id)) {
             $this->addError('text', __('limits.issue'));
 
             return;
