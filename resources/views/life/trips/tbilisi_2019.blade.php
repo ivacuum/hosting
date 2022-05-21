@@ -322,6 +322,8 @@
 
 @ru
   <p>Скейт-парк.</p>
+@en
+  <p>Skate park.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_1781.jpg'])
 
