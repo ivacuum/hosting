@@ -3,7 +3,7 @@
 use App\Action\FindUserByEmailOrCreateAction;
 use App\Domain\IssueStatus;
 use App\Issue;
-use App\Limits\IssuesTodayLimit;
+use App\RateLimit\IssueRateLimiter;
 use App\Rules\Email;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -40,7 +40,7 @@ class FeedbackForm extends Component
         ];
     }
 
-    public function submit(FindUserByEmailOrCreateAction $findUserByEmailOrCreate, IssuesTodayLimit $limiter)
+    public function submit(FindUserByEmailOrCreateAction $findUserByEmailOrCreate, IssueRateLimiter $limiter)
     {
         $this->validate();
 

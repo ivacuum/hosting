@@ -5,9 +5,9 @@ use App\Comment;
 use App\Domain\CommentStatus;
 use App\Domain\LivewireEvent;
 use App\Issue;
-use App\Limits\CommentsTodayLimit;
 use App\Magnet;
 use App\News;
+use App\RateLimit\CommentRateLimiter;
 use App\Rules\Email;
 use App\Trip;
 use Illuminate\Validation\Rule;
@@ -27,7 +27,7 @@ class CommentAddForm extends Component
         ];
     }
 
-    public function submit(FindUserByEmailOrCreateAction $findUserByEmailOrCreate, CommentsTodayLimit $limiter)
+    public function submit(FindUserByEmailOrCreateAction $findUserByEmailOrCreate, CommentRateLimiter $limiter)
     {
         $this->validate();
 

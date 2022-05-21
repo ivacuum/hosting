@@ -1,11 +1,12 @@
-<?php namespace App\Limits;
+<?php namespace App\RateLimit;
 
 use App\Action\LimitRateAction;
-use App\Comment;
+use App\Issue;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+use Ivacuum\Generic\Events\LimitExceeded;
 
-class CommentsTodayLimit
+class IssueRateLimiter
 {
     public function __construct(private Request $request, private LimitRateAction $limitRate)
     {
@@ -13,14 +14,14 @@ class CommentsTodayLimit
 
     public function flooded(int $userId): bool
     {
-        $interval = config('cfg.limits.comment.flood_interval');
+        $interval = config('cfg.limits.issue.flood_interval');
 
         if ($interval <= 0) {
             return false;
         }
 
-        /** @var Comment $last */
-        $last = Comment::query()
+        /** @var Issue $last */
+        $last = Issue::query()
             ->where('user_id', $userId)
             ->orderByDesc('id')
             ->first(['created_at']);
@@ -32,6 +33,8 @@ class CommentsTodayLimit
         $diff = now()->diffInSeconds($last->created_at);
 
         if ($diff < $interval) {
+            event(new LimitExceeded('issue.flood_interval', $userId));
+
             return true;
         }
 
@@ -46,16 +49,16 @@ class CommentsTodayLimit
 
     private function ipExceeded(): bool
     {
-        $limit = Limit::perDay(config('cfg.limits.comment.ip'))
-            ->by("comment.ip:{$this->request->ip()}");
+        $limit = Limit::perDay(config('cfg.limits.issue.ip'))
+            ->by("issue.ip:{$this->request->ip()}");
 
         return $this->limitRate->execute($limit);
     }
 
     private function userExceeded(int $userId): bool
     {
-        $limit = Limit::perDay(config('cfg.limits.comment.user'))
-            ->by("comment.user:{$userId}");
+        $limit = Limit::perDay(config('cfg.limits.issue.user'))
+            ->by("issue.user:{$userId}");
 
         return $this->limitRate->execute($limit);
     }
