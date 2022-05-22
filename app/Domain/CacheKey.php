@@ -45,6 +45,11 @@ enum CacheKey: string
             self::MyVisibleTrips,
             self::TripsPublishedWithCover => CarbonInterval::week(),
 
+            self::CitiesById,
+            self::CitiesBySlug,
+            self::CountriesById,
+            self::CountriesBySlug => CarbonInterval::month(),
+
             self::TripsPublishedByCity,
             self::TripsPublishedByCountry => CarbonInterval::year(),
         };

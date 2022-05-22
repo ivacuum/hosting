@@ -6,6 +6,7 @@ use App\Domain\TripStatus;
 use App\Scope\TripVisibleScope;
 use App\Trip;
 use App\User;
+use App\Utilities\CityHelper;
 
 class UserTravelCities extends UserTravel
 {
@@ -27,10 +28,9 @@ class UserTravelCities extends UserTravel
         return view('user-travel.cities', ['cities' => $cities]);
     }
 
-    public function show(User $traveler, string $slug)
+    public function show(User $traveler, CityHelper $cityHelper, string $slug)
     {
-        /** @var City $city */
-        $city = \CityHelper::findBySlugOrFail($slug);
+        $city = $cityHelper->findBySlugOrFail($slug);
 
         $trips = $city->trips()
             ->whereBelongsTo($traveler)

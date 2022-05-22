@@ -14,6 +14,7 @@ use App\Scope\TripPreviousScope;
 use App\Scope\TripPublishedScope;
 use App\Scope\TripVisibleScope;
 use App\Trip;
+use App\Utilities\CityHelper;
 
 class Life
 {
@@ -155,7 +156,7 @@ class Life
         ]);
     }
 
-    public function page(string $page)
+    public function page(CityHelper $cityHelper, string $page)
     {
         if ($page === 'japanese') {
             return redirect(to('japanese'), 301);
@@ -171,7 +172,7 @@ class Life
             return $this->trip($trip);
         }
 
-        if ($city = \CityHelper::findBySlug($page)) {
+        if ($city = $cityHelper->findBySlug($page)) {
             return $this->city($city);
         }
 

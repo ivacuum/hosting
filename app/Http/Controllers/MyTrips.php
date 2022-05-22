@@ -4,6 +4,7 @@ use App\Action\RedirectAfterUpdateAction;
 use App\Http\Requests\TripStoreForm;
 use App\Http\Requests\TripUpdateForm;
 use App\Trip;
+use App\Utilities\CityHelper;
 
 class MyTrips
 {
@@ -35,11 +36,11 @@ class MyTrips
         return view('my.trips.edit', ['model' => $trip]);
     }
 
-    public function store(TripStoreForm $request)
+    public function store(TripStoreForm $request, CityHelper $cityHelper)
     {
         /** @var \App\User $user */
         $user = $request->user();
-        $city = \CityHelper::findByIdOrFail($request->input('city_id'));
+        $city = $cityHelper->findByIdOrFail($request->input('city_id'));
 
         $trip = new Trip;
         $trip->slug = $request->input('slug');
@@ -56,9 +57,13 @@ class MyTrips
         return redirect(path([static::class, 'index']));
     }
 
-    public function update(Trip $trip, TripUpdateForm $request, RedirectAfterUpdateAction $redirectAfterUpdate)
-    {
-        $city = \CityHelper::findByIdOrFail($request->input('city_id'));
+    public function update(
+        Trip $trip,
+        CityHelper $cityHelper,
+        TripUpdateForm $request,
+        RedirectAfterUpdateAction $redirectAfterUpdate
+    ) {
+        $city = $cityHelper->findByIdOrFail($request->input('city_id'));
 
         $trip->slug = $request->input('slug');
         $trip->status = $request->input('status');

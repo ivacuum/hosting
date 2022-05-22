@@ -11,13 +11,11 @@ use Illuminate\Testing\TestResponse;
 
 class AppServiceProvider extends ServiceProvider
 {
-    public $singletons = [
-        App\Utilities\CityHelper::class => App\Utilities\CityHelper::class,
-        App\Utilities\CountryHelper::class => App\Utilities\CountryHelper::class,
-    ];
-
     public function boot()
     {
+        $this->app->scoped(App\Utilities\CityHelper::class);
+        $this->app->scoped(App\Utilities\CountryHelper::class);
+
         \Blade::withoutDoubleEncoding();
         \Blade::directive('lng', fn () => '<?php echo $localeUri ?>');
         Date::use(CarbonImmutable::class);
