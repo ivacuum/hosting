@@ -23,8 +23,6 @@ export default class Shortcuts {
         return
       }
 
-      console.log(JSON.stringify({ selection }))
-
       fetch('/js/typo', {
         method: 'POST',
         headers: {
