@@ -182,7 +182,6 @@ window.AppOptions = JSON.parse('<?= json_encode([
 ], JSON_HEX_APOS) ?>')
 </script>
 <script src="{{ mix('/assets/jquery.js') }}"></script>
-<script src="{{ mix('/assets/jquery.scrollto.js') }}"></script>
 <script src="{{ mix('/assets/mousetrap.js') }}"></script>
 <script type="module" src="{{ mix('/assets/details-menu-element.js') }}"></script>
 @stack('js_vendor')

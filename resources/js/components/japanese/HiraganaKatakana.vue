@@ -81,7 +81,7 @@
               <div>
                 <button class="btn btn-default" @click="pick">{{ $t('BACK_TO_PICKER') }}</button>
               </div>
-              <div class="text-muted" v-if="answered > 0">{{ $t('ANSWERED', {answered}) }}</div>
+              <div class="text-muted" v-if="answered > 0">{{ $t('ANSWERED', { answered }) }}</div>
             </div>
           </div>
         </div>
@@ -289,7 +289,7 @@ export default {
 
     pick() {
       this.stage = 'pick'
-      $.scrollTo(document.body, 300, {axis: 'y'})
+      this.scrollToTop()
     },
 
     pickElements() {
@@ -320,12 +320,20 @@ export default {
       this.answered = 0
       this.beacon('Started')
       this.nextQuestion()
-      $.scrollTo(document.body, 300, {axis: 'y'})
+      this.scrollToTop()
     },
 
     revealAnswer() {
       this.answerVisible = true
       this.beacon('AnswerRevealed')
+    },
+
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
     },
 
     switchSyllabary() {

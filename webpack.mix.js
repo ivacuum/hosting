@@ -13,7 +13,6 @@ mix.js('resources/js/app.js', 'public/assets').vue()
   .copy('node_modules/mousetrap/mousetrap.min.js', 'public/assets/mousetrap.js')
 
   .copy('node_modules/jquery/dist/jquery.min.js', 'public/assets/jquery.js')
-  .copy('node_modules/jquery.scrollto/jquery.scrollTo.min.js', 'public/assets/jquery.scrollto.js')
 
   .copy('node_modules/vue/dist/vue.min.js', 'public/assets/vue.js')
   .copy('node_modules/vue-i18n/dist/vue-i18n.min.js', 'public/assets/vue-i18n.js')

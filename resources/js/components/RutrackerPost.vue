@@ -167,16 +167,16 @@ export default {
           this.renderImages($body)
 
           let $foldBtn = $('<div class="sp-fold clickable">[свернуть]</div>').on('click', function () {
-            $.scrollTo($head, {
-              duration: 200,
-              axis: 'y',
-              offset: -200,
-            })
+            // $.scrollTo($head, {
+            //   duration: 200,
+            //   axis: 'y',
+            //   offset: -200,
+            // })
 
             $head
               .click()
-              .animate({opacity: .1}, 500)
-              .animate({opacity: 1}, 700)
+              .animate({ opacity: .1 }, 500)
+              .animate({ opacity: 1 }, 700)
           })
 
           $body.append($foldBtn).addClass('flow-root inited')
