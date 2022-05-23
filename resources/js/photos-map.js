@@ -2,16 +2,18 @@
 
 export default class PhotosMap {
   static load(container = 'photos_map') {
-    const $el = $(`#${container}`)
+    const el = document.querySelector(`#${container}`)
 
-    if (!$el.length) return
+    if (!el) return
+
+    const data = el.dataset
 
     App.map
-      .create(container, $el.data('lat'), $el.data('lon'), $el.data('zoom'), true)
+      .create(container, data.lat, data.lon, data.zoom, true)
       .then(() => {
         const manager = new App.map.ym.ObjectManager({
-          clusterize: $el.data('clusterize'),
-          gridSize: $el.data('cluster_size'),
+          clusterize: data.clusterize,
+          gridSize: data.clusterSize,
         })
 
         manager.objects.options.set('preset', 'islands#nightCircleDotIcon')
@@ -19,7 +21,7 @@ export default class PhotosMap {
 
         App.map.map.geoObjects.add(manager)
 
-        fetch($el.data('action'), {
+        fetch(data.action, {
           headers: {
             'Content-Type': 'application/json',
             'X-Requested-With': 'XMLHttpRequest',

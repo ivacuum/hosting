@@ -9,6 +9,6 @@
   data-lon="{{ $photo->lon ?? Request::input('lon', 30) }}"
   data-zoom="{{ $photo !== null ? 17 : Request::input('zoom', 4) }}"
   data-clusterize="{{ Request::input('clusterize', 1) }}"
-  data-cluster_size="{{ Request::input('cluster-size', 64) }}"
+  data-cluster-size="{{ Request::input('cluster-size', 64) }}"
 ></div>
 @endsection

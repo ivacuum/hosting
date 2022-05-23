@@ -1,19 +1,25 @@
 // Возможность посмотреть пароль
-$(document).on('click', '.js-password-eye', function jsPasswordEye(e) {
+document.addEventListener('click', (e) => {
+  const target = e.target.closest('.js-password-eye')
+
+  if (target === null) {
+    return
+  }
+
   e.preventDefault()
 
-  const state = this.dataset.state || 'password'
-  const $input = $(this).siblings('.form-input')
+  const state = target.dataset.state || 'password'
+  const input = target.parentNode.querySelector('.form-input')
 
   if (state === 'password') {
-    $input.attr('type', 'text')
-    this.dataset.state = 'text'
+    input.setAttribute('type', 'text')
+    target.dataset.state = 'text'
 
     document.querySelector('.js-password-eye-hide').hidden = false
     document.querySelector('.js-password-eye-show').hidden = true
   } else if (state === 'text') {
-    $input.attr('type', 'password')
-    this.dataset.state = 'password'
+    input.setAttribute('type', 'password')
+    target.dataset.state = 'password'
 
     document.querySelector('.js-password-eye-hide').hidden = true
     document.querySelector('.js-password-eye-show').hidden = false
