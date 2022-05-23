@@ -8,7 +8,7 @@ export default class {
   }
 
   initCounter() {
-    $(document).on(`yacounter${this.id}inited`, () => {
+    document.addEventListener(`yacounter${this.id}inited`, () => {
       this.metrika = window[`yaCounter${this.id}`]
       this.params = this.getParams()
 
