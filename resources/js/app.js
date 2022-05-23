@@ -36,7 +36,6 @@ class Application {
     this.metrika = new YandexMetrika(this.options.yandexMetrikaId)
     this.vue = null
 
-    this.csrfToken()
     this.initOnReady()
 
     $(() => {
@@ -62,12 +61,6 @@ class Application {
       const observer = TorrentsViewsObserver()
       observer.observe()
     }
-  }
-
-  csrfToken() {
-    $.ajaxSetup({
-      headers: { 'X-CSRF-TOKEN': this.options.csrfToken },
-    })
   }
 
   /*

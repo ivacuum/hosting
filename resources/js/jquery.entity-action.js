@@ -1,11 +1,16 @@
 // Действие над сущностью
-$(document).on('click', '.js-entity-action', function jsEntityAction(e) {
+document.addEventListener('click', (e) => {
+  const target = e.target.closest('.js-entity-action')
+
+  if (target === null) {
+    return
+  }
+
   e.preventDefault()
 
-  const $this = $(this)
-  const confirmText = this.dataset.confirm
+  const confirmText = target.dataset.confirm
 
-  if ($this.hasClass('disabled')) {
+  if (target.classList.contains('disabled')) {
     return false
   }
 
@@ -15,26 +20,22 @@ $(document).on('click', '.js-entity-action', function jsEntityAction(e) {
     }
   }
 
-  const method = this.dataset.method || 'post'
+  target.classList.add('disabled')
 
-  $this.addClass('disabled')
-
-  $.ajax({
-    url: $this.attr('href'),
-    method: method.toLowerCase() === 'get' ? 'get' : 'post',
-    data: { _method: method.toUpperCase() },
+  fetch(target.getAttribute('href'), {
+    method: 'DELETE',
+    headers: {
+      'X-CSRF-TOKEN': window['AppOptions'].csrfToken,
+      'X-Requested-With': 'XMLHttpRequest',
+    },
   })
-    .done((data) => {
-      if (data.status === 'OK') {
-        document.location.href = data.redirect
+    .then(response => response.json())
+    .then(json => {
+      if (json.status === 'OK') {
+        document.location.href = json.redirect
       } else {
-        // App.addFlashNotification(data.message || 'Что-то пошло не так', 'danger')
-        alert(data.message || 'Что-то пошло не так')
+        alert(json.message || 'Something went wrong')
       }
-    })
-    .fail((jqxhr) => {
-      // App.addFlashNotification(`${jqxhr.status} ${jqxhr.statusText}`, 'danger')
-      alert(`${jqxhr.status} ${jqxhr.statusText}`)
     })
 
   return true

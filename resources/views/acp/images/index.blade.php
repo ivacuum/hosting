@@ -121,6 +121,7 @@ $(document).on('click', '.js-image-delete', function jsImageDelete(e) {
     method: 'DELETE',
     headers: {
       'X-CSRF-TOKEN': window['AppOptions'].csrfToken,
+      'X-Requested-With': 'XMLHttpRequest',
     },
   })
     .then(response => response.json())
