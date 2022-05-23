@@ -1,8 +1,12 @@
 // Выбрать все
-$(document).on('click', '.js-select-all', function jsSelectAll() {
-  $(this.dataset.selector).prop('checked', this.checked)
+document.addEventListener('click', (e) => {
+  const target = e.target.closest('.js-select-all')
 
-  if (this.dataset.triggerOnclick) {
-    $(document).trigger(this.dataset.triggerOnclick)
+  if (target === null) {
+    return
   }
+
+  document.querySelectorAll(target.dataset.selector).forEach((el) => {
+    el.checked = target.checked
+  })
 })
