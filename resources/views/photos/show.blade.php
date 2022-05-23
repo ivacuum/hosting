@@ -11,11 +11,11 @@
 @push('js')
 <script>
 Mousetrap.bind('left', () => {
-  $(document).trigger('shortcuts.to_prev_page')
+  document.dispatchEvent(new Event('shortcuts.to_prev_page'))
 })
 
 Mousetrap.bind('right', () => {
-  $(document).trigger('shortcuts.to_next_page')
+  document.dispatchEvent(new Event('shortcuts.to_next_page'))
 })
 </script>
 @endpush

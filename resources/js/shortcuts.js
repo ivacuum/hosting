@@ -4,11 +4,11 @@ export default class Shortcuts {
     const PREV_PAGE_SELECTOR = '#prev_page'
 
     Mousetrap.bind(['ctrl+left', 'alt+left'], () => {
-      $(document).trigger('shortcuts.to_prev_page')
+      document.dispatchEvent(new Event('shortcuts.to_prev_page'))
     })
 
     Mousetrap.bind(['ctrl+right', 'alt+right'], () => {
-      $(document).trigger('shortcuts.to_next_page')
+      document.dispatchEvent(new Event('shortcuts.to_next_page'))
     })
 
     Mousetrap.bind('ctrl+enter', () => {
@@ -69,8 +69,8 @@ export default class Shortcuts {
       }
     }, 'keyup')
 
-    $(document).on('shortcuts.redirect', (e, selector) => {
-      const link = document.querySelector(selector)
+    document.addEventListener('shortcuts.redirect', (e) => {
+      const link = document.querySelector(e.detail.selector)
 
       if (!link) return false
 
@@ -83,12 +83,16 @@ export default class Shortcuts {
       return true
     })
 
-    $(document).on('shortcuts.to_next_page', () => {
-      $(document).trigger('shortcuts.redirect', [NEXT_PAGE_SELECTOR])
+    document.addEventListener('shortcuts.to_next_page', () => {
+      document.dispatchEvent(new CustomEvent('shortcuts.redirect', {
+        detail: { selector: NEXT_PAGE_SELECTOR }
+      }))
     })
 
-    $(document).on('shortcuts.to_prev_page', () => {
-      $(document).trigger('shortcuts.redirect', [PREV_PAGE_SELECTOR])
+    document.addEventListener('shortcuts.to_prev_page', () => {
+      document.dispatchEvent(new CustomEvent('shortcuts.redirect', {
+        detail: { selector: PREV_PAGE_SELECTOR }
+      }))
     })
 
     $(document).on('shortcuts.to_first_post', () => {
@@ -97,7 +101,7 @@ export default class Shortcuts {
       if (firstItem === null) return false
 
       if (firstItem.matches('.focus')) {
-        $(document).trigger('shortcuts.to_prev_page')
+        document.dispatchEvent(new Event('shortcuts.to_prev_page'))
       } else {
         const focusedItem = document.querySelector('.js-shortcuts-item.focus')
 
@@ -120,7 +124,7 @@ export default class Shortcuts {
       const lastItem = items[items.length - 1]
 
       if (lastItem.matches('.focus')) {
-        $(document).trigger('shortcuts.to_next_page')
+        document.dispatchEvent(new Event('shortcuts.to_next_page'))
       } else {
         const focusedItem = document.querySelector('.js-shortcuts-item.focus')
 
@@ -159,7 +163,7 @@ export default class Shortcuts {
         })
 
         if (nextItem === null) {
-          $(document).trigger('shortcuts.to_next_page')
+          document.dispatchEvent(new Event('shortcuts.to_next_page'))
         } else {
           focusedItem.classList.remove('focus')
           nextItem.classList.add('focus')
@@ -194,7 +198,7 @@ export default class Shortcuts {
         })
 
         if (prevItem === null) {
-          $(document).trigger('shortcuts.to_prev_page')
+          document.dispatchEvent(new Event('shortcuts.to_prev_page'))
         } else {
           focusedItem.classList.remove('focus')
           prevItem.classList.add('focus')
