@@ -1,9 +1,15 @@
 // Операции над несколькими записями
-$(document).on('submit', '.js-batch-form', function jsBatchForm(e) {
+document.addEventListener('submit', (e) => {
+  const target = e.target.closest('.js-batch-form')
+
+  if (target === null) {
+    return
+  }
+
   e.preventDefault()
 
-  const { selector, url } = e.currentTarget.dataset
-  const formData = new FormData(this)
+  const { selector, url } = target.dataset
+  const formData = new FormData(target)
 
   document.querySelectorAll(`${selector}:checked`).forEach((el) => {
     formData.append('ids[]', el.value)
