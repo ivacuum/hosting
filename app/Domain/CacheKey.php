@@ -31,7 +31,7 @@ enum CacheKey: string
         return str_replace('{key}', $replace, $this->value);
     }
 
-    public function ttl()
+    public function ttl(): CarbonInterval
     {
         return match ($this) {
             self::PhotosPointsForTrip => CarbonInterval::minutes(0),
