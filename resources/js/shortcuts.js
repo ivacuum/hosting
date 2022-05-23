@@ -46,19 +46,19 @@ export default class Shortcuts {
     })
 
     Mousetrap.bind('h', () => {
-      $(document).trigger('shortcuts.to_first_post')
+      document.dispatchEvent(new Event('shortcuts.to_first_post'))
     })
 
     Mousetrap.bind('j', () => {
-      $(document).trigger('shortcuts.to_next_post')
+      document.dispatchEvent(new Event('shortcuts.to_next_post'))
     })
 
     Mousetrap.bind('k', () => {
-      $(document).trigger('shortcuts.to_prev_post')
+      document.dispatchEvent(new Event('shortcuts.to_prev_post'))
     })
 
     Mousetrap.bind('l', () => {
-      $(document).trigger('shortcuts.to_last_post')
+      document.dispatchEvent(new Event('shortcuts.to_last_post'))
     })
 
     Mousetrap.bind('/', () => {
@@ -95,7 +95,7 @@ export default class Shortcuts {
       }))
     })
 
-    $(document).on('shortcuts.to_first_post', () => {
+    document.addEventListener('shortcuts.to_first_post', () => {
       const firstItem = document.querySelector('.js-shortcuts-item')
 
       if (firstItem === null) return false
@@ -116,7 +116,7 @@ export default class Shortcuts {
       return true
     })
 
-    $(document).on('shortcuts.to_last_post', () => {
+    document.addEventListener('shortcuts.to_last_post', () => {
       const items = [...document.querySelectorAll('.js-shortcuts-item')]
 
       if (items.length === 0) return false
@@ -139,7 +139,7 @@ export default class Shortcuts {
       return true
     })
 
-    $(document).on('shortcuts.to_next_post', () => {
+    document.addEventListener('shortcuts.to_next_post', () => {
       const firstItem = document.querySelector('.js-shortcuts-item')
 
       if (firstItem === null) return false
@@ -174,7 +174,7 @@ export default class Shortcuts {
       return true
     })
 
-    $(document).on('shortcuts.to_prev_post', () => {
+    document.addEventListener('shortcuts.to_prev_post', () => {
       const items = [...document.querySelectorAll('.js-shortcuts-item')]
 
       if (items.length === 0) return false
