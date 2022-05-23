@@ -6,7 +6,7 @@ import NewsViewsObserver from './news-views-observer'
 import TorrentsViewsObserver from './torrents-views-observer'
 
 import './dblclick-edit'
-import './jquery.batch-form'
+import './batch-form'
 import './jquery.bottom-tabbar'
 import './jquery.entity-action'
 import './jquery.password-eye'
