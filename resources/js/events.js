@@ -4,11 +4,10 @@ export default class EventHandlers {
   static bind() {
     document.addEventListener('click', this.cityMapClick)
     document.addEventListener('click', this.collapse)
-    $(document).on('click', '.js-dcpp-clients-show', this.dcppClientsShowClick)
-    $(document).on('click', '.js-dcpp-hub', this.dcppHubClick)
-    $(document).on('click', '.js-magnet', this.magnetClick)
-
-    $(document).on('click', '.js-share-click', this.shareClick)
+    document.addEventListener('click', this.dcppClientsShowClick)
+    document.addEventListener('click', this.dcppHubClick)
+    document.addEventListener('click', this.magnetClick)
+    document.addEventListener('click', this.shareClick)
 
     // Навигация по заметкам с помощью горячих клавиш
     document.querySelectorAll('.js-trip-shortcuts p').forEach((el) => el.classList.add('js-shortcuts-item'))
@@ -85,60 +84,84 @@ export default class EventHandlers {
    * @param e
    */
   static dcppClientsShowClick(e) {
+    const target = e.target.closest('.js-dcpp-clients-show')
+
+    if (target === null) {
+      return
+    }
+
     e.preventDefault()
 
-    document.querySelectorAll(this.dataset.target).forEach((el) => {
+    document.querySelectorAll(target.dataset.target).forEach((el) => {
       el.hidden = false
     })
 
-    this.hidden = true
+    target.hidden = true
   }
 
   /**
    * Учет статистики кликов по хабу
    */
-  static dcppHubClick() {
-    const { clicked } = this.dataset
+  static dcppHubClick(e) {
+    const target = e.target.closest('.js-dcpp-hub')
+
+    if (target === null) {
+      return
+    }
+
+    const { clicked } = target.dataset
 
     if (clicked === undefined) {
-      fetch(this.dataset.action, {
+      fetch(target.dataset.action, {
         method: 'POST',
         headers: {
           'X-CSRF-TOKEN': window['AppOptions'].csrfToken,
         },
       })
 
-      this.dataset.clicked = '1'
+      target.dataset.clicked = '1'
     }
   }
 
   /**
    * Учет статистики кликов по магнету
    */
-  static magnetClick() {
-    const { clicked } = this.dataset
+  static magnetClick(e) {
+    const target = e.target.closest('.js-magnet')
+
+    if (target === null) {
+      return
+    }
+
+    const { clicked } = target.dataset
 
     if (clicked === undefined) {
-      fetch(this.dataset.action, {
+      fetch(target.dataset.action, {
         method: 'POST',
         headers: {
           'X-CSRF-TOKEN': window['AppOptions'].csrfToken,
         },
       })
 
-      this.dataset.clicked = '1'
+      target.dataset.clicked = '1'
 
-      const counter = this.querySelector('.js-magnet-counter')
+      const counter = target.querySelector('.js-magnet-counter')
 
       counter.textContent = String(Number(counter.textContent) + 1)
     }
   }
 
   static shareClick(e) {
+    const target = e.target.closest('.js-share-click')
+
+    if (target === null) {
+      return
+    }
+
     if (navigator.share) {
       e.preventDefault()
 
-      const url = this.getAttribute('href') || ''
+      const url = target.getAttribute('href') || ''
 
       navigator.share({ url })
     }
