@@ -38,7 +38,7 @@
 @show
 
 @section('bottom-tabbar')
-<header class="bottom-tabbar-container border-t border-[#dee2e6] dark:border-slate-700 fixed bottom-0 left-0 right-0 flex items-center justify-center md:hidden revealed js-bottom-tabbar-reveal">
+<header class="bottom-tabbar-container border-t border-[#dee2e6] dark:border-slate-700 fixed bottom-0 left-0 right-0 flex items-center justify-center md:hidden revealed">
   <nav class="flex justify-between leading-none text-center mx-1 w-full">
     <a
       class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ $routeUri === '/' ? 'active' : '' }}"
@@ -181,7 +181,6 @@ window.AppOptions = JSON.parse('<?= json_encode([
   'yandexMetrikaId' => 5266444,
 ], JSON_HEX_APOS) ?>')
 </script>
-<script src="{{ mix('/assets/jquery.js') }}"></script>
 <script src="{{ mix('/assets/mousetrap.js') }}"></script>
 <script type="module" src="{{ mix('/assets/details-menu-element.js') }}"></script>
 @stack('js_vendor')

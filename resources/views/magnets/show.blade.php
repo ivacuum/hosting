@@ -5,6 +5,7 @@
 ?>
 
 @extends('magnets.base')
+@include('jquery')
 @include('vue')
 @include('livewire')
 

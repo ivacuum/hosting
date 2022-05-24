@@ -6,7 +6,7 @@ if (window.matchMedia('(max-width: 768px)').matches && document.querySelector('.
   const tabBarHeight = tabBar.offsetHeight
   const threshold = 77
 
-  $(window).on('scroll.js-bottom-tabbar-reveal', throttle(() => {
+  window.addEventListener('scroll', throttle((e) => {
     const offset = window.scrollY
     const windowHeight = window.innerHeight
     const docHeight = document.body.clientHeight
@@ -32,5 +32,5 @@ if (window.matchMedia('(max-width: 768px)').matches && document.querySelector('.
     }
 
     lastOffset = offset
-  }, 250))
+  }, 250), { passive: true })
 }

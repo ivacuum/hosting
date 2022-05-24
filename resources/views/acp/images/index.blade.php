@@ -99,13 +99,18 @@
 
 @push('js')
 <script type="module">
-$(document).on('click', '.js-image-delete', function jsImageDelete(e) {
+document.addEventListener('click', (e) => {
+  const target = e.target.closest('.js-image-delete')
+
+  if (target === null) {
+    return
+  }
+
   e.preventDefault()
 
-  const $this = $(this)
-  const confirmText = this.dataset.confirm
+  const confirmText = target.dataset.confirm
 
-  if ($this.hasClass('disabled')) {
+  if (target.classList.contains('disabled')) {
     return false
   }
 
@@ -115,9 +120,9 @@ $(document).on('click', '.js-image-delete', function jsImageDelete(e) {
     }
   }
 
-  $this.addClass('disabled')
+  target.classList.add('disabled')
 
-  fetch($this.attr('href'), {
+  fetch(target.getAttribute('href'), {
     method: 'DELETE',
     headers: {
       'X-CSRF-TOKEN': window['AppOptions'].csrfToken,
@@ -127,7 +132,7 @@ $(document).on('click', '.js-image-delete', function jsImageDelete(e) {
     .then(response => response.json())
     .then(json => {
       if (json.status === 'OK') {
-        document.querySelector($this.data('selector')).hidden = true
+        document.querySelector(target.dataset.selector).hidden = true
       } else {
         alert(json.message)
       }
