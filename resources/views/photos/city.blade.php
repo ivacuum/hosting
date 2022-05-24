@@ -14,10 +14,10 @@
         href="{{ to('photos/{photo}', [$photo, $city->getForeignKey() => $city]) }}"
       >
         <img
-          class="absolute top-0 left-0 w-full object-cover js-lazy"
-          src="https://life.ivacuum.org/0.gif"
-          data-srcset="{{ $photo->thumbnailUrl() }} 500w"
+          class="absolute top-0 left-0 w-full object-cover"
+          src="{{ $photo->thumbnailUrl() }}"
           alt=""
+          loading="lazy"
         >
       </a>
     </div>

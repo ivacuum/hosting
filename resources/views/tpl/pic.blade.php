@@ -14,10 +14,10 @@
         >
       @else
         <img
-          class="absolute left-0 w-full h-full object-cover sm:rounded js-lazy"
-          src="https://life.ivacuum.org/0.gif"
-          data-srcset="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }} 1000w"
+          class="absolute left-0 w-full h-full object-cover sm:rounded"
+          src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"
           alt=""
+          loading="lazy"
         >
       @endif
     </div>

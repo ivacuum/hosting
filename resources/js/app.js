@@ -1,4 +1,3 @@
-import throttle from 'lodash/throttle'
 import Map from './yandex-map'
 import YandexMetrika from './yandex-metrika'
 
@@ -38,9 +37,7 @@ class Application {
 
     this.initOnReady()
 
-    $(() => {
-      this.constructor.lazyLoadImages()
-
+    document.addEventListener('DOMContentLoaded', () => {
       EventHandlers.bind()
       Shortcuts.bind()
 
@@ -73,54 +70,6 @@ class Application {
 
   initVue() {
     initVueComponents('#pjax_container', this.options.locale)
-  }
-
-  static lazyLoadImages() {
-    const offset = 1000
-
-    const $w = $(window)
-    const $body = $(document.body)
-    let $images
-
-    function performLazyLoad() {
-      const scrolledUp = $w.scrollTop() - offset
-      const scrolledDown = $w.scrollTop() + $w.height() + offset
-
-      $images = $images.filter(function lazyLoadImagesFilter() {
-        const e = $(this)
-        const type = $(this).data('lazy-type') || 'image'
-        const imageOffset = e.offset().top
-
-        if (imageOffset < scrolledDown && imageOffset > scrolledUp) {
-          e.removeClass('js-lazy')
-
-          if (type === 'image') {
-            e.attr('srcset', e.data('srcset'))
-          }
-
-          return false
-        }
-
-        return true
-      })
-
-      if (!$images.length) {
-        $w.off('.js-lazy')
-      }
-    }
-
-    function initLazyLoad() {
-      $images = $('.js-lazy')
-
-      $w.off('.js-lazy')
-        .on('scroll.js-lazy resize.js-lazy', throttle(performLazyLoad, 500))
-
-      performLazyLoad()
-    }
-
-    $body.off('reset.js-lazy').on('reset.js-lazy', initLazyLoad)
-
-    initLazyLoad()
   }
 
   initOnReady() {
