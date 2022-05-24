@@ -1,6 +1,6 @@
 import throttle from 'lodash/throttle'
 
-if (window.matchMedia('(max-width: 768px)').matches) {
+if (window.matchMedia('(max-width: 768px)').matches && document.querySelector('.bottom-tabbar-container')) {
   let lastOffset = window.scrollY
   const tabBar = document.querySelector('.bottom-tabbar-container')
   const tabBarHeight = tabBar.offsetHeight

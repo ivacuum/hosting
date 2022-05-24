@@ -2,8 +2,8 @@
 
 export default class EventHandlers {
   static bind() {
-    $(document).on('click', '.js-city-map-click', this.cityMapClick)
-    $(document).on('click', '.js-collapse', this.collapse)
+    document.addEventListener('click', this.cityMapClick)
+    document.addEventListener('click', this.collapse)
     $(document).on('click', '.js-dcpp-clients-show', this.dcppClientsShowClick)
     $(document).on('click', '.js-dcpp-hub', this.dcppHubClick)
     $(document).on('click', '.js-magnet', this.magnetClick)
@@ -23,16 +23,21 @@ export default class EventHandlers {
    * @param e
    */
   static cityMapClick(e) {
+    const target = e.target.closest('.js-city-map-click')
+
+    if (target === null) {
+      return
+    }
+
     e.preventDefault()
 
-    const $el = $(this)
-    const $container = $(`#${$el.data('container')}`)
-    const loaded = $el.data('loaded')
+    const data = target.dataset
+    const container = document.querySelector(`#${data.container}`)
 
-    if (!loaded) {
-      $el.data('loaded', true)
+    if (!data.loaded) {
+      data.loaded = '1'
 
-      App.map.create($el.data('container'), $el.data('lat'), $el.data('lon'), undefined, true)
+      App.map.create(data.container, data.lat, data.lon, undefined, true)
         .then(() => {
           const manager = new App.map.ym.ObjectManager({
             clusterize: 1,
@@ -44,10 +49,8 @@ export default class EventHandlers {
 
           App.map.map.geoObjects.add(manager)
 
-          const action = $el.data('action')
-
-          if (action) {
-            fetch(action, {
+          if (data.action) {
+            fetch(data.action, {
               headers: {
                 'Content-Type': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest',
@@ -59,13 +62,19 @@ export default class EventHandlers {
         })
     }
 
-    $container.slideToggle()
+    container.classList.toggle('hidden')
   }
 
   static collapse(e) {
+    const target = e.target.closest('.js-collapse')
+
+    if (target === null) {
+      return
+    }
+
     e.preventDefault()
 
-    const el = document.querySelector(this.dataset.target)
+    const el = document.querySelector(target.dataset.target)
 
     el.classList.toggle('hidden')
   }
