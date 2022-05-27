@@ -16,7 +16,7 @@ class TripPublishedNotify
         }
 
         NotifyTripSubscribers::dispatch($trip)
-            ->delay($request->date());
+            ->delay($request->date);
 
         return [
             'status' => 'OK',
