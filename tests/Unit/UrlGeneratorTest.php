@@ -7,11 +7,7 @@ class UrlGeneratorTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @dataProvider english
-     * @param array $input
-     * @param string $result
-     */
+    /** @dataProvider english */
     public function testEn(array $input, string $result)
     {
         request()->server->set('LARAVEL_LOCALE', 'en');
@@ -19,11 +15,7 @@ class UrlGeneratorTest extends TestCase
         $this->assertSame($result, to(...$input));
     }
 
-    /**
-     * @dataProvider russian
-     * @param array $input
-     * @param string $result
-     */
+    /** @dataProvider russian */
     public function testRu(array $input, string $result)
     {
         request()->server->remove('LARAVEL_LOCALE');

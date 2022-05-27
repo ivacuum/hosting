@@ -31,10 +31,7 @@ class DcppTest extends TestCase
         $this->assertSame($clicks + 1, $hub->clicks);
     }
 
-    /**
-     * @dataProvider pages
-     * @param string $url
-     */
+    /** @dataProvider pages */
     public function testPages(string $url)
     {
         $this->get($url)

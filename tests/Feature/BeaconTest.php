@@ -20,10 +20,7 @@ class BeaconTest extends TestCase
             ->assertSessionHasErrors('events.*.event');
     }
 
-    /**
-     * @dataProvider simpleEvents
-     * @param string $event
-     */
+    /** @dataProvider simpleEvents */
     public function testSimpleCounters(string $event)
     {
         $this->expectsEvents($event);
@@ -38,11 +35,7 @@ class BeaconTest extends TestCase
             ->assertNoContent();
     }
 
-    /**
-     * @dataProvider viewCounters
-     * @param string $event
-     * @param array $ids
-     */
+    /** @dataProvider viewCounters */
     public function testViewCounters(string $event, array $ids)
     {
         $payload = $this->payload(collect($ids)->map(fn ($id) => [

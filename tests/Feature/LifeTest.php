@@ -115,10 +115,7 @@ class LifeTest extends TestCase
             ->assertOk();
     }
 
-    /**
-     * @dataProvider pages
-     * @param string $url
-     */
+    /** @dataProvider pages */
     public function testPages(string $url)
     {
         $this->get($url)

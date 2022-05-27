@@ -25,10 +25,7 @@ class NewsTest extends TestCase
             ->assertOk();
     }
 
-    /**
-     * @dataProvider oldUrls
-     * @param string $url
-     */
+    /** @dataProvider oldUrls */
     public function testBackwardCompatibility(string $url)
     {
         $this->get($url)

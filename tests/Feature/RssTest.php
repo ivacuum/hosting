@@ -4,10 +4,7 @@ use Tests\TestCase;
 
 class RssTest extends TestCase
 {
-    /**
-     * @dataProvider feeds
-     * @param string $url
-     */
+    /** @dataProvider feeds */
     public function testFeeds(string $url)
     {
         $this->get($url)

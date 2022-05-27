@@ -20,10 +20,7 @@ class CouponTest extends TestCase
         \Mail::assertQueued(FirstvdsPromocodeMail::class, fn (FirstvdsPromocodeMail $mail) => $mail->hasTo($email));
     }
 
-    /**
-     * @dataProvider pages
-     * @param string $url
-     */
+    /** @dataProvider pages */
     public function testPages(string $url)
     {
         $this->get($url)
