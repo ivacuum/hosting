@@ -18,7 +18,7 @@ class ApplyIndexGoodsAction
         string $defaultSortDir = 'desc',
         string $defaultSortKey = 'id',
     ): array {
-        $modelTpl = implode('.', array_map(fn ($ary) => \Str::snake($ary, '-'), explode('\\', str_replace('App\\', '', get_class($model)))));
+        $modelTpl = implode('.', array_map(fn ($ary) => \Str::snake($ary, '-'), explode('\\', str_replace('App\\', '', $model::class))));
 
         $sortDir = $this->getSortDir->execute($defaultSortDir);
         $sortKey = $this->getSortKey->execute($defaultSortKey, $sortableKeys, $model);

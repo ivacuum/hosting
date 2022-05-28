@@ -1,6 +1,6 @@
 <?php namespace App\Spatial;
 
-class Point extends Geometry
+class Point extends Geometry implements \Stringable
 {
     public function __construct(
         public readonly string $lat,

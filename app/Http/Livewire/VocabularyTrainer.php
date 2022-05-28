@@ -5,7 +5,7 @@ use Livewire\Component;
 
 class VocabularyTrainer extends Component
 {
-    const MAX_HISTORY = 5;
+    private const MAX_HISTORY = 5;
 
     /** @var Vocabulary */
     public $vocab;

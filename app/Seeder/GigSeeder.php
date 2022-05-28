@@ -18,8 +18,8 @@ class GigSeeder extends Seeder
 
         // Для каждого шаблона нужно создать концерт
         foreach ($this->findGigTemplates->execute() as $template) {
-            $slug = str_replace('_', '.', $template->getBasename('.blade.php'));
-            $artistSlug = str($slug)->before('.');
+            $slug = str($template->getBasename('.blade.php'))->replace('_', '.');
+            $artistSlug = $slug->before('.');
 
             if (null === $artist = Artist::firstWhere('slug', $artistSlug)) {
                 continue;

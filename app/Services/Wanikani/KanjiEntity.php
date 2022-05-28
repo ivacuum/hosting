@@ -10,7 +10,7 @@ class KanjiEntity
         public string $character,
         public Collection $meanings,
         private Collection $readings,
-        private Collection $componentRadicals,
+        public Collection $componentRadicals,
         public Collection $similarKanji
     ) {
     }

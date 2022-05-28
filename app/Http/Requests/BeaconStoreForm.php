@@ -30,6 +30,6 @@ class BeaconStoreForm extends FormRequest
 
     protected function prepareForValidation()
     {
-        $this['events'] = json_decode($this->input('events'), true);
+        $this['events'] = json_decode($this->input('events'), true, flags: \JSON_THROW_ON_ERROR);
     }
 }

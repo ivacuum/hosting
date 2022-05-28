@@ -210,9 +210,7 @@ class TripStatsCalculator
 
     private function saveFirstDate(Trip $trip): void
     {
-        $this->firstDate = $this->firstDate === null
-            ? $trip->date_start
-            : $this->firstDate;
+        $this->firstDate ??= $trip->date_start;
     }
 
     private function saveLastDate(Trip $trip): void

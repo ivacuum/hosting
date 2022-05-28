@@ -1,22 +1,16 @@
 <?php namespace App\Services\Vk;
 
-use Carbon\CarbonImmutable;
-
 class Post
 {
-    private $date;
-
     public function __construct(
         private int $id,
         private int $ownerId,
         int $timestamp,
-        private int $likes,
         private bool $canLike,
         private bool $isUserLiked,
         private bool $isPinned = false,
         private bool $isAd = false
     ) {
-        $this->date = CarbonImmutable::createFromTimestamp($timestamp);
     }
 
     public function canLike(): bool
@@ -30,7 +24,6 @@ class Post
             $json->id,
             $json->owner_id,
             $json->date,
-            $json->likes->count,
             $json->likes->can_like,
             $json->likes->user_likes,
             $json->is_pinned ?? false,

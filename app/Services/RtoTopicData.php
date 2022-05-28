@@ -6,8 +6,8 @@ use Carbon\CarbonInterface;
 
 class RtoTopicData
 {
-    const TITLE_REPLACE_FROM = [' )', ' ,', 'HD (1080p)'];
-    const TITLE_REPLACE_TO = [')', ',', 'HD 1080p'];
+    private const TITLE_REPLACE_FROM = [' )', ' ,', 'HD (1080p)'];
+    private const TITLE_REPLACE_TO = [')', ',', 'HD 1080p'];
 
     public function __construct(
         public int $id,

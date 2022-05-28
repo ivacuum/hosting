@@ -9,10 +9,10 @@ class TripFactory
 {
     use WithFaker;
 
-    private $status = TripStatus::Published;
     private $cityId;
     private $userId;
     private $metaImage;
+    private TripStatus $status = TripStatus::Published;
 
     private ?UserFactory $userFactory = null;
 

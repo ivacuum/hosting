@@ -6,7 +6,7 @@ class Dev
     // https://gist.github.com/lorenzos/1711e81a9162320fde20
     public function logs()
     {
-        $q = request('q');
+        $q = (string) request('q');
         $log = \App::isLocal() ? public_path('uploads/access_log') : base_path('../../logs/access_log');
         $handle = fopen($log, 'r');
         $lines = collect();

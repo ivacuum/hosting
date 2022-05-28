@@ -2,7 +2,7 @@
 
 trait WithGoto
 {
-    public ?string $goto;
+    public ?string $goto = null;
 
     public function mountWithGoto()
     {

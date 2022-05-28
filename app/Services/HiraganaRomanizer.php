@@ -2,7 +2,7 @@
 
 class HiraganaRomanizer
 {
-    const DICTIONARY = [
+    public const DICTIONARY = [
         'あ' => 'a',
         'か' => 'ka',
         'さ' => 'sa',

@@ -84,6 +84,6 @@ class BeaconTest extends TestCase
 
     private function payload(array $data): array
     {
-        return ['events' => json_encode($data)];
+        return ['events' => json_encode($data, \JSON_THROW_ON_ERROR)];
     }
 }

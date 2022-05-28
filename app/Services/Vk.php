@@ -5,7 +5,7 @@ use Illuminate\Http\Client\PendingRequest;
 
 class Vk
 {
-    const API_ENDPOINT = 'https://api.vk.com/method/';
+    public const API_ENDPOINT = 'https://api.vk.com/method/';
 
     protected PendingRequest $http;
     protected $version = '5.131';
@@ -67,7 +67,7 @@ class Vk
         return $response->object();
     }
 
-    public function wallGet($page, array $params = [])
+    public function wallGet(string $page, array $params = [])
     {
         $params = array_merge($this->params(), $params);
 

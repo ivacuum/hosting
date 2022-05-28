@@ -13,7 +13,7 @@ class VocabularyEntity
         private Collection $sentences,
         public int $maleAudioId,
         public int $femaleAudioId,
-        private Collection $partsOfSpeech
+        public Collection $partsOfSpeech
     ) {
     }
 

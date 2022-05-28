@@ -16,7 +16,7 @@ class Rto
         $this->http = $http->timeout(\App::runningInConsole() ? 60 : 15);
     }
 
-    public function findTopicId($input): ?int
+    public function findTopicId(int|string|null $input): ?int
     {
         if (is_numeric($input)) {
             return $input;

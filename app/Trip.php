@@ -51,7 +51,7 @@ class Trip extends Model
 {
     use Traits\HasLocalizedTitle;
 
-    const COLUMNS_LIST = [
+    public const COLUMNS_LIST = [
         'id',
         'user_id',
         'city_id',

@@ -10,6 +10,8 @@ class RtoParseTopicBody extends Command
 
     public function handle(Rto $rto)
     {
-        dd($rto->parseTopicBody($this->argument('topicId')));
+        dump($rto->parseTopicBody($this->argument('topicId')));
+
+        return self::SUCCESS;
     }
 }

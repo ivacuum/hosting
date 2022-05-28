@@ -18,8 +18,8 @@ class TripSeeder extends Seeder
     {
         // Для каждого шаблона нужно создать поездку
         foreach ($this->findTripTemplates->execute() as $template) {
-            $slug = str_replace('_', '.', $template->getBasename('.blade.php'));
-            $citySlug = str($slug)->before('.');
+            $slug = str($template->getBasename('.blade.php'))->replace('_', '.');
+            $citySlug = $slug->before('.');
 
             if (null === $city = City::firstWhere('slug', $citySlug)) {
                 continue;

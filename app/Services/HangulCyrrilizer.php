@@ -2,7 +2,7 @@
 
 class HangulCyrrilizer
 {
-    const DICTIONARY = [
+    public const DICTIONARY = [
         'ㅂ' => ['п-', '-б-', '-п'],
         'ㅈ' => ['ч', '-дж-', '-т'],
         'ㄷ' => ['т-', '-д-', '-т'],

@@ -40,7 +40,7 @@ class Magnet extends Model
 
     protected $table = 'torrents';
 
-    const LIST_COLUMNS = [
+    public const LIST_COLUMNS = [
         'id',
         'category_id',
         'rto_id',

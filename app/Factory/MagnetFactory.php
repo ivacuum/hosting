@@ -9,10 +9,10 @@ class MagnetFactory
     use WithFaker;
 
     private $title;
-    private $status = MagnetStatus::Published;
     private $userId;
     private $categoryId;
     private $relatedQuery = '';
+    private MagnetStatus $status = MagnetStatus::Published;
 
     private ?CommentFactory $commentFactory = null;
 
