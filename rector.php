@@ -2,23 +2,20 @@
 
 declare(strict_types=1);
 
-use Rector\Core\Configuration\Option;
-use Rector\Set\ValueObject\SetList;
-use Rector\TypeDeclaration\Rector\FunctionLike\ParamTypeDeclarationRector;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Rector\Config\RectorConfig;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    // get parameters
-    $parameters = $containerConfigurator->parameters();
-
-    // Define what rule sets will be applied
-    $parameters->set(Option::SETS, [
-        SetList::DEAD_CODE,
-        SetList::PHP_80,
+return static function (RectorConfig $rectorConfig): void {
+    $rectorConfig->sets([
+        Rector\Set\ValueObject\SetList::DEAD_CODE,
+        // Rector\Set\ValueObject\LevelSetList::UP_TO_PHP_81,
+        // Rector\Laravel\Set\LaravelSetList::LARAVEL_80,
     ]);
 
-    // get services (needed for register a single rule)
-    $services = $containerConfigurator->services();
-    $services->set(ParamTypeDeclarationRector::class);
-    // $services->set(ReturnTypeDeclarationRector::class);
+    $rectorConfig->skip([
+        Rector\Php55\Rector\String_\StringClassNameToClassConstantRector::class,
+        Rector\Php74\Rector\Closure\ClosureToArrowFunctionRector::class,
+        Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class,
+        Rector\Php81\Rector\Property\ReadOnlyPropertyRector::class,
+        Rector\Php81\Rector\ClassConst\FinalizePublicClassConstantRector::class,
+    ]);
 };
