@@ -55,6 +55,9 @@ Route::middleware('nav:О DC++,dc')->group(function () {
     Route::view('dc/strongdc_install', 'dcpp.strongdc_install')->middleware('nav:dcpp.strongdc_install');
 });
 
+Route::view('dev/base64-decoder', 'dev.base64-decoder');
+Route::view('dev/base64-encoder', 'dev.base64-encoder');
+Route::view('dev/hash-generator', 'dev.hash-generator');
 Route::view('dev/json-formatter', 'dev.json-formatter');
 
 Route::middleware('nav:Документация,docs')->group(function () {
