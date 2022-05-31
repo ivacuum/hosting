@@ -1,6 +1,8 @@
 <?php namespace App\Services\Wanikani;
 
-class SubjectsRequest implements RequestInterface
+use App\Http\HttpRequest;
+
+class SubjectsRequest implements HttpRequest
 {
     public function __construct(private int $level)
     {
@@ -9,11 +11,6 @@ class SubjectsRequest implements RequestInterface
     public function endpoint(): string
     {
         return 'subjects';
-    }
-
-    public function httpMethod(): string
-    {
-        return 'GET';
     }
 
     public function jsonSerialize()

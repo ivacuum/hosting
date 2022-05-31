@@ -1,41 +1,43 @@
 <?php namespace App\Services\Wanikani;
 
+use App\Http\HttpRequest;
 use Illuminate\Http\Client\Factory;
-use Illuminate\Http\Client\PendingRequest;
 
 class WanikaniClient
 {
-    private string $apiKey;
-    private PendingRequest $http;
+    private readonly string $apiKey;
 
-    public function __construct(Factory $http)
+    public function __construct(private Factory $http)
     {
         $this->apiKey = config('cfg.wanikani_api_key');
-
-        $this->http = $http
-            ->baseUrl('https://api.wanikani.com/v2/')
-            ->timeout(10);
     }
 
     public function subject(int $id)
     {
         $request = new SubjectRequest($id);
 
-        return new SubjectResponse($this->send($request));
+        return new SubjectResponse($this->sendRequest($request));
     }
 
     public function subjects(int $level)
     {
         $request = new SubjectsRequest($level);
 
-        return new SubjectsResponse($this->send($request));
+        return new SubjectsResponse($this->sendRequest($request));
     }
 
-    private function send(RequestInterface $request)
+    private function configureClient()
     {
         return $this->http
+            ->baseUrl('https://api.wanikani.com/v2/')
+            ->timeout(10)
             ->withToken($this->apiKey)
-            ->withHeaders(['Wanikani-Revision' => '20170710'])
+            ->withHeaders(['Wanikani-Revision' => '20170710']);
+    }
+
+    private function sendRequest(HttpRequest $request)
+    {
+        return $this->configureClient()
             ->get($request->endpoint(), $request->jsonSerialize());
     }
 }
