@@ -1,6 +1,6 @@
 <?php namespace App\Console\Commands;
 
-use App\Services\Wanikani\WanikaniClient;
+use App\Services\Wanikani\WanikaniApi;
 use Ivacuum\Generic\Commands\Command;
 
 class WanikaniSubject extends Command
@@ -8,9 +8,9 @@ class WanikaniSubject extends Command
     protected $signature = 'app:wk-subject {id}';
     protected $description = 'Request subject from wanikani.com';
 
-    public function handle(WanikaniClient $api)
+    public function handle(WanikaniApi $wanikani)
     {
-        $response = $api->subject($this->argument('id'));
+        $response = $wanikani->subject($this->argument('id'));
 
         dump($response->json, $response->subject);
     }

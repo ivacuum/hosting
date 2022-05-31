@@ -3,7 +3,7 @@
 use App\Http\HttpRequest;
 use Illuminate\Http\Client\Factory;
 
-class WanikaniClient
+class WanikaniApi
 {
     private readonly string $apiKey;
 

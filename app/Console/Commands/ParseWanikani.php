@@ -2,7 +2,7 @@
 
 use App\Kanji;
 use App\Radical;
-use App\Services\Wanikani\WanikaniClient;
+use App\Services\Wanikani\WanikaniApi;
 use App\Vocabulary;
 use Ivacuum\Generic\Commands\Command;
 
@@ -11,7 +11,7 @@ class ParseWanikani extends Command
     protected $signature = 'app:parse-wanikani {min_level=1} {max_level=1} {sleep=1}';
     protected $description = 'Parse radicals, kanji or vocabulary from wanikani.com';
 
-    public function handle(WanikaniClient $api)
+    public function handle(WanikaniApi $wanikani)
     {
         $sleep = (int) $this->argument('sleep');
         $minLevel = max(1, min(60, $this->argument('min_level')));
@@ -20,7 +20,7 @@ class ParseWanikani extends Command
         foreach (range($minLevel, $maxLevel) as $level) {
             $this->info("Запрос {$level} уровня");
 
-            $response = $api->subjects($level);
+            $response = $wanikani->subjects($level);
 
             foreach ($response->getRadicals() as $radical) {
                 $model = Radical::firstWhere('wk_id', $radical->id)

@@ -2,11 +2,11 @@
 
 use App\Services\Wanikani\KanjiEntity;
 use App\Services\Wanikani\SubjectResponse;
-use App\Services\Wanikani\WanikaniClient;
+use App\Services\Wanikani\WanikaniApi;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class WanikaniClientTest extends TestCase
+class WanikaniApiTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -16,8 +16,9 @@ class WanikaniClientTest extends TestCase
             ...SubjectResponse::fakeKanji(555),
         ]);
 
-        $wanikani = $this->app->make(WanikaniClient::class);
-        $response = $wanikani->subject(555);
+        $response = $this->app
+            ->make(WanikaniApi::class)
+            ->subject(555);
 
         $this->assertInstanceOf(KanjiEntity::class, $response->subject);
     }
