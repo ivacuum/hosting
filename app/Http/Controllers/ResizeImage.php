@@ -54,7 +54,7 @@ class ResizeImage
         exit;
     }
 
-    protected function isWhitelisted($uri)
+    private function isWhitelisted($uri): bool
     {
         foreach ($this->whitelist as $site) {
             if (str_starts_with($uri, $site)) {
@@ -65,13 +65,12 @@ class ResizeImage
         return false;
     }
 
-    protected function mimeByExtension($ext)
+    private function mimeByExtension($ext): string
     {
-        $type = match ($ext) {
+        return match ($ext) {
             'jpg' => 'image/jpeg',
             'png' => 'image/png',
+            default => 'image',
         };
-
-        return $type ?? 'image';
     }
 }
