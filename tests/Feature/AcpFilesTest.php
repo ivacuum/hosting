@@ -55,6 +55,7 @@ class AcpFilesTest extends TestCase
     public function testStore()
     {
         \Storage::fake('files');
+        \Storage::fake('tmp-for-tests');
 
         $file = FileFactory::new()->make();
         $uploadedFile = UploadedFile::fake()->image('IMG_0025.jpeg');

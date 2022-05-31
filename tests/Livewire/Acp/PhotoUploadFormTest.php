@@ -16,6 +16,7 @@ class PhotoUploadFormTest extends TestCase
     public function testGigPhoto()
     {
         \Storage::fake('photos');
+        \Storage::fake('tmp-for-tests');
 
         $gig = GigFactory::new()->create();
         $file = UploadedFile::fake()->image('IMG_0025.jpeg');
@@ -39,6 +40,7 @@ class PhotoUploadFormTest extends TestCase
     public function testTripPhoto()
     {
         \Storage::fake('photos');
+        \Storage::fake('tmp-for-tests');
 
         $file = UploadedFile::fake()->image('IMG_0011.jpeg');
         $trip = TripFactory::new()->create();

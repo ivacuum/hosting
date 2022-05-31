@@ -14,6 +14,7 @@ class GalleryUploaderTest extends TestCase
     public function testStore()
     {
         \Storage::fake('gallery');
+        \Storage::fake('tmp-for-tests');
 
         $file = UploadedFile::fake()->image('screenshot.png');
         $user = UserFactory::new()->create();

@@ -13,6 +13,7 @@ class AvatarManagerTest extends TestCase
     public function testUserUploadsFirstAvatarAndThenReplacesIt()
     {
         \Storage::fake('avatars');
+        \Storage::fake('tmp-for-tests');
 
         $file = UploadedFile::fake()->image('avatar.jpg');
         $user = UserFactory::new()->create();
@@ -47,6 +48,7 @@ class AvatarManagerTest extends TestCase
     public function testUserDeletesHisAvatar()
     {
         \Storage::fake('avatars');
+        \Storage::fake('tmp-for-tests');
 
         $file = UploadedFile::fake()->image('avatar.jpg');
         $user = UserFactory::new()->create();
