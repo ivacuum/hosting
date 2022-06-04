@@ -48,7 +48,7 @@ class Domains extends Controller
                 ->whereNs(''),
             'no-server' => Domain::where('status', 1)
                 ->whereIpv4(''),
-            'orphan' => Domain::whereOrphan(1),
+            'orphan' => Domain::where('orphan', 1),
             'trashed' => Domain::onlyTrashed(),
             default => Domain::where('status', 1),
         };

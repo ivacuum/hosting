@@ -20,7 +20,7 @@ class SearchSynonym
     // Methods
     public static function addSynonymsToQuery(string $query): string
     {
-        return static::applySynonyms($query, static::SYNONYMS_TO_ADD);
+        return self::applySynonyms($query, self::SYNONYMS_TO_ADD);
     }
 
     public static function applySynonyms(string $query, array $synonyms, bool $replace = false): string
@@ -45,6 +45,6 @@ class SearchSynonym
 
     public static function replaceWordsInQueryWithSynonyms(string $query)
     {
-        static::applySynonyms($query, static::SYNONYMS_TO_REPLACE, true);
+        self::applySynonyms($query, self::SYNONYMS_TO_REPLACE, true);
     }
 }

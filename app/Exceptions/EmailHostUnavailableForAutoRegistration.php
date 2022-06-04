@@ -4,6 +4,6 @@ class EmailHostUnavailableForAutoRegistration extends \InvalidArgumentException
 {
     public static function make()
     {
-        return new static('Данная электронная почта недоступна, укажите другую');
+        return new self('Данная электронная почта недоступна, укажите другую');
     }
 }

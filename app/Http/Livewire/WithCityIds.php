@@ -2,7 +2,7 @@
 
 use App\Action\ListCitiesForInputSelectAction;
 
-/** @property $cityIds */
+/** @property \Illuminate\Support\Collection $cityIds */
 trait WithCityIds
 {
     public function getCityIdsProperty(ListCitiesForInputSelectAction $listCitiesForInputSelect)

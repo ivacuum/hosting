@@ -2,7 +2,7 @@
 
 use App\Action\ListArtistsForInputSelectAction;
 
-/** @property $artistIds */
+/** @property \Illuminate\Support\Collection $artistIds */
 trait WithArtistIds
 {
     public function getArtistIdsProperty(ListArtistsForInputSelectAction $listArtistsForInputSelect)
