@@ -10,10 +10,5 @@ Route::view('503', 'errors.503');
 
 Route::post('ajax/beacon', Controllers\BeaconController::class);
 Route::view('cv', 'cv');
-
-Route::post('internal/ci-build-notifier', Ivacuum\Generic\Controllers\CiBuildNotifyController::class);
-Route::post('internal/telegram/webhook', Ivacuum\Generic\Controllers\TelegramWebhookController::class);
-
 Route::get('ip', Ivacuum\Generic\Controllers\PrintIpController::class);
-Route::get('parser/fl/{login}/{passwd}', Controllers\ParserFlController::class);
 Route::get('resize/{width}x{height}', Controllers\ResizeImage::class);
