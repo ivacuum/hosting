@@ -32,14 +32,14 @@ class Metrics
     {
         \Breadcrumbs::push($event);
 
-        $metrics = Metric::where('event', $event)->get();
-        $lastDay = sizeof($metrics) ? Carbon::parse($metrics->last()->date) : now();
-        $firstDay = sizeof($metrics) ? Carbon::parse($metrics->first()->date) : now();
+        $metrics = Metric::where('event', $event)->pluck('count', 'date');
+        $lastDay = Carbon::parse(array_key_last($metrics->toArray()));
+        $firstDay = Carbon::parse(array_key_first($metrics->toArray()));
 
         return view('acp.metrics.show', [
             'event' => $event,
             'lastDay' => $lastDay,
-            'metrics' => $metrics->pluck('count', 'date'),
+            'metrics' => $metrics,
             'firstDay' => $firstDay,
         ]);
     }
