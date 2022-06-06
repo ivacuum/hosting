@@ -23,8 +23,6 @@ class Gallery
 
     public function show(Image $image)
     {
-        event(new \App\Events\Stats\GalleryImageViewed($image->id));
-
         return view('gallery.view', ['image' => $image]);
     }
 }

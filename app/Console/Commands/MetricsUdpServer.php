@@ -1,8 +1,10 @@
 <?php namespace App\Console\Commands;
 
+use App\Action\HandleMetricPayloadAction;
+use App\Domain\ImageViewsAggregator;
 use App\Domain\MetricsAggregator;
-use App\Domain\MetricsParser;
 use App\Domain\ViewsAggregator;
+use Carbon\CarbonInterval;
 use Ivacuum\Generic\Commands\Command;
 use Swoole\Process;
 use Swoole\Server;
@@ -17,22 +19,34 @@ class MetricsUdpServer extends Command
     private bool $started = false;
     private Server $server;
 
-    private MetricsParser $metricsParser;
     private ViewsAggregator $viewsAggregator;
     private MetricsAggregator $metricsAggregator;
+    private ImageViewsAggregator $imageViewsAggregator;
+    private HandleMetricPayloadAction $handleMetricPayload;
 
     public function __destruct()
     {
         $this->stop();
     }
 
-    public function handle(MetricsAggregator $metricsAggregator, MetricsParser $metricsParser, ViewsAggregator $viewsAggregator)
-    {
-        $this->metricsParser = $metricsParser;
+    public function handle(
+        MetricsAggregator $metricsAggregator,
+        HandleMetricPayloadAction $handleMetricPayload,
+        ViewsAggregator $viewsAggregator,
+        ImageViewsAggregator $imageViewsAggregator
+    ) {
         $this->viewsAggregator = $viewsAggregator;
         $this->metricsAggregator = $metricsAggregator;
+        $this->handleMetricPayload = $handleMetricPayload;
+        $this->imageViewsAggregator = $imageViewsAggregator;
 
-        $this->server = new Server($this->argument('host'), $this->argument('port'), SWOOLE_BASE, SWOOLE_SOCK_UDP);
+        $this->server = new Server(
+            $this->argument('host'),
+            $this->argument('port'),
+            SWOOLE_BASE,
+            SWOOLE_SOCK_UDP
+        );
+
         $this->listeners();
         $this->server->start();
     }
@@ -41,6 +55,7 @@ class MetricsUdpServer extends Command
     {
         $this->metricsAggregator->export();
         $this->viewsAggregator->export();
+        $this->imageViewsAggregator->export();
     }
 
     public function listeners()
@@ -48,10 +63,15 @@ class MetricsUdpServer extends Command
         $this->server->on('packet', function (Server $server, $input) {
             $this->acceptedConnections++;
 
-            $this->metricsParser->parsePayload(
+            if (app()->isLocal()) {
+                $this->info($input);
+            }
+
+            $this->handleMetricPayload->execute(
                 json_decode($input, true),
                 $this->metricsAggregator,
-                $this->viewsAggregator
+                $this->viewsAggregator,
+                $this->imageViewsAggregator
             );
         });
 
@@ -75,7 +95,7 @@ class MetricsUdpServer extends Command
             $this->info('WorkerStop');
         });
 
-        Timer::tick(60000, [$this, 'cron']);
+        Timer::tick(CarbonInterval::minute()->totalMilliseconds, $this->cron(...));
     }
 
     public function stop()

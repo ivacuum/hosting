@@ -2,7 +2,6 @@
 
 use App\Domain\ViewsAggregator;
 use App\Factory\TripFactory;
-use App\Trip;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -14,7 +13,7 @@ class ViewsAggregatorTest extends TestCase
     {
         $trip = TripFactory::new()->create();
 
-        $aggregator = new ViewsAggregator;
+        $aggregator = $this->app->make(ViewsAggregator::class);
         $aggregator->push($trip->getTable(), $trip->id);
         $aggregator->push($trip->getTable(), $trip->id);
         $aggregator->export();
@@ -22,18 +21,18 @@ class ViewsAggregatorTest extends TestCase
         $views = $trip->views;
         $trip->refresh();
 
-        $this->assertEquals(['trips' => []], $aggregator->data());
-        $this->assertEquals($views + 2, $trip->views);
+        $this->assertSame(['trips' => []], $aggregator->data());
+        $this->assertSame($views + 2, $trip->views);
     }
 
     public function testPush()
     {
-        $aggregator = new ViewsAggregator;
+        $aggregator = $this->app->make(ViewsAggregator::class);
         $aggregator->push('table', 10);
         $aggregator->push('table', 10);
 
-        $this->assertEquals([
-            'table' => [10 => 2]
+        $this->assertSame([
+            'table' => [10 => 2],
         ], $aggregator->data());
     }
 }

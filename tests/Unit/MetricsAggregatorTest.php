@@ -1,9 +1,10 @@
 <?php namespace Tests\Unit;
 
 use App\Domain\MetricsAggregator;
+use App\Events\Stats\HiraganaSelected;
+use App\Events\Stats\MySettingsChanged;
 use App\Events\Stats\TripViewed;
 use App\Events\Stats\UserAvatarUploaded;
-use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -13,29 +14,28 @@ class MetricsAggregatorTest extends TestCase
 
     public function testExport()
     {
-        $metric1 = 'CrazyTestMetric1';
-        $metric2 = 'FlagOfSuccessfulExport2';
+        $metric1 = class_basename(HiraganaSelected::class);
+        $metric2 = class_basename(MySettingsChanged::class);
 
-        $aggregator = \Mockery::mock(MetricsAggregator::class)->makePartial();
-        $aggregator->shouldReceive('eventClassExists')->andReturnTrue();
+        $aggregator = $this->app->make(MetricsAggregator::class);
         $aggregator->push($metric1);
         $aggregator->push($metric1);
         $aggregator->push($metric2);
         $aggregator->export();
 
-        $this->assertEquals([
+        $this->assertSame([
             $metric1 => 0,
             $metric2 => 0,
         ], $aggregator->data());
 
         $this->assertDatabaseHas('metrics', [
-            'date' => CarbonImmutable::now()->toDateString(),
+            'date' => now()->toDateString(),
             'event' => $metric1,
             'count' => 2,
         ]);
 
         $this->assertDatabaseHas('metrics', [
-            'date' => CarbonImmutable::now()->toDateString(),
+            'date' => now()->toDateString(),
             'event' => $metric2,
             'count' => 1,
         ]);
@@ -45,7 +45,7 @@ class MetricsAggregatorTest extends TestCase
     {
         $event = 'NotExist';
 
-        $aggregator = new MetricsAggregator;
+        $aggregator = $this->app->make(MetricsAggregator::class);
         $aggregator->push($event);
 
         $this->assertEmpty($aggregator->data());
@@ -56,12 +56,12 @@ class MetricsAggregatorTest extends TestCase
         $event1 = class_basename(TripViewed::class);
         $event2 = class_basename(UserAvatarUploaded::class);
 
-        $aggregator = new MetricsAggregator;
+        $aggregator = $this->app->make(MetricsAggregator::class);
         $aggregator->push($event1);
         $aggregator->push($event1);
         $aggregator->push($event2);
 
-        $this->assertEquals([
+        $this->assertSame([
             $event1 => 2,
             $event2 => 1,
         ], $aggregator->data());

@@ -1,10 +1,15 @@
 <?php namespace App\Domain;
 
+use App\Action\PingDatabaseAction;
+
 class ViewsAggregator
 {
-    use PingsDatabase;
-
+    /** @var array<string, array<int, int>> */
     private array $views = [];
+
+    public function __construct(private PingDatabaseAction $pingDatabase)
+    {
+    }
 
     public function data(): array
     {
@@ -13,26 +18,28 @@ class ViewsAggregator
 
     public function export(): void
     {
-        $this->pingDatabase();
+        $this->pingDatabase->execute();
 
         foreach ($this->views as $table => $views) {
             $ids = [];
-            $sql = '';
+            $cases = '';
 
             foreach ($views as $id => $count) {
                 $ids[] = $id;
-                $sql .= sprintf('WHEN %d THEN %d ', $id, $count);
+                $cases .= sprintf('WHEN %d THEN %d ', $id, $count);
             }
 
             $this->views[$table] = [];
 
-            if (!$sql) {
+            if (!$cases) {
                 continue;
             }
 
-            $ids = implode(', ', $ids);
-
-            \DB::statement("UPDATE {$table} SET views = views + (CASE id {$sql}END) WHERE id IN ({$ids})");
+            \DB::table($table)
+                ->whereIn('id', $ids)
+                ->update([
+                    'views' => \DB::raw("views + (CASE id {$cases} END)"),
+                ]);
         }
     }
 

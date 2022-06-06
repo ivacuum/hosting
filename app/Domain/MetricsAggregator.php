@@ -1,46 +1,40 @@
 <?php namespace App\Domain;
 
-use Carbon\CarbonImmutable;
+use App\Action\IfMetricExistsAction;
+use App\Action\PingDatabaseAction;
 
 class MetricsAggregator
 {
-    use PingsDatabase;
-
+    /** @var array<string, int> */
     private array $metrics = [];
+
+    public function __construct(
+        private PingDatabaseAction $pingDatabase,
+        private IfMetricExistsAction $ifMetricExists
+    ) {
+    }
 
     public function data(): array
     {
         return $this->metrics;
     }
 
-    public function eventClassExists(string $event): bool
-    {
-        try {
-            new \ReflectionClass("App\Events\Stats\\$event");
-
-            return true;
-        } catch (\Throwable) {
-        }
-
-        return false;
-    }
-
     public function export(): void
     {
-        $this->pingDatabase();
+        $this->pingDatabase->execute();
 
-        $now = CarbonImmutable::now();
-        $sql = '';
+        $now = now();
+        $values = '';
 
         foreach ($this->metrics as $event => $count) {
             if ($count === 0) {
                 continue;
             }
 
-            $sql = sprintf(
+            $values = sprintf(
                 '%s%s("%s", "%s", %d)',
-                $sql,
-                ($sql ? ', ' : ''),
+                $values,
+                ($values ? ', ' : ''),
                 $now->toDateString(),
                 $event,
                 $count
@@ -49,16 +43,16 @@ class MetricsAggregator
             $this->metrics[$event] = 0;
         }
 
-        if (!$sql) {
+        if (!$values) {
             return;
         }
 
-        \DB::statement("INSERT INTO metrics (date, event, count) VALUES {$sql} ON DUPLICATE KEY UPDATE count = count + VALUES(count)");
+        \DB::statement("INSERT INTO metrics (date, event, count) VALUES {$values} ON DUPLICATE KEY UPDATE count = count + VALUES(count)");
     }
 
     public function push(string $event): void
     {
-        if ($this->eventClassExists($event)) {
+        if ($this->ifMetricExists->execute($event)) {
             @$this->metrics[$event]++;
         }
     }
