@@ -44,10 +44,12 @@ class ImageViewerServer extends Command
 
         // $referrer = $request->header['referer'] ?? null;
 
-        if (preg_match('/^\/g\/(?<date>\d{6})\/([st]\/)?(?<file>\d+_[\da-zA-Z]{10}\.[a-z]{3,4})$/', $request->server['request_uri'], $matches)) {
-            event(new GalleryImageViewed("{$matches['date']}/{$matches['file']}"));
+        if (preg_match('/^\/g\/(?<date>\d{6})\/(?<subfolder>[st]\/)?(?<slug>\d+_[\da-zA-Z]{10}\.[a-z]{3,4})$/', $request->server['request_uri'], $matches)) {
+            $date = implode('/', str_split($matches['date'], 2));
 
-            $response->header('X-Accel-Redirect', "/d{$request->server['request_uri']}");
+            event(new GalleryImageViewed("{$matches['date']}/{$matches['slug']}"));
+
+            $response->header('X-Accel-Redirect', "/d/g/{$date}/{$matches['subfolder']}{$matches['slug']}");
 
             return $response->redirect('/');
         }
