@@ -47,7 +47,9 @@ class ImageViewerServer extends Command
         if (preg_match('/^\/g\/(?<date>\d{6})\/(?<subfolder>[st]\/)?(?<slug>\d+_[\da-zA-Z]{10}\.[a-z]{3,4})$/', $request->server['request_uri'], $matches)) {
             $date = implode('/', str_split($matches['date'], 2));
 
-            event(new GalleryImageViewed("{$matches['date']}/{$matches['slug']}"));
+            if (in_array($matches['subfolder'], ['', 's/'])) {
+                event(new GalleryImageViewed("{$matches['date']}/{$matches['slug']}"));
+            }
 
             $response->detach();
 
