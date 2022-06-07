@@ -49,11 +49,14 @@ class ImageViewerServer extends Command
 
             event(new GalleryImageViewed("{$matches['date']}/{$matches['slug']}"));
 
-            $response->header('X-Accel-Redirect', "/d/g/{$date}/{$matches['subfolder']}{$matches['slug']}");
+            $response->detach();
 
-            return $response->redirect('/');
+            $this->server->send($response->fd, "HTTP/1.1 302 Found\r\nContent-Length: 0\r\nX-Accel-Redirect: /d/g/{$date}/{$matches['subfolder']}{$matches['slug']}\r\n\r\n");
+
+            return;
         }
 
+        $response->status(404);
         $response->end('Not Found');
     }
 
