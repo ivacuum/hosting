@@ -1,17 +1,14 @@
 <?php namespace App\Domain;
 
 use App\Action\IfMetricExistsAction;
-use App\Action\PingDatabaseAction;
 
 class MetricsAggregator
 {
     /** @var array<string, int> */
     private array $metrics = [];
 
-    public function __construct(
-        private PingDatabaseAction $pingDatabase,
-        private IfMetricExistsAction $ifMetricExists
-    ) {
+    public function __construct(private IfMetricExistsAction $ifMetricExists)
+    {
     }
 
     public function data(): array
@@ -21,8 +18,6 @@ class MetricsAggregator
 
     public function export(): void
     {
-        $this->pingDatabase->execute();
-
         $now = now();
         $values = '';
 

@@ -1,15 +1,9 @@
 <?php namespace App\Domain;
 
-use App\Action\PingDatabaseAction;
-
 class ImageViewsAggregator
 {
     /** @var array<string, int> */
     private array $views = [];
-
-    public function __construct(private PingDatabaseAction $pingDatabase)
-    {
-    }
 
     public function data(): array
     {
@@ -18,8 +12,6 @@ class ImageViewsAggregator
 
     public function export(): void
     {
-        $this->pingDatabase->execute();
-
         foreach ($this->views as $dateAndSlug => $views) {
             [$date, $slug] = explode('/', $dateAndSlug);
 

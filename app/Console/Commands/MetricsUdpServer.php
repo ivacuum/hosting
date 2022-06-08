@@ -1,6 +1,7 @@
 <?php namespace App\Console\Commands;
 
 use App\Action\HandleMetricPayloadAction;
+use App\Action\PingDatabaseAction;
 use App\Domain\ImageViewsAggregator;
 use App\Domain\MetricsAggregator;
 use App\Domain\PhotoViewsAggregator;
@@ -22,6 +23,7 @@ class MetricsUdpServer extends Command
 
     private ViewsAggregator $viewsAggregator;
     private MetricsAggregator $metricsAggregator;
+    private PingDatabaseAction $pingDatabase;
     private ImageViewsAggregator $imageViewsAggregator;
     private PhotoViewsAggregator $photoViewsAggregator;
     private HandleMetricPayloadAction $handleMetricPayload;
@@ -36,8 +38,10 @@ class MetricsUdpServer extends Command
         HandleMetricPayloadAction $handleMetricPayload,
         ViewsAggregator $viewsAggregator,
         ImageViewsAggregator $imageViewsAggregator,
-        PhotoViewsAggregator $photoViewsAggregator
+        PhotoViewsAggregator $photoViewsAggregator,
+        PingDatabaseAction $pingDatabase
     ) {
+        $this->pingDatabase = $pingDatabase;
         $this->viewsAggregator = $viewsAggregator;
         $this->metricsAggregator = $metricsAggregator;
         $this->handleMetricPayload = $handleMetricPayload;
@@ -57,6 +61,8 @@ class MetricsUdpServer extends Command
 
     public function cron()
     {
+        $this->pingDatabase->execute();
+
         $this->metricsAggregator->export();
         $this->viewsAggregator->export();
         $this->imageViewsAggregator->export();

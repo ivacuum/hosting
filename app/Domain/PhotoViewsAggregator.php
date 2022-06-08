@@ -1,16 +1,11 @@
 <?php namespace App\Domain;
 
-use App\Action\PingDatabaseAction;
 use App\Trip;
 
 class PhotoViewsAggregator
 {
     /** @var array<string, int> */
     private array $views = [];
-
-    public function __construct(private PingDatabaseAction $pingDatabase)
-    {
-    }
 
     public function data(): array
     {
@@ -19,8 +14,6 @@ class PhotoViewsAggregator
 
     public function export(): void
     {
-        $this->pingDatabase->execute();
-
         foreach ($this->views as $slug => $views) {
             \DB::table('photos')
                 ->where([

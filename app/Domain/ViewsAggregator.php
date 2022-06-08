@@ -1,15 +1,9 @@
 <?php namespace App\Domain;
 
-use App\Action\PingDatabaseAction;
-
 class ViewsAggregator
 {
     /** @var array<string, array<int, int>> */
     private array $views = [];
-
-    public function __construct(private PingDatabaseAction $pingDatabase)
-    {
-    }
 
     public function data(): array
     {
@@ -18,8 +12,6 @@ class ViewsAggregator
 
     public function export(): void
     {
-        $this->pingDatabase->execute();
-
         foreach ($this->views as $table => $views) {
             $ids = [];
             $cases = '';
