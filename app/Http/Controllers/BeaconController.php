@@ -28,6 +28,9 @@ class BeaconController
             match ($event->event) {
                 class_basename(Stats\NewsViewed::class) => $this->processNewsViewedEvent($event),
                 class_basename(Stats\TorrentViewed::class) => $this->processTorrentViewedEvent($event),
+                class_basename(Stats\Photo500Viewed::class) => $this->processPhoto500Viewed($event),
+                class_basename(Stats\Photo1000Viewed::class) => $this->processPhoto1000Viewed($event),
+                class_basename(Stats\Photo2000Viewed::class) => $this->processPhoto2000Viewed($event),
                 default => null,
             };
         }
@@ -47,6 +50,29 @@ class BeaconController
     protected function processNewsViewedEvent(BeaconEvent $event)
     {
         event(new Stats\NewsViewed($event->id));
+    }
+
+    private function processPhoto500Viewed(BeaconEvent $event)
+    {
+        $slug = str($event->slug)
+            ->after('/-/500x375/');
+
+        event(new Stats\Photo500Viewed($slug));
+    }
+
+    private function processPhoto1000Viewed(BeaconEvent $event)
+    {
+        $slug = str($event->slug)
+            ->after('/-/1000x750/');
+
+        event(new Stats\Photo1000Viewed($slug));
+    }
+
+    private function processPhoto2000Viewed(BeaconEvent $event)
+    {
+        $slug = trim($event->slug, '/');
+
+        event(new Stats\Photo2000Viewed($slug));
     }
 
     protected function processTorrentViewedEvent(BeaconEvent $event)

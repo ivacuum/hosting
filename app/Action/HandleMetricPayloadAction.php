@@ -2,8 +2,11 @@
 
 use App\Domain\ImageViewsAggregator;
 use App\Domain\MetricsAggregator;
+use App\Domain\PhotoViewsAggregator;
 use App\Domain\ViewsAggregator;
 use App\Events\Stats\GalleryImageViewed;
+use App\Events\Stats\Photo1000Viewed;
+use App\Events\Stats\Photo2000Viewed;
 
 class HandleMetricPayloadAction
 {
@@ -11,7 +14,8 @@ class HandleMetricPayloadAction
         array $json,
         MetricsAggregator $metricsAggregator,
         ViewsAggregator $viewsAggregator,
-        ImageViewsAggregator $imageViewsAggregator
+        ImageViewsAggregator $imageViewsAggregator,
+        PhotoViewsAggregator $photoViewsAggregator
     ): void {
         foreach ($json as $payload) {
             if (empty($payload['event'])) {
@@ -31,6 +35,12 @@ class HandleMetricPayloadAction
 
                 continue;
             }
+
+            match ($event) {
+                class_basename(Photo1000Viewed::class),
+                class_basename(Photo2000Viewed::class) => $photoViewsAggregator->push($payload['data']['slug']),
+                default => null,
+            };
 
             if (str_ends_with($event, 'Viewed')) {
                 $id = intval($payload['data']['id'] ?? 0);

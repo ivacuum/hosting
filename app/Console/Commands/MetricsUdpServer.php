@@ -3,6 +3,7 @@
 use App\Action\HandleMetricPayloadAction;
 use App\Domain\ImageViewsAggregator;
 use App\Domain\MetricsAggregator;
+use App\Domain\PhotoViewsAggregator;
 use App\Domain\ViewsAggregator;
 use Carbon\CarbonInterval;
 use Ivacuum\Generic\Commands\Command;
@@ -22,6 +23,7 @@ class MetricsUdpServer extends Command
     private ViewsAggregator $viewsAggregator;
     private MetricsAggregator $metricsAggregator;
     private ImageViewsAggregator $imageViewsAggregator;
+    private PhotoViewsAggregator $photoViewsAggregator;
     private HandleMetricPayloadAction $handleMetricPayload;
 
     public function __destruct()
@@ -33,12 +35,14 @@ class MetricsUdpServer extends Command
         MetricsAggregator $metricsAggregator,
         HandleMetricPayloadAction $handleMetricPayload,
         ViewsAggregator $viewsAggregator,
-        ImageViewsAggregator $imageViewsAggregator
+        ImageViewsAggregator $imageViewsAggregator,
+        PhotoViewsAggregator $photoViewsAggregator
     ) {
         $this->viewsAggregator = $viewsAggregator;
         $this->metricsAggregator = $metricsAggregator;
         $this->handleMetricPayload = $handleMetricPayload;
         $this->imageViewsAggregator = $imageViewsAggregator;
+        $this->photoViewsAggregator = $photoViewsAggregator;
 
         $this->server = new Server(
             $this->argument('host'),
@@ -56,6 +60,7 @@ class MetricsUdpServer extends Command
         $this->metricsAggregator->export();
         $this->viewsAggregator->export();
         $this->imageViewsAggregator->export();
+        $this->photoViewsAggregator->export();
     }
 
     public function listeners()
@@ -71,7 +76,8 @@ class MetricsUdpServer extends Command
                 json_decode($input, true),
                 $this->metricsAggregator,
                 $this->viewsAggregator,
-                $this->imageViewsAggregator
+                $this->imageViewsAggregator,
+                $this->photoViewsAggregator
             );
         });
 
@@ -95,7 +101,7 @@ class MetricsUdpServer extends Command
             $this->info('WorkerStop');
         });
 
-        Timer::tick(CarbonInterval::minute()->totalMilliseconds, $this->cron(...));
+        Timer::tick($this->cronInterval()->totalMilliseconds, $this->cron(...));
     }
 
     public function stop()
@@ -105,5 +111,12 @@ class MetricsUdpServer extends Command
             $this->server->stop();
             $this->started = false;
         }
+    }
+
+    private function cronInterval(): CarbonInterval
+    {
+        return app()->isLocal()
+            ? CarbonInterval::seconds(10)
+            : CarbonInterval::minute();
     }
 }

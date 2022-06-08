@@ -14,6 +14,7 @@ import './select-all'
 import Beacon from './beacon'
 import EventHandlers from './events'
 import PhotosMap from './photos-map'
+import PhotoViewer from './photo-viewer'
 import Shortcuts from './shortcuts'
 import initVueComponents from './vue-init-components'
 
@@ -33,6 +34,7 @@ class Application {
     this.locale = this.options.locale
     this.map = new Map(this.locale)
     this.metrika = new YandexMetrika(this.options.yandexMetrikaId)
+    this.photoViewer = new PhotoViewer()
     this.vue = null
 
     this.initOnReady()
@@ -43,6 +45,7 @@ class Application {
 
       this.constructor.conditionalInit()
       this.beacon.bind()
+      this.photoViewer.bind()
     })
   }
 

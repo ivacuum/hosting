@@ -159,8 +159,6 @@ class Photos
             $prev = $prev->tap(new PhotoForTripsScope($ids));
         }
 
-        event(new \App\Events\Stats\PhotoViewed($photo->id));
-
         if ($tagId) {
             $tag = Tag::findOrFail($tagId);
 
