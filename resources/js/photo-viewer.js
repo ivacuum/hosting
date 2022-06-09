@@ -3,9 +3,7 @@ export default class PhotoViewer {
     document
       .querySelectorAll('img')
       .forEach((el) => {
-        const url = new URL(el.currentSrc)
-
-        if (el.hidden || this.shouldSkipImage(url)) {
+        if (el.hidden) {
           return
         }
 
@@ -15,6 +13,10 @@ export default class PhotoViewer {
 
   handleLoaded(src) {
     const url = new URL(src)
+
+    if (this.shouldSkipImage(url)) {
+      return
+    }
 
     if (url.pathname.startsWith('/-/500x375/')) {
       this.push('Photo500Viewed', url.pathname)
