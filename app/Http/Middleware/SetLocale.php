@@ -8,7 +8,7 @@ class SetLocale
 {
     public function handle(Request $request, \Closure $next)
     {
-        if ($request->server->has('HTTP_SITE_LOCALE')) {
+        if ($request->server->get('HTTP_SITE_LOCALE')) {
             $request->server->set('LARAVEL_LOCALE', $request->server->get('HTTP_SITE_LOCALE'));
         }
 
