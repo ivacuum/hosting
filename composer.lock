@@ -1200,16 +1200,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "19.0.1",
+            "version": "19.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "f723cee5ed1986ce87b67bd45ea142f37d5a1099"
+                "reference": "c18002f5b7b34a6976a6fc75db01efb13cc61e7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/f723cee5ed1986ce87b67bd45ea142f37d5a1099",
-                "reference": "f723cee5ed1986ce87b67bd45ea142f37d5a1099",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/c18002f5b7b34a6976a6fc75db01efb13cc61e7a",
+                "reference": "c18002f5b7b34a6976a6fc75db01efb13cc61e7a",
                 "shasum": ""
             },
             "require": {
@@ -1263,9 +1263,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ivacuum/generic/issues",
-                "source": "https://github.com/ivacuum/generic/tree/19.0.1"
+                "source": "https://github.com/ivacuum/generic/tree/19.0.2"
             },
-            "time": "2022-05-14T19:07:09+00:00"
+            "time": "2022-06-12T08:40:46+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",
@@ -2976,16 +2976,16 @@
         },
         {
             "name": "paragonie/constant_time_encoding",
-            "version": "v2.6.0",
+            "version": "v2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/constant_time_encoding.git",
-                "reference": "3f3bf06406244a94aeffd5818ba05b41a1754ae5"
+                "reference": "d6e1d5d0fb2458dfdd7018ec2f74be120353a3b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/3f3bf06406244a94aeffd5818ba05b41a1754ae5",
-                "reference": "3f3bf06406244a94aeffd5818ba05b41a1754ae5",
+                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/d6e1d5d0fb2458dfdd7018ec2f74be120353a3b9",
+                "reference": "d6e1d5d0fb2458dfdd7018ec2f74be120353a3b9",
                 "shasum": ""
             },
             "require": {
@@ -3039,7 +3039,7 @@
                 "issues": "https://github.com/paragonie/constant_time_encoding/issues",
                 "source": "https://github.com/paragonie/constant_time_encoding"
             },
-            "time": "2022-06-10T07:38:28+00:00"
+            "time": "2022-06-11T00:43:46+00:00"
         },
         {
             "name": "paragonie/random_compat",
