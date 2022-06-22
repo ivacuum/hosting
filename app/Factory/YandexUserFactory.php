@@ -1,12 +1,9 @@
 <?php namespace App\Factory;
 
 use App\YandexUser;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class YandexUserFactory
 {
-    use WithFaker;
-
     private $token;
     private $account;
 
@@ -21,16 +18,14 @@ class YandexUserFactory
     public function make()
     {
         $model = new YandexUser;
-        $model->token = $this->token ?? $this->faker->lexify('????????????????');
-        $model->account = $this->account ?? $this->faker->lexify('????????????????');
+        $model->token = $this->token ?? fake()->lexify('????????????????');
+        $model->account = $this->account ?? fake()->lexify('????????????????');
 
         return $model;
     }
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 }

@@ -4,12 +4,9 @@ use App\Domain\PhotoStatus;
 use App\Photo;
 use App\Spatial\Point;
 use App\Trip;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class PhotoFactory
 {
-    use WithFaker;
-
     private $lat;
     private $lon;
     private $slug;
@@ -41,13 +38,13 @@ class PhotoFactory
     {
         $model = new Photo;
 
-        $model->lat = $this->lat ?? (string) $this->faker->optional(0.9, '')->latitude;
-        $model->lon = $this->lon ?? ($model->lat ? (string) $this->faker->longitude : '');
-        $model->slug = $this->slug ?? "test/IMG_{$this->faker->numberBetween(1000, 9999)}.jpg";
+        $model->lat = $this->lat ?? (string) fake()->optional(0.9, '')->latitude();
+        $model->lon = $this->lon ?? ($model->lat ? (string) fake()->longitude() : '');
+        $model->slug = $this->slug ?? fake()->numerify('test/IMG_####.jpg');
         $model->point = $model->lat
             ? new Point($model->lat, $model->lon)
             : null;
-        $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
+        $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->rel_id = $this->relId;
         $model->status = $this->status;
         $model->user_id = 1;
@@ -65,9 +62,7 @@ class PhotoFactory
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 
     public function withPoint(string $lat, string $lon)

@@ -2,12 +2,9 @@
 
 use App\City;
 use App\Spatial\Point;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class CityFactory
 {
-    use WithFaker;
-
     private $countryId;
     private ?CountryFactory $countryFactory = null;
 
@@ -21,15 +18,15 @@ class CityFactory
 
     public function make()
     {
-        $title = "{$this->faker->city} {$this->faker->randomDigit()}";
+        $title = fake()->city() . ' ' . fake()->randomDigit();
 
         $model = new City;
-        $model->lat = (string) $this->faker->latitude;
-        $model->lon = (string) $this->faker->longitude;
+        $model->lat = (string) fake()->latitude();
+        $model->lon = (string) fake()->longitude();
         $model->iata = '';
         $model->slug = \Str::slug($title);
         $model->point = new Point($model->lat, $model->lon);
-        $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
+        $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->title_en = $title;
         $model->title_ru = $title;
         $model->country_id = $this->countryId;
@@ -45,9 +42,7 @@ class CityFactory
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 
     public function withCountry(CountryFactory $countryFactory)

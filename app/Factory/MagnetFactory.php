@@ -2,12 +2,9 @@
 
 use App\Domain\MagnetStatus;
 use App\Magnet;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class MagnetFactory
 {
-    use WithFaker;
-
     private $title;
     private $userId;
     private $categoryId;
@@ -19,7 +16,7 @@ class MagnetFactory
     public function advancedTitle()
     {
         $factory = clone $this;
-        $factory->title = $this->faker->words(random_int(5, 15), true) . ' (' . $this->faker->words(2, true) . ') [' . random_int(2000, 2020) . ', RUS]';
+        $factory->title = fake()->words(random_int(5, 15), true) . ' (' . fake()->words(2, true) . ') [' . random_int(2000, 2020) . ', RUS]';
 
         return $factory;
     }
@@ -51,28 +48,26 @@ class MagnetFactory
     {
         $model = new Magnet;
         $model->html = '<p>HTML</p>';
-        $model->size = $this->faker->numberBetween(1000, 100_000_000_000);
-        $model->title = $this->title ?? $this->faker->words(3, true);
-        $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
-        $model->clicks = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
-        $model->rto_id = $this->faker->numberBetween(1_000_000, 5_000_000);
+        $model->size = fake()->numberBetween(1000, 100_000_000_000);
+        $model->title = $this->title ?? fake()->words(3, true);
+        $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
+        $model->clicks = fake()->optional(0.9, 0)->numberBetween(1, 10000);
+        $model->rto_id = fake()->numberBetween(1_000_000, 5_000_000);
         $model->status = $this->status;
-        $model->info_hash = $this->faker->regexify('[A-F0-9]{40}');
+        $model->info_hash = fake()->regexify('[A-F0-9]{40}');
         $model->announcer = 'https://example.com';
-        $model->registered_at = $this->faker->dateTimeBetween('-4 years');
+        $model->registered_at = fake()->dateTimeBetween('-4 years');
         $model->related_query = $this->relatedQuery;
 
         $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
-        $model->category_id = $this->categoryId ?? $this->faker->randomElement([2, 3, 4, 5, 7, 8, 9, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]);
+        $model->category_id = $this->categoryId ?? fake()->randomElement([2, 3, 4, 5, 7, 8, 9, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]);
 
         return $model;
     }
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 
     public function withCategoryId(int $categoryId)

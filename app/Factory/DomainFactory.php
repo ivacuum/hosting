@@ -2,12 +2,9 @@
 
 use App\Domain;
 use App\Domain\DomainMonitoring;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class DomainFactory
 {
-    use WithFaker;
-
     private $domain;
     private $clientId;
     private DomainMonitoring $status = DomainMonitoring::Yes;
@@ -24,12 +21,12 @@ class DomainFactory
     {
         $model = new Domain;
 
-        $model->domain = $this->domain ?? $this->faker->domainName;
+        $model->domain = $this->domain ?? fake()->domainName();
         $model->status = $this->status;
         $model->client_id = $this->clientId;
-        $model->paid_till = $this->faker->dateTimeBetween('-1 month', '+1 year');
-        $model->registered_at = $this->faker->dateTimeBetween('-5 years');
-        $model->domain_control = $this->faker->boolean(85);
+        $model->paid_till = fake()->dateTimeBetween('-1 month', '+1 year');
+        $model->registered_at = fake()->dateTimeBetween('-5 years');
+        $model->domain_control = fake()->boolean(85);
 
         if (!$model->client_id) {
             $model->client_id = ClientFactory::new()->create()->id;
@@ -40,9 +37,7 @@ class DomainFactory
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 
     public function withClientId(int $clientId)

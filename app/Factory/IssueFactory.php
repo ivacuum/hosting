@@ -2,12 +2,9 @@
 
 use App\Domain\IssueStatus;
 use App\Issue;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class IssueFactory
 {
-    use WithFaker;
-
     private const PAGES = [
         '/',
         '/about',
@@ -42,11 +39,11 @@ class IssueFactory
     public function make()
     {
         $model = new Issue;
-        $model->name = $this->faker->name;
-        $model->page = $this->faker->randomElement(self::PAGES);
-        $model->text = $this->faker->sentence(20);
-        $model->email = $this->faker->safeEmail;
-        $model->title = $this->faker->optional(0.6, 'Default title')->words(4, true);
+        $model->name = fake()->name();
+        $model->page = fake()->randomElement(self::PAGES);
+        $model->text = fake()->sentence(20);
+        $model->email = fake()->safeEmail();
+        $model->title = fake()->optional(0.6, 'Default title')->words(4, true);
         $model->status = $this->status;
         $model->user_id = $this->userId;
 
@@ -59,9 +56,7 @@ class IssueFactory
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 
     public function withComment(CommentFactory $commentFactory = null)

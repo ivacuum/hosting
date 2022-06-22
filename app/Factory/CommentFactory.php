@@ -5,12 +5,9 @@ use App\Domain\CommentStatus;
 use App\Issue;
 use App\Magnet;
 use App\News;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class CommentFactory
 {
-    use WithFaker;
-
     private $relId;
     private $userId;
     private $relType;
@@ -30,7 +27,7 @@ class CommentFactory
     public function make()
     {
         $model = new Comment;
-        $model->html = $this->faker->text;
+        $model->html = fake()->text();
         $model->status = $this->status;
         $model->rel_id = $this->relId ?? 0;
         $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
@@ -55,9 +52,7 @@ class CommentFactory
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 
     public function withIssueId(int $issueId)

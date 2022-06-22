@@ -1,12 +1,9 @@
 <?php namespace App\Factory;
 
 use App\Client;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class ClientFactory
 {
-    use WithFaker;
-
     public function create()
     {
         $model = $this->make();
@@ -18,17 +15,15 @@ class ClientFactory
     public function make()
     {
         $model = new Client;
-        $model->name = $this->faker->name;
+        $model->name = fake()->name();
         $model->text = '';
-        $model->email = $this->faker->safeEmail;
+        $model->email = fake()->safeEmail();
 
         return $model;
     }
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 }

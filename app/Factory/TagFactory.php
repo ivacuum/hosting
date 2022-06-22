@@ -1,12 +1,9 @@
 <?php namespace App\Factory;
 
 use App\Tag;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class TagFactory
 {
-    use WithFaker;
-
     private $titleEn;
     private $titleRu;
 
@@ -20,10 +17,10 @@ class TagFactory
 
     public function make()
     {
-        $title = "{$this->faker->word} {$this->faker->randomDigit()}";
+        $title = fake()->word() . ' ' . fake()->randomDigit();
 
         $model = new Tag;
-        $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
+        $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->title_en = $this->titleEn ?? $title;
         $model->title_ru = $this->titleRu ?? $title;
 
@@ -32,9 +29,7 @@ class TagFactory
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 
     public function withTitle(string $titleRu, string $titleEn)

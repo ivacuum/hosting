@@ -2,12 +2,9 @@
 
 use App\ChatMessage;
 use App\Domain\ChatMessageStatus;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class ChatMessageFactory
 {
-    use WithFaker;
-
     private $userId;
     private ChatMessageStatus $status = ChatMessageStatus::Published;
 
@@ -29,8 +26,8 @@ class ChatMessageFactory
     public function make()
     {
         $model = new ChatMessage;
-        $model->ip = $this->faker->ipv4;
-        $model->text = $this->faker->sentence(20);
+        $model->ip = fake()->ipv4();
+        $model->text = fake()->sentence(20);
         $model->status = $this->status;
         $model->user_id = $this->userId;
 
@@ -43,9 +40,7 @@ class ChatMessageFactory
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 
     public function withStatus(ChatMessageStatus $status)

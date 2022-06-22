@@ -3,12 +3,9 @@
 use App\Domain\Locale;
 use App\Domain\NewsStatus;
 use App\News;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class NewsFactory
 {
-    use WithFaker;
-
     private $title;
     private $userId;
     private $markdown;
@@ -36,21 +33,19 @@ class NewsFactory
     public function make()
     {
         $model = new News;
-        $model->title = $this->title ?? $this->faker->words(3, true);
-        $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
+        $model->title = $this->title ?? fake()->words(3, true);
+        $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->locale = $this->locale;
         $model->status = $this->status;
         $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
-        $model->markdown = $this->markdown ?? $this->faker->text;
+        $model->markdown = $this->markdown ?? fake()->text();
 
         return $model;
     }
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 
     public function withLocale(Locale $locale)

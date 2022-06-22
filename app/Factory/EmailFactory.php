@@ -3,12 +3,9 @@
 use App\Comment;
 use App\Domain\Locale;
 use App\Email;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class EmailFactory
 {
-    use WithFaker;
-
     private $template;
     private $relationId;
     private $relationType;
@@ -24,7 +21,7 @@ class EmailFactory
     public function make()
     {
         $model = new Email;
-        $model->to = $this->faker->safeEmail;
+        $model->to = fake()->safeEmail();
         $model->clicks = 0;
         $model->locale = Locale::Rus->value;
         $model->rel_id = $this->relationId;
@@ -37,9 +34,7 @@ class EmailFactory
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 
     public function withCommentId(int $id)

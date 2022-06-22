@@ -3,12 +3,9 @@
 use App\Domain\TripStatus;
 use App\Trip;
 use Carbon\CarbonImmutable;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class TripFactory
 {
-    use WithFaker;
-
     private $cityId;
     private $userId;
     private $metaImage;
@@ -28,13 +25,13 @@ class TripFactory
     {
         $model = new Trip;
 
-        $title = "{$this->faker->city} {$this->faker->numberBetween(2000, 3000)}";
-        $dateStart = CarbonImmutable::instance($this->faker->dateTimeBetween('-4 years'))->startOfHour();
+        $title = fake()->city() . ' ' . fake()->numberBetween(2000, 3000);
+        $dateStart = CarbonImmutable::instance(fake()->dateTimeBetween('-4 years'))->startOfHour();
         $dateEnd = CarbonImmutable::instance($dateStart)->addDays(random_int(0, 3));
 
         $model->html = '';
         $model->slug = \Str::slug($title);
-        $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
+        $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->status = $this->status;
         $model->city_id = $this->cityId ?? CityFactory::new()->create()->id;
         $model->date_end = $dateEnd;
@@ -55,14 +52,12 @@ class TripFactory
 
     public function metaImage()
     {
-        return $this->withMetaImage("test/IMG_{$this->faker->numberBetween(1000, 9999)}.jpg");
+        return $this->withMetaImage(fake()->numerify('test/IMG_####.jpg'));
     }
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 
     public function withCityId(int $cityId)

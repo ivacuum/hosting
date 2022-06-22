@@ -1,12 +1,9 @@
 <?php namespace App\Factory;
 
 use App\ExternalIdentity;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class ExternalIdentityFactory
 {
-    use WithFaker;
-
     private const PROVIDERS = [
         ExternalIdentity::VK,
         ExternalIdentity::GITHUB,
@@ -48,10 +45,10 @@ class ExternalIdentityFactory
     public function make()
     {
         $model = new ExternalIdentity;
-        $model->uid = $this->faker->numberBetween(10000, 999_999_999_999);
-        $model->email = $this->email ?? $this->faker->optional(0.6, '')->safeEmail;
+        $model->uid = fake()->numberBetween(10000, 999_999_999_999);
+        $model->email = $this->email ?? fake()->optional(0.6, '')->safeEmail();
         $model->user_id = $this->userId;
-        $model->provider = $this->provider ?? $this->faker->randomElement(self::PROVIDERS);
+        $model->provider = $this->provider ?? fake()->randomElement(self::PROVIDERS);
 
         if (!$model->user_id) {
             $model->user_id = ($this->userFactory ?? UserFactory::new())
@@ -64,9 +61,7 @@ class ExternalIdentityFactory
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 
     public function twitter()

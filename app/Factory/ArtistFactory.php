@@ -1,12 +1,9 @@
 <?php namespace App\Factory;
 
 use App\Artist;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class ArtistFactory
 {
-    use WithFaker;
-
     public function create()
     {
         $model = $this->make();
@@ -17,7 +14,7 @@ class ArtistFactory
 
     public function make()
     {
-        $title = $this->faker->lexify('??????????');
+        $title = fake()->lexify('??????????');
 
         $model = new Artist;
         $model->slug = \Str::slug($title);
@@ -28,8 +25,6 @@ class ArtistFactory
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 }

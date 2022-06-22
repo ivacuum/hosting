@@ -1,12 +1,9 @@
 <?php namespace App\Factory;
 
 use App\Kanji;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class KanjiFactory
 {
-    use WithFaker;
-
     private $level;
 
     public function create()
@@ -20,22 +17,20 @@ class KanjiFactory
     public function make()
     {
         $model = new Kanji;
-        $model->level = $this->level ?? $this->faker->numberBetween(1, 60);
+        $model->level = $this->level ?? fake()->numberBetween(1, 60);
         $model->nanori = '';
-        $model->onyomi = $this->faker->word;
-        $model->meaning = $this->faker->words(2, true);
-        $model->character = $this->faker->unique()->word();
-        $model->kunyomi = $this->faker->word;
-        $model->important_reading = $this->faker->randomElement(['onyomi', 'kunyomi']);
+        $model->onyomi = fake()->word();
+        $model->kunyomi = fake()->word();
+        $model->meaning = fake()->words(2, true);
+        $model->character = fake()->unique()->word();
+        $model->important_reading = fake()->randomElement(['onyomi', 'kunyomi']);
 
         return $model;
     }
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 
     public function withLevel(int $level)

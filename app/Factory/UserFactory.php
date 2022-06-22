@@ -3,12 +3,9 @@
 use App\Domain\Locale;
 use App\Domain\UserStatus;
 use App\User;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class UserFactory
 {
-    use WithFaker;
-
     private $id;
     private $email;
     private $login = '';
@@ -38,7 +35,7 @@ class UserFactory
     {
         $model = new User;
         $model->id = $this->id;
-        $model->email = $this->email ?? $this->faker->safeEmail;
+        $model->email = $this->email ?? fake()->safeEmail();
         $model->login = $this->login;
         $model->locale = $this->locale->value;
         $model->status = $this->status->value;
@@ -52,9 +49,7 @@ class UserFactory
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 
     public function withEmail(string $email)

@@ -2,12 +2,9 @@
 
 use App\ReferrerRedirect;
 use Carbon\CarbonInterface;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class ReferrerRedirectFactory
 {
-    use WithFaker;
-
     private $startsAt;
     private $expiresAt;
 
@@ -27,8 +24,8 @@ class ReferrerRedirectFactory
 
     public function make()
     {
-        $model = new ReferrerRedirect();
-        $model->to = $this->faker->url;
+        $model = new ReferrerRedirect;
+        $model->to = fake()->url();
         $model->from = '/life';
         $model->clicks = 0;
         $model->starts_at = $this->startsAt ?? now()->toDateTimeString();
@@ -39,9 +36,7 @@ class ReferrerRedirectFactory
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 
     public function withExpiresAt(CarbonInterface $expiresAt)

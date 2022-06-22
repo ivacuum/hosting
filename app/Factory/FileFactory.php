@@ -2,12 +2,9 @@
 
 use App\Domain\FileStatus;
 use App\File;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class FileFactory
 {
-    use WithFaker;
-
     private FileStatus $status = FileStatus::Published;
 
     public function create()
@@ -25,25 +22,23 @@ class FileFactory
 
     public function make()
     {
-        $title = $this->faker->lexify('??????????');
+        $title = fake()->lexify('??????????');
 
         $model = new File;
-        $model->size = $this->faker->numberBetween(1000, 1_000_000);
+        $model->size = fake()->numberBetween(1000, 1_000_000);
         $model->slug = \Str::slug($title);
         $model->title = $title;
-        $model->folder = $this->faker->word;
+        $model->folder = fake()->word();
         $model->status = $this->status;
-        $model->extension = $this->faker->fileExtension();
-        $model->downloads = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
+        $model->extension = fake()->fileExtension();
+        $model->downloads = fake()->optional(0.9, 0)->numberBetween(1, 10000);
 
         return $model;
     }
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 
     public function withStatus(FileStatus $status)

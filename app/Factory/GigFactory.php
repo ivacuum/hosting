@@ -3,12 +3,9 @@
 use App\Domain\GigStatus;
 use App\Gig;
 use Carbon\CarbonImmutable;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class GigFactory
 {
-    use WithFaker;
-
     private $cityId;
     private $artistId;
     private GigStatus $status = GigStatus::Published;
@@ -23,12 +20,12 @@ class GigFactory
 
     public function make()
     {
-        $title = "{$this->faker->word} {$this->faker->numberBetween(2000, 3000)}";
+        $title = fake()->word() . ' ' . fake()->numberBetween(2000, 3000);
 
         $model = new Gig;
-        $model->date = CarbonImmutable::instance($this->faker->dateTimeBetween('-4 years'))->startOfDay();
+        $model->date = CarbonImmutable::instance(fake()->dateTimeBetween('-4 years'))->startOfDay();
         $model->slug = \Str::slug($title);
-        $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
+        $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->status = $this->status;
         $model->city_id = $this->cityId ?? CityFactory::new()->create()->id;
         $model->title_en = $title;
@@ -40,9 +37,7 @@ class GigFactory
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 
     public function withArtistId(int $artistId)

@@ -1,12 +1,9 @@
 <?php namespace App\Factory;
 
 use App\Country;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class CountryFactory
 {
-    use WithFaker;
-
     public function create()
     {
         $model = $this->make();
@@ -17,12 +14,12 @@ class CountryFactory
 
     public function make()
     {
-        $title = "{$this->faker->country} {$this->faker->randomDigit()}";
+        $title = fake()->country() . ' ' . fake()->randomDigit();
 
         $model = new Country;
         $model->slug = \Str::slug($title);
         $model->emoji = '';
-        $model->views = $this->faker->optional(0.9, 0)->numberBetween(1, 10000);
+        $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->title_en = $title;
         $model->title_ru = $title;
 
@@ -31,8 +28,6 @@ class CountryFactory
 
     public static function new(): self
     {
-        return tap(new self, function (self $factory) {
-            $factory->setUpFaker();
-        });
+        return new self;
     }
 }
