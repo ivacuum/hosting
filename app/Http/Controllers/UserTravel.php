@@ -4,7 +4,7 @@ use App\User;
 
 class UserTravel extends Controller
 {
-    /** @var \App\User $traveler */
+    /** @var \App\User */
     protected $traveler;
 
     protected function alwaysCallBefore(User $traveler)

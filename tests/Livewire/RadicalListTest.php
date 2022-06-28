@@ -12,7 +12,7 @@ class RadicalListTest extends TestCase
     public function testLevel()
     {
         RadicalFactory::new()->withLevel(99)->create();
-        
+
         $radical = RadicalFactory::new()->withLevel(99)->create();
 
         \Livewire::test(RadicalList::class, ['level' => 99])

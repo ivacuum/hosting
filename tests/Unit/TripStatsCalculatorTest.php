@@ -1,6 +1,5 @@
 <?php namespace Tests\Unit;
 
-use App\City;
 use App\Domain\TripStatsCalculator;
 use App\Factory\TripFactory;
 use Carbon\CarbonImmutable;

@@ -6,7 +6,7 @@ class ViewHelper extends BaseViewHelper
 {
     public function magnet(string $infoHash, string $announcer, string $title): string
     {
-        return "magnet:?xt=urn:btih:{$infoHash}&tr=" . urlencode($announcer) . "&dn=" . rawurlencode($title);
+        return "magnet:?xt=urn:btih:{$infoHash}&tr=" . urlencode($announcer) . '&dn=' . rawurlencode($title);
     }
 
     public function pic(string $folder, string $file): string

@@ -156,7 +156,7 @@ class WhoisQuery
                         case 'expiration date': // com & net
                         case 'expires on': // aero
                         case 'registry expiry date':
-                        case 'registrar registration expiration date'; // com
+                        case 'registrar registration expiration date': // com
                             $data['paid_till'] = $value;
                             break;
                     }

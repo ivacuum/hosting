@@ -24,7 +24,7 @@ class MySettingsTest extends TestCase
         $user->save();
 
         $this->be($user)
-            ->expectsEvents(\App\Events\Stats\MySettingsChanged::class,)
+            ->expectsEvents(\App\Events\Stats\MySettingsChanged::class)
             ->put('my/settings', ['locale' => Locale::Eng->value])
             ->assertStatus(302);
 
