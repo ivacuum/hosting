@@ -1,0 +1,12 @@
+{
+  "preset": "laravel",
+  "rules": {
+    "concat_space": false,
+    "linebreak_after_opening_tag": false,
+    "blank_line_after_opening_tag": false,
+    "class_attributes_separation": false,
+    "single_blank_line_before_namespace": false,
+    "not_operator_with_successor_space": false,
+    "Laravel/laravel_phpdoc_separation": false
+  }
+}
