@@ -43,7 +43,7 @@ class UserTravelCities extends UserTravel
 
         event(new \App\Events\Stats\CityViewed($city->id));
 
-        if (1 === sizeof($publishedTrips)) {
+        if (1 === count($publishedTrips)) {
             /** @var \App\Trip $trip */
             $trip = $publishedTrips->first();
 

@@ -36,7 +36,7 @@
       </td>
     </tr>
   @endif
-  @if (sizeof($model->aliases))
+  @if (count($model->aliases))
     <tr>
       <td class="text-right font-bold">Алиасы</td>
       <td>

@@ -16,7 +16,7 @@ class ImageSeeder extends Seeder
 
         $factory = ImageFactory::new()->withUserId($user->id);
 
-        for ($i = 0; $i < 10; $i++ ) {
+        for ($i = 0; $i < 10; $i++) {
             $image = $factory->create();
 
             $file = UploadedFile::fake()->image($image->slug, random_int(600, 800), random_int(400, 600));

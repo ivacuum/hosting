@@ -1,4 +1,4 @@
-@if (sizeof($errors))
+@if (count($errors))
   <x-alert-danger>
     <ul>
       @foreach ($errors->all() as $error)

@@ -72,7 +72,7 @@
       </div>
     @endif
     <?php $lastDate = null ?>
-    @if (sizeof($magnets))
+    @if (count($magnets))
       <?php /** @var App\Magnet $magnet */ ?>
       @foreach ($magnets as $magnet)
         @if (null === $lastDate || !$magnet->registered_at->isSameDay($lastDate))

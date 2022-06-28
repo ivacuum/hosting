@@ -72,7 +72,7 @@ class Life
 
         event(new \App\Events\Stats\CityViewed($city->id));
 
-        if (1 === sizeof($publishedTrips)) {
+        if (1 === count($publishedTrips)) {
             /** @var Trip $trip */
             $trip = $publishedTrips->first();
 
@@ -81,7 +81,7 @@ class Life
 
         $city->loadCountry();
 
-        \Breadcrumbs::push(__('Страны'), "life/countries")
+        \Breadcrumbs::push(__('Страны'), 'life/countries')
             ->push($city->country->title, "life/countries/{$city->country->slug}")
             ->push($city->title);
 
@@ -191,7 +191,7 @@ class Life
 
         $trip->loadCityAndCountry();
 
-        \Breadcrumbs::push(__('Страны'), "life/countries")
+        \Breadcrumbs::push(__('Страны'), 'life/countries')
             ->push($trip->city->country->title, "life/countries/{$trip->city->country->slug}")
             ->push($trip->city->title, "life/{$trip->city->slug}")
             ->push($trip->localizedDate());

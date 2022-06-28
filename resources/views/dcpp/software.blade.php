@@ -79,12 +79,12 @@
 
   @yield('software_features')
 
-  @if (sizeof($software) > 1 || !empty($developerSite))
+  @if (count($software) > 1 || !empty($developerSite))
     <section class="border-b border-grey-200 dark:border-slate-700 my-0 py-12">
       <div class="container">
         <h2 class="tracking-tight mb-6">@lang('dcpp.links')</h2>
         <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-          @if (sizeof($software) > 1)
+          @if (count($software) > 1)
             <div>
               <h4>@lang('dcpp.earlier_versions')</h4>
               <ul>

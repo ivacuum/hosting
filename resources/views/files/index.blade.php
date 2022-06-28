@@ -3,7 +3,7 @@
 @extends('base')
 
 @section('content')
-@if (sizeof($models))
+@if (count($models))
   <table class="table-stats table-adaptive">
     <thead>
     <tr>

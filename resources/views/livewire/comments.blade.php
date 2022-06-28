@@ -3,7 +3,7 @@
 <div>
   <div class="h3 mt-12">
     @lang('Обсуждение')
-    <span class="text-base text-muted">{{ sizeof($this->comments) }}</span>
+    <span class="text-base text-muted">{{ count($this->comments) }}</span>
   </div>
   <a id="comments"></a>
   @foreach ($this->comments as $comment)

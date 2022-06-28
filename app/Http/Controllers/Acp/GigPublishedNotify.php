@@ -25,7 +25,7 @@ class GigPublishedNotify
 
         return [
             'status' => 'OK',
-            'message' => 'Уведомления разосланы пользователям: ' . sizeof($users),
+            'message' => 'Уведомления разосланы пользователям: ' . count($users),
         ];
     }
 }

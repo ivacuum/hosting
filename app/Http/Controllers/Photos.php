@@ -204,7 +204,7 @@ class Photos
         return view('photos.tag', [
             'tag' => $tag,
             'photos' => $photos,
-            'metaTitle' => "#{$tag->title} · " . \ViewHelper::plural('photos', sizeof($tag->photos)),
+            'metaTitle' => "#{$tag->title} · " . \ViewHelper::plural('photos', count($tag->photos)),
         ]);
     }
 

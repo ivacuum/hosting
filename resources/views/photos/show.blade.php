@@ -78,7 +78,7 @@ Mousetrap.bind('right', () => {
       <div><a class="link lowercase" href="{{ to('photos/countries/{country}', $photo->rel->city->country->slug) }}">#{{ $photo->rel->city->country->title }}</a></div>
     </div>
 
-    @if (sizeof($photo->tags))
+    @if (count($photo->tags))
       <div class="mt-4">
         <div class="text-muted">@lang('Тэги')</div>
         @foreach ($photo->tags as $tag)

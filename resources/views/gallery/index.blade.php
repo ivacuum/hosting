@@ -3,7 +3,7 @@
 @extends('gallery.base')
 
 @section('content')
-@if (sizeof($images))
+@if (count($images))
   <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 items-end text-center mb-8">
     @foreach ($images as $image)
       <div>

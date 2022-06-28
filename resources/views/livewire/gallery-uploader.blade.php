@@ -19,12 +19,12 @@
 
   @if ($this->files)
     <div class="my-6">
-      @if (sizeof($this->files) > 1)
+      @if (count($this->files) > 1)
         <h3>Ссылки на все картинки</h3>
         <div class="lg:w-4/6">
           <div>
             <div>Ссылка:</div>
-            <textarea class="form-input select-all" rows="{{ sizeof($this->files) }}">{{ $this->linksWithoutTags() }}</textarea>
+            <textarea class="form-input select-all" rows="{{ count($this->files) }}">{{ $this->linksWithoutTags() }}</textarea>
             <div class="mt-2">Полная картинка:</div>
             <input class="form-input select-all" type="text" value="{{ $this->linksWithTags() }}">
           </div>

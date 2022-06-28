@@ -9,7 +9,7 @@
 @include('livewire')
 
 @section('content')
-@if(sizeof($records))
+@if(count($records))
   <table class="table-stats">
     <thead>
       <tr class="text-left">

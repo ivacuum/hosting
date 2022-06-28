@@ -44,7 +44,7 @@
           &mdash;
           <span class="text-muted">{{ $account->fio }}</span>
         @endif
-        @if (sizeof($account->aliases))
+        @if (count($account->aliases))
           <div>Алиасы:</div>
           <ul>
             @foreach ($account->aliases as $alias)

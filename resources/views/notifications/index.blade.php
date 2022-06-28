@@ -2,7 +2,7 @@
 
 @section('content')
 <h2>@lang('Уведомления')</h2>
-@if (sizeof($notifications))
+@if (count($notifications))
   <?php /** @var App\Notification $notification */ ?>
   @foreach ($notifications as $notification)
     <?php $basename = $notification->basename() ?>

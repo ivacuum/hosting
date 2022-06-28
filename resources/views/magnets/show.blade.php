@@ -49,7 +49,7 @@
   </a>
 </div>
 
-@if (sizeof($tags = $magnet->titleTags()))
+@if (count($tags = $magnet->titleTags()))
   <div class="mt-4">
     @foreach ($tags as $tag)
       <a

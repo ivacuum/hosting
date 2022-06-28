@@ -33,7 +33,7 @@ class RtoTopicHtmlResponse
     {
         $crawler = new Crawler($html);
 
-        if (sizeof($link = $crawler->filter('.magnet-link')) === 0) {
+        if (count($link = $crawler->filter('.magnet-link')) === 0) {
             throw new RtoMagnetNotFoundException;
         }
 

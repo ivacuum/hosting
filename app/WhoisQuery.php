@@ -101,7 +101,7 @@ class WhoisQuery
         $whoisServer = $this->servers[$this->tlds][0];
 
         if (!$whoisServer) {
-            return "No whois server for this tld in list!";
+            return 'No whois server for this tld in list!';
         }
 
         return $this->data = \Cache::remember(
@@ -114,10 +114,10 @@ class WhoisQuery
                     $string = $this->socketRequest($whoisServer);
                 }
 
-                $encoding = mb_detect_encoding($string, "UTF-8, ISO-8859-1, ISO-8859-15", true);
-                $utf8 = mb_convert_encoding($string, "UTF-8", $encoding);
+                $encoding = mb_detect_encoding($string, 'UTF-8, ISO-8859-1, ISO-8859-15', true);
+                $utf8 = mb_convert_encoding($string, 'UTF-8', $encoding);
 
-                return htmlspecialchars($utf8, ENT_COMPAT, "UTF-8", true);
+                return htmlspecialchars($utf8, ENT_COMPAT, 'UTF-8', true);
             });
     }
 
@@ -202,8 +202,8 @@ class WhoisQuery
             strlen($this->servers[$this->tlds][0]) > 6) {
             $tmpDomain = strtolower($this->subdomain);
 
-            if (preg_match("/^[a-z0-9\-]{3,}$/", $tmpDomain) &&
-                !preg_match("/^-|-$/", $tmpDomain)) {
+            if (preg_match("/^[a-z\d\-]{3,}$/", $tmpDomain) &&
+                !preg_match('/^-|-$/', $tmpDomain)) {
                 return true;
             }
         }
@@ -226,7 +226,7 @@ class WhoisQuery
         $data = curl_exec($ch);
 
         if (curl_error($ch)) {
-            return "Connection error!";
+            return 'Connection error!';
         }
 
         $string = strip_tags($data);
@@ -247,11 +247,11 @@ class WhoisQuery
     protected function socketRequest($whoisServer)
     {
         if (false === $fp = fsockopen($whoisServer, 43)) {
-            return "Connection error!";
+            return 'Connection error!';
         }
 
         $dom = "{$this->subdomain}.{$this->tlds}";
-        fputs($fp, "$dom\r\n");
+        fwrite($fp, "$dom\r\n");
         stream_set_timeout($fp, 5);
 
         $info = stream_get_meta_data($fp);

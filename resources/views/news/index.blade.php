@@ -37,7 +37,7 @@
     rss
   </a>
 </div>
-@if (sizeof($news))
+@if (count($news))
   <div class="md:w-2/3">
     <div>
       @foreach ($news as $model)

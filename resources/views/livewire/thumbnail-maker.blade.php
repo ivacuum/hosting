@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  @if (sizeof($this->thumbnails))
+  @if (count($this->thumbnails))
     <div class="my-4">
       <h3>История загрузки</h3>
       @foreach ($this->thumbnails as $thumbnail)

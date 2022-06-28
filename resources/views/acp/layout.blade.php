@@ -23,7 +23,7 @@
         </a>
       @endcan
       @yield('model_menu')
-      @if (isset($modelRelations) && sizeof($modelRelations))
+      @if (isset($modelRelations) && count($modelRelations))
         <?php /** @var array $relation */ ?>
         @foreach ($modelRelations as $relation)
           <a class="border-l-2 border-transparent px-3 py-2" href="{{ $relation['path'] }}">

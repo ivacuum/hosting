@@ -101,7 +101,7 @@ class Magnet extends Model
 
     public static function externalSearchLink(string $query): string
     {
-        return "https://rutracker.org/forum/tracker.php?nm=" . rawurlencode($query);
+        return 'https://rutracker.org/forum/tracker.php?nm=' . rawurlencode($query);
     }
 
     public function fullDate(): string
@@ -126,7 +126,7 @@ class Magnet extends Model
 
     public function magnet(): string
     {
-        return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . "&dn=" . rawurlencode(\Str::limit($this->title, 100, ''));
+        return "magnet:?xt=urn:btih:{$this->info_hash}&tr=" . urlencode($this->announcer) . '&dn=' . rawurlencode(\Str::limit($this->title, 100, ''));
     }
 
     public function relatedIds(): array
@@ -137,7 +137,7 @@ class Magnet extends Model
 
     public function relatedTorrents()
     {
-        if (!sizeof($ids = $this->relatedIds())) {
+        if (!count($ids = $this->relatedIds())) {
             return collect();
         }
 

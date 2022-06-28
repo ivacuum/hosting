@@ -82,7 +82,7 @@ class GigTemplates
                 if (preg_match('#^([A-Za-z_\d]+\.[a-z]{3,4})$#', $line, $match)) {
                     $images[] = str_replace('.jpeg', '.jpg', $match[1]);
                 } else {
-                    $sizeof = sizeof($images);
+                    $sizeof = count($images);
 
                     if ($sizeof > 1) {
                         $result[] = "@include('tpl.fotorama-2x', ['pics' => [";
@@ -91,7 +91,7 @@ class GigTemplates
                             $result[] = "  '{$image}',";
                         }
 
-                        $result[] = "]])";
+                        $result[] = ']])';
                     } elseif ($sizeof === 1) {
                         $result[] = "@include('tpl.pic-2x', ['pic' => '{$images[0]}'])";
                     }

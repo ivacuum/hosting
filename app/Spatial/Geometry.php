@@ -5,7 +5,7 @@ use Illuminate\Contracts\Support\Jsonable;
 
 abstract class Geometry implements GeometryInterface, Jsonable, \JsonSerializable
 {
-    public static function fromWkb($wkb): Geometry
+    public static function fromWkb($wkb): self
     {
         // MySQL stores geometry values using 4 bytes to indicate
         // the SRID followed by the WKB representation of the value

@@ -51,7 +51,7 @@ class ParserVk
 
             $json = $json->response->items;
 
-            $portion = sizeof($json);
+            $portion = count($json);
 
             if ($own) {
                 $json = collect($json)->reject(fn ($post) => !empty($post->copy_history));

@@ -21,13 +21,13 @@ class Dev
         }
 
         if (\Str::contains($q, 'connection=')) {
-            if (preg_match("/connection=([^ ]+)/", $q, $match)) {
+            if (preg_match('/connection=([^ ]+)/', $q, $match)) {
                 $connection = $match[1];
             }
         }
 
         if (\Str::contains($q, ['country=', 'country!='])) {
-            if (preg_match("/country(!=|=)([A-Z]{2})/", $q, $match)) {
+            if (preg_match('/country(!=|=)([A-Z]{2})/', $q, $match)) {
                 $country = [
                     'operator' => $match[1],
                     'value' => $match[2],
@@ -36,19 +36,19 @@ class Dev
         }
 
         if (\Str::contains($q, 'ip=')) {
-            if (preg_match("/ip=([^ ]+)/", $q, $match)) {
+            if (preg_match('/ip=([^ ]+)/', $q, $match)) {
                 $ip = $match[1];
             }
         }
 
         if (\Str::contains($q, 'request_method=')) {
-            if (preg_match("/request_method=([^ ]+)/", $q, $match)) {
+            if (preg_match('/request_method=([^ ]+)/', $q, $match)) {
                 $requestMethod = strtoupper($match[1]);
             }
         }
 
         if (\Str::contains($q, 'request_uri=')) {
-            if (preg_match("/request_uri=([^ ]+)/", $q, $match)) {
+            if (preg_match('/request_uri=([^ ]+)/', $q, $match)) {
                 $requestUri = $match[1];
             }
         }

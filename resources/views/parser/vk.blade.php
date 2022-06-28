@@ -47,7 +47,7 @@
   </div>
 </form>
 
-@if (!sizeof($posts))
+@if (!count($posts))
   <div class="mb-4 py-3 px-5 text-yellow-800/75 bg-yellow-300/25 border border-yellow-200 rounded">
     Нет записей за {{ $date->isoFormat('D MMMM YYYY') }}.
   </div>
@@ -70,7 +70,7 @@
         @if ($post['photos'] > 1)
           <div class="mb-6 mobile-wide">
         @elseif ($post['photos'] == 1)
-          <div class="mb-6 {{ sizeof($post['attachments']) <= 1 ? 'mb-0' : '' }}">
+          <div class="mb-6 {{ count($post['attachments']) <= 1 ? 'mb-0' : '' }}">
         @endif
         @foreach ($post['attachments'] as $attach)
           @if ($attach->type == 'photo' && isset($attach->photo->photo_604))

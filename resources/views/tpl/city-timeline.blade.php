@@ -1,6 +1,6 @@
 <?php /** @var \App\Trip $row */ ?>
 
-@if (isset($timeline) && sizeof($timeline->flatten()) > 1)
+@if (isset($timeline) && count($timeline->flatten()) > 1)
   <div class="overflow-hidden mb-4">
     <div class="whitespace-nowrap pb-8 -mb-8 overflow-x-auto">
       <div class="text-sm flex">

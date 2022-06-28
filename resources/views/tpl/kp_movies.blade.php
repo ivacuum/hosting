@@ -2,7 +2,7 @@
 
 <div
   class="grid gap-1 mobile-wide overflow-x-scroll"
-  style="grid-template-columns: repeat({{ sizeof($movies) }}, max-content); grid-template-rows: 350px;"
+  style="grid-template-columns: repeat({{ count($movies) }}, max-content); grid-template-rows: 350px;"
 >
   @foreach ($movies as $movie)
     <a

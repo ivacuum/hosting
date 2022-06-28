@@ -14,7 +14,7 @@ class GetModelAccessibleRelationsAction
     /** @return Collection|ModelAccessibleRelation[] */
     public function execute(Model $model, array $showWithCount = []): Collection
     {
-        if (sizeof($showWithCount) < 1) {
+        if (count($showWithCount) < 1) {
             return collect();
         }
 

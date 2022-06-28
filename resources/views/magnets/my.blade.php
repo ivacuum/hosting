@@ -1,7 +1,7 @@
 @extends('magnets.base')
 
 @section('content')
-@if (sizeof($magnets))
+@if (count($magnets))
   <table class="table-stats table-adaptive">
     <thead>
       <tr>

@@ -6,7 +6,7 @@
     @lang("$tpl.index")
     <span class="text-base text-muted whitespace-nowrap">
       {{ $models instanceof Illuminate\Support\Collection
-          ? ViewHelper::number(sizeof($models))
+          ? ViewHelper::number(count($models))
           : ViewHelper::number($models->total())
       }}
     </span>
@@ -41,7 +41,7 @@
   </div>
 @endif
 
-@if (sizeof($models))
+@if (count($models))
   @yield('content-list')
 @else
   @yield('content-list-empty')

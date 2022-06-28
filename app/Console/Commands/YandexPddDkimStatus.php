@@ -16,6 +16,6 @@ class YandexPddDkimStatus extends Command
 
         $response = $yandexPdd->dkimStatus($domain->yandexUser->token, $domain->domain, true);
 
-        print $response->secretKey;
+        echo $response->secretKey;
     }
 }

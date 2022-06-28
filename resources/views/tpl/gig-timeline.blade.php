@@ -2,7 +2,7 @@
 /** @var \App\Gig $row */
 ?>
 
-@if (sizeof($timeline) > 1)
+@if (count($timeline) > 1)
   <div class="overflow-hidden mb-4">
     <div class="whitespace-nowrap pb-8 -mb-8 overflow-x-auto">
       <div class="text-sm flex">

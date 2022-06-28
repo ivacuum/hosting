@@ -1,6 +1,5 @@
 <?php namespace App\Http\Requests;
 
-use App\Rules\Email;
 use Ivacuum\Generic\Http\FormRequest;
 
 class PhotosMapForm extends FormRequest

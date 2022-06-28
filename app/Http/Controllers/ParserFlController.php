@@ -34,7 +34,7 @@ class ParserFlController
             'headers' => ['User-Agent' => $userAgent],
         ]);
 
-        print iconv('windows-1251', 'utf-8', $response->getBody());
+        echo iconv('windows-1251', 'utf-8', $response->getBody());
         exit;
     }
 }

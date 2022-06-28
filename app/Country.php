@@ -65,8 +65,8 @@ class Country extends Model
         $countries = $cities->groupBy('country_id');
 
         return \CountryHelper::cachedById()
-            ->filter(fn (Country $country) => isset($countries[$country->id]))
-            ->each(function (Country $country) use ($countries) {
+            ->filter(fn (self $country) => isset($countries[$country->id]))
+            ->each(function (self $country) use ($countries) {
                 $country->setRelation('cities', $countries[$country->id]);
 
                 $country->trips_count = $country->cities->sum->trips_count;
@@ -88,8 +88,8 @@ class Country extends Model
         $countries = $cities->groupBy('country_id');
 
         return \CountryHelper::cachedById()
-            ->filter(fn (Country $country) => isset($countries[$country->id]))
-            ->each(function (Country $country) use ($countries) {
+            ->filter(fn (self $country) => isset($countries[$country->id]))
+            ->each(function (self $country) use ($countries) {
                 $country->trips_count = $countries[$country->id]->sum->trips_count;
             })
             ->sortBy(static::titleField());
@@ -104,7 +104,7 @@ class Country extends Model
     {
         return ($code = FlagCode::fromSlug($this->slug))
             ? "https://ivacuum.org/i/flags/svg/{$code}.svg"
-            : "https://life.ivacuum.org/0.gif";
+            : 'https://life.ivacuum.org/0.gif';
     }
 
     public function initial(): string

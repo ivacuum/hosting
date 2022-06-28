@@ -3,7 +3,7 @@
 @extends('base')
 
 @section('content')
-@if (sizeof($users))
+@if (count($users))
   <table class="table-stats table-adaptive">
     <thead>
     <tr>

@@ -20,7 +20,7 @@ class VkLikesAdd extends Command
         $response = $vk->wallGet($page, ['count' => 10])->response;
 
         $i = 0;
-        $bar = $this->output->createProgressBar(sizeof($response->items));
+        $bar = $this->output->createProgressBar(count($response->items));
 
         foreach ($response->items as $postJson) {
             $post = Vk\Post::fromJson($postJson);
