@@ -10,7 +10,7 @@ class TelegramTypo extends TelegramNotifier
         $page = $event->page;
         $selection = $event->selection;
 
-        $text = "📝️ Опечатка на странице\n{$page}\n\n".htmlspecialchars_decode($selection, ENT_QUOTES);
+        $text = "📝️ Опечатка на странице\n{$page}\n\n" . htmlspecialchars_decode($selection, ENT_QUOTES);
 
         $this->telegram->notifyAdmin($text);
     }
