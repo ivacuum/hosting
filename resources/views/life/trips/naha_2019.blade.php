@@ -1,0 +1,914 @@
+@extends('life.trips.base')
+
+@section('content')
+@ru
+  <p>Крыло самолета японских авиалиний. История о пересадке в бегах.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2559.jpg'])
+
+Рейс неоднократно переносили.
+
+@ru
+  <p>Самая стремная посадка. Аэропорт в Нахе.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2561.jpg'])
+
+@ru
+  <p>Цветы в аэропорту.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2562.jpg'])
+
+@ru
+  <p>Самолет в горошек.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2563.jpg',
+  'IMG_2564.jpg',
+]])
+
+@ru
+  <p>Автобусы на парковке.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2565.jpg'])
+
+@ru
+  <p>На Окинаве своя транспортная карта (?), а с основного острова страны карты не действуют.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2566.jpg'])
+
+@ru
+  <p>Монорельс.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2567.jpg'])
+
+@ru
+  <p>Монорельс подбросил в центр столицы, где ливень в самом разгаре.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2568.jpg'])
+
+@ru
+  <p>Пейзажи тихоокеанского острова.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2569.jpg',
+  'IMG_2571.jpg',
+]])
+
+@ru
+  <p>Лестница.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2570.jpg'])
+
+@ru
+  <p>Стоит смотреть под ноги, а то можно угодить в воду.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2572.jpg'])
+
+@ru
+  <p>Скамейки вокруг дерева.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2573.jpg'])
+
+@ru
+  <p>Пляж и океан.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2577.jpg'])
+
+@ru
+  <p>Виноградный напиток из автомата.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2581.jpg'])
+
+@ru
+  <p>Улица.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2582.jpg'])
+
+@ru
+  <p>Фонтан. Далее за сеткой поле для гольфа.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2584.jpg'])
+
+@ru
+  <p>Парковка.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2585.jpg'])
+
+@ru
+  <p>Уклон, чтобы мячики для гольфа возвращались.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2586.jpg'])
+
+@ru
+  <p>У жилого дома.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2587.jpg'])
+
+@ru
+  <p>Кактус на улице.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2588.jpg'])
+
+@ru
+  <p>Вывеска на английском и японском.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2591.jpg'])
+
+@ru
+  <p>Улицы.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2592.jpg',
+  'IMG_2593.jpg',
+]])
+
+@ru
+  <p>Зубные щетки.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2594.jpg'])
+
+@ru
+  <p>Многоуровневое здание.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2608.jpg'])
+
+@ru
+  <p>Полицейский участок.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2609.jpg'])
+
+@ru
+  <p>Фонтан.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2610.jpg'])
+
+@ru
+  <p>Табуретки возле дерева.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2622.jpg'])
+
+@ru
+  <p>Питьевой фонтанчик.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2623.jpg'])
+
+@ru
+  <p>Фигурки на продажу.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2635.jpg'])
+
+@ru
+  <p>Просьба не лазать наверх.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2636.jpg'])
+
+@ru
+  <p>Змеи на дне напитка.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2637.jpg'])
+
+@ru
+  <p>Шлепки в форме рыб.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2638.jpg'])
+
+@ru
+  <p>Собак магнетизируют футболки.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2639.jpg'])
+
+@ru
+  <p>Ступеньки на стене.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2654.jpg'])
+
+@ru
+  <p>Вода в стеклянной стенке.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2659.jpg'])
+
+@ru
+  <p>Темнеет, загораются вывески.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2662.jpg'])
+
+@ru
+  <p>Загорается подсветка.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2663.jpg'])
+
+@ru
+  <p>Иллюминация.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2674.jpg',
+  'IMG_2675.jpg',
+]])
+
+@ru
+  <p>В магазине корзинки для взрослых.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2676.jpg'])
+
+@ru
+  <p>И корзинки для детей.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2677.jpg'])
+
+@ru
+  <p>Тротуар на мосту.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2678.jpg'])
+
+@ru
+  <p>Место практики дайверов.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2680.jpg',
+  'IMG_2679.jpg',
+]])
+
+@ru
+  <p>Беседка на берегу океана.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2681.jpg'])
+
+@ru
+  <p>Ресторанные веранды простаивают в ноябре.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2689.jpg'])
+
+@ru
+  <p>Под мостом.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2745.jpg'])
+
+@ru
+  <p>Вход в заведение общепита.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2762.jpg'])
+
+@ru
+  <p>Сегодня в меню.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2763.jpg'])
+
+@ru
+  <p>Вид из-за столика.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2764.jpg'])
+
+@ru
+  <p>Вход в здание зарос.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2770.jpg'])
+
+@ru
+  <p>Лоджии и кондиционеры на них.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2771.jpg'])
+
+@ru
+  <p>Что-то растет на деревьях.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2772.jpg'])
+
+@ru
+  <p>Река идет сквозь город.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2773.jpg'])
+
+@ru
+  <p>Зеркало на выезде из гаража на улицу.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2774.jpg'])
+
+@ru
+  <p>Цветы в горшочках.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2775.jpg'])
+
+@ru
+  <p>Канализационный люк.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2776.jpg'])
+
+@ru
+  <p>Рукописное объявление на полу.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2778.jpg'])
+
+@ru
+  <p>Заградительные столбики.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2779.jpg'])
+
+@ru
+  <p>Пляжный футбол.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2780.jpg'])
+
+@ru
+  <p>Пирс.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2782.jpg'])
+
+@ru
+  <p>Пляж.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2783.jpg',
+  'IMG_2784.jpg',
+  'IMG_2791.jpg',
+]])
+
+@ru
+  <p>Небольшой колодец на берегу.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2786.jpg'])
+
+@ru
+  <p>Набережная.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2801.jpg',
+  'IMG_2802.jpg',
+  'IMG_2803.jpg',
+]])
+
+@ru
+  <p>Дроны запрещены.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2804.jpg'])
+
+@ru
+  <p>Умывальник в уличном туалете.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2805.jpg'])
+
+@ru
+  <p>Снова ливень. Летние веранды временно неактуальны.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2807.jpg'])
+
+@ru
+  <p>Четыре скамейки кругом в торговом центре.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2808.jpg'])
+
+@ru
+  <p>Пальмы в городе.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2830.jpg'])
+
+@ru
+  <p>Деревья отцветают.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2831.jpg',
+  'IMG_2832.jpg',
+]])
+
+@ru
+  <p>Места для сидения возле парка.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2858.jpg'])
+
+@ru
+  <p>Спуск к уличному туалету.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2859.jpg'])
+
+@ru
+  <p>Улицы.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2866.jpg',
+  'IMG_2867.jpg',
+]])
+
+@ru
+  <p>Экскурсии по острову Окинава.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2868.jpg'])
+
+@ru
+  <p>Гид в автобусе говорит только на японском, иностранцам предлагается текстовый вариант экскурсии.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2869.jpg'])
+
+@ru
+  <p>В путь по острову. Переворачиваемые бумажные часы использовали для напоминания времени отправления со стоянок.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2873.jpg'])
+
+@ru
+  <p>И тут дронам не рады.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2874.jpg'])
+
+@ru
+  <p>Мыс.</p>
+@en
+  <p>Cape.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2877.jpg',
+  'IMG_2891.jpg',
+]])
+
+@ru
+  <p>Гавань.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2894.jpg',
+  'IMG_2896.jpg',
+]])
+
+@ru
+  <p>Скамейки.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2895.jpg'])
+
+@ru
+  <p>Зарезервированный столик.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2905.jpg'])
+
+@ru
+  <p>Зал отеля, в котором остановили на обед.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2906.jpg'])
+
+@ru
+  <p>Вид от въезда в отель.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2907.jpg',
+  'IMG_2908.jpg',
+]])
+
+@ru
+  <p>Автомобили слева, пешеходы справа.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2909.jpg'])
+
+@ru
+  <p>В океанариум приезжают семьями.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2910.jpg'])
+
+@ru
+  <p>Виднеется соседний остров.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2911.jpg'])
+
+@ru
+  <p>Экспозиции с животными.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2912.jpg',
+  'IMG_2913.jpg',
+  'IMG_3048.jpg',
+  'IMG_3060.jpg',
+]])
+
+@ru
+  <p>Океанариум расположен относительно высоко от парка.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2914.jpg'])
+
+@ru
+  <p>Фотозона 22 ноября.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2925.jpg'])
+
+@ru
+  <p>Панорама подхода к океанариуму из парка.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2926.jpg'])
+
+@ru
+  <p>Проход закрыт.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2927.jpg'])
+
+@ru
+  <p>Увлеченные посетители.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2935.jpg',
+  'IMG_2939.jpg',
+  'IMG_2941.jpg',
+]])
+
+@ru
+  <p>В океанариуме.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2936.jpg',
+  'IMG_2937.jpg',
+  'IMG_2938.jpg',
+  'IMG_2944.jpg',
+  'IMG_2945.jpg',
+  'IMG_2950.jpg',
+  'IMG_2953.jpg',
+  'IMG_2978.jpg',
+  'IMG_2985.jpg',
+]])
+
+@ru
+  <p>Угри.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2977.jpg',
+  'IMG_2954.jpg',
+  'IMG_2996.jpg',
+]])
+
+@ru
+  <p>Вид выше и ниже воды.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2982.jpg'])
+
+@ru
+  <p>Вид над водой.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2983.jpg'])
+
+@ru
+  <p>Вид под водой.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2984.jpg'])
+
+@ru
+  <p>Медуза.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2988.jpg',
+  'IMG_2990.jpg',
+]])
+
+@ru
+  <p>Круглое окошко.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2992.jpg'])
+
+@ru
+  <p>Разноцветные слои земли.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2993.jpg'])
+
+@ru
+  <p>Самый большой аквариум.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2998.jpg',
+  'IMG_2999.jpg',
+  'IMG_3007.jpg',
+]])
+
+@ru
+  <p>Мерч.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3022.jpg'])
+
+@ru
+  <p>Бассейн с дельфинами.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3035.jpg'])
+
+@ru
+  <p>Надпись гласит: «Осторожно, брызги воды». В следующую секунду дельфин обдает меня водой.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3037.jpg',
+  'IMG_3038.jpg',
+]])
+
+@ru
+  <p>Территория парка.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3039.jpg'])
+
+@ru
+  <p>Следующая остановка у руин.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3064.jpg',
+  'IMG_3066.jpg',
+  'IMG_3068.jpg',
+  'IMG_3069.jpg',
+  'IMG_3070.jpg',
+  'IMG_3075.jpg',
+  'IMG_3087.jpg',
+  'IMG_3092.jpg',
+]])
+
+@ru
+  <p>Дощатая дорога.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3090.jpg'])
+
+
+@ru
+  <p>Скамейки.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3107.jpg'])
+
+@ru
+  <p>Аллея.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3108.jpg'])
+
+@ru
+  <p>Проход запрещен.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3109.jpg'])
+
+@ru
+  <p>Выход.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3124.jpg'])
+
+@ru
+  <p>Умывальник.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3125.jpg'])
+
+@ru
+  <p>Выгравированные надписи на столбе.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3126.jpg'])
+
+@ru
+  <p>Котик на лавке.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3151.jpg'])
+
+@ru
+  <p>Моторная лодка.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3152.jpg'])
+
+@ru
+  <p>Следующая остановка — ананасовый парк.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3155.jpg'])
+
+@ru
+  <p>Реально ананасы растут.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3157.jpg',
+  'IMG_3159.jpg',
+]])
+
+@ru
+  <p>Фонтанчики.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3180.jpg'])
+
+@ru
+  <p>Могут прокатить по территории.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3181.jpg'])
+
+@ru
+  <p>Надпись на табличке: «кофе».</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3182.jpg'])
+
+@ru
+  <p>Территория парка.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3190.jpg',
+  'IMG_3191.jpg',
+  'IMG_3192.jpg',
+  'IMG_3195.jpg',
+  'IMG_3196.jpg',
+  'IMG_3214.jpg',
+]])
+
+@ru
+  <p>Подставка для телефона, чтобы самостоятельно сделать групповое фото.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3215.jpg'])
+
+@ru
+  <p>Динозавры со звуковым сопровождением.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3218.jpg',
+  'IMG_3220.jpg',
+  'IMG_3221.jpg',
+]])
+
+@ru
+  <p>Еще фонтан.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3232.jpg'])
+
+@ru
+  <p>Возвращение в Наху.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3234.jpg'])
+
+@ru
+  <p>Наклейка на рюкзак, чтобы приняли за своего при посадке в автобус. Просили ее выбросить по завершении тура, но она осталась наклеена на память.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3236.jpg'])
+
+@ru
+  <p>Доставили в город, когда уже стемнело. А темнеет рано.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3240.jpg'])
+
+@ru
+  <p>Огни вечернего города.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3242.jpg',
+  'IMG_3243.jpg',
+]])
+
+@ru
+  <p>Напоминание об эвакуации во время природных катаклизмов.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3245.jpg'])
+
+@ru
+  <p>Сад.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3246.jpg',
+  'IMG_3247.jpg',
+  'IMG_3249.jpg',
+  'IMG_3296.jpg',
+  'IMG_3297.jpg',
+  'IMG_3321.jpg',
+]])
+
+@ru
+  <p>Очень нравятся листья с обведенным контуром.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3283.jpg'])
+
+@ru
+  <p>Пещера.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3304.jpg'])
+
+@ru
+  <p>Арка.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3305.jpg'])
+
+@ru
+  <p>Бамбук.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3313.jpg'])
+
+@ru
+  <p>В саду есть черепахи.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3323.jpg'])
+
+@ru
+  <p>Крокодилья голова.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3346.jpg'])
+
+@ru
+  <p>Расшифровка вкуса вина на этикетке в магазине.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3358.jpg'])
+
+@ru
+  <p>Панорама площадки.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3370.jpg'])
+
+@ru
+  <p>Круговые скамейки.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3373.jpg',
+  'IMG_3374.jpg',
+]])
+
+@ru
+  <p>Пронумерованное такси.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3378.jpg'])
+
+@ru
+  <p>Красные фонари вдоль территории ярмарки.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3379.jpg'])
+
+@ru
+  <p>Уличное пространство.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3380.jpg'])
+
+@ru
+  <p>Черного котика просьба не кормить.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3381.jpg'])
+
+@ru
+  <p>На ценниках картинки товара, в данном случае мороженого.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3382.jpg'])
+
+@ru
+  <p>Детская площадка в парке.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3383.jpg'])
+
+@ru
+  <p>Мост через дорогу в вытянутом парке.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3384.jpg',
+  'IMG_3385.jpg',
+  'IMG_3388.jpg',
+]])
+
+@ru
+  <p>Дороги.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3386.jpg',
+  'IMG_3387.jpg',
+]])
+
+@ru
+  <p>Музей искусств.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3389.jpg'])
+
+@ru
+  <p>Второй мост через дорогу.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3390.jpg'])
+
+@ru
+  <p>Красиво цветут деревья.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3391.jpg'])
+
+@ru
+  <p>Десятки детей играют на спортивных площадках.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3392.jpg'])
+
+@ru
+  <p>Скейт-парк.</p>
+@en
+  <p>Skate park.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3393.jpg'])
+
+@ru
+  <p>Теннисный корт.</p>
+@en
+  <p>Tennis court.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3394.jpg'])
+
+@ru
+  <p>Закат в городе.</p>
+@en
+  <p>Sunset in the city.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3421.jpg'])
+
+@ru
+  <p>Лодка.</p>
+@en
+  <p>Boat.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3422.jpg'])
+
+@ru
+  <p>Газовая плита дома.</p>
+@en
+  <p>Gas stove at home.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3425.jpg'])
+
+@ru
+  <p>Вытяжка.</p>
+@en
+  <p>Cooker hood.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3426.jpg'])
+
+@ru
+  <p>В аэропорту на внутренних перелетах можно просканировать на опасность свой бутилированный напиток и забрать его дальше с собой, а не выбрасывать перед досмотром.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3427.jpg'])
+@endsection
