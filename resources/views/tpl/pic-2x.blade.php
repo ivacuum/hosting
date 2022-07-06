@@ -17,12 +17,14 @@
           loading="lazy"
         >
         <div class="absolute top-0 right-0">
-          <a
-            class="flex items-center justify-center p-2 text-white svg-shadow"
-            href="{{ to('photos/map', ['photo' => $slug ?? "{$trip->slug}/{$pic}"]) }}"
-          >
-            @svg (map-marker)
-          </a>
+          @if(empty($slug))
+            <a
+              class="flex items-center justify-center p-2 text-white svg-shadow"
+              href="{{ to('photos/map', ['photo' => $slug ?? "{$trip->slug}/{$pic}"]) }}"
+            >
+              @svg (map-marker)
+            </a>
+          @endif
           <a
             class="flex items-center justify-center p-2 text-white svg-shadow"
             href="{{ ViewHelper::pic2x($slug ?? $trip->slug, $pic) }}"
