@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <form class="mt-2" wire:submit.prevent="check">
+    <div class="mt-2">
       <input
         type="text"
         tabindex="1"
@@ -38,9 +38,10 @@
         enterkeyhint="send"
         class="form-input text-center {{ $this->reveal ? 'animate-incorrect-answer' : '' }}"
         {{ $this->reveal ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
-        wire:model.lazy="answer"
+        wire:model.defer="answer"
+        wire:keydown.enter="check"
       >
-    </form>
+    </div>
 
     <div class="grid grid-cols-3 gap-2 mt-3">
       <button
