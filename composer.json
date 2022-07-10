@@ -4,6 +4,7 @@
   "license": "MIT",
   "require": {
     "php": ">=8.1",
+    "ext-intl": "*",
     "ext-swoole": "*",
     "foolz/sphinxql-query-builder": "^3.0",
     "geo-io/wkb-parser": "^1.0",

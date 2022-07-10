@@ -12,6 +12,8 @@ enum CacheKey: string
 
     case DomainsWhois = 'domains.whois.{key}';
 
+    case IcuLocales = 'icu.locales';
+
     case MyVisibleGigs = 'my.gigs.visible';
     case MyVisibleTrips = 'my.trips.visible';
 
@@ -40,6 +42,8 @@ enum CacheKey: string
             self::TorrentsStatsByCategories => CarbonInterval::minutes(15),
 
             self::PhotosPoints => CarbonInterval::minutes(30),
+
+            self::IcuLocales => CarbonInterval::day(),
 
             self::MyVisibleGigs,
             self::MyVisibleTrips,

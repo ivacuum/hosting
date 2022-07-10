@@ -233,6 +233,11 @@ Route::get('subscriptions/confirm', [Ctrl\Subscriptions::class, 'confirm'])->mid
 
 Route::get('torrent', Ctrl\TorrentPromo::class);
 
+Route::middleware('nav:Тренажеры,trainers')->group(function () {
+    Route::view('trainers', 'trainers.index');
+    Route::view('trainers/numbers', 'trainers.numbers')->middleware('nav:Числа');
+});
+
 Route::get('trips/{trip}', [Ctrl\Trips::class, 'show']);
 
 Route::view('up', 'upload');
