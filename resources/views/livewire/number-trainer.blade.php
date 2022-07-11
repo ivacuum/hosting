@@ -161,7 +161,7 @@
     <p>Для ввода ответа текстом большинство языков потребует местную раскладку клавиатуры. То есть, чешская цифра <span class="font-bold">čtyři (4)</span> требует вводить именно <span class="font-bold">č</span> и <span class="font-bold">ř</span>, а немецкая <span class="font-bold">fünf (5)</span> — именно <span class="font-bold">ü</span>. Тренажер принимает ответы транслитом, но транслит по международным правилам не всегда такой, каким вы можете его ожидать, поэтому рекомендуется пользоваться именно местной клавиатурой — так вы запомните правильное написание.</p>
 
     <div class="h4">Поддерживаемые вашим устройством голоса</div>
-    <ul class="js-voice-list"></ul>
+    <ul class="js-voice-list" wire:ignore></ul>
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
