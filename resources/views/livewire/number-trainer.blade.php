@@ -3,9 +3,10 @@
 <div class="grid gap-8 max-w-xl mx-auto">
   <div>
     <div class="text-center">
-      <div class="text-3xl text-gray-600 dark:text-slate-400 {{ $this->sayOutLoud ? 'invisible' : '' }} js-utterance">
+      <div class="text-3xl text-gray-600 dark:text-slate-400 {{ $this->sayOutLoud ? 'invisible' : '' }}">
         {{ $this->guessingSpellOut ? $this->number : $this->spellOut }}
       </div>
+      <div hidden class="js-utterance">{{ $this->number }}</div>
       <div class="text-2xl">
         @if($this->reveal)
           <span class="flex flex-wrap gap-x-4 justify-center text-green-600">
@@ -229,10 +230,11 @@
           return
         }
 
-        const text = document.querySelector('.js-utterance').textContent.trim()
+        const text = document.querySelector('.js-utterance').textContent
         const utterance = new SpeechSynthesisUtterance(text)
 
         utterance.voice = voices[voiceSelect.selectedOptions[0].value]
+        utterance.lang = utterance.voice.lang
 
         speechSynthesis.speak(utterance)
       }
