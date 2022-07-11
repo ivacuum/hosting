@@ -185,7 +185,7 @@
 
           voiceList.appendChild(listElement)
 
-          if (!voices[i].lang.startsWith(`${locale}-`)) {
+          if (!voices[i].lang.startsWith(`${locale}-`) && !voices[i].lang.startsWith(`${locale}_`)) {
             continue
           }
 
