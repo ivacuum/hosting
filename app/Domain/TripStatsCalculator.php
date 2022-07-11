@@ -7,20 +7,21 @@ use Illuminate\Support\Collection;
 
 class TripStatsCalculator
 {
-    private $cities;
-    private $lastDate;
-    private $calendar;
-    private $countries;
-    private $newCities;
-    private $firstDate;
-    private $cityVisits;
-    private $daysInTrips;
-    private $daysInCities;
-    private $newCountries;
-    private $visitedCities;
-    private $daysInCountries;
-    private $visitedCountries;
+    private Collection $cities;
+    private Collection $calendar;
+    private Collection $countries;
+    private Collection $newCities;
+    private Collection $daysInTrips;
+    private Collection $daysInCities;
+    private Collection $newCountries;
+    private Collection $visitedCities;
+    private Collection $daysInCountries;
+    private Collection $visitedCountries;
+    private ?CarbonImmutable $lastDate = null;
+    private ?CarbonImmutable $firstDate = null;
+    private Eloquent\Collection $cityVisits;
 
+    /** @param \Illuminate\Database\Eloquent\Collection<int, \App\Trip> $trips */
     public function __construct(Eloquent\Collection $trips)
     {
         $this->cities = collect();
@@ -103,9 +104,9 @@ class TripStatsCalculator
         return $this->newCountries->map(fn (Collection $countries) => $countries->count());
     }
 
+    /** @param \Illuminate\Database\Eloquent\Collection<int, \App\Trip> $trips */
     private function calculate(Eloquent\Collection $trips): void
     {
-        /** @var Trip $trip */
         foreach ($trips as $trip) {
             $trip->loadCityAndCountry();
 
