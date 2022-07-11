@@ -3,7 +3,7 @@
 <div class="grid gap-8 max-w-xl mx-auto">
   <div>
     <div class="text-center">
-      <div class="text-3xl text-gray-600 dark:text-slate-400 {{ $this->sayOutLoud ? 'invisible' : '' }}">
+      <div class="text-3xl text-gray-600 dark:text-slate-400 {{ $this->sayOutLoud && !$this->reveal ? 'invisible' : '' }}">
         {{ $this->guessingSpellOut ? $this->number : $this->spellOut }}
       </div>
       <div hidden class="js-utterance">{{ $this->number }}</div>
