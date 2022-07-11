@@ -17,18 +17,14 @@ class HangulTrainer extends Component
         $answer = trim(mb_strtolower($this->answer));
 
         if (in_array($answer, $this->acceptedAnswers())) {
-            $this->answer = '';
-            $this->reveal = false;
             $this->answered++;
-            $this->pickRandomJamo();
+            $this->next();
 
             return;
         }
 
         if ($this->reveal) {
-            $this->answer = '';
-            $this->reveal = false;
-            $this->pickRandomJamo();
+            $this->next();
 
             return;
         }
@@ -47,6 +43,13 @@ class HangulTrainer extends Component
         return collect(HangulCyrrilizer::DICTIONARY[$this->jamo])
             ->map(fn ($answer) => str_replace('-', '', $answer))
             ->all();
+    }
+
+    private function next()
+    {
+        $this->answer = '';
+        $this->reveal = false;
+        $this->pickRandomJamo();
     }
 
     private function pickRandomJamo()

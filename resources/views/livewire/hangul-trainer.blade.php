@@ -16,7 +16,7 @@
       <div class="btn bg-gray-50 border border-gray-100 text-5xl my-6">{{ $this->jamo }}</div>
     </div>
 
-    <form class="mt-2" wire:submit.prevent="check">
+    <div class="mt-2">
       <input
         type="text"
         tabindex="1"
@@ -28,9 +28,10 @@
         enterkeyhint="enter"
         class="form-input text-center {{ $this->reveal ? 'animate-incorrect-answer' : '' }}"
         {{ $this->reveal ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
-        wire:model.lazy="answer"
+        wire:model.defer="answer"
+        wire:keydown.enter="check"
       >
-    </form>
+    </div>
   </div>
   <div>
     <div class="grid gap-1 max-w-md text-center mb-6 text-2xl">
