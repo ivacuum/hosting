@@ -44,6 +44,7 @@
       >
     </div>
 
+    {{--flex--}}
     <div class="grid grid-cols-3 gap-2 mt-3">
       <button
         class="btn btn-default px-0 text-sm sm:text-base"
