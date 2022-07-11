@@ -16,7 +16,6 @@ class NumberTrainerTest extends TestCase
             ->assertSet('spellOut', 'fifty-five')
             ->set('answer', 55)
             ->call('check')
-            ->assertSet('answer', '')
             ->assertSet('answered', 1);
     }
 

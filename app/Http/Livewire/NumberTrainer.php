@@ -90,7 +90,6 @@ class NumberTrainer extends Component
         }
 
         $this->next();
-
         $this->emit('answer.focus');
     }
 
