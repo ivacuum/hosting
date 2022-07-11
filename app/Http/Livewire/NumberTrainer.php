@@ -1,6 +1,7 @@
 <?php namespace App\Http\Livewire;
 
 use App\Action\GetNumberLocalesAction;
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 /**
@@ -20,6 +21,10 @@ class NumberTrainer extends Component
     public array $locales = [];
     public string $locale = 'en';
     public string $answer = '';
+
+    protected $queryString = [
+        'locale' => ['except' => 'en'],
+    ];
 
     public function acceptedAnswers(): array
     {
@@ -73,12 +78,16 @@ class NumberTrainer extends Component
         $this->maximum *= 10;
     }
 
-    public function mount(GetNumberLocalesAction $getNumberLocales)
+    public function mount(Request $request, GetNumberLocalesAction $getNumberLocales)
     {
         $this->locales = collect($getNumberLocales->execute())
             ->mapWithKeys(fn (string $locale) => [$locale => \Locale::getDisplayName($locale, \App::getLocale())])
             ->sort()
             ->all();
+
+        $this->locale = in_array($request->input('locale'), array_keys($this->locales))
+            ? $request->input('locale')
+            : 'en';
 
         $this->pickRandomNumber();
     }
@@ -125,7 +134,7 @@ class NumberTrainer extends Component
         $this->sayOutLoud();
     }
 
-    private function pickRange()
+    private function pickRange(): int
     {
         return random_int(1, substr_count($this->maximum, 0));
     }
@@ -137,10 +146,9 @@ class NumberTrainer extends Component
         }
     }
 
-    private function transliterate(string $text)
+    private function transliterate(string $text): string
     {
-        $transliterator = \Transliterator::create('NFD; Any-Latin; Latin-Ascii; NFC');
-
-        return $transliterator->transliterate($text);
+        return \Transliterator::create('NFD; Any-Latin; Latin-Ascii; NFC')
+            ->transliterate($text);
     }
 }
