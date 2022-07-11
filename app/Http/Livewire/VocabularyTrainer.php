@@ -7,8 +7,7 @@ class VocabularyTrainer extends Component
 {
     private const MAX_HISTORY = 5;
 
-    /** @var Vocabulary */
-    public $vocab;
+    public ?Vocabulary $vocab = null;
 
     /** @var array<int, array{www: string, meaning: string, character: string}> */
     public array $history = [];
@@ -39,20 +38,14 @@ class VocabularyTrainer extends Component
         }
 
         if (in_array($answer, $this->acceptedAnswers())) {
-            $this->answer = '';
-            $this->reveal = false;
             $this->answered++;
-            $this->pushHistory();
-            $this->pickRandomVocab();
+            $this->next();
 
             return;
         }
 
         if ($this->reveal) {
-            $this->answer = '';
-            $this->reveal = false;
-            $this->pushHistory();
-            $this->pickRandomVocab();
+            $this->next();
 
             return;
         }
@@ -90,14 +83,14 @@ class VocabularyTrainer extends Component
 
     public function skip()
     {
-        $this->answer = '';
-        $this->reveal = false;
-        $this->skipped++;
-        $this->openSettings = false;
-        $this->pushHistory();
-        $this->pickRandomVocab();
+        if ($this->reveal === false) {
+            $this->skipped++;
 
-        event(new \App\Events\Stats\VocabularySkipped);
+            event(new \App\Events\Stats\VocabularySkipped);
+        }
+
+        $this->openSettings = false;
+        $this->next();
     }
 
     public function switchToHiragana()
@@ -129,6 +122,14 @@ class VocabularyTrainer extends Component
     private function endLevel(): int
     {
         return min(60, $this->level * 10);
+    }
+
+    private function next()
+    {
+        $this->answer = '';
+        $this->reveal = false;
+        $this->pushHistory();
+        $this->pickRandomVocab();
     }
 
     private function pickRandomVocab()

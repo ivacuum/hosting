@@ -48,7 +48,7 @@
         class="btn btn-default px-0 text-sm sm:text-base"
         type="button"
         wire:click="skip"
-      >@lang('Пропустить')</button>
+      >@lang($this->reveal ? 'Далее' : 'Пропустить')</button>
       @if ($this->vocab->male_audio_id)
         <div>
           <button

@@ -27,7 +27,6 @@ class VocabularyTrainerTest extends TestCase
             })
             ->set('answer', $component->vocab->kana)
             ->call('check')
-            ->assertSet('answer', '')
             ->assertSet('answered', 1);
     }
 
@@ -47,7 +46,6 @@ class VocabularyTrainerTest extends TestCase
             })
             ->set('answer', $component->vocab->character)
             ->call('check')
-            ->assertSet('answer', '')
             ->assertSet('answered', 1);
     }
 
@@ -64,7 +62,6 @@ class VocabularyTrainerTest extends TestCase
             })
             ->set('answer', $component->vocab->toKatakana())
             ->call('check')
-            ->assertSet('answer', '')
             ->assertSet('answered', 1);
     }
 
@@ -81,7 +78,6 @@ class VocabularyTrainerTest extends TestCase
             })
             ->set('answer', $component->vocab->toRomaji())
             ->call('check')
-            ->assertSet('answer', '')
             ->assertSet('answered', 1);
     }
 
@@ -124,6 +120,25 @@ class VocabularyTrainerTest extends TestCase
             ->assertSet('openSettings', true);
     }
 
+    public function testRightAnswerGetsCleared()
+    {
+        VocabularyFactory::new()
+            ->withLevel(1)
+            ->withCharacter('東京証券取引所')
+            ->create();
+
+        $this->expectsEvents(\App\Events\Stats\VocabularyAnsweredKanji::class);
+
+        /** @var VocabularyTrainer $component */
+        \Livewire::test(VocabularyTrainer::class)
+            ->tap(function (TestableLivewire $livewire) use (&$component) {
+                $component = $livewire->instance();
+            })
+            ->set('answer', $component->vocab->character)
+            ->call('check')
+            ->assertSet('answer', '');
+    }
+
     public function testSkip()
     {
         VocabularyFactory::new()->withLevel(1)->create();
@@ -135,6 +150,22 @@ class VocabularyTrainerTest extends TestCase
             ->call('skip')
             ->assertSet('answer', '')
             ->assertSet('skipped', 1);
+    }
+
+    public function testSkipAfterWrongAnswer()
+    {
+        VocabularyFactory::new()->withLevel(1)->create();
+
+        $this->doesntExpectEvents(\App\Events\Stats\VocabularySkipped::class);
+
+        \Livewire::test(VocabularyTrainer::class)
+            ->set('answer', 'about to skip')
+            ->call('check')
+            ->call('skip')
+            ->assertSet('answer', '')
+            ->assertSet('answered', 0)
+            ->assertSet('revealed', 1)
+            ->assertSet('skipped', 0);
     }
 
     public function testSwitchToHiragana()
