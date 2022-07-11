@@ -176,7 +176,8 @@
 
       function populateVoiceList(locale) {
         voices = speechSynthesis.getVoices()
-        voiceSelect.textContent = '';
+        voiceList.textContent = ''
+        voiceSelect.textContent = ''
 
         for (let i = 0, length = voices.length; i < length; i++) {
           let listElement = document.createElement('li')
