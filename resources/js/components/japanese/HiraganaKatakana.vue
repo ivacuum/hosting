@@ -75,6 +75,7 @@
                 :value="input"
                 @input="checkInput($event.target.value, $event)"
                 @keydown.space.prevent="revealAnswer"
+                @keydown.enter.prevent="revealAnswer"
               >
             </div>
             <div class="flex items-center justify-between mt-2">
