@@ -93,20 +93,15 @@ class VocabularyTrainer extends Component
         $this->next();
     }
 
-    public function switchToHiragana()
+    public function updatedHiragana()
     {
-        $this->hiragana = true;
         $this->openSettings = true;
 
-        event(new \App\Events\Stats\VocabularySwitchedToHiragana);
-    }
-
-    public function switchToKatakana()
-    {
-        $this->hiragana = false;
-        $this->openSettings = true;
-
-        event(new \App\Events\Stats\VocabularySwitchedToKatakana);
+        if ($this->hiragana) {
+            event(new \App\Events\Stats\VocabularySwitchedToHiragana);
+        } else {
+            event(new \App\Events\Stats\VocabularySwitchedToKatakana);
+        }
     }
 
     private function acceptedAnswers(): array

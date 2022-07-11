@@ -113,24 +113,20 @@
     <details class="border dark:border-slate-700 text-sm rounded overflow-hidden" {{ $this->openSettings ? 'open' : '' }}>
       <summary class="border-b dark:border-slate-700 bg-gray-100 dark:bg-slate-800 text-gray-500 dark:text-slate-400 hover:text-gray-700 hover:dark:text-slate-200 px-5 py-2" itemprop="name">@lang('Настройки'): <span class="lowercase">{{ $this->hiragana ? __('Хирагана') : __('Катакана') }}, @lang('Уровни') {{ $this->level * 10 - 9 }}–{{ $this->level * 10 }}</span></summary>
       <div class="px-5 py-3 text-sm">
-        <div class="h5">@lang('Азбука')</div>
+        <div class="h5 mb-0">@lang('Азбука')</div>
         <div class="text-gray-500 mb-2">@lang('japanese.settings.syllabary_help')</div>
-        <div>
-          <button
-            class="btn btn-default disabled:opacity-50"
-            type="button"
-            wire:click="switchToHiragana"
-            {{ $this->hiragana ? 'disabled' : '' }}
-          >@lang('Хирагана')</button>
-          <button
-            class="btn btn-default disabled:opacity-50"
-            type="button"
-            wire:click="switchToKatakana"
-            {{ $this->hiragana ? '' : 'disabled' }}
-          >@lang('Катакана')</button>
+        <div class="flex items-center gap-4">
+          <label class="flex items-center">
+            <input class="border-gray-300 mr-2" type="radio" wire:model="hiragana" value="1">
+            @lang('Хирагана')
+          </label>
+          <label class="flex items-center">
+            <input class="border-gray-300 mr-2" type="radio" wire:model="hiragana" value="0">
+            @lang('Катакана')
+          </label>
         </div>
 
-        <div class="h5 mt-6">@lang('Уровни') {{ $this->level * 10 - 9 }}–{{ $this->level * 10 }}</div>
+        <div class="h5 mt-6 mb-0">@lang('Уровни') {{ $this->level * 10 - 9 }}–{{ $this->level * 10 }}</div>
         <div class="text-gray-500 mb-2">@lang('japanese.settings.levels_help')</div>
         <div class="flex">
           <button

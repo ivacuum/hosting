@@ -175,7 +175,7 @@ class VocabularyTrainerTest extends TestCase
         $this->expectsEvents(\App\Events\Stats\VocabularySwitchedToHiragana::class);
 
         \Livewire::test(VocabularyTrainer::class, ['hiragana' => false])
-            ->call('switchToHiragana')
+            ->set('hiragana', true)
             ->assertSet('hiragana', true)
             ->assertSet('openSettings', true);
     }
@@ -187,7 +187,7 @@ class VocabularyTrainerTest extends TestCase
         $this->expectsEvents(\App\Events\Stats\VocabularySwitchedToKatakana::class);
 
         \Livewire::test(VocabularyTrainer::class)
-            ->call('switchToKatakana')
+            ->set('hiragana', false)
             ->assertSet('hiragana', false)
             ->assertSet('openSettings', true);
     }
