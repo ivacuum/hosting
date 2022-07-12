@@ -102,7 +102,7 @@ Route::post('js/typo', Ctrl\JsTypo::class);
 
 Route::middleware('nav:Корейский язык,korean')->group(function () {
     Route::view('korean', 'korean.index');
-    Route::view('korean/hangul', 'korean.hangul')->middleware('nav:Хангыль');
+    Route::view('korean/hangul', 'korean.hangul')->middleware('nav:Тренажер хангыля');
 
     Route::middleware('nav:Кириллизация песен PSY,korean/psy')->group(function () {
         Route::get('korean/psy', Ctrl\KoreanPsy::class);
