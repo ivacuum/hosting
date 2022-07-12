@@ -35,6 +35,7 @@ return [
     'japanese/wanikani/vocabulary' => 'Словарные слова',
     'japanese/wanikani/vocabulary/{characters}' => ':vocab',
 
+    'korean/hangul' => 'Тренажер хангыля',
     'korean/psy/all-night-long' => 'Кириллизация песни PSY — All Night Long',
     'korean/psy/as-time-goes-by' => 'Кириллизация песни As Time Goes By',
     'korean/psy/bird' => 'Кириллизация песни PSY — Bird',

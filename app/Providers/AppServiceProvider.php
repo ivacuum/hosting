@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Testing\Assert;
 use Illuminate\Testing\TestResponse;
+use Illuminate\View\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -69,6 +70,10 @@ class AppServiceProvider extends ServiceProvider
         App\ChatMessage::observe(App\Observers\ChatMessageObserver::class);
 
         $this->testMacros();
+
+        \Livewire::listen('component.rendered', function ($component, View $view) {
+            $view->with('locale', request()->server->get('LARAVEL_LOCALE') ?: config('app.locale'));
+        });
     }
 
     private function testMacros()
