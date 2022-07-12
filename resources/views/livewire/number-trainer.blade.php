@@ -119,7 +119,7 @@
         </div>
         <div>
           <div class="h5 mb-0">@lang('Интервал возможных чисел')</div>
-          <div class="text-gray-500 text-sm mb-2">@lang('От :min до :max.', ['min' => 1, 'max' => ViewHelper::number($this->maximum)])</div>
+          <div class="text-gray-500 text-sm mb-2">@lang('От :min до :max.', ['min' => 0, 'max' => ViewHelper::number($this->maximum)])</div>
           <div class="flex gap-1">
             <button
               class="btn btn-default disabled:opacity-50"

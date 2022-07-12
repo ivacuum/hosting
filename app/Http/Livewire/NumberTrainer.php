@@ -124,7 +124,7 @@ class NumberTrainer extends Component
 
     private function pickRandomNumber()
     {
-        $this->number = random_int(1, 10 ** $this->pickRange());
+        $this->number = random_int(0, 10 ** $this->pickRange());
 
         if ($this->number === $this->exclude) {
             $this->pickRandomNumber();
