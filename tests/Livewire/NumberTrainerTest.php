@@ -8,17 +8,17 @@ class NumberTrainerTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testDetermineLocale()
-    {
-        \Livewire::withQueryParams(['lang' => 'de'])
-            ->test(NumberTrainer::class)
-            ->assertSet('locale', 'de');
-    }
+    // public function testDetermineLocale()
+    // {
+    //     \Livewire::withQueryParams(['lang' => 'de'])
+    //         ->test(NumberTrainer::class)
+    //         ->assertSet('lang', 'de');
+    // }
 
     public function testEnglish()
     {
         \Livewire::test(NumberTrainer::class)
-            ->set('locale', 'en')
+            ->set('lang', 'en')
             ->set('number', 55)
             ->assertSet('spellOut', 'fifty-five')
             ->set('answer', 55)
@@ -29,7 +29,7 @@ class NumberTrainerTest extends TestCase
     public function testGuessingNumbers()
     {
         \Livewire::test(NumberTrainer::class)
-            ->set('locale', 'en')
+            ->set('lang', 'en')
             ->set('number', 2)
             ->set('answer', 2)
             ->call('check')
@@ -39,7 +39,7 @@ class NumberTrainerTest extends TestCase
     public function testGuessingSpellOut()
     {
         \Livewire::test(NumberTrainer::class)
-            ->set('locale', 'en')
+            ->set('lang', 'en')
             ->set('guessingSpellOut', true)
             ->set('number', 2)
             ->set('answer', 'two')
@@ -50,7 +50,7 @@ class NumberTrainerTest extends TestCase
     public function testKoreanAsTranslit()
     {
         \Livewire::test(NumberTrainer::class)
-            ->set('locale', 'ko')
+            ->set('lang', 'ko')
             ->set('guessingSpellOut', true)
             ->set('number', 3)
             ->assertSet('spellOut', '삼')
@@ -62,7 +62,7 @@ class NumberTrainerTest extends TestCase
     public function testRightAnswerGetsCleared()
     {
         \Livewire::test(NumberTrainer::class)
-            ->set('locale', 'en')
+            ->set('lang', 'en')
             ->set('number', 1)
             ->set('answer', 1)
             ->call('check')
@@ -93,7 +93,7 @@ class NumberTrainerTest extends TestCase
     public function testSoftHyphensGetStripped()
     {
         \Livewire::test(NumberTrainer::class)
-            ->set('locale', 'de')
+            ->set('lang', 'de')
             ->set('guessingSpellOut', true)
             ->set('number', 63)
             ->assertSet('spellOut', 'drei­und­sechzig') // soft hyphens here
@@ -105,7 +105,7 @@ class NumberTrainerTest extends TestCase
     public function testWrongAnswer()
     {
         \Livewire::test(NumberTrainer::class)
-            ->set('locale', 'ru')
+            ->set('lang', 'ru')
             ->set('number', 3)
             ->assertSet('spellOut', 'три')
             ->set('answer', 4)
