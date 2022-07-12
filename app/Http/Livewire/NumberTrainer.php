@@ -19,16 +19,17 @@ class NumberTrainer extends Component
     public bool $sayOutLoud = false;
     public bool $guessingSpellOut = false;
     public array $locales = [];
-    public string $locale = 'en';
+    public string $lang = 'en';
     public string $answer = '';
 
-    protected $queryString = [
-        'locale' => ['except' => 'en'],
-    ];
+    // Неправильно преобразует ссылки английской версии сайта
+    // protected $queryString = [
+    //     'lang' => ['except' => 'en'],
+    // ];
 
     public function acceptedAnswers(): array
     {
-        $formatter = new \NumberFormatter($this->locale, \NumberFormatter::SPELLOUT);
+        $formatter = new \NumberFormatter($this->lang, \NumberFormatter::SPELLOUT);
 
         return $this->guessingSpellOut
             ? array_unique([
@@ -67,7 +68,7 @@ class NumberTrainer extends Component
 
     public function getSpellOutProperty()
     {
-        $formatter = new \NumberFormatter($this->locale, \NumberFormatter::SPELLOUT);
+        $formatter = new \NumberFormatter($this->lang, \NumberFormatter::SPELLOUT);
 
         return $formatter->format($this->number);
     }
@@ -85,8 +86,8 @@ class NumberTrainer extends Component
             ->sort()
             ->all();
 
-        $this->locale = in_array($request->input('locale'), array_keys($this->locales))
-            ? $request->input('locale')
+        $this->lang = in_array($request->input('lang'), array_keys($this->locales))
+            ? $request->input('lang')
             : 'en';
 
         $this->pickRandomNumber();
@@ -102,10 +103,10 @@ class NumberTrainer extends Component
         $this->emit('answer.focus');
     }
 
-    public function updatedLocale()
+    public function updatedLang()
     {
         $this->next();
-        $this->emit('locale.updated', $this->locale);
+        $this->emit('lang.updated', $this->lang);
     }
 
     public function updatedSayOutLoud()

@@ -10,7 +10,7 @@ class NumberTrainerTest extends TestCase
 
     public function testDetermineLocale()
     {
-        \Livewire::withQueryParams(['locale' => 'de'])
+        \Livewire::withQueryParams(['lang' => 'de'])
             ->test(NumberTrainer::class)
             ->assertSet('locale', 'de');
     }

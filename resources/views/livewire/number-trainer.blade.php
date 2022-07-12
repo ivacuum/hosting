@@ -93,21 +93,33 @@
       <div class="grid gap-6 px-4 py-3">
         <div>
           <div class="h5 mb-0">@lang('Язык')</div>
-          <div class="text-gray-500 text-sm mb-2">Будут загаданы числа этого языка.</div>
-          <select class="form-input" wire:model="locale">
-            @foreach($this->locales as $locale => $name)
-              <option value="{{ $locale }}">{{ $name }}</option>
+          <div class="text-gray-500 text-sm mb-2">
+            @ru
+              Будут загаданы числа этого языка.
+            @en
+              You will practice the numbers of this language.
+            @endru
+          </div>
+          <select class="form-input" wire:model="lang">
+            @foreach($this->locales as $lang => $name)
+              <option value="{{ $lang }}">{{ $name }}</option>
             @endforeach
           </select>
         </div>
         <div>
           <div class="h5 mb-0">@lang('Голос')</div>
-          <div class="text-gray-500 text-sm mb-2">Ваше устройство умеет читать на выбранном языке перечисленными голосами.</div>
-          <select class="form-input js-voices" data-locale="{{ $this->locale }}" wire:ignore></select>
+          <div class="text-gray-500 text-sm mb-2">
+            @ru
+              Ваше устройство умеет читать на выбранном языке перечисленными голосами.
+            @en
+              Your device can pronounce numbers in the selected language with the voices below.
+            @endru
+          </div>
+          <select class="form-input js-voices" data-locale="{{ $this->lang }}" wire:ignore></select>
         </div>
         <div>
           <div class="h5 mb-0">@lang('Интервал возможных чисел')</div>
-          <div class="text-gray-500 text-sm mb-2">От 1 до {{ ViewHelper::number($this->maximum) }}.</div>
+          <div class="text-gray-500 text-sm mb-2">@lang('От :min до :max.', ['min' => 1, 'max' => ViewHelper::number($this->maximum)])</div>
           <div class="flex gap-1">
             <button
               class="btn btn-default disabled:opacity-50"
@@ -125,21 +137,35 @@
         </div>
         <div>
           <div class="h5 mb-0">@lang('Вид ответов')</div>
-          <div class="text-gray-500 text-sm mb-2">Можно научиться как распознавать числа, так писать их словами.</div>
+          <div class="text-gray-500 text-sm mb-2">
+            @ru
+              Можно научиться как распознавать числа, так писать их словами.
+            @en
+              You can learn both how to recognize numbers and how to spell them.
+            @endru
+          </div>
           <div class="flex gap-4 items-center">
             <label class="flex gap-2 items-center">
               <input class="border-gray-300" type="radio" wire:model="guessingSpellOut" value="0">
-              @lang('Сами числа')
+              @ru
+                Сами числа
+              @en
+                Numbers
+              @endru
             </label>
             <label class="flex gap-2 items-center">
               <input class="border-gray-300" type="radio" wire:model="guessingSpellOut" value="1">
-              @lang('Написание чисел')
+              @ru
+                Написание чисел
+              @en
+                Spelling
+              @endru
             </label>
           </div>
         </div>
         <div>
           <div class="h5 mb-0">@lang('Вид заданий')</div>
-          <div class="text-gray-500 text-sm mb-2">Вам доступна возможность ввода чисел на слух.</div>
+          {{--<div class="text-gray-500 text-sm mb-2">Вам доступна возможность ввода чисел на слух.</div>--}}
           <div class="flex gap-4 items-center">
             <label class="flex gap-2 items-center">
               <input class="border-gray-300" type="radio" wire:model="sayOutLoud" value="0">
@@ -217,7 +243,7 @@
         focusOnAnswer()
       })
 
-      window.livewire.on('locale.updated', (locale) => {
+      window.livewire.on('lang.updated', (locale) => {
         populateVoiceList(locale)
       })
 
