@@ -112,6 +112,10 @@ class NumberTrainerTest extends TestCase
             ->call('check')
             ->assertSet('answer', 4)
             ->assertSet('reveal', true)
+            ->assertSet('revealed', 1)
+            ->call('check')
+            ->assertSet('answer', '')
+            ->assertSet('reveal', false)
             ->assertSet('revealed', 1);
     }
 }
