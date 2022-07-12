@@ -3,8 +3,8 @@
 @section('content')
 <div class="h2 mb-6">@ru Стикеры @en Stickers @endru</div>
 
-<div class="flex justify-between md:justify-start items-center mb-3">
-  <div class="h3 mr-2">
+<div class="flex gap-2 justify-between md:justify-start items-center mb-3">
+  <div class="h3">
     @ru Акула @en It's a Shark @endru
   </div>
   <a class="btn btn-success" href="tg://addstickers?set=MrShark">@ru Добавить в Телеграм @en Add to Telegram @endru</a>
@@ -15,8 +15,8 @@
   @endforeach
 </div>
 
-<div class="flex justify-between md:justify-start items-center mb-3 mt-12">
-  <div class="h3 mr-2">
+<div class="flex gap-2 justify-between md:justify-start items-center mb-3 mt-12">
+  <div class="h3">
     @ru Ленивая панда @en Lazy Panda @endru
   </div>
   <a class="btn btn-success" href="tg://addstickers?set=LazyPanda">@ru Добавить в Телеграм @en Add to Telegram @endru</a>
@@ -27,8 +27,8 @@
   @endforeach
 </div>
 
-<div class="flex justify-between md:justify-start items-center mb-3 mt-12">
-  <div class="h3 mr-2">
+<div class="flex gap-2 justify-between md:justify-start items-center mb-3 mt-12">
+  <div class="h3">
     @ru Динозавры @en Dinosaurs @endru
   </div>
   <a class="btn btn-success" href="tg://addstickers?set=Mesozoic">@ru Добавить в Телеграм @en Add to Telegram @endru</a>
@@ -39,8 +39,8 @@
   @endforeach
 </div>
 
-<div class="flex justify-between md:justify-start items-center mb-3 mt-12">
-  <div class="h3 mr-2">
+<div class="flex gap-2 justify-between md:justify-start items-center mb-3 mt-12">
+  <div class="h3">
     @ru Чайка Джо @en Joe the Seagull @endru
   </div>
   <a class="btn btn-success" href="tg://addstickers?set=joe_the_seagull_ru">@ru Добавить в Телеграм @en Add to Telegram @endru</a>
@@ -51,8 +51,8 @@
   @endforeach
 </div>
 
-<div class="flex justify-between md:justify-start items-center mb-3 mt-12">
-  <div class="h3 mr-2">
+<div class="flex gap-2 justify-between md:justify-start items-center mb-3 mt-12">
+  <div class="h3">
     @ru Змея Снэки @en Sneaky Snakie @endru
   </div>
   <a class="btn btn-success" href="tg://addstickers?set=SneakySnakie">@ru Добавить в Телеграм @en Add to Telegram @endru</a>

@@ -14,9 +14,9 @@
     <div class="font-bold">@lang('Магнеты')</div>
     <div class="mb-4">
       <input type="hidden" name="torrent_short_title" value="0">
-      <label class="flex items-center">
+      <label class="flex gap-2 items-center">
         <input
-          class="border-gray-300 rounded mr-2"
+          class="border-gray-300 rounded"
           type="checkbox"
           name="torrent_short_title"
           value="1"
@@ -33,9 +33,9 @@
     <div class="mb-4">
       <div class="font-bold">@lang('Язык уведомлений')</div>
       @foreach (Arr::sort(array_keys(config('cfg.locales'))) as $loc)
-        <label class="flex items-center">
+        <label class="flex gap-2 items-center">
           <input
-            class="border-gray-300 mr-2"
+            class="border-gray-300"
             type="radio"
             name="locale"
             value="{{ $loc }}"
@@ -49,9 +49,9 @@
 
     <div class="font-bold">@lang('Уведомления на почту о новых публикациях')</div>
     <input type="hidden" name="notify_gigs" value="{{ App\Domain\NotificationDeliveryMethod::Disabled->value }}">
-    <label class="flex items-center">
+    <label class="flex gap-2 items-center">
       <input
-        class="border-gray-300 rounded mr-2"
+        class="border-gray-300 rounded"
         type="checkbox"
         name="notify_gigs"
         value="{{ App\Domain\NotificationDeliveryMethod::Mail->value }}"
@@ -61,9 +61,9 @@
     </label>
 
     <input type="hidden" name="notify_news" value="{{ App\Domain\NotificationDeliveryMethod::Disabled->value }}">
-    <label class="flex items-center">
+    <label class="flex gap-2 items-center">
       <input
-        class="border-gray-300 rounded mr-2"
+        class="border-gray-300 rounded"
         type="checkbox"
         name="notify_news"
         value="{{ App\Domain\NotificationDeliveryMethod::Mail->value }}"
@@ -74,9 +74,9 @@
 
     <div class="mb-4">
       <input type="hidden" name="notify_trips" value="{{ App\Domain\NotificationDeliveryMethod::Disabled->value }}">
-      <label class="flex items-center">
+      <label class="flex gap-2 items-center">
         <input
-          class="border-gray-300 rounded mr-2"
+          class="border-gray-300 rounded"
           type="checkbox"
           name="notify_trips"
           value="{{ App\Domain\NotificationDeliveryMethod::Mail->value }}"

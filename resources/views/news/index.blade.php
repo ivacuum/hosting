@@ -7,10 +7,10 @@
 @endpush
 
 @section('content')
-<div class="flex flex-wrap items-center antialiased mb-6">
-  <h1 class="h2 mb-1 mr-4">@lang('Новости')</h1>
+<div class="flex flex-wrap gap-4 items-center antialiased mb-6">
+  <h1 class="h2 mb-1">@lang('Новости')</h1>
   @if (Auth::check())
-    <form class="mr-4" action="@lng/subscriptions" method="post">
+    <form action="@lng/subscriptions" method="post">
       {{ ViewHelper::inputHiddenMail() }}
       <button class="btn btn-default text-sm py-1 small-caps svg-flex svg-label">
         @svg (mail)
@@ -22,7 +22,7 @@
     </form>
   @else
     <a
-      class="btn btn-default text-sm py-1 svg-flex svg-label small-caps mr-4"
+      class="btn btn-default text-sm py-1 svg-flex svg-label small-caps"
       href="@lng/subscriptions?news=1"
     >
       @svg (mail)

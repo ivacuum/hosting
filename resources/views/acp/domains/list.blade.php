@@ -58,8 +58,8 @@
 </table>
 
 <div class="my-4">
-  <form class="flex flex-wrap js-batch-form" data-url="/acp/domains/batch" data-selector=".domains-checkbox">
-    <div class="mr-1">
+  <form class="flex flex-wrap gap-1 js-batch-form" data-url="/acp/domains/batch" data-selector=".domains-checkbox">
+    <div>
       <select required class="form-input" name="action">
         <option value="">Выберите действие...</option>
         @if ($filter == 'trashed')
@@ -76,21 +76,21 @@
   </form>
 </div>
 
-<div>
-  <span class="whitespace-nowrap mr-2">
-    <span class="bg-grey-600 text-white p-1 text-xs font-bold rounded mr-1">...</span>
+<div class="flex flex-wrap gap-4">
+  <span class="flex gap-2 items-center">
+    <span class="inline-flex justify-center items-center w-5 h-5 bg-grey-600 text-white text-xs font-bold rounded">...</span>
     есть заметки
   </span>
-  <span class="whitespace-nowrap mr-2">
-    <span class="bg-teal-600 text-white py-1 px-2 text-xs font-bold rounded mr-1">?</span>
+  <span class="flex gap-2 items-center">
+    <span class="inline-flex justify-center items-center w-5 h-5 bg-teal-600 text-white py-1 px-2 text-xs font-bold rounded">?</span>
     не в нашей панели
   </span>
-  <span class="whitespace-nowrap mr-2">
-    <span class="bg-red-600 text-white py-1 px-2 text-xs font-bold rounded mr-1">$</span>
+  <span class="flex gap-2 items-center">
+    <span class="inline-flex justify-center items-center w-5 h-5 bg-red-600 text-white py-1 px-2 text-xs font-bold rounded">$</span>
     просрочена оплата
   </span>
-  <span class="whitespace-nowrap mr-2">
-    <span class="bg-orange-400 py-1 px-2 text-xs font-bold rounded mr-1">$</span>
+  <span class="flex gap-2 items-center">
+    <span class="inline-flex justify-center items-center w-5 h-5 bg-orange-400 py-1 px-2 text-xs font-bold rounded">$</span>
     подходит срок оплаты
   </span>
 </div>

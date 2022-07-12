@@ -130,23 +130,23 @@
 <footer class="footer bg-[#fafafa] dark:bg-slate-800 border-t border-[#dee2e6] dark:border-slate-700 mt-6 py-3 text-2sm">
   <div class="container">
     @section('footer')
-      <nav class="flex flex-wrap">
+      <nav class="flex flex-wrap gap-3">
         @section('footer_copyright')
-          <div class="mr-3">&copy; {{ date('Y') }} vacuum</div>
+          <div>&copy; {{ date('Y') }} vacuum</div>
         @show
         @section('i18n')
           @if (empty($noLanguageSelector))
-            <div class="mr-3">
+            <div>
               @ru
-                <a class="flex flex-wrap items-center whitespace-nowrap" href="{{ url("en/{$requestUri}") }}" lang="en">
-                  <div class="mr-1">
+                <a class="flex flex-wrap gap-1 items-center whitespace-nowrap" href="{{ url("en/{$requestUri}") }}" lang="en">
+                  <div>
                     @svg (flag/en)
                   </div>
                   <div>In English</div>
                 </a>
               @en
-                <a class="flex flex-wrap items-center whitespace-nowrap" href="{{ url($requestUri) }}" lang="ru">
-                  <div class="mr-1">
+                <a class="flex flex-wrap gap-1 items-center whitespace-nowrap" href="{{ url($requestUri) }}" lang="ru">
+                  <div>
                     @svg (flag/ru)
                   </div>
                   <div>По-русски</div>
@@ -154,7 +154,7 @@
               @endru
             </div>
           @endif
-          <div class="mr-3">
+          <div>
             <a href="@lng/contact">
               @lang('Обратная связь')
             </a>

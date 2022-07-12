@@ -5,9 +5,9 @@
 @if (count($timeline) > 1)
   <div class="overflow-hidden mb-4">
     <div class="whitespace-nowrap pb-8 -mb-8 overflow-x-auto">
-      <div class="text-sm flex">
+      <div class="text-sm flex gap-5">
         @foreach ($timeline as $year => $rows)
-          <div class="flex flex-col mr-5 {{ $loop->last ? 'mr-0' : '' }}">
+          <div class="flex flex-col">
             <div class="font-bold">{{ $year }}</div>
             @foreach ($rows as $row)
               <div class="text-xs">

@@ -2,8 +2,8 @@
 
 @section('content')
 <section class="pt-0">
-  <div class="flex flex-wrap items-center">
-    <h1 class="h2 mr-4">
+  <div class="flex flex-wrap gap-4 items-center">
+    <h1 class="h2">
       @lang('Поездки')
     </h1>
     @if ($traveler->id == Auth::id())

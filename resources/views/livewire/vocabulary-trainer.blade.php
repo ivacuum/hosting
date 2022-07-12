@@ -115,22 +115,22 @@
       <div class="px-5 py-3 text-sm">
         <div class="h5 mb-0">@lang('Азбука')</div>
         <div class="text-gray-500 mb-2">@lang('japanese.settings.syllabary_help')</div>
-        <div class="flex items-center gap-4">
-          <label class="flex items-center">
-            <input class="border-gray-300 mr-2" type="radio" wire:model="hiragana" value="1">
+        <div class="flex gap-4 items-center">
+          <label class="flex gap-2 items-center">
+            <input class="border-gray-300" type="radio" wire:model="hiragana" value="1">
             @lang('Хирагана')
           </label>
-          <label class="flex items-center">
-            <input class="border-gray-300 mr-2" type="radio" wire:model="hiragana" value="0">
+          <label class="flex gap-2 items-center">
+            <input class="border-gray-300" type="radio" wire:model="hiragana" value="0">
             @lang('Катакана')
           </label>
         </div>
 
         <div class="h5 mt-6 mb-0">@lang('Уровни') {{ $this->level * 10 - 9 }}–{{ $this->level * 10 }}</div>
         <div class="text-gray-500 mb-2">@lang('japanese.settings.levels_help')</div>
-        <div class="flex">
+        <div class="flex gap-1">
           <button
-            class="btn btn-default mr-1 disabled:opacity-50"
+            class="btn btn-default disabled:opacity-50"
             type="button"
             wire:click="decreaseLevel"
             {{ $this->level < 2 ? 'disabled' : '' }}

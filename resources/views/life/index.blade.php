@@ -7,10 +7,10 @@
 @section('content')
 <div class="grid md:grid-cols-2 gap-8">
   <section class="pt-0">
-    <div class="flex flex-wrap items-center mb-1">
-      <h1 class="text-3xl tracking-tight mb-1 mr-4">@lang('Поездки')</h1>
+    <div class="flex flex-wrap gap-4 items-center mb-1">
+      <h1 class="text-3xl tracking-tight mb-1">@lang('Поездки')</h1>
       @if (Auth::check())
-        <form class="mr-4" action="@lng/subscriptions" method="post">
+        <form action="@lng/subscriptions" method="post">
           {{ ViewHelper::inputHiddenMail() }}
           <button class="btn btn-default leading-none text-sm small-caps svg-flex svg-label">
             @svg (mail)
@@ -21,7 +21,7 @@
           @csrf
         </form>
       @else
-        <a class="btn btn-default leading-none text-sm svg-flex svg-label small-caps mr-4" href="@lng/subscriptions?trips=1">
+        <a class="btn btn-default leading-none text-sm svg-flex svg-label small-caps" href="@lng/subscriptions?trips=1">
           @svg (mail)
           @lang('mail.subscribe')
         </a>

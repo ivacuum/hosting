@@ -2,8 +2,8 @@
 
 <div>
   @if ($this->avatar)
-    <div class="flex items-center mb-4">
-      <img class="w-24 h-24 mr-6 rounded-full" src="{{ $this->avatar }}" alt="">
+    <div class="flex gap-6 items-center mb-4">
+      <img class="w-24 h-24 rounded-full" src="{{ $this->avatar }}" alt="">
       <div>
         <button
           class="btn btn-default"

@@ -3,8 +3,8 @@
 @extends('acp.list')
 
 @section('toolbar')
-<div class="flex flex-wrap mb-2">
-  <div class="flex mb-2 mr-2">
+<div class="flex flex-wrap gap-2 mb-2">
+  <div class="flex">
     <a class="btn btn-default rounded-r-none {{ !$year ? 'active' : '' }}" href="{{ UrlHelper::filter(['year' => null]) }}">Все</a>
     @foreach (range(date('Y'), 2009) as $value)
       <a
@@ -13,7 +13,7 @@
       >{{ substr($value, 2) }}</a>
     @endforeach
   </div>
-  <div class="flex mb-2">
+  <div class="flex">
     <a class="btn btn-default rounded-r-none {{ !$touch ? 'active' : '' }}" href="{{ UrlHelper::filter(['touch' => null]) }}">Все</a>
     @foreach (range(1, date('Y') - 2009) as $value)
       <a

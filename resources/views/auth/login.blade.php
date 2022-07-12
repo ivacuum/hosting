@@ -5,8 +5,8 @@
   <div class="text-center mb-4">
     <h3>@lang('auth.signin_title')</h3>
 
-    <div class="flex justify-center my-4">
-      <div class="mr-2">
+    <div class="flex gap-2 justify-center my-4">
+      <div>
         <a
           class="btn bg-vk-600 inline-flex justify-center items-center w-12 h-12 text-xl rounded-full text-white hover:bg-vk-700 hover:text-white"
           href="@lng/auth/vk"
@@ -15,7 +15,7 @@
         </a>
         <div class="mt-1 text-xs text-muted">@lang('auth.vk')</div>
       </div>
-      <div class="mr-2">
+      <div>
         <a
           class="btn bg-facebook-600 inline-flex justify-center items-center w-12 h-12 text-xl rounded-full text-white hover:bg-facebook-700 hover:text-white"
           href="@lng/auth/facebook"
@@ -87,8 +87,8 @@
 
     <div class="flex items-center justify-between">
       <div>
-        <label class="flex items-center">
-          <input class="border-gray-300 mr-2" tabindex="3" type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}>
+        <label class="flex gap-2 items-center">
+          <input class="border-gray-300" tabindex="3" type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}>
           @lang('auth.dont_remember')
         </label>
       </div>

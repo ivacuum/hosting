@@ -51,20 +51,20 @@
       Number of countries and cities visited
     @endru
   </h3>
-  <div class="flex">
-    <div class="mr-6">
+  <div class="flex gap-6">
+    <div>
       <div class="font-bold text-right">@ru Год @en Year @endru</div>
       @foreach ($daysInTrips as $year => $days)
         <div>{{ $year }}</div>
       @endforeach
     </div>
-    <div class="mr-6">
+    <div>
       <div class="font-bold text-right">@ru Дни @en Days @endru</div>
       @foreach ($daysInTrips as $year => $days)
         <div class="text-right">{{ $days }}</div>
       @endforeach
     </div>
-    <div class="mr-6">
+    <div>
       <div class="font-bold text-right">@ru Города @en Cities @endru</div>
       @foreach ($daysInTrips as $year => $null)
         <div class="text-right">

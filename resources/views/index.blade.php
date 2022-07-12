@@ -14,8 +14,8 @@
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-6 mb-12 md:mb-6">
   @ru
     <div class="hidden md:block">
-      <a class="flex items-center mb-2 link-parent" href="@lng/magnets">
-        <div class="leading-none text-3xl mr-2">🧲</div>
+      <a class="flex gap-2 items-center mb-2 link-parent" href="@lng/magnets">
+        <div class="leading-none text-3xl">🧲</div>
         <h2 class="text-2xl mb-0"><span class="link">@lang('Магнеты')</span></h2>
       </a>
       <div>Сервис для скачивания файлов у многочисленных пользователей сети интернет без регистрации и рейтинга.</div>
@@ -23,8 +23,8 @@
     </div>
   @endru
   <div>
-    <a class="flex items-center mb-2 link-parent" href="@lng/life">
-      <div class="leading-none text-3xl mr-2">📝</div>
+    <a class="flex gap-2 items-center mb-2 link-parent" href="@lng/life">
+      <div class="leading-none text-3xl">📝</div>
       <h2 class="text-2xl mb-0"><span class="link">@lang('Заметки')</span></h2>
     </a>
     @ru
@@ -85,8 +85,8 @@
     </div>
   @endru
   <div>
-    <a class="flex items-center mb-2 link-parent" href="@lng/promocodes-coupons">
-      <div class="leading-none text-3xl mr-2">🎁</div>
+    <a class="flex gap-2 items-center mb-2 link-parent" href="@lng/promocodes-coupons">
+      <div class="leading-none text-3xl">🎁</div>
       <h2 class="text-2xl mb-0"><span class="link">@lang('Промокоды и купоны')</span></h2>
     </a>
     @ru
@@ -97,8 +97,8 @@
     @endru
   </div>
   <div>
-    <a class="flex items-center mb-2 link-parent" href="@lng/japanese">
-      <div class="leading-none text-3xl mr-2">🇯🇵</div>
+    <a class="flex gap-2 items-center mb-2 link-parent" href="@lng/japanese">
+      <div class="leading-none text-3xl">🇯🇵</div>
       <h2 class="text-2xl mb-0"><span class="link">@lang('Японский язык')</span></h2>
     </a>
     @ru
@@ -109,8 +109,8 @@
   </div>
   @ru
     <div>
-      <a class="flex items-center mb-2 link-parent" href="@lng/korean">
-        <div class="leading-none text-3xl mr-2">🇰🇷</div>
+      <a class="flex gap-2 items-center mb-2 link-parent" href="@lng/korean">
+        <div class="leading-none text-3xl">🇰🇷</div>
         <h2 class="text-2xl mb-0"><span class="link">@lang('Корейский язык')</span></h2>
       </a>
       @ru
@@ -142,9 +142,9 @@
           >
         </div>
         <div class="absolute bottom-0 text-white trip-cover-info p-4 w-full">
-          <div class="flex flex-wrap items-center text-lg">
-            <img class="flag-24 mr-1 svg-shadow" src="{{ $trip->city->country->flagUrl() }}" alt="">
-            <span class="leading-none mr-1">{{ $trip->title }}</span>
+          <div class="flex flex-wrap gap-1 items-center text-lg">
+            <img class="flag-24 svg-shadow" src="{{ $trip->city->country->flagUrl() }}" alt="">
+            <span class="leading-none">{{ $trip->title }}</span>
             <span class="leading-tight self-end text-grey-300 text-xs">{{ $trip->timelinePeriodWithYear() }}</span>
           </div>
           @if ($trip->metaDescription())

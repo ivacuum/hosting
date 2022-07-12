@@ -13,9 +13,9 @@
     <label class="font-bold">@lang('acp.tags.index')</label>
     <div class="column-width-48">
       @foreach (App\Tag::orderBy(App\Tag::titleField())->get() as $tag)
-        <label class="flex items-center">
+        <label class="flex gap-2 items-center">
           <input
-            class="border-gray-300 rounded mr-2"
+            class="border-gray-300 rounded"
             type="checkbox"
             wire:model="tags"
             value="{{ $tag->id }}"

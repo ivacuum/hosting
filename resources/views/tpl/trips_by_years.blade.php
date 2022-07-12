@@ -3,9 +3,9 @@
 ?>
 
 @foreach ($modelsByYears as $year => $models)
-  <div class="flex {{ !$loop->first ? 'mt-6' : '' }}">
+  <div class="flex gap-3 {{ !$loop->first ? 'mt-6' : '' }}">
     <div>
-      <div class="sticky top-2 font-bold mr-3">{{ $year }}</div>
+      <div class="sticky top-2 font-bold">{{ $year }}</div>
     </div>
     <div class="w-full">
       @foreach ($models as $model)

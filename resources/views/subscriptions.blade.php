@@ -22,9 +22,9 @@
     </div>
 
     <input type="hidden" name="gigs" value="{{ App\Domain\NotificationDeliveryMethod::Disabled->value }}">
-    <label class="flex items-center">
+    <label class="flex gap-2 items-center">
       <input
-        class="border-gray-300 mr-2"
+        class="border-gray-300 rounded"
         type="checkbox"
         name="gigs"
         value="{{ App\Domain\NotificationDeliveryMethod::Mail->value }}"
@@ -34,9 +34,9 @@
     </label>
 
     <input type="hidden" name="news" value="{{ App\Domain\NotificationDeliveryMethod::Disabled->value }}">
-    <label class="flex items-center">
+    <label class="flex gap-2 items-center">
       <input
-        class="border-gray-300 mr-2"
+        class="border-gray-300 rounded"
         type="checkbox"
         name="news"
         value="{{ App\Domain\NotificationDeliveryMethod::Mail->value }}"
@@ -47,9 +47,9 @@
 
     <div class="mb-4">
       <input type="hidden" name="trips" value="{{ App\Domain\NotificationDeliveryMethod::Disabled->value }}">
-      <label class="flex items-center">
+      <label class="flex gap-2 items-center">
         <input
-          class="border-gray-300 mr-2"
+          class="border-gray-300 rounded"
           type="checkbox"
           name="trips"
           value="{{ App\Domain\NotificationDeliveryMethod::Mail->value }}"
@@ -78,16 +78,16 @@
       As an alternative you can subscribe to RSS feeds.
     @endru
   </div>
-  <div class="flex items-center flex-wrap">
+  <div class="flex flex-wrap gap-4 items-center">
     <a
-      class="text-lg svg-flex svg-label lowercase small-caps mr-4"
+      class="text-lg svg-flex svg-label lowercase small-caps"
       href="@lng/life/gigs/rss"
     >
       @svg (rss-square)
       @lang('Концерты')
     </a>
     <a
-      class="text-lg svg-flex svg-label lowercase small-caps mr-4"
+      class="text-lg svg-flex svg-label lowercase small-caps"
       href="@lng/news/rss"
     >
       @svg (rss-square)

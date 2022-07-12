@@ -9,10 +9,10 @@
 @endpush
 
 @section('content')
-<div class="flex flex-wrap items-center mb-2">
-  <h1 class="h2 mb-1 mr-4">@lang('Посещенные и ожидаемые концерты')</h1>
+<div class="flex flex-wrap gap-4 items-center mb-2">
+  <h1 class="h2 mb-1">@lang('Посещенные и ожидаемые концерты')</h1>
   @if (Auth::check())
-    <form class="mr-4" action="@lng/subscriptions" method="post">
+    <form action="@lng/subscriptions" method="post">
       {{ ViewHelper::inputHiddenMail() }}
       <button class="btn btn-default text-sm py-1 small-caps svg-flex svg-label">
         @svg (mail)
@@ -23,7 +23,7 @@
       @csrf
     </form>
   @else
-    <a class="btn btn-default text-sm py-1 svg-flex svg-label small-caps mr-4" href="@lng/subscriptions?gigs=1">
+    <a class="btn btn-default text-sm py-1 svg-flex svg-label small-caps" href="@lng/subscriptions?gigs=1">
       @svg (mail)
       @lang('mail.subscribe')
     </a>
@@ -40,9 +40,9 @@
 @endru
 
 @foreach ($gigs as $year => $rows)
-  <div class="flex {{ !$loop->last ? 'mb-2' : '' }}">
+  <div class="flex gap-3 {{ !$loop->last ? 'mb-2' : '' }}">
     <div>
-      <div class="sticky top-2 font-bold mr-3">{{ $year }}</div>
+      <div class="sticky top-2 font-bold">{{ $year }}</div>
     </div>
     <div class="w-full">
     @foreach ($rows as $gig)
