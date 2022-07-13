@@ -22,10 +22,9 @@ class NumberTrainer extends Component
     public string $lang = 'en';
     public string $answer = '';
 
-    // Неправильно преобразует ссылки английской версии сайта
-    // protected $queryString = [
-    //     'lang' => ['except' => 'en'],
-    // ];
+    protected $queryString = [
+        'lang' => ['except' => 'en'],
+    ];
 
     public function acceptedAnswers(): array
     {
