@@ -187,7 +187,9 @@
     <p>Набор доступных голосов тренажеру сообщает ваше устройство. Это значит, что на том же андроиде можно сходить в настройки голосового ввода и скачать дополнительные голоса, чтобы они стали доступны для произношения. В браузере Microsoft Edge представлен классный и качественный набор онлайн-голосов, поэтому он очень рекомендуется для пробы. Если голосов для выбранного языка на вашем устройстве не нашлось, то функция произношения будет недоступна, а ввод на слух станет чистым гаданием.</p>
     <p>Для ввода ответа текстом большинство языков потребует местную раскладку клавиатуры. То есть, чешская цифра <span class="font-bold">čtyři (4)</span> требует вводить именно <span class="font-bold">č</span> и <span class="font-bold">ř</span>, а немецкая <span class="font-bold">fünf (5)</span> — именно <span class="font-bold">ü</span>. Тренажер принимает ответы транслитом, но транслит по международным правилам не всегда такой, каким вы можете его ожидать, поэтому рекомендуется пользоваться именно местной клавиатурой — так вы запомните правильное написание.</p>
 
-    <div class="h4">Поддерживаемые вашим устройством голоса</div>
+    <div class="h4 mt-12">Поддерживаемые вашим устройством голоса</div>
+    <p>Этот раздел поможет узнать числа каких языков вы можете потренировать на слух.</p>
+    <p wire:ignore><button class="btn btn-default js-print-supported-voices">Какие голоса есть в моем устройстве?</button></p>
     <ul class="js-voice-list" wire:ignore></ul>
   </div>
   <script>
@@ -195,34 +197,40 @@
       const answer = document.querySelector('.js-answer')
       const voiceList = document.querySelector('.js-voice-list')
       const voiceSelect = document.querySelector('.js-voices')
+      const printSupportedVoices = document.querySelector('.js-print-supported-voices')
       let voices = []
 
       voiceSelect.addEventListener('input', () => {
         sayOutLoud()
       })
 
+      printSupportedVoices.addEventListener('click', () => {
+        voiceList.textContent = ''
+
+        voices.forEach((voice) => {
+          let el = document.createElement('li')
+          el.textContent = `${voice.name}: ${voice.lang}`
+
+          voiceList.appendChild(el)
+        })
+
+        printSupportedVoices.remove()
+      })
+
       function populateVoiceList(locale) {
         voices = speechSynthesis.getVoices()
-        voiceList.textContent = ''
         voiceSelect.textContent = ''
 
-        for (let i = 0, length = voices.length; i < length; i++) {
-          let listElement = document.createElement('li')
-          listElement.textContent = `${voices[i].name}: ${voices[i].lang}`
+        voices
+          .filter((voice) => voice.lang.replace('_', '-').startsWith(`${locale}-`))
+          .forEach((voice) => {
+            let option = document.createElement('option')
 
-          voiceList.appendChild(listElement)
+            option.value = voice.voiceURI
+            option.textContent = `${voice.name} (${voice.lang})`
 
-          if (!voices[i].lang.startsWith(`${locale}-`) && !voices[i].lang.startsWith(`${locale}_`)) {
-            continue
-          }
-
-          let option = document.createElement('option')
-
-          option.textContent = `${voices[i].name} (${voices[i].lang})`
-          option.value = i.toString()
-
-          voiceSelect.appendChild(option)
-        }
+            voiceSelect.appendChild(option)
+          })
       }
 
       function focusOnAnswer() {
@@ -259,7 +267,7 @@
         const text = document.querySelector('.js-utterance').textContent
         const utterance = new SpeechSynthesisUtterance(text)
 
-        utterance.voice = voices[voiceSelect.selectedOptions[0].value]
+        utterance.voice = voices.find((voice) => voice.voiceURI === voiceSelect.selectedOptions[0].value)
         utterance.lang = utterance.voice.lang
 
         speechSynthesis.speak(utterance)
