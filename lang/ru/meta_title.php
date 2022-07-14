@@ -60,6 +60,7 @@ return [
     'korean/psy/right-now' => 'Кириллизация песни PSY — Right Now',
     'korean/psy/shake-it' => 'Кириллизация песни PSY — Shake It',
     'korean/psy/someday' => 'Кириллизация песни PSY — Someday',
+    'korean/psy/that-that' => 'Кириллизация песни PSY — That That',
     'korean/psy/the-end' => 'Кириллизация песни PSY — The End',
     'korean/psy/we-are-the-one' => 'Кириллизация песни PSY — We are the One',
     'korean/psy/what-would-have-been' => 'Кириллизация песни PSY — What Would Have Been',
