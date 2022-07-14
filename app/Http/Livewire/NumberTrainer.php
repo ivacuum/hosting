@@ -1,6 +1,7 @@
 <?php namespace App\Http\Livewire;
 
 use App\Action\GetNumberLocalesAction;
+use App\Action\HiraganizeJapaneseNumberAction;
 use Illuminate\Http\Request;
 use Livewire\Component;
 
@@ -148,6 +149,10 @@ class NumberTrainer extends Component
 
     private function transliterate(string $text): string
     {
+        if ($this->lang === 'ja') {
+            $text = app(HiraganizeJapaneseNumberAction::class)->execute($text);
+        }
+
         return \Transliterator::create('NFD; Any-Latin; Latin-Ascii; NFC')
             ->transliterate($text);
     }
