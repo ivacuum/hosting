@@ -155,6 +155,7 @@ class SitemapBuild extends BaseSitemapBuild
             'korean/psy/we-are-the-one',
             'korean/psy/what-would-have-been',
             'korean/psy/white-night',
+            'korean/psy/you-move-me',
         ], ['0.4']);
     }
 

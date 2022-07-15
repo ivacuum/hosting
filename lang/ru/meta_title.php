@@ -66,6 +66,7 @@ return [
     'korean/psy/we-are-the-one' => 'Кириллизация песни PSY — We are the One',
     'korean/psy/what-would-have-been' => 'Кириллизация песни PSY — What Would Have Been',
     'korean/psy/white-night' => 'Кириллизация песни PSY — White Night',
+    'korean/psy/you-move-me' => 'Кириллизация песни PSY — You Move Me',
 
     'retracker' => 'Что такое ретрекер и как его использовать · retracker.local',
     'retracker/dev' => 'О разработке ретрекера',
