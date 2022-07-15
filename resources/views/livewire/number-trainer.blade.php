@@ -222,7 +222,7 @@
         voiceSelect.textContent = ''
 
         voices
-          .filter((voice) => voice.lang.replace('_', '-').startsWith(`${locale}-`))
+          .filter((voice) => voice.lang === locale || voice.lang.replace('_', '-').startsWith(`${locale}-`))
           .forEach((voice) => {
             let option = document.createElement('option')
 
