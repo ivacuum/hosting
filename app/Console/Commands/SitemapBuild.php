@@ -125,9 +125,11 @@ class SitemapBuild extends BaseSitemapBuild
     {
         $this->page([
             'korean',
+            'korean/hangul',
             'korean/psy',
             'korean/psy/all-night-long',
             'korean/psy/as-time-goes-by',
+            'korean/psy/celeb',
             'korean/psy/daddy',
             'korean/psy/dont-worry-my-dear',
             'korean/psy/dream',
@@ -148,6 +150,7 @@ class SitemapBuild extends BaseSitemapBuild
             'korean/psy/right-now',
             'korean/psy/shake-it',
             'korean/psy/someday',
+            'korean/psy/that-that',
             'korean/psy/the-end',
             'korean/psy/we-are-the-one',
             'korean/psy/what-would-have-been',
