@@ -10,6 +10,15 @@ class Calendar
         $trips = $request->trips();
         $stats = new TripStatsCalculator($trips);
 
+        // Попытка отловить ошибку в среде github actions
+        if (app()->runningUnitTests()) {
+            try {
+                $stats->lastDate();
+            } catch (\Throwable) {
+                dd($trips, \App\Trip::all());
+            }
+        }
+
         return view('life.calendar', [
             'trips' => $trips,
             'cities' => $stats->citiesByYearsCount(),

@@ -91,11 +91,6 @@ class TripStatsCalculator
 
     public function lastDate(): CarbonImmutable
     {
-        if (app()->runningUnitTests() && $this->lastDate === null) {
-            // Попытка отловить ошибку в среде github actions
-            dd($this);
-        }
-
         return $this->lastDate;
     }
 
