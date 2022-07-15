@@ -39,6 +39,7 @@ return [
     'korean/psy/all-night-long' => 'Кириллизация песни PSY — All Night Long',
     'korean/psy/as-time-goes-by' => 'Кириллизация песни As Time Goes By',
     'korean/psy/bird' => 'Кириллизация песни PSY — Bird',
+    'korean/psy/celeb' => 'Кириллизация песни PSY — Celeb',
     'korean/psy/champion' => 'Кириллизация песни PSY — Champion',
     'korean/psy/daddy' => 'Кириллизация песни PSY — DADDY',
     'korean/psy/dont-worry-my-dear' => "Кириллизация песни Don't Worry, My Dear",
