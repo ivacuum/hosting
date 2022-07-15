@@ -1,9 +1,15 @@
 <?php /** @var \App\Http\Livewire\HangulTrainer $this */ ?>
 
+@once
+@push('head')
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&text={{ urlencode('ㅂㅈㄷㄱㅅㅁㄴㅇㄹㅎㅋㅌㅊㅍㅃㅉㄸㄲㅆㅛㅕㅑㅐㅔㅗㅓㅏㅣㅠㅜㅡㅒㅖㅚㅟㅝㅙㅞㅢㅘ') }}">
+@endpush
+@endonce
+
 <div class="grid gap-8 max-w-xl mx-auto">
   <div>
     <div class="text-center">
-      <div class="inline-block bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-700 text-5xl px-3 py-2 rounded">{{ $this->jamo }}</div>
+      <div class="inline-block bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-700 text-5xl px-3 py-2 rounded {{ $this->italic ? 'font-["Nanum_Pen_Script"]' : '' }}">{{ $this->jamo }}</div>
       <div class="text-2xl">
         @if($this->reveal)
           <span class="text-green-600 flex justify-center gap-4">
@@ -66,7 +72,7 @@
   <div>
     <div class="grid gap-6">
       <div>
-        <div class="h5 mb-0">@lang('Что будем тренировать?')</div>
+        <div class="h5 mb-0">@ru Что будем тренировать? @en What to train? @endru</div>
         <div>
           <label class="flex gap-2 items-center">
             <input class="border-gray-300" type="radio" wire:model="whatToTrain" value="{{ App\Domain\HangulWhatToTrain::Consonants->value }}">
@@ -79,6 +85,27 @@
           <label class="flex gap-2 items-center">
             <input class="border-gray-300" type="radio" wire:model="whatToTrain" value="{{ App\Domain\HangulWhatToTrain::AllTogether->value }}">
             @lang('все вместе')
+          </label>
+        </div>
+      </div>
+      <div>
+        <div class="h5 mb-0">@ru Стиль шрифта @en Font style @endru</div>
+        <div>
+          <label class="flex gap-2 items-center">
+            <input class="border-gray-300" type="radio" wire:model="italic" value="0">
+            @ru
+              обычный
+            @en
+              normal
+            @endru
+          </label>
+          <label class="flex gap-2 items-center">
+            <input class="border-gray-300" type="radio" wire:model="italic" value="1">
+            @ru
+              курсив
+            @en
+              italic
+            @endru
           </label>
         </div>
       </div>
@@ -287,11 +314,19 @@
       <div class="text-base flex gap-4 items-center justify-center mt-4">
           <label class="flex gap-2 items-center">
             <input class="border-gray-300" type="radio" wire:model="shiftPressed" value="0">
-            @lang('⇧ Shift отпущен')
+            @ru
+              ⇧ Shift отпущен
+            @en
+              ⇧ Shift released
+            @endru
           </label>
           <label class="flex gap-2 items-center">
             <input class="border-gray-300" type="radio" wire:model="shiftPressed" value="1">
-            @lang('⇧ Shift нажат')
+            @ru
+              ⇧ Shift нажат
+            @en
+              ⇧ Shift pressed
+            @endru
           </label>
       </div>
     </div>

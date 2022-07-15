@@ -14,6 +14,7 @@ class HangulTrainer extends Component
     public int $answered = 0;
     public int $revealed = 0;
     public bool $reveal = false;
+    public bool $italic = false;
     public bool $shiftPressed = false;
     public string $jamo;
     public string $answer = '';
