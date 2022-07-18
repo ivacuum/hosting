@@ -7,7 +7,6 @@ use App\Action\GetTripsPublishedByCountryAction;
 use App\Action\GetTripsPublishedWithCoverAction;
 use App\City;
 use App\Country;
-use App\Domain\PhotoStatus;
 use App\Http\Requests\PhotosMapForm;
 use App\Photo;
 use App\Scope\PhotoForTagScope;
@@ -101,19 +100,10 @@ class Photos
     public function map(PhotosMapForm $request, GetPhotoPointsAction $getPhotoPoints)
     {
         if ($request->expectsJson()) {
-            return $getPhotoPoints->execute($request->tripId());
+            return $getPhotoPoints->execute($request->tripId);
         }
 
-        $photoSlug = $request->photoSlug();
-
-        $photo = $photoSlug
-            ? Photo::query()
-                ->where('slug', $photoSlug)
-                ->where('status', PhotoStatus::Published)
-                ->first()
-            : null;
-
-        return view('photos.map', ['photo' => $photo]);
+        return view('photos.map', ['photo' => $request->photo]);
     }
 
     public function show(Photo $photo, GetTripsPublishedByCityAction $getTripsPublishedByCity, GetTripsPublishedByCountryAction $getTripsPublishedByCountry)

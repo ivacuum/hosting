@@ -107,7 +107,25 @@ class PhotoTest extends TestCase
             ]);
     }
 
-    public function testMapPointsOfOneTrips()
+    public function testMapPointOfOnePhoto()
+    {
+        $photo = PhotoFactory::new()
+            ->withPoint(5, 15)
+            ->withTrip()
+            ->create();
+
+        $this->getJson("photos/map?trip_id={$photo->rel_id}&photo={$photo->slug}")
+            ->assertOk()
+            ->assertJsonPath('type', 'FeatureCollection')
+            ->assertJsonPath('features.0.type', 'Feature')
+            ->assertJsonPath('features.0.id', $photo->id)
+            ->assertJsonPath('features.0.geometry.type', 'Point')
+            ->assertJsonPath('features.0.geometry.coordinates.0', '5')
+            ->assertJsonPath('features.0.geometry.coordinates.1', '15')
+            ->assertJsonPath('features.0.properties.clusterCaption', basename($photo->slug));
+    }
+
+    public function testMapPointsOfOneTrip()
     {
         $photo = PhotoFactory::new()
             ->withPoint(5, 15)
