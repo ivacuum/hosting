@@ -49,7 +49,7 @@ class HangulTrainer extends Component
 
     public function updatedWhatToTrain()
     {
-        $this->whatToTrain = is_integer($this->whatToTrain)
+        $this->whatToTrain = is_int($this->whatToTrain)
             ? HangulWhatToTrain::from($this->whatToTrain)
             : $this->whatToTrain;
 
