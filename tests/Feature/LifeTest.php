@@ -12,6 +12,8 @@ class LifeTest extends TestCase
 
     public function testCalendar()
     {
+        // Две поездки и два города, потому что по city_id=1 в календаре исключается Калуга
+        TripFactory::new()->create();
         TripFactory::new()->create();
 
         $this->get('life/calendar')
