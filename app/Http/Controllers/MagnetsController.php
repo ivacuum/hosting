@@ -18,7 +18,6 @@ class MagnetsController
     public function index(TorrentsIndexForm $request)
     {
         $q = $request->searchQuery();
-        $category = $request->category();
         $fulltext = $request->isFulltextSearch();
         $categoryId = $request->categoryId();
 
@@ -26,7 +25,11 @@ class MagnetsController
 
         if ($q) {
             $ids = Magnet::search($q, function (SphinxQL $builder) use ($categoryId, $fulltext, $q) {
-                $builder = $builder->match($fulltext ? '*' : 'title', SearchSynonym::addSynonymsToQuery($q), true);
+                $builder = $builder->match(
+                    $fulltext ? '*' : 'title',
+                    SearchSynonym::addSynonymsToQuery($q),
+                    true
+                );
 
                 if ($categoryId) {
                     $builder = $builder->where('category_id', '=', $categoryId);
@@ -42,7 +45,7 @@ class MagnetsController
 
         $magnets = $magnets->tap(new MagnetPublishedScope)
             ->orderByDesc('registered_at')
-            ->when(!$q && $category, function (Builder $query) use ($categoryId) {
+            ->when(!$q && $request->category(), function (Builder $query) use ($categoryId) {
                 $ids = \TorrentCategoryHelper::selfAndDescendantsIds($categoryId);
 
                 event(new \App\Events\Stats\TorrentFilteredByCategory);

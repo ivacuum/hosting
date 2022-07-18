@@ -1,7 +1,7 @@
 <?php namespace App\Http\Requests\Acp;
 
 use Carbon\CarbonImmutable;
-use Ivacuum\Generic\Http\FormRequest;
+use Illuminate\Foundation\Http\FormRequest;
 
 class TripPublishedNotifyRequest extends FormRequest
 {

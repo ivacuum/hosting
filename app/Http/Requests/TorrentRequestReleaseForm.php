@@ -1,15 +1,17 @@
 <?php namespace App\Http\Requests;
 
-class TorrentRequestReleaseForm extends AbstractForm
+use App\User;
+use Illuminate\Foundation\Http\FormRequest;
+
+class TorrentRequestReleaseForm extends FormRequest
 {
+    public ?User $user;
+    public readonly string $q;
+    public readonly ?string $comment;
+
     public function authorize(): bool
     {
         return true;
-    }
-
-    public function comment(): ?string
-    {
-        return $this->input('comment');
     }
 
     public function rules(): array
@@ -20,8 +22,10 @@ class TorrentRequestReleaseForm extends AbstractForm
         ];
     }
 
-    public function q(): string
+    protected function passedValidation()
     {
-        return $this->input('query');
+        $this->q = $this->input('query');
+        $this->user = $this->user();
+        $this->comment = $this->input('comment');
     }
 }

@@ -1,10 +1,11 @@
 <?php namespace App\Http\Requests;
 
 use App\News;
+use Illuminate\Foundation\Http\FormRequest;
 
-class NewsShowForm extends AbstractForm
+class NewsShowForm extends FormRequest
 {
-    private $news;
+    public ?News $news;
 
     public function authorize(): bool
     {
@@ -13,30 +14,20 @@ class NewsShowForm extends AbstractForm
 
     public function ensureNewsIsPublished()
     {
-        abort_unless($this->news()->status->isPublished(), 404);
-    }
-
-    public function news(): ?News
-    {
-        if ($this->news === null) {
-            $this->news = News::find($this->route('id'));
-        }
-
-        return $this->news;
+        abort_unless($this->news->status->isPublished(), 404);
     }
 
     public function redirectUrlToOriginLocale(): string
     {
-        $news = $this->news();
         $locale = \App::getLocale();
 
-        if ($locale === $news->locale->value) {
+        if ($locale === $this->news->locale->value) {
             return '';
         }
 
-        return $news->locale->isRussian()
+        return $this->news->locale->isRussian()
             ? $this->path()
-            : "/{$news->locale->value}/{$this->path()}";
+            : "/{$this->news->locale->value}/{$this->path()}";
     }
 
     public function rules(): array
@@ -46,6 +37,11 @@ class NewsShowForm extends AbstractForm
 
     public function shouldRedirectToIndex(): bool
     {
-        return $this->news() === null;
+        return $this->news === null;
+    }
+
+    protected function passedValidation()
+    {
+        $this->news = News::find($this->route('id'));
     }
 }

@@ -3,9 +3,10 @@
 use App\Rules\Email;
 use App\Rules\Username;
 use App\User;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class MyProfileUpdateForm extends AbstractForm
+class MyProfileUpdateForm extends FormRequest
 {
     public User $user;
     public readonly string $email;
@@ -18,7 +19,7 @@ class MyProfileUpdateForm extends AbstractForm
 
     public function rules(): array
     {
-        $user = $this->userModel();
+        $user = $this->user();
 
         return [
             'email' => [

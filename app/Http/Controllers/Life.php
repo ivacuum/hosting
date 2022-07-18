@@ -27,11 +27,8 @@ class Life
             return $request->redirectInstagrammer();
         }
 
-        $to = $request->to();
-        $from = $request->from();
-
-        $trips = $getMyVisibleTrips->execute($from, $to);
-        $gigs = $getMyVisibleGigs->execute($from, $to);
+        $trips = $getMyVisibleTrips->execute($request->from, $request->to);
+        $gigs = $getMyVisibleGigs->execute($request->from, $request->to);
 
         $models = collect([...$trips, ...$gigs])
             ->sortByDesc(fn (Gig|Trip $model) => $model->date())

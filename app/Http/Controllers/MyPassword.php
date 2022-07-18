@@ -15,13 +15,13 @@ class MyPassword
 
     public function update(MyPasswordUpdateForm $request, Hasher $hash)
     {
-        $user = $request->userModel();
+        $user = $request->user;
 
         if ($request->userHasPassword() && $request->isPasswordInvalid($hash)) {
             return back()->withErrors(['password' => 'Неверно введен текущий пароль']);
         }
 
-        $user->password = $request->newPassword();
+        $user->password = $request->newPassword;
         $user->save();
 
         event(new \App\Events\Stats\MyPasswordChanged);

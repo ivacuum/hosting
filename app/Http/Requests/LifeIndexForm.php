@@ -1,17 +1,16 @@
 <?php namespace App\Http\Requests;
 
 use App\ReferrerRedirect;
+use Illuminate\Foundation\Http\FormRequest;
 
-class LifeIndexForm extends AbstractForm
+class LifeIndexForm extends FormRequest
 {
+    public readonly ?string $to;
+    public readonly ?string $from;
+
     public function authorize(): bool
     {
         return true;
-    }
-
-    public function from()
-    {
-        return $this->input('from');
     }
 
     public function redirectInstagrammer()
@@ -33,7 +32,7 @@ class LifeIndexForm extends AbstractForm
         ];
     }
 
-    public function shouldRedirectInstagrammer()
+    public function shouldRedirectInstagrammer(): bool
     {
         if (!str($this->header('Referer'))->contains('instagram.com/')) {
             return false;
@@ -42,8 +41,9 @@ class LifeIndexForm extends AbstractForm
         return ReferrerRedirect::findFirstActive() !== null;
     }
 
-    public function to()
+    protected function passedValidation()
     {
-        return $this->input('to');
+        $this->to = $this->input('to');
+        $this->from = $this->input('from');
     }
 }

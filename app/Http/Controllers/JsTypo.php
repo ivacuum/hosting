@@ -7,16 +7,14 @@ class JsTypo
 {
     public function __invoke(TypoStoreForm $request)
     {
-        $page = $request->page();
-
-        if (!$page) {
+        if (!$request->page) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'На какой странице ошибка?',
             ], 422);
         }
 
-        event(new TypoReceived($request->selection(), $page));
+        event(new TypoReceived($request->selection, $request->page));
 
         return response()->json([
             'status' => 'OK',

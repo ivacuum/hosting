@@ -1,6 +1,8 @@
 <?php namespace App\Http\Requests;
 
-class TorrentsIndexForm extends AbstractForm
+use Illuminate\Foundation\Http\FormRequest;
+
+class TorrentsIndexForm extends FormRequest
 {
     public function authorize(): bool
     {

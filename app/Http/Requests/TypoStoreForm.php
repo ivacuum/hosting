@@ -1,17 +1,15 @@
 <?php namespace App\Http\Requests;
 
-use Ivacuum\Generic\Http\FormRequest;
+use Illuminate\Foundation\Http\FormRequest;
 
 class TypoStoreForm extends FormRequest
 {
+    public readonly string $selection;
+    public readonly ?string $page;
+
     public function authorize(): bool
     {
         return true;
-    }
-
-    public function page()
-    {
-        return $this->session()->previousUrl();
     }
 
     public function rules(): array
@@ -26,8 +24,9 @@ class TypoStoreForm extends FormRequest
         ];
     }
 
-    public function selection()
+    protected function passedValidation()
     {
-        return $this->input('selection');
+        $this->page = $this->session()->previousUrl();
+        $this->selection = $this->input('selection');
     }
 }

@@ -1,7 +1,7 @@
 <?php namespace App\Http\Requests;
 
 use App\Domain\BeaconEvent;
-use Ivacuum\Generic\Http\FormRequest;
+use Illuminate\Foundation\Http\FormRequest;
 
 class BeaconStoreForm extends FormRequest
 {

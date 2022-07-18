@@ -27,9 +27,9 @@ class NewsController
             return redirect(path([self::class, 'index']), 301);
         }
 
-        $news = $request->news();
+        $request->ensureNewsIsPublished();
 
-        abort_unless($news->status->isPublished(), 404);
+        $news = $request->news;
 
         if ($url = $request->redirectUrlToOriginLocale()) {
             return redirect($url, 301);

@@ -2,40 +2,23 @@
 
 use App\Domain\Locale;
 use App\Domain\NotificationDeliveryMethod;
+use App\User;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
 
-class MySettingsUpdateForm extends AbstractForm
+class MySettingsUpdateForm extends FormRequest
 {
+    public User $user;
+    public readonly int $magnetShortTitle;
+    public readonly string $theLocale;
+    public readonly NotificationDeliveryMethod $notifyGigs;
+    public readonly NotificationDeliveryMethod $notifyNews;
+    public readonly NotificationDeliveryMethod $notifyTrips;
+
     public function authorize(): bool
     {
         return true;
-    }
-
-    public function locale()
-    {
-        return $this->input('locale', Locale::Rus->value);
-    }
-
-    public function notifyGigs()
-    {
-        return NotificationDeliveryMethod::from(
-            $this->input('notify_gigs', NotificationDeliveryMethod::Disabled->value)
-        );
-    }
-
-    public function notifyNews()
-    {
-        return NotificationDeliveryMethod::from(
-            $this->input('notify_news', NotificationDeliveryMethod::Disabled->value)
-        );
-    }
-
-    public function notifyTrips()
-    {
-        return NotificationDeliveryMethod::from(
-            $this->input('notify_trips', NotificationDeliveryMethod::Disabled->value)
-        );
     }
 
     public function rules(): array
@@ -49,8 +32,22 @@ class MySettingsUpdateForm extends AbstractForm
         ];
     }
 
-    public function torrentShortTitle()
+    protected function passedValidation()
     {
-        return $this->input('torrent_short_title', 0);
+        $this->user = $this->user();
+        $this->theLocale = $this->input('locale', Locale::Rus->value);
+        $this->magnetShortTitle = $this->input('torrent_short_title', 0);
+
+        $this->notifyGigs = NotificationDeliveryMethod::from(
+            $this->input('notify_gigs', NotificationDeliveryMethod::Disabled->value)
+        );
+
+        $this->notifyNews = NotificationDeliveryMethod::from(
+            $this->input('notify_news', NotificationDeliveryMethod::Disabled->value)
+        );
+
+        $this->notifyTrips = NotificationDeliveryMethod::from(
+            $this->input('notify_trips', NotificationDeliveryMethod::Disabled->value)
+        );
     }
 }

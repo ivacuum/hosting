@@ -15,6 +15,14 @@ class PhotosMapForm extends FormRequest
         return true;
     }
 
+    public function rules(): array
+    {
+        return [
+            'photo' => 'nullable|string',
+            'trip_id' => 'nullable|integer',
+        ];
+    }
+
     protected function passedValidation()
     {
         $this->tripId = $this->input('trip_id');
@@ -26,13 +34,5 @@ class PhotosMapForm extends FormRequest
                 ->where('status', PhotoStatus::Published)
                 ->first()
             : null;
-    }
-
-    public function rules(): array
-    {
-        return [
-            'photo' => 'nullable|string',
-            'trip_id' => 'nullable|integer',
-        ];
     }
 }
