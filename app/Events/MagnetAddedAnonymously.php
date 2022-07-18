@@ -3,7 +3,7 @@
 use App\Magnet;
 use Illuminate\Queue\SerializesModels;
 
-class TorrentAddedAnonymously extends Event
+class MagnetAddedAnonymously extends Event
 {
     use SerializesModels;
 

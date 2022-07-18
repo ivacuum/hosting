@@ -136,7 +136,7 @@ Route::view('magnets/add', 'magnets.create');
 Route::get('magnets/comments', [Ctrl\MagnetsController::class, 'comments']);
 Route::get('magnets/faq', [Ctrl\MagnetsController::class, 'faq']);
 Route::get('magnets/my', [Ctrl\MagnetsController::class, 'my'])->middleware('auth');
-Route::post('magnets/request', Ctrl\TorrentRequestRelease::class);
+Route::post('magnets/request', Ctrl\MagnetRequestRelease::class);
 Route::get('magnets/{magnet}', [Ctrl\MagnetsController::class, 'show'])->middleware('nav:Магнеты,magnets');
 Route::post('magnets/{magnet}/magnet', [Ctrl\MagnetsController::class, 'magnet']);
 

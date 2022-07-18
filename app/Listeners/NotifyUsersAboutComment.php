@@ -5,8 +5,8 @@ use App\Issue;
 use App\Magnet;
 use App\News;
 use App\Notifications\IssueCommentedNotification;
+use App\Notifications\MagnetCommentedNotification;
 use App\Notifications\NewsCommentedNotification;
-use App\Notifications\TorrentCommentedNotification;
 use App\Notifications\TripCommentedNotification;
 use App\Trip;
 
@@ -31,7 +31,7 @@ class NotifyUsersAboutComment
         } elseif ($model instanceof Magnet) {
             event(new \App\Events\Stats\TorrentCommented);
 
-            \Notification::send($users, new TorrentCommentedNotification($model, $event->comment));
+            \Notification::send($users, new MagnetCommentedNotification($model, $event->comment));
         } elseif ($model instanceof Trip) {
             event(new \App\Events\Stats\TripCommented);
 

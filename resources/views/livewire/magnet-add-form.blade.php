@@ -1,4 +1,4 @@
-<?php /** @var \App\Http\Livewire\TorrentAddForm $this */ ?>
+<?php /** @var \App\Http\Livewire\MagnetAddForm $this */ ?>
 
 <form class="grid grid-cols-1 gap-4" wire:submit.prevent="submit">
   <div>

@@ -2,7 +2,7 @@
 
 use Illuminate\Validation\Rule;
 
-class TorrentCategoryId
+class MagnetCategoryId
 {
     public static function rules(): array
     {

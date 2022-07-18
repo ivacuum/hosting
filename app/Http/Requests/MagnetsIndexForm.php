@@ -2,7 +2,7 @@
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TorrentsIndexForm extends FormRequest
+class MagnetsIndexForm extends FormRequest
 {
     public function authorize(): bool
     {

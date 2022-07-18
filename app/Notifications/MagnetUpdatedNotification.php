@@ -6,7 +6,7 @@ use App\User;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\Telegram\TelegramMessage;
 
-class TorrentUpdatedNotification extends Notification
+class MagnetUpdatedNotification extends Notification
 {
     public function __construct(public Magnet $magnet)
     {

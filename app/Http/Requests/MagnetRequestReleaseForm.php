@@ -3,7 +3,7 @@
 use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 
-class TorrentRequestReleaseForm extends FormRequest
+class MagnetRequestReleaseForm extends FormRequest
 {
     public ?User $user;
     public readonly string $q;

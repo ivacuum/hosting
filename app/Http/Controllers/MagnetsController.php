@@ -4,7 +4,7 @@ use App\Action\CountMagnetsByCategoriesAction;
 use App\Comment;
 use App\Domain\Locale;
 use App\Domain\MagnetStatus;
-use App\Http\Requests\TorrentsIndexForm;
+use App\Http\Requests\MagnetsIndexForm;
 use App\Magnet;
 use App\Scope\CommentPublishedScope;
 use App\Scope\CommentRelationScope;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class MagnetsController
 {
-    public function index(TorrentsIndexForm $request)
+    public function index(MagnetsIndexForm $request)
     {
         $q = $request->searchQuery();
         $fulltext = $request->isFulltextSearch();

@@ -2,14 +2,14 @@
 
 use App\Domain\MagnetStatus;
 use App\Magnet;
-use App\Rules\TorrentCategoryId;
+use App\Rules\MagnetCategoryId;
 use App\Services\Rto;
 use App\Services\RtoMagnetNotFoundException;
 use App\Services\RtoTopicDuplicateException;
 use App\Services\RtoTopicNotFoundException;
 use Livewire\Component;
 
-class TorrentAddForm extends Component
+class MagnetAddForm extends Component
 {
     public int $size = 0;
     public int $topicId = 0;
@@ -22,7 +22,7 @@ class TorrentAddForm extends Component
     {
         return [
             'input' => 'required',
-            'categoryId' => TorrentCategoryId::rules(),
+            'categoryId' => MagnetCategoryId::rules(),
         ];
     }
 

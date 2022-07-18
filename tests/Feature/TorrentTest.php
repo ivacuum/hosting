@@ -5,7 +5,7 @@ use App\Domain\RtoTopicStatus;
 use App\Factory\CommentFactory;
 use App\Factory\MagnetFactory;
 use App\Factory\UserFactory;
-use App\Http\Livewire\TorrentAddForm;
+use App\Http\Livewire\MagnetAddForm;
 use App\Magnet;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -43,7 +43,7 @@ class TorrentTest extends TestCase
         $this->be($user)
             ->get('magnets/add')
             ->assertOk()
-            ->assertSeeLivewire(TorrentAddForm::class);
+            ->assertSeeLivewire(MagnetAddForm::class);
     }
 
     public function testFaq()
@@ -67,7 +67,7 @@ class TorrentTest extends TestCase
 
         $this->fakeHttpRequests($stub);
 
-        \Livewire::test(TorrentAddForm::class)
+        \Livewire::test(MagnetAddForm::class)
             ->set('input', $stub->rto_id)
             ->assertSet('size', $stub->size)
             ->assertSet('title', $stub->title)
@@ -177,7 +177,7 @@ class TorrentTest extends TestCase
 
         $this->expectsEvents(\App\Events\Stats\TorrentAddedAnonymously::class);
 
-        $livewire = \Livewire::test(TorrentAddForm::class)
+        $livewire = \Livewire::test(MagnetAddForm::class)
             ->set('input', $stub->rto_id)
             ->set('categoryId', $stub->category_id->value)
             ->call('submit')
@@ -205,7 +205,7 @@ class TorrentTest extends TestCase
         $this->be($user)
             ->expectsEvents(\App\Events\Stats\TorrentAdded::class);
 
-        $livewire = \Livewire::test(TorrentAddForm::class)
+        $livewire = \Livewire::test(MagnetAddForm::class)
             ->set('input', $stub->rto_id)
             ->set('categoryId', $stub->category_id->value)
             ->call('submit')
@@ -229,7 +229,7 @@ class TorrentTest extends TestCase
         $this->be($user)
             ->expectsEvents(\App\Events\Stats\TorrentDuplicateFound::class);
 
-        \Livewire::test(TorrentAddForm::class)
+        \Livewire::test(MagnetAddForm::class)
             ->set('input', $magnet->externalLink())
             ->assertHasErrors('input');
 

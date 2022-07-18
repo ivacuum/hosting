@@ -25,7 +25,7 @@
     <div class="text-sm text-gray-500">
       <p>В конце топика модератор обычно оставляет ссылку на новую раздачу.</p>
     </div>
-    @livewire(App\Http\Livewire\TorrentReplaceForm::class, ['magnet' => $model])
+    @livewire(App\Http\Livewire\MagnetReplaceForm::class, ['magnet' => $model])
   </div>
 </div>
 @parent

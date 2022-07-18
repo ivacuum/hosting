@@ -4,7 +4,7 @@ use App\Comment;
 use App\Magnet;
 use Illuminate\Notifications\Notification;
 
-class TorrentCommentedNotification extends Notification
+class MagnetCommentedNotification extends Notification
 {
     public function __construct(public Magnet $magnet, public Comment $comment)
     {

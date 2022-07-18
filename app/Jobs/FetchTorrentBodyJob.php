@@ -1,7 +1,7 @@
 <?php namespace App\Jobs;
 
 use App\Magnet;
-use App\Notifications\TorrentUpdatedNotification;
+use App\Notifications\MagnetUpdatedNotification;
 use App\Services\Rto;
 
 class FetchTorrentBodyJob extends AbstractJob
@@ -25,6 +25,6 @@ class FetchTorrentBodyJob extends AbstractJob
 
         event(new \App\Events\Stats\TorrentUpdated);
 
-        $magnet->user->notify(new TorrentUpdatedNotification($magnet));
+        $magnet->user->notify(new MagnetUpdatedNotification($magnet));
     }
 }

@@ -11,7 +11,7 @@ class EventServiceProvider extends ServiceProvider
         Events\CommentPublished::class => [Listeners\NotifyUsersAboutComment::class],
         Events\DomainWhoisUpdated::class => [Listeners\EmailWhoisChanges::class],
         Events\IssueCreated::class => [Listeners\TelegramIssue::class],
-        Events\TorrentAddedAnonymously::class => [Listeners\TelegramAnonymousTorrent::class],
+        Events\MagnetAddedAnonymously::class => [Listeners\TelegramAnonymousMagnet::class],
         Events\TypoReceived::class => [Listeners\TelegramTypo::class],
 
         'Illuminate\Auth\Events\Login' => [

@@ -8,10 +8,8 @@
     <?php $basename = $notification->basename() ?>
     <div class="border-grey-200 py-4 {{ !$loop->last ? 'border-b' : '' }}">
       <div class="table-cell pr-4 svg-muted-blue text-xl">
-        @if ($basename === 'torrent_updated')
+        @if ($basename === 'magnet_updated')
           @svg (magnet)
-        @elseif ($basename === 'torrent_not_found_deleted')
-          @svg (trash-o)
         @elseif ($basename === 'trip_published')
           @svg (plane)
         @elseif (str_ends_with($basename, '_commented'))

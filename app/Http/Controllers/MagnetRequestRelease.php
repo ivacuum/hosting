@@ -1,12 +1,12 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests\TorrentRequestReleaseForm;
+use App\Http\Requests\MagnetRequestReleaseForm;
 use App\Magnet;
 use Ivacuum\Generic\Services\Telegram;
 
-class TorrentRequestRelease
+class MagnetRequestRelease
 {
-    public function __invoke(TorrentRequestReleaseForm $request, Telegram $telegram)
+    public function __invoke(MagnetRequestReleaseForm $request, Telegram $telegram)
     {
         $link = Magnet::externalSearchLink($request->q);
         $user = $request->user->email ?? 'anonymous';

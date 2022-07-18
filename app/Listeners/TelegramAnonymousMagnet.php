@@ -1,11 +1,11 @@
 <?php namespace App\Listeners;
 
-use App\Events\TorrentAddedAnonymously;
+use App\Events\MagnetAddedAnonymously;
 use Ivacuum\Generic\Listeners\TelegramNotifier;
 
-class TelegramAnonymousTorrent extends TelegramNotifier
+class TelegramAnonymousMagnet extends TelegramNotifier
 {
-    public function handle(TorrentAddedAnonymously $event)
+    public function handle(MagnetAddedAnonymously $event)
     {
         if (\App::runningInConsole()) {
             return;

@@ -1,6 +1,6 @@
 <?php namespace App\Observers;
 
-use App\Events\TorrentAddedAnonymously;
+use App\Events\MagnetAddedAnonymously;
 use App\Magnet as Model;
 
 class MagnetObserver
@@ -10,7 +10,7 @@ class MagnetObserver
         event(new \App\Events\Stats\TorrentAdded);
 
         if ($model->isAnonymous()) {
-            event(new TorrentAddedAnonymously($model));
+            event(new MagnetAddedAnonymously($model));
         }
     }
 

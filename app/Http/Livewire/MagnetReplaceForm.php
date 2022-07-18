@@ -5,7 +5,7 @@ use App\Magnet;
 use App\Services\Rto;
 use Livewire\Component;
 
-class TorrentReplaceForm extends Component
+class MagnetReplaceForm extends Component
 {
     public Magnet $magnet;
     public ?string $input = null;
