@@ -1,10 +1,15 @@
 <?php namespace App\Listeners;
 
+use App\Action\FilterOutCredentialsAction;
 use App\ExternalHttpRequest;
 use Illuminate\Http\Client\Events\ConnectionFailed;
 
 class LogHttpConnectionFailed
 {
+    public function __construct(private FilterOutCredentialsAction $filterOutCredentials)
+    {
+    }
+
     public function handle(ConnectionFailed $event)
     {
         if (\App::runningInConsole()) {
@@ -41,6 +46,9 @@ class LogHttpConnectionFailed
         $model->request_headers = $request->toPsrRequest()->getHeaders();
         $model->redirect_time_us = 0;
         $model->response_headers = '';
+
+        $this->filterOutCredentials->execute($model);
+
         $model->save();
     }
 
