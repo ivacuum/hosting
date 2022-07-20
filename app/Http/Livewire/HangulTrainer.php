@@ -59,13 +59,16 @@ class HangulTrainer extends Component
     private function acceptedAnswers(): array
     {
         return collect()
-            ->when(app()->getLocale() === Locale::Rus->value, function (Collection $answers) {
-                return $answers->push(...app(CyrillicizeJamoAction::class)->execute($this->jamo))
-                    ->map(fn ($answer) => str_replace('-', '', $answer));
-            })
+            ->when(app()->getLocale() === Locale::Rus->value, $this->appendCyrillicAnswers(...))
             ->push($this->romanizeJamo())
             ->unique()
             ->all();
+    }
+
+    private function appendCyrillicAnswers(Collection $answers)
+    {
+        return $answers->push(...app(CyrillicizeJamoAction::class)->execute($this->jamo))
+            ->map(fn ($answer) => str_replace('-', '', $answer));
     }
 
     private function next()

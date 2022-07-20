@@ -18,21 +18,24 @@ class GigsRss
             ->take(50)
             ->orderByDesc('date')
             ->get()
-            ->map(function (Gig $gig) {
-                $link = url($gig->www());
-                $cover = '<p><a href="' . $link . '?from=rss-image"><img src="' . $gig->meta_image . '" alt=""></a></p>';
-
-                return [
-                    'title' => htmlspecialchars($gig->metaTitle()),
-                    'link' => $link . '?from=rss-title',
-                    'guid' => $link,
-                    'description' => "<p>{$gig->metaDescription()}</p>{$cover}",
-                    'pubDate' => $gig->date->toRfc2822String(),
-                ];
-            });
+            ->map($this->mapGig(...));
 
         return response()
             ->view('life.feed-rss', ['items' => $items, 'meta' => $meta])
             ->header('Content-Type', 'application/xml');
+    }
+
+    private function mapGig(Gig $gig): array
+    {
+        $link = url($gig->www());
+        $cover = '<p><a href="' . $link . '?from=rss-image"><img src="' . $gig->meta_image . '" alt=""></a></p>';
+
+        return [
+            'title' => htmlspecialchars($gig->metaTitle()),
+            'link' => $link . '?from=rss-title',
+            'guid' => $link,
+            'description' => "<p>{$gig->metaDescription()}</p>{$cover}",
+            'pubDate' => $gig->date->toRfc2822String(),
+        ];
     }
 }

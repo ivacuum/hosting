@@ -3,6 +3,7 @@
 use App\Domain\CacheKey;
 use App\Scope\TripOfAdminScope;
 use App\Scope\TripPublishedScope;
+use App\Scope\TripWithCoverScope;
 use App\Trip;
 use Illuminate\Cache\Repository;
 use Illuminate\Database\Eloquent\Collection;
@@ -21,7 +22,7 @@ class GetTripsPublishedWithCoverAction
             return Trip::query()
                 ->tap(new TripPublishedScope)
                 ->tap(new TripOfAdminScope)
-                ->where('meta_image', '<>', '')
+                ->tap(new TripWithCoverScope)
                 ->orderByDesc('date_start')
                 ->get();
         })->when($count > 0, function (Collection $trips) use ($count) {

@@ -19,20 +19,23 @@ class NewsRss
             ->take(20)
             ->orderByDesc('id')
             ->get()
-            ->map(function (News $news) {
-                $link = url($news->www());
-
-                return [
-                    'title' => htmlspecialchars($news->title),
-                    'link' => $link . '?from=rss-title',
-                    'guid' => $link,
-                    'description' => $news->html,
-                    'pubDate' => $news->created_at->toRfc2822String(),
-                ];
-            });
+            ->map($this->mapNews(...));
 
         return response()
             ->view('life.feed-rss', ['items' => $items, 'meta' => $meta])
             ->header('Content-Type', 'application/xml');
+    }
+
+    private function mapNews(News $news): array
+    {
+        $link = url($news->www());
+
+        return [
+            'title' => htmlspecialchars($news->title),
+            'link' => $link . '?from=rss-title',
+            'guid' => $link,
+            'description' => $news->html,
+            'pubDate' => $news->created_at->toRfc2822String(),
+        ];
     }
 }

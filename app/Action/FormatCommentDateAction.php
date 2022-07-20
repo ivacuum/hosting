@@ -8,27 +8,27 @@ class FormatCommentDateAction
     {
         return $date->calendar(formats: [
             'sameDay' => __('life.date.comment_today'),
-            'lastDay' => function (CarbonInterface $current, CarbonInterface $other) {
-                if ($current->isSameYear($other)) {
-                    return __('life.date.comment_yesterday');
-                }
-
-                return __('life.date.comment_date_with_year');
-            },
-            'lastWeek' => function (CarbonInterface $current, CarbonInterface $other) {
-                if ($current->isSameYear($other)) {
-                    return __('life.date.comment_date');
-                }
-
-                return __('life.date.comment_date_with_year');
-            },
-            'sameElse' => function (CarbonInterface $current, CarbonInterface $other) {
-                if ($current->isSameYear($other)) {
-                    return __('life.date.comment_date');
-                }
-
-                return __('life.date.comment_date_with_year');
-            },
+            'lastDay' => $this->formatYesterday(...),
+            'lastWeek' => $this->formatDate(...),
+            'sameElse' => $this->formatDate(...),
         ]);
+    }
+
+    private function formatDate(CarbonInterface $current, CarbonInterface $other): string
+    {
+        if ($current->isSameYear($other)) {
+            return __('life.date.comment_date');
+        }
+
+        return __('life.date.comment_date_with_year');
+    }
+
+    private function formatYesterday(CarbonInterface $current, CarbonInterface $other): string
+    {
+        if ($current->isSameYear($other)) {
+            return __('life.date.comment_yesterday');
+        }
+
+        return __('life.date.comment_date_with_year');
     }
 }

@@ -30,13 +30,12 @@ class ReferrerRedirect extends Model
 
     public static function findFirstActive(): ?self
     {
-        $model = self::query()
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
+        return self::query()
             ->where('starts_at', '<=', now()->toDateTimeString())
             ->where('expires_at', '>=', now()->toDateTimeString())
             ->orderBy('starts_at')
             ->first();
-
-        return value($model);
     }
 
     public function www(): string
