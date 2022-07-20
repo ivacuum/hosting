@@ -7,6 +7,7 @@ use App\Jobs\FetchTorrentBodyJob;
 use App\Jobs\FetchTorrentMetaJob;
 use App\Services\RtoTopicData;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Ivacuum\Generic\Telegram\TelegramResponse;
 use Tests\TestCase;
 
 class FetchTorrentMetaJobTest extends TestCase
@@ -114,7 +115,7 @@ class FetchTorrentMetaJobTest extends TestCase
                     $magnet->rto_id => null,
                 ],
             ]),
-            'api.telegram.org/*' => \Http::response(),
+            ...TelegramResponse::fakeSuccess(),
         ]);
 
         $this->expectsEvents(\App\Events\Stats\TorrentNotFoundDeleted::class);
@@ -166,7 +167,7 @@ class FetchTorrentMetaJobTest extends TestCase
                     $topicData->id => $topicData->toJson(),
                 ],
             ]),
-            'api.telegram.org/*' => \Http::response(),
+            ...TelegramResponse::fakeSuccess(),
         ]);
     }
 }
