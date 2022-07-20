@@ -68,6 +68,7 @@
     ],
     "rector": "vendor/bin/rector process app tests --dry-run",
     "queue": "@php artisan queue:work --stop-when-empty --ansi",
+    "share": "valet share --region=eu",
     "test": "@php artisan test --parallel",
     "test-linear": "vendor/bin/phpunit --colors=always",
     "test-recreate-db": "@php artisan test --parallel --recreate-databases"
