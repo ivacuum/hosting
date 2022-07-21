@@ -64,7 +64,8 @@
       "@php artisan vendor:publish --force --tag=livewire:assets --ansi"
     ],
     "post-update-cmd": [
-      "@php artisan ide-helper:generate"
+      "@php artisan ide-helper:generate",
+      "@php artisan ide-helper:meta"
     ],
     "rector": "vendor/bin/rector process app tests --dry-run",
     "queue": "@php artisan queue:work --stop-when-empty --ansi",
