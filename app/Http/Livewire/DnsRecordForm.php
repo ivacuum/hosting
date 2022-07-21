@@ -37,6 +37,8 @@ class DnsRecordForm extends Component
         $this->authorize('create', Domain::class);
         $this->validate();
 
+        $yandexPdd = $yandexPdd->token($this->domain->yandexUser->token);
+
         if ($this->recordId) {
             $this->update($yandexPdd);
         } else {
@@ -55,21 +57,18 @@ class DnsRecordForm extends Component
             DnsRecordType::AAAA,
             DnsRecordType::CNAME,
             DnsRecordType::TXT => $yandexPdd->addDnsRecord(
-                $this->domain->yandexUser->token,
                 $this->domain->domain,
                 $type,
                 $this->subdomain,
                 $this->content,
             ),
             DnsRecordType::MX => $yandexPdd->addMxDnsRecord(
-                $this->domain->yandexUser->token,
                 $this->domain->domain,
                 $this->subdomain,
                 $this->content,
                 $this->priority,
             ),
             DnsRecordType::SRV => $yandexPdd->addSrvDnsRecord(
-                $this->domain->yandexUser->token,
                 $this->domain->domain,
                 $this->subdomain,
                 $this->content,
@@ -89,7 +88,6 @@ class DnsRecordForm extends Component
             DnsRecordType::AAAA,
             DnsRecordType::CNAME,
             DnsRecordType::TXT => $yandexPdd->editDnsRecord(
-                $this->domain->yandexUser->token,
                 $this->domain->domain,
                 $this->recordId,
                 $type,
@@ -97,7 +95,6 @@ class DnsRecordForm extends Component
                 $this->content,
             ),
             DnsRecordType::MX => $yandexPdd->editMxDnsRecord(
-                $this->domain->yandexUser->token,
                 $this->domain->domain,
                 $this->recordId,
                 $this->subdomain,
@@ -105,7 +102,6 @@ class DnsRecordForm extends Component
                 $this->priority,
             ),
             DnsRecordType::SRV => $yandexPdd->editSrvDnsRecord(
-                $this->domain->yandexUser->token,
                 $this->domain->domain,
                 $this->recordId,
                 $this->subdomain,

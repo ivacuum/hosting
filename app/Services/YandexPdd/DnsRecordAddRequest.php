@@ -31,7 +31,7 @@ class DnsRecordAddRequest implements HttpPost
 
     public function jsonSerialize()
     {
-        return collect([
+        return [
             'ttl' => $this->ttl,
             'port' => $this->port,
             'type' => $this->type->value,
@@ -41,8 +41,6 @@ class DnsRecordAddRequest implements HttpPost
             'content' => $this->content,
             'priority' => $this->priority,
             'subdomain' => $this->subdomain,
-        ])
-            ->reject(fn ($value) => $value === null)
-            ->all();
+        ];
     }
 }

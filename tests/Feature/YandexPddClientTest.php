@@ -28,7 +28,8 @@ class YandexPddClientTest extends TestCase
         ]);
 
         $response = $this->app->make(YandexPddClient::class)
-            ->dkimStatus('token', 'example.com', true);
+            ->token('token')
+            ->dkimStatus('example.com', true);
 
         $this->assertTrue($response->successful);
 
@@ -49,7 +50,8 @@ class YandexPddClientTest extends TestCase
         ]);
 
         $response = $this->app->make(YandexPddClient::class)
-            ->addDnsRecord('token', 'example.com', DnsRecordType::A, 'phpunit', '127.0.0.2');
+            ->token('token')
+            ->addDnsRecord('example.com', DnsRecordType::A, 'phpunit', '127.0.0.2');
 
         $this->assertTrue($response->successful);
         $this->assertSame('example.com', $response->domain);
@@ -66,7 +68,8 @@ class YandexPddClientTest extends TestCase
         ]);
 
         $response = $this->app->make(YandexPddClient::class)
-            ->deleteDnsRecord('token', 'example.com', 1);
+            ->token('token')
+            ->deleteDnsRecord('example.com', 1);
 
         $this->assertSame('example.com', $response->domain);
         $this->assertTrue($response->successful);
@@ -79,7 +82,8 @@ class YandexPddClientTest extends TestCase
         ]);
 
         $response = $this->app->make(YandexPddClient::class)
-            ->editDnsRecord('token', 'example.com', 1, DnsRecordType::A, 'phpunit', '127.0.0.2');
+            ->token('token')
+            ->editDnsRecord('example.com', 1, DnsRecordType::A, 'phpunit', '127.0.0.2');
 
         $this->assertTrue($response->successful);
         $this->assertSame('example.com', $response->domain);
@@ -96,7 +100,8 @@ class YandexPddClientTest extends TestCase
         ]);
 
         $response = $this->app->make(YandexPddClient::class)
-            ->dnsRecords('token', 'example.com');
+            ->token('token')
+            ->dnsRecords('example.com');
 
         $this->assertSame('example.com', $response->domain);
         $this->assertTrue($response->successful);
@@ -109,7 +114,8 @@ class YandexPddClientTest extends TestCase
         ]);
 
         $response = $this->app->make(YandexPddClient::class)
-            ->domains('token');
+            ->token('token')
+            ->domains();
 
         $this->assertTrue($response->successful);
     }
@@ -121,7 +127,8 @@ class YandexPddClientTest extends TestCase
         ]);
 
         $response = $this->app->make(YandexPddClient::class)
-            ->emailAdd('token', 'example.com', 'me', 'pass');
+            ->token('token')
+            ->emailAdd('example.com', 'me', 'pass');
 
         $this->assertTrue($response->successful);
         $this->assertSame('example.com', $response->domain);
@@ -137,7 +144,8 @@ class YandexPddClientTest extends TestCase
         $this->expectException(RequestException::class);
 
         $this->app->make(YandexPddClient::class)
-            ->emailAdd('token', 'example.com', 'me', 'pass');
+            ->token('token')
+            ->emailAdd('example.com', 'me', 'pass');
     }
 
     public function testEmails()
@@ -147,7 +155,8 @@ class YandexPddClientTest extends TestCase
         ]);
 
         $response = $this->app->make(YandexPddClient::class)
-            ->emails('token', 'example.com');
+            ->token('token')
+            ->emails('example.com');
 
         $this->assertTrue($response->successful);
     }
@@ -159,7 +168,8 @@ class YandexPddClientTest extends TestCase
         ]);
 
         $response = $this->app->make(YandexPddClient::class)
-            ->setEmailPassword('token', 'example.com', 'me@example.com', 'password');
+            ->token('token')
+            ->setEmailPassword('example.com', 'me@example.com', 'password');
 
         $this->assertTrue($response->successful);
     }

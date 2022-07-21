@@ -12,7 +12,8 @@ class FindYandexPddDnsRecordAction
     public function execute(string $token, string $domain, int $id): DnsRecord
     {
         return $this->yandexPdd
-            ->dnsRecords($token, $domain)
+            ->token($token)
+            ->dnsRecords($domain)
             ->records
             ->firstWhere('id', $id);
     }

@@ -14,7 +14,9 @@ class YandexPddDkimStatus extends Command
         /** @var Domain $domain */
         $domain = Domain::where('domain', $this->argument('domain'))->firstOrFail();
 
-        $response = $yandexPdd->dkimStatus($domain->yandexUser->token, $domain->domain, true);
+        $response = $yandexPdd
+            ->token($domain->yandexUser->token)
+            ->dkimStatus($domain->domain, true);
 
         echo $response->secretKey;
     }

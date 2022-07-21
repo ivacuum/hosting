@@ -11,14 +11,19 @@ class YandexPddDnsRecordController
         return view('acp.domains.ns_records', [
             'model' => $domain,
             'records' => $domain->yandex_user_id
-                ? $yandexPdd->dnsRecords($domain->yandexUser->token, $domain->domain)->records
+                ? $yandexPdd
+                    ->token($domain->yandexUser->token)
+                    ->dnsRecords($domain->domain)
+                    ->records
                 : collect(),
         ]);
     }
 
     public function destroy(Domain $domain, int $id, YandexPddClient $yandexPdd)
     {
-        $yandexPdd->deleteDnsRecord($domain->yandexUser->token, $domain->domain, $id);
+        $yandexPdd
+            ->token($domain->yandexUser->token)
+            ->deleteDnsRecord($domain->domain, $id);
 
         return back();
     }

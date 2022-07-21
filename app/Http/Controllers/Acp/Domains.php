@@ -88,7 +88,9 @@ class Domains extends Controller
         foreach ($logins as $login) {
             $password = \Str::random(20);
 
-            $yandexPdd->emailAdd($domain->yandexUser->token, $domain->domain, $login, $password);
+            $yandexPdd
+                ->token($domain->yandexUser->token)
+                ->emailAdd($domain->domain, $login, $password);
 
             $mailboxes[] = [
                 'user' => $login,
@@ -148,7 +150,9 @@ class Domains extends Controller
     {
         return view('acp.domains.mailboxes', [
             'model' => $domain,
-            'mailboxes' => $yandexPdd->emails($domain->yandexUser->token, $domain->domain),
+            'mailboxes' => $yandexPdd
+                ->token($domain->yandexUser->token)
+                ->emails($domain->domain),
         ]);
     }
 

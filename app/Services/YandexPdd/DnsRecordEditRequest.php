@@ -28,7 +28,7 @@ class DnsRecordEditRequest implements HttpPost
 
     public function jsonSerialize()
     {
-        return collect([
+        return [
             'ttl' => $this->ttl,
             'port' => $this->port,
             'domain' => $this->domain,
@@ -38,8 +38,6 @@ class DnsRecordEditRequest implements HttpPost
             'priority' => $this->priority,
             'record_id' => $this->id,
             'subdomain' => $this->subdomain,
-        ])
-            ->reject(fn ($value) => $value === null)
-            ->all();
+        ];
     }
 }

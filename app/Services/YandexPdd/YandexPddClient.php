@@ -1,5 +1,6 @@
 <?php namespace App\Services\YandexPdd;
 
+use App\Action\FilterNullsAction;
 use App\Http\HttpPost;
 use App\Http\HttpRequest;
 use Illuminate\Http\Client\Factory;
@@ -8,12 +9,13 @@ class YandexPddClient
 {
     private const API_URL = 'https://pddimp.yandex.ru/api2/';
 
-    public function __construct(private Factory $http)
+    private string $pddToken;
+
+    public function __construct(private Factory $http, private FilterNullsAction $filterNulls)
     {
     }
 
     public function addDnsRecord(
-        string $pddToken,
         string $domain,
         DnsRecordType $type,
         string $subdomain,
@@ -26,11 +28,10 @@ class YandexPddClient
 
         $request = new DnsRecordAddRequest($domain, $type, $subdomain, $ttl, $content);
 
-        return new DnsRecordAddResponse($this->send($pddToken, $request));
+        return new DnsRecordAddResponse($this->send($request));
     }
 
     public function addMxDnsRecord(
-        string $pddToken,
         string $domain,
         string $subdomain,
         string $content,
@@ -39,11 +40,10 @@ class YandexPddClient
     ) {
         $request = new DnsRecordAddRequest($domain, DnsRecordType::MX, $subdomain, $ttl, $content, $priority);
 
-        return new DnsRecordAddResponse($this->send($pddToken, $request));
+        return new DnsRecordAddResponse($this->send($request));
     }
 
     public function addSrvDnsRecord(
-        string $pddToken,
         string $domain,
         string $subdomain,
         string $target,
@@ -61,32 +61,31 @@ class YandexPddClient
             target: idn_to_ascii($target, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46)
         );
 
-        return new DnsRecordAddResponse($this->send($pddToken, $request));
+        return new DnsRecordAddResponse($this->send($request));
     }
 
-    public function deleteDnsRecord(string $pddToken, string $domain, int $id)
+    public function deleteDnsRecord(string $domain, int $id)
     {
         $request = new DnsRecordDeleteRequest($domain, $id);
 
-        return new DnsRecordDeleteResponse($this->send($pddToken, $request));
+        return new DnsRecordDeleteResponse($this->send($request));
     }
 
-    public function dkimStatus(string $pddToken, string $domain, bool $askSecretKey = false)
+    public function dkimStatus(string $domain, bool $askSecretKey = false)
     {
         $request = new DkimStatusRequest($domain, $askSecretKey);
 
-        return new DkimStatusResponse($this->send($pddToken, $request));
+        return new DkimStatusResponse($this->send($request));
     }
 
-    public function domains(string $pddToken, int $page = 1)
+    public function domains(int $page = 1)
     {
         $request = new DomainsRequest($page);
 
-        return new DomainsResponse($this->send($pddToken, $request));
+        return new DomainsResponse($this->send($request));
     }
 
     public function editDnsRecord(
-        string $pddToken,
         string $domain,
         int $id,
         DnsRecordType $type,
@@ -100,11 +99,10 @@ class YandexPddClient
 
         $request = new DnsRecordEditRequest($domain, $id, $type, $subdomain, $ttl, $content);
 
-        return new DnsRecordEditResponse($this->send($pddToken, $request));
+        return new DnsRecordEditResponse($this->send($request));
     }
 
     public function editMxDnsRecord(
-        string $pddToken,
         string $domain,
         int $id,
         string $subdomain,
@@ -114,11 +112,10 @@ class YandexPddClient
     ) {
         $request = new DnsRecordEditRequest($domain, $id, DnsRecordType::MX, $subdomain, $ttl, $content, $priority);
 
-        return new DnsRecordEditResponse($this->send($pddToken, $request));
+        return new DnsRecordEditResponse($this->send($request));
     }
 
     public function editSrvDnsRecord(
-        string $pddToken,
         string $domain,
         int $id,
         string $subdomain,
@@ -138,46 +135,73 @@ class YandexPddClient
             target: idn_to_ascii($target, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46)
         );
 
-        return new DnsRecordEditResponse($this->send($pddToken, $request));
+        return new DnsRecordEditResponse($this->send($request));
     }
 
-    public function emailAdd(string $pddToken, string $domain, string $login, string $password)
+    public function emailAdd(string $domain, string $login, string $password)
     {
         $request = new EmailAddRequest($domain, $login, $password);
 
-        return new EmailAddResponse($this->send($pddToken, $request));
+        return new EmailAddResponse($this->send($request));
     }
 
-    public function emails(string $pddToken, string $domain)
+    public function emails(string $domain)
     {
         $request = new EmailsRequest($domain);
 
-        return new EmailsResponse($this->send($pddToken, $request));
+        return new EmailsResponse($this->send($request));
     }
 
-    public function dnsRecords(string $pddToken, string $domain)
+    public function dnsRecords(string $domain)
     {
         $request = new DnsRecordsRequest($domain);
 
-        return new DnsRecordsResponse($this->send($pddToken, $request));
+        return new DnsRecordsResponse($this->send($request));
     }
 
-    public function setEmailPassword(string $pddToken, string $domain, string $email, string $password)
+    public function setEmailPassword(string $domain, string $email, string $password)
     {
         $request = new EmailEditRequest($domain, $email, $password);
 
-        return new EmailEditResponse($this->send($pddToken, $request));
+        return new EmailEditResponse($this->send($request));
     }
 
-    private function send(string $pddToken, HttpRequest $request)
+    public function token(string $token)
+    {
+        $yandexPdd = clone $this;
+        $yandexPdd->pddToken = $token;
+
+        return $yandexPdd;
+    }
+
+    private function configureClient()
+    {
+        return $this->http
+            ->baseUrl(self::API_URL)
+            ->timeout(10)
+            ->withHeaders(['PddToken' => $this->pddToken]);
+    }
+
+    private function payload(HttpRequest $request)
+    {
+        $payload = $request->jsonSerialize();
+
+        if (is_array($payload)) {
+            return $this->filterNulls->execute($request->jsonSerialize());
+        }
+
+        return $payload;
+    }
+
+    private function send(HttpRequest $request)
     {
         if ($request instanceof HttpPost) {
-            $response = $this->configureClient($pddToken)
+            $response = $this->configureClient()
                 ->bodyFormat('query')
-                ->post($request->endpoint(), $request->jsonSerialize());
+                ->post($request->endpoint(), $this->payload($request));
         } else {
-            $response = $this->configureClient($pddToken)
-                ->get($request->endpoint(), $request->jsonSerialize());
+            $response = $this->configureClient()
+                ->get($request->endpoint(), $this->payload($request));
         }
 
         if ($response->json('error')) {
@@ -185,13 +209,5 @@ class YandexPddClient
         }
 
         return $response;
-    }
-
-    private function configureClient(string $pddToken)
-    {
-        return $this->http
-            ->baseUrl(self::API_URL)
-            ->timeout(10)
-            ->withHeaders(['PddToken' => $pddToken]);
     }
 }
