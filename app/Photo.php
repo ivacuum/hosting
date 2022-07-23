@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property string $slug
  * @property string $lat
  * @property string $lon
- * @property Cast\PointCast $point
+ * @property Spatial\Point $point
  * @property PhotoStatus $status
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at

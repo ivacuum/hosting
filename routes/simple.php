@@ -12,3 +12,4 @@ Route::post('ajax/beacon', Controllers\BeaconController::class);
 Route::view('cv', 'cv');
 Route::get('ip', Ivacuum\Generic\Controllers\PrintIpController::class);
 Route::get('resize/{width}x{height}', Controllers\ResizeImage::class);
+Route::post('telegram/webhook', Controllers\TelegramWebhookController::class);
