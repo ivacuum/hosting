@@ -2,6 +2,7 @@
 
 use App\Http\Requests\TelegramWebhook;
 use App\Photo;
+use App\Scope\PhotoOnMapScope;
 use App\Scope\PhotoPublishedScope;
 use Illuminate\Log\Logger;
 use Ivacuum\Generic\Telegram\InlineKeyboardButton;
@@ -63,6 +64,7 @@ class TelegramWebhookController
         /** @var Photo $photo */
         $photo = Photo::query()
             ->tap(new PhotoPublishedScope)
+            ->tap(new PhotoOnMapScope)
             ->inRandomOrder()
             ->first();
 
