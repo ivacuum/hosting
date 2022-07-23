@@ -41,6 +41,8 @@ class TelegramWebhookController
         if (app()->isLocal()) {
             $logger->info(json_encode($request->all(), \JSON_PRETTY_PRINT));
         }
+
+        event(new \App\Events\Stats\TelegramWebhookReceived);
     }
 
     private function onCallbackQueryPhotoOnMap(TelegramWebhook $request)
@@ -57,6 +59,8 @@ class TelegramWebhookController
                 )
             )
             ->sendLocation($photo->point->lat, $photo->point->lon);
+
+        event(new \App\Events\Stats\TelegramPhotoOnMapCallbackQuery);
     }
 
     private function onCommandPhoto()
@@ -79,10 +83,14 @@ class TelegramWebhookController
                     )
             )
             ->sendPhoto($photo->mobileUrl());
+
+        event(new \App\Events\Stats\TelegramPhotoCommand);
     }
 
     private function onCommandStart()
     {
         $this->telegram->sendMessage('Рановато вы на огонек, потому что инструкций по боту еще нет. Предлагаю в качестве развлечения посмотреть случайную фотографию /photo.');
+
+        event(new \App\Events\Stats\TelegramStartCommand);
     }
 }
