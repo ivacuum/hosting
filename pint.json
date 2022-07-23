@@ -1,8 +1,14 @@
 {
   "preset": "laravel",
   "rules": {
+    "braces": {
+      "position_after_anonymous_constructs": "same"
+    },
     "concat_space": {
       "spacing": "one"
+    },
+    "curly_braces_position": {
+      "anonymous_classes_opening_brace": "same_line"
     },
     "linebreak_after_opening_tag": false,
     "blank_line_after_opening_tag": false,
