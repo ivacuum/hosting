@@ -6,12 +6,18 @@ use Ivacuum\Generic\Telegram\TelegramClient;
 
 class TelegramSetWebhook extends Command
 {
-    protected $signature = 'telegram:set-webhook {host?}';
+    protected $signature = 'telegram:set-webhook {host?} {--secret}';
     protected $description = 'Set webhook address';
 
     public function handle(TelegramClient $telegram)
     {
-        dd($telegram->setWebhook($this->endpoint($this->argument('host'))));
+        $secretToken = $this->option('secret')
+            ? \Str::random()
+            : null;
+
+        $response = $telegram->setWebhook($this->endpoint($this->argument('host')), $secretToken);
+
+        dd($response, "Secret token: {$secretToken}");
     }
 
     private function endpoint(?string $host): string

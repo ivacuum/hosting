@@ -17,10 +17,6 @@ return [
         'proxy' => env('RTO_PROXY'),
     ],
 
-    'telegram-bot-api' => [
-        'token' => env('TELEGRAM_BOT_TOKEN'),
-    ],
-
     'vk' => [
         'access_token' => env('VK_ACCESS_TOKEN'),
         'client_id' => env('VK_CLIENT_ID'),

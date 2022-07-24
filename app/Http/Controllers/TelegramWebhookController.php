@@ -17,6 +17,10 @@ class TelegramWebhookController
 
     public function __invoke(Logger $logger, TelegramWebhook $request)
     {
+        if ($request->shouldIgnoreWebhook) {
+            return;
+        }
+
         $this->telegram = $this->telegram->chat($request->chatId);
 
         if ($request->message && str_starts_with($request->message->text, '/')) {

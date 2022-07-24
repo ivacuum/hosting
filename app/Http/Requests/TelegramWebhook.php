@@ -8,6 +8,7 @@ class TelegramWebhook extends FormRequest
 {
     public readonly ?int $chatId;
     public readonly ?int $messageId;
+    public readonly bool $shouldIgnoreWebhook;
     public readonly Message|null $message;
     public readonly CallbackQuery|null $callbackQuery;
 
@@ -33,5 +34,6 @@ class TelegramWebhook extends FormRequest
         $this->callbackQuery = $this->has('callback_query')
             ? CallbackQuery::fromArray($this->json('callback_query'))
             : null;
+        $this->shouldIgnoreWebhook = $this->header('X-Telegram-Bot-Api-Secret-Token') !== config('cfg.telegram.webhook_secret_token');
     }
 }

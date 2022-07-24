@@ -99,11 +99,12 @@ class TelegramClientTest extends TestCase
         config(['cfg.telegram.bot_token' => '1234:token']);
 
         app(TelegramClient::class)
-            ->setWebhook('https://localhost/telegram/webhook');
+            ->setWebhook('https://localhost/telegram/webhook', 'secret');
 
         \Http::assertSent(function (Request $request) {
             return $request->url() === 'https://api.telegram.org/bot1234:token/setWebhook'
-                && $request['url'] === 'https://localhost/telegram/webhook';
+                && $request['url'] === 'https://localhost/telegram/webhook'
+                && $request['secret_token'] === 'secret';
         });
     }
 }
