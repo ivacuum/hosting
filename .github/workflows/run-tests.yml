@@ -71,3 +71,6 @@ jobs:
 
       - name: Run PHPUnit
         run: composer test
+
+      - name: Run Laravel Pint
+        run: composer pint
