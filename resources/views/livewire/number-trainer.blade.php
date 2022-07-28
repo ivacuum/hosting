@@ -90,7 +90,7 @@
   <div>
     <div class="border dark:border-slate-700 rounded overflow-hidden">
       <div class="border-b dark:border-slate-700 bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-400 px-4 py-2 font-medium leading-tight text-lg" itemprop="name">@lang('Настройки')</div>
-      <div class="grid gap-6 px-4 py-3">
+      <form class="grid gap-6 px-4 py-3" wire:submit.prevent>
         <div>
           <div class="h5 mb-0">@lang('Язык')</div>
           <div class="text-gray-500 text-sm mb-2">
@@ -177,7 +177,7 @@
             </label>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
   <div>
