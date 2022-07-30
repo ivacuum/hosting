@@ -1,12 +1,10 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\TelegramWebhook;
-use App\Photo;
-use App\Scope\PhotoOnMapScope;
-use App\Scope\PhotoPublishedScope;
+use App\Jobs\TelegramPhotoCommandJob;
+use App\Jobs\TelegramPhotoOnMapCallbackQueryJob;
+use App\Jobs\TelegramStartCommandJob;
 use Illuminate\Log\Logger;
-use Ivacuum\Generic\Telegram\InlineKeyboardButton;
-use Ivacuum\Generic\Telegram\InlineKeyboardMarkup;
 use Ivacuum\Generic\Telegram\TelegramClient;
 
 class TelegramWebhookController
@@ -25,8 +23,8 @@ class TelegramWebhookController
 
         if ($request->message && str_starts_with($request->message->text, '/')) {
             match ($request->message->text) {
-                '/photo' => $this->onCommandPhoto(),
-                '/start' => $this->onCommandStart(),
+                '/photo' => $this->onCommandPhoto($request),
+                '/start' => $this->onCommandStart($request),
                 default => null,
             };
         }
@@ -51,50 +49,18 @@ class TelegramWebhookController
 
     private function onCallbackQueryPhotoOnMap(TelegramWebhook $request)
     {
-        $photo = Photo::find(str($request->callbackQuery->data)->after('photoOnMap:'));
+        $photoId = str($request->callbackQuery->data)->after('photoOnMap:')->toString();
 
-        $www = url(to('photos/map', ['photo' => $photo->slug]));
-
-        $this->telegram
-            ->replyToMessageId($request->messageId)
-            ->replyMarkup(
-                InlineKeyboardMarkup::make()->addRow(
-                    new InlineKeyboardButton('🗺 Карта на сайте', $www)
-                )
-            )
-            ->sendLocation($photo->point->lat, $photo->point->lon);
-
-        event(new \App\Events\Stats\TelegramPhotoOnMapCallbackQuery);
+        dispatch(new TelegramPhotoOnMapCallbackQueryJob($request->chatId, $photoId, $request->messageId));
     }
 
-    private function onCommandPhoto()
+    private function onCommandPhoto(TelegramWebhook $request)
     {
-        /** @var Photo $photo */
-        $photo = Photo::query()
-            ->tap(new PhotoPublishedScope)
-            ->tap(new PhotoOnMapScope)
-            ->inRandomOrder()
-            ->first();
-
-        $www = url($photo->rel->www('#' . basename($photo->slug)));
-
-        $this->telegram
-            ->replyMarkup(
-                InlineKeyboardMarkup::make()
-                    ->addRow(
-                        new InlineKeyboardButton('📝 Контекст', $www),
-                        new InlineKeyboardButton('📍 Карта', callbackData: "photoOnMap:{$photo->id}")
-                    )
-            )
-            ->sendPhoto($photo->mobileUrl());
-
-        event(new \App\Events\Stats\TelegramPhotoCommand);
+        dispatch(new TelegramPhotoCommandJob($request->chatId));
     }
 
-    private function onCommandStart()
+    private function onCommandStart(TelegramWebhook $request)
     {
-        $this->telegram->sendMessage('Рановато вы на огонек, потому что инструкций по боту еще нет. Предлагаю в качестве развлечения посмотреть случайную фотографию /photo.');
-
-        event(new \App\Events\Stats\TelegramStartCommand);
+        dispatch(new TelegramStartCommandJob($request->chatId));
     }
 }
