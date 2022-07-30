@@ -11,13 +11,25 @@ class BeaconTest extends TestCase
     public function testEmptyEvent()
     {
         $this->post('ajax/beacon', $this->payload([['event' => '']]))
-            ->assertSessionHasErrors('events.*.event');
+            ->assertInvalid(['events.0.event' => 'обязательно для заполнения']);
     }
 
     public function testInvalidPayload()
     {
         $this->post('ajax/beacon', $this->payload(['bogus' => 'is real']))
-            ->assertSessionHasErrors('events.*.event');
+            ->assertInvalid(['events.bogus.event' => 'обязательно для заполнения']);
+    }
+
+    public function testInvalidPayloadNoEvents()
+    {
+        $this->post('ajax/beacon', ['bogus' => 'is real'])
+            ->assertInvalid(['events' => 'обязательно для заполнения']);
+    }
+
+    public function testInvalidPayloadEventsNotJson()
+    {
+        $this->post('ajax/beacon', ['events' => 'not json'])
+            ->assertInvalid(['events' => 'обязательно для заполнения']);
     }
 
     /** @dataProvider simpleEvents */
