@@ -65,6 +65,7 @@ class Dev
 
                 if (!$q) {
                     $lines->push($json);
+
                     continue;
                 }
 

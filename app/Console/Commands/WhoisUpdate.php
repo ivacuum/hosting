@@ -16,6 +16,7 @@ class WhoisUpdate extends Command
         foreach (Domain::tap(new DomainWhoisReadyScope)->orderBy('paid_till')->get() as $domain) {
             if (empty($data = $getWhoisData->execute($domain->domain))) {
                 $this->error("Failed to update whois data for {$domain->domain}");
+
                 continue;
             }
 

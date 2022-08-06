@@ -158,6 +158,7 @@ class HiraganaRomanizer
             if ($kana === 'っ') {
                 if ($nextKana && $nextRomaji = self::DICTIONARY[$nextKana] ?? '') {
                     $result .= mb_substr($nextRomaji, 0, 1);
+
                     continue;
                 }
 
@@ -165,6 +166,7 @@ class HiraganaRomanizer
             } elseif (in_array($nextKana, ['ゃ', 'ょ', 'ゅ'])) {
                 if ($nextRomaji = self::DICTIONARY[$kana . $nextKana] ?? '') {
                     $result .= $nextRomaji;
+
                     continue;
                 }
 

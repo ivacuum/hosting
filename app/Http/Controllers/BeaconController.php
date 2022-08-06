@@ -22,6 +22,7 @@ class BeaconController
         foreach ($request->events as $event) {
             if (isset($metrics[$event->event])) {
                 event(new $metrics[$event->event]);
+
                 continue;
             }
 
