@@ -45,6 +45,7 @@
         {{ $this->reveal ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
         wire:model.defer="answer"
         wire:keydown.enter="check"
+        wire:keydown.space.prevent="check"
       >
     </div>
 
