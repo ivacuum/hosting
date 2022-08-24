@@ -381,7 +381,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_4777.jpg'])
 
 @component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2019.12.20.jpg'])
-  <h5 class="mb-1">@ru Сет @en Set @endru 1</h5>
+  <h5 class="font-medium text-lg mb-1">@ru Сет @en Set @endru 1</h5>
   <ol class="list-inside pl-0">
     <li>I LUV IT</li>
     <li><a class="link" href="https://www.youtube.com/watch?v=OrCDjz1YNJI">오늘밤 새</a> <span class="text-sm text-muted">All Night Long</span></li>
@@ -392,7 +392,7 @@
     <li><a class="link" href="https://www.youtube.com/watch?v=AyKogyLA2WE">GENTLEMAN</a></li>
   </ol>
 
-  <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 2</h5>
+  <h5 class="font-medium text-lg mt-4 mb-1">@ru Сет @en Set @endru 2</h5>
   <ol class="list-inside pl-0" start="8">
     <li><a class="link" href="https://www.youtube.com/watch?v=PIxgQmd2K_w">챔피언</a> <span class="text-sm text-muted">Champion</span></li>
     <li>나팔바지 <span class="text-sm text-muted">Napal Baji</span></li>
@@ -402,7 +402,7 @@
     <li>White Night</li>
   </ol>
 
-  <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 3</h5>
+  <h5 class="font-medium text-lg mt-4 mb-1">@ru Сет @en Set @endru 3</h5>
   <ol class="list-inside pl-0" start="14">
     <li>Right Now</li>
     <li>아버지 <span class="text-sm text-muted">Father</span></li>
@@ -411,7 +411,7 @@
     <li>강남스타일 <span class="text-sm text-muted">Gangnam Style</span></li>
   </ol>
 
-  <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 4</h5>
+  <h5 class="font-medium text-lg mt-4 mb-1">@ru Сет @en Set @endru 4</h5>
   <ol class="list-inside pl-0" start="19">
     <li>We are the One</li>
     <li><a class="link" href="https://www.youtube.com/watch?v=dQUNhQ0d02c">연예인</a> <span class="text-sm text-muted">Entertainer</span></li>
@@ -419,7 +419,7 @@
     <li><a class="link" href="https://www.youtube.com/watch?v=Dyjtby7j-JA">에술이야</a> <span class="text-sm text-muted">It's Art</span></li>
   </ol>
 
-  <h5 class="mt-4 mb-1">Encore 1</h5>
+  <h5 class="font-medium text-lg mt-4 mb-1">Encore 1</h5>
   <ol class="list-inside pl-0" start="23">
     <li>순정</li>
     <li><a class="link" href="https://www.youtube.com/watch?v=E8b5bDoTLC0">쿵따리 샤바라</a></li>
@@ -438,7 +438,7 @@
     <li><a class="link" href="https://www.youtube.com/watch?v=DMP3nPT8v6E">마지막 장면</a> <span class="text-sm text-muted">Last Scene</span></li>
   </ol>
 
-  <h5 class="mt-4 mb-1"><a class="link" href="https://www.youtube.com/watch?v=R8CWLYfMnUE">Encore 2</a></h5>
+  <h5 class="font-medium text-lg mt-4 mb-1"><a class="link" href="https://www.youtube.com/watch?v=R8CWLYfMnUE">Encore 2</a></h5>
   <ol class="list-inside pl-0" start="38">
     <li>챔피언 <span class="text-sm text-muted">Champion</span></li>
     <li>연예인 <span class="text-sm text-muted">Entertainer</span></li>

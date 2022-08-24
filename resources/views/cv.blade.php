@@ -63,7 +63,7 @@ body {
           <img class="my-picture bg-white mr-4 p-1 w-32 h-32 max-w-none" src="https://life.ivacuum.org/me.jpg" alt="">
         </div>
         <div>
-          <h1 class="my-name h3 uppercase">@ru Сергей Панков @en Sergey Pankov @endru</h1>
+          <h1 class="text-2xl mb-0 font-semibold tracking-tight uppercase">@ru Сергей Панков @en Sergey Pankov @endru</h1>
           <h2 class="text-teal-600 h4">@ru Веб-программист (Laravel PHP, Vue.js) @en Laravel PHP + Vue.js Developer @endru</h2>
           @ru
             <div>Заинтересован в создании полезных людям веб-сервисов. Веб-технологиями увлекаюсь с 2003 года. С кодом моих проектов можно ознакомиться на <a href="https://github.com/ivacuum" rel="nofollow">Гитхабе</a>. Только удаленная работа.</div>

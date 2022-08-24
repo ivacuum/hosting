@@ -7,7 +7,7 @@
     <div class="lg:sticky lg:top-4">
       <nav>
         @foreach ($tree as $id => $category)
-          <h4 class="{{ $loop->first ? '' : 'mt-6' }} whitespace-nowrap">
+          <h4 class="font-medium text-xl mb-1 {{ $loop->first ? '' : 'mt-6' }} whitespace-nowrap">
             @if (!empty($categoryId) && $id == $categoryId)
               <mark>{{ $category['title'] }}</mark>
             @else
@@ -76,7 +76,7 @@
       <?php /** @var App\Magnet $magnet */ ?>
       @foreach ($magnets as $magnet)
         @if (null === $lastDate || !$magnet->registered_at->isSameDay($lastDate))
-          <h6 class="font-medium mb-2 {{ $loop->first ? 'mt-0' : 'mt-6' }}">{{ $magnet->fullDate() }}</h6>
+          <div class="font-medium mb-2 {{ $loop->first ? 'mt-0' : 'mt-6' }}">{{ $magnet->fullDate() }}</div>
           <?php $lastDate = $magnet->registered_at ?>
         @endif
         <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start torrents-list-container antialiased hover:dark:bg-slate-800 js-torrents-views-observer" data-id="{{ $magnet->id }}">

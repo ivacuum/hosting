@@ -194,7 +194,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_4856.jpg'])
 
 @component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2019.12.20.jpg'])
-  <h5 class="mb-1">@ru Сет @en Set @endru 1</h5>
+  <h5 class="font-medium text-lg mb-1">@ru Сет @en Set @endru 1</h5>
   <ol class="list-inside pl-0">
     <li>I LUV IT</li>
     <li>오늘밤 새 <span class="text-sm text-muted">All Night Long</span></li>
@@ -205,7 +205,7 @@
     <li>GENTLEMAN</li>
   </ol>
 
-  <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 2</h5>
+  <h5 class="font-medium text-lg mt-4 mb-1">@ru Сет @en Set @endru 2</h5>
   <ol class="list-inside pl-0" start="8">
     <li>챔피언 <span class="text-sm text-muted">Champion</span></li>
     <li>나팔바지 <span class="text-sm text-muted">Napal Baji</span></li>
@@ -215,7 +215,7 @@
     <li>White Night</li>
   </ol>
 
-  <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 3</h5>
+  <h5 class="font-medium text-lg mt-4 mb-1">@ru Сет @en Set @endru 3</h5>
   <ol class="list-inside pl-0" start="14">
     <li>Right Now</li>
     <li>아버지 <span class="text-sm text-muted">Father</span></li>
@@ -224,7 +224,7 @@
     <li>강남스타일 <span class="text-sm text-muted">Gangnam Style</span></li>
   </ol>
 
-  <h5 class="mt-4 mb-1">@ru Сет @en Set @endru 4</h5>
+  <h5 class="font-medium text-lg mt-4 mb-1">@ru Сет @en Set @endru 4</h5>
   <ol class="list-inside pl-0" start="19">
     <li>We are the One</li>
     <li>연예인 <span class="text-sm text-muted">Entertainer</span></li>
@@ -232,7 +232,7 @@
     <li>에술이야 <span class="text-sm text-muted">It's Art</span></li>
   </ol>
 
-  <h5 class="mt-4 mb-1">Encore 1</h5>
+  <h5 class="font-medium text-lg mt-4 mb-1">Encore 1</h5>
   <ol class="list-inside pl-0" start="23">
     <li>순정</li>
     <li>쿵따리 샤바라</li>
@@ -251,7 +251,7 @@
     <li>마지막 장면 <span class="text-sm text-muted">Last Scene</span></li>
   </ol>
 
-  <h5 class="mt-4 mb-1">Encore 2</h5>
+  <h5 class="font-medium text-lg mt-4 mb-1">Encore 2</h5>
   <ol class="list-inside pl-0" start="38">
     <li>챔피언 <span class="text-sm text-muted">Champion</span></li>
     <li>연예인 <span class="text-sm text-muted">Entertainer</span></li>

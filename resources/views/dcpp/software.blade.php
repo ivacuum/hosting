@@ -86,7 +86,7 @@
         <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
           @if (count($software) > 1)
             <div>
-              <h4>@lang('dcpp.earlier_versions')</h4>
+              <h4 class="font-medium text-xl mb-1">@lang('dcpp.earlier_versions')</h4>
               <ul>
                 @foreach ($software as $soft)
                   @continue ($loop->index === 0)
@@ -97,7 +97,7 @@
           @endif
           @if (!empty($developerSite))
             <div>
-              <h4>@lang('dcpp.pages')</h4>
+              <h4 class="font-medium text-xl mb-1">@lang('dcpp.pages')</h4>
               <ul>
                 <li>
                   <a class="link" href="{{ $developerSite }}">@lang('dcpp.developer_site')</a>

@@ -14,7 +14,7 @@
 
 @section('download_latest')
 <div {{ Str::contains($cssClasses, ['linux', 'macos']) ? 'hidden' : '' }} class="js-dcpp-client">
-  <h4>@lang('dcpp.for') @svg (windows) Windows</h4>
+  <h4 class="font-medium text-xl mb-1">@lang('dcpp.for') @svg (windows) Windows</h4>
   <a
     class="btn btn-success my-1 mr-2 text-lg px-4 py-2"
     href="@lng/files/49/dl"
@@ -34,7 +34,7 @@
 </div>
 
 <div {{ !Str::contains($cssClasses, ['linux']) ? 'hidden' : '' }} class="js-dcpp-client">
-  <h4 class="mt-4">@lang('dcpp.for') @svg (linux) Linux</h4>
+  <h4 class="font-medium text-xl mb-1 mt-4">@lang('dcpp.for') @svg (linux) Linux</h4>
   <a
     class="btn btn-success my-1 mr-2 text-lg px-4 py-2"
     href="@lng/files/74/dl"
@@ -54,7 +54,7 @@
 </div>
 
 <div {{ !Str::contains($cssClasses, ['macos']) ? 'hidden' : '' }} class="js-dcpp-client">
-  <h4 class="mt-4">@lang('dcpp.for') @svg (apple) macOS</h4>
+  <h4 class="font-medium text-xl mb-1 mt-4">@lang('dcpp.for') @svg (apple) macOS</h4>
   <a
     class="btn btn-success my-1 mr-2 text-lg px-4 py-2"
     href="@lng/files/51/dl"

@@ -3,7 +3,7 @@
 @extends('base')
 
 @section('content')
-<h1 class="text-lg md:hidden mb-6">
+<h1 class="font-semibold text-lg md:hidden mb-6">
   @ru Сергей Панков @en Sergey Pankov @endru
   <span class="text-muted">
     &middot;
