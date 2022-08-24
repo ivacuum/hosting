@@ -5,7 +5,7 @@
  */
 $alt = $isCrawler && isset($trip) ? $trip->imgAltText() : '';
 ?>
-<div class="-mt-2 mb-6 mobile-wide">
+<div class="-mt-2 mb-6 -mx-4 sm:mx-0">
   <div class="max-w-[1000px] mx-auto text-center">
     @foreach ($pics as $pic)
       <div class="pb-[75%] relative js-shortcuts-item" id="{{ $pic }}">

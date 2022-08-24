@@ -6,7 +6,7 @@
   @include('tpl.form_errors')
 
   <div class="mb-6">
-    <img class="image-fit-viewport mobile-wide sm:rounded max-w-full" src="{{ $this->photo->originalUrl() }}" alt="">
+    <img class="image-fit-viewport -mx-4 sm:mx-0 sm:rounded max-w-full" src="{{ $this->photo->originalUrl() }}" alt="">
   </div>
 
   <div class="mb-4">

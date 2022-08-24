@@ -3,7 +3,7 @@
 @section('content')
 <div
   id="photos_map"
-  class="photo-map-container mobile-wide -mb-6"
+  class="photo-map-container -mx-4 sm:mx-0 -mb-6"
   data-action="{{ fullUrl() }}"
   data-lat="{{ $photo->lat ?? Request::input('lat', 52) }}"
   data-lon="{{ $photo->lon ?? Request::input('lon', 30) }}"

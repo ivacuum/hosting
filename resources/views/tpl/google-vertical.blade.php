@@ -1,6 +1,6 @@
 @if (App::isProduction())
   <ins
-    class="adsbygoogle block mobile-wide"
+    class="adsbygoogle block -mx-4 sm:mx-0"
     data-ad-client="ca-pub-7802683087624570"
     data-ad-slot="3039258747"
     data-ad-format="auto"

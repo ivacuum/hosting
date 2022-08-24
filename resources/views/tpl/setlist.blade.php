@@ -9,7 +9,7 @@
     @endif
     {{ $slot }}
   </div>
-  <div class="mobile-wide">
+  <div class="-mx-4 sm:mx-0">
     <img class="mx-auto sm:rounded" src="{{ $cover }}" alt="">
   </div>
 </div>

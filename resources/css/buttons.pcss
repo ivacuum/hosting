@@ -1,41 +1,24 @@
 .btn {
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
-  @apply inline-block rounded px-3 text-center;
-}
-
-.btn:focus {
-  @apply outline-none;
-}
-
-.btn:hover {
-  @apply cursor-pointer;
+  @apply inline-block rounded px-3 text-center focus:outline-none hover:cursor-pointer;
 }
 
 .btn-default {
   background: #fff linear-gradient(180deg, #fff, #ebebeb) repeat-x;
-  @apply border border-grey-300 text-grey-900;
+  @apply border border-grey-300 hover:border-grey-400 text-grey-900 hover:text-grey-900;
 }
 
 .btn-default:hover {
   background: #ececec -webkit-gradient(linear, left top, left bottom, from(#efefef), to(#ececec)) repeat-x;
-  @apply border-grey-400 text-grey-900;
 }
 
 .btn-primary {
-  @apply bg-blueish-700 border border-transparent text-white;
-}
-
-.btn-primary:hover {
-  @apply bg-blueish-800 text-white;
+  @apply bg-blueish-700 hover:bg-blueish-800 border border-transparent text-white hover:text-white;
 }
 
 .btn-success {
-  @apply bg-greenish-600 border border-transparent text-white;
-}
-
-.btn-success:hover {
-  @apply bg-greenish-700 text-white;
+  @apply bg-greenish-600 hover:bg-greenish-700 border border-transparent text-white hover:text-white;
 }
 
 .sticky-bottom-buttons {

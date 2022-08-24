@@ -1,34 +1,22 @@
-.is-desktop .desktop-hidden {
-  display: none;
-}
-
-.hanging-punctuation-first {
-  hanging-punctuation: first;
-}
-
-.hide-empty:empty {
-  display: none;
-}
-
-.mobile-wide {
-  @apply -mx-4;
-}
-
-@screen sm {
-  .mobile-wide {
-    @apply mx-0;
+@layer utilities {
+  .is-desktop .desktop-hidden {
+    display: none;
   }
-}
 
-.prepend-dollar::before {
-  content: '$ ';
-}
+  .hanging-punctuation-first {
+    hanging-punctuation: first;
+  }
 
-.small-caps {
-  font-variant: small-caps;
-}
+  .prepend-dollar::before {
+    content: '$ ';
+  }
 
-[hidden],
-[v-cloak] {
-  display: none;
+  .small-caps {
+    font-variant: small-caps;
+  }
+
+  [hidden],
+  [v-cloak] {
+    display: none;
+  }
 }

@@ -13,7 +13,7 @@
       </span>
       <a class="pseudo" wire:click.prevent="shrink">@lang('Закрыть видео :title', ['title' => $this->title])</a>
     </div>
-    <div class="mt-2 mb-6 mobile-wide relative" style="padding-bottom: 56.25%">
+    <div class="mt-2 mb-6 -mx-4 sm:mx-0 relative" style="padding-bottom: 56.25%">
       <iframe
         class="absolute inset-0 w-full h-full"
         src="https://www.youtube.com/embed/{{ $this->v }}?autoplay=1{{ $this->start }}"

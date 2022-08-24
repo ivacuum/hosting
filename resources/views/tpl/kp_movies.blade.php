@@ -1,7 +1,7 @@
 <?php /** @var \App\FavoriteMovie $movie */ ?>
 
 <div
-  class="grid gap-1 mobile-wide overflow-x-scroll"
+  class="grid gap-1 -mx-4 sm:mx-0 overflow-x-scroll"
   style="grid-template-columns: repeat({{ count($movies) }}, max-content); grid-template-rows: 350px;"
 >
   @foreach ($movies as $movie)

@@ -76,7 +76,7 @@
       <?php /** @var App\Magnet $magnet */ ?>
       @foreach ($magnets as $magnet)
         @if (null === $lastDate || !$magnet->registered_at->isSameDay($lastDate))
-          <h6 class="{{ $loop->first ? 'mt-0' : 'mt-6' }}">{{ $magnet->fullDate() }}</h6>
+          <h6 class="font-medium mb-2 {{ $loop->first ? 'mt-0' : 'mt-6' }}">{{ $magnet->fullDate() }}</h6>
           <?php $lastDate = $magnet->registered_at ?>
         @endif
         <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start torrents-list-container antialiased hover:dark:bg-slate-800 js-torrents-views-observer" data-id="{{ $magnet->id }}">

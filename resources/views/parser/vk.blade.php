@@ -68,7 +68,7 @@
       @if ($post['attachments'])
         <div class="mt-2">
         @if ($post['photos'] > 1)
-          <div class="mb-6 mobile-wide">
+          <div class="mb-6 -mx-4 sm:mx-0">
         @elseif ($post['photos'] == 1)
           <div class="mb-6 {{ count($post['attachments']) <= 1 ? 'mb-0' : '' }}">
         @endif

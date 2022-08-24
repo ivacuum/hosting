@@ -23,7 +23,7 @@ Mousetrap.bind('right', () => {
 @section('content')
 <div class="grid lg:grid-cols-6 gap-6 -mt-2">
   <div class="lg:col-span-5">
-    <div class="mobile-wide relative text-center">
+    <div class="-mx-4 sm:mx-0 relative text-center">
       @if ($next)
         <a
           class="absolute top-0 w-1/2 h-full z-10 left-0"

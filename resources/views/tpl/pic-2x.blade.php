@@ -1,6 +1,6 @@
 <?php /** @var \App\Trip $trip */ ?>
 
-<div class="-mt-2 mb-6 mobile-wide js-shortcuts-item" id="{{ $pic }}">
+<div class="-mt-2 mb-6 -mx-4 sm:mx-0 js-shortcuts-item" id="{{ $pic }}">
   <div class="max-w-[1000px] mx-auto text-center">
     <div class="pb-[75%] relative">
       @if ($isCrawler)
