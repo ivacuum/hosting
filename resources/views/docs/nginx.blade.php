@@ -1,7 +1,7 @@
 @extends('docs.base')
 
 @section('content')
-<h2>@lang('Nginx')</h2>
+<h2 class="font-medium text-3xl tracking-tight mb-2">@lang('Nginx')</h2>
 
 <x-terminal-pre>
 @verbatim

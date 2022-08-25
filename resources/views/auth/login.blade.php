@@ -3,7 +3,7 @@
 @section('content')
 <div class="mx-auto max-w-sm">
   <div class="text-center mb-4">
-    <h3>@lang('auth.signin_title')</h3>
+    <h3 class="font-medium text-2xl">@lang('auth.signin_title')</h3>
 
     <div class="flex gap-2 justify-center my-4">
       <div>

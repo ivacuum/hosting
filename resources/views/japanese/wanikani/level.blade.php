@@ -1,7 +1,7 @@
 @extends('japanese.wanikani.base')
 
 @section('content')
-<h1 class="h2">@lang('Уровень :level', ['level' => $level])</h1>
+<h1 class="font-medium text-3xl tracking-tight mb-2">@lang('Уровень :level', ['level' => $level])</h1>
 
 @livewire(App\Http\Livewire\RadicalList::class, ['level' => $level])
 @livewire(App\Http\Livewire\KanjiList::class, ['level' => $level])

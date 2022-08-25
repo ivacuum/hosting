@@ -3,10 +3,10 @@
 @section('content')
 <section class="pt-4 pb-12">
   <div class="container lg:max-w-3xl">
-    <h3>При использовании трекеров rutracker.org, tapochek.net и tfile.ru</h3>
+    <h3 class="font-medium text-2xl mb-2">При использовании трекеров rutracker.org, tapochek.net и tfile.ru</h3>
     <p>Эти трекеры автоматически добавляют ретрекер в каждый торрент-файл и вам нет необходимости проделывать эту операцию вручную.</p>
 
-    <h3 class="mt-12">При использовании других интернет-трекеров</h3>
+    <h3 class="font-medium text-2xl mb-2 mt-12">При использовании других интернет-трекеров</h3>
     <p>Если вы решили скачать раздачу из интернета вместе с кем-либо и если ретрекера нет в списке трекеров скачанного торрент-файла, то вам необходимо выполнить следующие действия (на примере программы uTorrent 2.0.2):</p>
     <p>
       <span class="inline-flex bg-grey-600 text-white px-2 font-medium rounded mr-1">1</span>

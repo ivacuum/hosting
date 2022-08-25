@@ -3,11 +3,11 @@
 @include('livewire')
 
 @section('content')
-<h1 class="h2">@lang('Хирагана и катакана')</h1>
+<h1 class="font-medium text-3xl tracking-tight mb-2">@lang('Хирагана и катакана')</h1>
 <hiragana-katakana></hiragana-katakana>
 
 <div class="mt-12 max-w-[600px]">
-  <div class="h3">@ru Что дальше? @en What next? @endru</div>
+  <div class="font-medium text-2xl mb-2">@ru Что дальше? @en What next? @endru</div>
   @ru
     <p>Рады, что у вас стало хорошо получаться набирать слоги! Теперь можно закрепить навык в <a class="link" href="/japanese/words-trainer">следующем тренажере</a>, который посвящен набору настоящих японских слов. Так между делом и получится запомнить как они звучат.</p>
   @en
@@ -17,18 +17,18 @@
 
 @ru
   <div class="mt-12 max-w-[600px]">
-    <div class="h3">Почему набор латиницей, а не кириллицей?</div>
+    <div class="font-medium text-2xl mb-2">Почему набор латиницей, а не кириллицей?</div>
     <p>Взгляните на <a class="link" href="/life/countries/japan">заметки и фотографии</a> из неоднократных поездок в Японию. Попробуйте на них найти кириллизированные японские надписи. Не получилось? Или получилось найти только названия городов? Что ж. Латиница поможет в поездке, а кириллица — едва ли.</p>
   </div>
 @en
   <div class="mt-12 max-w-[600px]">
-    <div class="h3">Stories about Japan</div>
+    <div class="font-medium text-2xl mb-2">Stories about Japan</div>
     <p>Quite a few <a class="link" href="/en/life/countries/japan">notes with a few thousand photos</a> were published after traveling to Japan.</p>
   </div>
 @endru
 
 <div class="mt-12 max-w-[600px]">
-  <div class="h3 mt-12">@lang('Обратная связь')</div>
+  <div class="font-medium text-2xl mb-2 mt-12">@lang('Обратная связь')</div>
   @ru
     <p>Поделитесь своим опытом использования тренажера или задайте вопрос. Мы постараемся обработать информацию и сделать тренажер еще лучше. <span class="whitespace-nowrap" lang="ja">ありがとうございます。</span></p>
   @en

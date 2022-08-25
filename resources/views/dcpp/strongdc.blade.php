@@ -43,7 +43,7 @@
 @section('software_features')
 <section class="my-0 py-12">
   <div class="container">
-    <h3 class="mb-6">
+    <h3 class="font-medium text-2xl mb-6">
       @ru
         Основные преимущества StrongDC++
       @en

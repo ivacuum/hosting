@@ -20,7 +20,7 @@
   @if ($this->files)
     <div class="my-6">
       @if (count($this->files) > 1)
-        <h3>Ссылки на все картинки</h3>
+        <h3 class="font-medium text-2xl mb-2">Ссылки на все картинки</h3>
         <div class="lg:w-4/6">
           <div>
             <div>Ссылка:</div>
@@ -29,7 +29,7 @@
             <input class="form-input select-all" type="text" value="{{ $this->linksWithTags() }}">
           </div>
         </div>
-        <h3 class="mt-12">Индивидуальные ссылки</h3>
+        <h3 class="font-medium text-2xl mb-2 mt-12">Индивидуальные ссылки</h3>
       @endif
       <div class="grid lg:grid-cols-6 gap-8 mt-4">
         @foreach ($this->links as $link)

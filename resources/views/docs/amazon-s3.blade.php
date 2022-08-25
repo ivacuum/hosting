@@ -1,7 +1,7 @@
 @extends('docs.base')
 
 @section('content')
-<h2>@lang('Amazon S3')</h2>
+<h2 class="font-medium text-3xl tracking-tight mb-2">@lang('Amazon S3')</h2>
 <p><a class="link" href="https://awspolicygen.s3.amazonaws.com/policygen.html">Официальный генератор политик доступа</a>.</p>
 
 <x-terminal-pre>

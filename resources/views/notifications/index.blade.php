@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<h2>@lang('Уведомления')</h2>
+<h2 class="font-medium text-3xl tracking-tight mb-2">@lang('Уведомления')</h2>
 @if (count($notifications))
   <?php /** @var App\Notification $notification */ ?>
   @foreach ($notifications as $notification)

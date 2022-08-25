@@ -1,7 +1,7 @@
 @extends('acp.base')
 
 @section('content')
-<h2 class="break-words">
+<h2 class="font-medium text-3xl mb-2 break-words">
   {{ $event }}
   <span class="text-base text-muted whitespace-nowrap">{{ ViewHelper::number($metrics->sum()) }}</span>
 </h2>

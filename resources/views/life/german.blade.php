@@ -3,13 +3,13 @@
 ])
 
 @section('content')
-<h1 class="tracking-tight">@lang('Немецкий')</h1>
+<h1 class="font-medium text-4xl tracking-tight mb-2">@lang('Немецкий')</h1>
 @ru
   <p class="mb-12">Конспект информации, освоенной во время изучения языка.</p>
 @endru
 
 @ru
-  <h3 class="tracking-tight">Алфавит и произношение</h3>
+  <h3 class="font-medium text-2xl tracking-tight mb-2">Алфавит и произношение</h3>
   <div class="column-width-48">
     <div class="city-entry pb-2">A <span class="text-muted">[a:]</span></div>
     <div class="city-entry pb-2">B <span class="text-muted">[be:]</span></div>
@@ -43,7 +43,7 @@
     <div class="city-entry pb-2">ß <span class="text-muted">[es'tset]</span> с</div>
   </div>
 
-  <h3 class="tracking-tight mt-6">Дифтонги</h3>
+  <h3 class="font-medium text-2xl tracking-tight mt-6 mb-2">Дифтонги</h3>
   <div class="column-width-48">
     <div class="city-entry pb-2">ai, ei <span class="text-muted">[ай]</span></div>
     <div class="city-entry pb-2">ie <span class="text-muted">[и:]</span></div>
@@ -69,7 +69,7 @@
     <div class="city-entry pb-2">ch <span class="text-muted">[ч]</span> checken</div>
   </div>
 
-  <h3 class="tracking-tight mt-6">Спряжение глаголов</h3>
+  <h3 class="font-medium text-2xl tracking-tight mt-6 mb-2">Спряжение глаголов</h3>
   <table class="table-stats">
     <thead>
     <tr>
@@ -100,7 +100,7 @@
     <li>Глаголы, основа которых оканчивается на -t, -d во 2-м и 3-м лице ед.ч. (du; er/sie/es), а также во 2-м лице мн. числа (ihr) для удобства произнесения получают дополнительную -e- перед окончанием.</li>
   </ol>
 
-  <h3 class="tracking-tight mt-6">Вопросительные слова</h3>
+  <h3 class="font-medium text-2xl tracking-tight mt-6 mb-2">Вопросительные слова</h3>
   <ul>
     <li>wer — кто?</li>
     <li>was — что?</li>
@@ -111,7 +111,7 @@
     <li>woher — откуда?</li>
   </ul>
 
-  <h3 class="tracking-tight mt-6">Числа</h3>
+  <h3 class="font-medium text-2xl tracking-tight mt-6 mb-2">Числа</h3>
   <?php
   $entries = [
     ['ru' => 1, 'de' => 'eins'],
@@ -152,7 +152,7 @@
   ?>
   @include('tpl.german-vocabulary')
 
-  <h3 class="tracking-tight mt-12">Дни недели</h3>
+  <h3 class="font-medium text-2xl tracking-tight mt-12 mb-2">Дни недели</h3>
   <?php
   $entries = [
     ['ru' => 'понедельник', 'de' => 'Montag'],
@@ -172,7 +172,7 @@
 
   <p>Промежуток времени можно выразить с помощью предлогов <strong>von</strong> и <strong>bis</strong> и дней недели без артикля.</p>
 
-  <h3 class="tracking-tight mt-12">Года</h3>
+  <h3 class="font-medium text-2xl tracking-tight mt-12 mb-2">Года</h3>
   <p>Читаются сотнями. Например, 1998 год: девятнадцать сотен, восемь и девяносто — neunzehn&middot;hundert&middot;acht&middot;und&middot;neunzig.</p>
   <div>В речи:</div>
   <p>

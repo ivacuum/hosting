@@ -16,7 +16,7 @@
     <div class="hidden md:block">
       <a class="flex gap-2 items-center mb-2 link-parent" href="@lng/magnets">
         <div class="leading-none text-3xl">🧲</div>
-        <h2 class="text-2xl mb-0"><span class="link">@lang('Магнеты')</span></h2>
+        <h2 class="font-medium text-2xl"><span class="link">@lang('Магнеты')</span></h2>
       </a>
       <div>Сервис для скачивания файлов у многочисленных пользователей сети интернет без регистрации и рейтинга.</div>
       {{--<div class="text-muted">Дата запуска: 5 января 2017 г.</div>--}}
@@ -25,7 +25,7 @@
   <div>
     <a class="flex gap-2 items-center mb-2 link-parent" href="@lng/life">
       <div class="leading-none text-3xl">📝</div>
-      <h2 class="text-2xl mb-0"><span class="link">@lang('Заметки')</span></h2>
+      <h2 class="font-medium text-2xl"><span class="link">@lang('Заметки')</span></h2>
     </a>
     @ru
       <div>Мои заметки о жизни: поездки по городам России и мира, посещенные концерты, понравившиеся фильмы и книги.</div>
@@ -37,21 +37,21 @@
   @ru
     <div class="md:hidden">
       <a class="flex items-center mb-2 link-parent" href="@lng/news">
-        <h2 class="text-2xl mb-0"><span class="link">@lang('Новости')</span></h2>
+        <h2 class="font-medium text-2xl"><span class="link">@lang('Новости')</span></h2>
       </a>
       <div>Хроника развития сайта с 2004 года.</div>
     </div>
     {{--
     <div class="hidden md:block">
       <a class="flex items-center mb-2 link-parent" href="https://kupislona.ru/">
-        <h2 class="text-2xl mb-0"><span class="link">KupiSlona.ru</span></h2>
+        <h2 class="font-medium text-2xl"><span class="link">KupiSlona.ru</span></h2>
       </a>
       <div>Доска бесплатных объявлений России. Место встречи продавцов и покупателей.</div>
       {{--<div class="text-muted">Дата запуска: 7 декабря 2015 г.</div>--}}
     {{--</div>--}}
     <div class="hidden md:block">
       <a class="flex items-center mb-2 link-parent" href="@lng/gallery">
-        <h2 class="text-2xl mb-0"><span class="link">@lang('Галерея')</span></h2>
+        <h2 class="font-medium text-2xl"><span class="link">@lang('Галерея')</span></h2>
       </a>
       <div>Хранилище изображений для последующей публикации в интернете.</div>
       {{--<p class="text-muted">Дата запуска: 8 февраля 2009 г.</p>--}}
@@ -59,7 +59,7 @@
   @endru
   <div class="hidden md:block">
     <a class="flex items-center mb-2 link-parent" href="@lng/dc">
-      <h2 class="text-2xl mb-0"><span class="link">ArtFly.DC++</span></h2>
+      <h2 class="font-medium text-2xl"><span class="link">ArtFly.DC++</span></h2>
     </a>
     @ru
       <div>Большая коллекция русских DC++ клиентов. Ответы на вопросы. Популярные хабы.</div>
@@ -71,14 +71,14 @@
   @ru
     <div class="hidden md:block">
       <a class="flex items-center mb-2 link-parent" href="http://t.ivacuum.ru">
-        <h2 class="text-2xl mb-0"><span class="link">@lang('Торренты')</span></h2>
+        <h2 class="font-medium text-2xl"><span class="link">@lang('Торренты')</span></h2>
       </a>
       <div>Исторический форум сервиса для обмена файлами внутри локальной сети Билайн.</div>
       {{--<p class="text-muted">Дата запуска: 5 июля 2010 г.</p>--}}
     </div>
     <div>
       <a class="flex items-center mb-2 link-parent" href="@lng/parser/vk">
-        <h2 class="text-2xl mb-0"><span class="link">@lang('Парсер ВК')</span></h2>
+        <h2 class="font-medium text-2xl"><span class="link">@lang('Парсер ВК')</span></h2>
       </a>
       <div>Ежедневная подборка десяти лучших постов выбранных страниц и групп ВК.</div>
       {{--<div class="text-muted">Дата запуска: 2 октября 2014 г.</div>--}}
@@ -87,7 +87,7 @@
   <div>
     <a class="flex gap-2 items-center mb-2 link-parent" href="@lng/promocodes-coupons">
       <div class="leading-none text-3xl">🎁</div>
-      <h2 class="text-2xl mb-0"><span class="link">@lang('Промокоды и купоны')</span></h2>
+      <h2 class="font-medium text-2xl"><span class="link">@lang('Промокоды и купоны')</span></h2>
     </a>
     @ru
       <div>Коллекция способов сэкономить на услугах известных сервисов.</div>
@@ -99,7 +99,7 @@
   <div>
     <a class="flex gap-2 items-center mb-2 link-parent" href="@lng/japanese">
       <div class="leading-none text-3xl">🇯🇵</div>
-      <h2 class="text-2xl mb-0"><span class="link">@lang('Японский язык')</span></h2>
+      <h2 class="font-medium text-2xl"><span class="link">@lang('Японский язык')</span></h2>
     </a>
     @ru
       <div>Тренажер для запоминания слоговых азбук. Набор ключей, кандзи и словарных слов для самостоятельного изучения и повторения.</div>
@@ -111,7 +111,7 @@
     <div>
       <a class="flex gap-2 items-center mb-2 link-parent" href="@lng/korean">
         <div class="leading-none text-3xl">🇰🇷</div>
-        <h2 class="text-2xl mb-0"><span class="link">@lang('Корейский язык')</span></h2>
+        <h2 class="font-medium text-2xl"><span class="link">@lang('Корейский язык')</span></h2>
       </a>
       @ru
         <div>Тренажер для запоминания корейского алфавита. Кириллизация песен Сая.</div>
@@ -122,7 +122,7 @@
   @endru
 </div>
 
-<h3 class="text-2xl">
+<h3 class="font-medium text-2xl mb-2">
   <a class="link" href="@lng/life">
     @ru Истории о путешествиях @en Travel stories @endru
   </a>

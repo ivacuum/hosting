@@ -113,7 +113,7 @@
     <details class="border dark:border-slate-700 text-sm rounded overflow-hidden" {{ $this->openSettings ? 'open' : '' }}>
       <summary class="border-b dark:border-slate-700 bg-gray-100 dark:bg-slate-800 text-gray-500 dark:text-slate-400 hover:text-gray-700 hover:dark:text-slate-200 px-5 py-2" itemprop="name">@lang('Настройки'): <span class="lowercase">{{ $this->hiragana ? __('Хирагана') : __('Катакана') }}, @lang('Уровни') {{ $this->level * 10 - 9 }}–{{ $this->level * 10 }}</span></summary>
       <div class="px-5 py-3 text-sm">
-        <div class="h5 mb-0">@lang('Азбука')</div>
+        <div class="font-medium text-lg">@lang('Азбука')</div>
         <div class="text-gray-500 mb-2">@lang('japanese.settings.syllabary_help')</div>
         <div class="flex gap-4 items-center">
           <label class="flex gap-2 items-center">
@@ -126,7 +126,7 @@
           </label>
         </div>
 
-        <div class="h5 mt-6 mb-0">@lang('Уровни') {{ $this->level * 10 - 9 }}–{{ $this->level * 10 }}</div>
+        <div class="font-medium text-lg mt-6">@lang('Уровни') {{ $this->level * 10 - 9 }}–{{ $this->level * 10 }}</div>
         <div class="text-gray-500 mb-2">@lang('japanese.settings.levels_help')</div>
         <div class="flex gap-1">
           <button

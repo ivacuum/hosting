@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="flex flex-wrap gap-4 items-center mb-2">
-  <h3 class="mb-1">Логи</h3>
+  <h3 class="font-medium text-2xl mb-1">Логи</h3>
   <form>
     <input class="form-input" type="text" name="q" enterkeyhint="search" placeholder="Поиск..." value="{{ $q ?? '' }}">
   </form>

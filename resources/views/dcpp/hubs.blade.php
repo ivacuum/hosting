@@ -2,7 +2,7 @@
 @include('livewire')
 
 @section('content')
-<h1>@lang('Популярные DC++ хабы')</h1>
+<h1 class="font-medium text-4xl tracking-tight mb-2">@lang('Популярные DC++ хабы')</h1>
 <div class="grid md:grid-cols-2 gap-8">
   <div>
     @ru
@@ -30,7 +30,7 @@
       <p>Usually, it is just enough to click a link to connect to a hub. However, if it didn't work for you, you can manually copy-paste the address into your DC++ client.</p>
     @endru
 
-    <div class="h3 mt-12">@lang('Обратная связь')</div>
+    <div class="font-medium text-2xl mb-2 mt-12">@lang('Обратная связь')</div>
     @ru
       <p>Знаете хаб, достойный добавления в список? Пришлите его нам, чтобы мы пополнили страницу.</p>
     @en

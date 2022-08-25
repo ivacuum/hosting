@@ -254,7 +254,7 @@
 @endru
 <livewire:youtube title="Rammstein 2019, Saint Petersburg, Russia" v="vUrYMzejC5s"/>
 
-<h3 class="mt-12">@ru Бонусные материалы @en Bonus materials @endru</h3>
+<h3 class="font-medium text-2xl mb-2 mt-12">@ru Бонусные материалы @en Bonus materials @endru</h3>
 <ul>
   @ru
     <li>Как выглядела <a class="link" href="https://www.instagram.com/p/Byq1jIRlSvP/">песня Sonne</a> из города на примере Дрездена</li>

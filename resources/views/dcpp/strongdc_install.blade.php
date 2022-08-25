@@ -14,8 +14,8 @@
 
 @section('content')
 @ru
-  <h1>Инструкция по установке и настройке StrongDC++</h1>
-  <h2>Установка</h2>
+  <h1 class="font-medium text-4xl tracking-tight mb-2">Инструкция по установке и настройке StrongDC++</h1>
+  <h2 class="font-medium text-3xl tracking-tight mb-2">Установка</h2>
   <ol>
     <li>
       <p>Скачайте программу-клиент <a class="link" href="@lng/dc/strongdc">StrongDC++</a>.</p>
@@ -44,7 +44,7 @@
     </li>
   </ol>
 
-  <h2 class="mt-12">Настройка</h2>
+  <h2 class="font-medium text-3xl tracking-tight mb-2 mt-12">Настройка</h2>
   <p><b>Примечание</b>: если появится окно «Оповещение системы безопасности Windows» – выберите «Разблокировать».</p>
   <p>При первом запуске программы вам понадобится провести следующие настройки:</p>
   <ol class="mb-4">

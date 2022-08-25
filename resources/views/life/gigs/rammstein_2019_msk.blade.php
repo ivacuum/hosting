@@ -103,7 +103,7 @@
 @endru
 <livewire:youtube title="Rammstein 2019, Luzhniki Stadium, Moscow, Russia" v="hYFAxa5lDMo"/>
 
-<h3 class="mt-12">@ru Бонусные материалы @en Bonus materials @endru</h3>
+<h3 class="font-medium text-2xl mb-2 mt-12">@ru Бонусные материалы @en Bonus materials @endru</h3>
 <ul>
   <li><a class="link" href="https://www.instagram.com/p/B0jg1buAmi2/">@ru Видео из инстаграма Тилля @en Video from Till's Instagram @endru</a></li>
 </ul>

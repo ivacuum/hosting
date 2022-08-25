@@ -61,7 +61,7 @@
 @endif
 
 @if (($relatedTorrents = $magnet->relatedTorrents())?->count())
-  <div class="h3 mt-12">
+  <div class="font-medium text-2xl mb-2 mt-12">
     @lang('Связанные раздачи')
     <span class="text-base text-muted">{{ $relatedTorrents->count() }}</span>
   </div>

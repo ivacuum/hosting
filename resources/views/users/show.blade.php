@@ -7,7 +7,7 @@
   <div>
     <div class="text-center">
       @include('tpl.avatar')
-      <h1 class="h3 mt-2">{{ $user->publicName() }}</h1>
+      <h1 class="font-medium text-2xl mb-2 mt-2">{{ $user->publicName() }}</h1>
     </div>
     <table class="mx-auto mb-4 break-words">
       <tr>

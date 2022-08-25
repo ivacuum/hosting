@@ -1,7 +1,7 @@
 @extends('acp.base')
 
 @section('content')
-<h3>@lang("$tpl.index")</h3>
+<h3 class="font-medium text-2xl mb-2">@lang("$tpl.index")</h3>
 <table class="table-stats table-adaptive">
   <thead>
   <tr>

@@ -92,7 +92,7 @@
       <div class="border-b dark:border-slate-700 bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-400 px-4 py-2 font-medium leading-tight text-lg" itemprop="name">@lang('Настройки')</div>
       <form class="grid gap-6 px-4 py-3" wire:submit.prevent>
         <div>
-          <div class="h5 mb-0">@lang('Язык')</div>
+          <div class="font-medium text-lg">@lang('Язык')</div>
           <div class="text-gray-500 text-sm mb-2">
             @ru
               Будут загаданы числа этого языка.
@@ -107,7 +107,7 @@
           </select>
         </div>
         <div>
-          <div class="h5 mb-0">@lang('Голос')</div>
+          <div class="font-medium text-lg">@lang('Голос')</div>
           <div class="text-gray-500 text-sm mb-2">
             @ru
               Ваше устройство умеет читать на выбранном языке перечисленными голосами.
@@ -118,7 +118,7 @@
           <select class="form-input js-voices" data-locale="{{ $this->lang }}" wire:ignore></select>
         </div>
         <div>
-          <div class="h5 mb-0">@lang('Интервал возможных чисел')</div>
+          <div class="font-medium text-lg">@lang('Интервал возможных чисел')</div>
           <div class="text-gray-500 text-sm mb-2">@lang('От :min до :max.', ['min' => 0, 'max' => ViewHelper::number($this->maximum)])</div>
           <div class="flex gap-1">
             <button
@@ -136,7 +136,7 @@
           </div>
         </div>
         <div>
-          <div class="h5 mb-0">@lang('Вид ответов')</div>
+          <div class="font-medium text-lg">@lang('Вид ответов')</div>
           <div class="text-gray-500 text-sm mb-2">
             @ru
               Можно научиться как распознавать числа, так писать их словами.
@@ -164,7 +164,7 @@
           </div>
         </div>
         <div>
-          <div class="h5 mb-0">@lang('Вид заданий')</div>
+          <div class="font-medium text-lg">@lang('Вид заданий')</div>
           {{--<div class="text-gray-500 text-sm mb-2">Вам доступна возможность ввода чисел на слух.</div>--}}
           <div class="flex gap-4 items-center">
             <label class="flex gap-2 items-center">
@@ -181,13 +181,13 @@
     </div>
   </div>
   <div>
-    <h1 class="h3" id="help">Тренажер по набору чисел</h1>
+    <h1 class="font-medium text-2xl mb-2" id="help">Тренажер по набору чисел</h1>
     <p>Мне долгое время не удавалось запомнить корейские числа. Вспоминая пользу других моих <a class="link" href="{{ to('trainers') }}">тренажеров</a>, было решено сделать тренажер чисел. С ним числа до ста удалось запомнить буквально за 20 минут. Попробуйте и вы! Оптимально начать с цифр, затем перейти к десяткам, сотням и так далее.</p>
     <p>Набор языков основан на данных проекта с открытым исходным кодом под названием <a class="link" href="https://icu.unicode.org/">ICU</a>. По мере его развития количество языков для тренировки может увеличиться. Уже сейчас вы можете потренировать более 70 языков.</p>
     <p>Набор доступных голосов тренажеру сообщает ваше устройство. Это значит, что на том же андроиде можно сходить в настройки голосового ввода и скачать дополнительные голоса, чтобы они стали доступны для произношения. В браузере Microsoft Edge представлен классный и качественный набор онлайн-голосов, поэтому он очень рекомендуется для пробы. Если голосов для выбранного языка на вашем устройстве не нашлось, то функция произношения будет недоступна, а ввод на слух станет чистым гаданием.</p>
     <p>Для ввода ответа текстом большинство языков потребует местную раскладку клавиатуры. То есть, чешская цифра <span class="font-bold">čtyři (4)</span> требует вводить именно <span class="font-bold">č</span> и <span class="font-bold">ř</span>, а немецкая <span class="font-bold">fünf (5)</span> — именно <span class="font-bold">ü</span>. Тренажер принимает ответы транслитом, но транслит по международным правилам не всегда такой, каким вы можете его ожидать, поэтому рекомендуется пользоваться именно местной клавиатурой — так вы запомните правильное написание.</p>
 
-    <div class="h4 mt-12">Поддерживаемые вашим устройством голоса</div>
+    <div class="font-medium text-xl mt-12 mb-2">Поддерживаемые вашим устройством голоса</div>
     <p>Этот раздел поможет узнать числа каких языков вы можете потренировать на слух.</p>
     <p wire:ignore><button class="btn btn-default js-print-supported-voices">Какие голоса есть в моем устройстве?</button></p>
     <ul class="js-voice-list" wire:ignore></ul>

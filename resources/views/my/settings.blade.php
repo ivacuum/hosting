@@ -3,7 +3,7 @@
 @extends('my.base')
 
 @section('content')
-<h3 class="mb-4">@lang('Настройки')</h3>
+<h3 class="font-medium text-2xl mb-4">@lang('Настройки')</h3>
 
 <div>
   <form action="@lng/my/settings" method="post">

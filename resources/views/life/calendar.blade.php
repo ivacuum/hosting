@@ -1,7 +1,7 @@
 @extends('life.base')
 
 @section('content')
-<h1 class="text-3xl tracking-tight">@lang('Календарь поездок')</h1>
+<h1 class="font-medium text-3xl tracking-tight mb-2">@lang('Календарь поездок')</h1>
 <x-trips-subnav/>
 
 @if ($firstDate !== null && $lastDate !== null)
@@ -44,7 +44,7 @@
       @endforeach
     @endforeach
   </div>
-  <h3 class="mt-12">
+  <h3 class="font-medium text-2xl mt-12 mb-2">
     @ru
       Количество посещенных стран и городов
     @en

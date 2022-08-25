@@ -73,7 +73,7 @@
   <div>
     <div class="grid gap-6">
       <div>
-        <div class="h5 mb-0">@ru Что будем тренировать? @en What to train? @endru</div>
+        <div class="font-medium text-lg">@ru Что будем тренировать? @en What to train? @endru</div>
         <div>
           <label class="flex gap-2 items-center">
             <input class="border-gray-300" type="radio" wire:model="whatToTrain" value="{{ App\Domain\HangulWhatToTrain::Consonants->value }}">
@@ -90,7 +90,7 @@
         </div>
       </div>
       <div>
-        <div class="h5 mb-0">@ru Стиль шрифта @en Font style @endru</div>
+        <div class="font-medium text-lg">@ru Стиль шрифта @en Font style @endru</div>
         <div>
           <label class="flex gap-2 items-center">
             <input class="border-gray-300" type="radio" wire:model="italic" value="0">
@@ -113,7 +113,7 @@
     </div>
   </div>
   <div>
-    <h1 class="text-3xl" id="help">@lang('Тренажер хангыля')</h1>
+    <h1 class="font-medium text-3xl tracking-tight mb-2" id="help">@lang('Тренажер хангыля')</h1>
     <p>Данный тренажер помогает быстро запомнить корейский алфавит. Ответы принимаются кириллицей по <a class="link" href="https://ru.wikipedia.org/wiki/Система_Концевича">системе Концевича</a> и латиницей по <a class="link" href="https://en.wikipedia.org/wiki/Revised_Romanization_of_Korean">новой романизации</a>.</p>
 
     <p>Ниже представлена корейская раскладка клавиатуры.</p>

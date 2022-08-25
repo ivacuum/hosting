@@ -47,9 +47,9 @@
     @endif
     @if ($q)
       @ru
-        <div class="h3">Результаты поиска по запросу «{{ $q }}»</div>
+        <div class="font-medium text-2xl mb-2">Результаты поиска по запросу «{{ $q }}»</div>
       @en
-        <div class="h3">Search results for «{{ $q }}»</div>
+        <div class="font-medium text-2xl mb-2">Search results for «{{ $q }}»</div>
       @endru
       <div class="mb-6">
         @if ($fulltext)

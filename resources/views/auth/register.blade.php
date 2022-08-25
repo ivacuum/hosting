@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="mx-auto max-w-[400px]">
-  <h3 class="mb-4">@lang('auth.register_title')</h3>
+  <h3 class="font-medium text-2xl mb-4">@lang('auth.register_title')</h3>
   <form action="{{ path([App\Http\Controllers\Auth\NewAccount::class, 'register']) }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf

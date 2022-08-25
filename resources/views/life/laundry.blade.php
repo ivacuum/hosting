@@ -3,7 +3,7 @@
 {{-- http://www.flaticon.com/packs/laundry-and-washing --}}
 
 @section('content')
-<h1 class="h2">Условные обозначения стирки</h1>
+<h1 class="font-medium text-3xl tracking-tight mb-2">Условные обозначения стирки</h1>
 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8 text-center">
   <div>
     <div class="inline-flex items-center justify-center bg-gray-100 dark:bg-slate-800 rounded-full h-24 w-24">
@@ -44,17 +44,17 @@
 </div>
 
 <section id="wash">
-  <h3>Стирка</h3>
+  <h3 class="font-medium text-2xl mb-1">Стирка</h3>
   <p>Подчеркивание — щадящий режим. Два подчеркивания — деликатный режим.</p>
 </section>
 
 <section id="dry">
-  <h3>Сушка</h3>
+  <h3 class="font-medium text-2xl mb-1">Сушка</h3>
   <p>Вертикальные линии внутри — сушить вертикально. Горизонтальные — горизонтально. Линии в углу — сушить в затененном месте.</p>
 </section>
 
 <section id="dryer">
-  <h3>Отжим и сушка</h3>
+  <h3 class="font-medium text-2xl mb-1">Отжим и сушка</h3>
   <p>Подчеркивание — щадящие условия отжима и сушки, пунктир — деликатные.</p>
   <div>Температурный режим сушки:</div>
   <div>&bull; — низкая температура,</div>
@@ -63,7 +63,7 @@
 </section>
 
 <section id="iron" class="pt-12">
-  <h3>Глажка</h3>
+  <h3 class="font-medium text-2xl mb-1">Глажка</h3>
   <p>Скрещенные линии под подошвой утюга запрещают отпаривание.</p>
   <div>Точки внутри символизируют температурный режим:</div>
   <div>&bull; — до 100&deg;C,</div>
@@ -72,12 +72,12 @@
 </section>
 
 <section id="dry-cleaning" class="pt-12">
-  <h3>Химчистка</h3>
+  <h3 class="font-medium text-2xl mb-1">Химчистка</h3>
   <p>Пустой круг — можно отдать в химчистку, перечеркнутый — нельзя.</p>
 </section>
 
 <section id="bleach">
-  <h3>Отбеливание</h3>
+  <h3 class="font-medium text-2xl mb-1">Отбеливание</h3>
   <p>Пустой треугольник — можно отбеливать, перечеркнутый — нельзя.</p>
 </section>
 

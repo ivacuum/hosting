@@ -38,14 +38,14 @@
 <section class="my-0 py-12">
   <div class="container">
     @ru
-      <h3>Основные преимущества GreyLinkDC++</h3>
+      <h3 class="font-medium text-2xl mb-4">Основные преимущества GreyLinkDC++</h3>
       <ul>
         <li>Улучшенная стабильность, низкое потребление ресурсов.</li>
         <li>Использование процессорного времени при нахождении на хабах с большим числом пользователей значительно ниже по сравнению с другими клиентами. Потребление памяти также немного ниже.</li>
         <li>Восстановление недокачанных и поврежденных файлов. Из меню «Файл» выбирается «Восстановление файла», указывается правильный магнет-линк и расположение поврежденного файла.</li>
       </ul>
     @en
-      <h3>Main features of GreyLinkDC++</h3>
+      <h3 class="font-medium text-2xl mb-4">Main features of GreyLinkDC++</h3>
       <ul>
         <li>Improved stability and low resource usage.</li>
         <li>Low cpu usage on hubs with high amount of users in comparison with other DC++ clients. Memory footprint is also lower.</li>

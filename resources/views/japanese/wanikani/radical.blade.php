@@ -3,7 +3,7 @@
 @extends('japanese.wanikani.base')
 
 @section('content')
-<div class="items-center flex flex-wrap h1">
+<div class="items-center flex flex-wrap font-medium text-4xl">
   <a
     class="bg-gray-600 hover:bg-gray-700 ja-shadow-light mr-2 px-4 py-1 rounded text-white hover:text-white"
     href="{{ path(App\Http\Controllers\WanikaniLevel::class, $radical->level) }}"
@@ -17,7 +17,7 @@
       </div>
     @endif
   </div>
-  <div class="capitalize">{{ $radical->meaning }}</div>
+  <div class="capitalize tracking-tight">{{ $radical->meaning }}</div>
 </div>
 
 @livewire(App\Http\Livewire\KanjiList::class, ['radicalId' => $radical->id])

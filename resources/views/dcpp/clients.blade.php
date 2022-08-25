@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="antialiased lg:text-lg">
-  <h1>@lang('Клиенты DC++')</h1>
+  <h1 class="font-medium text-4xl tracking-tight mb-2">@lang('Клиенты DC++')</h1>
   <div class="flex flex-col w-full">
     <a class="font-medium py-1" href="@lng/dc/airdc">@lang('dcpp.airdc')</a>
     <a class="font-medium py-1" href="@lng/dc/apexdc">@lang('dcpp.apexdc')</a>

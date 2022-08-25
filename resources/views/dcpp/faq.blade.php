@@ -4,7 +4,7 @@
 @include('livewire')
 
 @section('content')
-<h1>Решение проблем с DC++</h1>
+<h1 class="font-medium text-4xl tracking-tight mb-2">Решение проблем с DC++</h1>
 
 <x-accordion>
   <x-slot name="title">
@@ -267,7 +267,7 @@
 @endcomponent
 
 <div class="max-w-[600px]">
-  <div class="h3 mt-12">@lang('Обратная связь')</div>
+  <div class="font-medium text-2xl mb-2 mt-12">@lang('Обратная связь')</div>
   @ru
     <p>Поделитесь своими знаниями или задайте вопрос. Мы постараемся обработать информацию и дополнить эту страницу новыми материалами.</p>
   @en

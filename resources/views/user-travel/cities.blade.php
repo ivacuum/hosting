@@ -1,7 +1,7 @@
 @extends('user-travel.base')
 
 @section('content')
-<h1 class="h2">
+<h1 class="font-medium text-3xl tracking-tight mb-2">
   @lang('Посещенные города')
   <span class="text-base text-muted">{{ count($cities) }}</span>
 </h1>

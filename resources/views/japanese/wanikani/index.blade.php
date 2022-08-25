@@ -1,7 +1,7 @@
 @extends('japanese.wanikani.base')
 
 @section('content')
-<h1 class="h2">@lang('WaniKani V')</h1>
+<h1 class="font-medium text-3xl tracking-tight mb-2">@lang('WaniKani V')</h1>
 <div class="grid md:grid-cols-3 gap-2 md:gap-4 text-center mb-4">
   <div>
     <div class="bg-radical rounded">
@@ -43,7 +43,7 @@
   <p>Вся информация по ключам, кандзи и словарным словам представлена только на английском языке, как и на WaniKani. Без изменений, чтобы не возникало путаницы. Этот сервис — дополнение, а не полноценная замена.</p>
 @endru
 
-<h3 class="mt-6">@lang('По уровням')</h3>
+<h3 class="font-medium text-2xl mt-6 mb-2">@lang('По уровням')</h3>
 <div class="flex flex-wrap items-center">
   @foreach (range(1, 60) as $level)
     <a

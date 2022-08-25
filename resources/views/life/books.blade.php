@@ -1,7 +1,7 @@
 @extends('life.base')
 
 @section('content')
-<h1 class="h2">@lang('Понравившиеся книги')</h1>
+<h1 class="font-medium text-3xl tracking-tight mb-2">@lang('Понравившиеся книги')</h1>
 
 <div class="flex gap-3 mb-2">
   <div>

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="flex flex-wrap items-center">
-  <h3 class="my-1 mr-3">
+  <h3 class="font-medium text-2xl my-1 mr-3">
     @lang('Поездки')
     <span class="text-base text-muted whitespace-nowrap">{{ ViewHelper::number($models->total()) }}</span>
   </h3>

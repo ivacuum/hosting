@@ -1,7 +1,7 @@
 @extends('my.base')
 
 @section('content')
-<h3 class="mb-4">@lang('Пароль')</h3>
+<h3 class="font-medium text-2xl mb-4">@lang('Пароль')</h3>
 
 <div class="max-w-[500px]">
   <form action="@lng/my/password" method="post">
@@ -50,7 +50,7 @@
 </div>
 
 @if ($hasPassword)
-  <h3 class="mt-12">@lang('auth.forgot_password')</h3>
+  <h3 class="font-medium text-2xl mb-2 mt-12">@lang('auth.forgot_password')</h3>
   <form action="{{ path([App\Http\Controllers\Auth\ForgotPassword::class, 'sendResetLink']) }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf

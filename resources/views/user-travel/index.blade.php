@@ -3,7 +3,7 @@
 @section('content')
 <section class="pt-0">
   <div class="flex flex-wrap gap-4 items-center">
-    <h1 class="h2">
+    <h1 class="font-medium text-3xl tracking-tight mb-2">
       @lang('Поездки')
     </h1>
     @if ($traveler->id == Auth::id())

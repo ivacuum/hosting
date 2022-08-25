@@ -43,7 +43,7 @@
     @yield('model_menu_after')
   </div>
   <div class="lg:col-span-3">
-    <h2 class="break-words">
+    <h2 class="font-medium text-3xl tracking-tight mb-2 break-words">
       @include('acp.tpl.back')
       @section('model_title')
         {{ $model->breadcrumb() }}

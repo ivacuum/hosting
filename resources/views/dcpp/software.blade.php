@@ -8,7 +8,7 @@
 <div class="antialiased hanging-punctuation-first lg:text-lg">
   <section class="my-0 pt-6">
     <div class="container">
-      <h1 class="mb-6">@lang('Скачать') {{ $softwareTitle }} {{ $software[0]['version'] }}</h1>
+      <h1 class="font-medium text-4xl tracking-tight mb-6">@lang('Скачать') {{ $softwareTitle }} {{ $software[0]['version'] }}</h1>
       @section('download_latest')
         <div>
           <a class="btn btn-success my-1 text-lg px-4 py-2" href="{{ path([App\Http\Controllers\Files::class, 'download'], $software[0]['id']) }}">
@@ -29,7 +29,7 @@
 
   <section class="my-0 py-12">
     <div class="container">
-      <h2 class="tracking-tight">@lang('dcpp.about_software')</h2>
+      <h2 class="font-medium text-3xl tracking-tight mb-2">@lang('dcpp.about_software')</h2>
       @yield('about_software')
     </div>
   </section>
@@ -45,7 +45,7 @@
   @if (!empty($softwareScreenshots))
     <section class="bg-gray-700 my-0 py-12 text-grey-200">
       <div class="container">
-        <h2 class="tracking-tight mb-6">@lang('Скриншоты')</h2>
+        <h2 class="font-medium text-3xl tracking-tight mb-6">@lang('Скриншоты')</h2>
         <p>
           @foreach ($softwareScreenshots as $screenshot)
             <a href="{{ $screenshot['full'] }}">
@@ -59,7 +59,7 @@
 
   <section class="bg-light dark:bg-slate-800 border-t border-b border-grey-200 dark:border-slate-700 my-0 py-12">
     <div class="container">
-      <h2 class="tracking-tight">@lang('Хабы')</h2>
+      <h2 class="font-medium text-3xl tracking-tight mb-2">@lang('Хабы')</h2>
       @ru
         <p>Ищете куда подключиться для обмена файлами? Ознакомьтесь с нашими рекомендациями.</p>
       @en
@@ -82,7 +82,7 @@
   @if (count($software) > 1 || !empty($developerSite))
     <section class="border-b border-grey-200 dark:border-slate-700 my-0 py-12">
       <div class="container">
-        <h2 class="tracking-tight mb-6">@lang('dcpp.links')</h2>
+        <h2 class="font-medium text-3xl tracking-tight mb-6">@lang('dcpp.links')</h2>
         <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
           @if (count($software) > 1)
             <div>
@@ -117,7 +117,7 @@
     <div class="container">
       <div class="grid md:grid-cols-2 gap-8">
         <div>
-          <div class="h3">@lang('Обратная связь')</div>
+          <div class="font-medium text-2xl mb-2">@lang('Обратная связь')</div>
           @ru
             <p>Поделитесь своими знаниями или задайте вопрос. Мы постараемся обработать информацию и дополнить эту страницу новыми материалами.</p>
           @en

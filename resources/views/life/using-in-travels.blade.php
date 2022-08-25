@@ -3,11 +3,11 @@
 ])
 
 @section('content')
-<h1 class="h2">@lang('Чем пользуюсь в путешествиях')</h1>
+<h1 class="font-medium text-3xl tracking-tight mb-2">@lang('Чем пользуюсь в путешествиях')</h1>
 <p>Золотая тройка вещей: паспорт, деньги и телефон. В телефоне <a class="link" href="/news/271">Дримсим</a> для интернета по всему миру по доступным ценам.</p>
 
 <section>
-  <h3>Мобильные приложения</h3>
+  <h3 class="font-medium text-2xl mb-2">Мобильные приложения</h3>
   <div>
     2GIS
     <a href="https://play.google.com/store/apps/details?id=ru.dublgis.dgismobile" rel="nofollow">
@@ -31,7 +31,7 @@
 </section>
 
 <section class="pt-12">
-  <h3>Навигация в городах</h3>
+  <h3 class="font-medium text-2xl mb-2">Навигация в городах</h3>
   <div>
     <a class="link" href="https://wikitravel.org" rel="nofollow">wikitravel.org</a>
     — как добраться до выбранного города, на что обратить внимание и многое другое
@@ -39,7 +39,7 @@
 </section>
 
 <section class="pt-12">
-  <h3>Выгодные предложения</h3>
+  <h3 class="font-medium text-2xl mb-2">Выгодные предложения</h3>
   <div>
     <a class="link" href="https://vandrouki.ru/" rel="nofollow">vandrouki.ru</a>
     — преимущественно отправление из России
@@ -51,13 +51,13 @@
 </section>
 
 <section class="pt-12">
-  <h3>Авиабилеты</h3>
+  <h3 class="font-medium text-2xl mb-2">Авиабилеты</h3>
   <div><a class="link" href="https://www.aviasales.ru/?marker=79853">aviasales.ru</a></div>
   <div><a class="link" href="https://www.skyscanner.ru/" rel="nofollow">skyscanner.ru</a></div>
 </section>
 
 <section class="pt-12">
-  <h3>Жилье</h3>
+  <h3 class="font-medium text-2xl mb-2">Жилье</h3>
   <div>
     <a class="link" href="https://www.airbnb.ru/c/spankov1?s=8">airbnb.ru</a>
     — аренда квартир, комнат и домов у местных жителей
@@ -69,7 +69,7 @@
 </section>
 
 <section class="pt-12">
-  <h3>Автобусы</h3>
+  <h3 class="font-medium text-2xl mb-2">Автобусы</h3>
   <div>
     <a class="link" href="https://www.busradar.com/" rel="nofollow">busradar.com</a>
     — начало поиска, а дальше уже покупка билетов на сайтах местных перевозчиков
@@ -81,7 +81,7 @@
 </section>
 
 <section class="pt-12">
-  <h3>Железнодорожное сообщение</h3>
+  <h3 class="font-medium text-2xl mb-2">Железнодорожное сообщение</h3>
   <div>
     <a class="link" href="https://pass.rzd.ru/" rel="nofollow">pass.rzd.ru</a>
     — Россия

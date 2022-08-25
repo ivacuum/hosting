@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="flex flex-wrap gap-4 items-center antialiased mb-6">
-  <h1 class="h2 mb-1">@lang('Новости')</h1>
+  <h1 class="font-medium text-3xl tracking-tight mb-1">@lang('Новости')</h1>
   @if (Auth::check())
     <form action="@lng/subscriptions" method="post">
       {{ ViewHelper::inputHiddenMail() }}
@@ -43,7 +43,7 @@
       @foreach ($news as $model)
         <article itemscope itemtype="https://schema.org/BlogPosting">
           <header>
-            <h3 itemprop="headline"><a class="link tracking-tight" href="{{ $model->www() }}" itemprop="url">{{ $model->title }}</a></h3>
+            <h3 class="font-medium text-2xl mb-2" itemprop="headline"><a class="link tracking-tight" href="{{ $model->www() }}" itemprop="url">{{ $model->title }}</a></h3>
             <div class="svg-labels svg-muted text-muted text-sm mb-4">
               <span class="svg-flex svg-label">
                 @svg (calendar-o)

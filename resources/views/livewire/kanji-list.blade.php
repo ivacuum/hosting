@@ -3,7 +3,7 @@
 <div>
   @if ($this->kanjis->count())
     <div class="sm:flex items-center justify-between mt-6 mb-1">
-      <h3>
+      <h3 class="font-medium text-2xl mb-2">
         @if ($this->range)
           <span>@lang('Уровень :level', ['level' => $this->level])</span>
         @else

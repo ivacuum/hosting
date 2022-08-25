@@ -3,7 +3,7 @@
 @extends("$tpl.base")
 
 @section('content')
-<h3>Новая электропочта</h3>
+<h3 class="font-medium text-2xl mb-2">Новая электропочта</h3>
 <form action="{{ path([App\Http\Controllers\Acp\Domains::class, 'addMailbox'], $model) }}" class="max-w-[600px]" method="post">
   @csrf
 
@@ -29,7 +29,7 @@
 </form>
 
 @if ($mailboxes->total > 0)
-  <h3 class="mt-12">Существующие ящики <span class="text-base text-muted">{{ $mailboxes->total }}</span></h3>
+  <h3 class="font-medium text-2xl mt-12 mb-2">Существующие ящики <span class="text-base text-muted">{{ $mailboxes->total }}</span></h3>
   <ul>
     @foreach ($mailboxes->accounts as $account)
       <li>

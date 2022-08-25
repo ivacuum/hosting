@@ -6,7 +6,7 @@
 @include('tpl.city-timeline')
 <div class="flex flex-wrap gap-2 items-center mb-2">
   <img class="flag-24 svg-shadow" src="{{ $trip->city->country->flagUrl() }}" alt="">
-  <h1 class="h2 mb-1">{{ $trip->title }}</h1>
+  <h1 class="font-medium text-3xl tracking-tight mb-1">{{ $trip->title }}</h1>
   @include('tpl.city-map-button', ['city' => $trip->city])
   @if (Auth::user()?->isRoot())
     <a class="btn btn-default text-sm py-1" href="{{ Acp::edit($trip) }}">
@@ -25,7 +25,7 @@
 
 @include('tpl.trips-timeline')
 
-<div class="h4 mt-6">@ru Поделиться ссылкой @en Share @endru</div>
+<div class="font-medium text-xl mt-6 mb-2">@ru Поделиться ссылкой @en Share @endru</div>
 @include('tpl.social-buttons', ['title' => $trip->metaTitle(), 'url' => Request::url()])
 
 <div class="mt-6 py-3 px-5 text-teal-800 dark:text-teal-400 bg-teal-200/50 dark:bg-teal-400/25 border border-teal-200/50 rounded">

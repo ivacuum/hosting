@@ -63,8 +63,8 @@ body {
           <img class="my-picture bg-white mr-4 p-1 w-32 h-32 max-w-none" src="https://life.ivacuum.org/me.jpg" alt="">
         </div>
         <div>
-          <h1 class="text-2xl mb-0 font-semibold tracking-tight uppercase">@ru Сергей Панков @en Sergey Pankov @endru</h1>
-          <h2 class="text-teal-600 h4">@ru Веб-программист (Laravel PHP, Vue.js) @en Laravel PHP + Vue.js Developer @endru</h2>
+          <h1 class="text-2xl font-semibold tracking-tight uppercase">@ru Сергей Панков @en Sergey Pankov @endru</h1>
+          <h2 class="font-medium text-xl mb-2 text-teal-600">@ru Веб-программист (Laravel PHP, Vue.js) @en Laravel PHP + Vue.js Developer @endru</h2>
           @ru
             <div>Заинтересован в создании полезных людям веб-сервисов. Веб-технологиями увлекаюсь с 2003 года. С кодом моих проектов можно ознакомиться на <a href="https://github.com/ivacuum" rel="nofollow">Гитхабе</a>. Только удаленная работа.</div>
           @en
@@ -74,13 +74,13 @@ body {
       </div>
       <div class="grid md:grid-cols-2 gap-8">
         <div>
-          <h3 class="my-caption h5 text-teal-500 uppercase">@ru Образование @en Education @endru</h3>
+          <h3 class="my-caption font-medium text-lg mb-2 text-teal-500 uppercase">@ru Образование @en Education @endru</h3>
           <div class="font-bold">@ru Высшее, МГТУ им. Баумана @en Bauman Moscow State Technical University @endru</div>
           <div>
             @ru Инженер-программист @en IT Engineer's degree @endru
             <span class="text-xs text-muted">2006–2012</span>
           </div>
-          <h3 class="my-caption h5 mt-6 sm:mt-12 uppercase">@ru Курсы и тренинги @en Courses & Trainings @endru</h3>
+          <h3 class="my-caption font-medium text-lg mb-2 mt-6 sm:mt-12 uppercase">@ru Курсы и тренинги @en Courses & Trainings @endru</h3>
           <div class="font-bold">@ru Английский язык @en English @endru</div>
           <div>
             @ru Грамматика @en Grammar @endru
@@ -92,7 +92,7 @@ body {
           </div>
         </div>
         <div>
-          <h3 class="my-caption h5 uppercase">@ru Опыт работы @en Experience @endru</h3>
+          <h3 class="my-caption font-medium text-lg mb-2 uppercase">@ru Опыт работы @en Experience @endru</h3>
           <div>@ru 01.12.2014 — по настоящее время @en Dec 2014 — Present @endru</div>
           <div>@ru ООО Гала Маркетинг @en OOO Gala Marketing @endru</div>
           <div>@ru Технический директор @en CTO @endru</div>
@@ -108,7 +108,7 @@ body {
       </div>
     </div>
     <div>
-      <h3 class="my-caption tracking-tight h5 uppercase">@ru Контактная информация @en Contacts @endru</h3>
+      <h3 class="my-caption tracking-tight font-medium text-lg mb-2 uppercase">@ru Контактная информация @en Contacts @endru</h3>
       <div class="flex justify-between">
         <div>@ru Телефон @en Phone @endru</div>
         <div><a href="tel:+79105141181">+7 910 514-1181</a></div>
@@ -122,7 +122,7 @@ body {
         <div><a href="/">vacuum.name</a></div>
       </div>
 
-      <h3 class="my-caption h5 mt-6 uppercase">@ru Личная информация @en Personal info @endru</h3>
+      <h3 class="my-caption font-medium text-lg mb-2 mt-6 uppercase">@ru Личная информация @en Personal info @endru</h3>
       <div class="flex justify-between">
         <div>@ru Возраст @en Age @endru</div>
         <div>{{ \Carbon\CarbonImmutable::createFromDate(1989, 7, 13)->diffForHumans(null, true) }} @ru @en old @endru</div>
@@ -144,7 +144,7 @@ body {
         <div>@ru Нет @en No @endru</div>
       </div>
 
-      <h3 class="my-caption h5 mt-6 uppercase">@ru В сети @en Online @endru</h3>
+      <h3 class="my-caption font-medium text-lg mb-2 mt-6 uppercase">@ru В сети @en Online @endru</h3>
       <div class="flex flex-col">
         <a href="https://github.com/ivacuum" rel="nofollow">GitHub</a>
         {{--<a href="skype:knifevacuum?call" rel="nofollow">Skype</a>--}}
@@ -154,7 +154,7 @@ body {
     </div>
   </div>
 
-  <div class="my-caption h3 mt-12 uppercase">@ru О себе @en About me @endru</div>
+  <div class="my-caption font-medium text-2xl mb-2 mt-12 uppercase">@ru О себе @en About me @endru</div>
   @ru
     <p>Более половины своей жизни увлекаюсь созданием сайтов и в целом полезных сервисов. Всегда нравился английский язык, впоследствии обнаружил интерес и к другим иностранным языкам. В свободное время играю на электрогитаре, смотрю кинематограф в оригинале (даже если это датский — английские субтитры все равно найдутся) и катаюсь на велосипеде. Посещаю музыкальные концерты.</p>
   @en
@@ -173,15 +173,15 @@ body {
     <p>I'm considering only remote employment. Not ready for relocation because it won't allow me to see the different parts of the world. But I'm ready to meet occasionally.</p>
   @endru
 
-  <div class="my-caption h3 mt-12 uppercase">@ru Навыки @en Skills @endru</div>
-  <div class="text-teal-500 h5">@ru Операционные системы @en Operating systems @endru</div>
+  <div class="my-caption font-medium text-2xl mb-2 mt-12 uppercase">@ru Навыки @en Skills @endru</div>
+  <div class="text-teal-500 font-medium text-lg mb-2">@ru Операционные системы @en Operating systems @endru</div>
   @ru
     <p>Опыт использования <strong>Windows</strong> и <strong>macOS</strong>, настраивал серверы под управлением <strong>Linux</strong> и <strong>FreeBSD</strong>. Повседневно использую <strong>macOS</strong>.</p>
   @en
     <p>Experienced in <strong>Windows</strong> and <strong>macOS</strong>, set up servers running <strong>Linux</strong> and <strong>FreeBSD</strong>. I use <strong>macOS</strong> on a daily basis.</p>
   @endru
 
-  <div class="text-teal-500 h5 mt-6">@ru Языки программирования @en Programming languages @endru</div>
+  <div class="text-teal-500 font-medium text-lg mb-2 mt-6">@ru Языки программирования @en Programming languages @endru</div>
   <ul>
     <li class="mb-2">
       <strong>PHP</strong>
@@ -209,10 +209,10 @@ body {
     </li>
   </ul>
 
-  <div class="text-teal-500 h5 mt-6">@ru Прочие языки @en Other languages @endru</div>
+  <div class="text-teal-500 font-medium text-lg mb-2 mt-6">@ru Прочие языки @en Other languages @endru</div>
   <p>HTML, CSS, SASS.</p>
 
-  <div class="text-teal-500 h5 mt-6">@ru Технологии и софт @en Technology and Software @endru</div>
+  <div class="text-teal-500 font-medium text-lg mb-2 mt-6">@ru Технологии и софт @en Technology and Software @endru</div>
   <ul>
     <li class="mb-2">
       <strong>Ansible</strong>
@@ -298,7 +298,7 @@ body {
     </li>
   </ul>
 
-  <div class="text-teal-500 h5 mt-6">@ru Иностранные языки @en Foreign languages @endru</div>
+  <div class="text-teal-500 font-medium text-lg mb-2 mt-6">@ru Иностранные языки @en Foreign languages @endru</div>
   <ul>
     @ru
     @en
@@ -321,7 +321,7 @@ body {
     </li>
   </ul>
 
-  <div class="text-teal-500 h5 mt-6">@ru Работа с API @en APIs usage @endru</div>
+  <div class="text-teal-500 font-medium text-lg mb-2 mt-6">@ru Работа с API @en APIs usage @endru</div>
   @ru
     <p>Вход через соцсети: Facebook, GitHub, Google, Instagram, OK, Twitter, VK, Яндекс.</p>
   @en
@@ -353,7 +353,7 @@ body {
     </li>
   </ul>
 
-  <div class="my-caption h3 mt-12 uppercase">@ru Проекты @en Projects @endru</div>
+  <div class="my-caption font-medium text-2xl mb-2 mt-12 uppercase">@ru Проекты @en Projects @endru</div>
   @ru
     <p>По списку ниже можно заметить, что важные для меня проекты стараюсь не бросать и поддерживать годами.</p>
   @en
@@ -379,9 +379,9 @@ body {
     @ru ссылка на исходники @en source code link @endru
   </div>
 
-  <div class="h4 portfolio-year">@ru В настоящее время @en Present @endru</div>
+  <div class="font-medium text-xl mb-2 portfolio-year">@ru В настоящее время @en Present @endru</div>
   <div>
-    <div class="h5">
+    <div class="font-medium text-lg mb-2">
       <span class="text-orange-300">@svg (star)</span>
       <span class="text-muted">@svg (primitive-dot)</span>
       <a href="https://kupislona.ru/" rel="nofollow">kupislona.ru</a>
@@ -511,7 +511,7 @@ body {
       @endru
     </ul>
 
-    <div class="h5 mt-6">
+    <div class="font-medium text-lg mb-2 mt-6">
       <span class="text-orange-300">@svg (star)</span>
       <span class="text-green-500">@svg (primitive-dot)</span>
       <a href="/">vacuum.name</a>
@@ -528,9 +528,9 @@ body {
     @endru
   </div>
 
-  <div class="h4 portfolio-year">2014</div>
+  <div class="font-medium text-xl mb-2 portfolio-year">2014</div>
   <div>
-    <div class="h5">
+    <div class="font-medium text-lg mb-2">
       <span class="text-green-500">@svg (primitive-dot)</span>
       <a href="http://www.veloman.org/" rel="nofollow">veloman.org</a>
     </div>
@@ -539,13 +539,13 @@ body {
     @endru
   </div>
 
-  <div class="h4 portfolio-year">2013</div>
+  <div class="font-medium text-xl mb-2 portfolio-year">2013</div>
   <div>
     @ru
       <p>Проектирование хостинга для веб-студии Корден. Централизованное управление кластером из 6 серверов. Использование Ansible для развертывания и настройки серверов под управлением FreeBSD.</p>
     @endru
 
-    <div class="h5 mt-6">
+    <div class="font-medium text-lg mb-2 mt-6">
       <span class="svg-muted">@svg (primitive-dot)</span>
       Теплоклуб
     </div>
@@ -553,7 +553,7 @@ body {
       <p>Разработан сайт, позволяющий клиентам компании <a href="https://www.knaufinsulation.ru/" rel="nofollow">Knauf Insulation</a> за накопленную виртуальную валюту программы лояльности купить реальные товары интернет-магазина <a href="https://www.ozon.ru/" rel="nofollow">OZON.ru</a> на разработанном white-label сайте.</p>
     @endru
 
-    <div class="h5 mt-6">
+    <div class="font-medium text-lg mb-2 mt-6">
       <span class="svg-muted">@svg (primitive-dot)</span>
       FW
       <a href="https://github.com/ivacuum/fw" rel="nofollow">@svg (github)</a>
@@ -563,13 +563,13 @@ body {
     @endru
   </div>
 
-  <div class="h4 portfolio-year">2012</div>
+  <div class="font-medium text-xl mb-2 portfolio-year">2012</div>
   <div>
     @ru
       <p>Организация рабочего процесса разработки сайтов в веб-студии Корден: тестовые площадки, использование системы контроля версий, работа в команде, использование системы интеграции для распространения кода по серверам.</p>
       {{--<p>Сборка виртуальных туров из панорам: <a href="http://nayadakaluga.ru/pano-moskovski" rel="nofollow">ТЦ Московский</a>, <a href="http://nayadakaluga.ru/pano-suvorovski" rel="nofollow">ТЦ Суворовский</a>, <a href="http://nayadakaluga.ru/pano-obninsk" rel="nofollow">Технокерамика</a>.</p>--}}
     @endru
-    <div class="h5 mt-6">
+    <div class="font-medium text-lg mb-2 mt-6">
       <span class="svg-muted">@svg (primitive-dot)</span>
       kwan-park.ru
     </div>
@@ -578,9 +578,9 @@ body {
     @endru
   </div>
 
-  <div class="h4 portfolio-year">2011</div>
+  <div class="font-medium text-xl mb-2 portfolio-year">2011</div>
   <div>
-    <div class="h5">
+    <div class="font-medium text-lg mb-2">
       <span class="text-green-500">@svg (primitive-dot)</span>
       <a href="https://korden.org" rel="nofollow">korden.org</a>
     </div>
@@ -589,9 +589,9 @@ body {
     @endru
   </div>
 
-  <div class="h4 portfolio-year">2010</div>
+  <div class="font-medium text-xl mb-2 portfolio-year">2010</div>
   <div>
-    <div class="h5">
+    <div class="font-medium text-lg mb-2">
       <span class="text-green-500">@svg (primitive-dot)</span>
       BTT
       <a href="https://github.com/ivacuum/btt" rel="nofollow">@svg (github)</a>
@@ -600,7 +600,7 @@ body {
       <p>Координатор взаимодействия клиентов в сети BitTorrent. В первые же месяцы обслуживал порядка 3&thinsp;000&thinsp;000 подключений в день — около 100 запросов в секунду в вечернее время. Написан на языке Perl на основе демона статистики для игры Counter-Strike, выпущенного годом ранее. В 2012 году представлен как <strong>дипломный проект</strong> при выпуске из МГТУ им. Баумана.</p>
     @endru
 
-    <div class="h5 mt-6">
+    <div class="font-medium text-lg mb-2 mt-6">
       <span class="text-green-500">@svg (primitive-dot)</span>
       <a href="/retracker">BTRT</a>
       <a href="https://github.com/ivacuum/btrt" rel="nofollow">@svg (github)</a>
@@ -609,7 +609,7 @@ body {
       <p>Оптимизация файлообмена в сети BitTorrent. Совместное скачивание файлов пользователями сети одного провайдера. Позволяет, например, вдесятером превратить 0,25 Мбит/сек в 2,50 Мбит/сек при скачивании всеми одной раздачи. Если у кого-то уже есть необходимый файл, то скачивание производится на максильной доступной скорости локальной сети, например, 100 Мбит/сек.</p>
     @endru
 
-    <div class="h5 mt-6">
+    <div class="font-medium text-lg mb-2 mt-6">
       <span class="text-green-500">@svg (primitive-dot)</span>
       <a href="http://t.ivacuum.ru/">torrent.ivacuum.ru</a>
       <a href="https://github.com/ivacuum/t.ivacuum.ru" rel="nofollow">@svg (github)</a>
@@ -619,9 +619,9 @@ body {
     @endru
   </div>
 
-  <div class="h4 portfolio-year">2009</div>
+  <div class="font-medium text-xl mb-2 portfolio-year">2009</div>
   <div>
-    <div class="h5">
+    <div class="font-medium text-lg mb-2">
       <span class="svg-muted">@svg (primitive-dot)</span>
       CSSTATS
     </div>
@@ -631,7 +631,7 @@ body {
       <p>Проект представлен в качестве <strong>курсовой работы</strong> по сетевым приложениям в МГТУ им. Баумана.</p>
     @endru
 
-    <div class="h5 mt-6">
+    <div class="font-medium text-lg mb-2 mt-6">
       <span class="svg-muted">@svg (primitive-dot)</span>
       bugs.ivacuum.ru
     </div>
@@ -639,7 +639,7 @@ body {
       <p>Баг-трекер — сервис для учета и хранения задач, которые необходимо выполнить.</p>
     @endru
 
-    <div class="h5 mt-6">
+    <div class="font-medium text-lg mb-2 mt-6">
       <span class="text-green-500">@svg (primitive-dot)</span>
       <a href="https://img.ivacuum.ru/stats">img.ivacuum.ru</a>
       <a href="https://github.com/ivacuum/imageviewer" rel="nofollow">@svg (github)</a>
@@ -648,7 +648,7 @@ body {
       <p>Сервис подсчета просмотров изображений. Более 100&thinsp;000&thinsp;000 просмотров за время существования.</p>
     @endru
 
-    <div class="h5 mt-6">
+    <div class="font-medium text-lg mb-2 mt-6">
       <span class="text-green-500">@svg (primitive-dot)</span>
       <a href="/gallery">up.ivacuum.ru</a>
     </div>
@@ -657,9 +657,9 @@ body {
     @endru
   </div>
 
-  <div class="h4 portfolio-year">2008</div>
+  <div class="font-medium text-xl mb-2 portfolio-year">2008</div>
   <div>
-    <div class="h5">
+    <div class="font-medium text-lg mb-2">
       <span class="svg-muted">@svg (primitive-dot)</span>
       ivacuum.ru/игры/
     </div>
@@ -667,7 +667,7 @@ body {
       <p>Мониторинг игровых серверов Call of Duty, Counter-Strike, Diablo II, Killing Floor, Left 4 Dead, Warcraft 3. Инструкции для игры по сети. Обслуживание игровых серверов.</p>
     @endru
 
-    <div class="h5 mt-6">
+    <div class="font-medium text-lg mb-2 mt-6">
       <span class="svg-muted">@svg (primitive-dot)</span>
       torrent.elcomnet.ru
     </div>
@@ -676,13 +676,13 @@ body {
     @endru
   </div>
 
-  <div class="h4 portfolio-year">2007</div>
+  <div class="font-medium text-xl mb-2 portfolio-year">2007</div>
   <div>
     @ru
       <p>Сборка, запуск и администрирование игровых серверов в локальной сети Спарк-Калуга. Основной упор на игру Counter-Strike. Организация и проведение нескольких турниров.</p>
     @endru
 
-    <div class="h5 mt-6">
+    <div class="font-medium text-lg mb-2 mt-6">
       <span class="text-green-500">@svg (primitive-dot)</span>
       <a href="/dc">dc.ivacuum.ru</a>
     </div>
@@ -690,7 +690,7 @@ body {
       <p>Энциклопедия клиентов DC++. Ответы на часто задаваемые вопросы.</p>
     @endru
 
-    <div class="h5 mt-6">
+    <div class="font-medium text-lg mb-2 mt-6">
       <span class="text-green-500">@svg (primitive-dot)</span>
       <a href="/files">dl.ivacuum.ru</a>
     </div>
@@ -699,9 +699,9 @@ body {
     @endru
   </div>
 
-  <div class="h4 portfolio-year">2006</div>
+  <div class="font-medium text-xl mb-2 portfolio-year">2006</div>
   <div>
-    <div class="h5">
+    <div class="font-medium text-lg mb-2">
       <span class="svg-muted">@svg (primitive-dot)</span>
       school5.kaluga.ru
     </div>
@@ -710,9 +710,9 @@ body {
     @endru
   </div>
 
-  <div class="h4 portfolio-year">2004</div>
+  <div class="font-medium text-xl mb-2 portfolio-year">2004</div>
   <div>
-    <div class="h5">
+    <div class="font-medium text-lg mb-2">
       <span class="svg-muted">@svg (primitive-dot)</span>
       combats.ivacuum.ru
       <a href="https://github.com/ivacuum/combats.ivacuum.ru" rel="nofollow">@svg (github)</a>
@@ -722,9 +722,9 @@ body {
     @endru
   </div>
 
-  <div class="h4 portfolio-year">2003</div>
+  <div class="font-medium text-xl mb-2 portfolio-year">2003</div>
   <div>
-    <div class="h5">
+    <div class="font-medium text-lg mb-2">
       <span class="text-green-500">@svg (primitive-dot)</span>
       <a href="/">ivacuum.ru</a>
       <a href="https://github.com/ivacuum/hosting" rel="nofollow">@svg (github)</a>

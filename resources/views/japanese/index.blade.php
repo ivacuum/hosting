@@ -9,15 +9,15 @@
 @endsection
 
 @section('content')
-<h1 class="h2">@lang('Японский язык')</h1>
+<h1 class="font-medium text-3xl tracking-tight mb-2">@lang('Японский язык')</h1>
 <div class="grid md:grid-cols-2 gap-8 mt-6">
   <div class="flex">
     <div class="border dark:border-slate-700 overflow-hidden rounded">
       <div class="bg-greenish-600 px-5 py-3 text-white">
-        <h2 class="h4 mb-0">@ru Собственные ресурсы @en Own services @endru</h2>
+        <h2 class="font-medium text-xl">@ru Собственные ресурсы @en Own services @endru</h2>
       </div>
       <div class="px-5 py-4">
-        <h3 class="h4">
+        <h3 class="font-medium text-xl mb-2">
           <a class="link" href="@lng/japanese/hiragana-katakana">
             @lang('japanese.hiragana-katakana-trainer')
           </a>
@@ -29,7 +29,7 @@
             Learn Japanese syllabaries column by column the fast way.
           @endru
         </div>
-        <h3 class="h4 mt-6">
+        <h3 class="font-medium text-xl mt-6 mb-2">
           <a class="link" href="@lng/japanese/words-trainer">
             @lang('Тренажер по набору слов хираганой и катаканой')
           </a>
@@ -42,7 +42,7 @@
           @endru
         </div>
 
-        <h3 class="h4 mt-6">
+        <h3 class="font-medium text-xl mt-6 mb-2">
           <a class="link" href="@lng/japanese/wanikani">
             @lang('WaniKani V')
           </a>
@@ -60,7 +60,7 @@
   <div class="flex">
     <div class="border dark:border-slate-700 overflow-hidden rounded">
       <div class="bg-gray-600 px-5 py-3 text-white">
-        <h2 class="h4 mb-0">@ru Внешние полезные ресурсы @en External resources @endru</h2>
+        <h2 class="font-medium text-xl">@ru Внешние полезные ресурсы @en External resources @endru</h2>
       </div>
       <div class="px-5 py-4">
         <div>
@@ -118,21 +118,21 @@
 </div>
 
 @ru
-  <h2 class="tracking-tight mt-12">О самом японском языке</h2>
+  <h2 class="font-medium text-3xl tracking-tight mt-12 mb-2">О самом японском языке</h2>
 @endru
 @ru
   <p>В ходе изучения языка попалось много разной информации, которую хотелось бы зафиксировать. Эдакий пересказ как в нем все устроено в общих чертах.</p>
 @endru
 
 <section>
-  <div class="h2">@ru Азбуки @en Syllabaries @endru</div>
+  <div class="font-medium text-3xl tracking-tight mb-2">@ru Азбуки @en Syllabaries @endru</div>
   @ru
     <p>Без азбук ничего не прочитать. Катакана в основном для заимствованных слов, хирагана — для всего остального. Запомнить азбуки проще всего с помощью <a class="link" href="@lng/japanese/hiragana-katakana">тренажера</a>. Практикуя столбик за столбиком, можно за считанные дни добиться автоматизма чтения слогов.</p>
   @endru
 </section>
 
 <section>
-  <div class="h2">@ru Ключи (радикалы) @en Radicals @endru</div>
+  <div class="font-medium text-3xl tracking-tight mb-2">@ru Ключи (радикалы) @en Radicals @endru</div>
   @ru
     <p>Это составные блоки иероглифов. Они здорово помогают их распознавать.</p>
     <p>Возьмем, например, иероглиф неба <a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikaniKanji::class, 'show'], '空') }}">空</a>. Он состоит из следующих ключей: <a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikaniRadicals::class, 'show'], 'construction') }}">工</a>, <a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikaniRadicals::class, 'show'], 'legs') }}">儿</a> и <a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikaniRadicals::class, 'show'], 'helmet') }}">宀</a>.</p>
@@ -141,7 +141,7 @@
 </section>
 
 <section>
-  <div class="h2">@ru Кандзи (иероглифы) @en Kanji @endru</div>
+  <div class="font-medium text-3xl tracking-tight mb-2">@ru Кандзи (иероглифы) @en Kanji @endru</div>
   @ru
     <p>Иероглифы состоят из ключей, коих официально <a class="link" href="https://en.wikipedia.org/wiki/List_of_kanji_radicals_by_stroke_count">214 штук</a>. Приятный бонус в том, что ключи одни и те же как для японского, так и для китайского. И иероглифы общие. Чтение только разное.</p>
     <p>У кандзи может быть несколько чтений: китайского происхождения и японского. Если в слове присутствует хирагана「生きる」, то чтение почти наверняка будет японское. Если слово состоит только из иероглифов「公用」(без символов азбуки хираганы), то чтение с большой вероятностью будет китайское. Почему с вероятностью? Потому что бывают исключения. И чтение каждого типа не обязательно одно — бывает и по три!</p>

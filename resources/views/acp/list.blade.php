@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="flex items-center flex-wrap mb-2 -mt-2">
-  <h3 class="mb-1 mr-4">
+  <h3 class="font-medium text-2xl mb-1 mr-4">
     @lang("$tpl.index")
     <span class="text-base text-muted whitespace-nowrap">
       {{ $models instanceof Illuminate\Support\Collection

@@ -5,7 +5,7 @@
 @livewire(App\Http\Livewire\VocabularyTrainer::class)
 
 <div class="max-w-lg mt-12">
-  <h1 class="h2">@lang('Тренажер по набору слов хираганой и катаканой')</h1>
+  <h1 class="font-medium text-3xl tracking-tight mb-2">@lang('Тренажер по набору слов хираганой и катаканой')</h1>
   <div class="grid gap-4">
     <div>
       @ru

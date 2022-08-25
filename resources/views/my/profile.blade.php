@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="max-w-[500px]">
-  <h3 class="mb-4">@lang('Профиль')</h3>
+  <h3 class="font-medium text-2xl mb-4">@lang('Профиль')</h3>
   <p><a class="btn btn-default" href="{{ Auth::user()->www() }}">@lang('Просмотреть профиль') @svg (angle-right)</a></p>
   <form action="@lng/my/profile" method="post">
     {{ ViewHelper::inputHiddenMail() }}
@@ -45,7 +45,7 @@
     </button>
   </form>
 
-  <h3 class="mt-12">@lang('Аватар')</h3>
+  <h3 class="font-medium text-2xl mb-2 mt-12">@lang('Аватар')</h3>
   @livewire(App\Http\Livewire\AvatarManager::class)
 </div>
 @endsection

@@ -3,7 +3,7 @@
 <?php $freebsdVersion = '13.1' ?>
 
 @section('content')
-<h2>Сниппеты для выполнения различных задач на ОС FreeBSD</h2>
+<h2 class="font-medium text-3xl tracking-tight mb-2">Сниппеты для выполнения различных задач на ОС FreeBSD</h2>
 
 <div class="grid gap-8">
   <x-terminal>

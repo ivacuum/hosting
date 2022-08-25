@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<h1>{{ $metaTitle }}</h1>
+<h1 class="font-medium text-4xl tracking-tight mb-2">{{ $metaTitle }}</h1>
 <div class="max-w-[600px]">
   @ru
     <p>Вы когда-нибудь задумывались можно ли бесплатно попробовать услуги одного из лучших хостинг-провайдеров в мире совершенно бесплатно в течение нескольких месяцев? Да, это возможно с помощью промокодов ниже.</p>
@@ -37,7 +37,7 @@
   @ru
     <p>Пожалуйста, учтите, что DigitalOcean разрешает использовать лишь <span class="font-bold">один промокод для каждой учетной записи</span>, поэтому, если вы уже использовали какой-либо промокод ранее, то новый может не сработать.</p>
 
-    <h2>Как получить бесплатные месяцы хостинга</h2>
+    <h2 class="font-medium tracking-tight text-3xl mt-8 mb-2">Как получить бесплатные месяцы хостинга</h2>
     <ol>
       <li><a class="link" href="{{ config('cfg.digitalocean_link') }}">Зарегистрируйтесь на сайте DigitalOcean</a>.</li>
       <li>Подтвердите адрес вашей электронной почты.</li>
@@ -47,7 +47,7 @@
   @en
     <p>Remember that DigitalOcean only allow <span class="font-bold">one promo code per account</span>, so if you have redeemed one in the past you may not be able to add another again.</p>
 
-    <h2>How to get free months of VPS</h2>
+    <h2 class="font-medium tracking-tight text-3xl mb-2">How to get free months of VPS</h2>
     <ol>
       <li><a class="link" href="{{ config('cfg.digitalocean_link') }}">Sign up at DigitalOcean</a>.</li>
       <li>Verify your e-mail.</li>

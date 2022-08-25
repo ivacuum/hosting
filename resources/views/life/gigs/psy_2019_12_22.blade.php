@@ -456,7 +456,7 @@
 @endru
 @include('tpl.pic-collage', ['pic' => 'collage.jpg', 'w' => 5400, 'h' => 540])
 
-<h3 class="mt-12">@ru Бонусные материалы @en Bonus materials @endru</h3>
+<h3 class="font-medium text-2xl mb-2 mt-12">@ru Бонусные материалы @en Bonus materials @endru</h3>
 @ru
   <p>Общение с публикой.</p>
 @endru

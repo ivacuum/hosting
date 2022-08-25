@@ -3,7 +3,7 @@
 <div>
   @if ($this->radicals->count())
     <div class="sm:flex items-center justify-between mt-6 mb-1">
-      <h3>
+      <h3 class="font-medium text-2xl mb-2">
         <span>{{ $this->range ? __('Уровень :level', ['level' => $this->level]) : __('japanese.radicals') }}</span>
         <span class="text-base text-muted">{{ $this->radicals->count() }}</span>
       </h3>

@@ -4,7 +4,7 @@
 
 @section('content')
 @ru
-  <h1>Инструкция по русификации</h1>
+  <h1 class="font-medium text-4xl tracking-tight mb-2">Инструкция по русификации</h1>
   <p>
     <a class="btn btn-primary my-1 mr-2" href="@lng/files/157/dl">
       Русификатор ApexDC++ &middot; {{ ViewHelper::size(21464) }}

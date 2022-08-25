@@ -11,7 +11,7 @@
 @ru
   <p><strong>FlyLinkDC++</strong> — свободный и открытый клиент сети DC++. Основан на <a class="link" href="@lng/dc/strongdc">StrongDC++</a>. Русский язык входит в стандартный комплект поставки. Инсталлятор включает в себя как 32-битную версию, так и 64.</p>
 
-  <h3 class="mt-12">Установка и настройка</h3>
+  <h3 class="font-medium text-2xl mt-12 mb-2">Установка и настройка</h3>
   <p>После установки клиента вам необходимо будет указать ваш ник:</p>
   <p><img class="max-w-full h-auto" src="https://img.ivacuum.ru/g/110320/1_hdZWo1DiV3.png" width="670" height="229" alt=""></p>
   <p>А также открыть доступ к тем файлам, которыми вы готовы поделиться с другими пользователями:</p>
@@ -25,7 +25,7 @@
 @section('software_features')
 <section class="my-0 py-12">
   <div class="container">
-    <h3>
+    <h3 class="font-medium text-2xl mb-4">
       @ru
         Основные возможности FlyLinkDC++
       @en

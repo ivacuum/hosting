@@ -5,7 +5,7 @@
 @endpush
 
 @section('content')
-<div class="h2">Загрузить файлы</div>
+<div class="font-medium text-3xl tracking-tight mb-2">Загрузить файлы</div>
 <form method="post" action="/up" enctype="multipart/form-data">
   {{ ViewHelper::inputHiddenMail() }}
   @csrf

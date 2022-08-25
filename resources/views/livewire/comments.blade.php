@@ -1,7 +1,7 @@
 <?php /** @var \App\Http\Livewire\Comments $this */ ?>
 
 <div>
-  <div class="h3 mt-12">
+  <div class="font-medium text-2xl mb-2 mt-12">
     @lang('Обсуждение')
     <span class="text-base text-muted">{{ count($this->comments) }}</span>
   </div>

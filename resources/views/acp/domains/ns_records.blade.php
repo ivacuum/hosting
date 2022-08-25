@@ -66,7 +66,7 @@
     @endforeach
   </table>
 
-  <h3 class="mt-12">Добавить днс-запись</h3>
+  <h3 class="font-medium text-2xl mt-12 mb-2">Добавить днс-запись</h3>
   @livewire(App\Http\Livewire\DnsRecordForm::class, ['domain' => $model])
 @elseif ($model->yandex_user_id)
   <x-alert-warning>

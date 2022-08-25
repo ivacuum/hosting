@@ -8,7 +8,7 @@
 @extends('user-travel.base')
 
 @section('content')
-<h1 class="h2">
+<h1 class="font-medium text-3xl tracking-tight mb-2">
   @lang('Посещенные страны')
   <span class="text-base text-muted">{{ count($countries) }}</span>
 </h1>

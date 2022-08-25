@@ -3,7 +3,7 @@
 ])
 
 @section('content')
-<h1 class="text-3xl leading-tight">Кириллизация песен PSY</h1>
+<h1 class="font-medium text-3xl tracking-tight mb-2">Кириллизация песен PSY</h1>
 @ru
   <p>Готовый набор для подготовки к концертам. Мечтал о таком, когда впервые задумал посетить шоу. Все перечисленные песни исполнялись <a class="link" href="/life/psy.2018">с 2018 года</a>.</p>
 @endru

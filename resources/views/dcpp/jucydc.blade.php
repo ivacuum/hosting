@@ -97,25 +97,25 @@
 <section class="my-0 py-12">
   <div class="container">
     @ru
-    <h3>Основные преимущества Jucy DC++</h3>
-    <ul>
-      <li>Поддержка множества операционных систем.</li>
-      <li>Автоматическое обновление клиента.</li>
-      <li>Поддержка плагинов: флаги стран, смайлики и т.п.</li>
-      <li>Возможность установки лимитов скорости</li>
-      <li>Сегментная закачка — загрузка файлов по частям со многих пользователей для ускорения процесса обмена</li>
-      <li>Полнотекстовый поиск по документам</li>
-    </ul>
+      <h3 class="font-medium text-2xl mb-4">Основные преимущества Jucy DC++</h3>
+      <ul>
+        <li>Поддержка множества операционных систем.</li>
+        <li>Автоматическое обновление клиента.</li>
+        <li>Поддержка плагинов: флаги стран, смайлики и т.п.</li>
+        <li>Возможность установки лимитов скорости</li>
+        <li>Сегментная закачка — загрузка файлов по частям со многих пользователей для ускорения процесса обмена</li>
+        <li>Полнотекстовый поиск по документам</li>
+      </ul>
     @en
-    <h3>Main features of Jucy DC++</h3>
-    <ul>
-      <li>Support many operating systems</li>
-      <li>Automatic update of the client.</li>
-      <li>Plugin support: country flags, smilies, etc.</li>
-      <li>Bandwidth throttling</li>
-      <li>Segmented downloading</li>
-      <li>Full text indexing for document search</li>
-    </ul>
+      <h3 class="font-medium text-2xl mb-4">Main features of Jucy DC++</h3>
+      <ul>
+        <li>Support many operating systems</li>
+        <li>Automatic update of the client.</li>
+        <li>Plugin support: country flags, smilies, etc.</li>
+        <li>Bandwidth throttling</li>
+        <li>Segmented downloading</li>
+        <li>Full text indexing for document search</li>
+      </ul>
     @endru
   </div>
 </section>

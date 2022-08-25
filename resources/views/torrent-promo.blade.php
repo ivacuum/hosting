@@ -9,14 +9,14 @@
 @endsection
 
 @section('content')
-<section class="bg-light dark:bg-slate-800 pt-4 pb-12">
+<section class="bg-light dark:bg-slate-800 pt-4 pb-20">
   <div class="container lg:max-w-3xl">
     <div class="text-center mb-4">
       <a href="@lng/magnets">
         <img class="w-16 h-16" src="https://ivacuum.org/i/t/images/logo_arrows.png" alt="">
       </a>
     </div>
-    <h1 class="h2">Торрент-трекер в локальной сети Билайн-Калуга</h1>
+    <h1 class="font-medium text-3xl tracking-tight mb-2">Торрент-трекер в локальной сети Билайн-Калуга</h1>
     <p><strong>torrent.ivacuum.ru</strong> &mdash; наглядный сервис для обмена файлами, открывшийся <span class="whitespace-nowrap">5 июля</span> 2010 года в локальной сети Билайн города Калуга. Трекер довольно быстро набрал основную массу пользователей и стал местом общения нескольких тысяч калужан. <span class="whitespace-nowrap">1 января 2017</span> года он потерял пристанище в локальной сети и переместился в интернет. Вместе с тем была закрыта регистрация новых пользователей в пользу перехода на новый торрент-трекер на основе магнет-ссылок, открывшийся <span class="whitespace-nowrap">5 января</span> 2017 года.</p>
 
     <div>
@@ -28,9 +28,9 @@
   </div>
 </section>
 
-<section class="border-t border-b border-grey-200 dark:border-slate-700 py-12">
+<section class="border-t border-b border-grey-200 dark:border-slate-700 py-20">
   <div class="container lg:max-w-3xl">
-    <h2 class="h3">Я подключен к ТТК (Спарку), Ростелекому, МТС, Макснету, ДомНету. Можно ли воспользоваться вашим трекером? Нужна ли локальная сеть для доступа к ресурсам?</h2>
+    <h2 class="font-medium text-2xl mb-2">Я подключен к ТТК (Спарку), Ростелекому, МТС, Макснету, ДомНету. Можно ли воспользоваться вашим трекером? Нужна ли локальная сеть для доступа к ресурсам?</h2>
     <p>Трекер доступен через интернет для всех желающих. Локальная сеть более не обязательна для подключения. Калуга тоже больше не ограничение — можно заходить из любой точки мира.</p>
 
     <div>
@@ -42,9 +42,9 @@
   </div>
 </section>
 
-<section class="bg-light dark:bg-slate-800 py-12">
+<section class="bg-light dark:bg-slate-800 py-20">
   <div class="container lg:max-w-3xl">
-    <h3>Доступен ли еще тот старый трекер 2010 года?</h3>
+    <h3 class="font-medium text-2xl mb-2">Доступен ли еще тот старый трекер 2010 года?</h3>
     <p>Да, он все еще доступен. Нынче он больше похож на форум, так как вместе с открытием нового трекера в начале 2017 года на <strong>t.ivacuum.ru</strong> была закрыта регистрация новых пользователей. Если у вас нет учетки или она была удалена за неактивностью, то вам будет доступно для чтения всего несколько разделов.</p>
 
     <div>
@@ -58,7 +58,7 @@
 
 <section class="bg-gray-700 py-20 text-gray-300">
   <div class="container lg:max-w-3xl">
-    <h3 class="text-gray-200 mb-6">Ключевые особенности трекера t.ivacuum.ru</h3>
+    <h3 class="font-medium text-2xl text-gray-200 mb-6">Ключевые особенности трекера t.ivacuum.ru</h3>
     <div class="grid md:grid-cols-2 gap-x-12 gap-y-8">
       <div>
         <h5 class="font-medium text-lg mb-1 text-gray-400">Обсуждение раздач</h5>
@@ -102,9 +102,9 @@
   </div>
 </section>
 
-<section class="py-12">
+<section class="py-20">
   <div class="container lg:max-w-3xl">
-    <h3>Какие еще есть полезные ресурсы помимо трекера?</h3>
+    <h3 class="font-medium text-2xl mb-2">Какие еще есть полезные ресурсы помимо трекера?</h3>
     <p>Ознакомиться с актуальным списком можно на отдельной странице.</p>
     <div class="mt-4">
       <a class="btn btn-default" href="{{ to('/') }}">
@@ -116,7 +116,7 @@
 </section>
     @ru
     @en
-      <h1 class="h2">Torrent-tracker in Beeline network in Kaluga</h1>
+      <h1 class="font-medium text-3xl tracking-tight mb-2">Torrent-tracker in Beeline network in Kaluga</h1>
       <p><a class="btn btn-primary text-lg px-4 py-2" href="http://t.ivacuum.ru/">Go to the tracker &rarr;</a></p>
     @endru
 @endsection

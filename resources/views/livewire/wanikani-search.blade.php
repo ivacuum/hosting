@@ -4,7 +4,7 @@
   <div class="items-center md:flex justify-between mb-4 md:mb-0 -mt-2">
     @if ($this->count > 0)
       <div class="flex flex-wrap gap-4">
-        <h3 class="mb-2 md:mb-0 pt-1">@lang('japanese.results', ['results' => $this->count])</h3>
+        <h3 class="font-medium text-2xl mb-2 md:mb-0 pt-1">@lang('japanese.results', ['results' => $this->count])</h3>
         <button class="btn btn-default mb-2 md:mb-0" wire:click="clear">@lang('Очистить')</button>
       </div>
     @elseif ($this->q && $errors->isEmpty())

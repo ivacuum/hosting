@@ -3,7 +3,7 @@
 @extends('magnets.base')
 
 @section('content')
-<h3>Последние комментарии</h3>
+<h3 class="font-medium text-2xl mb-2">Последние комментарии</h3>
 @foreach ($comments as $comment)
   <a id="comment-{{ $comment->id }}"></a>
   <div class="flex py-4 w-full border-b border-grey-200 dark:border-slate-700">

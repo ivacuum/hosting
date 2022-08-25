@@ -164,7 +164,7 @@
 @endru
 <livewire:youtube title="PSY SUMMER SWAG 2017, 2018, 2019" v="CTuhqKy6CLc" start="236"/>
 
-<h3 class="mt-12">@ru Бонусные материалы @en Bonus materials @endru</h3>
+<h3 class="font-medium text-2xl mb-2 mt-12">@ru Бонусные материалы @en Bonus materials @endru</h3>
 <ul>
   <li><a class="link" href="https://youtu.be/H0UJ0UaooAs?t=1843">@ru Лав камера @en Love camera @endru</a></li>
   <li><a class="link" href="https://www.instagram.com/p/B10Rg-5BAxa/">@ru Минутная нарезка о концерте в Инчхоне @en Incheon 1-minute compilation @endru</a></li>

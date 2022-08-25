@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="mx-auto max-w-[400px]">
-  <h3>@lang('auth.password_remind_title')</h3>
+  <h3 class="font-medium text-2xl mb-2">@lang('auth.password_remind_title')</h3>
   <form action="{{ path([App\Http\Controllers\Auth\ForgotPassword::class, 'sendResetLink']) }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @csrf

@@ -2,7 +2,7 @@
 @include('livewire')
 
 @section('content')
-<h1 class="h2">@lang('Обратная связь')</h1>
+<h1 class="font-medium text-3xl tracking-tight mb-2">@lang('Обратная связь')</h1>
 <div class="max-w-[600px]">
   @ru
     <p>Используйте форму ниже, чтобы задать вопрос, оставить отзыв, получить помощь или подсказать как сделать сайт лучше.</p>

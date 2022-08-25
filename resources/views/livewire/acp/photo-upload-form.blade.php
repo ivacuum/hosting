@@ -33,7 +33,7 @@
 
   @if (count($this->thumbnails))
     <div class="my-4">
-      <h3>История загрузки</h3>
+      <h3 class="font-medium text-2xl mb-2">История загрузки</h3>
       @foreach ($this->thumbnails as $thumbnail)
         <div>{{ $thumbnail }} ... ok</div>
       @endforeach

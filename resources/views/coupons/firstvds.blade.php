@@ -3,7 +3,7 @@
 @section('content')
 <div class="max-w-[600px]">
   <img src="https://ivacuum.org/i/services/firstvds.png" width="135" height="72" onclick="location.href='https://firstvds.ru/?from=149161'" alt="">
-  <h1 class="mt-6">@lang('coupons.firstvds.subject')</h1>
+  <h1 class="font-medium text-4xl tracking-tight mb-2 mt-6">@lang('coupons.firstvds.subject')</h1>
   @ru
     <p>Укажите вашу электронную почту, и мы пришлем вам код для получения скидки 25% на первый заказ.</p>
   @en
@@ -30,7 +30,7 @@
   </form>
 
   <section class="mt-12">
-    <div class="h2">@ru Хотите способ проще? @en Looking for an easier way? @endru</div>
+    <div class="font-medium text-3xl tracking-tight mb-2">@ru Хотите способ проще? @en Looking for an easier way? @endru</div>
     @ru
       <p>Перейдите по ссылке для автоматического применения скидки к вашему первому заказу.</p>
     @en
