@@ -61,8 +61,8 @@
   </x-terminal>
 
   <x-terminal>
-    <div class="text-muted dark:text-white"># Очистка очереди exim</div>
-    <div class="prepend-dollar">exim -bp | exiqgrep -i | xargs exim -Mrm</div>
+    <div class="text-muted dark:text-white"># Очистка очереди exim старше 1 часа</div>
+    <div class="prepend-dollar">exim -bp | exiqgrep -i -o 3600 | xargs exim -Mrm</div>
   </x-terminal>
 
   <x-terminal>
