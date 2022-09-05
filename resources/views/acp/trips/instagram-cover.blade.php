@@ -30,9 +30,11 @@
       </div>
     </a>
   </div>
+  {{--
   <div>
     <img src="https://life.ivacuum.org/z/instagram-profile-link.png" alt="">
   </div>
+  --}}
 </div>
 </body>
 </html>
