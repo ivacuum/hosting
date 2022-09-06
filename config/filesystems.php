@@ -67,6 +67,8 @@ return [
             'username' => env('PHOTOS_USERNAME'),
             'password' => env('PHOTOS_PASSWORD'),
             'url' => env('PHOTOS_URL', '/uploads/photos'),
+            'privateKey' => env('PHOTOS_PRIVATE_KEY'),
+            'passphrase' => env('PHOTOS_PASSPHRASE'),
             'throw' => true,
             'timeout' => 10,
             'permissions' => [
