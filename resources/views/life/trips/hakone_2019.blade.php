@@ -4,369 +4,397 @@
 @ru
   <p>Пересадка в Одаваре.</p>
 @endru
-IMG_3428.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3428.jpg'])
 
 @ru
   <p>Печать станции для коллекционеров.</p>
 @endru
-IMG_3429.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3429.jpg'])
 
 @ru
-  <p>Поиск нужной остановки.</p>
+  <p>Поиск нужной автобусной остановки, чтобы добраться до Хаконе.</p>
 @endru
-IMG_3430.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3430.jpg'])
 
 @ru
   <p>Обилие рекламы на фасаде дома.</p>
 @endru
-IMG_3432.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3432.jpg'])
 
 @ru
   <p>Автобус до Хаконе. Чемодан едет на пассажирском месте.</p>
 @endru
-IMG_3434.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3434.jpg'])
 
 @ru
   <p>За час в пути стемнело.</p>
 @endru
-IMG_3436.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3436.jpg'])
 
 @ru
   <p>На месте туман в потемках.</p>
 @endru
-IMG_3440.jpeg
-IMG_3441.jpeg
-IMG_3452.jpeg
-IMG_3453.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3440.jpg',
+  'IMG_3441.jpg',
+  'IMG_3452.jpg',
+  'IMG_3453.jpg',
+]])
 
 @ru
   <p>Туманная заправка.</p>
 @endru
-IMG_3455.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3455.jpg'])
 
 @ru
   <p>Скромняга.</p>
 @endru
-IMG_3526.jpeg
-IMG_3527.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3526.jpg',
+  'IMG_3527.jpg',
+]])
 
 @ru
   <p>Проход к жилью. Внутри есть свои горячие источники.</p>
 @endru
-IMG_3530.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3530.jpg'])
 
 @ru
   <p>Парковка у входа.</p>
 @endru
-IMG_3528.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3528.jpg'])
 
 @ru
   <p>Спуск к озеру.</p>
 @endru
-IMG_3536.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3536.jpg'])
 
 @ru
-  <p>Улица.</p>
+  <p>Приозерная улица.</p>
 @endru
-IMG_3537.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3537.jpg'])
 
 @ru
   <p>Остановка водного транспорта.</p>
 @endru
-IMG_3538.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3538.jpg'])
 
 @ru
   <p>Неожиданное использование знака аварийной остановки.</p>
 @endru
-IMG_3539.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3539.jpg'])
 
 @ru
   <p>Осенние краски. Изобилие красного.</p>
 @endru
-IMG_3540.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3540.jpg'])
 
 @ru
   <p>Обзорная площадка.</p>
 @endru
-IMG_3541.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3541.jpg'])
 
 @ru
   <p>Подъем по канатной дороге.</p>
 @endru
-IMG_3544.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3544.jpg'])
 
 @ru
-  <p>Облака над Фудзи.</p>
+  <p>Облака над горой Фудзи.</p>
 @endru
-IMG_3550.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3550.jpg'])
 
 @ru
   <p>Бумажные полотенца на случай, если поплохело в пути.</p>
 @endru
-IMG_3551.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3551.jpg'])
 
-Но не только полотенца.
-IMG_3668.jpeg
+@ru
+  <p>В другом ящике больше средств для улучшения самочувствия.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_3668.jpg'])
 
 @ru
   <p>Проезд над дорогами.</p>
 @endru
-IMG_3554.jpeg
-IMG_3552.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3554.jpg',
+  'IMG_3552.jpg',
+]])
 
 @ru
   <p>Окрестности с канатной дороги.</p>
 @endru
-IMG_3553.jpeg
-IMG_3559.jpeg
-IMG_3569.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3553.jpg',
+  'IMG_3559.jpg',
+  'IMG_3569.jpg',
+]])
 
 @ru
   <p>Выход на промежуточной остановке, чтобы посмотреть на гору Фудзи.</p>
 @endru
-IMG_3572.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3572.jpg'])
 
 @ru
   <p>Разные ракурсы горы Фудзи.</p>
 @endru
-IMG_3652.jpeg
-IMG_3590.jpeg
-IMG_3588.jpeg
-IMG_3654.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3652.jpg',
+  'IMG_3588.jpg',
+  'IMG_3590.jpg',
+  'IMG_3654.jpg',
+]])
 
 @ru
   <p>Сероводородный участок.</p>
 @endru
-IMG_3570.jpeg
-IMG_3589.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3570.jpg',
+  'IMG_3589.jpg',
+]])
 
 @ru
   <p>Бинокль за 100 иен.</p>
 @endru
-IMG_3571.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3571.jpg'])
 
 @ru
   <p>Автобусная остановка.</p>
 @endru
-IMG_3610.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3610.jpg'])
 
 @ru
   <p>Безлиственный уголок.</p>
 @endru
-IMG_3653.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3653.jpg'])
 
 @ru
-  <p>Сувениры на стену.</p>
+  <p>Вертикальные сувениры на стену.</p>
 @endru
-IMG_3655.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3655.jpg'])
 
 @ru
   <p>Рабочее место продавца-кассира в магазине сувениров.</p>
 @endru
-IMG_3660.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3660.jpg'])
 
 @ru
   <p>Массажный ролик.</p>
 @endru
-IMG_3661.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3661.jpg'])
 
 @ru
   <p>Способы применения массажного ролика.</p>
 @endru
-IMG_3662.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3662.jpg'])
 
 @ru
   <p>Пеньки-вулканы.</p>
 @endru
-IMG_3663.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3663.jpg'])
 
 @ru
   <p>Братюня скромняги.</p>
 @endru
-IMG_3664.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3664.jpg'])
 
 @ru
   <p>Продолжение пути по канатной дороге.</p>
 @endru
-IMG_3665.jpeg
-IMG_3667.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3665.jpg',
+  'IMG_3667.jpg',
+]])
 
 @ru
   <p>Осенние улицы.</p>
 @endru
-IMG_3669.jpeg
-IMG_3673.jpeg
-IMG_3680.jpeg
-IMG_3683.jpeg
-IMG_3685.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3669.jpg',
+  'IMG_3673.jpg',
+  'IMG_3680.jpg',
+  'IMG_3683.jpg',
+  'IMG_3685.jpg',
+]])
 
 @ru
   <p>Снос дома специальной техникой.</p>
 @endru
-IMG_3686.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3686.jpg'])
 
 @ru
   <p>Долгий и крутой путь вниз по направлению к музею на открытом воздухе.</p>
 @endru
-IMG_3687.jpeg
-IMG_3689.jpeg
-IMG_3690.jpeg
-IMG_3691.jpeg
-IMG_3692.jpeg
-IMG_3694.jpeg
-IMG_3695.jpeg
-IMG_3696.jpeg
-IMG_3699.jpeg
-IMG_3707.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3687.jpg',
+  'IMG_3689.jpg',
+  'IMG_3690.jpg',
+  'IMG_3691.jpg',
+  'IMG_3692.jpg',
+  'IMG_3694.jpg',
+  'IMG_3695.jpg',
+  'IMG_3696.jpg',
+  'IMG_3699.jpg',
+  'IMG_3707.jpg',
+]])
 
 @ru
   <p>Ворота на колесах.</p>
 @endru
-IMG_3697.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3697.jpg'])
 
 @ru
   <p>Вход в платный сад.</p>
 @endru
-IMG_3698.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3698.jpg'])
 
 @ru
   <p>Перчатки сохнут на прищепках.</p>
 @endru
-IMG_3700.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3700.jpg'])
 
 @ru
   <p>Автомобильная дорога.</p>
 @endru
-IMG_3701.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3701.jpg'])
 
 @ru
   <p>Железная дорога.</p>
 @endru
-IMG_3706.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3706.jpg'])
 
 @ru
   <p>Гладкий каменистый холм.</p>
 @endru
-IMG_3708.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3708.jpg'])
 
 @ru
   <p>На железнодорожном мосту пронумерованы шпалы.</p>
 @endru
-IMG_3709.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3709.jpg'])
 
 @ru
   <p>Автомобиль проезжает железнодорожный переезд.</p>
 @endru
-IMG_3710.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3710.jpg'])
 
 @ru
-  <p>Территория музея Хаконе на открытом воздухе.</p>
+  <p>Территория и экспозиции музея Хаконе на открытом воздухе.</p>
 @endru
-IMG_3712.jpeg
-IMG_3713.jpeg
-IMG_3714.jpeg
-IMG_3715.jpeg
-IMG_3733.jpeg
-IMG_3738.jpeg
-IMG_3739.jpeg
-IMG_3740.jpeg
-IMG_3746.jpeg
-IMG_3747.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3712.jpg',
+  'IMG_3713.jpg',
+  'IMG_3714.jpg',
+  'IMG_3715.jpg',
+  'IMG_3733.jpg',
+  'IMG_3738.jpg',
+  'IMG_3739.jpg',
+  'IMG_3740.jpg',
+  'IMG_3746.jpg',
+  'IMG_3747.jpg',
+]])
 
 @ru
   <p>Винтовая лестница и разноцветные витражи.</p>
 @endru
-IMG_3769.jpeg
-IMG_3771.jpeg
-IMG_3772.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3769.jpg',
+  'IMG_3771.jpg',
+  'IMG_3772.jpg',
+]])
 
 @ru
   <p>Протоптанный подъем по винтовой лестнице.</p>
 @endru
-IMG_3783.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3783.jpg'])
 
 @ru
   <p>Панорама с башни.</p>
 @endru
-IMG_3784.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3784.jpg'])
 
 @ru
   <p>Протоптанный спуск по винтовой лестнице.</p>
 @endru
-IMG_3802.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3802.jpg'])
 
 @ru
   <p>Скамейка.</p>
 @endru
-IMG_3807.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3807.jpg'])
 
 @ru
   <p>Еще инсталляции.</p>
 @endru
-IMG_3809.jpeg
-IMG_3836.jpeg
-IMG_3853.jpeg
-IMG_3854.jpeg
-IMG_3835.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3809.jpg',
+  'IMG_3836.jpg',
+  'IMG_3853.jpg',
+  'IMG_3854.jpg',
+  'IMG_3835.jpg',
+]])
 
 @ru
-  <p>Скамейка-яичница.</p>
+  <p>Огромные скамейки-яичницы.</p>
 @endru
-IMG_3837.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3837.jpg'])
 
 @ru
   <p>Почувствуй себя скульптурой с помощью захвата и проекции позы.</p>
 @endru
-IMG_3861.jpeg
-IMG_3862.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_3861.jpg',
+  'IMG_3862.jpg',
+]])
 
 @ru
   <p>Инструкция к становлению скульптурой.</p>
 @endru
-IMG_3867.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3867.jpg'])
 
 @ru
   <p>Сувенирные камни в честь месяцев лунного календаря.</p>
 @endru
-IMG_3873.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3873.jpg'])
 
 @ru
   <p>Музыкальные шкатулки.</p>
 @endru
-IMG_3874.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3874.jpg'])
 
 @ru
   <p>Улица.</p>
 @endru
-IMG_3875.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3875.jpg'])
 
 @ru
-  <p>Пронумерованная скамейка. Табличка предлагает отдохнуть.</p>
+  <p>Пронумерованная скамейка. Табличка призывает отдохнуть.</p>
 @endru
-IMG_3876.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3876.jpg'])
 
 @ru
   <p>Цветы в горшке.</p>
 @endru
-IMG_3877.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3877.jpg'])
 
 @ru
   <p>Дорога.</p>
 @endru
-IMG_3878.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3878.jpg'])
 
 @ru
   <p>Доступ к вай-фаю в автобусе.</p>
 @endru
-IMG_3879.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3879.jpg'])
 
 @ru
   <p>Ужин с инструкцией.</p>
 @endru
-IMG_3884.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3884.jpg'])
 
 @ru
   <p>В утро выезда снова туман.</p>
 @endru
-IMG_3888.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_3888.jpg'])
 @endsection
