@@ -1,5 +1,6 @@
 <?php namespace App\Http\Livewire\Acp;
 
+use App\Action\FindUploadedPhotoAction;
 use App\Action\ListGigsForInputSelectAction;
 use App\Action\ListTripsForInputSelectAction;
 use App\Domain\PhotoStatus;
@@ -64,7 +65,7 @@ class PhotoUploadForm extends Component
         } elseif ($this->tripId) {
             $model = Trip::findOrFail($this->tripId);
         } else {
-            throw new \DomainException('Нужен концерт или поездка.');
+            throw new \DomainException('Нужно выбрать концерт или поездку.');
         }
 
         try {
@@ -89,18 +90,25 @@ class PhotoUploadForm extends Component
 
         \Storage::disk('photos')->putFileAs($folder, $image, $filename);
 
-        /** @var \App\Photo $photo */
-        $photo = $model->photos()->make();
-        $photo->lat = $coords['lat'] ?? '';
-        $photo->lon = $coords['lon'] ?? '';
-        $photo->slug = "{$model->slug}/{$filename}";
-        $photo->point = $photo->lat
-            ? new Point($photo->lat, $photo->lon)
-            : null;
-        $photo->views = 0;
-        $photo->status = PhotoStatus::Hidden;
-        $photo->user_id = \Auth::user()->id;
-        $photo->save();
+        $photoSlug = "{$model->slug}/{$filename}";
+
+        $photo = app(FindUploadedPhotoAction::class)
+            ->execute(\Auth::user()->id, $model, $photoSlug);
+
+        if ($photo === null) {
+            /** @var \App\Photo $photo */
+            $photo = $model->photos()->make();
+            $photo->lat = $coords['lat'] ?? '';
+            $photo->lon = $coords['lon'] ?? '';
+            $photo->slug = $photoSlug;
+            $photo->point = $photo->lat
+                ? new Point($photo->lat, $photo->lon)
+                : null;
+            $photo->views = 0;
+            $photo->status = PhotoStatus::Hidden;
+            $photo->user_id = \Auth::user()->id;
+            $photo->save();
+        }
 
         $this->thumbnails[] = $photo->slug;
 

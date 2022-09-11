@@ -1,6 +1,7 @@
 <?php namespace Tests\Livewire\Acp;
 
 use App\Factory\GigFactory;
+use App\Factory\PhotoFactory;
 use App\Factory\TripFactory;
 use App\Factory\UserFactory;
 use App\Http\Livewire\Acp\PhotoUploadForm;
@@ -35,6 +36,41 @@ class PhotoUploadFormTest extends TestCase
         $this->assertNotNull($photo);
 
         \Storage::disk('photos')->assertExists("gigs/{$photo->slug}");
+    }
+
+    public function testReplaceTripPhoto()
+    {
+        \Storage::fake('photos');
+        \Storage::fake('tmp-for-tests');
+
+        $file = UploadedFile::fake()->image('IMG_0013.jpeg');
+
+        $trip = TripFactory::new()
+            ->withSlug('our-phpunit-trip')
+            ->create();
+
+        $photo = PhotoFactory::new()
+            ->withTripId($trip->id)
+            ->withSlug('our-phpunit-trip/IMG_0013.jpg')
+            ->create();
+
+        $user = UserFactory::new()->admin()->make();
+
+        \Livewire::actingAs($user)
+            ->test(PhotoUploadForm::class)
+            ->set('tripId', $trip->id)
+            ->set('file', $file);
+
+        $uploadedPhoto = Photo::firstWhere([
+            'rel_type' => $trip->getMorphClass(),
+            'rel_id' => $trip->id,
+        ]);
+
+        $this->assertNotNull($uploadedPhoto);
+        $this->assertTrue($uploadedPhoto->is($photo));
+        $this->assertStringEndsWith('.jpg', $uploadedPhoto->slug);
+
+        \Storage::disk('photos')->assertExists($uploadedPhoto->slug);
     }
 
     public function testTripPhoto()

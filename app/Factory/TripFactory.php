@@ -6,6 +6,7 @@ use Carbon\CarbonImmutable;
 
 class TripFactory
 {
+    private $slug;
     private $cityId;
     private $userId;
     private $metaImage;
@@ -30,7 +31,7 @@ class TripFactory
         $dateEnd = CarbonImmutable::instance($dateStart)->addDays(random_int(0, 3));
 
         $model->html = '';
-        $model->slug = \Str::slug($title);
+        $model->slug = $this->slug ?? \Str::slug($title);
         $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->status = $this->status;
         $model->city_id = $this->cityId ?? CityFactory::new()->create()->id;
@@ -72,6 +73,14 @@ class TripFactory
     {
         $factory = clone $this;
         $factory->metaImage = $metaImage;
+
+        return $factory;
+    }
+
+    public function withSlug(string $slug)
+    {
+        $factory = clone $this;
+        $factory->slug = $slug;
 
         return $factory;
     }
