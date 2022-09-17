@@ -197,7 +197,7 @@
 @ru
   <p>Братюня скромняги.</p>
 @endru
-@include('tpl.pic-2x', ['pic' => 'IMG_3664.jpg'])
+@include('tpl.pic-arbitrary-2x', ['pic' => 'IMG_3664.jpg', 'w' => 563, 'h' => 750])
 
 @ru
   <p>Продолжение пути по канатной дороге.</p>
