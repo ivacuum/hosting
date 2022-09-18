@@ -794,7 +794,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_3323.jpg'])
 
 @ru
-  <p>Крокодилья голова.</p>
+  <p>Не то крокодилья, не то драконья голова.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3346.jpg'])
 
