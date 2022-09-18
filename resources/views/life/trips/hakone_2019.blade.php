@@ -190,7 +190,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_3662.jpg'])
 
 @ru
-  <p>Пеньки-вулканы.</p>
+  <p>Пеньки в форме яйца.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3663.jpg'])
 
