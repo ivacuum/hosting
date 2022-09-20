@@ -4,6 +4,7 @@ use App\City;
 use App\Http\Livewire\WithCountryIds;
 use App\Http\Livewire\WithGoto;
 use App\Rules\LifeSlug;
+use App\Spatial\Point;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
@@ -32,6 +33,9 @@ class CityForm extends Component
     {
         $this->authorize('create', $this->city);
         $this->validate();
+        $this->city->point = $this->city->lat
+            ? new Point($this->city->lat, $this->city->lon)
+            : null;
         $this->city->save();
 
         return redirect()->to($this->goto ?? to('acp/cities'));
