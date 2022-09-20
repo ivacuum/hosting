@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $iata
  * @property string $lat
  * @property string $lon
- * @property Cast\PointCast $point
+ * @property Spatial\Point $point
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
@@ -80,8 +80,8 @@ class City extends Model
 
     public function isOnMap(): bool
     {
-        return $this->lat
-            && $this->lon;
+        return $this->point?->lat
+            && $this->point?->lon;
     }
 
     public function loadCountry(): void
