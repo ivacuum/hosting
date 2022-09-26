@@ -56,12 +56,6 @@
           <div class="text-2xl">{{ $this->answered }}</div>
         </div>
       @endif
-      @if($this->skipped > 0)
-        <div>
-          <div class="text-sm small-caps text-gray-500">@lang('japanese.skipped')</div>
-          <div class="text-2xl">{{ $this->skipped }}</div>
-        </div>
-      @endif
       @if($this->revealed > 0)
         <div>
           <div class="text-sm small-caps text-yellow-500">@lang('Подсказано')</div>

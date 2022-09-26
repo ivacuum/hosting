@@ -10,7 +10,6 @@ use Livewire\Component;
 
 class HangulTrainer extends Component
 {
-    public int $skipped = 0;
     public int $answered = 0;
     public int $revealed = 0;
     public bool $reveal = false;
@@ -26,6 +25,12 @@ class HangulTrainer extends Component
         $answer = trim(mb_strtolower($this->answer));
 
         if (in_array($answer, $this->acceptedAnswers())) {
+            if ($answer === $this->romanizeJamo()) {
+                event(new \App\Events\Stats\HangulAnsweredLatin);
+            } elseif (in_array($answer, collect()->when(true, $this->appendCyrillicAnswers(...))->all())) {
+                event(new \App\Events\Stats\HangulAnsweredCyrillic);
+            }
+
             $this->answered++;
             $this->next();
 
@@ -40,11 +45,31 @@ class HangulTrainer extends Component
 
         $this->reveal = true;
         $this->revealed++;
+
+        event(new \App\Events\Stats\HangulAnswerRevealed);
     }
 
     public function mount()
     {
         $this->pickRandomJamo();
+
+        event(new \App\Events\Stats\HangulMounted);
+    }
+
+    public function updatedItalic()
+    {
+        match ($this->italic) {
+            true => event(new \App\Events\Stats\HangulFontItalic),
+            false => event(new \App\Events\Stats\HangulFontNormal),
+        };
+    }
+
+    public function updatedShiftPressed()
+    {
+        match ($this->shiftPressed) {
+            true => event(new \App\Events\Stats\HangulShiftPressed),
+            false => event(new \App\Events\Stats\HangulShiftReleased),
+        };
     }
 
     public function updatedWhatToTrain()
@@ -52,6 +77,12 @@ class HangulTrainer extends Component
         $this->whatToTrain = is_int($this->whatToTrain)
             ? HangulWhatToTrain::from($this->whatToTrain)
             : $this->whatToTrain;
+
+        match ($this->whatToTrain) {
+            HangulWhatToTrain::AllTogether => event(new \App\Events\Stats\HangulTrainAllTogether),
+            HangulWhatToTrain::Consonants => event(new \App\Events\Stats\HangulTrainConsonants),
+            HangulWhatToTrain::Vowels => event(new \App\Events\Stats\HangulTrainVowels),
+        };
 
         $this->next();
     }
