@@ -175,8 +175,8 @@ Route::get('news/{year}/{month}/{day}/{slug}', Ctrl\NewsBc::class);
 
 Route::get('notifications', [Ctrl\Notifications::class, 'index'])->middleware('auth');
 
-Route::get('parser/vk/{page?}/{date?}', [Ctrl\ParserVk::class, 'index'])->where('date', '\d{4}-\d{2}-\d{2}');
-Route::post('parser/vk', [Ctrl\ParserVk::class, 'indexPost']);
+// Route::get('parser/vk/{page?}/{date?}', [Ctrl\ParserVk::class, 'index'])->where('date', '\d{4}-\d{2}-\d{2}');
+// Route::post('parser/vk', [Ctrl\ParserVk::class, 'indexPost']);
 
 Route::middleware('nav:Фотки,photos')->group(function () {
     Route::get('photos', [Ctrl\Photos::class, 'index']);
