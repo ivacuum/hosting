@@ -88,7 +88,7 @@ Route::middleware('nav:Японский язык,japanese')->group(function () {
         Route::get('japanese/wanikani/kanji', [Ctrl\JapaneseWanikaniKanji::class, 'index'])->middleware('nav:japanese.kanji');
         Route::get('japanese/wanikani/kanji/{character}', [Ctrl\JapaneseWanikaniKanji::class, 'show']);
         Route::view('japanese/wanikani/level', 'japanese.wanikani.levels')->middleware('nav:Уровни');
-        Route::get('japanese/wanikani/level/{level}', Ctrl\WanikaniLevel::class);
+        Route::get('japanese/wanikani/level/{level}', Ctrl\WanikaniLevel::class)->where('level', '\d+');
         Route::get('japanese/wanikani/radicals', [Ctrl\JapaneseWanikaniRadicals::class, 'index'])->middleware('nav:japanese.radicals');
         Route::get('japanese/wanikani/radicals/{meaning}', [Ctrl\JapaneseWanikaniRadicals::class, 'show']);
         Route::get('japanese/wanikani/vocabulary', [Ctrl\JapaneseWanikaniVocabulary::class, 'index'])->middleware('nav:japanese.vocabulary');
