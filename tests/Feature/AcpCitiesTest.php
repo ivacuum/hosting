@@ -90,7 +90,9 @@ class AcpCitiesTest extends TestCase
         $city->refresh();
 
         $this->assertSame('23.984', $city->lat);
+        $this->assertSame('23.984', $city->point->lat);
         $this->assertSame('15.522', $city->lon);
+        $this->assertSame('15.522', $city->point->lon);
         $this->assertSame('LED', $city->iata);
         $this->assertSame('city-slug', $city->slug);
         $this->assertSame('title en', $city->title_en);
