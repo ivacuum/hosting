@@ -27,17 +27,14 @@ class VocabularyTrainer extends Component
 
         $answer = trim(mb_strtolower($this->answer));
 
-        if ($answer === $this->vocab->toRomaji()) {
-            event(new \App\Events\Stats\VocabularyAnsweredRomaji);
-        } elseif ($answer === $this->vocab->toKatakana()) {
-            event(new \App\Events\Stats\VocabularyAnsweredKatakana);
-        } elseif ($answer === $this->vocab->kana) {
-            event(new \App\Events\Stats\VocabularyAnsweredHiragana);
-        } elseif ($answer === $this->vocab->character) {
-            event(new \App\Events\Stats\VocabularyAnsweredKanji);
-        }
-
         if (in_array($answer, $this->acceptedAnswers())) {
+            match ($answer) {
+                $this->vocab->toRomaji() => event(new \App\Events\Stats\VocabularyAnsweredRomaji),
+                $this->vocab->toKatakana() => event(new \App\Events\Stats\VocabularyAnsweredKatakana),
+                $this->vocab->kana => event(new \App\Events\Stats\VocabularyAnsweredHiragana),
+                $this->vocab->character => event(new \App\Events\Stats\VocabularyAnsweredKanji),
+            };
+
             $this->answered++;
             $this->next();
 
