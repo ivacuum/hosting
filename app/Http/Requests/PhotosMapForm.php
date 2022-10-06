@@ -1,7 +1,7 @@
 <?php namespace App\Http\Requests;
 
-use App\Domain\PhotoStatus;
 use App\Photo;
+use App\Scope\PhotoPublishedScope;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PhotosMapForm extends FormRequest
@@ -31,7 +31,7 @@ class PhotosMapForm extends FormRequest
         $this->photo = $this->photoSlug
             ? Photo::query()
                 ->where('slug', $this->photoSlug)
-                ->where('status', PhotoStatus::Published)
+                ->tap(new PhotoPublishedScope)
                 ->first()
             : null;
     }
