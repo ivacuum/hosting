@@ -17,7 +17,7 @@ class PhotoPointResponse implements \JsonSerializable
             'id' => $this->photo->id,
             'geometry' => [
                 'type' => 'Point',
-                'coordinates' => [$this->photo->lat, $this->photo->lon],
+                'coordinates' => [$this->photo->point->lat, $this->photo->point->lon],
             ],
             'properties' => [
                 'balloonContent' => sprintf(

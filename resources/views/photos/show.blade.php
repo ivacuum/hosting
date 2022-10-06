@@ -71,7 +71,7 @@ Mousetrap.bind('right', () => {
       <div class="text-muted">
         @lang('Геотэги')
         @if ($photo->isOnMap())
-          <a href="{{ to('photos/map', ['lat' => $photo->lat, 'lon' => $photo->lon, 'zoom' => 16]) }}">@svg (map-marker)</a>
+          <a href="{{ to('photos/map', ['lat' => $photo->point->lat, 'lon' => $photo->point->lon, 'zoom' => 16]) }}">@svg (map-marker)</a>
         @endif
       </div>
       <div><a class="link lowercase" href="{{ to('photos/cities/{city}', $photo->rel->city->slug) }}">#{{ $photo->rel->city->title }}</a></div>

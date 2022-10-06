@@ -81,8 +81,7 @@ class Photo extends Model
 
     public function isOnMap(): bool
     {
-        return $this->lat
-            && $this->lon;
+        return $this->point !== null;
     }
 
     public function isPublished(): bool

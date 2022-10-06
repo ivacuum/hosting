@@ -53,8 +53,8 @@
         @endforeach
       </td>
       <td class="text-gray-400">
-        <div>{{ $model->lat }}</div>
-        <div>{{ $model->lon }}</div>
+        <div>{{ $model->point?->lat }}</div>
+        <div>{{ $model->point?->lon }}</div>
       </td>
       <td class="md:text-right whitespace-nowrap">
         {{ ViewHelper::number($model->views) ?: '' }}
