@@ -59,6 +59,7 @@ Route::view('dev/base64-decoder', 'dev.base64-decoder');
 Route::view('dev/base64-encoder', 'dev.base64-encoder');
 Route::view('dev/hash-generator', 'dev.hash-generator');
 Route::view('dev/json-formatter', 'dev.json-formatter');
+Route::view('dev/map-polygon', 'dev.map-polygon');
 
 Route::middleware('nav:Документация,docs')->group(function () {
     Route::view('docs', 'docs.index');
