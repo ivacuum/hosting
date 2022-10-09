@@ -24,8 +24,13 @@ class Point extends Geometry implements \Stringable
     public function jsonSerialize()
     {
         return [
-            'coordinates' => [$this->lon, $this->lat],
+            'coordinates' => [$this->lat, $this->lon],
         ];
+    }
+
+    public function toPair(): string
+    {
+        return "{$this->lon} {$this->lat}";
     }
 
     public function toWkt(): string

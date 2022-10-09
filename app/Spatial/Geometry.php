@@ -18,7 +18,7 @@ abstract class Geometry implements GeometryInterface, Jsonable, \JsonSerializabl
         return $parser->parse($wkb);
     }
 
-    public static function fromWkt(string $wkt, int $srid = 0)
+    public static function fromWkt(string $wkt, int $srid = 4326)
     {
         $wktArgument = static::getWktArgument($wkt);
 

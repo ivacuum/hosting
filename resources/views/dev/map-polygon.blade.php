@@ -9,17 +9,20 @@
 
 <div>
   <label class="block mb-1 font-semibold">WKT</label>
-  <input id="polygon_wkt" class="form-input select-all" type="text" value="" readonly>
+  <input id="polygon_wkt" class="form-input select-all" type="text" value="{{ Request::input('wkt') }}">
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('#map_polygon')
+  const polygonWkt = document.querySelector('#polygon_wkt')
+
+  const geoJson = @json($polygon ?? [])
 
   App.map
     .create(container, 54.507014, 36.252277, 10, true)
     .then(() => {
-      const myPolygon = new App.map.ym.Polygon([], {}, {
+      const myPolygon = new App.map.ym.Polygon(geoJson, {}, {
           editorDrawingCursor: 'crosshair',
           editorMaxPoints: 100,
           fillColor: 'rgba(255, 255, 255, .7)',
@@ -29,10 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       App.map.map.geoObjects.add(myPolygon)
 
+      @if($polygon)
+        App.map.map.setBounds(App.map.map.geoObjects.get(0).geometry.getBounds())
+      @endif
+
       myPolygon.events.add('geometrychange', () => {
         const coordinates = App.map.map.geoObjects.get(0).geometry.getCoordinates()
 
-        if (coordinates.length === 0) {
+        if (coordinates[0].length === 0) {
           return
         }
 
@@ -46,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
           })
           .join(',')
 
-        document.querySelector('#polygon_wkt').value = `POLYGON(${wkt})`
+        polygonWkt.value = `POLYGON(${wkt})`
       })
 
       myPolygon.editor.startDrawing()
