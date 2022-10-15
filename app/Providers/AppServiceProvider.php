@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
         Date::use(CarbonImmutable::class);
 
         Model::preventLazyLoading(!app()->isProduction());
+        // Model::preventAccessingMissingAttributes(!app()->isProduction());
+        Model::preventSilentlyDiscardingAttributes(!app()->isProduction());
 
         Relation::enforceMorphMap([
             'Gig' => App\Gig::class,
