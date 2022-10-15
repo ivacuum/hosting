@@ -94,11 +94,10 @@ class VocabularyTrainer extends Component
     {
         $this->openSettings = true;
 
-        if ($this->hiragana) {
-            event(new \App\Events\Stats\VocabularySwitchedToHiragana);
-        } else {
-            event(new \App\Events\Stats\VocabularySwitchedToKatakana);
-        }
+        match ($this->hiragana) {
+            true => event(new \App\Events\Stats\VocabularySwitchedToHiragana),
+            false => event(new \App\Events\Stats\VocabularySwitchedToKatakana),
+        };
     }
 
     private function acceptedAnswers(): array
