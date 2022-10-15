@@ -2,9 +2,11 @@
 
 <div>
   @if (Session::has('message'))
-    <x-alert-info-dismissable>
-      {{ Session::get('message') }}
-    </x-alert-info-dismissable>
+    <div class="my-4">
+      <x-alert-info-dismissable>
+        {{ Session::get('message') }}
+      </x-alert-info-dismissable>
+    </div>
   @endif
   <form wire:submit.prevent="submit">
     {{ ViewHelper::inputHiddenMail() }}
