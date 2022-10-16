@@ -2,7 +2,7 @@
 
 class HiraganizeJapaneseNumberAction
 {
-    public function execute(string $number)
+    public function execute(string $number): string
     {
         return strtr($number, [
             '兆' => 'ちょう',
