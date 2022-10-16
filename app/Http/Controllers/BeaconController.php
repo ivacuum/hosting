@@ -7,10 +7,13 @@ use App\Http\Requests\BeaconStoreForm;
 class BeaconController
 {
     private const METRICS = [
+        Stats\NumberSpoken::class,
         Stats\HiraganaAnswered::class,
         Stats\HiraganaSelected::class,
         Stats\KatakanaAnswered::class,
         Stats\KatakanaSelected::class,
+        Stats\NumberSpeakPressed::class,
+        Stats\NumberVoiceSelected::class,
         Stats\HiraganaAnswerRevealed::class,
         Stats\KatakanaAnswerRevealed::class,
     ];

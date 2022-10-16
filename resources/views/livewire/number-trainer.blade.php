@@ -202,6 +202,10 @@
 
       voiceSelect.addEventListener('input', () => {
         sayOutLoud()
+
+        App.beacon.push({
+          event: 'NumberVoiceSelected',
+        })
       })
 
       printSupportedVoices.addEventListener('click', () => {
@@ -271,11 +275,19 @@
         utterance.lang = utterance.voice.lang
 
         speechSynthesis.speak(utterance)
+
+        App.beacon.push({
+          event: 'NumberSpoken',
+        })
       }
 
       document.querySelector('.js-speak')?.addEventListener('click', () => {
         sayOutLoud()
         focusOnAnswer()
+
+        App.beacon.push({
+          event: 'NumberSpeakPressed',
+        })
       })
     })
   </script>

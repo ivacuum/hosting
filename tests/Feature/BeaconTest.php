@@ -72,10 +72,13 @@ class BeaconTest extends TestCase
     public function simpleEvents()
     {
         return [
+            [Stats\NumberSpoken::class],
             [Stats\HiraganaAnswered::class],
             [Stats\HiraganaSelected::class],
             [Stats\KatakanaAnswered::class],
             [Stats\KatakanaSelected::class],
+            [Stats\NumberSpeakPressed::class],
+            [Stats\NumberVoiceSelected::class],
             [Stats\HiraganaAnswerRevealed::class],
             [Stats\KatakanaAnswerRevealed::class],
         ];

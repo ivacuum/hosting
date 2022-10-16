@@ -44,6 +44,11 @@ class NumberTrainer extends Component
         $answer = trim(mb_strtolower($this->answer));
 
         if (in_array($answer, $this->acceptedAnswers())) {
+            match ($this->guessingSpellOut) {
+                true => event(new \App\Events\Stats\NumberAnsweredSpellOut),
+                false => event(new \App\Events\Stats\NumberAnsweredNumber),
+            };
+
             $this->answered++;
             $this->next();
 
@@ -58,12 +63,16 @@ class NumberTrainer extends Component
 
         $this->reveal = true;
         $this->revealed++;
+
+        event(new \App\Events\Stats\NumberAnswerRevealed);
     }
 
     public function decreaseLevel()
     {
         $this->validate(['maximum' => 'integer|min:10|max:100000000']);
         $this->maximum /= 10;
+
+        event(new \App\Events\Stats\NumberDecreaseMaximum);
     }
 
     public function getSpellOutProperty()
@@ -77,6 +86,8 @@ class NumberTrainer extends Component
     {
         $this->validate(['maximum' => 'integer|min:10|max:100000000']);
         $this->maximum *= 10;
+
+        event(new \App\Events\Stats\NumberIncreaseMaximum);
     }
 
     public function mount(Request $request, GetNumberLocalesAction $getNumberLocales)
@@ -91,26 +102,45 @@ class NumberTrainer extends Component
             : 'en';
 
         $this->pickRandomNumber();
+
+        event(new \App\Events\Stats\NumberMounted);
     }
 
     public function skip()
     {
         if ($this->reveal === false) {
             $this->skipped++;
+
+            event(new \App\Events\Stats\NumberSkipped);
         }
 
         $this->next();
         $this->emit('answer.focus');
     }
 
+    public function updatedGuessingSpellOut()
+    {
+        match ($this->guessingSpellOut) {
+            true => event(new \App\Events\Stats\NumberGuessingSpellOut),
+            false => event(new \App\Events\Stats\NumberGuessingNumber),
+        };
+    }
+
     public function updatedLang()
     {
         $this->next();
         $this->emit('lang.updated', $this->lang);
+
+        event(new \App\Events\Stats\NumberLanguageSelected);
     }
 
     public function updatedSayOutLoud()
     {
+        match ($this->sayOutLoud) {
+            true => event(new \App\Events\Stats\NumberListen),
+            false => event(new \App\Events\Stats\NumberRead),
+        };
+
         $this->next();
     }
 
