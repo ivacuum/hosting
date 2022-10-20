@@ -82,20 +82,15 @@ class CitySeeder extends Seeder
     public function run()
     {
         foreach (self::CITIES_BY_COUNTRY as $countrySlug => $cities) {
-            $cityModels = array_map(function (array $data) {
-                $city = CityFactory::new()->make();
+            $country = Country::firstWhere('slug', $countrySlug);
+
+            array_map(function (array $data) use ($country) {
+                $city = CityFactory::new()->withCountryId($country->id)->make();
                 $city->slug = $data['slug'];
                 $city->title_en = $data['title_en'];
                 $city->title_ru = $data['title_ru'];
-
-                return $city;
+                $city->save();
             }, $cities);
-
-            Country::query()
-                ->where('slug', $countrySlug)
-                ->first()
-                ->cities()
-                ->saveMany($cityModels);
         }
     }
 }

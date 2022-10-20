@@ -52,4 +52,12 @@ class CityFactory
 
         return $factory;
     }
+
+    public function withCountryId(int $countryId)
+    {
+        $factory = clone $this;
+        $factory->countryId = $countryId;
+
+        return $factory;
+    }
 }
