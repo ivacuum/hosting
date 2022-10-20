@@ -110,12 +110,6 @@ return [
     'radicals.show' => 'Ключ',
     'radicals.index' => 'Ключи',
 
-    'servers.add' => 'Добавить сервер',
-    'servers.edit' => 'Редактирование',
-    'servers.show' => 'Сервер',
-    'servers.index' => 'Серверы',
-    'servers.create' => 'Новый сервер',
-
     'tags.add' => 'Добавить тэг',
     'tags.edit' => 'Редактирование',
     'tags.show' => 'Тэг',

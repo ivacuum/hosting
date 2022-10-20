@@ -117,12 +117,6 @@ return [
     'radicals.show' => 'Radical',
     'radicals.index' => 'Radicals',
 
-    'servers.add' => 'Create server',
-    'servers.edit' => 'Edit',
-    'servers.show' => 'Server',
-    'servers.index' => 'Servers',
-    'servers.create' => 'New server',
-
     'tags.add' => 'Create tag',
     'tags.edit' => 'Edit',
     'tags.show' => 'Tag',
