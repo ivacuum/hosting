@@ -12,7 +12,7 @@ jobs:
     name: PHP ${{ matrix.php }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -37,7 +37,7 @@ jobs:
           mysql -u root -proot -e 'CREATE DATABASE IF NOT EXISTS tests;'
 
       - name: Cache composer dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: vendor
           key: composer-${{ hashFiles('composer.lock') }}
@@ -49,7 +49,7 @@ jobs:
           COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
 
       - name: Cache yarn dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: node_modules
           key: yarn-${{ hashFiles('yarn.lock') }}
