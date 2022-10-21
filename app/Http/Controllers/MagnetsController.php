@@ -102,7 +102,7 @@ class MagnetsController
             ->select(Magnet::LIST_COLUMNS)
             ->whereBelongsTo($user)
             ->tap(new MagnetPublishedScope)
-            ->withCount('commentsPublished AS comments')
+            ->withCount('commentsPublished AS comments_count')
             ->orderByDesc('registered_at')
             ->simplePaginate(null, ['id']);
 

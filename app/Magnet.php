@@ -32,6 +32,8 @@ use Laravel\Scout\Searchable;
  * @property \Illuminate\Database\Eloquent\Collection|Comment[] $commentsPublished
  * @property \App\User $user
  *
+ * @property-read int $comments_count
+ *
  * @mixin \Eloquent
  */
 class Magnet extends Model
