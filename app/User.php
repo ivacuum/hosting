@@ -57,6 +57,11 @@ class User extends Authenticatable implements HasLocalePreference
     protected $dates = ['last_login_at', 'password_changed_at'];
     protected $perPage = 50;
 
+    protected $attributes = [
+        'avatar' => '',
+        'remember_token' => null,
+    ];
+
     protected $casts = [
         'status' => 'int',
         'notify_gigs' => NotificationDeliveryMethod::class,
