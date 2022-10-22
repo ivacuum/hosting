@@ -41,6 +41,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Domain\Metrics\Provider\MetricsServiceProvider::class,
     ],
 
     'aliases' => \Illuminate\Support\Facades\Facade::defaultAliases()->merge([

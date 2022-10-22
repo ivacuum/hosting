@@ -14,6 +14,8 @@ enum CacheKey: string
 
     case IcuLocales = 'icu.locales';
 
+    case MetricsNextStartId = 'metrics.nextStartId';
+
     case MyVisibleGigs = 'my.gigs.visible';
     case MyVisibleTrips = 'my.trips.visible';
 
@@ -33,9 +35,11 @@ enum CacheKey: string
         return str_replace('{key}', $replace, $this->value);
     }
 
-    public function ttl(): CarbonInterval
+    public function ttl(): CarbonInterval|null
     {
         return match ($this) {
+            self::MetricsNextStartId => null,
+
             self::PhotosPointsForTrip => CarbonInterval::minutes(0),
 
             self::DomainsWhois,

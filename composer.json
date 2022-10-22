@@ -9,7 +9,7 @@
     "foolz/sphinxql-query-builder": "^3.0",
     "geo-io/wkb-parser": "^1.0",
     "guzzlehttp/guzzle": "^7.0",
-    "ivacuum/generic": "^20.0",
+    "ivacuum/generic": "^21.0",
     "laravel-notification-channels/telegram": "^2.0",
     "laravel/fortify": "^1.8",
     "laravel/framework": "^9.0",

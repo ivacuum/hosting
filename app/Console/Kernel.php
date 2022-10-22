@@ -1,5 +1,6 @@
 <?php namespace App\Console;
 
+use App\Console\Commands\ProcessMetrics;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -22,6 +23,10 @@ class Kernel extends ConsoleKernel
         $cronOutput = config('cfg.cron_output');
 
         $schedule
+            ->command(ProcessMetrics::class)
+            ->appendOutputTo($cronOutput);
+
+        $schedule
             ->command('model:prune', [
                 '--model' => [
                     \App\ExternalHttpRequest::class,
@@ -42,6 +47,8 @@ class Kernel extends ConsoleKernel
         // $schedule->command(Commands\WarmUpPhotoCache::class)
         //     ->cron('40 5 * * *')
         //     ->appendOutputTo($cronOutput);
+        //
+        // $schedule->command(Commands\WhoisUpdate::class)->cron('0 */4 * * *');
 
         $schedule->command(Commands\RtoUpdate::class)
             ->cron('20 */3 * * *')
@@ -50,8 +57,6 @@ class Kernel extends ConsoleKernel
         $schedule->command(Commands\PingDcppHubs::class)
             ->cron('25 15 * * *')
             ->appendOutputTo($cronOutput);
-
-        // $schedule->command(Commands\WhoisUpdate::class)->cron('0 */4 * * *');
     }
 
     protected function commands()
