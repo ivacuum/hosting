@@ -4,7 +4,6 @@ use App\Action\HandleMetricPayloadAction;
 use App\Domain\CacheKey;
 use App\Domain\ImageViewsAggregator;
 use App\Domain\Metrics\Action\FetchMetricsAction;
-use App\Domain\Metrics\Action\TrimMetricsStreamAction;
 use App\Domain\Metrics\RedisStreamId;
 use App\Domain\MetricsAggregator;
 use App\Domain\PhotoViewsAggregator;
@@ -14,8 +13,8 @@ use Illuminate\Support\Facades\DB;
 
 class ProcessMetrics extends Command
 {
-    protected $signature = 'app:process-metrics';
-    protected $description = 'Process metrics from redis stream and push them to database.';
+    protected $signature = 'app:metrics:process';
+    protected $description = 'Process metrics from redis stream and push them to database';
 
     public function handle(
         FetchMetricsAction $fetchMetrics,
@@ -24,7 +23,6 @@ class ProcessMetrics extends Command
         ViewsAggregator $viewsAggregator,
         ImageViewsAggregator $imageViewsAggregator,
         PhotoViewsAggregator $photoViewsAggregator,
-        TrimMetricsStreamAction $trimMetricsStream,
     ) {
         $nextStartId = \Cache::get(CacheKey::MetricsNextStartId->value) ?? RedisStreamId::FromTheStart->value;
 
@@ -68,6 +66,5 @@ class ProcessMetrics extends Command
         DB::commit();
 
         $this->line("Processed metric stream entries: <info>{$processed}</info>");
-        $this->line("Entries trimmed: <info>{$trimMetricsStream->execute()}</info>");
     }
 }

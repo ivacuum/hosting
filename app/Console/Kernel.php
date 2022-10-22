@@ -1,6 +1,7 @@
 <?php namespace App\Console;
 
 use App\Console\Commands\ProcessMetrics;
+use App\Console\Commands\TrimMetricsStream;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,6 +25,11 @@ class Kernel extends ConsoleKernel
 
         $schedule
             ->command(ProcessMetrics::class)
+            ->appendOutputTo($cronOutput);
+
+        $schedule
+            ->command(TrimMetricsStream::class)
+            ->cron('38 2,14 * * *')
             ->appendOutputTo($cronOutput);
 
         $schedule
