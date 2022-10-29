@@ -21,7 +21,7 @@
     "league/flysystem-sftp-v3": "^3.0",
     "livewire/livewire": "^2.0",
     "predis/predis": "^2.0",
-    "stevebauman/purify": "^4.0",
+    "stevebauman/purify": "^5.0",
     "symfony/css-selector": "^6.0",
     "symfony/dom-crawler": "^6.0"
   },
