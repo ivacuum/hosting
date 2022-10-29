@@ -16,7 +16,7 @@
     "laravel/octane": "^1.2",
     "laravel/scout": "^9.0",
     "laravel/socialite": "^5.0",
-    "laravel/ui": "^3.0",
+    "laravel/ui": "^4.0",
     "league/commonmark": "^2.2",
     "league/flysystem-sftp-v3": "^3.0",
     "livewire/livewire": "^2.0",
