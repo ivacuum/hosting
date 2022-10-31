@@ -10,6 +10,10 @@ class RtoParseTopicBody extends Command
 
     public function handle(Rto $rto)
     {
+        \Validator::make($this->arguments(), [
+            'topicId' => 'required|integer',
+        ])->validate();
+
         dump($rto->parseTopicBody($this->argument('topicId')));
 
         return self::SUCCESS;

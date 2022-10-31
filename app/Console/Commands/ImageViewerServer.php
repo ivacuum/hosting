@@ -23,6 +23,11 @@ class ImageViewerServer extends Command
 
     public function handle()
     {
+        \Validator::make($this->arguments(), [
+            'host' => 'required|string|ip',
+            'port' => 'required|integer|min:1|max:65535',
+        ])->validate();
+
         $this->server = new Server(
             $this->argument('host'),
             $this->argument('port'),
