@@ -236,8 +236,10 @@ return new class extends Migration {
         });
 
         Schema::create('kanji_radical', function (Blueprint $table) {
-            $table->integer('radical_id')->unsigned()->index();
+            $table->integer('radical_id')->unsigned();
             $table->integer('kanji_id')->unsigned()->index();
+
+            $table->primary(['radical_id', 'kanji_id']);
         });
 
         Schema::create('kanji_similar', function (Blueprint $table) {
@@ -345,7 +347,7 @@ return new class extends Migration {
             $table->unsignedInteger('rel_id');
             $table->string('rel_type', 40);
 
-            $table->primary(['tag_id', 'rel_id', 'rel_type']);
+            $table->primary(['tag_id', 'rel_type', 'rel_id']);
         });
 
         Schema::create('tags', function (Blueprint $table) {
