@@ -7,7 +7,7 @@ class ResponseToShowAction
 {
     public function __construct(
         private GetModelAccessibleRelationsAction $getModelAccessibleRelations,
-        private ParseRouteDataAction $parseRouteData
+        private ParseRouteDataAction $parseRouteData,
     ) {
     }
 
@@ -15,9 +15,7 @@ class ResponseToShowAction
     {
         return \View::first([$this->parseRouteData->execute()->view, 'acp.show'], [
             'model' => $model,
-            'modelRelations' => $this->getModelAccessibleRelations
-                ->execute($model, $showWithCount)
-                ->jsonSerialize(),
+            'modelRelations' => $this->getModelAccessibleRelations->execute($model, $showWithCount),
         ]);
     }
 }
