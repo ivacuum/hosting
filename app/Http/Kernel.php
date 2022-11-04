@@ -33,7 +33,6 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'nav' => \Ivacuum\Generic\Middleware\Breadcrumbs::class,
         'auth' => \Ivacuum\Generic\Middleware\Auth::class,
-        'admin' => Middleware\Admin::class,
         'guest' => Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
