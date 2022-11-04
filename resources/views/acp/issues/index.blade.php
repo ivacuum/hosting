@@ -2,6 +2,18 @@
 
 @extends('acp.list')
 
+@section('heading-after-search')
+@include('acp.tpl.dropdown-filter', [
+  'field' => 'status',
+  'values' => [
+    'Все' => null,
+    '---' => null,
+    'Открытые' => App\Domain\IssueStatus::Open->value,
+    'Закрытые' => App\Domain\IssueStatus::Closed->value,
+  ]
+])
+@endsection
+
 @section('content-list')
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
