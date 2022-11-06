@@ -39,6 +39,7 @@ use Illuminate\Notifications\Notifiable;
  * @property \Illuminate\Database\Eloquent\Collection|Notification[] $notifications
  * @property \Illuminate\Database\Eloquent\Collection|Trip[] $trips
  *
+ * @property-read int $chat_messages_count
  * @property-read int $comments_count
  * @property-read int $images_count
  * @property-read int $issues_count

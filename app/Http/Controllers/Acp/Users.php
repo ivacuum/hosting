@@ -23,7 +23,7 @@ class Users extends Controller
     {
         [$sortKey, $sortDir] = $applyIndexGoods->execute(
             new User,
-            ['id', 'last_login_at', 'comments_count', 'images_count', 'issues_count', 'magnets_count', 'trips_count'],
+            ['id', 'last_login_at', 'chat_messages_count', 'comments_count', 'images_count', 'issues_count', 'magnets_count', 'trips_count'],
         );
 
         $q = request('q');
@@ -31,7 +31,7 @@ class Users extends Controller
         $lastLoginAt = request('last_login_at');
 
         $models = User::query()
-            ->withCount(['comments', 'images', 'issues', 'magnets', 'trips'])
+            ->withCount(['chatMessages', 'comments', 'images', 'issues', 'magnets', 'trips'])
             ->when(null !== $avatar, fn (Builder $query) => $query->where('avatar', $avatar ? '<>' : '=', ''))
             ->when($lastLoginAt === 'week', fn (Builder $query) => $query->where('last_login_at', '>', now()->subWeek()->toDateTimeString()))
             ->when($lastLoginAt === 'month', fn (Builder $query) => $query->where('last_login_at', '>', now()->subMonth()->toDateTimeString()))

@@ -2,11 +2,14 @@
 
 use App\ChatMessage;
 use App\Domain\ChatMessageStatus;
+use Carbon\CarbonInterface;
 
 class ChatMessageFactory
 {
+    private $text;
     private $userId;
     private ChatMessageStatus $status = ChatMessageStatus::Published;
+    private CarbonInterface|null $createdAt = null;
 
     private ?UserFactory $userFactory = null;
 
@@ -27,13 +30,10 @@ class ChatMessageFactory
     {
         $model = new ChatMessage;
         $model->ip = fake()->ipv4();
-        $model->text = fake()->sentence(20);
+        $model->text = $this->text ?? fake()->sentence(20);
         $model->status = $this->status;
-        $model->user_id = $this->userId;
-
-        if (!$model->user_id) {
-            $model->user_id = ($this->userFactory ?? UserFactory::new())->create()->id;
-        }
+        $model->user_id = $this->userId ?? ($this->userFactory ?? UserFactory::new())->create()->id;
+        $model->created_at = $this->createdAt ?? now();
 
         return $model;
     }
@@ -43,10 +43,26 @@ class ChatMessageFactory
         return new self;
     }
 
+    public function withCreatedAt(CarbonInterface $createdAt)
+    {
+        $factory = clone $this;
+        $factory->createdAt = $createdAt;
+
+        return $factory;
+    }
+
     public function withStatus(ChatMessageStatus $status)
     {
         $factory = clone $this;
         $factory->status = $status;
+
+        return $factory;
+    }
+
+    public function withText(string $text)
+    {
+        $factory = clone $this;
+        $factory->text = $text;
 
         return $factory;
     }

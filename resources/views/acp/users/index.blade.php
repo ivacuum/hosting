@@ -35,6 +35,7 @@
       <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'avatar') }}</th>
     @endif
     <th>Активен</th>
+    <x-th-numeric-sortable key="chat_messages_count">@svg(paper-airplane-16)</x-th-numeric-sortable>
     <x-th-numeric-sortable key="comments_count">@svg(comment-o)</x-th-numeric-sortable>
     <x-th-numeric-sortable key="images_count">@svg(picture-o)</x-th-numeric-sortable>
     <x-th-numeric-sortable key="magnets_count">@svg(magnet)</x-th-numeric-sortable>
@@ -65,6 +66,11 @@
         @if ($model->isActive())
           Да
         @endif
+      </td>
+      <td class="md:text-right whitespace-nowrap">
+        <a href="{{ path([App\Http\Controllers\Acp\ChatMessages::class, 'index'], [$model->getForeignKey() => $model]) }}">
+          {{ ViewHelper::number($model->chat_messages_count) ?: '' }}
+        </a>
       </td>
       <td class="md:text-right whitespace-nowrap">
         <a href="{{ path([App\Http\Controllers\Acp\Comments::class, 'index'], [$model->getForeignKey() => $model]) }}">
