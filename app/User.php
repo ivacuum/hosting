@@ -41,7 +41,9 @@ use Illuminate\Notifications\Notifiable;
  *
  * @property-read int $comments_count
  * @property-read int $images_count
+ * @property-read int $issues_count
  * @property-read int $magnets_count
+ * @property-read int $trips_count
  *
  * @mixin \Eloquent
  */
@@ -94,6 +96,11 @@ class User extends Authenticatable implements HasLocalePreference
     public function images()
     {
         return $this->hasMany(Image::class);
+    }
+
+    public function issues()
+    {
+        return $this->hasMany(Issue::class);
     }
 
     public function magnets()

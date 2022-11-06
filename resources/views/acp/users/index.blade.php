@@ -39,6 +39,7 @@
     <x-th-numeric-sortable key="images_count">@svg(picture-o)</x-th-numeric-sortable>
     <x-th-numeric-sortable key="magnets_count">@svg(magnet)</x-th-numeric-sortable>
     <x-th-numeric-sortable key="trips_count">@svg(plane)</x-th-numeric-sortable>
+    <x-th-numeric-sortable key="issues_count">@svg(question-circle)</x-th-numeric-sortable>
     <th>Дата реги</th>
     <x-th-sortable key="last_login_at"/>
   </tr>
@@ -83,6 +84,11 @@
       <td class="md:text-right whitespace-nowrap">
         <a href="{{ path([App\Http\Controllers\Acp\Trips::class, 'index'], [$model->getForeignKey() => $model]) }}">
           {{ ViewHelper::number($model->trips_count) ?: '' }}
+        </a>
+      </td>
+      <td class="md:text-right whitespace-nowrap">
+        <a href="{{ path([App\Http\Controllers\Acp\Issues::class, 'index'], [$model->getForeignKey() => $model]) }}">
+          {{ ViewHelper::number($model->issues_count) ?: '' }}
         </a>
       </td>
       <td>{{ ViewHelper::dateShort($model->created_at) }}</td>

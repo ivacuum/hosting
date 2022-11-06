@@ -2,6 +2,7 @@
 
 use App\Domain\IssueStatus;
 use App\Issue;
+use App\User;
 
 class IssueFactory
 {
@@ -12,11 +13,14 @@ class IssueFactory
         '/en/japanese',
     ];
 
+    private $text;
+    private $email;
+    private $title;
     private $userId;
     private IssueStatus $status = IssueStatus::Open;
 
-    private ?UserFactory $userFactory = null;
-    private ?CommentFactory $commentFactory = null;
+    private UserFactory|null $userFactory = null;
+    private CommentFactory|null $commentFactory = null;
 
     public function closed()
     {
@@ -30,7 +34,6 @@ class IssueFactory
 
         $this->commentFactory
             ?->withIssueId($model->id)
-            ->withUserId($model->user_id)
             ->create();
 
         return $model;
@@ -41,15 +44,11 @@ class IssueFactory
         $model = new Issue;
         $model->name = fake()->name();
         $model->page = fake()->randomElement(self::PAGES);
-        $model->text = fake()->sentence(20);
-        $model->email = fake()->safeEmail();
-        $model->title = fake()->optional(0.6, 'Default title')->words(4, true);
+        $model->text = $this->text ?? fake()->sentence(20);
+        $model->email = $this->email ?? fake()->safeEmail();
+        $model->title = $this->title ?? fake()->optional(0.6, 'Default title')->words(4, true);
         $model->status = $this->status;
-        $model->user_id = $this->userId;
-
-        if ($this->userFactory && !$model->user_id) {
-            $model->user_id = $this->userFactory->withEmail($model->email)->create()->id;
-        }
+        $model->user_id = $this->userId ?? $this->userFactory?->withEmail($model->email)->create()->id;
 
         return $model;
     }
@@ -75,10 +74,32 @@ class IssueFactory
         return $factory;
     }
 
-    public function withUser(UserFactory $userFactory = null)
+    public function withText(string $text)
     {
         $factory = clone $this;
-        $factory->userFactory = $userFactory ?? UserFactory::new();
+        $factory->text = $text;
+
+        return $factory;
+    }
+
+    public function withTitle(string $title)
+    {
+        $factory = clone $this;
+        $factory->title = $title;
+
+        return $factory;
+    }
+
+    public function withUser(User|UserFactory $user = null)
+    {
+        $factory = clone $this;
+
+        if ($user instanceof User) {
+            $factory->email = $user->email;
+            $factory->userId = $user->id;
+        } else {
+            $factory->userFactory = $user ?? UserFactory::new();
+        }
 
         return $factory;
     }

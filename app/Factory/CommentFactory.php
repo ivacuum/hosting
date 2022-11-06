@@ -8,13 +8,14 @@ use App\News;
 
 class CommentFactory
 {
+    private $html;
     private $relId;
     private $userId;
     private $relType;
     private CommentStatus $status = CommentStatus::Published;
 
-    private ?NewsFactory $newsFactory = null;
-    private ?MagnetFactory $magnetFactory = null;
+    private NewsFactory|null $newsFactory = null;
+    private MagnetFactory|null $magnetFactory = null;
 
     public function create()
     {
@@ -27,7 +28,7 @@ class CommentFactory
     public function make()
     {
         $model = new Comment;
-        $model->html = fake()->text();
+        $model->html = $this->html ?? fake()->text();
         $model->status = $this->status;
         $model->rel_id = $this->relId ?? 0;
         $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
@@ -85,6 +86,14 @@ class CommentFactory
     {
         $factory = clone $this;
         $factory->newsFactory = $newsFactory ?? NewsFactory::new();
+
+        return $factory;
+    }
+
+    public function withText(string $text)
+    {
+        $factory = clone $this;
+        $factory->html = $text;
 
         return $factory;
     }
