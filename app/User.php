@@ -41,6 +41,7 @@ use Illuminate\Notifications\Notifiable;
  *
  * @property-read int $chat_messages_count
  * @property-read int $comments_count
+ * @property-read int $emails_count
  * @property-read int $images_count
  * @property-read int $issues_count
  * @property-read int $magnets_count

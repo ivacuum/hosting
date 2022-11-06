@@ -41,6 +41,7 @@
     <x-th-numeric-sortable key="magnets_count">@svg(magnet)</x-th-numeric-sortable>
     <x-th-numeric-sortable key="trips_count">@svg(plane)</x-th-numeric-sortable>
     <x-th-numeric-sortable key="issues_count">@svg(question-circle)</x-th-numeric-sortable>
+    <x-th-numeric-sortable key="emails_count">@svg(envelope-o)</x-th-numeric-sortable>
     <th>Дата реги</th>
     <x-th-sortable key="last_login_at"/>
   </tr>
@@ -97,6 +98,7 @@
           {{ ViewHelper::number($model->issues_count) ?: '' }}
         </a>
       </td>
+      <td>{{ ViewHelper::number($model->emails_count) ?: '' }}</td>
       <td>{{ ViewHelper::dateShort($model->created_at) }}</td>
       <td>{{ ViewHelper::dateShort($model->last_login_at) }}</td>
     </tr>
