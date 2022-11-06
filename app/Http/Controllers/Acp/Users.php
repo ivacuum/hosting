@@ -6,6 +6,7 @@ use App\Action\Acp\ResponseToDestroyAction;
 use App\Action\Acp\ResponseToEditAction;
 use App\Action\Acp\ResponseToShowAction;
 use App\User;
+use Carbon\CarbonInterval;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
@@ -28,13 +29,12 @@ class Users extends Controller
 
         $q = request('q');
         $avatar = request('avatar');
-        $lastLoginAt = request('last_login_at');
+        $lastLoginAt = CarbonInterval::make(request('last_login_at'));
 
         $models = User::query()
             ->withCount(['chatMessages', 'comments', 'emails', 'images', 'issues', 'magnets', 'trips'])
             ->when(null !== $avatar, fn (Builder $query) => $query->where('avatar', $avatar ? '<>' : '=', ''))
-            ->when($lastLoginAt === 'week', fn (Builder $query) => $query->where('last_login_at', '>', now()->subWeek()->toDateTimeString()))
-            ->when($lastLoginAt === 'month', fn (Builder $query) => $query->where('last_login_at', '>', now()->subMonth()->toDateTimeString()))
+            ->when($lastLoginAt instanceof CarbonInterval, fn (Builder $query) => $query->where('last_login_at', '>', now()->sub($lastLoginAt)->toDateTimeString()))
             ->when($q, function (Builder $query) use ($q) {
                 if (is_numeric($q)) {
                     return $query->where('id', $q);

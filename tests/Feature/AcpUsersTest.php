@@ -26,6 +26,22 @@ class AcpUsersTest extends TestCase
             ->assertSeeLivewire(UserForm::class);
     }
 
+    public function testFilterLastLoginAt()
+    {
+        $visibleUser = UserFactory::new()
+            ->withLastLoginAt(now()->subDay())
+            ->create();
+
+        $invisibleUser = UserFactory::new()
+            ->withLastLoginAt(now()->subYear())
+            ->create();
+
+        $this->get('acp/users?last_login_at=P2M')
+            ->assertSee($visibleUser->email)
+            ->assertDontSee($invisibleUser->email)
+            ->assertOk();
+    }
+
     public function testIndex()
     {
         UserFactory::new()->create();

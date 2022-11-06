@@ -10,8 +10,8 @@
   'values' => [
     'Неважно' => null,
     '---' => null,
-    'Неделя' => 'week',
-    'Месяц' => 'month',
+    'Неделя' => 'P1W',
+    'Месяц' => 'P1M',
   ]
 ])
 @include('acp.tpl.dropdown-filter', [

@@ -32,7 +32,8 @@
     </a>
     @foreach ($filters as $key => $value)
       <a class="btn btn-default my-1" href="{{ fullUrl(array_merge($filters, ['page' => null, $key => null])) }}">
-        {{ $key }}: {{ $value }}
+        <span class="text-muted">{{ $key }}:</span>
+        <span class="font-medium">{{ $value }}</span>
         <span class="text-red-600">
           @svg (times)
         </span>

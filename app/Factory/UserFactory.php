@@ -3,6 +3,7 @@
 use App\Domain\Locale;
 use App\Domain\UserStatus;
 use App\User;
+use Carbon\CarbonInterface;
 
 class UserFactory
 {
@@ -12,6 +13,7 @@ class UserFactory
     private $password;
     private Locale $locale = Locale::Rus;
     private UserStatus $status = UserStatus::Active;
+    private CarbonInterface|null $lastLoginAt = null;
 
     public function admin()
     {
@@ -39,6 +41,7 @@ class UserFactory
         $model->login = $this->login;
         $model->locale = $this->locale->value;
         $model->status = $this->status->value;
+        $model->last_login_at = $this->lastLoginAt;
 
         if ($this->password) {
             $model->password = $this->password;
@@ -64,6 +67,14 @@ class UserFactory
     {
         $factory = clone $this;
         $factory->id = $id;
+
+        return $factory;
+    }
+
+    public function withLastLoginAt(CarbonInterface $lastLoginAt = null)
+    {
+        $factory = clone $this;
+        $factory->lastLoginAt = $lastLoginAt ?? now();
 
         return $factory;
     }
