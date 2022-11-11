@@ -10,6 +10,7 @@
   <div class="font-medium text-2xl mb-2">@ru Что дальше? @en What next? @endru</div>
   @ru
     <p>Рады, что у вас стало хорошо получаться набирать слоги! Теперь можно закрепить навык в <a class="link" href="/japanese/words-trainer">следующем тренажере</a>, который посвящен набору настоящих японских слов. Так между делом и получится запомнить как они звучат.</p>
+    <p>Еще можно <a class="link" href="{{ to('trainers/numbers', ['lang' => 'ja']) }}">потренировать японские числа</a>. Самое удивительное открытие будет в том, что <a class="link" href="{{ to('trainers/numbers', ['lang' => 'zh']) }}">китайские числа</a> вы тоже автоматически сможете распознавать, ведь в японском используются китайские иероглифы.</p>
   @en
     <p>We're glad you're get used to Japanese syllabaries! Now you can head on to the <a class="link" href="/en/japanese/words-trainer">next trainer</a> dedicated to typing real Japanese words. As a bonus, you can memorize the words are pronounced while typing.</p>
   @endru
