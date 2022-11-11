@@ -3,7 +3,6 @@
 use App\Domain\Locale;
 use App\Domain\NewsStatus;
 use App\Factory\NewsFactory;
-use App\Factory\UserFactory;
 use App\Http\Livewire\Acp\NewsForm;
 use App\News;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -11,14 +10,8 @@ use Tests\TestCase;
 
 class AcpNewsTest extends TestCase
 {
+    use BeAdmin;
     use DatabaseTransactions;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->be(UserFactory::new()->admin()->make());
-    }
 
     public function testCreate()
     {

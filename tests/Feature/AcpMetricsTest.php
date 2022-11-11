@@ -1,20 +1,13 @@
 <?php namespace Tests\Feature;
 
-use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Ivacuum\Generic\Events\Stats\Build;
 use Tests\TestCase;
 
 class AcpMetricsTest extends TestCase
 {
+    use BeAdmin;
     use DatabaseTransactions;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->be(UserFactory::new()->admin()->make());
-    }
 
     public function testIndex()
     {

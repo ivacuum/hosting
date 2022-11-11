@@ -1,21 +1,14 @@
 <?php namespace Tests\Feature;
 
 use App\Factory\ChatMessageFactory;
-use App\Factory\UserFactory;
 use App\Http\Livewire\Acp\ChatMessageForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class AcpChatMessagesTest extends TestCase
 {
+    use BeAdmin;
     use DatabaseTransactions;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->be(UserFactory::new()->admin()->make());
-    }
 
     public function testEdit()
     {

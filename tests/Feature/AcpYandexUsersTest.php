@@ -1,6 +1,5 @@
 <?php namespace Tests\Feature;
 
-use App\Factory\UserFactory;
 use App\Factory\YandexUserFactory;
 use App\Http\Livewire\Acp\YandexUserForm;
 use App\YandexUser;
@@ -9,14 +8,8 @@ use Tests\TestCase;
 
 class AcpYandexUsersTest extends TestCase
 {
+    use BeAdmin;
     use DatabaseTransactions;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->be(UserFactory::new()->admin()->make());
-    }
 
     public function testCreate()
     {

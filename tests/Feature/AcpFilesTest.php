@@ -2,7 +2,6 @@
 
 use App\Domain\FileStatus;
 use App\Factory\FileFactory;
-use App\Factory\UserFactory;
 use App\File;
 use App\Http\Livewire\Acp\FileForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -11,14 +10,8 @@ use Tests\TestCase;
 
 class AcpFilesTest extends TestCase
 {
+    use BeAdmin;
     use DatabaseTransactions;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->be(UserFactory::new()->admin()->make());
-    }
 
     public function testCreate()
     {

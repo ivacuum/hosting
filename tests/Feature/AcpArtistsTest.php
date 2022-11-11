@@ -2,21 +2,14 @@
 
 use App\Artist;
 use App\Factory\ArtistFactory;
-use App\Factory\UserFactory;
 use App\Http\Livewire\Acp\ArtistForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class AcpArtistsTest extends TestCase
 {
+    use BeAdmin;
     use DatabaseTransactions;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->be(UserFactory::new()->admin()->make());
-    }
 
     public function testCreate()
     {

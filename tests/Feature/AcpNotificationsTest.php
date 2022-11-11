@@ -7,14 +7,8 @@ use Tests\TestCase;
 
 class AcpNotificationsTest extends TestCase
 {
+    use BeAdmin;
     use DatabaseTransactions;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->be(UserFactory::new()->admin()->make());
-    }
 
     public function testIndex()
     {

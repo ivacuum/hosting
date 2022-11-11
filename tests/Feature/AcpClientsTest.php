@@ -2,21 +2,14 @@
 
 use App\Client;
 use App\Factory\ClientFactory;
-use App\Factory\UserFactory;
 use App\Http\Livewire\Acp\ClientForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class AcpClientsTest extends TestCase
 {
+    use BeAdmin;
     use DatabaseTransactions;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->be(UserFactory::new()->admin()->make());
-    }
 
     public function testCreate()
     {

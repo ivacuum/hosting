@@ -3,21 +3,14 @@
 use App\City;
 use App\Factory\CityFactory;
 use App\Factory\CountryFactory;
-use App\Factory\UserFactory;
 use App\Http\Livewire\Acp\CityForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class AcpCitiesTest extends TestCase
 {
+    use BeAdmin;
     use DatabaseTransactions;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->be(UserFactory::new()->admin()->make());
-    }
 
     public function testCreate()
     {

@@ -2,21 +2,14 @@
 
 use App\Country;
 use App\Factory\CountryFactory;
-use App\Factory\UserFactory;
 use App\Http\Livewire\Acp\CountryForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class AcpCountriesTest extends TestCase
 {
+    use BeAdmin;
     use DatabaseTransactions;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->be(UserFactory::new()->admin()->make());
-    }
 
     public function testCreate()
     {

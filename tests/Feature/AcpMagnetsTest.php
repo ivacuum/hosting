@@ -2,21 +2,14 @@
 
 use App\Domain\MagnetStatus;
 use App\Factory\MagnetFactory;
-use App\Factory\UserFactory;
 use App\Http\Livewire\Acp\MagnetForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class AcpMagnetsTest extends TestCase
 {
+    use BeAdmin;
     use DatabaseTransactions;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->be(UserFactory::new()->admin()->make());
-    }
 
     public function testEdit()
     {

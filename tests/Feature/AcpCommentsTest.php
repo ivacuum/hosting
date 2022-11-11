@@ -2,21 +2,14 @@
 
 use App\Domain\CommentStatus;
 use App\Factory\CommentFactory;
-use App\Factory\UserFactory;
 use App\Http\Livewire\Acp\CommentForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class AcpCommentsTest extends TestCase
 {
+    use BeAdmin;
     use DatabaseTransactions;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->be(UserFactory::new()->admin()->make());
-    }
 
     public function testEdit()
     {

@@ -1,7 +1,6 @@
 <?php namespace Tests\Feature;
 
 use App\Factory\PhotoFactory;
-use App\Factory\UserFactory;
 use App\Http\Livewire\Acp\PhotoEditForm;
 use App\Http\Livewire\Acp\PhotoUploadForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -9,14 +8,8 @@ use Tests\TestCase;
 
 class AcpPhotosTest extends TestCase
 {
+    use BeAdmin;
     use DatabaseTransactions;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->be(UserFactory::new()->admin()->make());
-    }
 
     public function testCreate()
     {

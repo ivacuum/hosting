@@ -3,21 +3,14 @@
 use App\DcppHub;
 use App\Domain\DcppHubStatus;
 use App\Factory\DcppHubFactory;
-use App\Factory\UserFactory;
 use App\Http\Livewire\Acp\DcppHubForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class AcpDcppHubsTest extends TestCase
 {
+    use BeAdmin;
     use DatabaseTransactions;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->be(UserFactory::new()->admin()->make());
-    }
 
     public function testCreate()
     {

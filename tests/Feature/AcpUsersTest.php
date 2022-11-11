@@ -8,14 +8,8 @@ use Tests\TestCase;
 
 class AcpUsersTest extends TestCase
 {
+    use BeAdmin;
     use DatabaseTransactions;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->be(UserFactory::new()->admin()->make());
-    }
 
     public function testEdit()
     {
