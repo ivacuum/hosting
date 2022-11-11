@@ -10,7 +10,7 @@
   </div>
   <div>
     <div class="text-center">
-      <div class="text-3xl text-gray-600 dark:text-slate-400 {{ $this->sayOutLoud && !$this->reveal ? 'invisible' : '' }}">
+      <div class="inline-block bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-700 text-3xl px-3 py-2 rounded leading-none {{ $this->sayOutLoud && !$this->reveal ? 'invisible' : '' }}">
         {{ $this->guessingSpellOut ? $this->number : $this->spellOut }}
       </div>
       <div hidden class="js-utterance">{{ $this->number }}</div>
