@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Testing\Assert;
 use Illuminate\Testing\TestResponse;
-use Illuminate\View\View;
-use Livewire\Response;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -72,39 +70,7 @@ class AppServiceProvider extends ServiceProvider
         App\YandexUser::observe(App\Observers\YandexUserObserver::class);
         App\ChatMessage::observe(App\Observers\ChatMessageObserver::class);
 
-        $this->appendLocaleToLivewireBrowserHistory();
-        $this->appendLocaleToLivewireComponentView();
         $this->testMacros();
-    }
-
-    private function appendLocaleToLivewireBrowserHistory()
-    {
-        \Livewire::listen('component.dehydrate.initial', function ($component, Response $response) {
-            if (empty($response->effects['path'])) {
-                return;
-            }
-
-            $locale = request()->server->get('LARAVEL_LOCALE');
-
-            if ($locale === null) {
-                return;
-            }
-
-            $path = parse_url($response->effects['path'], PHP_URL_PATH);
-
-            if (str_starts_with($path, "/{$locale}/")) {
-                return;
-            }
-
-            $response->effects['path'] = str_replace(url('/'), url('/') . "/{$locale}", $response->effects['path']);
-        });
-    }
-
-    private function appendLocaleToLivewireComponentView()
-    {
-        \Livewire::listen('component.rendered', function ($component, View $view) {
-            $view->with('locale', request()->server->get('LARAVEL_LOCALE') ?: config('app.locale'));
-        });
     }
 
     private function testMacros()
