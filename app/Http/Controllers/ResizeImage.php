@@ -18,8 +18,9 @@ class ResizeImage
         abort_unless($image, 404);
 
         $info = pathinfo($image);
-        $extension = $info['extension'];
+        $extension = $info['extension'] ?? null;
 
+        abort_unless($extension, 422);
         abort_unless($this->isWhitelisted($info['dirname']), 403);
 
         // От 50 до 2000px
