@@ -3,6 +3,8 @@
 use App\Comment;
 use App\Domain\Locale;
 use App\Email;
+use App\Mail\TripPublishedMail;
+use App\Trip;
 
 class EmailFactory
 {
@@ -35,6 +37,21 @@ class EmailFactory
     public static function new(): self
     {
         return new self;
+    }
+
+    public function withTripPublished(Trip|TripFactory $trip = null)
+    {
+        $factory = clone $this;
+        $factory->template = class_basename(TripPublishedMail::class);
+        $factory->relationType = (new Trip)->getMorphClass();
+
+        $factory->relationId = match (true) {
+            $trip instanceof Trip => $trip->id,
+            $trip instanceof TripFactory => $trip->create()->id,
+            default => TripFactory::new()->create()->id,
+        };
+
+        return $factory;
     }
 
     public function withCommentId(int $id)

@@ -8,6 +8,7 @@ use App\Comment;
 use App\Country;
 use App\DcppHub;
 use App\Domain;
+use App\Email;
 use App\ExternalIdentity;
 use App\File;
 use App\Gig;
@@ -37,6 +38,7 @@ class GetModelControllerAction
             $model instanceof Country => Controllers\Acp\Countries::class,
             $model instanceof DcppHub => Controllers\Acp\DcppHubs::class,
             $model instanceof Domain => Controllers\Acp\Domains::class,
+            $model instanceof Email => Controllers\Acp\EmailsController::class,
             $model instanceof ExternalIdentity => Controllers\Acp\ExternalIdentities::class,
             $model instanceof File => Controllers\Acp\Files::class,
             $model instanceof Gig => Controllers\Acp\Gigs::class,
@@ -50,6 +52,7 @@ class GetModelControllerAction
             $model instanceof Trip => Controllers\Acp\Trips::class,
             $model instanceof User => Controllers\Acp\Users::class,
             $model instanceof YandexUser => Controllers\Acp\YandexUsers::class,
+            default => throw new \InvalidArgumentException($model->toJson()),
         };
     }
 }

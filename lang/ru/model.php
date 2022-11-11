@@ -58,6 +58,8 @@ return [
     'domain.text' => 'Заметки',
     'domain.domain' => 'Домен',
 
+    'email.locale' => 'Язык',
+
     'external-identity.provider' => 'Провайдер',
     'external-identity.updated_at' => 'Вход',
 

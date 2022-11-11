@@ -56,6 +56,8 @@ return [
     'domain.text' => 'Notes',
     'domain.domain' => 'Domain',
 
+    'email.locale' => 'Locale',
+
     'external-identity.provider' => 'Provider',
     'external-identity.updated_at' => 'Last login',
 

@@ -60,6 +60,10 @@ return [
     'domains.mailboxes' => 'Yandex Mail',
     'domains.ns_records' => 'Yandex DNS',
 
+    'emails.show' => 'Email',
+    'emails.user' => 'Recipient',
+    'emails.index' => 'Emails',
+
     'external-identities.show' => 'Social account',
     'external-identities.index' => 'Social accounts',
 

@@ -60,6 +60,10 @@ return [
     'domains.mailboxes' => 'Яндекс-почта',
     'domains.ns_records' => 'Яндекс-DNS',
 
+    'emails.show' => 'Письмо',
+    'emails.user' => 'Получатель',
+    'emails.index' => 'Письма',
+
     'external-identities.show' => 'Социальная учетка',
     'external-identities.user' => 'Владелец',
     'external-identities.index' => 'Социальные учетки',

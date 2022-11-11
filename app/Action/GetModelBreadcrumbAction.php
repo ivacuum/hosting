@@ -8,6 +8,7 @@ use App\Comment;
 use App\Country;
 use App\DcppHub;
 use App\Domain;
+use App\Email;
 use App\ExternalHttpRequest;
 use App\ExternalIdentity;
 use App\FavoriteMovie;
@@ -43,6 +44,7 @@ class GetModelBreadcrumbAction
             $model instanceof Country => "{$model->emoji} {$model->title}",
             $model instanceof DcppHub => $model->address,
             $model instanceof Domain => $model->domain,
+            $model instanceof Email => "#{$model->id}",
             $model instanceof ExternalHttpRequest => "#{$model->id}",
             $model instanceof ExternalIdentity => $model->email ?: ($model->user_id ? $model->user->email : "#{$model->id}"),
             $model instanceof FavoriteMovie => $model->title_ru,

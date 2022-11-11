@@ -42,6 +42,8 @@ Route::delete('domains/{domain}/ns-records/{id}', [Acp\YandexPddDnsRecordControl
 Route::get('domains/{domain}/robots', [Acp\Domains::class, 'robots']);
 Route::get('domains/{domain}/whois', [Acp\Domains::class, 'whois']);
 
+Route::resource('emails', Acp\EmailsController::class)->except(['create', 'edit', 'store', 'update']);
+
 Route::resource('external-identities', Acp\ExternalIdentities::class)->except(['create', 'edit', 'store', 'update']);
 
 Route::resource('files', Acp\Files::class)->except(['store', 'update']);

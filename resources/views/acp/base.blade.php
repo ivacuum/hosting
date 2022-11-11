@@ -78,6 +78,7 @@
   'isActive' => Str::of($routeUri)->is([
     'acp/metrics*',
     'acp/issues*',
+    'acp/emails*',
     'acp/users*',
     'acp/external-identities*',
     'acp/notifications*',
@@ -89,6 +90,7 @@
 
   <x-dropdown-item href="/acp/metrics">@lang('acp.metrics.index')</x-dropdown-item>
   <x-dropdown-item href="/acp/issues">@lang('acp.issues.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/emails">@lang('acp.emails.index')</x-dropdown-item>
   <x-dropdown-item href="/acp/users">@lang('acp.users.index')</x-dropdown-item>
   <x-dropdown-item href="/acp/external-identities">@lang('acp.external-identities.index')</x-dropdown-item>
   <x-dropdown-item href="/acp/notifications">@lang('acp.notifications.index')</x-dropdown-item>
