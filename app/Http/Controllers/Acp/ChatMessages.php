@@ -21,7 +21,7 @@ class ChatMessages extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(new ChatMessage);
+        $sort = $applyIndexGoods->execute(new ChatMessage);
 
         $status = request('status');
         $userId = request('user_id');
@@ -30,7 +30,7 @@ class ChatMessages extends Controller
             ->with('user')
             ->unless(null === $status, fn (Builder $query) => $query->where('status', $status))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy('id', $sort->direction->value)
             ->paginate();
 
         return view('acp.chat-messages.index', [

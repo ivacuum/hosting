@@ -1,5 +1,5 @@
 <th class="md:text-left">
-  <a href="{{ UrlHelper::sort($key, $order ?? 'desc') }}">
+  <a href="{{ UrlHelper::sort($key, $defaultOrder ?? 'desc') }}">
     {{ $slot->isEmpty() ? ViewHelper::modelFieldTrans($modelTpl, $key) : $slot }}
     @if ($sortKey === $key)
       @if ($sortDir === 'desc')

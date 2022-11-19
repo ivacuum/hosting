@@ -18,10 +18,7 @@ class Images extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(
-            new Image,
-            ['id', 'size', 'views', 'updated_at'],
-        );
+        $sort = $applyIndexGoods->execute(new Image);
 
         $type = request('type');
         $year = request('year');
@@ -33,7 +30,12 @@ class Images extends Controller
             ->when($touch, fn (Builder $query) => $query->whereYear('updated_at', now()->subYears($touch)->year))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->when(\App::isProduction(), fn (Builder $query) => $query->where('views', '<', 3000)->where('user_id', '<>', 1))
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy(match ($sort->key) {
+                'size',
+                'views',
+                'updated_at' => $sort->key,
+                default => 'id',
+            }, $sort->direction->value)
             ->paginate(111);
 
         return view('acp.images.index', [

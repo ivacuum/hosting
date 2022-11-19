@@ -23,10 +23,7 @@ class Photos extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(
-            new Photo,
-            ['id', 'views'],
-        );
+        $sort = $applyIndexGoods->execute(new Photo);
 
         $filter = request('filter');
         $onPage = request('on_page');
@@ -36,7 +33,10 @@ class Photos extends Controller
             ->tap(new PhotoForTripScope(request('trip_id')))
             ->tap(new PhotoApplyFilterScope($filter))
             ->tap(new PhotoForTagScope(request('tag_id')))
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy(match ($sort->key) {
+                'views' => $sort->key,
+                default => 'id',
+            }, $sort->direction->value)
             ->paginate($onPage);
 
         return view('acp.photos.index', [

@@ -20,10 +20,10 @@ class Clients extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(new Client);
+        $sort = $applyIndexGoods->execute(new Client);
 
         $models = Client::query()
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy('id', $sort->direction->value)
             ->paginate();
 
         return view('acp.clients.index', ['models' => $models]);

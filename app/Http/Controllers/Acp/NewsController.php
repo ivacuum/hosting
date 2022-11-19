@@ -26,10 +26,7 @@ class NewsController extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(
-            new News,
-            ['id', 'views', 'comments_count'],
-        );
+        $sort = $applyIndexGoods->execute(new News);
 
         $userId = request('user_id');
 
@@ -37,7 +34,11 @@ class NewsController extends Controller
             ->withCount('comments')
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->tap(new NewsCurrentLocaleScope)
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy(match ($sort->key) {
+                'views',
+                'comments_count' => $sort->key,
+                default => 'id',
+            }, $sort->direction->value)
             ->paginate(20);
 
         return view('acp.news.index', [

@@ -6,6 +6,7 @@ use App\Action\Acp\ResponseToDestroyAction;
 use App\Action\Acp\ResponseToEditAction;
 use App\Action\Acp\ResponseToShowAction;
 use App\Country;
+use App\Domain\Sort;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
@@ -20,16 +21,16 @@ class Countries extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(
-            new Country,
-            ['title', 'cities_count', 'trips_count', 'views'],
-            'asc',
-            'title',
-        );
+        $sort = $applyIndexGoods->execute(new Country, Sort::asc('title'));
 
         $models = Country::query()
             ->withCount(['cities', 'trips'])
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy(match ($sort->key) {
+                'cities_count',
+                'trips_count',
+                'views' => $sort->key,
+                default => Country::titleField(),
+            }, $sort->direction->value)
             ->paginate(500);
 
         return view('acp.countries.index', ['models' => $models]);

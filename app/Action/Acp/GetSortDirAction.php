@@ -8,14 +8,14 @@ class GetSortDirAction
     {
     }
 
-    public function execute(string $defaultSortDir): string
+    public function execute(string $defaultSort): string
     {
-        $sortDir = $this->request->input('sd', $defaultSortDir);
+        $sort = $this->request->input('sk', $defaultSort);
 
-        if (!in_array($sortDir, ['asc', 'desc'])) {
-            return $defaultSortDir;
+        if (str_starts_with($sort, '-')) {
+            return 'desc';
         }
 
-        return $sortDir;
+        return 'asc';
     }
 }

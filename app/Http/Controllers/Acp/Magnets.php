@@ -20,10 +20,7 @@ class Magnets extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(
-            new Magnet,
-            ['id', 'views', 'comments_count', 'clicks'],
-        );
+        $sort = $applyIndexGoods->execute(new Magnet);
 
         $q = request('q');
         $status = request('status');
@@ -35,7 +32,12 @@ class Magnets extends Controller
             ->when(null !== $status, fn (Builder $query) => $query->where('status', $status))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->when($q, fn (Builder $query) => $query->where('title', 'LIKE', "%{$q}%"))
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy(match ($sort->key) {
+                'views',
+                'comments_count',
+                'clicks' => $sort->key,
+                default => 'id',
+            }, $sort->direction->value)
             ->paginate();
 
         return view('acp.magnets.index', [

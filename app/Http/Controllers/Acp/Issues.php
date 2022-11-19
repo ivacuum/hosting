@@ -20,10 +20,7 @@ class Issues extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(
-            new Issue,
-            ['id', 'comments_count'],
-        );
+        $sort = $applyIndexGoods->execute(new Issue);
 
         $status = request('status');
         $userId = request('user_id');
@@ -32,7 +29,10 @@ class Issues extends Controller
             ->withCount('comments')
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->unless(null === $status, fn (Builder $query) => $query->where('status', $status))
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy(match ($sort->key) {
+                'comments_count' => $sort->key,
+                default => 'id',
+            }, $sort->direction->value)
             ->paginate(50);
 
         return view('acp.issues.index', ['models' => $models]);

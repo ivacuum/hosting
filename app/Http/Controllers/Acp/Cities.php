@@ -6,6 +6,7 @@ use App\Action\Acp\ResponseToDestroyAction;
 use App\Action\Acp\ResponseToEditAction;
 use App\Action\Acp\ResponseToShowAction;
 use App\City;
+use App\Domain\Sort;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
@@ -21,12 +22,7 @@ class Cities extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(
-            new City,
-            ['title', 'trips_count', 'views'],
-            'asc',
-            'title',
-        );
+        $sort = $applyIndexGoods->execute(new City, Sort::asc('title'));
 
         $countryId = request('country_id');
 
@@ -34,7 +30,11 @@ class Cities extends Controller
             ->with('country')
             ->withCount('trips')
             ->when($countryId, fn (Builder $query) => $query->where('country_id', $countryId))
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy(match ($sort->key) {
+                'trips_count',
+                'views' => $sort->key,
+                default => City::titleField(),
+            }, $sort->direction->value)
             ->paginate();
 
         return view('acp.cities.index', ['models' => $models]);

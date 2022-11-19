@@ -47,6 +47,7 @@ return [
 
     'aliases' => \Illuminate\Support\Facades\Facade::defaultAliases()->merge([
         'Acp' => App\Facades\Acp::class,
+        'UrlHelper' => App\Facades\UrlHelper::class,
         'CityHelper' => App\Facades\CityHelper::class,
         'ViewHelper' => App\Facades\ViewHelper::class,
         'CountryHelper' => App\Facades\CountryHelper::class,

@@ -7,7 +7,7 @@
   <thead>
   <tr>
     <th></th>
-    <x-th-sortable key="title"/>
+    <x-th-sortable key="title" defaultOrder="asc"/>
     <x-th key="slug"/>
     <x-th-numeric-sortable key="cities_count"/>
     <x-th-numeric-sortable key="trips_count"/>

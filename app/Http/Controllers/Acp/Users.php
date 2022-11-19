@@ -22,10 +22,7 @@ class Users extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(
-            new User,
-            ['id', 'last_login_at', 'chat_messages_count', 'comments_count', 'emails_count', 'images_count', 'issues_count', 'magnets_count', 'trips_count'],
-        );
+        $sort = $applyIndexGoods->execute(new User);
 
         $q = request('q');
         $avatar = request('avatar');
@@ -42,7 +39,17 @@ class Users extends Controller
 
                 return $query->where('email', 'LIKE', "%{$q}%");
             })
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy(match ($sort->key) {
+                'last_login_at',
+                'chat_messages_count',
+                'comments_count',
+                'emails_count',
+                'images_count',
+                'issues_count',
+                'magnets_count',
+                'trips_count' => $sort->key,
+                default => 'id',
+            }, $sort->direction->value)
             ->paginate();
 
         return view('acp.users.index', [

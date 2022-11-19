@@ -5,6 +5,7 @@ use App\Action\Acp\ResponseToCreateAction;
 use App\Action\Acp\ResponseToDestroyAction;
 use App\Action\Acp\ResponseToEditAction;
 use App\Action\Acp\ResponseToShowAction;
+use App\Domain\Sort;
 use App\Gig;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
@@ -20,15 +21,13 @@ class Gigs extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(
-            new Gig,
-            ['date', 'views'],
-            'desc',
-            'date',
-        );
+        $sort = $applyIndexGoods->execute(new Gig, Sort::desc('date'));
 
         $models = Gig::query()
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy(match ($sort->key) {
+                'views' => $sort->key,
+                default => 'date',
+            }, $sort->direction->value)
             ->paginate(500);
 
         return view('acp.gigs.index', ['models' => $models]);

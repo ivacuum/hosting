@@ -3,6 +3,7 @@
 use App\Action\Acp\ApplyIndexGoodsAction;
 use App\Action\Acp\ResponseToDestroyAction;
 use App\Action\Acp\ResponseToShowAction;
+use App\Domain\Sort;
 use App\Notification;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
@@ -18,13 +19,10 @@ class Notifications extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(
-            new Notification,
-            defaultSortKey: 'created_at',
-        );
+        $sort = $applyIndexGoods->execute(new Notification, Sort::desc('created_at'));
 
         $models = Notification::query()
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy('created_at', $sort->direction->value)
             ->paginate();
 
         return view('acp.notifications.index', ['models' => $models]);

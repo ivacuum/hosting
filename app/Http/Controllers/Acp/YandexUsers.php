@@ -5,6 +5,7 @@ use App\Action\Acp\ResponseToCreateAction;
 use App\Action\Acp\ResponseToDestroyAction;
 use App\Action\Acp\ResponseToEditAction;
 use App\Action\Acp\ResponseToShowAction;
+use App\Domain\Sort;
 use App\YandexUser;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
@@ -20,16 +21,14 @@ class YandexUsers extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(
-            new YandexUser,
-            ['account', 'domains_count'],
-            'asc',
-            'account',
-        );
+        $sort = $applyIndexGoods->execute(new YandexUser, Sort::asc('account'));
 
         $models = YandexUser::query()
             ->withCount('domains')
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy(match ($sort->key) {
+                'domains_count' => $sort->key,
+                default => 'account',
+            }, $sort->direction->value)
             ->paginate();
 
         return view('acp.yandex-users.index', ['models' => $models]);

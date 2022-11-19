@@ -19,14 +19,18 @@ class EmailsController extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(new Email, ['id', 'views', 'clicks']);
+        $sort = $applyIndexGoods->execute(new Email);
 
         $userId = request('user_id');
 
         $models = Email::query()
             ->with('user')
             ->unless(null === $userId, fn (Builder $query) => $query->where('user_id', $userId))
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy(match ($sort->key) {
+                'views',
+                'clicks' => $sort->key,
+                default => 'id',
+            }, $sort->direction->value)
             ->paginate();
 
         return view('acp.emails.index', ['models' => $models]);

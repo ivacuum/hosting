@@ -19,7 +19,7 @@ class ExternalIdentities extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(new ExternalIdentity);
+        $sort = $applyIndexGoods->execute(new ExternalIdentity);
 
         $userId = request('user_id');
         $provider = request('provider');
@@ -29,7 +29,7 @@ class ExternalIdentities extends Controller
             ->unless(null === $userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->when(null === $userId, fn (Builder $query) => $query->where('user_id', '<>', 0))
             ->when($provider, fn (Builder $query) => $query->where('provider', $provider))
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy('id', $sort->direction->value)
             ->paginate();
 
         return view('acp.external-identities.index', ['models' => $models]);

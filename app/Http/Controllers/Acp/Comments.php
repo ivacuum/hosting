@@ -24,7 +24,7 @@ class Comments extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(new Comment);
+        $sort = $applyIndexGoods->execute(new Comment);
 
         $status = request('status');
         $newsId = request('news_id');
@@ -41,7 +41,7 @@ class Comments extends Controller
             ->when($tripId, fn (Builder $query) => $query->where('rel_type', (new Trip)->getMorphClass())->where('rel_id', $tripId))
             ->when($magnetId, fn (Builder $query) => $query->where('rel_type', (new Magnet)->getMorphClass())->where('rel_id', $magnetId))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy('id', $sort->direction->value)
             ->paginate(20);
 
         return view('acp.comments.index', [

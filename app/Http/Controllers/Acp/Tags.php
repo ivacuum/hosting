@@ -5,6 +5,7 @@ use App\Action\Acp\ResponseToCreateAction;
 use App\Action\Acp\ResponseToDestroyAction;
 use App\Action\Acp\ResponseToEditAction;
 use App\Action\Acp\ResponseToShowAction;
+use App\Domain\Sort;
 use App\Tag;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
@@ -20,16 +21,15 @@ class Tags extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(
-            new Tag,
-            ['title', 'views', 'photos_count'],
-            'asc',
-            'title',
-        );
+        $sort = $applyIndexGoods->execute(new Tag, Sort::asc('title'));
 
         $models = Tag::query()
             ->withCount('photos')
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy(match ($sort->key) {
+                'views',
+                'photos_count' => $sort->key,
+                default => Tag::titleField(),
+            }, $sort->direction->value)
             ->paginate(500);
 
         return view('acp.tags.index', [

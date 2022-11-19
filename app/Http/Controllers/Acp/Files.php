@@ -20,13 +20,14 @@ class Files extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(
-            new File,
-            ['id', 'size', 'downloads'],
-        );
+        $sort = $applyIndexGoods->execute(new File);
 
         $models = File::query()
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy(match ($sort->key) {
+                'size',
+                'downloads' => $sort->key,
+                default => 'id',
+            }, $sort->direction->value)
             ->paginate();
 
         return view('acp.files.index', ['models' => $models]);

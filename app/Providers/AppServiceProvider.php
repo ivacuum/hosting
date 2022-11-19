@@ -15,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->scoped(App\Utilities\CityHelper::class);
         $this->app->scoped(App\Utilities\CountryHelper::class);
+        $this->app->scoped(App\Utilities\UrlHelper::class);
 
         \Blade::withoutDoubleEncoding();
         \Blade::directive('lng', fn () => '<?php echo $localeUri ?>');

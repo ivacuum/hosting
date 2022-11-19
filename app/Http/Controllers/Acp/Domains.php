@@ -28,12 +28,7 @@ class Domains extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(
-            new Domain,
-            ['domain', 'registered_at', 'paid_till'],
-            'asc',
-            'domain',
-        );
+        $sort = $applyIndexGoods->execute(new Domain, Domain\Sort::asc('domain'));
 
         $q = request('q');
         $filter = request('filter');
@@ -63,7 +58,12 @@ class Domains extends Controller
             $models = $models->where('yandex_user_id', $yandexUserId);
         }
 
-        $models = $models->orderBy($sortKey, $sortDir)
+        $models = $models
+            ->orderBy(match ($sort->key) {
+                'registered_at',
+                'paid_till' => $sort->key,
+                default => 'domain',
+            }, $sort->direction->value)
             ->paginate();
 
         return view('acp.domains.index', [

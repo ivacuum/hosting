@@ -5,6 +5,7 @@ use App\Action\Acp\ResponseToCreateAction;
 use App\Action\Acp\ResponseToDestroyAction;
 use App\Action\Acp\ResponseToEditAction;
 use App\Action\Acp\ResponseToShowAction;
+use App\Domain\Sort;
 use App\Trip;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -21,12 +22,7 @@ class Trips extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(
-            new Trip,
-            ['date_start', 'views', 'comments_count', 'photos_count'],
-            'desc',
-            'date_start',
-        );
+        $sort = $applyIndexGoods->execute(new Trip, Sort::desc('date_start'));
 
         $q = request('q');
         $status = request('status');
@@ -44,7 +40,12 @@ class Trips extends Controller
                 fn (Builder $query) => $query->where('id', $q)
                     ->orWhere(Trip::titleField(), 'LIKE', "%{$q}%")
                     ->orWhere('slug', 'LIKE', "%{$q}%"))
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy(match ($sort->key) {
+                'views',
+                'comments_count',
+                'photos_count' => $sort->key,
+                default => 'date_start',
+            }, $sort->direction->value)
             ->paginate(50);
 
         return view('acp.trips.index', ['models' => $models]);

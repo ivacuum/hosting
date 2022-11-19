@@ -6,6 +6,7 @@ use App\Action\Acp\ResponseToDestroyAction;
 use App\Action\Acp\ResponseToEditAction;
 use App\Action\Acp\ResponseToShowAction;
 use App\Artist;
+use App\Domain\Sort;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
@@ -20,15 +21,10 @@ class Artists extends Controller
 
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
-        [$sortKey, $sortDir] = $applyIndexGoods->execute(
-            new Artist,
-            ['title'],
-            'asc',
-            'title',
-        );
+        $sort = $applyIndexGoods->execute(new Artist, Sort::asc('title'));
 
         $models = Artist::query()
-            ->orderBy($sortKey, $sortDir)
+            ->orderBy('title', $sort->direction->value)
             ->paginate(500);
 
         return view('acp.artists.index', ['models' => $models]);
