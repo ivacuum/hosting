@@ -136,6 +136,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_2091.jpg'])
 
+<a id="hill"></a>
 @ru
   <p>Сверху хороший вид.</p>
 @endru

@@ -423,6 +423,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0893.jpg'])
 
+<a id="netto"></a>
 @ru
   <p>Товары перед супермаркетом. Оплачивать внутри.</p>
 @en
