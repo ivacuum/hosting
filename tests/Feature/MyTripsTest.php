@@ -28,6 +28,16 @@ class MyTripsTest extends TestCase
         $this->assertDatabaseMissing($trip->getTable(), ['id' => $trip->id]);
     }
 
+    public function testDestroyForbidden()
+    {
+        $trip = TripFactory::new()->withUser()->create();
+        $cheater = UserFactory::new()->create();
+
+        $this->be($cheater)
+            ->delete("my/trips/{$trip->id}")
+            ->assertForbidden();
+    }
+
     public function testEdit()
     {
         $trip = TripFactory::new()->withUser()->create();
@@ -35,6 +45,16 @@ class MyTripsTest extends TestCase
         $this->be($trip->user)
             ->get("my/trips/{$trip->id}/edit")
             ->assertOk();
+    }
+
+    public function testEditForbidden()
+    {
+        $trip = TripFactory::new()->withUser()->create();
+        $cheater = UserFactory::new()->create();
+
+        $this->be($cheater)
+            ->get("my/trips/{$trip->id}/edit")
+            ->assertForbidden();
     }
 
     public function testIndex()
@@ -86,5 +106,15 @@ class MyTripsTest extends TestCase
         $this->assertSame($data['date_end'], $trip->date_end->toDateString());
         $this->assertSame($data['date_start'], $trip->date_start->toDateString());
         $this->assertSame($data['markdown'], $trip->markdown);
+    }
+
+    public function testUpdateForbidden()
+    {
+        $trip = TripFactory::new()->withUser()->create();
+        $cheater = UserFactory::new()->create();
+
+        $this->be($cheater)
+            ->put("my/trips/{$trip->id}")
+            ->assertForbidden();
     }
 }

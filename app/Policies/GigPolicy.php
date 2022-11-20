@@ -1,25 +1,22 @@
 <?php namespace App\Policies;
 
-use App\Trip;
 use App\User;
 
-class TripPolicy
+class GigPolicy
 {
     public function create(User $me)
     {
         return $me->isRoot();
     }
 
-    public function delete(User $me, Trip $trip)
+    public function delete(User $me)
     {
-        return $me->isRoot()
-            || $me->id === $trip->user_id;
+        return $me->isRoot();
     }
 
-    public function update(User $me, Trip $trip)
+    public function update(User $me)
     {
-        return $me->isRoot()
-            || $me->id === $trip->user_id;
+        return $me->isRoot();
     }
 
     public function view(User $me)

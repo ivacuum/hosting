@@ -9,12 +9,10 @@ use Ivacuum\Generic\Policies\WithoutCreateAndEdit;
 class AuthServiceProvider extends ServiceProvider
 {
     protected $policies = [
-        App\Gig::class => Base::class,
         App\Tag::class => Base::class,
         App\City::class => Base::class,
         App\File::class => Base::class,
         App\News::class => Base::class,
-        App\Trip::class => App\Policies\TripPolicy::class,
         App\User::class => WithoutCreate::class,
         App\Email::class => WithoutCreateAndEdit::class,
         App\Image::class => WithoutCreateAndEdit::class,
