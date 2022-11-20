@@ -1,15 +1,9 @@
 <?php namespace App\Policies;
 
-use App\Comment;
 use App\User;
 
-class CommentPolicy
+class VocabularyPolicy
 {
-    public function confirm(User $me, Comment $comment)
-    {
-        return $me->id === $comment->user_id;
-    }
-
     public function delete(User $me)
     {
         return $me->isRoot();

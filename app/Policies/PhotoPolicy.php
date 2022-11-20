@@ -1,13 +1,12 @@
 <?php namespace App\Policies;
 
-use App\Comment;
 use App\User;
 
-class CommentPolicy
+class PhotoPolicy
 {
-    public function confirm(User $me, Comment $comment)
+    public function create(User $me)
     {
-        return $me->id === $comment->user_id;
+        return $me->isRoot();
     }
 
     public function delete(User $me)
