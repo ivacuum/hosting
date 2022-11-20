@@ -18,7 +18,7 @@
       </button>
     </div>
   </form>
-  @yield('torrent-download-button')
+  @yield('magnet-download-button')
   <x-nav-link-tabs>
     <x-nav-link-to href="{{ to('magnets') }}" is-active="{{ $routeUri === 'magnets' }}">
       @lang('Новые раздачи')

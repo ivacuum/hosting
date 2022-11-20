@@ -9,7 +9,12 @@
 @include('vue')
 @include('livewire')
 
-@section('torrent-download-button')
+@section('magnet-download-button')
+  @if (Auth::user()?->isRoot())
+    <a class="btn btn-default" href="{{ Acp::show($magnet) }}">
+      @lang('В админке')
+    </a>
+  @endif
 <div class="mr-4 text-center">
   <a class="btn btn-success js-magnet" href="{{ $magnet->magnet() }}" data-action="{{ to('magnets/{magnet}/magnet', $magnet) }}">
     <span class="mr-1">

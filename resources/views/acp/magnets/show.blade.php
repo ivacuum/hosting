@@ -10,6 +10,7 @@
     @lang('Связанные раздачи')
     <span class="text-base text-muted">{{ $relatedTorrents->count() }}</span>
   </div>
+  <div><span class="text-muted">Запрос:</span> {{ $model->related_query }}</div>
   <ol class="mb-4">
     @foreach ($relatedTorrents as $row)
       <li><a href="{{ path([App\Http\Controllers\Acp\Magnets::class, 'show'], $row) }}">{{ $row->shortTitle() }}</a></li>
