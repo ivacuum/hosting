@@ -54,7 +54,7 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_4882.jpg'])
 
 @ru
-  <p>Урна в автобусе, как в <a class="link" href="shanghai_2017#bus_trashcan">Шанхае</a>.</p>
+  <p>Урна в автобусе, как в <a class="link" href="shanghai.2017#bus_trashcan">Шанхае</a>.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4883.jpg'])
 
