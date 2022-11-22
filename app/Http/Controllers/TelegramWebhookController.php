@@ -5,21 +5,14 @@ use App\Jobs\TelegramPhotoCommandJob;
 use App\Jobs\TelegramPhotoOnMapCallbackQueryJob;
 use App\Jobs\TelegramStartCommandJob;
 use Illuminate\Log\Logger;
-use Ivacuum\Generic\Telegram\TelegramClient;
 
 class TelegramWebhookController
 {
-    public function __construct(private TelegramClient $telegram)
-    {
-    }
-
     public function __invoke(Logger $logger, TelegramWebhook $request)
     {
         if ($request->shouldIgnoreWebhook) {
             return;
         }
-
-        $this->telegram = $this->telegram->chat($request->chatId);
 
         if ($request->message && str_starts_with($request->message->text, '/')) {
             match ($request->message->text) {
