@@ -28,6 +28,8 @@ jobs:
         # cat /etc/default/sphinxsearch
         # cat /etc/init.d/sphinxsearch
         run: |
+          sudo cat /usr/share/doc/sphinxsearch/README.Debian
+          sudo cat /etc/sphinxsearch/sphinx.conf
           sudo cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
           sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
           sudo cat /etc/default/sphinxsearch
