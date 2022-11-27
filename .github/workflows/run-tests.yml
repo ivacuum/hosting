@@ -30,8 +30,9 @@ jobs:
         run: |
           sudo cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
           sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
-          sudo cat /var/log/sphinxsearch/searchd.log
+          sudo cat /etc/default/sphinxsearch
           sudo searchd --status
+          # sudo cat /var/log/sphinxsearch/searchd.log
 
       - name: Create database
         run: |
