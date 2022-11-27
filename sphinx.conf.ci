@@ -14,7 +14,7 @@ searchd
   query_log_format       = sphinxql
   read_timeout           = 5
   max_children           = 30
-  pid_file               = /var/run/sphinxsearch/searchd.pid
+  pid_file               = /var/run/searchd.pid
   seamless_rotate        = 1
   preopen_indexes        = 1
   unlink_old             = 1
