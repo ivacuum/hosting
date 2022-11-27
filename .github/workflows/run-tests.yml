@@ -32,7 +32,6 @@ jobs:
           sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
           sudo systemctl start sphinxsearch
           sudo ls -l /var/log/sphinxsearch
-          sudo searchd --status
           # sudo cat /var/log/sphinxsearch/searchd.log
 
       - name: Create database
