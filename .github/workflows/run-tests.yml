@@ -32,8 +32,8 @@ jobs:
           sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
           sudo systemctl start sphinxsearch
           sudo ls -l /var/log/sphinxsearch
+          sudo ls -l /var/run/sphinxsearch
           sudo ls -l /tmp
-          sudo cat /var/log/syslog
           sudo ps auxww | grep sphinx
           # sudo cat /var/log/sphinxsearch/searchd.log
 
