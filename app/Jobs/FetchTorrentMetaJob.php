@@ -24,6 +24,11 @@ class FetchTorrentMetaJob extends AbstractJob
             /** @var Magnet $magnet */
             $magnet = $magnets->firstWhere('rto_id', $id);
 
+            // Раздача уже заменена
+            if ($magnet === null) {
+                continue;
+            }
+
             // Раздача не найдена
             if ($response === null) {
                 $magnet->status = MagnetStatus::Deleted;
