@@ -33,12 +33,13 @@ jobs:
           sudo cat /etc/default/sphinxsearch
           sudo systemctl status sphinxsearch.service
           sudo systemctl start sphinxsearch.service
+          sudo systemctl status sphinxsearch.service
           # sudo ls -l /var/log/sphinxsearch
           # sudo ls -l /run
           # sudo ls -l /tmp
           # sudo ps auxww | grep search
           # sudo cat /var/log/sphinxsearch/searchd.log
-          sudo searchd --status
+          # sudo searchd --status
 
       - name: Create database
         run: |
