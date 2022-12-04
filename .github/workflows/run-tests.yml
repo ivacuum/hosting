@@ -4,7 +4,7 @@ on: push
 
 jobs:
   phpunit:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
         php: [ '8.1', '8.2' ]
@@ -33,9 +33,9 @@ jobs:
           sudo cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
           sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
           # sudo cat /etc/default/sphinxsearch
-          sudo systemctl list-units
-          sudo systemctl status sphinxsearch.service
-          sudo systemctl start sphinxsearch.service
+          # sudo systemctl list-units
+          # sudo systemctl status sphinxsearch
+          sudo systemctl start sphinxsearch
           # sudo systemctl status sphinxsearch.service
           # sudo ls -l /var/log/sphinxsearch
           # sudo ls -l /run
