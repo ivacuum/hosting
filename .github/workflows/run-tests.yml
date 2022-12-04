@@ -43,11 +43,11 @@ jobs:
           # sudo systemctl list-units
           # sudo systemctl status sphinxsearch
           # sudo systemctl start sphinxsearch
-          sudo ls -l /var/log/sphinxsearch
-          sudo ls -l /run
-          sudo ls -l /tmp
-          sudo ps auxww | grep search
-          # sudo cat /var/log/sphinxsearch/searchd.log
+          # sudo ls -l /var/log/sphinxsearch
+          # sudo ls -l /run
+          # sudo ls -l /tmp
+          # sudo ps auxww | grep searchd
+          sudo cat /var/log/sphinxsearch/searchd.log
 
       - name: Create database
         run: |
