@@ -26,24 +26,12 @@ jobs:
         # sudo echo "START=yes\n" > /etc/default/sphinxsearch
         # sudo searchd --status
         # sudo systemctl list-units
-        # sudo systemctl status sphinxsearch.service
+        # sudo systemctl status sphinxsearch
         # cat /etc/default/sphinxsearch
         # cat /etc/init.d/sphinxsearch
         run: |
           sudo cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
           sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
-
-      - name: Debug sphinxsearch
-        run: |
-          # sudo cat /etc/default/sphinxsearch
-          # sudo systemctl list-units
-          # sudo systemctl status sphinxsearch
-          # sudo systemctl start sphinxsearch
-          sudo ls -l /var/log/sphinxsearch
-          sudo ls -l /run
-          sudo ls -l /tmp
-          sudo ps auxww | grep search
-          # sudo cat /var/log/sphinxsearch/searchd.log
 
       - name: Create database
         run: |
@@ -76,6 +64,19 @@ jobs:
 
       - name: Start sphinxsearch
         run: sudo /etc/init.d/sphinxsearch start
+
+      - name: Debug sphinxsearch
+        run: |
+          cat /etc/init.d/sphinxsearch
+          # sudo cat /etc/default/sphinxsearch
+          # sudo systemctl list-units
+          # sudo systemctl status sphinxsearch
+          # sudo systemctl start sphinxsearch
+          sudo ls -l /var/log/sphinxsearch
+          sudo ls -l /run
+          sudo ls -l /tmp
+          sudo ps auxww | grep search
+          # sudo cat /var/log/sphinxsearch/searchd.log
 
       - name: Prepare Laravel Application
         run: |
