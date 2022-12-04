@@ -25,15 +25,17 @@ jobs:
       - name: Setup sphinxsearch
         # sudo echo "START=yes\n" > /etc/default/sphinxsearch
         # sudo searchd --status
+        # sudo systemctl list-units
+        # sudo systemctl status sphinxsearch.service
         # cat /etc/default/sphinxsearch
         # cat /etc/init.d/sphinxsearch
         run: |
           sudo cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
           sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
           sudo cat /etc/default/sphinxsearch
-          sudo systemctl status sphinxsearch.service
+          # sudo systemctl status sphinxsearch.service
           sudo systemctl start sphinxsearch.service
-          sudo systemctl status sphinxsearch.service
+          # sudo systemctl status sphinxsearch.service
           # sudo ls -l /var/log/sphinxsearch
           # sudo ls -l /run
           # sudo ls -l /tmp
