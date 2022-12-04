@@ -4,7 +4,7 @@ on: push
 
 jobs:
   phpunit:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         php: [ '8.1', '8.2' ]
@@ -47,7 +47,7 @@ jobs:
           # sudo ls -l /run
           # sudo ls -l /tmp
           # sudo ps auxww | grep searchd
-          sudo cat /var/log/sphinxsearch/searchd.log
+          # sudo cat /var/log/sphinxsearch/searchd.log
 
       - name: Create database
         run: |
