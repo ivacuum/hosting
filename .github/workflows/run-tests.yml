@@ -30,6 +30,7 @@ jobs:
         run: |
           sudo cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
           sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
+          sudo systemctl --all --full
           # sudo systemctl start sphinxsearch
           # sudo ls -l /var/log/sphinxsearch
           # sudo ls -l /run
