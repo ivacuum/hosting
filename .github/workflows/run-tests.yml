@@ -39,6 +39,9 @@ jobs:
       - name: Start sphinxsearch via systemctl
         run: sudo systemctl start sphinxsearch
 
+      - name: Start sphinxsearch via service
+        run: sudo service sphinxsearch start
+
       - name: Debug sphinxsearch
         run: |
           cat /etc/init.d/sphinxsearch
