@@ -45,6 +45,7 @@ jobs:
           # sudo cat /etc/default/sphinxsearch
           # sudo systemctl list-units
           sudo systemctl status sphinxsearch
+          date
           # sudo ls -l /var/log/sphinxsearch
           # sudo ls -l /run
           # sudo ls -l /tmp
