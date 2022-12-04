@@ -32,6 +32,9 @@ jobs:
         run: |
           sudo cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
           sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
+
+      - name: Debug sphinxsearch
+        run: |
           # sudo cat /etc/default/sphinxsearch
           # sudo systemctl list-units
           # sudo systemctl status sphinxsearch
