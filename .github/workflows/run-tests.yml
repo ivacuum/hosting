@@ -4,7 +4,7 @@ on: push
 
 jobs:
   phpunit:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
         php: [ '8.1', '8.2' ]
@@ -23,13 +23,23 @@ jobs:
           coverage: none
 
       - name: Setup sphinxsearch
-        # sudo echo "START=yes\n" > /etc/default/sphinxsearch
-        # sudo searchd --status
         # cat /etc/default/sphinxsearch
         # cat /etc/init.d/sphinxsearch
+        # sudo systemctl list-units
+        # sudo systemctl status sphinxsearch
+        # sudo ls -l /var/log/sphinxsearch
+        # sudo ls -l /run
+        # sudo ls -l /tmp
+        # sudo ps auxww | grep searchd
+        # sudo cat /var/log/sphinxsearch/searchd.log
+        # sudo searchd --status
         run: |
           sudo cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
           sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
+
+      # sphinxsearch-2.2.11-8 на ubuntu-22.04 не запускается
+      - name: Start sphinxsearch
+        run: sudo /etc/init.d/sphinxsearch start
 
       - name: Create database
         run: |
@@ -59,9 +69,6 @@ jobs:
 
       #- name: Install graphicsmagick
       #  run: sudo apt-get install graphicsmagick
-
-      - name: Start sphinxsearch
-        run: sudo /etc/init.d/sphinxsearch start
 
       - name: Prepare Laravel Application
         run: |
