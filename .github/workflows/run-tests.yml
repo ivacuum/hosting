@@ -31,11 +31,12 @@ jobs:
           sudo cp sphinx.conf.ci /etc/sphinxsearch/sphinx.conf
           sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch
           # sudo systemctl start sphinxsearch
-          sudo ls -l /var/log/sphinxsearch
-          sudo ls -l /run
-          sudo ls -l /tmp
-          sudo ps auxww | grep search
+          # sudo ls -l /var/log/sphinxsearch
+          # sudo ls -l /run
+          # sudo ls -l /tmp
+          # sudo ps auxww | grep search
           # sudo cat /var/log/sphinxsearch/searchd.log
+          sudo searchd --status
 
       - name: Create database
         run: |
