@@ -63,7 +63,8 @@ jobs:
       #  run: sudo apt-get install graphicsmagick
 
       - name: Start sphinxsearch
-        run: sudo /etc/init.d/sphinxsearch start
+        # run: sudo /etc/init.d/sphinxsearch start
+        run: sudo systemctl start sphinxsearch
 
       - name: Debug sphinxsearch
         run: |
