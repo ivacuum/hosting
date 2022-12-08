@@ -81,6 +81,7 @@ class FlagCode
             'qatar' => 'qa',
             'romania' => 'ro',
             'russia' => 'ru',
+            'serbia' => 'rs',
             'seychelles' => 'sc',
             'singapore' => 'sg',
             'slovakia' => 'sk',
