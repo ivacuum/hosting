@@ -50,6 +50,7 @@ class FlagCode
             'japan' => 'jp',
             'jordan' => 'jo',
             'kazakhstan' => 'kz',
+            'kyrgyzstan' => 'kg',
             'latvia' => 'lv',
             'liechtenstein' => 'li',
             'lithuania' => 'lt',
