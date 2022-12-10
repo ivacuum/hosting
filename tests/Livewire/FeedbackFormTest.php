@@ -1,6 +1,5 @@
 <?php namespace Tests\Livewire;
 
-use App\Action\LimitRateAction;
 use App\Factory\UserFactory;
 use App\Http\Livewire\FeedbackForm;
 use App\Issue;
@@ -13,8 +12,6 @@ class FeedbackFormTest extends TestCase
 
     public function testAsGuest()
     {
-        $this->mock(LimitRateAction::class)->shouldReceive('execute')->andReturn(false);
-
         $this->expectsEvents([
             \App\Events\Stats\IssueAdded::class,
             \App\Events\Stats\UserRegisteredAuto::class,
@@ -38,8 +35,6 @@ class FeedbackFormTest extends TestCase
 
     public function testAsUserWithLogin()
     {
-        $this->mock(LimitRateAction::class)->shouldReceive('execute')->andReturn(false);
-
         $user = UserFactory::new()->withLogin('post-issue')->create();
 
         $this->expectsEvents(\App\Events\Stats\IssueAdded::class);
@@ -60,8 +55,6 @@ class FeedbackFormTest extends TestCase
 
     public function testWithNameHidden()
     {
-        $this->mock(LimitRateAction::class)->shouldReceive('execute')->andReturn(false);
-
         \Livewire::test(FeedbackForm::class, ['hideName' => true])
             ->set('email', 'name-hidden@example.com')
             ->set('title', 'title')
@@ -78,8 +71,6 @@ class FeedbackFormTest extends TestCase
 
     public function testWithTitleHidden()
     {
-        $this->mock(LimitRateAction::class)->shouldReceive('execute')->andReturn(false);
-
         \Livewire::test(FeedbackForm::class, ['hideTitle' => true])
             ->set('name', 'name')
             ->set('email', 'title-hidden@example.com')
@@ -96,8 +87,6 @@ class FeedbackFormTest extends TestCase
 
     public function testWithTitlePrefilled()
     {
-        $this->mock(LimitRateAction::class)->shouldReceive('execute')->andReturn(false);
-
         \Livewire::test(FeedbackForm::class, ['hideTitle' => true, 'title' => 'FAQ'])
             ->set('name', 'name')
             ->set('email', 'title-prefilled@example.com')

@@ -1,6 +1,5 @@
 <?php namespace Tests\Livewire;
 
-use App\Action\LimitRateAction;
 use App\Domain\CommentStatus;
 use App\Domain\LivewireEvent;
 use App\Events\CommentPublished;
@@ -23,8 +22,6 @@ class CommentAddFormTest extends TestCase
 
     public function testCommentIssueAsUser()
     {
-        $this->mock(LimitRateAction::class)->shouldReceive('execute')->andReturn(false);
-
         \Notification::fake();
 
         $issue = IssueFactory::new()->withUser()->create();
@@ -46,8 +43,6 @@ class CommentAddFormTest extends TestCase
 
     public function testCommentMagnetAsUser()
     {
-        $this->mock(LimitRateAction::class)->shouldReceive('execute')->andReturn(false);
-
         $magnet = MagnetFactory::new()->create();
         $user = UserFactory::new()->create();
 
@@ -67,8 +62,6 @@ class CommentAddFormTest extends TestCase
 
     public function testCommentNewsAsGuest()
     {
-        $this->mock(LimitRateAction::class)->shouldReceive('execute')->andReturn(false);
-
         \Mail::fake();
 
         $news = NewsFactory::new()->create();
@@ -104,8 +97,6 @@ class CommentAddFormTest extends TestCase
 
     public function testCommentNewsAsUser()
     {
-        $this->mock(LimitRateAction::class)->shouldReceive('execute')->andReturn(false);
-
         $news = NewsFactory::new()->create();
         $user = UserFactory::new()->create();
 
@@ -127,8 +118,6 @@ class CommentAddFormTest extends TestCase
 
     public function testCommentTripAsUser()
     {
-        $this->mock(LimitRateAction::class)->shouldReceive('execute')->andReturn(false);
-
         $trip = TripFactory::new()->create();
         $user = UserFactory::new()->create();
 
@@ -148,8 +137,6 @@ class CommentAddFormTest extends TestCase
 
     public function testEscape()
     {
-        $this->mock(LimitRateAction::class)->shouldReceive('execute')->andReturn(false);
-
         $news = NewsFactory::new()->create();
         $user = UserFactory::new()->create();
 
@@ -163,8 +150,6 @@ class CommentAddFormTest extends TestCase
 
     public function testHiddenNews()
     {
-        $this->mock(LimitRateAction::class)->shouldReceive('execute')->andReturn(false);
-
         $news = NewsFactory::new()->hidden()->create();
         $user = UserFactory::new()->create();
 

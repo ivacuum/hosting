@@ -1,30 +1,21 @@
 <?php namespace App\Action;
 
-use App\Events\RateLimitExceeded;
 use Illuminate\Cache\RateLimiting\Limit;
-use Illuminate\Contracts\Redis\Factory;
-use Illuminate\Redis\Limiters\DurationLimiter;
 
 class LimitRateAction
 {
-    public function __construct(private Factory $redis)
-    {
+    public function __construct(
+        private LimitRateWithCacheAction $limitRateWithCache,
+        private LimitRateWithRedisAction $limitRateWithRedis,
+    ) {
     }
 
     public function execute(Limit $limit): bool
     {
-        $limiter = new DurationLimiter(
-            $this->redis, $limit->key, $limit->maxAttempts, $limit->decayMinutes * 60
-        );
-
-        if ($limiter->tooManyAttempts()) {
-            event(new RateLimitExceeded($limit->key, $limit->maxAttempts));
-
-            return true;
+        if (app()->runningUnitTests()) {
+            return $this->limitRateWithCache->execute($limit);
         }
 
-        $limiter->acquire();
-
-        return false;
+        return $this->limitRateWithRedis->execute($limit);
     }
 }

@@ -41,7 +41,7 @@ class CommentRateLimiter
     public function tooManyAttempts(int $userId): bool
     {
         return $this->ipExceeded()
-            && $this->userExceeded($userId);
+            || $this->userExceeded($userId);
     }
 
     private function ipExceeded(): bool
