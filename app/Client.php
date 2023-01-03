@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $text
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- *
  * @property \Illuminate\Database\Eloquent\Collection|Domain[] $domains
  *
  * @mixin \Eloquent

@@ -19,7 +19,6 @@ use League\CommonMark\CommonMarkConverter;
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- *
  * @property \Illuminate\Support\Collection|Comment[] $comments
  * @property \Illuminate\Support\Collection|Comment[] $commentsPublished
  * @property \Illuminate\Support\Collection|Email[] $emails

@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $html
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- *
  * @property News|Magnet|Trip $rel
  * @property User $user
  *

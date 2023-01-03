@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $token
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- *
  * @property \Illuminate\Database\Eloquent\Collection|Domain[] $domains
  *
  * @mixin \Eloquent

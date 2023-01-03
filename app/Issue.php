@@ -15,11 +15,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $page
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- *
  * @property \Illuminate\Database\Eloquent\Collection|Comment[] $comments
  * @property \Illuminate\Database\Eloquent\Collection|Comment[] $commentsPublished
  * @property User $user
- *
  * @property-read int $comments_count
  *
  * @mixin \Eloquent

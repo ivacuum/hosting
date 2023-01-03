@@ -27,11 +27,9 @@ use Laravel\Scout\Searchable;
  * @property \Carbon\CarbonImmutable $registered_at
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- *
  * @property \Illuminate\Database\Eloquent\Collection|Comment[] $comments
  * @property \Illuminate\Database\Eloquent\Collection|Comment[] $commentsPublished
  * @property \App\User $user
- *
  * @property-read int $comments_count
  *
  * @mixin \Eloquent

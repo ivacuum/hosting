@@ -13,7 +13,6 @@ use Ivacuum\Generic\Services\ImageConverter;
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- *
  * @property User $user
  *
  * @mixin \Eloquent

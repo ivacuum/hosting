@@ -37,7 +37,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\CarbonImmutable $registered_at
  * @property \Carbon\CarbonImmutable $paid_till
  * @property \Carbon\CarbonImmutable $queried_at
- *
  * @property Domain $alias
  * @property \Illuminate\Database\Eloquent\Collection|Domain[] $aliases
  * @property Client $client

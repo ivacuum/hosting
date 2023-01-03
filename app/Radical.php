@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $image
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- *
  * @property Burnable $burnable
  * @property \Illuminate\Database\Eloquent\Collection|Kanji[] $kanjis
  *

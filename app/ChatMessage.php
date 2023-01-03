@@ -14,7 +14,6 @@ use League\CommonMark\CommonMarkConverter;
  * @property string $ip
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- *
  * @property User $user
  *
  * @mixin \Eloquent

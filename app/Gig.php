@@ -21,11 +21,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- *
  * @property Artist $artist
  * @property City $city
  * @property \Illuminate\Database\Eloquent\Collection|Email[] $emails
- *
  * @property-read string $meta_title
  * @property-read string $meta_description
  * @property-read string $title

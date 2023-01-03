@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $male_audio_id
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- *
  * @property Burnable $burnable
  *
  * @mixin \Eloquent

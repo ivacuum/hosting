@@ -14,12 +14,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $nanori
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- *
  * @property Burnable $burnable
  * @property \Illuminate\Database\Eloquent\Collection|Burnable[] $burnables
  * @property \Illuminate\Database\Eloquent\Collection|Radical[] $radicals
  * @property \Illuminate\Database\Eloquent\Collection|Kanji[] $similar
- *
  * @property int $sort
  *
  * @mixin \Eloquent

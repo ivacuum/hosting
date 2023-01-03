@@ -29,7 +29,6 @@ use League\CommonMark\CommonMarkConverter;
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- *
  * @property City $city
  * @property \Illuminate\Support\Collection|Comment[] $comments
  * @property \Illuminate\Support\Collection|Comment[] $commentsPublished
@@ -37,7 +36,6 @@ use League\CommonMark\CommonMarkConverter;
  * @property \Illuminate\Database\Eloquent\Collection|Email[] $emails
  * @property \Illuminate\Database\Eloquent\Collection|Photo[] $photos
  * @property User $user
- *
  * @property-read int $comments_count
  * @property-read string $meta_title
  * @property-read string $meta_description
