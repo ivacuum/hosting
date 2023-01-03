@@ -19,7 +19,6 @@
     },
     "single_blank_line_before_namespace": false,
     "not_operator_with_successor_space": false,
-    "Laravel/laravel_phpdoc_separation": false,
     "Laravel/laravel_phpdoc_alignment": false
   }
 }
