@@ -6,7 +6,7 @@ use Illuminate\Http\Client\PendingRequest;
 
 class Rto
 {
-    private const API_ENDPOINT = 'http://api.rutracker.org/v1/';
+    private const API_ENDPOINT = 'https://api.t-ru.org/v1/';
     private const SITE_ENDPOINT = 'https://rutracker.org/forum/';
 
     private PendingRequest $http;
