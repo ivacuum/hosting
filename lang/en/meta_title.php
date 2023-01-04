@@ -81,6 +81,10 @@ return [
     'retracker/dev' => 'About retracker development',
     'retracker/usage' => 'How to use retracker',
 
+    'trainers' => 'Trainers',
+    'trainers/numbers' => 'Number trainer online, Foreign language number trainer',
+    'trainers/numbers/synopsis' => 'Summary of foreign language numbers',
+
     '@{login}/travel' => __('Заметки'),
     '@{login}/travel/cities' => __('Посещенные города'),
     '@{login}/travel/countries' => __('Посещенные страны'),

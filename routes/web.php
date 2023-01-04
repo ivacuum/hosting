@@ -236,7 +236,11 @@ Route::get('torrent', Ctrl\TorrentPromo::class);
 
 Route::middleware('nav:Тренажеры,trainers')->group(function () {
     Route::view('trainers', 'trainers.index');
-    Route::view('trainers/numbers', 'trainers.numbers')->middleware('nav:Числа');
+
+    Route::middleware('nav:Числа,trainers/numbers')->group(function () {
+        Route::view('trainers/numbers', 'trainers.numbers');
+        Route::view('trainers/numbers/synopsis', 'trainers.number-synopsis')->middleware('nav:Краткий обзор');
+    });
 });
 
 Route::get('trips/{trip}', [Ctrl\Trips::class, 'show']);
