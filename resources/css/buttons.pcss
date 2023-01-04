@@ -5,12 +5,11 @@
 }
 
 .btn-default {
-  background: #fff linear-gradient(180deg, #fff, #ebebeb) repeat-x;
-  @apply border border-grey-300 hover:border-grey-400 text-grey-900 hover:text-grey-900;
+  @apply bg-gradient-to-b from-white to-[#ebebeb] border border-grey-300 dark:border-slate-700 hover:border-grey-400 text-grey-900 dark:text-white hover:text-grey-900 dark:bg-none dark:bg-slate-800;
 }
 
 .btn-default:hover {
-  background: #ececec -webkit-gradient(linear, left top, left bottom, from(#efefef), to(#ececec)) repeat-x;
+  @apply bg-gradient-to-b from-[#efefef] to-[#ececec] dark:bg-none dark:bg-slate-700 dark:text-white dark:border-slate-600;
 }
 
 .btn-primary {
