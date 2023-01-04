@@ -30,8 +30,8 @@
   @endif
 </div>
 <div class="flex">
-  <div class="bg-light border mt-2 p-2 rounded">
-    <div class="text-muted">{{ $model->email }}</div>
+  <div class="bg-light dark:bg-slate-800 border dark:border-slate-700 mt-2 p-2 rounded">
+    <div class="text-muted dark:text-slate-300">{{ $model->email }}</div>
     <div><a href="{{ $model->page }}">{{ $model->page }}</a></div>
   </div>
 </div>
