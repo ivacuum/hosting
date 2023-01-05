@@ -59,6 +59,32 @@ class NumberTrainerTest extends TestCase
             ->assertSet('answered', 1);
     }
 
+    public function testReveal()
+    {
+        \Livewire::test(NumberTrainer::class)
+            ->set('lang', 'ru')
+            ->set('number', 3)
+            ->assertSet('spellOut', 'три')
+            ->set('answer', 4)
+            ->call('reveal')
+            ->assertSet('answer', 4)
+            ->assertSet('incorrectAnswer', false)
+            ->assertSet('reveal', true)
+            ->assertSet('revealed', 1)
+            ->call('reveal')
+            ->assertSet('answer', '')
+            ->assertSet('incorrectAnswer', false)
+            ->assertSet('reveal', false)
+            ->assertSet('revealed', 1)
+            ->set('number', 4)
+            ->set('answer', 4)
+            ->call('reveal')
+            ->assertSet('answer', 4)
+            ->assertSet('incorrectAnswer', false)
+            ->assertSet('reveal', true)
+            ->assertSet('revealed', 2);
+    }
+
     public function testRightAnswerGetsCleared()
     {
         \Livewire::test(NumberTrainer::class)
@@ -111,10 +137,12 @@ class NumberTrainerTest extends TestCase
             ->set('answer', 4)
             ->call('check')
             ->assertSet('answer', 4)
+            ->assertSet('incorrectAnswer', true)
             ->assertSet('reveal', true)
             ->assertSet('revealed', 1)
             ->call('check')
             ->assertSet('answer', '')
+            ->assertSet('incorrectAnswer', false)
             ->assertSet('reveal', false)
             ->assertSet('revealed', 1);
     }

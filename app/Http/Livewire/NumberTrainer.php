@@ -18,6 +18,7 @@ class NumberTrainer extends Component
     public int $revealed = 0;
     public bool $reveal = false;
     public bool $sayOutLoud = false;
+    public bool $incorrectAnswer = false;
     public bool $guessingSpellOut = false;
     public array $locales = [];
     public string $lang = 'en';
@@ -55,16 +56,8 @@ class NumberTrainer extends Component
             return;
         }
 
-        if ($this->reveal) {
-            $this->next();
-
-            return;
-        }
-
-        $this->reveal = true;
-        $this->revealed++;
-
-        event(new \App\Events\Stats\NumberAnswerRevealed);
+        $this->incorrectAnswer = true;
+        $this->reveal();
     }
 
     public function decreaseLevel()
@@ -104,6 +97,21 @@ class NumberTrainer extends Component
         $this->pickRandomNumber();
 
         event(new \App\Events\Stats\NumberMounted);
+    }
+
+    public function reveal()
+    {
+        if ($this->reveal) {
+            $this->incorrectAnswer = false;
+            $this->next();
+
+            return;
+        }
+
+        $this->reveal = true;
+        $this->revealed++;
+
+        event(new \App\Events\Stats\NumberAnswerRevealed);
     }
 
     public function skip()

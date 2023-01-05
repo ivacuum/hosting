@@ -29,7 +29,7 @@
             class="text-gray-400 dark:text-slate-400"
             accesskey="a"
             type="button"
-            wire:click="check"
+            wire:click="reveal"
           >&lsaquo;@lang('показать ответ')&rsaquo;</button>
         @endif
       </div>
@@ -45,8 +45,8 @@
         spellcheck="false"
         placeholder="@lang('Ваш ответ')"
         enterkeyhint="send"
-        class="form-input text-center {{ $this->reveal ? 'animate-incorrect-answer' : '' }} js-answer"
-        {{ $this->reveal ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
+        class="form-input text-center {{ $this->incorrectAnswer ? 'animate-incorrect-answer' : '' }} js-answer"
+        {{ $this->incorrectAnswer ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
         wire:model.defer="answer"
         wire:keydown.enter="check"
       >
