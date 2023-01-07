@@ -2,7 +2,7 @@
 
 <div class="grid gap-8">
   <div>
-    <form class="grid gap-6 mb-6" wire:submit.prevent="submit">
+    <div class="grid gap-6 mb-6">
       <div>
         <div class="font-medium text-lg">@lang('Язык')</div>
         <select class="form-input max-w-xs" wire:model="lang">
@@ -21,7 +21,7 @@
           </div>
         @enderror
       </div>
-    </form>
+    </div>
 
     <table class="table-stats table-adaptive">
       <thead>
