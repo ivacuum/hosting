@@ -4,153 +4,159 @@
 @ru
   <p>Экспресс Калуга—Москва.</p>
 @endru
-IMG_6985.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_6985.jpg'])
 
 @ru
-  <p>Названия остановок.</p>
+  <p>Названия столичных остановок.</p>
 @endru
-IMG_6988.jpeg
-IMG_6990.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_6988.jpg',
+  'IMG_6990.jpg',
+]])
 
 @ru
-  <p>Улица.</p>
+  <p>Улица с молодыми деревьями.</p>
 @endru
-IMG_6989.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_6989.jpg'])
 
 @ru
-  <p>Приобретенные в магазине Юникло перчатки.</p>
+  <p>Приобретенные в магазине Юникло серые перчатки.</p>
 @endru
-IMG_6991.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_6991.jpg'])
 
 @ru
-  <p>Проигнорированные перчатки.</p>
+  <p>Проигнорированные серые перчатки.</p>
 @endru
-IMG_6992.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_6992.jpg'])
 
 @ru
   <p>Нравится, что в Юникло один элемент гардероба представлен во множестве цветов.</p>
 @endru
-IMG_6993.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_6993.jpg'])
 
 @ru
-  <p>Часы показывают правильное время.</p>
+  <p>Часы на столбе показывают правильное время.</p>
 @endru
-IMG_6995.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_6995.jpg'])
 
 @ru
   <p>Шлагбаум открывается по звонку.</p>
 @endru
-IMG_6996.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_6996.jpg'])
 
 @ru
   <p>Обелиск.</p>
 @endru
-IMG_6997.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_6997.jpg'])
 
 @ru
   <p>Москва-сити.</p>
 @endru
-IMG_6998.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_6998.jpg'])
 
 @ru
   <p>Улица на закате.</p>
 @endru
-IMG_6999.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_6999.jpg'])
 
 @ru
   <p>У воды видна вертолетная площадка.</p>
 @endru
-IMG_7001.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7001.jpg'])
 
 @ru
   <p>Словно и не в центре города находишься.</p>
 @endru
-IMG_7003.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7003.jpg'])
 
 @ru
   <p>Скамейка и правила эксплуатации детской площадки.</p>
 @endru
-IMG_7004.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7004.jpg'])
 
 @ru
   <p>Информация о платной автомобильной парковке.</p>
 @endru
-IMG_7005.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7005.jpg'])
 
 @ru
   <p>Клавиатура паркомата целиком из латинских букв.</p>
 @endru
-IMG_7006.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7006.jpg'])
 
 @ru
   <p>Вечерняя подсветка фасадов зданий.</p>
 @endru
-IMG_7007.jpeg
-IMG_7008.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_7007.jpg',
+  'IMG_7008.jpg',
+]])
 
 @ru
-  <p>Вечерняя улица.</p>
+  <p>Вечерняя аллея.</p>
 @endru
-IMG_7009.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7009.jpg'])
 
 @ru
   <p>Электробус.</p>
 @endru
-IMG_7010.jpeg
-IMG_7011.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_7010.jpg',
+  'IMG_7011.jpg',
+]])
 
 @ru
   <p>Эскалатор. Язычки на белой обуви явно выступают препятствием для одежды.</p>
 @endru
-IMG_7012.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7012.jpg'])
 
 @ru
-  <p>Утренняя Москва.</p>
+  <p>Утренняя Москва из окна арендованного жилья.</p>
 @endru
-IMG_7014.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7014.jpg'])
 
 @ru
   <p>Утренняя улица. Люки бросаются в глаза из-за контрастного цвета.</p>
 @endru
-IMG_7015.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7015.jpg'])
 
 @ru
   <p>Помыли не только проезжую часть, но и тротуар.</p>
 @endru
-IMG_7016.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7016.jpg'])
 
 @ru
   <p>Газончик и ограда из камней.</p>
 @endru
-IMG_7017.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7017.jpg'])
 
 @ru
-  <p>Благоустройство. Дерево очень низко растет.</p>
+  <p>Благоустройство. Дерево очень низко растет, прямо как елка.</p>
 @endru
-IMG_7018.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7018.jpg'])
 
 @ru
   <p>Зона ожидания в бизнес-центре.</p>
 @endru
-IMG_7019.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7019.jpg'])
 
 @ru
   <p>Снимок с четырьмя слоями цветов.</p>
 @endru
-IMG_7020.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7020.jpg'])
 
 @ru
-  <p>Получен презент.</p>
+  <p>Получен хрустящий презент.</p>
 @endru
-IMG_7022.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7022.jpg'])
 
 @ru
   <p>Заведение с достойным раменом — KU:.</p>
 @endru
-IMG_7024.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7024.jpg'])
 
 @ru
   <p>Улица на закате.</p>
 @endru
-IMG_7050.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7050.jpg'])
 @endsection
