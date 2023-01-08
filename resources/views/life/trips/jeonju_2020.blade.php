@@ -2,378 +2,420 @@
 
 @section('content')
 @ru
-  <p>Расписание автобусов на вокзале Тэджона. Автобусы в Чонджу каждые полчаса. Самое забавное, что в противоположной стороне от необходимого города находится город Чхонджу (разница в названии всего в одну букву). Называть город оператору вслух слишком рискованно, поэтому показывал его с экрана телефона, чтобы продали билет куда надо.</p>
+  <p>Расписание автобусов на вокзале Тэджона. Автобусы в Чонджу каждые полчаса. Самое забавное, что в противоположной стороне от необходимого города находится город Чхонджу (разница в названии всего в одну букву, которая едва ли произносится). Называть город оператору вслух слишком рискованно, поэтому показывал его с экрана телефона, чтобы продали билет куда надо.</p>
 @endru
-IMG_5425.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5425.jpg'])
 
 @ru
   <p>Билет на автобус до Чонджу.</p>
 @endru
-IMG_5420.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5420.jpg'])
 
 @ru
   <p>Междугородний автобус.</p>
 @endru
-IMG_5426.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5426.jpg'])
 
 @ru
   <p>В салоне автобуса.</p>
 @endru
-IMG_5427.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5427.jpg'])
 
 @ru
   <p>На экране показываются пришедшие пассажиры, ожидаемые пассажиры и свободные места.</p>
 @endru
-IMG_5428.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5428.jpg'])
 
 @ru
   <p>Соседний автобус.</p>
 @endru
-IMG_5429.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5429.jpg'])
 
 @ru
-  <p>Остановка в Тэджоне в другой части города, чтобы всем не ехать на вокзал.</p>
+  <p>Чтобы всем жителям Тэджона не ехать на один вокзал, автобус делает остановку у еще одного терминала в другой части города.</p>
 @endru
-IMG_5430.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5430.jpg'])
 
 @ru
-  <p>Автобусный вокзал Чонджу.</p>
+  <p>Прибытие. Автобусный вокзал Чонджу.</p>
 @endru
-IMG_5433.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5433.jpg'])
 
 @ru
   <p>Карта города.</p>
 @endru
-IMG_5434.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5434.jpg'])
 
 @ru
-  <p>У выхода на посадку отображается время отправления автобуса.</p>
+  <p>У выхода на посадку отображается время отправления междугороднего автобуса.</p>
 @endru
-IMG_5435.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5435.jpg'])
 
 @ru
   <p>Парковка автобусов.</p>
 @endru
-IMG_5436.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5436.jpg'])
 
 @ru
   <p>Дорога.</p>
 @endru
-IMG_5437.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5437.jpg'])
 
 @ru
   <p>Защищенная от ветра остановка.</p>
 @endru
-IMG_5438.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5438.jpg'])
 
 @ru
   <p>Автомобильная заправка.</p>
 @endru
-IMG_5439.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5439.jpg'])
 
 @ru
   <p>Почтовый ящик.</p>
 @endru
-IMG_5440.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5440.jpg'])
 
 @ru
   <p>Резное оформление здания на въезде на территорию студгородка.</p>
 @endru
-IMG_5441.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5441.jpg'])
 
 @ru
   <p>Яркий пешеходный переход.</p>
 @endru
-IMG_5442.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5442.jpg'])
 
 @ru
   <p>Территория студенческого городка.</p>
 @endru
-IMG_5443.jpeg
-IMG_5446.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5443.jpg',
+  'IMG_5446.jpg',
+]])
 
 @ru
   <p>Призыв бойкотировать <a class="link" href="countries/japan">Японию</a>.</p>
 @endru
-IMG_5444.jpeg
-IMG_5445.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5444.jpg',
+  'IMG_5445.jpg',
+]])
 
 @ru
   <p>Серия скамеек вокруг дерева.</p>
 @endru
-IMG_5447.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5447.jpg'])
 
 @ru
   <p>Учебные корпуса.</p>
 @endru
-IMG_5448.jpeg
-IMG_5451.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5448.jpg',
+  'IMG_5451.jpg',
+]])
 
 @ru
   <p>Улицы студгородка.</p>
 @endru
-IMG_5449.jpeg
-IMG_5450.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5449.jpg',
+  'IMG_5450.jpg',
+]])
 
 @ru
-  <p>Традиционное оформление крыш присутствует.</p>
+  <p>Присутствует традиционное оформление крыш.</p>
 @endru
-IMG_5452.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5452.jpg'])
 
 @ru
-  <p>Даже отверстия для опор есть.</p>
+  <p>Даже есть отверстия для опор, поддерживающих деревья.</p>
 @endru
-IMG_5453.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5453.jpg'])
 
 @ru
   <p>На столбе кнопка вызова экстренной помощи.</p>
 @endru
-IMG_5454.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5454.jpg'])
 
 @ru
   <p>Под гольф-клубом.</p>
 @endru
-IMG_5455.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5455.jpg'])
 
 @ru
   <p>У заросшего водоема.</p>
 @endru
-IMG_5456.jpeg
-IMG_5457.jpeg
-IMG_5458.jpeg
-IMG_5459.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5456.jpg',
+  'IMG_5457.jpg',
+  'IMG_5458.jpg',
+  'IMG_5459.jpg',
+]])
 
 @ru
   <p>Виляющая пешеходная дорожка.</p>
 @endru
-IMG_5460.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5460.jpg'])
 
 @ru
   <p>Скамейка.</p>
 @endru
-IMG_5461.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5461.jpg'])
 
 @ru
   <p>Прокатный велосипед с глазами.</p>
 @endru
-IMG_5462.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5462.jpg'])
 
 @ru
   <p>Улицы.</p>
 @endru
-IMG_5463.jpeg
-IMG_5466.jpeg
-IMG_5478.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5463.jpg',
+  'IMG_5466.jpg',
+  'IMG_5478.jpg',
+]])
 
 @ru
   <p>Пешеходный переход с велодорожкой.</p>
 @endru
-IMG_5464.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5464.jpg'])
 
 @ru
   <p>Макеты мобильных телефонов.</p>
 @endru
-IMG_5465.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5465.jpg'])
 
 @ru
   <p>Подусохшая река.</p>
 @endru
-IMG_5467.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5467.jpg'])
 
 @ru
   <p>Подъем в гору.</p>
 @endru
-IMG_5468.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5468.jpg'])
 
 @ru
   <p>Вид назад.</p>
 @endru
-IMG_5469.jpeg
-IMG_5470.jpeg
-IMG_5471.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5469.jpg',
+  'IMG_5470.jpg',
+  'IMG_5471.jpg',
+]])
 
 @ru
-  <p>Прогулочка тропа вдоль реки.</p>
+  <p>Прогулочная тропа вдоль реки.</p>
 @endru
-IMG_5472.jpeg
-IMG_5473.jpeg
-IMG_5475.jpeg
-IMG_5476.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5472.jpg',
+  'IMG_5473.jpg',
+  'IMG_5475.jpg',
+  'IMG_5476.jpg',
+]])
 
 @ru
   <p>По камням можно перейти реку.</p>
 @endru
-IMG_5474.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5474.jpg'])
 
 @ru
   <p>Рынок.</p>
 @endru
-IMG_5477.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5477.jpg'])
 
 @ru
-  <p>Вытянутая статуя.</p>
+  <p>Вытянутая статуя на площади.</p>
 @endru
-IMG_5480.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5480.jpg'])
 
 @ru
-  <p>Корейцы не перестают поражать своими босыми ногами зимой. Бррр.</p>
+  <p>Корейцы не перестают поражать своими босыми ногами зимой в минусовую температуру. Бррр.</p>
 @endru
-IMG_5481.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5481.jpg'])
 
 @ru
   <p>Деревня ханоков — традиционных корейских домов.</p>
 @endru
-IMG_5484.jpeg
-IMG_5485.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5484.jpg',
+  'IMG_5485.jpg',
+]])
 
 @ru
   <p>Пешеходные улицы.</p>
 @endru
-IMG_5482.jpeg
-IMG_5492.jpeg
-IMG_5494.jpeg
-IMG_5497.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5482.jpg',
+  'IMG_5492.jpg',
+  'IMG_5494.jpg',
+  'IMG_5497.jpg',
+]])
 
 @ru
   <p>Много нарядов в аренду.</p>
 @endru
-IMG_5487.jpeg
-IMG_5489.jpeg
-IMG_5511.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5487.jpg',
+  'IMG_5489.jpg',
+  'IMG_5511.jpg',
+]])
 
 @ru
-  <p>Люди пользуются.</p>
+  <p>Люди пользуются возможностью нарядиться.</p>
 @endru
-IMG_5483.jpeg
-IMG_5491.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5483.jpg',
+  'IMG_5491.jpg',
+]])
 
 @ru
   <p>Кандидаты на аватарку.</p>
 @endru
-IMG_5488.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5488.jpg'])
 
 @ru
   <p>Деревья местами мило утеплены.</p>
 @endru
-IMG_5490.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5490.jpg'])
 
 @ru
   <p>Переулки.</p>
 @endru
-IMG_5493.jpeg
-IMG_5495.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5493.jpg',
+  'IMG_5495.jpg',
+]])
 
 @ru
   <p>Двор.</p>
 @endru
-IMG_5496.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5496.jpg'])
 
 @ru
-  <p>Узкий дом.</p>
+  <p>Невероятно узкий дом.</p>
 @endru
-IMG_5498.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5498.jpg'])
 
 @ru
   <p>Скамейки с деревом.</p>
 @endru
-IMG_5499.jpeg
-IMG_5519.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5499.jpg',
+  'IMG_5519.jpg',
+]])
 
 @ru
   <p>Окрестности деревни.</p>
 @endru
-IMG_5500.jpeg
-IMG_5501.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5500.jpg',
+  'IMG_5501.jpg',
+]])
 
 @ru
   <p>Высотные виды деревни.</p>
 @endru
-IMG_5502.jpeg
-IMG_5506.jpeg
-IMG_5508.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5502.jpg',
+  'IMG_5506.jpg',
+  'IMG_5508.jpg',
+]])
 
 @ru
   <p>Дорога.</p>
 @endru
-IMG_5503.jpeg
-IMG_5504.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5503.jpg',
+  'IMG_5504.jpg',
+]])
 
 @ru
   <p>На пороге люди разуваются.</p>
 @endru
-IMG_5505.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5505.jpg'])
 
 @ru
   <p>Целый район в городе с традиционными крышами.</p>
 @endru
-IMG_5507.jpeg
-IMG_5509.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5507.jpg',
+  'IMG_5509.jpg',
+]])
 
 @ru
   <p>Плитку еще не доделали.</p>
 @endru
-IMG_5510.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5510.jpg'])
 
 @ru
   <p>На этой улице из динамиков на столбах играла <a class="link" href="https://www.youtube.com/watch?v=qRIPqn1nGGA">песня</a>, которую исполнял <a class="link" href="psy.2018">PSY на концерте 2018 года</a> — <a class="link" href="https://www.youtube.com/watch?v=JwgVC1YKMs4">Don't Worry</a>. К этому моменту уже знал ее слова и невольно начал подпевать.</p>
 @endru
-IMG_5512.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5512.jpg'])
 
 @ru
   <p>Улицы.</p>
 @endru
-IMG_5513.jpeg
-IMG_5514.jpeg
-IMG_5516.jpeg
-IMG_5517.jpeg
-IMG_5518.jpeg
-IMG_5524.jpeg
-IMG_5525.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5513.jpg',
+  'IMG_5514.jpg',
+  'IMG_5516.jpg',
+  'IMG_5517.jpg',
+  'IMG_5518.jpg',
+  'IMG_5524.jpg',
+  'IMG_5525.jpg',
+]])
 
 @ru
-  <p>Тут предлагают чайные церемонии. Меню перевели на английский лишь частично.</p>
+  <p>Тут предлагают чайные церемонии. Не все позиции корейского меню перевели на английский.</p>
 @endru
-IMG_5515.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5515.jpg'])
 
 @ru
   <p>Корейский флаг на стене здания.</p>
 @endru
-IMG_5520.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5520.jpg'])
 
 @ru
   <p>Люди в диковинных нарядах. Колпак на голове у девушки слева снова напоминает <a class="link" href="psy.2018">концерт 2018 года</a>, потому что на нем в таких были волонтеры.</p>
 @endru
-IMG_5521.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5521.jpg'])
 
 @ru
   <p>Бытовая техника ждет на улице.</p>
 @endru
-IMG_5526.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5526.jpg'])
 
 @ru
   <p>На автобусе снова призыв бойкотировать <a class="link" href="countries/japan">Японию</a>.</p>
 @endru
-IMG_5527.jpeg
-IMG_5528.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5527.jpg',
+  'IMG_5528.jpg',
+]])
 
 @ru
   <p>Таксофон у автобусной остановки.</p>
 @endru
-IMG_5529.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5529.jpg'])
 
 @ru
   <p>Оформление городского автобуса.</p>
 @endru
-IMG_5531.jpeg
-IMG_5530.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_5531.jpg',
+  'IMG_5530.jpg',
+]])
 
 @ru
   <p>Интерактивное табло прибытия автобусов.</p>
 @endru
-IMG_5532.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5532.jpg'])
 
 @ru
   <p>Билет на междугородний автобус обратно в Тэджон.</p>
 @endru
-IMG_5533.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5533.jpg'])
 @endsection
