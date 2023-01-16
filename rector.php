@@ -7,8 +7,8 @@ use Rector\Config\RectorConfig;
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->sets([
         Rector\Set\ValueObject\SetList::DEAD_CODE,
-        // Rector\Set\ValueObject\LevelSetList::UP_TO_PHP_81,
-        // Rector\Laravel\Set\LaravelSetList::LARAVEL_80,
+        Rector\Set\ValueObject\LevelSetList::UP_TO_PHP_81,
+        // Rector\Laravel\Set\LaravelSetList::LARAVEL_90,
     ]);
 
     $rectorConfig->skip([
