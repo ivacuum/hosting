@@ -59,7 +59,7 @@ class LogHttpConnectionFailed
             'api.telegram.org' => 'telegram',
             'api.wanikani.com' => 'wanikani',
             'pddimp.yandex.ru' => 'yandex',
-            'api.t-ru.org', 'rutracker.org' => 'rto',
+            'api.rutracker.net', 'rutracker.org' => 'rto',
             default => '',
         };
     }

@@ -89,7 +89,7 @@ class LogExternalHttpRequest
             'api.wanikani.com' => ExternalService::Wanikani,
             'pddimp.yandex.ru' => ExternalService::Yandex,
 
-            'api.t-ru.org',
+            'api.rutracker.net',
             'rutracker.org' => ExternalService::Rutracker,
         };
     }

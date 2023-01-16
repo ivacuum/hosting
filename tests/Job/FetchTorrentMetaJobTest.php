@@ -110,7 +110,7 @@ class FetchTorrentMetaJobTest extends TestCase
         $magnet = MagnetFactory::new()->create();
 
         \Http::preventStrayRequests()->fake([
-            "api.t-ru.org/v1/get_tor_topic_data?by=topic_id&val={$magnet->rto_id}" => \Http::response([
+            "api.rutracker.net/v1/get_tor_topic_data?by=topic_id&val={$magnet->rto_id}" => \Http::response([
                 'result' => [
                     $magnet->rto_id => null,
                 ],
@@ -162,7 +162,7 @@ class FetchTorrentMetaJobTest extends TestCase
     private function fakeHttpClient(RtoTopicData $topicData)
     {
         \Http::preventStrayRequests()->fake([
-            "api.t-ru.org/v1/get_tor_topic_data?by=topic_id&val={$topicData->id}" => \Http::response([
+            "api.rutracker.net/v1/get_tor_topic_data?by=topic_id&val={$topicData->id}" => \Http::response([
                 'result' => [
                     $topicData->id => $topicData->toJson(),
                 ],
