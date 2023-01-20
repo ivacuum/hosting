@@ -1,6 +1,7 @@
 <?php namespace App\Listeners;
 
 use App\Action\FilterOutCredentialsAction;
+use App\Domain\ExternalService;
 use App\ExternalHttpRequest;
 use Illuminate\Http\Client\Events\ConnectionFailed;
 
@@ -52,15 +53,15 @@ class LogHttpConnectionFailed
         $model->save();
     }
 
-    private function serviceName(string $host): string
+    private function serviceName(string $host): ExternalService
     {
         return match ($host) {
-            'api.vk.com' => 'vk',
-            'api.telegram.org' => 'telegram',
-            'api.wanikani.com' => 'wanikani',
-            'pddimp.yandex.ru' => 'yandex',
-            'api.rutracker.net', 'rutracker.org' => 'rto',
-            default => '',
+            'api.vk.com' => ExternalService::Vk,
+            'api.telegram.org' => ExternalService::Telegram,
+            'api.wanikani.com' => ExternalService::Wanikani,
+            'pddimp.yandex.ru' => ExternalService::Yandex,
+            'api.rutracker.net',
+            'rutracker.org' => ExternalService::Rutracker,
         };
     }
 }
