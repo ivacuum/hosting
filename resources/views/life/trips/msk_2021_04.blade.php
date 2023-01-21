@@ -4,50 +4,50 @@
 @ru
   <p>Новая Третьяковская галерея.</p>
 @endru
-IMG_7527.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7527.jpg'])
 
 @ru
   <p>Отверстия для глаз для просмотра экспозиции.</p>
 @endru
-IMG_7528.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7528.jpg'])
 
 @ru
   <p>Свободное падение брусков со столкновениями с кольями.</p>
 @endru
-IMG_7529.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7529.jpg'])
 
 @ru
   <p>Афиши семидесятых.</p>
 @endru
-IMG_7531.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7531.jpg'])
 
 @ru
   <p>Проект по борьбе с пластиковыми отходами.</p>
 @endru
-IMG_7533.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7533.jpg'])
 
 @ru
   <p>USB-зарядки в вагоне метро.</p>
 @endru
-IMG_7534.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7534.jpg'])
 
 @ru
   <p>Улица Бутырский Вал.</p>
 @endru
-IMG_7535.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7535.jpg'])
 
 @ru
   <p>Флакон. Рынок.</p>
 @endru
-IMG_7536.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7536.jpg'])
 
 @ru
   <p>Подсказка местоположения под схемой.</p>
 @endru
-IMG_7537.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7537.jpg'])
 
 @ru
   <p>Территория флакона.</p>
 @endru
-IMG_7538.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7538.jpg'])
 @endsection
