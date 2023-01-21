@@ -4,186 +4,192 @@
 @ru
   <p>Водная переправа из Турунча в Мармарис.</p>
 @endru
-IMG_7133.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7133.jpg'])
 
 @ru
-  <p>Спасательные круги под крышей лодки.</p>
+  <p>Спасательные круги под навесом лодки.</p>
 @endru
-IMG_7134.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7134.jpg'])
 
 @ru
   <p>Вид на лодку сбоку. Турецкие флаги.</p>
 @endru
-IMG_7136.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7136.jpg'])
 
 @ru
-  <p>Масочный режим, все дела. Самое неприятное в отельной маске — это натирание ушей из-за тугости.</p>
+  <p>Масочный режим. Самое неприятное в отельной маске — это натирание ушей из-за тугости.</p>
 @endru
-IMG_7143.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7143.jpg'])
 
 @ru
   <p>Пока, Турунч.</p>
 @endru
-IMG_7144.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7144.jpg'])
 
 @ru
   <p>Привет, Мармарис.</p>
 @endru
-IMG_7145.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7145.jpg'])
 
 @ru
   <p>Набережная.</p>
 @endru
-IMG_7146.jpeg
-IMG_7152.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_7146.jpg',
+  'IMG_7152.jpg',
+]])
 
 @ru
-  <p>Просят на трех языках носить маски под угрозой штрафа в 900 лир.</p>
+  <p>Просят на трех языках носить маски под угрозой штрафа в 900 лир. По сравнению с РФ, здесь люди ответственней относятся к просьбе.</p>
 @endru
-IMG_7147.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7147.jpg'])
 
 @ru
   <p>Пчела и соты.</p>
 @endru
-IMG_7148.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7148.jpg'])
 
 @ru
   <p>Скамейка.</p>
 @endru
-IMG_7149.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7149.jpg'])
+
+@ru
+  <p>Хорошо и ярко выделили велодорожку.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_7151.jpg'])
 
 @ru
   <p>Поворот велодорожки.</p>
 @endru
-IMG_7150.jpeg
-
-@ru
-  <p>Хорошо ярко выделили велодорожку.</p>
-@endru
-IMG_7151.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7150.jpg'])
 
 @ru
   <p>Пешеходный район.</p>
 @endru
-IMG_7153.jpeg
-IMG_7161.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_7153.jpg',
+  'IMG_7161.jpg',
+]])
 
 @ru
   <p>Турецкие флаги.</p>
 @endru
-IMG_7160.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7160.jpg'])
 
 @ru
   <p>Скамейки под огромным деревом.</p>
 @endru
-IMG_7162.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7162.jpg'])
 
 @ru
   <p>Улицы.</p>
 @en
   <p>Streets.</p>
 @endru
-IMG_7163.jpeg
-IMG_7166.jpeg
-IMG_7172.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_7163.jpg',
+  'IMG_7166.jpg',
+  'IMG_7172.jpg',
+]])
 
 @ru
-  <p>Разметка социальной дистанции.</p>
+  <p>Разметка социальной дистанции в общепите.</p>
 @endru
-IMG_7164.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7164.jpg'])
 
 @ru
   <p>Названия блюд.</p>
 @endru
-IMG_7165.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7165.jpg'])
 
 @ru
   <p>Торговые ряды.</p>
 @endru
-IMG_7167.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7167.jpg'])
 
 @ru
   <p>Подробности сколько человек может заходить в магазин согласно его площади во время пандемии ковид-19. Меры предостережения: входить в магазин в маске, ничего не трогать, обрабатывать руки антисептиком, соблюдать социальную дистанцию.</p>
 @endru
-IMG_7168.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7168.jpg'])
 
 @ru
   <p>Та же информация в вертикальном формате.</p>
 @endru
-IMG_7169.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7169.jpg'])
 
 @ru
   <p>Скамейка в зелени.</p>
 @endru
-IMG_7170.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7170.jpg'])
 
 @ru
   <p>Фрукты на продажу.</p>
 @endru
-IMG_7171.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7171.jpg'])
 
 @ru
   <p>Катера пришвартованы.</p>
 @endru
-IMG_7173.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7173.jpg'])
 
 @ru
   <p>Пальмы и холм. На холме могла бы быть надпись Голивуд.</p>
 @endru
-IMG_7174.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7174.jpg'])
 
 @ru
-  <p>Вдали паром. На подобном довелось добраться до Стокгольма.</p>
+  <p>Вдали паром. На подобном довелось добраться до <a class="link" href="stockholm.2016">Стокгольма</a>.</p>
 @endru
-IMG_7175.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7175.jpg'])
 
 @ru
   <p>На улице подвешены зонты.</p>
 @endru
-IMG_7176.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7176.jpg'])
 
 @ru
   <p>Дворик.</p>
 @endru
-IMG_7177.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7177.jpg'])
 
 @ru
   <p>C&C, как одна из любимых компьютерных игр детства — Command & Conquer.</p>
 @endru
-IMG_7178.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7178.jpg'])
 
 @ru
   <p>Ценник в магазине. Турцию уже пишут Turkiye вместо Turkey.</p>
 @endru
-IMG_7179.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7179.jpg'])
 
 @ru
   <p>Яхты.</p>
 @endru
-IMG_7180.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7180.jpg'])
 
 @ru
-  <p>Пассажиры яхты разулись перед входом.</p>
+  <p>Пассажиры яхты разулись перед входом на борт.</p>
 @endru
-IMG_7181.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7181.jpg'])
 
 @ru
   <p>Предостережения от ковида на входе в заведение общепита. Вместимость 88 человек на площади 456 квадратных метров.</p>
 @endru
-IMG_7182.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7182.jpg'])
 
 @ru
   <p>Солнце зашло.</p>
 @endru
-IMG_7183.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7183.jpg'])
 
 @ru
   <p>Короткий автобус.</p>
 @endru
-IMG_7184.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7184.jpg'])
 
 @ru
   <p>Автобус обратно до Турунча. Можно оплатить банковской картой.</p>
 @endru
-IMG_7185.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7185.jpg'])
 @endsection
