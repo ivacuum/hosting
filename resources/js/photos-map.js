@@ -20,6 +20,8 @@ export default class PhotosMap {
         manager.clusters.options.set('preset', 'islands#nightClusterIcons')
 
         App.map.map.geoObjects.add(manager)
+        // https://yandex.ru/dev/maps/jsbox/2.1/show_visible_objects
+        // https://yandex.ru/dev/maps/jsapi/doc/2.1/dg/concepts/loading-object-manager/about.html
 
         fetch(data.action, {
           headers: {
