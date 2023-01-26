@@ -19,12 +19,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class DcppHub extends Model
 {
-    protected $dates = ['queried_at'];
-
     protected $casts = [
         'port' => 'int',
         'status' => DcppHubStatus::class,
         'clicks' => 'int',
+        'queried_at' => 'datetime',
     ];
 
     protected $attributes = [

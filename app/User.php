@@ -56,7 +56,6 @@ class User extends Authenticatable implements HasLocalePreference
 
     protected $guarded = ['created_at', 'updated_at'];
     protected $hidden = ['password', 'salt', 'remember_token', 'two_factor_secret', 'two_factor_recovery_codes'];
-    protected $dates = ['last_login_at', 'password_changed_at'];
     protected $perPage = 50;
 
     protected $attributes = [
@@ -69,6 +68,8 @@ class User extends Authenticatable implements HasLocalePreference
         'notify_gigs' => NotificationDeliveryMethod::class,
         'notify_news' => NotificationDeliveryMethod::class,
         'notify_trips' => NotificationDeliveryMethod::class,
+        'last_login_at' => 'datetime',
+        'password_changed_at' => 'datetime',
         'torrent_short_title' => 'int',
     ];
 

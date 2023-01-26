@@ -73,13 +73,13 @@ class Trip extends Model
         'meta_description_ru' => '',
     ];
 
-    protected $dates = ['date_start', 'date_end'];
-
     protected $casts = [
         'views' => 'int',
         'status' => TripStatus::class,
         'city_id' => 'int',
         'user_id' => 'int',
+        'date_end' => 'datetime',
+        'date_start' => 'datetime',
     ];
 
     // Relations

@@ -61,10 +61,10 @@ class Magnet extends Model
         'status' => MagnetStatus::class,
         'user_id' => 'int',
         'category_id' => MagnetCategory::class,
+        'registered_at' => 'datetime',
     ];
 
     protected $hidden = ['html'];
-    protected $dates = ['registered_at'];
     protected $perPage = 50;
 
     // Relations

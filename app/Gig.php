@@ -35,9 +35,8 @@ class Gig extends Model
 {
     use Traits\HasLocalizedTitle;
 
-    protected $dates = ['date'];
-
     protected $casts = [
+        'date' => 'datetime',
         'views' => 'int',
         'status' => GigStatus::class,
         'city_id' => 'int',

@@ -16,10 +16,10 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ReferrerRedirect extends Model
 {
-    protected $dates = ['starts_at', 'expires_at'];
-
     protected $casts = [
         'clicks' => 'int',
+        'starts_at' => 'datetime',
+        'expires_at' => 'datetime',
     ];
 
     // Methods

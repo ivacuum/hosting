@@ -47,7 +47,6 @@ use Illuminate\Database\Eloquent\Model;
 class Domain extends Model
 {
     protected $hidden = ['cms_pass', 'ftp_pass', 'ssh_pass', 'db_pass'];
-    protected $dates = ['mailed_at', 'queried_at', 'registered_at', 'paid_till'];
     protected $perPage = 50;
 
     protected $casts = [
@@ -55,6 +54,10 @@ class Domain extends Model
         'status' => DomainMonitoring::class,
         'alias_id' => 'int',
         'client_id' => 'int',
+        'mailed_at' => 'datetime',
+        'paid_till' => 'datetime',
+        'queried_at' => 'datetime',
+        'registered_at' => 'datetime',
         'domain_control' => 'int',
         'yandex_user_id' => 'int',
     ];
