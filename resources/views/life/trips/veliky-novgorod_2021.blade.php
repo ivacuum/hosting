@@ -4,189 +4,203 @@
 @ru
   <p>Поезд Ласточка из Санкт-Петербурга прибыл на центральный вокзал Великого Новгорода.</p>
 @endru
-IMG_7801.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7801.jpg'])
 
 @ru
   <p>Карта местности на торце дома.</p>
 @endru
-IMG_7802.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7802.jpg'])
 
 @ru
   <p>Схема поближе.</p>
 @endru
-IMG_7803.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7803.jpg'])
 
 @ru
-  <p>Аллея.</p>
+  <p>Аллея. Только по правой стороне стволы деревьев покрасили белой краской.</p>
 @endru
-IMG_7804.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7804.jpg'])
 
 @ru
-  <p>Урна.</p>
+  <p>Урна перед площадью.</p>
 @endru
-IMG_7805.jpeg
-IMG_7806.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_7805.jpg',
+  'IMG_7806.jpg',
+]])
 
 @ru
   <p>Здание правительства.</p>
 @endru
-IMG_7807.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7807.jpg'])
 
 @ru
-  <p>Стены кремля.</p>
+  <p>Периметр кремля.</p>
 @endru
-IMG_7808.jpeg
-IMG_7884.jpeg
-IMG_7885.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_7808.jpg',
+  'IMG_7884.jpg',
+  'IMG_7885.jpg',
+]])
 
 @ru
-  <p>Скамейка.</p>
+  <p>Скамейка, в которой центральная часть напоминает стул.</p>
 @endru
-IMG_7810.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7810.jpg'])
 
 @ru
   <p>Часы на башне показывают правильное время.</p>
 @endru
-IMG_7811.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7811.jpg'])
 
 @ru
-  <p>Дверь с потрясающим количеством деталей.</p>
+  <p>Дверь с потрясающим количеством объемных деталей.</p>
 @endru
-IMG_7813.jpeg
-IMG_7814.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_7813.jpg',
+  'IMG_7814.jpg',
+]])
 
 @ru
-  <p>Колокол.</p>
+  <p>Колокол с надписями.</p>
 @endru
-IMG_7815.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7815.jpg'])
 
 @ru
   <p>Пляж.</p>
 @endru
-IMG_7820.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7820.jpg'])
 
 @ru
-  <p>Мост.</p>
+  <p>Пешеходный мост.</p>
 @endru
-IMG_7822.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7822.jpg'])
 
 @ru
   <p>Аллея.</p>
 @endru
-IMG_7823.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7823.jpg'])
 
 @ru
   <p>Расстояние до российских городов на указателях.</p>
 @endru
-IMG_7824.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7824.jpg'])
 
 @ru
   <p>Реклама швейной фабрики на улице.</p>
 @endru
-IMG_7825.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7825.jpg'])
 
 @ru
-  <p>В парке.</p>
+  <p>Парк.</p>
 @endru
-IMG_7826.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7826.jpg'])
 
 @ru
   <p>Церковь.</p>
 @endru
-IMG_7827.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7827.jpg'])
 
 @ru
-  <p>Урна на остановке.</p>
+  <p>Урна на пустынной остановке без павильона.</p>
 @endru
-IMG_7828.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7828.jpg'])
 
 @ru
   <p>Реновация улицы.</p>
 @endru
-IMG_7829.jpeg
-IMG_7830.jpeg
-IMG_7835.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_7829.jpg',
+  'IMG_7830.jpg',
+  'IMG_7835.jpg',
+]])
 
 @ru
   <p>Сад в жилом дворе.</p>
 @endru
-IMG_7831.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7831.jpg'])
 
 @ru
-  <p>Ворота на цепи.</p>
+  <p>Ворота в арке на цепи.</p>
 @endru
-IMG_7846.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7846.jpg'])
 
 @ru
   <p>Двор за воротами.</p>
 @endru
-IMG_7847.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7847.jpg'])
 
 @ru
   <p>Церковь.</p>
 @endru
-IMG_7851.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7851.jpg'])
 
 @ru
   <p>Внутри церкви.</p>
 @endru
-IMG_7852.jpeg
-IMG_7853.jpeg
-IMG_7854.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_7852.jpg',
+  'IMG_7853.jpg',
+  'IMG_7854.jpg',
+]])
 
 @ru
   <p>Купание запрещено, но для людей это не помеха.</p>
 @endru
-IMG_7856.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7856.jpg'])
 
 @ru
   <p>Перынский скит.</p>
 @endru
-IMG_7857.jpeg
-IMG_7858.jpeg
-IMG_7859.jpeg
-IMG_7860.jpeg
-IMG_7861.jpeg
-IMG_7862.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_7857.jpg',
+  'IMG_7858.jpg',
+  'IMG_7859.jpg',
+  'IMG_7860.jpg',
+  'IMG_7861.jpg',
+  'IMG_7862.jpg',
+]])
 
 @ru
   <p>Обед на терассе в центре Великого Новгорода.</p>
 @endru
-IMG_7868.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7868.jpg'])
 
 @ru
   <p>Счет за обед в конверте.</p>
 @endru
-IMG_7871.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7871.jpg'])
 
 @ru
   <p>Береза в цветах.</p>
 @endru
-IMG_7883.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7883.jpg'])
 
 @ru
   <p>Одинокий шоппер.</p>
 @endru
-IMG_7887.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7887.jpg'])
 
 @ru
   <p>Подъем к обелиску.</p>
 @endru
-IMG_7888.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7888.jpg'])
 
 @ru
   <p>Спортивные площадки.</p>
 @endru
-IMG_7891.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7891.jpg'])
 
 @ru
   <p>Улицы.</p>
 @endru
-IMG_7892.jpeg
-IMG_7894.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_7892.jpg',
+  'IMG_7894.jpg',
+]])
 
 @ru
-  <p>Вертикальная надпись: полиция. Объяснение именования улицы Людогоща.</p>
+  <p>Вертикальная надпись: полиция. На горизонтальной табличке объяснение именования улицы Людогоща.</p>
 @endru
-IMG_7893.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7893.jpg'])
 @endsection
