@@ -4,65 +4,65 @@
 @ru
   <p>Московский региональный экспресс перепал калужскому направлению.</p>
 @endru
-IMG_7984.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7984.jpg'])
 
 @ru
   <p>Проветриваемся.</p>
 @endru
-IMG_7985.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7985.jpg'])
 
 @ru
   <p>Курский вокзал разгружается.</p>
 @endru
-IMG_7986.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7986.jpg'])
 
 @ru
   <p>Неактуальная часть навигации заклеена.</p>
 @endru
-IMG_7987.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7987.jpg'])
 
 @ru
   <p>Торговые павильоны тоже стали неактуальны.</p>
 @endru
-IMG_7988.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7988.jpg'])
 
 @ru
   <p>Площадь возле Курского вокзала.</p>
 @endru
-IMG_7989.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7989.jpg'])
 
 @ru
   <p>Зеленеют трамвайные пути.</p>
 @endru
-IMG_7990.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7990.jpg'])
 
 @ru
   <p>Светофор для велосипедистов.</p>
 @endru
-IMG_7991.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7991.jpg'])
 
 @ru
   <p>Большой Полуярославский переулок.</p>
 @endru
-IMG_7992.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7992.jpg'])
 
 @ru
   <p>Ветки деревьев вдоль дороги подрезаны.</p>
 @endru
-IMG_7993.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7993.jpg'])
 
 @ru
   <p>Сквер.</p>
 @endru
-IMG_7994.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7994.jpg'])
 
 @ru
   <p>Навигация защищена сеткой.</p>
 @endru
-IMG_7995.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7995.jpg'])
 
 @ru
   <p>Макдональдс в ковидные времена работает только навынос. Заказ в масках и перчатках.</p>
 @endru
-IMG_7996.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_7996.jpg'])
 @endsection
