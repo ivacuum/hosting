@@ -31,7 +31,6 @@ IMG_8594.jpeg
 @endru
 IMG_8595.jpeg
 IMG_8596.jpeg
-IMG_8597.jpeg
 
 @ru
   <p>Река зовется как и город — Манавгат.</p>

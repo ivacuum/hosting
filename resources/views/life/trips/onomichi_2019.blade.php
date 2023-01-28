@@ -172,6 +172,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9688.jpg'])
 
+<a id="2gis"></a>
 @ru
   <p>Карта организаций района. Печатный 2ГИС.</p>
 @endru
