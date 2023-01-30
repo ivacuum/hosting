@@ -60,7 +60,7 @@ class LogHttpConnectionFailed
             'api.telegram.org' => ExternalService::Telegram,
             'api.wanikani.com' => ExternalService::Wanikani,
             'pddimp.yandex.ru' => ExternalService::Yandex,
-            'api.rutracker.net',
+            'api.rutracker.cc',
             'rutracker.org' => ExternalService::Rutracker,
         };
     }

@@ -239,7 +239,7 @@ class TorrentTest extends TestCase
     private function fakeHttpRequests(Magnet $stub)
     {
         \Http::preventStrayRequests()->fake([
-            "api.rutracker.net/v1/get_tor_topic_data?by=topic_id&val={$stub->rto_id}" => \Http::response([
+            "api.rutracker.cc/v1/get_tor_topic_data?by=topic_id&val={$stub->rto_id}" => \Http::response([
                 'result' => [
                     $stub->rto_id => [
                         'size' => $stub->size,
