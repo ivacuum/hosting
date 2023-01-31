@@ -2,18 +2,14 @@
 
 use GuzzleHttp\RequestOptions;
 use Illuminate\Http\Client\Factory;
-use Illuminate\Http\Client\PendingRequest;
 
 class Rto
 {
     private const API_ENDPOINT = 'https://api.rutracker.cc/v1/';
     private const SITE_ENDPOINT = 'https://rutracker.org/forum/';
 
-    private PendingRequest $http;
-
-    public function __construct(Factory $http)
+    public function __construct(private Factory $http)
     {
-        $this->http = $http->timeout(\App::runningInConsole() ? 60 : 15);
     }
 
     public function findTopicId(int|string|null $input): ?int
@@ -65,15 +61,8 @@ class Rto
 
     public function parseTopicBody(int $topicId): RtoTopicHtmlResponse
     {
-        $response = $this->http
-            ->retry(5, 5000)
-            ->withOptions([
-                RequestOptions::PROXY => config('services.rto.proxy'),
-                RequestOptions::FORCE_IP_RESOLVE => \App::isProduction() && !config('services.rto.proxy')
-                    ? 'v6'
-                    : null,
-            ])
-            ->get(self::SITE_ENDPOINT . "viewtopic.php?t={$topicId}");
+        $response = $this->configureSiteClient()
+            ->get("viewtopic.php?t={$topicId}");
 
         return new RtoTopicHtmlResponse($response->body());
     }
@@ -96,14 +85,8 @@ class Rto
 
     public function topicDataByIds(array $ids): RtoGetTorTopicDataResponse
     {
-        $response = $this->http
-            ->withOptions([
-                RequestOptions::PROXY => config('services.rto.proxy'),
-                RequestOptions::FORCE_IP_RESOLVE => \App::isProduction()
-                    ? 'v4'
-                    : null,
-            ])
-            ->get(self::API_ENDPOINT . 'get_tor_topic_data', [
+        $response = $this->configureApiClient()
+            ->get('get_tor_topic_data', [
                 'by' => 'topic_id',
                 'val' => implode(',', $ids),
             ]);
@@ -113,18 +96,39 @@ class Rto
 
     public function topicIdByHash(string $hash): ?int
     {
-        $response = $this->http
-            ->withOptions([
-                RequestOptions::PROXY => config('services.rto.proxy'),
-                RequestOptions::FORCE_IP_RESOLVE => \App::isProduction()
-                    ? 'v4'
-                    : null,
-            ])
-            ->get(self::API_ENDPOINT . 'get_topic_id', [
+        $response = $this->configureApiClient()
+            ->get('get_topic_id', [
                 'by' => 'hash',
                 'val' => $hash,
             ]);
 
         return $response->object()->result->{$hash};
+    }
+
+    private function configureApiClient()
+    {
+        return $this->http
+            ->baseUrl(self::API_ENDPOINT)
+            ->timeout(\App::runningInConsole() ? 60 : 15)
+            ->withOptions([
+                RequestOptions::PROXY => config('services.rto.proxy'),
+                RequestOptions::FORCE_IP_RESOLVE => \App::isProduction()
+                    ? 'v4'
+                    : null,
+            ]);
+    }
+
+    private function configureSiteClient()
+    {
+        return $this->http
+            ->baseUrl(self::SITE_ENDPOINT)
+            ->timeout(\App::runningInConsole() ? 60 : 15)
+            ->retry(5, 5000)
+            ->withOptions([
+                RequestOptions::PROXY => config('services.rto.proxy'),
+                RequestOptions::FORCE_IP_RESOLVE => \App::isProduction() && !config('services.rto.proxy')
+                    ? 'v6'
+                    : null,
+            ]);
     }
 }
