@@ -35,6 +35,6 @@ return [
     ],
 
     'wanikani' => [
-        'api_key' => env('WANIKANI_API_KEY', ''),
+        'api_key' => env('WANIKANI_API_KEY', 'YourWanikaniToken'),
     ],
 ];
