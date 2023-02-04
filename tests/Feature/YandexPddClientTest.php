@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\ExternalHttpRequest;
 use App\Factory\YandexPddDnsRecordFactory;
 use App\Services\YandexPdd\DkimStatusResponse;
 use App\Services\YandexPdd\DnsRecordAddResponse;
@@ -159,6 +160,23 @@ class YandexPddClientTest extends TestCase
             ->emails('example.com');
 
         $this->assertTrue($response->successful);
+    }
+
+    public function testNoCredentialsLogged()
+    {
+        \Http::preventStrayRequests()->fake([
+            ...DkimStatusResponse::fakeSuccess('example.com'),
+        ]);
+
+        $response = app(YandexPddClient::class)
+            ->token('token')
+            ->dkimStatus('example.com', true);
+
+        $this->assertTrue($response->successful);
+
+        $request = ExternalHttpRequest::latest('id')->first();
+
+        $this->assertSame('XXX', $request->request_headers['PddToken'][0]);
     }
 
     public function testSetNewEmailPassword()

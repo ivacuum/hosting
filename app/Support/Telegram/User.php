@@ -24,6 +24,6 @@ class User
 
     public function isAdmin(): bool
     {
-        return $this->id === (int) config('cfg.telegram.admin_id');
+        return $this->id === (int) config('services.telegram.admin_id');
     }
 }

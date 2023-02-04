@@ -34,6 +34,6 @@ class TelegramWebhook extends FormRequest
         $this->callbackQuery = $this->has('callback_query')
             ? CallbackQuery::fromArray($this->json('callback_query'))
             : null;
-        $this->shouldIgnoreWebhook = $this->header('X-Telegram-Bot-Api-Secret-Token') !== config('cfg.telegram.webhook_secret_token');
+        $this->shouldIgnoreWebhook = $this->header('X-Telegram-Bot-Api-Secret-Token') !== config('services.telegram.webhook_secret_token');
     }
 }

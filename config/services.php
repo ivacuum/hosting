@@ -17,6 +17,12 @@ return [
         'proxy' => env('RTO_PROXY'),
     ],
 
+    'telegram' => [
+        'admin_id' => env('TELEGRAM_ADMIN_ID', 0),
+        'bot_token' => env('TELEGRAM_BOT_TOKEN', 'YOUR-BOT-TOKEN'),
+        'webhook_secret_token' => env('TELEGRAM_WEBHOOK_SECRET_TOKEN'),
+    ],
+
     'telegram-bot-api' => [
         'token' => env('TELEGRAM_BOT_TOKEN'), // laravel notifications
     ],
@@ -26,5 +32,9 @@ return [
         'client_id' => env('VK_CLIENT_ID'),
         'client_secret' => env('VK_CLIENT_SECRET'),
         'redirect' => env('VK_REDIRECT'),
+    ],
+
+    'wanikani' => [
+        'api_key' => env('WANIKANI_API_KEY', ''),
     ],
 ];

@@ -9,7 +9,7 @@ class WanikaniApi
 
     public function __construct(private Factory $http)
     {
-        $this->apiKey = config('cfg.wanikani_api_key');
+        $this->apiKey = config('services.wanikani.api_key');
     }
 
     public function subject(int $id)

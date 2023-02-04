@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\ExternalHttpRequest;
 use App\Services\Wanikani\KanjiEntity;
 use App\Services\Wanikani\SubjectResponse;
 use App\Services\Wanikani\WanikaniApi;
@@ -9,6 +10,20 @@ use Tests\TestCase;
 class WanikaniApiTest extends TestCase
 {
     use DatabaseTransactions;
+
+    public function testNoCredentialsLogged()
+    {
+        \Http::preventStrayRequests()->fake([
+            ...SubjectResponse::fakeKanji(555),
+        ]);
+
+        app(WanikaniApi::class)
+            ->subject(555);
+
+        $request = ExternalHttpRequest::latest('id')->first();
+
+        $this->assertSame('Bearer WanikaniApiKey', $request->request_headers['Authorization'][0]);
+    }
 
     public function testSubjectKanji()
     {

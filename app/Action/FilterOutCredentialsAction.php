@@ -5,34 +5,28 @@ use App\ExternalHttpRequest;
 
 class FilterOutCredentialsAction
 {
+    public function __construct(private GetAllCredentialsAction $getAllCredentials)
+    {
+    }
+
     public function execute(ExternalHttpRequest $model)
     {
+        $credentials = $this->getAllCredentials->execute();
+
+        $keys = $credentials->keys()->all();
+        $values = $credentials->values()->all();
+
+        $model->path = str_replace($values, $keys, $model->path);
+        $model->query = str_replace($values, $keys, $model->query);
+
+        if (!empty($model->request_headers['Authorization'][0])) {
+            $model->request_headers['Authorization'][0] = str_replace($values, $keys, $model->request_headers['Authorization'][0]);
+        }
+
         match ($model->service_name) {
-            ExternalService::Telegram => $this->telegram($model),
-            ExternalService::Vk => $this->vk($model),
-            ExternalService::Wanikani => $this->wanikani($model),
             ExternalService::Yandex => $this->yandex($model),
             default => null,
         };
-    }
-
-    private function telegram(ExternalHttpRequest $model)
-    {
-        $model->path = preg_replace('#^/bot\d+:.*/(.*)#', '/botXXX/$1', $model->path);
-    }
-
-    private function vk(ExternalHttpRequest $model)
-    {
-        $token = config('services.vk.access_token');
-
-        $model->query = str_replace("access_token={$token}", 'access_token=XXX', $model->query);
-    }
-
-    private function wanikani(ExternalHttpRequest $model)
-    {
-        if (!empty($model->request_headers['Authorization'][0])) {
-            $model->request_headers['Authorization'][0] = 'XXX';
-        }
     }
 
     private function yandex(ExternalHttpRequest $model)

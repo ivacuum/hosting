@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature;
 
+use App\ExternalHttpRequest;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\Client\Request;
 use Ivacuum\Generic\Telegram\InlineKeyboardButton;
@@ -12,13 +13,28 @@ class TelegramClientTest extends TestCase
 {
     use DatabaseTransactions;
 
+    public function testNoCredentialsLogged()
+    {
+        \Http::preventStrayRequests()->fake([
+            ...TelegramResponse::fakeSuccess(),
+        ]);
+
+        app(TelegramClient::class)
+            ->chat(12345)
+            ->sendMessage('Text');
+
+        $request = ExternalHttpRequest::latest('id')->first();
+
+        $this->assertSame('/botTelegramBotToken/sendMessage', $request->path);
+    }
+
     public function testSendMessage()
     {
         \Http::preventStrayRequests()->fake([
             ...TelegramResponse::fakeSuccess(),
         ]);
 
-        config(['cfg.telegram.bot_token' => '1234:token']);
+        config(['services.telegram.bot_token' => '1234:token']);
 
         app(TelegramClient::class)
             ->chat(12345)
@@ -37,7 +53,7 @@ class TelegramClientTest extends TestCase
             ...TelegramResponse::fakeSuccess(),
         ]);
 
-        config(['cfg.telegram.bot_token' => '1234:token']);
+        config(['services.telegram.bot_token' => '1234:token']);
 
         app(TelegramClient::class)
             ->chat(1)
@@ -58,7 +74,7 @@ class TelegramClientTest extends TestCase
             ...TelegramResponse::fakeSuccess(),
         ]);
 
-        config(['cfg.telegram.bot_token' => '1234:token']);
+        config(['services.telegram.bot_token' => '1234:token']);
 
         app(TelegramClient::class)
             ->chat(12345)
@@ -96,7 +112,7 @@ class TelegramClientTest extends TestCase
             ...TelegramResponse::fakeSuccess(),
         ]);
 
-        config(['cfg.telegram.bot_token' => '1234:token']);
+        config(['services.telegram.bot_token' => '1234:token']);
 
         app(TelegramClient::class)
             ->setWebhook('https://localhost/telegram/webhook', 'secret');
