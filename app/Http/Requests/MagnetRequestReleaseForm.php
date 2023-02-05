@@ -9,11 +9,6 @@ class MagnetRequestReleaseForm extends FormRequest
     public readonly string $q;
     public readonly ?string $comment;
 
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         return [

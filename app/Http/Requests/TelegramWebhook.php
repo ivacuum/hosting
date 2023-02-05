@@ -12,11 +12,6 @@ class TelegramWebhook extends FormRequest
     public readonly Message|null $message;
     public readonly CallbackQuery|null $callbackQuery;
 
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         return [];

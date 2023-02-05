@@ -8,11 +8,6 @@ class LifeIndexForm extends FormRequest
     public readonly ?string $to;
     public readonly ?string $from;
 
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function redirectInstagrammer()
     {
         $redirect = ReferrerRedirect::findFirstActive();

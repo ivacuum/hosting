@@ -4,11 +4,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class MagnetsIndexForm extends FormRequest
 {
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function category()
     {
         if (!$this->categoryId()) {

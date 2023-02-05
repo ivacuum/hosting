@@ -12,11 +12,6 @@ class MyProfileUpdateForm extends FormRequest
     public readonly string $email;
     public readonly string $username;
 
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         $user = $this->user();

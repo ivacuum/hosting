@@ -7,11 +7,6 @@ class TypoStoreForm extends FormRequest
     public readonly string $selection;
     public readonly ?string $page;
 
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         return [

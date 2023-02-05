@@ -9,11 +9,6 @@ use Illuminate\Validation\Rules\Enum;
 
 class TripUpdateForm extends FormRequest
 {
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         /** @var \App\User $user */

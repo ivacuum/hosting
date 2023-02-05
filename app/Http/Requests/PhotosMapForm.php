@@ -10,11 +10,6 @@ class PhotosMapForm extends FormRequest
     public readonly ?int $tripId;
     public readonly ?string $photoSlug;
 
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         return [

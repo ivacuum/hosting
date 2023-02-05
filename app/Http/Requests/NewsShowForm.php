@@ -7,11 +7,6 @@ class NewsShowForm extends FormRequest
 {
     public ?News $news;
 
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function ensureNewsIsPublished()
     {
         abort_unless($this->news->status->isPublished(), 404);

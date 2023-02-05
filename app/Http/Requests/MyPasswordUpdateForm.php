@@ -11,11 +11,6 @@ class MyPasswordUpdateForm extends FormRequest
     public readonly string $newPassword;
     public readonly ?string $currentPassword;
 
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function isPasswordInvalid(Hasher $hash): bool
     {
         return !$hash->check($this->currentPassword, $this->user->password);

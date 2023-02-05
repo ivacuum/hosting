@@ -8,11 +8,6 @@ class BeaconStoreForm extends FormRequest
     /** @var array<int, BeaconEvent> */
     public readonly array $events;
 
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         return [

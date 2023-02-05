@@ -7,11 +7,6 @@ class TripPublishedNotifyRequest extends FormRequest
 {
     public readonly CarbonImmutable $date;
 
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         return [

@@ -16,11 +16,6 @@ class MySettingsUpdateForm extends FormRequest
     public readonly NotificationDeliveryMethod $notifyNews;
     public readonly NotificationDeliveryMethod $notifyTrips;
 
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         return [

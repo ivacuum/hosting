@@ -12,11 +12,6 @@ class LifeCalendarForm extends FormRequest
 {
     public ?User $user;
 
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         return [];
