@@ -5,7 +5,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class TypoStoreForm extends FormRequest
 {
     public readonly string $selection;
-    public readonly ?string $page;
+    public readonly string|null $page;
 
     public function rules(): array
     {

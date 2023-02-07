@@ -4,40 +4,31 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class MagnetsIndexForm extends FormRequest
 {
-    public function category()
-    {
-        if (!$this->categoryId()) {
-            return null;
-        }
+    public readonly bool $isFulltextSearch;
+    public readonly int|null $categoryId;
+    public readonly array|null $category;
 
-        return \TorrentCategoryHelper::find($this->categoryId());
-    }
-
-    public function categoryId(): ?int
-    {
-        $categoryId = $this->input('category_id');
-
-        return is_numeric($categoryId)
-            ? $categoryId
-            : null;
-    }
-
-    public function isFulltextSearch(): bool
-    {
-        return $this->input('fulltext', false);
-    }
-
-    public function searchQuery(): ?string
-    {
-        $q = $this->input('q');
-
-        return mb_strlen($q) > 1
-            ? $q
-            : null;
-    }
+    public readonly string|null $searchQuery;
 
     public function rules(): array
     {
         return [];
+    }
+
+    protected function passedValidation()
+    {
+        $this->searchQuery = mb_strlen($this->input('q')) > 1
+            ? $this->input('q')
+            : null;
+
+        $this->categoryId = is_numeric($this->input('category_id'))
+            ? $this->input('category_id')
+            : null;
+
+        $this->category = $this->categoryId
+            ? \TorrentCategoryHelper::find($this->categoryId)
+            : null;
+
+        $this->isFulltextSearch = $this->input('fulltext', false);
     }
 }

@@ -9,7 +9,7 @@ class MyPasswordUpdateForm extends FormRequest
 {
     public User $user;
     public readonly string $newPassword;
-    public readonly ?string $currentPassword;
+    public readonly string|null $currentPassword;
 
     public function isPasswordInvalid(Hasher $hash): bool
     {

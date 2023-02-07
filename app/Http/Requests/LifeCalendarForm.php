@@ -10,7 +10,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class LifeCalendarForm extends FormRequest
 {
-    public ?User $user;
+    public User|null $user;
 
     public function rules(): array
     {

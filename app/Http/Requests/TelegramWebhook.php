@@ -6,9 +6,9 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class TelegramWebhook extends FormRequest
 {
-    public readonly ?int $chatId;
-    public readonly ?int $messageId;
     public readonly bool $shouldIgnoreWebhook;
+    public readonly int|null $chatId;
+    public readonly int|null $messageId;
     public readonly Message|null $message;
     public readonly CallbackQuery|null $callbackQuery;
 

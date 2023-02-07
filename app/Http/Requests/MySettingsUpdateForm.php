@@ -33,16 +33,10 @@ class MySettingsUpdateForm extends FormRequest
         $this->theLocale = $this->input('locale', Locale::Rus->value);
         $this->magnetShortTitle = $this->input('torrent_short_title', 0);
 
-        $this->notifyGigs = NotificationDeliveryMethod::from(
-            $this->input('notify_gigs', NotificationDeliveryMethod::Disabled->value)
-        );
+        $this->notifyGigs = $this->enum('notify_gigs', NotificationDeliveryMethod::class) ?? NotificationDeliveryMethod::Disabled;
 
-        $this->notifyNews = NotificationDeliveryMethod::from(
-            $this->input('notify_news', NotificationDeliveryMethod::Disabled->value)
-        );
+        $this->notifyNews = $this->enum('notify_news', NotificationDeliveryMethod::class) ?? NotificationDeliveryMethod::Disabled;
 
-        $this->notifyTrips = NotificationDeliveryMethod::from(
-            $this->input('notify_trips', NotificationDeliveryMethod::Disabled->value)
-        );
+        $this->notifyTrips = $this->enum('notify_trips', NotificationDeliveryMethod::class) ?? NotificationDeliveryMethod::Disabled;
     }
 }

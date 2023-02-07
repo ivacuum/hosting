@@ -5,8 +5,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class LifeIndexForm extends FormRequest
 {
-    public readonly ?string $to;
-    public readonly ?string $from;
+    public readonly string|null $to;
+    public readonly string|null $from;
 
     public function redirectInstagrammer()
     {

@@ -17,9 +17,9 @@ class MagnetsController
 {
     public function index(MagnetsIndexForm $request)
     {
-        $q = $request->searchQuery();
-        $fulltext = $request->isFulltextSearch();
-        $categoryId = $request->categoryId();
+        $q = $request->searchQuery;
+        $fulltext = $request->isFulltextSearch;
+        $categoryId = $request->categoryId;
 
         $magnets = Magnet::query();
 
@@ -45,7 +45,7 @@ class MagnetsController
 
         $magnets = $magnets->tap(new MagnetPublishedScope)
             ->orderByDesc('registered_at')
-            ->when(!$q && $request->category(), function (Builder $query) use ($categoryId) {
+            ->when(!$q && $request->category, function (Builder $query) use ($categoryId) {
                 $ids = \TorrentCategoryHelper::selfAndDescendantsIds($categoryId);
 
                 event(new \App\Events\Stats\TorrentFilteredByCategory);
@@ -59,7 +59,7 @@ class MagnetsController
             'tree' => \TorrentCategoryHelper::tree(),
             'stats' => resolve(CountMagnetsByCategoriesAction::class)->execute(),
             'magnets' => $magnets,
-            'fulltext' => $fulltext,
+            'fulltext' => $request->isFulltextSearch,
             'categoryId' => $categoryId,
         ]);
     }

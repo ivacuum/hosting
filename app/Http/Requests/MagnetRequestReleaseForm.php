@@ -5,9 +5,9 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class MagnetRequestReleaseForm extends FormRequest
 {
-    public ?User $user;
+    public User|null $user;
     public readonly string $q;
-    public readonly ?string $comment;
+    public readonly string|null $comment;
 
     public function rules(): array
     {
