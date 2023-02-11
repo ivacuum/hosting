@@ -15,12 +15,20 @@ class CityForm extends Component
     use WithGoto;
 
     public City $city;
+    public string|null $lat = null;
+    public string|null $lon = null;
+
+    public function mount()
+    {
+        $this->lat = $this->city->point?->lat;
+        $this->lon = $this->city->point?->lon;
+    }
 
     public function rules()
     {
         return [
-            'city.lat' => 'string',
-            'city.lon' => 'string',
+            'lat' => 'nullable|string',
+            'lon' => 'nullable|string',
             'city.iata' => 'string',
             'city.slug' => LifeSlug::rules($this->city),
             'city.title_en' => 'required',
@@ -33,8 +41,8 @@ class CityForm extends Component
     {
         $this->authorize('create', $this->city);
         $this->validate();
-        $this->city->point = $this->city->lat
-            ? new Point($this->city->lat, $this->city->lon)
+        $this->city->point = $this->lat && $this->lon
+            ? new Point($this->lat, $this->lon)
             : null;
         $this->city->save();
 

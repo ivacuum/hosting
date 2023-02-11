@@ -38,8 +38,6 @@ return new class extends Migration {
             $table->string('title_en')->default('');
             $table->string('slug');
             $table->char('iata', 3);
-            $table->string('lat', 12)->default('');
-            $table->string('lon', 12)->default('');
             $table->point('point', 4326)->nullable();
             $table->unsignedInteger('views')->default(0);
             $table->timestamps();

@@ -9,8 +9,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $title_en
  * @property string $slug
  * @property string $iata
- * @property string $lat
- * @property string $lon
  * @property Spatial\Point $point
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at
@@ -37,8 +35,6 @@ class City extends Model
     ];
 
     protected $attributes = [
-        'lat' => '',
-        'lon' => '',
         'iata' => '',
     ];
 

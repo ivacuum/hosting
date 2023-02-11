@@ -9,8 +9,8 @@
   {{ $form->text('city.title_en')->required() }}
   {{ $form->text('city.slug')->required() }}
   {{ $form->text('city.iata') }}
-  {{ $form->text('city.lat') }}
-  {{ $form->text('city.lon') }}
+  {{ $form->text('lat') }}
+  {{ $form->text('lon') }}
 
   <div class="sticky-bottom-buttons">
     <button type="submit" class="btn btn-primary">

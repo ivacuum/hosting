@@ -4,6 +4,7 @@ use App\City;
 use App\Factory\CityFactory;
 use App\Factory\CountryFactory;
 use App\Http\Livewire\Acp\CityForm;
+use App\Spatial\Point;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -65,12 +66,14 @@ class AcpCitiesTest extends TestCase
 
     public function testUpdate()
     {
-        $city = CityFactory::new()->create();
+        $city = CityFactory::new()->withPoint(new Point('5.55', '7.77'))->create();
         $country = CountryFactory::new()->create();
 
         \Livewire::test(CityForm::class, ['city' => $city])
-            ->set('city.lat', '23.984')
-            ->set('city.lon', '15.522')
+            ->assertSet('lat', '5.55')
+            ->assertSet('lon', '7.77')
+            ->set('lat', '23.984')
+            ->set('lon', '15.522')
             ->set('city.iata', 'LED')
             ->set('city.slug', 'city-slug')
             ->set('city.title_en', 'title en')
@@ -82,9 +85,7 @@ class AcpCitiesTest extends TestCase
 
         $city->refresh();
 
-        $this->assertSame('23.984', $city->lat);
         $this->assertSame('23.984', $city->point->lat);
-        $this->assertSame('15.522', $city->lon);
         $this->assertSame('15.522', $city->point->lon);
         $this->assertSame('LED', $city->iata);
         $this->assertSame('city-slug', $city->slug);
