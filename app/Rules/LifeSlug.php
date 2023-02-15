@@ -14,12 +14,12 @@ class LifeSlug
             'bail',
             'required',
             'string',
-            Rule::unique(Artist::class, 'slug')->ignore($model, 'slug'),
-            Rule::unique(City::class, 'slug')->ignore($model, 'slug'),
-            Rule::unique(Gig::class, 'slug')->ignore($model, 'slug'),
+            Rule::unique(Artist::class, 'slug')->ignoreModel($model),
+            Rule::unique(City::class, 'slug')->ignoreModel($model),
+            Rule::unique(Gig::class, 'slug')->ignoreModel($model),
             Rule::unique(Trip::class, 'slug')
                 ->where('user_id', 1)
-                ->ignore($model, 'slug'),
+                ->ignoreModel($model),
         ];
     }
 }
