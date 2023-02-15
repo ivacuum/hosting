@@ -4,8 +4,8 @@ use Carbon\CarbonInterval;
 
 enum CacheKey: string
 {
-    case CitiesById = 'cities.id.v2';
-    case CitiesBySlug = 'cities.slug.v2';
+    case CitiesById = 'cities.id.v3';
+    case CitiesBySlug = 'cities.slug.v3';
 
     case CountriesById = 'countries.id';
     case CountriesBySlug = 'countries.slug';

@@ -15,13 +15,11 @@ class CityHelper
         'title_en',
         'slug',
         'iata',
-        'lat',
-        'lon',
         'point',
     ];
 
-    private ?Collection $cachedById = null;
-    private ?Collection $cachedBySlug = null;
+    private Collection|null $cachedById = null;
+    private Collection|null $cachedBySlug = null;
 
     public function __construct(private Repository $cache)
     {
