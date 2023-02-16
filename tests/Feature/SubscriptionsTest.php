@@ -40,11 +40,12 @@ class SubscriptionsTest extends TestCase
 
     public function testSubscribeAsGuest()
     {
+        \Event::fake(\App\Events\Stats\UserRegisteredAutoWhenSubscribing::class);
         \Mail::fake();
 
         $email = 'guest+' . random_int(10000, 99999) . '@example.com';
 
-        $this->expectsEvents(\App\Events\Stats\UserRegisteredAutoWhenSubscribing::class)
+        $this
             ->post('subscriptions', [
                 'gigs' => 1,
                 'news' => 1,
@@ -54,17 +55,19 @@ class SubscriptionsTest extends TestCase
             ->assertRedirect('subscriptions')
             ->assertSessionHas('message');
 
+        \Event::assertDispatched(\App\Events\Stats\UserRegisteredAutoWhenSubscribing::class);
         \Mail::assertQueued(SubscriptionConfirmMail::class);
     }
 
     public function testSubscribeAsUser()
     {
+        \Event::fake(\App\Events\Stats\UserRegisteredAutoWhenSubscribing::class);
         \Mail::fake();
 
         $email = 'guest+' . random_int(10000, 99999) . '@example.com';
 
         $this->be(UserFactory::new()->create())
-            ->doesntExpectEvents(\App\Events\Stats\UserRegisteredAutoWhenSubscribing::class)
+
             ->post('subscriptions', [
                 'gigs' => NotificationDeliveryMethod::Mail->value,
                 'news' => NotificationDeliveryMethod::Mail->value,
@@ -74,6 +77,7 @@ class SubscriptionsTest extends TestCase
             ->assertRedirect('subscriptions')
             ->assertSessionHas('message');
 
+        \Event::assertNotDispatched(\App\Events\Stats\UserRegisteredAutoWhenSubscribing::class);
         \Mail::assertQueued(SubscriptionConfirmMail::class);
     }
 

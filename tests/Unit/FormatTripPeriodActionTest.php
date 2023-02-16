@@ -27,14 +27,14 @@ class FormatTripPeriodActionTest extends TestCase
         $this->assertSame($result, $format->execute(Carbon::parse($start), Carbon::parse($end)));
     }
 
-    public function english()
+    public static function english()
     {
         yield 'same day' => ['2022-01-01', '2022-01-01', 'January&nbsp;1'];
         yield 'same month' => ['2022-01-01', '2022-01-09', 'January&nbsp;1–9'];
         yield 'different months' => ['2022-01-01', '2022-02-01', 'January&nbsp;1 – February&nbsp;1'];
     }
 
-    public function russian()
+    public static function russian()
     {
         yield 'same day' => ['2022-01-01', '2022-01-01', '1&nbsp;января'];
         yield 'same month' => ['2022-01-01', '2022-01-09', '1–9&nbsp;января'];

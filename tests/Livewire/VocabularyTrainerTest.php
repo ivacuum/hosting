@@ -18,7 +18,7 @@ class VocabularyTrainerTest extends TestCase
             ->withCharacter('東京証券取引所')
             ->create();
 
-        $this->expectsEvents(\App\Events\Stats\VocabularyAnsweredHiragana::class);
+        \Event::fake(\App\Events\Stats\VocabularyAnsweredHiragana::class);
 
         /** @var VocabularyTrainer $component */
         \Livewire::test(VocabularyTrainer::class)
@@ -28,6 +28,8 @@ class VocabularyTrainerTest extends TestCase
             ->set('answer', $component->vocab->kana)
             ->call('check')
             ->assertSet('answered', 1);
+
+        \Event::assertDispatched(\App\Events\Stats\VocabularyAnsweredHiragana::class);
     }
 
     public function testAnswerRightInKanji()
@@ -37,7 +39,7 @@ class VocabularyTrainerTest extends TestCase
             ->withCharacter('東京証券取引所')
             ->create();
 
-        $this->expectsEvents(\App\Events\Stats\VocabularyAnsweredKanji::class);
+        \Event::fake(\App\Events\Stats\VocabularyAnsweredKanji::class);
 
         /** @var VocabularyTrainer $component */
         \Livewire::test(VocabularyTrainer::class)
@@ -47,13 +49,15 @@ class VocabularyTrainerTest extends TestCase
             ->set('answer', $component->vocab->character)
             ->call('check')
             ->assertSet('answered', 1);
+
+        \Event::assertDispatched(\App\Events\Stats\VocabularyAnsweredKanji::class);
     }
 
     public function testAnswerRightInKatakana()
     {
         VocabularyFactory::new()->withLevel(1)->create();
 
-        $this->expectsEvents(\App\Events\Stats\VocabularyAnsweredKatakana::class);
+        \Event::fake(\App\Events\Stats\VocabularyAnsweredKatakana::class);
 
         /** @var VocabularyTrainer $component */
         \Livewire::test(VocabularyTrainer::class)
@@ -63,13 +67,15 @@ class VocabularyTrainerTest extends TestCase
             ->set('answer', $component->vocab->toKatakana())
             ->call('check')
             ->assertSet('answered', 1);
+
+        \Event::assertDispatched(\App\Events\Stats\VocabularyAnsweredKatakana::class);
     }
 
     public function testAnswerRightInRomaji()
     {
         VocabularyFactory::new()->withLevel(1)->create();
 
-        $this->expectsEvents(\App\Events\Stats\VocabularyAnsweredRomaji::class);
+        \Event::fake(\App\Events\Stats\VocabularyAnsweredRomaji::class);
 
         /** @var VocabularyTrainer $component */
         \Livewire::test(VocabularyTrainer::class)
@@ -79,19 +85,23 @@ class VocabularyTrainerTest extends TestCase
             ->set('answer', $component->vocab->toRomaji())
             ->call('check')
             ->assertSet('answered', 1);
+
+        \Event::assertDispatched(\App\Events\Stats\VocabularyAnsweredRomaji::class);
     }
 
     public function testAnswerWrong()
     {
         VocabularyFactory::new()->withLevel(1)->create();
 
-        $this->expectsEvents(\App\Events\Stats\VocabularyAnswerRevealed::class);
+        \Event::fake(\App\Events\Stats\VocabularyAnswerRevealed::class);
 
         \Livewire::test(VocabularyTrainer::class)
             ->set('answer', 'definitely wrong answer')
             ->call('check')
             ->assertSet('reveal', true)
             ->assertSet('revealed', 1);
+
+        \Event::assertDispatched(\App\Events\Stats\VocabularyAnswerRevealed::class);
     }
 
     public function testDecreaseLevel()
@@ -99,12 +109,14 @@ class VocabularyTrainerTest extends TestCase
         VocabularyFactory::new()->withLevel(1)->create();
         VocabularyFactory::new()->withLevel(11)->create();
 
-        $this->expectsEvents(\App\Events\Stats\VocabularyDifficultyDecreased::class);
+        \Event::fake(\App\Events\Stats\VocabularyDifficultyDecreased::class);
 
         \Livewire::test(VocabularyTrainer::class, ['level' => 2])
             ->call('decreaseLevel')
             ->assertSet('level', 1)
             ->assertSet('openSettings', true);
+
+        \Event::assertDispatched(\App\Events\Stats\VocabularyDifficultyDecreased::class);
     }
 
     public function testIncreaseLevel()
@@ -112,12 +124,14 @@ class VocabularyTrainerTest extends TestCase
         VocabularyFactory::new()->withLevel(1)->create();
         VocabularyFactory::new()->withLevel(11)->create();
 
-        $this->expectsEvents(\App\Events\Stats\VocabularyDifficultyIncreased::class);
+        \Event::fake(\App\Events\Stats\VocabularyDifficultyIncreased::class);
 
         \Livewire::test(VocabularyTrainer::class)
             ->call('increaseLevel')
             ->assertSet('level', 2)
             ->assertSet('openSettings', true);
+
+        \Event::assertDispatched(\App\Events\Stats\VocabularyDifficultyIncreased::class);
     }
 
     public function testRightAnswerGetsCleared()
@@ -127,7 +141,7 @@ class VocabularyTrainerTest extends TestCase
             ->withCharacter('東京証券取引所')
             ->create();
 
-        $this->expectsEvents(\App\Events\Stats\VocabularyAnsweredKanji::class);
+        \Event::fake(\App\Events\Stats\VocabularyAnsweredKanji::class);
 
         /** @var VocabularyTrainer $component */
         \Livewire::test(VocabularyTrainer::class)
@@ -137,26 +151,30 @@ class VocabularyTrainerTest extends TestCase
             ->set('answer', $component->vocab->character)
             ->call('check')
             ->assertSet('answer', '');
+
+        \Event::assertDispatched(\App\Events\Stats\VocabularyAnsweredKanji::class);
     }
 
     public function testSkip()
     {
         VocabularyFactory::new()->withLevel(1)->create();
 
-        $this->expectsEvents(\App\Events\Stats\VocabularySkipped::class);
+        \Event::fake(\App\Events\Stats\VocabularySkipped::class);
 
         \Livewire::test(VocabularyTrainer::class)
             ->set('answer', 'about to skip')
             ->call('skip')
             ->assertSet('answer', '')
             ->assertSet('skipped', 1);
+
+        \Event::assertDispatched(\App\Events\Stats\VocabularySkipped::class);
     }
 
     public function testSkipAfterWrongAnswer()
     {
         VocabularyFactory::new()->withLevel(1)->create();
 
-        $this->doesntExpectEvents(\App\Events\Stats\VocabularySkipped::class);
+        \Event::fake(\App\Events\Stats\VocabularySkipped::class);
 
         \Livewire::test(VocabularyTrainer::class)
             ->set('answer', 'about to skip')
@@ -166,29 +184,35 @@ class VocabularyTrainerTest extends TestCase
             ->assertSet('answered', 0)
             ->assertSet('revealed', 1)
             ->assertSet('skipped', 0);
+
+        \Event::assertNotDispatched(\App\Events\Stats\VocabularySkipped::class);
     }
 
     public function testSwitchToHiragana()
     {
         VocabularyFactory::new()->withLevel(1)->create();
 
-        $this->expectsEvents(\App\Events\Stats\VocabularySwitchedToHiragana::class);
+        \Event::fake(\App\Events\Stats\VocabularySwitchedToHiragana::class);
 
         \Livewire::test(VocabularyTrainer::class, ['hiragana' => false])
             ->set('hiragana', true)
             ->assertSet('hiragana', true)
             ->assertSet('openSettings', true);
+
+        \Event::assertDispatched(\App\Events\Stats\VocabularySwitchedToHiragana::class);
     }
 
     public function testSwitchToKatakana()
     {
         VocabularyFactory::new()->withLevel(1)->create();
 
-        $this->expectsEvents(\App\Events\Stats\VocabularySwitchedToKatakana::class);
+        \Event::fake(\App\Events\Stats\VocabularySwitchedToKatakana::class);
 
         \Livewire::test(VocabularyTrainer::class)
             ->set('hiragana', false)
             ->assertSet('hiragana', false)
             ->assertSet('openSettings', true);
+
+        \Event::assertDispatched(\App\Events\Stats\VocabularySwitchedToKatakana::class);
     }
 }

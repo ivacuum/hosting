@@ -1,11 +1,12 @@
 <?php namespace App;
 
 use App\Spatial\GeometryInterface;
+use Illuminate\Database\Grammar;
 use Illuminate\Database\Query\Expression;
 
 class SpatialExpression extends Expression
 {
-    public function getValue()
+    public function getValue(Grammar $grammar)
     {
         if (!$this->value instanceof GeometryInterface) {
             throw new \DomainException('Unexpected value type.');

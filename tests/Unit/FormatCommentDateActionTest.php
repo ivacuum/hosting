@@ -31,7 +31,7 @@ class FormatCommentDateActionTest extends TestCase
         $this->assertSame($result, $format->execute(Carbon::parse($commentCreatedAt)));
     }
 
-    public function english()
+    public static function english()
     {
         yield 'same day' => ['2022-01-01', '2022-01-01', 'Today, January&nbsp;1 at 12:00 AM'];
         yield 'last day' => ['2022-01-02', '2022-01-01', 'Yesterday, January&nbsp;1 at 12:00 AM'];
@@ -41,7 +41,7 @@ class FormatCommentDateActionTest extends TestCase
         yield 'long ago' => ['2022-01-01', '2011-06-01', 'June&nbsp;1, 2011 at 12:00 AM'];
     }
 
-    public function russian()
+    public static function russian()
     {
         yield 'same day' => ['2022-01-01', '2022-01-01', 'Сегодня, 1&nbsp;января в 00:00'];
         yield 'last day' => ['2022-01-02', '2022-01-01', 'Вчера, 1&nbsp;января в 00:00'];

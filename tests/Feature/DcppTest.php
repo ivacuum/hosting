@@ -39,7 +39,7 @@ class DcppTest extends TestCase
             ->assertHasCustomTitle();
     }
 
-    public function pages()
+    public static function pages()
     {
         yield ['dc'];
         yield ['dc/airdc'];

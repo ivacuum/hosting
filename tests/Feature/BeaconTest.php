@@ -35,7 +35,7 @@ class BeaconTest extends TestCase
     /** @dataProvider simpleEvents */
     public function testSimpleCounters(string $event)
     {
-        $this->expectsEvents($event);
+        \Event::fake($event);
 
         $payload = $this->payload([
             [
@@ -45,6 +45,8 @@ class BeaconTest extends TestCase
 
         $this->post('ajax/beacon', $payload)
             ->assertNoContent();
+
+        \Event::assertDispatched($event);
     }
 
     /** @dataProvider viewCounters */
@@ -69,7 +71,7 @@ class BeaconTest extends TestCase
             ->assertNoContent();
     }
 
-    public function simpleEvents()
+    public static function simpleEvents()
     {
         return [
             [Stats\NumberSpoken::class],
@@ -84,7 +86,7 @@ class BeaconTest extends TestCase
         ];
     }
 
-    public function viewCounters()
+    public static function viewCounters()
     {
         yield [
             'event' => Stats\NewsViewed::class,

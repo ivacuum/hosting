@@ -20,8 +20,9 @@ class MyProfileTest extends TestCase
         $user = UserFactory::new()->withLogin('')->create();
         $email = "__{$user->email}";
 
+        \Event::fake(\App\Events\Stats\MyProfileChanged::class);
+
         $this->be($user)
-            ->expectsEvents(\App\Events\Stats\MyProfileChanged::class)
             ->put('my/profile', [
                 'email' => $email,
             ])
@@ -31,6 +32,8 @@ class MyProfileTest extends TestCase
 
         $this->assertSame($email, $user->email);
         $this->assertSame('', $user->login);
+
+        \Event::assertDispatched(\App\Events\Stats\MyProfileChanged::class);
     }
 
     public function testUpdateLogin()
@@ -38,8 +41,9 @@ class MyProfileTest extends TestCase
         $user = UserFactory::new()->create();
         $login = $user->login . $user->login;
 
+        \Event::fake(\App\Events\Stats\MyProfileChanged::class);
+
         $this->be($user)
-            ->expectsEvents(\App\Events\Stats\MyProfileChanged::class)
             ->put('my/profile', [
                 'email' => $user->email,
                 'username' => $login,
@@ -49,5 +53,7 @@ class MyProfileTest extends TestCase
         $user->refresh();
 
         $this->assertSame($login, $user->login);
+
+        \Event::assertDispatched(\App\Events\Stats\MyProfileChanged::class);
     }
 }

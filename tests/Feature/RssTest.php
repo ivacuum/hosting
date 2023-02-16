@@ -12,7 +12,7 @@ class RssTest extends TestCase
             ->assertHeader('Content-Type', 'application/xml');
     }
 
-    public function feeds()
+    public static function feeds()
     {
         yield ['life/gigs/rss'];
         yield ['life/rss'];

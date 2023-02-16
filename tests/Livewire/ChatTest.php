@@ -15,7 +15,7 @@ class ChatTest extends TestCase
         $text = 'Chat message to post';
         $user = UserFactory::new()->create();
 
-        $this->expectsEvents(ChatMessageCreated::class);
+        \Event::fake(ChatMessageCreated::class);
 
         \Livewire::actingAs($user)
             ->test(Chat::class)
@@ -24,5 +24,7 @@ class ChatTest extends TestCase
 
         $this->assertCount(1, $user->chatMessages);
         $this->assertSame($text, $user->chatMessages[0]->text);
+
+        \Event::assertDispatched(ChatMessageCreated::class);
     }
 }

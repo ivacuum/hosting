@@ -7,6 +7,7 @@ use Tests\TestCase;
 class TrainersNumbersSynopsisTest extends TestCase
 {
     use DatabaseTransactions;
+    use MockGetNumberLocales;
 
     public function testIndex()
     {

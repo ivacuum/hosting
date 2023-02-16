@@ -16,12 +16,14 @@ class MailReportTest extends TestCase
             ->withTemplate(CommentConfirmMail::class)
             ->create();
 
-        $this->expectsEvents(\Ivacuum\Generic\Events\MailReported::class);
+        \Event::fake(\Ivacuum\Generic\Events\MailReported::class);
 
         $this->be($email->user)
             ->get("mail/report/{$email->getTimestamp()}/{$email->id}")
             ->assertStatus(302)
             ->assertRedirect('/')
             ->assertSessionHas('message');
+
+        \Event::assertDispatched(\Ivacuum\Generic\Events\MailReported::class);
     }
 }

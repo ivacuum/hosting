@@ -18,7 +18,7 @@ class HiraganizeJapaneseNumberActionTest extends TestCase
         );
     }
 
-    public function numbers()
+    public static function numbers()
     {
         yield [0, 'ぜろ'];
         yield [300, 'さんびゃく'];

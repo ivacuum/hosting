@@ -20,9 +20,12 @@ class NewsTest extends TestCase
     {
         $news = NewsFactory::new()->create();
 
-        $this->expectsEvents(\App\Events\Stats\NewsViewed::class)
-            ->get("news/{$news->id}")
+        \Event::fake(\App\Events\Stats\NewsViewed::class);
+
+        $this->get("news/{$news->id}")
             ->assertOk();
+
+        \Event::assertDispatched(\App\Events\Stats\NewsViewed::class);
     }
 
     /** @dataProvider oldUrls */
@@ -50,7 +53,7 @@ class NewsTest extends TestCase
             ->assertRedirect("en/news/{$news->id}");
     }
 
-    public function oldUrls()
+    public static function oldUrls()
     {
         yield ['news/2010/01'];
         yield ['news/2010/01/01'];

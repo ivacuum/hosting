@@ -2,11 +2,13 @@
 
 use App\Http\Livewire\NumberTrainer;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\Feature\MockGetNumberLocales;
 use Tests\TestCase;
 
 class NumberTrainerTest extends TestCase
 {
     use DatabaseTransactions;
+    use MockGetNumberLocales;
 
     public function testDetermineLocale()
     {

@@ -12,7 +12,7 @@ class FeedbackFormTest extends TestCase
 
     public function testAsGuest()
     {
-        $this->expectsEvents([
+        \Event::fake([
             \App\Events\Stats\IssueAdded::class,
             \App\Events\Stats\UserRegisteredAuto::class,
             \App\Events\Stats\UserRegisteredAutoWhenIssueAdded::class,
@@ -31,13 +31,17 @@ class FeedbackFormTest extends TestCase
         $this->assertSame('name', $issue->name);
         $this->assertSame('title', $issue->title);
         $this->assertSame('some text from the guest " & \' <>', $issue->text);
+
+        \Event::assertDispatched(\App\Events\Stats\IssueAdded::class);
+        \Event::assertDispatched(\App\Events\Stats\UserRegisteredAuto::class);
+        \Event::assertDispatched(\App\Events\Stats\UserRegisteredAutoWhenIssueAdded::class);
     }
 
     public function testAsUserWithLogin()
     {
         $user = UserFactory::new()->withLogin('post-issue')->create();
 
-        $this->expectsEvents(\App\Events\Stats\IssueAdded::class);
+        \Event::fake(\App\Events\Stats\IssueAdded::class);
 
         \Livewire::actingAs($user)
             ->test(FeedbackForm::class)
@@ -51,6 +55,8 @@ class FeedbackFormTest extends TestCase
         $this->assertSame('post-issue', $issue->name);
         $this->assertSame('title', $issue->title);
         $this->assertSame('some text from the user', $issue->text);
+
+        \Event::assertDispatched(\App\Events\Stats\IssueAdded::class);
     }
 
     public function testWithNameHidden()

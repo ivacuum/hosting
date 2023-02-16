@@ -65,7 +65,7 @@ class FetchTorrentMetaJobTest extends TestCase
 
         $this->fakeHttpClient($topicData);
 
-        $this->expectsEvents(\App\Events\Stats\TorrentDuplicateDeleted::class);
+        \Event::fake(\App\Events\Stats\TorrentDuplicateDeleted::class);
 
         $job = new FetchTorrentMetaJob($magnet->rto_id);
         $this->app->call([$job, 'handle']);
@@ -73,6 +73,8 @@ class FetchTorrentMetaJobTest extends TestCase
         $magnet->refresh();
 
         $this->assertSame(MagnetStatus::Deleted, $magnet->status);
+
+        \Event::assertDispatched(\App\Events\Stats\TorrentDuplicateDeleted::class);
     }
 
     public function testMetaUpdated()
@@ -118,7 +120,7 @@ class FetchTorrentMetaJobTest extends TestCase
             ...TelegramResponse::fakeSuccess(),
         ]);
 
-        $this->expectsEvents(\App\Events\Stats\TorrentNotFoundDeleted::class);
+        \Event::fake(\App\Events\Stats\TorrentNotFoundDeleted::class);
 
         $job = new FetchTorrentMetaJob($magnet->rto_id);
         $this->app->call([$job, 'handle']);
@@ -126,6 +128,8 @@ class FetchTorrentMetaJobTest extends TestCase
         $magnet->refresh();
 
         $this->assertSame(MagnetStatus::Deleted, $magnet->status);
+
+        \Event::assertDispatched(\App\Events\Stats\TorrentNotFoundDeleted::class);
     }
 
     public function testPremoderationLeavesTorrentMetaUntouched()

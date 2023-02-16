@@ -99,11 +99,13 @@ class LifeTest extends TestCase
     {
         $redirect = ReferrerRedirectFactory::new()->create();
 
-        $this->expectsEvents(\App\Events\Stats\InstagrammerRedirected::class);
+        \Event::fake(\App\Events\Stats\InstagrammerRedirected::class);
 
         $this->from('https://instagram.com/')
             ->get('life')
             ->assertRedirect($redirect->to);
+
+        \Event::assertDispatched(\App\Events\Stats\InstagrammerRedirected::class);
     }
 
     public function testInstagramReferrerExpiredRedirect()
@@ -137,7 +139,7 @@ class LifeTest extends TestCase
         $trip->deleteStoryFile();
     }
 
-    public function pages()
+    public static function pages()
     {
         yield ['life/books'];
         yield ['life/chillout'];

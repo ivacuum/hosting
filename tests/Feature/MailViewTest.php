@@ -16,9 +16,11 @@ class MailViewTest extends TestCase
             ->withTemplate(CommentConfirmMail::class)
             ->create();
 
-        $this->expectsEvents(\Ivacuum\Generic\Events\Stats\MailViewed::class);
+        \Event::fake(\Ivacuum\Generic\Events\Stats\MailViewed::class);
 
         $this->get("mail/view/{$email->getTimestamp()}/{$email->id}")
             ->assertNoContent();
+
+        \Event::assertDispatched(\Ivacuum\Generic\Events\Stats\MailViewed::class);
     }
 }

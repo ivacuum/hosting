@@ -8,7 +8,7 @@ class GuestPagesTest extends TestCase
         $this->get($url)->assertOk();
     }
 
-    public function guestPages200()
+    public static function guestPages200()
     {
         return [
             ['/auth/login'],

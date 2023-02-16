@@ -18,7 +18,7 @@ class AvatarManagerTest extends TestCase
         $file = UploadedFile::fake()->image('avatar.jpg');
         $user = UserFactory::new()->create();
 
-        $this->expectsEvents(\App\Events\Stats\UserAvatarUploaded::class);
+        \Event::fake(\App\Events\Stats\UserAvatarUploaded::class);
 
         $livewire = \Livewire::actingAs($user)
             ->test(AvatarManager::class)
@@ -41,6 +41,7 @@ class AvatarManagerTest extends TestCase
         $this->assertNotEmpty($user->avatar);
         $this->assertNotEquals($lastAvatar, $user->avatar);
 
+        \Event::assertDispatched(\App\Events\Stats\UserAvatarUploaded::class);
         \Storage::disk('avatars')->assertMissing($lastAvatar);
         \Storage::disk('avatars')->assertExists($user->avatar);
     }
@@ -53,7 +54,7 @@ class AvatarManagerTest extends TestCase
         $file = UploadedFile::fake()->image('avatar.jpg');
         $user = UserFactory::new()->create();
 
-        $this->expectsEvents(\App\Events\Stats\UserAvatarUploaded::class);
+        \Event::fake(\App\Events\Stats\UserAvatarUploaded::class);
 
         $livewire = \Livewire::actingAs($user)
             ->test(AvatarManager::class)
@@ -73,6 +74,7 @@ class AvatarManagerTest extends TestCase
 
         $this->assertEmpty($user->avatar);
 
+        \Event::assertDispatched(\App\Events\Stats\UserAvatarUploaded::class);
         \Storage::disk('avatars')->assertMissing($avatar);
     }
 }

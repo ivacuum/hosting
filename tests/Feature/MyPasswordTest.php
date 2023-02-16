@@ -19,8 +19,9 @@ class MyPasswordTest extends TestCase
     {
         $newPassword = 'top-secret ';
 
+        \Event::fake(\App\Events\Stats\MyPasswordChanged::class);
+
         $this->be($user = UserFactory::new()->create())
-            ->expectsEvents(\App\Events\Stats\MyPasswordChanged::class)
             ->put('my/password', ['new_password' => $newPassword])
             ->assertStatus(302)
             ->assertSessionHasNoErrors();
@@ -28,6 +29,8 @@ class MyPasswordTest extends TestCase
         $user->refresh();
 
         $this->assertTrue(\Hash::check($newPassword, $user->password));
+
+        \Event::assertDispatched(\App\Events\Stats\MyPasswordChanged::class);
     }
 
     public function testUpdatePassword()
@@ -35,8 +38,9 @@ class MyPasswordTest extends TestCase
         $password = 'top-secret';
         $newPassword = 'password ';
 
+        \Event::fake(\App\Events\Stats\MyPasswordChanged::class);
+
         $this->be($user = UserFactory::new()->withPassword($password)->create())
-            ->expectsEvents(\App\Events\Stats\MyPasswordChanged::class)
             ->put('my/password', ['password' => $password, 'new_password' => $newPassword])
             ->assertStatus(302)
             ->assertSessionHasNoErrors();
@@ -44,5 +48,7 @@ class MyPasswordTest extends TestCase
         $user->refresh();
 
         $this->assertTrue(\Hash::check($newPassword, $user->password));
+
+        \Event::assertDispatched(\App\Events\Stats\MyPasswordChanged::class);
     }
 }

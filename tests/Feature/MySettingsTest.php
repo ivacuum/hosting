@@ -23,14 +23,17 @@ class MySettingsTest extends TestCase
         $user->locale = Locale::Eng->value;
         $user->save();
 
+        \Event::fake(\App\Events\Stats\MySettingsChanged::class);
+
         $this->be($user)
-            ->expectsEvents(\App\Events\Stats\MySettingsChanged::class)
             ->put('my/settings', ['locale' => Locale::Eng->value])
             ->assertStatus(302);
 
         $user->refresh();
 
         $this->assertSame(Locale::Eng->value, $user->locale);
+
+        \Event::assertDispatched(\App\Events\Stats\MySettingsChanged::class);
     }
 
     public function testUpdateNotifyGigsToDisabled()
@@ -39,17 +42,21 @@ class MySettingsTest extends TestCase
         $user->notify_gigs = NotificationDeliveryMethod::Mail;
         $user->save();
 
+        \Event::fake([
+            \App\Events\Stats\GigsUnsubscribed::class,
+            \App\Events\Stats\MySettingsChanged::class,
+        ]);
+
         $this->be($user)
-            ->expectsEvents([
-                \App\Events\Stats\GigsUnsubscribed::class,
-                \App\Events\Stats\MySettingsChanged::class,
-            ])
             ->put('my/settings', ['notify_gigs' => NotificationDeliveryMethod::Disabled->value])
             ->assertStatus(302);
 
         $user->refresh();
 
         $this->assertSame(NotificationDeliveryMethod::Disabled, $user->notify_gigs);
+
+        \Event::assertDispatched(\App\Events\Stats\GigsUnsubscribed::class);
+        \Event::assertDispatched(\App\Events\Stats\MySettingsChanged::class);
     }
 
     public function testUpdateNotifyGigsToMail()
@@ -58,17 +65,21 @@ class MySettingsTest extends TestCase
         $user->notify_gigs = NotificationDeliveryMethod::Disabled;
         $user->save();
 
+        \Event::fake([
+            \App\Events\Stats\GigsSubscribed::class,
+            \App\Events\Stats\MySettingsChanged::class,
+        ]);
+
         $this->be($user)
-            ->expectsEvents([
-                \App\Events\Stats\GigsSubscribed::class,
-                \App\Events\Stats\MySettingsChanged::class,
-            ])
             ->put('my/settings', ['notify_gigs' => NotificationDeliveryMethod::Mail->value])
             ->assertStatus(302);
 
         $user->refresh();
 
         $this->assertSame(NotificationDeliveryMethod::Mail, $user->notify_gigs);
+
+        \Event::assertDispatched(\App\Events\Stats\GigsSubscribed::class);
+        \Event::assertDispatched(\App\Events\Stats\MySettingsChanged::class);
     }
 
     public function testUpdateNotifyNewsToDisabled()
@@ -77,17 +88,21 @@ class MySettingsTest extends TestCase
         $user->notify_news = NotificationDeliveryMethod::Mail;
         $user->save();
 
+        \Event::fake([
+            \App\Events\Stats\NewsUnsubscribed::class,
+            \App\Events\Stats\MySettingsChanged::class,
+        ]);
+
         $this->be($user)
-            ->expectsEvents([
-                \App\Events\Stats\NewsUnsubscribed::class,
-                \App\Events\Stats\MySettingsChanged::class,
-            ])
             ->put('my/settings', ['notify_news' => NotificationDeliveryMethod::Disabled->value])
             ->assertStatus(302);
 
         $user->refresh();
 
         $this->assertSame(NotificationDeliveryMethod::Disabled, $user->notify_news);
+
+        \Event::assertDispatched(\App\Events\Stats\NewsUnsubscribed::class);
+        \Event::assertDispatched(\App\Events\Stats\MySettingsChanged::class);
     }
 
     public function testUpdateNotifyNewsToMail()
@@ -96,17 +111,21 @@ class MySettingsTest extends TestCase
         $user->notify_news = NotificationDeliveryMethod::Disabled;
         $user->save();
 
+        \Event::fake([
+            \App\Events\Stats\NewsSubscribed::class,
+            \App\Events\Stats\MySettingsChanged::class,
+        ]);
+
         $this->be($user)
-            ->expectsEvents([
-                \App\Events\Stats\NewsSubscribed::class,
-                \App\Events\Stats\MySettingsChanged::class,
-            ])
             ->put('my/settings', ['notify_news' => NotificationDeliveryMethod::Mail->value])
             ->assertStatus(302);
 
         $user->refresh();
 
         $this->assertSame(NotificationDeliveryMethod::Mail, $user->notify_news);
+
+        \Event::assertDispatched(\App\Events\Stats\NewsSubscribed::class);
+        \Event::assertDispatched(\App\Events\Stats\MySettingsChanged::class);
     }
 
     public function testUpdateNotifyTripsToDisabled()
@@ -115,17 +134,21 @@ class MySettingsTest extends TestCase
         $user->notify_trips = NotificationDeliveryMethod::Mail;
         $user->save();
 
+        \Event::fake([
+            \App\Events\Stats\TripsUnsubscribed::class,
+            \App\Events\Stats\MySettingsChanged::class,
+        ]);
+
         $this->be($user)
-            ->expectsEvents([
-                \App\Events\Stats\TripsUnsubscribed::class,
-                \App\Events\Stats\MySettingsChanged::class,
-            ])
             ->put('my/settings', ['notify_trips' => NotificationDeliveryMethod::Disabled->value])
             ->assertStatus(302);
 
         $user->refresh();
 
         $this->assertSame(NotificationDeliveryMethod::Disabled, $user->notify_trips);
+
+        \Event::assertDispatched(\App\Events\Stats\TripsUnsubscribed::class);
+        \Event::assertDispatched(\App\Events\Stats\MySettingsChanged::class);
     }
 
     public function testUpdateNotifyTripsToMail()
@@ -134,17 +157,21 @@ class MySettingsTest extends TestCase
         $user->notify_trips = NotificationDeliveryMethod::Disabled;
         $user->save();
 
+        \Event::fake([
+            \App\Events\Stats\TripsSubscribed::class,
+            \App\Events\Stats\MySettingsChanged::class,
+        ]);
+
         $this->be($user)
-            ->expectsEvents([
-                \App\Events\Stats\TripsSubscribed::class,
-                \App\Events\Stats\MySettingsChanged::class,
-            ])
             ->put('my/settings', ['notify_trips' => NotificationDeliveryMethod::Mail->value])
             ->assertStatus(302);
 
         $user->refresh();
 
         $this->assertSame(NotificationDeliveryMethod::Mail, $user->notify_trips);
+
+        \Event::assertDispatched(\App\Events\Stats\TripsSubscribed::class);
+        \Event::assertDispatched(\App\Events\Stats\MySettingsChanged::class);
     }
 
     public function testUpdateTorrentShortTitle()
@@ -153,13 +180,16 @@ class MySettingsTest extends TestCase
         $user->torrent_short_title = 0;
         $user->save();
 
+        \Event::fake(\App\Events\Stats\MySettingsChanged::class);
+
         $this->be($user)
-            ->expectsEvents(\App\Events\Stats\MySettingsChanged::class)
             ->put('my/settings', ['torrent_short_title' => 1])
             ->assertStatus(302);
 
         $user->refresh();
 
         $this->assertSame(1, $user->torrent_short_title);
+
+        \Event::assertDispatched(\App\Events\Stats\MySettingsChanged::class);
     }
 }

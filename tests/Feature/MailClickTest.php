@@ -19,7 +19,7 @@ class MailClickTest extends TestCase
         $goto = '/404/';
         $clicks = $email->clicks;
 
-        $this->expectsEvents([
+        \Event::fake([
             \Ivacuum\Generic\Events\Stats\MailClicked::class,
             \Ivacuum\Generic\Events\Stats\UserAutologinWithEmailLink::class,
         ]);
@@ -34,5 +34,8 @@ class MailClickTest extends TestCase
 
         $this->assertEquals($clicks + 1, $email->clicks);
         $this->assertAuthenticated();
+
+        \Event::assertDispatched(\Ivacuum\Generic\Events\Stats\MailClicked::class);
+        \Event::assertDispatched(\Ivacuum\Generic\Events\Stats\UserAutologinWithEmailLink::class);
     }
 }

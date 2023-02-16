@@ -46,7 +46,7 @@ class CommentAddFormTest extends TestCase
         $magnet = MagnetFactory::new()->create();
         $user = UserFactory::new()->create();
 
-        $this->expectsEvents(CommentPublished::class);
+        \Event::fake(CommentPublished::class);
 
         \Livewire::actingAs($user)
             ->test(CommentAddForm::class, ['model' => $magnet])
@@ -58,24 +58,26 @@ class CommentAddFormTest extends TestCase
         $this->assertCount(1, $user->comments);
         $this->assertSame(CommentStatus::Published, $comment->status);
         $this->assertSame('Comment magnet', $comment->html);
+
+        \Event::assertDispatched(CommentPublished::class);
     }
 
     public function testCommentNewsAsGuest()
     {
-        \Mail::fake();
-
-        $news = NewsFactory::new()->create();
-
-        $this->expectsEvents([
+        \Event::fake([
             UserRegisteredAuto::class,
             CommentPublished::class,
         ]);
+        \Mail::fake();
+
+        $news = NewsFactory::new()->create();
 
         \Livewire::test(CommentAddForm::class, ['model' => $news])
             ->set('email', 'guest-commentator@example.com')
             ->set('text', 'Comment <em>text</em>')
             ->call('submit');
 
+        \Event::assertDispatched(UserRegisteredAuto::class);
         \Mail::assertQueued(CommentConfirmMail::class);
 
         $user = User::firstWhere(['email' => 'guest-commentator@example.com']);
@@ -93,6 +95,8 @@ class CommentAddFormTest extends TestCase
         $comment->refresh();
 
         $this->assertSame(CommentStatus::Published, $comment->status);
+
+        \Event::assertDispatched(CommentPublished::class);
     }
 
     public function testCommentNewsAsUser()
@@ -100,7 +104,7 @@ class CommentAddFormTest extends TestCase
         $news = NewsFactory::new()->create();
         $user = UserFactory::new()->create();
 
-        $this->expectsEvents(CommentPublished::class);
+        \Event::fake(CommentPublished::class);
 
         \Livewire::actingAs($user)
             ->test(CommentAddForm::class, ['model' => $news])
@@ -114,6 +118,8 @@ class CommentAddFormTest extends TestCase
         $this->assertCount(1, $user->comments);
         $this->assertSame(CommentStatus::Published, $comment->status);
         $this->assertSame('Comment news', $comment->html);
+
+        \Event::assertDispatched(CommentPublished::class);
     }
 
     public function testCommentTripAsUser()
@@ -121,7 +127,7 @@ class CommentAddFormTest extends TestCase
         $trip = TripFactory::new()->create();
         $user = UserFactory::new()->create();
 
-        $this->expectsEvents(CommentPublished::class);
+        \Event::fake(CommentPublished::class);
 
         \Livewire::actingAs($user)
             ->test(CommentAddForm::class, ['model' => $trip])
@@ -133,6 +139,8 @@ class CommentAddFormTest extends TestCase
         $this->assertCount(1, $user->comments);
         $this->assertSame(CommentStatus::Published, $comment->status);
         $this->assertSame('Comment trip', $comment->html);
+
+        \Event::assertDispatched(CommentPublished::class);
     }
 
     public function testEscape()

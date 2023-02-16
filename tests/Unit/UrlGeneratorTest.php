@@ -23,7 +23,7 @@ class UrlGeneratorTest extends TestCase
         $this->assertSame($result, to(...$input));
     }
 
-    public function english()
+    public static function english()
     {
         yield [[''], '/en'];
         yield [['/'], '/en'];
@@ -32,7 +32,7 @@ class UrlGeneratorTest extends TestCase
         yield [['photos/countries/{country}', ['russia']], '/en/photos/countries/russia'];
     }
 
-    public function russian()
+    public static function russian()
     {
         yield [[''], '/'];
         yield [['/'], '/'];

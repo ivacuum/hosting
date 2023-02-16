@@ -19,7 +19,7 @@ class GalleryUploaderTest extends TestCase
         $file = UploadedFile::fake()->image('screenshot.png');
         $user = UserFactory::new()->create();
 
-        $this->expectsEvents(\App\Events\Stats\GalleryImageUploaded::class);
+        \Event::fake(\App\Events\Stats\GalleryImageUploaded::class);
 
         \Livewire::actingAs($user)
             ->test(GalleryUploader::class)
@@ -27,6 +27,7 @@ class GalleryUploaderTest extends TestCase
 
         $image = Image::firstWhere(['user_id' => $user->id]);
 
+        \Event::assertDispatched(\App\Events\Stats\GalleryImageUploaded::class);
         \Storage::disk('gallery')->assertExists("{$image->splittedDate()}/{$image->slug}");
         \Storage::disk('gallery')->assertExists("{$image->splittedDate()}/t/{$image->slug}");
     }

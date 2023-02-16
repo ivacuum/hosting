@@ -9,10 +9,10 @@
     "foolz/sphinxql-query-builder": "^3.0",
     "geo-io/wkb-parser": "^1.0",
     "guzzlehttp/guzzle": "^7.0",
-    "ivacuum/generic": "^24.0",
-    "laravel-notification-channels/telegram": "^3.0",
+    "ivacuum/generic": "^25.0",
+    "laravel-notification-channels/telegram": "^4.0",
     "laravel/fortify": "^1.8",
-    "laravel/framework": "^9.0",
+    "laravel/framework": "^10.0",
     "laravel/octane": "^1.2",
     "laravel/scout": "^9.0",
     "laravel/socialite": "^5.0",
@@ -26,15 +26,14 @@
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.0",
     "barryvdh/laravel-ide-helper": "^2.1",
-    "brianium/paratest": "^6.1",
+    "brianium/paratest": "^7.0",
     "fakerphp/faker": "^1.10",
-    "johnkary/phpunit-speedtrap": "^4.0",
     "laravel/pint": "^1.0",
     "mockery/mockery": "^1.0",
-    "nunomaduro/collision": "^6.1",
-    "phpunit/phpunit": "^9.0",
+    "nunomaduro/collision": "^7.0",
+    "phpunit/phpunit": "^10.0",
     "rector/rector": "^0.15.4",
-    "spatie/laravel-ignition": "^1.0"
+    "spatie/laravel-ignition": "^2.0"
   },
   "autoload": {
     "psr-4": {
@@ -71,6 +70,7 @@
     "share": "valet share --region=eu",
     "test": "@php artisan test --parallel",
     "test-linear": "vendor/bin/phpunit --colors=always",
+    "test-profile": "@php artisan test --profile",
     "test-recreate-db": "@php artisan test --parallel --recreate-databases"
   },
   "extra": {

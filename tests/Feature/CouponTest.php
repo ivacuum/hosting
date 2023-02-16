@@ -27,7 +27,7 @@ class CouponTest extends TestCase
             ->assertOk();
     }
 
-    public function pages()
+    public static function pages()
     {
         yield ['promocodes-coupons'];
         yield ['promocodes-coupons/airbnb'];

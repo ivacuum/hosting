@@ -29,7 +29,7 @@ class Kernel extends HttpKernel
         ],
     ];
 
-    protected $routeMiddleware = [
+    protected $middlewareAliases = [
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'nav' => \Ivacuum\Generic\Middleware\Breadcrumbs::class,
         'auth' => \Ivacuum\Generic\Middleware\Auth::class,

@@ -175,7 +175,7 @@ class TorrentTest extends TestCase
 
         $this->fakeHttpRequests($stub);
 
-        $this->expectsEvents(\App\Events\Stats\TorrentAddedAnonymously::class);
+        \Event::fake(\App\Events\Stats\TorrentAddedAnonymously::class);
 
         $livewire = \Livewire::test(MagnetAddForm::class)
             ->set('input', $stub->rto_id)
@@ -193,6 +193,8 @@ class TorrentTest extends TestCase
 
         $this->assertSame($stub->rto_id, $magnet->rto_id);
         $this->assertSame($stub->category_id, $magnet->category_id);
+
+        \Event::assertDispatched(\App\Events\Stats\TorrentAddedAnonymously::class);
     }
 
     public function testStoreAsUser()
@@ -202,8 +204,9 @@ class TorrentTest extends TestCase
 
         $this->fakeHttpRequests($stub);
 
-        $this->be($user)
-            ->expectsEvents(\App\Events\Stats\TorrentAdded::class);
+        \Event::fake(\App\Events\Stats\TorrentAdded::class);
+
+        $this->be($user);
 
         $livewire = \Livewire::test(MagnetAddForm::class)
             ->set('input', $stub->rto_id)
@@ -217,6 +220,8 @@ class TorrentTest extends TestCase
 
         $this->assertSame($stub->rto_id, $magnet->rto_id);
         $this->assertSame($stub->category_id, $magnet->category_id);
+
+        \Event::assertDispatched(\App\Events\Stats\TorrentAdded::class);
     }
 
     public function testStoreDuplicate()
@@ -226,14 +231,17 @@ class TorrentTest extends TestCase
 
         $this->fakeHttpRequests($magnet);
 
-        $this->be($user)
-            ->expectsEvents(\App\Events\Stats\TorrentDuplicateFound::class);
+        \Event::fake(\App\Events\Stats\TorrentDuplicateFound::class);
+
+        $this->be($user);
 
         \Livewire::test(MagnetAddForm::class)
             ->set('input', $magnet->externalLink())
             ->assertHasErrors('input');
 
         $this->assertCount(0, $user->magnets);
+
+        \Event::assertDispatched(\App\Events\Stats\TorrentDuplicateFound::class);
     }
 
     private function fakeHttpRequests(Magnet $stub)
