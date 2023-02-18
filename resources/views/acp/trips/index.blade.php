@@ -62,7 +62,9 @@
         {{ ViewHelper::number($model->views) ?: '' }}
       </td>
       <td class="md:text-right whitespace-nowrap">
-        {{ ViewHelper::number($model->comments_count) ?: '' }}
+        <a href="{{ path([App\Http\Controllers\Acp\Comments::class, 'index'], [$model->getForeignKey() => $model]) }}">
+          {{ ViewHelper::number($model->comments_count) ?: '' }}
+        </a>
       </td>
       <td>
         @if ($model->meta_image)

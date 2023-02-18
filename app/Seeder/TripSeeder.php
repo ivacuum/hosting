@@ -3,6 +3,7 @@
 use App\Action\FindTripTemplatesAction;
 use App\City;
 use App\Domain\TripStatus;
+use App\Factory\CommentFactory;
 use App\Factory\TripFactory;
 use App\Factory\UserFactory;
 use App\Trip;
@@ -55,6 +56,7 @@ class TripSeeder extends Seeder
         $randomCity = City::inRandomOrder()->first();
 
         TripFactory::new()
+            ->withComment(CommentFactory::new()->withText('С первой публикацией!')->withUserId(1))
             ->withCityId($randomCity->id)
             ->withUserId($user->id)
             ->create();

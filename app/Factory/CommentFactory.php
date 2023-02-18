@@ -5,6 +5,7 @@ use App\Domain\CommentStatus;
 use App\Issue;
 use App\Magnet;
 use App\News;
+use App\Trip;
 
 class CommentFactory
 {
@@ -94,6 +95,15 @@ class CommentFactory
     {
         $factory = clone $this;
         $factory->html = $text;
+
+        return $factory;
+    }
+
+    public function withTripId(int $tripId)
+    {
+        $factory = clone $this;
+        $factory->relId = $tripId;
+        $factory->relType = (new Trip)->getMorphClass();
 
         return $factory;
     }

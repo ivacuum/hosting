@@ -12,12 +12,17 @@ class TripFactory
     private $metaImage;
     private TripStatus $status = TripStatus::Published;
 
-    private ?UserFactory $userFactory = null;
+    private UserFactory|null $userFactory = null;
+    private CommentFactory|null $commentFactory = null;
 
     public function create()
     {
         $model = $this->make();
         $model->save();
+
+        $this->commentFactory
+            ?->withTripId($model->id)
+            ->create();
 
         return $model;
     }
@@ -65,6 +70,14 @@ class TripFactory
     {
         $factory = clone $this;
         $factory->cityId = $cityId;
+
+        return $factory;
+    }
+
+    public function withComment(CommentFactory $commentFactory = null)
+    {
+        $factory = clone $this;
+        $factory->commentFactory = $commentFactory ?? CommentFactory::new();
 
         return $factory;
     }
