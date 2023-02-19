@@ -2,152 +2,160 @@
 
 @section('content')
 @ru
-  <p>Конкурс на самый милый носик.</p>
-@endru
-
-@ru
   <p>Навигация подготовлена заранее. Все дороги ведут на МАКС.</p>
 @endru
-IMG_8205.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8205.jpg'])
 
 @ru
   <p>Указатели на МАКС.</p>
 @endru
-IMG_8235.jpeg
-IMG_8236.jpeg
-IMG_8237.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8235.jpg',
+  'IMG_8236.jpg',
+  'IMG_8237.jpg',
+]])
 
 @ru
   <p>Экспресс Спутник до платформы Отдых в Жуковском.</p>
 @endru
-IMG_8206.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8206.jpg'])
 
 @ru
   <p>Все вокруг железнодорожной станции Отдых зарезервировано под авиасалон. Всякую всячину продают уже здесь. Магазины в округе подсуетились и заманивают закупиться всем необходимым в городе, так как на самом фестивале говорят, что все дороже.</p>
 @endru
-IMG_8208.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8208.jpg'])
 
 @ru
   <p>Билет на авиасалон можно купить прямо на месте проведения после предъявления куар-кода. Июньский предзаказ вышел дороже, чем покупка в день мероприятия. Вот и покупай так заранее.</p>
 @endru
-IMG_8209.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8209.jpg'])
 
 @ru
   <p>Не так людно, как в доковидные времена. Интересно какой доле посетителей требование куар-кода отменило поездку?</p>
 @endru
-IMG_8210.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8210.jpg'])
+
+@ru
+  <p>Проведем конкурс на самый милый носик.</p>
+@endru
 
 @ru
   <p>Носик самолета спереди.</p>
 @endru
-IMG_8211.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8211.jpg'])
 
 @ru
   <p>Длинный и тонкий носик самолета сбоку. Зачем ему быть таким длинным?</p>
 @endru
-IMG_8212.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8212.jpg'])
 
 @ru
   <p>Крохотный носик. И подбородок.</p>
 @endru
-IMG_8213.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8213.jpg'])
 
 @ru
   <p>Средний носик. Лопасти не влезают в снимок.</p>
 @endru
-IMG_8214.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8214.jpg'])
 
 @ru
   <p>Длинный и острый носик.</p>
 @endru
-IMG_8215.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8215.jpg'])
 
 @ru
-  <p>Кабина из мема «не понял прикол, дошло». Неожиданно один пропеллер.</p>
+  <p>Передняя часть самолета напомнила мем с грузовым самолетом, у которого кабина откидывается так, что со стороны выглядит словно он смеется. Неожиданно один пропеллер.</p>
 @endru
-IMG_8216.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8216.jpg'])
 
 @ru
-  <p>Самолет Аэрофлота.</p>
+  <p>Самолет Ту-144 Аэрофлота.</p>
 @endru
-IMG_8217.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8217.jpg'])
 
 @ru
   <p>Боеприпасы перед вертолетом.</p>
 @endru
-IMG_8218.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8218.jpg'])
 
 @ru
   <p>Сам вертолет.</p>
 @endru
-IMG_8219.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8219.jpg'])
 
 @ru
   <p>Посетители авиасалона.</p>
 @endru
-IMG_8220.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8220.jpg'])
 
 @ru
   <p>Пожалуй, самый милый носик. Напоминает медвежий.</p>
 @endru
-IMG_8221.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8221.jpg'])
 
 @ru
   <p>Складные лопасти в два уровня.</p>
 @endru
-IMG_8223.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8223.jpg'])
 
 @ru
-  <p>Широкий носик. На предыдущем снимки это вообще не было заметно.</p>
+  <p>Широкий носик. На предыдущем снимке его ширина вообще не была заметна.</p>
 @endru
-IMG_8225.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8225.jpg'])
 
 @ru
   <p>Беспилотник почты России.</p>
 @endru
-IMG_8226.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8226.jpg'])
 
 @ru
   <p>Вертолеты. У всех носик устремлен в небо.</p>
 @endru
-IMG_8227.jpeg
-IMG_8228.jpeg
-IMG_8229.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8227.jpg',
+  'IMG_8228.jpg',
+  'IMG_8229.jpg',
+]])
 
 @ru
   <p>Приборная панель воздушного судна.</p>
 @endru
-IMG_8230.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8230.jpg'])
 
 @ru
   <p>Ням между промзонами.</p>
 @endru
-IMG_8231.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8231.jpg'])
 
 @ru
   <p>Платформа Отдых на закате.</p>
 @endru
-IMG_8233.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8233.jpg'])
 
 @ru
   <p>Полиция возвращается в Москву после авиасалона.</p>
 @endru
-IMG_8234.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8234.jpg'])
 
 @ru
   <p>Станция метро Комсомольская.</p>
 @endru
-IMG_8238.jpeg
-IMG_8239.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8238.jpg',
+  'IMG_8239.jpg',
+]])
 
 @ru
   <p>Паттерн с логотипом метро.</p>
 @endru
-IMG_8240.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8240.jpg'])
 
 @ru
-  <p>Починили фойе на Киевском вокзале. Сколько же лет ремонт был?</p>
+  <p>Отремонтировали проход к пригородным поездам на Киевском вокзале. Сколько же лет ремонт был?</p>
 @endru
-IMG_8241.jpeg
-IMG_8242.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8241.jpg',
+  'IMG_8242.jpg',
+]])
 @endsection
