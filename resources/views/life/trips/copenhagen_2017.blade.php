@@ -753,6 +753,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0906.jpg'])
 
+<a id="building-side"></a>
 @ru
   <p>Что характерного есть в Копенгагене? Кирпичи.</p>
 @en
