@@ -4,203 +4,209 @@
 @ru
   <p>Неожиданно в четыре утра еще темно — вот такие последствия принесло наступление августа. Поездка в Рязань одним днем — это суммарно 12 часов на четырех разных поездах, если не считать метро в Москве.</p>
 @endru
-IMG_8272.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8272.jpg'])
 
 @ru
   <p>Зеленая зона через дорогу от бизнес-центра Атлас.</p>
 @endru
-IMG_8274.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8274.jpg'])
 
 @ru
   <p>Лавочка и урна.</p>
 @endru
-IMG_8275.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8275.jpg'])
 
 @ru
   <p>Тротуары Первомайского проспекта.</p>
 @endru
-IMG_8276.jpeg
-IMG_8278.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8276.jpg',
+  'IMG_8278.jpg',
+]])
 
 @ru
-  <p>Одна из дорог ведет в Самару.</p>
+  <p>Одна из дорог ведет в <a class="link" href="samara.2016">Самару</a>.</p>
 @endru
-IMG_8277.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8277.jpg'])
 
 @ru
   <p>Центр по переработке продуктов в мусор. Детский сад №20.</p>
 @endru
-IMG_8279.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8279.jpg'])
 
 @ru
   <p>На мелких автобусах промаркированы двери входа и выхода.</p>
 @endru
-IMG_8280.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8280.jpg'])
 
 @ru
   <p>Подсказка местоположения.</p>
 @endru
-IMG_8281.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8281.jpg'])
 
 @ru
   <p>Пешеходная улица Почтовая.</p>
 @endru
-IMG_8282.jpeg
-IMG_8310.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8282.jpg',
+  'IMG_8310.jpg',
+]])
 
 @ru
   <p>Один из домов на Почтовой улице.</p>
 @endru
-IMG_8283.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8283.jpg'])
 
 @ru
-  <p>Рыбацкая деревня. Надувные сапы.</p>
+  <p>Рыбацкая деревня. Сапы на берегу.</p>
 @endru
-IMG_8284.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8284.jpg'])
 
 @ru
   <p>Простор для плавания на сапах. Вдали виднеются многочисленные стоги сена.</p>
 @endru
-IMG_8285.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8285.jpg'])
 
 @ru
   <p>Один из подъездов к деревне.</p>
 @endru
-IMG_8286.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8286.jpg'])
 
 @ru
   <p>Стог сена переплетен.</p>
 @endru
-IMG_8287.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8287.jpg'])
 
 @ru
   <p>Место для фотосессий.</p>
 @endru
-IMG_8288.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8288.jpg'])
 
 @ru
   <p>Причем совсем недалеко от деревни.</p>
 @endru
-IMG_8289.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8289.jpg'])
 
 @ru
   <p>Маяк.</p>
 @endru
-IMG_8290.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8290.jpg'])
 
 @ru
-  <p>Территория деревни, на которую можно ступать только проживающим. В конце виден последний дом. То есть, это вся жилая территория.</p>
+  <p>Территория деревни, на которую можно ступать только проживающим. В конце виден последний дом. То есть, на снимок поместилась вся жилая территория.</p>
 @endru
-IMG_8291.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8291.jpg'])
 
 @ru
-  <p>Стена дома справа непокрашена до конца.</p>
+  <p>Стена дома справа покрашена не до конца.</p>
 @endru
-IMG_8292.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8292.jpg'])
 
 @ru
   <p>Люк с контактной информацией в виде телефона и электронной почты.</p>
 @endru
-IMG_8293.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8293.jpg'])
 
 @ru
   <p>На здании театра связь с <s>прошлым</s> милицией.</p>
 @endru
-IMG_8294.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8294.jpg'])
 
 @ru
   <p>Часовня в Кремлевском парке.</p>
 @endru
-IMG_8295.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8295.jpg'])
 
 @ru
   <p>Колокольня и собор по ту сторону моста.</p>
 @endru
-IMG_8297.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8297.jpg'])
 
 @ru
-  <p>Отдельного здания кремля не обранужилось. Певческий корпус.</p>
+  <p>Отдельного здания кремля не обнаружилось. Певческий корпус.</p>
 @endru
-IMG_8298.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8298.jpg'])
 
 @ru
   <p>Контраст домов на Лево-Лыбедской улице. По одну сторону.</p>
 @endru
-IMG_8299.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8299.jpg'])
 
 @ru
   <p>И по обратную сторону.</p>
 @endru
-IMG_8300.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8300.jpg'])
 
 @ru
   <p>Здание цирка за фонтаном.</p>
 @endru
-IMG_8301.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8301.jpg'])
 
 @ru
   <p>Медведь осваивает прокат самокатов — популярная нынче тема. В регионы активно проводят расширение столичные игроки.</p>
 @endru
-IMG_8302.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8302.jpg'])
 
 @ru
   <p>Скульптура циркового слона перед скамейками.</p>
 @endru
-IMG_8303.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8303.jpg'])
 
 @ru
   <p>Тоннель под мостом, связывающий две части парка. Даже напольная и потолочная подсветка есть.</p>
 @endru
-IMG_8304.jpeg
-IMG_8306.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8304.jpg',
+  'IMG_8306.jpg',
+]])
 
 @ru
   <p>Обход тоннелей через верх.</p>
 @endru
-IMG_8308.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8308.jpg'])
 
 @ru
   <p>Памятник Евпатию Коловрату среди государственных зданий со свежими фасадами.</p>
 @endru
-IMG_8307.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8307.jpg'])
 
 @ru
   <p>Таблички на здании почты России.</p>
 @endru
-IMG_8309.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8309.jpg'])
 
 @ru
   <p>Подход к Мюнстерской улице.</p>
 @endru
-IMG_8311.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8311.jpg'])
 
 @ru
-  <p>Часы.</p>
+  <p>Часы показывают правильное время.</p>
 @endru
-IMG_8312.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8312.jpg'])
 
 @ru
   <p>Шар и фасады в европейском стиле.</p>
 @endru
-IMG_8313.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8313.jpg'])
 
 @ru
   <p>Рязань основана в 1095 году.</p>
 @endru
-IMG_8314.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8314.jpg'])
 
 @ru
-  <p>Железнодорожные пути ведут на вокзал Рязань 1.</p>
+  <p>Железнодорожные пути ведут на вокзал Рязань-1.</p>
 @endru
-IMG_8315.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8315.jpg'])
 
 @ru
   <p>Прокат велосипедов и самокатов на площади Победы. Именно на нее отправляется большинство приехавших на поезде, так как здесь проходит множество маршрутов общественного транспорта.</p>
 @endru
-IMG_8316.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8316.jpg'])
 
 @ru
   <p>Третий поезд дальнего следования на сегодня. Во всех четырех поездах удалось немного поспать, иначе неизвестно как можно было бы вывезти получившийся двадцатидевятичасовым день.</p>
 @endru
-IMG_8317.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8317.jpg'])
 @endsection
