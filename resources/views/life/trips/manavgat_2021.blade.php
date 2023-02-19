@@ -2,156 +2,162 @@
 
 @section('content')
 @ru
-  <p>Международные карты не знают маршруты общественного транспорта Турции, поэтому автобус до Манавгата ищется по надписям на нем и табличкам за лобовым стеклом. Просить остановиться можно рукой прямо посреди улицы. На оплату банковской картой не стоит рассчитывать.</p>
+  <p>Международные карты не знают маршруты междугороднего общественного транспорта Турции, поэтому автобус до Манавгата ищется по надписям на нем и табличкам за лобовым стеклом. Просить остановиться можно рукой прямо посреди улицы. На оплату банковской картой не стоит рассчитывать.</p>
 @endru
-IMG_8591.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8591.jpg'])
 
 @ru
   <p>Если известно куда хочется попасть в городе, то снова поможет искать нужную остановку на табличках. И полезно запомнить как называется вокзал.</p>
 @endru
-IMG_8588.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8588.jpg'])
 
 @ru
   <p>Парк.</p>
 @endru
-IMG_8592.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8592.jpg'])
 
 @ru
-  <p>Навигация по парку.</p>
+  <p>Навигация по парку. Много предложений блюд из рыбы.</p>
 @endru
-IMG_8593.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8593.jpg'])
 
 @ru
   <p>Водопад.</p>
 @endru
-IMG_8594.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8594.jpg'])
 
 @ru
   <p>Окрестности водопада.</p>
 @endru
-IMG_8595.jpeg
-IMG_8596.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8595.jpg',
+  'IMG_8596.jpg',
+]])
 
 @ru
   <p>Река зовется как и город — Манавгат.</p>
 @endru
-IMG_8613.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8613.jpg'])
 
 @ru
   <p>Тренажеры и детские развлечения.</p>
 @endru
-IMG_8614.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8614.jpg'])
 
 @ru
   <p>Любители прижиматься.</p>
 @endru
-IMG_8615.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8615.jpg'])
 
 @ru
   <p>Набережная реки.</p>
 @endru
-IMG_8616.jpeg
-IMG_8617.jpeg
-IMG_8626.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8616.jpg',
+  'IMG_8617.jpg',
+  'IMG_8626.jpg',
+]])
 
 @ru
   <p>Скамейка.</p>
 @endru
-IMG_8618.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8618.jpg'])
 
 @ru
   <p>Столик.</p>
 @endru
-IMG_8619.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8619.jpg'])
 
 @ru
-  <p>Урна.</p>
+  <p>Урна с пепельницей.</p>
 @endru
-IMG_8620.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8620.jpg'])
 
 @ru
   <p>Кошачий корм.</p>
 @endru
-IMG_8623.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8623.jpg'])
 
 @ru
   <p>Кошачий дом.</p>
 @endru
-IMG_8627.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8627.jpg'])
 
 @ru
   <p>Прогулки по реке. Горы на фоне.</p>
 @endru
-IMG_8624.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8624.jpg'])
 
 @ru
   <p>Совместная рыбалка.</p>
 @endru
-IMG_8625.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8625.jpg'])
 
 @ru
   <p>Мечеть.</p>
 @endru
-IMG_8628.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8628.jpg'])
 
 @ru
-  <p>Люк вписали искусно, но опасно. Решетку бы еще ему сверху на уровне тротуара.</p>
+  <p>Люк вписали искусно, но опасно. Решетку бы еще ему сверху на уровне тротуара, чтобы не провалиться ногой.</p>
 @endru
-IMG_8629.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8629.jpg'])
 
 @ru
   <p>Мост.</p>
 @endru
-IMG_8631.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8631.jpg'])
 
 @ru
   <p>С моста видны горы.</p>
 @endru
-IMG_8632.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8632.jpg'])
 
 @ru
   <p>Хороши места на крыше судна.</p>
 @endru
-IMG_8633.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8633.jpg'])
 
 @ru
   <p>Мандарины практически даром: по 36 рублей за килограмм.</p>
 @endru
-IMG_8634.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8634.jpg'])
 
 @ru
   <p>Шкаф с хлебом.</p>
 @endru
-IMG_8636.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8636.jpg'])
 
 @ru
-  <p>В супермаркете Мигрос отдельные двери на вход и выход. Еще в нем при оплате наличкой долларами или евро дают сдачу в турецких лирах по отличному курсу.</p>
+  <p>В супермаркете Мигрос отдельные двери на вход и выход. Еще в нем при оплате наличкой долларами или евро дают сдачу в турецких лирах по хорошему курсу.</p>
 @endru
-IMG_8637.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8637.jpg'])
 
 @ru
   <p>Баклажаны свисают.</p>
 @endru
-IMG_8639.jpeg
-IMG_8638.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8639.jpg',
+  'IMG_8638.jpg',
+]])
 
 @ru
   <p>Заведение в зелени.</p>
 @endru
-IMG_8640.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8640.jpg'])
 
 @ru
   <p>Заведение в хвойной зелени.</p>
 @endru
-IMG_8641.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8641.jpg'])
 
 @ru
   <p>Причал. Остановки на турецком звучат дурак.</p>
 @endru
-IMG_8642.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8642.jpg'])
 
 @ru
   <p>Подходящая для ловли автобуса обратно до Сиде улица.</p>
 @endru
-IMG_8643.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8643.jpg'])
 @endsection
