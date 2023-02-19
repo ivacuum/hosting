@@ -8,302 +8,324 @@
 @ru
   <p>Соблюдаем дистанцию при получении багажа.</p>
 @endru
-IMG_8379.jpeg
-IMG_8380.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8379.jpg',
+  'IMG_8380.jpg',
+]])
 
 @ru
   <p>Взгляд на шахту лифта и дверь этажа.</p>
 @endru
-IMG_8383.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8383.jpg'])
 
 @ru
   <p>Двор отеля. Маски в отеле в этот раз носить было не нужно. Накладывать всю еду можно было самостоятельно.</p>
 @endru
-IMG_8384.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8384.jpg'])
 
 @ru
   <p>Набережная.</p>
 @endru
-IMG_8387.jpeg
-IMG_8538.jpeg
-IMG_8540.jpeg
-IMG_8547.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8387.jpg',
+  'IMG_8538.jpg',
+  'IMG_8540.jpg',
+  'IMG_8547.jpg',
+]])
 
 @ru
-  <p>Водный банан напоминает о <a class="link" href="seoul">Сеуле</a>.</p>
+  <p>Водный банан надписью напоминает о <a class="link" href="seoul">Сеуле</a>.</p>
 @endru
-IMG_8388.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8388.jpg'])
 
 @ru
-  <p>Листья растут вверх.</p>
+  <p>Листья тянутся вверх.</p>
 @endru
-IMG_8389.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8389.jpg'])
 
 @ru
   <p>Котики.</p>
 @endru
-IMG_8399.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8399.jpg'])
 
 @ru
   <p>Жилье котиков.</p>
 @endru
-IMG_8398.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8398.jpg'])
 
 @ru
-  <p>Переулок. В левом верхнем углу виднеется ценник на немецком, потому что здешняя курортная зона на немцев и рассчитана.</p>
+  <p>Переулок. В левом верхнем углу виднеется ценник на немецком, потому что здешняя курортная зона рассчитана преимущественно на немцев.</p>
 @endru
-IMG_8400.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8400.jpg'])
 
 @ru
   <p>Улицы.</p>
 @endru
-IMG_8401.jpeg
-IMG_8407.jpeg
-IMG_8422.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8401.jpg',
+  'IMG_8407.jpg',
+  'IMG_8422.jpg',
+]])
 
 @ru
   <p>Карпуз — арбуз.</p>
 @endru
-IMG_8402.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8402.jpg'])
 
 @ru
   <p>Пятилитровки такие крохи по сравнению с девятнадцатилитровками.</p>
 @endru
-IMG_8403.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8403.jpg'])
 
 @ru
   <p>Номера отелей на этаже наводили на мысли о возращении в тот или иной год нашей эпохи.</p>
 @endru
-IMG_8404.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8404.jpg'])
 
 @ru
   <p>Двор жандармерии.</p>
 @endru
-IMG_8405.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8405.jpg'])
 
 @ru
   <p>К банкомату уже можно поднести карту или телефон.</p>
 @endru
-IMG_8406.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8406.jpg'])
 
 @ru
   <p>Поливалово теперь прочно ассоциировано с <a class="link" href="psy.2019.07">корейскими водными концертами</a>.</p>
 @endru
-IMG_8408.jpeg
-IMG_8409.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8408.jpg',
+  'IMG_8409.jpg',
+]])
 
 @ru
   <p>Съемка листьев.</p>
 @endru
-IMG_8410.jpeg
-IMG_8411.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8410.jpg',
+  'IMG_8411.jpg',
+]])
 
 @ru
   <p>Верблюды в теньке.</p>
 @endru
-IMG_8412.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8412.jpg'])
 
 @ru
   <p>Следы греко-римской эпохи.</p>
 @endru
-IMG_8414.jpeg
-IMG_8415.jpeg
-IMG_8416.jpeg
-IMG_8417.jpeg
-IMG_8418.jpeg
-IMG_8419.jpeg
-IMG_8423.jpeg
-IMG_8535.jpeg
-IMG_8537.jpeg
-IMG_8644.jpeg
-IMG_8645.jpeg
-IMG_8646.jpeg
-IMG_8651.jpeg
-IMG_8656.jpeg
-IMG_8657.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8414.jpg',
+  'IMG_8415.jpg',
+  'IMG_8416.jpg',
+  'IMG_8417.jpg',
+  'IMG_8418.jpg',
+  'IMG_8419.jpg',
+  'IMG_8423.jpg',
+  'IMG_8535.jpg',
+  'IMG_8537.jpg',
+  'IMG_8644.jpg',
+  'IMG_8645.jpg',
+  'IMG_8646.jpg',
+  'IMG_8651.jpg',
+  'IMG_8656.jpg',
+  'IMG_8657.jpg',
+]])
 
 @ru
   <p>Собрали стену из того, что было.</p>
 @endru
-IMG_8654.jpeg
-IMG_8652.jpeg
-IMG_8653.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8654.jpg',
+  'IMG_8652.jpg',
+  'IMG_8653.jpg',
+]])
 
 @ru
   <p>Иногда строят на высоте над развалинами, оставляя стеклянный пол.</p>
 @endru
-IMG_8420.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8420.jpg'])
 
 @ru
   <p>Желающие пофотографироваться.</p>
 @endru
-IMG_8424.jpeg
-IMG_8426.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8424.jpg',
+  'IMG_8426.jpg',
+]])
 
 @ru
   <p>Пирс.</p>
 @endru
-IMG_8427.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8427.jpg'])
 
 @ru
   <p>Корабли для водных прогулок.</p>
 @endru
-IMG_8428.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8428.jpg'])
 
 @ru
   <p>Мелкие улицы.</p>
 @endru
-IMG_8430.jpeg
-IMG_8432.jpeg
-IMG_8434.jpeg
-IMG_8435.jpeg
-IMG_8436.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8430.jpg',
+  'IMG_8432.jpg',
+  'IMG_8434.jpg',
+  'IMG_8435.jpg',
+  'IMG_8436.jpg',
+]])
 
 @ru
   <p>На деревьях поспевают плоды.</p>
 @endru
-IMG_8433.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8433.jpg'])
 
 @ru
   <p>На фасаде уличная табличка на арабском.</p>
 @endru
-IMG_8439.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8439.jpg'])
 
 @ru
   <p>Люк.</p>
 @endru
-IMG_8440.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8440.jpg'])
 
 @ru
   <p>Скамейка.</p>
 @endru
-IMG_8441.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8441.jpg'])
 
 @ru
   <p>Пейзажи около скамейки.</p>
 @endru
-IMG_8445.jpeg
-IMG_8448.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8445.jpg',
+  'IMG_8448.jpg',
+]])
 
 @ru
   <p>Турецкий флаг во дворе.</p>
 @endru
-IMG_8449.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8449.jpg'])
 
 @ru
   <p>Гидрант, старина, цветочки, светильник.</p>
 @endru
-IMG_8450.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8450.jpg'])
 
 @ru
   <p>Амфитеатр.</p>
 @endru
-IMG_8451.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8451.jpg'])
 
 @ru
   <p>Вспомнилось как Раммштайн выступал в Берлине в <a class="link" href="rammstein.2016.07">амфитеатре</a>.</p>
 @endru
-IMG_8453.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8453.jpg'])
 
 @ru
   <p>Подъем по ступенькам.</p>
 @endru
-IMG_8457.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8457.jpg'])
 
 @ru
   <p>Прекрасного вида облака.</p>
 @endru
-IMG_8539.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8539.jpg'])
 
 @ru
   <p>Котик на закате.</p>
 @endru
-IMG_8541.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8541.jpg'])
 
 @ru
   <p>Лежаки у моря.</p>
 @endru
-IMG_8542.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8542.jpg'])
 
 @ru
   <p>Хвостатая вывеска. Позади виднеется кошачий корм.</p>
 @endru
-IMG_8543.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8543.jpg'])
 
 @ru
   <p>Закатное море.</p>
 @endru
-IMG_8546.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8546.jpg'])
 
 @ru
   <p>Дом для кошек возле жандармерии.</p>
 @endru
-IMG_8548.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8548.jpg'])
 
 @ru
   <p>Накладываем закуски, не стесняемся.</p>
 @endru
-IMG_8549.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8549.jpg'])
 
 @ru
   <p>Морской закат.</p>
 @endru
-IMG_8658.jpeg
-IMG_8665.jpeg
-IMG_8666.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8658.jpg',
+  'IMG_8665.jpg',
+  'IMG_8666.jpg',
+]])
 
 @ru
-  <p>Вечерний вариант.</p>
+  <p>Вечерний отель.</p>
 @endru
-IMG_8723.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8723.jpg'])
 
 @ru
   <p>Вид снизу.</p>
 @endru
-IMG_8676.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8676.jpg'])
 
 @ru
   <p>Коктейль из трети неба и двух третей моря.</p>
 @endru
-IMG_8711.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8711.jpg'])
 
 @ru
   <p>Две трети неба и одна треть моря.</p>
 @endru
-IMG_8712.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8712.jpg'])
 
 @ru
-  <p>Закатное небо.</p>
+  <p>Закатное небо с балкона.</p>
 @endru
-IMG_8718.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8718.jpg'])
 
 @ru
-  <p>Номер в ночь перед вылетом. На удивление весь мини-бар был бесплатен и ежедневно пополнялся.</p>
+  <p>Номер в ночь перед вылетом. На удивление весь мини-бар был бесплатен и ежедневно пополнялся. Трансфер сильно заранее забирает.</p>
 @endru
-IMG_8722.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8722.jpg'])
 
 @ru
   <p>Аэропорт.</p>
 @endru
-IMG_8724.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8724.jpg'])
 
 @ru
   <p>Зона досмотра.</p>
 @endru
-IMG_8725.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8725.jpg'])
 
 @ru
   <p>В России по прилете от всех хотят заполненную анкету по ковиду. Принимают как бумажный вариант, так и электронный.</p>
 @endru
-IMG_8727.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8727.jpg'])
 
 @ru
   <p>Ажиотаж у багажной ленты.</p>
 @endru
-IMG_8728.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8728.jpg'])
 
 @ru
   <p>Можно счесть за лозунг.</p>
 @endru
-IMG_8729.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8729.jpg'])
 @endsection
