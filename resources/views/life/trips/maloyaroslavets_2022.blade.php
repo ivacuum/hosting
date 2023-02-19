@@ -8,103 +8,109 @@
 @ru
   <p>Ближайшей остановкой стал Малоярославец. Следующий поезд через час, поэтому есть время осмотреться.</p>
 @endru
-IMG_8945.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8945.jpg'])
 
 @ru
   <p>Покрытые снегом железнодорожные пути.</p>
 @endru
-IMG_8947.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8947.jpg'])
 
 @ru
   <p>Привокзальная площадь.</p>
 @endru
-IMG_8948.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8948.jpg'])
 
 @ru
   <p>Расписание движения автобусов до больниц.</p>
 @endru
-IMG_8950.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8950.jpg'])
 
 @ru
   <p>Объявление о поиске сотрудника в киоск с зарплатой, от которой глаза на лоб лезут.</p>
 @endru
-IMG_8951.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8951.jpg'])
 
 @ru
   <p>Жилые дома.</p>
 @endru
-IMG_8952.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8952.jpg'])
 
 @ru
   <p>Две стороны одного дома значатся на разных улицах.</p>
 @endru
-IMG_8953.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8953.jpg'])
 
 @ru
   <p>Пешеходный переход.</p>
 @endru
-IMG_8954.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8954.jpg'])
 
 @ru
   <p>Загс в жилом доме.</p>
 @endru
-IMG_8955.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8955.jpg'])
 
 @ru
   <p>Аллея деревьев с покрашенными белой краской стволами.</p>
 @endru
-IMG_8956.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8956.jpg'])
 
 @ru
   <p>Дорожный указатель на Калугу.</p>
 @endru
-IMG_8957.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8957.jpg'])
 
 @ru
   <p>Улица.</p>
 @endru
-IMG_8958.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8958.jpg'])
 
 @ru
-  <p>Площадь такая-то.</p>
+  <p>Площадь.</p>
 @endru
-IMG_8959.jpeg
-IMG_8960.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8959.jpg',
+  'IMG_8960.jpg',
+]])
 
 @ru
   <p>Артиллерия на площади.</p>
 @endru
-IMG_8961.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8961.jpg'])
 
 @ru
   <p>Парковка на земле.</p>
 @endru
-IMG_8962.jpeg
-IMG_8964.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8962.jpg',
+  'IMG_8964.jpg',
+]])
 
 @ru
   <p>Так автомобили вывозят грязь на проезжую часть.</p>
 @endru
-IMG_8963.jpeg
-IMG_8965.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8963.jpg',
+  'IMG_8965.jpg',
+]])
 
 @ru
   <p>Там ее черпают и разносят по тротуарам пешеходы.</p>
 @endru
-IMG_8966.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8966.jpg'])
 
 @ru
   <p>Но есть более чистые тротуары. Разница с проезжей частью особенно наглядна.</p>
 @endru
-IMG_8967.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8967.jpg'])
 
 @ru
-  <p>Проход закрыт.</p>
+  <p>Проход на платформу закрыт.</p>
 @endru
-IMG_8968.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8968.jpg'])
 
 @ru
   <p>Весьма подробная инструкция как пользоваться молотком, чтобы разбить стекло и эвакуироваться. Осталось найти наглядное видео на эту тему.</p>
 @endru
-IMG_8969.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8969.jpg'])
 @endsection
