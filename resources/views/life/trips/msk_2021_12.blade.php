@@ -4,59 +4,63 @@
 @ru
   <p>Новогодний вагон метро.</p>
 @endru
-IMG_8903.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8903.jpg'])
 
 @ru
   <p>Украшенные улицы.</p>
 @endru
-IMG_8904.jpeg
-IMG_8929.jpeg
-IMG_8930.jpeg
-IMG_8932.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8904.jpg',
+  'IMG_8929.jpg',
+  'IMG_8930.jpg',
+  'IMG_8932.jpg',
+]])
 
 @ru
   <p>Внутри ГУМа.</p>
 @endru
-IMG_8908.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8908.jpg'])
 
 @ru
   <p>На каждом входе в ГУМ рамки металлодетекторов.</p>
 @endru
-IMG_8910.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8910.jpg'])
 
 @ru
   <p>Красная площадь украшена.</p>
 @endru
-IMG_8912.jpeg
-IMG_8924.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_8912.jpg',
+  'IMG_8924.jpg',
+]])
 
 @ru
   <p>На ярмарке продают елки.</p>
 @endru
-IMG_8925.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8925.jpg'])
 
 @ru
   <p>Парк Зарядье.</p>
 @endru
-IMG_8926.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8926.jpg'])
 
 @ru
   <p>Березы.</p>
 @endru
-IMG_8927.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8927.jpg'])
 
 @ru
   <p>В каждом торговом центре использованы километры гирлянд.</p>
 @endru
-IMG_8931.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8931.jpg'])
 
 @ru
   <p>Подарочный ЦУМ.</p>
 @endru
-IMG_8933.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8933.jpg'])
 
 @ru
   <p>Внутри ЦУМа.</p>
 @endru
-IMG_8934.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_8934.jpg'])
 @endsection
