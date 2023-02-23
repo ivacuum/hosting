@@ -96,13 +96,14 @@ class PhotoUploadForm extends Component
             ->execute(\Auth::user()->id, $model, $photoSlug);
 
         if ($photo === null) {
+            $lat = $coords['lat'] ?? null;
+            $lon = $coords['lon'] ?? null;
+
             /** @var \App\Photo $photo */
             $photo = $model->photos()->make();
-            $photo->lat = $coords['lat'] ?? '';
-            $photo->lon = $coords['lon'] ?? '';
             $photo->slug = $photoSlug;
-            $photo->point = $photo->lat
-                ? new Point($photo->lat, $photo->lon)
+            $photo->point = $lat && $lon
+                ? new Point($lat, $lon)
                 : null;
             $photo->views = 0;
             $photo->status = PhotoStatus::Hidden;

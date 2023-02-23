@@ -36,13 +36,13 @@ class PhotoFactory
 
     public function make()
     {
-        $model = new Photo;
+        $lat = $this->lat ?? (string) fake()->optional(0.9, '')->latitude();
+        $lon = $this->lon ?? ($lat ? (string) fake()->longitude() : '');
 
-        $model->lat = $this->lat ?? (string) fake()->optional(0.9, '')->latitude();
-        $model->lon = $this->lon ?? ($model->lat ? (string) fake()->longitude() : '');
+        $model = new Photo;
         $model->slug = $this->slug ?? fake()->numerify('test/IMG_####.jpg');
-        $model->point = $model->lat
-            ? new Point($model->lat, $model->lon)
+        $model->point = $lat
+            ? new Point($lat, $lon)
             : null;
         $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->rel_id = $this->relId;
