@@ -13,6 +13,13 @@ body {
   font-family: ui-rounded, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #0f172a;
+    color: #94a3b8;
+  }
+}
+
 a {
   color: #2965be;
   text-decoration: none;
