@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 
 class LifeSlug
 {
-    public static function rules($model): array
+    public static function rules(Artist|City|Gig|Trip $model): array
     {
         return [
             'bail',

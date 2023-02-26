@@ -4,6 +4,8 @@ use App\Artist;
 
 class ArtistFactory
 {
+    private $slug;
+
     public function create()
     {
         $model = $this->make();
@@ -17,7 +19,7 @@ class ArtistFactory
         $title = fake()->lexify('??????????');
 
         $model = new Artist;
-        $model->slug = \Str::slug($title);
+        $model->slug = $this->slug ?? \Str::slug($title);
         $model->title = $title;
 
         return $model;
@@ -26,5 +28,13 @@ class ArtistFactory
     public static function new(): self
     {
         return new self;
+    }
+
+    public function withSlug(string $slug)
+    {
+        $factory = clone $this;
+        $factory->slug = $slug;
+
+        return $factory;
     }
 }

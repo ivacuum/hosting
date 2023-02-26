@@ -6,6 +6,7 @@ use Carbon\CarbonImmutable;
 
 class GigFactory
 {
+    private $slug;
     private $cityId;
     private $artistId;
     private GigStatus $status = GigStatus::Published;
@@ -24,7 +25,7 @@ class GigFactory
 
         $model = new Gig;
         $model->date = CarbonImmutable::instance(fake()->dateTimeBetween('-4 years'))->startOfDay();
-        $model->slug = \Str::slug($title);
+        $model->slug = $this->slug ?? \Str::slug($title);
         $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->status = $this->status;
         $model->city_id = $this->cityId ?? CityFactory::new()->create()->id;
@@ -52,6 +53,14 @@ class GigFactory
     {
         $factory = clone $this;
         $factory->cityId = $cityId;
+
+        return $factory;
+    }
+
+    public function withSlug(string $slug)
+    {
+        $factory = clone $this;
+        $factory->slug = $slug;
 
         return $factory;
     }

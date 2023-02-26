@@ -5,6 +5,7 @@ use App\Spatial\Point;
 
 class CityFactory
 {
+    private $slug;
     private $countryId;
     private Point|null $point = null;
 
@@ -24,7 +25,7 @@ class CityFactory
 
         $model = new City;
         $model->iata = '';
-        $model->slug = \Str::slug($title);
+        $model->slug = $this->slug ?? \Str::slug($title);
         $model->point = $this->point ?? new Point(fake()->latitude(), fake()->longitude());
         $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->title_en = $title;
@@ -65,6 +66,14 @@ class CityFactory
     {
         $factory = clone $this;
         $factory->point = $point;
+
+        return $factory;
+    }
+
+    public function withSlug(string $slug)
+    {
+        $factory = clone $this;
+        $factory->slug = $slug;
 
         return $factory;
     }
