@@ -11,7 +11,7 @@ class TypoTest extends TestCase
 
         $this->from('/')
             ->post('js/typo', ['selection' => 'Typo is right here'])
-            ->assertStatus(201)
+            ->assertCreated()
             ->assertJson(['status' => 'OK']);
 
         \Event::assertDispatched(TypoReceived::class);
@@ -22,7 +22,7 @@ class TypoTest extends TestCase
         \Event::fake(TypoReceived::class);
 
         $this->post('js/typo', ['selection' => 'Should fail without previous visited url'])
-            ->assertStatus(422)
+            ->assertUnprocessable()
             ->assertJson(['status' => 'error']);
 
         \Event::assertNotDispatched(TypoReceived::class);

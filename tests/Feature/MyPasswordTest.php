@@ -23,7 +23,7 @@ class MyPasswordTest extends TestCase
 
         $this->be($user = UserFactory::new()->create())
             ->put('my/password', ['new_password' => $newPassword])
-            ->assertStatus(302)
+            ->assertFound()
             ->assertSessionHasNoErrors();
 
         $user->refresh();
@@ -42,7 +42,7 @@ class MyPasswordTest extends TestCase
 
         $this->be($user = UserFactory::new()->withPassword($password)->create())
             ->put('my/password', ['password' => $password, 'new_password' => $newPassword])
-            ->assertStatus(302)
+            ->assertFound()
             ->assertSessionHasNoErrors();
 
         $user->refresh();

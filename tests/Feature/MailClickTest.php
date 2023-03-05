@@ -27,7 +27,7 @@ class MailClickTest extends TestCase
         $queryString = parse_url($email->signedLink($goto), PHP_URL_QUERY);
 
         $this->get("mail/click/{$email->getTimestamp()}/{$email->id}?{$queryString}")
-            ->assertStatus(302)
+            ->assertFound()
             ->assertRedirect($goto);
 
         $email->refresh();

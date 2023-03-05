@@ -27,7 +27,7 @@ class MySettingsTest extends TestCase
 
         $this->be($user)
             ->put('my/settings', ['locale' => Locale::Eng->value])
-            ->assertStatus(302);
+            ->assertFound();
 
         $user->refresh();
 
@@ -49,7 +49,7 @@ class MySettingsTest extends TestCase
 
         $this->be($user)
             ->put('my/settings', ['notify_gigs' => NotificationDeliveryMethod::Disabled->value])
-            ->assertStatus(302);
+            ->assertFound();
 
         $user->refresh();
 
@@ -72,7 +72,7 @@ class MySettingsTest extends TestCase
 
         $this->be($user)
             ->put('my/settings', ['notify_gigs' => NotificationDeliveryMethod::Mail->value])
-            ->assertStatus(302);
+            ->assertFound();
 
         $user->refresh();
 
@@ -95,7 +95,7 @@ class MySettingsTest extends TestCase
 
         $this->be($user)
             ->put('my/settings', ['notify_news' => NotificationDeliveryMethod::Disabled->value])
-            ->assertStatus(302);
+            ->assertFound();
 
         $user->refresh();
 
@@ -118,7 +118,7 @@ class MySettingsTest extends TestCase
 
         $this->be($user)
             ->put('my/settings', ['notify_news' => NotificationDeliveryMethod::Mail->value])
-            ->assertStatus(302);
+            ->assertFound();
 
         $user->refresh();
 
@@ -141,7 +141,7 @@ class MySettingsTest extends TestCase
 
         $this->be($user)
             ->put('my/settings', ['notify_trips' => NotificationDeliveryMethod::Disabled->value])
-            ->assertStatus(302);
+            ->assertFound();
 
         $user->refresh();
 
@@ -164,7 +164,7 @@ class MySettingsTest extends TestCase
 
         $this->be($user)
             ->put('my/settings', ['notify_trips' => NotificationDeliveryMethod::Mail->value])
-            ->assertStatus(302);
+            ->assertFound();
 
         $user->refresh();
 
@@ -184,7 +184,7 @@ class MySettingsTest extends TestCase
 
         $this->be($user)
             ->put('my/settings', ['torrent_short_title' => 1])
-            ->assertStatus(302);
+            ->assertFound();
 
         $user->refresh();
 

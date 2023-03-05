@@ -29,6 +29,6 @@ class UserTest extends TestCase
         $user = UserFactory::new()->inactive()->create();
 
         $this->get("users/{$user->id}")
-            ->assertStatus(404);
+            ->assertNotFound();
     }
 }

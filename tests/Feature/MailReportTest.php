@@ -20,7 +20,7 @@ class MailReportTest extends TestCase
 
         $this->be($email->user)
             ->get("mail/report/{$email->getTimestamp()}/{$email->id}")
-            ->assertStatus(302)
+            ->assertFound()
             ->assertRedirect('/')
             ->assertSessionHas('message');
 

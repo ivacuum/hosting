@@ -32,7 +32,7 @@ class NewsTest extends TestCase
     public function testBackwardCompatibility(string $url)
     {
         $this->get($url)
-            ->assertStatus(301)
+            ->assertMovedPermanently()
             ->assertRedirect('news');
     }
 
@@ -49,7 +49,7 @@ class NewsTest extends TestCase
         $news = NewsFactory::new()->english()->create();
 
         $this->get("news/{$news->id}")
-            ->assertStatus(301)
+            ->assertMovedPermanently()
             ->assertRedirect("en/news/{$news->id}");
     }
 
