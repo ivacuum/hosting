@@ -10,8 +10,6 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property int $rel_id
  * @property string $rel_type
  * @property string $slug
- * @property string $lat
- * @property string $lon
  * @property Spatial\Point $point
  * @property PhotoStatus $status
  * @property int $views
