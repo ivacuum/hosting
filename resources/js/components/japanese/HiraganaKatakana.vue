@@ -92,8 +92,6 @@
 </template>
 
 <script>
-import random from 'lodash/random'
-
 export default {
   data() {
     return {
@@ -306,7 +304,7 @@ export default {
     },
 
     pickRandom() {
-      const el = this.picked[random(0, this.picked.length - 1)]
+      const el = this.picked[this.randomInt(this.picked.length)]
 
       if (this.picked.length > 1 && el[this.syllabaryIndex] === this.question) {
         return this.pickRandom()
@@ -322,6 +320,10 @@ export default {
       this.beacon('Started')
       this.nextQuestion()
       this.scrollToTop()
+    },
+
+    randomInt(max) {
+      return Math.floor(Math.random() * max)
     },
 
     revealAnswer() {
