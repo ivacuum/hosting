@@ -8,7 +8,7 @@
   transition: opacity .25s ease;
 }
 
-.fade-enter,
+.fade-enter-from,
 .fade-leave-to,
 .fade-fast-enter,
 .fade-fast-leave-to {
@@ -21,16 +21,20 @@
   transition: all 1s;
 }
 
-.grid-leave-active { position: absolute; }
+.grid-leave-active {
+  position: absolute;
+}
 
-.grid-enter,
+.grid-enter-from,
 .grid-leave-to {
   opacity: 0;
   transform: translateY(2rem);
 }
 
 @keyframes incorrect-answer {
-  50% { background-color: #fbd5d5; }
+  50% {
+    background-color: #fbd5d5;
+  }
 }
 
 .animate-incorrect-answer {

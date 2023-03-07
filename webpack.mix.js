@@ -1,6 +1,6 @@
 const mix = require('laravel-mix')
 
-mix.js('resources/js/app.js', 'public/assets').vue()
+mix.js('resources/js/app.js', 'public/assets')
   .postCss('resources/css/tailwind.pcss', 'public/assets', [
     require('postcss-import'),
     require('autoprefixer'),
@@ -14,8 +14,8 @@ mix.js('resources/js/app.js', 'public/assets').vue()
 
   .copy('node_modules/jquery/dist/jquery.min.js', 'public/assets/jquery.js')
 
-  .copy('node_modules/vue/dist/vue.min.js', 'public/assets/vue.js')
-  .copy('node_modules/vue-i18n/dist/vue-i18n.min.js', 'public/assets/vue-i18n.js')
+  .copy('node_modules/vue/dist/vue.global.prod.js', 'public/assets/vue.js')
+  .copy('node_modules/vue-i18n/dist/vue-i18n.global.prod.js', 'public/assets/vue-i18n.js')
 
   .copy('node_modules/livewire-vue/dist/livewire-vue.js', 'public/assets')
   .copy('resources/js/empty.map', 'public/assets/livewire-vue.js.map')

@@ -16,7 +16,6 @@ import EventHandlers from './events'
 import PhotosMap from './photos-map'
 import PhotoViewer from './photo-viewer'
 import Shortcuts from './shortcuts'
-import initVueComponents from './vue-init-components'
 
 /**
  * @namespace window.AppOptions
@@ -35,9 +34,6 @@ class Application {
     this.map = new Map(this.locale)
     this.metrika = new YandexMetrika(this.options.yandexMetrikaId)
     this.photoViewer = new PhotoViewer()
-    this.vue = null
-
-    this.initOnReady()
 
     document.addEventListener('DOMContentLoaded', () => {
       EventHandlers.bind()
@@ -70,14 +66,6 @@ class Application {
     })
   }
   */
-
-  initVue() {
-    initVueComponents('#pjax_container', this.options.locale)
-  }
-
-  initOnReady() {
-    this.initVue()
-  }
 }
 
 window.App = new Application()
