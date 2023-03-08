@@ -1,6 +1,7 @@
 <?php namespace Tests\Feature;
 
 use App\Factory\UserFactory;
+use App\Mail\ResetPasswordMail;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -28,6 +29,8 @@ class ForgotPasswordTest extends TestCase
 
     public function testSubmitGuest()
     {
+        \Mail::fake();
+
         $user = UserFactory::new()->create();
 
         $this->from('auth/password/remind')
@@ -37,5 +40,7 @@ class ForgotPasswordTest extends TestCase
             ->assertRedirect('auth/password/remind');
 
         $this->assertGuest();
+
+        \Mail::assertQueued(ResetPasswordMail::class);
     }
 }
