@@ -28,7 +28,7 @@
     <link rel="alternate" hreflang="en" href="{{ url("en/{$requestUri}") }}">
     <link rel="alternate" hreflang="ru" href="{{ url($requestUri) }}">
   @endif
-  <link rel="stylesheet" href="{{ mix('/assets/tailwind.css') }}">
+  <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">
   @stack('head')
 </head>
 <body class="flex flex-col tabular-nums min-h-full dark:bg-slate-900 dark:text-slate-400 {{ $bodyClasses ?? 'body-with-bottom-tabbar' }} {{ $cssClasses }}" data-route="{{ $routeUri }}">
