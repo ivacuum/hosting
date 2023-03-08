@@ -3,7 +3,7 @@
   "description": "",
   "license": "MIT",
   "require": {
-    "php": ">=8.1",
+    "php": ">=8.2",
     "ext-intl": "*",
     "ext-swoole": "*",
     "foolz/sphinxql-query-builder": "^3.0",
@@ -65,8 +65,8 @@
       "@php artisan ide-helper:generate",
       "@php artisan ide-helper:meta"
     ],
-    "rector": "vendor/bin/rector process app tests --dry-run",
     "queue": "@php artisan queue:work --stop-when-empty --ansi",
+    "rector": "vendor/bin/rector process app tests --dry-run",
     "share": "valet share --region=eu",
     "test": "@php artisan test --parallel",
     "test-linear": "vendor/bin/phpunit --colors=always",
