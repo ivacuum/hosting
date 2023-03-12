@@ -14,7 +14,6 @@ Disallow: /magnets
 Disallow: /my
 Disallow: /parser
 Disallow: /photos
-Disallow: /torrents
 Disallow: /trips
 Disallow: /users
 Disallow: /@vacuum
@@ -38,7 +37,6 @@ Disallow: /en/magnets
 Disallow: /en/my
 Disallow: /en/parser
 Disallow: /en/photos
-Disallow: /en/torrents
 Disallow: /en/trips
 Disallow: /en/users
 Disallow: /en/@vacuum
