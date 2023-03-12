@@ -103,6 +103,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9145.jpg'])
 
+<a id="old-new"></a>
 @ru
   <p>Старина бок о бок с новизной.</p>
 @endru
