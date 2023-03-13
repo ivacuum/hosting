@@ -64,8 +64,8 @@ jobs:
           path: node_modules
           key: yarn-${{ hashFiles('yarn.lock') }}
 
-      - run: yarn --ignore-platform
-      - run: yarn prod
+      - run: yarn
+      - run: yarn build
 
       #- name: Install graphicsmagick
       #  run: sudo apt-get install graphicsmagick

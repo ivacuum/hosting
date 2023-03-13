@@ -5,7 +5,7 @@ $uri = urldecode(
 );
 
 if ($uri !== '/' and file_exists(__DIR__ . '/public' . $uri)) {
-    if ($uri === '/assets/service-worker.js') {
+    if ($uri === '/service-worker.js') {
         header('Content-Type: application/javascript');
         header('Service-Worker-Allowed: /');
         readfile(__DIR__ . '/public' . $uri);

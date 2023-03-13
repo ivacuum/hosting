@@ -1,5 +1,4 @@
 @extends('japanese.base')
-@include('vue')
 @include('livewire')
 
 @section('content')
@@ -131,10 +130,14 @@
 </div>
 @endsection
 
+@push('js_vendor')
+@vite('resources/js/hiragana-katakana.js')
+@endpush
+
 @push('js')
-<script>
+<script type="module">
 (function () {
-  const i18n = VueI18n.createI18n({
+  const i18n = CreateVueI18n({
     locale: window.AppOptions.locale,
     messages: {
       en: {
@@ -162,7 +165,7 @@
     },
   })
 
-  const app = Vue.createApp({
+  const app = CreateVueApp({
     data() {
       return {
         focus: false,

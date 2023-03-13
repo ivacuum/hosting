@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>{{ $trip->title }}</title>
   <meta name="robots" content="noindex, nofollow">
-  <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">
+  @vite('resources/css/app.css')
 </head>
 <body>
 <div style="max-width: 1080px; max-height: 1920px;">

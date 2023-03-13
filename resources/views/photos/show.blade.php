@@ -9,7 +9,7 @@
 @extends('photos.base')
 
 @push('js')
-<script>
+<script type="module">
 Mousetrap.bind('left', () => {
   document.dispatchEvent(new Event('shortcuts.to_prev_page'))
 })

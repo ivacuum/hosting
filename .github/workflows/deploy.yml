@@ -26,8 +26,8 @@ jobs:
           path: node_modules
           key: yarn-${{ hashFiles('yarn.lock') }}
 
-      - run: yarn --ignore-platform
-      - run: yarn prod
+      - run: yarn
+      - run: yarn build
 
       - name: Archive
         run: |
@@ -37,7 +37,6 @@ jobs:
             --exclude ./node_modules \
             --exclude ./resources/css \
             --exclude ./resources/js \
-            --exclude ./resources/sass \
             --exclude ./tests \
             --exclude ./vendor \
             -cf deploy.tar .

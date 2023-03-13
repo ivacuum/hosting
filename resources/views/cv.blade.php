@@ -6,7 +6,7 @@
   <title>@ru Сергей Панков &middot; Резюме &middot; Веб-программист (Laravel PHP, Vue.js) @en Sergey Pankov &middot; CV &middot; Laravel PHP + Vue.js Developer @endru</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="robots" content="noindex, nofollow">
-  <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">
+  @vite('resources/css/app.css')
 
   <meta content="summary" property="twitter:card">
   <meta content="@knifevacuum" property="twitter:site">

@@ -5,6 +5,6 @@
 
 @push('js_vendor')
 @livewireScripts
-<script src="{{ mix('/assets/livewire-vue.js') }}"></script>
+@vite('node_modules/livewire-vue/dist/livewire-vue.js')
 @endpush
 @endonce

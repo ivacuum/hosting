@@ -5,6 +5,7 @@ use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Testing\Assert;
 use Illuminate\Testing\TestResponse;
@@ -20,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
         \Blade::withoutDoubleEncoding();
         \Blade::directive('lng', fn () => '<?php echo $localeUri ?>');
         Date::use(CarbonImmutable::class);
+        Vite::useBuildDirectory('assets');
 
         Model::preventLazyLoading(!app()->isProduction());
         Model::preventAccessingMissingAttributes(!app()->isProduction());

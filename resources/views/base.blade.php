@@ -20,15 +20,13 @@
   <link rel="icon" href="/apple-touch-icon.png">
   <link rel="canonical" href="{{ canonical() }}">
   @yield('pagination_seo')
-  @if (Str::contains($cssClasses, ['android', 'chrome', 'opera']) && in_array($locale, ['en', 'ru']))
-    <link rel="manifest" href="/pwa-manifest-{{ $locale }}.json">
-    <script async src="/assets/service-worker-installer.js"></script>
-  @endif
+  <link rel="manifest" href="/pwa-manifest-{{ $locale }}.json">
+  <script async src="/service-worker-installer.js"></script>
   @if (empty($noLanguageSelector))
     <link rel="alternate" hreflang="en" href="{{ url("en/{$requestUri}") }}">
     <link rel="alternate" hreflang="ru" href="{{ url($requestUri) }}">
   @endif
-  <link rel="stylesheet" href="{{ mix('/assets/app.css') }}">
+  @vite('resources/css/app.css')
   @stack('head')
 </head>
 <body class="flex flex-col tabular-nums min-h-full dark:bg-slate-900 dark:text-slate-400 {{ $bodyClasses ?? 'body-with-bottom-tabbar' }} {{ $cssClasses }}" data-route="{{ $routeUri }}">
@@ -181,13 +179,13 @@ window.AppOptions = JSON.parse('<?= json_encode([
   'yandexMetrikaId' => 5266444,
 ], JSON_HEX_APOS) ?>')
 </script>
-<script src="{{ mix('/assets/mousetrap.js') }}"></script>
-<script type="module" src="{{ mix('/assets/details-menu-element.js') }}"></script>
+@vite('node_modules/mousetrap/mousetrap.min.js?commonjs-entry')
+@vite('node_modules/@github/details-menu-element/dist/index.js')
 @stack('js_vendor')
 @if ($locale !== 'ru')
 <script>window.livewire_app_url = '/{{ $locale }}'</script>
 @endif
-<script src="{{ mix('/assets/app.js') }}"></script>
+@vite('resources/js/app.js')
 @stack('js')
 @section('counters')
 @include('tpl.counters')
