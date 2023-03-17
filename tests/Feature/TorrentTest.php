@@ -10,7 +10,6 @@ use App\Magnet;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Ivacuum\Generic\Jobs\SendTelegramMessageJob;
-use Mockery\MockInterface;
 use Tests\TestCase;
 
 class TorrentTest extends TestCase
@@ -159,9 +158,10 @@ class TorrentTest extends TestCase
         $magnet = MagnetFactory::new()->create();
         $related = MagnetFactory::new()->create();
 
-        $this->mock(FindRelatedMagnetsAction::class, function (MockInterface $mock) use ($related) {
-            $mock->shouldReceive('execute')->once()->andReturn([$related->id]);
-        });
+        $this->mock(FindRelatedMagnetsAction::class)
+            ->shouldReceive('execute')
+            ->once()
+            ->andReturn([$related->id]);
 
         $this->get("magnets/{$magnet->id}")
             ->assertOk()

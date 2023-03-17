@@ -10,20 +10,18 @@ class GuestPagesTest extends TestCase
 
     public static function guestPages200()
     {
-        return [
-            ['/auth/login'],
-            ['/auth/register'],
-            ['/auth/password/remind'],
-            ['/docs'],
-            ['/docs/amazon-s3'],
-            ['/docs/freebsd'],
-            ['/docs/nginx'],
-            ['/docs/trips'],
-            ['/retracker'],
-            ['/retracker/dev'],
-            ['/retracker/usage'],
-            ['/stickers'],
-            ['/subscriptions'],
-        ];
+        yield ['/auth/login'];
+        yield ['/auth/register'];
+        yield ['/auth/password/remind'];
+        yield ['/docs'];
+        yield ['/docs/amazon-s3'];
+        yield ['/docs/freebsd'];
+        yield ['/docs/nginx'];
+        yield ['/docs/trips'];
+        yield ['/retracker'];
+        yield ['/retracker/dev'];
+        yield ['/retracker/usage'];
+        yield ['/stickers'];
+        yield ['/subscriptions'];
     }
 }
