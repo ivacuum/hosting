@@ -2,6 +2,7 @@
 /node_modules
 /public/assets
 /public/build
+/public/hot
 /public/images
 /public/mix-manifest.json
 /public/vendor
