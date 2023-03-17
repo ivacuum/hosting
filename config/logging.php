@@ -2,8 +2,7 @@
 
 return [
     'default' => env('LOG_CHANNEL', 'stack'),
-    // update or check
-    'deprecations' => env('LOG_DEPRECATIONS_CHANNEL', 'null'),
+    'deprecations' => env('LOG_DEPRECATIONS_CHANNEL', 'stack'),
 
     'channels' => [
         'stack' => [
