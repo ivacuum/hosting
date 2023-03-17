@@ -36,7 +36,7 @@
 @show
 
 @section('bottom-tabbar')
-<header class="bottom-tabbar-container border-t border-[#dee2e6] dark:border-slate-700 fixed bottom-0 left-0 right-0 flex items-center justify-center md:hidden revealed pb-[env(safe-area-inset-bottom)]">
+<header class="bottom-tabbar-container border-t border-[#dee2e6] dark:border-slate-700 fixed bottom-0 left-0 right-0 flex items-center justify-center md:hidden revealed">
   <nav class="flex justify-between leading-none text-center mx-1 w-full">
     <a
       class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ $routeUri === '/' ? 'active' : '' }}"
