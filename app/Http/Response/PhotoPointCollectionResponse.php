@@ -8,7 +8,7 @@ class PhotoPointCollectionResponse implements \JsonSerializable
     {
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'type' => 'FeatureCollection',

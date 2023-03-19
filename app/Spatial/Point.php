@@ -21,7 +21,7 @@ class Point extends Geometry implements \Stringable
         return static::fromPair($wktArgument, $srid);
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'coordinates' => [$this->lat, $this->lon],
