@@ -1,16 +1,16 @@
 .body-with-bottom-tabbar {
-  padding-bottom: var(--bottom-tabbar-height);
+  padding-bottom: calc(var(--bottom-tabbar-height) + env(safe-area-inset-bottom));
 }
 
 @screen sm {
   .body-with-bottom-tabbar {
-    padding-bottom: var(--bottom-tabbar-sm-height);
+    padding-bottom: calc(var(--bottom-tabbar-sm-height) + env(safe-area-inset-bottom));
   }
 }
 
 @screen md {
   .body-with-bottom-tabbar {
-    padding-bottom: 0;
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
 
