@@ -12,7 +12,7 @@
     <link rel="dns-prefetch" href="https://mc.yandex.ru">
   @endproduction
   <meta name="format-detection" content="telephone=no">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <meta name="keywords" content="{{ $metaKeywords ?? ViewHelper::metaKeywords($routeUri, $metaReplace ?? []) }}">
   <meta name="description" content="{{ $metaDescription ?? ViewHelper::metaDescription($routeUri, $metaReplace ?? []) }}">
   <meta name="theme-color" content="#e7e7e7">
@@ -36,7 +36,7 @@
 @show
 
 @section('bottom-tabbar')
-<header class="bottom-tabbar-container border-t border-[#dee2e6] dark:border-slate-700 fixed bottom-0 left-0 right-0 flex items-center justify-center md:hidden revealed">
+<header class="bottom-tabbar-container border-t border-[#dee2e6] dark:border-slate-700 fixed bottom-0 left-0 right-0 pb-[env(safe-area-inset-bottom)] flex items-center justify-center md:hidden revealed">
   <nav class="flex justify-between leading-none text-center mx-1 w-full">
     <a
       class="bottom-tab flex flex-col sm:flex-row sm:items-center sm:justify-center no-underline w-full bg-transparent pt-2 pb-1 sm:py-3 flex-1 leading-none {{ $routeUri === '/' ? 'active' : '' }}"
