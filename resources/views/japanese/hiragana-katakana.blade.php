@@ -7,7 +7,11 @@
   <Transition appear name="fade" mode="out-in">
     <div :key="stage" style="min-height: 420px;">
       <div v-show="stage === 'pick'">
-        <p>@{{ $t('PICKER_TEXT') }}</p>
+        @ru
+          <p>Выберите столбцы для практики.</p>
+        @en
+          <p>Select columns to practice.</p>
+        @endru
         <div
           class="grid items-center text-center border-grey-200 dark:border-slate-700 overflow-x-scroll"
           style="grid-template-columns: repeat(16, max-content);"
@@ -44,22 +48,27 @@
             class="btn btn-primary disabled:opacity-50"
             :disabled="this.picked.length < 2"
             @click="practice"
-          >@{{ $t('PRACTICE') }}
-          </button>
-          <transition name="fade-fast" mode="out-in">
+          >@ru Практиковаться @en Practice @endru</button>
+          <Transition name="fade-fast" mode="out-in">
             <button
               class="btn btn-default"
               @click="switchSyllabary"
-              :key="syllabaryLabel"
-            >@{{ syllabaryLabel }}
+              :key="syllabaryName"
+            >
+              <span v-show="syllabaryName === 'Hiragana'">@ru Переключиться на катакану @en Switch to katakana @endru</span>
+              <span v-show="syllabaryName === 'Katakana'">@ru Переключиться на хирагану @en Switch to hiragana @endru</span>
             </button>
-          </transition>
-          <button class="btn btn-default" @click="checkAll">@{{ $t('CHECK_ALL') }}</button>
-          <button class="btn btn-default" @click="uncheckAll">@{{ $t('UNCHECK_ALL') }}</button>
+          </Transition>
+          <button class="btn btn-default" @click="checkAll">@ru Выбрать все @en Check all @endru</button>
+          <button class="btn btn-default" @click="uncheckAll">@ru Снять выделение @en Uncheck all @endru</button>
         </div>
       </div>
       <div class="max-w-[600px]" v-show="stage === 'practice'">
-        <p>@{{ $t('PRACTICE_TEXT') }}</p>
+        @ru
+          <p>Ответ засчитывается автоматически без нажатия клавиши ввода. Пробел подсказывает ответ.</p>
+        @en
+          <p>The answer is counted automatically, no need to press enter. Space button reveals the answer.</p>
+        @endru
         <div class="mx-auto max-w-[400px]">
           <div class="text-center py-2 md:py-12">
             <div class="text-5xl font-bold" @click="revealAnswer">@{{ question }}</div>
@@ -84,9 +93,15 @@
           </div>
           <div class="flex items-center justify-between mt-2">
             <div>
-              <button class="btn btn-default" @click="pick">@{{ $t('BACK_TO_PICKER') }}</button>
+              <button class="btn btn-default" @click="pick">@ru Назад к выбору @en Back to picker @endru</button>
             </div>
-            <div class="text-muted" v-if="answered > 0">@{{ $t('ANSWERED', { answered }) }}</div>
+            <div class="text-muted" v-if="answered > 0">
+              @ru
+                Отвечено: @{{ answered }}
+              @en
+                Answered: @{{ answered }}
+              @endru
+            </div>
           </div>
         </div>
       </div>
@@ -137,34 +152,6 @@
 @push('js')
 <script type="module">
 (function () {
-  const i18n = CreateVueI18n({
-    locale: window.AppOptions.locale,
-    messages: {
-      en: {
-        ANSWERED: 'Answered: {answered}',
-        PRACTICE: 'Practice',
-        CHECK_ALL: 'Check all',
-        PICKER_TEXT: 'Select columns to practice.',
-        UNCHECK_ALL: 'Uncheck all',
-        PRACTICE_TEXT: 'The answer is counted automatically, no need to press enter. Space button reveals the answer.',
-        BACK_TO_PICKER: 'Back to picker',
-        SWITCH_TO_HIRAGANA: 'Switch to hiragana',
-        SWITCH_TO_KATAKANA: 'Switch to katakana',
-      },
-      ru: {
-        ANSWERED: 'Отвечено: {answered}',
-        PRACTICE: 'Практиковаться',
-        CHECK_ALL: 'Выбрать все',
-        PICKER_TEXT: 'Выберите столбцы для практики.',
-        UNCHECK_ALL: 'Снять выделение',
-        PRACTICE_TEXT: 'Ответ засчитывается автоматически без нажатия клавиши ввода. Пробел подсказывает ответ.',
-        BACK_TO_PICKER: 'Назад к выбору',
-        SWITCH_TO_HIRAGANA: 'Переключиться на хирагану',
-        SWITCH_TO_KATAKANA: 'Переключиться на катакану',
-      },
-    },
-  })
-
   const app = CreateVueApp({
     data() {
       return {
@@ -271,10 +258,6 @@
     },
 
     computed: {
-      syllabaryLabel() {
-        return this.$i18n.t(this.syllabaryIndex === 0 ? 'SWITCH_TO_KATAKANA' : 'SWITCH_TO_HIRAGANA')
-      },
-
       syllabaryName() {
         return this.syllabaryIndex === 0 ? 'Hiragana' : 'Katakana'
       }
@@ -397,8 +380,6 @@
       }
     }
   })
-
-  app.use(i18n)
 
   app.mount('#hiragana_katakana')
 })()
