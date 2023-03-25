@@ -9,6 +9,7 @@
     "foolz/sphinxql-query-builder": "^3.0",
     "geo-io/wkb-parser": "^1.0",
     "guzzlehttp/guzzle": "^7.0",
+    "http-interop/http-factory-guzzle": "^1.2",
     "ivacuum/generic": "^25.0",
     "laravel-notification-channels/telegram": "^4.0",
     "laravel/fortify": "^1.8",
@@ -19,6 +20,7 @@
     "league/commonmark": "^2.2",
     "league/flysystem-sftp-v3": "^3.0",
     "livewire/livewire": "^2.0",
+    "meilisearch/meilisearch-php": "^1.0",
     "predis/predis": "^2.0",
     "symfony/css-selector": "^6.0",
     "symfony/dom-crawler": "^6.0"
@@ -88,7 +90,8 @@
     "sort-packages": true,
     "optimize-autoloader": true,
     "allow-plugins": {
-      "composer/package-versions-deprecated": true
+      "composer/package-versions-deprecated": true,
+      "php-http/discovery": true
     }
   }
 }
