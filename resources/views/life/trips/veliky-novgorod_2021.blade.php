@@ -29,6 +29,7 @@
   'IMG_7806.jpg',
 ]])
 
+<a id="government"></a>
 @ru
   <p>Здание правительства.</p>
 @endru
