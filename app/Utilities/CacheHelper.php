@@ -32,6 +32,21 @@ class CacheHelper
         ]);
     }
 
+    public function forgetMagnets()
+    {
+        $this->cache->deleteMultiple([
+            CacheKey::TorrentsStatsByCategories->value,
+        ]);
+    }
+
+    public function forgetPhotoPoints()
+    {
+        $this->cache->deleteMultiple([
+            CacheKey::PhotosPoints->value,
+            CacheKey::PhotosPointsForTrip->value,
+        ]);
+    }
+
     public function forgetTrips()
     {
         $this->cache->deleteMultiple([

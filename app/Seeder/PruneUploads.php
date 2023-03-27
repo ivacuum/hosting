@@ -1,15 +1,13 @@
 <?php namespace App\Seeder;
 
-use App\Magnet;
 use Illuminate\Database\Seeder;
 
-class UploadsPruner extends Seeder
+class PruneUploads extends Seeder
 {
     public function run()
     {
         $this->pruneAvatars();
         $this->pruneGallery();
-        $this->pruneSearchIndex();
         $this->pruneTemp();
     }
 
@@ -27,11 +25,6 @@ class UploadsPruner extends Seeder
         foreach ($storage->allDirectories() as $dir) {
             $storage->deleteDirectory($dir);
         }
-    }
-
-    private function pruneSearchIndex()
-    {
-        Magnet::removeAllFromSearch();
     }
 
     private function pruneTemp()

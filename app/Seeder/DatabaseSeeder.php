@@ -7,7 +7,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            UploadsPruner::class,
+            PruneUploads::class,
+            PruneSearchIndexes::class,
+            PruneCache::class,
             UserSeeder::class,
             ExternalIdentitySeeder::class,
             ClientSeeder::class,
