@@ -14,8 +14,8 @@ class CountMagnetsByCategoriesAction
     public function execute()
     {
         return $this->cache->remember(
-            CacheKey::TorrentsStatsByCategories->value,
-            CacheKey::TorrentsStatsByCategories->ttl(),
+            CacheKey::MagnetStatsByCategories->value,
+            CacheKey::MagnetStatsByCategories->ttl(),
             fn () => Magnet::selectRaw('category_id, COUNT(*) AS total')
                 ->tap(new MagnetPublishedScope)
                 ->groupBy('category_id')

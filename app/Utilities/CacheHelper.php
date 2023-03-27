@@ -35,7 +35,7 @@ class CacheHelper
     public function forgetMagnets()
     {
         $this->cache->deleteMultiple([
-            CacheKey::TorrentsStatsByCategories->value,
+            CacheKey::MagnetStatsByCategories->value,
         ]);
     }
 

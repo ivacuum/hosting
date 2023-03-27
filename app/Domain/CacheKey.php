@@ -14,6 +14,8 @@ enum CacheKey: string
 
     case IcuLocales = 'icu.locales';
 
+    case MagnetStatsByCategories = 'magnets.stats.by-categories';
+
     case MetricsNextStartId = 'metrics.nextStartId';
 
     case MyVisibleGigs = 'my.gigs.visible';
@@ -21,8 +23,6 @@ enum CacheKey: string
 
     case PhotosPoints = 'photos.points.all';
     case PhotosPointsForTrip = 'photos.points.trip'; // Отключено
-
-    case TorrentsStatsByCategories = 'torrents.stats.by-categories';
 
     case TripsPublishedByCity = 'trips.published.by-cities';
     case TripsPublishedByCountry = 'trips.published.by-country';
@@ -43,7 +43,7 @@ enum CacheKey: string
             self::PhotosPointsForTrip => CarbonInterval::minutes(0),
 
             self::DomainsWhois,
-            self::TorrentsStatsByCategories => CarbonInterval::minutes(15),
+            self::MagnetStatsByCategories => CarbonInterval::minutes(15),
 
             self::PhotosPoints => CarbonInterval::minutes(30),
 
