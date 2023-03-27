@@ -13,7 +13,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Ivacuum\Generic\Jobs\SendTelegramMessageJob;
 use Tests\TestCase;
 
-class TorrentTest extends TestCase
+class MagnetTest extends TestCase
 {
     use DatabaseTransactions;
 
