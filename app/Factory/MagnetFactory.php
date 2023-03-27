@@ -1,10 +1,12 @@
 <?php namespace App\Factory;
 
+use App\Domain\MagnetCategory;
 use App\Domain\MagnetStatus;
 use App\Magnet;
 
 class MagnetFactory
 {
+    private $html;
     private $title;
     private $userId;
     private $categoryId;
@@ -47,7 +49,7 @@ class MagnetFactory
     public function make()
     {
         $model = new Magnet;
-        $model->html = '<p>HTML</p>';
+        $model->html = $this->html ?? '<p>HTML</p>';
         $model->size = fake()->numberBetween(1000, 100_000_000_000);
         $model->title = $this->title ?? fake()->words(3, true);
         $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
@@ -70,10 +72,10 @@ class MagnetFactory
         return new self;
     }
 
-    public function withCategoryId(int $categoryId)
+    public function withCategory(MagnetCategory $category)
     {
         $factory = clone $this;
-        $factory->categoryId = $categoryId;
+        $factory->categoryId = $category;
 
         return $factory;
     }
@@ -82,6 +84,14 @@ class MagnetFactory
     {
         $factory = clone $this;
         $factory->commentFactory = $commentFactory ?? CommentFactory::new();
+
+        return $factory;
+    }
+
+    public function withHtml(string $html)
+    {
+        $factory = clone $this;
+        $factory->html = $html;
 
         return $factory;
     }

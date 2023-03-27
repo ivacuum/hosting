@@ -1,6 +1,7 @@
 <?php namespace Tests\Feature;
 
 use App\Action\FindRelatedMagnetsAction;
+use App\Domain\MagnetCategory;
 use App\Domain\RtoTopicStatus;
 use App\Factory\CommentFactory;
 use App\Factory\MagnetFactory;
@@ -18,10 +19,10 @@ class TorrentTest extends TestCase
 
     public function testCategoryFilter()
     {
-        $categoryId = 2;
-        $magnet = MagnetFactory::new()->withCategoryId($categoryId)->create();
+        $category = MagnetCategory::ForeignCinema;
+        $magnet = MagnetFactory::new()->withCategory($category)->create();
 
-        $this->get("magnets?category_id={$categoryId}")
+        $this->get("magnets?category_id={$category->value}")
             ->assertOk()
             ->assertSee($magnet->title);
     }
