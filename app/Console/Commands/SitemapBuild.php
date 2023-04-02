@@ -209,8 +209,7 @@ class SitemapBuild extends BaseSitemapBuild
         return Gig::query()
             ->select(['id', 'slug'])
             ->where('status', GigStatus::Published)
-            ->orderBy('id')
-            ->lazy();
+            ->lazyById();
     }
 
     protected function newsModels()
@@ -218,8 +217,7 @@ class SitemapBuild extends BaseSitemapBuild
         return News::query()
             ->select(['id', 'locale'])
             ->tap(new NewsPublishedScope)
-            ->orderBy('id')
-            ->lazy();
+            ->lazyById();
     }
 
     protected function tripModels()
@@ -228,7 +226,6 @@ class SitemapBuild extends BaseSitemapBuild
             ->select(['id', 'user_id', 'slug'])
             ->tap(new TripOfAdminScope)
             ->tap(new TripPublishedScope)
-            ->orderBy('id')
-            ->lazy();
+            ->lazyById();
     }
 }

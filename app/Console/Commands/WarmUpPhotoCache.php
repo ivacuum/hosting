@@ -39,7 +39,6 @@ class WarmUpPhotoCache extends Command
     {
         return Photo::query()
             ->select(['id', 'slug'])
-            ->orderBy('id')
-            ->lazy();
+            ->lazyById();
     }
 }
