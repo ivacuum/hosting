@@ -20,7 +20,7 @@ class LineString extends Geometry implements \Stringable
         return new static($srid, ...$points);
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'coordinates' => collect($this->items)

@@ -5,7 +5,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class NewsShowForm extends FormRequest
 {
-    public News|null $news;
+    public News|null $news = null;
 
     public function ensureNewsIsPublished()
     {

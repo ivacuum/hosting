@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class PhotosMapForm extends FormRequest
 {
-    public Photo|null $photo;
+    public Photo|null $photo = null;
     public readonly int|null $tripId;
     public readonly string|null $photoSlug;
 

@@ -62,25 +62,25 @@ class FilterNullsActionTest extends TestCase
             ],
             'json_serializable' => [
                 'string' => new class implements \JsonSerializable {
-                    public function jsonSerialize()
+                    public function jsonSerialize(): string
                     {
                         return 'string';
                     }
                 },
                 'null' => new class implements \JsonSerializable {
-                    public function jsonSerialize()
+                    public function jsonSerialize(): null
                     {
                         return null;
                     }
                 },
                 'int' => new class implements \JsonSerializable {
-                    public function jsonSerialize()
+                    public function jsonSerialize(): int
                     {
                         return 0;
                     }
                 },
                 'array' => new class implements \JsonSerializable {
-                    public function jsonSerialize()
+                    public function jsonSerialize(): array
                     {
                         return [
                             'string' => 'string',

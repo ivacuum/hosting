@@ -18,7 +18,7 @@ class Polygon extends Geometry implements \Stringable
         return new static($srid, ...$lineStrings);
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'type' => 'Polygon',

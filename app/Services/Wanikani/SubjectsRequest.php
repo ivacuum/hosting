@@ -13,7 +13,7 @@ class SubjectsRequest implements HttpRequest
         return 'subjects';
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'hidden' => 'false',

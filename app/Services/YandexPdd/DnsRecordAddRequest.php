@@ -29,7 +29,7 @@ class DnsRecordAddRequest implements HttpPost
         return 'admin/dns/add';
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'ttl' => $this->ttl,

@@ -16,7 +16,7 @@ class EmailEditRequest implements HttpPost
         return 'admin/email/edit';
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'login' => $this->email,

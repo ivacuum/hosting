@@ -13,7 +13,7 @@ class EmailsRequest implements HttpRequest
         return 'admin/email/list';
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'page' => $this->page,

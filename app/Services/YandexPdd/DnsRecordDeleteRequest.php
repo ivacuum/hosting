@@ -13,7 +13,7 @@ class DnsRecordDeleteRequest implements HttpPost
         return 'admin/dns/del';
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'domain' => $this->domain,

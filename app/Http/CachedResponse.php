@@ -13,7 +13,7 @@ class CachedResponse implements \JsonSerializable
         return new self($response);
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'body' => $this->response->body(),

@@ -13,7 +13,7 @@ class SubjectRequest implements HttpRequest
         return "subjects/{$this->id}";
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [];
     }

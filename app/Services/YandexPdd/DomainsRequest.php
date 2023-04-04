@@ -13,7 +13,7 @@ class DomainsRequest implements HttpRequest
         return 'admin/domain/domains';
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'page' => $this->page,

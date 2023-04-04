@@ -5,7 +5,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class MagnetRequestReleaseForm extends FormRequest
 {
-    public User|null $user;
+    public User|null $user = null;
     public readonly string $q;
     public readonly string|null $comment;
 

@@ -13,7 +13,7 @@ class DkimStatusRequest implements HttpRequest
         return 'admin/dkim/status';
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'domain' => $this->domain,

@@ -13,7 +13,7 @@ class EmailAddRequest implements HttpPost
         return 'admin/email/add';
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'login' => $this->login,

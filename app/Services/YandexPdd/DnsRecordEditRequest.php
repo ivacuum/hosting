@@ -26,7 +26,7 @@ class DnsRecordEditRequest implements HttpPost
         return 'admin/dns/edit';
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'ttl' => $this->ttl,

@@ -11,12 +11,12 @@ class VocabularyList extends Component
 {
     /** @var \Illuminate\Database\Eloquent\Collection|Vocabulary[] */
     public $vocabularies;
-    public ?int $level;
     public bool $flat;
     public bool $range;
     public bool $showBurned = false;
     public bool $showLabels = false;
     public array $visible = [];
+    public int|null $level = null;
 
     public function burn(int $id, BurnAction $burn, ResurrectAction $resurrect)
     {

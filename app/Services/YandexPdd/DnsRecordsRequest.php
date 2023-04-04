@@ -13,7 +13,7 @@ class DnsRecordsRequest implements HttpRequest
         return 'admin/dns/list';
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'domain' => $this->domain,

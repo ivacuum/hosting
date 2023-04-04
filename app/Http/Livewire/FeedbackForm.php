@@ -82,8 +82,14 @@ class FeedbackForm extends Component
 
     private function pathFromUrl(): string
     {
+        $previousUrl = session()->previousUrl();
+
+        if ($previousUrl === null) {
+            return '';
+        }
+
         $locale = request()->server->get('LARAVEL_LOCALE') ?? '';
-        $parsed = parse_url(session()->previousUrl());
+        $parsed = parse_url($previousUrl);
 
         $path = $parsed['path'] ?? '';
         $query = isset($parsed['query']) ? "?{$parsed['query']}" : '';
