@@ -28,7 +28,7 @@ class NewsTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\NewsViewed::class);
     }
 
-    /** @dataProvider oldUrls */
+    #[\PHPUnit\Framework\Attributes\DataProvider('oldUrls')]
     public function testBackwardCompatibility(string $url)
     {
         $this->get($url)

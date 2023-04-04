@@ -5,7 +5,7 @@ use Tests\TestCase;
 
 class HiraganizeJapaneseNumberActionTest extends TestCase
 {
-    /** @dataProvider numbers */
+    #[\PHPUnit\Framework\Attributes\DataProvider('numbers')]
     public function testEn(int $number, string $result)
     {
         $formatter = new \NumberFormatter('ja', \NumberFormatter::SPELLOUT);

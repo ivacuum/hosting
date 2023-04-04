@@ -119,7 +119,7 @@ class LifeTest extends TestCase
             ->assertOk();
     }
 
-    /** @dataProvider pages */
+    #[\PHPUnit\Framework\Attributes\DataProvider('pages')]
     public function testPages(string $url)
     {
         $this->get($url)

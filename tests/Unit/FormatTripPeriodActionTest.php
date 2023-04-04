@@ -7,7 +7,7 @@ use Tests\TestCase;
 
 class FormatTripPeriodActionTest extends TestCase
 {
-    /** @dataProvider english */
+    #[\PHPUnit\Framework\Attributes\DataProvider('english')]
     public function testEnglish(string $start, string $end, string $result)
     {
         $this->app->setLocale(Locale::Eng->value);
@@ -17,7 +17,7 @@ class FormatTripPeriodActionTest extends TestCase
         $this->assertSame($result, $format->execute(Carbon::parse($start), Carbon::parse($end)));
     }
 
-    /** @dataProvider russian */
+    #[\PHPUnit\Framework\Attributes\DataProvider('russian')]
     public function testRussian(string $start, string $end, string $result)
     {
         $this->app->setLocale(Locale::Rus->value);

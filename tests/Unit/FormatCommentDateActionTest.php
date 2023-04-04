@@ -7,7 +7,7 @@ use Tests\TestCase;
 
 class FormatCommentDateActionTest extends TestCase
 {
-    /** @dataProvider english */
+    #[\PHPUnit\Framework\Attributes\DataProvider('english')]
     public function testEnglish(string $now, string $commentCreatedAt, string $result)
     {
         $this->app->setLocale(Locale::Eng->value);
@@ -19,7 +19,7 @@ class FormatCommentDateActionTest extends TestCase
         $this->assertSame($result, $format->execute(Carbon::parse($commentCreatedAt)));
     }
 
-    /** @dataProvider russian */
+    #[\PHPUnit\Framework\Attributes\DataProvider('russian')]
     public function testRussian(string $now, string $commentCreatedAt, string $result)
     {
         $this->app->setLocale(Locale::Rus->value);

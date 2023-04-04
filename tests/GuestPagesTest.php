@@ -2,7 +2,7 @@
 
 class GuestPagesTest extends TestCase
 {
-    /** @dataProvider guestPages200 */
+    #[\PHPUnit\Framework\Attributes\DataProvider('guestPages200')]
     public function testGuestPages200(string $url)
     {
         $this->get($url)->assertOk();

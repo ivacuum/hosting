@@ -4,7 +4,7 @@ use Tests\TestCase;
 
 class RssTest extends TestCase
 {
-    /** @dataProvider feeds */
+    #[\PHPUnit\Framework\Attributes\DataProvider('feeds')]
     public function testFeeds(string $url)
     {
         $this->get($url)

@@ -32,7 +32,7 @@ class BeaconTest extends TestCase
             ->assertInvalid(['events' => 'обязательно для заполнения']);
     }
 
-    /** @dataProvider simpleEvents */
+    #[\PHPUnit\Framework\Attributes\DataProvider('simpleEvents')]
     public function testSimpleCounters(string $event)
     {
         \Event::fake($event);
@@ -49,7 +49,7 @@ class BeaconTest extends TestCase
         \Event::assertDispatched($event);
     }
 
-    /** @dataProvider viewCounters */
+    #[\PHPUnit\Framework\Attributes\DataProvider('viewCounters')]
     public function testViewCounters(string $event, array $ids)
     {
         $payload = $this->payload(collect($ids)->map(fn ($id) => [
