@@ -7,8 +7,9 @@ use Rector\Config\RectorConfig;
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->sets([
         Rector\Set\ValueObject\SetList::DEAD_CODE,
-        Rector\Set\ValueObject\LevelSetList::UP_TO_PHP_81,
-        // Rector\Laravel\Set\LaravelSetList::LARAVEL_90,
+        Rector\Set\ValueObject\LevelSetList::UP_TO_PHP_82,
+        // Rector\Laravel\Set\LaravelSetList::LARAVEL_90
+        Rector\PHPUnit\Set\PHPUnitLevelSetList::UP_TO_PHPUNIT_100,
     ]);
 
     $rectorConfig->skip([
@@ -17,5 +18,6 @@ return static function (RectorConfig $rectorConfig): void {
         Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class,
         Rector\Php81\Rector\Property\ReadOnlyPropertyRector::class,
         Rector\Php81\Rector\ClassConst\FinalizePublicClassConstantRector::class,
+        Rector\Php81\Rector\FuncCall\NullToStrictStringFuncCallArgRector::class,
     ]);
 };
