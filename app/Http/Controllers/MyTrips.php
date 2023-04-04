@@ -29,7 +29,7 @@ class MyTrips
     {
         $trip->delete();
 
-        return redirect(path([self::class, 'index']));
+        return redirect(path([MyTrips::class, 'index']));
     }
 
     public function edit(Trip $trip)
@@ -55,7 +55,7 @@ class MyTrips
         $trip->date_start = $request->input('date_start');
         $trip->save();
 
-        return redirect(path([static::class, 'index']));
+        return redirect(path([MyTrips::class, 'index']));
     }
 
     public function update(

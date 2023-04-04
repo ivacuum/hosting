@@ -37,7 +37,7 @@ class FetchTorrentMetaJobTest extends TestCase
         $this->fakeHttpClient($topicData);
 
         $job = new FetchTorrentMetaJob($magnet->rto_id);
-        $this->app->call([$job, 'handle']);
+        $this->app->call($job->handle(...));
 
         $magnet->refresh();
 
@@ -68,7 +68,7 @@ class FetchTorrentMetaJobTest extends TestCase
         \Event::fake(\App\Events\Stats\TorrentDuplicateDeleted::class);
 
         $job = new FetchTorrentMetaJob($magnet->rto_id);
-        $this->app->call([$job, 'handle']);
+        $this->app->call($job->handle(...));
 
         $magnet->refresh();
 
@@ -99,7 +99,7 @@ class FetchTorrentMetaJobTest extends TestCase
         $this->fakeHttpClient($topicData);
 
         $job = new FetchTorrentMetaJob($magnet->rto_id);
-        $this->app->call([$job, 'handle']);
+        $this->app->call($job->handle(...));
 
         $magnet->refresh();
 
@@ -123,7 +123,7 @@ class FetchTorrentMetaJobTest extends TestCase
         \Event::fake(\App\Events\Stats\TorrentNotFoundDeleted::class);
 
         $job = new FetchTorrentMetaJob($magnet->rto_id);
-        $this->app->call([$job, 'handle']);
+        $this->app->call($job->handle(...));
 
         $magnet->refresh();
 
@@ -155,7 +155,7 @@ class FetchTorrentMetaJobTest extends TestCase
         $this->fakeHttpClient($topicData);
 
         $job = new FetchTorrentMetaJob($magnet->rto_id);
-        $this->app->call([$job, 'handle']);
+        $this->app->call($job->handle(...));
 
         $magnet->refresh();
 

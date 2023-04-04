@@ -100,7 +100,7 @@ class Domains extends Controller
 
         \Mail::to($sendTo)->send(new DomainMailboxesMail($domain, $mailboxes));
 
-        return redirect(path([self::class, 'mailboxes'], $domain))
+        return redirect(path([Domains::class, 'mailboxes'], $domain))
             ->with('message', "Данные высланы на почту {$sendTo}");
     }
 
@@ -143,7 +143,7 @@ class Domains extends Controller
                 break;
         }
 
-        return ['redirect' => path([self::class, 'index'], $params)];
+        return ['redirect' => path([Domains::class, 'index'], $params)];
     }
 
     public function mailboxes(Domain $domain, YandexPddClient $yandexPdd)

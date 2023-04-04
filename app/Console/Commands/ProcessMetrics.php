@@ -33,7 +33,7 @@ class ProcessMetrics extends Command
 
         foreach ($metrics as $key => $json) {
             $handleMetricPayload->execute(
-                json_decode($json, true),
+                json_decode($json, true, flags: JSON_THROW_ON_ERROR),
                 $metricsAggregator,
                 $viewsAggregator,
                 $imageViewsAggregator,

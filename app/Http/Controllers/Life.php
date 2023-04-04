@@ -69,7 +69,7 @@ class Life
 
         event(new \App\Events\Stats\CityViewed($city->id));
 
-        if (1 === count($publishedTrips)) {
+        if ($publishedTrips->containsOneItem()) {
             /** @var Trip $trip */
             $trip = $publishedTrips->first();
 

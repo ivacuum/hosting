@@ -55,7 +55,7 @@ class Dev
 
         if ($handle) {
             while (false !== $line = fgets($handle)) {
-                if (null === $json = json_decode($line)) {
+                if (null === $json = json_decode($line, flags: JSON_THROW_ON_ERROR)) {
                     continue;
                 }
 

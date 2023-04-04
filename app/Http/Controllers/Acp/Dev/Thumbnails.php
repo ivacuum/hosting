@@ -19,7 +19,7 @@ class Thumbnails
 
         $storage->delete($files);
 
-        return redirect(path([self::class, 'index']))
+        return redirect(path([Thumbnails::class, 'index']))
             ->with('message', 'Папка очищена');
     }
 

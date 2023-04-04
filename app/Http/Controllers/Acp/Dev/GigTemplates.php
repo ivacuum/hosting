@@ -47,7 +47,7 @@ class GigTemplates
             $total->pics += $pics;
 
             $templates->push((object) [
-                'www' => path([self::class, 'show'], $template->getBasename('.blade.php')),
+                'www' => path([GigTemplates::class, 'show'], $template->getBasename('.blade.php')),
                 'name' => $template->getBasename('.blade.php'),
                 'i18n' => (object) $i18n,
                 'pics' => $pics,

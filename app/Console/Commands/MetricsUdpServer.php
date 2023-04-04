@@ -79,7 +79,7 @@ class MetricsUdpServer extends Command
             }
 
             $this->handleMetricPayload->execute(
-                json_decode($input, true),
+                json_decode($input, true, flags: JSON_THROW_ON_ERROR),
                 $this->metricsAggregator,
                 $this->viewsAggregator,
                 $this->imageViewsAggregator,

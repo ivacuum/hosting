@@ -16,7 +16,8 @@ class WhoisQuery
 
         $this->servers = json_decode(
             \File::get(base_path('database/whois_servers.json')),
-            true
+            true,
+            flags: JSON_THROW_ON_ERROR,
         );
 
         $this->fillSubdomainAndTld($this->domain);

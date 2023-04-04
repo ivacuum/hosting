@@ -62,7 +62,7 @@ class ChatMessages extends Controller
 
         return [
             'status' => 'OK',
-            'redirect' => path([static::class, 'index']),
+            'redirect' => path([ChatMessages::class, 'index']),
         ];
     }
 
