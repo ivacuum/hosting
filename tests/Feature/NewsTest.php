@@ -44,6 +44,13 @@ class NewsTest extends TestCase
             ->assertNotFound();
     }
 
+    public function testRedirectToIndex()
+    {
+        $this->get('news/0')
+            ->assertMovedPermanently()
+            ->assertRedirect('news');
+    }
+
     public function testRedirectToNewsLocale()
     {
         $news = NewsFactory::new()->english()->create();
