@@ -5,7 +5,7 @@ use Carbon\CarbonImmutable;
 
 class ImageFactory
 {
-    private $userId;
+    private int|null $userId = null;
 
     public function create()
     {

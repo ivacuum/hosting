@@ -5,9 +5,9 @@ use App\Spatial\Point;
 
 class CityFactory
 {
-    private $slug;
-    private $countryId;
+    private int|null $countryId = null;
     private Point|null $point = null;
+    private string|null $slug = null;
 
     private CountryFactory|null $countryFactory = null;
 

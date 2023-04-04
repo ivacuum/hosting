@@ -4,7 +4,7 @@ use App\Artist;
 
 class ArtistFactory
 {
-    private $slug;
+    private string|null $slug = null;
 
     public function create()
     {

@@ -4,7 +4,7 @@ use App\Kanji;
 
 class KanjiFactory
 {
-    private $level;
+    private int|null $level = null;
 
     public function create()
     {

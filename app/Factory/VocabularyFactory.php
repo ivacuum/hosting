@@ -4,9 +4,9 @@ use App\Vocabulary;
 
 class VocabularyFactory
 {
-    private $kana;
-    private $level;
-    private $character;
+    private int|null $level = null;
+    private string|null $kana = null;
+    private string|null $character = null;
 
     public function create()
     {

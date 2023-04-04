@@ -13,11 +13,11 @@ class ExternalIdentityFactory
         ExternalIdentity::FACEBOOK,
     ];
 
-    private $email;
-    private $userId;
-    private $provider;
+    private int|null $userId = null;
+    private string|null $email = null;
+    private string|null $provider = null;
 
-    private ?UserFactory $userFactory = null;
+    private UserFactory|null $userFactory = null;
 
     public function create()
     {

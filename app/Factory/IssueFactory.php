@@ -13,10 +13,10 @@ class IssueFactory
         '/en/japanese',
     ];
 
-    private $text;
-    private $email;
-    private $title;
-    private $userId;
+    private string|null $text = null;
+    private string|null $email = null;
+    private string|null $title = null;
+    private string|null $userId = null;
     private IssueStatus $status = IssueStatus::Open;
 
     private UserFactory|null $userFactory = null;

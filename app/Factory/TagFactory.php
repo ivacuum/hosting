@@ -4,8 +4,8 @@ use App\Tag;
 
 class TagFactory
 {
-    private $titleEn;
-    private $titleRu;
+    private string|null $titleEn = null;
+    private string|null $titleRu = null;
 
     public function create()
     {

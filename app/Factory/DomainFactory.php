@@ -5,8 +5,8 @@ use App\Domain\DomainMonitoring;
 
 class DomainFactory
 {
-    private $domain;
-    private $clientId;
+    private int|null $clientId = null;
+    private string|null $domain = null;
     private DomainMonitoring $status = DomainMonitoring::Yes;
 
     public function create()

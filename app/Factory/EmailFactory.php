@@ -8,9 +8,9 @@ use App\Trip;
 
 class EmailFactory
 {
-    private $template;
-    private $relationId;
-    private $relationType;
+    private int|null $relationId = null;
+    private string|null $template = null;
+    private string|null $relationType = null;
 
     public function create()
     {

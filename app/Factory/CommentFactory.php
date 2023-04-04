@@ -9,10 +9,10 @@ use App\Trip;
 
 class CommentFactory
 {
-    private $html;
-    private $relId;
-    private $userId;
-    private $relType;
+    private int|null $relId = null;
+    private int|null $userId = null;
+    private string|null $html = null;
+    private string|null $relType = null;
     private CommentStatus $status = CommentStatus::Published;
 
     private NewsFactory|null $newsFactory = null;

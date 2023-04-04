@@ -6,12 +6,12 @@ use App\Magnet;
 
 class MagnetFactory
 {
-    private $html;
-    private $title;
-    private $userId;
-    private $categoryId;
-    private $relatedQuery = '';
+    private string $relatedQuery = '';
+    private int|null $userId = null;
+    private string|null $html = null;
+    private string|null $title = null;
     private MagnetStatus $status = MagnetStatus::Published;
+    private MagnetCategory|null $categoryId = null;
 
     private ?CommentFactory $commentFactory = null;
 

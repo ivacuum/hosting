@@ -7,11 +7,11 @@ use App\Trip;
 
 class PhotoFactory
 {
-    private $lat;
-    private $lon;
-    private $slug;
-    private $relId;
-    private $relType;
+    private int|null $relId = null;
+    private string|null $lat = null;
+    private string|null $lon = null;
+    private string|null $slug = null;
+    private string|null $relType = null;
     private PhotoStatus $status = PhotoStatus::Published;
 
     private ?TagFactory $tagFactory = null;

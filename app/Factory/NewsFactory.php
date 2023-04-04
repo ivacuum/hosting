@@ -6,9 +6,9 @@ use App\News;
 
 class NewsFactory
 {
-    private $title;
-    private $userId;
-    private $markdown;
+    private int|null $userId = null;
+    private string|null $title = null;
+    private string|null $markdown = null;
     private Locale $locale = Locale::Rus;
     private NewsStatus $status = NewsStatus::Published;
 

@@ -6,9 +6,9 @@ use Carbon\CarbonImmutable;
 
 class GigFactory
 {
-    private $slug;
-    private $cityId;
-    private $artistId;
+    private int|null $cityId = null;
+    private int|null $artistId = null;
+    private string|null $slug = null;
     private GigStatus $status = GigStatus::Published;
 
     public function create()

@@ -6,8 +6,8 @@ use Carbon\CarbonInterface;
 
 class ChatMessageFactory
 {
-    private $text;
-    private $userId;
+    private int|null $userId = null;
+    private string|null $text = null;
     private ChatMessageStatus $status = ChatMessageStatus::Published;
     private CarbonInterface|null $createdAt = null;
 

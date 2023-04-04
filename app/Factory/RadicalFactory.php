@@ -4,7 +4,7 @@ use App\Radical;
 
 class RadicalFactory
 {
-    private $level;
+    private int|null $level = null;
 
     public function create()
     {

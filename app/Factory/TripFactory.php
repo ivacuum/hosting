@@ -6,10 +6,10 @@ use Carbon\CarbonImmutable;
 
 class TripFactory
 {
-    private $slug;
-    private $cityId;
-    private $userId;
-    private $metaImage;
+    private int|null $cityId = null;
+    private int|null $userId = null;
+    private string|null $slug = null;
+    private string|null $metaImage = null;
     private TripStatus $status = TripStatus::Published;
 
     private UserFactory|null $userFactory = null;

@@ -7,10 +7,10 @@ use Carbon\CarbonInterface;
 
 class UserFactory
 {
-    private $id;
-    private $email;
-    private $login = '';
-    private $password;
+    private int|null $id = null;
+    private string $login = '';
+    private string|null $email = null;
+    private string|null $password = null;
     private Locale $locale = Locale::Rus;
     private UserStatus $status = UserStatus::Active;
     private CarbonInterface|null $lastLoginAt = null;

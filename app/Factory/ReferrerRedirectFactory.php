@@ -5,8 +5,8 @@ use Carbon\CarbonInterface;
 
 class ReferrerRedirectFactory
 {
-    private $startsAt;
-    private $expiresAt;
+    private CarbonInterface|null $startsAt = null;
+    private CarbonInterface|null $expiresAt = null;
 
     public function create()
     {
@@ -28,8 +28,8 @@ class ReferrerRedirectFactory
         $model->to = fake()->url();
         $model->from = '/life';
         $model->clicks = 0;
-        $model->starts_at = $this->startsAt ?? now()->toDateTimeString();
-        $model->expires_at = $this->expiresAt ?? now()->addDays()->toDateTimeString();
+        $model->starts_at = $this->startsAt ?? now();
+        $model->expires_at = $this->expiresAt ?? now()->addDay();
 
         return $model;
     }
@@ -50,7 +50,7 @@ class ReferrerRedirectFactory
     public function withStartsAt(CarbonInterface $startsAt)
     {
         $factory = clone $this;
-        $factory->startsAt = $startsAt->toDateTimeString();
+        $factory->startsAt = $startsAt;
 
         return $factory;
     }
