@@ -8,7 +8,7 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->sets([
         Rector\Set\ValueObject\SetList::DEAD_CODE,
         Rector\Set\ValueObject\LevelSetList::UP_TO_PHP_82,
-        // Rector\Laravel\Set\LaravelSetList::LARAVEL_90
+        // Rector\Laravel\Set\LaravelSetList::LARAVEL_90,
         Rector\PHPUnit\Set\PHPUnitLevelSetList::UP_TO_PHPUNIT_100,
     ]);
 
