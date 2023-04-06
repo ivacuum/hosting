@@ -19,5 +19,6 @@ return static function (RectorConfig $rectorConfig): void {
         Rector\Php81\Rector\Property\ReadOnlyPropertyRector::class,
         Rector\Php81\Rector\ClassConst\FinalizePublicClassConstantRector::class,
         Rector\Php81\Rector\FuncCall\NullToStrictStringFuncCallArgRector::class,
+        Rector\Php81\Rector\Array_\FirstClassCallableRector::class,
     ]);
 };
