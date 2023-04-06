@@ -3,4 +3,11 @@
 abstract class TestCase extends \Illuminate\Foundation\Testing\TestCase
 {
     use CreatesApplication;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->withoutDeprecationHandling();
+    }
 }
