@@ -4,8 +4,8 @@ use App\YandexUser;
 
 class YandexUserFactory
 {
-    private $token;
-    private $account;
+    private string|null $token = null;
+    private string|null $account = null;
 
     public function create()
     {

@@ -75,7 +75,7 @@ class NewsController extends Controller
 
         \Notification::send($users, new NewsPublishedNotification($news));
 
-        return back()->with('message', 'Уведомления разосланы пользователям: ' . count($users));
+        return back()->with('message', "Уведомления разосланы пользователям: {$users->count()}");
     }
 
     public function show(News $news, ResponseToShowAction $responseToShow)

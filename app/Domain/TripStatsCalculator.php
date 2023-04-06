@@ -68,20 +68,20 @@ class TripStatsCalculator
     public function daysInCities(): Collection
     {
         return $this->daysInCities
-            ->map(fn ($years) => $years->reverse()->map(fn ($days) => count($days)));
+            ->map(fn ($years) => $years->reverse()->map(fn (Collection $days) => $days->count()));
     }
 
     public function daysInCountries(): Collection
     {
         return $this->daysInCountries
-            ->map(fn ($years) => $years->reverse()->map(fn ($days) => count($days)));
+            ->map(fn ($years) => $years->reverse()->map(fn (Collection $days) => $days->count()));
     }
 
     public function daysInTrips(): Collection
     {
         return $this->daysInTrips
             ->reverse()
-            ->map(fn ($trips) => count($trips));
+            ->map(fn (Collection $trips) => $trips->count());
     }
 
     public function firstDate(): CarbonImmutable
