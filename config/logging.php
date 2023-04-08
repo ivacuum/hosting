@@ -31,6 +31,21 @@ return [
             'level' => 'critical',
         ],
 
+        'telegram' => [
+            'driver' => 'monolog',
+            'handler' => \Monolog\Handler\TelegramBotHandler::class,
+            'with' => [
+                'apiKey' => env('TELEGRAM_BOT_TOKEN'),
+                'channel' => env('TELEGRAM_ADMIN_ID'),
+            ],
+            'formatter' => \Monolog\Formatter\LineFormatter::class,
+            'formatter_with' => [
+                'format' => "%message%\n\n%context%\n\n%extra%",
+                'allowInlineLineBreaks' => true,
+                'ignoreEmptyContextAndExtra' => true,
+            ],
+        ],
+
         'stderr' => [
             'driver' => 'monolog',
             'handler' => \Monolog\Handler\StreamHandler::class,
