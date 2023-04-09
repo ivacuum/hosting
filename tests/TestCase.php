@@ -8,6 +8,7 @@ abstract class TestCase extends \Illuminate\Foundation\Testing\TestCase
     {
         parent::setUp();
 
+        \Http::preventStrayRequests();
         $this->withoutDeprecationHandling();
     }
 }

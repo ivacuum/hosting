@@ -15,7 +15,7 @@ class TelegramClientTest extends TestCase
 
     public function testNoCredentialsLogged()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             ...TelegramResponse::fakeSuccess(),
         ]);
 
@@ -30,7 +30,7 @@ class TelegramClientTest extends TestCase
 
     public function testSendMessage()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             ...TelegramResponse::fakeSuccess(),
         ]);
 
@@ -49,7 +49,7 @@ class TelegramClientTest extends TestCase
 
     public function testSendMessageWithDisabledWebPagePreview()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             ...TelegramResponse::fakeSuccess(),
         ]);
 
@@ -70,7 +70,7 @@ class TelegramClientTest extends TestCase
 
     public function testSendMessageWithInlineKeyboard()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             ...TelegramResponse::fakeSuccess(),
         ]);
 
@@ -108,7 +108,7 @@ class TelegramClientTest extends TestCase
 
     public function testSetWebhook()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             ...TelegramResponse::fakeSuccess(),
         ]);
 

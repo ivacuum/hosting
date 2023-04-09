@@ -247,7 +247,7 @@ class MagnetTest extends TestCase
 
     private function fakeHttpRequests(Magnet $stub)
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             "api.rutracker.cc/v1/get_tor_topic_data?by=topic_id&val={$stub->rto_id}" => \Http::response([
                 'result' => [
                     $stub->rto_id => [

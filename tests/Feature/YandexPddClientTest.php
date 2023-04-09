@@ -24,7 +24,7 @@ class YandexPddClientTest extends TestCase
 
     public function testDkimStatus()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             ...DkimStatusResponse::fakeSuccess('example.com'),
         ]);
 
@@ -46,7 +46,7 @@ class YandexPddClientTest extends TestCase
 
     public function testDnsRecordAdd()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             ...DnsRecordAddResponse::fakeSuccess('example.com', YandexPddDnsRecordFactory::a(5, 'example.com', '127.0.0.2', 'phpunit')),
         ]);
 
@@ -64,7 +64,7 @@ class YandexPddClientTest extends TestCase
 
     public function testDnsRecordDelete()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             ...DnsRecordDeleteResponse::fakeSuccess('example.com'),
         ]);
 
@@ -78,7 +78,7 @@ class YandexPddClientTest extends TestCase
 
     public function testDnsRecordEdit()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             ...DnsRecordEditResponse::fakeSuccess('example.com', YandexPddDnsRecordFactory::a(5, 'example.com', '127.0.0.2', 'phpunit')),
         ]);
 
@@ -96,7 +96,7 @@ class YandexPddClientTest extends TestCase
 
     public function testDnsRecords()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             ...DnsRecordsResponse::fakeSuccess('example.com'),
         ]);
 
@@ -110,7 +110,7 @@ class YandexPddClientTest extends TestCase
 
     public function testDomains()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             ...DomainsResponse::fakeSuccess('example.com', ['alias.example.com']),
         ]);
 
@@ -123,7 +123,7 @@ class YandexPddClientTest extends TestCase
 
     public function testEmailAdd()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             ...EmailAddResponse::fakeSuccess('example.com', 'me@example.com'),
         ]);
 
@@ -138,7 +138,7 @@ class YandexPddClientTest extends TestCase
 
     public function testEmailAddError()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             ...EmailAddResponse::fakeError(),
         ]);
 
@@ -151,7 +151,7 @@ class YandexPddClientTest extends TestCase
 
     public function testEmails()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             ...EmailsResponse::fakeSuccess('example.com', 'me@example.com'),
         ]);
 
@@ -164,7 +164,7 @@ class YandexPddClientTest extends TestCase
 
     public function testNoCredentialsLogged()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             ...DkimStatusResponse::fakeSuccess('example.com'),
         ]);
 
@@ -181,7 +181,7 @@ class YandexPddClientTest extends TestCase
 
     public function testSetNewEmailPassword()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             ...EmailEditResponse::fakeSuccess('example.com', 'me@example.com'),
         ]);
 

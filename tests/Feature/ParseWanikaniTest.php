@@ -13,7 +13,7 @@ class ParseWanikaniTest extends TestCase
 
     public function testOk()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             'api.wanikani.com/v2/subjects?hidden=false&levels=1' => \Http::response([
                 'data' => [
                     [

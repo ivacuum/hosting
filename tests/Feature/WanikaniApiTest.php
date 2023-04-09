@@ -13,7 +13,7 @@ class WanikaniApiTest extends TestCase
 
     public function testNoCredentialsLogged()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             ...SubjectResponse::fakeKanji(555),
         ]);
 
@@ -27,7 +27,7 @@ class WanikaniApiTest extends TestCase
 
     public function testSubjectKanji()
     {
-        \Http::preventStrayRequests()->fake([
+        \Http::fake([
             ...SubjectResponse::fakeKanji(555),
         ]);
 
