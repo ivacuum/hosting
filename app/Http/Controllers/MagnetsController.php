@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Action\CountMagnetsByCategoriesAction;
+use App\Action\SearchForMagnetIdsAction;
 use App\Comment;
 use App\Domain\Locale;
 use App\Domain\MagnetStatus;
@@ -8,35 +9,19 @@ use App\Http\Requests\MagnetsIndexForm;
 use App\Magnet;
 use App\Scope\CommentPublishedScope;
 use App\Scope\CommentRelationScope;
+use App\Scope\MagnetFilterByCategoryScope;
 use App\Scope\MagnetPublishedScope;
-use App\SearchSynonym;
-use Foolz\SphinxQL\SphinxQL;
 use Illuminate\Database\Eloquent\Builder;
 
 class MagnetsController
 {
-    public function index(MagnetsIndexForm $request)
+    public function index(MagnetsIndexForm $request, SearchForMagnetIdsAction $searchForMagnetIds)
     {
-        $q = $request->searchQuery;
-        $fulltext = $request->isFulltextSearch;
-        $categoryId = $request->categoryId;
-
         $magnets = Magnet::query();
 
-        if ($q) {
-            $ids = Magnet::search($q, function (SphinxQL $builder) use ($categoryId, $fulltext, $q) {
-                $builder = $builder->match(
-                    $fulltext ? '*' : 'title',
-                    SearchSynonym::addSynonymsToQuery($q),
-                    true
-                );
-
-                if ($categoryId) {
-                    $builder = $builder->where('category_id', '=', $categoryId);
-                }
-
-                return $builder->execute();
-            })->raw();
+        if ($request->searchQuery) {
+            $ids = $searchForMagnetIds
+                ->execute($request->searchQuery, $request->categoryId, $request->isFulltextSearch);
 
             event(new \App\Events\Stats\TorrentSearched);
 
@@ -44,30 +29,24 @@ class MagnetsController
         }
 
         $magnets = $magnets->tap(new MagnetPublishedScope)
+            ->when(!$request->searchQuery && $request->category, fn (Builder $query) => $query->tap(new MagnetFilterByCategoryScope($request->categoryId)))
             ->orderByDesc('registered_at')
-            ->when(!$q && $request->category, function (Builder $query) use ($categoryId) {
-                $ids = \TorrentCategoryHelper::selfAndDescendantsIds($categoryId);
-
-                event(new \App\Events\Stats\TorrentFilteredByCategory);
-
-                return $query->whereIn('category_id', $ids);
-            })
             ->simplePaginate(25, Magnet::LIST_COLUMNS);
 
         return view('magnets.index', [
-            'q' => $q,
+            'q' => $request->searchQuery,
             'tree' => \TorrentCategoryHelper::tree(),
             'stats' => resolve(CountMagnetsByCategoriesAction::class)->execute(),
             'magnets' => $magnets,
             'fulltext' => $request->isFulltextSearch,
-            'categoryId' => $categoryId,
+            'categoryId' => $request->categoryId,
         ]);
     }
 
     public function comments()
     {
         $comments = Comment::with('rel', 'user')
-            ->tap(new CommentRelationScope('Torrent'))
+            ->tap(new CommentRelationScope(new Magnet))
             ->tap(new CommentPublishedScope)
             ->orderByDesc('created_at')
             ->take(50)
