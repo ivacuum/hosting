@@ -24,8 +24,8 @@ class AppServiceProvider extends ServiceProvider
         Vite::useBuildDirectory('assets');
 
         Model::preventLazyLoading(!app()->isProduction());
-        Model::preventAccessingMissingAttributes(!app()->isProduction());
-        Model::preventSilentlyDiscardingAttributes(!app()->isProduction());
+        Model::preventAccessingMissingAttributes();
+        Model::preventSilentlyDiscardingAttributes();
 
         Relation::enforceMorphMap([
             'Gig' => App\Gig::class,
