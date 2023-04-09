@@ -8,6 +8,7 @@ use App\Comment;
 use App\Issue;
 use App\Magnet;
 use App\News;
+use App\Scope\CommentRelationScope;
 use App\Trip;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -36,10 +37,10 @@ class Comments extends Controller
         $models = Comment::query()
             ->with('user')
             ->when(null !== $status, fn (Builder $query) => $query->where('status', $status))
-            ->when($issueId, fn (Builder $query) => $query->where('rel_type', (new Issue)->getMorphClass())->where('rel_id', $issueId))
-            ->when($newsId, fn (Builder $query) => $query->where('rel_type', (new News)->getMorphClass())->where('rel_id', $newsId))
-            ->when($tripId, fn (Builder $query) => $query->where('rel_type', (new Trip)->getMorphClass())->where('rel_id', $tripId))
-            ->when($magnetId, fn (Builder $query) => $query->where('rel_type', (new Magnet)->getMorphClass())->where('rel_id', $magnetId))
+            ->when($issueId, fn (Builder $query) => $query->tap(new CommentRelationScope(new Issue, $issueId)))
+            ->when($newsId, fn (Builder $query) => $query->tap(new CommentRelationScope(new News, $newsId)))
+            ->when($tripId, fn (Builder $query) => $query->tap(new CommentRelationScope(new Trip, $tripId)))
+            ->when($magnetId, fn (Builder $query) => $query->tap(new CommentRelationScope(new Magnet, $magnetId)))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->orderBy('id', $sort->direction->value)
             ->paginate(20);

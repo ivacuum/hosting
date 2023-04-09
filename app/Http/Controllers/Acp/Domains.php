@@ -14,6 +14,7 @@ use App\Events\DomainWhoisUpdated;
 use App\Mail\DomainMailboxesMail;
 use App\Rules\Email;
 use App\Services\YandexPdd\YandexPddClient;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
@@ -35,30 +36,24 @@ class Domains extends Controller
         $clientId = request('client_id');
         $yandexUserId = request('yandex_user_id');
 
-        $models = match ($filter) {
-            'external' => Domain::where('status', 1)
+        $query = Domain::query();
+
+        $query = match ($filter) {
+            'external' => $query->where('status', DomainMonitoring::Yes)
                 ->whereDomainControl(0),
-            'inactive' => Domain::where('status', DomainMonitoring::No),
-            'no-ns' => Domain::where('status', 1)
+            'inactive' => $query->where('status', DomainMonitoring::No),
+            'no-ns' => $query->where('status', DomainMonitoring::Yes)
                 ->whereNs(''),
-            'no-server' => Domain::where('status', 1)
+            'no-server' => $query->where('status', DomainMonitoring::Yes)
                 ->whereIpv4(''),
-            'orphan' => Domain::where('orphan', 1),
-            'trashed' => Domain::onlyTrashed(),
-            default => Domain::where('status', 1),
+            'orphan' => $query->where('orphan', DomainMonitoring::Yes),
+            default => $query->where('status', DomainMonitoring::Yes),
         };
 
-        if ($q) {
-            $models = $models->where('domain', 'LIKE', "%{$q}%");
-        }
-        if ($clientId) {
-            $models = $models->where('client_id', $clientId);
-        }
-        if ($yandexUserId) {
-            $models = $models->where('yandex_user_id', $yandexUserId);
-        }
-
-        $models = $models
+        $models = $query
+            ->when($q, fn (Builder $query) => $query->where('domain', 'LIKE', "%{$q}%"))
+            ->when($clientId, fn (Builder $query) => $query->where('client_id', $clientId))
+            ->when($yandexUserId, fn (Builder $query) => $query->where('yandex_user_id', $yandexUserId))
             ->orderBy(match ($sort->key) {
                 'registered_at',
                 'paid_till' => $sort->key,
@@ -114,31 +109,17 @@ class Domains extends Controller
         switch ($action) {
             case 'activate':
 
-                Domain::whereIn('id', $ids)->update(['status' => 1]);
+                Domain::whereIn('id', $ids)->update(['status' => DomainMonitoring::Yes]);
 
                 break;
             case 'deactivate':
 
-                Domain::whereIn('id', $ids)->update(['status' => 0]);
+                Domain::whereIn('id', $ids)->update(['status' => DomainMonitoring::No]);
 
                 break;
             case 'delete':
 
                 Domain::destroy($ids);
-
-                break;
-            case 'force_delete':
-
-                $params['filter'] = 'trashed';
-
-                Domain::whereIn('id', $ids)->onlyTrashed()->forceDelete();
-
-                break;
-            case 'restore':
-
-                $params['filter'] = 'trashed';
-
-                Domain::whereIn('id', $ids)->onlyTrashed()->restore();
 
                 break;
         }

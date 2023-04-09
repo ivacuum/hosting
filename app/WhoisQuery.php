@@ -54,20 +54,13 @@ class WhoisQuery
                 continue;
             }
 
-            switch ($row['type']) {
-                case 'A':
-                    $ipv4[] = $row['ip'];
-                    break;
-                case 'AAAA':
-                    $ipv6[] = $row['ipv6'];
-                    break;
-                case 'MX':
-                    $mx[] = $row['target'];
-                    break;
-                case 'NS':
-                    $ns[] = $row['target'];
-                    break;
-            }
+            match ($row['type']) {
+                'A' => $ipv4[] = $row['ip'],
+                'AAAA' => $ipv6[] = $row['ipv6'],
+                'MX' => $mx[] = $row['target'],
+                'NS' => $ns[] = $row['target'],
+                default => null,
+            };
         }
 
         $ipv4 = array_unique($ipv4);
