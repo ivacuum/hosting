@@ -13,8 +13,13 @@ return [
 
     'soft_delete' => false,
 
-    'algolia' => [
-        'id' => env('ALGOLIA_APP_ID', ''),
-        'secret' => env('ALGOLIA_SECRET', ''),
+    'meilisearch' => [
+        'host' => env('MEILISEARCH_HOST', 'http://127.0.0.1:7700'),
+        'key' => env('MEILISEARCH_KEY'),
+        'index-settings' => [
+            App\Magnet::class => [
+                'filterableAttributes' => ['id', 'category_id'],
+            ],
+        ],
     ],
 ];
