@@ -4,6 +4,7 @@ return [
     'driver' => env('SCOUT_DRIVER', 'sphinx'),
     'prefix' => env('SCOUT_PREFIX', 'vac_'),
     'queue' => env('SCOUT_QUEUE', false),
+    'after_commit' => true,
 
     'chunk' => [
         'searchable' => 500,
