@@ -9,7 +9,7 @@ use Laravel\Scout\Builder;
 
 class SearchForMagnetIdsAction
 {
-    public function execute(string $q, int $categoryId, bool $fulltext): array
+    public function execute(string $q, int|null $categoryId, bool $fulltext): array
     {
         return match (config('scout.driver')) {
             'sphinx' => $this->sphinx($q, $categoryId, $fulltext),
@@ -17,14 +17,14 @@ class SearchForMagnetIdsAction
         };
     }
 
-    private function meilisearch(string $q, int $categoryId)
+    private function meilisearch(string $q, int|null $categoryId)
     {
         return Magnet::search($q)
             ->when($categoryId, fn (Builder $query) => $query->whereIn('category_id', \TorrentCategoryHelper::selfAndDescendantsIds($categoryId)))
             ->raw()['hits'];
     }
 
-    private function sphinx(string $q, int $categoryId, bool $fulltext)
+    private function sphinx(string $q, int|null $categoryId, bool $fulltext)
     {
         return Magnet::search($q, function (SphinxQL $builder) use ($categoryId, $fulltext, $q) {
             $builder = $builder->match(
