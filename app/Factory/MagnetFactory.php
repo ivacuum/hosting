@@ -56,13 +56,12 @@ class MagnetFactory
         $model->clicks = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->rto_id = fake()->numberBetween(1_000_000, 5_000_000);
         $model->status = $this->status;
+        $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
         $model->info_hash = fake()->regexify('[A-F0-9]{40}');
         $model->announcer = 'https://example.com';
+        $model->category_id = $this->categoryId ?? fake()->randomElement([2, 3, 4, 5, 7, 8, 9, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]);
         $model->registered_at = fake()->dateTimeBetween('-4 years');
         $model->related_query = $this->relatedQuery;
-
-        $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
-        $model->category_id = $this->categoryId ?? fake()->randomElement([2, 3, 4, 5, 7, 8, 9, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]);
 
         return $model;
     }

@@ -40,18 +40,13 @@ class TripFactory
         $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->status = $this->status;
         $model->city_id = $this->cityId ?? CityFactory::new()->create()->id;
+        $model->user_id = $this->userId ?? $this->userFactory?->create()->id ?? 1;
         $model->date_end = $dateEnd;
         $model->markdown = '';
         $model->title_ru = $title;
         $model->title_en = $title;
         $model->date_start = $dateStart;
         $model->meta_image = $this->metaImage ?? '';
-
-        if ($this->userFactory && !$this->userId) {
-            $model->user_id = $this->userFactory->create()->id;
-        } else {
-            $model->user_id = $this->userId ?? 1;
-        }
 
         return $model;
     }

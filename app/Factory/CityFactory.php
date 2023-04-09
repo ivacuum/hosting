@@ -30,13 +30,7 @@ class CityFactory
         $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->title_en = $title;
         $model->title_ru = $title;
-        $model->country_id = $this->countryId;
-
-        if (!$model->country_id) {
-            $model->country_id = ($this->countryFactory ?? CountryFactory::new())
-                ->create()
-                ->id;
-        }
+        $model->country_id = $this->countryId ?? ($this->countryFactory ?? CountryFactory::new())->create()->id;
 
         return $model;
     }

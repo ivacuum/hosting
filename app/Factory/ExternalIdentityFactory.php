@@ -47,14 +47,8 @@ class ExternalIdentityFactory
         $model = new ExternalIdentity;
         $model->uid = fake()->numberBetween(10000, 999_999_999_999);
         $model->email = $this->email ?? fake()->optional(0.6, '')->safeEmail();
-        $model->user_id = $this->userId;
+        $model->user_id = $this->userId ?? ($this->userFactory ?? UserFactory::new())->create()->id;
         $model->provider = $this->provider ?? fake()->randomElement(self::PROVIDERS);
-
-        if (!$model->user_id) {
-            $model->user_id = ($this->userFactory ?? UserFactory::new())
-                ->create()
-                ->id;
-        }
 
         return $model;
     }

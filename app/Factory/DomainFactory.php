@@ -23,14 +23,10 @@ class DomainFactory
 
         $model->domain = $this->domain ?? fake()->domainName();
         $model->status = $this->status;
-        $model->client_id = $this->clientId;
+        $model->client_id = $this->clientId ?? ClientFactory::new()->create()->id;
         $model->paid_till = fake()->dateTimeBetween('-1 month', '+1 year');
         $model->registered_at = fake()->dateTimeBetween('-5 years');
         $model->domain_control = fake()->boolean(85);
-
-        if (!$model->client_id) {
-            $model->client_id = ClientFactory::new()->create()->id;
-        }
 
         return $model;
     }
