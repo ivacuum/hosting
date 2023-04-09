@@ -1,11 +1,11 @@
 <?php namespace App\Observers;
 
-use App\Image as Model;
+use App\Image;
 
 class ImageObserver
 {
-    public function deleted(Model $model)
+    public function deleted(Image $image)
     {
-        $model->deleteFiles();
+        $image->deleteFiles();
     }
 }

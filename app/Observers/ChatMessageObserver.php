@@ -1,12 +1,12 @@
 <?php namespace App\Observers;
 
-use App\ChatMessage as Model;
+use App\ChatMessage;
 use App\Events\ChatMessageCreated;
 
 class ChatMessageObserver
 {
-    public function created(Model $model)
+    public function created(ChatMessage $chatMessage)
     {
-        event(new ChatMessageCreated($model));
+        event(new ChatMessageCreated($chatMessage));
     }
 }

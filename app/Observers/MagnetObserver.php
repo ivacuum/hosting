@@ -1,30 +1,30 @@
 <?php namespace App\Observers;
 
 use App\Events\MagnetAddedAnonymously;
-use App\Magnet as Model;
+use App\Magnet;
 
 class MagnetObserver
 {
-    public function created(Model $model)
+    public function created(Magnet $magnet)
     {
         event(new \App\Events\Stats\TorrentAdded);
 
-        if ($model->isAnonymous()) {
-            event(new MagnetAddedAnonymously($model));
+        if ($magnet->isAnonymous()) {
+            event(new MagnetAddedAnonymously($magnet));
         }
     }
 
-    public function deleting(Model $model)
+    public function deleting(Magnet $magnet)
     {
-        \DB::transaction(function () use ($model) {
-            $model->comments->each->delete();
+        \DB::transaction(function () use ($magnet) {
+            $magnet->comments->each->delete();
         });
     }
 
-    public function saving(Model $model)
+    public function saving(Magnet $magnet)
     {
-        if ($model->isDirty('title') && str_starts_with($model->title, '[ATV')) {
-            $model->title = preg_replace('/^\[ATV ?3\] /', '', $model->title);
+        if ($magnet->isDirty('title') && str_starts_with($magnet->title, '[ATV')) {
+            $magnet->title = preg_replace('/^\[ATV ?3\] /', '', $magnet->title);
         }
     }
 }

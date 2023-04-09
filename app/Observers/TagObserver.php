@@ -1,14 +1,14 @@
 <?php namespace App\Observers;
 
-use App\Tag as Model;
+use App\Tag;
 
 class TagObserver
 {
-    public function deleting(Model $model)
+    public function deleting(Tag $tag)
     {
-        \DB::transaction(function () use ($model) {
-            foreach ($model->photos as $photo) {
-                $photo->tags()->detach($model->id);
+        \DB::transaction(function () use ($tag) {
+            foreach ($tag->photos as $photo) {
+                $photo->tags()->detach($tag->id);
             }
         });
     }

@@ -1,13 +1,13 @@
 <?php namespace App\Observers;
 
-use App\Domain as Model;
+use App\Domain;
 
 class DomainObserver
 {
-    public function deleting(Model $model)
+    public function deleting(Domain $domain)
     {
-        \DB::transaction(function () use ($model) {
-            $model->aliases()->update(['alias_id' => 0]);
+        \DB::transaction(function () use ($domain) {
+            $domain->aliases()->update(['alias_id' => 0]);
         });
     }
 }

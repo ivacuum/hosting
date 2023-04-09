@@ -1,13 +1,13 @@
 <?php namespace App\Observers;
 
-use App\Vocabulary as Model;
+use App\Vocabulary;
 
 class VocabularyObserver
 {
-    public function deleting(Model $model)
+    public function deleting(Vocabulary $vocab)
     {
-        \DB::transaction(function () use ($model) {
-            $model->burnables()->delete();
+        \DB::transaction(function () use ($vocab) {
+            $vocab->burnables()->delete();
         });
     }
 }

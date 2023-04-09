@@ -1,7 +1,7 @@
 <?php namespace App\Observers;
 
 use App\Domain\PhotoStatus;
-use App\Trip as Model;
+use App\Trip;
 use App\Utilities\CacheHelper;
 
 class TripObserver
@@ -10,10 +10,10 @@ class TripObserver
     {
     }
 
-    public function deleting(Model $model)
+    public function deleting(Trip $trip)
     {
-        \DB::transaction(function () use ($model) {
-            $model->comments->each->delete();
+        \DB::transaction(function () use ($trip) {
+            $trip->comments->each->delete();
         });
     }
 
@@ -22,43 +22,43 @@ class TripObserver
         $this->cache->forgetTrips();
     }
 
-    public function saved(Model $model)
+    public function saved(Trip $trip)
     {
-        $this->toggleTripPhotosStatus($model);
+        $this->toggleTripPhotosStatus($trip);
 
         $this->cache->forgetTrips();
     }
 
-    public function updated(Model $model)
+    public function updated(Trip $trip)
     {
-        $this->updateTripPhotosSlugPrefix($model);
+        $this->updateTripPhotosSlugPrefix($trip);
     }
 
     // Публикация фотографий вслед за публикацией поездки (и наоборот)
-    protected function toggleTripPhotosStatus(Model $model)
+    protected function toggleTripPhotosStatus(Trip $trip)
     {
-        if (!$model->isDirty('status')) {
+        if (!$trip->isDirty('status')) {
             return;
         }
 
-        $status = $model->status->isPublished()
+        $status = $trip->status->isPublished()
             ? PhotoStatus::Published
             : PhotoStatus::Hidden;
 
-        foreach ($model->photos as $photo) {
+        foreach ($trip->photos as $photo) {
             $photo->status = $status;
             $photo->save();
         }
     }
 
-    protected function updateTripPhotosSlugPrefix(Model $model)
+    protected function updateTripPhotosSlugPrefix(Trip $trip)
     {
-        if (!$model->isDirty('slug')) {
+        if (!$trip->isDirty('slug')) {
             return;
         }
 
-        foreach ($model->photos as $photo) {
-            $photo->newSlugPrefix($model->slug);
+        foreach ($trip->photos as $photo) {
+            $photo->newSlugPrefix($trip->slug);
             $photo->save();
         }
     }

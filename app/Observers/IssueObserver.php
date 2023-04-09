@@ -2,13 +2,13 @@
 
 use App\Events\IssueCreated;
 use App\Events\Stats;
-use App\Issue as Model;
+use App\Issue;
 
 class IssueObserver
 {
-    public function created(Model $model)
+    public function created(Issue $issue)
     {
-        event(new IssueCreated($model));
+        event(new IssueCreated($issue));
         event(new Stats\IssueAdded);
     }
 }

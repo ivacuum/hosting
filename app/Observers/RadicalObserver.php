@@ -1,14 +1,14 @@
 <?php namespace App\Observers;
 
-use App\Radical as Model;
+use App\Radical;
 
 class RadicalObserver
 {
-    public function deleting(Model $model)
+    public function deleting(Radical $radical)
     {
-        \DB::transaction(function () use ($model) {
-            $model->burnables()->delete();
-            $model->kanjis()->detach();
+        \DB::transaction(function () use ($radical) {
+            $radical->burnables()->delete();
+            $radical->kanjis()->detach();
         });
     }
 }

@@ -1,14 +1,14 @@
 <?php namespace App\Observers;
 
-use App\Kanji as Model;
+use App\Kanji;
 
 class KanjiObserver
 {
-    public function deleting(Model $model)
+    public function deleting(Kanji $kanji)
     {
-        \DB::transaction(function () use ($model) {
-            $model->burnables()->delete();
-            $model->radicals()->detach();
+        \DB::transaction(function () use ($kanji) {
+            $kanji->burnables()->delete();
+            $kanji->radicals()->detach();
         });
     }
 }

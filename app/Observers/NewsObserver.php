@@ -1,13 +1,13 @@
 <?php namespace App\Observers;
 
-use App\News as Model;
+use App\News;
 
 class NewsObserver
 {
-    public function deleting(Model $model)
+    public function deleting(News $news)
     {
-        \DB::transaction(function () use ($model) {
-            $model->comments->each->delete();
+        \DB::transaction(function () use ($news) {
+            $news->comments->each->delete();
         });
     }
 }

@@ -1,13 +1,13 @@
 <?php namespace App\Observers;
 
-use App\YandexUser as Model;
+use App\YandexUser;
 
 class YandexUserObserver
 {
-    public function deleting(Model $model)
+    public function deleting(YandexUser $yandexUser)
     {
-        \DB::transaction(function () use ($model) {
-            $model->domains()->update(['yandex_user_id' => 0]);
+        \DB::transaction(function () use ($yandexUser) {
+            $yandexUser->domains()->update(['yandex_user_id' => 0]);
         });
     }
 }

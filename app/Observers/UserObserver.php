@@ -2,78 +2,78 @@
 
 use App\Avatar;
 use App\Events\Stats;
-use App\User as Model;
+use App\User;
 
 class UserObserver
 {
-    public function creating(Model $model)
+    public function creating(User $user)
     {
-        if (!$model->locale) {
-            $model->locale = \App::getLocale();
+        if (!$user->locale) {
+            $user->locale = \App::getLocale();
         }
 
-        if (!$model->ip) {
-            $model->ip = request()->ip();
+        if (!$user->ip) {
+            $user->ip = request()->ip();
         }
     }
 
-    public function deleting(Model $model)
+    public function deleting(User $user)
     {
-        \DB::transaction(function () use ($model) {
-            $model->chatMessages->each->delete();
-            $model->comments->each->delete();
-            $model->externalIdentities->each->delete();
-            $model->images->each->delete();
-            $model->magnets->each->delete();
-            $model->news->each->delete();
-            $model->trips->each->delete();
+        \DB::transaction(function () use ($user) {
+            $user->chatMessages->each->delete();
+            $user->comments->each->delete();
+            $user->externalIdentities->each->delete();
+            $user->images->each->delete();
+            $user->magnets->each->delete();
+            $user->news->each->delete();
+            $user->trips->each->delete();
         });
     }
 
-    public function deleted(Model $model)
+    public function deleted(User $user)
     {
-        if ($model->avatar) {
-            (new Avatar)->delete($model->avatar);
+        if ($user->avatar) {
+            (new Avatar)->delete($user->avatar);
         }
     }
 
-    public function saving(Model $model)
+    public function saving(User $user)
     {
-        if ($model->isDirty('password')) {
-            $model->password_changed_at = now();
+        if ($user->isDirty('password')) {
+            $user->password_changed_at = now();
         }
     }
 
-    public function saved(Model $model)
+    public function saved(User $user)
     {
-        if ($model->isDirty('avatar')) {
-            $lastAvatar = $model->getOriginal('avatar');
+        if ($user->isDirty('avatar')) {
+            $lastAvatar = $user->getOriginal('avatar');
 
             if ($lastAvatar) {
                 (new Avatar)->delete($lastAvatar);
             }
         }
 
-        if ($model->isDirty('notify_gigs')) {
-            if ($model->notify_gigs->isEnabled()) {
+        if ($user->isDirty('notify_gigs')) {
+            if ($user->notify_gigs->isEnabled()) {
                 event(new Stats\GigsSubscribed);
-            } elseif ($model->notify_gigs->isDisabled()) {
+            } elseif ($user->notify_gigs->isDisabled()) {
                 event(new Stats\GigsUnsubscribed);
             }
         }
 
-        if ($model->isDirty('notify_news')) {
-            if ($model->notify_news->isEnabled()) {
+        if ($user->isDirty('notify_news')) {
+            if ($user->notify_news->isEnabled()) {
                 event(new Stats\NewsSubscribed);
-            } elseif ($model->notify_news->isDisabled()) {
+            } elseif ($user->notify_news->isDisabled()) {
                 event(new Stats\NewsUnsubscribed);
             }
         }
 
-        if ($model->isDirty('notify_trips')) {
-            if ($model->notify_trips->isEnabled()) {
+        if ($user->isDirty('notify_trips')) {
+            if ($user->notify_trips->isEnabled()) {
                 event(new Stats\TripsSubscribed);
-            } elseif ($model->notify_trips->isDisabled()) {
+            } elseif ($user->notify_trips->isDisabled()) {
                 event(new Stats\TripsUnsubscribed);
             }
         }

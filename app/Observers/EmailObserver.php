@@ -1,13 +1,13 @@
 <?php namespace App\Observers;
 
-use App\Email as Model;
+use App\Email;
 
 class EmailObserver
 {
-    public function creating(Model $model)
+    public function creating(Email $email)
     {
-        if (!$model->locale) {
-            $model->locale = \App::getLocale();
+        if (!$email->locale) {
+            $email->locale = \App::getLocale();
         }
     }
 }
