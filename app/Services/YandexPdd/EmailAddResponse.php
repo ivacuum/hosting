@@ -3,12 +3,12 @@
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\Response;
 
-class EmailAddResponse
+readonly class EmailAddResponse
 {
-    public readonly bool $successful;
-    public readonly string $uid;
-    public readonly string $login;
-    public readonly string $domain;
+    public bool $successful;
+    public string $uid;
+    public string $login;
+    public string $domain;
 
     public function __construct(Response $response)
     {

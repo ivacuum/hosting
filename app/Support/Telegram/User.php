@@ -1,13 +1,13 @@
 <?php namespace App\Support\Telegram;
 
-class User
+readonly class User
 {
     public function __construct(
-        public readonly int $id,
-        public readonly string $firstName,
-        public readonly string|null $lastName,
-        public readonly string|null $username,
-        public readonly string|null $language
+        public int $id,
+        public string $firstName,
+        public string|null $lastName,
+        public string|null $username,
+        public string|null $language
     ) {
     }
 

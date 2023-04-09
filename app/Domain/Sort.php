@@ -1,10 +1,10 @@
 <?php namespace App\Domain;
 
-class Sort
+readonly class Sort
 {
     public function __construct(
-        public readonly string $key,
-        public readonly SortDirection $direction
+        public string $key,
+        public SortDirection $direction
     ) {
     }
 

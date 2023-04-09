@@ -2,13 +2,13 @@
 
 use Carbon\CarbonImmutable;
 
-class Message
+readonly class Message
 {
     public function __construct(
-        public readonly int $id,
-        public readonly User $from,
-        public readonly CarbonImmutable $date,
-        public readonly string|null $text
+        public int $id,
+        public User $from,
+        public CarbonImmutable $date,
+        public string|null $text
     ) {
     }
 

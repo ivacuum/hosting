@@ -3,10 +3,10 @@
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\Response;
 
-class DnsRecordDeleteResponse
+readonly class DnsRecordDeleteResponse
 {
-    public readonly bool $successful;
-    public readonly string $domain;
+    public bool $successful;
+    public string $domain;
 
     public function __construct(Response $response)
     {

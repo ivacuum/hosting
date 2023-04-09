@@ -1,22 +1,22 @@
 <?php namespace App\Services\YandexPdd;
 
-class DnsRecord
+readonly class DnsRecord
 {
     public function __construct(
-        public readonly int $id,
-        public readonly string $domain,
-        public readonly string $subdomain,
-        public readonly DnsRecordType $type,
-        public readonly string $content,
-        public readonly string $fqdn,
-        public readonly int|null $priority,
-        public readonly int $ttl,
-        public readonly string|null $target,
-        public readonly int|null $port,
-        public readonly int|null $weight,
-        public readonly int|null $retry,
-        public readonly int|null $refresh,
-        public readonly int|null $expire
+        public int $id,
+        public string $domain,
+        public string $subdomain,
+        public DnsRecordType $type,
+        public string $content,
+        public string $fqdn,
+        public int|null $priority,
+        public int $ttl,
+        public string|null $target,
+        public int|null $port,
+        public int|null $weight,
+        public int|null $retry,
+        public int|null $refresh,
+        public int|null $expire
     ) {
     }
 

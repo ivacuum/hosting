@@ -1,9 +1,9 @@
 <?php namespace App\Domain\Metrics;
 
-class RedisStream
+readonly class RedisStream
 {
-    public readonly string $stream;
-    public readonly string $startId;
+    public string $stream;
+    public string $startId;
 
     public function __construct(RedisKey|string $stream, RedisStreamId|string $startId)
     {

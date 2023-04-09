@@ -1,11 +1,11 @@
 <?php namespace App\Domain;
 
-class RouteData
+readonly class RouteData
 {
     public function __construct(
-        public readonly string $tpl,
-        public readonly string $view,
-        public readonly string $controller
+        public string $tpl,
+        public string $view,
+        public string $controller
     ) {
     }
 }

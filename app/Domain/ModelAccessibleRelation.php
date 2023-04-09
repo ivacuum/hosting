@@ -1,11 +1,11 @@
 <?php namespace App\Domain;
 
-class ModelAccessibleRelation
+readonly class ModelAccessibleRelation
 {
     public function __construct(
-        public readonly string $path,
-        public readonly int $count,
-        public readonly string $i18nIndex
+        public string $path,
+        public int $count,
+        public string $i18nIndex
     ) {
     }
 }

@@ -1,11 +1,11 @@
 <?php namespace App\Domain;
 
-class BeaconEvent
+readonly class BeaconEvent
 {
     public function __construct(
-        public readonly string $event,
-        public readonly int|null $id,
-        public readonly string|null $slug
+        public string $event,
+        public int|null $id,
+        public string|null $slug
     ) {
     }
 

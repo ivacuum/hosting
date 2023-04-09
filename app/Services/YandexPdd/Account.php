@@ -1,13 +1,13 @@
 <?php namespace App\Services\YandexPdd;
 
-class Account
+readonly class Account
 {
     public function __construct(
-        public readonly string $login,
-        public readonly bool $enabled,
-        public readonly bool $ready,
-        public readonly string $fio,
-        public readonly array $aliases
+        public string $login,
+        public bool $enabled,
+        public bool $ready,
+        public string $fio,
+        public array $aliases
     ) {
     }
 

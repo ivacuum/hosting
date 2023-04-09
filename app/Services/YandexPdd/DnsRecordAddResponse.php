@@ -3,11 +3,11 @@
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\Response;
 
-class DnsRecordAddResponse
+readonly class DnsRecordAddResponse
 {
-    public readonly bool $successful;
-    public readonly string $domain;
-    public readonly DnsRecord $record;
+    public bool $successful;
+    public string $domain;
+    public DnsRecord $record;
 
     public function __construct(Response $response)
     {

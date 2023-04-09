@@ -1,10 +1,10 @@
 <?php namespace App\Events;
 
-class RateLimitExceeded
+readonly class RateLimitExceeded
 {
     public function __construct(
-        public readonly string $key,
-        public readonly string $maxAttempts
+        public string $key,
+        public string $maxAttempts
     ) {
     }
 }
