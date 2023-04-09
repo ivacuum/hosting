@@ -5,7 +5,7 @@ use Carbon\CarbonImmutable;
 
 class GetWhoisDataAction
 {
-    public function execute(string $domain): ?array
+    public function execute(string $domain): array|null
     {
         $query = new WhoisQuery($domain);
         $data = array_merge($query->parse(), $query->getDnsRecords());

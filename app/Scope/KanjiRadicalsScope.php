@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class KanjiRadicalsScope
 {
-    public function __construct(private ?int $radicalId)
+    public function __construct(private int|null $radicalId)
     {
     }
 

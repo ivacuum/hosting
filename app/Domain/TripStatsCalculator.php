@@ -17,8 +17,8 @@ class TripStatsCalculator
     private Collection $visitedCities;
     private Collection $daysInCountries;
     private Collection $visitedCountries;
-    private ?CarbonImmutable $lastDate = null;
-    private ?CarbonImmutable $firstDate = null;
+    private CarbonImmutable|null $lastDate = null;
+    private CarbonImmutable|null $firstDate = null;
     private Eloquent\Collection $cityVisits;
 
     /** @param \Illuminate\Database\Eloquent\Collection<int, \App\Trip> $trips */

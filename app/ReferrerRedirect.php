@@ -28,7 +28,7 @@ class ReferrerRedirect extends Model
         return $this->to;
     }
 
-    public static function findFirstActive(): ?self
+    public static function findFirstActive(): self|null
     {
         /** @noinspection PhpIncompatibleReturnTypeInspection */
         return self::query()

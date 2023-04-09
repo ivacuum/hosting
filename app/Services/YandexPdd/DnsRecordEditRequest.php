@@ -10,11 +10,11 @@ class DnsRecordEditRequest implements HttpPost
         DnsRecordType $type,
         private string $subdomain,
         private int $ttl,
-        private ?string $content = null,
-        private ?int $priority = null,
-        private ?int $weight = null,
-        private ?int $port = null,
-        private ?string $target = null,
+        private string|null $content = null,
+        private int|null $priority = null,
+        private int|null $weight = null,
+        private int|null $port = null,
+        private string|null $target = null,
     ) {
         if ($type->canHaveIdnContent()) {
             $this->content = idn_to_ascii($this->content, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);

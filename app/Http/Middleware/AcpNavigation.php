@@ -60,7 +60,7 @@ class AcpNavigation
         return $next($request);
     }
 
-    private function push(string $text, ?string $url = null)
+    private function push(string $text, string|null $url = null)
     {
         \Breadcrumbs::push(__($text), trim($url, '/'));
     }

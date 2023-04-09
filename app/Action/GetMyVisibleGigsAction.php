@@ -12,7 +12,7 @@ class GetMyVisibleGigsAction
     {
     }
 
-    public function execute(?string $from, ?string $to): Collection
+    public function execute(string|null $from, string|null $to): Collection
     {
         if (!$from && !$to) {
             $key = CacheKey::MyVisibleGigs;
@@ -27,7 +27,7 @@ class GetMyVisibleGigsAction
         return $this->findModels($from, $to);
     }
 
-    private function findModels(?string $from, ?string $to)
+    private function findModels(string|null $from, string|null $to)
     {
         return Gig::query()
             ->with('artist')

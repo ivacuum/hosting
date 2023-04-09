@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class PhotoApplyFilterScope
 {
-    public function __construct(private ?string $filter = null)
+    public function __construct(private string|null $filter = null)
     {
     }
 

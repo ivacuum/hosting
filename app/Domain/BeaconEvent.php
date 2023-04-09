@@ -4,8 +4,8 @@ class BeaconEvent
 {
     public function __construct(
         public readonly string $event,
-        public readonly ?int $id,
-        public readonly ?string $slug
+        public readonly int|null $id,
+        public readonly string|null $slug
     ) {
     }
 

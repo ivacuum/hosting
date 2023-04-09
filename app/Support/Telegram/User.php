@@ -5,9 +5,9 @@ class User
     public function __construct(
         public readonly int $id,
         public readonly string $firstName,
-        public readonly ?string $lastName,
-        public readonly ?string $username,
-        public readonly ?string $language
+        public readonly string|null $lastName,
+        public readonly string|null $username,
+        public readonly string|null $language
     ) {
     }
 

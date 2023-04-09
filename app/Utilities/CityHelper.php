@@ -51,7 +51,7 @@ class CityHelper
         );
     }
 
-    public function findById(int $id): ?City
+    public function findById(int $id): City|null
     {
         if (!isset($this->cachedById[$id])) {
             $this->cachedById = $this->cachedById();
@@ -66,7 +66,7 @@ class CityHelper
             ?? throw (new ModelNotFoundException)->setModel(City::class, $id);
     }
 
-    public function findBySlug(?string $slug): ?City
+    public function findBySlug(?string $slug): City|null
     {
         if (!$slug) {
             return null;
@@ -85,7 +85,7 @@ class CityHelper
             ?? throw (new ModelNotFoundException)->setModel(City::class, $slug);
     }
 
-    public function title(int|string $q): ?string
+    public function title(int|string $q): string|null
     {
         return is_numeric($q)
             ? $this->findById($q)?->title

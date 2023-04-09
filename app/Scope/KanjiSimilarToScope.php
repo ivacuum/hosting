@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class KanjiSimilarToScope
 {
-    public function __construct(private ?int $similarToId)
+    public function __construct(private int|null $similarToId)
     {
     }
 

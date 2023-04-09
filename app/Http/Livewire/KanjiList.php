@@ -16,8 +16,8 @@ class KanjiList extends Component
     /** @var \Illuminate\Database\Eloquent\Collection|Kanji[] */
     public $kanjis;
 
-    public ?int $level = null;
-    public ?int $similarId = null;
+    public int|null $level = null;
+    public int|null $similarId = null;
     public bool $flat = false;
     public bool $range = false;
     public bool $showBurned = false;

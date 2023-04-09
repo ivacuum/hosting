@@ -8,7 +8,7 @@ use Illuminate\Database\QueryException;
 
 class BurnAction
 {
-    public function execute(Kanji|Radical|Vocabulary $burnable, int $userId): ?Burnable
+    public function execute(Kanji|Radical|Vocabulary $burnable, int $userId): Burnable|null
     {
         try {
             return value($burnable->burnable()->create(['user_id' => $userId]));

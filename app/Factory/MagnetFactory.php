@@ -13,7 +13,7 @@ class MagnetFactory
     private MagnetStatus $status = MagnetStatus::Published;
     private MagnetCategory|null $categoryId = null;
 
-    private ?CommentFactory $commentFactory = null;
+    private CommentFactory|null $commentFactory = null;
 
     public function advancedTitle()
     {

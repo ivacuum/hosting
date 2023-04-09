@@ -11,7 +11,7 @@ class ChatMessageFactory
     private ChatMessageStatus $status = ChatMessageStatus::Published;
     private CarbonInterface|null $createdAt = null;
 
-    private ?UserFactory $userFactory = null;
+    private UserFactory|null $userFactory = null;
 
     public function create()
     {

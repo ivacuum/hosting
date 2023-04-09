@@ -12,7 +12,7 @@ class Rto
     {
     }
 
-    public function findTopicId(int|string|null $input): ?int
+    public function findTopicId(int|string|null $input): int|null
     {
         if (is_numeric($input)) {
             return $input;
@@ -47,7 +47,7 @@ class Rto
         return null;
     }
 
-    public function torrentData($input): ?RtoTorrentData
+    public function torrentData($input): RtoTorrentData|null
     {
         if (null === $topicId = $this->findTopicId($input)) {
             return null;
@@ -94,7 +94,7 @@ class Rto
         return new RtoGetTorTopicDataResponse($response);
     }
 
-    public function topicIdByHash(string $hash): ?int
+    public function topicIdByHash(string $hash): int|null
     {
         $response = $this->configureApiClient()
             ->get('get_topic_id', [

@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class PhotoForTripScope
 {
-    public function __construct(private ?int $id = null)
+    public function __construct(private int|null $id = null)
     {
     }
 

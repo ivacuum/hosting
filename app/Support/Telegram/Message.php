@@ -8,7 +8,7 @@ class Message
         public readonly int $id,
         public readonly User $from,
         public readonly CarbonImmutable $date,
-        public readonly ?string $text
+        public readonly string|null $text
     ) {
     }
 

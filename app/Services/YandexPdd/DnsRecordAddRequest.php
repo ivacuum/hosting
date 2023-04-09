@@ -9,11 +9,11 @@ class DnsRecordAddRequest implements HttpPost
         private DnsRecordType $type,
         private string $subdomain,
         private int $ttl,
-        private ?string $content = null,
-        private ?int $priority = null,
-        private ?int $weight = null,
-        private ?int $port = null,
-        private ?string $target = null,
+        private string|null $content = null,
+        private int|null $priority = null,
+        private int|null $weight = null,
+        private int|null $port = null,
+        private string|null $target = null,
     ) {
         if ($content === '@') {
             $this->content = $domain;

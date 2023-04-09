@@ -220,7 +220,7 @@ class User extends Authenticatable implements HasLocalePreference
         return $hasUnread;
     }
 
-    public function preferredLocale(): ?string
+    public function preferredLocale(): string|null
     {
         return $this->locale;
     }

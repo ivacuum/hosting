@@ -8,7 +8,7 @@ use Livewire\Component;
 class MagnetReplaceForm extends Component
 {
     public Magnet $magnet;
-    public ?string $input = null;
+    public string|null $input = null;
 
     public function rules()
     {

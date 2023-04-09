@@ -14,8 +14,8 @@ class PhotoFactory
     private string|null $relType = null;
     private PhotoStatus $status = PhotoStatus::Published;
 
-    private ?TagFactory $tagFactory = null;
-    private ?TripFactory $tripFactory = null;
+    private TagFactory|null $tagFactory = null;
+    private TripFactory|null $tripFactory = null;
 
     public function create()
     {

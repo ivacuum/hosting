@@ -16,8 +16,8 @@ class CountryHelper
         'emoji',
     ];
 
-    private ?Collection $cachedById = null;
-    private ?Collection $cachedBySlug = null;
+    private Collection|null $cachedById = null;
+    private Collection|null $cachedBySlug = null;
 
     public function __construct(private Repository $cache)
     {
@@ -49,7 +49,7 @@ class CountryHelper
         );
     }
 
-    public function findById(int $id): ?Country
+    public function findById(int $id): Country|null
     {
         if (!isset($this->cachedById[$id])) {
             $this->cachedById = $this->cachedById();
@@ -64,7 +64,7 @@ class CountryHelper
             ?? throw (new ModelNotFoundException)->setModel(Country::class, $id);
     }
 
-    public function findBySlug(?string $slug): ?Country
+    public function findBySlug(?string $slug): Country|null
     {
         if (!$slug) {
             return null;
@@ -83,7 +83,7 @@ class CountryHelper
             ?? throw (new ModelNotFoundException)->setModel(Country::class, $slug);
     }
 
-    public function title(int|string $q): ?string
+    public function title(int|string $q): string|null
     {
         return is_numeric($q)
             ? $this->findById($q)?->title

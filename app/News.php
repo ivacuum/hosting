@@ -89,7 +89,7 @@ class News extends Model
     }
 
     // Static methods
-    public static function interval(int $year, ?int $month = null, ?int $day = null): array
+    public static function interval(int $year, int|null $month = null, int|null $day = null): array
     {
         $start = CarbonImmutable::createFromDate($year, $month, $day);
 

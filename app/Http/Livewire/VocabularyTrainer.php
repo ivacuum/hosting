@@ -7,7 +7,7 @@ class VocabularyTrainer extends Component
 {
     private const MAX_HISTORY = 5;
 
-    public ?Vocabulary $vocab = null;
+    public Vocabulary|null $vocab = null;
 
     /** @var array<int, array{www: string, meaning: string, character: string}> */
     public array $history = [];

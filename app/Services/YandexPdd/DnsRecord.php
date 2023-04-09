@@ -9,14 +9,14 @@ class DnsRecord
         public readonly DnsRecordType $type,
         public readonly string $content,
         public readonly string $fqdn,
-        public readonly ?int $priority,
+        public readonly int|null $priority,
         public readonly int $ttl,
-        public readonly ?string $target,
-        public readonly ?int $port,
-        public readonly ?int $weight,
-        public readonly ?int $retry,
-        public readonly ?int $refresh,
-        public readonly ?int $expire
+        public readonly string|null $target,
+        public readonly int|null $port,
+        public readonly int|null $weight,
+        public readonly int|null $retry,
+        public readonly int|null $refresh,
+        public readonly int|null $expire
     ) {
     }
 

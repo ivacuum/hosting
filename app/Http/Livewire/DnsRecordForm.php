@@ -11,10 +11,10 @@ class DnsRecordForm extends Component
     use AuthorizesRequests;
 
     public int $ttl = 3600;
-    public ?int $port = null;
-    public ?int $weight = null;
-    public ?int $priority = null;
-    public ?int $recordId = null;
+    public int|null $port = null;
+    public int|null $weight = null;
+    public int|null $priority = null;
+    public int|null $recordId = null;
     public Domain $domain;
     public string $content = '';
     public string $subdomain = '@';

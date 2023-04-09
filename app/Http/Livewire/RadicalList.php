@@ -10,7 +10,7 @@ class RadicalList extends Component
     /** @var \Illuminate\Database\Eloquent\Collection|Radical[] */
     public $radicals;
 
-    public ?int $level = null;
+    public int|null $level = null;
     public bool $flat;
     public bool $range = false;
     public bool $showBurned = false;

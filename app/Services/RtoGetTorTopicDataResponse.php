@@ -20,7 +20,7 @@ class RtoGetTorTopicDataResponse
             });
     }
 
-    public function getTopic(int $id): ?RtoTopicData
+    public function getTopic(int $id): RtoTopicData|null
     {
         return $this->topics[$id] ?? null;
     }

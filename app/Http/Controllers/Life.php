@@ -211,12 +211,12 @@ class Life
         ]);
     }
 
-    protected function getGig(string $slug): ?Gig
+    protected function getGig(string $slug): Gig|null
     {
         return Gig::firstWhere('slug', $slug);
     }
 
-    protected function getTrip(string $slug): ?Trip
+    protected function getTrip(string $slug): Trip|null
     {
         return Trip::withCount('photos')
             ->where('slug', $slug)

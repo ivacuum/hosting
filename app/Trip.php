@@ -217,7 +217,7 @@ class Trip extends Model
         return $this->meta_description;
     }
 
-    public function metaImage(?int $width = null, ?int $height = null): string
+    public function metaImage(int|null $width = null, int|null $height = null): string
     {
         if (!$this->meta_image) {
             return '';

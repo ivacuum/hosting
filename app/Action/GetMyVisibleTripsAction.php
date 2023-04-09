@@ -14,7 +14,7 @@ class GetMyVisibleTripsAction
     {
     }
 
-    public function execute(?string $from, ?string $to): Collection
+    public function execute(string|null $from, string|null $to): Collection
     {
         if (!$from && !$to) {
             $key = CacheKey::MyVisibleTrips;
@@ -29,7 +29,7 @@ class GetMyVisibleTripsAction
         return $this->findModels($from, $to);
     }
 
-    private function findModels(?string $from, ?string $to)
+    private function findModels(string|null $from, string|null $to)
     {
         return Trip::withCount('photos')
             ->tap(new TripOfAdminScope)

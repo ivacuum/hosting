@@ -11,7 +11,7 @@ class ParseRouteDataAction
     private string $action;
     private string $controller;
     private string $controllerBasename;
-    private ?string $method;
+    private string|null $method;
 
     public function __construct(
         GetControllerBasenameAction $getControllerBasename,
@@ -34,7 +34,7 @@ class ParseRouteDataAction
         );
     }
 
-    private function method(): ?string
+    private function method(): string|null
     {
         if (!str_contains($this->action, '@')) {
             return null;

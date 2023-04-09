@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class DomainYandexReadyScope
 {
-    public function __construct(private ?int $userId = null)
+    public function __construct(private int|null $userId = null)
     {
     }
 
