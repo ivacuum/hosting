@@ -36,13 +36,10 @@ class Kernel extends ConsoleKernel
             ->command('model:prune', [
                 '--model' => [
                     \App\ExternalHttpRequest::class,
+                    \App\Notification::class,
                     \App\PasswordReset::class,
                 ],
             ])
-            ->cron('35 2,14 * * *')
-            ->appendOutputTo($cronOutput);
-
-        $schedule->command(\Ivacuum\Generic\Commands\NotificationsPurge::class)
             ->cron('35 2,14 * * *')
             ->appendOutputTo($cronOutput);
 
