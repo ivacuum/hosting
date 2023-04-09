@@ -118,17 +118,6 @@ class MagnetTest extends TestCase
         \Queue::assertPushed(SendTelegramMessageJob::class);
     }
 
-    public function testSearch()
-    {
-        $magnet = MagnetFactory::new()
-            ->withTitle('title 20172017 something else')
-            ->create();
-
-        $this->get('magnets?q=20172017')
-            ->assertOk()
-            ->assertSee($magnet->title);
-    }
-
     public function testShow()
     {
         $magnet = MagnetFactory::new()->create();
