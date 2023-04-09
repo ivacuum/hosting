@@ -84,9 +84,9 @@ class Comment extends Model
     public function www(): string
     {
         return match ($this->rel_type) {
-            'News' => path([Http\Controllers\NewsController::class, 'show'], $this->rel_id) . $this->anchor(),
-            'Torrent' => path([Http\Controllers\MagnetsController::class, 'show'], $this->rel_id) . $this->anchor(),
-            'Trip' => path([Http\Controllers\Trips::class, 'show'], [$this->rel_id, 'anchor' => $this->anchor()]),
+            (new Magnet)->getMorphClass() => path([Http\Controllers\MagnetsController::class, 'show'], $this->rel_id) . $this->anchor(),
+            (new News)->getMorphClass() => path([Http\Controllers\NewsController::class, 'show'], $this->rel_id) . $this->anchor(),
+            (new Trip)->getMorphClass() => path([Http\Controllers\Trips::class, 'show'], [$this->rel_id, 'anchor' => $this->anchor()]),
             default => '',
         };
     }
