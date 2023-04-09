@@ -56,14 +56,20 @@ class ProcessMetrics extends Command
 
         DB::beginTransaction();
 
-        $metricsAggregator->export();
-        $viewsAggregator->export();
-        $imageViewsAggregator->export();
-        $photoViewsAggregator->export();
+        try {
+            $metricsAggregator->export();
+            $viewsAggregator->export();
+            $imageViewsAggregator->export();
+            $photoViewsAggregator->export();
 
-        \Cache::put(CacheKey::MetricsNextStartId->value, $nextStartId, CacheKey::MetricsNextStartId->ttl());
+            \Cache::put(CacheKey::MetricsNextStartId->value, $nextStartId, CacheKey::MetricsNextStartId->ttl());
 
-        DB::commit();
+            DB::commit();
+        } catch (\Throwable $e) {
+            report($e);
+
+            DB::rollBack();
+        }
 
         $this->line("Processed metric stream entries: <info>{$processed}</info>");
     }
