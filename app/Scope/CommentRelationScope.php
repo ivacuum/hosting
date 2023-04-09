@@ -1,5 +1,6 @@
 <?php namespace App\Scope;
 
+use App\Issue;
 use App\Magnet;
 use App\News;
 use App\Trip;
@@ -7,7 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class CommentRelationScope
 {
-    public function __construct(private Magnet|News|Trip $relation)
+    public function __construct(private Issue|Magnet|News|Trip $relation)
     {
     }
 

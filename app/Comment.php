@@ -2,6 +2,7 @@
 
 use App\Action\FormatCommentDateAction;
 use App\Domain\CommentStatus;
+use App\Scope\CommentRelationScope;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $html
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- * @property News|Magnet|Trip $rel
+ * @property Issue|Magnet|News|Trip $rel
  * @property User $user
  *
  * @mixin \Eloquent
@@ -65,7 +66,7 @@ class Comment extends Model
     {
         return static::with('user')
             ->distinct()
-            ->where('rel_type', class_basename($model))
+            ->tap(new CommentRelationScope($model))
             ->where('rel_id', $model->id)
             ->get(['user_id'])
             // Автор новости, заметки, раздачи
