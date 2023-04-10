@@ -354,7 +354,7 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        Schema::create('torrents', function (Blueprint $table) {
+        Schema::create('magnets', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id')->default(0);
             $table->unsignedInteger('category_id')->default(0);

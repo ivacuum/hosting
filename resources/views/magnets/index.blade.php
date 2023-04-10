@@ -79,7 +79,7 @@
           <div class="font-medium mb-2 {{ $loop->first ? 'mt-0' : 'mt-6' }}">{{ $magnet->fullDate() }}</div>
           <?php $lastDate = $magnet->registered_at ?>
         @endif
-        <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start torrents-list-container antialiased hover:dark:bg-slate-800 js-torrents-views-observer" data-id="{{ $magnet->id }}">
+        <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start magnets-list-container antialiased hover:dark:bg-slate-800 js-magnets-views-observer" data-id="{{ $magnet->id }}">
           <div class="flex-shrink-0 w-8 torrent-icon order-1 md:order-none mr-1 md:text-2xl" title="{{ $magnet->category_id->title() }}">
             <?php $icon = $magnet->category_id->icon() ?>
             @svg ($icon)
@@ -93,7 +93,7 @@
               </div>
             @endif
           </a>
-          <a class="flex-shrink-0 pr-2 torrents-list-magnet text-center md:text-left whitespace-nowrap js-magnet"
+          <a class="flex-shrink-0 pr-2 magnets-list-magnet text-center md:text-left whitespace-nowrap js-magnet"
              href="{{ $magnet->magnet() }}"
              title="@lang('Магнет')"
              data-action="{{ to('magnets/{magnet}/magnet', $magnet) }}"
@@ -101,7 +101,7 @@
             @svg (magnet)
             <span class="js-magnet-counter">{{ $magnet->clicks ?: '' }}</span>
           </a>
-          <div class="flex-shrink-0 text-center md:text-left whitespace-nowrap torrents-list-size">{{ ViewHelper::size($magnet->size) }}</div>
+          <div class="flex-shrink-0 text-center md:text-left whitespace-nowrap magnets-list-size">{{ ViewHelper::size($magnet->size) }}</div>
         </div>
       @endforeach
 

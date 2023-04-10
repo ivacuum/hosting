@@ -38,8 +38,6 @@ class Magnet extends Model
 {
     use Searchable;
 
-    protected $table = 'torrents';
-
     public const LIST_COLUMNS = [
         'id',
         'category_id',

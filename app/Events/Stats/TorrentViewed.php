@@ -4,7 +4,7 @@ use App\Events\Event;
 
 class TorrentViewed extends Event
 {
-    public $table = 'torrents';
+    public $table = 'magnets';
 
     public function __construct(public int $id)
     {

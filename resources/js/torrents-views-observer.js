@@ -1,7 +1,7 @@
 import io from './intersection-observer'
 
 export default function () {
-  return io('.js-torrents-views-observer', {
+  return io('.js-magnets-views-observer', {
     rootMargin: '0px',
     threshold: 1,
 
