@@ -9,7 +9,7 @@ use Laravel\Scout\Builder;
 
 class SearchForMagnetIdsAction
 {
-    public function execute(string $q, int|null $categoryId, bool $fulltext): array
+    public function execute(string $q, int|null $categoryId, bool $fulltext): mixed
     {
         return match (config('scout.driver')) {
             'sphinx' => $this->sphinx($q, $categoryId, $fulltext),
