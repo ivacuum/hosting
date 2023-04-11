@@ -16,10 +16,10 @@
 @import "life.pcss";
 @import "links.pcss";
 @import "lists.pcss";
+@import "magnets.pcss";
 @import "markdown.pcss";
 @import "svg.pcss";
 @import "tables.pcss";
 @import "tooltips.pcss";
-@import "torrents.pcss";
 @import "tailwindcss/utilities.css";
 @import "utilities.pcss";
