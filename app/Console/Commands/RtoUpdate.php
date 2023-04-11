@@ -9,7 +9,7 @@ use Ivacuum\Generic\Commands\Command;
 class RtoUpdate extends Command
 {
     protected $signature = 'app:rto-update';
-    protected $description = 'Update torrent releases info from rto';
+    protected $description = 'Update magnet releases info from rto';
 
     public function handle()
     {

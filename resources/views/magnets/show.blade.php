@@ -73,7 +73,7 @@
   <?php /** @var \App\Magnet $row */ ?>
   @foreach ($relatedTorrents as $row)
     <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start magnets-list-container antialiased js-magnets-views-observer" data-id="{{ $row->id }}">
-      <div class="flex-shrink-0 w-8 torrent-icon order-1 md:order-none mr-1 md:text-2xl" title="{{ $row->category_id->title() }}">
+      <div class="flex-shrink-0 w-8 magnet-icon order-1 md:order-none mr-1 md:text-2xl" title="{{ $row->category_id->title() }}">
         <?php $icon = $row->category_id->icon() ?>
         @svg ($icon)
       </div>
