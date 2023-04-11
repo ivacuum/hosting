@@ -2,7 +2,7 @@ import Map from './yandex-map'
 import YandexMetrika from './yandex-metrika'
 
 import NewsViewsObserver from './news-views-observer'
-import TorrentsViewsObserver from './torrents-views-observer'
+import MagnetsViewsObserver from './magnets-views-observer'
 
 import './dblclick-edit'
 import './batch-form'
@@ -54,7 +54,7 @@ class Application {
     } else if (route === 'photos/map') {
       PhotosMap.load()
     } else if (route === 'magnets') {
-      const observer = TorrentsViewsObserver()
+      const observer = MagnetsViewsObserver()
       observer.observe()
     }
   }
