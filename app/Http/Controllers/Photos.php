@@ -7,6 +7,7 @@ use App\Action\GetTripsPublishedByCountryAction;
 use App\Action\GetTripsPublishedWithCoverAction;
 use App\City;
 use App\Country;
+use App\Http\Requests\PhotoShowForm;
 use App\Http\Requests\PhotosMapForm;
 use App\Photo;
 use App\Scope\PhotoForTagScope;
@@ -106,61 +107,60 @@ class Photos
         return view('photos.map', ['photo' => $request->photo]);
     }
 
-    public function show(Photo $photo, GetTripsPublishedByCityAction $getTripsPublishedByCity, GetTripsPublishedByCountryAction $getTripsPublishedByCountry)
-    {
+    public function show(
+        PhotoShowForm $request,
+        Photo $photo,
+        GetTripsPublishedByCityAction $getTripsPublishedByCity,
+        GetTripsPublishedByCountryAction $getTripsPublishedByCountry
+    ) {
         abort_unless($photo->isPublished(), 404);
 
         $photo->load('rel', 'tags');
         $photo->rel->loadCityAndCountry();
 
-        $tagId = request('tag_id');
-        $cityId = request('city_id');
-        $tripId = request('trip_id');
-        $countryId = request('country_id');
-
         $next = Photo::where('id', '>', $photo->id)->tap(new PhotoPublishedScope);
         $prev = Photo::where('id', '<', $photo->id)->tap(new PhotoPublishedScope)->orderByDesc('id');
 
-        if ($tagId) {
+        if ($request->tagId) {
             // Просмотр в пределах одного тэга
-            $next = $next->whereRelation('tags', 'tag_id', $tagId);
-            $prev = $prev->whereRelation('tags', 'tag_id', $tagId);
-        } elseif ($cityId) {
+            $next = $next->whereRelation('tags', 'tag_id', $request->tagId);
+            $prev = $prev->whereRelation('tags', 'tag_id', $request->tagId);
+        } elseif ($request->cityId) {
             // В пределах города
-            abort_unless($cityId == $photo->rel->city->id, 404);
+            abort_unless($request->cityId == $photo->rel->city->id, 404);
 
-            $ids = $getTripsPublishedByCity->execute($cityId);
+            $ids = $getTripsPublishedByCity->execute($request->cityId);
 
             $next = $next->tap(new PhotoForTripsScope($ids));
             $prev = $prev->tap(new PhotoForTripsScope($ids));
-        } elseif ($tripId) {
+        } elseif ($request->tripId) {
             // В пределах поездки
-            abort_unless($tripId == $photo->rel_id, 404);
+            abort_unless($request->tripId == $photo->rel_id, 404);
 
-            $next = $next->tap(new PhotoForTripScope($tripId));
-            $prev = $prev->tap(new PhotoForTripScope($tripId));
-        } elseif ($countryId) {
+            $next = $next->tap(new PhotoForTripScope($request->tripId));
+            $prev = $prev->tap(new PhotoForTripScope($request->tripId));
+        } elseif ($request->countryId) {
             // В пределах страны
-            abort_unless($countryId == $photo->rel->city->country->id, 404);
+            abort_unless($request->countryId == $photo->rel->city->country->id, 404);
 
-            $ids = $getTripsPublishedByCountry->execute($countryId);
+            $ids = $getTripsPublishedByCountry->execute($request->countryId);
 
             $next = $next->tap(new PhotoForTripsScope($ids));
             $prev = $prev->tap(new PhotoForTripsScope($ids));
         }
 
-        if ($tagId) {
-            $tag = Tag::findOrFail($tagId);
+        if ($request->tagId) {
+            $tag = Tag::findOrFail($request->tagId);
 
             \Breadcrumbs::push(__('Тэги'), 'photos/tags')
-                ->push($tag->breadcrumb(), "photos/tags/{$tagId}");
-        } elseif ($cityId) {
+                ->push($tag->breadcrumb(), "photos/tags/{$request->tagId}");
+        } elseif ($request->cityId) {
             \Breadcrumbs::push(__('Города'), 'photos/cities')
                 ->push($photo->rel->city->breadcrumb(), "photos/cities/{$photo->rel->city->slug}");
-        } elseif ($tripId) {
+        } elseif ($request->tripId) {
             \Breadcrumbs::push(__('Поездки'), 'photos/trips')
-                ->push($photo->rel->breadcrumb(), "photos/trips/{$tripId}");
-        } elseif ($countryId) {
+                ->push($photo->rel->breadcrumb(), "photos/trips/{$request->tripId}");
+        } elseif ($request->countryId) {
             \Breadcrumbs::push(__('Страны'), 'photos/countries')
                 ->push($photo->rel->city->country->breadcrumb(), "photos/countries/{$photo->rel->city->country->slug}");
         }
@@ -171,10 +171,10 @@ class Photos
             'next' => $next->first(),
             'prev' => $prev->first(),
             'photo' => $photo,
-            'tagId' => $tagId,
-            'cityId' => $cityId,
-            'tripId' => $tripId,
-            'countryId' => $countryId,
+            'tagId' => $request->tagId,
+            'cityId' => $request->cityId,
+            'tripId' => $request->tripId,
+            'countryId' => $request->countryId,
             'metaTitle' => "{$photo->rel->title}, {$photo->rel->period()} {$photo->rel->year}",
         ]);
     }
