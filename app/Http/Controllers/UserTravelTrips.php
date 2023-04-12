@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Domain\TripStatus;
+use App\Http\Requests\LifeIndexForm;
 use App\Scope\TripNextScope;
 use App\Scope\TripPreviousScope;
 use App\Scope\TripVisibleScope;
@@ -10,28 +11,15 @@ use Illuminate\Database\Eloquent\Builder;
 
 class UserTravelTrips extends UserTravel
 {
-    public function index(User $traveler)
+    public function index(User $traveler, LifeIndexForm $request)
     {
-        $to = request('to');
-        $from = request('from');
-
-        $validator = \Validator::make([
-            'to' => $to,
-            'from' => $from,
-        ], [
-            'to' => 'nullable|date',
-            'from' => 'nullable|date',
-        ]);
-
-        abort_unless($validator->passes(), 404);
-
         $trips = Trip::with('user')
             ->withCount('photos')
             ->whereBelongsTo($traveler)
             ->tap(new TripVisibleScope)
-            ->when($from, fn (Builder $query) => $query->where('date_start', '>=', $from))
-            ->when($to, fn (Builder $query) => $query->where('date_start', '<=', $to))
-            ->orderBy('date_start', $from || $to ? 'asc' : 'desc')
+            ->when($request->from, fn (Builder $query) => $query->where('date_start', '>=', $request->from))
+            ->when($request->to, fn (Builder $query) => $query->where('date_start', '<=', $request->to))
+            ->orderBy('date_start', $request->from || $request->to ? 'asc' : 'desc')
             ->get(Trip::COLUMNS_LIST)
             ->groupBy(fn (Trip $model) => $model->year);
 
@@ -43,7 +31,8 @@ class UserTravelTrips extends UserTravel
     public function show(User $traveler, string $slug)
     {
         /** @var Trip $trip */
-        $trip = Trip::withCount('photos')
+        $trip = Trip::query()
+            ->withCount('photos')
             ->whereBelongsTo($traveler)
             ->where('slug', $slug)
             ->where('status', TripStatus::Published)
