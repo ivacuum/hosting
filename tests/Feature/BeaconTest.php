@@ -10,25 +10,25 @@ class BeaconTest extends TestCase
 
     public function testEmptyEvent()
     {
-        $this->post('ajax/beacon', $this->payload([['event' => '']]))
+        $this->post('js/beacon', $this->payload([['event' => '']]))
             ->assertInvalid(['events.0.event' => 'обязательно для заполнения']);
     }
 
     public function testInvalidPayload()
     {
-        $this->post('ajax/beacon', $this->payload(['bogus' => 'is real']))
+        $this->post('js/beacon', $this->payload(['bogus' => 'is real']))
             ->assertInvalid(['events.bogus.event' => 'обязательно для заполнения']);
     }
 
     public function testInvalidPayloadNoEvents()
     {
-        $this->post('ajax/beacon', ['bogus' => 'is real'])
+        $this->post('js/beacon', ['bogus' => 'is real'])
             ->assertInvalid(['events' => 'обязательно для заполнения']);
     }
 
     public function testInvalidPayloadEventsNotJson()
     {
-        $this->post('ajax/beacon', ['events' => 'not json'])
+        $this->post('js/beacon', ['events' => 'not json'])
             ->assertInvalid(['events' => 'обязательно для заполнения']);
     }
 
@@ -43,7 +43,7 @@ class BeaconTest extends TestCase
             ],
         ]);
 
-        $this->post('ajax/beacon', $payload)
+        $this->post('js/beacon', $payload)
             ->assertNoContent();
 
         \Event::assertDispatched($event);
@@ -58,7 +58,7 @@ class BeaconTest extends TestCase
         ])->toArray());
 
         \Event::fakeFor(function () use ($event, $ids, $payload) {
-            $this->post('ajax/beacon', $payload)
+            $this->post('js/beacon', $payload)
                 ->assertNoContent();
 
             \Event::assertDispatched($event, fn ($e) => in_array($e->id, $ids, true));
@@ -67,7 +67,7 @@ class BeaconTest extends TestCase
 
     public function testUnknownEvent()
     {
-        $this->post('ajax/beacon', $this->payload([['event' => 'unknown thing']]))
+        $this->post('js/beacon', $this->payload([['event' => 'unknown thing']]))
             ->assertNoContent();
     }
 

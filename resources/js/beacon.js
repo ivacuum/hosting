@@ -1,5 +1,5 @@
 export default class Beacon {
-  constructor(csrfToken, endpoint = '/ajax/beacon') {
+  constructor(csrfToken, endpoint = '/js/beacon') {
     this.data = []
     this.endpoint = endpoint
     this.csrfToken = csrfToken
