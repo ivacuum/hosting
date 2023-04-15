@@ -159,12 +159,12 @@ Route::middleware('auth')->group(function () {
     Route::get('my/settings', [Ctrl\MySettingsController::class, 'edit']);
     Route::put('my/settings', [Ctrl\MySettingsController::class, 'update']);
 
-    Route::get('my/trips', [Ctrl\MyTrips::class, 'index']);
-    Route::post('my/trips', [Ctrl\MyTrips::class, 'store']);
-    Route::get('my/trips/create', [Ctrl\MyTrips::class, 'create']);
-    Route::put('my/trips/{trip}', [Ctrl\MyTrips::class, 'update'])->can('update', 'trip');
-    Route::delete('my/trips/{trip}', [Ctrl\MyTrips::class, 'destroy'])->can('delete', 'trip');
-    Route::get('my/trips/{trip}/edit', [Ctrl\MyTrips::class, 'edit'])->can('update', 'trip');
+    Route::get('my/trips', [Ctrl\MyTripController::class, 'index']);
+    Route::post('my/trips', [Ctrl\MyTripController::class, 'store']);
+    Route::get('my/trips/create', [Ctrl\MyTripController::class, 'create']);
+    Route::put('my/trips/{trip}', [Ctrl\MyTripController::class, 'update'])->can('update', 'trip');
+    Route::delete('my/trips/{trip}', [Ctrl\MyTripController::class, 'destroy'])->can('delete', 'trip');
+    Route::get('my/trips/{trip}/edit', [Ctrl\MyTripController::class, 'edit'])->can('update', 'trip');
 });
 
 Route::get('news', [Ctrl\NewsController::class, 'index'])->middleware('nav:Новости,news');

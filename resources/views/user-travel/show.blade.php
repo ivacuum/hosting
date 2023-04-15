@@ -22,7 +22,7 @@
   @if ($traveler->id == Auth::user()?->id)
     <a
       class="btn btn-default text-sm py-1"
-      href="{{ UrlHelper::edit(App\Http\Controllers\MyTrips::class, $trip) }}"
+      href="{{ UrlHelper::edit(App\Http\Controllers\MyTripController::class, $trip) }}"
     >
       @svg (pencil)
     </a>

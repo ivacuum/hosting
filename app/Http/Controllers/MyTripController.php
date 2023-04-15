@@ -6,7 +6,7 @@ use App\Http\Requests\TripUpdateForm;
 use App\Trip;
 use App\Utilities\CityHelper;
 
-class MyTrips
+class MyTripController
 {
     public function index()
     {
@@ -29,7 +29,7 @@ class MyTrips
     {
         $trip->delete();
 
-        return redirect(path([MyTrips::class, 'index']));
+        return redirect(path([MyTripController::class, 'index']));
     }
 
     public function edit(Trip $trip)
@@ -55,7 +55,7 @@ class MyTrips
         $trip->date_start = $request->input('date_start');
         $trip->save();
 
-        return redirect(path([MyTrips::class, 'index']));
+        return redirect(path([MyTripController::class, 'index']));
     }
 
     public function update(

@@ -8,7 +8,7 @@
     @lang('Поездки')
     <span class="text-base text-muted whitespace-nowrap">{{ ViewHelper::number($models->total()) }}</span>
   </h3>
-  <a class="btn btn-success my-1 mr-1" href="{{ path([App\Http\Controllers\MyTrips::class, 'create']) }}">
+  <a class="btn btn-success my-1 mr-1" href="{{ path([App\Http\Controllers\MyTripController::class, 'create']) }}">
     @lang('acp.trips.create')
   </a>
   @if (Auth::user()?->login)
@@ -40,7 +40,7 @@
     </thead>
     <tbody>
     @foreach ($models as $model)
-      <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit(App\Http\Controllers\MyTrips::class, $model) }}">
+      <tr class="js-dblclick-edit" data-dblclick-url="{{ UrlHelper::edit(App\Http\Controllers\MyTripController::class, $model) }}">
         <td class="md:text-right"><span class="sm:hidden">#</span>{{ ViewHelper::paginatorIteration($models, $loop) }}</td>
         <td>{{ $model->title }}</td>
         <td>
@@ -68,7 +68,7 @@
         <td class="md:text-right whitespace-nowrap">
           {{ ViewHelper::number($model->comments_count) ?: '' }}
         </td>
-        <td><a href="{{ UrlHelper::edit(App\Http\Controllers\MyTrips::class, $model) }}">@svg (pencil)</a></td>
+        <td><a href="{{ UrlHelper::edit(App\Http\Controllers\MyTripController::class, $model) }}">@svg (pencil)</a></td>
       </tr>
     @endforeach
     </tbody>
@@ -77,6 +77,6 @@
   @include('tpl.paginator', ['paginator' => $models])
 @else
   <p>Хронология ваших поездок на данный момент пуста.</p>
-  <p>Самое время <a href="{{ path([App\Http\Controllers\MyTrips::class, 'create']) }}">добавить первую</a>.</p>
+  <p>Самое время <a href="{{ path([App\Http\Controllers\MyTripController::class, 'create']) }}">добавить первую</a>.</p>
 @endif
 @endsection
