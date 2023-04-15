@@ -9,7 +9,7 @@ use App\Trip;
 use App\User;
 use Illuminate\Database\Eloquent\Builder;
 
-class UserTravelTrips extends UserTravel
+class UserTravelTripController extends UserTravel
 {
     public function index(User $traveler, LifeIndexForm $request)
     {

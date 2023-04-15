@@ -14,7 +14,7 @@
   @if (Auth::user()?->login)
     <a
       class="btn btn-default my-1 mr-1"
-      href="{{ path([App\Http\Controllers\UserTravelTrips::class, 'index'], Auth::user()->login) }}"
+      href="{{ path([App\Http\Controllers\UserTravelTripController::class, 'index'], Auth::user()->login) }}"
     >
       @lang('Просмотреть')
     </a>

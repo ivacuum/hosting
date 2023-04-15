@@ -6,6 +6,6 @@ class UserHome
 {
     public function index(User $traveler)
     {
-        return redirect(path([UserTravelTrips::class, 'index'], $traveler));
+        return redirect(path([UserTravelTripController::class, 'index'], $traveler));
     }
 }

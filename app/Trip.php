@@ -287,13 +287,13 @@ class Trip extends Model
     {
         return $this->user_id === 1
             ? path([Http\Controllers\LifeController::class, 'page'], $this->slug) . $anchor
-            : path([Http\Controllers\UserTravelTrips::class, 'show'], [$this->user->login, $this->slug]) . $anchor;
+            : path([Http\Controllers\UserTravelTripController::class, 'show'], [$this->user->login, $this->slug]) . $anchor;
     }
 
     public function wwwLocale(?string $anchor = null, string $locale = ''): string
     {
         return $this->user_id === 1
             ? path_locale([Http\Controllers\LifeController::class, 'page'], $this->slug, false, $locale) . $anchor
-            : path_locale([Http\Controllers\UserTravelTrips::class, 'show'], [$this->user->login, $this->slug], false, $locale) . $anchor;
+            : path_locale([Http\Controllers\UserTravelTripController::class, 'show'], [$this->user->login, $this->slug], false, $locale) . $anchor;
     }
 }

@@ -89,7 +89,7 @@ Route::middleware('nav:Японский язык,japanese')->group(function () {
         Route::get('japanese/wanikani/kanji', [Ctrl\JapaneseWanikaniKanji::class, 'index'])->middleware('nav:japanese.kanji');
         Route::get('japanese/wanikani/kanji/{character}', [Ctrl\JapaneseWanikaniKanji::class, 'show']);
         Route::view('japanese/wanikani/level', 'japanese.wanikani.levels')->middleware('nav:Уровни');
-        Route::get('japanese/wanikani/level/{level}', Ctrl\WanikaniLevel::class)->where('level', '\d+');
+        Route::get('japanese/wanikani/level/{level}', Ctrl\WanikaniLevelController::class)->where('level', '\d+');
         Route::get('japanese/wanikani/radicals', [Ctrl\JapaneseWanikaniRadicals::class, 'index'])->middleware('nav:japanese.radicals');
         Route::get('japanese/wanikani/radicals/{meaning}', [Ctrl\JapaneseWanikaniRadicals::class, 'show']);
         Route::get('japanese/wanikani/vocabulary', [Ctrl\JapaneseWanikaniVocabulary::class, 'index'])->middleware('nav:japanese.vocabulary');
@@ -254,11 +254,11 @@ Route::middleware('nav:Пользователи,users')->group(function () {
 });
 
 Route::get('@{traveler:login}', [Ctrl\UserHome::class, 'index']);
-Route::get('@{traveler:login}/travel', [Ctrl\UserTravelTrips::class, 'index']);
+Route::get('@{traveler:login}/travel', [Ctrl\UserTravelTripController::class, 'index']);
 Route::get('@{traveler:login}/travel/cities', [Ctrl\UserTravelCities::class, 'index']);
 Route::get('@{traveler:login}/travel/cities/{slug}', [Ctrl\UserTravelCities::class, 'show']);
 Route::get('@{traveler:login}/travel/countries', [Ctrl\UserTravelCountries::class, 'index']);
 Route::get('@{traveler:login}/travel/countries/{slug}', [Ctrl\UserTravelCountries::class, 'show']);
-Route::get('@{traveler:login}/travel/{slug}', [Ctrl\UserTravelTrips::class, 'show']);
+Route::get('@{traveler:login}/travel/{slug}', [Ctrl\UserTravelTripController::class, 'show']);
 
-Route::get('.well-known/change-password', Ctrl\WellKnownChangePassword::class);
+Route::get('.well-known/change-password', Ctrl\WellKnownChangePasswordController::class);
