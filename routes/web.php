@@ -31,7 +31,7 @@ Route::get('auth/google/callback', [Ctrl\Auth\Google::class, 'callback']);
 Route::get('auth/vk', [Ctrl\Auth\Vk::class, 'index']);
 Route::get('auth/vk/callback', [Ctrl\Auth\Vk::class, 'callback']);
 
-Route::get('comments/{comment}/confirm', Ctrl\CommentConfirm::class)->middleware('auth')->can('confirm', 'comment');
+Route::get('comments/{comment}/confirm', Ctrl\CommentConfirmController::class)->middleware('auth')->can('confirm', 'comment');
 
 Route::view('contact', 'issues.create');
 
@@ -86,14 +86,14 @@ Route::middleware('nav:Японский язык,japanese')->group(function () {
 
     Route::middleware('nav:WaniKani V,japanese/wanikani')->group(function () {
         Route::view('japanese/wanikani', 'japanese.wanikani.index');
-        Route::get('japanese/wanikani/kanji', [Ctrl\JapaneseWanikaniKanji::class, 'index'])->middleware('nav:japanese.kanji');
-        Route::get('japanese/wanikani/kanji/{character}', [Ctrl\JapaneseWanikaniKanji::class, 'show']);
+        Route::get('japanese/wanikani/kanji', [Ctrl\JapaneseWanikaniKanjiController::class, 'index'])->middleware('nav:japanese.kanji');
+        Route::get('japanese/wanikani/kanji/{character}', [Ctrl\JapaneseWanikaniKanjiController::class, 'show']);
         Route::view('japanese/wanikani/level', 'japanese.wanikani.levels')->middleware('nav:Уровни');
         Route::get('japanese/wanikani/level/{level}', Ctrl\WanikaniLevelController::class)->where('level', '\d+');
-        Route::get('japanese/wanikani/radicals', [Ctrl\JapaneseWanikaniRadicals::class, 'index'])->middleware('nav:japanese.radicals');
-        Route::get('japanese/wanikani/radicals/{meaning}', [Ctrl\JapaneseWanikaniRadicals::class, 'show']);
-        Route::get('japanese/wanikani/vocabulary', [Ctrl\JapaneseWanikaniVocabulary::class, 'index'])->middleware('nav:japanese.vocabulary');
-        Route::get('japanese/wanikani/vocabulary/{characters}', [Ctrl\JapaneseWanikaniVocabulary::class, 'show']);
+        Route::get('japanese/wanikani/radicals', [Ctrl\JapaneseWanikaniRadicalsController::class, 'index'])->middleware('nav:japanese.radicals');
+        Route::get('japanese/wanikani/radicals/{meaning}', [Ctrl\JapaneseWanikaniRadicalsController::class, 'show']);
+        Route::get('japanese/wanikani/vocabulary', [Ctrl\JapaneseWanikaniVocabularyController::class, 'index'])->middleware('nav:japanese.vocabulary');
+        Route::get('japanese/wanikani/vocabulary/{characters}', [Ctrl\JapaneseWanikaniVocabularyController::class, 'show']);
     });
 
     Route::view('japanese/words-trainer', 'japanese.words-trainer')->middleware('nav:Тренажер по набору слов хираганой и катаканой');
@@ -168,44 +168,44 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('news', [Ctrl\NewsController::class, 'index'])->middleware('nav:Новости,news');
-Route::get('news/rss', Ctrl\NewsRss::class);
+Route::get('news/rss', Ctrl\NewsRssController::class);
 Route::get('news/{id}', [Ctrl\NewsController::class, 'show'])->middleware('nav:Новости,news');
-Route::get('news/{year}/{month}', Ctrl\NewsBc::class);
-Route::get('news/{year}/{month}/{day}', Ctrl\NewsBc::class);
-Route::get('news/{year}/{month}/{day}/{slug}', Ctrl\NewsBc::class);
+Route::get('news/{year}/{month}', Ctrl\NewsBcController::class);
+Route::get('news/{year}/{month}/{day}', Ctrl\NewsBcController::class);
+Route::get('news/{year}/{month}/{day}/{slug}', Ctrl\NewsBcController::class);
 
-Route::get('notifications', [Ctrl\Notifications::class, 'index'])->middleware('auth');
+Route::get('notifications', [Ctrl\NotificationController::class, 'index'])->middleware('auth');
 
 // Route::get('parser/vk/{page?}/{date?}', [Ctrl\ParserVk::class, 'index'])->where('date', '\d{4}-\d{2}-\d{2}');
 // Route::post('parser/vk', [Ctrl\ParserVk::class, 'indexPost']);
 
 Route::middleware('nav:Фотки,photos')->group(function () {
-    Route::get('photos', [Ctrl\Photos::class, 'index']);
+    Route::get('photos', [Ctrl\PhotoController::class, 'index']);
 
     Route::middleware('nav:Города,photos/cities')->group(function () {
-        Route::get('photos/cities', [Ctrl\Photos::class, 'cities']);
-        Route::get('photos/cities/{slug}', [Ctrl\Photos::class, 'city']);
+        Route::get('photos/cities', [Ctrl\PhotoController::class, 'cities']);
+        Route::get('photos/cities/{slug}', [Ctrl\PhotoController::class, 'city']);
     });
 
     Route::middleware('nav:Страны,photos/countries')->group(function () {
-        Route::get('photos/countries', [Ctrl\Photos::class, 'countries']);
-        Route::get('photos/countries/{slug}', [Ctrl\Photos::class, 'country']);
+        Route::get('photos/countries', [Ctrl\PhotoController::class, 'countries']);
+        Route::get('photos/countries/{slug}', [Ctrl\PhotoController::class, 'country']);
     });
 
     Route::view('photos/faq', 'photos.faq')->middleware('nav:Помощь,photos/faq');
-    Route::get('photos/map', [Ctrl\Photos::class, 'map'])->middleware('nav:Карта,photos/map');
+    Route::get('photos/map', [Ctrl\PhotoController::class, 'map'])->middleware('nav:Карта,photos/map');
 
     Route::middleware('nav:Тэги,photos/tags')->group(function () {
-        Route::get('photos/tags', [Ctrl\Photos::class, 'tags']);
-        Route::get('photos/tags/{tag}', [Ctrl\Photos::class, 'tag']);
+        Route::get('photos/tags', [Ctrl\PhotoController::class, 'tags']);
+        Route::get('photos/tags/{tag}', [Ctrl\PhotoController::class, 'tag']);
     });
 
     Route::middleware('nav:Поездки,photos/trips')->group(function () {
-        Route::get('photos/trips', [Ctrl\Photos::class, 'trips']);
-        Route::get('photos/trips/{trip}', [Ctrl\Photos::class, 'trip']);
+        Route::get('photos/trips', [Ctrl\PhotoController::class, 'trips']);
+        Route::get('photos/trips/{trip}', [Ctrl\PhotoController::class, 'trip']);
     });
 
-    Route::get('photos/{photo}', [Ctrl\Photos::class, 'show']);
+    Route::get('photos/{photo}', [Ctrl\PhotoController::class, 'show']);
 });
 
 Route::view('privacy-policy', 'privacy-policy');

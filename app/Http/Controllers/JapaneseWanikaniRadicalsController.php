@@ -4,7 +4,7 @@ use App\Radical;
 use App\Scope\UserBurnableScope;
 use Illuminate\Http\Request;
 
-class JapaneseWanikaniRadicals
+class JapaneseWanikaniRadicalsController
 {
     public function index(Request $request)
     {

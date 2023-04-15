@@ -1,7 +1,7 @@
 <?php namespace App\Mail;
 
 use App\Comment;
-use App\Http\Controllers\CommentConfirm;
+use App\Http\Controllers\CommentConfirmController;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 
@@ -15,7 +15,7 @@ class CommentConfirmMail extends Mailable implements ShouldQueue
     {
         $this->email = $this->email($comment->emails(), $comment->user);
         $this->confirmLink = $this->email->signedLink(
-            path_locale(CommentConfirm::class, $comment, false, $comment->user->locale)
+            path_locale(CommentConfirmController::class, $comment, false, $comment->user->locale)
         );
     }
 

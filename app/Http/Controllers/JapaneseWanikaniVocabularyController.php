@@ -4,7 +4,7 @@ use App\Scope\UserBurnableScope;
 use App\Vocabulary;
 use Illuminate\Http\Request;
 
-class JapaneseWanikaniVocabulary
+class JapaneseWanikaniVocabularyController
 {
     public function index(Request $request)
     {

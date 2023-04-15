@@ -4,7 +4,7 @@ use App\Kanji;
 use App\Scope\UserBurnableScope;
 use Illuminate\Http\Request;
 
-class JapaneseWanikaniKanji
+class JapaneseWanikaniKanjiController
 {
     public function index(Request $request)
     {

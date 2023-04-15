@@ -19,7 +19,7 @@ use App\Trip;
 use App\Utilities\CityHelper;
 use App\Utilities\CountryHelper;
 
-class Photos
+class PhotoController
 {
     public function index()
     {

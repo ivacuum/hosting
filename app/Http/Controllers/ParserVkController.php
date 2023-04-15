@@ -7,7 +7,7 @@ use Carbon\CarbonInterval;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\PendingRequest;
 
-class ParserVk
+class ParserVkController
 {
     protected PendingRequest $http;
     protected $token;
