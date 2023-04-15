@@ -243,7 +243,7 @@ Route::middleware('nav:Тренажеры,trainers')->group(function () {
     });
 });
 
-Route::get('trips/{trip}', [Ctrl\Trips::class, 'show']);
+Route::get('trips/{trip}', [Ctrl\TripController::class, 'show']);
 
 Route::view('up', 'upload');
 Route::post('up', Ctrl\Upload::class);

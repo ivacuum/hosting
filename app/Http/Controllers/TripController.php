@@ -3,7 +3,7 @@
 use App\Trip;
 use Illuminate\Http\Request;
 
-class Trips
+class TripController
 {
     public function show(Trip $trip, Request $request)
     {

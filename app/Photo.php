@@ -114,6 +114,6 @@ class Photo extends Model
 
     public function www(): string
     {
-        return path([Http\Controllers\Photos::class, 'show'], $this->id);
+        return to('photos/{photo}', $this->id);
     }
 }

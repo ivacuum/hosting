@@ -81,6 +81,6 @@ class Kanji extends Model
 
     public function www(): string
     {
-        return path([Http\Controllers\JapaneseWanikaniKanji::class, 'show'], $this->character);
+        return to('japanese/wanikani/kanji/{character}', $this->character);
     }
 }

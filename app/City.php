@@ -92,7 +92,7 @@ class City extends Model
 
     public function www(): string
     {
-        return path([Http\Controllers\LifeController::class, 'page'], $this->slug);
+        return to('life/{slug}', $this->slug);
     }
 
     public function wwwAcp(): string

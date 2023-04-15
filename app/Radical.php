@@ -60,6 +60,6 @@ class Radical extends Model
 
     public function www(): string
     {
-        return path([Http\Controllers\JapaneseWanikaniRadicals::class, 'show'], $this->meaning);
+        return to('japanese/wanikani/radicals/{meaning}', $this->meaning);
     }
 }

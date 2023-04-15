@@ -179,11 +179,11 @@ class Magnet extends Model
 
     public function www(?string $anchor = null): string
     {
-        return path([Http\Controllers\MagnetsController::class, 'show'], $this->id) . $anchor;
+        return to('magnets/{magnet}', $this->id) . $anchor;
     }
 
     public function wwwAcp(): string
     {
-        return path([Http\Controllers\Acp\Magnets::class, 'show'], $this);
+        return to('acp/magnets/{magnet}', $this->id);
     }
 }
