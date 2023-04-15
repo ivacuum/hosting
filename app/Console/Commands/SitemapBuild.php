@@ -102,7 +102,6 @@ class SitemapBuild extends BaseSitemapBuild
 
     protected function appendGigs()
     {
-        /** @var Gig $model */
         foreach ($this->gigModels() as $model) {
             $this->page("life/{$model->slug}", '0.7');
             $this->page("en/life/{$model->slug}", '0.7');
@@ -187,7 +186,6 @@ class SitemapBuild extends BaseSitemapBuild
     {
         $this->page('news', '0.2');
 
-        /** @var News $model */
         foreach ($this->newsModels() as $model) {
             $prefix = $model->locale->isRussian() ? '' : "{$model->locale->value}/";
 
@@ -197,13 +195,13 @@ class SitemapBuild extends BaseSitemapBuild
 
     protected function appendTrips()
     {
-        /** @var Trip $model */
         foreach ($this->tripModels() as $model) {
             $this->page("life/{$model->slug}", '0.7');
             $this->page("en/life/{$model->slug}", '0.7');
         }
     }
 
+    /** @return \Illuminate\Support\LazyCollection<int, Gig> */
     protected function gigModels()
     {
         return Gig::query()
@@ -212,6 +210,7 @@ class SitemapBuild extends BaseSitemapBuild
             ->lazyById();
     }
 
+    /** @return \Illuminate\Support\LazyCollection<int, News> */
     protected function newsModels()
     {
         return News::query()
@@ -220,6 +219,7 @@ class SitemapBuild extends BaseSitemapBuild
             ->lazyById();
     }
 
+    /** @return \Illuminate\Support\LazyCollection<int, Trip> */
     protected function tripModels()
     {
         return Trip::query()
