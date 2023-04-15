@@ -153,7 +153,7 @@ class Gig extends Model
 
     public function www(): string
     {
-        return path([Http\Controllers\Life::class, 'page'], $this->slug);
+        return path([Http\Controllers\LifeController::class, 'page'], $this->slug);
     }
 
     public function wwwAcp(): string
@@ -163,6 +163,6 @@ class Gig extends Model
 
     public function wwwLocale(string $locale = ''): string
     {
-        return path_locale([Http\Controllers\Life::class, 'page'], $this->slug, false, $locale);
+        return path_locale([Http\Controllers\LifeController::class, 'page'], $this->slug, false, $locale);
     }
 }

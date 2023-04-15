@@ -117,7 +117,7 @@ class Country extends Model
 
     public function www(): string
     {
-        return path([Http\Controllers\Life::class, 'country'], $this->slug);
+        return path([Http\Controllers\LifeController::class, 'country'], $this->slug);
     }
 
     public function wwwAcp(): string

@@ -11,7 +11,7 @@ class TripsRss
     {
         $meta = [
             'title' => __('Заметки'),
-            'link' => url(path([Life::class, 'index'])),
+            'link' => url(path([LifeController::class, 'index'])),
             'description' => __('life.trips.rss.description'),
         ];
 

@@ -16,7 +16,7 @@ use App\Scope\TripVisibleScope;
 use App\Trip;
 use App\Utilities\CityHelper;
 
-class Life
+class LifeController
 {
     public function index(
         LifeIndexForm $request,

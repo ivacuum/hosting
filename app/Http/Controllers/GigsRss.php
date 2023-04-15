@@ -9,7 +9,7 @@ class GigsRss
     {
         $meta = [
             'title' => __('Концерты'),
-            'link' => url(path([Life::class, 'gigs'])),
+            'link' => url(path([LifeController::class, 'gigs'])),
             'description' => __('life.gigs.rss.description'),
         ];
 

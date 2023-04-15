@@ -1,7 +1,8 @@
 {{-- Комментарий к поездке --}}
 <strong>{{ $notification->data['comment']['user']['name'] }}</strong>
 <span class="text-muted">@lang("ui.notifications.{$basename}")</span>
-<a class="link" href="{{ path([App\Http\Controllers\Life::class, 'page'], $notification->data['slug']) }}#comment-{{ $notification->data['comment']['id'] }}">{{ Str::limit($notification->data['title'], 101) }}</a>
+<a class="link" href="{{ path([App\Http\Controllers\LifeController::class, 'page'], $notification->data['slug']) }}#comment-{{ $notification->data['comment']['id'] }}"
+>{{ Str::limit($notification->data['title'], 101) }}</a>
 <time
   class="text-muted"
   datetime="{{ $notification->created_at->toDateString() }}"

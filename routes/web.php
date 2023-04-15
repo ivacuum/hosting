@@ -112,24 +112,24 @@ Route::middleware('nav:Корейский язык,korean')->group(function () {
 });
 
 Route::middleware('nav:Заметки,life')->group(function () {
-    Route::get('life', [Ctrl\Life::class, 'index']);
+    Route::get('life', [Ctrl\LifeController::class, 'index']);
     Route::view('life/books', 'life.books')->middleware('nav:Понравившиеся книги');
-    Route::get('life/calendar', Ctrl\Calendar::class)->middleware('nav:Календарь поездок');
+    Route::get('life/calendar', Ctrl\CalendarController::class)->middleware('nav:Календарь поездок');
     Route::view('life/chillout', 'life.chillout')->middleware('nav:Chillout');
-    Route::get('life/cities', [Ctrl\Life::class, 'cities'])->middleware('nav:Города');
-    Route::get('life/countries', [Ctrl\Life::class, 'countries'])->middleware('nav:Страны');
-    Route::get('life/countries/{slug}', [Ctrl\Life::class, 'country'])->middleware('nav:Страны,life/countries');
+    Route::get('life/cities', [Ctrl\LifeController::class, 'cities'])->middleware('nav:Города');
+    Route::get('life/countries', [Ctrl\LifeController::class, 'countries'])->middleware('nav:Страны');
+    Route::get('life/countries/{slug}', [Ctrl\LifeController::class, 'country'])->middleware('nav:Страны,life/countries');
     Route::view('life/english', 'life.english')->middleware('nav:Английский');
     Route::view('life/favorite-posts', 'life.favorite-posts')->middleware('nav:Любимые посты');
     Route::view('life/german', 'life.german')->middleware('nav:Немецкий');
-    Route::get('life/gigs', [Ctrl\Life::class, 'gigs'])->middleware('nav:Концерты');
+    Route::get('life/gigs', [Ctrl\LifeController::class, 'gigs'])->middleware('nav:Концерты');
     Route::get('life/gigs/rss', Ctrl\GigsRss::class);
     Route::view('life/laundry', 'life.laundry')->middleware('nav:Условные обозначения стирки');
     Route::get('life/movies', Ctrl\Movies::class)->middleware('nav:Любимые фильмы и сериалы');
     Route::view('life/podcasts', 'life.podcasts')->middleware('nav:Подкасты');
     Route::get('life/rss', Ctrl\TripsRss::class);
     Route::view('life/using-in-travels', 'life.using-in-travels')->middleware('nav:Чем пользуюсь в путешествиях');
-    Route::get('life/{slug}', [Ctrl\Life::class, 'page']);
+    Route::get('life/{slug}', [Ctrl\LifeController::class, 'page']);
 });
 
 Route::get('magnets', [Ctrl\MagnetsController::class, 'index']);
