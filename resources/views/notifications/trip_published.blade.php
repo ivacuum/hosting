@@ -2,7 +2,7 @@
 @lang("ui.notifications.{$basename}")
 <a
   class="link"
-  href="{{ path([App\Http\Controllers\LifeController::class, 'page'], $notification->data['slug']) }}"
+  href="{{ to('life/{slug}', $notification->data['slug']) }}"
 >{{ Str::limit($notification->data['title'], 101) }}</a>
 <time
   class="text-muted"

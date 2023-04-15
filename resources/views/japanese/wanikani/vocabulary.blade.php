@@ -6,7 +6,7 @@
 <div class="items-center flex flex-wrap font-medium text-4xl">
   <a
     class="bg-gray-600 hover:bg-gray-700 ja-shadow-light mr-2 px-4 py-1 rounded text-white hover:text-white"
-    href="{{ path(App\Http\Controllers\WanikaniLevelController::class, $vocab->level) }}"
+    href="{{ to('japanese/wanikani/level/{level}', $vocab->level) }}"
   >{{ $vocab->level }}</a>
   <div class="bg-vocab ja-shadow-light mr-4 px-2 py-1 rounded text-white">{{ $vocab->character }}</div>
   <div class="text-2xl capitalize tracking-tight">{{ $vocab->meaning }}</div>

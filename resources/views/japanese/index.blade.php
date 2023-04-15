@@ -135,7 +135,7 @@
   <div class="font-medium text-3xl tracking-tight mb-2">@ru Ключи (радикалы) @en Radicals @endru</div>
   @ru
     <p>Это составные блоки иероглифов. Они здорово помогают их распознавать.</p>
-    <p>Возьмем, например, иероглиф неба <a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikaniKanji::class, 'show'], '空') }}">空</a>. Он состоит из следующих ключей: <a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikaniRadicals::class, 'show'], 'construction') }}">工</a>, <a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikaniRadicals::class, 'show'], 'legs') }}">儿</a> и <a class="link" href="{{ path([App\Http\Controllers\JapaneseWanikaniRadicals::class, 'show'], 'helmet') }}">宀</a>.</p>
+    <p>Возьмем, например, иероглиф неба <a class="link" href="{{ to('japanese/wanikani/kanji/{character}', '空') }}">空</a>. Он состоит из следующих ключей: <a class="link" href="{{ to('japanese/wanikani/radicals/{meaning}', 'construction') }}">工</a>, <a class="link" href="{{ to('japanese/wanikani/radicals/{meaning}', 'legs') }}">儿</a> и <a class="link" href="{{ to('japanese/wanikani/radicals/{meaning}', 'helmet') }}">宀</a>.</p>
     <p>Зная хотя бы один ключ, можно найти даже самый заковыристый иероглиф.</p>
   @endru
 </section>

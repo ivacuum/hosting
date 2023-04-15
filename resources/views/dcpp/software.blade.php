@@ -11,7 +11,7 @@
       <h1 class="font-medium text-4xl tracking-tight mb-6">@lang('Скачать') {{ $softwareTitle }} {{ $software[0]['version'] }}</h1>
       @section('download_latest')
         <div>
-          <a class="btn btn-success my-1 text-lg px-4 py-2" href="{{ path([App\Http\Controllers\FileController::class, 'download'], $software[0]['id']) }}">
+          <a class="btn btn-success my-1 text-lg px-4 py-2" href="{{ to('files/{file}/dl', $software[0]['id']) }}">
             <?php $icon = $software[0]['icon'] ?? 'windows' ?>
             <span class="mr-1">
               @svg ($icon)
@@ -90,7 +90,7 @@
               <ul>
                 @foreach ($software as $soft)
                   @continue ($loop->index === 0)
-                  <li><a class="link" href="{{ path([App\Http\Controllers\FileController::class, 'download'], $soft['id']) }}">@lang('Скачать') {{ $softwareTitle }} {{ $soft['version'] }}{{ $soft['dl_suffix'] }}</a></li>
+                  <li><a class="link" href="{{ to('files/{file}/dl', $soft['id']) }}">@lang('Скачать') {{ $softwareTitle }} {{ $soft['version'] }}{{ $soft['dl_suffix'] }}</a></li>
                 @endforeach
               </ul>
             </div>

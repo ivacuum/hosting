@@ -8,7 +8,7 @@
     @lang('Поездки')
     <span class="text-base text-muted whitespace-nowrap">{{ ViewHelper::number($models->total()) }}</span>
   </h3>
-  <a class="btn btn-success my-1 mr-1" href="{{ path([App\Http\Controllers\MyTripController::class, 'create']) }}">
+  <a class="btn btn-success my-1 mr-1" href="@lng/my/trips/create">
     @lang('acp.trips.create')
   </a>
   @if (Auth::user()?->login)
@@ -77,6 +77,6 @@
   @include('tpl.paginator', ['paginator' => $models])
 @else
   <p>Хронология ваших поездок на данный момент пуста.</p>
-  <p>Самое время <a href="{{ path([App\Http\Controllers\MyTripController::class, 'create']) }}">добавить первую</a>.</p>
+  <p>Самое время <a href="@lng/my/trips/create">добавить первую</a>.</p>
 @endif
 @endsection
