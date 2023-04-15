@@ -83,6 +83,6 @@ class Vocabulary extends Model
 
     public function www(): string
     {
-        return path([Http\Controllers\JapaneseWanikaniVocabulary::class, 'show'], $this->character);
+        return to('japanese/wanikani/vocabulary/{characters}', $this->character);
     }
 }

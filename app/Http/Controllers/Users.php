@@ -15,14 +15,11 @@ class Users
         return view('users.index', ['users' => $users]);
     }
 
-    public function show(int $id)
+    public function show(User $user)
     {
-        /** @var User $user */
-        $user = User::query()
-            ->withCount(['comments', 'images', 'magnets'])
-            ->findOrFail($id);
-
         abort_unless($user->isActive(), 404);
+
+        $user->loadCount(['comments', 'images', 'magnets']);
 
         \Breadcrumbs::push($user->publicName());
 

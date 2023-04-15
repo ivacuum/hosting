@@ -250,7 +250,7 @@ Route::post('up', Ctrl\Upload::class);
 
 Route::middleware('nav:Пользователи,users')->group(function () {
     Route::get('users', [Ctrl\Users::class, 'index']);
-    Route::get('users/{id}', [Ctrl\Users::class, 'show']);
+    Route::get('users/{user}', [Ctrl\Users::class, 'show']);
 });
 
 Route::get('@{traveler:login}', [Ctrl\UserHome::class, 'index']);
