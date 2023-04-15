@@ -2,7 +2,7 @@
 
 use App\User;
 
-class UserTravel extends Controller
+class UserTravelController extends Controller
 {
     protected User|null $traveler = null;
 

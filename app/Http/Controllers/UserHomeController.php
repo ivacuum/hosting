@@ -2,7 +2,7 @@
 
 use App\User;
 
-class UserHome
+class UserHomeController
 {
     public function index(User $traveler)
     {

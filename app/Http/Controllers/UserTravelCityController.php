@@ -8,7 +8,7 @@ use App\Trip;
 use App\User;
 use App\Utilities\CityHelper;
 
-class UserTravelCities extends UserTravel
+class UserTravelCityController extends UserTravelController
 {
     public function index(User $traveler, GetTripCountByCitiesAction $getTripCountByCities)
     {

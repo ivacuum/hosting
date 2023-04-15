@@ -127,7 +127,7 @@ Route::middleware('nav:Заметки,life')->group(function () {
     Route::view('life/laundry', 'life.laundry')->middleware('nav:Условные обозначения стирки');
     Route::get('life/movies', Ctrl\MovieController::class)->middleware('nav:Любимые фильмы и сериалы');
     Route::view('life/podcasts', 'life.podcasts')->middleware('nav:Подкасты');
-    Route::get('life/rss', Ctrl\TripsRss::class);
+    Route::get('life/rss', Ctrl\TripsRssController::class);
     Route::view('life/using-in-travels', 'life.using-in-travels')->middleware('nav:Чем пользуюсь в путешествиях');
     Route::get('life/{slug}', [Ctrl\LifeController::class, 'page']);
 });
@@ -227,12 +227,12 @@ Route::view('retracker/usage', 'retracker.usage');
 
 Route::view('stickers', 'stickers');
 
-Route::get('subscriptions', [Ctrl\Subscriptions::class, 'edit']);
-Route::post('subscriptions', [Ctrl\Subscriptions::class, 'store']);
-Route::put('subscriptions', [Ctrl\Subscriptions::class, 'update'])->middleware('auth');
-Route::get('subscriptions/confirm', [Ctrl\Subscriptions::class, 'confirm'])->middleware('auth');
+Route::get('subscriptions', [Ctrl\SubscriptionController::class, 'edit']);
+Route::post('subscriptions', [Ctrl\SubscriptionController::class, 'store']);
+Route::put('subscriptions', [Ctrl\SubscriptionController::class, 'update'])->middleware('auth');
+Route::get('subscriptions/confirm', [Ctrl\SubscriptionController::class, 'confirm'])->middleware('auth');
 
-Route::get('torrent', Ctrl\TorrentPromo::class);
+Route::get('torrent', Ctrl\TorrentPromoController::class);
 
 Route::middleware('nav:Тренажеры,trainers')->group(function () {
     Route::view('trainers', 'trainers.index');
@@ -246,19 +246,19 @@ Route::middleware('nav:Тренажеры,trainers')->group(function () {
 Route::get('trips/{trip}', [Ctrl\TripController::class, 'show']);
 
 Route::view('up', 'upload');
-Route::post('up', Ctrl\Upload::class);
+Route::post('up', Ctrl\UploadController::class);
 
 Route::middleware('nav:Пользователи,users')->group(function () {
-    Route::get('users', [Ctrl\Users::class, 'index']);
-    Route::get('users/{user}', [Ctrl\Users::class, 'show']);
+    Route::get('users', [Ctrl\UserController::class, 'index']);
+    Route::get('users/{user}', [Ctrl\UserController::class, 'show']);
 });
 
-Route::get('@{traveler:login}', [Ctrl\UserHome::class, 'index']);
+Route::get('@{traveler:login}', [Ctrl\UserHomeController::class, 'index']);
 Route::get('@{traveler:login}/travel', [Ctrl\UserTravelTripController::class, 'index']);
-Route::get('@{traveler:login}/travel/cities', [Ctrl\UserTravelCities::class, 'index']);
-Route::get('@{traveler:login}/travel/cities/{slug}', [Ctrl\UserTravelCities::class, 'show']);
-Route::get('@{traveler:login}/travel/countries', [Ctrl\UserTravelCountries::class, 'index']);
-Route::get('@{traveler:login}/travel/countries/{slug}', [Ctrl\UserTravelCountries::class, 'show']);
+Route::get('@{traveler:login}/travel/cities', [Ctrl\UserTravelCityController::class, 'index']);
+Route::get('@{traveler:login}/travel/cities/{slug}', [Ctrl\UserTravelCityController::class, 'show']);
+Route::get('@{traveler:login}/travel/countries', [Ctrl\UserTravelCountryController::class, 'index']);
+Route::get('@{traveler:login}/travel/countries/{slug}', [Ctrl\UserTravelCountryController::class, 'show']);
 Route::get('@{traveler:login}/travel/{slug}', [Ctrl\UserTravelTripController::class, 'show']);
 
 Route::get('.well-known/change-password', Ctrl\WellKnownChangePasswordController::class);

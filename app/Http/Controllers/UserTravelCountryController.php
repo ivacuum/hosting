@@ -5,7 +5,7 @@ use App\Scope\TripVisibleScope;
 use App\Trip;
 use App\User;
 
-class UserTravelCountries extends UserTravel
+class UserTravelCountryController extends UserTravelController
 {
     public function index(User $traveler)
     {

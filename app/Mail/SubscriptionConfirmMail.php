@@ -1,6 +1,6 @@
 <?php namespace App\Mail;
 
-use App\Http\Controllers\Subscriptions;
+use App\Http\Controllers\SubscriptionController;
 use App\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -28,7 +28,7 @@ class SubscriptionConfirmMail extends Mailable implements ShouldQueue
         $hash = \Crypt::encryptString(implode(',', $subscriptions));
 
         $this->confirmLink = $this->email->signedLink(
-            path([Subscriptions::class, 'confirm'], ['hash' => $hash])
+            path([SubscriptionController::class, 'confirm'], ['hash' => $hash])
         );
     }
 

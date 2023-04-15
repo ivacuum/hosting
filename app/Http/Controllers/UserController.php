@@ -3,7 +3,7 @@
 use App\Scope\UserActiveScope;
 use App\User;
 
-class Users
+class UserController
 {
     public function index()
     {

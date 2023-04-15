@@ -5,7 +5,7 @@ use App\Scope\TripPublishedScope;
 use App\Scope\TripWithCoverScope;
 use App\Trip;
 
-class TripsRss
+class TripsRssController
 {
     public function __invoke()
     {
