@@ -44,7 +44,7 @@ Route::middleware('nav:О DC++,dc')->group(function () {
     Route::view('dc/faq', 'dcpp.faq')->middleware('nav:Вопросы и ответы');
     Route::view('dc/flylinkdc', 'dcpp.flylinkdc')->middleware('nav:dcpp.flylinkdc');
     Route::view('dc/greylinkdc', 'dcpp.greylinkdc')->middleware('nav:dcpp.greylinkdc');
-    Route::get('dc/hubs', Ctrl\DcppHubs::class)->middleware('nav:Хабы');
+    Route::get('dc/hubs', Ctrl\DcppHubController::class)->middleware('nav:Хабы');
     Route::post('dc/hubs/{hub}/click', Ctrl\DcppHubClickController::class);
     Route::view('dc/jucydc', 'dcpp.jucydc')->middleware('nav:dcpp.jucydc');
     Route::view('dc/kalugadc', 'dcpp.kalugadc')->middleware('nav:dcpp.kalugadc');
@@ -69,13 +69,13 @@ Route::middleware('nav:Документация,docs')->group(function () {
     Route::view('docs/trips', 'docs.trips')->middleware('nav:Поездки');
 });
 
-Route::get('files', [Ctrl\Files::class, 'index'])->middleware('nav:Файлы');
-Route::get('files/{file}/dl', [Ctrl\Files::class, 'download']);
+Route::get('files', [Ctrl\FileController::class, 'index'])->middleware('nav:Файлы');
+Route::get('files/{file}/dl', [Ctrl\FileController::class, 'download']);
 
 Route::middleware('nav:Галерея,gallery')->group(function () {
-    Route::get('gallery', [Ctrl\Gallery::class, 'index'])->middleware('auth');
-    Route::get('gallery/preview/{image}', [Ctrl\Gallery::class, 'preview'])->middleware('nav:Просмотр миниатюры');
-    Route::get('gallery/view/{image}', [Ctrl\Gallery::class, 'show'])->middleware('nav:Просмотр изображения');
+    Route::get('gallery', [Ctrl\GalleryController::class, 'index'])->middleware('auth');
+    Route::get('gallery/preview/{image}', [Ctrl\GalleryController::class, 'preview'])->middleware('nav:Просмотр миниатюры');
+    Route::get('gallery/view/{image}', [Ctrl\GalleryController::class, 'show'])->middleware('nav:Просмотр изображения');
 
     Route::view('gallery/upload', 'gallery.upload')->middleware('auth')->middleware('nav:Загрузка изображений');
 });

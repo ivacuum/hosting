@@ -2,7 +2,7 @@
 
 use App\Image;
 
-class Gallery
+class GalleryController
 {
     public function index()
     {

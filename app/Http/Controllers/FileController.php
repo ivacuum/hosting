@@ -3,7 +3,7 @@
 use App\File;
 use App\Scope\FilePublishedScope;
 
-class Files
+class FileController
 {
     public function index()
     {
