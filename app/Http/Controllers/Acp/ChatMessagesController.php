@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
-class ChatMessages extends Controller
+class ChatMessagesController extends Controller
 {
     use AuthorizesRequests;
 
@@ -62,7 +62,7 @@ class ChatMessages extends Controller
 
         return [
             'status' => 'OK',
-            'redirect' => path([ChatMessages::class, 'index']),
+            'redirect' => path([ChatMessagesController::class, 'index']),
         ];
     }
 

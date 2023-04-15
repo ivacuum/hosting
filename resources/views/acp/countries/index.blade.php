@@ -21,12 +21,12 @@
       <td><a href="{{ Acp::show($model) }}">{{ $model->title }}</a></td>
       <td><a href="{{ $model->www() }}">{{ $model->slug }}</a></td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ $model->wwwAcpCities() }}">
+        <a href="{{ Acp::index(new App\City, $model) }}">
           {{ ViewHelper::number($model->cities_count) ?: '' }}
         </a>
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ $model->wwwAcpTrips() }}">
+        <a href="{{ Acp::index(new App\Trip, $model) }}">
           {{ ViewHelper::number($model->trips_count) ?: '' }}
         </a>
       </td>

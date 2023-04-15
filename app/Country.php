@@ -119,19 +119,4 @@ class Country extends Model
     {
         return to('life/countries/{slug}', $this->slug);
     }
-
-    public function wwwAcp(): string
-    {
-        return path([Http\Controllers\Acp\Countries::class, 'show'], $this);
-    }
-
-    public function wwwAcpCities(): string
-    {
-        return path([Http\Controllers\Acp\Cities::class, 'index'], [$this->getForeignKey() => $this]);
-    }
-
-    public function wwwAcpTrips(): string
-    {
-        return path([Http\Controllers\Acp\Trips::class, 'index'], [$this->getForeignKey() => $this]);
-    }
 }

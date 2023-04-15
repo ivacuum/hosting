@@ -9,7 +9,7 @@ use App\Client;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
-class Clients extends Controller
+class ClientsController extends Controller
 {
     use AuthorizesRequests;
 

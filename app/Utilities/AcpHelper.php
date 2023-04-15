@@ -27,8 +27,15 @@ class AcpHelper
         );
     }
 
-    public function index(Model $model): string
+    public function index(Model $model, Model|null $foreign = null): string
     {
+        if ($foreign) {
+            return path(
+                [$this->getModelController->execute($model), 'index'],
+                [$foreign->getForeignKey() => $foreign]
+            );
+        }
+
         return path([$this->getModelController->execute($model), 'index']);
     }
 

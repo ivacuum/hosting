@@ -30,10 +30,10 @@ class GetModelControllerAction
     public function execute(Model $model): string
     {
         return match (true) {
-            $model instanceof Artist => Controllers\Acp\Artists::class,
-            $model instanceof ChatMessage => Controllers\Acp\ChatMessages::class,
-            $model instanceof City => Controllers\Acp\Cities::class,
-            $model instanceof Client => Controllers\Acp\Clients::class,
+            $model instanceof Artist => Controllers\Acp\ArtistsController::class,
+            $model instanceof ChatMessage => Controllers\Acp\ChatMessagesController::class,
+            $model instanceof City => Controllers\Acp\CitiesController::class,
+            $model instanceof Client => Controllers\Acp\ClientsController::class,
             $model instanceof Comment => Controllers\Acp\Comments::class,
             $model instanceof Country => Controllers\Acp\Countries::class,
             $model instanceof DcppHub => Controllers\Acp\DcppHubs::class,

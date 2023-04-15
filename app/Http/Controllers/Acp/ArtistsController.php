@@ -10,7 +10,7 @@ use App\Domain\Sort;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
-class Artists extends Controller
+class ArtistsController extends Controller
 {
     use AuthorizesRequests;
 

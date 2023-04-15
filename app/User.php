@@ -251,9 +251,4 @@ class User extends Authenticatable implements HasLocalePreference
     {
         return to('users/{user}', $this->id);
     }
-
-    public function wwwAcp(): string
-    {
-        return path([Http\Controllers\Acp\Users::class, 'show'], $this);
-    }
 }

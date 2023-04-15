@@ -4,14 +4,14 @@ use App\Http\Controllers\Acp;
 
 Route::get('/', Acp\HomeController::class);
 
-Route::resource('artists', Acp\Artists::class)->except(['store', 'update']);
+Route::resource('artists', Acp\ArtistsController::class)->except(['store', 'update']);
 
-Route::resource('chat-messages', Acp\ChatMessages::class)->except(['create', 'store', 'update']);
-Route::post('chat-messages/batch', [Acp\ChatMessages::class, 'batch']);
+Route::resource('chat-messages', Acp\ChatMessagesController::class)->except(['create', 'store', 'update']);
+Route::post('chat-messages/batch', [Acp\ChatMessagesController::class, 'batch']);
 
-Route::resource('cities', Acp\Cities::class)->except(['store', 'update']);
+Route::resource('cities', Acp\CitiesController::class)->except(['store', 'update']);
 
-Route::resource('clients', Acp\Clients::class)->except(['store', 'update']);
+Route::resource('clients', Acp\ClientsController::class)->except(['store', 'update']);
 
 Route::resource('comments', Acp\Comments::class)->except(['create', 'store', 'update']);
 

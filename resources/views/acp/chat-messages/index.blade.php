@@ -62,7 +62,7 @@
       'publish' => 'Опубликовать',
       'delete' => 'Удалить',
     ],
-    'url' => path([App\Http\Controllers\Acp\ChatMessages::class, 'batch']),
+    'url' => path([App\Http\Controllers\Acp\ChatMessagesController::class, 'batch']),
   ])
 </div>
 @endsection

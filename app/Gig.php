@@ -156,11 +156,6 @@ class Gig extends Model
         return to('life/{slug}', $this->slug);
     }
 
-    public function wwwAcp(): string
-    {
-        return path([Http\Controllers\Acp\Gigs::class, 'show'], $this);
-    }
-
     public function wwwLocale(string $locale = ''): string
     {
         return path_locale([Http\Controllers\LifeController::class, 'page'], $this->slug, false, $locale);

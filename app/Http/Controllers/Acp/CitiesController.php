@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
-class Cities extends Controller
+class CitiesController extends Controller
 {
     use AuthorizesRequests;
 

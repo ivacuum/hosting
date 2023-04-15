@@ -49,7 +49,7 @@
   <tr>
     <td class="text-right font-bold">Клиент</td>
     <td>
-      <a href="{{ path([App\Http\Controllers\Acp\Clients::class, 'show'], $model->client) }}">
+      <a href="{{ path([App\Http\Controllers\Acp\ClientsController::class, 'show'], $model->client) }}">
         {{ $model->client->name }}
       </a>
     </td>

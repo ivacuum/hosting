@@ -69,7 +69,7 @@
         @endif
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ path([App\Http\Controllers\Acp\ChatMessages::class, 'index'], [$model->getForeignKey() => $model]) }}">
+        <a href="{{ path([App\Http\Controllers\Acp\ChatMessagesController::class, 'index'], [$model->getForeignKey() => $model]) }}">
           {{ ViewHelper::number($model->chat_messages_count) ?: '' }}
         </a>
       </td>

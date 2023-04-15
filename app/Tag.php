@@ -58,9 +58,4 @@ class Tag extends Model
     {
         return to('photos/tags/{tag}', $this);
     }
-
-    public function wwwAcp(): string
-    {
-        return to('acp/tags/{tag}', $this);
-    }
 }
