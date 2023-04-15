@@ -23,7 +23,6 @@ use App\News;
 use App\Notification;
 use App\Photo;
 use App\Radical;
-use App\ReferrerRedirect;
 use App\Tag;
 use App\Trip;
 use App\User;
@@ -59,7 +58,6 @@ class GetModelBreadcrumbAction
             $model instanceof Notification => $model->id,
             $model instanceof Photo => str_replace('/', ' / ', $model->slug),
             $model instanceof Radical => $model->character,
-            $model instanceof ReferrerRedirect => $model->to,
             $model instanceof Tag => "#{$model->title}",
             $model instanceof Trip => $model->title,
             $model instanceof User => $model->email ?? '',

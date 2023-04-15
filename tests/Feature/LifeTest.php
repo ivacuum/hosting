@@ -1,7 +1,6 @@
 <?php namespace Tests\Feature;
 
 use App\Factory\GigFactory;
-use App\Factory\ReferrerRedirectFactory;
 use App\Factory\TripFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -93,30 +92,6 @@ class LifeTest extends TestCase
             ->assertSee($trip->title)
             ->assertSee($gig->artist->title)
             ->assertHasCustomTitle();
-    }
-
-    public function testInstagramReferrerActiveRedirect()
-    {
-        $redirect = ReferrerRedirectFactory::new()->create();
-
-        \Event::fake(\App\Events\Stats\InstagrammerRedirected::class);
-
-        $this->from('https://instagram.com/')
-            ->get('life')
-            ->assertRedirect($redirect->to);
-
-        \Event::assertDispatched(\App\Events\Stats\InstagrammerRedirected::class);
-    }
-
-    public function testInstagramReferrerExpiredRedirect()
-    {
-        ReferrerRedirectFactory::new()
-            ->expired()
-            ->create();
-
-        $this->from('https://instagram.com/')
-            ->get('life')
-            ->assertOk();
     }
 
     #[\PHPUnit\Framework\Attributes\DataProvider('pages')]

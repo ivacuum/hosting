@@ -23,10 +23,6 @@ class Life
         GetMyVisibleTripsAction $getMyVisibleTrips,
         GetMyVisibleGigsAction $getMyVisibleGigs
     ) {
-        if ($request->shouldRedirectInstagrammer()) {
-            return $request->redirectInstagrammer();
-        }
-
         $trips = $getMyVisibleTrips->execute($request->from, $request->to);
         $gigs = $getMyVisibleGigs->execute($request->from, $request->to);
 
