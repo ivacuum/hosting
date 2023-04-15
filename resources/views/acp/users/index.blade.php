@@ -69,32 +69,32 @@
         @endif
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ path([App\Http\Controllers\Acp\ChatMessagesController::class, 'index'], [$model->getForeignKey() => $model]) }}">
+        <a href="{{ Acp::index(new App\ChatMessage, $model) }}">
           {{ ViewHelper::number($model->chat_messages_count) ?: '' }}
         </a>
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ path([App\Http\Controllers\Acp\Comments::class, 'index'], [$model->getForeignKey() => $model]) }}">
+        <a href="{{ Acp::index(new App\Comment, $model) }}">
           {{ ViewHelper::number($model->comments_count) ?: '' }}
         </a>
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ path([App\Http\Controllers\Acp\Images::class, 'index'], [$model->getForeignKey() => $model]) }}">
+        <a href="{{ Acp::index(new App\Image, $model) }}">
           {{ ViewHelper::number($model->images_count) ?: '' }}
         </a>
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ path([App\Http\Controllers\Acp\Magnets::class, 'index'], [$model->getForeignKey() => $model]) }}">
+        <a href="{{ Acp::index(new App\Magnet, $model) }}">
           {{ ViewHelper::number($model->magnets_count) ?: '' }}
         </a>
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ path([App\Http\Controllers\Acp\Trips::class, 'index'], [$model->getForeignKey() => $model]) }}">
+        <a href="{{ Acp::index(new App\Trip, $model) }}">
           {{ ViewHelper::number($model->trips_count) ?: '' }}
         </a>
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ path([App\Http\Controllers\Acp\Issues::class, 'index'], [$model->getForeignKey() => $model]) }}">
+        <a href="{{ Acp::index(new App\Issue, $model) }}">
           {{ ViewHelper::number($model->issues_count) ?: '' }}
         </a>
       </td>

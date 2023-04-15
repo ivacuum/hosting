@@ -12,7 +12,7 @@ use App\Scope\PhotoForTripScope;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
-class Photos extends Controller
+class PhotosController extends Controller
 {
     use AuthorizesRequests;
 

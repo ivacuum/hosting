@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
-class ExternalIdentities extends Controller
+class ExternalIdentitiesController extends Controller
 {
     use AuthorizesRequests;
 

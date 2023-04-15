@@ -9,7 +9,7 @@ use App\File;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
-class Files extends Controller
+class FilesController extends Controller
 {
     use AuthorizesRequests;
 

@@ -33,7 +33,7 @@
     <tr class="js-dblclick-edit" data-dblclick-url="{{ Acp::edit($model) }}">
       <td class="md:text-right">{{ $model->id }}</td>
       <td>
-        <a href="{{ path([App\Http\Controllers\Acp\Users::class, 'show'], $model->user_id) }}">
+        <a href="{{ Acp::show($model->user) }}">
           {{ $model->user->displayName() }}
         </a>
       </td>
@@ -41,7 +41,7 @@
         {{ ViewHelper::number($model->views) ?: '' }}
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ path([App\Http\Controllers\Acp\Comments::class, 'index'], [$model->getForeignKey() => $model]) }}">
+        <a href="{{ Acp::index(new App\Comment, $model) }}">
           {{ ViewHelper::number($model->comments_count) ?: '' }}
         </a>
       </td>

@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
-class Trips extends Controller
+class TripsController extends Controller
 {
     use AuthorizesRequests;
 

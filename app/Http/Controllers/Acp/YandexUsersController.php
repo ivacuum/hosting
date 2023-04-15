@@ -10,7 +10,7 @@ use App\YandexUser;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
-class YandexUsers extends Controller
+class YandexUsersController extends Controller
 {
     use AuthorizesRequests;
 

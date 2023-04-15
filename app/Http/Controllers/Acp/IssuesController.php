@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
-class Issues extends Controller
+class IssuesController extends Controller
 {
     use AuthorizesRequests;
 

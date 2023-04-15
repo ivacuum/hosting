@@ -44,8 +44,8 @@ class AcpHelper
         return fullUrl($query);
     }
 
-    public function show(Model $model): string
+    public function show(Model $model, Model|string|int|null $id = null): string
     {
-        return path([$this->getModelController->execute($model), 'show'], $model);
+        return path([$this->getModelController->execute($model), 'show'], $id ?? $model);
     }
 }

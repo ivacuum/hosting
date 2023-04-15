@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
-class Comments extends Controller
+class CommentsController extends Controller
 {
     use AuthorizesRequests;
 

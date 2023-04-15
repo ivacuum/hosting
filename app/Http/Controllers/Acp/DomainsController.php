@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
-class Domains extends Controller
+class DomainsController extends Controller
 {
     use AuthorizesRequests;
 
@@ -36,7 +36,8 @@ class Domains extends Controller
         $clientId = request('client_id');
         $yandexUserId = request('yandex_user_id');
 
-        $query = Domain::query();
+        $query = Domain::query()
+            ->with('alias');
 
         $query = match ($filter) {
             'external' => $query->where('status', DomainMonitoring::Yes)
@@ -95,7 +96,7 @@ class Domains extends Controller
 
         \Mail::to($sendTo)->send(new DomainMailboxesMail($domain, $mailboxes));
 
-        return redirect(path([Domains::class, 'mailboxes'], $domain))
+        return redirect(path([DomainsController::class, 'mailboxes'], $domain))
             ->with('message', "Данные высланы на почту {$sendTo}");
     }
 
@@ -124,7 +125,7 @@ class Domains extends Controller
                 break;
         }
 
-        return ['redirect' => path([Domains::class, 'index'], $params)];
+        return ['redirect' => path([DomainsController::class, 'index'], $params)];
     }
 
     public function mailboxes(Domain $domain, YandexPddClient $yandexPdd)

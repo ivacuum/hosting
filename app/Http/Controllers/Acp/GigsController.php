@@ -10,7 +10,7 @@ use App\Gig;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
-class Gigs extends Controller
+class GigsController extends Controller
 {
     use AuthorizesRequests;
 

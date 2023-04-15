@@ -4,7 +4,7 @@
 
 @section('content')
 <h3 class="font-medium text-2xl mb-2">Новая электропочта</h3>
-<form action="{{ path([App\Http\Controllers\Acp\Domains::class, 'addMailbox'], $model) }}" class="max-w-[600px]" method="post">
+<form action="{{ to('acp/domains/{domain}/mail', $model) }}" class="max-w-[600px]" method="post">
   @csrf
 
   <div class="mb-4">

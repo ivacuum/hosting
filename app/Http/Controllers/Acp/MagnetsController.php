@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
-class Magnets extends Controller
+class MagnetsController extends Controller
 {
     use AuthorizesRequests;
 

@@ -8,7 +8,7 @@ use App\Notification;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
-class Notifications extends Controller
+class NotificationsController extends Controller
 {
     use AuthorizesRequests;
 

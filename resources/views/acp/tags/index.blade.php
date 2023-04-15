@@ -23,7 +23,7 @@
         {{ ViewHelper::number($model->views) ?: '' }}
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ path([App\Http\Controllers\Acp\Photos::class, 'index'], [$model->getForeignKey() => $model]) }}">
+        <a href="{{ Acp::index(new App\Photo, $model) }}">
           {{ ViewHelper::number($model->photos_count) ?: '' }}
         </a>
       </td>

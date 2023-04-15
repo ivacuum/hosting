@@ -32,7 +32,7 @@
     <tr>
       <td class="text-right font-bold">Алиас</td>
       <td>
-        <a href="{{ path([App\Http\Controllers\Acp\Domains::class, 'show'], $model->alias) }}">{{ $model->alias->domain }}</a>
+        <a href="{{ Acp::show($model->alias) }}">{{ $model->alias->domain }}</a>
       </td>
     </tr>
   @endif
@@ -41,7 +41,7 @@
       <td class="text-right font-bold">Алиасы</td>
       <td>
         @foreach ($model->aliases as $alias)
-          <a href="{{ path([App\Http\Controllers\Acp\Domains::class, 'show'], $alias) }}">{{ $alias->domain }}</a>
+          <a href="{{ Acp::show($alias) }}">{{ $alias->domain }}</a>
         @endforeach
       </td>
     </tr>
@@ -49,7 +49,7 @@
   <tr>
     <td class="text-right font-bold">Клиент</td>
     <td>
-      <a href="{{ path([App\Http\Controllers\Acp\ClientsController::class, 'show'], $model->client) }}">
+      <a href="{{ Acp::show($model->client) }}">
         {{ $model->client->name }}
       </a>
     </td>
@@ -58,7 +58,7 @@
     <tr>
       <td class="text-right font-bold">Яндекс</td>
       <td>
-        <a href="{{ path([App\Http\Controllers\Acp\YandexUsers::class, 'show'], $model->yandexUser) }}">
+        <a href="{{ Acp::show($model->yandexUser) }}">
           {{ $model->yandexUser->account }}
         </a>
       </td>

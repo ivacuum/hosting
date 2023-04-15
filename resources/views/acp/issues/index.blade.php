@@ -54,13 +54,13 @@
           @endif
         </td>
         <td>
-          <a href="{{ path([App\Http\Controllers\Acp\Users::class, 'show'], $model->user_id) }}">
+          <a href="{{ Acp::show(new App\User, $model->user_id) }}">
             <div>{{ $model->email }}</div>
             <div class="text-xs text-muted">{{ $model->name }}</div>
           </a>
         </td>
         <td class="md:text-right whitespace-nowrap">
-          <a href="{{ path([App\Http\Controllers\Acp\Comments::class, 'index'], [$model->getForeignKey() => $model]) }}">
+          <a href="{{ Acp::index(new App\Comment, $model) }}">
             {{ ViewHelper::number($model->comments_count) ?: '' }}
           </a>
         </td>
@@ -75,7 +75,7 @@
     'actions' => [
       'delete' => 'Удалить',
     ],
-    'url' => path([App\Http\Controllers\Acp\Issues::class, 'batch']),
+    'url' => to('acp/issues/batch'),
   ])
 </div>
 @endsection

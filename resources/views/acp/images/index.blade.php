@@ -69,14 +69,14 @@
         </td>
         <td>
           <div class="flex">
-            <a class="btn btn-default rounded-r-none" href="{{ path([App\Http\Controllers\Acp\Images::class, 'view'], $model) }}">
+            <a class="btn btn-default rounded-r-none" href="{{ Acp::show($model) }}">
               @svg (eye)
             </a>
             <a
               class="btn btn-default rounded-l-none -ml-px js-image-delete"
               data-confirm="{{ $model->views >= 3000 ? 'Запись будет удалена. Продолжить?' : '' }}"
               data-selector="#image_{{ $model->id }}"
-              href="{{ path([App\Http\Controllers\Acp\Images::class, 'destroy'], $model) }}"
+              href="{{ Acp::destroy($model) }}"
             >
               @svg (trash-o)
             </a>
@@ -92,7 +92,7 @@
     'actions' => [
       'delete' => 'Удалить',
     ],
-    'url' => path([App\Http\Controllers\Acp\Images::class, 'batch']),
+    'url' => to('acp/images/batch'),
   ])
 </div>
 @endsection

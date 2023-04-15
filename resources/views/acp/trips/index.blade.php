@@ -62,7 +62,7 @@
         {{ ViewHelper::number($model->views) ?: '' }}
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ path([App\Http\Controllers\Acp\Comments::class, 'index'], [$model->getForeignKey() => $model]) }}">
+        <a href="{{ Acp::index(new App\Comment, $model) }}">
           {{ ViewHelper::number($model->comments_count) ?: '' }}
         </a>
       </td>
@@ -77,11 +77,11 @@
       </td>
       <td class="md:text-right whitespace-nowrap">
         @if($model->status->isInactive() && $model->photos_count === 0)
-          <a href="{{ path([App\Http\Controllers\Acp\Photos::class, 'create'], ['trip_id' => $model]) }}">
+          <a href="{{ to('acp/photos/create', ['trip_id' => $model]) }}">
             @svg(plus)
           </a>
         @else
-          <a href="{{ path([App\Http\Controllers\Acp\Photos::class, 'index'], [$model->getForeignKey() => $model]) }}">
+          <a href="{{ Acp::index(new App\Photo, $model) }}">
             {{ ViewHelper::number($model->photos_count) ?: '' }}
           </a>
         @endif
@@ -90,7 +90,7 @@
         @if ($model->meta_image)
           <a
             class="leading-none text-xl"
-            href="{{ path(App\Http\Controllers\Acp\TripInstagramCoverController::class, $model->id) }}"
+            href="{{ to('acp/trips/{trip}/instagram-cover', $model->id) }}"
           >
             @svg (instagram)
           </a>
@@ -98,11 +98,11 @@
       </td>
       <td class="md:text-right">
         @if ($model->user_id === 1)
-          <a class="leading-none text-xl" href="{{ path([App\Http\Controllers\Acp\Dev\Templates::class, 'show'], str_replace('.', '_', $model->slug)) }}">
+          <a class="leading-none text-xl" href="{{ to('dev/templates/{template}', str_replace('.', '_', $model->slug)) }}">
             @svg (file-richtext)
           </a>
         @else
-          <a href="{{ path([App\Http\Controllers\Acp\Users::class, 'show'], $model->user_id) }}">#{{ $model->user_id }}</a>
+          <a href="{{ Acp::show(new App\User, $model->user_id) }}">#{{ $model->user_id }}</a>
         @endif
       </td>
     </tr>

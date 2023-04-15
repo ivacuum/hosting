@@ -10,7 +10,7 @@ use App\Tag;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
-class Tags extends Controller
+class TagsController extends Controller
 {
     use AuthorizesRequests;
 
