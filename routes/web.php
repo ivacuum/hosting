@@ -45,7 +45,7 @@ Route::middleware('nav:О DC++,dc')->group(function () {
     Route::view('dc/flylinkdc', 'dcpp.flylinkdc')->middleware('nav:dcpp.flylinkdc');
     Route::view('dc/greylinkdc', 'dcpp.greylinkdc')->middleware('nav:dcpp.greylinkdc');
     Route::get('dc/hubs', Ctrl\DcppHubs::class)->middleware('nav:Хабы');
-    Route::post('dc/hubs/{hub}/click', Ctrl\DcppHubClick::class);
+    Route::post('dc/hubs/{hub}/click', Ctrl\DcppHubClickController::class);
     Route::view('dc/jucydc', 'dcpp.jucydc')->middleware('nav:dcpp.jucydc');
     Route::view('dc/kalugadc', 'dcpp.kalugadc')->middleware('nav:dcpp.kalugadc');
     Route::view('dc/pelinkdc', 'dcpp.pelinkdc')->middleware('nav:dcpp.pelinkdc');
@@ -212,13 +212,13 @@ Route::view('privacy-policy', 'privacy-policy');
 
 Route::middleware('nav:coupons.index,promocodes-coupons')->group(function () {
     Route::view('promocodes-coupons', 'coupons.index');
-    Route::get('promocodes-coupons/airbnb', [Ctrl\Coupons::class, 'airbnb'])->middleware('nav:coupons.airbnb');
-    Route::get('promocodes-coupons/booking', [Ctrl\Coupons::class, 'booking'])->middleware('nav:coupons.booking');
-    Route::get('promocodes-coupons/digitalocean', [Ctrl\Coupons::class, 'digitalocean'])->middleware('nav:coupons.digitalocean');
-    Route::get('promocodes-coupons/drimsim', [Ctrl\Coupons::class, 'drimsim'])->middleware('nav:coupons.drimsim');
+    Route::get('promocodes-coupons/airbnb', [Ctrl\CouponController::class, 'airbnb'])->middleware('nav:coupons.airbnb');
+    Route::get('promocodes-coupons/booking', [Ctrl\CouponController::class, 'booking'])->middleware('nav:coupons.booking');
+    Route::get('promocodes-coupons/digitalocean', [Ctrl\CouponController::class, 'digitalocean'])->middleware('nav:coupons.digitalocean');
+    Route::get('promocodes-coupons/drimsim', [Ctrl\CouponController::class, 'drimsim'])->middleware('nav:coupons.drimsim');
     Route::view('promocodes-coupons/firstvds', 'coupons.firstvds')->middleware('nav:coupons.firstvds');
-    Route::post('promocodes-coupons/firstvds', [Ctrl\Coupons::class, 'firstvds']);
-    Route::get('promocodes-coupons/timeweb', [Ctrl\Coupons::class, 'timeweb'])->middleware('nav:coupons.timeweb');
+    Route::post('promocodes-coupons/firstvds', [Ctrl\CouponController::class, 'firstvds']);
+    Route::get('promocodes-coupons/timeweb', [Ctrl\CouponController::class, 'timeweb'])->middleware('nav:coupons.timeweb');
 });
 
 Route::view('retracker', 'retracker.index');

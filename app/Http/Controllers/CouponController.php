@@ -3,7 +3,7 @@
 use App\Mail\FirstvdsPromocodeMail;
 use App\Rules\Email;
 
-class Coupons
+class CouponController
 {
     public function airbnb()
     {

@@ -18,7 +18,7 @@
           <a
             class="link js-dcpp-hub"
             href="{{ $hub->externalLink() }}"
-            data-action="{{ path(App\Http\Controllers\DcppHubClick::class, $hub->id) }}"
+            data-action="{{ path(App\Http\Controllers\DcppHubClickController::class, $hub->id) }}"
           >{{ $hub->externalLink() }}</a>
         </li>
       @endforeach
