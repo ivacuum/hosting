@@ -4,7 +4,7 @@ use App\Http\Requests\Acp\TripPublishedNotifyRequest;
 use App\Jobs\NotifyTripSubscribers;
 use App\Trip;
 
-class TripPublishedNotify
+class TripPublishedNotifyController
 {
     public function __invoke(Trip $trip, TripPublishedNotifyRequest $request)
     {

@@ -14,7 +14,7 @@
   <tbody>
   @foreach ($events as $event)
     <tr>
-      <td><a class="break-words" href="{{ path([App\Http\Controllers\Acp\Metrics::class, 'show'], $event) }}">{{ $event }}</a></td>
+      <td><a class="break-words" href="{{ to('acp/metrics/{event}', $event) }}">{{ $event }}</a></td>
       @foreach ($dates as $date => $true)
         <td class="md:text-right whitespace-nowrap">{{ isset($metrics[$event][$date]) ? ViewHelper::number($metrics[$event][$date]) : '' }}</td>
       @endforeach

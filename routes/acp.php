@@ -21,8 +21,8 @@ Route::resource('dcpp-hubs', Acp\DcppHubsController::class)->except(['store', 'u
 
 Route::view('dev', 'acp.dev.index');
 Route::get('dev/debugbar', Acp\Dev\EnableDebugBar::class);
-Route::get('dev/logs', [Acp\Dev::class, 'logs']);
-Route::get('dev/svg', [Acp\Dev::class, 'svg']);
+Route::get('dev/logs', [Acp\DevController::class, 'logs']);
+Route::get('dev/svg', [Acp\DevController::class, 'svg']);
 Route::get('dev/gig-templates', [Acp\Dev\GigTemplates::class, 'index']);
 Route::get('dev/gig-templates/{template}', [Acp\Dev\GigTemplates::class, 'show']);
 Route::get('dev/templates', [Acp\Dev\Templates::class, 'index']);
@@ -49,7 +49,7 @@ Route::resource('external-identities', Acp\ExternalIdentitiesController::class)-
 Route::resource('files', Acp\FilesController::class)->except(['store', 'update']);
 
 Route::resource('gigs', Acp\GigsController::class)->except(['store', 'update']);
-Route::post('gigs/{gig}/notify', Acp\GigPublishedNotify::class);
+Route::post('gigs/{gig}/notify', Acp\GigPublishedNotifyController::class);
 
 Route::resource('images', Acp\ImagesController::class)->except(['create', 'edit', 'store', 'update']);
 Route::post('images/batch', [Acp\ImagesController::class, 'batch']);
@@ -62,8 +62,8 @@ Route::post('issues/{issue}/open', Acp\IssueOpenController::class);
 
 Route::resource('magnets', Acp\MagnetsController::class)->except(['create', 'store', 'update']);
 
-Route::get('metrics', [Acp\Metrics::class, 'index'])->can('viewAny', 'App\Metric');
-Route::get('metrics/{event}', [Acp\Metrics::class, 'show'])->can('viewAny', 'App\Metric');
+Route::get('metrics', [Acp\MetricsController::class, 'index'])->can('viewAny', 'App\Metric');
+Route::get('metrics/{event}', [Acp\MetricsController::class, 'show'])->can('viewAny', 'App\Metric');
 
 Route::resource('news', Acp\NewsController::class)->except(['store', 'update']);
 Route::post('news/{news}/notify', [Acp\NewsController::class, 'notify']);
@@ -76,7 +76,7 @@ Route::resource('tags', Acp\TagsController::class)->except(['store', 'update']);
 
 Route::resource('trips', Acp\TripsController::class)->except(['store', 'update']);
 Route::get('trips/{trip}/instagram-cover', Acp\TripInstagramCoverController::class);
-Route::post('trips/{trip}/notify', Acp\TripPublishedNotify::class);
+Route::post('trips/{trip}/notify', Acp\TripPublishedNotifyController::class);
 
 Route::resource('users', Acp\UsersController::class)->except(['create', 'store', 'update']);
 

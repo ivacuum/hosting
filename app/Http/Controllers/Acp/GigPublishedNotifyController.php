@@ -6,7 +6,7 @@ use App\Gig;
 use App\Notifications\GigPublishedNotification;
 use App\User;
 
-class GigPublishedNotify
+class GigPublishedNotifyController
 {
     public function __invoke(Gig $gig)
     {

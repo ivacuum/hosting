@@ -5,7 +5,7 @@ use App\Metric;
 use App\Scope\MetricWeekScope;
 use Carbon\Carbon;
 
-class Metrics
+class MetricsController
 {
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {

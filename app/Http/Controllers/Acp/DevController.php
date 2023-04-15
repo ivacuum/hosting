@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers\Acp;
 
-class Dev
+class DevController
 {
     // Для считывания последних строк лога
     // https://gist.github.com/lorenzos/1711e81a9162320fde20
