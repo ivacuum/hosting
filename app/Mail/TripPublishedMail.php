@@ -1,6 +1,6 @@
 <?php namespace App\Mail;
 
-use App\Http\Controllers\MySettings;
+use App\Http\Controllers\MySettingsController;
 use App\Trip;
 use App\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -17,7 +17,7 @@ class TripPublishedMail extends Mailable implements ShouldQueue
     {
         $this->email = $this->email($trip->emails(), $user);
         $this->tripLink = $this->email->signedLink($trip->wwwLocale($user->locale));
-        $this->mySettingsLink = $this->email->signedLink(path_locale([MySettings::class, 'edit'], [], false, $user->locale));
+        $this->mySettingsLink = $this->email->signedLink(path_locale([MySettingsController::class, 'edit'], [], false, $user->locale));
 
         $this->trip->photos_count ??= $trip->photos()->count();
     }

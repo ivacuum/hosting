@@ -2,7 +2,7 @@
 
 use App\Http\Requests\MyProfileUpdateForm;
 
-class MyProfile
+class MyProfileController
 {
     public function edit()
     {

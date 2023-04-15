@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-class KoreanPsySong
+class KoreanPsySongController
 {
     public function __invoke(string $song)
     {

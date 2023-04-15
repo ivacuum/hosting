@@ -99,15 +99,15 @@ Route::middleware('nav:Японский язык,japanese')->group(function () {
     Route::view('japanese/words-trainer', 'japanese.words-trainer')->middleware('nav:Тренажер по набору слов хираганой и катаканой');
 });
 
-Route::post('js/typo', Ctrl\JsTypo::class);
+Route::post('js/typo', Ctrl\JsTypoController::class);
 
 Route::middleware('nav:Корейский язык,korean')->group(function () {
     Route::view('korean', 'korean.index');
     Route::view('korean/hangul', 'korean.hangul')->middleware('nav:Тренажер хангыля');
 
     Route::middleware('nav:Кириллизация песен PSY,korean/psy')->group(function () {
-        Route::get('korean/psy', Ctrl\KoreanPsy::class);
-        Route::get('korean/psy/{song}', Ctrl\KoreanPsySong::class);
+        Route::get('korean/psy', Ctrl\KoreanPsyController::class);
+        Route::get('korean/psy/{song}', Ctrl\KoreanPsySongController::class);
     });
 });
 
@@ -123,9 +123,9 @@ Route::middleware('nav:Заметки,life')->group(function () {
     Route::view('life/favorite-posts', 'life.favorite-posts')->middleware('nav:Любимые посты');
     Route::view('life/german', 'life.german')->middleware('nav:Немецкий');
     Route::get('life/gigs', [Ctrl\LifeController::class, 'gigs'])->middleware('nav:Концерты');
-    Route::get('life/gigs/rss', Ctrl\GigsRss::class);
+    Route::get('life/gigs/rss', Ctrl\GigsRssController::class);
     Route::view('life/laundry', 'life.laundry')->middleware('nav:Условные обозначения стирки');
-    Route::get('life/movies', Ctrl\Movies::class)->middleware('nav:Любимые фильмы и сериалы');
+    Route::get('life/movies', Ctrl\MovieController::class)->middleware('nav:Любимые фильмы и сериалы');
     Route::view('life/podcasts', 'life.podcasts')->middleware('nav:Подкасты');
     Route::get('life/rss', Ctrl\TripsRss::class);
     Route::view('life/using-in-travels', 'life.using-in-travels')->middleware('nav:Чем пользуюсь в путешествиях');
@@ -137,13 +137,13 @@ Route::view('magnets/add', 'magnets.create');
 Route::get('magnets/comments', [Ctrl\MagnetsController::class, 'comments']);
 Route::get('magnets/faq', [Ctrl\MagnetsController::class, 'faq']);
 Route::get('magnets/my', [Ctrl\MagnetsController::class, 'my'])->middleware('auth');
-Route::post('magnets/request', Ctrl\MagnetRequestRelease::class);
+Route::post('magnets/request', Ctrl\MagnetRequestReleaseController::class);
 Route::get('magnets/{magnet}', [Ctrl\MagnetsController::class, 'show'])->middleware('nav:Магнеты,magnets');
 Route::post('magnets/{magnet}/magnet', [Ctrl\MagnetsController::class, 'magnet']);
 
-Route::get('mail/click/{timestamp}/{id}', [Ctrl\Mail::class, 'click'])->name('mail.click');
-Route::get('mail/report/{timestamp}/{id}', [Ctrl\Mail::class, 'report'])->middleware('auth');
-Route::get('mail/view/{timestamp}/{id}', [Ctrl\Mail::class, 'view']);
+Route::get('mail/click/{timestamp}/{id}', [Ctrl\MailController::class, 'click'])->name('mail.click');
+Route::get('mail/report/{timestamp}/{id}', [Ctrl\MailController::class, 'report'])->middleware('auth');
+Route::get('mail/view/{timestamp}/{id}', [Ctrl\MailController::class, 'view']);
 
 Route::middleware('auth')->group(function () {
     Route::view('my', 'my.index');
@@ -152,12 +152,12 @@ Route::middleware('auth')->group(function () {
     // Route::get('my/2fa-qr', []);
     // Route::get('my/2fa-recovery-codes', []);
     // Route::post('my/2fa-recovery-codes', []);
-    Route::get('my/password', [Ctrl\MyPassword::class, 'edit']);
-    Route::put('my/password', [Ctrl\MyPassword::class, 'update']);
-    Route::get('my/profile', [Ctrl\MyProfile::class, 'edit']);
-    Route::put('my/profile', [Ctrl\MyProfile::class, 'update']);
-    Route::get('my/settings', [Ctrl\MySettings::class, 'edit']);
-    Route::put('my/settings', [Ctrl\MySettings::class, 'update']);
+    Route::get('my/password', [Ctrl\MyPasswordController::class, 'edit']);
+    Route::put('my/password', [Ctrl\MyPasswordController::class, 'update']);
+    Route::get('my/profile', [Ctrl\MyProfileController::class, 'edit']);
+    Route::put('my/profile', [Ctrl\MyProfileController::class, 'update']);
+    Route::get('my/settings', [Ctrl\MySettingsController::class, 'edit']);
+    Route::put('my/settings', [Ctrl\MySettingsController::class, 'update']);
 
     Route::get('my/trips', [Ctrl\MyTrips::class, 'index']);
     Route::post('my/trips', [Ctrl\MyTrips::class, 'store']);

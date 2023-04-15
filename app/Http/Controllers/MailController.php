@@ -2,6 +2,6 @@
 
 use Ivacuum\Generic\Controllers\Mail as BaseMail;
 
-class Mail extends BaseMail
+class MailController extends BaseMail
 {
 }

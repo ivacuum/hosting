@@ -3,7 +3,7 @@
 use App\Events\TypoReceived;
 use App\Http\Requests\TypoStoreForm;
 
-class JsTypo
+class JsTypoController
 {
     public function __invoke(TypoStoreForm $request)
     {

@@ -19,7 +19,7 @@ class Subscriptions
         try {
             $subscriptions = array_flip(explode(',', \Crypt::decryptString($hash)));
         } catch (DecryptException) {
-            return redirect(path([MySettings::class, 'edit']))
+            return redirect(path([MySettingsController::class, 'edit']))
                 ->with('message', 'Запрос не найден. Измените настройки уведомлений вручную на этой странице.');
         }
 
@@ -37,14 +37,14 @@ class Subscriptions
 
         $user->save();
 
-        return redirect(path([MySettings::class, 'edit']))
+        return redirect(path([MySettingsController::class, 'edit']))
             ->with('message', 'Настройки уведомлений сохранены');
     }
 
     public function edit()
     {
         if (request()->user()) {
-            return redirect(path([MySettings::class, 'edit']));
+            return redirect(path([MySettingsController::class, 'edit']));
         }
 
         return view('subscriptions');

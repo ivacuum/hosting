@@ -1,6 +1,6 @@
 <?php namespace App\Mail;
 
-use App\Http\Controllers\MySettings;
+use App\Http\Controllers\MySettingsController;
 use App\News;
 use App\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -17,7 +17,7 @@ class NewsPublishedMail extends Mailable implements ShouldQueue
     {
         $this->email = $this->email($news->emails(), $user);
         $this->newsLink = $this->email->signedLink($news->www());
-        $this->mySettingsLink = $this->email->signedLink(path_locale([MySettings::class, 'edit'], [], false, $user->locale));
+        $this->mySettingsLink = $this->email->signedLink(path_locale([MySettingsController::class, 'edit'], [], false, $user->locale));
     }
 
     public function build()

@@ -4,7 +4,7 @@ use App\Http\Requests\MyPasswordUpdateForm;
 use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Http\Request;
 
-class MyPassword
+class MyPasswordController
 {
     public function edit(Request $request)
     {
