@@ -3,7 +3,7 @@
 use App\Action\FindTripTemplatesAction;
 use App\Trip;
 
-class Templates
+class TemplatesController
 {
     public function index(FindTripTemplatesAction $findTripTemplates)
     {
@@ -47,7 +47,7 @@ class Templates
             $total->pics += $pics;
 
             $templates->push((object) [
-                'www' => path([Templates::class, 'show'], $template->getBasename('.blade.php')),
+                'www' => path([TemplatesController::class, 'show'], $template->getBasename('.blade.php')),
                 'name' => $template->getBasename('.blade.php'),
                 'i18n' => (object) $i18n,
                 'pics' => $pics,

@@ -43,7 +43,7 @@
         @endif
       </td>
       <td class="md:text-right leading-none text-xl">
-        <a href="{{ path([App\Http\Controllers\Acp\Dev\GigTemplates::class, 'show'], str_replace('.', '_', $model->slug)) }}">
+        <a href="{{ to('dev/gig-templates/{template}', str_replace('.', '_', $model->slug)) }}">
           @svg (file-richtext)
         </a>
       </td>

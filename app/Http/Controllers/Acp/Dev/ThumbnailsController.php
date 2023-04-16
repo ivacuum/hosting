@@ -2,7 +2,7 @@
 
 use Ivacuum\Generic\Services\ImageConverter;
 
-class Thumbnails
+class ThumbnailsController
 {
     public function index()
     {
@@ -19,7 +19,7 @@ class Thumbnails
 
         $storage->delete($files);
 
-        return redirect(path([Thumbnails::class, 'index']))
+        return redirect(path([ThumbnailsController::class, 'index']))
             ->with('message', 'Папка очищена');
     }
 

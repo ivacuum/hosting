@@ -20,16 +20,16 @@ Route::resource('countries', Acp\CountriesController::class)->except(['store', '
 Route::resource('dcpp-hubs', Acp\DcppHubsController::class)->except(['store', 'update']);
 
 Route::view('dev', 'acp.dev.index');
-Route::get('dev/debugbar', Acp\Dev\EnableDebugBar::class);
+Route::get('dev/debugbar', Acp\Dev\EnableDebugBarController::class);
 Route::get('dev/logs', [Acp\DevController::class, 'logs']);
 Route::get('dev/svg', [Acp\DevController::class, 'svg']);
-Route::get('dev/gig-templates', [Acp\Dev\GigTemplates::class, 'index']);
-Route::get('dev/gig-templates/{template}', [Acp\Dev\GigTemplates::class, 'show']);
-Route::get('dev/templates', [Acp\Dev\Templates::class, 'index']);
-Route::get('dev/templates/{template}', [Acp\Dev\Templates::class, 'show']);
-Route::get('dev/thumbnails', [Acp\Dev\Thumbnails::class, 'index']);
-Route::post('dev/thumbnails', [Acp\Dev\Thumbnails::class, 'store']);
-Route::get('dev/thumbnails/clean', [Acp\Dev\Thumbnails::class, 'clean']);
+Route::get('dev/gig-templates', [Acp\Dev\GigTemplatesController::class, 'index']);
+Route::get('dev/gig-templates/{template}', [Acp\Dev\GigTemplatesController::class, 'show']);
+Route::get('dev/templates', [Acp\Dev\TemplatesController::class, 'index']);
+Route::get('dev/templates/{template}', [Acp\Dev\TemplatesController::class, 'show']);
+Route::get('dev/thumbnails', [Acp\Dev\ThumbnailsController::class, 'index']);
+Route::post('dev/thumbnails', [Acp\Dev\ThumbnailsController::class, 'store']);
+Route::get('dev/thumbnails/clean', [Acp\Dev\ThumbnailsController::class, 'clean']);
 
 Route::resource('domains', Acp\DomainsController::class)->except(['store', 'update']);
 

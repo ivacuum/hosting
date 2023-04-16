@@ -2,7 +2,7 @@
 
 use Illuminate\Cookie\CookieJar;
 
-class EnableDebugBar
+class EnableDebugBarController
 {
     public function __invoke(CookieJar $cookie)
     {
