@@ -17,7 +17,7 @@ class RadicalEntity
     public static function fromArray(int $id, array $json)
     {
         $svgUrl = collect($json['character_images'])
-                ->first(fn ($image) => $image['content_type'] === 'image/svg+xml' && !$image['metadata']['inline_styles'])['url'] ?? '';
+            ->first(fn ($image) => $image['content_type'] === 'image/svg+xml' && !$image['metadata']['inline_styles'])['url'] ?? '';
 
         return new self(
             $id,
