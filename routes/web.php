@@ -118,7 +118,7 @@ Route::middleware('nav:Заметки,life')->group(function () {
     Route::view('life/chillout', 'life.chillout')->middleware('nav:Chillout');
     Route::get('life/cities', [Ctrl\LifeController::class, 'cities'])->middleware('nav:Города');
     Route::get('life/countries', [Ctrl\LifeController::class, 'countries'])->middleware('nav:Страны');
-    Route::get('life/countries/{slug}', [Ctrl\LifeController::class, 'country'])->middleware('nav:Страны,life/countries');
+    Route::get('life/countries/{CountryCached}', [Ctrl\LifeController::class, 'country'])->middleware('nav:Страны,life/countries');
     Route::view('life/english', 'life.english')->middleware('nav:Английский');
     Route::view('life/favorite-posts', 'life.favorite-posts')->middleware('nav:Любимые посты');
     Route::view('life/german', 'life.german')->middleware('nav:Немецкий');
@@ -184,12 +184,12 @@ Route::middleware('nav:Фотки,photos')->group(function () {
 
     Route::middleware('nav:Города,photos/cities')->group(function () {
         Route::get('photos/cities', [Ctrl\PhotoController::class, 'cities']);
-        Route::get('photos/cities/{slug}', [Ctrl\PhotoController::class, 'city']);
+        Route::get('photos/cities/{CityCached}', [Ctrl\PhotoController::class, 'city']);
     });
 
     Route::middleware('nav:Страны,photos/countries')->group(function () {
         Route::get('photos/countries', [Ctrl\PhotoController::class, 'countries']);
-        Route::get('photos/countries/{slug}', [Ctrl\PhotoController::class, 'country']);
+        Route::get('photos/countries/{CountryCached}', [Ctrl\PhotoController::class, 'country']);
     });
 
     Route::view('photos/faq', 'photos.faq')->middleware('nav:Помощь,photos/faq');
@@ -256,9 +256,9 @@ Route::middleware('nav:Пользователи,users')->group(function () {
 Route::get('@{traveler:login}', [Ctrl\UserHomeController::class, 'index']);
 Route::get('@{traveler:login}/travel', [Ctrl\UserTravelTripController::class, 'index']);
 Route::get('@{traveler:login}/travel/cities', [Ctrl\UserTravelCityController::class, 'index']);
-Route::get('@{traveler:login}/travel/cities/{slug}', [Ctrl\UserTravelCityController::class, 'show']);
+Route::get('@{traveler:login}/travel/cities/{CityCached}', [Ctrl\UserTravelCityController::class, 'show']);
 Route::get('@{traveler:login}/travel/countries', [Ctrl\UserTravelCountryController::class, 'index']);
-Route::get('@{traveler:login}/travel/countries/{slug}', [Ctrl\UserTravelCountryController::class, 'show']);
+Route::get('@{traveler:login}/travel/countries/{CountryCached}', [Ctrl\UserTravelCountryController::class, 'show']);
 Route::get('@{traveler:login}/travel/{slug}', [Ctrl\UserTravelTripController::class, 'show']);
 
 Route::get('.well-known/change-password', Ctrl\WellKnownChangePasswordController::class);

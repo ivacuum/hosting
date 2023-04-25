@@ -6,7 +6,6 @@ use App\Domain\TripStatus;
 use App\Scope\TripVisibleScope;
 use App\Trip;
 use App\User;
-use App\Utilities\CityHelper;
 
 class UserTravelCityController extends UserTravelController
 {
@@ -28,10 +27,8 @@ class UserTravelCityController extends UserTravelController
         return view('user-travel.cities', ['cities' => $cities]);
     }
 
-    public function show(User $traveler, CityHelper $cityHelper, string $slug)
+    public function show(User $traveler, City $city)
     {
-        $city = $cityHelper->findBySlugOrFail($slug);
-
         $trips = $city->trips()
             ->whereBelongsTo($traveler)
             ->withCount('photos')

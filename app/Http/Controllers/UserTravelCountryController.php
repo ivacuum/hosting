@@ -17,10 +17,8 @@ class UserTravelCountryController extends UserTravelController
         ]);
     }
 
-    public function show(User $traveler, string $slug)
+    public function show(User $traveler, Country $country)
     {
-        /** @var Country $country */
-        $country = Country::where('slug', $slug)->firstOrFail();
         $trips = $country->trips()
             ->whereBelongsTo($traveler)
             ->withCount('photos')

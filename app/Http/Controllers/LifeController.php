@@ -93,10 +93,8 @@ class LifeController
         ]);
     }
 
-    public function country($slug)
+    public function country(Country $country)
     {
-        $country = \CountryHelper::findBySlugOrFail($slug);
-
         $trips = $country->trips()
             ->withCount('photos')
             ->tap(new TripOfAdminScope)

@@ -15,6 +15,14 @@ class RouteServiceProvider extends ServiceProvider
 
         \Route::pattern('id', '\d+');
 
+        \Route::bind('CityCached', function (string $slug) {
+            return \CityHelper::findBySlugOrFail($slug);
+        });
+
+        \Route::bind('CountryCached', function (string $slug) {
+            return \CountryHelper::findBySlugOrFail($slug);
+        });
+
         parent::boot();
     }
 

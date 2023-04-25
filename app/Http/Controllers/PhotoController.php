@@ -17,7 +17,6 @@ use App\Scope\PhotoPublishedScope;
 use App\Tag;
 use App\Trip;
 use App\Utilities\CityHelper;
-use App\Utilities\CountryHelper;
 
 class PhotoController
 {
@@ -42,10 +41,8 @@ class PhotoController
         return view('photos.cities', ['cities' => $cities]);
     }
 
-    public function city(string $slug, CityHelper $cityHelper, GetTripsPublishedByCityAction $getTripsPublishedByCity)
+    public function city(City $city, GetTripsPublishedByCityAction $getTripsPublishedByCity)
     {
-        /** @var City $city */
-        $city = $cityHelper->findBySlugOrFail($slug);
         $city->loadCountry();
 
         $ids = $getTripsPublishedByCity->execute($city->id);
@@ -74,11 +71,8 @@ class PhotoController
         ]);
     }
 
-    public function country(string $slug, CountryHelper $countryHelper, GetTripsPublishedByCountryAction $getTripsPublishedByCountry)
+    public function country(Country $country, GetTripsPublishedByCountryAction $getTripsPublishedByCountry)
     {
-        /** @var Country $country */
-        $country = $countryHelper->findBySlugOrFail($slug);
-
         $ids = $getTripsPublishedByCountry->execute($country->id);
 
         abort_if(empty($ids), 404);
