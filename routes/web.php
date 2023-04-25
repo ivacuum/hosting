@@ -10,7 +10,7 @@ Route::view('about', 'about');
 // Route::post('auth/2fa-challenge', [])->middleware(['guest', 'throttle:2fa']);
 
 Route::get('auth/login', [Ctrl\Auth\SignIn::class, 'index'])->middleware('guest');
-Route::post('auth/login', [Ctrl\Auth\SignIn::class, 'login'])->middleware(['guest', 'throttle:login']);
+Route::post('auth/login', [Ctrl\Auth\SignIn::class, 'login'])->middleware('guest', 'throttle:login');
 Route::get('auth/logout', [Ctrl\Auth\SignIn::class, 'logout'])->middleware('auth');
 
 Route::get('auth/register', [Ctrl\Auth\NewAccount::class, 'index'])->middleware('guest');

@@ -40,7 +40,7 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/web.php'));
     }
 
-    protected function configureRateLimiting()
+    private function configureRateLimiting()
     {
         RateLimiter::for('2fa', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
