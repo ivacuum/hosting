@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
             PruneSearchIndexes::class,
             PruneCache::class,
             PruneLogs::class,
+
             UserSeeder::class,
             ExternalIdentitySeeder::class,
             ClientSeeder::class,
