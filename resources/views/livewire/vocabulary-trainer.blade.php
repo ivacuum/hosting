@@ -36,7 +36,7 @@
         spellcheck="false"
         placeholder="@lang('Ваш ответ')"
         enterkeyhint="send"
-        class="form-input text-center {{ $this->reveal ? 'animate-incorrect-answer' : '' }}"
+        class="form-input text-center {{ $this->reveal ? 'animate-incorrect-answer focus:border-red-300 focus:ring-red-300' : '' }}"
         {{ $this->reveal ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
         wire:model.defer="answer"
         wire:keydown.enter="check"
