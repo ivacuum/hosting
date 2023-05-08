@@ -78,6 +78,11 @@ class VocabularyTrainer extends Component
         event(new \App\Events\Stats\VocabularyMounted);
     }
 
+    public function setVocabId(int $vocabId)
+    {
+        $this->vocab = Vocabulary::findOrFail($vocabId);
+    }
+
     public function skip()
     {
         if ($this->reveal === false) {

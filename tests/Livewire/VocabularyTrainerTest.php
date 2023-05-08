@@ -3,7 +3,6 @@
 use App\Factory\VocabularyFactory;
 use App\Http\Livewire\VocabularyTrainer;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Livewire\Testing\TestableLivewire;
 use Tests\TestCase;
 
 class VocabularyTrainerTest extends TestCase
@@ -12,7 +11,7 @@ class VocabularyTrainerTest extends TestCase
 
     public function testAnswerRightInHiragana()
     {
-        VocabularyFactory::new()
+        $vocab = VocabularyFactory::new()
             ->withLevel(1)
             ->withKana('とうきょうしょうけんとりひきじょ')
             ->withCharacter('東京証券取引所')
@@ -20,12 +19,9 @@ class VocabularyTrainerTest extends TestCase
 
         \Event::fake(\App\Events\Stats\VocabularyAnsweredHiragana::class);
 
-        /** @var VocabularyTrainer $component */
         \Livewire::test(VocabularyTrainer::class)
-            ->tap(function (TestableLivewire $livewire) use (&$component) {
-                $component = $livewire->instance();
-            })
-            ->set('answer', $component->vocab->kana)
+            ->call('setVocabId', $vocab->id)
+            ->set('answer', 'とうきょうしょうけんとりひきじょ')
             ->call('check')
             ->assertSet('answered', 1);
 
@@ -34,19 +30,16 @@ class VocabularyTrainerTest extends TestCase
 
     public function testAnswerRightInKanji()
     {
-        VocabularyFactory::new()
+        $vocab = VocabularyFactory::new()
             ->withLevel(1)
             ->withCharacter('東京証券取引所')
             ->create();
 
         \Event::fake(\App\Events\Stats\VocabularyAnsweredKanji::class);
 
-        /** @var VocabularyTrainer $component */
         \Livewire::test(VocabularyTrainer::class)
-            ->tap(function (TestableLivewire $livewire) use (&$component) {
-                $component = $livewire->instance();
-            })
-            ->set('answer', $component->vocab->character)
+            ->call('setVocabId', $vocab->id)
+            ->set('answer', '東京証券取引所')
             ->call('check')
             ->assertSet('answered', 1);
 
@@ -55,16 +48,16 @@ class VocabularyTrainerTest extends TestCase
 
     public function testAnswerRightInKatakana()
     {
-        VocabularyFactory::new()->withLevel(1)->create();
+        $vocab = VocabularyFactory::new()
+            ->withLevel(1)
+            ->withKana('ありがとう')
+            ->create();
 
         \Event::fake(\App\Events\Stats\VocabularyAnsweredKatakana::class);
 
-        /** @var VocabularyTrainer $component */
         \Livewire::test(VocabularyTrainer::class)
-            ->tap(function (TestableLivewire $livewire) use (&$component) {
-                $component = $livewire->instance();
-            })
-            ->set('answer', $component->vocab->toKatakana())
+            ->call('setVocabId', $vocab->id)
+            ->set('answer', 'アリガトウ')
             ->call('check')
             ->assertSet('answered', 1);
 
@@ -73,16 +66,16 @@ class VocabularyTrainerTest extends TestCase
 
     public function testAnswerRightInRomaji()
     {
-        VocabularyFactory::new()->withLevel(1)->create();
+        $vocab = VocabularyFactory::new()
+            ->withLevel(1)
+            ->withKana('ありがとう')
+            ->create();
 
         \Event::fake(\App\Events\Stats\VocabularyAnsweredRomaji::class);
 
-        /** @var VocabularyTrainer $component */
         \Livewire::test(VocabularyTrainer::class)
-            ->tap(function (TestableLivewire $livewire) use (&$component) {
-                $component = $livewire->instance();
-            })
-            ->set('answer', $component->vocab->toRomaji())
+            ->call('setVocabId', $vocab->id)
+            ->set('answer', 'arigatou')
             ->call('check')
             ->assertSet('answered', 1);
 
@@ -91,11 +84,12 @@ class VocabularyTrainerTest extends TestCase
 
     public function testAnswerWrong()
     {
-        VocabularyFactory::new()->withLevel(1)->create();
+        $vocab = VocabularyFactory::new()->withLevel(1)->create();
 
         \Event::fake(\App\Events\Stats\VocabularyAnswerRevealed::class);
 
         \Livewire::test(VocabularyTrainer::class)
+            ->call('setVocabId', $vocab->id)
             ->set('answer', 'definitely wrong answer')
             ->call('check')
             ->assertSet('reveal', true)
@@ -136,19 +130,16 @@ class VocabularyTrainerTest extends TestCase
 
     public function testRightAnswerGetsCleared()
     {
-        VocabularyFactory::new()
+        $vocab = VocabularyFactory::new()
             ->withLevel(1)
             ->withCharacter('東京証券取引所')
             ->create();
 
         \Event::fake(\App\Events\Stats\VocabularyAnsweredKanji::class);
 
-        /** @var VocabularyTrainer $component */
         \Livewire::test(VocabularyTrainer::class)
-            ->tap(function (TestableLivewire $livewire) use (&$component) {
-                $component = $livewire->instance();
-            })
-            ->set('answer', $component->vocab->character)
+            ->call('setVocabId', $vocab->id)
+            ->set('answer', '東京証券取引所')
             ->call('check')
             ->assertSet('answer', '');
 
