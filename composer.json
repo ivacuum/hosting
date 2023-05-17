@@ -14,7 +14,7 @@
     "laravel-notification-channels/telegram": "^4.0",
     "laravel/fortify": "^1.8",
     "laravel/framework": "^10.0",
-    "laravel/octane": "^1.2",
+    "laravel/octane": "^2.0",
     "laravel/scout": "^10.0",
     "laravel/socialite": "^5.0",
     "league/commonmark": "^2.2",
