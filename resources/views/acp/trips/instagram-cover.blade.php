@@ -8,24 +8,22 @@
   @vite('resources/css/app.css')
 </head>
 <body>
-<div style="max-width: 1080px; max-height: 1920px;">
+<div class="max-w-[1080px] max-h-[1920px]">
   <div class="relative">
     <a class="block" href="{{ $trip->www() }}">
-      <div class="relative pb-[75%]">
-        <img
-          class="absolute w-full h-full object-cover bg-gray-700 brightness-3/4"
-          src="{{ ViewHelper::pic2x($trip->slug, $trip->meta_image) }}"
-          alt=""
-        >
-      </div>
+      <img
+        class="block aspect-[4/3] w-full object-cover bg-gray-700 brightness-3/4"
+        src="{{ ViewHelper::pic2x($trip->slug, $trip->meta_image) }}"
+        alt=""
+      >
       <div class="absolute bottom-0 text-white trip-cover-info p-12 w-full">
-        <div class="flex flex-wrap gap-3 items-baseline font-bold" style="font-size: 4.5rem;">
+        <div class="flex flex-wrap gap-3 items-baseline font-bold text-[4.5rem]">
           <img class="flag-4x3 text-6xl svg-shadow" src="{{ $trip->city->country->flagUrl() }}" alt="">
           <span class="leading-none">{{ $trip->title }}</span>
           <span class="leading-tight self-end text-grey-300 text-4xl">{{ $trip->timelinePeriodWithYear() }}</span>
         </div>
         @if ($trip->metaDescription())
-          <div class="leading-tight mt-1" style="font-size: 2.5rem;">{{ $trip->metaDescription() }}</div>
+          <div class="leading-tight mt-1 text-[2.5rem]">{{ $trip->metaDescription() }}</div>
         @endif
       </div>
     </a>
