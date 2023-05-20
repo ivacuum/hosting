@@ -21,7 +21,6 @@ class GuestPagesTest extends TestCase
         yield ['/retracker'];
         yield ['/retracker/dev'];
         yield ['/retracker/usage'];
-        yield ['/stickers'];
         yield ['/subscriptions'];
     }
 }

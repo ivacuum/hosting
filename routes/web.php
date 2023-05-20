@@ -225,8 +225,6 @@ Route::view('retracker', 'retracker.index');
 Route::view('retracker/dev', 'retracker.dev');
 Route::view('retracker/usage', 'retracker.usage');
 
-Route::view('stickers', 'stickers');
-
 Route::get('subscriptions', [Ctrl\SubscriptionController::class, 'edit']);
 Route::post('subscriptions', [Ctrl\SubscriptionController::class, 'store']);
 Route::put('subscriptions', [Ctrl\SubscriptionController::class, 'update'])->middleware('auth');
