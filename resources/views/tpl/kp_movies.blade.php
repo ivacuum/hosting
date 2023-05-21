@@ -13,6 +13,7 @@
       <img
         class="screenshot h-[350px]"
         src="{{ $movie->cover() }}"
+        loading="lazy"
         alt=""
       >
     </a>
