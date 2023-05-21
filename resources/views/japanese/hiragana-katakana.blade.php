@@ -5,7 +5,7 @@
 <h1 class="font-medium text-3xl tracking-tight mb-2">@lang('Хирагана и катакана')</h1>
 <div id="hiragana_katakana" class="invisible">
   <Transition appear name="fade" mode="out-in">
-    <div :key="stage" style="min-height: 420px;">
+    <div :key="stage" class="min-h-[420px]">
       <div v-show="stage === 'pick'">
         @ru
           <p>Выберите столбцы для практики.</p>

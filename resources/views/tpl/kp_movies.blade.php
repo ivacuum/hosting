@@ -11,10 +11,9 @@
       href="{{ $movie->externalLink() }}"
     >
       <img
-        class="screenshot"
+        class="screenshot h-[350px]"
         src="{{ $movie->cover() }}"
         alt=""
-        style="height: 350px;"
       >
     </a>
   @endforeach

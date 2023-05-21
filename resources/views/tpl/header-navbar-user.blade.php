@@ -17,8 +17,7 @@
   </summary>
   <details-menu
     role="menu"
-    class="absolute top-full right-0 z-50 py-2 bg-white dark:bg-slate-800 mt-1 border border-gray-300 dark:border-slate-700 rounded shadow-md"
-    style="min-width: 10rem;"
+    class="absolute top-full right-0 z-50 py-2 bg-white dark:bg-slate-800 mt-1 border border-gray-300 dark:border-slate-700 rounded shadow-md min-w-[10rem]"
   >
     <div class="py-2 px-6 text-sm text-gray-600 dark:text-slate-400 whitespace-nowrap">
       @lang('auth.signed_in_as')
