@@ -1,6 +1,5 @@
 <?php
 
-use Carbon\CarbonInterface;
 use Symfony\Component\VarDumper\Cloner\AbstractCloner;
 
 $app = new Illuminate\Foundation\Application(
@@ -22,6 +21,7 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
-AbstractCloner::$defaultCasters[CarbonInterface::class] = App\Caster\CarbonCaster::prune(...);
+AbstractCloner::$defaultCasters[Carbon\CarbonInterface::class] = App\Caster\CarbonCaster::prune(...);
+AbstractCloner::$defaultCasters[Illuminate\Database\Eloquent\Model::class] = App\Caster\EloquentModelCaster::prune(...);
 
 return $app;
