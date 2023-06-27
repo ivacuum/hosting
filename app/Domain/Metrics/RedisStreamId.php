@@ -1,4 +1,6 @@
-<?php namespace App\Domain\Metrics;
+<?php
+
+namespace App\Domain\Metrics;
 
 enum RedisStreamId: string
 {

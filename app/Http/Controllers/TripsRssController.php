@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers;
+<?php
+
+namespace App\Http\Controllers;
 
 use App\Scope\TripOfAdminScope;
 use App\Scope\TripPublishedScope;

@@ -1,4 +1,6 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use App\Domain\ChatMessageStatus;
 use Illuminate\Database\Eloquent\Casts\Attribute;

@@ -1,4 +1,6 @@
-<?php namespace App\Http\Livewire\Acp;
+<?php
+
+namespace App\Http\Livewire\Acp;
 
 use App\Country;
 use App\Http\Livewire\WithGoto;

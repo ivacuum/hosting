@@ -1,4 +1,6 @@
-<?php namespace App\Domain\Metrics;
+<?php
+
+namespace App\Domain\Metrics;
 
 use Carbon\CarbonInterval;
 use Illuminate\Support\Collection;

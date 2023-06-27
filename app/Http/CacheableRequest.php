@@ -1,4 +1,6 @@
-<?php namespace App\Http;
+<?php
+
+namespace App\Http;
 
 use App\Domain\CacheKey;
 use Carbon\CarbonInterval;

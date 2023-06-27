@@ -1,4 +1,6 @@
-<?php namespace App\Spatial;
+<?php
+
+namespace App\Spatial;
 
 class Polygon extends Geometry implements \Stringable
 {

@@ -1,4 +1,6 @@
-<?php namespace App\Mail;
+<?php
+
+namespace App\Mail;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;

@@ -1,4 +1,6 @@
-<?php namespace App\Scope;
+<?php
+
+namespace App\Scope;
 
 use App\Domain\MagnetStatus;
 use Illuminate\Database\Eloquent\Builder;

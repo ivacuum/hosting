@@ -1,4 +1,6 @@
-<?php namespace App\Services\Vk;
+<?php
+
+namespace App\Services\Vk;
 
 class Post
 {

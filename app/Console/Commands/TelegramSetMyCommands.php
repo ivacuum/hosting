@@ -1,4 +1,6 @@
-<?php namespace App\Console\Commands;
+<?php
+
+namespace App\Console\Commands;
 
 use Ivacuum\Generic\Commands\Command;
 use Ivacuum\Generic\Telegram\BotCommand;

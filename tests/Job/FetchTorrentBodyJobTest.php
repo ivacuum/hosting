@@ -1,4 +1,6 @@
-<?php namespace Tests\Job;
+<?php
+
+namespace Tests\Job;
 
 use App\Factory\MagnetFactory;
 use App\Jobs\FetchTorrentBodyJob;

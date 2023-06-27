@@ -1,4 +1,6 @@
-<?php namespace App\Scope;
+<?php
+
+namespace App\Scope;
 
 use App\Domain\PhotoStatus;
 use Illuminate\Database\Eloquent\Builder;

@@ -1,4 +1,6 @@
-<?php namespace App\Http;
+<?php
+
+namespace App\Http;
 
 use Illuminate\Cache\Repository;
 use Illuminate\Http\Client\Response;

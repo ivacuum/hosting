@@ -1,4 +1,6 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use App\Domain\NotificationDeliveryMethod;
 use App\Domain\UserStatus;

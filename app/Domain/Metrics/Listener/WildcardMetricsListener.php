@@ -1,4 +1,6 @@
-<?php namespace App\Domain\Metrics\Listener;
+<?php
+
+namespace App\Domain\Metrics\Listener;
 
 use App\Domain\Metrics\Action\PushMetricAction;
 

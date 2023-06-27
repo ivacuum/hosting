@@ -1,4 +1,6 @@
-<?php namespace Tests\Livewire\Acp;
+<?php
+
+namespace Tests\Livewire\Acp;
 
 use App\Factory\GigFactory;
 use App\Factory\PhotoFactory;

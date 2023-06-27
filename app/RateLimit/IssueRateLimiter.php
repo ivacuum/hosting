@@ -1,4 +1,6 @@
-<?php namespace App\RateLimit;
+<?php
+
+namespace App\RateLimit;
 
 use App\Action\LimitRateAction;
 use App\Issue;

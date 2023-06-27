@@ -1,4 +1,6 @@
-<?php namespace App\Scope;
+<?php
+
+namespace App\Scope;
 
 use App\Trip;
 use Illuminate\Database\Eloquent\Builder;

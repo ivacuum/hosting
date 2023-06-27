@@ -1,4 +1,6 @@
-<?php namespace App\Http\Requests;
+<?php
+
+namespace App\Http\Requests;
 
 use App\Domain\BeaconEvent;
 use Illuminate\Foundation\Http\FormRequest;

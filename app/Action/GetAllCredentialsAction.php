@@ -1,4 +1,6 @@
-<?php namespace App\Action;
+<?php
+
+namespace App\Action;
 
 use Illuminate\Support\Collection;
 

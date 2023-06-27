@@ -1,4 +1,6 @@
-<?php namespace App\Utilities;
+<?php
+
+namespace App\Utilities;
 
 use App\Action\Acp\GetModelControllerAction;
 use Illuminate\Database\Eloquent\Model;

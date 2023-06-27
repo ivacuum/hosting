@@ -1,4 +1,6 @@
-<?php namespace App\Domain\Metrics\Action;
+<?php
+
+namespace App\Domain\Metrics\Action;
 
 use App\Domain\Metrics\RedisKey;
 use App\Domain\Metrics\RedisReadStreamCommandFactory;

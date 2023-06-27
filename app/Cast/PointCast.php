@@ -1,4 +1,6 @@
-<?php namespace App\Cast;
+<?php
+
+namespace App\Cast;
 
 use App\Spatial\Point;
 use App\SpatialExpression;

@@ -1,4 +1,6 @@
-<?php namespace App\Action;
+<?php
+
+namespace App\Action;
 
 use App\Services\YandexPdd\DnsRecord;
 use App\Services\YandexPdd\YandexPddClient;

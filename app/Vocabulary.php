@@ -1,4 +1,6 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use App\Services\HiraganaRomanizer;
 use Illuminate\Database\Eloquent\Model;

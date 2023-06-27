@@ -1,4 +1,6 @@
-<?php namespace App\Services\YandexPdd;
+<?php
+
+namespace App\Services\YandexPdd;
 
 class RequestException extends \Exception
 {

@@ -1,4 +1,6 @@
-<?php namespace App\Providers;
+<?php
+
+namespace App\Providers;
 
 use App\Http\Middleware\AcpNavigation;
 use App\Http\Middleware\Admin;

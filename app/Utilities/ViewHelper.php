@@ -1,4 +1,6 @@
-<?php namespace App\Utilities;
+<?php
+
+namespace App\Utilities;
 
 use Ivacuum\Generic\Utilities\ViewHelper as BaseViewHelper;
 

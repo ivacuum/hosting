@@ -1,4 +1,6 @@
-<?php namespace Tests\Feature;
+<?php
+
+namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Ivacuum\Generic\Events\Stats\Build;

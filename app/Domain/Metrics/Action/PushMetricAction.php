@@ -1,4 +1,6 @@
-<?php namespace App\Domain\Metrics\Action;
+<?php
+
+namespace App\Domain\Metrics\Action;
 
 class PushMetricAction
 {

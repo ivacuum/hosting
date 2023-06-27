@@ -1,4 +1,6 @@
-<?php namespace Tests\Livewire;
+<?php
+
+namespace Tests\Livewire;
 
 use App\Http\Livewire\HangulTrainer;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

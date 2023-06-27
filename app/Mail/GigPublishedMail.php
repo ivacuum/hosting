@@ -1,4 +1,6 @@
-<?php namespace App\Mail;
+<?php
+
+namespace App\Mail;
 
 use App\Gig;
 use App\Http\Controllers\MySettingsController;

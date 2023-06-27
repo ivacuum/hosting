@@ -1,4 +1,6 @@
-<?php namespace App\Http;
+<?php
+
+namespace App\Http;
 
 interface HttpRequest extends \JsonSerializable
 {

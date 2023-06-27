@@ -1,4 +1,6 @@
-<?php namespace App\Console;
+<?php
+
+namespace App\Console;
 
 use App\Console\Commands\ProcessMetrics;
 use App\Console\Commands\TrimMetricsStream;

@@ -1,4 +1,6 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use Ivacuum\Generic\Models\Metric as BaseMetric;
 

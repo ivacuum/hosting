@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers\Acp;
+<?php
+
+namespace App\Http\Controllers\Acp;
 
 class DevController
 {

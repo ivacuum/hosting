@@ -1,4 +1,6 @@
-<?php namespace Tests\Livewire;
+<?php
+
+namespace Tests\Livewire;
 
 use App\Events\ChatMessageCreated;
 use App\Factory\UserFactory;

@@ -1,4 +1,6 @@
-<?php namespace App\Utilities;
+<?php
+
+namespace App\Utilities;
 
 use App\Domain\CacheKey;
 use Illuminate\Cache\Repository;

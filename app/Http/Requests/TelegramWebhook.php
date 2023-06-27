@@ -1,4 +1,6 @@
-<?php namespace App\Http\Requests;
+<?php
+
+namespace App\Http\Requests;
 
 use App\Support\Telegram\CallbackQuery;
 use App\Support\Telegram\Message;

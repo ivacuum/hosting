@@ -1,4 +1,6 @@
-<?php namespace App\Services;
+<?php
+
+namespace App\Services;
 
 use App\Domain\RtoTopicStatus;
 use Carbon\CarbonImmutable;

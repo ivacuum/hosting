@@ -1,4 +1,6 @@
-<?php namespace App\Services\YandexPdd;
+<?php
+
+namespace App\Services\YandexPdd;
 
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\Response;

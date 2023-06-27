@@ -1,4 +1,6 @@
-<?php namespace App\Policies;
+<?php
+
+namespace App\Policies;
 
 use App\Comment;
 use App\User;

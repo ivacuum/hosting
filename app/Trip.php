@@ -1,4 +1,6 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use App\Action\FormatTripPeriodAction;
 use App\Action\FormatTripPeriodWithYearAction;

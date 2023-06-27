@@ -1,4 +1,6 @@
-<?php namespace App\Support\Telegram;
+<?php
+
+namespace App\Support\Telegram;
 
 readonly class CallbackQuery
 {

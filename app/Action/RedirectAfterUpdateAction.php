@@ -1,4 +1,6 @@
-<?php namespace App\Action;
+<?php
+
+namespace App\Action;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;

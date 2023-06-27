@@ -1,4 +1,6 @@
-<?php namespace App\Jobs;
+<?php
+
+namespace App\Jobs;
 
 use App\DcppHub;
 use Illuminate\Queue\SerializesModels;

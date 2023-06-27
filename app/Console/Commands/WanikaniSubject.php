@@ -1,4 +1,6 @@
-<?php namespace App\Console\Commands;
+<?php
+
+namespace App\Console\Commands;
 
 use App\Services\Wanikani\WanikaniApi;
 use Ivacuum\Generic\Commands\Command;

@@ -1,4 +1,6 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use Illuminate\Database\Eloquent\MassPrunable;
 use Ivacuum\Generic\Models\Notification as BaseNotification;

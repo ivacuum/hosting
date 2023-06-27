@@ -1,4 +1,6 @@
-<?php namespace App\Seeder;
+<?php
+
+namespace App\Seeder;
 
 use App\Factory\FileFactory;
 use Illuminate\Database\Seeder;

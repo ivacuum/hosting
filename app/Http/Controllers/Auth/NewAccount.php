@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers\Auth;
+<?php
+
+namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Ivacuum\Generic\Controllers\Auth\NewAccount as BaseNewAccount;

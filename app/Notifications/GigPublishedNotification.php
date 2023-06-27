@@ -1,4 +1,6 @@
-<?php namespace App\Notifications;
+<?php
+
+namespace App\Notifications;
 
 use App\Gig;
 use App\Mail\GigPublishedMail;

@@ -1,4 +1,6 @@
-<?php namespace App\Observers;
+<?php
+
+namespace App\Observers;
 
 use App\Events\MagnetAddedAnonymously;
 use App\Magnet;

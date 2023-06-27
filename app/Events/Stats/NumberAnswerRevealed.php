@@ -1,4 +1,6 @@
-<?php namespace App\Events\Stats;
+<?php
+
+namespace App\Events\Stats;
 
 class NumberAnswerRevealed
 {

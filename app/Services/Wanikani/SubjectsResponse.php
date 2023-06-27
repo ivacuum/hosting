@@ -1,4 +1,6 @@
-<?php namespace App\Services\Wanikani;
+<?php
+
+namespace App\Services\Wanikani;
 
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Collection;

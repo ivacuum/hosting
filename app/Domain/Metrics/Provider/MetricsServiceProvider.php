@@ -1,4 +1,6 @@
-<?php namespace App\Domain\Metrics\Provider;
+<?php
+
+namespace App\Domain\Metrics\Provider;
 
 use App\Domain\Metrics\Action\PushMetricAction;
 use App\Domain\Metrics\Listener\WildcardMetricsListener;

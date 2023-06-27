@@ -1,4 +1,6 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use App\Action\FindRelatedMagnetsAction;
 use App\Action\FindTagsInMagnetTitleAction;

@@ -1,4 +1,6 @@
-<?php namespace App\Services\Wanikani;
+<?php
+
+namespace App\Services\Wanikani;
 
 use Carbon\Carbon;
 use Illuminate\Http\Client\Factory;

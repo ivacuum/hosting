@@ -1,4 +1,6 @@
-<?php namespace App\Facades;
+<?php
+
+namespace App\Facades;
 
 use App\Utilities\AcpHelper;
 use Illuminate\Support\Facades\Facade;

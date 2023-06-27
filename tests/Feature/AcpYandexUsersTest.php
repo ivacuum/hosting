@@ -1,4 +1,6 @@
-<?php namespace Tests\Feature;
+<?php
+
+namespace Tests\Feature;
 
 use App\Factory\YandexUserFactory;
 use App\Http\Livewire\Acp\YandexUserForm;

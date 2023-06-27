@@ -1,4 +1,6 @@
-<?php namespace App\Http\Requests\Acp;
+<?php
+
+namespace App\Http\Requests\Acp;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Http\FormRequest;

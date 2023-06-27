@@ -1,4 +1,6 @@
-<?php namespace App\Http\Middleware;
+<?php
+
+namespace App\Http\Middleware;
 
 use App\Action\GetModelBreadcrumbAction;
 use Illuminate\Database\Eloquent\Model;

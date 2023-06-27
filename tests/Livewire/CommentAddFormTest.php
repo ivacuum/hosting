@@ -1,4 +1,6 @@
-<?php namespace Tests\Livewire;
+<?php
+
+namespace Tests\Livewire;
 
 use App\Domain\CommentStatus;
 use App\Domain\LivewireEvent;

@@ -1,4 +1,6 @@
-<?php namespace App\Domain;
+<?php
+
+namespace App\Domain;
 
 readonly class Sort
 {

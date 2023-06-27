@@ -1,4 +1,6 @@
-<?php namespace App\Scope;
+<?php
+
+namespace App\Scope;
 
 use App\Domain\NewsStatus;
 use Illuminate\Database\Eloquent\Builder;

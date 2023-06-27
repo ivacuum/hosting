@@ -1,4 +1,6 @@
-<?php namespace Tests\Feature;
+<?php
+
+namespace Tests\Feature;
 
 use App\Factory\FileFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

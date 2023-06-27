@@ -1,4 +1,6 @@
-<?php namespace App\Collection;
+<?php
+
+namespace App\Collection;
 
 use App\Kanji;
 use Illuminate\Database\Eloquent\Collection;

@@ -1,4 +1,6 @@
-<?php namespace App\Seeder;
+<?php
+
+namespace App\Seeder;
 
 use App\Factory\NewsFactory;
 use App\Factory\UserFactory;

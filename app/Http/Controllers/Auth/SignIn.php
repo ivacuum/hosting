@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers\Auth;
+<?php
+
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Ivacuum\Generic\Controllers\Auth\SignIn as BaseSignIn;

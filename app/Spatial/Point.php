@@ -1,4 +1,6 @@
-<?php namespace App\Spatial;
+<?php
+
+namespace App\Spatial;
 
 class Point extends Geometry implements \Stringable
 {

@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers\Acp;
+<?php
+
+namespace App\Http\Controllers\Acp;
 
 use App\Http\Requests\Acp\TripPublishedNotifyRequest;
 use App\Jobs\NotifyTripSubscribers;

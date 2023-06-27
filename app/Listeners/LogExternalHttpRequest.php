@@ -1,4 +1,6 @@
-<?php namespace App\Listeners;
+<?php
+
+namespace App\Listeners;
 
 use App\Action\FilterOutCredentialsAction;
 use App\Domain\ExternalService;

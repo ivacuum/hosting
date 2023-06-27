@@ -1,4 +1,6 @@
-<?php namespace App\Services\YandexPdd;
+<?php
+
+namespace App\Services\YandexPdd;
 
 use App\Http\HttpPost;
 

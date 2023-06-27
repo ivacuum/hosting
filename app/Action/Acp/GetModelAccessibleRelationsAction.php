@@ -1,4 +1,6 @@
-<?php namespace App\Action\Acp;
+<?php
+
+namespace App\Action\Acp;
 
 use App\Domain\ModelAccessibleRelation;
 use Illuminate\Database\Eloquent\Model;

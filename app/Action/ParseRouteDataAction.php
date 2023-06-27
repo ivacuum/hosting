@@ -1,4 +1,6 @@
-<?php namespace App\Action;
+<?php
+
+namespace App\Action;
 
 use App\Action\Acp\DeduceTplFromControllerAction;
 use App\Action\Acp\GetControllerBasenameAction;

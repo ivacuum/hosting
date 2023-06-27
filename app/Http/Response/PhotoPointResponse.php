@@ -1,4 +1,6 @@
-<?php namespace App\Http\Response;
+<?php
+
+namespace App\Http\Response;
 
 use App\Photo;
 

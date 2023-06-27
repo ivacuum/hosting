@@ -1,4 +1,6 @@
-<?php namespace App\Http\Livewire;
+<?php
+
+namespace App\Http\Livewire;
 
 use App\Domain;
 use App\Services\YandexPdd\DnsRecordType;

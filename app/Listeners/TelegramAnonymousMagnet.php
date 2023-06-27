@@ -1,4 +1,6 @@
-<?php namespace App\Listeners;
+<?php
+
+namespace App\Listeners;
 
 use App\Events\MagnetAddedAnonymously;
 use Ivacuum\Generic\Listeners\TelegramNotifier;

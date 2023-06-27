@@ -1,4 +1,6 @@
-<?php namespace App\Console\Commands;
+<?php
+
+namespace App\Console\Commands;
 
 use App\Events\Stats\GalleryImageViewed;
 use Ivacuum\Generic\Commands\Command;

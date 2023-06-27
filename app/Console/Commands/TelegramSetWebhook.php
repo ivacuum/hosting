@@ -1,4 +1,6 @@
-<?php namespace App\Console\Commands;
+<?php
+
+namespace App\Console\Commands;
 
 use App\Http\Controllers\TelegramWebhookController;
 use Ivacuum\Generic\Commands\Command;

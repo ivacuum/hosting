@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers\Acp\Dev;
+<?php
+
+namespace App\Http\Controllers\Acp\Dev;
 
 use App\Action\FindTripTemplatesAction;
 use App\Trip;

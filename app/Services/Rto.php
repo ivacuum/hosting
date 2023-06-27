@@ -1,4 +1,6 @@
-<?php namespace App\Services;
+<?php
+
+namespace App\Services;
 
 use GuzzleHttp\RequestOptions;
 use Illuminate\Http\Client\Factory;

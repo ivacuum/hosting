@@ -1,4 +1,6 @@
-<?php namespace App\Console\Commands;
+<?php
+
+namespace App\Console\Commands;
 
 use App\Jobs\UnlikeVkPost;
 use App\Services\Vk;

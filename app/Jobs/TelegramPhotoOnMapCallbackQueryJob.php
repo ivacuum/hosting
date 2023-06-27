@@ -1,4 +1,6 @@
-<?php namespace App\Jobs;
+<?php
+
+namespace App\Jobs;
 
 use App\Photo;
 use Ivacuum\Generic\Telegram\InlineKeyboardButton;

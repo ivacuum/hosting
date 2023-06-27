@@ -1,4 +1,6 @@
-<?php namespace App\Factory;
+<?php
+
+namespace App\Factory;
 
 use App\Domain\TripStatus;
 use App\Trip;

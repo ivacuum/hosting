@@ -1,4 +1,6 @@
-<?php namespace Tests\Unit;
+<?php
+
+namespace Tests\Unit;
 
 use App\Action\FormatTripPeriodWithYearAction;
 use App\Domain\Locale;

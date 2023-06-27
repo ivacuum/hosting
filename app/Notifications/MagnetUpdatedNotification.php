@@ -1,4 +1,6 @@
-<?php namespace App\Notifications;
+<?php
+
+namespace App\Notifications;
 
 use App\Http\Controllers\MagnetsController;
 use App\Magnet;
