@@ -119,8 +119,8 @@ class PhotoController
 
         if ($request->tagId) {
             // Просмотр в пределах одного тэга
-            $next = $next->whereRelation('tags', 'tag_id', $request->tagId);
-            $prev = $prev->whereRelation('tags', 'tag_id', $request->tagId);
+            $next = $next->tap(new PhotoForTagScope($request->tagId));
+            $prev = $prev->tap(new PhotoForTagScope($request->tagId));
         } elseif ($request->cityId) {
             // В пределах города
             abort_unless($request->cityId == $photo->rel->city->id, 404);

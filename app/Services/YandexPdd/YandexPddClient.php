@@ -9,8 +9,6 @@ use Illuminate\Http\Client\Factory;
 
 class YandexPddClient
 {
-    private const API_URL = 'https://pddimp.yandex.ru/api2/';
-
     private string $pddToken;
 
     public function __construct(private Factory $http, private FilterNullsAction $filterNulls)
@@ -179,9 +177,9 @@ class YandexPddClient
     private function configureClient()
     {
         return $this->http
-            ->baseUrl(self::API_URL)
+            ->baseUrl('https://pddimp.yandex.ru/api2/')
             ->timeout(10)
-            ->withHeaders(['PddToken' => $this->pddToken]);
+            ->withHeader('PddToken', $this->pddToken);
     }
 
     private function payload(HttpRequest $request)
@@ -189,7 +187,7 @@ class YandexPddClient
         $payload = $request->jsonSerialize();
 
         if (is_array($payload)) {
-            return $this->filterNulls->execute($request->jsonSerialize());
+            return $this->filterNulls->execute($payload);
         }
 
         return $payload;

@@ -34,7 +34,7 @@ class WanikaniApi
             ->baseUrl('https://api.wanikani.com/v2/')
             ->timeout(10)
             ->withToken($this->apiKey)
-            ->withHeaders(['Wanikani-Revision' => '20170710']);
+            ->withHeader('Wanikani-Revision', '20170710');
     }
 
     private function sendRequest(HttpRequest $request)
