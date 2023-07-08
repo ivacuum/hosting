@@ -49,6 +49,25 @@ class TelegramClientTest extends TestCase
         });
     }
 
+    public function testSendMessageAsResponse()
+    {
+        config(['services.telegram.bot_token' => '1234:token']);
+
+        $response = app(TelegramClient::class)
+            ->asResponse()
+            ->chat(12345)
+            ->sendMessage('Some info to notify about');
+
+        $this->assertEquals([
+            'method' => 'sendMessage',
+            'text' => 'Some info to notify about',
+            'chat_id' => 12345,
+        ], $response);
+
+        $this->assertArrayNotHasKey('reply_markup', $response);
+        $this->assertArrayNotHasKey('disable_web_page_preview', $response);
+    }
+
     public function testSendMessageWithDisabledWebPagePreview()
     {
         \Http::fake([

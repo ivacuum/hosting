@@ -23,4 +23,9 @@ readonly class Message
             $payload['text'] ?? null,
         );
     }
+
+    public function isCommand(): bool
+    {
+        return str_starts_with($this->text, '/');
+    }
 }

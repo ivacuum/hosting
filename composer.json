@@ -69,7 +69,7 @@
     ],
     "queue": "@php artisan queue:work --stop-when-empty --ansi",
     "rector": "vendor/bin/rector process app tests --dry-run",
-    "share": "valet share --region=eu",
+    "share": "expose",
     "test": "@php artisan test --parallel",
     "test-linear": "vendor/bin/phpunit --colors=always",
     "test-profile": "@php artisan test --profile",

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Action\Telegram;
 
 use App\Photo;
 use App\Scope\PhotoOnMapScope;
@@ -9,14 +9,16 @@ use Ivacuum\Generic\Telegram\InlineKeyboardButton;
 use Ivacuum\Generic\Telegram\InlineKeyboardMarkup;
 use Ivacuum\Generic\Telegram\TelegramClient;
 
-class TelegramPhotoCommandJob extends AbstractJob
+class OnCommandPhotoAction
 {
-    public function __construct(private int $chatId)
+    public function __construct(private TelegramClient $telegram)
     {
     }
 
-    public function handle(TelegramClient $telegram)
+    public function execute(int $chatId): array
     {
+        event(new \App\Events\Stats\TelegramPhotoCommand);
+
         /** @var Photo $photo */
         $photo = Photo::query()
             ->tap(new PhotoPublishedScope)
@@ -26,8 +28,9 @@ class TelegramPhotoCommandJob extends AbstractJob
 
         $www = url($photo->rel->www('#' . basename($photo->slug)));
 
-        $telegram
-            ->chat($this->chatId)
+        return $this->telegram
+            ->asResponse()
+            ->chat($chatId)
             ->replyMarkup(
                 InlineKeyboardMarkup::make()
                     ->addRow(
@@ -36,7 +39,5 @@ class TelegramPhotoCommandJob extends AbstractJob
                     )
             )
             ->sendPhoto($photo->mobileUrl());
-
-        event(new \App\Events\Stats\TelegramPhotoCommand);
     }
 }

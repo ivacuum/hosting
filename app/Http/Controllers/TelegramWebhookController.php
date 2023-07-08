@@ -2,22 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Action\Telegram\OnCallbackQueryPhotoOnMapAction;
+use App\Action\Telegram\OnCommandPhotoAction;
+use App\Action\Telegram\OnCommandStartAction;
 use App\Http\Requests\TelegramWebhook;
-use App\Jobs\TelegramPhotoCommandJob;
-use App\Jobs\TelegramPhotoOnMapCallbackQueryJob;
-use App\Jobs\TelegramStartCommandJob;
 use Illuminate\Log\Logger;
 
 class TelegramWebhookController
 {
+    public function __construct(
+        private OnCommandStartAction $onCommandStart,
+        private OnCommandPhotoAction $onCommandPhoto,
+        private OnCallbackQueryPhotoOnMapAction $onCallbackQueryPhotoOnMap,
+    ) {
+    }
+
     public function __invoke(Logger $logger, TelegramWebhook $request)
     {
         if ($request->shouldIgnoreWebhook) {
-            return;
+            return null;
         }
 
-        if ($request->message && str_starts_with($request->message->text, '/')) {
-            match ($request->message->text) {
+        event(new \App\Events\Stats\TelegramWebhookReceived);
+
+        if (app()->isLocal()) {
+            $logger->info(json_encode($request->all(), \JSON_PRETTY_PRINT));
+        }
+
+        $response = null;
+
+        if ($request->message?->isCommand()) {
+            $response = match ($request->message->text) {
                 '/photo' => $this->onCommandPhoto($request),
                 '/start' => $this->onCommandStart($request),
                 default => null,
@@ -28,34 +43,31 @@ class TelegramWebhookController
             $data = $request->callbackQuery->data;
 
             if (str_contains($data, ':')) {
-                match (str($data)->before(':')->toString()) {
+                $response = match (str($data)->before(':')->toString()) {
                     'photoOnMap' => $this->onCallbackQueryPhotoOnMap($request),
                     default => null,
                 };
             }
         }
 
-        if (app()->isLocal()) {
-            $logger->info(json_encode($request->all(), \JSON_PRETTY_PRINT));
-        }
-
-        event(new \App\Events\Stats\TelegramWebhookReceived);
+        return $response;
     }
 
     private function onCallbackQueryPhotoOnMap(TelegramWebhook $request)
     {
         $photoId = str($request->callbackQuery->data)->after('photoOnMap:')->toString();
 
-        dispatch(new TelegramPhotoOnMapCallbackQueryJob($request->chatId, $photoId, $request->messageId));
+        return $this->onCallbackQueryPhotoOnMap
+            ->execute($request->chatId, $photoId, $request->messageId);
     }
 
     private function onCommandPhoto(TelegramWebhook $request)
     {
-        dispatch(new TelegramPhotoCommandJob($request->chatId));
+        return $this->onCommandPhoto->execute($request->chatId);
     }
 
     private function onCommandStart(TelegramWebhook $request)
     {
-        dispatch(new TelegramStartCommandJob($request->chatId));
+        return $this->onCommandStart->execute($request->chatId);
     }
 }

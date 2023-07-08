@@ -1,34 +1,39 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Action\Telegram;
 
 use App\Photo;
 use Ivacuum\Generic\Telegram\InlineKeyboardButton;
 use Ivacuum\Generic\Telegram\InlineKeyboardMarkup;
 use Ivacuum\Generic\Telegram\TelegramClient;
 
-class TelegramPhotoOnMapCallbackQueryJob extends AbstractJob
+class OnCallbackQueryPhotoOnMapAction
 {
-    public function __construct(private int $chatId, private int $photoId, private int $messageId)
+    public function __construct(private TelegramClient $telegram)
     {
     }
 
-    public function handle(TelegramClient $telegram)
+    public function execute(int $chatId, int $photoId, int $messageId): array|null
     {
-        $photo = Photo::findOrFail($this->photoId);
+        event(new \App\Events\Stats\TelegramPhotoOnMapCallbackQuery);
+
+        $photo = Photo::find($photoId);
+
+        if ($photo === null) {
+            return null;
+        }
 
         $www = url(to('photos/map', ['photo' => $photo->slug]));
 
-        $telegram
-            ->chat($this->chatId)
-            ->replyToMessageId($this->messageId)
+        return $this->telegram
+            ->asResponse()
+            ->chat($chatId)
+            ->replyToMessageId($messageId)
             ->replyMarkup(
                 InlineKeyboardMarkup::make()->addRow(
                     new InlineKeyboardButton('🗺 Карта на сайте', $www)
                 )
             )
             ->sendLocation($photo->point->lat, $photo->point->lon);
-
-        event(new \App\Events\Stats\TelegramPhotoOnMapCallbackQuery);
     }
 }

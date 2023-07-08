@@ -1357,16 +1357,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "25.0.1",
+            "version": "25.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "49e4154535c346db93a302fe46bb74cddff7eae6"
+                "reference": "6d6aa0e37aa818f9edaf25a2591a1a4815412a43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/49e4154535c346db93a302fe46bb74cddff7eae6",
-                "reference": "49e4154535c346db93a302fe46bb74cddff7eae6",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/6d6aa0e37aa818f9edaf25a2591a1a4815412a43",
+                "reference": "6d6aa0e37aa818f9edaf25a2591a1a4815412a43",
                 "shasum": ""
             },
             "require": {
@@ -1417,9 +1417,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ivacuum/generic/issues",
-                "source": "https://github.com/ivacuum/generic/tree/25.0.1"
+                "source": "https://github.com/ivacuum/generic/tree/25.0.2"
             },
-            "time": "2023-04-06T22:04:25+00:00"
+            "time": "2023-07-08T13:34:41+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",
