@@ -179,7 +179,7 @@ class Magnet extends Model
         ];
     }
 
-    public function www(?string $anchor = null): string
+    public function www(string $anchor = null): string
     {
         return to('magnets/{magnet}', $this->id) . $anchor;
     }

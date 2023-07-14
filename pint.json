@@ -12,6 +12,9 @@
     },
     "linebreak_after_opening_tag": false,
     "blank_line_after_opening_tag": false,
+    "nullable_type_declaration": {
+      "syntax": "union"
+    },
     "class_attributes_separation": {
       "elements": {
         "method": "one"

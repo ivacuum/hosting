@@ -85,13 +85,13 @@ class News extends Model
         return $this->status === NewsStatus::Published;
     }
 
-    public function www(?string $anchor = null): string
+    public function www(string $anchor = null): string
     {
         return path([Http\Controllers\NewsController::class, 'show'], $this->id) . $anchor;
     }
 
     // Static methods
-    public static function interval(int $year, int|null $month = null, int|null $day = null): array
+    public static function interval(int $year, int $month = null, int $day = null): array
     {
         $start = CarbonImmutable::createFromDate($year, $month, $day);
 

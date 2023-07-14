@@ -16,7 +16,7 @@ class GetPhotoPointsAction
     {
     }
 
-    public function execute(?int $tripId): array
+    public function execute(int|null $tripId): array
     {
         $key = $tripId
             ? CacheKey::PhotosPointsForTrip

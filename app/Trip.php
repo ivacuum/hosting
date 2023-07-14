@@ -219,7 +219,7 @@ class Trip extends Model
         return $this->meta_description;
     }
 
-    public function metaImage(int|null $width = null, int|null $height = null): string
+    public function metaImage(int $width = null, int $height = null): string
     {
         if (!$this->meta_image) {
             return '';
@@ -285,14 +285,14 @@ class Trip extends Model
         return $this->date_start->isoFormat('MMMM YYYY');
     }
 
-    public function www(?string $anchor = null): string
+    public function www(string $anchor = null): string
     {
         return $this->user_id === 1
             ? path([Http\Controllers\LifeController::class, 'page'], $this->slug) . $anchor
             : path([Http\Controllers\UserTravelTripController::class, 'show'], [$this->user->login, $this->slug]) . $anchor;
     }
 
-    public function wwwLocale(?string $anchor = null, string $locale = ''): string
+    public function wwwLocale(string $anchor = null, string $locale = ''): string
     {
         return $this->user_id === 1
             ? path_locale([Http\Controllers\LifeController::class, 'page'], $this->slug, false, $locale) . $anchor

@@ -68,7 +68,7 @@ class CityHelper
             ?? throw (new ModelNotFoundException)->setModel(City::class, $id);
     }
 
-    public function findBySlug(?string $slug): City|null
+    public function findBySlug(string|null $slug): City|null
     {
         if (!$slug) {
             return null;
@@ -81,7 +81,7 @@ class CityHelper
         return $this->cachedBySlug[$slug] ?? null;
     }
 
-    public function findBySlugOrFail(?string $slug): City
+    public function findBySlugOrFail(string|null $slug): City
     {
         return $this->findBySlug($slug)
             ?? throw (new ModelNotFoundException)->setModel(City::class, $slug);

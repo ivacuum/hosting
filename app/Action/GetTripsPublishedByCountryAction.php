@@ -13,7 +13,7 @@ class GetTripsPublishedByCountryAction
     {
     }
 
-    public function execute(?int $countryId = null): array
+    public function execute(int $countryId = null): array
     {
         $key = CacheKey::TripsPublishedByCountry;
 

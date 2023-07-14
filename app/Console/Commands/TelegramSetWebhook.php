@@ -22,7 +22,7 @@ class TelegramSetWebhook extends Command
         dd($response, "Secret token: {$secretToken}");
     }
 
-    private function endpoint(?string $host): string
+    private function endpoint(string|null $host): string
     {
         if ($host === null) {
             return action(TelegramWebhookController::class);

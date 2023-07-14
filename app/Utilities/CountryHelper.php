@@ -66,7 +66,7 @@ class CountryHelper
             ?? throw (new ModelNotFoundException)->setModel(Country::class, $id);
     }
 
-    public function findBySlug(?string $slug): Country|null
+    public function findBySlug(string|null $slug): Country|null
     {
         if (!$slug) {
             return null;
@@ -79,7 +79,7 @@ class CountryHelper
         return $this->cachedBySlug[$slug] ?? null;
     }
 
-    public function findBySlugOrFail(?string $slug): Country
+    public function findBySlugOrFail(string|null $slug): Country
     {
         return $this->findBySlug($slug)
             ?? throw (new ModelNotFoundException)->setModel(Country::class, $slug);

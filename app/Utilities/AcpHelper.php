@@ -29,7 +29,7 @@ class AcpHelper
         );
     }
 
-    public function index(Model $model, Model|null $foreign = null): string
+    public function index(Model $model, Model $foreign = null): string
     {
         if ($foreign) {
             return path(
@@ -46,7 +46,7 @@ class AcpHelper
         return fullUrl($query);
     }
 
-    public function show(Model $model, Model|string|int|null $id = null): string
+    public function show(Model $model, Model|string|int $id = null): string
     {
         return path([$this->getModelController->execute($model), 'show'], $id ?? $model);
     }

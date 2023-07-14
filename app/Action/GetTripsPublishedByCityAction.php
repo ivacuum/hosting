@@ -13,7 +13,7 @@ class GetTripsPublishedByCityAction
     {
     }
 
-    public function execute(?int $cityId = null): array
+    public function execute(int $cityId = null): array
     {
         $key = CacheKey::TripsPublishedByCity;
 
