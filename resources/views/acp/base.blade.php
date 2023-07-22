@@ -38,21 +38,6 @@
 @endcomponent
 @component('tpl.menu-dropdown', [
   'isActive' => Str::of($routeUri)->is([
-    'acp/clients*',
-    'acp/domains*',
-    'acp/yandex-users*',
-  ]),
-])
-  @slot('title')
-    @lang('Хостинг')
-  @endslot
-
-  <x-dropdown-item href="/acp/clients">@lang('acp.clients.index')</x-dropdown-item>
-  <x-dropdown-item href="/acp/domains">@lang('acp.domains.index')</x-dropdown-item>
-  <x-dropdown-item href="/acp/yandex-users">@lang('acp.yandex-users.index')</x-dropdown-item>
-@endcomponent
-@component('tpl.menu-dropdown', [
-  'isActive' => Str::of($routeUri)->is([
     'acp/chat-messages*',
     'acp/comments*',
     'acp/dcpp-hubs*',

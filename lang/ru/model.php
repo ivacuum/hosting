@@ -24,10 +24,8 @@ return [
     'title_en' => 'Название EN',
     'title_ru' => 'Название',
     'artist_id' => 'Артист',
-    'client_id' => 'Клиент',
     'country_id' => 'Страна',
     'q_placeholder' => 'Поиск...',
-    'yandex_user_id' => 'Пользователь API Яндекса',
 
     'chat-message.text' => 'Текст',
     'chat-message.status' => 'Состояние',
@@ -37,9 +35,6 @@ return [
     'city.iata' => 'IATA',
     'city.title' => 'Город',
     'city.trips_count' => 'Поездки',
-
-    'client.name' => 'Имя',
-    'client.text' => 'Заметки',
 
     'comment.status' => 'Состояние',
 
@@ -54,9 +49,6 @@ return [
     'dcpp-hub.status' => 'Состояние',
     'dcpp-hub.address' => 'Адрес',
     'dcpp-hub.is_online' => 'Онлайн',
-
-    'domain.text' => 'Заметки',
-    'domain.domain' => 'Домен',
 
     'email.locale' => 'Язык',
 
@@ -128,17 +120,4 @@ return [
     'vocabulary.meaning' => 'Значение',
     'vocabulary.character' => 'Словарное слово',
     'vocabulary.sentences' => 'Предложения',
-
-    'yandex-pdd-ns-record.ttl' => 'TTL (в секундах)',
-    'yandex-pdd-ns-record.port' => 'Порт',
-    'yandex-pdd-ns-record.type' => 'Тип',
-    'yandex-pdd-ns-record.weight' => 'Вес',
-    'yandex-pdd-ns-record.content' => 'Значение записи',
-    'yandex-pdd-ns-record.priority' => 'Приоритет',
-    'yandex-pdd-ns-record.subdomain' => 'Хост',
-
-    'yandex-user.token' => 'Токен',
-    'yandex-user.account' => 'Логин в Яндексе',
-    'yandex-user.domains' => 'Домены',
-    'yandex-user.domains_count' => 'Домены',
 ];

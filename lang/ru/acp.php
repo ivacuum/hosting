@@ -20,12 +20,6 @@ return [
     'cities.index' => 'Города',
     'cities.create' => 'Новый город',
 
-    'clients.add' => 'Добавить клиента',
-    'clients.edit' => 'Редактирование',
-    'clients.show' => 'Клиент',
-    'clients.index' => 'Клиенты',
-    'clients.create' => 'Новый клиент',
-
     'comments.edit' => 'Редактирование',
     'comments.show' => 'Комментарий',
     'comments.index' => 'Комментарии',
@@ -49,16 +43,6 @@ return [
     'dev.templates.index' => 'Шаблоны поездок',
     'dev.thumbnails.index' => 'Миниатюры',
     'dev.gig-templates.index' => 'Шаблоны концертов',
-
-    'domains.add' => 'Добавить домен',
-    'domains.edit' => 'Редактирование',
-    'domains.show' => 'Домен',
-    'domains.index' => 'Домены',
-    'domains.whois' => 'Whois',
-    'domains.create' => 'Новый домен',
-    'domains.robots' => 'robots.txt',
-    'domains.mailboxes' => 'Яндекс-почта',
-    'domains.ns_records' => 'Яндекс-DNS',
 
     'emails.show' => 'Письмо',
     'emails.user' => 'Получатель',
@@ -144,12 +128,6 @@ return [
     'vocabularies.edit' => 'Редактирование',
     'vocabularies.show' => 'Словарное слово',
     'vocabularies.index' => 'Словарные слова',
-
-    'yandex-users.add' => 'Добавить аккаунт',
-    'yandex-users.edit' => 'Редактирование',
-    'yandex-users.show' => 'Аккаунт',
-    'yandex-users.index' => 'Аккаунты в Яндексе',
-    'yandex-users.create' => 'Новый аккаунт',
 
     'yes' => 'Да',
     'www' => 'Смотреть на сайте',

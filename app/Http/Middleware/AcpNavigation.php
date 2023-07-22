@@ -52,7 +52,7 @@ class AcpNavigation
 
                 match ($carry) {
                     'acp' => $this->pushUrlBased($carry),
-                    'acp/domains/{domain}/mail' => $this->push('acp.domains.mailboxes', $carry),
+                    // 'acp/domains/{domain}/mail' => $this->push('acp.domains.mailboxes', $carry),
                     default => null,
                 };
 

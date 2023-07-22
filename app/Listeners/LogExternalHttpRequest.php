@@ -89,7 +89,6 @@ class LogExternalHttpRequest
             'api.vk.com' => ExternalService::Vk,
             'api.telegram.org' => ExternalService::Telegram,
             'api.wanikani.com' => ExternalService::Wanikani,
-            'pddimp.yandex.ru' => ExternalService::Yandex,
 
             'api.rutracker.cc',
             'rutracker.org' => ExternalService::Rutracker,

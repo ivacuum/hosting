@@ -16,8 +16,6 @@ class DatabaseSeeder extends Seeder
 
             UserSeeder::class,
             ExternalIdentitySeeder::class,
-            ClientSeeder::class,
-            DomainSeeder::class,
 
             CountrySeeder::class,
             CitySeeder::class,

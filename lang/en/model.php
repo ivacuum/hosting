@@ -22,11 +22,9 @@ return [
     'title_en' => 'Title',
     'title_ru' => 'Title RU',
     'artist_id' => 'Artist',
-    'client_id' => 'Client',
     'country_id' => 'Country',
     'created_at' => 'Created at',
     'q_placeholder' => 'Search...',
-    'yandex_user_id' => 'Yandex API User',
 
     'chat-message.text' => 'Text',
     'chat-message.status' => 'Status',
@@ -36,9 +34,6 @@ return [
     'city.iata' => 'IATA',
     'city.title' => 'City',
     'city.trips_count' => 'Trips',
-
-    'client.name' => 'Name',
-    'client.text' => 'Notes',
 
     'comment.html' => 'HTML',
     'comment.status' => 'Status',
@@ -52,9 +47,6 @@ return [
     'dcpp-hub.status' => 'Status',
     'dcpp-hub.address' => 'Address',
     'dcpp-hub.is_online' => 'Is Online',
-
-    'domain.text' => 'Notes',
-    'domain.domain' => 'Domain',
 
     'email.locale' => 'Locale',
 
@@ -117,9 +109,4 @@ return [
     'vocabulary.meaning' => 'Meaning',
     'vocabulary.character' => 'Vocabulary',
     'vocabulary.sentences' => 'Sentences',
-
-    'yandex-user.token' => 'Token',
-    'yandex-user.account' => 'Username on Yandex',
-    'yandex-user.domains' => 'Domains',
-    'yandex-user.domains_count' => 'Domains',
 ];

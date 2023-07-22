@@ -8,5 +8,4 @@ enum ExternalService: string
     case Telegram = 'telegram';
     case Vk = 'vk';
     case Wanikani = 'wanikani';
-    case Yandex = 'yandex';
 }

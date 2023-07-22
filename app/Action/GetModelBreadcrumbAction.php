@@ -5,11 +5,9 @@ namespace App\Action;
 use App\Artist;
 use App\ChatMessage;
 use App\City;
-use App\Client;
 use App\Comment;
 use App\Country;
 use App\DcppHub;
-use App\Domain;
 use App\Email;
 use App\ExternalHttpRequest;
 use App\ExternalIdentity;
@@ -29,7 +27,6 @@ use App\Tag;
 use App\Trip;
 use App\User;
 use App\Vocabulary;
-use App\YandexUser;
 use Illuminate\Database\Eloquent\Model;
 
 class GetModelBreadcrumbAction
@@ -40,11 +37,9 @@ class GetModelBreadcrumbAction
             $model instanceof Artist => $model->title,
             $model instanceof ChatMessage => "#{$model->id}",
             $model instanceof City => "{$model->country->emoji} {$model->title}",
-            $model instanceof Client => $model->name,
             $model instanceof Comment => "#{$model->id}",
             $model instanceof Country => "{$model->emoji} {$model->title}",
             $model instanceof DcppHub => $model->address,
-            $model instanceof Domain => $model->domain,
             $model instanceof Email => "#{$model->id}",
             $model instanceof ExternalHttpRequest => "#{$model->id}",
             $model instanceof ExternalIdentity => $model->email ?: ($model->user_id ? $model->user->email : "#{$model->id}"),
@@ -64,7 +59,6 @@ class GetModelBreadcrumbAction
             $model instanceof Trip => $model->title,
             $model instanceof User => $model->email ?? '',
             $model instanceof Vocabulary => $model->character,
-            $model instanceof YandexUser => $model->account,
         };
     }
 }

@@ -3,14 +3,6 @@
 return [
     '/' => 'Сергей Панков · vacuum.kaluga',
 
-    'acp.domains.no-ns' => 'Домены без NS',
-    'acp.domains.orphan' => 'Домены на продажу',
-    'acp.domains.default' => 'Домены на мониторинге',
-    'acp.domains.trashed' => 'Удаленные домены',
-    'acp.domains.external' => 'Домены не в нашей панели reg.ru',
-    'acp.domains.inactive' => 'Неактивные домены',
-    'acp.domains.no-server' => 'Домены без сервера',
-
     'dc/airdc' => 'Скачать AirDC++ 3.41',
     'dc/apexdc' => 'Скачать ApexDC++ 1.6.4 rus, русский, русифицированный, русификатор',
     'dc/dcpp' => 'Скачать DC++ 0.782',

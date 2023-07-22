@@ -43,14 +43,6 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        Schema::create('clients', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email');
-            $table->text('text');
-            $table->timestamps();
-        });
-
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id')->default(0);
@@ -80,42 +72,6 @@ return new class extends Migration {
             $table->unsignedInteger('clicks')->default(0);
             $table->timestamp('queried_at')->nullable();
             $table->timestamps();
-        });
-
-        Schema::create('domains', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('client_id')->unsigned();
-            $table->string('domain')->unique();
-            $table->boolean('status')->unsigned()->default(0);
-            $table->boolean('domain_control')->unsigned()->default(0);
-            $table->timestamp('registered_at')->nullable();
-            $table->timestamp('paid_till')->nullable();
-            $table->string('ipv4')->default('');
-            $table->string('ipv6')->default('');
-            $table->string('mx')->default('');
-            $table->string('ns')->default('');
-            $table->timestamp('queried_at')->nullable();
-            $table->timestamp('mailed_at')->nullable();
-            $table->timestamps();
-            $table->mediumText('text');
-            $table->string('cms_type')->default('');
-            $table->string('cms_version')->default('');
-            $table->string('cms_url')->default('');
-            $table->string('cms_user')->default('');
-            $table->string('cms_pass')->default('');
-            $table->string('ftp_host')->default('');
-            $table->string('ftp_user')->default('');
-            $table->string('ftp_pass')->default('');
-            $table->string('ssh_host')->default('');
-            $table->string('ssh_user')->default('');
-            $table->string('ssh_pass')->default('');
-            $table->string('db_pma')->default('');
-            $table->string('db_host')->default('');
-            $table->string('db_user')->default('');
-            $table->string('db_pass')->default('');
-            $table->integer('yandex_user_id')->unsigned()->default(0)->index();
-            $table->integer('alias_id')->unsigned()->default(0);
-            $table->integer('orphan')->unsigned()->default(0);
         });
 
         Schema::create('emails', function (Blueprint $table) {
@@ -418,13 +374,6 @@ return new class extends Migration {
             $table->text('sentences');
             $table->unsignedInteger('female_audio_id')->default(0);
             $table->unsignedInteger('male_audio_id')->default(0);
-            $table->timestamps();
-        });
-
-        Schema::create('yandex_users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('account');
-            $table->string('token');
             $table->timestamps();
         });
     }

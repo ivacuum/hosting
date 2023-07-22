@@ -11,8 +11,6 @@ Route::post('chat-messages/batch', [Acp\ChatMessagesController::class, 'batch'])
 
 Route::resource('cities', Acp\CitiesController::class)->except(['store', 'update']);
 
-Route::resource('clients', Acp\ClientsController::class)->except(['store', 'update']);
-
 Route::resource('comments', Acp\CommentsController::class)->except(['create', 'store', 'update']);
 
 Route::resource('countries', Acp\CountriesController::class)->except(['store', 'update']);
@@ -30,17 +28,6 @@ Route::get('dev/templates/{template}', [Acp\Dev\TemplatesController::class, 'sho
 Route::get('dev/thumbnails', [Acp\Dev\ThumbnailsController::class, 'index']);
 Route::post('dev/thumbnails', [Acp\Dev\ThumbnailsController::class, 'store']);
 Route::get('dev/thumbnails/clean', [Acp\Dev\ThumbnailsController::class, 'clean']);
-
-Route::resource('domains', Acp\DomainsController::class)->except(['store', 'update']);
-
-Route::post('domains/batch', [Acp\DomainsController::class, 'batch']);
-Route::get('domains/{domain}/mail', [Acp\DomainsController::class, 'mailboxes']);
-Route::post('domains/{domain}/mail', [Acp\DomainsController::class, 'addMailbox']);
-Route::get('domains/{domain}/ns-records', [Acp\YandexPddDnsRecordController::class, 'index']);
-Route::get('domains/{domain}/ns-records/{id}', [Acp\YandexPddDnsRecordController::class, 'edit']);
-Route::delete('domains/{domain}/ns-records/{id}', [Acp\YandexPddDnsRecordController::class, 'destroy']);
-Route::get('domains/{domain}/robots', [Acp\DomainsController::class, 'robots']);
-Route::get('domains/{domain}/whois', [Acp\DomainsController::class, 'whois']);
 
 Route::resource('emails', Acp\EmailsController::class)->except(['create', 'edit', 'store', 'update']);
 
@@ -79,5 +66,3 @@ Route::get('trips/{trip}/instagram-cover', Acp\TripInstagramCoverController::cla
 Route::post('trips/{trip}/notify', Acp\TripPublishedNotifyController::class);
 
 Route::resource('users', Acp\UsersController::class)->except(['create', 'store', 'update']);
-
-Route::resource('yandex-users', Acp\YandexUsersController::class)->except(['store', 'update']);

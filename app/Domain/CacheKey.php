@@ -12,8 +12,6 @@ enum CacheKey: string
     case CountriesById = 'countries.id';
     case CountriesBySlug = 'countries.slug';
 
-    case DomainsWhois = 'domains.whois.{key}';
-
     case IcuLocales = 'icu.locales';
 
     case MagnetStatsByCategories = 'magnets.stats.by-categories';
@@ -44,7 +42,6 @@ enum CacheKey: string
 
             self::PhotosPointsForTrip => CarbonInterval::minutes(0),
 
-            self::DomainsWhois,
             self::MagnetStatsByCategories => CarbonInterval::minutes(15),
 
             self::PhotosPoints => CarbonInterval::minutes(30),

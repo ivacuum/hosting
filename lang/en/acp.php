@@ -20,12 +20,6 @@ return [
     'cities.index' => 'Cities',
     'cities.create' => 'New city',
 
-    'clients.add' => 'Create client',
-    'clients.edit' => 'Edit',
-    'clients.show' => 'Client',
-    'clients.index' => 'Clients',
-    'clients.create' => 'New client',
-
     'comments.edit' => 'Edit',
     'comments.show' => 'Comment',
     'comments.index' => 'Comments',
@@ -49,16 +43,6 @@ return [
     'dev.templates.index' => 'Trip templates',
     'dev.thumbnails.index' => 'Thumbnails',
     'dev.gig-templates.index' => 'Gig templates',
-
-    'domains.add' => 'Create domain',
-    'domains.edit' => 'Edit',
-    'domains.show' => 'Domain',
-    'domains.index' => 'Domains',
-    'domains.whois' => 'Whois',
-    'domains.create' => 'New domain',
-    'domains.robots' => 'robots.txt',
-    'domains.mailboxes' => 'Yandex Mail',
-    'domains.ns_records' => 'Yandex DNS',
 
     'emails.show' => 'Email',
     'emails.user' => 'Recipient',
@@ -143,12 +127,6 @@ return [
     'vocabularies.edit' => 'Edit',
     'vocabularies.show' => 'Vocabulary',
     'vocabularies.index' => 'Vocabulary',
-
-    'yandex-users.add' => 'Create account',
-    'yandex-users.edit' => 'Edit',
-    'yandex-users.show' => 'Account',
-    'yandex-users.index' => 'Yandex accounts',
-    'yandex-users.create' => 'New account',
 
     'yes' => 'Yes',
     'www' => 'View on site',

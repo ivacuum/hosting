@@ -5,11 +5,9 @@ namespace App\Action\Acp;
 use App\Artist;
 use App\ChatMessage;
 use App\City;
-use App\Client;
 use App\Comment;
 use App\Country;
 use App\DcppHub;
-use App\Domain;
 use App\Email;
 use App\ExternalIdentity;
 use App\File;
@@ -24,7 +22,6 @@ use App\Photo;
 use App\Tag;
 use App\Trip;
 use App\User;
-use App\YandexUser;
 use Illuminate\Database\Eloquent\Model;
 
 class GetModelControllerAction
@@ -35,11 +32,9 @@ class GetModelControllerAction
             $model instanceof Artist => Controllers\Acp\ArtistsController::class,
             $model instanceof ChatMessage => Controllers\Acp\ChatMessagesController::class,
             $model instanceof City => Controllers\Acp\CitiesController::class,
-            $model instanceof Client => Controllers\Acp\ClientsController::class,
             $model instanceof Comment => Controllers\Acp\CommentsController::class,
             $model instanceof Country => Controllers\Acp\CountriesController::class,
             $model instanceof DcppHub => Controllers\Acp\DcppHubsController::class,
-            $model instanceof Domain => Controllers\Acp\DomainsController::class,
             $model instanceof Email => Controllers\Acp\EmailsController::class,
             $model instanceof ExternalIdentity => Controllers\Acp\ExternalIdentitiesController::class,
             $model instanceof File => Controllers\Acp\FilesController::class,
@@ -53,7 +48,6 @@ class GetModelControllerAction
             $model instanceof Tag => Controllers\Acp\TagsController::class,
             $model instanceof Trip => Controllers\Acp\TripsController::class,
             $model instanceof User => Controllers\Acp\UsersController::class,
-            $model instanceof YandexUser => Controllers\Acp\YandexUsersController::class,
             default => throw new \InvalidArgumentException($model->toJson()),
         };
     }
