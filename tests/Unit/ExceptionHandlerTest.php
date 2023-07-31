@@ -54,7 +54,7 @@ class ExceptionHandlerTest extends TestCase
     public function testTokenMismatch()
     {
         $this->mock(GetTripsPublishedWithCoverAction::class)
-            ->shouldReceive('execute')
+            ->expects('execute')
             ->andThrow(new TokenMismatchException('Testing'));
 
         $this->from('about')

@@ -9,7 +9,7 @@ trait MockGetNumberLocales
     protected function setUpMockGetNumberLocales()
     {
         $this->mock(GetNumberLocalesAction::class)
-            ->shouldReceive('execute')
+            ->expects('execute')
             ->andReturn(['de', 'en', 'ko', 'ru']);
     }
 }

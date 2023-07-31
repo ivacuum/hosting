@@ -28,16 +28,16 @@ class HandleMetricPayloadActionTest extends TestCase
         $event6 = class_basename(Photo2000Viewed::class);
 
         $viewsAggregator = \Mockery::mock(ViewsAggregator::class);
-        $viewsAggregator->shouldReceive('push')->once();
+        $viewsAggregator->expects('push');
 
         $metricsAggregator = \Mockery::mock(MetricsAggregator::class);
-        $metricsAggregator->shouldReceive('push')->times(6);
+        $metricsAggregator->expects('push')->times(6);
 
         $imageViewsAggregator = \Mockery::mock(ImageViewsAggregator::class);
-        $imageViewsAggregator->shouldReceive('push')->once();
+        $imageViewsAggregator->expects('push');
 
         $photoViewsAggregator = \Mockery::mock(PhotoViewsAggregator::class);
-        $photoViewsAggregator->shouldReceive('push')->twice();
+        $photoViewsAggregator->expects('push')->twice();
 
         $this->app->make(HandleMetricPayloadAction::class)->execute([
             ['event' => $event1],

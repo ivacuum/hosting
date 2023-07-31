@@ -151,8 +151,7 @@ class MagnetTest extends TestCase
         $related = MagnetFactory::new()->create();
 
         $this->mock(FindRelatedMagnetsAction::class)
-            ->shouldReceive('execute')
-            ->once()
+            ->expects('execute')
             ->andReturn([$related->id]);
 
         $this->get("magnets/{$magnet->id}")
