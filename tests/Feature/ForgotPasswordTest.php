@@ -44,5 +44,6 @@ class ForgotPasswordTest extends TestCase
         $this->assertGuest();
 
         \Mail::assertQueued(ResetPasswordMail::class);
+        \Mail::assertOutgoingCount(1);
     }
 }

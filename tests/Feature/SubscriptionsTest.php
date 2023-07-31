@@ -59,6 +59,7 @@ class SubscriptionsTest extends TestCase
 
         \Event::assertDispatched(\App\Events\Stats\UserRegisteredAutoWhenSubscribing::class);
         \Mail::assertQueued(SubscriptionConfirmMail::class);
+        \Mail::assertOutgoingCount(1);
     }
 
     public function testSubscribeAsUser()
@@ -81,6 +82,7 @@ class SubscriptionsTest extends TestCase
 
         \Event::assertNotDispatched(\App\Events\Stats\UserRegisteredAutoWhenSubscribing::class);
         \Mail::assertQueued(SubscriptionConfirmMail::class);
+        \Mail::assertOutgoingCount(1);
     }
 
     public function testUpdate()
