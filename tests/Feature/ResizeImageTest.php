@@ -35,6 +35,12 @@ class ResizeImageTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\ImageResizedOnDemand::class);
     }
 
+    public function testHostNotWhitelisted()
+    {
+        $this->get('resize/400x300?image=https://example.com/image.jpg')
+            ->assertForbidden();
+    }
+
     public function testNoExtension()
     {
         $this->mock(GetResizeImageWhitelistAction::class)
@@ -51,9 +57,17 @@ class ResizeImageTest extends TestCase
             ->assertNotFound();
     }
 
-    public function testImageNotWhitelisted()
+    public function testRemoteImageNotFound()
     {
+        \Http::fake([
+            'https://example.com/image.jpg' => \Http::response(status: 404),
+        ]);
+
+        $this->mock(GetResizeImageWhitelistAction::class)
+            ->expects('execute')
+            ->andReturn(['https://example.com/']);
+
         $this->get('resize/400x300?image=https://example.com/image.jpg')
-            ->assertForbidden();
+            ->assertNotFound();
     }
 }
