@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ResizeImageForm;
-use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Client\Factory;
 use Ivacuum\Generic\Services\ImageConverter;
 
 class ResizeImageController
 {
-    public function __invoke(Client $client, ResizeImageForm $request, Factory $http, ImageConverter $imageConverter)
+    public function __invoke(ResizeImageForm $request, Factory $http, ImageConverter $imageConverter)
     {
         $tempFile = tmpfile();
         $tempFilepath = stream_get_meta_data($tempFile)['uri'];

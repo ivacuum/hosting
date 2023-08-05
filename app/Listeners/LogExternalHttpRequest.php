@@ -94,6 +94,10 @@ class LogExternalHttpRequest
             'rutracker.org' => ExternalService::Rutracker,
 
             'example.com' => ExternalService::Example,
+
+            'life.ivacuum.org' => ExternalService::Life,
+
+            default => ExternalService::Unknown,
         };
     }
 }
