@@ -2,6 +2,10 @@
 
 @section('content')
 <x-korean-cyrillization>
+  <x-slot name="info">
+    <livewire:youtube title="All Night Stand 2015" v="mwsWqV398Ac" start="199"/>
+  </x-slot>
+
   내가 그때 널 (내가 그때 널)
   잡았더라면 (잡았더라면)
   너와 나 지금보다 행복했을까

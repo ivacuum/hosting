@@ -4,6 +4,7 @@
 <x-korean-cyrillization>
   <x-slot name="info">
     <livewire:youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="2554"/>
+    <livewire:youtube title="All Night Stand 2015" v="VR5kiUOE02Q" start="21"/>
   </x-slot>
 
   어찌 그렇게 사셨나요?

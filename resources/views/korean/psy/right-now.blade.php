@@ -5,6 +5,7 @@
   <x-slot name="info">
     <livewire:youtube title="PSY - RIGHT NOW M/V" v="UmHdefsaL6I" start="42"/>
     <livewire:youtube title="190824 싸이 흠뻑쇼 2019 대전 (막공) - 정규공연 Full Ver." v="kAyvn15zdr8" start="3785"/>
+    <livewire:youtube title="All Night Stand 2015" v="dt0r2kIU8Po" start="1394"/>
   </x-slot>
 
   OH~매우 공격적인 음악 뭐야

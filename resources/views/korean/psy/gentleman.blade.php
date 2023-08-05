@@ -4,6 +4,7 @@
 <x-korean-cyrillization>
   <x-slot name="info">
     <livewire:youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="1501"/>
+    <livewire:youtube title="All Night Stand 2015" v="dt0r2kIU8Po" start="1601"/>
   </x-slot>
 
   알랑가몰라 왜

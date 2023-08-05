@@ -5,6 +5,7 @@
   <x-slot name="info">
     <livewire:youtube title="PSY - 새(BIRD) M/V" v="2pB0zurYJAc"/>
     <livewire:youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="1293"/>
+    <livewire:youtube title="All Night Stand 2015" v="mwsWqV398Ac" start="467"/>
   </x-slot>
 
   당신 너무나 이쁜 당신 항상 난 당신을 향해 행진

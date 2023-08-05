@@ -5,6 +5,7 @@
   <x-slot name="info">
     <livewire:youtube title="PSY - WE ARE THE ONE M/V" v="VOud7M_qzGk"/>
     <livewire:youtube title="【TVPP】PSY - We Are The One, 싸이 - 위 아 더 원 @ PSY concert 'Happening'" v="oGQEsOfw1Y0"/>
+    <livewire:youtube title="All Night Stand 2015" v="VR5kiUOE02Q" start="998"/>
   </x-slot>
 
   실패해본 자만이(오!)

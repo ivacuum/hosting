@@ -4,6 +4,7 @@
 <x-korean-cyrillization>
   <x-slot name="info">
     <livewire:youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="3058"/>
+    <livewire:youtube title="All Night Stand 2015" v="VR5kiUOE02Q" start="1974"/>
   </x-slot>
 
   너와 단 둘이서 떠나가는 여행

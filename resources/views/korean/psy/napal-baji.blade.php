@@ -5,6 +5,7 @@
   <x-slot name="info">
     <livewire:youtube title="PSY - 나팔바지(NAPAL BAJI) M/V" v="tF27TNC_4pc"/>
     <livewire:youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="1985"/>
+    <livewire:youtube title="All Night Stand 2015" v="mwsWqV398Ac" start="1177"/>
   </x-slot>
 
   분위기 살려 어머 사람 살려

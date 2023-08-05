@@ -4,6 +4,7 @@
 <x-korean-cyrillization>
   <x-slot name="info">
     <livewire:youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="3354"/>
+    <livewire:youtube title="All Night Stand 2015" v="VR5kiUOE02Q" start="2314"/>
   </x-slot>
 
   낮에는 따사로운 인간적인 여자

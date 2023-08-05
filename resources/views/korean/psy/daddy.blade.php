@@ -5,6 +5,7 @@
   <x-slot name="info">
     <livewire:youtube title="PSY - DADDY(feat. CL of 2NE1) M/V" v="FrG4TEcSuRg"/>
     <livewire:youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="2269"/>
+    <livewire:youtube title="All Night Stand 2015" v="VR5kiUOE02Q" start="1738"/>
   </x-slot>
 
   I feel nice you look nice

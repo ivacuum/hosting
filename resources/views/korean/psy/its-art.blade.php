@@ -5,6 +5,7 @@
   <x-slot name="info">
     <livewire:youtube title="PSY - 예술이야(IT'S ART) M/V" v="1cKc1rkZwf8"/>
     <livewire:youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="4233"/>
+    <livewire:youtube title="All Night Stand 2015" v="VR5kiUOE02Q" start="1241"/>
   </x-slot>
 
   너와 나 둘이

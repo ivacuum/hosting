@@ -6,6 +6,7 @@
     <livewire:youtube title="All Night Stand 2019" v="o2y5SpUyDJY" start="2777"/>
     <livewire:youtube title="190824 싸이 흠뻑쇼 2019 대전 (막공) - 정규공연 Full Ver." v="kAyvn15zdr8" start="1555"/>
     <livewire:youtube title="PSY - SHAKE IT (흔들어주세요) @ Seoul Plaza Live Concert" v="k7yGwXb77PA"/>
+    <livewire:youtube title="All Night Stand 2019" v="VR5kiUOE02Q" start="245"/>
   </x-slot>
 
   사랑하는사람떠나고
