@@ -92,6 +92,8 @@ class LogExternalHttpRequest
 
             'api.rutracker.cc',
             'rutracker.org' => ExternalService::Rutracker,
+
+            'example.com' => ExternalService::Example,
         };
     }
 }

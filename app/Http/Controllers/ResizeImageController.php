@@ -2,78 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ResizeImageForm;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use Illuminate\Http\Client\Factory;
 use Ivacuum\Generic\Services\ImageConverter;
 
 class ResizeImageController
 {
-    protected $whitelist = [
-        'https://life.ivacuum.ru/',
-        'https://life.ivacuum.org/',
-    ];
-
-    public function __invoke(int $width, int $height, Client $client)
+    public function __invoke(Client $client, ResizeImageForm $request, Factory $http, ImageConverter $imageConverter)
     {
-        $image = request('image');
-
-        abort_unless($image, 404);
-
-        $info = pathinfo($image);
-        $extension = $info['extension'] ?? null;
-
-        abort_unless($extension, 422);
-        abort_unless($this->isWhitelisted($info['dirname']), 403);
-
-        // От 50 до 2000px
-        $width = min(2000, max(50, $width));
-        $height = min(2000, max(50, $height));
-
-        $file = tmpfile();
-        $source = stream_get_meta_data($file)['uri'];
+        $tempFile = tmpfile();
+        $tempFilepath = stream_get_meta_data($tempFile)['uri'];
 
         try {
-            $response = $client->get($image, [
-                'sink' => $file,
-                'force_ip_resolve' => 'v4',
-            ]);
+            $response = $http
+                ->timeout(10)
+                ->sink($tempFile)
+                ->withOptions(['force_ip_resolve' => 'v4'])
+                ->get($request->image);
         } catch (ClientException $e) {
             abort($e->getCode());
         }
 
-        $code = $response->getStatusCode();
+        abort_unless($response->ok(), $response->status());
 
-        abort_unless($code === 200, $code);
-
-        $newImage = (new ImageConverter)
-            ->resize($width, $height)
+        $resizedImage = $imageConverter
+            ->resize($request->width, $request->height)
             ->quality(75)
-            ->convert($source);
+            ->convert($tempFilepath);
 
         event(new \App\Events\Stats\ImageResizedOnDemand);
 
-        header('Content-Type: ' . $this->mimeByExtension($extension));
-        readfile($newImage->getRealPath());
-        exit;
-    }
-
-    private function isWhitelisted($uri): bool
-    {
-        foreach ($this->whitelist as $site) {
-            if (str_starts_with($uri, $site)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private function mimeByExtension($ext): string
-    {
-        return match ($ext) {
-            'jpg' => 'image/jpeg',
-            'png' => 'image/png',
-            default => 'image',
-        };
+        return response()->file($resizedImage, ['Content-Type' => $request->mimeByExtension()]);
     }
 }
