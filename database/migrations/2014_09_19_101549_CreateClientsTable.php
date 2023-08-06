@@ -361,7 +361,6 @@ return new class extends Migration {
             $table->timestamps();
             $table->timestamp('last_login_at')->nullable();
             $table->timestamp('password_changed_at')->nullable();
-            $table->boolean('is_admin')->unsigned()->default(0);
         });
 
         Schema::create('vocabularies', function (Blueprint $table) {
