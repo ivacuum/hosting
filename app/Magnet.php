@@ -10,6 +10,7 @@ use App\Domain\MagnetCategory;
 use App\Domain\MagnetStatus;
 use App\Scope\MagnetPublishedScope;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Laravel\Scout\Searchable;
 
 /**
@@ -38,6 +39,7 @@ use Laravel\Scout\Searchable;
  */
 class Magnet extends Model
 {
+    use Notifiable;
     use Searchable;
 
     public const LIST_COLUMNS = [

@@ -2,8 +2,8 @@
 
 namespace App\Observers;
 
-use App\Events\MagnetAddedAnonymously;
 use App\Magnet;
+use App\Notifications\AnonymousMagnetNotification;
 
 class MagnetObserver
 {
@@ -12,7 +12,7 @@ class MagnetObserver
         event(new \App\Events\Stats\TorrentAdded);
 
         if ($magnet->isAnonymous()) {
-            event(new MagnetAddedAnonymously($magnet));
+            $magnet->notify(new AnonymousMagnetNotification($magnet));
         }
     }
 

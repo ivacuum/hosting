@@ -10,6 +10,7 @@ use App\Factory\MagnetFactory;
 use App\Factory\UserFactory;
 use App\Http\Livewire\MagnetAddForm;
 use App\Magnet;
+use App\Notifications\AnonymousMagnetNotification;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Ivacuum\Generic\Jobs\SendTelegramMessageJob;
@@ -162,6 +163,8 @@ class MagnetTest extends TestCase
 
     public function testStoreAsAnonymous()
     {
+        \Notification::fake();
+
         $stub = MagnetFactory::new()->make();
 
         $this->fakeHttpRequests($stub);
@@ -186,6 +189,8 @@ class MagnetTest extends TestCase
         $this->assertSame($stub->category_id, $magnet->category_id);
 
         \Event::assertDispatched(\App\Events\Stats\TorrentAddedAnonymously::class);
+        \Notification::assertCount(1);
+        \Notification::assertSentTimes(AnonymousMagnetNotification::class, 1);
     }
 
     public function testStoreAsUser()
