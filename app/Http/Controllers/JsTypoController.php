@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\TypoReceived;
+use App\Events\TypoReported;
 use App\Http\Requests\TypoStoreForm;
 
 class JsTypoController
@@ -16,7 +16,7 @@ class JsTypoController
             ], 422);
         }
 
-        event(new TypoReceived($request->selection, $request->page));
+        event(new TypoReported($request->selection, $request->page));
 
         return response()->json([
             'status' => 'OK',

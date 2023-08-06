@@ -5,7 +5,7 @@ namespace App\Listeners;
 use App\Events\ChatMessagePublished;
 use App\Notifications\ChatMessagePublishedAdminNotification;
 
-class NotifyAdminAboutChatMessageListener
+class NotifyAdminAboutChatMessage
 {
     public function handle(ChatMessagePublished $event): void
     {

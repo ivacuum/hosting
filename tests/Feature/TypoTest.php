@@ -2,31 +2,35 @@
 
 namespace Tests\Feature;
 
-use App\Events\TypoReceived;
+use App\Factory\UserFactory;
+use App\Notifications\TypoReceivedNotification;
 use Tests\TestCase;
 
 class TypoTest extends TestCase
 {
     public function testTypoPost()
     {
-        \Event::fake(TypoReceived::class);
+        \Notification::fake();
+
+        UserFactory::new()->create();
 
         $this->from('/')
             ->post('js/typo', ['selection' => 'Typo is right here'])
             ->assertCreated()
             ->assertJson(['status' => 'OK']);
 
-        \Event::assertDispatched(TypoReceived::class);
+        \Notification::assertCount(1);
+        \Notification::assertSentTimes(TypoReceivedNotification::class, 1);
     }
 
     public function testTypoPostWithoutPreviousUrlLeadsToError()
     {
-        \Event::fake(TypoReceived::class);
+        \Notification::fake();
 
         $this->post('js/typo', ['selection' => 'Should fail without previous visited url'])
             ->assertUnprocessable()
             ->assertJson(['status' => 'error']);
 
-        \Event::assertNotDispatched(TypoReceived::class);
+        \Notification::assertNothingSent();
     }
 }

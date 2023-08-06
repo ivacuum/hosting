@@ -5,7 +5,7 @@ namespace App\Listeners;
 use App\Events\IssueReported;
 use App\Notifications\IssueReportedNotification;
 
-class NotifyAdminAboutIssueListener
+class NotifyAdminAboutIssue
 {
     public function handle(IssueReported $event): void
     {
