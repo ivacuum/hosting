@@ -21,7 +21,7 @@ class MagnetDuplicateDeletedAdminNotification extends Notification implements Sh
         $title = $this->magnet->title;
         $externalUrl = $this->magnet->externalLink();
 
-        return "🧲️ Раздача закрыта как повторная и удалена\n\n{$title}\n{$externalUrl()}\n\n{$url}";
+        return "🧲️ Раздача закрыта как повторная и удалена\n\n{$title}\n{$externalUrl}\n\n{$url}";
     }
 
     public function via()
