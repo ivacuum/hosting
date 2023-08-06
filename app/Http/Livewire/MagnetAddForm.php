@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Domain\MagnetStatus;
 use App\Magnet;
+use App\Notifications\AnonymousMagnetNotification;
 use App\Rules\MagnetCategoryId;
 use App\Services\Rto;
 use App\Services\RtoMagnetNotFoundException;
@@ -78,6 +79,10 @@ class MagnetAddForm extends Component
         $magnet->registered_at = now();
         $magnet->related_query = '';
         $magnet->save();
+
+        if ($magnet->isAnonymous()) {
+            $magnet->notify(new AnonymousMagnetNotification($magnet));
+        }
 
         return redirect($magnet->www());
     }
