@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Action\FindUserByEmailOrCreateAction;
 use App\Domain\IssueStatus;
+use App\Events\IssueReported;
 use App\Issue;
 use App\RateLimit\IssueRateLimiter;
 use App\Rules\Email;
@@ -76,6 +77,8 @@ class FeedbackForm extends Component
         $issue->status = IssueStatus::Open;
         $issue->user_id = $user->id;
         $issue->save();
+
+        event(new IssueReported($issue));
 
         $this->reset('text');
 

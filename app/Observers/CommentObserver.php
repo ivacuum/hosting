@@ -34,10 +34,18 @@ class CommentObserver
     public function saved(Comment $comment)
     {
         if ($comment->isDirty('status')) {
-            if (in_array($comment->getOriginal('status'), [null, CommentStatus::Pending], true) &&
-                $comment->status->isPublished()) {
+            if ($this->wasPending($comment) && $comment->status->isPublished()) {
                 event(new CommentPublished($comment));
             }
         }
+    }
+
+    private function wasPending(Comment $comment): bool
+    {
+        return in_array(
+            $comment->getOriginal('status'),
+            [null, CommentStatus::Pending],
+            true
+        );
     }
 }
