@@ -15,7 +15,7 @@
 <div class="items-center flex flex-wrap mt-6">
   <span class="text-muted">@lang('Чтение')</span>
   <span class="text-xl">【{{ $vocab->kana }}】</span>
-  @if ($vocab->male_audio_id)
+  @if ($vocab->male_audio)
     <div class="mr-1">
       <button
         class="btn leading-none bg-blue-200 hover:bg-blue-300"
@@ -23,10 +23,10 @@
       >
         @svg (volume-up-full)
       </button>
-      <audio id="male_audio" src="{{ $vocab->maleAudioMp3() }}"></audio>
+      <audio id="male_audio" src="{{ $vocab->male_audio->externalLink() }}"></audio>
     </div>
   @endif
-  @if ($vocab->female_audio_id)
+  @if ($vocab->female_audio)
     <div>
       <button
         class="btn leading-none bg-red-200 hover:bg-red-300"
@@ -34,7 +34,7 @@
       >
         @svg (volume-up-full)
       </button>
-      <audio id="female_audio" src="{{ $vocab->femaleAudioMp3() }}"></audio>
+      <audio id="female_audio" src="{{ $vocab->female_audio->externalLink() }}"></audio>
     </div>
   @endif
 </div>

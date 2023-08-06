@@ -49,7 +49,7 @@
         type="button"
         wire:click="skip"
       >@lang($this->reveal ? 'Далее' : 'Пропустить')</button>
-      @if ($this->vocab->male_audio_id)
+      @if ($this->vocab->male_audio)
         <div>
           <button
             class="btn text-blue-800 dark:text-blue-700 border border-blue-300 hover:border-blue-400 bg-blue-200 dark:bg-blue-300 hover:bg-blue-300 hover:dark:bg-blue-400 w-full"
@@ -58,10 +58,10 @@
           >
             @svg (volume-up-full)
           </button>
-          <audio id="male_audio" src="{{ $this->vocab->maleAudioMp3() }}"></audio>
+          <audio id="male_audio" src="{{ $this->vocab->male_audio->externalLink() }}"></audio>
         </div>
       @endif
-      @if ($this->vocab->female_audio_id)
+      @if ($this->vocab->female_audio)
         <div>
           <button
             class="btn text-red-800 dark:text-red-700 border border-red-300 hover:border-red-400 bg-red-200 hover:bg-red-300 w-full"
@@ -70,7 +70,7 @@
           >
             @svg (volume-up-full)
           </button>
-          <audio id="female_audio" src="{{ $this->vocab->femaleAudioMp3() }}"></audio>
+          <audio id="female_audio" src="{{ $this->vocab->female_audio->externalLink() }}"></audio>
         </div>
       @endif
     </div>

@@ -371,8 +371,8 @@ return new class extends Migration {
             $table->string('meaning');
             $table->string('kana');
             $table->text('sentences');
-            $table->unsignedInteger('female_audio_id')->default(0);
-            $table->unsignedInteger('male_audio_id')->default(0);
+            $table->string('female_audio')->nullable();
+            $table->string('male_audio')->nullable();
             $table->timestamps();
         });
     }

@@ -80,8 +80,8 @@ class ParseWanikani extends Command
                 $model->meaning = mb_strtolower($vocab->meanings->implode(', '));
                 $model->character = $vocab->characters;
                 $model->sentences = $vocab->getSentences()->implode("\n\n");
-                $model->male_audio_id = $vocab->maleAudioId;
-                $model->female_audio_id = $vocab->femaleAudioId;
+                $model->male_audio = $vocab->maleAudio;
+                $model->female_audio = $vocab->femaleAudio;
                 $model->save();
             }
 

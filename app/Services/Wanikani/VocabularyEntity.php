@@ -13,17 +13,29 @@ class VocabularyEntity
         public Collection $meanings,
         public Collection $readings,
         private Collection $sentences,
-        public int $maleAudioId,
-        public int $femaleAudioId,
+        public string $maleAudio,
+        public string $femaleAudio,
         public Collection $partsOfSpeech
     ) {
     }
 
     public static function fromArray(int $id, array $json)
     {
+        $primaryReading = collect($json['readings'])->first(fn ($reading) => $reading['primary'])['reading'];
+
         $audios = collect($json['pronunciation_audios']);
-        $maleAudioUrl = $audios->first(fn ($audio) => $audio['metadata']['voice_actor_id'] === 2 && $audio['content_type'] === 'audio/mpeg')['url'] ?? '';
-        $femaleAudioUrl = $audios->first(fn ($audio) => $audio['metadata']['voice_actor_id'] === 1 && $audio['content_type'] === 'audio/mpeg')['url'] ?? '';
+
+        $maleAudioUrl = $audios->first(function ($audio) use ($primaryReading) {
+            return $audio['metadata']['voice_actor_id'] === 2
+                && $audio['content_type'] === 'audio/mpeg'
+                && $audio['metadata']['pronunciation'] === $primaryReading;
+        })['url'] ?? '';
+
+        $femaleAudioUrl = $audios->first(function ($audio) use ($primaryReading) {
+            return $audio['metadata']['voice_actor_id'] === 1
+                && $audio['content_type'] === 'audio/mpeg'
+                && $audio['metadata']['pronunciation'] === $primaryReading;
+        })['url'] ?? '';
 
         return new self(
             $id,
@@ -32,8 +44,8 @@ class VocabularyEntity
             collect($json['meanings'])->filter(fn ($meaning) => $meaning['accepted_answer'])->pluck('meaning'),
             collect($json['readings'])->filter(fn ($reading) => $reading['accepted_answer'])->pluck('reading'),
             collect($json['context_sentences']),
-            (int) str($maleAudioUrl)->after('/audios/')->before('-subject')->__toString(),
-            (int) str($femaleAudioUrl)->after('/audios/')->before('-subject')->__toString(),
+            str($maleAudioUrl)->after('wanikani.com/')->__toString(),
+            str($femaleAudioUrl)->after('wanikani.com/')->__toString(),
             collect($json['parts_of_speech']),
         );
     }

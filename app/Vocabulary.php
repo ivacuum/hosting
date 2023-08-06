@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Cast\VocabularyAudioCast;
+use App\Domain\VocabularyAudio;
 use App\Services\HiraganaRomanizer;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,8 +15,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $meaning
  * @property string $kana
  * @property string $sentences
- * @property int $female_audio_id
- * @property int $male_audio_id
+ * @property VocabularyAudio|string $female_audio
+ * @property VocabularyAudio|string $male_audio
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  * @property Burnable $burnable
@@ -28,8 +30,8 @@ class Vocabulary extends Model
     protected $casts = [
         'level' => 'int',
         'wk_id' => 'int',
-        'male_audio_id' => 'int',
-        'female_audio_id' => 'int',
+        'male_audio' => VocabularyAudioCast::class,
+        'female_audio' => VocabularyAudioCast::class,
     ];
 
     // Relations
@@ -54,23 +56,9 @@ class Vocabulary extends Model
         return "https://www.wanikani.com/vocabulary/{$this->character}";
     }
 
-    public function femaleAudioMp3(): string
-    {
-        return $this->female_audio_id && $this->wk_id
-            ? "https://cdn.wanikani.com/audios/{$this->female_audio_id}-subject-{$this->wk_id}.mp3"
-            : '';
-    }
-
     public function firstKana(): string
     {
         return explode(', ', $this->kana)[0];
-    }
-
-    public function maleAudioMp3(): string
-    {
-        return $this->male_audio_id && $this->wk_id
-            ? "https://cdn.wanikani.com/audios/{$this->male_audio_id}-subject-{$this->wk_id}.mp3"
-            : '';
     }
 
     public function toKatakana(): string
