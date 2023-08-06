@@ -2,7 +2,6 @@
 
 namespace App\Notifications;
 
-use App\Http\Controllers\MagnetsController;
 use App\Magnet;
 use App\User;
 use Illuminate\Notifications\Notification;
@@ -12,13 +11,6 @@ class MagnetUpdatedNotification extends Notification
 {
     public function __construct(public Magnet $magnet)
     {
-    }
-
-    public function via(User $notifiable)
-    {
-        return $notifiable->telegram_id
-            ? ['telegram']
-            : ['database'];
     }
 
     public function toArray()
@@ -33,10 +25,17 @@ class MagnetUpdatedNotification extends Notification
 
     public function toTelegram(User $notifiable)
     {
-        $url = action([MagnetsController::class, 'show'], $this->magnet->id);
+        $url = url($this->magnet->www());
 
         return TelegramMessage::create()
             ->to($notifiable->telegram_id)
             ->content("Обновлена раздача *{$this->magnet->title}*\n\n{$url}");
+    }
+
+    public function via(User $notifiable)
+    {
+        return $notifiable->telegram_id
+            ? ['telegram']
+            : ['database'];
     }
 }
