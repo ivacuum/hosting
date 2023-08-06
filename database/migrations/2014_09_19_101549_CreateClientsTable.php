@@ -354,7 +354,7 @@ return new class extends Migration {
             $table->unsignedTinyInteger('notify_news')->default(App\Domain\NotificationDeliveryMethod::Disabled->value);
             $table->unsignedTinyInteger('notify_trips')->default(App\Domain\NotificationDeliveryMethod::Disabled->value);
             $table->string('avatar')->default('');
-            $table->unsignedInteger('telegram_id')->nullable();
+            $table->unsignedBigInteger('telegram_id')->nullable();
             $table->ipAddress('ip')->default('');
             $table->string('activation_token')->default('');
             $table->rememberToken();
