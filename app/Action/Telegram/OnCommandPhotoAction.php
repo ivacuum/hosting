@@ -26,7 +26,7 @@ class OnCommandPhotoAction
             ->inRandomOrder()
             ->first();
 
-        $www = url($photo->rel->www('#' . basename($photo->slug)));
+        $url = url($photo->rel->www('#' . basename($photo->slug)));
 
         return $this->telegram
             ->asResponse()
@@ -34,7 +34,7 @@ class OnCommandPhotoAction
             ->replyMarkup(
                 InlineKeyboardMarkup::make()
                     ->addRow(
-                        new InlineKeyboardButton('📝 Контекст', $www),
+                        new InlineKeyboardButton('📝 Контекст', $url),
                         new InlineKeyboardButton('📍 Карта', callbackData: "photoOnMap:{$photo->id}")
                     )
             )

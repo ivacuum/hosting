@@ -23,7 +23,7 @@ class OnCallbackQueryPhotoOnMapAction
             return null;
         }
 
-        $www = url(to('photos/map', ['photo' => $photo->slug]));
+        $url = url(to('photos/map', ['photo' => $photo->slug]));
 
         return $this->telegram
             ->asResponse()
@@ -31,7 +31,7 @@ class OnCallbackQueryPhotoOnMapAction
             ->replyToMessageId($messageId)
             ->replyMarkup(
                 InlineKeyboardMarkup::make()->addRow(
-                    new InlineKeyboardButton('🗺 Карта на сайте', $www)
+                    new InlineKeyboardButton('🗺 Карта на сайте', $url)
                 )
             )
             ->sendLocation($photo->point->lat, $photo->point->lon);

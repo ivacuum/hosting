@@ -17,10 +17,10 @@ class AnonymousMagnetNotification extends Notification implements ShouldQueue
 
     public function toTelegram(): string
     {
-        $www = url($this->magnet->www());
+        $url = url($this->magnet->www());
         $title = $this->magnet->title;
 
-        return "🧲️ Раздача добавлена анонимно\n\n{$title}\n{$www}";
+        return "🧲️ Раздача добавлена анонимно\n\n{$title}\n{$url}";
     }
 
     public function via(): array
