@@ -13,6 +13,96 @@ class ParseWanikaniTest extends TestCase
 {
     use DatabaseTransactions;
 
+    public function testKanaVocabulary()
+    {
+        \Http::fake([
+            'api.wanikani.com/v2/subjects?hidden=false&levels=2' => \Http::response([
+                'data' => [
+                    [
+                        'data' => [
+                            'auxiliary_meanings' => [],
+                            'characters' => 'おはよう',
+                            'context_sentences' => [
+                                [
+                                    'en' => 'Good morning',
+                                    'ja' => 'おはよう',
+                                ],
+                            ],
+                            'created_at' => '2023-03-14T13:35:00.000000Z',
+                            'document_url' => 'https://www.wanikani.com/kanji/%E3%81%8A%E3%81%AF%E3%82%88%E3%81%86',
+                            'hidden_at' => null,
+                            'level' => 2,
+                            'meaning_mnemonic' => '',
+                            'meanings' => [
+                                [
+                                    'accepted_answer' => true,
+                                    'meaning' => 'Good Morning',
+                                    'primary' => true,
+                                ],
+                                [
+                                    'accepted_answer' => true,
+                                    'meaning' => 'Morning',
+                                    'primary' => false,
+                                ],
+                            ],
+                            'parts_of_speech' => ['expression'],
+                            'pronunciation_audios' => [
+                                [
+                                    'content_type' => 'audio/mpeg',
+                                    'metadata' => [
+                                        'gender' => 'male',
+                                        'pronunciation' => 'おはよう',
+                                        'source_id' => 44756,
+                                        'voice_actor_id' => 2,
+                                        'voice_actor_name' => 'Kenichi',
+                                        'voice_description' => 'Tokyo accent',
+                                    ],
+                                    'url' => 'https://files.wanikani.com/s7fk83n1v8okf5m97u9f5hdot633',
+                                ],
+                                [
+                                    'content_type' => 'audio/mpeg',
+                                    'metadata' => [
+                                        'gender' => 'female',
+                                        'pronunciation' => 'おはよう',
+                                        'source_id' => 44697,
+                                        'voice_actor_id' => 1,
+                                        'voice_actor_name' => 'Kyoko',
+                                        'voice_description' => 'Tokyo accent',
+                                    ],
+                                    'url' => 'https://files.wanikani.com/0vvhxbklb9od9913t2641bv23514',
+                                ],
+                            ],
+                            'slug' => 'おはよう',
+                        ],
+                        'id' => 9177,
+                        'object' => 'kana_vocabulary',
+                        'url' => 'https://api.wanikani.com/v2/subjects/9177',
+                    ],
+                ],
+                'object' => 'collection',
+                'pages' => [
+                    'next_url' => null,
+                    'per_page' => 1000,
+                    'previous_url' => null,
+                ],
+                'total_count' => 1,
+                'url' => 'https://api.wanikani.com/v2/subjects',
+            ]),
+        ]);
+
+        $this->artisan(ParseWanikani::class, ['min_level' => 2, 'max_level' => 2]);
+
+        $vocab = Vocabulary::firstWhere('wk_id', 9177);
+
+        $this->assertSame(2, $vocab->level);
+        $this->assertSame('おはよう', $vocab->character);
+        $this->assertSame('good morning, morning', $vocab->meaning);
+        $this->assertSame('おはよう', $vocab->kana);
+        $this->assertSame("おはよう\nGood morning", $vocab->sentences);
+        $this->assertSame('0vvhxbklb9od9913t2641bv23514', $vocab->female_audio->slug);
+        $this->assertSame('s7fk83n1v8okf5m97u9f5hdot633', $vocab->male_audio->slug);
+    }
+
     public function testKanji()
     {
         \Http::fake([

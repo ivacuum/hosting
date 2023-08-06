@@ -19,9 +19,11 @@ class VocabularyEntity
     ) {
     }
 
-    public static function fromArray(int $id, array $json)
+    public static function fromArray(int $id, array $json, bool $isKanaVocabulary = false)
     {
-        $primaryReading = collect($json['readings'])->first(fn ($reading) => $reading['primary'])['reading'];
+        $primaryReading = $isKanaVocabulary
+            ? $json['characters']
+            : collect($json['readings'])->first(fn ($reading) => $reading['primary'])['reading'];
 
         $audios = collect($json['pronunciation_audios']);
 
@@ -41,8 +43,12 @@ class VocabularyEntity
             $id,
             $json['level'],
             $json['characters'],
-            collect($json['meanings'])->filter(fn ($meaning) => $meaning['accepted_answer'])->pluck('meaning'),
-            collect($json['readings'])->filter(fn ($reading) => $reading['accepted_answer'])->pluck('reading'),
+            collect($json['meanings'])
+                ->filter(fn ($meaning) => $meaning['accepted_answer'])->pluck('meaning'),
+            $isKanaVocabulary
+                ? collect([$json['characters']])
+                : collect($json['readings'])
+                    ->filter(fn ($reading) => $reading['accepted_answer'])->pluck('reading'),
             collect($json['context_sentences']),
             str($maleAudioUrl)->after('wanikani.com/')->__toString(),
             str($femaleAudioUrl)->after('wanikani.com/')->__toString(),

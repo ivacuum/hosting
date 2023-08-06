@@ -16,6 +16,7 @@ class SubjectsResponse
                 'radical' => RadicalEntity::fromArray($object['id'], $object['data']),
                 'kanji' => KanjiEntity::fromArray($object['id'], $object['data']),
                 'vocabulary' => VocabularyEntity::fromArray($object['id'], $object['data']),
+                'kana_vocabulary' => VocabularyEntity::fromArray($object['id'], $object['data'], true),
             });
     }
 

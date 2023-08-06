@@ -12,11 +12,13 @@
   <div class="text-2xl capitalize tracking-tight">{{ $vocab->meaning }}</div>
 </div>
 
-<div class="items-center flex flex-wrap mt-6">
+<div class="items-center flex flex-wrap gap-2 mt-6">
   <span class="text-muted">@lang('Чтение')</span>
-  <span class="text-xl">【{{ $vocab->kana }}】</span>
+  @if($vocab->character !== $vocab->kana)
+    <span class="text-xl">【{{ $vocab->kana }}】</span>
+  @endif
   @if ($vocab->male_audio)
-    <div class="mr-1">
+    <div>
       <button
         class="btn leading-none bg-blue-200 hover:bg-blue-300"
         onclick="document.querySelector('#male_audio').play()"
