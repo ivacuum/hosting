@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\TypoReported;
-use App\Notifications\TypoReceivedNotification;
+use App\Notifications\TypoReportedNotification;
 use App\User;
 
 class NotifyAdminAboutTypo
@@ -16,6 +16,6 @@ class NotifyAdminAboutTypo
             return;
         }
 
-        $admin->notify(new TypoReceivedNotification($event->selection, $event->page));
+        $admin->notify(new TypoReportedNotification($event->selection, $event->page));
     }
 }

@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use App\Factory\UserFactory;
-use App\Notifications\TypoReceivedNotification;
+use App\Notifications\TypoReportedNotification;
 use Tests\TestCase;
 
 class TypoTest extends TestCase
@@ -20,7 +20,7 @@ class TypoTest extends TestCase
             ->assertJson(['status' => 'OK']);
 
         \Notification::assertCount(1);
-        \Notification::assertSentTimes(TypoReceivedNotification::class, 1);
+        \Notification::assertSentTimes(TypoReportedNotification::class, 1);
     }
 
     public function testTypoPostWithoutPreviousUrlLeadsToError()
