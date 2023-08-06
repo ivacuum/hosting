@@ -2,9 +2,9 @@
 
 namespace Tests\Livewire;
 
-use App\Events\ChatMessageCreated;
 use App\Factory\UserFactory;
 use App\Http\Livewire\Chat;
+use App\Notifications\ChatMessagePublishedAdminNotification;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -17,7 +17,7 @@ class ChatTest extends TestCase
         $text = 'Chat message to post';
         $user = UserFactory::new()->create();
 
-        \Event::fake(ChatMessageCreated::class);
+        \Notification::fake();
 
         \Livewire::actingAs($user)
             ->test(Chat::class)
@@ -27,6 +27,7 @@ class ChatTest extends TestCase
         $this->assertCount(1, $user->chatMessages);
         $this->assertSame($text, $user->chatMessages[0]->text);
 
-        \Event::assertDispatched(ChatMessageCreated::class);
+        \Notification::assertCount(1);
+        \Notification::assertSentTimes(ChatMessagePublishedAdminNotification::class, 1);
     }
 }

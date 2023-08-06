@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\ChatMessage;
 use App\Domain\ChatMessageStatus;
+use App\Events\ChatMessagePublished;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Livewire\Component;
@@ -28,6 +29,8 @@ class Chat extends Component
         $chatMessage->status = ChatMessageStatus::Published;
         $chatMessage->user_id = $request->user()->id;
         $chatMessage->save();
+
+        event(new ChatMessagePublished($chatMessage));
 
         $this->reset();
     }

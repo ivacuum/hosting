@@ -5,6 +5,7 @@ namespace App;
 use App\Domain\ChatMessageStatus;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use League\CommonMark\CommonMarkConverter;
 
 /**
@@ -22,6 +23,8 @@ use League\CommonMark\CommonMarkConverter;
  */
 class ChatMessage extends Model
 {
+    use Notifiable;
+
     protected $casts = [
         'status' => ChatMessageStatus::class,
         'user_id' => 'int',

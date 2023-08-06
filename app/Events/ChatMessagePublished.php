@@ -5,10 +5,7 @@ namespace App\Events;
 use App\ChatMessage;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Написано сообщение в чате
- */
-class ChatMessageCreated extends Event
+class ChatMessagePublished extends Event
 {
     use SerializesModels;
 

@@ -68,7 +68,6 @@ class AppServiceProvider extends ServiceProvider
         App\Country::observe(App\Observers\CountryObserver::class);
         App\Radical::observe(App\Observers\RadicalObserver::class);
         App\Vocabulary::observe(App\Observers\VocabularyObserver::class);
-        App\ChatMessage::observe(App\Observers\ChatMessageObserver::class);
 
         $this->testMacros();
     }
