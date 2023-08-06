@@ -23,10 +23,6 @@ return [
         'webhook_secret_token' => env('TELEGRAM_WEBHOOK_SECRET_TOKEN'),
     ],
 
-    'telegram-bot-api' => [
-        'token' => env('TELEGRAM_BOT_TOKEN'), // laravel notifications
-    ],
-
     'vk' => [
         'access_token' => env('VK_ACCESS_TOKEN'),
         'client_id' => env('VK_CLIENT_ID'),

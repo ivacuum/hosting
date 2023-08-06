@@ -2,13 +2,17 @@
 
 namespace App\Notifications;
 
+use App\Action\Telegram\EscapeMarkdownCharactersAction;
 use App\Magnet;
 use App\User;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
-use NotificationChannels\Telegram\TelegramMessage;
 
-class MagnetUpdatedNotification extends Notification
+class MagnetUpdatedNotification extends Notification implements ShouldQueue
 {
+    use Queueable;
+
     public function __construct(public Magnet $magnet)
     {
     }
@@ -23,19 +27,20 @@ class MagnetUpdatedNotification extends Notification
         ];
     }
 
-    public function toTelegram(User $notifiable)
+    public function toTelegram()
     {
-        $url = url($this->magnet->www());
+        $escape = app(EscapeMarkdownCharactersAction::class);
 
-        return TelegramMessage::create()
-            ->to($notifiable->telegram_id)
-            ->content("Обновлена раздача *{$this->magnet->title}*\n\n{$url}");
+        $url = $escape->execute(url($this->magnet->www()));
+        $title = $escape->execute($this->magnet->title);
+
+        return "Обновлена раздача *{$title}*\n\n{$url}";
     }
 
     public function via(User $notifiable)
     {
         return $notifiable->telegram_id
-            ? ['telegram']
+            ? [TelegramChannel::class]
             : ['database'];
     }
 }
