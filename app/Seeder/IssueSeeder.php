@@ -6,10 +6,13 @@ use App\Factory\CommentFactory;
 use App\Factory\IssueFactory;
 use App\Factory\UserFactory;
 use App\User;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class IssueSeeder extends Seeder
 {
+    use WithoutModelEvents;
+
     public function run()
     {
         $user = UserFactory::new()
