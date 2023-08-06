@@ -5,6 +5,7 @@ namespace App;
 use App\Domain\CommentStatus;
 use App\Domain\IssueStatus;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * @property int $id
@@ -26,8 +27,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Issue extends Model
 {
-    protected $perPage = 50;
+    use Notifiable;
 
+    protected $perPage = 50;
     protected $casts = [
         'status' => IssueStatus::class,
         'user_id' => 'int',

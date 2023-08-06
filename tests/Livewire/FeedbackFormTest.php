@@ -5,12 +5,28 @@ namespace Tests\Livewire;
 use App\Factory\UserFactory;
 use App\Http\Livewire\FeedbackForm;
 use App\Issue;
+use App\Notifications\IssueReportedNotification;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class FeedbackFormTest extends TestCase
 {
     use DatabaseTransactions;
+
+    public function testAdminNotified()
+    {
+        \Notification::fake();
+
+        \Livewire::test(FeedbackForm::class, ['hideName' => true])
+            ->set('email', 'admin-notified@example.com')
+            ->set('title', 'title')
+            ->set('text', 'admin notified')
+            ->call('submit')
+            ->assertHasNoErrors();
+
+        \Notification::assertCount(1);
+        \Notification::assertSentTimes(IssueReportedNotification::class, 1);
+    }
 
     public function testAsGuest()
     {
@@ -19,6 +35,8 @@ class FeedbackFormTest extends TestCase
             \App\Events\Stats\UserRegisteredAuto::class,
             \App\Events\Stats\UserRegisteredAutoWhenIssueAdded::class,
         ]);
+
+        \Notification::fake();
 
         \Livewire::test(FeedbackForm::class)
             ->set('name', 'name')
@@ -44,6 +62,7 @@ class FeedbackFormTest extends TestCase
         $user = UserFactory::new()->withLogin('post-issue')->create();
 
         \Event::fake(\App\Events\Stats\IssueAdded::class);
+        \Notification::fake();
 
         \Livewire::actingAs($user)
             ->test(FeedbackForm::class)
@@ -63,6 +82,8 @@ class FeedbackFormTest extends TestCase
 
     public function testWithNameHidden()
     {
+        \Notification::fake();
+
         \Livewire::test(FeedbackForm::class, ['hideName' => true])
             ->set('email', 'name-hidden@example.com')
             ->set('title', 'title')
@@ -79,6 +100,8 @@ class FeedbackFormTest extends TestCase
 
     public function testWithTitleHidden()
     {
+        \Notification::fake();
+
         \Livewire::test(FeedbackForm::class, ['hideTitle' => true])
             ->set('name', 'name')
             ->set('email', 'title-hidden@example.com')
@@ -95,6 +118,8 @@ class FeedbackFormTest extends TestCase
 
     public function testWithTitlePrefilled()
     {
+        \Notification::fake();
+
         \Livewire::test(FeedbackForm::class, ['hideTitle' => true, 'title' => 'FAQ'])
             ->set('name', 'name')
             ->set('email', 'title-prefilled@example.com')
