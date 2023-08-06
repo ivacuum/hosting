@@ -4,8 +4,9 @@ namespace App\Jobs;
 
 use App\Domain\MagnetStatus;
 use App\Magnet;
+use App\Notifications\MagnetDuplicateDeletedAdminNotification;
+use App\Notifications\MagnetNotFoundAndDeletedAdminNotification;
 use App\Services\Rto;
-use Ivacuum\Generic\Services\Telegram;
 
 class FetchTorrentMetaJob extends AbstractJob
 {
@@ -16,7 +17,7 @@ class FetchTorrentMetaJob extends AbstractJob
         $this->rtoIds = $rtoIds;
     }
 
-    public function handle(Rto $rto, Telegram $telegram)
+    public function handle(Rto $rto)
     {
         $magnets = Magnet::query()
             ->whereIn('rto_id', $this->rtoIds)
@@ -38,7 +39,7 @@ class FetchTorrentMetaJob extends AbstractJob
 
                 event(new \App\Events\Stats\TorrentNotFoundDeleted);
 
-                $telegram->notifyAdmin("🧲️ Раздача не найдена и удалена\n\n{$magnet->title}\n{$magnet->externalLink()}\n\n" . url($magnet->wwwAcp()));
+                $magnet->notify(new MagnetNotFoundAndDeletedAdminNotification($magnet));
 
                 continue;
             }
@@ -50,7 +51,7 @@ class FetchTorrentMetaJob extends AbstractJob
 
                 event(new \App\Events\Stats\TorrentDuplicateDeleted);
 
-                $telegram->notifyAdmin("🧲️ Раздача закрыта как повторная и удалена\n\n{$magnet->title}\n{$magnet->externalLink()}\n\n" . url($magnet->wwwAcp()));
+                $magnet->notify(new MagnetDuplicateDeletedAdminNotification($magnet));
 
                 continue;
             }
