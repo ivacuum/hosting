@@ -39,6 +39,7 @@ class FlagCode
             'germany' => 'de',
             'greece' => 'gr',
             'greenland' => 'gl',
+            'hong-kong' => 'hk',
             'hungary' => 'hu',
             'iceland' => 'is',
             'india' => 'in',
