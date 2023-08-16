@@ -15,6 +15,10 @@
     "nullable_type_declaration": {
       "syntax": "union"
     },
+    "ordered_types": {
+      "sort_algorithm": "none",
+      "null_adjustment": "always_last"
+    },
     "class_attributes_separation": {
       "elements": {
         "method": "one"
