@@ -11,6 +11,11 @@ class Point extends Geometry implements \Stringable
     ) {
     }
 
+    public function __toString(): string
+    {
+        return "{$this->lon} {$this->lat}";
+    }
+
     public static function fromPair(string $pair, int $srid = 4326)
     {
         [$lon, $lat] = explode(' ', trim($pair, "\t\n\r \x0B()"));
@@ -38,10 +43,5 @@ class Point extends Geometry implements \Stringable
     public function toWkt(): string
     {
         return sprintf('POINT(%s)', $this->__toString());
-    }
-
-    public function __toString(): string
-    {
-        return "{$this->lon} {$this->lat}";
     }
 }

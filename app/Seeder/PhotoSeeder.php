@@ -26,7 +26,7 @@ class PhotoSeeder extends Seeder
         $factory->hidden()->withSlug('msk.2019.09.29/IMG_1347.jpg')->create();
     }
 
-    public function seedSuwon()
+    private function seedSuwon()
     {
         /** @var Trip $trip */
         $trip = Trip::where('slug', 'suwon.2019')->firstOrFail();

@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
 class Burnable extends Model
 {
     public $incrementing = false;
+    public $timestamps = false;
 
     protected $primaryKey;
     protected $fillable = ['user_id'];
@@ -25,6 +26,4 @@ class Burnable extends Model
         'rel_id' => 'int',
         'user_id' => 'int',
     ];
-
-    public $timestamps = false;
 }

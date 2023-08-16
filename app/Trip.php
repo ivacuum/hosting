@@ -260,11 +260,6 @@ class Trip extends Model
         return $this->date_start->isoFormat('MMMM') . '–' . $this->date_end->isoFormat('MMMM');
     }
 
-    protected function serializeDate(\DateTimeInterface $date)
-    {
-        return $date->format('Y-m-d H:i:s');
-    }
-
     public function template(): string
     {
         return 'life.trips.' . str_replace('.', '_', $this->slug);
@@ -297,5 +292,10 @@ class Trip extends Model
         return $this->user_id === 1
             ? path_locale([Http\Controllers\LifeController::class, 'page'], $this->slug, false, $locale) . $anchor
             : path_locale([Http\Controllers\UserTravelTripController::class, 'show'], [$this->user->login, $this->slug], false, $locale) . $anchor;
+    }
+
+    protected function serializeDate(\DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 }

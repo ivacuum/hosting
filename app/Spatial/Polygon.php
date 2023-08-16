@@ -12,6 +12,14 @@ class Polygon extends Geometry implements \Stringable
         $this->items = $items;
     }
 
+    public function __toString(): string
+    {
+        return implode(
+            ',',
+            array_map(fn (LineString $lineString) => sprintf('(%s)', $lineString->__toString()), $this->items)
+        );
+    }
+
     public static function fromString(string $wktArgument, int $srid = 4326)
     {
         $str = preg_split('/\)\s*,\s*\(/', substr(trim($wktArgument), 1, -1));
@@ -33,13 +41,5 @@ class Polygon extends Geometry implements \Stringable
     public function toWkt(): string
     {
         return sprintf('POLYGON(%s)', $this->__toString());
-    }
-
-    public function __toString(): string
-    {
-        return implode(
-            ',',
-            array_map(fn (LineString $lineString) => sprintf('(%s)', $lineString->__toString()), $this->items)
-        );
     }
 }

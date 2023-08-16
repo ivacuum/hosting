@@ -14,6 +14,11 @@ class LineString extends Geometry implements \Stringable
         $this->items = $items;
     }
 
+    public function __toString(): string
+    {
+        return $this->toPairList();
+    }
+
     public static function fromString(string $wktArgument, int $srid = 4326)
     {
         $pairs = explode(',', trim($wktArgument));
@@ -39,10 +44,5 @@ class LineString extends Geometry implements \Stringable
     public function toWkt(): string
     {
         return sprintf('LINESTRING(%s)', $this->__toString());
-    }
-
-    public function __toString(): string
-    {
-        return $this->toPairList();
     }
 }

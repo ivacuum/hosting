@@ -6,6 +6,6 @@ use Illuminate\Cookie\Middleware\EncryptCookies as BaseEncrypter;
 
 class EncryptCookies extends BaseEncrypter
 {
-    protected $except = [];
     protected static $serialize = true;
+    protected $except = [];
 }

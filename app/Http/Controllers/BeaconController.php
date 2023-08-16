@@ -46,14 +46,14 @@ class BeaconController
             ->header('Access-Control-Allow-Origin', '*');
     }
 
-    protected function metrics()
+    private function metrics()
     {
         return collect(self::METRICS)
             ->mapWithKeys(fn ($metric) => [class_basename($metric) => $metric])
             ->toArray();
     }
 
-    protected function processNewsViewedEvent(BeaconEvent $event)
+    private function processNewsViewedEvent(BeaconEvent $event)
     {
         event(new Stats\NewsViewed($event->id));
     }
@@ -81,7 +81,7 @@ class BeaconController
         event(new Stats\Photo2000Viewed($slug));
     }
 
-    protected function processTorrentViewedEvent(BeaconEvent $event)
+    private function processTorrentViewedEvent(BeaconEvent $event)
     {
         event(new Stats\TorrentViewed($event->id));
     }

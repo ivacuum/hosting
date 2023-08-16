@@ -36,7 +36,7 @@ class SitemapBuild extends BaseSitemapBuild
         $this->appendTrips();
     }
 
-    protected function appendCitiesAndCountries()
+    private function appendCitiesAndCountries()
     {
         Country::allWithCitiesAndTrips(1)
             ->filter(fn (Country $country) => $country->trips_published_count)
@@ -53,7 +53,7 @@ class SitemapBuild extends BaseSitemapBuild
             });
     }
 
-    protected function appendCouponPages()
+    private function appendCouponPages()
     {
         $this->page([
             'promocodes-coupons/airbnb',
@@ -69,7 +69,7 @@ class SitemapBuild extends BaseSitemapBuild
         ], ['0.5', '0.6', '0.7']);
     }
 
-    protected function appendDcppPages()
+    private function appendDcppPages()
     {
         $this->page([
             'dc',
@@ -102,7 +102,7 @@ class SitemapBuild extends BaseSitemapBuild
         ], ['0.5', '0.6', '0.7']);
     }
 
-    protected function appendGigs()
+    private function appendGigs()
     {
         foreach ($this->gigModels() as $model) {
             $this->page("life/{$model->slug}", '0.7');
@@ -110,7 +110,7 @@ class SitemapBuild extends BaseSitemapBuild
         }
     }
 
-    protected function appendJapanesePages()
+    private function appendJapanesePages()
     {
         $this->page([
             'japanese',
@@ -122,7 +122,7 @@ class SitemapBuild extends BaseSitemapBuild
         ], ['0.5', '0.6', '0.7']);
     }
 
-    protected function appendKoreanPages()
+    private function appendKoreanPages()
     {
         $this->page([
             'korean',
@@ -160,7 +160,7 @@ class SitemapBuild extends BaseSitemapBuild
         ], ['0.4']);
     }
 
-    protected function appendLifePages()
+    private function appendLifePages()
     {
         $this->page([
             'life',
@@ -184,7 +184,7 @@ class SitemapBuild extends BaseSitemapBuild
         ], ['0.5', '0.6', '0.7']);
     }
 
-    protected function appendNews()
+    private function appendNews()
     {
         $this->page('news', '0.2');
 
@@ -195,7 +195,7 @@ class SitemapBuild extends BaseSitemapBuild
         }
     }
 
-    protected function appendTrips()
+    private function appendTrips()
     {
         foreach ($this->tripModels() as $model) {
             $this->page("life/{$model->slug}", '0.7');
@@ -204,7 +204,7 @@ class SitemapBuild extends BaseSitemapBuild
     }
 
     /** @return \Illuminate\Support\LazyCollection<int, Gig> */
-    protected function gigModels()
+    private function gigModels()
     {
         return Gig::query()
             ->select(['id', 'slug'])
@@ -213,7 +213,7 @@ class SitemapBuild extends BaseSitemapBuild
     }
 
     /** @return \Illuminate\Support\LazyCollection<int, News> */
-    protected function newsModels()
+    private function newsModels()
     {
         return News::query()
             ->select(['id', 'locale'])
@@ -222,7 +222,7 @@ class SitemapBuild extends BaseSitemapBuild
     }
 
     /** @return \Illuminate\Support\LazyCollection<int, Trip> */
-    protected function tripModels()
+    private function tripModels()
     {
         return Trip::query()
             ->select(['id', 'user_id', 'slug'])

@@ -133,11 +133,6 @@ class Gig extends Model
         return $this->meta_title ?: "{$this->title} · {$this->fullDate()}";
     }
 
-    protected function serializeDate(\DateTimeInterface $date)
-    {
-        return $date->format('Y-m-d H:i:s');
-    }
-
     public function shortDate(): string
     {
         return $this->date->isoFormat(__('life.date.day_month'));
@@ -161,5 +156,10 @@ class Gig extends Model
     public function wwwLocale(string $locale = ''): string
     {
         return path_locale([Http\Controllers\LifeController::class, 'page'], $this->slug, false, $locale);
+    }
+
+    protected function serializeDate(\DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 }
