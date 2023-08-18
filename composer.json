@@ -33,7 +33,7 @@
     "mockery/mockery": "^1.0",
     "nunomaduro/collision": "^7.0",
     "phpunit/phpunit": "^10.0",
-    "rector/rector": "^0.17",
+    "rector/rector": "^0.18",
     "spatie/laravel-ignition": "^2.0"
   },
   "autoload": {
