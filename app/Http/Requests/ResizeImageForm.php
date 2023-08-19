@@ -13,7 +13,7 @@ class ResizeImageForm extends FormRequest
     public int $height;
     public string $image;
 
-    private string|null $extension;
+    private string|null $extension = null;
 
     public function authorize(GetResizeImageWhitelistAction $getResizeImageWhitelist): bool
     {
