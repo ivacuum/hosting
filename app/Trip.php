@@ -7,6 +7,7 @@ use App\Action\FormatTripPeriodWithYearAction;
 use App\Domain\CommentStatus;
 use App\Domain\TripStatus;
 use Carbon\CarbonInterface;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Ivacuum\Generic\Utilities\TextImagesParser;
 use League\CommonMark\CommonMarkConverter;
@@ -39,8 +40,6 @@ use League\CommonMark\CommonMarkConverter;
  * @property \Illuminate\Database\Eloquent\Collection|Photo[] $photos
  * @property User $user
  * @property-read int $comments_count
- * @property-read string $meta_title
- * @property-read string $meta_description
  * @property int $photos_count
  * @property-read string $title
  * @property-read int $year
@@ -115,39 +114,6 @@ class Trip extends Model
         return $this->belongsTo(User::class);
     }
 
-    // Attributes
-    public function getMetaDescriptionAttribute(): string
-    {
-        return $this->{'meta_description_' . \App::getLocale()};
-    }
-
-    public function getMetaTitleAttribute(): string
-    {
-        return $this->{'meta_title_' . \App::getLocale()};
-    }
-
-    public function getYearAttribute(): int
-    {
-        return $this->date_start->year;
-    }
-
-    public function setMarkdownAttribute(string $value): void
-    {
-        $this->attributes['markdown'] = $value;
-
-        $converter = new CommonMarkConverter([
-            'max_nesting_level' => 15,
-            'allow_unsafe_links' => false,
-        ]);
-
-        $this->attributes['html'] = $converter->convert((new TextImagesParser)->parse($value))->getContent();
-    }
-
-    public function setSlugAttribute(string $value): void
-    {
-        $this->attributes['slug'] = mb_strtolower($value);
-    }
-
     // Methods
     public function breadcrumb(): string
     {
@@ -216,7 +182,7 @@ class Trip extends Model
 
     public function metaDescription(): string
     {
-        return $this->meta_description;
+        return $this->{'meta_description_' . \App::getLocale()};
     }
 
     public function metaImage(int $width = null, int $height = null): string
@@ -238,8 +204,10 @@ class Trip extends Model
 
     public function metaTitle(): string
     {
-        if ($this->meta_title) {
-            return $this->meta_title;
+        $metaTitle = $this->{'meta_title_' . \App::getLocale()};
+
+        if ($metaTitle) {
+            return $metaTitle;
         }
 
         $suffix = '';
@@ -294,8 +262,39 @@ class Trip extends Model
             : path_locale([Http\Controllers\UserTravelTripController::class, 'show'], [$this->user->login, $this->slug], false, $locale) . $anchor;
     }
 
+    protected function markdown(): Attribute
+    {
+        return Attribute::make(
+            set: function ($value) {
+                $converter = new CommonMarkConverter([
+                    'max_nesting_level' => 15,
+                    'allow_unsafe_links' => false,
+                ]);
+
+                return [
+                    'markdown' => $value,
+                    'html' => $converter->convert((new TextImagesParser)->parse($value))->getContent(),
+                ];
+            },
+        );
+    }
+
     protected function serializeDate(\DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    protected function slug(): Attribute
+    {
+        return Attribute::make(
+            set: fn ($value) => mb_strtolower($value),
+        );
+    }
+
+    protected function year(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->date_start->year,
+        );
     }
 }

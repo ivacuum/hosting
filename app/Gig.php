@@ -4,6 +4,7 @@ namespace App;
 
 use App\Domain\GigStatus;
 use Carbon\CarbonInterface;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -26,8 +27,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property Artist $artist
  * @property City $city
  * @property \Illuminate\Database\Eloquent\Collection|Email[] $emails
- * @property-read string $meta_title
- * @property-read string $meta_description
  * @property-read string $title
  * @property-read int $year
  *
@@ -73,22 +72,6 @@ class Gig extends Model
         return $this->morphMany(Photo::class, 'rel');
     }
 
-    // Attributes
-    public function getMetaDescriptionAttribute()
-    {
-        return $this->{'meta_description_' . \App::getLocale()};
-    }
-
-    public function getMetaTitleAttribute()
-    {
-        return $this->{'meta_title_' . \App::getLocale()};
-    }
-
-    public function getYearAttribute(): int
-    {
-        return $this->date->year;
-    }
-
     // Methods
     public function artistTimeline()
     {
@@ -125,12 +108,14 @@ class Gig extends Model
 
     public function metaDescription(): string
     {
-        return $this->meta_description;
+        return $this->{'meta_description_' . \App::getLocale()};
     }
 
     public function metaTitle(): string
     {
-        return $this->meta_title ?: "{$this->title} · {$this->fullDate()}";
+        $metaTitle = $this->{'meta_title_' . \App::getLocale()};
+
+        return $metaTitle ?: "{$this->title} · {$this->fullDate()}";
     }
 
     public function shortDate(): string
@@ -161,5 +146,12 @@ class Gig extends Model
     protected function serializeDate(\DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    protected function year(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->date->year,
+        );
     }
 }

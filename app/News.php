@@ -63,17 +63,6 @@ class News extends Model
         return $this->belongsTo(User::class);
     }
 
-    // Attributes
-    public function markdown(): Attribute
-    {
-        return new Attribute(
-            set: fn ($value) => [
-                'markdown' => $value,
-                'html' => (new CommonMarkConverter)->convert($value)->getContent(),
-            ],
-        );
-    }
-
     // Methods
     public function breadcrumb(): string
     {
@@ -104,5 +93,15 @@ class News extends Model
         }
 
         return [$start->startOfYear(), $start->endOfYear()];
+    }
+
+    protected function markdown(): Attribute
+    {
+        return Attribute::make(
+            set: fn ($value) => [
+                'markdown' => $value,
+                'html' => (new CommonMarkConverter)->convert($value)->getContent(),
+            ],
+        );
     }
 }

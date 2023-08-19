@@ -5,6 +5,7 @@ namespace App;
 use App\Domain\NotificationDeliveryMethod;
 use App\Domain\UserStatus;
 use Illuminate\Contracts\Translation\HasLocalePreference;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
@@ -127,12 +128,6 @@ class User extends Authenticatable implements HasLocalePreference
         return $this->hasMany(Trip::class);
     }
 
-    // Attributes
-    public function setPasswordAttribute(string $value): void
-    {
-        $this->attributes['password'] = $value ? \Hash::make($value) : '';
-    }
-
     // Methods
     public function activate(): bool
     {
@@ -252,5 +247,14 @@ class User extends Authenticatable implements HasLocalePreference
     public function www(): string
     {
         return to('users/{user}', $this->id);
+    }
+
+    protected function password(): Attribute
+    {
+        return Attribute::make(
+            set: fn ($value) => $value
+                ? \Hash::make($value)
+                : '',
+        );
     }
 }

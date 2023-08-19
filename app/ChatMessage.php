@@ -36,10 +36,15 @@ class ChatMessage extends Model
         return $this->belongsTo(User::class);
     }
 
-    // Attributes
-    public function text(): Attribute
+    // Methods
+    public function breadcrumb()
     {
-        return new Attribute(
+        return "#{$this->id}";
+    }
+
+    protected function text(): Attribute
+    {
+        return Attribute::make(
             set: function ($value) {
                 $converter = new CommonMarkConverter([
                     'html_input' => 'escape',
@@ -53,11 +58,5 @@ class ChatMessage extends Model
                 ];
             }
         );
-    }
-
-    // Methods
-    public function breadcrumb()
-    {
-        return "#{$this->id}";
     }
 }
