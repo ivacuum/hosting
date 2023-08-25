@@ -7,6 +7,7 @@ use App\Kanji;
 class KanjiFactory
 {
     private int|null $level = null;
+    private string|null $character = null;
 
     public function create()
     {
@@ -24,7 +25,7 @@ class KanjiFactory
         $model->onyomi = fake()->word();
         $model->kunyomi = fake()->word();
         $model->meaning = fake()->words(2, true);
-        $model->character = fake()->unique()->word();
+        $model->character = $this->character ?? fake()->unique()->word();
         $model->important_reading = fake()->randomElement(['onyomi', 'kunyomi']);
 
         return $model;
@@ -33,6 +34,14 @@ class KanjiFactory
     public static function new(): self
     {
         return new self;
+    }
+
+    public function withCharacter(string $character)
+    {
+        $factory = clone $this;
+        $factory->character = $character;
+
+        return $factory;
     }
 
     public function withLevel(int $level)

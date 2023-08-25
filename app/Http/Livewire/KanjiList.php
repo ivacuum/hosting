@@ -3,14 +3,13 @@
 namespace App\Http\Livewire;
 
 use App\Action\SplitVocabToKanjiAction;
-use App\Collection\AppendSortFieldToKanjiAsInVocab;
+use App\Collection\ShowKanjiInTheSameOrderAsInVocab;
 use App\Kanji;
 use App\Scope\KanjiLevelScope;
 use App\Scope\KanjiRadicalsScope;
 use App\Scope\KanjiSimilarToScope;
 use App\Scope\UserBurnableScope;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class KanjiList extends Component
@@ -40,12 +39,7 @@ class KanjiList extends Component
             ->orderBy('level')
             ->orderBy('meaning')
             ->get(['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading'])
-            ->tap(new AppendSortFieldToKanjiAsInVocab($characters))
-            ->when($vocabularyWord, function (Collection $collection) {
-                return $collection
-                    ->sortBy('sort')
-                    ->values();
-            });
+            ->pipe(new ShowKanjiInTheSameOrderAsInVocab($characters));
     }
 
     public function shuffle()
